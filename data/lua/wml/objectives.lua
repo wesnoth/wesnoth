@@ -58,6 +58,21 @@ local function generate_objectives(cfg)
 		local show_if = helper.get_child(obj, "show_if")
 		if not show_if or wesnoth.eval_conditional(show_if) then
 			local condition = obj.condition
+			local turn_counter = ""
+
+			if obj.show_turn_counter then
+				local current_turn = wesnoth.current.turn
+				local turn_limit = wesnoth.game_config.last_turn
+
+				if turn_limit >= current_turn then
+					if turn_limit - current_turn + 1 > 1 then
+						turn_counter = "<small> " .. string.format(tostring(_"(%d turns left)"), turn_limit - current_turn + 1) .. "</small>"
+					else
+						turn_counter = "<small> " .. _"(this turn left)" .. "</small>"
+					end
+				end
+			end
+
 			if condition == "win" then
 				local caption = obj.caption
 
@@ -65,23 +80,9 @@ local function generate_objectives(cfg)
 					win_objectives = win_objectives .. caption .. "\n"
 				end
 
-				win_objectives = win_objectives .. color_prefix(0, 255, 0) .. bullet .. obj.description .. "</span>" .. "\n"
+				win_objectives = win_objectives .. color_prefix(0, 255, 0) .. bullet .. obj.description .. turn_counter .. "</span>" .. "\n"
 			elseif condition == "lose" then
 				local caption = obj.caption
-				local turn_counter = ""
-
-				if obj.show_turn_counter then
-					local current_turn = wesnoth.current.turn
-					local turn_limit = wesnoth.game_config.last_turn
-
-					if turn_limit >= current_turn then
-					    if turn_limit - current_turn + 1 > 1 then
-						    turn_counter = "<small> " .. string.format(tostring(_"(%d turns left)"), turn_limit - current_turn + 1) .. "</small>"
-						else
-						    turn_counter = "<small> " .. "(this turn left)" .. "</small>"
-						end
-					end
-				end
 
 				if caption then
 					lose_objectives = lose_objectives .. caption .. "\n"

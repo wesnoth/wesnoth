@@ -19,9 +19,6 @@
 #include "tstring.hpp"
 #include "terrain_translation.hpp"
 
-#include <map>
-#include <string>
-
 class terrain_type
 {
 public:
@@ -34,6 +31,7 @@ public:
 	const std::string& minimap_image_overlay() const { return minimap_image_overlay_; }
 	const std::string& editor_image() const { return editor_image_; }
 	const t_string& name() const { return name_; }
+	const t_string& editor_name() const { return editor_name_.empty() ? description() : editor_name_; }
 	const t_string& description() const { return description_.empty() ? name_ : description_; }
 	const std::string& id() const { return id_; }
 
@@ -88,6 +86,7 @@ private:
 	std::string editor_image_;
 	std::string id_;
 	t_string name_;
+	t_string editor_name_;
 	t_string description_;
 
 	//the 'number' is the number that represents this

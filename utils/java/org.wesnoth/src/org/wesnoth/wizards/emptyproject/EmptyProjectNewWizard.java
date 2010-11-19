@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.Pair;
@@ -45,7 +46,7 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 	}
 
 	public EmptyProjectNewWizard() {
-		setWindowTitle("Create a new empty project");
+		setWindowTitle(Messages.EmptyProjectNewWizard_0);
 		setNeedsProgressMonitor(true);
 	}
 
@@ -81,7 +82,7 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 
 	public void createProject(IProgressMonitor monitor)
 	{
-		monitor.beginTask("Creating the project structure...", 15);
+		monitor.beginTask(Messages.EmptyProjectNewWizard_1, 15);
 
 		try
 		{
@@ -104,7 +105,7 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 
 			monitor.worked(2);
 
-			String emptyProjectStructure = prepareTemplate("empty_project");
+			String emptyProjectStructure = prepareTemplate("empty_project"); //$NON-NLS-1$
 			if (emptyProjectStructure == null)
 				return;
 
@@ -117,11 +118,11 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 
 			for (Pair<String, String> file : files)
 			{
-				if (file.Second.equals("pbl") &&
+				if (file.Second.equals("pbl") && //$NON-NLS-1$
 					page1_.getGeneratePBLFile() == false)
 					continue;
 
-				if (file.Second.equals("build_xml") &&
+				if (file.Second.equals("build_xml") && //$NON-NLS-1$
 					page1_.isDataCampaignsProject())
 					continue;
 
@@ -145,18 +146,18 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 	{
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
-		params.add(new ReplaceableParameter("$$campaign_name", page1_.getCampaignName()));
-		params.add(new ReplaceableParameter("$$author", page1_.getAuthor()));
-		params.add(new ReplaceableParameter("$$version", page1_.getVersion()));
-		params.add(new ReplaceableParameter("$$description", page1_.getPBLDescription()));
-		params.add(new ReplaceableParameter("$$icon", page1_.getIconPath()));
-		params.add(new ReplaceableParameter("$$email", page1_.getEmail()));
-		params.add(new ReplaceableParameter("$$passphrase", page1_.getPassphrase()));
-		params.add(new ReplaceableParameter("$$translations_dir", page1_.getTranslationDir()));
+		params.add(new ReplaceableParameter("$$campaign_name", page1_.getCampaignName())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$author", page1_.getAuthor())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$version", page1_.getVersion())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$description", page1_.getPBLDescription())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$icon", page1_.getIconPath())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$email", page1_.getEmail())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$passphrase", page1_.getPassphrase())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$translations_dir", page1_.getTranslationDir())); //$NON-NLS-1$
 
-		params.add(new ReplaceableParameter("$$project_name", page0_.getProjectName()));
-		params.add(new ReplaceableParameter("$$project_dir_name", page0_.getProjectName()));
-		params.add(new ReplaceableParameter("$$type", page1_.getType()));
+		params.add(new ReplaceableParameter("$$project_name", page0_.getProjectName())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$project_dir_name", page0_.getProjectName())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$type", page1_.getType())); //$NON-NLS-1$
 
 		return TemplateProvider.getInstance().getProcessedTemplate(templateName, params);
 	}

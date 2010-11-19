@@ -31,6 +31,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/auxiliary/window_builder/control.hpp"
+#include "gui/dialogs/title_screen.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -38,7 +39,6 @@
 #endif
 #include "preferences.hpp"
 #include "preferences_display.hpp"
-#include "titlescreen.hpp"
 #include "video.hpp"
 
 #include <boost/bind.hpp>
@@ -400,15 +400,15 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	 * add some namespaces to avoid names clashing.
 	 */
 	} else if(id == "tutorial") {
-		return static_cast<tretval>(gui::TUTORIAL);
+		return static_cast<tretval>(ttitle_screen::TUTORIAL);
 #ifndef DISABLE_EDITOR
 	} else if(id == "editor") {
-		return static_cast<tretval>(gui::START_MAP_EDITOR);
+		return static_cast<tretval>(ttitle_screen::START_MAP_EDITOR);
 #endif
 	} else if(id == "credits") {
-		return static_cast<tretval>(gui::SHOW_ABOUT);
+		return static_cast<tretval>(ttitle_screen::SHOW_ABOUT);
 	} else if(id == "quit") {
-		return static_cast<tretval>(gui::QUIT_GAME);
+		return static_cast<tretval>(ttitle_screen::QUIT_GAME);
 
 	/**
 	 * The hacks which are here so the old engine can handle the event. The new
@@ -416,19 +416,19 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	 * engine to make certain things happen.
 	 */
 	} else if(id == "help") {
-		return static_cast<tretval>(gui::SHOW_HELP);
+		return static_cast<tretval>(ttitle_screen::SHOW_HELP);
 	} else if(id == "campaign") {
-		return static_cast<tretval>(gui::NEW_CAMPAIGN);
+		return static_cast<tretval>(ttitle_screen::NEW_CAMPAIGN);
 	} else if(id == "multiplayer") {
-		return static_cast<tretval>(gui::MULTIPLAYER);
+		return static_cast<tretval>(ttitle_screen::MULTIPLAYER);
 	} else if(id == "load") {
-		return static_cast<tretval>(gui::LOAD_GAME);
+		return static_cast<tretval>(ttitle_screen::LOAD_GAME);
 	} else if(id == "addons") {
-		return static_cast<tretval>(gui::GET_ADDONS);
+		return static_cast<tretval>(ttitle_screen::GET_ADDONS);
 	} else if(id == "language") {
-		return static_cast<tretval>(gui::CHANGE_LANGUAGE);
+		return static_cast<tretval>(ttitle_screen::CHANGE_LANGUAGE);
 	} else if(id == "preferences") {
-		return static_cast<tretval>(gui::EDIT_PREFERENCES);
+		return static_cast<tretval>(ttitle_screen::EDIT_PREFERENCES);
 
 	// default if nothing matched
 	} else {
@@ -1015,49 +1015,6 @@ void twindow::do_remove_tooltip()
 	update_rect(tooltip_.get_rect());
 
 	tooltip_.set_visible(twidget::HIDDEN);
-}
-
-void twindow::do_show_help_popup(const tpoint& location, const t_string& help_popup)
-{
-	// Note copy past of twindow::do_show_tooltip except that the help may be empty.
-	DBG_GUI_G << LOG_HEADER << " message: '" << help_popup << "'.\n";
-
-	if(help_popup.empty()) {
-		return;
-	}
-	twidget* widget = find_at(location, true);
-	assert(widget);
-
-	const SDL_Rect widget_rect = widget->get_rect();
-	const SDL_Rect client_rect = get_client_rect();
-
-	help_popup_.set_label(help_popup);
-	const tpoint size = help_popup_.get_best_size();
-
-	SDL_Rect help_popup_rect = ::create_rect(0, 0, size.x, size.y);
-
-	// Find the best position to place the widget
-	if(widget_rect.y - size.y > 0) {
-		// put above
-		help_popup_rect.y = widget_rect.y - size.y;
-	} else {
-		//put below no test
-		help_popup_rect.y = widget_rect.y + widget_rect.h;
-	}
-
-	if(widget_rect.x + size.x < client_rect.w) {
-		// Directly above the mouse
-		help_popup_rect.x = widget_rect.x;
-	} else {
-		// shift left, no test
-		help_popup_rect.x = client_rect.w - size.x;
-	}
-
-	help_popup_.place(
-			tpoint(help_popup_rect.w, help_popup_rect.h),
-			tpoint(help_popup_rect.x, help_popup_rect.y));
-
-	help_popup_.set_visible(twidget::VISIBLE);
 }
 
 bool twindow::click_dismiss()

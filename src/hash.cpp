@@ -83,9 +83,4 @@ std::string create_hash(const std::string& password, const std::string& salt, in
 	return encode_hash(output);
 }
 
-bool password_matches_hash(const std::string& password, const std::string& hash) {
-	return hash.substr(12,34) == create_hash(password, get_salt(hash), get_iteration_count(hash));
-}
-
 } // namespace util
-

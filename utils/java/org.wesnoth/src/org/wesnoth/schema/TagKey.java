@@ -31,7 +31,7 @@ public class TagKey
 	public TagKey(String name, char cardinality, String valueType, boolean trans) {
 		name_ = name;
 		cardinality_ = cardinality;
-		value_ = "";
+		value_ = ""; //$NON-NLS-1$
 
 		if (valueType == null || valueType.isEmpty())
 		{
@@ -40,10 +40,10 @@ public class TagKey
 		}
 		else
 		{
-			isEnum_ = valueType.substring(1, valueType.indexOf(" ")).equals("enum");
+			isEnum_ = valueType.substring(1, valueType.indexOf(" ")).equals("enum"); //$NON-NLS-1$ //$NON-NLS-2$
 
 			 // remove the " "
-			value_ = valueType.substring(valueType.indexOf(" ") + 1, valueType.length() - 1);
+			value_ = valueType.substring(valueType.indexOf(" ") + 1, valueType.length() - 1); //$NON-NLS-1$
 			isTranslatable_ = trans;
 		}
 	}

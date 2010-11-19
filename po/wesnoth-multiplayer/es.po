@@ -18,9 +18,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-03 21:59+0200\n"
-"PO-Revision-Date: 2009-12-15 23:14+0100\n"
-"Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
+"POT-Creation-Date: 2010-11-05 17:41+0100\n"
+"PO-Revision-Date: 2010-07-27 17:19-0400\n"
+"Last-Translator: PeterPorty <p_llorens@hotmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -351,7 +351,7 @@ msgid ""
 "He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
 "cowered in fright. He tried to wheel his wolf around to run away, but it "
 "wouldn’t move. As the creature stalked towards him, he screamed his last "
-"words: Good Gog, dog, are yer legs made of stone?!?\n"
+"words: Good Gog, dog, are yer legs made of stone?!\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
 "Blum Duk fue célebre entre su clan goblin por haber domesticado a uno de los "
@@ -712,7 +712,6 @@ msgstr "Pronóstico Oscuro - un escenario de supervivencia aleatorio."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
-#, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
@@ -747,7 +746,7 @@ msgstr ""
 "\n"
 "Aparecen a lo largo del norte, sur y oeste de los límites del mapa, aunque "
 "es más probable que aparezcan por el borde oeste. Las oleadas generadas "
-"aparecen a intervalos algo regulares.\n"
+"aparecen a intervalos parcialmente regulares.\n"
 "\n"
 "\n"
 "La meteorología también cambiará aleatoriamente, afectando el diseño del "
@@ -758,16 +757,15 @@ msgstr ""
 "<span color='red'>Pronóstico Oscuro fue realizado por:</span>\n"
 "\n"
 "<span color='green'>jb</span>\n"
-"- diseño del mapa, generación de oleadas y concepción del escenario\n"
+"- diseño del mapa, generación de oleadas y concepto del escenario\n"
 "\n"
 "<span color='green'>Rhuvaen</span>\n"
 "- implementación WML"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
-#, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
-msgstr "Así que este es el valle maldito - una tierra que será nuestra."
+msgstr "Así que este es el valle maldito - una tierra libre para tomarla."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1458
@@ -845,7 +843,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
 msgid "2p — Elensefar Courtyard"
-msgstr ""
+msgstr "2 jug. Patio de Elensefar"
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:7
@@ -853,11 +851,13 @@ msgid ""
 "Fight through corridors and gardens, and dominate the eastern courtyard of "
 "what used to be the glorious city of Elensefar."
 msgstr ""
+"Pelea a travéz de corredores y jardines, y domina el patio este de lo que "
+"solía ser laa gloriosa ciudad de Elensefar."
 
 #. [time]: id=underground_illum
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:111
 msgid "Underground"
-msgstr ""
+msgstr "Bajo tierra"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
@@ -1557,75 +1557,92 @@ msgstr "6 jug. - Pastel hexagonal"
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Juego de 2 contra 2 o 3 contra 3 equipos."
 
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:202
-msgid "Turn 2: Loyalists"
-msgstr "Turno 2: Leales"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:207
-msgid "Turn 5: Knalgans"
-msgstr "Turno 5: Knalganos"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:212
-msgid "Turn 8: Rebels"
-msgstr "Turno 8: Rebeldes"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:217
-msgid "Turn 11: Northerners"
-msgstr "Turno 11: Norteños"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:222
-msgid "Turn 14: Drakes"
-msgstr "Turno 14: Dracos"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:227
-msgid "Turn 17: Undead"
-msgstr "Turno 17: No muertos"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:232
-msgid "Tower of Doom"
-msgstr "Torre de la Perdición"
-
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:364
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:291
 msgid "6p — Team Survival"
 msgstr "6 jug. - Supervivencia en equipo"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:367
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:293
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr "Un escenario donde el objetivo es sobrevivir el mayor tiempo posible."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
-msgid "Hint: Learning the enemy spawnpoints and types helps a lot."
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:302
+msgid "Attacker"
+msgstr "Atacante"
+
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:307
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:312
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:317
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:322
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:327
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:332
+msgid "Defender"
+msgstr "Defensor"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:343
+#, fuzzy
+msgid "Survive all enemy attacks"
+msgstr "Sobrevive a todos los ataques enemigos."
+
+#. [objective]: condition=lose
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
+#, fuzzy
+msgid "Death of your team leaders"
+msgstr "Muerte de los líderes de su equipo."
+
+#. [note]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:354
+msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr ""
 "Pista: Aprender dónde recluta el enemigo sus unidades y de que tipo son "
 "puede serle de mucha ayuda."
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
+msgid "Turn 2: Loyalists"
+msgstr "Turno 2: Leales"
+
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:365
+msgid "Turn 5: Knalgans"
+msgstr "Turno 5: Knalganos"
+
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:370
+msgid "Turn 8: Rebels"
+msgstr "Turno 8: Rebeldes"
+
+#. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
-msgid "Survive for 32 turns."
-msgstr "Sobrevivir durante 32 turnos."
+msgid "Turn 11: Northerners"
+msgstr "Turno 11: Norteños"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:376
-msgid "Survive all enemy attacks."
-msgstr "Sobrevive a todos los ataques enemigos."
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
+msgid "Turn 14: Drakes"
+msgstr "Turno 14: Dracos"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:377
-msgid "Death of your team leaders."
-msgstr "Muerte de los líderes de su equipo."
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:385
+msgid "Turn 17: Undead"
+msgstr "Turno 17: No muertos"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:399
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:390
+msgid "Tower of Doom"
+msgstr "Torre de la Perdición"
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:497
+msgid "Faery"
+msgstr "Feérico"
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:498
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible. Frankly, I haven’t got a clue as to how you did it, so send me "
@@ -1635,39 +1652,19 @@ msgstr ""
 "imposible. Sinceramente, no tengo ni idea de cómo lo hiciste, así que "
 "envíame la repetición por correo electrónico a: roze@roze.mine.nu. ¡Gracias!"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:399
-msgid "Faery"
-msgstr "Feérico"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:402
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:512
 msgid "Death"
 msgstr "Muerte"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:402
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:514
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
 "Has perdido esta partida, pero no temas. Siempre puedes intentarlo otra vez. "
 "Y otra. Y otra. *Juajuajuajua*"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:408
-msgid "Attacker"
-msgstr "Atacante"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:413
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:418
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:423
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:428
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:433
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:438
-msgid "Defender"
-msgstr "Defensor"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
@@ -1868,6 +1865,9 @@ msgid ""
 msgstr ""
 "Una prueba de rendimiento de wesnoth, usa --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Survive for 32 turns."
+#~ msgstr "Sobrevivir durante 32 turnos."
 
 #~ msgid "2p - Fast To Madness"
 #~ msgstr "2 jug. - Pronto al desquicio"

@@ -2,6 +2,18 @@
 
 local helper = {}
 
+--! Returns an iterator over all the sides matching a given filter that can be used in a for-in loop.
+function helper.get_sides(cfg)
+	local function f(dummy, i)
+		while i < #wesnoth.sides do
+			i = i + 1
+			if wesnoth.match_side(i, cfg) then return i end
+		end
+		return nil
+	end
+	return f, nil, 0
+end
+
 --! Interrupts the current execution and displays a chat message that looks like a WML error.
 function helper.wml_error(m)
 	error("~wml:" .. m, 0)
@@ -260,15 +272,45 @@ function helper.get_user_choice(attr, options)
 	return result
 end
 
+local function is_even(v) return v % 2 == 0 end
+
 --! Returns the distance between two tiles given by their WML coordinates.
 function helper.distance_between(x1, y1, x2, y2)
-	local function is_even(v) return v % 2 == 0 end
 	local hdist = math.abs(x1 - x2)
 	local vdist = math.abs(y1 - y2)
 	if (y1 < y2 and not is_even(x1) and is_even(x2)) or
 	   (y2 < y1 and not is_even(x2) and is_even(x1))
 	then vdist = vdist + 1 end
 	return math.max(hdist, vdist + math.floor(hdist / 2))
+end
+
+local adjacent_offset = {
+	[false] = { {0,-1}, {1,-1}, {1,0}, {0,1}, {-1,0}, {-1,-1} },
+	[true] = { {0,-1}, {1,0}, {1,1}, {0,1}, {-1,1}, {-1,0} }
+}
+
+--! Returns an iterator over adjacent locations that can be used in a for-in loop.
+function helper.adjacent_tiles(x, y, with_borders)
+	local x1,y1,x2,y2,b = 1,1,wesnoth.get_map_size()
+	if with_borders then
+		x1 = x1 - b
+		y1 = y1 - b
+		x2 = x2 + b
+		y2 = y2 + b
+	end
+	local offset = adjacent_offset[is_even(x)]
+	local i = 1
+	return function()
+		while i <= 6 do
+			local o = offset[i]
+			i = i + 1
+			local u, v = o[1] + x, o[2] + y
+			if u >= x1 and u <= x2 and v >= y1 and v <= y2 then
+				return u, v
+			end
+		end
+		return nil
+	end
 end
 
 function helper.literal(cfg)

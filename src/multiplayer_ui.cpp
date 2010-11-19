@@ -142,7 +142,7 @@ void level_to_gamestate(config& level, game_state& state)
 	//It might be a MP campaign start-of-scenario save
 	//In this case, it's not entirely a new game, but not a save, either
 	//Check whether it is no savegame and the starting_pos contains [player] information
-	const bool start_of_scenario = (!saved_game && (state.starting_pos.child("player") != NULL));
+	bool start_of_scenario = !saved_game && state.starting_pos.child("player");
 
 	//If we start a fresh game, there won't be any snapshot information. If however this
 	//is a savegame, we got a valid snapshot here.
@@ -465,7 +465,7 @@ void ui::handle_event(const SDL_Event& event)
 			//if the dialog has been open for a long time, refresh the lobby
 			config request;
 			request.add_child("refresh_lobby");
-			network::send_data(request, 0, true);
+			network::send_data(request, 0);
 		}
 	}
 	if(users_menu_.selection() > 0 // -1 indicates an invalid selection
@@ -489,7 +489,7 @@ void ui::send_chat_message(const std::string& message, bool /*allies_only*/)
 	data.add_child("message", msg);
 
 	add_chat_message(time(NULL), preferences::login(),0, message);	//local echo
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 
@@ -575,7 +575,7 @@ void ui::process_network_data(const config& data, const network::connection /*so
 			} catch(config::error& e) {
 				ERR_CF << "Error while applying the gamelist diff: '"
 					<< e.message << "' Getting a new gamelist.\n";
-				network::send_data(config("refresh_lobby"), 0, true);
+				network::send_data(config("refresh_lobby"), 0);
 			}
 			gamelist_refresh_ = true;
 		}
@@ -780,7 +780,7 @@ void ui::gamelist_updated(bool silent)
 		reg_str = u_itor->registered ? registered_user_tag : "";
 		user_strings.push_back(u_itor->name);
 		menu_strings.push_back(img_str + reg_str + color_str + name_str + HELP_STRING_SEPARATOR + name_str);
-		u_itor++;
+		++u_itor;
 	}
 
 	set_user_list(user_strings, silent);

@@ -316,8 +316,8 @@ void editor_controller::quit_confirm(EXIT_STATUS mode)
 			message += "\n" + str;
 		}
 	}
-	int res = gui::dialog(gui(),_("Quit"),message,gui::YES_NO).show();
-	if (res == 0) {
+	const int res = gui2::show_message(gui().video(), _("Quit"), message, gui2::tmessage::yes_no_buttons);
+	if(res != gui2::twindow::CANCEL) {
 		do_quit_ = true;
 		quit_mode_ = mode;
 	}
@@ -372,7 +372,7 @@ void editor_controller::switch_context(const int index)
 
 void editor_controller::replace_map_context(map_context* new_mc)
 {
-	std::auto_ptr<map_context> del(map_contexts_[current_context_index_]);
+	boost::scoped_ptr<map_context> del(map_contexts_[current_context_index_]);
 	map_context_refresher mcr(*this, *new_mc);
 	map_contexts_[current_context_index_] = new_mc;
 }
@@ -417,8 +417,8 @@ void editor_controller::editor_settings_dialog_redraw_callback(int r, int g, int
 bool editor_controller::confirm_discard()
 {
 	if (get_map_context().modified()) {
-		return !gui::dialog(gui(), _("Unsaved Changes"),
-			_("Do you want to discard all changes you made to the map since the last save?"), gui::YES_NO).show();
+		const int res = gui2::show_message(gui().video(), _("Unsaved Changes"), _("Do you want to discard all changes you made to the map since the last save?"), gui2::tmessage::yes_no_buttons);
+		return gui2::twindow::CANCEL != res;
 	} else {
 		return true;
 	}
@@ -474,9 +474,8 @@ void editor_controller::save_map_as_dialog()
 		res = dialogs::show_file_chooser_dialog_save(gui(), input_name, _("Save the Map As"));
 		if (res == 0) {
 			if (file_exists(input_name)) {
-				overwrite_res = gui::dialog(gui(), "",
-					_("The file already exists. Do you want to overwrite it?"),
-					gui::YES_NO).show();
+				const int res = gui2::show_message(gui().video(), "", _("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
+				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
 			} else {
 				overwrite_res = 0;
 			}
@@ -716,7 +715,7 @@ void editor_controller::load_map(const std::string& filename, bool new_context)
 	if (new_context && check_switch_open_map(filename)) return;
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)") << "\n";
 	try {
-		std::auto_ptr<map_context> mc(new map_context(game_config_, filename));
+		util::unique_ptr<map_context> mc(new map_context(game_config_, filename));
 		if (mc->get_filename() != filename) {
 			if (new_context && check_switch_open_map(mc->get_filename())) return;
 		}
@@ -1287,7 +1286,7 @@ mouse_action* editor_controller::get_mouse_action()
 void editor_controller::perform_delete(editor_action* action)
 {
 	if (action) {
-		std::auto_ptr<editor_action> action_auto(action);
+		boost::scoped_ptr<editor_action> action_auto(action);
 		get_map_context().perform_action(*action);
 	}
 }
@@ -1295,7 +1294,7 @@ void editor_controller::perform_delete(editor_action* action)
 void editor_controller::perform_refresh_delete(editor_action* action, bool drag_part /* =false */)
 {
 	if (action) {
-		std::auto_ptr<editor_action> action_auto(action);
+		boost::scoped_ptr<editor_action> action_auto(action);
 		perform_refresh(*action, drag_part);
 	}
 }
@@ -1377,7 +1376,7 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool u
 		//anything to the undo stack (hence a different
 		//perform_ call)
 		if (a != NULL) {
-			std::auto_ptr<editor_action> aa(a);
+			boost::scoped_ptr<editor_action> aa(a);
 			if (partial) {
 				get_map_context().perform_partial_action(*a);
 			} else {

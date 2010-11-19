@@ -245,17 +245,6 @@ class CampaignClient:
 
         return self.decode(self.read_packet())
 
-    def validate_campaign(self, name, passphrase):
-        """
-        Validates python scripts in the named campaign.
-        """
-        request = wmldata.DataSub("validate_scripts")
-        request.set_text_val("name", name)
-        request.set_text_val("master_password", passphrase)
-        self.send_packet(self.make_packet(request))
-
-        return self.decode(self.read_packet())
-
     def delete_campaign(self, name, passphrase):
         """
         Deletes the named campaign on the server.

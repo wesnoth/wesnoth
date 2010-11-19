@@ -316,7 +316,7 @@ void wait::join_game(bool observe)
 			change["faction"] = faction_choice;
 			change["leader"] = leader_choice;
 			change["gender"] = gender_choice;
-			network::send_data(faction, 0, true);
+			network::send_data(faction, 0);
 		}
 
 	}
@@ -345,7 +345,7 @@ void wait::start_game()
 	 * and new way. (Of course it would be nice to unify the data
 	 * stored.)
 	 */
-	if(level_.child("player") == 0) {
+	if (!level_.child("player")) {
 		level_to_gamestate(level_, state_);
 	} else {
 
@@ -536,7 +536,7 @@ void wait::generate_menu()
 
 	// Uses the actual connected player list if we do not have any
 	// "gamelist" user data
-	if (gamelist().child("user") == NULL) {
+	if (!gamelist().child("user")) {
 		set_user_list(playerlist, true);
 	}
 }

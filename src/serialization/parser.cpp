@@ -394,8 +394,6 @@ struct write_key_val_visitor : boost::static_visitor<void>
 	{ out_ << "\"\""; }
 	void operator()(bool b) const
 	{ out_ << (b ? "yes" : "no"); }
-	void operator()(int i) const
-	{ out_ << i; }
 	void operator()(double d) const
 	{ out_ << d; }
 	void operator()(std::string const &s) const

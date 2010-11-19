@@ -36,7 +36,6 @@ namespace editor {
 	void set_use_mdi(bool value);
 
 	std::string default_dir();
-	void set_default_dir(const std::string& dir);
 
 	bool draw_terrain_codes();
 	void set_draw_terrain_codes(bool value);

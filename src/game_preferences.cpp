@@ -208,14 +208,6 @@ void remove_ignore(const std::string& nick) {
 	}
 }
 
-void clear_friends() {
-	preferences::set("friends", "");
-}
-
-void clear_ignores() {
-	preferences::set("ignores", "");
-}
-
 bool is_friend(const std::string& nick) {
 	initialize_friends();
 	return friends.find(nick) != friends.end();
@@ -325,12 +317,6 @@ void set_network_host(const std::string& host)
 unsigned int get_ping_timeout()
 {
 	return lexical_cast_default<unsigned>(preferences::get("ping_timeout"), 0);
-}
-
-void set_ping_timeout(unsigned int timeout)
-{
-	network::ping_timeout = timeout;
-	preferences::set("ping_timeout", int(timeout));
 }
 
 std::string campaign_server()
@@ -495,7 +481,7 @@ void set_fog(bool value)
 
 bool shroud()
 {
-	return preferences::get("mp_shroud", true);
+	return preferences::get("mp_shroud", false);
 }
 
 void set_shroud(bool value)

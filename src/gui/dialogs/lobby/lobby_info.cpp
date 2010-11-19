@@ -123,7 +123,7 @@ bool lobby_info::process_gamelist_diff(const config &data)
 	} catch(config::error& e) {
 		ERR_LB << "Error while applying the gamelist diff: '"
 			<< e.message << "' Getting a new gamelist.\n";
-		network::send_data(config("refresh_lobby"), 0, true);
+		network::send_data(config("refresh_lobby"), 0);
 		return false;
 	}
 	DBG_LB << "postdiff " << dump_games_config(gamelist_.child("gamelist"));
@@ -135,7 +135,7 @@ bool lobby_info::process_gamelist_diff(const config &data)
 		int game_id = c["id"];
 		if (game_id == 0) {
 			ERR_LB << "game with id 0 in gamelist config\n";
-			network::send_data(config("refresh_lobby"), 0, true);
+			network::send_data(config("refresh_lobby"), 0);
 			return false;
 		}
 		game_info_map::iterator current_i = games_by_id_.find(game_id);
@@ -168,7 +168,7 @@ bool lobby_info::process_gamelist_diff(const config &data)
 	} catch(config::error& e) {
 		ERR_LB << "Error while applying the gamelist diff (2): '"
 			<< e.message << "' Getting a new gamelist.\n";
-		network::send_data(config("refresh_lobby"), 0, true);
+		network::send_data(config("refresh_lobby"), 0);
 		return false;
 	}
 	DBG_LB << "postclean " << dump_games_config(gamelist_.child("gamelist"));

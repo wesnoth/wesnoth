@@ -77,28 +77,12 @@ room_manager::PRIVILEGE_POLICY room_manager::pp_from_string(const std::string& s
 	return PP_COUNT;
 }
 
-const char* room_manager::string_from_pp(room_manager::PRIVILEGE_POLICY pp)
-{
-	switch (pp) {
-		case PP_EVERYONE: return "everyone";
-		case PP_REGISTERED: return "registered";
-		case PP_ADMINS: return "admins";
-		case PP_NOBODY: return "nobody";
-		default: return "error";
-	}
-}
-
 void room_manager::load_config(const config& cfg)
 {
 	filename_ = cfg["room_save_file"].str();
 	compress_stored_rooms_ = cfg["compress_stored_rooms"].to_bool(true);
 	PRIVILEGE_POLICY pp = pp_from_string(cfg["new_room_policy"]);
 	if (pp != PP_COUNT) new_room_policy_ = pp;
-}
-
-const std::string& room_manager::storage_filename() const
-{
-	return filename_;
 }
 
 void room_manager::read_rooms()
@@ -110,7 +94,7 @@ void room_manager::read_rooms()
 		if (compress_stored_rooms_) {
 			read_gz(cfg, *file);
 		} else {
-			detect_format_and_read(cfg, *file);
+			read(cfg, *file);
 		}
 
 		foreach (const config &c, cfg.child_range("room")) {
@@ -217,27 +201,6 @@ room* room_manager::get_create_room(const std::string &name, network::connection
 		}
 	}
 	return r;
-}
-
-void room_manager::delete_room(const std::string &name)
-{
-	room* r = get_room(name);
-	if (r == NULL) {
-		DBG_LOBBY << "Requested deletion of nonexistant room '" << name << "'\n";
-		return;
-	}
-	simple_wml::document doc;
-	simple_wml::node& exit = doc.root().add_child("exit_room");
-	exit.set_attr_dup("room", name.c_str());
-	exit.set_attr("reason", "room deleted");
-	r->send_data(doc);
-	if (r->persistent()) {
-		dirty_ = true;
-	}
-	rooms_by_name_.erase(name);
-	foreach (network::connection p, r->members()) {
-		rooms_by_player_[p].erase(r);
-	}
 }
 
 void room_manager::enter_lobby(network::connection player)

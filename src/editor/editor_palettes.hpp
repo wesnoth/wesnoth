@@ -93,9 +93,6 @@ public:
 	void select_fg_terrain(t_translation::t_terrain);
 	void select_bg_terrain(t_translation::t_terrain);
 
-	/** Update the selected terrains strings */
-	void update_selected_terrains();
-
 	/**
 	 * Draw the palette.
 	 *

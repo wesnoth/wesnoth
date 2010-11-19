@@ -225,6 +225,10 @@ void playsingle_controller::whiteboard_execute_action(){
 	whiteboard_manager_->contextual_execute();
 }
 
+void playsingle_controller::whiteboard_execute_all_actions(){
+	whiteboard_manager_->execute_all_actions();
+}
+
 void playsingle_controller::whiteboard_delete_action(){
 	whiteboard_manager_->contextual_delete();
 }
@@ -421,7 +425,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				info["type"] = "termination";
 				info["condition"] = "game over";
 				info["result"] = gamestate_.classification().completion;
-				network::send_data(cfg, 0, true);
+				network::send_data(cfg, 0);
 			} else {
 				gui2::show_transient_message(gui_->video(),_("Game Over"),
 									_("The game is over."));
@@ -504,8 +508,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 
 		savegame::game_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
-		/** @todo FIXME: remove the odd linebreak after the string freeze */
-		save.save_game_interactive(gui_->video(), _("A network disconnection has occurred, and the game\ncannot continue. Do you want to save the game?"), gui::YES_NO);
+		save.save_game_interactive(gui_->video(), _("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), gui::YES_NO);
 		if(disconnect) {
 			throw network::error();
 		} else {
@@ -960,7 +963,7 @@ void playsingle_controller::store_gold(bool obs)
 	}
 
 	if (end_level.carryover_report) {
-		gui2::show_transient_message(gui_->video(), title, report.str(), true);
+		gui2::show_transient_message(gui_->video(), title, report.str(), "", true);
 	}
 }
 
@@ -1020,6 +1023,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 		case hotkey::HOTKEY_WB_TOGGLE:
 			return true;
 		case hotkey::HOTKEY_WB_EXECUTE_ACTION:
+		case hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS:
 		case hotkey::HOTKEY_WB_DELETE_ACTION:
 			return resources::whiteboard->can_execute_hotkey();
 		case hotkey::HOTKEY_WB_BUMP_UP_ACTION:

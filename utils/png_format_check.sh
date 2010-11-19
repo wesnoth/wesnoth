@@ -40,6 +40,10 @@ report_file()
 
 for i in $filelist; do
     result=`pngcheck $i`
+    if [ $? -ne 0 ]; then
+        echo "Failure executing pngcheck. Exiting."
+        exit 1
+    fi
     if echo $result|grep 'RGB+alpha'>/dev/null
     then
         rgba=$(($rgba+1))
@@ -65,7 +69,7 @@ for i in $filelist; do
         report_file $i 'palette'
     else
         other=$(($other+1))
-        report_file $i "`sed -e 's/^.*(//;s/).*$//;' <<< $result`"
+        report_file $i "`echo $result | sed -e 's/^.*(//;s/).*$//;'`"
     echo $result
     fi
 done

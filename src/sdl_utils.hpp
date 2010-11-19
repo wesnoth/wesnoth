@@ -27,7 +27,6 @@
 #include <iosfwd>
 #include <map>
 #include <string>
-#include <vector>
 
 //older versions of SDL don't define the
 //mouse wheel macros, so define them ourselves
@@ -248,19 +247,6 @@ surface stretch_surface_vertical(
  *                           note this ignores the optimize flag.
  */
 surface scale_surface(const surface &surf, int w, int h, bool optimize=true);
-
-/** Scale an opaque surface
- *  @param surf              The source surface.
- *  @param w                 The width of the resulting surface.
- *  @param h                 The height of the resulting surface.
- *  @param optimize_format   Optimize by converting to result to display format.
- *  @return                  A surface containing the scaled version of the source.
- *                           No RLE or Alpha bits are set.
- *  @retval 0                Returned upon error.
- *  @retval surf             Returned if w == surf->w and h == surf->h
- *                           note this ignores the optimize_format flag.
- */
-surface scale_opaque_surface(const surface &surf, int w, int h, bool optimize_format=false);
 
 surface scale_surface_blended(const surface &surf, int w, int h, bool optimize=true);
 surface adjust_surface_color(const surface &surf, int r, int g, int b, bool optimize=true);

@@ -17,6 +17,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.wesnoth.Messages;
 import org.wesnoth.wizards.NewWizardPageTemplate;
 
 
@@ -35,9 +36,9 @@ public class CampaignPage1 extends NewWizardPageTemplate
 	private Button chkDataCampaignProject_;
 
 	public CampaignPage1() {
-		super("campaignPage1");
-		setTitle("Create New Campaign");
-		setDescription("Creates a new campaign and the files structure.");
+		super("campaignPage1"); //$NON-NLS-1$
+		setTitle(Messages.CampaignPage1_1);
+		setDescription(Messages.CampaignPage1_2);
 		setPageComplete(false);
 	}
 
@@ -58,7 +59,7 @@ public class CampaignPage1 extends NewWizardPageTemplate
 		container.setLayout(new GridLayout(3, false));
 
 		Label _lblCampaignName = new Label(container, SWT.NONE);
-		_lblCampaignName.setText("Campaign name* :");
+		_lblCampaignName.setText(Messages.CampaignPage1_3);
 
 		txtCampaignName_ = new Text(container, SWT.BORDER);
 		GridData gd_txtCampaignName_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
@@ -68,7 +69,7 @@ public class CampaignPage1 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 
 		Label lblVersion = new Label(container, SWT.NONE);
-		lblVersion.setText("Version* :");
+		lblVersion.setText(Messages.CampaignPage1_4);
 
 		txtVersion_ = new Text(container, SWT.BORDER);
 		txtVersion_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
@@ -76,63 +77,63 @@ public class CampaignPage1 extends NewWizardPageTemplate
 
 		Label lblFormat = new Label(container, SWT.NONE);
 		lblFormat
-				.setToolTipText("Displayed to the right of the title, it is just text. However,\r\nstarting with Wesnoth 1.6, the required format is x.y.z \r\nwhere x, y and z are numbers and a value for x greater than 0 \r\nimplies the campaign is complete and balanced. \r\nTrailing non-numeric elements are ok, but nothing should\r\nappear before the numbers. This is necessary for the Update \r\nadd-ons button to work correctly.");
-		lblFormat.setText("Format: x.y.z");
+				.setToolTipText(Messages.CampaignPage1_5);
+		lblFormat.setText(Messages.CampaignPage1_6);
 
 		Label lblTranslationsDir = new Label(container, SWT.NONE);
-		lblTranslationsDir.setText("Translations folder:");
+		lblTranslationsDir.setText(Messages.CampaignPage1_7);
 
 		txtTranslationDir_ = new Text(container, SWT.BORDER);
 		txtTranslationDir_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Label lblRelativeToThe = new Label(container, SWT.NONE);
-		lblRelativeToThe.setText("Relative to the data folder");
+		lblRelativeToThe.setText(Messages.CampaignPage1_8);
 
 		chkDataCampaignProject_ = new Button(container, SWT.CHECK);
 		chkDataCampaignProject_.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
-		chkDataCampaignProject_.setText("This is a 'data/campaigns/' project");
+		chkDataCampaignProject_.setText(Messages.CampaignPage1_9);
 
 		chkMultiCampaign_ = new Button(container, SWT.CHECK);
 		GridData gd_chkMultiCampaign_ = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
 		gd_chkMultiCampaign_.widthHint = 236;
 		chkMultiCampaign_.setLayoutData(gd_chkMultiCampaign_);
-		chkMultiCampaign_.setText("This is a multiplayer campaign");
+		chkMultiCampaign_.setText(Messages.CampaignPage1_10);
 		new Label(container, SWT.NONE);
 
 		chkGeneratePBL_ = new Button(container, SWT.CHECK);
 		chkGeneratePBL_.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
-		chkGeneratePBL_.setText("Generate '_server.pbl' with the following information:");
+		chkGeneratePBL_.setText(Messages.CampaignPage1_11);
 
 		Label lblAuthor = new Label(container, SWT.NONE);
-		lblAuthor.setText("Author:");
+		lblAuthor.setText(Messages.CampaignPage1_12);
 
 		txtAuthor_ = new Text(container, SWT.BORDER);
 		txtAuthor_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		new Label(container, SWT.NONE);
 
 		Label lblDescription = new Label(container, SWT.NONE);
-		lblDescription.setText("Email:");
+		lblDescription.setText(Messages.CampaignPage1_13);
 
 		txtEmail_ = new Text(container, SWT.BORDER);
 		txtEmail_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		new Label(container, SWT.NONE);
 
 		Label lblDescription_1 = new Label(container, SWT.NONE);
-		lblDescription_1.setText("Description:");
+		lblDescription_1.setText(Messages.CampaignPage1_14);
 
 		txtDescription_ = new Text(container, SWT.BORDER);
 		txtDescription_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		new Label(container, SWT.NONE);
 
 		Label lblIcon = new Label(container, SWT.NONE);
-		lblIcon.setText("Passphrase:");
+		lblIcon.setText(Messages.CampaignPage1_15);
 
 		txtPassphrase_ = new Text(container, SWT.BORDER);
 		txtPassphrase_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		new Label(container, SWT.NONE);
 
 		Label lblIcon_1 = new Label(container, SWT.NONE);
-		lblIcon_1.setText("Icon:");
+		lblIcon_1.setText(Messages.CampaignPage1_16);
 
 		txtIcon_ = new Text(container, SWT.BORDER);
 		GridData gd_txtIcon_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
@@ -144,8 +145,8 @@ public class CampaignPage1 extends NewWizardPageTemplate
 		gd_lblRelativeToThe_1.widthHint = 285;
 		lblRelativeToThe_1.setLayoutData(gd_lblRelativeToThe_1);
 		lblRelativeToThe_1
-				.setToolTipText("An image, displayed leftmost on the \"download campaigns\" screen.\r\nIt must be a standard Wesnoth graphic and not a custom one. \r\n(Well, a custom graphic will work if the user already has the campaign \r\ninstalled, or if it is a custom graphic from a different campaign that the \r\nuser has installed but others won't see it!) (Note that the icon used to \r\ndisplay your campaign for when it is played can be custom; for more\r\ninformation see CampaignWML.) If the icon is a unit with magenta color,\r\nplease use ImagePathFunctionWML to team-color it. ");
-		lblRelativeToThe_1.setText("Relative to the data/core/images folder");
+				.setToolTipText(Messages.CampaignPage1_17);
+		lblRelativeToThe_1.setText(Messages.CampaignPage1_18);
 
 		updateIsPageComplete();
 	}
@@ -158,14 +159,14 @@ public class CampaignPage1 extends NewWizardPageTemplate
 		setPageComplete(false);
 		if (txtCampaignName_.getText().isEmpty())
 		{
-			setErrorMessage("Campaign name is mandatory");
+			setErrorMessage(Messages.CampaignPage1_19);
 			return;
 		}
 
 		// match the pattern x.y.z
-		if (txtVersion_.getText().isEmpty() || !(txtVersion_.getText().matches("[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*")))
+		if (txtVersion_.getText().isEmpty() || !(txtVersion_.getText().matches("[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*"))) //$NON-NLS-1$
 		{
-			setErrorMessage("The version must have the format: x.y.z");
+			setErrorMessage(Messages.CampaignPage1_21);
 			return;
 		}
 

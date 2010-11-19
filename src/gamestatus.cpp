@@ -715,7 +715,6 @@ protected:
 				}
 			} else {
 				//at the start of scenario, get the persistence information from starting_pos
-				assert(starting_pos_ != NULL);
 				if (const config &c =  starting_pos_.find_child("player","save_id",save_id_))  {
 					player_cfg_ = &c;
 				} else if (const config &c =  starting_pos_.find_child("side","save_id",save_id_))  {
@@ -801,11 +800,8 @@ protected:
 		log_step("objectives");
 		// If this team has no objectives, set its objectives
 		// to the level-global "objectives"
-		if(t_->objectives().empty()){
-			const config& child = level_.find_child_recursive("objectives", "side", side_cfg_["side"]);
-			bool silent = child ? child["silent"].to_bool() : false;
-			t_->set_objectives(level_["objectives"], silent);
-		}
+		if (t_->objectives().empty())
+			t_->set_objectives(level_["objectives"], false);
 	}
 
 

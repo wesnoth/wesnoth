@@ -25,6 +25,7 @@
 #include "game_preferences.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/widgets/window.hpp"
 #include "playcampaign.hpp"
 #include "map_create.hpp"
 #include "persist_manager.hpp"
@@ -216,7 +217,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	// Do we have any snapshot data?
 	// yes => this must be a savegame
 	// no  => we are starting a fresh scenario
-	if(gamestate.snapshot.child("side") == NULL || !recorder.at_end()) {
+	if (!gamestate.snapshot.child("side") || !recorder.at_end())
+	{
 		gamestate.classification().completion = "running";
 		// Campaign or Multiplayer?
 		// If the gamestate already contains a starting_pos,
@@ -415,10 +417,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				return res;
 			}
 
-			const int dlg_res = gui::dialog(disp,"Game Over",
+			const int dlg_res = gui2::show_message(disp.video(), _("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
-				gui::YES_NO).show();
-			if (dlg_res != 0) {
+				gui2::tmessage::yes_no_buttons);
+
+			if(dlg_res == gui2::twindow::CANCEL) {
 				gamestate.snapshot = config();
 				return res;
 			}
@@ -440,7 +443,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			}
 
 			// Ask for the next scenario data.
-			network::send_data(config("load_next_scenario"), 0, true);
+			network::send_data(config("load_next_scenario"), 0);
 			config cfg;
 			std::string msg = _("Downloading next scenario...");
 			do {
@@ -549,7 +552,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				foreach (config& side, gamestate.starting_pos.child_range("side"))
 					next_cfg.add_child("side", side);
 
-				network::send_data(cfg, 0, true);
+				network::send_data(cfg, 0);
 			}
 		}
 

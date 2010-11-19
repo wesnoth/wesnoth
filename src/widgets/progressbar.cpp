@@ -88,7 +88,7 @@ void progress_bar::draw_contents()
 			text_area.y
 		);
 
-		// Draw a white text section for the hilighted area
+		// Draw a white text section for the highlighted area
 		// of the bar
 		SDL_Rect selected_text_location = location();
 		selected_text_location.w = inner_area.w;

@@ -96,15 +96,6 @@ void arrow::set_style(const std::string& style)
 	}
 }
 
-void arrow::set_layer(display::tdrawing_layer const& layer)
-{
-	layer_ = layer;
-	if (valid_path(path_))
-	{
-		invalidate_arrow_path(path_);
-	}
-}
-
 arrow_path_t const& arrow::get_path() const
 {
 	return path_;

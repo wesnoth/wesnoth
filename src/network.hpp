@@ -217,7 +217,7 @@ typedef boost::shared_ptr<bandwidth_in> bandwidth_in_ptr;
  *
  * @throw error                   If an error occurred.
  */
-connection receive_data(config& cfg, connection connection_num=0, bool* gzipped = 0, bandwidth_in_ptr* b = 0);
+connection receive_data(config& cfg, connection connection_num=0, bandwidth_in_ptr* b = 0);
 connection receive_data(config& cfg, connection connection_num, unsigned int timeout, bandwidth_in_ptr* b = 0);
 connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* = 0);
 
@@ -229,8 +229,8 @@ void send_file(const std::string&, connection, const std::string& packet_type = 
  *
  * @throw error
  */
-size_t send_data(const config& cfg, connection connection_num /*= 0*/,
-		const bool gzipped, const std::string& packet_type = "unknown");
+size_t send_data(const config& cfg, connection connection_num = 0,
+		const std::string& packet_type = "unknown");
 
 void send_raw_data(const char* buf, int len, connection connection_num,
 		const std::string& packet_type = "unknown");
@@ -244,7 +244,7 @@ void process_send_queue(connection connection_num=0, size_t max_size=0);
 
 /** Function to send data to all peers except 'connection_num'. */
 void send_data_all_except(const config& cfg, connection connection_num,
-		const bool gzipped, const std::string& packet_type = "unknown");
+		const std::string& packet_type = "unknown");
 
 /** Function to get the remote ip address of a socket. */
 std::string ip_address(connection connection_num);

@@ -20,6 +20,7 @@
 #include "persist_context.hpp"
 #include "persist_manager.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/parser.hpp"
 #include "util.hpp"
 
 config pack_scalar(const std::string &name, const t_string &val)
@@ -27,11 +28,6 @@ config pack_scalar(const std::string &name, const t_string &val)
 	config cfg;
 	cfg[name] = val;
 	return cfg;
-}
-persist_context &persist_context::add_child(const std::string& /*key*/)  {
-//	children_[key] = new persist_context(namespace_.namespace_ + "." + key,this);
-//	children_[key]->cfg_.child_or_add(key);
-	return *this;//(children_[key]);
 }
 
 static std::string get_persist_cfg_name(const std::string &name_space) {
@@ -47,7 +43,7 @@ void persist_file_context::load() {
 		scoped_istream file_stream = istream_file(cfg_name);
 		if (!(file_stream->fail())) {
 			try {
-				detect_format_and_read(cfg_,*file_stream);
+				read(cfg_,*file_stream);
 			} catch (config::error &err) {
 				LOG_PERSIST << err.message;
 			}
@@ -78,7 +74,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 		root_node_.init();
 	}
 	config &cfg = active_->cfg_.child_or_add("variables");
-	bool ret = cfg;
+	bool ret(cfg);
 	if (ret) {
 		bool exists = cfg.has_attribute(global);
 		if (!exists) {

@@ -52,20 +52,6 @@ static lg::log_domain log_server("server");
 
 	banned_compare_subnet::compare_fn banned_compare_subnet::active_ = &banned_compare_subnet::less;
 
-	void banned_compare_subnet::set_use_subnet_mask(bool use)
-	{
-		if (use)
-		{
-			assert(active_ == &banned_compare_subnet::less);
-			active_ = &banned_compare_subnet::less_with_subnet;
-		}
-		else
-		{
-			assert(active_ != &banned_compare_subnet::less);
-			active_ = &banned_compare_subnet::less;
-		}
-	}
-
 	bool banned_compare_subnet::operator()(const banned_ptr& a, const banned_ptr& b) const
 	{
 		return (this->*(active_))(a,b);
@@ -74,11 +60,6 @@ static lg::log_domain log_server("server");
 	bool banned_compare_subnet::less(const banned_ptr& a, const banned_ptr& b) const
 	{
 		return a->get_int_ip() < b->get_int_ip();
-	}
-
-	bool banned_compare_subnet::less_with_subnet(const banned_ptr& a, const banned_ptr& b) const
-	{
-		return a->get_mask_ip(b->mask()) < b->get_mask_ip(a->mask());
 	}
 
 	const std::string banned::who_banned_default_ = "system";

@@ -11,22 +11,23 @@ package org.wesnoth.wizards.emptyproject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.wesnoth.Activator;
+import org.wesnoth.Messages;
 
 
 public class EmptyProjectPage0 extends WizardNewProjectCreationPage
 {
 	public EmptyProjectPage0() {
-		super("emptyProjectPage0");
+		super("emptyProjectPage0"); //$NON-NLS-1$
 	}
 
 	@Override
 	public void createControl(Composite parent)
 	{
 		super.createControl(parent);
-		setTitle("Empty project wizard");
-		setMessage("Specify the name of the new project.");
+		setTitle(Messages.EmptyProjectPage0_1);
+		setMessage(Messages.EmptyProjectPage0_2);
 
 		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(getShell(),
-				"Wesnoth_Eclipse_Plugin.wizardHelp");
+				"Wesnoth_Eclipse_Plugin.wizardHelp"); //$NON-NLS-1$
 	}
 }

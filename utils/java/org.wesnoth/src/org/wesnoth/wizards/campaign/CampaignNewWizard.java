@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.Pair;
@@ -49,7 +50,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 	}
 
 	public CampaignNewWizard() {
-		setWindowTitle("Create a new Campaign");
+		setWindowTitle(Messages.CampaignNewWizard_0);
 		setNeedsProgressMonitor(true);
 	}
 
@@ -77,7 +78,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 
 	public void createProject(IProgressMonitor monitor)
 	{
-		monitor.beginTask("Creating the project structure...", 15);
+		monitor.beginTask(Messages.CampaignNewWizard_1, 15);
 
 		try
 		{
@@ -99,7 +100,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 			}
 			monitor.worked(2);
 
-			String campaignStructure = prepareTemplate("campaign_structure");
+			String campaignStructure = prepareTemplate("campaign_structure"); //$NON-NLS-1$
 			if (campaignStructure == null)
 				return;
 
@@ -111,10 +112,10 @@ public class CampaignNewWizard extends NewWizardTemplate
 
 			for (Pair<String, String> file : files)
 			{
-				if (file.Second.equals("pbl") &&
+				if (file.Second.equals("pbl") && //$NON-NLS-1$
 					page1_.getGeneratePBLFile() == false)
 					continue;
-				if (file.Second.equals("build_xml") &&
+				if (file.Second.equals("build_xml") && //$NON-NLS-1$
 					page1_.isDataCampaignsProject())
 					continue;
 
@@ -128,7 +129,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 			}
 
 			// store some campaign-related info
-			ProjectUtils.getPropertiesForProject(currentProject).put("difficulties", page2_.getDifficulties());
+			ProjectUtils.getPropertiesForProject(currentProject).put("difficulties", page2_.getDifficulties()); //$NON-NLS-1$
 			ProjectUtils.saveCacheForProject(currentProject);
 		} catch (CoreException e)
 		{
@@ -142,24 +143,24 @@ public class CampaignNewWizard extends NewWizardTemplate
 	{
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
-		params.add(new ReplaceableParameter("$$campaign_name", page1_.getCampaignName()));
-		params.add(new ReplaceableParameter("$$author", page1_.getAuthor()));
-		params.add(new ReplaceableParameter("$$version", page1_.getVersion()));
-		params.add(new ReplaceableParameter("$$description", page1_.getCampaignDescription()));
-		params.add(new ReplaceableParameter("$$icon", page1_.getIconPath()));
-		params.add(new ReplaceableParameter("$$email", page1_.getEmail()));
-		params.add(new ReplaceableParameter("$$passphrase", page1_.getPassphrase()));
-		params.add(new ReplaceableParameter("$$translations_dir", page1_.getTranslationDir()));
+		params.add(new ReplaceableParameter("$$campaign_name", page1_.getCampaignName())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$author", page1_.getAuthor())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$version", page1_.getVersion())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$description", page1_.getCampaignDescription())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$icon", page1_.getIconPath())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$email", page1_.getEmail())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$passphrase", page1_.getPassphrase())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$translations_dir", page1_.getTranslationDir())); //$NON-NLS-1$
 
-		params.add(new ReplaceableParameter("$$campaign_id", page2_.getCampaignId()));
-		params.add(new ReplaceableParameter("$$abrev", page2_.getAbbrev()));
-		params.add(new ReplaceableParameter("$$define", page2_.getDefine()));
-		params.add(new ReplaceableParameter("$$difficulties", page2_.getDifficulties()));
-		params.add(new ReplaceableParameter("$$first_scenario", page2_.getFirstScenario()));
+		params.add(new ReplaceableParameter("$$campaign_id", page2_.getCampaignId())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$abrev", page2_.getAbbrev())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$define", page2_.getDefine())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$difficulties", page2_.getDifficulties())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$first_scenario", page2_.getFirstScenario())); //$NON-NLS-1$
 
-		params.add(new ReplaceableParameter("$$project_name", page0_.getProjectName()));
-		params.add(new ReplaceableParameter("$$project_dir_name", page0_.getProjectName()));
-		params.add(new ReplaceableParameter("$$type", page1_.isMultiplayer() ? "campaign_mp" : "campaign"));
+		params.add(new ReplaceableParameter("$$project_name", page0_.getProjectName())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$project_dir_name", page0_.getProjectName())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$type", page1_.isMultiplayer() ? "campaign_mp" : "campaign")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
 		return TemplateProvider.getInstance().getProcessedTemplate(templateName, params);
 	}

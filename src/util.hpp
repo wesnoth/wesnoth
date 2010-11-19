@@ -153,6 +153,38 @@ inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower
 #define UNLIKELY(a)  a
 #endif
 
+namespace util {
+
+template<class T>
+class unique_ptr
+{
+	T *ptr_;
+	// Neither copyable nor assignable.
+	unique_ptr(const unique_ptr &);
+	unique_ptr &operator=(const unique_ptr &);
+public:
+	unique_ptr(T *p = NULL): ptr_(p) {}
+	~unique_ptr() { delete ptr_; }
+
+	void reset(T *p = NULL)
+	{
+		delete ptr_;
+		ptr_ = p;
+	}
+
+	T *release()
+	{
+		T *p = ptr_;
+		ptr_ = NULL;
+		return p;
+	}
+
+	T *get() { return ptr_; }
+	T *operator->() const { return ptr_; }
+	T &operator*() const { return *ptr_; }
+};
+
+}
 
 #if 1
 # include <SDL_types.h>

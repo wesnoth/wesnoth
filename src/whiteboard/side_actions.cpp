@@ -139,7 +139,7 @@ void side_actions::draw_hex(const map_location& hex)
 	}
 }
 
-side_actions::iterator side_actions::execute_next()
+bool side_actions::execute_next()
 {
 	if (!actions_.empty())
 	{
@@ -147,51 +147,75 @@ side_actions::iterator side_actions::execute_next()
 	}
 	else
 	{
-		return end();
+		return false;
 	}
 }
 
-side_actions::iterator side_actions::execute(side_actions::iterator position)
+void side_actions::execute_all()
+{
+	if (actions_.empty())
+	{
+		WRN_WB << "\"Execute All\" attempt with empty queue.\n";
+		return;
+	}
+
+	if (resources::whiteboard->has_planned_unit_map())
+	{
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+	}
+
+	LOG_WB << "Before executing all actions, " << *this << "\n";
+
+	bool keep_executing = true;
+	while (keep_executing)
+	{
+		iterator position = begin();
+
+		bool is_attack = boost::dynamic_pointer_cast<attack>(*position);
+		bool finished = execute(position);
+
+		keep_executing = finished && !is_attack && !empty();
+	}
+}
+
+bool side_actions::execute(side_actions::iterator position)
 {
 	if (resources::whiteboard->has_planned_unit_map())
 	{
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
 
-	if (!actions_.empty() && validate_iterator(position))
-	{
-		LOG_WB << "Before execution, " << *this << "\n";
-		size_t distance = std::distance(begin(), position);
-		action_ptr action = *position;
-		bool finished;
-		try	{
-			 finished = action->execute();
-		} catch (end_turn_exception e) {
-			actions_.erase(position);
-			LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
-			validate_actions();
-			throw;
-		}
+	if (actions_.empty() || !validate_iterator(position))
+		return false;
 
-		if (finished)
-		{
-			actions_.erase(position);
-			LOG_WB << "After execution and deletion, " << *this << "\n";
-			validate_actions();
-			return begin() + distance;
-		}
-		else
-		{
-			actions_.erase(position);
-			actions_.insert(end(), action);
-			LOG_WB << "After execution *without* deletion, " << *this << "\n";
-			validate_actions();
-			return end() - 1;
-		}
+	LOG_WB << "Before execution, " << *this << "\n";
+	action_ptr action = *position;
+	bool finished;
+	try	{
+		 finished = action->execute();
+	} catch (end_turn_exception e) {
+		actions_.erase(position);
+		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
+		validate_actions();
+		throw;
+	}
+
+	if (finished)
+	{
+		actions_.erase(position);
+		LOG_WB << "After execution and deletion, " << *this << "\n";
+		validate_actions();
+		return true;
 	}
 	else
 	{
-		return end();
+		//Idea that needs refining: move action at the end of the queue if it failed executing:
+			//actions_.erase(position);
+			//actions_.insert(end(), action);
+
+		LOG_WB << "After execution *without* deletion, " << *this << "\n";
+		validate_actions();
+		return false;
 	}
 }
 
@@ -476,7 +500,10 @@ side_actions::iterator side_actions::find_first_action_of(unit const* unit, side
 
 side_actions::iterator side_actions::find_first_action_of(unit const* unit)
 {
-	return find_first_action_of(unit, begin());
+	if (empty())
+		return end();
+	else
+		return find_first_action_of(unit, begin());
 }
 
 side_actions::iterator side_actions::find_last_action_of(unit const* unit, side_actions::iterator start_position)
@@ -486,10 +513,10 @@ side_actions::iterator side_actions::find_last_action_of(unit const* unit, side_
 		reverse_iterator position(start_position);
 		for (--position ; position != rend(); ++position)
 		{
-			action_ptr action = *position;
-			if (action->get_unit() == unit)
+			if ((*position)->get_unit() == unit)
 			{
 				iterator found_position = position.base();
+				//need to decrement after changing from reverse to regular operator
 				return --found_position;
 			}
 		}
@@ -499,7 +526,10 @@ side_actions::iterator side_actions::find_last_action_of(unit const* unit, side_
 
 side_actions::iterator side_actions::find_last_action_of(unit const* unit)
 {
-	return find_last_action_of(unit, end() - 1);
+	if (empty())
+		return end();
+	else
+		return find_last_action_of(unit, end() - 1);
 }
 
 bool side_actions::unit_has_actions(unit const* unit)

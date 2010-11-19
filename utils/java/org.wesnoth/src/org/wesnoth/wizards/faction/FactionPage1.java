@@ -17,6 +17,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.wesnoth.Messages;
 import org.wesnoth.wizards.NewWizardPageTemplate;
 
 
@@ -30,9 +31,9 @@ public class FactionPage1 extends NewWizardPageTemplate
 	 * Create the wizard.
 	 */
 	public FactionPage1() {
-		super("factionPage1");
-		setTitle("New faction wizard");
-		setDescription("Faction details");
+		super("factionPage1"); //$NON-NLS-1$
+		setTitle(Messages.FactionPage1_1);
+		setDescription(Messages.FactionPage1_2);
 	}
 
 	/**
@@ -54,7 +55,7 @@ public class FactionPage1 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 
 		chkRandomFaction_ = new Button(container, SWT.CHECK);
-		chkRandomFaction_.setText("Random faction");
+		chkRandomFaction_.setText(Messages.FactionPage1_3);
 		chkRandomFaction_.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e)
@@ -69,7 +70,7 @@ public class FactionPage1 extends NewWizardPageTemplate
 		GridData gd_lblR = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_lblR.widthHint = 77;
 		lblR.setLayoutData(gd_lblR);
-		lblR.setText("Choices:");
+		lblR.setText(Messages.FactionPage1_4);
 
 		txtChoices_ = new Text(container, SWT.BORDER);
 		txtChoices_.setEnabled(false);
@@ -77,7 +78,7 @@ public class FactionPage1 extends NewWizardPageTemplate
 
 		Label lblExcept = new Label(container, SWT.NONE);
 		lblExcept.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblExcept.setText("Except");
+		lblExcept.setText(Messages.FactionPage1_5);
 
 		txtExcept_ = new Text(container, SWT.BORDER);
 		txtExcept_.setEnabled(false);
@@ -97,11 +98,11 @@ public class FactionPage1 extends NewWizardPageTemplate
 
 	public String getChoices()
 	{
-		return getIsRandomFaction() ? txtChoices_.getText() : "";
+		return getIsRandomFaction() ? txtChoices_.getText() : ""; //$NON-NLS-1$
 	}
 
 	public String getExcept()
 	{
-		return getIsRandomFaction() ? txtExcept_.getText() : "";
+		return getIsRandomFaction() ? txtExcept_.getText() : ""; //$NON-NLS-1$
 	}
 }

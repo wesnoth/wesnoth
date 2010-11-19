@@ -23,13 +23,9 @@
 #define GUI_AUXILIARY_CANVAS_HPP_INCLUDED
 
 #include "formula_callable.hpp"
-#include "reference_counted_object.hpp"
 #include "sdl_utils.hpp"
 
-#include <vector>
-
 class config;
-struct surface;
 class variant;
 
 namespace gui2 {
@@ -77,24 +73,6 @@ public:
 	typedef boost::intrusive_ptr<const tshape> const_tshape_ptr;
 
 	tcanvas();
-
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object with the data to draw, see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
-	 */
-	explicit tcanvas(const config& cfg);
-
-	/**
-	 * Draws the canvas.
-	 *
-	 * Sets the config of the canvas to the one send and does a forced redraw.
-	 *
-	 * @param cfg                 The config object with the data to draw, see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
-	 */
-	void draw(const config& cfg);
 
 	/**
 	 * Draws the canvas.

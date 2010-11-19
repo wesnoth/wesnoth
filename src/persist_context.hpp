@@ -119,7 +119,7 @@ protected:
 		}
 
 		~node() {
-			for (child_map::iterator i = children_.begin(); i != children_.end(); i++)
+			for (child_map::iterator i = children_.begin(); i != children_.end(); ++i)
 				delete (i->second);
 		}
 		config &cfg() { return cfg_; }
@@ -187,7 +187,6 @@ protected:
 		, in_transaction_(false)
 	{};
 
-	persist_context &add_child(const std::string &key);
 public:
 	virtual bool clear_var(const std::string &, bool immediate = false) = 0;
 	virtual config get_var(const std::string &) const = 0;

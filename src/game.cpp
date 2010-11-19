@@ -41,6 +41,7 @@
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon_connect.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/message.hpp"
@@ -73,7 +74,6 @@
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "thread.hpp"
-#include "titlescreen.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -1155,14 +1155,14 @@ bool game_controller::new_campaign()
 		state_.classification().scenario = campaign["first_scenario"].str();
 	else
 	{
-		config scenario;
+		bool found = false;
 		foreach(const config &sc, campaign.child_range("scenario"))
 		{
 			if (sc["id"] == jump_to_campaign_.scenario_id_)
-				scenario = sc;
+				found = true;
 		}
 
-		if (scenario == NULL)
+		if (!found)
 		{
 			std::cerr<<"No such scenario id to jump to: ["<<jump_to_campaign_.scenario_id_<<"]\n";
 			return false;
@@ -1185,10 +1185,10 @@ bool game_controller::new_campaign()
 				std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
 			}
 
-			gui::dialog dlg(disp(), _("Difficulty"),
-				_("Select difficulty level:"), gui::OK_CANCEL);
-			dlg.set_menu(difficulty_options);
-			if(dlg.show() == -1) {
+			gui2::tcampaign_difficulty dlg(difficulty_options);
+			dlg.show(disp().video());
+
+			if(dlg.selected_index() == -1) {
 				if (jump_to_campaign_.campaign_id_.empty() == false)
 				{
 					jump_to_campaign_.campaign_id_ = "";
@@ -1196,7 +1196,7 @@ bool game_controller::new_campaign()
 				// canceled difficulty dialog, relaunch the campaign selection dialog
 				return new_campaign();
 			}
-			difficulty = dlg.result();
+			difficulty = dlg.selected_index();
 		}
 		else
 		{
@@ -2342,78 +2342,80 @@ static int do_gameloop(int argc, char** argv)
 #endif
 		loadscreen_manager.reset();
 
-		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::NOTHING;
+		gui2::ttitle_screen::tresult res = game.is_loading()
+				? gui2::ttitle_screen::LOAD_GAME
+				: gui2::ttitle_screen::NOTHING;
 
 		const preferences::display_manager disp_manager(&game.disp());
 
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
-		if(res == gui::NOTHING) {
+		if(res == gui2::ttitle_screen::NOTHING) {
 			const hotkey::basic_handler key_handler(&game.disp());
 			gui2::ttitle_screen dlg;
 			dlg.show(game.disp().video());
 
-			res = static_cast<gui::TITLE_RESULT>(dlg.get_retval());
+			res = static_cast<gui2::ttitle_screen::tresult>(dlg.get_retval());
 		}
 
 		game_controller::RELOAD_GAME_DATA should_reload = game_controller::RELOAD_DATA;
 
-		if(res == gui::QUIT_GAME) {
+		if(res == gui2::ttitle_screen::QUIT_GAME) {
 			LOG_GENERAL << "quitting game...\n";
 			return 0;
-		} else if(res == gui::LOAD_GAME) {
+		} else if(res == gui2::ttitle_screen::LOAD_GAME) {
 			if(game.load_game() == false) {
 				game.clear_loaded_game();
-				res = gui::NOTHING;
+				res = gui2::ttitle_screen::NOTHING;
 				continue;
 			}
 
 			should_reload = game_controller::NO_RELOAD_DATA;
-		} else if(res == gui::TUTORIAL) {
+		} else if(res == gui2::ttitle_screen::TUTORIAL) {
 			game.set_tutorial();
-		} else if(res == gui::NEW_CAMPAIGN) {
+		} else if(res == gui2::ttitle_screen::NEW_CAMPAIGN) {
 			if(game.new_campaign() == false) {
 				continue;
 			}
-		} else if(res == gui::MULTIPLAYER) {
+		} else if(res == gui2::ttitle_screen::MULTIPLAYER) {
 			if (!game_config::mp_debug) {
 				game_config::debug = false;
 			}
 			if(game.play_multiplayer() == false) {
 				continue;
 			}
-		} else if(res == gui::CHANGE_LANGUAGE) {
+		} else if(res == gui2::ttitle_screen::CHANGE_LANGUAGE) {
 			if (game.change_language()) {
 				tips_of_day.clear();
 				t_string::reset_translations();
 				image::flush_cache();
 			}
 			continue;
-		} else if(res == gui::EDIT_PREFERENCES) {
+		} else if(res == gui2::ttitle_screen::EDIT_PREFERENCES) {
 			game.show_preferences();
 			continue;
-		} else if(res == gui::SHOW_ABOUT) {
+		} else if(res == gui2::ttitle_screen::SHOW_ABOUT) {
 			about::show_about(game.disp());
 			continue;
-		} else if(res == gui::SHOW_HELP) {
+		} else if(res == gui2::ttitle_screen::SHOW_HELP) {
 			help::help_manager help_manager(&game.game_config(), NULL);
 			help::show_help(game.disp());
 			continue;
-		} else if(res == gui::GET_ADDONS) {
+		} else if(res == gui2::ttitle_screen::GET_ADDONS) {
 			try {
 				manage_addons(game.disp());
 			} catch(config_changed_exception const&) {
 				game.reload_changed_game_config();
 			}
 			continue;
-		} else if(res == gui::RELOAD_GAME_DATA) {
+		} else if(res == gui2::ttitle_screen::RELOAD_GAME_DATA) {
 			loadscreen::global_loadscreen_manager loadscreen(game.disp().video());
 			game.reload_changed_game_config();
 			image::flush_cache();
 			continue;
 #ifndef DISABLE_EDITOR
-		} else if(res == gui::START_MAP_EDITOR) {
+		} else if(res == gui2::ttitle_screen::START_MAP_EDITOR) {
 			///@todo editor can ask the game to quit completely
 			if (game.start_editor() == editor::EXIT_QUIT_TO_DESKTOP) {
 				return 0;
@@ -2474,6 +2476,7 @@ int main(int argc, char** argv)
 		return 1;
 	} catch(gui::button::error&) {
 		std::cerr << "Could not create button: Image could not be found\n";
+		return 1;
 	} catch(CVideo::quit&) {
 		//just means the game should quit
 	} catch(end_level_exception&) {
@@ -2485,6 +2488,7 @@ int main(int argc, char** argv)
 	} catch(game_logic::formula_error& e) {
 		std::cerr << e.what()
 			<< "\n\nGame will be aborted.\n";
+		return 1;
 	} catch(game::error &) {
 		// A message has already been displayed.
 		return 1;

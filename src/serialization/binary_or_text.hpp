@@ -28,16 +28,6 @@
 
 class config;
 
-/**
- * Reads a file, and detects it is compressed before reading it.
- *
- * If it is not a valid file at all, it will throw an error as if it was trying
- * to read it as text WML.
- *
- * @returns                       True iff the format is compressed.
- */
-bool detect_format_and_read(config &cfg, std::istream &in); // Throws config::error
-
 /** Class for writing a config out to a file in pieces. */
 class config_writer
 {

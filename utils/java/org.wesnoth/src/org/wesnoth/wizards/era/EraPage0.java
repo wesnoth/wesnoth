@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.wesnoth.Messages;
 import org.wesnoth.wizards.NewWizardPageTemplate;
 
 
@@ -38,9 +39,9 @@ public class EraPage0 extends NewWizardPageTemplate
 	 * Create the wizard.
 	 */
 	public EraPage0() {
-		super("eraPage0");
-		setTitle("Era wizard");
-		setDescription("Create a new era");
+		super("eraPage0"); //$NON-NLS-1$
+		setTitle(Messages.EraPage0_1);
+		setDescription(Messages.EraPage0_2);
 	}
 
 	/**
@@ -69,7 +70,7 @@ public class EraPage0 extends NewWizardPageTemplate
 		GridData gd_lblProject = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_lblProject.widthHint = 99;
 		lblProject.setLayoutData(gd_lblProject);
-		lblProject.setText("Directory* :");
+		lblProject.setText(Messages.EraPage0_3);
 
 		txtDirectory_ = new Text(container, SWT.BORDER);
 		txtDirectory_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -77,7 +78,7 @@ public class EraPage0 extends NewWizardPageTemplate
 		txtDirectory_.setEditable(false);
 
 		Button btnBrowse = new Button(container, SWT.NONE);
-		btnBrowse.setText("Browse...");
+		btnBrowse.setText(Messages.EraPage0_4);
 		btnBrowse.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e)
@@ -89,7 +90,7 @@ public class EraPage0 extends NewWizardPageTemplate
 		});
 
 		Label lblFileName = new Label(container, SWT.NONE);
-		lblFileName.setText("File name* :");
+		lblFileName.setText(Messages.EraPage0_5);
 
 		txtFileName_ = new Text(container, SWT.BORDER);
 		txtFileName_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -97,7 +98,7 @@ public class EraPage0 extends NewWizardPageTemplate
 		txtFileName_.addModifyListener(modifyListener);
 
 		Label lblEraID = new Label(container, SWT.NONE);
-		lblEraID.setText("Era Id*:");
+		lblEraID.setText(Messages.EraPage0_6);
 
 		txtEraID_ = new Text(container, SWT.BORDER);
 		txtEraID_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -105,7 +106,7 @@ public class EraPage0 extends NewWizardPageTemplate
 		txtEraID_.addModifyListener(modifyListener);
 
 		Label lblEraName = new Label(container, SWT.NONE);
-		lblEraName.setText("Era name*:");
+		lblEraName.setText(Messages.EraPage0_7);
 
 		txtEraName_ = new Text(container, SWT.BORDER);
 		txtEraName_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -114,8 +115,8 @@ public class EraPage0 extends NewWizardPageTemplate
 
 		chkRequireEra_ = new Button(container, SWT.CHECK);
 		chkRequireEra_
-				.setToolTipText("whether clients are required to have this era installed beforehand to be allowed join a game using this era. Possible values 'yes' (the default) and 'no'. ");
-		chkRequireEra_.setText("Require era");
+				.setToolTipText(Messages.EraPage0_8);
+		chkRequireEra_.setText(Messages.EraPage0_9);
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
 
@@ -132,44 +133,44 @@ public class EraPage0 extends NewWizardPageTemplate
 
 		if (getDirectoryName().isEmpty())
 		{
-			setErrorMessage("You need to specify a valid directory path first.");
+			setErrorMessage(Messages.EraPage0_10);
 			return;
 		}
 
 		if (container == null || !container.exists() || !(container instanceof IContainer))
 		{
-			setErrorMessage("The directory must be created first and the selected folder to exist.");
+			setErrorMessage(Messages.EraPage0_11);
 			return;
 		}
 
 		if (fileName.isEmpty())
 		{
-			setErrorMessage("File name must be specified.");
+			setErrorMessage(Messages.EraPage0_12);
 			return;
 		}
 
 		if (fileName.replace('\\', '/').indexOf('/', 1) > 0)
 		{
-			setErrorMessage("File name must be valid.");
+			setErrorMessage(Messages.EraPage0_13);
 			return;
 		}
 
 		int dotLoc = fileName.lastIndexOf('.');
-		if (dotLoc == -1 || fileName.substring(dotLoc + 1).equalsIgnoreCase("cfg") == false)
+		if (dotLoc == -1 || fileName.substring(dotLoc + 1).equalsIgnoreCase("cfg") == false) //$NON-NLS-1$
 		{
-			setErrorMessage("File extension must be 'cfg'.");
+			setErrorMessage(Messages.EraPage0_15);
 			return;
 		}
 
 		if (getEraID().isEmpty())
 		{
-			setErrorMessage("The era ID cannot be empty.");
+			setErrorMessage(Messages.EraPage0_16);
 			return;
 		}
 
 		if (getEraName().isEmpty())
 		{
-			setErrorMessage("The era name cannot be empty.");
+			setErrorMessage(Messages.EraPage0_17);
 			return;
 		}
 

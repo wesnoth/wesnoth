@@ -519,7 +519,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 	config& info = cfg.add_child("info");
 	info["type"] = "termination";
 	info["condition"] = "out of sync";
-	network::send_data(cfg, 0, true);
+	network::send_data(cfg, 0);
 
 	std::stringstream temp_buf;
 	std::vector<std::string> err_lines = utils::split(err_msg,'\n');

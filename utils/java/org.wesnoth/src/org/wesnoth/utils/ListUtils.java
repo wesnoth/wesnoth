@@ -22,8 +22,8 @@ public class ListUtils
 	public static String concatenateList(List<String> list, String separator)
 	{
 		if (list == null || list.isEmpty())
-			return "";
-		String result = "";
+			return ""; //$NON-NLS-1$
+		String result = ""; //$NON-NLS-1$
 		for (int i = 0; i < list.size() - 1; i++)
 		{
 			result += (list.get(i) + separator);
@@ -42,9 +42,9 @@ public class ListUtils
 	public static String concatenateArray(String[] array, String separator)
 	{
 		if (array == null || array.length == 0)
-			return "";
+			return ""; //$NON-NLS-1$
 
-		String result = "";
+		String result = ""; //$NON-NLS-1$
 		for (int i = 0; i < array.length - 1; i++)
 		{
 			result += (array[i] + separator);

@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.wesnoth.Messages;
 import org.wesnoth.wizards.NewWizardPageTemplate;
 
 
@@ -42,9 +43,9 @@ public class FactionPage0 extends NewWizardPageTemplate
 	 * Create the wizard.
 	 */
 	public FactionPage0() {
-		super("factionPage0");
-		setTitle("Faction wizard");
-		setDescription("Create a new faction");
+		super("factionPage0"); //$NON-NLS-1$
+		setTitle(Messages.FactionPage0_1);
+		setDescription(Messages.FactionPage0_2);
 	}
 
 	/**
@@ -73,7 +74,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 		GridData gd_label = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_label.widthHint = 95;
 		label.setLayoutData(gd_label);
-		label.setText("Directory* :");
+		label.setText(Messages.FactionPage0_3);
 
 		txtDirectory_ = new Text(container, SWT.BORDER);
 		txtDirectory_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -81,7 +82,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 		txtDirectory_.setEditable(false);
 
 		Button button = new Button(container, SWT.NONE);
-		button.setText("Browse...");
+		button.setText(Messages.FactionPage0_4);
 		button.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e)
@@ -94,7 +95,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 
 		Label label_4 = new Label(container, SWT.NONE);
 		label_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		label_4.setText("File name* :");
+		label_4.setText(Messages.FactionPage0_5);
 
 		txtFileName_ = new Text(container, SWT.BORDER);
 		txtFileName_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
@@ -103,7 +104,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 
 		Label lblFactionId = new Label(container, SWT.NONE);
 		lblFactionId.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblFactionId.setText("Faction Id*:");
+		lblFactionId.setText(Messages.FactionPage0_6);
 
 		txtFactionId_ = new Text(container, SWT.BORDER);
 		txtFactionId_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -112,7 +113,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 
 		Label lblName = new Label(container, SWT.NONE);
 		lblName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblName.setText("Faction name*:");
+		lblName.setText(Messages.FactionPage0_7);
 
 		txtFactionName_ = new Text(container, SWT.BORDER);
 		txtFactionName_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -121,7 +122,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 
 		Label lblType = new Label(container, SWT.NONE);
 		lblType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblType.setText("Type:");
+		lblType.setText(Messages.FactionPage0_8);
 
 		txtType_ = new Text(container, SWT.BORDER);
 		txtType_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -129,7 +130,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 
 		Label lblLeader = new Label(container, SWT.NONE);
 		lblLeader.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblLeader.setText("Leader:");
+		lblLeader.setText(Messages.FactionPage0_9);
 
 		txtLeader_ = new Text(container, SWT.BORDER);
 		txtLeader_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -137,7 +138,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 
 		Label lblRandomLeaders = new Label(container, SWT.NONE);
 		lblRandomLeaders.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblRandomLeaders.setText("Random leader:");
+		lblRandomLeaders.setText(Messages.FactionPage0_10);
 
 		txtRandomLeader_ = new Text(container, SWT.BORDER);
 		txtRandomLeader_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -145,7 +146,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 
 		Label lblTerrainLiked = new Label(container, SWT.NONE);
 		lblTerrainLiked.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblTerrainLiked.setText("Terrain liked:");
+		lblTerrainLiked.setText(Messages.FactionPage0_11);
 
 		txtTerrainLiked_ = new Text(container, SWT.BORDER);
 		txtTerrainLiked_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -153,7 +154,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 
 		Label lblRecruit = new Label(container, SWT.NONE);
 		lblRecruit.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblRecruit.setText("Recruit:");
+		lblRecruit.setText(Messages.FactionPage0_12);
 
 		text = new Text(container, SWT.BORDER);
 		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -172,44 +173,44 @@ public class FactionPage0 extends NewWizardPageTemplate
 
 		if (getDirectoryName().isEmpty())
 		{
-			setErrorMessage("You need to specify a valid directory path first.");
+			setErrorMessage(Messages.FactionPage0_13);
 			return;
 		}
 
 		if (container == null || !container.exists() || !(container instanceof IContainer))
 		{
-			setErrorMessage("The directory must be created first and the selected folder to exist.");
+			setErrorMessage(Messages.FactionPage0_14);
 			return;
 		}
 
 		if (fileName.isEmpty())
 		{
-			setErrorMessage("File name must be specified.");
+			setErrorMessage(Messages.FactionPage0_15);
 			return;
 		}
 
 		if (fileName.replace('\\', '/').indexOf('/', 1) > 0)
 		{
-			setErrorMessage("File name must be valid.");
+			setErrorMessage(Messages.FactionPage0_16);
 			return;
 		}
 
 		int dotLoc = fileName.lastIndexOf('.');
-		if (dotLoc == -1 || fileName.substring(dotLoc + 1).equalsIgnoreCase("cfg") == false)
+		if (dotLoc == -1 || fileName.substring(dotLoc + 1).equalsIgnoreCase("cfg") == false) //$NON-NLS-1$
 		{
-			setErrorMessage("File extension must be 'cfg'.");
+			setErrorMessage(Messages.FactionPage0_18);
 			return;
 		}
 
 		if (getFactionId().isEmpty())
 		{
-			setErrorMessage("The faction ID cannot be empty.");
+			setErrorMessage(Messages.FactionPage0_19);
 			return;
 		}
 
 		if (getFactionName().isEmpty())
 		{
-			setErrorMessage("The faction name cannot be empty.");
+			setErrorMessage(Messages.FactionPage0_20);
 			return;
 		}
 

@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
+import org.wesnoth.Messages;
 
 /**
  * The "New" wizard page allows setting the container for the new file as well
@@ -39,9 +40,9 @@ public class NewConfigFilePage0 extends WizardPage {
 	 * @param pageName
 	 */
 	public NewConfigFilePage0(ISelection selection) {
-		super("wizardPage");
-		setTitle("Multi-page Editor File");
-		setDescription("This wizard creates a new file with *.cfg extension that can be opened by a multi-page editor.");
+		super("wizardPage"); //$NON-NLS-1$
+		setTitle(Messages.NewConfigFilePage0_1);
+		setDescription(Messages.NewConfigFilePage0_2);
 		this.selection = selection;
 	}
 
@@ -55,7 +56,7 @@ public class NewConfigFilePage0 extends WizardPage {
 		layout.numColumns = 3;
 		layout.verticalSpacing = 9;
 		Label label = new Label(container, SWT.NULL);
-		label.setText("&Container:");
+		label.setText(Messages.NewConfigFilePage0_3);
 
 		containerText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -67,14 +68,14 @@ public class NewConfigFilePage0 extends WizardPage {
 		});
 
 		Button button = new Button(container, SWT.PUSH);
-		button.setText("Browse...");
+		button.setText(Messages.NewConfigFilePage0_4);
 		button.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				handleBrowse();
 			}
 		});
 		label = new Label(container, SWT.NULL);
-		label.setText("&File name:");
+		label.setText(Messages.NewConfigFilePage0_5);
 
 		fileText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -109,7 +110,7 @@ public class NewConfigFilePage0 extends WizardPage {
 				containerText.setText(container.getFullPath().toString());
 			}
 		}
-		fileText.setText("new_file.cfg");
+		fileText.setText("new_file.cfg"); //$NON-NLS-1$
 	}
 
 	/**
@@ -120,7 +121,7 @@ public class NewConfigFilePage0 extends WizardPage {
 	private void handleBrowse() {
 		ContainerSelectionDialog dialog = new ContainerSelectionDialog(
 				getShell(), ResourcesPlugin.getWorkspace().getRoot(), false,
-				"Select new file container");
+				Messages.NewConfigFilePage0_7);
 		if (dialog.open() == ContainerSelectionDialog.OK) {
 			Object[] result = dialog.getResult();
 			if (result.length == 1) {
@@ -139,31 +140,31 @@ public class NewConfigFilePage0 extends WizardPage {
 		String fileName = getFileName();
 
 		if (getContainerName().length() == 0) {
-			updateStatus("File container must be specified");
+			updateStatus(Messages.NewConfigFilePage0_8);
 			return;
 		}
 		if (container == null
 				|| (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0) {
-			updateStatus("File container must exist");
+			updateStatus(Messages.NewConfigFilePage0_9);
 			return;
 		}
 		if (!container.isAccessible()) {
-			updateStatus("Project must be writable");
+			updateStatus(Messages.NewConfigFilePage0_10);
 			return;
 		}
 		if (fileName.length() == 0) {
-			updateStatus("File name must be specified");
+			updateStatus(Messages.NewConfigFilePage0_11);
 			return;
 		}
 		if (fileName.replace('\\', '/').indexOf('/', 1) > 0) {
-			updateStatus("File name must be valid");
+			updateStatus(Messages.NewConfigFilePage0_12);
 			return;
 		}
 		int dotLoc = fileName.lastIndexOf('.');
 		if (dotLoc != -1) {
 			String ext = fileName.substring(dotLoc + 1);
-			if (ext.equalsIgnoreCase("cfg") == false) {
-				updateStatus("File extension must be \"cfg\"");
+			if (ext.equalsIgnoreCase("cfg") == false) { //$NON-NLS-1$
+				updateStatus(Messages.NewConfigFilePage0_14);
 				return;
 			}
 		}

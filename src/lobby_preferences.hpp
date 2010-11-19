@@ -21,7 +21,6 @@
 namespace preferences {
 
 	bool lobby_sounds();
-	void set_lobby_sounds(bool v);
 
 	bool sort_list();
 	void _set_sort_list(bool show);
@@ -42,7 +41,6 @@ namespace preferences {
 	void set_playerlist_sort_name(bool v);
 
 	bool playerlist_group_players();
-	void set_playerlist_group_players(bool v);
 
 	bool filter_lobby();
 	void set_filter_lobby(bool value);

@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.wesnoth.Messages;
 import org.wesnoth.utils.EditorUtils;
 import org.wesnoth.wizards.NewWizardPageTemplate;
 
@@ -38,9 +39,9 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 	private Label					lblFileName;
 
 	public WizardLauncherPage0() {
-		super("wizardLauncherPage0");
-		setTitle("Wizard launcher");
-		setDescription("Select destination");
+		super("wizardLauncherPage0"); //$NON-NLS-1$
+		setTitle(Messages.WizardLauncherPage0_1);
+		setDescription(Messages.WizardLauncherPage0_2);
 	}
 
 	@Override
@@ -62,14 +63,14 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 		});
 		radioNewFile.setSelection(true);
 		radioNewFile.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
-		radioNewFile.setText("New file");
+		radioNewFile.setText(Messages.WizardLauncherPage0_3);
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
 
 		lblDirectory = new Label(container, SWT.NONE);
 		lblDirectory.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblDirectory.setText("Directory* :");
+		lblDirectory.setText(Messages.WizardLauncherPage0_4);
 
 		txtDirectory_ = new Text(container, SWT.BORDER);
 		txtDirectory_.addModifyListener(new ModifyListener() {
@@ -93,12 +94,12 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 			}
 		});
 
-		btnBrowse.setText("Browse...");
+		btnBrowse.setText(Messages.WizardLauncherPage0_5);
 		new Label(container, SWT.NONE);
 
 		lblFileName = new Label(container, SWT.NONE);
 		lblFileName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblFileName.setText("File name* :");
+		lblFileName.setText(Messages.WizardLauncherPage0_6);
 
 		txtFileName_ = new Text(container, SWT.BORDER);
 		txtFileName_.addModifyListener(new ModifyListener() {
@@ -124,7 +125,7 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 			}
 		});
 		radioCurrentFile.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
-		radioCurrentFile.setText("In current edited file");
+		radioCurrentFile.setText(Messages.WizardLauncherPage0_7);
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
@@ -132,7 +133,7 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 		lblCurrentFileOpened = new Label(container, SWT.NONE);
 		lblCurrentFileOpened.setEnabled(false);
 		lblCurrentFileOpened.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));
-		lblCurrentFileOpened.setText("Current file opened: ");
+		lblCurrentFileOpened.setText(Messages.WizardLauncherPage0_8);
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
@@ -152,7 +153,7 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 
 		Label label = new Label(container, SWT.NONE);
-		label.setText("            ");
+		label.setText("            "); //$NON-NLS-1$
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
@@ -172,32 +173,32 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 
 			if (getDirectoryName().isEmpty())
 			{
-				setErrorMessage("You need to specify a valid directory path first.");
+				setErrorMessage(Messages.WizardLauncherPage0_10);
 				return;
 			}
 
 			if (container == null || !container.exists() || !(container instanceof IContainer))
 			{
-				setErrorMessage("The directory must be created first and the selected folder to exist.");
+				setErrorMessage(Messages.WizardLauncherPage0_11);
 				return;
 			}
 
 			if (fileName.isEmpty())
 			{
-				setErrorMessage("File name must be specified.");
+				setErrorMessage(Messages.WizardLauncherPage0_12);
 				return;
 			}
 
 			if (fileName.replace('\\', '/').indexOf('/', 1) > 0)
 			{
-				setErrorMessage("File name must be valid.");
+				setErrorMessage(Messages.WizardLauncherPage0_13);
 				return;
 			}
 
 			int dotLoc = fileName.lastIndexOf('.');
-			if (dotLoc == -1 || fileName.substring(dotLoc + 1).equalsIgnoreCase("cfg") == false)
+			if (dotLoc == -1 || fileName.substring(dotLoc + 1).equalsIgnoreCase("cfg") == false) //$NON-NLS-1$
 			{
-				setErrorMessage("File extension must be 'cfg'.");
+				setErrorMessage(Messages.WizardLauncherPage0_15);
 				return;
 			}
 		}
@@ -206,12 +207,12 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 			// current file checking
 			if (EditorUtils.getEditedFile() != null)
 			{
-				lblCurrentFileOpened.setText("File " + EditorUtils.getEditedFile().getEditorInput().getName() + " opened.");
+				lblCurrentFileOpened.setText(Messages.WizardLauncherPage0_16 + EditorUtils.getEditedFile().getEditorInput().getName() + Messages.WizardLauncherPage0_17);
 			}
 			else
 			{
-				lblCurrentFileOpened.setText("No file opened.");
-				setErrorMessage("No file opened.");
+				lblCurrentFileOpened.setText(Messages.WizardLauncherPage0_18);
+				setErrorMessage(Messages.WizardLauncherPage0_19);
 				return;
 			}
 		}
@@ -243,7 +244,7 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 
 	public String getDirectoryName()
 	{
-		return radioNewFile.getSelection() == true ? txtDirectory_.getText() : "";
+		return radioNewFile.getSelection() == true ? txtDirectory_.getText() : ""; //$NON-NLS-1$
 	}
 
 	public boolean getIsTargetNewFile()

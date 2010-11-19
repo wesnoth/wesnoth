@@ -242,7 +242,6 @@ namespace network {
 
     connection receive_data(config&           cfg,
                             connection        connection_num,
-                            bool*             /*gzipped*/,
                             bandwidth_in_ptr* bandwidth_in) // TODO: use this pointer
     {
         // <- just call the previous version without timeouts
@@ -331,23 +330,17 @@ namespace network {
         throw std::runtime_error("TODO:Not implemented send_file");
     }
 
-    /**
-    * @todo Note the gzipped parameter should be removed later, we want to send
-    * all data gzipped. This can be done once the campaign server is also updated
-    * to work with gzipped data.
-    */
     size_t send_data(const config&                cfg,
                      connection                   connection_num,
-                     const bool                   gzipped,
                      const std::string&           /*packet_type*/)
     {
         if(cfg.empty())
             return 0;
 
         if( connection_num == 0 )
-            return ana_manager.send_all( cfg, gzipped );
+            return ana_manager.send_all( cfg );
         else
-            return ana_manager.send( connection_num, cfg, gzipped );
+            return ana_manager.send( connection_num, cfg );
     }
 
     void send_raw_data(const char*        buf,
@@ -363,10 +356,8 @@ namespace network {
         ana_manager.throw_if_pending_disconnection();
     }
 
-    /** @todo Note the gzipped parameter should be removed later. */
     void send_data_all_except(const config&       cfg,
                               connection          connection_num,
-                              const bool          /*gzipped*/,
                               const std::string&  /*packet_type*/)
     {
         ana_manager.send_all_except(cfg, connection_num);

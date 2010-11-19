@@ -25,9 +25,6 @@
 #include "map_location.hpp"
 #include "terrain_translation.hpp"
 
-#include <map>
-#include <set>
-
 class config;
 class gamemap;
 namespace image{ class locator; }
@@ -159,15 +156,16 @@ public:
 	 */
 	struct rule_image_variant {
 		/** Constructor for the normal defaut case */
-		rule_image_variant(const std::string &image_string, const std::string& variations) :
+		rule_image_variant(const std::string &image_string, const std::string& variations, bool random_start = true) :
 			image_string(image_string),
 			variations(variations),
 			images(),
-			tods()
+			tods(),
+			random_start(random_start)
 			{};
 
 		/** Constructor for true [variant] cases */
-		rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod);
+		rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, bool random_start = true);
 
 		/** A string representing either the filename for an image, or
 		 *  a list of images, with an optional timing for each image.
@@ -201,6 +199,9 @@ public:
 
 		/** The Time of Day associated to this variant (if any)*/
 		std::set<std::string> tods;
+
+		/** Indicate if the animation uses a random shift */
+		bool random_start;
 	};
 
 	/**

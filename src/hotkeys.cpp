@@ -24,6 +24,8 @@
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/message.hpp"
+#include "gui/widgets/window.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "preferences_display.hpp"
@@ -105,6 +107,7 @@ const struct {
 	// Whiteboard commands
 	{ hotkey::HOTKEY_WB_TOGGLE, "wbtoggle", N_("Toggle planning mode"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_EXECUTE_ACTION, "wbexecuteaction", N_("Execute planned action"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS, "wbexecuteallactions", N_("Execute all actions"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_DELETE_ACTION, "wbdeleteaction", N_("Delete planned action"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("Move action up queue"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("Move action down queue"), false, hotkey::SCOPE_GAME },
@@ -714,8 +717,8 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 {
 	if(event.keysym.sym == SDLK_ESCAPE && disp.in_game()) {
 		LOG_G << "escape pressed..showing quit\n";
-		const int res = gui::dialog(disp,_("Quit"),_("Do you really want to quit?"),gui::YES_NO).show();
-		if(res == 0) {
+		const int res = gui2::show_message(disp.video(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
+		if(res != gui2::twindow::CANCEL) {
 			throw end_level_exception(QUIT);
 		} else {
 			return;
@@ -923,6 +926,9 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 		 case HOTKEY_WB_EXECUTE_ACTION:
 			 whiteboard_execute_action();
 			 break;
+		 case HOTKEY_WB_EXECUTE_ALL_ACTIONS:
+			 whiteboard_execute_all_actions();
+			 break;
 		 case HOTKEY_WB_DELETE_ACTION:
 			 whiteboard_delete_action();
 			 break;
@@ -1010,8 +1016,8 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_QUIT_GAME: {
 			if(disp.in_game()) {
 				DBG_G << "is in game -- showing quit message\n";
-				const int res = gui::dialog(disp,_("Quit"),_("Do you really want to quit?"),gui::YES_NO).show();
-				if(res == 0) {
+				const int res = gui2::show_message(disp.video(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
+				if(res != gui2::twindow::CANCEL) {
 					throw end_level_exception(QUIT);
 				}
 			}

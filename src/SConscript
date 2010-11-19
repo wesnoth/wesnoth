@@ -27,7 +27,6 @@ libwesnoth_core_sources = Split("""
     util.cpp
     version.cpp
     serialization/binary_or_text.cpp
-    serialization/binary_wml.cpp
     serialization/parser.cpp
     serialization/preprocessor.cpp
     serialization/string_utils.cpp
@@ -58,7 +57,9 @@ if env["PLATFORM"] != "win32":
         filesystem_env.Append(CPPDEFINES = "LOCALEDIR='\"$localedirname\"'")
         if not os.path.isabs(env['localedirname']):
             filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
-    if env['prefsdir']:
+    if env['version_suffix'] and not env['prefsdir']:
+        filesystem_env['prefsdir'] = ".wesnoth$version_suffix"
+    if filesystem_env['prefsdir']:
         filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR='\"$prefsdir\"'")
 
 libwesnoth_core_sources.extend([
@@ -235,7 +236,6 @@ wesnoth_sources = Split("""
     playmp_controller.cpp
     playsingle_controller.cpp
     playturn.cpp
-    portrait.cpp
     replay.cpp
     replay_controller.cpp
     resources.cpp
@@ -245,6 +245,7 @@ wesnoth_sources = Split("""
     scripting/lua.cpp
     sha1.cpp
     settings.cpp
+    side_filter.cpp
     statistics.cpp
     statistics_dialog.cpp
     storyscreen/interface.cpp
@@ -253,7 +254,6 @@ wesnoth_sources = Split("""
     storyscreen/render.cpp
     team.cpp
     terrain_filter.cpp
-    titlescreen.cpp
     tod_manager.cpp
     unit.cpp
     unit_abilities.cpp
@@ -287,7 +287,9 @@ wesnoth_sources = Split("""
     gui/auxiliary/event/distributor.cpp
     gui/auxiliary/event/handler.cpp
     gui/auxiliary/log.cpp
+    gui/auxiliary/old_markup.cpp
     gui/auxiliary/timer.cpp
+    gui/auxiliary/tips.cpp
     gui/auxiliary/widget_definition.cpp
     gui/auxiliary/widget_definition/button.cpp
     gui/auxiliary/widget_definition/horizontal_scrollbar.cpp
@@ -338,9 +340,11 @@ wesnoth_sources = Split("""
     gui/auxiliary/window_builder.cpp
     gui/dialogs/addon_connect.cpp
     gui/dialogs/addon_list.cpp
+    gui/dialogs/campaign_difficulty.cpp
     gui/dialogs/campaign_selection.cpp
     gui/dialogs/data_manage.cpp
     gui/dialogs/dialog.cpp
+    gui/dialogs/edit_label.cpp
     gui/dialogs/formula_debugger.cpp
     gui/dialogs/game_load.cpp
     gui/dialogs/game_delete.cpp
@@ -356,6 +360,7 @@ wesnoth_sources = Split("""
     gui/dialogs/mp_create_game.cpp
     gui/dialogs/mp_method_selection.cpp
     gui/dialogs/mp_cmd_wrapper.cpp
+    gui/dialogs/simple_item_selector.cpp
     gui/dialogs/title_screen.cpp
     gui/dialogs/transient_message.cpp
     gui/dialogs/unit_attack.cpp

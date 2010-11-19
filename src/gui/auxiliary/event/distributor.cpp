@@ -701,32 +701,6 @@ void tdistributor::remove_tooltip()
 	do_remove_tooltip();
 }
 
-void tdistributor::show_help_popup(const t_string& message, const unsigned timeout)
-{
-	DBG_GUI_E << "Event: show help popup.\n";
-
-	if(help_popup_) {
-		DBG_GUI_E << "Help is already there, bailing out.\n";
-		return;
-	}
-
-	if(tooltip_) {
-		remove_tooltip();
-	}
-
-	// Kill hover events FIXME not documented.
-	had_hover_ = true;
-	hover_pending_ = false;
-
-	help_popup_ = mouse_focus_;
-
-	do_show_help_popup(tpoint(mouse_x_, mouse_y_), message);
-
-	if(timeout) {
-		SDL_AddTimer(timeout, popup_callback, 0);
-	}
-}
-
 void tdistributor::remove_help_popup()
 {
 	if(!help_popup_) {

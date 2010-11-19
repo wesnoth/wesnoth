@@ -18,11 +18,7 @@
 #ifndef UNIT_H_INCLUDED
 #define UNIT_H_INCLUDED
 
-#include "config.hpp"
 #include "formula_callable.hpp"
-#include "map_location.hpp"
-#include "portrait.hpp"
-#include "race.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
 
@@ -30,10 +26,6 @@ class game_display;
 class game_state;
 class vconfig;
 class team;
-
-#include <string>
-#include <vector>
-#include <list>
 
 class unit_ability_list
 {
@@ -107,8 +99,6 @@ public:
 
 	/** The unit's profile */
 	std::string profile() const;
-	/** The unit's transparent profile */
-	std::string transparent() const;
 	/** Information about the unit -- a detailed description of it */
 	t_string unit_description() const { return cfg_["description"]; }
 
@@ -280,6 +270,9 @@ public:
 
 	std::string image_ellipse() const { return cfg_["ellipse"]; }
 
+	config &variables() { return variables_; }
+	const config &variables() const { return variables_; }
+
 	std::string usage() const { return cfg_["usage"]; }
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
 	const unit_race* race() const { return race_; }
@@ -327,18 +320,6 @@ public:
 
 	std::string TC_image_mods() const;
 	std::string image_mods() const;
-
-	/**
-	 * Gets the portrait for a unit.
-	 *
-	 * @param size                The size of the portrait.
-	 * @param side                The side the portrait is shown on.
-	 *
-	 * @returns                   The portrait with the wanted size.
-	 * @retval NULL               The wanted portrait doesn't exist.
-	 */
-	const tportrait* portrait(
-		const unsigned size, const tportrait::tside side) const;
 
 private:
 	void advance_to(const config &old_cfg, const unit_type *t,

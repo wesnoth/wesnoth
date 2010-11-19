@@ -221,7 +221,6 @@ int animated<T,T_void_value>::get_animation_time() const
 template<typename T,  typename T_void_value>
 void animated<T,T_void_value>::set_animation_time(int time)
 {
-	last_update_tick_ = current_ticks;
 	start_tick_ =  last_update_tick_ +
         static_cast<int>(( starting_frame_time_ - time)/acceleration_);
 

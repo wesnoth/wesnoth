@@ -269,8 +269,12 @@
 		<Unit filename="..\..\src\gui\auxiliary\log.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\notifiee.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\notifier.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\old_markup.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\old_markup.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\timer.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\timer.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\tips.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\tips.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\button.cpp" />
@@ -367,17 +371,20 @@
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\tree_view.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\vertical_scrollbar.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\vertical_scrollbar.hpp" />
-		<Unit filename="..\..\src\gui\auxiliary\window_builder_private.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_connect.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_connect.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_list.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_list.hpp" />
+		<Unit filename="..\..\src\gui\dialogs\campaign_difficulty.cpp" />
+		<Unit filename="..\..\src\gui\dialogs\campaign_difficulty.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\campaign_selection.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\campaign_selection.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\data_manage.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\data_manage.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\dialog.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\dialog.hpp" />
+		<Unit filename="..\..\src\gui\dialogs\edit_label.cpp" />
+		<Unit filename="..\..\src\gui\dialogs\edit_label.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\editor_generate_map.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\editor_generate_map.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\editor_new_map.cpp" />
@@ -419,6 +426,8 @@
 		<Unit filename="..\..\src\gui\dialogs\mp_create_game.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\mp_method_selection.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\mp_method_selection.hpp" />
+		<Unit filename="..\..\src\gui\dialogs\simple_item_selector.cpp" />
+		<Unit filename="..\..\src\gui\dialogs\simple_item_selector.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\title_screen.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\title_screen.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\transient_message.cpp" />
@@ -633,8 +642,6 @@
 			<Option compilerVar="CC" />
 			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
 		</Unit>
-		<Unit filename="..\..\src\portrait.cpp" />
-		<Unit filename="..\..\src\portrait.hpp" />
 		<Unit filename="..\..\src\preferences.cpp" />
 		<Unit filename="..\..\src\preferences.hpp" />
 		<Unit filename="..\..\src\preferences_display.cpp" />
@@ -666,8 +673,6 @@
 		<Unit filename="..\..\src\sdl_utils.hpp" />
 		<Unit filename="..\..\src\serialization\binary_or_text.cpp" />
 		<Unit filename="..\..\src\serialization\binary_or_text.hpp" />
-		<Unit filename="..\..\src\serialization\binary_wml.cpp" />
-		<Unit filename="..\..\src\serialization\binary_wml.hpp" />
 		<Unit filename="..\..\src\serialization\parser.cpp" />
 		<Unit filename="..\..\src\serialization\parser.hpp" />
 		<Unit filename="..\..\src\serialization\preprocessor.cpp" />
@@ -682,6 +687,8 @@
 		<Unit filename="..\..\src\shared_object.hpp" />
 		<Unit filename="..\..\src\show_dialog.cpp" />
 		<Unit filename="..\..\src\show_dialog.hpp" />
+		<Unit filename="..\..\src\side_filter.cpp" />
+		<Unit filename="..\..\src\side_filter.hpp" />
 		<Unit filename="..\..\src\simple_rng.hpp" />
 		<Unit filename="..\..\src\sound.cpp" />
 		<Unit filename="..\..\src\sound.hpp" />
@@ -718,8 +725,6 @@
 		<Unit filename="..\..\src\thread.hpp" />
 		<Unit filename="..\..\src\time_of_day.cpp" />
 		<Unit filename="..\..\src\time_of_day.hpp" />
-		<Unit filename="..\..\src\titlescreen.cpp" />
-		<Unit filename="..\..\src\titlescreen.hpp" />
 		<Unit filename="..\..\src\tod_manager.cpp" />
 		<Unit filename="..\..\src\tod_manager.hpp" />
 		<Unit filename="..\..\src\tooltips.cpp" />

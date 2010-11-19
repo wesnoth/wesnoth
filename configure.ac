@@ -6,7 +6,7 @@
 
 AC_PREREQ([2.60])
 
-define([WESNOTH_VERSION],[1.9.1+svn])
+define([WESNOTH_VERSION],[1.9.2+svn])
 define([WESNOTH_BUGS],[http://bugs.wesnoth.org])
 
 AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, WESNOTH_BUGS, [wesnoth])
@@ -110,10 +110,7 @@ if test "x$strict" = "xyes"
 then
 #   Strict compilation for C files is disabled until somebody wants to clean them.
 #	CFLAGS="-Werror -Wno-unused -Wno-sign-compare $CFLAGS"
-
-	# The current networking code breaks strict aliasing in g++ 4.5.
-	# Once the code is converted to boost::asio it might be reenabled.
-	CXXFLAGS="-Werror -Wno-strict-aliasing $CXXFLAGS"
+	CXXFLAGS="-Werror $CXXFLAGS"
 fi
 
 # Make tests default in svn version
@@ -888,6 +885,21 @@ fi
 AC_MSG_CHECKING([for notifications])
 AC_MSG_RESULT([$found_notifications])
 
+#######################################################################
+# Check for C++0x features.                                           #
+#######################################################################
+
+AC_LANG([C++])
+AC_MSG_CHECKING([for C++0x features])
+AC_COMPILE_IFELSE([AC_LANG_SOURCE([
+struct A {
+	explicit operator bool() const;
+	A(A &&);
+};
+	])],
+	[AC_MSG_RESULT(yes)
+	AC_DEFINE([HAVE_CXX0X],,[Define if your compiler supports some C++0x features.])],
+	[AC_MSG_RESULT(no)])
 
 #######################################################################
 # Check for boost iostreams                                           #

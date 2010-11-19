@@ -96,7 +96,7 @@ std::string find_recruit_location(int side, map_location &recruit_location,
  * through a call to recruit_location().
  */
 void place_recruit(const unit &u, const map_location &recruit_location,
-	bool is_recall, bool show = false, bool full_movement = false,
+	bool is_recall, bool show = false, bool fire_event = true, bool full_movement = false,
 	bool wml_triggered = false);
 
 /** Structure describing the statistics of a unit involved in the battle. */

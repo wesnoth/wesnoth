@@ -119,12 +119,6 @@ public:
 	node& set_attr_dup(const char* key, const char* value);
 	node& set_attr_dup(const char* key, const string_span& value);
 
-	//sets an attribute with identical behavior to set_attr_dup, except that
-	//the buffer referred to by 'key' will also be duplicated and managed by
-	//the node. The caller may destroy both key and value as soon as the
-	//call returns.
-	node& set_attr_dup_key_and_value(const char* key, const char* value);
-
 	node& set_attr_int(const char* key, int value);
 
 	node& add_child(const char* name);

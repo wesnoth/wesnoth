@@ -22,6 +22,7 @@ import java.util.Locale;
 
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 
 /**
  * A tool to invoke an external tool/executable
@@ -59,7 +60,7 @@ public class ExternalToolInvoker
 		arguments_ = commandline;
 
 		processBuilder_ = new ProcessBuilder(commandline);
-		Logger.getInstance().log(String.format("Invoking tool %s with args: %s",
+		Logger.getInstance().log(String.format(Messages.ExternalToolInvoker_0,
 				fileName, arguments));
 
 	 	outputContent_ = new StringBuilder();
@@ -77,14 +78,14 @@ public class ExternalToolInvoker
 			Reader stdoutReader = null;
 			Reader stderrReader = null;
 
-			if (arguments_.get(0).toLowerCase(Locale.ENGLISH).contains("wesnoth.exe")  &&
+			if (arguments_.get(0).toLowerCase(Locale.ENGLISH).contains("wesnoth.exe")  && //$NON-NLS-1$
 				Constants.IS_WINDOWS_MACHINE)
 			{
-				String wesnothParent = new File(arguments_.get(0)).getParent() + "/";
-				if (new File(wesnothParent + "stdout.txt").exists())
-					stdoutReader = new FileReader(wesnothParent + "stdout.txt");
-				if (new File(wesnothParent + "stderr.txt").exists())
-					stderrReader = new FileReader(wesnothParent + "stderr.txt");
+				String wesnothParent = new File(arguments_.get(0)).getParent() + "/"; //$NON-NLS-1$
+				if (new File(wesnothParent + "stdout.txt").exists()) //$NON-NLS-1$
+					stdoutReader = new FileReader(wesnothParent + "stdout.txt"); //$NON-NLS-1$
+				if (new File(wesnothParent + "stderr.txt").exists()) //$NON-NLS-1$
+					stderrReader = new FileReader(wesnothParent + "stderr.txt"); //$NON-NLS-1$
 			}
 			else
 			{
@@ -188,15 +189,15 @@ public class ExternalToolInvoker
 			{
 				try
 				{
-					String line = "";
+					String line = ""; //$NON-NLS-1$
 					while((line = readErrorLine()) != null)
 					{
 						if (extraStreams != null)
 						{
 							for(OutputStream stream : extraStreams)
-								stream.write((line + "\n").getBytes());
+								stream.write((line + "\n").getBytes()); //$NON-NLS-1$
 						}
-						errorContent_.append(line + "\n");
+						errorContent_.append(line + "\n"); //$NON-NLS-1$
 					}
 				}
 				catch (IOException e)
@@ -230,15 +231,15 @@ public class ExternalToolInvoker
 			{
 				try
 				{
-					String line = "";
+					String line = ""; //$NON-NLS-1$
 					while((line = readOutputLine()) != null)
 					{
 						if (extraStreams != null)
 						{
 							for(OutputStream stream : extraStreams)
-								stream.write((line + "\n").getBytes());
+								stream.write((line + "\n").getBytes()); //$NON-NLS-1$
 						}
-						outputContent_.append(line + "\n");
+						outputContent_.append(line + "\n"); //$NON-NLS-1$
 					}
 
 				}
@@ -373,12 +374,12 @@ public class ExternalToolInvoker
 			{
 				try
 				{
-					String line = "";
+					String line = ""; //$NON-NLS-1$
 					while((line = toolInvoker.readOutputLine()) != null)
 					{
 						for (OutputStream out : stdout)
 						{
-							out.write((line + "\n").getBytes());
+							out.write((line + "\n").getBytes()); //$NON-NLS-1$
 						}
 					}
 				} catch (IOException e)
@@ -393,12 +394,12 @@ public class ExternalToolInvoker
 			{
 				try
 				{
-					String line = "";
+					String line = ""; //$NON-NLS-1$
 					while((line = toolInvoker.readErrorLine()) != null)
 					{
 						for (OutputStream err : stderr)
 						{
-							err.write((line + "\n").getBytes());
+							err.write((line + "\n").getBytes()); //$NON-NLS-1$
 						}
 					}
 				} catch (IOException e)

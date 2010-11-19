@@ -42,6 +42,4 @@ void the_end(display &disp, std::string text, unsigned int duration);
  */
 void set_new_storyscreen(bool enabled);
 
-bool get_new_storyscreen_status();
-
 #endif /* ! INTRO_HPP_INCLUDED */

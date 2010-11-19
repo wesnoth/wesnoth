@@ -25,11 +25,6 @@ bool lobby_sounds()
 	return preferences::get("lobby_sounds", true);
 }
 
-void set_lobby_sounds(bool v)
-{
-	preferences::set("lobby_sounds", v);
-}
-
 bool sort_list()
 {
 	return preferences::get("sort_list", true);
@@ -85,12 +80,6 @@ bool playerlist_group_players()
 {
 	return preferences::get("lobby_playerlist_group_players", true);
 }
-
-void set_playerlist_group_players(bool v)
-{
-	return preferences::set("lobby_playerlist_group_players", v);
-}
-
 
 bool filter_lobby()
 {

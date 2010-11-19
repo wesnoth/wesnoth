@@ -137,16 +137,6 @@ t_string missing_widget(const std::string& id)
 	return t_string(vgettext("Mandatory widget '$id' hasn't been defined.", symbols));
 }
 
-std::string get_uid()
-{
-	static unsigned id = 0;
-	++id;
-	assert(id); // avoid wrapping.
-
-	return "____" + lexical_cast<std::string>(id);
-
-}
-
 void get_screen_size_variables(game_logic::map_formula_callable& variable)
 {
 	variable.add("screen_width", variant(settings::screen_width));

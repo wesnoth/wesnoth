@@ -51,17 +51,11 @@ public:
 	};
 
 	static PRIVILEGE_POLICY pp_from_string(const std::string& str);
-	static const char* string_from_pp(PRIVILEGE_POLICY pp);
 
 	/**
 	 * Load settings from the main config file
 	 */
 	void load_config(const config& cfg);
-
-	/**
-	 * Get the room storage file name. If empty, rooms are not stored on disk.
-	 */
-	const std::string& storage_filename() const;
 
 	/**
 	 * Reads stored rooms from a file on disk, or returns immediately
@@ -104,11 +98,6 @@ public:
 	 *         could not be created.
 	 */
 	room* get_create_room(const std::string& name, network::connection player);
-
-	/**
-	 * Delete a room. Players still in the room are kicked from it.
-	 */
-	void delete_room(const std::string& name);
 
 	/**
 	 * @return true iif the player is in the lobby
@@ -238,7 +227,7 @@ private:
 	t_player_stored_rooms_ player_stored_rooms_;
 
 	/**
-	 * Persistent room storage filename
+	 * Persistent room storage filename.  If empty, rooms are not stored on disk.
 	 */
 	std::string filename_;
 

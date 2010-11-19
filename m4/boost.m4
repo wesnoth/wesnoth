@@ -1,5 +1,5 @@
 # boost.m4: Locate Boost headers and libraries for autoconf-based projects.
-# Copyright (C) 2007  Benoit Sigoure <tsuna@lrde.epita.fr>
+# Copyright (C) 2007, 2008, 2009, 2010  Benoit Sigoure <tsuna@lrde.epita.fr>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,9 +22,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # serial 8
-# Original sources can be found at http://repo.or.cz/w/boost.m4.git
+# Original sources can be found at http://github.com/tsuna/boost.m4
 # You can fetch the latest version of the script by doing:
-#   wget 'http://repo.or.cz/w/boost.m4.git?a=blob_plain;f=build-aux/boost.m4;hb=HEAD' -O boost.m4
+#   wget http://github.com/tsuna/boost.m4/raw/master/build-aux/boost.m4
 
 # ------ #
 # README #
@@ -35,7 +35,7 @@
 # find the Boost headers of a given (optional) minimum version and it will
 # define BOOST_CPPFLAGS accordingly.  It will add an option --with-boost to
 # your configure so that users can specify non standard locations.
-# For more README and documentation, go to http://repo.or.cz/w/boost.m4.git
+# For more README and documentation, go to http://github.com/tsuna/boost.m4
 # Note: THESE MACROS ASSUME THAT YOU USE LIBTOOL.  If you don't, don't worry,
 # simply read the README, it will show you what to do step by step.
 
@@ -169,6 +169,16 @@ AC_SUBST([BOOST_CPPFLAGS])dnl
 m4_popdef([BOOST_VERSION_REQ])dnl
 ])# BOOST_REQUIRE
 
+# BOOST_STATIC()
+# --------------
+# Add the "--enable-static-boost" configure argument. If this argument is given
+# on the command line, static versions of the libraries will be looked up.
+AC_DEFUN([BOOST_STATIC],
+  [AC_ARG_ENABLE([static-boost],
+     [AC_HELP_STRING([--enable-static-boost],
+               [Prefer the static boost libraries over the shared ones [no]])],
+     [enable_static_boost=yes],
+     [enable_static_boost=no])])# BOOST_STATIC
 
 # BOOST_FIND_HEADER([HEADER-NAME], [ACTION-IF-NOT-FOUND], [ACTION-IF-FOUND])
 # --------------------------------------------------------------------------
@@ -217,8 +227,9 @@ AC_LANG_POP([C++])dnl
 # ...  If you want to make sure you have a specific version of Boost
 # (eg, >= 1.33) you *must* invoke BOOST_REQUIRE before this macro.
 AC_DEFUN([BOOST_FIND_LIB],
-[AC_REQUIRE([_BOOST_FIND_COMPILER_TAG])dnl
-AC_REQUIRE([BOOST_REQUIRE])dnl
+[AC_REQUIRE([BOOST_REQUIRE])dnl
+AC_REQUIRE([_BOOST_FIND_COMPILER_TAG])dnl
+AC_REQUIRE([BOOST_STATIC])dnl
 AC_REQUIRE([_BOOST_GUESS_WHETHER_TO_USE_MT])dnl
 AC_LANG_PUSH([C++])dnl
 AS_VAR_PUSHDEF([Boost_lib], [boost_cv_lib_$1])dnl
@@ -241,6 +252,9 @@ AC_CACHE_CHECK([for the Boost $1 library], [Boost_lib],
     mt* | mt-*) boost_mt=-mt; boost_rtopt=`expr "X$2" : 'Xmt-*\(.*\)'`;; #(
     *) boost_mt=; boost_rtopt=$2;;
   esac
+  if test $enable_static_boost = yes; then
+    boost_rtopt="s$boost_rtopt"
+  fi
   # Find the proper debug variant depending on what we've been asked to find.
   case $boost_rtopt in #(
     *d*) boost_rt_d=$boost_rtopt;; #(
@@ -277,7 +291,7 @@ dnl empty because the test file is generated only once above (before we
 dnl start the for loops).
   AC_COMPILE_IFELSE([],
     [ac_objext=do_not_rm_me_plz],
-    [AC_MSG_ERROR([Cannot compile a test that uses Boost $1])])
+    [AC_MSG_ERROR([cannot compile a test that uses Boost $1])])
   ac_objext=$boost_save_ac_objext
   boost_failed_libs=
 # Don't bother to ident the 6 nested for loops, only the 2 innermost ones
@@ -359,6 +373,12 @@ AC_LANG_POP([C++])dnl
 # List of boost libraries: http://www.boost.org/libs/libraries.htm
 # The page http://beta.boost.org/doc/libs is useful: it gives the first release
 # version of each library (among other things).
+
+# BOOST_ARRAY()
+# -------------
+# Look for Boost.Array
+AC_DEFUN([BOOST_ARRAY],
+[BOOST_FIND_HEADER([boost/array.hpp])])
 
 
 # BOOST_ASIO()
@@ -481,6 +501,40 @@ AC_DEFUN([BOOST_LAMBDA],
 [BOOST_FIND_HEADER([boost/lambda/lambda.hpp])])
 
 
+# BOOST_MATH()
+# ------------
+# Look for Boost.Math
+# TODO: This library isn't header-only but it comes in multiple different
+# flavors that don't play well with BOOST_FIND_LIB (e.g, libboost_math_c99,
+# libboost_math_c99f, libboost_math_c99l, libboost_math_tr1,
+# libboost_math_tr1f, libboost_math_tr1l).  This macro must be fixed to do the
+# right thing anyway.
+AC_DEFUN([BOOST_MATH],
+[BOOST_FIND_HEADER([boost/math/special_functions.hpp])])
+
+
+# BOOST_MULTIARRAY()
+# ------------------
+# Look for Boost.MultiArray
+AC_DEFUN([BOOST_MULTIARRAY],
+[BOOST_FIND_HEADER([boost/multi_array.hpp])])
+
+
+# BOOST_NUMERIC_CONVERSION()
+# --------------------------
+# Look for Boost.NumericConversion (policy-based numeric conversion)
+AC_DEFUN([BOOST_NUMERIC_CONVERSION],
+[BOOST_FIND_HEADER([boost/numeric/conversion/converter.hpp])
+])# BOOST_NUMERIC_CONVERSION
+
+
+# BOOST_OPTIONAL()
+# ----------------
+# Look for Boost.Optional
+AC_DEFUN([BOOST_OPTIONAL],
+[BOOST_FIND_HEADER([boost/optional.hpp])])
+
+
 # BOOST_PREPROCESSOR()
 # --------------------
 # Look for Boost.Preprocessor
@@ -547,6 +601,13 @@ AC_DEFUN([BOOST_SMART_PTR],
 [BOOST_FIND_HEADER([boost/scoped_ptr.hpp])
 BOOST_FIND_HEADER([boost/shared_ptr.hpp])
 ])
+
+
+# BOOST_STATICASSERT()
+# --------------------
+# Look for Boost.StaticAssert
+AC_DEFUN([BOOST_STATICASSERT],
+[BOOST_FIND_HEADER([boost/static_assert.hpp])])
 
 
 # BOOST_STRING_ALGO()
@@ -632,6 +693,13 @@ BOOST_FIND_HEADER([boost/logic/tribool.hpp])
 # Look for Boost.Tuple
 AC_DEFUN([BOOST_TUPLE],
 [BOOST_FIND_HEADER([boost/tuple/tuple.hpp])])
+
+
+# BOOST_TYPETRAITS()
+# --------------------
+# Look for Boost.TypeTraits
+AC_DEFUN([BOOST_TYPETRAITS],
+[BOOST_FIND_HEADER([boost/type_traits.hpp])])
 
 
 # BOOST_UTILITY()
@@ -765,6 +833,7 @@ m4_define([_BOOST_gcc_test],
 # build.  The Boost build system seems to call this a `tag'.
 AC_DEFUN([_BOOST_FIND_COMPILER_TAG],
 [AC_REQUIRE([AC_PROG_CXX])dnl
+AC_REQUIRE([AC_CANONICAL_HOST])dnl
 AC_CACHE_CHECK([for the toolset name used by Boost for $CXX], [boost_cv_lib_tag],
 [AC_LANG_PUSH([C++])dnl
   boost_cv_lib_tag=unknown
@@ -781,8 +850,8 @@ AC_CACHE_CHECK([for the toolset name used by Boost for $CXX], [boost_cv_lib_tag]
   #   como, edg, kcc, bck, mp, sw, tru, xlc
   # I'm not sure about my test for `il' (be careful: Intel's ICC pre-defines
   # the same defines as GCC's).
-  # TODO: Move the test on GCC 4.5 up once it's released.
   for i in \
+    _BOOST_gcc_test(4, 5) \
     _BOOST_gcc_test(4, 4) \
     _BOOST_gcc_test(4, 3) \
     _BOOST_gcc_test(4, 2) \
@@ -793,7 +862,8 @@ AC_CACHE_CHECK([for the toolset name used by Boost for $CXX], [boost_cv_lib_tag]
          || defined __WIN32__ || defined __WINNT || defined __WINNT__) @ mgw" \
     _BOOST_gcc_test(3, 4) \
     _BOOST_gcc_test(3, 3) \
-    "defined _MSC_VER && _MSC_VER >= 1400 @ vc80" \
+    "defined _MSC_VER && _MSC_VER >= 1500 @ vc90" \
+    "defined _MSC_VER && _MSC_VER == 1400 @ vc80" \
     _BOOST_gcc_test(3, 2) \
     "defined _MSC_VER && _MSC_VER == 1310 @ vc71" \
     _BOOST_gcc_test(3, 1) \
@@ -802,7 +872,6 @@ AC_CACHE_CHECK([for the toolset name used by Boost for $CXX], [boost_cv_lib_tag]
     "defined __ICC && (defined __unix || defined __unix__) @ il" \
     "defined __ICL @ iw" \
     "defined _MSC_VER && _MSC_VER == 1300 @ vc7" \
-    _BOOST_gcc_test(4, 5) \
     _BOOST_gcc_test(2, 95) \
     "defined __MWERKS__ && __MWERKS__ <= 0x32FF @ cw9" \
     "defined _MSC_VER && _MSC_VER < 1300 && !defined UNDER_CE @ vc6" \
@@ -859,7 +928,7 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
 # rm -f conftest.$ac_objext in between to really different tests, otherwise
 # you will try to link a conftest.o left behind by a previous test.
 # Used to aggressively optimize BOOST_FIND_LIB (see the big comment in this
-# macro)
+# macro).
 m4_define([_BOOST_AC_LINK_IFELSE],
 [m4_ifvaln([$1], [AC_LANG_CONFTEST([$1])])dnl
 rm -f conftest$ac_exeext

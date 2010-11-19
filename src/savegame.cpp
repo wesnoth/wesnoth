@@ -229,7 +229,7 @@ void manager::read_save_file(const std::string& name, config& cfg, std::string* 
 		if(is_gzip_file(name)) {
 			read_gz(cfg, *file_stream);
 		} else {
-			detect_format_and_read(cfg, *file_stream);
+			read(cfg, *file_stream);
 		}
 	} catch (config::error &err)
 	{
@@ -336,7 +336,7 @@ config& save_index::load()
 	if(save_index_loaded == false) {
 		try {
 			scoped_istream stream = istream_file(get_save_index_file());
-			detect_format_and_read(save_index_cfg, *stream);
+			read(save_index_cfg, *stream);
 		} catch(io_exception& e) {
 			ERR_SAVE << "error reading save index: '" << e.what() << "'\n";
 		} catch(config::error&) {
@@ -856,7 +856,7 @@ scoped_ostream savegame::open_save_game(const std::string &label)
 void savegame::extract_summary_data_from_save(config& out)
 {
 	const bool has_replay = gamestate_.replay_data.empty() == false;
-	const bool has_snapshot = gamestate_.snapshot.child("side");
+	bool has_snapshot(gamestate_.snapshot.child("side"));
 
 	out["replay"] = has_replay;
 	out["snapshot"] = has_snapshot;

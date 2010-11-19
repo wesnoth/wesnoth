@@ -43,9 +43,7 @@ namespace wesnothd {
 	struct banned_compare_subnet {
 		bool operator()(const banned_ptr& a, const banned_ptr& b) const;
 		private:
-		static void set_use_subnet_mask(bool);
 		bool less(const banned_ptr& a, const banned_ptr& b) const;
-		bool less_with_subnet(const banned_ptr& a, const banned_ptr& b) const;
 		typedef bool (banned_compare_subnet::*compare_fn)(const banned_ptr& a, const banned_ptr& b) const;
 		static compare_fn active_;
 	};

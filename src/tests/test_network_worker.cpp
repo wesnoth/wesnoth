@@ -100,7 +100,7 @@ BOOST_AUTO_TEST_CASE( test_send_client )
 
 	child["test"] = "yes!";
 	cfg_send["test_running"] = true;
-	network::send_data(cfg_send, client_client1, true);
+	network::send_data(cfg_send, client_client1);
 
 	network::connection receive_from;
 	config received;
@@ -273,10 +273,6 @@ BOOST_AUTO_TEST_CASE( test_cancel_transfer )
 }
 
 BOOST_AUTO_TEST_CASE( test_detect_errors )
-{
-}
-
-BOOST_AUTO_TEST_CASE( test_binary_wml )
 {
 }
 

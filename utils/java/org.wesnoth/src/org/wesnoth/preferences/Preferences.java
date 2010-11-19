@@ -24,11 +24,11 @@ public class Preferences extends AbstractPreferenceInitializer
 	{
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		// general settings
-		store.setDefault(Constants.P_WESNOTH_EXEC_PATH, "");
-		store.setDefault(Constants.P_WESNOTH_WORKING_DIR, "");
-		store.setDefault(Constants.P_WESNOTH_USER_DIR, "");
-		store.setDefault(Constants.P_WESNOTH_WMLTOOLS_DIR, "");
-		store.setDefault(Constants.P_PYTHON_PATH, "");
+		store.setDefault(Constants.P_WESNOTH_EXEC_PATH, ""); //$NON-NLS-1$
+		store.setDefault(Constants.P_WESNOTH_WORKING_DIR, ""); //$NON-NLS-1$
+		store.setDefault(Constants.P_WESNOTH_USER_DIR, ""); //$NON-NLS-1$
+		store.setDefault(Constants.P_WESNOTH_WMLTOOLS_DIR, ""); //$NON-NLS-1$
+		store.setDefault(Constants.P_PYTHON_PATH, ""); //$NON-NLS-1$
 
 		// wml tools
 		store.setDefault(Constants.P_WMLINDENT_VERBOSE, true);
@@ -42,9 +42,9 @@ public class Preferences extends AbstractPreferenceInitializer
 		store.setDefault(Constants.P_WMLSCOPE_COLLISIONS, false);
 
 		// upload manager
-		store.setDefault(Constants.P_WAU_PASSWORD, "");
+		store.setDefault(Constants.P_WAU_PASSWORD, ""); //$NON-NLS-1$
 		store.setDefault(Constants.P_WAU_VERBOSE, false);
-		store.setDefault(Constants.P_WAU_ADDRESS, "add-ons.wesnoth.org");
+		store.setDefault(Constants.P_WAU_ADDRESS, "add-ons.wesnoth.org"); //$NON-NLS-1$
 		store.setDefault(Constants.P_WAU_PORT, 15002);
 
 		// adnvaced

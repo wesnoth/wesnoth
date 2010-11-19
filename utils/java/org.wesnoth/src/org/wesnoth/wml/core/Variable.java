@@ -20,7 +20,7 @@ public class Variable
 
 	public Variable()
 	{
-		this("", "", 0);
+		this("", "", 0); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public Variable(String name, String location, int offset)

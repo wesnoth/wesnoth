@@ -543,6 +543,7 @@ struct decode_table
 	// 1-based, from 1 to 255.
 	unsigned values[255];
 	decode_table()
+		: values()
 	{
 		for (int i = 1; i < 256; ++i) values[i - 1] = (255 * 256) / i;
 	}

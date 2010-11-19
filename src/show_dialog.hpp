@@ -26,9 +26,6 @@ class display;
 
 #include "widgets/menu.hpp"
 
-#include <string>
-#include <vector>
-
 namespace gui
 {
 

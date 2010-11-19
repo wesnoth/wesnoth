@@ -49,6 +49,7 @@
 #include "resources.hpp"
 #include "terrain_filter.hpp"
 #include "terrain_translation.hpp"
+#include "side_filter.hpp"
 #include "sound.hpp"
 #include "unit.hpp"
 #include "ai/lua/core.hpp"
@@ -111,6 +112,7 @@ static char const gettextKey = 0;
 static char const gettypeKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
+static char const unitvarKey = 0;
 static char const ustatusKey = 0;
 static char const vconfigKey = 0;
 
@@ -153,8 +155,6 @@ struct luaW_pushscalar_visitor : boost::static_visitor<>
 	{ lua_pushnil(L); }
 	void operator()(bool b) const
 	{ lua_pushboolean(L, b); }
-	void operator()(int i) const
-	{ lua_pushinteger(L, i); }
 	void operator()(double d) const
 	{ lua_pushnumber(L, d); }
 	void operator()(std::string const &s) const
@@ -330,12 +330,8 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 				v = bool(lua_toboolean(L, -1));
 				break;
 			case LUA_TNUMBER:
-			{
-				double n = lua_tonumber(L, -1);
-				if (n != int(n)) v = n;
-				else v = int(n);
+				v = lua_tonumber(L, -1);
 				break;
-			}
 			case LUA_TSTRING:
 				v = lua_tostring(L, -1);
 				break;
@@ -887,6 +883,15 @@ static int impl_unit_get(lua_State *L)
 		lua_setmetatable(L, -2);
 		return 1;
 	}
+	if (strcmp(m, "variables") == 0) {
+		lua_createtable(L, 1, 0);
+		lua_pushvalue(L, 1);
+		lua_rawseti(L, -2, 1);
+		lua_pushlightuserdata(L, (void *)&unitvarKey);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_setmetatable(L, -2);
+		return 1;
+	}
 	return_bool_attrib("hidden", u.get_hidden());
 	return_bool_attrib("petrified", u.incapacitated());
 	return_bool_attrib("resting", u.resting());
@@ -961,6 +966,69 @@ static int impl_unit_status_set(lua_State *L)
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
 	u->set_state(m, lua_toboolean(L, 3));
+	return 0;
+}
+
+/**
+ * Gets the variable of a unit (__index metamethod).
+ * - Arg 1: table containing the userdata containing the unit id.
+ * - Arg 2: string containing the name of the status.
+ * - Ret 1: boolean.
+ */
+static int impl_unit_variables_get(lua_State *L)
+{
+	if (!lua_istable(L, 1))
+		return luaL_typerror(L, 1, "unit variables");
+	lua_rawgeti(L, 1, 1);
+	unit const *u = luaW_tounit(L, -1);
+	if (!u) return luaL_argerror(L, 1, "unknown unit");
+	char const *m = luaL_checkstring(L, 2);
+	return_cfgref_attrib("__cfg", u->variables());
+	luaW_pushscalar(L, u->variables()[m]);
+	return 1;
+}
+
+/**
+ * Sets the variable of a unit (__newindex metamethod).
+ * - Arg 1: table containing the userdata containing the unit id.
+ * - Arg 2: string containing the name of the status.
+ * - Arg 3: scalar.
+ */
+static int impl_unit_variables_set(lua_State *L)
+{
+	if (!lua_istable(L, 1))
+		return luaL_typerror(L, 1, "unit variables");
+	lua_rawgeti(L, 1, 1);
+	unit *u = luaW_tounit(L, -1);
+	if (!u) return luaL_argerror(L, 1, "unknown unit");
+	char const *m = luaL_checkstring(L, 2);
+	if (strcmp(m, "__cfg") == 0) {
+		u->variables() = luaW_checkconfig(L, 3);
+		return 0;
+	}
+	config::attribute_value &v = u->variables()[m];
+	switch (lua_type(L, 3)) {
+		case LUA_TNIL:
+			u->variables().remove_attribute(m);
+			break;
+		case LUA_TBOOLEAN:
+			v = bool(lua_toboolean(L, 3));
+			break;
+		case LUA_TNUMBER:
+			v = lua_tonumber(L, 3);
+			break;
+		case LUA_TSTRING:
+			v = lua_tostring(L, 3);
+			break;
+		case LUA_TUSERDATA:
+			if (luaW_hasmetatable(L, 3, tstringKey)) {
+				v = *static_cast<t_string *>(lua_touserdata(L, 3));
+				break;
+			}
+			// no break
+		default:
+			return luaL_typerror(L, 3, "WML scalar");
+	}
 	return 0;
 }
 
@@ -1182,12 +1250,8 @@ static int intf_set_variable(lua_State *L)
 			v.as_scalar() = bool(lua_toboolean(L, 2));
 			break;
 		case LUA_TNUMBER:
-		{
-			double n = lua_tonumber(L, -1);
-			if (n != int(n)) v.as_scalar() = n;
-			else v.as_scalar() = int(n);
+			v.as_scalar() = lua_tonumber(L, 2);
 			break;
-		}
 		case LUA_TSTRING:
 			v.as_scalar() = lua_tostring(L, 2);
 			break;
@@ -1273,6 +1337,20 @@ static int intf_require(lua_State *L)
 	lua_pushvalue(L, -2);
 	lua_settable(L, -4);
 	return 1;
+}
+
+/**
+ * Highlights the given location on the map.
+ * - Args 1,2: location.
+ */
+static int intf_highlight_hex(lua_State *L)
+{
+	int x = luaL_checkinteger(L, 1) - 1;
+	int y = luaL_checkinteger(L, 2) - 1;
+	const map_location loc(x, y);
+	resources::screen->highlight_hex(loc);
+	resources::screen->display_unit_hex(loc);
+	return 0;
 }
 
 /**
@@ -1483,7 +1561,8 @@ static int intf_set_village_owner(lua_State *L)
 		return 0;
 
 	int old_side = village_owner(loc, teams) + 1;
-	if (new_side == old_side || new_side < 0 || new_side > (int)teams.size())
+	if (new_side == old_side || new_side < 0 || new_side > (int)teams.size()
+		|| (new_side && !resources::units->find_leader(new_side).valid()))
 		return 0;
 
 	if (old_side) teams[old_side - 1].lose_village(loc);
@@ -2280,6 +2359,18 @@ static int intf_scroll_to_tile(lua_State *L)
 	return 0;
 }
 
+/**
+ * Selects the given location on the map.
+ * - Args 1,2: location.
+ */
+static int intf_select_hex(lua_State *L)
+{
+	int x = luaL_checkinteger(L, 1) - 1;
+	int y = luaL_checkinteger(L, 2) - 1;
+	resources::screen->select_hex(map_location(x, y));
+	return 0;
+}
+
 struct lua_synchronize : mp_sync::user_choice
 {
 	lua_State *L;
@@ -2671,6 +2762,30 @@ static int intf_match_location(lua_State *L)
 	return 1;
 }
 
+
+
+/**
+ * Matches a side against the given filter.
+ * - Args 1: side number.
+ * - Arg 2: WML table.
+ * - Ret 1: boolean.
+ */
+static int intf_match_side(lua_State *L)
+{
+	unsigned side = luaL_checkinteger(L, 1) - 1;
+	if (side >= resources::teams->size()) return 0;
+	vconfig filter = luaW_checkvconfig(L, 2, true);
+
+	if (filter.null()) {
+		lua_pushboolean(L, true);
+		return 1;
+	}
+
+	side_filter s_filter(filter);
+	lua_pushboolean(L, s_filter.match(side + 1));
+	return 1;
+}
+
 /**
  * Adds a modification to a unit.
  * - Arg 1: unit.
@@ -2786,8 +2901,10 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_units",                &intf_get_units                },
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
+		{ "highlight_hex",            &intf_highlight_hex            },
 		{ "is_enemy",                 &intf_is_enemy                 },
 		{ "match_location",           &intf_match_location           },
+		{ "match_side",               &intf_match_side               },
 		{ "match_unit",               &intf_match_unit               },
 		{ "message",                  &intf_message                  },
 		{ "play_sound",               &intf_play_sound               },
@@ -2796,6 +2913,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "remove_tile_overlay",      &intf_remove_tile_overlay      },
 		{ "require",                  &intf_require                  },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
+		{ "select_hex",               &intf_select_hex               },
 		{ "set_dialog_callback",      &intf_set_dialog_callback      },
 		{ "set_dialog_canvas",        &intf_set_dialog_canvas        },
 		{ "set_dialog_value",         &intf_set_dialog_value         },
@@ -2879,6 +2997,17 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_pushcfunction(L, impl_unit_status_set);
 	lua_setfield(L, -2, "__newindex");
 	lua_pushstring(L, "unit status");
+	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
+	// Create the unit variables metatable.
+	lua_pushlightuserdata(L, (void *)&unitvarKey);
+	lua_createtable(L, 0, 3);
+	lua_pushcfunction(L, impl_unit_variables_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, impl_unit_variables_set);
+	lua_setfield(L, -2, "__newindex");
+	lua_pushstring(L, "unit variables");
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
@@ -3086,6 +3215,21 @@ void LuaKernel::save_game(config &cfg)
 		if (is_handled_file_tag(i->key)) continue;
 		cfg.splice_children(v, i->key);
 	}
+}
+
+/**
+ * Executes the game_events.on_event function.
+ */
+void LuaKernel::run_event(game_events::queued_event const &ev)
+{
+	lua_State *L = mState;
+
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_event", NULL))
+		return;
+
+	queued_event_context dummy(&ev);
+	lua_pushstring(L, ev.name.c_str());
+	luaW_pcall(L, 1, 0, false);
 }
 
 LuaKernel::~LuaKernel()

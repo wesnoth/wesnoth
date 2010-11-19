@@ -166,7 +166,7 @@ void tmp_create_game::update_map_settings(twindow& window)
 			const config &side = scenario_->child("side");
 
 			fog_->set_widget_value(window, side["fog"].to_bool(true));
-			shroud_->set_widget_value(window, side["shroud"].to_bool(true));
+			shroud_->set_widget_value(window, side["shroud"].to_bool(false));
 			start_time_->set_widget_value(window, (*scenario_)["random_start_time"].to_bool(true));
 
 			turns_->set_widget_value(window, ::settings::get_turns((*scenario_)["turns"]));

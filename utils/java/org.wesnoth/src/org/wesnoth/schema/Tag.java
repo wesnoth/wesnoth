@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class Tag
 {
-	private String name_ = "";
-	private String extendedTagName_ = "";
+	private String name_ = ""; //$NON-NLS-1$
+	private String extendedTagName_ = ""; //$NON-NLS-1$
 	private List<Tag> tagChildren_;
 	private List<TagKey> keyChildren_;
 
@@ -83,7 +83,7 @@ public class Tag
 	@Override
 	public String toString()
 	{
-		return new String(name_ + " " + extendedTagName_);
+		return new String(name_ + " " + extendedTagName_); //$NON-NLS-1$
 	}
 
 	public String getName()

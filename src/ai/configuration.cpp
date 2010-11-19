@@ -182,7 +182,7 @@ bool configuration::get_side_config_from_file(const std::string& file, config& c
 		return false;
 	}
 	LOG_AI_CONFIGURATION << "Successfully read AI configuration from file '" << file  << "'" << std::endl;
-	return cfg;//in boolean context
+	return true;
 }
 
 const config& configuration::get_default_ai_parameters()
@@ -232,7 +232,7 @@ bool configuration::upgrade_aspect_config_from_1_07_02_to_1_07_03(side_number /*
 	}
 
 	parsed_cfg.add_child("aspect",aspect_config);
-	return parsed_cfg;//in boolean context
+	return true;
 }
 
 
@@ -316,7 +316,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	LOG_AI_CONFIGURATION << "side "<< side <<": done parsing side config"<< std::endl;
 
 	cfg = parsed_cfg;
-	return cfg;//in boolean context
+	return true;
 
 }
 
@@ -444,7 +444,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 	cfg = config();
 	cfg.add_child("ai",parsed_cfg);
 	DBG_AI_CONFIGURATION << "side "<< side <<": after upgrade to 1.7.3 syntax, config contains:"<< std::endl << cfg << std::endl;
-	return cfg;//in boolean context
+	return true;
 }
 
 

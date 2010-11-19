@@ -325,12 +325,6 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 }
 
 
-std::string get_upload_dir()
-{
-	const std::string dir_path = get_user_data_dir() + "/upload";
-	return get_dir(dir_path);
-}
-
 std::string get_dir(const std::string& dir_path)
 {
 	DIR* dir = opendir(dir_path.c_str());
@@ -822,38 +816,6 @@ time_t file_create_time(const std::string& fname)
 		return 0;
 
 	return buf.st_mtime;
-}
-
-std::string next_filename(const std::string &dirname, unsigned int max)
-{
-	std::vector<std::string> files;
-	std::stringstream fname;
-	unsigned int num = 1;
-
-	// These are sorted, so we can simply add one to last one.
-	get_files_in_dir(dirname, &files);
-
-	// Make sure we skip over any files we didn't create ourselves.
-	std::vector<std::string>::reverse_iterator i;
-	for (i = files.rbegin(); i != files.rend(); ++i) {
-		if (i->length() == 8) {
-			try {
-				num = lexical_cast<int>(*i)+1;
-				break;
-			} catch (bad_lexical_cast &) {
-			}
-		}
-	}
-
-	// Erase oldest files if we have too many
-	if (max) {
-		for (unsigned int j = 0; j + max < files.size(); j++) {
-			delete_directory(dirname + "/" + files[j]);
-		}
-	}
-
-	fname << std::setw(8) << std::setfill('0') << num;
-	return dirname + "/" + fname.str();
 }
 
 /**

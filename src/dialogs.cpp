@@ -251,7 +251,7 @@ void show_objectives(const config &level, const std::string &objectives)
 {
 	static const std::string no_objectives(_("No objectives available"));
 	gui2::show_transient_message(resources::screen->video(), level["name"],
-		(objectives.empty() ? no_objectives : objectives), true);
+		(objectives.empty() ? no_objectives : objectives), "", true);
 }
 
 namespace {

@@ -17,14 +17,10 @@
 #ifndef FLOATING_TEXTBOX_H_INCLUDED
 #define FLOATING_TEXTBOX_H_INCLUDED
 
-#include "global.hpp"
-
 // Scoped_resource can't use a pointer to an incomplete pointer with MSVC.
 #include "widgets/textbox.hpp"
 #include "scoped_resource.hpp"
 
-#include <string>
-#include <vector>
 #include <set>
 
 class game_display;

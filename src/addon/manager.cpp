@@ -27,6 +27,7 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -193,6 +194,9 @@ namespace {
 		files.push_back("*.o");
 		/* Remove junk created by certain file manager ;) */
 		files.push_back("Thumbs.db");
+        /* Eclipse plugin */
+        files.push_back("*.wesnoth");
+        files.push_back("*.project");
     }
 }
 
@@ -388,7 +392,7 @@ namespace {
 					}
 				};
 				std::replace(i->begin(), i->end(), '_', ' ');
-				i++;
+				++i;
 			}
 		}
 		// process items of type Addon/_main.cfg too
@@ -398,7 +402,7 @@ namespace {
 			if (file_exists(parent_dir + *i + "/_main.cfg")) {
 				std::replace(i->begin(), i->end(), '_', ' ');
 				files.push_back(*i);
-				i++;
+				++i;
 			} else {
 				i = dirs.erase(i);
 			}
@@ -487,7 +491,7 @@ namespace {
 	{
 		config request_terms;
 		request_terms.add_child("request_terms");
-		network::send_data(request_terms, sock, true);
+		network::send_data(request_terms, sock);
 		config data;
 		sock = network::receive_data(data,sock,5000);
 		if(!sock) {
@@ -535,8 +539,7 @@ namespace {
 		data.add_child("upload",cfg).add_child("data",addon_data);
 
 		LOG_NET << "uploading add-on...\n";
-		// @todo Should be enabled once the campaign server can be recompiled.
-		network::send_data(data, sock, true);
+		network::send_data(data, sock);
 
 		sock = dialogs::network_send_dialog(disp,_("Sending add-on"),data,sock);
 		if(!sock) {
@@ -561,7 +564,7 @@ namespace {
 		config data;
 		data.add_child("delete",msg);
 
-		network::send_data(data, sock, true);
+		network::send_data(data, sock);
 
 		sock = network::receive_data(data,sock,5000);
 		if(!sock) {
@@ -585,7 +588,7 @@ namespace {
 		// Proceed to download and install
 		config request;
 		request.add_child("request_campaign")["name"] = addon_id;
-		network::send_data(request, sock, true);
+		network::send_data(request, sock);
 
 		utils::string_map syms;
 		syms["addon_title"] = addon_title;
@@ -729,7 +732,6 @@ namespace {
 			std::map<std::string, version_info> remote_version_map;
 			foreach (const config &remote_addon, remote_addons_list)
 			{
-				if(remote_addon == NULL) continue; // shouldn't happen...
 				const std::string& name = remote_addon["name"];
 				if (std::find(dependencies.begin(), dependencies.end(), name) != dependencies.end()) {
 					const std::string& version = remote_addon["version"];
@@ -883,7 +885,6 @@ namespace {
 		std::map<std::string, version_info> remote_version_map;
 		foreach (const config &remote_addon, remote_addons_list)
 		{
-			if(remote_addon == NULL) continue; // shouldn't happen...
 			const std::string& name = remote_addon["name"];
 			const std::string& version = remote_addon["version"];
 			try {
@@ -1126,7 +1127,7 @@ namespace {
 
 			config cfg;
 			cfg.add_child("request_campaign_list");
-			network::send_data(cfg, sock, true);
+			network::send_data(cfg, sock);
 			network::connection res = dialogs::network_receive_dialog(disp, _("Requesting list of add-ons"), cfg, sock);
 			if(!res) {
 				return;
@@ -1303,7 +1304,7 @@ namespace {
 			}
 
 			// Handle download
-			install_addon(disp, addons[index], types[index], titles[index],
+			install_addon(disp, addons[index], titles[index], types[index],
 			              uploads[index], versions[index], net_manager, sock, do_refresh);
 			if (!addon_dependencies_met(disp, addons_tree, addons[index], net_manager, sock, do_refresh)) {
 				const std::string err_title = _("Installation of some dependency failed");
@@ -1349,26 +1350,23 @@ namespace {
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1);
 
-		int index = 0;
+		int index = -1;
 		int res;
 
 		do {
-			gui::dialog addon_dialog(disp,
-							_("Uninstall add-ons"), _("Choose the add-on to remove."),
-							gui::OK_CANCEL);
-			gui::menu::imgsel_style &addon_style = gui::menu::bluebg_style;
-
-			gui::menu *addon_menu = new gui::menu(disp.video(), addons, false, -1,
-					gui::dialog::max_menu_width, &sorter, &addon_style, false);
-			addon_dialog.set_menu(addon_menu);
-			index = addon_dialog.show();
-
-			if(index < 0)
+			gui2::tsimple_item_selector dlg(
+				_("Uninstall add-ons"), _("Choose the add-on to remove."), addons);
+			dlg.set_selected_index(index);
+			dlg.set_ok_label(_("Remove"));
+			dlg.show(disp.video());
+			index = dlg.selected_index();
+			
+			if(index == -1)
 				return;
 
 			std::string confirm_message = _("Are you sure you want to remove the add-on '$addon|'?");
 			utils::string_map symbols;
-			symbols["addon"] = addons.at(index);
+			symbols["addon"] = addons.at(static_cast<size_t>(index));
 			confirm_message = utils::interpolate_variables_into_string(confirm_message, &symbols);
 
 			res = gui2::show_message(disp.video()

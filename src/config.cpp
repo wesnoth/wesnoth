@@ -63,7 +63,7 @@ config::attribute_value &config::attribute_value::operator=(bool v)
 
 config::attribute_value &config::attribute_value::operator=(int v)
 {
-	value = v;
+	value = double(v);
 	return *this;
 }
 
@@ -103,7 +103,6 @@ bool config::attribute_value::to_bool(bool def) const
 
 int config::attribute_value::to_int(int def) const
 {
-	if (const int *p = boost::get<const int>(&value)) return *p;
 	if (const double *p = boost::get<const double>(&value)) return int(*p);
 	return def;
 }
@@ -111,7 +110,6 @@ int config::attribute_value::to_int(int def) const
 double config::attribute_value::to_double(double def) const
 {
 	if (const double *p = boost::get<const double>(&value)) return *p;
-	if (const int *p = boost::get<const int>(&value)) return *p;
 	return def;
 }
 
@@ -124,8 +122,6 @@ struct config_attribute_str_visitor : boost::static_visitor<std::string>
 		static std::string s_yes("yes"), s_no("no");
 		return b ? s_yes : s_no;
 	}
-	std::string operator()(int i) const
-	{ return str_cast(i); }
 	std::string operator()(double d) const
 	{ return str_cast(d); }
 	std::string operator()(std::string const &s) const
@@ -212,6 +208,22 @@ config& config::operator=(const config& cfg)
 	values.insert(cfg.values.begin(), cfg.values.end());
 	return *this;
 }
+
+#ifdef HAVE_CXX0X
+config::config(config &&cfg):
+	values(std::move(cfg.values)),
+	children(std::move(cfg.children)),
+	ordered_children(std::move(cfg.ordered_children))
+{
+}
+
+config &config::operator=(config &&cfg)
+{
+	clear();
+	swap(cfg);
+	return *this;
+}
+#endif
 
 bool config::has_attribute(const std::string &key) const
 {
@@ -377,6 +389,18 @@ config& config::add_child(const std::string& key, const config& val)
 	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
 	return *v.back();
 }
+
+#ifdef HAVE_CXX0X
+config &config::add_child(const std::string &key, config &&val)
+{
+	check_valid(val);
+
+	child_list &v = children[key];
+	v.push_back(new config(std::move(val)));
+	ordered_children.push_back(child_pos(children.find(key), v.size() - 1));
+	return *v.back();
+}
+#endif
 
 config &config::add_child_at(const std::string &key, const config &val, unsigned index)
 {
@@ -615,22 +639,6 @@ config &config::find_child(const std::string &key, const std::string &name,
 		return invalid;
 }
 
-const config& config::find_child_recursive(const std::string& key,
-	const std::string &name, const std::string &value) const
-{
-	const config& res = this->find_child(key, name, value);
-	if (res)
-		return res;
-
-	foreach (const any_child &child, all_children_range()) {
-		const config& res2 = child.cfg.find_child_recursive(key, name, value);
-
-		if (res2)
-			return res2;
-	}
-
-	return invalid;
-}
 namespace {
 	/**
 	 * Helper struct for iterative config clearing.

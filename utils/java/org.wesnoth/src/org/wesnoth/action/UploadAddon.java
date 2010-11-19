@@ -17,6 +17,7 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.wesnoth.Activator;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WorkspaceUtils;
@@ -36,10 +37,10 @@ public class UploadAddon extends ObjectActionDelegate
 				public void run(IProgressMonitor monitor)
 						throws InvocationTargetException, InterruptedException
 				{
-					monitor.beginTask("Uploading addon...", 50);
+					monitor.beginTask(Messages.UploadAddon_0, 50);
 					monitor.worked(10);
 					OutputStream consoleStream = GUIUtils.
-						createConsole("Upload addon result: ", null, true).newOutputStream();
+						createConsole(Messages.UploadAddon_1, null, true).newOutputStream();
 					WMLTools.runWesnothAddonManager(fullPath,
 							new OutputStream[] { consoleStream }, new OutputStream[] { consoleStream });
 					monitor.worked(40);

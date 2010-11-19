@@ -40,6 +40,7 @@ using boost::asio::ip::tcp;
 asio_listener::asio_listener( ) :
     disconnected_( false ),
     listener_( NULL ),
+	header_(),
     raw_mode_buffer_size_( ana::INITIAL_RAW_MODE_BUFFER_SIZE ),
     next_message_timer_( NULL )
 {

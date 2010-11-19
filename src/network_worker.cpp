@@ -30,7 +30,6 @@
 #include "filesystem.hpp"
 #include "thread.hpp"
 #include "serialization/binary_or_text.hpp"
-#include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "wesconfig.h"
 
@@ -118,7 +117,6 @@ struct buffer {
 		config_buf(),
 		config_error(""),
 		stream(),
-		gzipped(false),
 		raw_buffer()
 		{}
 
@@ -126,12 +124,6 @@ struct buffer {
 	mutable config config_buf;
 	std::string config_error;
 	std::ostringstream stream;
-
-	/**
-	 * Do we wish to send the data gzipped, if not use binary wml. This needs
-	 * to stay until the last user of binary_wml has been removed.
-	 */
-	bool gzipped;
 
 	/**
 	 * This field is used if we're sending a raw buffer instead of through a
@@ -145,21 +137,6 @@ struct buffer {
 bool managed = false, raw_data_only = false;
 typedef std::vector< buffer* > buffer_set;
 buffer_set outgoing_bufs[NUM_SHARDS];
-
-struct schema_pair
-{
-	schema_pair() :
-		incoming(),
-		outgoing()
-	{
-	}
-
-	compression_schema incoming, outgoing;
-};
-
-typedef std::map<TCPsocket,schema_pair> schema_map;
-
-schema_map schemas; //schemas_mutex
 
 /** a queue of sockets that we are waiting to receive on */
 typedef std::vector<TCPsocket> receive_list;
@@ -178,7 +155,6 @@ socket_stats_map transfer_stats; // stats_mutex
 int socket_errors[NUM_SHARDS];
 threading::mutex* shard_mutexes[NUM_SHARDS];
 threading::mutex* stats_mutex = NULL;
-threading::mutex* schemas_mutex = NULL;
 threading::mutex* received_mutex = NULL;
 threading::condition* cond[NUM_SHARDS];
 
@@ -356,19 +332,13 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 	return true;
 }
 
-static void output_to_buffer(TCPsocket sock, const config& cfg, std::ostringstream& compressor, bool gzipped)
+/**
+ * @todo See if the TCPsocket argument should be removed.
+ */
+static void output_to_buffer(TCPsocket /*sock*/, const config& cfg, std::ostringstream& compressor)
 {
-	if(gzipped) {
-		config_writer writer(compressor, true);
-		writer.write(cfg);
-	} else {
-		compression_schema *compress;
-		{
-			const threading::lock lock(*schemas_mutex);
-			compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.outgoing;
-		}
-		write_compressed(compressor, cfg, *compress);
-	}
+	config_writer writer(compressor, true);
+	writer.write(cfg);
 }
 
 static void make_network_buffer(const char* input, int len, std::vector<char>& buf)
@@ -621,6 +591,7 @@ static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 		return SOCKET_ERRORED;
 	}
 
+	#undef SDLNet_Read32
 	const int len = SDLNet_Read32(reinterpret_cast<void*>(num_buf));
 
 	if(len < 1 || len > 100000000) {
@@ -778,21 +749,8 @@ static int process_queue(void* shard_num)
 		} else {
 			std::string buffer(buf.begin(), buf.end());
 			std::istringstream stream(buffer);
-			// Binary wml starts with a char < 4, the first char of a gzip header is 31
-			// so test that here and use the proper reader.
 			try {
-				if(stream.peek() == 31) {
-					read_gz(received_data->config_buf, stream);
-					received_data->gzipped = true;
-				} else {
-					compression_schema *compress;
-					{
-						const threading::lock lock_schemas(*schemas_mutex);
-						compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
-					}
-					read_compressed(received_data->config_buf, stream, *compress);
-					received_data->gzipped = false;
-				}
+				read_gz(received_data->config_buf, stream);
 			} catch(config::error &e)
 			{
 				received_data->config_error = e.message;
@@ -823,7 +781,6 @@ manager::manager(size_t p_min_threads,size_t p_max_threads) : active_(!managed)
 			cond[i] = new threading::condition();
 		}
 		stats_mutex = new threading::mutex();
-		schemas_mutex = new threading::mutex();
 		received_mutex = new threading::mutex();
 
 		min_threads = p_min_threads;
@@ -874,10 +831,8 @@ manager::~manager()
  		}
 
 		delete stats_mutex;
-		delete schemas_mutex;
 		delete received_mutex;
 		stats_mutex = 0;
-		schemas_mutex = 0;
 		received_mutex = 0;
 
 		for(int i = 0; i != NUM_SHARDS; ++i) {
@@ -929,7 +884,7 @@ void receive_data(TCPsocket sock)
 	}
 }
 
-TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped,network::bandwidth_in_ptr& bandwidth_in)
+TCPsocket get_received_data(TCPsocket sock, config& cfg, network::bandwidth_in_ptr& bandwidth_in)
 {
 	assert(!raw_data_only);
 	const threading::lock lock_received(*received_mutex);
@@ -949,16 +904,12 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped,network::
 		std::string error = (*itor)->config_error;
 		buffer* buf = *itor;
 		received_data_queue.erase(itor);
-		if (gzipped)
-			*gzipped = buf->gzipped;
 		delete buf;
 		throw config::error(error);
 	} else {
 		cfg.swap((*itor)->config_buf);
 		const TCPsocket res = (*itor)->sock;
 		buffer* buf = *itor;
-		if (gzipped)
-			*gzipped = buf->gzipped;
 		bandwidth_in.reset(new network::bandwidth_in((*itor)->raw_buffer.size()));
 		received_data_queue.erase(itor);
 		delete buf;
@@ -1010,13 +961,12 @@ void queue_file(TCPsocket sock, const std::string& filename)
  	queue_buffer(sock, queued_buf);
 }
 
-size_t queue_data(TCPsocket sock,const config& buf, const bool gzipped, const std::string& packet_type)
+size_t queue_data(TCPsocket sock,const config& buf, const std::string& packet_type)
 {
 	DBG_NW << "queuing data...\n";
 
 	buffer* queued_buf = new buffer(sock);
-	output_to_buffer(sock, buf, queued_buf->stream, gzipped);
-	queued_buf->gzipped = gzipped;
+	output_to_buffer(sock, buf, queued_buf->stream);
 	const size_t size = queued_buf->stream.str().size();
 
 	network::add_bandwidth_out(packet_type, size);
@@ -1078,10 +1028,6 @@ bool close_socket(TCPsocket sock)
 		const threading::lock lock(*shard_mutexes[shard]);
 
 		pending_receives[shard].erase(std::remove(pending_receives[shard].begin(),pending_receives[shard].end(),sock),pending_receives[shard].end());
-		{
-			const threading::lock lock_schemas(*schemas_mutex);
-			schemas.erase(sock);
-		}
 
 		const socket_state_map::iterator lock_it = sockets_locked[shard].find(sock);
 		if(lock_it == sockets_locked[shard].end()) {
@@ -1114,8 +1060,6 @@ TCPsocket detect_error()
 					sockets_locked[shard].erase(i++);
 					pending_receives[shard].erase(std::remove(pending_receives[shard].begin(),pending_receives[shard].end(),sock),pending_receives[shard].end());
 					remove_buffers(sock);
-					const threading::lock lock_schema(*schemas_mutex);
-					schemas.erase(sock);
 					return sock;
 				}
 				else

@@ -23,24 +23,15 @@
 
 #include "binary_or_text.hpp"
 #include "config.hpp"
+#include "log.hpp"
 #include "wesconfig.h"
-#include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 
 
 #include <boost/iostreams/filter/gzip.hpp>
 
-bool detect_format_and_read(config &cfg, std::istream &in)
-{
-	unsigned char c = in.peek();
-	if (c < 4) {
-		read_compressed(cfg, in);
-		return true;
-	} else {
-		read(cfg, in);
-		return false;
-	}
-}
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
 
 config_writer::config_writer(
 	std::ostream &out, bool compress, int level) :

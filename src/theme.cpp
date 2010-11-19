@@ -438,13 +438,13 @@ theme::label::label(const config& cfg) :
 	    std::vector<std::string>::iterator c=rgb_vec.begin();
 	    int r,g,b;
 	    r = (atoi(c->c_str()));
-	    c++;
+	    ++c;
 	    if(c != rgb_vec.end()){
 	      g = (atoi(c->c_str()));
 	    }else{
 	      g=0;
 	    }
-	    c++;
+	    ++c;
 	    if(c != rgb_vec.end()){
 	      b=(atoi(c->c_str()));
 	    }else{
@@ -479,13 +479,13 @@ theme::status_item::status_item(const config& cfg) :
 	    std::vector<std::string>::iterator c=rgb_vec.begin();
 	    int r,g,b;
 	    r = (atoi(c->c_str()));
-	    c++;
+	    ++c;
 	    if(c != rgb_vec.end()){
 	      g = (atoi(c->c_str()));
 	    }else{
 	      g=0;
 	    }
-	    c++;
+	    ++c;
 	    if(c != rgb_vec.end()){
 	      b=(atoi(c->c_str()));
 	    }else{

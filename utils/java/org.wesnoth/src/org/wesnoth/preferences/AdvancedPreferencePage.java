@@ -11,6 +11,7 @@ package org.wesnoth.preferences;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
+import org.wesnoth.Messages;
 
 public class AdvancedPreferencePage extends AbstractPreferencePage
 {
@@ -19,16 +20,16 @@ public class AdvancedPreferencePage extends AbstractPreferencePage
 		super(GRID);
 
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-		setDescription("Advanced preferences");
+		setDescription(Messages.AdvancedPreferencePage_0);
 	}
 
 	@Override
 	protected void createFieldEditors()
 	{
 		addField(new BooleanFieldEditor(
-				Constants.P_ADV_NO_TERRAIN_GFX, "NO_TERRAIN_GFX defined", 1,
+				Constants.P_ADV_NO_TERRAIN_GFX, Messages.AdvancedPreferencePage_1, 1,
 				getFieldEditorParent()),
-				"If this is set the Terrain Graphics macros won't be parsed" +
-				" => improved performance. Check this only if you need them.");
+				Messages.AdvancedPreferencePage_2 +
+				Messages.AdvancedPreferencePage_3);
 	}
 }

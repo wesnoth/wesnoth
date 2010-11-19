@@ -23,7 +23,7 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 	protected int					lastPageHashCode_	= 0;
 	protected boolean				isFinished_			= false;
 	protected Object				data_				= null;
-	protected String				objectName_			= "";
+	protected String				objectName_			= ""; //$NON-NLS-1$
 
 	public NewWizardTemplate()
 	{

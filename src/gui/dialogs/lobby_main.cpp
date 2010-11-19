@@ -199,7 +199,7 @@ void tlobby_main::send_chat_message(const std::string& message, bool /*allies_on
 	data.add_child("message", msg);
 
 	add_chat_message(time(NULL), preferences::login(), 0, message); //local echo
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void tlobby_main::user_relation_changed(const std::string& /*name*/)
@@ -593,7 +593,7 @@ void tlobby_main::update_gamelist_diff()
 		} else {
 			if (list_i >= gamelistbox_->get_item_count()) {
 				ERR_LB << "Ran out of listbox items -- triggering a full refresh\n";
-				network::send_data(config("refresh_lobby"), 0, true);
+				network::send_data(config("refresh_lobby"), 0);
 				return;
 			}
 			if (list_i + list_rows_deleted >= gamelist_id_at_row_.size()) {
@@ -601,14 +601,14 @@ void tlobby_main::update_gamelist_diff()
 					<< list_i << " + " << list_rows_deleted
 					<< " >= " << gamelist_id_at_row_.size()
 					<< " -- triggering a full refresh\n";
-				network::send_data(config("refresh_lobby"), 0, true);
+				network::send_data(config("refresh_lobby"), 0);
 				return;
 			}
 			int listbox_game_id = gamelist_id_at_row_[list_i + list_rows_deleted];
 			if (game.id != listbox_game_id) {
 				ERR_LB << "Listbox game id does not match expected id "
 					<< listbox_game_id << " " << game.id << " (row " << list_i << ")\n";
-				network::send_data(config("refresh_lobby"), 0, true);
+				network::send_data(config("refresh_lobby"), 0);
 				return;
 			}
 			if (game.display_status == game_info::UPDATED) {
@@ -989,14 +989,7 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 				  &tlobby_main::create_button_callback
 				, this
 				, boost::ref(window)));
-/*
-	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "show_help", false)
-			, boost::bind(
-				  &tlobby_main::show_help_button_callback
-				, this
-				, boost::ref(window)));
-*/
+
 	connect_signal_mouse_left_click(
 			  find_widget<tbutton>(&window, "refresh", false)
 			, boost::bind(
@@ -1217,17 +1210,6 @@ void tlobby_main::add_active_window_message(const std::string& sender, const std
 	append_to_chatbox(ss.str());
 }
 
-void tlobby_main::next_active_window()
-{
-	if (open_windows_.size() < 2) return;
-	if (active_window_ == open_windows_.size() - 1) {
-		active_window_ = 0;
-	} else {
-		active_window_++;
-	}
-	active_window_changed();
-}
-
 void tlobby_main::switch_to_window(tlobby_chat_window* t)
 {
 	switch_to_window(t - &open_windows_[0]);
@@ -1303,7 +1285,7 @@ void tlobby_main::close_window(size_t idx)
 		msg["room"] = t.name;
 		msg["player"] = preferences::login();
 		data.add_child("room_part", msg);
-		network::send_data(data, 0, true);
+		network::send_data(data, 0);
 	}
 	if (active_window_ == open_windows_.size() - 1) {
 		active_window_--;
@@ -1594,7 +1576,7 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 			join["password"] = password;
 		}
 	}
-	network::send_data(response, 0, true);
+	network::send_data(response, 0);
 	if (observe && game.started) {
 		playmp_controller::set_replay_last_turn(game.current_turn);
 	}
@@ -1630,11 +1612,6 @@ void tlobby_main::send_message_to_active_window(const std::string& input)
 	}
 }
 
-void tlobby_main::next_window_button_callback(twindow& /*window*/)
-{
-	next_active_window();
-}
-
 void tlobby_main::close_window_button_callback(twindow& /*window*/)
 {
 	close_active_window();
@@ -1648,7 +1625,7 @@ void tlobby_main::create_button_callback(gui2::twindow& window)
 
 void tlobby_main::refresh_button_callback(gui2::twindow& /*window*/)
 {
-	network::send_data(config("refresh_lobby"), 0, true);
+	network::send_data(config("refresh_lobby"), 0);
 }
 
 
@@ -1664,12 +1641,8 @@ void tlobby_main::show_preferences_button_callback(gui2::twindow& window)
 		 */
 		window.invalidate_layout();
 
-		network::send_data(config("refresh_lobby"), 0, true);
+		network::send_data(config("refresh_lobby"), 0);
 	}
-}
-
-void tlobby_main::show_help_button_callback(gui2::twindow& /*window*/)
-{
 }
 
 void tlobby_main::room_switch_callback(twindow& /*window*/)
@@ -1798,7 +1771,7 @@ void tlobby_main::user_dialog_callback(user_info* info)
 	//update_gamelist();
 	delay_playerlist_update_ = false;
 	player_list_dirty_ = true;
-	network::send_data(config("refresh_lobby"), 0, true);
+	network::send_data(config("refresh_lobby"), 0);
 }
 
 void tlobby_main::skip_replay_changed_callback(twidget* w)

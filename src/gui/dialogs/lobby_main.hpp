@@ -240,11 +240,6 @@ private:
 	void add_active_window_message(const std::string& sender, const std::string& message);
 
 	/**
-	 * Switch to the next active window
-	 */
-	void next_active_window();
-
-	/**
 	 * Switch to the window given by a vaild pointer (e.g. received from a call
 	 * to *_window_open)
 	 */
@@ -300,15 +295,11 @@ private:
 
 	void send_message_to_active_window(const std::string& input);
 
-	void next_window_button_callback(twindow& window);
-
 	void close_window_button_callback(twindow& window);
 
 	void create_button_callback(twindow& window);
 
 	void show_preferences_button_callback(twindow& window);
-
-	void show_help_button_callback(twindow& window);
 
 	void refresh_button_callback(twindow& window);
 

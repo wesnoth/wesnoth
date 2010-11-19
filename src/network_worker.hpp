@@ -60,14 +60,14 @@ void set_use_system_sendfile(bool);
 /** Function to asynchronously received data to the given socket. */
 void receive_data(TCPsocket sock);
 
-TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped, network::bandwidth_in_ptr&);
+TCPsocket get_received_data(TCPsocket sock, config& cfg, network::bandwidth_in_ptr&);
 
 TCPsocket get_received_data(std::vector<char>& buf);
 
 void queue_file(TCPsocket sock, const std::string&);
 
 void queue_raw_data(TCPsocket sock, const char* buf, int len);
-size_t queue_data(TCPsocket sock, const config& buf, const bool gzipped, const std::string& packet_type);
+size_t queue_data(TCPsocket sock, const config& buf, const std::string& packet_type);
 bool is_locked(const TCPsocket sock);
 bool close_socket(TCPsocket sock);
 TCPsocket detect_error();

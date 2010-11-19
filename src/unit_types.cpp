@@ -578,13 +578,13 @@ unit_type::unit_type(const unit_type& o) :
 	hide_help_(o.hide_help_),
 	advances_to_(o.advances_to_),
 	experience_needed_(o.experience_needed_),
+	in_advancefrom_(o.in_advancefrom_),
 	alignment_(o.alignment_),
 	movementType_(o.movementType_),
 	possibleTraits_(o.possibleTraits_),
 	genders_(o.genders_),
 	animations_(o.animations_),
-    build_status_(o.build_status_),
-	portraits_(o.portraits_)
+	build_status_(o.build_status_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
@@ -623,13 +623,13 @@ unit_type::unit_type(config &cfg) :
 	hide_help_(false),
 	advances_to_(),
 	experience_needed_(0),
+	in_advancefrom_(false),
 	alignment_(),
 	movementType_(),
 	possibleTraits_(),
 	genders_(),
 	animations_(),
-	build_status_(NOT_BUILT),
-	portraits_()
+	build_status_(NOT_BUILT)
 {
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
@@ -736,10 +736,6 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	flag_rgb_ = cfg["flag_rgb"].str();
 	game_config::add_color_info(cfg);
 
-
-	foreach (const config &portrait, cfg_.child_range("portrait")) {
-		portraits_.push_back(tportrait(portrait));
-	}
 
 	// Deprecation messages, only seen when unit is parsed for the first time.
 
@@ -1025,9 +1021,20 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 		return;
 	}
 
-	if( xp > 0 && experience_needed_ > xp){
-        DBG_UT << "Lowering experience_needed from " << experience_needed_ << " to " << xp << " due to [advancefrom] of " << to_id << "\n";
-		experience_needed_ = xp;
+	if(xp > 0) {
+		//xp is 0 in case experience= wasn't given.
+		if(!in_advancefrom_) {
+			//This function is called for and only for an [advancefrom] tag in a unit_type referencing this unit_type.
+			in_advancefrom_ = true;
+			experience_needed_ = xp;
+			DBG_UT << "Changing experience_needed from " << experience_needed_ << " to " << xp << " due to (first) [advancefrom] of " << to_id << "\n";
+		}
+		else if(experience_needed_ > xp) {
+			experience_needed_ = xp;
+			DBG_UT << "Lowering experience_needed from " << experience_needed_ << " to " << xp << " due to (multiple, lower) [advancefrom] of " << to_id << "\n";
+		}
+		else
+			DBG_UT << "Ignoring experience_needed change from " << experience_needed_ << " to " << xp << " due to (multiple, higher) [advancefrom] of " << to_id << "\n";
 	}
 
 	// Add advancements to gendered subtypes, if supported by to_unit

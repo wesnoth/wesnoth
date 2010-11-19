@@ -45,12 +45,13 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
 
 
 public class WorkspaceUtils
 {
-	private static String	temporaryFolder_	= "";
+	private static String	temporaryFolder_	= ""; //$NON-NLS-1$
 
 	/**
 	 * Gets the selected project or or null if none selected
@@ -238,8 +239,8 @@ public class WorkspaceUtils
 	{
 		if (temporaryFolder_.isEmpty())
 		{
-			temporaryFolder_ = System.getProperty("java.io.tmpdir") +
-						Path.SEPARATOR + "wesnoth_plugin" + Path.SEPARATOR;
+			temporaryFolder_ = System.getProperty("java.io.tmpdir") + //$NON-NLS-1$
+						Path.SEPARATOR + "wesnoth_plugin" + Path.SEPARATOR; //$NON-NLS-1$
 
 			File tmpFile = new File(temporaryFolder_);
 			if (!tmpFile.exists())
@@ -254,8 +255,8 @@ public class WorkspaceUtils
 	 */
 	public static String getRandomFileName()
 	{
-		String result = "";
-		SimpleDateFormat date = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
+		String result = ""; //$NON-NLS-1$
+		SimpleDateFormat date = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss"); //$NON-NLS-1$
 		result += date.format(new Date());
 		return result;
 	}
@@ -272,7 +273,7 @@ public class WorkspaceUtils
 			return null;
 
 		String result = Preferences.getString(Constants.P_WESNOTH_USER_DIR) +
-							Path.SEPARATOR + "data/add-ons/";
+							Path.SEPARATOR + "data/add-ons/"; //$NON-NLS-1$
 		result += (resource.getProject().getName() + Path.SEPARATOR);
 		result += resource.getProjectRelativePath().toOSString();
 		return result;
@@ -288,25 +289,25 @@ public class WorkspaceUtils
 		if (!checkConditions(false))
 		{
 			PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
-					Activator.getShell(), "wml_plugin_preferences", null, null);
+					Activator.getShell(), "wml_plugin_preferences", null, null); //$NON-NLS-1$
 			if (pref.open() == Window.CANCEL || !checkConditions(true))
 			{
-				GUIUtils.showErrorMessageBox("Not all mandatory preferences were setup, " +
-						"aborting. Please re-run this if you want to use the plugin.");
+				GUIUtils.showErrorMessageBox(Messages.WorkspaceUtils_7 +
+						Messages.WorkspaceUtils_8);
 				return;
 			}
 
 			if (guided)
 			{
 				GUIUtils.showInfoMessageBox(
-						"Good. The preferences were set.\n" +
-						"Now, I'll make projects for each existing campaign "+
-						"and user addon. It will take a while."+
-						"Press OK to continue.");
+						Messages.WorkspaceUtils_9 +
+						Messages.WorkspaceUtils_10+
+						Messages.WorkspaceUtils_11+
+						Messages.WorkspaceUtils_12);
 			}
 		}
 
-		WorkspaceJob job = new WorkspaceJob("Setting up the workspace...") {
+		WorkspaceJob job = new WorkspaceJob(Messages.WorkspaceUtils_13) {
 			@Override
 			public IStatus runInWorkspace(IProgressMonitor monitor)
 			{
@@ -314,14 +315,14 @@ public class WorkspaceUtils
 				{
 					// create a default working set
 					IWorkingSetManager manager = getWorkingSetManager();
-					IWorkingSet defaultSet = manager.getWorkingSet("Default");
+					IWorkingSet defaultSet = manager.getWorkingSet("Default"); //$NON-NLS-1$
 					if (defaultSet == null)
 					{
 						// we could get an assert exception if too many
 						// 'setup workspace' are running at a time
 						try
 						{
-							defaultSet = manager.createWorkingSet("Default", new IAdaptable[0]);
+							defaultSet = manager.createWorkingSet("Default", new IAdaptable[0]); //$NON-NLS-1$
 							manager.addWorkingSet(defaultSet);
 						}
 						catch(AssertionFailedException e)
@@ -332,12 +333,12 @@ public class WorkspaceUtils
 
 					// automatically import 'special' folders as projects
 					List<File> files = new ArrayList<File>();
-					String addonsDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR)+"/data/add-ons/";
-					String campaignsDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) + "/data/campaigns/";
+					String addonsDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR)+"/data/add-ons/"; //$NON-NLS-1$
+					String campaignsDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) + "/data/campaigns/"; //$NON-NLS-1$
 
 					File[] tmp = null;
-					if (GUIUtils.showMessageBox("Do you want me to create for you" +
-							" projects for each of your addon, so you can easily use them?",
+					if (GUIUtils.showMessageBox(Messages.WorkspaceUtils_18 +
+							Messages.WorkspaceUtils_19,
 							SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
 					{
 						// useraddons/add-ons/data
@@ -346,8 +347,8 @@ public class WorkspaceUtils
 							files.addAll(Arrays.asList(tmp));
 					}
 
-					if (GUIUtils.showMessageBox("Do you want me to create for you" +
-							" projects for each mainline campaign?",
+					if (GUIUtils.showMessageBox(Messages.WorkspaceUtils_20 +
+							Messages.WorkspaceUtils_21,
 							SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
 					{
 						// workingdir/data/campaigns
@@ -356,18 +357,18 @@ public class WorkspaceUtils
 							files.addAll(Arrays.asList(tmp));
 					}
 
-					monitor.beginTask("Setting up the workspace...", files.size() * 35);
+					monitor.beginTask(Messages.WorkspaceUtils_22, files.size() * 35);
 					for(File file: files)
 					{
 						if (file.isDirectory() == false ||
-							file.getName().startsWith("."))
+							file.getName().startsWith(".")) //$NON-NLS-1$
 							continue;
 
 						String projectName = file.getName();
 						if (StringUtils.normalizePath(file.getAbsolutePath()).contains(
 							StringUtils.normalizePath(campaignsDir)))
 						{
-							projectName = "_Mainline_" + file.getName();
+							projectName = "_Mainline_" + file.getName(); //$NON-NLS-1$
 						}
 
 						IProjectDescription description =
@@ -392,19 +393,19 @@ public class WorkspaceUtils
 					if (guided)
 					{
 						GUIUtils.showInfoMessageBox(
-								"Congrats!\n" +
-								"Everything is set up. Now you can use the plugin.\n\n" +
-								"Good luck and have fun!");
+								Messages.WorkspaceUtils_25 +
+								Messages.WorkspaceUtils_26 +
+								Messages.WorkspaceUtils_27);
 					}
 					else
 					{
-						Logger.getInstance().log("setupWorkspace was successful",
-								"Workspace was set up successfully.");
+						Logger.getInstance().log(Messages.WorkspaceUtils_28,
+								Messages.WorkspaceUtils_29);
 					}
 				} catch (Exception e)
 				{
 					Logger.getInstance().logException(e);
-					GUIUtils.showErrorMessageBox("There was an error trying to setup the workspace.");
+					GUIUtils.showErrorMessageBox(Messages.WorkspaceUtils_30);
 				}
 
 				monitor.done();
@@ -431,8 +432,8 @@ public class WorkspaceUtils
 		// id = org.eclipse.ui.ide.multiFilter
 		// args = 1.0-name-matches-false-false-Love_to_death
 		project.createFilter(IResourceFilterDescription.EXCLUDE_ALL | IResourceFilterDescription.FOLDERS,
-				new FileInfoMatcherDescription("org.eclipse.ui.ide.multiFilter",
-						"1.0-name-matches-false-false-" + folderName),
+				new FileInfoMatcherDescription("org.eclipse.ui.ide.multiFilter", //$NON-NLS-1$
+						"1.0-name-matches-false-false-" + folderName), //$NON-NLS-1$
 				IResource.BACKGROUND_REFRESH, new NullProgressMonitor());
 	}
 
@@ -454,7 +455,7 @@ public class WorkspaceUtils
 			!validPath(wmltoolsDir) || !validPath(workingDir))
 		{
 			if (displayWarning)
-				GUIUtils.showWarnMessageBox("Please set all plugin's preferences before using it.");
+				GUIUtils.showWarnMessageBox(Messages.WorkspaceUtils_33);
 			return false;
 		}
 		return true;

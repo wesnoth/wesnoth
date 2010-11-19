@@ -270,13 +270,29 @@ function wml_actions.switch(cfg)
 end
 
 function wml_actions.scroll_to(cfg)
-	wesnoth.scroll_to_tile(cfg.x, cfg.y, cfg.check_fogged)
+	local x = tonumber(cfg.x) or helper.wml_error("invalid x= in [scroll_to]")
+	local y = tonumber(cfg.y) or helper.wml_error("invalid y= in [scroll_to]")
+	wesnoth.scroll_to_tile(x, y, cfg.check_fogged)
 end
 
 function wml_actions.scroll_to_unit(cfg)
 	local u = wesnoth.get_units(cfg)[1]
 	if not u then return end
 	wesnoth.scroll_to_tile(u.x, u.y, cfg.check_fogged)
+end
+
+function wml_actions.select_unit(cfg)
+	local u = wesnoth.get_units(cfg)[1]
+	if not u then return end
+	local fire_event = cfg.fire_event
+	local highlight = (cfg.highlight or true)
+
+	wesnoth.select_hex(u.x, u.y)
+
+	if highlight then wesnoth.highlight_hex(u.x, u.y) end
+	if fire_event then
+		wesnoth.fire_event("select", u.x, u.y)
+	end
 end
 
 function wml_actions.unit_overlay(cfg)
@@ -343,7 +359,8 @@ function wml_actions.store_unit(cfg)
 end
 
 function wml_actions.sound(cfg)
-	wesnoth.play_sound(cfg.name, cfg["repeat"])
+	local name = cfg.name or helper.wml_error("[sound] missing required name= attribute")
+	wesnoth.play_sound(name, cfg["repeat"])
 end
 
 function wml_actions.store_locations(cfg)
@@ -368,27 +385,45 @@ function wml_actions.store_reachable_locations(cfg)
 		helper.wml_error "[store_reachable_locations] missing required [filter] tag"
 	local location_filter = helper.get_child(cfg, "filter_location")
 	local range = cfg.range or "movement"
+	local moves = cfg.moves or "current"
 	local variable = cfg.variable or helper.wml_error "[store_reachable_locations] missing required variable= key"
+	local reach_param = { viewing_side = cfg.viewing_side or 0 }
+	if range == "vision" then
+		moves = "max"
+		reach_param.ignore_units = true
+	end
 
-	local res = location_set.create()
+	local reach = location_set.create()
 
 	for i,unit in ipairs(wesnoth.get_units(unit_filter)) do
-		local reach = wesnoth.find_reach(unit)
+		local unit_reach
+		if moves == "max" then
+			local saved_moves = unit.moves
+			unit.moves = unit.max_moves
+			unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, reach_param))
+			unit.moves = saved_moves
+		else
+			unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, reach_param))
+		end
 
-		for j,loc in ipairs(reach) do
-			if wesnoth.match_location(loc[1], loc[2], location_filter) then
-				res:insert(loc[1], loc[2])
-			end
-
-			if range == "attack" then
-				res:of_pairs(wesnoth.get_locations
-					{ { "filter_adjacent_location", { x=loc[1], y=loc[2] } },
-					  { "and", location_filter } })
-			end
+		if range == "vision" or range == "attack" then
+			unit_reach:iter(function(x, y)
+				reach:insert(x, y)
+				for u,v in helper.adjacent_tiles(x, y) do
+					reach:insert(u, v)
+				end
+			end)
+		else
+			reach:union(unit_reach)
 		end
 	end
 
-	res:to_wml_var(variable)
+	if location_filter then
+		reach = reach:filter(function(x, y)
+			return wesnoth.match_location(x, y, location_filter)
+		end)
+	end
+	reach:to_wml_var(variable)
 end
 
 function wml_actions.hide_unit(cfg)
@@ -493,6 +528,8 @@ function wml_actions.move_unit(cfg)
 			while true do
 				x = tonumber(x) or helper.wml_error(coordinate_error)
 				y = tonumber(y) or helper.wml_error(coordinate_error)
+				local move_cost = wesnoth.unit_movement_cost(current_unit, wesnoth.get_terrain(x, y))
+				if move_cost >= 99 then helper.wml_error(coordinate_error) end
 				x, y = wesnoth.find_vacant_tile(x, y, current_unit)
 				move_string_x = string.format("%s,%u", move_string_x, x)
 				move_string_y = string.format("%s,%u", move_string_y, y)
@@ -549,4 +586,35 @@ function wml_actions.delay(cfg)
 	local delay = tonumber(cfg.time) or
 		helper.wml_error "[delay] missing required time= attribute."
 	wesnoth.delay(delay)
+end
+
+function wml_actions.floating_text(cfg)
+	local locs = wesnoth.get_locations(cfg)
+	local text = cfg.text or helper.wml_error("[floating_text] missing required text= attribute")
+
+	for i, loc in ipairs(locs) do
+		wesnoth.float_label(loc[1], loc[2], text)
+	end
+end
+
+function wml_actions.petrify(cfg)
+	for index, unit in ipairs(wesnoth.get_units(cfg)) do
+		unit.status.petrified = true
+		wml_actions.redraw({ side = unit.side }) -- may be unneccessary
+	end
+
+	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
+		unit.status.petrified = true
+	end
+end
+
+function wml_actions.unpetrify(cfg)
+	for index, unit in ipairs(wesnoth.get_units(cfg)) do
+		unit.status.petrified = false
+		wml_actions.redraw({ side = unit.side }) -- may be unneccessary
+	end
+
+	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
+		unit.status.petrified = false
+	end
 end

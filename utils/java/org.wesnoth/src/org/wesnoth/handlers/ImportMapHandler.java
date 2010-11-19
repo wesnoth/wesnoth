@@ -13,6 +13,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.swt.SWT;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.MapUtils;
 import org.wesnoth.utils.WorkspaceUtils;
@@ -26,13 +27,13 @@ public class ImportMapHandler extends AbstractHandler
 		IFolder selectedFolder = WorkspaceUtils.getSelectedFolder();
 		if (selectedFolder == null)
 		{
-			Logger.getInstance().log("no directory selected (importMapHandler)",
-				"Please select a folder before proceeding.");
+			Logger.getInstance().log(Messages.ImportMapHandler_0,
+				Messages.ImportMapHandler_1);
 		}
 
-		if (!selectedFolder.getName().equals("maps") &&
-				GUIUtils.showMessageBox("A map should be imported into a 'maps' folder. " +
-						"Do you want to proceed?",
+		if (!selectedFolder.getName().equals("maps") && //$NON-NLS-1$
+				GUIUtils.showMessageBox(Messages.ImportMapHandler_3 +
+						Messages.ImportMapHandler_4,
 						SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO)
 			return null;
 

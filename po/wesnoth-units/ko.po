@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-03 21:59+0200\n"
-"PO-Revision-Date: 2006-03-21 21:06-0800\n"
-"Last-Translator: Andrew <Sfradix@hotmail.com>\n"
+"POT-Creation-Date: 2010-11-05 17:41+0100\n"
+"PO-Revision-Date: 2010-11-05 20:47+0900\n"
+"Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
 msgid "Blood Bat"
-msgstr "블러드 뱃"
+msgstr "피의 박쥐"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:21
@@ -31,6 +31,9 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"피의 박쥐라는 이름은 그들이 선호하는 식단의 상징과도 같은 붉은 빛깔때문에 붙"
+"여진 것이다. 이 생명체들은 재빠르며, 또한 그들이 공격한 대상의 피를 빨아들여 "
+"그 희생자들이 잃은 체력의 일부를 취할 수 있다."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -46,13 +49,12 @@ msgstr ""
 #: data/core/units/monsters/Water_Serpent.cfg:43
 #: data/core/units/monsters/Wolf.cfg:50
 msgid "fangs"
-msgstr "팽"
+msgstr "송곳니"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
-#, fuzzy
 msgid "Dread Bat"
-msgstr "뱀파이어 뱃"
+msgstr "공포의 박쥐"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:21
@@ -61,11 +63,14 @@ msgid ""
 "Bats, gaining the ability to drain not merely the blood but the very life "
 "energy of their victims."
 msgstr ""
+"가장 잔인하고 포악하며 또한 성공적인 피의 박쥐들은 공포의 박쥐가 된다. 그들"
+"은 희생자로부터 단지 피만을 빨아들이는 것이 아니라 생명력 자체를 취할 수 있"
+"는 능력을 갖게 된다."
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
-msgstr "뱀파이어 뱃"
+msgstr "흡혈박쥐"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:21
@@ -74,12 +79,14 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
+"흡혈박쥐는 다른 생명의 피를 먹는 날아다니는 짐승이다. 그들의 송곳니는 그리 강"
+"력하진 않지만, 희생자들의 체력은 그들의 피와 함께 박쥐에게 빨려나간다."
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:4
 #, fuzzy
 msgid "Boat"
-msgstr "블러드 뱃"
+msgstr "Boat"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
@@ -90,8 +97,9 @@ msgstr ""
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
+#, fuzzy
 msgid "Galleon"
-msgstr ""
+msgstr "Galleon"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
@@ -100,8 +108,9 @@ msgstr ""
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
+#, fuzzy
 msgid "Pirate Galleon"
-msgstr ""
+msgstr "Pirate Galleon"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
@@ -114,13 +123,15 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/boats/Pirate_Galleon.cfg:21
 #: data/core/units/boats/Transport_Galleon.cfg:22
+#, fuzzy
 msgid "ballista"
-msgstr ""
+msgstr "ballista"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
+#, fuzzy
 msgid "Transport Galleon"
-msgstr ""
+msgstr "Transport Galleon"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
@@ -133,7 +144,7 @@ msgstr ""
 #: data/core/units/drakes/Arbiter.cfg:4
 #, fuzzy
 msgid "Drake Arbiter"
-msgstr "드레이크 파이터"
+msgstr "Drake Arbiter"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:19
@@ -153,13 +164,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Halberdier.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:53
 msgid "halberd"
-msgstr "할버드"
+msgstr "도끼창"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
-#, fuzzy
 msgid "Armageddon Drake"
-msgstr "파이어 드레이크"
+msgstr "종말의 반룡"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:28
@@ -173,9 +183,8 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:57 data/core/units/drakes/Fire.cfg:42
 #: data/core/units/drakes/Inferno.cfg:44
-#, fuzzy
 msgid "battle claws"
-msgstr "배틀 엑스"
+msgstr "전투용 발톱"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:66
@@ -187,13 +196,15 @@ msgstr "배틀 엑스"
 #: data/core/units/drakes/Inferno.cfg:53 data/core/units/drakes/Sky.cfg:137
 #: data/core/units/drakes/Warrior.cfg:48
 #: data/core/units/monsters/Fire_Dragon.cfg:49
+#: data/core/units/monsters/Fire_Guardian.cfg:40
 msgid "fire breath"
-msgstr "파이어 브레스"
+msgstr "불타는 숨결"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
+#, fuzzy
 msgid "Drake Blademaster"
-msgstr "드레이크 블레이드마스터"
+msgstr "Drake Blademaster"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:21
@@ -212,12 +223,13 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Thrasher.cfg:23
 msgid "war talon"
-msgstr ""
+msgstr "전투 갈고리"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
+#, fuzzy
 msgid "Drake Burner"
-msgstr "드레이크 버너"
+msgstr "Drake Burner"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:20
@@ -240,12 +252,13 @@ msgstr ""
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:67
 #: data/core/units/undead/Spirit_Shadow.cfg:135
 msgid "claws"
-msgstr "클로우"
+msgstr "발톱"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
+#, fuzzy
 msgid "Drake Clasher"
-msgstr "드레이크 클래셔"
+msgstr "Drake Clasher"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:23
@@ -276,7 +289,7 @@ msgstr ""
 #: data/core/units/goblins/Spearman.cfg:53
 #: data/core/units/humans/Horseman.cfg:36
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
-#: data/core/units/humans/Loyalist_Spearman.cfg:113
+#: data/core/units/humans/Loyalist_Spearman.cfg:144
 #: data/core/units/merfolk/Hoplite.cfg:48
 #: data/core/units/merfolk/Hunter.cfg:38 data/core/units/merfolk/Hunter.cfg:46
 #: data/core/units/merfolk/Javelineer.cfg:37
@@ -289,14 +302,15 @@ msgstr ""
 #: data/core/units/saurians/Flanker.cfg:48
 #: data/core/units/saurians/Skirmisher.cfg:132
 #: data/core/units/saurians/Skirmisher.cfg:141
-#: data/core/units/undead/Skele_Chocobone.cfg:26
+#: data/core/units/undead/Skele_Chocobone.cfg:29
 msgid "spear"
-msgstr "스피어"
+msgstr "창"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
+#, fuzzy
 msgid "Drake Enforcer"
-msgstr "드레이크 엔포서"
+msgstr "Drake Enforcer"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
@@ -313,7 +327,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
-msgstr ""
+msgstr "충각"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -322,12 +336,12 @@ msgstr ""
 #: data/core/units/merfolk/Triton.cfg:38 data/core/units/merfolk/Triton.cfg:46
 #: data/core/units/merfolk/Warrior.cfg:36
 msgid "trident"
-msgstr "트라이던트"
+msgstr "삼지창"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
-msgstr "드레이크 파이터"
+msgstr "반룡 투사"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:20
@@ -342,14 +356,13 @@ msgstr ""
 #: data/core/units/drakes/Fighter.cfg:39
 #: data/core/units/drakes/Flameheart.cfg:48
 #: data/core/units/drakes/Flare.cfg:47 data/core/units/drakes/Warrior.cfg:39
-#, fuzzy
 msgid "war blade"
-msgstr "블레이드"
+msgstr "전투 칼날"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
-msgstr "파이어 드레이크"
+msgstr "화염의 반룡"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:19
@@ -363,8 +376,9 @@ msgstr ""
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
+#, fuzzy
 msgid "Drake Flameheart"
-msgstr "드레이크 플레임 하트"
+msgstr "Drake Flameheart"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:27
@@ -380,8 +394,9 @@ msgstr ""
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
+#, fuzzy
 msgid "Drake Flare"
-msgstr "드레이크 플레어"
+msgstr "Drake Flare"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:26
@@ -396,7 +411,7 @@ msgstr ""
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
-msgstr "드레이크 글라이더"
+msgstr "반룡 활공병"
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:23
@@ -419,12 +434,12 @@ msgstr ""
 #: data/core/units/drakes/Glider.cfg:44
 #: data/core/units/drakes/Hurricane.cfg:129 data/core/units/drakes/Sky.cfg:128
 msgid "slam"
-msgstr "강타"
+msgstr "밟아 찍기"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
-msgstr "허리케인 드레이크"
+msgstr "폭풍의 반룡"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:20
@@ -441,7 +456,7 @@ msgstr ""
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
-msgstr "인페르노 드레이크"
+msgstr "지옥불의 반룡"
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:21
@@ -456,7 +471,7 @@ msgstr ""
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
-msgstr "스카이 드레이크"
+msgstr "천공의 반룡"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:19
@@ -471,9 +486,8 @@ msgstr ""
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
-#, fuzzy
 msgid "Drake Thrasher"
-msgstr "드레이크 클래셔"
+msgstr "반룡 타격병"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:19
@@ -488,8 +502,9 @@ msgstr ""
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
+#, fuzzy
 msgid "Drake Warden"
-msgstr "드레이크 와든"
+msgstr "Drake Warden"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:20
@@ -506,7 +521,7 @@ msgstr ""
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr "드레이크 워리어"
+msgstr "반룡 전사"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:19
@@ -519,10 +534,36 @@ msgid ""
 "hand."
 msgstr ""
 
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
+#: data/core/units/dwarves/Arcanister.cfg:4
+#, fuzzy
+msgid "Dwarvish Arcanister"
+msgstr "드워프 투사"
+
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
+#: data/core/units/dwarves/Arcanister.cfg:32
+msgid ""
+"The most powerful of all the runecrafters, the Dwarvish Arcanister destroys "
+"wounded enemies almost instantly, and rarely fails to cause a wound when "
+"that is his intent. His skill in runecrafting is unrivaled, and the glyphs "
+"he carves into his weapons and armor deflect the blows of his enemies."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/dwarves/Arcanister.cfg:49
+#: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:61
+#: data/core/units/dwarves/Runemaster.cfg:43
+#: data/core/units/dwarves/Runesmith.cfg:47
+#: data/core/units/dwarves/Steelclad.cfg:61
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Warrior.cfg:27
+msgid "hammer"
+msgstr "망치"
+
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
-msgstr "드워프 버서커"
+msgstr "드워프 광전사"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:20
@@ -536,12 +577,12 @@ msgstr ""
 #: data/core/units/dwarves/Berserker.cfg:44
 #: data/core/units/dwarves/Ulfserker.cfg:45
 msgid "berserker frenzy"
-msgstr "버서커 프렌지"
+msgstr "광전사 난무"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
-msgstr "드워프 드래곤가드"
+msgstr "드워프 뇌룡근위대"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:21
@@ -572,21 +613,20 @@ msgstr ""
 #: data/core/units/undead/Skele_Banebow.cfg:44
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:42
 msgid "dagger"
-msgstr "대거"
+msgstr "짧은 단검"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Dragonguard.cfg:48
 msgid "dragonstaff"
-msgstr ""
+msgstr "용뢰포"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
-#, fuzzy
 msgid "Dwarvish Explorer"
-msgstr "드워프 울프서커"
+msgstr "드워프 탐험가"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
-#: data/core/units/dwarves/Explorer.cfg:24
+#: data/core/units/dwarves/Explorer.cfg:19
 msgid ""
 "Dwarvish Explorers are peerless survivalists. Using only the equipment they "
 "carry, they can range for months around the forests and mountains looking "
@@ -597,29 +637,29 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:42 data/core/units/dwarves/Lord.cfg:52
+#: data/core/units/dwarves/Explorer.cfg:37 data/core/units/dwarves/Lord.cfg:52
 #: data/core/units/dwarves/Steelclad.cfg:52
 #: data/core/units/undead/Skele_Death_Knight.cfg:45
 msgid "battle axe"
-msgstr "배틀 엑스"
+msgstr "전투 도끼"
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:51
+#: data/core/units/dwarves/Explorer.cfg:46
 #: data/core/units/dwarves/Fighter.cfg:47
-#: data/core/units/dwarves/Pathfinder.cfg:155
-#: data/core/units/dwarves/Pathfinder.cfg:163
-#: data/core/units/dwarves/Scout.cfg:37 data/core/units/dwarves/Scout.cfg:45
+#: data/core/units/dwarves/Pathfinder.cfg:160
+#: data/core/units/dwarves/Pathfinder.cfg:168
+#: data/core/units/dwarves/Scout.cfg:41 data/core/units/dwarves/Scout.cfg:49
 #: data/core/units/undead/Skele_Deathblade.cfg:162
 #: data/core/units/undead/Skele_Draug.cfg:43
 #: data/core/units/undead/Skele_Revenant.cfg:43
 #: data/core/units/undead/Skeleton.cfg:119
 msgid "axe"
-msgstr "액스"
+msgstr "도끼"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
-msgstr "드워프 파이터"
+msgstr "드워프 투사"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:20
@@ -630,18 +670,10 @@ msgid ""
 "their relatively poor mobility."
 msgstr ""
 
-#. [attack]: type=impact
-#: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:61
-#: data/core/units/dwarves/Steelclad.cfg:61
-#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Hero.cfg:27
-#: data/core/units/trolls/Warrior.cfg:27
-msgid "hammer"
-msgstr "해머"
-
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
-msgstr "드워프 가드맨"
+msgstr "드워프 경비병"
 
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:20
@@ -658,15 +690,14 @@ msgstr ""
 #: data/core/units/dwarves/Sentinel.cfg:60
 #: data/core/units/dwarves/Stalwart.cfg:55
 #: data/core/units/humans/Loyalist_Javelineer.cfg:51
-#: data/core/units/humans/Loyalist_Spearman.cfg:125
-#, fuzzy
+#: data/core/units/humans/Loyalist_Spearman.cfg:156
 msgid "javelin"
-msgstr "재블리니어"
+msgstr "투창"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
 msgid "Dwarvish Lord"
-msgstr "드워프 로드"
+msgstr "드워프 군주"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:20
@@ -680,56 +711,61 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dwarves/Lord.cfg:70
 msgid "hatchet"
-msgstr "핫쳿"
+msgstr "손도끼"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
-#, fuzzy
 msgid "Dwarvish Pathfinder"
-msgstr "드워프 선더러"
+msgstr "드워프 길잡이"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
-#: data/core/units/dwarves/Pathfinder.cfg:18
+#: data/core/units/dwarves/Pathfinder.cfg:23
 msgid ""
 "These hardy dwarves are sometimes away from their caves for long periods, "
 "scouting and patrolling the borders. They spend this time watching for "
 "invaders, and fighting bandits and thieves who encroach on dwarvish "
-"territory. They are powerful pathfinders in a melee, and from a distance "
-"their deftly thrown axes can rival the power and accuracy of a human archer."
+"territory. They are powerful fighters in a melee, and from a distance their "
+"deftly thrown axes can rival the power and accuracy of a human archer."
 msgstr ""
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
-#: data/core/units/dwarves/Runemaster.cfg:4
+#: data/core/units/dwarves/Runemaster.cfg:5
 msgid "Dwarvish Runemaster"
 msgstr "드워프 룬마스터"
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
-#: data/core/units/dwarves/Runemaster.cfg:21
+#: data/core/units/dwarves/Runemaster.cfg:26
 msgid ""
-"Dwarven magic most often manifests itself by the inscription of runes in the "
-"surface of an object, which by their mere presence somehow imbue it with "
-"power. Though rarely seen in combat, a master of these runes can put them to "
-"terrifying use."
+"Except for those with almost supernatural skill, the highest rank a "
+"runecrafter can rise to is that of the Dwarvish Runemaster. Striking blows "
+"nearly as powerful as those of the best warriors, they would be fearsome "
+"without their craft, but with it they are also nigh on invincible, since "
+"their runes cause the physical blows of their enemies to deal less damage "
+"than would be expected."
 msgstr ""
 
-#. [attack]: type=impact
-#: data/core/units/dwarves/Runemaster.cfg:38
-msgid "runic hammer"
-msgstr ""
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
+#: data/core/units/dwarves/Runesmith.cfg:4
+#, fuzzy
+msgid "Dwarvish Runesmith"
+msgstr "드워프 룬마스터"
 
-#. [attack]: type=fire
-#: data/core/units/dwarves/Runemaster.cfg:47
-msgid "lightning bolt"
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
+#: data/core/units/dwarves/Runesmith.cfg:30
+msgid ""
+"Dwarvish runesmiths, now practiced at their craft, carve arcane runes into "
+"their weapons and armor. These runes infuse the runesmith’s blows with power "
+"and accuracy, and disrupt the blows of their enemies, causing them to strike "
+"softly, weakly and on the armor of the defender."
 msgstr ""
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
-#, fuzzy
 msgid "Dwarvish Scout"
-msgstr "엘프 스카웃"
+msgstr "드워프 정찰꾼"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
-#: data/core/units/dwarves/Scout.cfg:19
+#: data/core/units/dwarves/Scout.cfg:23
 msgid ""
 "Although the dwarves cannot match the taller races in a sprint, when "
 "unencumbered by heavy armor their tremendous stamina and endurance allows "
@@ -744,7 +780,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
-msgstr "드워프 센티널"
+msgstr "드워프 감시병"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:20
@@ -759,7 +795,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
-msgstr "드워프 스텔워트"
+msgstr "드워프 방비병"
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:19
@@ -773,7 +809,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
-msgstr "드워프 스틸클래드"
+msgstr "드워프 철갑병"
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:20
@@ -785,7 +821,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
-msgstr "드워프 선더러"
+msgstr "드워프 천둥사"
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:20
@@ -801,12 +837,12 @@ msgstr ""
 #: data/core/units/dwarves/Thunderer.cfg:120
 #: data/core/units/dwarves/Thunderguard.cfg:49
 msgid "thunderstick"
-msgstr ""
+msgstr "번개포"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
-msgstr "드워프 선더가드"
+msgstr "드워프 천둥 수호자"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:22
@@ -826,7 +862,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr "드워프 울프서커"
+msgstr "드워프 광투사"
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:21
@@ -840,7 +876,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
-msgstr "엘프 아쳐"
+msgstr "엘프 궁사"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:21
@@ -877,7 +913,7 @@ msgstr ""
 #: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
 #: data/core/units/orcs/Leader.cfg:41
 msgid "sword"
-msgstr "소드"
+msgstr "검"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -899,17 +935,17 @@ msgstr "소드"
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:51
 #: data/core/units/undead/Skeleton_Archer.cfg:54
 msgid "bow"
-msgstr "보우"
+msgstr "활"
 
 #. [female]
 #: data/core/units/elves/Archer.cfg:158
 msgid "female^Elvish Archer"
-msgstr "엘프 아쳐"
+msgstr "엘프 궁사"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
-msgstr "엘프 어벤져"
+msgstr "엘프 복수자"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:23
@@ -924,16 +960,23 @@ msgid ""
 "brethren lost earlier in the battle. Although not so base in design, it is "
 "not at all inaccurate."
 msgstr ""
+"엘프 '복수자'라는 이 신기한 이름은 이 달인급의 레인저들이 자주 채택하는 전술"
+"에서 유래하였다. 적이 거짓 방어선을 돌파하면 최전방의 뒤에 있던 취약한 부대"
+"가 뒤따라오게 된다. 이 때 이 궁사들이 은신을 풀고 공격해서, 보급선을 끊고 적"
+"을 포위하여 일망타진한다.\n"
+"\n"
+"이 전술은 때때로 전투에서 잃은 형제들의 복수의 형태로 비춰진다. 원래 계획은 "
+"그것이 아니지만, 꼭 틀린 것만도 아니다."
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:167
 msgid "female^Elvish Avenger"
-msgstr "엘프 어벤져"
+msgstr "엘프 복수자"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
-msgstr "엘프 캡틴"
+msgstr "엘프 대장"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:26
@@ -949,7 +992,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
-msgstr "엘프 챔피언"
+msgstr "엘프 대적자"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:20
@@ -995,22 +1038,22 @@ msgstr ""
 #: data/core/units/saurians/Soothsayer.cfg:39
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:99
 msgid "staff"
-msgstr "스태프"
+msgstr "지팡이"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:49 data/core/units/elves/Shyde.cfg:54
 msgid "ensnare"
-msgstr "인스네어"
+msgstr "올가미"
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Druid.cfg:61 data/core/units/elves/Shyde.cfg:66
 msgid "thorns"
-msgstr "쏜"
+msgstr "가시나무"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
-msgstr "엘프 인챈트리스"
+msgstr "엘프 주문사"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:19
@@ -1026,19 +1069,19 @@ msgstr ""
 #: data/core/units/elves/Enchantress.cfg:48
 #: data/core/units/elves/Shaman.cfg:51 data/core/units/elves/Sorceress.cfg:50
 msgid "entangle"
-msgstr "인탱글"
+msgstr "포박"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:59
 #: data/core/units/elves/High_Lord.cfg:82 data/core/units/elves/Lord.cfg:48
 #: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
 msgid "faerie fire"
-msgstr "페어리 파이어"
+msgstr "요정의 불꽃"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
-msgstr "엘프 파이터"
+msgstr "엘프 투사"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:20
@@ -1053,7 +1096,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
-msgstr "엘프 히어로"
+msgstr "엘프 영웅"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:19
@@ -1066,9 +1109,8 @@ msgstr ""
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
-#, fuzzy
 msgid "Elvish High Lord"
-msgstr "엘프 파이터"
+msgstr "엘프 대군주"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:19
@@ -1081,9 +1123,8 @@ msgstr ""
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:5
-#, fuzzy
 msgid "female^Elvish Lady"
-msgstr "엘프 드루이드"
+msgstr "엘프 아가씨"
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:21
@@ -1096,9 +1137,8 @@ msgstr ""
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
-#, fuzzy
 msgid "Elvish Lord"
-msgstr "드워프 로드"
+msgstr "엘프 군주"
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:18
@@ -1111,7 +1151,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
-msgstr "엘프 마크맨"
+msgstr "엘프 저격수"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:20
@@ -1129,17 +1169,17 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Longbowman.cfg:48
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 msgid "longbow"
-msgstr "롱보우"
+msgstr "장궁"
 
 #. [female]
 #: data/core/units/elves/Marksman.cfg:183
 msgid "female^Elvish Marksman"
-msgstr ""
+msgstr "엘프 저격수"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
-msgstr "엘프 마르셸"
+msgstr "엘프 집행관"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:27
@@ -1151,11 +1191,16 @@ msgid ""
 "elf sets his mind to war, the strategy that results is often the work of a "
 "master."
 msgstr ""
+"엘프들의 장수와 타고난 지성은 그들이 군사적인 면에서도 적성을 갖게 해주어, 그"
+"들의 전쟁에 대한 일반적인 혐오감조차 이겨낼 수 있게 한다. 엘프들은 인류보다 "
+"훨씬 더 명료하게 기억할 수 있으며, 종종 다른 이들이 훈련받아야만 할 수 있는 "
+"것을 직관적으로 해낼 수 있다. 확실히, 엘프가 전쟁을 일으키려 하는 흔치 않은 "
+"일이 생겼을 때, 그들에게서 나오는 전략은 대가의 것들인 경우가 많다."
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr "엘프 아웃라이더"
+msgstr "엘프 선도자"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:23
@@ -1170,11 +1215,18 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
+"엘프 선도자들은 엘프 왕국의 궁정 배달원으로서 훈련되었다. 그들 민족의 평화적"
+"인 본성에도 불구하고, 그들의 경험은 전투에서 그들을 치명적인 존재로 만든다. "
+"어떤 인간도 그들의 마상 궁술을 따라오지 못한다 - 사실, 대부분은 단단한 땅 위"
+"에 서서야 겨우 그 수준을 따라잡는다.\n"
+"\n"
+"그 병사들의 속도는 엘프들이 자신의 고향에서 싸울 때 언제 어디서든 공격할 수 "
+"있게 하는데, 그것으로 인해 그들의 많은 수가 죽음으로부터 구원받았다."
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
-msgstr "엘프 레인져"
+msgstr "엘프 레인저"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:20
@@ -1189,12 +1241,12 @@ msgstr ""
 #. [female]
 #: data/core/units/elves/Ranger.cfg:164
 msgid "female^Elvish Ranger"
-msgstr "엘프 레인져"
+msgstr "엘프 레인저"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
-msgstr "엘프 라이더"
+msgstr "엘프 승마병"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:24
@@ -1211,7 +1263,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
-msgstr "엘프 스카웃"
+msgstr "엘프 정찰꾼"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:23
@@ -1226,7 +1278,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr "엘프 샤면"
+msgstr "엘프 샤먼"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:23
@@ -1244,7 +1296,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
-msgstr "엘프 샤프슈터"
+msgstr "엘프 명사수"
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
@@ -1258,12 +1310,12 @@ msgstr ""
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:157
 msgid "female^Elvish Sharpshooter"
-msgstr "엘프 샤프슈터"
+msgstr "엘프 명사수"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
-msgstr "엘프 샤이데"
+msgstr "엘프 시드"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
@@ -1277,12 +1329,12 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:41 data/core/units/elves/Sylph.cfg:40
 msgid "faerie touch"
-msgstr "페어리 터치"
+msgstr "페어리의 손길"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
-msgstr "엘프 소서리스"
+msgstr "엘프 마녀"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:21
@@ -1299,7 +1351,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
-msgstr "엘프 실프"
+msgstr "엘프 요정"
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:21
@@ -1313,17 +1365,18 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:53
 msgid "gossamer"
-msgstr "거스머"
+msgstr "거미줄"
 
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
+#, fuzzy
 msgid "dummy_unit^Fog Clearer"
-msgstr ""
+msgstr "dummy_unit^Fog Clearer"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
-msgstr "다이어울프 라이더"
+msgstr "흉랑기병"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:22
@@ -1343,7 +1396,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr "고블림 임펠러"
+msgstr "고블린 장창병"
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:21
@@ -1357,7 +1410,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
-msgstr "고블린 나이트"
+msgstr "고블린 기사"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:21
@@ -1370,11 +1423,17 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
+"고블린 '기사'들은 그 명칭을 공유하는 인간과는 거의 공통점이 없는데, 그것은 그"
+"들의 적들이 조롱의 의미로 붙인 이름이기 때문이다. 유사점은 단지 그들이 늑대 "
+"기병들의 엘리트, 즉 몇몇 대담한 습격에 성공하여 승진한 이들이라는 것이다.\n"
+"\n"
+"그들이 받는 늑대들은 빠르고 힘있게 키워진 것으로, 전투에서 꽤 위험한 존재이"
+"다."
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
-msgstr "고블린 필리져"
+msgstr "고블린 약탈자"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:20
@@ -1388,19 +1447,19 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/goblins/Pillager.cfg:56
 msgid "torch"
-msgstr "토치"
+msgstr "횃불"
 
 #. [attack]: type=impact
 #: data/core/units/goblins/Pillager.cfg:65
 #: data/core/units/merfolk/Entangler.cfg:35
 #: data/core/units/merfolk/Netcaster.cfg:46
 msgid "net"
-msgstr "넷"
+msgstr "그물"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:4
 msgid "Goblin Rouser"
-msgstr "고블린 라우져"
+msgstr "고블린 깃발병"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:22
@@ -1415,7 +1474,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
 msgid "Goblin Spearman"
-msgstr "고블린 스피어맨"
+msgstr "고블린 창병"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:22
@@ -1434,7 +1493,7 @@ msgstr ""
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:4
 msgid "Wolf Rider"
-msgstr "울프 라이더"
+msgstr "늑대기병"
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:37
@@ -1494,7 +1553,7 @@ msgstr ""
 #. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
-msgstr "그랜드 나이트"
+msgstr "중기사"
 
 #. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:20
@@ -1512,9 +1571,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
-#, fuzzy
 msgid "longsword"
-msgstr "소드"
+msgstr "장검"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:45
@@ -1527,7 +1585,7 @@ msgstr "랜스"
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
 msgid "Knight"
-msgstr "나이트"
+msgstr "기사"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
@@ -1544,7 +1602,7 @@ msgstr ""
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
-msgstr "랜서"
+msgstr "창기병"
 
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:20
@@ -1560,7 +1618,7 @@ msgstr ""
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
 msgid "Paladin"
-msgstr "패러딘"
+msgstr "성기사"
 
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:22
@@ -1586,7 +1644,7 @@ msgstr ""
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
-msgstr "홀스맨"
+msgstr "기마병"
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:20
@@ -1603,7 +1661,7 @@ msgstr ""
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
-msgstr "보우맨"
+msgstr "궁병"
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
@@ -1619,12 +1677,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
 #: data/core/units/orcs/Crossbowman.cfg:37 data/core/units/orcs/Slurbow.cfg:42
 msgid "short sword"
-msgstr "숏 소드"
+msgstr "단검"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
-msgstr ""
+msgstr "중기병"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
@@ -1651,12 +1709,12 @@ msgstr ""
 #: data/core/units/orcs/Slurbow.cfg:60 data/core/units/orcs/Sovereign.cfg:50
 #: data/core/units/undead/Skele_Death_Knight.cfg:54
 msgid "crossbow"
-msgstr "크로스보우"
+msgstr "석궁"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
 msgid "Cavalryman"
-msgstr "캐브러리맨"
+msgstr "기병"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
@@ -1674,7 +1732,7 @@ msgstr ""
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
 msgid "Dragoon"
-msgstr "드라군"
+msgstr "용기병"
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:20
@@ -1689,7 +1747,7 @@ msgstr ""
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
 msgid "Duelist"
-msgstr "듀얼리스트"
+msgstr "결투사"
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:20
@@ -1711,14 +1769,13 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Duelist.cfg:85
 #: data/core/units/humans/Loyalist_Fencer.cfg:175
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:44
-#, fuzzy
 msgid "saber"
-msgstr "세이버"
+msgstr "기병도"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
-msgstr "펜서"
+msgstr "펜싱 선수"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:21
@@ -1738,7 +1795,7 @@ msgstr ""
 #. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
 msgid "General"
-msgstr ""
+msgstr "장군"
 
 #. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:30
@@ -1750,7 +1807,7 @@ msgstr ""
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
 msgid "Grand Marshal"
-msgstr "그랜드 마르셸"
+msgstr "대원수"
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:26
@@ -1764,7 +1821,7 @@ msgstr ""
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
 msgid "Halberdier"
-msgstr "할버디어"
+msgstr "도끼창병"
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
@@ -1787,7 +1844,7 @@ msgstr ""
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
 msgid "Heavy Infantryman"
-msgstr "해비 인팬트리맨"
+msgstr "중보병"
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:19
@@ -1813,7 +1870,7 @@ msgstr "철퇴"
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
-msgstr "아이론 마울러"
+msgstr "강철 주먹"
 
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:21
@@ -1833,7 +1890,7 @@ msgstr ""
 #. [unit_type]: id=Javelineer, race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
 msgid "Javelineer"
-msgstr "재블리니어"
+msgstr "투창병"
 
 #. [unit_type]: id=Javelineer, race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:19
@@ -1850,7 +1907,7 @@ msgstr ""
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
 msgid "Lieutenant"
-msgstr "리우테넌트"
+msgstr "중위"
 
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:19
@@ -1862,7 +1919,7 @@ msgstr ""
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
-msgstr "롱보우맨"
+msgstr "장궁병"
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:21
@@ -1877,7 +1934,7 @@ msgstr ""
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
-msgstr "마스터 보우맨"
+msgstr "활의 달인"
 
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
@@ -1895,7 +1952,7 @@ msgstr ""
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
-msgstr ""
+msgstr "무기의 달인"
 
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:21
@@ -1916,7 +1973,7 @@ msgstr ""
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
-msgstr "파이크맨"
+msgstr "극창병"
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
@@ -1932,12 +1989,12 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:65
 msgid "pike"
-msgstr "파이크"
+msgstr "극창"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
 msgid "Royal Guard"
-msgstr "로얄 가드"
+msgstr "근위병"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:19
@@ -1955,7 +2012,7 @@ msgstr ""
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
 msgid "Sergeant"
-msgstr "서젠트"
+msgstr "병장"
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:20
@@ -1968,7 +2025,7 @@ msgstr ""
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
 msgid "Shock Trooper"
-msgstr "쇼크 트루퍼"
+msgstr "강습 부대"
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:18
@@ -1985,14 +2042,13 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
-#, fuzzy
 msgid "flail"
-msgstr "기본"
+msgstr "도리깨"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
 msgid "Spearman"
-msgstr "스피어맨"
+msgstr "창병"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:20
@@ -2007,7 +2063,7 @@ msgstr ""
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
 msgid "Swordsman"
-msgstr "스워드맨"
+msgstr "장검병"
 
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
@@ -2023,7 +2079,7 @@ msgstr ""
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
-msgstr "메이지"
+msgstr "마법사"
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:25
@@ -2057,12 +2113,12 @@ msgstr "미사일"
 #. [female]
 #: data/core/units/humans/Mage.cfg:149
 msgid "female^Mage"
-msgstr ""
+msgstr "마법사"
 
 #. [unit_type]: id=Arch Mage, race=human
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
-msgstr "아크 메이지"
+msgstr "상급 마법사"
 
 #. [unit_type]: id=Arch Mage, race=human
 #: data/core/units/humans/Mage_Arch.cfg:21
@@ -2086,18 +2142,17 @@ msgstr ""
 #: data/core/units/humans/Mage_Great.cfg:51
 #: data/core/units/humans/Mage_Red.cfg:50
 msgid "fireball"
-msgstr ""
+msgstr "화염구"
 
 #. [female]
 #: data/core/units/humans/Mage_Arch.cfg:171
 msgid "female^Arch Mage"
-msgstr ""
+msgstr "상급 마법사"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
-#, fuzzy
 msgid "Elder Mage"
-msgstr "실버 메이지"
+msgstr "원로 마법사"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:22
@@ -2110,12 +2165,12 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:34
 msgid "lightning"
-msgstr ""
+msgstr "번개"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
-msgstr "그레이트 메이지"
+msgstr "대마법사"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:22
@@ -2136,12 +2191,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:132
 msgid "female^Great Mage"
-msgstr ""
+msgstr "대마법사"
 
 #. [unit_type]: id=Red Mage, race=human
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
-msgstr "레드 메이지"
+msgstr "적마법사"
 
 #. [unit_type]: id=Red Mage, race=human
 #: data/core/units/humans/Mage_Red.cfg:21
@@ -2163,12 +2218,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:132
 msgid "female^Red Mage"
-msgstr "레드 메이지"
+msgstr "적마법사"
 
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
-msgstr "실버 메이지"
+msgstr "은빛의 마법사"
 
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
@@ -2202,12 +2257,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_Silver.cfg:283
 msgid "female^Silver Mage"
-msgstr ""
+msgstr "은빛의 마법사"
 
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
-msgstr "화이트 메이지"
+msgstr "백마법사"
 
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:21
@@ -2229,17 +2284,17 @@ msgstr ""
 #: data/core/units/merfolk/Diviner.cfg:109
 #: data/core/units/merfolk/Priestess.cfg:106
 msgid "lightbeam"
-msgstr "라이트빔"
+msgstr "빛의 기둥"
 
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:252
 msgid "female^White Mage"
-msgstr ""
+msgstr "백마법사"
 
 #. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
-msgstr "메이지 오브 라이트"
+msgstr "빛의 마도사"
 
 #. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:23
@@ -2255,17 +2310,17 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:111
 msgid "morning star"
-msgstr "모닝 스타"
+msgstr "모닝스타"
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:245
 msgid "female^Mage of Light"
-msgstr ""
+msgstr "빛의 마도사"
 
 #. [unit_type]: id=Outlaw, race=human
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
-msgstr "아웃러"
+msgstr "무법자"
 
 #. [unit_type]: id=Outlaw, race=human
 #: data/core/units/humans/Outlaw.cfg:19
@@ -2285,17 +2340,17 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Fugitive.cfg:50
 #: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
-msgstr "슬링"
+msgstr "돌팔매"
 
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:115
 msgid "female^Outlaw"
-msgstr ""
+msgstr "무법자"
 
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
-msgstr ""
+msgstr "암살자"
 
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
@@ -2311,17 +2366,17 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Assassin.cfg:52
 #: data/core/units/humans/Outlaw_Rogue.cfg:51
 msgid "knife"
-msgstr "나이프"
+msgstr "단도"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Assassin.cfg:179
 msgid "female^Assassin"
-msgstr ""
+msgstr "암살자"
 
 #. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
 msgid "Bandit"
-msgstr ""
+msgstr "날강도"
 
 #. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:18
@@ -2336,7 +2391,7 @@ msgstr ""
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
-msgstr "풋패드"
+msgstr "노상강도"
 
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:21
@@ -2357,17 +2412,17 @@ msgstr ""
 #: data/core/units/merfolk/Netcaster.cfg:38
 #: data/core/units/trolls/Troll.cfg:38
 msgid "club"
-msgstr "클럽"
+msgstr "몽둥이"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:176
 msgid "female^Footpad"
-msgstr ""
+msgstr "노상강도"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr ""
+msgstr "탈주자"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:21
@@ -2379,14 +2434,13 @@ msgstr ""
 
 #. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:122
-#, fuzzy
 msgid "female^Fugitive"
-msgstr "레드 메이지"
+msgstr "탈주자"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr ""
+msgstr "두목강도"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
@@ -2397,11 +2451,15 @@ msgid ""
 "attacking on lonely roads or in the dead of night. Their experience with "
 "such encounters makes them deadly foes in hand to hand combat."
 msgstr ""
+"두목강도는 부정한 폭력으로 널리 악명을 얻은 자이다. 그들은 누구든지 가장 높"
+"은 값을 부르는 자에게 고용될 준비가 되어 있으며, 하급의 악당들을 이끌고 고용"
+"주의 적과 맞선다. 그들은 인적이 드문 길이나 깜깜한 밤에 주로 공격하는데, 그"
+"런 다툼의 경험들로 인해 그들은 육박전에서 특히 두려운 적이 된다."
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
-msgstr "로그"
+msgstr "악당"
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
@@ -2417,12 +2475,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Outlaw_Rogue.cfg:153
 msgid "female^Rogue"
-msgstr ""
+msgstr "악당"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
 msgid "Ruffian"
-msgstr ""
+msgstr "깡패"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:19
@@ -2437,7 +2495,7 @@ msgstr ""
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
-msgstr "씨프"
+msgstr "도둑"
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:20
@@ -2454,12 +2512,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Outlaw_Thief.cfg:377
 msgid "female^Thief"
-msgstr ""
+msgstr "도둑"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
-msgstr ""
+msgstr "폭력배"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:20
@@ -2474,7 +2532,7 @@ msgstr ""
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
-msgstr "피젼트"
+msgstr "농부"
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:20
@@ -2488,13 +2546,13 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:37 data/core/units/humans/Peasant.cfg:46
 msgid "pitchfork"
-msgstr "핏치포크"
+msgstr "쇠스랑"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
 #, fuzzy
 msgid "Royal Warrior"
-msgstr "트롤 워리어"
+msgstr "Royal Warrior"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:31
@@ -2505,9 +2563,8 @@ msgstr ""
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
-#, fuzzy
 msgid "Woodsman"
-msgstr "스워드맨"
+msgstr "나무꾼"
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:20
@@ -2519,9 +2576,8 @@ msgstr ""
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
-#, fuzzy
 msgid "Huntsman"
-msgstr "홀스맨"
+msgstr "사냥꾼"
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:23
@@ -2545,7 +2601,7 @@ msgstr ""
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
 msgid "Poacher"
-msgstr "파우쳐"
+msgstr "밀렵꾼"
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
@@ -2561,9 +2617,8 @@ msgstr ""
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
-#, fuzzy
 msgid "Ranger"
-msgstr "대거"
+msgstr "레인저"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:23
@@ -2584,7 +2639,7 @@ msgstr ""
 #. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
 msgid "Trapper"
-msgstr "트래퍼"
+msgstr "덫 사냥꾼"
 
 #. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:21
@@ -2601,7 +2656,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "인어 성녀"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:25
@@ -2617,7 +2672,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
-msgstr ""
+msgstr "인어 주문사"
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:20
@@ -2635,12 +2690,12 @@ msgstr ""
 #: data/core/units/merfolk/Initiate.cfg:49
 #: data/core/units/merfolk/Siren.cfg:54
 msgid "water spray"
-msgstr ""
+msgstr "물보라"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
-msgstr "머맨 앤탱글러"
+msgstr "인어 포박병"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:22
@@ -2660,7 +2715,7 @@ msgstr ""
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
 msgid "Merman Fighter"
-msgstr "머맨 파이터"
+msgstr "인어 투사"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:20
@@ -2672,7 +2727,7 @@ msgstr ""
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
 msgid "Merman Hoplite"
-msgstr "머맨 홉라이트"
+msgstr "인어 장갑병"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:21
@@ -2686,7 +2741,7 @@ msgstr ""
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
-msgstr "머맨 헌터"
+msgstr "인어 사냥꾼"
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:20
@@ -2700,7 +2755,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "인어 여신도"
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:23
@@ -2716,7 +2771,7 @@ msgstr ""
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
 msgid "Merman Javelineer"
-msgstr "머맨 자벨리니어"
+msgstr "인어 투창병"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:20
@@ -2730,7 +2785,7 @@ msgstr ""
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
 msgid "Merman Netcaster"
-msgstr "머맨 넷캐스터"
+msgstr "인어 투망병"
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:21
@@ -2751,7 +2806,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "인어 여신관"
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:23
@@ -2765,9 +2820,8 @@ msgstr ""
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:4
-#, fuzzy
 msgid "Mermaid Siren"
-msgstr "머맨 스피어맨"
+msgstr "인어 세이렌"
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:23
@@ -2786,12 +2840,12 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:42
 msgid "naia touch"
-msgstr ""
+msgstr "물의 정령의 손길"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:4
 msgid "Merman Spearman"
-msgstr "머맨 스피어맨"
+msgstr "인어 창병"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:19
@@ -2807,7 +2861,7 @@ msgstr ""
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
-msgstr "머맨 트리톤"
+msgstr "인어 트리톤"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:21
@@ -2820,7 +2874,7 @@ msgstr ""
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
 msgid "Merman Warrior"
-msgstr "머맨 워리어"
+msgstr "인어 전사"
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:19
@@ -2832,7 +2886,7 @@ msgstr ""
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
-msgstr ""
+msgstr "갑오징어"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
@@ -2847,18 +2901,17 @@ msgstr ""
 #: data/core/units/monsters/Cuttle_Fish.cfg:49
 #: data/core/units/monsters/Tentacle.cfg:62
 msgid "tentacle"
-msgstr ""
+msgstr "촉수"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Cuttle_Fish.cfg:60
 msgid "ink"
-msgstr ""
+msgstr "먹물"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
-#, fuzzy
 msgid "Fire Dragon"
-msgstr "파이어 드레이크"
+msgstr "불의 드래곤"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:24
@@ -2879,20 +2932,40 @@ msgstr ""
 #: data/core/units/monsters/Fire_Dragon.cfg:31
 #: data/core/units/monsters/Giant_Rat.cfg:37
 #: data/core/units/undead/Corpse_Ghast.cfg:28
-#, fuzzy
 msgid "bite"
-msgstr "흰색"
+msgstr "물기"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Fire_Dragon.cfg:40
-#, fuzzy
 msgid "tail"
-msgstr "기본"
+msgstr "꼬리치기"
+
+#. [unit_type]: id=Fire Guardian, race=monster
+#: data/core/units/monsters/Fire_Guardian.cfg:4
+#, fuzzy
+msgid "Fire Guardian"
+msgstr "불의 드래곤"
+
+#. [unit_type]: id=Fire Guardian, race=monster
+#: data/core/units/monsters/Fire_Guardian.cfg:28
+msgid ""
+"Fire Guardians are spirits of smoke and flame. No one is exactly sure where "
+"they come from, but they are occasionally summoned by powerful mages to do "
+"their bidding. When not being controlled they like to frolic in pools of "
+"lava and take great delight in burning anything they can reach."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/monsters/Fire_Guardian.cfg:31
+#, fuzzy
+msgid "fire claws"
+msgstr "발톱"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
+#, fuzzy
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "Giant Mudcrawler"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:19
@@ -2910,13 +2983,13 @@ msgstr ""
 #: data/core/units/trolls/Whelp.cfg:39
 #: data/core/units/undead/Skeleton_Archer.cfg:45
 msgid "fist"
-msgstr "피스트"
+msgstr "주먹"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:69
 #: data/core/units/monsters/Mudcrawler.cfg:74
 msgid "mud glob"
-msgstr ""
+msgstr "진흙 방울"
 
 #. [unit_type]: id=Giant Rat, race=monster
 #: data/core/units/monsters/Giant_Rat.cfg:4
@@ -2932,8 +3005,9 @@ msgstr ""
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
+#, fuzzy
 msgid "Giant Scorpion"
-msgstr ""
+msgstr "Giant Scorpion"
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:19
@@ -2945,17 +3019,17 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
 msgid "sting"
-msgstr "스팅"
+msgstr "가시"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Scorpion.cfg:36
 msgid "pincers"
-msgstr ""
+msgstr "집게"
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Giant_Spider.cfg:4
 msgid "Giant Spider"
-msgstr "자이언트 스파이더"
+msgstr "대왕거미"
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Giant_Spider.cfg:20
@@ -2968,12 +3042,13 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Spider.cfg:37
 msgid "web"
-msgstr ""
+msgstr "그물"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
+#, fuzzy
 msgid "Mudcrawler"
-msgstr ""
+msgstr "Mudcrawler"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:21
@@ -2984,8 +3059,9 @@ msgstr ""
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
+#, fuzzy
 msgid "Sea Serpent"
-msgstr ""
+msgstr "Sea Serpent"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:22
@@ -2995,9 +3071,8 @@ msgstr ""
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
-#, fuzzy
 msgid "Skeletal Dragon"
-msgstr "스켈레톤"
+msgstr "뼈만 남은 드래곤"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
@@ -3008,6 +3083,11 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"먼 옛날 가장 강력한 생명체였던 공포의 드래곤은 이제 뼈와 검은 힘줄만이 남았"
+"다. 그 죽음으로부터 오랜 세월이 지나 그것은 네크로맨시의 어둠의 힘으로 다시 "
+"깨어나 그 힘을 위해 봉사한다. 드래곤 해골은 단지 뼈무더기로만 보이기도 하지"
+"만, 그런 식으로 생각하는 소수의 사람들은 그 생각을 바꾸기엔 너무 오래 산 자들"
+"이다."
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
@@ -3017,7 +3097,7 @@ msgstr "턱"
 #. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "심해의 촉수"
 
 #. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:22
@@ -3028,8 +3108,9 @@ msgstr ""
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
+#, fuzzy
 msgid "Water Serpent"
-msgstr ""
+msgstr "Water Serpent"
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:38
@@ -3043,7 +3124,7 @@ msgstr ""
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
-msgstr ""
+msgstr "늑대"
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:35
@@ -3055,7 +3136,7 @@ msgstr ""
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
-msgstr "예티"
+msgstr "설인 예티"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:18
@@ -3068,7 +3149,7 @@ msgstr ""
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
-msgstr "나가 파이터"
+msgstr "나가 투사"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:21
@@ -3084,12 +3165,12 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Fighter.cfg:153
 msgid "Nagini Fighter"
-msgstr "나기니 파이터"
+msgstr "나가 투사 ♀"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
-msgstr "나가 뮈르미돈"
+msgstr "나가 미르미돈"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:22
@@ -3104,7 +3185,7 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:95
 msgid "Nagini Myrmidon"
-msgstr "나기니 뮈르미돈"
+msgstr "나가 미르미돈 ♀"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:97
@@ -3119,7 +3200,7 @@ msgstr ""
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
-msgstr "나가 워리어"
+msgstr "나가 전사"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:20
@@ -3135,7 +3216,7 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:92
 msgid "Nagini Warrior"
-msgstr "나기니 워리어"
+msgstr "나가 전사 ♀"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:94
@@ -3161,16 +3242,19 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"오우거는 주로 야생에서 혼자 생활하는 거대한 생물로, 거대하고 기형이라는 점을 "
+"제외하면 생김새에 있어서는 놀랄만큼 인간과 유사하다. 그들은 느리고 멍청하지"
+"만 그들의 힘만큼은 과소평가할 수 없다."
 
 #. [attack]: type=blade
 #: data/core/units/ogres/Ogre.cfg:38 data/core/units/ogres/Young_Ogre.cfg:38
 msgid "cleaver"
-msgstr "클리버"
+msgstr "대형 식칼"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
-msgstr "영 오우거"
+msgstr "어린 오우거"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:22
@@ -3179,11 +3263,13 @@ msgid ""
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
+"아직 어린 오우거가 가끔 군대에 포획되어 길들여지곤 한다. 그들은 능숙하게 무기"
+"를 다루진 못하지만, 그 부족함을 강력한 신력으로 보완한다."
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:4
 msgid "Orcish Archer"
-msgstr "오크 아쳐"
+msgstr "오크 궁병"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:20
@@ -3198,7 +3284,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
-msgstr "오크 어쌔신"
+msgstr "오크 암살자"
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:22
@@ -3213,12 +3299,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/orcs/Assassin.cfg:49 data/core/units/orcs/Slayer.cfg:48
 msgid "throwing knives"
-msgstr "쓰로잉 나이프"
+msgstr "단도 투척"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
 msgid "Orcish Crossbowman"
-msgstr "오크 크로스보우맨"
+msgstr "오크 석궁수"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:19
@@ -3232,7 +3318,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
-msgstr "오크 그런트"
+msgstr "오크 졸개"
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:19
@@ -3241,33 +3327,35 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
+"오크 졸개들은 오크 군단의 핵심을 구성한다. 비록 인간과 엘프 전사들보다 느리"
+"긴 해도 졸개들은 훨씬 강력한 일격을 가지고 있으며, 더 많은 타격을 견뎌낸다."
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
-msgstr "오크 리더"
+msgstr "오크 지도자"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:20
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
-"bands. They carry a bow out of necessity, but are much more skilled with the "
-"sword. These orcs are powerful fighters, but they also have a certain "
-"rapport with their kin, especially goblins, and can inspire them to fight "
-"with uncharacteristic boldness."
+"bands. They carry a crossbow out of necessity, but are much more skilled "
+"with the sword. These orcs are powerful fighters, but they also have a "
+"certain rapport with their kin, especially goblins, and can inspire them to "
+"fight with uncharacteristic boldness."
 msgstr ""
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
-msgstr "오크 룰러"
+msgstr "오크 통치자"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:19
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
 "unusually intelligent and commanding, and is inevitably very strong as well. "
-"They are skilled with both sword and bow, but their real talent lies in "
+"They are skilled with both sword and crossbow, but their real talent lies in "
 "their rare ability to rally other orcs to battle, to give orders that are "
 "followed not out of fear, but loyalty."
 msgstr ""
@@ -3275,14 +3363,13 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/orcs/Ruler.cfg:40 data/core/units/orcs/Sovereign.cfg:41
 #: data/core/units/orcs/Warlord.cfg:37 data/core/units/orcs/Warrior.cfg:35
-#, fuzzy
 msgid "greatsword"
-msgstr "소드"
+msgstr "대검"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
-msgstr "오크 슬레이어"
+msgstr "오크 살육자"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:22
@@ -3297,7 +3384,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
 msgid "Orcish Slurbow"
-msgstr "오크 슬러보우"
+msgstr "오크 연노병"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:24
@@ -3316,7 +3403,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
-msgstr "오크 서버린"
+msgstr "오크 대군주"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:20
@@ -3332,7 +3419,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
-msgstr "오크 워로드"
+msgstr "오크 무장"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:19
@@ -3345,7 +3432,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
-msgstr "오크 워리어"
+msgstr "오크 전사"
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:18
@@ -3358,7 +3445,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
 msgid "Saurian Ambusher"
-msgstr "사우리언 앰부셔"
+msgstr "사우리언 기습병"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
@@ -3375,7 +3462,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:4
 msgid "Saurian Augur"
-msgstr "사우리언 아거"
+msgstr "사우리언 사제"
 
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:20
@@ -3395,7 +3482,7 @@ msgstr "저주"
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
 msgid "Saurian Flanker"
-msgstr "사우리언 플랭커"
+msgstr "사우리언 공격병"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:20
@@ -3410,7 +3497,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
-msgstr "사우리언 오라클"
+msgstr "사우리언 조언자"
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:20
@@ -3426,7 +3513,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
-msgstr "사우리언 스커르미셔"
+msgstr "사우리언 척후병"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:22
@@ -3443,7 +3530,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr "사우리언 수스세이어"
+msgstr "사우리언 예언자"
 
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:20
@@ -3457,7 +3544,7 @@ msgstr ""
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
-msgstr "그레이트 트롤"
+msgstr "위대한 트롤"
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:19
@@ -3468,11 +3555,15 @@ msgid ""
 "tales about trolls, and to see the stories made flesh does nothing to "
 "diminish their grandeur."
 msgstr ""
+"특별한 힘을 가지고 태어난 트롤이 연륜과 지혜를 갖게 되면, 그것은 몇 세대에 걸"
+"쳐 기록될 대단한 괴수가 된다. 그들의 힘과 교활함은 트롤에 대한 대부분의 이야"
+"기에서 써먹는 소재이며, 그들아 실제로 행한 이야기 또한 그 위엄에 걸맞는 것이"
+"다."
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
-msgstr "트롤 히어로"
+msgstr "트롤 영웅"
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:18
@@ -3485,7 +3576,7 @@ msgstr ""
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
-msgstr "트롤 락로버"
+msgstr "트롤 투석병"
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
@@ -3515,9 +3606,8 @@ msgstr ""
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
-#, fuzzy
 msgid "Troll Shaman"
-msgstr "스톨 웰프"
+msgstr "트롤 주술사"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -3530,12 +3620,12 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/trolls/Troll_Shaman.cfg:41
 msgid "flame blast"
-msgstr ""
+msgstr "폭염"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
-msgstr "트롤 워리어"
+msgstr "트롤 전사"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:20
@@ -3553,7 +3643,7 @@ msgstr ""
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
-msgstr "스톨 웰프"
+msgstr "어린 트롤"
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:20
@@ -3602,7 +3692,7 @@ msgstr ""
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
-msgstr "네크로폐이지"
+msgstr "시체를 먹는 자"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:19
@@ -3620,7 +3710,7 @@ msgstr ""
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
 msgid "Soulless"
-msgstr "소울리스"
+msgstr "혼이 없는 자"
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:20
@@ -3639,12 +3729,12 @@ msgstr ""
 #: data/core/units/undead/Necro_Lich.cfg:48
 #: data/core/units/undead/Spirit_Ghost.cfg:130
 msgid "touch"
-msgstr "터치"
+msgstr "손길"
 
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:6
 msgid "Walking Corpse"
-msgstr "워킹 콥스"
+msgstr "걸어다니는 시체"
 
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:19
@@ -3653,11 +3743,14 @@ msgid ""
 "Though not especially dangerous to a trained soldier, the sight of one’s "
 "former comrades amongst their number is frightening to say the least."
 msgstr ""
+"걸어다니는 시체는 죽은 자의 시신을 흑마법으로 다시 일으킨 것이다. 훈련된 병사"
+"라면 특별히 위험하지는 않지만, 최소한 그들 중에서 예전 동료였던 이의 모습을 "
+"보는것은 두려운 일이다."
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
-msgstr "에이션트 리치"
+msgstr "고대의 리치"
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:25
@@ -3665,12 +3758,14 @@ msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death."
 msgstr ""
+"이 주문의 존재는 오랜 옛 시대의 망령이다. 이 고대의 리치와 조우하는 자는 죽"
+"음 보다도 더 나쁜 것을 걱정해야 할 것이다."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:60
 #: data/core/units/undead/Necro_Lich.cfg:60
 msgid "chill tempest"
-msgstr ""
+msgstr "냉기 폭풍"
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
@@ -3679,12 +3774,12 @@ msgstr ""
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
 msgid "shadow wave"
-msgstr "섀도우 웨이브"
+msgstr "그림자 파동"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
-msgstr "다크 어뎁트"
+msgstr "흑마법 수련자"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:26
@@ -3700,23 +3795,30 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
+"문명화된 세상에서 흑마법을 익히다가 잡히면 누구든 사형이기 때문에, 수련생들"
+"을 모으기 위한 이 기술의 유인은 정말로 큰 보상이어야 한다. 그리고 주어지는 보"
+"상이란 것은 더도 덜도 아닌 불멸이기 때문에 이 기술을 추구하는 이들은 항상 존"
+"재한다. 비밀스런 종교 집단에 숨어들거나, 어둠의 지하조직에 가입한 이 광신도들"
+"이 견뎌내야 하는 훈련은 종종 그들을 탈진하거나 쇠약해지게 만든다.\n"
+"\n"
+"이런 상황에서, 그들의 무기는 그들이 스스로 배운 기술 뿐이다."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:108
 #: data/core/units/undead/Necromancer.cfg:51
 msgid "chill wave"
-msgstr ""
+msgstr "냉기 파동"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:295
 msgid "female^Dark Adept"
-msgstr "다크 어댑트"
+msgstr "흑마법 수련자"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
-msgstr "다크 소서러"
+msgstr "흑마법사"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
@@ -3740,12 +3842,12 @@ msgstr ""
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:251
-#, fuzzy
 msgid "Dark Sorceress"
-msgstr "다크 소서러"
+msgstr "흑마녀"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:257
+#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "
@@ -3763,6 +3865,12 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"흑마법에 대한 공포는 주로 일반인들이 그것에 대해 얼마나 무지한가로부터온다. "
+"흑마녀들은 생사 - 후자는 매우 일으키기 쉬운 - 의 비밀을 열기 시작했다. 이 작"
+"업은 혼과 비활성 물질 간의 첫번째 반짝이는 이어짐을 주고, 이 끈을 증혹시키는 "
+"첫번째의 성공적인 실험을 준다. 죽음 너머의 공포스런 미지의 것을 얼핏 보게 되"
+"면, 그에 대해 아는 것은 피할 수 없다.\n"
+"\n"
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
@@ -3783,6 +3891,14 @@ msgid ""
 "question can be raised at all, testifies to the magnitude of what their "
 "order has achieved."
 msgstr ""
+"리치는 흑마법의 첫번째 목표 : 불멸성을 추구하는 탐구의 과정에서의 물리적인 전"
+"형이다. 재탄생을 위해서 큰 대가를 치러야 함에도 불구하고, 리치가 됨으로써 그"
+"는 죽음을 속이는 것으로 진정한 공포를 주게 된다. 비록 육체는 말라 비틀어질지"
+"라도, 정신과, 그것이 따르는 영혼은 남게 된다.\n"
+"\n"
+"아마 네크로맨서의 핵심층에게만 알려진 사실인지는 모르겠지만, 생명이 무한히 연"
+"장되는 것인지 단순히 늘어난 것에 불과한지는 알려져 있지 않다. 하지만 이런 질"
+"문이 제기될 수 있다는 사실 자체가 그들의 조직이 이룬 일의 규모를 증언해 준다."
 
 #. [unit_type]: id=Necromancer, race=human
 #: data/core/units/undead/Necromancer.cfg:4
@@ -3800,23 +3916,27 @@ msgid ""
 "This ability, in all aspects, is the first step towards cheating death of "
 "its ultimate prize."
 msgstr ""
+"'흑마법'이라고 간주되는 것의 정점에 있는 것 중하나는 네크로맨시라는 기술로, "
+"죽은 자에게 거짓 생명을 주어 일으키는 끔찍한 능력이다. 이 발견 하나가 흑마법"
+"에 대한 온 인류의 규탄을 불러왔는데, 단지 악몽이었을 뿐이었던 것들에게 그것"
+"이 거대한 새 무기를 주었기 때문이다.\n"
+"\n"
+"모든 측면에서 이 능력은 그 궁극의 보상으로서 죽음을 속이는 첫걸음이다."
 
 #. [attack]: type=impact
 #: data/core/units/undead/Necromancer.cfg:39
 msgid "plague staff"
-msgstr ""
+msgstr "역병 지팡이"
 
 #. [female]
 #: data/core/units/undead/Necromancer.cfg:254
-#, fuzzy
 msgid "female^Necromancer"
 msgstr "네크로맨서"
 
 #. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:5
-#, fuzzy
 msgid "Banebow"
-msgstr "보우"
+msgstr "죽음의 궁수"
 
 #. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:19
@@ -3827,11 +3947,16 @@ msgid ""
 "nor caring what their purpose or foes might be. They are driven only by a "
 "malice born of their empty and tortured existence."
 msgstr ""
+"언데드 궁사 중에 가장 강력한 것들은 예외없이 그들의 이전 생에서 가장 강력한 "
+"궁사였던 자일 수밖에 없다. 그들은 흩어져 가는 예전의 기술들에 대한 기억에 의"
+"지하여 전장을 헤맨다. 그들은 자신들의 목적이나 적이 무엇인지 알지도 못하고 신"
+"경쓰지도 않는다. 그들은 오직 그들의 공허하고 고통스런 존재의 본성에서 오는 악"
+"의로만 움직일 뿐이다."
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
-msgstr "본 슈터"
+msgstr "뼈화살 사수"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:17
@@ -3843,24 +3968,31 @@ msgid ""
 "victims. It follows that they are dubbed simply ‘Bone-Shooters’ by their "
 "unfortunate enemies."
 msgstr ""
+"흑마법사의 창조물 중에 일부는 그들에게 주어진 거짓 삶을 더 강하게 붙든다. 그"
+"들의 반-생명의 힘은 그에 맞는 장비도 주었다. 특히 궁사들은 정말로 불쾌한 무기"
+"로 무장한다. 그들의 화살통은 나무로 만들어진 화살대가 아닌, 그들의 희생자들"
+"의 뼈로 채워져 있다. 그들의 불운한 적들이 그들을 단순히 뼈 사수라고 별명지은 "
+"것은 당연한 결과다."
 
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
-msgstr ""
+msgstr "초코본"
 
 #. [unit_type]: id=Chocobone, race=undead
-#: data/core/units/undead/Skele_Chocobone.cfg:21
+#: data/core/units/undead/Skele_Chocobone.cfg:24
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
+"타조 모양의 큰 새의 뼈를 탄 옛 문명의 기병들인 해골 초코본들은 대부분의 기병 "
+"유닛들보다 빠르게 움직일 수 있다."
 
 #. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
 msgid "Death Knight"
-msgstr "데스 나이트"
+msgstr "죽음의 기사"
 
 #. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:26
@@ -3870,11 +4002,14 @@ msgid ""
 "Wielding the same weapons as in life, they command the Undead in their quest "
 "for revenge."
 msgstr ""
+"옛 이야기에 따르면, 증오로 인해 저주받고 배신의 칼날을 맞은 가장 강력했던 전"
+"사와 장수들이 이 세상에 죽음의 기사들로 돌아왔다고 전해진다. 생전의 것과 같"
+"은 무기를 지니고, 그들은 복수를 위해 언데드를 지휘한다."
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
 msgid "Deathblade"
-msgstr "데스블레이드"
+msgstr "죽음의 칼날"
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:19
@@ -3885,11 +4020,15 @@ msgid ""
 "monsters are much faster than the rest of their kind, both on foot and with "
 "their blades."
 msgstr ""
+"'죽음의 칼날'이라고 알려진 이 혐오스러운 것들은 싸움의 달인들로, 생전에 유연"
+"하며 치명적인 병사들이었다. 이것을 알고 있는 그들의 새 주인은 그들이 한때 갖"
+"고 있던 능력에 맞게 그들의 장비를 갖추었다. 비록 부서지기는 쉽지만, 이 괴물들"
+"은 다른 언데드들에 비해 민첩성이나 칼을 휘두르는데 있어 훨씬 빠르다."
 
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
-msgstr "드레이그"
+msgstr "전쟁의 망령"
 
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:19
@@ -3900,14 +4039,19 @@ msgid ""
 "for a peace bought only by strength of arms. And so they struggle; both "
 "unthinking, and unrelenting."
 msgstr ""
+"이 거대한 잔해에서 한때 인간이었던 모습은 거의 남아 있지 않다. 뼛속까지 전사"
+"인 그들은 이제 反-죽음의 꿈 속에서 긿을 잃고, 그들의 기억 속 전쟁들 속을 헤매"
+"면서 오로지 무기의 힘으로만 구할 수 있는 안식을 위해 필사적으로 싸운다. 그리"
+"고 그들은 생각하지도, 포기하지도 않고 그저 발버둥친다."
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
-msgstr "레버넌트"
+msgstr "돌아온 자"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:19
+#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -3916,11 +4060,17 @@ msgid ""
 "powerful tool in combat: a fearless warrior that feels no pain and will "
 "fight to the bitter end."
 msgstr ""
+"또 한번의 전투를 위해 거짓 생명을 부여받은 이 돌아온 자들로 알려진 피조물들"
+"은, 살아 있을때 분명히 대단한 전사들이었다. 하지만 그때의 기억은 언데드로서"
+"의 그들에게는 거의 완전히 잊혀졌다. 그들을 일으켜 세운 마법사들조차도 그들의 "
+"과거를 짐작만 할 수 있을 뿐이다. 그런 의문들을 접어두면, 돌아온 자들은 강력"
+"한 전투 도구이다. 고통도 느끼지 않고 끝장날때까지 싸우는 공포심 없는 전사이"
+"기 때문이다."
 
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:4
 msgid "Skeleton"
-msgstr "스켈레톤"
+msgstr "해골 전사"
 
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:19
@@ -3930,11 +4080,15 @@ msgid ""
 "neither pain, nor death, and their mere presence will often frighten away "
 "any who would challenge their master."
 msgstr ""
+"스켈레톤 전사는 전투에서 죽은 자가 어둠의 마력으로 되살아난 존재이다. 생각이"
+"라고는 거의 존재하지 않으며, 주어진 목표를 변함없이 추구하는 그들은 고통도, "
+"죽음도 두려워하지 않는다. 보통은 그들의 존재 자체가 그들의 주인을 적대하는 자"
+"들에게 공포를 주곤 한다."
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
 msgid "Skeleton Archer"
-msgstr "스켈레톤 아쳐"
+msgstr "해골 궁사"
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:18
@@ -3945,31 +4099,40 @@ msgid ""
 "to achieve the tasks laid before them, for death holds no fear for one who "
 "is already dead."
 msgstr ""
+"스켈레톤 궁사는 같이 다니는 '스켈레톤 전사'와는 거의 차이가 없다. 그것은 자연"
+"을 역행하는 죄악으로, 다시 한번 싸우기 위해 죽음으로부터 일으켜진 전사이다. "
+"그들의 주인의 수족으로서 이 병사들은 그들에게 주어진 임무를 완수하기 위해서"
+"는 무엇이든 할 것이다. 이미 죽은 자에게는 죽음이란 어떤 공포도 주지 못하기 때"
+"문이다."
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
 msgid "Ghost"
-msgstr "고스트"
+msgstr "유령"
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:19
+#, fuzzy
 msgid ""
 "Enslaved within a shroud of enchantments, a trapped spirit may be likened to "
 "the wind in the sails of a ship. This damned vessel becomes an unfailing "
 "servant which can be bound to whatever task their master sees fit."
 msgstr ""
+"속박당한 혼령이 주문의 안개로 인해 노예화되면 마치 배의 돛 사이로 부는 바람"
+"과 같은 존재가 된다. 이 저주받은 그릇은 그들의 주인이 알맞다고 생각되는 어떤 "
+"것에든 묶일 수 있는 쓰러지지 않는 하인이 된다."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Spirit_Ghost.cfg:142
 #: data/core/units/undead/Spirit_Spectre.cfg:70
 #: data/core/units/undead/Spirit_Wraith.cfg:45
 msgid "wail"
-msgstr "웨일"
+msgstr "호곡성"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
 msgid "Nightgaunt"
-msgstr "나이트 건트"
+msgstr "어둠의 그림자"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:19
@@ -3979,11 +4142,14 @@ msgid ""
 "living, and those who live to speak of them had no leisure to study their "
 "foe."
 msgstr ""
+"이 피조물들이 마치 안면을 숨기려는듯이 쓰고 있는 마스크의 목적이 무엇인지는 "
+"알려져 있지 않다. 산 자들, 특히 자신이 적에 대해 탐구할 여가같은건 없다고 스"
+"스로 말하고 다니는 이들에게는 이 끔찍한 형상들이 잘 눈에 띄지 않는다."
 
 #. [unit_type]: id=Shadow, race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
 msgid "Shadow"
-msgstr "섀도우"
+msgstr "그림자 악령"
 
 #. [unit_type]: id=Shadow, race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:20
@@ -3994,11 +4160,16 @@ msgid ""
 "\n"
 "That is a question which is easily answered by a necromancer."
 msgstr ""
+"세상에 빛이 생기고 알 수 없는 것들에 형태를 부여하였을때, 공포는 어둠 속으로 "
+"쫓겨들어갔다. 그때로부터 세상의 그림자들은 인간의 공포를 담게 되었지만 아무"
+"도 그 이유는 모른다.\n"
+"\n"
+"이런 질문은 네크로맨서라면 쉽게 대답해 줄 수 있는 것이다."
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
 msgid "Spectre"
-msgstr "스팩터"
+msgstr "사령"
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:21
@@ -4011,17 +4182,23 @@ msgid ""
 "encountering one is that it is likely only the harbinger of a much more "
 "dangerous force that will follow in its wake."
 msgstr ""
+"때때로 '공허한 자'라고도 불리는 사령들은 그들의 지배자들의 오른팔이다. 그들"
+"은 생긴것 만큼이나 치명적인 존재로서, 산 자들에게 끔찍한 공포 그 자체다.\n"
+"\n"
+"이것들을 창조하는 것은 큰 기술을 필요로 하진 않지만, 사령들을 만났다는 사실"
+"이 위험한 진짜 이유는 이들이 이것을 뒤따르는 훨씬 더 위험한 군대의 전조에 불"
+"과하기 때문이다."
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Spirit_Spectre.cfg:59
 #: data/core/units/undead/Spirit_Wraith.cfg:34
 msgid "baneblade"
-msgstr "베인블레이드"
+msgstr "사악한 검"
 
 #. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:4
 msgid "Wraith"
-msgstr "레이스"
+msgstr "망령"
 
 #. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:18
@@ -4032,11 +4209,15 @@ msgid ""
 "are invincible which is so frightening, a notion that is fortunately far "
 "from the truth."
 msgstr ""
+"한때 전사였던 이 그림자들은 네크로맨서가 창조할 수 있는 가장 공포스러운 존재"
+"들이다. 칼은 그들을 마치 공기를 베듯이 쪼개며, 그 어떤 피해도 주지 못하는 것"
+"처럼 보인다. 그들은 두려운 무적의 적으로 생각되는데, 다행히도 사실과는 동떨어"
+"진 생각이다."
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
-msgstr "에이션트 오스"
+msgstr "고대의 엔트"
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:21
@@ -4050,17 +4231,24 @@ msgid ""
 "Such encounters are all that is known of what are presumably the most "
 "ancient of woses."
 msgstr ""
+"커다란 오크나무가 있는 정원을 가졌던 한 농부에 대한 신기한 이야기가 있다. 어"
+"느날 아침 그가 일어났을때 그 나무가 어째선지 그것이 있었던 자리에 맨땅만을 남"
+"겨놓고 사라져 있었다. 그 나무는 그의 아버지가 처음으로 땅을 파 농사를 짓기 시"
+"작할때부터 서 있었으며, 그의 가족은 그 나무 아래서 많은 추억을 쌓아왔기에, 그"
+"것은 그에게 큰 충격이었다.\n"
+"\n"
+"이러한 사건의 장본인은 모두가 매우 오래된 엔트들로 추정된다."
 
 #. [attack]: type=impact
 #: data/core/units/wose/Ancient.cfg:105 data/core/units/wose/Elder.cfg:104
 #: data/core/units/wose/Wose.cfg:43
 msgid "crush"
-msgstr "크러쉬"
+msgstr "으깨기"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
-msgstr "엘더 오스"
+msgstr "원로 엔트"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:20
@@ -4077,11 +4265,16 @@ msgid ""
 "turned to violence, should someone manage to raise the ire of these "
 "creatures."
 msgstr ""
+"엔트들은 여러 형태를 갖지만 모두가 나무의 형상이라고 전해지며, 나이를 먹을수"
+"록 점점 커져간다. 민담은 그 아래를 걷는 생물보다 훨씬 큰, 나무를 닮은 엔트들"
+"에 대해서도 전한다. 엔트들은 선 채로 잠을 자는 일이 많지만, 거의 눈에 띄지 않"
+"는다. 가장 큰 이유는 그런 키를 가진 엔트들이 이상한 모양의 나무와 별 차이가 "
+"없어 보이기 때문이다. 심지어 무신경한 상태의 엘프들조차 가끔 속는다."
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
-msgstr "오스"
+msgstr "엔트"
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:21
@@ -4097,6 +4290,22 @@ msgid ""
 "Woses are utterly unwarlike, but possess a great strength. They are, "
 "however, neither used to, nor quick at moving around."
 msgstr ""
+"엘프들의 눈에도 잘 띄지 않는 엔트들은 잘 알려지지 않은 종족이다. 그들에 대한 "
+"지식의 대부분은 엘프들에게서 유래한다. 이 존재들이 형태에서 유사함에도 불구하"
+"고 나무에서 유래한 것이 아니라는 점과, 방식은 다르지만 엔트들이 엘프 자신들보"
+"다 더 요정 세계에 더 가까운 존재라는 점이 알려져 있다. 엔트들이 자연계의 관리"
+"인 역할을 하고 있다는 이론이 많은 이들의 지지를 받고 있지만, 그들의 동기나 하"
+"는 일 등은 알려져 있지 않다.\n"
+"\n"
+"엔트들은 전혀 호전적이진 않지만, 강력한 완력을 보유하고 있다. 하지만 그들은 "
+"잘 돌아다니지도 않으며 별로 빠르지도 않다."
+
+#~ msgid "runic hammer"
+#~ msgstr "룬 망치"
+
+#, fuzzy
+#~ msgid "lightning bolt"
+#~ msgstr "lightning bolt"
 
 #~ msgid "scimitar"
 #~ msgstr "시미터"

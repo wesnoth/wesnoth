@@ -170,65 +170,6 @@ void tdata_manage::post_show(twindow& /*window*/)
 {
 }
 
-
-void tdata_manage::evaluate_summary_string(std::stringstream& str
-		, const config& cfg_summary){
-
-	const std::string& campaign_type = cfg_summary["campaign_type"];
-	if (cfg_summary["corrupt"].to_bool()) {
-		str << "\n" << _("#(Invalid)");
-	} else if (!campaign_type.empty()) {
-		str << "\n";
-
-		if(campaign_type == "scenario") {
-			const std::string campaign_id = cfg_summary["campaign"];
-			const config *campaign = NULL;
-			if (!campaign_id.empty()) {
-				if (const config &c = cache_config_.find_child(
-						"campaign", "id", campaign_id))
-
-					campaign = &c;
-			}
-			utils::string_map symbols;
-			if (campaign != NULL) {
-				symbols["campaign_name"] = (*campaign)["name"];
-			} else {
-				// Fallback to nontranslatable campaign id.
-				symbols["campaign_name"] = "(" + campaign_id + ")";
-			}
-			str << vgettext("Campaign: $campaign_name", symbols);
-
-			// Display internal id for debug purposes if we didn't above
-			if (game_config::debug && (campaign != NULL)) {
-				str << '\n' << "(" << campaign_id << ")";
-			}
-		} else if(campaign_type == "multiplayer") {
-			str << _("Multiplayer");
-		} else if(campaign_type == "tutorial") {
-			str << _("Tutorial");
-		} else {
-			str << campaign_type;
-		}
-
-		str << "\n";
-
-		if (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true)) {
-			str << _("replay");
-		} else if (!cfg_summary["turn"].empty()) {
-			str << _("Turn") << " " << cfg_summary["turn"];
-		} else {
-			str << _("Scenario Start");
-		}
-
-		str << "\n" << _("Difficulty: ")
-				<< string_table[cfg_summary["difficulty"]];
-
-		if(!cfg_summary["version"].empty()) {
-			str << "\n" << _("Version: ") << cfg_summary["version"];
-		}
-	}
-}
-
 void tdata_manage::delete_button_callback(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "persist_list", false);

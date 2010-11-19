@@ -42,10 +42,6 @@ namespace editor {
 		return preferences::get("editor_default_dir");
 	}
 
-	void set_default_dir(const std::string& value) {
-		preferences::set("editor_default_dir", value);
-	}
-
 	bool draw_terrain_codes() {
 		return preferences::get("editor_draw_terrain_codes", false);
 	}

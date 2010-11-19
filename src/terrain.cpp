@@ -36,6 +36,7 @@ terrain_type::terrain_type() :
 		editor_image_(),
 		id_(),
 		name_(),
+		editor_name_(),
 		description_(),
 		number_(t_translation::VOID_TERRAIN),
 		mvt_type_(1, t_translation::VOID_TERRAIN),
@@ -67,6 +68,7 @@ terrain_type::terrain_type(const config& cfg) :
 		editor_image_(cfg["editor_image"]),
 		id_(cfg["id"]),
 		name_(cfg["name"].t_str()),
+		editor_name_(cfg["editor_name"].t_str()),
 		description_(cfg["description"].t_str()),
 		number_(t_translation::read_terrain_code(cfg["string"])),
 		mvt_type_(),
@@ -178,6 +180,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	editor_image_(overlay.editor_image_),
 	id_(base.id_+"^"+overlay.id_),
 	name_(overlay.name_),
+	editor_name_(overlay.editor_name_),
 	description_(overlay.description_),
 	number_(t_translation::t_terrain(base.number_.base, overlay.number_.overlay)),
 	mvt_type_(overlay.mvt_type_),
@@ -261,6 +264,7 @@ bool terrain_type::operator==(const terrain_type& other) const {
 		&& editor_image_          == other.editor_image_
 		&& id_                    == other.id_
 		&& name_.base_str()       == other.name_.base_str()
+		&& editor_name_.base_str() == other.editor_name_.base_str()
 		&& number_                == other.number_
 		&& height_adjust_         == other.height_adjust_
 		&& height_adjust_set_     == other.height_adjust_set_

@@ -25,7 +25,7 @@ public class StringUtils
 		if (target == null || sequence == null)
 			return false;
 
-		Pattern pattern = Pattern.compile("[\t ]*" + Pattern.quote(sequence));
+		Pattern pattern = Pattern.compile("[\t ]*" + Pattern.quote(sequence)); //$NON-NLS-1$
 		Matcher matcher = pattern.matcher(target);
 		return (matcher.find() && matcher.start() == 0);
 	}
@@ -98,7 +98,7 @@ public class StringUtils
 			boolean removeTrailing, boolean removePreceding)
 	{
 		if (target == null)
-			return "";
+			return ""; //$NON-NLS-1$
 
 		StringBuilder resString = new StringBuilder();
 
@@ -131,7 +131,7 @@ public class StringUtils
 	{
 		if (string == null)
 			return new String[0];
-		return string.split("\\r?\\n");
+		return string.split("\\r?\\n"); //$NON-NLS-1$
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class StringUtils
 	public static String trimPathSeparators(String string)
 	{
 		if (string == null || string.isEmpty())
-			return "";
+			return ""; //$NON-NLS-1$
 
 		while (string.charAt(string.length() - 1) == '/' ||
 				string.charAt(string.length() - 1) == '\\')
@@ -160,7 +160,7 @@ public class StringUtils
 	public static String normalizePath(String path)
 	{
 		if (path == null)
-			return "";
+			return ""; //$NON-NLS-1$
 
 		String str = StringUtils.trimPathSeparators(path);
 		StringBuilder sb = new StringBuilder(str.length());
@@ -195,12 +195,12 @@ public class StringUtils
 	public static String replaceWithIndent(String string, String source, String target)
 	{
 		if (string == null)
-			return "";
+			return ""; //$NON-NLS-1$
 
 		// get the current indentation
-		Pattern pattern = Pattern.compile("[\t ]*");
+		Pattern pattern = Pattern.compile("[\t ]*"); //$NON-NLS-1$
 		Matcher matcher = pattern.matcher(string);
-		String indent = "";
+		String indent = ""; //$NON-NLS-1$
 		if (matcher.find())
 		{
 			int end = matcher.end();
@@ -211,7 +211,7 @@ public class StringUtils
 		for (int i = 1; i < tmpTarget.length; i++)
 			tmpTarget[i] = indent + tmpTarget[i];
 
-		return string.replace(source, ListUtils.concatenateArray(tmpTarget, "\n"));
+		return string.replace(source, ListUtils.concatenateArray(tmpTarget, "\n")); //$NON-NLS-1$
 	}
 
 	/**
@@ -223,7 +223,7 @@ public class StringUtils
 	public static String multiples(String sequence, int times)
 	{
 		if (sequence == null)
-			return "";
+			return ""; //$NON-NLS-1$
 
 		StringBuilder res = new StringBuilder(sequence.length() * times);
 		for (int i = 0; i < times; i++)

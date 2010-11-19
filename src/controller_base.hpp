@@ -22,8 +22,6 @@
 #include "hotkeys.hpp"
 #include "key.hpp"
 
-#include <vector>
-
 class CVideo;
 
 namespace events {
@@ -52,11 +50,6 @@ protected:
 	 */
 	virtual void slice_end();
 
-	/**
-	 * Inherited from command_executor, still declared pure virtual but might
-	 * provide some defaults
-	 */
-	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const = 0;
 	/**
 	 * Get a reference to a mouse handler member a derived class uses
 	 */

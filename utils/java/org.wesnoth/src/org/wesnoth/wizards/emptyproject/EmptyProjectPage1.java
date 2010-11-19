@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.wesnoth.Messages;
 import org.wesnoth.wizards.NewWizardPageTemplate;
 
 
@@ -37,9 +38,9 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 
 
 	public EmptyProjectPage1() {
-		super("emptyProjectPage1");
-		setTitle("Create new empty project");
-		setDescription("Specify PBL related information.");
+		super("emptyProjectPage1"); //$NON-NLS-1$
+		setTitle(Messages.EmptyProjectPage1_1);
+		setDescription(Messages.EmptyProjectPage1_2);
 		setPageComplete(false);
 	}
 
@@ -60,16 +61,16 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 		container.setLayout(new GridLayout(3, false));
 
 		chkDataCampaignsProject_ = new Button(container, SWT.CHECK);
-		chkDataCampaignsProject_.setText("This is a 'data/campaigns/' project");
+		chkDataCampaignsProject_.setText(Messages.EmptyProjectPage1_3);
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
 
 		chkGeneratePBL_ = new Button(container, SWT.CHECK);
 		chkGeneratePBL_.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
-		chkGeneratePBL_.setText("Generate '_server.pbl' with the following information");
+		chkGeneratePBL_.setText(Messages.EmptyProjectPage1_4);
 
 		Label _lblTitle = new Label(container, SWT.NONE);
-		_lblTitle.setText("Project title*:");
+		_lblTitle.setText(Messages.EmptyProjectPage1_5);
 
 		txtTitle_ = new Text(container, SWT.BORDER);
 		GridData gd_txtTitle_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
@@ -78,49 +79,49 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 		txtTitle_.addModifyListener(updatePageCompleteListener);
 
 		Label lblThisIsThe = new Label(container, SWT.NONE);
-		lblThisIsThe.setText("This is the title shown in the addons list");
+		lblThisIsThe.setText(Messages.EmptyProjectPage1_6);
 
 		Label lblVersion = new Label(container, SWT.NONE);
-		lblVersion.setText("Version* :");
+		lblVersion.setText(Messages.EmptyProjectPage1_7);
 
 		txtVersion_ = new Text(container, SWT.BORDER);
 		txtVersion_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		txtVersion_.addModifyListener(updatePageCompleteListener);
 
 		Label lblFormat = new Label(container, SWT.NONE);
-		lblFormat.setToolTipText("Displayed to the right of the title, it is just text." +
-				" However,\r\nstarting with Wesnoth 1.6, the required format is x.y.z " +
-				"\r\nwhere x, y and z are numbers and a value for x greater than 0 \r\n" +
-				"implies the campaign is complete and balanced. \r\nTrailing non-numeric" +
-				" elements are ok, but nothing should\r\nappear before the numbers. This" +
-				" is necessary for the Update \r\nadd-ons button to work correctly.");
-		lblFormat.setText("Format: x.y.z");
+		lblFormat.setToolTipText(Messages.EmptyProjectPage1_8 +
+				Messages.EmptyProjectPage1_9 +
+				Messages.EmptyProjectPage1_10 +
+				Messages.EmptyProjectPage1_11 +
+				Messages.EmptyProjectPage1_12 +
+				Messages.EmptyProjectPage1_13);
+		lblFormat.setText(Messages.EmptyProjectPage1_14);
 
 		Label lblTranslationsDir = new Label(container, SWT.NONE);
-		lblTranslationsDir.setText("Translations folder:");
+		lblTranslationsDir.setText(Messages.EmptyProjectPage1_15);
 
 		txtTranslationDir_ = new Text(container, SWT.BORDER);
 		txtTranslationDir_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Label lblRelativeToThe = new Label(container, SWT.NONE);
-		lblRelativeToThe.setText("Relative to the data folder");
+		lblRelativeToThe.setText(Messages.EmptyProjectPage1_16);
 
 		Label lblAuthor = new Label(container, SWT.NONE);
-		lblAuthor.setText("Author:");
+		lblAuthor.setText(Messages.EmptyProjectPage1_17);
 
 		txtAuthor_ = new Text(container, SWT.BORDER);
 		txtAuthor_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		new Label(container, SWT.NONE);
 
 		Label lblDescription = new Label(container, SWT.NONE);
-		lblDescription.setText("Email:");
+		lblDescription.setText(Messages.EmptyProjectPage1_18);
 
 		txtEmail_ = new Text(container, SWT.BORDER);
 		txtEmail_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		new Label(container, SWT.NONE);
 
 		Label lblDescription_1 = new Label(container, SWT.NONE);
-		lblDescription_1.setText("Description:");
+		lblDescription_1.setText(Messages.EmptyProjectPage1_19);
 
 		txtDescription_ = new Text(container, SWT.BORDER);
 		txtDescription_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
@@ -128,21 +129,21 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 
 		Label lblType = new Label(container, SWT.NONE);
 		lblType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblType.setText("Type:");
+		lblType.setText(Messages.EmptyProjectPage1_20);
 
 		txtType_ = new Text(container, SWT.BORDER);
 		txtType_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		new Label(container, SWT.NONE);
 
 		Label lblIcon = new Label(container, SWT.NONE);
-		lblIcon.setText("Passphrase:");
+		lblIcon.setText(Messages.EmptyProjectPage1_21);
 
 		txtPassphrase_ = new Text(container, SWT.BORDER);
 		txtPassphrase_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		new Label(container, SWT.NONE);
 
 		Label lblIcon_1 = new Label(container, SWT.NONE);
-		lblIcon_1.setText("Icon:");
+		lblIcon_1.setText(Messages.EmptyProjectPage1_22);
 
 		txtIcon_ = new Text(container, SWT.BORDER);
 		GridData gd_txtIcon_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
@@ -153,16 +154,16 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 		GridData gd_lblRelativeToThe_1 = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_lblRelativeToThe_1.widthHint = 285;
 		lblRelativeToThe_1.setLayoutData(gd_lblRelativeToThe_1);
-		lblRelativeToThe_1.setToolTipText("An image, displayed leftmost on the " +
-				"\"add-ons\" screen.\r\nIt must be a standard Wesnoth graphic and not a " +
-				"custom one. \r\n(Well, a custom graphic will work if the user already " +
-				"has the campaign \r\ninstalled, or if it is a custom graphic from a" +
-				" different campaign that the \r\nuser has installed but others won't " +
-				"see it!) (Note that the icon used to \r\ndisplay your campaign for when" +
-				" it is played can be custom; for more\r\ninformation see CampaignWML.) " +
-				"If the icon is a unit with magenta color,\r\nplease use " +
-				"ImagePathFunctionWML to team-color it. ");
-		lblRelativeToThe_1.setText("Relative to the 'data/core/images' directory");
+		lblRelativeToThe_1.setToolTipText(Messages.EmptyProjectPage1_23 +
+				Messages.EmptyProjectPage1_24 +
+				Messages.EmptyProjectPage1_25 +
+				Messages.EmptyProjectPage1_26 +
+				Messages.EmptyProjectPage1_27 +
+				Messages.EmptyProjectPage1_28 +
+				Messages.EmptyProjectPage1_29 +
+				Messages.EmptyProjectPage1_30 +
+				Messages.EmptyProjectPage1_31);
+		lblRelativeToThe_1.setText(Messages.EmptyProjectPage1_32);
 
 		updateIsPageComplete();
 	}
@@ -175,15 +176,15 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 		setPageComplete(false);
 		if (txtTitle_.getText().isEmpty())
 		{
-			setMessage("Project name is mandatory", DialogPage.WARNING);
+			setMessage(Messages.EmptyProjectPage1_33, DialogPage.WARNING);
 			return;
 		}
 
 		// match the pattern x.y.z
 		if (txtVersion_.getText().isEmpty() ||
-				!(txtVersion_.getText().matches("[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*")))
+				!(txtVersion_.getText().matches("[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*"))) //$NON-NLS-1$
 		{
-			setMessage("The version must have the format: x.y.z", DialogPage.WARNING);
+			setMessage(Messages.EmptyProjectPage1_35, DialogPage.WARNING);
 			return;
 		}
 

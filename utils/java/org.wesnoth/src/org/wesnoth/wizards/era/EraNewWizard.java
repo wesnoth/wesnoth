@@ -28,6 +28,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.wizards.NewWizardTemplate;
@@ -38,7 +39,7 @@ public class EraNewWizard extends NewWizardTemplate
 	EraPage0	page0_;
 
 	public EraNewWizard() {
-		setWindowTitle("Create a new era");
+		setWindowTitle(Messages.EraNewWizard_0);
 		setNeedsProgressMonitor(true);
 	}
 
@@ -88,7 +89,7 @@ public class EraNewWizard extends NewWizardTemplate
 	private void doFinish(String containerName, String fileName, IProgressMonitor monitor) throws CoreException
 	{
 		// create a sample file
-		monitor.beginTask("Creating " + fileName, 10);
+		monitor.beginTask(Messages.EraNewWizard_1 + fileName, 10);
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IResource resource = root.findMember(new Path(containerName));
 
@@ -118,7 +119,7 @@ public class EraNewWizard extends NewWizardTemplate
 		}
 
 		monitor.worked(5);
-		monitor.setTaskName("Opening file for editing...");
+		monitor.setTaskName(Messages.EraNewWizard_2);
 		getShell().getDisplay().asyncExec(new Runnable() {
 			@Override
 			public void run()
@@ -140,16 +141,16 @@ public class EraNewWizard extends NewWizardTemplate
 	{
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
-		params.add(new ReplaceableParameter("$$era_id", page0_.getEraID()));
-		params.add(new ReplaceableParameter("$$era_name", page0_.getEraName()));
-		params.add(new ReplaceableParameter("$$require_era", String.valueOf(page0_.getRequiresEra())));
+		params.add(new ReplaceableParameter("$$era_id", page0_.getEraID())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$era_name", page0_.getEraName())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$require_era", String.valueOf(page0_.getRequiresEra()))); //$NON-NLS-1$
 
-		String template = TemplateProvider.getInstance().getProcessedTemplate("era", params);
+		String template = TemplateProvider.getInstance().getProcessedTemplate("era", params); //$NON-NLS-1$
 
 		if (template == null)
 		{
-			Logger.getInstance().log("'era' template not found",
-					"Template for \"era\" not found.");
+			Logger.getInstance().log(Messages.EraNewWizard_7,
+					Messages.EraNewWizard_8);
 			return null;
 		}
 

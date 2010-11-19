@@ -514,6 +514,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 
 	foreach (const config::attribute &attr, input_cfg.attribute_range()) {
+		if (attr.first == "do_not_list") continue;
 		WRN_UT << "Unknown attribute '" << attr.first << "' discarded.\n";
 	}
 }
@@ -893,28 +894,6 @@ std::string unit::profile() const
 		return prof;
 	}
 	return absolute_image();
-}
-
-std::string unit::transparent() const {
-	std::string image = profile();
-	const size_t offset = image.find_last_of('/');
-	if(offset != std::string::npos) {
-		image.insert(offset, "/transparent");
-	} else {
-		image = "transparent/" + image;
-	}
-
-	image::locator locator(image);
-	if(!locator.file_exists()) {
-		image = profile();
-
-#ifndef LOW_MEM
-		if(image == absolute_image()) {
-			image += image_mods();
-		}
-#endif
-	}
-	return image;
 }
 
 SDL_Color unit::hp_color() const
@@ -1834,8 +1813,9 @@ void unit::redraw_unit()
 
 
 	if(get_state(STATE_PETRIFIED)) params.image_mod +="~GS()";
+	params.primary_frame = t_true;
 
-	const frame_parameters adjusted_params = anim_->get_current_params(params,true);
+	const frame_parameters adjusted_params = anim_->get_current_params(params);
 
 
 
@@ -2902,20 +2882,6 @@ std::string unit::image_mods() const{
 		modifier << "~" << image_mods_;
 	}
 	return modifier.str();
-}
-
-const tportrait* unit::portrait(
-		const unsigned size, const tportrait::tside side) const
-{
-	foreach(const tportrait& portrait, (type()->portraits())) {
-		if(portrait.size == size
-				&& (side ==  portrait.side || portrait.side == tportrait::BOTH)) {
-
-			return &portrait;
-		}
-	}
-
-	return NULL;
 }
 
 void unit::remove_attacks_ai()

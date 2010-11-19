@@ -25,6 +25,7 @@ import org.eclipse.jface.dialogs.DialogSettings;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
 
 public class PreprocessorUtils
@@ -56,7 +57,7 @@ public class PreprocessorUtils
 	public int preprocessFile(IFile file, List<String> defines)
 	{
 		return preprocessFile(file, getTemporaryLocation(file),
-				getTemporaryLocation(file) + "/_MACROS_.cfg", defines, true);
+				getTemporaryLocation(file) + "/_MACROS_.cfg", defines, true); //$NON-NLS-1$
 	}
 
 	/**
@@ -93,7 +94,7 @@ public class PreprocessorUtils
 		if (filesTimeStamps_.containsKey(filePath) &&
 			filesTimeStamps_.get(filePath) >= new File(filePath).lastModified())
 		{
-			Logger.getInstance().log("skipped preprocessing a non-modified file: " + filePath);
+			Logger.getInstance().log(Messages.PreprocessorUtils_1 + filePath);
 			return -1;
 		}
 
@@ -102,10 +103,10 @@ public class PreprocessorUtils
 		try{
 			List<String> arguments = new ArrayList<String>();
 
-			arguments.add("--config-dir");
+			arguments.add("--config-dir"); //$NON-NLS-1$
 			arguments.add(Preferences.getString(Constants.P_WESNOTH_USER_DIR));
 
-			arguments.add("--data-dir");
+			arguments.add("--data-dir"); //$NON-NLS-1$
 			arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR));
 
 			if (macrosFile != null && macrosFile.isEmpty() == false)
@@ -113,11 +114,11 @@ public class PreprocessorUtils
 				ResourceUtils.createNewFile(macrosFile);
 
 				// add the _MACROS_.cfg file
-				arguments.add("--preprocess-input-macros");
+				arguments.add("--preprocess-input-macros"); //$NON-NLS-1$
 				arguments.add(macrosFile);
 
 
-				arguments.add("--preprocess-output-macros");
+				arguments.add("--preprocess-output-macros"); //$NON-NLS-1$
 				arguments.add(macrosFile);
 			}
 
@@ -125,27 +126,27 @@ public class PreprocessorUtils
 			{
 				if (defines == null)
 					defines = new ArrayList<String>();
-				defines.add("NO_TERRAIN_GFX");
+				defines.add("NO_TERRAIN_GFX"); //$NON-NLS-1$
 			}
 
 			if (defines != null && !defines.isEmpty())
 			{
-				String argument = "-p=";
+				String argument = "-p="; //$NON-NLS-1$
 				for(int i=0;i< defines.size() - 1;i++)
 				{
-					argument += (defines.get(i) + ",");
+					argument += (defines.get(i) + ","); //$NON-NLS-1$
 				}
 				argument += defines.get(defines.size()-1);
 				arguments.add(argument);
 			}
 			else
 			{
-				arguments.add("-p");
+				arguments.add("-p"); //$NON-NLS-1$
 			}
 			arguments.add(filePath);
 			arguments.add(targetDirectory);
 
-			Logger.getInstance().log("preprocessing file: " + filePath);
+			Logger.getInstance().log(Messages.PreprocessorUtils_10 + filePath);
 			ExternalToolInvoker wesnoth = new ExternalToolInvoker(
 					Preferences.getString(Constants.P_WESNOTH_EXEC_PATH),
 					arguments);
@@ -170,8 +171,8 @@ public class PreprocessorUtils
 	{
 		if (file == null || !file.exists())
 		{
-			Logger.getInstance().log("file null or non existent.",
-					"The file is null or does not exist");
+			Logger.getInstance().log(Messages.PreprocessorUtils_11,
+					Messages.PreprocessorUtils_12);
 			return;
 		}
 		EditorUtils.openEditor(getPreprocessedFilePath(file, openPlain, true));
@@ -190,7 +191,7 @@ public class PreprocessorUtils
 	{
 		IFileStore preprocFile =
 			EFS.getLocalFileSystem().getStore(new Path(getTemporaryLocation(file)));
-		preprocFile = preprocFile.getChild(file.getName() + (plain == true? ".plain" : "") );
+		preprocFile = preprocFile.getChild(file.getName() + (plain == true? ".plain" : "") ); //$NON-NLS-1$ //$NON-NLS-2$
 		if (create && !preprocFile.fetchInfo().exists())
 			preprocessFile(file, null);
 		return preprocFile;
@@ -204,8 +205,8 @@ public class PreprocessorUtils
 	public String getTemporaryLocation(IFile file)
 	{
 		String targetDirectory = WorkspaceUtils.getTemporaryFolder();
-		targetDirectory += file.getProject().getName() + "/";
-		targetDirectory += file.getParent().getProjectRelativePath().toOSString() + "/";
+		targetDirectory += file.getProject().getName() + "/"; //$NON-NLS-1$
+		targetDirectory += file.getParent().getProjectRelativePath().toOSString() + "/"; //$NON-NLS-1$
 		return targetDirectory;
 	}
 
@@ -221,7 +222,7 @@ public class PreprocessorUtils
 	{
 		return WorkspaceUtils.getTemporaryFolder() +
 				resource.getProject().getName() +
-				"/_MACROS_.cfg";
+				"/_MACROS_.cfg"; //$NON-NLS-1$
 	}
 
 	/**
@@ -231,17 +232,17 @@ public class PreprocessorUtils
 	public void saveTimestamps()
 	{
 		IPath path = Activator.getDefault().getStateLocation();
-		String filename = path.append("preprocessed.txt").toOSString();
-		DialogSettings settings = new DialogSettings("preprocessed");
+		String filename = path.append("preprocessed.txt").toOSString(); //$NON-NLS-1$
+		DialogSettings settings = new DialogSettings("preprocessed"); //$NON-NLS-1$
 		try
 		{
-			settings.put("files", filesTimeStamps_.keySet().toArray(new String[0]));
+			settings.put("files", filesTimeStamps_.keySet().toArray(new String[0])); //$NON-NLS-1$
 			List<String> timestamps = new ArrayList<String>();
 			for(Long timestamp : filesTimeStamps_.values())
 			{
 				timestamps.add(timestamp.toString());
 			}
-			settings.put("timestamps", timestamps.toArray(new String[0]));
+			settings.put("timestamps", timestamps.toArray(new String[0])); //$NON-NLS-1$
 			settings.save(filename);
 		}
 		catch (Exception e)
@@ -257,8 +258,8 @@ public class PreprocessorUtils
 	public void restoreTimestamps()
 	{
 		IPath path = Activator.getDefault().getStateLocation();
-		String filename = path.append("preprocessed.txt").toOSString();
-		DialogSettings settings = new DialogSettings("preprocessed");
+		String filename = path.append("preprocessed.txt").toOSString(); //$NON-NLS-1$
+		DialogSettings settings = new DialogSettings("preprocessed"); //$NON-NLS-1$
 		filesTimeStamps_.clear();
 
 		try
@@ -268,8 +269,8 @@ public class PreprocessorUtils
 				settings.save(filename);
 
 			settings.load(filename);
-			String[] timestamps = settings.getArray("timestamps");
-			String[] files = settings.getArray("files");
+			String[] timestamps = settings.getArray("timestamps"); //$NON-NLS-1$
+			String[] files = settings.getArray("files"); //$NON-NLS-1$
 			if (timestamps != null && files != null &&
 				timestamps.length == files.length)
 			{

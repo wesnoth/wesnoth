@@ -27,6 +27,7 @@
 #include "display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
@@ -527,27 +528,34 @@ bool show_video_mode_dialog(display& disp)
 	resolutions.erase(std::unique(resolutions.begin(),resolutions.end()),resolutions.end());
 
 	std::vector<std::string> options;
-	for(std::vector<std::pair<int,int> >::const_iterator j = resolutions.begin(); j != resolutions.end(); ++j) {
-		std::ostringstream option;
-		if (*j == current_res)
-			option << DEFAULT_ITEM;
+	unsigned current_choice = 0;
 
-		option << j->first << "x" << j->second;
+	for(size_t k = 0; k < resolutions.size(); ++k) {
+		std::pair<int, int> const& res = resolutions[k];
+		std::ostringstream option;
+
+		if (res == current_res)
+			current_choice = static_cast<unsigned>(k);		
+
+		option << res.first << "x" << res.second;
 		/*widescreen threshold is 16:10*/
-		if ((double)j->first/j->second >= 16.0/10.0)
+		if ((double)res.first/res.second >= 16.0/10.0)
 		  option << _(" (widescreen)");
 		options.push_back(option.str());
 	}
 
-	const int result = gui::show_dialog(disp,NULL,"",
-	                                    _("Choose Resolution"),
-	                                    gui::OK_CANCEL,&options);
-	if(size_t(result) < resolutions.size() && resolutions[result] != current_res) {
-		set_resolution(resolutions[result]);
-		return true;
-	} else {
+	gui2::tsimple_item_selector dlg(_("Choose Resolution"), "", options);
+	dlg.set_selected_index(current_choice);
+	dlg.show(disp.video());
+
+	int choice = dlg.selected_index();
+
+	if(choice == -1 || resolutions[static_cast<size_t>(choice)] == current_res) {
 		return false;
 	}
+
+	set_resolution(resolutions[static_cast<size_t>(choice)]);
+	return true;
 }
 
 } // end namespace preferences

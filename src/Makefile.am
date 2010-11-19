@@ -119,7 +119,9 @@ wesnoth_source = \
 	gui/auxiliary/event/distributor.cpp \
 	gui/auxiliary/event/handler.cpp \
 	gui/auxiliary/log.cpp \
+	gui/auxiliary/old_markup.cpp \
 	gui/auxiliary/timer.cpp \
+	gui/auxiliary/tips.cpp \
 	gui/auxiliary/widget_definition.cpp \
 	gui/auxiliary/widget_definition/button.cpp \
 	gui/auxiliary/widget_definition/horizontal_scrollbar.cpp \
@@ -170,9 +172,11 @@ wesnoth_source = \
 	gui/auxiliary/window_builder.cpp \
 	gui/dialogs/addon_connect.cpp \
 	gui/dialogs/addon_list.cpp \
+	gui/dialogs/campaign_difficulty.cpp \
 	gui/dialogs/campaign_selection.cpp \
 	gui/dialogs/data_manage.cpp \
 	gui/dialogs/dialog.cpp \
+	gui/dialogs/edit_label.cpp \
 	gui/dialogs/formula_debugger.cpp \
 	gui/dialogs/game_load.cpp \
 	gui/dialogs/game_delete.cpp \
@@ -188,6 +192,7 @@ wesnoth_source = \
 	gui/dialogs/mp_create_game.cpp \
 	gui/dialogs/mp_method_selection.cpp \
 	gui/dialogs/mp_cmd_wrapper.cpp \
+	gui/dialogs/simple_item_selector.cpp \
 	gui/dialogs/title_screen.cpp \
 	gui/dialogs/transient_message.cpp \
 	gui/dialogs/unit_attack.cpp \
@@ -254,7 +259,6 @@ wesnoth_source = \
 	playmp_controller.cpp \
 	playsingle_controller.cpp \
 	playturn.cpp \
-	portrait.cpp \
 	replay.cpp \
 	replay_controller.cpp \
 	resources.cpp \
@@ -264,6 +268,7 @@ wesnoth_source = \
 	scripting/lua.cpp \
 	sha1.cpp \
 	settings.cpp \
+	side_filter.cpp \
 	statistics.cpp \
 	statistics_dialog.cpp \
 	storyscreen/interface.cpp \
@@ -273,7 +278,6 @@ wesnoth_source = \
 	team.cpp \
 	terrain_filter.cpp \
 	text.cpp \
-	titlescreen.cpp \
 	tod_manager.cpp \
 	tooltips.cpp \
 	unit.cpp \
@@ -491,7 +495,6 @@ libwesnoth_core_a_SOURCES = \
 	util.cpp \
 	version.cpp \
 	serialization/binary_or_text.cpp \
-	serialization/binary_wml.cpp \
 	serialization/parser.cpp \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \

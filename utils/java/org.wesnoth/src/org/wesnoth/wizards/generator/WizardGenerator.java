@@ -90,7 +90,7 @@ public class WizardGenerator extends NewWizardTemplate
 	public boolean performFinish()
 	{
 		// logic
-		String result = StringUtils.multiples("\t", indent_) + "[" + tagName_ + "]\n";
+		String result = StringUtils.multiples("\t", indent_) + "[" + tagName_ + "]\n"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		StringBuilder keys = new StringBuilder();
 		StringBuilder tags = new StringBuilder();
 		for (IWizardPage page : getPages())
@@ -103,7 +103,7 @@ public class WizardGenerator extends NewWizardTemplate
 				; // skip 404 pages
 		}
 		result += (keys.toString() + tags.toString());
-		result += (StringUtils.multiples("\t", indent_) + "[/" + tagName_ + "]\n");
+		result += (StringUtils.multiples("\t", indent_) + "[/" + tagName_ + "]\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		data_ = result;
 		// for now let's just return tag's name
 		objectName_ = tagName_;

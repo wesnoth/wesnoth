@@ -28,6 +28,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.utils.AntUtils;
 import org.wesnoth.utils.PreprocessorUtils;
@@ -71,44 +72,44 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	protected IProject[] build(int kind, Map args, IProgressMonitor monitor)
 			throws CoreException
 	{
-		Logger.getInstance().log("building...");
-		monitor.beginTask("Building project " + getProject().getName() + " ...", 100);
+		Logger.getInstance().log(Messages.WesnothProjectBuilder_0);
+		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
 
-		monitor.subTask("Checking conditions...");
+		monitor.subTask(Messages.WesnothProjectBuilder_3);
 		if (Preferences.getString(Constants.P_WESNOTH_USER_DIR).isEmpty())
 		{
-			Logger.getInstance().log("no preferences set (project builder)",
-					"Please set the wesnoth user dir before creating the content");
+			Logger.getInstance().log(Messages.WesnothProjectBuilder_4,
+					Messages.WesnothProjectBuilder_5);
 			return null;
 		}
 		monitor.worked(5);
 
 		// create the temporary directory used by the plugin if not created
-		monitor.subTask("Creating temporary directory...");
+		monitor.subTask(Messages.WesnothProjectBuilder_6);
 		WorkspaceUtils.getTemporaryFolder();
 		monitor.worked(2);
 
 		// check for 'build.xml' existance
-		if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == true)
+		if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == true) //$NON-NLS-1$
 		{
 			// run the ant job to copy the whole project
 			// in the user add-ons directory (incremental)
-			monitor.subTask("Copying resources...");
+			monitor.subTask(Messages.WesnothProjectBuilder_8);
 			Map<String, String> properties = new HashMap<String, String>();
-			properties.put("wesnoth.user.dir",
+			properties.put("wesnoth.user.dir", //$NON-NLS-1$
 					Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
-			Logger.getInstance().log("Ant result:");
+			Logger.getInstance().log(Messages.WesnothProjectBuilder_10);
 
 			String result = AntUtils.runAnt(
-					getProject().getLocation().toOSString() + "/build.xml",
+					getProject().getLocation().toOSString() + "/build.xml", //$NON-NLS-1$
 					properties, true);
 			Logger.getInstance().log(result);
 			monitor.worked(10);
 
 			if (result == null)
 			{
-				Logger.getInstance().log("error running the ant job",
-						"There was an error running the ant job.");
+				Logger.getInstance().log(Messages.WesnothProjectBuilder_12,
+						Messages.WesnothProjectBuilder_13);
 				return null;
 			}
 		}
@@ -134,7 +135,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 				for(IResourceDelta tmp : affected)
 				{
-					if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg"))
+					if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")) //$NON-NLS-1$
 					{
 						readDefines = true;
 						break;
@@ -159,7 +160,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	protected void handleRemovedResource(IResource resource)
 	{
 		if (resource instanceof IFile &&
-			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
+			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg"))) //$NON-NLS-1$
 		{
 			ProjectUtils.getCacheForProject(getProject()).
 					getConfigs().remove(resource.getName());
@@ -177,31 +178,31 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 		// config files
 		if (resource instanceof IFile &&
-			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
+			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg"))) //$NON-NLS-1$
 		{
-			boolean isMainCfg = resource.getName().equals("_main.cfg");
+			boolean isMainCfg = resource.getName().equals("_main.cfg"); //$NON-NLS-1$
 			if (handleMainCfg == false && isMainCfg == true)
 				return true;
 
-			Logger.getInstance().log("");
+			Logger.getInstance().log(""); //$NON-NLS-1$
 			try
 			{
 				IFile file = (IFile) resource;
 
-				monitor.subTask("Preprocessing file " + file.getName() + " ...");
+				monitor.subTask(String.format(Messages.WesnothProjectBuilder_19 ,file.getName()));
 
 				List<String> defines = new ArrayList<String>();
 				// for non-main cfg file skip core as we already parsed
 				// that when preprocessed main
 				if (isMainCfg == false)
-					defines.add("SKIP_CORE");
+					defines.add("SKIP_CORE"); //$NON-NLS-1$
 
 				// we use a single _MACROS_.cfg file for each project
 				int preprocResult = PreprocessorUtils.getInstance().preprocessFile(file,
 						PreprocessorUtils.getInstance().getDefinesLocation(file), defines);
 				monitor.worked(5);
 
-				monitor.subTask("Gathering file information...");
+				monitor.subTask(Messages.WesnothProjectBuilder_22);
 				ProjectCache projCache = ProjectUtils.getCacheForProject(getProject());
 
 				WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
@@ -218,8 +219,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 						if (cfg.getScenarioId() != null &&
 							cfg.getScenarioId().isEmpty() == false)
 						{
-							Logger.getInstance().log("added scenarioId [" + cfg.getScenarioId() +
-									"] for file: " + file.getName());
+							Logger.getInstance().log("added scenarioId [" + cfg.getScenarioId() + //$NON-NLS-1$
+									"] for file: " + file.getName()); //$NON-NLS-1$
 						}
 						else
 						{
@@ -283,7 +284,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		if (ProjectUtils.getPropertiesForProject(getProject()) == null)
 			return false;
 
-		String[] ignored = ProjectUtils.getPropertiesForProject(getProject()).getArray("ignored");
+		String[] ignored = ProjectUtils.getPropertiesForProject(getProject()).getArray("ignored"); //$NON-NLS-1$
 		if (ignored == null)
 			return false;
 
@@ -316,7 +317,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 			for(IResourceDelta tmp : affected)
 			{
-				if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg"))
+				if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")) //$NON-NLS-1$
 				{
 					foundCfg = true;
 					break;
@@ -344,7 +345,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			if (foundCfg && resource instanceof IContainer)
 			{
 				// preprocess _main.cfg before all
-				checkResource(((IContainer) resource).getFile(new Path("_main.cfg")),
+				checkResource(((IContainer) resource).getFile(new Path("_main.cfg")), //$NON-NLS-1$
 						monitor_, delta.getKind(), true);
 			}
 
@@ -367,7 +368,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			// preprocess _main.cfg before all
 			if (resource instanceof IContainer)
 			{
-				checkResource(((IContainer) resource).getFile(new Path("_main.cfg")),
+				checkResource(((IContainer) resource).getFile(new Path("_main.cfg")), //$NON-NLS-1$
 						monitor_, -1, true);
 			}
 			return checkResource(resource, monitor_, -1, false);

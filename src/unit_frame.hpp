@@ -25,10 +25,6 @@
 
 class config;
 
-#include <string>
-#include <vector>
-#include <set>
-
 class progressive_string {
 	public:
 		progressive_string(const std::string& data = "",int duration = 0);
@@ -57,10 +53,7 @@ public:
 typedef progressive_<int> progressive_int;
 typedef progressive_<double> progressive_double;
 
-#endif
-// This hack prevents MSVC++ 6 to issue several warnings
-#ifndef UNIT_FRAME_H_PART2
-#define UNIT_FRAME_H_PART2
+typedef enum tristate {t_false,t_true,t_unset} tristate;
 /** All parameters from a frame at a given instant */
 class frame_parameters{
 	public:
@@ -86,9 +79,10 @@ class frame_parameters{
 	int y;
 	int directional_x;
 	int directional_y;
+	tristate auto_vflip;
+	tristate auto_hflip;
+	tristate primary_frame;
 	int drawing_layer;
-	bool in_hex;
-	bool diagonal_in_hex;
 } ;
 /**
  * easily build frame parameters with the serialized constructors
@@ -113,6 +107,9 @@ class frame_builder {
 		frame_builder & y(const std::string& y);
 		frame_builder & directional_x(const std::string& directional_x);
 		frame_builder & directional_y(const std::string& directional_y);
+		frame_builder & auto_vflip(const bool auto_vflip);
+		frame_builder & auto_hflip(const bool auto_hflip);
+		frame_builder & primary_frame(const bool primary_frame);
 		frame_builder & drawing_layer(const std::string& drawing_layer);
 		/** getters for the different parameters */
 	private:
@@ -137,6 +134,9 @@ class frame_builder {
 		std::string y_;
 		std::string directional_x_;
 		std::string directional_y_;
+		tristate auto_vflip_;
+		tristate auto_hflip_;
+		tristate primary_frame_;
 		std::string drawing_layer_;
 };
 /**
@@ -181,6 +181,9 @@ class frame_parsed_parameters {
 		progressive_int y_;
 		progressive_int directional_x_;
 		progressive_int directional_y_;
+		tristate auto_vflip_;
+		tristate auto_hflip_;
+		tristate primary_frame_;
 		progressive_int drawing_layer_;
 };
 /** Describe a unit's animation sequence. */
@@ -188,14 +191,14 @@ class unit_frame {
 	public:
 		// Constructors
 		unit_frame(const frame_builder builder=frame_builder()):builder_(builder){};
-		void redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary)const;
-		const frame_parameters merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val=frame_parameters(),bool primary=false) const;
+		void redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const;
+		const frame_parameters merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val=frame_parameters()) const;
 		const frame_parameters parameters(int current_time) const {return builder_.parameters(current_time);};
 
 		int duration() const { return builder_.duration();};
 		bool does_not_change() const{ return builder_.does_not_change();};
 		bool need_update() const{ return builder_.need_update();};
-		std::set<map_location> get_overlaped_hex(const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const;
+		std::set<map_location> get_overlaped_hex(const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val) const;
 	private:
 		frame_parsed_parameters builder_;
 

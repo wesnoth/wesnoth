@@ -14,10 +14,6 @@
 #ifndef FORMULA_HPP_INCLUDED
 #define FORMULA_HPP_INCLUDED
 
-#include <map>
-#include <string>
-
-#include "exceptions.hpp"
 #include "formula_debugger_fwd.hpp"
 #include "formula_fwd.hpp"
 #include "formula_tokenizer.hpp"

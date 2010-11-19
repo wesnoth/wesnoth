@@ -19,10 +19,7 @@
 #ifndef SCROLLBAR_HPP_INCLUDED
 #define SCROLLBAR_HPP_INCLUDED
 
-#include "SDL.h"
-#include "../sdl_utils.hpp"
 #include "button.hpp"
-#include "widget.hpp"
 
 namespace gui {
 

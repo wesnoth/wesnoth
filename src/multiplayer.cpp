@@ -56,7 +56,7 @@ public:
 			LOG_NW << "sending leave_game\n";
 			config cfg;
 			cfg.add_child("leave_game");
-			network::send_data(cfg, 0, true);
+			network::send_data(cfg, 0);
 			LOG_NW << "sent leave_game\n";
 		}
 	};
@@ -185,7 +185,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 			config res;
 			cfg["version"] = game_config::version;
 			res.add_child("version", cfg);
-			network::send_data(res, 0, true);
+			network::send_data(res, 0);
 		}
 
 		//if we got a direction to login
@@ -212,7 +212,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					// server to optimize ping frequency as needed.
 					sp["selective_ping"] = true;
 				}
-				network::send_data(response, 0, true);
+				network::send_data(response, 0);
 
 				// Get response for our login request...
 				network::connection data_res = network::receive_data(data, 0, 3000);
@@ -273,7 +273,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 						sp["password_reminder"] = password_reminder;
 
 						// Once again send our request...
-						network::send_data(response, 0, true);
+						network::send_data(response, 0);
 
 						network::connection data_res = network::receive_data(data, 0, 3000);
 						if(!data_res) {
@@ -463,7 +463,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 		break;
 	case mp::ui::QUIT:
 	default:
-		network::send_data(config("refresh_lobby"), 0, true);
+		network::send_data(config("refresh_lobby"), 0);
 		break;
 	}
 }
@@ -476,7 +476,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 
 		dlg.show(disp.video());
 
-		network::send_data(config("refresh_lobby"), 0, true);
+		network::send_data(config("refresh_lobby"), 0);
 	} else {
 
 		mp::ui::result res;
@@ -498,7 +498,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 		case mp::ui::QUIT:
 		default:
 			//update lobby content
-			network::send_data(config("refresh_lobby"), 0, true);
+			network::send_data(config("refresh_lobby"), 0);
 			break;
 		}
 	}
@@ -586,7 +586,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 					gui2::show_error_message(disp.video(), error.message);
 				}
 				//update lobby content
-				network::send_data(config("refresh_lobby"), 0, true);
+				network::send_data(config("refresh_lobby"), 0);
 			}
 			break;
 		case mp::ui::OBSERVE:
@@ -599,7 +599,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 			}
 			// update lobby content unconditionally because we might have left only after the
 			// game ended in which case we ignored the gamelist and need to request it again
-			network::send_data(config("refresh_lobby"), 0, true);
+			network::send_data(config("refresh_lobby"), 0);
 			break;
 		case mp::ui::CREATE:
 			try {
@@ -608,7 +608,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 				if (!error.message.empty())
 					gui2::show_error_message(disp.video(), error.message);
 				//update lobby content
-				network::send_data(config("refresh_lobby"), 0, true);
+				network::send_data(config("refresh_lobby"), 0);
 			}
 			break;
 		case mp::ui::QUIT:
@@ -617,7 +617,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 			{
 				do_preferences_dialog(disp, game_config);
 				//update lobby content
-				network::send_data(config("refresh_lobby"), 0, true);
+				network::send_data(config("refresh_lobby"), 0);
 			}
 			break;
 		default:

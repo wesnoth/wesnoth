@@ -28,6 +28,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.wizards.NewWizardTemplate;
@@ -39,7 +40,7 @@ public class FactionNewWizard extends NewWizardTemplate
 	FactionPage1	page1_;
 
 	public FactionNewWizard() {
-		setWindowTitle("Create a new faction");
+		setWindowTitle(Messages.FactionNewWizard_0);
 		setNeedsProgressMonitor(true);
 	}
 
@@ -99,7 +100,7 @@ public class FactionNewWizard extends NewWizardTemplate
 	private void doFinish(String containerName, String fileName, IProgressMonitor monitor) throws CoreException
 	{
 		// create a sample file
-		monitor.beginTask("Creating " + fileName, 10);
+		monitor.beginTask(Messages.FactionNewWizard_1 + fileName, 10);
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IResource resource = root.findMember(new Path(containerName));
 
@@ -129,7 +130,7 @@ public class FactionNewWizard extends NewWizardTemplate
 		}
 
 		monitor.worked(5);
-		monitor.setTaskName("Opening file for editing...");
+		monitor.setTaskName(Messages.FactionNewWizard_2);
 		getShell().getDisplay().asyncExec(new Runnable() {
 			@Override
 			public void run()
@@ -152,23 +153,23 @@ public class FactionNewWizard extends NewWizardTemplate
 	{
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
-		params.add(new ReplaceableParameter("$$faction_id", page0_.getFactionId()));
-		params.add(new ReplaceableParameter("$$faction_name", page0_.getFactionName()));
-		params.add(new ReplaceableParameter("$$faction_type", page0_.getType()));
-		params.add(new ReplaceableParameter("$$leader", page0_.getLeader()));
-		params.add(new ReplaceableParameter("$$random_leader", page0_.getRandomLeader()));
-		params.add(new ReplaceableParameter("$$terrain_liked", page0_.getTerrainLiked()));
+		params.add(new ReplaceableParameter("$$faction_id", page0_.getFactionId())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$faction_name", page0_.getFactionName())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$faction_type", page0_.getType())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$leader", page0_.getLeader())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$random_leader", page0_.getRandomLeader())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$terrain_liked", page0_.getTerrainLiked())); //$NON-NLS-1$
 
-		params.add(new ReplaceableParameter("$$random_faction", String.valueOf(page1_.getIsRandomFaction())));
-		params.add(new ReplaceableParameter("$$choices", page1_.getChoices()));
-		params.add(new ReplaceableParameter("$$except", page1_.getExcept()));
+		params.add(new ReplaceableParameter("$$random_faction", String.valueOf(page1_.getIsRandomFaction()))); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$choices", page1_.getChoices())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$except", page1_.getExcept())); //$NON-NLS-1$
 
-		String template = TemplateProvider.getInstance().getProcessedTemplate("faction", params);
+		String template = TemplateProvider.getInstance().getProcessedTemplate("faction", params); //$NON-NLS-1$
 
 		if (template == null)
 		{
-			Logger.getInstance().log("'faction' template not found",
-					"Template for \"faction\" not found.");
+			Logger.getInstance().log(Messages.FactionNewWizard_13,
+					Messages.FactionNewWizard_14);
 			return null;
 		}
 

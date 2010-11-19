@@ -74,7 +74,6 @@ std::string get_addon_campaigns_dir();
  * maximum 1000 files then start always giving 999
  */
 std::string get_next_filename(const std::string& name, const std::string& extension);
-std::string get_upload_dir();
 void set_preferences_dir(std::string path);
 
 const std::string &get_user_config_dir();
@@ -126,9 +125,6 @@ bool file_exists(const std::string& name);
 
 /** Get the creation time of a file. */
 time_t file_create_time(const std::string& fname);
-
-/** Return the next ordered full filename within this directory. */
-std::string next_filename(const std::string &dirname, unsigned int max = 0);
 
 /** Returns true if the file ends with '.gz'. */
 bool is_gzip_file(const std::string& filename);

@@ -12,6 +12,7 @@ local function revindex(p)
 end
 
 local methods = {}
+local locset_meta = { __index = methods }
 
 function methods:empty()
 	return next(self.values)
@@ -75,6 +76,15 @@ function methods:inter_merge(s, f)
 	self.values = nvalues
 end
 
+function methods:filter(f)
+	local nvalues = {}
+	for p,v in pairs(self.values) do
+		local x, y = revindex(p)
+		if f(x, y, v) then nvalues[p] = v end
+	end
+	return setmetatable({ values = nvalues }, locset_meta)
+end
+
 function methods:iter(f)
 	for p,v in pairs(self.values) do
 		local x, y = revindex(p)
@@ -83,9 +93,8 @@ function methods:iter(f)
 end
 
 function methods:stable_iter(f)
-	local values = self.values
 	local indices = {}
-	for p,v in pairs(values) do
+	for p,v in pairs(self.values) do
 		table.insert(indices, p)
 	end
 	table.sort(indices)
@@ -103,9 +112,9 @@ function methods:of_pairs(t)
 end
 
 function methods:of_wml_var(name)
-	local values = s.values
+	local values = self.values
 	for i = 0, wesnoth.get_variable(name .. ".length") - 1 do
-		local t = wesnoth.get_variable(string.format("%s[%d]", var, i))
+		local t = wesnoth.get_variable(string.format("%s[%d]", name, i))
 		local x, y = t.x, t.y
 		t.x, t.y = nil, nil
 		values[index(x, y)] = next(t) and t or true
@@ -136,8 +145,6 @@ function methods:to_wml_var(name)
 		i = i + 1
 	end)
 end
-
-local locset_meta = { __index = methods }
 
 function location_set.create()
 	local w,h,b = wesnoth.get_map_size()

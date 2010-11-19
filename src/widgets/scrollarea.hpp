@@ -18,9 +18,7 @@
 #ifndef SCROLLAREA_HPP_INCLUDED
 #define SCROLLAREA_HPP_INCLUDED
 
-#include "SDL.h"
 #include "scrollbar.hpp"
-#include "widget.hpp"
 
 namespace gui {
 

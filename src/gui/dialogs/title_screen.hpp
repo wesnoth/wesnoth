@@ -18,8 +18,6 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-#include "config.hpp"
-
 namespace gui2 {
 
 class ttitle_screen : public tdialog
@@ -29,11 +27,40 @@ public:
 
 	~ttitle_screen();
 
-	CVideo* video() { return video_; }
+	/**
+	 * Values for the menu-items of the main menu.
+	 *
+	 * @todo Evaluate the best place for these items.
+	 */
+	enum tresult {
+			  TUTORIAL = 1        /**< Start special campaign 'tutorial' */
+			, NEW_CAMPAIGN        /**< Let user select a campaign to play */
+			, MULTIPLAYER         /**<
+			                       * Play single scenario against humans or AI
+			                       */
+			, LOAD_GAME
+			, GET_ADDONS
+#ifndef DISABLE_EDITOR
+			, START_MAP_EDITOR
+#endif
+			, CHANGE_LANGUAGE
+			, EDIT_PREFERENCES
+			, SHOW_ABOUT          /**< Show credits */
+			, QUIT_GAME
+			, TIP_PREVIOUS        /**< Show previous tip-of-the-day */
+			, TIP_NEXT            /**< Show next tip-of-the-day */
+			, SHOW_HELP
+			, REDRAW_BACKGROUND   /**<
+			                       * Used after an action needing a redraw (ex:
+			                       * fullscreen)
+			                       */
+			, RELOAD_GAME_DATA    /**< Used to reload all game data */
+			, NOTHING             /**<
+			                       * Default, nothing done, no redraw needed
+			                       */
+			};
 
 private:
-	/** Used in show in order to show child windows. */
-	CVideo* video_;
 
 	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
 	virtual const std::string& window_id() const;
@@ -43,12 +70,6 @@ private:
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
-
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
-
-	/** Hold the tips of the day. */
-	config tips_;
 
 	/** The progress bar time for the logo. */
 	unsigned long logo_timer_id_;
@@ -61,12 +82,6 @@ private:
 	 *                            one.
 	 */
 	void update_tip(twindow& window, const bool previous);
-
-	/** Helper to forward the call to update_tip. */
-	static void next_tip(twidget* caller);
-
-	/** Helper to forward the call to update_tip. */
-	static void previous_tip(twidget* caller);
 };
 
 } // namespace gui2

@@ -29,6 +29,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
@@ -49,9 +50,9 @@
 #include "persist_var.hpp"
 #include "whiteboard/manager.hpp"
 
+#include <boost/scoped_array.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/lexical_cast.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
@@ -125,18 +126,6 @@ namespace {
 
 	const gui::msecs prevent_misclick_duration = 10;
 	const gui::msecs average_frame_time = 30;
-
-	class wml_event_dialog : public gui::message_dialog {
-		public:
-			wml_event_dialog(game_display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
-				: message_dialog(disp, title, message, type)
-			{}
-			void action(gui::dialog_process_info &info) {
-				if(result() == gui::CLOSE_DIALOG && !info.key_down && info.key[SDLK_ESCAPE]) {
-					set_result(gui::ESCAPE_DIALOG);
-				}
-			}
-	};
 
 	class pump_manager {
 		public:
@@ -287,10 +276,6 @@ typedef void (*wml_handler_function)(
 typedef std::map<std::string, wml_handler_function> static_wml_action_map;
 /** Map of the default action handlers known of the engine. */
 static static_wml_action_map static_wml_actions;
-
-typedef std::map<std::string, game_events::action_handler *> dynamic_wml_action_map;
-/** Map of the action handlers either provided by the engine or added by the current scenario. */
-static dynamic_wml_action_map dynamic_wml_actions;
 
 /**
  * WML_HANDLER_FUNCTION macro handles auto registeration for wml handlers
@@ -646,27 +631,6 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	resources::screen->draw();
 }
 
-WML_HANDLER_FUNCTION(unpetrify, /*event_info*/, cfg)
-{
-	const vconfig filter = cfg.child("filter");
-	// Store which side will need a shroud/fog update
-	std::vector<bool> clear_fog_side(resources::teams->size(), false);
-
-	foreach (unit &u, *resources::units) {
-		if (!u.get_state(unit::STATE_PETRIFIED)) continue;
-		if (filter.null() || game_events::unit_matches_filter(u, filter)) {
-			u.set_state(unit::STATE_PETRIFIED, false);
-			clear_fog_side[u.side() - 1] = true;
-		}
-	}
-
-	for (size_t side = 0; side != resources::teams->size(); ++side) {
-		if (clear_fog_side[side] && (*resources::teams)[side].auto_shroud_updates()) {
-			clear_shroud(side + 1);
-		}
-	}
-}
-
 WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 {
 	int side_num = cfg["side"].to_int(1);
@@ -767,7 +731,7 @@ WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 {
-	int side_num = cfg["side"];
+	int side_num = cfg["side"].to_int(1);
 	if (side_num==0) {
 		return;
 	}
@@ -942,7 +906,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 
 namespace {
 
-std::auto_ptr<unit> create_fake_unit(const vconfig& cfg)
+unit *create_fake_unit(const vconfig& cfg)
 {
 	std::string type = cfg["type"];
 	std::string variation = cfg["variation"];
@@ -952,8 +916,8 @@ std::auto_ptr<unit> create_fake_unit(const vconfig& cfg)
 
 	unit_race::GENDER gender = string_gender(cfg["gender"]);
 	const unit_type *ut = unit_types.find(type);
-	if (!ut) return std::auto_ptr<unit>();
-	std::auto_ptr<unit> fake_unit(new unit(ut, side_num + 1, false, gender));
+	if (!ut) return NULL;
+	unit *fake_unit = new unit(ut, side_num + 1, false, gender);
 
 	if(!variation.empty()) {
 		config mod;
@@ -1031,7 +995,7 @@ std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vecto
 // that is just moving for the visual effect
 WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 {
-	std::auto_ptr<unit> dummy_unit = create_fake_unit(cfg);
+	util::unique_ptr<unit> dummy_unit(create_fake_unit(cfg));
 	if(!dummy_unit.get())
 		return;
 
@@ -1048,16 +1012,17 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 {
-	LOG_WML << "Processing [move_units_fake]\n";
+	LOG_NG << "Processing [move_units_fake]\n";
 
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
 	size_t num_units = unit_cfgs.size();
-	boost::ptr_vector<unit> units(num_units);
+	boost::scoped_array<util::unique_ptr<unit> > units(
+		new util::unique_ptr<unit>[num_units]);
 	std::vector<std::vector<map_location> > paths;
 	paths.reserve(num_units);
 	game_display* disp = game_display::get_singleton();
 
-	LOG_WML << "Moving " << num_units << " units\n";
+	LOG_NG << "Moving " << num_units << " units\n";
 
 	size_t longest_path = 0;
 
@@ -1065,41 +1030,43 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
 		int skip_steps = config["skip_steps"];
-		units.push_back(create_fake_unit(config));
-		paths.push_back(fake_unit_path(units.back(), xvals, yvals));
+		unit *u = create_fake_unit(config);
+		units[paths.size()].reset(u);
+		paths.push_back(fake_unit_path(*u, xvals, yvals));
 		if(skip_steps > 0)
 			paths.back().insert(paths.back().begin(), skip_steps, paths.back().front());
 		longest_path = std::max(longest_path, paths.back().size());
-		DBG_WML << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
+		DBG_NG << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
 
-		units.back().set_location(paths.back().front());
-		disp->place_temporary_unit(&units.back());
+		u->set_location(paths.back().front());
+		disp->place_temporary_unit(u);
 	}
 
-	LOG_WML << "Units placed, longest path is " << longest_path << " long\n";
+	LOG_NG << "Units placed, longest path is " << longest_path << " long\n";
 
 	std::vector<map_location> path_step(2);
 	path_step.resize(2);
 	for(size_t step = 1; step < longest_path; ++step) {
-		DBG_WML << "Doing step " << step << "...\n";
+		DBG_NG << "Doing step " << step << "...\n";
 		for(size_t un = 0; un < num_units; ++un) {
 			if(step >= paths[un].size() || paths[un][step - 1] == paths[un][step])
 				continue;
-			DBG_WML << "Moving unit " << un << ", doing step " << step << '\n';
+			DBG_NG << "Moving unit " << un << ", doing step " << step << '\n';
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
-			unit_display::move_unit(path_step, units[un], *resources::teams);
-			units[un].set_location(path_step[1]);
-			units[un].set_standing();
+			unit_display::move_unit(path_step, *units[un], *resources::teams);
+			units[un]->set_location(path_step[1]);
+			units[un]->set_standing();
 		}
 	}
 
-	LOG_WML << "Units moved\n";
+	LOG_NG << "Units moved\n";
 
-	foreach(unit& u, units)
-		disp->remove_temporary_unit(&u);
+	for(size_t un = 0; un < num_units; ++un) {
+		disp->remove_temporary_unit(units[un].get());
+	}
 
-	LOG_WML << "Units removed\n";
+	LOG_NG << "Units removed\n";
 }
 
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
@@ -1671,7 +1638,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				unit to_recruit(*u);
 				avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 				find_recruit_location(index + 1, loc, false);
-				place_recruit(to_recruit, loc, true, cfg["show"].to_bool(true), true, true);
+				place_recruit(to_recruit, loc, true, cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false), true, true);
 				unit_recalled = true;
 				break;
 			}
@@ -1729,25 +1696,11 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	if (!cfg["silent"].to_bool())
 	{
-		surface surface(NULL);
-
-		if(image.empty() == false) {
-			surface.assign(image::get_image(image));
-		}
-
 		// Redraw the unit, with its new stats
 		resources::screen->draw();
 
 		try {
-			unsigned lifetime = average_frame_time
-				* cfg["duration"].to_int(prevent_misclick_duration);
-
-			wml_event_dialog to_show(*resources::screen, (surface.null() ? caption : ""), text);
-			if(!surface.null()) {
-				to_show.set_image(surface, caption);
-			}
-			to_show.layout();
-			to_show.show(lifetime);
+			gui2::show_transient_message(resources::screen->video(), caption, text, image, true);
 		} catch(utils::invalid_utf8_exception&) {
 			// we already had a warning so do nothing.
 		}
@@ -2352,7 +2305,8 @@ namespace {
  */
 unit_map::iterator handle_speaker(
 		const game_events::queued_event& event_info,
-		const vconfig& cfg)
+		const vconfig& cfg,
+		bool scroll)
 {
 	unit_map *units = resources::units;
 	game_display &screen = *resources::screen;
@@ -2372,11 +2326,13 @@ unit_map::iterator handle_speaker(
 	}
 	if(speaker != units->end()) {
 		LOG_NG << "set speaker to '" << speaker->name() << "'\n";
-		LOG_DP << "scrolling to speaker..\n";
 		const map_location &spl = speaker->get_location();
 		screen.highlight_hex(spl);
-		int offset_from_center = std::max<int>(0, spl.y - 1);
-		screen.scroll_to_tile(map_location(spl.x, offset_from_center));
+		if(scroll) {
+			LOG_DP << "scrolling to speaker..\n";
+			const int offset_from_center = std::max<int>(0, spl.y - 1);
+			screen.scroll_to_tile(map_location(spl.x, offset_from_center));
+		}
 		screen.highlight_hex(spl);
 	} else if(speaker_str == "narrator") {
 		LOG_NG << "no speaker\n";
@@ -2403,12 +2359,10 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 	std::string image = cfg["image"];
 	if (image.empty() && speaker != resources::units->end())
 	{
-		// At the moment we use a hack if the image in portrait has
-		// an image with the same name in the directory transparent
-		// that image is used.
 		image = speaker->profile();
-		const size_t offset = image.find_last_of('/');
-		if(offset != std::string::npos) {
+		std::string::size_type offset = image.find('~');
+		offset = image.find_last_of('/', offset);
+		if (offset != std::string::npos) {
 			image.insert(offset, "/transparent");
 		} else {
 			image = "transparent/" + image;
@@ -2424,13 +2378,12 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 			}
 #endif
 		}
-
-	} else if(!image.empty()) {
-		// At the moment we use a hack if the image in portrait has
-		// an image with the same name in the directory transparent
-		// that image is used.
-		const size_t offset = image.find_last_of('/');
-		if(offset != std::string::npos) {
+	}
+	else if (!image.empty())
+	{
+		std::string::size_type offset = image.find('~');
+		offset = image.find_last_of('/', offset);
+		if (offset != std::string::npos) {
 			image.insert(offset, "/transparent");
 		} else {
 			image = "transparent/" + image;
@@ -2583,7 +2536,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		}
 	}
 
-	unit_map::iterator speaker = handle_speaker(event_info, cfg);
+	unit_map::iterator speaker = handle_speaker(event_info, cfg, cfg["scroll"].to_bool(true));
 	if (speaker == resources::units->end() && cfg["speaker"] != "narrator") {
 		// No matching unit found, so the dialog can't come up.
 		// Continue onto the next message.
@@ -3153,10 +3106,6 @@ namespace game_events {
 		manager_running = false;
 		events_queue.clear();
 		event_handlers.clear();
-		foreach (dynamic_wml_action_map::value_type &action, dynamic_wml_actions) {
-			delete action.second;
-		}
-		dynamic_wml_actions.clear();
 		delete resources::lua_kernel;
 		resources::lua_kernel = NULL;
 		unit_wml_ids.clear();
@@ -3235,6 +3184,8 @@ namespace game_events {
 			// Clear the unit cache, since the best clearing time is hard to figure out
 			// due to status changes by WML. Every event will flush the cache.
 			unit::clear_status_caches();
+
+			resources::lua_kernel->run_event(ev);
 
 			bool init_event_vars = true;
 

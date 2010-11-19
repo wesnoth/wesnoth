@@ -1,4 +1,23 @@
-Version 1.9.1+svn:
+Version 1.9.2+svn:
+ * Campaigns:
+   * Legend of Wesmere
+     * Fixed the recursion of the scenario 4 bug.
+     * Added the Elvish Horse Archer as alternative advancement for the scout
+     * (Singleplayer only) Added the Dwarvish Runemaster as advancement for the fighter.
+ * Graphics:
+   * Terrain:
+     * Fixed display of UMC castles (which were being overdrawn by regular human castles).
+     * Added ruined cottage and ruined hill village
+ * Language and i18n:
+   * Updated translations: Italian, Japanese, Korean, Spanish, Vietnamese
+ * User interface:
+   * Converted some dialog boxes to GUI2
+   * Campaign difficulty descriptions must use Pango markup now
+ * WML engine:
+   * Created tag [petrify] (bug #17077). Moved [unpetrify] to lua.
+   * Introduced [recall]fire_event=yes|no (default no) parameter (fixes bug #17083).
+
+Version 1.9.2:
  * Campaigns:
    * Descent into Darkness:
      * Made 'Alone at Last' easier.
@@ -7,12 +26,38 @@ Version 1.9.1+svn:
      * Implemented gold carryover between the multiplayer chapters.
      * Added extra keeps to keep up with the growing number of leaders.
      * Fixed scenario 04 not being playable.
+     * Corrected the objectives of scenario 3.
+     * Bug fix for the fleeing orcs in scenario 07.
+   * Heir to the Throne:
+     * Fixed a bug causing Warven in 'Cliffs of Thoria' not able to move through
+       mountains.
    * Liberty:
+     * New set of portraits.
+     * Changed Relnan's character to a woman.
      * New (unanimated) sprites for the Rogue Mage unit line.
+     * Various balancing changes to the Rogue Mage unit line.
+   * Northern Rebirth:
+     * Make it possible to choose whether a unit should pick up the
+       Rod of Justice or not.
+   * The Rise of Wesnoth:
+     * New set of portraits, except for Jevyan and Rithrandil.
+     * Gave Jevyan's familiar a custom unit type.
+   * Sceptre of Fire:
+     * Thursagan can now advance to Dwarvish Arcanister.
+     * New (unanimated) sprites for the Dwarvish Miner.
+   * Son of the Black Eye:
+     * Changes to the objectives and gameplay of 'Clash of Armies'.
+   * The South Guard:
+     * New portrait for Mal M'Brin.
+ * Editor:
+   * Verbose terrain names can be specified using terrain.editor_name to
+     be displayed in the editor as "<verbose name>/<common name> (<underlying>)"
+     (bug #16450)
  * Graphics:
    * Terrain:
      * Any Castle or Keep except Dwarvish can now be combined without large gaps
        or extra walls.
+     * New graphics for wooden bridges.
      * Added variant of chasm bridge for over water.
      * New transitions from all Hills and Mountains to Water.
      * Underground and chasm friendly volcanoes.
@@ -20,16 +65,32 @@ Version 1.9.1+svn:
      * Much improved lava transitions.
      * A new desaturated ocean color (Wog).
      * New Waterfall automatically placed between chasm and water or swamp.
-   * Animations: new standing animation for Fencer, idle animations for
-     Spearman.
-   * Portraits: Drake Blademaster, Hurricane Drake, Drake Flameheart.
+     * New Sand-to-Water transitions
+     * Wave animations on sand
+     * Added Ruined Human City terrain
+   * Animations:
+     * Standing anims: Fencer, Spearman, Dwarf Guard.
+     * Idle anims: 2 for the Spearman.
+     * Fixed drakes flying or not flying over all the correct terrains.
+   * Portraits: Drake Blademaster, Hurricane Drake, Drake Flameheart, alternate
+     Swordsman.
    * Units: New base frame and animations for Mudcrawler.
  * Language and i18n:
    * Updated translations: Chinese (Traditional), Czech, Dutch, Galician,
-     Indonesian, Japanese, Portuguese (Brazil), Russian, Shavian, Slovak,
-     Slovenian, Vietnamese
+     German, Indonesian, Italian, Japanese, Korean, Lithuanian,
+     Portuguese (Brazil), Russian, Shavian, Slovak, Slovenian, Vietnamese
+ * Unit changes and balancing:
+   * Decreased the physical resistances of the Dwarvish Scout and Dwarvish
+     Pathfinder to 10% and those of the Dwarvish Explorer to 20%.
+   * Decreased the village defense of Chocobone from 60% to 40%.
+   * Moved the Fire Guardian unit to core.
+   * Fixed villages on snow and sand hills providing worst instead of best
+     movement.
+   * The complete Dwarvish Runesmith line moved from SoF to core along with new
+     sprites.
  * User interface:
    * Fixed: Addon dialog in title screen shows last host again.
+   * Fixed: Addon download progress dialog shows the correct addon name again.
    * Fixed: Fullscreen hotkey works again in the title screen.
    * Fixed: Termination of the game when making the title screen small
      (bug #16724).
@@ -46,6 +107,11 @@ Version 1.9.1+svn:
    * Fixed: No longer cut off large title screen logos (bug #16632).
    * Refresh cache (F5) works in editor.
    * Add a "Save All Maps" menu item and hotkey in editor.
+   * [object] description messages are now shown using GUI2, allowing usage of
+     Pango markup (bug #16859).
+   * Whiteboard planning system:
+     * Fixed: Crash when creating a planned move on Windows (bug #16705)
+     * New "Execute all actions" command bound to CTRL+y
  * WML Engine:
    * id= in SUFs now accepts a comma-separated list.
    * [capture_village] now accepts a full SLF.
@@ -56,12 +122,31 @@ Version 1.9.1+svn:
      workaround.
    * Renamed [removeitem] to [remove_item].
    * added new parameters directional_x and directional_y to animations
-   * Made it so that units affected by [hide_unit] don't appear on the minimap (FR #16796)
+   * added new parameters auto_vflip and auto_hflip to animations
+   * Made it so that units affected by [hide_unit] don't appear on the minimap
+     (FR #16796)
+   * New [store_reachable_locations] tag for storing the locations reachable (by
+     movement, attack or vision) of units.
+   * New [select_unit] tag, with optional fire_event (def. no) and hilight_hex
+     (def. yes) attributes (FR #16819)
+   * New [message] scroll= attribute to specify whether the game view should
+     scroll to the speaking unit (defaults to yes) (FR #16843)
+   * New key 'random_start' (default = yes) in [terrain_graphics][image]
+     allowing to disable random animation shift in animated terrains.
+   * Added a new key "primary" to animation to separate frames that should be
+     treated as primary from frames that shouldn't
+   * Made it so that if several [advancefrom] tags for a certain base unit are
+     encountered, the lowest experience= keys from these is chosen (so if
+     there's only one [advancefrom] referencing this base unit the experience
+     needed can be increased).
  * Miscellaneous and bugfixes:
    * Changed: Lowered severity of some gui2 timer log messages.
    * Units created in debug mode now play their recruit animation (FR #16766).
    * Fixed: properly update cmake revision numbers (bug #16483)
    * Fixed: hotkeys dialog in editor is big enough to display them correctly.
+   * Fixed: Shifted windmill animation (bug #16529)
+   * Files matching *.wesnoth and *.project in add-ons are now ignored by
+     default when uploading
 
 Version 1.9.1:
  * AI:

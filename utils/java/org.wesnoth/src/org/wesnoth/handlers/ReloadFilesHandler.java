@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IProject;
+import org.wesnoth.Messages;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.GUIUtils;
@@ -35,7 +36,7 @@ public class ReloadFilesHandler extends AbstractHandler
 			cache.getValue().readDefines(true);
 		}
 
-		GUIUtils.showInfoMessageBox("Files reloaded.");
+		GUIUtils.showInfoMessageBox(Messages.ReloadFilesHandler_0);
 		return null;
 	}
 }

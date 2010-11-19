@@ -33,12 +33,12 @@
 
 #include <map>
 #include <iosfwd>
-#include <string>
 #include <vector>
 #include <boost/variant/variant.hpp>
 
 #include "game_errors.hpp"
 #include "tstring.hpp"
+#include "wesconfig.h"
 
 class config;
 class vconfig;
@@ -65,6 +65,7 @@ class config
 	 */
 	void check_valid(const config &cfg) const;
 
+#ifndef HAVE_CXX0X
 	struct safe_bool_impl { void nonnull() {} };
 	/**
 	 * Used as the return type of the conversion operator for boolean contexts.
@@ -72,12 +73,19 @@ class config
 	 * conversion (C legacy): cfg["abc"] -> "abc"[bool(cfg)] -> 'b'
 	 */
 	typedef void (safe_bool_impl::*safe_bool)();
+#endif
 
 public:
 	// Create an empty node.
 	config();
 
-	config(const config& cfg);
+	config(const config &);
+	config &operator=(const config &);
+
+#ifdef HAVE_CXX0X
+	config(config &&);
+	config &operator=(config &&);
+#endif
 
 	/**
 	 * Creates a config object with an empty child of name @a child.
@@ -86,10 +94,14 @@ public:
 
 	~config();
 
-	config& operator=(const config& cfg);
 
+#ifdef HAVE_CXX0X
+	explicit operator bool() const
+	{ return this != &invalid; }
+#else
 	operator safe_bool() const
 	{ return this != &invalid ? &safe_bool_impl::nonnull : 0; }
+#endif
 
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;
@@ -160,7 +172,7 @@ public:
 	 */
 	class attribute_value
 	{
-		typedef boost::variant<boost::blank, bool, int, double, std::string, t_string> value_type;
+		typedef boost::variant<boost::blank, bool, double, std::string, t_string> value_type;
 		value_type value;
 
 	public:
@@ -263,6 +275,10 @@ public:
 	config& add_child(const std::string& key, const config& val);
 	config& add_child_at(const std::string &key, const config &val, unsigned index);
 
+#ifdef HAVE_CXX0X
+	config &add_child(const std::string &key, config &&val);
+#endif
+
 	/**
 	 * Returns a reference to the attribute with the given @a key.
 	 * Creates it if it does not exist.
@@ -316,9 +332,6 @@ public:
 	const config &find_child(const std::string &key, const std::string &name,
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
-
-	const config &find_child_recursive(const std::string &key,
-		const std::string &name, const std::string &value) const;
 
 	void clear_children(const std::string& key);
 

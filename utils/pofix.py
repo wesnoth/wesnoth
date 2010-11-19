@@ -114,9 +114,6 @@ stringfixes = {
 ("$login's", "$login|’s"),
 ("$name|'s turn", "$name|’s turn"),
 
-# "Familiarise" is not used in American English
-("familiarise yourself", "familiarize yourself"),
-
 ("if it hasn't moved this", "if it hasn’t moved this"),
 ("to activate 'delay shroud updates' in the", "to activate ‘delay shroud updates’ in the"),
 ("update via 'update shroud now' (or the", "update via ‘update shroud now’ (or the"),
@@ -327,6 +324,8 @@ stringfixes = {
 # Fix screw up
 # conversion added in 1.9.0+svn
 ("‘The book was", "“The book was"),
+
+("DID", "DiD"),
 ),
 
 "wesnoth-dm" : (
@@ -1018,6 +1017,9 @@ stringfixes = {
 ("you our army's vanguard? Hurry,", "you our army’s vanguard? Hurry,"),
 ("You won't get very", "You won’t get very"),
 ("'dastone'. I am", "‘dastone’. I am"),
+
+# Fix capitalization
+("\"LOW\"", "\"LoW\""),
 ),
 
 "wesnoth-multiplayer" : (
@@ -1085,6 +1087,11 @@ stringfixes = {
 ("4p — Isar's Cross", "4p — Isar’s Cross"),
 ("6p — Crusaders' Field", "6p — Crusaders’ Field"),
 ("Frankly, I haven't got a", "Frankly, I haven’t got a"),
+
+# Fix spelling
+("enemy spawnpoints and types", "enemy spawn points and types"),
+
+("dog, are yer legs made of stone?!?", "dog, are yer legs made of stone?!"),
 ),
 
 "wesnoth-nr" : (
@@ -1528,6 +1535,10 @@ stringfixes = {
 ("We're snowed in. Our", "We’re snowed in. Our"),
 ("What's this? Large orcish", "What’s this? Large orcish"),
 ("Ye're young and not", "Ye’re young and not"),
+
+# Fixed capitalization
+("At The East Gate", "At the East Gate"),
+("Reclaiming The Past", "Reclaiming the Past"),
 ),
 
 "wesnoth-trow" : (
@@ -1908,6 +1919,11 @@ stringfixes = {
 ("and I'll defend them to", "and I’ll defend them to"),
 ("Named 'Eyestalks' for obvious reasons,", "Named ‘Eyestalks’ for obvious reasons,"),
 ("your units are 'lawful'. This means that", "your units are <i>lawful</i>. This means that"), # new <i> tags
+
+# Fix capitalization
+("Return To Kerlath", "Return to Kerlath"),
+("Into The Depths", "Into the Depths"),
+("Proven By The Sword", "Proven by the Sword"),
 ),
 
 "wesnoth-sof" : (
@@ -2320,6 +2336,13 @@ stringfixes = {
 ("You were right, Kapou'e, the", "You were right, Kapou’e, the"),
 ("You're right. I can", "You’re right. I can"),
 ("young upstart called Kapou'e. He", "young upstart called Kapou’e. He"),
+
+("eaten that Grüü,", "eaten that, Grüü"),
+
+# Fix capitalization
+("\"Shan Taum The Smug\"", "\"Shan Taum the Smug\""),
+("The Siege Of Barag Gór", "The Siege of Barag Gór"),
+("End Of Peace", "End of Peace"),
 ),
 
 "wesnoth-tb" : (
@@ -2351,6 +2374,10 @@ stringfixes = {
 # Fix capitalization
 # conversion added in 1.9.0+svn
 ("Rooting Out A Mage", "Rooting Out a Mage"),
+
+# Punctuation error.
+# fixed in 1.9.1+svn
+("brother still And", "brother still. And"),
 ),
 
 "wesnoth-units" : (
@@ -3752,6 +3779,9 @@ stringfixes = {
 ("Don't ask me again!", "Don’t ask me again!"),
 ("dedicated server 'wesnothd'", "dedicated server ‘wesnothd’"),
 ("the game's settings", "the game’s settings"),
+
+# Fix capitalization
+("Lava chasm", "Lava Chasm"),
 ),
 
 "wesnoth-manual" : (

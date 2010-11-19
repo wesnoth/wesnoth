@@ -26,10 +26,7 @@
 #include "candidates.hpp"
 #include "function_table.hpp"
 
-#include "../composite/contexts.hpp"
 #include "../default/ai.hpp"
-#include "../../formula_fwd.hpp"
-#include "../../formula_callable.hpp"
 
 #include <boost/noncopyable.hpp>
 
