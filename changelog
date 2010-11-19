@@ -3,19 +3,23 @@ Version 1.9.2+svn:
    * Legend of Wesmere
      * Fixed the recursion of the scenario 4 bug.
      * Added the Elvish Horse Archer as alternative advancement for the scout
-     * (Singleplayer only) Added the Dwarvish Runemaster as advancement for the fighter.
+     * (Singleplayer only) Added the Dwarvish Runemaster as advancement for the
+       fighter.
  * Graphics:
    * Terrain:
-     * Fixed display of UMC castles (which were being overdrawn by regular human castles).
+     * Fixed display of UMC castles (which were being overdrawn by regular human
+       castles).
      * Added ruined cottage and ruined hill village
  * Language and i18n:
-   * Updated translations: Dutch, Italian, Japanese, Korean, Spanish, Vietnamese
+   * Updated translations: Dutch, Italian, Japanese, Korean,
+     Portuguese (Brazil), Spanish, Vietnamese
  * User interface:
    * Converted some dialog boxes to GUI2
    * Campaign difficulty descriptions must use Pango markup now
  * WML engine:
    * Created tag [petrify] (bug #17077). Moved [unpetrify] to lua.
-   * Introduced [recall]fire_event=yes|no (default no) parameter (fixes bug #17083).
+   * Introduced [recall]fire_event=yes|no (default no) parameter (fixes
+     bug #17083).
 
 Version 1.9.2:
  * Campaigns:
