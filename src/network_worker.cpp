@@ -749,15 +749,8 @@ static int process_queue(void* shard_num)
 		} else {
 			std::string buffer(buf.begin(), buf.end());
 			std::istringstream stream(buffer);
-			// Binary wml starts with a char < 4, the first char of a gzip header is 31
-			// so test that here and use the proper reader.
 			try {
-				if(stream.peek() == 31) {
-					read_gz(received_data->config_buf, stream);
-				} else {
-					/// @todo Possibly complain more loudly
-					ERR_NW << "Receiving binary WML. Who is sending this?\n";
-				}
+				read_gz(received_data->config_buf, stream);
 			} catch(config::error &e)
 			{
 				received_data->config_error = e.message;
