@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-11-05 17:41+0100\n"
-"PO-Revision-Date: 2010-11-06 01:50+0900\n"
+"PO-Revision-Date: 2010-11-16 12:01+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "Language: \n"
@@ -2540,7 +2540,6 @@ msgstr "村"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:692
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have an easy time navigating villages, and most units "
@@ -2553,14 +2552,13 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
-"村は建物と人間やその他の一群を表します。ほとんど全てのユニットは、例え騎兵で"
-"あっても、村を進行するのは容易で、多くのユニットは村に駐留中は防御特典を得ま"
-"す。村はユニットに資源をきれいにし傷を介抱することで、駐留している全てのユ"
-"ニットは各ターン 8 HP の回復もしくは毒の治療が行われます。\n"
+"村は、人間族やその他の種族の建物を意味します。騎兵のようなユニットを含むほと"
+"んど全てのユニットは、村を容易に通過することができます。また、多くのユニット"
+"は村に駐留することで上手く防御できるようになります。村では、ユニットの資源を"
+"きれいにし傷を介抱することで、8HPの回復、もしくは毒の治療が行われます。\n"
 "\n"
-"ほとんどのユニットは村にいる間 50 から 60% の防御を得ますが、騎兵は 40% のみ"
-"です。\n"
-"\n"
+"ほとんどのユニットは村に駐留することで 50 から 60% の防御を得ますが、騎兵は "
+"40% のみになります。\n"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:701
@@ -8613,7 +8611,7 @@ msgstr "キャッシュの検証"
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
 msgid "Reading files and creating cache"
-msgstr "ファイルを読み込み、キャッシュの作成"
+msgstr "ファイルの読み込み、キャッシュの作成"
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
 msgid "Reading unit files"
@@ -10960,10 +10958,7 @@ msgstr "中立"
 #~ msgid ""
 #~ "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], "
 #~ "me/emote <message>. Type /help [<command>] for detailed instructions."
-#~ msgstr ""
-#~ "コマンド: msg/whisper <ニックネーム> <メッセージ>、list <サブコマンド> [<"
-#~ "引数>]、me/emote <メッセージ>。詳しい使い方は /help [<コマンド>] と入力し"
-#~ "てください。"
+#~ msgstr "療されます。"
 
 #~ msgid ""
 #~ "Ignore messages from players on the ignore list and highlight players on "
