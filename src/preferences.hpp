@@ -144,6 +144,8 @@ namespace preferences {
 	void set_draw_delay(int value);
 
 	bool animate_map();
+	void set_animate_map(bool value);
+
 	bool show_standing_animations();
 
 	bool show_fps();

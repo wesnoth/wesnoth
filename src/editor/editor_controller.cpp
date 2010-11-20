@@ -846,6 +846,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_MAP_SCREENSHOT:
 		case HOTKEY_TOGGLE_GRID:
 		case HOTKEY_MOUSE_SCROLL:
+		case HOTKEY_ANIMATE_MAP:
 		case HOTKEY_MUTE:
 		case HOTKEY_PREFERENCES:
 		case HOTKEY_HELP:

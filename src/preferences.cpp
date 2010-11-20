@@ -534,6 +534,11 @@ bool animate_map()
 	return preferences::get("animate_map", true);
 }
 
+void set_animate_map(bool value)
+{
+	set("animate_map", value);
+}
+
 bool show_standing_animations()
 {
 	return preferences::get("unit_standing_animations", true);

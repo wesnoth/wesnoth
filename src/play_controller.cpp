@@ -761,6 +761,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 	case hotkey::HOTKEY_TOGGLE_ELLIPSES:
 	case hotkey::HOTKEY_TOGGLE_GRID:
 	case hotkey::HOTKEY_MOUSE_SCROLL:
+	case hotkey::HOTKEY_ANIMATE_MAP:
 	case hotkey::HOTKEY_STATUS_TABLE:
 	case hotkey::HOTKEY_MUTE:
 	case hotkey::HOTKEY_PREFERENCES:

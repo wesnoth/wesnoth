@@ -47,6 +47,7 @@ const struct {
 	bool hidden;
 	hotkey::scope scope;
 } hotkey_list_[] = {
+	{ hotkey::HOTKEY_ANIMATE_MAP, "animatemap", N_("Animate Map"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_CYCLE_UNITS, "cycle", N_("Next Unit"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_CYCLE_BACK_UNITS, "cycleback", N_("Previous Unit"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_ADD_WAYPOINT, "addwaypoint", N_("Add waypoint"), false, hotkey::SCOPE_GAME },
@@ -983,6 +984,9 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 				gui::dialog(disp,_("Screenshot failed"),"",gui::MESSAGE).show();
 			break;
 		}
+		case HOTKEY_ANIMATE_MAP:
+			preferences::set_animate_map(!preferences::animate_map());
+			break;
 		case HOTKEY_MOUSE_SCROLL:
 			preferences::enable_mouse_scroll(!preferences::mouse_scroll_enabled());
 			break;
