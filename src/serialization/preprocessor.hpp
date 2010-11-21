@@ -21,7 +21,6 @@
 
 #include <iosfwd>
 #include <map>
-#include <string>
 #include <vector>
 
 #include "game_errors.hpp"
