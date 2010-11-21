@@ -15,13 +15,8 @@
 #define TOD_MANAGER_HPP_INCLUDED
 
 #include "map_location.hpp"
-#include "config.hpp"
 #include "time_of_day.hpp"
 #include "savegame_config.hpp"
-
-#include <set>
-#include <string>
-#include <vector>
 
 class game_state;
 class gamemap;
