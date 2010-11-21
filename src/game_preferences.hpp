@@ -20,12 +20,8 @@ class game_state;
 class team;
 class unit_map;
 
-#include "game_config.hpp"
 #include "preferences.hpp"
-#include "terrain_translation.hpp"
 
-#include <string>
-#include <utility>
 #include <set>
 
 namespace preferences {
