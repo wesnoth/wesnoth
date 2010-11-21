@@ -17,13 +17,10 @@
 #ifndef SAVEGAME_H_INCLUDED
 #define SAVEGAME_H_INCLUDED
 
-#include "global.hpp"
 #include "filesystem.hpp"
 #include "gamestatus.hpp"
 #include "tod_manager.hpp"
 #include "show_dialog.hpp"
-
-#include <string>
 
 class config_writer;
 class game_display;
