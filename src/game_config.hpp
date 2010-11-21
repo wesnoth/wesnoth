@@ -23,7 +23,6 @@ class color_range;
 
 #include <SDL_types.h>
 
-#include <string>
 #include <vector>
 #include <map>
 
