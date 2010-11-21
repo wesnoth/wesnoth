@@ -16,11 +16,8 @@
 #ifndef CALLABLE_OBJECTS_HPP_INCLUDED
 #define CALLABLE_OBJECTS_HPP_INCLUDED
 
-#include <map>
 
-#include "formula_callable.hpp"
 #include "map.hpp"
-#include "unit.hpp"
 #include "team.hpp"
 
 #define CALLABLE_WRAPPER_START(klass) \
