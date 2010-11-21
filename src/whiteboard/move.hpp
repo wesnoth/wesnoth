@@ -22,7 +22,6 @@
 
 #include "action.hpp"
 #include "map_location.hpp"
-#include "typedefs.hpp"
 
 namespace wb {
 
