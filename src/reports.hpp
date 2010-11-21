@@ -16,10 +16,6 @@
 #ifndef REPORTS_HPP_INCLUDED
 #define REPORTS_HPP_INCLUDED
 
-#include <set>
-#include <string>
-#include <vector>
-
 #include "image.hpp"
 
 class team;
