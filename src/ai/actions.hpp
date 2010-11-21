@@ -21,19 +21,13 @@
 #ifndef AI_ACTIONS_HPP_INCLUDED
 #define AI_ACTIONS_HPP_INCLUDED
 
-#include "../global.hpp"
-
 #include "game_info.hpp"
 
 #include "../actions.hpp"
-#include "../map_location.hpp"
 
 namespace pathfind {
 struct plain_route;
 } // of namespace pathfind
-
-#include <memory>
-#include <vector>
 
 class team;
 class gamemap;
