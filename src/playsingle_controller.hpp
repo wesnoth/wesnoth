@@ -17,13 +17,8 @@
 #ifndef PLAYSINGLE_CONTROLLER_H_INCLUDED
 #define PLAYSINGLE_CONTROLLER_H_INCLUDED
 
-#include "global.hpp"
-
-#include "cursor.hpp"
 #include "play_controller.hpp"
 #include "replay.hpp"
-
-#include <vector>
 
 class playsingle_controller : public play_controller
 {
