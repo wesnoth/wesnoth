@@ -24,7 +24,6 @@
 #include "widgets/textbox.hpp"
 
 #include <deque>
-#include <string>
 
 class display;
 class game_display;
