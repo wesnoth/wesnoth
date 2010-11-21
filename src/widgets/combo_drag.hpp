@@ -15,15 +15,10 @@
 #ifndef COMBO_DRAG_H_INCLUDED
 #define COMBO_DRAG_H_INCLUDED
 
-#include "SDL.h"
-
-#include "events.hpp"
 #include "widgets/combo.hpp"
 #include "widgets/drop_target.hpp"
 
-#include <boost/shared_ptr.hpp>
 class display;
-
 
 namespace gui {
 
