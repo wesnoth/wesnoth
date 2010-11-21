@@ -16,12 +16,8 @@
 #ifndef GAME_EVENTS_H_INCLUDED
 #define GAME_EVENTS_H_INCLUDED
 
-#include "config.hpp"
 #include "map.hpp"
 #include "variable.hpp"
-
-#include <vector>
-#include <map>
 
 /**
  * @file
