@@ -31,8 +31,6 @@ class unit_movement_type;
 
 #include <map>
 #include <list>
-#include <set>
-#include <vector>
 #include <functional>
 
 namespace pathfind {
