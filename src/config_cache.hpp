@@ -35,7 +35,7 @@ namespace game_config {
 
 	/**
 	 * Used to set and unset scoped defines to preproc_map
-	 * This is prefered form to set defines that aren't global
+	 * This is preferred form to set defines that aren't global
 	 **/
 	template <class T>
 		class scoped_preproc_define_internal : private boost::noncopyable {

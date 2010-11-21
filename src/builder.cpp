@@ -269,7 +269,7 @@ void terrain_builder::rebuild_terrain(const map_location &loc)
 		img_loc.start_animation(0, true);
 		btile.images_background.push_back(img_loc);
 
-		//Combine base and overlay image if neccessary
+		//Combine base and overlay image if necessary
 		if(map().get_terrain_info(map().get_terrain(loc)).is_combined()) {
 			const std::string filename_ovl =
 				map().get_terrain_info(map().get_terrain(loc)).minimap_image_overlay();

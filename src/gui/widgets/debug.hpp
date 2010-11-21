@@ -37,7 +37,7 @@ class twindow;
  * sizing algorithm.
  *
  * This class needs to be friends with a lot of classes so it can view the
- * private data in the class. This design is choosen so the debug info can be
+ * private data in the class. This design is chosen so the debug info can be
  * put in a separate class instead of adding the info via virtual functions in
  * the classes themselves. Also adding 'friend class foo' doesn't need to
  * include the header declaring foo, so it avoids header cluttage.

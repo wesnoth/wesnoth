@@ -220,7 +220,7 @@ private:
 	 * Alt                        The alt key is pressed.
 	 *
 	 * If modifiers together do something else as the sum of the modifiers
-	 * it's listed seperately eg.
+	 * it's listed separately eg.
 	 *
 	 * Control                    Moves 10 steps at the time.
 	 * Shift                      Selects the text.

@@ -160,7 +160,7 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 	disp->draw(false);
 	disp->draw(false);
 
-	// The last draw() was still slow, and its inital new_animation_frame() call
+	// The last draw() was still slow, and its initial new_animation_frame() call
 	// is now old, so we do another draw() to get a fresh one
 	// TODO: replace that by a new_animation_frame() before starting anims
 	//       don't forget to change the previous draw(false) to true

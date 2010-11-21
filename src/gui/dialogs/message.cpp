@@ -31,7 +31,7 @@ namespace gui2 {
 REGISTER_WINDOW(message)
 
 /**
- * Helper to implement private functions without modifing the header.
+ * Helper to implement private functions without modifying the header.
  *
  * The class is a helper to avoid recompilation and only has static
  * functions.

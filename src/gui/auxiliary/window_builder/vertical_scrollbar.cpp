@@ -38,7 +38,7 @@ twidget* tbuilder_vertical_scrollbar::build() const
 
 	DBG_GUI_G << "Window builder:"
 			<< " placed vertical scrollbar '" << id
-			<< "' with defintion '" << definition
+			<< "' with definition '" << definition
 			<< "'.\n";
 
 	return widget;

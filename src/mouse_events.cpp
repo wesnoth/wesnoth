@@ -852,7 +852,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		defw.set_specials_context(attacker->get_location(), defender->get_location(), *attacker, false);
 
 		// if missing, add dummy special, to be sure to have
-		// big enough mimimum width (weapon's name can be very short)
+		// big enough minimum width (weapon's name can be very short)
 		std::string att_weapon_special = attw.weapon_specials();
 		if (att_weapon_special.empty())
 			att_weapon_special += "       ";

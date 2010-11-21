@@ -246,7 +246,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 		cfg.add_child("ai",aiparam);
 	}
 
-	//backward-compatability hack: put ai_algorithm if it is present
+	//backward-compatibility hack: put ai_algorithm if it is present
 	if (const config::attribute_value *v = original_cfg.get("ai_algorithm")) {
 		config ai_a;
 		ai_a["ai_algorithm"] = *v;

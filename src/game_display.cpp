@@ -401,7 +401,7 @@ void game_display::draw_hex(const map_location& loc)
 				image::get_image(selected, image::SCALED_TO_HEX));
 	}
 
-	// Show def% and turn to reach infos
+	// Show def% and turn to reach info
 	if(!is_shrouded && on_map) {
 		draw_movement_info(loc);
 	}
@@ -1412,7 +1412,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	spk_flabel.set_color(speaker_color);
 	spk_flabel.set_position(rect.x + chat_message_x, rect.y + ypos);
 	spk_flabel.set_clip_rect(rect);
-	spk_flabel.set_alignement(font::LEFT_ALIGN);
+	spk_flabel.set_alignment(font::LEFT_ALIGN);
 	spk_flabel.set_bg_color(chat_message_bg);
 	spk_flabel.set_border_size(chat_message_border);
 	spk_flabel.use_markup(false);
@@ -1425,7 +1425,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	msg_flabel.set_position(rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,
 	rect.y + ypos);
 	msg_flabel.set_clip_rect(rect);
-	msg_flabel.set_alignement(font::LEFT_ALIGN);
+	msg_flabel.set_alignment(font::LEFT_ALIGN);
 	msg_flabel.set_bg_color(chat_message_bg);
 	msg_flabel.set_border_size(chat_message_border);
 	msg_flabel.use_markup(false);

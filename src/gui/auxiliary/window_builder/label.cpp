@@ -42,7 +42,7 @@ twidget* tbuilder_label::build() const
 	widget->set_text_alignment(text_alignment);
 
 	DBG_GUI_G << "Window builder: placed label '"
-		<< id << "' with defintion '"
+		<< id << "' with definition '"
 		<< definition << "'.\n";
 
 	return widget;

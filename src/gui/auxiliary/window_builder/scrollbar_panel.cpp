@@ -54,7 +54,7 @@ twidget* tbuilder_scrollbar_panel::build() const
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	DBG_GUI_G << "Window builder: placed scrollbar_panel '"
-			<< id << "' with defintion '"
+			<< id << "' with definition '"
 			<< definition << "'.\n";
 
 	boost::intrusive_ptr<

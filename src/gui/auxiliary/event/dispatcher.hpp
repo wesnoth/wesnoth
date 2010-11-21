@@ -209,7 +209,7 @@ public:
 	 * * post_child The callbacks for the parent container to be called after
 	 *   the child.
 	 *
-	 * For every queue it's posible to add a new event in the front or in the
+	 * For every queue it's possible to add a new event in the front or in the
 	 * back.
 	 *
 	 * Whether all three queues are executed depend on the whether the
@@ -506,7 +506,7 @@ public:
 				, const T& signal)
 		{
 			/*
-			 * The function doesn't differenciate between front and back
+			 * The function doesn't differentiate between front and back
 			 * position so fall down from front to back.
 			 */
 			switch(position) {

@@ -352,7 +352,7 @@ protected:
 private:
 	enum ALIGNMENT {LEFT, MIDDLE, RIGHT, HERE};
 	/// Convert a string to an alignment. Throw parse_error if
-	/// unsuccesful.
+	/// unsuccessful.
 	ALIGNMENT str_to_align(const std::string &s);
 
 	/// An item that is displayed in the text area. Contains the surface

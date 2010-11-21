@@ -440,7 +440,7 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 				// freaks out.
 				//
 				// The alpha thresholding step attempts
-				// to accomodates this limitation.
+				// to accommodates this limitation.
 				// There is a small loss of quality.
 				// For example, skeleton bowstrings
 				// are not as good as they could be.
@@ -1635,7 +1635,7 @@ void blit_surface(const surface& src,
 
 					// Destination and source party transparent.
 
-					// aquired the data now do the blitting
+					// acquired the data now do the blitting
 					const unsigned tmp_a = 255 - src_a;
 
 					const unsigned tmp_r = 1 + (src_r * src_a) + (dst_r * tmp_a);

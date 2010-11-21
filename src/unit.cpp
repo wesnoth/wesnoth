@@ -360,7 +360,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		}
 	}
 
-	//dont use the unit_type's attacks if this config has its own defined
+	//don't use the unit_type's attacks if this config has its own defined
 	config::const_child_itors cfg_range = cfg.child_range("attack");
 	if(cfg_range.first != cfg_range.second) {
 		attacks_.clear();
@@ -369,7 +369,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
-	//dont use the unit_type's abilities if this config has its own defined
+	//don't use the unit_type's abilities if this config has its own defined
 	cfg_range = cfg.child_range("abilities");
 	if(cfg_range.first != cfg_range.second) {
 		cfg_.clear_children("abilities");

@@ -141,7 +141,7 @@ class unit_animation
 		/* these are drawing parameters, but for efficiancy reason they are in the anim and not in the particle */
 		map_location src_;
 		map_location dst_;
-		// optimisation
+		// optimization
 		bool invalidated_;
 		bool play_offscreen_;
 		std::set<map_location> overlaped_hex_;

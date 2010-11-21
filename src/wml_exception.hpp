@@ -52,7 +52,7 @@ class display;
  *  @param cond         The textual presentation of the test that failed.
  *  @param file         The file in which the test failed.
  *  @param line         The line at which the test failed.
- *  @param function     The funtion in which the test failed.
+ *  @param function     The function in which the test failed.
  *  @param message      The translated message to show the user.
  */
 void wml_exception(const char* cond, const char* file,

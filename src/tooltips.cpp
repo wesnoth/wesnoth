@@ -84,7 +84,7 @@ static void show_tooltip(const tooltip& tip)
 	flabel.set_color(font::NORMAL_COLOR);
 	flabel.set_clip_rect(area);
 	flabel.set_width(text_width);
-	flabel.set_alignement(font::LEFT_ALIGN);
+	flabel.set_alignment(font::LEFT_ALIGN);
 	flabel.set_bg_color(bgcolor);
 	flabel.set_border_size(border);
 

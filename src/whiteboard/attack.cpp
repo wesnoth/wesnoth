@@ -55,7 +55,7 @@ attack::attack(size_t team_index, const map_location& target_hex, int weapon_cho
 	target_hex_(target_hex),
 	weapon_choice_(weapon_choice),
 	attack_movement_cost_(get_unit()->attacks()[weapon_choice_].movement_used()),
-	temp_movement_substracted_(0)
+	temp_movement_subtracted_(0)
 {
 }
 
@@ -120,12 +120,12 @@ void attack::apply_temp_modifier(unit_map& unit_map)
 	assert(unit.attacks_left() > 0);
 	unit.set_attacks(unit.attacks_left() - 1);
 
-	//Calculate movement to substract
-	temp_movement_substracted_ = unit.movement_left() >= attack_movement_cost_ ? attack_movement_cost_ : 0 ;
+	//Calculate movement to subtract
+	temp_movement_subtracted_ = unit.movement_left() >= attack_movement_cost_ ? attack_movement_cost_ : 0 ;
 	DBG_WB << "Attack: Changing movement points for unit " << unit.name() << " [" << unit.id()
 				<< "] from " << unit.movement_left() << " to "
-				<< unit.movement_left() - temp_movement_substracted_ << ".\n";
-	unit.set_movement(unit.movement_left() - temp_movement_substracted_);
+				<< unit.movement_left() - temp_movement_subtracted_ << ".\n";
+	unit.set_movement(unit.movement_left() - temp_movement_subtracted_);
 }
 
 void attack::remove_temp_modifier(unit_map& unit_map)
@@ -137,9 +137,9 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 	unit.set_attacks(unit.attacks_left() + 1);
 	DBG_WB << "Attack: Changing movement points for unit " << unit.name() << " [" << unit.id()
 				<< "] from " << unit.movement_left() << " to "
-				<< unit.movement_left() + temp_movement_substracted_ << ".\n";
-	unit.set_movement(unit.movement_left() + temp_movement_substracted_);
-	temp_movement_substracted_ = 0;
+				<< unit.movement_left() + temp_movement_subtracted_ << ".\n";
+	unit.set_movement(unit.movement_left() + temp_movement_subtracted_);
+	temp_movement_subtracted_ = 0;
 	move::remove_temp_modifier(unit_map);
 }
 

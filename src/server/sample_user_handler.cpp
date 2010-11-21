@@ -150,7 +150,7 @@ void suh::check_name(const std::string& name) {
 				"are allowed.");
 	}
 	if(name.size() > 18) {
-		throw error("This username is too long. Usernames must be 18 characers or less.");
+		throw error("This username is too long. Usernames must be 18 characters or less.");
 	}
 }
 

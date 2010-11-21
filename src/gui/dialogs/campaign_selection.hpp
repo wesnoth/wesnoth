@@ -56,7 +56,7 @@ private:
 	/** Campaign list. */
 	const std::vector<config> &campaigns_;
 
-	/** The choosen campaign. */
+	/** The chosen campaign. */
 	int choice_;
 };
 

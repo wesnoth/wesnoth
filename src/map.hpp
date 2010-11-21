@@ -161,7 +161,7 @@ public:
 	 * Tell if a location is on the map.
 	 *
 	 * Should be called before indexing using [].
-	 * @todo inline for performace? -- Ilor
+	 * @todo inline for performance? -- Ilor
 	 */
 	bool on_board(const map_location& loc) const;
 	bool on_board_with_border(const map_location& loc) const;
@@ -265,7 +265,7 @@ private:
 	/**
 	 * Tries to find out if "terrain" can be created by combining two existing
 	 * terrains Will add the resulting terrain to the terrain list if
-	 * successfull
+	 * successful
 	 */
 	bool try_merge_terrains(const t_translation::t_terrain terrain);
 

@@ -86,7 +86,7 @@ public:
 
 	/**
 	 * Adds an advancement to the replay, the following option command
-	 * determines which advancement option has been choosen
+	 * determines which advancement option has been chosen
 	 */
 	void add_advancement(const map_location& loc);
 

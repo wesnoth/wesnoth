@@ -357,7 +357,7 @@ void unrender(std::set<map_location> invalidated_locations)
 	size_t halo_count;
 
 	// Repeat until set of haloes in the invalidated area didn't change
-	// (including none found) or all exisiting haloes are found.
+	// (including none found) or all existing haloes are found.
 	do {
 		halo_count = invalidated_haloes.size();
 		for(itor = haloes.begin(); itor != haloes.end(); ++itor) {

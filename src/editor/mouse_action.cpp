@@ -298,7 +298,7 @@ std::set<map_location> mouse_action_select::affected_hexes(
 	editor_display& disp, const map_location& hex)
 {
 	if (has_shift_modifier()) {
-		return disp.map().get_contigious_terrain_tiles(hex);
+		return disp.map().get_contiguous_terrain_tiles(hex);
 	} else {
 		return brush_drag_mouse_action::affected_hexes(disp, hex);
 	}
@@ -374,7 +374,7 @@ void mouse_action_paste::set_mouse_overlay(editor_display& disp)
 std::set<map_location> mouse_action_fill::affected_hexes(
 	editor_display& disp, const map_location& hex)
 {
-	return disp.map().get_contigious_terrain_tiles(hex);
+	return disp.map().get_contiguous_terrain_tiles(hex);
 }
 
 editor_action* mouse_action_fill::click_left(editor_display& disp, int x, int y)
@@ -384,7 +384,7 @@ editor_action* mouse_action_fill::click_left(editor_display& disp, int x, int y)
 		terrain_left_ = disp.map().get_terrain(hex);
 		return NULL;
 	} else {
-		//TODO only take the base terrain into account when searching for contigious terrain when painting base only
+		//TODO only take the base terrain into account when searching for contiguous terrain when painting base only
 		//or use a different key modifier for that
 		editor_action_fill* a = new editor_action_fill(hex, terrain_left_, has_shift_modifier());
 		return a;
@@ -399,7 +399,7 @@ editor_action* mouse_action_fill::click_right(editor_display& disp, int x, int y
 		terrain_right_ = disp.map().get_terrain(hex);
 		return NULL;
 	} else {
-		//TODO only take the base terrain into account when searching for contigious terrain when painting base only
+		//TODO only take the base terrain into account when searching for contiguous terrain when painting base only
 		//or use a different key modifier for that
 		editor_action_fill* a = new editor_action_fill(hex, terrain_right_, has_shift_modifier());
 		return a;

@@ -238,7 +238,7 @@ void wait::join_game(bool observe)
 				if (sd["current_player"] == preferences::login()) {
 					side_choice = &sd;
 					side_num = nb_sides;
-					break;  // found the prefered one
+					break;  // found the preferred one
 				}
 			}
 			++nb_sides;

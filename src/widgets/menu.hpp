@@ -62,7 +62,7 @@ public:
 		int max_img_w_, max_img_h_;
 	};
 
-	//image-border selction style
+	//image-border selection style
 	class imgsel_style : public style
 	{
 	public:

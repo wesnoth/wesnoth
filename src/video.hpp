@@ -87,7 +87,7 @@ class CVideo : private boost::noncopyable {
 	 * Creates a fake frame buffer for the unit tests.
 	 *
 	 * @param width               The width of the buffer.
-	 * @param height              The heigth of the buffer.
+	 * @param height              The height of the buffer.
 	 * @param bpp                 The bpp of the buffer.
 	 */
 	void make_test_fake(const unsigned width = 1024,
@@ -155,7 +155,7 @@ class resize_monitor : public events::pump_monitor {
 	void process(events::pump_info &info);
 };
 
-//an object which prevents resizing of the screen occuring during
+//an object which prevents resizing of the screen occurring during
 //its lifetime.
 struct resize_lock {
 	resize_lock();

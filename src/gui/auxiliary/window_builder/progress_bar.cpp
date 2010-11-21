@@ -37,7 +37,7 @@ twidget* tbuilder_progress_bar::build() const
 	init_control(widget);
 
 	DBG_GUI_G << "Window builder: placed progress bar '"
-			<< id << "' with defintion '"
+			<< id << "' with definition '"
 			<< definition << "'.\n";
 
 	return widget;

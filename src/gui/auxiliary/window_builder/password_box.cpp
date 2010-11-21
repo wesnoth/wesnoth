@@ -49,7 +49,7 @@ twidget* tbuilder_password_box::build() const
 	}
 
 	DBG_GUI_G << "Window builder: placed password box '"
-			<< id << "' with defintion '"
+			<< id << "' with definition '"
 			<< definition << "'.\n";
 
 	return widget;

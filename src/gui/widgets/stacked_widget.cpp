@@ -34,7 +34,7 @@ tstacked_widget::tstacked_widget()
 	, generator_(NULL)
 {
 	generator_ = tgenerator_::build(
-			false, false, tgenerator_::independant, false);
+			false, false, tgenerator_::independent, false);
 }
 
 void tstacked_widget::layout_children()

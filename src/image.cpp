@@ -479,8 +479,8 @@ surface locator::load_image_sub_file() const
 			srcrect.y += surf->h/2 - val_.center_y_;
 		}
 
-		surface cutted(cut_surface(surf, srcrect));
-		surf = mask_surface(cutted, get_hexmask());
+		surface cut(cut_surface(surf, srcrect));
+		surf = mask_surface(cut, get_hexmask());
 	}
 
 	if(val_.modifications_.size()){
@@ -1023,7 +1023,7 @@ static TYPE simplify_type(const image::locator& i_locator, TYPE type){
 	}
 
 	if(type == HEXED) {
-		// check if the image is already hex-cutted by the location system
+		// check if the image is already hex-cut by the location system
 		if(i_locator.get_loc().valid())
 			type = UNSCALED;
 	}

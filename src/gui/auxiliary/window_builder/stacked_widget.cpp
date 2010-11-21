@@ -47,7 +47,7 @@ twidget* tbuilder_stacked_widget::build() const
 	init_control(widget);
 
 	DBG_GUI_G << "Window builder: placed stacked widget '"
-			<< id << "' with defintion '"
+			<< id << "' with definition '"
 			<< definition << "'.\n";
 
 	boost::intrusive_ptr<const tstacked_widget_definition::tresolution> conf =

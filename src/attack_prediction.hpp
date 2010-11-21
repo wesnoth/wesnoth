@@ -25,7 +25,7 @@
 class battle_context_unit_stats;
 
 // This encapsulates all we need to know for this combat.
-/** All combat-related infos. */
+/** All combat-related info. */
 struct combatant
 {
 	/** Construct a combatant. */

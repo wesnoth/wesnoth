@@ -83,7 +83,7 @@ bool has_valid_seed();
 seed_t get_last_seed();
 
 /**
- * Set the callback for a fuction that will be called on subsequent set_seed
+ * Set the callback for a function that will be called on subsequent set_seed
  * calls.
  * @todo needs a reliable way of clearing the callback when things don't go as
  * normal (e.g. player quit the game while the callback is set)

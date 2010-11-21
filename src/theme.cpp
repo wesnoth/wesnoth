@@ -172,7 +172,7 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 		{
 			parent = &top_cfg.find_child("partialresolution", "id", parent_id);
 			if (!*parent)
-				throw config::error("[partialresolution] refers to non-existant [resolution] " + parent_id);
+				throw config::error("[partialresolution] refers to non-existent [resolution] " + parent_id);
 			parent_stack.push_back(parent);
 			parent_id = (*parent)["inherits"].str();
 		}

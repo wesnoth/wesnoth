@@ -26,7 +26,7 @@
  *
  * @param text         The text to copy.
  * @param mouse        Is the selection done by the mouse? On UNIX systems there
- *                     are multiple clipboards and the mouse selction uses a
+ *                     are multiple clipboards and the mouse selection uses a
  *                     different clipboard. Ignored on other systems.
  */
 void copy_to_clipboard(const std::string& text, const bool mouse);

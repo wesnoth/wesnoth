@@ -15,7 +15,7 @@
 
 /**
  * @file
- * Calculate & analyse attacks of the default ai
+ * Calculate & analyze attacks of the default ai
  */
 
 #include "../../global.hpp"

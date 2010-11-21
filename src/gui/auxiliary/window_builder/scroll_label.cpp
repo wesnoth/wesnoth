@@ -54,7 +54,7 @@ twidget* tbuilder_scroll_label::build() const
 	widget->finalize_setup();
 
 	DBG_GUI_G << "Window builder: placed scroll label '"
-			<< id << "' with defintion '"
+			<< id << "' with definition '"
 			<< definition << "'.\n";
 
 	return widget;

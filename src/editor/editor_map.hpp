@@ -111,11 +111,11 @@ public:
 	void sanity_check();
 
 	/**
-	 * Get a contigious set of tiles having the same terrain as the starting location.
+	 * Get a contiguous set of tiles having the same terrain as the starting location.
 	 * Useful for flood fill or magic wand selection
-	 * @return a contigious set of locations that will always contain at least the starting element
+	 * @return a contiguous set of locations that will always contain at least the starting element
 	 */
-	std::set<map_location> get_contigious_terrain_tiles(const map_location& start) const;
+	std::set<map_location> get_contiguous_terrain_tiles(const map_location& start) const;
 
 	/**
 	 * Set labels for staring positions in the given display object.

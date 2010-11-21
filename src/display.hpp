@@ -302,7 +302,7 @@ public:
 
 	/**
 	 * Per-location invalidation called by invalidate_animations()
-	 * defaults to no action, overriden by derived classes
+	 * defaults to no action, overridden by derived classes
 	 */
 	virtual void invalidate_animations_location(const map_location& /*loc*/) {}
 
@@ -808,7 +808,7 @@ protected:
 	void draw_init();
 	void draw_wrap(bool update,bool force);
 
-	/** Used to indicate to drawing funtions that we are doing a map screenshot */
+	/** Used to indicate to drawing functions that we are doing a map screenshot */
 	bool map_screenshot_;
 
 public: //operations for the arrow framework

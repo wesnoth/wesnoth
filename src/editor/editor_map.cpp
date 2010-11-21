@@ -121,7 +121,7 @@ void editor_map::sanity_check()
 	}
 }
 
-std::set<map_location> editor_map::get_contigious_terrain_tiles(const map_location& start) const
+std::set<map_location> editor_map::get_contiguous_terrain_tiles(const map_location& start) const
 {
 	t_translation::t_terrain terrain = get_terrain(start);
 	std::set<map_location> result;

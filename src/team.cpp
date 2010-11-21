@@ -305,7 +305,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	LOG_NG << "team::team(...): team_name: " << info_.team_name
 	       << ", shroud: " << uses_shroud() << ", fog: " << uses_fog() << ".\n";
 
-	// To ensure some mimimum starting gold,
+	// To ensure some minimum starting gold,
 	// gold is the maximum of 'gold' and what is given in the config file
 	gold_ = std::max(gold, info_.gold);
 	if (gold_ != info_.gold)

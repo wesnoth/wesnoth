@@ -95,7 +95,7 @@ twidget* tbuilder_horizontal_listbox::build() const
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	DBG_GUI_G << "Window builder: placed listbox '"
-		<< id << "' with defintion '"
+		<< id << "' with definition '"
 		<< definition << "'.\n";
 
 	boost::intrusive_ptr<const tlistbox_definition::tresolution> conf =

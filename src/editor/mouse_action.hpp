@@ -64,22 +64,22 @@ public:
 	virtual std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
 
 	/**
-	 * A click, possibly the beginning of a drag. Must be overriden.
+	 * A click, possibly the beginning of a drag. Must be overridden.
 	 */
 	virtual editor_action* click_left(editor_display& disp, int x, int y) = 0;
 
 	/**
-	 * A click, possibly the beginning of a drag. Must be overriden.
+	 * A click, possibly the beginning of a drag. Must be overridden.
 	 */
 	virtual editor_action* click_right(editor_display& disp, int x, int y) = 0;
 
 	/**
-	 * Drag operation. A click should have occured earlier. Defaults to no action.
+	 * Drag operation. A click should have occurred earlier. Defaults to no action.
 	 */
 	virtual editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
 	/**
-	 * Drag operation. A click should have occured earlier. Defaults to no action.
+	 * Drag operation. A click should have occurred earlier. Defaults to no action.
 	 */
 	virtual editor_action* drag_right(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
@@ -281,7 +281,7 @@ public:
 	}
 
 	/**
-	 * Overriden to allow special behaviour based on modifier keys
+	 * Overridden to allow special behaviour based on modifier keys
 	 */
 	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
 

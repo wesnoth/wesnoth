@@ -1833,7 +1833,7 @@ void menu_handler::search()
 }
 
 void menu_handler::do_speak(){
-	//None of the two parameters really needs to be passed since the informations belong to members of the class.
+	//None of the two parameters really needs to be passed since the information belong to members of the class.
 	//But since it makes the called method more generic, it is done anyway.
 	chat_handler::do_speak(textbox_info_.box()->text(),textbox_info_.check() != NULL ? textbox_info_.check()->checked() : false);
 }
@@ -2031,9 +2031,9 @@ class map_command_handler
 		}
 		//derived classes initialize the map overriding this function
 		virtual void init_map() = 0;
-		//overriden in derived classes to actually print the messages somwehere
+		//overridden in derived classes to actually print the messages somwehere
 		virtual void print(const std::string& title, const std::string& message) = 0;
-		//should be overriden in derived classes if the commands have flags
+		//should be overridden in derived classes if the commands have flags
 		//this should return a string describing what all the flags mean
 		virtual std::string get_flags_description() const
 		{
@@ -2044,7 +2044,7 @@ class map_command_handler
 		{
 			return "";
 		}
-		//this should be overriden if e.g. flags are used to control command
+		//this should be overridden if e.g. flags are used to control command
 		//availability. Return false if the command should not be executed by dispatch()
 		virtual bool is_enabled(const command& /*c*/) const
 		{

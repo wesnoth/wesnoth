@@ -101,7 +101,7 @@ void loadscreen::draw_screen(const std::string &text)
 	int scry = screen_.gety() - 2*(bw+bispw);
 	// Used width.
 	int pbw = scrx/2;
-	// Used heigth.
+	// Used height.
 	int pbh = scry/16;
 	// Height of the lighting line.
 	int	lightning_thickness = 2;
@@ -117,7 +117,7 @@ void loadscreen::draw_screen(const std::string &text)
 		}
 	}
 
-	// Draw logo if it was succesfully loaded.
+	// Draw logo if it was successfully loaded.
 	if (logo_surface_ && !logo_drawn_) {
 		area.x = (screen_.getx () - logo_surface_->w) / 2;
 		area.y = ((scry - logo_surface_->h) / 2) - pbh;

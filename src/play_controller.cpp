@@ -1140,7 +1140,7 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 		++i;
 	}
 
-	// Add special non-hotkey items to the menu and remember their indeces
+	// Add special non-hotkey items to the menu and remember their indices
 	expand_autosaves(items);
 	expand_wml_commands(items);
 

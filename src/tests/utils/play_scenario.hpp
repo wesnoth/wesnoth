@@ -78,7 +78,7 @@ namespace test_utils {
 		event_node_ptr end_pos_;
 
 		/**
-		 * We have to add automaticaly one enter press
+		 * We have to add automatically one enter press
 		 * for objectives view
 		 **/
 		void add_initial_signals();

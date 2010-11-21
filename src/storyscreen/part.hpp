@@ -35,7 +35,7 @@ class game_state;
 namespace storyscreen {
 
 /**
- * Represents and contains informations about image labels used
+ * Represents and contains information about image labels used
  * in story screen parts.
  */
 class floating_image

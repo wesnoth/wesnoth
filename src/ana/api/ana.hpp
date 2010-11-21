@@ -529,7 +529,7 @@ namespace ana
          * The time parameter indicates how long you are willing to wait.
          *
          * If a message is received before this time period then this call will be insignificant.
-         * However, if no such message is received, the appropiate call to handle_receive will be
+         * However, if no such message is received, the appropriate call to handle_receive will be
          * made with ana::timeout_error as the error_code parameter.
          *
          * @param id : The ana::net_id of the client you are expecting the message from. If the
@@ -594,7 +594,7 @@ namespace ana
              *
              * If a message is received before this time period then this call will be
              * insignificant.
-             * However, if no such message is received, the appropiate call to handle_receive will
+             * However, if no such message is received, the appropriate call to handle_receive will
              * be made with ana::timeout_error as the error_code parameter.
              *
              * Use the methods described in the ana::time namespace to create time lapses.
@@ -715,7 +715,7 @@ namespace ana
          * The time parameter indicates how long you are willing to wait.
          *
          * If a message is received before this time period then this call will be insignificant.
-         * However, if no such message is received, the appropiate call to handle_receive will be
+         * However, if no such message is received, the appropriate call to handle_receive will be
          * made with ana::timeout_error as the error_code parameter.
          *
          * Use the methods described in the ana::time namespace to create time lapses.

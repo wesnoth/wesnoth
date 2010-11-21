@@ -91,7 +91,7 @@ private:
 	};
 
 	/**
-	 * initalize recruitment recommendations
+	 * initialize recruitment recommendations
 	 */
 	void analyze_all();
 

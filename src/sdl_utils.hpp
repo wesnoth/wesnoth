@@ -138,7 +138,7 @@ surface create_neutral_surface(int w, int h);
 surface create_optimized_surface(const surface &surf);
 
 /**
- *  Streches a surface in the horizontal direction.
+ * Stretches a surface in the horizontal direction.
  *
  *  The stretches a surface it uses the first pixel in the horizontal
  *  direction of the original surface and copies that to the destination.
@@ -157,7 +157,7 @@ surface stretch_surface_horizontal(
 	const surface& surf, const unsigned w, const bool optimize = true);
 
 /**
- *  Streches a surface in the vertical direction.
+ *  Stretches a surface in the vertical direction.
  *
  *  The stretches a surface it uses the first pixel in the vertical
  *  direction of the original surface and copies that to the destination.

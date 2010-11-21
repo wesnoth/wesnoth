@@ -240,7 +240,7 @@ private:
 	void add_active_window_message(const std::string& sender, const std::string& message);
 
 	/**
-	 * Switch to the window given by a vaild pointer (e.g. received from a call
+	 * Switch to the window given by a valid pointer (e.g. received from a call
 	 * to *_window_open)
 	 */
 	void switch_to_window(tlobby_chat_window* t);

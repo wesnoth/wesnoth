@@ -113,7 +113,7 @@ public:
 
 	/**
 	 * Joining the room
-	 * @return true if the player was succesfully added
+	 * @return true if the player was successfully added
 	 */
 	bool add_player(network::connection player);
 

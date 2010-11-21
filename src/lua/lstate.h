@@ -43,7 +43,7 @@ typedef struct stringtable {
 
 
 /*
-** informations about a call
+** information about a call
 */
 typedef struct CallInfo {
   StkId base;  /* base for this function */

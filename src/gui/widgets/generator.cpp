@@ -185,7 +185,7 @@ void thorizontal_list::set_visible_area(const SDL_Rect& area)
 {
 	/*
 	 * Note for most implementations this function could work only for the
-	 * tindependant class it probably fails. Evalute to make a generic
+	 * tindependent class it probably fails. Evaluate to make a generic
 	 * function in the tgenerator template class and call it from the wanted
 	 * placement functions.
 	 */
@@ -378,7 +378,7 @@ void tvertical_list::set_visible_area(const SDL_Rect& area)
 {
 	/*
 	 * Note for most implementations this function could work only for the
-	 * tindependant class it probably fails. Evalute to make a generic
+	 * tindependent class it probably fails. Evalute to make a generic
 	 * function in the tgenerator template class and call it from the wanted
 	 * placement functions.
 	 */
@@ -482,7 +482,7 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 	}
 }
 
-void tindependant::request_reduce_width(const unsigned maximum_width)
+void tindependent::request_reduce_width(const unsigned maximum_width)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -491,7 +491,7 @@ void tindependant::request_reduce_width(const unsigned maximum_width)
 	}
 }
 
-void tindependant::request_reduce_height(const unsigned maximum_height)
+void tindependent::request_reduce_height(const unsigned maximum_height)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -500,7 +500,7 @@ void tindependant::request_reduce_height(const unsigned maximum_height)
 	}
 }
 
-tpoint tindependant::calculate_best_size() const
+tpoint tindependent::calculate_best_size() const
 {
 	/*
 	 * The best size is the combination of the greatest width and greatest
@@ -525,7 +525,7 @@ tpoint tindependant::calculate_best_size() const
 	return result;
 }
 
-void tindependant::place(const tpoint& origin, const tpoint& size)
+void tindependent::place(const tpoint& origin, const tpoint& size)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -534,7 +534,7 @@ void tindependant::place(const tpoint& origin, const tpoint& size)
 	}
 }
 
-void tindependant::set_origin(const tpoint& origin)
+void tindependent::set_origin(const tpoint& origin)
 {
 	/*
 	 * Set the origin for every item.
@@ -549,7 +549,7 @@ void tindependant::set_origin(const tpoint& origin)
 	}
 }
 
-twidget* tindependant::find_at(const tpoint& coordinate
+twidget* tindependent::find_at(const tpoint& coordinate
 		, const bool must_be_active)
 {
 	assert(get_window());
@@ -563,7 +563,7 @@ twidget* tindependant::find_at(const tpoint& coordinate
 	return grid.find_at(coordinate, must_be_active);
 }
 
-const twidget* tindependant::find_at(const tpoint& coordinate
+const twidget* tindependent::find_at(const tpoint& coordinate
 		, const bool must_be_active) const
 {
 	assert(get_window());
@@ -577,7 +577,7 @@ const twidget* tindependant::find_at(const tpoint& coordinate
 	return grid.find_at(coordinate, must_be_active);
 }
 
-twidget* tindependant::find(
+twidget* tindependent::find(
 		const std::string& id, const bool must_be_active)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
@@ -590,7 +590,7 @@ twidget* tindependant::find(
 	return NULL;
 }
 
-const twidget* tindependant::find(
+const twidget* tindependent::find(
 		const std::string& id, const bool must_be_active) const
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
@@ -605,7 +605,7 @@ const twidget* tindependant::find(
 	return NULL;
 }
 
-void tindependant::set_visible_area(const SDL_Rect& area)
+void tindependent::set_visible_area(const SDL_Rect& area)
 {
 	/*
 	 * Set the visible area for every item.
@@ -734,11 +734,11 @@ switch(placement) {                                        \
 				, select                                   \
 				>;                                         \
 		break;                                             \
-	case tgenerator_::independant :                        \
+	case tgenerator_::independent :                        \
 		result = new tgenerator                            \
 				< minimum                                  \
 				, maximum                                  \
-				, policy::placement::tindependant          \
+				, policy::placement::tindependent          \
 				, select                                   \
 				>;                                         \
 		break;                                             \

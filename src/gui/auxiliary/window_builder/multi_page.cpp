@@ -72,7 +72,7 @@ twidget* tbuilder_multi_page::build() const
 	widget->set_page_builder(builder);
 
 	DBG_GUI_G << "Window builder: placed multi_page '"
-			<< id << "' with defintion '"
+			<< id << "' with definition '"
 			<< definition << "'.\n";
 
 	boost::intrusive_ptr<const tmulti_page_definition::tresolution> conf =
@@ -94,7 +94,7 @@ twidget* tbuilder_multi_page::build() const
 /*WIKI_MACRO
  * @start_macro = multi_page_description
  *
- *        A multi page is a control that contains serveral 'pages' of which
+ *        A multi page is a control that contains several 'pages' of which
  *        only one is visible. The pages can contain the same of different
  *        info.
  * @end_macro

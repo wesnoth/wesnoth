@@ -50,7 +50,7 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
  * The resolution for a vertical scrollbar also contains the following keys:
  * @start_table = config
  *     minimum_positioner_length (unsigned)
- *                                     The minumum size the positioner is
+ *                                     The minimum size the positioner is
  *                                     allowed to be. The engine needs to know
  *                                     this in order to calculate the best size
  *                                     for the positioner.

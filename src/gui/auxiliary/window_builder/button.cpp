@@ -42,7 +42,7 @@ twidget* tbuilder_button::build() const
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 
 	DBG_GUI_G << "Window builder: placed button '"
-			<< id << "' with defintion '"
+			<< id << "' with definition '"
 			<< definition << "'.\n";
 
 	return widget;

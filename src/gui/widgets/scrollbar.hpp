@@ -256,7 +256,7 @@ private:
 	virtual int on_bar(const tpoint& coordinate) const = 0;
 
 	/**
-	 * Gets the relevent difference in between the two positions.
+	 * Gets the relevant difference in between the two positions.
 	 *
 	 * This function is used to determine how much the positioner needs to  be
 	 * moved.

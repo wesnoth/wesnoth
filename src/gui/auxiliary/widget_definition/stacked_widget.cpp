@@ -44,7 +44,7 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
  * A stacked widget holds several widgets on top of eachother. This can be used
  * for various effects; add an optional overlay to an image, stack it with a
  * spacer to force a minimum size of a widget. The latter is handy to avoid
- * making a seperate definition for a single instance with a fixed size.
+ * making a separate definition for a single instance with a fixed size.
  *
  * A stacked widget has no states.
  */

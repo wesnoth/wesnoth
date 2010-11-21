@@ -102,7 +102,7 @@ public:
 	void update_positions();
 
 	/**
-	 * Serializes information into cfg as new childs of key
+	 * Serializes information into cfg as new children of key
 	 * "sound_source", appendend to existing content.
 	 */
 	void write_sourcespecs(config& cfg) const;

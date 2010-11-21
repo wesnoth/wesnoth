@@ -129,7 +129,7 @@ std::string encode_text_alignment(const PangoAlignment alignment);
 unsigned decode_font_style(const std::string& style);
 
 /**
- * Returns a default error message if a mandatory widget is ommited.
+ * Returns a default error message if a mandatory widget is omitted.
  *
  * @param id                      The id of the omitted widget.
  * @returns                       The error message.

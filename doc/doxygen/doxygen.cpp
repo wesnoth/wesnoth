@@ -216,7 +216,7 @@ to chat, create games, and join games.
 
 @namespace network	High level network layer for config object transport.
 
-This module provides high level network access using an API similiar
+This module provides high level network access using an API similar
 to sockets, but primarily for the transport of @ref config objects.
 This is how the games protocols work - data is sent via config objects.
 

@@ -103,7 +103,7 @@ public:
 	/**
 	 * Sets the paths that are currently displayed as available
 	 * for the unit to move along.
-	 * All other paths will be greyed out.
+	 * All other paths will be grayed out.
 	 */
 	void highlight_reach(const pathfind::paths &paths_list);
 
@@ -268,7 +268,7 @@ public:
 	const unit_map& get_const_units() const {return units_;}
 
 	/**
-	 * annotate hex with number, useful for debugging or UI protoype
+	 * annotate hex with number, useful for debugging or UI prototype
 	 */
 	static int& debug_highlight(const map_location& loc);
 	static void clear_debug_highlights() { debugHighlights_.clear(); }

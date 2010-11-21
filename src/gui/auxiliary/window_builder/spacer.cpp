@@ -48,7 +48,7 @@ twidget* tbuilder_spacer::build() const
 	}
 
 	DBG_GUI_G << "Window builder: placed spacer '"
-			<< id << "' with defintion '"
+			<< id << "' with definition '"
 			<< definition << "'.\n";
 
 	return widget;

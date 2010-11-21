@@ -33,7 +33,7 @@ tmulti_page::tmulti_page()
 	, page_builder_(NULL)
 {
 	generator_ = tgenerator_::build(
-			true, true, tgenerator_::independant, false);
+			true, true, tgenerator_::independent, false);
 }
 
 void tmulti_page::add_page(const string_map& item)

@@ -54,7 +54,7 @@ typedef map_location location;
 /**
  * Generate a height-map.
  *
- * Basically we generate alot of hills, each hill being centered at a certain
+ * Basically we generate a lot of hills, each hill being centered at a certain
  * point, with a certain radius - being a half sphere.  Hills are combined
  * additively to form a bumpy surface.  The size of each hill varies randomly
  * from 1-hill_size.  We generate 'iterations' hills in total.  The range of

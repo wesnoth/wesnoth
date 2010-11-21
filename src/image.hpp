@@ -108,8 +108,8 @@ namespace image {
 		 *
 		 * is_void doesn't seem to work before the image is loaded and also in
 		 * debug mode a placeholder is returned. So it's not possible to test
-		 * for the existance of a file. So this function does that. (Note it
-		 * tests for existance not whether or not it's a valid image.)
+		 * for the existence of a file. So this function does that. (Note it
+		 * tests for existence not whether or not it's a valid image.)
 		 *
 		 * @return                Whether or not the file exists.
 		 */

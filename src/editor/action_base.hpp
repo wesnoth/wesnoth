@@ -81,7 +81,7 @@ class editor_action
 		 * A textual description of the action. For use
 		 * e.g. in the undo menu, to have a "Undo: Fill with
 		 * Grassland" item rather than just "Undo". Should be
-		 * overriden by derived Actions, defaults to a debug
+		 * overridden by derived Actions, defaults to a debug
 		 * message.
 		 */
 		virtual std::string get_description() const;

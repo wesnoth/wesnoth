@@ -316,7 +316,7 @@ const map_location display::pixel_position_to_hex(int x, int y) const
 
 
 	// NOTE: This code to get nearest_hex and second_nearest_hex
-	// is not used anymore. However, it can be usefull later.
+	// is not used anymore. However, it can be useful later.
 	// So, keep it here for the moment.
 	/*
 	if(nearest_hex != NULL) {
@@ -874,7 +874,7 @@ inline display::drawing_buffer_key::drawing_buffer_key(const map_location &loc, 
 	BOOST_STATIC_ASSERT(SHIFT_LAYER_GROUP + BITS_FOR_LAYER_GROUP == sizeof(key_) * 8);
 
 	// the parity of x must be more significant than the layer but less significant than y.
-	// Thus basically every row is splitted in two: First the row containing all the odd x
+	// Thus basically every row is split in two: First the row containing all the odd x
 	// then the row containing all the even x. Since thus the least significant bit of x is
 	// not required for x ordering anymore it can be shifted out to the right.
 	const unsigned int x_parity = static_cast<unsigned int>(loc.x) & 1;
@@ -1008,7 +1008,7 @@ void display::update_display()
 			flabel.set_font_size(12);
 			flabel.set_color(benchmark ? font::BAD_COLOR : font::NORMAL_COLOR);
 			flabel.set_position(10, 100);
-			flabel.set_alignement(font::LEFT_ALIGN);
+			flabel.set_alignment(font::LEFT_ALIGN);
 
 			fps_handle_ = font::add_floating_label(flabel);
 		}

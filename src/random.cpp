@@ -23,9 +23,9 @@
  *                      map is send, but the other players don't need to generate
  *                      the map.
  *
- *  get_random()        A random generator which is syncronized over the network
+ *  get_random()        A random generator which is synchronized over the network
  *                      this only seems to work when it's used by 1 player at the
- *                      same time. It's syncronized after an event so if an event
+ *                      same time. It's synchronized after an event so if an event
  *                      runs at two clients at the same time it gets out of sync
  *                      and sets the entire game out of sync.
  *

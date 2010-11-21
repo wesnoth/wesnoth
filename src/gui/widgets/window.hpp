@@ -483,7 +483,7 @@ private:
 	 * Helper struct to force widgets the have the same size.
 	 *
 	 * Widget which are linked will get the same width and/or height. This
-	 * can especialy be usefull for listboxes, but can also be used for other
+	 * can especialy be useful for listboxes, but can also be used for other
 	 * applications.
 	 */
 	struct tlinked_size

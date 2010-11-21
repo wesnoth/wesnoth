@@ -118,7 +118,7 @@ public:
 	//
 	// \param m the mutex on which we should try to lock.
 	explicit lock(mutex& m);
-	// Delete the lock object, thus releasing the lock aquired
+	// Delete the lock object, thus releasing the lock acquired
 	// on the mutex which the lock object was created with.
 	~lock();
 private:
@@ -133,7 +133,7 @@ private:
 // Implements condition variables for mutexes. A condition variable
 // allows you to free up a lock inside a critical section
 // of the code and regain it later. Condition classes only make
-// sense to do operations on, if one already aquired a mutex.
+// sense to do operations on, if one already acquired a mutex.
 class condition
 {
 public:
@@ -153,14 +153,14 @@ public:
 	// \param m the mutex you wish to free the lock for
 	// \returns true: the wait was successful, false: an error occurred
 	//
-	// \pre You have already aquired a lock on mutex m
+	// \pre You have already acquired a lock on mutex m
 	//
 	bool wait(const mutex& m);
 
 	enum WAIT_TIMEOUT_RESULT { WAIT_OK, WAIT_TIMED_OUT, WAIT_ERROR };
 
 	// wait on the condition with a timeout. Basically the same as the
-	// wait() function, but if the lock is not aquired before the
+	// wait() function, but if the lock is not acquired before the
 	// timeout, the function returns with an error.
 	//
 	// \param m the mutex you wish free the lock for.

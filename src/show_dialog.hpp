@@ -39,7 +39,7 @@ enum DIALOG_RESULT {
 	ESCAPE_DIALOG=-3, //special return used by WML event dialogs
 	CONTINUE_DIALOG=-2,
 	CLOSE_DIALOG=-1
-	/* results (0..N) reserved for standard button indeces */
+	/* results (0..N) reserved for standard button indices */
 };
 
 bool in_dialog();

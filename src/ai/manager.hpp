@@ -419,7 +419,7 @@ public:
 
 	/**
 	 * Modifies AI parameters for active AI of the given @a side.
-	 * This function is provided for backward-compatability with [modify_side][ai]...[/ai][/modify_side]
+	 * This function is provided for backward-compatibility with [modify_side][ai]...[/ai][/modify_side]
 	 * It can only add new facets to aspects
 	 * @param side side_number (1-based, as in game_info).
 	 * @param ai_parameters AI parameters to be modified.

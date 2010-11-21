@@ -37,7 +37,7 @@ twidget* tbuilder_repeating_button::build() const
 	init_control(widget);
 
 	DBG_GUI_G << "Window builder: placed repeating button '"
-			<< id << "' with defintion '"
+			<< id << "' with definition '"
 			<< definition << "'.\n";
 
 	return widget;

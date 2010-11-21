@@ -502,10 +502,10 @@ void replay::undo()
 	std::vector<async_cmd> async_cmds;
 	// Remember commands not yet synced and skip over them.
 	// We assume that all already sent (sent=yes) data isn't undoable
-	// even if not marked explicitely with undo=no.
+	// even if not marked explicitly with undo=no.
 
 	/**
-	 * @todo Change undo= to default to "no" and explicitely mark all
+	 * @todo Change undo= to default to "no" and explicitly mark all
 	 * undoable commands with yes.
 	 */
 
@@ -714,7 +714,7 @@ static void check_checksums(const config &cfg)
 		unit_map::const_iterator u = resources::units->find(loc);
 		if (!u.valid()) {
 			std::stringstream message;
-			message << "non existant unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
+			message << "non existent unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
 			resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
 					events::chat_handler::MESSAGE_PRIVATE, false);
 			continue;

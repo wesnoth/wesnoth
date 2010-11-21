@@ -116,7 +116,7 @@ public:
 	 *				Will be used if some images specify several
 	 *				time-of-day- related variants.
 	 * @param terrain_type BACKGROUND or FOREGROUND,
-	 *              depending on wheter we ask for the terrain which is
+	 *              depending on whether we ask for the terrain which is
 	 *              before, or after the unit sprite.
 	 *
 	 * @return      Returns a pointer list of animated images corresponding

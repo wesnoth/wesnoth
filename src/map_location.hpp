@@ -85,7 +85,7 @@ struct map_location {
 
 	// Location arithmetic operations treating the locations as vectors in
 	// a hex-based space. These operations form an abelian group, i.e.
-	// everything works as you would expect addition and substraction to
+	// everything works as you would expect addition and subtraction to
 	// work, with associativity and commutativity.
 	map_location vector_negation() const;
 	map_location vector_sum(const map_location &a) const;

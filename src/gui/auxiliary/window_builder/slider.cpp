@@ -73,7 +73,7 @@ twidget* tbuilder_slider::build() const
 	}
 
 	DBG_GUI_G << "Window builder: placed slider '"
-			<< id << "' with defintion '"
+			<< id << "' with definition '"
 			<< definition << "'.\n";
 
 	return widget;

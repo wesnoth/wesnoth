@@ -214,7 +214,7 @@ struct tdispatcher_implementation
 	}
 
 	/**
-	 * A helper class to find out wheter dispatcher has an handler for a
+	 * A helper class to find out whether dispatcher has an handler for a
 	 * certain event.
 	 */
 	class thas_handler

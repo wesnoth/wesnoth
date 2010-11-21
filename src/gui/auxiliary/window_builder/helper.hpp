@@ -28,18 +28,18 @@ namespace gui2 {
 namespace implementation {
 
 /**
- * Returns the vertical alignement.
+ * Returns the vertical alignment.
  *
- * @param v_align                 The string representing the alignement.
+ * @param v_align                 The string representing the alignment.
  *
  * @returns                       The alignment.
  */
 unsigned get_v_align(const std::string& v_align);
 
 /**
- * Returns the horizontal alignement.
+ * Returns the horizontal alignment.
  *
- * @param h_align                 The string representing the alignement.
+ * @param h_align                 The string representing the alignment.
  *
  * @returns                       The alignment.
  */

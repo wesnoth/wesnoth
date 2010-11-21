@@ -1088,7 +1088,7 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 				tokens.back().line_number = files.back().second;
 			}
 		} catch(token_error& e) {
-			//when we catch token error, we should write whole line in which error occured, so we merge info from token and everything we had in the line so far
+			//when we catch token error, we should write whole line in which error occurred, so we merge info from token and everything we had in the line so far
 			std::string str = "";
 			if(!tokens.empty()) {
 				token* tok_it = &tokens[0] + tokens.size()-1;

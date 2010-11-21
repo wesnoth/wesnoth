@@ -23,7 +23,7 @@
 #include "SDL_net.h"
 
 /**
- * Aligns a variable on a 4 byte boundry.
+ * Aligns a variable on a 4 byte boundary.
  *
  * The address needs to be aligned on a Sparc system, if it's not aligned the
  * SDLNet_Read32 call will cause a SIGBUS and the server will be terminated [1].

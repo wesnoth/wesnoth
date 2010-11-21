@@ -187,7 +187,7 @@ class editor_controller : public controller_base,
 
 		/**
 		 * Check if a map is already open.
-		 * @return index of the map context containg the given filename,
+		 * @return index of the map context containing the given filename,
 		 *         or map_contexts_.size() if not found.
 		 */
 		size_t check_open_map(const std::string& fn) const;

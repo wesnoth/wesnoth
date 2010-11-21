@@ -262,7 +262,7 @@ room* room_manager::require_room(const std::string& room_name,
 		WRN_LOBBY << "Player " << user->second.name()
 			<< " (conn " << user->first << ")"
 			<< " attempted to " << log_string
-			<< "a nonexistant room '" << room_name << "'\n";
+			<< "a nonexistent room '" << room_name << "'\n";
 		return NULL;
 	}
 	return r;

@@ -401,7 +401,7 @@ struct tmatrix
  *
  * @todo Implement.
  */
-struct tindependant
+struct tindependent
 	: public virtual tgenerator_
 {
 	/** See thorizontal_list::create_item(). */
@@ -569,7 +569,7 @@ public:
 		assert(index < items_.size());
 
 		// Might be other parts of the engine want to know about the
-		// deselction, if minimum fails it gets another chance later on,
+		// deselection, if minimum fails it gets another chance later on,
 		// since it deletes the item.
 		if(is_selected(index)) {
 			select_item(index, false);
@@ -913,7 +913,7 @@ private:
 		/**
 		 * Is the row shown or not.
 		 *
-		 * This flag is used the help to set the visible flag, it's prefered to
+		 * This flag is used the help to set the visible flag, it's preferred to
 		 * test this flag for external functions.
 		 *
 		 * @todo functions now test for visible and shown, that can use some

@@ -279,7 +279,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	const int centery = disp.h()/2;
 #ifdef USE_TINY_GUI
 	const int width  = 300;			  /** @todo FIXME: We should compute this, but using what data ? */
-		/** @todo FIXME:  suokko: window width and height could be usefull. min(300,disp.w()*0.9)  So it would be either 300 or max 90% of width */
+		/** @todo FIXME:  suokko: window width and height could be useful. min(300,disp.w()*0.9)  So it would be either 300 or max 90% of width */
 	const int height = 220;
 #else
 	const int width  = 700;

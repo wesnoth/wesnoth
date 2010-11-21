@@ -45,7 +45,7 @@ twidget* tbuilder_text_box::build() const
 	}
 
 	DBG_GUI_G << "Window builder: placed text box '"
-			<< id << "' with defintion '"
+			<< id << "' with definition '"
 			<< definition << "'.\n";
 
 	return widget;

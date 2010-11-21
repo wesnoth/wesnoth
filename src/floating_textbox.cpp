@@ -70,7 +70,7 @@ namespace gui{
 		font::floating_label flabel(label_string_);
 		flabel.set_color(font::YELLOW_COLOR);
 		flabel.set_position(area.x + border_size, ypos);
-		flabel.set_alignement(font::LEFT_ALIGN);
+		flabel.set_alignment(font::LEFT_ALIGN);
 		flabel.set_clip_rect(area);
 
 		label_ = font::add_floating_label(flabel);

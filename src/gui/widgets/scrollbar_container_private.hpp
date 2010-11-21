@@ -36,7 +36,7 @@
 namespace gui2 {
 
 /**
- * Helper to implement private functions without modifing the header.
+ * Helper to implement private functions without modifying the header.
  *
  * The class is a helper to avoid recompilation and only has static
  * functions.

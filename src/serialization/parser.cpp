@@ -17,7 +17,7 @@
 
 /**
  * @file
- * Read/Write & analyse WML- and config-files.
+ * Read/Write & analyze WML- and config-files.
  */
 
 

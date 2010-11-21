@@ -44,13 +44,13 @@ void twml_message_::set_input(const std::string& caption,
 }
 
 void twml_message_::set_option_list(
-		const std::vector<std::string>& option_list, int* choosen_option)
+		const std::vector<std::string>& option_list, int* chosen_option)
 {
 	assert(!option_list.empty());
-	assert(choosen_option);
+	assert(chosen_option);
 
 	option_list_ = option_list;
-	chosen_option_ = choosen_option;
+	chosen_option_ = chosen_option;
 }
 
 /**

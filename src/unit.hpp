@@ -56,7 +56,7 @@ public:
 	friend struct unit_movement_resetter;
 	// Copy constructor
 	unit(const unit& u);
-	/** Initilizes a unit from a config */
+	/** Initializes a unit from a config */
 	unit(const config& cfg, bool use_traits = false, game_state *state = NULL);
 	/**
 	  * Initializes a unit from a unit type
@@ -258,7 +258,7 @@ public:
 	/** States for animation. */
 	enum STATE {
 		STATE_STANDING,   /** anim must fit in a hex */
-		STATE_FORGET,     /** animation will be automaticaly replaced by a standing anim when finished */
+		STATE_FORGET,     /** animation will be automatically replaced by a standing anim when finished */
 		STATE_ANIM};      /** normal anims */
 	void start_animation(int start_time, const unit_animation *animation,
 		bool with_bars, bool cycles = false, const std::string &text = "",

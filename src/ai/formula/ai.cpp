@@ -505,7 +505,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 		}
 
 		if( safe_call && (error != variant() || made_moves.empty() || made_moves.back() != action) ){
-		    /*if we have safe_call formula and either error occured, or current action
+		    /*if we have safe_call formula and either error occurred, or current action
 		     *was not reckognized, then evaluate backup formula from safe_call and execute it
 		     *during the next loop
 		     */

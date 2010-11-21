@@ -255,7 +255,7 @@ namespace t_translation {
 	 * WW, Ww		doesn't match and return false
 	 *
 	 * Multilayer rules:
-	 * If a terrain has multiple layers, each layer will be matched seperately,
+	 * If a terrain has multiple layers, each layer will be matched separately,
 	 * returning true only if both layers match.
 	 *
 	 * Example:

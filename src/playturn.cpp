@@ -39,7 +39,7 @@ turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender) :
 	host_transfer_("host_transfer"), replay_()
 {
 	/**
-	 * We do network sync so [init_side] is transfered to network hosts
+	 * We do network sync so [init_side] is transferred to network hosts
 	 */
 	if(network::nconnections() > 0)
 		send_data();
@@ -271,7 +271,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				if (action > 2) {
 
 					{
-						// Server thinks this side is ours now so in case of error transfering side we have to make local state to same as what server thinks it is.
+						// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
 						tm.make_human();
 						tm.set_current_player("human"+side_str);
 						if (have_leader) leader->rename("human"+side_str);

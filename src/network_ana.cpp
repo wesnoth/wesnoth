@@ -235,7 +235,7 @@ namespace network {
 
         network::connection read_id = ana_manager.read_from( connection_num, cfg, timeout );
 
-        // TODO: check timeout and return 0, or throw if error occured
+        // TODO: check timeout and return 0, or throw if error occurred
 
         return read_id;
     }

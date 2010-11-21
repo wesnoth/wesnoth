@@ -491,7 +491,7 @@ void game::notify_new_host(){
 	cfg_host_transfer.set_attr("value", "1");
 	std::string message = owner_name + " has been chosen as the new host.";
 	if (!wesnothd::send_to_one(cfg, owner_)) {
-		message += " But an internal error occured. You probably have to abandon this game.";
+		message += " But an internal error occurred. You probably have to abandon this game.";
 	}
 	send_and_record_server_message(message.c_str());
 }

@@ -624,10 +624,10 @@ variable_info::variable_info(const std::string& varname,
 					<< varname << std::endl;
 				return;
 			} else if(key != "length") {
-				WRN_NG << "variable_info: retrieving member of non-existant WML container, "
+				WRN_NG << "variable_info: retrieving member of non-existent WML container, "
 					<< varname << std::endl;
 				return;
-			} //else return length 0 for non-existant WML array (handled below)
+			} //else return length 0 for non-existent WML array (handled below)
 		}
 		if(!inner_explicit_index && key == "length") {
 			switch(vartype) {

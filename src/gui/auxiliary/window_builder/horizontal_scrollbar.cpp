@@ -37,7 +37,7 @@ twidget* tbuilder_horizontal_scrollbar::build() const
 
 	DBG_GUI_G << "Window builder:"
 			<< " placed horizontal scrollbar '" << id
-			<< "' with defintion '" << definition
+			<< "' with definition '" << definition
 			<< "'.\n";
 
 	return widget;

@@ -36,8 +36,8 @@ namespace gui {
 			combo_drag(display& disp, const std::vector<std::string>& items, const drop_group_manager_ptr group);
 
 			/**
-			 * used to query if this object was droped to a target
-			 * @return: -1 if not droped and other the id of target object
+			 * used to query if this object was dropped to a target
+			 * @return: -1 if not dropped and other the id of target object
 			 **/
 			int get_drop_target();
 			/**

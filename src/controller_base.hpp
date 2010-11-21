@@ -78,7 +78,7 @@ protected:
 	/**
 	 * Process mouse- and keypress-events from SDL.
 	 * Not virtual but calls various virtual function to allow specialized
-	 * behaviour of derived classess.
+	 * behaviour of derived classes.
 	 */
 	void handle_event(const SDL_Event& event);
 
@@ -89,19 +89,19 @@ protected:
 
 	/**
 	 * Process keydown (always).
-	 * Overriden in derived classes
+	 * Overridden in derived classes
 	 */
 	virtual void process_keydown_event(const SDL_Event& event);
 
 	/**
 	 * Process keyup (always).
-	 * Overriden in derived classes
+	 * Overridden in derived classes
 	 */
 	virtual void process_keyup_event(const SDL_Event& event);
 
 	/**
 	 * Called after processing a mouse button up or down event
-	 * Overriden in derived classes
+	 * Overridden in derived classes
 	 */
 	virtual void post_mouse_press(const SDL_Event& event);
 

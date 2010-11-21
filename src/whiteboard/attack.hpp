@@ -62,7 +62,7 @@ private:
 
 		int weapon_choice_;
 		int attack_movement_cost_;
-		int temp_movement_substracted_;
+		int temp_movement_subtracted_;
 };
 
 /** Dumps an attack on a stream, for debug purposes. */

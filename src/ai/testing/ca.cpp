@@ -1403,7 +1403,7 @@ void get_villages_phase::dispatch_complex(
 				// Evaluate and start correct function.
 				if(perfect) {
 					// We did a perfect dispatch 2 units who could visit 2 villages.
-					// This means we didn't change the assertion for this funtions
+					// This means we didn't change the assertion for this functions
 					// so call ourselves recursively, and finish afterwards.
 					DBG_AI_TESTING_AI_DEFAULT << "Perfect dispatch, do complex again.\n";
 					dispatch_complex(reachmap, moves, village_count - 2);

@@ -348,7 +348,7 @@ class ana_connect_handler : public ana::connection_handler
         ~ana_connect_handler();
 
         /**
-         * Checks if an error occured during the connection procedure.
+         * Checks if an error occurred during the connection procedure.
          *
          * @returns Error code of the operation.
          */

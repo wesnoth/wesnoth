@@ -123,7 +123,7 @@ public:
 	 *
 	 * Use this version if you want to show hide multiple items since it's
 	 * optimized for that purpose, for one it calls the selection changed
-	 * callback only once instead of serveral times.
+	 * callback only once instead of several times.
 	 *
 	 * @param shown               A vector with the show hide status for every
 	 *                            row. The number of items in the vector must

@@ -324,7 +324,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 				width = x + 1;
 			} else {
 				if((x + 1) != width ) {
-					ERR_G << "Map not a rectangle error occured at line offset " << y << " position offset " << x << "\n";
+					ERR_G << "Map not a rectangle error occurred at line offset " << y << " position offset " << x << "\n";
 					throw error("Map not a rectangle.");
 				}
 				if (y > max_map_size()) {
@@ -362,7 +362,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	}
 
 	if(x != 0 && (x + 1) != width) {
-		ERR_G << "Map not a rectangle error occured at the end\n";
+		ERR_G << "Map not a rectangle error occurred at the end\n";
 		throw error("Map not a rectangle.");
 	}
 
@@ -665,7 +665,7 @@ inline t_layer get_layer_mask_(t_layer terrain)
 /*
  *	This is what the code intents to do, but in order to gain some more
  *	speed it's changed to the code below, which does the same but faster.
- *	This routine is used often in the builder and the speedup is noticable. */
+ *	This routine is used often in the builder and the speedup is noticeable. */
 	if((terrain & 0xFF000000) == 0x2A000000) return 0x00000000;
 	if((terrain & 0x00FF0000) == 0x002A0000) return 0xFF000000;
 	if((terrain & 0x0000FF00) == 0x00002A00) return 0xFFFF0000;

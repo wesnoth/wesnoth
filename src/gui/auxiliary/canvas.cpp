@@ -256,7 +256,7 @@ tline::tline(const config& cfg)
  *     text_maximum_height unsigned    The maximum height available for the text
  *                                     on the widget.
  *     text_wrap_mode int              When the text doesn't fit in the
- *                                     available width there are serveral ways
+ *                                     available width there are several ways
  *                                     to fix that. This variable holds the
  *                                     best method. (NOTE this is a 'hidden'
  *                                     variable meant to copy state from a
@@ -447,7 +447,7 @@ tline::tline(const config& cfg)
  *                                     about the section should describe the
  *                                     section in further detail.
  *
- *     grid                            A grid contains serveral widgets. (TODO
+ *     grid                            A grid contains several widgets. (TODO
  *                                     add link to generic grid page.)
  * @end_table
  */
@@ -1225,7 +1225,7 @@ void tcanvas::parse_cfg(const config& cfg)
 			shapes_.push_back(new ttext(data));
 		} else if(type == "pre_commit") {
 
-			/* note this should get splitted if more preprocessing is used. */
+			/* note this should get split if more preprocessing is used. */
 			foreach(const config::any_child& function,
 					data.all_children_range()) {
 

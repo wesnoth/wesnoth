@@ -160,7 +160,7 @@ public:
 	/**
 	 * Tries to reduce the width of a widget.
 	 *
-	 * This function does it more agressive and should only be used when
+	 * This function does it more aggressive and should only be used when
 	 * using scrollbars and wrapping failed.
 	 *
 	 * @todo Make pure virtual.
@@ -187,7 +187,7 @@ public:
 	/**
 	 * Tries to reduce the height of a widget.
 	 *
-	 * This function does it more agressive and should only be used when
+	 * This function does it more aggressive and should only be used when
 	 * using scrollbars failed.
 	 *
 	 * @todo Make pure virtual.

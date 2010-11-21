@@ -565,7 +565,7 @@ void server::run() {
 				// TODO: We should implement client side autoreconnect.
 				// Idea:
 				// server should send [reconnect]host=host,port=number[/reconnect]
-				// Then client would reconnect to new server automaticaly.
+				// Then client would reconnect to new server automatically.
 				// This would also allow server to move to new port or address if there is need
 
 				process_command("msg All games ended. Shutting down now. Reconnect to the new server instance.", "system");
@@ -963,7 +963,7 @@ void server::process_login(const network::connection sock,
 		return;
 	}
 	if (username.size() > 18) {
-		send_error(sock, ("The nick '" + username + "' is too long. Nicks must be 18 characers or less.").c_str(),
+		send_error(sock, ("The nick '" + username + "' is too long. Nicks must be 18 characters or less.").c_str(),
 			MP_NAME_TOO_LONG_ERROR);
 		return;
 	}
@@ -1073,7 +1073,7 @@ void server::process_login(const network::connection sock,
 		}
 	}
 
-	// Check if the version is now avaliable. If it is not, this player must
+	// Check if the version is now available. If it is not, this player must
 	// always be pinged.
 	bool selective_ping = false ;
 	if( (*login)["selective_ping"].to_bool() ) {
@@ -2299,7 +2299,7 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 		const size_t index = g - games.begin();
 		gamelist->remove_child("game", index);
 	} else {
-		// Can happen when the game ends before the scenario was transfered.
+		// Can happen when the game ends before the scenario was transferred.
 		LOG_SERVER << "Could not find game (" << (*game_it)->id()
 			<< ") to delete in games_and_users_list_.\n";
 	}

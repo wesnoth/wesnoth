@@ -74,11 +74,11 @@ public:
 		int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay);
 	virtual ~play_controller();
 
-	//event handler, overriden from observer
+	//event handler, overridden from observer
 	//there is nothing to handle in this class actually but that might change in the future
 	virtual void handle_generic_event(const std::string& /*name*/) {}
 
-	//event handlers, overriden from command_executor
+	//event handlers, overridden from command_executor
 	virtual void objectives();
 	virtual void show_statistics();
 	virtual void unit_list();
@@ -156,7 +156,7 @@ protected:
 
 	/**
 	 *  Determines whether the command should be in the context menu or not.
-	 *  Independant of whether or not we can actually execute the command.
+	 *  Independent of whether or not we can actually execute the command.
 	 */
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 

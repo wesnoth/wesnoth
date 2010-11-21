@@ -171,7 +171,7 @@ public:
 	/**
 	 * Inherited from twidget.
 	 *
-	 * This function sets the defintion of a control and should be called soon
+	 * This function sets the definition of a control and should be called soon
 	 * after creating the object since a lot of internal functions depend on the
 	 * definition.
 	 *

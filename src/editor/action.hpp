@@ -143,13 +143,13 @@ class editor_action_chain : public editor_action
 		bool empty() const;
 
 		/**
-		 * Remove the last added action and return it, transfering
+		 * Remove the last added action and return it, transferring
 		 * ownership to the caller
 		 */
 		editor_action* pop_last_action();
 
 		/**
-		 * Remove the first added action and return it, transfering
+		 * Remove the first added action and return it, transferring
 		 * ownership to the caller
 		 */
 		editor_action* pop_first_action();

@@ -57,7 +57,7 @@ public:
 			std::string* text, const unsigned maximum_length);
 
 	void set_option_list(
-			const std::vector<std::string>& option_list, int* choosen_option);
+			const std::vector<std::string>& option_list, int* chosen_option);
 
 private:
 

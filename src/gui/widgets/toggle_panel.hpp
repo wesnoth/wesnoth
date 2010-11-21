@@ -83,7 +83,7 @@ public:
 	 * Inherited from tpanel.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
-	 * tpanel_defintion we need to override this function and do about the same,
+	 * tpanel_definition we need to override this function and do about the same,
 	 * look at a way to 'fix' that.
 	 */
 	SDL_Rect get_client_rect() const;
@@ -92,7 +92,7 @@ public:
 	 * Inherited from tpanel.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
-	 * tpanel_defintion we need to override this function and do about the same,
+	 * tpanel_definition we need to override this function and do about the same,
 	 * look at a way to 'fix' that.
 	 */
 	tpoint border_space() const;

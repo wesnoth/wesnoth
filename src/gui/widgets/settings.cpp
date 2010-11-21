@@ -180,9 +180,9 @@ const std::string& tgui_definition::read(const config& cfg)
  *     id (string)                   Unique id for this gui (theme).
  *     description (t_string)        Unique translatable name for this gui.
  *
- *     widget_definitions (section)  The defintions of all
+ *     widget_definitions (section)  The definitions of all
  *                                   [[#widget_list|widgets]].
- *     window (section)              The defintions of all
+ *     window (section)              The definitions of all
  *                                   [[#window_list|windows]].
  *     settings (section)            The settings for the gui.
  * @end_table
@@ -560,7 +560,7 @@ std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(con
 	if(true) { // FIXME Test for default gui.
 		assert(window != current_gui->second.window_types.end());
 	} else {
-		// FIXME Get the defintion in the default gui and do an assertion test.
+		// FIXME Get the definition in the default gui and do an assertion test.
 	}
 
 	for(std::vector<twindow_builder::tresolution>::const_iterator
