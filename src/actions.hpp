@@ -28,11 +28,7 @@ struct combatant;
 class team;
 struct time_of_day;
 
-#include "global.hpp"
-#include "map_location.hpp"
 #include "unit.hpp"
-#include "unit_map.hpp"
-
 
 class unit_creator {
 public:
