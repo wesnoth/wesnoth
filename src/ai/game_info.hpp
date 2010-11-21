@@ -27,8 +27,6 @@ namespace pathfind {
     struct paths;
 }
 
-#include <set>
-#include <vector>
 #include <map>
 
 class game_display;
