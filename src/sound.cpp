@@ -14,6 +14,8 @@
 */
 
 #include "global.hpp"
+
+#include "config.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
 #include "game_preferences.hpp"

@@ -15,10 +15,11 @@
 #ifndef SOUND_HPP_INCLUDED
 #define SOUND_HPP_INCLUDED
 
-#include <string>
-#include <vector>
-#include "config.hpp"
 #include "events.hpp"
+
+#include <string>
+
+class config;
 
 namespace sound {
 
