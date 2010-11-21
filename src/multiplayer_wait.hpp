@@ -16,9 +16,6 @@
 #ifndef MULTIPLAYER_WAIT_HPP_INCLUDED
 #define MULTIPLAYER_WAIT_HPP_INCLUDED
 
-#include "widgets/label.hpp"
-#include "widgets/button.hpp"
-#include "widgets/menu.hpp"
 #include "widgets/combo.hpp"
 
 #include "leader_list.hpp"
