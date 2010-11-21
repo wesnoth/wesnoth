@@ -23,11 +23,8 @@ class display;
 
 #include "game_config.hpp"
 #include "terrain_translation.hpp"
-#include "config.hpp"
 
-#include <string>
 #include <utility>
-#include <set>
 
 namespace preferences {
 

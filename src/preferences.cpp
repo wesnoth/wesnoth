@@ -22,6 +22,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "config.hpp"
 #include "filesystem.hpp"
 #include "gui/widgets/settings.hpp"
 #include "hotkeys.hpp"
