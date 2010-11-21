@@ -17,15 +17,9 @@
 #ifndef MOUSE_EVENTS_H_INCLUDED
 #define MOUSE_EVENTS_H_INCLUDED
 
-#include "global.hpp"
-
 #include "game_display.hpp"
-#include "pathfind/pathfind.hpp"
 #include "random.hpp"
-#include "unit_map.hpp"
 #include "mouse_handler_base.hpp"
-
-#include "SDL.h"
 
 class tod_manager;
 class battle_context;
