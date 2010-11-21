@@ -18,14 +18,10 @@
 #include "tstring.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <map>
-#include <string>
-#include <vector>
 #include <iterator>
 
 //this module controls internationalization.
 
-class t_string;
 class config;
 
 struct language_def
