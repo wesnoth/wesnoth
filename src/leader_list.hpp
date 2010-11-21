@@ -18,12 +18,9 @@
 #ifndef LEADER_LIST_HPP_INCLUDED
 #define LEADER_LIST_HPP_INCLUDED
 
-class config;
 namespace gui { class combo; }
 
 #include "unit_types.hpp"
-#include <string>
-#include <vector>
 
 class leader_list_manager
 {
