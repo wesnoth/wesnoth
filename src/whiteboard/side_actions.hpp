@@ -24,10 +24,6 @@
 
 #include "map_location.hpp"
 
-#include <deque>
-
-#include <boost/enable_shared_from_this.hpp>
-
 namespace wb
 {
 
