@@ -18,10 +18,7 @@
 #ifndef INTRO_HPP_INCLUDED
 #define INTRO_HPP_INCLUDED
 
-class config;
-class vconfig;
 class display;
-#include "SDL.h"
 
 #include <string>
 
