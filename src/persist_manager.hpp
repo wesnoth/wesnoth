@@ -16,7 +16,6 @@
 #ifndef PERSIST_MANAGER_HPP_INCLUDED
 #define PERSIST_MANAGER_HPP_INCLUDED
 
-#include "config.hpp"
 #include "persist_context.hpp"
 
 class persist_manager {
