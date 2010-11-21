@@ -17,23 +17,16 @@
 #ifndef PLAY_CONTROLLER_H_INCLUDED
 #define PLAY_CONTROLLER_H_INCLUDED
 
-#include "global.hpp"
-
 #include "actions.hpp"
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
 #include "help.hpp"
-#include "hotkeys.hpp"
 #include "map.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "persist_manager.hpp"
 #include "statistics.hpp"
 #include "tod_manager.hpp"
-#include "savegame_config.hpp"
-#include "unit_animation.hpp"
-
-#include <vector>
 
 #include <boost/scoped_ptr.hpp>
 
