@@ -25,9 +25,6 @@
 #include "map_location.hpp"
 
 #include <boost/noncopyable.hpp>
-#include <boost/scoped_ptr.hpp>
-
-#include <vector>
 
 class CKey;
 
