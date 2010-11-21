@@ -22,11 +22,7 @@
 
 #include "action.hpp"
 
-#include "typedefs.hpp"
-
 #include "map_location.hpp"
-
-#include <boost/enable_shared_from_this.hpp>
 
 namespace wb
 {
