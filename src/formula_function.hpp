@@ -17,14 +17,8 @@
 #ifndef FORMULA_FUNCTION_HPP_INCLUDED
 #define FORMULA_FUNCTION_HPP_INCLUDED
 
-#include <boost/shared_ptr.hpp>
-
-#include <map>
-
 #include "formula.hpp"
 #include "formula_callable.hpp"
-#include "formula_debugger_fwd.hpp"
-#include "variant.hpp"
 
 namespace game_logic {
 
