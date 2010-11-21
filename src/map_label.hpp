@@ -20,9 +20,6 @@
 #include "font.hpp"
 #include "tstring.hpp"
 
-#include <map>
-#include <string>
-
 class config;
 class display;
 class team;
