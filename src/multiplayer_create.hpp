@@ -21,7 +21,6 @@
 #include "mp_game_settings.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
-#include "widgets/label.hpp"
 #include "widgets/combo.hpp"
 #include "mapgen.hpp"
 #include "tooltips.hpp"
