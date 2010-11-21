@@ -15,9 +15,6 @@
 #ifndef HELP_HPP_INCLUDED
 #define HELP_HPP_INCLUDED
 
-#include <string>
-#include <vector>
-
 class config;
 class display;
 class gamemap;
