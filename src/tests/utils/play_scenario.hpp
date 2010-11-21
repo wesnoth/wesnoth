@@ -20,8 +20,6 @@
 
 #include "map_location.hpp"
 
-#include <string>
-
 #include <boost/scoped_ptr.hpp>
 
 class config;
