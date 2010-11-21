@@ -15,10 +15,8 @@
 #ifndef TEAM_H_INCLUDED
 #define TEAM_H_INCLUDED
 
-#include "config.hpp"
 #include "color_range.hpp"
 #include "game_config.hpp"
-#include "map_location.hpp"
 #include "savegame_config.hpp"
 #include "unit.hpp"
 
@@ -27,15 +25,6 @@ class gamemap;
 namespace wb {
 	class side_actions;
 }
-
-#include <set>
-#include <string>
-#include <vector>
-
-
-#include <boost/shared_ptr.hpp>
-
-#include "SDL.h"
 
 /**
  * This class stores all the data for a single 'side' (in game nomenclature).
