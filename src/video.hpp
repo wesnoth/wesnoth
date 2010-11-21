@@ -17,7 +17,6 @@
 
 #include "events.hpp"
 #include "exceptions.hpp"
-#include "SDL.h"
 
 #include <boost/utility.hpp>
 
