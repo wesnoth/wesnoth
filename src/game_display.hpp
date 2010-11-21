@@ -30,11 +30,6 @@ class unit_map;
 #include "image.hpp"
 #include "pathfind/pathfind.hpp"
 
-#include "SDL.h"
-
-#include <map>
-#include <set>
-#include <string>
 #include <deque>
 
 // This needs to be separate from display.h because of the static
