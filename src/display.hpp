@@ -40,23 +40,13 @@ struct time_of_day;
 class map_labels;
 class arrow;
 
-#include "generic_event.hpp"
-#include "image.hpp"
 #include "font.hpp"
 #include "key.hpp"
-#include "map_location.hpp"
 #include "reports.hpp"
 #include "team.hpp"
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
-
-#include "SDL.h"
-
-#include <map>
-#include <set>
-#include <string>
-#include <list>
 
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
