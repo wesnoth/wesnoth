@@ -16,7 +16,6 @@
 #ifndef TERRAIN_FILTER_H_INCLUDED
 #define TERRAIN_FILTER_H_INCLUDED
 
-#include "map_location.hpp"
 #include "pathutils.hpp"
 #include "terrain_translation.hpp"
 #include "variable.hpp"
