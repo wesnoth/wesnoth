@@ -18,15 +18,9 @@
 #define VARIABLE_H_INCLUDED
 
 #include "config.hpp"
-#include "tstring.hpp"
-
-#include <vector>
-#include <set>
-#include <string>
 
 class game_state;
 class unit_map;
-
 
 /**
  * A variable-expanding proxy for the config class. This class roughly behaves
