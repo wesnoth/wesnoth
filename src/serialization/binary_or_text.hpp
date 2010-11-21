@@ -21,9 +21,6 @@
 
 #include "preprocessor.hpp"
 
-#include <iosfwd>
-#include <string>
-
 #include <boost/iostreams/filtering_stream.hpp>
 
 class config;
