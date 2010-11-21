@@ -19,9 +19,6 @@
 #define TIME_OF_DAY_HPP_INCLUDED
 
 #include "config.hpp"
-#include "tstring.hpp"
-#include <string>
-#include <vector>
 
 /**
  * Object which defines a time of day
