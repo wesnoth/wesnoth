@@ -19,7 +19,6 @@
 #define IMAGE_FUNCTION_HPP_INCLUDED
 
 #include "sdl_utils.hpp"
-#include <map>
 
 namespace image {
 /**
