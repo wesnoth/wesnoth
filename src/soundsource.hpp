@@ -16,8 +16,6 @@
 #define SOUNDSOURCE_HPP_INCLUDED
 
 #include <map>
-#include <string>
-#include <vector>
 
 #include "generic_event.hpp"
 #include "map_location.hpp"
