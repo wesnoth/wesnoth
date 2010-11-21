@@ -15,11 +15,9 @@
 #ifndef COMBO_H_INCLUDED
 #define COMBO_H_INCLUDED
 
-#include "SDL.h"
+#include "button.hpp"
 
 class display;
-
-#include "button.hpp"
 
 namespace gui {
 
