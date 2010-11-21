@@ -48,6 +48,8 @@ class arrow;
 #include "video.hpp"
 #include "widgets/button.hpp"
 
+#include <list>
+
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
 

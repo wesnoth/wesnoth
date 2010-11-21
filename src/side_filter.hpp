@@ -23,6 +23,8 @@ class unit;
 class unit_map;
 class team;
 
+#include <set>
+
 //side_filter: a class that implements the Standard Side Filter
 class side_filter {
 public:
