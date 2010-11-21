@@ -22,13 +22,7 @@
 #ifndef AI_COMPOSITE_CONTEXTS_HPP_INCLUDED
 #define AI_COMPOSITE_CONTEXTS_HPP_INCLUDED
 
-#include "../../global.hpp"
-
-#include "../contexts.hpp"
 #include "../default/contexts.hpp"
-
-#include <boost/shared_ptr.hpp>
-#include <vector>
 
 #ifdef _MSC_VER
 #pragma warning(push)
