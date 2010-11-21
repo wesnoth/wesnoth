@@ -25,8 +25,6 @@ class display;
 #include "map_location.hpp"
 
 #include <map>
-#include <string>
-#include <vector>
 
 struct mapgen_exception : public game::error
 {
