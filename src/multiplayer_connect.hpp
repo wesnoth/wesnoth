@@ -18,16 +18,12 @@
 #ifndef MULTIPLAYER_CONNECT_H_INCLUDED
 #define MULTIPLAYER_CONNECT_H_INCLUDED
 
-#include "config.hpp"
 #include "gamestatus.hpp"
 #include "leader_list.hpp"
 #include "multiplayer_ui.hpp"
-#include "network.hpp"
 #include "widgets/scrollpane.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/combo_drag.hpp"
-
-#include <string>
 
 namespace ai {
 	struct description;
