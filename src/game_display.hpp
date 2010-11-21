@@ -27,7 +27,6 @@ class unit_map;
 #include "animated.hpp"
 #include "chat_events.hpp"
 #include "display.hpp"
-#include "image.hpp"
 #include "pathfind/pathfind.hpp"
 
 #include <deque>
