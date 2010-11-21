@@ -17,13 +17,7 @@
 
 #include "animated.hpp"
 #include "config.hpp"
-#include "map_location.hpp"
 #include "unit_frame.hpp"
-
-#include <climits>
-#include <string>
-#include <vector>
-#include <set>
 
 class attack_type;
 class game_display;
