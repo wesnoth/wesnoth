@@ -19,7 +19,6 @@
 #define PATHUTILS_H_INCLUDED
 
 #include "map_location.hpp"
-#include <set>
 
 class gamemap;
 
