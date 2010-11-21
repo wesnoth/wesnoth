@@ -21,11 +21,7 @@
 #ifndef AI_COMPOSITE_COMPONENT_HPP_INCLUDED
 #define AI_COMPOSITE_COMPONENT_HPP_INCLUDED
 
-#include <vector>
-#include <string>
 #include <iostream>
-#include <map>
-#include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
 
 #include "../../config.hpp"
