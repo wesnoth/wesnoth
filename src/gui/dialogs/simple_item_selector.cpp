@@ -49,6 +49,7 @@ void tsimple_item_selector::pre_show(CVideo& /*video*/, twindow& window)
 	tlabel& ltitle = find_widget<tlabel>(&window, "title", false);
 	tlabel& lmessage = find_widget<tlabel>(&window, "message", false);
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
+	window.keyboard_capture(&list);
 
 	ltitle.set_label(title_);
 	ltitle.set_use_markup(markup_title_);
