@@ -42,6 +42,8 @@ tcampaign_difficulty::tcampaign_difficulty(const std::vector<std::string>& items
 void tcampaign_difficulty::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
+	window.keyboard_capture(&list);
+
 	std::map<std::string, string_map> data;
 
 	foreach(const legacy_menu_item& item, items_) {
