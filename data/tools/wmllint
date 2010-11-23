@@ -941,11 +941,11 @@ def global_sanity_check(filename, lines):
                         unit_movetypes.append((unit_id, filename, nav.lineno+1, value))
                 elif key == "race":
                     if '{' not in value:
-                        assert(unit_id)
+                        assert(unit_id or base_unit)
                         unit_race = value
                         unit_races.append((unit_id, filename, nav.lineno+1, unit_race))
                 elif key == "advances_to":
-                    assert(unit_id)
+                    assert(unit_id or base_unit)
                     advancements = value
                     if advancements.strip() != "null":
                         advances.append((unit_id, filename, nav.lineno+1, advancements))
