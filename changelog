@@ -19,7 +19,7 @@ Version 1.9.2+svn:
    * Added a new hotkey sequence (by default unassigned) to toggle animated map mode
      (feature #15976).
  * WML engine:
-   * Created tag [petrify] (bug #17077). Moved [unpetrify] to lua.
+   * Created tag [petrify] (bug #17077). Moved [unpetrify] to lua. Syntax changed from [unpetrify][filter]<SUF> to [unpetrify]<SUF>.
    * Introduced [recall]fire_event=yes|no (default no) parameter (fixes
      bug #17083).
 
