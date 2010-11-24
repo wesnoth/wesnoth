@@ -212,7 +212,7 @@ def actualtype(a):
         atype = "alignment"
     elif a.startswith("{") or a.endswith("}") or a.startswith("$"):
         atype = None	# Can't tell -- it's a macro expansion
-    elif re.match(image_reference, a):
+    elif re.match(image_reference, a) or a == "unit_image":
         atype = "image"
     elif re.match(r"(\*|[A-Z][a-z]+)\^([A-Z][a-z\\|/]+\Z)?", a):
         atype = "terrain_code"
