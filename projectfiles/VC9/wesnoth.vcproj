@@ -5455,6 +5455,34 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\ai\testing\ca_testing_recruitment.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\testing\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\testing\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\testing\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\ai\testing\stage_fallback.cpp"
 						>
 						<FileConfiguration
@@ -7846,6 +7874,10 @@
 						</File>
 						<File
 							RelativePath="..\..\src\ai\testing\ca_testing_move_to_targets.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\ai\testing\ca_testing_recruitment.hpp"
 							>
 						</File>
 						<File

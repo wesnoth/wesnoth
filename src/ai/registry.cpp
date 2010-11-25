@@ -30,6 +30,7 @@
 #include "testing/aspect_attacks.hpp"
 #include "testing/ca.hpp"
 #include "testing/ca_testing_move_to_targets.hpp"
+#include "testing/ca_testing_recruitment.hpp"
 #include "testing/stage_rca.hpp"
 #include "testing/stage_fallback.hpp"
 
@@ -115,6 +116,10 @@ static register_candidate_action_factory<testing_ai_default::testing_move_to_tar
 
 static register_candidate_action_factory<testing_ai_default::leader_control_phase>
 	leader_control_phase_factory("testing_ai_default::leader_control_phase");
+
+static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
+	testing_recruitment_phase_factory("testing_ai_default::testing_recruitment_phase");
+
 
 // =======================================================================
 // Goals
