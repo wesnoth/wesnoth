@@ -329,66 +329,57 @@ static int compare_unit_types(const unit_type& a, const unit_type& b)
 }
 
 
-double get_unit_quality(const unit_type &info, fake_team &t, unit_map &units, std::vector<potential_recruit> &extra_units)
+//@todo: you really need weight there
+static double get_unit_quality(const unit_type &info, fake_team &t, std::vector<potential_recruit> &extra_units, std::vector<fake_team> & fake_teams)
 {
 	const int hitpoints_const = 100;
 	double score = 0;
-	for(unit_map::const_iterator enemy_unit = units.begin(); enemy_unit != units.end(); enemy_unit++)
+	foreach(const unit &enemy_unit, *resources::units)
 	{
-		if(enemy_unit->can_recruit() || !t.is_enemy(enemy_unit->side()))
+		if(enemy_unit.can_recruit() || !t.is_enemy(enemy_unit.side()))
 		{
 			continue;
 		}
-		const unit_type *enemy_info = unit_types.find(enemy_unit->type_id());
+		const unit_type *enemy_info = unit_types.find(enemy_unit.type_id());
 		//VALIDATE(enemy_info, "Unknown unit type : " + enemy_unit->type_id() + " while updating recruit quality.");
 
-		//@todo: own hitpoints?
-		score += compare_unit_types(info, *enemy_info) * (enemy_unit->hitpoints() / enemy_unit->max_hitpoints()) * hitpoints_const;
+		score += compare_unit_types(info, *enemy_info) * (enemy_unit.hitpoints() / enemy_unit.max_hitpoints()) * hitpoints_const;
 	}
-	for(std::vector<potential_recruit>::const_iterator enemy_unit = extra_units.begin(); enemy_unit != extra_units.end(); enemy_unit++)
+	foreach(fake_team &enemy_team, fake_teams)
 	{
-		if(!t.is_enemy(enemy_unit->side()))
+		if(!t.is_enemy(enemy_team.side()))
 		{
 			continue;
 		}
-		const unit_type *enemy_info = enemy_unit->type();
-		//VALIDATE(enemy_info, "Unknown unit type : " + enemy_unit->name() + " while updating recruit quality.");
-
-		//@todo: own hitpoints?
-		score += compare_unit_types(info, *enemy_info) * hitpoints_const;
-	}
-	return score;
-}
-void update_recruit_qualities(fake_team &t, std::vector<potential_recruit> &recruit_list, const unit_map &units, std::vector<potential_recruit> &extra_units)
-{
-	const int hitpoints_const = 100;
-	for(std::vector<potential_recruit>::iterator recruit = recruit_list.begin(); recruit != recruit_list.end(); recruit++)
-	{
-		double score = 0;
-		const unit_type *recruit_info = (*recruit).type();
-		for(unit_map::const_iterator enemy_unit = units.begin(); enemy_unit != units.end(); enemy_unit++)
+		foreach(const potential_recruit &enemy_unit,  enemy_team.extra_units())
 		{
-			if(enemy_unit->can_recruit() || !t.is_enemy(enemy_unit->side()))
-			{
-				continue;
-			}
-			const unit_type *enemy_info = unit_types.find(enemy_unit->type_id());
-			//VALIDATE(enemy_info, "Unknown unit type : " + enemy_unit->type_id() + " while updating recruit quality.");
-
-			score += compare_unit_types(*recruit_info, *enemy_info) * (enemy_unit->hitpoints() / enemy_unit->max_hitpoints()) * hitpoints_const;
-		}
-		for(std::vector<potential_recruit>::const_iterator enemy_unit = extra_units.begin(); enemy_unit != extra_units.end(); enemy_unit++)
-		{
-			if(!t.is_enemy(enemy_unit->side()))
-			{
-				continue;
-			}
-			const unit_type *enemy_info = enemy_unit->type();
+			const unit_type *enemy_info = enemy_unit.type();
 			//VALIDATE(enemy_info, "Unknown unit type : " + enemy_unit->name() + " while updating recruit quality.");
 
-			score += compare_unit_types(*recruit_info, *enemy_info) * hitpoints_const;
+			score += compare_unit_types(info, *enemy_info) * hitpoints_const;
 		}
-		recruit->set_quality(score);
+	}
+	foreach(const potential_recruit &extra_unit, extra_units)
+	{
+		if(!t.is_enemy(extra_unit.side()))
+		{
+			continue;
+		}
+		const unit_type *enemy_info = extra_unit.type();
+		//VALIDATE(enemy_info, "Unknown unit type : " + enemy_unit->type_id() + " while updating recruit quality.");
+
+		score += compare_unit_types(info, *enemy_info) * hitpoints_const;
+	}
+
+	return score;//@todo: divide by weight (if weight!=0)
+}
+
+static void update_recruit_qualities(fake_team &t, std::vector<potential_recruit> &extra_units, std::vector<fake_team> &fake_teams)
+{
+	foreach ( potential_recruit &recruit, t.recruit_list() )
+	{
+		double score = get_unit_quality(*recruit.type(),t,extra_units,fake_teams);
+		recruit.set_quality(score);
 	}
 }
 int analyze_recruit_combat(fake_team &t, const unit_map &units, std::vector<potential_recruit> &extra_units)
@@ -496,7 +487,7 @@ static std::vector<potential_recruit> ai_choose_best_recruits(fake_team &t, int 
 	}
 	for( unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i)
 	{
-		current_units[(i->type()->id())]++;
+		current_units[(i->type_id())]++;
 	}
 	const std::vector<potential_recruit> &recruit_list = t.recruit_list();
 	int gold = t.gold();
@@ -568,62 +559,45 @@ static void ai_choose_recruits(fake_team &t, int max_units_to_recruit, double qu
 }
 void testing_recruitment_phase::do_recruit(int max_units_to_recruit, double quality_factor)
 {
-	unit_map &units = *resources::units;
-
 	std::vector<fake_team> fake_teams;
 	std::copy(resources::teams->begin(), resources::teams->end(), std::back_inserter(fake_teams));
 	fake_team &ai_t = fake_teams[get_side()-1];
-	std::vector<potential_recruit> &recruit_list = ai_t.recruit_list();
 
-	if(recruit_list.empty())
+	//@todo: reorder fake_teams according to turn order
+
+	if(ai_t.recruit_list().empty())
 	{
 		return;
 	}
 
 	for(int recruited_amount = 0; recruited_amount < max_units_to_recruit; recruited_amount++)
 	{
-		for(std::vector<potential_recruit>::iterator recruit_type = recruit_list.begin(); recruit_type != recruit_list.end(); recruit_type++)
+		foreach(potential_recruit &recruit_type, ai_t.recruit_list() )
 		{
 			std::vector<potential_recruit> extra_units;
+			extra_units.push_back(recruit_type);
 
-			//earlier recruited units
-			for(std::vector<potential_recruit>::const_iterator i = ai_t.extra_units().begin(); i != ai_t.extra_units().end(); i ++)
+			foreach(fake_team &t, fake_teams)
 			{
-				extra_units.push_back(*i);
-			}
-
-			extra_units.push_back(*recruit_type);
-
-			for(std::vector<fake_team>::iterator enemy_team = fake_teams.begin(); enemy_team != fake_teams.end(); enemy_team++)
-			{
-				if(!ai_t.is_enemy(enemy_team->side()))
+				if(!ai_t.is_enemy(t.side())) //@todo:really, we might need to take allied recruiting into account, as well
 				{
 					continue;
 				}
+				t.reset();
 
-				fake_team &t = *enemy_team;
-
-				//@todo: enemy_max_units
+				//@todo: enemy_max_units: for each enemy leader, find nearest keep, find free space near that keep, sum
 				int enemy_max_units = 5;
-				//@todo: enemy_quality_factor
+				//@todo: enemy_quality_factor. will be taken later from parameter
 				double enemy_quality_factor = 1.0;
-				//@todo: enemy_potential_recruit_list
-				std::vector<potential_recruit> & enemy_potential_recruit_list = t.recruit_list();
 
 				//update quality ratings for enemy
-				update_recruit_qualities(*enemy_team, enemy_potential_recruit_list, units,extra_units);
+				update_recruit_qualities(t, extra_units,fake_teams);
 
-				std::vector<potential_recruit> enemy_recruit_list = ai_choose_best_recruits(t, enemy_max_units, enemy_quality_factor);
-
-				for(std::vector<potential_recruit>::const_iterator enemy_unit = enemy_recruit_list.begin(); enemy_unit != enemy_recruit_list.end(); enemy_unit++)
-				{
-					extra_units.push_back(*enemy_unit);
-				}
+				ai_choose_recruits(t, enemy_max_units, enemy_quality_factor);
 
 			}
-			const unit_type *type = recruit_type->type();
-			double quality = get_unit_quality(*type, ai_t, units, extra_units);
-			recruit_type->set_quality(quality);
+			double quality = get_unit_quality(*recruit_type.type(), ai_t, extra_units, fake_teams);
+			recruit_type.set_quality(quality);
 		}
 		// choose the best unit
 		std::vector<potential_recruit> recruit_result = ai_choose_best_recruits(ai_t, 1, quality_factor);
