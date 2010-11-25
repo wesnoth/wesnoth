@@ -383,6 +383,7 @@ static void update_recruit_qualities(fake_team &t, std::vector<potential_recruit
 	}
 }
 
+#if 0
 static int analyze_recruit_combat(fake_team &t, const unit_map &units, std::vector<potential_recruit> &extra_units)
 {
 	const int hitpoints_const = 100;
@@ -461,6 +462,7 @@ static int analyze_recruit_combat(fake_team &t, const unit_map &units, std::vect
 	score /= hitpoints_const;
 	return score;
 }
+#endif
 //------------------------
 struct potential_recruit_sorter
 {
