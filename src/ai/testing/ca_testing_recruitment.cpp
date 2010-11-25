@@ -382,7 +382,8 @@ static void update_recruit_qualities(fake_team &t, std::vector<potential_recruit
 		recruit.set_quality(score);
 	}
 }
-int analyze_recruit_combat(fake_team &t, const unit_map &units, std::vector<potential_recruit> &extra_units)
+
+static int analyze_recruit_combat(fake_team &t, const unit_map &units, std::vector<potential_recruit> &extra_units)
 {
 	const int hitpoints_const = 100;
 	int score = 0;
