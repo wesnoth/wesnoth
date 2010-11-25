@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-05 17:17+0100\n"
+"POT-Creation-Date: 2010-11-25 18:13+0100\n"
 "PO-Revision-Date: 2010-06-11 15:03+0700\n"
 "Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -214,15 +214,15 @@ msgid "No editor time-of-day found."
 msgstr "Không tìm thấy thời điểm trong ngày của trình hiệu chỉnh."
 
 #: src/editor/editor_controller.cpp:420
-msgid "Unsaved Changes"
-msgstr "Thay đổi không được lưu"
-
-#: src/editor/editor_controller.cpp:421
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Bạn có thực sự muốn loại bỏ tất cả các thay đổi bạn đã thực hiện với bản đồ "
 "kể từ lần lưu cuối cùng không?"
+
+#: src/editor/editor_controller.cpp:420
+msgid "Unsaved Changes"
+msgstr "Thay đổi không được lưu"
 
 #: src/editor/editor_controller.cpp:439
 msgid "Choose a Map to Open"
@@ -232,51 +232,51 @@ msgstr "Chọn bản đồ cần mở"
 msgid "Save the Map As"
 msgstr "Lưu bản đồ thành"
 
-#: src/editor/editor_controller.cpp:478
+#: src/editor/editor_controller.cpp:477
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Tập tin đã tồn tại. Bạn có muốn ghi đè lên nó không?"
 
-#: src/editor/editor_controller.cpp:495
+#: src/editor/editor_controller.cpp:494
 msgid "No random map generators found."
 msgstr "Không tìm thấy trình tạo bản đồ ngẫu nhiên."
 
-#: src/editor/editor_controller.cpp:508 src/editor/editor_controller.cpp:512
+#: src/editor/editor_controller.cpp:507 src/editor/editor_controller.cpp:511
 msgid "Map creation failed."
 msgstr "Tạo bản đồ thất bại."
 
-#: src/editor/editor_controller.cpp:527
+#: src/editor/editor_controller.cpp:526
 msgid "Choose a mask to apply"
 msgstr "Chọn mặt nạ cần áp dụng"
 
-#: src/editor/editor_controller.cpp:534
+#: src/editor/editor_controller.cpp:533
 msgid "Error loading mask"
 msgstr "Lỗi khi tải mặt nạ"
 
-#: src/editor/editor_controller.cpp:549
+#: src/editor/editor_controller.cpp:548
 msgid "Choose target map"
 msgstr "Chọn bản đồ đích"
 
-#: src/editor/editor_controller.cpp:556 src/editor/editor_controller.cpp:751
+#: src/editor/editor_controller.cpp:555 src/editor/editor_controller.cpp:750
 msgid "Error loading map"
 msgstr "Lỗi khi tải bản đồ"
 
-#: src/editor/editor_controller.cpp:665 src/editor/editor_controller.cpp:707
+#: src/editor/editor_controller.cpp:664 src/editor/editor_controller.cpp:706
 msgid "This map is already open."
 msgstr "Bản đồ này đã được mở."
 
-#: src/editor/editor_controller.cpp:686
+#: src/editor/editor_controller.cpp:685
 msgid "Map saved."
 msgstr "Đã lưu bản đồ."
 
-#: src/editor/editor_controller.cpp:730
+#: src/editor/editor_controller.cpp:729
 msgid "Loaded embedded map data"
 msgstr "Dữ liệu bản đồ nhúng đã tải"
 
-#: src/editor/editor_controller.cpp:731 src/editor/editor_controller.cpp:745
+#: src/editor/editor_controller.cpp:730 src/editor/editor_controller.cpp:744
 msgid "Map loaded from scenario"
 msgstr "Bản đồ tải từ màn chơi"
 
-#: src/editor/editor_controller.cpp:741
+#: src/editor/editor_controller.cpp:740
 msgid ""
 "Loaded referenced map file:\n"
 "$new"

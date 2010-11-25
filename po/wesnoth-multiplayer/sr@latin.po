@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-05 17:41+0100\n"
+"POT-Creation-Date: 2010-11-25 18:13+0100\n"
 "PO-Revision-Date: 2010-04-28 16:24+0200\n"
 "Last-Translator: Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>\n"
 "Language-Team: Serbian\n"
@@ -1517,90 +1517,90 @@ msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Timska igra 2 na 2 ili 3 na 3."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:291
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:317
 msgid "6p — Team Survival"
 msgstr "6i: Timski opstanak"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:293
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:319
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr "Scenario u kome je cilj preživeti koliko je dugo moguće."
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:302
+#. [side]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:329
 msgid "Attacker"
 msgstr "napadač"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:307
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:312
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:317
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:322
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:327
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:332
+#. [side]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:342
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:355
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:368
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:381
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:394
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:407
 msgid "Defender"
 msgstr "branilac"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:343
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:424
 #, fuzzy
 msgid "Survive all enemy attacks"
 msgstr "Preživite li sve neprijateljske nalete."
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:430
 #, fuzzy
 msgid "Death of your team leaders"
 msgstr "Stradaju li vaši vođi timova."
 
 #. [note]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:354
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:435
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr ""
 "Savet: Upoznavanje neprijateljskih mesta izranjanja i tipova dosta pomaže."
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:441
 msgid "Turn 2: Loyalists"
 msgstr "Potez 2: Lojalisti"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:365
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:446
 msgid "Turn 5: Knalgans"
 msgstr "Potez 5: Knalganci"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:370
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:451
 msgid "Turn 8: Rebels"
 msgstr "Potez 8: Pobunjenici"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:456
 msgid "Turn 11: Northerners"
 msgstr "Potez 11: Severnjaci"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:461
 msgid "Turn 14: Drakes"
 msgstr "Potez 14: Zmagovi"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:385
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:466
 msgid "Turn 17: Undead"
 msgstr "Potez 17: Nemrtvi"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:390
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:471
 msgid "Tower of Doom"
 msgstr "Kula propasti"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:497
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:578
 msgid "Faery"
 msgstr "Vila"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:498
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:579
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible. Frankly, I haven’t got a clue as to how you did it, so send me "
@@ -1611,13 +1611,13 @@ msgstr ""
 "mine.nu — hvala vam!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:512
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:593
 msgid "Death"
 msgstr "Smrt"
 
 # well-spelled: Бвахахахаааа
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:514
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:595
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"

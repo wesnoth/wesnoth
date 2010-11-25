@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-05 17:17+0100\n"
+"POT-Creation-Date: 2010-11-25 18:13+0100\n"
 "PO-Revision-Date: 2009-12-23 14:23+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: none\n"
@@ -219,15 +219,15 @@ msgid "No editor time-of-day found."
 msgstr "Editorin vuorokaudenaikoja ei löytynyt."
 
 #: src/editor/editor_controller.cpp:420
-msgid "Unsaved Changes"
-msgstr "Tallentamattomat muutokset"
-
-#: src/editor/editor_controller.cpp:421
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Haluatko hävittää kaikki viime tallennuksen jälkeen karttaan tekemäsi "
 "muutokset?"
+
+#: src/editor/editor_controller.cpp:420
+msgid "Unsaved Changes"
+msgstr "Tallentamattomat muutokset"
 
 #: src/editor/editor_controller.cpp:439
 msgid "Choose a Map to Open"
@@ -237,51 +237,51 @@ msgstr "Valitse avattava kartta"
 msgid "Save the Map As"
 msgstr "Tallenna kartta nimellä"
 
-#: src/editor/editor_controller.cpp:478
+#: src/editor/editor_controller.cpp:477
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Tiedosto on jo olemassa. Haluatko korvata sen?"
 
-#: src/editor/editor_controller.cpp:495
+#: src/editor/editor_controller.cpp:494
 msgid "No random map generators found."
 msgstr "Kartan satunnaisgeneraattoreita ei löydy."
 
-#: src/editor/editor_controller.cpp:508 src/editor/editor_controller.cpp:512
+#: src/editor/editor_controller.cpp:507 src/editor/editor_controller.cpp:511
 msgid "Map creation failed."
 msgstr "Kartan luonti epäonnistui."
 
-#: src/editor/editor_controller.cpp:527
+#: src/editor/editor_controller.cpp:526
 msgid "Choose a mask to apply"
 msgstr "Valitse käytettävä maski"
 
-#: src/editor/editor_controller.cpp:534
+#: src/editor/editor_controller.cpp:533
 msgid "Error loading mask"
 msgstr "Maskin lataus epäonnistui."
 
-#: src/editor/editor_controller.cpp:549
+#: src/editor/editor_controller.cpp:548
 msgid "Choose target map"
 msgstr "Valitse kohdekartta"
 
-#: src/editor/editor_controller.cpp:556 src/editor/editor_controller.cpp:751
+#: src/editor/editor_controller.cpp:555 src/editor/editor_controller.cpp:750
 msgid "Error loading map"
 msgstr "Kartan lataus epännistui."
 
-#: src/editor/editor_controller.cpp:665 src/editor/editor_controller.cpp:707
+#: src/editor/editor_controller.cpp:664 src/editor/editor_controller.cpp:706
 msgid "This map is already open."
 msgstr "Valittu kartta on jo avoinna."
 
-#: src/editor/editor_controller.cpp:686
+#: src/editor/editor_controller.cpp:685
 msgid "Map saved."
 msgstr "Kartta tallennettu."
 
-#: src/editor/editor_controller.cpp:730
+#: src/editor/editor_controller.cpp:729
 msgid "Loaded embedded map data"
 msgstr "Ladattu sisäinen karttadata."
 
-#: src/editor/editor_controller.cpp:731 src/editor/editor_controller.cpp:745
+#: src/editor/editor_controller.cpp:730 src/editor/editor_controller.cpp:744
 msgid "Map loaded from scenario"
 msgstr "Kartta skenaariosta ladattu"
 
-#: src/editor/editor_controller.cpp:741
+#: src/editor/editor_controller.cpp:740
 msgid ""
 "Loaded referenced map file:\n"
 "$new"

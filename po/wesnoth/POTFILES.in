@@ -34,6 +34,7 @@ src/ai/registry.cpp
 src/ai/testing/aspect_attacks.cpp
 src/ai/testing/ca.cpp
 src/ai/testing/ca_testing_move_to_targets.cpp
+src/ai/testing/ca_testing_recruitment.cpp
 src/ai/testing.cpp
 src/ai/testing/stage_fallback.cpp
 src/ai/testing/stage_rca.cpp
@@ -82,6 +83,7 @@ src/gamestatus.cpp
 src/generate_report.cpp
 src/generic_event.cpp
 src/gettext.cpp
+src/gui/auxiliary/old_markup.cpp
 src/gui/auxiliary/timer.cpp
 src/gui/dialogs/game_delete.cpp
 src/gui/dialogs/lobby/lobby_data.cpp
@@ -141,7 +143,6 @@ src/savegame.cpp
 src/scripting/lua.cpp
 src/sdl_utils.cpp
 src/serialization/binary_or_text.cpp
-src/serialization/binary_wml.cpp
 src/serialization/parser.cpp
 src/serialization/preprocessor.cpp
 src/serialization/string_utils.cpp

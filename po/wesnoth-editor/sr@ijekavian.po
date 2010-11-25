@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-05 17:17+0100\n"
+"POT-Creation-Date: 2010-11-25 18:13+0100\n"
 "PO-Revision-Date: 2010-02-22 13:52+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -224,13 +224,13 @@ msgid "No editor time-of-day found."
 msgstr "Нема доба дана у уређивачу."
 
 #: src/editor/editor_controller.cpp:420
-msgid "Unsaved Changes"
-msgstr "Несачуване измене"
-
-#: src/editor/editor_controller.cpp:421
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Желите ли да одбаците све измјене над мапом од посљедњег уписа?"
+
+#: src/editor/editor_controller.cpp:420
+msgid "Unsaved Changes"
+msgstr "Несачуване измене"
 
 # наслов
 #: src/editor/editor_controller.cpp:439
@@ -241,54 +241,54 @@ msgstr "Избор мапе за отварање"
 msgid "Save the Map As"
 msgstr "Сачувај мапу као"
 
-#: src/editor/editor_controller.cpp:478
+#: src/editor/editor_controller.cpp:477
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Датотека већ постоји. Желите ли да је пребришете?"
 
-#: src/editor/editor_controller.cpp:495
+#: src/editor/editor_controller.cpp:494
 msgid "No random map generators found."
 msgstr "Нема ниједног генератора насумичних мапа."
 
-#: src/editor/editor_controller.cpp:508 src/editor/editor_controller.cpp:512
+#: src/editor/editor_controller.cpp:507 src/editor/editor_controller.cpp:511
 msgid "Map creation failed."
 msgstr "Стварање мапе није успјело."
 
 # наслов
-#: src/editor/editor_controller.cpp:527
+#: src/editor/editor_controller.cpp:526
 msgid "Choose a mask to apply"
 msgstr "Избор маске за примјењивање"
 
-#: src/editor/editor_controller.cpp:534
+#: src/editor/editor_controller.cpp:533
 msgid "Error loading mask"
 msgstr "Грешка при учитавању маске"
 
 # наслов
-#: src/editor/editor_controller.cpp:549
+#: src/editor/editor_controller.cpp:548
 msgid "Choose target map"
 msgstr "Избор циљне мапе"
 
-#: src/editor/editor_controller.cpp:556 src/editor/editor_controller.cpp:751
+#: src/editor/editor_controller.cpp:555 src/editor/editor_controller.cpp:750
 msgid "Error loading map"
 msgstr "Грешка при учитавању мапе"
 
-#: src/editor/editor_controller.cpp:665 src/editor/editor_controller.cpp:707
+#: src/editor/editor_controller.cpp:664 src/editor/editor_controller.cpp:706
 msgid "This map is already open."
 msgstr "Ова мапа је већ отворена."
 
-#: src/editor/editor_controller.cpp:686
+#: src/editor/editor_controller.cpp:685
 msgid "Map saved."
 msgstr "Мапа је сачувана."
 
-#: src/editor/editor_controller.cpp:730
+#: src/editor/editor_controller.cpp:729
 msgid "Loaded embedded map data"
 msgstr "Учитани угнијежђени подаци мапе."
 
 # >> @title:window
-#: src/editor/editor_controller.cpp:731 src/editor/editor_controller.cpp:745
+#: src/editor/editor_controller.cpp:730 src/editor/editor_controller.cpp:744
 msgid "Map loaded from scenario"
 msgstr "Мапа учитана из сценарија"
 
-#: src/editor/editor_controller.cpp:741
+#: src/editor/editor_controller.cpp:740
 msgid ""
 "Loaded referenced map file:\n"
 "$new"

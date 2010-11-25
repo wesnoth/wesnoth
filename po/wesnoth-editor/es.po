@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-05 17:41+0100\n"
+"POT-Creation-Date: 2010-11-25 18:13+0100\n"
 "PO-Revision-Date: 2010-07-27 17:20-0400\n"
 "Last-Translator: PeterPorty <p_llorens@hotmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -227,15 +227,15 @@ msgid "No editor time-of-day found."
 msgstr "No se encontró una hora del día para el editor."
 
 #: src/editor/editor_controller.cpp:420
-msgid "Unsaved Changes"
-msgstr "Cambios sin guardar"
-
-#: src/editor/editor_controller.cpp:421
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "¿Desea abandonar todos los cambios efectuados en el mapa desde que lo guardó "
 "por última vez?"
+
+#: src/editor/editor_controller.cpp:420
+msgid "Unsaved Changes"
+msgstr "Cambios sin guardar"
 
 #: src/editor/editor_controller.cpp:439
 msgid "Choose a Map to Open"
@@ -245,51 +245,51 @@ msgstr "Escoja un mapa a cargar"
 msgid "Save the Map As"
 msgstr "Guardar el mapa como"
 
-#: src/editor/editor_controller.cpp:478
+#: src/editor/editor_controller.cpp:477
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
 
-#: src/editor/editor_controller.cpp:495
+#: src/editor/editor_controller.cpp:494
 msgid "No random map generators found."
 msgstr "No se encontraron generadores de mapa aleatorio"
 
-#: src/editor/editor_controller.cpp:508 src/editor/editor_controller.cpp:512
+#: src/editor/editor_controller.cpp:507 src/editor/editor_controller.cpp:511
 msgid "Map creation failed."
 msgstr "Falló la creación del mapa."
 
-#: src/editor/editor_controller.cpp:527
+#: src/editor/editor_controller.cpp:526
 msgid "Choose a mask to apply"
 msgstr "Escoja una máscara a aplicar"
 
-#: src/editor/editor_controller.cpp:534
+#: src/editor/editor_controller.cpp:533
 msgid "Error loading mask"
 msgstr "Error al cargar la máscara"
 
-#: src/editor/editor_controller.cpp:549
+#: src/editor/editor_controller.cpp:548
 msgid "Choose target map"
 msgstr "Escoja mapa de destino"
 
-#: src/editor/editor_controller.cpp:556 src/editor/editor_controller.cpp:751
+#: src/editor/editor_controller.cpp:555 src/editor/editor_controller.cpp:750
 msgid "Error loading map"
 msgstr "Error al cargar el mapa"
 
-#: src/editor/editor_controller.cpp:665 src/editor/editor_controller.cpp:707
+#: src/editor/editor_controller.cpp:664 src/editor/editor_controller.cpp:706
 msgid "This map is already open."
 msgstr "Este mapa ya se encuentra abierto."
 
-#: src/editor/editor_controller.cpp:686
+#: src/editor/editor_controller.cpp:685
 msgid "Map saved."
 msgstr "Mapa guardado."
 
-#: src/editor/editor_controller.cpp:730
+#: src/editor/editor_controller.cpp:729
 msgid "Loaded embedded map data"
 msgstr "Cargar datos incrustados de mapa"
 
-#: src/editor/editor_controller.cpp:731 src/editor/editor_controller.cpp:745
+#: src/editor/editor_controller.cpp:730 src/editor/editor_controller.cpp:744
 msgid "Map loaded from scenario"
 msgstr "Mapa cargado desde escenario"
 
-#: src/editor/editor_controller.cpp:741
+#: src/editor/editor_controller.cpp:740
 msgid ""
 "Loaded referenced map file:\n"
 "$new"

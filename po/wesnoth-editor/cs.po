@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-05 17:17+0100\n"
+"POT-Creation-Date: 2010-11-25 18:13+0100\n"
 "PO-Revision-Date: 2010-03-17 20:21+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -227,13 +227,13 @@ msgid "No editor time-of-day found."
 msgstr "Nenalezena žádná denní doba pro editor."
 
 #: src/editor/editor_controller.cpp:420
-msgid "Unsaved Changes"
-msgstr "Neuložené změny"
-
-#: src/editor/editor_controller.cpp:421
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
+
+#: src/editor/editor_controller.cpp:420
+msgid "Unsaved Changes"
+msgstr "Neuložené změny"
 
 #: src/editor/editor_controller.cpp:439
 msgid "Choose a Map to Open"
@@ -243,52 +243,52 @@ msgstr "Vyber mapu k načtení"
 msgid "Save the Map As"
 msgstr "Ulož mapu jako"
 
-#: src/editor/editor_controller.cpp:478
+#: src/editor/editor_controller.cpp:477
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Mapa už existuje. Přeješ si ji přepsat?"
 
-#: src/editor/editor_controller.cpp:495
+#: src/editor/editor_controller.cpp:494
 msgid "No random map generators found."
 msgstr "Nebyly nalezeny žádné generátory map."
 
-#: src/editor/editor_controller.cpp:508 src/editor/editor_controller.cpp:512
+#: src/editor/editor_controller.cpp:507 src/editor/editor_controller.cpp:511
 msgid "Map creation failed."
 msgstr "Mapu se nepodařilo vygenerovat."
 
 # co je zase toto?
-#: src/editor/editor_controller.cpp:527
+#: src/editor/editor_controller.cpp:526
 msgid "Choose a mask to apply"
 msgstr "Vyber masku k aplikaci"
 
-#: src/editor/editor_controller.cpp:534
+#: src/editor/editor_controller.cpp:533
 msgid "Error loading mask"
 msgstr "Chyba při načítání masky"
 
-#: src/editor/editor_controller.cpp:549
+#: src/editor/editor_controller.cpp:548
 msgid "Choose target map"
 msgstr "vyber cílovou mapu"
 
-#: src/editor/editor_controller.cpp:556 src/editor/editor_controller.cpp:751
+#: src/editor/editor_controller.cpp:555 src/editor/editor_controller.cpp:750
 msgid "Error loading map"
 msgstr "Chyba načítání mapy"
 
-#: src/editor/editor_controller.cpp:665 src/editor/editor_controller.cpp:707
+#: src/editor/editor_controller.cpp:664 src/editor/editor_controller.cpp:706
 msgid "This map is already open."
 msgstr "Tato mapa již je otevřena."
 
-#: src/editor/editor_controller.cpp:686
+#: src/editor/editor_controller.cpp:685
 msgid "Map saved."
 msgstr "Mapa byla uložena."
 
-#: src/editor/editor_controller.cpp:730
+#: src/editor/editor_controller.cpp:729
 msgid "Loaded embedded map data"
 msgstr "Načtena vložená data mapy"
 
-#: src/editor/editor_controller.cpp:731 src/editor/editor_controller.cpp:745
+#: src/editor/editor_controller.cpp:730 src/editor/editor_controller.cpp:744
 msgid "Map loaded from scenario"
 msgstr "Mapa načtena ze scénáře"
 
-#: src/editor/editor_controller.cpp:741
+#: src/editor/editor_controller.cpp:740
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
