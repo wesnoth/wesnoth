@@ -481,13 +481,13 @@ struct potential_recruit_sorter
 static std::vector<potential_recruit> ai_choose_best_recruits(fake_team &t, int max_units_to_recruit, double quality_factor)
 {
 	std::map<std::string, int> current_units;
-	for(std::vector<potential_recruit>::const_iterator i = t.extra_units().begin(); i != t.extra_units().end(); i++)
+	foreach (const potential_recruit &i, t.extra_units())
 	{
-		current_units[(i->id())]++;
+		current_units[(i.id())]++;
 	}
-	for( unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i)
+	foreach (const unit &i, *resources::units)
 	{
-		current_units[(i->type_id())]++;
+		current_units[(i.type_id())]++;
 	}
 	const std::vector<potential_recruit> &recruit_list = t.recruit_list();
 	int gold = t.gold();
@@ -498,48 +498,45 @@ static std::vector<potential_recruit> ai_choose_best_recruits(fake_team &t, int 
 	}
 	double max_quality = recruit_list[0].quality();
 	int max_cost = recruit_list[0].cost();
-	for(std::vector<potential_recruit>::const_iterator i = recruit_list.begin(); i != recruit_list.end(); i++)
+	std::vector<const potential_recruit*> sorted = std::vector<const potential_recruit*>();
+	foreach(const potential_recruit &i, recruit_list)
 	{
-		if((*i).cost() > max_cost)
+		if(i.cost() > max_cost)
 		{
-			max_cost = (*i).cost();
+			max_cost = i.cost();
 		}
-		if((*i).quality() > max_quality)
+		if(i.quality() > max_quality)
 		{
-			max_quality = (*i).quality();
+			max_quality = i.quality();
 		}
 
-	}
-	std::vector<const potential_recruit*> sorted = std::vector<const potential_recruit*>();
-	for(unsigned int k = 0; k < recruit_list.size(); k++)
-	{
-		sorted.push_back(&recruit_list[k]);
+		sorted.push_back(&i);
 	}
 	potential_recruit_sorter sorter(max_cost, max_quality, quality_factor);
 	std::sort(sorted.begin(), sorted.end(), sorter);
 	int recruited = 0;
-	for(std::vector<const potential_recruit*>::const_iterator i = sorted.begin(); i != sorted.end(); i++)
+	foreach(const potential_recruit *i, sorted)
 	{
 		if(recruited < max_units_to_recruit)
 		{
-			int possible_amount = (int)(gold / (*i)->cost());
+			int possible_amount = (int)(gold / i->cost());
 			if(possible_amount > max_units_to_recruit - recruited)
 			{
 				possible_amount = max_units_to_recruit - recruited;
 			}
 			//if(possible_amount > (*i)->max_qty() - t.get_current_qty((*i)->name()) current_units[(*i)->name()])
-			if(possible_amount > (*i)->max_qty() -  current_units[(*i)->id()])
+			if(possible_amount > i->max_qty() -  current_units[i->id()])
 			{
 				//	possible_amount = (*i)->max_qty() - t.get_current_qty((*i)->name()) current_units[(*i)->name()];
-				possible_amount = (*i)->max_qty() - current_units[(*i)->id()];
+				possible_amount = i->max_qty() - current_units[i->id()];
 			}
 			for(int j = 0; j < possible_amount; j++)
 			{
 				//recruit(t, *(*i));
 				//(*i)->set_side(t.side());
-				recruits.push_back(*(*i));
+				recruits.push_back(*i);
 			}
-			gold -= possible_amount * (*i)->cost();
+			gold -= possible_amount * i->cost();
 			recruited += possible_amount;
 		}
 		else
@@ -552,8 +549,8 @@ static std::vector<potential_recruit> ai_choose_best_recruits(fake_team &t, int 
 static void ai_choose_recruits(fake_team &t, int max_units_to_recruit, double quality_factor)
 {
 	std::vector<potential_recruit> recruits = ai_choose_best_recruits(t, max_units_to_recruit, quality_factor);
-	for(std::vector<potential_recruit>::const_iterator i = recruits.begin(); i != recruits.end(); i++){
-		t.fake_recruit(*i);
+	foreach(potential_recruit &i, recruits) {
+		t.fake_recruit(i);
 	}
 
 }
