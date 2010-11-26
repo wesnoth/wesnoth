@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-11-25 18:13+0100\n"
-"PO-Revision-Date: 2010-11-05 20:47+0900\n"
+"PO-Revision-Date: 2010-11-26 20:39+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -84,9 +84,8 @@ msgstr ""
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:4
-#, fuzzy
 msgid "Boat"
-msgstr "Boat"
+msgstr "보트"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
@@ -94,23 +93,23 @@ msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
+"작은 돛이나 노로 추진력을 얻는 보트는 큰 배가 다닐 수 없는 얕은 물길에서의 단"
+"거리 항해에 사용됩니다."
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
-#, fuzzy
 msgid "Galleon"
-msgstr "Galleon"
+msgstr "갤리언"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
-msgstr ""
+msgstr "갤리언은 교역과 수송용으로 만들어진 해양 선박입니다."
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
-#, fuzzy
 msgid "Pirate Galleon"
-msgstr "Pirate Galleon"
+msgstr "해적 갤리언"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
@@ -119,19 +118,19 @@ msgid ""
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo."
 msgstr ""
+"해적 갤리언은 수송선들에게 있어서 양떼 속의 늑대와 같습니다. 이 배에 탄 해적"
+"들은 다른 배의 무거운 짐을 덜어주는 데서 기쁨을 느끼는 자들입니다."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Pirate_Galleon.cfg:21
 #: data/core/units/boats/Transport_Galleon.cfg:22
-#, fuzzy
 msgid "ballista"
-msgstr "ballista"
+msgstr "노포"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
-#, fuzzy
 msgid "Transport Galleon"
-msgstr "Transport Galleon"
+msgstr "수송 갤리언"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
@@ -139,12 +138,13 @@ msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can land the troops to attack."
 msgstr ""
+"수송 갤리언은 병력을 수송하는 잘 무장된 선박입니다. 이 배가 해안에 닿으면 공"
+"격할 병력을 하선시킬 수 있습니다."
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:4
-#, fuzzy
 msgid "Drake Arbiter"
-msgstr "Drake Arbiter"
+msgstr "반룡 심판자"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:19
@@ -156,6 +156,12 @@ msgid ""
 "raw heft the massive metal head provides. The thick plate these drakes wear "
 "protects them well against weapons that could slip between their scales."
 msgstr ""
+"심판자들은 그들의 집행 명령의 계급 의무를 매우 진지하게 받아들인다. 그들의 의"
+"무를 보다 잘 수행하기 위해서, 그들은 반룡의 전통적인 손 장착 갈퀴를 버리고 그"
+"들의 창을 도끼창의 날카로운 끝과 칼날과 바꾸었다. 그들의 생각에는 묵직한 창두"
+"가 가져다 주는 순수한 무게를 얻는데 기동성의 상실은 정당한 댓가이다. 이 반룡"
+"들이 입는 두꺼운 판금은 그들의 비늘을 뚫을 수 있는 무기로부터 그들을 잘 보호"
+"해준다."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -394,9 +400,8 @@ msgstr ""
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
-#, fuzzy
 msgid "Drake Flare"
-msgstr "Drake Flare"
+msgstr "홍염의 반룡"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:26
@@ -502,9 +507,8 @@ msgstr ""
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
-#, fuzzy
 msgid "Drake Warden"
-msgstr "Drake Warden"
+msgstr "반룡 관리장"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:20
@@ -517,6 +521,12 @@ msgid ""
 "bronze plate is the strongest work from the Drake forges, and their halberds "
 "can cleave a human in half."
 msgstr ""
+"관리장들은 나머지 충격병 계급과 두 가지 면에서 차이를 보인다. 그들의 드래곤 "
+"조상의 모습을 흉내낸 화려한 투구와, 임무를 내리기 전에 쓰는, 그들의 갑옷 입"
+"힌 날개를 장식한 밝은 색상의 옷감에 대한 조심스런 관리이다. 비록 이 복식이 그"
+"들의 반룡 사회에서의 역할에 대해 느끼는 자부심에서 유래한 것이긴 하지만, 이것"
+"은 의식용과는 거리가 멀다. 크고 무거운 청동 판금은 반룡 단조 공법의 가장 강력"
+"한 작품이며, 그들의 도끼창은 인간을 반으로 쪼개버릴 수 있다."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -837,7 +847,7 @@ msgstr ""
 #: data/core/units/dwarves/Thunderer.cfg:120
 #: data/core/units/dwarves/Thunderguard.cfg:49
 msgid "thunderstick"
-msgstr "번개포"
+msgstr "벽력포"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
@@ -1191,11 +1201,11 @@ msgid ""
 "elf sets his mind to war, the strategy that results is often the work of a "
 "master."
 msgstr ""
-"엘프들의 장수와 타고난 지성은 그들이 군사적인 면에서도 적성을 갖게 해주어, 그"
-"들의 전쟁에 대한 일반적인 혐오감조차 이겨낼 수 있게 한다. 엘프들은 인류보다 "
-"훨씬 더 명료하게 기억할 수 있으며, 종종 다른 이들이 훈련받아야만 할 수 있는 "
-"것을 직관적으로 해낼 수 있다. 확실히, 엘프가 전쟁을 일으키려 하는 흔치 않은 "
-"일이 생겼을 때, 그들에게서 나오는 전략은 대가의 것들인 경우가 많다."
+"엘프들의 긴 수명과 타고난 지성은 그들이 군사적인 면에서도 적성을 갖게 해주"
+"어, 그들의 전쟁에 대한 일반적인 혐오감조차 이겨낼 수 있게 한다. 엘프들은 인류"
+"보다 훨씬 더 명료하게 기억할 수 있으며, 종종 다른 이들이 훈련받아야만 할 수 "
+"있는 것을 직관적으로 해낼 수 있다. 확실히, 엘프가 전쟁을 일으키려 하는 흔치 "
+"않은 일이 생겼을 때, 그들에게서 나오는 전략은 대가의 것들인 경우가 많다."
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
@@ -1369,9 +1379,8 @@ msgstr "거미줄"
 
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
-#, fuzzy
 msgid "dummy_unit^Fog Clearer"
-msgstr "dummy_unit^Fog Clearer"
+msgstr "안개 걷기용"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
@@ -1580,7 +1589,7 @@ msgstr "장검"
 #: data/core/units/humans/Horse_Lancer.cfg:36
 #: data/core/units/humans/Horse_Paladin.cfg:61
 msgid "lance"
-msgstr "랜스"
+msgstr "기창"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
@@ -1791,6 +1800,15 @@ msgid ""
 "disadvantage. They relish dancing circles around troops like heavy infantry, "
 "mocking the weight of their full armor."
 msgstr ""
+"펜싱 선수들은 전투시에 대부분의 병사들이 입는 갑옷이야말로 그들의 가장 큰 적"
+"이라는 생각을 가진 집단에 속해 있다. 갑옷은 단지 충격을 완화해줄 뿐이지만, 그"
+"것을 피하면 방어자는 아무런 해도 입지 않는다. 어떤 공격도 피해낼 수 있는 믿"
+"을 만한 회피능력은 신체적인 적성을 가진 자들 중에서도 엄격한 훈련을 견뎌낸 이"
+"들에게만 주어지는 사치이다.\n"
+"\n"
+"단검과 기병도로만 무장한 펜싱 선수들은 갑옷에 둘러싸인 동료들에게는 불리한 여"
+"러 상황들에서 임무를 수행해 내는 유용한 존재이다. 그들은 중보병 같은 부대의 "
+"주위를 춤추듯 돌면서 그들의 중장갑주를 비웃는 것을 즐긴다."
 
 #. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
@@ -1803,6 +1821,8 @@ msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty."
 msgstr ""
+"군단의 지휘자인 장군들은 그들이 충성을 서약한 왕국의 넓은, 혹은 중요한 지역들"
+"을 보호할 책무를 갖고 있다."
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
@@ -2223,7 +2243,7 @@ msgstr "적마법사"
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
-msgstr "은빛의 마법사"
+msgstr "백은의 마법사"
 
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
@@ -2257,7 +2277,7 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_Silver.cfg:283
 msgid "female^Silver Mage"
-msgstr "은빛의 마법사"
+msgstr "백은의 마법사"
 
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:4
@@ -3005,9 +3025,8 @@ msgstr ""
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
-#, fuzzy
 msgid "Giant Scorpion"
-msgstr "Giant Scorpion"
+msgstr "대형 전갈"
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:19
@@ -3059,15 +3078,14 @@ msgstr ""
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
-#, fuzzy
 msgid "Sea Serpent"
-msgstr "Sea Serpent"
+msgstr "해룡"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:22
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
+msgstr "해룡은 보트를 뒤집을 수 있을만큼 거대한 괴물이다."
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
@@ -3104,13 +3122,12 @@ msgstr "심해의 촉수"
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
 "below the waves."
-msgstr ""
+msgstr "심해의 촉수는 물살 아래 도사리고 있는 더 거대한 괴물의 부속물이다."
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
-#, fuzzy
 msgid "Water Serpent"
-msgstr "Water Serpent"
+msgstr "바다뱀"
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:39
@@ -3132,6 +3149,8 @@ msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
+"늑대는 떼를 지어 사냥하는 공격적인 동물이다. 개개의 늑대는 약해도, 늑대 떼는 "
+"가장 강인한 인간도 순식간에 죽여버린다."
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -3403,7 +3422,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
-msgstr "오크 대군주"
+msgstr "오크 대총통"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:20
@@ -3587,6 +3606,10 @@ msgid ""
 "to carrying them in sacks slung over their shoulders. The same leather out "
 "of which the sack is formed is easily adapted to a crude sling."
 msgstr ""
+"많은 트롤들이 전투에서 바윗덩어리를 던지면 좋겠다는 생각을 갖고, 일부는 그것"
+"을 무기의 한 종류로서 받아들인다. 제대로 날릴만큼 모양 좋은 돌은 흔하지 않기 "
+"때문에, 투석병들은 어깨에 부대를 걸머지고 다닌다. 또 부대를 만든 것과 같은 가"
+"죽으로 쉽게 조잡한 돌팔매를 만들 수 있다."
 
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:4
@@ -3696,6 +3719,7 @@ msgstr "시체를 먹는 자"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:19
+#, fuzzy
 msgid ""
 "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -3706,6 +3730,9 @@ msgid ""
 "— a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
 msgstr ""
+"아귀, 또는 '시체 포식자'는 인간과 약간 유사한 형태를 갖고 있을 뿐인 기괴하고 "
+"비대한 존재다. 그것은 움직이긴 하지만 마치 썩은 것 같다. 그들의 핏속엔 병균"
+"과 맹독이 그득하며, 몸체에서는 마주하기 힘들 정도의 악취가 난다. "
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
@@ -3720,6 +3747,10 @@ msgid ""
 "unwilling corpses. These shamblers are often numerous, but fragile; a touch "
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
+"불행히도 시신을 일으키는 기술은 흑마법에서 흔히 퍼져 있다. 이 술사들은 종종 "
+"원치않는 시체로부터 하인과 병사들을 일으킨다. 이 어기적거리는 것들은 보통 숫"
+"자는 많아도 약하다. 하지만 전투에서 그들의 손길은 죽은 자를 일으켜 그들을 훨"
+"씬 더 가공할 존재로 만든다."
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -3758,8 +3789,8 @@ msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death."
 msgstr ""
-"이 주문의 존재는 오랜 옛 시대의 망령이다. 이 고대의 리치와 조우하는 자는 죽"
-"음 보다도 더 나쁜 것을 걱정해야 할 것이다."
+"주문으로 된 이 존재는 오랜 옛 시대의 망령이다. 이 고대의 리치와 조우하는 자"
+"는 죽음 보다도 더 나쁜 것을 걱정해야 할 것이다."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:60
@@ -3795,11 +3826,11 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
-"문명화된 세상에서 흑마법을 익히다가 잡히면 누구든 사형이기 때문에, 수련생들"
-"을 모으기 위한 이 기술의 유인은 정말로 큰 보상이어야 한다. 그리고 주어지는 보"
-"상이란 것은 더도 덜도 아닌 불멸이기 때문에 이 기술을 추구하는 이들은 항상 존"
-"재한다. 비밀스런 종교 집단에 숨어들거나, 어둠의 지하조직에 가입한 이 광신도들"
-"이 견뎌내야 하는 훈련은 종종 그들을 탈진하거나 쇠약해지게 만든다.\n"
+"문명화된 세상에서 흑마법을 익히다가 잡히면 누구든 사형이기 때문에, 이 기술의 "
+"수련생들을 모으려면 위해 정말로 큰 유인이 필요하다. 그렇지만 이 기술이 주는 "
+"혜택이라는 것이 더도 덜도 아닌 불멸이기 때문에, 이 기술을 추구하는 이들은 항"
+"상 존재한다. 비밀스런 종교 집단에 숨어들거나, 어둠의 지하조직에 가입한 이 광"
+"신도들이 견뎌내야 하는 훈련은 종종 그들을 탈진하거나 쇠약해지게 만든다.\n"
 "\n"
 "이런 상황에서, 그들의 무기는 그들이 스스로 배운 기술 뿐이다."
 
