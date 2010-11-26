@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-09-23 12:54+0200\n"
-"PO-Revision-Date: 2010-11-13 16:12+0900\n"
+"PO-Revision-Date: 2010-11-25 22:51+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -585,37 +585,37 @@ msgstr "특성"
 #. [topic]: id=..units
 #: data/core/help.cfg:42 data/core/help.cfg:93
 msgid "Units"
-msgstr ""
+msgstr "유닛"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:51 data/core/help.cfg:99
 msgid "Abilities"
-msgstr ""
+msgstr "능력"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:59 data/core/help.cfg:108
 msgid "Weapon Specials"
-msgstr ""
+msgstr "특수 무기"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1287 src/help.cpp:1289
 msgid "Factions"
-msgstr ""
+msgstr "당파"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
 #: data/core/help.cfg:74 data/core/help.cfg:469
 msgid "Terrains"
-msgstr ""
+msgstr "지형"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
 #: data/core/help.cfg:81 data/core/help.cfg:761
 msgid "Commands"
-msgstr ""
+msgstr "명령어"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:102
@@ -625,6 +625,9 @@ msgid ""
 "will be listed under this topic as you encounter them.\n"
 "\n"
 msgstr ""
+"특정한 유닛들은 다른 유닛에게 직접 영향을 미치거나 다른 유닛과의 상호작용에 "
+"영향을 주는 능력들을 가지고 있습니다. 특정한 능력을 발견하면 그 능력이 이 아"
+"래에 나열됩니다.\n"
 
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:111
@@ -633,6 +636,8 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"어떤 무기들은 공격의 효율을 올려주는 특별한 능력들을 가지고 있습니다.\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:118
@@ -1277,7 +1282,7 @@ msgstr ""
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:260
 msgid "Damage Types and Resistance"
-msgstr ""
+msgstr "피해 형태와 내성"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:261
@@ -1288,6 +1293,10 @@ msgid ""
 "and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
+"Wesnoth에는 대체로 물리 공격에 붙는 참격, 관통, 충격의 3 가지 피해 형태와 주"
+"로 마법 공격에 붙는 화염, 냉기, 신령의 3 가지 추가적인 피해 형태가 있습니다. "
+"그리고 각 유닛은 그들이 받는 특정 형태의 피해 정도를 증감시키는 내성을 가지"
+"고 있습니다."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:263
@@ -1300,6 +1309,13 @@ msgid ""
 "unit has -100% resistance against a damage type, it will suffer 100% more "
 "damage when hit by that type."
 msgstr ""
+"\n"
+"\n"
+"내성이 하는 일은 간단합니다 : 어떤 유닛이 어떤 피해 형태에 40% 내성을 가지고 "
+"있으면, 해당 형태의 피해를 주는 공격에 맞았을 때 받는 피해가 40% 줄어듭니다. "
+"어떤 유닛이 어떤 피해 형태에 대해 약점을 가지고 있을 수도 있습니다. 어떤 유닛"
+"이 어떤 피해 형태에 -100% 내성을 가지고 있으면 그 형태의 공격을 받았을때 받"
+"는 피해가 100% 증가합니다."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:265
@@ -1310,6 +1326,10 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Arcane "
 "damage."
 msgstr ""
+"\n"
+"\n"
+"예를 들어, 해골들은 참격과 관통 피해에 대한 내성이 높지만 충격과 화염 피해에"
+"는 약하며, 신령 피해에는 매우 취약합니다."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:267
@@ -1320,11 +1340,15 @@ msgid ""
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 msgstr ""
+"\n"
+"\n"
+"일단 타격이 가해지면 그 피해량이 1 밑으로 내려갈 수는 없습니다. 그것은 방어자"
+"가 100%의 내성을 갖고 있더라도 마찬가지입니다."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:273
 msgid "Time of Day"
-msgstr ""
+msgstr "시간대"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:277
@@ -1334,6 +1358,10 @@ msgid ""
 " Chaotic units get +25% damage at night, and -25% in daytime.\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
+"시간대는 유닛들의 데미지에 영향을 줍니다:\n"
+" 주행성 유닛들은 낮에 주는 데미지가 25% 증가하고, 밤에는 25% 감소합니다.\n"
+" 야행성 유닛들은 밤에 주는 데미지가 25% 증가하고, 낮에는 25% 감소합니다.\n"
+" 시간대 중립 유닛들은 시간대의 영향을 받지 않습니다."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:280
@@ -1344,6 +1372,10 @@ msgid ""
 "pane. For the usual day/night cycle, Morning and Afternoon count as day, "
 "First and Second Watch count as night:\n"
 msgstr ""
+"\n"
+"\n"
+"현재의 시간대는 스테이터스 창의 미니맵 밑에 보여집니다. 일반적인 낮/밤 사이클"
+"에서는 아침과 오후는 낮으로, 초경과 삼경은 밤으로 칩니다.\n"
 
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
@@ -1387,11 +1419,12 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
+"지하에서 진행되는 일부 시나리오에서는 영구적으로 밤이라는 사실을 기억하세요!"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:294
 msgid "Experience and Advancement"
-msgstr ""
+msgstr "경험치와 승급"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:295
@@ -1401,6 +1434,10 @@ msgid ""
 "combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
+"두 유닛 모두가 전투에서 살아남으면, 그들은 자기가 싸운 상대의 레벨만큼의 경험"
+"치 포인트를 받습니다. 전투에서 한 유닛이 다른 유닛을 없애면 그 유닛은 훨씬 많"
+"은 경험치를 받습니다 - 0 레벨 유닛을 잡았을 경우 4, 1 레벨 유닛을 잡았으면 "
+"8, 2 레벨은 16, 3 레벨은 24, 등등."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:297
@@ -1412,6 +1449,12 @@ msgid ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
+"\n"
+"\n"
+"각 유닛은 승급을 위한 일정량의 필요 경험치를 갖습니다(똑똑함(Intelligent) 특"
+"성을 갖는 유닛은 이것이 20% 더 적습니다). 유닛이 이 분량을 채우면 그 즉시 다"
+"음 레벨로 승급하여, 그 과정에서 완전히 회복됩니다. 어떤 경우에는 승급 선택지"
+"가 나타나기도 합니다."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:299
@@ -1429,11 +1472,22 @@ msgid ""
 "harder for each AMLA the unit receives, and so it is usually more useful to "
 "try to advance your lower level units."
 msgstr ""
+"\n"
+"\n"
+"대부분의 유닛은 3 레벨까지 올라갈 수 있지만 모두 그런것은 아닙니다. 마법사 같"
+"은 일부 유닛은 4 레벨까지 있습니다. 일단 유닛이 그 최고 레벨까지 도달하면 최"
+"고 레벨 이후 승급(AMLA)이 가능해집니다. AMLA는 유닛이 경험치 목표량에 도달할"
+"때마다 수정되지만, 해당 유닛의 레벨은 오르지 않습니다. 일반적인 AMLA의 효과"
+"는 유닛의 최고 HP를 3 늘리고 완전회복시켜주는 것입니다. 일반적으로 최초의 "
+"AMLA는 150XP(똑똑합(Intelligent) 특성의 유닛의 경우 120XP)를 모았을때 일어납"
+"니다. 하지만 AMLA를 쌓아가는 것은 해당 유닛이 AMLA를 획득해 가면서 점점 어려"
+"워지므로 당신의 낮은 레벨 유닛을 승급시키려고 하는 편이 보통은 좀더 유용합니"
+"다."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
 msgid "Healing"
-msgstr ""
+msgstr "회복"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -1444,6 +1498,11 @@ msgid ""
 "turn or not. Wesnoth offers several other ways for your units to heal, all "
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
+"전투에서 당신의 유닛은 불가피하게 피해를 입게 됩니다. 유닛이 "
+"<ref>dst='experience_and_advancement' text='승급'</ref>하면, 그 유닛은 완전"
+"히 회복됩니다. 그 때가 당신의 턴이든 아니든 관계없이, 이것은 당신의 유닛이 적"
+"과의 싸움을 끝냈을 때 일어납니다. Wesnoth는 당신이 행동하기 전 턴의 시작시에 "
+"당신의 유닛을 회복시킬 수 있는 몇가지 다른 수단을 제공합니다."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:309
@@ -1453,6 +1512,10 @@ msgid ""
 "Resting: A unit which neither moves, attacks, nor is attacked will heal 2 HP "
 "in its next turn."
 msgstr ""
+"\n"
+"\n"
+"휴식: 움직이지도, 공격하거나 공격받지도 않은 유닛은 다음 턴에 HP 2를 회복합니"
+"다."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:310
@@ -1460,6 +1523,8 @@ msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
+"\n"
+"마을: 마을에서 턴을 시작하는 유닛은 HP 8을 회복합니다."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:311
@@ -1468,6 +1533,9 @@ msgid ""
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
+"\n"
+"<ref>dst='ability_regenerates' text='재생'</ref>: 트롤 같은 특정 유닛은 매 "
+"턴 자동으로 HP 8을 회복합니다."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:312
@@ -1478,6 +1546,11 @@ msgid ""
 "+4' text='4HP'</ref> or <ref>dst='ability_heals +8' text='8HP'</ref> per "
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
+"\n"
+"유닛 치료: <ref>dst='ability_heals +4' text='치료'</ref> 능력을 가진 유닛은 "
+"근접한 아군 유닛을 매턴 <ref>dst='ability_heals +4' text='HP 4'</ref>나 "
+"<ref>dst='ability_heals +8' text='HP 8'</ref> 회복시키거나 독의 피해를 막아줍"
+"니다."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:313
@@ -1487,6 +1560,10 @@ msgid ""
 "ability will cure Poison in all allied adjacent units (in preference to "
 "healing, if it has that ability as well)."
 msgstr ""
+"\n"
+"유닛 치유: <ref>dst='ability_cures' text='치유'</ref> 능력을 가진 유닛은 근접"
+"한 모든 아군 유닛의 독을 치유합니다. (치료와 치유의 두 능력이 모두 적용될 때"
+"는 치유가 우선합니다.)"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:315
@@ -1497,11 +1574,16 @@ msgid ""
 "regeneration, healing and curing cannot combine with each other: the best "
 "option will be used. Finally, units heal fully between scenarios."
 msgstr ""
+"\n"
+"\n"
+"휴식은 다른 형태의 회복과 겹칠 수 있지만 마을,재생,치료와 치유는 서로 겹칠 "
+"수 없으며 그중 가장 좋은 것이 선택됩니다. 마지막으로 시나리오를 넘기면 모든 "
+"유닛이 회복됩니다."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:322
 msgid "Income and Upkeep"
-msgstr ""
+msgstr "수입과 유지비"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
@@ -1511,6 +1593,10 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
 msgstr ""
+"Wesnoth에서는 단순히 유닛을 고용하고 싸우는 것만으로는 부족합니다. 당신은 항"
+"상 당신의 자금에 주의를 기울여야 하며, 특히 한 시나리오에서 다음으로 넘어갈 "
+"때 추가적인 금을 가지고 넘어갈 수 있는 캠페인에서는 자금 관리에 더 만전을 기"
+"해야 합니다. 당신의 자금에 영향을 주는 요인으로 수입과 유지비가 있습니다."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:325
@@ -1522,6 +1608,12 @@ msgid ""
 "have ten villages, you would normally gain 12 gold each turn. Your Upkeep "
 "costs are subtracted from this income, as detailed below."
 msgstr ""
+"\n"
+"\n"
+"수입은 간단합니다. 당신은 매 턴 기본 수입으로 금 2를 받습니다. 그리고 관리하"
+"는 마을 하나마다 매 턴 추가 수입으로 금 1을 얻습니다. 그러므로 당신이 마을 "
+"10 채를 가지고 있으면 당신은 턴당 수입은 금 12가 됩니다. 당신의 유지비가 이 "
+"수입에서 빠지게 되는데, 아래에서 상세히 설명합니다."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:327
@@ -1535,6 +1627,14 @@ msgid ""
 "per turn. For example, if you have twelve level one units and ten villages, "
 "you would have to pay two gold each turn in upkeep."
 msgstr ""
+"\n"
+"\n"
+"유지비 또한 상당히 간단합니다. 각 유닛은 그 레벨만큼의 유지비를 요구합니다. "
+"당신은 당신이 가진 마을 <italic>text=갯수만큼</italic>의 유닛 레벨을 지원하"
+"여 유지비를 아낄 수 있습니다. 하지만 유닛들의 레벨 총합이 당신이 가진 마을 갯"
+"수를 초과하면 당신은 초과 레벨마다 턴당 금 1씩을 내야 합니다. 예를 들면 당신"
+"이 12레벨의 유닛 하나와 10개의 마을을 가지고 있으면, 당신은 턴당 금 2씩을 내"
+"게 됩니다."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:329
@@ -1545,6 +1645,10 @@ msgid ""
 "levels of units and ten villages, your resultant Income would be 10 gold per "
 "turn."
 msgstr ""
+"\n"
+"\n"
+"유지비는 수입에서 감해지기 때문에 도합 12레벨의 유닛들과 10개의 마을을 가지"
+"고 있으면 그 결과로 생기는 당신의 수입은 매 턴 10 골드가 됩니다."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:330
@@ -1557,11 +1661,17 @@ msgid ""
 "trait. The unit you are playing (such as Konrad) will almost always be a "
 "leader."
 msgstr ""
+"\n"
+"유지비에는 중요한 두 가지 예외가 있습니다: 심복 특성을 가진 유닛과 지휘관은 "
+"유지비를 요구하지 않습니다. 첫 시나리오부터 함께 시작하는 유닛 (Delfador 같"
+"은)이나 시나리오 중간에 합류하는 유닛 (Heir to the Throne 캠페인 2번째 시나리"
+"오의 기병 같은)은 대체로 심복 특성을 가지고 있습니다. 당신이 플레이하는 유닛 "
+"(Konrad 같은)은 거의 항상 지휘관입니다."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:336
 msgid "Wrap Up"
-msgstr ""
+msgstr "마무리"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:337
@@ -1572,16 +1682,21 @@ msgid ""
 "ref>, but you now know everything you need to know to play the Heir to the "
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
+"이로써 Wesnoth의 기본설명을 마칩니다. 기초 전략에 대해 읽거나 각종 "
+"<ref>dst='..traits_section' text='특성'</ref>과 <ref>dst='.."
+"abilities_section' text='능력'</ref>들에 익숙해지고 싶으실지도 모르지만, 당신"
+"은 이미 왕좌의 후계자(Heir to the Throne) 캠페인을 하기 위한 모든 것을 습득했"
+"습니다. 부디 즐기시길 바라며, 행운을 빕니다!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:342
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "기여해주신 여러분"
 
 #. [topic]: id=license
 #: data/core/help.cfg:348
 msgid "License"
-msgstr ""
+msgstr "라이선스"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:357
@@ -1591,6 +1706,10 @@ msgid ""
 "modifications that change a unit's attributes slightly. They are usually "
 "randomly assigned to a unit when it is recruited."
 msgstr ""
+"대부분의 유닛들은 두 가지 특성을 갖습니다. 하지만 언데드 유닛들은 단순히 '언"
+"데드' 라는 하나의 특성을 가지며 엔트들은 아무 특성도 부여받지 않습니다. 특성"
+"은 유닛의 속성을 약간 변화시키는 수정요소입니다. 특성은 보통 유닛이 소집될때 "
+"무작위로 배정됩니다."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:359
@@ -1602,6 +1721,12 @@ msgid ""
 "<ref>dst='traits_quick' text='Quick'</ref>, <ref>dst='traits_resilient' "
 "text='Resilient'</ref>, and <ref>dst='traits_strong' text='Strong'</ref>."
 msgstr ""
+"\n"
+"\n"
+"언데드가 아닌 모든 유닛에게 붙을 수 있는 특성은 "
+"<ref>dst='traits_intelligent' text='영리한'</ref>, <ref>dst='traits_quick' "
+"text='신속한'</ref>, <ref>dst='traits_resilient' text='튼튼한'</ref>, 그리고 "
+"<ref>dst='traits_strong' text='강인한'</ref> 입니다."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:363
@@ -1613,6 +1738,12 @@ msgid ""
 "<ref>dst='traits_undead' text='Undead'</ref>.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"유닛에게 붙을 수 있는 또다른 특성은 <ref>dst='traits_dextrous' "
+"text='Dextrous'</ref>, <ref>dst='traits_loyal' text='심복'</ref>, 그리고 "
+"<ref>dst='traits_undead' text='언데드'</ref> 입니다.\n"
+"\n"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:369
@@ -1688,7 +1819,7 @@ msgstr ""
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:393
 msgid "Strong"
-msgstr "힘센"
+msgstr "강인한"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:394
@@ -1696,7 +1827,8 @@ msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
-"힘센 유닛은 근접 공격의 성공시에 주는 데미지가 1 더 많고, HP 1을 더 받습니다."
+"강인한 유닛은 근접 공격의 성공시에 주는 데미지가 1 더 많고, HP 1을 더 받습니"
+"다."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:396
@@ -2861,7 +2993,7 @@ msgstr "최대 HP +1"
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 msgid "backstab"
-msgstr ""
+msgstr "뒷치기"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:568
@@ -2871,6 +3003,10 @@ msgid ""
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
+"뒷치기:\n"
+"공격에 이 무기를 사용할 때, 목표물의 반대편에 목표물의 적이 있으면 무기의 데"
+"미지가 두배가 됩니다. 단 반대편에 있는 유닛이 행동불가(석화되었거나 어떤 식으"
+"로든 마비되는 것)여서는 안됩니다."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
@@ -2933,6 +3069,8 @@ msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
+"석화:\n"
+"이 공격은 목표를 석화시킵니다. 석화된 유닛은 움직이거나 공격할 수 없습니다."
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
@@ -3016,31 +3154,32 @@ msgstr ""
 #: data/core/macros/ai.cfg:495
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
+"$ally_leader.name ($ally_leader.side|의 지휘관)이 이곳으로 오도록 요구한다"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "좀더 공격적으로"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:160
 msgid "aggressive."
-msgstr ""
+msgstr "공격적."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:177
 msgid "Be more defensive"
-msgstr ""
+msgstr "좀더 방어적으로"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:190
 msgid "defensive."
-msgstr ""
+msgstr "방어적."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:211
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "격파에 집중한다..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3059,7 +3198,7 @@ msgstr ""
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:228
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "어떤 적에게 집중할까요?"
 
 #. [then]
 #. [else]
@@ -3068,24 +3207,24 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:441
 #: data/core/macros/ai_controller.cfg:446
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "($temp_i| 진영)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:286
 #: data/core/macros/ai_controller.cfg:442
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name ($temp_i| 진영)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:291
 #: data/core/macros/ai_controller.cfg:447
 msgid "side $temp_i"
-msgstr ""
+msgstr "$temp_i 진영"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:307
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "$this_enemy_description| 진영을 격파하는데 주력."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3094,68 +3233,68 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:884
 #: data/core/macros/ai_controller.cfg:919
 msgid "Back"
-msgstr ""
+msgstr "뒤로"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:363
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "호위에 집중한다..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:380
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "어떤 아군을 호위할까요?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:463
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "$this_ally_description| 진영을 호위하는데 집중한다."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:524
 msgid "Defend a location..."
-msgstr ""
+msgstr "특정 지점을 지킨다..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:540
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "방어할 지점을 오른쪽 클릭하세요"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:547
 msgid "Defend this location"
-msgstr ""
+msgstr "이 지점을 방어한다"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:564
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "$x1|,$y1| 주변을 방어하는데 주력한다."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:606
 msgid "Location selection canceled"
-msgstr ""
+msgstr "지역 설정 취소"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:621
 msgid "Clear objective orders"
-msgstr ""
+msgstr "목표 지령 소거"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:642
 msgid "Clear behavior orders"
-msgstr ""
+msgstr "행동 지령 소거"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:664
 msgid "Clear all orders"
-msgstr ""
+msgstr "모든 지령 소거"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:789
 #: data/core/macros/ai_controller.cfg:800
 msgid "none set."
-msgstr ""
+msgstr "지령 없음."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:822
@@ -3184,17 +3323,17 @@ msgstr ""
 #. [literal]
 #: data/core/macros/ai_controller.cfg:854
 msgid "Set objective..."
-msgstr ""
+msgstr "목표 설정..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:894
 msgid "Set behavior..."
-msgstr ""
+msgstr "행동 설정..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:934
 msgid "Exit"
-msgstr ""
+msgstr "나가기"
 
 #: data/core/macros/ai_controller.cfg:1061
 msgid "Set special orders..."
@@ -3911,6 +4050,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"\n"
+"\n"
+"특별히 참고할 것:"
 
 #: data/core/macros/special-notes.cfg:8
 msgid ""
@@ -4075,12 +4217,12 @@ msgstr ""
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
 msgid "loyal"
-msgstr ""
+msgstr "심복"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:9
 msgid "female^loyal"
-msgstr ""
+msgstr "심복"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:10
@@ -4614,7 +4756,7 @@ msgstr "사우리언"
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:179
 msgid "race^Saurians"
-msgstr ""
+msgstr "사우리언족"
 
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:188
@@ -4649,7 +4791,7 @@ msgstr "괴물"
 #. [race]: id=monster, description=
 #: data/core/units.cfg:210
 msgid "race^Monsters"
-msgstr ""
+msgstr "몬스터들"
 
 #. [race]: id=naga, description=
 #: data/core/units.cfg:218
@@ -5092,11 +5234,14 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"지휘관에게 경험치를 주는 것을 주저하지 말도록! 그대는 그를 보호해야 하지. 하"
+"지만 너무 애지중지하다가는 이후의 전투에서는 지휘관의 레벨이 너무 낮아서 살아"
+"남을 수 없게 될지도 모르네."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
-msgstr ""
+msgstr "- 대마법사 Delfador, Wesnoth력 516년"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
@@ -5106,6 +5251,10 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"당신은 행동 메뉴에서 '적 이동 범위 보기'를 선택해서 당신의 상대가 실제로 이동"
+"할 수 있는 모든 칸들(당신의 유닛의 존재를 상정한)을 밝게 비춰볼 수 있습니다. "
+"이것을 써서 적이 다음 턴에 당신의 약한 유닛이나 부상병들에게 닿을 수 없는가"
+"의 여부를 확실히 확인하십시오."
 
 #. [tip]
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
@@ -5124,7 +5273,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:198 data/hardwired/tips.cfg:202
 #: data/hardwired/tips.cfg:207
 msgid "- The Wesnoth Tactical Guide"
-msgstr ""
+msgstr "- Wesnoth 전략 가이드"
 
 #. [tip]
 #: data/hardwired/tips.cfg:11
@@ -5133,11 +5282,13 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"'영리한' 특성을 가진 유닛들은 승급에 필요한 경험치가 더 적다. 캠페인 초기에 "
+"이런 유닛들이 막타를 치게 하면 고레벨 병력을 빨리 모을 수 있다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
 msgid "- King Konrad, 536YW"
-msgstr ""
+msgstr "- Konrad 왕, Wesnoth력 536년"
 
 #. [tip]
 #: data/hardwired/tips.cfg:15
@@ -5373,6 +5524,8 @@ msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
+"인내가 승리의 열쇠가 될 때가 많습니다. 좋지 않은 상황에서나 적은 병력으로 무"
+"모한 공격을 시도하기보다는 더 나은 상황이 오기를 기다렸다가 공격하십시오."
 
 #. [tip]
 #: data/hardwired/tips.cfg:107
@@ -5380,6 +5533,8 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
+"여러 방향에서 공격받게 된다면, 소모가능한 유닛들로 특정 방향에서의 적의 진격"
+"을 저지하는 것도 좋은 방편입니다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:111
@@ -5391,7 +5546,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:112
 msgid "- Meneldur, 123YW"
-msgstr ""
+msgstr "- Meneldur, Wesnoth력 123년"
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -5417,6 +5572,8 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
+"해골들은 관통, 참격과 냉기 공격에 내성을 갖고 있지만 충격, 화염, 신령 공격에"
+"는 취약하다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:127
@@ -5484,12 +5641,12 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:159
 msgid "Arcane attacks are very powerful against undead."
-msgstr ""
+msgstr "신령 공격은 언데드에 대해 매우 강력한 위력을 발휘한다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
 msgid "- Great Sage Dacyn, 626YW"
-msgstr ""
+msgstr "- 대현자 Dacyn, Wesnoth력 626년"
 
 #. [tip]
 #: data/hardwired/tips.cfg:163
@@ -5503,7 +5660,7 @@ msgstr ""
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
-msgstr ""
+msgstr "돌격 유닛들은 적들을 한방에 죽일때 가장 유용합니다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:171
@@ -5559,6 +5716,8 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"안개나 장막을 걷어낸 이동은 취소할 수 없습니다. 유닛을 이동할 때 되돌릴 기회"
+"를 보존하려면 '장막 갱신 지연' 옵션을 활성화하십시오."
 
 #. [tip]
 #: data/hardwired/tips.cfg:197
@@ -5778,7 +5937,7 @@ msgstr ""
 #. [menu]: id=show-what
 #: data/themes/macros.cfg:163
 msgid "Point of view"
-msgstr ""
+msgstr "시점 변환"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:179
@@ -5792,15 +5951,15 @@ msgstr ""
 
 #: src/actions.cpp:372
 msgid "You don't have a leader to recruit with."
-msgstr ""
+msgstr "소집할 대장이 없습니다."
 
 #: src/actions.cpp:379
 msgid "You must have your leader on a keep to recruit or recall units."
-msgstr ""
+msgstr "소집이나 재소집을 하려면 반드시 대장을 본성에 두어야 합니다."
 
 #: src/actions.cpp:398
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr ""
+msgstr "소집할 수 있는 빈 성채 칸이 없습니다."
 
 #: src/actions.cpp:532 src/actions.cpp:591 src/actions.cpp:1516
 msgid "An invalid attacker weapon got selected."
@@ -5820,7 +5979,7 @@ msgstr "석화"
 
 #: src/actions.cpp:1290
 msgid "petrified"
-msgstr ""
+msgstr "석화"
 
 #: src/actions.cpp:2484
 msgid "Ambushed!"
@@ -5828,7 +5987,7 @@ msgstr "기습당했다!"
 
 #: src/actions.cpp:2491
 msgid "Failed teleport! Exit not empty"
-msgstr ""
+msgstr "전이 실패! 출구가 비어있지 않음"
 
 #: src/actions.cpp:2536
 msgid "Friendly unit sighted"
@@ -5888,7 +6047,7 @@ msgstr "시나리오"
 
 #: src/addon_management.cpp:467
 msgid "addon_type^MP era"
-msgstr ""
+msgstr "멀티플레이용 시대"
 
 #: src/addon_management.cpp:469
 msgid "addon_type^MP faction"
@@ -5912,15 +6071,15 @@ msgstr ""
 
 #: src/addon_management.cpp:479
 msgid "addon_type^Other"
-msgstr ""
+msgstr "기타"
 
 #: src/addon_management.cpp:481
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "(알수없음)"
 
 #: src/addon_management.cpp:511
 msgid "Dependencies"
-msgstr ""
+msgstr "부속 기능"
 
 #: src/addon_management.cpp:515
 msgid ""
@@ -5930,17 +6089,20 @@ msgid_plural ""
 "$addon_title depends upon the following add-ons which you have not installed "
 "yet:"
 msgstr[0] ""
+"$addon_title 은 당신이 아직 설치하지 않은 다음의 추가 기능에 의존합니다:"
 
 #: src/addon_management.cpp:518
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
+"$addon_title|을 설치하실 것입니까? (이것을 플레이하려면 모든 부속 기능을 설치"
+"해야 할것입니다.)"
 
 #: src/addon_management.cpp:539 src/addon_management.cpp:613
 #: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
-msgstr ""
+msgstr "접속 시간 초과"
 
 #: src/addon_management.cpp:542
 msgid "The server responded with an error: \"$error|\""
@@ -5965,7 +6127,7 @@ msgstr ""
 
 #: src/addon_management.cpp:645
 msgid "Downloading add-on: $addon_title|..."
-msgstr ""
+msgstr "추가 기능 다운중: $addon_title|..."
 
 #: src/addon_management.cpp:660
 msgid ""
@@ -5974,7 +6136,7 @@ msgstr ""
 
 #: src/addon_management.cpp:709
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr ""
+msgstr "추가 기능 '$addon_title|' 이 무사히 설치되었습니다."
 
 #: src/addon_management.cpp:710
 msgid "Add-on Installed"
@@ -6162,27 +6324,27 @@ msgstr ""
 
 #: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:217
 msgid "Attacker"
-msgstr ""
+msgstr "공격자"
 
 #: src/attack_prediction_display.cpp:108 src/attack_prediction_display.cpp:216
 msgid "Defender"
-msgstr ""
+msgstr "방어자"
 
 #: src/attack_prediction_display.cpp:126
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "예상 전투 결과 (HP)"
 
 #: src/attack_prediction_display.cpp:218
 msgid " resistance vs "
-msgstr ""
+msgstr "내성 vs"
 
 #: src/attack_prediction_display.cpp:219
 msgid " vulnerability vs "
-msgstr ""
+msgstr "약점 vs"
 
 #: src/attack_prediction_display.cpp:229
 msgid "Slowed"
-msgstr ""
+msgstr "둔화"
 
 #: src/attack_prediction_display.cpp:236
 msgid "Time of day"
@@ -6190,19 +6352,19 @@ msgstr "시간대"
 
 #: src/attack_prediction_display.cpp:246
 msgid "Leadership"
-msgstr ""
+msgstr "지휘"
 
 #: src/attack_prediction_display.cpp:253
 msgid "Total damage"
-msgstr ""
+msgstr "총 데미지"
 
 #: src/attack_prediction_display.cpp:260 src/mouse_events.cpp:670
 msgid "No usable weapon"
-msgstr ""
+msgstr "쓸 수 있는 무기 없음"
 
 #: src/attack_prediction_display.cpp:265
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "한대도 안맞을 확률"
 
 #: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:739
 msgid "Damage Calculations"
@@ -6214,11 +6376,11 @@ msgstr "유닛 승급"
 
 #: src/dialogs.cpp:129
 msgid "What should our victorious unit become?"
-msgstr ""
+msgstr "승리한 유닛을 무엇으로 만들까요?"
 
 #: src/dialogs.cpp:232
 msgid "No objectives available"
-msgstr ""
+msgstr "가능한 목표 없음"
 
 #: src/dialogs.cpp:261
 msgid "Do you really want to delete this game?"
@@ -6339,7 +6501,7 @@ msgstr ""
 
 #: src/dialogs.cpp:767 src/help.cpp:1333
 msgid "level"
-msgstr ""
+msgstr "레벨"
 
 #: src/dialogs.cpp:780 src/help.cpp:1436
 msgid "HP: "
@@ -6475,11 +6637,11 @@ msgstr ""
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
-msgstr ""
+msgstr "투명:"
 
 #: src/generate_report.cpp:129
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
-msgstr ""
+msgstr "이 유닛은 투명합니다. 적은 이 유닛을 보거나 공격할 수 없습니다."
 
 #: src/generate_report.cpp:132
 msgid "slowed: "
@@ -6521,25 +6683,25 @@ msgstr "이 유닛은 석화되었습니다. 움직이거나 공격할 수 없�
 
 #: src/generate_report.cpp:195
 msgid "Resistances: "
-msgstr ""
+msgstr "저항력:"
 
 #: src/generate_report.cpp:197
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(공격 / 방어)"
 
 #: src/generate_report.cpp:214 src/multiplayer_create.cpp:413
 msgid "Experience Modifier: "
-msgstr ""
+msgstr "경험치 수정:"
 
 #: src/generate_report.cpp:287
 msgid "tooltip^damage"
 msgid_plural "damage"
-msgstr[0] ""
+msgstr[0] "데미지"
 
 #: src/generate_report.cpp:288
 msgid "tooltip^attack"
 msgid_plural "attacks"
-msgstr[0] ""
+msgstr[0] "회 공격"
 
 #: src/generate_report.cpp:294
 #, no-c-format
@@ -6553,11 +6715,11 @@ msgstr ""
 
 #: src/generate_report.cpp:310
 msgid "weapon range: "
-msgstr ""
+msgstr "공격 범위:"
 
 #: src/generate_report.cpp:311
 msgid "damage type: "
-msgstr ""
+msgstr "피해 유형:"
 
 #: src/generate_report.cpp:332
 msgid "vs"
@@ -6565,15 +6727,15 @@ msgstr ""
 
 #: src/generate_report.cpp:385
 msgid "Lawful units: "
-msgstr ""
+msgstr "주행성 유닛:"
 
 #: src/generate_report.cpp:386
 msgid "Neutral units: "
-msgstr ""
+msgstr "시간대 중립:"
 
 #: src/generate_report.cpp:387
 msgid "Chaotic units: "
-msgstr ""
+msgstr "야행성 유닛:"
 
 #: src/generate_report.cpp:565
 msgid "Observers:"
@@ -6581,11 +6743,11 @@ msgstr ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
-msgstr ""
+msgstr "알 수 없는 시대: $era_id"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
-msgstr ""
+msgstr "알 수 없는 시대"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
 msgid "Remote scenario"
@@ -6593,34 +6755,34 @@ msgstr ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
 msgid "Unknown scenario: $scenario_id"
-msgstr ""
+msgstr "알 수 없는 시나리오: $scenario_id"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
-msgstr ""
+msgstr "알 수 없는 시나리오"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:513
 msgid "Reloaded game"
-msgstr ""
+msgstr "불러온 게임"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
 msgid "Turn "
-msgstr ""
+msgstr "턴 수"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] ""
+msgstr[0] "빈 슬롯 수:"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:304 src/multiplayer_lobby.cpp:544
 msgid "Fog"
-msgstr ""
+msgstr "안개"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
 msgid "Shroud"
-msgstr ""
+msgstr "장막"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
 msgid "none"
@@ -6668,31 +6830,31 @@ msgstr "도움말"
 
 #: src/help.cpp:1140
 msgid "<header>text='Units having this special attack'</header>"
-msgstr ""
+msgstr "이 특수 공격을 가진 유닛들"
 
 #: src/help.cpp:1216
 msgid "<header>text='Units having this ability'</header>"
-msgstr ""
+msgstr "이 능력을 가진 유닛들"
 
 #: src/help.cpp:1249
 msgid "Leaders:"
-msgstr ""
+msgstr "대장:"
 
 #: src/help.cpp:1258
 msgid "Recruits:"
-msgstr ""
+msgstr "소집대원:"
 
 #: src/help.cpp:1272 src/multiplayer_create.cpp:79
 msgid "Era:"
-msgstr ""
+msgstr "시대:"
 
 #: src/help.cpp:1280
 msgid "Factions:"
-msgstr ""
+msgstr "당파:"
 
 #: src/help.cpp:1290
 msgid "Factions are only used in multiplayer"
-msgstr ""
+msgstr "당파는 멀티플레이에서만 지원함"
 
 #: src/help.cpp:1365
 msgid "Advances from: "
@@ -6704,27 +6866,27 @@ msgstr "해당 유닛으로 승급:"
 
 #: src/help.cpp:1394 src/help.cpp:1706 src/help.cpp:1756
 msgid "race^Miscellaneous"
-msgstr ""
+msgstr "기타"
 
 #: src/help.cpp:1396
 msgid "Race: "
-msgstr ""
+msgstr "종족:"
 
 #: src/help.cpp:1403
 msgid "Abilities: "
-msgstr ""
+msgstr "능력:"
 
 #: src/help.cpp:1420
 msgid "Ability Upgrades: "
-msgstr ""
+msgstr "이거 어디 나옴?:"
 
 #: src/help.cpp:1438
 msgid "Cost: "
-msgstr ""
+msgstr "소집비용:"
 
 #: src/help.cpp:1439
 msgid "Alignment: "
-msgstr ""
+msgstr "선호시간대:"
 
 #: src/help.cpp:1445
 msgid "Required XP: "
@@ -6732,63 +6894,63 @@ msgstr "필요 경험치:"
 
 #: src/help.cpp:1454
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "공격"
 
 #: src/help.cpp:1461
 msgid "unit help^Name"
-msgstr ""
+msgstr "이름"
 
 #: src/help.cpp:1463
 msgid "Strikes"
-msgstr ""
+msgstr "공격력"
 
 #: src/help.cpp:1464
 msgid "Range"
-msgstr ""
+msgstr "공격범위"
 
 #: src/help.cpp:1465
 msgid "Special"
-msgstr ""
+msgstr "특수능력"
 
 #: src/help.cpp:1515
 msgid "Resistances"
-msgstr ""
+msgstr "저항력"
 
 #: src/help.cpp:1519
 msgid "Attack Type"
-msgstr ""
+msgstr "공격 유형"
 
 #: src/help.cpp:1520
 msgid "Resistance"
-msgstr ""
+msgstr "저항도"
 
 #: src/help.cpp:1555
 msgid "Terrain Modifiers"
-msgstr ""
+msgstr "지형 수정"
 
 #: src/help.cpp:1559
 msgid "Terrain"
-msgstr ""
+msgstr "지형"
 
 #: src/help.cpp:1560
 msgid "Defense"
-msgstr ""
+msgstr "방어도"
 
 #: src/help.cpp:1561
 msgid "Movement Cost"
-msgstr ""
+msgstr "소모 이동력"
 
 #: src/help.cpp:1762
 msgid "<header>text='Units of this race'</header>"
-msgstr ""
+msgstr "<header>text='이 종족 소속 유닛'</header>"
 
 #: src/help.cpp:2683 src/menu_events.cpp:570
 msgid " < Back"
-msgstr ""
+msgstr "< 뒤로"
 
 #: src/help.cpp:2684
 msgid "Forward >"
-msgstr ""
+msgstr "앞으로 >"
 
 #: src/help.cpp:2796
 msgid "Reference to unknown topic: "
@@ -6808,16 +6970,16 @@ msgstr ""
 
 #: src/intro.cpp:49
 msgid "The End"
-msgstr ""
+msgstr "- 끝 -"
 
 #: src/language.cpp:98
 msgid "System default language"
-msgstr ""
+msgstr "시스템 기본 언어"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1463
 #: src/multiplayer_connect.cpp:221 src/multiplayer_connect.cpp:265
 msgid "gender^Random"
-msgstr ""
+msgstr "무작위"
 
 #: src/leader_list.cpp:147 src/multiplayer_connect.cpp:217
 #: src/multiplayer_connect.cpp:261
@@ -6831,23 +6993,23 @@ msgstr "남성 ♂"
 
 #: src/leader_list.cpp:162 src/leader_list.cpp:187
 msgid "Random"
-msgstr ""
+msgstr "무작위"
 
 #: src/leader_list.cpp:235 src/leader_list.cpp:241
 msgid "?"
-msgstr ""
+msgstr "???"
 
 #: src/loadscreen.cpp:244
 msgid "Verifying cache..."
-msgstr ""
+msgstr "캐시 확인중..."
 
 #: src/loadscreen.cpp:262
 msgid "Reading unit files..."
-msgstr ""
+msgstr "유닛 파일 읽는중..."
 
 #: src/loadscreen.cpp:280
 msgid "Reading files and creating cache..."
-msgstr ""
+msgstr "파일 읽어오면서 캐시를 생성중..."
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
@@ -6859,134 +7021,140 @@ msgstr ""
 
 #: src/menu_events.cpp:91 src/menu_events.cpp:94 src/menu_events.cpp:98
 msgid "Do you really want to dismiss him?"
-msgstr ""
+msgstr "정말 그를 버리시겠습니까?"
 
 #: src/menu_events.cpp:91
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr ""
+msgstr "대장님, 이 유닛은 심복이라서 유지비가 필요없습니다!"
 
 #: src/menu_events.cpp:92 src/menu_events.cpp:95 src/menu_events.cpp:99
 msgid "Do you really want to dismiss her?"
-msgstr ""
+msgstr "정말 그녀를 버리시겠습니까?"
 
 #: src/menu_events.cpp:94
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr ""
+msgstr "대장님, 이 유닛은 고레벨의 숙련병입니다!"
 
 #: src/menu_events.cpp:98
 msgid "My lord, this unit is close to advancing a level! "
-msgstr ""
+msgstr "대장님, 이 유닛은 승급하기 일보직전입니다!"
 
 #: src/menu_events.cpp:196
 msgid "Statistics"
-msgstr ""
+msgstr "통계"
 
 #: src/menu_events.cpp:207
 msgid "Moves"
-msgstr ""
+msgstr "이동력"
 
 #: src/menu_events.cpp:208
 msgid "Status"
-msgstr ""
+msgstr "상태"
 
 #: src/menu_events.cpp:210 src/menu_events.cpp:844
 msgid "Level^Lvl."
-msgstr ""
+msgstr "레벨"
 
 #: src/menu_events.cpp:212
 msgid "unit list^Traits"
-msgstr ""
+msgstr "특성"
 
 #: src/menu_events.cpp:310
 msgid "Unit List"
-msgstr ""
+msgstr "유닛 목록"
 
 #: src/menu_events.cpp:316 src/menu_events.cpp:338
 msgid "Scroll To"
-msgstr ""
+msgstr "스크롤 이동"
 
 #: src/menu_events.cpp:370
 msgid "Leader"
-msgstr ""
+msgstr "대장"
 
 #: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1017
 msgid "Team"
-msgstr ""
+msgstr "군단"
 
 #: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1028
 msgid "Gold"
-msgstr ""
+msgstr "자금"
 
 #: src/menu_events.cpp:373
 msgid "Villages"
-msgstr ""
+msgstr "마을 수"
 
 #: src/menu_events.cpp:374
 msgid "status^Units"
-msgstr ""
+msgstr "유닛 수"
 
 #: src/menu_events.cpp:375
 msgid "Upkeep"
-msgstr ""
+msgstr "유지비"
 
 #: src/menu_events.cpp:376 src/multiplayer_connect.cpp:1029
 #: src/multiplayer_wait.cpp:507
 msgid "Income"
-msgstr ""
+msgstr "수입"
 
 #: src/menu_events.cpp:477
 msgid "Current Status"
-msgstr ""
+msgstr "현재 상태"
 
 #: src/menu_events.cpp:478
 msgid "More >"
-msgstr ""
+msgstr "더 보기 >"
 
 #: src/menu_events.cpp:496
 msgid "scenario settings^Leader"
-msgstr ""
+msgstr "대장"
 
 #: src/menu_events.cpp:498
 msgid "scenario settings^Side"
-msgstr ""
+msgstr "진영"
 
 #: src/menu_events.cpp:499
 msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr ""
+"초기\n"
+"자금"
 
 #: src/menu_events.cpp:500
 msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
+"기초\n"
+"수입"
 
 #: src/menu_events.cpp:501
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
+"마을 당\n"
+"수입"
 
 #: src/menu_events.cpp:502
 msgid "scenario settings^Fog"
-msgstr ""
+msgstr "안개"
 
 #: src/menu_events.cpp:503
 msgid "scenario settings^Shroud"
-msgstr ""
+msgstr "장막"
 
 #: src/menu_events.cpp:550 src/menu_events.cpp:551
 msgid "no"
-msgstr ""
+msgstr "없음"
 
 #: src/menu_events.cpp:550 src/menu_events.cpp:551
 msgid "yes"
-msgstr ""
+msgstr "있음"
 
 #: src/menu_events.cpp:567
 msgid "Scenario Settings"
-msgstr ""
+msgstr "시나리오 설정"
 
 #: src/menu_events.cpp:589
 msgid "Save the Map As"
@@ -7002,7 +7170,7 @@ msgstr "맵이 저장되었습니다."
 
 #: src/menu_events.cpp:610
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "맵을 저장할 수 없습니다: $msg"
 
 #: src/menu_events.cpp:625
 msgid "Chat Log"
@@ -7059,7 +7227,7 @@ msgstr "재소집"
 
 #: src/menu_events.cpp:920
 msgid "Dismiss Unit"
-msgstr ""
+msgstr "유닛을 버린다"
 
 #: src/menu_events.cpp:941
 msgid "You must have at least 1 gold piece to recall a unit"
@@ -7085,7 +7253,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1460
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "유닛 창조 (Debug!)"
 
 #: src/menu_events.cpp:1463 src/multiplayer_wait.cpp:127
 msgid "Gender: "
@@ -7516,35 +7684,35 @@ msgstr ""
 
 #: src/menu_events.cpp:2740 src/menu_events.cpp:2746 src/menu_events.cpp:2796
 msgid "ignores list"
-msgstr ""
+msgstr "무시 목록"
 
 #: src/menu_events.cpp:2746
 msgid "Added to ignore list: $nick"
-msgstr ""
+msgstr "무시 목록에 추가: $nick"
 
 #: src/menu_events.cpp:2749 src/menu_events.cpp:2768
 msgid "Invalid username: $nick"
-msgstr ""
+msgstr "없는 유저명: $nick"
 
 #: src/menu_events.cpp:2759 src/menu_events.cpp:2766 src/menu_events.cpp:2792
 msgid "friends list"
-msgstr ""
+msgstr "친구 목록"
 
 #: src/menu_events.cpp:2766
 msgid "Added to friends list: $nick"
-msgstr ""
+msgstr "친구 목록에 추가: $nick"
 
 #: src/menu_events.cpp:2782
 msgid "Removed from list: $nick"
-msgstr ""
+msgstr "목록에서 제외: $nick"
 
 #: src/menu_events.cpp:2782 src/menu_events.cpp:2800
 msgid "friends and ignores list"
-msgstr ""
+msgstr "친구 및 무시 목록"
 
 #: src/menu_events.cpp:2800
 msgid "There are no players on your friends or ignore list."
-msgstr ""
+msgstr "당신의 친구 및 무시 목록에는 아무도 없습니다."
 
 #: src/menu_events.cpp:2805
 msgid "version"
@@ -7757,7 +7925,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:659
 msgid "(Vacant slot)"
-msgstr ""
+msgstr "(빈 공간)"
 
 #: src/multiplayer_connect.cpp:667
 msgid "Anonymous local player"
@@ -7773,7 +7941,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:687
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(없는 칸)"
 
 #: src/multiplayer_connect.cpp:694
 msgid "(Reserved for $playername)"
@@ -7853,103 +8021,103 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:727
 msgid "Create Game"
-msgstr ""
+msgstr "방 만들기"
 
 #: src/multiplayer_create.cpp:63
 msgid "Time limit"
-msgstr ""
+msgstr "시간 제한"
 
 #: src/multiplayer_create.cpp:76
 msgid "Name of game:"
-msgstr ""
+msgstr "방 제목:"
 
 #: src/multiplayer_create.cpp:80
 msgid "Map to play:"
-msgstr ""
+msgstr "플레이할 맵:"
 
 #: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
 msgid "Use map settings"
-msgstr ""
+msgstr "맵 설정을 사용함"
 
 #: src/multiplayer_create.cpp:82
 msgid "Random start time"
-msgstr ""
+msgstr "무작위 시작 시간대"
 
 #: src/multiplayer_create.cpp:83
 msgid "Fog Of War"
-msgstr ""
+msgstr "안개 활성화"
 
 #: src/multiplayer_create.cpp:85
 msgid "Observers"
-msgstr ""
+msgstr "관전 허용"
 
 #: src/multiplayer_create.cpp:88
 msgid "Regenerate"
-msgstr ""
+msgstr "재생성"
 
 #: src/multiplayer_create.cpp:89
 msgid "Settings..."
-msgstr ""
+msgstr "설정..."
 
 #: src/multiplayer_create.cpp:90
 msgid "Set Password..."
-msgstr ""
+msgstr "암호 설정..."
 
 #: src/multiplayer_create.cpp:107
 msgid "Load Game..."
-msgstr ""
+msgstr "게임 불러오기..."
 
 #: src/multiplayer_create.cpp:143
 msgid "The maximum number of turns the game can last"
-msgstr ""
+msgstr "게임이 지속되는 최대 턴수"
 
 #: src/multiplayer_create.cpp:146
 msgid "Enables user time limit"
-msgstr ""
+msgstr "시간 제한을 활성화 합니다"
 
 #: src/multiplayer_create.cpp:152
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "첫번째 턴에 허용되는 최대 시간 (초)"
 
 #: src/multiplayer_create.cpp:158
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "모든 턴에 허용되는 최대 시간 (초)"
 
 #: src/multiplayer_create.cpp:164
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "일반적인 행동에 부여되는 턴당 시간 (초)"
 
 #: src/multiplayer_create.cpp:170
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "각 공격, 소집, 점령마다 주어지는 시간"
 
 #: src/multiplayer_create.cpp:175
 msgid "The amount of income each village yields per turn"
-msgstr ""
+msgstr "턴마다 각 마을이 주는 수입량"
 
 #: src/multiplayer_create.cpp:181
 msgid "The amount of experience a unit needs to advance"
-msgstr ""
+msgstr "유닛이 승급하기 위해 필요한 경험치량"
 
 #: src/multiplayer_create.cpp:184
 msgid "Use scenario specific settings"
-msgstr ""
+msgstr "시나리오에 특정된 설정을 사용합니다"
 
 #: src/multiplayer_create.cpp:187
 msgid "Randomize time of day in begin"
-msgstr ""
+msgstr "시작시의 시간대를 무작위로 설정합니다"
 
 #: src/multiplayer_create.cpp:190
 msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr ""
+msgstr "당신의 유닛의 범위 안에 들어오지 않은 적 유닛은 볼 수 없습니다"
 
 #: src/multiplayer_create.cpp:193
 msgid "The map is unknown until your units explore it"
-msgstr ""
+msgstr "당신의 유닛이 탐색하지 않은 맵은 미지의 공간입니다"
 
 #: src/multiplayer_create.cpp:196
 msgid "Allow users who are not playing to watch the game"
-msgstr ""
+msgstr "플레이어가 아닌 사람들이 게임을 구경할 수 있게 허용합니다"
 
 #: src/multiplayer_create.cpp:200
 msgid "Share View"
