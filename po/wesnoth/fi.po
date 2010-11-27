@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-11-25 18:13+0100\n"
-"PO-Revision-Date: 2010-04-30 23:55+0200\n"
-"Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
+"PO-Revision-Date: 2010-11-25 20:51+0100\n"
+"Last-Translator: Jussi Rautio <kipuna@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -51,14 +51,13 @@ msgstr "Animoi kartta"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
-#, fuzzy
 msgid "Local time of day light"
-msgstr "Satunnainen vuorokauden aika aloittaessa"
+msgstr "Paikallinen vuorokaudenaika"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:48
 msgid "Local time of day light effect (use more memory)."
-msgstr ""
+msgstr "Paikallinen päivänvaloefekti (käyttää lisää muistia)"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:55
@@ -1950,9 +1949,8 @@ msgstr "Valon ja pimeän pelko ei tartu kiinni näihin urheisiin yksilöihin."
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:408
-#, fuzzy
 msgid "Feral"
-msgstr "Yhteensä"
+msgstr "Villi"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:409
@@ -1961,6 +1959,9 @@ msgid ""
 "creatures of low intelligence. As a result, feral units receive a maximum of "
 "40% defense in any land-based village regardless of base terrain."
 msgstr ""
+"Villieläimet eivät ole tottuneet piiloutumaan tai suojautumaan älykkäiden "
+"olentojen asumuksiin. Tämän takia villieläimet saavat maalla sijaitsevissa "
+"kylissä enintään 40% puolustuksen riippumatta ruudun perusmaastosta."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:414
@@ -2235,8 +2236,8 @@ msgid ""
 "text='Flat'</ref> terrain.\n"
 "\n"
 msgstr ""
-"Tiet ovat kuluneita hiekasta ja mudasta muodostuneita kulkureittejä, "
-"syntyneinä monien kulkijoiden tallattua samaa polkua pitkin. Pelaamisen "
+"Tiet ovat kuluneita hiekasta ja mudasta muodostuneita kulkureittejä jotka "
+"ovat syntyneet monien kulkijoiden tallattua samaa polkua pitkin. Pelaamisen "
 "kannalta tiet vastaavat <ref>dst='terrain_flat' text='tasankoja'</ref>."
 
 #. [topic]: id=terrain_forest
@@ -2314,6 +2315,7 @@ msgstr "vuori"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:546
+#, fuzzy
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -4863,9 +4865,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
-#, fuzzy
 msgid "Turns run out"
-msgstr "Vuoroja: "
+msgstr "Vuoroja ei enää ole jäljellä"
 
 #: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:101
 msgid "Early finish bonus."
@@ -4935,7 +4936,7 @@ msgstr ""
 #. [illuminated_time]: id=indoors_illum
 #: data/core/macros/schedules.cfg:70 data/core/macros/schedules.cfg:76
 msgid "Indoors"
-msgstr ""
+msgstr "Sisätiloissa"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -5303,20 +5304,18 @@ msgstr "Taistelee normaalisti epäedullisina vuorokaudenaikoina"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
-msgstr "Yhteensä"
+msgstr "villi"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
-msgstr "neutraali"
+msgstr "villi"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
 msgid "Receive only 40% defense in land-based villages"
-msgstr ""
+msgstr "Saa vain 40% puolustuksen maalla sijaitsevissa kylissä"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -5447,6 +5446,12 @@ msgid ""
 "especially when encountered in groups. Typically nocturnal, they are often "
 "kept (and occasionally tamed) by those who share their love of the night."
 msgstr ""
+"Lepakkoja on monenmuotoisia ja -kokoisia. Suurin osa syö hyönteisiä ja muita "
+"pikkueläimiä; nämä lajit ovat melko vaarattomia. Suuremmat ja ilkeämmät "
+"lajit uhkaavat ihmisiä ja muita rotuja samoin kuin näiden karjaa, "
+"erityisesti silloin kun ne liikkuvat parvissa. Lepakot ovat tyypillisesti "
+"yöeläimiä, ja sellaiset älylliset olennot jotka pitävät niitä kotieläiminä "
+"(ja joskus kesyttävät) pitävät yleensä myös yöstä."
 
 #. [race]: id=drake
 #: data/core/units.cfg:52
@@ -5841,6 +5846,22 @@ msgid ""
 "exception of jobs that require the brute strength of true orcs. Those the "
 "orcs revel in as proof of their prowess."
 msgstr ""
+"Sitä ei kenties heti arvaisi, mutta hiidet ovat örkkien sisaruksia ja "
+"kuuluvat samaan lajiin. Kun muut lajit yleensä saavat lapsia yksi tai kaksi "
+"kerrallaan, örkkien pesueet ovat suuria, minkä takia örkkien väestön kasvaa "
+"hyvin nopeasti. Jokaisessa pesueessa on vain yksi tai kaksi täysikokoiseksi "
+"kasvavaa örkkiä. Niiden lisäksi on muutama puoliörkki. Nämä ovat "
+"huomattavasti heikompia kuin isoveljensä ja toimivat taistelussa "
+"tukitehtävissä kuten jousiampujina. Muut, yleensä puolet pesueesta tai "
+"enemmän, ovat hiisiä. Hiidet ovat pieniä ja heikkoja; ne kasvavat harvoin "
+"ihmislasta suuremmiksi. Hiidet viettävät käytännössä koko elämänsä örkkien "
+"orjuudessa. Taistelussa niitä käytetään miekanruokana. Ne pärjäävät "
+"surkeista oloistaan huolimatta, sekä suuren määränsä takia että siksi, koska "
+"niiden örkkiveljet tajuavat olevansa niistä riippuvaisia.\n"
+"\n"
+"Hiidet tekevät suurimman osan örkkien tarvitsemasta ruumiillisesta työstä "
+"lukuunottamatta sellaisia töitä joihin nimenomaan vaaditaan paljon raakaa "
+"voimaa. Tällaiset työt örkit tekevät itse ja ylpeilevät suuresti voimistaan."
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:145
@@ -6461,10 +6482,10 @@ msgid ""
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Lainkuuliaiset yksiköt taistelevat parhaiten päivällä, ja huonoiten yöllä.\n"
+"Hämärässä viihtyvät yksiköt taistelevat paremmin hämärässä ja normaalisti "
+"valossa tai pimeässä.\n"
 "\n"
-"Päivä: +25% vahinkoon\n"
-"Yö: −25% vahinkoon"
+"Hämärä: +25% vahinkoon"
 
 #. [language]
 #: data/hardwired/english.cfg:15
@@ -6669,9 +6690,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:137
-#, fuzzy
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "– Suurmaagi Delfador, 516 WV"
+msgstr "<i>― Suurmaagi Delfador, 516 WV</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:8
@@ -6705,9 +6725,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:197 data/hardwired/tips.cfg:205
 #: data/hardwired/tips.cfg:225 data/hardwired/tips.cfg:234
 #: data/hardwired/tips.cfg:238
-#, fuzzy
 msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "– Wesnothin taktinen opaskirja"
+msgstr "<i>― Wesnothin taktinen opaskirja</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
@@ -6825,9 +6844,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:41
-#, fuzzy
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "– Wesnoth-yhteisö"
+msgstr "<i>― Wesnoth-yhteisö</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
@@ -6837,15 +6855,18 @@ msgid ""
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>Liminal</i> unit type fights best during the twilight hours."
 msgstr ""
-"Lainkuuliaiset yksiköt taistelevat parhaiten päivisin, kaoottiset öisin ja "
-"neutraaleihin yksiköihin ei päivän ja yön vaihtelu vaikuta."
+"<i>Lainkuuliaiset</i> yksiköt taistelevat parhaiten päivisin ja "
+"<i>kaoottiset</i> taas öisin. <i>Neutraalit</i> yksiköt taistelevat yhtä "
+"hyvin vuorokaudenajasta riippumatta. Jotkin harvat yksiköt taistelevat "
+"parhaiten aamu- ja iltahämärässä."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
-#, fuzzy
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr "– Kuninkaallinen taistelutermistöopas, osa 2 (212 WV)"
+msgstr ""
+"<i>― Kuninkaallinen taistelusanaston yleiskatsaus, osa 2 (painettu uudelleen "
+"221 WV)</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:48
@@ -6859,20 +6880,18 @@ msgstr ""
 #: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:73
 #: data/hardwired/tips.cfg:125 data/hardwired/tips.cfg:133
 #: data/hardwired/tips.cfg:213
-#, fuzzy
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "– Haldric II: Taktisen analyysin käsikirja, osa 1 (42 WV)"
+msgstr "<i>― Haldric II: Taktisen analyysin käsikirja, osa 1 (42 WV)</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
-#, fuzzy
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"Jos pelaat ”sumulla” tai ”hunnulla”, et näe mitä olet kohtaamassa. "
+"Jos pelaat <i>sumulla</i> tai <i>hunnulla</i>, et näe mitä olet kohtaamassa. "
 "Tällaisessa tapauksessa pitkän matkan tiedustelijayksiköt ovat arvonsa "
 "väärtejä. Yritä valita tiedustelijat, jotka voivat helposti liikkua "
 "ympäröivässä maastossa, koska yksiköt näkevät juuri niin pitkälle kuin "
@@ -6880,7 +6899,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:56
-#, fuzzy
 msgid ""
 "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
 "<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
@@ -6888,27 +6906,26 @@ msgid ""
 "Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
-"Hyökkäyksiä on kuutta tyyppiä: lävistys, viilto, murjova, tuli, kylmä ja "
-"salatiede. Eri yksiköillä on heikkouksia erilaisia hyökkäyksiä vastaan. "
-"Klikkaa yksikköä hiiren oikealla napilla, valitse ”Yksikön kuvaus” "
-"nähdäksesi, kuinka hyvin yksikkö vastustaa erilaisia hyökkäystyyppejä."
+"Hyökkäyksiä on kuutta tyyppiä: <i>lävistys</i>, <i>viilto</i>, <i>murjova</"
+"i>, <i>tuli</i>, <i>kylmä</i> ja <i>salatiede</i>. Eri yksiköillä on "
+"heikkouksia erilaisia hyökkäyksiä vastaan. Klikkaa yksikköä hiiren oikealla "
+"napilla, valitse <i>Yksikön kuvaus</i> nähdäksesi, kuinka hyvin yksikkö "
+"vastustaa erilaisia hyökkäystyyppejä."
 
 #. [tip]
 #: data/hardwired/tips.cfg:60
-#, fuzzy
 msgid ""
 "The terrain occupied by your units is the main factor determining the chance "
 "that they will be hit. The defensive rating for the currently selected unit "
 "in the currently selected terrain is displayed in the top right corner of "
 "the screen."
 msgstr ""
-"Maasto, jossa yksikkösi on, määrää vihollisten mahdollisuuden osua "
-"yksikköösi taistelussa. Puolustusprosentti valitulle yksikölle maastossa, "
-"jossa yksikkö sijaitsee, näkyy ruudun oikeassa yläkulmassa."
+"Maasto, jossa yksikkösi on, on tärkein tekijä joka vaikuttaa vihollisten "
+"mahdollisuuteen osua yksikköösi taistelussa. Puolustusprosentti valitulle "
+"yksikölle valitussa maastossa näkyy ruudun oikeassa yläkulmassa."
 
 #. [tip]
 #: data/hardwired/tips.cfg:64
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
@@ -6920,23 +6937,21 @@ msgstr ""
 "he ovat pisteen päässä kuolemasta. Ne jäävät kuoleman ovelle, kunnes myrkky "
 "on poistettu. Hoivaajat voivat estää myrkytetyn yksikön tilan huonontumisen, "
 "mutta myrkky ei katoa ennen kuin yksikkö uusiutuu, viettää vuoron kylässä "
-"tai lääkitsemään kykenevän yksikön vieressä."
+"tai <i>lääkitsemään</i> kykenevän yksikön vieressä."
 
 #. [tip]
 #: data/hardwired/tips.cfg:68
-#, fuzzy
 msgid ""
 "You can reuse units from a previous scenario by selecting <b>Recall</b> from "
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
-"Voit käyttää yksiköitä aikaisemmista taisteluista valitsemalla ”Kutsu "
-"veteraaniyksikkö” Toiminnot-valikosta. Kutsumalla samat yksiköt yhä "
-"uudelleen voit luoda tehokkaan ja kokeneen armeijan."
+"Voit käyttää yksiköitä aikaisemmista taisteluista valitsemalla <b>Kutsu "
+"veteraaniyksikkö</b>-toiminnon <b>Toiminnot</b>-valikosta. Kutsumalla samat "
+"yksiköt yhä uudelleen voit luoda tehokkaan ja kokeneen armeijan."
 
 #. [tip]
 #: data/hardwired/tips.cfg:72
-#, fuzzy
 msgid ""
 "Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
 "around them. If a unit moves into an enemy’s zone of control, it may not "
@@ -6944,16 +6959,15 @@ msgid ""
 "between them and still create a barrier to the enemy. Beware, though: "
 "skirmishers can pass through these gaps."
 msgstr ""
-"Yksiköt hallitsevat kaikkia vieressään olevia heksoja. Jos yksikkö liikkuu "
-"vihollisen hallitsemaan heksaan, se ei voi liikkua enempää sillä vuorolla. "
-"Tämä tarkoittaa, että yksiköillä voi olla kaksi tyhjää heksaa välissään, ja "
-"silti ne muodostavat esteen viholliselle. (Tason 0 yksiköt ovat liian "
-"heikkoja hallitsemaan aluetta ja kahakoitsijat osaavat taitavasti välttää "
-"näiden alueiden vaikutukset.)"
+"Yksiköt <i>hallitsevat</i> kaikkia vieressään olevia heksoja. Jos yksikkö "
+"liikkuu vihollisen hallitsemaan heksaan, se ei voi liikkua enempää sillä "
+"vuorolla. Tämä tarkoittaa, että yksiköillä voi olla kaksi tyhjää heksaa "
+"välissään, ja silti ne muodostavat esteen viholliselle. (Tason 0 yksiköt "
+"ovat liian heikkoja hallitsemaan aluetta ja kahakoitsijat osaavat taitavasti "
+"välttää näiden alueiden vaikutukset.)"
 
 #. [tip]
 #: data/hardwired/tips.cfg:76
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -6963,14 +6977,13 @@ msgid ""
 msgstr ""
 "Mahdollisuus osua yksikköön riippuu yleensä yksikön puolustustaidosta siinä "
 "maastossa, jossa se on. Maagisilla hyökkäyksillä on kuitenkin aina 70% "
-"mahdollisuus osua sekä hyökätessä että puolustaessa. Tarkk’ampujilla on aina "
-"vähintään 60% mahdollisuus osua hyökätessä."
+"mahdollisuus osua sekä hyökätessä että puolustaessa. <i>Tarkk’ampujilla</i> "
+"on aina vähintään 60% mahdollisuus osua hyökätessään omalla vuorollaan."
 
 #. [tip]
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "– Haldric II: Taktisen analyysin käsikirja, osa 1 (42 WV)"
+msgstr "<i>― Haldric II: Taktisen analyysin käsikirja, osa 2 (43 WV)</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
@@ -6994,16 +7007,16 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:88
-#, fuzzy
 msgid ""
 "On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
 "units’ sightlines are limited by their maximum movement. If you have some "
 "valuable but slow units, keep at least one fast unit with them so that you "
 "are not caught out by a surprise attack."
 msgstr ""
-"Kartoissa, joissa on käytössä sumu tai huntu, näkevät yksiköt vain niin "
-"kauas kuin pystyvät liikkumaan. Muista tämä päättäessäsi mikä yksikkö on "
-"paras tiedustelemaan missäkin maastossa."
+"Kartoissa, joissa on käytössä <i>sumu</i> tai <i>huntu</i>, yksiköt näkevät "
+"vain niin kauas kuin minne pystyvät liikkumaan. Jos omistat tärkeitä mutta "
+"hitaita yksiköitä, voi olla hyödyllistä pitää ainakin yhtä nopeaa yksikköä "
+"niiden mukana jotta vihollinen ei yllätä niitä."
 
 #. [tip]
 #: data/hardwired/tips.cfg:92
@@ -7018,9 +7031,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:173
-#, fuzzy
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "– Sir Kaylan, 498 WV"
+msgstr "<i>― Sir Kaylan, 498 WV</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:96
@@ -7035,9 +7047,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:97
-#, fuzzy
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "– Sir Kaylan, 502 WV"
+msgstr "<i>― Sir Kaylan, 502 WV</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:100
@@ -7088,13 +7099,11 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:117
-#, fuzzy
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "– Meneldur, 123 WV"
+msgstr "<i>― Meneldur, 123 WV</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:120
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns "
@@ -7108,16 +7117,15 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:124
-#, fuzzy
 msgid ""
 "<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
 "not just the keep they start on. Sometimes your allies may be willing to "
 "make room for you on their keep so you can recruit from there, and you can "
 "even capture an enemy’s keep and use that."
 msgstr ""
-"Johtajasi voi kutsua ja värvätä yksiköitä missä tahansa linnakkeessa, ei "
-"vain siinä, jossa hän aloitti. Voit siis vallata linnakkeen viholliselta ja "
-"värvätä siellä, tai jos liittolaisesi haluavat tehdä tilaa, voit värvätä "
+"<i>Johtaja</i> voi kutsua ja värvätä yksiköitä missä tahansa linnakkeessa, "
+"ei vain siinä, jossa hän aloitti. Voit siis vallata linnakkeen viholliselta "
+"ja värvätä siellä, tai jos liittolaisesi haluavat tehdä tilaa, voit värvätä "
 "heidän linnakkeissaan."
 
 #. [tip]
@@ -7348,6 +7356,12 @@ msgid ""
 "leadership—or a strong or dextrous unit—whenever the extra point or two of "
 "damage makes a one-hit kill possible."
 msgstr ""
+"Yksiköt joilla on kolme hyökkäystä tai enemmän, (vielä parempi jos nämä "
+"hyökkäykset ovat maagisia), sopivat hyvin sellaisten vihollisten tappamiseen "
+"joilla on vain muutama kestopiste jäljellä. Jos yksikölle olisi jäämässä "
+"vain yksi tai kaksi kestopistettä, harkitse voisitko käyttää johtamiskykyä "
+"tai kenties vahvaa taikka ketterää yksikköä tappamaan vihollisen yhdellä "
+"iskulla."
 
 #. [tip]
 #: data/hardwired/tips.cfg:212
@@ -7364,11 +7378,15 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
+"Kun jokin kestävä yksikkösi on haavoittunut pahoin, voit lähettää sen "
+"paranemaan kylään, joka on useamman vuoron päässä taistelusta. Siellä se voi "
+"parantua rauhassa (10 kestopisteen vuorovauhtia) ilman että se sitoo "
+"etulinjassa olevia kyliä."
 
 #. [tip]
 #: data/hardwired/tips.cfg:217 data/hardwired/tips.cfg:229
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
+msgstr "<i>― Hamel, Knalgan herra</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:220
@@ -7416,6 +7434,9 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
+"<i>Villit</i> yksiköt, kuten lepakot ja villieläimet, välttävät kyliä. Ne "
+"eivät saa mitään puolustushyötyä ollessaan kylässä, ne kuitenkin paranevat "
+"kylissä normaalisti."
 
 #: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1637
 msgid "Victory:"
@@ -7427,19 +7448,20 @@ msgstr "Tappio:"
 
 #: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
-msgstr ""
+msgstr "Seuraavaan tehtävään siirtyvä kulta:"
 
 #: data/lua/wml/objectives.lua:53
 msgid "Notes:"
-msgstr ""
+msgstr "Huomautus:"
 
 #: data/lua/wml/objectives.lua:69
 msgid "(%d turns left)"
-msgstr ""
+msgstr "(%d vuoroa jäljellä)"
 
 #: data/lua/wml/objectives.lua:71
+#, fuzzy
 msgid "(this turn left)"
-msgstr ""
+msgstr "(%d vuoroa jäljellä)"
 
 #: data/lua/wml/objectives.lua:113
 #, fuzzy
@@ -7866,7 +7888,7 @@ msgstr ""
 
 #: src/addon/manager.cpp:857
 msgid "Installation failed"
-msgstr ""
+msgstr "Asennus epäonnistui"
 
 #: src/addon/manager.cpp:859 src/addon/manager.cpp:1087
 msgid "The following add-on could not be downloaded or updated successfully:"
@@ -7926,7 +7948,7 @@ msgstr "Päivitä kaikki"
 #: src/addon/manager.cpp:1052 src/addon/manager.cpp:1069
 #: src/addon/manager.cpp:1310
 msgid "Installation of some dependency failed"
-msgstr ""
+msgstr "Asennus tai jokin sen riippuvuus epäonnistui"
 
 #: src/addon/manager.cpp:1054 src/addon/manager.cpp:1071
 #: src/addon/manager.cpp:1312
@@ -7998,7 +8020,7 @@ msgstr "latauksia"
 
 #: src/addon/manager.cpp:1262
 msgid "Done"
-msgstr ""
+msgstr "Valmis"
 
 #: src/addon/manager.cpp:1273 src/dialogs.cpp:622 src/menu_events.cpp:930
 #: src/menu_events.cpp:1542
@@ -8344,28 +8366,24 @@ msgid "Name: "
 msgstr "Nimi: "
 
 #: src/generate_report.cpp:101
-#, fuzzy
 msgid "Type: "
-msgstr "tyyppi"
+msgstr "Tyyppi:"
 
 #: src/generate_report.cpp:113 src/help.cpp:1404
 msgid "Race: "
 msgstr "Laji: "
 
 #: src/generate_report.cpp:136
-#, fuzzy
 msgid "Level: "
-msgstr "taso"
+msgstr "Taso:"
 
 #: src/generate_report.cpp:141
-#, fuzzy
 msgid "No advancement"
-msgstr "Ylennyksiä"
+msgstr "Ei ylennyksiä"
 
 #: src/generate_report.cpp:143
-#, fuzzy
 msgid "Advances to:"
-msgstr "Ylenee yksiköksi: "
+msgstr "Ylenee yksiköksi:"
 
 #: src/generate_report.cpp:166
 #, fuzzy
@@ -8442,9 +8460,8 @@ msgid "Experience Modifier: "
 msgstr "Vaadittu kokemus: "
 
 #: src/generate_report.cpp:290
-#, fuzzy
 msgid "Terrain: "
-msgstr "maasto"
+msgstr "Maasto:"
 
 #: src/generate_report.cpp:307
 msgid "maximum^max."
@@ -8455,63 +8472,52 @@ msgid "minimum^min."
 msgstr ""
 
 #: src/generate_report.cpp:312
-#, fuzzy
 msgid "Defense: "
-msgstr "Puolustus"
+msgstr "Puolustus:"
 
 #: src/generate_report.cpp:387
-#, fuzzy
 msgid "Weapon: "
-msgstr "aseen kantama: "
+msgstr "Ase:"
 
 #: src/generate_report.cpp:388
-#, fuzzy
 msgid "Damage: "
-msgstr "Vahinko"
+msgstr "Vahinko:"
 
 #: src/generate_report.cpp:391
-#, fuzzy
 msgid "Base damage: "
-msgstr "kokonaisvahinko"
+msgstr "Perusvahinko:"
 
 #: src/generate_report.cpp:393
-#, fuzzy
 msgid "Time of day: "
-msgstr "Vuorokaudenaika"
+msgstr "Vuorokaudenaika:"
 
 #: src/generate_report.cpp:397
-#, fuzzy
 msgid "Leadership: "
-msgstr "johtamiskyky"
+msgstr "Johtamiskyky:"
 
 #: src/generate_report.cpp:401
-#, fuzzy
 msgid "Slowed: "
-msgstr "hidastettu: "
+msgstr "Hidastettu:"
 
 #: src/generate_report.cpp:405
-#, fuzzy
 msgid "Attacks: "
-msgstr "Hyökkääjä"
+msgstr "Hyökkäyksiä:"
 
 #: src/generate_report.cpp:407
 msgid "Base attacks: "
-msgstr ""
+msgstr "Perushyökkäyksiä:"
 
 #: src/generate_report.cpp:409
-#, fuzzy
 msgid "Swarm: "
-msgstr "parvi"
+msgstr "Parvi:"
 
 #: src/generate_report.cpp:421
-#, fuzzy
 msgid "Weapon range: "
-msgstr "aseen kantama: "
+msgstr "Aseen kantama:"
 
 #: src/generate_report.cpp:422
-#, fuzzy
 msgid "Damage type: "
-msgstr "vahinkotyyppi: "
+msgstr "Vahinkotyyppi:"
 
 #: src/generate_report.cpp:423
 #, fuzzy
@@ -8529,9 +8535,8 @@ msgid "Parry:"
 msgstr "% torjunnat"
 
 #: src/generate_report.cpp:494
-#, fuzzy
 msgid "Weapon special: "
-msgstr "Hyökkäystaidot"
+msgstr "Aseen erikoisuus:"
 
 #: src/generate_report.cpp:528
 msgid "Lawful units: "
@@ -8548,7 +8553,7 @@ msgstr "Kaoottiset yksiköt: "
 #: src/generate_report.cpp:533
 #, fuzzy
 msgid "Liminal units: "
-msgstr "Lainkuuliaiset yksiköt: "
+msgstr "Hämärässä viihtyvät yksiköt: "
 
 #: src/generate_report.cpp:714
 msgid "Observers:"
@@ -8826,9 +8831,8 @@ msgid "Reading files and creating cache"
 msgstr "Luetaan tiedostoja ja luodaan väliaikaistiedostoja"
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
-#, fuzzy
 msgid "Reading unit files"
-msgstr "Luetaan yksikkötiedostoja..."
+msgstr "Luetaan yksikkötiedostoja"
 
 #: src/loadscreen.cpp:227
 #, fuzzy
@@ -8836,14 +8840,12 @@ msgid "Re-initialize fonts for the current language"
 msgstr "Alustetaan merkistö uudelleen tätä kieltä varten."
 
 #: src/loadscreen.cpp:228
-#, fuzzy
 msgid "Searching for installed add-ons"
-msgstr "Etsitään asennettuja lisäosia."
+msgstr "Etsitään asennettuja lisäosia"
 
 #: src/loadscreen.cpp:229
-#, fuzzy
 msgid "Loading title screen"
-msgstr "Ladataan aloitusikkunaa."
+msgstr "Ladataan aloitusikkunaa"
 
 #: src/loadscreen.cpp:230
 msgid "Loading data files"
@@ -8867,7 +8869,7 @@ msgstr "Alustetaan näyttöä"
 
 #: src/loadscreen.cpp:238
 msgid "Building terrain rules"
-msgstr ""
+msgstr "Rakennetaan maastosääntöjä"
 
 #: src/loadscreen.cpp:240
 msgid "Starting game"
@@ -9199,12 +9201,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2271
 msgid "(A) - admin command"
-msgstr ""
+msgstr "(A) - ylläpitokomento"
 
 #: src/menu_events.cpp:2278 src/menu_events.cpp:2481
-#, fuzzy
 msgid "(admin only)"
-msgstr "Vain joukkue"
+msgstr "(vain ylläpitäjä)"
 
 #: src/menu_events.cpp:2298
 msgid ""
@@ -9257,9 +9258,8 @@ msgstr ""
 "Lähetä viesti tällä hetkellä paikalla olevalle palvelimen ylläpitäjälle"
 
 #: src/menu_events.cpp:2326
-#, fuzzy
 msgid "<message>"
-msgstr "Viesti:"
+msgstr "<viesti>"
 
 #: src/menu_events.cpp:2326
 msgid "Send an emotion or personal action in chat."
@@ -9465,20 +9465,24 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
+"Vaihda annettuun vuoroon (myös vuorokaudenaika muuttuu) tai vaihda "
+"seuraavaan vuoroon jos numeroa ei ole annettu."
 
 #: src/menu_events.cpp:2540
 msgid "[turn]"
-msgstr ""
+msgstr "[vuoro]"
 
 #: src/menu_events.cpp:2542
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
+"Aseta pelin enimmäispituus vuoroina tai poista enimmäispituus jos lukuarvoa "
+"ei ole annettu tai jos se on -1."
 
 #: src/menu_events.cpp:2542
 msgid "[limit]"
-msgstr ""
+msgstr "[enimmäispituus]"
 
 #: src/menu_events.cpp:2544
 msgid "Turn debug mode on."
@@ -9498,7 +9502,7 @@ msgstr "Suorita Lua-skripti."
 
 #: src/menu_events.cpp:2550
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Anna Lua-skripteille enemmän oikeuksia"
 
 #: src/menu_events.cpp:2552
 msgid "Set the command used by the custom command hotkey"
@@ -9510,7 +9514,7 @@ msgstr "Käynnistä pelitilan tarkkailija."
 
 #: src/menu_events.cpp:2556
 msgid "Manage persistence data"
-msgstr ""
+msgstr "Hallinnoi pysyvää dataa"
 
 #: src/menu_events.cpp:2558
 msgid "<name>[=<command>]"
@@ -9599,11 +9603,11 @@ msgstr "Tason '$level' alueeseen '$domain' vaihdettu."
 
 #: src/menu_events.cpp:2724
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "yksityisviesti vastaanottajalle $receiver"
 
 #: src/menu_events.cpp:2731
 msgid "whisper: $sender"
-msgstr ""
+msgstr "yksityisviesti: $sender"
 
 #: src/menu_events.cpp:2827 src/menu_events.cpp:2846
 #: src/multiplayer_connect.cpp:699
@@ -9665,7 +9669,7 @@ msgstr "pudotetaan käyttäjänimesi"
 
 #: src/menu_events.cpp:2944
 msgid "setting $var to $value"
-msgstr ""
+msgstr "muuttuja $var asetettu arvoon $value"
 
 #: src/menu_events.cpp:2958
 msgid "requesting information for user $nick"
@@ -9729,7 +9733,7 @@ msgstr ""
 
 #: src/menu_events.cpp:3431
 msgid "Variable not found"
-msgstr ""
+msgstr "Muuttujaa ei löytynyt"
 
 #: src/menu_events.cpp:3475
 msgid ""
@@ -9804,7 +9808,7 @@ msgstr "Palvelinpuolen uudelleenohjaussilmukka"
 
 #: src/multiplayer.cpp:262
 msgid "Bad data received from server"
-msgstr ""
+msgstr "Virhe palvelimelta saadussa datassa"
 
 #: src/multiplayer.cpp:303
 msgid "You must login first."
@@ -9963,7 +9967,7 @@ msgstr "Skenaario on virheellinen, koska siinä ei ole puolia."
 
 #: src/multiplayer_connect.cpp:1096
 msgid "Enter a name for the new player"
-msgstr ""
+msgstr "Syötä uuden pelaajan nimi"
 
 #: src/multiplayer_connect.cpp:1459
 msgid "Network Player"
@@ -10239,9 +10243,8 @@ msgid "Friends in Game"
 msgstr "Ystävät pelissä"
 
 #: src/multiplayer_lobby.cpp:742
-#, fuzzy
 msgid "Search:"
-msgstr "Etsi"
+msgstr "Etsi:"
 
 #: src/multiplayer_lobby.cpp:751
 msgid "Skip quickly to the active turn when observing"
@@ -10261,16 +10264,16 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:762
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "Näytä vain pelit joissa on vähintään yksi paikka vapaana"
 
 #: src/multiplayer_lobby.cpp:766
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
-msgstr ""
+msgstr "Näytä vain pelit joita pelaa tai tarkkailee ainakin yksi kaverisi"
 
 #: src/multiplayer_lobby.cpp:770
 msgid "Only show games whose title or description contain the entered text"
-msgstr ""
+msgstr "Näytä vain pelit joiden nimessä tai kuvauksessa on antamasi teksti"
 
 #: src/multiplayer_lobby.cpp:904
 msgid "Joining this game requires a password."
@@ -10824,8 +10827,9 @@ msgid "lawful"
 msgstr "lainkuuliainen"
 
 #: src/unit_types.cpp:964
+#, fuzzy
 msgid "liminal"
-msgstr ""
+msgstr "viihtyy hämärässä"
 
 #: src/unit_types.cpp:964
 msgid "neutral"
@@ -10842,7 +10846,7 @@ msgstr "lainkuuliainen"
 #: src/unit_types.cpp:965
 #, fuzzy
 msgid "female^liminal"
-msgstr "uskollinen"
+msgstr "viihtyy hämärässä"
 
 #: src/unit_types.cpp:965
 msgid "female^neutral"
