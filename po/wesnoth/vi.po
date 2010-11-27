@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-11-25 18:13+0100\n"
-"PO-Revision-Date: 2010-10-01 17:03+0700\n"
+"PO-Revision-Date: 2010-11-27 10:04+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
@@ -1728,7 +1728,6 @@ msgstr "Tóm lược"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:338
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -5205,7 +5204,7 @@ msgstr "ẩn nấp"
 #: data/core/macros/traits.cfg:53
 #, fuzzy
 msgid "female^elemental"
-msgstr "trung thành"
+msgstr "ẩn nấp"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:66
@@ -8189,11 +8188,11 @@ msgstr "Trận chiến giành Wesnoth"
 
 #: src/game.cpp:992 src/game.cpp:1010
 msgid "The file you have tried to load is corrupt"
-msgstr "Tập tin bạn thử tải bị hỏng"
+msgstr "Tập tin bạn cố tải bị hỏng"
 
 #: src/game.cpp:995 src/game.cpp:1013 src/savegame.cpp:535
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Tập tin bạn thử tải bị hỏng: '"
+msgstr "Tập tin bạn cố tải bị hỏng: '"
 
 #: src/game.cpp:1003
 msgid "File I/O Error while reading the game"
@@ -10509,7 +10508,7 @@ msgstr " phát lại"
 
 #: src/savegame.cpp:447 src/savegame.cpp:451
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "Cảnh báo: Tập tin bạn thử tải bị hỏng. Vẫn đang tải.\n"
+msgstr "Cảnh báo: Tập tin bạn cố tải bị hỏng. Vẫn đang tải.\n"
 
 #: src/savegame.cpp:490
 msgid "This save is from a version too old to be loaded."
@@ -10771,53 +10770,6 @@ msgstr "trung thành"
 msgid "female^neutral"
 msgstr "trung lập"
 
-#~ msgid "Difficulty"
-#~ msgstr "Độ khó"
-
-#~ msgid "Select difficulty level:"
-#~ msgstr "Chọn mức độ khó:"
-
-#~ msgid "Place Label"
-#~ msgstr "Đặt nhãn"
-
-#~ msgid "Label: "
-#~ msgstr "Nhãn: "
-
-#~ msgid "Team only"
-#~ msgstr "Chỉ đội"
-
-#~ msgid "User-Command#3"
-#~ msgstr "Lệnh người dùng #3"
-
-#, fuzzy
-#~ msgid ""
-#~ "<i>― Haldric II, 42 YW, from Handbook of Tactical Analysis: Volume I</i>"
-#~ msgstr "- Sổ tay phân tích mưu lược, tập I - Haldric II, năm Wesnoth 42"
-
-#~ msgid "About to upload statistics — Help us make Wesnoth better for you!"
-#~ msgstr ""
-#~ "Sắp tải lên thông tin thống kê - Giúp chúng tôi làm cho Wesnoth tốt hơn "
-#~ "cho bạn!"
-
-#~ msgid "Save my reply and do not ask again"
-#~ msgstr "Lưu câu trả lời của tôi và không hỏi lại nữa"
-
-#~ msgid ""
-#~ "To change the setting later on, click on the envelope icon in the main "
-#~ "menu."
-#~ msgstr ""
-#~ "Để thay đổi thiết lập về sau, nhấn vào biểu tượng phong bì trong trình "
-#~ "đơn chính."
-
-#~ msgid "Send"
-#~ msgstr "Gửi"
-
-#~ msgid "Don’t send"
-#~ msgstr "Không gửi"
-
-#~ msgid "Do not ask every time before sending data"
-#~ msgstr "Không hỏi mỗi lần trước khi gửi dữ liệu"
-
 #~ msgid "Multiplayer_AI^Default AI"
 #~ msgstr "Nhiều người chơi"
 
@@ -10844,6 +10796,30 @@ msgstr "trung lập"
 #~ "bì gần góc phải phía dưới trên màn hình chính của trò chơi). Thông tin "
 #~ "này là quan trọng để chúng tôi có thể điều chỉnh độ khó của chiến dịch."
 
+#~ msgid "About to upload statistics — Help us make Wesnoth better for you!"
+#~ msgstr ""
+#~ "Sắp tải lên thông tin thống kê - Giúp chúng tôi làm cho Wesnoth tốt hơn "
+#~ "cho bạn!"
+
+#~ msgid "Save my reply and do not ask again"
+#~ msgstr "Lưu câu trả lời của tôi và không hỏi lại nữa"
+
+#~ msgid ""
+#~ "To change the setting later on, click on the envelope icon in the main "
+#~ "menu."
+#~ msgstr ""
+#~ "Để thay đổi thiết lập về sau, nhấn vào biểu tượng phong bì trong trình "
+#~ "đơn chính."
+
+#~ msgid "Send"
+#~ msgstr "Gửi"
+
+#~ msgid "Don’t send"
+#~ msgstr "Không gửi"
+
+#~ msgid "Do not ask every time before sending data"
+#~ msgstr "Không hỏi mỗi lần trước khi gửi dữ liệu"
+
 #~ msgid ""
 #~ "$addon_title depends upon the following add-on which you have not "
 #~ "installed yet:"
@@ -10858,6 +10834,12 @@ msgstr "trung lập"
 #~ msgstr ""
 #~ "Bạn vẫn muốn tải về $addon_title|? (Bạn sẽ phải cài đặt tất cả các phần "
 #~ "phụ thuộc bổ sung để chơi.)"
+
+#~ msgid "Difficulty"
+#~ msgstr "Độ khó"
+
+#~ msgid "Select difficulty level:"
+#~ msgstr "Chọn mức độ khó:"
 
 #~ msgid "[unit_worth]'s filter didn't match any units!"
 #~ msgstr "Bộ lọc của [unit_worth] không khớp với bất kỳ đơn vị nào!"
@@ -10878,6 +10860,18 @@ msgstr "trung lập"
 
 #~ msgid "vs"
 #~ msgstr "đấu với"
+
+#~ msgid "Place Label"
+#~ msgstr "Đặt nhãn"
+
+#~ msgid "Label: "
+#~ msgstr "Nhãn: "
+
+#~ msgid "Team only"
+#~ msgstr "Chỉ đội"
+
+#~ msgid "User-Command#3"
+#~ msgstr "Lệnh người dùng #3"
 
 #~ msgid "Filter:"
 #~ msgstr "Bộ lọc: "
