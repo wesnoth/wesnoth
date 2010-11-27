@@ -53,7 +53,7 @@ def isDirective(elem):
     "Identify things that shouldn't be indented."
     if isinstance(elem, WmlIterator):
         elem = elem.element
-    for prefix in ("#ifdef", "#ifndef", "#else", "#endif", "#define", "#enddef", "#undef"):
+    for prefix in ("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#else", "#endif", "#define", "#enddef", "#undef"):
         if elem.startswith(prefix):
             return True
     return False
@@ -216,9 +216,11 @@ Important Attributes:
         keys: either "key=" or ("key1=", "key2=") for multi-assignment
             key= - does not affect the scope
             key1,key2= - multi-assignment returns multiple elements
-        directives: one of "#ifdef", "#ifndef", "#else", "#endif", "#define", "#enddef"
+        directives: one of "#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#else", "#endif", "#define", "#enddef"
             #ifdef - opens a scope
             #ifndef - opens a scope
+            #ifhave - opens a scope
+            #ifnhave - opens a scope
             #else - closes a scope, also opens a new scope
             #endif - closes a scope
             #define - opens a scope
@@ -255,6 +257,10 @@ Important Attributes:
             return (['#ifdef'],)*2
         elif text.startswith('#ifndef'):
             return (['#ifndef'],)*2
+        elif text.startswith('#ifhave'):
+            return (['#ifhave'],)*2
+        elif text.startswith('#ifnhave'):
+            return (['#ifnhave'],)*2
         elif text.startswith('#else'):
             if not self.closeScope(self.scopes, '#else'):
                 self.printScopeError('#else')
