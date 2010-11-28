@@ -1366,10 +1366,6 @@ player_map::iterator game::find_user(const simple_wml::string_span& name)
 	return pl;
 }
 
-player_map::const_iterator game::find_user(const simple_wml::string_span& name) const {
-	return wesnothd::find_user(*player_info_, name);
-}
-
 void game::send_and_record_server_message(const char* message,
 		                                  const network::connection exclude)
 {
