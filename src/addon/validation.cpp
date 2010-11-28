@@ -84,26 +84,6 @@ ADDON_TYPE get_addon_type(const std::string& str)
 		return ADDON_UNKNOWN;
 }
 
-void find_scripts(config &cfg, const std::string &extension,
-                  std::vector<config *> &scripts)
-{
-	foreach (config &i, cfg.child_range("dir"))
-	{
-		foreach (config &j, cfg.child_range("file"))
-		{
-			std::string filename = j["name"];
-			if (filename.length() > extension.length()) {
-				if (filename.substr(filename.length() - extension.length()) ==
-					extension) {
-					scripts.push_back(&j);
-				}
-			}
-		}
-		// Recursively look for files in sub directories.
-		find_scripts(i, extension, scripts);
-	}
-}
-
 namespace {
 	const char escape_char = '\x01'; /**< Binary escape char. */
 } // end unnamed namespace 2

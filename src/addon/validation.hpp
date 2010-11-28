@@ -58,8 +58,6 @@ ADDON_TYPE get_addon_type(const std::string& str);
 bool addon_name_legal(const std::string& name);
 /** Probes an add-on archive for illegal names. */
 bool check_names_legal(const config& dir);
-/** Adds detected scripts to a vector. */
-void find_scripts(config &cfg, const std::string &extension, std::vector<config *> &);
 
 std::string encode_binary(const std::string& str);
 std::string unencode_binary(const std::string& str);
