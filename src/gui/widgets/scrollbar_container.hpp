@@ -153,9 +153,6 @@ public:
 	tscrollbar_mode get_horizontal_scrollbar_mode() const
 		{ return horizontal_scrollbar_mode_; }
 
-	void vertical_scrollbar_click(twidget* caller);
-	void horizontal_scrollbar_click(twidget* caller);
-
 	tgrid *content_grid() { return content_grid_; }
 	const tgrid *content_grid() const { return content_grid_; }
 

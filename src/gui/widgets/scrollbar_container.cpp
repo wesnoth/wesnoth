@@ -643,28 +643,6 @@ bool tscrollbar_container::content_resize_height(const int height_modification)
 	return true;
 }
 
-void tscrollbar_container::vertical_scrollbar_click(twidget* caller)
-{
-	const std::map<std::string, tscrollbar_::tscroll>::const_iterator
-		itor = scroll_lookup().find(caller->id());
-
-	assert(itor != scroll_lookup().end());
-	vertical_scrollbar_->scroll(itor->second);
-
-	scrollbar_moved();
-}
-
-void tscrollbar_container::horizontal_scrollbar_click(twidget* caller)
-{
-	const std::map<std::string, tscrollbar_::tscroll>::const_iterator
-		itor = scroll_lookup().find(caller->id());
-
-	assert(itor != scroll_lookup().end());
-	horizontal_scrollbar_->scroll(itor->second);
-
-	scrollbar_moved();
-}
-
 void tscrollbar_container::finalize_setup()
 {
 	/***** Setup vertical scrollbar *****/
