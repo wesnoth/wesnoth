@@ -44,32 +44,10 @@ side_filter::side_filter():
 #endif
 
 
-side_filter::side_filter(const vconfig& cfg, const bool flat_tod) :
+side_filter::side_filter(const vconfig& cfg, bool flat_tod) :
 	cfg_(cfg),
 	flat_(flat_tod)
 {
-}
-
-side_filter::side_filter(const vconfig& cfg, const side_filter& original) :
-	cfg_(cfg),
-	flat_(original.flat_)
-{
-}
-
-side_filter::side_filter(const side_filter& other) :
-	cfg_(other.cfg_),
-	flat_(other.flat_)
-{
-}
-
-side_filter& side_filter::operator=(const side_filter& other)
-{
-	// Use copy constructor to make sure we are coherant
-	if (this != &other) {
-		this->~side_filter();
-		new (this) side_filter(other) ;
-	}
-	return *this ;
 }
 
 bool side_filter::match_internal(const team &t) const
@@ -123,17 +101,17 @@ bool side_filter::match(const team& t) const
 		//handle [and]
 		if(cond_name == "and")
 		{
-			matches = matches && side_filter(cond_cfg, *this).match(t);
+			matches = matches && side_filter(cond_cfg, flat_).match(t);
 		}
 		//handle [or]
 		else if(cond_name == "or")
 		{
-			matches = matches || side_filter(cond_cfg, *this).match(t);
+			matches = matches || side_filter(cond_cfg, flat_).match(t);
 		}
 		//handle [not]
 		else if(cond_name == "not")
 		{
-			matches = matches && !side_filter(cond_cfg, *this).match(t);
+			matches = matches && !side_filter(cond_cfg, flat_).match(t);
 		}
 			++cond;
 	}

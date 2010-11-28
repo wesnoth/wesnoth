@@ -36,11 +36,7 @@ public:
 	side_filter();
 #endif
 
-	side_filter(const vconfig& cfg, const bool flat_tod = false);
-	side_filter(const vconfig& cfg, const side_filter& original);
-
-	side_filter(const side_filter &other);
-	side_filter& operator=(const side_filter &other);
+	side_filter(const vconfig &cfg, bool flat_tod = false);
 
 	//match: returns true if and only if the given team matches this filter
 	bool match(const team& t) const;
@@ -52,6 +48,9 @@ public:
 
 	config to_config() const;
 private:
+	side_filter(const side_filter &other);
+	side_filter& operator=(const side_filter &other);
+
 	bool match_internal(const team& t) const;
 
 	const vconfig cfg_; //config contains WML for a Standard Side Filter
