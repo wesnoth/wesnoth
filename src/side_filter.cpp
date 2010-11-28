@@ -118,15 +118,6 @@ bool side_filter::match(const team& t) const
 	return matches;
 }
 
-void side_filter::get_teams(std::set<team*> &teams) const
-{
-	foreach (team &t, *resources::teams) {
-		if (match(t)) {
-			teams.insert(&t);
-		}
-	}
-}
-
 config side_filter::to_config() const
 {
 	return cfg_.get_config();

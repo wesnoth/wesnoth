@@ -42,10 +42,6 @@ public:
 	bool match(const team& t) const;
 	bool match(const int side) const;
 
-	//get_teams: gets all teams on the map that match this filter
-	// @param teams - out parameter containing the results
-	void get_teams(std::set<team*> &teams) const;
-
 	config to_config() const;
 private:
 	side_filter(const side_filter &other);
