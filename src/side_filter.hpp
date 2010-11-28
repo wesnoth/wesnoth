@@ -42,7 +42,6 @@ public:
 	bool match(const team& t) const;
 	bool match(const int side) const;
 
-	config to_config() const;
 private:
 	side_filter(const side_filter &other);
 	side_filter& operator=(const side_filter &other);

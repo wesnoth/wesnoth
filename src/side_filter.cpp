@@ -117,9 +117,3 @@ bool side_filter::match(const team& t) const
 	}
 	return matches;
 }
-
-config side_filter::to_config() const
-{
-	return cfg_.get_config();
-}
-
