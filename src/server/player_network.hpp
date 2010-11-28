@@ -36,15 +36,6 @@ namespace chat_message {
 typedef std::map<network::connection,player> player_map;
 typedef std::vector<network::connection> connection_vector;
 
-/** Convenience function for finding a user by name
- * @param all_players map of all players
- * @param name        name of the player to look for
- * @return            an iterator pointing to the player, or to end() if the
- *                    name was not found.
- */
-player_map::const_iterator find_user(const player_map& all_players,
-									 const simple_wml::string_span& name);
-
 /**
  * Send a wml document to a single player
  * @param data        the document to send

@@ -42,18 +42,6 @@ void truncate_message(const simple_wml::string_span& str, simple_wml::node& mess
 
 } // end chat_message namespace
 
-player_map::const_iterator find_user(const player_map& all_players,
-									 const simple_wml::string_span& name)
-{
-	player_map::const_iterator pl;
-	for (pl = all_players.begin(); pl != all_players.end(); ++pl) {
-		if (name == pl->second.name().c_str()) {
-			return pl;
-		}
-	}
-	return all_players.end();
-}
-
 bool send_to_one(simple_wml::document& data, const network::connection sock, std::string packet_type)
 {
 	if (packet_type.empty())
