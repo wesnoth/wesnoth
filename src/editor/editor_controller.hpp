@@ -297,9 +297,6 @@ class editor_controller : public controller_base,
 		mouse_handler_base& get_mouse_handler_base();
 		editor_display& get_display();
 
-		/** Get the current brush */
-		brush* get_brush();
-
 		/** Get the current mouse action */
 		mouse_action* get_mouse_action();
 

@@ -1274,11 +1274,6 @@ editor_display& editor_controller::get_display()
 	return *gui_;
 }
 
-brush* editor_controller::get_brush()
-{
-	return brush_;
-}
-
 mouse_action* editor_controller::get_mouse_action()
 {
 	return mouse_action_;
