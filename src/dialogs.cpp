@@ -439,7 +439,7 @@ void save_preview_pane::draw_contents()
 	}
 
 	if(map_surf != NULL) {
-		SDL_Rect map_rect = create_rect(area.x + area.w - map_surf->w
+		SDL_Rect map_rect = create_rect(area.x
 				, area.y
 				, map_surf->w
 				, map_surf->h);
