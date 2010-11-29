@@ -29,6 +29,37 @@
 
 namespace gui2 {
 
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 2_campaign_difficulty
+ *
+ * == Campaign difficulty ==
+ *
+ * The campaign mode difficulty menu.
+ *
+ * @begin{table}[dialog_widgets]
+ *
+ * title & & label & m &
+ *         Dialog title label. $
+ *
+ * message & & label & o &
+ *         Text label displaying a description or instructions. $
+ *
+ * listbox & & listbox & m &
+ *         Listbox displaying user choices, defined by WML for each campaign. $
+ *
+ * -icon & & control & m &
+ *         Widget which shows a listbox item icon (1st column). $
+ *
+ * -label & & control & m &
+ *         Widget which shows a listbox item label (2nd column). $
+ *
+ * -description & & control & m &
+ *         Widget which shows a listbox item description (3rd column). $
+ *
+ * @end{table}
+ */
+
 REGISTER_WINDOW(campaign_difficulty)
 
 tcampaign_difficulty::tcampaign_difficulty(const std::vector<std::string>& items)
