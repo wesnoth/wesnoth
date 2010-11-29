@@ -30,6 +30,37 @@
 
 namespace gui2 {
 
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 2_simple_item_selector
+ *
+ * == Simple item selector ==
+ *
+ * A simple one-column listbox with OK and Cancel buttons.
+ *
+ * @begin{table}[dialog_widgets]
+ *
+ * title & & label & m &
+ *         Dialog title label. $
+ *
+ * message & & label & m &
+ *         Text label displaying a description or instructions. $
+ *
+ * listbox & & listbox & m &
+ *         Listbox displaying user choices. $
+ *
+ * -item & & control & m &
+ *         Widget which shows a listbox item label. $
+ *
+ * ok & & button & m &
+ *         OK button. $
+ *
+ * cancel & & button & m &
+ *         Cancel button. $
+ *
+ * @end{table}
+ */
+
 REGISTER_WINDOW(simple_item_selector)
 
 tsimple_item_selector::tsimple_item_selector(const std::string& title, const std::string& message, list_type const& items, bool title_uses_markup, bool message_uses_markup)
