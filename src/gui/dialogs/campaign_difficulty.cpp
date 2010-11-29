@@ -49,13 +49,13 @@ namespace gui2 {
  *         Listbox displaying user choices, defined by WML for each campaign. $
  *
  * -icon & & control & m &
- *         Widget which shows a listbox item icon (1st column). $
+ *         Widget which shows a listbox item icon, first item markup column. $
  *
  * -label & & control & m &
- *         Widget which shows a listbox item label (2nd column). $
+ *         Widget which shows a listbox item label, second item markup column. $
  *
  * -description & & control & m &
- *         Widget which shows a listbox item description (3rd column). $
+ *         Widget which shows a listbox item description, third item markup column. $
  *
  * @end{table}
  */
