@@ -44,11 +44,14 @@ public:
 	void set_cancel_label(const std::string& s) { cancel_label_ = s; }
 	const std::string& cancel_label() const     { return cancel_label_; }
 
+	void set_single_button(bool value) { single_button_ = value; }
+	bool single_button() const         { return single_button_; }
+
 private:
 	int index_;
 
 	std::string title_, msg_;
-	bool markup_title_, markup_msg_;
+	bool markup_title_, markup_msg_, single_button_;
 	list_type items_;
 
 	std::string ok_label_, cancel_label_;
