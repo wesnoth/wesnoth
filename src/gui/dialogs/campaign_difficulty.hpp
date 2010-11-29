@@ -28,6 +28,10 @@ class tcampaign_difficulty : public tdialog
 public:
 	tcampaign_difficulty(const std::vector<std::string>& items);
 
+	/**
+	 * Returns the selected item index after displaying.
+	 * @return -1 if the dialog was cancelled.
+	 */
 	int selected_index() const { return index_; }
 
 private:

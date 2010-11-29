@@ -36,6 +36,7 @@ public:
 		label_ = label;
 	}
 
+	/** Whether only the current team should be able to see the label. */
 	bool team_only() const {
 		return team_only_;
 	}

@@ -35,15 +35,24 @@ public:
 		bool title_uses_markup = false,
 		bool message_uses_markup = false);
 
+	/**
+	 * Returns the selected item index after displaying.
+	 * @return -1 or the originally set index if the dialog was cancelled.
+	 */
 	int selected_index() const         { return index_;  }
+
+	/** Sets the initially selected item index (-1 by default). */
 	void set_selected_index(int index) { index_ = index; }
 
+	/** Sets the caption for the OK button. */
 	void set_ok_label(const std::string& s) { ok_label_ = s; }
 	const std::string& ok_label() const     { return ok_label_; }
 
+	/** Sets the caption for the Cancel button. */
 	void set_cancel_label(const std::string& s) { cancel_label_ = s; }
 	const std::string& cancel_label() const     { return cancel_label_; }
 
+	/** Sets whether the Cancel button should be hidden or not. */
 	void set_single_button(bool value) { single_button_ = value; }
 	bool single_button() const         { return single_button_; }
 
