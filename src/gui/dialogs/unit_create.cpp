@@ -49,9 +49,35 @@ namespace {
 
 namespace gui2 {
 
-REGISTER_WINDOW(unit_create)
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 2_unit_create
+ *
+ * == Unit create ==
+ *
+ * This shows the debug-mode dialog to create new units on the map.
+ *
+ * @begin{table}[dialog_widgets]
+ *
+ * male_toggle & & toggle_button & m &
+ *         Option button to select the "male" gender for created units. $
+ *
+ * female_toggle & & toggle_button & m &
+ *         Option button to select the "female" gender for created units. $
+ *
+ * unit_type_list & & listbox & m &
+ *         Listbox displaying existing unit types sorted by name and race. $
+ *
+ * -unit_type & & control & m &
+ *         Widget which shows the unit type name label. $
+ *
+ * -race & & control & m &
+ *         Widget which shows the unit race name label. $
+ *
+ * @end{table}
+ */
 
-/* TODO: wiki-doc me! */
+REGISTER_WINDOW(unit_create)
 
 tunit_create::tunit_create()
 	: gender_(last_gender)
