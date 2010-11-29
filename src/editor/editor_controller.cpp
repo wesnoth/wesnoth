@@ -661,7 +661,7 @@ bool editor_controller::save_map_as(const std::string& filename)
 	if (is_open < map_contexts_.size()
 			&& is_open != static_cast<unsigned>(current_context_index_)) {
 
-		gui::dialog(gui(), _("This map is already open."), filename).show();
+		gui2::show_transient_message(gui().video(), _("This map is already open."), filename);
 		return false;
 	}
 	std::string old_filename = get_map_context().get_filename();
@@ -703,7 +703,7 @@ bool editor_controller::check_switch_open_map(const std::string& fn)
 {
 	size_t i = check_open_map(fn);
 	if (i < map_contexts_.size()) {
-		gui::dialog(gui(), _("This map is already open."), fn).show();
+		gui2::show_transient_message(gui().video(), _("This map is already open."), fn);
 		switch_context(i);
 		return true;
 	}
