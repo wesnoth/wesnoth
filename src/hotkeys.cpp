@@ -25,6 +25,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
@@ -979,9 +980,9 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			if (size > 0) {
 				std::stringstream res;
 				res << filename << " ( " << size/1000000 <<" "<< (size/1000)%1000 << " kB )";
-				gui::dialog(disp,_("Screenshot done"),res.str(),gui::MESSAGE).show();
+				gui2::show_message(disp.video(), _("Screenshot done"), res.str());
 			} else
-				gui::dialog(disp,_("Screenshot failed"),"",gui::MESSAGE).show();
+				gui2::show_message(disp.video(), _("Screenshot done"), "");
 			break;
 		}
 		case HOTKEY_ANIMATE_MAP:
