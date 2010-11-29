@@ -35,15 +35,11 @@ public:
 	/** Whether the user actually chose a unit type or not. */
 	bool no_choice() const { return choice_.empty(); }
 
-	/** User's choice whether to create a unit with a random name. */
-	bool generate_name() const { return generate_name_; }
-
 	/** Gender choice from the user. */
 	unit_race::GENDER gender() { return gender_; }
 
 private:
 	unit_race::GENDER        gender_;
-	bool                     generate_name_;
 
 	std::string              choice_;
 	std::vector<std::string> type_ids_;

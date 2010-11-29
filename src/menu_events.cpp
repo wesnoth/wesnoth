@@ -1463,7 +1463,6 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 	const unit_type &ut = *utp;
 
 	unit_race::GENDER gender = create_dlg.gender();
-	const bool generate_name = create_dlg.generate_name();
 
 	// Do not try to set bad genders, may mess up l10n
 	// FIXME: is this actually necessary?
@@ -1473,10 +1472,6 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 
 	unit chosen(&ut, 1, true, gender);
 	chosen.new_turn();
-
-	//FIXME: the generate name option seems useless now, remove it
-	if(!generate_name)
-		chosen.set_name("");
 
 	const map_location& loc = mousehandler.get_last_hex();
 	units_.replace(loc, chosen);

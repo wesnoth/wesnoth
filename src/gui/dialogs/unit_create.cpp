@@ -32,7 +32,6 @@
 
 namespace {
 	static std::string last_chosen_type_id = "";
-	static bool last_generate_names_value = true;
 	static unit_race::GENDER last_gender = unit_race::MALE;
 
 	/**
@@ -56,7 +55,6 @@ REGISTER_WINDOW(unit_create)
 
 tunit_create::tunit_create()
 	: gender_(last_gender)
-	, generate_name_(last_generate_names_value)
 	, choice_(last_chosen_type_id)
 	, type_ids_()
 {
@@ -68,8 +66,6 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 			&window, "male_toggle", false);
 	ttoggle_button& female_toggle = find_widget<ttoggle_button>(
 			&window, "female_toggle", false);
-	ttoggle_button& namegen_toggle = find_widget<ttoggle_button>(
-			&window, "namegen_toggle", false);
 	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
 
 	male_toggle.set_callback_state_change(
@@ -79,7 +75,6 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 		dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>
 	);
 	update_male_female_toggles(male_toggle, female_toggle, gender_);
-	namegen_toggle.set_value(generate_name_);
 	list.clear();
 
 	// We use this container to "map" unit_type ids to list subscripts
@@ -126,8 +121,6 @@ void tunit_create::post_show(twindow& window)
 {
 	ttoggle_button& female_toggle = find_widget<ttoggle_button>(
 			&window, "female_toggle", false);
-	ttoggle_button& namegen_toggle = find_widget<ttoggle_button>(
-			&window, "namegen_toggle", false);
 	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
 
 	choice_ = "";
@@ -150,8 +143,6 @@ void tunit_create::post_show(twindow& window)
 		type_ids_[static_cast<size_t>(selected_row)];
 	last_gender = gender_ =
 		female_toggle.get_value() ? unit_race::FEMALE : unit_race::MALE;
-	last_generate_names_value = generate_name_ =
-		namegen_toggle.get_value();
 }
 
 void tunit_create::gender_toggle_callback(twindow& window)
