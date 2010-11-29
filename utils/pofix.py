@@ -3782,6 +3782,7 @@ stringfixes = {
 
 # Fix capitalization
 ("Lava chasm", "Lava Chasm"),
+("Update add-ons", "Update Add-ons"),
 ),
 
 "wesnoth-manual" : (
