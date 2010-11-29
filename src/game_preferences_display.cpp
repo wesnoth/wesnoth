@@ -951,7 +951,7 @@ void preferences_dialog::process_event()
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
-				gui::dialog(disp_, "", _("Invalid username")).show();;
+				gui2::show_transient_error_message(disp_.video(), _("Invalid username"));
             }
         }
 		if (friends_add_ignore_button_.pressed()) {
@@ -959,7 +959,7 @@ void preferences_dialog::process_event()
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
-				gui::dialog(disp_, "", _("Invalid username")).show();;
+				gui2::show_transient_error_message(disp_.video(), _("Invalid username"));
             }
         }
 		if (friends_remove_button_.pressed()) {
