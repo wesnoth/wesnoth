@@ -229,7 +229,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					std::string password = preferences::password();
 
 					bool fall_through = (*error)["force_confirmation"].to_bool() ?
-						(gui::dialog(disp,_("Confirm"),(*error)["message"],gui::OK_CANCEL).show() != 0) :
+						(gui2::show_message(disp.video(), _("Confirm"), (*error)["message"], gui2::tmessage::ok_cancel_buttons) == gui2::twindow::CANCEL) :
 						false;
 
 					const bool is_pw_request = !((*error)["password_request"].empty()) && !(password.empty());
