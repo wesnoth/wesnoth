@@ -21,6 +21,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "log.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -242,9 +243,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			t_vars["player"] = tm.current_player();
 			const std::string msg =  vgettext("$player has left the game. What do you want to do?", t_vars);
-			gui::dialog dlg(*resources::screen, "", msg, gui::OK_ONLY);
-			dlg.set_menu(options);
-			action = dlg.show();
+			gui2::tsimple_item_selector dlg("", msg, options);
+			dlg.set_single_button(true);
+			dlg.show(resources::screen->video());
+			action = dlg.selected_index();
 		}
 
 		//make the player an AI, and redo this turn, in case
