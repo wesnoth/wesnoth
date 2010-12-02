@@ -127,7 +127,7 @@ public abstract class WMLTests extends AbstractXtextTests
 	  protected void checkKeyword(String input) {
 	    // the rule name for a keyword is usually
 	    // the keyword enclosed in single quotes
-	    String rule = new StringBuilder("'").append(input).append("'")
+	    String rule = new StringBuilder("'").append(input).append("'") //$NON-NLS-1$ //$NON-NLS-2$
 	        .toString();
 	    checkTokenisation(input, rule);
 	  }

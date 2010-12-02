@@ -13,6 +13,7 @@ import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
+import org.wesnoth.Messages;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.schema.Tag;
 import org.wesnoth.wML.WMLKey;
@@ -37,7 +38,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 	public void checkFastTagName(WMLTag tag)
 	{
 		if (!tag.getName().equals(tag.getEndName()))
-			warning("Incorrect closing tag name.", WMLPackage.WML_TAG__END_NAME);
+			warning(Messages.getString("WMLJavaValidator.0"), WMLPackage.WML_TAG__END_NAME); //$NON-NLS-1$
 	}
 
 //	@Check(CheckType.NORMAL)
@@ -54,7 +55,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 			String searchName = parentNode.getText();
 			if (node.getParent().eContainer() == null) // root node
 			{
-				searchName = "root";
+				searchName = "root"; //$NON-NLS-1$
 			}
 			if (SchemaParser.getInstance().getTags().get(searchName) != null)
 			{
@@ -68,7 +69,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 					}
 				}
 				if (found == false)
-					warning("There is no such wml tag name.", WMLPackage.WML_TAG__NAME);
+					warning(Messages.getString("WMLJavaValidator.2"), WMLPackage.WML_TAG__NAME); //$NON-NLS-1$
 			}
 		}
 	}
@@ -77,7 +78,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 	public void checkExpensiveKeyValue(WMLKey key)
 	{
 		//TODO: add regex checking here
-		System.out.println("triggered wmlkey expensive validation.");
+		System.out.println(Messages.getString("WMLJavaValidator.3")); //$NON-NLS-1$
 	}
 
 	@Check(CheckType.NORMAL)
