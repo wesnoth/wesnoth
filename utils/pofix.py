@@ -51,6 +51,9 @@ stringfixes = {
 (" -1%", " −1%"),
 (" -100%", " −100%"),
 
+# Fix screw up
+(" —100%", " −100%"),
+
 # Convert makeshift dashes/straight apostrophes:
 # conversion added in 1.9.0-svn
 ("however - from these", "however — from these"),
