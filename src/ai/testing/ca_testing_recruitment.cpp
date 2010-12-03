@@ -542,7 +542,7 @@ static void ai_choose_recruits(fake_team &t, int max_units_to_recruit, double qu
 //   double score;
 //};
 
-void get_recruit_qualities(std::vector<potential_recruit> &recruit_list, fake_team &t, std::vector<fake_team> &fake_teams)
+static void get_recruit_qualities(std::vector<potential_recruit> &recruit_list, fake_team &t, std::vector<fake_team> &fake_teams)
 {
    //DBG_AI << "start of get_recruit_qualities" << std::endl;
    typedef std::map<const unit_type*, std::vector<double> > unit_map;
@@ -595,12 +595,12 @@ protected:
 };
 */
 
-void get_recruit_qualities(fake_team &t, std::vector<fake_team> &fake_teams)
+static void get_recruit_qualities(fake_team &t, std::vector<fake_team> &fake_teams)
 {
 	get_recruit_qualities(t.recruit_list(),t,fake_teams);
 }
 
-void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vector<fake_team> &fake_teams)
+static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vector<fake_team> &fake_teams)
 {
 	std::vector<potential_recruit> recruits;
 	recruits.push_back(rec);
