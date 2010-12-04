@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-25 18:13+0100\n"
-"PO-Revision-Date: 2010-11-17 21:50+0100\n"
-"Last-Translator: Chucho Pulgoso <chuchopulgoso@gmail.com>\n"
+"POT-Creation-Date: 2010-12-03 15:12+0100\n"
+"PO-Revision-Date: 2010-12-03 15:34-0400\n"
+"Last-Translator: PeterPorty <p_llorens@hotmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -95,8 +95,9 @@ msgstr "Diseño de campaña y programación"
 
 #. [about]
 #: data/campaigns/Dead_Water/_main.cfg:33
+#, fuzzy
 msgid "Script-doctoring and cleanup for mainline"
-msgstr ""
+msgstr "Arreglos de scrpit y limpieza para "
 
 #. [about]
 #: data/campaigns/Dead_Water/_main.cfg:39
@@ -636,7 +637,7 @@ msgstr "¡Mirad! Hay un murciélago encogido aquí en la esquina."
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:474
 msgid "Well, kill it, and lets keep moving."
-msgstr ""
+msgstr "Bueno, mátalo, y siguamos nuestro camino."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:478
@@ -1279,6 +1280,9 @@ msgid ""
 "the undead have caught up with us. The spirits may have trapped us here for "
 "the night, but in the morning we will..."
 msgstr ""
+"Temía que esto pudiera suceder. Hemos permanecido demasiado tiempo luchando "
+"contra los saurios y los no muertos nos han alcanzado. Puede que los "
+"espíritus nos hayan atrapado aquí por la noche, pero por la mañana..."
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:370
@@ -1286,21 +1290,23 @@ msgid ""
 "What’s going on? What are you fish-men doing here? Are we constantly to be "
 "pestered by you creatures?"
 msgstr ""
+"¿Qué está pasando? ¿Qué están haciendo aquí los hombres-pezí? ¿Vamos a ser "
+"constantemente acosados por vosotros, monstruos?"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:375
 msgid "He’s one to complain about <i>that</i>..."
-msgstr ""
+msgstr "Él es uno de los que se queja de <i>eso</i>..."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:380
 msgid "We were just passing through."
-msgstr ""
+msgstr "Nosotros estábamos sólo de paso."
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:385
 msgid "Well, finish passing."
-msgstr ""
+msgstr "Bien, acabad de pasar."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:390
@@ -1308,6 +1314,8 @@ msgid ""
 "Actually, we have some ghosts after us now, and we would like to shelter "
 "here for a while."
 msgstr ""
+"En realidad, tenemos algunos fantasmas detrás de nosotros ahora, y nos "
+"gustaría refugiarnos aquí por un tiempo."
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:395
@@ -1315,6 +1323,8 @@ msgid ""
 "Forget about it! We don’t want no trouble, but get off our land! Ghosts who "
 "don’t like fish are your problem."
 msgstr ""
+"¡Olvídaos de eso! ¡No queremos ningún problema, así que fuera de nuestra "
+"tierra! Los fantasmas a los que no les gusta el pescado son vuestro problema."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:400
@@ -1322,6 +1332,8 @@ msgid ""
 "If you give us a few hours to regroup and prepare our soldiers, we will go "
 "without causing you trouble."
 msgstr ""
+"Si nos dáis unas pocas horas para reagruparnos y preparar a nuestros "
+"soldados, nos iremos sin causaros problemas."
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:405
@@ -1331,17 +1343,25 @@ msgid ""
 "whatever...on land again, we’ll cut your throats. And stay off our piers. "
 "And don’t touch the ships neither!"
 msgstr ""
+"Tenéis una hora. Después de eso, levantaremos ese viejo campamento. Quedáos "
+"en el agua si sabéis lo que es bueno para vosotros. Si ponéis los piés... o "
+"lo que sea... en tierra de nuevo, cortaremos vuestros cuellos. Y dejad "
+"nuestros muelles ¡Y no toquéis nuestros barcos!"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:410
 msgid "I wonder how he gets customers with manners like that."
-msgstr ""
+msgstr "Me pregunto cómo consiguen clientes con modales como esos."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:415
+#, fuzzy
 msgid ""
 "One hour will work for us. It will not take all of us to defeat the undead. "
 msgstr ""
+"Una hora nos servirá. No cogeremos a todos los nuestros para derrotar a los "
+"no muertos. (Susurrando) Podemos decidir qué hacer con el orco después de "
+"eso."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:415
@@ -1351,36 +1371,42 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:420
 msgid "You will only be able to use your keep for one turn."
-msgstr ""
+msgstr "Sólo podrá reincorporar durante un turno."
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:488
 msgid "You’re still squatting on our land! I warned you."
-msgstr ""
+msgstr "¡Todavía estáis allanando nuestra tierra! Os lo advertí."
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:522
 msgid "I told you to stay off our land! Now you’re in for it."
 msgstr ""
+"¡Os dije que os quedáseis fuera de nuestra tierra! Ahora os encontráis "
+"dentro por ella."
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:556
 msgid "I told not to bother the ships! Now you’re in for it."
 msgstr ""
+"¡Os dije que dejáseis en paz los barcos! Ahora estáis dentro por ellos."
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:589
+#, fuzzy
 msgid ""
 "You crazy fish men are attacking us? After we tried to be nice? That’s it. "
 "We’re going to end you once and for all."
 msgstr ""
+"¿Vosotros hombres pez locos estáis atacándonos? ¿Después de que hemos "
+"intentado ser amables? Eso es. Acabaremos con vosotros de una vez por todas."
 
 #. [message]: speaker=Kai Krellis
 #. [option]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:670
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:683
 msgid "Now maybe we can head west undisturbed."
-msgstr ""
+msgstr "Ahora quizá podamos poner rumbo al oeste sin ser molestados."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:681
@@ -1393,12 +1419,16 @@ msgid ""
 "This orc leader has not learned that threatening merfolk is a bad idea. We "
 "shall defeat him before we go."
 msgstr ""
+"Este líder orco no ha aprendido que amenazar a los tritones es una mala "
+"idea. Vamos a derrotarlo antes de irnos."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:717
 msgid ""
 "It seems that orc was rich! He has a chest here with over 100 pieces of gold!"
 msgstr ""
+"¡Se ve que ese orco era rico! ¡Tiene un cofre aquí con alrededor de 100 "
+"piezas de oror!"
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:750
@@ -1419,6 +1449,11 @@ msgid ""
 "needed a break from travel; Cylanna only vaguely remembered them, but "
 "thought they might be safe."
 msgstr ""
+"Ahora los tritones no tenían más remedio que viajar a través del mar "
+"abierto, que sabían que era más peligroso que el agua poco profunda. Después "
+"de unos días, encontraron algunas islas en su camino. Los enfermos y los "
+"jóvenes entre los refugiados necesitaban un descanso del viaje; Cylanna se "
+"acordaba de ellas sólo confusamente, pero pensaba que podrían ser seguras."
 
 #. [side]: id=Growloff, type=Ranger
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:83
@@ -1440,12 +1475,12 @@ msgstr "Mascota Amada"
 msgid ""
 "Uh oh. There is someone else here. Hey! He is being attacked by a cuttle "
 "fish!"
-msgstr ""
+msgstr "Umm. Hay alguien más aquí ¡Hey! ¡Le está atacando una sepia!"
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:200
 msgid "Look my pet, here’s a yummy treat!"
-msgstr ""
+msgstr "¡Mira mascota mía, es un apetitoso regalo!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:204
@@ -1455,7 +1490,7 @@ msgstr "O... ¿Está hablándole?"
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:208
 msgid "It is worse than that. I think <i>we</i> are the treat!"
-msgstr ""
+msgstr "Es peor que eso ¡Creo que el regalo somos <i>nosotros</i>!"
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:212
@@ -1473,11 +1508,13 @@ msgid ""
 "Oh no! Look what he has frisking at his heels now. And I thought the cuttle "
 "fish was bad!"
 msgstr ""
+"¡Oh, no! Mirad lo que tiene retozando a sus pies ahora ¡Y yo pensaba que esa "
+"sepia era mala!"
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:241
 msgid "You killed my pet! You’ll pay for that!"
-msgstr ""
+msgstr "¡Mataste a mi mascota! ¡Pagarás por eso!"
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:272
@@ -1487,7 +1524,7 @@ msgstr "¡No me maten!"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:276
 msgid "But you attacked us with these monsters."
-msgstr ""
+msgstr "Pero nos atacásteis con estos monstruos."
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:280
@@ -1496,6 +1533,9 @@ msgid ""
 "friends. They could be your friends too. Spare me, and I’ll give you my "
 "favorite cuttle fish. His name is Inky."
 msgstr ""
+"Son mis amigos. He estado solo aquí... Y tú mataste a tantos de mis amigos. "
+"Ellos podrían ser tus amigos también. Perdóname y te daré mi sepia favorita. "
+"Su nombre es Inky"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:284
@@ -1508,6 +1548,8 @@ msgid ""
 "But he’s tame! Really! He understands dozens of commands. He’ll do what you "
 "tell him. He’s a really nice fish."
 msgstr ""
+"¡Pero es manso! ¡De verdad! Entiende docenas de comandos. Hará lo que le "
+"digas. Es un pez muy bonito."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:292
@@ -1520,6 +1562,8 @@ msgid ""
 "Very well. I will take the cuttle fish. But do not trouble us again, or I "
 "shall kill you and all the rest of your pets."
 msgstr ""
+"Muy bien. Me llevaré la sepia. Pero no nos molestéis de nuevo, o tendré que "
+"mataros a vos y al resto de vuestras mascotas."
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:300
@@ -1527,6 +1571,8 @@ msgid ""
 "Of course, of course. I promise! I never wanted to hurt you nice people "
 "anyway."
 msgstr ""
+"De acuerdo, de acuerdo ¡Lo prometo! Nunca volveré a haceros daño gente "
+"maravillosa."
 
 #. [unit]: type=Cuttle Fish, id=Inky
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:308
@@ -1536,7 +1582,7 @@ msgstr "Inky"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:318
 msgid "Right. Tell me how to control this thing."
-msgstr ""
+msgstr "De acuerdo. Decidme como controlo esta cosa."
 
 #. [scenario]: id=07_Bilheld
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:24
@@ -1550,6 +1596,9 @@ msgid ""
 "just behind it. The island was inhabited, however, and the residents didn’t "
 "look happy to see them."
 msgstr ""
+"Finalmente, los tritones llegaron a Bilheld. Su destino, y su ayuda, estaban "
+"justo detrás. Sin embargo la isla estaba habitada y los residentes no "
+"parecían felices de verlos."
 
 #. [side]: id=Vlagnor, type=Drake Flameheart
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:83
@@ -1569,7 +1618,7 @@ msgstr "Tritones ¿Qué estais haciendo aquí?"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:161
 msgid "We have business with Tyegëa on the other side of the island."
-msgstr ""
+msgstr "Tenemos  asuntos que tratar con Tyegëa en el otro lado de la isla."
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:165
@@ -1592,16 +1641,18 @@ msgid ""
 "She kill drakes. If you are her friend, we will kill you. We do not want "
 "MORE mermen blasting and stabbing."
 msgstr ""
+"Ella mata dracos. si tú eres su amigo, te mataremos. No deseamos más "
+"sirénidos apuñalando y haciendo estallar."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:181
 msgid "We are going around this island whether you want us to or not."
-msgstr ""
+msgstr "Rodearemos esta isla tanto si queréis como si no."
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:185
 msgid "This is OUR territory and you will not pass."
-msgstr ""
+msgstr "Este es nustro territorio y no pasaréis."
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:195
@@ -1621,7 +1672,7 @@ msgstr "¡Entonces moriréis con ellos!"
 #. [scenario]: id=08_Talking_to_Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:7
 msgid "Talking to Tyegëa"
-msgstr "Hablándole a Tyegëa"
+msgstr "Hablándo con Tyegëa"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:15
@@ -1630,6 +1681,9 @@ msgid ""
 "were finally at their destination. The small island where Tyegëa and her "
 "students lived was before them."
 msgstr ""
+"Había sido una aventura mayor de la que el kai Krellis había planeado, pero "
+"finalmente llegaron a su destino. La pequeña isla donde Tyegëa y sus "
+"estudiantes vivían estaba delante de ellos."
 
 #. [side]: id=Tyegea, type=Mermaid Diviner
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:78
@@ -1660,16 +1714,18 @@ msgid ""
 "Welcome, merfolk! It has been a long time since outsiders have visited. And "
 "Cylanna! It is pleasant to see you."
 msgstr ""
+"¡Bienvenidos, tritones! Ha pasado un largo tiempo sin que nos visitaran "
+"extranjeros ¡Y Cylanna! Es un placer verte."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:157
 msgid "The honor is ours. I present Kai Krellis of Jotha."
-msgstr "El honor es nuestro. Os presento a Kai Krellis de Jotha."
+msgstr "El honor es nuestro. Os presento a al kai Krellis de Jotha."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:161
 msgid "Indeed! So this is the one. Does he know?"
-msgstr ""
+msgstr "¡Ya lo creo! Así que es este ¿Él lo sabe?"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:165
@@ -1682,6 +1738,8 @@ msgid ""
 "Now is not the time. We have a desperate errand, Tyegëa. Jotha has been "
 "attacked and taken."
 msgstr ""
+"Ahora no es el momento. Tenemos una misión desesperada, Tyegëa. Jotha ha "
+"sido atacada y tomada."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:173
@@ -1689,6 +1747,9 @@ msgid ""
 "We were forced to flee for our lives from legions of undead. If you help us, "
 "we can remove these spirits from our home."
 msgstr ""
+"Fuimos obligados a huir de legiones de muertos vivientes para salvar "
+"nuestras vidas. Si nos ayudas podremos expulsar a esos espíritus de nuestro "
+"hogar."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:177
@@ -1696,6 +1757,8 @@ msgid ""
 "And what makes you think I want to leave my comfortable home and risk death "
 "by attacking armies of undead?"
 msgstr ""
+"¿Y qué te hace pensar que quiero salir de mi confortable casa y arriesgarme "
+"a morir por atacar a los ejércitos de muertos vivientes?"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:181
@@ -1708,13 +1771,14 @@ msgid ""
 "I am sure it was Cylanna’s idea that you come here. She has a reason. Don’t "
 "you Cylanna? Tell him what it is."
 msgstr ""
-"Estoy segura de que la idea de que vinierais aquí fue de Cylanna. Ella tiene "
-"una razón ¿No es así Cylanna? Cuéntale lo que es."
+"Estoy segura de que fue idea de Cylanna que viniérais aquí. Ella tiene una "
+"razón ¿No Cylanna? Cuéntale lo que es."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:189
+#, fuzzy
 msgid "(Sigh.) I had hoped to avoid this, but it seems I cannot."
-msgstr ""
+msgstr "(ufff) Tenía la esperanza de evitar esto pero me parece que no puedo."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:193
@@ -1723,6 +1787,9 @@ msgid ""
 "in the matter. Now Indress and Maudin are dead, and I am not. Tell the boy "
 "the truth."
 msgstr ""
+"Yo nunca estuve de acuerdo con que fuera necesario mantenerlo en secreto, "
+"pero respetaba los deseos de Maudin en el asunto. Ahora Indress y Maudin "
+"están muertos, y yo no lo estoy. Díle al chico la verdad."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:197
@@ -1736,6 +1803,9 @@ msgid ""
 "was not Laudiss’s mother. She raised your father, and you called her "
 "grandmother, but Tyegëa is your father’s mother."
 msgstr ""
+"El kai Maudin fue el padre de vuestro padre, Krellis, pero su esposa, "
+"Indress, no era la madre de Laudiss. Ella crió a vuestro padre, y vos la "
+"llamásteis abuela, pero Tyegëa es la madre de vuestro padre."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:205
@@ -1752,6 +1822,7 @@ msgstr "Soy tu abuela."
 msgid ""
 "Before your grandfather Maudin was Kai, he went on an adventure of his own."
 msgstr ""
+"Antes de que vuestro abuelo Maudin fuese kai, él tuvo su propia un aventura."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:217
@@ -1764,6 +1835,8 @@ msgid ""
 "I am astonished. I suppose I should be honored to have such a distinguished "
 "ancestor. Now I understand why Cylanna knew you would help us."
 msgstr ""
+"Estoy atónito. Supongo que debe ser un honor de tener un antepasado tan "
+"distinguido. Ahora entiendo por qué Cylanna sabía que nos ayudaría."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:225
@@ -1773,11 +1846,15 @@ msgid ""
 "prove that my blood flows in your veins. Prove that your are, despite "
 "appearances, courageous, and worthy of my help."
 msgstr ""
+"Eso está por verse. Encuentro preocupante que un kai - y mi descendiente - "
+"venga aquí corriendo y pidiendo ayuda. Antes de que esté de acuerdo en "
+"salvaros, tienes que probar que mi sangre corre por tus venas. Demuestra que "
+"se eres, a pesar de las apariencias, valiente y digno de mi ayuda."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:229
 msgid "Well, I defeated the Drakes on your island."
-msgstr ""
+msgstr "Bien, Vencí a los dracos en vuestra isla."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:233
@@ -1786,9 +1863,13 @@ msgid ""
 "them. No, I have something else in mind. You will complete a task for the "
 "good of the merfolk. Listen."
 msgstr ""
+"¡Bah! Los dracos solo parecen peligrosos. Los soldados con lanzas hacen que "
+"el trabajo sea corto ellos. No, tengo otra cosa en mente. Completararás una "
+"tarea para el bien de los tritones. Escucha."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:237
+#, fuzzy
 msgid ""
 "About 200 years ago, a powerful mermaid named Imirna fell in love with a "
 "human wizard named Agnovon. Agnovon cared not for love, but he smiled "
@@ -1798,6 +1879,13 @@ msgid ""
 "sword to defeat Imirna’s own people and steal all their wealth. In her "
 "grief, Imirna poisoned herself."
 msgstr ""
+"Hace unos 200 años, una poderosa sirena llamada Imirna se enamoró de un mago "
+"humano llamado Agnovon. Agnovon no se preocupaba del amor, pero él le "
+"correspondió falsamente, y ella confiaba en él. Cuando él le pidió que le "
+"ayudara a encantar una espada para que estuviese continuamente envuelta en "
+"llamas mágicas, dedicó toda su habilidad para modelar el arma. Más tarde, "
+"Agnovon usó la espada para derrotar a la propia gente de Imirna y robar "
+"todas sus riquezas. En su dolor, Imirna se envenenó."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:241
@@ -1809,11 +1897,17 @@ msgid ""
 "ruined castle, lives a mage named Caladon. He has lusted after the sword for "
 "years, so he will know where to find the lich who keeps it."
 msgstr ""
+"Durante mucho tiempo he deseado para ver la espada devuelta a los tritones, "
+"a quien debería pertenecer. Si la recuperases, probarías que eres digno de "
+"toda la ayuda que iba a proporcionar. No sé exactamente dónde encontrar la "
+"espada, pero sé quién lo sabe. Al sur de la Ciénaga de la Desolación, cerca "
+"de un castillo en ruinas, vive un mago llamado Caladon. Él ha deseado a la "
+"espada durante años, así que sabrá encontrar al liche que la tiene."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:245
 msgid "A lich has it? We were fleeing liches in the first place."
-msgstr ""
+msgstr "¿Un liche la tiene? Estabamos huyendo de liches, en primer lugar."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:249
@@ -1821,11 +1915,15 @@ msgid ""
 "There is only one of them. If you cannot defeat even one lich, you must be "
 "expecting me to get rid of all of your undead myself!"
 msgstr ""
+"Hay solo uno de ellos ¡Si no puedes vencer un solo liche, debe ser que "
+"esperabas que yo me deshiciera de todos los no muertos!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:253
 msgid "My apologies. You are right, of course. We will undertake this task."
 msgstr ""
+"Mis disculpas. Estais en lo cierto, de acuerdo. Nosotros llevaremos a cabo "
+"esta tarea."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:257
@@ -1833,14 +1931,20 @@ msgid ""
 "I will not send you away completely empty-handed, though. I can spare some "
 "holy water for one of your soldiers."
 msgstr ""
+"Sin embargo, no voy a enviarte con las manos completamente vacías. Puedo "
+"darle un poco de agua bendita a uno de tus soldados."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:268
+#, fuzzy
 msgid ""
 "The holy water will make melee attacks do <i>arcane</i> damage for the rest "
 "of the campaign. Choose a unit to take it. You may recruit or recall a unit "
 "if you want."
 msgstr ""
+"El agua bendita hará que los ataques cuerpo a cuerpo hagan daño de tipo "
+"«arcano» durante el resto de la campaña. Elija una unidad para cogerlo. "
+"Puede reclutar o reincorporar una unidad si lo desea."
 
 #. [object]: id=holywater1
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:281
@@ -1853,6 +1957,8 @@ msgid ""
 "Now, go. Come back with the flaming sword, and my priestesses and I will "
 "help you take back Jotha."
 msgstr ""
+"Ahora, vete. Vuelve con la espada flameante, y mis sacerdotisas y yo te "
+"ayudaremos a recuperar Jotha."
 
 #. [scenario]: id=09_The_Mage
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:12
@@ -1870,6 +1976,14 @@ msgid ""
 "sometimes angry at Tyegëa for sending him on this extra journey, and "
 "sometimes grateful that she was willing to help at all."
 msgstr ""
+"El grupo viajó de vuelta a tierra firme y siguió la costa más al norte. El "
+"kai Krellis tenía mucho en que pensar. Primero, lo que Tyegëa le había "
+"revelado sobre sus ancestros le dejaba preguntas que no podía responder. "
+"Segundo, estaba nervioso por la tarea que tenía por delante. Se sentía con "
+"confianza en su pueblo, pero temía pagar un precio demasiado alto en muertos "
+"y heridos para pasar la prueba de Tyegëa. Se sentía a veces enfadado con "
+"Tyegëa por enviarle en este viaje extra, y a veces agradecido de que ella "
+"estaba dispuesta a ayudar después de todo."
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:24
@@ -1880,6 +1994,12 @@ msgid ""
 "Krellis was in a hurry, now that the end of their journey was in sight. He "
 "decided to go ashore and try to find the mage immediately."
 msgstr ""
+"Después de varios días, el olor de la ciénaga estaba comenzando a ser "
+"notable cuando encontraron un pequeño castillo en ruinas en el lugar "
+"adecuado para ser el que Tyegëa había mencionado. La noche estaba cayendo, y "
+"estaba muy oscuro bajo los árboles, pero Krellis tenía prisa  ahora que el "
+"final del viaje estaba a la vista. Decidió ir a la orilla y tratar de "
+"encontrar al mago inmediatamente."
 
 #. [side]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:104
@@ -1897,16 +2017,18 @@ msgid ""
 "I do not much care for the look of this area. The darkness seems to hang "
 "beneath the trees, unnaturally dense."
 msgstr ""
+"No me importa tanto por el aspecto de esta zona. La oscuridad parece colgar "
+"por debajo de los árboles, extrañamente densa."
 
 #. [message]: speaker=Teeloa
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:256
 msgid "I just heard a splash. I think something’s out there."
-msgstr ""
+msgstr "Acabo de oir un chapoteo. Creo que hay algo ahí fuera."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:260
 msgid "Let us find the mage quickly and leave."
-msgstr ""
+msgstr "Encontremos al mago rápido y nos vamos."
 
 #. [message]: speaker=Teeloa
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:445
@@ -1950,7 +2072,7 @@ msgstr "Hay alguien ahí."
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:511
 msgid "Whoa there! BACK off or else!"
-msgstr ""
+msgstr "Ehhh! Atrás, o si no! "
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:515
@@ -1983,6 +2105,8 @@ msgid ""
 "I am Kai Krellis of Jotha. I am seeking a flaming sword, and I am told you "
 "know where to find it."
 msgstr ""
+"Soy el kai Krellis de Jotha. Estoy buscando una espada flameante, y me han "
+"dicho que vos sabéis donde encontrarla."
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:553
@@ -1991,11 +2115,15 @@ msgid ""
 "get it when so many others could NOT? Although you do have an impressive "
 "collection of allies there."
 msgstr ""
+"¡Ja! ¡Un tritón quiere la espada flameante de Agnovon! ¿Por qué ibas a ser "
+"capaz de conseguirla cuando muchos otros no pudieron? Aunque tienes una "
+"impresionante colección de aliados ahí."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:557
 msgid "Whether I can succeed or not, I must try. Will you help me find it?"
 msgstr ""
+"Tanto si tengo éxito como si no debo intentarlo ¿Me ayudaréis a encontrarla?"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:561
@@ -2003,18 +2131,20 @@ msgid ""
 "I will show you EXACTLY where it is, but knowing where to FIND it isn’t the "
 "hard part. Oh, no! You will see, my fine merman, you will see."
 msgstr ""
+"Os mostraré exactamente donde está, pero saber donde encontrarla no es la "
+"parte más dura ¡Oh, no! Váis a ver, mi buen tritón, ya veréis."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:565
 msgid "We would be very grateful if you would guide us."
-msgstr ""
+msgstr "Estaríamos muy agradecidos si nos guiáseis."
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:569
 msgid ""
 "I would be HAPPY to guide such a pretty mermaid AND her friends. Follow me "
 "everybody!"
-msgstr ""
+msgstr "Me haría feliz guiar a tan bella sirena y sus amigos ¡Síganme todos!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:599
@@ -2039,7 +2169,7 @@ msgstr "¡Estamos perdidos sin nuestro rey!"
 #. [scenario]: id=10_The_Flaming_Sword
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:14
 msgid "The Flaming Sword"
-msgstr "La Espada Flamígera"
+msgstr "La Espada Flameante"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:22
@@ -2048,6 +2178,9 @@ msgid ""
 "was not actually desolate on the outskirts. A hardy population of humans "
 "coaxed a living out of the damp soil."
 msgstr ""
+"Caladon les guió por un pequeño camino por la costa. A pesar de su nombre, "
+"los alrededores del pantano no estaban desolados. Una resistente población "
+"de humanos compaginaba la vida aprovechando al máximo la humedad del suelo."
 
 #. [side]: type=Lich, id=Mal-Govon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:104
@@ -2065,7 +2198,7 @@ msgstr "Aldeanos"
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:241
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:680
 msgid "Pry the flaming sword from the dead hand of its owner"
-msgstr "Arranque la espada flamígera de la mano muerta de su propietario."
+msgstr "Arranque la espada flameante de la mano muerta de su propietario."
 
 #. [objective]: condition=lose
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:245
@@ -2091,6 +2224,8 @@ msgid ""
 "(whisper) Kai, I heard Caladon muttering about the sword. I think he may try "
 "to take it for himself."
 msgstr ""
+"(susurro) Kai, oí a Caladon murmurando acerca de la espada. Creo que puede "
+"tratar de tomarla para sí mismo."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:310
@@ -2098,6 +2233,8 @@ msgid ""
 "Thank you, $spy_unit.name|. I will keep that in mind, but it may be hard for "
 "us to stop him with that teleporting trick he has."
 msgstr ""
+"Gracias, $spy_unit.name|. Lo tendré en cuenta, pero será difícil para "
+"nosotros pararle con esa habilidad de teleportación que tiene."
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:319
@@ -2105,6 +2242,8 @@ msgid ""
 "Here we are. There’s a castle up ahead in the fog. That’s where Agnovon has "
 "the sword."
 msgstr ""
+"Aquí estamos. Hay un castillo más adelante en la niebla. Ahí es donde "
+"Agnovon tiene la espada."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:323
@@ -2113,6 +2252,7 @@ msgstr "¿El liche es Agnovon?"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:327
+#, fuzzy
 msgid ""
 "Well, he calls himself Mal-Govon now, but yes. He called this land the "
 "KINGDOM of Agnovon. He was its first king. And its last, and every one in "
@@ -2121,6 +2261,12 @@ msgid ""
 "he hasn’t really cared about keeping his kingdom under control for a good "
 "long while. I bet I can wake him up, though. Watch THIS!"
 msgstr ""
+"Bueno, él se llama Mal Govon ahora, pero sí. Llamó a esta tierra el Reino de "
+"Agnovon. Fue el primer rey. Y el último ¡Y también los del medio! Él "
+"envejece y envejece, pero nunca muere. Bien, ahora está muerto de acuerdo. "
+"Siegue en ese castillo de ahí, pero no se ha preocupado realmente de "
+"mantener el reino bajo control desde hace un buen tiempo. Sin embargo, "
+"apuesto a puedo despertarlo ¡Mirad esto!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:331
@@ -2128,6 +2274,8 @@ msgid ""
 "Suddenly, Caladon’s strident voice shrieked out louder than seemed possible, "
 "as if there were dozens of men shouting at once."
 msgstr ""
+"De pronto, la estridente voz de Caladon gritó con más fuerza de la que "
+"parecía posible, como si hubiera decenas de hombres gritando a la vez."
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:336
@@ -2135,6 +2283,8 @@ msgid ""
 "AGNOVON, I’VE COME FOR YOUR SWORD! TODAY YOU WILL REMEMBER FEAR! Heh heh. "
 "Nice trick, huh?"
 msgstr ""
+"¡AGNOVON, HE VENIDO POR TU ESPADA! ¡HOY RECORDARÁS EL MIEDO! Ji, ji. Buen "
+"truco, ¿eh?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:341
@@ -2142,6 +2292,8 @@ msgid ""
 "A voice came back like wind moaning through dry leaves. Though it was only "
 "whispered, all heard it better than they wanted."
 msgstr ""
+"Una voz volvió como el viento gimiendo a través de hojas secas. A pesar de "
+"que sólo murmuraba, todos escucharon mejor de lo que querían."
 
 #. [message]: speaker=Mal-Govon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:346
@@ -2151,23 +2303,27 @@ msgid ""
 "they lay expiring like gasping fish on the shore, will you not flee again? "
 "Do not speak to <i>me</i> of fear."
 msgstr ""
+"Lo que recuerdo, viejo tonto, es a ti detrás de los cuerpos ardiendo de los "
+"orcos que habías contratado para robar mi espada. Ahora, traes tritones. "
+"Cuando terminen boqueando como los peces en la orilla ¿No huirás de nuevo? "
+"No me hables a <i>mí</i> de miedo."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:350
 msgid "We are here of our own accord, and we will take that sword."
-msgstr ""
+msgstr "Estamos aquí por nuestra propia voluntad y cogeremos la espada."
 
 #. [message]: speaker=Mal-Govon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:354
 msgid ""
 "The merman speaks. Tell it to go away, Caladon, if it doesn’t want to get "
 "hurt."
-msgstr ""
+msgstr "El tritón habla. Dile que se vaya, Caladon, si no quiere salir herido."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:358
 msgid "That does it. Attack!"
-msgstr ""
+msgstr "Claro que lo hace ¡Atacad!"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:367
@@ -2175,6 +2331,8 @@ msgid ""
 "A word of warning, young Kai. I carry a staff of righteous FLAME. If you let "
 "me die, I will take YOU all with me!"
 msgstr ""
+"Una advertencia, joven kai. Llevo un bastón de llamas justicieras ¡Si me "
+"dejáis morir, os llevaré conmigo!"
 
 #. [unit]: type=Outlaw, id=Howyrth
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:389
@@ -2186,13 +2344,17 @@ msgstr "Howyrth"
 msgid ""
 "Hello there! Who are you? Were you the ones shouting about taking a sword?"
 msgstr ""
+"¡Hola ahí! ¿Quién sois? ¿Erais vos el que gritaba acerca de coger una espada?"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:408
+#, fuzzy
 msgid ""
 "I am Kai Krellis of Jotha. I am attempting to defeat Mal-Govon and take his "
 "sword. Will you to join us in battle against a common enemy?"
 msgstr ""
+"Soy Krellis de Jotha. Estoy tratando de derrotar a Mal Govon y coger la "
+"espada. ¿Os uniréis a nosotros en la batalla contra un enemigo común?"
 
 #. [message]: speaker=Howyrth
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:413
@@ -2202,6 +2364,11 @@ msgid ""
 "welcome the extra income if you want to hire them. I guess we would be happy "
 "to get rid of the monster just in case."
 msgstr ""
+"No se si esa criatura es realmente nuestro enemigo. Él nunca nos ha "
+"molestado, y yo me quedaría en mi puesto de todos modos. Sin embargo, estoy "
+"seguro de que mucha gente daría la bienvenida a unos ingresos extras si vos "
+"quisierais contratarlos. Creo que estaríamos felices de deshacernos del "
+"monstruo por si acaso."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:417
@@ -2209,6 +2376,8 @@ msgid ""
 "You can now recruit human villagers, but you will not be able to recall them "
 "in future scenarios."
 msgstr ""
+"Ahora puede reclutar aldeanos humanos, pero no podrá reincorporarlos en "
+"futuros escenarios."
 
 #. [message]: speaker=Siddry
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:466
@@ -2216,6 +2385,8 @@ msgid ""
 "Kai Krellis! What are you doing here? I thought you were traveling south "
 "when I met you."
 msgstr ""
+"¡Kai Krellis! ¿Qué estáis haciendo aquí? Pensaba que estabais viajando hacia "
+"el sur cuando os conocí."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:470
@@ -2225,7 +2396,7 @@ msgstr "¡Amigo Siddry!"
 #. [message]: speaker=Howyrth
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:474
 msgid "You know each other?!"
-msgstr ""
+msgstr "¿¡Conocéis a este!?"
 
 #. [message]: speaker=Siddry
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:478
@@ -2235,6 +2406,10 @@ msgid ""
 "join you in your fight, Kai Krellis. We are yours to command, and we refuse "
 "to be paid."
 msgstr ""
+"El kai Krellis es el que me salvó de la esclavirud, Howyrth. Le dije que le "
+"devolvería el favor si podía, y esta es mi oportunidad. Mis amigos y yo nos "
+"uniremos a vos en vuestra lucha, kai Krellis. Estamos a vuestras órdenes y "
+"rechazamos ser pagados."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:594
@@ -2242,16 +2417,18 @@ msgid ""
 "The mermen clapped their hands over their ears as a terrible wail echoed off "
 "the castle walls."
 msgstr ""
+"Los tritones aplaudieron con sus manos por encima de las orejas como un "
+"terrible lamento que se hizo eco en las paredes del castillo."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:619
 msgid "Now we have the sword!"
-msgstr ""
+msgstr "¡Ahora tenemos la espada!"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:624
 msgid "Correction. Now I have the sword!"
-msgstr ""
+msgstr "Corrección ¡Ahora yo tengo la espada!"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:709
@@ -2259,11 +2436,13 @@ msgid ""
 "It’s MINE! The Flaming Sword of Agnovon IS ALL MINE! I can feel warmth "
 "SPREADING through me!"
 msgstr ""
+"¡Es mía! ¡La espada flameante de Agnovon es toda mía! ¡Puedo sentir el calor "
+"difundiéndose a travésd de mí!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:734
 msgid "What? We won that sword!"
-msgstr ""
+msgstr "¿Qué? ¡Nosotros queremos esa espada!"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:739
@@ -2272,11 +2451,15 @@ msgid ""
 "so leave my realm. Go on. I will grant you some time. The benevolence of "
 "Caladon will be LEGENDARY! Heh heh, HA!"
 msgstr ""
+"Bien, es cierto que me habéis ayudado, así que no quiero mataros. Pero no "
+"confío en vos, así que dejad mi reino. Marchaos. Os otorgaré un tiempo ¡La "
+"benevolencia de Caladon será legendaria! ¡Ja, ja, ja!"
 
 #. [message]: speaker=$staff_tip_off
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:744
 msgid "Kai! He dropped his staff! We can attack him whenever we want now!"
 msgstr ""
+"¡Kai! ¡Ha dejado caer su bastón! ¡Ahora podemos atacarle cuando queramos!"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:748
@@ -2284,6 +2467,7 @@ msgid ""
 "We can pretend we are going to leave though. That would buy me some time to "
 "heal the wounded."
 msgstr ""
+"Podemos fingir que nos vamos. Eso nos daría tiempo para sanar a los heridos."
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:784
@@ -2291,6 +2475,8 @@ msgid ""
 "You DARE attack ME! You will regret that. Witness the POWER of the Flaming "
 "Sword of Caladon! I call on the ELEMENT OF FIRE to DO MY BIDDING!"
 msgstr ""
+"¡Te atreves a atacarme! Te arrepentirás de ello ¡Presenciad el poder de la "
+"espada flameante! ¡Invoco al elemento del fuego a cumplir mis órdenes!"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:851
@@ -2298,32 +2484,36 @@ msgid ""
 "You haven’t left yet? My patience is at an END! Witness the POWER of the "
 "Flaming Sword of Caladon! I call on the ELEMENT OF FIRE to DO MY BIDDING!"
 msgstr ""
+"¿Aún no os habéis ido? ¡Mi paciencia está llegando a su fin! ¡Presenciad el "
+"poder de la espada flameante! ¡Invoco al elemento del fuego a cumplir mis "
+"órdenes!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:933
 msgid "Now we can finally grab that sword."
-msgstr ""
+msgstr "Ahora finalmente podemos agarrar esa espada."
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:951
 msgid "I am not going with you. One of your people should take the sword."
-msgstr ""
+msgstr "Yo no voy con vos. Uno de vuestra gente debería tomar la espada."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:978
 #, fuzzy
 msgid "This sword is 8-4, magical, with <i>fire</i> damage."
-msgstr "El tridente es mágico, a distancia y con 14-2 de daño de fuego."
+msgstr "Esta espada es magica con 8-4 de daño de fuego."
 
 #. [option]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:985
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
 msgstr ""
+"Llevaré esta espada y destruiré a los no muertos con explosines de fuego."
 
 #. [option]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:994
 msgid "This sword is not right for me. Let someone else have it."
-msgstr ""
+msgstr "Esta espada no es adecuada para mi. Dejemos que otro la tenga."
 
 #. [option]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1029
@@ -2333,7 +2523,7 @@ msgstr "Yo llevaré la espada."
 #. [option]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1038
 msgid "Let someone else have it."
-msgstr ""
+msgstr "Dejemos que otro la tenga."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1076
@@ -2341,6 +2531,8 @@ msgid ""
 "We thank all you humans for your help, and release you from any farther "
 "obligations. Where we are going, you cannot easily follow."
 msgstr ""
+"Humanos, os agradecemos a todos vuestra ayuda y os liberamos de más "
+"obligaciones. Donde vamos, no podéis seguirnos facilmente."
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1137
@@ -2350,12 +2542,12 @@ msgstr "¡Malditos seáis tritones!"
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1152
 msgid "Aghh! Die!"
-msgstr ""
+msgstr "¡Aaaagh! ¡Muero!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1157
 msgid "He has that staff of..."
-msgstr ""
+msgstr "Él tiene ese bastón de..."
 
 #. [scenario]: id=11_Getting_Help
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:4
@@ -2368,6 +2560,8 @@ msgid ""
 "Kai Krellis and his people no longer feared the open ocean, and they made "
 "straight for Tyegëa’s island to show her the flaming sword."
 msgstr ""
+"El kai Krellis y su gente no temían ya al océano abierto, y fueron "
+"directamente a la isla de Tyegëa a mostrarle la espada flameante."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:176
@@ -2375,11 +2569,13 @@ msgid ""
 "We have brought the Flaming Sword. Caladon tried to steal it for himself, "
 "but we were able to get it back from him."
 msgstr ""
+"Hemos traido la espada flameante. Caladon trató de robarla para si mismo, "
+"pero fuimos capaces de recuperarla."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:180
 msgid "He did not part with it willingly, so he must be dead."
-msgstr ""
+msgstr "No se separaría de ella de buena gana. así que debe estar muerto."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:184
@@ -2393,17 +2589,20 @@ msgid ""
 "travel with you to your home and help you rid it of restless spirits. My "
 "priestesses will come as well, and will be at your disposal."
 msgstr ""
+"No pasa nada. Era un necio. Ahora, has hecho tal y como pedí, nieto, por lo "
+"que viajaré contigo a tu hogar y te ayudaré a librarlo de espíritus "
+"inquietos. Mis sacerdotisas vendrán también y estarán a tu disposición."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:224
 msgid "You may now recruit mermaid priestesses!"
-msgstr ""
+msgstr "¡Puede reclutar sirenas sacerdotisas!"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:253
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:271
 msgid "Also, I have a little gold I can bring along."
-msgstr ""
+msgstr "Además, tengo un poco de oro que puedes llevar contigo."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:264
@@ -2424,6 +2623,11 @@ msgid ""
 "whole contingent of them. Tyegëa was even more powerful, though as "
 "unpredictable as Cylanna had said."
 msgstr ""
+"La misión había sido más difícl de lo que el kai Krellis había creido cuando "
+"empezó. Finalmente sin embargo, el final estaba a la vista. Había visto como "
+"las sacerdotisas podían dividir las masas de no muertos, y ahora él viajaba "
+"con un contingente entero de ellas. Tyegëa era aun la más poderosa, tanto "
+"como impredecible tal y como Cylanna había dicho."
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:15
@@ -2435,6 +2639,12 @@ msgid ""
 "headed south along the coast to some outlying villages to gather news of the "
 "invaders."
 msgstr ""
+"La tribu que había abandonado Jotha incapaz de luchar volvió como un "
+"ejercito endurecido por luchadores veteranos y liderado por un rey guerrero. "
+"Aunque estaban cansados del viaje el cansancio fue desapareciendo a medida "
+"que se acercaban a casa. Los tritones llegaron durante la noche, y "
+"encontraron la boca de su bahía protegida, así que pusieron rumbo al sur "
+"hacia unas aldeas exteriores para recopilar noticias de los invasores."
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:532
@@ -2442,6 +2652,8 @@ msgid ""
 "Kai Krellis! You live! We thought you and your people had all been killed "
 "when Jotha fell."
 msgstr ""
+"¡Kai Krellis! ¡Vivís! Pensamos que vos y vuestra gente habías sido "
+"asesinados cuando cayó Jotha."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:536
@@ -2449,6 +2661,9 @@ msgid ""
 "No, most of us escaped. I thought your settlements might be far enough away "
 "to escape harm, but you look as if you had seen battle."
 msgstr ""
+"No, muchos de nosotros escapamos. Pensé que vuestros asentamientos podrían "
+"estar lo suficientemente lejos como para escapar del mal, pero parece como "
+"si hubiérais visto la batalla."
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:540
@@ -2457,6 +2672,10 @@ msgid ""
 "fouling the waters and making the bay more to their liking. We worry that "
 "they will soon be back to finish with us, and I fear we will not survive."
 msgstr ""
+"De hecho, ni siquiera hemos sido presionados. Las criaturas han estado "
+"ocupadas ensuciando las aguas y haciendo la bahía más a su gusto. Nos "
+"preocupa que vuelvan pronto para terminar con nosotros, y me temo que no "
+"sobreviviríamos."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:544
@@ -2464,6 +2683,9 @@ msgid ""
 "We come prepared for battle, and have brought help. We will reclaim our home "
 "and make yours safe as well. Mal-Ravanal will pay this day."
 msgstr ""
+"Vneimos preparados para la batalla, y hemos traido ayuda. Reclamamaremos "
+"nuestro hogar y haremos el vuestro seguro también. Mal-Ravanal pagará este "
+"día."
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:548
@@ -2473,21 +2695,25 @@ msgid ""
 "our base. The undead cut down many trees there to make bridges, and it is "
 "much easier to move through now."
 msgstr ""
+"Bien. Nos uniremos a vos. Estaréis impresionado con la rapidez con la que "
+"Tabomo aplasta esqueletos. Pienso que deberíamos hacer que el castillo en "
+"runias que está en tierra firme sea nuestra base. Los no muertos talaron "
+"muchos árboles ahí para hacer puentes, y es mucho más fácil moverse ahora."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:585
 msgid "At dawn, the mermen got a good look at their opponents."
-msgstr ""
+msgstr "Al amanecer, los tritones tienen una buena vista de sus oponentes."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:591
 msgid "This doesn’t look too bad."
-msgstr ""
+msgstr "Esto no parece tan malo."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:596
 msgid "Maybe not yet, but just wait."
-msgstr ""
+msgstr "Quizá no todavía, pero esperad."
 
 #. [message]: speaker=Mel Daveth
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:601
@@ -2495,12 +2721,14 @@ msgid ""
 "The mermen...they came back! Bring back the search parties! Call back the "
 "hordes!"
 msgstr ""
+"Los tritones... ¡Volvieron! ¡Traed de vuelta a las partidas de búsqueda! "
+"¡Llamad de nuevo a las hordas!"
 
 #. [message]: speaker=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:606
 msgid ""
 "Just make some more, you fool. There are plenty of corpses to go around."
-msgstr ""
+msgstr "Simplemente haz más, idiota. Hay un montón de cadáveres para todos."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:636
@@ -2508,41 +2736,44 @@ msgid ""
 "I suppose this <i>does</i> look a little overwhelming. I may enjoy it "
 "though. It can be satisfying to rain holy fire down on misbehaving spirits."
 msgstr ""
+"Supongo que esto <i>si</i> parece un poco aplastante. Aunque lo podría "
+"disfrutar. Puede ser satisfactorio hacer llover fuego bendito sobre los "
+"espíritus malcomportados."
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:641
 msgid "Absolutely! Bring ’em on!"
-msgstr ""
+msgstr "¡Absolutamente! ¡Qué vengan!"
 
 #. [message]: speaker=Carallcyn
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:718
 msgid "We searched up the coast for miles, and here they are!"
-msgstr ""
+msgstr "¡Buscamos la costa durante durante varias millas y aquí estamos!"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:778
 msgid "I was wrong. You are no grandson of <i>mine</i>!"
-msgstr ""
+msgstr "Estaba equivocada ¡Tu no eres nieto <i>mío</i>!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:789
 msgid "I have failed my people."
-msgstr ""
+msgstr "He fallado a mi gente."
 
 #. [message]: speaker=Dead Knight
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:812
 msgid "Gruh!"
-msgstr ""
+msgstr "¡Gruuu!"
 
 #. [message]: speaker=Mel Daveth
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:824
 msgid "Save me Lord Rava...uhh!"
-msgstr ""
+msgstr "¡Salvádme Lord Rava... uhh!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:832
 msgid "We have retaken our home!"
-msgstr ""
+msgstr "¡Hemos recuperado nuestro hogar!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:843
@@ -2560,6 +2791,8 @@ msgid ""
 "This man was wearing a necklace with a pendant on it. I’m sure the shape "
 "means something."
 msgstr ""
+"Este hombre llevaba un collar con un colgante. Estoy seguro de que la forma "
+"significa algo."
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:900
@@ -2567,31 +2800,34 @@ msgid ""
 "It does indeed. It is an ankh, and that pendant will strengthen your life "
 "force."
 msgstr ""
+"De hecho lo hace. Es un ankh, y ese colgante fortalecerá tu fuerza vital."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:905
+#, fuzzy
 msgid "The ankh necklace provides 70% resistance to <i>arcane</i> damage."
 msgstr ""
+"El collar con ankh provee un 70% de resistencia al daño de tipo «arcano»."
 
 #. [option]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:912
 msgid "I think that could be useful. I’ll take it."
-msgstr ""
+msgstr "Pienso que eso podría ser útil. Lo cogeré."
 
 #. [option]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:921
 msgid "It doesn’t seem to have helped its previous owner. I don’t want it."
-msgstr ""
+msgstr "No parece haber ayudado a su anterior propietario. Yo no lo quiero."
 
 #. [option]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:958
 msgid "I would like my life force protected."
-msgstr ""
+msgstr "Me gustaría que mi fuerza vital estuviera protegida."
 
 #. [option]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:967
 msgid "My life force feels fine as it is."
-msgstr ""
+msgstr "Mi fuerza vital se siente bien como está."
 
 #. [scenario]: id=13_Epilogue
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:4
@@ -2608,6 +2844,13 @@ msgid ""
 "defeated the undead at Jotha. With the evil wizard gone, the mermen relaxed "
 "and began rebuilding in earnest, and soon Jotha was restored."
 msgstr ""
+"Después de destruir a los secuaces de Mal-Ravanal, Kai Krellis esperó otro "
+"ataque. Pero éste nunca vino. Krellis envió algunos mensajeros al sur para "
+"descubrir lo que pudieran. Las noticias que reecivió eran mejores que "
+"buenas, Mal-Ravanal había muerto! Soldados de Wesnoth lo habían derrotado en "
+"el mismo momento que los sirénidos habían derrotado al no muerto en Jotha. "
+"Con el hechizero de la maldad muerto, los sirénidos se relajaron y "
+"comenzaron a reconstruir en serio, y pronot Jotha estaba restaurado."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:43
@@ -2619,6 +2862,12 @@ msgid ""
 "shallows. Many of those children were named after Kai Krellis, Gwabbo, "
 "Cylanna, and the other heroes."
 msgstr ""
+"No todo es como antes, por supuesto. Hemos perdido muchos buenos sirénidos "
+"durante los primeros ataques y en la travesía. La sacerdotiza visitante hizo "
+"lo que pudo para consolar a las familias de los muertos, y como siempre, la "
+"vida continuó. En unos pocos meses, las risas de niños podían ser oídas "
+"haciendo eco a travéz de las aguas poco profundas. Muchos de esos niños "
+"fueron nombrados como Kai Krellis, Gwabbo, Cylanna y los otros héroes."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:54
@@ -2627,6 +2876,9 @@ msgid ""
 "grandson. Most of her priestesses went with her, but a few of them stayed in "
 "Jotha, enriching the culture of the city."
 msgstr ""
+"Tyegëa regresó a su hogar, pero continuó en contacto con su nieto. Muchas de "
+"sus sacerdotisas se fueron con ella pero algunas de ellas se quedaron en "
+"Jotha, enriqueciendo la cultura de la ciudad."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:67
@@ -2636,6 +2888,10 @@ msgid ""
 "presiding at christenings and weddings. All this agreed with her disposition "
 "much better than battling undead."
 msgstr ""
+"Cylanna nunca viajó lejos de nuevo sino que se quedó en Jotha como una "
+"respetada anciana. Ella seguía siendo una consejera real, pero su principal "
+"trabajo era curar la enfermedad, y presidir los bautizos y las bodas. Todo "
+"esto iba con su carácter mucho mejor que la lucha con no muertos."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:74
@@ -2643,6 +2899,9 @@ msgid ""
 "Kai Krellis was somber over the next months as he grieved over the loss of "
 "Cylanna, but the grief diminished with time leaving only fond memories."
 msgstr ""
+"El kai Krellis estuvo sombrío durante los siguientes meses, se lamentaba por "
+"la pérdida de Cylanna, pero el dolor disminuye con el tiempo dejando sólo "
+"los buenos recuerdos."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:87
@@ -2651,6 +2910,9 @@ msgid ""
 "merfolk children for generations thereafter. He became an almost legendary "
 "figure."
 msgstr ""
+"Gwabbo vivió hasta la madurez en Jotha. Cuentos de sus hazañas fueron "
+"contados a los niños tritones para las generaciones siguientes. Él se "
+"convirtió casi en una figura lengendaria."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:105
@@ -2658,6 +2920,8 @@ msgid ""
 "Gwabbo and Cylanna were often together, and when Kai Krellis found a wife "
 "(which is a tale for another time!) they presided at his wedding."
 msgstr ""
+"Gwabbo y Cylanna estaban a menudo juntos, y cuando el kai Krellis encontró "
+"una esposa (¡Lo cual es un cuento para otro momento!) presidieron su boda."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:118
@@ -2666,6 +2930,10 @@ msgid ""
 "was delighted to find that many of his family members had also returned. He "
 "visited Jotha frequently, and remained friends with all the other veterans."
 msgstr ""
+"Teeloa volvió a su hogar donde había sido capturado por los saurios. Estubo "
+"encantado de encontrar que muchos de los miembros de su familia habían "
+"regresado también. Visitó Jotha con frecuencia y mantuvo amistad con todos "
+"los otros veteranos."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:131
@@ -2674,6 +2942,9 @@ msgid ""
 "them all into submission (which is the drake way) and ruled there with an "
 "iron fist."
 msgstr ""
+"Keshan volvió a Bilheld donde los dracos estaban aun sin lider. Los venció a "
+"todos obligándolos a someterse (que es la forma de los dracos) y gobernó "
+"allí con puño de hierro."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:139
@@ -2682,6 +2953,9 @@ msgid ""
 "beautiful daughters. When the orcs who had learned to fear his father tested "
 "the folk of Jotha gain, they learned to fear him even more."
 msgstr ""
+"Krellis se casó en pocos años y engendró hijos fuertes y bellas hijas. "
+"Cuando los orcos, quienes habían aprendido a temer a su padre, probaron al "
+"pueblo de Jotha de nuevo aprendieron a temerle a él aún más."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:150
@@ -2689,11 +2963,13 @@ msgid ""
 "Inky lived with Krellis at court and frolicked in the kelp beds of Jotha "
 "until he became fat and lazy in his old age."
 msgstr ""
+"Inky vivió con Krellis en la corte y retozó en los lechos de algas de Jotha "
+"hasta que se volvió gordo y perezoso en su vejez."
 
 #. [unit_type]: id=Merman Brawler, race=merman
 #: data/campaigns/Dead_Water/units/Brawler.cfg:4
 msgid "Merman Brawler"
-msgstr ""
+msgstr "Alborotador tritón"
 
 #. [unit_type]: id=Merman Brawler, race=merman
 #: data/campaigns/Dead_Water/units/Brawler.cfg:20
@@ -2701,6 +2977,8 @@ msgid ""
 "Exceptionally large and strong mermen are sometimes more comfortable with "
 "their own fists and tails than with other weapons."
 msgstr ""
+"Tritones excepcionálmente grandes y fuertes se sienten a veces más cómodos "
+"con sus propios puños y colas que con otras armas."
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Brawler.cfg:37
@@ -2730,11 +3008,15 @@ msgid ""
 "It is his job to lead his troops in combat if necessary. Good soldiers will "
 "do as they are told, but a very young king will get little real respect."
 msgstr ""
+"Cuando un rey tritón muere el siguiente en la línea sucesoria se convierte "
+"en rey por joven que sea. Es su trabajo liderar sus tropas en combate si es "
+"necesario. Los buenos soldados harán lo que les digan pero a un rey joven le "
+"tendrán poco respeto real."
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Child_King.cfg:37
 msgid "scepter"
-msgstr ""
+msgstr "cetro"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/campaigns/Dead_Water/units/Citizen.cfg:4
@@ -2747,6 +3029,9 @@ msgid ""
 "Mermen are mostly peaceful, but will fight to defend their homes. In this "
 "situation, even mermen with no weapons or training can be dangerous."
 msgstr ""
+"Los tritones son en su mayoría pacíficos, pero lucharán para defender sus "
+"hogares. En esta situación, hasta los tritones sin armas ni entrenamiento "
+"pueden ser peligrosos."
 
 #. [unit_type]: id=Kraken, race=monster
 #: data/campaigns/Dead_Water/units/Kraken.cfg:5
@@ -2760,6 +3045,10 @@ msgid ""
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
+"Los krakens son gigantescas criaturas de los mares. Pueden agarrar a sus "
+"oponentes con sus fuertes tentáculos o escupir una tinta negra venenosa a "
+"distancia. El mejor camino para sobrevivir a un encuentro con estos "
+"monstruos es permanecer en tierra."
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Kraken.cfg:30
@@ -2783,13 +3072,17 @@ msgid ""
 "soldiers. His strength allows him to wield powerful weapons and move "
 "quickly, even with heavy armor. His leadership abilities inspire his troops."
 msgstr ""
+"Un rey hábil en combate recive un gran respeto; especialmente entre "
+"soldados. su fortaleza le permite empuñar fuertes armas y moverse "
+"velozmente, incluso con armadura pesada. sus abilidades de liderazgo animan "
+"a sus tropas"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:51
 #: data/campaigns/Dead_Water/units/Warrior_King.cfg:52
 #: data/campaigns/Dead_Water/units/Young_King.cfg:47
 msgid "mace"
-msgstr ""
+msgstr "maza"
 
 #. [unit_type]: id=Merman Warrior King, race=merman
 #: data/campaigns/Dead_Water/units/Warrior_King.cfg:4
@@ -2803,6 +3096,10 @@ msgid ""
 "strength allows them to be truly formidable in battle. They are also fast "
 "despite their heavy armor. Even skilled soldiers look upon them with awe."
 msgstr ""
+"Reyes guerreros comúnmente se vuelven legendarios en su propio tiempo. Su "
+"destreza y fuerza les permite ser realmente formidables en combate. También "
+"son rápidos, incluso con una armadura pesada. Incluso los soldados más "
+"diestros los miran con admiración."
 
 #. [unit_type]: id=Merman Young King, race=merman
 #: data/campaigns/Dead_Water/units/Young_King.cfg:4
@@ -2816,10 +3113,14 @@ msgid ""
 "Common citizens will be inspired to do their utmost when the king is nearby, "
 "but battle-hardened veterens will be less impressed."
 msgstr ""
+"Un joven rey con algo de experiencia en batalla será tratado con algo de "
+"respeto. A los ciudadanos comunes les inspirará para hacer todo lo posible "
+"cuando el rey esté cerca, pero a los veteranos endurecidos en batalla les "
+"impresionará menos."
 
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:102
 msgid "Merman Forces"
-msgstr ""
+msgstr "Fuerzas de los tritones"
 
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:106
 msgid "Kai Krellis"
@@ -2833,12 +3134,12 @@ msgstr "Tridente de Tormentas"
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:11
 msgid "This weapon shoots powerful lightning bolts at your enemies."
-msgstr ""
+msgstr "Este arma dispara poderosos rayos a sus enemigos."
 
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:13
 msgid "Only a merman can use this item."
-msgstr ""
+msgstr "Solo un tritón puede usar este objeto."
 
 #. [effect]: type=fire
 #: data/campaigns/Dead_Water/utils/items.cfg:33
@@ -2848,17 +3149,17 @@ msgstr "tridente de tormentas"
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:54
 msgid "Flaming Sword"
-msgstr ""
+msgstr "Espada Flameante"
 
 #. [effect]: type=fire
 #: data/campaigns/Dead_Water/utils/items.cfg:76
 msgid "flaming sword"
-msgstr ""
+msgstr "espada flameante"
 
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:92
 msgid "Ankh Necklace"
-msgstr ""
+msgstr "Collar con ankh"
 
 #. [message]: speaker=$second_unit.id
 #: data/campaigns/Dead_Water/utils/items.cfg:196
@@ -2866,6 +3167,8 @@ msgid ""
 "The human wizard was wearing a ring! Maybe it is magic. Someone should try "
 "it on to see what it does."
 msgstr ""
+"¡El mago humano llevaba un anillo! Quizá sea mágico. Alguien debería "
+"probárlo para ver que hace."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/utils/items.cfg:226
@@ -2873,6 +3176,8 @@ msgid ""
 "The bat slips the ring over a claw, and flies straight up, flapping "
 "powerfully."
 msgstr ""
+"El murciélago se desliza el anillo en una garra, y vuela directo hacia "
+"arriba aleteando con fuerza."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/utils/items.cfg:232
@@ -2881,21 +3186,23 @@ msgid ""
 "The ring of power increases the damage of all its owner’s attacks by one, "
 "and adds three hitpoints."
 msgstr ""
+"El anillo de poder incrementa el daño de todos los ataques de su propietario "
+"en uno y añade tres puntos de vida."
 
 #. [option]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:246
 msgid "We will let the bat have the ring. It will make him more helpful."
-msgstr ""
+msgstr "Dejaremos que el murciélago tenga el anillo. Le hará más útil."
 
 #. [option]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:255
 msgid "Someone take that off of him before he hurts himself."
-msgstr ""
+msgstr "Que alguien le quite eso antes de que se haga daño."
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/utils/items.cfg:269
 msgid "I’ll try on the ring."
-msgstr ""
+msgstr "Probaré con el anillo."
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/utils/items.cfg:274
@@ -2905,12 +3212,12 @@ msgstr "¡Me siento diferente, y todas mis armas son más ligeras!"
 #. [option]: speaker=unit
 #: data/campaigns/Dead_Water/utils/items.cfg:292
 msgid "I’ll take this ring, and you can rely on my strength."
-msgstr ""
+msgstr "Cogeré este anillo, y podréis confiar en mi fuerza."
 
 #. [option]: speaker=unit
 #: data/campaigns/Dead_Water/utils/items.cfg:301
 msgid "This thing makes me dizzy. Someone else can have it."
-msgstr ""
+msgstr "Esta cosa me marea. Puede quedarsela otro."
 
 #. [object]: id=power_ring2
 #: data/campaigns/Dead_Water/utils/items.cfg:320
@@ -2923,15 +3230,19 @@ msgid ""
 "Killing these enemies was good, but there were many more on the way. I’m "
 "sure it is still unsafe here."
 msgstr ""
+"Matar esos enemigos fue bueno pero había muchos más en el camino. Estoy "
+"segura de que aún es inseguro."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:374
 msgid "I agree. I hate to leave our home, but we will return."
-msgstr ""
+msgstr "Estoy de acuerdo. Odio dejar nuestro hogar pero regresaremos."
 
 #: data/campaigns/Dead_Water/utils/specials.cfg:4
 msgid " This unit is able stun its enemies, disrupting their zones of control."
 msgstr ""
+"Esta unidad es capaz de aturdir a sus enemigos, interrumpiendo sus zonas de "
+"control."
 
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:9
@@ -2944,6 +3255,9 @@ msgid ""
 "This attack hits so hard that the defender is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the defenders next turn"
 msgstr ""
+"Este ataque golpea con tanta fuerza que el defensor queda aturdido y ya no "
+"puede imponer una zona de control. El efecto desaparece de los defensores en "
+"el siguiente turno."
 
 #~ msgid ""
 #~ "<span color='white'>Alternative objective:</span>\n"
@@ -2963,6 +3277,22 @@ msgstr ""
 
 #~ msgid "Run out of Turns"
 #~ msgstr "Fin de los turnos"
+
+#~ msgid "Fire Guardian"
+#~ msgstr "Guradían de fuego"
+
+#~ msgid ""
+#~ "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
+#~ "where they come from, but they are occasionally summoned by powerful "
+#~ "mages to do their bidding. When not being controlled they like to frolic "
+#~ "in pools of lava and take great delight in burning anything they can "
+#~ "reach."
+#~ msgstr ""
+#~ "Los guardianes de fuego son espíritus de humo y llamas. Nadie está del "
+#~ "todo seguro de donde vienen, pero en ocasiones son invocados por "
+#~ "poderosos magos para cumplir sus órdenes. Cuando no son controlados les "
+#~ "gusta divertirse en piscinas de lava y obtienen gran placer quemando "
+#~ "cualquier cosa que tengan a su alcance."
 
 #~ msgid "fire claws"
 #~ msgstr "garras de fuego"
