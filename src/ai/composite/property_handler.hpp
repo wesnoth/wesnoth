@@ -24,6 +24,7 @@
 
 #include <boost/function.hpp>
 
+#include "config.hpp"
 #include "foreach.hpp"
 #include "ai/composite/component.hpp"
 

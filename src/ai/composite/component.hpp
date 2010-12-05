@@ -21,11 +21,14 @@
 #ifndef AI_COMPOSITE_COMPONENT_HPP_INCLUDED
 #define AI_COMPOSITE_COMPONENT_HPP_INCLUDED
 
+class config;
+
 #include <iostream>
+#include <map>
+#include <string>
+#include <vector>
+
 #include <boost/shared_ptr.hpp>
-
-#include "../../config.hpp"
-
 
 #ifdef _MSC_VER
 #pragma warning(push)

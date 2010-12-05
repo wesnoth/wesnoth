@@ -21,6 +21,7 @@
 #include "component.hpp"
 #include "engine.hpp"
 #include "property_handler.hpp"
+#include "../../config.hpp"
 #include "../../log.hpp"
 #include "../../foreach.hpp"
 
