@@ -16,7 +16,6 @@
 #define TERRAIN_H_INCLUDED
 
 #include "config.hpp"
-#include "tstring.hpp"
 #include "terrain_translation.hpp"
 
 class terrain_type
