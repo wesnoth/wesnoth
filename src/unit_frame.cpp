@@ -214,6 +214,9 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	y_(cfg[frame_string + "y"]),
 	directional_x_(cfg[frame_string + "directional_x"]),
 	directional_y_(cfg[frame_string + "directional_y"]),
+	auto_vflip_(t_unset),
+	auto_hflip_(t_unset),
+	primary_frame_(t_unset),
 	drawing_layer_(cfg[frame_string + "layer"])
 {
 	if(!cfg.has_attribute(frame_string + "auto_vflip")) {
