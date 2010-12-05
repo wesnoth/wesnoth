@@ -26,6 +26,7 @@
 #include "serialization/string_utils.hpp"
 #include "thread.hpp"
 #include "util.hpp"
+#include "config.hpp"
 
 #include "filesystem.hpp"
 
@@ -36,8 +37,6 @@
 #include <set>
 #include <cstring>
 #include <stdexcept>
-#include <config.hpp> 
-#include <tstring.hpp>
 
 #include <signal.h>
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
