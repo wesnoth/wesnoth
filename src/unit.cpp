@@ -18,16 +18,12 @@
  *  Routines to manage units.
  */
 
-#include "global.hpp"
-
 #include "unit.hpp"
 
-#include "actions.hpp"
 #include "callable_objects.hpp"
 #include "foreach.hpp"
 #include "formula.hpp"
 #include "game_display.hpp"
-#include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
@@ -38,7 +34,6 @@
 #include "unit_abilities.hpp"
 #include "terrain_filter.hpp"
 #include "formula_string_utils.hpp"
-#include "team.hpp"
 #include "scripting/lua.hpp"
 #include "play_controller.hpp"
 
