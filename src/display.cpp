@@ -18,14 +18,10 @@
  * Routines to set up the display, scroll and zoom the map.
  */
 
-#include "global.hpp"
-
 #include "builder.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
-#include "events.hpp"
 #include "foreach.hpp"
-#include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
@@ -36,8 +32,6 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "minimap.hpp"
-#include "preferences.hpp"
-#include "sdl_utils.hpp"
 #include "text.hpp"
 #include "time_of_day.hpp"
 #include "tooltips.hpp"
@@ -45,15 +39,11 @@
 
 #include "SDL_image.h"
 
-#include <algorithm>
-#include <cassert>
 #ifdef __SUNPRO_CC
 // GCC doesn't have hypot in cmath so include it for Sun Studio
 #include <math.h>
 #endif
 #include <cmath>
-#include <iostream>
-#include <sstream>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
