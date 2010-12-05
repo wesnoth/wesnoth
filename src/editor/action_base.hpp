@@ -30,8 +30,6 @@
 
 #include "editor_common.hpp"
 
-#include <string>
-
 namespace editor {
 
 /**
