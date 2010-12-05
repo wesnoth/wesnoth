@@ -23,10 +23,6 @@
 
 #include "display.hpp"
 
-#include <vector>
-#include <list>
-#include <map>
-
 typedef std::vector<map_location> arrow_path_t;
 
 /**
