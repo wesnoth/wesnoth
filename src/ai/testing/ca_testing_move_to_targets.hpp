@@ -21,16 +21,9 @@
 #ifndef AI_TESTING_CA_TESTING_MOVE_TO_TARGETS_HPP_INCLUDED
 #define AI_TESTING_CA_TESTING_MOVE_TO_TARGETS_HPP_INCLUDED
 
-#include "../../global.hpp"
-
-#include "../composite/contexts.hpp"
 #include "../composite/rca.hpp"
 
-
-#include "../../config.hpp"
 #include "../../unit_map.hpp"
-#include <boost/shared_ptr.hpp>
-#include <vector>
 
 #ifdef _MSC_VER
 #pragma warning(push)
