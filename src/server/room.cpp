@@ -13,6 +13,7 @@
    See the COPYING file for more details.
 */
 
+#include "config.hpp"
 #include "game.hpp"
 #include "player_network.hpp"
 #include "room.hpp"

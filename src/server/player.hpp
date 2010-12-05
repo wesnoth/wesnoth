@@ -17,12 +17,10 @@
 #define PLAYER_HPP_INCLUDED
 
 
-#include "../config.hpp"
 #include "simple_wml.hpp"
 
 #include <ctime>
 #include <set>
-#include <string>
 
 namespace wesnothd {
 
