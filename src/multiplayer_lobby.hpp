@@ -19,6 +19,7 @@
 #define MULTIPLAYER_LOBBY_HPP_INCLUDED
 
 #include "multiplayer_ui.hpp"
+#include "game_preferences.hpp"
 #include "image.hpp"
 
 class config;
