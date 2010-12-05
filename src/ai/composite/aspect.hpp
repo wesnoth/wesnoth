@@ -20,28 +20,11 @@
 #ifndef AI_COMPOSITE_ASPECT_HPP_INCLUDED
 #define AI_COMPOSITE_ASPECT_HPP_INCLUDED
 
-#include "../../global.hpp"
-
-#include "component.hpp"
-#include "engine.hpp"
 #include "property_handler.hpp"
-#include "stage.hpp"
 #include "value_translator.hpp"
 
-#include "../contexts.hpp"
-#include "../default/contexts.hpp"
-#include "../game_info.hpp"
-#include "../manager.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
-#include "../../terrain_filter.hpp"
 
-#include <map>
-#include <stack>
-#include <vector>
-#include <deque>
-#include <iterator>
-#include <algorithm>
 #include <boost/bind.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/pointer_cast.hpp>
