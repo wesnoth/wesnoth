@@ -20,6 +20,8 @@
 
 #include "tstring.hpp"
 
+#include <vector>
+
 class config;
 
 /**
