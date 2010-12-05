@@ -17,24 +17,14 @@
  * @file
  */
 
-
-#include "../../global.hpp"
-
-#include "component.hpp"
 #include "engine.hpp"
 #include "stage.hpp"
 
-#include "../contexts.hpp"
-#include "../default/contexts.hpp"
-#include "../game_info.hpp"
 #include "../manager.hpp"
-#include "../../terrain_translation.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../util.hpp"
 #include "../../serialization/string_utils.hpp"
 #include "../../resources.hpp"
-
-#include <vector>
 
 namespace ai {
 
