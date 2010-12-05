@@ -15,6 +15,8 @@
 */
 
 #include "formula_string_utils.hpp"
+
+#include "config.hpp"
 #include "log.hpp"
 #include "formula.hpp"
 #include "gettext.hpp"

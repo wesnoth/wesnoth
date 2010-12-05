@@ -18,7 +18,8 @@
 #define FORMULA_STRING_UTILS_HPP_INCLUDED
 
 #include "serialization/string_utils.hpp"
-#include "config.hpp"
+
+class variable_set;
 
 namespace utils {
 
