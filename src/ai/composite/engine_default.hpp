@@ -21,11 +21,7 @@
 #ifndef AI_COMPOSITE_ENGINE_DEFAULT_HPP_INCLUDED
 #define AI_COMPOSITE_ENGINE_DEFAULT_HPP_INCLUDED
 
-#include "../../global.hpp"
-
 #include "engine.hpp"
-#include "../contexts.hpp"
-#include <algorithm>
 
 //============================================================================
 namespace ai {
