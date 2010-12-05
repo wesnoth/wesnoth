@@ -18,18 +18,14 @@
  * Terrain builder.
  */
 
-#include "global.hpp"
-
 #include "builder.hpp"
-#include "config.hpp"
+
 #include "foreach.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "serialization/string_utils.hpp"
 #include "image.hpp"
-
-#include <climits>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
