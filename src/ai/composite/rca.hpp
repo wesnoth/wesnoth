@@ -21,16 +21,8 @@
 #ifndef AI_COMPOSITE_RCA_HPP_INCLUDED
 #define AI_COMPOSITE_RCA_HPP_INCLUDED
 
-#include "../../global.hpp"
-
-#include "../../config.hpp"
-
 #include "component.hpp"
 #include "contexts.hpp"
-#include "../contexts.hpp"
-#include <boost/shared_ptr.hpp>
-#include <vector>
-#include <string>
 
 #ifdef _MSC_VER
 #pragma warning(push)
