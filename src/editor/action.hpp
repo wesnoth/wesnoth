@@ -28,11 +28,8 @@
 #define EDITOR_ACTION_HPP
 
 #include "action_base.hpp"
-#include "editor_map.hpp"
 #include "map_fragment.hpp"
 
-#include "../map.hpp"
-#include "../terrain.hpp"
 namespace editor {
 
 /**
