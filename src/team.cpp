@@ -18,17 +18,14 @@
  *  Team-management, allies, setup at start of scenario.
  */
 
-#include "global.hpp"
+#include "team.hpp"
 
 #include "ai/manager.hpp"
 #include "foreach.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
-#include "log.hpp"
-#include "map.hpp"
 #include "resources.hpp"
 #include "game_preferences.hpp"
-#include "team.hpp"
 #include "whiteboard/side_actions.hpp"
 
 static lg::log_domain log_engine("engine");
