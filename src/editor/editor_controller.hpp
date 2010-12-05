@@ -18,25 +18,15 @@
 
 #include "action_base.hpp"
 #include "brush.hpp"
-#include "editor_common.hpp"
 #include "editor_display.hpp"
 #include "editor_main.hpp"
 #include "map_context.hpp"
 #include "map_fragment.hpp"
 
 #include "../controller_base.hpp"
-#include "../events.hpp"
-#include "../hotkeys.hpp"
-#include "../key.hpp"
 #include "../mouse_handler_base.hpp"
-#include "../sdl_utils.hpp"
 #include "../tooltips.hpp"
 
-#include <deque>
-#include <boost/utility.hpp>
-#include <boost/scoped_ptr.hpp>
-
-class config;
 class map_generator;
 
 namespace tooltips {
