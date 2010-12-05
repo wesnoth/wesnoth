@@ -22,10 +22,6 @@
 
 #include "move.hpp"
 
-#include "typedefs.hpp"
-
-#include <boost/enable_shared_from_this.hpp>
-
 namespace wb
 {
 
