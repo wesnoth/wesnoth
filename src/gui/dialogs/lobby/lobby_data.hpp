@@ -16,13 +16,13 @@
 #ifndef INC_LOBBY_DATA
 #define INC_LOBBY_DATA
 
-#include "config.hpp"
 #include "sdl_utils.hpp"
 
 #include <set>
-#include <map>
 #include <deque>
 #include <functional>
+
+class config;
 
 /** This class represenst a single stored chat message */
 struct chat_message

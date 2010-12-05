@@ -16,6 +16,7 @@
 #ifndef INC_LOBBY_INFO
 #define INC_LOBBY_INFO
 
+#include "config.hpp"
 #include "gui/dialogs/lobby/lobby_data.hpp"
 
 /**
