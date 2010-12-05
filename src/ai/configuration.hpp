@@ -21,13 +21,8 @@
 #ifndef AI_CONFIGURATION_HPP_INCLUDED
 #define AI_CONFIGURATION_HPP_INCLUDED
 
-#include "../global.hpp"
-
 #include "../config.hpp"
 #include "game_info.hpp"
-
-#include <map>
-#include <vector>
 
 namespace ai {
 
