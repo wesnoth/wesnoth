@@ -17,8 +17,6 @@
 #ifndef ATTACK_PREDICTION_DISPLAY_H_INCLUDED
 #define ATTACK_PREDICTION_DISPLAY_H_INCLUDED
 
-#include "global.hpp"
-
 #include "actions.hpp"
 #include "show_dialog.hpp"
 
