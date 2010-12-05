@@ -21,10 +21,7 @@
 #ifndef AI_COMPOSITE_ENGINE_LUA_HPP_INCLUDED
 #define AI_COMPOSITE_ENGINE_LUA_HPP_INCLUDED
 
-#include "../../global.hpp"
-
 #include "engine.hpp"
-#include "../contexts.hpp"
 
 //============================================================================
 namespace ai {
