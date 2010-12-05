@@ -16,12 +16,9 @@
 #ifndef EDITOR_MAP_CONTEXT_HPP_INCLUDED
 #define EDITOR_MAP_CONTEXT_HPP_INCLUDED
 
-#include "editor_common.hpp"
 #include "editor_map.hpp"
 
 #include <boost/utility.hpp>
-
-#include <deque>
 
 namespace editor {
 
