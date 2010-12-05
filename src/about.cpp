@@ -19,16 +19,12 @@
  */
 
 #include "about.hpp"
-#include "config.hpp"
+
 #include "construct_dialog.hpp"
 #include "display.hpp"
-#include "font.hpp"
 #include "foreach.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
-#include "video.hpp"
-#include "show_dialog.hpp"
 
 /**
  * @namespace about
