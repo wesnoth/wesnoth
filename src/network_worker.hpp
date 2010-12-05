@@ -17,10 +17,9 @@
 #define NETWORK_WORKER_HPP_INCLUDED
 
 #include <map>
-#include <vector>
-#include "config.hpp"
 #include "network.hpp"
-#include "SDL_net.h"
+
+class config;
 
 /**
  * Aligns a variable on a 4 byte boundary.
