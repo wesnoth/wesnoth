@@ -18,8 +18,6 @@
 
 #include "editor/action_base.hpp"
 #include "editor/editor_map.hpp"
-#include "map.hpp"
-#include "terrain.hpp"
 #include "theme.hpp"
 
 class CKey;
