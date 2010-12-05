@@ -19,6 +19,7 @@
  */
 
 #include "actions.hpp"
+
 #include "attack_prediction.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
@@ -28,10 +29,8 @@
 #include "gettext.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
-#include "map.hpp"
 #include "map_label.hpp"
 #include "mouse_handler_base.hpp"
-#include "pathfind/pathfind.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
@@ -42,11 +41,7 @@
 #include "tod_manager.hpp"
 #include "whiteboard/manager.hpp"
 
-
 #include <boost/bind.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <list>
-
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
