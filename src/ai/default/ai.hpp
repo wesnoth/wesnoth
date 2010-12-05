@@ -18,14 +18,8 @@
 #ifndef AI_DEFAULT_AI_HPP_INCLUDED
 #define AI_DEFAULT_AI_HPP_INCLUDED
 
-#include "../../global.hpp"
-
-#include "contexts.hpp"
-
 #include "../interface.hpp"
-#include "../contexts.hpp"
 #include "../composite/stage.hpp"
-#include "../../formula_callable.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)
