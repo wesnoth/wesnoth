@@ -18,7 +18,9 @@
 #ifndef TIME_OF_DAY_HPP_INCLUDED
 #define TIME_OF_DAY_HPP_INCLUDED
 
-#include "config.hpp"
+#include "tstring.hpp"
+
+class config;
 
 /**
  * Object which defines a time of day

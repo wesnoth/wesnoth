@@ -17,6 +17,7 @@
 
 #include "global.hpp"
 
+#include "config.hpp"
 #include "foreach.hpp"
 #include "time_of_day.hpp"
 
