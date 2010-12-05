@@ -1,6 +1,7 @@
 #ifndef SERVER_HPP_INCLUDED
 #define SERVER_HPP_INCLUDED
 
+#include "config.hpp"
 #include "user_handler.hpp"
 #include "input_stream.hpp"
 #include "metrics.hpp"

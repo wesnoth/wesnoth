@@ -15,9 +15,9 @@
 
 #include "room.hpp"
 
-#include "../config.hpp"
-
 #include <boost/utility.hpp>
+
+class config;
 
 #ifndef SERVER_ROOM_MANAGER_HPP_INCLUDED
 #define SERVER_ROOM_MANAGER_HPP_INCLUDED
