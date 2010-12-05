@@ -14,13 +14,11 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "construct_dialog.hpp"
+
 #include "display.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "sound.hpp"
 #include "log.hpp"
