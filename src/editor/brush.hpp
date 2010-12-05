@@ -18,10 +18,6 @@
 
 #include "editor_map.hpp"
 
-#include "../config.hpp"
-
-#include <set>
-
 namespace editor {
 
 /**
