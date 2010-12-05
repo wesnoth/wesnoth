@@ -36,6 +36,8 @@
 #include <set>
 #include <cstring>
 #include <stdexcept>
+#include <config.hpp> 
+#include <tstring.hpp>
 
 #include <signal.h>
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
