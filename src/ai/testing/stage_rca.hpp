@@ -21,16 +21,8 @@
 #ifndef AI_TESTING_STAGE_RCA_HPP_INCLUDED
 #define AI_TESTING_STAGE_RCA_HPP_INCLUDED
 
-#include "../../global.hpp"
-
-#include "../composite/contexts.hpp"
-#include "../composite/component.hpp"
 #include "../composite/rca.hpp"
 #include "../composite/stage.hpp"
-#include "../../config.hpp"
-
-#include <boost/shared_ptr.hpp>
-#include <vector>
 
 #ifdef _MSC_VER
 #pragma warning(push)
