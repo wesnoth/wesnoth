@@ -21,13 +21,8 @@
 #ifndef AI_TESTING_STAGE_FALLBACK_HPP_INCLUDED
 #define AI_TESTING_STAGE_FALLBACK_HPP_INCLUDED
 
-#include "../../global.hpp"
-
 #include "../composite/stage.hpp"
 #include "../interface.hpp"
-#include "../../config.hpp"
-
-#include <vector>
 
 #ifdef _MSC_VER
 #pragma warning(push)
