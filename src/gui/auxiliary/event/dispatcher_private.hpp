@@ -319,9 +319,9 @@ struct find<false>
 			// MSVC 2008 doesn't like operator() here so changed the name.
 			return functor.template oper<item>(event);
 		} else {
-			typedef typename boost::mpl::next<itor>::type itor;
-			return find<boost::is_same<itor, end>::value>
-				::execute((itor*)0, (end*)0, event, functor);
+			typedef typename boost::mpl::next<itor>::type titor;
+			return find<boost::is_same<titor, end>::value>
+				::execute((titor*)0, (end*)0, event, functor);
 		}
     }
 };
