@@ -149,8 +149,8 @@ void suh::check_name(const std::string& name) {
 				"characters. Only alpha-numeric characters, underscores and hyphens"
 				"are allowed.");
 	}
-	if(name.size() > 18) {
-		throw error("This username is too long. Usernames must be 18 characters or less.");
+	if(name.size() > 20) {
+		throw error("This username is too long. Usernames must be 20 characters or less.");
 	}
 }
 

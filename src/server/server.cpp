@@ -962,8 +962,8 @@ void server::process_login(const network::connection sock,
 			"are allowed.").c_str(), MP_INVALID_CHARS_IN_NAME_ERROR);
 		return;
 	}
-	if (username.size() > 18) {
-		send_error(sock, ("The nick '" + username + "' is too long. Nicks must be 18 characters or less.").c_str(),
+	if (username.size() > 20) {
+		send_error(sock, ("The nick '" + username + "' is too long. Nicks must be 20 characters or less.").c_str(),
 			MP_NAME_TOO_LONG_ERROR);
 		return;
 	}
