@@ -21,15 +21,8 @@
 #ifndef AI_COMPOSITE_STAGE_HPP_INCLUDED
 #define AI_COMPOSITE_STAGE_HPP_INCLUDED
 
-#include "../../global.hpp"
-
 #include "component.hpp"
 #include "contexts.hpp"
-#include "../contexts.hpp"
-#include "../../config.hpp"
-#include <boost/shared_ptr.hpp>
-#include <map>
-#include <string>
 
 #ifdef _MSC_VER
 #pragma warning(push)
