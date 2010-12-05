@@ -21,7 +21,6 @@
 #include "../map.hpp"
 
 #include <deque>
-#include <set>
 
 namespace editor {
 
