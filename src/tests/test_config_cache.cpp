@@ -19,6 +19,7 @@
 
 
 #include "config_cache.hpp"
+#include "config.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
 

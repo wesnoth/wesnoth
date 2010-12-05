@@ -21,14 +21,14 @@
 #ifndef CONFIG_CACHE_HPP_INCLUDED
 #define CONFIG_CACHE_HPP_INCLUDED
 
-#include <map>
 #include <list>
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 
-#include "config.hpp"
 #include "serialization/preprocessor.hpp"
+
+class config;
 
 namespace game_config {
 
