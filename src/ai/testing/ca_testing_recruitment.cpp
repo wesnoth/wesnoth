@@ -153,6 +153,9 @@ class fake_team
    public:
       fake_team(const team &target)
          : target_(&target)
+         , gold_(0)
+         , extra_units_()
+         , recruit_list_()
       {
          reset();
       }
