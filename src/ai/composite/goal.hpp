@@ -27,20 +27,12 @@
 #pragma warning(disable:4250)
 #endif
 
-
-#include "../../global.hpp"
-
-#include "../contexts.hpp"
-#include "../game_info.hpp"
-
 //included for 'target' markers
 #include "../default/contexts.hpp"
 
 #include "component.hpp"
 
-#include <map>
 #include <stack>
-#include <vector>
 #include <deque>
 
 class terrain_filter;
