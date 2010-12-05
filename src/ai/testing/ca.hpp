@@ -22,7 +22,6 @@
 #ifndef AI_TESTING_CA_HPP_INCLUDED
 #define AI_TESTING_CA_HPP_INCLUDED
 
-#include "../../global.hpp"
 #include "../../unit_map.hpp"
 
 #include "../composite/rca.hpp"
