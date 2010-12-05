@@ -22,13 +22,8 @@
 #ifndef AI_COMPOSITE_PROPERTY_HANDLER_HPP_INCLUDED
 #define AI_COMPOSITE_PROPERTY_HANDLER_HPP_INCLUDED
 
-#include <boost/shared_ptr.hpp>
 #include <boost/function.hpp>
-#include <string>
-#include <map>
-#include <vector>
 
-#include "config.hpp"
 #include "foreach.hpp"
 #include "ai/composite/component.hpp"
 
