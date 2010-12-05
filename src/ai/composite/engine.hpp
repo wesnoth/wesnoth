@@ -22,15 +22,11 @@
 #ifndef AI_COMPOSITE_ENGINE_HPP_INCLUDED
 #define AI_COMPOSITE_ENGINE_HPP_INCLUDED
 
-#include "../../global.hpp"
-
 #include "component.hpp"
 #include "../contexts.hpp"
-#include "../game_info.hpp"
-#include "../../config.hpp"
+
 #include <algorithm>
 #include <iterator>
-#include <vector>
 
 //============================================================================
 
