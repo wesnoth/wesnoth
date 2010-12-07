@@ -427,7 +427,7 @@ void menu_handler::status_table(int selected)
 				leader_name = teams_[n].current_player();
 
 #ifndef LOW_MEM
-			str << "~RC(" << leader->team_color() << '>' << team::get_side_color_index(n+1) << ')';
+			str << leader->image_mods();
 #endif
 		} else {
 			leader_bools.push_back(false);
