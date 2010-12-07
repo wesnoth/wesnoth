@@ -191,6 +191,7 @@ wesnoth_source = \
 	gui/dialogs/message.cpp \
 	gui/dialogs/mp_connect.cpp \
 	gui/dialogs/mp_create_game.cpp \
+	gui/dialogs/mp_create_game_set_password.cpp \
 	gui/dialogs/mp_method_selection.cpp \
 	gui/dialogs/mp_cmd_wrapper.cpp \
 	gui/dialogs/simple_item_selector.cpp \

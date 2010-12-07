@@ -30,6 +30,7 @@
 #include "map_exception.hpp"
 #include "map_create.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/mp_create_game_set_password.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "minimap.hpp"
 #include "multiplayer_create.hpp"
@@ -342,8 +343,9 @@ void create::process_event()
 	}
 
 	if(password_button_.pressed()) {
-		gui::show_dialog(disp_, NULL, _("Set Password"),
-		_("Set the password that people wanting to join your game as players must enter."), gui::OK_ONLY, NULL, NULL, _("Password: "), &parameters_.password);
+		gui2::tmp_create_game_set_password pwd_dlg(parameters_.password);
+		pwd_dlg.show(disp_.video());
+		parameters_.password = pwd_dlg.password();
 	}
 
 	// Turns per game
