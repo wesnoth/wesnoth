@@ -42,7 +42,7 @@ namespace gui2 {
  * title & & label & m &
  *         Dialog title label. $
  *
- * message & & label & o &
+ * message & & scroll_label & o &
  *         Text label displaying a description or instructions. $
  *
  * listbox & & listbox & m &

@@ -43,7 +43,7 @@ namespace gui2 {
  * title & & label & m &
  *         Dialog title label. $
  *
- * message & & label & m &
+ * message & & control & m &
  *         Text label displaying a description or instructions. $
  *
  * listbox & & listbox & m &
@@ -79,7 +79,7 @@ tsimple_item_selector::tsimple_item_selector(const std::string& title, const std
 void tsimple_item_selector::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlabel& ltitle = find_widget<tlabel>(&window, "title", false);
-	tlabel& lmessage = find_widget<tlabel>(&window, "message", false);
+	tcontrol& lmessage = find_widget<tcontrol>(&window, "message", false);
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
