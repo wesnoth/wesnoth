@@ -419,10 +419,12 @@ Playing
 Controls
 ~~~~~~~~
 
-These are the default control keys. You can change them to your taste
-using the Preferences menu.
+These are the default control keys. Key setup might differ depending on the
+platform used. For exacmple you will often have to use the command key instead
+of the control key when you are using MacOSX. You can change most hotkeys to
+your taste using the Preferences menu.
 
-.Controls and hotkeys
+.General controls and hotkeys
 `--------------`--------------------------------------------------------------
 F1             The Battle for Wesnoth Help
 Arrow keys     Scroll
@@ -430,50 +432,109 @@ Left click     Select unit, move unit
 Right click    Context menu, cancel action
 Middle click   Center on pointer location
 Escape         Exit game, exit menu, cancel message
-Ctrl-r         Recruit unit
-Ctrl-alt-r     Repeat last recruit
-Alt-r          Recall unit
-u              Undo last move (only deterministic moves can be undone)
-r              Redo move
-m              Message another player (in multiplayer)
-ctrl-m         Message your allies (in multiplayer)
-Alt-m          Message everyone in the game (in multiplayer)
-Alt-c          View chat log
-n              Cycle through units that have movement left
-N              Cycle through units that have movement left, in reverse order
-Space          End unit turn and cycle to next unit that has movement left
-Shift-Space    Make currently selected unit hold position (end its movement)
-Ctrl-Space     End this player's turn
-Ctrl-v         Show enemy moves (where the enemy can move next turn)
-Ctrl-b         Show potential enemy moves, if your units were not on the map
-Ctrl-j         Show scenario objectives
-Ctrl-f         Toggle full screen/windowed mode
-Ctrl-a         Toggle accelerated game mode
-Ctrl-g         Toggle grid
-Ctrl-c         Clear onscreen labels
+
 Ctrl-s         Save game
 Ctrl-o         Load game
 Ctrl-p         Go to Preferences menu
 Ctrl-q         Quit game
-/              Search (find label or unit by name)
-t              Continue interrupted unit move
+Ctrl-f         Toggle full screen/windowed mode
+Ctrl-alt-m     Toggle muting of game sounds
+
 +              Zoom in
 -              Zoom out
 0              Reset zoom to default
-Ctrl-n         Rename unit
-1-7            Show how far currently selected unit can move in that many turns
-l              Move to leader unit
-d              Describe current unit
+Ctrl+e         Toggle ellipses
 Ctrl-g         Toggle grid
-S              Update shroud now
-D              Delay shroud updates
+
+Ctrl-a         Toggle accelerated game mode
+Holding Shift  Toggle between accelerated and normal game mode while pressed (temporary!)
+
+Ctrl-j         Show scenario objectives
+s              Show statistics
+Alt-s          Show status table
+Alt-u          Show unit list
+
+l              Move to leader unit
+
+Shift-s        Update shroud now
+------------------------------------------------------------------------------
+
+.Unit and turn specific hotkeys
+`--------------`--------------------------------------------------------------
+Ctrl-r         Recruit unit
+Ctrl-alt-r     Repeat last recruit
+Alt-r          Recall unit
+
+Ctrl-n         Rename unit
+d              Show the description of the currently selected unit
+
+t              Continue interrupted unit move
+u              Undo last move (only deterministic moves can be undone)
+r              Redo move
+n              Cycle through units that have movement left
+Shift-n        Cycle through units that have movement left, in reverse order
+
+Ctrl-v         Show enemy moves (where the enemy can move next turn)
+Ctrl-b         Show potential enemy moves, if your units were not on the map
+1-7            Show how far currently selected unit can move in that many turns
+
+Space          End unit turn and cycle to next unit that has movement left
+Shift-Space    Make currently selected unit hold position (end its movement)
+Ctrl-Space     End this player's turn
+------------------------------------------------------------------------------
+
+.Whiteboard specific hotkeys
+`--------------`--------------------------------------------------------------
+p              Toggle planning mode
+h              Delete planned action
+page down      Move action down queue
+page up        Move action up queue
+Ctrl+y         Execute all actions
+------------------------------------------------------------------------------
+
+.Multiplayer specific hotkeys
+`--------------`--------------------------------------------------------------
+m              Message another player (in multiplayer)
+ctrl-m         Message your allies (in multiplayer)
+Alt-m          Message everyone in the game (in multiplayer)
+Alt-c          View chat log
+Ctrl+x         Clear messages
+------------------------------------------------------------------------------
+
+.Miscellaneous hotkeys
+`--------------`--------------------------------------------------------------
+Ctrl-c         Clear onscreen labels
+/              Search (find label or unit by name)
 Alt-l          Attach a text label to a terrain hex
 Ctrl-l         Set team label
-Alt-s          Show status table
-s              Show statistics
-Alt-u          Show unit list
-Ctrl-alt-m     Toggle muting of game sounds
+
 :              http://www.wesnoth.org/wiki/CommandMode[Command mode]
+shift+c        Create Unit (Debug!)
+f              Run AI formula
+------------------------------------------------------------------------------
+
+Some keys on MacOSX require more than replacing Ctrl by Cmd. Here is a list of
+those:
+
+.Miscellaneous hotkeys
+`--------------`--------------------------------------------------------------
+Cmd-w           Quit game
+Cmd-,           Go to Preferences menu
+------------------------------------------------------------------------------
+
+Some hotkeys were changed slightly to make better use of the controls provided
+by the Pandora. If you are using a Pandora, these keys differ from the lists
+above:
+
+.Pandora specific controls and hotkeys
+`-------------------`---------------------------------------------------------
+D-Pad               Scroll
+GamingButton A      Recruit unit
+GamingButton B      Undo last move (only deterministic moves can be undone)
+GamingButton X      Cycle through units that have movement left
+GamingButton Y      Recall unit
+Alt-GamingButton Y  Move action down queue
+Alt-GamingButton X  Move action up queue
 ------------------------------------------------------------------------------
 
 Gold
