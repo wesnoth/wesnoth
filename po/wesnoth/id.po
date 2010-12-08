@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-03 14:59+0100\n"
+"POT-Creation-Date: 2010-12-08 18:05+0100\n"
 "PO-Revision-Date: 2010-09-02 11:07+0700\n"
 "Last-Translator: yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -128,7 +128,7 @@ msgstr "Bawah tanah"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:306
-#: src/actions.cpp:1280
+#: src/actions.cpp:1275
 msgid "poisoned"
 msgstr "keracunan"
 
@@ -189,14 +189,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1352
-#: src/actions.cpp:1285
+#: src/actions.cpp:1280
 msgid "female^slowed"
 msgstr "diperlambatkan"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1355
-#: src/actions.cpp:1285
+#: src/actions.cpp:1280
 msgid "slowed"
 msgstr "diperlambatkan"
 
@@ -961,8 +961,9 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:191
-msgid "red if it has used all its movement this turn."
-msgstr "merah jika ia sudah menggunakan seluruh gerakannya di giliran ini."
+msgid ""
+"red if it has finished its turn (might still be able to move or attack)."
+msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
@@ -7474,7 +7475,7 @@ msgstr "Tidak ada emas yang dibawa ke skenario berikutnya."
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:311 src/dialogs.cpp:636
-#: src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
 msgid "OK"
 msgstr "OK"
 
@@ -7482,7 +7483,7 @@ msgstr "OK"
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:312 src/dialogs.cpp:637 src/dialogs.cpp:1079
 #: src/dialogs.cpp:1190 src/multiplayer_connect.cpp:1015
-#: src/multiplayer_create.cpp:88 src/multiplayer_wait.cpp:178
+#: src/multiplayer_create.cpp:89 src/multiplayer_wait.cpp:178
 msgid "Cancel"
 msgstr "Batalkan"
 
@@ -7516,8 +7517,8 @@ msgstr "Akhir Skenario"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2367
-#: src/unit.cpp:2534
+#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2362
+#: src/unit.cpp:2529
 msgid "HP"
 msgstr "Darah"
 
@@ -7656,78 +7657,78 @@ msgstr "Visi"
 msgid "Skip animation"
 msgstr "Lompatkan animasi"
 
-#: src/about.cpp:200 src/help.cpp:3141 src/menu_events.cpp:317
+#: src/about.cpp:196 src/help.cpp:3141 src/menu_events.cpp:317
 #: src/menu_events.cpp:344 src/statistics_dialog.cpp:114
 msgid "Close"
 msgstr "Tutup"
 
-#: src/actions.cpp:374
+#: src/actions.cpp:369
 msgid "You don’t have a leader to recruit with."
 msgstr "Anda tidak memiliki pemimpin untuk merekrut."
 
-#: src/actions.cpp:381
+#: src/actions.cpp:376
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Anda harus menaruh pemimpin anda di sebuah benteng untuk merekrut atau "
 "memanggil kembali unit."
 
-#: src/actions.cpp:400
+#: src/actions.cpp:395
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Tidak ada heks istana kosong untuk merekrut unit."
 
-#: src/actions.cpp:540 src/actions.cpp:599 src/actions.cpp:1516
+#: src/actions.cpp:535 src/actions.cpp:594 src/actions.cpp:1511
 msgid "An invalid attacker weapon got selected."
 msgstr "Suatu senjata penyerang cacat yang terpilih."
 
-#: src/actions.cpp:545
+#: src/actions.cpp:540
 msgid "An invalid defender weapon got selected."
 msgstr "Suatu senjata pelindung cacat yang terpilih."
 
-#: src/actions.cpp:1280
+#: src/actions.cpp:1275
 msgid "female^poisoned"
 msgstr "keracunan"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1285
 msgid "female^petrified"
 msgstr "membatu"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1285
 msgid "petrified"
 msgstr "membatu"
 
-#: src/actions.cpp:2499
+#: src/actions.cpp:2494
 msgid "Ambushed!"
 msgstr "Tersergap!"
 
-#: src/actions.cpp:2506
+#: src/actions.cpp:2501
 msgid "Failed teleport! Exit not empty"
 msgstr "Teleportasi gagal! Jalan keluar tidak kosong."
 
-#: src/actions.cpp:2551
+#: src/actions.cpp:2546
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Unit sekutu terlihat $friends unit-unit sekutu terlihat"
 
-#: src/actions.cpp:2554
+#: src/actions.cpp:2549
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Unit musuh terlihat! $enemies unit-unit musuh terlihat!"
 
-#: src/actions.cpp:2559
+#: src/actions.cpp:2554
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 teman $friends teman-teman"
 
-#: src/actions.cpp:2560
+#: src/actions.cpp:2555
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 musuh $enemies musuh-musuh"
 
-#: src/actions.cpp:2561
+#: src/actions.cpp:2556
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unit terlihat! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2570
+#: src/actions.cpp:2565
 msgid "(press $hotkey to keep moving)"
 msgstr "(tekan $hotkey untuk pindah terus)"
 
@@ -7973,7 +7974,7 @@ msgstr "Semua tambahan sudah diupdate dengan sukses."
 msgid "Connecting to add-ons server..."
 msgstr "Menyambungkan ke server tambahan..."
 
-#: src/addon/manager.cpp:1123 src/network.cpp:397 src/network.cpp:405
+#: src/addon/manager.cpp:1123 src/network.cpp:398 src/network.cpp:406
 msgid "Could not connect to host."
 msgstr "Tidak bisa bersambung ke host."
 
@@ -8224,7 +8225,7 @@ msgstr ""
 msgid "Date"
 msgstr "Tanggal"
 
-#: src/dialogs.cpp:614 src/multiplayer_create.cpp:108
+#: src/dialogs.cpp:614 src/multiplayer_create.cpp:109
 msgid "Load Game"
 msgstr "Load Permainan"
 
@@ -8461,7 +8462,7 @@ msgstr "Daya Tahan:"
 msgid "(Att / Def)"
 msgstr "(Ser / Per)"
 
-#: src/generate_report.cpp:272 src/multiplayer_create.cpp:415
+#: src/generate_report.cpp:272 src/multiplayer_create.cpp:417
 msgid "Experience Modifier: "
 msgstr "Pemodifikasi Pengalaman:"
 
@@ -8616,7 +8617,7 @@ msgid "Fog"
 msgstr "Kabut"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:309
-#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:86
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:87
 #: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:558
 msgid "Shroud"
 msgstr "Selubung"
@@ -8657,7 +8658,7 @@ msgstr "tidak menjadi teman juga tidak diabaikan"
 msgid "You"
 msgstr "Anda"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:553
+#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:555
 msgid "Error"
 msgstr "Error"
 
@@ -8681,7 +8682,7 @@ msgstr "Pemimpin:"
 msgid "Recruits:"
 msgstr "Rekrut:"
 
-#: src/help.cpp:1280 src/multiplayer_create.cpp:81
+#: src/help.cpp:1280 src/multiplayer_create.cpp:82
 msgid "Era:"
 msgstr "Era:"
 
@@ -8797,7 +8798,7 @@ msgstr "Bantuan Peperangan untuk Wesnoth"
 msgid "Parse error when parsing help text: "
 msgstr "Error uraian ketika menguraikan teks bantuan:"
 
-#: src/intro.cpp:50
+#: src/intro.cpp:44
 msgid "The End"
 msgstr "Akhir"
 
@@ -9857,7 +9858,8 @@ msgstr ""
 "bawah dan strip dibolehkan."
 
 #: src/multiplayer.cpp:311
-msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
+#, fuzzy
+msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Nama '$nick' terlalu panjang. Nama harus memiliki 18 karakter atau lebih "
 "sedikit."
@@ -10028,196 +10030,181 @@ msgstr "Menunggu pemain-pemain menggabungkan diri..."
 msgid "Waiting for players to choose factions..."
 msgstr "Menunggu pemain-pemain menggabungkan diri..."
 
-#: src/multiplayer_create.cpp:52 src/multiplayer_lobby.cpp:731
+#: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:731
 msgid "Create Game"
 msgstr "Membuat Permainan"
 
-#: src/multiplayer_create.cpp:65
+#: src/multiplayer_create.cpp:66
 msgid "Time limit"
 msgstr "Batas waktu"
 
-#: src/multiplayer_create.cpp:78
+#: src/multiplayer_create.cpp:79
 msgid "Name of game:"
 msgstr "Nama permainan:"
 
-#: src/multiplayer_create.cpp:82
+#: src/multiplayer_create.cpp:83
 msgid "Map to play:"
 msgstr "Peta untuk dimainkan:"
 
-#: src/multiplayer_create.cpp:83 src/multiplayer_lobby.cpp:276
+#: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:276
 msgid "Use map settings"
 msgstr "Gunakan setting peta"
 
-#: src/multiplayer_create.cpp:84
+#: src/multiplayer_create.cpp:85
 msgid "Random start time"
 msgstr "Jam permulaan acak"
 
-#: src/multiplayer_create.cpp:85
+#: src/multiplayer_create.cpp:86
 msgid "Fog Of War"
 msgstr "Kabut Peperangan"
 
-#: src/multiplayer_create.cpp:87
+#: src/multiplayer_create.cpp:88
 msgid "Observers"
 msgstr "Peninjau"
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:91
 msgid "Regenerate"
 msgstr "Pemulihan"
 
-#: src/multiplayer_create.cpp:91
+#: src/multiplayer_create.cpp:92
 msgid "Settings..."
 msgstr "Setting..."
 
-#: src/multiplayer_create.cpp:92
+#: src/multiplayer_create.cpp:93
 msgid "Set Password..."
 msgstr "Pasang Kata Sandi..."
 
-#: src/multiplayer_create.cpp:109
+#: src/multiplayer_create.cpp:110
 msgid "Load Game..."
 msgstr "Meload Permainan..."
 
-#: src/multiplayer_create.cpp:145
+#: src/multiplayer_create.cpp:146
 msgid "The maximum number of turns the game can last"
 msgstr "Jumlah giliran maksimum permainan ini bisa berlangsung"
 
-#: src/multiplayer_create.cpp:148
+#: src/multiplayer_create.cpp:149
 msgid "Enables user time limit"
 msgstr "Membolehkan batas waktu pemain"
 
-#: src/multiplayer_create.cpp:154
+#: src/multiplayer_create.cpp:155
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Waktu terlama dibolehkan untuk giliran pertama (detik)"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:161
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Waktu terlama dibolehkan untuk giliran manapun (detik)"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:167
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Waktu untuk tugas-tugas umum setiap giliran (detik)"
 
-#: src/multiplayer_create.cpp:172
+#: src/multiplayer_create.cpp:173
 msgid "Time for each attack, recruit, and capture"
 msgstr "Waktu untuk setiap serangan, rekrutan dan perebutan"
 
-#: src/multiplayer_create.cpp:177
+#: src/multiplayer_create.cpp:178
 msgid "The amount of income each village yields per turn"
 msgstr "Jumlah pendapatan dari setiap desa per giliran"
 
-#: src/multiplayer_create.cpp:183
+#: src/multiplayer_create.cpp:184
 msgid "The amount of experience a unit needs to advance"
 msgstr "Jumlah pengalaman diperlukan oleh unit untuk naik level"
 
-#: src/multiplayer_create.cpp:186
+#: src/multiplayer_create.cpp:187
 msgid "Use scenario specific settings"
 msgstr "Gunakan setting spesifik untuk skenario"
 
-#: src/multiplayer_create.cpp:189
+#: src/multiplayer_create.cpp:190
 msgid "Randomize time of day in begin"
 msgstr "Acakkan jam hari pada permulaan"
 
-#: src/multiplayer_create.cpp:192
+#: src/multiplayer_create.cpp:193
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Unit musuh tidak bisa terlihat kecuali jika mereka bisa dicapai oleh unit "
 "anda"
 
-#: src/multiplayer_create.cpp:195
+#: src/multiplayer_create.cpp:196
 msgid "The map is unknown until your units explore it"
 msgstr "Peta ini tidak diketahui sampai unit anda menjelajahinya"
 
-#: src/multiplayer_create.cpp:198
+#: src/multiplayer_create.cpp:199
 msgid "Allow users who are not playing to watch the game"
 msgstr "Bolehkan pemain yang tidak bermain menonton permainan ini."
 
-#: src/multiplayer_create.cpp:202
+#: src/multiplayer_create.cpp:203
 msgid "Share View"
 msgstr "Berbagi Visi"
 
-#: src/multiplayer_create.cpp:203
+#: src/multiplayer_create.cpp:204
 msgid "Share Maps"
 msgstr "Berbagi Peta"
 
-#: src/multiplayer_create.cpp:204
+#: src/multiplayer_create.cpp:205
 msgid "Share None"
 msgstr "Tidak Berbagi Apapun"
 
-#: src/multiplayer_create.cpp:214
+#: src/multiplayer_create.cpp:215
 msgid "No eras found."
 msgstr "Tidak ada era yang ditemukan."
 
-#: src/multiplayer_create.cpp:215
+#: src/multiplayer_create.cpp:216
 msgid "No eras found"
 msgstr "Tidak ada era yang ditemukan"
 
-#: src/multiplayer_create.cpp:228
+#: src/multiplayer_create.cpp:229
 msgid "$login|’s game"
 msgstr "Permainan $login"
 
-#: src/multiplayer_create.cpp:289
+#: src/multiplayer_create.cpp:290
 msgid "Invalid era selected"
 msgstr "Era tidak berlaku dipilih"
 
-#: src/multiplayer_create.cpp:335
+#: src/multiplayer_create.cpp:336
 msgid "The map is invalid."
 msgstr "peta permainan salah."
 
-#: src/multiplayer_create.cpp:337
+#: src/multiplayer_create.cpp:338
 msgid "You must enter a name."
 msgstr "Anda harus memasukkan sebuah nama."
 
-#: src/multiplayer_create.cpp:345
-msgid "Set Password"
-msgstr "Pilih Kata Sandi"
-
-#: src/multiplayer_create.cpp:346 src/multiplayer_lobby.cpp:905
-msgid "Password: "
-msgstr "Kata Sandi:"
-
-#: src/multiplayer_create.cpp:346
-msgid ""
-"Set the password that people wanting to join your game as players must enter."
-msgstr ""
-"Pasang kata sandi yang harus dimasukkan oleh orang yang mau memainkan "
-"permainan anda."
-
-#: src/multiplayer_create.cpp:354
+#: src/multiplayer_create.cpp:356
 msgid "Turns: "
 msgstr "Giliran:"
 
-#: src/multiplayer_create.cpp:356
+#: src/multiplayer_create.cpp:358
 msgid "Unlimited Turns"
 msgstr "Giliran Tak Terbatas"
 
-#: src/multiplayer_create.cpp:384
+#: src/multiplayer_create.cpp:386
 msgid "Init. Limit: "
 msgstr "Batas P.A.:"
 
-#: src/multiplayer_create.cpp:389
+#: src/multiplayer_create.cpp:391
 msgid "Turn Bonus: "
 msgstr "Bonus Giliran:"
 
-#: src/multiplayer_create.cpp:393
+#: src/multiplayer_create.cpp:395
 msgid "Reservoir: "
 msgstr "Reservoir:"
 
-#: src/multiplayer_create.cpp:398
+#: src/multiplayer_create.cpp:400
 msgid "Action Bonus: "
 msgstr "Bonus Aksi:"
 
-#: src/multiplayer_create.cpp:405
+#: src/multiplayer_create.cpp:407
 msgid "Village Gold: "
 msgstr "Emas Desa:"
 
-#: src/multiplayer_create.cpp:413
+#: src/multiplayer_create.cpp:415
 msgid "Exp. Mod.: "
 msgstr "Pem.Peng:"
 
-#: src/multiplayer_create.cpp:550
+#: src/multiplayer_create.cpp:552
 msgid "Players: "
 msgstr "Pemain:"
 
-#: src/multiplayer_create.cpp:551
+#: src/multiplayer_create.cpp:553
 msgid "Size: "
 msgstr "Dimensi:"
 
@@ -10316,6 +10303,10 @@ msgstr "Hanya menunjukkan game yang judulnya atau uraiannya berisi teks"
 msgid "Joining this game requires a password."
 msgstr "Bergabung permainan ini memerlukan kata sandi."
 
+#: src/multiplayer_lobby.cpp:905
+msgid "Password: "
+msgstr "Kata Sandi:"
+
 #: src/multiplayer_ui.cpp:197
 msgid "Invalid Color"
 msgstr "Warna Tidak Berlaku"
@@ -10361,20 +10352,20 @@ msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] "multipemain_permulaan_emas"
 
-#: src/network.cpp:108
+#: src/network.cpp:109
 msgid "invalid network handle"
 msgstr "Jaringan tidak berlaku"
 
-#: src/network.cpp:141 src/network_manager_ana.cpp:780
+#: src/network.cpp:142 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
 msgid "Client disconnected"
 msgstr "Klien diputuskan"
 
-#: src/network.cpp:556
+#: src/network.cpp:557
 msgid "Could not add socket to socket set"
 msgstr "Tidak bisa menambahkan soket ke set soket"
 
-#: src/network.cpp:568
+#: src/network.cpp:569
 msgid "Could not send initial handshake"
 msgstr "Tidak bisa mengirim salam tangan yang pertama"
 
@@ -10800,31 +10791,31 @@ msgstr "ukuran_batas harus di antara 0.0 dan 0.5"
 msgid "No time of day has been defined."
 msgstr "Tidak ada jam hari yang sudah ditetapkan."
 
-#: src/unit.cpp:693
+#: src/unit.cpp:688
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tipe unit tidak diketahui '$type|' ketika membuat sifat"
 
-#: src/unit.cpp:2326 src/unit.cpp:2523 src/unit.cpp:2594
+#: src/unit.cpp:2321 src/unit.cpp:2518 src/unit.cpp:2589
 msgid " and "
 msgstr " dan"
 
-#: src/unit.cpp:2337
+#: src/unit.cpp:2332
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2398
+#: src/unit.cpp:2393
 msgid "moves"
 msgstr "gerakan"
 
-#: src/unit.cpp:2413 src/unit.cpp:2547
+#: src/unit.cpp:2408 src/unit.cpp:2542
 msgid "XP to advance"
 msgstr "AP untuk naik level"
 
-#: src/unit.cpp:2540
+#: src/unit.cpp:2535
 msgid " move"
 msgstr " gerakan"
 
-#: src/unit.cpp:2555
+#: src/unit.cpp:2550
 msgid "$effect_description per level"
 msgstr "$effect_description per level"
 
@@ -10880,6 +10871,19 @@ msgstr "setia"
 #: src/unit_types.cpp:965
 msgid "female^neutral"
 msgstr "netral"
+
+#~ msgid "red if it has used all its movement this turn."
+#~ msgstr "merah jika ia sudah menggunakan seluruh gerakannya di giliran ini."
+
+#~ msgid "Set Password"
+#~ msgstr "Pilih Kata Sandi"
+
+#~ msgid ""
+#~ "Set the password that people wanting to join your game as players must "
+#~ "enter."
+#~ msgstr ""
+#~ "Pasang kata sandi yang harus dimasukkan oleh orang yang mau memainkan "
+#~ "permainan anda."
 
 #~ msgid "Difficulty"
 #~ msgstr "Tingkat Kesulitan"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-03 14:59+0100\n"
+"POT-Creation-Date: 2010-12-08 18:05+0100\n"
 "PO-Revision-Date: 2009-07-13 00:55+0300\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
@@ -131,7 +131,7 @@ msgstr "תת קרקעי"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:306
-#: src/actions.cpp:1280
+#: src/actions.cpp:1275
 msgid "poisoned"
 msgstr "מורעל"
 
@@ -190,14 +190,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1352
-#: src/actions.cpp:1285
+#: src/actions.cpp:1280
 msgid "female^slowed"
 msgstr "מואטת"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1355
-#: src/actions.cpp:1285
+#: src/actions.cpp:1280
 msgid "slowed"
 msgstr "מואט"
 
@@ -944,8 +944,9 @@ msgstr "צהוב אם היא זזה, אבל עדיין יכולה להמשיך �
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:191
-msgid "red if it has used all its movement this turn."
-msgstr "או אדום אם היא השתמשה בכל נקודות התנועה שלה לתור הנוכחי."
+msgid ""
+"red if it has finished its turn (might still be able to move or attack)."
+msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
@@ -6542,7 +6543,7 @@ msgstr "שום זהב לא מועבר להתקלות הבאה."
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:311 src/dialogs.cpp:636
-#: src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
 msgid "OK"
 msgstr "אשר"
 
@@ -6550,7 +6551,7 @@ msgstr "אשר"
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:312 src/dialogs.cpp:637 src/dialogs.cpp:1079
 #: src/dialogs.cpp:1190 src/multiplayer_connect.cpp:1015
-#: src/multiplayer_create.cpp:88 src/multiplayer_wait.cpp:178
+#: src/multiplayer_create.cpp:89 src/multiplayer_wait.cpp:178
 msgid "Cancel"
 msgstr "בטל"
 
@@ -6584,8 +6585,8 @@ msgstr "סיים התקלות"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2367
-#: src/unit.cpp:2534
+#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2362
+#: src/unit.cpp:2529
 msgid "HP"
 msgstr "נק\"פ"
 
@@ -6726,83 +6727,83 @@ msgstr "נקודת מבט"
 msgid "Skip animation"
 msgstr "דלג על האנימציה"
 
-#: src/about.cpp:200 src/help.cpp:3141 src/menu_events.cpp:317
+#: src/about.cpp:196 src/help.cpp:3141 src/menu_events.cpp:317
 #: src/menu_events.cpp:344 src/statistics_dialog.cpp:114
 msgid "Close"
 msgstr "סגור"
 
-#: src/actions.cpp:374
+#: src/actions.cpp:369
 msgid "You don’t have a leader to recruit with."
 msgstr "אין לך מנהיג כדי לגייס איתו."
 
-#: src/actions.cpp:381
+#: src/actions.cpp:376
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr "המנהיג שלך חייב להיות על מצודה כדי לגייס או להחזיר יחידות."
 
-#: src/actions.cpp:400
+#: src/actions.cpp:395
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "אין משבצת טירה פנויה שניתן לגייס אליו את היחידה."
 
-#: src/actions.cpp:540 src/actions.cpp:599 src/actions.cpp:1516
+#: src/actions.cpp:535 src/actions.cpp:594 src/actions.cpp:1511
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "נבחרה תקופה לא חוקית"
 
-#: src/actions.cpp:545
+#: src/actions.cpp:540
 #, fuzzy
 msgid "An invalid defender weapon got selected."
 msgstr "נבחרה תקופה לא חוקית"
 
-#: src/actions.cpp:1280
+#: src/actions.cpp:1275
 msgid "female^poisoned"
 msgstr "מורעלת"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1285
 #, fuzzy
 msgid "female^petrified"
 msgstr "מורעלת"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1285
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2499
+#: src/actions.cpp:2494
 msgid "Ambushed!"
 msgstr "נכנסנו למארב!"
 
-#: src/actions.cpp:2506
+#: src/actions.cpp:2501
 msgid "Failed teleport! Exit not empty"
 msgstr "טלפורטציה נכשלה! היציאה חסומה!"
 
-#: src/actions.cpp:2551
+#: src/actions.cpp:2546
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "יחידה ידידותית נראתה."
 msgstr[1] "$friends יחידות ידידותיות נראו."
 
-#: src/actions.cpp:2554
+#: src/actions.cpp:2549
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "יחידת אויב נראתה!"
 msgstr[1] "$friends יחידות אויב נראו!"
 
-#: src/actions.cpp:2559
+#: src/actions.cpp:2554
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "ידידותית"
 msgstr[1] "$friends ידידותיות"
 
-#: src/actions.cpp:2560
+#: src/actions.cpp:2555
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "עוינת"
 msgstr[1] "עוינות"
 
-#: src/actions.cpp:2561
+#: src/actions.cpp:2556
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "יחידות נראו! ($friends ידידותיות, $enemies  עוינות)"
 
-#: src/actions.cpp:2570
+#: src/actions.cpp:2565
 msgid "(press $hotkey to keep moving)"
 msgstr "(להמשיך לחץ על $hotkey)"
 
@@ -7046,7 +7047,7 @@ msgstr "כל התוספים עודכנו בהצלחה."
 msgid "Connecting to add-ons server..."
 msgstr "מתחבר לשרת התוספים..."
 
-#: src/addon/manager.cpp:1123 src/network.cpp:397 src/network.cpp:405
+#: src/addon/manager.cpp:1123 src/network.cpp:398 src/network.cpp:406
 msgid "Could not connect to host."
 msgstr "כישלון בחיבור לשרת."
 
@@ -7295,7 +7296,7 @@ msgstr ""
 msgid "Date"
 msgstr "תאריך"
 
-#: src/dialogs.cpp:614 src/multiplayer_create.cpp:108
+#: src/dialogs.cpp:614 src/multiplayer_create.cpp:109
 msgid "Load Game"
 msgstr "טען משחק"
 
@@ -7526,7 +7527,7 @@ msgstr "עמידויות: "
 msgid "(Att / Def)"
 msgstr "(התקפה/הגנה)"
 
-#: src/generate_report.cpp:272 src/multiplayer_create.cpp:415
+#: src/generate_report.cpp:272 src/multiplayer_create.cpp:417
 msgid "Experience Modifier: "
 msgstr "השפעת הניסיון: "
 
@@ -7688,7 +7689,7 @@ msgid "Fog"
 msgstr "ערפל"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:309
-#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:86
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:87
 #: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:558
 msgid "Shroud"
 msgstr "ממוסך"
@@ -7730,7 +7731,7 @@ msgstr ""
 msgid "You"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:553
+#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:555
 msgid "Error"
 msgstr "שגיאה"
 
@@ -7756,7 +7757,7 @@ msgstr "מנהיג: "
 msgid "Recruits:"
 msgstr "מגוייסים: "
 
-#: src/help.cpp:1280 src/multiplayer_create.cpp:81
+#: src/help.cpp:1280 src/multiplayer_create.cpp:82
 msgid "Era:"
 msgstr "תקופה:"
 
@@ -7874,7 +7875,7 @@ msgstr "העזרה של הקרב של ווסנות'"
 msgid "Parse error when parsing help text: "
 msgstr "טעות ניתוח בניתוח טקסט העזרה: "
 
-#: src/intro.cpp:50
+#: src/intro.cpp:44
 msgid "The End"
 msgstr "הסוף"
 
@@ -8924,7 +8925,7 @@ msgid ""
 msgstr ""
 
 #: src/multiplayer.cpp:311
-msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
+msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgstr ""
 
 #: src/multiplayer.cpp:314
@@ -9096,201 +9097,187 @@ msgstr "ממתין להצטרפות שחקנים..."
 msgid "Waiting for players to choose factions..."
 msgstr "ממתין להצטרפות שחקנים..."
 
-#: src/multiplayer_create.cpp:52 src/multiplayer_lobby.cpp:731
+#: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:731
 msgid "Create Game"
 msgstr "צור משחק"
 
-#: src/multiplayer_create.cpp:65
+#: src/multiplayer_create.cpp:66
 msgid "Time limit"
 msgstr "הגבלת זמן"
 
-#: src/multiplayer_create.cpp:78
+#: src/multiplayer_create.cpp:79
 msgid "Name of game:"
 msgstr "שם משחק:"
 
-#: src/multiplayer_create.cpp:82
+#: src/multiplayer_create.cpp:83
 msgid "Map to play:"
 msgstr "מפת משחק:"
 
-#: src/multiplayer_create.cpp:83 src/multiplayer_lobby.cpp:276
+#: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:276
 msgid "Use map settings"
 msgstr "השתמש בהגדרות המפה"
 
-#: src/multiplayer_create.cpp:84
+#: src/multiplayer_create.cpp:85
 #, fuzzy
 msgid "Random start time"
 msgstr "מפה אקראית (חורף)"
 
-#: src/multiplayer_create.cpp:85
+#: src/multiplayer_create.cpp:86
 msgid "Fog Of War"
 msgstr "ערפל קרב"
 
-#: src/multiplayer_create.cpp:87
+#: src/multiplayer_create.cpp:88
 msgid "Observers"
 msgstr "צופים"
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:91
 msgid "Regenerate"
 msgstr "צור מחדש"
 
-#: src/multiplayer_create.cpp:91
+#: src/multiplayer_create.cpp:92
 msgid "Settings..."
 msgstr "אפשרויות..."
 
-#: src/multiplayer_create.cpp:92
+#: src/multiplayer_create.cpp:93
 msgid "Set Password..."
 msgstr ""
 
-#: src/multiplayer_create.cpp:109
+#: src/multiplayer_create.cpp:110
 #, fuzzy
 msgid "Load Game..."
 msgstr "טען משחק"
 
-#: src/multiplayer_create.cpp:145
+#: src/multiplayer_create.cpp:146
 msgid "The maximum number of turns the game can last"
 msgstr "מספר מהלכים מירבי למשחק"
 
-#: src/multiplayer_create.cpp:148
+#: src/multiplayer_create.cpp:149
 msgid "Enables user time limit"
 msgstr "אפשר הגבלת זמן משתמש"
 
-#: src/multiplayer_create.cpp:154
+#: src/multiplayer_create.cpp:155
 msgid "Longest time allowed for first turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:161
 msgid "Longest time possible for any turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:167
 msgid "Time for general tasks each turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:172
+#: src/multiplayer_create.cpp:173
 msgid "Time for each attack, recruit, and capture"
 msgstr ""
 
-#: src/multiplayer_create.cpp:177
+#: src/multiplayer_create.cpp:178
 msgid "The amount of income each village yields per turn"
 msgstr "סך הכל הכנסה שכל כפר מספק בכל תור"
 
-#: src/multiplayer_create.cpp:183
+#: src/multiplayer_create.cpp:184
 msgid "The amount of experience a unit needs to advance"
 msgstr "כמות הניסיון שיחידה צריכה כדי להתקדם"
 
-#: src/multiplayer_create.cpp:186
+#: src/multiplayer_create.cpp:187
 msgid "Use scenario specific settings"
 msgstr "השתמש בהגדרות שמיוחדות לתרחיש"
 
-#: src/multiplayer_create.cpp:189
+#: src/multiplayer_create.cpp:190
 msgid "Randomize time of day in begin"
 msgstr ""
 
-#: src/multiplayer_create.cpp:192
+#: src/multiplayer_create.cpp:193
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "יחידות האויב אינן נראות עד שהן בטווח יחידותיך"
 
-#: src/multiplayer_create.cpp:195
+#: src/multiplayer_create.cpp:196
 msgid "The map is unknown until your units explore it"
 msgstr "המפה אינה נראית עד שיחידותיך סיירו בה"
 
-#: src/multiplayer_create.cpp:198
+#: src/multiplayer_create.cpp:199
 msgid "Allow users who are not playing to watch the game"
 msgstr "מאפשר למשתמשים שאינם משחקים להתבונן במשחק"
 
-#: src/multiplayer_create.cpp:202
+#: src/multiplayer_create.cpp:203
 msgid "Share View"
 msgstr "שתף תצוגה"
 
-#: src/multiplayer_create.cpp:203
+#: src/multiplayer_create.cpp:204
 msgid "Share Maps"
 msgstr "שתף מפות"
 
-#: src/multiplayer_create.cpp:204
+#: src/multiplayer_create.cpp:205
 msgid "Share None"
 msgstr "אל תשתף כלום"
 
-#: src/multiplayer_create.cpp:214
+#: src/multiplayer_create.cpp:215
 #, fuzzy
 msgid "No eras found."
 msgstr "לא נמצאו תקופות"
 
-#: src/multiplayer_create.cpp:215
+#: src/multiplayer_create.cpp:216
 msgid "No eras found"
 msgstr "לא נמצאו תקופות"
 
-#: src/multiplayer_create.cpp:228
+#: src/multiplayer_create.cpp:229
 msgid "$login|’s game"
 msgstr "המשחק של $login"
 
-#: src/multiplayer_create.cpp:289
+#: src/multiplayer_create.cpp:290
 msgid "Invalid era selected"
 msgstr "נבחרה תקופה לא חוקית"
 
-#: src/multiplayer_create.cpp:335
+#: src/multiplayer_create.cpp:336
 #, fuzzy
 msgid "The map is invalid."
 msgstr "המשחק הסתיים."
 
-#: src/multiplayer_create.cpp:337
+#: src/multiplayer_create.cpp:338
 msgid "You must enter a name."
 msgstr "חובה להקליד שם."
 
-#: src/multiplayer_create.cpp:345
-msgid "Set Password"
-msgstr ""
-
-#: src/multiplayer_create.cpp:346 src/multiplayer_lobby.cpp:905
-#, fuzzy
-msgid "Password: "
-msgstr "חרב"
-
-#: src/multiplayer_create.cpp:346
-msgid ""
-"Set the password that people wanting to join your game as players must enter."
-msgstr ""
-
-#: src/multiplayer_create.cpp:354
+#: src/multiplayer_create.cpp:356
 msgid "Turns: "
 msgstr "תורים: "
 
-#: src/multiplayer_create.cpp:356
+#: src/multiplayer_create.cpp:358
 msgid "Unlimited Turns"
 msgstr "מספר בלתי מוגבל של תורים"
 
-#: src/multiplayer_create.cpp:384
+#: src/multiplayer_create.cpp:386
 #, fuzzy
 msgid "Init. Limit: "
 msgstr "זמן התחלתי:"
 
-#: src/multiplayer_create.cpp:389
+#: src/multiplayer_create.cpp:391
 #, fuzzy
 msgid "Turn Bonus: "
 msgstr "תורים: "
 
-#: src/multiplayer_create.cpp:393
+#: src/multiplayer_create.cpp:395
 #, fuzzy
 msgid "Reservoir: "
 msgstr "שרת: "
 
-#: src/multiplayer_create.cpp:398
+#: src/multiplayer_create.cpp:400
 #, fuzzy
 msgid "Action Bonus: "
 msgstr "פעולות"
 
-#: src/multiplayer_create.cpp:405
+#: src/multiplayer_create.cpp:407
 msgid "Village Gold: "
 msgstr "זהב הכפר: "
 
-#: src/multiplayer_create.cpp:413
+#: src/multiplayer_create.cpp:415
 msgid "Exp. Mod.: "
 msgstr ""
 
-#: src/multiplayer_create.cpp:550
+#: src/multiplayer_create.cpp:552
 msgid "Players: "
 msgstr "שחקנים:"
 
-#: src/multiplayer_create.cpp:551
+#: src/multiplayer_create.cpp:553
 #, fuzzy
 msgid "Size: "
 msgstr "גודל"
@@ -9391,6 +9378,11 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr ""
 
+#: src/multiplayer_lobby.cpp:905
+#, fuzzy
+msgid "Password: "
+msgstr "חרב"
+
 #: src/multiplayer_ui.cpp:197
 msgid "Invalid Color"
 msgstr "צבע לא חוקי"
@@ -9440,20 +9432,20 @@ msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/network.cpp:108
+#: src/network.cpp:109
 msgid "invalid network handle"
 msgstr "מטפל רשת (network handle) לא חוקי"
 
-#: src/network.cpp:141 src/network_manager_ana.cpp:780
+#: src/network.cpp:142 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
 msgid "Client disconnected"
 msgstr "לקוח התנתק"
 
-#: src/network.cpp:556
+#: src/network.cpp:557
 msgid "Could not add socket to socket set"
 msgstr "הוספת נקודת חיבור (socket) לנקודות הקיימות נכשלה"
 
-#: src/network.cpp:568
+#: src/network.cpp:569
 msgid "Could not send initial handshake"
 msgstr "שליחת לחיצת יד ראשונית נכשלה"
 
@@ -9871,33 +9863,33 @@ msgstr "border_size אמור להיות בין 0.0 ל 0.5."
 msgid "No time of day has been defined."
 msgstr "שום קטגורית זמן לא הוגדרה. "
 
-#: src/unit.cpp:693
+#: src/unit.cpp:688
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "נמצא כלי לא ידוע '$type|' בזמן יצירת כשרונות"
 
-#: src/unit.cpp:2326 src/unit.cpp:2523 src/unit.cpp:2594
+#: src/unit.cpp:2321 src/unit.cpp:2518 src/unit.cpp:2589
 msgid " and "
 msgstr " ו "
 
-#: src/unit.cpp:2337
+#: src/unit.cpp:2332
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 # NOT TO GET THE "UNTRANSLATED"
 # MESSAGE
-#: src/unit.cpp:2398
+#: src/unit.cpp:2393
 msgid "moves"
 msgstr "מהירות"
 
-#: src/unit.cpp:2413 src/unit.cpp:2547
+#: src/unit.cpp:2408 src/unit.cpp:2542
 msgid "XP to advance"
 msgstr "נק\"נ לרמה הבאה"
 
-#: src/unit.cpp:2540
+#: src/unit.cpp:2535
 msgid " move"
 msgstr " תנועה"
 
-#: src/unit.cpp:2555
+#: src/unit.cpp:2550
 msgid "$effect_description per level"
 msgstr "$effect_description/דרגה"
 
@@ -9957,6 +9949,9 @@ msgstr "נאמנה"
 #: src/unit_types.cpp:965
 msgid "female^neutral"
 msgstr "ניטרלי"
+
+#~ msgid "red if it has used all its movement this turn."
+#~ msgstr "או אדום אם היא השתמשה בכל נקודות התנועה שלה לתור הנוכחי."
 
 #~ msgid "Difficulty"
 #~ msgstr "רמת קושי"

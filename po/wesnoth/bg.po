@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-03 14:49+0100\n"
+"POT-Creation-Date: 2010-12-08 18:05+0100\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -137,7 +137,7 @@ msgstr "Подземие"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:306
-#: src/actions.cpp:1280
+#: src/actions.cpp:1275
 msgid "poisoned"
 msgstr "отровен"
 
@@ -197,7 +197,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1352
-#: src/actions.cpp:1285
+#: src/actions.cpp:1280
 #, fuzzy
 msgid "female^slowed"
 msgstr "лоялна"
@@ -205,7 +205,7 @@ msgstr "лоялна"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1355
-#: src/actions.cpp:1285
+#: src/actions.cpp:1280
 msgid "slowed"
 msgstr "забавен"
 
@@ -973,8 +973,9 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:191
-msgid "red if it has used all its movement this turn."
-msgstr "червена, ако единицата е използвала цялото си движение този ход."
+msgid ""
+"red if it has finished its turn (might still be able to move or attack)."
+msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
@@ -6755,7 +6756,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:311 src/dialogs.cpp:636
-#: src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
 msgid "OK"
 msgstr "ОК"
 
@@ -6763,7 +6764,7 @@ msgstr "ОК"
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:312 src/dialogs.cpp:637 src/dialogs.cpp:1079
 #: src/dialogs.cpp:1190 src/multiplayer_connect.cpp:1015
-#: src/multiplayer_create.cpp:88 src/multiplayer_wait.cpp:178
+#: src/multiplayer_create.cpp:89 src/multiplayer_wait.cpp:178
 msgid "Cancel"
 msgstr "Отказ"
 
@@ -6798,8 +6799,8 @@ msgstr "Отдалечена мисия"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2367
-#: src/unit.cpp:2534
+#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2362
+#: src/unit.cpp:2529
 msgid "HP"
 msgstr "Здраве"
 
@@ -6941,86 +6942,86 @@ msgstr "Гледна точка"
 msgid "Skip animation"
 msgstr "Пропускане на анимацията"
 
-#: src/about.cpp:200 src/help.cpp:3141 src/menu_events.cpp:317
+#: src/about.cpp:196 src/help.cpp:3141 src/menu_events.cpp:317
 #: src/menu_events.cpp:344 src/statistics_dialog.cpp:114
 msgid "Close"
 msgstr "Затвори"
 
-#: src/actions.cpp:374
+#: src/actions.cpp:369
 msgid "You don’t have a leader to recruit with."
 msgstr "Нямате водач, който да набира единици."
 
-#: src/actions.cpp:381
+#: src/actions.cpp:376
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Водачът ви трябва да се намира в крепост, за да набирате или привиквате "
 "единици."
 
-#: src/actions.cpp:400
+#: src/actions.cpp:395
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Няма свободни полета замък в които да наберете единица."
 
-#: src/actions.cpp:540 src/actions.cpp:599 src/actions.cpp:1516
+#: src/actions.cpp:535 src/actions.cpp:594 src/actions.cpp:1511
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "Избрана е невалидна ера"
 
-#: src/actions.cpp:545
+#: src/actions.cpp:540
 #, fuzzy
 msgid "An invalid defender weapon got selected."
 msgstr "Избрана е невалидна ера"
 
-#: src/actions.cpp:1280
+#: src/actions.cpp:1275
 #, fuzzy
 msgid "female^poisoned"
 msgstr "немъртва"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1285
 #, fuzzy
 msgid "female^petrified"
 msgstr "немъртва"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1285
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2499
+#: src/actions.cpp:2494
 msgid "Ambushed!"
 msgstr "Засада!"
 
-#: src/actions.cpp:2506
+#: src/actions.cpp:2501
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2551
+#: src/actions.cpp:2546
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Забелязана приятелска единица"
 msgstr[1] "$friends приятелски единици забелязани"
 
-#: src/actions.cpp:2554
+#: src/actions.cpp:2549
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Забелязана вражеска единица!"
 msgstr[1] "$enemies вражески единици забелязани"
 
-#: src/actions.cpp:2559
+#: src/actions.cpp:2554
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 приятелска"
 msgstr[1] "$friends приятелски"
 
-#: src/actions.cpp:2560
+#: src/actions.cpp:2555
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 вражеска"
 msgstr[1] "$enemies вражески"
 
-#: src/actions.cpp:2561
+#: src/actions.cpp:2556
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Забелязани единици! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2570
+#: src/actions.cpp:2565
 msgid "(press $hotkey to keep moving)"
 msgstr "(натиснете $hotkey , за да продължите)"
 
@@ -7280,7 +7281,7 @@ msgstr ""
 msgid "Connecting to add-ons server..."
 msgstr "Свързване към сървър..."
 
-#: src/addon/manager.cpp:1123 src/network.cpp:397 src/network.cpp:405
+#: src/addon/manager.cpp:1123 src/network.cpp:398 src/network.cpp:406
 msgid "Could not connect to host."
 msgstr "Свързването към сървъра бе неуспешно."
 
@@ -7540,7 +7541,7 @@ msgstr ""
 msgid "Date"
 msgstr "Дата"
 
-#: src/dialogs.cpp:614 src/multiplayer_create.cpp:108
+#: src/dialogs.cpp:614 src/multiplayer_create.cpp:109
 msgid "Load Game"
 msgstr "Зареди"
 
@@ -7784,7 +7785,7 @@ msgstr "Съпротивителни сили:"
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/generate_report.cpp:272 src/multiplayer_create.cpp:415
+#: src/generate_report.cpp:272 src/multiplayer_create.cpp:417
 msgid "Experience Modifier: "
 msgstr "Модификатор на опита: "
 
@@ -7944,7 +7945,7 @@ msgid "Fog"
 msgstr "Мъгла"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:309
-#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:86
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:87
 #: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:558
 msgid "Shroud"
 msgstr "Було"
@@ -7988,7 +7989,7 @@ msgstr ""
 msgid "You"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:553
+#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:555
 msgid "Error"
 msgstr "Грешка"
 
@@ -8022,7 +8023,7 @@ msgstr "Водач: "
 msgid "Recruits:"
 msgstr "Наборници: "
 
-#: src/help.cpp:1280 src/multiplayer_create.cpp:81
+#: src/help.cpp:1280 src/multiplayer_create.cpp:82
 msgid "Era:"
 msgstr "Ера:"
 
@@ -8145,7 +8146,7 @@ msgstr "Помощ на Битката за Уеснот"
 msgid "Parse error when parsing help text: "
 msgstr "Грешка при показването на помощният текст: "
 
-#: src/intro.cpp:50
+#: src/intro.cpp:44
 msgid "The End"
 msgstr "Край"
 
@@ -9245,7 +9246,7 @@ msgid ""
 msgstr ""
 
 #: src/multiplayer.cpp:311
-msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
+msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgstr ""
 
 #: src/multiplayer.cpp:314
@@ -9417,198 +9418,184 @@ msgstr "Изчакване на играчи да се присъединят...
 msgid "Waiting for players to choose factions..."
 msgstr "Изчакване на играчи да се присъединят..."
 
-#: src/multiplayer_create.cpp:52 src/multiplayer_lobby.cpp:731
+#: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:731
 msgid "Create Game"
 msgstr "Създай игра"
 
-#: src/multiplayer_create.cpp:65
+#: src/multiplayer_create.cpp:66
 msgid "Time limit"
 msgstr "Времеви ограничения"
 
-#: src/multiplayer_create.cpp:78
+#: src/multiplayer_create.cpp:79
 msgid "Name of game:"
 msgstr "Име на играта:"
 
-#: src/multiplayer_create.cpp:82
+#: src/multiplayer_create.cpp:83
 msgid "Map to play:"
 msgstr "Карта за игра:"
 
-#: src/multiplayer_create.cpp:83 src/multiplayer_lobby.cpp:276
+#: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:276
 msgid "Use map settings"
 msgstr "Използвай настройките на картата"
 
-#: src/multiplayer_create.cpp:84
+#: src/multiplayer_create.cpp:85
 msgid "Random start time"
 msgstr "Произволно начално време"
 
-#: src/multiplayer_create.cpp:85
+#: src/multiplayer_create.cpp:86
 msgid "Fog Of War"
 msgstr "Мъгла "
 
-#: src/multiplayer_create.cpp:87
+#: src/multiplayer_create.cpp:88
 msgid "Observers"
 msgstr "Наблюдаващи"
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:91
 msgid "Regenerate"
 msgstr "Възстановяване"
 
-#: src/multiplayer_create.cpp:91
+#: src/multiplayer_create.cpp:92
 msgid "Settings..."
 msgstr "Настройки..."
 
-#: src/multiplayer_create.cpp:92
+#: src/multiplayer_create.cpp:93
 msgid "Set Password..."
 msgstr ""
 
-#: src/multiplayer_create.cpp:109
+#: src/multiplayer_create.cpp:110
 #, fuzzy
 msgid "Load Game..."
 msgstr "Зареди"
 
-#: src/multiplayer_create.cpp:145
+#: src/multiplayer_create.cpp:146
 msgid "The maximum number of turns the game can last"
 msgstr "Максималният брой ходове, в които играта може да продължи"
 
-#: src/multiplayer_create.cpp:148
+#: src/multiplayer_create.cpp:149
 msgid "Enables user time limit"
 msgstr "Включи времеви ограничения за потребителя"
 
-#: src/multiplayer_create.cpp:154
+#: src/multiplayer_create.cpp:155
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Позволено време за първият ход(секунди)"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:161
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Най-дълго време позволено за ход(секунди)"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:167
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Време за общи задачи всеки ход(секунди)"
 
-#: src/multiplayer_create.cpp:172
+#: src/multiplayer_create.cpp:173
 msgid "Time for each attack, recruit, and capture"
 msgstr "Време за всяка атака, набор и пленяване"
 
-#: src/multiplayer_create.cpp:177
+#: src/multiplayer_create.cpp:178
 msgid "The amount of income each village yields per turn"
 msgstr "Сумата в злато, която едно селище носи всеки ход. "
 
-#: src/multiplayer_create.cpp:183
+#: src/multiplayer_create.cpp:184
 msgid "The amount of experience a unit needs to advance"
 msgstr "Точки опит нужни на единица за повишение"
 
-#: src/multiplayer_create.cpp:186
+#: src/multiplayer_create.cpp:187
 msgid "Use scenario specific settings"
 msgstr "Използвай специфични настройките на сценария"
 
-#: src/multiplayer_create.cpp:189
+#: src/multiplayer_create.cpp:190
 msgid "Randomize time of day in begin"
 msgstr "Произволно време на денонощието в началото"
 
-#: src/multiplayer_create.cpp:192
+#: src/multiplayer_create.cpp:193
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Противниковите единици не могат да се видят, докато са извън обсега на "
 "вашите единици"
 
-#: src/multiplayer_create.cpp:195
+#: src/multiplayer_create.cpp:196
 msgid "The map is unknown until your units explore it"
 msgstr "Картата не може да се види, докато единиците ви не я проучат"
 
-#: src/multiplayer_create.cpp:198
+#: src/multiplayer_create.cpp:199
 msgid "Allow users who are not playing to watch the game"
 msgstr "Позволи на хората, които не играят, да наблюдават играта"
 
-#: src/multiplayer_create.cpp:202
+#: src/multiplayer_create.cpp:203
 msgid "Share View"
 msgstr "Споделяне на изглед"
 
-#: src/multiplayer_create.cpp:203
+#: src/multiplayer_create.cpp:204
 msgid "Share Maps"
 msgstr "Споделяне на карти"
 
-#: src/multiplayer_create.cpp:204
+#: src/multiplayer_create.cpp:205
 msgid "Share None"
 msgstr "Без споделяне"
 
-#: src/multiplayer_create.cpp:214
+#: src/multiplayer_create.cpp:215
 #, fuzzy
 msgid "No eras found."
 msgstr "Не са открити ери"
 
-#: src/multiplayer_create.cpp:215
+#: src/multiplayer_create.cpp:216
 msgid "No eras found"
 msgstr "Не са открити ери"
 
-#: src/multiplayer_create.cpp:228
+#: src/multiplayer_create.cpp:229
 msgid "$login|’s game"
 msgstr "Игра на $login"
 
-#: src/multiplayer_create.cpp:289
+#: src/multiplayer_create.cpp:290
 msgid "Invalid era selected"
 msgstr "Избрана е невалидна ера"
 
-#: src/multiplayer_create.cpp:335
+#: src/multiplayer_create.cpp:336
 #, fuzzy
 msgid "The map is invalid."
 msgstr "Играта приключи."
 
-#: src/multiplayer_create.cpp:337
+#: src/multiplayer_create.cpp:338
 msgid "You must enter a name."
 msgstr "Въведете име."
 
-#: src/multiplayer_create.cpp:345
-msgid "Set Password"
-msgstr ""
-
-#: src/multiplayer_create.cpp:346 src/multiplayer_lobby.cpp:905
-#, fuzzy
-msgid "Password: "
-msgstr "масирана атака"
-
-#: src/multiplayer_create.cpp:346
-msgid ""
-"Set the password that people wanting to join your game as players must enter."
-msgstr ""
-
-#: src/multiplayer_create.cpp:354
+#: src/multiplayer_create.cpp:356
 msgid "Turns: "
 msgstr "Ходове: "
 
-#: src/multiplayer_create.cpp:356
+#: src/multiplayer_create.cpp:358
 msgid "Unlimited Turns"
 msgstr "Неограничени ходове"
 
-#: src/multiplayer_create.cpp:384
+#: src/multiplayer_create.cpp:386
 msgid "Init. Limit: "
 msgstr "Начално ограничение: "
 
-#: src/multiplayer_create.cpp:389
+#: src/multiplayer_create.cpp:391
 msgid "Turn Bonus: "
 msgstr "Бонус ходове: "
 
-#: src/multiplayer_create.cpp:393
+#: src/multiplayer_create.cpp:395
 msgid "Reservoir: "
 msgstr "Резерв: "
 
-#: src/multiplayer_create.cpp:398
+#: src/multiplayer_create.cpp:400
 msgid "Action Bonus: "
 msgstr "Бонус действия: "
 
-#: src/multiplayer_create.cpp:405
+#: src/multiplayer_create.cpp:407
 msgid "Village Gold: "
 msgstr "Злато от селища: "
 
-#: src/multiplayer_create.cpp:413
+#: src/multiplayer_create.cpp:415
 msgid "Exp. Mod.: "
 msgstr "Мод. Опит: "
 
-#: src/multiplayer_create.cpp:550
+#: src/multiplayer_create.cpp:552
 msgid "Players: "
 msgstr "Играчи: "
 
-#: src/multiplayer_create.cpp:551
+#: src/multiplayer_create.cpp:553
 msgid "Size: "
 msgstr "Размер:"
 
@@ -9706,6 +9693,11 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr ""
 
+#: src/multiplayer_lobby.cpp:905
+#, fuzzy
+msgid "Password: "
+msgstr "масирана атака"
+
 #: src/multiplayer_ui.cpp:197
 msgid "Invalid Color"
 msgstr "Невалиден цвят"
@@ -9755,20 +9747,20 @@ msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/network.cpp:108
+#: src/network.cpp:109
 msgid "invalid network handle"
 msgstr "грешка при мрежовото свързване"
 
-#: src/network.cpp:141 src/network_manager_ana.cpp:780
+#: src/network.cpp:142 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
 msgid "Client disconnected"
 msgstr "Връзката с клиента прекъсна"
 
-#: src/network.cpp:556
+#: src/network.cpp:557
 msgid "Could not add socket to socket set"
 msgstr "Добавянето на сокета към комплекта от сокети бе невъзможно "
 
-#: src/network.cpp:568
+#: src/network.cpp:569
 msgid "Could not send initial handshake"
 msgstr "Пращането на първоначалния поздрав е невъзможно"
 
@@ -10202,34 +10194,34 @@ msgstr ""
 msgid "No time of day has been defined."
 msgstr "Произволно време на денонощието в началото"
 
-#: src/unit.cpp:693
+#: src/unit.cpp:688
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:2326 src/unit.cpp:2523 src/unit.cpp:2594
+#: src/unit.cpp:2321 src/unit.cpp:2518 src/unit.cpp:2589
 #, fuzzy
 msgid " and "
 msgstr "Песъчлив терен"
 
-#: src/unit.cpp:2337
+#: src/unit.cpp:2332
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2398
+#: src/unit.cpp:2393
 #, fuzzy
 msgid "moves"
 msgstr "Ходове"
 
-#: src/unit.cpp:2413 src/unit.cpp:2547
+#: src/unit.cpp:2408 src/unit.cpp:2542
 msgid "XP to advance"
 msgstr "Опит, оставащ до повишение"
 
-#: src/unit.cpp:2540
+#: src/unit.cpp:2535
 #, fuzzy
 msgid " move"
 msgstr "Ходове"
 
-#: src/unit.cpp:2555
+#: src/unit.cpp:2550
 msgid "$effect_description per level"
 msgstr ""
 
@@ -10292,6 +10284,9 @@ msgstr "лоялна"
 #, fuzzy
 msgid "female^neutral"
 msgstr "немъртва"
+
+#~ msgid "red if it has used all its movement this turn."
+#~ msgstr "червена, ако единицата е използвала цялото си движение този ход."
 
 #~ msgid "Difficulty"
 #~ msgstr "Трудност"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-03 14:59+0100\n"
+"POT-Creation-Date: 2010-12-08 18:05+0100\n"
 "PO-Revision-Date: 2010-08-30 19:32+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -133,7 +133,7 @@ msgstr "地下"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:306
-#: src/actions.cpp:1280
+#: src/actions.cpp:1275
 msgid "poisoned"
 msgstr "中毒"
 
@@ -191,14 +191,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1352
-#: src/actions.cpp:1285
+#: src/actions.cpp:1280
 msgid "female^slowed"
 msgstr "减速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1355
-#: src/actions.cpp:1285
+#: src/actions.cpp:1280
 msgid "slowed"
 msgstr "减速"
 
@@ -922,8 +922,9 @@ msgstr "黄色，表明本单位移动过，但还可以继续移动或攻击，
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:191
-msgid "red if it has used all its movement this turn."
-msgstr "红色，表明本单位已经用完了本回合的移动点数。"
+msgid ""
+"red if it has finished its turn (might still be able to move or attack)."
+msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
@@ -6989,7 +6990,7 @@ msgstr "不会有任何金币被带到下一场景。"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:311 src/dialogs.cpp:636
-#: src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
 msgid "OK"
 msgstr "确定"
 
@@ -6997,7 +6998,7 @@ msgstr "确定"
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:312 src/dialogs.cpp:637 src/dialogs.cpp:1079
 #: src/dialogs.cpp:1190 src/multiplayer_connect.cpp:1015
-#: src/multiplayer_create.cpp:88 src/multiplayer_wait.cpp:178
+#: src/multiplayer_create.cpp:89 src/multiplayer_wait.cpp:178
 msgid "Cancel"
 msgstr "取消"
 
@@ -7031,8 +7032,8 @@ msgstr "结束场景"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2367
-#: src/unit.cpp:2534
+#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2362
+#: src/unit.cpp:2529
 msgid "HP"
 msgstr "生命值"
 
@@ -7172,82 +7173,82 @@ msgstr "视角"
 msgid "Skip animation"
 msgstr "跳过动画"
 
-#: src/about.cpp:200 src/help.cpp:3141 src/menu_events.cpp:317
+#: src/about.cpp:196 src/help.cpp:3141 src/menu_events.cpp:317
 #: src/menu_events.cpp:344 src/statistics_dialog.cpp:114
 msgid "Close"
 msgstr "关闭"
 
-#: src/actions.cpp:374
+#: src/actions.cpp:369
 msgid "You don’t have a leader to recruit with."
 msgstr "您没有领袖，无法征募。"
 
-#: src/actions.cpp:381
+#: src/actions.cpp:376
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr "您的领袖必须在城堡主楼上才能征募或召回单位。"
 
-#: src/actions.cpp:400
+#: src/actions.cpp:395
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有空格，无法征募单位。"
 
-#: src/actions.cpp:540 src/actions.cpp:599 src/actions.cpp:1516
+#: src/actions.cpp:535 src/actions.cpp:594 src/actions.cpp:1511
 msgid "An invalid attacker weapon got selected."
 msgstr "所选攻击武器无效"
 
-#: src/actions.cpp:545
+#: src/actions.cpp:540
 msgid "An invalid defender weapon got selected."
 msgstr "所选防御武器无效"
 
-#: src/actions.cpp:1280
+#: src/actions.cpp:1275
 msgid "female^poisoned"
 msgstr "中毒"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1285
 msgid "female^petrified"
 msgstr "石化"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1285
 msgid "petrified"
 msgstr "石化"
 
-#: src/actions.cpp:2499
+#: src/actions.cpp:2494
 msgid "Ambushed!"
 msgstr "遭到伏击！"
 
-#: src/actions.cpp:2506
+#: src/actions.cpp:2501
 msgid "Failed teleport! Exit not empty"
 msgstr "传送失败！出口阻塞"
 
 # what is the plural form all about?
-#: src/actions.cpp:2551
+#: src/actions.cpp:2546
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "发现友军单位"
 msgstr[1] "发现$friends个友军单位"
 
-#: src/actions.cpp:2554
+#: src/actions.cpp:2549
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "发现敌军单位！"
 msgstr[1] "发现$enemies个敌军单位！"
 
 # Can someone show me an example of this line in real gameplay? Else I really can't understand it...
-#: src/actions.cpp:2559
+#: src/actions.cpp:2554
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1个友军"
 msgstr[1] "$friends个友军"
 
-#: src/actions.cpp:2560
+#: src/actions.cpp:2555
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1个敌军"
 msgstr[1] "$enemies个敌军"
 
-#: src/actions.cpp:2561
+#: src/actions.cpp:2556
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "发现单位！（$friendphrase, $enemyphrase）"
 
-#: src/actions.cpp:2570
+#: src/actions.cpp:2565
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey键继续移动）"
 
@@ -7489,7 +7490,7 @@ msgstr "所有附加组件都更新成功了。"
 msgid "Connecting to add-ons server..."
 msgstr "正在连接到附加组件服务器……"
 
-#: src/addon/manager.cpp:1123 src/network.cpp:397 src/network.cpp:405
+#: src/addon/manager.cpp:1123 src/network.cpp:398 src/network.cpp:406
 msgid "Could not connect to host."
 msgstr "无法连接到主机。"
 
@@ -7737,7 +7738,7 @@ msgstr ""
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:614 src/multiplayer_create.cpp:108
+#: src/dialogs.cpp:614 src/multiplayer_create.cpp:109
 msgid "Load Game"
 msgstr "读取游戏"
 
@@ -7965,7 +7966,7 @@ msgstr "抗性："
 msgid "(Att / Def)"
 msgstr "（攻击/防御）"
 
-#: src/generate_report.cpp:272 src/multiplayer_create.cpp:415
+#: src/generate_report.cpp:272 src/multiplayer_create.cpp:417
 msgid "Experience Modifier: "
 msgstr "经验值修正： "
 
@@ -8121,7 +8122,7 @@ msgid "Fog"
 msgstr "迷雾"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:309
-#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:86
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:87
 #: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:558
 msgid "Shroud"
 msgstr "战场黑幕"
@@ -8162,7 +8163,7 @@ msgstr "不在好友或忽略列表中"
 msgid "You"
 msgstr "您自己"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:553
+#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:555
 msgid "Error"
 msgstr "错误"
 
@@ -8186,7 +8187,7 @@ msgstr "领袖： "
 msgid "Recruits:"
 msgstr "征募： "
 
-#: src/help.cpp:1280 src/multiplayer_create.cpp:81
+#: src/help.cpp:1280 src/multiplayer_create.cpp:82
 msgid "Era:"
 msgstr "时代："
 
@@ -8302,7 +8303,7 @@ msgstr "韦诺之战帮助"
 msgid "Parse error when parsing help text: "
 msgstr "分析帮助文本时出现语法错误："
 
-#: src/intro.cpp:50
+#: src/intro.cpp:44
 msgid "The End"
 msgstr "结束"
 
@@ -9334,7 +9335,8 @@ msgid ""
 msgstr "昵称“$nick”包含无效字符。只能使用字母，下划线和连字符。"
 
 #: src/multiplayer.cpp:311
-msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
+#, fuzzy
+msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgstr "昵称“$nick”太长了。昵称长度不得超过18个字符。"
 
 #: src/multiplayer.cpp:314
@@ -9498,194 +9500,181 @@ msgstr "正在等待玩家加入……"
 msgid "Waiting for players to choose factions..."
 msgstr "正在等待玩家加入……"
 
-#: src/multiplayer_create.cpp:52 src/multiplayer_lobby.cpp:731
+#: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:731
 msgid "Create Game"
 msgstr "创建游戏"
 
-#: src/multiplayer_create.cpp:65
+#: src/multiplayer_create.cpp:66
 msgid "Time limit"
 msgstr "时限"
 
-#: src/multiplayer_create.cpp:78
+#: src/multiplayer_create.cpp:79
 msgid "Name of game:"
 msgstr "游戏名："
 
-#: src/multiplayer_create.cpp:82
+#: src/multiplayer_create.cpp:83
 msgid "Map to play:"
 msgstr "选择游戏地图："
 
-#: src/multiplayer_create.cpp:83 src/multiplayer_lobby.cpp:276
+#: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:276
 msgid "Use map settings"
 msgstr "使用地图设置"
 
-#: src/multiplayer_create.cpp:84
+#: src/multiplayer_create.cpp:85
 msgid "Random start time"
 msgstr "随机开始时间"
 
-#: src/multiplayer_create.cpp:85
+#: src/multiplayer_create.cpp:86
 msgid "Fog Of War"
 msgstr "战争迷雾"
 
-#: src/multiplayer_create.cpp:87
+#: src/multiplayer_create.cpp:88
 msgid "Observers"
 msgstr "观察者"
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:91
 msgid "Regenerate"
 msgstr "重新生成"
 
-#: src/multiplayer_create.cpp:91
+#: src/multiplayer_create.cpp:92
 msgid "Settings..."
 msgstr "设置..."
 
-#: src/multiplayer_create.cpp:92
+#: src/multiplayer_create.cpp:93
 msgid "Set Password..."
 msgstr "设定密码..."
 
-#: src/multiplayer_create.cpp:109
+#: src/multiplayer_create.cpp:110
 msgid "Load Game..."
 msgstr "读取游戏..."
 
-#: src/multiplayer_create.cpp:145
+#: src/multiplayer_create.cpp:146
 msgid "The maximum number of turns the game can last"
 msgstr "游戏允许的最大回合数"
 
-#: src/multiplayer_create.cpp:148
+#: src/multiplayer_create.cpp:149
 msgid "Enables user time limit"
 msgstr "启用玩家时限"
 
-#: src/multiplayer_create.cpp:154
+#: src/multiplayer_create.cpp:155
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "首回合的最长时限（秒）"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:161
 msgid "Longest time possible for any turn (seconds)"
 msgstr "任意回合的最长时限（秒）"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:167
 msgid "Time for general tasks each turn (seconds)"
 msgstr "每回合普通行动的时限（秒）"
 
-#: src/multiplayer_create.cpp:172
+#: src/multiplayer_create.cpp:173
 msgid "Time for each attack, recruit, and capture"
 msgstr "每次攻击、征募和占领的时限"
 
-#: src/multiplayer_create.cpp:177
+#: src/multiplayer_create.cpp:178
 msgid "The amount of income each village yields per turn"
 msgstr "每村庄每回合产生的收入"
 
-#: src/multiplayer_create.cpp:183
+#: src/multiplayer_create.cpp:184
 msgid "The amount of experience a unit needs to advance"
 msgstr "一个单位升级所需的经验值"
 
-#: src/multiplayer_create.cpp:186
+#: src/multiplayer_create.cpp:187
 msgid "Use scenario specific settings"
 msgstr "使用场景的特殊设置"
 
-#: src/multiplayer_create.cpp:189
+#: src/multiplayer_create.cpp:190
 msgid "Randomize time of day in begin"
 msgstr "随机选择开始时的时段"
 
-#: src/multiplayer_create.cpp:192
+#: src/multiplayer_create.cpp:193
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "敌人单位在进入您的单位的移动范围之前不可见"
 
-#: src/multiplayer_create.cpp:195
+#: src/multiplayer_create.cpp:196
 msgid "The map is unknown until your units explore it"
 msgstr "在您的单位进行探索之前，地图不可见"
 
-#: src/multiplayer_create.cpp:198
+#: src/multiplayer_create.cpp:199
 msgid "Allow users who are not playing to watch the game"
 msgstr "允许不在对战的用户观看游戏"
 
-#: src/multiplayer_create.cpp:202
+#: src/multiplayer_create.cpp:203
 msgid "Share View"
 msgstr "共享视野"
 
-#: src/multiplayer_create.cpp:203
+#: src/multiplayer_create.cpp:204
 msgid "Share Maps"
 msgstr "共享地图"
 
-#: src/multiplayer_create.cpp:204
+#: src/multiplayer_create.cpp:205
 msgid "Share None"
 msgstr "无共享"
 
-#: src/multiplayer_create.cpp:214
+#: src/multiplayer_create.cpp:215
 msgid "No eras found."
 msgstr "没有找到任何时代。"
 
-#: src/multiplayer_create.cpp:215
+#: src/multiplayer_create.cpp:216
 msgid "No eras found"
 msgstr "没有找到任何时代"
 
-#: src/multiplayer_create.cpp:228
+#: src/multiplayer_create.cpp:229
 msgid "$login|’s game"
 msgstr "$login的游戏"
 
-#: src/multiplayer_create.cpp:289
+#: src/multiplayer_create.cpp:290
 msgid "Invalid era selected"
 msgstr "所选时代无效"
 
-#: src/multiplayer_create.cpp:335
+#: src/multiplayer_create.cpp:336
 msgid "The map is invalid."
 msgstr "本地图无效。"
 
-#: src/multiplayer_create.cpp:337
+#: src/multiplayer_create.cpp:338
 msgid "You must enter a name."
 msgstr "您必须输入名字。"
 
-#: src/multiplayer_create.cpp:345
-msgid "Set Password"
-msgstr "设定密码"
-
-#: src/multiplayer_create.cpp:346 src/multiplayer_lobby.cpp:905
-msgid "Password: "
-msgstr "密码："
-
-#: src/multiplayer_create.cpp:346
-msgid ""
-"Set the password that people wanting to join your game as players must enter."
-msgstr "设定密码，希望作为玩家加入游戏的人必须输入它。"
-
-#: src/multiplayer_create.cpp:354
+#: src/multiplayer_create.cpp:356
 msgid "Turns: "
 msgstr "回合数："
 
-#: src/multiplayer_create.cpp:356
+#: src/multiplayer_create.cpp:358
 msgid "Unlimited Turns"
 msgstr "回合数不限"
 
 # i don't actually know what this is
-#: src/multiplayer_create.cpp:384
+#: src/multiplayer_create.cpp:386
 msgid "Init. Limit: "
 msgstr "起始时间限制："
 
 # anyone explain this to me too
-#: src/multiplayer_create.cpp:389
+#: src/multiplayer_create.cpp:391
 msgid "Turn Bonus: "
 msgstr "回合奖励："
 
-#: src/multiplayer_create.cpp:393
+#: src/multiplayer_create.cpp:395
 msgid "Reservoir: "
 msgstr "蓄水池："
 
-#: src/multiplayer_create.cpp:398
+#: src/multiplayer_create.cpp:400
 msgid "Action Bonus: "
 msgstr "行动奖励："
 
-#: src/multiplayer_create.cpp:405
+#: src/multiplayer_create.cpp:407
 msgid "Village Gold: "
 msgstr "村庄金币："
 
-#: src/multiplayer_create.cpp:413
+#: src/multiplayer_create.cpp:415
 msgid "Exp. Mod.: "
 msgstr "经验模式："
 
-#: src/multiplayer_create.cpp:550
+#: src/multiplayer_create.cpp:552
 msgid "Players: "
 msgstr "玩家： "
 
-#: src/multiplayer_create.cpp:551
+#: src/multiplayer_create.cpp:553
 msgid "Size: "
 msgstr "大小"
 
@@ -9781,6 +9770,10 @@ msgstr "只显示标题或描述中包含所输入文字的游戏"
 msgid "Joining this game requires a password."
 msgstr "需要输入密码才能加入本游戏"
 
+#: src/multiplayer_lobby.cpp:905
+msgid "Password: "
+msgstr "密码："
+
 #: src/multiplayer_ui.cpp:197
 msgid "Invalid Color"
 msgstr "无效颜色"
@@ -9827,20 +9820,20 @@ msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] "金币"
 msgstr[1] "金币"
 
-#: src/network.cpp:108
+#: src/network.cpp:109
 msgid "invalid network handle"
 msgstr "无效网络句柄"
 
-#: src/network.cpp:141 src/network_manager_ana.cpp:780
+#: src/network.cpp:142 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
 msgid "Client disconnected"
 msgstr "客户端断开连接"
 
-#: src/network.cpp:556
+#: src/network.cpp:557
 msgid "Could not add socket to socket set"
 msgstr "无法向套接字集合中添加游戏要用的套接字"
 
-#: src/network.cpp:568
+#: src/network.cpp:569
 msgid "Could not send initial handshake"
 msgstr "不能发送最初的握手信息"
 
@@ -10253,31 +10246,31 @@ msgstr "border_size应设为0.0到0.5之间的数值。"
 msgid "No time of day has been defined."
 msgstr "没有定义时段。"
 
-#: src/unit.cpp:693
+#: src/unit.cpp:688
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "生成特质时，遇到未知的单位类型“$type|”"
 
-#: src/unit.cpp:2326 src/unit.cpp:2523 src/unit.cpp:2594
+#: src/unit.cpp:2321 src/unit.cpp:2518 src/unit.cpp:2589
 msgid " and "
 msgstr " 以及"
 
-#: src/unit.cpp:2337
+#: src/unit.cpp:2332
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|：$effect_description"
 
-#: src/unit.cpp:2398
+#: src/unit.cpp:2393
 msgid "moves"
 msgstr "移动点数"
 
-#: src/unit.cpp:2413 src/unit.cpp:2547
+#: src/unit.cpp:2408 src/unit.cpp:2542
 msgid "XP to advance"
 msgstr "升级所需经验值"
 
-#: src/unit.cpp:2540
+#: src/unit.cpp:2535
 msgid " move"
 msgstr " 移动"
 
-#: src/unit.cpp:2555
+#: src/unit.cpp:2550
 msgid "$effect_description per level"
 msgstr "每一等级$effect_description"
 
@@ -10335,6 +10328,17 @@ msgstr "忠诚"
 #: src/unit_types.cpp:965
 msgid "female^neutral"
 msgstr "中立"
+
+#~ msgid "red if it has used all its movement this turn."
+#~ msgstr "红色，表明本单位已经用完了本回合的移动点数。"
+
+#~ msgid "Set Password"
+#~ msgstr "设定密码"
+
+#~ msgid ""
+#~ "Set the password that people wanting to join your game as players must "
+#~ "enter."
+#~ msgstr "设定密码，希望作为玩家加入游戏的人必须输入它。"
 
 #~ msgid "Difficulty"
 #~ msgstr "难度"

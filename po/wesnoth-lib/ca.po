@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-03 14:55+0100\n"
+"POT-Creation-Date: 2010-12-08 18:05+0100\n"
 "PO-Revision-Date: 2009-03-22 09:40+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -1017,9 +1017,9 @@ msgstr "Connecta"
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:220
 #: data/gui/default/window/campaign_dialog.cfg:433
-#: data/gui/default/window/campaign_difficulty.cfg:180
+#: data/gui/default/window/campaign_difficulty.cfg:182
 #: data/gui/default/window/data_manage.cfg:353
-#: data/gui/default/window/edit_label.cfg:143
+#: data/gui/default/window/edit_label.cfg:145
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:273
@@ -1034,11 +1034,11 @@ msgstr "Connecta"
 #: data/gui/default/window/mp_login.cfg:262
 #: data/gui/default/window/mp_method_selection.cfg:218
 #: data/gui/default/window/mp_server_list.cfg:229
-#: data/gui/default/window/simple_item_selector.cfg:145
+#: data/gui/default/window/simple_item_selector.cfg:147
 #: data/gui/default/window/unit_attack.cfg:208
 #: data/gui/default/window/unit_create.cfg:201
-#: data/gui/default/window/unit_create.cfg:202 src/construct_dialog.cpp:135
-#: src/construct_dialog.cpp:138
+#: data/gui/default/window/unit_create.cfg:202 src/construct_dialog.cpp:133
+#: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -1051,34 +1051,35 @@ msgstr "Campanya"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:419
-#: data/gui/default/window/campaign_difficulty.cfg:167
+#: data/gui/default/window/campaign_difficulty.cfg:169
 #: data/gui/default/window/data_manage.cfg:339
 #: data/gui/default/window/data_manage.cfg:340
-#: data/gui/default/window/edit_label.cfg:129
+#: data/gui/default/window/edit_label.cfg:131
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/game_load.cfg:429
 #: data/gui/default/window/game_load.cfg:430
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
+#: data/gui/default/window/mp_create_game_set_password.cfg:125
 #: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:204
-#: data/gui/default/window/simple_item_selector.cfg:132
+#: data/gui/default/window/simple_item_selector.cfg:134
 #: data/gui/default/window/unit_create.cfg:189
 #: data/gui/default/window/unit_create.cfg:190
 #: data/gui/default/window/wml_message.cfg:468
-#: data/gui/default/window/wml_message.cfg:689 src/construct_dialog.cpp:127
-#: src/construct_dialog.cpp:134 src/gui/dialogs/message.cpp:162
+#: data/gui/default/window/wml_message.cfg:689 src/construct_dialog.cpp:125
+#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
 msgstr "D'acord"
 
 #. [label]: id=title
-#: data/gui/default/window/campaign_difficulty.cfg:47
+#: data/gui/default/window/campaign_difficulty.cfg:49
 msgid "Difficulty"
 msgstr ""
 
-#. [label]: id=message
-#: data/gui/default/window/campaign_difficulty.cfg:67
+#. [scroll_label]: id=message
+#: data/gui/default/window/campaign_difficulty.cfg:69
 msgid "Select difficulty level:"
 msgstr ""
 
@@ -1134,19 +1135,19 @@ msgid "Backup"
 msgstr ""
 
 #. [label]: id=title
-#: data/gui/default/window/edit_label.cfg:32
+#: data/gui/default/window/edit_label.cfg:34
 #, fuzzy
 msgid "Place Label"
 msgstr "Posa una etiqueta"
 
 #. [label]
-#: data/gui/default/window/edit_label.cfg:62
+#: data/gui/default/window/edit_label.cfg:64
 #, fuzzy
 msgid "Label:"
 msgstr "Posa una etiqueta"
 
 #. [toggle_button]: id=team_only_toggle
-#: data/gui/default/window/edit_label.cfg:100
+#: data/gui/default/window/edit_label.cfg:102
 #, fuzzy
 msgid "Team only"
 msgstr "Equip 1"
@@ -1389,7 +1390,7 @@ msgstr ""
 #: data/gui/default/window/game_save_oos.cfg:187
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:130 src/gui/dialogs/message.cpp:176
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:176
 msgid "Yes"
 msgstr "Sí"
 
@@ -1399,7 +1400,7 @@ msgstr "Sí"
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:131 src/gui/dialogs/message.cpp:178
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:178
 msgid "No"
 msgstr "No"
 
@@ -1517,7 +1518,7 @@ msgstr ""
 #: data/gui/default/window/gamestate_inspector.cfg:331
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:192
-#: data/gui/default/window/message.cfg:123 src/construct_dialog.cpp:141
+#: data/gui/default/window/message.cfg:123 src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Tanca"
 
@@ -1886,7 +1887,9 @@ msgid "Default"
 msgstr "Per defecte"
 
 #. [button]: id=password
+#. [label]: id=title
 #: data/gui/default/window/mp_create_game.cfg:218
+#: data/gui/default/window/mp_create_game_set_password.cfg:34
 msgid "Set Password"
 msgstr "Estableix la contrasenya"
 
@@ -1925,6 +1928,18 @@ msgstr ""
 msgid "Create game"
 msgstr "Crea una partida"
 
+#. [scroll_label]: id=message
+#: data/gui/default/window/mp_create_game_set_password.cfg:53
+msgid ""
+"Set the password that people wanting to join your game as players must enter."
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_create_game_set_password.cfg:82
+#: data/gui/default/window/mp_login.cfg:134
+msgid "Password:"
+msgstr "Contrasenya:"
+
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
@@ -1940,11 +1955,6 @@ msgstr "Inici de sessió"
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
 msgstr "Nom d'usuari:"
-
-#. [label]
-#: data/gui/default/window/mp_login.cfg:134
-msgid "Password:"
-msgstr "Contrasenya:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password

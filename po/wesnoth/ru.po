@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-03 14:59+0100\n"
+"POT-Creation-Date: 2010-12-08 18:05+0100\n"
 "PO-Revision-Date: 2010-08-13 15:40+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -134,7 +134,7 @@ msgstr "Подземелье"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:306
-#: src/actions.cpp:1280
+#: src/actions.cpp:1275
 msgid "poisoned"
 msgstr "отравлен"
 
@@ -193,14 +193,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1352
-#: src/actions.cpp:1285
+#: src/actions.cpp:1280
 msgid "female^slowed"
 msgstr "замедлена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1355
-#: src/actions.cpp:1285
+#: src/actions.cpp:1280
 msgid "slowed"
 msgstr "замедлен"
 
@@ -954,8 +954,9 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:191
-msgid "red if it has used all its movement this turn."
-msgstr "красный, если он полностью использовал свой ход."
+msgid ""
+"red if it has finished its turn (might still be able to move or attack)."
+msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
@@ -7363,7 +7364,7 @@ msgstr "Золото не переносится в следующий сцен�
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:311 src/dialogs.cpp:636
-#: src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
 msgid "OK"
 msgstr "OK"
 
@@ -7371,7 +7372,7 @@ msgstr "OK"
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:312 src/dialogs.cpp:637 src/dialogs.cpp:1079
 #: src/dialogs.cpp:1190 src/multiplayer_connect.cpp:1015
-#: src/multiplayer_create.cpp:88 src/multiplayer_wait.cpp:178
+#: src/multiplayer_create.cpp:89 src/multiplayer_wait.cpp:178
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -7405,8 +7406,8 @@ msgstr "Конец сценария"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2367
-#: src/unit.cpp:2534
+#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2362
+#: src/unit.cpp:2529
 msgid "HP"
 msgstr "ЗД"
 
@@ -7545,55 +7546,55 @@ msgstr "точка зрения"
 msgid "Skip animation"
 msgstr "пропустить анимацию"
 
-#: src/about.cpp:200 src/help.cpp:3141 src/menu_events.cpp:317
+#: src/about.cpp:196 src/help.cpp:3141 src/menu_events.cpp:317
 #: src/menu_events.cpp:344 src/statistics_dialog.cpp:114
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/actions.cpp:374
+#: src/actions.cpp:369
 msgid "You don’t have a leader to recruit with."
 msgstr "У вас нет лидера, который мог бы вербовать."
 
-#: src/actions.cpp:381
+#: src/actions.cpp:376
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Вы можете вербовать или призывать бойцов, только если Ваш лидер находится в "
 "замке."
 
-#: src/actions.cpp:400
+#: src/actions.cpp:395
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "В замке нет свободных полей для нового бойца."
 
-#: src/actions.cpp:540 src/actions.cpp:599 src/actions.cpp:1516
+#: src/actions.cpp:535 src/actions.cpp:594 src/actions.cpp:1511
 msgid "An invalid attacker weapon got selected."
 msgstr "Выбрано неправильное оружие атакующего"
 
-#: src/actions.cpp:545
+#: src/actions.cpp:540
 msgid "An invalid defender weapon got selected."
 msgstr "Выбрано неправильное оружие обороняющегося"
 
-#: src/actions.cpp:1280
+#: src/actions.cpp:1275
 msgid "female^poisoned"
 msgstr "отравлена"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1285
 msgid "female^petrified"
 msgstr "окаменела"
 
-#: src/actions.cpp:1290
+#: src/actions.cpp:1285
 msgid "petrified"
 msgstr "окаменел"
 
-#: src/actions.cpp:2499
+#: src/actions.cpp:2494
 msgid "Ambushed!"
 msgstr "Засада!"
 
-#: src/actions.cpp:2506
+#: src/actions.cpp:2501
 msgid "Failed teleport! Exit not empty"
 msgstr "Телепорт не удался. Пункт назначения не пуст."
 
 # ignore-interpolations: $friends
-#: src/actions.cpp:2551
+#: src/actions.cpp:2546
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Вижу дружественного бойца"
@@ -7601,32 +7602,32 @@ msgstr[1] "Вижу $friends дружественных бойцов"
 msgstr[2] "Вижу $friends дружественных бойцов"
 
 # ignore-interpolations: $enemies
-#: src/actions.cpp:2554
+#: src/actions.cpp:2549
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Вижу врага!"
 msgstr[1] "Вижу $enemies врагов!"
 msgstr[2] "Вижу $enemies врагов!"
 
-#: src/actions.cpp:2559
+#: src/actions.cpp:2554
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends дружественный, "
 msgstr[1] "$friends дружественных, "
 msgstr[2] "$friends дружественных, "
 
-#: src/actions.cpp:2560
+#: src/actions.cpp:2555
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies вражеский"
 msgstr[1] "$enemies вражеских"
 msgstr[2] "$enemies вражеских"
 
-#: src/actions.cpp:2561
+#: src/actions.cpp:2556
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Вижу войска! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2570
+#: src/actions.cpp:2565
 msgid "(press $hotkey to keep moving)"
 msgstr "(нажмите $hotkey, чтобы продолжить движение)"
 
@@ -7877,7 +7878,7 @@ msgstr "Все аддоны обновлены успешно"
 msgid "Connecting to add-ons server..."
 msgstr "Подключаюсь к серверу аддонов..."
 
-#: src/addon/manager.cpp:1123 src/network.cpp:397 src/network.cpp:405
+#: src/addon/manager.cpp:1123 src/network.cpp:398 src/network.cpp:406
 msgid "Could not connect to host."
 msgstr "Не могу подключиться к серверу."
 
@@ -8124,7 +8125,7 @@ msgstr ""
 msgid "Date"
 msgstr "Дата"
 
-#: src/dialogs.cpp:614 src/multiplayer_create.cpp:108
+#: src/dialogs.cpp:614 src/multiplayer_create.cpp:109
 msgid "Load Game"
 msgstr "Загрузить игру"
 
@@ -8358,7 +8359,7 @@ msgstr "Сопротивляемость: "
 msgid "(Att / Def)"
 msgstr "(Атака / Защ)"
 
-#: src/generate_report.cpp:272 src/multiplayer_create.cpp:415
+#: src/generate_report.cpp:272 src/multiplayer_create.cpp:417
 msgid "Experience Modifier: "
 msgstr "Модификатор опыта: "
 
@@ -8515,7 +8516,7 @@ msgid "Fog"
 msgstr "Туман"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:309
-#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:86
+#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:87
 #: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:558
 msgid "Shroud"
 msgstr "Пелена"
@@ -8556,7 +8557,7 @@ msgstr "Не френд и не из игнора"
 msgid "You"
 msgstr "Вы"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:553
+#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:555
 msgid "Error"
 msgstr "Ошибка"
 
@@ -8580,7 +8581,7 @@ msgstr "Лидеры:"
 msgid "Recruits:"
 msgstr "Новобранцы:"
 
-#: src/help.cpp:1280 src/multiplayer_create.cpp:81
+#: src/help.cpp:1280 src/multiplayer_create.cpp:82
 msgid "Era:"
 msgstr "Эра:"
 
@@ -8696,7 +8697,7 @@ msgstr "Помощь по игре Битва за Веснот"
 msgid "Parse error when parsing help text: "
 msgstr "Синтаксическая ошибка при загрузке помощи: "
 
-#: src/intro.cpp:50
+#: src/intro.cpp:44
 msgid "The End"
 msgstr "Конец"
 
@@ -9757,7 +9758,8 @@ msgstr ""
 "алфавитно-цифровые, подчёркивания и дефисы."
 
 #: src/multiplayer.cpp:311
-msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
+#, fuzzy
+msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgstr "Ник '$nick' слишком длинный, можно не более 18 символов."
 
 #: src/multiplayer.cpp:314
@@ -9923,196 +9925,181 @@ msgstr "Ждем подключения игроков..."
 msgid "Waiting for players to choose factions..."
 msgstr "Ждем подключения игроков..."
 
-#: src/multiplayer_create.cpp:52 src/multiplayer_lobby.cpp:731
+#: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:731
 msgid "Create Game"
 msgstr "Начать игру"
 
-#: src/multiplayer_create.cpp:65
+#: src/multiplayer_create.cpp:66
 msgid "Time limit"
 msgstr "Лимит времени"
 
-#: src/multiplayer_create.cpp:78
+#: src/multiplayer_create.cpp:79
 msgid "Name of game:"
 msgstr "Название игры:"
 
-#: src/multiplayer_create.cpp:82
+#: src/multiplayer_create.cpp:83
 msgid "Map to play:"
 msgstr "Карта для игры:"
 
-#: src/multiplayer_create.cpp:83 src/multiplayer_lobby.cpp:276
+#: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:276
 msgid "Use map settings"
 msgstr "Настройки карты"
 
-#: src/multiplayer_create.cpp:84
+#: src/multiplayer_create.cpp:85
 msgid "Random start time"
 msgstr "Случайное время при старте"
 
-#: src/multiplayer_create.cpp:85
+#: src/multiplayer_create.cpp:86
 msgid "Fog Of War"
 msgstr "Туман войны"
 
-#: src/multiplayer_create.cpp:87
+#: src/multiplayer_create.cpp:88
 msgid "Observers"
 msgstr "Наблюдатели"
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:91
 msgid "Regenerate"
 msgstr "Перегенерировать"
 
-#: src/multiplayer_create.cpp:91
+#: src/multiplayer_create.cpp:92
 msgid "Settings..."
 msgstr "Настройки..."
 
-#: src/multiplayer_create.cpp:92
+#: src/multiplayer_create.cpp:93
 msgid "Set Password..."
 msgstr "Установить пароль..."
 
-#: src/multiplayer_create.cpp:109
+#: src/multiplayer_create.cpp:110
 msgid "Load Game..."
 msgstr "Загрузить игру..."
 
-#: src/multiplayer_create.cpp:145
+#: src/multiplayer_create.cpp:146
 msgid "The maximum number of turns the game can last"
 msgstr "Максимальное количество ходов в игре"
 
-#: src/multiplayer_create.cpp:148
+#: src/multiplayer_create.cpp:149
 msgid "Enables user time limit"
 msgstr "Включить ограничение времени для пользователей"
 
-#: src/multiplayer_create.cpp:154
+#: src/multiplayer_create.cpp:155
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Максимальная продолжительность первого хода (сек.)"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:161
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Максимальная продолжительность любого хода (сек.)"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:167
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Время для общих задач (сек.)"
 
-#: src/multiplayer_create.cpp:172
+#: src/multiplayer_create.cpp:173
 msgid "Time for each attack, recruit, and capture"
 msgstr "Время для атаки, найма и захвата"
 
-#: src/multiplayer_create.cpp:177
+#: src/multiplayer_create.cpp:178
 msgid "The amount of income each village yields per turn"
 msgstr "Доход, получаемый от каждой деревни за один ход"
 
-#: src/multiplayer_create.cpp:183
+#: src/multiplayer_create.cpp:184
 msgid "The amount of experience a unit needs to advance"
 msgstr "Количество опыта, необходимого для продвижения бойца"
 
-#: src/multiplayer_create.cpp:186
+#: src/multiplayer_create.cpp:187
 msgid "Use scenario specific settings"
 msgstr "Использовать специфичные настройки сценария"
 
-#: src/multiplayer_create.cpp:189
+#: src/multiplayer_create.cpp:190
 msgid "Randomize time of day in begin"
 msgstr "Случайное время суток при старте"
 
-#: src/multiplayer_create.cpp:192
+#: src/multiplayer_create.cpp:193
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Вы не можете видеть бойцов противника, пока они не окажутся в поле зрения "
 "Ваших бойцов"
 
-#: src/multiplayer_create.cpp:195
+#: src/multiplayer_create.cpp:196
 msgid "The map is unknown until your units explore it"
 msgstr "Карта неизвестна, пока Ваши бойцы не исследуют её"
 
-#: src/multiplayer_create.cpp:198
+#: src/multiplayer_create.cpp:199
 msgid "Allow users who are not playing to watch the game"
 msgstr "Разрешить наблюдать за игрой"
 
-#: src/multiplayer_create.cpp:202
+#: src/multiplayer_create.cpp:203
 msgid "Share View"
 msgstr "Общий вид"
 
-#: src/multiplayer_create.cpp:203
+#: src/multiplayer_create.cpp:204
 msgid "Share Maps"
 msgstr "Общие карты"
 
-#: src/multiplayer_create.cpp:204
+#: src/multiplayer_create.cpp:205
 msgid "Share None"
 msgstr "Ничего общего"
 
-#: src/multiplayer_create.cpp:214
+#: src/multiplayer_create.cpp:215
 msgid "No eras found."
 msgstr "Эры не найдены."
 
-#: src/multiplayer_create.cpp:215
+#: src/multiplayer_create.cpp:216
 msgid "No eras found"
 msgstr "Эры не найдены"
 
-#: src/multiplayer_create.cpp:228
+#: src/multiplayer_create.cpp:229
 msgid "$login|’s game"
 msgstr "Игра $login"
 
-#: src/multiplayer_create.cpp:289
+#: src/multiplayer_create.cpp:290
 msgid "Invalid era selected"
 msgstr "Выбрана неправильная эра"
 
-#: src/multiplayer_create.cpp:335
+#: src/multiplayer_create.cpp:336
 msgid "The map is invalid."
 msgstr "Карта повреждена"
 
-#: src/multiplayer_create.cpp:337
+#: src/multiplayer_create.cpp:338
 msgid "You must enter a name."
 msgstr "Вы должны указать имя."
 
-#: src/multiplayer_create.cpp:345
-msgid "Set Password"
-msgstr "Установить пароль"
-
-#: src/multiplayer_create.cpp:346 src/multiplayer_lobby.cpp:905
-msgid "Password: "
-msgstr "Пароль: "
-
-#: src/multiplayer_create.cpp:346
-msgid ""
-"Set the password that people wanting to join your game as players must enter."
-msgstr ""
-"Установить пароль, чтобы люди, желающие присоединиться к вашей игре, должны "
-"были залогиниться."
-
-#: src/multiplayer_create.cpp:354
+#: src/multiplayer_create.cpp:356
 msgid "Turns: "
 msgstr "Ходы: "
 
-#: src/multiplayer_create.cpp:356
+#: src/multiplayer_create.cpp:358
 msgid "Unlimited Turns"
 msgstr "Неограниченные ходы"
 
-#: src/multiplayer_create.cpp:384
+#: src/multiplayer_create.cpp:386
 msgid "Init. Limit: "
 msgstr "Начальное время: "
 
-#: src/multiplayer_create.cpp:389
+#: src/multiplayer_create.cpp:391
 msgid "Turn Bonus: "
 msgstr "Бонус хода: "
 
-#: src/multiplayer_create.cpp:393
+#: src/multiplayer_create.cpp:395
 msgid "Reservoir: "
 msgstr "Время на ход: "
 
-#: src/multiplayer_create.cpp:398
+#: src/multiplayer_create.cpp:400
 msgid "Action Bonus: "
 msgstr "Бонус действия: "
 
-#: src/multiplayer_create.cpp:405
+#: src/multiplayer_create.cpp:407
 msgid "Village Gold: "
 msgstr "Золота с деревень: "
 
-#: src/multiplayer_create.cpp:413
+#: src/multiplayer_create.cpp:415
 msgid "Exp. Mod.: "
 msgstr "Мод. опыта: "
 
-#: src/multiplayer_create.cpp:550
+#: src/multiplayer_create.cpp:552
 msgid "Players: "
 msgstr "Игроки: "
 
-#: src/multiplayer_create.cpp:551
+#: src/multiplayer_create.cpp:553
 msgid "Size: "
 msgstr "Размер: "
 
@@ -10212,6 +10199,10 @@ msgstr "Показывать только игры с указанным тек�
 msgid "Joining this game requires a password."
 msgstr "Присоединение к этой игре требует ввода пароля."
 
+#: src/multiplayer_lobby.cpp:905
+msgid "Password: "
+msgstr "Пароль: "
+
 #: src/multiplayer_ui.cpp:197
 msgid "Invalid Color"
 msgstr "Неверный цвет"
@@ -10259,20 +10250,20 @@ msgstr[0] "Золото"
 msgstr[1] "Золото"
 msgstr[2] "Золото"
 
-#: src/network.cpp:108
+#: src/network.cpp:109
 msgid "invalid network handle"
 msgstr "неверный сетевой оператор"
 
-#: src/network.cpp:141 src/network_manager_ana.cpp:780
+#: src/network.cpp:142 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
 msgid "Client disconnected"
 msgstr "Клиент отключен"
 
-#: src/network.cpp:556
+#: src/network.cpp:557
 msgid "Could not add socket to socket set"
 msgstr "Не могу добавить сокет к набору сокетов"
 
-#: src/network.cpp:568
+#: src/network.cpp:569
 msgid "Could not send initial handshake"
 msgstr "Не могу отправить данные для инициализации"
 
@@ -10706,31 +10697,31 @@ msgstr "Величина параметра border_size должна быть м
 msgid "No time of day has been defined."
 msgstr "Время суток не задано."
 
-#: src/unit.cpp:693
+#: src/unit.cpp:688
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Неизвестный тип бойца: '$type|' в списке особенностей"
 
-#: src/unit.cpp:2326 src/unit.cpp:2523 src/unit.cpp:2594
+#: src/unit.cpp:2321 src/unit.cpp:2518 src/unit.cpp:2589
 msgid " and "
 msgstr " и"
 
-#: src/unit.cpp:2337
+#: src/unit.cpp:2332
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2398
+#: src/unit.cpp:2393
 msgid "moves"
 msgstr "ходы"
 
-#: src/unit.cpp:2413 src/unit.cpp:2547
+#: src/unit.cpp:2408 src/unit.cpp:2542
 msgid "XP to advance"
 msgstr "ОП для улучшения"
 
-#: src/unit.cpp:2540
+#: src/unit.cpp:2535
 msgid " move"
 msgstr " ход"
 
-#: src/unit.cpp:2555
+#: src/unit.cpp:2550
 msgid "$effect_description per level"
 msgstr "$effect_description за уровень"
 
@@ -10790,6 +10781,19 @@ msgstr "верная"
 #: src/unit_types.cpp:965
 msgid "female^neutral"
 msgstr "нейтральная"
+
+#~ msgid "red if it has used all its movement this turn."
+#~ msgstr "красный, если он полностью использовал свой ход."
+
+#~ msgid "Set Password"
+#~ msgstr "Установить пароль"
+
+#~ msgid ""
+#~ "Set the password that people wanting to join your game as players must "
+#~ "enter."
+#~ msgstr ""
+#~ "Установить пароль, чтобы люди, желающие присоединиться к вашей игре, "
+#~ "должны были залогиниться."
 
 #~ msgid "Difficulty"
 #~ msgstr "Сложность"
