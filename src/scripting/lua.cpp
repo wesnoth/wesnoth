@@ -1349,6 +1349,14 @@ static int intf_highlight_hex(lua_State *L)
 	const map_location loc(x, y);
 	resources::screen->highlight_hex(loc);
 	resources::screen->display_unit_hex(loc);
+
+	unit_map::const_unit_iterator i = resources::units->find(loc);
+	if(i != resources::units->end()) {
+		resources::screen->highlight_reach(pathfind::paths(
+			*resources::game_map, *resources::units, loc, *resources::teams, false,
+			(*i).get_ability_bool("teleport"), resources::teams->front()));
+	}
+
 	return 0;
 }
 

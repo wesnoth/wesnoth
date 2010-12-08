@@ -40,6 +40,8 @@ Version 1.9.2+svn:
      ON_START, ON_SIDETURN, ON_TURN, ON_VICTORY, ON_DEFEAT, ALLOW_UNDO,
      ON_TILE_ONCE, SIDE_PLAYER, SIDE_COMPUTER, AMLA_TOUGH, ITM_BOOK1, ITM_TREE1,
      RECALL_OR_CREATE_UNIT, RECALL_OR_CREATE, ITM_GLOWING_BRAZIER, and REDRAW.
+   * Make [select_unit] highlight= (def. yes) work as intended for displaying
+     the selected unit's reach (bug #16819)
 
 Version 1.9.2:
  * Campaigns:
