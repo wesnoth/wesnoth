@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="wesnoth"
 	ProjectGUID="{65ACA13F-5F5C-4768-A89A-ECF6C16F1512}"
 	RootNamespace="wesnoth"
@@ -1835,6 +1835,10 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\campaign_difficulty.cpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\campaign_selection.cpp"
 						>
 						<FileConfiguration
@@ -2371,6 +2375,10 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\mp_create_game_set_password.cpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\mp_method_selection.cpp"
 						>
 						<FileConfiguration
@@ -2661,6 +2669,10 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\"
 							/>
 						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\auxiliary\old_markup.cpp"
+						>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\timer.cpp"
@@ -7094,6 +7106,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\campaign_difficulty.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\campaign_selection.hpp"
 						>
 					</File>
@@ -7179,6 +7195,10 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\mp_create_game.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\mp_create_game_set_password.hpp"
 						>
 					</File>
 					<File
@@ -7403,6 +7423,10 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\log.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\auxiliary\old_markup.hpp"
 						>
 					</File>
 					<File
