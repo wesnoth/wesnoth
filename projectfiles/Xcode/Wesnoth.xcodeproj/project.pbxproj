@@ -860,6 +860,8 @@
 		B5CE470E12A0422800D665EE /* old_markup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CE470B12A0422800D665EE /* old_markup.cpp */; };
 		B5CF7BBC10D55F5A00A8BEB5 /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7BBA10D55F5A00A8BEB5 /* timer.cpp */; };
 		B5CF7BBD10D55F5A00A8BEB5 /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7BBA10D55F5A00A8BEB5 /* timer.cpp */; };
+		B5DBABF312AFF7F200B5B8DC /* mp_create_game_set_password.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5DBABF112AFF7F200B5B8DC /* mp_create_game_set_password.cpp */; };
+		B5DBABF412AFF7F200B5B8DC /* mp_create_game_set_password.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5DBABF112AFF7F200B5B8DC /* mp_create_game_set_password.cpp */; };
 		B5F4D7180F5B3B25005E204A /* campaign_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F4D7170F5B3B25005E204A /* campaign_selection.cpp */; };
 		B5F9C5950F93BB0B00C02205 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5F9C5930F93BB0B00C02205 /* InfoPlist.strings */; };
 		B5FCE9111104C2A50081F1DF /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE8E71104C2A50081F1DF /* button.cpp */; };
@@ -1812,6 +1814,8 @@
 		B5CF7BBA10D55F5A00A8BEB5 /* timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timer.cpp; sourceTree = "<group>"; };
 		B5CF7BBB10D55F5A00A8BEB5 /* timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = timer.hpp; sourceTree = "<group>"; };
 		B5CF7BBE10D55F7B00A8BEB5 /* clickable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = clickable.hpp; sourceTree = "<group>"; };
+		B5DBABF112AFF7F200B5B8DC /* mp_create_game_set_password.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_create_game_set_password.cpp; sourceTree = "<group>"; };
+		B5DBABF212AFF7F200B5B8DC /* mp_create_game_set_password.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_create_game_set_password.hpp; sourceTree = "<group>"; };
 		B5F4D7160F5B3B25005E204A /* campaign_selection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = campaign_selection.hpp; sourceTree = "<group>"; };
 		B5F4D7170F5B3B25005E204A /* campaign_selection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = campaign_selection.cpp; sourceTree = "<group>"; };
 		B5F9C5940F93BB0B00C02205 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2923,6 +2927,8 @@
 		B5A9BCA20ECA805A002BE442 /* dialogs */ = {
 			isa = PBXGroup;
 			children = (
+				B5DBABF112AFF7F200B5B8DC /* mp_create_game_set_password.cpp */,
+				B5DBABF212AFF7F200B5B8DC /* mp_create_game_set_password.hpp */,
 				B5CE46FF12A041EF00D665EE /* campaign_difficulty.cpp */,
 				B5CE470012A041EF00D665EE /* campaign_difficulty.hpp */,
 				B5CE470112A041EF00D665EE /* edit_label.cpp */,
@@ -3667,6 +3673,7 @@
 				B5CE470612A041EF00D665EE /* edit_label.cpp in Sources */,
 				B5CE470712A041EF00D665EE /* simple_item_selector.cpp in Sources */,
 				B5CE470D12A0422800D665EE /* old_markup.cpp in Sources */,
+				B5DBABF312AFF7F200B5B8DC /* mp_create_game_set_password.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4075,6 +4082,7 @@
 				B5CE470912A041EF00D665EE /* edit_label.cpp in Sources */,
 				B5CE470A12A041EF00D665EE /* simple_item_selector.cpp in Sources */,
 				B5CE470E12A0422800D665EE /* old_markup.cpp in Sources */,
+				B5DBABF412AFF7F200B5B8DC /* mp_create_game_set_password.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
