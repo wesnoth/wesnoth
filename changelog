@@ -7,11 +7,14 @@ Version 1.9.2+svn:
      * Added the Elvish Horse Archer as alternative advancement for the scout
      * (Singleplayer only) Added the Dwarvish Runemaster as advancement for the
        fighter.
+   * The Rise of Wesnoth:
+     * New portraits for Jevyan, Typhon and Rithrandil.
  * Graphics:
    * Terrain:
      * Fixed display of UMC castles (which were being overdrawn by regular human
        castles).
-     * Added ruined cottage and ruined hill village
+     * Added ruined cottage and ruined hill village.
+     * Added a fence embellishment terrain.
  * Language and i18n:
    * Updated translations: Dutch, Finnish, German, Italian, Japanese, Korean,
      Portuguese (Brazil), Spanish, Vietnamese
@@ -33,6 +36,8 @@ Version 1.9.2+svn:
  * WML engine:
    * Created tag [petrify] (bug #17077). Moved [unpetrify] to lua. Syntax
      changed from [unpetrify][filter]<SUF> to [unpetrify]<SUF>.
+   * New [floating_text] tag for creating floating text similar to the damage
+     and healing numbers.
    * Introduced [recall]fire_event=yes|no (default no) parameter (fixes
      bug #17083).
    * Deprecated the following macros: FLOATING_TEXT, CAPTURE_FILTERED_VILLAGES,
@@ -42,6 +47,8 @@ Version 1.9.2+svn:
      RECALL_OR_CREATE_UNIT, RECALL_OR_CREATE, ITM_GLOWING_BRAZIER, and REDRAW.
    * Make [select_unit] highlight= (def. yes) work as intended for displaying
      the selected unit's reach (bug #16819)
+ * Miscellaneous and bugfixes:
+   * Fixed the submerge ability not working on all deep water terrains.
 
 Version 1.9.2:
  * Campaigns:
