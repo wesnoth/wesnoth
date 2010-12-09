@@ -31,7 +31,7 @@ public class LinkedFileEditorInput extends FileEditorInput
 		if (this == obj) {
 			return true;
 		}
-		String targetUri = "";
+		String targetUri = ""; //$NON-NLS-1$
 		if (!(obj instanceof IFileEditorInput))
 		{
 			if (obj instanceof FileStoreEditorInput)

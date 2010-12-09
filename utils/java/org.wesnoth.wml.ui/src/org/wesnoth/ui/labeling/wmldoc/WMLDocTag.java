@@ -16,6 +16,7 @@ import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.widgets.Display;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.schema.Tag;
+import org.wesnoth.ui.Messages;
 
 
 /**
@@ -46,14 +47,14 @@ public class WMLDocTag implements IWMLDocProvider
 		if (tag_ == null)
 			return;
 
-		title_ = "Tag '" + tag_.getName() + "':";
+		title_ = Messages.WMLDocTag_0 + tag_.getName() + "':"; //$NON-NLS-1$
 
 		StringBuilder content = new StringBuilder();
 		if (tag_.getDescription() != null)
 		{
-			content.append("Description:\n");
+			content.append(Messages.WMLDocTag_1);
 			addStyleRange(0, content.length() - 1, SWT.BOLD);
-			content.append(tag_.getDescription().getChildKey("text").getValue());
+			content.append(tag_.getDescription().getChildKey("text").getValue()); //$NON-NLS-1$
 		}
 		contents_ = content.toString();
 	}
@@ -80,7 +81,7 @@ public class WMLDocTag implements IWMLDocProvider
 
 	public String getInfoText()
 	{
-		return "";
+		return ""; //$NON-NLS-1$
 	}
 
 	public String getContents()

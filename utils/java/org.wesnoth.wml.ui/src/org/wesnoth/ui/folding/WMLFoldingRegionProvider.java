@@ -32,7 +32,7 @@ public class WMLFoldingRegionProvider extends DefaultFoldingRegionProvider
 	protected Position getPosition(IXtextDocument xtextDocument,
 			CompositeNode compositeNode)
 	{
-		Assert.isNotNull(compositeNode, "parameter 'compositeNode' must not be null");
+		Assert.isNotNull(compositeNode, "parameter 'compositeNode' must not be null"); //$NON-NLS-1$
 		if (compositeNode.getElement() instanceof WMLKey &&
 			((WMLKey)compositeNode.getElement()).getEol() != null &&
 			((WMLKey)compositeNode.getElement()).getEol().length() > 0)

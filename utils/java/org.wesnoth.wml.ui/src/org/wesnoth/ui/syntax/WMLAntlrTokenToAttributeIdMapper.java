@@ -15,11 +15,11 @@ public class WMLAntlrTokenToAttributeIdMapper extends DefaultAntlrTokenToAttribu
 	@Override
 	protected String calculateId(String tokenName, int tokenType)
 	{
-		if (tokenName.equals("'['") || tokenName.equals("'[/'") || tokenName.equals("']'"))
+		if (tokenName.equals("'['") || tokenName.equals("'[/'") || tokenName.equals("']'")) //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		{
 			return WMLHighlightingConfiguration.RULE_WML_TAG;
 		}
-		if (tokenName.equals("'{'") || tokenName.equals("'}'"))
+		if (tokenName.equals("'{'") || tokenName.equals("'}'")) //$NON-NLS-1$ //$NON-NLS-2$
 		{
 			return WMLHighlightingConfiguration.RULE_WML_MACRO_CALL;
 		}

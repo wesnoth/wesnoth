@@ -36,7 +36,7 @@ public class WMLLabelProvider extends DefaultEObjectLabelProvider
 	{
 		if (element instanceof EClass)
 		{
-			return ((EClass)element).getName().toLowerCase(Locale.ENGLISH) + ".png";
+			return ((EClass)element).getName().toLowerCase(Locale.ENGLISH) + ".png"; //$NON-NLS-1$
 		}
 		else if (element instanceof String)
 		{

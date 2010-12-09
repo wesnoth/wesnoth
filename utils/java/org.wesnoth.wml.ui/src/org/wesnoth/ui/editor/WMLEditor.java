@@ -54,6 +54,7 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
 import org.wesnoth.Activator;
 import org.wesnoth.Logger;
+import org.wesnoth.ui.Messages;
 import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.syntax.WMLHighlightingHelper;
 
@@ -62,8 +63,8 @@ import com.google.inject.Inject;
 
 public class WMLEditor extends XtextEditor
 {
-	protected static final String AUTOLINK_PROJECT_NAME = "_AutoLinked_CFGExternalFiles_";
-	protected static final String ENCODING_UTF8 = "utf-8";
+	protected static final String AUTOLINK_PROJECT_NAME = "_AutoLinked_CFGExternalFiles_"; //$NON-NLS-1$
+	protected static final String ENCODING_UTF8 = "utf-8"; //$NON-NLS-1$
 
 	protected IHighlightingHelper highlightingHelper_;
 	protected LeafNode currentHighlightedNode_;
@@ -223,7 +224,7 @@ public class WMLEditor extends XtextEditor
 			java.net.URI uri = ((IURIEditorInput) input).getURI();
 			String name = ((IURIEditorInput) input).getName();
 			// Check if this is linkable input
-			if(uri.getScheme().equals("file")) {
+			if(uri.getScheme().equals("file")) { //$NON-NLS-1$
 				IFile linkedFile = obtainLink(uri);
 				IFileEditorInput linkedInput = new LinkedFileEditorInput(linkedFile);
 				super.init(site, linkedInput);
@@ -309,7 +310,7 @@ public class WMLEditor extends XtextEditor
 				dialog.setFilterPath(oldPath.toOSString());
 			}
 
-			dialog.setFilterExtensions(new String[] { "*.b3", "*.*" });
+			dialog.setFilterExtensions(new String[] { "*.b3", "*.*" }); //$NON-NLS-1$ //$NON-NLS-2$
 			String path = dialog.open();
 			if(path == null) {
 				if(progressMonitor != null)
@@ -320,8 +321,8 @@ public class WMLEditor extends XtextEditor
 			// Check whether file exists and if so, confirm overwrite
 			final File localFile = new File(path);
 			if(localFile.exists()) {
-				MessageDialog overwriteDialog = new MessageDialog(shell, "Save As", null, path +
-						" already exists.\nDo you want to replace it?", MessageDialog.WARNING, new String[] {
+				MessageDialog overwriteDialog = new MessageDialog(shell, Messages.WMLEditor_0, null, path +
+						Messages.WMLEditor_1, MessageDialog.WARNING, new String[] {
 						IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL }, 1); // 'No' is the default
 				if(overwriteDialog.open() != Window.OK) {
 					if(progressMonitor != null) {
@@ -337,8 +338,8 @@ public class WMLEditor extends XtextEditor
 			}
 			catch(CoreException ex) {
 				Logger.getInstance().logException(ex);
-				String title = "Problems During Save As...";
-				String msg = "Save could not be completed. " + ex.getMessage();
+				String title = Messages.WMLEditor_2;
+				String msg = Messages.WMLEditor_3 + ex.getMessage();
 				MessageDialog.openError(shell, title, msg);
 				return;
 			}
@@ -371,8 +372,8 @@ public class WMLEditor extends XtextEditor
 				Logger.getInstance().logException(x);
 				final IStatus status = x.getStatus();
 				if(status == null || status.getSeverity() != IStatus.CANCEL) {
-					String title = "Problems During Save As...";
-					String msg = "Save could not be completed. " + x.getMessage();
+					String title = Messages.WMLEditor_4;
+					String msg = Messages.WMLEditor_5 + x.getMessage();
 					MessageDialog.openError(shell, title, msg);
 				}
 			}

@@ -38,7 +38,7 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 	@Override
 	public void configure(IBracketPairAcceptor acceptor)
 	{
-		List<Pair<Keyword, Keyword>> pairs2 = grammarAccess.findKeywordPairs("[/", "]");
+		List<Pair<Keyword, Keyword>> pairs2 = grammarAccess.findKeywordPairs("[/", "]"); //$NON-NLS-1$ //$NON-NLS-2$
 		for (Pair<Keyword, Keyword> pair : pairs2)
 		{
 			acceptor.accept(pair.getFirst(), pair.getSecond());
@@ -112,7 +112,7 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 						tmpNode != wmlNode && !tmpNode.isHidden())
 				{
 					correspondingTag = tmpNode;
-					if (tmp != null && tmp.getText().equals("[/"))
+					if (tmp != null && tmp.getText().equals("[/")) //$NON-NLS-1$
 						correspondingIsClosed = true;
 					break;
 				}
@@ -149,7 +149,7 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 		{
 			if (node.getTotalOffset() <= offset)
 			{
-				if (node instanceof LeafNode && ((LeafNode) node).getText().equals("[/"))
+				if (node instanceof LeafNode && ((LeafNode) node).getText().equals("[/")) //$NON-NLS-1$
 				{
 					isClosed = true;
 				}

@@ -21,6 +21,7 @@ import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preprocessor.Define;
+import org.wesnoth.ui.Messages;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.emf.ObjectStorageAdapter;
 import org.wesnoth.utils.ProjectUtils;
@@ -75,7 +76,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 		IFile file = WMLUtil.getActiveEditorFile();
 		if (file == null)
 		{
-			Logger.getInstance().logError("FATAL! file is null (and it shouldn't)");
+			Logger.getInstance().logError(Messages.WMLHyperlinkHelper_0);
 			return;
 		}
 
@@ -91,16 +92,16 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 		if (define.getLocation().isEmpty() == true)
 			return;
 
-		String filePath = define.getLocation().split(" ")[0];
+		String filePath = define.getLocation().split(" ")[0]; //$NON-NLS-1$
 
-		if (filePath.startsWith("~")) // user addon relative location
-			filePath = filePath.replaceFirst("~",
+		if (filePath.startsWith("~")) // user addon relative location //$NON-NLS-1$
+			filePath = filePath.replaceFirst("~", //$NON-NLS-1$
 					Preferences.getString(Constants.P_WESNOTH_USER_DIR).replace('\\', '/') +
-					"/data/");
-		else if (filePath.startsWith("core")) // data/core relative location
-			filePath = filePath.replaceFirst("core",
+					"/data/"); //$NON-NLS-1$
+		else if (filePath.startsWith("core")) // data/core relative location //$NON-NLS-1$
+			filePath = filePath.replaceFirst("core", //$NON-NLS-1$
 					Preferences.getString(Constants.P_WESNOTH_WORKING_DIR).replace('\\', '/') +
-					"/data/core/");
+					"/data/core/"); //$NON-NLS-1$
 
 		FileLocationOpenerHyperlink macroTarget = new FileLocationOpenerHyperlink();
 		macroTarget.setHyperlinkRegion(new Region(container.getOffset(), container.getLength()));
@@ -117,19 +118,19 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 	private void createMapHyperlink(LeafNode key, LeafNode value,
 			IHyperlinkAcceptor acceptor, XtextResource resource)
 	{
-		if (!(key.getText().equals("map_data")))
+		if (!(key.getText().equals("map_data"))) //$NON-NLS-1$
 			return;
 
 		// trim the " and the { (if any exist)
 		String mapLocation = value.getText();
-		if (mapLocation.startsWith("\""))
+		if (mapLocation.startsWith("\"")) //$NON-NLS-1$
 			mapLocation = mapLocation.substring(1, value.getLength() - 1);
-		if (mapLocation.startsWith("{"))
+		if (mapLocation.startsWith("{")) //$NON-NLS-1$
 			mapLocation = mapLocation.substring(1, value.getLength() - 1);
 
-		mapLocation = mapLocation.replaceFirst("~",
+		mapLocation = mapLocation.replaceFirst("~", //$NON-NLS-1$
 				Preferences.getString(Constants.P_WESNOTH_USER_DIR).replace('\\','/') +
-				"/data/");
+				"/data/"); //$NON-NLS-1$
 
 		ObjectStorageAdapter adapter = (ObjectStorageAdapter)EcoreUtil.getAdapter(value.eAdapters(),
 				ObjectStorageAdapter.class);

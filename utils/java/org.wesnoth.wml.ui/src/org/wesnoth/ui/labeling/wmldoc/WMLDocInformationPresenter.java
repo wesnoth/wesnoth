@@ -38,7 +38,7 @@ public class WMLDocInformationPresenter extends PopupDialog implements
 				Point bounds)
 	{
 		super(parent, PopupDialog.INFOPOPUPRESIZE_SHELLSTYLE, true, true, true,
-				false, false, "", "");
+				false, false, "", ""); //$NON-NLS-1$ //$NON-NLS-2$
 		bounds_ = bounds;
 		currentDocProvider_ = docProvider;
 	}

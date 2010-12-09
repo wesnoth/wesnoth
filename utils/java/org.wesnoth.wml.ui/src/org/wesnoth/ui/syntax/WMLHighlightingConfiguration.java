@@ -13,34 +13,35 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcceptor;
 import org.eclipse.xtext.ui.editor.utils.TextStyle;
+import org.wesnoth.ui.Messages;
 
 public class WMLHighlightingConfiguration extends DefaultHighlightingConfiguration
 {
-	public static final String RULE_WML_TAG = "wmlTag";
-	public static final String RULE_WML_KEY = "wmlKey";
-	public static final String RULE_WML_MACRO_CALL = "wmlMacroCall";
+	public static final String RULE_WML_TAG = "wmlTag"; //$NON-NLS-1$
+	public static final String RULE_WML_KEY = "wmlKey"; //$NON-NLS-1$
+	public static final String RULE_WML_MACRO_CALL = "wmlMacroCall"; //$NON-NLS-1$
 
-	public static final String RULE_WML_MACRO_DEFINE = "wmlMacroDefine";
-	public static final String RULE_WML_IF = "wmlIF";
-	public static final String RULE_WML_TEXTDOMAIN = "wmlTextdomain";
+	public static final String RULE_WML_MACRO_DEFINE = "wmlMacroDefine"; //$NON-NLS-1$
+	public static final String RULE_WML_IF = "wmlIF"; //$NON-NLS-1$
+	public static final String RULE_WML_TEXTDOMAIN = "wmlTextdomain"; //$NON-NLS-1$
 
-	public static final String RULE_START_END_TAG = "wmlStartEnd";
+	public static final String RULE_START_END_TAG = "wmlStartEnd"; //$NON-NLS-1$
 
 	@Override
 	public void configure(IHighlightingConfigurationAcceptor acceptor)
 	{
 		super.configure(acceptor);
-		acceptor.acceptDefaultHighlighting(RULE_WML_TAG, "WML Tag", tagTextStyle());
-		acceptor.acceptDefaultHighlighting(RULE_WML_KEY, "WML Key", keyTextStyle());
-		acceptor.acceptDefaultHighlighting(RULE_WML_MACRO_CALL, "WML Macro Call", macroTextStyle());
+		acceptor.acceptDefaultHighlighting(RULE_WML_TAG, Messages.WMLHighlightingConfiguration_7, tagTextStyle());
+		acceptor.acceptDefaultHighlighting(RULE_WML_KEY, Messages.WMLHighlightingConfiguration_8, keyTextStyle());
+		acceptor.acceptDefaultHighlighting(RULE_WML_MACRO_CALL, Messages.WMLHighlightingConfiguration_9, macroTextStyle());
 
 		acceptor.acceptDefaultHighlighting(RULE_START_END_TAG,
-				"WML Start/End Tag Highlight", startEndTextStyle());
+				Messages.WMLHighlightingConfiguration_10, startEndTextStyle());
 
 		// preproc
-		acceptor.acceptDefaultHighlighting(RULE_WML_MACRO_DEFINE, "WML Macro Define", preprocTextStyle());
-		acceptor.acceptDefaultHighlighting(RULE_WML_IF, "WML IF", preprocTextStyle());
-		acceptor.acceptDefaultHighlighting(RULE_WML_TEXTDOMAIN, "WML Textdomain", preprocTextStyle());
+		acceptor.acceptDefaultHighlighting(RULE_WML_MACRO_DEFINE, Messages.WMLHighlightingConfiguration_11, preprocTextStyle());
+		acceptor.acceptDefaultHighlighting(RULE_WML_IF, Messages.WMLHighlightingConfiguration_12, preprocTextStyle());
+		acceptor.acceptDefaultHighlighting(RULE_WML_TEXTDOMAIN, Messages.WMLHighlightingConfiguration_13, preprocTextStyle());
 	}
 
 	public TextStyle preprocTextStyle()

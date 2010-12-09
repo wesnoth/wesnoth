@@ -27,6 +27,7 @@ import org.wesnoth.preprocessor.Define;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.schema.Tag;
 import org.wesnoth.schema.TagKey;
+import org.wesnoth.ui.Messages;
 import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
@@ -61,7 +62,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.completeWMLKey_Name(model, assignment, context, acceptor);
-		dbg("completing wmlkeyname");
+		dbg("completing wmlkeyname"); //$NON-NLS-1$
 		addKeyNameProposals(model, context, acceptor);
 	}
 
@@ -70,7 +71,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.complete_WMLKeyValue(model, ruleCall, context, acceptor);
-		dbg("completing wmlkeyvalue - rule");
+		dbg("completing wmlkeyvalue - rule"); //$NON-NLS-1$
 		addKeyValueProposals(model, context, acceptor);
 	}
 
@@ -79,7 +80,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.complete_WMLTag(model, ruleCall, context, acceptor);
-		dbg("completing wmltag - rule");
+		dbg("completing wmltag - rule"); //$NON-NLS-1$
 		addTagProposals(model, true, context, acceptor);
 	}
 
@@ -88,7 +89,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.completeWMLTag_Name(model, assignment, context, acceptor);
-		dbg("completing wmltagname");
+		dbg("completing wmltagname"); //$NON-NLS-1$
 		addTagProposals(model, false, context, acceptor);
 	}
 
@@ -97,7 +98,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.completeWMLMacroCall_Name(model, assignment, context, acceptor);
-		dbg("completing wmlmacrocallname");
+		dbg("completing wmlmacrocallname"); //$NON-NLS-1$
 		addMacroCallProposals(model, false, context, acceptor);
 	}
 
@@ -106,7 +107,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.complete_WMLMacroCall(model, ruleCall, context, acceptor);
-		dbg("completing wmlmacrocall - rule");
+		dbg("completing wmlmacrocall - rule"); //$NON-NLS-1$
 		addMacroCallProposals(model, true, context, acceptor);
 	}
 
@@ -116,7 +117,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		IFile file = WMLUtil.getActiveEditorFile();
 		if (file == null)
 		{
-			Logger.getInstance().logError("FATAL! file is null (and it shouldn't)");
+			Logger.getInstance().logError("FATAL! file is null (and it shouldn't)"); //$NON-NLS-1$
 			return;
 		}
 
@@ -125,15 +126,15 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		{
 			StringBuilder proposal = new StringBuilder(10);
 			if (ruleProposal == true)
-				proposal.append("{");
+				proposal.append("{"); //$NON-NLS-1$
 			proposal.append(define.getKey());
 
 			for(String arg : define.getValue().getArguments())
-				proposal.append(" " + arg);
-			proposal.append("}");
+				proposal.append(" " + arg); //$NON-NLS-1$
+			proposal.append("}"); //$NON-NLS-1$
 
 			acceptor.accept(createCompletionProposal(proposal.toString(), define.getKey(),
-					WMLLabelProvider.getImageByName("macrocall.png"), context, 100));
+					WMLLabelProvider.getImageByName("macrocall.png"), context, 100)); //$NON-NLS-1$
 		}
 	}
 
@@ -152,13 +153,13 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			WMLKey key = (WMLKey)model;
 
 			// handle the next_scenario and first_scenario
-			if (key.getName().equals("next_scenario") ||
-				key.getName().equals("first_scenario"))
+			if (key.getName().equals("next_scenario") || //$NON-NLS-1$
+				key.getName().equals("first_scenario")) //$NON-NLS-1$
 			{
 				IFile file = WMLUtil.getActiveEditorFile();
 				if (file == null)
 				{
-					Logger.getInstance().logError("FATAL! file is null (and it shouldn't)");
+					Logger.getInstance().logError("FATAL! file is null (and it shouldn't)"); //$NON-NLS-1$
 					return;
 				}
 
@@ -169,7 +170,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 						config.getScenarioId().isEmpty())
 						continue;
 					acceptor.accept(createCompletionProposal(config.getScenarioId(),
-							config.getScenarioId(), WMLLabelProvider.getImageByName("scenario.png"),
+							config.getScenarioId(), WMLLabelProvider.getImageByName("scenario.png"), //$NON-NLS-1$
 							context, 1700));
 				}
 			}
@@ -185,7 +186,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 						TagKey tagKey = tag.getChildKey(key.getName());
 						if (tagKey.isEnum())
 						{
-							String[] values = tagKey.getValue().split(",");
+							String[] values = tagKey.getValue().split(","); //$NON-NLS-1$
 							for(String val : values)
 							{
 								acceptor.accept(createCompletionProposal(val, context, 1700));
@@ -235,7 +236,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 					}
 
 					if (found == false)
-						acceptor.accept(createCompletionProposal(key.getName() + "=",
+						acceptor.accept(createCompletionProposal(key.getName() + "=", //$NON-NLS-1$
 							key.getName(),
 							getImage(WMLFactoryImpl.eINSTANCE.getWMLPackage().getWMLKey()),
 							context, 1500));
@@ -264,7 +265,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		{
 			CompositeNode node = NodeUtil.getNode(model);
 
-			String parentIndent = "";
+			String parentIndent = ""; //$NON-NLS-1$
 			if (context.getCurrentNode().getOffset() > 0)
 				parentIndent = ((LeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
 						context.getCurrentNode().getOffset() -
@@ -273,7 +274,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 						)).getText();
 
 			// remove ugly new lines that break indentation
-			parentIndent =  parentIndent.replace("\r", "").replace("\n", "");
+			parentIndent =  parentIndent.replace("\r", "").replace("\n", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
 			Tag tagChildren = SchemaParser.getInstance().getTags().get(parentTag.getName());
 			if (tagChildren != null)
@@ -304,15 +305,15 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 				}
 			}
 			else
-				dbg("!!! no tag found with that name:" + parentTag.getName());
+				dbg("!!! no tag found with that name:" + parentTag.getName()); //$NON-NLS-1$
 		}
 		else // we are at the root
 		{
-			Tag rootTag = SchemaParser.getInstance().getTags().get("root");
-			dbg("root node. adding tags: "+ rootTag.getTagChildren().size());
+			Tag rootTag = SchemaParser.getInstance().getTags().get("root"); //$NON-NLS-1$
+			dbg("root node. adding tags: "+ rootTag.getTagChildren().size()); //$NON-NLS-1$
 			for(Tag tag : rootTag.getTagChildren())
 			{
-				acceptor.accept(tagProposal(tag, "", ruleProposal, context));
+				acceptor.accept(tagProposal(tag, "", ruleProposal, context)); //$NON-NLS-1$
 			}
 		}
 	}
@@ -331,16 +332,16 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 //		dbg("indent:[" + indent +"]");
 		StringBuilder proposal = new StringBuilder();
 		if (ruleProposal)
-			proposal.append("[");
+			proposal.append("["); //$NON-NLS-1$
 		proposal.append(tag.getName());
-		proposal.append("]\n");
+		proposal.append("]\n"); //$NON-NLS-1$
 		for(TagKey key : tag.getKeyChildren())
 		{
 			if (key.isRequired())
-				proposal.append(String.format("\t%s%s=\n",
+				proposal.append(String.format("\t%s%s=\n", //$NON-NLS-1$
 						indent, key.getName()));
 		}
-		proposal.append(String.format("%s[/%s]",indent, tag.getName()));
+		proposal.append(String.format("%s[/%s]",indent, tag.getName())); //$NON-NLS-1$
 		return createCompletionProposal(proposal.toString(), tag.getName(),
 					getImage(WMLFactoryImpl.eINSTANCE.getWMLPackage().getWMLTag()),
 					context, 100);

@@ -15,6 +15,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.widgets.Display;
 import org.wesnoth.preprocessor.Define;
+import org.wesnoth.ui.Messages;
 
 
 /**
@@ -41,10 +42,10 @@ public class WMLDocMacro implements IWMLDocProvider
 			return;
 
 		styleRanges_ = new ArrayList<StyleRange>();
-		title_ = "Macro: " + macro_.getName();
+		title_ = Messages.WMLDocMacro_0 + macro_.getName();
 		StringBuilder content = new StringBuilder();
 
-		content.append("Definition:\n");
+		content.append(Messages.WMLDocMacro_1);
 		addStyleRange(0, content.length() - 1, SWT.BOLD);
 		content.append(macro_.getValue());
 
@@ -52,7 +53,7 @@ public class WMLDocMacro implements IWMLDocProvider
 		if (macro_.getArguments().isEmpty() == false)
 		{
 			int len = content.length() - 1;
-			content.append("Arguments:\n");
+			content.append(Messages.WMLDocMacro_2);
 
 			addStyleRange(len, content.length() - len - 1, SWT.BOLD);
 
@@ -110,6 +111,6 @@ public class WMLDocMacro implements IWMLDocProvider
 
 	public String getInfoText()
 	{
-		return "";
+		return ""; //$NON-NLS-1$
 	}
 }

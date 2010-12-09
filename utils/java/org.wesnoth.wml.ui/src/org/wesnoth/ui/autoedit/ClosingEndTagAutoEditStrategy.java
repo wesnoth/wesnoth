@@ -33,7 +33,7 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 	{
 		try
 		{
-			if (command.text.equals("/") && document.get(command.offset-1, 1).equals("["))
+			if (command.text.equals("/") && document.get(command.offset-1, 1).equals("[")) //$NON-NLS-1$ //$NON-NLS-2$
 			{
 				XtextEditor editor = EditorUtils.getActiveXtextEditor();
 				if (editor == null)
@@ -48,7 +48,7 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 						CompositeNode rootNode = parseResult.getRootNode();
 						LeafNode node = (LeafNode) NodeUtil.findLeafNodeAtOffset(rootNode, command.offset);
 
-						String tagName = "";
+						String tagName = ""; //$NON-NLS-1$
 						EList<AbstractNode> children = node.getParent().getParent().getChildren();
 						for(int i = 0 ;i < children.size(); ++i)
 						{
@@ -57,12 +57,12 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 							// we need one more child
 							if (i+1 >= children.size())
 								continue;
-							if (((LeafNode)children.get(i)).getText().equals("["))
+							if (((LeafNode)children.get(i)).getText().equals("[")) //$NON-NLS-1$
 							{
 								if (children.get(i+1) instanceof LeafNode)
 								{
 									// in case we have [+
-									if (((LeafNode)children.get(i+1)).getText().equals("+"))
+									if (((LeafNode)children.get(i+1)).getText().equals("+")) //$NON-NLS-1$
 									{
 										if (i+2 >= children.size() ||
 											(children.get(i+2) instanceof LeafNode) == false)
@@ -79,7 +79,7 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 						if (tagName.isEmpty() == false)
 						{
 							command.shiftsCaret = true;
-							command.text = ("/" + tagName + "]");
+							command.text = ("/" + tagName + "]"); //$NON-NLS-1$ //$NON-NLS-2$
 						}
 					}
 				});
