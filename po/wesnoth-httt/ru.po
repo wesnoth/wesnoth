@@ -14,14 +14,15 @@
 # Kotov Ilya <kotov_ilya@mail.ru>, 2006.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2005, 2006, 2007.
 # Alexey Khudiakov <alexey.skladnoy@gmail.com>, 2007,2008.
+# Fedor Khod'kov <fedor76@istra.ru>, 2009, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-httt.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-12-08 18:05+0100\n"
-"PO-Revision-Date: 2010-04-30 12:18+0400\n"
+"PO-Revision-Date: 2010-11-29 23:02+0300\n"
 "Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
-"Language-Team:\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +31,7 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Emacs 24.0.50.1, po-mode 2.2+0.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [campaign]: id=Heir_To_The_Throne
@@ -76,9 +77,8 @@ msgstr "Витязь"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
-#, fuzzy
 msgid "(Novice level, 23 scenarios.)"
-msgstr "(Для начинающих, 25 сценариев.)"
+msgstr "(Для начинающих, 23 сценария.)"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
@@ -549,9 +549,8 @@ msgstr "Не оглядывайся назад. Уходим, живо!"
 
 #. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
-#, fuzzy
 msgid "scenario name^Blackwater Port"
-msgstr "Черноводье"
+msgstr "В порту Черноводья"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:18
@@ -563,7 +562,7 @@ msgstr "Сопротивляйтесь до конца ходов"
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
 msgid "(special bonus)"
-msgstr ""
+msgstr "(особый бонус)"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:25
@@ -1053,7 +1052,6 @@ msgstr "Залив Жемчуга"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:19
-#, fuzzy
 msgid "Defeat one enemy leader, and resist the other until turns run out"
 msgstr ""
 "Убейте одного лидера противника и сопротивляйтесь другому до окончания ходов"
@@ -1072,7 +1070,7 @@ msgstr "Победите всех лидеров противника"
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:32
 msgid "Turns run out with both enemy leaders standing"
-msgstr ""
+msgstr "Ходы закончились, а оба лидера противников живы"
 
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:63
@@ -1532,9 +1530,8 @@ msgstr "Бегите по дороге в Эленсефар"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:26
-#, fuzzy
 msgid "Defeat Muff Malal"
-msgstr "Муфф Малал"
+msgstr "Победите Муфф Малала"
 
 #. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:62
@@ -2530,7 +2527,6 @@ msgstr "Королева послала меня остановить тебя, 
 
 #. [message]: role=Advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:172
-#, fuzzy
 msgid ""
 "That’s the princess, Li’sar. The daughter of the Queen, and her successor!"
 msgstr "Это принцесса Лисар, дочь и наследница королевы!"
@@ -2595,7 +2591,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:239
-#, fuzzy
 msgid ""
 "Your mother has lied to you, child. Now I suggest you reconsider, and either "
 "join us, or flee as an exile. There will be a great battle soon, and if you "
@@ -2679,7 +2674,7 @@ msgstr "Продержитесь два дня"
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:24
 msgid "Eradicate the liches"
-msgstr ""
+msgstr "Изничтожьте личей"
 
 #. [side]: type=Lich, id=Galga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:78
@@ -3149,7 +3144,6 @@ msgstr "Мы выигрывали битву. Мы погнали их..."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:214
-#, fuzzy
 msgid "And then the king’s son, in the heat of battle, turned upon the king!"
 msgstr "И тогда сын короля в пылу битвы восстал против своего отца!"
 
@@ -3347,9 +3341,8 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:439
-#, fuzzy
 msgid "Do you think she’s really going to chase us, Delfador?"
-msgstr "Думаешь, она действительно погонится нас, Делфадор?"
+msgstr "Думаешь, она действительно погонится за нами, Делфадор?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:444
@@ -4472,7 +4465,6 @@ msgstr "Лионель? Генерал? Припоминаю это имя..."
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:491
-#, fuzzy
 msgid ""
 "Remember me, do you? Aye. I was the king’s finest general, sent down to "
 "these pits to retrieve the Scepter. But the orcs trapped me and my men in "
@@ -4539,14 +4531,14 @@ msgstr ""
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:576
-#, fuzzy
 msgid ""
 "The Scepter? Ah, the Scepter ye seek. You surface dwellers are ambitious. "
 "Beyond my citadel the spawn of the darkness hold complete sway. You’ll no’ "
 "survive without assistance."
 msgstr ""
-"Скипетр? А, так вы Скипетр ищете. Вы, жители поверхности, честолюбивые. Вне "
-"моей цитадели темные отродья имеют полную власть. Одни вы пропадёте."
+"Скипетр? Ага, Скипетр, стал’ быть, ищете. Жители поверхности такие "
+"честолюбивые. За стенами моей цитадели вся власть у темных отродий. "
+"Пропадёте вы без подмоги."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:580
@@ -5383,7 +5375,6 @@ msgstr ""
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:142
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:349
-#, fuzzy
 msgid "He was just someone who couldn’t handle the power given to him."
 msgstr "Он оказался не в силах совладать с данной ему властью."
 
@@ -5492,7 +5483,7 @@ msgstr "Победите Лича, Владыку Аймукасура"
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:26
 msgid "Defeat all Death Knights first"
-msgstr ""
+msgstr "Сначала уничтожьте всех мёртвых рыцарей"
 
 #. [side]: type=Death Knight, id=Clarustus
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:92
@@ -5590,19 +5581,17 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:275
-#, fuzzy
 msgid ""
 "As the last of its generals falls, an ear-splitting screech escapes from the "
 "lich. It is clear that controlling such powerful spirits has drained it "
 "significantly, and it is seething in anger towards you."
 msgstr ""
 "Как только пал последний Мёртвый Рыцарь, Лич издал пронзительный вопль. Его "
-"силы явно истощались, пока он держал в узде столь могучие духи. Теперь же "
+"силы явно истощились, пока он держал в узде столь могучие духи. Теперь же "
 "кипит от ненависти к вам."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:315
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. The last of his minions silently falls like a puppet with its "
@@ -5616,7 +5605,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:322
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. His minions fall like puppets with their strings cut. A cloud of "
@@ -5630,7 +5618,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:331
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. A giant cloud of dust billows out as the remnants of the lich’s "
@@ -6001,19 +5988,16 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:585
-#, fuzzy
 msgid "We’ve found $random gold in the drake nest."
 msgstr "Мы нашли $random монет золота в логове дрейка."
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:614
-#, fuzzy
 msgid "GRRROOOOAAAAR!"
-msgstr "РРРрррррааааа"
+msgstr "ГРРРаааар!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:618
-#, fuzzy
 msgid "Hurrah! We’ve killed their leader!"
 msgstr "Ура! Мы убили их вожака!"
 
@@ -6147,7 +6131,7 @@ msgstr "Согласен..."
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:830
 msgid "Rescue the sergeant"
-msgstr ""
+msgstr "Спасите сержанта"
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:891
@@ -6242,9 +6226,8 @@ msgstr "Увы, других возможностей нет. Все в пеще
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:951
-#, fuzzy
 msgid "Reach the cave"
-msgstr "Доберитесь до пещеры."
+msgstr "Доберитесь до пещеры"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:995
@@ -6307,9 +6290,8 @@ msgstr "Ходы закончилис прежде, что был достигн
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:50
-#, fuzzy
 msgid "Note: your encampment will be dismantled after the first turn."
-msgstr "Замечание: после первого хода ваш лагерь будет снесён\n"
+msgstr "Замечание: после первого хода ваш лагерь будет снесён"
 
 #. [side]: type=Commander, id=Konrad
 #. [side]: type=Elvish Lord, id=Uradredia
@@ -6331,7 +6313,7 @@ msgstr "Киор-Дал"
 #. [side]: type=General, id=Honber
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:135
 msgid "Honber"
-msgstr ""
+msgstr "Хонбер"
 
 #. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:201
@@ -6685,7 +6667,7 @@ msgstr "Найдите выход из подземелья и проведит�
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:33
 msgid "Help the Wose fend off the undead attack"
-msgstr ""
+msgstr "Помогите лешим отбить нападение нежити"
 
 #. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:87
@@ -6750,15 +6732,15 @@ msgstr "Эверлор"
 
 #. [message]: speaker=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:103
-#, fuzzy
 msgid ""
 "Greetings, and welcome to our capital. You should feel honored. It has been "
 "half a century — a generation in the way your race counts time — since any "
 "man has been considered Elf-friend enough to stand here in Elensiria."
 msgstr ""
-"Здравствуйте, и добро пожаловать в нашу столицу. Вам оказана великая честь. "
-"Прошло полстолетия, целое поколение для вашей расы, с тех пор, как человека "
-"признали настолько дружественным к эльфам и допустили сюда, в Элензирию."
+"Приветствую вас, и добро пожаловать в нашу столицу. Вам оказана великая "
+"честь. Прошло полстолетия — целое поколение для вашей расы — с тех пор, как "
+"человека последний раз признали достойным Другом эльфов и допустили сюда, в "
+"Элензирию."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:107
@@ -8502,7 +8484,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:26
-#, fuzzy
 msgid ""
 "But Garard’s arch-mage, Delfador, had escaped the battle and, riding with "
 "haste, reached Weldyn first. He mustered a force of loyalists to fight "
@@ -8516,15 +8497,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:30
-#, fuzzy
 msgid ""
 "Eldred made war upon Delfador and his forces with his mother’s advice "
 "ringing in his ears: <i>“Fight no one great or small except the old mage, "
 "whose head should be severed from his shoulders.”</i>"
 msgstr ""
-"Элдред пошёл войной на Делфадора и его войско, помня совет матери: «Не "
+"Элдред пошёл войной на Делфадора и его войско, помня совет матери: <i>«Не "
 "сражайся ни с великими, ни с малыми. Лишь для старого мага сделай исключение "
-"— его плечи должны лишиться головы»."
+"— его плечи должны лишиться головы».</i>"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:34
@@ -8549,7 +8529,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:42
-#, fuzzy
 msgid ""
 "Asheviere herself then took command of the army and led it back to Weldyn. "
 "Knowing that the king’s young nephews were next in line to the throne, she "
@@ -8581,98 +8560,3 @@ msgstr ""
 "Делфадор бежал в леса Этенвуда за юго-западной границей Веснота. Там он жил, "
 "пользуясь покровительством эльфов, и растил маленького Конрада, с грустью "
 "наблюдая за тем, как начиналось ужасное правление Ашевир..."
-
-#, fuzzy
-#~ msgid ""
-#~ "A final blow destroys the lich, releasing a small shock wave of energy "
-#~ "outwards. The Death Knights silently fall to the ground, inanimate. A "
-#~ "giant cloud of dust bellows out as the remnants of the lich’s once-mortal "
-#~ "skin and centuries of grime and gristle are dislodged for the last time."
-#~ msgstr ""
-#~ "Вы нанесли решающий удар, и Лич пал, сотрясая окрестности, словно "
-#~ "небольшим взрывом. Мёртвые Рыцари повалились наземь, не издав ни звука. "
-#~ "Над землёй взвилось гигантское облако пыли, унося с собой остатки того, "
-#~ "что было кожей Лича при его жизни и грязь, что въелась в его кости за "
-#~ "многие века."
-
-#~ msgid "Herbert"
-#~ msgstr "Герберт"
-
-#~ msgid "Turns run out"
-#~ msgstr "Закончились ходы"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Defeat the enemy leader</span> <small>(special bonus)"
-#~ "</small>"
-#~ msgstr ""
-#~ "<span color='white'>Или же:</span>\n"
-#~ "<span color='green'>Победите лидера противника</span> <small>"
-#~ "(дополнительная награда)</small>"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Defeat all enemy leaders</span> <small>(early finish "
-#~ "bonus)</small>"
-#~ msgstr ""
-#~ "<span color='white'>Или же:</span>\n"
-#~ "<span color='green'>Победите всех лидеров противника</span> <small>"
-#~ "(награда за быстрый финиш)</small>"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Defeat Muff Malal</span> <small>(early finish bonus)</"
-#~ "small>"
-#~ msgstr ""
-#~ "<span color='white'>Или же:</span>\n"
-#~ "<span color='green'>Победите Муфф Малала</span> <small>(награда за ранний "
-#~ "финиш)</small>"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Defeat all enemy leaders</span> <small>(special bonus)"
-#~ "</small>"
-#~ msgstr ""
-#~ "<span color='white'>Или же:</span>\n"
-#~ "<span color='green'>Победите всех лидеров противника</span> <small>(за "
-#~ "дополнительную награду)</small>"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Eradicate the liches</span> <small>(early finish "
-#~ "bonus)</small>"
-#~ msgstr ""
-#~ "<span color='white'>Или же:</span>\n"
-#~ "<span color='green'>Истребите личей</span> <small>(награда за ранее "
-#~ "завершение)</small>"
-
-#~ msgid ""
-#~ "<span color='white'>Bonus objective:</span>\n"
-#~ "<span color='green'>Defeat all Death Knights first</span>"
-#~ msgstr ""
-#~ "<span color='white'>Дополнительно:</span>\n"
-#~ "<span color='green'>Сначала победите всех рыцарей смерти</span>"
-
-#~ msgid ""
-#~ "<span color='white'>Optional objective:</span>\n"
-#~ "<span color='green'>Rescue the sergeant</span>"
-#~ msgstr ""
-#~ "<span color='white'>Если сможете:</span>\n"
-#~ "<span color='green'>Спасите сержанта</span>"
-
-#~ msgid ""
-#~ "<span color='white'>Optional objective:</span>\n"
-#~ "<span color='green'>Help the Wose fend off the undead attack</span>"
-#~ msgstr ""
-#~ "<span color='white'>Дополнительно:</span>\n"
-#~ "<span color='green'>Помогите лешим отбить атаку мертвецов</span>"
-
-#~ msgid "Turns expire"
-#~ msgstr "Закончились ходы"
-
-#~ msgid ""
-#~ "<span color='white'>Bonus objective:</span>\n"
-#~ "<span color='green'>Defeat all enemy leaders</span>"
-#~ msgstr ""
-#~ "<span color='white'>Дополнительно:</span>\n"
-#~ "<span color='green'>Победите всех лидеров противника</span>"
