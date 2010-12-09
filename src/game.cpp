@@ -370,7 +370,7 @@ game_controller::game_controller(int argc, char** argv) :
 #endif
 		else if(val == "--smallgui") {
 			game_config::small_gui = true;
-		} else if(val == "--config-dir") {
+		} else if(val == "--config-dir" || val == "--data-dir") {
 			if (argc_ <= ++arg_)
 				break;
 		} else if(val == "--windowed" || val == "-w") {
