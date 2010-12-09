@@ -166,7 +166,7 @@ Switches:
   --threads     Run script with <value> worker threads. If not specified, the
                 amount of CPUs detected will be used.
 
-This tool requires OptiPNG (http://www.cs.toronto.edu/~cosmin/pngtech/optipng/),
+This tool requires OptiPNG (http://optipng.sourceforge.net/),
 Advdef (http://advancemame.sourceforge.net/comp-readme.html) and ImageMagick's
 convert utility (http://www.imagemagick.org/script/convert.php) to be installed
 and available in PATH.
@@ -181,7 +181,7 @@ done
 # FIXME: disabled because it isn't working for Ivanovic.
 # Probe optipng
 which optipng &> /dev/null ||
-	report_absent_tool optipng 'http://www.cs.toronto.edu/~cosmin/pngtech/optipng/'
+	report_absent_tool optipng 'http://optipng.sourceforge.net/'
 # Probe IM's convert
 which convert &>/dev/null ||
 	report_absent_tool convert 'http://www.imagemagick.org'
