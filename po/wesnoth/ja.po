@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-12-08 18:05+0100\n"
-"PO-Revision-Date: 2010-11-30 12:08+0900\n"
+"PO-Revision-Date: 2010-12-09 02:02+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
 "Language: Japanese\n"
@@ -3249,7 +3249,7 @@ msgid ""
 "using one of its moves."
 msgstr ""
 "瞬間移動:\n"
-"このユニットは 1 回の移動を使用して、その陣営が所有する誰もいない 2 つの村の"
+"このユニットは移動力を 1 使うことで、その陣営が所有する誰もいない 2 つの村の"
 "間を瞬間移動することができます。"
 
 #. [hides]: id=ambush
@@ -3273,11 +3273,12 @@ msgid ""
 "loses all its remaining movement."
 msgstr ""
 "伏兵:\n"
-"このユニットは森に隠れることができ、敵に見つからなくなります。\n"
+"このユニットは森に隠れることができます。そのため、森にいれば敵に見つかること"
+"はありません。\n"
 "\n"
-"このユニットが森にいるときはこのユニットを見つけることはできません。敵がこの"
-"ユニットの隣にいる場合を除いて。このユニットを初めて見つけた敵ユニットはそれ"
-"以上移動することはできません。"
+"このユニットが森にいるときは、敵のユニットはこのユニットの隣にいる場合以外"
+"は、このユニットを見つけることはできません。このユニットを初めて見つけた敵ユ"
+"ニットは、それ以上移動することはできません。"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:416 data/core/macros/abilities.cfg:417
@@ -6615,9 +6616,8 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:105
 #: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:221
-#, fuzzy
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "- 上級貴族 Kalenz, 470YW"
+msgstr "<i>― 高級貴族 Kalenz, 470YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:32
