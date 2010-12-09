@@ -1112,15 +1112,3 @@ bool operator==(const config& a, const config& b)
 
 	return x.first == x.second && y.first == y.second;
 }
-
-//#define TEST_CONFIG
-
-#ifdef TEST_CONFIG
-
-int main()
-{
-	config cfg(read_file("testconfig"));
-	std::cout << cfg.write() << std::endl;
-}
-
-#endif
