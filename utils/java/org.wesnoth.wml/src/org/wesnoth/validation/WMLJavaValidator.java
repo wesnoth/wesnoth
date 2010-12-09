@@ -13,7 +13,6 @@ import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
-import org.wesnoth.Messages;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.schema.Tag;
 import org.wesnoth.wML.WMLKey;
@@ -38,7 +37,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 	public void checkFastTagName(WMLTag tag)
 	{
 		if (!tag.getName().equals(tag.getEndName()))
-			warning(Messages.getString("WMLJavaValidator.0"), WMLPackage.WML_TAG__END_NAME); //$NON-NLS-1$
+			warning(Messages.WMLJavaValidator_0, WMLPackage.WML_TAG__END_NAME);
 	}
 
 //	@Check(CheckType.NORMAL)
@@ -69,7 +68,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 					}
 				}
 				if (found == false)
-					warning(Messages.getString("WMLJavaValidator.2"), WMLPackage.WML_TAG__NAME); //$NON-NLS-1$
+					warning(Messages.WMLJavaValidator_1, WMLPackage.WML_TAG__NAME);
 			}
 		}
 	}
@@ -78,7 +77,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 	public void checkExpensiveKeyValue(WMLKey key)
 	{
 		//TODO: add regex checking here
-		System.out.println(Messages.getString("WMLJavaValidator.3")); //$NON-NLS-1$
+		System.out.println(Messages.WMLJavaValidator_2);
 	}
 
 	@Check(CheckType.NORMAL)
