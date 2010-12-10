@@ -44,6 +44,7 @@ public:
 	bool uses_global_traits() const;
 
 	const config::const_child_itors &additional_traits() const;
+  const config::const_child_itors &additional_topics() const; 
 	unsigned int num_traits() const;
 
 private:
@@ -56,6 +57,7 @@ private:
 	int chain_size_;
 
 	config::const_child_itors traits_;
+  config::const_child_itors topics_;
 	bool global_traits_;
 };
 

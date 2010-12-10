@@ -946,7 +946,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		  sort_generated = false;
 		} else if ((*section_cfg)["sort_topics"] == "no") {
 		  sort_topics = false;
-    	  sort_generated = false;
+		  sort_generated = false;
 		} else if ((*section_cfg)["sort_topics"] == "generated") {
 		  sort_topics = false;
 		  sort_generated = true;
@@ -1760,6 +1760,14 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		race_name = r->plural_name();
 		race_description = r->description();
 		// if (description.empty()) description =  _("No description Available");
+		foreach (const config &additional_topic, r->additional_topics())
+		  {
+		    std::string id = additional_topic["id"];
+		    std::string title = additional_topic["title"];
+		    std::string text = additional_topic["text"];
+		    //topic additional_topic(title, id, text);
+		    topics.push_back(topic(title,id,text));
+		  }
 	} else {
 		race_name = _ ("race^Miscellaneous");
 		// description =  _("Here put the description of the Miscellaneous race");
@@ -1775,6 +1783,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 	if (sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
+
 	return topics;
 }
 

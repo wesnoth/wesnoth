@@ -31,6 +31,11 @@ static const config &empty_traits() {
 		return cfg;
 }
 
+static const config &empty_topics() {
+  		static config cfg;
+		return cfg;
+}
+
 static void add_prefixes(const wide_string& str, size_t length, markov_prefix_map& res)
 {
 	for(size_t i = 0; i <= str.size(); ++i) {
@@ -139,6 +144,7 @@ unit_race::unit_race() :
 		ntraits_(0),
 		chain_size_(0),
 		traits_(empty_traits().child_range("trait")),
+		topics_(empty_topics().child_range("topic")),
 		global_traits_(true)
 {
 		name_[MALE] = "";
@@ -152,6 +158,7 @@ unit_race::unit_race(const config& cfg) :
 		ntraits_(cfg["num_traits"]),
 		chain_size_(cfg["markov_chain_size"]),
 		traits_(cfg.child_range("trait")),
+		topics_(cfg.child_range("topic")),
 		global_traits_(!cfg["ignore_global_traits"].to_bool())
 
 {
@@ -195,6 +202,11 @@ bool unit_race::uses_global_traits() const
 const config::const_child_itors &unit_race::additional_traits() const
 {
 	return traits_;
+}
+
+const config::const_child_itors &unit_race::additional_topics() const
+{
+  return topics_;
 }
 
 unsigned int unit_race::num_traits() const { return ntraits_; }
