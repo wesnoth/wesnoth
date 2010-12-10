@@ -54,7 +54,6 @@ public:
 
 	const simple_wml::node* config_address() const { return &cfg_; }
 
-	bool silenced() const { return messages_since_flood_start_ > MaxMessages; }
 	bool is_message_flooding();
 
 	/**

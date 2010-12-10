@@ -355,9 +355,6 @@ void room_manager::unstore_player_rooms(const player_map::iterator user)
 
 void room_manager::process_message(simple_wml::document &data, const player_map::iterator user)
 {
-	if (user->second.silenced()) {
-		return;
-	}
 	simple_wml::node* const message = data.root().child("message");
 	assert (message);
 	message->set_attr_dup("sender", user->second.name().c_str());

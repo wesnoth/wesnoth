@@ -92,7 +92,7 @@ bool wesnothd::player::is_message_flooding()
 	if (now - flood_start_ > TimePeriod) {
 		messages_since_flood_start_ = 0;
 		flood_start_ = now;
-	} else if (messages_since_flood_start_ == MaxMessages) {
+	} else if (messages_since_flood_start_ >= MaxMessages) {
 		return true;
 	}
 	return false;
