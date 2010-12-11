@@ -16,8 +16,6 @@
 
 The wiki grabber is a tool to convert wiki comment formatting[1] into a text
 page which can be used in the wiki.
-The program has no runtime paremeters, all data is hardcoded in the __main__
-section below.
 
 [1] http://wesnoth.org/wiki/Wiki_grabber
 """
@@ -26,7 +24,25 @@ import os
 import sys
 import re
 
+try:
+    import argparse
+except ImportError:
+    print 'Please install argparse by running "easy_install argparse"'
+    sys.exit(1)
+
 if __name__ == "__main__":
+    # setup and parse command line arguments
+	# The defaults are set to the values of the older hardcoded implementation.
+    parser = argparse.ArgumentParser(description='The wiki grabber is a tool'
+            + ' to convert wiki comment formatting into a text page which can'
+            + ' be used in the wiki. For more details, see'
+            + ' http://wesnoth.org/wiki/Wiki_grabber')
+    parser.add_argument('-s', '--src-dir', default='../src/gui', dest='src_dir',
+            help='the location of wesnoth\'s source code')
+    parser.add_argument('-o', '--output', default='/tmp/', dest='output_dir',
+            help='the output directory')
+    args = parser.parse_args()
+
     # contains all output generated:
     # - key filename
     # - value node list
@@ -42,10 +58,14 @@ if __name__ == "__main__":
     macro_map = {}
 
     # default directory to dump the output in with trailing /.
-    output_directory = "/tmp/"
+    output_directory = args.output_dir
+    if not output_directory.endswith('/'):
+        output_directory += '/'
 
     # default directory to find the source files in, no trailing /.
-    src_directory = "../src/gui"
+    src_directory = args.src_dir
+    if src_directory.endswith('/'):
+        src_directory = src_directory[:-1]
 
     # current file being processed
     current_file = ""
