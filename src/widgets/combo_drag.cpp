@@ -26,10 +26,17 @@ namespace gui {
 	const float combo_drag::MIN_DRAG_DISTANCE = 10.0;
 	const float combo_drag::RETURN_SPEED = 25.0;
 
-	combo_drag::combo_drag(display& disp, const std::vector<std::string>& items, const drop_group_manager_ptr group)
-		: combo(disp, items), drop_target(group, location()),
-		drag_target_(-1), old_drag_target_(-1),
-		old_location_(), drag_(NONE)
+	combo_drag::combo_drag(display& disp
+			, const std::vector<std::string>& items
+			, const drop_group_manager_ptr group)
+		: combo(disp, items)
+		, drop_target(group, location())
+		, drag_target_(-1)
+		, old_drag_target_(-1)
+		, old_location_()
+		, mouse_x_(-1)
+		, mouse_y_(-1)
+		, drag_(NONE)
 	{
 	}
 
