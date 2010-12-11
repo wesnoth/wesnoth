@@ -55,7 +55,7 @@ if __name__ == "__main__":
 
     def is_empty_table(res, data):
         """
-        This checks that a table is not empty and writes to stderr if it is.
+        This checks whether or not a table is empty and writes to stderr if it is.
         It returns True if the table is empty, False otherwise.
         """
         if not res:
