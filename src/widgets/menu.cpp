@@ -33,6 +33,14 @@
 namespace gui {
 
 menu::basic_sorter::basic_sorter()
+	: alpha_sort_()
+	, numeric_sort_()
+	, id_sort_()
+	, xp_sort_()
+	, level_sort_()
+	, redirect_sort_()
+	, pos_sort_()
+	, xp_col_(-1)
 {
 	set_id_sort(-1);
 }
