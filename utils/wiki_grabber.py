@@ -19,6 +19,8 @@ page which can be used in the wiki.
 
 [1] http://wesnoth.org/wiki/Wiki_grabber
 """
+from __future__ import with_statement     # For python < 2.6
+
 import operator
 import os
 import sys
@@ -64,8 +66,12 @@ if __name__ == "__main__":
 
     # default directory to find the source files in, no trailing /.
     src_directory = args.src_dir
-    if src_directory.endswith('/'):
-        src_directory = src_directory[:-1]
+    os.path.normpath(src_directory)
+
+    if not os.path.isdir(output_directory):
+        raise IOError("'%s' isn't a directory." % output_directory)
+    if not os.path.isdir(src_directory):
+        raise IOError("'%s' isn't a directory." % src_directory)
 
     # current file being processed
     current_file = ""
@@ -126,9 +132,9 @@ if __name__ == "__main__":
         res is the result of the regex.findall.
         """
         sys.stderr.write("data : " + data)
-        for i in range(len(res)):
-            for j in range(len(res[i])):
-                sys.stderr.write("Line " + str(i) + " match " + str(j) + " : " + res[i][j] + "\n")
+        for i, val in res:
+            for j, sub_val in val:
+                sys.stderr.write("Line %s match %s: %s\n" % (i, j, sub_val))
 
     def format(data):
         """Formats the data for the wiki.
@@ -158,15 +164,15 @@ if __name__ == "__main__":
 
         result = '{| border="1"'
         result += "\n!key\n!type\n!default\n!description\n"
-        for i in range(len(res)):
+        for i in res:
             result += "|-\n"
-            result += "| " + res[i][0] + "\n"
-            result += "| [[GUIVariable#" + res[i][1] + "|" + res[i][1] + "]]\n"
-            if not res[i][2]:
+            result += "| " + i[0] + "\n"
+            result += "| [[GUIVariable#" + i[1] + "|" + i[1] + "]]\n"
+            if not i[2]:
                 result += "| mandatory\n"
             else:
-                result += "| " + res[i][2] + "\n"
-            result += "| " + format(res[i][3]) + "\n"
+                result += "| " + i[2] + "\n"
+            result += "| " + format(i[3]) + "\n"
         result += "|}"
 
         return result
@@ -190,11 +196,11 @@ if __name__ == "__main__":
 
         result = '{| border="1"'
         result += "\n!Variable\n!type\n!description\n"
-        for i in range(len(res)):
+        for i in res:
             result += "|-\n"
-            result += "| " + res[i][0] + "\n"
-            result += "| " + res[i][1] + "\n"
-            result += "| " + format(res[i][2]) + "\n"
+            result += "| " + i[0] + "\n"
+            result += "| " + i[1] + "\n"
+            result += "| " + format(i[2]) + "\n"
         result += "|}"
 
         return result
@@ -214,10 +220,10 @@ if __name__ == "__main__":
 
         result = '{| border="1"'
         result += "\n!Variable\n!description\n"
-        for i in range(len(res)):
+        for i in res:
             result += "|-\n"
-            result += '| <span id="' + res[i][0] + '">' + res[i][0] + '</span>\n'
-            result += "| " + format(res[i][1]) + "\n"
+            result += '| <span id="' + i[0] + '">' + i[0] + '</span>\n'
+            result += "| " + format(i[1]) + "\n"
         result += "|}"
 
         return result
@@ -236,18 +242,18 @@ if __name__ == "__main__":
 
         result = '{| border="1"'
         result += "\n!Section\n!Description\n"
-        for i in range(len(res)):
+        for i in res:
             result += "|-\n"
-            result += "| " + '<span id="' + res[i][0].lower() + "\">"
-            result += re.sub(r'_', ' ', res[i][0])
+            result += "| " + '<span id="' + i[0].lower() + "\">"
+            result += re.sub(r'_', ' ', i[0])
             result += "</span>"
             result += " ([[GUIWidgetDefinitionWML#"
-            result += res[i][0]
+            result += i[0]
             result += "|definition]]"
             result += ", [[GUIWidgetInstanceWML#"
-            result += res[i][0]
+            result += i[0]
             result += "|instantiation]])\n"
-            result += "| " + format(res[i][1]) + "\n"
+            result += "| " + format(i[1]) + "\n"
         result += "|}"
 
         return result
@@ -266,13 +272,13 @@ if __name__ == "__main__":
 
         result = '{| border="1"'
         result += "\n!Section\n!Description\n"
-        for i in range(len(res)):
+        for i in res:
             result += "|-\n"
-            result += "| " + re.sub(r'_', ' ', res[i][0])
+            result += "| " + re.sub(r'_', ' ', i[0])
             result += " ([[GUIWindowDefinitionWML#"
-            result += res[i][0]
+            result += i[0]
             result += "|definition]])\n"
-            result += "| " + format(res[i][1]) + "\n"
+            result += "| " + format(i[1]) + "\n"
         result += "|}"
 
         return result
@@ -314,26 +320,26 @@ if __name__ == "__main__":
 
         result = '{| border="1"'
         result += "\n!ID (return value)\n!Type\n!Mandatory\n!Description\n"
-        for i in range(len(res)):
+        for i in res:
             result += "|-\n"
-            if not res[i][1]:
+            if not i[1]:
                 result += "|"
             else:
-                result += "| " + res[i][1] + " "
+                result += "| " + i[1] + " "
 
-            if not res[i][3]:
+            if not i[3]:
                 result += "\n"
             else:
-                result += "(" + res[i][3] + ")\n"
+                result += "(" + i[3] + ")\n"
 
-            result += "| " + res[i][2] + "\n"
+            result += "| " + i[2] + "\n"
 
-            if not res[i][0]:
+            if not i[0]:
                 result += "|no\n"
             else:
                 result += "|yes\n"
 
-            result += "| " + re.sub(r'@\*', "\n*", res[i][4]) + "\n"
+            result += "| " + re.sub(r'@\*', "\n*", i[4]) + "\n"
         result += "|}"
 
         return result
@@ -357,27 +363,27 @@ if __name__ == "__main__":
 
         result = '{| border="1"'
         result += "\n!ID (return value)\n!Type\n!Mandatory\n!Description\n"
-        for i in range(len(res)):
-            result += "|-\n| " + "&nbsp;" * len(res[i][0]) * 8
+        for i in res:
+            result += "|-\n| " + "&nbsp;" * len(i[0]) * 8
 
-            if not res[i][1]:
+            if not i[1]:
                 result += "''free to choose''"
             else:
-                result += res[i][1]
+                result += i[1]
 
-            if not res[i][2]:
+            if not i[2]:
                 result += "\n"
             else:
-                result += " (" + res[i][2] + ")\n"
+                result += " (" + i[2] + ")\n"
 
-            result += "| " + "[[GUIToolkitWML#" + res[i][3] + "|" + res[i][3] + "]]\n"
+            result += "| " + "[[GUIToolkitWML#" + i[3] + "|" + i[3] + "]]\n"
 
-            if res[i][4] == "m":
+            if i[4] == "m":
                 result += "| yes\n"
             else:
                 result += "| no\n"
 
-            result += "| " + format(res[i][5]) + "\n"
+            result += "| " + format(i[5]) + "\n"
 
         result += "|}"
 
@@ -449,27 +455,25 @@ if __name__ == "__main__":
 
         for file, data_list in file_map.iteritems():
             data_list.sort(key=operator.itemgetter(0))
-            fd = open(output_directory + file, "w")
-            for i in range(len(data_list)):
-                fd.write(data_list[i][1])
-            fd.close()
+            with open(output_directory + file, "w") as fd:
+                for i in data_list:
+                    fd.write(i[1])
 
     def process_file(name):
         """Processes all wiki blocks (if any) of a file."""
 
         global current_file
         current_file = name
-        file = open(name, "r")
-        data = file.read()
-        file.close()
+        with open(name, "r") as file:
+            data = file.read()
 
         regex = re.compile("(/\*WIKI($.*?)^ \*/)", re.M | re.S)
         res = regex.findall(data)
         if res:
-            for i in range(len(res)):
+            for i in res:
                 global current_block
-                current_block = res[i][0]
-                section = reindent(res[i][1])
+                current_block = i[0]
+                section = reindent(i[1])
                 wiki_info = process(section)
 
     def process_directory(dir):
@@ -530,17 +534,16 @@ if __name__ == "__main__":
 
         global current_file
         current_file = name
-        file = open(name, "r")
-        data = file.read()
-        file.close()
+        with open(name, "r") as file:
+            data = file.read()
 
         regex = re.compile("(/\*WIKI_MACRO($.*?)^ \*/)", re.M | re.S)
         res = regex.findall(data)
         if res:
-            for i in range(len(res)):
+            for i in res:
                 global current_block
-                current_block = res[i][0]
-                section = reindent(res[i][1])
+                current_block = i[0]
+                section = reindent(i[1])
                 macro_regex = re.compile("^@start_macro *= *(.*?)\n(.*?)\n@end_macro.*?$", re.M | re.S)
                 macro_regex.sub(lambda match: create_macro(match), section)
 
