@@ -1727,6 +1727,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 {
 	std::vector<topic> topics;
 	std::set<std::string, string_less> race_units;
+	std::set<std::string, string_less> race_topics;
 
 	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
@@ -1767,6 +1768,8 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		    std::string text = additional_topic["text"];
 		    //topic additional_topic(title, id, text);
 		    topics.push_back(topic(title,id,text));
+		    std::string link =  "<ref>text='" + escape(title) + "' dst='" + escape(id) + "'</ref>";
+			race_topics.insert(link);
 		  }
 	} else {
 		race_name = _ ("race^Miscellaneous");
@@ -1777,6 +1780,10 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	text << race_description;
 	text << "\n\n" << _("<header>text='Units of this race'</header>") << "\n";
 	for (std::set<std::string, string_less>::iterator u = race_units.begin(); u != race_units.end(); ++u) {
+		text << (*u) << "\n";
+	}
+	text << "\n\n" << _("<header>text='Race specific topics'</header>") << "\n";
+	for (std::set<std::string, string_less>::iterator u = race_topics.begin(); u != race_topics.end(); ++u) {
 		text << (*u) << "\n";
 	}
 	topics.push_back(topic(race_name, race_id, text.str()) );
