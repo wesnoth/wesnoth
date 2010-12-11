@@ -44,11 +44,19 @@ namespace {
 namespace gui {
 
 scrollbar::scrollbar(CVideo &video)
-	: widget(video), mid_scaled_(NULL), groove_scaled_(NULL),
-	  uparrow_(video, "", button::TYPE_TURBO, "uparrow-button"),
-	  downarrow_(video, "", button::TYPE_TURBO, "downarrow-button"),
-	  state_(NORMAL),
-	  grip_position_(0), grip_height_(0), full_height_(0), scroll_rate_(1)
+	: widget(video)
+	, mid_scaled_(NULL)
+	, groove_scaled_(NULL)
+	, uparrow_(video, "", button::TYPE_TURBO, "uparrow-button")
+	, downarrow_(video, "", button::TYPE_TURBO, "downarrow-button")
+	, state_(NORMAL)
+	, minimum_grip_height_(0)
+	, mousey_on_grip_(0)
+	, grip_position_(0)
+	, grip_height_(0)
+	, old_position_(0)
+	, full_height_(0)
+	, scroll_rate_(1)
 {
 	static const surface img(image::get_image(scrollbar_mid));
 
