@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
-# $Id$ 
+# $Id$
 
 """
    Copyright (C) 2007 - 2009 by Mark de Wever <koraq@xs4all.nl>
@@ -12,8 +12,8 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
-"""   
-"""
+
+
 The wiki grabber is a tool to convert wiki comment formatting[1] into a text
 page which can be used in the wiki.
 The program has no runtime paremeters, all data is hardcoded in the __main__
@@ -21,20 +21,23 @@ section below.
 
 [1] http://wesnoth.org/wiki/Wiki_grabber
 """
-import operator, os, re, sys
+import operator
+import os
+import sys
+import re
 
 if __name__ == "__main__":
     # contains all output generated:
-    # - key filename 
+    # - key filename
     # - value node list
     #
-    # every node is a list with 2 items 
+    # every node is a list with 2 items
     # - first the sorting order
     # - second the actual data
     file_map = {}
 
     # contains all macros:
-    # - key macro name 
+    # - key macro name
     # - value macro contents
     macro_map = {}
 
@@ -50,17 +53,28 @@ if __name__ == "__main__":
     # current block being processed
     current_block = ""
 
-    def reindent( data):
+    def is_empty_table(res, data):
+        """
+        This checks that a table is not empty and writes to stderr if it is.
+        It returns True if the table is empty, False otherwise.
+        """
+        if not res:
+            sys.stderr.write("Empty table:\n" + data + "\n")
+            return True
+        return False
+
+
+    def reindent(data):
         """Converts the raw input to an easier to use format.
-        
+
         Lines starting with 8 spaces are concatenated with the previous line.
         The start of line ' *' are removed and if another space exists it's also
         removed."""
 
-        # concatenate 
+        # concatenate
         data = re.sub(r'\n \*(?: ){8,}', " ", data)
 
-        # strip 
+        # strip
         data = re.sub(" \*(?: |)", "", data)
 
         return data
@@ -68,12 +82,9 @@ if __name__ == "__main__":
     def get_value(data, key):
         """Extracts data from a key value pair, a key must start at the start of a line."""
 
-        key1 = "^" + key
-        sep = "(?: )*=(?: )"
-        value = "(.*)$"
         res = re.compile("^" + key + " *= *(.*)$", re.M).search(data)
 
-        if(res != None):
+        if res != None:
             res = res.group(1)
 
         return res
@@ -83,25 +94,25 @@ if __name__ == "__main__":
 
         page = get_value(data, "@page")
         order = get_value(data, "@order")
-        if(order == None):
+        if order == None:
             order = 10000
 
         return [page, order]
 
     def debug_dump(data, res):
         """Show the data the regex retrieved from a match.
-        
+
         data is the raw data the regex tried to match.
         res is the result of the regex.findall.
         """
         sys.stderr.write("data : " + data)
         for i in range(len(res)):
             for j in range(len(res[i])):
-                 sys.stderr.write("Line " + str(i) + " match " + str(j) + " : " + res[i][j] + "\n")
+                sys.stderr.write("Line " + str(i) + " match " + str(j) + " : " + res[i][j] + "\n")
 
     def format(data):
         """Formats the data for the wiki.
-        
+
         @* -> \n* needed in a list.
         @- -> \n needed to add text after a list."""
         data = re.sub(r'@\*', "\n*", data)
@@ -113,7 +124,7 @@ if __name__ == "__main__":
 
         A config table is a table with info about WML configuration key value pairs.
         """
-    
+
         # matches a line like
         # x1 (f_unsigned = 0)             The x coordinate of the startpoint.
         # x1 (f_unsigned)                 The x coordinate of the startpoint.
@@ -122,8 +133,7 @@ if __name__ == "__main__":
         res = regex.findall(data)
 
         # empty table
-        if(len(res) == 0):
-            sys.stderr.write("Empty table:\n" + data + "\n")
+        if is_empty_table(res, data):
             return "Empty table."
 
         result = '{| border="1"'
@@ -132,7 +142,7 @@ if __name__ == "__main__":
             result += "|-\n"
             result += "| " + res[i][0] + "\n"
             result += "| [[GUIVariable#" + res[i][1] + "|" + res[i][1] + "]]\n"
-            if(res[i][2] == ""):
+            if not res[i][2]:
                 result += "| mandatory\n"
             else:
                 result += "| " + res[i][2] + "\n"
@@ -144,7 +154,7 @@ if __name__ == "__main__":
     def create_formula_table(data):
         """Creates a table for data in a formula table.
 
-        A formula table is a table with info about which function parameters 
+        A formula table is a table with info about which function parameters
         are available for processing in WML formulas.
         """
 
@@ -155,8 +165,7 @@ if __name__ == "__main__":
         res = regex.findall(data)
 
         # empty table
-        if(len(res) == 0):
-            sys.stderr.write("Empty table:\n" + data + "\n")
+        if is_empty_table(res, data):
             return "Empty table."
 
         result = '{| border="1"'
@@ -180,20 +189,19 @@ if __name__ == "__main__":
         res = regex.findall(data)
 
         # empty table
-        if(len(res) == 0):
-            sys.stderr.write("Empty table:\n" + data + "\n")
+        if is_empty_table(res, data):
             return "Empty table."
 
         result = '{| border="1"'
         result += "\n!Variable\n!description\n"
         for i in range(len(res)):
             result += "|-\n"
-            result += "| <span id=\"" + res[i][0] + "\">" + res[i][0] + "</span>\n"
+            result += '| <span id="' + res[i][0] + '">' + res[i][0] + '</span>\n'
             result += "| " + format(res[i][1]) + "\n"
         result += "|}"
 
         return result
-    
+
     def create_widget_overview_table(data):
         """Creates a table for all available widgets."""
         #matches a line like
@@ -203,21 +211,20 @@ if __name__ == "__main__":
         res = regex.findall(data)
 
         # empty table
-        if(len(res) == 0):
-            sys.stderr.write("Empty table:\n" + data + "\n")
+        if is_empty_table(res, data):
             return "Empty table."
 
         result = '{| border="1"'
         result += "\n!Section\n!Description\n"
         for i in range(len(res)):
             result += "|-\n"
-            result += "| " + "<span id=\"" + res[i][0].lower() + "\">" 
+            result += "| " + '<span id="' + res[i][0].lower() + "\">"
             result += re.sub(r'_', ' ', res[i][0])
             result += "</span>"
-            result += " ([[GUIWidgetDefinitionWML#" 
+            result += " ([[GUIWidgetDefinitionWML#"
             result += res[i][0]
             result += "|definition]]"
-            result += ", [[GUIWidgetInstanceWML#" 
+            result += ", [[GUIWidgetInstanceWML#"
             result += res[i][0]
             result += "|instantiation]])\n"
             result += "| " + format(res[i][1]) + "\n"
@@ -234,8 +241,7 @@ if __name__ == "__main__":
         res = regex.findall(data)
 
         # empty table
-        if(len(res) == 0):
-            sys.stderr.write("Empty table:\n" + data + "\n")
+        if is_empty_table(res, data):
             return "Empty table."
 
         result = '{| border="1"'
@@ -243,7 +249,7 @@ if __name__ == "__main__":
         for i in range(len(res)):
             result += "|-\n"
             result += "| " + re.sub(r'_', ' ', res[i][0])
-            result += " ([[GUIWindowDefinitionWML#" 
+            result += " ([[GUIWindowDefinitionWML#"
             result += res[i][0]
             result += "|definition]])\n"
             result += "| " + format(res[i][1]) + "\n"
@@ -278,32 +284,31 @@ if __name__ == "__main__":
         variable = "(?:[a-z]|[A-Z]|[0-9]|_)+|"
         widget_type = " \((.*?)\)"
         retval = " ?(?:\((.*)\)|)"
-        
+
         regex = re.compile(" *(\[)?(" +variable + ")(?(1)])" + widget_type + retval +" *(.*)\n")
         res = regex.findall(data)
 
         # empty table
-        if(len(res) == 0):
-            sys.stderr.write("Empty table:\n" + data + "\n")
+        if is_empty_table(res, data):
             return "Empty table."
 
         result = '{| border="1"'
         result += "\n!ID (return value)\n!Type\n!Mandatory\n!Description\n"
         for i in range(len(res)):
             result += "|-\n"
-            if(res[i][1] == ""):
+            if not res[i][1]:
                 result += "|"
             else:
                 result += "| " + res[i][1] + " "
 
-            if(res[i][3] == ""):
+            if not res[i][3]:
                 result += "\n"
             else:
                 result += "(" + res[i][3] + ")\n"
 
             result += "| " + res[i][2] + "\n"
 
-            if(res[i][0] == ""):
+            if not res[i][0]:
                 result += "|no\n"
             else:
                 result += "|yes\n"
@@ -313,42 +318,41 @@ if __name__ == "__main__":
 
         return result
 
-    def create_dialog_widgets_table(data) :
+    def create_dialog_widgets_table(data):
         """Creates a table for the widgets in a dialog."""
 
-        regex  = ""
-        regex += " *(-*)"                          # 0 indention marker
-        regex += "((?:[a-z]|[A-Z]|[0-9]|_)+ |) *&" # 1 optional id may start with an underscore
-        regex += " *(.*) +&"                       # 2 retval
-        regex += " *(.*?) +&"                      # 3 type
-        regex += " *(m|o) +&"                      # 4 mandatory flag
-        regex += " *(.*) +\$"                      # 5 description
+        regex  = """
+        \ *(-*)                                 # 0 indention marker
+        ((?:[a-z]|[A-Z]|[0-9]|_)+\ |)\ *&       # 1 optional id may start with an underscore
+        \ *(.*)\ +&                             # 2 retval
+        \ *(.*?)\ +&                            # 3 type
+        \ *(m|o)\ +&                            # 4 mandatory flag
+        \ *(.*)\ +\$                            # 5 description
+        """
 
-        res = re.compile(regex).findall(data)
+        res = re.compile(regex, re.VERBOSE).findall(data) # Works with re.X
 
-        if(len(res) == 0):
-            sys.stderr.write("Empty table:\n" + data + "\n")
+        if is_empty_table(res, data):
             return "Empty table."
 
-        result  = ""
-        result += '{| border="1"'
+        result = '{| border="1"'
         result += "\n!ID (return value)\n!Type\n!Mandatory\n!Description\n"
         for i in range(len(res)):
             result += "|-\n| " + "&nbsp;" * len(res[i][0]) * 8
 
-            if(res[i][1] == ""):
-                result += "''free to choose''" 
+            if not res[i][1]:
+                result += "''free to choose''"
             else:
                 result += res[i][1]
 
-            if(res[i][2] == ""):
+            if not res[i][2]:
                 result += "\n"
             else:
                 result += " (" + res[i][2] + ")\n"
 
             result += "| " + "[[GUIToolkitWML#" + res[i][3] + "|" + res[i][3] + "]]\n"
 
-            if(res[i][4] == "m"):
+            if res[i][4] == "m":
                 result += "| yes\n"
             else:
                 result += "| no\n"
@@ -359,7 +363,7 @@ if __name__ == "__main__":
 
         return result
 
-    def create_table(table) :
+    def create_table(table):
         """Wrapper for creating tables."""
 
         type = table.group(1)
@@ -383,7 +387,7 @@ if __name__ == "__main__":
 
     def process_body(data):
         """Process the body.
-        
+
         The body needs to be stripped of known markup values.
         """
 
@@ -399,23 +403,23 @@ if __name__ == "__main__":
 
         data = replace_macros(data)
 
-        res = re.compile("(.*?)\n\n(.*)", re.S).findall(data);
-        if(res != None and len(res) != 0):
+        res = re.compile("(.*?)\n\n(.*)", re.S).findall(data)
+        if res:
             header = process_header(res[0][0])
             body = process_body(res[0][1])
         else:
-            print "File: "  + current_file
-            print "Block:\n"  + current_block
+            print "File: " + current_file
+            print "Block:\n" + current_block
             print "\n\nInvalid wiki block, discarded."
             return
 
-        if(header[0] == None):
-            print "File: "  + current_file
-            print "Block:\n"  + current_block
+        if header[0] == None:
+            print "File: " + current_file
+            print "Block:\n" + current_block
             print "\n\nNo page defined, dropped."
             return
 
-        if(file_map.has_key(header[0]) == False):
+        if not file_map.has_key(header[0]):
             file_map[header[0]] = []
 
         file_map[header[0]].append([header[1], body])
@@ -429,7 +433,7 @@ if __name__ == "__main__":
             for i in range(len(data_list)):
                 fd.write(data_list[i][1])
             fd.close()
-    
+
     def process_file(name):
         """Processes all wiki blocks (if any) of a file."""
 
@@ -441,7 +445,7 @@ if __name__ == "__main__":
 
         regex = re.compile("(/\*WIKI($.*?)^ \*/)", re.M | re.S)
         res = regex.findall(data)
-        if(res != None):
+        if res:
             for i in range(len(res)):
                 global current_block
                 current_block = res[i][0]
@@ -460,12 +464,12 @@ if __name__ == "__main__":
         for item in items:
 
             # Ignore hidden directories.
-            if(item.startswith(".")):
+            if item.startswith("."):
                 continue
 
-            if(os.path.isdir(dir + "/" + item)):
+            if os.path.isdir(dir + "/" + item):
                 process_directory(dir + "/" + item)
-            elif(item.endswith(".cpp") or item.endswith(".hpp")):
+            elif item.endswith(".cpp") or item.endswith(".hpp"):
                 process_file(dir + "/" + item)
 
     ##### ##### ##### MACRO PROCESSING ##### ##### #####
@@ -475,8 +479,8 @@ if __name__ == "__main__":
 
         global macro_map
 
-        if(macro_map.has_key(macro.group(1)) == False):
-            print "Macro '" + macro.group(1) + "' is not defined."
+        if not macro_map.has_key(macro.group(1)):
+            print "Macro '%s' is not defined." % macro.group(1)
             return macro.group(0)
 
         return macro_map[macro.group(1)]
@@ -496,8 +500,8 @@ if __name__ == "__main__":
 
         global macro_map
 
-        if(macro_map.has_key(macro.group(1))):
-            print "Macro '" + macro.group(1) + "' is being redefined."
+        if macro_map.has_key(macro.group(1)):
+            print "Macro '%s' is being redefined." % macro.group(1)
 
         macro_map[macro.group(1)] = macro.group(2)
 
@@ -512,7 +516,7 @@ if __name__ == "__main__":
 
         regex = re.compile("(/\*WIKI_MACRO($.*?)^ \*/)", re.M | re.S)
         res = regex.findall(data)
-        if(res != None):
+        if res:
             for i in range(len(res)):
                 global current_block
                 current_block = res[i][0]
@@ -528,17 +532,15 @@ if __name__ == "__main__":
         Processes every .[c|h]pp file.
         """
 
-        items = os.listdir(dir)
-
-        for item in items:
+        for item in os.listdir(dir):
 
             # Ignore hidden directories.
-            if(item.startswith(".")):
+            if item.startswith("."):
                 continue
 
-            if(os.path.isdir(dir + "/" + item)):
+            if os.path.isdir(dir + "/" + item):
                 process_directory_macros(dir + "/" + item)
-            elif(item.endswith(".cpp") or item.endswith(".hpp")):
+            elif item.endswith(".cpp") or item.endswith(".hpp"):
                 process_file_macros(dir + "/" + item)
 
     ##### ##### ##### MAIN ##### ##### #####
@@ -548,4 +550,3 @@ if __name__ == "__main__":
     process_directory(src_directory)
 
     create_output()
-
