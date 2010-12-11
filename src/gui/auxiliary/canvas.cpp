@@ -349,7 +349,7 @@ tline::tline(const config& cfg)
  *     tstring                         A translatable string.
  *     f_tstring                       Formula returning a translatable string.
  *
- *     color                          A string which contains the color, this
+ *     color                           A string which contains the color, this
  *                                     a group of 4 numbers between 0 and 255
  *                                     separated by a comma. The numbers are red
  *                                     component, green component, blue
