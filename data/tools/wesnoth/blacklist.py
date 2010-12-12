@@ -61,10 +61,16 @@ def check_runaway():
     g.p = wmlparser2.Parser(options.wesnoth, options.config_dir,
         options.data_dir, no_preprocess = False)
 
+    def bash(name):
+        return "'" + name.replace("'", "'\\''") + "'"
+
     def move(f, t, name):
-        com = "mv " + f + "/" + name + " " + t + "/"
+        
         if os.path.exists(f + "/" + name + ".cfg"):
-            com = "mv " + f + "/" + name + ".cfg " + t + "/"
+            com = "mv " + f + "/" + bash(name + ".cfg") + " " + t + "/"
+            shell(com)
+        
+        com = "mv " + f + "/" + bash(name) + " " + t + "/"
         shell(com)
 
     total = []
@@ -72,8 +78,7 @@ def check_runaway():
     for f in glob.glob(options.runaway + "/*"):
         name = os.path.basename(f)
         if f.endswith(".cfg"): continue
-        name = name.replace("'", "'\\''")
-        name = "'" + name + "'"
+
         print("__________\nTesting " + name)
         move(options.runaway, udir, name)
         
@@ -112,7 +117,7 @@ def check_runaway():
 
     print("\n%d/%d addons passed runaway test. Trying to parse them." % (
         len(passed), len(total)))
-    
+
     parsed = []
     for name in passed:
         print("__________\nParsing " + name)
@@ -135,6 +140,10 @@ def check_runaway():
         len(parsed), len(total)))
     for name in parsed:
         move(options.runaway, udir, name)
+    
+    print("\nSome addons may have failed simply because of unmet "
+        "dependencies, as this test considers each one in isolation. "
+        "TODO: Someone should fix this or tell me how to fix it.")
 
 def main():
     global options
