@@ -1154,7 +1154,7 @@ void tgrid_implementation::cell_request_reduce_width(
  *  5.2 - 1.2 button : connect
  *  5.2 - 1.3 button : cancel
  *
- *  = Praxis =
+ * = Praxis =
  *
  * This is the code needed to create the skeleton for the structure the extra
  * flags are ommitted.
