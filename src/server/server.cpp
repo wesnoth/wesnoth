@@ -365,6 +365,7 @@ void server::send_error(network::connection sock, const char* msg, const char* e
 	if(*error_code != '\0') {
 		doc.child("error")->set_attr("error_code", error_code);
 	}
+
 	send_doc(doc, sock, "error");
 }
 
@@ -373,6 +374,7 @@ void server::send_password_request(network::connection sock, const char* msg,
 {
 	std::string salt = user_handler_->create_salt();
 	std::string pepper = user_handler_->create_pepper(user);
+	std::string spices = pepper + salt;
 	if(user_handler_->use_phpbb_encryption() && pepper.empty()) {
 		send_error(sock, "Even though your nick is registered on this server you "
 					"cannot log in due to an error in the hashing algorithm. "
@@ -388,7 +390,7 @@ void server::send_password_request(network::connection sock, const char* msg,
 	e.set_attr("message", msg);
 	e.set_attr("password_request", "yes");
 	e.set_attr("phpbb_encryption", user_handler_->use_phpbb_encryption() ? "yes" : "no");
-	e.set_attr("salt", (pepper + salt).c_str());
+	e.set_attr("salt", spices.c_str());
 	e.set_attr("force_confirmation", force_confirmation ? "yes" : "no");
 	if(*error_code != '\0') {
 		e.set_attr("error_code", error_code);
@@ -1032,6 +1034,7 @@ void server::process_login(const network::connection sock,
 				}
 				return;
 			}
+
 			// A password (or hashed password) was provided, however
 			// there is no seed
 			if(seeds_[sock].empty()) {
