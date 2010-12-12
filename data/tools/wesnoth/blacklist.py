@@ -57,6 +57,9 @@ def blacklist_if_faulty(wml, d):
     return False
 
 def check_runaway():
+    
+    campaigns = {}
+    
     udir = get_userdir() + "/data/add-ons"
     g.p = wmlparser2.Parser(options.wesnoth, options.config_dir,
         options.data_dir, no_preprocess = False)
@@ -108,6 +111,9 @@ def check_runaway():
             print("***")
             print("")
             ok = False
+        
+        if ok:
+            campaigns[name] = g.p.get_all(tag = "campaign")
 
         move(udir, options.runaway, name)
 
@@ -117,14 +123,19 @@ def check_runaway():
 
     print("\n%d/%d addons passed runaway test. Trying to parse them." % (
         len(passed), len(total)))
-
+  
     parsed = []
     for name in passed:
         print("__________\nParsing " + name)
         move(options.runaway, udir, name)
-
+        
         ok = True
-        errors = parse_test("{multiplayer}{~add-ons}", "MULTIPLAYER")
+        campaign = campaigns[name]
+        if campaign and campaign[0].get_text_val("define", None):
+            errors = parse_test("{~add-ons}",
+                campaign[0].get_text_val("define", ""))
+        else:
+            errors = parse_test("{multiplayer}{~add-ons}", "MULTIPLAYER")
         if errors:
             print(errors)
             ok = False

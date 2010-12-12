@@ -40,6 +40,7 @@ class Translation:
         self.langcode = langcode
         class Dummy:
             def ugettext(self, x):
+                if not x: return ""
                 caret = x.find("^")
                 if caret < 0: return x
                 return x[caret + 1:]
