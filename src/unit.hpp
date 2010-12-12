@@ -321,6 +321,18 @@ public:
 	std::string TC_image_mods() const;
 	std::string image_mods() const;
 
+	/**
+	 * Gets the portrait for a unit.
+	 *
+	 * @param size                The size of the portrait.
+	 * @param side                The side the portrait is shown on.
+	 *
+	 * @returns                   The portrait with the wanted size.
+	 * @retval NULL               The wanted portrait doesn't exist.
+	 */
+	const tportrait* portrait(
+		const unsigned size, const tportrait::tside side) const;
+
 private:
 	void advance_to(const config &old_cfg, const unit_type *t,
 		bool use_traits, game_state *state);
