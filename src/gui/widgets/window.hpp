@@ -574,6 +574,8 @@ public:
 	/** wrapper for tdebug_layout_graph::generate_dot_file. */
 	void generate_dot_file(
 			const std::string& generator, const unsigned domain);
+private:
+
 #else
 	void generate_dot_file(const std::string&,
 			const unsigned) {}
