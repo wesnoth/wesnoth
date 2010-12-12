@@ -52,6 +52,10 @@ class Translation:
                     textdomain, self.localedir, [self.langcode])
             except IOError:
                 self.catalog[textdomain] = self.dummy
+            except IndexError:
+                # not sure why, but this happens within the
+                # gettext.translation call sometimes
+                self.catalog[textdomain] = self.dummy
 
         r = self.catalog[textdomain].ugettext(string)
 
@@ -336,6 +340,8 @@ class HTMLOutput:
                 if baseunit:
                     female = baseunit.get_all(tag = "female")
                     return self.pic(u, female[0])
+                else:
+                    return self.pic(u, u)
             sys.stderr.write(
                 "Warning: Missing image for unit %s(%s).\n" % (
                 u.get_text_val("id"), x.name))
