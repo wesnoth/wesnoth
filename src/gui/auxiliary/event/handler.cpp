@@ -148,6 +148,14 @@ public:
 
 private:
 
+	/**
+	 * Reinitializes the state of all dispatchers.
+	 *
+	 * This is needed when the application gets activated, to make sure the
+	 * state of mainly the mouse is set properly.
+	 */
+	void activate();
+
 	/***** Handlers *****/
 
 	/** Fires a draw event. */
@@ -327,8 +335,11 @@ void thandler::handle_event(const SDL_Event& event)
 		}
 #endif
 
-		// Silently ignored events.
 		case SDL_ACTIVEEVENT:
+			activate();
+			break;
+
+		// Silently ignored events.
 		case SDL_KEYUP:
 		case DOUBLE_CLICK_EVENT:
 			break;
@@ -385,6 +396,15 @@ void thandler::disconnect(tdispatcher* dispatcher)
 		leave();
 		delete event_context;
 		event_context = NULL;
+	}
+}
+
+void thandler::activate()
+{
+	foreach(tdispatcher* dispatcher, dispatchers_) {
+		dispatcher->fire(SDL_ACTIVATE
+				, dynamic_cast<twidget&>(*dispatcher)
+				, NULL);
 	}
 }
 
@@ -711,6 +731,7 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 		case LOSE_KEYBOARD_FOCUS    : stream << "lose keyboard focus"; break;
 		case SHOW_HOVER_TOOLTIP     : stream << "show hover tooltip"; break;
 		case REMOVE_TOOLTIP         : stream << "remove tooltip"; break;
+		case SDL_ACTIVATE           : stream << "SDL activate"; break;
 	}
 
 	return stream;

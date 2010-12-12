@@ -164,6 +164,15 @@ public:
 			, twidget& owner
 			, const tdispatcher::tposition queue_position
 			);
+
+	/**
+	 * Initializes the state of the button.
+	 *
+	 * @param is_down             The initial state of the button, if true down
+	 *                            else initialized as up.
+	 */
+	void initialize_state(const bool is_down);
+
 protected:
 	/** The time of the last click used for double clicking. */
 	Uint32 last_click_stamp_;
@@ -242,6 +251,13 @@ public:
 			, const tdispatcher::tposition queue_position);
 
 	~tdistributor();
+
+	/**
+	 * Initializes the state of the keyboard and mouse.
+	 *
+	 * Needed after initialization and reactivation.
+	 */
+	void initialize_state();
 
 	/**
 	 * Captures the keyboard input.

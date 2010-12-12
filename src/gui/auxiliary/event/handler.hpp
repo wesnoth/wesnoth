@@ -110,6 +110,9 @@ enum tevent {
 	, LOSE_KEYBOARD_FOCUS        /**< Widget loses keyboard focus. */
 	, SHOW_HOVER_TOOLTIP         /**< Request to show the hover tooltip. */
 	, REMOVE_TOOLTIP             /**< Request to remove a tooltip. */
+	, SDL_ACTIVATE               /**<
+	                              * The main application window is activated.
+	                              */
 };
 
 /**
@@ -194,6 +197,7 @@ typedef
 			, boost::mpl::int_<LOSE_KEYBOARD_FOCUS>
 			, boost::mpl::int_<SHOW_HOVER_TOOLTIP>
 			, boost::mpl::int_<REMOVE_TOOLTIP>
+			, boost::mpl::int_<SDL_ACTIVATE>
 		>
 		tset_event_notification;
 

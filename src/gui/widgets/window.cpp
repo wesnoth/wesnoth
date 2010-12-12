@@ -299,6 +299,10 @@ twindow::twindow(CVideo& video,
 			  boost::bind(&twindow::signal_handler_sdl_video_resize
 				  , this, _2, _3, _5));
 
+	connect_signal<event::SDL_ACTIVATE>(
+			  boost::bind(&event::tdistributor::initialize_state
+				  , event_distributor_));
+
 	connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
 			  boost::bind(
 				  &twindow::signal_handler_click_dismiss, this, _2, _3, _4)

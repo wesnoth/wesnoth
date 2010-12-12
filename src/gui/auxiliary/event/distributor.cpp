@@ -373,6 +373,30 @@ template<
 		, button_up
 		, button_click
 		, button_double_click
+>::initialize_state(const bool is_down)
+{
+	last_click_stamp_ = 0;
+	last_clicked_widget_ = NULL;
+	focus_ = 0;
+	is_down_ = is_down;
+	signal_handler_sdl_button_down_entered_ = false;
+	signal_handler_sdl_button_up_entered_ = false;
+}
+
+template<
+		  tevent sdl_button_down
+		, tevent sdl_button_up
+		, tevent button_down
+		, tevent button_up
+		, tevent button_click
+		, tevent button_double_click
+> void tmouse_button<
+		  sdl_button_down
+		, sdl_button_up
+		, button_down
+		, button_up
+		, button_click
+		, button_double_click
 >::signal_handler_sdl_button_down(
 		  const event::tevent event
 		, bool& handled
@@ -533,9 +557,8 @@ template<
 #define LOG_HEADER "distributor mouse motion [" << owner_.id() << "]: "
 
 /**
- * @todo At construction we should get the state and from that moment on we
- * keep track of the changes ourselves, not yet sure what happens when an input
- * blocker is used.
+ * @todo Test wehether the state is properly tracked when an input blocker is
+ * used.
  */
 tdistributor::tdistributor(twidget& owner
 		, const tdispatcher::tposition queue_position)
@@ -594,6 +617,8 @@ tdistributor::tdistributor(twidget& owner
 				, this
 				, _1
 				, _2));
+
+	initialize_state();
 }
 
 tdistributor::~tdistributor()
@@ -628,6 +653,15 @@ tdistributor::~tdistributor()
 				, this
 				, _1
 				, _2));
+}
+
+void tdistributor::initialize_state()
+{
+	const Uint8 button_state = SDL_GetMouseState(NULL, NULL);
+
+	tmouse_button_left::initialize_state(button_state & SDL_BUTTON(1));
+	tmouse_button_middle::initialize_state(button_state & SDL_BUTTON(2));
+	tmouse_button_right::initialize_state(button_state & SDL_BUTTON(3));
 }
 
 void tdistributor::keyboard_capture(twidget* widget)
