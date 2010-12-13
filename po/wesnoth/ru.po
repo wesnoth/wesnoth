@@ -1,27 +1,27 @@
 # Russian translations for Battle for Wesnoth package.
 # Copyright (C) 2007 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-#
 # Automatically generated, 2004.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
 # Translators:
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
+# O_o <mm-94@mail.ru>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-12-08 18:05+0100\n"
-"PO-Revision-Date: 2010-08-13 15:40+0200\n"
-"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
-"Language-Team:  <ru@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2010-12-09 15:31+0300\n"
+"Last-Translator: O_o <mm-94@mail.ru>\n"
+"Language-Team: ZumZoom\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Virtaal 0.6.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
@@ -29,7 +29,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
 msgid "Compressed Saves"
-msgstr "Паковать сохранения"
+msgstr "Сжимать сохранения"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
@@ -49,7 +49,7 @@ msgstr "Прокрутка средним кликом"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Keep scrolling when mouse leaves window"
-msgstr "Продолжать скроллить, когда мышь покидает окно"
+msgstr "Продолжать прокрутку, когда мышь покидает окно"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
@@ -58,14 +58,13 @@ msgstr "Анимированная карта"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
-#, fuzzy
 msgid "Local time of day light"
-msgstr "Случайное время суток при старте"
+msgstr "Синхронизировать время суток"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:48
 msgid "Local time of day light effect (use more memory)."
-msgstr ""
+msgstr "Синхронизировать время суток (требует больше памяти)"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:55
@@ -92,7 +91,7 @@ msgstr "Таймаут пинга"
 msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
-msgstr "Сколько секунд ждать ответа на пинг. 0 — отключить."
+msgstr "Время ожидания ответа от сервера в секундах. 0 — отключить."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:87
@@ -112,7 +111,7 @@ msgstr "Группировать игроков в холле"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:108
 msgid "Lobby sounds"
-msgstr "Звуки холла"
+msgstr "Звуки в холле"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
@@ -171,7 +170,7 @@ msgid ""
 "ability of the unit being attacked."
 msgstr ""
 "Магия:\n"
-"Такая атака всегда попадает с вероятностью 70%, вне зависимости от защиты "
+"Магия всегда попадает с вероятностью 70%, вне зависимости от защиты "
 "обороняющегося."
 
 #. [firststrike]: id=firststrike
@@ -556,7 +555,7 @@ msgstr "Турецкий перевод"
 #. [about]
 #: data/core/about.cfg:2577
 msgid "Valencian (southern Catalan) Translation"
-msgstr "Валенсийский (южнокаталанский) перевод"
+msgstr "Валенсийский (Южнокаталанский) перевод"
 
 #. [about]
 #: data/core/about.cfg:2590
@@ -667,8 +666,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Этот боец вам пока неизвестен. Вы должны встретиться с ним в игре, чтобы "
-"увидеть его описание."
+"Этот боец Вам пока неизвестен. Вы должны встретить его в игре, чтобы увидеть "
+"его описание."
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:126
@@ -677,7 +676,6 @@ msgstr "Обзор"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:129
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -690,12 +688,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Битва за Веснот — это пошаговая стратегическая игра в стиле фэнтези, "
+"Битва за Веснот — это пошаговая стратегическая игра в стиле фэнтези, немного "
 "непохожая на современные стратегические игры. В то время, как другие игры "
 "усложняют правила и игровой процесс, Битва за Веснот, наоборот, делает их "
-"проще. Но это не делает игру легкой, напротив — эти простые правила "
-"порождают богатый выбор стратегий, делая игру простой в изучении и сложной "
-"для знатока."
+"проще. Но от этого игра не становится легче, а напротив — позволяет новичкам "
+"быстро освоиться и обеспечивает огромный выбор стратегий матерым игрокам."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:141
@@ -704,7 +701,6 @@ msgstr "Основы игры"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:142
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play <italic>text='Battle for "
 "Wesnoth'</italic>. They cover how to play and the basic mechanics behind the "
@@ -712,15 +708,14 @@ msgid ""
 "come across new aspects of the game. For more detailed information on "
 "special situations and exceptions, please follow the links included."
 msgstr ""
-"Эти страницы содержат конспект всего того, что вам надо знать, чтобы играть "
-"в Битву за Веснот. Они объяснят правила игры и основы игрового процесса. Эти "
-"страницы пополняются новой информацией каждый раз, когда вы сталкиваетесь с "
-"новым аспектом игры. Более подробную информацию об особых ситуациях и "
-"исключениях см. по ссылкам."
+"В этом руководстве содержится всё, что надо знать, чтобы начать играть в "
+"<italic>text='Битву за Веснот'</italic>. Здесь объясняются правила и основы "
+"игрового процесса. Каждый раз, когда Вы сталкиваетесь с чем-то новым, в "
+"руководстве появляется соответствующая страница. Более подробную информацию "
+"об особых ситуациях и исключениях см. по ссылкам."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:144
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -734,12 +729,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Для начала, нажмите кнопку <italic>text=Обучение</italic> в главном меню. "
-"Она откроет интерактивную миссию, обучающую основам игры в Веснот. После "
-"этого советуем Вам сыграть кампанию Наследник Престола — нажмите кнопку "
-"<italic>text=Кампания</italic>, а затем — <italic>text='Наследник Престола'</"
-"italic>. «Битва за Веснот» бывает тяжёлой, и для начала Вам может быть "
-"удобнее на уровне сложности <italic>text=Легко</italic>."
+"Лучше всего начать с обучения. Выбрав пункт <bold>text=Обучение</bold> в "
+"главном меню, Вы начнете обучающую кампанию, которая поможется освоится в "
+"игре. После завершения обучения рекомендуем сыграть в кампанию "
+"<italic>text='Наследник Престола'</italic>. Для этого нажмите кнопку "
+"<bold>text=Кампания</bold> в главном меню, а затем выберите кампанию "
+"<italic>text='Наследник Престола'</italic>. Поначалу, <italic>text='Битва за "
+"Веснот'</italic> может оказаться трудной, поэтому начинать лучше с "
+"<italic>text=Лёгкого</italic> уровня сложности."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:147
@@ -812,14 +809,13 @@ msgid ""
 msgstr ""
 "Внимательно читайте список задач во всплывающем окне в начале каждого "
 "сценария. Чаще всего, чтобы победить, Вы должны будете убить всех вражеских "
-"лидеров, а поражение вам засчитывается, лишь если убит Ваш лидер. Но в "
+"лидеров, а поражение Вам засчитывается, лишь если убит Ваш лидер. Но в "
 "некоторых сценариях могут быть другие задачи — например, довести вашего "
 "лидера до определённого места, или спасти кого-то, или разгадать загадку, "
 "или продержаться в течение определённого количества ходов."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -831,10 +827,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Когда вы побеждаете в сценарии, карта становится серой и кнопка «Закончить "
-"ход» заменяется на «Закончить сценарий». Прежде чем нажать эту кнопку и "
-"продолжать, вы можете, например, изменить опции сохранения или (в "
-"многопользовательской игре) пообщаться в чате с другими игроками."
+"После победы в сценарии карта станет серой и кнопка <bold>text='Закончить "
+"ход'</bold> превратится в <bold>text='Закончить сценарий'</bold>. Перед тем "
+"как продолжить, Вы можете, например, сохраниться, или пообщаться в чате с "
+"другими игроками (в многопользовательской игре)."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -843,7 +839,6 @@ msgstr "Вербовка и Призыв"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:172
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -855,16 +850,16 @@ msgid ""
 "lists units available for recruitment, along with their gold cost. Click on "
 "a unit to see its statistics, then press the recruit button to recruit it."
 msgstr ""
-"В начале игры у каждой из сторон есть по лидеру в лагере. Перед битвой, а "
-"иногда и по ходу её, вам понадобится вербовать <ref>dst='..units' "
+"Каждый игрок начинает игру с одним лидером в своей цитадели. В начале и по "
+"ходу каждой битвы Вам нужно будет вербовать <ref>dst='..units' "
 "text='бойцов'</ref> для своей армии. Чтобы вербовать бойцов, ваш лидер "
-"(Конрад в кампании «Наследник трона») должен находиться на поле цитадели в "
-"<ref>dst='terrain_castle' text='замке'</ref>. Там Вы можете вербовать, "
-"выбрав «Вербовать» из меню или щёлкнув правой кнопкой мыши на поле замка и "
-"выбрав «<italic>text='Вербовать'</italic>». Появится меню вербовки со "
-"списком доступных бойцов и их стоимостью. Выбрав бойца, вы можете слева "
-"увидеть информацию о нём. Чтобы завербовать выделенного бойца, нажмите "
-"кнопку «Вербовать»."
+"(например, Конрад в кампании «Наследник трона») должен находиться в цитадели "
+"<ref>dst='terrain_castle' text='замка'</ref>. Вы можете вербовать бойцов, "
+"выбрав пункт «Вербовать» в меню или кликнув правой кнопкой мыши по цитадели "
+"и выбрав пункт «<italic>text='Вербовать'</italic>». Появится меню вербовки "
+"со списком доступных бойцов и их стоимостью. Выделив бойца, слева появится "
+"информация о нём. Чтобы завербовать выделенного бойца, нажмите кнопку "
+"«Вербовать»."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:174
@@ -1016,7 +1011,6 @@ msgstr "Ходы"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:214
-#, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1031,17 +1025,16 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"Делать ходы в Весноте просто — нужно выбрать бойца, которого собираетесь "
-"передвинуть, затем выбрать поле, на которое его передвинуть. Все поля, до "
-"которых выделенный боец сможет добраться за один ход, будут подсвечены. При "
-"наведении на подсвеченное поле показывается рейтинг защиты, которую будет "
-"иметь боец, если его туда передвинуть. При наведении мыши на затенённое поле "
-"указатель будет отображать количество ходов, за которое боец дойдет до него. "
-"Если вы нажмёте на поле, боец отправится к нему по кратчайшему пути — на "
-"этом, а возможно, и следующих ходах. Если вы истратили не все очки "
+"Делать ходы в Весноте проще простого: выберите бойца, который должен сделать "
+"ход, а затем выберите поле, на которое он должен перейти. Все поля, до "
+"которых выбранный боец может добраться за один ход, будут подсвечены. Наведя "
+"мышь на подсвеченное поле, Вы увидите рейтинг защиты, который боец получит "
+"на этом поле. При наведении мыши на затенённое поле также отобразится "
+"количество ходов, за которое боец дойдет до него. Если вы кликнете на поле, "
+"боец отправится к нему по кратчайшему пути. Если вы истратили не все очки "
 "передвижения за раз, то бойца можно передвинуть снова. На атаку уходят все "
-"оставшиеся очки передвижения бойца. Закончив движение в чужой деревне, боец "
-"теряет все оставшиеся очки передвижения, но все еще может атаковать."
+"оставшиеся очки передвижения. Закончив движение в чужой деревне, боец теряет "
+"все оставшиеся очки, но все еще может атаковать."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:216
@@ -1135,7 +1128,7 @@ msgstr ""
 "В некоторых сценариях части карты скрыты от вас. Есть два механизма, которые "
 "могут работать по отдельности или вместе. Пелена скрывает и карту, и бойцов. "
 "Разведав её, вы всегда будете видеть данное место. Туман войны скрывает лишь "
-"бойцов и не даёт увидеть, кто владеет деревнями (кроме вас и союзников). "
+"бойцов и не даёт увидеть, кто владеет деревнями (кроме Вас и союзников). "
 "Туман войны исчезает на время, пока ваши бойцы находятся неподалеку, и вновь "
 "возвращается, когда они уходят. И пелена, и туман войны снимаются бойцами. "
 "Каждый боец очищает местность на шаг дальше, чем может пойти (при этом не "
@@ -1158,7 +1151,6 @@ msgstr "Битва"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:238
-#, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -1171,15 +1163,15 @@ msgid ""
 "fangs; and ranged, which usually involves weapons such as bows, spears and "
 "fireballs."
 msgstr ""
-"Бой в Битве за Веснот всегда происходит между бойцами на соседних полях. "
-"Выберите своего бойца, затем выберите того вражескиого бойца, которого "
-"хотите атаковать: ваш боец переместится по направлению к вражескому, и, "
+"Бой в <italic>text='Битве за Веснот'</italic> всегда происходит между "
+"бойцами на соседних полях. Выберите своего бойца, затем выберите вражеского "
+"бойца, которого хотите атаковать: ваш боец переместится к вражескому, и, "
 "когда они окажутся рядом, начнётся бой. Атакующий и защищающийся "
 "обмениваются ударами, пока каждый не израсходует предусмотренное для него "
-"количество ударов. Атакующий выбирает одно из его вооружений для атаки, а "
-"защищающийся отвечает одной из своих атак того же типа. Существует два типа "
-"атак: ближний, для которого обычно применяются мечи, топоры или клыки; и "
-"дальний, для которого обычно применятся луки, дротики и огненные шары."
+"количество ударов. Атакующий выбирает оружие для атаки, а защищающийся "
+"отвечает оружием того же типа. Существует два типа атак: ближний, где обычно "
+"пукскают в ход мечи, топоры или клыки; и дальний, в котором используют луки, "
+"дротики и огненные шары."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:240
@@ -1338,7 +1330,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:263
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1350,11 +1341,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Сопротивляемость работает очень просто: если боец имеет 40% сопротивляемость "
-"против одного типа атаки, то он получит на 40% меньше урона от этого типа "
-"атаки. Боец также может быть уязвимым; если он имеет −100% сопротивляемости "
-"против одного типа атаки, то получит на 100% больше урона от этого типа "
-"атаки."
+"Сопротивляемость работает очень просто: если сопротивляемость бойца к какому-"
+"либо типу атаки 40%, то он получит на 40% меньше урона от этой атаки. Боец "
+"также может быть уязвимым; если он имеет −100% сопротивляемости против "
+"какого-либо типа атаки, то он получит от этой атаки на 100% больше урона."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:265
@@ -1392,7 +1382,6 @@ msgstr "Время суток"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:278
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1401,9 +1390,10 @@ msgid ""
 " Neutral units are unaffected by the time of day."
 msgstr ""
 "Время суток влияет на урон, наносимый некоторыми бойцами:\n"
-" Порядочные бойцы: наносят +25% урона днем и −25% ночью.\n"
-" Хаотичные бойцы: наносят +25% урона ночью и −25% днем.\n"
-" Нейтральные бойцы: на них время суток не действует."
+" Порядочные бойцы наносят +25% урона днем и −25% ночью.\n"
+" Хаотичные бойцы наносят +25% урона ночью и −25% днем.\n"
+" Теневые бойцы наносят +25% урона в сумерках.\n"
+" Нейтральные бойцы не получают бонусов от времени суток."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:281
@@ -1497,7 +1487,7 @@ msgstr ""
 "Чтобы продвинуться на новый уровень, бойцу необходимо некоторое количество "
 "опыта (бойцам с особенностью «умный» — на 20% меньше). Как только боец "
 "наберёт необходимое количество, он немедленно продвигается и при этом "
-"полностью излечивается. Иногда вам предложат несколько вариантов продвижения "
+"полностью излечивается. Иногда Вам предложат несколько вариантов продвижения "
 "на выбор."
 
 #. [topic]: id=experience_and_advancement
@@ -1658,7 +1648,7 @@ msgstr ""
 "\n"
 "С доходом всё просто. Ваш основной доход равняется 2 золотым монетам за ход. "
 "C каждой деревни под вашим контролем вы дополнительно получаете одну монету "
-"за ход. Если у вас десять деревень, то вы будете получать 12 золотых монет "
+"за ход. Если у Вас десять деревень, то вы будете получать 12 золотых монет "
 "за ход. Содержание будет вычитаться из дохода, как показано ниже."
 
 #. [topic]: id=income_and_upkeep
@@ -1748,17 +1738,16 @@ msgstr "Лицензия"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:358
-#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait <italic>text='Undead'</italic>, and Woses do not receive any traits. "
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited."
 msgstr ""
-"Большинство бойцов получает две особенности. Только мертвецы имеет только "
-"одну особенность — «мертвец», а лешие не имеют никаких особенностей. "
-"Особенности — это небольшие изменения в параметрах бойцов. Обычно они "
-"назначаются бойцам при вербовке случайным образом."
+"Большинство бойцов имеет две особенности. Мертвецы обладают только одной "
+"особенностью — «мертвец», а лешие вообще не имеют никаких особенностей. "
+"Особенности — это небольшие изменения параметров бойцов. Обычно они "
+"назначаются бойцам случайным образом при вербовке."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:360
@@ -1822,7 +1811,7 @@ msgstr ""
 "Умные бойцы очень полезны в начале кампании, так как могут быстро "
 "продвинуться на следующий уровень. Далее в ходе кампании они не так полезны, "
 "так как улучшение после максимального уровня (УПМУ) не столь значительно, "
-"как продвижение на следующий уровень. Если у вас много бойцов «высшего "
+"как продвижение на следующий уровень. Если у Вас много бойцов «высшего "
 "уровня», вам, возможно, стоит призвать бойцов с более полезными "
 "особенностями."
 
@@ -1931,9 +1920,8 @@ msgstr "Над этими смелыми ребятами не властна с
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:408
-#, fuzzy
 msgid "Feral"
-msgstr "Всего"
+msgstr "Дикий"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:409
@@ -1942,6 +1930,9 @@ msgid ""
 "creatures of low intelligence. As a result, feral units receive a maximum of "
 "40% defense in any land-based village regardless of base terrain."
 msgstr ""
+"Диким существам со слабым интеллектом сложно прятаться среди жилых построек, "
+"поэтому в деревнях они получают рейтинг защиты лишь 40%, независимо от типа "
+"местности."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:414
@@ -1996,7 +1987,6 @@ msgstr ""
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:425
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2008,9 +1998,9 @@ msgstr ""
 "\n"
 "\n"
 "Мертвецы обычно имеют особенность «мертвец», и только её. Поскольку мертвецы "
-"— это умершие и поднявшиеся вновь тела, яд на них не действует. Это может "
-"сделать их неоценимыми против тех бойцов, которые используют яд при своих "
-"атаках."
+"представляют собой мёртвые тела, восставшие ради битвы, яд на них не "
+"действует. Эта способность невероятно полезна против тех бойцов, которые "
+"используют яд в своих атаках."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:430
@@ -2027,7 +2017,6 @@ msgstr ""
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:433
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2037,8 +2026,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Механические бойцы, как правило, имеют только одну черту: «механизм». "
-"Механизмы неживые, а потому высасывание, яд и чума на них не действуют."
+"Механические бойцы, как правило, имеют только одну особенность — «Механизм». "
+"Механические бойцы неживые, а потому высасывание, яд и чума на них не "
+"действуют."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
@@ -2133,7 +2123,6 @@ msgstr "Медленный"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:463
-#, fuzzy
 msgid "Slow units have −1 movement but 5% more hitpoints."
 msgstr ""
 "Медленные бойцы ходят на 1 клетку меньше, но получают на 5% больше здоровья."
@@ -2159,9 +2148,9 @@ msgstr "Слабый"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:471
-#, fuzzy
 msgid "Units with trait Weak get a −1 increment in hitpoints and melee damage."
-msgstr "Бойцы с особенностью «слабый» получают -1 к здоровью и атакам в бою."
+msgstr ""
+"Слабые бойцы имеют на 1 ЗД меньше и наносят на 1 меньше урона в ближнем бою."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:479
@@ -2212,9 +2201,8 @@ msgid ""
 "text='Flat'</ref> terrain.\n"
 "\n"
 msgstr ""
-"Дороги — это утоптанные тропы, проложенные многими путешественниками, что "
-"ходили по ним. С игровой точки зрения дороги идентичны "
-"<ref>dst='terrain_flat' text='равнинам'</ref>."
+"Дороги — это протоптанные многочисленными путниками тропы. С игровой точки "
+"зрения, дороги идентичны <ref>dst='terrain_flat' text='равнинам'</ref>."
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:512
@@ -2274,15 +2262,15 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills.\n"
 "\n"
 msgstr ""
-"Холмами считается любая заметно неровная местность, с достаточным "
-"количеством оврагов и возвышенностей, которые могут обеспечить некоторое "
-"укрытие. Холмы затрудняют движение большинства войск. Гномы, тролли и орки "
-"достаточно хорошо знают этот тип местности и пересекают его, не замедляясь. "
-"Коннице довольно тяжело перемещаться в такой местности, так что все защитные "
-"преимущества, которые даёт укрытие, теряется.\n"
+"Холмами считается любая неровная местность с достаточным количеством оврагов "
+"и возвышенностей, которые могут обеспечить укрытие. Холмы затрудняют "
+"движение большинству войск. Гномы, тролли и орки достаточно хорошо знают "
+"этот тип местности, и поэтому пересекают его не замедляясь. Коннице "
+"достаточно трудно перемещаться в такой местности, поэтому все защитные "
+"преимущества, которые даёт укрытие, теряются.\n"
 "\n"
-"Большинство бойцов имеют около 50% защиты в холмах, а кавалерия ограничена "
-"40%. Гномы в холмах получают 60% защиты."
+"Большинство бойцов получают 50% защиты в холмах, кавалерия лишь 40%, а гномы "
+"60%."
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:541
@@ -2583,7 +2571,6 @@ msgstr "Деревня"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:692
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have an easy time navigating villages, and most units "
@@ -2596,14 +2583,14 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
-"Деревня — несколько жилищ людей или существа другой расы. Почти все бойцы, "
-"даже всадники, с легкостью проходят по деревня, и большинство бойцов в "
-"деревне лучше защищается. Деревня даёт бойцам всё необходимое, чтобы они "
-"могли позаботиться о своих ранах, благодаря чему любой боец, который в ней "
-"задержится, излечит за ход 8 очков здоровья, либо избавится от отравления.\n"
+"Деревня — это группа жилищ людей или существ других рас. Почти все бойцы, "
+"даже всадники, с лёгкостью передвигаются по деревням, и большинство бойцов "
+"получают бонус к защите. Деревня даёт бойцам возможность позаботиться о "
+"своих ранах, благодаря чему любой боец, который в ней задержится, излечится "
+"за ход на 8 очков здоровья, либо избавится от отравления.\n"
 "\n"
-"Большинство бойцов имеют от 50 до 60% защиты в деревнях, в то время как "
-"кавалерия получает только 40%.\n"
+"Большинство бойцов обладают от 50% до 60% защиты в деревнях, в то время как "
+"кавалерия получает лишь 40%.\n"
 "\n"
 
 #. [topic]: id=terrain_water_village
@@ -2906,14 +2893,13 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Выбросить и запретить игрока по IP-адресу в многопользовательской игре. "
-"Можно применить к игрокам, которые на сервере, но не в игре. (Конечно, тогда "
-"их не выбросит).\n"
+"Выбросить и забанить игрока по IP-адресу в многопользовательской игре. "
+"Применимо и к игрокам, которые находятся на сервере, но не играют. (конечно, "
+"тогда их не выбросит).\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:832
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2925,11 +2911,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Сменить управляющего стороной (впишите здесь номер стороны) на пользователя "
-"(впишите здесь ник игрока или наблюдателя). Вы можете проверить, какой "
-"стороне какой игрок принадлежит, в диалоге «Настройки сценария» (чтобы "
-"попасть туда, нажмите кнопку «больше» в «Панели Состояния» (по умолчанию alt"
-"+s).\n"
+"Сменить игрока фракции (напишите здесь номер фракции) на пользователя "
+"(впишите здесь ник игрока или наблюдателя). Вы можете узнать, какой фракции "
+"какой игрок принадлежит, в диалоге «Настройки сценария» (чтобы попасть туда, "
+"нажмите кнопку «больше» в «Панели Состояния» (по умолчанию Alt+s). Хост "
+"может менять игроков любой стороны.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2943,7 +2929,7 @@ msgid ""
 msgstr ""
 "\n"
 "Выбросить игрока из игры. Он сможет вернуться назад. Если вы просто хотите "
-"сменить управляющего стороной (сторонами), лучше используйте команду :"
+"сменить управляющего фракцией (фракциями), лучше используйте команду :"
 "control\n"
 "\n"
 
@@ -2957,8 +2943,8 @@ msgid ""
 "game.\n"
 "\n"
 msgstr ""
-"Отправить приватное сообщение. Вы не можете отправлять сообщения игрокам, не "
-"играющим в вашей партии."
+"Отправить приватное сообщение. Вы не можете отправлять приватные сообщения "
+"игрокам, играющим ту же партию, что и вы."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:841
@@ -2993,8 +2979,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Разрешить игрока в многопользовательской игре по его IP-адресу. Можно "
-"применить к игрокам, которые на сервере, но не в игре.\n"
+"Разбанить игрока в многопользовательской игре по его IP-адресу. Можно "
+"применить и к игрокам, которые находятся на сервере, но не играют.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3263,11 +3249,11 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 "Освещает:\n"
-"Этот боец освещает область вокруг, делая атаку порядочных бойцов лучше, а "
-"хаотичных — хуже.\n"
+"Этот боец освещает область вокруг, делая порядочных бойцов сильнее, а "
+"хаотичных — слабее.\n"
 "\n"
-"Любой находящийся рядом боец дерётся ночью так, если бы он дрался в сумерки, "
-"и дерётся в сумерки так, если бы дрался днём."
+"Любой находящийся рядом боец дерётся ночью так, как если бы он дрался в "
+"сумерки, и дерётся в сумерки так, как если бы дрался днём."
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
@@ -3277,7 +3263,7 @@ msgstr "телепорт"
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:379
 msgid "female^teleport"
-msgstr "телепортируется"
+msgstr "телепорт"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:381
@@ -3351,7 +3337,7 @@ msgstr "скрытность"
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:449
 msgid "female^concealment"
-msgstr "скрытная"
+msgstr "скрытность"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:447 data/core/macros/abilities.cfg:453
@@ -3460,7 +3446,7 @@ msgid ""
 msgstr ""
 "Чума:\n"
 "Когда боец убит чумой, он заменяется бойца, идентичного противнику, и "
-"переходит на его сторону. (Это не работает для нежити или для бойцов, "
+"переходит на сторону противника. (Это не работает для нежити или для бойцов, "
 "находящиеся в деревнях)."
 
 #. [plague]: id=plague, type=Walking Corpse
@@ -3472,8 +3458,9 @@ msgid ""
 "doesn’t work on Undead or units in villages."
 msgstr ""
 "Чума:\n"
-"Когда боец убит чумой, он превращается в Ходячий труп, и переходит на его "
-"сторону. (Это не работает для нежити или для бойцов, находящиеся в деревнях)."
+"Когда боец убит чумой, он превращается в Ходячий труп, и переходит на "
+"сторону противника. (Это не работает для нежити или для бойцов, находящиеся "
+"в деревнях)."
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:604
@@ -3598,19 +3585,16 @@ msgstr ""
 #: data/core/macros/ai.cfg:494
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
-"Попросить $ally_leader.name (лидера фракции $ally_leader.side) прийти "
-"сюдаПопросить $ally_leader.name (лидера фракции $ally_leader.side) прийти "
-"сюда"
+"Попросить $ally_leader.name (лидера фракции $ally_leader.side) прийти сюда"
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
-#, fuzzy
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on them."
 msgstr ""
-"Во многих сценариях кампании, если Вашими союзниками управляет компьютер, то "
-"Вы можете давать им команды через контекстное меню по правой кнопке."
+"В этом сценарии Вы можете давать команды союзникам через контекстное меню, "
+"вызываемое по правому клику."
 
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
@@ -3625,7 +3609,7 @@ msgstr "Команда союзнику"
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr "$ally_leader.name (side $ally_side|) выполняет такие инструкции:"
+msgstr "$ally_leader.name (фракция $ally_side|) выполняет такие инструкции:"
 
 #. [overview_message_no_instructions]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:34
@@ -3633,13 +3617,13 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
-"$ally_leader.name (side $ally_side|) не получил инструкций и действует на "
+"$ally_leader.name (фракция $ally_side|) не получил инструкций и действует на "
 "своё усмотрение."
 
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:41
 msgid "Be more aggressive"
-msgstr "Будьте агрессивнее"
+msgstr "Будь агрессивнее"
 
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:42
@@ -3649,27 +3633,26 @@ msgstr "агрессивный."
 #. [caution]
 #: data/core/macros/ai_controller.cfg:59
 msgid "Be more defensive"
-msgstr "Уйдите в оборону"
+msgstr "Уходи в оборону"
 
 #. [caution]
 #: data/core/macros/ai_controller.cfg:60
 msgid "defensive."
-msgstr "Оборонительное"
+msgstr "оборонительный."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:71
 msgid "Focus on defeating..."
-msgstr "Сосредоточьтесь на победе над..."
+msgstr "Сосредоточься на атаке..."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:72
-#, fuzzy
 msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 msgstr ""
-"Специальный: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_special_description"
+"сосредоточься на атаке $ai_controller.side_$ally_side|_current_settings."
+"focus_on_enemy.side_description|."
 
 #. [then]
 #. [else]
@@ -3678,19 +3661,19 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:273
 #: data/core/macros/ai_controller.cfg:277
 msgid "(side $temp_i|)"
-msgstr "(side $temp_i|)"
+msgstr "(фракция $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:143
 #: data/core/macros/ai_controller.cfg:278
 msgid "side $temp_i"
-msgstr "side $temp_i"
+msgstr "фракция $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:156
 #: data/core/macros/ai_controller.cfg:291
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr "$side_i_leader.name (side $temp_i|)"
+msgstr "$side_i_leader.name (фракция $temp_i|)"
 
 #. [value]
 #: data/core/macros/ai_controller.cfg:182
@@ -3707,38 +3690,37 @@ msgstr "Защищай..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:202
-#, fuzzy
 msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
 msgstr ""
-"Специальный: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_special_description"
+"Обороняйся: $ai_controller.side_$ally_side|_current_settings.protect."
+"side_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:352
 msgid "Defend a location..."
-msgstr "Защищать место..."
+msgstr "Защищай место..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:368
 msgid "Right-click to select a location to defend"
-msgstr "Кликните правой кнопкой в месте, которое будем защищать"
+msgstr "Кликните правой кнопкой в месте, которое надо защитить"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:375
 msgid "Defend this location"
-msgstr "Защищать это место"
+msgstr "Защищай это место"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:392
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr "Защищаю область вокруг $x1|,$y1|."
+msgstr "Защищай область вокруг $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:434
 msgid "Location selection canceled"
-msgstr "Решили не выбирать место"
+msgstr "Место не выбрано"
 
 #. [revoke_objective_orders]
 #: data/core/macros/ai_controller.cfg:449
@@ -3763,7 +3745,6 @@ msgstr "не установлен"
 
 #. [do]
 #: data/core/macros/ai_controller.cfg:644
-#, fuzzy
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -3772,7 +3753,7 @@ msgid ""
 msgstr ""
 "Цель: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
-"Манера: $ai_controller.side_$ally_side|_current_settings."
+"Поведение: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 
 #. [literal]
@@ -3792,7 +3773,7 @@ msgstr "Выйти"
 
 #: data/core/macros/ai_controller.cfg:975
 msgid "Set special orders..."
-msgstr "Даль специальные приказы..."
+msgstr "Дать специальные приказы..."
 
 #: data/core/macros/ai_controller.cfg:976
 msgid "Move leader to..."
@@ -3808,7 +3789,7 @@ msgstr "Привести лидера сюда"
 
 #: data/core/macros/ai_controller.cfg:979
 msgid "moving leader to $x1|,$y1|."
-msgstr "Веду лидера в $x1|,$y1|."
+msgstr "веду лидера в $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:980
 msgid "Clear special orders"
@@ -3917,13 +3898,13 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Сейчас жилам бойца течет яд."
 
 #: data/core/macros/items.cfg:262
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
-"Омывши оружие этой водой, вы сделаете его ущерб «мистическим» до конца "
-"текущего сценария. Будет ли это $unit.name?"
+"Омыв оружие ближнего боя этой водой, боец будет наносить дополнительный "
+"«мистический» урон до конца текущего сценария. $unit.name будет это "
+"использовать?"
 
 #: data/core/macros/items.cfg:263
 msgid "I am not suited to the use of this item! Let another take it."
@@ -3937,13 +3918,12 @@ msgstr "Святая вода"
 
 #. [object]
 #: data/core/macros/items.cfg:268
-#, fuzzy
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr ""
-"Эта вода сделает оружие ближнего боя способным наносить «мистический» ущерб "
-"до конца текущего сценария."
+"Эта вода добавит оружию ближнего боя дополнительный «мистический» ущерб до "
+"конца текущего сценария."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:297
@@ -4843,9 +4823,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
-#, fuzzy
 msgid "Turns run out"
-msgstr "Ходы: "
+msgstr "Закончились ходы"
 
 #: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:101
 msgid "Early finish bonus."
@@ -4860,9 +4839,8 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(бонус за быстрое прохождение)</small>"
 
 #: data/core/macros/objective-utils.cfg:25
-#, fuzzy
 msgid "(early finish bonus)"
-msgstr "Бонус за быстрый финиш."
+msgstr "Бонус за быстрое прохождение."
 
 #: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:111
 msgid "No gold carried over to the next scenario."
@@ -4897,9 +4875,8 @@ msgid "Alternative objective:"
 msgstr "Альтернативная цель:"
 
 #: data/core/macros/objective-utils.cfg:52
-#, fuzzy
 msgid "Bonus objective:"
-msgstr "Альтернативная цель:"
+msgstr "Дополнительная цель:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -4914,7 +4891,7 @@ msgstr ""
 #. [illuminated_time]: id=indoors_illum
 #: data/core/macros/schedules.cfg:70 data/core/macros/schedules.cfg:76
 msgid "Indoors"
-msgstr ""
+msgstr "Внутри"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -5184,13 +5161,13 @@ msgstr "механизм"
 #: data/core/macros/traits.cfg:52
 #, fuzzy
 msgid "elemental"
-msgstr "скрытность"
+msgstr "стихийный"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:53
 #, fuzzy
 msgid "female^elemental"
-msgstr "верная"
+msgstr "стихийная"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:66
@@ -5274,20 +5251,18 @@ msgstr "Бьется нормально во время неблагоприят
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
-msgstr "Всего"
+msgstr "дикий"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
-msgstr "нейтральная"
+msgstr "дикая"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
 msgid "Receive only 40% defense in land-based villages"
-msgstr ""
+msgstr "Получает только 40% защиты в деревнях"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -5417,6 +5392,12 @@ msgid ""
 "especially when encountered in groups. Typically nocturnal, they are often "
 "kept (and occasionally tamed) by those who share their love of the night."
 msgstr ""
+"Встречаются летучие мыши различных форм и размеров; большинство из них — "
+"совершенно безобидные существа, питающиеся насекомыми и мелкими животными. "
+"Тем не менее, встречаются и крупные особи, представляющие угрозу для людей и "
+"других рас, а также домашнего скота, особенно если соберутся в группу. "
+"Летучие мыши обычно ведут ночной образ жизни, и часто приручаются теми, кто "
+"разделяет их любовь к ночи."
 
 #. [race]: id=drake
 #: data/core/units.cfg:52
@@ -5662,10 +5643,9 @@ msgstr ""
 "Некоторые гномы воины используют этот порошок, чтобы выстреливать небольшие "
 "объекты с поражающей скоростью. Эта технологическая продвинутость заставляет "
 "гномов с недоверием относиться к использованию магии. Некоторые гномы, "
-"впрочем, практикуют определённую форму магии, выражающуюся в написании рун. "
-"Их называют руническими кузнецами. Они используют выгравированные руны, "
-"чтобы заколдовать определённые предметы, увеличив таким образом некоторые "
-"особенности их природы."
+"впрочем, практикуют определённую форму магии, заключённую в рунах. Их "
+"называют рунными кузнецами. Они гравируют руны на предметах, усиливая таким "
+"образом некоторые особенности их природы."
 
 #. [race]: id=elf
 #: data/core/units.cfg:106
@@ -5684,7 +5664,6 @@ msgstr "Эльфы"
 
 #. [race]: id=elf
 #: data/core/units.cfg:118
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5722,36 +5701,43 @@ msgid ""
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
 "having existed for over a millennium."
 msgstr ""
-"По сравнению с людьми, эльфы несколько выше ростом, более проворны, но не "
-"столь крепки. У них слегка заострённые уши, бледная кожа и, обычно, светлые "
-"волосы. Но никакое различие между людьми и эльфами не заметно так, как "
-"необычно долгая жизнь последних. Большинство из них, если только не "
-"заболеют, будут убиты из-за несчастного случая, или на войне, живут два "
-"полных столетия. Хотя о некоторых эльфах, обладающих высокими магическими "
-"способностями, известно, что они живут на одни век дольше, большинство "
-"эльфов, дожив до двадцатого десятка лет, начинают физически слабеть, и ещё "
-"через несколько десятилетий умирают. Природа эльфов в некоторой степени "
-"поддерживается магией. Хотя большинство из них не могут управлять ею "
-"напрямую, её присутствие даёт им их утончённые чувства и долгую жизнь. "
-"Многие эльфы обладают талантами, вдохновлёнными магией, такие, как "
-"снайперство или умение скрываться в лесах, при этом они достигают здесь "
-"таких высот, что большинство прочих существ могут лишь поражаться. Те эльфы, "
-"которые научились управлять этой своей силой, могут быть поистине "
-"устрашающими в её использовании. Многие предпочитают использовать этот свой "
-"дар для лечения других.\n"
+"По сравнению с людьми, эльфы несколько выше ростом, проворнее, но не "
+"настолько крепкие. У них слегка заострённые уши, бледная кожа и, обычно, "
+"светлые волосы. Но никакое внешнее различие между людьми и эльфами не "
+"бросается в глаза так, как невероятно долгая жизнь последних. Большинство из "
+"них живут два с половиной века, конечно, если не заболеют, не погибнут на "
+"войне или из-за несчастного случая. Хотя ходят слухи, что некоторые эльфы, "
+"обладающие выдающимися магическими способностями, живут на несколько "
+"столетий дольше, большинство, дожив до двадцатого десятка, начинают "
+"физически слабеть, и через несколько лет умирают.\n"
 "\n"
-"Большую часть времени эльфы проводят, развивая таланты и умения. Те, кто не "
-"склонен к магическим искусствам, обычно посвящают время развитию физических "
-"способностей. Как результат, эльфы становятся превосходными лучниками; "
-"пожалуй, это их основной способ ведения боя. Большинство эльфийских воинов "
-"носят лук, и никакая другая раса не может сравниться с эльфами в скорости и "
-"меткости. Также все эльфы ощущают сильнейшую привязанность к нетронутой "
-"природе. Они обычно чувствуют себя неуютно на открытых пространствах без "
-"растительности, что заставляет их строить жилища в лесах Великого Континента "
-"— таких, как Этенвуд на юге и Весмер на севере. Эльфы — старейшая раса на "
-"континенте, не считая, разве что, троллей. Для многих из их поселений нельзя "
-"назвать точную дату их появления, хотя несомненно, это произошло более "
-"тысячи лет назад."
+"Эльфы отчасти живут магией. Хотя большинство из них не могут управлять "
+"магией напрямую, её присутствие делает их чувства более тонкими и "
+"обеспечивает долгую жизнь. Многие эльфы обладают полу-магическими "
+"способностями, такими как снайперская точность или умение скрываться в "
+"лесах, что позволяет им выполнять задания, которые большинство существ "
+"охарактеризовали бы как невыполнимые. Те эльфы, которые научились "
+"самостоятельно управлять магией, устрашают врагов её виртуозным "
+"использованием. Многие предпочитают использовать свой дар для лечения.\n"
+"\n"
+"Некоторые эльфы, ставшие на путь изучения магии и мистицизма, стали "
+"настолько чувствительными к присутствию холодного железа, что даже могут "
+"быть сожжены им. Эльфийские легенды гласят, что раньше такое случалось очень "
+"часто.\n"
+"\n"
+"Большую часть времени эльфы проводят, совершенствуя свои навыки и умения. "
+"Те, кто не склонен к магическому искусству, посвящают себя развитию "
+"физических способностей и, в результате, становятся превосходными лучниками; "
+"пожалуй, среди эльфов это основной способ ведения боя. Большинство "
+"эльфийских воинов — лучники, и никакая другая раса не может сравниться с "
+"эльфами в скорости и меткости стрельбы. Все эльфы очень сильно привязаны к "
+"нетронутой природе. Они чувствуют себя неуютно на открытых пространствах без "
+"растительности. Поэтому они строят свои жилища в лесах Великого Континента — "
+"таких, как Этенвуд на югозападе и Весмер на севере.\n"
+"\n"
+"Эльфы — старейшая раса в мире, не считая, разве что, троллей. Они появились "
+"настолько давно, что невозможно установить точные даты возникновения их "
+"первых поселений, хотя, несомненно, более тысячи лет назад."
 
 #. [race]: id=goblin
 #: data/core/units.cfg:128
@@ -5789,6 +5775,23 @@ msgid ""
 "exception of jobs that require the brute strength of true orcs. Those the "
 "orcs revel in as proof of their prowess."
 msgstr ""
+"Гоблины, несмотря на свою внешность, появляются на свет вместе с орками и "
+"принадлежат одной и той же расе. В отличие от других рас, которые растят "
+"своих детей по одному-два, орки воспитывают целую ораву детей, что приводит "
+"к невероятному росту популяции. Из кучи отбросов вырастет лишь один или два "
+"настоящих орка, которые покажут силу своей расы. Небольшая часть детей "
+"станет полуорками, которые слабее и меньше своих старших братьев, и им "
+"отводится поддерживающая роль в бою, как, например, стрельба из лука. "
+"Оставшиеся, которых, как правило, больше половины, станут гоблинами. Гоблины "
+"мелкие и хрупкие, редко вырастают до размеров человеческого ребёнка. Они "
+"рождаются для рабства, и в бою выполняют роль пушечного мяса. Но, несмотря "
+"на трагическую судьбу, гоблины процветают. Во многом это обусловлено их "
+"численностью, но также и тем, что их старшие братья знают, насколько они "
+"зависят от гоблинов.\n"
+"\n"
+"Гоблины выполняют основную часть грязной работы, кроме той, что требует "
+"грубой силы настоящих орков. Эта работа приносит оркам значительное "
+"удовлетворения, как показатель их силы и мастерства."
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:145
@@ -5932,6 +5935,10 @@ msgid ""
 "neither move nor think on their own, but some do so as a result of magical "
 "enchantment."
 msgstr ""
+"Оживлённые ни естественным путем, ни некромантией, Механизмы представляют "
+"собой творение разумного существа. Большинство механических существ не могут "
+"ни двигаться, ни мыслить самостоятельно, но многие получают эти способности "
+"в результате магического вмешательства."
 
 #. [race]: id=merman
 #: data/core/units.cfg:201
@@ -5961,6 +5968,16 @@ msgid ""
 "ocean. They are typically wary of dry land, as they are awkward and clumsy "
 "there and they struggle greatly to move over rough or forested terrain."
 msgstr ""
+"Водяные, нечто среднее между человеком и рыбой, — это загадочная раса с "
+"признаками как гуманоида, так и водоплавающих. Их сильные хвосты позволяют "
+"свободно передвигаться в воде, а ловкие руки и острый ум позволяют "
+"заниматься ремеслом. Будучи полуводными существами, водяные могут свободно "
+"дышать, как в воде, так и на открытом воздухе. Несмотря на способность "
+"выживать на суше, они предпочитают жить в воде, и поэтому редко встречаются "
+"вдали от водоемов. Как правило, водяные настороженно относятся к суше, "
+"потому что, передвижение по земле доставляет им много неудобств и выглядит "
+"неуклюже. Из-за этого их движение по неровной или лесистой местности сильно "
+"замедляется."
 
 #. [race]: id=monster
 #: data/core/units.cfg:212
@@ -5979,6 +5996,10 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
+"Понятие «монстры» включает в себя множество отвратительных животных, которые "
+"часто встречаются в пещерах, пустынях, в глубинах океана и других "
+"малопосещаемых местах планеты. Они также часто фигурируют в сказках и "
+"рассказах."
 
 #. [race]: id=naga
 #: data/core/units.cfg:221
@@ -6012,6 +6033,17 @@ msgid ""
 "themselves at odds with merfolk when their territories overlap, but overall "
 "nagas tend to favor swamps and rivers as much as open water."
 msgstr ""
+"Наги — одна из наименее изученных рас Великого Континента. Частично это из-"
+"за их неприязни к чужакам, а частично из-за среды обитания. Наги - одна из "
+"немногих рас, способных свободно передвигаться в воде, что дает им доступ к "
+"целому миру, недоступному для наземных существ; это ещё сильнее отдаляет их "
+"от наземных существ. Тем не менее, они — не истинные обитатели моря. "
+"Неспособность дышать в воде держит их в страхе перед глубинами океанов. "
+"Проживание на прибрежных землях оставляет нагам пути для отхода в случае "
+"нападения глубоководных, сухопутных или крылатых существ. Хотя наги "
+"несколько хрупки по своей натуре, они быстрее и ловче своих противников. "
+"Иногда они сталкиваются с водяными, когда их территории пересекаются, но в "
+"целом, наги любят болота и реки так же, как и открытые моря и океаны."
 
 #. [race]: id=ogre
 #: data/core/units.cfg:231
@@ -6046,6 +6078,20 @@ msgid ""
 "is a sign of cooperation, domestication, or simply mutual opportunism is not "
 "known."
 msgstr ""
+"Огры - дикая, нецивилизованная раса, обитающая преимущественно в пустынях "
+"Великого Континента. Внешне они напоминают людей и орков, но крупнее и "
+"сильнее. Взрослый мужчина вряд ли сравнится даже с их детьми. Огров не "
+"приветствуют в заселенных местах, и, как правило, они избегают таких мест, "
+"или их выгоняют силой. Вместо этого, они скрываются в горах, на границе "
+"цивилизации, где представляют постоянную угрозу для путников и торговцев. "
+"Хотя огры не отличаются особым умом или ловкостью, их сила и выносливость "
+"ценятся повсеместно. Особенно их любят безжалостные военачальники, которые "
+"не имеют ничего против жестокости огров. Мало что известно об их "
+"биологическом устройстве, и обществе, в котором они живут, если это можно "
+"назвать обществом, но говорят, что огры были замечены в нападениях вместе с "
+"волками и другими зверьми. Хотя неизвестно, является ли это знаком "
+"приручения, сотрудничества, получения совместной выгоды, или просто слухи "
+"или случайность."
 
 #. [race]: id=orc
 #: data/core/units.cfg:242
@@ -6376,17 +6422,15 @@ msgstr "Кошмар"
 
 #. [language]
 #: data/hardwired/english.cfg:10
-#, fuzzy
 msgid ""
 "Liminal units fight better during twilight while fighting normally during "
 "day and night.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Порядочные бойцы лучше сражаются днем и хуже ночью.\n"
+"Теневые бойцы лучше сражаются в сумерках, а днём и ночью — с обычной силой.\n"
 "\n"
-"День: +25% ущерба\n"
-"Ночь: −25% ущерба"
+"Сумерки: +25% ущерба"
 
 #. [language]
 #: data/hardwired/english.cfg:15
@@ -6576,24 +6620,21 @@ msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
-#, fuzzy
 msgid ""
 "Don’t neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be too weak to survive future battles."
 msgstr ""
 "Пусть ваш лидер не пренебрегает возможностью заработать опыт! Держите его в "
-"безопасности, но если слишком баловать лидера, его уровня может не хватить, "
-"чтобы выжить в дальнейших битвах."
+"безопасности, но если не тренировать лидера совсем, то он может оказаться "
+"слишком слабым для последующих сражений."
 
 #. [tip]
 #: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:137
-#, fuzzy
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "— Великий Маг Делфадор, 516 ГВ"
+msgstr "— Великий Маг Делфадор, 516 ЭВ"
 
 #. [tip]
 #: data/hardwired/tips.cfg:8
-#, fuzzy
 msgid ""
 "In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
 "highlight all the hexes your adversary can move to (assuming your units stay "
@@ -6601,9 +6642,9 @@ msgid ""
 "injured units on his next turn."
 msgstr ""
 "В меню «Действия» вы можете выбрать «Показать ходы противника», чтобы "
-"подсветить все поля, куда ваш противник может дойти (при условии, что ваши "
-"бойцы стоят там, где они сейчас). Так можно проверить, что враг не сможет на "
-"следующем ходу добраться до ваших слабых или раненых бойцов."
+"подсветить все поля, до которых Ваш противник может добраться (при условии, "
+"что Ваши бойцы стоят там, где они сейчас). Так можно удостовериться, что "
+"враг не сможет на следующем ходу добраться до слабых или раненых бойцов."
 
 #. [tip]
 #: data/hardwired/tips.cfg:9 data/hardwired/tips.cfg:21
@@ -6622,101 +6663,92 @@ msgstr ""
 #: data/hardwired/tips.cfg:197 data/hardwired/tips.cfg:205
 #: data/hardwired/tips.cfg:225 data/hardwired/tips.cfg:234
 #: data/hardwired/tips.cfg:238
-#, fuzzy
 msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "— Веснотское руководство по тактике"
+msgstr "— Веснотское тактическое руководство"
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
-#, fuzzy
 msgid ""
 "Units with the <i>Intelligent</i> trait need fewer experience points to "
 "level up. Early in a campaign, try to give killing blows to these units so "
 "you can get some high-level troops sooner."
 msgstr ""
-"Бойцам со свойством «умный» нужно меньше опыта для повышения. Старайтесь в "
+"«Умным» бойцам требуется меньше опыта для повышения уровня. Старайтесь в "
 "начале кампании давать таким бойцам наносить завершающий удар, чтобы "
 "получить высокоуровневых бойцов как можно раньше. "
 
 #. [tip]
 #: data/hardwired/tips.cfg:13
-#, fuzzy
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "— Король Конрад, 536 ГВ"
+msgstr "— Король Конрад, 536 ЭВ"
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
-#, fuzzy
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction. Unfortunately, you "
 "must completely surround skirmishers to immobilize them."
 msgstr ""
-"Тактика окружения очень сильна, особенно против быстрых противников. Если вы "
-"поставите двух своих бойцов с противоположных сторон противника, их зоны "
-"контроля не дадут ему уйти дальше, чем на одно поле."
+"Окружение - очень сильная тактика, особенно против быстрых противников. Если "
+"Вы поставите двух своих бойцов с разных сторон от противника, их зоны "
+"контроля не дадут ему уйти дальше, чем на одно поле. К сожалению, чтобы "
+"обездвижить неуловимых, Вы должны окружить их полностью."
 
 #. [tip]
 #: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:129
-#, fuzzy
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "— Мемуары Гведдри, 627 ГВ"
+msgstr "— Мемуары Гведдри, 627 ЭВ"
 
 #. [tip]
 #: data/hardwired/tips.cfg:20
-#, fuzzy
 msgid ""
 "You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
 "clicking on a castle tile. That will let you choose the precise hex you put "
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
-"Вы можете вызвать команды «Вербовать» и «Призвать», кликнув правой клавишей "
-"по полю замка. Это позволит вам выбрать поле, куда поместить нового бойца. "
-"Иногда разумное размещение бойцов позволит вам достичь деревни на ход раньше."
+"Вы можете получить доступ к меню вербовки и призыва, кликнув правой клавишей "
+"по полю замка. Это позволит Вам выбрать поле, куда поместить нового бойца. "
+"Иногда разумное размещение бойцов позволит достичь деревни на ход раньше."
 
 #. [tip]
 #: data/hardwired/tips.cfg:24
-#, fuzzy
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
 "<b>Status Table</b> will let you know how your enemies are doing, and how "
 "you are doing in comparison."
 msgstr ""
 "В меню можно найти несколько полезных окон. Например, «Панель состояния» "
-"покажет вам, как идут дела у вашего противника, и как — у вас."
+"покажет вам, как идут дела у вашего противника, и как Вы справляетесь, по "
+"сравнению с ним."
 
 #. [tip]
 #: data/hardwired/tips.cfg:28
-#, fuzzy
 msgid ""
 "Units with the <i>Quick</i> trait get an extra movement point per turn. This "
 "can be very important when moving through difficult terrain such as water or "
 "caves. It can make the difference between being able to move one hex or two."
 msgstr ""
-"Бойцы со свойством «быстрый» передвигаются на одно поле дальше. Это может "
-"быть важно при передвижении через сложные территории, такие, как вода или "
-"пещеры. Быстрый боец в таких случаях сможет продвинуться не на одно, а на "
-"два поля."
+"Быстрые бойцы передвигаются на одно поле дальше. Это может быть важно при "
+"движении по сложным территориям, таким как вода или пещеры. Быстрый боец в "
+"таких случаях сможет продвинуться не на одно, а на два поля."
 
 #. [tip]
 #: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:105
 #: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:221
-#, fuzzy
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "— Верховный Лорд Каленз, 470 ГВ"
+msgstr "— Верховный Лорд Каленз, 470 ЭВ"
 
 #. [tip]
 #: data/hardwired/tips.cfg:32
-#, fuzzy
 msgid ""
 "After you have played a few scenarios, read the <b>Gameplay</b> section in "
 "the <b>Help</b> screen carefully. Details become important as scenarios get "
 "harder!"
 msgstr ""
-"Сыграв свои первые несколько сценариев, внимательно прочитайте раздел «Игра» "
-"в справке. По мере увеличения сложности становятся важны любые детали!"
+"Сыграв несколько сценариев, внимательно прочитайте раздел «Игра» в справке. "
+"По мере роста сложности, малейшая деталь становится очень важной!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:36
@@ -6740,27 +6772,25 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:41
-#, fuzzy
 msgid "<i>― The Wesnoth Community</i>"
 msgstr "— Сообщество Веснота"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>Liminal</i> unit type fights best during the twilight hours."
 msgstr ""
-"Порядочные бойцы лучше сражаются днём, а хаотичные — ночью. Нейтральные "
-"бойцы одинаково сражаются и днём, и ночью."
+"<i>Порядочные</i> бойцы лучше сражаются днём, а <i>хаотичные</i> — ночью. "
+"<i>Нейтральные</i> бойцы одинаково сражаются и днём, и ночью. Редкие "
+"<i>теневые</i> бойцы сражаются лучше в сумерках и на рассвете."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
-#, fuzzy
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr "— Королевский Компендиум военной терминологии, том II, 212 ГВ"
+msgstr "— Королевский Компендиум военной терминологии, том II, 221 ЭВ"
 
 #. [tip]
 #: data/hardwired/tips.cfg:48
@@ -6774,28 +6804,25 @@ msgstr ""
 #: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:73
 #: data/hardwired/tips.cfg:125 data/hardwired/tips.cfg:133
 #: data/hardwired/tips.cfg:213
-#, fuzzy
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "— Руководство по тактическому анализу, том I — Халдрик II, 42 ГВ"
+msgstr "— Руководство по тактическому анализу, том I — Халдрик II, 42 ЭВ"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
-#, fuzzy
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"Если вы играете со включёнными «Пеленой» или «Туманом войны», вы не сможете "
-"увидеть, что вас ожидает. В этой ситуации бойцы-разведчики стоят своих "
-"денег. Старайтесь выбирать таких разведчиков, которые могут легко "
-"перемещаться по окружающей территории, поскольку они могут видеть так "
-"далеко, как далеко они могут продвинуться за один ход."
+"Если Вы играете со включённой «Пеленой» или «Туманом войны», Вы не можете "
+"видеть, что Вас ждет. В такой ситуации бойцы-разведчики стоят своих денег. "
+"Старайтесь выбирать разведчиков, которые могут легко перемещаться по "
+"окружающей территории, поскольку они видят ровно столько, насколько они "
+"смогут продвинуться за один ход."
 
 #. [tip]
 #: data/hardwired/tips.cfg:56
-#, fuzzy
 msgid ""
 "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
 "<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
@@ -6804,14 +6831,13 @@ msgid ""
 "affect it the most."
 msgstr ""
 "Существует шесть типов атаки: колющая, режущая, крушащая, огонь, холод и "
-"мистическая. Разные бойцы имеют разную сопротивляемость против каждого типа "
-"атаки. Нажмите на любого правой кнопкой мыши и выберите «Описание бойца» — "
-"тогда вы увидите, насколько хорошо этот боец сопротивляется различным типам "
-"атак."
+"мистическая. Разные бойцы имеют разные сопротивляемости против каждого типа "
+"атаки. Нажмите на любого правой кнопкой мыши и выберите «Описание бойца» — в "
+"открывшемся окне будет описано, насколько этот боец устойчив к различным "
+"типам атак."
 
 #. [tip]
 #: data/hardwired/tips.cfg:60
-#, fuzzy
 msgid ""
 "The terrain occupied by your units is the main factor determining the chance "
 "that they will be hit. The defensive rating for the currently selected unit "
@@ -6819,13 +6845,11 @@ msgid ""
 "the screen."
 msgstr ""
 "От территории, на которой находятся ваши бойцы, зависит вероятность того, "
-"что атака вашего противника достигнет цели.  Рейтинг сопротивления "
-"выбранного бойца на конкретной выбранной местности можно увидеть в правом "
-"верхнем углу экрана."
+"что атаки противника достигнут цели. Защитный рейтинг бойца на конкретной "
+"местности можно увидеть в правом верхнем углу экрана."
 
 #. [tip]
 #: data/hardwired/tips.cfg:64
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
@@ -6834,26 +6858,24 @@ msgid ""
 "a village or next to a unit with the <i>Cures</i> ability."
 msgstr ""
 "Отравленные бойцы будут каждый ход терять по восемь единиц здоровья, пока у "
-"них не останется лишь одна единица. Они останутся на пороге смерти, пока яд "
-"не будет исцелён. Лекари могут предотвращать дальнейшее действие яда, но яд "
-"останется, если только боец не имеет способности к регенерации, или не "
-"начнёт свой ход в деревне, или рядом с целителем."
+"них не останется лишь одна единица. Они будут при смерти, пока яд не будет "
+"исцелён. Лекари могут нейтрализовывать действие яда, но он останется до тех "
+"пор, пока боец полностью не восстановится, или не пробудет ход в деревне или "
+"рядом с целителем."
 
 #. [tip]
 #: data/hardwired/tips.cfg:68
-#, fuzzy
 msgid ""
 "You can reuse units from a previous scenario by selecting <b>Recall</b> from "
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
-"Вы можете использовать бойцов из прошлого сценария. Для этого дайте команду "
-"«Призвать» из меню «Действия». Призывая одних и тех же бойцов много раз, вы "
-"создаёте мощную и опытную армию. "
+"Вы можете использовать бойцов из прошлого сценария. Для этого нажмите "
+"«Призвать» в меню «Действия». Призывая одних и тех же бойцов много раз, вы "
+"создадите мощную и опытную армию. "
 
 #. [tip]
 #: data/hardwired/tips.cfg:72
-#, fuzzy
 msgid ""
 "Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
 "around them. If a unit moves into an enemy’s zone of control, it may not "
@@ -6861,15 +6883,14 @@ msgid ""
 "between them and still create a barrier to the enemy. Beware, though: "
 "skirmishers can pass through these gaps."
 msgstr ""
-"Бойцы, начиная с первого уровня, имеют «зону контроля» — все соседние поля. "
-"Если боец перемещается в зону контроля противника, он больше не может "
-"двигаться на этом ходу. Это означает, что между бойцами могут быть два "
-"свободных поля, и они всё равно будут создавать для противника барьер. "
-"Неуловимые, однако, способны игнорировать эти зоны."
+"Бойцы первого уровня и выше обладают <i>«зоной контроля»</i> — это шесть "
+"полей вокруг них. Если боец перемещается в зону контроля противника, он "
+"больше не сможет двигаться на этом ходу. Это означает, что между бойцами "
+"могут быть два свободных поля, и они всё равно будут создавать барьер для "
+"противника. Неуловимые, однако, способны проходить через эти зоны."
 
 #. [tip]
 #: data/hardwired/tips.cfg:76
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -6877,16 +6898,17 @@ msgid ""
 "are guaranteed at least a 60% chance of a hit when they attack on their own "
 "turn."
 msgstr ""
-"Шанс нанести ущерб противнику обычно зависит от того, насколько тот защищён "
-"на местности, на которой стоит. Тем не менее, магические атаки всегда (при "
-"атаке и обороне) попадают с вероятностью 70%, а атаки бойцов со способностью "
-"«снайпер», при атаке на своём ходу, попадают не менее чем в 60% случаев."
+"Шанс нанести ущерб противнику обычно зависит от того, насколько тот умеет "
+"защищаться на местности, на которой стоит. Тем не менее, магические атаки "
+"всегда (и при атаке, и при обороне) попадают с вероятностью ровно 70%, а "
+"атаки бойцов со способностью <i>«снайпер»</i>, при атаке на своём ходу, "
+"попадают не менее чем в 60% случаев."
 
 #. [tip]
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "— Руководство по тактическому анализу, том II — Халдрик II, 43 ГВ"
+msgstr ""
+"<i>— Руководство по тактическому анализу, том II — Халдрик II, 43 ЭВ</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
@@ -6910,7 +6932,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:88
-#, fuzzy
 msgid ""
 "On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
 "units’ sightlines are limited by their maximum movement. If you have some "
@@ -6918,8 +6939,9 @@ msgid ""
 "are not caught out by a surprise attack."
 msgstr ""
 "На картах с пеленой или туманом войны обзор бойца ограничен клетками, до "
-"которых он может дойти. Помните об этом, выбирая, кого отправлять в разведку "
-"на определённом типе местности."
+"которых он может дойти. Помните об этом, и всегда держите при группе важных, "
+"но медленных бойцов как минимум одного быстрого разведчика, чтобы не быть "
+"захваченным врасплох внезапной атакой."
 
 #. [tip]
 #: data/hardwired/tips.cfg:92
@@ -6934,9 +6956,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:173
-#, fuzzy
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "— Сэр Кайлан, 498 ГВ"
+msgstr "<i>— Сэр Кайлан, 498 ЭВ</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:96
@@ -6950,9 +6971,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:97
-#, fuzzy
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "— Сэр Кайлан, 502 ГВ"
+msgstr "<i>— Сэр Кайлан, 502 ЭВ</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:100
@@ -6990,7 +7010,7 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
-"Если вас атакуют с разных сторон, подумайте над тем, чтобы отослать на "
+"Если Вас атакуют с разных сторон, подумайте над тем, чтобы отослать на "
 "некоторые фронты менее ценных бойцов, чтобы задержать противника."
 
 #. [tip]
@@ -7002,27 +7022,24 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:117
-#, fuzzy
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "— Менельдур, 123 ГВ"
+msgstr "<i>— Менельдур, 123 ЭВ</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:120
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns "
 "remaining. You will usually earn more gold this way than through capturing "
 "villages and waiting for the turns to run out."
 msgstr ""
-"В большинстве кампаний вы получаете бонус золотом за раннее окончание, в "
-"зависимости от количества взятых деревень и числа сэкономленных ходов. "
-"Закончив игру раньше, вы всегда получите больше золота, чем заняв все "
-"деревни и ожидая окончания ходов."
+"В большинстве кампаний вы получаете золотом бонус за досрочное выполнение "
+"задания. Размер бонуса зависит от количества захваченных деревень и числа "
+"сэкономленных ходов. Закончив игру раньше, вы получите больше золота, чем "
+"захватив все деревни, но дождавшись окончания ходов."
 
 #. [tip]
 #: data/hardwired/tips.cfg:124
-#, fuzzy
 msgid ""
 "<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
 "not just the keep they start on. Sometimes your allies may be willing to "
@@ -7031,9 +7048,9 @@ msgid ""
 msgstr ""
 "Ваш лидер может призывать и вербовать бойцов не только в том замке, в "
 "котором он начал игру. Вы можете захватывать замки противника и вербовать "
-"новых бойцов и в захваченным замках. Кроме того, некоторые ваши союзники "
-"могут добровольно предоставлять вам укрытие в своем замке, чтобы вы могли "
-"вербовать бойцов там."
+"новых бойцов там. Кроме того, некоторые Ваши союзники могут добровольно "
+"предоставлять Вам укрытие в своем замке, чтобы вы могли вербовать бойцов у "
+"них."
 
 #. [tip]
 #: data/hardwired/tips.cfg:128
@@ -7046,15 +7063,14 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:132
-#, fuzzy
 msgid ""
 "Units with the <i>Leadership</i> ability help lower-level adjacent units on "
 "the same side fight better. You can move these units slowly along your "
 "battle lines and give bonuses to large numbers of lower-level troops."
 msgstr ""
 "Бойцы со способностью «лидерства» помогают сражаться соседним бойцам низших "
-"уровней. Используйте лидеров, чтобы помочь прочим вашим бойцам быстрее "
-"продвинуться на следующий уровень."
+"уровней. Вы можете перемещать лидеров по полю боя, чтобы как можно больше "
+"слабых бойцов получили бонусы."
 
 #. [tip]
 #: data/hardwired/tips.cfg:136
@@ -7069,34 +7085,29 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:140
-#, fuzzy
 msgid "Use lines of troops to screen your injured units while they recover."
 msgstr ""
-"Выстраивайте бойцов в ряд, закрывая ими раненых, чтобы дать тем возможность "
+"Выстраивайте бойцов в ряд, прикрывая раненых, чтобы дать тем возможность "
 "восстановиться."
 
 #. [tip]
 #: data/hardwired/tips.cfg:141
-#, fuzzy
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "— Принцесса Лисар, 515 ГВ"
+msgstr "<i>— Принцесса Лисар, 515 ЭВ</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:144
-#, fuzzy
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-msgstr "Просмотрите список горячих клавиш в меню настроек."
+msgstr "Просмотрите список <i>горячих клавиш</i> в меню настроек."
 
 #. [tip]
 #: data/hardwired/tips.cfg:148
-#, fuzzy
 msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing <b>u</b>."
 msgstr ""
-"Если вы передвинули бойца, но не атаковали и не открыли какой-либо "
-"дополнительной информации, вы можете отменить ваше передвижение, нажав "
-"кнопку «u»."
+"Если вы передвинули бойца, но не атаковали и не узнали никакой новой "
+"информации, вы можете отменить ход, нажав кнопку <i>«u»</i>."
 
 #. [tip]
 #: data/hardwired/tips.cfg:152
@@ -7113,36 +7124,32 @@ msgid ""
 "Use healers to support your attacks — they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Используйте лекарей для поддержки атакующих — они принесут вам не одну "
+"Используйте лекарей для поддержки атакующих — они принесут Вам не одну "
 "победу, даже не сражаясь сами."
 
 #. [tip]
 #: data/hardwired/tips.cfg:157 data/hardwired/tips.cfg:201
-#, fuzzy
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "— Свиток Шанталь, 516 ГВ"
+msgstr "<i>— Свиток Шанталь, 516 ЭВ</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
-#, fuzzy
 msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
 msgstr ""
-"Атака с замедлением делает передвижения бойца противника медленней и "
-"уменьшает наполовину ущерб от его атак до конца хода."
+"Замедляющая атака делает передвижения бойца противника медленней и уменьшает "
+"ущерб от его атак наполовину до конца хода."
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
-#, fuzzy
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "Мистическая атака особенно сильна против мертвецов."
+msgstr "<i>Мистическая</i> атака особенно сильна против мертвецов."
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
-#, fuzzy
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "— Великий мудрец Дацин, 626 ГВ"
+msgstr "<i>— Великий мудрец Дацин, 626 ЭВ</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:168
@@ -7164,7 +7171,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:176
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an <i>After Maximum Level "
 "Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
@@ -7180,15 +7186,14 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:180
-#, fuzzy
 msgid ""
 "Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
 "mouse pointer over any button or icon to get a description or explanation of "
 "what it does."
 msgstr ""
-"Почти у каждой пиктограммы или слова на игровом экране Веснота есть "
-"всплывающая подсказка. Наведя на них указатель мыши, вы получите объяснение "
-"или описание."
+"Почти у каждой кнопки и картинки в Весноте есть всплывающая подсказка. "
+"Наведя указатель мыши, вы получите объяснение или описание того, что это "
+"такое."
 
 #. [tip]
 #: data/hardwired/tips.cfg:184
@@ -7202,9 +7207,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:185
-#, fuzzy
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "— Королева Лисар, 528 ГВ"
+msgstr "<i>— Королева Лисар, 528 ЭВ</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
@@ -7245,6 +7249,13 @@ msgid ""
 "to escape; slow enemies are almost immobilized, and your own units suffer "
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
+"Замедляющая способность чрезвычайно полезна, из-за широкого спектра "
+"эффектов, которые она оказывает на противника. Мертвецы будут получать лишь "
+"половину жизней от <i>высасывания</i>, <i>наскок</i> и <i>удар в спину</i> "
+"не будут иметь никакого эффекта, и способность <i>берсерка</i> будет "
+"ослаблена. Быстрые враги будут вынуждены спасаться бегством, а медленные "
+"будут почти неподвижны. Ваши собственные бойцы будут получать меньше урона в "
+"ответ, поэтому их исцеление займет меньше времени."
 
 #. [tip]
 #: data/hardwired/tips.cfg:204
@@ -7254,6 +7265,11 @@ msgid ""
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
+"Старайтесь использовать бойцов с небольшим числом мощных атак, таких как "
+"Темные адепты, Всадники, Пехотинцы орков, или Громовержцы гномов, группами "
+"по два или по три. Это даст Вам возможность попробовать атаковать повторно, "
+"если первая сокрушительная атака не возымела никакого эффекта — такое "
+"случается время от времени."
 
 #. [tip]
 #: data/hardwired/tips.cfg:208
@@ -7263,6 +7279,10 @@ msgid ""
 "leadership—or a strong or dextrous unit—whenever the extra point or two of "
 "damage makes a one-hit kill possible."
 msgstr ""
+"Бойцы с тремя или более атаками, особенно магическими, идеально подходят для "
+"добивания врагов, которые уже почти мертвы. Обязательно используйте "
+"лидерство — или сильного, или ловкого бойца — если благодаря одному-двум "
+"лишним очкам урона Вы получите возможность убить врага за один удар."
 
 #. [tip]
 #: data/hardwired/tips.cfg:212
@@ -7271,6 +7291,9 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
+"Дважды подумайте перед тем, как увольнять бойцов из списка призыва, "
+"независимо от того, как мало опыта они набрали. Иногда стоит переплатить за "
+"то, чтобы быть уверенным в способностях нового бойца."
 
 #. [tip]
 #: data/hardwired/tips.cfg:216
@@ -7279,11 +7302,14 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
+"Когда сильный боец тяжело ранен, отправьте его в деревню, расположенную в "
+"нескольких ходах от линии фронта. Там он сможет быстро восстановиться (10 ЗД "
+"за ход), не связывая деревни на передовой."
 
 #. [tip]
 #: data/hardwired/tips.cfg:217 data/hardwired/tips.cfg:229
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
+msgstr "<i>—Хамель, Лорд Кналга</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:220
@@ -7292,6 +7318,10 @@ msgid ""
 "work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
+"Комбинация нескольких способностей может оказаться смертельной. Хотя может "
+"быть трудно использовать все способности одновременно, попробуйте, например, "
+"объединить <i>лидерство</i>, <i>освещение</i> и <i>наскок</i> против "
+"замедленного врага. Результат будет впечатляющим."
 
 #. [tip]
 #: data/hardwired/tips.cfg:224
@@ -7301,6 +7331,10 @@ msgid ""
 "your units extra experience. When deciding whether or not to finish a "
 "scenario early, weigh these factors against one another."
 msgstr ""
+"Хотя быстрое завершение кампании дает бонусое золото, и уменьшает "
+"вероятность того, что ваши бойцы будут убиты, оно также уменьшает количество "
+"опыта, который ваши бойцы могут получить. Когда будете решать, завершать "
+"сценарий, или нет, взвесьте плюсы и минусы обоих факторов."
 
 #. [tip]
 #: data/hardwired/tips.cfg:228
@@ -7311,18 +7345,22 @@ msgid ""
 "average. Plan for heavy losses, and take firm control of any hex where the "
 "land does favor you."
 msgstr ""
+"Если ваши бойцы получают низкий рейтинг защиты повсюду на карте, займите "
+"такие территории, которые вынудят вашего противника занять такую же "
+"невыгодную позицию. Избегайте мест, где защита ваших бойцов низкая, а бойцов "
+"противника — средняя или выше. Учтите, что Вы будете нести тяжёлые потери, и "
+"занимайте все выгодняе для Вас поля."
 
 #. [tip]
 #: data/hardwired/tips.cfg:233
-#, fuzzy
 msgid ""
 "You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
-"Вы не можете отменять ходы, которые приоткрывают туман. Включите опцию "
-"«Задержать обновление пелены», когда нужно совершить ход, имея возможность "
-"отменить его."
+"Вы не можете отменять ходы, которые открывают поля, покрытые туманом или "
+"пеленой. Включите опцию <b>«Задержать обновление пелены»</b>, если хотите "
+"всегда иметь возможность отменить ход, или используйте режим планирования."
 
 #. [tip]
 #: data/hardwired/tips.cfg:237
@@ -7331,6 +7369,9 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
+"<i>Дикие</i> бойцы, такие как Летучие мыши и дикие животные, будут избегать "
+"деревень. Даже если они займут поле с деревней, они не получат никакого "
+"бонуса к рейтингу защиты, хотя по прежнему будут лечиться."
 
 #: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1637
 msgid "Victory:"
@@ -7342,24 +7383,23 @@ msgstr "Поражение:"
 
 #: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
-msgstr ""
+msgstr "Золота переносится:"
 
 #: data/lua/wml/objectives.lua:53
 msgid "Notes:"
-msgstr ""
+msgstr "Заметки:"
 
 #: data/lua/wml/objectives.lua:69
 msgid "(%d turns left)"
-msgstr ""
+msgstr "(осталось %d ходов)"
 
 #: data/lua/wml/objectives.lua:71
 msgid "(this turn left)"
-msgstr ""
+msgstr "(последний ход)"
 
 #: data/lua/wml/objectives.lua:113
-#, fuzzy
 msgid "%d%% of gold carried over to the next scenario."
-msgstr "Золото не переносится в следующий сценарий."
+msgstr "В следующий сценарий переносится %d%% золота."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
@@ -7553,7 +7593,7 @@ msgstr "Закрыть"
 
 #: src/actions.cpp:369
 msgid "You don’t have a leader to recruit with."
-msgstr "У вас нет лидера, который мог бы вербовать."
+msgstr "У Вас нет лидера, который мог бы вербовать."
 
 #: src/actions.cpp:376
 msgid "You must have your leader on a keep to recruit or recall units."
@@ -7760,9 +7800,8 @@ msgid "Type"
 msgstr "Тип"
 
 #: src/addon/manager.cpp:811
-#, fuzzy
 msgid "Install dependencies"
-msgstr "Зависимости"
+msgstr "Установить зависимости"
 
 #: src/addon/manager.cpp:812
 msgid ""
@@ -7771,22 +7810,27 @@ msgid_plural ""
 "The selected add-on has the following dependencies. Do you want to install "
 "them?"
 msgstr[0] ""
+"Выбранный аддон имеет следующую зависимость. Вы хотите установить её?"
 msgstr[1] ""
+"Выбранный аддон имеет следующие зависимости. Вы хотите устаносить их?"
 msgstr[2] ""
+"Выбранный аддон имеет следующие зависимости. Вы хотите устаносить их?"
 
 #: src/addon/manager.cpp:841
 msgid "Installation of a dependency failed"
-msgstr ""
+msgstr "Установка зависимостей не удалась"
 
 #: src/addon/manager.cpp:843
 msgid ""
 "While the add-on has been installed, a dependency is missing. Try to update "
 "the installed add-ons."
 msgstr ""
+"Хотя аддон был установлен, зависимость не найдена. Попробуйте переустановить "
+"аддон."
 
 #: src/addon/manager.cpp:857
 msgid "Installation failed"
-msgstr ""
+msgstr "Установка не удалась"
 
 #: src/addon/manager.cpp:859 src/addon/manager.cpp:1087
 msgid "The following add-on could not be downloaded or updated successfully:"
@@ -7808,14 +7852,14 @@ msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
 msgstr[0] ""
-"У вас установлен устаревший неофициальный аддон, его данные указаны ниже. "
+"У Вас установлен устаревший неофициальный аддон, его данные указаны ниже. "
 "Его обновлять не будем."
 msgstr[1] ""
-"У вас установлен устаревшие неофициальные аддоны, их данные указаны ниже. Их "
-"обновлять не будем."
+"У Вас установлены устаревшие неофициальные аддоны, их данные указаны ниже. "
+"Их обновлять не будем."
 msgstr[2] ""
-"У вас установлен устаревшие неофициальные аддоны, их данные указаны ниже. Их "
-"обновлять не будем."
+"У вас установлены устаревшие неофициальные аддоны, их данные указаны ниже. "
+"Их обновлять не будем."
 
 #: src/addon/manager.cpp:934
 msgid "No add-ons to update"
@@ -7834,13 +7878,12 @@ msgid "Old version"
 msgstr "Старая версия"
 
 #: src/addon/manager.cpp:999
-#, fuzzy
 msgid "Update add-ons"
 msgstr "Обновить аддоны"
 
 #: src/addon/manager.cpp:1000
 msgid "Select an add-on to update:"
-msgstr "Какой аддон обновить?"
+msgstr "Выберите аддон для обновления:"
 
 #: src/addon/manager.cpp:1014
 msgid "Update all"
@@ -7849,7 +7892,7 @@ msgstr "Обновить все"
 #: src/addon/manager.cpp:1052 src/addon/manager.cpp:1069
 #: src/addon/manager.cpp:1310
 msgid "Installation of some dependency failed"
-msgstr ""
+msgstr "Установка зависимости не удалась"
 
 #: src/addon/manager.cpp:1054 src/addon/manager.cpp:1071
 #: src/addon/manager.cpp:1312
@@ -7857,14 +7900,16 @@ msgid ""
 "While the add-on has been installed, some dependency is missing. Try to "
 "update the installed add-ons."
 msgstr ""
+"Хотя аддон был установлен, некоторые зависимости не найдены. Попробуйте "
+"переустановить аддон."
 
 #: src/addon/manager.cpp:1085
 msgid "Update failed"
-msgstr "Не могу обновить"
+msgstr "Обновление не удалось"
 
 #: src/addon/manager.cpp:1095
 msgid "Update succeeded"
-msgstr "Успешно обновил"
+msgstr "Обновление завершено успешно"
 
 #: src/addon/manager.cpp:1096
 msgid "Add-on updated successfully."
@@ -7915,13 +7960,12 @@ msgid "Choose the add-on to download."
 msgstr "Выберите аддон для загрузки."
 
 #: src/addon/manager.cpp:1261
-#, fuzzy
 msgid "Download"
-msgstr "Загрузки"
+msgstr "Загрузить"
 
 #: src/addon/manager.cpp:1262
 msgid "Done"
-msgstr ""
+msgstr "Выполнено"
 
 #: src/addon/manager.cpp:1273 src/dialogs.cpp:622 src/menu_events.cpp:930
 #: src/menu_events.cpp:1537
@@ -7948,7 +7992,7 @@ msgstr "Проблема с созданием файлов для полной 
 
 #: src/addon/manager.cpp:1346
 msgid "You have no add-ons installed."
-msgstr "У вас нет установленных аддонов."
+msgstr "У Вас нет установленных аддонов."
 
 #: src/addon/manager.cpp:1358
 msgid "Choose the add-on to remove."
@@ -7959,9 +8003,8 @@ msgid "Uninstall add-ons"
 msgstr "Удалить аддоны"
 
 #: src/addon/manager.cpp:1360
-#, fuzzy
 msgid "Remove"
-msgstr "ходы"
+msgstr "Убрать"
 
 #: src/addon/manager.cpp:1367
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -8005,7 +8048,7 @@ msgstr "Лидерство"
 
 #: src/attack_prediction_display.cpp:237
 msgid " resistance vs "
-msgstr " стоек против "
+msgstr " стойкий против "
 
 #: src/attack_prediction_display.cpp:238
 msgid " vulnerability vs "
@@ -8049,7 +8092,7 @@ msgstr "Вы действительно хотите удалить эту иг�
 
 #: src/dialogs.cpp:283
 msgid "Don’t ask me again!"
-msgstr "И больше меня не спрашивать!"
+msgstr "И больше об этом не спрашивать!"
 
 #: src/dialogs.cpp:455 src/savegame.cpp:135
 msgid "%a %b %d %H:%M %Y"
@@ -8183,9 +8226,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Ошибка ввода/вывода при чтении файла с игрой"
 
 #: src/game.cpp:1005
-#, fuzzy
 msgid "File I/O Error while reading the game: '"
-msgstr "Ошибка ввода/вывода при чтении файла с игрой"
+msgstr "Ошибка ввода/вывода при чтении файла с игрой: '"
 
 #: src/game.cpp:1103
 msgid "No campaigns are available.\n"
@@ -8205,7 +8247,7 @@ msgstr ""
 
 #: src/game.cpp:1359
 msgid "Don’t show again"
-msgstr "Больше мне это не показывайте!"
+msgstr "Больше не показывать"
 
 #: src/game.cpp:1430
 msgid "Error while starting server: "
@@ -8268,33 +8310,28 @@ msgid "Name: "
 msgstr "Название: "
 
 #: src/generate_report.cpp:101
-#, fuzzy
 msgid "Type: "
-msgstr "Тип"
+msgstr "Тип:"
 
 #: src/generate_report.cpp:113 src/help.cpp:1404
 msgid "Race: "
 msgstr "Раса: "
 
 #: src/generate_report.cpp:136
-#, fuzzy
 msgid "Level: "
-msgstr "Уровень"
+msgstr "Уровень: "
 
 #: src/generate_report.cpp:141
-#, fuzzy
 msgid "No advancement"
-msgstr "Продвинулись"
+msgstr "Не продвигается"
 
 #: src/generate_report.cpp:143
-#, fuzzy
 msgid "Advances to:"
 msgstr "Продвигается в: "
 
 #: src/generate_report.cpp:166
-#, fuzzy
 msgid "Trait: "
-msgstr "Особенности"
+msgstr "Особенность: "
 
 #: src/generate_report.cpp:180
 msgid "invisible: "
@@ -8347,9 +8384,8 @@ msgid "Alignment: "
 msgstr "Тип: "
 
 #: src/generate_report.cpp:219
-#, fuzzy
 msgid "Ability: "
-msgstr "Способности: "
+msgstr "Способность: "
 
 #: src/generate_report.cpp:255
 msgid "Resistances: "
@@ -8364,96 +8400,80 @@ msgid "Experience Modifier: "
 msgstr "Модификатор опыта: "
 
 #: src/generate_report.cpp:290
-#, fuzzy
 msgid "Terrain: "
-msgstr "Местность"
+msgstr "Местность: "
 
 #: src/generate_report.cpp:307
 msgid "maximum^max."
-msgstr ""
+msgstr "макс."
 
 #: src/generate_report.cpp:307
 msgid "minimum^min."
-msgstr ""
+msgstr "мин."
 
 #: src/generate_report.cpp:312
-#, fuzzy
 msgid "Defense: "
-msgstr "Защита"
+msgstr "Защита:"
 
 #: src/generate_report.cpp:387
-#, fuzzy
 msgid "Weapon: "
-msgstr "досягаемость оружия: "
+msgstr "Оружие: "
 
 #: src/generate_report.cpp:388
-#, fuzzy
 msgid "Damage: "
-msgstr "Ущерб"
+msgstr "Ущерб:"
 
 #: src/generate_report.cpp:391
-#, fuzzy
 msgid "Base damage: "
-msgstr "Всего повреждений"
+msgstr "Базовый урон: "
 
 #: src/generate_report.cpp:393
-#, fuzzy
 msgid "Time of day: "
-msgstr "Время суток"
+msgstr "Время суток: "
 
 #: src/generate_report.cpp:397
-#, fuzzy
 msgid "Leadership: "
-msgstr "Лидерство"
+msgstr "Лидерство: "
 
 #: src/generate_report.cpp:401
-#, fuzzy
 msgid "Slowed: "
 msgstr "замедлен: "
 
 #: src/generate_report.cpp:405
-#, fuzzy
 msgid "Attacks: "
-msgstr "Атакующий"
+msgstr "Виды атак:"
 
 #: src/generate_report.cpp:407
 msgid "Base attacks: "
-msgstr ""
+msgstr "Базовые атаки: "
 
 #: src/generate_report.cpp:409
-#, fuzzy
 msgid "Swarm: "
-msgstr "рой"
+msgstr "Рой: "
 
 #: src/generate_report.cpp:421
-#, fuzzy
 msgid "Weapon range: "
-msgstr "досягаемость оружия: "
+msgstr "Дальность оружия: "
 
 #: src/generate_report.cpp:422
-#, fuzzy
 msgid "Damage type: "
-msgstr "тип повреждений: "
+msgstr "Тип повреждений: "
 
 #: src/generate_report.cpp:423
-#, fuzzy
 msgid "Damage versus: "
-msgstr "тип повреждений: "
+msgstr "Тип повреждений: "
 
 #: src/generate_report.cpp:474
-#, fuzzy
 msgid "Accuracy:"
-msgstr "% попаданий"
+msgstr "Точность:"
 
 #: src/generate_report.cpp:479
-#, fuzzy
 msgid "Parry:"
-msgstr "% защиты"
+msgstr "Защита:"
 
 #: src/generate_report.cpp:494
-#, fuzzy
 msgid "Weapon special: "
-msgstr "Особенности оружия"
+msgstr "Особенность оружия: "
 
 #: src/generate_report.cpp:528
 msgid "Lawful units: "
@@ -8468,9 +8488,8 @@ msgid "Chaotic units: "
 msgstr "Хаотичные бойцы: "
 
 #: src/generate_report.cpp:533
-#, fuzzy
 msgid "Liminal units: "
-msgstr "Порядочные бойцы: "
+msgstr "Теневые бойцы: "
 
 #: src/generate_report.cpp:714
 msgid "Observers:"
@@ -8729,44 +8748,36 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:222
-#, fuzzy
 msgid "Initializing user interface"
-msgstr "Инициализация команд"
+msgstr "Инициализация интерфейса"
 
 #: src/loadscreen.cpp:223
-#, fuzzy
 msgid "Loading game configuration"
 msgstr "Загрузка настроек игры"
 
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Проверяю кэш..."
+msgstr "Проверка кэша"
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
-#, fuzzy
 msgid "Reading files and creating cache"
-msgstr "Читаю файлы и создаю кэш..."
+msgstr "Чтение файлов и создание кэша"
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
-#, fuzzy
 msgid "Reading unit files"
-msgstr "Читаю файлы бойцов..."
+msgstr "Чтение данных бойцов"
 
 #: src/loadscreen.cpp:227
-#, fuzzy
 msgid "Re-initialize fonts for the current language"
-msgstr "Реинициализация шрифтов для текущего языка"
+msgstr "Реинициализация шрифтов текущего языка"
 
 #: src/loadscreen.cpp:228
-#, fuzzy
 msgid "Searching for installed add-ons"
-msgstr "Ищу установленные аддоны"
+msgstr "Поиск установленных аддонов"
 
 #: src/loadscreen.cpp:229
-#, fuzzy
 msgid "Loading title screen"
-msgstr "Загружаю главный экран."
+msgstr "Загрузка главного экрана"
 
 #: src/loadscreen.cpp:230
 msgid "Loading data files"
@@ -8790,7 +8801,7 @@ msgstr "Инициализация дисплея"
 
 #: src/loadscreen.cpp:238
 msgid "Building terrain rules"
-msgstr ""
+msgstr "Сборка правил местности"
 
 #: src/loadscreen.cpp:240
 msgid "Starting game"
@@ -8809,6 +8820,8 @@ msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
 msgstr ""
+"Не найдено допустимое расположение замка. Слишком много, или слишком мало "
+"гор? (проверьте параметр «максимальный размер холма»)"
 
 #: src/menu_events.cpp:96 src/menu_events.cpp:99 src/menu_events.cpp:103
 msgid "Do you really want to dismiss him?"
@@ -9000,7 +9013,7 @@ msgstr "Выберите бойца:"
 
 #: src/menu_events.cpp:770
 msgid "You don’t have enough gold to recruit that unit"
-msgstr "У вас недостаточно золота для вербовки данного бойца"
+msgstr "У Вас недостаточно золота для вербовки данного бойца"
 
 #: src/menu_events.cpp:822
 msgid "You are separated from your soldiers and may not recall them"
@@ -9012,7 +9025,7 @@ msgid ""
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Нет войск для призыва\n"
-"(У вас должны быть уцелевшие с прошлого сценария бойцы)"
+"(У Вас должны быть уцелевшие с прошлого сценария бойцы)"
 
 #: src/menu_events.cpp:924
 msgid "Recall"
@@ -9025,12 +9038,9 @@ msgstr "Уволить бойца"
 #: src/menu_events.cpp:971
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] ""
-"У вас должно быть по крайней мере $cost золотая монета для призыва бойца"
-msgstr[1] ""
-"У вас должно быть по крайней мере $cost золотые монеты для призыва бойца"
-msgstr[2] ""
-"У вас должно быть по крайней мере $cost золотых монет для призыва бойца"
+msgstr[0] "У Вас должна быть хотя бы $cost золотая монета для призыва бойца"
+msgstr[1] "У Вас должны быть хотя бы $cost золотые монеты для призыва бойца"
+msgstr[2] "У Вас должно быть хотя бы $cost золотых монет для призыва бойца"
 
 #: src/menu_events.cpp:1364
 msgid ""
@@ -9039,7 +9049,6 @@ msgstr ""
 "Вы еще не начинали свой ход. Вы действительно хотите завершить свой ход?"
 
 #: src/menu_events.cpp:1372
-#, fuzzy
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
 msgstr ""
@@ -9345,11 +9354,11 @@ msgstr "Показать порядок обновления экрана."
 
 #: src/menu_events.cpp:2511
 msgid "Debug foreground terrain."
-msgstr ""
+msgstr "Отладка верхнего слоя местности."
 
 #: src/menu_events.cpp:2513
 msgid "Debug layers from terrain under the mouse."
-msgstr ""
+msgstr "Отладка слоёв местности под курсором."
 
 #: src/menu_events.cpp:2514
 msgid "Show fps."
@@ -9392,20 +9401,23 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
+"Изменить номер хода (и время дня), или увеличить его на один, если значение "
+"не указано."
 
 #: src/menu_events.cpp:2535
 msgid "[turn]"
-msgstr ""
+msgstr "[ход]"
 
 #: src/menu_events.cpp:2537
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
+"Изменить лимит ходов, или отключить совсем, если значение не указано или -1."
 
 #: src/menu_events.cpp:2537
 msgid "[limit]"
-msgstr ""
+msgstr "[лимит]"
 
 #: src/menu_events.cpp:2539
 msgid "Turn debug mode on."
@@ -9437,7 +9449,7 @@ msgstr "Запустить Инспектор состояния игры"
 
 #: src/menu_events.cpp:2551
 msgid "Manage persistence data"
-msgstr ""
+msgstr "Управление сохранёнными данными"
 
 #: src/menu_events.cpp:2553
 msgid "<name>[=<command>]"
@@ -9470,12 +9482,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2566
 msgid "Discover all units in help."
-msgstr "Раскройте всех бойцов в справке"
+msgstr "Раскрыть всех бойцов в справке."
 
 #: src/menu_events.cpp:2568
-#, fuzzy
 msgid "'Undiscover' all units in help."
-msgstr "Раскройте всех бойцов в справке"
+msgstr "Скрыть всех бойцов в справке."
 
 #: src/menu_events.cpp:2570
 msgid "Create a unit."
@@ -9507,7 +9518,7 @@ msgstr "Переключить отрисовку кодов местности 
 
 #: src/menu_events.cpp:2587
 msgid "Toggle planning mode."
-msgstr ""
+msgstr "Переключить режим планирования."
 
 #: src/menu_events.cpp:2630
 msgid "Unknown debug level: '$level'."
@@ -9515,7 +9526,7 @@ msgstr "Неизвестный уровень отладки:  '$level'."
 
 #: src/menu_events.cpp:2632 src/menu_events.cpp:2641
 msgid "error"
-msgstr "Ошибка"
+msgstr "ошибка"
 
 #: src/menu_events.cpp:2639
 msgid "Unknown debug domain: '$domain'."
@@ -9620,9 +9631,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Не могу изменить управление вышедшей из пределов стороны:  '$side'. "
 
 #: src/menu_events.cpp:3242
-#, fuzzy
 msgid "Layers"
-msgstr "Игроки: "
+msgstr "Слои"
 
 #: src/menu_events.cpp:3315
 msgid "Choose Scenario (Debug!)"
@@ -9663,17 +9673,16 @@ msgid "Variable not found"
 msgstr "Переменная не найдена"
 
 #: src/menu_events.cpp:3470
-#, fuzzy
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic "
 "or liminal."
 msgstr ""
 "Неизвестный тип: «$alignment», должно быть либо «порядочный», либо "
-"«хаотичный», либо «нейтральный»."
+"«хаотичный», либо «нейтральный», либо «теневой»."
 
 #: src/menu_events.cpp:3520
 msgid "Do you wish to clear all of your discovered units from help?"
-msgstr ""
+msgstr "Вы точно хотите убрать всю информацию об открытых бойцах из справки?"
 
 #: src/menu_events.cpp:3531
 msgid "Invalid unit type"
@@ -9684,14 +9693,12 @@ msgid "Invalid location"
 msgstr "Неверное место"
 
 #: src/menu_events.cpp:3579
-#, fuzzy
 msgid "Planning mode activated!"
-msgstr "Режим отладки включён!"
+msgstr "Режим планирования включён!"
 
 #: src/menu_events.cpp:3582
-#, fuzzy
 msgid "Planning mode deactivated!"
-msgstr "Режим отладки отключён!"
+msgstr "Режим планирования отключён!"
 
 #: src/menu_events.cpp:3590
 msgid "ai"
@@ -9702,13 +9709,12 @@ msgid "prompt^Command:"
 msgstr "Команда:"
 
 #: src/mouse_events.cpp:634
-#, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits "
 "left."
 msgstr ""
-"Вы можете вербовать или призывать бойцов, только если Ваш лидер находится в "
-"замке."
+"Вы не можете убрать лидера из цитадели до тех пор, пока у Вас остаются "
+"запланированные бойцы для вербовки."
 
 #: src/mouse_events.cpp:834 src/mouse_events.cpp:914
 msgid "Attack Enemy"
@@ -9880,9 +9886,8 @@ msgid "I’m Ready"
 msgstr "Я готов"
 
 #: src/multiplayer_connect.cpp:1016
-#, fuzzy
 msgid "Add named local player"
-msgstr "Анонимный локальный игрок"
+msgstr "Добавить игрока"
 
 #: src/multiplayer_connect.cpp:1025
 msgid "The scenario is invalid because it has no id."
@@ -9894,7 +9899,7 @@ msgstr "Этот сценарий неправильный, потому что 
 
 #: src/multiplayer_connect.cpp:1096
 msgid "Enter a name for the new player"
-msgstr ""
+msgstr "Введите имя нового игрока"
 
 #: src/multiplayer_connect.cpp:1459
 msgid "Network Player"
@@ -9921,9 +9926,8 @@ msgid "Waiting for players to join..."
 msgstr "Ждем подключения игроков..."
 
 #: src/multiplayer_connect.cpp:1739
-#, fuzzy
 msgid "Waiting for players to choose factions..."
-msgstr "Ждем подключения игроков..."
+msgstr "Ждём, пока игроки выберут фракцию..."
 
 #: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:731
 msgid "Create Game"
@@ -10169,8 +10173,7 @@ msgid ""
 "filter."
 msgstr ""
 "Включить фильтр игр. Если выключен, будут видны все игры, вне зависимости от "
-"настроек фильтра.Включить фильтр игр. Если выключен, будут видны все игры, "
-"вне зависимости от настроек фильтра."
+"настроек фильтра."
 
 #: src/multiplayer_lobby.cpp:758
 msgid ""
@@ -10178,8 +10181,7 @@ msgid ""
 "are not interested in."
 msgstr ""
 "Показывать только игры, которые *не* соответствуют Вашему фильтру. Помогает "
-"убрать игры, которые Вам неинтересны.Показывать только игры, которые *не* "
-"соответствуют Вашему фильтру. Помогает убрать игры, которые Вам неинтересны."
+"убрать игры, которые Вам неинтересны."
 
 #: src/multiplayer_lobby.cpp:762
 msgid "Only show games that have at least one vacant slot"
@@ -10197,7 +10199,7 @@ msgstr "Показывать только игры с указанным тек�
 
 #: src/multiplayer_lobby.cpp:904
 msgid "Joining this game requires a password."
-msgstr "Присоединение к этой игре требует ввода пароля."
+msgstr "Эта игра под паролем."
 
 #: src/multiplayer_lobby.cpp:905
 msgid "Password: "
@@ -10241,7 +10243,7 @@ msgstr "Выберите фракцию:"
 
 #: src/multiplayer_wait.cpp:301
 msgid "Starting position: "
-msgstr "Место начала: "
+msgstr "Начальная позиция: "
 
 #: src/multiplayer_wait.cpp:506
 msgid "multiplayer_starting_gold^Gold"
@@ -10261,17 +10263,16 @@ msgstr "Клиент отключен"
 
 #: src/network.cpp:557
 msgid "Could not add socket to socket set"
-msgstr "Не могу добавить сокет к набору сокетов"
+msgstr "Невозможно добавить сокет к набору сокетов"
 
 #: src/network.cpp:569
 msgid "Could not send initial handshake"
-msgstr "Не могу отправить данные для инициализации"
+msgstr "Невозможно отправить данные для инициализации"
 
 #: src/network_manager_ana.cpp:650 src/network_manager_ana.cpp:667
 #: src/network_manager_ana.cpp:689
-#, fuzzy
 msgid "Could not connect to host"
-msgstr "Не могу подключиться к серверу."
+msgstr "Невозможно подключиться к серверу"
 
 #: src/pathfind/pathfind.cpp:487
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -10295,18 +10296,14 @@ msgid "Back to turn "
 msgstr "Вернуться к ходу "
 
 #: src/play_controller.cpp:1309
-#, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
-msgstr ""
-"Игра не может быть синхронизирована, выходим. Вы хотите сохранить лог ошибок "
-"Вашей игры?"
+msgstr "Ошибка синхронизации, нет смысла продолжать. Вы хотите сохранить игру?"
 
 #: src/play_controller.cpp:1310 src/replay_controller.cpp:221
-#, fuzzy
 msgid "Error details:"
-msgstr "Ошибка:"
+msgstr "Подробности ошибки:"
 
 #: src/playcampaign.cpp:137 src/playcampaign.cpp:177
 msgid "Defeat"
@@ -10350,7 +10347,7 @@ msgstr "Ход сменился"
 
 #: src/playmp_controller.cpp:224
 msgid "Undoing moves not yet transmitted to the server."
-msgstr "Отменяю ходы, которые не переданы на сервер."
+msgstr "Отмена ходов, не переданных на сервер."
 
 #: src/playmp_controller.cpp:397
 msgid "Waiting for next scenario..."
@@ -10456,13 +10453,11 @@ msgid "The game is over."
 msgstr "Игра окончена."
 
 #: src/playsingle_controller.cpp:511
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Произошло отключение, игра не может быть\n"
-" продолжена. Хотите сохранить игру?"
+"Подключение прервано, игра не может быть продолжена. Хотите сохранить игру?"
 
 #: src/playsingle_controller.cpp:667
 msgid "It is now $name|’s turn"
@@ -10501,13 +10496,12 @@ msgid "$player has left the game. What do you want to do?"
 msgstr "$player вышел из игры. Что Вы будете делать?"
 
 #: src/replay_controller.cpp:220
-#, fuzzy
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
 "Do you want to save the game?"
 msgstr ""
-"Произошло отключение, игра не может быть\n"
-" продолжена. Хотите сохранить игру?"
+"Повтор испорчен или не синхронизирован, нет смысла продолжать. Хотите "
+"сохранить игру?"
 
 #: src/savegame.cpp:207 src/savegame.cpp:209
 msgid " replay"
@@ -10574,7 +10568,7 @@ msgstr "Сохранить игру"
 
 #: src/serialization/parser.cpp:124
 msgid "Unexpected characters at line start"
-msgstr "Неожиданные символы в стартовой строке"
+msgstr "Неожиданные символы в начале строки"
 
 #: src/serialization/parser.cpp:142
 msgid "Missing closing tag for tag $tag at $pos"
@@ -10703,7 +10697,7 @@ msgstr "Неизвестный тип бойца: '$type|' в списке ос�
 
 #: src/unit.cpp:2321 src/unit.cpp:2518 src/unit.cpp:2589
 msgid " and "
-msgstr " и"
+msgstr " и "
 
 #: src/unit.cpp:2332
 msgid "$attack_list|: $effect_description"
@@ -10759,7 +10753,7 @@ msgstr "порядочный"
 
 #: src/unit_types.cpp:964
 msgid "liminal"
-msgstr ""
+msgstr "теневой"
 
 #: src/unit_types.cpp:964
 msgid "neutral"
@@ -10774,9 +10768,8 @@ msgid "female^lawful"
 msgstr "порядочная"
 
 #: src/unit_types.cpp:965
-#, fuzzy
 msgid "female^liminal"
-msgstr "верная"
+msgstr "теневая"
 
 #: src/unit_types.cpp:965
 msgid "female^neutral"
@@ -10791,9 +10784,7 @@ msgstr "нейтральная"
 #~ msgid ""
 #~ "Set the password that people wanting to join your game as players must "
 #~ "enter."
-#~ msgstr ""
-#~ "Установить пароль, чтобы люди, желающие присоединиться к вашей игре, "
-#~ "должны были залогиниться."
+#~ msgstr "Установить пароль для желающих присоединиться к Вашей игре."
 
 #~ msgid "Difficulty"
 #~ msgstr "Сложность"
