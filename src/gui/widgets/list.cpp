@@ -343,16 +343,15 @@ void tlist::init()
 {
 	init_grid(cast<tlistbox_definition::tresolution>(config()).grid);
 
-	tgrid *g = find_widget<tgrid>(&grid(), "_list_grid", false, true);
-	g->set_rows_cols(1, 1);
-	g->set_child(generator_, 0, 0, tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT |
-		tgrid::VERTICAL_GROW_SEND_TO_CLIENT, 0);
+	set_single_child(
+			  find_widget<tgrid>(&grid(), "_list_grid", false)
+			, generator_);
 
 	/*
 	 * These items should be managed by the new listbox class.
 	 * So make them invisible for now.
 	 */
-	g = find_widget<tgrid>(&grid(), "_header_grid", false, false);
+	tgrid* g = find_widget<tgrid>(&grid(), "_header_grid", false, false);
 	if(g) g->set_visible(twidget::INVISIBLE);
 
 	g = find_widget<tgrid>(&grid(), "_footer_grid", false, false);
