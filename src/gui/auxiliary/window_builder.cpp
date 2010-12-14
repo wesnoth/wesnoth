@@ -15,8 +15,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/auxiliary/window_builder_private.hpp"
-
 #include "asserts.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
@@ -472,14 +470,6 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 
 	DBG_GUI_P << "Window builder: grid has "
 		<< rows << " rows and " << cols << " columns.\n";
-}
-
-tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
-	tbuilder_widget(cfg),
-	flags(implementation::read_flags(cfg)),
-	border_size(cfg["border_size"]),
-	widget(create_builder_widget(cfg))
-{
 }
 
 twidget* tbuilder_grid::build() const
