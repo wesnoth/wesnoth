@@ -618,3 +618,89 @@ function wml_actions.unpetrify(cfg)
 		unit.status.petrified = false
 	end
 end
+
+function wml_actions.harm_unit(cfg)
+	local amount = tonumber(cfg.amount) or helper.wml_error("[harm_unit] has missing or wrong required amount= attribute")
+	local filter = helper.get_child(cfg, "filter") or helper.wml_error("[harm_unit] missing required [filter] tag")
+	local variable = cfg.variable
+	local animate = cfg.animate
+	local delay = cfg.delay or 500
+	local kill = cfg.kill
+	local fire_event = cfg.fire_event
+	local _ = wesnoth.textdomain "wesnoth"
+	-- #textdomain wesnoth
+
+	local private_unit = wesnoth.create_unit { type = "Fog Clearer", alignment = cfg.alignment or "neutral" }
+	wesnoth.add_modification(private_unit, "object", { { "effect",
+		{ apply_to = "new_attack", type = cfg.damage_type or "dummy", range = "dummy", damage = amount, number = 1,
+		{ "specials", { { "chance_to_hit", { value = 100, cumulative = false } } } } } } })
+
+	for index, unit_to_harm in ipairs(wesnoth.get_units(filter)) do
+		if not fire_event or unit_to_harm.valid then
+			if animate then
+				wesnoth.scroll_to_tile(unit_to_harm.x, unit_to_harm.y, true)
+			end
+
+			private_unit.x, private_unit.y = unit_to_harm.x, unit_to_harm.y
+			local att_stats, def_stats = wesnoth.simulate_combat(private_unit, 1, unit_to_harm)
+			local temp_new_hitpoints = def_stats.average_hp
+
+			if kill == false and temp_new_hitpoints <= 0 then
+				temp_new_hitpoints = 1
+			end
+
+			local damage = unit_to_harm.hitpoints - temp_new_hitpoints
+			unit_to_harm.hitpoints = temp_new_hitpoints
+			local text = string.format("%d%s", damage, "\n")
+			local add_tab = false
+			local gender = unit_to_harm.__cfg.gender
+
+			local function set_status(name, male_string, female_string, sound)
+				if not cfg[name] or unit_to_harm.status[name] then return end
+				if gender == "female" then
+					text = string.format("%s%s%s", text, tostring(female_string), "\n")
+				else
+					text = string.format("%s%s%s", text, tostring(male_string), "\n")
+				end
+
+				unit_to_harm.status[name] = true
+				add_tab = true
+
+				if animate and sound then -- for unhealable, that has no sound
+					wesnoth.play_sound (sound)
+				end
+			end
+
+			set_status("poisoned", _"poisoned", _"female^poisoned", "poison.ogg")
+			set_status("slowed", _"slowed", _"female^slowed", "slowed.wav")
+			set_status("petrified", _"petrified", _"female^petrified", "petrified.ogg")
+			set_status("unhealable", _"unhealable", _"female^unhealable")
+
+			if add_tab then
+				text = string.format("%s%s", "\t", text)
+			end
+
+			if animate then
+				wml_actions.animate_unit({ flag = "defend", hits = true, { "filter", { id = unit_to_harm.id } },
+					{ "secondary_attack", helper.get_child(cfg, "secondary_attack") }, text = text, red = 255, with_bars = true })
+			else
+				wesnoth.float_label(unit_to_harm.x, unit_to_harm.y, string.format("<span foreground='red'>%s</span>", text))
+			end
+
+			if kill ~= false and unit_to_harm.hitpoints <= 0 then
+				wml_actions.kill({ id = unit_to_harm.id, animate = animate, fire_event = fire_event })
+			end
+
+			if animate then
+				wesnoth.delay(delay)
+			end
+
+			if variable then
+				wesnoth.set_variable(string.format("%s[%d]", variable, index - 1), { harm_amount = damage })
+			end
+
+			wml_actions.redraw {}
+		end
+	end
+end
+
