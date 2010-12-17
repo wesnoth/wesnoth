@@ -633,13 +633,28 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 
 WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 {
-	int side_num = cfg["side"].to_int(1);
-	unsigned index = side_num - 1;
-	if (index >= resources::teams->size()) return;
+	const config::attribute_value sides = cfg["side"];
+	const std::string& sides_string = sides;
 
-	foreach (const std::string &r, utils::split(cfg["type"])) {
-		(*resources::teams)[index].add_recruit(r);
-		preferences::encountered_units().insert(r);
+	if (sides.blank() || (std::find(sides_string.begin(), sides_string.end(), ',') == sides_string.end())) {
+		//no side= given or not a comma-separated list
+		const unsigned index = sides.to_int(1) - 1;
+		if (index >= resources::teams->size()) return;
+		foreach (const std::string &type, utils::split(cfg["type"])) {
+			(*resources::teams)[index].add_recruit(type);
+			preferences::encountered_units().insert(type);
+		}
+	}
+	else {
+		const std::vector<std::string> types = utils::split(cfg["type"]);
+		foreach (const std::string& side, utils::split(sides_string)) {
+			const unsigned index = lexical_cast_default<int, const std::string&>(side, 1) - 1;
+			if (index >= resources::teams->size()) continue;
+			foreach (const std::string& type, types) {
+				(*resources::teams)[index].add_recruit(type);
+				preferences::encountered_units().insert(type);
+			}
+		}
 	}
 }
 
