@@ -352,7 +352,7 @@ function wml_actions.store_unit(cfg)
 		if kill_units then wesnoth.put_unit(u.x, u.y) end
 	end
 
-	if (not cfg.x or cfg.x == "recall") and (not cfg.y or cfg.y == "recall") then
+	if (not filter.x or filter.x == "recall") and (not filter.y or filter.y == "recall") then
 		for i,u in ipairs(wesnoth.get_recall_units(filter)) do
 			local ucfg = u.__cfg
 			ucfg.x = "recall"
