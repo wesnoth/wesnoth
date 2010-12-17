@@ -8,12 +8,12 @@ REM c = Country
 echo generating key...
 keytool.exe -genkey -dname "cn=Battle for Wesnoth, ou=Wesnoth, o=Wesnoth" -alias wesnoth -keypass %1 -keystore keystore -storepass %2 -validity 1095
 echo signing feature
-jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/features/Wesnoth_Eclipse_Plugin_1.0.0.jar wesnoth
-echo signing org.wesnoth.wml_1.1.0.jar
-jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/plugins/org.wesnoth.wml_1.1.0.jar wesnoth
-echo signing org.wesnoth.wml.ui_1.1.0.jar
-jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/plugins/org.wesnoth.wml.ui_1.1.0.jar wesnoth
-echo signing org.wesnoth_1.0.0.jar
-jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/plugins/org.wesnoth_1.0.0.jar wesnoth
+jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/features/Wesnoth_Eclipse_Plugin_1.0.1.jar wesnoth
+echo signing org.wesnoth.wml_1.1.1.jar
+jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/plugins/org.wesnoth.wml_1.1.1.jar wesnoth
+echo signing org.wesnoth.wml.ui_1.1.1.jar
+jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/plugins/org.wesnoth.wml.ui_1.1.1.jar wesnoth
+echo signing org.wesnoth_1.0.1.jar
+jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/plugins/org.wesnoth_1.0.1.jar wesnoth
 echo finished.
 @pause

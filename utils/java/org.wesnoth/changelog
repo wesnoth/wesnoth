@@ -1,9 +1,20 @@
 Eclipse plugin changelog
 
 1.0.1
+	* The plugin has it's own webpage: http://eclipse.wesnoth.org
+	* Created the standalone version of the plugin. It is available on plugin's webpage.
 	* Fixed the file associations for .map files. Now the game editor will be the default one.
-	* Optimized the building by not reloading the macros cache if no config files have been modified
-	* The plugin is now signed
+	* Optimized the building by not reloading the macros cache if no config files have been modified.
+	* The plugin is now signed.
+	* Enhanced the documentation.
+	* Added tooltip to each preference in preferences page.
+	* Added marker support when checking with wmllint and wmlscope. The markers will appear
+	in each file, at the reported line and in the Problems Pane (usually the one under the editor)
+	* The user is asked at the workspace setup phase whether to create or not projects for 
+	mainline projects
+	* Fixed a problem when an empty project won't open after creating it.
+	* Fixed bug #16602.
+	* Fixed bug #16984 - The path for python executable can now be set via preferences page.
 1.0.0
 	* Fixed a problem in cases when the workbench isn't started and the
 	  welcome message would have caused error starting the plugin
