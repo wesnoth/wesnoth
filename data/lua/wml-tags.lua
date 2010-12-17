@@ -37,8 +37,8 @@ function wml_actions.message(cfg)
 	end
 end
 
-local function get_team(cfg, tag)
-	local side = tonumber(cfg.side or 1) or
+local function get_team(side, tag)
+	side = tonumber(side or 1) or
 		helper.wml_error(tag .. " given a noninteger side= attribute.")
 	local team = wesnoth.sides[side] or
 		helper.wml_error(tag .. " given an invalid side= attribute.")
@@ -73,14 +73,14 @@ function wml_actions.chat(cfg)
 end
 
 function wml_actions.gold(cfg)
-	local team = get_team(cfg, "[gold]")
+	local team = get_team(cfg.side, "[gold]")
 	local amount = tonumber(cfg.amount) or
 		helper.wml_error "[gold] missing required amount= attribute."
 	team.gold = team.gold + amount
 end
 
 function wml_actions.store_gold(cfg)
-	local team = get_team(cfg, "[store_gold]")
+	local team = get_team(cfg.side, "[store_gold]")
 	wesnoth.set_variable(cfg.variable or "gold", team.gold)
 end
 
@@ -135,26 +135,31 @@ function wml_actions.fire_event(cfg)
 end
 
 function wml_actions.disallow_recruit(cfg)
-	local team = get_team(cfg, "[disallow_recruit]")
-	local v = team.recruit
-	for w in string.gmatch(cfg.type, "[^%s,][^,]*") do
-		for i, r in ipairs(v) do
-			if r == w then
-				table.remove(v, i)
-				break
+	for side in string.gmatch(cfg.side or 1, "[^%s,][^,]*") do
+		local team = get_team(side, "[disallow_recruit]")
+		local v = team.recruit
+		for w in string.gmatch(cfg.type, "[^%s,][^,]*") do
+			for i, r in ipairs(v) do
+				if r == w then
+					table.remove(v, i)
+					break
+				end
 			end
 		end
+		team.recruit = v
 	end
-	team.recruit = v
 end
 
 function wml_actions.set_recruit(cfg)
-	local team = get_team(cfg, "[set_recruit]")
-	local v = {}
-	for w in string.gmatch(cfg.recruit, "[^%s,][^,]*") do
-		table.insert(v, w)
+	for side in string.gmatch(cfg.side or 1, "[^%s,][^,]*") do
+		local team = get_team(side, "[set_recruit]")
+		local v = {}
+		local recruit = cfg.recruit or helper.wml_error("[set_recruit] missing required recruit= attribute")
+		for w in string.gmatch(recruit, "[^%s,][^,]*") do
+			table.insert(v, w)
+		end
+		team.recruit = v
 	end
-	team.recruit = v
 end
 
 function wml_actions.store_map_dimensions(cfg)
