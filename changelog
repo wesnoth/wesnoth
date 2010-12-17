@@ -4,7 +4,7 @@ Version 1.9.3+svn:
      * Fixed bug #17273: Made difficulty selection conform to the style of all
        other mainline campaigns
  * Graphics:
-   * Terrain: added transitions for the wood floor.       
+   * Terrain: added transitions for the wood floor.
  * Language and i18n:
    * Updated translations: Finnish, Japanese, Russian
  * User interface:
@@ -15,6 +15,8 @@ Version 1.9.3+svn:
    * Better detect mouse button state when window is activated.
  * WML engine:
    * New [harm_unit] tag for damaging, and eventually killing, units.
+   * [allow_recruit], [disallow_recruit] and [set_recruit] now accept a
+     comma-separated list for side=.
 
 Version 1.9.3:
  * Campaigns:
