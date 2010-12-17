@@ -336,12 +336,13 @@ function wml_actions.store_unit(cfg)
 	local filter = helper.get_child(cfg, "filter") or
 		helper.wml_error "[store_unit] missing required [filter] tag"
 	local kill_units = cfg.kill
+	local mode = cfg.mode
 
 	local var = cfg.variable or "unit"
 	local idx = 0
-	if cfg.mode == "append" then
+	if mode == "append" then
 		idx = wesnoth.get_variable(var .. ".length")
-	else
+	elseif mode ~= "replace" then
 		wesnoth.set_variable(var)
 	end
 
