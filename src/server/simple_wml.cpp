@@ -236,14 +236,14 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 		case '#':
 			s = strchr(s, '\n');
 			if(s == NULL) {
-				throw error("could not find newline after #");
+				throw error("did not find newline after '#'");
 			}
 			break;
 		default: {
 			const char* end = strchr(s, '=');
 			if(end == NULL) {
 				ERR_SWML << "attribute: " << s << "\n";
-				throw error("could not find '=' after attribute");
+				throw error("did not find '=' after attribute");
 			}
 
 			string_span name(s, end - s);
@@ -251,7 +251,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			if(*s == '_') {
 				s = strchr(s, '"');
 				if(s == NULL) {
-					throw error("could not find '\"' after _");
+					throw error("did not find '\"' after '_'");
 				}
 			}
 
@@ -261,34 +261,47 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))\n";
 					throw error("did not find end of attribute");
 				}
+				if (memchr(s, '"', end - s))
+					throw error("found stray quotes in unquoted value");
 				goto read_attribute;
 			}
 
 			end = s;
 
-			for(;;) {
+			for(;;)
+			{
+				// Read until the first single double quote.
 				while((end = strchr(end+1, '"')) && end[1] == '"') {
 					++end;
 				}
-
-				if(end == NULL) {
-					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))\n";
+				if(end == NULL)
 					throw error("did not find end of attribute");
-				}
 
-				const char* endline = end;
-				while(*endline && *endline != '\n' && *endline != '+') {
+				// Stop if newline.
+				const char *endline = end + 1;
+				while (*endline == ' ') ++endline;
+				if (*endline == '\n') break;
+
+				// Read concatenation marker.
+				if (*(endline++) != '+')
+					throw error("did not find newline after end of attribute");
+				if (*(endline++) != '\n')
+					throw error("did not find newline after '+'");
+
+				// Read textdomain marker.
+				if (*endline == '#') {
+					endline = strchr(endline + 1, '\n');
+					if (!endline)
+						throw error("did not find newline after '#'");
 					++endline;
 				}
 
-				if(*endline != '+') {
-					break;
-				}
-
-				end = strchr(endline, '"');
-				if(end == NULL) {
-					throw error("did not find quotes after +");
-				}
+				// Read indentation and start of string.
+				while (*endline == '\t') ++endline;
+				if (*endline == '_') ++endline;
+				if (*endline != '"')
+					throw error("did not find quotes after '+'");
+				end = endline;
 			}
 
 			++s;
