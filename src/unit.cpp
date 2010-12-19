@@ -802,19 +802,18 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	}
 
 	// If unit has specific profile, remember it and keep it after advancing
+	const unit_type *u_type = type();
 	std::string profile = old_cfg["profile"].str();
-	if (!profile.empty()) {
-		const unit_type *u_type = type();
-		if (u_type != NULL && profile != u_type->big_profile()) {
-			new_cfg["profile"] = profile;
-		}
+	if (!profile.empty() && (!u_type || profile != u_type->big_profile())) {
+		new_cfg["profile"] = profile;
+	} else if (t) {
+		new_cfg["profile"] = t->big_profile();
 	}
 	profile = old_cfg["small_profile"].str();
-	if (!profile.empty()) {
-		const unit_type *u_type = type();
-		if (u_type != NULL && profile != u_type->small_profile()) {
-			new_cfg["small_profile"] = profile;
-		}
+	if (!profile.empty() && (!u_type || profile != u_type->small_profile())) {
+		new_cfg["small_profile"] = profile;
+	} else if (t) {
+		new_cfg["small_profile"] = t->small_profile();
 	}
 
 	cfg_.swap(new_cfg);
