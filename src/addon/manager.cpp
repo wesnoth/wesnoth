@@ -1260,6 +1260,7 @@ namespace {
 					_("Choose the add-on to download."));
 				addon_dialog.add_button(new gui::standard_dialog_button(disp.video(), _("Download"), 0, false), gui::dialog::BUTTON_STANDARD);
 				addon_dialog.add_button(new gui::standard_dialog_button(disp.video(), _("Done"), 1, true), gui::dialog::BUTTON_STANDARD);
+				addon_dialog.set_basic_behavior(gui::OK_CANCEL);
 				gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
 
 				//make sure the icon isn't too big
