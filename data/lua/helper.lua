@@ -23,7 +23,7 @@ end
 function helper.all_teams()
 	local function f(s)
 		local i = s.i
-		local team = wesnoth.get_side(i)
+		local team = wesnoth.sides[i]
 		s.i = i + 1
 		return team
 	end
