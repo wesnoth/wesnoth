@@ -516,22 +516,21 @@ surface scale_surface_blended(const surface &surf, int w, int h, bool optimize)
 			double xsrc = 0.0;
 			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
 				double red = 0.0, green = 0.0, blue = 0.0, alpha = 0.0;
-
 				double summation = 0.0;
 
 				// We now have a rectangle, (xsrc,ysrc,xratio,yratio)
 				// which we want to derive the pixel from
-				for(double xloc = xsrc; xloc < xsrc+xratio; xloc += 1.0) {
-					const double xsize = std::min<double>(std::floor(xloc+1.0)-xloc,xsrc+xratio-xloc);
-					for(double yloc = ysrc; yloc < ysrc+yratio; yloc += 1.0) {
-						const int xsrcint = std::max<int>(0,std::min<int>(src->w-1,static_cast<int>(xsrc)));
-						const int ysrcint = std::max<int>(0,std::min<int>(src->h-1,static_cast<int>(ysrc)));
-
-						const double ysize = std::min<double>(std::floor(yloc+1.0)-yloc,ysrc+yratio-yloc);
+				int xloc1 = int(xsrc), xloc2 = std::min<int>(int(xsrc + xratio), src->w - 1);
+				int yloc1 = int(ysrc), yloc2 = std::min<int>(int(ysrc + yratio), src->h - 1);
+				for (int xloc = xloc1; xloc <= xloc2; ++xloc)
+				{
+					double xsize = std::min<double>(std::min<double>(xloc + 1 - xsrc, xsrc + xratio - xloc), 1.0);
+					for (int yloc = yloc1; yloc <= yloc2; ++yloc)
+					{
+						double ysize = std::min<double>(std::min<double>(yloc + 1 - ysrc, ysrc + yratio - yloc), 1.0);
 
 						Uint8 r,g,b,a;
-
-						SDL_GetRGBA(src_pixels[ysrcint*src->w + xsrcint],src->format,&r,&g,&b,&a);
+						SDL_GetRGBA(src_pixels[yloc * src->w + xloc], src->format, &r, &g, &b, &a);
 						const double value = xsize*ysize*double(a)/255.0;
 						summation += value;
 
