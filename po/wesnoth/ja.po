@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-12-08 18:05+0100\n"
-"PO-Revision-Date: 2010-12-09 02:02+0900\n"
+"PO-Revision-Date: 2010-12-11 23:11+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
 "Language: Japanese\n"
@@ -1905,7 +1905,6 @@ msgstr "勇敢な者にとっては、光や闇が嫌いであってもそれに
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:408
-#, fuzzy
 msgid "Feral"
 msgstr "野生"
 
@@ -5115,15 +5114,13 @@ msgstr "機械"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "elemental"
-msgstr "潜伏"
+msgstr ""
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:53
-#, fuzzy
 msgid "female^elemental"
-msgstr "忠義"
+msgstr ""
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:66
@@ -5207,21 +5204,18 @@ msgstr "昼／夜の不利な時間帯でも通常通りに戦います"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
 msgstr "野生"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
 msgstr "野生"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "Receive only 40% defense in land-based villages"
-msgstr "村では防御が 40% になってしまいます。"
+msgstr "陸にある村では防御が 40% になってしまいます"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -6570,9 +6564,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:129
-#, fuzzy
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "- Gweddry の自叙伝, 627YW"
+msgstr "<i>― Gweddry の自叙伝, 627YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:20
@@ -6979,9 +6972,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:141
-#, fuzzy
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "- Li'sar 王女, 515YW"
+msgstr "<i>― Li’sar 王女, 515YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:144
@@ -7019,9 +7011,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:157 data/hardwired/tips.cfg:201
-#, fuzzy
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "- Chantal の巻物, 516YW"
+msgstr "<i>― Chantal の巻物, 516YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
@@ -7100,9 +7091,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:185
-#, fuzzy
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "- 女王 Li'sar、528YW"
+msgstr "<i>― Li’sar 女王, 528YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
@@ -7714,7 +7704,6 @@ msgid "Old version"
 msgstr "古いバージョン"
 
 #: src/addon/manager.cpp:999
-#, fuzzy
 msgid "Update add-ons"
 msgstr "アドオンの更新"
 
@@ -7839,9 +7828,8 @@ msgid "Uninstall add-ons"
 msgstr "アドオンの削除"
 
 #: src/addon/manager.cpp:1360
-#, fuzzy
 msgid "Remove"
-msgstr "移動"
+msgstr "削除"
 
 #: src/addon/manager.cpp:1367
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -8162,14 +8150,12 @@ msgid "No advancement"
 msgstr "レベルアップ"
 
 #: src/generate_report.cpp:143
-#, fuzzy
 msgid "Advances to:"
-msgstr "クラスチェンジ先: "
+msgstr "クラスチェンジ先:"
 
 #: src/generate_report.cpp:166
-#, fuzzy
 msgid "Trait: "
-msgstr "特性"
+msgstr "特性: "
 
 #: src/generate_report.cpp:180
 msgid "invisible: "
@@ -8224,7 +8210,6 @@ msgid "Alignment: "
 msgstr "属性: "
 
 #: src/generate_report.cpp:219
-#, fuzzy
 msgid "Ability: "
 msgstr "能力: "
 
@@ -8241,42 +8226,36 @@ msgid "Experience Modifier: "
 msgstr "経験の修正: "
 
 #: src/generate_report.cpp:290
-#, fuzzy
 msgid "Terrain: "
-msgstr "地形"
+msgstr "地形: "
 
 #: src/generate_report.cpp:307
 msgid "maximum^max."
-msgstr ""
+msgstr "最大値."
 
 #: src/generate_report.cpp:307
 msgid "minimum^min."
-msgstr ""
+msgstr "最小値."
 
 #: src/generate_report.cpp:312
-#, fuzzy
 msgid "Defense: "
-msgstr "防御"
+msgstr "防御: "
 
 #: src/generate_report.cpp:387
-#, fuzzy
 msgid "Weapon: "
-msgstr "武器の射程: "
+msgstr "武器: "
 
 #: src/generate_report.cpp:388
-#, fuzzy
 msgid "Damage: "
-msgstr "ダメージ"
+msgstr "ダメージ: "
 
 #: src/generate_report.cpp:391
-#, fuzzy
 msgid "Base damage: "
-msgstr "総ダメージ"
+msgstr "基本ダメージ: "
 
 #: src/generate_report.cpp:393
-#, fuzzy
 msgid "Time of day: "
-msgstr "時刻"
+msgstr "時刻修正: "
 
 #: src/generate_report.cpp:397
 msgid "Leadership: "
@@ -8288,9 +8267,8 @@ msgid "Slowed: "
 msgstr "遅化: "
 
 #: src/generate_report.cpp:405
-#, fuzzy
 msgid "Attacks: "
-msgstr "攻撃側"
+msgstr "攻撃回数: "
 
 #: src/generate_report.cpp:407
 msgid "Base attacks: "
@@ -8302,19 +8280,17 @@ msgid "Swarm: "
 msgstr "群れ"
 
 #: src/generate_report.cpp:421
-#, fuzzy
 msgid "Weapon range: "
 msgstr "武器の射程: "
 
 #: src/generate_report.cpp:422
-#, fuzzy
 msgid "Damage type: "
 msgstr "ダメージの種類: "
 
+# [ja] それぞれのユニットに与えるダメージの一覧表示のラベル
 #: src/generate_report.cpp:423
-#, fuzzy
 msgid "Damage versus: "
-msgstr "ダメージの種類: "
+msgstr "与えるダメージ: "
 
 #: src/generate_report.cpp:474
 #, fuzzy
@@ -8327,9 +8303,8 @@ msgid "Parry:"
 msgstr "% 回避"
 
 #: src/generate_report.cpp:494
-#, fuzzy
 msgid "Weapon special: "
-msgstr "特殊武器"
+msgstr "武器の特殊効果: "
 
 #: src/generate_report.cpp:528
 msgid "Lawful units: "
