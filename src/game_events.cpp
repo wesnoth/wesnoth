@@ -2496,6 +2496,11 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	std::string side_for_raw = cfg["side_for"];
 	if (!side_for_raw.empty())
 	{
+		if (has_input) {
+			lg::wml_error << "[message]side_for= can only be used for messages that don't query any user input.\n";
+			return;
+		}
+
 		bool side_for_show = false;
 
 		std::vector<std::string> side_for =
