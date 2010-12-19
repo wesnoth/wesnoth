@@ -161,4 +161,13 @@ surface darken_function::operator()(const surface &src) const
 	return ret;
 }
 
+surface background_function::operator()(const surface &src) const
+{
+	surface ret = make_neutral_surface(src);
+	SDL_FillRect(ret, NULL, SDL_MapRGBA(ret->format, color_.r, color_.g, color_.b, color_.unused));
+	SDL_SetAlpha(src, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
+	SDL_BlitSurface(src, NULL, ret, NULL);
+	return ret;
+}
+
 } /* end namespace image */

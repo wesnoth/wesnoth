@@ -824,6 +824,16 @@ surface locator::load_image_sub_file() const
 				else if (function == "DARKEN") {
 					functor_queue.push_back(new darken_function());
 				}
+				// Add a background color.
+				else if (function == "BG")
+				{
+					int c[4] = { 0, 0, 0, 255 };
+					std::vector<std::string> factors = utils::split(field, ',');
+					for (int i = 0; i < std::min<int>(factors.size(), 4); ++i) {
+						c[i] = lexical_cast_default<int>(factors[i]);
+					}
+					functor_queue.push_back(new background_function(create_color(c[0], c[1], c[2], c[3])));
+				}
 				else {
 					ERR_DP << "unknown image function in path: " << function << '\n';
 				}

@@ -256,6 +256,16 @@ struct darken_function : function_base
 	virtual surface operator()(const surface &src) const;
 };
 
+/**
+ * Fill background with a color (BG).
+ */
+struct background_function : function_base
+{
+	background_function(SDL_Color const &c): color_(c) {}
+	virtual surface operator()(const surface &src) const;
+	SDL_Color color_;
+};
+
 } /* end namespace image */
 
 #endif /* !defined(IMAGE_FUNCTION_HPP_INCLUDED) */
