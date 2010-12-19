@@ -2374,40 +2374,12 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 	std::string image = cfg["image"];
 	if (image.empty() && speaker != resources::units->end())
 	{
-		image = speaker->profile();
-		std::string::size_type offset = image.find('~');
-		offset = image.find_last_of('/', offset);
-		if (offset != std::string::npos) {
-			image.insert(offset, "/transparent");
-		} else {
-			image = "transparent/" + image;
-		}
-
-		image::locator locator(image);
-		if(!locator.file_exists()) {
-			image = speaker->profile();
-
+		image = speaker->big_profile();
 #ifndef LOW_MEM
-			if(image == speaker->absolute_image()) {
-				image += speaker->image_mods();
-			}
+		if(image == speaker->absolute_image()) {
+			image += speaker->image_mods();
+		}
 #endif
-		}
-	}
-	else if (!image.empty())
-	{
-		std::string::size_type offset = image.find('~');
-		offset = image.find_last_of('/', offset);
-		if (offset != std::string::npos) {
-			image.insert(offset, "/transparent");
-		} else {
-			image = "transparent/" + image;
-		}
-
-		image::locator locator(image);
-		if(!locator.file_exists()) {
-			image = cfg["image"].str();
-		}
 	}
 	return image;
 }

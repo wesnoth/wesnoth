@@ -508,7 +508,7 @@ report generate_report(TYPE type,
 		return report("", image::locator(u->absolute_image(), u->image_mods()), "");
 	}
 	case UNIT_PROFILE:
-		return report("", u->profile(), "");
+		return report("", u->small_profile(), "");
 	case TIME_OF_DAY: {
 		time_of_day tod;
 

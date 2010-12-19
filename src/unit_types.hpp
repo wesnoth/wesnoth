@@ -228,7 +228,8 @@ public:
 	int cost() const { return cost_; }
 	const std::string& usage() const { return usage_; }
 	const std::string& image() const { return image_; }
-	const std::string& image_profile() const;
+	const std::string &small_profile() const { return small_profile_; }
+	const std::string &big_profile() const { return big_profile_; }
 
 	const std::vector<unit_animation>& animations() const;
 
@@ -304,8 +305,9 @@ private:
     std::string usage_;
     std::string undead_variation_;
 
-    std::string image_;
-    std::string image_profile_;
+	std::string image_;
+	std::string small_profile_;
+	std::string big_profile_;
 	std::string flag_rgb_;
 
     unsigned int num_traits_;
@@ -396,5 +398,7 @@ private:
 };
 
 extern unit_type_data unit_types;
+
+void adjust_profile(std::string &small, std::string &big, std::string const &def);
 
 #endif

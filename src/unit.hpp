@@ -98,7 +98,8 @@ public:
 	void rename(const std::string& name) {if (!unrenamable_) name_= name;}
 
 	/** The unit's profile */
-	std::string profile() const;
+	std::string small_profile() const;
+	std::string big_profile() const;
 	/** Information about the unit -- a detailed description of it */
 	t_string unit_description() const { return cfg_["description"]; }
 

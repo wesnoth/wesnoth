@@ -564,7 +564,8 @@ unit_type::unit_type(const unit_type& o) :
 	usage_(o.usage_),
 	undead_variation_(o.undead_variation_),
 	image_(o.image_),
-	image_profile_(o.image_profile_),
+	small_profile_(o.small_profile_),
+	big_profile_(o.big_profile_),
 	flag_rgb_(o.flag_rgb_),
 	num_traits_(o.num_traits_),
 	variations_(o.variations_),
@@ -609,7 +610,8 @@ unit_type::unit_type(config &cfg) :
 	usage_(),
 	undead_variation_(),
 	image_(),
-	image_profile_(),
+	small_profile_(),
+	big_profile_(),
 	flag_rgb_(),
 	num_traits_(0),
 	gender_types_(),
@@ -766,7 +768,9 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	usage_ = cfg_["usage"].str();
 	undead_variation_ = cfg_["undead_variation"].str();
 	image_ = cfg_["image"].str();
-	image_profile_ = cfg_["profile"].str();
+	small_profile_ = cfg_["small_profile"].str();
+	big_profile_ = cfg_["profile"].str();
+	adjust_profile(small_profile_, big_profile_, image_);
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])
@@ -898,14 +902,6 @@ const unit_type& unit_type::get_variation(const std::string& name) const
 	} else {
 		return *this;
 	}
-}
-
-const std::string& unit_type::image_profile() const
-{
-	if(image_profile_.size() == 0)
-		return image_;
-	else
-		return image_profile_;
 }
 
 const t_string unit_type::unit_description() const
@@ -1375,3 +1371,28 @@ bool unit_type::has_random_traits() const
 }
 
 unit_type_data unit_types;
+
+void adjust_profile(std::string &small, std::string &big, std::string const &def)
+{
+	if (big.empty())
+	{
+		// No profile data; use the default image.
+		small = def;
+		big = def;
+	}
+	else if (small.empty())
+	{
+		// No small profile; use the current profile for it and
+		// try to infer the big one.
+		small = big;
+		std::string::size_type offset = big.find('~');
+		offset = big.find_last_of('/', offset);
+		if (offset != std::string::npos) {
+			big.insert(offset, "/transparent");
+		} else {
+			big = "transparent/" + big;
+		}
+		if (!image::locator(big).file_exists())
+			big = small;
+	}
+}

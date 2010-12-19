@@ -1341,8 +1341,8 @@ public:
 		ss << "<format>font_size=" << font::relative_size(11) << " text=' " << escape(_("level"))
 		   << " " << type_.level() << "'</format>";
 
-		const std::string& male_portrait = male_type.image_profile();
-		const std::string& female_portrait = female_type.image_profile();
+		const std::string &male_portrait = male_type.small_profile();
+		const std::string &female_portrait = female_type.small_profile();
 
 		if (male_portrait.empty() == false && male_portrait != male_type.image()) {
 			ss << "<img>src='" << male_portrait << "' align='right'</img> ";

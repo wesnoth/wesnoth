@@ -322,7 +322,10 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		cfg_["halo"] = *v;
 	}
 	if (const config::attribute_value *v = cfg.get("profile")) {
-		cfg_["profile"] = *v;
+		std::string big = *v, small = cfg["small_profile"];
+		adjust_profile(small, big, "");
+		cfg_["profile"] = big;
+		cfg_["small_profile"] = small;
 	}
 	max_hit_points_ = std::max(1, cfg["max_hitpoints"].to_int(max_hit_points_));
 	max_movement_ = std::max(0, cfg["max_moves"].to_int(max_movement_));
@@ -502,7 +505,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 
 	static char const *raw_attrs[] = { "description", "halo",
-		"profile", "upkeep", "usage", "ellipse",
+		"profile", "small_profile", "upkeep", "usage", "ellipse",
 		"image", "random_traits", "generate_name" };
 	foreach (const char *attr, raw_attrs) {
 		input_cfg.remove_attribute(attr);
@@ -799,11 +802,18 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	}
 
 	// If unit has specific profile, remember it and keep it after advancing
-	const std::string &profile = old_cfg["profile"];
+	std::string profile = old_cfg["profile"].str();
 	if (!profile.empty()) {
-		const unit_type* u_type = type();
-		if (u_type != NULL && profile != u_type->cfg_["profile"]){
+		const unit_type *u_type = type();
+		if (u_type != NULL && profile != u_type->big_profile()) {
 			new_cfg["profile"] = profile;
+		}
+	}
+	profile = old_cfg["small_profile"].str();
+	if (!profile.empty()) {
+		const unit_type *u_type = type();
+		if (u_type != NULL && profile != u_type->small_profile()) {
+			new_cfg["small_profile"] = profile;
 		}
 	}
 
@@ -882,10 +892,19 @@ const unit_type* unit::type() const
 	return &i.get_gender_unit_type(gender_).get_variation(variation_);
 }
 
-std::string unit::profile() const
+std::string unit::big_profile() const
 {
-	const std::string& prof = cfg_["profile"];
-	if(!prof.empty() && prof != "unit_image") {
+	const std::string &prof = cfg_["profile"];
+	if (!prof.empty() && prof != "unit_image") {
+		return prof;
+	}
+	return absolute_image();
+}
+
+std::string unit::small_profile() const
+{
+	const std::string &prof = cfg_["small_profile"];
+	if (!prof.empty() && prof != "unit_image") {
 		return prof;
 	}
 	return absolute_image();
@@ -2291,10 +2310,14 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				if ((apply_to == "variation" || apply_to == "type") && no_add == false) {
 					last_effect = effect;
 				} else if(apply_to == "profile") {
-					const std::string &portrait = effect["portrait"];
-					const std::string &description = effect["description"];
-					if(!portrait.empty()) cfg_["profile"] = portrait;
-					if(!description.empty()) cfg_["description"] = description;
+					if (const config::attribute_value *v = effect.get("profile")) {
+						std::string big = *v, small = effect["small_profile"];
+						adjust_profile(small, big, "");
+						cfg_["profile"] = big;
+						cfg_["small_profile"] = small;
+					}
+					if (const config::attribute_value *v = effect.get("description"))
+						cfg_["description"] = *v;
 					//help::unit_topic_generator(*this, (**i.first)["help_topic"]);
 				} else if(apply_to == "new_attack") {
 					attacks_.push_back(attack_type(effect));
