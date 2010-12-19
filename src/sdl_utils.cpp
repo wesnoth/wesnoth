@@ -516,7 +516,7 @@ surface scale_surface_blended(const surface &surf, int w, int h, bool optimize)
 			double xsrc = 0.0;
 			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
 				double red = 0.0, green = 0.0, blue = 0.0, alpha = 0.0;
-				double summation = 0.0;
+				double summation = 0.0, a_summation = 0.0;
 
 				// We now have a rectangle, (xsrc,ysrc,xratio,yratio)
 				// which we want to derive the pixel from
@@ -531,23 +531,24 @@ surface scale_surface_blended(const surface &surf, int w, int h, bool optimize)
 
 						Uint8 r,g,b,a;
 						SDL_GetRGBA(src_pixels[yloc * src->w + xloc], src->format, &r, &g, &b, &a);
-						const double value = xsize*ysize*double(a)/255.0;
+						double value = xsize * ysize;
+						a_summation += value;
+						alpha += a * value;
+						value *= a / 255.0;
 						summation += value;
-
 						red += r*value;
 						green += g*value;
 						blue += b*value;
-						alpha += a*value;
 					}
 				}
 
-				if(summation == 0.0)
-					summation = 1.0;
-
-				red /= summation;
-				green /= summation;
-				blue /= summation;
-				alpha /= summation;
+				if (summation != 0.0) {
+					alpha /= a_summation;
+					summation = 1/summation;
+					red *= summation;
+					green *= summation;
+					blue *= summation;
+				}
 
 				dst_pixels[ydst*dst->w + xdst] = SDL_MapRGBA(dst->format,Uint8(red),Uint8(green),Uint8(blue),Uint8(alpha));
 			}
