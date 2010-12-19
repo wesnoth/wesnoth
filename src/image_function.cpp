@@ -117,13 +117,7 @@ surface scale_function::operator()(const surface& src) const
 		h = old_h;
 	}
 
-	if (w == old_w && h == old_h)
-		return src;
-
-	if (w > old_w || h > old_h)
-		return scale_surface(src, w, h);
-
-	return scale_surface_blended(src, w, h);
+	return scale_surface(src, w, h);
 }
 
 surface o_function::operator()(const surface& src) const

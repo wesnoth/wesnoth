@@ -343,15 +343,16 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 		return NULL;
 	}
 
-	const fixed_t xratio = fxpdiv(surf->w,w);
-	const fixed_t yratio = fxpdiv(surf->h,h);
-
+	if (w > surf->w || h > surf->h)
 	{
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
 		const Uint32* const src_pixels = src_lock.pixels();
 		Uint32* const dst_pixels = dst_lock.pixels();
+
+		fixed_t xratio = fxpdiv(surf->w,w);
+		fixed_t yratio = fxpdiv(surf->h,h);
 
 		fixed_t ysrc = ftofxp(0.0);
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
@@ -470,46 +471,16 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 			}
 		}
 	}
-
-	return optimize ? create_optimized_surface(dst) : dst;
-}
-
-surface scale_surface_blended(const surface &surf, int w, int h, bool optimize)
-{
-	if(surf== NULL)
-		return NULL;
-
-	if(w == surf->w && h == surf->h) {
-		return surf;
-	}
-	assert(w >= 0);
-	assert(h >= 0);
-
-	surface dst(create_neutral_surface(w,h));
-
-	if (w == 0 || h ==0) {
-		std::cerr << "Create an empty image\n";
-		return create_optimized_surface(dst);
-	}
-
-	surface src(make_neutral_surface(surf));
-
-	if(src == NULL || dst == NULL) {
-		std::cerr << "Could not create surface to scale onto\n";
-		return NULL;
-	}
-
-	const double xratio = static_cast<double>(surf->w)/
-			              static_cast<double>(w);
-	const double yratio = static_cast<double>(surf->h)/
-			              static_cast<double>(h);
-
+	else
 	{
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
 		const Uint32* const src_pixels = src_lock.pixels();
 		Uint32* const dst_pixels = dst_lock.pixels();
+
+		double xratio = double(surf->w) / w;
+		double yratio = double(surf->h) / h;
 
 		double ysrc = 0.0;
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {

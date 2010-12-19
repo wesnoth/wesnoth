@@ -252,7 +252,7 @@ void scrollbar::draw_contents()
 	}
 
 	if(mid_scaled_.null() || mid_scaled_->h != mid_height) {
-		mid_scaled_.assign(scale_surface_blended(mid_img,mid_img->w,mid_height));
+		mid_scaled_.assign(scale_surface(mid_img, mid_img->w, mid_height));
 	}
 
 	SDL_Rect groove = groove_area();
@@ -262,7 +262,7 @@ void scrollbar::draw_contents()
 	}
 
 	if (groove_scaled_.null() || groove_scaled_->h != groove_height) {
-		groove_scaled_.assign(scale_surface_blended(mid_grv,mid_grv->w,groove_height));
+		groove_scaled_.assign(scale_surface(mid_grv, mid_grv->w, groove_height));
 	}
 
 	if (mid_scaled_.null() || groove_scaled_.null()) {

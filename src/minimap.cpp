@@ -108,7 +108,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 						}
 					}
 
-					surf = scale_surface_blended(tile,scale,scale);
+					surf = scale_surface(tile, scale, scale);
 
 					i = normal_cache->insert(cache_map::value_type(terrain,surf)).first;
 				}

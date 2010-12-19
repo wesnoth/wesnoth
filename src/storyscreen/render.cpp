@@ -325,7 +325,7 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 		//
 
 		if(border_top.null() != true) {
-			if((border_top = scale_surface_blended(border_top, screen_area().w, border_top->h)).null()) {
+			if((border_top = scale_surface(border_top, screen_area().w, border_top->h)).null()) {
 				WARN_NG << "storyscreen got a null top border surface after rescaling\n";
 			}
 			else {
@@ -337,7 +337,7 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 		}
 
 		if(border_bottom.null() != true) {
-			if((border_bottom = scale_surface_blended(border_bottom, screen_area().w, border_bottom->h)).null()) {
+			if((border_bottom = scale_surface(border_bottom, screen_area().w, border_bottom->h)).null()) {
 				WARN_NG << "storyscreen got a null bottom border surface after rescaling\n";
 			}
 			else {
