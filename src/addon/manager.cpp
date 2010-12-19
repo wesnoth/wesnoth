@@ -412,15 +412,11 @@ namespace {
 	/**
 	 * Creates a more human-readable representation of a file size.
 	 *
-	 * @param size_str File size string, as obtained from a config object.
-	 *
 	 * @returns        Representation of file size in the biggest byte multiply
 	 *                 possible.
 	 */
-	static std::string format_file_size(const std::string& size_str)
+	static std::string format_file_size(double size)
 	{
-		double size = lexical_cast_default<double>(size_str,0.0);
-
 		const double k = 1024;
 		if(size > 0.0) {
 			std::string size_postfix = _("B");	// bytes
@@ -771,8 +767,8 @@ namespace {
 
 					const std::string& type = c["type"];
 					const std::string& name = c["name"];
-					const std::string& size = c["size"];
-					const std::string& sizef = format_file_size(size);
+					int size = c["size"];
+					std::string sizef = format_file_size(size);
 					const std::string& version = remote_version_map[name];
 
 					std::string author = c["author"];
@@ -786,7 +782,7 @@ namespace {
 					utils::truncate_as_wstring(author, 16);
 
 					//add negative sizes to reverse the sort order
-					sizes.push_back(-atoi(size.c_str()));
+					sizes.push_back(-size);
 
 					types.push_back(type);
 					titles.push_back(title);
@@ -958,8 +954,8 @@ namespace {
 			uploads.push_back(c["uploads"]);
 
 			const std::string& name = c["name"];
-			const std::string& size = c["size"];
-			const std::string& sizef = format_file_size(size);
+			int size = c["size"];
+			std::string sizef = format_file_size(size);
 			const std::string& oldver = safe_local_versions[i];
 			const std::string& newver = remote_version_map[name];
 
@@ -974,7 +970,7 @@ namespace {
 			utils::truncate_as_wstring(author, 16);
 
 			//add negative sizes to reverse the sort order
-			sizes.push_back(-atoi(size.c_str()));
+			sizes.push_back(-size);
 
 			addons.push_back(name);
 			titles.push_back(title);
@@ -1169,8 +1165,8 @@ namespace {
 			{
 				const std::string& name = c["name"];
 				const std::string& downloads = c["downloads"].str();
-				const std::string& size = c["size"];
-				const std::string& sizef = format_file_size(size);
+				int size = c["size"];
+				std::string sizef = format_file_size(size);
 				const std::string& type_str = c["type"];
 				const ADDON_TYPE type = get_addon_type(type_str);
 				const std::string& type_label_str = get_translatable_addon_type(type);
@@ -1195,7 +1191,7 @@ namespace {
 				std::string version = c["version"], author = c["author"];
 
 				//add negative sizes to reverse the sort order
-				sizes.push_back(-atoi(size.c_str()));
+				sizes.push_back(-size);
 
 				std::string icon = c["icon"];
 				do_addon_icon_fixups(icon, name);
