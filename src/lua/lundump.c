@@ -205,7 +205,13 @@ Proto* luaU_undump (lua_State* L, ZIO* Z, Mbuffer* buff, const char* name)
  S.Z=Z;
  S.b=buff;
  LoadHeader(&S);
+#if 0
  return LoadFunction(&S,luaS_newliteral(L,"=?"));
+#else
+ luaO_pushfstring(L, "%s: precompiled chunk", S.name);
+ luaD_throw(L, LUA_ERRSYNTAX);
+ return 0;
+#endif
 }
 
 /*
