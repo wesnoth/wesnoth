@@ -2309,8 +2309,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				if ((apply_to == "variation" || apply_to == "type") && no_add == false) {
 					last_effect = effect;
 				} else if(apply_to == "profile") {
-					if (const config::attribute_value *v = effect.get("profile")) {
-						std::string big = *v, small = effect["small_profile"];
+					if (const config::attribute_value *v = effect.get("portrait")) {
+						std::string big = *v, small = effect["small_portrait"];
 						adjust_profile(small, big, "");
 						cfg_["profile"] = big;
 						cfg_["small_profile"] = small;
