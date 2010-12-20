@@ -78,12 +78,12 @@ terrain type to mainline.
 
 The main facility in this module is a cross-referencer class.  
 It also contains utility methods for working with the data tree.
-See the header comment of wmtools.py for details
+See the header comment of wmltools.py for details
 
 === wmliterator.py ===
 
 A WML codewalker class.  Not a full parser, but that's useful because
-it doesn't get confused by unbalanced nacros; instead it lets you
+it doesn't get confused by unbalanced macros; instead it lets you
 walk through lines in a text file parsing out tags and elements
 
 === wmlparser.py ===
