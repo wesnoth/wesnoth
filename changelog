@@ -16,6 +16,9 @@ Version 1.9.3+svn:
    * New [harm_unit] tag for damaging, and eventually killing, units.
    * [allow_recruit], [disallow_recruit] and [set_recruit] now accept a
      comma-separated list for side=.
+   * Unit types, units, and unit effects, can use small_profile= in
+     addition to profile= to precisely describe portrait locations.
+   * New ~BG(color) modifier for setting the background color of an image.
  * Miscellaneous and bugfixes:
    * Fix --data-dir command line option
    * Better detect mouse button state when window is activated.
