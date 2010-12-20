@@ -1331,7 +1331,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 		{
 			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
 				<< ": the data source says the "
-				<< (attacker_turn ? "defender" : "attacker")
+				<< (attacker_turn ? "defender" : "attacker") << ' '
 				<< (results_dies ? "perished" : "survived")
 				<< " while in-game calculations show it "
 				<< (dies ? "perished" : "survived")
