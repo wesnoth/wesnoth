@@ -109,15 +109,15 @@ twidget* tbuilder_multi_page::build() const
  * @macro = multi_page_description
  *
  * List with the multi page specific variables:
- * @start_table = config
- *     page_definition (section)       This defines how a multi page item
+ * @begin{table}{config}
+ *     page_definition & section & &      This defines how a multi page item
  *                                     looks. It must contain the grid
- *                                     definition for at least one page.
+ *                                     definition for at least one page. $
  *
- *     page_data(section = [])         A grid alike section which stores the
+ *     page_data & section & [] &         A grid alike section which stores the
  *                                     initial data for the multi page. Every
  *                                     row must have the same number of columns
- *                                     as the 'page_definition'.
- * @end_table
+ *                                     as the 'page_definition'. $
+ * @end{table}
  */
 

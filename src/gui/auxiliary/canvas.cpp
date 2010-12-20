@@ -64,9 +64,9 @@ namespace {
  * if the widget isn't semi-transparent.
  *
  * Keys:
- * @start_table = config
- *     depth (unsigned = 0)             The depth to blur.
- * @end_table
+ * @begin{table}{config}
+ *     depth & unsigned & 0 &            The depth to blur. $
+ * @end{table}
  */
 
 /***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
@@ -234,28 +234,28 @@ tline::tline(const config& cfg)
  * if needed.
  *
  * Keys:
- * @start_table = config
- *     x1 (f_unsigned = 0)             The x coordinate of the startpoint.
- *     y1 (f_unsigned = 0)             The y coordinate of the startpoint.
- *     x2 (f_unsigned = 0)             The x coordinate of the endpoint.
- *     y2 (f_unsigned = 0)             The y coordinate of the endpoint.
- *     color (color = "")            The color of the line.
- *     thickness = (unsigned = 0)      The thickness of the line if 0 nothing
- *                                     is drawn.
- *     debug = (string = "")           Debug message to show upon creation
- *                                     this message is not stored.
- * @end_table
+ * @begin{table}{config}
+ *     x1 & f_unsigned & 0 &             The x coordinate of the startpoint. $
+ *     y1 & f_unsigned & 0 &             The y coordinate of the startpoint. $
+ *     x2 & f_unsigned & 0 &             The x coordinate of the endpoint. $
+ *     y2 & f_unsigned & 0 &             The y coordinate of the endpoint. $
+ *     color & color & "" &            The color of the line. $
+ *     thickness & unsigned & 0 &      The thickness of the line if 0 nothing
+ *                                     is drawn. $
+ *     debug & string & "" &           Debug message to show upon creation$
+ *                                     this message is not stored. $
+ * @end{table}
  *
  * <span id="general_variables">Variables:</span>.
- * @start_table = formula
- *     width unsigned                  The width of the canvas.
- *     height unsigned                 The height of the canvas.
- *     text tstring                    The text to render on the widget.
- *     text_maximum_width unsigned     The maximum width available for the text
- *                                     on the widget.
- *     text_maximum_height unsigned    The maximum height available for the text
- *                                     on the widget.
- *     text_wrap_mode int              When the text doesn't fit in the
+ * @begin{table}{formula}
+ *     width & unsigned &                  The width of the canvas. $
+ *     height & unsigned &                The height of the canvas. $
+ *     text & tstring &                   The text to render on the widget. $
+ *     text_maximum_width & unsigned &    The maximum width available for the text
+ *                                     on the widget. $
+ *     text_maximum_height & unsigned &   The maximum height available for the text
+ *                                     on the widget. $
+ *     text_wrap_mode & int  &             When the text doesn't fit in the
  *                                     available width there are several ways
  *                                     to fix that. This variable holds the
  *                                     best method. (NOTE this is a 'hidden'
@@ -263,26 +263,26 @@ tline::tline(const config& cfg)
  *                                     widget to its canvas so there's no
  *                                     reason to use this variable and thus
  *                                     its values are not listed and might
- *                                     change without further notice.)
- *     text_alignment h_align          The way the text is aligned inside the
- *                                     canvas.
- *@end_table
+ *                                     change without further notice.) $
+ *     text_alignment & h_align &         The way the text is aligned inside the
+ *                                     canvas. $
+ *@end{table}
  *
  * The size variables are copied to the window and will be determined at
  * runtime. This is needed since the main window can be resized and the dialog
  * needs to resize accordingly. The following variables are available:
- * @start_table = formula
- *     screen_width unsigned         The usable width of the Wesnoth main
- *                                   window.
- *     screen_height unsigned        The usable height of the Wesnoth main
- *                                   window.
- *     gamemap_width unsigned        The usable width of the Wesnoth gamemap,
+ * @begin{table}{formula}
+ *     screen_width & unsigned &        The usable width of the Wesnoth main
+ *                                   window. $
+ *     screen_height & unsigned &       The usable height of the Wesnoth main
+ *                                   window. $
+ *     gamemap_width & unsigned &       The usable width of the Wesnoth gamemap,
  *                                   if no gamemap shown it's the same value as
- *                                   screen_width.
- *     gamemap_height unsigned       The usable height of the Wesnoth gamemap,
+ *                                   screen_width. $
+ *     gamemap_height & unsigned &     The usable height of the Wesnoth gamemap,
  *                                   if no gamemap shown it's the same value as
- *                                   screen_height.
- * @end_table
+ *                                   screen_height. $
+ * @end{table}
  *
  * Note when drawing the valid coordinates are:<br>
  * 0 -> width - 1 <br>
@@ -333,31 +333,31 @@ tline::tline(const config& cfg)
  *
  * The simple types are types which have one value or a short list of options.
  *
- * @start_table = variable_types
- *     unsigned                        Unsigned number (positive whole numbers
- *                                     and zero).
- *     f_unsigned                      Unsigned number or formula returning an
- *                                     unsigned number.
- *     int                             Signed number (whole numbers).
- *     f_int                           Signed number or formula returning an
- *                                     signed number.
- *     bool                            A boolean value accepts the normal
- *                                     values as the rest of the game.
- *     f_bool                          Boolean value or a formula returning a
- *                                     boolean value.
- *     string                          A text.
- *     tstring                         A translatable string.
- *     f_tstring                       Formula returning a translatable string.
+ * @begin{table}{variable_types}
+ *     unsigned &                       Unsigned number (positive whole numbers
+ *                                     and zero). $
+ *     f_unsigned &                     Unsigned number or formula returning an
+ *                                     unsigned number. $
+ *     int &                            Signed number (whole numbers). $
+ *     f_int &                          Signed number or formula returning an
+ *                                     signed number. $
+ *     bool &                           A boolean value accepts the normal
+ *                                     values as the rest of the game. $
+ *     f_bool &                         Boolean value or a formula returning a
+ *                                     boolean value. $
+ *     string &                        A text. $
+ *     tstring &                        A translatable string. $
+ *     f_tstring &                      Formula returning a translatable string. $
  *
- *     color                           A string which contains the color, this
+ *     color &                          A string which contains the color, this
  *                                     a group of 4 numbers between 0 and 255
  *                                     separated by a comma. The numbers are red
  *                                     component, green component, blue
  *                                     component and alpha. A color of 0 is not
  *                                     available. An alpha of 255 is fully
- *                                     transparent. Omitted values are set to 0.
+ *                                     transparent. Omitted values are set to 0. $
  *
- *     font_style                      A string which contains the style of the
+ *     font_style &                     A string which contains the style of the
  *                                     font:
  *                                     @* normal    normal font
  *                                     @* bold      bold font
@@ -368,9 +368,9 @@ tline::tline(const config& cfg)
  *                                     will allow multiple options, this type
  *                                     will be transformed to a comma separated
  *                                     list. If empty we default to the normal
- *                                     style.
+ *                                     style. $
  *
- *     v_align                         Vertical alignment; how an item is
+ *     v_align &                        Vertical alignment; how an item is
  *                                     aligned vertically in the available
  *                                     space. Possible values:
  *                                     @* top    aligned at the top
@@ -378,28 +378,28 @@ tline::tline(const config& cfg)
  *                                     @* center centered
  *                                     @-When nothing is set or an another
  *                                     value as in the list the item is
- *                                     centred.
+ *                                     centred. $
  *
- *     h_align                         Horizontal alignment; how an item is
+ *     h_align &                       Horizontal alignment; how an item is
  *                                     aligned horizontal in the available
  *                                     space. Possible values:
  *                                     @* left   aligned at the left side
  *                                     @* right  aligned at the right side
- *                                     @* center centered
+ *                                     @* center centered $
  *
- *     f_h_align                       A horizontal alignment or a formula
- *                                     returning a horizontal alignment.
+ *     f_h_align &                      A horizontal alignment or a formula
+ *                                     returning a horizontal alignment.$
  *
- *     border                          Comma separated list of borders to use.
+ *     border &                         Comma separated list of borders to use.
  *                                     Possible values:
  *                                     @* left   border at the left side
  *                                     @* right  border at the right side
  *                                     @* top    border at the top
  *                                     @* bottom border at the bottom
  *                                     @* all    alias for "left, right, top,
- *                                     bottom"
+ *                                     bottom" $
  *
- *     scrollbar_mode                  How to show the scrollbar of a widget.
+ *     scrollbar_mode &                 How to show the scrollbar of a widget.
  *                                     Possible values:
  *                                     @* always       The scrollbar is always
  *                                     shown, regardless whether it's required
@@ -420,9 +420,9 @@ tline::tline(const config& cfg)
  *                                     use auto when you really expect a
  *                                     scrollbar, but don't want it to be shown
  *                                     when not needed eg the language list
- *                                     will need a scrollbar on most screens.
+ *                                     will need a scrollbar on most screens. $
  *
- *     resize_mode                     Determines how an image is resized.
+ *     resize_mode &                    Determines how an image is resized.
  *                                     Possible values:
  *                                     @* scale        The image is scaled.
  *                                     @* stretch      The first row or column
@@ -433,8 +433,8 @@ tline::tline(const config& cfg)
  *                                     @* tile         The image is placed
  *                                     several times until the entire surface
  *                                     is filled. The last images are
- *                                     truncated.
- * @end_table
+ *                                     truncated. $
+ * @end{table}
  *
  * == Section types ==
  *
@@ -442,14 +442,14 @@ tline::tline(const config& cfg)
  * lines of WML and can have sub sections. For example a grid has sub sections
  * which contain various widgets. Here's the list of sections.
  *
- * @start_table = variable_types
- *     section                         A generic section. The documentation
+ * @begin{table}{variable_types}
+ *     section &                        A generic section. The documentation
  *                                     about the section should describe the
- *                                     section in further detail.
+ *                                     section in further detail. $
  *
- *     grid                            A grid contains several widgets. (TODO
- *                                     add link to generic grid page.)
- * @end_table
+ *     grid &                           A grid contains several widgets. (TODO
+ *                                     add link to generic grid page.) $
+ * @end{table}
  */
 
 	const std::string& debug = (cfg["debug"]);
@@ -567,20 +567,20 @@ trectangle::trectangle(const config& cfg)
  * later if needed.
  *
  * Keys:
- * @start_table = config
- *     x (f_unsigned = 0)              The x coordinate of the top left corner.
- *     y (f_unsigned = 0)              The y coordinate of the top left corner.
- *     w (f_unsigned = 0)              The width of the rectangle.
- *     h (f_unsigned = 0)              The height of the rectangle.
- *     border_thickness (unsigned = 0) The thickness of the border if the
- *                                     thickness is zero it's not drawn.
- *     border_color (color = "")     The color of the border if empty it's
- *                                     not drawn.
- *     fill_color (color = "")       The color of the interior if omitted
- *                                     it's not drawn.
- *     debug = (string = "")           Debug message to show upon creation
- *                                     this message is not stored.
- * @end_table
+ * @begin{table}{config}
+ *     x & f_unsigned & 0 &              The x coordinate of the top left corner. $
+ *     y & f_unsigned & 0 &              The y coordinate of the top left corner. $
+ *     w & f_unsigned & 0 &              The width of the rectangle. $
+ *     h & f_unsigned & 0 &              The height of the rectangle. $
+ *     border_thickness & unsigned & 0 & The thickness of the border if the
+ *                                     thickness is zero it's not drawn. $
+ *     border_color & color & "" &     The color of the border if empty it's
+ *                                     not drawn. $
+ *     fill_color & color & "" &       The color of the interior if omitted
+ *                                     it's not drawn. $
+ *     debug & string & "" &           Debug message to show upon creation
+ *                                     this message is not stored. $
+ * @end{table}
  * Variables:
  * See [[#general_variables|Line]].
  *
@@ -742,46 +742,46 @@ timage::timage(const config& cfg)
  * Definition of an image.
  *
  * Keys:
- * @start_table = config
- *     x (f_unsigned = 0)              The x coordinate of the top left corner.
- *     y (f_unsigned = 0)              The y coordinate of the top left corner.
- *     w (f_unsigned = 0)              The width of the image, if not zero the
+ * @begin{table}{config}
+ *     x & f_unsigned & 0 &              The x coordinate of the top left corner. $
+ *     y & f_unsigned & 0 &              The y coordinate of the top left corner. $
+ *     w & f_unsigned & 0 &              The width of the image, if not zero the
  *                                     image will be scaled to the desired
- *                                     width.
- *     h (f_unsigned = 0)              The height of the image, if not zero the
+ *                                     width. $
+ *     h & f_unsigned & 0 &              The height of the image, if not zero the
  *                                     image will be scaled to the desired
- *                                     height.
- *     resize_mode (resize_mode = scale)
+ *                                     height. $
+ *     resize_mode & resize_mode & scale &
  *                                     Determines how an image is scaled to fit
- *                                     the wanted size.
- *     vertical_mirror (f_bool = false)
- *                                     Mirror the image over the vertical axis.
- *     name (f_string = "")            The name of the image.
- *     debug = (string = "")           Debug message to show upon creation
- *                                     this message is not stored.
+ *                                     the wanted size. $
+ *     vertical_mirror & f_bool & false &
+ *                                     Mirror the image over the vertical axis. $
+ *     name & f_string & "" &            The name of the image. $
+ *     debug & string & "" &           Debug message to show upon creation
+ *                                     this message is not stored. $
  *
- * @end_table
+ * @end{table}
  * Variables:
- * @start_table = formula
- *     image_width unsigned             The width of the image, either the
+ * @begin{table}{formula}
+ *     image_width & unsigned &            The width of the image, either the
  *                                      requested width or the natural width of
  *                                      the image. This value can be used to set
  *                                      the x (or y) value of the image. (This
  *                                      means x and y are evaluated after the
- *                                      width and height.)
- *     image_height unsigned            The height of the image, either the
+ *                                      width and height.) $
+ *     image_height & unsigned &           The height of the image, either the
  *                                      requested height or the natural height
  *                                      of the image. This value can be used to
  *                                      set the y (or x) value of the image.
  *                                      (This means x and y are evaluated after
- *                                      the width and height.)
- *     image_original_width unsigned    The width of the image as stored on
+ *                                      the width and height.) $
+ *     image_original_width & unsigned &   The width of the image as stored on
  *                                      disk, can be used to set x or w
- *                                      (also y and h can be set).
- *     image_original_height unsigned   The height of the image as stored on
+ *                                      (also y and h can be set). $
+ *     image_original_height & unsigned &  The height of the image as stored on
  *                                      disk, can be used to set y or h
- *                                      (also x and y can be set).
- * @end_table
+ *                                      (also x and y can be set). $
+ * @end{table}
  * Also the general variables are available, see [[#general_variables|Line]].
  */
 
@@ -1019,37 +1019,37 @@ ttext::ttext(const config& cfg)
  * Definition of text.
  *
  * Keys:
- * @start_table = config
- *     x (f_unsigned = 0)              The x coordinate of the top left corner.
- *     y (f_unsigned = 0)              The y coordinate of the top left corner.
- *     w (f_unsigned = 0)              The width of the text's bounding
- *                                     rectangle.
- *     h (f_unsigned = 0)              The height of the text's bounding
- *                                     rectangle.
- *     font_size (unsigned)            The size of the text font.
- *     font_style (font_style = "")    The style of the text.
- *     text_alignment (f_h_align = "left")
- *                                     The alignment of the text.
- *     color (color = "")            The color of the text.
- *     text (f_tstring = "")           The text to draw (translatable).
- *     text_markup (f_bool = false)    Can the text have markup?
- *     maximum_width (f_int = -1)      The maximum width the text is allowed to
- *                                     be.
- *     maximum_height (f_int = -1)     The maximum height the text is allowed
- *                                     to be.
- *     debug = (string = "")           Debug message to show upon creation
- *                                     this message is not stored.
- * @end_table
+ * @begin{table}{config}
+ *     x & f_unsigned & 0 &              The x coordinate of the top left corner. $
+ *     y & f_unsigned & 0 &              The y coordinate of the top left corner. $
+ *     w & f_unsigned & 0 &              The width of the text's bounding
+ *                                     rectangle. $
+ *     h & f_unsigned & 0 &              The height of the text's bounding
+ *                                     rectangle. $
+ *     font_size & unsigned & &           The size of the text font. $
+ *     font_style & font_style & "" &    The style of the text. $
+ *     text_alignment & f_h_align & "left" &
+ *                                     The alignment of the text. $
+ *     color & color & "" &            The color of the text. $
+ *     text & f_tstring & "" &           The text to draw (translatable). $
+ *     text_markup & f_bool & false &    Can the text have markup? $
+ *     maximum_width & f_int & -1 &      The maximum width the text is allowed to
+ *                                     be. $
+ *     maximum_height & f_int & -1 &     The maximum height the text is allowed
+ *                                     to be. $
+ *     debug & string & "" &           Debug message to show upon creation
+ *                                     this message is not stored. $
+ * @end{table}
  * NOTE alignment could only be done with the formulas, but now with the
  * text_alignment flag as well, older widgets might still use the formulas and
  * not all widgets may expose the text alignment yet and when exposed not use
  * it yet.
  *
  * Variables:
- * @start_table = formula
- *     text_width unsigned             The width of the rendered text.
- *     text_height unsigned            The height of the rendered text.
- * @end_table
+ * @begin{table}{formula}
+ *     text_width & unsigned &            The width of the rendered text. $
+ *     text_height & unsigned &           The height of the rendered text. $
+ * @end{table}
  * Also the general variables are available, see [[#general_variables|Line]].
  */
 

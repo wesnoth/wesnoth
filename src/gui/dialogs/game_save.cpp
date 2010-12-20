@@ -34,7 +34,7 @@ namespace gui2 {
  *
  * This shows the dialog to create a savegame file.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * lblTitle & & label & m &
  *         The title of the window. $

@@ -116,23 +116,23 @@ tbuilder_tree_view::tnode::tnode(const config& cfg)
  * @macro = tree_view_description
  *
  * List with the tree view specific variables:
- * @start_table = config
- *     vertical_scrollbar_mode (scrollbar_mode = initial_auto)
+ * @begin{table}{config}
+ *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
  *                                     Determines whether or not to show the
- *                                     scrollbar.
- *     horizontal_scrollbar_mode (scrollbar_mode = initial_auto)
+ *                                     scrollbar. $
+ *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
  *                                     Determines whether or not to show the
- *                                     scrollbar.
+ *                                     scrollbar. $
  *
- *     indention_step_size (unsigned = 0)
+ *     indention_step_size & unsigned & 0 &
  *                                     The number of pixels every level of
  *                                     nodes is indented from the previous
- *                                     level.
+ *                                     level. $
  *
- *     node (section)                  The tree view can contain multiple node
+ *     node & section &  &             The tree view can contain multiple node
  *                                     sections. This part needs more
- *                                     documentation.
- * @end_table
+ *                                     documentation. $
+ * @end{table}
  *
  * NOTE more documentation and examples are needed.
  */

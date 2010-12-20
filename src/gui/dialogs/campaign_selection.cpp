@@ -45,7 +45,7 @@ namespace gui2 {
  *
  * This shows the dialog choose which campaign the user wants to play.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * campaign_list & & listbox & m &
  *         A listbox that contains all available campaigns. $

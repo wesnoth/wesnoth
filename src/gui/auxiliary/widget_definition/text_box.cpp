@@ -43,15 +43,15 @@ ttext_box_definition::tresolution::tresolution(const config& cfg)
  * The definition of a text box.
  *
  * The resolution for a text box also contains the following keys:
- * @start_table = config
- *     text_x_offset (f_unsigned = "") The x offset of the text in the text
+ * @begin{table}{config}
+ *     text_x_offset & f_unsigned & "" & The x offset of the text in the text
  *                                     box. This is needed for the code to
  *                                     determine where in the text the mouse
  *                                     clicks, so it can set the cursor
- *                                     properly.
- *     text_y_offset (f_unsigned = "") The y offset of the text in the text
- *                                     box.
- * @end_table
+ *                                     properly. $
+ *     text_y_offset & f_unsigned & "" & The y offset of the text in the text
+ *                                     box. $
+ * @end{table}
  *
  * The following states exist:
  * * state_enabled, the text box is enabled.

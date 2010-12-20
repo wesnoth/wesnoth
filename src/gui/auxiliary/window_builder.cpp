@@ -208,13 +208,13 @@ const std::string& twindow_builder::read(const config& cfg)
  *
  * A window defines how a window looks in the game.
  *
- * @start_table = config
- *     id (string)                   Unique id for this window.
- *     description (t_string)        Unique translatable name for this window.
+ * @begin{table}{config}
+ *     id & string & &                  Unique id for this window. $
+ *     description & t_string & &       Unique translatable name for this window. $
  *
- *     resolution (section)          The definitions of the window in various
- *                                   resolutions.
- * @end_table
+ *     resolution & section & &        The definitions of the window in various
+ *                                   resolutions. $
+ * @end{table}
  *
  */
 
@@ -260,35 +260,36 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *
  * == Resolution ==
  *
- * @start_table = config
- *     window_width (unsigned = 0)   Width of the application window.
- *     window_height (unsigned = 0)  Height of the application window.
+ * @begin{table}{config}
+ *     window_width & unsigned & 0 &   Width of the application window. $
+ *     window_height & unsigned & 0 &  Height of the application window. $
  *
- *     automatic_placement (bool = true)
+ *
+ *     automatic_placement & bool & true &
  *                                   Automatically calculate the best size for
  *                                   the window and place it. If automatically
  *                                   placed ''vertical_placement'' and
  *                                   ''horizontal_placement'' can be used to
  *                                   modify the final placement. If not
  *                                   automatically placed the ''width'' and
- *                                   ''height'' are mandatory.
+ *                                   ''height'' are mandatory. $
  *
- *     x (f_unsigned = 0)            X coordinate of the window to show.
- *     y (f_unsigned = 0)            Y coordinate of the window to show.
- *     width (f_unsigned = 0)        Width of the window to show.
- *     height (f_unsigned = 0)       Height of the window to show.
+ *     x & f_unsigned & 0 &            X coordinate of the window to show. $
+ *     y & f_unsigned & 0 &            Y coordinate of the window to show. $
+ *     width & f_unsigned & 0 &        Width of the window to show. $
+ *     height & f_unsigned & 0 &       Height of the window to show. $
  *
- *     vertical_placement (v_align = "")
- *                                   The vertical placement of the window.
- *     horizontal_placement (h_align = "")
- *                                   The horizontal placement of the window.
+ *     vertical_placement & v_align & "" &
+ *                                   The vertical placement of the window. $
+ *     horizontal_placement & h_align & "" & 
+ *                                   The horizontal placement of the window. $
  *
- *     maximum_width (unsigned = 0)  The maximum width of the window (only
- *                                   used for automatic placement).
- *     maximum_height (unsigned = 0) The maximum height of the window (only
- *                                   used for automatic placement).
+ *     maximum_width & unsigned & 0 &  The maximum width of the window (only
+ *                                   used for automatic placement). $
+ *     maximum_height & unsigned & 0 & The maximum height of the window (only
+ *                                   used for automatic placement). $
  *
- *     click_dismiss (bool = false)  Does the window need click dismiss
+ *     click_dismiss & bool & false &  Does the window need click dismiss
  *                                   behaviour? Click dismiss behaviour means
  *                                   that any mouse click will close the
  *                                   dialog. Note certain widgets will
@@ -308,26 +309,26 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *                                   not wanted and no mouse using widgets are
  *                                   available. This means enter, escape or an
  *                                   external source needs to be used to close
- *                                   the dialog (which is valid).
+ *                                   the dialog (which is valid). $
  *
- *     definition (string = "default")
+ *     definition & string & "default" &
  *                                   Definition of the window which we want to
- *                                   show.
+ *                                   show. $
  *
- *     linked_group (sections = [])  A group of linked widget sections.
+ *     linked_group & sections & [] &  A group of linked widget sections. $
  *
- *     grid (grid)                   The grid with the widgets to show.
- * @end_table
+ *     grid & grid & &                  The grid with the widgets to show. $
+ * @end{table}
  *
  * A linked_group section has the following fields:
- * @start_table = config
- *     id (string)                   The unique id of the group (unique in this
- *                                   window).
- *     fixed_width (bool = false)    Should widget in this group have the same
- *                                   width.
- *     fixed_height (bool = false)   Should widget in this group have the same
- *                                   height.
- * @end_table
+ * @begin{table}{config}
+ *     id & string & &                   The unique id of the group (unique in this
+ *                                   window). $
+ *     fixed_width & bool & false &    Should widget in this group have the same
+ *                                   width. $
+ *     fixed_height & bool & false &   Should widget in this group have the same
+ *                                   height. $
+ * @end{table}
  *
  * A linked group needs to have at least one size fixed.
  */
@@ -402,41 +403,41 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  *
  * For every row the following variables are available:
  *
- * @start_table = config
- *     grow_factor (unsigned = 0)      The grow factor for a row.
- * @end_table
+ * @begin{table}{config}
+ *     grow_factor & unsigned & 0 &      The grow factor for a row. $
+ * @end{table}
  *
  * == Cell values ==
  *
  * For every column the following variables are available:
- * @start_table = config
- *     grow_factor (unsigned = 0)      The grow factor for a column, this value
- *                                     is only read for the first row.
+ * @begin{table}{config}
+ *     grow_factor & unsigned & 0 &      The grow factor for a column, this value
+ *                                     is only read for the first row. $
  *
- *     border_size (unsigned = 0)      The border size for this grid cell.
- *     border (border = "")            Where to place the border in this grid
- *                                     cell.
+ *     border_size & unsigned & 0 &      The border size for this grid cell. $
+ *     border & border & "" &            Where to place the border in this grid
+ *                                     cell. $
  *
- *     vertical_alignment (v_align = "")
+ *     vertical_alignment & v_align & "" &
  *                                     The vertical alignment of the widget in
  *                                     the grid cell. (This value is ignored if
- *                                     vertical_grow is true.)
- *     horizontal_alignment (h_align = "")
+ *                                     vertical_grow is true.) $
+ *     horizontal_alignment & h_align & "" &
  *                                     The horizontal alignment of the widget in
  *                                     the grid cell.(This value is ignored if
- *                                     horizontal_grow is true.)
+ *                                     horizontal_grow is true.) $
  *
- *     vertical_grow (bool = false)    Does the widget grow in vertical
+ *     vertical_grow & bool & false &    Does the widget grow in vertical
  *                                     direction when the grid cell grows in the
  *                                     vertical direction. This is used if the
  *                                     grid cell is wider as the best width for
- *                                     the widget.
- *     horizontal_grow (bool = false)  Does the widget grow in horizontal
+ *                                     the widget. $
+ *     horizontal_grow & bool & false &  Does the widget grow in horizontal
  *                                     direction when the grid cell grows in the
  *                                     horizontal direction. This is used if the
  *                                     grid cell is higher as the best width for
- *                                     the widget.
- * @end_table
+ *                                     the widget. $
+ * @end{table}
  *
  */
 	log_scope2(log_gui_parse, "Window builder: parsing a grid");

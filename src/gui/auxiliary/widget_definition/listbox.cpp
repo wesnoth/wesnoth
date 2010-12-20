@@ -46,37 +46,37 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
  * The definition of a listbox contains the definition of its scrollbar.
  *
  * The resolution for a listbox also contains the following keys:
- * @start_table = config
- *     scrollbar (section)             A grid containing the widgets for the
+ * @begin{table}{config}
+ *     scrollbar & section & &            A grid containing the widgets for the
  *                                     scrollbar. The scrollbar has some special
  *                                     widgets so it can make default behaviour
- *                                     for certain widgets.
- * @end_table
+ *                                     for certain widgets. $
+ * @end{table}
  *
- * @start_table = container
- *     [_begin] (clickable)            Moves the position to the beginning of
- *                                     the list.
- *     [_line_up] (clickable)          Move the position one item up. (NOTE if
+ * @begin{table}{dialog_widgets}
+ *     _begin & & clickable & o &           Moves the position to the beginning of
+ *                                     the list. $
+ *     _line_up & & clickable & o &         Move the position one item up. (NOTE if
  *                                     too many items to move per item it might
- *                                     be more items.)
- *     [_half_page_up] (clickable)     Move the position half the number of the
- *                                     visible items up. (See note at _line_up.)
- *     [_page_up] (clickable)          Move the position the number of visible
- *                                     items up. (See note at _line_up.)
+ *                                     be more items.) $
+ *     _half_page_up & & clickable & o &    Move the position half the number of the
+ *                                     visible items up. (See note at _line_up.) $
+ *     _page_up & & clickable & o &         Move the position the number of visible
+ *                                     items up. (See note at _line_up.) $
  *
- *     [_end] (clickable)              Moves the position to the end of the
- *                                     list.
- *     [_line_down] (clickable)        Move the position one item down.(See note
- *                                     at _line_up.)
- *     [_half_page_down] (clickable)   Move the position half the number of the
+ *     _end & & clickable & o &             Moves the position to the end of the
+ *                                     list. $
+ *     _line_down & & clickable & o &       Move the position one item down.(See note
+ *                                     at _line_up.) $
+ *     _half_page_down & & clickable & o &  Move the position half the number of the
  *                                     visible items down. (See note at
- *                                     _line_up.)
- *     [_page_down] (clickable)        Move the position the number of visible
- *                                     items down. (See note at _line_up.)
+ *                                     _line_up.) $
+ *     _page_down & & clickable & o &       Move the position the number of visible
+ *                                     items down. (See note at _line_up.) $
  *
- *     _scrollbar (vertical_scrollbar) This is the scrollbar so the user can
- *                                     scroll through the list.
- * @end_table
+ *     _scrollbar & & vertical_scrollbar & m & This is the scrollbar so the user can
+ *                                     scroll through the list. $
+ * @end{table}
  *
  * A clickable is one of:
  * * button

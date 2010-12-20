@@ -47,7 +47,7 @@ namespace gui2 {
  *
  * This shows the gamestate inspector
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * inspector_name & & control & m &
  *         Name of the inspector. $

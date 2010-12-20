@@ -41,7 +41,7 @@ namespace gui2 {
  *
  * This shows the dialog to set the editor settings.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * current_tod & & label & m &
  *         Displays the currently selected time of day(ToD) mask. $

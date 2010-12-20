@@ -51,7 +51,7 @@ namespace gui2 {
  *
  * This shows the title screen.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  * addons & & button & m &
  *         The button to get the addons. $
  *

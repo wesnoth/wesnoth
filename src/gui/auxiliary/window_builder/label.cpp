@@ -69,10 +69,10 @@ twidget* tbuilder_label::build() const
  * @macro = label_description
  *
  * List with the label specific variables:
- * @start_table = config
- *     wrap (bool = false)        Is wrapping enabled for the label.
- *     text_alignment (h_align = "left")
- *                                How is the text aligned in the label.
- * @end_table
+ * @begin{table}{config}
+ *     wrap & bool & false &        Is wrapping enabled for the label. $
+ *     text_alignment & h_align & "left" &
+ *                                How is the text aligned in the label. $
+ * @end{table}
  */
 

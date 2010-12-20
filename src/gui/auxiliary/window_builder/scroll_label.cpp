@@ -82,13 +82,13 @@ twidget* tbuilder_scroll_label::build() const
  * @macro = scroll_label_description
  *
  * List with the scroll label specific variables:
- * @start_table = config
- *     vertical_scrollbar_mode (scrollbar_mode = initial_auto)
+ * @begin{table}{config}
+ *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
  *                                     Determines whether or not to show the
- *                                     scrollbar.
- *     horizontal_scrollbar_mode (scrollbar_mode = initial_auto)
+ *                                     scrollbar. $
+ *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
  *                                     Determines whether or not to show the
- *                                     scrollbar.
- * @end_table
+ *                                     scrollbar. $
+ * @end{table}
  */
 

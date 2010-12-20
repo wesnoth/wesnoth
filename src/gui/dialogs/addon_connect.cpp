@@ -32,7 +32,7 @@ namespace gui2 {
  *
  * This shows the dialog for managing addons and connecting to the addon server.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  * hostname & & text_box & m &
  *         This text contains the name of the server to connect to. $
  *

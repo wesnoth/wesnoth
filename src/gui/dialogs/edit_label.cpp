@@ -32,7 +32,7 @@ namespace gui2 {
  *
  * Dialog for editing gamemap labels.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * title & & label & m &
  *         Dialog title label. $

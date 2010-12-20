@@ -31,7 +31,7 @@ namespace gui2 {
  *
  * Dialog for setting a join password for MP games.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * password & & text_box & m &
  *         Input field for the game password. $

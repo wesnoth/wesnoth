@@ -37,7 +37,7 @@ namespace gui2 {
  *
  * The campaign mode difficulty menu.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * title & & label & m &
  *         Dialog title label. $

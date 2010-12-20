@@ -99,29 +99,29 @@ twidget* tbuilder_slider::build() const
  *
  * @macro = slider_description
  *
- * @start_table = config
- *     best_slider_length (unsigned = 0)
- *                                    The best length for the sliding part.
- *     minimum_value (int = 0)        The minimum value the slider can have.
- *     maximum_value (int = 0)        The maximum value the slider can have.
+ * @begin{table}{config}
+ *     best_slider_length & unsigned & 0 &
+ *                                    The best length for the sliding part. $
+ *     minimum_value & int & 0 &        The minimum value the slider can have. $
+ *     maximum_value & int & 0 &        The maximum value the slider can have. $
  *
- *     step_size (unsigned = 0)       The number of items the slider's value
- *                                    increases with one step.
- *     value (int = 0)                The value of the slider.
+ *     step_size & unsigned & 0 &       The number of items the slider's value
+ *                                    increases with one step. $
+ *     value & int & 0 &                The value of the slider. $
  *
- *     minimum_value_label (t_string = "")
+ *     minimum_value_label & t_string & "" &
  *                                    If the minimum value is chosen there
  *                                    might be the need for a special value
  *                                    (eg off). When this key has a value
  *                                    that value will be shown if the minimum
- *                                    is selected.
- *     maximum_value_label (t_string = "")
+ *                                    is selected. $
+ *     maximum_value_label & t_string & "" &
  *                                    If the maximum value is chosen there
  *                                    might be the need for a special value
  *                                    (eg unlimited)). When this key has a
  *                                    value that value will be shown if the
- *                                    maximum is selected.
- *     value_labels ([])              It might be the labels need to be shown
+ *                                    maximum is selected. $
+ *     value_labels & [] &              It might be the labels need to be shown
  *                                    are not a linear number sequence eg
  *                                    (0.5, 1, 2, 4) in that case for all
  *                                    items this section can be filled with
@@ -129,7 +129,7 @@ twidget* tbuilder_slider::build() const
  *                                    number of items as the items in the
  *                                    slider. NOTE if this option is used,
  *                                    'minimum_value_label' and
- *                                    'maximum_value_label' are ignored.
- * @end_table
+ *                                    'maximum_value_label' are ignored. $
+ * @end{table}
  */
 

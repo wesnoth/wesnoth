@@ -45,10 +45,10 @@ tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
  * other elements in its grid. A panel is always enabled and can't be
  * disabled. Instead it uses the states as layers to draw on.
  *
- * @start_table = config
- *     grid (grid)                     A grid containing the widgets for main
- *                                     widget.
- * @end_table
+ * @begin{table}{config}
+ *     grid & grid & &                    A grid containing the widgets for main
+ *                                     widget. $
+ * @end{table}
  *
  * The following layers exist:
  * * background, the background of the panel.

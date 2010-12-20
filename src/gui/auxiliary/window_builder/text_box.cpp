@@ -61,16 +61,16 @@ twidget* tbuilder_text_box::build() const
  *
  * == Text box ==
  *
- * @start_table = config
- *     label (tstring = "")            The initial text of the text box.
- *     history (string = "")           The name of the history for the text
+ * @begin{table}{config}
+ *     label & tstring & "" &            The initial text of the text box. $
+ *     history & string & "" &           The name of the history for the text
  *                                     box.
  *                                     A history saves the data entered in a
  *                                     text box between the games. With the up
  *                                     and down arrow it can be accessed. To
  *                                     create a new history item just add a
  *                                     new unique name for this field and the
- *                                     engine will handle the rest.
- * @end_table
+ *                                     engine will handle the rest. $
+ * @end{table}
  */
 

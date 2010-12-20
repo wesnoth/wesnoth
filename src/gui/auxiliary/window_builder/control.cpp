@@ -75,8 +75,8 @@ void tbuilder_control::init_control(tcontrol* control) const
  * = Widget =
  *
  * All widgets placed in the cell have some values in common:
- * @start_table = config
- *     id (string = "")                This value is used for the engine to
+ * @begin{table}{config}
+ *     id & string & "" &                This value is used for the engine to
  *                                     identify 'special' items. This means that
  *                                     for example a text_box can get the proper
  *                                     initial value. This value should be
@@ -85,43 +85,43 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     uses them. NOTE items starting with an
  *                                     underscore are used for composed widgets
  *                                     and these should be unique per composed
- *                                     widget.
+ *                                     widget. $
  *
- *     definition (string = "default") The id of the widget definition to use.
+ *     definition & string & "default" & The id of the widget definition to use.
  *                                     This way it's possible to select a
  *                                     specific version of the widget e.g. a
  *                                     title label when the label is used as
- *                                     title.
+ *                                     title. $
  *
- *     linked_group(string = "")       The linked group the control belongs
- *                                     to.
+ *     linked_group & string & "" &       The linked group the control belongs
+ *                                     to. $
  *
- *     label (tstring = "")            Most widgets have some text associated
+ *     label & tstring & "" &            Most widgets have some text associated
  *                                     with them, this field contain the value
  *                                     of that text. Some widgets use this value
  *                                     for other purposes, this is documented
- *                                     at the widget.
+ *                                     at the widget. $
  *
- *     tooltip (tstring = "")          If you hover over a widget a while (the
+ *     tooltip & tstring & "" &          If you hover over a widget a while (the
  *                                     time it takes can differ per widget) a
  *                                     short help can show up.This defines the
- *                                     text of that message.
+ *                                     text of that message. $
  *
  *
- *     help (tstring = "")             If you hover over a widget and press F1 a
+ *     help & tstring & "" &             If you hover over a widget and press F1 a
  *                                     help message can show up. This help
  *                                     message might be the same as the tooltip
  *                                     but in general (if used) this message
  *                                     should show more help. This defines the
- *                                     text of that message.
+ *                                     text of that message. $
  *
- *    use_tooltip_on_label_overflow (bool = true)
+ *    use_tooltip_on_label_overflow & bool & true &
  *                                     If the text on the label is truncated and
  *                                     the tooltip is empty the label can be
  *                                     used for the tooltip. If this variable is
- *                                     set to true this will happen.
+ *                                     set to true this will happen. $
  *
- *   debug_border_mode (unsigned = 0)  The mode for showing the debug border.
+ *   debug_border_mode & unsigned & 0 &  The mode for showing the debug border.
  *                                     This border shows the area reserved for
  *                                     a widget. This function is only meant
  *                                     for debugging and might not be
@@ -129,9 +129,9 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     Available modes:
  *                                     @* 0 no border.
  *                                     @* 1 1 pixel border.
- *                                     @* 2 floodfill the widget area.
+ *                                     @* 2 floodfill the widget area. $
  *
- *   debug_border_color (color = "") The color of the debug border.
- * @end_table
+ *   debug_border_color & color & "" & The color of the debug border. $
+ * @end{table}
  */
 

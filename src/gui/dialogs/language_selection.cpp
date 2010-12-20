@@ -38,7 +38,7 @@ namespace gui2 {
  *
  * This shows the dialog to select the language to use.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * language_list & & listbox & m &
  *         This text contains the list with available languages. $

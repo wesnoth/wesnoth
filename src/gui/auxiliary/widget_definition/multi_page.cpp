@@ -43,10 +43,10 @@ tmulti_page_definition::tresolution::tresolution(const config& cfg)
  *
  * @macro = multi_page_description
  *
- * @start_table = config
- *     grid (grid)                     A grid containing the widgets for main
- *                                     widget.
- * @end_table
+ * @begin{table}{config}
+ *     grid & grid & &                    A grid containing the widgets for main
+ *                                     widget. $
+ * @end{table}
  *
  * A multipage has no states.
  */

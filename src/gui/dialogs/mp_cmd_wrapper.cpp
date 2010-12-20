@@ -35,7 +35,7 @@ namespace gui2 {
  * This shows a dialog that provides a graphical front-end
  * to various commands in the multiplayer lobby
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * message & & text_box & o &
  *         Text to send as a private message. $

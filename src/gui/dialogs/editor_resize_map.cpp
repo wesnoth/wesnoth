@@ -35,7 +35,7 @@ namespace gui2 {
  *
  * This shows the dialog to resize the current map.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * old_width & & label & m &
  *         Shows the old width of the map. $

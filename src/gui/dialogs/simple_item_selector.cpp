@@ -38,7 +38,7 @@ namespace gui2 {
  *
  * A simple one-column listbox with OK and Cancel buttons.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * title & & label & m &
  *         Dialog title label. $

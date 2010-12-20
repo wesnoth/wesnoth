@@ -78,7 +78,7 @@ twidget* tbuilder_stacked_widget::build() const
  * config. By default the last drawn item is also the "active" layer for the
  * event handling.
  *
- * @start_table = config
- * @end_table
+ * @begin{table}{config}
+ * @end{table}
  */
 

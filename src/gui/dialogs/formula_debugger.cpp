@@ -36,7 +36,7 @@ namespace gui2 {
  *
  * This shows the debugger for the formulas.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * stack & & control & m &
  *         A stack. $

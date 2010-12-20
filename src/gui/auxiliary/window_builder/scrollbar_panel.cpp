@@ -110,18 +110,18 @@ twidget* tbuilder_scrollbar_panel::build() const
  * Instance of a scrollbar_panel.
  *
  * List with the scrollbar_panel specific variables:
- * @start_table = config
- *     vertical_scrollbar_mode (scrollbar_mode = initial_auto)
+ * @begin{table}{config}
+ *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
  *                                     Determines whether or not to show the
- *                                     scrollbar.
- *     horizontal_scrollbar_mode (scrollbar_mode = initial_auto)
+ *                                     scrollbar. $
+ *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
  *                                     Determines whether or not to show the
- *                                     scrollbar.
+ *                                     scrollbar. $
  *
- *     definition (section)            This defines how a scrollbar_panel item
+ *     definition & section & &        This defines how a scrollbar_panel item
  *                                     looks. It must contain the grid
- *                                     definition for 1 row of the list.
+ *                                     definition for 1 row of the list. $
  *
- * @end_table
+ * @end{table}
  */
 

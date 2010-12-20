@@ -65,8 +65,8 @@ twidget* tbuilder_password_box::build() const
  *
  * == Password box ==
  *
- * @start_table = config
- *     label (tstring = "")            The initial text of the password box.
- * @end_table
+ * @begin{table}{config}
+ *     label & tstring & "" &            The initial text of the password box. $
+ * @end{table}
  */
 

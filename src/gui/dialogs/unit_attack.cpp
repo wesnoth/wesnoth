@@ -37,7 +37,7 @@ namespace gui2 {
  *
  * This shows the dialog for attacking units.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  * attacker_portrait & & image   & o & Shows the portrait of the attacking unit. $
  * attacker_icon     & & image   & o & Shows the icon of the attacking unit. $
  * attacker_name     & & control & o & Shows the name of the attacking unit. $

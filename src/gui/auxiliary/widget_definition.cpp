@@ -61,36 +61,36 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
  * Their sizes are based on the size of their children (and the border they need
  * themselves). It's wise to set all sizes to 0 for these kind of widgets.
  *
- * @start_table = config
- *     window_width (unsigned = 0)   Width of the application window.
- *     window_height (unsigned = 0)
- *                                   Height of the application window.
- *     min_width (unsigned = 0)      The minimum width of the widget.
- *     min_height (unsigned = 0)     The minimum height of the widget.
+ * @begin{table}{config}
+ *     window_width & unsigned & 0 &   Width of the application window. $
+ *     window_height & unsigned & 0 &
+ *                                   Height of the application window. $
+ *     min_width & unsigned & 0 &      The minimum width of the widget. $
+ *     min_height & unsigned & 0 &     The minimum height of the widget. $
  *
- *     default_width (unsigned = 0)  The default width of the widget.
- *     default_height (unsigned = 0) The default height of the widget.
+ *     default_width & unsigned & 0 &  The default width of the widget. $
+ *     default_height & unsigned & 0 & The default height of the widget. $
  *
- *     max_width (unsigned = 0)      The maximum width of the widget.
- *     max_height (unsigned = 0)     The maximum height of the widget.
+ *     max_width & unsigned & 0 &      The maximum width of the widget. $
+ *     max_height & unsigned & 0 &     The maximum height of the widget. $
  *
- *     text_extra_width (unsigned = 0)
+ *     text_extra_width & unsigned & 0 &
  *                                   The extra width needed to determine the
- *                                   minimal size for the text.
- *     text_extra_height (unsigned = 0)
+ *                                   minimal size for the text. $
+ *     text_extra_height & unsigned & 0 &
  *                                   The extra height needed to determine the
- *                                   minimal size for the text.
- *     text_font_size (unsigned = 0) The font size, which needs to be used to
- *                                   determine the minimal size for the text.
- *     text_font_style (font_style = "")
+ *                                   minimal size for the text. $
+ *     text_font_size & unsigned & 0 & The font size, which needs to be used to
+ *                                   determine the minimal size for the text. $
+ *     text_font_style & font_style & "" &
  *                                   The font style, which needs to be used to
- *                                   determine the minimal size for the text.
+ *                                   determine the minimal size for the text. $
  *
- *     state (section)               Every widget has one or more state
+ *     state & section & &           Every widget has one or more state
  *                                   sections.
  *                                   Note they aren't called state but state_xxx
- *                                   the exact names are listed per widget.
- * @end_table
+ *                                   the exact names are listed per widget. $
+ * @end{table}
  */
 
 	DBG_GUI_P << "Parsing resolution "
@@ -114,13 +114,13 @@ tcontrol_definition::tcontrol_definition(const config& cfg)
  * widget has some parts in common, first of all; every definition has the
  * following fields.
  *
- * @start_table = config
- *     id (string)                   Unique id for this gui (theme).
- *     description (t_string)        Unique translatable name for this gui.
+ * @begin{table}{config}
+ *     id & string & &                  Unique id for this gui (theme). $
+ *     description & t_string & &       Unique translatable name for this gui. $
  *
- *     resolution (section)          The definitions of the widget in various
- *                                   resolutions.
- * @end_table
+ *     resolution & section & &         The definitions of the widget in various
+ *                                   resolutions. $
+ * @end{table}
  */
 
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("control", "id"));

@@ -46,7 +46,7 @@ namespace {
  *
  * This shows the dialog with a list of predefined multiplayer servers.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * server_list & & listbox & m &
  *         Listbox with the predefined servers to connect to. $
@@ -132,7 +132,7 @@ void tmp_server_list::post_show(twindow& window)
  *
  * This shows the dialog to the MP server to connect to.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * start_table & & text_box & m &
  *         The name of the server to connect to. $
@@ -198,7 +198,7 @@ void tmp_connect::show_server_list(twindow& window)
  *
  * This shows the dialog to log in to the MP server
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * user_name & & text_box & m &
  *         The login user name. $

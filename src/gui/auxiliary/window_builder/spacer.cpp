@@ -78,10 +78,10 @@ twidget* tbuilder_spacer::build() const
  * If either the width or the height is not zero the spacer functions as a
  * fixed size spacer.
  *
- * @start_table = config
- *     width (f_unsigned = 0)          The width of the spacer.
- *     height (f_unsigned = 0)         The height of the spacer.
- * @end_table
+ * @begin{table}{config}
+ *     width & f_unsigned & 0 &          The width of the spacer. $
+ *     height & f_unsigned & 0 &         The height of the spacer. $
+ * @end{table}
  *
  * The variable available are the same as for the window resolution see
  * http://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of

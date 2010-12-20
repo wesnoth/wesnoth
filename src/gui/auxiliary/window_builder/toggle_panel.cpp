@@ -73,13 +73,13 @@ twidget* tbuilder_toggle_panel::build() const
  * combination of the panel and a toggle button, it allows a toggle button
  * with its own grid.
  *
- * @start_table = config
- *     grid (grid)                     Defines the grid with the widgets to
- *                                     place on the panel.
- *     return_value_id (string = "")   The return value id, see
- *                                     [[GUIToolkitWML#Button]] for more info.
- *     return_value (int = 0)          The return value, see
- *                                     [[GUIToolkitWML#Button]] for more info.
- * @end_table
+ * @begin{table}{config}
+ *     grid & grid & &                    Defines the grid with the widgets to
+ *                                     place on the panel. $
+ *     return_value_id & string & "" &   The return value id, see
+ *                                     [[GUIToolkitWML#Button]] for more info. $
+ *     return_value & int & 0 &          The return value, see
+ *                                     [[GUIToolkitWML#Button]] for more info. $
+ * @end{table}
  */
 

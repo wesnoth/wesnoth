@@ -39,7 +39,7 @@ namespace gui2 {
  *
  * This shows the dialog to select the kind of MP game the user wants to play.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * user_name & & text_box & m &
  *         This text contains the name the user on the MP server. This widget

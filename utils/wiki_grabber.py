@@ -152,10 +152,11 @@ if __name__ == "__main__":
         """
 
         # matches a line like
-        # x1 (f_unsigned = 0)             The x coordinate of the startpoint.
-        # x1 (f_unsigned)                 The x coordinate of the startpoint.
-        variable = "(?:[a-z]|[A-Z])(?:[a-z]|[A-Z]|[0-9]|_)*"
-        regex = re.compile(" *(" + variable +  ") \((" + variable + ") *(?:(?:= *(.*?))|)\) +(.*)\n")
+        # x1 & f_unsigned & 0 &            The x coordinate of the
+        # startpoint. $
+        # x1 & f_unsigned &               The x coordinate of the
+        # startpoint. $
+        regex = re.compile("([A-Za-z]\w*) +& +([A-Za-z]\w*) +& +([^&]*?) *& +(.*) +\$")
         res = regex.findall(data)
 
         # empty table
@@ -185,9 +186,8 @@ if __name__ == "__main__":
         """
 
         #matches a line like
-        #width unsigned                  The width of the canvas.
-        variable = "(?:[a-z]|[A-Z])(?:[a-z]|[A-Z]|[0-9]|_)*"
-        regex = re.compile(" *(" + variable +  ") (" + variable + ") +(.*)\n")
+        #width & unsigned &                 The width of the canvas. $
+        regex = re.compile("([A-Za-z]\w*) +& +([A-Za-z]\w*) +& +(.*) +\$")
         res = regex.findall(data)
 
         # empty table
@@ -209,9 +209,9 @@ if __name__ == "__main__":
         """Creates a table for the variable types."""
 
         #matches a line like
-        # int                             Signed number (whole numbers).
-        variable = "(?:[a-z]|[A-Z])(?:[a-z]|[A-Z]|[0-9]|_)*"
-        regex = re.compile(" *(" + variable +  ") +(.*)\n")
+        # int &                            Signed number (whole
+        # numbers). $
+        regex = re.compile("([A-Za-z]\w*) +& +(.*) +\$")
         res = regex.findall(data)
 
         # empty table
@@ -231,9 +231,8 @@ if __name__ == "__main__":
     def create_widget_overview_table(data):
         """Creates a table for all available widgets."""
         #matches a line like
-        # Button                        A push button.
-        variable = "(?:[a-z]|[A-Z])(?:[a-z]|[A-Z]|[0-9]|_)*"
-        regex = re.compile(" *(" + variable +  ") +(.*)\n")
+        # Button &                       A push button. $
+        regex = re.compile("([A-Za-z]\w*) +& +(.*) +\$")
         res = regex.findall(data)
 
         # empty table
@@ -261,9 +260,8 @@ if __name__ == "__main__":
     def create_window_overview_table(data):
         """Creates a table for all available windows."""
         #matches a line like
-        # Addon_connect                 The dialog to connect to the addon server
-        variable = "(?:[a-z]|[A-Z])(?:[a-z]|[A-Z]|[0-9]|_)*"
-        regex = re.compile(" *(" + variable +  ") +(.*)\n")
+        # Addon_connect &               The dialog to connect to the addon server $
+        regex = re.compile("([A-Za-z]\w*) +& +(.*) +\$")
         res = regex.findall(data)
 
         # empty table
@@ -393,23 +391,21 @@ if __name__ == "__main__":
         """Wrapper for creating tables."""
 
         type = table.group(1)
-        if(type == "config"):
-            return create_config_table(table.group(2) + "\n")
-        elif(type == "formula"):
-            return create_formula_table(table.group(2) + "\n")
-        elif(type == "variable_types"):
-            return create_variable_types_table(table.group(2) + "\n")
-        elif(type == "widget_overview"):
-            return create_widget_overview_table(table.group(2) + "\n")
-        elif(type == "window_overview"):
-            return create_window_overview_table(table.group(2) + "\n")
-        elif(type == "container"):
-            return create_container_table(table.group(2) + "\n")
-        elif(type == "dialog_widgets"):
-            return create_dialog_widgets_table(table.group(2) + "\n")
-        else:
-            sys.stderr.write("Unknown table definition '" + type + "'.\n")
-            return "Unknown table definition '" + type + "'."
+
+        functions = {
+        "config": create_config_table,
+        "formula": create_formula_table,
+        "variable_types": create_variable_types_table,
+        "widget_overview": create_widget_overview_table,
+        "window_overview": create_window_overview_table,
+        "container": create_container_table,
+        "dialog_widgets": create_dialog_widgets_table}
+
+        try:
+            return functions[type](table.group(2) + "\n")
+        except KeyError:
+            sys.stderr.write("Unknown table definition '%s'.\n" % type)
+            return "Unknown table definition '%s'." % type
 
     def process_body(data):
         """Process the body.
@@ -417,10 +413,10 @@ if __name__ == "__main__":
         The body needs to be stripped of known markup values.
         """
 
-        table_regex = re.compile("^@start_table *= *(.*?)\n(.*?)\n@end_table.*?$", re.M | re.S)
-        data = table_regex.sub(lambda match: create_table(match), data)
+        #table_regex = re.compile("^@start_table *= *(.*?)\n(.*?)\n@end_table.*?$", re.M | re.S)
+        #data = table_regex.sub(lambda match: create_table(match), data)
 
-        table_regex = re.compile("^@begin{table}\[(.*?)\]\n(.*?)\n@end{table}$", re.M | re.S)
+        table_regex = re.compile("^@begin{table}\{(.*?)\}\n(.*?)\n@end{table}$", re.M | re.S)
         data = table_regex.sub(lambda match: create_table(match), data)
         return data
 

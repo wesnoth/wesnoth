@@ -37,7 +37,7 @@ namespace gui2 {
  * This shows the dialog with the addons to install. This dialog is under
  * construction and only used with --new-widgets.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * addons & & listbox & m &
  *        A listbox that will contain the info about all addons on the server. $

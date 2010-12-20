@@ -176,82 +176,82 @@ const std::string& tgui_definition::read(const config& cfg)
  * test it.
  *
  * The gui has the following data:
- * @start_table = config
- *     id (string)                   Unique id for this gui (theme).
- *     description (t_string)        Unique translatable name for this gui.
+ * @begin{table}{config}
+ *     id & string & &                  Unique id for this gui (theme). $
+ *     description & t_string & &       Unique translatable name for this gui. $
  *
- *     widget_definitions (section)  The definitions of all
- *                                   [[#widget_list|widgets]].
- *     window (section)              The definitions of all
- *                                   [[#window_list|windows]].
- *     settings (section)            The settings for the gui.
- * @end_table
+ *     widget_definitions & section & & The definitions of all
+ *                                   [[#widget_list|widgets]]. $
+ *     window & section & &             The definitions of all
+ *                                   [[#window_list|windows]]. $
+ *     settings & section & &           The settings for the gui. $
+ * @end{table}
  *
  * <span id="widget_list"></span>List of available widgets:
- * @start_table = widget_overview
- *     Button                        @macro = button_description
- *     Image                         @macro = image_description
- *     Horizontal_listbox            @macro = horizontal_listbox_description
- *     Horizontal_scrollbar          @macro = horizontal_scrollbar_description
- *     Label                         @macro = label_description
- *     Listbox                       @macro = listbox_description
- *     Minimap                       @macro = minimap_description
- *     Multi_page                    @macro = multi_page_description
- *     Panel                         @macro = panel_description
- *     Repeating_button              @macro = repeating_button_description
- *     Scroll_label                  @macro = scroll_label_description
- *     Slider                        @macro = slider_description
- *     Spacer                        @macro = spacer_description
- *     Stacked_widget                A stacked widget is a control several
+ * @begin{table}{widget_overview}
+ *     Button &                       @macro = button_description $
+ *     Image &                        @macro = image_description $
+ *     Horizontal_listbox &           @macro = horizontal_listbox_description $
+ *     Horizontal_scrollbar &         @macro = horizontal_scrollbar_description $
+ *     Label &                        @macro = label_description $
+ *     Listbox &                      @macro = listbox_description $
+ *     Minimap &                      @macro = minimap_description $
+ *     Multi_page &                   @macro = multi_page_description $
+ *     Panel &                        @macro = panel_description $
+ *     Repeating_button &             @macro = repeating_button_description $
+ *     Scroll_label &                 @macro = scroll_label_description $
+ *     Slider &                       @macro = slider_description $
+ *     Spacer &                       @macro = spacer_description $
+ *     Stacked_widget &               A stacked widget is a control several
  *                                   widgets can be stacked on top of each
  *                                   other in the same space. This is mainly
  *                                   intended for over- and underlays. (The
- *                                   widget is still experimental.)
- *     Text_box                      A single line text box.
- *     Tree_view                     @macro = tree_view_description
- *     Toggle_button                 A kind of button with two 'states' normal
+ *                                   widget is still experimental.) $
+ *     Text_box &                     A single line text box. $
+ *     Tree_view &                    @macro = tree_view_description $
+ *     Toggle_button &                A kind of button with two 'states' normal
  *                                   and selected. This is a more generic widget
  *                                   which is used for eg checkboxes and
- *                                   radioboxes.
- *     Toggle_panel                  Like a toggle button but then as panel so
+ *                                   radioboxes. $
+ *     Toggle_panel &                 Like a toggle button but then as panel so
  *                                   can hold multiple items in a grid.
- *     Tooltip                       A small tooltip with help.
- *     Tree_view                     A tree view widget.
- *     Vertical_scrollbar            A vertical scrollbar.
- *     Window                        A window.
- * @end_table
+ *     Tooltip &                      A small tooltip with help. $
+ *     Tree_view &                    A tree view widget. $
+ *     Vertical_scrollbar &           A vertical scrollbar. $
+ *     Window &                       A window. $
+ * @end{table}
  *
  * <span id="window_list"></span>List of available windows:
- * @start_table = window_overview
- *     Addon_connect                 The dialog to connect to the addon server
- *                                   and maintain locally installed addons.
- *     Addon_list                    Shows the list of the addons to install or
- *                                   update.
- *     Campaign_selection            Shows the list of campaigns, to select one
- *                                   to play.
- *     Language_selection            The dialog to select the primairy language.
- *     WML_message_left              The ingame message dialog with a portrait
- *                                   on the left side. (Used for the WML messages.)
- *     WML_message_right             The ingame message dialog with a portrait
+ * @begin{table}{window_overview}
+ *     Addon_connect &                The dialog to connect to the addon server
+ *                                   and maintain locally installed addons. $
+ *     Addon_list &                   Shows the list of the addons to install or
+ *                                   update. $
+ *     Campaign_selection &           Shows the list of campaigns, to select one
+ *                                   to play. $
+ *     Language_selection &           The dialog to select the primairy language. $
+ *     WML_message_left &             The ingame message dialog with a portrait
+ *                                   on the left side. (Used for the WML messages.) $
+ *     WML_message_right &            The ingame message dialog with a portrait
  *                                   on the right side. (Used for the WML
- *                                   messages.)
- *     Message                       A generic message dialog.
- *     MP_connect                    The dialog to connect to the MP server.
- *     MP_method_selection           The dialog to select the kind of MP game
- *                                   to play. Official server, local etc.
- *     MP_server_list                List of the 'official' MP servers.
- *     MP_login                      The dialog to provide a password for registered
+ *                                   messages.) $
+ *     Message &                      A generic message dialog. $
+ *     MP_connect &                   The dialog to connect to the MP server. $
+ *     MP_method_selection &          The dialog to select the kind of MP game
+ *                                   to play. Official server, local etc. $
+ *     MP_server_list &               List of the 'official' MP servers. $
+ *     MP_login &                     The dialog to provide a password for registered
  *                                   usernames, request a password reminder or
- *                                   choose a different username.
- *     MP_cmd_wrapper                Perform various actions on the selected user
- *                                   (e.g. whispering or kicking).
- *     MP_create_game                The dialog to select and create an MP game.
- *     Title_screen                  The title screen.
- *     Editor_new_map                Creates a new map in the editor.
- *     Editor_generate_map           Generates a random map in the editor.
- *     Editor_resize_map             Resizes a map in the editor.
- *     Editor_settings               The settings specific for the editor.
- * @end_table
+ *                                   choose a different username. $
+ *     MP_cmd_wrapper &               Perform various actions on the selected user
+ *                                   (e.g. whispering or kicking). $
+ *     MP_create_game &               The dialog to select and create an MP game. $
+ *     Title_screen &                 The title screen. $
+ *     Editor_new_map &               Creates a new map in the editor. $
+ *     Editor_generate_map &          Generates a random map in the editor. $
+ *     Editor_resize_map &            Resizes a map in the editor. $
+ *     Editor_settings &              The settings specific for the editor. $
+ * @end{table}
  *
  */
 	id = cfg["id"].str();
@@ -304,39 +304,39 @@ const std::string& tgui_definition::read(const config& cfg)
  * @order = 1
  *
  * A setting section has the following variables:
- * @start_table = config
- *     popup_show_delay (unsigned = 0) The time it take before the popup shows
+ * @begin{table}{config}
+ *     popup_show_delay & unsigned & 0 & The time it take before the popup shows
  *                                     if the mouse moves over the widget. 0
- *                                     means show directly.
- *     popup_show_time (unsigned = 0)  The time a shown popup remains visible.
+ *                                     means show directly. $
+ *     popup_show_time & unsigned & 0 &  The time a shown popup remains visible.
  *                                     0 means until the mouse leaves the
- *                                     widget.
- *     help_show_time (unsigned = 0)   The time a shown help remains visible.
+ *                                     widget. $
+ *     help_show_time & unsigned & 0 &   The time a shown help remains visible.
  *                                     0 means until the mouse leaves the
- *                                     widget.
- *     double_click_time (unsigned)    The time between two clicks to still be a
- *                                     double click.
- *     repeat_button_repeat_time (unsigned = 0)
+ *                                     widget. $
+ *     double_click_time & unsigned & &   The time between two clicks to still be a
+ *                                     double click. $
+ *     repeat_button_repeat_time & unsigned & 0 &
  *                                     The time a repeating button waits before
  *                                     the next event is issued if the button
- *                                     is still pressed down.
+ *                                     is still pressed down. $
  *
- *     sound_button_click (string = "")
+ *     sound_button_click & string & "" &
  *                                     The sound played if a button is
- *                                     clicked.
- *     sound_toggle_button_click (string = "")
+ *                                     clicked. $
+ *     sound_toggle_button_click & string & "" &
  *                                     The sound played if a toggle button is
- *                                     clicked.
- *     sound_toggle_panel_click (string = "")
+ *                                     clicked. $
+ *     sound_toggle_panel_click & string & "" &
  *                                     The sound played if a toggle panel is
  *                                     clicked. Normally the toggle panels
  *                                     are the items in a listbox. If a
  *                                     toggle button is in the listbox it's
- *                                     sound is played.
- *     sound_slider_adjust (string = "")
+ *                                     sound is played. $
+ *     sound_slider_adjust & string & "" &
  *                                     The sound played if a slider is
- *                                     adjusted.
- * @end_table
+ *                                     adjusted. $
+ * @end{table}
  */
 
 /**
@@ -474,9 +474,9 @@ tstate_definition::tstate_definition(const config &cfg) :
  * Definition of a state. A state contains the info what to do in a state.
  * Atm this is rather focussed on the drawing part, might change later.
  * Keys:
- * @start_table = config
- *     draw (section)                  Section with drawing directions for a canvas.
- * @end_table
+ * @begin{table}{config}
+ *     draw & section & &                 Section with drawing directions for a canvas. $
+ * @end{table}
  *
  */
 

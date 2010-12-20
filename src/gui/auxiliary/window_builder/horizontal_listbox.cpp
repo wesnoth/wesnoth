@@ -133,24 +133,24 @@ twidget* tbuilder_horizontal_listbox::build() const
  * @macro = horizontal_listbox_description
  *
  * List with the horizontal listbox specific variables:
- * @start_table = config
- *     vertical_scrollbar_mode (scrollbar_mode = initial_auto)
+ * @begin{table}{config}
+ *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
  *                                     Determines whether or not to show the
- *                                     scrollbar.
- *     horizontal_scrollbar_mode (scrollbar_mode = initial_auto)
+ *                                     scrollbar. $
+ *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
  *                                     Determines whether or not to show the
- *                                     scrollbar.
+ *                                     scrollbar. $
  *
- *     list_definition (section)       This defines how a listbox item
+ *     list_definition & section & &      This defines how a listbox item
  *                                     looks. It must contain the grid
- *                                     definition for 1 row of the list.
+ *                                     definition for 1 row of the list. $
  *
- *     list_data(section = [])         A grid alike section which stores the
+ *     list_data & section & [] &         A grid alike section which stores the
  *                                     initial data for the listbox. Every row
  *                                     must have the same number of columns as
- *                                     the 'list_definition'.
+ *                                     the 'list_definition'. $
  *
- * @end_table
+ * @end{table}
  *
  * In order to force widgets to be the same size inside a horizontal listbox,
  * the widgets need to be inside a linked_group.

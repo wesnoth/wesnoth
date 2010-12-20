@@ -80,10 +80,10 @@ twidget* tbuilder_button::build() const
  * precedence as return_value.
  *
  * List with the button specific variables:
- * @start_table = config
- *     return_value_id (string = "")   The return value id.
- *     return_value (int = 0)          The return value.
+ * @begin{table}{config}
+ *     return_value_id & string & "" &   The return value id. $
+ *     return_value & int & 0 &          The return value. $
  *
- * @end_table
+ * @end{table}
  */
 

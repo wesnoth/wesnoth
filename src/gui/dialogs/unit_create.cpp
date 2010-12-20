@@ -57,7 +57,7 @@ namespace gui2 {
  *
  * This shows the debug-mode dialog to create new units on the map.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * male_toggle & & toggle_button & m &
  *         Option button to select the "male" gender for created units. $

@@ -46,20 +46,20 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
  * This widget is slower as a normal label widget so only use this widget
  * when the scrollbar is required (or expected to become required).
  *
- * @start_table = config
- *     grid (grid)                     A grid containing the widgets for main
- *                                     widget.
- * @end_table
+ * @begin{table}{config}
+ *     grid & grid & &                    A grid containing the widgets for main
+ *                                     widget. $
+ * @end{table}
  *
  * TODO we need one definition for a vertical scrollbar since this is the second
  * time we use it.
  *
- * @start_table = container
- *     _content_grid (grid)            A grid which should only contain one
- *                                     label widget.
- *     _scrollbar_grid (grid)          A grid for the scrollbar
- *                                     (Merge with listbox info.)
- * @end_table
+ * @begin{table}{dialog_widgets}
+ *     _content_grid & & grid & m &           A grid which should only contain one
+ *                                     label widget. $
+ *     _scrollbar_grid & & grid & m &         A grid for the scrollbar
+ *                                     (Merge with listbox info.) $
+ * @end{table}
  *
  * The following states exist:
  * * state_enabled, the scroll label is enabled.

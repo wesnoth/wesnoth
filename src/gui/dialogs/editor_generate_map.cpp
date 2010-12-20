@@ -38,7 +38,7 @@ namespace gui2 {
  * This shows the dialog in the editor to select which random generator
  * should be used to generate a map.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  * current_generator & & label & m &
  *         The label displaying the name of the currently selected generator. $
  *

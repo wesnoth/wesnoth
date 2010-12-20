@@ -27,7 +27,7 @@ namespace gui2 {
  *
  * This shows the dialog to confirm deleting a savegame file.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * dont_ask_again & & boolean_selector & m &
  *        A checkbox to not show this dialog again. $

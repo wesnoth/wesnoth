@@ -47,16 +47,16 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
  * items.
  *
  * The resolution for a toggle panel also contains the following keys:
- * @start_table = config
- *     top_border (unsigned = 0)     The size which isn't used for the client
- *                                   area.
- *     bottom_border (unsigned = 0)  The size which isn't used for the client
- *                                   area.
- *     left_border (unsigned = 0)    The size which isn't used for the client
- *                                   area.
- *     right_border (unsigned = 0)   The size which isn't used for the client
- *                                   area.
- * @end_table
+ * @begin{table}{config}
+ *     top_border & unsigned & 0 &     The size which isn't used for the client
+ *                                   area. $
+ *     bottom_border & unsigned & 0 &  The size which isn't used for the client
+ *                                   area. $
+ *     left_border & unsigned & 0 &    The size which isn't used for the client
+ *                                   area. $
+ *     right_border & unsigned & 0 &   The size which isn't used for the client
+ *                                   area. $
+ * @end{table}
  *
  * The following states exist:
  * * state_enabled, the panel is enabled and not selected.

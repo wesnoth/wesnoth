@@ -74,9 +74,9 @@ twidget* tbuilder_panel::build() const
  *
  * @macro = panel_description
  *
- * @start_table = config
- *     grid (grid)                     Defines the grid with the widgets to
- *                                     place on the panel.
- * @end_table
+ * @begin{table}{config}
+ *     grid & grid & &                    Defines the grid with the widgets to
+ *                                     place on the panel. $
+ * @end{table}
  */
 

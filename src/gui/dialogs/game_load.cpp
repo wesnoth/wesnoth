@@ -54,7 +54,7 @@ namespace gui2 {
  *
  * This shows the dialog to select and load a savegame file.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * txtFilter & & text & m &
  *         The filter for the listbox items. $

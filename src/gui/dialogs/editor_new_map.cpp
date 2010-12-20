@@ -29,7 +29,7 @@ namespace gui2 {
  *
  * This shows the dialog to generate a new map in the editor.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * width & & integer_selector & m &
  *        An integer selector to determine the width of the map to create. $
