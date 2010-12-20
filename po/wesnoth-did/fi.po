@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-12-03 14:55+0100\n"
-"PO-Revision-Date: 2009-12-23 16:23+0200\n"
-"Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
+"PO-Revision-Date: 2010-12-12 11:35+0200\n"
+"Last-Translator: Jussi Rautio <kipuna@gmail.com>\n"
 "Language-Team: Finnish\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -56,9 +56,8 @@ msgstr "Kutsuja"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:22
-#, fuzzy
 msgid "(Intermediate level, 12 scenarios.)"
-msgstr "(asiantuntijatasoa, 11 skenaariota)\n"
+msgstr "(keskitasoa, 12 tehtävää)"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:22
@@ -157,7 +156,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:49
-#, fuzzy
 msgid ""
 "Shortly a man dressed in the robes of a necromancer emerged from the trees. "
 "<i>“Allow me to introduce myself. I am Darken Volk. While I know your "
@@ -167,16 +165,15 @@ msgid ""
 "I ask only to rest in your town for a few days.”</i>"
 msgstr ""
 "Sitten puiden seasta ilmestyi pimeyden herran kaapuihin sonnustautunut mies. "
-"”Sallikaa minun esitellä itseni. Minä olen Darken Volk. Tiedän, ettei "
+"<i>”Sallikaa minun esitellä itseni. Minä olen Darken Volk. Tiedän, ettei "
 "kuningaskuntanne rakasta minunlaisiani, mutta luulen, että tällä hetkellä on "
 "meille molemmille elintärkeää heittää syrjään erimielisyydet. Örkkien uhka "
 "kasvaa pohjoisessa, enkä usko yhdenkään rajakaupungin pysyvän pystyssä ilman "
 "apuvoimia. Mutta nyt pyydän ainoastaan lupaa levätä kaupungissanne muutaman "
-"päivän.”"
+"päivän.”</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:54
-#, fuzzy
 msgid ""
 "Drogan, the captain of the guard, replied, <i>“Surely you know that the "
 "penalty for necromancy is death. For your aid we will promise you rest and "
@@ -184,12 +181,12 @@ msgid ""
 "to return on pain of death. We thank you for your help, but need no "
 "alliances with those who deal only in dark magic.”</i>"
 msgstr ""
-"Drogan, vartioston kapteeni, vastasi: ”Sinä tiedät varmasti, että rangaistus "
-"elävoittämisestä on kuolema. Antamasi avun tähden lupaamme, että saat levätä "
-"rauhassa. Kuitenkin lähdettyäsi sinut karkotetaan näiltä mailta ja sinua "
-"kielletään palaamasta, kuoleman uhalla. Kiitämme sinua avustasi, mutta emme "
-"tarvitse liittolaisiksemme niitä, jotka hoitelevat asioitaan ainoastaan "
-"pimeällä magialla.”"
+"Drogan, vartioston kapteeni, vastasi: <i>”Sinä tiedät varmasti, että "
+"rangaistus elävoittämisestä on kuolema. Antamasi avun tähden lupaamme, että "
+"saat levätä rauhassa. Kuitenkin lähdettyäsi sinut karkotetaan näiltä mailta "
+"ja sinua kielletään palaamasta, kuoleman uhalla. Kiitämme sinua avustasi, "
+"mutta emme tarvitse liittolaisiksemme niitä, jotka hoitelevat asioitaan "
+"ainoastaan pimeällä magialla.”</i>"
 
 #. [side]: type=General, id=Taylor
 #. [side]: type=Apprentice Mage, id=Malin Keshar
@@ -285,7 +282,6 @@ msgstr "Droganin kuolema"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:185
-#, fuzzy
 msgid ""
 "Malin, troubled by his father’s death, argues to no avail that Darken Volk "
 "be allowed to stay to help defend the town. The necromancer leaves Parthyn "
@@ -361,14 +357,13 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:229
-#, fuzzy
 msgid ""
 "No! No... it was nothing like that... But I will not stand by and allow the "
 "orcs to destroy my home while I have the skills to prevent it!"
 msgstr ""
 "Ei! Ei... se ollut mitään sellaista... mutta en vain aio seisoa "
 "katselemassa, kun örkit tuhoavat kotini, kun minulla on taitoja moisen "
-"kauhun ennaltaehkäisemiseen!"
+"kauhun estämiseen!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:243
@@ -479,14 +474,13 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:343
-#, fuzzy
 msgid ""
 "Perhaps I cannot kill them all... but I see the back-trail of this band we "
 "defeated, and there will be more orcs at the other end of it. I shall pursue "
 "them."
 msgstr ""
 "Ehkä en voi tappaa niitä kaikkia... mutta näen mistä tämä joukko on tullut, "
-"ja siellä on vielä lisää örkkejä. Vainoan ne."
+"ja siellä on vielä lisää örkkejä. Lähden niiden perään."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:347
@@ -516,7 +510,6 @@ msgstr "Olen päättänyt."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:363
-#, fuzzy
 msgid ""
 "You’ll go without my blessing or my men, then. I won’t spare any on such an "
 "errand."
@@ -552,11 +545,11 @@ msgid ""
 "ravaging his family and home through their ceaseless attacks."
 msgstr ""
 "Taistellen kyyneliä ja vihaa vastaan Malin seuraa örkkijoukkion jälkiä. Hän "
-"kiroaa vanhemmat maagit, jotka lähettivät hänet pois Alduinin saarelta "
-"puolivalmistautuneena vain aiheuttamaan riitaa. Hän kiroaa Droganin, jolta "
-"puuttui rohkeutta nähdä mitä on tehtävä. Kaikista tulisimmin hän kuitenkin "
-"kiroaa örkit, jotka tuhosivat hänen kotinsa ja perheensä taukoamattomilla "
-"hyökkäyksillään."
+"kiroaa vanhemmat maagit, jotka lähettivät hänet pois Alduinin saarelta sodan "
+"keskelle ennen, kuin hän oli täysin valmistautunut. Hän kiroaa Droganin, "
+"jolta puuttui rohkeutta nähdä mitä on tehtävä. Kaikista tulisimmin hän "
+"kuitenkin kiroaa örkit, jotka tuhosivat hänen kotinsa ja perheensä "
+"taukoamattomilla hyökkäyksillään."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:28
@@ -794,13 +787,12 @@ msgstr "Oho, ei, odota, siellä he ovat."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:364
-#, fuzzy
 msgid ""
 "Sacking goblin villages is all well and good, but walking corpses and bats "
 "won’t stand up to full orcish warriors."
 msgstr ""
 "Hiisikylien turmeleminen on ihan hyvä juttu, mutta kävelevillä ruumiilla ja "
-"lepakoilla ei vastusteta pitkäänkään örkkisotureita."
+"lepakoilla ei vastusteta örkkisotureita kovin pitkään."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:368
@@ -903,7 +895,6 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:207
-#, fuzzy
 msgid ""
 "Two necromancers are at the cave entrance! Up yer axes, boys, if ye dinna’ "
 "want tae be a walking pile o’ bones."
@@ -960,10 +951,9 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:256
-#, fuzzy
 msgid "But why are they attacking me? And what should I do?!"
 msgstr ""
-"Mutta miksi ne minun kimppuuni hyökkäävät? Ja mitä minun pitäisi tehdä?!?"
+"Mutta miksi ne minun kimppuuni hyökkäävät? Ja mitä minun pitäisi tehdä?!"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:260
@@ -1104,7 +1094,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:28
-#, fuzzy
 msgid ""
 "Word spreads to the south as well, of the many battles won against the orc "
 "tribes, as Darken Volk tells Malin. As spring rolls around, a number of dark "
@@ -1115,9 +1104,9 @@ msgstr ""
 "Sana monesta örkkiheimoja vastaan voitetusta taistelusta leviää myöskin "
 "etelään, kuten Darken Volk kertoo Malinille. Kevään saapuessa moni pimeyden "
 "tuntija on halukas auttamaan taisteluissa ja matkustaa pohjoiseen "
-"liityäkseen joukkoon. ”He ovat jokseenkin hyödyllisiä taistelussa”, pimeyden "
-"herra sanoo, ”mutta yhdelläkään heistä ei ole edes kymmenesosaa "
-"pontentiaalisista voimistasi.”"
+"liityäkseen joukkoon. <i>”He ovat jokseenkin hyödyllisiä taistelussa”</i>, "
+"pimeyden herra sanoo, <i>”mutta yhdelläkään heistä ei ole edes kymmenesosaa "
+"mahdollisista voimistasi.”</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:33
@@ -1427,7 +1416,6 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:345
-#, fuzzy
 msgid ""
 "Gods of Darkness, how did it come to this? My own sister determined on my "
 "death. Nothing has gone right since... since that day the fat toad Zephrin "
@@ -1438,9 +1426,9 @@ msgstr ""
 "Pimeyden jumalat, kuinka tässä nyt kävi näin? Oma siskoni määräsi kuolemani. "
 "Mikään ei ole oikein mennyt putkeen sen päivän jälkeen kun... kun se lihava "
 "konna Zephrin haukkui ylämaan aksenttiani ja menetin malttini ja kirosin "
-"hänelle paiseita. ”Kaverin kiroaminen on pahempi juttu kuin pikku vitsi”, he "
-"sanoivat. ”Huonosti arvioitu”, he sanoivat. Ja he karkottivat minut "
-"akatemiasta."
+"hänelle paiseita. <i>”Elinikäinen kirous ei ole mikään vitsi”</i>, he "
+"sanoivat. <i>”Arvostelukyvyn puutetta”</i>, he sanoivat. Ja he karkottivat "
+"minut akatemiasta."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:349
@@ -1473,7 +1461,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:24
-#, fuzzy
 msgid ""
 "<i>“For your final test as my apprentice, you will aid me in retrieving a "
 "book,”</i> the necromancer says. <i>“The book was... stolen from me long "
@@ -1481,26 +1468,25 @@ msgid ""
 "I should warn you that it will require you to act against your countrymen of "
 "Wesnoth, since it was one of them who stole it from me.”</i>"
 msgstr ""
-"”Minulla on sinulle viimeinen testi oppipoikanani. Sinä autat minua "
-"hankkimaan takaisin käsiini erään kirjan”, pimeyden herra sanoo. ”Kirja... "
-"varastettiin minulta kauan sitten. Koska sillä on minulle henkilökohtaista "
-"arvoa, ajattele tehtävää pienenä palveluksena. Minun pitäisi varmaan "
-"varoittaa sinua siitä, että se vaatii sinua toimimaan maanmiehiäsi "
-"wesnothilaisia vastaan, sillä yksi heistä oli se, joka kirjan minulta vei.”"
+"<i>”Minulla on sinulle viimeinen testi oppipoikanani. Sinä autat minua "
+"hankkimaan takaisin käsiini erään kirjan”</i>, pimeyden herra sanoo. "
+"<i>”Kirja... varastettiin minulta kauan sitten. Koska sillä on minulle "
+"henkilökohtaista arvoa, ajattele tehtävää pienenä palveluksena. Minun "
+"pitäisi varmaan varoittaa sinua siitä, että se vaatii sinua toimimaan "
+"maanmiehiäsi wesnothilaisia vastaan, sillä yksi heistä oli se, joka kirjan "
+"minulta vei.”</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:29
-#, fuzzy
 msgid ""
 "Malin replies, <i>“They are no longer countrymen of mine, since they have "
 "rejected me twice now.”</i>"
 msgstr ""
-"Malin vastaa: ”He eivät enää ole maanmiehiäni, sillä he ovat torjuneet minut "
-"nyt kahdesti.”"
+"Malin vastaa: <i>”He eivät enää ole maanmiehiäni, sillä he ovat torjuneet "
+"minut nyt kahdesti.”</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:34
-#, fuzzy
 msgid ""
 "Darken Volk continues, <i>“Excellent. We travel, then, to the city of Tath. "
 "There is a lord of that city by the name of Karres. He was trained as a mage "
@@ -1508,11 +1494,12 @@ msgid ""
 "their studies. Among his library is the book we seek. We will need to break "
 "into his manor and seek the book inside.”</i>"
 msgstr ""
-"Darken Volk jatkaa: ”Erinomaista. Me matkustamme sitten Tathin kaupunkiin. "
-"Tuossa kaupungissa on lordi, joka kantaa nimeä Karres. Hänet koulutettiin "
-"maagiksi nuorena, ja nyt hän käyttää vaurauttaan avustaakseen suurta "
-"maagijoukkoa opinnoissa. Hänen kirjastostaan löytyy kirja, jota me etsimme. "
-"Meidän täytyy murtautua hänen kartanoonsa ja etsiä kirjaa sisäpuolella.”"
+"Darken Volk jatkaa: <i>”Erinomaista. Me matkustamme sitten Tathin "
+"kaupunkiin. Tuossa kaupungissa on lordi, joka kantaa nimeä Karres. Hänet "
+"koulutettiin maagiksi nuorena, ja nyt hän käyttää vaurauttaan avustaakseen "
+"suurta maagijoukkoa opinnoissa. Hänen kirjastostaan löytyy kirja, jota me "
+"etsimme. Meidän täytyy murtautua hänen kartanoonsa ja etsiä kirjaa "
+"sisäpuolella.”</i>"
 
 #. [side]: type=Apprentice Mage, id=Malin Keshar
 #. [side]
@@ -1671,7 +1658,6 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:362
-#, fuzzy
 msgid ""
 "That gate won’t hold back the soldiers for more than a few hours. We’d "
 "better hurry."
@@ -1835,9 +1821,8 @@ msgstr ""
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:225
-#, fuzzy
 msgid "‘We’? <i>We</i> do nothing. You are no longer my apprentice."
-msgstr "Me? ME emme tee mitään. Et enää ole oppipoikani."
+msgstr "Me? <i>Me</i> emme tee mitään. Et enää ole oppipoikani."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:239
@@ -2062,13 +2047,11 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:18
-#, fuzzy
 msgid "<i>“To become a lich, one must first die.”</i>"
-msgstr "”Tullakseen kuolonherraksi on kuoltava ensin.”"
+msgstr "<i>”Tullakseen kuolonherraksi on ensin kuoltava.”</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:23
-#, fuzzy
 msgid ""
 "So reads the book that Malin has reclaimed. <i>“The spells of necromancy "
 "bind the spirit, but only once it has been unbound from the body. To become "
@@ -2077,12 +2060,12 @@ msgid ""
 "the spirits of others. Because he retains his own will, however, the lich "
 "can call upon the awesome powers of the spirit world.”</i>"
 msgstr ""
-"Niin lukee kirjassa, jonka Malin otti takaisin. ”Elävöittämisen taiat "
-"sitovat hengen, mutta vain kerran se on vapautettu ruumiista. "
+"Niin lukee kirjassa, jonka Malin otti takaisin. <i>”Elävöittämisen taiat "
+"sitovat hengen, mutta vain sellaisen joka on vapautettu ruumiista. "
 "Kuolonherruuden saavuttaakseen maagin on tehtävä tarpeelliset manaukset "
 "kuolinhenkäyksillään. Niin hän sitoo oman henkensä hyvin samaan tapaan kuin "
 "pimeyden herrat sitovat muiden henkiä. Koska kuolonherra säilyttää oman "
-"tahtonsa, voi hän kuitenkin kutsua henkimaailman mahtavia voimia.”"
+"tahtonsa, voi hän kuitenkin kutsua henkimaailman mahtavia voimia.”</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:28
@@ -2221,7 +2204,7 @@ msgstr "Mal Keshar"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:416
 msgid "<big>AAAaaiiigghh!!</big>"
-msgstr ""
+msgstr "<big>AAAaaiiigg!!</big>"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:421
@@ -2293,7 +2276,7 @@ msgstr ""
 #. [message]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:675
 msgid "<big>AAAaaaggghhhh!! ...</big>"
-msgstr ""
+msgstr "<big>AAAaaaggg!! ...</big>"
 
 #. [scenario]: id=12_Endless_Night
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:6
@@ -2390,13 +2373,13 @@ msgstr ""
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:326
-#, fuzzy
 msgid ""
 "I’ve been itching for a chance to break some bones with my hammer, and now "
 "you’ve given me cause. Goodness knows you’ve got plenty of bones over there."
 msgstr ""
 "Olen janonnut mahdollisuutta murskata hiukan luita vasarallani, ja nyt olet "
-"antanut minulle syyn. Sinulla on siellä paljon luuta."
+"antanut minulle tilaisuuden. Ja kautta hyvyyden, sinulla on siellä paljon "
+"luita."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:330
