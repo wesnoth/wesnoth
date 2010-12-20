@@ -8,6 +8,11 @@ use File::Basename;
 use POSIX qw(strftime);
 use Getopt::Long;
 
+# use utf8 for stdout and file reading
+use utf8;
+use open IO => ':utf8';
+binmode(STDOUT, ':utf8');
+
 our $toplevel = '.';
 our $initialdomain = 'wesnoth';
 our $domain = undef;
