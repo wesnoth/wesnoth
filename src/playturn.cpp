@@ -81,7 +81,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		network::connection from, std::deque<config>& backlog, bool skip_replay)
 {
 	if (const config &rnd_seed = cfg.child("random_seed")) {
-		rand_rng::set_seed(lexical_cast<rand_rng::seed_t>(rnd_seed["seed"]));
+		rand_rng::set_seed(rnd_seed["seed"]);
 		//may call a callback function, see rand_rng::set_seed_callback
 	}
 

@@ -265,10 +265,10 @@ void replay::add_attack(const map_location& a, const map_location& b,
 	add_unit_checksum(b,current_);
 }
 
-void replay::add_seed(const char* child_name, rand_rng::seed_t seed)
+void replay::add_seed(const char* child_name, int seed)
 {
 	LOG_REPLAY << "Setting seed for child type " << child_name << ": " << seed << "\n";
-	random()->child(child_name)["seed"] = lexical_cast<std::string>(seed);
+	random()->child(child_name)["seed"] = seed;
 }
 
 void replay::add_pos(const std::string& type,
@@ -1087,16 +1087,9 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			try {
-				rand_rng::seed_t seed = lexical_cast<rand_rng::seed_t>(child["seed"]);
-				rand_rng::set_seed(seed);
-				LOG_REPLAY << "Replaying attack with seed " << seed << "\n";
-			} catch (bad_lexical_cast) {
-				std::stringstream errbuf;
-				errbuf << "illegal random seed for the attack " << src << " -> " << dst << '\n';
-				replay::process_error(errbuf.str());
-				continue;
-			}
+			int seed = child["seed"];
+			rand_rng::set_seed(child["seed"]);
+			LOG_REPLAY << "Replaying attack with seed " << seed << "\n";
 
 			DBG_REPLAY << "Attacker XP (before attack): " << u->experience() << "\n";
 

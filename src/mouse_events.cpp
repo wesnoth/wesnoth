@@ -995,7 +995,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 
 void mouse_handler::perform_attack(
 	map_location attacker_loc, map_location defender_loc,
-	int attacker_weapon, int defender_weapon, rand_rng::seed_t seed)
+	int attacker_weapon, int defender_weapon, int seed)
 {
 	// this function gets it's arguments by value because the calling function
 	// object might get deleted in the clear callback call below, invalidating

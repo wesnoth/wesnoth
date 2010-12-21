@@ -57,9 +57,9 @@ static lg::log_domain log_random("random");
 
 namespace {
   rand_rng::rng *random_generator = NULL ;
-  rand_rng::seed_t last_seed;
+  int last_seed;
   bool seed_valid = false;
-  boost::function<void (rand_rng::seed_t)> new_seed_callback;
+  boost::function<void (int)> new_seed_callback;
 }
 
 
@@ -94,7 +94,7 @@ void set_random_results(const config& cfg)
 namespace rand_rng
 {
 
-void set_seed(seed_t seed)
+void set_seed(int seed)
 {
 	LOG_RND << "set_seed with " << seed << "\n";
 	assert(random_generator!=NULL);
@@ -111,7 +111,7 @@ void invalidate_seed()
 {
 	LOG_RND << "invalidate_seed\n";
 	assert(random_generator!=NULL);
-	last_seed = rand();
+	last_seed = rand() & 0x7FFFFFFF;
 	if (has_valid_seed()) { //aka SRNG is disabled
 		random_generator->set_seed(last_seed);
 	}
@@ -124,12 +124,12 @@ bool has_valid_seed()
 	return (network::nconnections() == 0) || seed_valid;
 }
 
-seed_t get_last_seed()
+int get_last_seed()
 {
 	return last_seed;
 }
 
-void set_new_seed_callback(boost::function<void (seed_t)> f)
+void set_new_seed_callback(boost::function<void (int)> f)
 {
 	DBG_RND << "set_new_seed_callback\n";
 	new_seed_callback = f;
@@ -219,7 +219,7 @@ void rng::set_random(config* random)
 	return;
 }
 
-void rng::set_seed(seed_t seed)
+void rng::set_seed(int seed)
 {
 	LOG_RND << "Set random seed to " << seed << "\n";
 	generator_.seed_random(seed, 0);

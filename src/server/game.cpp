@@ -830,7 +830,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	}
 	for (command = commands.begin(); command != commands.end(); ++command) {
 		if (simple_wml::node* attack = (**command).child("attack")) {
-			int seed = rand();
+			int seed = rand() & 0x7FFFFFFF;
 			attack->set_attr_int("seed", seed);
 			simple_wml::document doc;
 			simple_wml::node& rs = doc.root().add_child("random_seed");

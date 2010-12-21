@@ -106,7 +106,7 @@ protected:
 
 	// the perform attack function called after a random seed is obtained
 	void perform_attack(map_location attacker_loc, map_location defender_loc,
-		int attacker_weapon, int defender_weapon, rand_rng::seed_t seed);
+		int attacker_weapon, int defender_weapon, int seed);
 
 	void show_attack_options(const unit_map::const_iterator &u);
 	map_location current_unit_attacks_from(const map_location& loc);
