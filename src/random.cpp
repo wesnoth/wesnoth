@@ -237,20 +237,16 @@ set_random_generator::~set_random_generator()
 }
 
 simple_rng::simple_rng() :
-    random_seed_(rand()),
-    random_pool_(random_seed_),
-    random_calls_(0)
+	random_seed_(rand() & 0x7FFFFFFF),
+	random_pool_(random_seed_),
+	random_calls_(0)
 {
 }
 
 simple_rng::simple_rng(const config& cfg) :
-    /**
-	 * @todo  older savegames don't have random_seed stored, evaluate later
-     * whether default can be removed again. Look after branching 1.5.
-	 */
-    random_seed_(cfg["random_seed"].to_int(42)),
-    random_pool_(random_seed_),
-    random_calls_(0)
+	random_seed_(cfg["random_seed"]),
+	random_pool_(random_seed_),
+	random_calls_(0)
 {
 }
 
@@ -262,12 +258,18 @@ int simple_rng::get_next_random()
 		<< " for call " << random_calls_
 		<< " with seed " << random_seed_ << '\n';
 
-	return (static_cast<unsigned>(random_pool_ / 65536) % 32768);
+	return (random_pool_ / 65536) % 32768;
 }
 
 void simple_rng::seed_random(const unsigned call_count)
 {
     seed_random(random_seed_, call_count);
+}
+
+void simple_rng::rotate_random()
+{
+	random_seed_ = random_pool_ & 0x7FFFFFFF;
+	random_calls_ = 0;
 }
 
 void simple_rng::seed_random(const int seed, const unsigned call_count)

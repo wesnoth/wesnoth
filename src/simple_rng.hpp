@@ -57,9 +57,7 @@ public:
 	 *  this way we stay in the same sequence but don't have a lot
 	 *  calls. Used when moving to the next scenario.
 	 */
-	void rotate_random()
-		{ random_seed_ = random_pool_; random_calls_ = 0; }
-
+	void rotate_random();
 
 	int get_random_seed() const { return random_seed_; }
 	int get_random_calls() const { return random_calls_; }
@@ -68,8 +66,8 @@ private:
 	/** Initial seed for the pool. */
 	int random_seed_;
 
-	/** State for the random pool. */
-	int random_pool_;
+	/** State for the random pool (modulo arithmetic). */
+	unsigned random_pool_;
 
 	/** Number of time a random number is generated. */
 	unsigned random_calls_;
