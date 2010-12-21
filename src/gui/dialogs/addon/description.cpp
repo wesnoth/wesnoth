@@ -26,7 +26,7 @@ namespace {
 	std::string langcode_to_string(const std::string& lcode)
 	{
 		foreach(const language_def& ld, get_languages()) {
-			if(ld.localename == lcode) {
+			if(ld.localename == lcode || ld.localename.substr(0, 2) == lcode) {
 				return ld.language;
 			}
 		}
