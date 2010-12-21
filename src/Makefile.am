@@ -173,6 +173,7 @@ wesnoth_source = \
 	gui/auxiliary/window_builder.cpp \
 	gui/dialogs/addon_connect.cpp \
 	gui/dialogs/addon_list.cpp \
+	gui/dialogs/addon/description.cpp \
 	gui/dialogs/campaign_difficulty.cpp \
 	gui/dialogs/campaign_selection.cpp \
 	gui/dialogs/data_manage.cpp \
