@@ -45,7 +45,7 @@ namespace gui2 {
  *
  * Add-on description and details for the add-ons manager interface.
  *
- * @begin{table}[dialog_widgets]
+ * @begin{table}{dialog_widgets}
  *
  * image & & control & m &
  *         Label for displaying the add-on icon, in a 72x72 area. $
