@@ -555,9 +555,9 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		int my_x = x + current_data.x- image->w/2;
 		int my_y = y + current_data.y- image->h/2;
 		if(facing_west) {
-			my_x += current_data.directional_x;
-		} else {
 			my_x -= current_data.directional_x;
+		} else {
+			my_x += current_data.directional_x;
 		}
 		if(facing_north) {
 			my_y += current_data.directional_y;
