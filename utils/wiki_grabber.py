@@ -40,7 +40,7 @@ if __name__ == "__main__":
             + ' be used in the wiki. For more details, see'
             + ' http://wesnoth.org/wiki/Wiki_grabber')
     parser.add_argument('-s', '--src-dir', default='../src/gui', dest='src_dir',
-            help='the location of wesnoth\'s source code')
+            help="the location of wesnoth's source code")
     parser.add_argument('-o', '--output', default='/tmp/', dest='output_dir',
             help='the output directory')
     args = parser.parse_args()
@@ -59,14 +59,8 @@ if __name__ == "__main__":
     # - value macro contents
     macro_map = {}
 
-    # default directory to dump the output in with trailing /.
     output_directory = args.output_dir
-    if not output_directory.endswith('/'):
-        output_directory += '/'
-
-    # default directory to find the source files in, no trailing /.
     src_directory = args.src_dir
-    os.path.normpath(src_directory)
 
     if not os.path.isdir(output_directory):
         raise IOError("'%s' isn't a directory." % output_directory)
@@ -85,7 +79,7 @@ if __name__ == "__main__":
         It returns True if the table is empty, False otherwise.
         """
         if not res:
-            sys.stderr.write("Empty table:\n" + data + "\n")
+            sys.stderr.write("Empty table:\n%s\n" % data)
             return True
         return False
 
@@ -131,7 +125,7 @@ if __name__ == "__main__":
         data is the raw data the regex tried to match.
         res is the result of the regex.findall.
         """
-        sys.stderr.write("data : " + data)
+        sys.stderr.write("data : %s" % data)
         for i, val in res:
             for j, sub_val in val:
                 sys.stderr.write("Line %s match %s: %s\n" % (i, j, sub_val))
@@ -167,13 +161,13 @@ if __name__ == "__main__":
         result += "\n!key\n!type\n!default\n!description\n"
         for i in res:
             result += "|-\n"
-            result += "| " + i[0] + "\n"
-            result += "| [[GUIVariable#" + i[1] + "|" + i[1] + "]]\n"
+            result += "| %s\n" % i[0]
+            result += "| [[GUIVariable#%s|%s]]\n" % (i[1], i[1])
             if not i[2]:
                 result += "| mandatory\n"
             else:
-                result += "| " + i[2] + "\n"
-            result += "| " + format(i[3]) + "\n"
+                result += "| %s\n" % i[2]
+            result += "| %s\n" % format(i[3])
         result += "|}"
 
         return result
@@ -198,9 +192,9 @@ if __name__ == "__main__":
         result += "\n!Variable\n!type\n!description\n"
         for i in res:
             result += "|-\n"
-            result += "| " + i[0] + "\n"
-            result += "| " + i[1] + "\n"
-            result += "| " + format(i[2]) + "\n"
+            result += "| %s\n" % i[0]
+            result += "| %s\n" % i[1]
+            result += "| %s\n" % format(i[2])
         result += "|}"
 
         return result
@@ -222,8 +216,8 @@ if __name__ == "__main__":
         result += "\n!Variable\n!description\n"
         for i in res:
             result += "|-\n"
-            result += '| <span id="' + i[0] + '">' + i[0] + '</span>\n'
-            result += "| " + format(i[1]) + "\n"
+            result += '| <span id="%s">%s</span>\n' % (i[0], i[0])
+            result += "| %s\n" % format(i[1])
         result += "|}"
 
         return result
@@ -243,16 +237,12 @@ if __name__ == "__main__":
         result += "\n!Section\n!Description\n"
         for i in res:
             result += "|-\n"
-            result += "| " + '<span id="' + i[0].lower() + "\">"
+            result += '| <span id="%s">' % i[0].lower()
             result += re.sub(r'_', ' ', i[0])
             result += "</span>"
-            result += " ([[GUIWidgetDefinitionWML#"
-            result += i[0]
-            result += "|definition]]"
-            result += ", [[GUIWidgetInstanceWML#"
-            result += i[0]
-            result += "|instantiation]])\n"
-            result += "| " + format(i[1]) + "\n"
+            result += " ([[GUIWidgetDefinitionWML#%s|definition]]" % i[0]
+            result += ", [[GUIWidgetInstanceWML#%s|instantiation]])\n" % i[0]
+            result += "| %s\n" % format(i[1])
         result += "|}"
 
         return result
@@ -273,71 +263,8 @@ if __name__ == "__main__":
         for i in res:
             result += "|-\n"
             result += "| " + re.sub(r'_', ' ', i[0])
-            result += " ([[GUIWindowDefinitionWML#"
-            result += i[0]
-            result += "|definition]])\n"
-            result += "| " + format(i[1]) + "\n"
-        result += "|}"
-
-        return result
-
-    def create_container_table(data):
-        """Creates a table for a container."""
-        print "The container table is deprecated, use the grid instead.\n"
-
-        #matches a line like
-        # name [widget_list] ret_val description
-        # or
-        # name (widget_list) ret_val description
-        # The square bracket version is an optional widget, the round version is a mandatory widget.
-        # The retval is optional.
-
-
-        # A widget_list looks like:
-        # widget ([ widget)*
-
-        # A widget looks like
-        # widget_name | {widget_class}
-
-        # the widgets links to the widget instance location.
-        # the {widget_class} links to the list with know widget classes.
-
-        # FIXME not everything is implemented yet.
-
-        # NOTE unlike other variables are these allowed to start with an underscore.
-        variable = "(?:[a-z]|[A-Z]|[0-9]|_)+|"
-        widget_type = " \((.*?)\)"
-        retval = " ?(?:\((.*)\)|)"
-
-        regex = re.compile(" *(\[)?(" +variable + ")(?(1)])" + widget_type + retval +" *(.*)\n")
-        res = regex.findall(data)
-
-        # empty table
-        if is_empty_table(res, data):
-            return "Empty table."
-
-        result = '{| border="1"'
-        result += "\n!ID (return value)\n!Type\n!Mandatory\n!Description\n"
-        for i in res:
-            result += "|-\n"
-            if not i[1]:
-                result += "|"
-            else:
-                result += "| " + i[1] + " "
-
-            if not i[3]:
-                result += "\n"
-            else:
-                result += "(" + i[3] + ")\n"
-
-            result += "| " + i[2] + "\n"
-
-            if not i[0]:
-                result += "|no\n"
-            else:
-                result += "|yes\n"
-
-            result += "| " + re.sub(r'@\*', "\n*", i[4]) + "\n"
+            result += " ([[GUIWindowDefinitionWML#%s|definition]])\n" % i[0]
+            result += "| %s\n" % format(i[1])
         result += "|}"
 
         return result
@@ -354,7 +281,7 @@ if __name__ == "__main__":
         \ *(.*)\ +\$                            # 5 description
         """
 
-        res = re.compile(regex, re.VERBOSE).findall(data) # Works with re.X
+        res = re.compile(regex, re.VERBOSE).findall(data)
 
         if is_empty_table(res, data):
             return "Empty table."
@@ -372,16 +299,16 @@ if __name__ == "__main__":
             if not i[2]:
                 result += "\n"
             else:
-                result += " (" + i[2] + ")\n"
+                result += " (%s)\n" % i[2]
 
-            result += "| " + "[[GUIToolkitWML#" + i[3] + "|" + i[3] + "]]\n"
+            result += "| [[GUIToolkitWML#%s|%s]]\n" % (i[3], i[3])
 
-            if i[4] == "m":
+            if i[4] == 'm':
                 result += "| yes\n"
             else:
                 result += "| no\n"
 
-            result += "| " + format(i[5]) + "\n"
+            result += "| %s\n" % format(i[5])
 
         result += "|}"
 
@@ -398,7 +325,6 @@ if __name__ == "__main__":
         "variable_types": create_variable_types_table,
         "widget_overview": create_widget_overview_table,
         "window_overview": create_window_overview_table,
-        "container": create_container_table,
         "dialog_widgets": create_dialog_widgets_table}
 
         try:
@@ -435,7 +361,7 @@ if __name__ == "__main__":
             print "\n\nInvalid wiki block, discarded."
             return
 
-        if header[0] == None:
+        if not header[0]:
             print "File: " + current_file
             print "Block:\n" + current_block
             print "\n\nNo page defined, dropped."
@@ -451,7 +377,7 @@ if __name__ == "__main__":
 
         for file, data_list in file_map.iteritems():
             data_list.sort(key=operator.itemgetter(0))
-            with open(output_directory + file, "w") as fd:
+            with open(os.path.join(output_directory, file), "w") as fd:
                 for i in data_list:
                     fd.write(i[1])
 
@@ -487,10 +413,10 @@ if __name__ == "__main__":
             if item.startswith("."):
                 continue
 
-            if os.path.isdir(dir + "/" + item):
-                process_directory(dir + "/" + item)
+            if os.path.isdir(os.path.join(dir, item)):
+                process_directory(os.path.join(dir, item))
             elif item.endswith(".cpp") or item.endswith(".hpp"):
-                process_file(dir + "/" + item)
+                process_file(os.path.join(dir, item))
 
     ##### ##### ##### MACRO PROCESSING ##### ##### #####
 
@@ -557,10 +483,10 @@ if __name__ == "__main__":
             if item.startswith("."):
                 continue
 
-            if os.path.isdir(dir + "/" + item):
-                process_directory_macros(dir + "/" + item)
+            if os.path.isdir(os.path.join(dir, item)):
+                process_directory_macros(os.path.join(dir, item))
             elif item.endswith(".cpp") or item.endswith(".hpp"):
-                process_file_macros(dir + "/" + item)
+                process_file_macros(os.path.join(dir, item))
 
     ##### ##### ##### MAIN ##### ##### #####
 
