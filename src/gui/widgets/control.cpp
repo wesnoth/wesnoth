@@ -299,7 +299,7 @@ void tcontrol::impl_draw_background(surface& frame_buffer)
 {
 	DBG_GUI_D << LOG_HEADER
 			<< " label '" << debug_truncate(label_)
-			<< " size " << get_rect()
+			<< "' size " << get_rect()
 			<< ".\n";
 
 	canvas(get_state()).blit(frame_buffer, get_rect());
