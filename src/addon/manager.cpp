@@ -26,6 +26,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/addon_list.hpp"
+#include "gui/dialogs/addon/description.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -329,14 +330,13 @@ namespace {
 	class display_description : public gui::dialog_button_action
 	{
 		display& disp_;
-		std::vector<std::string> titles_, desc_;
+		std::vector<addon_info> infov_;
 		gui::filter_textbox* filter_;
 
 	public:
-		display_description(display& disp, std::vector<std::string> const& titles, std::vector<std::string> const& descriptions, gui::filter_textbox* filter)
+		display_description(display& disp, std::vector<addon_info> const& infov, gui::filter_textbox* filter)
 			: disp_(disp)
-			, titles_(titles)
-			, desc_(descriptions)
+			, infov_(infov)
 			, filter_(filter)
 		{}
 
@@ -347,18 +347,10 @@ namespace {
 			if(menu_selection < 0) { return gui::CONTINUE_DIALOG; }
 			size_t const uchoice = static_cast<size_t>(menu_selection);
 
-			std::string text;
-			std::string title;
-
-			if(uchoice >= desc_.size()) {
-				text = _("No description available.");
+			if(uchoice < infov_.size()) {
+				gui2::taddon_description ddlg(infov_[uchoice]);
+				ddlg.show(disp_.video());
 			}
-			else {
-				title = titles_[uchoice];
-				text = desc_[uchoice];
-			}
-
-			gui2::show_transient_message(disp_.video(), title, text);
 
 			return gui::CONTINUE_DIALOG;
 		}
@@ -1161,6 +1153,8 @@ namespace {
 
 			std::vector< std::string > delete_options;
 
+			std::vector< addon_info > infos;
+
 			foreach(const config &c, addon_cfgs)
 			{
 				const std::string& name = c["name"];
@@ -1171,10 +1165,15 @@ namespace {
 				const ADDON_TYPE type = get_addon_type(type_str);
 				const std::string& type_label_str = get_translatable_addon_type(type);
 
+				addon_info inf;
+
 				addons.push_back(name);
 				versions.push_back(c["version"]);
 				uploads.push_back(c["uploads"]);
 				descriptions.push_back(c["description"]);
+
+				inf.description = c["description"];
+
 				types.push_back(type_str);
 
 				if(std::count(publish_options.begin(), publish_options.end(), name) != 0) {
@@ -1188,13 +1187,19 @@ namespace {
 				}
 				titles.push_back(title);
 
+				inf.name = title;
+
 				std::string version = c["version"], author = c["author"];
+
+				inf.version = version;
 
 				//add negative sizes to reverse the sort order
 				sizes.push_back(-size);
 
 				std::string icon = c["icon"];
 				do_addon_icon_fixups(icon, name);
+
+				inf.icon = icon;
 
 				std::string text_columns =
 					title + COLUMN_SEPARATOR +
@@ -1221,6 +1226,13 @@ namespace {
 					sizef + COLUMN_SEPARATOR;
 
 				options.push_back(text_columns);
+
+				config::const_child_itors const& linguas = c.child_range("translation");
+				for(config::const_child_iterator i = linguas.first; i != linguas.second; ++i) {
+					inf.translations.push_back((*i)["language"]);
+				}
+
+				infos.push_back(inf);
 			}
 
 			std::string pub_option_text, del_option_text;
@@ -1270,7 +1282,7 @@ namespace {
 				_("Filter: "), options, options_to_filter, 1, addon_dialog, 300);
 				addon_dialog.set_textbox(filter);
 
-				display_description description_helper(disp, titles, descriptions, filter);
+				display_description description_helper(disp, infos, filter);
 
 				gui::dialog_button* description = new gui::dialog_button(disp.video(), _("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
 				addon_dialog.add_button(description, gui::dialog::BUTTON_EXTRA);
