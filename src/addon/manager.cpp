@@ -1167,12 +1167,14 @@ namespace {
 
 				addon_info inf;
 
+				inf.sizestr = sizef;
+
 				addons.push_back(name);
 				versions.push_back(c["version"]);
 				uploads.push_back(c["uploads"]);
 				descriptions.push_back(c["description"]);
 
-				inf.description = c["description"];
+				inf.description = c["description"].str();
 
 				types.push_back(type_str);
 
@@ -1192,6 +1194,7 @@ namespace {
 				std::string version = c["version"], author = c["author"];
 
 				inf.version = version;
+				inf.author = author;
 
 				//add negative sizes to reverse the sort order
 				sizes.push_back(-size);

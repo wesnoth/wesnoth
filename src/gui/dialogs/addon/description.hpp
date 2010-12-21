@@ -17,16 +17,17 @@
 #define GUI_DIALOGS_ADDON_DESCRIPTION_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "tstring.hpp"
 
 #include <vector>
 
 struct addon_info
 {
-	t_string name;
-	t_string description;
+	std::string name;
+	std::string description;
 	std::string icon;
 	std::string version;
+	std::string author;
+	std::string sizestr;
 	std::vector<std::string> translations;
 };
 

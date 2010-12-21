@@ -23,7 +23,7 @@
 #include "language.hpp"
 
 namespace {
-	t_string langcode_to_tstring(const std::string& lcode)
+	std::string langcode_to_string(const std::string& lcode)
 	{
 		foreach(const language_def& ld, get_languages()) {
 			if(ld.localename == lcode) {
@@ -37,27 +37,75 @@ namespace {
 
 namespace gui2 {
 
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 2_addon_description
+ *
+ * == Add-on description ==
+ *
+ * Add-on description and details for the add-ons manager interface.
+ *
+ * @begin{table}[dialog_widgets]
+ *
+ * image & & control & m &
+ *         Label for displaying the add-on icon, in a 72x72 area. $
+ *
+ * title & & control & m &
+ *         Dialog title label, corresponding to the add-on name. $
+ *
+ * version & & control & m &
+ *         Label for displaying the add-on version number. $
+ *
+ * author & & control & m &
+ *         Label for displaying the add-on author/maintainer name. $
+ *
+ * size & & control & m &
+ *         Label for displaying the add-on package size. $
+ *
+ * description & & control & m &
+ *         Text label for displaying the add-on's description. $
+ *
+ * translations & & control & m &
+ *         Label for displaying a list of translations provided by the add-on. $
+ *
+ * @end{table}
+ */
+
 REGISTER_WINDOW(addon_description)
 
 void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 {
 	const std::string fixed_icon = ainfo_.icon + "~SCALE(72,72)";
-	find_widget<tcontrol>(&window, "image", false).set_label(fixed_icon);
 
+	find_widget<tcontrol>(&window, "image", false).set_label(fixed_icon);
 	find_widget<tcontrol>(&window, "title", false).set_label(ainfo_.name);
-	find_widget<tcontrol>(&window, "description", false).set_label(ainfo_.description);
 	find_widget<tcontrol>(&window, "version", false).set_label(ainfo_.version);
+	find_widget<tcontrol>(&window, "author", false).set_label(ainfo_.author);
+	find_widget<tcontrol>(&window, "size", false).set_label(ainfo_.sizestr);
+
+	// Validate widget presence in either path
+	tcontrol& ctl_description = find_widget<tcontrol>(&window, "description", false);
+	if(ainfo_.description.empty() == false) {
+		ctl_description.set_label(ainfo_.description);
+	}
 
 	std::string languages;
 
 	foreach(const std::string& lc, ainfo_.translations) {
-		if(languages.empty() == false) {
-			languages += ", ";
+		const std::string& langlabel = langcode_to_string(lc);
+		if(langlabel.empty() == false) {
+			if(languages.empty() == false) {
+				languages += ", ";
+			}
+			languages += langlabel;
 		}
-		languages += langcode_to_tstring(lc);
 	}
 
-	find_widget<tcontrol>(&window, "translations", false).set_label(languages);
+	// Validate widget presence in either path
+	tcontrol& ctl_languages = find_widget<tcontrol>(&window, "translations", false);
+	if(languages.empty() == false) {
+		ctl_languages.set_label(languages);
+	}
 }
 
 }
