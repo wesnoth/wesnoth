@@ -1203,20 +1203,14 @@ const std::string& play_controller::select_victory_music() const
 {
 	if(victory_music_.empty())
 		return empty_str;
-
-	const size_t p = gamestate_.rng().get_next_random() % victory_music_.size();
-	assert(p < victory_music_.size());
-	return victory_music_[p];
+	return victory_music_[rand() % victory_music_.size()];
 }
 
 const std::string& play_controller::select_defeat_music() const
 {
 	if(defeat_music_.empty())
 		return empty_str;
-
-	const size_t p = gamestate_.rng().get_next_random() % defeat_music_.size();
-	assert(p < defeat_music_.size());
-	return defeat_music_[p];
+	return defeat_music_[rand() % defeat_music_.size()];
 }
 
 
