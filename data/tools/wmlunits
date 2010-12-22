@@ -33,6 +33,17 @@ html_footer = '''
 </body></html>
 '''.strip()
 
+error_only_once = {}
+def error_message(message):
+    if message in error_only_once: return
+    error_only_once[message] = 1
+    sys.stderr.write(message)
+
+helpers.error_message = error_message
+
+def reset_errors():
+    error_only_once = {}
+
 class Translation:
     def __init__(self, localedir, langcode):
         self.catalog = {}
@@ -141,7 +152,7 @@ class HTMLOutput:
                         try:
                             au = self.wesnoth.unit_lookup[auid]
                         except KeyError:
-                            sys.stderr.write(
+                            error_message(
                                 "Warning: Unit %s not found as advancement of %s\n" %
                                 (auid, repr(uid)))
                             continue
@@ -343,7 +354,7 @@ class HTMLOutput:
                     return self.pic(u, female[0])
                 else:
                     return self.pic(u, u)
-            sys.stderr.write(
+            error_message(
                 "Warning: Missing image for unit %s(%s).\n" % (
                 u.get_text_val("id"), x.name))
             return None
@@ -626,7 +637,7 @@ class HTMLOutput:
                 name = self.wesnoth.get_unit_value(cunit, "name",
                     translation = self.translation.translate)
             except KeyError:
-                sys.stderr.write("Warning: Unit %s not found.\n" % cid)
+                error_message("Warning: Unit %s not found.\n" % cid)
                 name = cid
                 if unit.campaign == "mainline": continue
             write("\n<a href=\"%s\">%s</a>" % (link, name))
@@ -674,7 +685,7 @@ class HTMLOutput:
 
             picname, error = image_collector.add_image_check(unit.campaign, icon)
             if error:
-                sys.stderr.write("Error: No attack icon '%s' found for '%s'.\n" % (
+                error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                     icon, uid))
             icon = os.path.join("../pics", picname)
             write("<td><img src=\"%s\" alt=\"(image)\"/></td>" % icon)
@@ -700,7 +711,7 @@ class HTMLOutput:
                     if sname:
                         s.append(sname)
                     else:
-                        sys.stderr.write(
+                        error_message(
                             "Warning: Weapon special %s has no name for %s.\n" % (
                             special.name, uid))
             s = "<br/>".join(s)
@@ -729,7 +740,7 @@ class HTMLOutput:
             if r == "-": r = 100
             try: r = "%d%%" % (100 - int(r))
             except ValueError:
-                sys.stderr.write("Warning: Invalid resistance %s for %s.\n" % (
+                error_message("Warning: Invalid resistance %s for %s.\n" % (
                     r, uid))
             rcell = "td"
             if special: rcell += ' class="special"'
@@ -766,7 +777,7 @@ class HTMLOutput:
             if d == "-": d = 100
             try: d = "%d%%" % (100 - int(d))
             except ValueError:
-                sys.stderr.write("Warning: Invalid defense %s for %s.\n" % (
+                error_message("Warning: Invalid defense %s for %s.\n" % (
                     d, uid))
 
             write("<tr>\n")
@@ -953,6 +964,7 @@ def generate_report(stuff, isocode):
     """
     
     print "Generating report for %s." % (isocode)
+    reset_errors()
 
     # Report generation
     write_index(options.output)
@@ -962,9 +974,11 @@ def generate_report(stuff, isocode):
     generate_campaign_report(options.output, isocode, "mainline", stuff)
 
     for campaign in campaigns:
+        if isocode != "C" and not campaign in stuff.is_mainline_campaign: continue
         generate_campaign_report(options.output, isocode, campaign, stuff)
 
     for eid in stuff.era_lookup.keys():
+        if isocode != "C" and not eid in stuff.is_mainline_era: continue
         generate_era_report(options.output, isocode, eid, stuff)
 
     # Single unit reports.

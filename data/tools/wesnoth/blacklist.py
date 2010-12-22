@@ -20,7 +20,7 @@ def parse_test(wml, d):
         options.data_dir, no_preprocess = False)
     try:
         g.p.parse_text(wml, d)
-    except wmlparser2.WMLError as e:
+    except wmlparser2.WMLError, e:
         for i, line in enumerate(str(e).splitlines()):
             print(str(1 + i) + ": " + line)
             for mo in re.findall("~add-ons/(.*?)[:/]", line):
@@ -104,7 +104,7 @@ def check_runaway():
                     id = un.get_text_val("id")
                     if id: names.append(id)
             if names: print("Leaked units: " + ", ".join(names))
-        except wmlparser2.WMLError as e:
+        except wmlparser2.WMLError, e:
             print("Parsing failed!")
             print("***")
             print(e)

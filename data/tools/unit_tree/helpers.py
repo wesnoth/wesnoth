@@ -304,7 +304,7 @@ class WesnothList:
             try: unit.race = self.race_lookup[race]
             except KeyError:
                 unit.race = None
-                sys.stderr.write("Warning: No race \"%s\" found (%s).\n" % (
+                error_message("Warning: No race \"%s\" found (%s).\n" % (
                     race, unit.get_text_val("id")))
             movetype = self.get_unit_value(unit, "movement_type")
             try: unit.movetype = self.movetype_lookup[movetype]
@@ -343,7 +343,7 @@ class WesnothList:
                     try:
                         unit = self.unit_lookup[uid]
                     except KeyError:
-                        sys.stderr.write(
+                        error_message(
                             ("Error: Era '%s' faction '%s' references " +
                             "non-existant unit id '%s'!\n") % (
                                 eid,
@@ -361,7 +361,7 @@ class WesnothList:
             buid = b.get_text_val("id")
             try: baseunit = self.unit_lookup[buid]
             except KeyError:
-                sys.stderr.write(
+                error_message(
                     "Warning: No baseunit \"%s\" for \"%s\".\n" % (
                     buid, unit.get_text_val("id")))
                 return None
@@ -420,10 +420,10 @@ class UnitForest:
             for c in u.children[:]:
                 already2[c.id] = True
                 if c.id in already:
-                    sys.stderr.write(
-                        "Warning: Unit %s advances to unit %s in a loop.\n" %
-                        (u.id, c.id))
-                    sys.stderr.write("    Removing advancement %s.\n" % c.id)
+                    error_message(
+                        ("Warning: Unit %s advances to unit %s in a loop.\n" %
+                        (u.id, c.id)) +
+                        ("    Removing advancement %s.\n" % c.id))
                     u.children.remove(c)
             for c in u.children:
                 recurse(c, already2)
