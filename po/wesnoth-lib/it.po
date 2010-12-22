@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-08 18:05+0100\n"
+"POT-Creation-Date: 2010-12-22 12:37+0100\n"
 "PO-Revision-Date: 2010-11-06 18:13+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -322,7 +322,7 @@ msgid "Snowy Mountains"
 msgstr "Montagne innevate"
 
 #. [terrain_type]: id=forested_hills
-#: data/core/terrain.cfg:583
+#: data/core/terrain.cfg:583 data/core/terrain.cfg:687
 msgid "Forested Hills"
 msgstr "Colline boscose"
 
@@ -332,575 +332,594 @@ msgid "Forested Snow Hills"
 msgstr "Colline boscose innevate"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
-#: data/core/terrain.cfg:603
+#. [terrain_type]
+#: data/core/terrain.cfg:603 data/core/terrain.cfg:695
 msgid "Summer Deciduous Forested Hills"
 msgstr "Colline d’estate con boschi di latifoglie"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
-#: data/core/terrain.cfg:613
+#. [terrain_type]
+#: data/core/terrain.cfg:613 data/core/terrain.cfg:702
 msgid "Fall Deciduous Forested Hills"
 msgstr "Colline di primavera con boschi di latifoglie"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
-#: data/core/terrain.cfg:623
+#. [terrain_type]
+#: data/core/terrain.cfg:623 data/core/terrain.cfg:709
+#: data/core/terrain.cfg:716
 msgid "Winter Deciduous Forested Hills"
 msgstr "Colline d’inverno con boschi di latifoglie"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
-#: data/core/terrain.cfg:633
+#. [terrain_type]
+#: data/core/terrain.cfg:633 data/core/terrain.cfg:723
+#: data/core/terrain.cfg:730
 msgid "Snowy Deciduous Forested Hills"
 msgstr "Colline innevate con boschi di latifoglie"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
-#: data/core/terrain.cfg:643
+#. [terrain_type]
+#: data/core/terrain.cfg:643 data/core/terrain.cfg:737
 msgid "Summer Mixed Forested Hills"
 msgstr "Colline d’estate con boschi misti"
 
 #. [terrain_type]: id=mixed_forest_fall_hills
-#: data/core/terrain.cfg:653
+#. [terrain_type]
+#: data/core/terrain.cfg:653 data/core/terrain.cfg:744
 msgid "Fall Mixed Forested Hills"
 msgstr "Colline d’autunno con boschi misti"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
-#: data/core/terrain.cfg:663
+#. [terrain_type]
+#: data/core/terrain.cfg:663 data/core/terrain.cfg:751
+#: data/core/terrain.cfg:758
 msgid "Winter Mixed Forested Hills"
 msgstr "Colline d’inverno con boschi misti"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
-#: data/core/terrain.cfg:673
+#. [terrain_type]
+#: data/core/terrain.cfg:673 data/core/terrain.cfg:765
+#: data/core/terrain.cfg:772
 msgid "Snowy Mixed Forested Hills"
 msgstr "Colline innevate con boschi misti"
 
 #. [terrain_type]
-#: data/core/terrain.cfg:686
+#: data/core/terrain.cfg:785
 msgid "Basic Wooden Floor"
 msgstr "Pavimento di legno base"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:699
+#: data/core/terrain.cfg:798
 msgid "Lit"
 msgstr "Illuminato"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:700
+#: data/core/terrain.cfg:799
 msgid "Beam of Light"
 msgstr "Raggio di luce"
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:710
+#: data/core/terrain.cfg:809
 msgid "Cave"
 msgstr "Caverna"
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:711
+#: data/core/terrain.cfg:810
 msgid "Cave Floor"
 msgstr "Pavimento di caverna"
 
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:719
+#: data/core/terrain.cfg:818
 msgid "Earthy Cave Floor"
 msgstr ""
 
 #. [terrain_type]: id=flagstones_dark
-#: data/core/terrain.cfg:728
+#: data/core/terrain.cfg:827
 msgid "Dark Flagstones"
 msgstr ""
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:737
+#: data/core/terrain.cfg:836
 msgid "Cave Path"
 msgstr "Sentiero di caverna"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:746
+#: data/core/terrain.cfg:845
 msgid "Mushroom Grove"
 msgstr "Campo di funghi"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:755
+#: data/core/terrain.cfg:854
 #, fuzzy
 msgid "Lit Mushroom Grove"
 msgstr "Campo di funghi"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:766
+#: data/core/terrain.cfg:865
 msgid "Rockbound Cave"
 msgstr "Breccia di cava"
 
 #. [terrain_type]: id=rails
 #. [terrain_type]: id=railsdiag1
 #. [terrain_type]: id=railsdiag2
-#: data/core/terrain.cfg:778 data/core/terrain.cfg:790
-#: data/core/terrain.cfg:802
+#: data/core/terrain.cfg:877 data/core/terrain.cfg:889
+#: data/core/terrain.cfg:901
 msgid "Mine Rail"
 msgstr "Binari da miniera"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:819
+#: data/core/terrain.cfg:918
 msgid "Regular Chasm"
 msgstr "Dirupo normale"
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:829
+#: data/core/terrain.cfg:928
 msgid "Earthy Chasm"
 msgstr ""
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:839
+#: data/core/terrain.cfg:938
 msgid "Ethereal Abyss"
 msgstr "Abisso etereo"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:849
+#: data/core/terrain.cfg:948
 msgid "Lava Chasm"
 msgstr "Dirupo di lava"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:859
+#: data/core/terrain.cfg:958
 msgid "Lava"
 msgstr "Lava"
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:870
+#: data/core/terrain.cfg:969
 msgid "Volcano"
 msgstr "Vulcano"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:884
+#: data/core/terrain.cfg:983
 #, fuzzy
 msgid "Regular Impassable Mountains"
 msgstr "Montagne innevate invalicabili"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:893
+#: data/core/terrain.cfg:992
 #, fuzzy
 msgid "Desert Impassable Mountains"
 msgstr "Montagne innevate invalicabili"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:902
+#: data/core/terrain.cfg:1001
 #, fuzzy
 msgid "Snowy Impassable Mountains"
 msgstr "Montagne innevate invalicabili"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:912
+#: data/core/terrain.cfg:1011
 msgid "Natural Cave Wall"
 msgstr "Parete di caverna naturale"
 
 #. [terrain_type]: id=cavewall_hewn
-#: data/core/terrain.cfg:922
+#: data/core/terrain.cfg:1021
 #, fuzzy
 msgid "Hewn Cave Wall"
 msgstr "Parete di caverna"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:932
+#: data/core/terrain.cfg:1031
 msgid "Natural Earthy Cave Wall"
 msgstr ""
 
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:942
+#: data/core/terrain.cfg:1041
 msgid "Reinforced Earthy Cave Wall"
 msgstr ""
 
 #. [terrain_type]: id=wall_stone
-#: data/core/terrain.cfg:952
+#: data/core/terrain.cfg:1051
 msgid "Stone Wall"
 msgstr "Parete di pietra"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:962
+#: data/core/terrain.cfg:1061
 msgid "Lit Stone Wall"
 msgstr "Parete di pietra illuminata"
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:972
+#: data/core/terrain.cfg:1071
 #, fuzzy
 msgid "Impassable Overlay"
 msgstr "Invalicabile"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:983
+#: data/core/terrain.cfg:1082
 msgid "Void"
 msgstr "Vuoto"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:998
+#: data/core/terrain.cfg:1097
 msgid "Adobe Village"
 msgstr "Villaggio di mattoni"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1010
+#: data/core/terrain.cfg:1109
 msgid "Desert Tent Village"
 msgstr "Villaggio di tende del deserto"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1022
+#: data/core/terrain.cfg:1121
 msgid "Tent Village"
 msgstr "Villaggio di tende"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1036
+#: data/core/terrain.cfg:1135
 msgid "Orcish Village"
 msgstr "Villaggio di orchi"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1048
+#: data/core/terrain.cfg:1147
 msgid "Snowy Orcish Village"
 msgstr "Villaggio di orchi innevato"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1062
+#: data/core/terrain.cfg:1161
 msgid "Snowy Elven Village"
 msgstr "Villaggio elfico innevato"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1074
+#: data/core/terrain.cfg:1173
 msgid "Elven Village"
 msgstr "Villaggio elfico"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1088
+#: data/core/terrain.cfg:1187
 msgid "Cottage"
 msgstr ""
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1100
+#: data/core/terrain.cfg:1199
 #, fuzzy
 msgid "Snowy Cottage"
 msgstr "Montagne innevate"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1112
+#: data/core/terrain.cfg:1211
 #, fuzzy
 msgid "Ruined Cottage"
 msgstr "Montagne innevate"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1124
+#: data/core/terrain.cfg:1223
 #, fuzzy
 msgid "Human City"
 msgstr "Castello degli uomini"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1136
+#: data/core/terrain.cfg:1235
 #, fuzzy
 msgid "Snowy Human City"
 msgstr "Castello degli uomini innevato"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1148
+#: data/core/terrain.cfg:1247
 #, fuzzy
 msgid "Ruined Human City"
 msgstr "Castello in rovina"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1160
+#: data/core/terrain.cfg:1259
 msgid "Hill Stone Village"
 msgstr "Villaggio di pietra nelle colline"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1172
+#: data/core/terrain.cfg:1271
 msgid "Snowy Hill Stone Village"
 msgstr "Villaggio di pietra nelle colline innevate"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1184
+#: data/core/terrain.cfg:1283
 #, fuzzy
 msgid "Ruined Hill Stone Village"
 msgstr "Villaggio di pietra nelle colline"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1196
+#: data/core/terrain.cfg:1295
 msgid "Tropical Village"
 msgstr "Villaggio tropicale"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1208
+#: data/core/terrain.cfg:1307
 msgid "Drake Village"
 msgstr "Villaggio dei draghi"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1222
+#: data/core/terrain.cfg:1321
 msgid "Cave Village"
 msgstr "Villaggio cavernicolo"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1234
+#: data/core/terrain.cfg:1333
 msgid "Dwarven Village"
 msgstr "Villaggio dei nani"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1246
+#: data/core/terrain.cfg:1345
 msgid "Hut"
 msgstr "Capanna"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1258
+#: data/core/terrain.cfg:1357
 msgid "Snowy Hut"
 msgstr "Capanna innevata"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:1270
+#: data/core/terrain.cfg:1369
 msgid "Log Cabin"
 msgstr "Casa di tronchi"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:1282
+#: data/core/terrain.cfg:1381
 msgid "Snowy Log Cabin"
 msgstr "Casa di legno innevata"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:1296
+#: data/core/terrain.cfg:1395
 msgid "Swamp Village"
 msgstr "Villaggio nella palude"
 
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:1308 data/core/terrain.cfg:1321
+#: data/core/terrain.cfg:1407 data/core/terrain.cfg:1420
 msgid "Aquatic Village"
 msgstr "Villaggio acquatico"
 
 #. [terrain_type]: id=mermen_village
-#: data/core/terrain.cfg:1309
+#: data/core/terrain.cfg:1408
 msgid "Shallow Merfolk Village"
 msgstr "Villaggio nereide in acque basse"
 
 #. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:1322
+#: data/core/terrain.cfg:1421
 msgid "Swamp Merfolk Village"
 msgstr "Villaggio nereide nella palude"
 
+#. [terrain_type]: id=village_overlay
+#. [terrain_type]: id=village
+#: data/core/terrain.cfg:1433 data/core/terrain.cfg:1980
+msgid "Village"
+msgstr "Villaggio"
+
+#. [terrain_type]: id=village_overlay
+#: data/core/terrain.cfg:1434
+#, fuzzy
+msgid "Village Overlay"
+msgstr "Castello"
+
 #. [terrain_type]: id=encampment
-#: data/core/terrain.cfg:1337
+#: data/core/terrain.cfg:1449
 msgid "Encampment"
 msgstr "Accampamento"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1348
+#: data/core/terrain.cfg:1460
 msgid "Snowy Encampment"
 msgstr "Accampamento nella neve"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1359
+#: data/core/terrain.cfg:1471
 msgid "Orcish Castle"
 msgstr "Castello degli orchi"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1370
+#: data/core/terrain.cfg:1482
 msgid "Snowy Orcish Castle"
 msgstr "Castello degli orchi innevato"
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1381 data/core/terrain.cfg:1623
+#: data/core/terrain.cfg:1493 data/core/terrain.cfg:1735
 msgid "Castle"
 msgstr "Castello"
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:1382
+#: data/core/terrain.cfg:1494
 msgid "Human Castle"
 msgstr "Castello degli uomini"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1392
+#: data/core/terrain.cfg:1504
 msgid "Snowy Human Castle"
 msgstr "Castello degli uomini innevato"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:1402
+#: data/core/terrain.cfg:1514
 msgid "Elvish Castle"
 msgstr "Castello degli elfi"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:1413
+#: data/core/terrain.cfg:1525
 msgid "Dwarven Castle"
 msgstr "Castello dei nani"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1424
+#: data/core/terrain.cfg:1536
 #, fuzzy
 msgid "Ruined Human Castle"
 msgstr "Castello in rovina"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1435
+#: data/core/terrain.cfg:1547
 #, fuzzy
 msgid "Sunken Human Ruin"
 msgstr "Rovine sommerse"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1447
+#: data/core/terrain.cfg:1559
 #, fuzzy
 msgid "Swamp Human Ruin"
 msgstr "Rovine in palude"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1459
+#: data/core/terrain.cfg:1571
 msgid "Desert Castle"
 msgstr "Castello nel deserto"
 
 #. [terrain_type]: id=encampment_keep
-#: data/core/terrain.cfg:1474
+#: data/core/terrain.cfg:1586
 msgid "Encampment Keep"
 msgstr "Fortezza in accampamento"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1486
+#: data/core/terrain.cfg:1598
 msgid "Snowy Encampment Keep"
 msgstr "Fortezza in accampamento innevata"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1498
+#: data/core/terrain.cfg:1610
 msgid "Orcish Keep"
 msgstr "Fortezza degli orchi"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1510
+#: data/core/terrain.cfg:1622
 msgid "Snowy Orcish Keep"
 msgstr "Fortezza degli orchi innevata"
 
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1522 data/core/terrain.cfg:1609
-#: data/core/terrain.cfg:1635
+#: data/core/terrain.cfg:1634 data/core/terrain.cfg:1721
+#: data/core/terrain.cfg:1747
 msgid "Keep"
 msgstr "Fortezza"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:1523
+#: data/core/terrain.cfg:1635
 #, fuzzy
 msgid "Human Castle Keep"
 msgstr "Castello degli uomini"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:1535
+#: data/core/terrain.cfg:1647
 #, fuzzy
 msgid "Snowy Human Castle Keep"
 msgstr "Castello degli uomini innevato"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1547
+#: data/core/terrain.cfg:1659
 msgid "Elven Castle Keep"
 msgstr "Castello-fortezza degli elfi"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:1559
+#: data/core/terrain.cfg:1671
 msgid "Dwarven Castle Keep"
 msgstr "Castello-fortezza dei nani"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1571
+#: data/core/terrain.cfg:1683
 #, fuzzy
 msgid "Ruined Human Castle Keep"
 msgstr "Castello-fortezza in rovina"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1583
+#: data/core/terrain.cfg:1695
 msgid "Sunken Keep"
 msgstr "Fortezza inabissata"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1584
+#: data/core/terrain.cfg:1696
 #, fuzzy
 msgid "Sunken Human Castle Keep"
 msgstr "Castello-fortezza inabissata"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1596
+#: data/core/terrain.cfg:1708
 msgid "Swamp Keep"
 msgstr "Fortezza in palude"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1597
+#: data/core/terrain.cfg:1709
 #, fuzzy
 msgid "Swamp Human Castle Keep"
 msgstr "Castello-fortezza in palude"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1610
+#: data/core/terrain.cfg:1722
 msgid "Desert Keep"
 msgstr "Forteza nel deserto"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1624
+#: data/core/terrain.cfg:1736
 #, fuzzy
 msgid "Castle Overlay"
 msgstr "Castello"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1636
+#: data/core/terrain.cfg:1748
 msgid "Keep Overlay"
 msgstr ""
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:1653 data/core/terrain.cfg:1664
-#: data/core/terrain.cfg:1675
+#: data/core/terrain.cfg:1765 data/core/terrain.cfg:1776
+#: data/core/terrain.cfg:1787
 msgid "Wood Bridge"
 msgstr "Ponte di legno"
 
 #. [terrain_type]: id=stone_bridge
-#: data/core/terrain.cfg:1688 data/core/terrain.cfg:1699
-#: data/core/terrain.cfg:1710
+#: data/core/terrain.cfg:1800 data/core/terrain.cfg:1811
+#: data/core/terrain.cfg:1822
 msgid "Basic Stone Bridge"
 msgstr "Ponte di pietra base"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:1723 data/core/terrain.cfg:1733
-#: data/core/terrain.cfg:1744
+#: data/core/terrain.cfg:1835 data/core/terrain.cfg:1845
+#: data/core/terrain.cfg:1856
 #, fuzzy
 msgid "Cave Chasm Bridge"
 msgstr "Ponte su dirupo"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1760
+#: data/core/terrain.cfg:1872
 msgid "Off Map"
 msgstr "Fuori mappa"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:1769
+#: data/core/terrain.cfg:1881
 msgid "Experimental Fake Map Edge"
 msgstr "Finto bordo mappa sperimentale"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:1778 data/gui/default/window/mp_create_game.cfg:471
+#: data/core/terrain.cfg:1890 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "Oscurità"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:1787
+#: data/core/terrain.cfg:1899
 msgid "Fog"
 msgstr "Nebbia"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1854
+#: data/core/terrain.cfg:1966
 msgid "Flat"
 msgstr "Pianura"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1861
+#: data/core/terrain.cfg:1973
 msgid "Frozen"
 msgstr "Congelato"
 
-#. [terrain_type]: id=village
-#: data/core/terrain.cfg:1868
-msgid "Village"
-msgstr "Villaggio"
-
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:1875
+#: data/core/terrain.cfg:1987
 msgid "Impassable"
 msgstr "Invalicabile"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1882
+#: data/core/terrain.cfg:1994
 msgid "Unwalkable"
 msgstr "Impervio"
 
@@ -959,7 +978,7 @@ msgstr "Connetti"
 #: data/gui/default/window/game_load.cfg:443
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
-#: data/gui/default/window/message.cfg:137
+#: data/gui/default/window/message.cfg:139
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:550
@@ -973,6 +992,43 @@ msgstr "Connetti"
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Annulla"
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:68
+msgid "Author:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:98
+#, fuzzy
+msgid "Version:"
+msgstr "Versione: "
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:129
+msgid "Size:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:160
+#, fuzzy
+msgid "Description:"
+msgstr "Descrizione dell’unità"
+
+#. [scroll_label]: id=description
+#: data/gui/default/window/addon_description.cfg:174
+msgid "No description available."
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:192
+msgid "Translations:"
+msgstr ""
+
+#. [scroll_label]: id=translations
+#: data/gui/default/window/addon_description.cfg:206
+msgid "translations^None"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:48
@@ -1435,7 +1491,7 @@ msgstr "Variabile"
 #: data/gui/default/window/gamestate_inspector.cfg:331
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:192
-#: data/gui/default/window/message.cfg:123 src/construct_dialog.cpp:139
+#: data/gui/default/window/message.cfg:125 src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Chiudi"
 
@@ -2590,7 +2646,7 @@ msgid "Text doesn't start on canvas."
 msgstr "Il testo non inizia su una tela."
 
 #: src/gui/auxiliary/widget_definition.cpp:136
-#: src/gui/auxiliary/window_builder.cpp:228
+#: src/gui/auxiliary/window_builder.cpp:230
 msgid "No resolution defined."
 msgstr "Non è stato definita nessuna risoluzione."
 
@@ -2600,27 +2656,27 @@ msgstr "Non è stato definita nessuna risoluzione."
 #: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:62
 #: src/gui/auxiliary/widget_definition/stacked_widget.cpp:57
 #: src/gui/auxiliary/widget_definition/tree_view.cpp:58
-#: src/gui/auxiliary/window_builder.cpp:335
+#: src/gui/auxiliary/window_builder.cpp:338
 #: src/gui/auxiliary/window_builder/panel.cpp:36
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:39
 msgid "No grid defined."
 msgstr "Non è stata definita nessuna griglia."
 
-#: src/gui/auxiliary/window_builder.cpp:155
+#: src/gui/auxiliary/window_builder.cpp:157
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Il gruppo «$id» collegato ha definizioni multiple."
 
-#: src/gui/auxiliary/window_builder.cpp:366
+#: src/gui/auxiliary/window_builder.cpp:369
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 "Il gruppo «$id» collegato richiede una delle parole chiave «fixed_width» o "
 "«fixed_height»."
 
-#: src/gui/auxiliary/window_builder.cpp:465
+#: src/gui/auxiliary/window_builder.cpp:468
 msgid "A row must have a column."
 msgstr "Una riga deve avere una colonna."
 
-#: src/gui/auxiliary/window_builder.cpp:466
+#: src/gui/auxiliary/window_builder.cpp:469
 msgid "Number of columns differ."
 msgstr "Il numero di colonne è diverso."
 
@@ -2781,11 +2837,11 @@ msgstr "Non è stata definita nessuna sezione state o draw."
 msgid "Unknown builder id for tree view node."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:810
+#: src/gui/widgets/window.cpp:814
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "L’ignora con un clic richiede un pulsante «click_dismiss» o «ok»."
 
-#: src/gui/widgets/window.cpp:835 src/gui/widgets/window.cpp:868
+#: src/gui/widgets/window.cpp:839 src/gui/widgets/window.cpp:872
 #: src/tests/gui/test_gui2.cpp:230
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Non è stato possibile mostrare una finestra che non sta nello schermo."

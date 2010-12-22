@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-08 18:05+0100\n"
+"POT-Creation-Date: 2010-12-22 12:37+0100\n"
 "PO-Revision-Date: 2010-03-03 01:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -343,7 +343,7 @@ msgid "Snowy Mountains"
 msgstr "snežne planine"
 
 #. [terrain_type]: id=forested_hills
-#: data/core/terrain.cfg:583
+#: data/core/terrain.cfg:583 data/core/terrain.cfg:687
 msgid "Forested Hills"
 msgstr "šumovita brda"
 
@@ -353,461 +353,485 @@ msgid "Forested Snow Hills"
 msgstr "šumovita snežna brda"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
-#: data/core/terrain.cfg:603
+#. [terrain_type]
+#: data/core/terrain.cfg:603 data/core/terrain.cfg:695
 msgid "Summer Deciduous Forested Hills"
 msgstr "letnja listopadno pošumljena brda"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
-#: data/core/terrain.cfg:613
+#. [terrain_type]
+#: data/core/terrain.cfg:613 data/core/terrain.cfg:702
 msgid "Fall Deciduous Forested Hills"
 msgstr "jesenja listopadno pošumljena brda"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
-#: data/core/terrain.cfg:623
+#. [terrain_type]
+#: data/core/terrain.cfg:623 data/core/terrain.cfg:709
+#: data/core/terrain.cfg:716
 msgid "Winter Deciduous Forested Hills"
 msgstr "zimska listopadno pošumljena brda"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
-#: data/core/terrain.cfg:633
+#. [terrain_type]
+#: data/core/terrain.cfg:633 data/core/terrain.cfg:723
+#: data/core/terrain.cfg:730
 msgid "Snowy Deciduous Forested Hills"
 msgstr "snežna listopadno pošumljena brda"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
-#: data/core/terrain.cfg:643
+#. [terrain_type]
+#: data/core/terrain.cfg:643 data/core/terrain.cfg:737
 msgid "Summer Mixed Forested Hills"
 msgstr "letnja mešovito pošumljena brda"
 
 #. [terrain_type]: id=mixed_forest_fall_hills
-#: data/core/terrain.cfg:653
+#. [terrain_type]
+#: data/core/terrain.cfg:653 data/core/terrain.cfg:744
 #, fuzzy
 msgid "Fall Mixed Forested Hills"
 msgstr "snežna mešovito pošumljena brda"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
-#: data/core/terrain.cfg:663
+#. [terrain_type]
+#: data/core/terrain.cfg:663 data/core/terrain.cfg:751
+#: data/core/terrain.cfg:758
 msgid "Winter Mixed Forested Hills"
 msgstr "zimska mešovito pošumljena brda"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
-#: data/core/terrain.cfg:673
+#. [terrain_type]
+#: data/core/terrain.cfg:673 data/core/terrain.cfg:765
+#: data/core/terrain.cfg:772
 msgid "Snowy Mixed Forested Hills"
 msgstr "snežna mešovito pošumljena brda"
 
 #. [terrain_type]
-#: data/core/terrain.cfg:686
+#: data/core/terrain.cfg:785
 msgid "Basic Wooden Floor"
 msgstr ""
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:699
+#: data/core/terrain.cfg:798
 msgid "Lit"
 msgstr "svetlo"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:700
+#: data/core/terrain.cfg:799
 msgid "Beam of Light"
 msgstr ""
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:710
+#: data/core/terrain.cfg:809
 msgid "Cave"
 msgstr "pećina"
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:711
+#: data/core/terrain.cfg:810
 #, fuzzy
 msgid "Cave Floor"
 msgstr "pećinski zid"
 
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:719
+#: data/core/terrain.cfg:818
 msgid "Earthy Cave Floor"
 msgstr ""
 
 #. [terrain_type]: id=flagstones_dark
-#: data/core/terrain.cfg:728
+#: data/core/terrain.cfg:827
 msgid "Dark Flagstones"
 msgstr ""
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:737
+#: data/core/terrain.cfg:836
 #, fuzzy
 msgid "Cave Path"
 msgstr "pećinska staza"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:746
+#: data/core/terrain.cfg:845
 msgid "Mushroom Grove"
 msgstr "gljivarski gaj"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:755
+#: data/core/terrain.cfg:854
 #, fuzzy
 msgid "Lit Mushroom Grove"
 msgstr "gljivarski gaj"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:766
+#: data/core/terrain.cfg:865
 msgid "Rockbound Cave"
 msgstr "stenovita pećina"
 
 #. [terrain_type]: id=rails
 #. [terrain_type]: id=railsdiag1
 #. [terrain_type]: id=railsdiag2
-#: data/core/terrain.cfg:778 data/core/terrain.cfg:790
-#: data/core/terrain.cfg:802
+#: data/core/terrain.cfg:877 data/core/terrain.cfg:889
+#: data/core/terrain.cfg:901
 msgid "Mine Rail"
 msgstr ""
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:819
+#: data/core/terrain.cfg:918
 msgid "Regular Chasm"
 msgstr ""
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:829
+#: data/core/terrain.cfg:928
 msgid "Earthy Chasm"
 msgstr ""
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:839
+#: data/core/terrain.cfg:938
 msgid "Ethereal Abyss"
 msgstr ""
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:849
+#: data/core/terrain.cfg:948
 msgid "Lava Chasm"
 msgstr "bezdan lave"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:859
+#: data/core/terrain.cfg:958
 msgid "Lava"
 msgstr "lava"
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:870
+#: data/core/terrain.cfg:969
 msgid "Volcano"
 msgstr ""
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:884
+#: data/core/terrain.cfg:983
 #, fuzzy
 msgid "Regular Impassable Mountains"
 msgstr "neprolazne planine"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:893
+#: data/core/terrain.cfg:992
 #, fuzzy
 msgid "Desert Impassable Mountains"
 msgstr "neprolazne planine"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:902
+#: data/core/terrain.cfg:1001
 #, fuzzy
 msgid "Snowy Impassable Mountains"
 msgstr "neprolazne planine"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:912
+#: data/core/terrain.cfg:1011
 #, fuzzy
 msgid "Natural Cave Wall"
 msgstr "pećinski zid"
 
 #. [terrain_type]: id=cavewall_hewn
-#: data/core/terrain.cfg:922
+#: data/core/terrain.cfg:1021
 #, fuzzy
 msgid "Hewn Cave Wall"
 msgstr "pećinski zid"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:932
+#: data/core/terrain.cfg:1031
 msgid "Natural Earthy Cave Wall"
 msgstr ""
 
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:942
+#: data/core/terrain.cfg:1041
 msgid "Reinforced Earthy Cave Wall"
 msgstr ""
 
 #. [terrain_type]: id=wall_stone
-#: data/core/terrain.cfg:952
+#: data/core/terrain.cfg:1051
 #, fuzzy
 msgid "Stone Wall"
 msgstr "pećinski zid"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:962
+#: data/core/terrain.cfg:1061
 msgid "Lit Stone Wall"
 msgstr ""
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:972
+#: data/core/terrain.cfg:1071
 #, fuzzy
 msgid "Impassable Overlay"
 msgstr "neprolaz"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:983
+#: data/core/terrain.cfg:1082
 msgid "Void"
 msgstr "praznina"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:998
+#: data/core/terrain.cfg:1097
 #, fuzzy
 msgid "Adobe Village"
 msgstr "selo"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1010
+#: data/core/terrain.cfg:1109
 #, fuzzy
 msgid "Desert Tent Village"
 msgstr "zamak"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1022
+#: data/core/terrain.cfg:1121
 #, fuzzy
 msgid "Tent Village"
 msgstr "selo"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1036
+#: data/core/terrain.cfg:1135
 #, fuzzy
 msgid "Orcish Village"
 msgstr "selo"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1048
+#: data/core/terrain.cfg:1147
 msgid "Snowy Orcish Village"
 msgstr ""
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1062
+#: data/core/terrain.cfg:1161
 msgid "Snowy Elven Village"
 msgstr ""
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1074
+#: data/core/terrain.cfg:1173
 #, fuzzy
 msgid "Elven Village"
 msgstr "selo"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1088
+#: data/core/terrain.cfg:1187
 msgid "Cottage"
 msgstr ""
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1100
+#: data/core/terrain.cfg:1199
 #, fuzzy
 msgid "Snowy Cottage"
 msgstr "zamak"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1112
+#: data/core/terrain.cfg:1211
 #, fuzzy
 msgid "Ruined Cottage"
 msgstr "zamak"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1124
+#: data/core/terrain.cfg:1223
 #, fuzzy
 msgid "Human City"
 msgstr "zamak"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1136
+#: data/core/terrain.cfg:1235
 #, fuzzy
 msgid "Snowy Human City"
 msgstr "zamak"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1148
+#: data/core/terrain.cfg:1247
 #, fuzzy
 msgid "Ruined Human City"
 msgstr "kula urušenog zamka"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1160
+#: data/core/terrain.cfg:1259
 msgid "Hill Stone Village"
 msgstr ""
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1172
+#: data/core/terrain.cfg:1271
 msgid "Snowy Hill Stone Village"
 msgstr ""
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1184
+#: data/core/terrain.cfg:1283
 #, fuzzy
 msgid "Ruined Hill Stone Village"
 msgstr "selo"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1196
+#: data/core/terrain.cfg:1295
 #, fuzzy
 msgid "Tropical Village"
 msgstr "tropska šuma"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1208
+#: data/core/terrain.cfg:1307
 #, fuzzy
 msgid "Drake Village"
 msgstr "selo"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1222
+#: data/core/terrain.cfg:1321
 #, fuzzy
 msgid "Cave Village"
 msgstr "selo"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1234
+#: data/core/terrain.cfg:1333
 #, fuzzy
 msgid "Dwarven Village"
 msgstr "selo"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1246
+#: data/core/terrain.cfg:1345
 #, fuzzy
 msgid "Hut"
 msgstr "Iseci"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1258
+#: data/core/terrain.cfg:1357
 #, fuzzy
 msgid "Snowy Hut"
 msgstr "snežna šuma"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:1270
+#: data/core/terrain.cfg:1369
 msgid "Log Cabin"
 msgstr ""
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:1282
+#: data/core/terrain.cfg:1381
 #, fuzzy
 msgid "Snowy Log Cabin"
 msgstr "snežne planine"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:1296
+#: data/core/terrain.cfg:1395
 #, fuzzy
 msgid "Swamp Village"
 msgstr "selo"
 
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:1308 data/core/terrain.cfg:1321
+#: data/core/terrain.cfg:1407 data/core/terrain.cfg:1420
 #, fuzzy
 msgid "Aquatic Village"
 msgstr "selo"
 
 #. [terrain_type]: id=mermen_village
-#: data/core/terrain.cfg:1309
+#: data/core/terrain.cfg:1408
 msgid "Shallow Merfolk Village"
 msgstr ""
 
 #. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:1322
+#: data/core/terrain.cfg:1421
 msgid "Swamp Merfolk Village"
 msgstr ""
 
+#. [terrain_type]: id=village_overlay
+#. [terrain_type]: id=village
+#: data/core/terrain.cfg:1433 data/core/terrain.cfg:1980
+msgid "Village"
+msgstr "selo"
+
+#. [terrain_type]: id=village_overlay
+#: data/core/terrain.cfg:1434
+#, fuzzy
+msgid "Village Overlay"
+msgstr "kula zamka"
+
 #. [terrain_type]: id=encampment
-#: data/core/terrain.cfg:1337
+#: data/core/terrain.cfg:1449
 msgid "Encampment"
 msgstr "tabor"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1348
+#: data/core/terrain.cfg:1460
 #, fuzzy
 msgid "Snowy Encampment"
 msgstr "tabor"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1359
+#: data/core/terrain.cfg:1471
 #, fuzzy
 msgid "Orcish Castle"
 msgstr "zamak"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1370
+#: data/core/terrain.cfg:1482
 #, fuzzy
 msgid "Snowy Orcish Castle"
 msgstr "zamak"
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1381 data/core/terrain.cfg:1623
+#: data/core/terrain.cfg:1493 data/core/terrain.cfg:1735
 msgid "Castle"
 msgstr "zamak"
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:1382
+#: data/core/terrain.cfg:1494
 #, fuzzy
 msgid "Human Castle"
 msgstr "zamak"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1392
+#: data/core/terrain.cfg:1504
 #, fuzzy
 msgid "Snowy Human Castle"
 msgstr "zamak"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:1402
+#: data/core/terrain.cfg:1514
 #, fuzzy
 msgid "Elvish Castle"
 msgstr "zamak"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:1413
+#: data/core/terrain.cfg:1525
 #, fuzzy
 msgid "Dwarven Castle"
 msgstr "zamak"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1424
+#: data/core/terrain.cfg:1536
 #, fuzzy
 msgid "Ruined Human Castle"
 msgstr "kula urušenog zamka"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1435
+#: data/core/terrain.cfg:1547
 #, fuzzy
 msgid "Sunken Human Ruin"
 msgstr "potopljena ruševina"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1447
+#: data/core/terrain.cfg:1559
 #, fuzzy
 msgid "Swamp Human Ruin"
 msgstr "močvarna ruševina"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1459
+#: data/core/terrain.cfg:1571
 #, fuzzy
 msgid "Desert Castle"
 msgstr "zamak"
 
 #. [terrain_type]: id=encampment_keep
-#: data/core/terrain.cfg:1474
+#: data/core/terrain.cfg:1586
 msgid "Encampment Keep"
 msgstr "kula tabora"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1486
+#: data/core/terrain.cfg:1598
 #, fuzzy
 msgid "Snowy Encampment Keep"
 msgstr "kula tabora"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1498
+#: data/core/terrain.cfg:1610
 #, fuzzy
 msgid "Orcish Keep"
 msgstr "kula utvrde"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1510
+#: data/core/terrain.cfg:1622
 #, fuzzy
 msgid "Snowy Orcish Keep"
 msgstr "kula utvrde"
@@ -815,149 +839,144 @@ msgstr "kula utvrde"
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1522 data/core/terrain.cfg:1609
-#: data/core/terrain.cfg:1635
+#: data/core/terrain.cfg:1634 data/core/terrain.cfg:1721
+#: data/core/terrain.cfg:1747
 msgid "Keep"
 msgstr "kula"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:1523
+#: data/core/terrain.cfg:1635
 #, fuzzy
 msgid "Human Castle Keep"
 msgstr "zamak"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:1535
+#: data/core/terrain.cfg:1647
 #, fuzzy
 msgid "Snowy Human Castle Keep"
 msgstr "zamak"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1547
+#: data/core/terrain.cfg:1659
 #, fuzzy
 msgid "Elven Castle Keep"
 msgstr "kula zamka"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:1559
+#: data/core/terrain.cfg:1671
 #, fuzzy
 msgid "Dwarven Castle Keep"
 msgstr "kula zamka"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1571
+#: data/core/terrain.cfg:1683
 #, fuzzy
 msgid "Ruined Human Castle Keep"
 msgstr "kula urušenog zamka"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1583
+#: data/core/terrain.cfg:1695
 #, fuzzy
 msgid "Sunken Keep"
 msgstr "kula potopljenog zamka"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1584
+#: data/core/terrain.cfg:1696
 #, fuzzy
 msgid "Sunken Human Castle Keep"
 msgstr "kula urušenog zamka"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1596
+#: data/core/terrain.cfg:1708
 #, fuzzy
 msgid "Swamp Keep"
 msgstr "močvara"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1597
+#: data/core/terrain.cfg:1709
 #, fuzzy
 msgid "Swamp Human Castle Keep"
 msgstr "kula zamka"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1610
+#: data/core/terrain.cfg:1722
 #, fuzzy
 msgid "Desert Keep"
 msgstr "pustinja"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1624
+#: data/core/terrain.cfg:1736
 #, fuzzy
 msgid "Castle Overlay"
 msgstr "kula zamka"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1636
+#: data/core/terrain.cfg:1748
 msgid "Keep Overlay"
 msgstr ""
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:1653 data/core/terrain.cfg:1664
-#: data/core/terrain.cfg:1675
+#: data/core/terrain.cfg:1765 data/core/terrain.cfg:1776
+#: data/core/terrain.cfg:1787
 #, fuzzy
 msgid "Wood Bridge"
 msgstr "most"
 
 #. [terrain_type]: id=stone_bridge
-#: data/core/terrain.cfg:1688 data/core/terrain.cfg:1699
-#: data/core/terrain.cfg:1710
+#: data/core/terrain.cfg:1800 data/core/terrain.cfg:1811
+#: data/core/terrain.cfg:1822
 msgid "Basic Stone Bridge"
 msgstr ""
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:1723 data/core/terrain.cfg:1733
-#: data/core/terrain.cfg:1744
+#: data/core/terrain.cfg:1835 data/core/terrain.cfg:1845
+#: data/core/terrain.cfg:1856
 #, fuzzy
 msgid "Cave Chasm Bridge"
 msgstr "most"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1760
+#: data/core/terrain.cfg:1872
 msgid "Off Map"
 msgstr ""
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:1769
+#: data/core/terrain.cfg:1881
 msgid "Experimental Fake Map Edge"
 msgstr ""
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:1778 data/gui/default/window/mp_create_game.cfg:471
+#: data/core/terrain.cfg:1890 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "pokrov"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:1787
+#: data/core/terrain.cfg:1899
 msgid "Fog"
 msgstr "magla"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1854
+#: data/core/terrain.cfg:1966
 msgid "Flat"
 msgstr "ravnica"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1861
+#: data/core/terrain.cfg:1973
 msgid "Frozen"
 msgstr "klizavica"
 
-#. [terrain_type]: id=village
-#: data/core/terrain.cfg:1868
-msgid "Village"
-msgstr "selo"
-
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:1875
+#: data/core/terrain.cfg:1987
 msgid "Impassable"
 msgstr "neprolaz"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1882
+#: data/core/terrain.cfg:1994
 msgid "Unwalkable"
 msgstr "rascep"
 
@@ -1016,7 +1035,7 @@ msgstr "Poveži se"
 #: data/gui/default/window/game_load.cfg:443
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:133
-#: data/gui/default/window/message.cfg:137
+#: data/gui/default/window/message.cfg:139
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:550
@@ -1030,6 +1049,43 @@ msgstr "Poveži se"
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Odustani"
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:68
+msgid "Author:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:98
+#, fuzzy
+msgid "Version:"
+msgstr "Verzija: "
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:129
+msgid "Size:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:160
+#, fuzzy
+msgid "Description:"
+msgstr "Opis jedinice"
+
+#. [scroll_label]: id=description
+#: data/gui/default/window/addon_description.cfg:174
+msgid "No description available."
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:192
+msgid "Translations:"
+msgstr ""
+
+#. [scroll_label]: id=translations
+#: data/gui/default/window/addon_description.cfg:206
+msgid "translations^None"
+msgstr ""
 
 # >> @title:window
 #. [label]
@@ -1493,7 +1549,7 @@ msgstr "Promenljiva"
 #: data/gui/default/window/gamestate_inspector.cfg:331
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:192
-#: data/gui/default/window/message.cfg:123 src/construct_dialog.cpp:139
+#: data/gui/default/window/message.cfg:125 src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Zatvori"
 
@@ -2647,7 +2703,7 @@ msgid "Text doesn't start on canvas."
 msgstr "Tekst ne staje na platno."
 
 #: src/gui/auxiliary/widget_definition.cpp:136
-#: src/gui/auxiliary/window_builder.cpp:228
+#: src/gui/auxiliary/window_builder.cpp:230
 msgid "No resolution defined."
 msgstr "Rezolucija nije definisana."
 
@@ -2657,25 +2713,25 @@ msgstr "Rezolucija nije definisana."
 #: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:62
 #: src/gui/auxiliary/widget_definition/stacked_widget.cpp:57
 #: src/gui/auxiliary/widget_definition/tree_view.cpp:58
-#: src/gui/auxiliary/window_builder.cpp:335
+#: src/gui/auxiliary/window_builder.cpp:338
 #: src/gui/auxiliary/window_builder/panel.cpp:36
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:39
 msgid "No grid defined."
 msgstr "Mreža nije definisana."
 
-#: src/gui/auxiliary/window_builder.cpp:155
+#: src/gui/auxiliary/window_builder.cpp:157
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Povezana grupa ‘$id’ ima višestruke definicije."
 
-#: src/gui/auxiliary/window_builder.cpp:366
+#: src/gui/auxiliary/window_builder.cpp:369
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr "Povezana grupa ‘$id’ traži ključ ‘fixed_width’ ili ‘fixed_height’."
 
-#: src/gui/auxiliary/window_builder.cpp:465
+#: src/gui/auxiliary/window_builder.cpp:468
 msgid "A row must have a column."
 msgstr "Vrsta mora imati kolonu."
 
-#: src/gui/auxiliary/window_builder.cpp:466
+#: src/gui/auxiliary/window_builder.cpp:469
 msgid "Number of columns differ."
 msgstr "Broj kolona se razlikuje."
 
@@ -2837,11 +2893,11 @@ msgid "Unknown builder id for tree view node."
 msgstr ""
 
 # >? Wtf?
-#: src/gui/widgets/window.cpp:810
+#: src/gui/widgets/window.cpp:814
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Kliku otpuštanja treba dugme „click_dismiss“ ili „ok“."
 
-#: src/gui/widgets/window.cpp:835 src/gui/widgets/window.cpp:868
+#: src/gui/widgets/window.cpp:839 src/gui/widgets/window.cpp:872
 #: src/tests/gui/test_gui2.cpp:230
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Ne mogu da prikažem dijalog koji ne staje na ekran."

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Battle for Wesnoth 1.7.14+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-25 18:13+0100\n"
+"POT-Creation-Date: 2010-12-22 12:37+0100\n"
 "PO-Revision-Date: 2010-11-20 20:05+0900\n"
 "Last-Translator: clearpotion <clearpotion+fantasy@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -36,8 +36,19 @@ msgstr "DM"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:32
-msgid "Apprentice=(easiest)"
+msgid "(Normal)"
+msgstr ""
+
+#. [campaign]: id=Delfadors_Memoirs
+#: data/campaigns/Delfadors_Memoirs/_main.cfg:32
+#, fuzzy
+msgid "Apprentice"
 msgstr "見習い=（易しい）"
+
+#. [campaign]: id=Delfadors_Memoirs
+#: data/campaigns/Delfadors_Memoirs/_main.cfg:33
+msgid "(Challenging)"
+msgstr ""
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:33
@@ -46,7 +57,13 @@ msgstr "魔術師"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:34
-msgid "Great Mage=(hardest)"
+msgid "(Difficult)"
+msgstr ""
+
+#. [campaign]: id=Delfadors_Memoirs
+#: data/campaigns/Delfadors_Memoirs/_main.cfg:34
+#, fuzzy
+msgid "Great Mage"
 msgstr "偉大なる魔術師=（難しい）"
 
 # （中級者レベル、23 シナリオ）
