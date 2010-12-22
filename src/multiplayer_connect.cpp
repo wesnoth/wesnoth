@@ -172,6 +172,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 	if (const config &ai = cfg.child("ai"))
 		ai_algorithm_ = ai["ai_algorithm"].str();
+	else if (!parent_->ai_algorithms_.empty())
+		ai_algorithm_ = parent_->ai_algorithms_[0]->id;
 	else
 		ai_algorithm_ = "default";
 	init_ai_algorithm_combo();
