@@ -18,6 +18,8 @@
  * Routines for showing the help-dialog.
  */
 
+#define GETTEXT_DOMAIN "wesnoth-help"
+
 #include "global.hpp"
 
 #include "help.hpp"
