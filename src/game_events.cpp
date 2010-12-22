@@ -2496,12 +2496,12 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	std::string side_for_raw = cfg["side_for"];
 	if (!side_for_raw.empty())
 	{
-		if (has_input) {
-			lg::wml_error << "[message]side_for= can only be used for messages that don't query any user input.\n";
-			return;
-		}
-
-		bool side_for_show = false;
+		/* Always ignore side_for when the message has some input
+		   boxes, but display the error message only if side_for is
+		   used for an inactive side. */
+		bool side_for_show = has_input;
+		if (has_input && side_for_raw != str_cast(resources::controller->current_side()))
+			lg::wml_error << "[message]side_for= cannot query any user input out of turn.\n";
 
 		std::vector<std::string> side_for =
 			utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
