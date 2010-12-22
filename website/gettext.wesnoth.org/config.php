@@ -21,9 +21,9 @@ $extrabbasedir="/usr/src/svn-checkouts/wescamp-i18n/branches/$wescampbranchversi
 
 //$packages = file_get_contents($basedir . "/po/DOMAINS");
 //$packages = substr($packages, 0, strlen($packages)-1);
-$corepackages = "wesnoth wesnoth-lib wesnoth-editor wesnoth-units wesnoth-multiplayer wesnoth-tutorial";
+$corepackages = "wesnoth wesnoth-lib wesnoth-editor wesnoth-help wesnoth-units wesnoth-multiplayer wesnoth-tutorial";
 //$packages = trim(system("grep ^SUBDIRS " . $basedir . "/po/Makefile.am | cut -d= -f2"));
-$packages = "wesnoth wesnoth-lib wesnoth-editor wesnoth-units wesnoth-multiplayer wesnoth-test wesnoth-anl wesnoth-tutorial wesnoth-manpages wesnoth-manual wesnoth-aoi wesnoth-did wesnoth-dm wesnoth-dw wesnoth-ei wesnoth-httt wesnoth-l wesnoth-low wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-tb wesnoth-thot wesnoth-trow wesnoth-tsg wesnoth-utbs";
+$packages = "wesnoth wesnoth-lib wesnoth-editor wesnoth-help wesnoth-units wesnoth-multiplayer wesnoth-test wesnoth-anl wesnoth-tutorial wesnoth-manpages wesnoth-manual wesnoth-aoi wesnoth-did wesnoth-dm wesnoth-dw wesnoth-ei wesnoth-httt wesnoth-l wesnoth-low wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-tb wesnoth-thot wesnoth-trow wesnoth-tsg wesnoth-utbs";
 
 $ignore_langs = "sr@ijekavianlatin sr@latin sr@ijekavian";
 
