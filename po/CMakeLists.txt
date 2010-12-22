@@ -21,6 +21,7 @@ set(NORMAL_DOMAINS
     wesnoth-dw
     wesnoth-editor
     wesnoth-ei
+    wesnoth-help
     wesnoth-httt
     wesnoth-l
     wesnoth-lib
