@@ -356,6 +356,7 @@ void part_ui::render_story_box()
 
 	const std::string& storytxt = p_.text();
 	if(storytxt.empty()) {
+		update_whole_screen();
 		wait_for_input();
 		return;
 	}
