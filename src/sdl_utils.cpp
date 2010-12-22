@@ -515,10 +515,10 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 
 				if (alpha != 0.0) {
 					double factor = 1 / alpha;
-					alpha /= summation;
-					red *= factor;
-					green *= factor;
-					blue *= factor;
+					alpha = alpha / summation + 0.5;
+					red = red * factor + 0.5;
+					green = green * factor + 0.5;
+					blue = blue * factor + 0.5;
 				}
 
 				dst_pixels[ydst*dst->w + xdst] = SDL_MapRGBA(dst->format,Uint8(red),Uint8(green),Uint8(blue),Uint8(alpha));
