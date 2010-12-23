@@ -125,6 +125,7 @@ wesnoth_source = \
 	gui/auxiliary/tips.cpp \
 	gui/auxiliary/widget_definition.cpp \
 	gui/auxiliary/widget_definition/button.cpp \
+	gui/auxiliary/widget_definition/drawing.cpp \
 	gui/auxiliary/widget_definition/horizontal_scrollbar.cpp \
 	gui/auxiliary/widget_definition/image.cpp \
 	gui/auxiliary/widget_definition/label.cpp \
@@ -147,6 +148,7 @@ wesnoth_source = \
 	gui/auxiliary/widget_definition/vertical_scrollbar.cpp \
 	gui/auxiliary/widget_definition/window.cpp \
 	gui/auxiliary/window_builder/button.cpp \
+	gui/auxiliary/window_builder/drawing.cpp \
 	gui/auxiliary/window_builder/control.cpp \
 	gui/auxiliary/window_builder/helper.cpp \
 	gui/auxiliary/window_builder/horizontal_listbox.cpp \
@@ -202,6 +204,7 @@ wesnoth_source = \
 	gui/dialogs/unit_create.cpp \
 	gui/dialogs/wml_message.cpp \
 	gui/widgets/button.cpp \
+	gui/widgets/drawing.cpp \
 	gui/widgets/control.cpp \
 	gui/widgets/container.cpp \
 	gui/widgets/debug.cpp \
