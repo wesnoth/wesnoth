@@ -251,7 +251,7 @@ class HTMLOutput:
             return abbrev
 
         # Campaigns
-        x = self.translate("TitleScreen button^Campaign", "wesnoth")
+        x = self.translate("addon_type^Campaign", "wesnoth")
         write("<th>%s</th></tr><tr><td>" % x)
         cids = [[], []]
         for cid in self.wesnoth.campaign_lookup.keys():
@@ -260,16 +260,17 @@ class HTMLOutput:
             else:
                 cids[1].append(cid)
 
-        lang = self.isocode
-
         for i in range(2):
             cnames = cids[i]
             cnames.sort()
             for cname in cnames:
+                lang = self.isocode
                 if cname == "mainline":
                     campname = self.translate("Multiplayer", "wesnoth")
                     campabbrev = campname
                 else:
+                    if not cname in self.wesnoth.is_mainline_campaign:
+                        lang = "C" # only mainline campaigns have translations right now
                     campname = T(self.wesnoth.campaign_lookup[cname], "name")
                     if not campname:
                         campname = cname
@@ -295,6 +296,8 @@ class HTMLOutput:
             else:
                 eids[1].append(eid)
         for i in range(2):
+            lang = self.isocode
+            if i == 1: lang = "C" # only mainline translations
             eranames = [(T(self.wesnoth.era_lookup[eid], "name"),
                 eid) for eid in eids[i]]
             eranames.sort()
@@ -858,6 +861,7 @@ def generate_single_unit_reports(out_path, isocode, wesnoth):
     html.analyze_units(grouper)
 
     for uid, unit in wesnoth.unit_lookup.items():
+        if isocode != "C" and not uid in wesnoth.is_mainline_unit: continue
         output = MyFile(os.path.join(odir, "%s.html" % uid), "w")
         html.target = "%s.html" % uid
         html.write_unit_report(output, unit)
@@ -934,6 +938,10 @@ def parse_game():
         pn("%d units found." % n)
     
     mainline_campaigns = set(stuff.campaign_lookup.keys())
+    
+    stuff.is_mainline_unit = {}
+    for uid in stuff.unit_lookup.keys():
+        stuff.is_mainline_unit[uid] = True
 
     if options.addons:
         p("Parsing addons ... ")
