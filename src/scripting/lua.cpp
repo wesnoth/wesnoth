@@ -2861,6 +2861,23 @@ static int intf_delay(lua_State *L)
 	return 0;
 }
 
+/**
+ * Gets the dimension of an image.
+ * - Arg 1: string.
+ * - Ret 1: width.
+ * - Ret 2: height.
+ */
+static int intf_get_image_size(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	image::locator img(m);
+	if (!img.file_exists()) return 0;
+	surface s = get_image(img);
+	lua_pushinteger(L, s->w);
+	lua_pushinteger(L, s->h);
+	return 2;
+}
+
 LuaKernel::LuaKernel(const config &cfg)
 	: mState(luaL_newstate()), level_(cfg)
 {
@@ -2898,6 +2915,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "fire_event",               &intf_fire_event               },
 		{ "float_label",              &intf_float_label              },
 		{ "get_dialog_value",         &intf_get_dialog_value         },
+		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_locations",            &intf_get_locations            },
 		{ "get_map_size",             &intf_get_map_size             },
 		{ "get_recall_units",         &intf_get_recall_units         },
