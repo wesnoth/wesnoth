@@ -509,7 +509,8 @@ const defense_range &defense_range_modifier_internal(defense_cache &defense_mods
 	}
 
 	if (parent) {
-		return parent->defense_range_modifier(map, terrain);
+		res = parent->defense_range_modifier(map, terrain);
+		return res;
 	}
 
 	check:
