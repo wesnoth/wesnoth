@@ -281,6 +281,8 @@
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\button.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\button.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\widget_definition\drawing.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\widget_definition\drawing.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\horizontal_scrollbar.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\horizontal_scrollbar.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\widget_definition\image.cpp" />
@@ -329,6 +331,8 @@
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\button.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\control.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\control.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\window_builder\drawing.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\window_builder\drawing.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\helper.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\helper.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\horizontal_listbox.cpp" />
@@ -373,6 +377,8 @@
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\tree_view.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\vertical_scrollbar.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\vertical_scrollbar.hpp" />
+		<Unit filename="..\..\src\gui\dialogs\addon\description.cpp" />
+		<Unit filename="..\..\src\gui\dialogs\addon\description.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_connect.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_connect.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_list.cpp" />
@@ -426,6 +432,8 @@
 		<Unit filename="..\..\src\gui\dialogs\mp_connect.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\mp_create_game.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\mp_create_game.hpp" />
+		<Unit filename="..\..\src\gui\dialogs\mp_create_game_set_password.cpp" />
+		<Unit filename="..\..\src\gui\dialogs\mp_create_game_set_password.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\mp_method_selection.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\mp_method_selection.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\simple_item_selector.cpp" />
@@ -449,6 +457,8 @@
 		<Unit filename="..\..\src\gui\widgets\control.hpp" />
 		<Unit filename="..\..\src\gui\widgets\debug.cpp" />
 		<Unit filename="..\..\src\gui\widgets\debug.hpp" />
+		<Unit filename="..\..\src\gui\widgets\drawing.cpp" />
+		<Unit filename="..\..\src\gui\widgets\drawing.hpp" />
 		<Unit filename="..\..\src\gui\widgets\event_executor.hpp" />
 		<Unit filename="..\..\src\gui\widgets\generator.cpp" />
 		<Unit filename="..\..\src\gui\widgets\generator.hpp" />
@@ -644,6 +654,8 @@
 			<Option compilerVar="CC" />
 			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
 		</Unit>
+		<Unit filename="..\..\src\portrait.cpp" />
+		<Unit filename="..\..\src\portrait.hpp" />
 		<Unit filename="..\..\src\preferences.cpp" />
 		<Unit filename="..\..\src\preferences.hpp" />
 		<Unit filename="..\..\src\preferences_display.cpp" />
