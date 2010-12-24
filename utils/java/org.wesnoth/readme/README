@@ -1,0 +1,179 @@
+Eclipse Wesnoth UMC Plugin Readme
+Google Summer of Code 2010 Project
+Timotei Dolean - mailto:timotei21@gmail.comtimotei21@gmail.com
+
+Foreword Through this readme the following terms with the specified meaning will be used:
+
+Navigator - an Eclipse view that shows the projects in the workspace
+Project - a directory on the harddrive that is represented as a top directory in the navigator.
+Container - this is a directory or a project. Basically it can contain any file or directory children.
+The following image will highlight the terms used: 1 - Navigator, 2 - Project, 3 - Containers, 4 - Map files, 5 - Config files that contain WML code
+
+
+Common prerequisites
+
+Download and install Sun's Java:
+
+If you are going just to use the plugin (User): https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=jre-6u21-oth-JPR@CDS-CDS_DeveloperDownload JRE
+If you are going to modify it or run it from source (Developer): http://java.sun.com/javase/downloads/widget/jdk6.jspDownload JDK
+Note: Please double check the java installed on your system. On some machines there is the OpenJDK or other Java versions. Use just Sun's so there will be no problems.
+Download and install Python 2.x:
+
+Windows: Download and install from here: http://python.org/download/Download Python , selecting a 2.x version
+Linux: Use the regular package manager for installing it from the repositories.
+Mac: Download and install from here: http://python.org/download/Download Python , selecting a 2.x version
+Check the guide over here: http://wiki.python.org/moin/BeginnersGuide/DownloadPython Download and install 
+Note: Please ensure you install the 2.x versions. Versions 3.x are not supported by the Wesnoth's WML Tools.
+Download "Eclipse" (The download links are in the right. Please ensure you are downloading the 3.6 version, otherwise the plugin will not work.):
+
+If you are going just to use the plugin (User): http://eclipse.org/downloads/packages/eclipse-classic-360/heliosrDownload Eclipse Classic
+If you are going to modify it or run it from source (Developer):  http://eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/heliosrDownload Eclipse for RCP and RAP Developers
+Extract the downloaded archive in a known location and launch the executable (eclipse / eclipse.exe)
+
+Note: You will need to have a wesnoth version 1.9.x or newer, or a version compiled from trunk, in order for the plugin's features to correctly work.
+
+User
+
+Installing the plugin
+
+After launching Eclipse, go to the "Help" menu - Install new Software.
+
+  Then, please check "Group items by category" and "Contact all update sites during install to find required software", in the bottom of the page.
+ Insert the link http://eclipse.wesnoth.org/ in the textbox in the top and press Enter. The list will be populated with some items.
+Select the entire "Wesnoth UMC Plugin" category and press finish.
+
+Note: If you are prompted for any license agreements or certificates press Yes on all (if you agree).
+
+Note: After the plugin has installed, press "Restart workbench now" when you are prompted.
+Now the plugin is ready to be used.
+
+Developer
+
+Setup the environment
+
+Open up the "Install new software" menu, and select from the list: "Helios - http://download.eclipse.org/releases/helios"
+In the list populated with items, select from the "Modelling" category: "Xtext SDK", and install it. Restart eclipse after that.
+Checkout the following folders: "org.wesnoth", "org.wesnoth.wml", "org.wesnoth.wml.ui" from plugin's folder in the svn (http://svn.gna.org/svn/wesnoth/trunk/utils/java/)
+In Eclipse, right click in Package Explorer/Navigator/Project Explorer and then select Import - General - Existing projects into Workspace
+Select the path where you downloaded the java folder, and check all the 3 projects: "eclipseplugin", "org.wesnoth.wml", "org.wesnoth.wml.ui".
+Build the projects.
+
+Running the plugin After you've setup the environment and built the plugin you can run it.
+
+Press the dropdown arrow near the "Run" button in Eclipse's toolbar.
+Press "Run Configurations...".
+Select "Eclipse Application" from the category list in the left and then pres the left-most icon, to create a new run configuration.
+Specify a name for the configuration
+Press Run.
+
+Everybody
+
+Using the plugin After you have your plugin installed (user) or running(developer), you can use its features.
+
+But before of all, you must "Setup the workspace". For this, go in the "Wesnoth" menu (it will have the wesnoth icon) and select "Setup the workspace". You will be guided setting the workspace. The preferences page for the plugin will pop up, and you must fill them all, so the plugin will work as intended. After you completed the fields, press Apply and then OK. Then the plugin will create for convenience wesnoth projects for each of mainline campaigns and for each directory in your useraddons/data/add-ons directory. The working directory is the directory that contains the data, images, manual, sounds of wesnoth.
+
+If there were no errors a message window will open saying: Workspace was setup successfully.
+
+Note: If you encounter any errors, the plugin logs them in the: your temporary directory/wesnothplugin/logs.
+That is usually on linux:
+
+/tmp/wesnothplugin/logs
+
+or on windows:
+
+C:/Documents and settings/your username/Local Settings/Temp/wesnothplugin/logs 
+
+or
+
+C:/Users/your username/Local Settings/Temp/wesnothplugin/logs
+
+
+Wizards There are some wizards available in the plugin, that will create either projects or config files, based on the specified input. This wizards are available by going to the "File" menu - New - Other... , and from that list selecting the "Wesnoth" category.
+
+There are 3 wizards categories:
+
+Project wizards - "Empty project" and "Campaign" wizards create new projects in the workspace. The former will create a basic addon directory structure. The latter will create a campaign and it's directory structure.
+File wizards - "Wesnoth config file", "Scenario", "Era" and "Faction" wizards create a new file in a selected container.
+Wizard launcher - This is a special wizard. It takes a wml tag as input, and generate subsequent needed tags and key inputs. This is generated on the wml schema, so if the schema is incomplete some tags won't be available. This wizard can create a new file or copy the resulted WML into the current edited file.
+
+Menus There are currently 2 types of menus: the context menus for different file/container types and the main menu. For a better distinction the menus have the wenoth icon near each item.
+
+
+Project context menu - right click on the projects created with the plugin
+
+   Wesnoth project report - will show a simple report with the numer of maps, scenarios and units.
+
+   Open campaign in game - will start the current project's campaign (if any) in wesnoth. For this to work, you must have a "main.cfg" file defined, and a campaign in it.
+
+   Upload addon - will upload the specified directory on the wesnoth addon server. The status will be outputed to the console.
+
+   Regenerate build files - recreates the "build.xml" file. That is used if the current project is one relative to useraddons
+
+   Builders - utilities for adding/removing the wesnoth/xtext builders. Don't use them until you know what you are doing.
+
+Container context menus - right click on any container
+
+    WML Tools - provides some options for using the wmltools with the specified project.
+
+"maps" folder context menu - right click on the "maps" directory
+
+   Import map - Shows a file selection window that will ley you select a .map file that will be copied in your maps directory.
+
+.cfg files context menu - right click on any .cfg file
+
+   Open scenario in game - opens the selected file's scenario (if it contains one) in wesnoth.
+
+   WML Tools - provides some options for using the wmltools with the specified file. (e.g. run wmllint against the file and see the output in the console) 
+
+   Preprocessor - provides ways of preprocessing and showing the result in an editor inside eclipse.
+
+.map files context menu - right click on any .map file
+
+   Open map in editor - will open the selected map in the wesnoth map editor.
+
+Editor context menu - right click in the editor
+   Validate - will validate the entire file (this is an expensive action)
+
+Main menu - This is a menu near the "Window" menu bar
+
+   Open editor - Will open the game editor with a blank map.
+
+   Open game - Will open the game.
+
+   Import map - It will import a map in selected container.
+
+   Open editor - Open the selected map in the game editor.
+
+   Setup workspace - Will setup the workspace if it's not setup. This will open the preferences page if any preferences is missing, and then it will create the wesnoth project for mainline and user addons directories if you want.
+
+   Reload cache - Reloads the internal cached files. Useful when the schema or other files have modified and you don't want to restart the plugin.
+
+   Open plugin's preferences - Opens the plugin preferences page.
+
+
+Use cases 
+Import an already existing wesnoth addon into the plugin
+For this you need just 2 single steps:
+
+Open eclipse. Click the "New" main menu bar - Project. Select the "Empty project" from "Wesnoth" category.
+Enter the name of the project. Uncheck "Use default location", and press "Browse...". Navigate to the addon's directory and then continue the wizard as necessary.
+
+Frequently Asked Questions 
+What is this plugin all about?
+The plugin is in fact something like a WML IDE ( http://en.wikipedia.org/wiki/Integrated_development_environmentWikipedia - IDE). Basically it offers you some features that greatly help anybody who makes User made Content in WML.
+
+It has wizards for new campaign, scenario, faction, era and every other wml tag you can think of. You just complete the needed values and it generates the wml (with nice indentation).
+It has frontends for launching wmltools( like wmllint, wmlscope, wmlindent on files/directories), the wesnoth game, map editor.
+It has a specialized WML editor, that has syntax highlighting, tag folding and outline, autocompletion, macro "explorer" and so on.
+It has a 'upload addon' feature that uploads the specified project to the addons server.
+
+What is this "eclipse" thingy?
+Eclipse is a Java framework. It is very extensible, so people can actually make plugins that use the already existing functionality. It is written in Java, so for some people it can be slow, but at it's latest version it's very stable and it has few resource consumption.
+
+
+What if I don't want to install eclipse?
+You're lucky. There will be a slimmed version of Eclipse, actually only the plugin itself. The size will be 3 or 4 times smaller than the current eclipse, and there will be no extra plugins. This version isn't released yet.
+
+
+Where can I submit any found bugs?
+Go over to Wesnoth's bug tracker: https://gna.org/bugs/?func=additem&group=wesnoth&bug_group_id=116Add new bug. Please be as specific as possible. Also, if you have any logs, please attach them.
