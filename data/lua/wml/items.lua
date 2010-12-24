@@ -35,7 +35,7 @@ local old_on_save = game_events.on_save
 function game_events.on_save()
 	local custom_cfg = old_on_save()
 	for i,v in pairs(scenario_items) do
-		for j,w in pairs(v) do
+		for j,w in ipairs(v) do
 			table.insert(custom_cfg, { "item", w })
 		end
 	end
@@ -44,12 +44,15 @@ end
 
 local old_on_load = game_events.on_load
 function game_events.on_load(cfg)
-	for i = #cfg,1,-1 do
+	local i = 1
+	while i <= #cfg do
 		local v = cfg[i]
 		if v[1] == "item" then
 			local v2 = v[2]
 			add_overlay(v2.x, v2.y, v2)
 			table.remove(cfg, i)
+		else
+			i = i + 1
 		end
 	end
 	old_on_load(cfg)
