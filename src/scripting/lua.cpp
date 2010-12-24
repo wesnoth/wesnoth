@@ -2719,8 +2719,8 @@ static int intf_set_dialog_canvas(lua_State *L)
 
 /**
  * Gets all the locations matching a given filter.
- * Arg 1: WML table.
- * Ret 1: array of integer pairs.
+ * - Arg 1: WML table.
+ * - Ret 1: array of integer pairs.
  */
 static int intf_get_locations(lua_State *L)
 {
@@ -2849,7 +2849,7 @@ static int intf_remove_tile_overlay(lua_State *L)
 
 /**
  * Delays engine for a while.
- * Arg 1: integer.
+ * - Arg 1: integer.
  */
 static int intf_delay(lua_State *L)
 {
