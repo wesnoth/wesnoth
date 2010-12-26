@@ -432,11 +432,13 @@ void game_display::draw_report(reports::TYPE report_num)
 		return;
 	}
 
-	reports::report report = reports::generate_report(report_num,
-		teams_[viewing_team()], currentTeam_ + 1, activeTeam_ + 1,
+	reports::report_data data = {
+		viewing_team() + 1, currentTeam_ + 1, activeTeam_ + 1,
 		selectedHex_, mouseoverHex_, displayedUnitHex_,
-		observers_, level_, !viewpoint_);
+		observers_, level_, !viewpoint_
+	};
 
+	reports::report report = reports::generate_report(report_num, data);
 	refresh_report(report_num, report);
 }
 

@@ -91,12 +91,21 @@ namespace reports {
 				const std::string& tooltip, const std::string& action="");
 	};
 
-	report generate_report(TYPE type,
-		const team &viewing_team,
-			       int current_side, int active_side,
-			       const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
-		const std::set<std::string> &observers,
-			       const config& level, bool show_everything = false);
+struct report_data
+{
+	int viewing_side;
+	int current_side;
+	int active_side;
+	map_location selected_hex;
+	map_location mouseover_hex;
+	map_location displayed_unit_hex;
+	const std::set<std::string> &observers;
+	const config &level;
+	bool show_everything;
+};
+
+report generate_report(TYPE type, const report_data &data);
+
 }
 
 #endif

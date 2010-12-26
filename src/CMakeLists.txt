@@ -342,7 +342,6 @@ set(wesnoth-main_SRC
 	game_preferences.cpp
 	game_preferences_display.cpp
 	gamestatus.cpp
-	generate_report.cpp
 	generic_event.cpp
 	gui/auxiliary/canvas.cpp
 	gui/auxiliary/event/dispatcher.cpp
