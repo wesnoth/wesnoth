@@ -29,6 +29,8 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 static lg::log_domain log_scripting_formula("scripting/formula");
 #define LOG_SF LOG_STREAM(info, log_scripting_formula)
+#define WRN_SF LOG_STREAM(warn, log_scripting_formula)
+#define ERR_SF LOG_STREAM(err, log_scripting_formula)
 
 namespace game_logic {
 
@@ -366,6 +368,55 @@ private:
 		}
 
 		return variant( &tmp );
+	}
+};
+
+class substring_function
+	: public function_expression {
+public:
+	explicit substring_function(const args_list& args)
+	     : function_expression("substring", args, 2, 3)
+	{}
+
+	variant execute(const formula_callable& variables
+			, formula_debugger *fdb) const {
+
+		std::string result = args()[0]->evaluate(variables, fdb).as_string();
+
+		int offset = args()[1]->evaluate(variables, fdb).as_int();
+		if(offset < 0) {
+			offset += result.size();
+			if(offset < 0) {
+				WRN_SF << "[concatenate] Offset '"
+						<< args()[1]->evaluate(variables, fdb).as_int()
+						<< "' results in a negative start in string '"
+						<< result
+						<< "' and is reset at the beginning of the string.\n";
+
+				offset = 0;
+			}
+		} else {
+			if(static_cast<size_t>(offset) >= result.size()) {
+				WRN_SF << "[concatenate] Offset '" << offset
+						<< "' is larger as the size of '" << result
+						<< "' and results in an empty string.\n";
+
+				return variant(std::string());
+			}
+		}
+
+		if(args().size() > 2) {
+			const int size = args()[2]->evaluate(variables, fdb).as_int();
+			if(size < 0) {
+				ERR_SF << "[concatenate] Size is negative an "
+						<< "empty string is returned.\n";
+
+				return variant(std::string());
+			}
+			return variant(result.substr(offset, size));
+		} else {
+			return variant(result.substr(offset));
+		}
 	}
 };
 
@@ -1050,6 +1101,7 @@ functions_map& get_functions_map() {
 		FUNCTION(values);
 		FUNCTION(tolist);
 		FUNCTION(tomap);
+		FUNCTION(substring);
 #undef FUNCTION
 	}
 
