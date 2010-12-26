@@ -1012,6 +1012,7 @@ AC_CONFIG_FILES([Makefile
 		 po/wesnoth-dm/Makefile.in
 		 po/wesnoth-dw/Makefile.in
 		 po/wesnoth-ei/Makefile.in
+		 po/wesnoth-help/Makefile.in
 		 po/wesnoth-httt/Makefile.in
 		 po/wesnoth-l/Makefile.in
 		 po/wesnoth-low/Makefile.in
