@@ -155,7 +155,7 @@ static void draw_line(
 	// http://de.wikipedia.org/wiki/Bresenham-Algorithmus#Kompakte_Variante
 	// version of 26.12.2010.
 	const int dx = x2 - x1; // precondition x2 >= x1
-	const int dy = abs(y2 - y1);
+	const int dy = abs(static_cast<int>(y2 - y1));
 	const int step_x = 1;
 	const int step_y = y1 < y2 ? 1 : -1;
 	int err = (dx > dy ? dx : -dy) / 2;
