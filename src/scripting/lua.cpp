@@ -111,6 +111,7 @@ static char const getsideKey = 0;
 static char const gettextKey = 0;
 static char const gettypeKey = 0;
 static char const getunitKey = 0;
+static char const thmitemKey = 0;
 static char const tstringKey = 0;
 static char const unitvarKey = 0;
 static char const ustatusKey = 0;
@@ -2901,6 +2902,49 @@ static int intf_get_image_size(lua_State *L)
 	return 2;
 }
 
+struct lua_report_generator : reports::generator
+{
+	lua_State *mState;
+	std::string name;
+	lua_report_generator(lua_State *L, const std::string &n)
+		: mState(L), name(n) {}
+	virtual config generate(const reports::report_data &);
+};
+
+config lua_report_generator::generate(const reports::report_data &)
+{
+	lua_State *L = mState;
+	lua_pushlightuserdata(L, (void *)&thmitemKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_pushstring(L, name.c_str());
+	lua_rawget(L, -2);
+	lua_remove(L, -2);
+	config cfg;
+	if (!luaW_pcall(L, 0, 1)) return cfg;
+	luaW_toconfig(L, -1, cfg);
+	lua_pop(L, 1);
+	return cfg;
+}
+
+/**
+ * Registers a generator for a theme item.
+ * - Arg 1: string.
+ * - Arg 2: function.
+ * - Arg 3: boolean.
+ */
+static int intf_register_theme_item(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	lua_pushlightuserdata(L, (void *)&thmitemKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_pushvalue(L, 1);
+	lua_pushvalue(L, 2);
+	lua_rawset(L, -3);
+	lua_pop(L, 1);
+	reports::register_generator(m, new lua_report_generator(L, m), lua_toboolean(L, 3));
+	return 0;
+}
+
 LuaKernel::LuaKernel(const config &cfg)
 	: mState(luaL_newstate()), level_(cfg)
 {
@@ -2958,6 +3002,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "play_sound",               &intf_play_sound               },
 		{ "put_recall_unit",          &intf_put_recall_unit          },
 		{ "put_unit",                 &intf_put_unit                 },
+		{ "register_theme_item",      &intf_register_theme_item      },
 		{ "remove_tile_overlay",      &intf_remove_tile_overlay      },
 		{ "require",                  &intf_require                  },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
@@ -3071,6 +3116,11 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setfield(L, -2, "__len");
 	lua_pushstring(L, "wml object");
 	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
+	// Create the table for report generators.
+	lua_pushlightuserdata(L, (void *)&thmitemKey);
+	lua_newtable(L);
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the ai elements table.
