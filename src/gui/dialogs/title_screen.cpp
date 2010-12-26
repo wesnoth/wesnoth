@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "gui/auxiliary/timer.hpp"
 #include "gui/auxiliary/tips.hpp"
+#include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -85,6 +86,8 @@ namespace gui2 {
  */
 
 REGISTER_WINDOW(title_screen)
+
+bool show_debug_clock_button = false;
 
 static bool hotkey(twindow& window, const ttitle_screen::tresult result)
 {
@@ -256,7 +259,7 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 					, QUIT_GAME));
 }
 
-void ttitle_screen::pre_show(CVideo&, twindow& window)
+void ttitle_screen::pre_show(CVideo& video, twindow& window)
 {
 	set_restore(false);
 	window.set_click_dismiss(false);
@@ -342,6 +345,19 @@ void ttitle_screen::pre_show(CVideo&, twindow& window)
 					, true);
 		}
 	}
+
+	/***** Set the clock button. *****/
+	tbutton& clock = find_widget<tbutton>(&window, "clock", false);
+	clock.set_visible(show_debug_clock_button
+			? twidget::VISIBLE
+			: twidget::INVISIBLE);
+
+	connect_signal_mouse_left_click(
+			  clock
+			, boost::bind(
+				  &ttitle_screen::show_debug_clock_window
+				, this
+				, boost::ref(video)));
 }
 
 void ttitle_screen::update_tip(twindow& window, const bool previous)
@@ -365,6 +381,14 @@ void ttitle_screen::update_tip(twindow& window, const bool previous)
 	}
 
 	tips.select_page(page);
+}
+
+void ttitle_screen::show_debug_clock_window(CVideo& video)
+{
+	assert(show_debug_clock_button);
+
+	tdebug_clock dlg;
+	dlg.show(video);
 }
 
 } // namespace gui2

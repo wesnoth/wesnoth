@@ -408,6 +408,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/campaign_difficulty.cpp
 	gui/dialogs/campaign_selection.cpp
 	gui/dialogs/data_manage.cpp
+	gui/dialogs/debug_clock.cpp
 	gui/dialogs/dialog.cpp
 	gui/dialogs/edit_label.cpp
 	gui/dialogs/formula_debugger.cpp

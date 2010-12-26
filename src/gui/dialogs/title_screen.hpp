@@ -20,6 +20,9 @@
 
 namespace gui2 {
 
+/** Do we wish to show the button for the debug clock. */
+extern bool show_debug_clock_button;
+
 class ttitle_screen : public tdialog
 {
 public:
@@ -82,6 +85,9 @@ private:
 	 *                            one.
 	 */
 	void update_tip(twindow& window, const bool previous);
+
+	/** Shows the debug clock. */
+	void show_debug_clock_window(CVideo& video);
 };
 
 } // namespace gui2

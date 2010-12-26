@@ -498,6 +498,8 @@ game_controller::game_controller(int argc, char** argv) :
         } else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
+        } else if(val == "--clock") {
+			gui2::show_debug_clock_button = true;
 #ifndef DISABLE_EDITOR
 		} else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
@@ -1909,6 +1911,8 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               file bug reports since most are known).\n"
 			<< "                               Parts of the library are deemed stable and will\n"
 			<< "                               work without this switch.\n"
+			<< "  --clock                      Adds the option to show a clock for testing the\n"
+			<< "                               drawing timer.\n"
 			;
 			return 0;
 		} else if(val == "--version" || val == "-v") {
