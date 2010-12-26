@@ -28,7 +28,7 @@
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 static lg::log_domain log_scripting_formula("scripting/formula");
-#define LOG_AI LOG_STREAM(info, log_scripting_formula)
+#define LOG_SF LOG_STREAM(info, log_scripting_formula)
 
 namespace game_logic {
 
@@ -275,13 +275,13 @@ private:
 		if( args().size() == 1)
 		{
 			str1 = var1.to_debug_string(NULL, true);
-			LOG_AI << str1 << std::endl;
+			LOG_SF << str1 << std::endl;
 			return var1;
 		} else {
 			str1 = var1.string_cast();
 			const variant var2 = args()[1]->evaluate(variables,fdb);
 			str2 = var2.to_debug_string(NULL, true);
-			LOG_AI << str1 << str2 << std::endl;
+			LOG_SF << str1 << str2 << std::endl;
 			return var2;
 		}
 	}
