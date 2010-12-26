@@ -153,6 +153,11 @@ stringfixes = {
 # Correct spelling
 # conversion added in 1.9.0+svn
 ("has a tool-tip", "has a tooltip"),
+
+# correct spelling
+# conversion added in 1.9.3+svn
+("threadments", "treatments"),
+("text='edd'", "text='egg'"),
 ),
 
 "wesnoth-anl" : (
