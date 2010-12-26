@@ -386,7 +386,7 @@ void thandler::disconnect(tdispatcher* dispatcher)
 		dynamic_cast<twidget&>(*dispatcher).set_dirty();
 	}
 
-	init_mouse_location();
+	activate();
 
 	/***** Validate post conditions. *****/
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)

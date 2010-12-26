@@ -662,6 +662,8 @@ void tdistributor::initialize_state()
 	tmouse_button_left::initialize_state(button_state & SDL_BUTTON(1));
 	tmouse_button_middle::initialize_state(button_state & SDL_BUTTON(2));
 	tmouse_button_right::initialize_state(button_state & SDL_BUTTON(3));
+
+	init_mouse_location();
 }
 
 void tdistributor::keyboard_capture(twidget* widget)
