@@ -170,12 +170,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 	update_faction_combo();
 
-	if (!parent_->ai_algorithms_.empty())
-		ai_algorithm_ = parent_->ai_algorithms_[0]->id;
-	else if (const config &ai = cfg.child("ai"))
+	if (const config &ai = cfg.child("ai"))
 		ai_algorithm_ = ai["ai_algorithm"].str();
-	else
-		ai_algorithm_ = "default";
 	init_ai_algorithm_combo();
 
 	// "Faction name" hack
@@ -588,6 +584,10 @@ void connect::side::init_ai_algorithm_combo()
 	}
 	combo_ai_algorithm_.set_items(ais);
 	combo_ai_algorithm_.set_selected(sel);
+	if (!ais_list.empty()) {
+		// Ensures that the visually selected AI is the one that will be loaded.
+		ai_algorithm_ = ais_list[sel]->id;
+	}
 }
 
 void connect::side::update_faction_combo()
