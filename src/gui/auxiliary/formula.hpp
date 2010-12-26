@@ -18,6 +18,7 @@
 
 #include "formula_callable.hpp"
 #include "../../formula.hpp"
+#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
@@ -137,11 +138,9 @@ inline T tformula<T>::operator()(
 {
 	if(has_formula()) {
 		const T& result = execute(variables);
-#if 0
 		LOG_GUI_D << "Formula: execute '" << formula_
 			<< "' result '" << result
 			<< "'.\n";
-#endif
 		return result;
 	} else {
 		return value_;
