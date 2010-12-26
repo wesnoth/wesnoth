@@ -19,6 +19,8 @@
 
 #include "formula_function.hpp"
 
+#include <cmath>
+
 BOOST_AUTO_TEST_SUITE(formula_function)
 
 BOOST_AUTO_TEST_CASE(test_formula_function_substring)
@@ -119,6 +121,27 @@ BOOST_AUTO_TEST_CASE(test_formula_function_concatenate)
 					"concatenate([1.0, 1.00, 1.000, 1.2, 1.23, 1.234])")
 						.evaluate().as_string()
 			, "1.000, 1.000, 1.000, 1.200, 1.230, 1.234");
+}
+
+BOOST_AUTO_TEST_CASE(test_formula_function_sin_cos)
+{
+	const double pi = 4. * atan(1.);
+
+	game_logic::map_formula_callable variables;
+
+	for(size_t x = 0; x <= 360; ++x) {
+		variables.add("x", variant(x));
+
+		BOOST_CHECK_EQUAL(
+			  game_logic::formula("sin(x)")
+				.evaluate(variables).as_decimal()
+			, static_cast<int>(1000. * sin(x * pi / 180.)));
+
+		BOOST_CHECK_EQUAL(
+			  game_logic::formula("cos(x)")
+				.evaluate(variables).as_decimal()
+			, static_cast<int>(1000. * cos(x * pi / 180.)));
+	}
 }
 
 BOOST_AUTO_TEST_SUITE_END()

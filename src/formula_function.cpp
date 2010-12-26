@@ -457,6 +457,46 @@ private:
 		}
 };
 
+class sin_function
+	: public function_expression {
+public:
+	explicit sin_function(const args_list& args)
+	     : function_expression("sin", args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables
+			, formula_debugger *fdb) const {
+
+		const double angle =
+				args()[0]->evaluate(variables,fdb).as_decimal() / 1000.;
+
+		return variant(
+				  static_cast<int>(1000. * sin(angle * pi / 180.))
+				, variant::DECIMAL_VARIANT);
+	}
+};
+
+class cos_function
+	: public function_expression {
+public:
+	explicit cos_function(const args_list& args)
+	     : function_expression("cos", args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables
+			, formula_debugger *fdb) const {
+
+		const double angle =
+				args()[0]->evaluate(variables,fdb).as_decimal() / 1000.;
+
+		return variant(
+				  static_cast<int>(1000. * cos(angle * pi / 180.))
+				, variant::DECIMAL_VARIANT);
+	}
+};
+
 class index_of_function : public function_expression {
 public:
 	explicit index_of_function(const args_list& args)
@@ -1141,6 +1181,8 @@ functions_map& get_functions_map() {
 		FUNCTION(substring);
 		FUNCTION(length);
 		FUNCTION(concatenate);
+		FUNCTION(sin);
+		FUNCTION(cos);
 #undef FUNCTION
 	}
 
