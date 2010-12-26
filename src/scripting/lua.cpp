@@ -1594,6 +1594,20 @@ static int intf_get_map_size(lua_State *L)
 }
 
 /**
+ * Returns the currently overed tile.
+ * - Ret 1: x.
+ * - Ret 2: y.
+ */
+static int intf_get_mouseover_tile(lua_State *L)
+{
+	const map_location &loc = resources::screen->mouseover_hex();
+	if (!resources::game_map->on_board(loc)) return 0;
+	lua_pushinteger(L, loc.x + 1);
+	lua_pushinteger(L, loc.y + 1);
+	return 2;
+}
+
+/**
  * Returns the currently selected tile.
  * - Ret 1: x.
  * - Ret 2: y.
@@ -2985,6 +2999,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_locations",            &intf_get_locations            },
 		{ "get_map_size",             &intf_get_map_size             },
+		{ "get_mouseover_tile",       &intf_get_mouseover_tile       },
 		{ "get_recall_units",         &intf_get_recall_units         },
 		{ "get_selected_tile",        &intf_get_selected_tile        },
 		{ "get_terrain",              &intf_get_terrain              },
