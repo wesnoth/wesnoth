@@ -47,8 +47,6 @@ private:
 	}
 public:
 
-	void set_drawing(const ::config& cfg);
-
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from tcontrol. */

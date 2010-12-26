@@ -50,7 +50,7 @@ twidget* tbuilder_drawing::build() const
 		widget->set_best_size(tpoint(width, height));
 	}
 
-	widget->set_drawing(draw_);
+	widget->canvas().front().set_cfg(draw_);
 
 	DBG_GUI_G << "Window builder: placed drawing '"
 			<< id << "' with definition '"

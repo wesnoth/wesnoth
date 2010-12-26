@@ -27,11 +27,6 @@ namespace gui2 {
 
 REGISTER_WIDGET(drawing)
 
-void tdrawing::set_drawing(const ::config& cfg)
-{
-	canvas().front().set_cfg(cfg);
-}
-
 const std::string& tdrawing::get_control_type() const
 {
 	static const std::string type = "drawing";
