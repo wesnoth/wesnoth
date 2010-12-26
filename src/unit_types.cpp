@@ -509,6 +509,7 @@ const defense_range &defense_range_modifier_internal(defense_cache &defense_mods
 	}
 
 	if (parent) {
+		/* Assign to the reference res to put the value in the defense_cache. */
 		res = parent->defense_range_modifier(map, terrain);
 		return res;
 	}
