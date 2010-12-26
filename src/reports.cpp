@@ -133,7 +133,7 @@ static unit *get_visible_unit(const report_data &data)
 
 static config gray_inactive(const report_data &data, const std::string &str)
 {
-	if (data.current_side == data.active_side)
+	if (data.viewing_side == data.active_side)
 		return text_report(str);
 	return text_report(span_color(font::GRAY_COLOR) + str + naps);
 }
@@ -626,9 +626,9 @@ REPORT_GENERATOR(gold, false, data)
 	std::ostringstream str;
 	// Suppose the full/"pathfind" unit map is applied.
 	int fake_gold = (*resources::teams)[data.viewing_side - 1].gold() -
-		resources::whiteboard->get_spent_gold_for(data.current_side);
+		resources::whiteboard->get_spent_gold_for(data.viewing_side);
 	char const *end = naps;
-	if (data.current_side != data.active_side)
+	if (data.viewing_side != data.active_side)
 		str << span_color(font::GRAY_COLOR);
 	else if (fake_gold < 0)
 		str << span_color(font::BAD_COLOR);
@@ -642,7 +642,7 @@ REPORT_GENERATOR(villages, false, data)
 {
 	std::ostringstream str;
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
-	team_data td = calculate_team_data(viewing_team, data.current_side);
+	team_data td = calculate_team_data(viewing_team, data.viewing_side);
 	str << td.villages << '/';
 	if (viewing_team.uses_shroud()) {
 		int unshrouded_villages = 0;
@@ -659,14 +659,14 @@ REPORT_GENERATOR(villages, false, data)
 
 REPORT_GENERATOR(num_units, false, data)
 {
-	return gray_inactive(data, str_cast(side_units(data.current_side)));
+	return gray_inactive(data, str_cast(side_units(data.viewing_side)));
 }
 
 REPORT_GENERATOR(upkeep, false, data)
 {
 	std::ostringstream str;
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
-	team_data td = calculate_team_data(viewing_team, data.current_side);
+	team_data td = calculate_team_data(viewing_team, data.viewing_side);
 	str << td.expenses << " (" << td.upkeep << ")";
 	return gray_inactive(data, str.str());
 }
@@ -674,7 +674,7 @@ REPORT_GENERATOR(upkeep, false, data)
 REPORT_GENERATOR(expenses, false, data)
 {
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
-	team_data td = calculate_team_data(viewing_team, data.current_side);
+	team_data td = calculate_team_data(viewing_team, data.viewing_side);
 	return gray_inactive(data, str_cast(td.expenses));
 }
 
@@ -682,9 +682,9 @@ REPORT_GENERATOR(income, false, data)
 {
 	std::ostringstream str;
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
-	team_data td = calculate_team_data(viewing_team, data.current_side);
+	team_data td = calculate_team_data(viewing_team, data.viewing_side);
 	char const *end = naps;
-	if (data.current_side != data.active_side)
+	if (data.viewing_side != data.active_side)
 		str << span_color(font::GRAY_COLOR);
 	else if (td.net_income < 0)
 		str << span_color(font::BAD_COLOR);
@@ -711,7 +711,7 @@ REPORT_GENERATOR(terrain, false, data)
 		int owner = village_owner(data.mouseover_hex, *resources::teams) + 1;
 		if (owner == 0 || viewing_team.fogged(data.mouseover_hex)) {
 			str << map.get_terrain_info(terrain).income_description();
-		} else if (owner == data.current_side) {
+		} else if (owner == data.viewing_side) {
 			str << map.get_terrain_info(terrain).income_description_own();
 		} else if (viewing_team.is_enemy(owner)) {
 			str << map.get_terrain_info(terrain).income_description_enemy();
@@ -854,7 +854,7 @@ REPORT_GENERATOR(report_countdown, false, data)
 	std::ostringstream str;
 	sec = viewing_team.countdown_time() / 1000;
 	char const *end = naps;
-	if (data.current_side != data.active_side)
+	if (data.viewing_side != data.active_side)
 		str << span_color(font::GRAY_COLOR);
 	else if (sec < 60)
 		str << "<span foreground=\"#c80000\">";

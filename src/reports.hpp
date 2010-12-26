@@ -25,7 +25,6 @@ namespace reports {
 struct report_data
 {
 	int viewing_side;
-	int current_side;
 	int active_side;
 	map_location selected_hex;
 	map_location mouseover_hex;

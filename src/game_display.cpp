@@ -433,7 +433,7 @@ void game_display::draw_report(const std::string &report_name)
 	}
 
 	reports::report_data data = {
-		viewing_team() + 1, currentTeam_ + 1, activeTeam_ + 1,
+		currentTeam_ + 1, activeTeam_ + 1,
 		selectedHex_, mouseoverHex_, displayedUnitHex_,
 		observers_, level_, !viewpoint_
 	};
