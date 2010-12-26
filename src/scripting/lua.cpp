@@ -2251,6 +2251,21 @@ static int intf_unit_ability(lua_State *L)
 }
 
 /**
+ * Changes a unit to the given unit type.
+ * - Arg 1: unit userdata.
+ * - Arg 2: string.
+ */
+static int intf_transform_unit(lua_State *L)
+{
+	unit *u = luaW_checkunit(L, 1);
+	char const *m = luaL_checkstring(L, 2);
+	const unit_type *utp = unit_types.find(m);
+	if (!utp) return luaL_argerror(L, 2, "unknown unit type");
+	u->advance_to(utp);
+	return 0;
+}
+
+/**
  * Puts a table at the top of the stack with some combat result.
  */
 static void luaW_pushsimdata(lua_State *L, const combatant &cmb)
@@ -2952,6 +2967,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "synchronize_choice",       &intf_synchronize_choice       },
 		{ "textdomain",               &intf_textdomain               },
 		{ "tovconfig",                &intf_tovconfig                },
+		{ "transform_unit",           &intf_transform_unit           },
 		{ "unit_ability",             &intf_unit_ability             },
 		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
