@@ -2239,6 +2239,7 @@ static int intf_unit_defense(lua_State *L)
 /**
  * Returns true if the unit has the given ability enabled.
  * - Arg 1: unit userdata.
+ * - Arg 2: string.
  * - Ret 1: boolean.
  */
 static int intf_unit_ability(lua_State *L)
