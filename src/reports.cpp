@@ -33,31 +33,54 @@
 #include <cassert>
 #include <ctime>
 
-namespace reports {
-
-void report::add_text(const std::string& text,
-		const std::string& tooltip, const std::string& action) {
-	this->push_back(element(text,"",tooltip,action));
+static void add_text(config &report, const std::string &text,
+	const std::string &tooltip, const std::string &help = "")
+{
+	config &element = report.add_child("element");
+	element["text"] = text;
+	if (!tooltip.empty()) element["tooltip"] = tooltip;
+	if (!help.empty()) element["help"] = help;
 }
 
-void report::add_image(const std::string& image, const std::string& tooltip,
-		const std::string& action) {
-	this->push_back(element("",image,tooltip,action));
+static void add_image(config &report, const std::string &image,
+	const std::string &tooltip, const std::string &help = "")
+{
+	config &element = report.add_child("element");
+	element["image"] = image;
+	if (!tooltip.empty()) element["tooltip"] = tooltip;
+	if (!help.empty()) element["help"] = help;
 }
 
+static config report()
+{
+	return config();
 }
 
-using reports::report;
+static config text_report(const std::string &text,
+	const std::string &tooltip = "", const std::string &help = "")
+{
+	config r;
+	add_text(r, text, tooltip, help);
+	return r;
+}
+
+static config image_report(const std::string &image,
+	const std::string &tooltip = "", const std::string &help = "")
+{
+	config r;
+	add_image(r, image, tooltip, help);
+	return r;
+}
+
 using reports::report_data;
-
 using font::span_color;
 
-static void add_status(report &r,
+static void add_status(config &r,
 	char const *path, char const *desc1, char const *desc2)
 {
 	std::ostringstream s;
 	s << gettext(desc1) << gettext(desc2);
-	r.add_image(path, s.str());
+	add_image(r, path, s.str());
 }
 
 static std::string flush(std::ostringstream &s)
@@ -69,7 +92,7 @@ static std::string flush(std::ostringstream &s)
 
 struct report_generator
 {
-	typedef report (*fun)(report_data const &);
+	typedef config (*fun)(report_data const &);
 	fun generator;
 	bool for_units;
 	report_generator(fun g, bool u): generator(g), for_units(u) {}
@@ -88,9 +111,9 @@ struct report_generator_helper
 };
 
 #define REPORT_GENERATOR(n, u, data) \
-	static report report_##n(const report_data &); \
+	static config report_##n(const report_data &); \
 	static report_generator_helper reg_gen_##n(#n, &report_##n, u); \
-	static report report_##n(const report_data &data)
+	static config report_##n(const report_data &data)
 
 static char const *naps = "</span>";
 
@@ -100,11 +123,11 @@ static unit *get_visible_unit(const report_data &data)
 		(*resources::teams)[data.viewing_side - 1], data.show_everything);
 }
 
-static report gray_inactive(const report_data &data, const std::string &str)
+static config gray_inactive(const report_data &data, const std::string &str)
 {
 	if (data.current_side == data.active_side)
-		return report(str);
-	return report(span_color(font::GRAY_COLOR) + str + naps);
+		return text_report(str);
+	return text_report(span_color(font::GRAY_COLOR) + str + naps);
 }
 
 REPORT_GENERATOR(unit_name, true, data)
@@ -114,7 +137,7 @@ REPORT_GENERATOR(unit_name, true, data)
 	std::ostringstream str, tooltip;
 	str << "<b>" << u->name() << "</b>";
 	tooltip << _("Name: ") << "<b>" << u->name() << "</b>";
-	return report(str.str(), "", tooltip.str());
+	return text_report(str.str(), tooltip.str());
 }
 
 REPORT_GENERATOR(unit_type, true, data)
@@ -125,7 +148,7 @@ REPORT_GENERATOR(unit_type, true, data)
 	str << span_color(font::unit_type_color) << u->type_name() << naps;
 	tooltip << _("Type: ") << "<b>" << u->type_name() << "</b>\n"
 		<< u->unit_description();
-	return report(str.str(), "", tooltip.str(), "unit_" + u->type_id());
+	return text_report(str.str(), tooltip.str(), "unit_" + u->type_id());
 }
 
 REPORT_GENERATOR(unit_race, true, data)
@@ -135,7 +158,7 @@ REPORT_GENERATOR(unit_race, true, data)
 	std::ostringstream str, tooltip;
 	str << span_color(font::race_color) << u->race()->name(u->gender()) << naps;
 	tooltip << _("Race: ") << "<b>" << u->race()->name(u->gender()) << "</b>";
-	return report(str.str(), "", tooltip.str(), "..race_" + u->race()->id());
+	return text_report(str.str(), tooltip.str(), "..race_" + u->race()->id());
 }
 
 REPORT_GENERATOR(unit_side, true, data)
@@ -149,8 +172,7 @@ REPORT_GENERATOR(unit_side, true, data)
 	std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 	if (flag_icon.empty())
 		flag_icon = game_config::images::flag_icon;
-	image::locator flag_icon_img(flag_icon, mods);
-	return report("", flag_icon_img, u_team.current_player());
+	return image_report(flag_icon + mods, u_team.current_player());
 }
 
 REPORT_GENERATOR(unit_level, true, data)
@@ -166,17 +188,17 @@ REPORT_GENERATOR(unit_level, true, data)
 	else
 		tooltip << _("Advances to:") << "\n<b>\t"
 			<< utils::join(adv_to, "\n\t") << "</b>";
-	return report(str.str(), "", tooltip.str());
+	return text_report(str.str(), tooltip.str());
 }
 
 REPORT_GENERATOR(unit_amla, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
-	report res;
+	config res;
 	typedef std::pair<std::string, std::string> pair_string;
 	foreach(const pair_string &ps, u->amla_icons()) {
-		res.add_image(ps.first,ps.second);
+		add_image(res, ps.first, ps.second);
 	}
 	return res;
 }
@@ -185,7 +207,7 @@ REPORT_GENERATOR(unit_traits, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
-	report res;
+	config res;
 	const std::vector<t_string> &traits = u->trait_names();
 	const std::vector<t_string> &descriptions = u->trait_descriptions();
 	unsigned nb = traits.size();
@@ -196,7 +218,7 @@ REPORT_GENERATOR(unit_traits, true, data)
 		if (i != nb - 1 ) str << ", ";
 		tooltip << _("Trait: ") << "<b>" << traits[i] << "</b>\n"
 			<< descriptions[i];
-		res.add_text(str.str(), tooltip.str());
+		add_text(res, str.str(), tooltip.str());
 	}
 	return res;
 }
@@ -205,7 +227,7 @@ REPORT_GENERATOR(unit_status, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
-	report res;
+	config res;
 	if (resources::game_map->on_board(data.displayed_unit_hex) &&
 	    u->invisible(data.displayed_unit_hex))
 	{
@@ -238,14 +260,14 @@ REPORT_GENERATOR(unit_alignment, true, data)
 	str << align << " (" << utils::signed_percent(cm) << ")";
 	tooltip << _("Alignment: ") << "<b>" << align << "</b>\n"
 		<< string_table[align_id + "_description"];
-	return report(str.str(), "", tooltip.str(), "time_of_day");
+	return text_report(str.str(), tooltip.str(), "time_of_day");
 }
 
 REPORT_GENERATOR(unit_abilities, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
-	report res;
+	config res;
 	const std::vector<std::string> &abilities = u->ability_tooltips();
 	for (std::vector<std::string>::const_iterator i = abilities.begin(),
 	     i_end = abilities.end(); i != i_end; ++i)
@@ -256,7 +278,7 @@ REPORT_GENERATOR(unit_abilities, true, data)
 		if (i + 2 != i_end) str << ", ";
 		++i;
 		tooltip << _("Ability: ") << *i;
-		res.add_text(str.str(), tooltip.str(), "ability_" + name);
+		add_text(res, str.str(), tooltip.str(), "ability_" + name);
 	}
 	return res;
 }
@@ -296,7 +318,7 @@ REPORT_GENERATOR(unit_hp, true, data)
 	foreach (const std::string &line, resistances_table) {
 		tooltip << line;
 	}
-	return report(str.str(), "", tooltip.str());
+	return text_report(str.str(), tooltip.str());
 }
 
 REPORT_GENERATOR(unit_xp, true, data)
@@ -309,17 +331,17 @@ REPORT_GENERATOR(unit_xp, true, data)
 
 	std::string exp_mod = data.level["experience_modifier"].str();
 	tooltip << _("Experience Modifier: ") << (!exp_mod.empty() ? exp_mod : "100") << '%';
-	return report(str.str(), "", tooltip.str());
+	return text_report(str.str(), tooltip.str());
 }
 
 REPORT_GENERATOR(unit_advancement_options, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
-	report res;
+	config res;
 	typedef std::pair<std::string, std::string> pair_string;
 	foreach (const pair_string &ps, u->advancement_icons()) {
-		res.add_image(ps.first,ps.second);
+		add_image(res, ps.first, ps.second);
 	}
 	return res;
 }
@@ -358,7 +380,7 @@ REPORT_GENERATOR(unit_defense, true, data)
 	}
 
 	tooltip << "<b>" << _("Defense: ") << span_color(color)  << def << "%</span></b>";
-	return report(str.str(), "", tooltip.str());
+	return text_report(str.str(), tooltip.str());
 }
 
 REPORT_GENERATOR(unit_moves, true, data)
@@ -376,7 +398,7 @@ REPORT_GENERATOR(unit_moves, true, data)
 	int grey = 128 + int((255 - 128) * movement_frac);
 	SDL_Color c = create_color(grey, grey, grey);
 	str << span_color(c) << u->movement_left() << '/' << u->total_movement() << naps;
-	return report(str.str());
+	return text_report(str.str());
 }
 
 REPORT_GENERATOR(unit_weapons, true, data)
@@ -384,7 +406,7 @@ REPORT_GENERATOR(unit_weapons, true, data)
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
 	std::ostringstream str, tooltip;
-	report res;
+	config res;
 
 	foreach (const attack_type &at, u->attacks())
 	{
@@ -451,7 +473,7 @@ REPORT_GENERATOR(unit_weapons, true, data)
 			tooltip << '\t' << _("Swarm: ") << "* "<< hp_ratio << "%\n";
 		}
 
-		res.add_text(flush(str), flush(tooltip));
+		add_text(res, flush(str), flush(tooltip));
 
 		std::string range = gettext(at.range().c_str());
 		std::string lang_type = gettext(at.type().c_str());
@@ -497,7 +519,7 @@ REPORT_GENERATOR(unit_weapons, true, data)
 				<< "<i>(" << utils::signed_percent(resist.first-100) << ")</i> : "
 				<< utils::join(resist.second, ", ") << '\n';
 		}
-		res.add_text(flush(str), flush(tooltip));
+		add_text(res, flush(str), flush(tooltip));
 
 		const std::string &accuracy_parry = at.accuracy_parry_description();
 		if (!accuracy_parry.empty())
@@ -514,7 +536,7 @@ REPORT_GENERATOR(unit_weapons, true, data)
 				tooltip << _("Parry:") << "<b>"
 					<< utils::signed_percent(parry) << "</b>\n";
 				}
-			res.add_text(flush(str), flush(tooltip));
+			add_text(res, flush(str), flush(tooltip));
 		}
 
 		const std::vector<t_string> &specials = at.special_tooltips();
@@ -529,7 +551,7 @@ REPORT_GENERATOR(unit_weapons, true, data)
 				++sp_it;
 				//FIXME pull out special's name from description
 				tooltip << _("Weapon special: ") << *sp_it << '\n';
-				res.add_text(flush(str), flush(tooltip), help_page);
+				add_text(res, flush(str), flush(tooltip), help_page);
 			}
 		}
 	}
@@ -540,14 +562,14 @@ REPORT_GENERATOR(unit_image, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
-	return report("", image::locator(u->absolute_image(), u->image_mods()), "");
+	return image_report(u->absolute_image() + u->image_mods());
 }
 
 REPORT_GENERATOR(unit_profile, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
-	return report("", u->small_profile(), "");
+	return image_report(u->small_profile());
 }
 
 REPORT_GENERATOR(time_of_day, false, data)
@@ -579,7 +601,7 @@ REPORT_GENERATOR(time_of_day, false, data)
 	else if (tod.lawful_bonus_modified < 0) tod_image += "~DARKEN()";
 	if (preferences::flip_time()) tod_image += "~FL(horiz)";
 
-	return report("", tod_image, tooltip.str(), "time_of_day");
+	return image_report(tod_image, tooltip.str(), "time_of_day");
 }
 
 REPORT_GENERATOR(turn, false, /*data*/)
@@ -588,7 +610,7 @@ REPORT_GENERATOR(turn, false, /*data*/)
 	str << resources::tod_manager->turn();
 	int nb = resources::tod_manager->number_of_turns();
 	if (nb != -1) str << '/' << nb;
-	return report(str.str());
+	return text_report(str.str());
 }
 
 REPORT_GENERATOR(gold, false, data)
@@ -605,7 +627,7 @@ REPORT_GENERATOR(gold, false, data)
 	else
 		end = "";
 	str << fake_gold << end;
-	return report(str.str());
+	return text_report(str.str());
 }
 
 REPORT_GENERATOR(villages, false, data)
@@ -661,7 +683,7 @@ REPORT_GENERATOR(income, false, data)
 	else
 		end = "";
 	str << td.net_income << end;
-	return report(str.str());
+	return text_report(str.str());
 }
 
 REPORT_GENERATOR(terrain, false, data)
@@ -707,7 +729,7 @@ REPORT_GENERATOR(terrain, false, data)
 		}
 		str << ')';
 	}
-	return report(str.str());
+	return text_report(str.str());
 }
 
 REPORT_GENERATOR(position, false, data)
@@ -728,7 +750,7 @@ REPORT_GENERATOR(position, false, data)
 	    (data.displayed_unit_hex != data.mouseover_hex &&
 	     data.displayed_unit_hex != data.selected_hex) ||
 	    viewing_team.shrouded(data.mouseover_hex))
-		return report(str.str());
+		return text_report(str.str());
 
 	int move_cost = u->movement_cost(terrain);
 	int defense = 100 - u->defense_modifier(terrain);
@@ -739,7 +761,7 @@ REPORT_GENERATOR(position, false, data)
 	} else {
 		str << " (-)";
 	}
-	return report(str.str());
+	return text_report(str.str());
 }
 
 REPORT_GENERATOR(side_playing, false, data)
@@ -751,8 +773,7 @@ REPORT_GENERATOR(side_playing, false, data)
 	std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 	if (flag_icon.empty())
 		flag_icon = game_config::images::flag_icon;
-	image::locator flag_icon_img(flag_icon, mods);
-	return report("", flag_icon_img, active_team.current_player());
+	return image_report(flag_icon + mods, active_team.current_player());
 }
 
 REPORT_GENERATOR(observers, false, data)
@@ -765,7 +786,7 @@ REPORT_GENERATOR(observers, false, data)
 	foreach (const std::string &obs, data.observers) {
 		str << obs << '\n';
 	}
-	return report("", game_config::images::observer, str.str());
+	return image_report(game_config::images::observer, str.str());
 }
 
 #ifdef DISABLE_EDITOR
@@ -788,7 +809,7 @@ REPORT_GENERATOR(selected_terrain, false, /*data*/)
 	if (editor::selected_terrain.empty())
 		return report();
 	else
-		return report(editor::selected_terrain);
+		return text_report(editor::selected_terrain);
 }
 
 REPORT_GENERATOR(edit_left_button_function, false, /*data*/)
@@ -796,7 +817,7 @@ REPORT_GENERATOR(edit_left_button_function, false, /*data*/)
 	if (editor::left_button_function.empty())
 		return report();
 	else
-		return report(editor::left_button_function);
+		return text_report(editor::left_button_function);
 }
 #endif
 
@@ -813,7 +834,7 @@ REPORT_GENERATOR(report_clock, false, /*data*/)
 	char temp[10];
 	size_t s = std::strftime(temp, 10, preferences::clock_format().c_str(), lt);
 	if (!s) return report();
-	return report(temp);
+	return text_report(temp);
 }
 
 REPORT_GENERATOR(report_countdown, false, data)
@@ -838,10 +859,10 @@ REPORT_GENERATOR(report_countdown, false, data)
 	sec = sec % 60;
 	if (sec < 10) str << '0';
 	str << sec << end;
-	return report(str.str());
+	return text_report(str.str());
 }
 
-report reports::generate_report(const std::string &name, const report_data &data)
+config reports::generate_report(const std::string &name, const report_data &data)
 {
 	report_generators::const_iterator i = static_generators.find(name);
 	if (i == static_generators.end()) return report();

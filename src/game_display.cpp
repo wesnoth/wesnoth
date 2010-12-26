@@ -438,8 +438,7 @@ void game_display::draw_report(const std::string &report_name)
 		observers_, level_, !viewpoint_
 	};
 
-	reports::report report = reports::generate_report(report_name, data);
-	refresh_report(report_name, report);
+	refresh_report(report_name, reports::generate_report(report_name, data));
 }
 
 void game_display::draw_sidebar()

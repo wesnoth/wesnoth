@@ -2218,7 +2218,7 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 	}
 }
 
-void display::refresh_report(std::string const &report_name, reports::report report)
+void display::refresh_report(std::string const &report_name, const config &_report)
 {
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
@@ -2229,13 +2229,14 @@ void display::refresh_report(std::string const &report_name, reports::report rep
 	SDL_Rect &rect = reportRects_[report_name];
 	const SDL_Rect &new_rect = item->location(screen_area());
 	surface &surf = reportSurfaces_[report_name];
+	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.
-	if (surf && rect == new_rect && reports_[report_name] == report) {
+	if (surf && rect == new_rect && report == _report) {
 		return;
 	}
 
-	reports_[report_name] = report;
+	report = _report;
 
 	if (surf) {
 		sdl_blit(surf, NULL, screen_.getSurface(), &rect);
@@ -2272,11 +2273,15 @@ void display::refresh_report(std::string const &report_name, reports::report rep
 	// as the guys around them.
 	std::string str = item->prefix();
 	if (!str.empty()) {
-		report.insert(report.begin(), reports::element(str, "", report.begin()->tooltip));
+		config &e = report.add_child_at("element", config(), 0);
+		e["text"] = str;
+		e["tooltip"] = report.child("element")["tooltip"];
 	}
 	str = item->postfix();
 	if (!str.empty()) {
-		report.push_back(reports::element(str, "", report.back().tooltip));
+		config &e = report.add_child("element");
+		e["text"] = str;
+		e["tooltip"] = report.child("element", -1)["tooltip"];
 	}
 
 	// Loop through and display each report element.
@@ -2286,13 +2291,14 @@ void display::refresh_report(std::string const &report_name, reports::report rep
 	std::ostringstream ellipsis_tooltip;
 	SDL_Rect ellipsis_area = rect;
 
-	reports::report::iterator e = report.begin();
-	for(; e != report.end(); ++e)
+	for (config::const_child_itors elements = report.child_range("element");
+	     elements.first != elements.second; ++elements.first)
 	{
 		SDL_Rect area = create_rect(x, y, rect.w + rect.x - x, rect.h + rect.y - y);
 		if (area.h <= 0) break;
 
-		if (!e->text.empty())
+		std::string t = (*elements.first)["text"];
+		if (!t.empty())
 		{
 			if (used_ellipsis) goto skip_element;
 
@@ -2301,7 +2307,6 @@ void display::refresh_report(std::string const &report_name, reports::report rep
 			if (item->font_rgb_set()) {
 				text.set_foreground_color(item->font_rgb());
 			}
-			std::string t = e->text;
 			bool eol = false;
 			if (t[t.size() - 1] == '\n') {
 				eol = true;
@@ -2315,8 +2320,9 @@ void display::refresh_report(std::string const &report_name, reports::report rep
 
 			// check if next element is text with almost no space to show it
 			const int minimal_text = 12; // width in pixels
-			if(!eol && rect.w - (x - rect.x + s->w) < minimal_text
-				 && e+1 != report.end() && !(e+1)->text.empty())
+			config::const_child_iterator ee = elements.first;
+			if (!eol && rect.w - (x - rect.x + s->w) < minimal_text &&
+			    ++ee != elements.second && !(*ee)["text"].empty())
 			{
 				// make this element longer to trigger rendering of ellipsis
 				// (to indicate that next elements have not enough space)
@@ -2346,15 +2352,15 @@ void display::refresh_report(std::string const &report_name, reports::report rep
 				x += area.w;
 			}
 		}
-		else if (!e->image.get_filename().empty())
+		else if (!(t = (*elements.first)["image"].str()).empty())
 		{
 			if (used_ellipsis) goto skip_element;
 
 			// Draw an image element.
-			surface img(image::get_image(e->image));
+			surface img(image::get_image(t));
 
 			if (!img) {
-				ERR_DP << "could not find image for report: '" << e->image.get_filename() << "'\n";
+				ERR_DP << "could not find image for report: '" << t << "'\n";
 				continue;
 			}
 
@@ -2386,15 +2392,17 @@ void display::refresh_report(std::string const &report_name, reports::report rep
 		}
 
 		skip_element:
-		if (!e->tooltip.empty()) {
+		t = (*elements.first)["tooltip"].str();
+		if (!t.empty()) {
 			if (!used_ellipsis) {
-				tooltips::add_tooltip(area, e->tooltip, e->action);
+				tooltips::add_tooltip(area, t, (*elements.first)["help"]);
 			} else {
 				// Collect all tooltips for the ellipsis.
 				// TODO: need a better separator
 				// TODO: assign an action
-				ellipsis_tooltip << e->tooltip;
-				if(e+1 != report.end())
+				ellipsis_tooltip << t;
+				config::const_child_iterator ee = elements.first;
+				if (++ee != elements.second)
 					ellipsis_tooltip << "\n  _________\n\n";
 			}
 		}

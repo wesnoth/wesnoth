@@ -16,64 +16,11 @@
 #ifndef REPORTS_HPP_INCLUDED
 #define REPORTS_HPP_INCLUDED
 
-#include "image.hpp"
-
-class team;
+#include "map_location.hpp"
 
 //this module is responsible for outputting textual reports of
 //various game and unit statistics
 namespace reports {
-	struct element {
-		explicit element(const std::string& text) :
-				image(),
-				text(text),
-				tooltip(),
-				action()
-				{}
-
-		// Invariant: either text or image should be empty
-		// It would be okay to create a class for this, but it's a pretty simple
-		// invariant so I left it like the original report class.
-		image::locator image;
-		std::string text;
-
-		std::string tooltip;
-		std::string action;
-		element(const std::string& text, const std::string& image,
-				const std::string& tooltip, const std::string& action="") :
-			image(image), text(text), tooltip(tooltip), action(action) {}
-
-		element(const std::string& text, const image::locator& image,
-				const std::string& tooltip,	const std::string& action="") :
-			image(image), text(text), tooltip(tooltip), action(action) {}
-		element(const std::string& text, const char* image,
-				const std::string& tooltip, const std::string& action="") :
-			image(image), text(text), tooltip(tooltip), action(action) {}
-
-		bool operator==(const element& o) const {
-			return o.text == text && o.image == image && o.tooltip == tooltip && o.action == action;
-		}
-		bool operator!=(const element& o) const { return !(o == *this); }
-	};
-	struct report : public std::vector<element> {
-		report() {}
-		explicit report(const std::string& text) { this->push_back(element(text)); }
-		report(const std::string& text, const std::string& image, const std::string& tooltip, const std::string& action="") {
-			this->push_back(element(text, image, tooltip, action));
-		}
-		report(const std::string& text, const char* image, const std::string& tooltip, const std::string& action="") {
-			this->push_back(element(text, image, tooltip, action));
-		}
-		report(const std::string& text, const image::locator& image, const std::string& tooltip, const std::string& action="") {
-			this->push_back(element(text, image, tooltip, action));
-		}
-
-		// Convenience functions
-		void add_text(const std::string& text,
-				const std::string& tooltip, const std::string& action="");
-		void add_image(const std::string& image,
-				const std::string& tooltip, const std::string& action="");
-	};
 
 struct report_data
 {
@@ -88,7 +35,7 @@ struct report_data
 	bool show_everything;
 };
 
-report generate_report(const std::string &name, const report_data &data);
+config generate_report(const std::string &name, const report_data &data);
 
 const std::set<std::string> &report_list(bool for_units);
 }

@@ -97,13 +97,19 @@ const SDL_Rect& editor_display::get_clip_rect()
 
 void editor_display::draw_sidebar()
 {
+	config element;
+	config::attribute_value &text = element["text"];
 	// Fill in the terrain report
-	if(get_map().on_board_with_border(mouseoverHex_)) {
-		refresh_report("terrain", reports::report(get_map().get_terrain_editor_string(mouseoverHex_)));
-		refresh_report("position", reports::report(str_cast(mouseoverHex_)));
+	if (get_map().on_board_with_border(mouseoverHex_)) {
+		text = get_map().get_terrain_editor_string(mouseoverHex_);
+		refresh_report("terrain", element);
+		text = str_cast(mouseoverHex_);
+		refresh_report("position", element);
 	}
-	refresh_report("villages", reports::report(str_cast(get_map().villages().size())));
-	refresh_report("editor_tool_hint", reports::report(toolbar_hint_));
+	text = int(get_map().villages().size());
+	refresh_report("villages", element);
+	text = toolbar_hint_;
+	refresh_report("editor_tool_hint", element);
 }
 
 } //end namespace editor
