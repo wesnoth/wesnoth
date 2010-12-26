@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-12-22 12:37+0100\n"
-"PO-Revision-Date: 2010-04-25 20:57+0100\n"
+"PO-Revision-Date: 2010-12-25 23:05+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -27,7 +27,6 @@ msgstr "Hlboká voda"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:28
-#, fuzzy
 msgid "Deep Water"
 msgstr "Hlboká voda"
 
@@ -41,7 +40,7 @@ msgstr "Hlboká voda"
 #: data/core/terrain.cfg:38
 #, fuzzy
 msgid "Tropical Deep Water"
-msgstr "Tropický les"
+msgstr "Hlboká voda"
 
 #. [terrain_type]: id=gray_tropical_water
 #: data/core/terrain.cfg:48
@@ -198,9 +197,8 @@ msgstr ""
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:325
-#, fuzzy
 msgid "Small Mushrooms"
-msgstr "Hubový porast"
+msgstr ""
 
 #. [terrain_type]: id=mushrooms_farm
 #: data/core/terrain.cfg:334
@@ -216,9 +214,8 @@ msgstr "Púštne hory"
 
 #. [terrain_type]: id=desert_plants_sans_bones
 #: data/core/terrain.cfg:352
-#, fuzzy
 msgid "Desert Plants without Bones"
-msgstr "Púštne hory"
+msgstr ""
 
 #. [terrain_type]: id=windmill
 #: data/core/terrain.cfg:361
@@ -282,9 +279,8 @@ msgstr "Letný zmiešaný les"
 
 #. [terrain_type]: id=mixed_forest_fall
 #: data/core/terrain.cfg:475
-#, fuzzy
 msgid "Fall Mixed Forest"
-msgstr "Zasnežený zmiešaný les"
+msgstr "Jesenný zmiešaný les"
 
 #. [terrain_type]: id=mixed_forest_winter
 #: data/core/terrain.cfg:485
@@ -303,9 +299,8 @@ msgstr "Kopce"
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:511
-#, fuzzy
 msgid "Regular Hills"
-msgstr "Kopce"
+msgstr ""
 
 #. [terrain_type]: id=hills_dry
 #: data/core/terrain.cfg:519
@@ -332,7 +327,7 @@ msgstr "Hory"
 #: data/core/terrain.cfg:560
 #, fuzzy
 msgid "Dry Mountains"
-msgstr "Hory"
+msgstr "Púštne hory"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:569
@@ -470,13 +465,15 @@ msgstr ""
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:918
+#, fuzzy
 msgid "Regular Chasm"
-msgstr ""
+msgstr "Trhlina s lávou"
 
 #. [terrain_type]: id=chasm_earthy
 #: data/core/terrain.cfg:928
+#, fuzzy
 msgid "Earthy Chasm"
-msgstr ""
+msgstr "Trhlina s lávou"
 
 #. [terrain_type]: id=abyss
 #: data/core/terrain.cfg:938
@@ -502,19 +499,19 @@ msgstr ""
 #: data/core/terrain.cfg:983
 #, fuzzy
 msgid "Regular Impassable Mountains"
-msgstr "Neprekročiteľné hory"
+msgstr "Neprekonateľné hory"
 
 #. [terrain_type]: id=clouddesert
 #: data/core/terrain.cfg:992
 #, fuzzy
 msgid "Desert Impassable Mountains"
-msgstr "Neprekročiteľné hory"
+msgstr "Neprekonateľné hory"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1001
 #, fuzzy
 msgid "Snowy Impassable Mountains"
-msgstr "Neprekročiteľné hory"
+msgstr "Neprekonateľné hory"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1011
@@ -553,7 +550,7 @@ msgstr ""
 #: data/core/terrain.cfg:1071
 #, fuzzy
 msgid "Impassable Overlay"
-msgstr "Neprekročiteľné"
+msgstr "Neprekonateľné"
 
 #. [terrain_type]: id=void
 #: data/core/terrain.cfg:1082
@@ -614,25 +611,22 @@ msgstr "Zasnežené hory"
 #: data/core/terrain.cfg:1211
 #, fuzzy
 msgid "Ruined Cottage"
-msgstr "Zasnežené hory"
+msgstr "Ruiny hradnej pevnosti"
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1223
-#, fuzzy
 msgid "Human City"
-msgstr "Hrad"
+msgstr ""
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1235
-#, fuzzy
 msgid "Snowy Human City"
-msgstr "Zasnežené hory"
+msgstr ""
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1247
-#, fuzzy
 msgid "Ruined Human City"
-msgstr "Ruiny hradnej pevnosti"
+msgstr ""
 
 #. [terrain_type]: id=hill_village
 #: data/core/terrain.cfg:1259
@@ -646,9 +640,8 @@ msgstr ""
 
 #. [terrain_type]: id=hill_village_ruin
 #: data/core/terrain.cfg:1283
-#, fuzzy
 msgid "Ruined Hill Stone Village"
-msgstr "Dedina"
+msgstr ""
 
 #. [terrain_type]: id=tropical_forest_village
 #: data/core/terrain.cfg:1295
@@ -730,7 +723,7 @@ msgstr "Dedina"
 #: data/core/terrain.cfg:1434
 #, fuzzy
 msgid "Village Overlay"
-msgstr "Hradná pevnosť"
+msgstr "Zlato za dedinu"
 
 #. [terrain_type]: id=encampment
 #: data/core/terrain.cfg:1449
@@ -806,7 +799,7 @@ msgstr "Ruina v močiari"
 #: data/core/terrain.cfg:1571
 #, fuzzy
 msgid "Desert Castle"
-msgstr "Púštne hory"
+msgstr "Hrad"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:1586
@@ -842,25 +835,25 @@ msgstr "Pevnosť"
 #: data/core/terrain.cfg:1635
 #, fuzzy
 msgid "Human Castle Keep"
-msgstr "Hrad"
+msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:1647
 #, fuzzy
 msgid "Snowy Human Castle Keep"
-msgstr "Zasnežené hory"
+msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:1659
 #, fuzzy
 msgid "Elven Castle Keep"
-msgstr "Hradná pevnosť"
+msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:1671
 #, fuzzy
 msgid "Dwarven Castle Keep"
-msgstr "Hradná pevnosť"
+msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1683
@@ -878,7 +871,7 @@ msgstr "Zatopená hradná pevnosť"
 #: data/core/terrain.cfg:1696
 #, fuzzy
 msgid "Sunken Human Castle Keep"
-msgstr "Ruiny hradnej pevnosti"
+msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1708
@@ -890,7 +883,7 @@ msgstr "Močiar"
 #: data/core/terrain.cfg:1709
 #, fuzzy
 msgid "Swamp Human Castle Keep"
-msgstr "Hradná pevnosť"
+msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:1722
@@ -929,9 +922,8 @@ msgstr ""
 #. [terrain_type]: id=bridgechasmdiag2
 #: data/core/terrain.cfg:1835 data/core/terrain.cfg:1845
 #: data/core/terrain.cfg:1856
-#, fuzzy
 msgid "Cave Chasm Bridge"
-msgstr "Most"
+msgstr ""
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:1872
@@ -967,7 +959,7 @@ msgstr "Zamrznuté"
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:1987
 msgid "Impassable"
-msgstr "Neprekročiteľné"
+msgstr "Neprekonateľné"
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:1994
@@ -3534,61 +3526,8 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekcii '[$section|]' nie je nastavený povinný kĺúč '$key|'."
 
-#~ msgid "Generate name"
-#~ msgstr "Generuj meno"
-
-#~ msgid "Screenshot failed"
-#~ msgstr "Snímanie obrazovky zlyhalo"
-
-#~ msgid "Mushroom Grove Lit"
-#~ msgstr "Hubový porast osvetlený"
-
-#, fuzzy
-#~ msgid "Impassable Regular Mountains"
-#~ msgstr "Neprekročiteľné púštne hory"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "Neprekročiteľné púštne hory"
-
-#, fuzzy
-#~ msgid "Castle Human Keep"
-#~ msgstr "Hradná pevnosť"
-
-#, fuzzy
-#~ msgid "Snowy Castle Keep"
-#~ msgstr "Hradná pevnosť"
-
-#, fuzzy
-#~ msgid "Deep Water Medium"
-#~ msgstr "Hlboká voda"
-
-#, fuzzy
-#~ msgid "Deep Water Tropical"
-#~ msgstr "Hlboká voda"
-
-#~ msgid "Snow Forest"
-#~ msgstr "Zasnežený les"
-
-#~ msgid "User-Command#2"
-#~ msgstr "Vlastný príkaz#2"
-
-#~ msgid "User-Command#3"
-#~ msgstr "Vlastný príkaz#3"
-
-#~ msgid "Chasm"
-#~ msgstr "Trhlina"
-
-#~ msgid "Wall"
-#~ msgstr "Stena"
-
 #~ msgid "None"
 #~ msgstr "Nič"
-
-#~ msgid "Could not get image for terrain: $terrain."
-#~ msgstr "Nepodarilo sa získať obrázok pre terén: $terrain."
-
-#~ msgid "Error creating or aquiring an image."
-#~ msgstr "Chyba pri vytváraní alebo získavaní obrázka."
 
 #~ msgid "Fort"
 #~ msgstr "Opevnenie"
@@ -3599,17 +3538,35 @@ msgstr "V sekcii '[$section|]' nie je nastavený povinný kĺúč '$key|'."
 #~ msgid "Elven Keep"
 #~ msgstr "Elfská pevnosť"
 
+#~ msgid "Snow Forest"
+#~ msgstr "Zasnežený les"
+
 #~ msgid "Grassland"
 #~ msgstr "Lúka"
 
 #~ msgid "Savanna"
 #~ msgstr "Savana"
 
+#~ msgid "Chasm"
+#~ msgstr "Trhlina"
+
 #~ msgid "Road"
 #~ msgstr "Cesta"
 
+#~ msgid "Mushroom Grove Lit"
+#~ msgstr "Hubový porast osvetlený"
+
 #~ msgid "River Ford"
 #~ msgstr "Riečny brod"
+
+#~ msgid "Impassable Desert Mountains"
+#~ msgstr "Neprekonateľné púštne hory"
+
+#~ msgid "Wall"
+#~ msgstr "Stena"
+
+#~ msgid "Generate name"
+#~ msgstr "Generuj meno"
 
 #~ msgid ""
 #~ "mouseover^Use new lobby interface (only works after a manual reconnect to "
@@ -3619,6 +3576,21 @@ msgstr "V sekcii '[$section|]' nie je nastavený povinný kĺúč '$key|'."
 
 #~ msgid "Window not defined."
 #~ msgstr "Nie je definované okno."
+
+#~ msgid "User-Command#2"
+#~ msgstr "Vlastný príkaz#2"
+
+#~ msgid "User-Command#3"
+#~ msgstr "Vlastný príkaz#3"
+
+#~ msgid "Screenshot failed"
+#~ msgstr "Snímanie obrazovky zlyhalo"
+
+#~ msgid "Could not get image for terrain: $terrain."
+#~ msgstr "Nepodarilo sa získať obrázok pre terén: $terrain."
+
+#~ msgid "Error creating or aquiring an image."
+#~ msgstr "Chyba pri vytváraní alebo získavaní obrázka."
 
 #~ msgid "Save The Map"
 #~ msgstr "Ulož mapu"
