@@ -130,7 +130,7 @@ public:
 	/** Draws the movement info (turns available) for a given location. */
 	void draw_movement_info(const map_location& loc);
 
-	void draw_report(reports::TYPE report_num);
+	void draw_report(const std::string &report_name);
 
 	/** Function to invalidate that unit status displayed on the sidebar. */
 	void invalidate_unit() { invalidateUnit_ = true; }
@@ -313,7 +313,6 @@ private:
 	void operator=(const game_display&);
 
 	void draw_sidebar();
-	void draw_game_status();
 
 	// This surface must be freed by the caller
 	surface get_flag(const map_location& loc);

@@ -264,7 +264,7 @@ public:
 	void create_buttons();
 	void invalidate_theme() { panelsDrawn_ = false; }
 
-	void refresh_report(reports::TYPE report_num, reports::report report);
+	void refresh_report(std::string const &report_name, reports::report report);
 
 	// Will be overridden in the display subclass
 	virtual void draw_minimap_units() {};
@@ -576,9 +576,9 @@ protected:
 	int nextDraw_;
 
 	// Not set by the initializer:
-	SDL_Rect reportRects_[reports::NUM_REPORTS];
-	surface reportSurfaces_[reports::NUM_REPORTS];
-	reports::report reports_[reports::NUM_REPORTS];
+	std::map<std::string, SDL_Rect> reportRects_;
+	std::map<std::string, surface> reportSurfaces_;
+	std::map<std::string, reports::report> reports_;
 	std::vector<gui::button> buttons_;
 	std::set<map_location> invalidated_;
 	std::set<map_location> previous_invalidated_;

@@ -129,8 +129,6 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 
 	set_idle_anim_rate(preferences::idle_anim_rate());
 
-	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
-
 	image::set_zoom(zoom_);
 }
 
@@ -1929,11 +1927,9 @@ void display::redraw_everything()
 
 	invalidateGameStatus_ = true;
 
-	for(size_t n = 0; n != reports::NUM_REPORTS; ++n) {
-		reportRects_[n] = empty_rect;
-		reportSurfaces_[n].assign(NULL);
-		reports_[n] = reports::report();
-	}
+	reportRects_.clear();
+	reportSurfaces_.clear();
+	reports_.clear();
 
 	bounds_check_position();
 
@@ -2222,25 +2218,24 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 	}
 }
 
-void display::refresh_report(reports::TYPE report_num, reports::report report)
+void display::refresh_report(std::string const &report_name, reports::report report)
 {
-	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
+	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
-		reportSurfaces_[report_num].assign(NULL);
+		reportSurfaces_[report_name].assign(NULL);
 		return;
 	}
 
-	SDL_Rect &rect = reportRects_[report_num];
+	SDL_Rect &rect = reportRects_[report_name];
 	const SDL_Rect &new_rect = item->location(screen_area());
+	surface &surf = reportSurfaces_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.
-	if (rect == new_rect && reports_[report_num] == report) {
+	if (surf && rect == new_rect && reports_[report_name] == report) {
 		return;
 	}
 
-	reports_[report_num] = report;
-
-	surface &surf = reportSurfaces_[report_num];
+	reports_[report_name] = report;
 
 	if (surf) {
 		sdl_blit(surf, NULL, screen_.getSurface(), &rect);
@@ -2248,7 +2243,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 	}
 
 	// If the rectangle has just changed, assign the surface to it
-	if (new_rect != rect || !surf)
+	if (!surf || new_rect != rect)
 	{
 		surf.assign(NULL);
 		rect = new_rect;
@@ -2259,7 +2254,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 		// unless they are transperant, but that is done later).
 		if (rect.w > 0 && rect.h > 0) {
 			surf.assign(get_surface_portion(screen_.getSurface(), rect));
-			if (reportSurfaces_[report_num] == NULL) {
+			if (reportSurfaces_[report_name] == NULL) {
 				ERR_DP << "Could not backup background for report!\n";
 			}
 		}

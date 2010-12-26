@@ -99,11 +99,11 @@ void editor_display::draw_sidebar()
 {
 	// Fill in the terrain report
 	if(get_map().on_board_with_border(mouseoverHex_)) {
-		refresh_report(reports::TERRAIN, reports::report(get_map().get_terrain_editor_string(mouseoverHex_)));
-		refresh_report(reports::POSITION, reports::report(lexical_cast<std::string>(mouseoverHex_)));
+		refresh_report("terrain", reports::report(get_map().get_terrain_editor_string(mouseoverHex_)));
+		refresh_report("position", reports::report(str_cast(mouseoverHex_)));
 	}
-	refresh_report(reports::VILLAGES, reports::report(lexical_cast<std::string>(get_map().villages().size())));
-	refresh_report(reports::EDITOR_TOOL_HINT, reports::report(toolbar_hint_));
+	refresh_report("villages", reports::report(str_cast(get_map().villages().size())));
+	refresh_report("editor_tool_hint", reports::report(toolbar_hint_));
 }
 
 } //end namespace editor

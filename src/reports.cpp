@@ -33,29 +33,7 @@
 #include <cassert>
 #include <ctime>
 
-namespace {
-	const std::string report_names[] = {
-		"unit_name", "unit_type",
-		"unit_race", "unit_level", "unit_side", "unit_amla",
-		"unit_traits", "unit_status", "unit_alignment", "unit_abilities",
-		"unit_hp", "unit_xp", "unit_advancement_options", "unit_defense", "unit_moves",
-		"unit_weapons", "unit_image", "unit_profile", "time_of_day",
-		"turn", "gold", "villages", "num_units", "upkeep", "expenses",
-		"income", "terrain", "position", "side_playing", "observers",
-		"report_countdown", "report_clock",
-		"selected_terrain", "edit_left_button_function", "editor_tool_hint"
-	};
-}
-
 namespace reports {
-
-const std::string& report_name(TYPE type)
-{
-	assert(sizeof(report_names)/sizeof(*report_names) == NUM_REPORTS);
-	assert(type < NUM_REPORTS);
-
-	return report_names[type];
-}
 
 void report::add_text(const std::string& text,
 		const std::string& tooltip, const std::string& action) {
@@ -89,6 +67,31 @@ static std::string flush(std::ostringstream &s)
 	return r;
 }
 
+struct report_generator
+{
+	typedef report (*fun)(report_data const &);
+	fun generator;
+	bool for_units;
+	report_generator(fun g, bool u): generator(g), for_units(u) {}
+};
+
+typedef std::map<std::string, report_generator> report_generators;
+static report_generators static_generators;
+
+struct report_generator_helper
+{
+	report_generator_helper(const char *name, report_generator::fun g, bool u)
+	{
+		static_generators.insert(report_generators::value_type(name,
+			report_generator(g, u)));
+	}
+};
+
+#define REPORT_GENERATOR(n, u, data) \
+	static report report_##n(const report_data &); \
+	static report_generator_helper reg_gen_##n(#n, &report_##n, u); \
+	static report report_##n(const report_data &data)
+
 static char const *naps = "</span>";
 
 static unit *get_visible_unit(const report_data &data)
@@ -104,7 +107,7 @@ static report gray_inactive(const report_data &data, const std::string &str)
 	return report(span_color(font::GRAY_COLOR) + str + naps);
 }
 
-static report report_unit_name(const report_data &data)
+REPORT_GENERATOR(unit_name, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -114,7 +117,7 @@ static report report_unit_name(const report_data &data)
 	return report(str.str(), "", tooltip.str());
 }
 
-static report report_unit_type(const report_data &data)
+REPORT_GENERATOR(unit_type, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -125,7 +128,7 @@ static report report_unit_type(const report_data &data)
 	return report(str.str(), "", tooltip.str(), "unit_" + u->type_id());
 }
 
-static report report_unit_race(const report_data &data)
+REPORT_GENERATOR(unit_race, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -135,7 +138,7 @@ static report report_unit_race(const report_data &data)
 	return report(str.str(), "", tooltip.str(), "..race_" + u->race()->id());
 }
 
-static report report_unit_side(const report_data &data)
+REPORT_GENERATOR(unit_side, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -150,7 +153,7 @@ static report report_unit_side(const report_data &data)
 	return report("", flag_icon_img, u_team.current_player());
 }
 
-static report report_unit_level(const report_data &data)
+REPORT_GENERATOR(unit_level, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -166,7 +169,7 @@ static report report_unit_level(const report_data &data)
 	return report(str.str(), "", tooltip.str());
 }
 
-static report report_unit_amla(const report_data &data)
+REPORT_GENERATOR(unit_amla, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -178,7 +181,7 @@ static report report_unit_amla(const report_data &data)
 	return res;
 }
 
-static report report_unit_traits(const report_data &data)
+REPORT_GENERATOR(unit_traits, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -198,7 +201,7 @@ static report report_unit_traits(const report_data &data)
 	return res;
 }
 
-static report report_unit_status(const report_data &data)
+REPORT_GENERATOR(unit_status, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -224,7 +227,7 @@ static report report_unit_status(const report_data &data)
 	return res;
 }
 
-static report report_unit_alignment(const report_data &data)
+REPORT_GENERATOR(unit_alignment, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -238,7 +241,7 @@ static report report_unit_alignment(const report_data &data)
 	return report(str.str(), "", tooltip.str(), "time_of_day");
 }
 
-static report report_unit_abilities(const report_data &data)
+REPORT_GENERATOR(unit_abilities, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -258,7 +261,7 @@ static report report_unit_abilities(const report_data &data)
 	return res;
 }
 
-static report report_unit_hp(const report_data &data)
+REPORT_GENERATOR(unit_hp, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -296,7 +299,7 @@ static report report_unit_hp(const report_data &data)
 	return report(str.str(), "", tooltip.str());
 }
 
-static report report_unit_xp(const report_data &data)
+REPORT_GENERATOR(unit_xp, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -309,7 +312,7 @@ static report report_unit_xp(const report_data &data)
 	return report(str.str(), "", tooltip.str());
 }
 
-static report report_unit_advancement_options(const report_data &data)
+REPORT_GENERATOR(unit_advancement_options, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -321,7 +324,7 @@ static report report_unit_advancement_options(const report_data &data)
 	return res;
 }
 
-static report report_unit_defense(const report_data &data)
+REPORT_GENERATOR(unit_defense, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -358,7 +361,7 @@ static report report_unit_defense(const report_data &data)
 	return report(str.str(), "", tooltip.str());
 }
 
-static report report_unit_moves(const report_data &data)
+REPORT_GENERATOR(unit_moves, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -376,7 +379,7 @@ static report report_unit_moves(const report_data &data)
 	return report(str.str());
 }
 
-static report report_unit_weapons(const report_data &data)
+REPORT_GENERATOR(unit_weapons, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
@@ -533,21 +536,21 @@ static report report_unit_weapons(const report_data &data)
 	return res;
 }
 
-static report report_unit_image(const report_data &data)
+REPORT_GENERATOR(unit_image, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
 	return report("", image::locator(u->absolute_image(), u->image_mods()), "");
 }
 
-static report report_unit_profile(const report_data &data)
+REPORT_GENERATOR(unit_profile, true, data)
 {
 	unit *u = get_visible_unit(data);
 	if (!u) return report();
 	return report("", u->small_profile(), "");
 }
 
-static report report_time_of_day(const report_data &data)
+REPORT_GENERATOR(time_of_day, false, data)
 {
 	std::ostringstream tooltip;
 	time_of_day tod;
@@ -579,7 +582,7 @@ static report report_time_of_day(const report_data &data)
 	return report("", tod_image, tooltip.str(), "time_of_day");
 }
 
-static report report_turn(const report_data &)
+REPORT_GENERATOR(turn, false, /*data*/)
 {
 	std::ostringstream str;
 	str << resources::tod_manager->turn();
@@ -588,7 +591,7 @@ static report report_turn(const report_data &)
 	return report(str.str());
 }
 
-static report report_gold(const report_data &data)
+REPORT_GENERATOR(gold, false, data)
 {
 	std::ostringstream str;
 	// Suppose the full/"pathfind" unit map is applied.
@@ -605,7 +608,7 @@ static report report_gold(const report_data &data)
 	return report(str.str());
 }
 
-static report report_villages(const report_data &data)
+REPORT_GENERATOR(villages, false, data)
 {
 	std::ostringstream str;
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
@@ -624,12 +627,12 @@ static report report_villages(const report_data &data)
 	return gray_inactive(data, str.str());
 }
 
-static report report_num_units(const report_data &data)
+REPORT_GENERATOR(num_units, false, data)
 {
 	return gray_inactive(data, str_cast(side_units(data.current_side)));
 }
 
-static report report_upkeep(const report_data &data)
+REPORT_GENERATOR(upkeep, false, data)
 {
 	std::ostringstream str;
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
@@ -638,14 +641,14 @@ static report report_upkeep(const report_data &data)
 	return gray_inactive(data, str.str());
 }
 
-static report report_expenses(const report_data &data)
+REPORT_GENERATOR(expenses, false, data)
 {
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, data.current_side);
 	return gray_inactive(data, str_cast(td.expenses));
 }
 
-static report report_income(const report_data &data)
+REPORT_GENERATOR(income, false, data)
 {
 	std::ostringstream str;
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
@@ -661,7 +664,7 @@ static report report_income(const report_data &data)
 	return report(str.str());
 }
 
-static report report_terrain(const report_data &data)
+REPORT_GENERATOR(terrain, false, data)
 {
 	gamemap &map = *resources::game_map;
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
@@ -707,7 +710,7 @@ static report report_terrain(const report_data &data)
 	return report(str.str());
 }
 
-static report report_position(const report_data &data)
+REPORT_GENERATOR(position, false, data)
 {
 	gamemap &map = *resources::game_map;
 	if (!map.on_board(data.mouseover_hex))
@@ -739,7 +742,7 @@ static report report_position(const report_data &data)
 	return report(str.str());
 }
 
-static report report_side_playing(const report_data &data)
+REPORT_GENERATOR(side_playing, false, data)
 {
 	const team &active_team = (*resources::teams)[data.active_side - 1];
 	std::string flag_icon = active_team.flag_icon();
@@ -752,7 +755,7 @@ static report report_side_playing(const report_data &data)
 	return report("", flag_icon_img, active_team.current_player());
 }
 
-static report report_observers(const report_data &data)
+REPORT_GENERATOR(observers, false, data)
 {
 	if (data.observers.empty())
 		return report();
@@ -766,12 +769,12 @@ static report report_observers(const report_data &data)
 }
 
 #ifdef DISABLE_EDITOR
-static report report_editor_selected_terrain(const report_data &)
+REPORT_GENERATOR(selected_terrain, false, data)
 {
 	return report();
 }
 
-static report report_editor_left_button_function(const report_data &)
+REPORT_GENERATOR(edit_left_button_function, false, data)
 {
 	return report();
 }
@@ -780,7 +783,7 @@ namespace editor {
 extern std::string selected_terrain, left_button_function;
 }
 
-static report report_editor_selected_terrain(const report_data &)
+REPORT_GENERATOR(selected_terrain, false, /*data*/)
 {
 	if (editor::selected_terrain.empty())
 		return report();
@@ -788,7 +791,7 @@ static report report_editor_selected_terrain(const report_data &)
 		return report(editor::selected_terrain);
 }
 
-static report report_editor_left_button_function(const report_data &)
+REPORT_GENERATOR(edit_left_button_function, false, /*data*/)
 {
 	if (editor::left_button_function.empty())
 		return report();
@@ -797,7 +800,12 @@ static report report_editor_left_button_function(const report_data &)
 }
 #endif
 
-static report report_clock(const report_data &)
+REPORT_GENERATOR(editor_tool_hint, false, /*data*/)
+{
+	return report();
+}
+
+REPORT_GENERATOR(report_clock, false, /*data*/)
 {
 	time_t t = std::time(NULL);
 	struct tm *lt = std::localtime(&t);
@@ -808,12 +816,12 @@ static report report_clock(const report_data &)
 	return report(temp);
 }
 
-static report report_countdown(const report_data &data)
+REPORT_GENERATOR(report_countdown, false, data)
 {
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
 	int min, sec;
 	if (viewing_team.countdown_time() == 0)
-		return report_clock(data);
+		return report_report_clock(data);
 	std::ostringstream str;
 	sec = viewing_team.countdown_time() / 1000;
 	char const *end = naps;
@@ -833,79 +841,21 @@ static report report_countdown(const report_data &data)
 	return report(str.str());
 }
 
-report reports::generate_report(TYPE type, const report_data & data)
+report reports::generate_report(const std::string &name, const report_data &data)
 {
-	switch(type) {
-	case UNIT_NAME:
-		return report_unit_name(data);
-	case UNIT_TYPE:
-		return report_unit_type(data);
-	case UNIT_RACE:
-		return report_unit_race(data);
-	case UNIT_SIDE:
-		return report_unit_side(data);
-	case UNIT_LEVEL:
-		return report_unit_level(data);
-	case UNIT_AMLA:
-		return report_unit_amla(data);
-	case UNIT_TRAITS:
-		return report_unit_traits(data);
-	case UNIT_STATUS:
-		return report_unit_status(data);
-	case UNIT_ALIGNMENT:
-		return report_unit_alignment(data);
-	case UNIT_ABILITIES:
-		return report_unit_abilities(data);
-	case UNIT_HP:
-		return report_unit_hp(data);
-	case UNIT_XP:
-		return report_unit_xp(data);
-	case UNIT_ADVANCEMENT_OPTIONS:
-		return report_unit_advancement_options(data);
-	case UNIT_DEFENSE:
-		return report_unit_defense(data);
-	case UNIT_MOVES:
-		return report_unit_moves(data);
-	case UNIT_WEAPONS:
-		return report_unit_weapons(data);
-	case UNIT_IMAGE:
-		return report_unit_image(data);
-	case UNIT_PROFILE:
-		return report_unit_profile(data);
-	case TIME_OF_DAY:
-		return report_time_of_day(data);
-	case TURN:
-		return report_turn(data);
-	case GOLD:
-		return report_gold(data);
-	case VILLAGES:
-		return report_villages(data);
-	case NUM_UNITS:
-		return report_num_units(data);
-	case UPKEEP:
-		return report_upkeep(data);
-	case EXPENSES:
-		return report_expenses(data);
-	case INCOME:
-		return report_income(data);
-	case TERRAIN:
-		return report_terrain(data);
-	case POSITION:
-		return report_position(data);
-	case SIDE_PLAYING:
-		return report_side_playing(data);
-	case OBSERVERS:
-		return report_observers(data);
-	case EDITOR_SELECTED_TERRAIN:
-		return report_editor_selected_terrain(data);
-	case EDITOR_LEFT_BUTTON_FUNCTION:
-		return report_editor_left_button_function(data);
-	case REPORT_COUNTDOWN:
-		return report_countdown(data);
-	case REPORT_CLOCK:
-		return report_clock(data);
-	default:
-		assert(false);
-		return report();
+	report_generators::const_iterator i = static_generators.find(name);
+	if (i == static_generators.end()) return report();
+	return (i->second.generator)(data);
+}
+
+static std::set<std::string> unit_reports, status_reports;
+
+const std::set<std::string> &reports::report_list(bool for_units)
+{
+	std::set<std::string> &l = *(for_units ? &unit_reports : &status_reports);
+	if (!l.empty()) return l;
+	foreach (const report_generators::value_type &v, static_generators) {
+		if (v.second.for_units == for_units) l.insert(v.first);
 	}
+	return l;
 }

@@ -426,7 +426,7 @@ bool game_display::has_time_area() const
 	return tod_manager_.has_time_area();
 }
 
-void game_display::draw_report(reports::TYPE report_num)
+void game_display::draw_report(const std::string &report_name)
 {
 	if(!team_valid()) {
 		return;
@@ -438,44 +438,34 @@ void game_display::draw_report(reports::TYPE report_num)
 		observers_, level_, !viewpoint_
 	};
 
-	reports::report report = reports::generate_report(report_num, data);
-	refresh_report(report_num, report);
-}
-
-void game_display::draw_game_status()
-{
-	if(teams_.empty()) {
-		return;
-	}
-
-	for(size_t r = reports::STATUS_REPORTS_BEGIN; r != reports::STATUS_REPORTS_END; ++r) {
-		draw_report(reports::TYPE(r));
-	}
+	reports::report report = reports::generate_report(report_name, data);
+	refresh_report(report_name, report);
 }
 
 void game_display::draw_sidebar()
 {
 	wb::scoped_planned_pathfind_map future; //< Lasts for whole method.
 
-	draw_report(reports::REPORT_CLOCK);
-	draw_report(reports::REPORT_COUNTDOWN);
+	draw_report("report_clock");
+	draw_report("report_countdown");
 
 	if(teams_.empty()) {
 		return;
 	}
 
-	if(invalidateUnit_) {
+	if (invalidateUnit_) {
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
-		for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r) {
-			draw_report(reports::TYPE(r));
+		foreach (const std::string &name, reports::report_list(true)) {
+			draw_report(name);
 		}
-
 		invalidateUnit_ = false;
 	}
 
-	if(invalidateGameStatus_) {
-		draw_game_status();
+	if (invalidateGameStatus_) {
+		foreach (const std::string &name, reports::report_list(false)) {
+			draw_report(name);
+		}
 		invalidateGameStatus_ = false;
 	}
 }

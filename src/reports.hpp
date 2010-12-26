@@ -23,22 +23,6 @@ class team;
 //this module is responsible for outputting textual reports of
 //various game and unit statistics
 namespace reports {
-	enum TYPE { UNIT_NAME, UNIT_TYPE, UNIT_RACE, UNIT_LEVEL,
-		    UNIT_SIDE, UNIT_AMLA, UNIT_TRAITS, UNIT_STATUS,
-		    UNIT_ALIGNMENT, UNIT_ABILITIES, UNIT_HP, UNIT_XP,
-		    UNIT_ADVANCEMENT_OPTIONS, UNIT_DEFENSE, UNIT_MOVES, UNIT_WEAPONS,
-		    UNIT_IMAGE, UNIT_PROFILE, TIME_OF_DAY,
-		    TURN, GOLD, VILLAGES, NUM_UNITS, UPKEEP, EXPENSES,
-		    INCOME, TERRAIN, POSITION, SIDE_PLAYING, OBSERVERS,
-		REPORT_COUNTDOWN, REPORT_CLOCK, EDITOR_SELECTED_TERRAIN,
-		EDITOR_LEFT_BUTTON_FUNCTION, EDITOR_TOOL_HINT, NUM_REPORTS
-	};
-
-	enum { UNIT_REPORTS_BEGIN=UNIT_NAME, UNIT_REPORTS_END=UNIT_PROFILE+1 };
-	enum { STATUS_REPORTS_BEGIN=TIME_OF_DAY, STATUS_REPORTS_END=EDITOR_TOOL_HINT };
-
-	const std::string& report_name(TYPE type);
-
 	struct element {
 		explicit element(const std::string& text) :
 				image(),
@@ -104,8 +88,9 @@ struct report_data
 	bool show_everything;
 };
 
-report generate_report(TYPE type, const report_data &data);
+report generate_report(const std::string &name, const report_data &data);
 
+const std::set<std::string> &report_list(bool for_units);
 }
 
 #endif
