@@ -2925,7 +2925,7 @@ struct lua_report_generator : reports::generator
 	virtual config generate(const reports::report_data &);
 };
 
-config lua_report_generator::generate(const reports::report_data &)
+config lua_report_generator::generate(const reports::report_data &data)
 {
 	lua_State *L = mState;
 	lua_pushlightuserdata(L, (void *)&thmitemKey);
@@ -2933,8 +2933,17 @@ config lua_report_generator::generate(const reports::report_data &)
 	lua_pushstring(L, name.c_str());
 	lua_rawget(L, -2);
 	lua_remove(L, -2);
+	lua_pushinteger(L, data.show_everything ? 0 : data.viewing_side);
+	unit *u = get_visible_unit(data.displayed_unit_hex,
+		(*resources::teams)[data.viewing_side - 1], data.show_everything);
+	if (u) {
+		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u->underlying_id());
+		lua_pushlightuserdata(L, (void *)&getunitKey);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_setmetatable(L, -2);
+	}
 	config cfg;
-	if (!luaW_pcall(L, 0, 1)) return cfg;
+	if (!luaW_pcall(L, (u ? 2 : 1), 1)) return cfg;
 	luaW_toconfig(L, -1, cfg);
 	lua_pop(L, 1);
 	return cfg;
