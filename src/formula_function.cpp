@@ -34,6 +34,7 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 
 namespace game_logic {
 
+static const double pi = 4. * atan(1.);
 
 std::string function_expression::str() const
 {
@@ -530,7 +531,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const int value = args()[0]->evaluate(variables,fdb).as_int()%1000;
-		const double angle = 2.0*3.141592653589*(static_cast<double>(value)/1000.0);
+		const double angle = 2.0 * pi * (static_cast<double>(value) / 1000.0);
 		return variant(static_cast<int>(sin(angle)*1000.0));
 	}
 };
