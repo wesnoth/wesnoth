@@ -94,9 +94,11 @@ static void put_pixel(
 /**
  * Draws a line.
  *
+ * @pre @p x2 >= @p x1
+ *
  * @param canvas          The canvas to draw upon, the caller should lock the
  *                        surface before calling.
- * @param color          The color of the line to draw.
+ * @param color           The color of the line to draw.
  * @param x1              The start x coordinate of the line to draw.
  * @param y1              The start y coordinate of the line to draw.
  * @param x2              The end x coordinate of the line to draw.
@@ -105,7 +107,7 @@ static void put_pixel(
 static void draw_line(
 		  surface& canvas
 		, Uint32 color
-		, const unsigned x1
+		, unsigned x1
 		, unsigned y1
 		, const unsigned x2
 		, unsigned y2)
@@ -149,29 +151,29 @@ static void draw_line(
 		return;
 	}
 
-	// draw based on Bresenham on wikipedia
-	int dx = x2 - x1;
-	int dy = y2 - y1;
-	int slope = 1;
-	if (dy < 0) {
-		slope = -1;
-		dy = -dy;
-	}
+	// Algorithm based on
+	// http://de.wikipedia.org/wiki/Bresenham-Algorithmus#Kompakte_Variante
+	// version of 26.12.2010.
+	const int dx = x2 - x1; // precondition x2 >= x1
+	const int dy = abs(y2 - y1);
+	const int step_x = 1;
+	const int step_y = y1 < y2 ? 1 : -1;
+	int err = (dx > dy ? dx : -dy) / 2;
+	int e2;
 
-	// Bresenham constants
-	const int incE = 2 * dy;
-	const int incNE = 2 * dy - 2 * dx;
-	int d = 2 * dy - dx;
-	int y = y1;
-
-	// Blit
-	for (unsigned x = x1; x <= x2; ++x) {
-		put_pixel(start, color, w, x, y);
-		if (d <= 0) {
-			d += incE;
-		} else {
-			d += incNE;
-			y += slope;
+	for(;;){
+		put_pixel(start, color, w, x1, y1);
+		if(x1 == x2 && y1 == y2) {
+			break;
+		}
+		e2 = err;
+		if(e2 > -dx) {
+			err -= dy;
+			x1 += step_x;
+		}
+		if(e2 <  dy) {
+			err += dx;
+			y1 += step_y;
 		}
 	}
 }
