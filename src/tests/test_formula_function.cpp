@@ -98,5 +98,28 @@ BOOST_AUTO_TEST_CASE(test_formula_function_length)
 			, 11);
 }
 
+BOOST_AUTO_TEST_CASE(test_formula_function_concatenate)
+{
+	BOOST_CHECK_EQUAL(
+			  game_logic::formula("concatenate(100)").evaluate().as_string()
+			, "100");
+
+	BOOST_CHECK_EQUAL(
+			  game_logic::formula("concatenate(100, 200, 'a')")
+				.evaluate().as_string()
+			, "100200a");
+
+	BOOST_CHECK_EQUAL(
+			  game_logic::formula("concatenate([1,2,3])")
+				.evaluate().as_string()
+			, "1, 2, 3");
+
+	BOOST_CHECK_EQUAL(
+			  game_logic::formula(
+					"concatenate([1.0, 1.00, 1.000, 1.2, 1.23, 1.234])")
+						.evaluate().as_string()
+			, "1.000, 1.000, 1.000, 1.200, 1.230, 1.234");
+}
+
 BOOST_AUTO_TEST_SUITE_END()
 

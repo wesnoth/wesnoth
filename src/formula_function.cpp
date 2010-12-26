@@ -435,6 +435,27 @@ public:
 	}
 };
 
+class concatenate_function
+		: public function_expression {
+public:
+		explicit concatenate_function(const args_list& args)
+			: function_expression("concatenate", args, 1, -1)
+		{}
+
+private:
+		variant execute(const formula_callable& variables
+						, formula_debugger *fdb) const {
+
+				std::string result;
+
+				foreach(expression_ptr arg, args()) {
+						result += arg->evaluate(variables, fdb).string_cast();
+				}
+
+				return variant(result);
+		}
+};
+
 class index_of_function : public function_expression {
 public:
 	explicit index_of_function(const args_list& args)
@@ -1118,6 +1139,7 @@ functions_map& get_functions_map() {
 		FUNCTION(tomap);
 		FUNCTION(substring);
 		FUNCTION(length);
+		FUNCTION(concatenate);
 #undef FUNCTION
 	}
 
