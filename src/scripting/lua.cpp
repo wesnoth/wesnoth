@@ -2402,6 +2402,13 @@ struct lua_synchronize : mp_sync::user_choice
 	virtual config query_user() const
 	{
 		config cfg;
+		int index = 1;
+		if (!lua_isnoneornil(L, 2)) {
+			int side = resources::controller->current_side();
+			if ((*resources::teams)[side - 1].is_ai())
+				index = 2;
+		}
+		lua_settop(L, index);
 		if (luaW_pcall(L, 0, 1, false))
 			luaW_toconfig(L, -1, cfg);
 		return cfg;
@@ -2416,11 +2423,11 @@ struct lua_synchronize : mp_sync::user_choice
 /**
  * Ensures a value is synchronized among all the clients.
  * - Arg 1: function to compute the value, called if the client is the master.
+ * - Arg 2: optional function, called instead of the first function if the user is not human.
  * - Ret 1: WML table returned by the function.
  */
 static int intf_synchronize_choice(lua_State *L)
 {
-	lua_settop(L, 1);
 	config cfg = mp_sync::get_user_choice("input", lua_synchronize(L));
 	luaW_pushconfig(L, cfg);
 	return 1;
