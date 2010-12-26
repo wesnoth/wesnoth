@@ -2407,7 +2407,6 @@ stringfixes = {
 ("particularly good at ""resolving"" territorial", "particularly good at “resolving” territorial"),
 ("the power they've learned to focus", "the power they’ve learned to focus"),
 ("challenge his tribe's leader for", "challenge his tribe’s leader for"),
-("drakes'", "drakes’"),
 ("although it's most commonly", "although it’s most commonly"),
 ("one's own goals", "one’s own goals"),
 ("commands of it's master", "commands of it’s master"),
