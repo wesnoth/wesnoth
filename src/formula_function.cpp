@@ -420,6 +420,21 @@ public:
 	}
 };
 
+class length_function
+	: public function_expression {
+public:
+	explicit length_function(const args_list& args)
+	     : function_expression("length", args, 1, 1)
+	{}
+
+	variant execute(const formula_callable& variables
+			, formula_debugger *fdb) const {
+
+		return variant(
+				args()[0]->evaluate(variables, fdb).as_string().length());
+	}
+};
+
 class index_of_function : public function_expression {
 public:
 	explicit index_of_function(const args_list& args)
@@ -1102,6 +1117,7 @@ functions_map& get_functions_map() {
 		FUNCTION(tolist);
 		FUNCTION(tomap);
 		FUNCTION(substring);
+		FUNCTION(length);
 #undef FUNCTION
 	}
 

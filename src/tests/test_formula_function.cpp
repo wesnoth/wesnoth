@@ -87,5 +87,16 @@ BOOST_AUTO_TEST_CASE(test_formula_function_substring)
 
 }
 
+BOOST_AUTO_TEST_CASE(test_formula_function_length)
+{
+	BOOST_CHECK_EQUAL(
+			  game_logic::formula("length('')").evaluate().as_int()
+			, 0);
+
+	BOOST_CHECK_EQUAL(
+			  game_logic::formula("length('hello world')").evaluate().as_int()
+			, 11);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
 
