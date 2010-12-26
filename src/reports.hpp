@@ -35,6 +35,15 @@ struct report_data
 	bool show_everything;
 };
 
+struct generator
+{
+	virtual config generate(report_data const &) = 0;
+	virtual ~generator() {}
+};
+
+void reset_generators();
+void register_generator(const std::string &name, generator *, bool for_units);
+
 config generate_report(const std::string &name, const report_data &data);
 
 const std::set<std::string> &report_list(bool for_units);

@@ -90,23 +90,31 @@ static std::string flush(std::ostringstream &s)
 	return r;
 }
 
-struct report_generator
+typedef config (*generator_function)(const report_data &);
+
+struct static_report_generator
 {
-	typedef config (*fun)(report_data const &);
-	fun generator;
+	generator_function generator;
 	bool for_units;
-	report_generator(fun g, bool u): generator(g), for_units(u) {}
 };
 
-typedef std::map<std::string, report_generator> report_generators;
-static report_generators static_generators;
+struct dynamic_report_generator
+{
+	reports::generator *generator;
+	bool for_units;
+};
+
+typedef std::map<std::string, static_report_generator> static_report_generators;
+typedef std::map<std::string, dynamic_report_generator> dynamic_report_generators;
+static static_report_generators static_generators;
+static dynamic_report_generators dynamic_generators;
 
 struct report_generator_helper
 {
-	report_generator_helper(const char *name, report_generator::fun g, bool u)
+	report_generator_helper(const char *name, generator_function g, bool u)
 	{
-		static_generators.insert(report_generators::value_type(name,
-			report_generator(g, u)));
+		static_report_generator rg = { g, u };
+		static_generators.insert(static_report_generators::value_type(name, rg));
 	}
 };
 
@@ -862,11 +870,34 @@ REPORT_GENERATOR(report_countdown, false, data)
 	return text_report(str.str());
 }
 
+void reports::reset_generators()
+{
+	foreach (dynamic_report_generators::value_type &rg, dynamic_generators) {
+		delete rg.second.generator;
+	}
+	dynamic_generators.clear();
+}
+
+void reports::register_generator(const std::string &name, reports::generator *g, bool for_units)
+{
+	dynamic_report_generator rg = { g, for_units };
+	std::pair<dynamic_report_generators::iterator, bool> ib =
+		dynamic_generators.insert(std::make_pair(name, rg));
+	if (!ib.second) {
+		delete ib.first->second.generator;
+		ib.first->second = rg;
+	}
+}
+
 config reports::generate_report(const std::string &name, const report_data &data)
 {
-	report_generators::const_iterator i = static_generators.find(name);
-	if (i == static_generators.end()) return report();
-	return (i->second.generator)(data);
+	dynamic_report_generators::const_iterator i = dynamic_generators.find(name);
+	if (i != dynamic_generators.end())
+		return i->second.generator->generate(data);
+	static_report_generators::const_iterator j = static_generators.find(name);
+	if (j != static_generators.end())
+		return j->second.generator(data);
+	return report();
 }
 
 static std::set<std::string> unit_reports, status_reports;
@@ -875,7 +906,10 @@ const std::set<std::string> &reports::report_list(bool for_units)
 {
 	std::set<std::string> &l = *(for_units ? &unit_reports : &status_reports);
 	if (!l.empty()) return l;
-	foreach (const report_generators::value_type &v, static_generators) {
+	foreach (const static_report_generators::value_type &v, static_generators) {
+		if (v.second.for_units == for_units) l.insert(v.first);
+	}
+	foreach (const dynamic_report_generators::value_type &v, dynamic_generators) {
 		if (v.second.for_units == for_units) l.insert(v.first);
 	}
 	return l;

@@ -38,6 +38,7 @@
 #include "map_label.hpp"
 #include "map_exception.hpp"
 #include "replay.hpp"
+#include "reports.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "sound.hpp"
@@ -3098,6 +3099,7 @@ namespace game_events {
 		manager_running = false;
 		events_queue.clear();
 		event_handlers.clear();
+		reports::reset_generators();
 		delete resources::lua_kernel;
 		resources::lua_kernel = NULL;
 		unit_wml_ids.clear();
