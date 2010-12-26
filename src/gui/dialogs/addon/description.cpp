@@ -75,9 +75,7 @@ REGISTER_WINDOW(addon_description)
 
 void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 {
-	const std::string fixed_icon = ainfo_.icon + "~SCALE(72,72)";
-
-	find_widget<tcontrol>(&window, "image", false).set_label(fixed_icon);
+	find_widget<tcontrol>(&window, "image", false).set_label(ainfo_.icon);
 	find_widget<tcontrol>(&window, "title", false).set_label(ainfo_.name);
 	find_widget<tcontrol>(&window, "version", false).set_label(ainfo_.version);
 	find_widget<tcontrol>(&window, "author", false).set_label(ainfo_.author);
