@@ -5,15 +5,16 @@
 # Takanobu Hirai <airhead@users.sourceforge.jp>, 2006.
 # clearpotion <clearpotion+fantasy@gmail.com>, 2010.
 # IWAI, Masaharu <iwaim.sub@gmail.com>, 2010.
+# pastak <pasta0915@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 1.9+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-25 18:13+0100\n"
-"PO-Revision-Date: 2010-12-03 08:20+0900\n"
-"Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
-"Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
+"POT-Creation-Date: 2010-12-22 12:37+0100\n"
+"PO-Revision-Date: 2010-12-27 11:26+0900\n"
+"Last-Translator: pastak <pasta0915@gmail.com>\n"
+"Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
 "Language: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,9 +65,8 @@ msgstr "君主"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
-#, fuzzy
 msgid "(Expert level, 24 scenarios.)"
-msgstr "（上級者レベル、25シナリオ）"
+msgstr "（上級者レベル、24シナリオ）"
 
 # % 問題は無いが短く切って調子を変えた。
 # 王子 Haldric を導いて滅びゆく Green 島から海を渡り、Wesnoth の王国そのものの樹立を目指せ。リッチの君主 Jevyan との対決が待ち構えている……
@@ -542,9 +542,8 @@ msgstr ""
 
 #. [message]: speaker=Tan-Rarbag
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:203
-#, fuzzy
 msgid "So, <i>human</i>, care to make your final stand?"
-msgstr "さて人間ども、最後の抵抗をしてみるかね？"
+msgstr "さて<i>人間</i>ども、最後の抵抗をしてみるかね？"
 
 #. [message]: speaker=Tan-Erang
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:208
@@ -629,10 +628,10 @@ msgstr "君の言うことは信用できない。神に会う覚悟はいいか
 # # 罵倒にしては長ったらしい訳語になってしまった。
 #. [message]: speaker=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:346
-#, fuzzy
 msgid "Arrogant fools! (<i>Reaches into pocket</i>) <i>Poof</i>!"
 msgstr ""
-"威張りくさった馬鹿野郎どもめ！（ポケットに手を伸ばし、煙とともに消えた）"
+"威張りくさった馬鹿野郎どもめ！（<i>ポケットに手を伸ばし、煙とともに消えた</"
+"i>）"
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:374
@@ -926,13 +925,12 @@ msgstr ""
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:290
-#, fuzzy
 msgid ""
 "<i>Swamp</i>?! I’m under five feet tall, and I don’t float! ... Argh, have "
 "it your way."
 msgstr ""
-"沼だと！ 俺の背丈は 5 フィートもないし、俺は泳げねえんだぞ！ ああもう、勝手に"
-"しろ。"
+"<i>沼だと</i>！ 俺の背丈は 5 フィートもないし、俺は泳げねえんだぞ！ ああも"
+"う、勝手にしろ。"
 
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:303
@@ -1597,7 +1595,7 @@ msgstr ""
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:244
 msgid "We will help. "
-msgstr ""
+msgstr "助けよう"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:244
@@ -2320,7 +2318,7 @@ msgstr "怒れる農民"
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:230
 msgid "Cowardly:"
-msgstr ""
+msgstr "臆病者："
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:231
@@ -2344,7 +2342,7 @@ msgstr "兵卒：第二の船で脱出する"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:240
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:245
 msgid "Heroic:"
-msgstr ""
+msgstr "勇者："
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:241
@@ -3367,13 +3365,12 @@ msgstr "ふむ……よかろう。であれば誓おう。話せ。"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:151
-#, fuzzy
 msgid ""
 "First, I <i>can</i> translate the book that will allow Haldric to use the "
 "Ruby of Fire. The artifact should help with what must come."
 msgstr ""
-"まず、Haldric が炎のルビーを使えるようになるための本を翻訳できるのは私だけで"
-"す。このアーティファクトは今後起こることにおいて役立つはずです。"
+"まず、Haldric が炎のルビーを使えるようになるための本を翻訳<i>できる</i>のは私"
+"だけです。このアーティファクトは今後起こることにおいて役立つはずです。"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:155
@@ -3701,7 +3698,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:405
 msgid "You can now recruit merfolk!"
-msgstr ""
+msgstr "今ならマーフォークを仲間に出来る！"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:431
@@ -3982,9 +3979,8 @@ msgstr ""
 # % たぶん、その前の　I don't think deplomacy ～　のことだと思う。このpoファイルにない。
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:223
-#, fuzzy
 msgid "Do I need to say, <i>“I told you so”</i>?"
-msgstr "（ささやく）「ほれみたことか」って言う必要なさそうね。"
+msgstr "（ささやく）「<i>ほれみたことか</i>」って言う必要なさそうね。"
 
 # % サーペント Bitey にする？
 #. [event]
@@ -4048,7 +4044,7 @@ msgstr "それはちょっと勘弁して欲しいな。聞かなきゃよかっ
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:379
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:482
 msgid "<i>Clack</i>! <i>Clack!</i>"
-msgstr ""
+msgstr "<i>パチッ！</i><i>パチッ！</i>"
 
 # 艦隊は物資が切れているし、この島を制圧する前に全滅しそうだ！
 # % 元の方が自然かも
@@ -4137,7 +4133,7 @@ msgstr "Chompey the Serpent"
 #. [case]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:242
 msgid "Graarrrrrr!"
-msgstr ""
+msgstr "グラアアアアア！"
 
 #. [case]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:248
@@ -4147,7 +4143,7 @@ msgstr "Scaly the Serpent"
 #. [case]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:249
 msgid "Roarrrrrr!"
-msgstr ""
+msgstr "ロアアアアー！"
 
 #. [case]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:255
@@ -4157,7 +4153,7 @@ msgstr "Toothey the Serpent"
 #. [case]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:256
 msgid "Hissssss!"
-msgstr ""
+msgstr "シャアアア！"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:351
@@ -4272,18 +4268,17 @@ msgstr "協定の権利に基づいてだ。古いが現在も有効だ――"
 
 #. [message]: speaker=Dursil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:129
-#, fuzzy
 msgid ""
 "Hmph! You namby-pamby elves: <i>“We don’t cut the trees, we groom the "
 "forest.”</i> Our axes can get the wood for a fifth of the cost! I can charge "
 "half of what your people do, and still be rich, and I’m not the first to "
 "have the thought!"
 msgstr ""
-"フン！ お前ら女の腐ったようなエルフが何言ってやがる。「我々は木を切りません、"
-"我々は森を育みます」だぁ？ 俺たちの斧にかかれば 1/5 の値段で木が手に入るじゃ"
-"ねえか！ お前らが吹っ掛けてる半分の金を取ってもいいぐらいだ、それでも大金持ち"
-"になれるしな、それに言っとくが、こう考えてんのは俺が最初ってわけじゃねえんだ"
-"からな！"
+"フン！ お前ら女の腐ったようなエルフが何言ってやがる。「<i>我々は木を切りませ"
+"ん、我々は森を育みます</i>」だぁ？ 俺たちの斧にかかれば 1/5 の値段で木が手に"
+"入るじゃねえか！ お前らが吹っ掛けてる半分の金を取ってもいいぐらいだ、それでも"
+"大金持ちになれるしな、それに言っとくが、こう考えてんのは俺が最初ってわけじゃ"
+"ねえんだからな！"
 
 #. [message]: speaker=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:133
@@ -4347,7 +4342,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:33
 msgid "Lady Dionli"
-msgstr ""
+msgstr "Lady Dionli"
 
 #. [message]: speaker=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:238
@@ -4773,9 +4768,8 @@ msgstr "それでは我々それぞれが一つずつ試練を？"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:429
-#, fuzzy
 msgid "Agreed. (<i>Sigh</i>)"
-msgstr "同意。（ため息）"
+msgstr "同意。（<i>ため息</i>）"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:433
@@ -5132,9 +5126,8 @@ msgstr "僕たちが怪物だって？ フン……我が刃を受ける覚悟�
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:159
-#, fuzzy
 msgid "(<i>Sigh</i>) I bet he sees none of the irony in that."
-msgstr "（ためいき）あれが皮肉だと全く分かってないって確信したわ。"
+msgstr "（<i>ためいき</i>）あれが皮肉だと全く分かってないって確信したわ。"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:167
@@ -5495,9 +5488,8 @@ msgstr ""
 # （ため息）同意。
 #. [message]: speaker=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:143
-#, fuzzy
 msgid "(<i>Sigh</i>) Agreed."
-msgstr "（ため息）承知しました。"
+msgstr "（<i>ため息</i>）承知しました。"
 
 # %f
 #. [message]: speaker=Jessene in Hiding
@@ -5665,7 +5657,7 @@ msgstr "オークの金庫を見つけたぞ！ 中は金でいっぱいだ。"
 #. [case]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:532
 msgid "Norte"
-msgstr ""
+msgstr "土地"
 
 #. [message]: speaker=Norte
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:544
@@ -5941,9 +5933,8 @@ msgstr "この話は内密にしたほうがいいな。ねえ、ちょっとつ
 # %
 #. [message]: type=Cuttle Fish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:469
-#, fuzzy
 msgid "<i>Slurp, click, click, click!</i>"
-msgstr "(ズズー、カチカチカチ！）"
+msgstr "(<i>ズズー、カチカチカチ！</i>）"
 
 # なんだか見たこともないけど、少なくとも友好的じゃなさそうだ。
 #. [message]: speaker=Prince Haldric
@@ -6057,7 +6048,7 @@ msgstr ""
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:134
 msgid "<i>What?!</i>"
-msgstr ""
+msgstr "なんだって？"
 
 # %f
 #. [message]: speaker=Prince Haldric
@@ -7057,7 +7048,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:32
 msgid "bite"
-msgstr ""
+msgstr "噛む"
 
 #. [unit_type]: id=Noble Commander, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
@@ -7330,13 +7321,12 @@ msgstr "まさか！ こんなにあっけなく――"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:56
-#, fuzzy
 msgid ""
 "Bah! I’m not dying today! <i>Poof</i>! (<i>The Lady Outlaw vanishes in a "
 "puff of smoke.</i>)"
 msgstr ""
-"チッ！ いま死ぬわけにはいかない！ （煙が舞い上がるとともに無法者の姐御は姿を"
-"消した）"
+"チッ！ いま死ぬわけにはいかない！ （<i>煙が舞い上がるとともに無法者の姐御は姿"
+"を消した</i>）"
 
 # # Burin
 #. [message]: speaker=unit
@@ -7405,9 +7395,8 @@ msgstr "ヤバイみたい。これじゃまるでトロルの穴に戻ったよ
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:38
-#, fuzzy
 msgid "Hey, disparage the trolls, <i>not</i> the holes!"
-msgstr "おい、責めるならトロルだけにしろよ、穴の悪口は言うな！"
+msgstr "おい、責めるならトロルだけにしろよ、穴の悪口は<i>言うな</i>！"
 
 # %f
 #. [message]: speaker=Prince Haldric
@@ -7478,15 +7467,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:12
-#, fuzzy
 msgid ""
 "We were prosperous, strong, and numerous. We lived in a rich land with many "
 "kings. Then <i>they</i> came, the Wesfolk. They were a wicked, brutal, and "
 "dirty lot."
 msgstr ""
 "我々は豊かで、強大で、繁栄を謳歌していた。我々は多くの王たちのもと、肥沃な地"
-"に暮らしていた。そこに彼ら Wesfolk がやってきた。彼らはあまりにも意地汚く、粗"
-"暴で、汚らしかった。"
+"に暮らしていた。そこに<i>彼ら</i> Wesfolk がやってきた。彼らはあまりにも意地"
+"汚く、粗暴で、汚らしかった。"
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:17
