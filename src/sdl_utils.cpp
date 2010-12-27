@@ -1495,43 +1495,60 @@ void blit_surface(const surface& src,
 	}
 
 	SDL_Rect src_rect = create_rect(0, 0, src->w, src->h);
-	if(srcrect && srcrect->w && srcrect->h) {
-		src_rect.x = srcrect->x;
-		src_rect.y = srcrect->y;
+	if (!srcrect || !srcrect->w || !srcrect->h) goto skip_src_clipping;
+	src_rect = *srcrect;
 
-		src_rect.w = srcrect->w;
-		src_rect.h = srcrect->h;
-
-		if (src_rect.x < 0) {
-            if (src_rect.x + src_rect.w <= 0 || src_rect.x + dst_rect.w <= 0 )
-                return;
-			dst_rect.x -= src_rect.x;
-			dst_rect.w += src_rect.x;
-			src_rect.w += src_rect.x;
-			src_rect.x = 0;
-		}
-		if (src_rect.y < 0) {
-            if (src_rect.y + src_rect.h <= 0 || src_rect.y + dst_rect.h <= 0 )
-                return;
-			dst_rect.y -= src_rect.y;
-			dst_rect.h += src_rect.y;
-			src_rect.h += src_rect.y;
-			src_rect.y = 0;
-		}
-		if (src_rect.x + src_rect.w > src->w) {
-            if (src_rect.x >= src->w)
-                return;
-			src_rect.w = src->w - src_rect.x;
-		}
-		if (src_rect.y + src_rect.h > src->h) {
-            if (src_rect.y >= src->h)
-                return;
-			src_rect.h = src->h - src_rect.y;
-		}
+	if (src_rect.x + src_rect.w > src->w) {
+		if (src_rect.x >= src->w) return;
+		src_rect.w = src->w - src_rect.x;
 	}
 
-	assert(dst_rect.x >= 0);
-	assert(dst_rect.y >= 0);
+	if (src_rect.y + src_rect.h > src->h) {
+		if (src_rect.y >= src->h) return;
+		src_rect.h = src->h - src_rect.y;
+	}
+
+	if (src_rect.x < 0)
+	{
+		if (src_rect.x + src_rect.w <= 0 || src_rect.x + dst_rect.w <= 0)
+			return;
+		dst_rect.x -= src_rect.x;
+		dst_rect.w += src_rect.x;
+		src_rect.w += src_rect.x;
+		src_rect.x = 0;
+	}
+
+	if (src_rect.y < 0)
+	{
+		if (src_rect.y + src_rect.h <= 0 || src_rect.y + dst_rect.h <= 0)
+			return;
+		dst_rect.y -= src_rect.y;
+		dst_rect.h += src_rect.y;
+		src_rect.h += src_rect.y;
+		src_rect.y = 0;
+	}
+
+	skip_src_clipping:
+
+	if (dst_rect.x < 0)
+	{
+		if (dst_rect.x + src_rect.w <= 0 || dst_rect.x + dst_rect.w <= 0)
+			return;
+		src_rect.x -= dst_rect.x;
+		src_rect.w += dst_rect.x;
+		dst_rect.w += dst_rect.x;
+		dst_rect.x = 0;
+	}
+
+	if (dst_rect.y < 0)
+	{
+		if (dst_rect.y + src_rect.h <= 0 || dst_rect.y + dst_rect.h <= 0)
+			return;
+		src_rect.y -= dst_rect.y;
+		src_rect.h += dst_rect.y;
+		dst_rect.h += dst_rect.y;
+		dst_rect.y = 0;
+	}
 
 	// Get the blit size limits.
 	const unsigned width = std::min(src_rect.w, dst_rect.w);
