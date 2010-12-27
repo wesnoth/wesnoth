@@ -841,7 +841,7 @@ void unit_preview_pane::draw_contents()
 				<< at_it->num_attacks()
 				<< " " << at_it->name() << "\n";
 			text << font::weapon_details
-				<< "  " << _(at_it->range().c_str())
+				<< "  " << string_table["range_" + at_it->range()]
 				<< font::weapon_details_sep
 				<< _(at_it->type().c_str()) << "\n";
 

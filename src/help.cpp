@@ -31,9 +31,10 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "language.hpp"
+#include "log.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
-#include "log.hpp"
 #include "sound.hpp"
 #include "unit.hpp"
 #include "wml_separators.hpp"
@@ -1491,7 +1492,7 @@ public:
 				attack_ss << attack_it->damage() << '-' << attack_it->num_attacks() << " " << attack_it->accuracy_parry_description();
 				push_tab_pair(row, attack_ss.str());
 				attack_ss.str(clear_stringstream);
-				push_tab_pair(row, _((*attack_it).range().c_str()));
+				push_tab_pair(row, string_table["range_" + (*attack_it).range()]);
 				// Show this attack's special, if it has any. Cross
 				// reference it to the section describing the
 				// special.

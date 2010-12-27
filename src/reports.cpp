@@ -483,7 +483,7 @@ REPORT_GENERATOR(unit_weapons, true, data)
 
 		add_text(res, flush(str), flush(tooltip));
 
-		std::string range = gettext(at.range().c_str());
+		std::string range = string_table["range_" + at.range()];
 		std::string lang_type = gettext(at.type().c_str());
 
 		str << span_color(font::weapon_details_color) << "  "
