@@ -379,3 +379,7 @@ struct twrapper<gui2::twml_message_right>
 
 } // namespace
 
+namespace editor {
+	std::string selected_terrain, left_button_function;
+}
+
