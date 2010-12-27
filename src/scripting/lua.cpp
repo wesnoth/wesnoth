@@ -1725,6 +1725,15 @@ static int intf_message(lua_State *L)
 }
 
 /**
+ * Removes all messages from the chat window.
+ */
+static int intf_clear_messages(lua_State *L)
+{
+	resources::screen->clear_chat_messages();
+	return 0;
+}
+
+/**
  * Evaluates a boolean WML conditional.
  * - Arg 1: WML table.
  * - Ret 1: boolean.
@@ -2993,6 +3002,7 @@ LuaKernel::LuaKernel(const config &cfg)
 	static luaL_reg const callbacks[] = {
 		{ "add_modification",         &intf_add_modification         },
 		{ "add_tile_overlay",         &intf_add_tile_overlay         },
+		{ "clear_messages",           &intf_clear_messages           },
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
 		{ "delay",                    &intf_delay                    },
