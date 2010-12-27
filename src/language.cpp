@@ -46,10 +46,13 @@ extern "C" int _putenv(const char*);
 
 namespace {
 	language_def current_language;
+	std::vector<config> languages_;
 	utils::string_map strings_;
 }
 
 static language_list known_languages;
+
+bool load_strings(bool complain);
 
 bool current_language_rtl()
 {
@@ -197,7 +200,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	DBG_G << "Full locale: " << std::setlocale(LC_ALL, NULL) << '\n';
 }
 
-bool set_language(const language_def& locale)
+void set_language(const language_def& locale)
 {
 	strings_.clear();
 
@@ -205,32 +208,29 @@ bool set_language(const language_def& locale)
 	locale_lc.resize(locale.localename.size());
 	std::transform(locale.localename.begin(),locale.localename.end(),locale_lc.begin(),tolower);
 
-	config cfg;
-
 	current_language = locale;
 	wesnoth_setlocale(LC_COLLATE, locale.localename, &locale.alternates);
 	wesnoth_setlocale(LC_TIME, locale.localename, &locale.alternates);
 	wesnoth_setlocale(LC_MESSAGES, locale.localename, &locale.alternates);
 
-	// fill string_table (should be moved somwhere else some day)
-	try {
-		scoped_istream stream = preprocess_file(get_wml_location("hardwired/english.cfg"));
-		read(cfg, *stream);
-	} catch(config::error& e) {
-		std::cerr << "Could not read english.cfg\n";
-		throw e;
-	}
+	load_strings(false);
+}
 
-	config &langp = cfg.child("language");
-	if (!langp) {
-		std::cerr << "No [language] block found in english.cfg\n";
+bool load_strings(bool complain)
+{
+	DBG_G << "Loading strings\n";
+	config cfg;
+
+	LOG_G << "There are " << languages_.size() << " [language] blocks\n";
+	if (complain && languages_.empty()) {
+		std::cerr << "No [language] block found\n";
 		return false;
 	}
-
-	foreach (const config::attribute &j, langp.attribute_range()) {
-		strings_[j.first] = j.second;
+	foreach (const config &lang, languages_) {
+		foreach (const config::attribute &j, lang.attribute_range()) {
+			strings_[j.first] = j.second;
+		}
 	}
-	// end of string_table fill
 
 	return true;
 }
@@ -277,7 +277,7 @@ const language_def& get_locale()
 	return known_languages[0];
 }
 
-void init_textdomains(const config& cfg)
+bool init_textdomains(const config& cfg)
 {
 	foreach (const config &t, cfg.child_range("textdomain"))
 	{
@@ -298,6 +298,10 @@ void init_textdomains(const config& cfg)
 			}
 		}
 	}
+	foreach(const config &l, cfg.child_range("language")) {
+		languages_.push_back(l);
+	}
+	return load_strings(true);
 }
 
 /* vim:set encoding=utf-8: */

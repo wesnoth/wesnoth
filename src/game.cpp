@@ -656,7 +656,8 @@ bool game_controller::init_config(const bool force)
 
 	hotkey::load_hotkeys(game_config());
 	paths_manager_.set_paths(game_config());
-	::init_textdomains(game_config());
+	if(!::init_textdomains(game_config()))
+		return false;
 	about::set_about(game_config());
 	ai::configuration::init(game_config());
 
@@ -668,8 +669,7 @@ bool game_controller::init_language()
 	if(!::load_language_list())
 		return false;
 
-	if (!::set_language(get_locale()))
-		return false;
+	::set_language(get_locale());
 
 	if(!no_gui_) {
 		std::string wm_title_string = _("The Battle for Wesnoth");

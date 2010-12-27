@@ -75,7 +75,7 @@ std::vector<language_def> get_languages();
 //will set string_table to be populated with data from that locale.
 //locale may be either the full name of the language, like 'English',
 //or the 2-letter version, like 'en'.
-bool set_language(const language_def& locale);
+void set_language(const language_def& locale);
 
 //function which returns the name of the language currently used
 const language_def& get_language();
@@ -85,7 +85,7 @@ bool current_language_rtl();
 const language_def& get_locale();
 
 /** Initializes the list of textdomains from a configuration object */
-void init_textdomains(const config& cfg);
+bool init_textdomains(const config& cfg);
 
 bool load_language_list();
 
