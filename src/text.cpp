@@ -95,6 +95,7 @@ ttext::ttext() :
 
 	pango_layout_set_ellipsize(layout_, ellipse_mode_);
 	pango_layout_set_alignment(layout_, alignment_);
+	pango_layout_set_wrap(layout_, PANGO_WRAP_WORD_CHAR);
 
 	/*
 	 * Set the pango spacing a bit bigger since the default is deemed to small
