@@ -22,11 +22,6 @@
 #include "resources.hpp"
 #include "formula_string_utils.hpp"
 
-
-namespace {
-	const size_t max_label_size = 32;
-}
-
 //our definition of map labels being obscured is if the tile is obscured,
 //or the tile below is obscured. This is because in the case where the tile
 //itself is visible, but the tile below is obscured, the bottom half of the
@@ -71,12 +66,6 @@ void map_labels::read(const config &cfg)
 		add_label(loc, label);
 	}
 	recalculate_labels();
-}
-
-
-size_t map_labels::get_max_chars()
-{
-	return max_label_size;
 }
 
 const terrain_label* map_labels::get_label(const map_location& loc, const std::string& team_name)
@@ -289,7 +278,6 @@ terrain_label::terrain_label(const t_string& text,
 		parent_(&parent),
 		loc_(loc)
 {
-	check_text_length();
 	draw();
 }
 
@@ -306,7 +294,6 @@ terrain_label::terrain_label(const map_labels &parent, const config &cfg) :
 		loc_()
 {
 	read(cfg);
-	check_text_length();
 }
 
 
@@ -422,7 +409,6 @@ void terrain_label::update_info(const t_string& text,
 {
 	color_ = color;
 	text_ = text;
-	check_text_length();
 	team_name_ = team_name;
 	draw();
 }
@@ -466,6 +452,8 @@ void terrain_label::draw()
 	flabel.set_color(color_);
 	flabel.set_position(xloc, yloc);
 	flabel.set_clip_rect(parent_->disp().map_outside_area());
+	flabel.set_width(font::SIZE_NORMAL * 13);
+	flabel.set_height(font::SIZE_NORMAL * 4);
 	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
 	flabel.use_markup(use_markup);
 
@@ -485,17 +473,6 @@ bool terrain_label::visible() const
 
 	return (parent_->team_name() == team_name_
 			|| (team_name_.empty() && parent_->visible_global_label(loc_)));
-}
-
-void terrain_label::check_text_length()
-{
-	// The actual data is wide_strings so test in wide_string mode
-	// also cutting a wide_string at an arbritary place gives odd
-	// problems.
-	std::string tmp = text_.str();
-	utils::truncate_as_wstring(tmp, parent_->get_max_chars());
-	if (tmp != text_.str())
-		text_ = t_string(tmp);
 }
 
 void terrain_label::clear()

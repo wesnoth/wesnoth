@@ -38,8 +38,6 @@ public:
 	void write(config& res) const;
 	void read(const config &cfg);
 
-	static size_t get_max_chars();
-
 	const terrain_label* get_label(const map_location& loc, const std::string& team_name);
 	// search a team-only label, if fails then try public labels
 	const terrain_label* get_label(const map_location& loc);
@@ -122,7 +120,6 @@ private:
 	void clear();
 	void draw();
 	bool visible() const;
-	void check_text_length();
 	std::string cfg_color() const;
 
 	int handle_;
