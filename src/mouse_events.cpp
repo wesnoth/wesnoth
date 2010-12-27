@@ -29,6 +29,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
+#include "language.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
@@ -867,7 +868,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 		std::string range = attw.range().empty() ? defw.range() : attw.range();
 		if (!range.empty()) {
-			range = gettext(range.c_str());
+			range = string_table["range_" + range];
 		}
 
 		// add dummy names if missing, to keep stats aligned
