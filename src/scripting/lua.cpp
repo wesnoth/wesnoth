@@ -1727,7 +1727,7 @@ static int intf_message(lua_State *L)
 /**
  * Removes all messages from the chat window.
  */
-static int intf_clear_messages(lua_State *L)
+static int intf_clear_messages(lua_State*)
 {
 	resources::screen->clear_chat_messages();
 	return 0;
