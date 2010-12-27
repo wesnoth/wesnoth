@@ -1480,7 +1480,7 @@ public:
 				 attack_end = attacks.end();
 				 attack_it != attack_end; ++attack_it) {
 				std::string lang_weapon = attack_it->name();
-				std::string lang_type = gettext(attack_it->type().c_str());
+				std::string lang_type = string_table["type_" + attack_it->type()];
 				std::vector<item> row;
 				std::stringstream attack_ss;
 				attack_ss << "<img>src='" << (*attack_it).icon() << "'</img>";

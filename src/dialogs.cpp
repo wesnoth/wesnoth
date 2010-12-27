@@ -843,7 +843,7 @@ void unit_preview_pane::draw_contents()
 			text << font::weapon_details
 				<< "  " << string_table["range_" + at_it->range()]
 				<< font::weapon_details_sep
-				<< _(at_it->type().c_str()) << "\n";
+				<< string_table["type_" + at_it->type()] << "\n";
 
 			std::string accuracy_parry = at_it->accuracy_parry_description();
 			if(accuracy_parry.empty() == false) {
