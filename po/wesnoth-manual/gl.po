@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "POT-Creation-Date: 2010-12-08 19:45+0100\n"
-"PO-Revision-Date: 2010-10-04 17:59+0200\n"
+"PO-Revision-Date: 2010-12-28 00:49+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.2\n"
 
 # type: Attribute 'lang' of: <book>
 #. type: Attribute 'lang' of: <book>
@@ -1043,7 +1043,7 @@ msgstr "O perfil da última unidade seleccionada."
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:495
 msgid "End Turn button"
-msgstr "O botón para «Rematar a quenda»."
+msgstr "O botón para «Continuar»."
 
 # type: Content of: <book><chapter><section><section><title>
 #. type: Content of: <book><chapter><section><section><title>
@@ -1189,11 +1189,11 @@ msgid ""
 "multiplayer game)  chatting with other players before pressing that button "
 "to advance."
 msgstr ""
-"Ao gañar un escenario, o mapa tinguirase de gris e o botón de «Rematar a "
-"quenda» cambiarase polo de «Rematar o escenario». Entón poderás facer cousas "
-"coma cambiar as opcións de gardado ou ─se estás nunha partida entre varios "
-"xogadores─ conversar con outros xogadores antes de premer nese botón para "
-"avanzar."
+"Ao gañar un escenario, o mapa tinguirase de gris e o botón de "
+"<emphasis>Continuar</emphasis> cambiarase polo de <emphasis>Finalizar</"
+"emphasis>. Entón poderás facer cousas como cambiar as opcións de gardado ou "
+"─se estás nunha partida entre varios xogadores─ conversar con outros "
+"xogadores antes de premer nese botón para avanzar."
 
 #. type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:552 ../../doc/manual/manual.en.xml:1302
@@ -1279,7 +1279,6 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><title>
 #: ../../doc/manual/manual.en.xml:589
 #, fuzzy
-#| msgid "Controls and hotkeys"
 msgid "General controls and hotkeys"
 msgstr "Controis e atallos"
 
@@ -1418,7 +1417,6 @@ msgstr "Intercambiar entre o modo a pantalla completa e o modo nunha fiestra."
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:690
 #, fuzzy
-#| msgid "Ctrl-alt-m"
 msgid "Ctrl-Alt-m"
 msgstr "Ctrl+Alt+M"
 
@@ -1468,7 +1466,6 @@ msgstr "Restablecer a distancia á que se ve o mapa."
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:728
 #, fuzzy
-#| msgid "Ctrl-r"
 msgid "Ctrl+e"
 msgstr "Ctrl+R"
 
@@ -1476,7 +1473,6 @@ msgstr "Ctrl+R"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:731
 #, fuzzy
-#| msgid "Toggle grid"
 msgid "Toggle ellipses"
 msgstr "Amosar ou non os límites dos hexágonos."
 
@@ -1579,7 +1575,6 @@ msgstr "Moverse canda o líder."
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:824
 #, fuzzy
-#| msgid "Shift-Space"
 msgid "Shift-s"
 msgstr "Maiús+Barra espazadora"
 
@@ -1610,7 +1605,6 @@ msgstr "Recrutar unha unidade."
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:852
 #, fuzzy
-#| msgid "Ctrl-alt-r"
 msgid "Ctrl-Alt-r"
 msgstr "Ctrl+Alt+R"
 
@@ -1654,8 +1648,6 @@ msgstr "D"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:885
 #, fuzzy
-#| msgid ""
-#| "Defense and movement of the currently selected unit on the marked hex"
 msgid "Show the description of the currently selected unit"
 msgstr "A defensa e movementos da unidade seleccionada no hexágono marcado."
 
@@ -1713,7 +1705,6 @@ msgstr "Percorrer de forma cíclica as unidades ás que lles quedan movementos."
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:928
 #, fuzzy
-#| msgid "Shift-Space"
 msgid "Shift-n"
 msgstr "Maiús+Barra espazadora"
 
@@ -1821,7 +1812,6 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1011
 #, fuzzy
-#| msgid "Toggle accelerated game mode"
 msgid "Toggle planning mode"
 msgstr "Activar ou desactivar o modo de xogo acelerado."
 
@@ -1845,10 +1835,12 @@ msgstr ""
 msgid "Move action down in the queue"
 msgstr ""
 
+# Baseado no contido do wesnoth.po.
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1032
+#, fuzzy
 msgid "Page Up"
-msgstr ""
+msgstr "Peste"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1035
@@ -1859,7 +1851,6 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1040
 #, fuzzy
-#| msgid "Ctrl-r"
 msgid "Ctrl+y"
 msgstr "Ctrl+R"
 
@@ -1871,7 +1862,6 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><title>
 #: ../../doc/manual/manual.en.xml:1053
 #, fuzzy
-#| msgid "Multiplayer dialog"
 msgid "Multiplayer specific hotkeys"
 msgstr "Diálogo para partidas de varios xogadores"
 
@@ -1891,9 +1881,8 @@ msgstr "Enviar unha mensaxe a outro xogador (só entre varios xogadores)."
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1068
 #, fuzzy
-#| msgid "Ctrl-s"
 msgid "Ctrl-m"
-msgstr "Ctrl+S"
+msgstr "Ctrl+R"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1929,7 +1918,6 @@ msgstr "Ver o rexistro das conversas."
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1092
 #, fuzzy
-#| msgid "Ctrl-r"
 msgid "Ctrl+x"
 msgstr "Ctrl+R"
 
@@ -2010,7 +1998,6 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1158
 #, fuzzy
-#| msgid "5"
 msgid "F5"
 msgstr "5"
 
@@ -2023,7 +2010,6 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1166
 #, fuzzy
-#| msgid "Shift-Space"
 msgid "Shift+c"
 msgstr "Maiús+Barra espazadora"
 
@@ -2063,7 +2049,6 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1212
 #, fuzzy
-#| msgid "Ctrl-r"
 msgid "Ctrl+F5"
 msgstr "Ctrl+R"
 
@@ -2084,7 +2069,6 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><title>
 #: ../../doc/manual/manual.en.xml:1236
 #, fuzzy
-#| msgid "Controls and hotkeys"
 msgid "Pandora specific controls and hotkeys"
 msgstr "Controis e atallos"
 
@@ -3731,9 +3715,6 @@ msgstr "Esfera vermella"
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:2292
 #, fuzzy
-#| msgid ""
-#| "If you control the unit and it has moved this turn, but could still move "
-#| "further or attack"
 msgid ""
 "If you control the unit, but it has ended its turn (might still be able to "
 "move or attack)"
@@ -4327,8 +4308,8 @@ msgid ""
 "to end your move out of striking range of the enemy army. He cannot attack "
 "but most likely will close into your striking range."
 msgstr ""
-"Cando os exércitos se atopan, pode que queiras intentar ser o primeiro en "
-"atacar. Así que intenta rematar os teus movementos deixando ás túas unidades "
+"Ao enfrontarte a outro exército, pode que che interese ser o primeiro en "
+"atacar, así que intenta rematar os teus movementos deixando ás túas unidades "
 "fóra do alcance do exército inimigo. El non poderá atacar pero é probable "
 "que se achegue ao teu exército quedando ao alcance das túas unidades."
 
@@ -5036,10 +5017,6 @@ msgstr ""
 "unidades de nivel inferior ─unha peza de ouro adicional por nivel─. As "
 "unidades leais son unha excepción ─carecen de custo de mantemento algún─."
 
-# type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#~ msgid "ctrl-m"
-#~ msgstr "Ctrl+M"
-
 # type: Content of: <book><chapter><section><simpara>
 #~ msgid ""
 #~ "These are the default control keys. You can change them to your taste "
@@ -5047,6 +5024,10 @@ msgstr ""
 #~ msgstr ""
 #~ "Estas son as teclas de control predeterminadas. Podes personalizalas a "
 #~ "través do menú «Preferencias»."
+
+# type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
+#~ msgid "ctrl-m"
+#~ msgstr "Ctrl+M"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #~ msgid "N"
