@@ -300,6 +300,10 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";
 	DBG_REPLAY << "Player number: " << player_number_ << "\n";
 
+	// Reset will crash the engine if it happens during a player turn.
+	gui::button *b = gui_->find_button("button-resetreplay");
+	if (b) b->enable(false);
+
 	try{
 		// If a side is empty skip over it.
 		if (!current_team().is_empty()) {
@@ -334,9 +338,12 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 	}
 	catch(end_level_exception& e){
 		//VICTORY/DEFEAT end_level_exception shall not return to title screen
-		if (e.result == VICTORY || e.result == DEFEAT) return;
-		throw;
+		if (e.result != VICTORY && e.result != DEFEAT) throw;
 	}
+
+	b = gui_->find_button("button-resetreplay");
+	if (b) b->enable();
+
 }
 
 void replay_controller::update_teams(){
