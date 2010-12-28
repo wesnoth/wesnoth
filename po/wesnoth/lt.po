@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 13:00+0100\n"
+"POT-Creation-Date: 2010-12-28 13:01+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -48,14 +48,13 @@ msgstr "Animuoti žemėlapį"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
-#, fuzzy
 msgid "Local time of day light"
-msgstr "Paros laikas"
+msgstr "Vietinis dienos laikas"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:48
 msgid "Local time of day light effect (use more memory)."
-msgstr ""
+msgstr "Vietinio dienos laiko poveikis (naudoja daugiau atminties)."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:55
@@ -70,29 +69,33 @@ msgstr "Dalinių stovėjimo animacijos"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:69
 msgid "Show Combat"
-msgstr "Rodyti kovą"
+msgstr "Rodyti grumtynes"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:76
+#, fuzzy
 msgid "Ping Timeout"
-msgstr ""
+msgstr "Periodinio garso signalo laikinas sustabdymas"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:77
+#, fuzzy
 msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr ""
+"Sekundžių kiekis užtrunkantis tarp periodinio garso signalo ir jo "
+"sustabdymo. Uždrausti su 0 reikšme. "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:87
 msgid "Accept whisper messages from friends only"
-msgstr ""
+msgstr "Šnabždesius priimti tik iš draugų"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:94
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
+msgstr "Automatiškai atsidarantys šnabždesių langai vestibiulyje"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:101
@@ -502,8 +505,9 @@ msgstr "gynybinis."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:71
+#, fuzzy
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Susikaupti pergalei..."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:72
@@ -547,7 +551,7 @@ msgstr "Atgal"
 #. [protect]
 #: data/core/macros/ai_controller.cfg:201
 msgid "Focus on protecting..."
-msgstr "Koncentruotis gynyboje..."
+msgstr "Koncentruotis saugant..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:202
@@ -567,7 +571,7 @@ msgstr "Ginti vietą..."
 #. [print]
 #: data/core/macros/ai_controller.cfg:368
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Dešiniu pelės klavišu pažymėkite ginamą vietovę"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:375
@@ -576,8 +580,9 @@ msgstr "Ginti šią vietą"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:392
+#, fuzzy
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "susikaupti vietovės apie $x1|,$y1| gynimui."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:434
@@ -643,7 +648,7 @@ msgstr "Nuvesti vadą į..."
 
 #: data/core/macros/ai_controller.cfg:977
 msgid "Right-click to select a location to move leader to"
-msgstr ""
+msgstr "Dešiniu pelės klavišo paspaudimu pažymėti vietovę vado ėjimui"
 
 #: data/core/macros/ai_controller.cfg:978
 msgid "Move leader here"
@@ -673,7 +678,7 @@ msgstr ", MAX GT +25%"
 #. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/deprecated-utils.cfg:416
 msgid "Max HP bonus +"
-msgstr ""
+msgstr "Didžiausias GT priedas +"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
@@ -737,7 +742,7 @@ msgstr "Gydymo eliksyras"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:204
 msgid "A feeling of well-being overwhelms the drinker."
-msgstr ""
+msgstr "Gėriką apima palaimos jausmas."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:205
@@ -752,7 +757,7 @@ msgstr "Nuodai"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:242
 msgid "Poison is seeping through the veins of this unit at this very moment."
-msgstr ""
+msgstr "Nuodai šiuo metu sunkiasi per šio dalinio venas."
 
 #: data/core/macros/items.cfg:262
 msgid ""
@@ -793,7 +798,7 @@ msgstr "Išgėręs gauna stiprybės."
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:340
 msgid "Potion of Decay"
-msgstr ""
+msgstr "Irimo eliksyras"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:343
@@ -828,7 +833,7 @@ msgstr ""
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:456
 msgid "This staff will grant the bearer swift movement."
-msgstr ""
+msgstr "Ši lazda suteiks nešiotojui greitą judėjimą."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:457
@@ -870,6 +875,17 @@ msgid ""
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
+"Egaras,Elčas,Ga’ašas,Gadé Ynas,Gakré Omas,Galekas,Galšas,Garadinas,Garčinas,"
+"Garkas,Garlanas,Garlin Onas,Garutinas,Gart’las,Garušis,Gašinaras,Gašolas,"
+"Gaušis,Gaustunas,Gegčis,Gelka Konas, Gelknikas,Gilanas,Gišaris,Gostas,Grada,"
+"Graet Ihnas,Grašenas,Gravlanas,Gragas,Grelnitas,Gren Onas,Gretas,Gribelas,"
+"Gridas,Grišas,Gron Inas,Kanas,Kan Ihas,Kariganas,Kari Konas,Karonas,Kaskas,"
+"Kegridas,Kerat Inas,Kerat Koras,Klašas,Kon Garašénas,Kraagas,Kral Onas,Kran "
+"Koras,Krašas,Kraslaras,Krenlis,Krugenas,Kunas,Ma Tojas,Margianas,"
+"Mar’Ildianas,Markanas,Markinosas,Mar Onas,Mara Di’lekas,Maritonas,Maritosas,"
+"Merkušas,Meritos Garkas,Morusténas,Muras,Omatakénas,Rešanas,Vašittas,"
+"Velnikas,Veralonas,Veramonas,Veratas,Verditas,Verkonas,Verlinas,Vermadas,"
+"Vertikas,Vladniras"
 
 #: data/core/macros/names.cfg:19
 msgid ""
@@ -877,8 +893,12 @@ msgid ""
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
+"Alen Ka,Alinašė Mal,Aširtė,Auginetė Ka,Auuglan,Damel,Del,Demla,Dinsilė,Eši,"
+"Olatė,Omagė,Omagra,Ora Ka,Oridan,Oridė,Ošibi,Valin,Valnira,Valnitė,Velisk,"
+"Vera,Velin Ka,Veštar,Vuštin"
 
 #: data/core/macros/names.cfg:23
+#, fuzzy
 msgid ""
 "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
 "Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
@@ -924,6 +944,57 @@ msgid ""
 "Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 msgstr ""
+"Aigaithas,Aigaithilas,Aigaithingas,Aigaitholas,Aigalas,Aigalingas,Aigalis,"
+"Aigalolas,Aigalsilas,Aigatas,Aigatis,Aigatlosas,Aigatsilas,Aigatsolas,"
+"Aigatus,Aigcatas,Aigcatilas,Aigcatingas,Aigcatisas,Aigcatsilas,Aigcatsolas,"
+"Aigcatus,Aigdringas,Aigdris,Aigdrlosas,Aigdrsilas,Aigdrsolas,Aigduras,"
+"Aigdurlosas,Aigdursolas,Aigthaingas,Aigthais,Aigthasilas,Aigthausas,Alaithas,"
+"Alaithis,Alaithlosas,Alaitholas,Alaithsolas,Alaithus,Alalas,Alalilas,"
+"Alalolas,Alalsolas,Alalus,Alatas,Alatilas,Alatingas,Alatlosas,Alatsilas,"
+"Alcatilas,Alcatis,Alcatlosas,Alcatsilas,Aldras,Aldrilas,Aldringas,Aldris,"
+"Aldrlosas,Aldrolas,Aldrsolas,Alduras,Aldurlosas,Aldurolas,Althaasas,"
+"Althailas,Althalosas,Althaolas,Althasilas,Althasolas,Althausas,Anaithas,"
+"Anaithilas,Anaithingas,Anaithisas,Anaithsilas,Anaithusas,Analilas,Anallosas,"
+"Analolas,Analsilas,Analusas,Anatas,Anatingas,Anatis,Anatolas,Anatsolas,"
+"Ancatas,Ancatilas,Ancatolas,Ancatus,Andrilas,Andris,Andrlosas,Andrusas,"
+"Andurilas,Andurolas,Andursolas,Andurus,Anthaasas,Anthaingas,Anthaisas,"
+"Anthaolas,Anthasilas,Anthasolas,Anthausas,Augaithas,Augaithingas,"
+"Augaithsilas,Augaithus,Augalas,Augalingas,Augalolas,Augatingas,Augatlosas,"
+"Augatolas,Augatsilas,Augatsolas,Augcatas,Augcatilas,Augcatis,Augcatolas,"
+"Augcatsilas,Augcatusas,Augdras,Augdris,Augdrsilas,Augdrusas,Augduras,"
+"Augdurilas,Augduringas,Augdurolas,Augdursolas,Augdurusas,Augthailas,Augthais,"
+"Augthalosas,Augthaolas,Dulaithilas,Dulaithingas,Dulaithlosas,Dulaithsilas,"
+"Dulaithsolas,Dulalas,Dulalingas,Dulalisas,Dulalsilas,Dulatilas,Dulatingas,"
+"Dulatolas,Dulatsolas,Dulatusas,Dulcatilas,Dulcatingas,Dulcatlosas,Dulcatolas,"
+"Dulcatsilas,Dulcatsolas,Duldrilas,Duldris,Duldrlosas,Duldrolas,Duldrsilas,"
+"Duldrusas,Dulduras,Dulduringas,Duldursilas,Duldurusas,Dulthalosas,"
+"Dulthasilas,Dulthasolas,Dulthausas,Glamaithilas,Glamaithisas,Glamaitholas,"
+"Glamaithsolas,Glamalilas,Glamalingas,Glamalisas,Glamallosas,Glamalsilas,"
+"Glamalusas,Glamatilas,Glamatusas,Glamcatas,Glamcatilas,Glamcatingas,"
+"Glamcatsilas,Glamcatusas,Glamdras,Glamdrilas,Glamdrlosas,Glamdrsolas,"
+"Glamduras,Glamdurilas,Glamduringas,Glamdurisas,Glamdursolas,Glamthaas,"
+"Glamthaolas,Glamthasilas,Glamthasolas,Glamthausas,Glominas,Gomaithas,"
+"Gomaithilas,Gomaitholas,Gomaithsolas,Gomalilas,Gomalis,Gomalus,Gomatas,"
+"Gomatilas,Gomatingas,Gomatisas,Gomatlosas,Gomatolas,Gomcatilas,Gomcatisas,"
+"Gomcatlosas,Gomdras,Gomdrilas,Gomdringas,Gomdrisas,Gomdrolas,Gomdrsilas,"
+"Gomdurisas,Gomdurlosas,Gomdursilas,Gomdursolas,Gomdurus,Gomthaas,Gomthalosas,"
+"Gomthasolas,Naraithilas,Naraithingas,Naraitholas,Naraithsilas,Naraithsolas,"
+"Naraithusas,Naralas,Naralilas,Naralsilas,Naralusas,Naratlosas,Naratolas,"
+"Naratsilas,Narcatingas,Narcatisas,Narcatolas,Narcatsilas,Narcatsolas,"
+"Nardrasas,Nardrilas,Nardringas,Nardris,Nardrolas,Nardrsilas,Nardrsolas,"
+"Nardrusas,Narduras,Nardurilas,Nardurolas,Narthalosas,Narthaolas,Pelaithas,"
+"Pelaithilas,Pelaithingas,Pelaithisas,Pelaithlosas,Pelaitholas,Pelaithsilas,"
+"Pelaithsolas,Pelalilas,Pelalingas,Pelalis,Pelalsilas,Pelalsolas,Pelalusas,"
+"Pelatilas,Pelatingas,Pelatisas,Pelatolas,Pelatsilas,Pelatusas,Pelcatingas,"
+"Pelcatlosas,Pelcatolas,Pelcatsilas,Peldras,Peldrilas,Peldrsolas,Peldrusas,"
+"Peldurilas,Pelduringas,Peldurisas,Peldurolas,Peldursolas,Peldurusas,"
+"Pelthaasas,Pelthailas,Pelthasilas,Trithaithas,Trithaithilas,Trithaithis,"
+"Trithaithlosas,Trithaitholas,Trithaithsilas,Trithaithsolas,Trithaithusas,"
+"Trithalis,Trithalolas,Trithatas,Trithatilas,Trithatlosas,Trithatsolas,"
+"Trithcatlosas,Trithcatsolas,Trithcatusas,Trithdrilas,Trithdringas,Trithdris,"
+"Trithdrlosas,Trithdrolas,Trithdrsolas,Trithdrusas,Trithdurilas,Trithduringas,"
+"Trithdurlosas,Trithdurolas,Trithdursilas,Trithdurusas,Triththaasas,"
+"Triththailas,Triththaingas,Triththasolas,Triththausas"
 
 #: data/core/macros/names.cfg:27
 msgid ""
@@ -1199,6 +1270,7 @@ msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kajja,Kejja,Kiira,Korra"
 
 #: data/core/macros/names.cfg:38
+#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -1248,8 +1320,69 @@ msgid ""
 "Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
 "Yrynyc,Yryrcyn"
 msgstr ""
+"Addraecynas,Addraenvanas,Addraeras,Addraercynas,Addrarynas,Addreddryas,"
+"Addredryas,Addregwynas,Addrenycas,Addreoddryas,Addreoddynas,Addreonycas,"
+"Addreorcynas,Addreranas,Addribrynas,Addriddynas,Addrocynas,Addrorynas,"
+"Addrunvanas,Addrurcynas,Addryllynas,Addrynvanas,Aethacynas,Aethadryas,"
+"Aethaecas,Aethaeranas,Aethaerynas,Aethagwynas,Aethanryas,Aetharcynas,"
+"Aethecas,Aethellynas,Aethenvanas,Aetheocas,Aetheollynas,Aetheonycas,"
+"Aetheorcynas,Aethercynas,Aetherraentas,Aethibrynas,Aethiddryas,Aethircynas,"
+"Aethobrynas,Aethoddynas,Aethonnynas,Aethucas,Aethudryas,Aethugwynas,Aethunas,"
+"Aethunryas,Aethydryas,Aethynycas,Blacas,Bladocas,Blaecas,Blaedryas,Blanryas,"
+"Blebrynas,Bledocas,Blemyras,Blennynas,Blenvanas,Bleollynas,Blercynas,Bliddas,"
+"Bliddryas,Blillynas,Blinvanas,Blollynas,Blubrynas,Blucynas,Bludryas,"
+"Blullynas,Bluranas,Blybrynas,Blyddas,Blygwynas,Blymyras,Blyras,Bucynas,Cacas,"
+"Cadryas,Caebrynas,Caedryas,Caeranas,Caercynas,Caras,Caracas,Caraddryas,"
+"Caradocas,Caraedryas,Caraennynas,Cararynas,Careddas,Careddryas,Caregwynas,"
+"Carenas,Careobrynas,Careogwynas,Careonvanas,Careorraentas,Careorynas,"
+"Carercynas,Caricas,Cariddryas,Carocynas,Caroddynas,Caroras,Caroranas,"
+"Carraentas,Carudocas,Carullynas,Carygwynas,Carynas,Cebrynas,Cemyras,Cennynas,"
+"Ceocas,Ceoddryas,Ceoddynas,Ceomyras,Ceonnynas,Ceonryas,Ceorynas,Cicynas,"
+"Cinas,Cinryas,Cocas,Convanas,Corcynas,Cubrynas,Cunryas,Curynas,Cynycas,"
+"Cyrynas,Dacas,Daddas,Dadocas,Daeddryas,Daedocas,Daellynas,Demyras,Denvanas,"
+"Deoddas,Deollynas,Deonycas,Derraentas,Dibrynas,Dinnynas,Dircynas,Dycynas,"
+"Dyddynas,Gaddryas,Gaebrynas,Gaedryas,Gaercynas,Gagwynas,Ganas,Gannynas,Garas,"
+"Gecynas,Geddynas,Gegwynas,Geodryas,Ginvanas,Glacynas,Gladocas,Glaercynas,"
+"Glarraentas,Gleddryas,Gleoddynas,Gleranas,Gliddynas,Glillynas,Glinryas,"
+"Glircynas,Gloddryas,Gloddynas,Glonryas,Glonvanas,Glumyras,Glunas,Glunryas,"
+"Glunvanas,Glycas,Glyddas,Glydocas,Glynryas,Glynvanas,Glyranas,Gocas,Goras,"
+"Gubrynas,Guddas,Gullynas,Gumyras,Guras,Gwadocas,Gwaecas,Gwaeddynas,Gwanas,"
+"Gweddynas,Gwegwynas,Gwellynas,Gwennynas,Gwenycas,Gweocynas,Gweoddas,"
+"Gweodocas,Gweodryas,Gweogwynas,Gweoranas,Gwidocas,Gwilamas,Gwoddas,Gwoddynas,"
+"Gwollynas,Gworas,Gwucynas,Gwudocas,Gwumyras,Gwuranas,Gwybrynas,Gwycynas,"
+"Gwyddryas,Gwydocas,Gwymyras,Gwynnynas,Gydocas,Gyllynas,Gymyras,Haldaras,"
+"Labrynas,Ladocas,Laellynas,Lanas,Lannynas,Laranas,Lecas,Lemyras,Lenvanas,"
+"Leogwynas,Lercynas,Ligwynas,Linas,Lirynas,Lonnynas,Lorraentas,Luddryas,"
+"Ludocas,Lunnynas,Lunvanas,Lurraentas,Macas,Maddynas,Maennynas,Manryas,"
+"Manycas,Marcynas,Mecas,Menvanas,Meollynas,Meonas,Meonnynas,Meorraentas,"
+"Middryas,Midryas,Mimyras,Moddas,Moddryas,Monryas,Moranas,Morcynas,Mubrynas,"
+"Mudocas,Mugwynas,Murcynas,Mydocas,Mygwynas,Mynas,Myrraentas,Owacas,Owaddas,"
+"Owaddynas,Owaecynas,Owaedryas,Owainas,Owarcynas,Owarynas,Owecynas,Owedryas,"
+"Oweomyras,Oweoras,Oweorcynas,Oweranas,Owercynas,Owidryas,Owinvanas,Owinycas,"
+"Owoddas,Owoddryas,Owogwynas,Owollynas,Oworanas,Oworcynas,Oworraentas,"
+"Owuddryas,Owuddynas,Owugwynas,Owuras,Owyranas,Rabrynas,Raddas,Ranvanas,Raras,"
+"Reoddynas,Reodryas,Rhaecynas,Rhaedocas,Rhaemyras,Rhaerraentas,Rhanryas,"
+"Rharcynas,Rhenryas,Rhenvanas,Rhenycas,Rheoddas,Rheoddynas,Rheollynas,Rheoras,"
+"Rheoranas,Rheorraentas,Rheranas,Rherraentas,Rhobrynas,Rhodryas,Rhollynas,"
+"Rhonvanas,Rhubrynas,Rhugwynas,Rhunycas,Rhuras,Rhygwynas,Rhyllynas,Rhynycas,"
+"Rhyrcynas,Rhyrraentas,Rocynas,Roddynas,Romyras,Ronas,Ronryas,Rubrynas,"
+"Ruddryas,Rumyras,Runas,Rurcynas,Rybrynas,Rycynas,Ryddryas,Rygwynas,Rynnynas,"
+"Rynryas,Saecas,Saellynas,Saemyras,Saenvanas,Saercynas,Sanycas,Saranas,"
+"Sarraentas,Secynas,Seddynas,Sedryas,Sellynas,Sennynas,Seoddryas,Seorcynas,"
+"Sercynas,Siddryas,Simyras,Sirynas,Soddas,Sodryas,Soranas,Sucas,Suddas,"
+"Surcynas,Syddas,Syranas,Syrynas,Tabrynas,Taecas,Taeddas,Taedocas,Taemyras,"
+"Taenvanas,Taercynas,Tanryas,Tarcynas,Teddynas,Tegwynas,Tenas,Tennynas,"
+"Tenvanas,Teobrynas,Teoddynas,Teoras,Teorcynas,Terraentas,Tinryas,Tinvanas,"
+"Tirynas,Toddas,Tuddas,Tuddryas,Tudocas,Tunvanas,Turraentas,Tyddynas,Vaddynas,"
+"Vaeddynas,Vaedryas,Vaennynas,Varcynas,Venas,Vennynas,Veocynas,Veoddynas,"
+"Veodryas,Veogwynas,Veomyras,Vinvanas,Vinycas,Virraentas,Vobrynas,Vogwynas,"
+"Vonryas,Vuddynas,Vugwynas,Vycas,Vygwynas,Vyrcynas,Yracynas,Yraecas,Yranas,"
+"Yrannynas,Yranvanas,Yrarynas,Yreddas,Yreddynas,Yregwynas,Yrerynas,Yrinvanas,"
+"Yrirraentas,Yroddryas,Yrullynas,Yrumyras,Yrunnynas,Yrunvanas,Yryllynas,"
+"Yrymyras,Yrynycas,Yryrcynas"
 
 #: data/core/macros/names.cfg:39
+#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -1297,8 +1430,63 @@ msgid ""
 "Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
 "Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 msgstr ""
+"Alabryllas,Alaebryllas,Alaenivers,Alallas,Alalonnas,Alaryanas,Aleaclas,"
+"Aleaniveras,Alearas,Alearkas,Alenas,Alengwenas,Alilonnas,Alingwenas,Alollas,"
+"Alolonnas,Aloras,Alubryllas,Alunivers,Aluryans,Alussas,Alwclas,Alwllyras,"
+"Alwlyans,Alwnas,Alybryllas,Alynoicas,Alyras,Alyryanas,Braeddas,Brassas,"
+"Bravyanas,Breabryllas,Breallas,Breallas,Brealonnas,Breanas,Brellas,Brellyras,"
+"Breras,Brerkas,Breryanas,Briclas,Brirkas,Brobryllas,Brollyras,Bronas,"
+"Bronoicas,Broras,Brorkas,Brungwenas,Bruryanas,Brwras,Bryclas,Brynoicas,"
+"Caellas,Caenas,Caengwenas,Caevyanas,Callas,Callanas,Cassas,Cealonnas,Ceras,"
+"Ceryanas,Cibryllas,Ciclas,Cinoicas,Ciras,Cissas,Claclas,Claellas,Claelyanas,"
+"Claenoicas,Clallaas,Clallyras,Claras,Clarkas,Clavyanas,Cleaclas,Cleallas,"
+"Clealyanas,Cleanas,Cleanoicas,Clenoicas,Clibryllas,Clillas,Clillyras,"
+"Clilyanas,Clinoicas,Clissas,Clobryllas,Clollyras,Clonas,Clongwenas,"
+"Clungwenas,Clurkas,Cluvyanas,Clwddas,Clwllas,Clwvyanas,Clyddas,Clyllas,Coras,"
+"Coryanas,Cuclas,Cuddas,Curyanas,Cwddas,Cwlonnas,Cwngwenas,Cwvyanas,Cyddas,"
+"Cyllas,Cyllyras,Cylyanas,Cyniveras,Cyvyanas,Daeddas,Daelyanas,Daengwenas,"
+"Daenoicas,Dallas,Dallyras,Dangwenas,Daras,Dassas,Deanoicas,Deassas,Dellas,"
+"Devyanas,Diclas,Diniveras,Dissas,Dollyras,Dullyras,Dulonnas,Dwbryllas,Dwddas,"
+"Dwnas,Dwnoicas,Dwras,Dybryllas,Dyddas,Dyssas,Elaclas,Elaeddas,Elaellas,"
+"Elaelonnas,Elaessas,Elaevyanas,Elallyras,Elalonnas,Elaras,Elavyanas,Eleallas,"
+"Eleanoicas,Elearkas,Elenoicas,Elerkas,Elivyanas,Elulonnas,Elurkas,Elwllyras,"
+"Elwlonnas,Elwngwenas,Elwras,Elyclas,Elyllyras,Elyngwenas,Elyniveras,Elyrkas,"
+"Gwaeras,Gwaessas,Gwangwenas,Gweaclas,Gweddas,Gwerkas,Gwiclas,Gwirkas,"
+"Gwobryllas,Gwollas,Gwonas,Gwongwenas,Gwonoicas,Gworyanas,Gwullyras,Gwussas,"
+"Gwwclas,Gwwnas,Gwwvyanas,Gwyclas,Gwyddas,Heldras,Jaclas,Jaenas,Jaerkas,"
+"Jaevyanas,Jalyanas,Janas,Jarkas,Jassas,Jeabryllas,Jeallas,Jeanoicas,"
+"Jeniveras,Jiryanas,Jissas,Jollas,Jollas,Jonas,Jongwenas,Jonoicas,Joras,"
+"Jorkas,Jovyanas,Juddas,Jullas,Julonnas,Juras,Jwllas,Jwlyanas,Jyclas,"
+"Jyniveras,Jynoicas,Jyrkas,Jyvyanas,Laeniveras,Laenoicas,Laeryanas,Langwenas,"
+"Larkas,Lassas,Lealonnas,Lealyanas,Leddas,Lelonnas,Lelyanas,Lengwenas,Lerkas,"
+"Lessas,Liddas,Lillas,Linas,Lirkas,Liryanas,Livyanas,Loclas,Loddas,Lollyras,"
+"Lolonnas,Lullas,Lulyanas,Lungwenas,Lunoicas,Luryanas,Lwclas,Lwllas,Lwnoicas,"
+"Lwryanas,Lyclas,Lyllas,Lylyans,Lynas,Lynoicas,Maeclas,Maeniveras,Mavyanas,"
+"Meaclas,Mealyanas,Meanas,Meangwenas,Meanoicas,Meddas,Melonnas,Mengwenas,"
+"Meniveras,Meraddas,Meraeclas,Meraelyanas,Merallas,Merallyras,Meralonnas,"
+"Meranas,Meranoicas,Merealonnas,Mereangwenas,Mereaniveras,Merebryllas,"
+"Merellas,Merengwenas,Meressas,Merilyanas,Merinas,Merinoicas,Merissas,"
+"Merivyanas,Merollas,Merolyanas,Meronas,Meroniveras,Merubryllas,Meruddas,"
+"Merurkas,Merwllas,Merwnoicas,Merwryanas,Meryddas,Merylyanas,Messas,Milonnas,"
+"Molyanas,Moniveras,Mossas,Muddas,Mullyras,Mulyanas,Muryanas,Mwbryllas,"
+"Mwlyanas,Mwngwenas,Mwnoicas,Myclas,Myllas,Myllas,Myras,Myvyanas,Nabryllas,"
+"Naebryllas,Naeclas,Naellas,Nalyanas,Nangwenas,Neallas,Neallyras,Nealonnas,"
+"Neavyanas,Neras,Nessas,Ninoicas,Niryanas,Nivyanas,Nobryllas,Nollas,Nonoicas,"
+"Norkas,Noryanas,Nuclas,Nullas,Nulyanas,Nungwenas,Nuvyanas,Nwllyras,Nwryanas,"
+"Nwvyanas,Nybryllas,Nyllas,Nylyanas,Nyryanas,Nyssas,Nyvyanas,Raebryllas,"
+"Raeras,Raerkas,Ralonnas,Raras,Rarkas,Rassas,Reaclas,Reallas,Reanas,"
+"Reangwenas,Rellas,Relyanas,Rengwenas,Rerkas,Revyanas,Rilonnas,Rilyanas,"
+"Rirkas,Roras,Ruclas,Ruryanas,Rwddas,Rwllas,Rwllyras,Rwlonnas,Rwngwenas,"
+"Rybryllas,Rynas,Ryngwenas,Saellas,Saellyras,Saeniveras,Saerkas,Saessas,"
+"Sallyras,Sanoicas,Saras,Sassas,Searkas,Senas,Senoicas,Seras,Silonnas,Siras,"
+"Siryans,Sonas,Sorkas,Subryllas,Sullas,Sulonnas,Sulyanas,Suras,Sussas,Swllas,"
+"Swlyanas,Swngwenas,Swnoicas,Swvyanas,Syllyras,Sylyanas,Syssas,Ysaclas,"
+"Ysaenoicas,Ysaerkas,Ysanoicas,Yseaclas,Ysealonnas,Ysealyanas,Yseddas,Ysellas,"
+"Yselonnas,Ysilyanas,Ysinoicas,Ysoddas,Ysongwenas,Ysonoicas,Ysuras,Yswniveras,"
+"Ysyclas,Ysyllas,Ysylyanas,Ysyrkas,Ysyssas"
 
 #: data/core/macros/names.cfg:43
+#, fuzzy
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -1311,8 +1499,22 @@ msgid ""
 "Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
+"Amprixtas,Anexiras,Anitrazas,Arixas,Axizas,Bzz’Kzas,Chamilas,Cleezias,"
+"Clezzas,Fazzis,Fizztraxas,Flixtas,Flizzilas,Frikesas,Frizzlenas,Haszas,"
+"Heffezas,Hertrazziras,Heszas,Hezziras,Hezzisnas,Hixas,Inexis,Irixas,Jezzixas,"
+"Jizzas,Kaliezas,Kepzsas,Kernixas,Kersezzas,Kertraszas,Kerxas,Kerxenixas,"
+"Kezzas,Klexazas,Klezyxas,Kraraxas,Krenarexas,Krexas,Krinexas,Krisessas,"
+"Laizixas,Lazkis,Lixeezas,Meraxas,Mexissas,Moxanzzas,Naxiszas,Nixas,Pekzsas,"
+"Plaxis,Plesixas,Preschas,Sailikas,Salanixas,Salikas,Sandixas,Saprazzas,"
+"Satras,Skalixas,Skandixas,Skazixas,Skeelynas,Skeezixas,Sklizlenas,Skrezas,"
+"Slizilxas,Sprizzas,Ssexuras,Ssizeras,Ssorixas,Sszaszas,Sterizzas,Talerezas,"
+"Tarexas,Tarnixas,Tezzazas,Tiraschas,Tiraxas,Tirixas,Trezzas,Venezzas,Vrissas,"
+"Waksas,Xaffraszas,Xartrezas,Xaszas,Xaztexas,Xerxixas,Xiraszsa,Xirras,Xirtras,"
+"Xirtrezas,Xirzas,Zandleris,Zedrixas,Zilrixas,Zizzaszas,Zslapas,Zzalkzas,"
+"Zzupdenas"
 
 #: data/core/macros/names.cfg:47
+#, fuzzy
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -1322,6 +1524,15 @@ msgid ""
 "Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
 "Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
+"Absusas,Abzusas,Aigaionas,Alastynas,Apalalas,Apamas,Apsusas,Arematas,"
+"Atlahuas,Atlauas,Barinthusas,Dhakhanas,Dylanas,Elcmaras,Emberas,Enkis,"
+"Farosas,Habaekas,Ikateresas,Jammas,Jinas,Kinilausas,Kulullusas,Labunas,"
+"Lautas,Liras,Llyras,Luddas,Makaras,Mauis,Melicertesas,Mimiras,Natatas,"
+"Nechtanas,Neptunas,Nereusas,Nethunsas,Njordas,Nuadaas,Nuddas,Nudimmudas,"
+"Nunas,Oceanusas,Okeanosas,Phorcysas,Pontusas,Poposas,Poseidonas,Proteusas,"
+"Rajas,Rauas,Roruas,Ryujinas,Scyllas,Sinilaus,Sisiutlas,Tagaloas,Tanaoas,"
+"Tangaloas,Tangaroas,Thaumas,Tikitikis,Tinis,Tinilausas,Tinirausas,Toniwhasas,"
+"Tritonas,Vizis,Vodnikas,Vourukasas"
 
 #: data/core/macros/names.cfg:48
 msgid ""
@@ -1330,8 +1541,13 @@ msgid ""
 "Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
+"Aglaupė,Amfitritė,Afroditė,Ariela,Atargatė,Kalipsė,Delfinė,Derketė,Diktyna,"
+"Elektra,Galatėja,Himeropa,Jenguna,Leukosija,Ligėja,Lori Lamaris,Mami Vata,"
+"Marina,Miranda,Miriam,Molpė,Partenopė,Pelagija,Peisinojė,Râna,Sedna,Stela "
+"Maris,Telksiepėja,Tirgata,Vatėja,Ved-Ava,Veen emona,Vete-ema"
 
 #: data/core/macros/names.cfg:52
+#, fuzzy
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -1340,6 +1556,14 @@ msgid ""
 "Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
+"Abraxas,Aleissas,Amailas,Axmailas,Blanalas,Bleiis,Blonas,Bressas,Brissas,"
+"Gaxmolas,Griamas,Grissas,Grissileiis,Hailossas,Hainossas,Harxosas,Huzelas,"
+"Inalossas,Ineiis,Issalas,Klezelas,Krasas,Krezkpsas,Kzapas,Lamaissas,Lameiis,"
+"Lexpekas,Linessas,Loboras,Maissolas,Malinosas,Milboras,Mileiis,Nildlossas,"
+"Oxpeiis,Poniazas,Psellis,Psonas,Pzakpas,Reiis,Sassalas,Saxilas,Saxrireiis,"
+"Sekolas,Silas,Skellas,Skepzas,Slellas,Snolas,Soillas,Sorkolas,Srellas,"
+"Trixozas,Vilailas,Vissalas,Vlanis,Xabrakas,Xamalelas,Xinas,Xnamosas,Xopkonas,"
+"Zalspas,Zlekas,Zpsekas,Zsekpas"
 
 #: data/core/macros/names.cfg:53
 msgid ""
@@ -1497,10 +1721,14 @@ msgstr ""
 "Tumtonnongatumas,Tumtumgamtomtomas,Vonrunmaldinas,Vudadūnoplas"
 
 #: data/core/macros/names.cfg:73
+#, fuzzy
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
+"Balas,Camas,Kukurūzas,Del,Earlas,Elas,Lapė,Frenas,Gelas,Helas,Kvadratas,"
+"Holas,Hoksas,Ilas,Kinas,Namis,Nesas,Naujas,Olas,Senas,Olfas,Oulas,Jautis,"
+"Akmuo,Bokštas,Salas,Samas,Sedas,Selas,Senas,Silas,Talas,Vanduo,Šlapia,Yorkas"
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
@@ -1802,22 +2030,22 @@ msgstr ""
 #. [language]
 #: data/english.cfg:43
 msgid "melee"
-msgstr ""
+msgstr "peštynės"
 
 #. [language]
 #: data/english.cfg:44
 msgid "ranged"
-msgstr ""
+msgstr "šaudymas"
 
 #. [language]
 #: data/english.cfg:47
 msgid "blade"
-msgstr "ašmenys"
+msgstr "kirtimas"
 
 #. [language]
 #: data/english.cfg:48
 msgid "pierce"
-msgstr "persmeigimas"
+msgstr "dūris"
 
 #. [language]
 #: data/english.cfg:49
@@ -1865,6 +2093,9 @@ msgid ""
 "Don’t neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be too weak to survive future battles."
 msgstr ""
+"Neatimkite galimybės jūsų vadui įgyti patirties! Turite jį saugoti, bet "
+"jeigu per daug jį lepinsite, jis gali būti per silpnas, kad išgyventų "
+"ateities kovas."
 
 #. [tip]
 #: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:137
@@ -1947,6 +2178,10 @@ msgid ""
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
+"Komandas <b>Samdyti</b> ir <b>Grąžinti</b> galite pasiekti užvedę pelės "
+"žymeklį ant pilies laukelių ir paspaudę dešinį pelės klavišą. Tai leis jums "
+"pasirinkti tikslų langelį, į kurį padėsite savo dalinį. Protingai pasirinkus "
+"dalinio dislokavimo vietą, kartais jis pasieks kaimą ėjimu anksčiau."
 
 #. [tip]
 #: data/hardwired/tips.cfg:24
@@ -1955,6 +2190,9 @@ msgid ""
 "<b>Status Table</b> will let you know how your enemies are doing, and how "
 "you are doing in comparison."
 msgstr ""
+"Pagrindiniame meniu yra keletas naudingų apibendrinimo langų: pavyzdžiui, "
+"<b>Būsenos Lentelė</b> parodys kaip laikosi jūsų priešai ir, palyginimui, "
+"kaip laikotės jūs."
 
 #. [tip]
 #: data/hardwired/tips.cfg:28
@@ -1963,6 +2201,10 @@ msgid ""
 "can be very important when moving through difficult terrain such as water or "
 "caves. It can make the difference between being able to move one hex or two."
 msgstr ""
+"Daliniai, turintys savybę <i>Greitas</i>, gauna 1 papildomą judėjimo tašką "
+"per ėjimą. Tai gali būti labai svarbu judant per sunkiai praeinamas "
+"vietoves, tokias kaip vandenį ar uolas. Gali būti didelis skirtumas tarp "
+"galimybės paeiti vieną langelį ar du."
 
 #. [tip]
 #: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:105
@@ -2054,7 +2296,7 @@ msgid ""
 "Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
-"Yra šeši atakų tipai: <i>persmeigimas</i>, <i>ašmenys</i>, <i>smūgis</i>, "
+"Yra šeši atakų tipai: <i>kirtimas</i>, <i>dūris</i>, <i>smūgis</i>, "
 "<i>ugnis</i>, <i>šaltis</i> ir <i>paslaptinga</i>. Skirtingi daliniai turi "
 "silpnumų prieš skirtingus atakų tipus. Dešiniu mygtuku spragtelėkite ant "
 "dalinio ir pasirinkite <b>Dalinio aprašymas</b>, kad pamatytumėte, kurioms "
@@ -2247,7 +2489,7 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Skeletai atsparūs persmeigimu, ašmenimis ir šalčiu pagrįstomis atakoms, bet "
+"Skeletai atsparūs dūriu, kirtimu ir šalčiu pagrįstomis atakoms, bet "
 "pažeidžiami smūgio, ugnies ir paslaptingomis atakomis."
 
 #. [tip]
@@ -2259,7 +2501,7 @@ msgid ""
 msgstr ""
 "Daliniai su <i>vadovavimo</i> gebėjimu padeda greta esantiems tos pačios "
 "komandos žemesnio lygio daliniams geriau kautis. Galite lėtai judinti šiuos "
-"karius išilgai mūšio linijų ir sustiprinti daug žemo lygio karių."
+"dalinius išilgai mūšio linijų ir sustiprinti daug žemo lygio karių."
 
 #. [tip]
 #: data/hardwired/tips.cfg:136
@@ -2454,6 +2696,9 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
+"Apmąstykite veiksmą prieš atmesdami bet kokį dalinį iš savo atkūrimo sąrašo, "
+"nežiūrint į jo patirties lygį. Kartais verta mokėti daugiau, kad tiksliai "
+"sužinotumėte, kokius bruožus turės naujas dalinys."
 
 #. [tip]
 #: data/hardwired/tips.cfg:216
@@ -2547,19 +2792,20 @@ msgstr "Pralaimėjimas:"
 
 #: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
-msgstr ""
+msgstr "Aukso pernešimas:"
 
 #: data/lua/wml/objectives.lua:53
 msgid "Notes:"
-msgstr ""
+msgstr "Pastabos:"
 
 #: data/lua/wml/objectives.lua:69
+#, fuzzy
 msgid "(%d turns left)"
-msgstr ""
+msgstr "(liko %d ėjimų)"
 
 #: data/lua/wml/objectives.lua:71
 msgid "(this turn left)"
-msgstr ""
+msgstr "(liko šis ėjimas)"
 
 #: data/lua/wml/objectives.lua:113
 msgid "%d%% of gold carried over to the next scenario."
@@ -2587,9 +2833,8 @@ msgstr ""
 
 #. [language]
 #: data/scenario-test.cfg:2952
-#, fuzzy
 msgid "electrical"
-msgstr "mechaninis"
+msgstr ""
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:139
@@ -2683,7 +2928,7 @@ msgstr "vietovės gyn."
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
 msgid "Act."
-msgstr ""
+msgstr "Vksm."
 
 #. [remove]: id=button-endturn
 #. [menu]: id=button-endturn2
@@ -2694,7 +2939,7 @@ msgstr "B."
 #. [label]: id=label-mp
 #: data/themes/dfool.cfg:257
 msgid "MP"
-msgstr "JT"
+msgstr "DŽ"
 
 #. [label]: id=replay-label
 #: data/themes/macros.cfg:59
@@ -2709,7 +2954,7 @@ msgstr "Leisti"
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
 msgid "continuous replay"
-msgstr ""
+msgstr "nenutrūkstamas peržaidimas"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
@@ -2754,7 +2999,7 @@ msgstr "leisti pusės ėjimą"
 #. [menu]: id=show-what
 #: data/themes/macros.cfg:163
 msgid "Point of view"
-msgstr ""
+msgstr "Požiūris"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:179
@@ -2833,7 +3078,7 @@ msgstr "Pastebėti daliniai! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2565
 msgid "(press $hotkey to keep moving)"
-msgstr ""
+msgstr "(paspauskite $hotkey ėjimo tęsimui)"
 
 #: src/addon/manager.cpp:414
 msgid "B"
@@ -2864,8 +3109,9 @@ msgid "addon_type^MP era"
 msgstr "DŽ era"
 
 #: src/addon/manager.cpp:462
+#, fuzzy
 msgid "addon_type^MP faction"
-msgstr ""
+msgstr "DŽ frakcija"
 
 #: src/addon/manager.cpp:464
 msgid "addon_type^MP map-pack"
@@ -2924,7 +3170,7 @@ msgstr "Atsiunčiamas priedas: $addon_title|..."
 #: src/addon/manager.cpp:599
 msgid ""
 "The add-on has an invalid file or directory name and cannot be installed."
-msgstr ""
+msgstr "Priedo failo arba aplanko vardas neteisingas ir negali būti įdiegtas."
 
 #: src/addon/manager.cpp:648
 msgid "The add-on '$addon_title|' has been successfully installed."
@@ -2983,6 +3229,8 @@ msgid ""
 "While the add-on has been installed, a dependency is missing. Try to update "
 "the installed add-ons."
 msgstr ""
+"Nors priedas buvo įdiegtas, jam trūksta priklausomybės. Pabandykite "
+"atnaujinti įdiegtus priedus."
 
 #: src/addon/manager.cpp:845
 msgid "Installation failed"
@@ -3034,7 +3282,6 @@ msgid "Old version"
 msgstr "Sena versija"
 
 #: src/addon/manager.cpp:987
-#, fuzzy
 msgid "Update add-ons"
 msgstr "Atnaujinti priedus"
 
@@ -3049,7 +3296,7 @@ msgstr "Atnaujinti viską"
 #: src/addon/manager.cpp:1040 src/addon/manager.cpp:1057
 #: src/addon/manager.cpp:1322
 msgid "Installation of some dependency failed"
-msgstr ""
+msgstr "Kai kurių priklausomybių įdiegimas nepavyko"
 
 #: src/addon/manager.cpp:1042 src/addon/manager.cpp:1059
 #: src/addon/manager.cpp:1324
@@ -3096,7 +3343,7 @@ msgstr "Atsisiuntimai"
 
 #: src/addon/manager.cpp:1245
 msgid "Publish add-on: "
-msgstr "Publish add-on: "
+msgstr "Publikuoti priedą: "
 
 #: src/addon/manager.cpp:1251
 msgid "Delete add-on: "
@@ -3104,7 +3351,7 @@ msgstr "Trinti priedą: "
 
 #: src/addon/manager.cpp:1257
 msgid "There are no add-ons available for download from this server."
-msgstr ""
+msgstr "Nėra priedų, kuriuos galima parsisiųsti iš šio serverio."
 
 #: src/addon/manager.cpp:1270
 msgid "Get add-ons"
@@ -3112,7 +3359,7 @@ msgstr "Gauti priedų"
 
 #: src/addon/manager.cpp:1271
 msgid "Choose the add-on to download."
-msgstr ""
+msgstr "Pasirinkite priedą atsiuntimui."
 
 #: src/addon/manager.cpp:1272
 msgid "Download"
@@ -3143,7 +3390,7 @@ msgstr "Atsijungė nutolęs mazgas."
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
-msgstr ""
+msgstr "Įvyko klaida bandant sukurti failus, reikalingus įdiegti šį priedą."
 
 #: src/addon/manager.cpp:1358
 msgid "You have no add-ons installed."
@@ -3158,9 +3405,8 @@ msgid "Uninstall add-ons"
 msgstr "Pašalinti priedus"
 
 #: src/addon/manager.cpp:1372
-#, fuzzy
 msgid "Remove"
-msgstr "žingsniai"
+msgstr "Pašalinti"
 
 #: src/addon/manager.cpp:1379
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -3204,11 +3450,11 @@ msgstr "Vadovavimas"
 
 #: src/attack_prediction_display.cpp:238
 msgid " resistance vs "
-msgstr " atsparumas prieš "
+msgstr " atsparumas "
 
 #: src/attack_prediction_display.cpp:239
 msgid " vulnerability vs "
-msgstr " pažeidžiamumas prieš "
+msgstr " pažeidžiamumas "
 
 #: src/attack_prediction_display.cpp:249
 msgid "Slowed"
@@ -3630,7 +3876,7 @@ msgstr "Paruošiamas ekranas"
 
 #: src/loadscreen.cpp:238
 msgid "Building terrain rules"
-msgstr ""
+msgstr "Vietovių taisyklių sudarymas"
 
 #: src/loadscreen.cpp:240
 msgid "Starting game"
@@ -3649,6 +3895,8 @@ msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
 msgstr ""
+"Tinkamos vietos piliai nerasta. Per daug arba per mažai kalnų laukelių? "
+"(Prašome pasirinkti „maksimalaus kalno dydžio“ parametrą)"
 
 #: src/menu_events.cpp:96 src/menu_events.cpp:99 src/menu_events.cpp:103
 msgid "Do you really want to dismiss him?"
@@ -3664,11 +3912,11 @@ msgstr "Ar tikrai norite atleisti ją?"
 
 #: src/menu_events.cpp:99
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr "Pone, tai yra patyręs karys, turintis paaukštinimų!"
+msgstr "Pone, tai yra patyręs dalinys, turintis paaukštinimų!"
 
 #: src/menu_events.cpp:103
 msgid "My lord, this unit is close to advancing a level! "
-msgstr "Pone, šis karys tuoj gali pasikelti lygį!"
+msgstr "Pone, šis dalinys tuoj gali pasikelti lygį!"
 
 #: src/menu_events.cpp:195
 msgid "Statistics"
@@ -3696,7 +3944,7 @@ msgstr "Dalinių sąrašas"
 
 #: src/menu_events.cpp:315 src/menu_events.cpp:337
 msgid "Scroll To"
-msgstr ""
+msgstr "Slinkti į"
 
 #: src/menu_events.cpp:369
 msgid "Leader"
@@ -3932,7 +4180,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2025
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "[all|<komanda>] "
 
 #: src/menu_events.cpp:2069
 msgid "Error:"
@@ -3940,7 +4188,7 @@ msgstr "Klaida:"
 
 #: src/menu_events.cpp:2075
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "Trūksta argumento $arg_id"
 
 #: src/menu_events.cpp:2123
 msgid ""
@@ -3954,7 +4202,7 @@ msgstr "pagalba"
 
 #: src/menu_events.cpp:2124
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "Norėdami daugiau informacijos, surinkite $help_command <paliepimas>"
 
 #: src/menu_events.cpp:2135
 msgid " No help available."
@@ -3966,16 +4214,15 @@ msgstr "Naudojimas:"
 
 #: src/menu_events.cpp:2145
 msgid "aliases:"
-msgstr ""
+msgstr "slapyvardžiai:"
 
 #: src/menu_events.cpp:2266
 msgid "(A) - admin command"
-msgstr ""
+msgstr "(A) – administravimo komanda"
 
 #: src/menu_events.cpp:2273 src/menu_events.cpp:2476
-#, fuzzy
 msgid "(admin only)"
-msgstr "Tik komandai"
+msgstr "(tik administravimo)"
 
 #: src/menu_events.cpp:2293
 msgid ""
@@ -3993,11 +4240,12 @@ msgstr ""
 #: src/menu_events.cpp:2305 src/menu_events.cpp:2307 src/menu_events.cpp:2332
 #: src/menu_events.cpp:2334 src/menu_events.cpp:2336 src/menu_events.cpp:2350
 msgid "<nick>"
-msgstr ""
+msgstr "<slapyvardis>"
 
 #: src/menu_events.cpp:2300
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
+"Nebedrausti naudotojo. Jis neturi būti žaidime, bet turi būti serveryje."
 
 #: src/menu_events.cpp:2303
 msgid "Kick a player or observer."
@@ -4034,6 +4282,8 @@ msgid ""
 "Sends a private message. You can’t send messages to players that don’t "
 "control a side in a running game you are in."
 msgstr ""
+"Siunčia privatų pranešimą. Jūs negalite siųsti pranešimus žaidėjams, kurie "
+"nevaldo jokios pusės jūsų žaidime."
 
 #: src/menu_events.cpp:2326
 msgid "<nick> <message>"
@@ -4041,11 +4291,12 @@ msgstr "<slapyvardis> <žinutė>"
 
 #: src/menu_events.cpp:2330
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<lygis> <sritis>"
 
 #: src/menu_events.cpp:2330
+#, fuzzy
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "Keisti žurnalo srities žurnalo lygį."
 
 #: src/menu_events.cpp:2332
 msgid "Add a nick to your ignores list."
@@ -4069,7 +4320,7 @@ msgstr "Rodyti versijos informaciją."
 
 #: src/menu_events.cpp:2343
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<slaptažodis> <e. paštas (neprivalomas)>"
 
 #: src/menu_events.cpp:2343
 msgid "Register your nick"
@@ -4082,10 +4333,12 @@ msgstr "Nustoti naudoti savo slapyvardį."
 #: src/menu_events.cpp:2347
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
+"Atnaujinti savo slaptažodžio detales. Apie galimas detales žiūrėkite „/"
+"details“."
 
 #: src/menu_events.cpp:2348
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<detalė> <reikšmė>"
 
 #: src/menu_events.cpp:2350
 msgid "Request information about a nick."
@@ -4094,6 +4347,8 @@ msgstr "Pareikalauti informacijos apie slapyvardį."
 #: src/menu_events.cpp:2352
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
+"Prašyti detalių, kurias galite nustatyti užregistruotam slapyvardžiui, "
+"sąrašų."
 
 #: src/menu_events.cpp:2354 src/menu_events.cpp:2357 src/menu_events.cpp:2359
 msgid "<room>"
@@ -4133,7 +4388,7 @@ msgstr "Kambario užklausa."
 
 #: src/menu_events.cpp:2468
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
-msgstr ""
+msgstr "(D) – tik derinimo, (N) – tik tinklo, (A) – tik administravimo"
 
 #: src/menu_events.cpp:2474
 msgid "(debug command)"
@@ -4141,7 +4396,7 @@ msgstr "(derinimo komanda)"
 
 #: src/menu_events.cpp:2475
 msgid "(network only)"
-msgstr "(tik tinkle)"
+msgstr "(tik tinklo)"
 
 #: src/menu_events.cpp:2500
 msgid "Refresh gui."
@@ -4149,19 +4404,19 @@ msgstr "Atnaujinti grafinę sąsają."
 
 #: src/menu_events.cpp:2502
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "Perjungti pusę į/iš DI kontrolės."
 
 #: src/menu_events.cpp:2502
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "[<pusė> [on/off]]"
 
 #: src/menu_events.cpp:2505
 msgid "<side> <nick>"
-msgstr ""
+msgstr "<pusė> <slapyvardis>"
 
 #: src/menu_events.cpp:2505
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "Paskirti pusės valdymą kitam žaidėjui ar stebėtojui."
 
 #: src/menu_events.cpp:2507
 msgid "Clear chat history."
@@ -4173,15 +4428,15 @@ msgstr "Vizualizuoti ekrano atnaujinimo procedūrą."
 
 #: src/menu_events.cpp:2511
 msgid "Debug foreground terrain."
-msgstr ""
+msgstr "Derinti fono vietovę."
 
 #: src/menu_events.cpp:2513
 msgid "Debug layers from terrain under the mouse."
-msgstr ""
+msgstr "Derinti sluoksnius iš vietovės po pele."
 
 #: src/menu_events.cpp:2514
 msgid "Show fps."
-msgstr "Rodyti kadrus per sekundę"
+msgstr "Rodyti kadrus per sekundę."
 
 #: src/menu_events.cpp:2516
 msgid "Save game."
@@ -4205,7 +4460,7 @@ msgstr "Uždrausti autoišsaugojimus."
 
 #: src/menu_events.cpp:2529
 msgid "<id>"
-msgstr ""
+msgstr "<id>"
 
 #: src/menu_events.cpp:2529
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -4220,6 +4475,8 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
+"Pakeisti ėjimų skaičių (ir dienos laiką), arba padidinti vienetu, jeigu "
+"numeris nenurodytas."
 
 #: src/menu_events.cpp:2535
 msgid "[turn]"
@@ -4230,10 +4487,12 @@ msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
+"Keisti ėjimų ribą, arba išjungti ją, jei joks numeris nenurodytas arba yra "
+"−1."
 
 #: src/menu_events.cpp:2537
 msgid "[limit]"
-msgstr ""
+msgstr "[riba]"
 
 #: src/menu_events.cpp:2539
 msgid "Turn debug mode on."
@@ -4256,16 +4515,18 @@ msgid "Grant higher privileges to Lua scripts."
 msgstr "Lua scenarijams suteikti aukštesnes privilegijas."
 
 #: src/menu_events.cpp:2547
+#, fuzzy
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "Nustatyti komandą naudojamą pasirinktininės komandos sparčiųjų klavišų"
 
 #: src/menu_events.cpp:2549
 msgid "Launch the gamestate inspector"
 msgstr "Įjungti žaidimo būklės inspektorių"
 
 #: src/menu_events.cpp:2551
+#, fuzzy
 msgid "Manage persistence data"
-msgstr ""
+msgstr "Valdyti atkaklumo, ištvermės duomenis"
 
 #: src/menu_events.cpp:2553
 msgid "<name>[=<command>]"
@@ -4294,6 +4555,8 @@ msgstr "Rodyti scenarijaus kintamąjį."
 #: src/menu_events.cpp:2559
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
+"Modifikuoti dalinio kintamąjį. (Tik aukščiausio lygio klavišai yra "
+"palaikomi.)"
 
 #: src/menu_events.cpp:2566
 msgid "Discover all units in help."
@@ -4325,15 +4588,15 @@ msgstr "Iškviesti žaidimo įvykį."
 
 #: src/menu_events.cpp:2581
 msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr ""
+msgstr "Perjungti x,y koordinačių rodymą ant laukelių."
 
 #: src/menu_events.cpp:2584
 msgid "Toggle overlaying of terrain codes on hexes."
-msgstr ""
+msgstr "Perjungti vietovės kodų rodymą ant laukelių."
 
 #: src/menu_events.cpp:2587
 msgid "Toggle planning mode."
-msgstr ""
+msgstr "Perjungti planavimo režimą."
 
 #: src/menu_events.cpp:2630
 msgid "Unknown debug level: '$level'."
@@ -4353,11 +4616,11 @@ msgstr "Pakeistas domenas: „$domain“ į lygį: „$level“."
 
 #: src/menu_events.cpp:2719
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "šnabždesys: $gavėjui"
 
 #: src/menu_events.cpp:2726
 msgid "whisper: $sender"
-msgstr ""
+msgstr "šnabždesys: $siuntėjui"
 
 #: src/menu_events.cpp:2822 src/menu_events.cpp:2841
 #: src/multiplayer_connect.cpp:701
@@ -4414,12 +4677,13 @@ msgid "nick registration"
 msgstr "slapyvardžio registracija"
 
 #: src/menu_events.cpp:2921
+#, fuzzy
 msgid "dropping your username"
-msgstr ""
+msgstr "pakeisti savo vardą"
 
 #: src/menu_events.cpp:2939
 msgid "setting $var to $value"
-msgstr ""
+msgstr "kintamasis $var nustatomas į $value"
 
 #: src/menu_events.cpp:2953
 #, fuzzy
@@ -4431,20 +4695,22 @@ msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nepavyksta surasti žymės ar dalinio turinčio eilutę „$search“."
 
 #: src/menu_events.cpp:3100
+#, fuzzy
 msgid "Can't droid invalid side: '$side'."
-msgstr ""
+msgstr "Negali Droido negaliojančių pusėje: „$side“."
 
 #: src/menu_events.cpp:3105
+#, fuzzy
 msgid "Can't droid networked side: '$side'."
-msgstr ""
+msgstr "Negali droid'o tinklo pusėje: „$side“."
 
 #: src/menu_events.cpp:3142
 msgid "Can't change control of invalid side: '$side'."
-msgstr ""
+msgstr "Negalima pakeisti negaliojančios pusės kontrolės: „$side“."
 
 #: src/menu_events.cpp:3148
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr ""
+msgstr "Negalima pakeisti pusės, esančios už ribų, kontrolės: „$side“."
 
 #: src/menu_events.cpp:3242
 msgid "Layers"
@@ -4476,6 +4742,9 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Jūs ruošiatės atidaryti saugumo pažeidimą Vesnote. Ar jūs tikrai norite "
+"tęsti? Jei atsisiuntėte priedų, nespauskite „gerai“! Jie tuojau pat perims "
+"jūsų kompiuterįio valdymą. Jūs buvote įspėti."
 
 #: src/menu_events.cpp:3383
 msgid "Unsafe mode enabled!"
@@ -4486,14 +4755,17 @@ msgid "Variable not found"
 msgstr "Kintamasis nerastas"
 
 #: src/menu_events.cpp:3470
+#, fuzzy
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic "
 "or liminal."
 msgstr ""
+"Neteisinga prigimtis: „$alignment“, turi būti viena iš šviesos, neutralių, "
+"chaotiškų arba prieblandos."
 
 #: src/menu_events.cpp:3520
 msgid "Do you wish to clear all of your discovered units from help?"
-msgstr ""
+msgstr "Ar norite išvalyti iš pagalbos visus savo atrastus dalinius?"
 
 #: src/menu_events.cpp:3531
 msgid "Invalid unit type"
@@ -4552,7 +4824,7 @@ msgstr ""
 
 #: src/multiplayer.cpp:173
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "Serveryje vyksta nukreipimo ciklas"
 
 #: src/multiplayer.cpp:262
 msgid "Bad data received from server"
@@ -4602,6 +4874,8 @@ msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"DĖMESIO: jau yra klientas naudojantis šį slapyvardį, prisijungimas sukels to "
+"kliento išmetimą!"
 
 #: src/multiplayer.cpp:325
 msgid ""
@@ -4670,8 +4944,9 @@ msgid "Only random sides in the current era."
 msgstr "Tik atsitiktinės pusės dabartinėje eroje."
 
 #: src/multiplayer_connect.cpp:950
+#, fuzzy
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "Nepavyko rasti lyderio tipo frakcija $faction"
 
 #: src/multiplayer_connect.cpp:987
 msgid "Game Lobby: "
@@ -4679,11 +4954,12 @@ msgstr "Žaidimo vestibiulis: "
 
 #: src/multiplayer_connect.cpp:1009
 msgid "Player/Type"
-msgstr "Žaidėjas/Tipas"
+msgstr "Žaidėjas/tipas"
 
 #: src/multiplayer_connect.cpp:1010
+#, fuzzy
 msgid "Faction"
-msgstr ""
+msgstr "Frakcija"
 
 #: src/multiplayer_connect.cpp:1011
 msgid "Team/Gender"
@@ -4712,7 +4988,7 @@ msgstr "Šis scenarijus yra netinkamas, nes jis neturi pusių."
 
 #: src/multiplayer_connect.cpp:1098
 msgid "Enter a name for the new player"
-msgstr ""
+msgstr "Įveskite naujo žaidėjo vardą"
 
 #: src/multiplayer_connect.cpp:1099 src/reports.cpp:147 src/savegame.cpp:694
 msgid "Name: "
@@ -4842,6 +5118,7 @@ msgstr "Pradžioje atsitiktinai parinkti dienos laiką"
 #: src/multiplayer_create.cpp:193
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
+"Priešų dalinių nebus galima matyti, nebent jie yra jūsų dalinių diapazone."
 
 #: src/multiplayer_create.cpp:196
 msgid "The map is unknown until your units explore it"
@@ -4880,9 +5157,8 @@ msgid "Invalid era selected"
 msgstr "Pasirinkta netinkama era"
 
 #: src/multiplayer_create.cpp:336
-#, fuzzy
 msgid "The map is invalid."
-msgstr "Žaidimas baigtas."
+msgstr "Žemėlapis yra sugadintas."
 
 #: src/multiplayer_create.cpp:338
 msgid "You must enter a name."
@@ -4898,7 +5174,7 @@ msgstr "Neriboti ėjimai"
 
 #: src/multiplayer_create.cpp:386
 msgid "Init. Limit: "
-msgstr ""
+msgstr "Pradinė riba:"
 
 #: src/multiplayer_create.cpp:391
 msgid "Turn Bonus: "
@@ -4934,7 +5210,7 @@ msgstr "Dydis: "
 
 #: src/multiplayer_lobby.cpp:124
 msgid "--no games open--"
-msgstr ""
+msgstr "--nėra atvirų žaidimų--"
 
 #: src/multiplayer_lobby.cpp:158
 msgid " (Unknown Era)"
@@ -4990,32 +5266,38 @@ msgstr "Ieškoti:"
 
 #: src/multiplayer_lobby.cpp:751
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "Stebint greitai pereiti prie aktyvaus ėjimo"
 
 #: src/multiplayer_lobby.cpp:755
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
+"Įjungti žaidimų filtrą. Jei nepažymėta, visi žaidimai yra rodomi, "
+"nepriklausomai nuo bet kokio filtro."
 
 #: src/multiplayer_lobby.cpp:758
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
+"Rodyti visus žaidimus, kurie *neatitinka* jūsų filtro. Naudinga slepiant "
+"nedominančius žaidimus."
 
 #: src/multiplayer_lobby.cpp:762
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "Rodyti tik žaidimus, kurie turi bent vieną laisvą vietą"
 
 #: src/multiplayer_lobby.cpp:766
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
+"Rodyti tik žaidimus, kurie žaidžiami arba stebimi bent vienu iš jūsų draugų"
 
 #: src/multiplayer_lobby.cpp:770
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
+"Rodyti tik žaidimus, kurių pavadinimas arba aprašymas turi įvestą tekstą."
 
 #: src/multiplayer_lobby.cpp:904
 msgid "Joining this game requires a password."
@@ -5055,11 +5337,12 @@ msgstr "Nerasta eros informacijos."
 
 #: src/multiplayer_wait.cpp:268
 msgid "No multiplayer sides found"
-msgstr ""
+msgstr "Nerasta daugelio žaidėjų pusių"
 
 #: src/multiplayer_wait.cpp:301
+#, fuzzy
 msgid "Choose your faction:"
-msgstr ""
+msgstr "Pasirinkite veiksmą:"
 
 #: src/multiplayer_wait.cpp:301
 msgid "Starting position: "
@@ -5074,8 +5357,9 @@ msgstr[2] "aukso"
 msgstr[3] "aukso"
 
 #: src/network.cpp:109
+#, fuzzy
 msgid "invalid network handle"
-msgstr ""
+msgstr "Negaliojanti tinklo rankenėlė"
 
 #: src/network.cpp:142 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
@@ -5083,12 +5367,13 @@ msgid "Client disconnected"
 msgstr "Klientas atsijungė"
 
 #: src/network.cpp:557
+#, fuzzy
 msgid "Could not add socket to socket set"
-msgstr ""
+msgstr "Nepavyko pridėti prievado prie prievadų rinkinio."
 
 #: src/network.cpp:569
 msgid "Could not send initial handshake"
-msgstr ""
+msgstr "Nepavyko išsiųsti pradinio rankos paspaudimo"
 
 #: src/network_manager_ana.cpp:650 src/network_manager_ana.cpp:667
 #: src/network_manager_ana.cpp:689
@@ -5121,11 +5406,12 @@ msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
+"Šis žaidimas išsisinchronizavo. Nėra prasmės tęsti žaidimą. Ar norite "
+"išsaugoti žaidimą?"
 
 #: src/play_controller.cpp:1304 src/replay_controller.cpp:221
-#, fuzzy
 msgid "Error details:"
-msgstr "Klaida:"
+msgstr "Klaidos detalės:"
 
 #: src/playcampaign.cpp:137 src/playcampaign.cpp:177
 msgid "Defeat"
@@ -5169,7 +5455,7 @@ msgstr "Pasikeitė ėjimas"
 
 #: src/playmp_controller.cpp:224
 msgid "Undoing moves not yet transmitted to the server."
-msgstr ""
+msgstr "Atšaukiami dar neperduoti serveriui ėjimai."
 
 #: src/playmp_controller.cpp:397
 msgid "Waiting for next scenario..."
@@ -5184,6 +5470,12 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
+"Žaidimas išsisinchronizavo ir negali tęstis. Yra keletas priežasčių: tai "
+"gali atsitikti, jei jūs ar kitas žaidėjas pakeitėte savo žaidimo nustatymus. "
+"Tai gali reikšti, kad vienas iš žaidėjų bando sukčiauti. Mažiau tikėtinas "
+"paaiškinimas yra tai, kad žaidime yra klaida.\n"
+"\n"
+" Ar norite išsaugoti žaidimo klaidų žurnalą?"
 
 #: src/playsingle_controller.cpp:251
 msgid "Remaining gold: "
@@ -5342,9 +5634,8 @@ msgid "Level: "
 msgstr "Lygis: "
 
 #: src/reports.cpp:195
-#, fuzzy
 msgid "No advancement"
-msgstr "Patobulėjimai"
+msgstr "Netobulėja"
 
 #: src/reports.cpp:197
 msgid "Advances to:"
@@ -5400,7 +5691,7 @@ msgstr "Šis dalinys buvo paverstas akmeniu. Jis negali judėti ar pulti."
 
 #: src/reports.cpp:269
 msgid "Alignment: "
-msgstr ""
+msgstr "Prigimtis: "
 
 #: src/reports.cpp:288
 msgid "Ability: "
@@ -5420,11 +5711,11 @@ msgstr "Vietovė: "
 
 #: src/reports.cpp:385
 msgid "maximum^max."
-msgstr ""
+msgstr "daug."
 
 #: src/reports.cpp:385
 msgid "minimum^min."
-msgstr ""
+msgstr "maž."
 
 #: src/reports.cpp:390
 msgid "Defense: "
@@ -5460,12 +5751,12 @@ msgstr "Atakos: "
 
 #: src/reports.cpp:479
 msgid "Base attacks: "
-msgstr ""
+msgstr "Bazinės atakos:"
 
 #: src/reports.cpp:481
 #, fuzzy
 msgid "Swarm: "
-msgstr "Pelkė"
+msgstr "Pulkas:"
 
 #: src/reports.cpp:493
 msgid "Weapon range: "
@@ -5485,15 +5776,16 @@ msgstr "Taiklumas:"
 
 #: src/reports.cpp:544
 msgid "Parry:"
-msgstr ""
+msgstr "Atrėmimas:"
 
 #: src/reports.cpp:561
 msgid "Weapon special: "
 msgstr "Ginklų ypatybės: "
 
 #: src/reports.cpp:601
+#, fuzzy
 msgid "Lawful units: "
-msgstr ""
+msgstr "Šviesos daliniai:"
 
 #: src/reports.cpp:602
 msgid "Neutral units: "
@@ -5504,9 +5796,8 @@ msgid "Chaotic units: "
 msgstr "Chaotiški daliniai: "
 
 #: src/reports.cpp:605
-#, fuzzy
 msgid "Liminal units: "
-msgstr "Neutralūs daliniai: "
+msgstr "Prieblandos daliniai: "
 
 #: src/reports.cpp:793
 msgid "Observers:"
@@ -5586,7 +5877,7 @@ msgstr "Netikėti simboliai eilutės pradžioje"
 
 #: src/serialization/parser.cpp:142
 msgid "Missing closing tag for tag $tag at $pos"
-msgstr ""
+msgstr "Trūksta uždarančiojo elemento elementui $tag esančiam $pos"
 
 #: src/serialization/parser.cpp:156
 msgid "Unterminated [element] tag"
@@ -5615,6 +5906,8 @@ msgstr "Netikėtas uždarantysis elementas"
 #: src/serialization/parser.cpp:195
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
+"Rastas negaliojantis uždarymo elementas $tag2 elementui $tag1 (atidaryta "
+"$pos)"
 
 #: src/serialization/parser.cpp:220 src/serialization/parser.cpp:232
 msgid "Empty variable name"
@@ -5727,7 +6020,7 @@ msgstr "žingsniai"
 
 #: src/unit.cpp:2430 src/unit.cpp:2564
 msgid "XP to advance"
-msgstr ""
+msgstr "PT iki paaukštinimo"
 
 #: src/unit.cpp:2557
 msgid " move"
@@ -5761,7 +6054,7 @@ msgstr "% taiklumas"
 #: src/unit_types.cpp:224
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% atrėmimas"
 
 #: src/unit_types.cpp:912
 msgid "No description available."
@@ -5772,12 +6065,13 @@ msgid "chaotic"
 msgstr "chaotiškas"
 
 #: src/unit_types.cpp:968
+#, fuzzy
 msgid "lawful"
-msgstr ""
+msgstr "šviesos"
 
 #: src/unit_types.cpp:968
 msgid "liminal"
-msgstr ""
+msgstr "prieblandos"
 
 #: src/unit_types.cpp:968
 msgid "neutral"
@@ -5788,1769 +6082,14 @@ msgid "female^chaotic"
 msgstr "chaotiška"
 
 #: src/unit_types.cpp:969
+#, fuzzy
 msgid "female^lawful"
-msgstr ""
+msgstr "šviesos"
 
 #: src/unit_types.cpp:969
 msgid "female^liminal"
-msgstr ""
+msgstr "prieblandos"
 
 #: src/unit_types.cpp:969
 msgid "female^neutral"
 msgstr "neutrali"
-
-#~ msgid "Underground"
-#~ msgstr "Požemis"
-
-#~ msgid "berserk"
-#~ msgstr "berserkas"
-
-#~ msgid ""
-#~ "Berserk:\n"
-#~ "Whether used offensively or defensively, this attack presses the "
-#~ "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#~ "have occurred."
-#~ msgstr ""
-#~ "Berserkas:\n"
-#~ "Ar naudojama puolant, ar ginantis, ši ataka išlaiko priešininką kovoje "
-#~ "iki pat vieno iš besikaunančiųjų mirties, arba trisdešimt atakos raundų."
-
-#~ msgid "magical"
-#~ msgstr "magiška"
-
-#~ msgid ""
-#~ "Magical:\n"
-#~ "This attack always has a 70% chance to hit regardless of the defensive "
-#~ "ability of the unit being attacked."
-#~ msgstr ""
-#~ "Magiška:\n"
-#~ "Ši ataka visada turi 70% tikimybę pataikyti, nepriklausomai nuo puolamo "
-#~ "dalinio gynybinių gebėjimų."
-
-#~ msgid "firststrike"
-#~ msgstr "pirmenybė"
-
-#~ msgid ""
-#~ "First Strike:\n"
-#~ "This unit always strikes first with this attack, even if they are "
-#~ "defending."
-#~ msgstr ""
-#~ "Smūgio pirmenybė:\n"
-#~ "Su šia ataka dalinys visuomet turės pirmenybę atakuoti, net kai ginasi."
-
-#~ msgid "heals +4"
-#~ msgstr "gydo +4"
-
-#~ msgid "female^heals +4"
-#~ msgstr "gydo +4"
-
-#~ msgid ""
-#~ "Heals +4:\n"
-#~ "Allows the unit to heal adjacent allied units at the beginning of our "
-#~ "turn.\n"
-#~ "\n"
-#~ "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#~ "poison from taking effect for that turn.\n"
-#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#~ "the care of a village or a unit that can cure."
-#~ msgstr ""
-#~ "Gydo +4:\n"
-#~ "Leidžia daliniui pagydyti gretimą draugišką dalinį mūsų ėjimo pradžioje.\n"
-#~ "\n"
-#~ "Gydomasis dalinys gali pagyti ne daugiau, nei 4 GT per ėjimą, arba tą "
-#~ "ėjimą išvengti nuodų poveikio.\n"
-#~ "Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi "
-#~ "ieškoti pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
-
-#~ msgid "heals +8"
-#~ msgstr "gydo +8"
-
-#~ msgid "female^heals +8"
-#~ msgstr "gydo +8"
-
-#~ msgid ""
-#~ "Heals +8:\n"
-#~ "This unit combines herbal remedies with magic to heal units more quickly "
-#~ "than is normally possible on the battlefield.\n"
-#~ "\n"
-#~ "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#~ "poison from taking effect for that turn.\n"
-#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#~ "the care of a village or a unit that can cure."
-#~ msgstr ""
-#~ "Gydo +8:\n"
-#~ "Šis dalinys apjungia vaistažoles su magija ir gydo dalinius greičiau, nei "
-#~ "įprasta mūšio lauke.\n"
-#~ "\n"
-#~ "Gydomasis dalinys gali pagyti ne daugiau, nei 8 GT per ėjimą, arba tą "
-#~ "ėjimą išvengti nuodų poveikio.\n"
-#~ "Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi "
-#~ "ieškoti pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
-
-#~ msgid "race^Bat"
-#~ msgstr "Šikšnosparnis"
-
-#~ msgid "race+female^Bat"
-#~ msgstr "Šikšnosparnė"
-
-#~ msgid "race^Bats"
-#~ msgstr "Šikšnosparniai"
-
-#~ msgid "race^Drake"
-#~ msgstr "Slibinas"
-
-#~ msgid "race+female^Drake"
-#~ msgstr "Slibinė"
-
-#~ msgid "race^Drakes"
-#~ msgstr "Slibinai"
-
-#~ msgid "race^Dwarf"
-#~ msgstr "Dvarfas"
-
-#~ msgid "race+female^Dwarf"
-#~ msgstr "Dvarfė"
-
-#~ msgid "race^Dwarves"
-#~ msgstr "Dvarfai"
-
-#~ msgid "race^Elf"
-#~ msgstr "Elfas"
-
-#~ msgid "race+female^Elf"
-#~ msgstr "Elfė"
-
-#~ msgid "race^Elves"
-#~ msgstr "Elfai"
-
-#~ msgid ""
-#~ "Compared to humans, elves are somewhat taller, more agile but less "
-#~ "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
-#~ "Few differences between humans and elves are more pronounced than the "
-#~ "Elves’ unusually long life — most, unless claimed by illness, accident or "
-#~ "war, live a full two and a half centuries. While some elves possessing a "
-#~ "high magical aptitude have been known to live an additional full century, "
-#~ "most elves begin to grow physically frail at some point between 250 and "
-#~ "300 years of age and pass away rapidly (generally within a year or two) "
-#~ "thereafter.\n"
-#~ "\n"
-#~ "Elves are naturally imbued with magic to a small degree. Though most are "
-#~ "unable to channel it directly, its latent presence gives them their keen "
-#~ "senses and long life. Many elves have magic-driven talents such as "
-#~ "marksmanship or stealth, allowing them to achieve tasks that most normal "
-#~ "beings would find astonishing. Those elves that learn to wield this power "
-#~ "in more general ways can become truly formidable in its use. Many choose "
-#~ "to use their gift to heal others.\n"
-#~ "\n"
-#~ "A few elves, venturing far down the paths of magic and mysticism, become "
-#~ "sensitive to the presence of cold iron and can even be burned by it. "
-#~ "Elvish legend hints that this was more common in the far past.\n"
-#~ "\n"
-#~ "Elves spend much of their time honing their talents and skills. Those not "
-#~ "adept at the magical arts typically devote their time honing their "
-#~ "physical skills. As a result, elves excel at archery, which is perhaps "
-#~ "their most important method of warfare. Most elvish troops carry a bow "
-#~ "and no other race can rival their archers in speed and accuracy. All "
-#~ "elves also share an intense affection for unspoiled nature. They often "
-#~ "feel uncomfortable in open unvegetated spaces. They live primarily in the "
-#~ "forests of the Great Continent; the Aethenwood in the southwest, Wesmere "
-#~ "in the northwest, and the great northern woods of which the Lintanir "
-#~ "Forest is the southernmost edge.\n"
-#~ "\n"
-#~ "Elves are the eldest race of the continent, with the possible exception "
-#~ "of trolls. Many of their settlements cannot be reliably dated, "
-#~ "undoubtedly having existed for over a millennium."
-#~ msgstr ""
-#~ "Lyginant su žmonėmis, elfai yra šiek tiek aukštesni, vikresni, bet mažiau "
-#~ "tvirti. Jie turi šiek tiek smailias ausis, blankią odą ir dažniausiai "
-#~ "šviesius plaukus. Mažai skirtumų tarp žmonių ir elfų yra labiau "
-#~ "išryškinti, nei neįprastai ilgas elfų gyvenimas – dauguma, nebent "
-#~ "pasiglemžti ligos, nelaimingo atsitikimo ar karo, gyvena pilnus du su "
-#~ "puse šimtmečius. Nepaisant to, kad yra žinoma, kad kai kurie elfai, "
-#~ "turintys aukštus magiškus gabumus, gyvena papildomą pilną šimtmetį, "
-#~ "dauguma elfų pradeda darytis fiziškai silpni kažkur tarp 250 ir 300 metų, "
-#~ "ir po to greitai miršta (dažniausiai per vienerius ar dvejus metus).\n"
-#~ "\n"
-#~ "Elfai yra įgimtai truputį pripildyti magijos. Nors ir dauguma nesugeba "
-#~ "tiesiogiai jos nukreipti, jos paslėptas buvimas duoda jiems jų aštrius "
-#~ "pojūčius ir ilgą gyvenimą. Daug elfų turi magija varomų gabumų, tokių, "
-#~ "kaip taiklus šaudymas ar slaptumas, leidžiančių jiems atlikti užduotis, "
-#~ "kurias paprastos būtybės laiko įspūdingomis. Tie elfai, kurie išmoksta "
-#~ "valdyti šią galią bendresniais būdais, gali tapti iš tikrųjų sunkiai "
-#~ "įveikiami ją naudojant. Daugelis pasirenka naudoti savo dovaną gydyti "
-#~ "kitus.\n"
-#~ "\n"
-#~ "Elfai daug savo laiko išleidžia tobulindami savo gabumus ir gebėjimus. "
-#~ "Tie, kurie nenusimano magiškuose menuose, paprastai skiria savo laiką "
-#~ "šlifuodami savo fizinius gebėjimus. Todėl elfai išsiskiria šaudyme iš "
-#~ "lanko, kas yra, matyt, jų svarbiausias kariavimo būdas. Dauguma elfų "
-#~ "karių nešiojasi lanką ir jokia kita rasė negali lygintis su jų "
-#~ "lankininkais greičiu ir taiklumu. Visi elfai taip pat turi nepaaiškinamą "
-#~ "potraukį prie nepaliestos gamtos. Jie dažnai jaučiasi nejaukiai didelėse "
-#~ "erdvėse be augalų. Elfai pagrinde gyvena Didžiojo žemyno miškuose; "
-#~ "Ėtenvude pietvakariuose, Vesmeroje šiaurės vakaruose ir didžiajame "
-#~ "šiauriniame miške, kurio piečiausias kraštas vadinamas Lintaniro mišku.\n"
-#~ "\n"
-#~ "Elfai yra seniausia žemyno rasė, galbūt neskaitant trolių. Daugumos iš jų "
-#~ "gyvenviečių amžius negali būti patikimai nustatytas, jos neabejotinai "
-#~ "egzistavo virš tūkstantmečio."
-
-#~ msgid "race^Goblin"
-#~ msgstr "Goblinas"
-
-#~ msgid "race+female^Goblin"
-#~ msgstr "Goblinė"
-
-#~ msgid "race^Goblins"
-#~ msgstr "Goblinai"
-
-#~ msgid "race^Gryphon"
-#~ msgstr "Grifas"
-
-#~ msgid "race+female^Gryphon"
-#~ msgstr "Grifė"
-
-#~ msgid "race^Gryphons"
-#~ msgstr "Grifai"
-
-#~ msgid "race^Human"
-#~ msgstr "Žmogus"
-
-#~ msgid "race+female^Human"
-#~ msgstr "Žmogus"
-
-#~ msgid "race^Humans"
-#~ msgstr "Žmonės"
-
-#~ msgid ""
-#~ "The race of men is an extremely diverse one. Although they originally "
-#~ "came from the Old Continent, men have spread all over the world and split "
-#~ "into many different cultures and races. Although they are not imbued with "
-#~ "magic like other creatures, humans can learn to wield it and able to "
-#~ "learn more types than most others. They have no extra special abilities "
-#~ "or aptitudes except their versatility and drive. While often at odds with "
-#~ "other races, they can occasionally form alliances with the less "
-#~ "aggressive races such as elves and dwarves. The less scrupulous among "
-#~ "them do not shrink back from hiring orcish mercenaries, either. They have "
-#~ "no natural enemies, although the majority of men, like most people of all "
-#~ "races, have an instinctive dislike of the undead. Men are shorter than "
-#~ "the elves, but taller still than dwarves. Their skin color can vary, from "
-#~ "almost white to dark brown.\n"
-#~ "\n"
-#~ "<header>text='Subjects of the Crown'</header>\n"
-#~ "Many different groups of men exist, but the majority of them on the Great "
-#~ "Continent live under the rule of the Crown of Wesnoth. The humans first "
-#~ "appeared on the Great Continent from a land far across the ocean to the "
-#~ "West, the Green Isle, and soon established their capital at the inland "
-#~ "city of Weldyn. Over the following centuries they have built up a number "
-#~ "cities across the continent. The soldiers from the Crown of Wesnoth "
-#~ "protect the country, forming the most organized military force in the "
-#~ "known world. Its warriors come from the main provinces, where all men are "
-#~ "conscripted at an early age.\n"
-#~ "\n"
-#~ "<header>text='The Clansmen'</header>\n"
-#~ "The eastern provinces of Wesnoth, known as the Clan Homelands, have a "
-#~ "geography consisting of more open plains and rolling hills than the "
-#~ "western, more civilized provinces. They are home to the Horse Clans, who "
-#~ "are allied with the Crown of Wesnoth but operate independently and "
-#~ "maintain their own identity. Some consider them to be a tributary state, "
-#~ "which sends food and soldiers to Crown in exchange for protection. Others "
-#~ "say they are on equal footing with the western half of Wesnoth. In any "
-#~ "case, the eastern provinces do not have a conscript army the way Western "
-#~ "Wesnoth does. Training for fighting is part of the way of life of the "
-#~ "Clans; the parents teach the children to ride horses, fight and shoot a "
-#~ "bow from an early age. In general, the Clan warriors are less organized "
-#~ "than the civilized fighters, and the strengths and weaknesses of these "
-#~ "groups complement each other."
-#~ msgstr ""
-#~ "Žmonių rasė yra ypač įvairi. Nors jie iš pradžių atėjo iš Senojo žemyno, "
-#~ "žmonės išplito visame pasaulyje ir suskilo į daugybę įvairių kultūrų ir "
-#~ "rasių. Nežiūrint to, kad jie nėra pripildyti magijos kaip kitos būtybės, "
-#~ "žmonės gali išmokti ja naudotis ir sugeba išmokti daugiau magijos rūšių "
-#~ "nei dauguma kitų. Jie neturi jokių neeilinių galimybių ar gebėjimų, "
-#~ "išskyrus jų visapusiškumą ir veržlumą. Nepaisant to, kad dažnai pykstasi "
-#~ "su visomis rasėmis, jie retkarčiais gali sudaryti sąjungas su mažiau "
-#~ "agresyviomis rasėmis, kaip antai elfai ir dvarfai. Mažiau sąžiningi "
-#~ "žmonės taip pat nevengia samdytis orkų samdinių. Jie neturi įgimtų "
-#~ "priešų, tačiau dauguma žmonių, kaip ir dauguma kitų rasių atstovų, "
-#~ "instinktyviai nemėgsta nemirėlių. Žmonės yra mažesni už elfus, bet vis "
-#~ "dar aukštesni už dvarfus. Jų odos spalva gali būti įvairi, nuo beveik "
-#~ "baltos iki tamsiai rudos.\n"
-#~ "\n"
-#~ "<header>text='Karūnos pavaldiniai'</header>\n"
-#~ "Egzistuoja daugybė skirtingų žmonių grupių, bet Didžiajame žemyne dauguma "
-#~ "jų gyvena valdomi Vesnoto karūnos. Žmonės pirmiausiai atsirado Didžiajame "
-#~ "žemyne iš krašto, esančio toli į vakarus už vandenyno, Žaliosios salos, "
-#~ "ir greitai įkūrė savo sostinę krašto viduje esančiame Veldyno mieste. Per "
-#~ "ateinančius šimtmečius visame žemyne jie pastatė daugybę miestų. Vesnoto "
-#~ "karūnos kareiviai gina šalį, sudarydami labiausiai organizuotą karinę "
-#~ "jėgą žinomame pasaulyje. Jos kariai ateina iš pagrindinių provincijų, kur "
-#~ "visi vyrai į karo tarnybą pašaukiami ankstyvame amžiuje.\n"
-#~ "\n"
-#~ "<header>text='Klanų žmonės'</header>\n"
-#~ "Rytinės Vesnoto provincijos, žinomos kaip Klanų tėvynė, geografiškai "
-#~ "daugiau sudarytos iš atvirų lygumų ir mažų kalvų negu vakarinės, labiau "
-#~ "civilizuotos provincijos. Jos yra Arklių klanų, kurie yra sąjungoje su "
-#~ "Vesnoto karūna, bet veikia nepriklausomai, ir išlaiko savo tapatybę, "
-#~ "namai. Vis dėlto, rytinės provincijos neturi šauktinės armijos taip, kaip "
-#~ "turi Vakarų Vesnotas. Treniravimasis kovai yra Klanų gyvenimo būdas; "
-#~ "tėvai moko vaikus joti žirgais, kautis ir šaudyti iš lanko nuo ankstyvo "
-#~ "amžiaus. Apskritai, Klanų kariai yra mažiau organizuoti nei civilizuoti "
-#~ "kovotojai, ir stipriosios bei silpnosios šių grupių pusės papildo viena "
-#~ "kitą."
-
-#~ msgid "race^Saurian"
-#~ msgstr "Roplys"
-
-#~ msgid "race+female^Saurian"
-#~ msgstr "Roplė"
-
-#~ msgid "race^Saurians"
-#~ msgstr "Ropliai"
-
-#~ msgid "race^Mechanical"
-#~ msgstr "Mechaninis"
-
-#~ msgid "race+plural^Mechanical"
-#~ msgstr "Mechaniniai"
-
-#~ msgid "race^Merman"
-#~ msgstr "Vandenis"
-
-#~ msgid "race^Mermaid"
-#~ msgstr "Vandenė"
-
-#~ msgid "race^Mermen"
-#~ msgstr "Vandeniai"
-
-#~ msgid "race^Monster"
-#~ msgstr "Pabaisa"
-
-#~ msgid "race^Monsters"
-#~ msgstr "Pabaisos"
-
-#~ msgid "race^Naga"
-#~ msgstr "Nága"
-
-#~ msgid "race^Nagani"
-#~ msgstr "Nága"
-
-#~ msgid "race^Nagas"
-#~ msgstr "Nágai"
-
-#~ msgid "race^Ogre"
-#~ msgstr "Žmogėdra"
-
-#~ msgid "race+female^Ogre"
-#~ msgstr "Žmogėdra"
-
-#~ msgid "race^Ogres"
-#~ msgstr "Žmogėdros"
-
-#~ msgid "race^Orc"
-#~ msgstr "Orkas"
-
-#~ msgid "race+female^Orc"
-#~ msgstr "Orkė"
-
-#~ msgid "race^Orcs"
-#~ msgstr "Orkai"
-
-#~ msgid "race^Troll"
-#~ msgstr "Trolis"
-
-#~ msgid "race+female^Troll"
-#~ msgstr "Trolė"
-
-#~ msgid "race^Trolls"
-#~ msgstr "Troliai"
-
-#~ msgid "race^Undead"
-#~ msgstr "Nemirėlis"
-
-#~ msgid "race+female^Undead"
-#~ msgstr "Nemirėlė"
-
-#~ msgid "race+plural^Undead"
-#~ msgstr "Nemirėliai"
-
-#~ msgid ""
-#~ "Undead are not really a single race of creatures, although often treated "
-#~ "as such. Almost any dead creature can, by a sufficiently skilled "
-#~ "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#~ "most part unnatural but mindless constructs, obeying whoever created them "
-#~ "without question nor thought. A greater mystery of necromancy is in how "
-#~ "constructs are sustained without continuous effort from the necromancer. "
-#~ "An undead creature does not require the constant attention of the "
-#~ "necromancer to command and sustain, but can work autonomously according "
-#~ "to the commands of it’s master. Only rarely, perhaps once every few "
-#~ "months, does the necromancer need to maintain his creation.\n"
-#~ "\n"
-#~ "Necromancy is almost solely limited to humans. Even the legends of "
-#~ "magically apt races like elves and mermen tell of very few of their kind "
-#~ "who have ever delved in the dark arts. It is surmised that necromantic "
-#~ "magic requires great adaptability and a flexible mind, extremes of which "
-#~ "are most commonly found in humans. The ultimate goal of most necromancers "
-#~ "is to turn the same art of preserving and imbuing life upon themselves, "
-#~ "to alter themselves at whatever cost, to ultimately escape death by "
-#~ "preserving their own mind and spirit.\n"
-#~ "\n"
-#~ "<header>text='Geography'</header>\n"
-#~ "While undead lords arrived on the Great Continent in considerable numbers "
-#~ "only in the wake of Haldric I, they were not completely unheard of by "
-#~ "elves and dwarves before that."
-#~ msgstr ""
-#~ "Nemirėliai iš tikrųjų nėra vientisa būtybių rasė, nors dažnai tokia "
-#~ "laikomi. Pakankamai įgudęs nekromantas gali prikelti beveik bet kokią "
-#~ "mirusią būtybę. Nemirėliai didžiąja dalimi yra baisūs, bet nemąstantys "
-#~ "tvariniai, be klausimų ar apmąstymų paklūstantys tam, kas juos sukūrė. "
-#~ "Didesnė nekromantijos paslaptis yra kaip šie tvariniai yra išlaikomi be "
-#~ "nuolatinių nekromanto pastangų. Nemirėlis nereikalauja pastovaus "
-#~ "nekromanto dėmesio vadovaujant ir išlaikant, o gali dirbti autonomiškai "
-#~ "pagal šeimininko įsakymus. Tik kartais, galbūt kas kelis mėnesius, "
-#~ "nekromantas turi prižiūrėti savo kūrinį.\n"
-#~ "\n"
-#~ "Nekromantija yra beveik be išimčių apribota žmonėmis. Net magijai gabių "
-#~ "rasių kaip elfai ir vandeniai legendos byloja tik apie kelis iš jų "
-#~ "rūšies, kurie kada nors šniukštinėjo po juodąją magiją. Yra spėjama, kad "
-#~ "nekromantinei magijai reikia didelio pritaikomumo ir lankstaus proto, "
-#~ "kraštutinybės, kurios dažniausiai randamos pas žmones. Galutinis daugumos "
-#~ "nekromantų tikslas yra pasinaudoti tuo pačiu gyvybės išsaugojimo ir "
-#~ "įkvėpimo menu, kad pasikeistų save bet kuria kaina, galutinai pabėgtų nuo "
-#~ "mirties išsaugodami tik savo protą ir dvasią.\n"
-#~ "\n"
-#~ "<header>text='Geografija'</header>\n"
-#~ "Nors nemirėlių valdovai į Didįjį žemyną žymiais kiekiais atvyko tik "
-#~ "Haldriko I pėdomis, tačiau ir prieš tai jie nebuvo visiškai negirdėti "
-#~ "elfams ir dvarfams."
-
-#~ msgid "race^Wolf"
-#~ msgstr "Vilkas"
-
-#~ msgid "race^Wolves"
-#~ msgstr "Vilkai"
-
-#~ msgid "race^Wose"
-#~ msgstr "Miškinis"
-
-#~ msgid "race^Woses"
-#~ msgstr "Miškiniai"
-
-#, fuzzy
-#~ msgid "Caste"
-#~ msgstr "Pilis"
-
-#, fuzzy
-#~ msgid "Breeding Pen"
-#~ msgstr "maitinasi"
-
-#, fuzzy
-#~ msgid "Laying"
-#~ msgstr "(žaidžia)"
-
-#, fuzzy
-#~ msgid "Hatchling"
-#~ msgstr "Gydymas"
-
-#, fuzzy
-#~ msgid "Fledgling"
-#~ msgstr "Gydymas"
-
-#, fuzzy
-#~ msgid "Intendant"
-#~ msgstr "Protingas"
-
-#, fuzzy
-#~ msgid "Swarm"
-#~ msgstr "Pelkė"
-
-#, fuzzy
-#~ msgid "Swarming"
-#~ msgstr "Pelkė"
-
-#~ msgid "Introduction"
-#~ msgstr "Įvadas"
-
-#~ msgid "Gameplay"
-#~ msgstr "Žaidimas"
-
-#~ msgid "Units"
-#~ msgstr "Daliniai"
-
-#~ msgid "Abilities"
-#~ msgstr "Gebėjimai"
-
-#~ msgid "Weapon Specials"
-#~ msgstr "Ginklų ypatybės"
-
-#, fuzzy
-#~ msgid "Factions"
-#~ msgstr "Veiksmai"
-
-#~ msgid "Terrains"
-#~ msgstr "Vietovės"
-
-#~ msgid "Commands"
-#~ msgstr "Komandos"
-
-#~ msgid ""
-#~ "Certain units have abilities that either directly affect other units, or "
-#~ "have an impact on how the unit interacts with other units. These "
-#~ "abilities will be listed under this topic as you encounter them.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Kai kurie daliniai turi gebėjimų, kurie arba tiesiogiai veikia kitus "
-#~ "dalinius, arba turi įtakos dalinio sąveikavimui su kitais daliniais. Šie "
-#~ "gebėjimai, kai jūs juos sutiksite, bus vardinami šioje temoje.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "Some weapons have special features that increase the effectiveness of "
-#~ "attacking with them.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Kai kurie ginklai turi ypatingų savybių, kurios padidina puolimo jais "
-#~ "efektyvumą.\n"
-#~ "\n"
-
-#~ msgid "Unknown Unit"
-#~ msgstr "Nežinomas dalinys"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "This unit is unknown for the moment. You must discover it in the game to "
-#~ "be allowed to see its description."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Šis dalinys šiuo metu nežinomas. Jūs privalote atrasti jį žaidime, kad "
-#~ "galėtumėte pamatyti jo aprašymą."
-
-#~ msgid "Overview"
-#~ msgstr "Apžvalga"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
-#~ "strategy game somewhat unusual among modern strategy games. While other "
-#~ "games strive for complexity, Battle for Wesnoth strives for simplicity of "
-#~ "both rules and gameplay. This does not make the game simple, however — "
-#~ "from these simple rules arise a wealth of strategy, making the game easy "
-#~ "to learn but a challenge to master."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Mūšis dėl Vesnoto'</italic> yra ėjimais pagrįstas "
-#~ "fantastinis strateginis žaidimas, iš dalies neįprastas tarp šiuolaikinių "
-#~ "strateginių žaidimų. Kol kiti žaidimai siekia sudėtingumo, Mūšis dėl "
-#~ "Vesnoto siekia paprastumo, tačiau iš šių paprastų taisyklių atsiranda "
-#~ "strategijų gausumas, darantis žaidimą lengvai išmokstamą, bet sunkų "
-#~ "puikiai įvaldyti."
-
-#~ msgid "Fundamentals of Gameplay"
-#~ msgstr "Žaidimo pagrindai"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "To begin with, it’s best to click the <bold>text=Tutorial</bold> button "
-#~ "at the main menu. This will take you to the interactive tutorial, which "
-#~ "will teach you the basics of Wesnoth. After this, it is recommended that "
-#~ "you play the Heir to the Throne campaign first — click "
-#~ "<bold>text=Campaign</bold> then <italic>text='Heir to the Throne'</"
-#~ "italic>. As <italic>text='Battle for Wesnoth'</italic> can be quite "
-#~ "challenging, you may wish to start on <italic>text=Easy</italic>."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Pradžiai, geriausia pagrindiniame meniu nuspausti mygtuką "
-#~ "<italic>text=Apmokymas</italic>. Tai nuves jus į interaktyvų apmokymą, "
-#~ "kuris išmokys jus Vesnoto pagrindų. Po to, rekomenduojama, kad pirmiausia "
-#~ "sužaistumėte kampaniją Sosto įpėdinis – spauskite <italic>text=Kampanija</"
-#~ "italic>, tada <italic>text='Sosto įpėdinis'</italic>. Kadangi "
-#~ "<italic>text='Mūšis dėl Vesnoto'</italic> gali būti pakankamai "
-#~ "iššaukiančiu, galite norėti pradėti <italic>text=Lengvu</italic> "
-#~ "sudėtingumu."
-
-#~ msgid "About the Game"
-#~ msgstr "Apie žaidimą"
-
-#~ msgid ""
-#~ "The game takes place over a series of battles, called scenarios. Each "
-#~ "scenario pits your troops against the troops of one or more adversaries. "
-#~ "You can play against the computer, or with friends who each take turns "
-#~ "sitting at the computer (hotseat play). If your computer is connected to "
-#~ "a computer network, you can also play against other people connected to "
-#~ "that network. If your computer has a connection to the Internet, you can "
-#~ "play against other people across the Internet."
-#~ msgstr ""
-#~ "Žaidimas vyksta mūšių serijomis, pavadintomis scenarijais. Kiekvienas "
-#~ "scenarijus išbando jūsų karius prieš vieno ar kelių priešininkų karius. "
-#~ "Galite žaisti prieš kompiuterį arba su draugais, paeiliui sėdėdami prie "
-#~ "kompiuterio (karštos vietos žaidimas). Jeigu jūsų kompiuteris prijungtas "
-#~ "prie kompiuterių tinklo, galite žaisi su kitais žmonėmis, prisijungusiais "
-#~ "prie to tinklo. Jei jūsų kompiuteris turi ryšį su internetu, galite "
-#~ "žaisti su kitais žaidėjais per internetą."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Campaigns consist of multiple scenarios that follow on from each other, "
-#~ "telling a story. In a campaign, you often need to play more carefully, "
-#~ "preserving your best troops so that they can be used again in later "
-#~ "scenarios in the campaign."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Kampanijos susideda iš daugelio scenarijų, kurie seka vienas kitą, "
-#~ "pasakodami istoriją. Kampanijoje dažnai turėsite žaisti atidžiau, "
-#~ "išsaugodami geriausius savo karius, kad jie vėl galėtų būti panaudoti "
-#~ "vėlesniuose kampanijos scenarijuose."
-
-#~ msgid "Victory and Defeat"
-#~ msgstr "Pergalė ir pralaimėjimas"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "When you win a scenario, the map will gray over and the <bold>text='End "
-#~ "Turn'</bold> button will change to <bold>text='End Scenario'</bold>. You "
-#~ "can now do things like changing your save options or (if you are in a "
-#~ "multiplayer game) chatting with other players before pressing that button "
-#~ "to advance."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Kai laimite scenarijų, žemėlapis papilkės ir mygtukas <bold>text='Baigti "
-#~ "ėjimą'</bold> pasikeis į <bold>text='Baigti scenarijų'</bold>. Pieš "
-#~ "nuspausdami šį mygtuką, kad tęstumėte, dabar galite atlikti tokius "
-#~ "veiksmus kaip keisti išsaugojimų nustatymus arba (jei esate daugelio "
-#~ "žaidėjų žaidime) kalbėtis su kitais žaidėjais."
-
-#~ msgid "Recruiting and Recalling"
-#~ msgstr "Samdymas ir grąžinimas"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Recruited units come with two random <ref>dst='..traits_section' "
-#~ "text='Traits'</ref> which modify their statistics."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Pasamdyti daliniai turi du atsitiktinius <ref>dst='..traits_section' "
-#~ "text='Bruožus'</ref>, kurie keičia jų statistikas."
-
-#~ msgid "Orbs"
-#~ msgstr "Rutuliai"
-
-#~ msgid ""
-#~ "On top of the energy bar shown next to each unit of yours is an orb. For "
-#~ "units you control, this orb is:"
-#~ msgstr ""
-#~ "Virš energijos juostos, rodomos šalia jūsų dalinių, yra rutulys. "
-#~ "Daliniams, kuriuos jūs kontroliuojate, šis rutulys yra:"
-
-#~ msgid "green if it hasn’t moved this turn,"
-#~ msgstr "žalias, jei dar nejudėjo šį ėjimą,"
-
-#~ msgid "yellow if it has moved, but could still move further or attack, or"
-#~ msgstr "geltonas, jei judėjo, bet dar gali toliau judėti ar pulti arba"
-
-#~ msgid "The orb is blue if the unit is an ally you do not control."
-#~ msgstr "Rutulys mėlynas, jei dalinys yra draugas, kurio jūs nevaldote."
-
-#~ msgid "Enemy units have no orb on top of their energy bar."
-#~ msgstr "Priešo daliniai neturi rutulio virš jų energijos juostos."
-
-#~ msgid "Hitpoints and Experience"
-#~ msgstr "Gyvybės taškai ir patirtis"
-
-#~ msgid ""
-#~ "Each unit has a certain number of hitpoints (HP). If the hitpoints of a "
-#~ "unit drop below 1, the unit dies. Each unit also has a certain number of "
-#~ "experience points (XP). A freshly recruited unit starts with no "
-#~ "experience points, and gains experience by fighting enemies."
-#~ msgstr ""
-#~ "Kiekvienas dalinys turi tam tikrą kiekį gyvybės taškų (GT). Jei dalinio "
-#~ "gyvybės taškai nukrenta žemiau 1, dalinys miršta. Kiekvienas dalinys turi "
-#~ "tam tikrą skaičių patirties taškų (PT). Naujai pasamdytas dalinys neturi "
-#~ "patirties taškų ir įgauna patirties kovodamas su priešais."
-
-#~ msgid "Movement"
-#~ msgstr "Judėjimas"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "To see where the enemy can move to during their next turn, press Ctrl-v "
-#~ "or Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units "
-#~ "were not on the map to block their progress."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Kad pamatytumėte, kur priešas gali judėti pre kitą savo ėjimą, "
-#~ "nuspauskite Ctrl-v arba Cmd-v. Ctrl-b arba Cmd-b parodo, kur priešas gali "
-#~ "judėti, jei jūsų dalinių nebūtų žemėlapyje ir jie netrukdytų judėti."
-
-#~ msgid "Shroud and Fog of War"
-#~ msgstr "Uždanga ir karo rūkas"
-
-#~ msgid "Combat"
-#~ msgstr "Mūšis"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Order and number of strikes'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Smūgių tvarka ir skaičius'</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Chance to hit'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Tikimybė pataikyti'</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Damage</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Žala</header>"
-
-#~ msgid "Damage Types and Resistance"
-#~ msgstr "Žalos tipai ir atsparumas"
-
-#~ msgid "Time of Day"
-#~ msgstr "Dienos laikas"
-
-#~ msgid "Dawn"
-#~ msgstr "Aušra"
-
-#~ msgid "Morning"
-#~ msgstr "Rytas"
-
-#~ msgid "Afternoon"
-#~ msgstr "Popietė"
-
-#~ msgid "Dusk"
-#~ msgstr "Prieblanda"
-
-#~ msgid "First Watch"
-#~ msgstr "Pirmoji sargyba"
-
-#~ msgid "Second Watch"
-#~ msgstr "Antroji sargyba"
-
-#~ msgid ""
-#~ "Keep in mind that some scenarios take place underground, where it is "
-#~ "perpetually night!"
-#~ msgstr ""
-#~ "Turėkite omeny, kad kai kurie scenarijai vyksta požemyje, kur nuolat yra "
-#~ "naktis!"
-
-#~ msgid "Experience and Advancement"
-#~ msgstr "Patirtis ir Paaukštinimai"
-
-#, fuzzy
-#~ msgid ""
-#~ "If both units survive a combat, they gain a number of experience points "
-#~ "equal to the level of the unit they’re fighting. If a unit kills another "
-#~ "in combat, however, it gains much more experience — 4 for a level 0 unit, "
-#~ "8 for level 1, 16 for level 2, 24 for level 3, and so forth."
-#~ msgstr ""
-#~ "Jeigu abu daliniai išgyvena kovą, jie gauna patirties taškų skaičių lygų "
-#~ "dalinio, su kuriuo jie kaunasi, lygiui. Tačiau jei dalinys kovoje užmuša "
-#~ "kitą, jis gauna kur kas daugiau patirties – 4 už 0 lygio dalinį, 8 – už 1 "
-#~ "lygio, 16 – už 2 lygio, 24 – už 3 lygio ir t.t."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Resting: A unit which neither moves, attacks, nor is attacked will heal 2 "
-#~ "HP in its next turn."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Poilsis: dalinys, kuris nei juda, nei atakuoja, nei yra atakuojamas, kitą "
-#~ "ėjimą pagis dviem GT."
-
-#~ msgid ""
-#~ "\n"
-#~ "Villages: A unit which starts a turn in a village will heal 8HP."
-#~ msgstr ""
-#~ "\n"
-#~ "Kaimai: dalinys, pradedantis ėjimą kaime, pagis 8 GT."
-
-#~ msgid "Income and Upkeep"
-#~ msgstr "Pajamos ir išlaikymas"
-
-#~ msgid ""
-#~ "In Wesnoth, it is not enough simply to recruit units and fight. You must "
-#~ "watch your gold as well, especially in campaigns, where you can carry "
-#~ "extra gold over from one scenario to the next. There are two aspects to "
-#~ "this; Income and Upkeep."
-#~ msgstr ""
-#~ "Vesnote nepakanka tiesiog samdyti dalinius ir kautis. Jūs taip pat "
-#~ "privalote stebėti savo auksą, ypač kampanijose, kur galite persinešti "
-#~ "papildomą auksą iš vieno scenarijaus į kitą. Yra du šito aspektai; "
-#~ "Pajamos ir Išlaikymas."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Upkeep costs are subtracted from your Income, so in the case of twelve "
-#~ "levels of units and ten villages, your resultant Income would be 10 gold "
-#~ "per turn."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Išlaikymo kaštai atimami iš jūsų pajamų, taigi dvylikos dalinių lygių ir "
-#~ "dešimties kaimų atveju jūsų pajamos bus 10 aukso per ėjimą."
-
-#~ msgid "ingame_help_item^Contributors"
-#~ msgstr "Autoriai"
-
-#~ msgid "License"
-#~ msgstr "Licencija"
-
-#~ msgid ""
-#~ "Most units have two traits. However, Undead units are assigned the single "
-#~ "trait <italic>text='Undead'</italic>, and Woses do not receive any "
-#~ "traits. Traits are modifications that change a unit’s attributes "
-#~ "slightly. They are usually randomly assigned to a unit when it is "
-#~ "recruited."
-#~ msgstr ""
-#~ "Dauguma dalinių turi du bruožus. Tačiau nemirėlių daliniams priskirtas "
-#~ "vienintelis bruožas <italic>text='Nemirėlis'</italic>, o miškiniai neturi "
-#~ "jokių bruožų. Bruožai yra pakeitimai, kurie šiek tiek pakeičia dalinio "
-#~ "atributus. Jie paprastai atsitiktinai priskiriami daliniui, kai jis yra "
-#~ "pasamdomas."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "The traits that are available to all non-Undead units are "
-#~ "<ref>dst='traits_intelligent' text='Intelligent'</ref>, "
-#~ "<ref>dst='traits_quick' text='Quick'</ref>, <ref>dst='traits_resilient' "
-#~ "text='Resilient'</ref>, and <ref>dst='traits_strong' text='Strong'</ref>."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Bruožai galimi visiems ne-nemirėliams daliniams yra "
-#~ "<ref>dst='traits_intelligent' text='Protingas'</ref>, "
-#~ "<ref>dst='traits_quick' text='Greitas'</ref>, <ref>dst='traits_resilient' "
-#~ "text='Gyvybingas'</ref> ir <ref>dst='traits_strong' text='Stiprus'</ref>."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
-#~ "text='Dextrous'</ref>, <ref>dst='traits_loyal' text='Loyal'</ref>, and "
-#~ "<ref>dst='traits_undead' text='Undead'</ref>.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Kiti bruožai, kurie gali būti priskirti daliniams yra "
-#~ "<ref>dst='traits_dextrous' text='Vikrus'</ref>, <ref>dst='traits_loyal' "
-#~ "text='Ištikimas'</ref>, and <ref>dst='traits_undead' text='Nemirėlis'</"
-#~ "ref>.\n"
-#~ "\n"
-
-#~ msgid "Intelligent units require 20% less experience than usual to advance."
-#~ msgstr ""
-#~ "Protingiems daliniams reikia 20% mažiau patirties nei įprasta, kad būtų "
-#~ "paaukštinti."
-
-#~ msgid "Quick"
-#~ msgstr "Greitas"
-
-#~ msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
-#~ msgstr ""
-#~ "Greiti daliniai turi 1 papildomą judėjimo tašką, bet 5% mažiau GT nei "
-#~ "įprasta."
-
-#~ msgid "Resilient"
-#~ msgstr "Gyvybingas"
-
-#~ msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-#~ msgstr ""
-#~ "Gyvybingi daliniai turi 4 GT plius 1 GT lygiui daugiau negu įprasta."
-
-#~ msgid "Strong"
-#~ msgstr "Stiprus"
-
-#~ msgid "Fearless"
-#~ msgstr "Bebaimis"
-
-#~ msgid ""
-#~ "Aversion to light and dark holds no sway over these brave individuals."
-#~ msgstr "Priklausymas šviesai ar tamsai neįtakoja šių drąsių individų."
-
-#~ msgid "Feral"
-#~ msgstr "Laukinis"
-
-#~ msgid "Loyal"
-#~ msgstr "Ištikimas"
-
-#~ msgid ""
-#~ "Loyal units don’t incur upkeep. Most units incur an upkeep cost at the "
-#~ "end of every turn, which is equal to their level. Loyal units do not "
-#~ "incur this cost."
-#~ msgstr ""
-#~ "Ištikimi daliniai nereikalauja užmokesčio. Dauguma dalinių ėjimo "
-#~ "pabaigoje paima užmokestį, tiek auksinių, koks yra jų lygis. Ištikimiems "
-#~ "daliniams šio užmokesčio nereikia."
-
-#~ msgid "trait^Undead"
-#~ msgstr "Nemirėlis"
-
-#~ msgid ""
-#~ "Undead units are immune to poison, also drain and plague doesn’t work on "
-#~ "them."
-#~ msgstr ""
-#~ "Nemirėlių daliniai yra atsparūs nuodams, be to jų neveikia išsiurbimas ir "
-#~ "maras."
-
-#~ msgid "trait^Mechanical"
-#~ msgstr "Mechaninis"
-
-#~ msgid ""
-#~ "Mechanical units are immune to poison, also drain and plague doesn’t work "
-#~ "on them."
-#~ msgstr ""
-#~ "Mechaniniai daliniai yra atsparūs nuodams, be to išsiurbimas ir maras "
-#~ "neveikia jų."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Mechanical units generally have <italic>text='Mechanical'</italic> as "
-#~ "their only trait. Since mechanical units don’t really have life, drain, "
-#~ "poison and plague has no effect upon them."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Mechaniniai daliniai paprastai turi vienintelį bruožą "
-#~ "<italic>text='Mechaninis'</italic>. Kadangi mechaniniai daliniai iš "
-#~ "tikrųjų neturi gyvybės, išsiurbimas, nuodai ir maras jų neveikia."
-
-#~ msgid "Dextrous"
-#~ msgstr "Vikrus"
-
-#~ msgid "Healthy"
-#~ msgstr "Sveikas"
-
-#~ msgid "Dim"
-#~ msgstr "Bukas"
-
-#~ msgid ""
-#~ "Units with trait Dim suffer a 20% increase in experience required to "
-#~ "advance."
-#~ msgstr ""
-#~ "Daliniams su gebėjimu Bukas reikia 20% daugiau patirties tam, kad "
-#~ "patobulėtų."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Dim is a trait all too common in goblins and other lesser species. There "
-#~ "are reasons these species are lesser, and this is one of them."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Bukas yra gebėjimas būdingas goblinams ir kitoms žemesniosioms rūšims. "
-#~ "Esama priežasčių, kodėl šios rūšys yra žemesniosios, ir bukumas yra viena "
-#~ "iš jų."
-
-#~ msgid "Slow"
-#~ msgstr "Lėtas"
-
-#~ msgid "Slow units have −1 movement but 5% more hitpoints."
-#~ msgstr ""
-#~ "Lėti daliniai turi 1 judėjimo tašku mažiau, bet 5% daugiau gyvybės taškų."
-
-#~ msgid "Weak"
-#~ msgstr "Silpnas"
-
-#~ msgid ""
-#~ "Game maps feature a variety of terrains that affect both unit movement "
-#~ "and a unit’s defensive capability in combat.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Žaidimo žemėlapiuose yra įvairių vietovių, kuriuos veikia ir dalinių "
-#~ "judėjimą, ir dalinių gynybinius sugebėjimus mūšyje.\n"
-#~ "\n"
-
-#~ msgid "Flat"
-#~ msgstr "Plokščia"
-
-#~ msgid "Road"
-#~ msgstr "Kelias"
-
-#, fuzzy
-#~ msgid ""
-#~ "Roads are beaten paths of dirt, formed by many travelers passing over "
-#~ "them. As far as gameplay is concerned, Roads behave as "
-#~ "<ref>dst='terrain_flat' text='Flat'</ref> terrain.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Savanos yra lygumos su aukšta žole, randamos šiltesnio klimato pasaulio "
-#~ "dalyse. Žaidime jos yra identiškos <ref>dst=terrain_grassland "
-#~ "text=žolynams</ref>."
-
-#~ msgid "Forest"
-#~ msgstr "Miškas"
-
-#~ msgid "Hills"
-#~ msgstr "Kalvos"
-
-#~ msgid "Mountains"
-#~ msgstr "Kalnai"
-
-#~ msgid "Swamp"
-#~ msgstr "Pelkė"
-
-#~ msgid "Shallow Water"
-#~ msgstr "Seklus vanduo"
-
-#~ msgid "Deep Water"
-#~ msgstr "Gilus vanduo"
-
-#~ msgid "Frozen"
-#~ msgstr "Užšalusi"
-
-#~ msgid "Sand"
-#~ msgstr "Smėlis"
-
-#~ msgid "Desert"
-#~ msgstr "Dykuma"
-
-#~ msgid "Cave"
-#~ msgstr "Urvas"
-
-#~ msgid "Rockbound Cave"
-#~ msgstr "Uolėtas urvas"
-
-#~ msgid "Illuminated Cave"
-#~ msgstr "Apšviestas urvas"
-
-#~ msgid "Mushroom Grove"
-#~ msgstr "Grybų giraitė"
-
-#~ msgid "Submerged Village"
-#~ msgstr "Užtvindytas kaimas"
-
-#~ msgid "Lava"
-#~ msgstr "Lava"
-
-#~ msgid "River Ford"
-#~ msgstr "Upės brasta"
-
-#~ msgid "Coastal Reef"
-#~ msgstr "Pakrantės rifas"
-
-#~ msgid "Bridge"
-#~ msgstr "Tiltas"
-
-#~ msgid "Impassable"
-#~ msgstr "Nepraeinama"
-
-#~ msgid "General commands"
-#~ msgstr "Bendros komandos"
-
-#~ msgid ""
-#~ "\n"
-#~ "Clear chat messages.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Išvalyti pokalbių žinutes.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Toggle the display of the current frames per second.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Perjungti kadrų per sekundę rodymą.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Switch a log domain to a different log level.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Perjungti registravimo domeną į kitą lygį.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Bring up theme selection menu.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Atverti temų pasirinkimo meniu.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Quit the scenario (without prompting).\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Išjungti scenarijų (be užklausimo).\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Save the game (without prompting).\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Išsaugoti žaidimą (be užklausimo).\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Save the game and quit the scenario (without prompting)."
-#~ msgstr ""
-#~ "\n"
-#~ "Išsaugoti žaidimą ir išjungti scenarijų (be užklausimo)."
-
-#~ msgid "Multiplayer commands"
-#~ msgstr "Daugelio žaidėjų žaidimo komandos"
-
-#~ msgid ""
-#~ "\n"
-#~ "Mute a specific observer. If no username is supplied the muted usernames "
-#~ "are displayed.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Nutildo nurodytą stebėtoją. Jeigu nenurodytas nė vienas naudotojas, "
-#~ "parodomi nutildyti naudotojai.\n"
-#~ "\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "Unmute a specific observer. If no username is supplied the list of muted "
-#~ "observers is cleared."
-#~ msgstr ""
-#~ "\n"
-#~ "Nutildo nurodytą stebėtoją. Jeigu nenurodytas nė vienas naudotojas, "
-#~ "parodomi nutildyti naudotojai.\n"
-#~ "\n"
-
-#~ msgid "Debug mode commands"
-#~ msgstr "Derinimo režimo komandos"
-
-#~ msgid ""
-#~ "\n"
-#~ "Create a unit of the specified type on the selected hex.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Sukuria nurodyto tipo dalinį nurodytame laukelyje.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Toggle fog/shroud for the current side.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Dabartinei pusei perjungia rūką/uždangą.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Adds the specified amount to the current side’s gold.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Dabartinei pusei prideda nurodytą kiekį aukso.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Immediately advances to the next scenario in a campaign.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Iš karto pereina į kitą kampanijos scenarijų.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Manually set a gamestate variable to value.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Rankiniu būdu nustatyti žaidimo būsenos kintamojo vertę.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Show a gamestate variable.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Rodyti žaidimo būsenos kintamąjį.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Manually fire the specified event.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Rankiniu būdu iškviesti nurodytą įvykį.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Modifies the specified property of the selected unit. Example: :unit "
-#~ "hitpoints=100\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Pakeičia nurodytą pasirinkto dalinio ypatybę. Pavyzdžiui: :unit "
-#~ "hitpoints=100\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Makes the selected unit level up N times. Example: :unit advances=2"
-#~ msgstr ""
-#~ "\n"
-#~ "Pažymėtą dalinį paaukština N kartų. Pavyzdžiui: :unit advances=2"
-
-#~ msgid "cures"
-#~ msgstr "atnuodija"
-
-#~ msgid "female^cures"
-#~ msgstr "atnuodija"
-
-#~ msgid ""
-#~ "Cures:\n"
-#~ "A curer can cure a unit of poison, although that unit will receive no "
-#~ "additional healing on the turn it is cured of the poison."
-#~ msgstr ""
-#~ "Atnuodija:\n"
-#~ "Atnuodytojas gali iš dalinio pašalinti nuodus, tačiau tas dalinys "
-#~ "nebegaus jokio papildomo gydymo tą ėjimą, kai jis buvo atnuodytas."
-
-#~ msgid "regenerates"
-#~ msgstr "regeneruoja"
-
-#~ msgid "female^regenerates"
-#~ msgstr "regeneruoja"
-
-#~ msgid ""
-#~ "Regenerates:\n"
-#~ "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#~ "remove the poison instead of healing."
-#~ msgstr ""
-#~ "Regeneruoja:\n"
-#~ "Dalinys gydysis 8 GT per ėjimą. Jei jis yra apnuodytas, tai vietoj "
-#~ "gydymosi pasišalins nuodus."
-
-#~ msgid "steadfast"
-#~ msgstr "atsparus"
-
-#~ msgid "female^steadfast"
-#~ msgstr "atspari"
-
-#~ msgid ""
-#~ "Steadfast:\n"
-#~ "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#~ "defending. Vulnerabilities are not affected."
-#~ msgstr ""
-#~ "Atsparus:\n"
-#~ "Šio dalinio atsparumai yra padvigubinami, iki didžiausių įmanomų 50%, kai "
-#~ "ginamasi. Pažeidžiamumai nepaveikiami."
-
-#~ msgid "leadership"
-#~ msgstr "vadovavimas"
-
-#~ msgid "female^leadership"
-#~ msgstr "vadovavimas"
-
-#~ msgid "illuminates"
-#~ msgstr "apšviečia"
-
-#~ msgid "female^illuminates"
-#~ msgstr "apšviečia"
-
-#~ msgid "teleport"
-#~ msgstr "teleportavimas"
-
-#~ msgid "female^teleport"
-#~ msgstr "teleportavimas"
-
-#~ msgid ""
-#~ "Teleport:\n"
-#~ "This unit may teleport between any two empty villages owned by its side "
-#~ "using one of its moves."
-#~ msgstr ""
-#~ "Teleportavimas:\n"
-#~ "Šis dalinys gali teleportuotis tarp bet kokių dviejų jo pusės kaimų, "
-#~ "naudodamas vieną iš savo judėjimų."
-
-#~ msgid "ambush"
-#~ msgstr "pasala"
-
-#~ msgid "female^ambush"
-#~ msgstr "pasala"
-
-#~ msgid "concealment"
-#~ msgstr "slėpimasis"
-
-#~ msgid "female^concealment"
-#~ msgstr "slėpimasis"
-
-#~ msgid ""
-#~ "Concealment:\n"
-#~ "This unit can hide in villages (with the exception of water villages), "
-#~ "and remain undetected by its enemies, except by those standing next to "
-#~ "it.\n"
-#~ "\n"
-#~ "Enemy units can not see this unit while it is in a village, except if "
-#~ "they have units next to it. Any enemy unit that first discovers this unit "
-#~ "immediately loses all its remaining movement."
-#~ msgstr ""
-#~ "Slėpimasis:\n"
-#~ "Šis dalinys gali slėptis kaimuose (išskyrus vandens kaimuose), ir likti "
-#~ "neaptiktu savo priešų, išskyrus tų, kurie stovi greta jo.\n"
-#~ "\n"
-#~ "Priešo daliniai negali matyti šio dalinio, kol jis yra kaime, išskyrus "
-#~ "tik jei jie turi dalinių šalia jo. Bet kuris priešo dalinys, kuris pirmas "
-#~ "aptinka šį dalinį iš karto praranda likusį judėjimą."
-
-#~ msgid "female^feeding"
-#~ msgstr "maitinasi"
-
-#~ msgid ""
-#~ "Feeding:\n"
-#~ "This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#~ "living unit."
-#~ msgstr ""
-#~ "Maitinasi:\n"
-#~ "Šis dalinys gauna 1 gyvybės tašką, pridedamą prie jo maksimalaus, kai jis "
-#~ "užmuša gyvą dalinį."
-
-#~ msgid "+1 max HP"
-#~ msgstr "+1 maks. GT"
-
-#~ msgid "plague"
-#~ msgstr "maras"
-
-#~ msgid "slows"
-#~ msgstr "sulėtina"
-
-#~ msgid ""
-#~ "Slow:\n"
-#~ "This attack slows the target until it ends a turn. Slow halves the damage "
-#~ "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#~ "unit that is slowed will feature a snail icon in its sidebar information "
-#~ "when it is selected."
-#~ msgstr ""
-#~ "Sulėtina:\n"
-#~ "Ši ataka sulėtina taikinį iki jo ėjimo pabaigos. Sulėtinimas perpus "
-#~ "sumažina atakų daromą žalą ir sulėtinto dalinio judėjimo kaina yra "
-#~ "padvigubinta. Dalinys, kuris yra sulėtintas turi sraigės ženkliuką savo "
-#~ "šoninės juostos informacijoje, kai jis yra pažymėtas."
-
-#~ msgid "petrifies"
-#~ msgstr "paverčia akmeniu"
-
-#~ msgid ""
-#~ "Petrify:\n"
-#~ "This attack petrifies the target, turning it to stone. Units that have "
-#~ "been petrified may not move or attack."
-#~ msgstr ""
-#~ "Sustingdymas:\n"
-#~ "Ši ataka taikinį paverčia akmeniu. Daliniai, kurie buvo paversti į "
-#~ "akmenį, negali judėti ar pulti."
-
-#~ msgid "marksman"
-#~ msgstr "snaiperis"
-
-#~ msgid ""
-#~ "Marksman:\n"
-#~ "When used offensively, this attack always has at least a 60% chance to "
-#~ "hit."
-#~ msgstr ""
-#~ "Snaiperis:\n"
-#~ "Kai naudojama puolant, ši ataka visada turi bent 60% tikimybę pataikyti."
-
-#~ msgid "drains"
-#~ msgstr "išsiurbia"
-
-#~ msgid ""
-#~ "Drain:\n"
-#~ "This unit drains health from living units, healing itself for half the "
-#~ "amount of damage it deals (rounded down)."
-#~ msgstr ""
-#~ "Išsiurbia:\n"
-#~ "Šis dalinys išsiurbia jėgas iš gyvų dalinių, gydydamasis pusė padarytos "
-#~ "žalos kiekio (suapvalintos žemyn)."
-
-#~ msgid "poison"
-#~ msgstr "nuodai"
-
-#, fuzzy
-#~ msgid "Indoors"
-#~ msgstr "Netinkama spalva"
-
-#~ msgid "Deep Underground"
-#~ msgstr "Gilus požemis"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Ypatingos pastabos:"
-
-#~ msgid ""
-#~ " Spirits have very unusual resistances to damage, and move quite slowly "
-#~ "over open water."
-#~ msgstr ""
-#~ " Dvasios turi labai neįprastus atsparumus žalai ir pakankamai lėtai juda "
-#~ "virš atviro vandens."
-
-#~ msgid ""
-#~ " This unit’s arcane attack deals tremendous damage to magical creatures, "
-#~ "and even some to mundane creatures."
-#~ msgstr ""
-#~ " Šio dalinio paslaptinga ataka daro milžinišką žalą magiškoms būtybėms ir "
-#~ "netgi kai kurioms paprastoms būtybėms."
-
-#~ msgid " This unit is capable of basic healing."
-#~ msgstr " Šis dalinys truputį sugeba gydyti."
-
-#~ msgid ""
-#~ " This unit is capable of healing those around it, and curing them of "
-#~ "poison."
-#~ msgstr ""
-#~ " Šis dalinys sugeba gydyti aplink jį esančius dalinius ir juos atnuodyti."
-
-#~ msgid ""
-#~ " This unit is capable of neutralizing the effects of poison in units "
-#~ "around it."
-#~ msgstr ""
-#~ " Šis dalinys sugeba neutralizuoti nuodų veikimą, aplink jį esančiuose "
-#~ "daliniuose."
-
-#~ msgid ""
-#~ " This unit regenerates, which allows it to heal as though always "
-#~ "stationed in a village."
-#~ msgstr ""
-#~ " Šis dalinys regeneruoja, kas leidžia jam gydytis taip, lyg jis visada "
-#~ "būtų apsistojęs kaime."
-
-#~ msgid ""
-#~ " The leadership of this unit enables adjacent units of the same side to "
-#~ "deal more damage in combat, though this only applies to units of lower "
-#~ "level."
-#~ msgstr ""
-#~ " Šio dalinio vadovavimas leidžia greta esantiems tos pačios pusės "
-#~ "daliniams padaryti daugiau žalos mūšyje, tačiau tai galioja tik žemesnio "
-#~ "lygio daliniams."
-
-#~ msgid " Illumination increases the lighting level in adjacent areas."
-#~ msgstr " Apšvietimas padidina šviesos lygį gretimuose laukeliuose."
-
-#~ msgid ""
-#~ " This unit can use one move to teleport between any two empty villages "
-#~ "controlled by its side."
-#~ msgstr ""
-#~ " Šis dalinys gali per vieną ėjimą teleportuotis tarp bet kurių dviejų "
-#~ "tuščių jo pusei priklausančių kaimų."
-
-#~ msgid ""
-#~ " This unit is able to hide at night, leaving no trace of its presence."
-#~ msgstr ""
-#~ " Šis dalinys naktį gali pasislėpti, nepalikdamas jokio savo pėdsako."
-
-#~ msgid ""
-#~ " This unit can move unseen in deep water, requiring no air from the "
-#~ "surface."
-#~ msgstr ""
-#~ " Šis dalinys gali nematomas judėti giliame vandenyje, nereikalaudamas oro "
-#~ "iš paviršiaus."
-
-#~ msgid ""
-#~ " This unit is able to slow its enemies, halving their movement speed and "
-#~ "attack damage until they end a turn."
-#~ msgstr ""
-#~ " Šis dalinys sugeba sulėtinti savo priešus, dalydamas pusiau jų judėjimo "
-#~ "greitį ir puolimo žalą, iki jų ėjimo pabaigos."
-
-#~ msgid ""
-#~ " The ability to turn the living to stone makes this unit extremely "
-#~ "dangerous."
-#~ msgstr " Gebėjimas paversti gyvąjį akmeniu daro šį dalinį ypač pavojingu."
-
-#~ msgid ""
-#~ " The unit has magical attacks, which always have a high chance of hitting "
-#~ "an opponent."
-#~ msgstr ""
-#~ " Šis dalinys turi magiškas atakas, kurios visada turi dideles galimybes "
-#~ "pataikyti į priešininką."
-
-#~ msgid ""
-#~ " During battle, this unit can drain life from victims to renew its own "
-#~ "health."
-#~ msgstr ""
-#~ " Mūšio metu šis dalinys gali išsiurbti gyvybę iš savo aukų, kad "
-#~ "atnaujintų savo jėgas."
-
-#~ msgid "loyal"
-#~ msgstr "ištikimas"
-
-#~ msgid "female^loyal"
-#~ msgstr "ištikima"
-
-#~ msgid "Zero upkeep"
-#~ msgstr "Nemokamas išlaikymas"
-
-#~ msgid "undead"
-#~ msgstr "nemirėlis"
-
-#~ msgid "Immune to drain, poison and plague"
-#~ msgstr "Atsparus išsiurbimui, nuodams ir marui"
-
-#~ msgid "female^mechanical"
-#~ msgstr "mechaninė"
-
-#, fuzzy
-#~ msgid "elemental"
-#~ msgstr "slėpimasis"
-
-#, fuzzy
-#~ msgid "female^elemental"
-#~ msgstr "slėpimasis"
-
-#~ msgid "strong"
-#~ msgstr "stiprus"
-
-#~ msgid "female^strong"
-#~ msgstr "stipri"
-
-#~ msgid "dextrous"
-#~ msgstr "vikrus"
-
-#~ msgid "female^dextrous"
-#~ msgstr "vikri"
-
-#~ msgid "quick"
-#~ msgstr "greitas"
-
-#~ msgid "female^quick"
-#~ msgstr "greita"
-
-#~ msgid "intelligent"
-#~ msgstr "protingas"
-
-#~ msgid "female^intelligent"
-#~ msgstr "protinga"
-
-#~ msgid "resilient"
-#~ msgstr "gyvybingas"
-
-#~ msgid "female^resilient"
-#~ msgstr "gyvybinga"
-
-#~ msgid "healthy"
-#~ msgstr "sveikas"
-
-#~ msgid "female^healthy"
-#~ msgstr "sveika"
-
-#~ msgid "Always rest heals"
-#~ msgstr "Visuomet pagyja kaip besiilsint"
-
-#~ msgid "fearless"
-#~ msgstr "bebaimis"
-
-#~ msgid "female^fearless"
-#~ msgstr "bebaimė"
-
-#~ msgid "Fights normally during unfavorable times of day/night"
-#~ msgstr "Normaliai kaunasi nepalankiu dienos/nakties laiku"
-
-#~ msgid "feral"
-#~ msgstr "laukinis"
-
-#~ msgid "female^feral"
-#~ msgstr "laukinė"
-
-#, fuzzy
-#~ msgid "Receive only 40% defense in land-based villages"
-#~ msgstr "Gauna tik 40% gynybą kaimuose"
-
-#~ msgid "weak"
-#~ msgstr "silpnas"
-
-#~ msgid "female^weak"
-#~ msgstr "silpna"
-
-#~ msgid "slow"
-#~ msgstr "lėtas"
-
-#~ msgid "female^slow"
-#~ msgstr "lėta"
-
-#~ msgid "dim"
-#~ msgstr "bukas"
-
-#~ msgid "female^dim"
-#~ msgstr "buka"
-
-#~ msgid "aged"
-#~ msgstr "pagyvenęs"
-
-#~ msgid "female^aged"
-#~ msgstr "pagyvęnusi"
-
-#~ msgid "Help"
-#~ msgstr "Pagalba"
-
-#~ msgid "<header>text='Units having this special attack'</header>"
-#~ msgstr "<header>text='Daliniai turintys šią specialią ataką'</header>"
-
-#~ msgid "<header>text='Units having this ability'</header>"
-#~ msgstr "<header>text='Daliniai turintys šį gebėjimą'</header>"
-
-#~ msgid "Leaders:"
-#~ msgstr "Vadai:"
-
-#~ msgid "Recruits:"
-#~ msgstr "Samdiniai: "
-
-#, fuzzy
-#~ msgid "Factions:"
-#~ msgstr "Veiksmai"
-
-#~ msgid "Advances from: "
-#~ msgstr "Tobulėja iš: "
-
-#~ msgid "Advances to: "
-#~ msgstr "Tobulėja į: "
-
-#~ msgid "race^Miscellaneous"
-#~ msgstr "Įvairūs"
-
-#~ msgid "Abilities: "
-#~ msgstr "Gebėjimai: "
-
-#~ msgid "Ability Upgrades: "
-#~ msgstr "Gebėjimų patobulinimai: "
-
-#~ msgid "Cost: "
-#~ msgstr "Kaina: "
-
-#~ msgid "Required XP: "
-#~ msgstr "Reikalingi PT: "
-
-#~ msgid "unit help^Attacks"
-#~ msgstr "Atakos"
-
-#~ msgid "unit help^Name"
-#~ msgstr "Vardas"
-
-#~ msgid "Strikes"
-#~ msgstr "Smūgiai"
-
-#~ msgid "Range"
-#~ msgstr "Nuotolis"
-
-#~ msgid "Special"
-#~ msgstr "Ypatinga"
-
-#~ msgid "Resistances"
-#~ msgstr "Atsparumai"
-
-#~ msgid "Attack Type"
-#~ msgstr "Atakos tipas"
-
-#~ msgid "Resistance"
-#~ msgstr "Atsparumas"
-
-#~ msgid "Terrain Modifiers"
-#~ msgstr "Vietovių modifikatoriai"
-
-#~ msgid "Terrain"
-#~ msgstr "Vietovė"
-
-#~ msgid "Defense"
-#~ msgstr "Gynyba"
-
-#~ msgid "Movement Cost"
-#~ msgstr "Judėjimo kaina"
-
-#~ msgid "<header>text='Units of this race'</header>"
-#~ msgstr "<header>text='Šios rasės daliniai'</header>"
-
-#~ msgid "Forward >"
-#~ msgstr "Pirmyn >"
-
-#~ msgid "Reference to unknown topic: "
-#~ msgstr "Nuoroda į nežinomą temą: "
-
-#~ msgid "corrupted original file"
-#~ msgstr "sugadintas pradinis failas"
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "Mūšio dėl Vesnoto pagalba"
-
-#~ msgid "Parse error when parsing help text: "
-#~ msgstr "Nagrinėjimo klaida nagrinėjant pagalbos tekstą: "
-
-#~ msgid "red if it has used all its movement this turn."
-#~ msgstr "raudonas, jei sunaudojo visą šio ėjimo judėjimą."
-
-#~ msgid "Set Password"
-#~ msgstr "Nustatyti slaptažodį"
-
-#~ msgid ""
-#~ "Set the password that people wanting to join your game as players must "
-#~ "enter."
-#~ msgstr ""
-#~ "Nustatykite slaptažodį, kurį turės įvesti žmonės, norintys prisijungti "
-#~ "prie jūsų žaidimo kaip žaidėjai."
-
-#~ msgid "Difficulty"
-#~ msgstr "Sunkumas"
-
-#~ msgid "Select difficulty level:"
-#~ msgstr "Pasirinkite sunkumo lygį:"
-
-#~ msgid "Place Label"
-#~ msgstr "Padėti žymę"
-
-#~ msgid "Label: "
-#~ msgstr "Žymė: "
-
-#~ msgid "Team only"
-#~ msgstr "Tik komandai"
