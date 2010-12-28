@@ -90,6 +90,7 @@ public:
 
 		std::string get_key() const;
 		vconfig get_child() const;
+		void disable_insertion() { inner_index_ = -1; }
 
 		bool operator==(const all_children_iterator &i) const;
 		bool operator!=(const all_children_iterator &i) const
@@ -98,7 +99,6 @@ public:
 	private:
 		Itor i_;
 		int inner_index_;
-		unsigned index_offset_;
 		const config* cache_key_;
 	};
 

@@ -373,25 +373,24 @@ config::attribute_value vconfig::expand(const std::string &key) const
 }
 
 vconfig::all_children_iterator::all_children_iterator(const Itor &i, const config *cache_key)
-: i_(i), inner_index_(0), index_offset_(0), cache_key_(cache_key)
+: i_(i), inner_index_(0), cache_key_(cache_key)
 {
 }
 
 vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 {
-	if (i_->key == "insert_tag")
+	if (inner_index_ >= 0 && i_->key == "insert_tag")
 	{
 		variable_info vinfo(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
 		if(vinfo.is_valid && !vinfo.explicit_index) {
 			variable_info::array_range range = vinfo.as_array();
 			if (++inner_index_ < std::distance(range.first, range.second)) {
-				++index_offset_;
 				return *this;
 			}
+			inner_index_ = 0;
 		}
 	}
 	++i_;
-	inner_index_ = 0;
 	return *this;
 }
 
@@ -417,7 +416,7 @@ vconfig::all_children_iterator::pointer vconfig::all_children_iterator::operator
 std::string vconfig::all_children_iterator::get_key() const
 {
 	const std::string &key = i_->key;
-	if (key == "insert_tag") {
+	if (inner_index_ >= 0 && key == "insert_tag") {
 		return vconfig(i_->cfg)["name"];
 	}
 	return key;
@@ -425,7 +424,7 @@ std::string vconfig::all_children_iterator::get_key() const
 
 vconfig vconfig::all_children_iterator::get_child() const
 {
-	if (i_->key == "insert_tag")
+	if (inner_index_ >= 0 && i_->key == "insert_tag")
 	{
 		config * cp;
 		variable_info vinfo(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
