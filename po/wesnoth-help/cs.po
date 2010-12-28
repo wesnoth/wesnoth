@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2010-08-14 12:27+0200\n"
 "Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
@@ -27,6 +27,75 @@ msgstr ""
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 "X-Generator: Lokalize 1.0\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "ošetření"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "ošetření"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Ošetření:\n"
+"Jednotka dokáže ošetřit spřátelené jednotky na vedlejších polích na začátku "
+"tahu.\n"
+"\n"
+"Zraněná jednotka v péči tohoto ošetřovatele se může za jeden tah vyléčit až "
+"o 4 životy nebo se jí může na jeden tah zastavit působení jedu.\n"
+"Ošetřovatel nedokáže uzdravit otrávenou jednotku; taková jednotka musí "
+"vyhledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "léčení"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "léčení"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Léčení:\n"
+"Tato jednotka kombinuje účinky léčivých rostlin s magií, aby vyléčila "
+"jednotky rychleji než je běžně možné na bitevním poli.\n"
+"\n"
+"Tato jednotka se na začátku tahu postará o všechny spřátelené zraněné "
+"jednotky stojící na sousedních polích.\n"
+"Zraněná jednotka se může za jeden tah vyléčit až o 8 životů nebo zastavit na "
+"jeden tah průběh otravy.\n"
+"Léčitel nedokáže uzdravit otrávenou jednotku; taková jednotka musí vyhledat "
+"pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3289,69 +3358,6 @@ msgid ""
 msgstr ""
 "\n"
 "Povýší vybranou jednotku N-krát. Příklad: :unit advances=2"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "ošetření"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "ošetření"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Ošetření:\n"
-"Jednotka dokáže ošetřit spřátelené jednotky na vedlejších polích na začátku "
-"tahu.\n"
-"\n"
-"Zraněná jednotka v péči tohoto ošetřovatele se může za jeden tah vyléčit až "
-"o 4 životy nebo se jí může na jeden tah zastavit působení jedu.\n"
-"Ošetřovatel nedokáže uzdravit otrávenou jednotku; taková jednotka musí "
-"vyhledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "léčení"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "léčení"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Léčení:\n"
-"Tato jednotka kombinuje účinky léčivých rostlin s magií, aby vyléčila "
-"jednotky rychleji než je běžně možné na bitevním poli.\n"
-"\n"
-"Tato jednotka se na začátku tahu postará o všechny spřátelené zraněné "
-"jednotky stojící na sousedních polích.\n"
-"Zraněná jednotka se může za jeden tah vyléčit až o 8 životů nebo zastavit na "
-"jeden tah průběh otravy.\n"
-"Léčitel nedokáže uzdravit otrávenou jednotku; taková jednotka musí vyhledat "
-"pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -18,6 +18,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Bookmarks: 929,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "sana +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "sana"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Sana +4:\n"
+"Permet a la unitat curar unitats amigues adjacents al principi de cada "
+"tanda.\n"
+"\n"
+"Cada unitat pot recuperar fins a 4 punts de vida per tanda.\n"
+"Este curador pot sanar fins a 8 punts de vida per tanda, repartits per a "
+"totes les unitats que cuida.\n"
+"Una unitat enverinada no pot ser curada del seu verí per un curador, i haurà "
+"de buscar l'ajuda en una aldea o d'una unitat ab l'habilitat de cura."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "sana +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "sana"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Sana +8:\n"
+"Permet a la unitat curar unitats amigues adjacents al principi de cada "
+"torn.\n"
+"\n"
+"Cada unitat pot recuperar fins a 4 punts de vida per tanda.\n"
+"Este curador pot sanar fins a 8 punts de vida per tanda, repartits per a "
+"totes les unitats que cuida.\n"
+"Una unitat enverinada no pot ser curada del seu verí per un curador, i haurà "
+"de buscar l'ajuda en una aldea o d'una unitat ab l'habilitat de cura."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3325,72 +3397,6 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "sana +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "sana"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Sana +4:\n"
-"Permet a la unitat curar unitats amigues adjacents al principi de cada "
-"tanda.\n"
-"\n"
-"Cada unitat pot recuperar fins a 4 punts de vida per tanda.\n"
-"Este curador pot sanar fins a 8 punts de vida per tanda, repartits per a "
-"totes les unitats que cuida.\n"
-"Una unitat enverinada no pot ser curada del seu verí per un curador, i haurà "
-"de buscar l'ajuda en una aldea o d'una unitat ab l'habilitat de cura."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "sana +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "sana"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Sana +8:\n"
-"Permet a la unitat curar unitats amigues adjacents al principi de cada "
-"torn.\n"
-"\n"
-"Cada unitat pot recuperar fins a 4 punts de vida per tanda.\n"
-"Este curador pot sanar fins a 8 punts de vida per tanda, repartits per a "
-"totes les unitats que cuida.\n"
-"Una unitat enverinada no pot ser curada del seu verí per un curador, i haurà "
-"de buscar l'ajuda en una aldea o d'una unitat ab l'habilitat de cura."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

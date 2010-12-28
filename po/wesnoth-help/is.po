@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -19,6 +19,72 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n % 100 != 1 && n % 100 != 21 && n % 100 !"
 "= 31 && n % 100 != 41 && n % 100 != 51 && n % 100 != 61 && n % 100 != 71 && "
 "n % 100 != 81 && n % 100 != 91);\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "læknar +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "læknar +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Læknar +4:\n"
+"Leyfir einingu að lækna nærliggjandi einingar í byrjun þinnar umferðar.\n"
+"\n"
+"Eining læknuð af þessum læknara má fá 4 lífspunkta hverja umferð, eða stoppa "
+"eitur í að virka þá umferð.\n"
+"Eitruð eining getur ekki læknað eitur af læknara og verður að sækja umönnun "
+"í þorp eða heilara."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "læknar +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "læknar +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Læknar +4:\n"
+"Þessi eining notar náttúrulegar lækningar með göldrum og læknar aðrar "
+"einingar hraðar enn venjulega á vígvellinum.\n"
+"\n"
+"Eining læknuð af þessum læknara má fá 8 lífspunkta hverja umferð, eða stoppa "
+"eitur í að virka þá umferð.\n"
+"Eitruð eining getur ekki læknað eitur af læknara og verður að sækja umönnun "
+"í þorp eða heilara."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3068,66 +3134,6 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "læknar +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "læknar +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Læknar +4:\n"
-"Leyfir einingu að lækna nærliggjandi einingar í byrjun þinnar umferðar.\n"
-"\n"
-"Eining læknuð af þessum læknara má fá 4 lífspunkta hverja umferð, eða stoppa "
-"eitur í að virka þá umferð.\n"
-"Eitruð eining getur ekki læknað eitur af læknara og verður að sækja umönnun "
-"í þorp eða heilara."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "læknar +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "læknar +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Læknar +4:\n"
-"Þessi eining notar náttúrulegar lækningar með göldrum og læknar aðrar "
-"einingar hraðar enn venjulega á vígvellinum.\n"
-"\n"
-"Eining læknuð af þessum læknara má fá 8 lífspunkta hverja umferð, eða stoppa "
-"eitur í að virka þá umferð.\n"
-"Eitruð eining getur ekki læknað eitur af læknara og verður að sækja umönnun "
-"í þorp eða heilara."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

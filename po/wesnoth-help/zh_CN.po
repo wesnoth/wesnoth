@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2010-08-30 19:32+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -24,6 +24,67 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-Bookmarks: -1,-1,-1,3,-1,-1,-1,-1,-1,-1\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "治疗+4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "治疗+4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"治疗+4：\n"
+"允许本单位在每回合开始时治疗相邻区域内受伤的友军单位。\n"
+"\n"
+"本治疗者所治疗的单位每回合最多能恢复4点生命值，或阻止毒药在该回合发作。\n"
+"中毒的单位不能由治疗者解毒，只有进入村庄或者被拥有治愈能力的单位治疗。"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "治疗+8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "治疗+8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"治疗+8：\n"
+"本单位将魔法与草药混合使用以在战场上治疗单位，比通常可能的速度快得多。\n"
+"\n"
+"本治疗者所治疗的单位每回合最多能恢复8点生命值，或阻止毒药在该回合发作。\n"
+"中毒的单位不能由治疗者解毒，只有进入村庄或者被拥有治愈能力的单位治疗。"
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3104,61 +3165,6 @@ msgid ""
 msgstr ""
 "\n"
 "使被选定单位连升N级。例如：:unit advances=2"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "治疗+4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "治疗+4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"治疗+4：\n"
-"允许本单位在每回合开始时治疗相邻区域内受伤的友军单位。\n"
-"\n"
-"本治疗者所治疗的单位每回合最多能恢复4点生命值，或阻止毒药在该回合发作。\n"
-"中毒的单位不能由治疗者解毒，只有进入村庄或者被拥有治愈能力的单位治疗。"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "治疗+8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "治疗+8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"治疗+8：\n"
-"本单位将魔法与草药混合使用以在战场上治疗单位，比通常可能的速度快得多。\n"
-"\n"
-"本治疗者所治疗的单位每回合最多能恢复8点生命值，或阻止毒药在该回合发作。\n"
-"中毒的单位不能由治疗者解毒，只有进入村庄或者被拥有治愈能力的单位治疗。"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

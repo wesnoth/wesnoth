@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2008-02-21 10:21+0800\n"
 "Last-Translator: eve <eve_eso@yahoo.com>\n"
 "Language-Team: \n"
@@ -190,53 +190,6 @@ msgstr "matapat"
 #: data/lua/wml-tags.lua:680 src/actions.cpp:1280
 msgid "slowed"
 msgstr "humina"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
-msgid "heals +4"
-msgstr ""
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
-#, fuzzy
-msgid "female^heals +4"
-msgstr "malusog"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
-msgid "heals +8"
-msgstr ""
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
-#, fuzzy
-msgid "female^heals +8"
-msgstr "malusog"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
 
 #. [about]
 #: data/core/about.cfg:7
@@ -5991,6 +5944,14 @@ msgstr "matapat"
 #, fuzzy
 msgid "female^neutral"
 msgstr "malusog"
+
+#, fuzzy
+#~ msgid "female^heals +4"
+#~ msgstr "malusog"
+
+#, fuzzy
+#~ msgid "female^heals +8"
+#~ msgstr "malusog"
 
 #~ msgid "race^Bat"
 #~ msgstr "Paniki"

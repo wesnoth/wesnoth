@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2010-03-15 22:39+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -196,67 +196,6 @@ msgstr "успорена"
 #: data/lua/wml-tags.lua:680 src/actions.cpp:1280
 msgid "slowed"
 msgstr "успорен"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
-msgid "heals +4"
-msgstr "лечење +4"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
-msgid "female^heals +4"
-msgstr "лечење +4"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Лечење +4:\n"
-"Омогућава јединици да лечи суседне савезничке јединице на почетку сваког "
-"потеза.\n"
-"\n"
-"Јединица под утицајем овог видара може повратити до 4 УП по потезу, или не "
-"осетити дејство отрова у датом потезу.\n"
-"Видар не може исцелити отровану јединицу, већ она мора потражити бригу у "
-"селу или код јединице која уме да исцељује."
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
-msgid "heals +8"
-msgstr "лечење +8"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
-msgid "female^heals +8"
-msgstr "лечење +8"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Лечење +8:\n"
-"Ова јединица обједињује лековите траве и магију како би лечила брже него што "
-"је то уобичајено на бојном пољу.\n"
-"\n"
-"Јединица под утицајем овог видара може повратити до 8 УП по потезу, или не "
-"осетити дејство отрова у датом потезу.\n"
-"Видар не може исцелити отровану јединицу, већ она мора потражити бригу у "
-"селу или код јединице која уме да исцељује."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -6308,6 +6247,56 @@ msgstr "оданост"
 #: src/unit_types.cpp:969
 msgid "female^neutral"
 msgstr "неутрална"
+
+#~ msgid "heals +4"
+#~ msgstr "лечење +4"
+
+#~ msgid "female^heals +4"
+#~ msgstr "лечење +4"
+
+#~ msgid ""
+#~ "Heals +4:\n"
+#~ "Allows the unit to heal adjacent allied units at the beginning of our "
+#~ "turn.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "Лечење +4:\n"
+#~ "Омогућава јединици да лечи суседне савезничке јединице на почетку сваког "
+#~ "потеза.\n"
+#~ "\n"
+#~ "Јединица под утицајем овог видара може повратити до 4 УП по потезу, или "
+#~ "не осетити дејство отрова у датом потезу.\n"
+#~ "Видар не може исцелити отровану јединицу, већ она мора потражити бригу у "
+#~ "селу или код јединице која уме да исцељује."
+
+#~ msgid "heals +8"
+#~ msgstr "лечење +8"
+
+#~ msgid "female^heals +8"
+#~ msgstr "лечење +8"
+
+#~ msgid ""
+#~ "Heals +8:\n"
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "Лечење +8:\n"
+#~ "Ова јединица обједињује лековите траве и магију како би лечила брже него "
+#~ "што је то уобичајено на бојном пољу.\n"
+#~ "\n"
+#~ "Јединица под утицајем овог видара може повратити до 8 УП по потезу, или "
+#~ "не осетити дејство отрова у датом потезу.\n"
+#~ "Видар не може исцелити отровану јединицу, већ она мора потражити бригу у "
+#~ "селу или код јединице која уме да исцељује."
 
 #~ msgid "race^Bat"
 #~ msgstr "шишмиш"

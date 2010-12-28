@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2010-08-27 08:45+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -22,6 +22,75 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "gyógyítás +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "gyógyítás +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Gyógyítás +4:\n"
+"Az egység képes a szomszédos mezőkön álló szövetséges egységeket gyógyítani "
+"a körünk elején.\n"
+"\n"
+"A gyógyító által kezelt egység legfeljebb 4 életerőpontot gyógyulhat "
+"körönként. Ha az ellátott egység meg van mérgezve, akkor ugyan nem gyógyul, "
+"de a méreg az adott körben nem mérgezi tovább.\n"
+"Mérgezett egységet a gyógyító nem képes kigyógyítani a mérgezésből, annak "
+"csak egy falu vagy egy méregűzésre képes egység lehet a segítségére."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "gyógyítás +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "gyógyítás +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Gyógyítás +8:\n"
+"Ez az egység ötvözi a gyógynövények erejét a mágiával, ezáltal sokkal "
+"gyorsabban gyógyít, mint az a csatatéren általában lehetséges.\n"
+"\n"
+"A gyógyító által kezelt egység akár 8 életerőpontot is gyógyulhat körönként, "
+"illetve ha az ellátott egység meg van mérgezve, akkor nem gyógyul ugyan, de "
+"az adott körben a méreg nem hat.\n"
+"Mérgezett egységet a gyógyító nem képes kigyógyítani a mérgezésből, annak "
+"csak egy falu vagy egy méregűzésre képes egység lehet a segítségére."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3355,69 +3424,6 @@ msgid ""
 msgstr ""
 "\n"
 "A kiválasztott egység szintléptetése N-szer. Például: :unit advances=2"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "gyógyítás +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "gyógyítás +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Gyógyítás +4:\n"
-"Az egység képes a szomszédos mezőkön álló szövetséges egységeket gyógyítani "
-"a körünk elején.\n"
-"\n"
-"A gyógyító által kezelt egység legfeljebb 4 életerőpontot gyógyulhat "
-"körönként. Ha az ellátott egység meg van mérgezve, akkor ugyan nem gyógyul, "
-"de a méreg az adott körben nem mérgezi tovább.\n"
-"Mérgezett egységet a gyógyító nem képes kigyógyítani a mérgezésből, annak "
-"csak egy falu vagy egy méregűzésre képes egység lehet a segítségére."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "gyógyítás +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "gyógyítás +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Gyógyítás +8:\n"
-"Ez az egység ötvözi a gyógynövények erejét a mágiával, ezáltal sokkal "
-"gyorsabban gyógyít, mint az a csatatéren általában lehetséges.\n"
-"\n"
-"A gyógyító által kezelt egység akár 8 életerőpontot is gyógyulhat körönként, "
-"illetve ha az ellátott egység meg van mérgezve, akkor nem gyógyul ugyan, de "
-"az adott körben a méreg nem hat.\n"
-"Mérgezett egységet a gyógyító nem képes kigyógyítani a mérgezésből, annak "
-"csak egy falu vagy egy méregűzésre képes egység lehet a segítségére."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -21,6 +21,78 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
 "X-Generator: KBabel 1.11.2\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+#, fuzzy
+msgid "heals +4"
+msgstr "ranocelnik +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "Tatica"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Ranocelnik +4:\n"
+"Enota bo vsako potezo pozdravila sosednje zavezniške enote.\n"
+"\n"
+"Enota, ki jo oskrbuje ranocelnik se lahko pozdravi za do 4 HP na potezo ali "
+"pa ne utrpi škode zaradi zastrupljenosti.\n"
+"Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
+"ali pri razstrupljevalecu."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+#, fuzzy
+msgid "heals +8"
+msgstr "ranocelnik +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "Tatica"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+#, fuzzy
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Ranocelnik +8:\n"
+"Ta enota s pomočjo zelišč in čarovnij zdravi druge hitreje, kot je ponavadi "
+"možno na bojišču.\n"
+"\n"
+"Enota, ki jo oskrbuje zdravnik se lahko pozdravi za do 8 HP na potezo ali pa "
+"ne utrpi škode zaradi zastrupljenosti.\n"
+"Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
+"ali pri razstrupljevalecu."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3203,72 +3275,6 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-#, fuzzy
-msgid "heals +4"
-msgstr "ranocelnik +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "Tatica"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Ranocelnik +4:\n"
-"Enota bo vsako potezo pozdravila sosednje zavezniške enote.\n"
-"\n"
-"Enota, ki jo oskrbuje ranocelnik se lahko pozdravi za do 4 HP na potezo ali "
-"pa ne utrpi škode zaradi zastrupljenosti.\n"
-"Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
-"ali pri razstrupljevalecu."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-#, fuzzy
-msgid "heals +8"
-msgstr "ranocelnik +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "Tatica"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-#, fuzzy
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Ranocelnik +8:\n"
-"Ta enota s pomočjo zelišč in čarovnij zdravi druge hitreje, kot je ponavadi "
-"možno na bojišču.\n"
-"\n"
-"Enota, ki jo oskrbuje zdravnik se lahko pozdravi za do 8 HP na potezo ali pa "
-"ne utrpi škode zaradi zastrupljenosti.\n"
-"Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
-"ali pri razstrupljevalecu."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

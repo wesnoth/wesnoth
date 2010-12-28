@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2010-12-10 21:09+0200\n"
 "Last-Translator: Jussi Rautio <kipuna@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -18,6 +18,71 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.0\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "hoivaa +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "hoivaa +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Hoivaa +4:\n"
+"Yksikkö voi hoivata viereisiä ystävällisiä yksiköitä oman vuoronsa alussa.\n"
+"\n"
+"Tämän hoivaajan toimesta hoivattu yksikkö saa enintään 4 EP per vuoro, tai "
+"yksikön ollessa myrkytetty, kumoaa myrkyn vaikutuksen.\n"
+"Hoivaaja ei voi parantaa yksikköä myrkytyksestä, sillä se onnistuu vain "
+"lääkitsijältä tai kylässä."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "hoivaa +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "hoivaa +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Hoivaa +8:\n"
+"Tämä yksikkö yhdistää taikuutta ja luontaislääkkeitä hoivaten yksiköitä "
+"nopeammin kuin taistelurintamalla on normaalisti mahdollista.\n"
+"\n"
+"Hoivattu yksikkö saa enintään 8 EP per vuoro, tai estää myrkyn vaikutuksen.\n"
+"Hoivaaja ei voi parantaa yksikköä myrkytyksestä, sillä se onnistuu vain "
+"lääkitsijältä tai kylässä."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3296,65 +3361,6 @@ msgid ""
 msgstr ""
 "\n"
 "Aiheuttaa yksikön ylenemisen n kertaa. Esimerkki: :unit advances=2"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "hoivaa +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "hoivaa +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Hoivaa +4:\n"
-"Yksikkö voi hoivata viereisiä ystävällisiä yksiköitä oman vuoronsa alussa.\n"
-"\n"
-"Tämän hoivaajan toimesta hoivattu yksikkö saa enintään 4 EP per vuoro, tai "
-"yksikön ollessa myrkytetty, kumoaa myrkyn vaikutuksen.\n"
-"Hoivaaja ei voi parantaa yksikköä myrkytyksestä, sillä se onnistuu vain "
-"lääkitsijältä tai kylässä."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "hoivaa +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "hoivaa +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Hoivaa +8:\n"
-"Tämä yksikkö yhdistää taikuutta ja luontaislääkkeitä hoivaten yksiköitä "
-"nopeammin kuin taistelurintamalla on normaalisti mahdollista.\n"
-"\n"
-"Hoivattu yksikkö saa enintään 8 EP per vuoro, tai estää myrkyn vaikutuksen.\n"
-"Hoivaaja ei voi parantaa yksikköä myrkytyksestä, sillä se onnistuu vain "
-"lääkitsijältä tai kylässä."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

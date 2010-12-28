@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -15,6 +15,72 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
 "%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "gydo +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "gydo +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Gydo +4:\n"
+"Leidžia daliniui pagydyti gretimą draugišką dalinį mūsų ėjimo pradžioje.\n"
+"\n"
+"Gydomasis dalinys gali pagyti ne daugiau, nei 4 GT per ėjimą, arba tą ėjimą "
+"išvengti nuodų poveikio.\n"
+"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi ieškoti "
+"pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "gydo +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "gydo +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Gydo +8:\n"
+"Šis dalinys apjungia vaistažoles su magija ir gydo dalinius greičiau, nei "
+"įprasta mūšio lauke.\n"
+"\n"
+"Gydomasis dalinys gali pagyti ne daugiau, nei 8 GT per ėjimą, arba tą ėjimą "
+"išvengti nuodų poveikio.\n"
+"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi ieškoti "
+"pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -2741,66 +2807,6 @@ msgid ""
 msgstr ""
 "\n"
 "Pažymėtą dalinį paaukština N kartų. Pavyzdžiui: :unit advances=2"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "gydo +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "gydo +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Gydo +4:\n"
-"Leidžia daliniui pagydyti gretimą draugišką dalinį mūsų ėjimo pradžioje.\n"
-"\n"
-"Gydomasis dalinys gali pagyti ne daugiau, nei 4 GT per ėjimą, arba tą ėjimą "
-"išvengti nuodų poveikio.\n"
-"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi ieškoti "
-"pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "gydo +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "gydo +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Gydo +8:\n"
-"Šis dalinys apjungia vaistažoles su magija ir gydo dalinius greičiau, nei "
-"įprasta mūšio lauke.\n"
-"\n"
-"Gydomasis dalinys gali pagyti ne daugiau, nei 8 GT per ėjimą, arba tą ėjimą "
-"išvengti nuodų poveikio.\n"
-"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi ieškoti "
-"pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

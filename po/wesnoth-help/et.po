@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2010-08-16 08:59+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -23,6 +23,72 @@ msgstr ""
 "X-Poedit-Language: Estonian\n"
 "X-Poedit-Country: ESTONIA\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "ravitsev +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "ravitsev +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Ravitsev +4:\n"
+"Võimaldab üksusel iga käigu alguses ravida kõrvalasuvaid sõbralikke üksusi.\n"
+"\n"
+"Abistataval üksusel taastub kuni 4 elupunkti või peatub selleks käiguks "
+"mürgi mõju.\n"
+"Mürgitatud üksust nõnda mürgitusest vabastada ei saa, vaid ta peab otsima "
+"abi kas külast või tervendusvõimega üksuselt."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "ravitsev +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "ravitsev +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Ravitsev +8:\n"
+"See üksus suudab lisaks ravimtaimedele kasutada ka võlukunsti ning seega "
+"ravida teisi kiiremini kui tavaliselt.\n"
+"\n"
+"Abistataval üksusel taastub kuni 8 elupunkti või peatub selleks käiguks "
+"mürgi mõju.\n"
+"Mürgitatud üksust nõnda mürgitusest vabastada ei saa, vaid ta peab otsima "
+"abi kas külast või tervendusvõimega üksuselt."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3232,66 +3298,6 @@ msgid ""
 msgstr ""
 "\n"
 "Suurendab üksuse taset N võrra. N: :unit advances=2"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "ravitsev +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "ravitsev +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Ravitsev +4:\n"
-"Võimaldab üksusel iga käigu alguses ravida kõrvalasuvaid sõbralikke üksusi.\n"
-"\n"
-"Abistataval üksusel taastub kuni 4 elupunkti või peatub selleks käiguks "
-"mürgi mõju.\n"
-"Mürgitatud üksust nõnda mürgitusest vabastada ei saa, vaid ta peab otsima "
-"abi kas külast või tervendusvõimega üksuselt."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "ravitsev +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "ravitsev +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Ravitsev +8:\n"
-"See üksus suudab lisaks ravimtaimedele kasutada ka võlukunsti ning seega "
-"ravida teisi kiiremini kui tavaliselt.\n"
-"\n"
-"Abistataval üksusel taastub kuni 8 elupunkti või peatub selleks käiguks "
-"mürgi mõju.\n"
-"Mürgitatud üksust nõnda mürgitusest vabastada ei saa, vaid ta peab otsima "
-"abi kas külast või tervendusvõimega üksuselt."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

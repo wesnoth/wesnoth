@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2009-04-05 10:50+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -16,6 +16,73 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "helbreder 4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "helbreder +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Helbreder 4:\n"
+"Setter enheten i stand til å helbrede allierte naboenheter i begynnelsen av "
+"sin runde.\n"
+"\n"
+"En enhet som blir hjulpet av en helbreder kan hver runde heles opp til 4 HP, "
+"eller få stoppet virkningen av gift.\n"
+"En forgiftet enhet kan ikke bli kurert for giften av en helbreder, og må "
+"søke hjelp i en landsby eller hos en enhet som kan kurere."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "helbreder 8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "helbreder +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Helbreder:\n"
+"Denne enheten kombinerer urtemedisin med magi for å helbrede enheter "
+"hurtigere enn vanligvis mulig på slagmarken.\n"
+"\n"
+"En enhet som blir hjulpet av denne kan hver runde heles opp til 8 HP, eller "
+"få stoppet virkningen av gift.\n"
+"En forgiftet enhet kan ikke bli kurert for giften av en helbreder, og må "
+"søke hjelp i en landsby eller hos en enhet som kan kurere."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3176,67 +3243,6 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "helbreder 4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "helbreder +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Helbreder 4:\n"
-"Setter enheten i stand til å helbrede allierte naboenheter i begynnelsen av "
-"sin runde.\n"
-"\n"
-"En enhet som blir hjulpet av en helbreder kan hver runde heles opp til 4 HP, "
-"eller få stoppet virkningen av gift.\n"
-"En forgiftet enhet kan ikke bli kurert for giften av en helbreder, og må "
-"søke hjelp i en landsby eller hos en enhet som kan kurere."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "helbreder 8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "helbreder +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Helbreder:\n"
-"Denne enheten kombinerer urtemedisin med magi for å helbrede enheter "
-"hurtigere enn vanligvis mulig på slagmarken.\n"
-"\n"
-"En enhet som blir hjulpet av denne kan hver runde heles opp til 8 HP, eller "
-"få stoppet virkningen av gift.\n"
-"En forgiftet enhet kan ikke bli kurert for giften av en helbreder, og må "
-"søke hjelp i en landsby eller hos en enhet som kan kurere."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

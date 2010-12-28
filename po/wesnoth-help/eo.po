@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: \n"
@@ -17,6 +17,85 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Esperanto\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "sanigo +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "sana"
+
+#
+#
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Kuracas:\n"
+"milit-unuo kapablas kuraci aliancajn milit-unuojn sur najbaraj kampoj "
+"komence de tiro.\n"
+"\n"
+"milit-unuo prizorgita de kuracanto povas resaniĝi dum unu tiro maksimune 14 "
+"vivojn.\n"
+"Kuracanto povas dum unu tiro regeneri al ĉiuj prizorgitaj milit-unuoj entute "
+"8 vivojn.\n"
+"Kuracanto ne kapablas resanigi venenigitan milit-unuon; tia milit-unuo devas "
+"serĉi helpon en vilaĝo, aŭ ĉe milit-unuo, kiu kapablas kuraci."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "sanigo +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "sana"
+
+#
+#
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+#, fuzzy
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Kuracas:\n"
+"milit-unuo kapablas kuraci aliancajn milit-unuojn sur najbaraj kampoj "
+"komence de tiro.\n"
+"\n"
+"milit-unuo prizorgita de kuracanto povas resaniĝi dum unu tiro maksimune 14 "
+"vivojn.\n"
+"Kuracanto povas dum unu tiro regeneri al ĉiuj prizorgitaj milit-unuoj entute "
+"8 vivojn.\n"
+"Kuracanto ne kapablas resanigi venenigitan milit-unuon; tia milit-unuo devas "
+"serĉi helpon en vilaĝo, aŭ ĉe milit-unuo, kiu kapablas kuraci."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3191,79 +3270,6 @@ msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "sanigo +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "sana"
-
-#
-#
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Kuracas:\n"
-"milit-unuo kapablas kuraci aliancajn milit-unuojn sur najbaraj kampoj "
-"komence de tiro.\n"
-"\n"
-"milit-unuo prizorgita de kuracanto povas resaniĝi dum unu tiro maksimune 14 "
-"vivojn.\n"
-"Kuracanto povas dum unu tiro regeneri al ĉiuj prizorgitaj milit-unuoj entute "
-"8 vivojn.\n"
-"Kuracanto ne kapablas resanigi venenigitan milit-unuon; tia milit-unuo devas "
-"serĉi helpon en vilaĝo, aŭ ĉe milit-unuo, kiu kapablas kuraci."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "sanigo +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "sana"
-
-#
-#
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-#, fuzzy
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Kuracas:\n"
-"milit-unuo kapablas kuraci aliancajn milit-unuojn sur najbaraj kampoj "
-"komence de tiro.\n"
-"\n"
-"milit-unuo prizorgita de kuracanto povas resaniĝi dum unu tiro maksimune 14 "
-"vivojn.\n"
-"Kuracanto povas dum unu tiro regeneri al ĉiuj prizorgitaj milit-unuoj entute "
-"8 vivojn.\n"
-"Kuracanto ne kapablas resanigi venenigitan milit-unuon; tia milit-unuo devas "
-"serĉi helpon en vilaĝo, aŭ ĉe milit-unuo, kiu kapablas kuraci."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

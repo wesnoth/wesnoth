@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -200,69 +200,6 @@ msgstr "лоялна"
 #: data/lua/wml-tags.lua:680 src/actions.cpp:1280
 msgid "slowed"
 msgstr "забавен"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
-msgid "heals +4"
-msgstr "лекуване +4"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
-#, fuzzy
-msgid "female^heals +4"
-msgstr "здрава"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Лекуване +4:\n"
-"Позволява на единицата да лекува съседни единици в началото на всеки ход.\n"
-"\n"
-"Единица, лекувана от този лечител, може да се излекува с до 4 точки здраве "
-"на ход, или да бъде предпазена от действието на отрова през този ход.\n"
-"Лечителят не може да излекува отровена единица. За нея трябва да се погрижи "
-"някое селище или изцелител."
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
-msgid "heals +8"
-msgstr "Лекуване +8"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
-#, fuzzy
-msgid "female^heals +8"
-msgstr "здрава"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Лекуване +8:\n"
-" Тази единица обединява билковите лекарства и магията, за да лекува единици "
-"по-бързо, отколкото е възможно на бойното поле.\n"
-"\n"
-"Единица, лекувана от този лечител, може да се излекува с до 8 точки здраве "
-"на ход, или да бъде предпазена от действието на отрова през този ход.\n"
-"Лечителят не може да излекува отровена единица. За нея трябва да се погрижи "
-"някое селище или изцелител."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -5930,6 +5867,61 @@ msgstr "лоялна"
 #, fuzzy
 msgid "female^neutral"
 msgstr "немъртва"
+
+#~ msgid "heals +4"
+#~ msgstr "лекуване +4"
+
+#, fuzzy
+#~ msgid "female^heals +4"
+#~ msgstr "здрава"
+
+#, fuzzy
+#~ msgid ""
+#~ "Heals +4:\n"
+#~ "Allows the unit to heal adjacent allied units at the beginning of our "
+#~ "turn.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "Лекуване +4:\n"
+#~ "Позволява на единицата да лекува съседни единици в началото на всеки "
+#~ "ход.\n"
+#~ "\n"
+#~ "Единица, лекувана от този лечител, може да се излекува с до 4 точки "
+#~ "здраве на ход, или да бъде предпазена от действието на отрова през този "
+#~ "ход.\n"
+#~ "Лечителят не може да излекува отровена единица. За нея трябва да се "
+#~ "погрижи някое селище или изцелител."
+
+#~ msgid "heals +8"
+#~ msgstr "Лекуване +8"
+
+#, fuzzy
+#~ msgid "female^heals +8"
+#~ msgstr "здрава"
+
+#~ msgid ""
+#~ "Heals +8:\n"
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "Лекуване +8:\n"
+#~ " Тази единица обединява билковите лекарства и магията, за да лекува "
+#~ "единици по-бързо, отколкото е възможно на бойното поле.\n"
+#~ "\n"
+#~ "Единица, лекувана от този лечител, може да се излекува с до 8 точки "
+#~ "здраве на ход, или да бъде предпазена от действието на отрова през този "
+#~ "ход.\n"
+#~ "Лечителят не може да излекува отровена единица. За нея трябва да се "
+#~ "погрижи някое селище или изцелител."
 
 #, fuzzy
 #~ msgid "race^Bat"

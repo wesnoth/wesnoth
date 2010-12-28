@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2010-08-26 13:19+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -20,6 +20,72 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2)\n"
 "X-Poedit-Basepath: /usr/local/share/wesnoth\n"
 "X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "leczy +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "leczy +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Leczy +4:\n"
+"Jednostka leczy sąsiednie jednostki na początku każdej tury.\n"
+"\n"
+"Jednostka pod opieką leczącego może odzyskać do 4 PŻ na turę lub nie odczuć "
+"efektów działania trucizny.\n"
+"Jednostka lecząca nie może uzdrowić zatrutego - jednostka zatruta musi "
+"szukać opieki w wiosce lub u uzdrowiciela."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "leczy +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "leczy +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Leczy +8:\n"
+"Jednostka łączy leki ziołowe z magią, by leczyć jednostki szybciej i lepiej "
+"niż jest to zwykle możliwe w warunkach polowych.\n"
+"\n"
+"Jednostka pod opieką uzdrowiciela może odzyskać do 8 PŻ na turę lub nie "
+"odczuć efektów działania trucizny.\n"
+"Jednostka zatruta nie zostanie wyleczona przez leczącego, lecz musi szukać "
+"opieki w wiosce lub u uzdrowiciela."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3332,66 +3398,6 @@ msgid ""
 msgstr ""
 "\n"
 "Wybrana jednostka awansuje N razy. Przykład: :unit advances=2"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "leczy +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "leczy +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Leczy +4:\n"
-"Jednostka leczy sąsiednie jednostki na początku każdej tury.\n"
-"\n"
-"Jednostka pod opieką leczącego może odzyskać do 4 PŻ na turę lub nie odczuć "
-"efektów działania trucizny.\n"
-"Jednostka lecząca nie może uzdrowić zatrutego - jednostka zatruta musi "
-"szukać opieki w wiosce lub u uzdrowiciela."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "leczy +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "leczy +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Leczy +8:\n"
-"Jednostka łączy leki ziołowe z magią, by leczyć jednostki szybciej i lepiej "
-"niż jest to zwykle możliwe w warunkach polowych.\n"
-"\n"
-"Jednostka pod opieką uzdrowiciela może odzyskać do 8 PŻ na turę lub nie "
-"odczuć efektów działania trucizny.\n"
-"Jednostka zatruta nie zostanie wyleczona przez leczącego, lecz musi szukać "
-"opieki w wiosce lub u uzdrowiciela."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

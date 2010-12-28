@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2009-05-08 22:09+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -188,64 +188,6 @@ msgstr "緩速"
 #: data/lua/wml-tags.lua:680 src/actions.cpp:1280
 msgid "slowed"
 msgstr "緩速"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
-msgid "heals +4"
-msgstr "治療+4"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
-msgid "female^heals +4"
-msgstr "治療 +4"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"治療+4：\n"
-"允許單位在每回合開始時治療相鄰受傷的友好單位，或阻止毒藥在該回合發作。\n"
-"\n"
-"本單位每回合可以為附近每個單位恢復最多4點生命值，或阻止毒藥在該回合發作。\n"
-"'治療+4'能力無法解除附近單位的中毒效果,只有進入村莊或者靠近擁有'治愈'能力的單"
-"位可以解毒"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
-msgid "heals +8"
-msgstr "治療+8"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
-msgid "female^heals +8"
-msgstr "治療 +8"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"治療+8：\n"
-"本單位將魔法與草藥混合來加快治療效果。一般情况下在戰場上是没有如此快的恢復速"
-"度的。\n"
-"\n"
-"本單位每回合可以為附近每個單位恢復最多8點生命值，或阻止毒藥在該回合發作。\n"
-"'治療+4'能力無法解除附近單位的中毒效果,只有進入村莊或者靠近擁有'治愈'能力的單"
-"位可以解毒"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -6122,6 +6064,55 @@ msgstr "忠誠"
 #: src/unit_types.cpp:969
 msgid "female^neutral"
 msgstr "中立"
+
+#~ msgid "heals +4"
+#~ msgstr "治療+4"
+
+#~ msgid "female^heals +4"
+#~ msgstr "治療 +4"
+
+#~ msgid ""
+#~ "Heals +4:\n"
+#~ "Allows the unit to heal adjacent allied units at the beginning of our "
+#~ "turn.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "治療+4：\n"
+#~ "允許單位在每回合開始時治療相鄰受傷的友好單位，或阻止毒藥在該回合發作。\n"
+#~ "\n"
+#~ "本單位每回合可以為附近每個單位恢復最多4點生命值，或阻止毒藥在該回合發"
+#~ "作。\n"
+#~ "'治療+4'能力無法解除附近單位的中毒效果,只有進入村莊或者靠近擁有'治愈'能力"
+#~ "的單位可以解毒"
+
+#~ msgid "heals +8"
+#~ msgstr "治療+8"
+
+#~ msgid "female^heals +8"
+#~ msgstr "治療 +8"
+
+#~ msgid ""
+#~ "Heals +8:\n"
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "治療+8：\n"
+#~ "本單位將魔法與草藥混合來加快治療效果。一般情况下在戰場上是没有如此快的恢復"
+#~ "速度的。\n"
+#~ "\n"
+#~ "本單位每回合可以為附近每個單位恢復最多8點生命值，或阻止毒藥在該回合發"
+#~ "作。\n"
+#~ "'治療+4'能力無法解除附近單位的中毒效果,只有進入村莊或者靠近擁有'治愈'能力"
+#~ "的單位可以解毒"
 
 #~ msgid "race^Bat"
 #~ msgstr "蝙蝠"

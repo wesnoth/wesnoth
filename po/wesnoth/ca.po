@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2009-03-21 20:49+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -195,70 +195,6 @@ msgstr "alentida"
 #: data/lua/wml-tags.lua:680 src/actions.cpp:1280
 msgid "slowed"
 msgstr "alentit"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
-msgid "heals +4"
-msgstr "curació +4"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
-msgid "female^heals +4"
-msgstr "curació +4"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Curació +4:\n"
-"Permet a la unitat curar unitats amigues adjacents al principi de cada "
-"torn.\n"
-"\n"
-"Cada unitat pot recuperar fins a 4 punts de vida per torn, o bé veure aturat "
-"l'efecte d'un enverinament.\n"
-"Una unitat enverinada no pot ser guarida del seu verí per un curador, i "
-"haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de "
-"guarició."
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
-msgid "heals +8"
-msgstr "curació +8"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
-msgid "female^heals +8"
-msgstr "curació +8"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Curació +8:\n"
-"Aquesta unitat combina herbes medicinals amb màgia per tal de curar les "
-"unitats més ràpidament del que seria possible al camp de batalla.\n"
-"\n"
-"Cada unitat pot recuperar fins a 8 punts de vida per torn, o bé veure aturat "
-"l'efecte d'un enverinament.\n"
-"Una unitat enverinada no pot ser guarida del seu verí per un curador, i "
-"haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de "
-"guarició."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -6196,6 +6132,59 @@ msgstr "lleial"
 #: src/unit_types.cpp:969
 msgid "female^neutral"
 msgstr "neutral"
+
+#~ msgid "heals +4"
+#~ msgstr "curació +4"
+
+#~ msgid "female^heals +4"
+#~ msgstr "curació +4"
+
+#, fuzzy
+#~ msgid ""
+#~ "Heals +4:\n"
+#~ "Allows the unit to heal adjacent allied units at the beginning of our "
+#~ "turn.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "Curació +4:\n"
+#~ "Permet a la unitat curar unitats amigues adjacents al principi de cada "
+#~ "torn.\n"
+#~ "\n"
+#~ "Cada unitat pot recuperar fins a 4 punts de vida per torn, o bé veure "
+#~ "aturat l'efecte d'un enverinament.\n"
+#~ "Una unitat enverinada no pot ser guarida del seu verí per un curador, i "
+#~ "haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de "
+#~ "guarició."
+
+#~ msgid "heals +8"
+#~ msgstr "curació +8"
+
+#~ msgid "female^heals +8"
+#~ msgstr "curació +8"
+
+#~ msgid ""
+#~ "Heals +8:\n"
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "Curació +8:\n"
+#~ "Aquesta unitat combina herbes medicinals amb màgia per tal de curar les "
+#~ "unitats més ràpidament del que seria possible al camp de batalla.\n"
+#~ "\n"
+#~ "Cada unitat pot recuperar fins a 8 punts de vida per torn, o bé veure "
+#~ "aturat l'efecte d'un enverinament.\n"
+#~ "Una unitat enverinada no pot ser guarida del seu verí per un curador, i "
+#~ "haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de "
+#~ "guarició."
 
 #~ msgid "race^Bat"
 #~ msgstr "Ratpenat"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2010-08-13 11:47+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -23,6 +23,74 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.0\n"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "sanda +4"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "sanda +4"
+
+# Dunha “quenda” a outra dun mesmo xogador vai unha “rolda”.
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/core/macros/abilities.cfg:16
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Sandar +4:\n"
+"Permite ás unidades sandar ás unidades amigas adxacentes ao comezo da súa "
+"quenda.\n"
+"\n"
+"Unha unidade coidada por esta pode sandar ata catro puntos de vida por "
+"rolda, ou evitar que o veleno lle afecte durante esa rolda.\n"
+"Un sandador non pode curar a unha unidade envelenada, e esta debe buscar os "
+"coidados necesarios nunha vila, ou por parte dunha unidade que poida curar."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "sanda +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "sanda +8"
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Sandar +8:\n"
+"Esta unidade combina remedios de herbas con maxia para sandar ás unidades "
+"máis rápido do normal no campo de batalla.\n"
+"\n"
+"Unha unidade coidada por esta pode sandar ata oito puntos de vida por rolda, "
+"ou evitar que o veleno lle afecte durante esa rolda.\n"
+"Un sandador non pode curar a unha unidade envelenada, e esta debe buscar os "
+"coidados necesarios nunha vila, ou por parte dunha unidade que poida curar."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -3344,68 +3412,6 @@ msgstr ""
 "\n"
 "Fai que a unidade seleccionada suba de nivel N veces. Por exemplo: :unit "
 "advances=2"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "sanda +4"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "sanda +4"
-
-# Dunha “quenda” a outra dun mesmo xogador vai unha “rolda”.
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:16
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Sandar +4:\n"
-"Permite ás unidades sandar ás unidades amigas adxacentes ao comezo da súa "
-"quenda.\n"
-"\n"
-"Unha unidade coidada por esta pode sandar ata catro puntos de vida por "
-"rolda, ou evitar que o veleno lle afecte durante esa rolda.\n"
-"Un sandador non pode curar a unha unidade envelenada, e esta debe buscar os "
-"coidados necesarios nunha vila, ou por parte dunha unidade que poida curar."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "sanda +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "sanda +8"
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Sandar +8:\n"
-"Esta unidade combina remedios de herbas con maxia para sandar ás unidades "
-"máis rápido do normal no campo de batalla.\n"
-"\n"
-"Unha unidade coidada por esta pode sandar ata oito puntos de vida por rolda, "
-"ou evitar que o veleno lle afecte durante esa rolda.\n"
-"Un sandador non pode curar a unha unidade envelenada, e esta debe buscar os "
-"coidados necesarios nunha vila, ou por parte dunha unidade que poida curar."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51

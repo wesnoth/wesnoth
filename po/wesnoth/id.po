@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"POT-Creation-Date: 2010-12-28 12:44+0100\n"
 "PO-Revision-Date: 2010-09-02 11:07+0700\n"
 "Last-Translator: yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -191,67 +191,6 @@ msgstr "diperlambatkan"
 #: data/lua/wml-tags.lua:680 src/actions.cpp:1280
 msgid "slowed"
 msgstr "diperlambatkan"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
-msgid "heals +4"
-msgstr "mengobati +4"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
-msgid "female^heals +4"
-msgstr "mengobati +4"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Mengobati +4:\n"
-"Memampukan unit ini mengobati unit-unit sekutu disebelahnya pada mulai ronde "
-"kita.\n"
-"\n"
-"Unit yang diobati oleh dukun ini akan diobati sampai maksimum 4 darah per "
-"ronde, atau menyetop racun berpengaruh pada ronde itu.\n"
-"Unit yang keracunan tidak bisa disembuhkan oleh dukun, dan harus mencari "
-"perawatan di desa atau dari unit yang bisa menyembuhkan."
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
-msgid "heals +8"
-msgstr "Mengobati +8"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
-msgid "female^heals +8"
-msgstr "mengobati +8"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Mengobati +8:\n"
-"Unit ini menyampurkan obat daun-daunan dengan sihir untuk mengobati unit "
-"lain lebih cepat dari yang biasanya mungkin di medan perang.\n"
-"\n"
-"Unit yang diobati oleh dukun ini akan diobati sampai maksimum 8 darah per "
-"ronde, atau menyetop racun berpengaruh pada ronde itu.\n"
-"Unit yang keracunan tidak bisa disembuhkan oleh dukun, dan harus mencari "
-"perawatan di desa atau dari unit yang bisa menyembuhkan."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -6283,6 +6222,56 @@ msgstr "setia"
 #: src/unit_types.cpp:969
 msgid "female^neutral"
 msgstr "netral"
+
+#~ msgid "heals +4"
+#~ msgstr "mengobati +4"
+
+#~ msgid "female^heals +4"
+#~ msgstr "mengobati +4"
+
+#~ msgid ""
+#~ "Heals +4:\n"
+#~ "Allows the unit to heal adjacent allied units at the beginning of our "
+#~ "turn.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "Mengobati +4:\n"
+#~ "Memampukan unit ini mengobati unit-unit sekutu disebelahnya pada mulai "
+#~ "ronde kita.\n"
+#~ "\n"
+#~ "Unit yang diobati oleh dukun ini akan diobati sampai maksimum 4 darah per "
+#~ "ronde, atau menyetop racun berpengaruh pada ronde itu.\n"
+#~ "Unit yang keracunan tidak bisa disembuhkan oleh dukun, dan harus mencari "
+#~ "perawatan di desa atau dari unit yang bisa menyembuhkan."
+
+#~ msgid "heals +8"
+#~ msgstr "Mengobati +8"
+
+#~ msgid "female^heals +8"
+#~ msgstr "mengobati +8"
+
+#~ msgid ""
+#~ "Heals +8:\n"
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "Mengobati +8:\n"
+#~ "Unit ini menyampurkan obat daun-daunan dengan sihir untuk mengobati unit "
+#~ "lain lebih cepat dari yang biasanya mungkin di medan perang.\n"
+#~ "\n"
+#~ "Unit yang diobati oleh dukun ini akan diobati sampai maksimum 8 darah per "
+#~ "ronde, atau menyetop racun berpengaruh pada ronde itu.\n"
+#~ "Unit yang keracunan tidak bisa disembuhkan oleh dukun, dan harus mencari "
+#~ "perawatan di desa atau dari unit yang bisa menyembuhkan."
 
 #~ msgid "race^Bat"
 #~ msgstr "Kelelawar"
