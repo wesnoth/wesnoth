@@ -162,13 +162,8 @@ namespace game_config
 
 	std::vector<server_info> server_list;
 
-	void load_config(const config* cfg)
+	void load_config(const config &v)
 	{
-		if(cfg == NULL)
-			return;
-
-		const config& v = *cfg;
-
 		base_income = v["base_income"].to_int(2);
 		village_income = v["village_income"].to_int(1);
 		poison_amount = v["poison_amount"].to_int(8);

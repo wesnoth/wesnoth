@@ -140,7 +140,7 @@ namespace game_config
 				menu_expand, menu_contract, menu_select;
 	}
 
-	void load_config(const config* cfg);
+	void load_config(const config &cfg);
 
 	void add_color_info(const config& v);
 	const std::vector<Uint32>& tc_info(const std::string& name);

@@ -69,6 +69,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
 static std::vector<config> preload_scripts;
+static config preload_config;
 
 void extract_preload_scripts(config const &game_config)
 {
@@ -76,6 +77,7 @@ void extract_preload_scripts(config const &game_config)
 	foreach (config const &cfg, game_config.child_range("lua")) {
 		preload_scripts.push_back(cfg);
 	}
+	preload_config = game_config.child("game_config");
 }
 
 /**
@@ -3262,6 +3264,7 @@ void LuaKernel::initialize()
 	lua_pop(L, 2);
 
 	// Execute the preload scripts.
+	game_config::load_config(preload_config);
 	foreach (const config &cfg, preload_scripts) {
 		execute(cfg["code"].str().c_str(), 0, 0);
 	}

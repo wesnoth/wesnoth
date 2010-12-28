@@ -647,8 +647,7 @@ bool game_controller::init_config(const bool force)
 
 	load_game_cfg(force);
 
-	const config &cfg = game_config().child("game_config");
-	game_config::load_config(cfg ? &cfg : NULL);
+	game_config::load_config(game_config_.child("game_config"));
 
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
