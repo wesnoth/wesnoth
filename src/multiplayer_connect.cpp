@@ -835,7 +835,7 @@ void connect::side::set_ready_for_start(bool ready_for_start)
 
 void connect::side::import_network_user(const config& data)
 {
-	if (controller_ == CNTR_RESERVED)
+	if (controller_ == CNTR_RESERVED || !enabled_)
 		set_ready_for_start(true);
 
 	player_id_ = data["name"].str();
