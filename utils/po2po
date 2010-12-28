@@ -1,13 +1,23 @@
 #!/bin/sh
+# This script is meant to provide some means to copy over strings from one
+# textdomain to another. It copies the relevant messages from SRCDOMAIN to
+# DSTDOMAIN for LANG. If no specific languages are specified, all langs in the
+# LINGUAS file for the DSTDOMAIN are used.
+#
+# Known limitations:
+# * The tool as to be run from the root checkout dir after the string is
+#   available in the new textdomain.
+# * Support for merging strings with plurals is likely to not exist.
+#
+# Required programs (should all come with the gettext package):
+# * msgattrib
+# * msgcat
+# * msgfmt
+# * msgmerge
 set -e
 
 # where we find the distribution po hierarchy
 BASEDIR=po
-
-# if using a build directory other than source dir, set BUILDDIR to the
-# po directory in the build directory
-#BUILDDIR=testbuild/po
-BUILDDIR=po
 
 # copy relevant messages from SRCDOMAIN to DSTDOMAIN, for LANG
 
@@ -22,37 +32,37 @@ DSTDOMAIN=$2
 shift
 shift
 
-if ! [ -r $BUILDDIR/$DSTDOMAIN/Makefile ]
-then
-    echo "Source not configured in $BUILDDIR/$DSTDOMAIN"
-    exit 1
-fi
-
 if [ $# = 0 ]
 then
     set -- `cat $BASEDIR/$SRCDOMAIN/LINGUAS`
 fi
 
+echo "Running utils/po2po"
+echo "Source domain:      "$SRCDOMAIN
+echo "Destination domain: "$DSTDOMAIN
+echo "Languages:          "$@
+echo ""
+
 tmp=`mktemp`
 for LANG in "$@"
 do
+    echo "Current language: "$LANG
     # merge the 2 files
     msgcat --use-first -F $BASEDIR/$DSTDOMAIN/$LANG.po $BASEDIR/$SRCDOMAIN/$LANG.po >$tmp
     mv $BASEDIR/$DSTDOMAIN/$LANG.po $BASEDIR/$DSTDOMAIN/$LANG.po.bak
     mv $tmp $BASEDIR/$DSTDOMAIN/$LANG.po
 
     # sync with DST pot
-    touch -d '1970-01-02' $BASEDIR/$DSTDOMAIN/$LANG.po
-    make -C $BUILDDIR/$DSTDOMAIN $LANG.po
+    msgmerge --backup=none -U $BASEDIR/$DSTDOMAIN/$LANG.po $BASEDIR/$DSTDOMAIN/$DSTDOMAIN.pot
 
     # clear those obsolete strings added by SRC, but keep ours if any
     msgattrib --no-obsolete $BASEDIR/$DSTDOMAIN/$LANG.po >$tmp
     msgcat --use-first -F $tmp $BASEDIR/$DSTDOMAIN/$LANG.po.bak > $BASEDIR/$DSTDOMAIN/$LANG.po
 
-    touch -d '1970-01-02' $BASEDIR/$DSTDOMAIN/$LANG.po
-    make -C $BUILDDIR/$DSTDOMAIN $LANG.po
+    msgmerge --backup=none -U $BASEDIR/$DSTDOMAIN/$LANG.po $BASEDIR/$DSTDOMAIN/$DSTDOMAIN.pot
 
-    # make sure the timestamp is fixed or cvs gets confused
-    touch $BASEDIR/$DSTDOMAIN/$LANG.po
+    msgfmt --output-file=/dev/null --statistics $BASEDIR/$DSTDOMAIN/$LANG.po
+
 done
 rm $tmp
+
