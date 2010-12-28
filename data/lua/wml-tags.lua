@@ -216,13 +216,43 @@ function wml_actions.music(cfg)
 end
 
 local function handle_event_commands(cfg)
-	for i = 1, #cfg do
-		local v = cfg[i]
+	-- The WML might be modifying the currently executed WML by mixing
+	-- [insert_tag] with [set_variables] and [clear_variable], so we
+	-- have to be careful not to get confused by tags vanishing during
+	-- the execution, hence the manual handling of [insert_tag].
+	local cmds = helper.shallow_literal(cfg)
+	for i = 1,#cmds do
+		local v = cmds[i]
 		local cmd = v[1]
+		local arg = v[2]
+		local insert_from
+		if cmd == "insert_tag" then
+			cmd = arg.name
+			local from = arg.variable
+			arg = wesnoth.get_variable(from)
+			if type(arg) ~= "table" then
+				-- Corner case: A missing variable is replaced
+				-- by an empty container rather than being ignored.
+				arg = {}
+			elseif string.sub(from, -1) ~= ']' then
+				insert_from = from
+			end
+			arg = wesnoth.tovconfig(arg)
+		end
 		if not string.find(cmd, "^filter") then
 			cmd = wml_actions[cmd] or
 				helper.wml_error(string.format("[%s] not supported", cmd))
-			cmd(v[2])
+			if insert_from then
+				local j = 0
+				repeat
+					cmd(arg)
+					j = j + 1
+					if j >= wesnoth.get_variable(insert_from .. ".length") then break end
+					arg = wesnoth.tovconfig(wesnoth.get_variable(string.format("%s[%d]", insert_from, j)))
+				until false
+			else
+				cmd(arg)
+			end
 		end
 	end
 	-- Apply music alterations once all the commands have been processed.
