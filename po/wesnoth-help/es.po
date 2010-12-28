@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:44+0100\n"
+"POT-Creation-Date: 2010-12-28 13:00+0100\n"
 "PO-Revision-Date: 2010-05-04 19:57+0100\n"
 "Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -30,6 +30,66 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);X-Generator: KBabel 1.11.4X-"
 "Generator: KBabel 1.11.4\n"
 "X-Generator: KBabel 1.11.4\n"
+
+#. [time]: id=underground
+#. [illuminated_time]: id=underground_illum
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
+#: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:94
+msgid "Underground"
+msgstr "Bajo tierra"
+
+#. [berserk]: id=berserk
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
+#: data/core/macros/abilities.cfg:554
+msgid "berserk"
+msgstr "berserk"
+
+#. [berserk]: id=berserk
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
+#: data/core/macros/abilities.cfg:556
+msgid ""
+"Berserk:\n"
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Berserk:\n"
+"Usado tanto ofensiva como defensivamente, este ataque alarga la lucha hasta "
+"la muerte de uno de los combatientes, con un máximo de 30 rondas de ataques."
+
+#. [chance_to_hit]: id=magical
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
+#: data/core/macros/abilities.cfg:640
+msgid "magical"
+msgstr "mágico"
+
+#. [chance_to_hit]: id=magical
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
+#: data/core/macros/abilities.cfg:642
+msgid ""
+"Magical:\n"
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Mágico:\n"
+"Este ataque siempre tiene un 70% de posibilidades de golpear, sin importar "
+"las capacidades defensivas de la unidad atacada."
+
+#. [firststrike]: id=firststrike
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
+#: data/core/macros/abilities.cfg:689
+msgid "firststrike"
+msgstr "ataca primero"
+
+#. [firststrike]: id=firststrike
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
+#: data/core/macros/abilities.cfg:691
+msgid ""
+"First Strike:\n"
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Ataca primero:\n"
+"Esta unidad siempre golpea primero con este ataque, incluso cuando se "
+"defiende."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -3761,22 +3821,6 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 PV máx."
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:554
-msgid "berserk"
-msgstr "berserk"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:556
-msgid ""
-"Berserk:\n"
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Berserk:\n"
-"Usado tanto ofensiva como defensivamente, este ataque alarga la lucha hasta "
-"la muerte de uno de los combatientes, con un máximo de 30 rondas de ataques."
-
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 msgid "backstab"
@@ -3879,22 +3923,6 @@ msgstr ""
 "Cuando se usa ofensivamente, este ataque siempre tiene al menos un 60% de "
 "posibilidades de golpear."
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:640
-msgid "magical"
-msgstr "mágico"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:642
-msgid ""
-"Magical:\n"
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Mágico:\n"
-"Este ataque siempre tiene un 70% de posibilidades de golpear, sin importar "
-"las capacidades defensivas de la unidad atacada."
-
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
@@ -3948,21 +3976,6 @@ msgstr ""
 "Esta unidad drena la vitalidad de unidades vivas, sanándose a sí misma el "
 "equivalente a la mitad del daño que ha infligido (redondeado hacia abajo)."
 
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:689
-msgid "firststrike"
-msgstr "ataca primero"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:691
-msgid ""
-"First Strike:\n"
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Ataca primero:\n"
-"Esta unidad siempre golpea primero con este ataque, incluso cuando se "
-"defiende."
-
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
@@ -3991,12 +4004,6 @@ msgstr "Máxima bonificación en PV +3, Máximos XP +20%"
 #: data/core/macros/schedules.cfg:70 data/core/macros/schedules.cfg:76
 msgid "Indoors"
 msgstr ""
-
-#. [time]: id=underground
-#. [illuminated_time]: id=underground_illum
-#: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:94
-msgid "Underground"
-msgstr "Bajo tierra"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum

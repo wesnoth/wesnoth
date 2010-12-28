@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:44+0100\n"
+"POT-Creation-Date: 2010-12-28 13:00+0100\n"
 "PO-Revision-Date: 2010-08-16 08:59+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -23,6 +23,65 @@ msgstr ""
 "X-Poedit-Language: Estonian\n"
 "X-Poedit-Country: ESTONIA\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+#. [time]: id=underground
+#. [illuminated_time]: id=underground_illum
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
+#: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:94
+msgid "Underground"
+msgstr "Maa all"
+
+#. [berserk]: id=berserk
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
+#: data/core/macros/abilities.cfg:554
+msgid "berserk"
+msgstr "segane"
+
+#. [berserk]: id=berserk
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
+#: data/core/macros/abilities.cfg:556
+msgid ""
+"Berserk:\n"
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Segane:\n"
+"Nii kaitstes kui rünnates kestab võitlus 30 ringi või kuni üks osapoole "
+"surmani."
+
+#. [chance_to_hit]: id=magical
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
+#: data/core/macros/abilities.cfg:640
+msgid "magical"
+msgstr "võluväeline"
+
+#. [chance_to_hit]: id=magical
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
+#: data/core/macros/abilities.cfg:642
+msgid ""
+"Magical:\n"
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Võluväeline:\n"
+"Sellel rünnakul on alati 70% tabamistõenäosus, sõltumata rünnatava üksuse "
+"kaitsevõimest."
+
+#. [firststrike]: id=firststrike
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
+#: data/core/macros/abilities.cfg:689
+msgid "firststrike"
+msgstr "alustav"
+
+#. [firststrike]: id=firststrike
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
+#: data/core/macros/abilities.cfg:691
+msgid ""
+"First Strike:\n"
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Alustav:\n"
+" See üksus lööb alati esimesena, isegi kaitses olles."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -3601,22 +3660,6 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 maks. EP"
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:554
-msgid "berserk"
-msgstr "segane"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:556
-msgid ""
-"Berserk:\n"
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Segane:\n"
-"Nii kaitstes kui rünnates kestab võitlus 30 ringi või kuni üks osapoole "
-"surmani."
-
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 msgid "backstab"
@@ -3714,22 +3757,6 @@ msgstr ""
 "Täpsuskütt:\n"
 "Rünnakul on selle üksuse tabamistõenäosus alati vähemalt 60%."
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:640
-msgid "magical"
-msgstr "võluväeline"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:642
-msgid ""
-"Magical:\n"
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Võluväeline:\n"
-"Sellel rünnakul on alati 70% tabamistõenäosus, sõltumata rünnatava üksuse "
-"kaitsevõimest."
-
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
@@ -3781,20 +3808,6 @@ msgstr ""
 "See üksus suudab võtta elavatelt vastastelt elujõudu ning suunata poole "
 "tekitatud kahjust (allapoole ümardatuna) enda ravimiseks."
 
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:689
-msgid "firststrike"
-msgstr "alustav"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:691
-msgid ""
-"First Strike:\n"
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Alustav:\n"
-" See üksus lööb alati esimesena, isegi kaitses olles."
-
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
@@ -3823,12 +3836,6 @@ msgstr "Maks. elupunktid +3, maks. kogemus +20%"
 #: data/core/macros/schedules.cfg:70 data/core/macros/schedules.cfg:76
 msgid "Indoors"
 msgstr ""
-
-#. [time]: id=underground
-#. [illuminated_time]: id=underground_illum
-#: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:94
-msgid "Underground"
-msgstr "Maa all"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum

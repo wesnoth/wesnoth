@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:44+0100\n"
+"POT-Creation-Date: 2010-12-28 13:00+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -15,6 +15,65 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
 "%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+
+#. [time]: id=underground
+#. [illuminated_time]: id=underground_illum
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
+#: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:94
+msgid "Underground"
+msgstr "Požemis"
+
+#. [berserk]: id=berserk
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
+#: data/core/macros/abilities.cfg:554
+msgid "berserk"
+msgstr "berserkas"
+
+#. [berserk]: id=berserk
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
+#: data/core/macros/abilities.cfg:556
+msgid ""
+"Berserk:\n"
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Berserkas:\n"
+"Ar naudojama puolant, ar ginantis, ši ataka išlaiko priešininką kovoje iki "
+"pat vieno iš besikaunančiųjų mirties, arba trisdešimt atakos raundų."
+
+#. [chance_to_hit]: id=magical
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
+#: data/core/macros/abilities.cfg:640
+msgid "magical"
+msgstr "magiška"
+
+#. [chance_to_hit]: id=magical
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
+#: data/core/macros/abilities.cfg:642
+msgid ""
+"Magical:\n"
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Magiška:\n"
+"Ši ataka visada turi 70% tikimybę pataikyti, nepriklausomai nuo puolamo "
+"dalinio gynybinių gebėjimų."
+
+#. [firststrike]: id=firststrike
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
+#: data/core/macros/abilities.cfg:689
+msgid "firststrike"
+msgstr "pirmenybė"
+
+#. [firststrike]: id=firststrike
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
+#: data/core/macros/abilities.cfg:691
+msgid ""
+"First Strike:\n"
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Smūgio pirmenybė:\n"
+"Su šia ataka dalinys visuomet turės pirmenybę atakuoti, net kai ginasi."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -3079,22 +3138,6 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 maks. GT"
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:554
-msgid "berserk"
-msgstr "berserkas"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:556
-msgid ""
-"Berserk:\n"
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Berserkas:\n"
-"Ar naudojama puolant, ar ginantis, ši ataka išlaiko priešininką kovoje iki "
-"pat vieno iš besikaunančiųjų mirties, arba trisdešimt atakos raundų."
-
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 msgid "backstab"
@@ -3183,22 +3226,6 @@ msgstr ""
 "Snaiperis:\n"
 "Kai naudojama puolant, ši ataka visada turi bent 60% tikimybę pataikyti."
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:640
-msgid "magical"
-msgstr "magiška"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:642
-msgid ""
-"Magical:\n"
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Magiška:\n"
-"Ši ataka visada turi 70% tikimybę pataikyti, nepriklausomai nuo puolamo "
-"dalinio gynybinių gebėjimų."
-
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
@@ -3243,20 +3270,6 @@ msgstr ""
 "Šis dalinys išsiurbia jėgas iš gyvų dalinių, gydydamasis pusė padarytos "
 "žalos kiekio (suapvalintos žemyn)."
 
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:689
-msgid "firststrike"
-msgstr "pirmenybė"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:691
-msgid ""
-"First Strike:\n"
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Smūgio pirmenybė:\n"
-"Su šia ataka dalinys visuomet turės pirmenybę atakuoti, net kai ginasi."
-
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
@@ -3282,12 +3295,6 @@ msgstr ""
 #, fuzzy
 msgid "Indoors"
 msgstr "Netinkama spalva"
-
-#. [time]: id=underground
-#. [illuminated_time]: id=underground_illum
-#: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:94
-msgid "Underground"
-msgstr "Požemis"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum

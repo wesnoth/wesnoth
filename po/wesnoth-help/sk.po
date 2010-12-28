@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:44+0100\n"
+"POT-Creation-Date: 2010-12-28 13:00+0100\n"
 "PO-Revision-Date: 2010-08-14 18:26+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -18,6 +18,65 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-Country: SLOVAKIA\n"
+
+#. [time]: id=underground
+#. [illuminated_time]: id=underground_illum
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
+#: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:94
+msgid "Underground"
+msgstr "Podzemie"
+
+#. [berserk]: id=berserk
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
+#: data/core/macros/abilities.cfg:554
+msgid "berserk"
+msgstr "zúrivý"
+
+#. [berserk]: id=berserk
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
+#: data/core/macros/abilities.cfg:556
+msgid ""
+"Berserk:\n"
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Zúrivý:\n"
+"Či pri útoku alebo pri obrane, tento druh útoku trvá až do smrti jedného z "
+"protivníkov, prípadne kým si nevymenia 30 sérií útokov."
+
+#. [chance_to_hit]: id=magical
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
+#: data/core/macros/abilities.cfg:640
+msgid "magical"
+msgstr "magický"
+
+#. [chance_to_hit]: id=magical
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
+#: data/core/macros/abilities.cfg:642
+msgid ""
+"Magical:\n"
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Magický:\n"
+"Tento útok má vždy šancu 70% na zásah bez ohľadu na obranné možnosti "
+"jednotky, na ktorú sa útočí."
+
+#. [firststrike]: id=firststrike
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
+#: data/core/macros/abilities.cfg:689
+msgid "firststrike"
+msgstr "prvý úder"
+
+#. [firststrike]: id=firststrike
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
+#: data/core/macros/abilities.cfg:691
+msgid ""
+"First Strike:\n"
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Prvý útok:\n"
+"Týmto útokom útočí jednotka vždy prvá, aj keď bola napadnutá."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -3621,22 +3680,6 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 max. životov"
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:554
-msgid "berserk"
-msgstr "zúrivý"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:556
-msgid ""
-"Berserk:\n"
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Zúrivý:\n"
-"Či pri útoku alebo pri obrane, tento druh útoku trvá až do smrti jedného z "
-"protivníkov, prípadne kým si nevymenia 30 sérií útokov."
-
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 msgid "backstab"
@@ -3737,22 +3780,6 @@ msgstr ""
 "Presný:\n"
 "Pri útoku má jednotka vždy šancu aspoň 60% na zásah."
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:640
-msgid "magical"
-msgstr "magický"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:642
-msgid ""
-"Magical:\n"
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Magický:\n"
-"Tento útok má vždy šancu 70% na zásah bez ohľadu na obranné možnosti "
-"jednotky, na ktorú sa útočí."
-
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
@@ -3804,20 +3831,6 @@ msgstr ""
 "Táto jednotka vysáva zdravie zo živých jednotiek a uzdraví sama seba za "
 "polovicu spôsobeného zranenia (zaokrúhlené nadol)."
 
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:689
-msgid "firststrike"
-msgstr "prvý úder"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:691
-msgid ""
-"First Strike:\n"
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Prvý útok:\n"
-"Týmto útokom útočí jednotka vždy prvá, aj keď bola napadnutá."
-
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
@@ -3846,12 +3859,6 @@ msgstr "Bonus k maximálnemu počtu životov +3, k maximálnej skúsenosti +20%"
 #: data/core/macros/schedules.cfg:70 data/core/macros/schedules.cfg:76
 msgid "Indoors"
 msgstr ""
-
-#. [time]: id=underground
-#. [illuminated_time]: id=underground_illum
-#: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:94
-msgid "Underground"
-msgstr "Podzemie"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum

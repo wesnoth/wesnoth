@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:44+0100\n"
+"POT-Creation-Date: 2010-12-28 13:00+0100\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -21,6 +21,70 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
 "X-Generator: KBabel 1.11.2\n"
+
+#. [time]: id=underground
+#. [illuminated_time]: id=underground_illum
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
+#: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:94
+msgid "Underground"
+msgstr "Podzemlje"
+
+#. [berserk]: id=berserk
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
+#: data/core/macros/abilities.cfg:554
+#, fuzzy
+msgid "berserk"
+msgstr "berzerk"
+
+#. [berserk]: id=berserk
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
+#: data/core/macros/abilities.cfg:556
+#, fuzzy
+msgid ""
+"Berserk:\n"
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Berzerk:\n"
+"Ob napadu ali pri obrambi se bo boj nadaljeval, dokler eden od udeležencev "
+"ne umre ali mine 30 rund."
+
+#. [chance_to_hit]: id=magical
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
+#: data/core/macros/abilities.cfg:640
+#, fuzzy
+msgid "magical"
+msgstr "čaroben"
+
+#. [chance_to_hit]: id=magical
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
+#: data/core/macros/abilities.cfg:642
+#, fuzzy
+msgid ""
+"Magical:\n"
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Čaroben:\n"
+"Ta napad ima vedno 70% možnosti da zadane."
+
+#. [firststrike]: id=firststrike
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
+#: data/core/macros/abilities.cfg:689
+#, fuzzy
+msgid "firststrike"
+msgstr "prvi napad"
+
+#. [firststrike]: id=firststrike
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
+#: data/core/macros/abilities.cfg:691
+#, fuzzy
+msgid ""
+"First Strike:\n"
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Prvi napad:\n"
+"Ta enota vedno napade prva, tudi če se brani."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -3605,24 +3669,6 @@ msgstr ""
 msgid "+1 max HP"
 msgstr ""
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:554
-#, fuzzy
-msgid "berserk"
-msgstr "berzerk"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:556
-#, fuzzy
-msgid ""
-"Berserk:\n"
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Berzerk:\n"
-"Ob napadu ali pri obrambi se bo boj nadaljeval, dokler eden od udeležencev "
-"ne umre ali mine 30 rund."
-
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
 #, fuzzy
@@ -3732,23 +3778,6 @@ msgstr ""
 "Marksman:\n"
 "V napadu (ne v obrambi) ima enota vedno vsaj 60% možnosti da zadane."
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:640
-#, fuzzy
-msgid "magical"
-msgstr "čaroben"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:642
-#, fuzzy
-msgid ""
-"Magical:\n"
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Čaroben:\n"
-"Ta napad ima vedno 70% možnosti da zadane."
-
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 #, fuzzy
@@ -3806,22 +3835,6 @@ msgstr ""
 "Ta enota črpa energijo živim nasprotnikom in se pri tem pozdravi za polovico "
 "storjene škode (zaokroženo navzdol)."
 
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:689
-#, fuzzy
-msgid "firststrike"
-msgstr "prvi napad"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:691
-#, fuzzy
-msgid ""
-"First Strike:\n"
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Prvi napad:\n"
-"Ta enota vedno napade prva, tudi če se brani."
-
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
@@ -3851,12 +3864,6 @@ msgstr "Največji HP bonus +"
 #: data/core/macros/schedules.cfg:70 data/core/macros/schedules.cfg:76
 msgid "Indoors"
 msgstr ""
-
-#. [time]: id=underground
-#. [illuminated_time]: id=underground_illum
-#: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:94
-msgid "Underground"
-msgstr "Podzemlje"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum

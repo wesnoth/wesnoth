@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:44+0100\n"
+"POT-Creation-Date: 2010-12-28 13:00+0100\n"
 "PO-Revision-Date: 2010-12-11 23:11+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -122,63 +122,12 @@ msgstr "自動保存を無効にする。"
 msgid "Multiplayer_AI^RCA AI"
 msgstr "RCA AI"
 
-#. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
-msgid "Underground"
-msgstr "地下"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:306
 #: data/lua/wml-tags.lua:679 src/actions.cpp:1275
 msgid "poisoned"
 msgstr "毒を受けた"
-
-#. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
-msgid "berserk"
-msgstr "狂戦"
-
-#. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
-msgid ""
-"Berserk:\n"
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"狂戦:\n"
-"攻撃においても防御においても、この攻撃が戦いで使われた場合、いずれかの戦闘ユ"
-"ニットが倒されるまで交戦をやめません。もしくは 30 回の攻撃が行われるまで。"
-
-#. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
-msgid "magical"
-msgstr "魔法"
-
-#. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
-msgid ""
-"Magical:\n"
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"魔法:\n"
-"この攻撃は攻撃されるユニットが持っているどんな防御能力も関係なく常に命中率が "
-"70% となります。"
-
-#. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
-msgid "firststrike"
-msgstr "先制"
-
-#. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
-msgid ""
-"First Strike:\n"
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"先制:\n"
-"このユニットは、たとえ防御時であっても常にこの攻撃で先に攻撃します。"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
@@ -6066,6 +6015,46 @@ msgstr "黄昏"
 #: src/unit_types.cpp:969
 msgid "female^neutral"
 msgstr "中立"
+
+#~ msgid "Underground"
+#~ msgstr "地下"
+
+#~ msgid "berserk"
+#~ msgstr "狂戦"
+
+#~ msgid ""
+#~ "Berserk:\n"
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "狂戦:\n"
+#~ "攻撃においても防御においても、この攻撃が戦いで使われた場合、いずれかの戦闘"
+#~ "ユニットが倒されるまで交戦をやめません。もしくは 30 回の攻撃が行われるま"
+#~ "で。"
+
+#~ msgid "magical"
+#~ msgstr "魔法"
+
+#~ msgid ""
+#~ "Magical:\n"
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the unit being attacked."
+#~ msgstr ""
+#~ "魔法:\n"
+#~ "この攻撃は攻撃されるユニットが持っているどんな防御能力も関係なく常に命中率"
+#~ "が 70% となります。"
+
+#~ msgid "firststrike"
+#~ msgstr "先制"
+
+#~ msgid ""
+#~ "First Strike:\n"
+#~ "This unit always strikes first with this attack, even if they are "
+#~ "defending."
+#~ msgstr ""
+#~ "先制:\n"
+#~ "このユニットは、たとえ防御時であっても常にこの攻撃で先に攻撃します。"
 
 #~ msgid "heals +4"
 #~ msgstr "回復 +4"
