@@ -470,10 +470,12 @@ function wml_actions.modify_unit(cfg)
 		end
 	end
 
-	local function handle_unit(cfg, unit_num)
+	local filter = helper.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
+	local cfg = helper.parsed(cfg)
+	local type = cfg.type; cfg.type = nil
+	local function handle_unit(unit_num)
 		local children_handled = {}
 		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
-		local type = cfg.type; cfg.type = nil
 		handle_attributes(cfg, unit_path)
 
 		for current_index, current_table in ipairs(cfg) do
@@ -501,14 +503,11 @@ function wml_actions.modify_unit(cfg)
 		wml_actions.unstore_unit { variable = unit_path }
 	end
 
-	local filter = helper.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
-	local cfg = helper.parsed(cfg)
-
 	wml_actions.store_unit { {"filter", filter}, variable = unit_variable, kill = true }
 	local max_index = wesnoth.get_variable(unit_variable .. ".length") - 1
 
 	for current_unit = 0, max_index do
-		handle_unit(cfg, current_unit)
+		handle_unit(current_unit)
 	end
 
 	wesnoth.set_variable(unit_variable)
