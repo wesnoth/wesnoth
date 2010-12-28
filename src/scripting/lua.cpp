@@ -661,16 +661,25 @@ static int impl_vconfig_get(lua_State *L)
 		luaW_pushconfig(L, v->get_parsed_config());
 		return 1;
 	}
-	if (strcmp(m, "__shallow_literal") == 0) {
+
+	bool shallow_literal = strcmp(m, "__shallow_literal") == 0;
+	if (shallow_literal || strcmp(m, "__shallow_parsed") == 0)
+	{
 		lua_newtable(L);
 		foreach (const config::attribute &a, v->get_config().attribute_range()) {
-			luaW_pushscalar(L, a.second);
+			if (shallow_literal)
+				luaW_pushscalar(L, a.second);
+			else
+				luaW_pushscalar(L, v->expand(a.first));
 			lua_setfield(L, -2, a.first.c_str());
 		}
-		copy_children:
-		int j = 1;
-		for (vconfig::all_children_iterator i = v->ordered_begin(),
-		     i_end = v->ordered_end(); i != i_end; ++i)
+		vconfig::all_children_iterator i = v->ordered_begin(),
+			i_end = v->ordered_end();
+		if (shallow_literal) {
+			i.disable_insertion();
+			i_end.disable_insertion();
+		}
+		for (int j = 1; i != i_end; ++i, ++j)
 		{
 			lua_createtable(L, 2, 0);
 			lua_pushstring(L, i.get_key().c_str());
@@ -678,17 +687,8 @@ static int impl_vconfig_get(lua_State *L)
 			luaW_pushvconfig(L, i.get_child());
 			lua_rawseti(L, -2, 2);
 			lua_rawseti(L, -2, j);
-			++j;
 		}
 		return 1;
-	}
-	if (strcmp(m, "__shallow_parsed") == 0) {
-		lua_newtable(L);
-		foreach (const config::attribute &a, v->get_config().attribute_range()) {
-			luaW_pushscalar(L, v->expand(a.first));
-			lua_setfield(L, -2, a.first.c_str());
-		}
-		goto copy_children;
 	}
 
 	if (v->null() || !v->has_attribute(m)) return 0;
