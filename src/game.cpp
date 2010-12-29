@@ -1609,6 +1609,8 @@ void game_controller::load_game_cfg(const bool force)
 
 		terrain_builder::set_terrain_rules_cfg(game_config());
 
+		::init_textdomains(game_config());
+
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
 		gui2::show_error_message(disp().video(), _("Error loading game configuration files: '") +

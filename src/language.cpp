@@ -227,10 +227,14 @@ bool load_strings(bool complain)
 		return false;
 	}
 	foreach (const config &lang, languages_) {
+		DBG_G << "[language]\n";
 		foreach (const config::attribute &j, lang.attribute_range()) {
+			DBG_G << j.first << "=\"" << j.second << "\"\n";
 			strings_[j.first] = j.second;
 		}
+		DBG_G << "[/language]\n";
 	}
+	DBG_G << "done";
 
 	return true;
 }
@@ -298,6 +302,7 @@ bool init_textdomains(const config& cfg)
 			}
 		}
 	}
+	languages_.clear();
 	foreach(const config &l, cfg.child_range("language")) {
 		languages_.push_back(l);
 	}
