@@ -875,7 +875,7 @@ void connect::side::reset(mp::controller controller)
 		if(combo_faction_.enabled())
 			faction_ = 0;
 		if(combo_leader_.enabled())
-			llm_.update_leader_list(0);
+			llm_.update_leader_list(faction_);
 		if (combo_gender_.enabled())
 			llm_.update_gender_list(llm_.get_leader());
 	}
