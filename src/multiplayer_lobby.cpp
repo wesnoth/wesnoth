@@ -770,7 +770,6 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	filter_text_.set_help_string(_("Only show games whose title or description contain the entered text"));
 #endif
 
-	game_config::debug = false;
 	gamelist_updated();
 	sound::play_music_repeatedly(game_config::lobby_music);
 }
