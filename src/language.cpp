@@ -281,7 +281,7 @@ const language_def& get_locale()
 	return known_languages[0];
 }
 
-bool init_textdomains(const config& cfg)
+void init_textdomains(const config& cfg)
 {
 	foreach (const config &t, cfg.child_range("textdomain"))
 	{
@@ -302,6 +302,10 @@ bool init_textdomains(const config& cfg)
 			}
 		}
 	}
+}
+
+bool init_strings(const config& cfg)
+{
 	languages_.clear();
 	foreach(const config &l, cfg.child_range("language")) {
 		languages_.push_back(l);

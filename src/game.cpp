@@ -655,8 +655,7 @@ bool game_controller::init_config(const bool force)
 
 	hotkey::load_hotkeys(game_config());
 	paths_manager_.set_paths(game_config());
-	if(!::init_textdomains(game_config()))
-		return false;
+	::init_textdomains(game_config());
 	about::set_about(game_config());
 	ai::configuration::init(game_config());
 
@@ -1609,7 +1608,7 @@ void game_controller::load_game_cfg(const bool force)
 
 		terrain_builder::set_terrain_rules_cfg(game_config());
 
-		::init_textdomains(game_config());
+		::init_strings(game_config());
 
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";

@@ -85,7 +85,10 @@ bool current_language_rtl();
 const language_def& get_locale();
 
 /** Initializes the list of textdomains from a configuration object */
-bool init_textdomains(const config& cfg);
+void init_textdomains(const config& cfg);
+
+/** Initializes certain english strings */
+bool init_strings(const config& cfg);
 
 bool load_language_list();
 
