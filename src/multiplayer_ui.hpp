@@ -272,6 +272,10 @@ private:
 	};
 };
 
+typedef std::vector<const config *> faction_list;
+/** Picks the first faction with the greater amount of data matching the criteria. */
+int find_suitable_faction(faction_list const &fl, const config &side);
+
 }
 
 #endif

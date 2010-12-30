@@ -274,13 +274,24 @@ void wait::join_game(bool observe)
 			if (!color_str.empty())
 				color = game_config::color_info(color_str).index() - 1;
 
-			std::vector<std::string> choices;
 			std::vector<const config *> leader_sides;
-			foreach (const config &side, possible_sides)
+			foreach (const config &side, possible_sides) {
+				leader_sides.push_back(&side);
+			}
+
+			int forced_faction = find_suitable_faction(leader_sides, *side_choice);
+			if (forced_faction >= 0) {
+				const config *f = leader_sides[forced_faction];
+				leader_sides.clear();
+				leader_sides.push_back(f);
+			}
+
+			std::vector<std::string> choices;
+			foreach (const config *s, leader_sides)
 			{
+				const config &side = *s;
 				const std::string &name = side["name"];
 				const std::string &icon = side["image"];
-				leader_sides.push_back(&side);
 
 				if (!icon.empty()) {
 					std::string rgb = side["flag_rgb"];
@@ -313,7 +324,7 @@ void wait::join_game(bool observe)
 			config faction;
 			config& change = faction.add_child("change_faction");
 			change["name"] = preferences::login();
-			change["faction"] = faction_choice;
+			change["faction"] = forced_faction >= 0 ? forced_faction : faction_choice;
 			change["leader"] = leader_choice;
 			change["gender"] = gender_choice;
 			network::send_data(faction, 0);

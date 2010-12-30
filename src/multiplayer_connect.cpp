@@ -273,47 +273,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		// Try to pick a faction for the sake of appearance
 		// and for filling in the blanks
 		if(faction_ == 0) {
-			std::vector<std::string> find;
-			std::string search_field;
-			if (cfg.has_attribute("faction")) {
-				// Choose based on faction
-				find.push_back(cfg["faction"]);
-				search_field = "id";
-			} else if (cfg["faction_from_recruit"].to_bool() && cfg.has_attribute("recruit")) {
-				// Choose based on recruit
-				find = utils::split(cfg["recruit"]);
-				search_field = "recruit";
-			} else if(!leader_.empty()) {
-				// Choose based on leader
-				find.push_back(leader_);
-				search_field = "leader";
-			}
-			// Pick the first faction with the greater amount of data matching the criteria
-			int faction_index = 0;
-			int best_score = 0;
-			std::vector<const config*>::const_iterator faction = parent.era_sides_.begin();
-			while(faction != parent.era_sides_.end()) {
-				int faction_score = 0;
-				const config& side = (**faction);
-				std::vector<std::string> recruit;
-				recruit = utils::split(side[search_field]);
-				std::vector<std::string>::const_iterator search = find.begin();
-				while(search != find.end()) {
-					for(itor = recruit.begin(); itor != recruit.end(); ++itor) {
-						if(*itor == *search) {
-							faction_score++;
-							break;
-						}
-					}
-					++search;
-				}
-				if(faction_score > best_score) {
-					best_score = faction_score;
-					faction_ = faction_index;
-				}
-				++faction;
-				faction_index++;
-			}
+			faction_ = find_suitable_faction(parent.era_sides_, cfg);
+			if (faction_ < 0) faction_ = 0;
 			if (faction_) {
 				llm_.update_leader_list(faction_);
 				llm_.update_gender_list(llm_.get_leader());

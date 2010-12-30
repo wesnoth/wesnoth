@@ -837,5 +837,46 @@ const gui::label& ui::title() const
 	return title_;
 }
 
+int find_suitable_faction(faction_list const &fl, const config &cfg)
+{
+	std::vector<std::string> find;
+	std::string search_field;
+	if (const config::attribute_value *f = cfg.get("faction")) {
+		// Choose based on faction.
+		find.push_back(f->str());
+		search_field = "id";
+	} else if (cfg["faction_from_recruit"].to_bool()) {
+		// Choose based on recruit.
+		find = utils::split(cfg["recruit"]);
+		search_field = "recruit";
+	} else if (const config::attribute_value *l = cfg.get("leader")) {
+		// Choose based on leader.
+		find.push_back(*l);
+		search_field = "leader";
+	} else {
+		return -1;
+	}
+
+	int res = -1, index = 0, best_score = 0;
+	foreach (const config *faction, fl)
+	{
+		int faction_score = 0;
+		std::vector<std::string> recruit = utils::split((*faction)[search_field]);
+		foreach (const std::string &search, find) {
+			foreach (const std::string &r, recruit) {
+				if (r == search) {
+					++faction_score;
+					break;
+				}
+			}
+		}
+		if (faction_score > best_score) {
+			best_score = faction_score;
+			res = index;
+		}
+		++index;
+	}
+	return res;
+}
 
 }// namespace mp
