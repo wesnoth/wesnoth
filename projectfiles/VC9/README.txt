@@ -129,6 +129,9 @@ compile Wesnoth.
 		More? --toolset=msvc ^
 		More? --build-type=complete ^
 		More? --prefix="C:\projects\Boost\" install
+		
+	If the upper last command doesn't work, replace the last line with:
+		--prefix="C:\projects\Boost" install
 
 	Now bjam will compile all variants of the boost library binaries 
 	for MSVC 2008 and copies them into the folder	
