@@ -903,11 +903,13 @@ void reports::register_generator(const std::string &name, reports::generator *g,
 	}
 }
 
-config reports::generate_report(const std::string &name)
+config reports::generate_report(const std::string &name, bool only_static)
 {
-	dynamic_report_generators::const_iterator i = dynamic_generators.find(name);
-	if (i != dynamic_generators.end())
-		return i->second.generator->generate();
+	if (!only_static) {
+		dynamic_report_generators::const_iterator i = dynamic_generators.find(name);
+		if (i != dynamic_generators.end())
+			return i->second.generator->generate();
+	}
 	static_report_generators::const_iterator j = static_generators.find(name);
 	if (j != static_generators.end())
 		return j->second.generator();
