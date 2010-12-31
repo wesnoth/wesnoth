@@ -788,14 +788,15 @@ REPORT_GENERATOR(side_playing, false, data)
 	return image_report(flag_icon + mods, active_team.current_player());
 }
 
-REPORT_GENERATOR(observers, false, data)
+REPORT_GENERATOR(observers, false, /*data*/)
 {
-	if (data.observers.empty())
+	const std::set<std::string> &observers = resources::screen->observers();
+	if (observers.empty())
 		return report();
 
 	std::ostringstream str;
 	str << _("Observers:") << '\n';
-	foreach (const std::string &obs, data.observers) {
+	foreach (const std::string &obs, observers) {
 		str << obs << '\n';
 	}
 	return image_report(game_config::images::observer, str.str());

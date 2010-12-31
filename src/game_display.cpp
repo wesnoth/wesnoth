@@ -434,7 +434,7 @@ void game_display::draw_report(const std::string &report_name)
 
 	reports::report_data data = {
 		static_cast<int>(currentTeam_ + 1), static_cast<int>(activeTeam_ + 1),
-		displayedUnitHex_, observers_, !viewpoint_
+		displayedUnitHex_, !viewpoint_
 	};
 
 	refresh_report(report_name, reports::generate_report(report_name, data));

@@ -27,7 +27,6 @@ struct report_data
 	int viewing_side;
 	int active_side;
 	map_location displayed_unit_hex;
-	const std::set<std::string> &observers;
 	bool show_everything;
 };
 
