@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 13:00+0100\n"
-"PO-Revision-Date: 2010-11-25 22:51+0900\n"
+"POT-Creation-Date: 2010-12-28 13:01+0100\n"
+"PO-Revision-Date: 2010-11-30 22:55+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2275,7 +2275,7 @@ msgstr "승리조건:"
 
 #: data/lua/wml/objectives.lua:51
 msgid "Defeat:"
-msgstr ""
+msgstr "패배조건:"
 
 #: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
@@ -2539,20 +2539,20 @@ msgstr[0] "적 유닛 발견!"
 #: src/actions.cpp:2554
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] ""
+msgstr[0] "아군"
 
 #: src/actions.cpp:2555
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] ""
+msgstr[0] "적군"
 
 #: src/actions.cpp:2556
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr ""
+msgstr "유닛 발견! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2565
 msgid "(press $hotkey to keep moving)"
-msgstr ""
+msgstr "(계속 이동하려면 $hotkey 키를 누르세요)"
 
 #: src/addon/manager.cpp:414
 msgid "B"
@@ -5455,6 +5455,9 @@ msgstr "심복"
 msgid "female^neutral"
 msgstr "시간대 중성"
 
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "기본 AI"
+
 #~ msgid "berserk"
 #~ msgstr "광전사"
 
@@ -5540,184 +5543,6 @@ msgstr "시간대 중성"
 #~ "중독된 유닛은 치료사에 의해 치유되지 않기 때문에 마을의 능력이나 치유능력"
 #~ "이 있는 유닛에 의지해야 합니다."
 
-#~ msgid "race^Bat"
-#~ msgstr "박쥐"
-
-#~ msgid "race+female^Bat"
-#~ msgstr "박쥐"
-
-#~ msgid "race^Bats"
-#~ msgstr "박쥐과"
-
-#~ msgid "race^Drake"
-#~ msgstr "반룡"
-
-#~ msgid "race+female^Drake"
-#~ msgstr "반룡"
-
-#~ msgid "race^Drakes"
-#~ msgstr "반룡족"
-
-#~ msgid "race^Dwarf"
-#~ msgstr "드워프"
-
-#~ msgid "race+female^Dwarf"
-#~ msgstr "드워프"
-
-#~ msgid "race^Dwarves"
-#~ msgstr "드워프족"
-
-#~ msgid "race^Elf"
-#~ msgstr "엘프"
-
-#~ msgid "race+female^Elf"
-#~ msgstr "엘프"
-
-#~ msgid "race^Elves"
-#~ msgstr "엘프족"
-
-#~ msgid "race^Goblin"
-#~ msgstr "고블린"
-
-#~ msgid "race+female^Goblin"
-#~ msgstr "고블린"
-
-#~ msgid "race^Goblins"
-#~ msgstr "고블린족"
-
-#~ msgid "race^Gryphon"
-#~ msgstr "그리폰"
-
-#~ msgid "race+female^Gryphon"
-#~ msgstr "그리폰"
-
-#~ msgid "race^Gryphons"
-#~ msgstr "그리폰족"
-
-#~ msgid "race^Human"
-#~ msgstr "인간"
-
-#~ msgid "race+female^Human"
-#~ msgstr "인간"
-
-#~ msgid "race^Humans"
-#~ msgstr "인간족"
-
-#~ msgid "race^Saurian"
-#~ msgstr "사우리언"
-
-#~ msgid "race+female^Saurian"
-#~ msgstr "사우리언"
-
-#~ msgid "race^Saurians"
-#~ msgstr "사우리언족"
-
-#~ msgid "race^Mechanical"
-#~ msgstr "기계"
-
-#~ msgid "race+plural^Mechanical"
-#~ msgstr "기계"
-
-#~ msgid "race^Merman"
-#~ msgstr "인어 ♂"
-
-#~ msgid "race^Mermaid"
-#~ msgstr "인어"
-
-#~ msgid "race^Mermen"
-#~ msgstr "인어족"
-
-#~ msgid "race^Monster"
-#~ msgstr "괴물"
-
-#~ msgid "race^Monsters"
-#~ msgstr "몬스터들"
-
-#~ msgid "race^Naga"
-#~ msgstr "나가 ♂"
-
-#~ msgid "race^Nagani"
-#~ msgstr "나가"
-
-#~ msgid "race^Nagas"
-#~ msgstr "나가족"
-
-#~ msgid "race^Ogre"
-#~ msgstr "오우거"
-
-#~ msgid "race+female^Ogre"
-#~ msgstr "오우거"
-
-#~ msgid "race^Ogres"
-#~ msgstr "오우거족"
-
-#~ msgid "race^Orc"
-#~ msgstr "오크"
-
-#~ msgid "race+female^Orc"
-#~ msgstr "오크"
-
-#~ msgid "race^Orcs"
-#~ msgstr "오크족"
-
-#~ msgid "race^Troll"
-#~ msgstr "트롤"
-
-#~ msgid "race+female^Troll"
-#~ msgstr "트롤"
-
-#~ msgid "race^Trolls"
-#~ msgstr "트롤족"
-
-#~ msgid "race^Undead"
-#~ msgstr "언데드"
-
-#~ msgid "race+female^Undead"
-#~ msgstr "언데드"
-
-#~ msgid "race+plural^Undead"
-#~ msgstr "언데드"
-
-#~ msgid "race^Wolf"
-#~ msgstr "늑대"
-
-#~ msgid "race^Wolves"
-#~ msgstr "늑대과"
-
-#~ msgid "race^Wose"
-#~ msgstr "엔트"
-
-#~ msgid "race^Woses"
-#~ msgstr "엔트족"
-
-#, fuzzy
-#~ msgid "Caste"
-#~ msgstr "성채"
-
-#, fuzzy
-#~ msgid "Breeding Pen"
-#~ msgstr "식귀"
-
-#, fuzzy
-#~ msgid " "
-#~ msgstr ";"
-
-#, fuzzy
-#~ msgid "Hatchling"
-#~ msgstr "회복"
-
-#, fuzzy
-#~ msgid "Fledgling"
-#~ msgstr "회복"
-
-#, fuzzy
-#~ msgid "Intendant"
-#~ msgstr "영리한"
-
-#, fuzzy
-#~ msgid "Drakish, language"
-#~ msgstr "언어를 변경합니다"
-
 #~ msgid "Introduction"
 #~ msgstr "소개"
 
@@ -5729,9 +5554,6 @@ msgstr "시간대 중성"
 
 #~ msgid "Abilities"
 #~ msgstr "능력"
-
-#~ msgid "Weapon Specials"
-#~ msgstr "특수 무기"
 
 #~ msgid "Factions"
 #~ msgstr "당파"
@@ -5777,16 +5599,15 @@ msgstr "시간대 중성"
 #~ msgid "Overview"
 #~ msgstr "개요"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
-#~ "strategy game somewhat unusual among modern strategy games. While other "
-#~ "games strive for complexity, Battle for Wesnoth strives for simplicity of "
-#~ "both rules and gameplay. This does not make the game simple, however — "
-#~ "from these simple rules arise a wealth of strategy, making the game easy "
-#~ "to learn but a challenge to master."
+#~ "Battle for Wesnoth is a turn-based fantasy strategy game somewhat unusual "
+#~ "among modern strategy games. While other games strive for complexity, "
+#~ "Battle for Wesnoth strives for simplicity of both rules and gameplay. "
+#~ "This does not make the game simple, however — from these simple rules "
+#~ "arise a wealth of strategy, making the game easy to learn but a challenge "
+#~ "to master."
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
@@ -5799,13 +5620,12 @@ msgstr "시간대 중성"
 #~ msgid "Fundamentals of Gameplay"
 #~ msgstr "게임의 핵심요소"
 
-#, fuzzy
 #~ msgid ""
-#~ "These pages outline all you need to know to play <italic>text='Battle for "
-#~ "Wesnoth'</italic>. They cover how to play and the basic mechanics behind "
-#~ "the game. As you play the game, new information is added to these pages "
-#~ "as you come across new aspects of the game. For more detailed information "
-#~ "on special situations and exceptions, please follow the links included."
+#~ "These pages outline all you need to know to play Battle for Wesnoth. They "
+#~ "cover how to play and the basic mechanics behind the game. As you play "
+#~ "the game, new information is added to these pages as you come across new "
+#~ "aspects of the game. For more detailed information on special situations "
+#~ "and exceptions, please follow the links included."
 #~ msgstr ""
 #~ "이 도움말은 당신이 Battle for Wesnoth를 플레이하기 위해 알아야 할 모든 것"
 #~ "을 요약하고 있으며, 그 내용은 플레이 방법에서부터 게임의 기본 동작구조까"
@@ -5813,17 +5633,16 @@ msgstr "시간대 중성"
 #~ "것에 대한 새로운 정보가 이 페이지들 사이에 추가됩니다. 특수한 상황과 예외"
 #~ "들에 관해 더 자세한 정보를 얻고 싶다면, 포함된 링크를 따라가세요."
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "To begin with, it’s best to click the <bold>text=Tutorial</bold> button "
-#~ "at the main menu. This will take you to the interactive tutorial, which "
-#~ "will teach you the basics of Wesnoth. After this, it is recommended that "
-#~ "you play the Heir to the Throne campaign first — click "
-#~ "<bold>text=Campaign</bold> then <italic>text='Heir to the Throne'</"
-#~ "italic>. As <italic>text='Battle for Wesnoth'</italic> can be quite "
-#~ "challenging, you may wish to start on <italic>text=Easy</italic>."
+#~ "To begin with, it’s best to click the <italic>text=Tutorial</italic> "
+#~ "button at the main menu. This will take you to the interactive tutorial, "
+#~ "which will teach you the basics of Wesnoth. After this, it is recommended "
+#~ "that you play the Heir to the Throne campaign first — click "
+#~ "<italic>text=Campaign</italic> then <italic>text='Heir to the Throne'</"
+#~ "italic>. As Battle for Wesnoth can be quite challenging, you may wish to "
+#~ "start on <italic>text=Easy</italic>."
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
@@ -5898,15 +5717,13 @@ msgstr "시간대 중성"
 #~ "대화 혹은 구출, 퍼즐 풀기 또는 일정 턴수가 지날 때까지 적의 포위망 속에서 "
 #~ "견뎌내기 같은 것 - 이 붙어 있을 수도 있습니다."
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "When you win a scenario, the map will gray over and the <bold>text='End "
-#~ "Turn'</bold> button will change to <bold>text='End Scenario'</bold>. You "
-#~ "can now do things like changing your save options or (if you are in a "
-#~ "multiplayer game) chatting with other players before pressing that button "
-#~ "to advance."
+#~ "When you win a scenario, the map will gray over and the 'End Turn' button "
+#~ "will change to 'End Scenario'. You can now do things like changing your "
+#~ "save options or (if you are in a multiplayer game) chatting with other "
+#~ "players before pressing that button to advance."
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
@@ -5917,7 +5734,6 @@ msgstr "시간대 중성"
 #~ msgid "Recruiting and Recalling"
 #~ msgstr "소집과 재소집"
 
-#, fuzzy
 #~ msgid ""
 #~ "Each side begins with one leader in their keep. At the start of any "
 #~ "battle, and at times during it, you will need to recruit <ref>dst='.."
@@ -5925,10 +5741,10 @@ msgstr "시간대 중성"
 #~ "leader (for instance, Konrad in the Heir to the Throne campaign) on the "
 #~ "Keep square of a <ref>dst='terrain_castle' text='Castle'</ref>. Then you "
 #~ "may recruit by either choosing Recruit from the menu or right-clicking on "
-#~ "a hex and selecting <bold>text=Recruit</bold>. This brings up the recruit "
-#~ "menu, which lists units available for recruitment, along with their gold "
-#~ "cost. Click on a unit to see its statistics, then press the recruit "
-#~ "button to recruit it."
+#~ "a hex and selecting <italic>text=Recruit</italic>. This brings up the "
+#~ "recruit menu, which lists units available for recruitment, along with "
+#~ "their gold cost. Click on a unit to see its statistics, then press the "
+#~ "recruit button to recruit it."
 #~ msgstr ""
 #~ "각 팀은 그들의 본성과 그곳에 있는 대장 한명을 갖고 게임을 시작합니다. 어"
 #~ "떤 전투든 처음 시작할때와 전투가 이어지는 동안 당신은 당신의 군단에 "
@@ -6011,6 +5827,9 @@ msgstr "시간대 중성"
 #~ msgid "yellow if it has moved, but could still move further or attack, or"
 #~ msgstr "움직였지만 더 갈 수 있거나 공격할 수 있으면 노란색이고,"
 
+#~ msgid "red if it has used all its movement this turn."
+#~ msgstr "이번 턴의 모든 이동력을 소모했을 때에는 붉은색입니다."
+
 #~ msgid "The orb is blue if the unit is an ally you do not control."
 #~ msgstr "만약 구슬이 파란색이면 당신이 조작할 수 없는 동맹 유닛입니다."
 
@@ -6053,21 +5872,19 @@ msgstr "시간대 중성"
 #~ msgid "Movement"
 #~ msgstr "이동"
 
-#, fuzzy
 #~ msgid ""
-#~ "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click "
-#~ "on the unit you wish to move to select it, then click on the hex you wish "
-#~ "to move it to. When a unit is selected, everywhere it can move this turn "
-#~ "will be highlighted, and all other hexes on the map are made dull. "
-#~ "Mousing over a highlighted hex shows the defense rating the unit would "
-#~ "have if you moved it to that hex. Mousing over a dull hex will also show "
-#~ "the number of turns required to reach it, and clicking will cause the "
-#~ "unit to move towards it by the fastest route over this and subsequent "
-#~ "turns. If you don’t use up all of a unit’s movement when you first move a "
-#~ "unit, you may move it again. This is useful when having two units switch "
-#~ "places. Attacking with a unit will use up its movement. Ending a move in "
-#~ "a village you don’t already own will also use up a unit’s movement, but "
-#~ "will still allow it to attack."
+#~ "Movement in Battle for Wesnoth is simple. Click on the unit you wish to "
+#~ "move to select it, then click on the hex you wish to move it to. When a "
+#~ "unit is selected, everywhere it can move this turn will be highlighted, "
+#~ "and all other hexes on the map are made dull. Mousing over a highlighted "
+#~ "hex shows the defense rating the unit would have if you moved it to that "
+#~ "hex. Mousing over a dull hex will also show the number of turns required "
+#~ "to reach it, and clicking will cause the unit to move towards it by the "
+#~ "fastest route over this and subsequent turns. If you don’t use up all of "
+#~ "a unit’s movement when you first move a unit, you may move it again. This "
+#~ "is useful when having two units switch places. Attacking with a unit will "
+#~ "use up its movement. Ending a move in a village you don’t already own "
+#~ "will also use up a unit’s movement, but will still allow it to attack."
 #~ msgstr ""
 #~ "Battle for wesnoth에서 이동하는 법은 간단합니다. 움직이고 싶은 유닛을 클릭"
 #~ "해서 선택하고, 당신이 가고 싶은 칸을 선택합니다. 유닛이 선택되면 이번 턴"
@@ -6178,18 +5995,17 @@ msgstr "시간대 중성"
 #~ msgid "Combat"
 #~ msgstr "전투"
 
-#, fuzzy
 #~ msgid ""
-#~ "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
-#~ "between units in adjacent hexes. Click on your unit, and click on the "
-#~ "enemy you want to attack: your unit will move towards the enemy unit, and "
-#~ "when they are next to each other, combat will begin. The attacker and "
-#~ "defender alternate strikes until each has used their allotted number of "
-#~ "strikes. The attacker chooses one of its weapons to attack with, and the "
-#~ "defender retaliates with one of its attacks of the same type. There are "
-#~ "two types of attacks: melee, which usually involves weapons such as "
-#~ "swords, axes or fangs; and ranged, which usually involves weapons such as "
-#~ "bows, spears and fireballs."
+#~ "Combat in Battle for Wesnoth always takes place between units in adjacent "
+#~ "hexes. Click on your unit, and click on the enemy you want to attack: "
+#~ "your unit will move towards the enemy unit, and when they are next to "
+#~ "each other, combat will begin. The attacker and defender alternate "
+#~ "strikes until each has used their allotted number of strikes. The "
+#~ "attacker chooses one of its weapons to attack with, and the defender "
+#~ "retaliates with one of its attacks of the same type. There are two types "
+#~ "of attacks: melee, which usually involves weapons such as swords, axes or "
+#~ "fangs; and ranged, which usually involves weapons such as bows, spears "
+#~ "and fireballs."
 #~ msgstr ""
 #~ "Battle for Wesnoth에서의 전투는 항상 근접한 칸에 붙은 유닛들간에만 일어납"
 #~ "니다. 유닛을 클릭하고, 당신이 공격하고자 하는 적을 클릭하십시오: 당신의 유"
@@ -6335,7 +6151,6 @@ msgstr "시간대 중성"
 #~ "니다. 그리고 각 유닛은 그들이 받는 특정 형태의 피해 정도를 증감시키는 내성"
 #~ "을 가지고 있습니다."
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -6380,12 +6195,10 @@ msgstr "시간대 중성"
 #~ msgid "Time of Day"
 #~ msgstr "시간대"
 
-#, fuzzy
 #~ msgid ""
 #~ "The time of day affects the damage of certain units as follows:\n"
 #~ " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
 #~ " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-#~ " Liminal units get +25% damage during twilight.\n"
 #~ " Neutral units are unaffected by the time of day."
 #~ msgstr ""
 #~ "시간대는 유닛들의 데미지에 영향을 줍니다:\n"
@@ -6484,6 +6297,9 @@ msgstr "시간대 중성"
 #~ "모았을때 일어납니다. 하지만 AMLA를 쌓아가는 것은 해당 유닛이 AMLA를 획득"
 #~ "해 가면서 점점 어려워지므로 당신의 낮은 레벨 유닛을 승급시키려고 하는 편"
 #~ "이 보통은 좀더 유용합니다."
+
+#~ msgid "Healing"
+#~ msgstr "회복"
 
 #~ msgid ""
 #~ "In combat, your units will inevitably take damage. When a unit "
@@ -6664,13 +6480,11 @@ msgstr "시간대 중성"
 #~ msgid "License"
 #~ msgstr "라이선스"
 
-#, fuzzy
 #~ msgid ""
 #~ "Most units have two traits. However, Undead units are assigned the single "
-#~ "trait <italic>text='Undead'</italic>, and Woses do not receive any "
-#~ "traits. Traits are modifications that change a unit’s attributes "
-#~ "slightly. They are usually randomly assigned to a unit when it is "
-#~ "recruited."
+#~ "trait 'Undead', and Woses do not receive any traits. Traits are "
+#~ "modifications that change a unit’s attributes slightly. They are usually "
+#~ "randomly assigned to a unit when it is recruited."
 #~ msgstr ""
 #~ "대부분의 유닛들은 두 가지 특성을 갖습니다. 하지만 언데드 유닛들은 단순히 "
 #~ "'언데드' 라는 하나의 특성을 가지며 엔트들은 아무 특성도 부여받지 않습니"
@@ -6708,9 +6522,30 @@ msgstr "시간대 중성"
 #~ "<ref>dst='traits_undead' text='언데드'</ref> 입니다.\n"
 #~ "\n"
 
+#~ msgid "Intelligent"
+#~ msgstr "영리한"
+
 #~ msgid "Intelligent units require 20% less experience than usual to advance."
 #~ msgstr ""
 #~ "영리한 유닛은 승급하는데 필요한 경험치가 원래의 경우보다 20% 적습니다."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Intelligent units are very useful at the beginning of a campaign as they "
+#~ "can advance to higher levels more quickly. Later in campaigns Intelligent "
+#~ "is not quite as useful because the After Maximum Level Advancement (AMLA) "
+#~ "is not as significant a change as advancing a level. If you have many "
+#~ "‘maximum level’ units you may wish to recall units with more desirable "
+#~ "traits."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "영리한 유닛은 더 빨리 높은 레벨로 승급할 수 있어서 캠페인의 초기에 매우 유"
+#~ "용합니다. 캠페인의 후반으로 가면 영리함은 그렇게 유용하진 않은데, 그 이유"
+#~ "는 최고레벨 이후 승급 (AMLA)이 레벨을 올리는 것 만큼 큰 변화를 가져오진 않"
+#~ "기 때문입니다. 당신이 많은 '최고 레벨' 유닛을 가지고 있다면 당신은 좀더 좋"
+#~ "은 특성을 가진 유닛들을 재소집하는 편을 선호하게 될 것입니다."
 
 #~ msgid "Quick"
 #~ msgstr "신속한"
@@ -6720,6 +6555,24 @@ msgstr "시간대 중성"
 #~ "신속한 유닛은 이동력 점수를 1 추가로 갖지만, 원래의 경우보다 5% 적은 HP를 "
 #~ "갖게 됩니다."
 
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Quick is the most noticeable trait, particularly in slower moving units "
+#~ "such as trolls or heavy infantry. Units with the Quick trait often have "
+#~ "greatly increased mobility in rough terrain, which can be important to "
+#~ "consider when deploying your forces. Also, Quick units aren’t quite as "
+#~ "tough as units without this trait and are subsequently less good at "
+#~ "holding contested positions."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "신속함은 가장 눈에 띄는 특성으로, 이것은 특히 트롤이나 중보병같은 느린 유"
+#~ "닛에서 두드러집니다. 신속한 특성을 가진 유닛은 종종 거친 지형에서 매우 증"
+#~ "진된 기동력을 갖게되며, 이 점은 당신이 병력을 배치할때 중요하게 고려될 수 "
+#~ "있습니다. 또한, 신속한 유닛은 이 특성을 갖지 않은 유닛에 비해 그리 튼튼하"
+#~ "지 못하므로 접전 지역에 배치하기에는 별로 좋지 않습니다."
+
 #~ msgid "Resilient"
 #~ msgstr "튼튼한"
 
@@ -6727,6 +6580,22 @@ msgstr "시간대 중성"
 #~ msgstr ""
 #~ "튼튼한 유닛은 다른 유닛보다 HP 4가 더 많고 레벨당 1의 HP를 추가로 더 받습"
 #~ "니다."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Resilient units can be useful at all stages of a campaign, and this is a "
+#~ "useful trait for all units. Resilient is often most helpful as a trait "
+#~ "when it occurs in a unit that has some combination of low hitpoints, good "
+#~ "defense, or high resistances. Resilient units are especially useful for "
+#~ "holding strategic positions against opponents."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "튼튼한 유닛은 캠페인의 모든 단계에서 유용합니다. 그리고 이것은 모든 유닛에"
+#~ "게 유용한 특성입니다. 튼튼함은 낮은 체력과 좋은 방어도 또는 높은 저항의 조"
+#~ "합을 가진 유닛에게 종종 가장 도움이 되는 특성입니다. 튼튼한 유닛은 적에 대"
+#~ "한 전략적인 지점에 배치하기에 특히 좋습니다."
 
 #~ msgid "Strong"
 #~ msgstr "강인한"
@@ -6738,9 +6607,57 @@ msgstr "시간대 중성"
 #~ "강인한 유닛은 근접 공격의 성공시에 주는 데미지가 1 더 많고, HP 1을 더 받습"
 #~ "니다."
 
-#, fuzzy
-#~ msgid "Feral"
-#~ msgstr "전체"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "While useful for any close-combat unit, Strong is most effective for "
+#~ "units who have a high number of swings such as the Elvish Fighter. Strong "
+#~ "units can be very useful when a tiny bit of extra damage is all that is "
+#~ "needed to turn a damaging stroke into a killing blow."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "강함은 모든 근접 공격 유닛에게 유용하지만, 엘프 전사와 같이 높은 횟수의 타"
+#~ "격을 가진 유닛에게 가장 유용합니다. 힘센 유닛은 명중한 타격을 치명타로 만"
+#~ "들기 위해 아주 작은 추가 데미지가 필요할 경우에 매우 유용합니다."
+
+#~ msgid "Fearless"
+#~ msgstr "용맹"
+
+#~ msgid ""
+#~ "Aversion to light and dark holds no sway over these brave individuals."
+#~ msgstr "빛이나 어둠에 대한 혐오는 이 용감한 개개인들을 지배하지 못합니다."
+
+#~ msgid "Loyal"
+#~ msgstr "심복"
+
+#~ msgid ""
+#~ "Loyal units don’t incur upkeep. Most units incur an upkeep cost at the "
+#~ "end of every turn, which is equal to their level. Loyal units do not "
+#~ "incur this cost."
+#~ msgstr ""
+#~ "심복 유닛은 유지비를 요구하지 않습니다. 대부분의 유닛은 턴이 끝날때마다 그"
+#~ "들의 레벨만큼의 유지비용이 들어갑니다. 심복 유닛은 이 비용이 들지 않습니"
+#~ "다."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "During campaigns, certain units may opt to join the player’s forces of "
+#~ "their own volition. These units are marked with the Loyal trait. Although "
+#~ "they may require payment to be recalled, they never incur any upkeep "
+#~ "costs. This can make them invaluable during a long campaign, when gold is "
+#~ "in short supply. This trait is never given to recruited units, so it may "
+#~ "be unwise to dismiss such units or to send them to a foolish death."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "캠페인을 하는 동안 특정 유닛이 플레이어의 군단에 자유 의지로 합류하기로 하"
+#~ "는 경우가 있습니다. 이 유닛들에는 심복 특성이 붙습니다. 비록 그들은 재소집"
+#~ "시에 비용이 들지만, 그 어떤 유지비도 요구하지 않습니다. 이때문에 긴 캠페인"
+#~ "동안 자금의 공급이 딸리는 시점에 이들은 매우 귀중해집니다. 이 특성은 소집"
+#~ "된 유닛에게는 절대 주어지지 않기 때문에, 이런 유닛들을 버리거나 허무한 죽"
+#~ "음으로 내모는 것은 현명한 처사가 못됩니다."
 
 #~ msgid "trait^Undead"
 #~ msgstr "언데드"
@@ -6752,24 +6669,55 @@ msgstr "시간대 중성"
 #~ "언데드 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효과가 먹히지 않습니다."
 
 #~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Undead units generally have 'Undead' as their only trait. Since Undead "
+#~ "units are the bodies of the dead, risen to fight again, poison has no "
+#~ "effect upon them. This can make them invaluable in dealing with foes who "
+#~ "use poison in conjunction with their attacks."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "언데드 유닛은 일반적으로 '언데드' 특성만을 가집니다 언데드 유닛은 싸움을 "
+#~ "위해 다시 일으켜진 죽은 자의 시체이므로, 독은 그들에게 영향을 끼치지 못합"
+#~ "니다. 이로 인해 이들은 공격에 독을 결합하는 적과 대결할때 아주 귀중한 존재"
+#~ "입니다."
+
+#~ msgid "trait^Mechanical"
+#~ msgstr "기계"
+
+#~ msgid ""
 #~ "Mechanical units are immune to poison, also drain and plague doesn’t work "
 #~ "on them."
 #~ msgstr ""
 #~ "기계 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효과가 먹히지 않습니다."
 
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Mechanical units generally have 'Mechanical' as their only trait. Since "
+#~ "mechanical units don’t really have life, drain, poison and plague has no "
+#~ "effect upon them."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "기계 유닛은 일반적으로 '기계' 특성만을 갖습니다. 기계 유닛은 진짜 생명을 "
+#~ "갖고 있지 않기 때문에, 흡수, 독과 역병은 그들에게 영향을 주지 못합니다."
+
+#~ msgid "Healthy"
+#~ msgstr "건강한"
+
 #~ msgid "Slow"
 #~ msgstr "둔화"
 
-#, fuzzy
-#~ msgid "Slow units have −1 movement but 5% more hitpoints."
+#~ msgid "Slow units have -1 movement but 5% more hitpoints."
 #~ msgstr "둔한 유닛은 이동력이 1 적으나 5%의 체력 보너스를 갖습니다."
 
 #~ msgid "Weak"
 #~ msgstr "약한"
 
-#, fuzzy
 #~ msgid ""
-#~ "Units with trait Weak get a −1 increment in hitpoints and melee damage."
+#~ "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 #~ msgstr "약한 특성을 가진 유닛은 체력과 근접 데미지가 각각 1 적습니다."
 
 #~ msgid "Flat"
@@ -6795,6 +6743,9 @@ msgstr "시간대 중성"
 
 #~ msgid "Deep Water"
 #~ msgstr "깊은 물"
+
+#~ msgid "Castle"
+#~ msgstr "성채"
 
 #~ msgid "Sand"
 #~ msgstr "모래 지대"
@@ -7025,6 +6976,9 @@ msgstr "시간대 중성"
 #~ "적은 이 유닛이 깊은 물 속에 있으면 바로 곁에 가지 않는한 찾아낼 수 없습니"
 #~ "다. 이 유닛을 처음 발견한 적은 즉시 모든 이동력을 상실합니다."
 
+#~ msgid "feeding"
+#~ msgstr "식귀"
+
 #~ msgid "female^feeding"
 #~ msgstr "식귀"
 
@@ -7152,6 +7106,12 @@ msgstr "시간대 중성"
 #~ "이 공격은 생명체 목표물을 중독시킵니다. 중독된 유닛은 치유되거나 HP가 1이 "
 #~ "될때까지 매 턴 HP 8을 잃게 됩니다. 독만으로는 유닛을 죽일 수 없습니다."
 
+#~ msgid "Which enemy side to focus on?"
+#~ msgstr "어떤 적에게 집중할까요?"
+
+#~ msgid "Which friendly side to protect?"
+#~ msgstr "어떤 아군을 호위할까요?"
+
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -7162,9 +7122,6 @@ msgstr "시간대 중성"
 #~ "특별히 참고할 것:"
 
 #~ msgid "loyal"
-#~ msgstr "심복"
-
-#~ msgid "female^loyal"
 #~ msgstr "심복"
 
 #~ msgid "Zero upkeep"
@@ -7178,14 +7135,6 @@ msgstr "시간대 중성"
 
 #~ msgid "female^mechanical"
 #~ msgstr "기계"
-
-#, fuzzy
-#~ msgid "elemental"
-#~ msgstr "은폐"
-
-#, fuzzy
-#~ msgid "female^elemental"
-#~ msgstr "은폐"
 
 #~ msgid "strong"
 #~ msgstr "힘센"
@@ -7217,14 +7166,6 @@ msgstr "시간대 중성"
 #~ msgid "fearless"
 #~ msgstr "용기"
 
-#, fuzzy
-#~ msgid "feral"
-#~ msgstr "전체"
-
-#, fuzzy
-#~ msgid "female^feral"
-#~ msgstr "시간대 중성"
-
 #~ msgid "weak"
 #~ msgstr "약한"
 
@@ -7248,6 +7189,186 @@ msgstr "시간대 중성"
 
 #~ msgid "female^aged"
 #~ msgstr "늙은"
+
+#~ msgid "race^Bat"
+#~ msgstr "박쥐"
+
+#~ msgid "race+female^Bat"
+#~ msgstr "박쥐"
+
+#~ msgid "race^Bats"
+#~ msgstr "박쥐과"
+
+#~ msgid "race^Drake"
+#~ msgstr "반룡"
+
+#~ msgid "race+female^Drake"
+#~ msgstr "반룡"
+
+#~ msgid "race^Drakes"
+#~ msgstr "반룡족"
+
+#~ msgid "race^Dwarf"
+#~ msgstr "드워프"
+
+#~ msgid "race+female^Dwarf"
+#~ msgstr "드워프"
+
+#~ msgid "race^Dwarves"
+#~ msgstr "드워프족"
+
+#~ msgid "race^Elf"
+#~ msgstr "엘프"
+
+#~ msgid "race+female^Elf"
+#~ msgstr "엘프"
+
+#~ msgid "race^Elves"
+#~ msgstr "엘프족"
+
+#~ msgid "race^Goblin"
+#~ msgstr "고블린"
+
+#~ msgid "race+female^Goblin"
+#~ msgstr "고블린"
+
+#~ msgid "race^Goblins"
+#~ msgstr "고블린족"
+
+#~ msgid "race^Gryphon"
+#~ msgstr "그리폰"
+
+#~ msgid "race+female^Gryphon"
+#~ msgstr "그리폰"
+
+#~ msgid "race^Gryphons"
+#~ msgstr "그리폰족"
+
+#~ msgid "race^Human"
+#~ msgstr "인간"
+
+#~ msgid "race+female^Human"
+#~ msgstr "인간"
+
+#~ msgid "race^Humans"
+#~ msgstr "인간족"
+
+#~ msgid "race^Saurian"
+#~ msgstr "사우리언"
+
+#~ msgid "race+female^Saurian"
+#~ msgstr "사우리언"
+
+#~ msgid "race^Saurians"
+#~ msgstr "사우리언족"
+
+#~ msgid "race^Mechanical"
+#~ msgstr "기계"
+
+#~ msgid "race+plural^Mechanical"
+#~ msgstr "기계"
+
+#~ msgid "race^Merman"
+#~ msgstr "인어 ♂"
+
+#~ msgid "race^Mermaid"
+#~ msgstr "인어"
+
+#~ msgid "race^Mermen"
+#~ msgstr "인어족"
+
+#~ msgid "race^Monster"
+#~ msgstr "괴물"
+
+#~ msgid "race^Monsters"
+#~ msgstr "몬스터들"
+
+#~ msgid "race^Naga"
+#~ msgstr "나가 ♂"
+
+#~ msgid "race^Nagani"
+#~ msgstr "나가"
+
+#~ msgid "race^Nagas"
+#~ msgstr "나가족"
+
+#~ msgid "race^Ogre"
+#~ msgstr "오우거"
+
+#~ msgid "race+female^Ogre"
+#~ msgstr "오우거"
+
+#~ msgid "race^Ogres"
+#~ msgstr "오우거족"
+
+#~ msgid "race^Orc"
+#~ msgstr "오크"
+
+#~ msgid "race+female^Orc"
+#~ msgstr "오크"
+
+#~ msgid "race^Orcs"
+#~ msgstr "오크족"
+
+#~ msgid "race^Troll"
+#~ msgstr "트롤"
+
+#~ msgid "race+female^Troll"
+#~ msgstr "트롤"
+
+#~ msgid "race^Trolls"
+#~ msgstr "트롤족"
+
+#~ msgid "race^Undead"
+#~ msgstr "언데드"
+
+#~ msgid "race+female^Undead"
+#~ msgstr "언데드"
+
+#~ msgid "race+plural^Undead"
+#~ msgstr "언데드"
+
+#~ msgid "race^Wolf"
+#~ msgstr "늑대"
+
+#~ msgid "race^Wolves"
+#~ msgstr "늑대과"
+
+#~ msgid "race^Wose"
+#~ msgstr "엔트"
+
+#~ msgid "race^Woses"
+#~ msgstr "엔트족"
+
+#~ msgid ""
+#~ "$addon_title depends upon the following add-on which you have not "
+#~ "installed yet:"
+#~ msgid_plural ""
+#~ "$addon_title depends upon the following add-ons which you have not "
+#~ "installed yet:"
+#~ msgstr[0] ""
+#~ "$addon_title 은 당신이 아직 설치하지 않은 다음의 추가 기능에 의존합니다:"
+
+#~ msgid ""
+#~ "Do you still want to download $addon_title|? (You will have to install "
+#~ "all the dependencies in order to play.)"
+#~ msgstr ""
+#~ "$addon_title|을 설치하실 것입니까? (이것을 플레이하려면 모든 부속 기능을 "
+#~ "설치해야 할것입니다.)"
+
+#~ msgid "Difficulty"
+#~ msgstr "난이도"
+
+#~ msgid "Select difficulty level:"
+#~ msgstr "난이도 선택:"
+
+#~ msgid "tooltip^damage"
+#~ msgid_plural "damage"
+#~ msgstr[0] "데미지"
+
+#~ msgid "tooltip^attack"
+#~ msgid_plural "attacks"
+#~ msgstr[0] "회 공격"
 
 #~ msgid "Help"
 #~ msgstr "도움말"
@@ -7273,14 +7394,8 @@ msgstr "시간대 중성"
 #~ msgid "Advances from: "
 #~ msgstr "해당 유닛으로부터 승급:"
 
-#~ msgid "Advances to: "
-#~ msgstr "해당 유닛으로 승급:"
-
 #~ msgid "race^Miscellaneous"
 #~ msgstr "기타"
-
-#~ msgid "Abilities: "
-#~ msgstr "능력:"
 
 #~ msgid "Ability Upgrades: "
 #~ msgstr "이거 어디 나옴?:"
@@ -7318,12 +7433,6 @@ msgstr "시간대 중성"
 #~ msgid "Terrain Modifiers"
 #~ msgstr "지형 수정"
 
-#~ msgid "Terrain"
-#~ msgstr "지형"
-
-#~ msgid "Defense"
-#~ msgstr "방어도"
-
 #~ msgid "Movement Cost"
 #~ msgstr "소모 이동력"
 
@@ -7336,50 +7445,8 @@ msgstr "시간대 중성"
 #~ msgid "The Battle for Wesnoth Help"
 #~ msgstr "Battle for Wesnoth 도움말"
 
-#~ msgid "red if it has used all its movement this turn."
-#~ msgstr "이번 턴의 모든 이동력을 소모했을 때에는 붉은색입니다."
-
 #~ msgid "Set Password"
 #~ msgstr "암호 설정"
-
-#~ msgid "Multiplayer_AI^Default AI"
-#~ msgstr "기본 AI"
-
-#~ msgid "Which enemy side to focus on?"
-#~ msgstr "어떤 적에게 집중할까요?"
-
-#~ msgid "Which friendly side to protect?"
-#~ msgstr "어떤 아군을 호위할까요?"
-
-#~ msgid ""
-#~ "$addon_title depends upon the following add-on which you have not "
-#~ "installed yet:"
-#~ msgid_plural ""
-#~ "$addon_title depends upon the following add-ons which you have not "
-#~ "installed yet:"
-#~ msgstr[0] ""
-#~ "$addon_title 은 당신이 아직 설치하지 않은 다음의 추가 기능에 의존합니다:"
-
-#~ msgid ""
-#~ "Do you still want to download $addon_title|? (You will have to install "
-#~ "all the dependencies in order to play.)"
-#~ msgstr ""
-#~ "$addon_title|을 설치하실 것입니까? (이것을 플레이하려면 모든 부속 기능을 "
-#~ "설치해야 할것입니다.)"
-
-#~ msgid "Difficulty"
-#~ msgstr "난이도"
-
-#~ msgid "Select difficulty level:"
-#~ msgstr "난이도 선택:"
-
-#~ msgid "tooltip^damage"
-#~ msgid_plural "damage"
-#~ msgstr[0] "데미지"
-
-#~ msgid "tooltip^attack"
-#~ msgid_plural "attacks"
-#~ msgstr[0] "회 공격"
 
 #~ msgid "TitleScreen button^Tutorial"
 #~ msgstr "연습 게임"
@@ -7435,6 +7502,9 @@ msgstr "시간대 중성"
 
 #~ msgid "Load a saved game"
 #~ msgstr "저장된 게임을 불러옵니다"
+
+#~ msgid "Change the language"
+#~ msgstr "언어를 변경합니다"
 
 #~ msgid "Configure the game’s settings"
 #~ msgstr "게임 환경을 설정합니다"
@@ -7690,6 +7760,9 @@ msgstr "시간대 중성"
 #, fuzzy
 #~ msgid "female^Elvish Lady"
 #~ msgstr "파이터"
+
+#~ msgid "; "
+#~ msgstr ";"
 
 #, fuzzy
 #~ msgid "/level"

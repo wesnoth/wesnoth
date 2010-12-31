@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 13:00+0100\n"
+"POT-Creation-Date: 2010-12-28 13:01+0100\n"
 "PO-Revision-Date: 2010-11-25 22:51+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -1593,7 +1593,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:265
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2063,6 +2062,13 @@ msgid ""
 "significant a change as advancing a level. If you have many ‘maximum level’ "
 "units you may wish to recall units with more desirable traits."
 msgstr ""
+"\n"
+"\n"
+"영리한 유닛은 더 빨리 높은 레벨로 승급할 수 있어서 캠페인의 초기에 매우 유용"
+"합니다. 캠페인의 후반으로 가면 영리함은 그렇게 유용하진 않은데, 그 이유는 최"
+"고레벨 이후 승급 (AMLA)이 레벨을 올리는 것 만큼 큰 변화를 가져오진 않기 때문"
+"입니다. 당신이 많은 '최고 레벨' 유닛을 가지고 있다면 당신은 좀더 좋은 특성을 "
+"가진 유닛들을 재소집하는 편을 선호하게 될 것입니다."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:380
@@ -2088,6 +2094,13 @@ msgid ""
 "without this trait and are subsequently less good at holding contested "
 "positions."
 msgstr ""
+"\n"
+"\n"
+"신속함은 가장 눈에 띄는 특성으로, 이것은 특히 트롤이나 중보병같은 느린 유닛에"
+"서 두드러집니다. 신속한 특성을 가진 유닛은 종종 거친 지형에서 매우 증진된 기"
+"동력을 갖게되며, 이 점은 당신이 병력을 배치할때 중요하게 고려될 수 있습니다. "
+"또한, 신속한 유닛은 이 특성을 갖지 않은 유닛에 비해 그리 튼튼하지 못하므로 접"
+"전 지역에 배치하기에는 별로 좋지 않습니다."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:388
@@ -2112,6 +2125,12 @@ msgid ""
 "defense, or high resistances. Resilient units are especially useful for "
 "holding strategic positions against opponents."
 msgstr ""
+"\n"
+"\n"
+"튼튼한 유닛은 캠페인의 모든 단계에서 유용합니다. 그리고 이것은 모든 유닛에게 "
+"유용한 특성입니다. 튼튼함은 낮은 체력과 좋은 방어도 또는 높은 저항의 조합을 "
+"가진 유닛에게 종종 가장 도움이 되는 특성입니다. 튼튼한 유닛은 적에 대한 전략"
+"적인 지점에 배치하기에 특히 좋습니다."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:396
@@ -2137,16 +2156,21 @@ msgid ""
 "can be very useful when a tiny bit of extra damage is all that is needed to "
 "turn a damaging stroke into a killing blow."
 msgstr ""
+"\n"
+"\n"
+"강함은 모든 근접 공격 유닛에게 유용하지만, 엘프 전사와 같이 높은 횟수의 타격"
+"을 가진 유닛에게 가장 유용합니다. 힘센 유닛은 명중한 타격을 치명타로 만들기 "
+"위해 아주 작은 추가 데미지가 필요할 경우에 매우 유용합니다."
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:404
 msgid "Fearless"
-msgstr ""
+msgstr "용맹"
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:405
 msgid "Aversion to light and dark holds no sway over these brave individuals."
-msgstr ""
+msgstr "빛이나 어둠에 대한 혐오는 이 용감한 개개인들을 지배하지 못합니다."
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:410
@@ -2165,7 +2189,7 @@ msgstr ""
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:416
 msgid "Loyal"
-msgstr ""
+msgstr "심복"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:417
@@ -2174,6 +2198,8 @@ msgid ""
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
+"심복 유닛은 유지비를 요구하지 않습니다. 대부분의 유닛은 턴이 끝날때마다 그들"
+"의 레벨만큼의 유지비용이 들어갑니다. 심복 유닛은 이 비용이 들지 않습니다."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:419
@@ -2187,6 +2213,14 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"캠페인을 하는 동안 특정 유닛이 플레이어의 군단에 자유 의지로 합류하기로 하는 "
+"경우가 있습니다. 이 유닛들에는 심복 특성이 붙습니다. 비록 그들은 재소집시에 "
+"비용이 들지만, 그 어떤 유지비도 요구하지 않습니다. 이때문에 긴 캠페인동안 자"
+"금의 공급이 딸리는 시점에 이들은 매우 귀중해집니다. 이 특성은 소집된 유닛에게"
+"는 절대 주어지지 않기 때문에, 이런 유닛들을 버리거나 허무한 죽음으로 내모는 "
+"것은 현명한 처사가 못됩니다."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:424
@@ -2215,7 +2249,7 @@ msgstr ""
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:432
 msgid "trait^Mechanical"
-msgstr ""
+msgstr "기계"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:433
@@ -2260,7 +2294,7 @@ msgstr ""
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:448
 msgid "Healthy"
-msgstr ""
+msgstr "건강한"
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:449

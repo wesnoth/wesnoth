@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 12:31+0100\n"
-"PO-Revision-Date: 2010-11-13 14:01+0900\n"
+"POT-Creation-Date: 2010-12-28 13:01+0100\n"
+"PO-Revision-Date: 2010-11-26 21:06+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -721,7 +721,7 @@ msgstr "마을"
 #: data/core/terrain.cfg:1434
 #, fuzzy
 msgid "Village Overlay"
-msgstr "성채 본성"
+msgstr "마을당 수입"
 
 #. [terrain_type]: id=encampment
 #: data/core/terrain.cfg:1449
@@ -1138,9 +1138,8 @@ msgstr ""
 #. [label]: id=date
 #: data/gui/default/window/data_manage.cfg:169
 #: data/gui/default/window/game_load.cfg:269
-#, fuzzy
 msgid "Date"
-msgstr "붙여넣기"
+msgstr ""
 
 #. [button]: id=clear
 #: data/gui/default/window/data_manage.cfg:258
@@ -1174,8 +1173,9 @@ msgstr "라벨 설정"
 
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/default/window/edit_label.cfg:102
+#, fuzzy
 msgid "Team only"
-msgstr ""
+msgstr "팀 1"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:38
@@ -1185,22 +1185,19 @@ msgstr "랜덤 맵 생성"
 #. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
-#, fuzzy
 msgid "Next Generator"
-msgstr "맵 생성기"
+msgstr ""
 
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#, fuzzy
 msgid "Settings"
-msgstr "단축키 설정"
+msgstr ""
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:101
-#, fuzzy
 msgid "Generate"
-msgstr "새로운 맵 생성"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1223,9 +1220,8 @@ msgstr "높이:"
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
-#, fuzzy
 msgid "Create new map"
-msgstr "새로운 맵 제작"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1235,27 +1231,23 @@ msgstr "맵 크기"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:46
-#, fuzzy
 msgid "New width:"
-msgstr "가로:"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:70
-#, fuzzy
 msgid "Old width:"
-msgstr "가로:"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:94
-#, fuzzy
 msgid "New height:"
-msgstr "높이:"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:118
-#, fuzzy
 msgid "Old height:"
-msgstr "높이:"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:145
@@ -1270,16 +1262,14 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:262
 #: data/gui/default/window/editor_resize_map.cfg:263
-#, fuzzy
 msgid "Resize map"
-msgstr "맵 크기"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:121
-#, fuzzy
 msgid "Editor Settings"
-msgstr "단축키 설정"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
@@ -1291,9 +1281,8 @@ msgstr ""
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
 #: data/gui/default/window/title_screen.cfg:177
-#, fuzzy
 msgid "Next"
-msgstr "다음 유닛"
+msgstr ""
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
@@ -1307,9 +1296,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
-#, fuzzy
 msgid "Red:"
-msgstr "재취소"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:146
@@ -1345,9 +1333,8 @@ msgstr ""
 
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:63
-#, fuzzy
 msgid "state"
-msgstr "붙여넣기"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:77
@@ -1357,21 +1344,18 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
 #: data/gui/default/window/gamestate_inspector.cfg:268
-#, fuzzy
 msgid "Actions"
-msgstr "행동"
+msgstr ""
 
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:120
-#, fuzzy
 msgid "Step operation"
-msgstr "맵 생성기"
+msgstr ""
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:131
-#, fuzzy
 msgid "Next operation"
-msgstr "맵 생성기"
+msgstr ""
 
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:142
@@ -1401,9 +1385,8 @@ msgstr "종료"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:32
-#, fuzzy
 msgid "Delete Save"
-msgstr "파일 삭제"
+msgstr ""
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:52
@@ -1449,21 +1432,18 @@ msgstr "게임 로드"
 #. [button]: id=delete
 #: data/gui/default/window/game_load.cfg:352
 #: data/gui/default/window/game_load.cfg:353
-#, fuzzy
 msgid "Delete"
-msgstr "파일 삭제"
+msgstr ""
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:371
-#, fuzzy
 msgid "Show replay"
-msgstr "단축키 저장"
+msgstr ""
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:389
-#, fuzzy
 msgid "Cancel orders"
-msgstr "취소"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -1477,9 +1457,8 @@ msgstr "게임 저장"
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
 #: data/gui/default/window/game_save_oos.cfg:82
-#, fuzzy
 msgid "Name:"
-msgstr "테마"
+msgstr ""
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
@@ -1519,9 +1498,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:92
-#, fuzzy
 msgid "Types"
-msgstr "예"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
@@ -1571,15 +1549,13 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:118
 #: data/gui/default/window/language_selection.cfg:119
-#, fuzzy
 msgid "Change language"
-msgstr "언어 설정"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:109
-#, fuzzy
 msgid "Games"
-msgstr "테마"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:177
@@ -1595,9 +1571,8 @@ msgstr ""
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:179
-#, fuzzy
 msgid "Reloaded game"
-msgstr "새로운 맵 제작"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:180
@@ -1623,9 +1598,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:305
-#, fuzzy
 msgid "Sort players:"
-msgstr "플레이어 수:"
+msgstr ""
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:313
@@ -1639,9 +1613,8 @@ msgstr ""
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:337
-#, fuzzy
 msgid "Selected game"
-msgstr "파일 삭제"
+msgstr ""
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:338
@@ -1655,9 +1628,8 @@ msgstr ""
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:340
-#, fuzzy
 msgid "Other games"
-msgstr "새로운 맵 제작"
+msgstr ""
 
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:479
@@ -1671,9 +1643,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:567
-#, fuzzy
 msgid "Multiplayer Lobby"
-msgstr "멀티플레이"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:575
@@ -1682,9 +1653,8 @@ msgstr ""
 
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/default/window/lobby_main.cfg:586
-#, fuzzy
 msgid "Friends"
-msgstr "숲"
+msgstr ""
 
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:592
@@ -1698,15 +1668,13 @@ msgstr "빈 자리 있는 방"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:604
-#, fuzzy
 msgid "Invert filter"
-msgstr "모두 선택"
+msgstr ""
 
 #. [button]: id=send_message
 #: data/gui/default/window/lobby_main.cfg:648
-#, fuzzy
 msgid "Send"
-msgstr "모래"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
@@ -1719,17 +1687,15 @@ msgstr "게임 옵션"
 
 #. [button]: id=refresh
 #: data/gui/default/window/lobby_main.cfg:672
-#, fuzzy
 msgid "Refresh"
-msgstr "디스플레이"
+msgstr ""
 
 #. [label]
 #. [button]: id=create
 #: data/gui/default/window/lobby_main.cfg:686
 #: data/gui/default/window/mp_create_game.cfg:33
-#, fuzzy
 msgid "Create Game"
-msgstr "게임 저장"
+msgstr ""
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:692
@@ -1743,21 +1709,18 @@ msgstr ""
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:704
-#, fuzzy
 msgid "Quick replay"
-msgstr "단축키 저장"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
-#, fuzzy
 msgid "Player Info — "
-msgstr "플레이어 수:"
+msgstr ""
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:62
-#, fuzzy
 msgid "Send private message"
-msgstr "라벨 삭제"
+msgstr ""
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:91
@@ -1771,15 +1734,13 @@ msgstr "무시목록에 추가"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
-#, fuzzy
 msgid "Remove from list"
-msgstr "디스크로부터 불러오기"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:133
-#, fuzzy
 msgid "Moderation"
-msgstr "맵 생성기"
+msgstr ""
 
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:140
@@ -1824,9 +1785,8 @@ msgstr ""
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
-#, fuzzy
 msgid "Send a private message"
-msgstr "라벨 삭제"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
@@ -1851,9 +1811,8 @@ msgstr ""
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
 #: src/game_preferences_display.cpp:181
-#, fuzzy
 msgid "Remove"
-msgstr "재취소"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:233
@@ -1867,15 +1826,13 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
-#, fuzzy
 msgid "Time:"
-msgstr "테마"
+msgstr ""
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
-#, fuzzy
 msgid "Status"
-msgstr "상태 창"
+msgstr ""
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
@@ -1890,9 +1847,8 @@ msgstr ""
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
-#, fuzzy
 msgid "View List"
-msgstr "유닛 목록"
+msgstr ""
 
 #. [label]
 #. [text_box]: id=game_name
@@ -1918,9 +1874,8 @@ msgstr ""
 
 #. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
-#, fuzzy
 msgid "Default"
-msgstr "기본 화면"
+msgstr ""
 
 #. [button]: id=password
 #. [label]: id=title
@@ -1957,13 +1912,12 @@ msgstr ""
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:493
 msgid "Random start time"
-msgstr ""
+msgstr "무작위 시작 시간대"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:535
-#, fuzzy
 msgid "Create game"
-msgstr "새로운 맵 제작"
+msgstr ""
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/mp_create_game_set_password.cfg:53
@@ -1975,7 +1929,7 @@ msgstr ""
 #: data/gui/default/window/mp_create_game_set_password.cfg:82
 #: data/gui/default/window/mp_login.cfg:134
 msgid "Password:"
-msgstr ""
+msgstr "암호:"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -2011,9 +1965,8 @@ msgstr ""
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:225
 #: src/gui/dialogs/game_load.cpp:301
-#, fuzzy
 msgid "Multiplayer"
-msgstr "멀티플레이"
+msgstr ""
 
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:82
@@ -2059,9 +2012,8 @@ msgstr "전용 서버 'wesnothd'를 통해 게임 호스트가 됩니다."
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:168
-#, fuzzy
 msgid "Local Game"
-msgstr "게임 로드"
+msgstr ""
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
@@ -2075,9 +2027,8 @@ msgstr ""
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:215
-#, fuzzy
 msgid "Select"
-msgstr "모두 선택"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
@@ -2092,9 +2043,8 @@ msgstr ""
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:162
-#, fuzzy
 msgid "Previous"
-msgstr "이전 유닛"
+msgstr ""
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:163
@@ -2115,9 +2065,8 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:223
 #: src/gui/dialogs/game_load.cpp:303
-#, fuzzy
 msgid "Tutorial"
-msgstr "대화 켜기"
+msgstr ""
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:224
@@ -2138,15 +2087,14 @@ msgstr ""
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
-#, fuzzy
 msgid "Load"
-msgstr "길"
+msgstr ""
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
 #, fuzzy
 msgid "Load a saved game"
-msgstr "새로운 맵 제작"
+msgstr "게임 로드"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
@@ -2162,7 +2110,7 @@ msgstr ""
 #: data/gui/default/window/title_screen.cfg:228
 #, fuzzy
 msgid "Map Editor"
-msgstr "에디터 종료"
+msgstr "맵 생성기"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
@@ -2210,19 +2158,17 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:83
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "유닛 창조 (디버그!)"
 
 #. [label]
 #: data/gui/default/window/unit_create.cfg:59
-#, fuzzy
 msgid "Gender:"
-msgstr "새로운 맵 생성"
+msgstr ""
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:69
-#, fuzzy
 msgid "Male"
-msgstr "성"
+msgstr ""
 
 #. [toggle_button]: id=female_toggle
 #: data/gui/default/window/unit_create.cfg:79
@@ -2231,9 +2177,8 @@ msgstr ""
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:111
-#, fuzzy
 msgid "Race"
-msgstr "취소"
+msgstr ""
 
 #: src/filechooser.cpp:76
 msgid "File: "
@@ -2268,9 +2213,8 @@ msgid "player"
 msgstr ""
 
 #: src/game_preferences_display.cpp:161
-#, fuzzy
 msgid "Full Screen"
-msgstr "전체 화면 전환"
+msgstr ""
 
 #: src/game_preferences_display.cpp:162
 msgid "Enable scroll tracking of unit actions"
@@ -2301,33 +2245,28 @@ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "싱글/멀티플레이 승리시나 멀티플레이 패배시 자동저장파일 삭제"
 
 #: src/game_preferences_display.cpp:169
-#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "로비 접속 표시"
+msgstr ""
 
 #: src/game_preferences_display.cpp:170
-#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "로비 접속 표시"
+msgstr ""
 
 #: src/game_preferences_display.cpp:171
-#, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "로비 접속 표시"
+msgstr ""
 
 #: src/game_preferences_display.cpp:172 src/game_preferences_display.cpp:375
 msgid "Use new lobby interface"
 msgstr ""
 
 #: src/game_preferences_display.cpp:173
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "로비 접속 표시"
+msgstr ""
 
 #: src/game_preferences_display.cpp:174
-#, fuzzy
 msgid "Iconize Lobby List"
-msgstr "로비 접속 표시"
+msgstr ""
 
 #: src/game_preferences_display.cpp:176
 msgid "Set path to wesnothd"
@@ -2366,14 +2305,12 @@ msgid "Show Color Cursors"
 msgstr "커서 색 표시"
 
 #: src/game_preferences_display.cpp:188
-#, fuzzy
 msgid "Show Haloing Effects"
-msgstr "데미지 라벨 표시"
+msgstr ""
 
 #: src/game_preferences_display.cpp:189
-#, fuzzy
 msgid "Change Resolution"
-msgstr "해상도를 선택하십시오"
+msgstr ""
 
 #: src/game_preferences_display.cpp:190
 msgid "Theme"
@@ -2412,9 +2349,8 @@ msgid "User Interface Sounds"
 msgstr ""
 
 #: src/game_preferences_display.cpp:202
-#, fuzzy
 msgid "Custom"
-msgstr "잘라내기"
+msgstr ""
 
 #: src/game_preferences_display.cpp:204
 msgid "Show Unit Idle Animations"
@@ -2429,14 +2365,12 @@ msgid "SFX Volume:"
 msgstr "음향 볼륨:"
 
 #: src/game_preferences_display.cpp:207
-#, fuzzy
 msgid "UI Sound Volume:"
-msgstr "음향 볼륨:"
+msgstr ""
 
 #: src/game_preferences_display.cpp:208
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "음향 볼륨:"
+msgstr ""
 
 #: src/game_preferences_display.cpp:208
 msgid "Scroll Speed:"
@@ -2455,9 +2389,8 @@ msgid "Sound effects on/off"
 msgstr "음향 효과 켜기/끄기"
 
 #: src/game_preferences_display.cpp:241
-#, fuzzy
 msgid "Change the sound effects volume"
-msgstr "음악 볼륨 설정"
+msgstr ""
 
 #: src/game_preferences_display.cpp:244
 msgid "Music on/off"
@@ -2468,9 +2401,8 @@ msgid "Change the music volume"
 msgstr "음악 볼륨 설정"
 
 #: src/game_preferences_display.cpp:254
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "음악 볼륨 설정"
+msgstr ""
 
 #: src/game_preferences_display.cpp:257
 msgid "Turn menu and button sounds on/off"
@@ -2481,19 +2413,16 @@ msgid "Change the sound volume for button clicks, etc."
 msgstr ""
 
 #: src/game_preferences_display.cpp:263
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "언어 설정"
+msgstr ""
 
 #: src/game_preferences_display.cpp:272
-#, fuzzy
 msgid "User defined sample rate"
-msgstr "언어 설정"
+msgstr ""
 
 #: src/game_preferences_display.cpp:281 src/game_preferences_display.cpp:285
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "음악 볼륨 설정"
+msgstr ""
 
 #: src/game_preferences_display.cpp:283 src/game_preferences_display.cpp:878
 msgid "Buffer Size: "
@@ -2609,9 +2538,8 @@ msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 
 #: src/game_preferences_display.cpp:390
-#, fuzzy
 msgid "Change the resolution the game runs at"
-msgstr "언어 설정"
+msgstr ""
 
 #: src/game_preferences_display.cpp:391
 msgid "Change the theme the game runs with"
@@ -2644,18 +2572,16 @@ msgid "Use colored mouse cursors (may be slower)"
 msgstr "마우스 색 표시 (약간 느려짐)"
 
 #: src/game_preferences_display.cpp:412
-#, fuzzy
 msgid "Use graphical special effects (may be slower)"
-msgstr "마우스 색 표시 (약간 느려짐)"
+msgstr "특수 그래픽 효과 사용 (약간 느려질 수 있음)"
 
 #: src/game_preferences_display.cpp:414
 msgid "View and configure keyboard shortcuts"
 msgstr ""
 
 #: src/game_preferences_display.cpp:742
-#, fuzzy
 msgid "Speed: "
-msgstr "스크롤 속도:"
+msgstr ""
 
 #: src/game_preferences_display.cpp:747 src/game_preferences_display.cpp:749
 msgid "Maximum Auto-Saves: "
@@ -2830,14 +2756,12 @@ msgid "replay"
 msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:313
-#, fuzzy
 msgid "Turn"
-msgstr "턴 끝내기"
+msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:315
-#, fuzzy
 msgid "Scenario Start"
-msgstr "시나리오 목표"
+msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:318
 msgid "Difficulty: "
@@ -2898,9 +2822,8 @@ msgid "Error"
 msgstr "에러"
 
 #: src/gui/dialogs/mp_create_game.cpp:89
-#, fuzzy
 msgid "Load Game..."
-msgstr "게임 로드"
+msgstr ""
 
 #: src/gui/dialogs/title_screen.cpp:273
 msgid "Version "
@@ -2943,7 +2866,7 @@ msgstr ""
 #: src/hotkeys.cpp:51
 #, fuzzy
 msgid "Animate Map"
-msgstr "새로운 맵 생성"
+msgstr "맵 저장"
 
 #: src/hotkeys.cpp:52
 msgid "Next Unit"
@@ -2955,15 +2878,15 @@ msgstr "이전 유닛"
 
 #: src/hotkeys.cpp:54
 msgid "Add waypoint"
-msgstr ""
+msgstr "중간 지점 추가"
 
 #: src/hotkeys.cpp:55
 msgid "Hold Position"
-msgstr ""
+msgstr "위치 고수"
 
 #: src/hotkeys.cpp:56
 msgid "End Unit Turn"
-msgstr ""
+msgstr "유닛 행동 완료"
 
 #: src/hotkeys.cpp:57
 msgid "Leader"
@@ -2998,13 +2921,12 @@ msgid "Screenshot"
 msgstr "스크린 샷"
 
 #: src/hotkeys.cpp:65
-#, fuzzy
 msgid "Map Screenshot"
-msgstr "스크린 샷"
+msgstr "맵 스크린샷"
 
 #: src/hotkeys.cpp:66
 msgid "Accelerated"
-msgstr ""
+msgstr "가속 켜기/끄기"
 
 #: src/hotkeys.cpp:67
 msgid "Unit Description"
@@ -3015,9 +2937,8 @@ msgid "Rename Unit"
 msgstr "이름 붙이기"
 
 #: src/hotkeys.cpp:70
-#, fuzzy
 msgid "Save Replay"
-msgstr "단축키 저장"
+msgstr "리플레이 저장"
 
 #: src/hotkeys.cpp:71 src/hotkeys.cpp:125
 msgid "Save Map"
@@ -3040,9 +2961,8 @@ msgid "End Turn"
 msgstr "턴 끝내기"
 
 #: src/hotkeys.cpp:77
-#, fuzzy
 msgid "Toggle Ellipses"
-msgstr "격자 표시"
+msgstr "토글 키 무시"
 
 #: src/hotkeys.cpp:78
 msgid "Toggle Grid"
@@ -3050,7 +2970,7 @@ msgstr "격자 표시"
 
 #: src/hotkeys.cpp:79
 msgid "Mouse Scrolling"
-msgstr ""
+msgstr "마우스 화면이동"
 
 #: src/hotkeys.cpp:80
 msgid "Status Table"
@@ -3058,7 +2978,7 @@ msgstr "상태 창"
 
 #: src/hotkeys.cpp:81
 msgid "Mute"
-msgstr ""
+msgstr "음소거"
 
 #: src/hotkeys.cpp:82
 msgid "Speak"
@@ -3066,7 +2986,7 @@ msgstr "말하기"
 
 #: src/hotkeys.cpp:84
 msgid "Change Side (Debug!)"
-msgstr ""
+msgstr "진영 변경 (디버그!)"
 
 #: src/hotkeys.cpp:86
 msgid "Scenario Objectives"
@@ -3089,9 +3009,8 @@ msgid "Play"
 msgstr "재생"
 
 #: src/hotkeys.cpp:92
-#, fuzzy
 msgid "Set Team Label"
-msgstr "라벨 설정"
+msgstr "팀 라벨 설정"
 
 #: src/hotkeys.cpp:93
 msgid "Set Label"
@@ -3111,7 +3030,7 @@ msgstr "최선의 적의 움직임"
 
 #: src/hotkeys.cpp:98
 msgid "Reset"
-msgstr ""
+msgstr "처음부터"
 
 #: src/hotkeys.cpp:100
 msgid "Next Turn"
@@ -3119,24 +3038,23 @@ msgstr "다음 턴"
 
 #: src/hotkeys.cpp:101
 msgid "Next Side"
-msgstr ""
+msgstr "다음 진영"
 
 #: src/hotkeys.cpp:103
-#, fuzzy
 msgid "Full map"
-msgstr "맵 뒤집기"
+msgstr "전체 맵"
 
 #: src/hotkeys.cpp:105
 msgid "Each team"
-msgstr ""
+msgstr "각 팀"
 
 #: src/hotkeys.cpp:107
 msgid "Team 1"
-msgstr ""
+msgstr "팀 1"
 
 #: src/hotkeys.cpp:108
 msgid "Skip animation"
-msgstr ""
+msgstr "애니메이션 생략"
 
 #: src/hotkeys.cpp:110
 msgid "Toggle planning mode"
@@ -3164,12 +3082,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:118
 msgid "Quit to Desktop"
-msgstr ""
+msgstr "프로그램 종료"
 
 #: src/hotkeys.cpp:119
-#, fuzzy
 msgid "Close Map"
-msgstr "닫기"
+msgstr ""
 
 #: src/hotkeys.cpp:120
 msgid "Switch Map"
@@ -3184,9 +3101,8 @@ msgid "Load Map"
 msgstr "맵 불러오기"
 
 #: src/hotkeys.cpp:126
-#, fuzzy
 msgid "Save Map As"
-msgstr "맵 저장"
+msgstr ""
 
 #: src/hotkeys.cpp:127
 #, fuzzy
@@ -3198,18 +3114,16 @@ msgid "Revert All Changes"
 msgstr ""
 
 #: src/hotkeys.cpp:129
-#, fuzzy
 msgid "Map Information"
-msgstr "맵 생성기"
+msgstr ""
 
 #: src/hotkeys.cpp:131
 msgid "Swap fore- and background terrains"
 msgstr ""
 
 #: src/hotkeys.cpp:132
-#, fuzzy
 msgid "Next Tool"
-msgstr "다음 턴"
+msgstr ""
 
 #: src/hotkeys.cpp:133
 msgid "Paint Tool"
@@ -3220,23 +3134,20 @@ msgid "Fill Tool"
 msgstr ""
 
 #: src/hotkeys.cpp:135
-#, fuzzy
 msgid "Selection Tool"
-msgstr "모두 선택"
+msgstr ""
 
 #: src/hotkeys.cpp:137
 msgid "Set Starting Positions Tool"
 msgstr ""
 
 #: src/hotkeys.cpp:138
-#, fuzzy
 msgid "Next Brush"
-msgstr "다음 턴"
+msgstr ""
 
 #: src/hotkeys.cpp:139
-#, fuzzy
 msgid "Default Brush"
-msgstr "기본 화면"
+msgstr ""
 
 #: src/hotkeys.cpp:140
 msgid "Cut"
@@ -3263,9 +3174,8 @@ msgid "Select Inverse"
 msgstr ""
 
 #: src/hotkeys.cpp:149
-#, fuzzy
 msgid "Select None"
-msgstr "모두 선택"
+msgstr ""
 
 #: src/hotkeys.cpp:151
 msgid "Rotate Clipboard Clockwise"
@@ -3304,28 +3214,24 @@ msgid "Randomize Tiles In Selection"
 msgstr ""
 
 #: src/hotkeys.cpp:171
-#, fuzzy
 msgid "Rotate Map"
-msgstr "맵 불러오기"
+msgstr ""
 
 #: src/hotkeys.cpp:173
-#, fuzzy
 msgid "Generate Map"
-msgstr "새로운 맵 생성"
+msgstr ""
 
 #: src/hotkeys.cpp:175
 msgid "Apply a Mask"
 msgstr ""
 
 #: src/hotkeys.cpp:177
-#, fuzzy
 msgid "Create Mask"
-msgstr "게임 저장"
+msgstr ""
 
 #: src/hotkeys.cpp:179
-#, fuzzy
 msgid "Refresh Display"
-msgstr "디스플레이"
+msgstr ""
 
 #: src/hotkeys.cpp:181
 msgid "Update Terrain Transitions"
@@ -3344,9 +3250,8 @@ msgid "Draw Hex Coordinates"
 msgstr ""
 
 #: src/hotkeys.cpp:189
-#, fuzzy
 msgid "Draw Terrain Codes"
-msgstr "지형 그리기"
+msgstr ""
 
 #: src/hotkeys.cpp:194
 msgid "Delay Shroud Updates"
@@ -3381,23 +3286,20 @@ msgid "Enter user command"
 msgstr ""
 
 #: src/hotkeys.cpp:205
-#, fuzzy
 msgid "Custom command"
-msgstr "잘라내기"
+msgstr ""
 
 #: src/hotkeys.cpp:206
 msgid "Run AI formula"
 msgstr ""
 
 #: src/hotkeys.cpp:207
-#, fuzzy
 msgid "Clear messages"
-msgstr "라벨 삭제"
+msgstr ""
 
 #: src/hotkeys.cpp:211
-#, fuzzy
 msgid "Refresh WML"
-msgstr "디스플레이"
+msgstr ""
 
 #: src/hotkeys.cpp:218
 msgid "Next tip of the day"
@@ -3409,9 +3311,8 @@ msgid "Previous tip of the day"
 msgstr "이전 유닛"
 
 #: src/hotkeys.cpp:232
-#, fuzzy
 msgid "Start tutorial"
-msgstr "대화 켜기"
+msgstr ""
 
 #: src/hotkeys.cpp:239
 msgid "Start a campaign"
@@ -3438,14 +3339,12 @@ msgid "Do you really want to quit?"
 msgstr "정말로 종료하시겠습니까?"
 
 #: src/hotkeys.cpp:976
-#, fuzzy
 msgid "Map-Screenshot"
-msgstr "스크린 샷"
+msgstr ""
 
 #: src/hotkeys.cpp:983 src/hotkeys.cpp:985
-#, fuzzy
 msgid "Screenshot done"
-msgstr "스크린 샷"
+msgstr ""
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
@@ -3530,7 +3429,7 @@ msgstr "단축키 설정"
 
 #: src/preferences_display.cpp:301 src/preferences_display.cpp:370
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr ""
+msgstr "원하는 단축키를 누르세요 (Esc는 취소)"
 
 #: src/preferences_display.cpp:320
 msgid "Action"
@@ -3545,9 +3444,8 @@ msgid "Change Hotkey"
 msgstr "단축키 바꾸기"
 
 #: src/preferences_display.cpp:335
-#, fuzzy
 msgid "Clear Hotkey"
-msgstr "단축키 바꾸기"
+msgstr "단축키 제거"
 
 #: src/preferences_display.cpp:404
 msgid "This Hotkey is already in use."
@@ -3599,18 +3497,6 @@ msgstr ""
 #: src/wml_exception.cpp:71
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
-
-#, fuzzy
-#~ msgid "Generate name"
-#~ msgstr "새로운 맵 생성"
-
-#, fuzzy
-#~ msgid "Screenshot failed"
-#~ msgstr "스크린 샷"
-
-#, fuzzy
-#~ msgid "None"
-#~ msgstr "아니오"
 
 #~ msgid "Fort"
 #~ msgstr "요새"

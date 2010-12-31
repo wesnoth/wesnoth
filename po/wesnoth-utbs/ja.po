@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-22 12:37+0100\n"
-"PO-Revision-Date: 2010-11-30 17:19+0900\n"
+"POT-Creation-Date: 2010-12-28 13:01+0100\n"
+"PO-Revision-Date: 2010-12-30 21:26+0900\n"
 "Last-Translator: 瀟湘夜雨\n"
 "Language-Team: Japanese Translation Team\n"
 "Language: Japanese\n"
@@ -83,7 +83,7 @@ msgid ""
 "\n"
 msgstr ""
 "遠い未来、エルフの小さな部族は崩壊した帝国の廃墟の中で生き残るためにあがいて"
-"いた。民を率いて砂漠を抜け出し、新しい故郷を求めて遥かなる旅に出立するの"
+"いた。民を率いて砂漠を抜け出し、新たな故郷を求めて遥かなる旅に出立するの"
 "だ。\n"
 "\n"
 
@@ -1179,9 +1179,9 @@ msgid ""
 "its base, or did the last time I camped there. If we make it to Pinnacle "
 "Rock we will be just a few miles from the edge of the mountains."
 msgstr ""
-"北の地平線上に突き出ている茶色の点が見えるだろうか？ あれは『尖塔岩』だ。この"
-"辺り一帯で最も高い土地で、ふもとには泉があり、前回はあそこで野営した。『尖塔"
-"岩』に着けば、山々の尾根からほんの数マイルとなるだろう。"
+"北の地平線上に突き出ている茶色の点が見えるだろうか？ あれは「尖塔岩」だ。この"
+"辺り一帯で最も高い土地で、ふもとには泉があり、前回はあそこで野営した。尖塔岩 "
+"に着けば、山々の尾根からほんの数マイルとなるだろう。"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:289
@@ -1235,6 +1235,7 @@ msgstr ""
 "見つけられなければ無駄使いできないわね。日中の灼熱と夜間の寒さの間で、この旅"
 "は仲間達にとってつらいものになりそうだわ。"
 
+# sand, road, rubble or sand dune hex：地形の名称が変更されたら変更する必要がある
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:321
 msgid ""
@@ -1245,12 +1246,12 @@ msgid ""
 "being cared for by a healer or refreshing at an oasis (any shallow water "
 "hex) at the start of your turn will your units regain full attack strength."
 msgstr ""
-"日中（夜明け、午前、真昼、午後、夕暮）に砂地や道路や岩場や砂丘のヘクス上にい"
-"る全てのユニットは、あなたのターンの開始ごとに乾きに苦しめられる。各ターンご"
-"とに脱水症状としてユニットの攻撃力は減衰し、ヒットポイント $dehydration_loss "
-"が奪われるが、これは祈祷師やドルイド僧で回復させることはできない。回復方法は"
-"ターン開始をオアシス（浅い水ヘクス）で迎えることのみで、ユニットの攻撃力はす"
-"べて 、失われたヒットポイントはある程度取り戻すことができる。"
+"日中（夜明け、午前、真昼、午後、夕暮）に砂漠や道、瓦礫、砂丘のヘクス上にいる"
+"全てのユニットは、あなたのターンの開始ごとに乾きに苦しめられる。各ターンごと"
+"に 脱水症状 としてユニットの攻撃力は減衰し、ヒットポイント $dehydration_loss "
+"が奪われる。脱水症状は砂漠の呪術師やドルイド僧などの 回復 を受けるか、ターン"
+"開始をオアシス（浅い水ヘクス）で迎えることでのみ治療でき、その際ユニットの攻"
+"撃力はすべて取り戻すことができる。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:327
@@ -1269,7 +1270,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:332
 msgid "Well, the sooner we reach Pinnacle Rock, the better. Onwards!"
-msgstr "そうだな、『尖塔岩』に着くのは早ければ早いほど良い。前進だ！"
+msgstr "そうだな、尖塔岩 に着くのは早ければ早いほど良い。前進だ！"
 
 #. [scenario]: id=02_Across_the_Harsh_Sands, role=Hunting Ogre, role=Hunting Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:407
@@ -1279,7 +1280,7 @@ msgstr "サソリ"
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:439
 msgid "Wait. I think I spotted something ahead of us..."
-msgstr "お待ちを、この先に何かいたような…"
+msgstr "お待ちを、この先に何かいたような……"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:443
@@ -1289,7 +1290,8 @@ msgstr "何だ？ 何もないようだが。"
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:447
 msgid "See that shining speckles ahead? Scorpions. Large. Whole nest of them."
-msgstr "この先の方で光ってる点は… サソリだ。大きい。あの一帯が奴らの巣らしい。"
+msgstr ""
+"この先の方で光ってる点は？ サソリだ。大きい。あの一帯が奴らの巣らしい。"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:454
@@ -1354,7 +1356,7 @@ msgstr ""
 #. [scenario]: id=02_Across_the_Harsh_Sands, role=Hunting Ogre, role=Hunting Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:603
 msgid "Hunting Ogre"
-msgstr "狩猟オウガ"
+msgstr "狩猟オーガ"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:646
@@ -1362,7 +1364,7 @@ msgid ""
 "Shh... Ogres ahead. Behind that dune there, we have to pass them if we want "
 "to reach the next oasis."
 msgstr ""
-"シーッ、この先にオウガがいます。次のオアシスにたどり着くにはあの砂丘の向こう"
+"シーッ、この先にオーガがいます。次のオアシスにたどり着くにはあの砂丘の向こう"
 "側、奴らのもとを通らなければなりません。"
 
 #. [message]: speaker=Kaleh
@@ -1391,7 +1393,7 @@ msgstr "新鮮な肉だ！"
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:717
 msgid "Ogre ambush!"
-msgstr "オウガの待ち伏せだ！"
+msgstr "オーガの待ち伏せだ！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:727
@@ -1417,8 +1419,8 @@ msgid ""
 "Hey! Look there, they dropped something... A stone bottle, sealed. I wonder "
 "what’s inside..."
 msgstr ""
-"ねえ！ あれ見てよ、奴ら何か落としていったけど… 石の壷で、封印がしてあるわ。中"
-"に何が入ってるのかしら…"
+"ねえ！ あれ見てよ、奴ら何か落としていったけど……、石の壷で、封印がしてあるわ。"
+"中に何が入ってるのかしら……"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:773
@@ -1429,7 +1431,8 @@ msgstr "Nym！ いけません！ 開けては――"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:783
 msgid ""
 "Too late. And it’s just sand inside. Not worth... Whoa! What’s happening?!"
-msgstr "遅いわよ。あれ、中は砂だけだわ。ただのガラクタね… うわっ！ 何これ!?"
+msgstr ""
+"遅いわよ。あれ、中は砂だけだわ。ただのガラクタね……、うわっ！ 何これ？！"
 
 #. [unit]: type=Dust Devil, id=Dust Devil
 #. [unit_type]: id=Dust Devil, race=monster
@@ -1493,8 +1496,8 @@ msgid ""
 "We don’t know who you are, and we don’t much care. Tremble before the might "
 "of the Black Hand!"
 msgstr ""
-"お前達が誰かは知らんがそんなことはどうでもよい。黒手団の力の前に震えるがよ"
-"い！"
+"お前達が誰かは知らんがそんなことはどうでもよい。「黒手団」の力の前に震えるが"
+"よい！"
 
 #. [unit]: type=Red Mage, id=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1140
@@ -1566,8 +1569,8 @@ msgid ""
 "I accidentally managed to anger a powerful necromancer a while ago... It’s a "
 "long story. But who are you? You almost look like elves."
 msgstr ""
-"しばらく前に強力な死霊使いをふとしたことから怒らせてしまったの…、それは長い話"
-"だわ。ところで君たちは何者？ エルフのように見えるけど。"
+"しばらく前に強力な死霊使いをふとしたことから怒らせてしまったの……、それは長い"
+"話だわ。ところで君たちは何者？ エルフのように見えるけど。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1284
@@ -1648,7 +1651,7 @@ msgstr ""
 #. [message]: speaker=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1399
 msgid "Noo... (<i>Fades</i>)"
-msgstr "畜生め…（<i>消えうせてゆく</i>）"
+msgstr "畜生め…… （<i>消えうせてゆく</i>）"
 
 #. [message]: speaker=$speaking_unit.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1409
@@ -1671,7 +1674,7 @@ msgid ""
 "This ruined castle must be where the ogres make their home. Well, if it’s a "
 "fight they want, it’s a fight they’ll get."
 msgstr ""
-"この荒れ果てた城がオウガたちの住処にちがいない。ふっ、奴らの欲している戦いで"
+"この荒れ果てた城がオーガたちの住処にちがいない。ふっ、奴らの欲している戦いで"
 "あるなら、お望みどおりくれてやろうじゃないか。"
 
 #. [message]: speaker=Kaleh
@@ -1684,7 +1687,7 @@ msgstr ""
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1489
 msgid "This ruin looks oddly familiar."
-msgstr "ううむ、なぜかこの廃墟に見覚えがあるような…"
+msgstr "変だな、この廃墟に見覚えがあるような。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1494
@@ -1696,7 +1699,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1525
 msgid "This land belongs to the Black Hand. Trespass and you will die."
-msgstr "この地は黒手団のものなり。不法侵入には死をもって応える。"
+msgstr "この地は「黒手団」のものなり。不法侵入には死をもって応える。"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1532
@@ -1748,7 +1751,7 @@ msgid ""
 "So, the outlaws have made a base around Pinnacle Rock. It’s a good location, "
 "but we will drive them from it all the same."
 msgstr ""
-"つまり、無法者たちは『尖塔岩』の周りを拠点にしているというわけか。いい場所だ"
+"つまり、無法者たちは 尖塔岩 の周りを拠点にしているというわけか。いい場所だ"
 "が、いずれにせよ奴らを追い払わなくては。"
 
 # %%  聖水の別名　純水　→　清らかなる水　とか　やっぱ聖水 かな
@@ -1837,8 +1840,8 @@ msgid ""
 "hills are just a few miles to the north. We should be able to find water and "
 "rest there."
 msgstr ""
-"無法者たちを倒し、我々はこの灼熱の砂漠を越えることができた。この丘陵地までは"
-"北にあと数マイル残すだけだ。そこまでいけば水も見つかって休息できるはずだ。"
+"無法者たちを倒し、我々はこの灼熱の砂漠を越えることができた。丘陵地までは北に"
+"あと数マイル残すだけだ。そこまでいけば水も見つかって休息できるはずだ。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1844
@@ -1891,10 +1894,10 @@ msgid ""
 "fragments that are left. For example, have you ever heard of The Scepter of "
 "Fire?"
 msgstr ""
-"大没落の前、巨大な都市がいくつもあって、そこには大きな魔法学校、書物を収めた"
-"図書館、莫大な知識の宝庫があったというわ。そのほとんどはその後起こった混乱と"
-"長年にわたる没落のなかで破壊されてしまったけど、残っている小さな断片を探し"
-"回ってるの。たとえば、炎の忽 って聞いたことがない？"
+"「大いなる滅び」の前、巨大な都市がいくつもあって、そこには大きな魔法学校、書"
+"物を収めた図書館、莫大な知識の宝庫があったというわ。そのほとんどはその後起"
+"こった混乱と長年にわたる没落のなかで破壊されてしまったけど、残っている小さな"
+"断片を探し回ってるの。たとえば、炎の笏 って聞いたことがない？"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1869
@@ -2061,7 +2064,7 @@ msgstr "オーク？"
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:418
 msgid "I don’t..."
-msgstr "・・・分からない。"
+msgstr "……分からない。"
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:422
@@ -2097,10 +2100,11 @@ msgid ""
 msgstr ""
 "我が要求を撥ね付けたな、報いを受けよ。　戦え、我が奴隷ども、我が怒りの如く！"
 
+# think so
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:442
 msgid "... think so. You really know how to pick a campsite, Kaleh."
-msgstr "・・・、ちゃんと野営する場所を考えたの？Kaleh。"
+msgstr "……、ちゃんと野営する場所を考えたの？Kaleh。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:446
@@ -2187,20 +2191,20 @@ msgstr ""
 "あまりにも多くの仲間が殺されてしまった。これではアンデッドたちに制圧されるの"
 "は避けようがない。もうお終いだ！"
 
-# These champions... ：？
+# These champions...
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:770
 msgid ""
 "These champions... I will challenge them. Zhul, bless my weapons with light "
 "of Eloh."
 msgstr ""
-"我らが戦士たちよ・・・。私が彼らに挑戦しよう。Zhul、私の武器に Eloh の光の祝"
+"アンデットの闘士達か……。私が彼らに挑戦しよう。Zhul、私の武器に Eloh の光の祝"
 "福を。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:774
 msgid "Garak, but the suns..."
-msgstr "Garak、太陽はまだ・・・。"
+msgstr "Garak、太陽はまだ……"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:778
@@ -2227,7 +2231,7 @@ msgid ""
 "fight and..."
 msgstr ""
 "だめだ！そんなことはない、私達の未来は自分の手で決めるべきだ。この戦いだけは"
-"後方に居て・・・"
+"後方に居て……"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:790
@@ -2263,8 +2267,8 @@ msgid ""
 "Foolish mortal... For daring to challenge me, I’ll devour your soul and "
 "torment it for all eternity..."
 msgstr ""
-"愚かな定命の人間・・・ 大胆にも向かってくるか、貴様の魂をむさぼり苦悩を与えて"
-"やろう、永遠に続く苦しみをな・・・"
+"愚かな定命の人間……、大胆にも向かってくるか、貴様の魂をむさぼり苦悩を与えてや"
+"ろう、永遠に続く苦しみをな……"
 
 #. [message]: speaker=Grak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:943
@@ -2272,8 +2276,8 @@ msgid ""
 "So you destroyed Zur... Come mortal, let’s cross our blades... It’s time for "
 "you to take his place..."
 msgstr ""
-"Zur を倒したようだが・・・ 来い、定命の人間、刃を交えようぞ・・・ さぁ決闘の"
-"始まりだ・・・"
+"Zur を倒したようだが…… 、来い、定命の人間、刃を交えようぞ……、さぁ決闘の始まり"
+"だ……"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:951
@@ -2285,7 +2289,7 @@ msgstr "貴様、そこになおれ！骨の塊め！私は貴様に挑戦する
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:961
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1073
 msgid "Puny elf... Time to die..."
-msgstr "取るに足りないエルフどもよ・・・ 死すべき時だ・・・"
+msgstr "取るに足りないエルフどもよ……、死すべき時だ……"
 
 #. [message]: speaker=Zur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:967
@@ -2294,16 +2298,14 @@ msgid ""
 "Grak was weak... But still you deserve respect... Meet my axe and take his "
 "place..."
 msgstr ""
-"Grak め、弱かったな。だが貴様は賞賛に値する・・・ 我が斧の餌食となり、奴の代"
-"わりに下僕となれ・・・"
+"Grak め、弱かったな。だが貴様は賞賛に値する……、我が斧の餌食となり、奴の代わり"
+"に下僕となれ……"
 
 #. [message]: speaker=$challenged
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:986
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1098
 msgid "And so it ends... Your champion is dead, elves... Come join him..."
-msgstr ""
-"これで終わりだ・・・ 貴様らの英雄は死んだ、エルフどもよ・・・ 彼と共に逝"
-"け・・・"
+msgstr "これで終わりだ……、貴様らの英雄は死んだ、エルフどもよ……、彼と共に逝け……"
 
 #. [message]: speaker=Grak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1055
@@ -2311,8 +2313,8 @@ msgid ""
 "So you destroyed Zur... Come, mortal, let us cross our blades... It’s time "
 "for you to take his place..."
 msgstr ""
-"Zur を打ち破ったか・・・ かかって来い、定命の者よ、我らの刃に切られよ・・・ "
-"その時は奴の代わりに下僕となるのだ・・・"
+"Zur を打ち破ったか……、かかって来い、定命の者よ、我らの刃に切られよ……、その時"
+"は奴の代わりに下僕となるのだ……"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1139
@@ -2387,8 +2389,8 @@ msgid ""
 "I will... not... yield... I defeated... your... champion... I... will... "
 "overcome... you..."
 msgstr ""
-"私は・・・ まだ・・・ 屈服しない・・・ 貴様に・・・ やられては・・・ 私"
-"は・・・ 必ず・・・ 貴様に・・・ 打ち勝つ・・・"
+"私は…… まだ…… 屈服しない……、貴様に…… 敗れては……、私は…… 必ず…… 貴様に…… 打ち"
+"勝つ……"
 
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1274
@@ -2400,7 +2402,7 @@ msgstr "待て、愚か者め！止めろ！"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1727
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2010
 msgid "The dark lord... is no more..."
-msgstr "闇の王め・・・、これ以上は・・・"
+msgstr "闇の王め…… これ以上は……"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1294
@@ -2455,7 +2457,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1849
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2131
 msgid "Hahaha...!"
-msgstr "ハハハ・・・！"
+msgstr "ハハハ……！"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1434
@@ -2516,10 +2518,10 @@ msgid ""
 msgstr ""
 "あれは Garak じゃない。いつまで経っても夜が続いてるし、あまりにも多くの仲間た"
 "ちが死んでしまっている。Garak を救うためにあとどれだけの犠牲を払えるというの"
-"です？ 野営地を守っているだけではどうにもなりません、この早く戦いを終わらせな"
+"です？ 野営地を守っているだけではどうにもなりません、早くこの戦いを終わらせな"
 "いと闇と混沌が私達を飲み込んでしまうでしょう。どんな代償を払ってもあの邪悪な"
-"奴らの一方を倒さなければならない。私はあの様に…、私達の同朋の身体を操らせたま"
-"まにさせるなど、まっぴらご免だ。"
+"奴らの一方を倒さなければならない。私はあの様に……　私達の同朋の身体を操らせた"
+"ままにさせるなど、まっぴらご免だ。"
 
 #. [message]: speaker=Ystara
 #. [message]: speaker=Azkotep
@@ -2633,7 +2635,7 @@ msgstr "傷付いたエルフの偵察兵"
 #. [message]: speaker=Elven Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2232
 msgid "Orcs... Not far behind me... From the hills..."
-msgstr "オークどもが・・・ 迫(せま)って来ている・・・ 丘を越えて・・・"
+msgstr "オークどもが……、迫(せま)って来ている……、丘を越えて……"
 
 #. [unit]: type=Orcish Leader, type=Orcish Ruler, id=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2260
@@ -2664,23 +2666,23 @@ msgid ""
 "You got me, elf... But you won’t be so lucky with the tribes of the hills... "
 "(<i>Cough</i>)"
 msgstr ""
-"俺を倒しやがったな、エルフめ・・・、幸運は続かんぞ丘には俺の部族が・・・（<i>"
-"ぐふっ</i>）"
+"俺を倒しやがったな、エルフめ……、幸運は続かんぞ丘には俺の部族が……（<i>ぐふっ</"
+"i>）"
 
 #. [message]: speaker=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2333
 msgid "I deeply regret... I won’t be able to see that..."
-msgstr "無念だ・・・、二度と故郷を見れぬ・・・"
+msgstr "無念だ……、二度と故郷を見れぬ……"
 
 #. [message]: speaker=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2339
 msgid "Killed by a dead creep... (<i>Cough</i>)"
-msgstr "彷徨うアンデットに殺されるとは・・・（<i>ぐふっ</i>）"
+msgstr "彷徨うアンデットに殺されるとは……（<i>ぐふっ</i>）"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2349
 msgid "Look, he dropped something! I wonder what it is..."
-msgstr "見て、何か落したわ。何だろう・・・"
+msgstr "見て、何か落したわ。何だろう……"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2367
@@ -2763,7 +2765,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2507
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2800
 msgid "He’s... he’s still breathing!"
-msgstr "まだ… まだ息があります！"
+msgstr "まだ…… まだ息があります！"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2511
@@ -2771,7 +2773,7 @@ msgstr "まだ… まだ息があります！"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2804
 msgid "Protect the boy for me Zhul, (<i>cough</i>) I go to a better place."
 msgstr ""
-"Zhul、私の代わりに坊やを守ってやってくれ… 、（<i>ゴホッ！</i>） 天に召される"
+"Zhul、私の代わりに坊やを守ってやってくれ…… 、（<i>ゴホッ！</i>） 天に召される"
 "時がきたようだ。"
 
 #. [message]: speaker=Nym
@@ -2834,8 +2836,8 @@ msgid ""
 "He was a bastard at times... But... but why did he have to die? It... it "
 "just doesn’t make sense."
 msgstr ""
-"彼にムカツクこともあったけど… でも…どうして彼が死ななきゃならなかったの？　こ"
-"んなの… こんなの納得いかないわ。"
+"彼にムカツクこともあったけど……、でも…… どうして彼が死ななきゃならなかったの？"
+"　こんなの…… こんなの納得いかないわ。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2572
@@ -3016,7 +3018,7 @@ msgstr ""
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2700
 msgid "A token to remember us by..."
-msgstr "我らを忘れぬようこれを記念に受け取るがいい…"
+msgstr "我らを忘れぬようこれを記念に受け取るがいい……"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2704
@@ -3542,7 +3544,7 @@ msgid ""
 msgstr ""
 "これは天然の通路じゃないし、石壁はオークがやったにしてはかなり上手く滑らかに"
 "彫られているわ。かつてドワーフが彫ったものだとしても不思議じゃないわね。この"
-"山々の中にまだいくらかは残っているのかしら・・・"
+"山々の中にまだいくらかは残っているのかしら……"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1382
@@ -4029,7 +4031,7 @@ msgstr "うわあ。"
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1319
 msgid "I think I preferred the spider and the ants..."
-msgstr "クモとかアリとかのほうが良かったかな…"
+msgstr "クモとかアリとかのほうが良かったかな……"
 
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1324
@@ -4057,12 +4059,12 @@ msgstr ""
 #. [message]: speaker=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1339
 msgid "Wait... What... Who are you?"
-msgstr "ン… 何だ… お前ら誰だ？"
+msgstr "ン……、何だ……、お前ら誰だ？"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1344
 msgid "Uh..."
-msgstr "ええと…"
+msgstr "ええと……"
 
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1349
@@ -4072,7 +4074,7 @@ msgstr "あいつら一体何なんだ？"
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1355
 msgid "Wait a minute... Blond hair, pointy ears — they must be elves."
-msgstr "待てよ… ブロンドの髪、とがった耳――奴らエルフに違いねえ。"
+msgstr "待てよ……、ブロンドの髪、とがった耳――奴らエルフに違いねえ。"
 
 # nine hells：こんな深い所、と訳されていました。どうやらD&D系にナインヘルズというキャンペーンだかがあるらしいけど…、ネタ元？
 #. [message]
@@ -4299,7 +4301,7 @@ msgstr "うぉぉおおお！"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2194
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2454
 msgid "No...!"
-msgstr "もうダメか…！"
+msgstr "もうダメか……！"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2208
@@ -4674,12 +4676,12 @@ msgstr ""
 #. [message]: speaker=Fundin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3136
 msgid "The rest is silence..."
-msgstr "静寂に休むときが来たか…"
+msgstr "静寂に休むときが来たか……"
 
 #. [message]: speaker=Nori
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3170
 msgid "I go to my ancestors..."
-msgstr "俺は祖先たちの元へ…"
+msgstr "俺は祖先たちの元へ……"
 
 #. [message]: speaker=Thungar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3206
@@ -4689,7 +4691,7 @@ msgstr "アァァーーッ!!"
 #. [message]: speaker=Gnarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3240
 msgid "I will be avenged..."
-msgstr "仇を討ってくれ…"
+msgstr "仇を討ってくれ……"
 
 #. [message]: speaker=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3304
@@ -4983,9 +4985,9 @@ msgid ""
 msgstr ""
 "あんたがたは命の恩人だ。わしの仲間たちが名誉ある戦いのなか死んでいった時に、"
 "わしときたら捕虜にされていたとは。わしは何とも面目ない。わしは皆を守ることが"
-"できなかった…、わしはこの命に代えてもあんたがたを守るぞ、たとえあんたがたに付"
-"いて地の果てまで行かねばならんとしても。さぁわしをトロルどものところへ案内し"
-"てくれ、わしに我が仲間たちの死の報復をさせてくれ！"
+"できなかった…… だが、わしはこの命に代えてもあんたがたを守るぞ、たとえあんたが"
+"たに付いて地の果てまで行かねばならんとしても。さぁわしをトロルどものところへ"
+"案内してくれ、わしに我が仲間たちの死の報復をさせてくれ！"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1232
@@ -5371,7 +5373,7 @@ msgid ""
 msgstr ""
 "ありがとう。お前は俺のために我がドワーフの一族の誰もができなかったことをして"
 "くれた。俺はもうお前の行く手を阻んだりしない。お前に Moradin の祝福と加護があ"
-"らんことを。さあ、我が祖先たちの集う場所へ向かうとしよう…"
+"らんことを。さあ、我が祖先たちの集う場所へ向かうとしよう……"
 
 #. [event]
 #. [event]: id=cryptguard}
@@ -5517,9 +5519,9 @@ msgstr ""
 "これすごい坑道、ドワーフの巣の中心のすぐそばまで続いてる。壁のすぐ向こう側か"
 "ら奴らの小さい足音が聞こえてるな。俺たちとドワーフども隔ててるの、石の薄壁だ"
 "け。お前のとこの一人を最後の壁の近くまで動かしたら、お前が合図すれば Zurg、火"
-"の魔法で壊してやる。トロルの族長の護衛は手薄なのがあるだけ、奴は手強い兵をト"
-"ロル狩るのに送ってる。ヘッ、お前たちにやらせるの簡単な仕事。ドワーフの族長は"
-"見ればわかる、ほとんどの奴よりチビでブサイク。"
+"の魔法で壊してやる。ドワーフの族長の護衛は手薄なのがあるだけ、奴は手強い兵を"
+"トロル狩るのに送ってる。ヘッ、お前たちにやらせるの簡単な仕事。ドワーフの族長"
+"は見ればわかる、ほとんどの奴よりチビでブサイク。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:516
@@ -5661,7 +5663,7 @@ msgstr ""
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:800
 msgid "But sir, behind you...!"
-msgstr "しかし軍曹殿、後ろに…！"
+msgstr "しかし軍曹殿、後ろに……！"
 
 #. [message]: speaker=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:805
@@ -5685,13 +5687,13 @@ msgid ""
 "Oh, grow a backbone... Huh? Hey, for once the runt was telling the truth. "
 "Come on, boys, kill the intruder!"
 msgstr ""
-"おいこら、シャンと背筋を伸ばさんか… あ？ おぁ、今回ばかりはあのチビ助の言って"
-"るのはマジだったか。おい、お前ら、侵入者を殺せ！"
+"おいこら、シャンと背筋を伸ばさんか……、あ？ おぁ、今回ばかりはあのチビ助の言っ"
+"てるのはマジだったか。おい、お前ら、侵入者を殺せ！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:835
 msgid "I love you, Sarge..."
-msgstr "好きでした、軍曹殿…"
+msgstr "好きでした、軍曹殿……"
 
 #. [unit]: type=Troll, id=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:862
@@ -6005,7 +6007,7 @@ msgid ""
 "I put the amulet on and step into the rune..."
 msgstr ""
 "おや、これはたしか、 あの魔除けはこのルーン文字と同じ色の光を放っていた。もし"
-"かして、あの魔除けを上に置いてルーン文字の中に入ると…"
+"かして、あの魔除けを上に置いてルーン文字の中に入ると……"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2170
@@ -6230,7 +6232,6 @@ msgstr ""
 
 #. [message]: speaker=King Thurongar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:410
-#, fuzzy
 msgid ""
 "But dwarves are excellent delvers, and we keep meticulous maps of all the "
 "tunnels we have explored. We should still have maps of the tunnels leading "
@@ -6239,12 +6240,10 @@ msgid ""
 msgstr ""
 "だがドワーフは探査にかけては一流で、我々は探検した坑道のすべてを詳細な地図に"
 "残している。地表に続く坑道の地図も残っているはずだ。もちろん君たちが見ても理"
-"解できないだろうし、ここにいる $intl_dwarf_name が地表までの案内役を志願して"
-"いる。"
+"解できないだろうし、ここにいる Rogrimir が地表までの案内役を志願している。"
 
 #. [message]: speaker=King Thurongar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:417
-#, fuzzy
 msgid ""
 "But dwarves are excellent delvers, and we keep meticulous maps of all the "
 "tunnels we have explored. We should still have maps of the tunnels leading "
@@ -6253,8 +6252,7 @@ msgid ""
 msgstr ""
 "だがドワーフは探査にかけては一流で、我々は探検した坑道のすべてを詳細な地図に"
 "残している。地表に続く坑道の地図も残っているはずだ。もちろん君たちが見ても理"
-"解できないだろうし、ここにいる $intl_dwarf_name が地表までの案内役を志願して"
-"いる。"
+"解できないだろうし、ここにいる Jarl が地表までの案内役を志願している。"
 
 #. [message]: speaker=Rogrimir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:431
@@ -6288,25 +6286,23 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:457
-#, fuzzy
 msgid ""
 "Thank you very much for your help. We were worried about getting lost in all "
 "these twisting tunnels. And we would be honored to have you come with us, "
 "Rogrimir."
 msgstr ""
 "助力に心から感謝します。あの曲がりくねった坑道で迷ってしまうことが私達の心配"
-"の種でした。それに $intl_dwarf_name 、あなたに同行してもらえるとは光栄です。"
+"の種でした。それに Rogrimir、あなたに同行してもらえるとは光栄です。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:464
-#, fuzzy
 msgid ""
 "Thank you very much for your help. We were worried about getting lost in all "
 "these twisting tunnels. And we would be honored to have you come with us, "
 "Jarl."
 msgstr ""
 "助力に心から感謝します。あの曲がりくねった坑道で迷ってしまうことが私達の心配"
-"の種でした。それに $intl_dwarf_name 、あなたに同行してもらえるとは光栄です。"
+"の種でした。それに Jarl、あなたに同行してもらえるとは光栄です。"
 
 #. [message]: speaker=King Thurongar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:477
@@ -6326,7 +6322,7 @@ msgid ""
 "Don’t you worry, we won’t rest until we have killed every one of trolls."
 msgstr ""
 "君たちのおかげであの蛮人どもに大打撃を加えることができたし、君たちとともに"
-"戦ッたことを誉れに思う。君たちは我々が知る限りもっとも勇敢なエルフだ。我々も"
+"戦ったことを誉れに思う。君たちは我々が知る限りもっとも勇敢なエルフだ。我々も"
 "君たちに同行したいのだが、その、地表近くへ行くとなると勘弁してもらいたいし、"
 "そのうえここ深部ではまだやるべき戦いが沢山あるんだ。いや心配には及ばない、ト"
 "ロルを全滅させるまで我々に休息はないだろう。"
@@ -6371,7 +6367,7 @@ msgstr ""
 "くさんあるわ。彼らが鍛造するところは見たかしら？ 彼らは火の扱い方を本当によく"
 "知っているし、驚くべき使い方をしている。僕の魔法の火を使って鍛冶の技に磨きを"
 "かける興味深いアイデアだって持ってるわ。それから彼らの記録は見た？ 彼らは取引"
-"の記録を幾世代にもわたって残してるわ。炎の笏を作るのに手を貸したドワーフの一"
+"の記録を幾世代にもわたって残してるわ。炎の笏 を作るのに手を貸したドワーフの一"
 "族だって知っている。あれほどのアーティファクトを作るのに関与したドワーフに会"
 "えたらどれほど素晴らしいか！"
 
@@ -6635,7 +6631,6 @@ msgstr ""
 
 #. [message]: speaker=Spiritual Advisor
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:404
-#, fuzzy
 msgid ""
 "We may be able to help you find a way back to the sunlit lands. In our "
 "temples we do keep records of the past. We have not walked above the earth "
@@ -6651,12 +6646,11 @@ msgstr ""
 "代も地の上歩いていない。だが我々、地下の地についてはよく知ってる、坑道はたく"
 "さん探検してる。我々の斥候、北の方の日の照る地まで続く道を最近見つけた、お前"
 "たち行こうとしてるのはその道かもしれない思う。お前たちの偉業に報いるため、"
-"我々、お前たち助けよう。$intl_troll_name 、お前たちを守り、お前たちの日の光の"
-"地に戻る案内を志願してる。"
+"我々、お前たち助けよう。Grog、お前たちを守り、お前たちの日の光の地に戻る案内"
+"を志願してる。"
 
 #. [message]: speaker=Spiritual Advisor
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:411
-#, fuzzy
 msgid ""
 "We may be able to help you find a way back to the sunlit lands. In our "
 "temples we do keep records of the past. We have not walked above the earth "
@@ -6672,8 +6666,8 @@ msgstr ""
 "代も地の上歩いていない。だが我々、地下の地についてはよく知ってる、坑道はたく"
 "さん探検してる。我々の斥候、北の方の日の照る地まで続く道を最近見つけた、お前"
 "たち行こうとしてるのはその道かもしれない思う。お前たちの偉業に報いるため、"
-"我々、お前たち助けよう。$intl_troll_name 、お前たちを守り、お前たちの日の光の"
-"地に戻る案内を志願してる。"
+"我々、お前たち助けよう。Nog、お前たちを守り、お前たちの日の光の地に戻る案内を"
+"志願してる。"
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:425
@@ -6697,39 +6691,36 @@ msgstr ""
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:437
-#, fuzzy
 msgid ""
 "You did trolls big service. Nog like to wander in tunnels, and chief say "
 "that he knows the upper tunnels the best. Nog want to help elves so even "
 "though he not want to leave battle, he agrees to show elves way back to "
 "lighted lands."
 msgstr ""
-"お前たち、トロルのために大きな働きしてくれた。 $intl_troll_name 、よく坑道の"
-"中歩き回ってる、だから族長言う、 $intl_troll_name が上の坑道一番知ってると。 "
-"$intl_troll_name 、戦いから離れたくないけどもエルフ助けたい、だからエルフが光"
-"の当たる地に戻る道の案内するの了解する。"
+"お前たち、トロルのために大きな働きしてくれた。  Nog、よく坑道の中歩き回って"
+"る、だから族長言う、 Nog が地上への坑道一番知ってると。  Nog、戦いから離れた"
+"くないけど、エルフ助けたい、だからエルフが光の当たる地に戻る道の案内するの了"
+"解する。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:451
-#, fuzzy
 msgid ""
 "Thank you very much for your help. We were worried about getting lost in all "
 "these twisting tunnels. And we would be honored to have you come with us, "
 "Grog."
 msgstr ""
 "助力に心から感謝します。あの曲がりくねった坑道で迷ってしまうことが私達の心配"
-"の種でした。それに $intl_troll_name 、あなたに同行してもらえるとは光栄です。"
+"の種でした。それに Grog、あなたに同行してもらえるとは光栄です。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:458
-#, fuzzy
 msgid ""
 "Thank you very much for your help. We were worried about getting lost in all "
 "these twisting tunnels. And we would be honored to have you come with us, "
 "Nog."
 msgstr ""
 "助力に心から感謝します。あの曲がりくねった坑道で迷ってしまうことが私達の心配"
-"の種でした。それに $intl_troll_name 、あなたに同行してもらえるとは光栄です。"
+"の種でした。それに Nog、あなたに同行してもらえるとは光栄です。"
 
 #. [message]: speaker=Great Leader Darmog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:471
@@ -6826,7 +6817,7 @@ msgstr ""
 #. [scenario]: id=08_Out_of_the_Frying_Pan
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:6
 msgid "Out of the Frying Pan"
-msgstr "その場しのぎ"
+msgstr "一難去って……"
 
 #. [side]: id=Kaleh, type=Desert Fighter
 #. [side]
@@ -6861,27 +6852,23 @@ msgstr "洞窟から脱出する"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:716
-#, fuzzy
 msgid "Death of Grog"
-msgstr "Garak の死"
+msgstr "Grog の死"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:726
-#, fuzzy
 msgid "Death of Nog"
-msgstr "Nym の死"
+msgstr "Nog の死"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:736
-#, fuzzy
 msgid "Death of Rogrimir"
-msgstr "Nym の死"
+msgstr "Rogrimir の死"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:746
-#, fuzzy
 msgid "Death of Jarl"
-msgstr "Kaleh の死"
+msgstr "Jarl の死"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:871
@@ -7028,7 +7015,7 @@ msgid ""
 "They seem confused, leaderless. I guess it’s every ant for itself. Uh, oh. "
 "Some of them seem to have noticed us."
 msgstr ""
-"見たところ混乱してリーダーはいない。それぞれがバラバラに逃げているのでは… "
+"見たところ混乱してリーダーはいない。それぞれがバラバラに逃げているのでは……。"
 "あっ、何匹かは我々に気づいたみたいだ。"
 
 #. [message]: speaker=Kaleh
@@ -7537,7 +7524,7 @@ msgid ""
 "And remember, everyone, we’re going to keep practicing until I’m satisfied. "
 "So, ready... attack!"
 msgstr ""
-"それから皆、忘れるな、私が満足するまで練習は止めないからな。では、構え… 攻"
+"それから皆、忘れるな、私が満足するまで練習は止めないからな。では、構え…… 攻"
 "撃！"
 
 #. [message]
@@ -7665,12 +7652,12 @@ msgid ""
 "if I give it a push..."
 msgstr ""
 "おや、これは何だろう？ この壁面に見えるのは扉の輪郭のようだ。もしかしたら押し"
-"てみると…"
+"てみると……"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2874
 msgid "What do you know? A secret door!"
-msgstr "何が出てくるか…？ 隠し扉だ！"
+msgstr "何が出てくるか……？ 隠し扉だ！"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2879
@@ -7704,7 +7691,7 @@ msgid ""
 msgstr ""
 "この部屋はかつて何らかの実験室だったようだ。床には割れたビンや奇妙な器具が散"
 "らばっている。それよりも目を引くのは、光を放っているルーン文字とその上に現れ"
-"た生き物だ。ハサミを持った類の生き物と、責苦を受けた若いオウガ。その後ろには"
+"た生き物だ。ハサミを持った類の生き物と、責苦を受けた若いオーガ。その後ろには"
 "何らかの巨大な獣が魔法円の中央に浮かんでいる。その獣は眠っているようだが、手"
 "前の2体は完全に目覚めている。おっとまずい、敵意を示しているようだ。"
 
@@ -7815,47 +7802,41 @@ msgstr "ここの臭いは好きじゃないな。"
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3150
 msgid "I feel some sort of presence... Ugh... it makes my skin crawl."
-msgstr "何らかの存在を感じるのですが… これは… 何か身の毛のよだつ感じがします。"
+msgstr ""
+"何らかの存在を感じるのですが……、これは…… 何か身の毛のよだつ感じがします。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3157
-#, fuzzy
 msgid ""
 "Grog, I thought you said that you’d been here before? Where are we supposed "
 "to go from here?"
 msgstr ""
-"$intl_ally_name 、ここに来たことがあるって言ってなかった？ ここからどっちに行"
-"けばいいの？"
+"Grog、ここに来たことがあるって言ってなかった？ ここからどっちに行けばいいの？"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3163
-#, fuzzy
 msgid ""
 "Nog, I thought you said that you’d been here before? Where are we supposed "
 "to go from here?"
 msgstr ""
-"$intl_ally_name 、ここに来たことがあるって言ってなかった？ ここからどっちに行"
-"けばいいの？"
+"Nog、ここに来たことがあるって言ってなかった？ ここからどっちに行けばいいの？"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3169
-#, fuzzy
 msgid ""
 "Rogrimir, I thought you said that you’d been here before? Where are we "
 "supposed to go from here?"
 msgstr ""
-"$intl_ally_name 、ここに来たことがあるって言ってなかった？ ここからどっちに行"
-"けばいいの？"
+"Rogrimir、ここに来たことがあるって言ってなかった？ ここからどっちに行けばいい"
+"の？"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3175
-#, fuzzy
 msgid ""
 "Jarl, I thought you said that you’d been here before? Where are we supposed "
 "to go from here?"
 msgstr ""
-"$intl_ally_name 、ここに来たことがあるって言ってなかった？ ここからどっちに行"
-"けばいいの？"
+"Jarl、ここに来たことがあるって言ってなかった？ ここからどっちに行けばいいの？"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3181
@@ -8074,7 +8055,7 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3538
 msgid "Oh Eloh save us, it’s... it’s an elf."
-msgstr "Eloh よ救いたまえ、あれは… あれはエルフだわ。"
+msgstr "Eloh よ救いたまえ、あれは…… あれはエルフだわ。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3543
@@ -8152,7 +8133,7 @@ msgid ""
 "They heard me and... and they got in the way. But they aren’t even elves, "
 "what do they matter?"
 msgstr ""
-"連中に尋問されてな… 私の行く手を阻んだわけだ。だがこいつらはエルフでもない"
+"連中に尋問されてな…… 私の行く手を阻んだわけだ。だがこいつらはエルフでもない"
 "し、どうということもあるまい？"
 
 #. [message]: speaker=Nym
@@ -8182,7 +8163,7 @@ msgstr ""
 "ヘッ、確かに、お前たちは見つけてくれなかったな。私が気づいた時には瓦礫の下で"
 "身動きが取れず、ようやく抜け出した時に村はもぬけの殻だった。残っていたのは死"
 "の臭いと破壊の跡だけだった。奴らを見たのはその後だ、砂丘を渡って押し寄せてく"
-"るアンデッドの大群を見たのは。徒党を組んだ死霊使いたち… 奴らは私を見つけると"
+"るアンデッドの大群を見たのは。徒党を組んだ死霊使いたち…… 奴らは私を見つけると"
 "私に見せつけたのだ、私にすべてを見せ付けやがったのだ！"
 
 #. [message]: speaker=Kaleh
@@ -8198,10 +8179,10 @@ msgid ""
 "only the beginning. They chanted words of power, and spilled the hot blood "
 "onto the sand and then I heard their screams of agony and pain..."
 msgstr ""
-"奴らは人間を何人か、きつく拘束して連れていた。なんとも美しい… 彼女は燃えるよ"
-"うな赤い髪をしていた… 奴らは刃を持つと彼女の… 彼女の悲鳴は今でも耳に残って離"
-"れない。だがそれは始まりに過ぎなかった。奴らは力の呪文を唱えて、まだ生暖かい"
-"血を砂の上に滴らせた、すると私の耳には彼らの苦痛の叫びが聞こえてきた…"
+"奴らは人間を何人か、きつく拘束して連れていた。なんとも美しい…… 彼女は燃えるよ"
+"うな赤い髪をしていた…… 奴らは刃を持つと彼女の……、彼女の悲鳴は今でも耳に残って"
+"離れない。だがそれは始まりに過ぎなかった。奴らは力の呪文を唱えて、まだ生暖か"
+"い血を砂の上に滴らせた、すると私の耳には彼らの苦痛の叫びが聞こえてきた……"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3740
@@ -8272,7 +8253,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3779
 msgid "I... I forgive you."
-msgstr "私は・・・ 私はあなたを許す。"
+msgstr "私は……、私はあなたを許す。"
 
 #. [message]: speaker=Keratur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3785
@@ -8397,44 +8378,39 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3983
-#, fuzzy
 msgid ""
 "Grog, thank you so much for leading us out of the caves. We never would have "
 "found our way without your help. But with the tunnels flooded, how are you "
 "going to find your way back to your people?"
 msgstr ""
-"$intl_ally_name 、この洞窟から抜け出す案内をしてくれて、本当にありがとう。"
-"我々が進むべき道を見つけることは、あなたの助けなしには決してなし得なかっただ"
-"ろう。だが坑道が水に浸かってしまって、どうやって仲間たちの元に戻る道を見つけ"
-"るおつもりか？"
+"Grog、この洞窟から抜け出す案内をしてくれて、本当にありがとう。我々が進むべき"
+"道を見つけることは、あなたの助けなしには決してなし得なかっただろう。だが坑道"
+"が水に浸かってしまって、どうやって仲間たちの元に戻る道を見つけるおつもりか？"
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3988
-#, fuzzy
 msgid ""
 "Grog proud of little elves too. He would not have made it this far without "
 "all your help. Grog is surprised by your bravery and strength."
 msgstr ""
-"$intl_ally_name も小さいエルフたち誇りに思う。お前たちの助けなかったらこんな"
-"にできなかった。$intl_ally_name 、お前たちの勇敢さと強さにびっくりした。"
+"Grog も小さいエルフたち誇りに思う。お前たちの助けなかったらこんなにできなかっ"
+"た。Grog、お前たちの勇敢さと強さにびっくりした。"
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3993
-#, fuzzy
 msgid ""
 "Truth is that Grog not know much of sunlight lands. Sun and stars are scary, "
 "everything is open, exposed, no safe places to hide. But Grog cannot go back "
 "through all that water. And Grog doesn’t know where to find other tunnels "
 "back to his home. He is as lost as elves are."
 msgstr ""
-"実は $intl_ally_name 、日の光の土地のこと、あまり知らない。太陽や星は恐ろし"
-"い、全部開けてて丸見え、隠れるのに安全なところない。だが $intl_ally_name 、あ"
-"んなに水あって帰れない。それに、どこで故郷に戻る他の坑道を見つけていいかわか"
-"らない。 $intl_ally_name 、エルフと同じくらい行き場がない。"
+"実は Grog、日の光の土地のこと、あまり知らない。太陽や星は恐ろしい、全部開けて"
+"て丸見え、隠れるのに安全なところない。だけど Grog、あんなに水あって帰れない。"
+"それに、どこで故郷に戻る他の坑道を見つけていいかわからない。 Grog、エルフと同"
+"じくらい行き場がない。"
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3998
-#, fuzzy
 msgid ""
 "But Grog not afraid. Great leader told Grog to guide and protect elves, and "
 "Grog will keep his oath. Grog will follow elves wherever they may go and "
@@ -8442,52 +8418,46 @@ msgid ""
 "way back down to the caves of his people. But for now, Grog will continue to "
 "serve and protect you."
 msgstr ""
-"それでも  $intl_ally_name 、怖れない。偉大な指導者、エルフを案内して守るよう "
-"$intl_ally_name に言った、  $intl_ally_name 誓い守る。  $intl_ally_name 、エ"
-"ルフがどこへ行っても、ついていって、力の限りエルフを危険から守る。もしかした"
-"ら後で、  $intl_ally_name 、仲間の洞窟へ戻る他の道見つけるかもしれない。でも"
-"今は、  $intl_ally_name 、お前たちに仕えて守るのを続ける。"
+"それでも Grog、怖れない。偉大な指導者、エルフを案内して守るよう Grog に言っ"
+"た、  Grog 誓い守る。Grog、エルフがどこへ行っても、ついていって、力の限りエル"
+"フを危険から守る。もしかしたら後で、Grog、仲間の洞窟へ戻る他の道見つけるかも"
+"しれない。でも今は、Grog、お前たちに仕えて守るのを続ける。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4004
-#, fuzzy
 msgid ""
 "Nog, thank you so much for leading us out of the caves. We never would have "
 "found our way without your help. But with the tunnels flooded, how are you "
 "going to find your way back to your people?"
 msgstr ""
-"$intl_ally_name 、この洞窟から抜け出す案内をしてくれて、本当にありがとう。"
-"我々が進むべき道を見つけることは、あなたの助けなしには決してなし得なかっただ"
-"ろう。だが坑道が水に浸かってしまって、どうやって仲間たちの元に戻る道を見つけ"
-"るおつもりか？"
+"Nog、この洞窟から抜け出す案内をしてくれて、本当にありがとう。我々が進むべき道"
+"を見つけることは、あなたの助けなしには決してなし得なかっただろう。だが坑道が"
+"水に浸かってしまって、どうやって仲間たちの元に戻る道を見つけるおつもりか？"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4009
-#, fuzzy
 msgid ""
 "Nog proud of little elves too. He would not have made it this far without "
 "all your help. Nog is surprised by your bravery and strength."
 msgstr ""
-"$intl_ally_name も小さいエルフたち誇りに思う。お前たちの助けなかったらこんな"
-"にできなかった。$intl_ally_name 、お前たちの勇敢さと強さにびっくりした。"
+"Nog も小さいエルフたち誇りに思う。お前たちの助けなかったらこんなにできなかっ"
+"た。Nog、お前たちの勇敢さと強さにびっくりした。"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4014
-#, fuzzy
 msgid ""
 "Truth is that Nog not know much of sunlight lands. Sun and stars are scary, "
 "everything is open, exposed, no safe places to hide. But Nog cannot go back "
 "through all that water. And Nog doesn’t know where to find other tunnels "
 "back to his home. He is as lost as elves are."
 msgstr ""
-"実は $intl_ally_name 、日の光の土地のこと、あまり知らない。太陽や星は恐ろし"
-"い、全部開けてて丸見え、隠れるのに安全なところない。だが $intl_ally_name 、あ"
-"んなに水あって帰れない。それに、どこで故郷に戻る他の坑道を見つけていいかわか"
-"らない。 $intl_ally_name 、エルフと同じくらい行き場がない。"
+"実は Nog、日の光の土地のこと、あまり知らない。太陽や星は恐ろしい、全部開けて"
+"て丸見え、隠れるのに安全なところない。だが Nog、あんなに水あって帰れない。そ"
+"れに、どこで故郷に戻る他の坑道を見つけていいかわからない。 Nog、エルフと同じ"
+"くらい行き場がない。"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4019
-#, fuzzy
 msgid ""
 "But Nog not afraid. Great leader told Nog to guide and protect elves, and "
 "Nog will keep his oath. Nog will follow elves wherever they may go and "
@@ -8495,24 +8465,22 @@ msgid ""
 "way back down to the caves of his people. But for now, Nog will continue to "
 "serve and protect you."
 msgstr ""
-"それでも  $intl_ally_name 、怖れない。偉大な指導者、エルフを案内して守るよう "
-"$intl_ally_name に言った、  $intl_ally_name 誓い守る。  $intl_ally_name 、エ"
-"ルフがどこへ行っても、ついていって、力の限りエルフを危険から守る。もしかした"
-"ら後で、  $intl_ally_name 、仲間の洞窟へ戻る他の道見つけるかもしれない。でも"
-"今は、  $intl_ally_name 、お前たちに仕えて守るのを続ける。"
+"それでも Nog、怖れない。偉大な指導者、エルフを案内して守るよう Nog に言った、"
+"Nog 誓い守る。Nog、エルフがどこへ行っても、ついていって、力の限りエルフを危険"
+"から守る。もしかしたら後で、Nog、仲間の洞窟へ戻る他の道見つけるかもしれない。"
+"でも今は、Nog、お前たちに仕えて守るのを続ける。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4025
-#, fuzzy
 msgid ""
 "Rogrimir, I want to thank you so much for guiding us out of the caves. We "
 "never would have found our way without your help. But with the tunnels "
 "flooded, how are you going to find your way back to your people?"
 msgstr ""
-"$intl_ally_name 、この洞窟から抜け出す案内をしてくれたことに、心から御礼を言"
-"いたい。我々が進むべき道を見つけることは、あなたの助けなしには決してなし得な"
-"かっただろう。だが坑道が水に浸かってしまって、どうやって仲間たちの元に戻る道"
-"を見つけるおつもりか？"
+"Rogrimir、この洞窟から抜け出す案内をしてくれたことに、心から御礼を言いたい。"
+"我々が進むべき道を見つけることは、あなたの助けなしには決してなし得なかっただ"
+"ろう。だが坑道が水に浸かってしまって、どうやって仲間たちの元に戻る道を見つけ"
+"るおつもりか？"
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -8562,16 +8530,15 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4046
-#, fuzzy
 msgid ""
 "Jarl, I want to thank you so much for guiding us out of the caves. We never "
 "would have found our way without your help. But with the tunnels flooded, "
 "how are you going to find your way back to your people?"
 msgstr ""
-"$intl_ally_name 、この洞窟から抜け出す案内をしてくれたことに、心から御礼を言"
-"いたい。我々が進むべき道を見つけることは、あなたの助けなしには決してなし得な"
-"かっただろう。だが坑道が水に浸かってしまって、どうやって仲間たちの元に戻る道"
-"を見つけるおつもりか？"
+"Jarl、この洞窟から抜け出す案内をしてくれたことに、心から御礼を言いたい。我々"
+"が進むべき道を見つけることは、あなたの助けなしには決してなし得なかっただろ"
+"う。だが坑道が水に浸かってしまって、どうやって仲間たちの元に戻る道を見つける"
+"おつもりか？"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4067
@@ -8600,25 +8567,19 @@ msgid ""
 "out above me, to feel the wind in my face..."
 msgstr ""
 "Eloh よ、感謝します。再び地表に出られました。上に広がる空が見える、顔を撫でる"
-"風も感じる・・・"
+"風も感じる……"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4195
-#, fuzzy
 msgid ""
 "We made it. Outside look strange to Grog, Grog not used to big open spaces."
-msgstr ""
-"洞窟抜けた。 $intl_ally_name　には、外は奇妙だ。 $intl_ally_name こんな広い所"
-"に慣れてない。"
+msgstr "洞窟抜けた。Grog には、外は奇妙だ。Grog、こんな広い所に慣れてない。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4201
-#, fuzzy
 msgid ""
 "We made it. Outside look strange to Nog, Nog not used to big open spaces."
-msgstr ""
-"洞窟抜けた。 $intl_ally_name　には、外は奇妙だ。 $intl_ally_name こんな広い所"
-"に慣れてない。"
+msgstr "洞窟抜けた。Nog には、外は奇妙だ。Nog、こんな広い所に慣れてない。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4207
@@ -8761,27 +8722,23 @@ msgstr "Kaleh、ちょっといいか――"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4506
-#, fuzzy
 msgid "Not now Grog, I’m busy."
-msgstr "待ってくれ、 $intl_ally_name 、今忙しいんだ。"
+msgstr "待ってくれ、Grog、今忙しいんだ。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4512
-#, fuzzy
 msgid "Not now Nog, I’m busy."
-msgstr "待ってくれ、 $intl_ally_name 、今忙しいんだ。"
+msgstr "待ってくれ、Nog、今忙しいんだ。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4518
-#, fuzzy
 msgid "Not now Rogrimir, I’m busy."
-msgstr "待ってくれ、 $intl_ally_name 、今忙しいんだ。"
+msgstr "待ってくれ、Rogrimir、今忙しいんだ。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4524
-#, fuzzy
 msgid "Not now Jarl, I’m busy."
-msgstr "待ってくれ、 $intl_ally_name 、今忙しいんだ。"
+msgstr "待ってくれ、Jarl、今忙しいんだ。"
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4530
@@ -8983,7 +8940,7 @@ msgid ""
 "custody to be judged. They’ll deal with you as they see fit."
 msgstr ""
 "てめぇらエルフが何をピーピーとさえずってるのか知らんが、布告が出た後に捕まる"
-"なんて運が良かったな。てめぇらは 鉄の枢密院 で全てを話せばいい。さぁ、てめぇ"
+"なんて運が良かったな。てめぇらは「鉄の議会」で全てを話せばいい。さぁ、てめぇ"
 "ら武器をおろせ、査察するために拘留する。お偉方が良いように取引してくれるだろ"
 "うよ。"
 
@@ -9043,7 +9000,7 @@ msgid ""
 "bickering any longer. To battle, men! Drive those heathens back into the "
 "caves!"
 msgstr ""
-"てめぇ拒否しやがるのか？！ 鉄の枢密院 の権威に従わねぇヤツは殺して良いことに"
+"てめぇ拒否しやがるのか？！ 鉄の議会 の権威に従わねぇヤツは殺して良いことに"
 "なってたな。『闇の貴婦人』にかけて、これ以上論争は続けねぇぜ。戦うぞ、兵士達"
 "よ！この異人どもを洞窟に追い返せ！"
 
@@ -9098,23 +9055,19 @@ msgstr ""
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4772
-#, fuzzy
 msgid ""
 "Grog no like humans either. They mean. But they sound great when they go "
 "squish."
 msgstr ""
-"$intl_ally_name は人間嫌いだ。彼らにも嫌われてるだろう。彼らを潰すと良い音が"
-"するけどね。"
+"Grog は人間嫌いだ。彼らにも嫌われてるだろう。彼らを潰すと良い音がするけどね。"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4778
-#, fuzzy
 msgid ""
 "Nog no like humans either. They mean. But they sound great when they go "
 "squish."
 msgstr ""
-"$intl_ally_name は人間嫌いだ。彼らにも嫌われてるだろう。彼らを潰すと良い音が"
-"するけどね。"
+"Nog は人間嫌いだ。彼らにも嫌われてるだろう。彼らを潰すと良い音がするけどね。"
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -9214,9 +9167,9 @@ msgid ""
 "shall rue the day that you ever trespassed into our lair!"
 msgstr ""
 "呪わしいエルフめ、貴様らは我らの大広間を通りぬけ汚した。そして我らの聖域を冒"
-"涜したのだ。貴様は我らの名誉を傷つけた、我らは復讐せねばならぬ。我らは 深紅"
-"の Talon 教団 であり、死すらも我らを止められぬ。我らの隠れ修道院に侵害したこ"
-"とを後悔すべし。"
+"涜したのだ。貴様は我らの名誉を傷つけた、我らは復讐せねばならぬ。我らは「深紅"
+"の鉤爪教団」であり、死すらも我らを止められぬ。我らの隠れ修道院に侵害したこと"
+"を後悔すべし。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5131
@@ -9269,9 +9222,9 @@ msgid ""
 msgstr ""
 "人間というのは貴方の詳しく知っている砂漠に居た山賊や無法者だけではないので"
 "す、Kalen。覚えていますか、遥かな昔、人間達は既知の土地の大半に跨って大国 "
-"Wesnoth を築いていました。私達の同朋の中には人間達が大いなる崩壊をもたらした"
-"と言う者もいます。Eloh は外にある闇ではなく、私達の中にある闇が堕落と滅亡の原"
-"因となったと言っています。"
+"Wesnoth を築いていました。私達の同朋の中には人間達が「大いなる滅び」をもたら"
+"したと言う者もいます。Eloh は外にある闇ではなく、私達の中にある闇が堕落と滅亡"
+"の原因となったと言っています。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5212
@@ -9515,8 +9468,8 @@ msgid ""
 "She was... rather vague. I know we’re supposed to generally go north, but I "
 "want more information before I commit us to a direction."
 msgstr ""
-"Eloh は・・・、少々あいまいで。概ね北へ行く事になると知っていますが、しかし私"
-"は民を北へ向かわせる前に詳しい情報が欲しいのです。"
+"Eloh は…… 少々あいまいで。概ね北へ行く事になると知っていますが、しかし私は民"
+"を北へ向かわせる前に詳しい情報が欲しいのです。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5556
@@ -9615,7 +9568,7 @@ msgstr "Eloh の名にかけて、Nym、すごい怪我です、大丈夫なの�
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5980
 msgid "Yes. Just... let me... catch... my breath."
-msgstr "えぇ、でも・・・ ちょっと・・・ 休・・・ ませて。"
+msgstr "えぇ、でも…… ちょっと…… 休…… ませて。"
 
 #. [unit]: type=Merman Netcaster, id=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5997
@@ -9636,7 +9589,7 @@ msgstr "落ち着いて。彼は友達なのよ。ちょっと説明させて。
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:6032
 msgid "You’re really beat up, Nym. Are you sure you’re okay?"
-msgstr "また突然出て来たな、Nym。・・・お前、休んでなくて大丈夫なのか？"
+msgstr "また突然出て来たな、Nym。……お前、休んでなくて大丈夫なのか？"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:6037
@@ -9706,12 +9659,13 @@ msgstr ""
 "Yechnagoth と Zhangor に関する事らしいのですが、Kaleh、あなたには彼女の言って"
 "いる意味が分かりますか？"
 
+#  I think I do
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:6087
 msgid "Hmmmm... Yes, yes I think I do. I don’t know why, but I trust you."
 msgstr ""
-"うむむむ・・・ うむ、そうだな、考えてみよう。上手く説明できないが、貴方を信じ"
-"よう。"
+"うむむむ……、うむ、そうだな、分かっているように思う。上手く説明できないが、貴"
+"方を信じよう。"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:6092
@@ -9744,16 +9698,15 @@ msgid ""
 "rescue them. I would do it myself, but..."
 msgstr ""
 "厄介なことにその通りです、そして私がこれから言うことが、あなた方に認めてもら"
-"えるか分かりません。私の勢力は、必死の戦争をしようとしています・・・、非常に"
-"強力な敵に対して。しばしば我々の敵は私の主人を暗殺しようとしました。私の主人"
-"は、狙われている彼女の存在が他の同朋を危険にさらす事を心配しました。従って彼"
-"女が私と同胞に任務を出し我々を送ったあと、彼女は隠れ待つことになりました。私"
-"は我々のグループでも最も若かったので私にはその場所を話されませんでした。あな"
-"た方には了解して欲しい、スパイはいたる所にいます。我々のグループのリーダーだ"
-"けは知っていたのですが、私以外は穢れた人間によって全てが捕らえられてしまっ"
-"た。今彼らは北方で人質になっています。私の主人を見つけるためには、彼らを最初"
-"に救い出さなければなりません。私は助けに行きます。しかし、あなた方にま"
-"で・・・"
+"えるか分かりません。私の勢力は、必死の戦争をしようとしています…… 非常に強力な"
+"敵に対して。しばしば我々の敵は私の主人を暗殺しようとしました。私の主人は、狙"
+"われている彼女の存在が他の同朋を危険にさらす事を心配しました。従って彼女が私"
+"と同胞に任務を出し我々を送ったあと、彼女は隠れ待つことになりました。私は我々"
+"のグループでも最も若かったので私にはその場所を話されませんでした。あなた方に"
+"は了解して欲しい、スパイはいたる所にいます。我々のグループのリーダーだけは"
+"知っていたのですが、私以外は穢れた人間によって全てが捕らえられてしまった。今"
+"彼らは北方で人質になっています。私の主人を見つけるためには、彼らを最初に救い"
+"出さなければなりません。私は助けに行きます。しかし、あなた方にまで……"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:6107
@@ -9823,7 +9776,7 @@ msgstr "人間の兵士"
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:110
 msgid "Iron Council"
-msgstr "鉄の枢密院"
+msgstr "鉄の議会"
 
 #. [side]: type=Shock Trooper, id=Zelgant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:141
@@ -9886,23 +9839,21 @@ msgstr ""
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:475
-#, fuzzy
 msgid ""
 "Trees look big and strong, like trolls. Dark, too. Grog tired of walking "
 "under hot sun."
 msgstr ""
-"木々、大きくて強そう、トロルみたいだ。暗いのも、いい。$intl_ally_name 、熱い"
-"陽射しの下、歩くの疲れた。"
+"木々、大きくて強そう、トロルみたいだ。暗いのも、いい。Grog、熱い陽射しの下、"
+"歩くの疲れた。"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:481
-#, fuzzy
 msgid ""
 "Trees look big and strong, like trolls. Dark, too. Nog tired of walking "
 "under hot sun."
 msgstr ""
-"木々、大きくて強そう、トロルみたいだ。暗いのも、いい。$intl_ally_name 、熱い"
-"陽射しの下、歩くの疲れた。"
+"木々、大きくて強そう、トロルみたいだ。暗いのも、いい。Nog、熱い陽射しの下、歩"
+"くの疲れた。"
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -10004,7 +9955,7 @@ msgstr "おい、俺たちのシマで何をしてるんだ？"
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:542
 msgid "Uh... Uh..."
-msgstr "ええと… その…"
+msgstr "ええと……、その……"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:546
@@ -10161,7 +10112,7 @@ msgstr "私の、私の罪を赦してくださいませ！"
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:759
 msgid "That I am so blessed to gaze upon Eloh herself..."
-msgstr "私とて Eloh の祝福を受ける身、その私ですら拝謁できなかったのに・・・"
+msgstr "私とて Eloh の祝福を受ける身、その私ですら拝謁できなかったのに……"
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:763
@@ -10402,32 +10353,28 @@ msgstr ""
 msgid ""
 "Forgive me, Kaleh. I do not know what to believe. I... I have to ponder this."
 msgstr ""
-"申し訳ないが、Kaleh。私は何を信じればいいのか分かりません。私は・・・ 私は、"
-"迷っている。"
+"申し訳ないが、Kaleh。私は何を信じればいいのか分かりません。私は……、私は迷って"
+"いる。"
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:861
-#, fuzzy
 msgid ""
 "Great Leader told Grog to serve you, and so Grog will still follow your "
 "command. But other elves must be out on a separate island. How will we cross "
 "deep water?"
 msgstr ""
-"偉大な指導者 $intl_ally_name に言った、あなたに仕えよと。$intl_ally_name 、ま"
-"だあなたの命令に従う。でも、向こうのエルフ達、離れ島に居る。どうやって深い"
-"水、渡る？"
+"偉大な指導者 Grog に言った、あなたに仕えよと。Grog、まだあなたの命令に従う。"
+"でも、向こうのエルフ達、離れ島に居る。どうやって深い水、渡る？"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:867
-#, fuzzy
 msgid ""
 "Great Leader told Nog to serve you, and so Nog will still follow your "
 "command. But other elves must be out on a separate island. How will we cross "
 "deep water?"
 msgstr ""
-"偉大な指導者 $intl_ally_name に言った、あなたに仕えよと。$intl_ally_name 、ま"
-"だあなたの命令に従う。でも、向こうのエルフ達、離れ島に居る。どうやって深い"
-"水、渡る？"
+"偉大な指導者 Nog に言った、あなたに仕えよと。Nog、まだあなたの命令に従う。で"
+"も、向こうのエルフ達、離れ島に居る。どうやって深い水、渡る？"
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -10558,7 +10505,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2209
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2316
 msgid "I must go report to the Iron Council. Keep fighting!"
-msgstr "俺は鉄の議会に報告しなければならない。だが、各員、戦闘は続けよ！"
+msgstr "俺は 鉄の議会 に報告しなければならない。だが、各員、戦闘は続けよ！"
 
 #. [message]: speaker=Zelgant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1094
@@ -10611,8 +10558,8 @@ msgid ""
 "That was one of the Iron Triad. Rarely do they leave their sanctuary. They "
 "prefer to let their minions do the dirty work."
 msgstr ""
-"彼は鉄の三議長のうちの1人です。彼らはめったに彼らの聖域を離れません。彼らは彼"
-"らの手下に汚れ仕事をさせるのです。"
+"彼は「鉄の三議長」のうちの1人です。彼らはめったに彼らの聖域を離れません。彼ら"
+"は彼らの手下に汚れ仕事をさせるのです。"
 
 #. [unit]: type=Merman Warrior, id=Urruga
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1254
@@ -10742,7 +10689,7 @@ msgid ""
 msgstr ""
 "助けてくれてありがとうございます。実は私は、我々があなた方エルフを見つけられ"
 "るなんて思いもしませんでした。我々の主人は結局正しかったようです。助けがもっ"
-"と遅くなっていたら、どうなっていた事か・・・"
+"と遅くなっていたら、どうなっていた事か……"
 
 #. [unit]: type=Mermaid Priestess, id=Il-tian
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1549
@@ -10836,7 +10783,7 @@ msgid ""
 msgstr ""
 "あまりに多くの merfolk が死んだ！ たとえ残り全てを守りきっても、彼らの主人の"
 "居場所を知るのに十分な人数がいない。より慎重に merfolk を守るべきだったのだ。"
-"もう我々の探索に望みはない・・・。"
+"もう我々の探索に望みはない。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1863
@@ -10847,7 +10794,7 @@ msgid ""
 "you can’t drink it?"
 msgstr ""
 "おぉう、この水は温かい。この水を家へ持ち帰ったなら、生涯飲み水に困らないぞ！ "
-"ん、…おい、ちょっと待てよ。 うわっ！ この水は、しょっぱい！ これはひどい味"
+"ん、……おい、ちょっと待てよ。 うわっ！ この水は、しょっぱい！ これはひどい味"
 "だ、とても飲めそうに無い！ 飲めないなら、こんなに沢山の水を何に使えというのだ"
 "ろう？"
 
@@ -10892,8 +10839,8 @@ msgid ""
 "You trespass upon our land at your own peril. All who oppose the will of the "
 "Iron Council shall be crushed!"
 msgstr ""
-"我々の土地に侵入するなら死を覚悟しろ。鉄の枢密院 の意志に反する者全ては粉砕さ"
-"れるだろう！"
+"我々の土地に侵入するなら死を覚悟しろ。鉄の議会 の意志に反する者全ては粉砕され"
+"るだろう！"
 
 #. [message]: speaker=Alastra
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1956
@@ -11053,7 +11000,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2395
 msgid "No, don’t..."
-msgstr "いや、しかし・・・"
+msgstr "いや、しかし……"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2399
@@ -11143,15 +11090,14 @@ msgstr "どうしたの？ 何を聞いたの？"
 #. [message]: speaker=Kromph
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2460
 msgid "Must... Can’t... Must... Help me!"
-msgstr ""
-"しなければ・・・ 出来ない・・・  しなければ・・・   ああ！ 助けてください!"
+msgstr "しなければ……、出来ない……、しなければ……、ああ！ 助けてください!"
 
 #. [message]: speaker=Kromph
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2475
 msgid "Must obey... Can’t resist... I... Yes, Mistress, I am yours."
 msgstr ""
-"従わなければならない・・・ 抵抗することはできない・・・　私は・・・　　あぁ、"
-"女王様、私はあなたのものです。"
+"従わなければならない……、抵抗することはできない……、私は……、あぁ、女王様、私は"
+"あなたのものです。"
 
 #. [message]: speaker=Kromph
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2479
@@ -11167,7 +11113,7 @@ msgid ""
 msgstr ""
 "女王は行ってしまったが、命令に従わなければ、しかし Ｎｙｍ もまた主人なのだ、"
 "Ｎｙｍ はエルフを守れと、だが女王はエルフを殺せと言って、だが守らなくては、殺"
-"さなくては、守れ、殺せ、まも…ァァアアアアアアッ！！"
+"さなくては、守れ、殺せ、まも…… ァァアアアアアアッ！！"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2514
@@ -11304,11 +11250,11 @@ msgid ""
 "shall rise up out of the water to aid our crossing. Like a plague we shall "
 "pour forth and drive the non-believers before us!"
 msgstr ""
-"そいつは結構なことじゃ。じゃがわしらの儀式に干渉したのは愚かじゃった、鉄の枢"
-"密院は愚か者に寛容じゃないのでな。『闇の貴婦人』はお前さんらの魂を飲み込むだ"
-"ろう、そして永遠の苦悶にのたうたねばならん。さて、起き上がれ我が信者達よ、"
-"『闇の貴婦人』の力によって 死者よ目覚めて わしの力となれ！岩礁よ、水底より隆"
-"起し、わしらの道となれ！全軍、疫病の如く殺到し、無信心者を駆逐せよ！"
+"そいつは結構なことじゃ。じゃがわしらの儀式に干渉したのは愚かじゃった、鉄の議"
+"会 は愚か者に寛容じゃないのでな。『闇の貴婦人』はお前さんらの魂を飲み込むだろ"
+"う、そして永遠の苦悶にのたうたねばならん。さて、起き上がれ我が信者達よ、『闇"
+"の貴婦人』の力によって 死者よ目覚めて わしの力となれ！岩礁よ、水底より隆起"
+"し、わしらの道となれ！全軍、疫病の如く殺到し、無信心者を駆逐せよ！"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2723
@@ -11349,9 +11295,9 @@ msgid ""
 "you people cannot swim like us, and I believe I may have a solution."
 msgstr ""
 "実際には我々は浅瀬に住むのを好むのです。そこには太陽と月の下、大きな珊瑚礁が"
-"あり、そこでの陽気なお祭りといったら・・・。脱線しました。我々はあなたたちが"
-"我々のように泳げないことは理解しています。そして、それには確かに解決法があり"
-"ます。"
+"あり、そこでの陽気なお祭りといったら……。脱線しました。我々はあなたたちが我々"
+"のように泳げないことは理解しています。そして、それには確かに解決法がありま"
+"す。"
 
 # lagoonの解説追加。
 #. [message]: role=merfolk
@@ -11363,11 +11309,11 @@ msgid ""
 "lagoon, I saw several ships anchored, which we might be able to use to "
 "transport your people across the waves."
 msgstr ""
-"鉄の枢密院の人間は北西の大きな島に住んでいます。私は何度か尋問のためにそこへ"
-"連れていかれました。そこは恐ろしい場所で、黒い岩と、尖った峰でいっぱいでなの"
-"です。しかし、中央部はラグーン（珊瑚環礁によって囲まれた海面）になっていま"
-"す。ラグーンには、いくつかの船が錨で固定されているのを見ました。その船であな"
-"たの民を波を越えて運ぶ事ができるでしょう。"
+"鉄の議会 の人間は北西の大きな島に住んでいます。私は何度か尋問のためにそこへ連"
+"れていかれました。そこは恐ろしい場所で、黒い岩と、尖った峰でいっぱいでなので"
+"す。しかし、中央部はラグーン（珊瑚環礁によって囲まれた海面）になっています。"
+"ラグーンには、いくつかの船が錨で固定されているのを見ました。その船であなたの"
+"民を波を越えて運ぶ事ができるでしょう。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2750
@@ -11419,25 +11365,21 @@ msgstr ""
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2773
-#, fuzzy
 msgid ""
 "Grog scared of big water and bright sun, but Grog will not dishonor Great "
 "Leader. Great Leader say follow Kaleh, and Grog will do so."
 msgstr ""
-"$intl_ally_name 大きな波、眩しい太陽、恐ろしい。でも、 $intl_ally_name 偉大な"
-"指導者の名を汚さない。偉大な指導者 言った、Kaleh について行けと。だから "
-"$intl_ally_name そうする。"
+"Grog、大きな波、眩しい太陽、恐ろしい。でも、Grog、偉大な指導者の名を汚さな"
+"い。偉大な指導者 言った、Kaleh について行けと。だから Grog そうする。"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2779
-#, fuzzy
 msgid ""
 "Nog scared of big water and bright sun, but Nog will not dishonor Great "
 "Leader. Great Leader say follow Kaleh, and Nog will do so."
 msgstr ""
-"$intl_ally_name 大きな波、眩しい太陽、恐ろしい。でも、 $intl_ally_name 偉大な"
-"指導者の名を汚さない。偉大な指導者 言った、Kaleh について行けと。だから "
-"$intl_ally_name そうする。"
+"Nog、大きな波、眩しい太陽、恐ろしい。でも、Nog、偉大な指導者の名を汚さない。"
+"偉大な指導者 言った、Kaleh について行けと。だから Nog そうする。"
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -11525,7 +11467,7 @@ msgstr ""
 msgid "Don’t worry Kaleh, we will see each other again... I promise."
 msgstr ""
 "Kaleh よ、これしきの事に何程の意味があろう。わらわはそなたと再び見(まみ)えよ"
-"うぞ・・・ 必ずじゃ。"
+"うぞ……、必ずじゃ。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3038
@@ -11548,7 +11490,7 @@ msgid ""
 "believe."
 msgstr ""
 "Kaleh、申し訳ありません。私の信仰が、私の判断力を曇らせました。ですが、私はと"
-"ても、とても信じたかったのです・・・。"
+"ても、とても信じたかったのです。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3058
@@ -11559,7 +11501,7 @@ msgid ""
 "it sounds, even death is a better fate."
 msgstr ""
 "謝る必要はありません。あなたの行動は非常に勇敢でした。私は、どんな神であれ未"
-"だ見守っていてくださると、このような殺戮など望んでいないのだと、…そうあって欲"
+"だ見守っていてくださると、このような殺戮など望んでいないのだと…… そうあって欲"
 "しいと思っています。ですが、私の力が及ばずに民の半数も助けられなかった。何と"
 "いうことだろう、死すらましに思える運命だ。"
 
@@ -11656,7 +11598,7 @@ msgid ""
 "too many elves today."
 msgstr ""
 "何故、自決までする必要がある？ あぁ、Tanstafaal は不幸にも道を誤った。そし"
-"て、私達は今日、あまりに多くのエルフを失った・・・。"
+"て、私達は今日、あまりに多くのエルフを失った……"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3150
@@ -11761,7 +11703,6 @@ msgstr "私達は――"
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:195
-#, fuzzy
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
 "why you have been journeying all this way. And I must say, Grog, that your "
@@ -11769,19 +11710,17 @@ msgid ""
 "your race."
 msgstr ""
 "いえ、あなたが自己紹介することはありません。私は、あなたが誰なのか、そしてあ"
-"なたたちが何故ここへ旅をしてきたのか、既にわかっています。付け加えるなら、 "
-"$intl_ally_name、あなたの最近の行動と気高きエルフの民と共にこの会談への出席さ"
-"れた事は、あなたの種族の名誉にもなりましょう。"
+"なたたちが何故ここへ旅をしてきたのか、既にわかっています。付け加えるなら、"
+"Grog、あなたの最近の行動と気高きエルフの民と共にこの会談への出席された事は、"
+"あなたの種族の名誉にもなりましょう。"
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:200
-#, fuzzy
 msgid "Grog says thank you."
-msgstr " $ally_name は言う、ありがとう。"
+msgstr " Grog は言う、ありがとう。"
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:206
-#, fuzzy
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
 "why you have been journeying all this way. And I must say, Nog, that your "
@@ -11789,19 +11728,17 @@ msgid ""
 "your race."
 msgstr ""
 "いえ、あなたが自己紹介することはありません。私は、あなたが誰なのか、そしてあ"
-"なたたちが何故ここへ旅をしてきたのか、既にわかっています。付け加えるなら、 "
-"$intl_ally_name、あなたの最近の行動と気高きエルフの民と共にこの会談への出席さ"
-"れた事は、あなたの種族の名誉にもなりましょう。"
+"なたたちが何故ここへ旅をしてきたのか、既にわかっています。付け加えるなら、"
+"Nog、あなたの最近の行動と気高きエルフの民と共にこの会談への出席された事は、あ"
+"なたの種族の名誉にもなりましょう。"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:211
-#, fuzzy
 msgid "Nog says thank you."
-msgstr " $ally_name は言う、ありがとう。"
+msgstr "Nog は言う、ありがとう。"
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:217
-#, fuzzy
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
 "why you have been journeying all this way. And I must say, Rogrimir, that "
@@ -11809,9 +11746,9 @@ msgid ""
 "credit to your race."
 msgstr ""
 "いえ、あなたが自己紹介することはありません。私は、あなたが誰なのか、そしてあ"
-"なたたちが何故ここへ旅をしてきたのか、既にわかっています。付け加えるなら、 "
-"$intl_ally_name、あなたの最近の行動と気高きエルフの民と共にこの会談への出席さ"
-"れた事は、あなたの種族の名誉にもなりましょう。"
+"なたたちが何故ここへ旅をしてきたのか、既にわかっています。付け加えるなら、"
+"Rogrimir、あなたの最近の行動と気高きエルフの民と共にこの会談への出席された事"
+"は、あなたの種族の名誉にもなりましょう。"
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -11822,7 +11759,6 @@ msgstr "あなたの親切に感謝を。"
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:228
-#, fuzzy
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
 "why you have been journeying all this way. And I must say, Jarl, that your "
@@ -11830,9 +11766,9 @@ msgid ""
 "your race."
 msgstr ""
 "いえ、あなたが自己紹介することはありません。私は、あなたが誰なのか、そしてあ"
-"なたたちが何故ここへ旅をしてきたのか、既にわかっています。付け加えるなら、 "
-"$intl_ally_name、あなたの最近の行動と気高きエルフの民と共にこの会談への出席さ"
-"れた事は、あなたの種族の名誉にもなりましょう。"
+"なたたちが何故ここへ旅をしてきたのか、既にわかっています。付け加えるなら、"
+"Jarl、あなたの最近の行動と気高きエルフの民と共にこの会談への出席された事は、"
+"あなたの種族の名誉にもなりましょう。"
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:241
@@ -11887,7 +11823,7 @@ msgid ""
 msgstr ""
 "おそらく、最初から話した方がいいでしょうね。これからの話には時間がかかるかも"
 "しれません。さぁ、楽な姿勢でお聴きなさい。私はあなたがたに一つのお話をしま"
-"しょう。それは、あなたがたが『黄金時代』と称するものからの堕落の物語です。"
+"しょう。それは、あなたがたが「黄金時代」と称するものからの堕落の物語です。"
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:275
@@ -12291,23 +12227,21 @@ msgstr "どう考えるべきか確信が持てません。ただ、多くのこ
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:438
-#, fuzzy
 msgid ""
 "Grog not sure if he trust fish lady. What if she just want you elves to "
 "fight her war for her?"
 msgstr ""
-"$intl_ally_name 魚の婦人信頼する、確信ない。彼女のために、彼女の戦争、エルフ"
-"に戦って欲しい、とすれば、どうか？"
+"Grog、魚の婦人信頼する、確信ない。彼女のために、彼女の戦争、エルフに戦って欲"
+"しい、とすれば、どうか？"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:444
-#, fuzzy
 msgid ""
 "Nog not sure if he trust fish lady. What if she just want you elves to fight "
 "her war for her?"
 msgstr ""
-"$intl_ally_name 魚の婦人信頼する、確信ない。彼女のために、彼女の戦争、エルフ"
-"に戦って欲しい、とすれば、どうか？"
+"Nog、 魚の婦人信頼する、確信ない。彼女のために、彼女の戦争、エルフに戦って欲"
+"しい、とすれば、どうか？"
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -12374,8 +12308,8 @@ msgstr ""
 "できません。人間たちは今頃、その経路をしっかりと守っていることでしょう。我々"
 "は merfolk に北方や、南方の海岸に連れ帰ることを頼む事が頼む事もできますが、私"
 "はこれらの土地をまったく知らないのです。我々はあてもなく荒野をさまようことに"
-"なるでしょう。あぁ、我々が Eloh のお導きを得てさえいれば・・・。今までにもま"
-"して彼女を待ち望みます。"
+"なるでしょう。あぁ、我々が Eloh のお導きを得てさえいれば……。今までにもまして"
+"彼女を待ち望みます。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:486
@@ -12398,8 +12332,8 @@ msgstr ""
 "た時、それは、Zhul、子供の頃に貴方に聞いていた話のようだったのだ。私達の神の"
 "声が、長い人生の中で初めて聴こえたのだ。そして、私は信じた、我らの民を死と恐"
 "怖から引き離す事ができると、神にでも縋りたかったのだ。 床につけば夢の中で、私"
-"は彼らに会う・・・、この呪われた旅路で息絶えた同胞たち、彼ら全員の顔を見るの"
-"だ。あぁ！ どれもこれも起こらずにいてくれれば！"
+"は彼らに会う……、この呪われた旅路で息絶えた同胞たち、彼ら全員の顔を見るのだ。"
+"あぁ！ どれもこれも起こらずにいてくれれば！"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:496
@@ -12480,7 +12414,6 @@ msgstr ""
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:544
-#, fuzzy
 msgid ""
 "Even in deepest tunnels my people could not escape Yechnagoth’s power "
 "forever if she is not stopped. Against such evil I am sure the Great Leader "
@@ -12489,12 +12422,10 @@ msgid ""
 msgstr ""
 "深い洞窟でさえ、トロルの一族、Yechnagoth から逃げ続ける、できないだろう。こん"
 "な邪悪に対抗するなら、我が偉大な指導者、トロルの一族、一緒に戦う、言うだろ"
-"う。でも今、$intl_ally_name しか居ない。それでも、$intl_ally_name 彼女を倒す"
-"まで、死力尽くす。"
+"う。でも今、Grog しか居ない。それでも、Grog、彼女を倒すまで、死力尽くす。"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:550
-#, fuzzy
 msgid ""
 "Even in deepest tunnels my people could not escape Yechnagoth’s power "
 "forever if she is not stopped. Against such evil I am sure the Great Leader "
@@ -12503,8 +12434,7 @@ msgid ""
 msgstr ""
 "深い洞窟でさえ、トロルの一族、Yechnagoth から逃げ続ける、できないだろう。こん"
 "な邪悪に対抗するなら、我が偉大な指導者、トロルの一族、一緒に戦う、言うだろ"
-"う。でも今、$intl_ally_name しか居ない。それでも、$intl_ally_name 彼女を倒す"
-"まで、死力尽くす。"
+"う。でも今、Nog しか居ない。それでも、Nog、彼女を倒すまで、死力尽くす。"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:556
@@ -12517,8 +12447,8 @@ msgid ""
 msgstr ""
 "彼女を野放しにしておいては、どれほど地下深くのトンネルでさえ、Yechnagoth の力"
 "から永遠に逃れることはできないのだろうな。そのような邪悪に対抗するなら、我が"
-"王はあなたにドワーフの全軍を与えるのだろうが、今は俺が居るだけだ・・・。だが"
-"な、俺は彼女が滅ぼされる瞬間まで、力の限りを尽くすぞ。"
+"王はあなたにドワーフの全軍を与えるのだろうが、今は俺が居るだけだ……。だがな、"
+"俺は彼女が滅ぼされる瞬間まで、力の限りを尽くすぞ。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:567
@@ -12742,10 +12672,11 @@ msgid ""
 "else and specialized in divination, seeking to scry out the secrets of the "
 "other races. In their scrying they attracted the notice of the demon Zhangor."
 msgstr ""
-"それは 大いなる崩壊 の前の年に全てが始まったといいます。Wesmere の森のエルフ"
-"たちは、秘教的魔術の熟練者でありました。彼らは他の一般的な知識よりも深い叡智"
-"を特別視していて、より高位の存在・神々の知恵を求めて意識を深めていました。し"
-"かし、高位次元への接触を試みた事が、悪魔 Zhangor の気を引いてしまったのです。"
+"それは「大いなる滅び」の前の年に全てが始まったといいます。Wesmere の森のエル"
+"フたちは、秘教的魔術の熟練者でありました。彼らは他の一般的な知識よりも深い叡"
+"智を特別視していて、より高位の存在・神々の知恵を求めて意識を深めていました。"
+"しかし、高位次元への接触を試みた事が、悪魔 Zhangor の気を引いてしまったので"
+"す。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:677
@@ -12834,7 +12765,7 @@ msgid ""
 "In the end she beheaded him and smote his body down upon the earth."
 msgstr ""
 "闇の聖職者の煽動と Zhangor の怒りを恐れた Wesmere のエルフ族は数で勝る我々相"
-"手に強硬に抵抗しました。その戦いは本当にひどいものでした…。たった一回の戦闘"
+"手に強硬に抵抗しました。その戦いは本当にひどいものでした……。たった一回の戦闘"
 "で、美しかった森はそこらじゅうが血に塗れ、日当たりのよかった草むらは死体で埋"
 "まったのです。そして Zhangor がその真の姿を森の上に現した時、死闘は最高潮に達"
 "しました。彼は戦地を跳び回り、敵味方を問わず、炎の雨を降らせました、死と破壊"
@@ -13205,8 +13136,8 @@ msgid ""
 "black citadel in the mountains at the center of the island. I bet it’s "
 "somewhere in the middle of that dark jungle."
 msgstr ""
-"作戦の拠点を得た以上、島の中央の山々にある 漆黒の要塞 へ進軍すべきだ。あの暗"
-"い密林の奥深くの何処かにあることに賭けよう。"
+"作戦の拠点を得た以上、島の中央の山々にある「漆黒の要塞」へ進軍すべきだ。あの"
+"暗い密林の奥深くの何処かにあることに賭けよう。"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:909
@@ -13228,7 +13159,7 @@ msgstr "感謝致します。あなた方の助力を得て心強く思います
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:927
 msgid "Reach the black citadel in the center of the island"
-msgstr "島の中央にある 漆黒の要塞 へ到達せよ"
+msgstr "島の中央にある「漆黒の要塞」へ到達せよ"
 
 #. [message]: speaker=Kelur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:968
@@ -13391,7 +13322,7 @@ msgstr ""
 #. [message]: speaker=Trapped Merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1405
 msgid "Help me..."
-msgstr "助けてくれぇ・・・"
+msgstr "助けてくれぇ……"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1410
@@ -13527,7 +13458,7 @@ msgstr ""
 "い旅路に連れ添い私を信頼してくれた貴方達への感謝を申し上げる。もし私が勝利で"
 "きなければ、ここから逃げ merfolk 達と何処か安全で平和な地を探しに行ってほし"
 "い。私の最後の願いは、何が起ろうとも貴方達が長く実りある人生を送ってくれるこ"
-"となのだ。そして、この旅路で失われた者達の事を忘れないで欲しい…。"
+"となのだ。そして、この旅路で失われた者達の事を忘れないで欲しい……"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1611
@@ -13557,7 +13488,7 @@ msgstr "そう願っている。"
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1648
 msgid "Well, now we just have to wait..."
-msgstr "さて、我々はただ待ち続けねばなりません…"
+msgstr "さて、我々はただ待ち続けねばなりません……"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1653
@@ -13621,30 +13552,26 @@ msgstr ""
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1713
-#, fuzzy
 msgid ""
 "Grog not going to just sit here while Kaleh does all the fighting. Kaleh "
 "will need strong fighter like Grog. Other elves may be scared, but Grog fear "
 "no dark place. Grog just hope there still something to smash when he gets "
 "there."
 msgstr ""
-"Kaleh 戦っている間、$intl_ally_name ただ座って待つ、ありえない。Kaleh 強い戦"
-"士必要、$intl_ally_name のような。他のエルフ、怯えてる、で"
-"も、$intl_ally_name 恐れない、闇の中も。 $intl_ally_name 中に入る、邪魔する、"
-"粉砕する。"
+"Kaleh 戦っている間、Grog ただ座って待つ、ありえない。Kaleh 強い戦士必要、"
+"Grog のような。他のエルフ、怯えてる、でも、Grog 恐れない、闇の中も。 Grog 中"
+"に入る、邪魔する、粉砕する。"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1719
-#, fuzzy
 msgid ""
 "Nog not going to just sit here while Kaleh does all the fighting. Kaleh will "
 "need strong fighter like Nog. Other elves may be scared, but Nog fear no "
 "dark place. Nog just hope there still something to smash when he gets there."
 msgstr ""
-"Kaleh 戦っている間、$intl_ally_name ただ座って待つ、ありえない。Kaleh 強い戦"
-"士必要、$intl_ally_name のような。他のエルフ、怯えてる、で"
-"も、$intl_ally_name 恐れない、闇の中も。 $intl_ally_name 中に入る、邪魔する、"
-"粉砕する。"
+"Kaleh 戦っている間、Nog ただ座って待つ、ありえない。Kaleh 強い戦士必要、Nog "
+"のような。他のエルフ、怯えてる、でも、Nog 恐れない、闇の中も。 Nog 中に入る、"
+"邪魔する、粉砕する。"
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -13731,27 +13658,23 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:409
-#, fuzzy
 msgid "Nym, Zhul, Grog, you shouldn’t have."
-msgstr "Nym、Zhul、おまえたち、外で待ってたんじゃないのか。"
+msgstr "Nym、Zhul、Grog、おまえたち、外で待ってたんじゃないのか。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:415
-#, fuzzy
 msgid "Nym, Zhul, Nog, you shouldn’t have."
-msgstr "Nym、Zhul、おまえたち、外で待ってたんじゃないのか。"
+msgstr "Nym、Zhul、Nog、おまえたち、外で待ってたんじゃないのか。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:421
-#, fuzzy
 msgid "Nym, Zhul, Rogrimir, you shouldn’t have."
-msgstr "Nym、Zhul、おまえたち、外で待ってたんじゃないのか。"
+msgstr "Nym、Zhul、Rogrimir、おまえたち、外で待ってたんじゃないのか。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:428
-#, fuzzy
 msgid "Nym, Zhul, Jarl, you shouldn’t have."
-msgstr "Nym、Zhul、おまえたち、外で待ってたんじゃないのか。"
+msgstr "Nym、Zhul、Jarl、おまえたち、外で待ってたんじゃないのか。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:436
@@ -14026,23 +13949,21 @@ msgstr "見なさい！僭称者は倒されました。真の Eloh の民が勝
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1639
-#, fuzzy
 msgid ""
 "Ugh. Grog is covered in blood and guts and nasty blue goo. Whatever creature "
 "was, she doesn’t smell any better dead than she did alive."
 msgstr ""
-"うぅっ、$intl_ally_name 血まみれ、内蔵まみれだ、青くてベトベトしてる、気持ち"
-"悪い。あの生き物が何であれ、死んで、マシになった。"
+"うぅっ、Grog 血まみれ、内蔵まみれだ、青くてベトベトしてる、気持ち悪い。あの生"
+"き物が何であれ、死んで、マシになった。"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1645
-#, fuzzy
 msgid ""
 "Ugh. Nog is covered in blood and guts and nasty blue goo. Whatever creature "
 "was, she doesn’t smell any better dead than she did alive."
 msgstr ""
-"うぅっ、$intl_ally_name 血まみれ、内蔵まみれだ、青くてベトベトしてる、気持ち"
-"悪い。あの生き物が何であれ、死んで、マシになった。"
+"うぅっ、Nog 血まみれ、内蔵まみれだ、青くてベトベトしてる、気持ち悪い。あの生"
+"き物が何であれ、死んで、マシになった。"
 
 # nine hells:ドワーフ語？
 #. [message]: speaker=Rogrimir
@@ -14132,7 +14053,7 @@ msgstr ""
 "くれている。Melusand の言葉によると、今は平和と繁栄のための時間なのだ、と。"
 "我々の旅路では生き残れないという考えがよぎる事もあったし、何度も危険に直面し"
 "てきた。ここに辿り着いた事が奇跡の様に思えてならない。我々の支払った代価を忘"
-"れる事が出来れば良いのだが…。"
+"れる事が出来れば良いのだが……"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:114
@@ -14168,8 +14089,8 @@ msgstr ""
 "ら、最初の一歩を踏み出す強さを持てたかどうか分からない。それに私の友人達が私"
 "を Yechnagoth と単独で立ち向かわせないと知るべきであったと思う。もし Nym を生"
 "き返らせられるなら私は喜んで命を差し出しただろう。彼女は誠実に私について来て"
-"くれ、私の傍で長い間共に戦ってきたのだ。それが最後に彼女を失うとは…。時を遡り"
-"初めからやり直したいと願う。"
+"くれ、私の傍で長い間共に戦ってきたのだ。それが最後に彼女を失うとは……。時を遡"
+"り初めからやり直したいと願う。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:155
@@ -14186,12 +14107,11 @@ msgstr ""
 "ら、最初の一歩を踏み出す強さを持てたかどうか分からない。それに私の友人達が私"
 "を Yechnagoth と単独で立ち向かわせないと知るべきであったと思う。もし Zhul を"
 "生き返らせられるなら私は喜んで命を差し出しただろう。彼女は誠実に私について来"
-"てくれ、私の傍で長い間共に戦ってきたのだ。それが最後に彼女を失うとは…。時を遡"
-"り初めからやり直したいと願う。"
+"てくれ、私の傍で長い間共に戦ってきたのだ。それが最後に彼女を失うとは……。時を"
+"遡り初めからやり直したいと願う。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:171
-#, fuzzy
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
 "blood, I do not know if I would have had the strength to take that first "
@@ -14203,14 +14123,13 @@ msgid ""
 msgstr ""
 "もしこの旅で支払わなければならなかった血の代価を旅の始めに聞かされていたな"
 "ら、最初の一歩を踏み出す強さを持てたかどうか分からない。それに私の友人達が私"
-"を Yechnagoth と単独で立ち向かわせないと知るべきであったと思う。もし "
-"$intl_ally_name を生き返らせられるなら私は喜んで命を差し出しただろう。彼は故"
-"郷から離れ私の傍で誠実に戦ってくれたのだ。それが最後に彼を失うとは…。時を遡り"
-"初めからやり直したいと願う。"
+"を Yechnagoth と単独で立ち向かわせないと知るべきであったと思う。もし Grog を"
+"生き返らせられるなら私は喜んで命を差し出しただろう。彼は故郷から離れ私の傍で"
+"誠実に戦ってくれたのだ。それが最後に彼を失うとは……。時を遡り初めからやり直し"
+"たいと切に願う。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:177
-#, fuzzy
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
 "blood, I do not know if I would have had the strength to take that first "
@@ -14222,14 +14141,13 @@ msgid ""
 msgstr ""
 "もしこの旅で支払わなければならなかった血の代価を旅の始めに聞かされていたな"
 "ら、最初の一歩を踏み出す強さを持てたかどうか分からない。それに私の友人達が私"
-"を Yechnagoth と単独で立ち向かわせないと知るべきであったと思う。もし "
-"$intl_ally_name を生き返らせられるなら私は喜んで命を差し出しただろう。彼は故"
-"郷から離れ私の傍で誠実に戦ってくれたのだ。それが最後に彼を失うとは…。時を遡り"
-"初めからやり直したいと願う。"
+"を Yechnagoth と単独で立ち向かわせないと知るべきであったと思う。もし Nog を生"
+"き返らせられるなら私は喜んで命を差し出しただろう。彼は故郷から離れ私の傍で誠"
+"実に戦ってくれたのだ。それが最後に彼を失うとは……。時を遡り初めからやり直した"
+"いと切に願う。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:183
-#, fuzzy
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
 "blood, I do not know if I would have had the strength to take that first "
@@ -14242,13 +14160,12 @@ msgstr ""
 "もしこの旅で支払わなければならなかった血の代価を旅の始めに聞かされていたな"
 "ら、最初の一歩を踏み出す強さを持てたかどうか分からない。それに私の友人達が私"
 "を Yechnagoth と単独で立ち向かわせないと知るべきであったと思う。もし "
-"$intl_ally_name を生き返らせられるなら私は喜んで命を差し出しただろう。彼は故"
-"郷から離れ私の傍で誠実に戦ってくれたのだ。それが最後に彼を失うとは…。時を遡り"
-"初めからやり直したいと願う。"
+"Rogrimir を生き返らせられるなら私は喜んで命を差し出しただろう。彼は故郷から離"
+"れ私の傍で誠実に戦ってくれたのだ。それが最後に彼を失うとは……。時を遡り初めか"
+"らやり直したいと切に願う。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:189
-#, fuzzy
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
 "blood, I do not know if I would have had the strength to take that first "
@@ -14260,10 +14177,10 @@ msgid ""
 msgstr ""
 "もしこの旅で支払わなければならなかった血の代価を旅の始めに聞かされていたな"
 "ら、最初の一歩を踏み出す強さを持てたかどうか分からない。それに私の友人達が私"
-"を Yechnagoth と単独で立ち向かわせないと知るべきであったと思う。もし "
-"$intl_ally_name を生き返らせられるなら私は喜んで命を差し出しただろう。彼は故"
-"郷から離れ私の傍で誠実に戦ってくれたのだ。それが最後に彼を失うとは…。時を遡り"
-"初めからやり直したいと願う。"
+"を Yechnagoth と単独で立ち向かわせないと知るべきであったと思う。もし Jarl を"
+"生き返らせられるなら私は喜んで命を差し出しただろう。彼は故郷から離れ私の傍で"
+"誠実に戦ってくれたのだ。それが最後に彼を失うとは……。時を遡り初めからやり直し"
+"たいと切に願う。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:206
@@ -14280,8 +14197,8 @@ msgstr ""
 "ら、最初の一歩を踏み出す強さを持てたかどうか分からない。それに私の友人達が私"
 "を Yechnagoth と単独で立ち向かわせないと知るべきであったと思う。もし誰か一人"
 "でも生き返らせられるなら私は喜んで命を差し出しただろう。彼らは長い間私の傍で"
-"誠実に付き従い戦ってくれたのだ。それが最後に彼らを失うとは…。時を遡り初めから"
-"やり直したいと願う。"
+"誠実に付き従い戦ってくれたのだ。それが最後に彼らを失うとは……。時を遡り初めか"
+"らやり直したいと願う。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:227
@@ -14325,10 +14242,9 @@ msgstr ""
 "葉を思い出す。水辺を見渡し、我が民の繁栄をかえりみて、私はそれは価値があった"
 "のだと自分に言い聞かせている。だが時々、それも気休めに思えてならない。"
 
-# 最後の一文だけ違うので注意
+# ドワーフ・トロル系は最後の一文だけ違う
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:262
-#, fuzzy
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
 "I am still haunted by the death of Grog in that dark place. And so every "
@@ -14342,18 +14258,16 @@ msgid ""
 "people are probably still fighting underground, it seems a small consolation."
 msgstr ""
 "漆黒の要塞 での我々の戦いが栄光の時であったと信じてはいるが、あの暗黒の地にお"
-"ける $intl_ally_name の死が頭から離れない。それで毎朝日の出と共に島の東南にあ"
-"る先端にて水辺を、犠牲を捧げてまで守ったこの世界を、見続けている。我々の旅路"
-"で死と戦いを見てきたにもかかわらず、$intl_ally_name が彼の命を犠牲にしてもい"
-"いと思うほどにこの世界は美しく素晴らしいものだと、彼らは信じていたと、そう"
-"言っていた Zhul の言葉を思い出す。水辺を見渡し、我が民の繁栄をかえりみて、私"
-"はそれは価値があったのだと自分に言い聞かせている。だが彼の種族の未だ戦い続け"
-"ているであろう絶望的な闘争を思うとき、その考えも気休めに思えてならない。"
+"ける Grog の死が頭から離れない。それで毎朝日の出と共に島の東南にある先端にて"
+"水辺を、犠牲を捧げてまで守ったこの世界を、見続けている。我々の旅路で死と戦い"
+"を見てきたにもかかわらず、Grog が彼の命を犠牲にしてもいいと思うほどにこの世界"
+"は美しく素晴らしいものだと、彼らは信じていたと、そう言っていた Zhul の言葉を"
+"思い出す。水辺を見渡し、我が民の繁栄をかえりみて、私はそれは価値があったのだ"
+"と自分に言い聞かせている。だが彼の種族の未だ戦い続けているであろう絶望的な闘"
+"争を思うとき、その考えも気休めに思えてならない。"
 
-# 最後の一文だけ違うので注意
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:268
-#, fuzzy
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
 "I am still haunted by the death of Nog in that dark place. And so every "
@@ -14367,18 +14281,16 @@ msgid ""
 "people are probably still fighting underground, it seems a small consolation."
 msgstr ""
 "漆黒の要塞 での我々の戦いが栄光の時であったと信じてはいるが、あの暗黒の地にお"
-"ける $intl_ally_name の死が頭から離れない。それで毎朝日の出と共に島の東南にあ"
-"る先端にて水辺を、犠牲を捧げてまで守ったこの世界を、見続けている。我々の旅路"
-"で死と戦いを見てきたにもかかわらず、$intl_ally_name が彼の命を犠牲にしてもい"
-"いと思うほどにこの世界は美しく素晴らしいものだと、彼らは信じていたと、そう"
-"言っていた Zhul の言葉を思い出す。水辺を見渡し、我が民の繁栄をかえりみて、私"
-"はそれは価値があったのだと自分に言い聞かせている。だが彼の種族の未だ戦い続け"
-"ているであろう絶望的な闘争を思うとき、その考えも気休めに思えてならない。"
+"ける Nog の死が頭から離れない。それで毎朝日の出と共に島の東南にある先端にて水"
+"辺を、犠牲を捧げてまで守ったこの世界を、見続けている。我々の旅路で死と戦いを"
+"見てきたにもかかわらず、Nog が彼の命を犠牲にしてもいいと思うほどにこの世界は"
+"美しく素晴らしいものだと、彼らは信じていたと、そう言っていた Zhul の言葉を思"
+"い出す。水辺を見渡し、我が民の繁栄をかえりみて、私はそれは価値があったのだと"
+"自分に言い聞かせている。だが彼の種族の未だ戦い続けているであろう絶望的な闘争"
+"を思うとき、その考えも気休めに思えてならない。"
 
-# 最後の一文だけ違うので注意
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:274
-#, fuzzy
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
 "I am still haunted by the death of Rogrimir in that dark place. And so every "
@@ -14393,18 +14305,16 @@ msgid ""
 "consolation."
 msgstr ""
 "漆黒の要塞 での我々の戦いが栄光の時であったと信じてはいるが、あの暗黒の地にお"
-"ける $intl_ally_name の死が頭から離れない。それで毎朝日の出と共に島の東南にあ"
-"る先端にて水辺を、犠牲を捧げてまで守ったこの世界を、見続けている。我々の旅路"
-"で死と戦いを見てきたにもかかわらず、$intl_ally_name が彼の命を犠牲にしてもい"
-"いと思うほどにこの世界は美しく素晴らしいものだと、彼らは信じていたと、そう"
-"言っていた Zhul の言葉を思い出す。水辺を見渡し、我が民の繁栄をかえりみて、私"
-"はそれは価値があったのだと自分に言い聞かせている。だが彼の種族の未だ戦い続け"
-"ているであろう絶望的な闘争を思うとき、その考えも気休めに思えてならない。"
+"ける Rogrimir の死が頭から離れない。それで毎朝日の出と共に島の東南にある先端"
+"にて水辺を、犠牲を捧げてまで守ったこの世界を、見続けている。我々の旅路で死と"
+"戦いを見てきたにもかかわらず、Rogrimir が彼の命を犠牲にしてもいいと思うほどに"
+"この世界は美しく素晴らしいものだと、彼らは信じていたと、そう言っていた Zhul "
+"の言葉を思い出す。水辺を見渡し、我が民の繁栄をかえりみて、私はそれは価値が"
+"あったのだと自分に言い聞かせている。だが彼の種族の未だ戦い続けているであろう"
+"絶望的な闘争を思うとき、その考えも気休めに思えてならない。"
 
-# 最後の一文だけ違うので注意
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:280
-#, fuzzy
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
 "I am still haunted by the death of Jarl in that dark place. And so every "
@@ -14418,13 +14328,13 @@ msgid ""
 "people are probably still fighting underground, it seems a small consolation."
 msgstr ""
 "漆黒の要塞 での我々の戦いが栄光の時であったと信じてはいるが、あの暗黒の地にお"
-"ける $intl_ally_name の死が頭から離れない。それで毎朝日の出と共に島の東南にあ"
-"る先端にて水辺を、犠牲を捧げてまで守ったこの世界を、見続けている。我々の旅路"
-"で死と戦いを見てきたにもかかわらず、$intl_ally_name が彼の命を犠牲にしてもい"
-"いと思うほどにこの世界は美しく素晴らしいものだと、彼らは信じていたと、そう"
-"言っていた Zhul の言葉を思い出す。水辺を見渡し、我が民の繁栄をかえりみて、私"
-"はそれは価値があったのだと自分に言い聞かせている。だが彼の種族の未だ戦い続け"
-"ているであろう絶望的な闘争を思うとき、その考えも気休めに思えてならない。"
+"けるJarl の死が頭から離れない。それで毎朝日の出と共に島の東南にある先端にて水"
+"辺を、犠牲を捧げてまで守ったこの世界を、見続けている。我々の旅路で死と戦いを"
+"見てきたにもかかわらず、Jarl が彼の命を犠牲にしてもいいと思うほどにこの世界は"
+"美しく素晴らしいものだと、彼らは信じていたと、そう言っていた Zhul の言葉を思"
+"い出す。水辺を見渡し、我が民の繁栄をかえりみて、私はそれは価値があったのだと"
+"自分に言い聞かせている。だが彼の種族の未だ戦い続けているであろう絶望的な闘争"
+"を思うとき、その考えも気休めに思えてならない。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:297
@@ -14468,7 +14378,7 @@ msgstr ""
 "の事を忘れないだろう。Nym は私が子供の頃から一緒にいたし、この旅路を共に歩ん"
 "できた、彼女は常に誠実で、心のままに話すことを躊躇う事は無かったし、どんな厳"
 "しい時でも軽口を叩こうとしていた。どうして失ってしまったのだろう、彼女の笑顔"
-"を、彼女の微笑を、彼女の…。"
+"を、彼女の微笑を、彼女の……"
 
 #  my guide and my faith and my link to the past：どう訳すか？
 #. [message]: speaker=Kaleh
@@ -14497,7 +14407,6 @@ msgstr ""
 # service:軍役だろうが、kindは…？
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:350
-#, fuzzy
 msgid ""
 "I am saddened by the death of Grog, but by saving my life in the end he did "
 "fulfill his life debt to me. I think he also would have been glad to have "
@@ -14510,19 +14419,17 @@ msgid ""
 "we buried him with much honor and will long remember the service that his "
 "kind has done for our people."
 msgstr ""
-"$intl_ally_name の死は悲しい出来事だった、最後には私の命を救うことで彼は責務"
-"を果たしたのだ。戦いの中における死は彼の喜びであったろう。彼の遺体を彼の種族"
-"の元へ返す遠征を行いたかったのだが、私につき従ってくれた民はもはや長い旅に出"
-"るには疲弊しており、これ以上の危険を冒す事は望めなかった。その代わりに島中を"
-"探索し、最終的には岩礁に北西に向かう一連の洞窟を見つけ出した。それらは彼の故"
-"郷ほどには深くはなかったが、硬い岩の元で横たわり眠りにつけて $intl_ally_name "
-"は喜んでくれるだろう。こうして多くの敬意を持って彼を埋葬した、我々の民のため"
-"に命を賭けて戦ってくれた事を長く語り伝えよう。"
+"Grog の死は悲しい出来事だった、最後には私の命を救うことで彼は責務を果たしたの"
+"だ。戦いの中における死は彼の喜びであったろう。彼の遺体を彼の種族の元へ返す遠"
+"征を行いたかったのだが、私につき従ってくれた民はもはや長い旅に出るには疲弊し"
+"ており、これ以上の危険を冒す事は望めなかった。その代わりに島中を探索し、最終"
+"的には岩礁に北西に向かう一連の洞窟を見つけ出した。それらは彼の故郷ほどには深"
+"くはなかったが、硬い岩の元で横たわり眠りにつけて Grog は喜んでくれるだろう。"
+"こうして多くの敬意を持って彼を埋葬した、我々の民のために命を賭けて戦ってくれ"
+"た事を長く語り伝えよう。"
 
-# service:軍役だろうが、kindは…？
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:357
-#, fuzzy
 msgid ""
 "I am saddened by the death of Nog, but by saving my life in the end he did "
 "fulfill his life debt to me. I think he also would have been glad to have "
@@ -14535,19 +14442,17 @@ msgid ""
 "we buried him with much honor and will long remember the service that his "
 "kind has done for our people."
 msgstr ""
-"$intl_ally_name の死は悲しい出来事だった、最後には私の命を救うことで彼は責務"
-"を果たしたのだ。戦いの中における死は彼の喜びであったろう。彼の遺体を彼の種族"
-"の元へ返す遠征を行いたかったのだが、私につき従ってくれた民はもはや長い旅に出"
-"るには疲弊しており、これ以上の危険を冒す事は望めなかった。その代わりに島中を"
-"探索し、最終的には岩礁に北西に向かう一連の洞窟を見つけ出した。それらは彼の故"
-"郷ほどには深くはなかったが、硬い岩の元で横たわり眠りにつけて $intl_ally_name "
-"は喜んでくれるだろう。こうして多くの敬意を持って彼を埋葬した、我々の民のため"
-"に命を賭けて戦ってくれた事を長く語り伝えよう。"
+"Nog の死は悲しい出来事だった、最後には私の命を救うことで彼は責務を果たしたの"
+"だ。戦いの中における死は彼の喜びであったろう。彼の遺体を彼の種族の元へ返す遠"
+"征を行いたかったのだが、私につき従ってくれた民はもはや長い旅に出るには疲弊し"
+"ており、これ以上の危険を冒す事は望めなかった。その代わりに島中を探索し、最終"
+"的には岩礁に北西に向かう一連の洞窟を見つけ出した。それらは彼の故郷ほどには深"
+"くはなかったが、硬い岩の元で横たわり眠りにつけて Nog は喜んでくれるだろう。こ"
+"うして多くの敬意を持って彼を埋葬した、我々の民のために命を賭けて戦ってくれた"
+"事を長く語り伝えよう。"
 
-# service:軍役だろうが、kindは…？
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:364
-#, fuzzy
 msgid ""
 "I am saddened by the death of Rogrimir, but by saving my life in the end he "
 "did fulfill his life debt to me. I think he also would have been glad to "
@@ -14560,19 +14465,17 @@ msgid ""
 "solid rock. And so we buried him with much honor and will long remember the "
 "service that his kind has done for our people."
 msgstr ""
-"$intl_ally_name の死は悲しい出来事だった、最後には私の命を救うことで彼は責務"
-"を果たしたのだ。戦いの中における死は彼の喜びであったろう。彼の遺体を彼の種族"
-"の元へ返す遠征を行いたかったのだが、私につき従ってくれた民はもはや長い旅に出"
-"るには疲弊しており、これ以上の危険を冒す事は望めなかった。その代わりに島中を"
-"探索し、最終的には岩礁に北西に向かう一連の洞窟を見つけ出した。それらは彼の故"
-"郷ほどには深くはなかったが、硬い岩の元で横たわり眠りにつけて $intl_ally_name "
-"は喜んでくれるだろう。こうして多くの敬意を持って彼を埋葬した、我々の民のため"
-"に命を賭けて戦ってくれた事を長く語り伝えよう。"
+"Rogrimir の死は悲しい出来事だった、最後には私の命を救うことで彼は責務を果たし"
+"たのだ。戦いの中における死は彼の喜びであったろう。彼の遺体を彼の種族の元へ返"
+"す遠征を行いたかったのだが、私につき従ってくれた民はもはや長い旅に出るには疲"
+"弊しており、これ以上の危険を冒す事は望めなかった。その代わりに島中を探索し、"
+"最終的には岩礁に北西に向かう一連の洞窟を見つけ出した。それらは彼の故郷ほどに"
+"は深くはなかったが、硬い岩の元で横たわり眠りにつけて Rogrimir は喜んでくれる"
+"だろう。こうして多くの敬意を持って彼を埋葬した、我々の民のために命を賭けて"
+"戦ってくれた事を長く語り伝えよう。"
 
-# service:軍役だろうが、kindは…？
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:371
-#, fuzzy
 msgid ""
 "I am saddened by the death of Jarl, but by saving my life in the end he did "
 "fulfill his life debt to me. I think he also would have been glad to have "
@@ -14585,14 +14488,14 @@ msgid ""
 "we buried him with much honor and will long remember the service that his "
 "kind has done for our people."
 msgstr ""
-"$intl_ally_name の死は悲しい出来事だった、最後には私の命を救うことで彼は責務"
-"を果たしたのだ。戦いの中における死は彼の喜びであったろう。彼の遺体を彼の種族"
-"の元へ返す遠征を行いたかったのだが、私につき従ってくれた民はもはや長い旅に出"
-"るには疲弊しており、これ以上の危険を冒す事は望めなかった。その代わりに島中を"
-"探索し、最終的には岩礁に北西に向かう一連の洞窟を見つけ出した。それらは彼の故"
-"郷ほどには深くはなかったが、硬い岩の元で横たわり眠りにつけて $intl_ally_name "
-"は喜んでくれるだろう。こうして多くの敬意を持って彼を埋葬した、我々の民のため"
-"に命を賭けて戦ってくれた事を長く語り伝えよう。"
+"Jarl の死は悲しい出来事だった、最後には私の命を救うことで彼は責務を果たしたの"
+"だ。戦いの中における死は彼の喜びであったろう。彼の遺体を彼の種族の元へ返す遠"
+"征を行いたかったのだが、私につき従ってくれた民はもはや長い旅に出るには疲弊し"
+"ており、これ以上の危険を冒す事は望めなかった。その代わりに島中を探索し、最終"
+"的には岩礁に北西に向かう一連の洞窟を見つけ出した。それらは彼の故郷ほどには深"
+"くはなかったが、硬い岩の元で横たわり眠りにつけて Jarl は喜んでくれるだろう。"
+"こうして多くの敬意を持って彼を埋葬した、我々の民のために命を賭けて戦ってくれ"
+"た事を長く語り伝えよう。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:388
@@ -14646,9 +14549,9 @@ msgstr ""
 "だが、一部の人たちは古の時代の平和と繁栄の再来の印だと言っている。"
 
 # こちらを翻訳。↑はコピペ。
+# (同盟者の名前直記で文章が分裂したが？)
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:422
-#, fuzzy
 msgid ""
 "By saving my life, Grog fulfilled his life debt to me, but we convinced him "
 "to hang around for a while and revel in the celebrations that we held after "
@@ -14664,23 +14567,21 @@ msgid ""
 "memory of him and his kind, and I will long remember his steadfast loyalty "
 "and all that he did to aid us in our struggle."
 msgstr ""
-"私の命を救ったことで、$intl_ally_name は彼の責務を果たしたと言うが、我々はし"
-"ばらく留まって、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は "
-"Eloh と merfolk 達の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称"
-"えて何日も何日も祝っていた。その後で民の為の新しい住居の建設に取り掛かっ"
-"た。$intl_ally_name は我々の建設工事を助けるために留まってくれ、誰よりも沢山"
-"働いてくれた。それからしばらくして彼は私の元に来て、彼の種族の元に帰らなけれ"
-"ばならないと告げた。我々と過ごした時間は素晴らしく夢の様だったと、我々の事を"
-"忘れはしないと、そして彼の種族は彼を必要としていたので故郷へ帰らなければなら"
-"ないと、$intl_ally_name は言っていた。彼は何時の日にか再び訪ねて来ると言って"
-"いたが、はたして私が生きているうちに再び会えるだろうか。いずれにしても彼との"
-"思い出も彼の助力も心に銘記されている。彼の不変の忠誠心と彼が我々を助けるため"
-"に奮闘してくれた全てを長く伝えていこう。"
+"私の命を救ったことで、Grog は彼の責務を果たしたと言うが、我々はしばらく留まっ"
+"て、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は Eloh と "
+"merfolk 達の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称えて何日"
+"も何日も祝っていた。その後で民の為の新しい住居の建設に取り掛かった。Grog は"
+"我々の建設工事を助けるために留まってくれ、誰よりも沢山働いてくれた。それから"
+"しばらくして彼は私の元に来て、彼の種族の元に帰らなければならないと告げた。"
+"我々と過ごした時間は素晴らしく夢の様だったと、我々の事を忘れはしないと、そし"
+"て彼の種族は彼を必要としていたので故郷へ帰らなければならないと、Grog は言って"
+"いた。彼は何時の日にか再び訪ねて来ると言っていたが、はたして私が生きているう"
+"ちに再び会えるだろうか。いずれにしても彼との思い出も彼の助力も心に銘記されて"
+"いる。彼の不変の忠誠心と彼が我々を助けるために奮闘してくれた全てを長く伝えて"
+"いこう。"
 
-# こちらを翻訳。↑はコピペ。
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:429
-#, fuzzy
 msgid ""
 "By saving my life, Nog fulfilled his life debt to me, but we convinced him "
 "to hang around for a while and revel in the celebrations that we held after "
@@ -14696,23 +14597,22 @@ msgid ""
 "memory of him and his kind, and I will long remember his steadfast loyalty "
 "and all that he did to aid us in our struggle."
 msgstr ""
-"私の命を救ったことで、$intl_ally_name は彼の責務を果たしたと言うが、我々はし"
-"ばらく留まって、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は "
-"Eloh と merfolk 達の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称"
-"えて何日も何日も祝っていた。その後で民の為の新しい住居の建設に取り掛かっ"
-"た。$intl_ally_name は我々の建設工事を助けるために留まってくれ、誰よりも沢山"
-"働いてくれた。それからしばらくして彼は私の元に来て、彼の種族の元に帰らなけれ"
-"ばならないと告げた。我々と過ごした時間は素晴らしく夢の様だったと、我々の事を"
-"忘れはしないと、そして彼の種族は彼を必要としていたので故郷へ帰らなければなら"
-"ないと、$intl_ally_name は言っていた。彼は何時の日にか再び訪ねて来ると言って"
-"いたが、はたして私が生きているうちに再び会えるだろうか。いずれにしても彼との"
-"思い出も彼の助力も心に銘記されている。彼の不変の忠誠心と彼が我々を助けるため"
-"に奮闘してくれた全てを長く伝えていこう。"
+"私の命を救ったことで、Nog は彼の責務を果たしたと言うが、我々はしばらく留まっ"
+"て、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は Eloh と "
+"merfolk 達の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称えて何日"
+"も何日も祝っていた。その後で民の為の新しい住居の建設に取り掛かった。Nog は"
+"我々の建設工事を助けるために留まってくれ、誰よりも沢山働いてくれた。それから"
+"しばらくして彼は私の元に来て、彼の種族の元に帰らなければならないと告げた。"
+"我々と過ごした時間は素晴らしく夢の様だったと、我々の事を忘れはしないと、そし"
+"て彼の種族は彼を必要としていたので故郷へ帰らなければならないと、Nog は言って"
+"いた。彼は何時の日にか再び訪ねて来ると言っていたが、はたして私が生きているう"
+"ちに再び会えるだろうか。いずれにしても彼との思い出も彼の助力も心に銘記されて"
+"いる。彼の不変の忠誠心と彼が我々を助けるために奮闘してくれた全てを長く伝えて"
+"いこう。"
 
-# （And）afterwardsの前にAndがあるか無いかだけの違いか？
+# トロル系との違いは、（And）afterwardsの前にAndがあるか無いかだけの違いか？
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:436
-#, fuzzy
 msgid ""
 "By saving my life, Rogrimir fulfilled his life debt to me, but we convinced "
 "him to hang around for a while and revel in the celebrations that we held "
@@ -14728,23 +14628,21 @@ msgid ""
 "treasure the memory of him and his kind, and I will long remember his "
 "steadfast loyalty and all that he did to aid us in our struggle."
 msgstr ""
-"私の命を救ったことで、$intl_ally_name は彼の責務を果たしたと言うが、我々はし"
-"ばらく留まって、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は "
-"Eloh と merfolk 達の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称"
-"えて何日も何日も祝っていた。その後で民の為の新しい住居の建設に取り掛かっ"
-"た。$intl_ally_name は我々の建設工事を助けるために留まってくれ、誰よりも沢山"
-"働いてくれた。それからしばらくして彼は私の元に来て、彼の種族の元に帰らなけれ"
-"ばならないと告げた。我々と過ごした時間は素晴らしく夢の様だったと、我々の事を"
-"忘れはしないと、そして彼の種族は彼を必要としていたので故郷へ帰らなければなら"
-"ないと、$intl_ally_name は言っていた。彼は何時の日にか再び訪ねて来ると言って"
-"いたが、はたして私が生きているうちに再び会えるだろうか。いずれにしても彼との"
-"思い出も彼の助力も心に銘記されている。彼の不変の忠誠心と彼が我々を助けるため"
-"に奮闘してくれた全てを長く伝えていこう。"
+"私の命を救ったことで、Rogrimir は彼の責務を果たしたと言うが、我々はしばらく留"
+"まって、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は Eloh と "
+"merfolk 達の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称えて何日"
+"も何日も祝っていた。その後で民の為の新しい住居の建設に取り掛かった。Rogrimir "
+"は我々の建設工事を助けるために留まってくれ、誰よりも沢山働いてくれた。それか"
+"らしばらくして彼は私の元に来て、彼の種族の元に帰らなければならないと告げた。"
+"我々と過ごした時間は素晴らしく夢の様だったと、我々の事を忘れはしないと、そし"
+"て彼の種族は彼を必要としていたので故郷へ帰らなければならないと、Rogrimir は"
+"言っていた。彼は何時の日にか再び訪ねて来ると言っていたが、はたして私が生きて"
+"いるうちに再び会えるだろうか。いずれにしても彼との思い出も彼の助力も心に銘記"
+"されている。彼の不変の忠誠心と彼が我々を助けるために奮闘してくれた全てを長く"
+"伝えていこう。"
 
-# （And）afterwardsの前にAndがあるか無いかだけの違いか？
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:443
-#, fuzzy
 msgid ""
 "By saving my life, Jarl fulfilled his life debt to me, but we convinced him "
 "to hang around for a while and revel in the celebrations that we held after "
@@ -14760,66 +14658,62 @@ msgid ""
 "memory of him and his kind, and I will long remember his steadfast loyalty "
 "and all that he did to aid us in our struggle."
 msgstr ""
-"私の命を救ったことで、$intl_ally_name は彼の責務を果たしたと言うが、我々はし"
-"ばらく留まって、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は "
-"Eloh と merfolk 達の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称"
-"えて何日も何日も祝っていた。その後で民の為の新しい住居の建設に取り掛かっ"
-"た。$intl_ally_name は我々の建設工事を助けるために留まってくれ、誰よりも沢山"
-"働いてくれた。それからしばらくして彼は私の元に来て、彼の種族の元に帰らなけれ"
-"ばならないと告げた。我々と過ごした時間は素晴らしく夢の様だったと、我々の事を"
-"忘れはしないと、そして彼の種族は彼を必要としていたので故郷へ帰らなければなら"
-"ないと、$intl_ally_name は言っていた。彼は何時の日にか再び訪ねて来ると言って"
-"いたが、はたして私が生きているうちに再び会えるだろうか。いずれにしても彼との"
-"思い出も彼の助力も心に銘記されている。彼の不変の忠誠心と彼が我々を助けるため"
-"に奮闘してくれた全てを長く伝えていこう。"
+"私の命を救ったことで、Jarl は彼の責務を果たしたと言うが、我々はしばらく留まっ"
+"て、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は Eloh と "
+"merfolk 達の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称えて何日"
+"も何日も祝っていた。その後で民の為の新しい住居の建設に取り掛かった。Jarl は"
+"我々の建設工事を助けるために留まってくれ、誰よりも沢山働いてくれた。それから"
+"しばらくして彼は私の元に来て、彼の種族の元に帰らなければならないと告げた。"
+"我々と過ごした時間は素晴らしく夢の様だったと、我々の事を忘れはしないと、そし"
+"て彼の種族は彼を必要としていたので故郷へ帰らなければならないと、Jarl は言って"
+"いた。彼は何時の日にか再び訪ねて来ると言っていたが、はたして私が生きているう"
+"ちに再び会えるだろうか。いずれにしても彼との思い出も彼の助力も心に銘記されて"
+"いる。彼の不変の忠誠心と彼が我々を助けるために奮闘してくれた全てを長く伝えて"
+"いこう。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:467
-#, fuzzy
 msgid ""
 "And I will always remember Grog who died along our journey. A braver warrior "
 "I have never seen, and though he was taken from us too soon, I am glad for "
 "the short time that I knew him."
 msgstr ""
-"そして私は $intl_ally_name が旅路の途中で死んだ事を忘れはしないだろう。かつて"
-"見たことが無いほど勇敢な戦士であり、あまりにも早くその命が失われてしまった。"
-"だが、私は短い間であっても彼と知り合えた事を喜ばしく思う。"
+"そして私は Grog が旅路の途中で死んだ事を忘れはしないだろう。かつて見たことが"
+"無いほど勇敢な戦士であり、あまりにも早くその命が失われてしまった。だが、私は"
+"短い間であっても彼と知り合えた事を喜ばしく思う。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:474
-#, fuzzy
 msgid ""
 "And I will always remember Nog who died along our journey. A braver warrior "
 "I have never seen, and though he was taken from us too soon, I am glad for "
 "the short time that I knew him."
 msgstr ""
-"そして私は $intl_ally_name が旅路の途中で死んだ事を忘れはしないだろう。かつて"
-"見たことが無いほど勇敢な戦士であり、あまりにも早くその命が失われてしまった。"
-"だが、私は短い間であっても彼と知り合えた事を喜ばしく思う。"
+"そして私は Nog が旅路の途中で死んだ事を忘れはしないだろう。かつて見たことが無"
+"いほど勇敢な戦士であり、あまりにも早くその命が失われてしまった。だが、私は短"
+"い間であっても彼と知り合えた事を喜ばしく思う。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:481
-#, fuzzy
 msgid ""
 "And I will always remember Rogrimir who died along our journey. A braver "
 "warrior I have never seen, and though he was taken from us too soon, I am "
 "glad for the short time that I knew him."
 msgstr ""
-"そして私は $intl_ally_name が旅路の途中で死んだ事を忘れはしないだろう。かつて"
-"見たことが無いほど勇敢な戦士であり、あまりにも早くその命が失われてしまった。"
-"だが、私は短い間であっても彼と知り合えた事を喜ばしく思う。"
+"そして私は Rogrimir が旅路の途中で死んだ事を忘れはしないだろう。かつて見たこ"
+"とが無いほど勇敢な戦士であり、あまりにも早くその命が失われてしまった。だが、"
+"私は短い間であっても彼と知り合えた事を喜ばしく思う。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:488
-#, fuzzy
 msgid ""
 "And I will always remember Jarl who died along our journey. A braver warrior "
 "I have never seen, and though he was taken from us too soon, I am glad for "
 "the short time that I knew him."
 msgstr ""
-"そして私は $intl_ally_name が旅路の途中で死んだ事を忘れはしないだろう。かつて"
-"見たことが無いほど勇敢な戦士であり、あまりにも早くその命が失われてしまった。"
-"だが、私は短い間であっても彼と知り合えた事を喜ばしく思う。"
+"そして私は Jarl が旅路の途中で死んだ事を忘れはしないだろう。かつて見たことが"
+"無いほど勇敢な戦士であり、あまりにも早くその命が失われてしまった。だが、私は"
+"短い間であっても彼と知り合えた事を喜ばしく思う。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:497
@@ -15086,7 +14980,7 @@ msgstr ""
 #. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Druid.cfg:4
 msgid "female^Desert Druid"
-msgstr "砂漠のドルイド尼僧"
+msgstr "砂漠のドルイド僧"
 
 #. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Druid.cfg:34
@@ -15136,9 +15030,9 @@ msgid ""
 "in both sword and bow, though like most of their kin, they prefer swordplay "
 "to archery. These Elves are deft of foot, and fight best in the open sands."
 msgstr ""
-"砂漠の戦士はQuenoth の戦士の大多数を占めています。彼らはエルフ族らしく剣と弓"
-"の両方を鍛錬しているが、弓術よりも剣技を好みます。砂漠のエルフは手際よく走り"
-"回れるので開けた砂漠の地で真価を発揮します。"
+"砂漠の戦士(Desert Fighter)はQuenoth の戦士の大多数を占めています。彼らはエル"
+"フ族らしく剣と弓の両方を鍛錬しているが、弓術よりも剣技を好みます。砂漠のエル"
+"フは手際よく走り回れるので開けた砂漠の地で真価を発揮します。"
 
 #. [unit_type]: id=Desert Hero, race=elf
 #. [variation]
@@ -15183,8 +15077,8 @@ msgid ""
 "quickly entangle others with their bolas and then finish them off with their "
 "swords."
 msgstr ""
-"砂漠のハンターは食料調達や敵の探索の訓練をつんでいます。彼らは迅速にボーラを"
-"用いて獲物をからめとり、剣で処理する事ができます。"
+"砂漠のハンター(Desert Hunter)は食料調達や敵の探索の訓練をつんでいます。彼らは"
+"迅速にボーラを用いて獲物をからめとり、剣で処理する事ができます。"
 
 #. [attack]: type=impact
 #. [effect]: type=impact
@@ -15216,9 +15110,9 @@ msgid ""
 "skill. This great skill with the bow compensates for their lack of skill in "
 "melee combat."
 msgstr ""
-"砂漠の狙撃兵は弓の達人です。彼らの扱う弓も矢も祖先の物に比べると劣りますが彼"
-"らはその技術を磨き続けました。この偉大な弓術は近接戦闘の不得手を補って余りあ"
-"ります。"
+"砂漠の狙撃兵(Desert Marksman)は弓の達人です。彼らの扱う弓も矢も祖先の物に比べ"
+"ると劣りますが彼らはその技術を磨き続けました。この偉大な弓術は近接戦闘の不得"
+"手を補って余りあります。"
 
 #. [attack]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Marksman.cfg:44
@@ -15318,8 +15212,8 @@ msgid ""
 "Swift riders, Desert Riders are fast in the open desert. They can use a bow "
 "from horseback, but prefer to engage in melee combat when necessary."
 msgstr ""
-"迅速な乗り手である砂漠の騎手は開けた砂漠を高速に駆け抜けます。必要であれば馬"
-"の背で巧みに弓を使えますが近接戦闘の方を好みます。"
+"迅速な乗り手である砂漠の騎手(Desert Rider)は開けた砂漠を高速に駆け抜けます。"
+"必要であれば馬の背で巧みに弓を使えますが近接戦闘の方を好みます。"
 
 #. [unit_type]: id=Desert Scout, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Scout.cfg:5
@@ -15356,7 +15250,7 @@ msgstr "砂漠の女哨兵"
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shaman.cfg:5
 msgid "female^Desert Shaman"
-msgstr "砂漠の女呪術師"
+msgstr "砂漠の呪術師"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shaman.cfg:34
@@ -15365,9 +15259,9 @@ msgid ""
 "entangling attack slows enemies down and reduces by one the number of times "
 "they may attack. Shamans also possess basic healing abilities."
 msgstr ""
-"砂漠の女呪術師は敵を防ぐのに暴力的でない方法を好みます。彼女らの扱う蔓は敵を"
-"もつれさせ、遅化することで攻撃力を減少させます。また、シャーマンには基本的な"
-"治癒能力があります。"
+"砂漠の呪術師(Desert Shaman)は敵を防ぐのに暴力的でない方法を好みます。彼女らの"
+"扱う蔓は敵をもつれさせ、遅化することで攻撃力を減少させます。また、シャーマン"
+"には基本的な治癒能力があります。"
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shaman.cfg:50
@@ -15387,9 +15281,10 @@ msgid ""
 "ancestors. Desert Sharpshooters are incredibly accurate, even when firing "
 "very quickly, which makes them excellent at picking off entrenched enemies."
 msgstr ""
-"砂漠エルフ族の射手の精鋭たる砂漠の狙撃兵は、彼らの造り得る最良の弓矢を持って"
-"古きエルフ族のように致命的な射撃を行えます。砂漠の狙撃兵は連続して矢を射ると"
-"きですら精密な射撃を行え、塹壕に隠れた敵すら狙い打ちにできます。"
+"砂漠エルフ族の射手の精鋭たる砂漠の狙撃兵(Desert Sharpshooter)は、彼らの造り得"
+"る最良の弓矢を持って古きエルフ族のように致命的な射撃を行えます。砂漠の狙撃兵"
+"は連続して矢を射るときですら精密な射撃を行え、塹壕に隠れた敵すら狙い打ちにで"
+"きます。"
 
 #. [female]
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sharpshooter.cfg:162
@@ -15409,9 +15304,9 @@ msgid ""
 "creatures. They are capable of gliding unencumbered across almost any "
 "terrain."
 msgstr ""
-"砂漠のシェードは自然と妖精界へと傾倒したエルフ達です。蜻蛉のような羽を背中か"
-"ら芽生えさせ彼女らを美しい生き物へと変化させます。彼女らは多くの障害物のない"
-"地形を滑空して移動できます。"
+"砂漠のシェード(Desert Shyde)は自然と妖精界へと傾倒したエルフ達です。蜻蛉のよ"
+"うな羽を背中から芽生えさせ彼女らを美しい生き物へと変化させます。彼女らは多く"
+"の障害物のない地形を滑空して移動できます。"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #. [unit_type]: id=Desert Star, race=elf
@@ -15494,7 +15389,8 @@ msgstr ""
 "神の化身(Divine Incarnation)はこの世界で最も神の実際の存在に近いものであると"
 "言われています。彼らは神々しく、恐ろしい存在です。"
 
-# 以下、獲得やら習得・修得やら微妙に意味が違う感じを出してみたが…
+# 以下、技術っぽいのは修得、技能っぽいのは獲得に…
+# 技能はスキル（その人でしかなしえない技）、技術は再現性（だれでも同じ手順や方法で実現できる）、だそーです。
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:37
 msgid "a leader in battle"
 msgstr "戦闘の指揮（統率スキル獲得）"
@@ -15536,7 +15432,7 @@ msgid ""
 "This unit’s resistances are increased by 20% in daylight, on defense and "
 "attack. Vulnerabilities are not affected."
 msgstr ""
-"Sustenance:\n"
+"太陽の恵み:\n"
 "このユニットは日中の防御・攻撃時に抵抗値が20%上昇する。脆弱性は影響を受けませ"
 "ん。"
 
@@ -15546,7 +15442,7 @@ msgstr "斬撃・打撃・貫通への抵抗+10%"
 
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:293
 msgid "gain a stunning attack that disrupts enemy ZOC"
-msgstr "スタン攻撃の獲得（スタンにより敵のZOCを分断できる）"
+msgstr "スタン攻撃の修得（スタンにより敵のZOCを分断できる）"
 
 #. [chance_to_hit]: id=stun
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:303
@@ -15562,13 +15458,13 @@ msgid ""
 "This attack puts enormous pressure on the enemy, disrupting his ZOC if a hit "
 "is landed. Not active on defense."
 msgstr ""
-"Stun:\n"
+"スタン:\n"
 "この攻撃は非常に強い衝撃を加える事により、命中すれば敵のZOCを分断することがで"
 "きる。防御時にはこの効果は発揮されない。"
 
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:322
 msgid "skilled in surviving the desert"
-msgstr "砂漠での生存術（カモフラージュ取得）"
+msgstr "砂漠での生存術（カモフラージュ獲得）"
 
 # %% 長いので別名を使うなら、次のcamouflageの説明も変えてください
 #. [hides]: id=camouflage
@@ -15713,8 +15609,8 @@ msgid ""
 "earth to the tops of tall mountains. Though normally not hostile, they can "
 "bite at close range."
 msgstr ""
-"Giant Antsは洞窟や高い山々の地中深くにおいて多く見られます。普通は敵対的では"
-"ありませんが、近づくと噛み付いてきます。"
+"巨大アリ(Giant Ant)は洞窟や高い山々の地中深くにおいて多く見られます。普通は敵"
+"対的ではありませんが、近づくと噛み付いてきます。"
 
 #. [unit_type]: id=Cave Spider
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Cave_Spider.cfg:12
@@ -15728,9 +15624,9 @@ msgid ""
 "bite at close range, thereby poisoning their enemies, and also can attack "
 "with a web at long range, slowing their foes down."
 msgstr ""
-"Cave Spidersは地中深くを徘徊し数多の犠牲者を貪り食います。近距離では噛み付い"
-"てきて、その獲物は毒に犯されます。遠距離ではクモの糸を投げかけ獲物は動きを鈍"
-"らされでしょう。"
+"洞窟のクモ(Cave Spider)は地中深くを徘徊し数多の犠牲者を貪り食います。近距離で"
+"は噛み付いてきて、その獲物は毒に犯されます。遠距離ではクモの糸を投げかけ獲物"
+"は動きを鈍らされでしょう。"
 
 #. [unit_type]: id=Confused Ant
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Confused_Ant.cfg:8
@@ -15745,9 +15641,9 @@ msgid ""
 "bite at close range. When they don’t have a Queen Ant to lead them, they can "
 "often become confused."
 msgstr ""
-"Giant Antsは洞窟や高い山々の地中深くにおいて多く見られます。普通は敵対的では"
-"ありませんが、近づくと噛み付いてきます。彼らを導く女王蟻がいないとき、彼らは"
-"たいてい混乱するでしょう。"
+"巨大アリ(Giant Ant)は洞窟や高い山々の地中深くにおいて多く見られます。普通は敵"
+"対的ではありませんが、近づくと噛み付いてきます。彼らを導く女王蟻がいないと"
+"き、彼らはたいてい混乱するでしょう。"
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:4
@@ -15762,9 +15658,9 @@ msgid ""
 "creation of some twisted mage, these monstrosities have spread into the wild "
 "and prefer to live around coastal waters, preying on both humans and animals."
 msgstr ""
-"The Crab Men はカニと人間のあいのこのようで、Wesnoth の賢人達の記録の中でも最"
-"も気色の悪いモンスターです。おそらくは気のふれた魔術師の産物で野生に還ったも"
-"のが、海岸周辺に住み着いたものでしょう、人や動物を餌食にして。"
+"カニ人間(The Crab Men)はカニと人間のあいのこのようで、Wesnoth の賢人達の記録"
+"の中でも最も気色の悪いモンスターです。おそらくは気のふれた魔術師の産物で野生"
+"に還ったものが、海岸周辺に住み着いたものでしょう、人や動物を餌食にして。"
 
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:21
@@ -15783,9 +15679,9 @@ msgid ""
 "secret well guarded by the great lore-masters of Wesnoth. And it’s isn’t "
 "pretty. Hint: it involves lots of sherbet."
 msgstr ""
-"ダワーフが何処からきたのか聞くべきではないし、知ろうと欲してはならぬ。それは"
-"秘密の泉の番人、Wesnothの秘儀を極めた達人達による番人である。それは見るに絶え"
-"られるものではない。ヒント：それは大量のシャーベットを必要とする。"
+"ダワーフ(Dawarf)が何処からきたのか聞くべきではないし、知ろうと欲してはなら"
+"ぬ。それは秘密の泉の番人、Wesnothの秘儀を極めた達人達による番人である。それは"
+"見るに絶えられるものではない。ヒント：それは大量のシャーベットを必要とする。"
 
 #. [unit_type]: id=Dust Devil, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:15
@@ -15850,10 +15746,10 @@ msgid ""
 "rage, the madness that possesses them has occasionally caused them to turn "
 "on their masters."
 msgstr ""
-"途方もなく強力な構築物である肉のゴーレムは、強力な死霊使いにより戦死した兵士"
-"の死体から作られます。 これらのゴーレムは従順にすべての命令に従いますが、絶え"
-"間のない激怒で敵を攻撃します。彼らの持つ狂気は時折彼らの主人をも攻撃しまし"
-"た。"
+"途方もなく強力な構築物である肉のゴーレム（Flesh Golem）は、強力な死霊使いによ"
+"り戦死した兵士の死体から作られます。 これらのゴーレムは従順にすべての命令に従"
+"いますが、絶え間のない激怒で敵を攻撃します。彼らの持つ狂気は時折彼らの主人を"
+"も攻撃しました。"
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Flesh_Golem.cfg:30
@@ -15873,10 +15769,10 @@ msgid ""
 "others believe that they were some demented creation of a fire mage. But "
 "whatever they are, all agree that they are extremely dangerous."
 msgstr ""
-"Ixthala Demon に出会って生き延び、彼らについて語る事のできた人々はほんのわず"
-"かです。ある者は彼らは異界から来たと信じており、またある者は炎の魔術師の狂気"
-"の産物と信じています。彼らの正体が何であれ、彼らが極めて危険である事だけは一"
-"致した見解です。"
+"Ixthalaの鬼(Ixthala Demon)に出会って生き延び、彼らについて語る事のできた人々"
+"はほんのわずかです。ある者は彼らは異界から来たと信じており、またある者は炎の"
+"魔術師の狂気の産物と信じています。彼らの正体が何であれ、彼らが極めて危険であ"
+"る事だけは一致した見解です。"
 
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Ixthala_Demon.cfg:26
@@ -15972,8 +15868,8 @@ msgid ""
 "where he came from or why he acts the way he does, but the trail of death he "
 "leaves in his wake is unmistakeable."
 msgstr ""
-"Dark Assassin は神出鬼没で、何処から来て何のために動くのか誰も知りようがあり"
-"ません。しかし、彼の撒き散らす死の痕跡は見誤りようがありません。"
+"闇の暗殺者は神出鬼没で、何処から来て何のために動くのか誰も知りようがありませ"
+"ん。しかし、彼の撒き散らす死の痕跡は見誤りようがありません。"
 
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/orcs/Dark_Assassin1.cfg:23
@@ -16136,9 +16032,9 @@ msgid ""
 "forever haunt the place of their death and relive their final moments over "
 "and over and over."
 msgstr ""
-"ハントは拷問にかけられた人の魂です。彼らは横になって休ませられもせず急死しま"
-"した。彼らは呪われており、死の衝撃により無力になって死んだ場所に永久につきま"
-"とい、何度も何度も繰り返し最期の時を追体験します。"
+"ハント(Haunt)は拷問にかけられた人の魂です。彼らは横になって休ませられもせず急"
+"死しました。彼らは呪われており、死の衝撃により無力になって死んだ場所に永久に"
+"つきまとい、何度も何度も繰り返し最期の時を追体験します。"
 
 #. [unit_type]: id=Spider Lich, race=undead
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:4
@@ -16224,7 +16120,7 @@ msgstr "死ぬには早すぎる。我が民はどうなるのだろう？"
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:44
 msgid "Save me, Kaleh, I’m dying..."
-msgstr "助けてKaleh、死にそうなの・・・"
+msgstr "助けてKaleh、死にそうなの……"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:72
@@ -16250,7 +16146,7 @@ msgstr "まだ、$unit.name まだ死ねない！"
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:167
 msgid "I go now to join my forefathers..."
-msgstr "今こそ祖霊の列に加わる時か・・・"
+msgstr "今こそ祖霊の列に加わる時か……"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:188
@@ -16374,7 +16270,7 @@ msgstr ""
 "野営地となっていた。私の伯父の Tanuil は何年もの間我々を率いており、我々が一"
 "人前になれるよう、どんな敵に対しても強くあるように訓練してくれた。砂の大海で"
 "奮闘する我々は、万全の備えができていると考えていた。だが全ては、あの運命的な"
-"夜に変わってしまった。その夜、空から炎が降ってきたのだ…。"
+"夜に変わってしまった。その夜、空から炎が降ってきたのだ……"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:18
@@ -16457,7 +16353,7 @@ msgstr ""
 "をしようとしているのではないかと思うほどだった。私はその前に砂嵐を見たことは"
 "あったが、あのようなものは経験したことがなかった。私は、まるで人生がそれにか"
 "かっているかのように、Eloh に祈りながらテントに隠れた。空気は砂で濁り、全ては"
-"暗くかすんでいった…。"
+"暗くかすんでいった……"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:35
@@ -16579,8 +16475,9 @@ msgstr ""
 "第4章: 我々はEloh が言っていた崩れ落ちそうな黒曜石の塔を見つけ、山々のふもと"
 "の丘陵地の端に野営地を確保した。私はまだ、昨夜の戦闘で倒れた Garak や他の多く"
 "のエルフを失ったことから立ち直れずにいた。この土地は多くの死を見てきたのだろ"
-"うが、こんな形は珍しくもないことなのだろうか？ 私は道すがら、大いなる崩壊当時"
-"の世界の有様に思いを馳せ、子供の頃から何度も聞かされた話を思い起こしていた――"
+"うが、こんな形は珍しくもないことなのだろうか？ 私は道すがら、「大いなる滅び」"
+"当時の世界の有様に思いを馳せ、子供の頃から何度も聞かされた話を思い起こしてい"
+"た――"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:66
@@ -16875,7 +16772,7 @@ msgstr ""
 "くすぐられた――彼らが最後にエルフを見たのはいつなのか、私には見当がつかない。"
 "中には我々に疑いを抱いたり恐れたりしている様子の者もいたが、全体的に見ればド"
 "ワーフたちは非常に丁寧に接してくれて、こちらに必要があれば何でも応じてくれ"
-"た。そうしてついにドワーフの王に謁見する召喚が届いたのだった…"
+"た。そうしてついにドワーフの王に謁見する召喚が届いたのだった……"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:142
@@ -17004,13 +16901,13 @@ msgstr ""
 "Eloh、彼女の計画は何だったのだろう？何故人間に降伏することを望んだのか？人間"
 "達も彼女を同じように崇拝しているのだろうか？人間達はとても野蛮で下品に思え"
 "て、彼らが我々と同じ神を崇拝しているとは思えなかったのだ。私には Eloh は我々"
-"だけの神に思えて、大いなる崩壊 以後に他の種族が彼女を崇拝していると Zhul が言"
-"及していた事を思い出せなかった。ことによると崩壊後に介在した年月が彼らに変化"
-"をもたらしたのかも知れない。それでも彼女の命令は合点がいかず、Zhul が常々語っ"
-"てくれた女神と彼女が同じとは思えなかった。そして Esanoo は何について話してい"
-"たのだろう？どうして彼の主人は『Yechnagoth』と『Zhangor』に関して知っているの"
-"だろうか？Eloh が私を助けてくれないとなると、私は必死に答えを探さなければなら"
-"ない。私は他のどんな神にでも祈る、私の同胞を罠に導いていないようにと・・・。"
+"だけの神に思えて、「大いなる滅び」以後に他の種族が彼女を崇拝していると Zhul "
+"が言及していた事を思い出せなかった。ことによると崩壊後に介在した年月が彼らに"
+"変化をもたらしたのかも知れない。それでも彼女の命令は合点がいかず、Zhul が常々"
+"語ってくれた女神と彼女が同じとは思えなかった。そして Esanoo は何について話し"
+"ていたのだろう？どうして彼の主人は『Yechnagoth』と『Zhangor』に関して知ってい"
+"るのだろうか？Eloh が私を助けてくれないとなると、私は必死に答えを探さなければ"
+"ならない。私は他のどんな神にでも祈る、私の同胞を罠に導いていないようにと……"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:176
@@ -17042,10 +16939,10 @@ msgid ""
 msgstr ""
 "Eloh が我々のために山脈の反対側に用意している新しい住処とはどのようなものなの"
 "だろうか？ この世界のどこかに戦争や破壊に悩まされなかった土地があるのだろう"
-"か？ 私は「殺るか殺られるか」という土地で育った。弱者や無援の者は、無法者やオ"
-"ウガなどの怪物の餌食になっていた。オウガやゴブリンは集落を見つけると手当たり"
-"次第に襲撃をしかけ、我が民は僅かばかりの蓄えを守るのに四苦八苦していた。その"
-"うえ砂漠に取り憑く狂気の死霊使いやアンデッドの亡霊までいて、ごく僅かに生き"
+"か？ 私は「殺るか殺られるか」という土地で育った。弱者や無援の者は、無法者や"
+"オーガなどの怪物の餌食になっていた。オーガやゴブリンは集落を見つけると手当た"
+"り次第に襲撃をしかけ、我が民は僅かばかりの蓄えを守るのに四苦八苦していた。そ"
+"のうえ砂漠に取り憑く狂気の死霊使いやアンデッドの亡霊までいて、ごく僅かに生き"
 "残った者を喰いものにしていた。"
 
 #. [part]
@@ -17147,7 +17044,7 @@ msgid ""
 msgstr ""
 "砂州の周りには多くの merfolk の番人が居り、ただ一人、砂の上に立っていたのは、"
 "私が会った中で最も年経た merfolk だった。彼女は我々に手招きし、そして我々は近"
-"づいて行ったのだ・・・"
+"づいて行ったのだ……"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:221
@@ -17224,7 +17121,7 @@ msgstr ""
 "るのだ。私はこれらが再び闇に呑み込ませるつもりはない。たとえ我が身に何が起き"
 "ようと気にかけるものではないが、私は Eloh に祈る（もし未だに彼女が聞き届けて"
 "くださるなら、だが）。私の死がこの地をより良き地へ変える礎にならんことを。我"
-"らの旅路が無為に終わる事が無きように・・・。 "
+"らの旅路が無為に終わる事が無きように…… "
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:241
