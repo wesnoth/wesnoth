@@ -18,6 +18,7 @@
 #include "actions.hpp"
 #include "font.hpp"
 #include "foreach.hpp"
+#include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
@@ -585,14 +586,15 @@ REPORT_GENERATOR(time_of_day, false, data)
 	std::ostringstream tooltip;
 	time_of_day tod;
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
-	if (viewing_team.shrouded(data.mouseover_hex)) {
+	map_location mouseover_hex = resources::screen->mouseover_hex();
+	if (viewing_team.shrouded(mouseover_hex)) {
 		// Don't show time on shrouded tiles.
 		tod = resources::tod_manager->get_time_of_day();
-	} else if (viewing_team.fogged(data.mouseover_hex)) {
+	} else if (viewing_team.fogged(mouseover_hex)) {
 		// Don't show illuminated time on fogged tiles.
-		tod = resources::tod_manager->get_time_of_day(data.mouseover_hex);
+		tod = resources::tod_manager->get_time_of_day(mouseover_hex);
 	} else {
-		tod = resources::tod_manager->time_of_day_at(data.mouseover_hex);
+		tod = resources::tod_manager->time_of_day_at(mouseover_hex);
 	}
 
 	int b = tod.lawful_bonus;
@@ -698,18 +700,19 @@ REPORT_GENERATOR(terrain, false, data)
 {
 	gamemap &map = *resources::game_map;
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
-	if (!map.on_board(data.mouseover_hex) || viewing_team.shrouded(data.mouseover_hex))
+	map_location mouseover_hex = resources::screen->mouseover_hex();
+	if (!map.on_board(mouseover_hex) || viewing_team.shrouded(mouseover_hex))
 		return report();
 
-	t_translation::t_terrain terrain = map.get_terrain(data.mouseover_hex);
+	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
 	if (terrain == t_translation::OFF_MAP_USER)
 		return report();
 
 	std::ostringstream str;
-	if (map.is_village(data.mouseover_hex))
+	if (map.is_village(mouseover_hex))
 	{
-		int owner = village_owner(data.mouseover_hex, *resources::teams) + 1;
-		if (owner == 0 || viewing_team.fogged(data.mouseover_hex)) {
+		int owner = village_owner(mouseover_hex, *resources::teams) + 1;
+		if (owner == 0 || viewing_team.fogged(mouseover_hex)) {
 			str << map.get_terrain_info(terrain).income_description();
 		} else if (owner == data.viewing_side) {
 			str << map.get_terrain_info(terrain).income_description_own();
@@ -743,28 +746,29 @@ REPORT_GENERATOR(terrain, false, data)
 REPORT_GENERATOR(position, false, data)
 {
 	gamemap &map = *resources::game_map;
-	if (!map.on_board(data.mouseover_hex))
+	map_location mouseover_hex = resources::screen->mouseover_hex();
+	if (!map.on_board(mouseover_hex))
 		return report();
-	t_translation::t_terrain terrain = map[data.mouseover_hex];
+	t_translation::t_terrain terrain = map[mouseover_hex];
 	if (terrain == t_translation::OFF_MAP_USER)
 		return report();
 
 	std::ostringstream str;
-	str << data.mouseover_hex;
+	str << mouseover_hex;
 
 	const unit *u = get_visible_unit(data);
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
 	if (!u ||
-	    (data.displayed_unit_hex != data.mouseover_hex &&
-	     data.displayed_unit_hex != data.selected_hex) ||
-	    viewing_team.shrouded(data.mouseover_hex))
+	    (data.displayed_unit_hex != mouseover_hex &&
+	     data.displayed_unit_hex != resources::screen->selected_hex()) ||
+	    viewing_team.shrouded(mouseover_hex))
 		return text_report(str.str());
 
 	int move_cost = u->movement_cost(terrain);
 	int defense = 100 - u->defense_modifier(terrain);
 	if (move_cost < unit_movement_type::UNREACHABLE) {
 		str << " (" << defense << "%," << move_cost << ')';
-	} else if (data.mouseover_hex == data.displayed_unit_hex) {
+	} else if (mouseover_hex == data.displayed_unit_hex) {
 		str << " (" << defense << "%,-)";
 	} else {
 		str << " (-)";

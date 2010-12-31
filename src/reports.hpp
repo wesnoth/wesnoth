@@ -26,8 +26,6 @@ struct report_data
 {
 	int viewing_side;
 	int active_side;
-	map_location selected_hex;
-	map_location mouseover_hex;
 	map_location displayed_unit_hex;
 	const std::set<std::string> &observers;
 	const config &level;
