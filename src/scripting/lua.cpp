@@ -1065,6 +1065,26 @@ static int intf_get_unit(lua_State *L)
 }
 
 /**
+ * Gets the unit displayed in the sidebar.
+ * - Ret 1: full userdata with __index pointing to impl_unit_get and
+ *          __newindex pointing to impl_unit_set.
+ */
+static int intf_get_displayed_unit(lua_State *L)
+{
+	unit_map::const_iterator ui = find_visible_unit(
+		resources::screen->displayed_unit_hex(),
+		(*resources::teams)[resources::screen->viewing_team()],
+		resources::screen->show_everything());
+	if (!ui.valid()) return 0;
+
+	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
+	lua_pushlightuserdata(L, (void *)&getunitKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+	return 1;
+}
+
+/**
  * Gets all the units matching a given filter.
  * - Arg 1: optional table containing a filter
  * - Ret 1: table containing full userdata with __index pointing to
@@ -3008,6 +3028,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "fire_event",               &intf_fire_event               },
 		{ "float_label",              &intf_float_label              },
 		{ "get_dialog_value",         &intf_get_dialog_value         },
+		{ "get_displayed_unit",       &intf_get_displayed_unit       },
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_locations",            &intf_get_locations            },
 		{ "get_map_size",             &intf_get_map_size             },
