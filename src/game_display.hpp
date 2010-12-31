@@ -260,6 +260,9 @@ public:
 	unit_map& get_units() {return units_;}
 	const unit_map& get_const_units() const {return units_;}
 
+	const map_location &displayed_unit_hex() const { return displayedUnitHex_; }
+	bool show_everything() const { return !viewpoint_; }
+
 	/**
 	 * annotate hex with number, useful for debugging or UI prototype
 	 */

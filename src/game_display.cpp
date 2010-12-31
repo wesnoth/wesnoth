@@ -432,11 +432,7 @@ void game_display::draw_report(const std::string &report_name)
 		return;
 	}
 
-	reports::report_data data = {
-		displayedUnitHex_, !viewpoint_
-	};
-
-	refresh_report(report_name, reports::generate_report(report_name, data));
+	refresh_report(report_name, reports::generate_report(report_name));
 }
 
 void game_display::draw_sidebar()

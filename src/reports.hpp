@@ -22,22 +22,16 @@
 //various game and unit statistics
 namespace reports {
 
-struct report_data
-{
-	map_location displayed_unit_hex;
-	bool show_everything;
-};
-
 struct generator
 {
-	virtual config generate(report_data const &) = 0;
+	virtual config generate() = 0;
 	virtual ~generator() {}
 };
 
 void reset_generators();
 void register_generator(const std::string &name, generator *, bool for_units);
 
-config generate_report(const std::string &name, const report_data &data);
+config generate_report(const std::string &name);
 
 const std::set<std::string> &report_list(bool for_units);
 }
