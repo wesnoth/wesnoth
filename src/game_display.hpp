@@ -255,7 +255,6 @@ public:
 	 */
 	void set_team(size_t team, bool observe=false);
 	void set_playing_team(size_t team);
-	size_t get_playing_team() const {return activeTeam_;}
 	const std::vector<team>& get_teams() {return teams_;}
 
 	unit_map& get_units() {return units_;}
@@ -273,6 +272,7 @@ public:
 
 	/** The playing team is the team whose turn it is. */
 	size_t playing_team() const { return activeTeam_; }
+	int playing_side() const { return activeTeam_ + 1; }
 
 	bool team_valid() const { return currentTeam_ < teams_.size(); }
 	std::string current_team_name() const;

@@ -119,7 +119,7 @@ void playmp_controller::play_side(const unsigned int team_index, bool save)
 						int t = find_human_team_before(team_index);
 
 						if (t <= 0)
-							t = gui_->get_playing_team() + 1;
+							t = gui_->playing_side();
 
 						gui_->set_team(t-1);
 						gui_->recalculate_minimap();
@@ -234,8 +234,8 @@ void playmp_controller::play_human_turn(){
 					}
 
 					while(!undo_stack_.empty())
-						menu_handler_.undo(gui_->get_playing_team() + 1);
-					throw end_turn_exception(gui_->get_playing_team() + 1);
+						menu_handler_.undo(gui_->playing_side());
+					throw end_turn_exception(gui_->playing_side());
 				}
 			}
 

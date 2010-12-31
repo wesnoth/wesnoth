@@ -151,13 +151,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			if (!player.empty())
 				tm.set_current_player(player);
 			unit_map::iterator leader = resources::units->find_leader(side);
-			bool restart = resources::screen->get_playing_team() == index;
+			bool restart = resources::screen->playing_side() == side;
 			if (!player.empty() && leader.valid())
 				leader->rename(player);
 
 
 			if (controller == "human" && !tm.is_human()) {
-				if (!(*resources::teams)[resources::screen->get_playing_team()].is_human())
+				if (!(*resources::teams)[resources::screen->playing_team()].is_human())
 				{
 					resources::screen->set_team(index);
 				}
@@ -184,10 +184,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	if(cfg["side_drop"] != "") {
 		const std::string controller = cfg["controller"];
 		const std::string side_str = cfg["side_drop"];
-		const size_t side = atoi(side_str.c_str());
+		int side = atoi(side_str.c_str());
 		const size_t side_index = side-1;
 
-		bool restart = side_index == resources::screen->get_playing_team();
+		bool restart = side == resources::screen->playing_side();
 
 		if (side_index >= resources::teams->size()) {
 			ERR_NW << "unknown side " << side_index << " is dropping game\n";
