@@ -113,7 +113,6 @@ static char const getsideKey = 0;
 static char const gettextKey = 0;
 static char const gettypeKey = 0;
 static char const getunitKey = 0;
-static char const thmitemKey = 0;
 static char const tstringKey = 0;
 static char const unitvarKey = 0;
 static char const ustatusKey = 0;
@@ -2959,12 +2958,9 @@ struct lua_report_generator : reports::generator
 config lua_report_generator::generate()
 {
 	lua_State *L = mState;
-	lua_pushlightuserdata(L, (void *)&thmitemKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_pushstring(L, name.c_str());
-	lua_rawget(L, -2);
-	lua_remove(L, -2);
 	config cfg;
+	if (!luaW_getglobal(L, "wesnoth", "theme_items", name.c_str(), NULL))
+		return cfg;
 	if (!luaW_pcall(L, 0, 1)) return cfg;
 	luaW_toconfig(L, -1, cfg);
 	lua_pop(L, 1);
@@ -2972,21 +2968,36 @@ config lua_report_generator::generate()
 }
 
 /**
+ * Executes its upvalue as a theme item generator.
+ */
+static int cfun_theme_item(lua_State *L)
+{
+	const char *m = lua_tostring(L, lua_upvalueindex(1));
+	luaW_pushconfig(L, reports::generate_report(m, true));
+	return 1;
+}
+
+/**
  * Registers a generator for a theme item.
  * - Arg 1: string.
- * - Arg 2: function.
- * - Arg 3: boolean.
+ * - Arg 2: boolean.
  */
 static int intf_register_theme_item(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	lua_pushlightuserdata(L, (void *)&thmitemKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
+	if (!luaW_getglobal(L, "wesnoth", "theme_items", NULL))
+		return 0;
 	lua_pushvalue(L, 1);
-	lua_pushvalue(L, 2);
-	lua_rawset(L, -3);
+	lua_rawget(L, -2);
+	if (!lua_isnil(L, -1)) return 0;
 	lua_pop(L, 1);
-	reports::register_generator(m, new lua_report_generator(L, m), lua_toboolean(L, 3));
+
+	lua_pushvalue(L, 1);
+	lua_pushvalue(L, 1);
+	lua_pushcclosure(L, cfun_theme_item, 1);
+	lua_rawset(L, -3);
+
+	reports::register_generator(m, new lua_report_generator(L, m), lua_toboolean(L, 2));
 	return 0;
 }
 
@@ -3166,11 +3177,6 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
-	// Create the table for report generators.
-	lua_pushlightuserdata(L, (void *)&thmitemKey);
-	lua_newtable(L);
-	lua_rawset(L, LUA_REGISTRYINDEX);
-
 	// Create the ai elements table.
 	ai::lua_ai_context::init(L);
 
@@ -3222,6 +3228,12 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	lua_setfield(L, -2, "game_events");
+	lua_pop(L, 1);
+
+	// Create the theme_items table.
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	lua_setfield(L, -2, "theme_items");
 	lua_pop(L, 1);
 
 	// Store the error handler, then close debug.
