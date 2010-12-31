@@ -28,7 +28,6 @@ struct report_data
 	int active_side;
 	map_location displayed_unit_hex;
 	const std::set<std::string> &observers;
-	const config &level;
 	bool show_everything;
 };
 

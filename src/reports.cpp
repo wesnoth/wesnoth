@@ -338,8 +338,8 @@ REPORT_GENERATOR(unit_xp, true, data)
 	str << span_color(u->xp_color()) << u->experience()
 		<< '/' << u->max_experience() << naps;
 
-	std::string exp_mod = data.level["experience_modifier"].str();
-	tooltip << _("Experience Modifier: ") << (!exp_mod.empty() ? exp_mod : "100") << '%';
+	int exp_mod = unit_type::experience_accelerator::get_acceleration();
+	tooltip << _("Experience Modifier: ") << exp_mod << '%';
 	return text_report(str.str(), tooltip.str());
 }
 
