@@ -134,7 +134,7 @@ static unit *get_visible_unit(const report_data &data)
 
 static config gray_inactive(const report_data &data, const std::string &str)
 {
-	if (data.viewing_side == data.active_side)
+	if (data.viewing_side == resources::screen->playing_side())
 		return text_report(str);
 	return text_report(span_color(font::GRAY_COLOR) + str + naps);
 }
@@ -398,7 +398,7 @@ REPORT_GENERATOR(unit_moves, true, data)
 	if (!u) return report();
 	std::ostringstream str;
 	double movement_frac = 1.0;
-	if (u->side() == data.active_side) {
+	if (u->side() == resources::screen->playing_side()) {
 		movement_frac = double(u->movement_left()) / std::max<int>(1, u->total_movement());
 		if (movement_frac > 1.0)
 			movement_frac = 1.0;
@@ -630,7 +630,7 @@ REPORT_GENERATOR(gold, false, data)
 	int fake_gold = (*resources::teams)[data.viewing_side - 1].gold() -
 		resources::whiteboard->get_spent_gold_for(data.viewing_side);
 	char const *end = naps;
-	if (data.viewing_side != data.active_side)
+	if (data.viewing_side != resources::screen->playing_side())
 		str << span_color(font::GRAY_COLOR);
 	else if (fake_gold < 0)
 		str << span_color(font::BAD_COLOR);
@@ -686,7 +686,7 @@ REPORT_GENERATOR(income, false, data)
 	const team &viewing_team = (*resources::teams)[data.viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, data.viewing_side);
 	char const *end = naps;
-	if (data.viewing_side != data.active_side)
+	if (data.viewing_side != resources::screen->playing_side())
 		str << span_color(font::GRAY_COLOR);
 	else if (td.net_income < 0)
 		str << span_color(font::BAD_COLOR);
@@ -776,12 +776,12 @@ REPORT_GENERATOR(position, false, data)
 	return text_report(str.str());
 }
 
-REPORT_GENERATOR(side_playing, false, data)
+REPORT_GENERATOR(side_playing, false, /*data*/)
 {
-	const team &active_team = (*resources::teams)[data.active_side - 1];
+	const team &active_team = (*resources::teams)[resources::screen->playing_team()];
 	std::string flag_icon = active_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
-	std::string new_rgb = team::get_side_color_index(data.active_side);
+	std::string new_rgb = team::get_side_color_index(resources::screen->playing_side());
 	std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 	if (flag_icon.empty())
 		flag_icon = game_config::images::flag_icon;
@@ -859,7 +859,7 @@ REPORT_GENERATOR(report_countdown, false, data)
 	std::ostringstream str;
 	sec = viewing_team.countdown_time() / 1000;
 	char const *end = naps;
-	if (data.viewing_side != data.active_side)
+	if (data.viewing_side != resources::screen->playing_side())
 		str << span_color(font::GRAY_COLOR);
 	else if (sec < 60)
 		str << "<span foreground=\"#c80000\">";
