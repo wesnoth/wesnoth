@@ -3,7 +3,7 @@
  */
  //grammar org.wesnoth.WML with org.eclipse.xtext.common.Terminals
 grammar org.wesnoth.WML hidden(EOL, WS, SL_COMMENT)
-generate wML "http://www.wesnoth.org/WML"
+generate wml "http://www.wesnoth.org/WML"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 WMLRoot:
