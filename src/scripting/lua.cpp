@@ -2979,24 +2979,29 @@ static int cfun_theme_item(lua_State *L)
 }
 
 /**
- * Registers a generator for a theme item.
- * - Arg 1: string.
+ * Creates a field of the theme_items table and returns it (__index metamethod).
  */
-static int intf_register_theme_item(lua_State *L)
+static int impl_theme_items_get(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
-	if (!luaW_getglobal(L, "wesnoth", "theme_items", NULL))
-		return 0;
-	lua_pushvalue(L, 1);
-	lua_rawget(L, -2);
-	if (!lua_isnil(L, -1)) return 0;
-	lua_pop(L, 1);
-
-	lua_pushvalue(L, 1);
-	lua_pushvalue(L, 1);
+	char const *m = luaL_checkstring(L, 2);
+	lua_pushvalue(L, 2);
 	lua_pushcclosure(L, cfun_theme_item, 1);
-	lua_rawset(L, -3);
+	lua_pushvalue(L, 2);
+	lua_pushvalue(L, -2);
+	lua_rawset(L, 1);
+	reports::register_generator(m, new lua_report_generator(L, m));
+	return 1;
+}
 
+/**
+ * Sets a field of the theme_items table (__newindex metamethod).
+ */
+static int impl_theme_items_set(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 2);
+	lua_pushvalue(L, 2);
+	lua_pushvalue(L, 3);
+	lua_rawset(L, 1);
 	reports::register_generator(m, new lua_report_generator(L, m));
 	return 0;
 }
@@ -3061,7 +3066,6 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "play_sound",               &intf_play_sound               },
 		{ "put_recall_unit",          &intf_put_recall_unit          },
 		{ "put_unit",                 &intf_put_unit                 },
-		{ "register_theme_item",      &intf_register_theme_item      },
 		{ "remove_tile_overlay",      &intf_remove_tile_overlay      },
 		{ "require",                  &intf_require                  },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
@@ -3233,6 +3237,12 @@ LuaKernel::LuaKernel(const config &cfg)
 	// Create the theme_items table.
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
+	lua_createtable(L, 0, 2);
+	lua_pushcfunction(L, impl_theme_items_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, impl_theme_items_set);
+	lua_setfield(L, -2, "__newindex");
+	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "theme_items");
 	lua_pop(L, 1);
 
