@@ -5,7 +5,7 @@
  * @brief Header file providing send capability to ana.
  *
  * ana: Asynchronous Network API.
- * Copyright (C) 2010 Guillermo Biset.
+ * Copyright (C) 2010 - 2011 Guillermo Biset.
  *
  * This file is part of the ana project.
  *

@@ -1,6 +1,6 @@
-/* $Id: ca_testing_move_to_targets.hpp 46186 2010-09-01 21:12:38Z silene $ */
+/* $Id$ */
 /*
-   Copyright (C) 2009 - 2010 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2011 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
