@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, Cloudsmith Inc.
+ * Copyright (c) 2010 - 2011, Cloudsmith Inc.
  * The code, documentation and other materials contained herein have been
  * licensed under the Eclipse Public License - v 1.0 by the copyright holder
  * listed above, as the Initial Contributor under such license. The text of
