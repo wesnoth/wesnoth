@@ -4,14 +4,14 @@
  *
 
  */
-package org.wesnoth.wML.util;
+package org.wesnoth.wml.util;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import org.wesnoth.wML.*;
+import org.wesnoth.wml.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,10 +23,10 @@ import org.wesnoth.wML.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.wesnoth.wML.WMLPackage
+ * @see org.wesnoth.wml.WmlPackage
  * @generated
  */
-public class WMLSwitch<T>
+public class WmlSwitch<T>
 {
   /**
    * The cached model package
@@ -34,7 +34,7 @@ public class WMLSwitch<T>
    * <!-- end-user-doc -->
    * @generated
    */
-  protected static WMLPackage modelPackage;
+  protected static WmlPackage modelPackage;
 
   /**
    * Creates an instance of the switch.
@@ -42,11 +42,11 @@ public class WMLSwitch<T>
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLSwitch()
+  public WmlSwitch()
   {
     if (modelPackage == null)
     {
-      modelPackage = WMLPackage.eINSTANCE;
+      modelPackage = WmlPackage.eINSTANCE;
     }
   }
 
@@ -96,35 +96,35 @@ public class WMLSwitch<T>
   {
     switch (classifierID)
     {
-      case WMLPackage.WML_ROOT:
+      case WmlPackage.WML_ROOT:
       {
         WMLRoot wmlRoot = (WMLRoot)theEObject;
         T result = caseWMLRoot(wmlRoot);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_TAG:
+      case WmlPackage.WML_TAG:
       {
         WMLTag wmlTag = (WMLTag)theEObject;
         T result = caseWMLTag(wmlTag);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_KEY:
+      case WmlPackage.WML_KEY:
       {
         WMLKey wmlKey = (WMLKey)theEObject;
         T result = caseWMLKey(wmlKey);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_KEY_VALUE:
+      case WmlPackage.WML_KEY_VALUE:
       {
         WMLKeyValue wmlKeyValue = (WMLKeyValue)theEObject;
         T result = caseWMLKeyValue(wmlKeyValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_MACRO_CALL:
+      case WmlPackage.WML_MACRO_CALL:
       {
         WMLMacroCall wmlMacroCall = (WMLMacroCall)theEObject;
         T result = caseWMLMacroCall(wmlMacroCall);
@@ -132,7 +132,7 @@ public class WMLSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_LUA_CODE:
+      case WmlPackage.WML_LUA_CODE:
       {
         WMLLuaCode wmlLuaCode = (WMLLuaCode)theEObject;
         T result = caseWMLLuaCode(wmlLuaCode);
@@ -140,7 +140,7 @@ public class WMLSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_ARRAY_CALL:
+      case WmlPackage.WML_ARRAY_CALL:
       {
         WMLArrayCall wmlArrayCall = (WMLArrayCall)theEObject;
         T result = caseWMLArrayCall(wmlArrayCall);
@@ -148,28 +148,28 @@ public class WMLSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_MACRO_DEFINE:
+      case WmlPackage.WML_MACRO_DEFINE:
       {
         WMLMacroDefine wmlMacroDefine = (WMLMacroDefine)theEObject;
         T result = caseWMLMacroDefine(wmlMacroDefine);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_PREPROC_IF:
+      case WmlPackage.WML_PREPROC_IF:
       {
         WMLPreprocIF wmlPreprocIF = (WMLPreprocIF)theEObject;
         T result = caseWMLPreprocIF(wmlPreprocIF);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_TEXTDOMAIN:
+      case WmlPackage.WML_TEXTDOMAIN:
       {
         WMLTextdomain wmlTextdomain = (WMLTextdomain)theEObject;
         T result = caseWMLTextdomain(wmlTextdomain);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_VALUE:
+      case WmlPackage.WML_VALUE:
       {
         WMLValue wmlValue = (WMLValue)theEObject;
         T result = caseWMLValue(wmlValue);
@@ -177,7 +177,7 @@ public class WMLSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.MACRO_TOKENS:
+      case WmlPackage.MACRO_TOKENS:
       {
         MacroTokens macroTokens = (MacroTokens)theEObject;
         T result = caseMacroTokens(macroTokens);
@@ -189,13 +189,13 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Root</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>WML Root</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Root</em>'.
+   * @return the result of interpreting the object as an instance of '<em>WML Root</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
@@ -205,13 +205,13 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Tag</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>WML Tag</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Tag</em>'.
+   * @return the result of interpreting the object as an instance of '<em>WML Tag</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
@@ -221,13 +221,13 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Key</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>WML Key</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Key</em>'.
+   * @return the result of interpreting the object as an instance of '<em>WML Key</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
@@ -237,13 +237,13 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Key Value</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>WML Key Value</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Key Value</em>'.
+   * @return the result of interpreting the object as an instance of '<em>WML Key Value</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
@@ -253,13 +253,13 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Macro Call</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>WML Macro Call</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Macro Call</em>'.
+   * @return the result of interpreting the object as an instance of '<em>WML Macro Call</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
@@ -269,13 +269,13 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Lua Code</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>WML Lua Code</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Lua Code</em>'.
+   * @return the result of interpreting the object as an instance of '<em>WML Lua Code</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
@@ -285,13 +285,13 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Array Call</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>WML Array Call</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Array Call</em>'.
+   * @return the result of interpreting the object as an instance of '<em>WML Array Call</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
@@ -301,13 +301,13 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Macro Define</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>WML Macro Define</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Macro Define</em>'.
+   * @return the result of interpreting the object as an instance of '<em>WML Macro Define</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
@@ -317,13 +317,13 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Preproc IF</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>WML Preproc IF</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Preproc IF</em>'.
+   * @return the result of interpreting the object as an instance of '<em>WML Preproc IF</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
@@ -333,13 +333,13 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Textdomain</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>WML Textdomain</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Textdomain</em>'.
+   * @return the result of interpreting the object as an instance of '<em>WML Textdomain</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
@@ -349,13 +349,13 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>WML Value</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+   * @return the result of interpreting the object as an instance of '<em>WML Value</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
@@ -396,4 +396,4 @@ public class WMLSwitch<T>
     return null;
   }
 
-} //WMLSwitch
+} //WmlSwitch

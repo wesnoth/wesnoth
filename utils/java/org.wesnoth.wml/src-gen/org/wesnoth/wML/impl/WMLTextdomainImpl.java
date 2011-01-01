@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML.impl;
+package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,17 +13,17 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.wesnoth.wML.WMLPackage;
-import org.wesnoth.wML.WMLTextdomain;
+import org.wesnoth.wml.WMLTextdomain;
+import org.wesnoth.wml.WmlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Textdomain</b></em>'.
+ * An implementation of the model object '<em><b>WML Textdomain</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLTextdomainImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLTextdomainImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,7 +69,7 @@ public class WMLTextdomainImpl extends MinimalEObjectImpl.Container implements W
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_TEXTDOMAIN;
+    return WmlPackage.Literals.WML_TEXTDOMAIN;
   }
 
   /**
@@ -92,7 +92,7 @@ public class WMLTextdomainImpl extends MinimalEObjectImpl.Container implements W
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_TEXTDOMAIN__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_TEXTDOMAIN__NAME, oldName, name));
   }
 
   /**
@@ -105,7 +105,7 @@ public class WMLTextdomainImpl extends MinimalEObjectImpl.Container implements W
   {
     switch (featureID)
     {
-      case WMLPackage.WML_TEXTDOMAIN__NAME:
+      case WmlPackage.WML_TEXTDOMAIN__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -121,7 +121,7 @@ public class WMLTextdomainImpl extends MinimalEObjectImpl.Container implements W
   {
     switch (featureID)
     {
-      case WMLPackage.WML_TEXTDOMAIN__NAME:
+      case WmlPackage.WML_TEXTDOMAIN__NAME:
         setName((String)newValue);
         return;
     }
@@ -138,7 +138,7 @@ public class WMLTextdomainImpl extends MinimalEObjectImpl.Container implements W
   {
     switch (featureID)
     {
-      case WMLPackage.WML_TEXTDOMAIN__NAME:
+      case WmlPackage.WML_TEXTDOMAIN__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -155,7 +155,7 @@ public class WMLTextdomainImpl extends MinimalEObjectImpl.Container implements W
   {
     switch (featureID)
     {
-      case WMLPackage.WML_TEXTDOMAIN__NAME:
+      case WmlPackage.WML_TEXTDOMAIN__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);

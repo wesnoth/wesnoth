@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML;
+package org.wesnoth.wml;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wML.MacroTokens#getVal <em>Val</em>}</li>
+ *   <li>{@link org.wesnoth.wml.MacroTokens#getVal <em>Val</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wesnoth.wML.WMLPackage#getMacroTokens()
+ * @see org.wesnoth.wml.WmlPackage#getMacroTokens()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface MacroTokens extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Val</em>' attribute.
    * @see #setVal(String)
-   * @see org.wesnoth.wML.WMLPackage#getMacroTokens_Val()
+   * @see org.wesnoth.wml.WmlPackage#getMacroTokens_Val()
    * @model
    * @generated
    */
   String getVal();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.MacroTokens#getVal <em>Val</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wml.MacroTokens#getVal <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Val</em>' attribute.

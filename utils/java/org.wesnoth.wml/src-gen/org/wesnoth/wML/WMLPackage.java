@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML;
+package org.wesnoth.wml;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -22,11 +22,11 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.wesnoth.wML.WMLFactory
+ * @see org.wesnoth.wml.WmlFactory
  * @model kind="package"
  * @generated
  */
-public interface WMLPackage extends EPackage
+public interface WmlPackage extends EPackage
 {
   /**
    * The package name.
@@ -34,7 +34,7 @@ public interface WMLPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  String eNAME = "wML";
+  String eNAME = "wml";
 
   /**
    * The package namespace URI.
@@ -50,7 +50,7 @@ public interface WMLPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  String eNS_PREFIX = "wML";
+  String eNS_PREFIX = "wml";
 
   /**
    * The singleton instance of the package.
@@ -58,14 +58,14 @@ public interface WMLPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  WMLPackage eINSTANCE = org.wesnoth.wML.impl.WMLPackageImpl.init();
+  WmlPackage eINSTANCE = org.wesnoth.wml.impl.WmlPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLRootImpl <em>Root</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLRootImpl <em>WML Root</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLRootImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLRoot()
+   * @see org.wesnoth.wml.impl.WMLRootImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLRoot()
    * @generated
    */
   int WML_ROOT = 0;
@@ -116,7 +116,7 @@ public interface WMLPackage extends EPackage
   int WML_ROOT__IF_DEFS = 4;
 
   /**
-   * The number of structural features of the '<em>Root</em>' class.
+   * The number of structural features of the '<em>WML Root</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -125,11 +125,11 @@ public interface WMLPackage extends EPackage
   int WML_ROOT_FEATURE_COUNT = 5;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLTagImpl <em>Tag</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLTagImpl <em>WML Tag</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLTagImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLTag()
+   * @see org.wesnoth.wml.impl.WMLTagImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLTag()
    * @generated
    */
   int WML_TAG = 1;
@@ -216,7 +216,7 @@ public interface WMLPackage extends EPackage
   int WML_TAG__END_NAME = 8;
 
   /**
-   * The number of structural features of the '<em>Tag</em>' class.
+   * The number of structural features of the '<em>WML Tag</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -225,11 +225,11 @@ public interface WMLPackage extends EPackage
   int WML_TAG_FEATURE_COUNT = 9;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLKeyImpl <em>Key</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLKeyImpl <em>WML Key</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLKeyImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKey()
+   * @see org.wesnoth.wml.impl.WMLKeyImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLKey()
    * @generated
    */
   int WML_KEY = 2;
@@ -262,7 +262,7 @@ public interface WMLPackage extends EPackage
   int WML_KEY__EOL = 2;
 
   /**
-   * The number of structural features of the '<em>Key</em>' class.
+   * The number of structural features of the '<em>WML Key</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -271,17 +271,17 @@ public interface WMLPackage extends EPackage
   int WML_KEY_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLKeyValueImpl <em>Key Value</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLKeyValueImpl <em>WML Key Value</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLKeyValueImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKeyValue()
+   * @see org.wesnoth.wml.impl.WMLKeyValueImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLKeyValue()
    * @generated
    */
   int WML_KEY_VALUE = 3;
 
   /**
-   * The number of structural features of the '<em>Key Value</em>' class.
+   * The number of structural features of the '<em>WML Key Value</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -290,11 +290,11 @@ public interface WMLPackage extends EPackage
   int WML_KEY_VALUE_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLMacroCallImpl <em>Macro Call</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLMacroCallImpl <em>WML Macro Call</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLMacroCallImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLMacroCall()
+   * @see org.wesnoth.wml.impl.WMLMacroCallImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroCall()
    * @generated
    */
   int WML_MACRO_CALL = 4;
@@ -345,7 +345,7 @@ public interface WMLPackage extends EPackage
   int WML_MACRO_CALL__EXTRA_MACROS = WML_KEY_VALUE_FEATURE_COUNT + 4;
 
   /**
-   * The number of structural features of the '<em>Macro Call</em>' class.
+   * The number of structural features of the '<em>WML Macro Call</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -354,11 +354,11 @@ public interface WMLPackage extends EPackage
   int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 5;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLLuaCodeImpl <em>Lua Code</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLLuaCodeImpl <em>WML Lua Code</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLLuaCodeImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLLuaCode()
+   * @see org.wesnoth.wml.impl.WMLLuaCodeImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLLuaCode()
    * @generated
    */
   int WML_LUA_CODE = 5;
@@ -373,7 +373,7 @@ public interface WMLPackage extends EPackage
   int WML_LUA_CODE__VALUE = WML_KEY_VALUE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Lua Code</em>' class.
+   * The number of structural features of the '<em>WML Lua Code</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -382,11 +382,11 @@ public interface WMLPackage extends EPackage
   int WML_LUA_CODE_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLArrayCallImpl <em>Array Call</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLArrayCallImpl <em>WML Array Call</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLArrayCallImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLArrayCall()
+   * @see org.wesnoth.wml.impl.WMLArrayCallImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLArrayCall()
    * @generated
    */
   int WML_ARRAY_CALL = 6;
@@ -401,7 +401,7 @@ public interface WMLPackage extends EPackage
   int WML_ARRAY_CALL__VALUE = WML_KEY_VALUE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Array Call</em>' class.
+   * The number of structural features of the '<em>WML Array Call</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -410,11 +410,11 @@ public interface WMLPackage extends EPackage
   int WML_ARRAY_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLMacroDefineImpl <em>Macro Define</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLMacroDefineImpl <em>WML Macro Define</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLMacroDefineImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLMacroDefine()
+   * @see org.wesnoth.wml.impl.WMLMacroDefineImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroDefine()
    * @generated
    */
   int WML_MACRO_DEFINE = 7;
@@ -501,7 +501,7 @@ public interface WMLPackage extends EPackage
   int WML_MACRO_DEFINE__END_NAME = 8;
 
   /**
-   * The number of structural features of the '<em>Macro Define</em>' class.
+   * The number of structural features of the '<em>WML Macro Define</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -510,11 +510,11 @@ public interface WMLPackage extends EPackage
   int WML_MACRO_DEFINE_FEATURE_COUNT = 9;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLPreprocIFImpl <em>Preproc IF</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLPreprocIFImpl <em>WML Preproc IF</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLPreprocIFImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLPreprocIF()
+   * @see org.wesnoth.wml.impl.WMLPreprocIFImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLPreprocIF()
    * @generated
    */
   int WML_PREPROC_IF = 8;
@@ -610,7 +610,7 @@ public interface WMLPackage extends EPackage
   int WML_PREPROC_IF__END_NAME = 9;
 
   /**
-   * The number of structural features of the '<em>Preproc IF</em>' class.
+   * The number of structural features of the '<em>WML Preproc IF</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -619,11 +619,11 @@ public interface WMLPackage extends EPackage
   int WML_PREPROC_IF_FEATURE_COUNT = 10;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLTextdomainImpl <em>Textdomain</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLTextdomainImpl <em>WML Textdomain</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLTextdomainImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLTextdomain()
+   * @see org.wesnoth.wml.impl.WMLTextdomainImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLTextdomain()
    * @generated
    */
   int WML_TEXTDOMAIN = 9;
@@ -638,7 +638,7 @@ public interface WMLPackage extends EPackage
   int WML_TEXTDOMAIN__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Textdomain</em>' class.
+   * The number of structural features of the '<em>WML Textdomain</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -647,11 +647,11 @@ public interface WMLPackage extends EPackage
   int WML_TEXTDOMAIN_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLValueImpl <em>Value</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLValueImpl <em>WML Value</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLValueImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLValue()
+   * @see org.wesnoth.wml.impl.WMLValueImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLValue()
    * @generated
    */
   int WML_VALUE = 10;
@@ -666,7 +666,7 @@ public interface WMLPackage extends EPackage
   int WML_VALUE__VALUE = WML_KEY_VALUE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Value</em>' class.
+   * The number of structural features of the '<em>WML Value</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -675,11 +675,11 @@ public interface WMLPackage extends EPackage
   int WML_VALUE_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.MacroTokensImpl <em>Macro Tokens</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wml.impl.MacroTokensImpl <em>Macro Tokens</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.MacroTokensImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getMacroTokens()
+   * @see org.wesnoth.wml.impl.MacroTokensImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getMacroTokens()
    * @generated
    */
   int MACRO_TOKENS = 11;
@@ -704,626 +704,626 @@ public interface WMLPackage extends EPackage
 
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLRoot <em>Root</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLRoot <em>WML Root</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Root</em>'.
-   * @see org.wesnoth.wML.WMLRoot
+   * @return the meta object for class '<em>WML Root</em>'.
+   * @see org.wesnoth.wml.WMLRoot
    * @generated
    */
   EClass getWMLRoot();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLRoot#getTags <em>Tags</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLRoot#getTags <em>Tags</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Tags</em>'.
-   * @see org.wesnoth.wML.WMLRoot#getTags()
+   * @see org.wesnoth.wml.WMLRoot#getTags()
    * @see #getWMLRoot()
    * @generated
    */
   EReference getWMLRoot_Tags();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLRoot#getMacroCalls <em>Macro Calls</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLRoot#getMacroCalls <em>Macro Calls</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Macro Calls</em>'.
-   * @see org.wesnoth.wML.WMLRoot#getMacroCalls()
+   * @see org.wesnoth.wml.WMLRoot#getMacroCalls()
    * @see #getWMLRoot()
    * @generated
    */
   EReference getWMLRoot_MacroCalls();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLRoot#getMacroDefines <em>Macro Defines</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLRoot#getMacroDefines <em>Macro Defines</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Macro Defines</em>'.
-   * @see org.wesnoth.wML.WMLRoot#getMacroDefines()
+   * @see org.wesnoth.wml.WMLRoot#getMacroDefines()
    * @see #getWMLRoot()
    * @generated
    */
   EReference getWMLRoot_MacroDefines();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLRoot#getTextdomains <em>Textdomains</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLRoot#getTextdomains <em>Textdomains</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Textdomains</em>'.
-   * @see org.wesnoth.wML.WMLRoot#getTextdomains()
+   * @see org.wesnoth.wml.WMLRoot#getTextdomains()
    * @see #getWMLRoot()
    * @generated
    */
   EReference getWMLRoot_Textdomains();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLRoot#getIfDefs <em>If Defs</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLRoot#getIfDefs <em>If Defs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>If Defs</em>'.
-   * @see org.wesnoth.wML.WMLRoot#getIfDefs()
+   * @see org.wesnoth.wml.WMLRoot#getIfDefs()
    * @see #getWMLRoot()
    * @generated
    */
   EReference getWMLRoot_IfDefs();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLTag <em>Tag</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLTag <em>WML Tag</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Tag</em>'.
-   * @see org.wesnoth.wML.WMLTag
+   * @return the meta object for class '<em>WML Tag</em>'.
+   * @see org.wesnoth.wml.WMLTag
    * @generated
    */
   EClass getWMLTag();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLTag#isPlus <em>Plus</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTag#isPlus <em>Plus</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Plus</em>'.
-   * @see org.wesnoth.wML.WMLTag#isPlus()
+   * @see org.wesnoth.wml.WMLTag#isPlus()
    * @see #getWMLTag()
    * @generated
    */
   EAttribute getWMLTag_Plus();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLTag#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTag#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.wesnoth.wML.WMLTag#getName()
+   * @see org.wesnoth.wml.WMLTag#getName()
    * @see #getWMLTag()
    * @generated
    */
   EAttribute getWMLTag_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLTag#getTags <em>Tags</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLTag#getTags <em>Tags</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Tags</em>'.
-   * @see org.wesnoth.wML.WMLTag#getTags()
+   * @see org.wesnoth.wml.WMLTag#getTags()
    * @see #getWMLTag()
    * @generated
    */
   EReference getWMLTag_Tags();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLTag#getKeys <em>Keys</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLTag#getKeys <em>Keys</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Keys</em>'.
-   * @see org.wesnoth.wML.WMLTag#getKeys()
+   * @see org.wesnoth.wml.WMLTag#getKeys()
    * @see #getWMLTag()
    * @generated
    */
   EReference getWMLTag_Keys();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLTag#getMacroCalls <em>Macro Calls</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLTag#getMacroCalls <em>Macro Calls</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Macro Calls</em>'.
-   * @see org.wesnoth.wML.WMLTag#getMacroCalls()
+   * @see org.wesnoth.wml.WMLTag#getMacroCalls()
    * @see #getWMLTag()
    * @generated
    */
   EReference getWMLTag_MacroCalls();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLTag#getMacroDefines <em>Macro Defines</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLTag#getMacroDefines <em>Macro Defines</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Macro Defines</em>'.
-   * @see org.wesnoth.wML.WMLTag#getMacroDefines()
+   * @see org.wesnoth.wml.WMLTag#getMacroDefines()
    * @see #getWMLTag()
    * @generated
    */
   EReference getWMLTag_MacroDefines();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLTag#getTextdomains <em>Textdomains</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLTag#getTextdomains <em>Textdomains</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Textdomains</em>'.
-   * @see org.wesnoth.wML.WMLTag#getTextdomains()
+   * @see org.wesnoth.wml.WMLTag#getTextdomains()
    * @see #getWMLTag()
    * @generated
    */
   EReference getWMLTag_Textdomains();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLTag#getIfDefs <em>If Defs</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLTag#getIfDefs <em>If Defs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>If Defs</em>'.
-   * @see org.wesnoth.wML.WMLTag#getIfDefs()
+   * @see org.wesnoth.wml.WMLTag#getIfDefs()
    * @see #getWMLTag()
    * @generated
    */
   EReference getWMLTag_IfDefs();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLTag#getEndName <em>End Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTag#getEndName <em>End Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>End Name</em>'.
-   * @see org.wesnoth.wML.WMLTag#getEndName()
+   * @see org.wesnoth.wml.WMLTag#getEndName()
    * @see #getWMLTag()
    * @generated
    */
   EAttribute getWMLTag_EndName();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLKey <em>Key</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLKey <em>WML Key</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Key</em>'.
-   * @see org.wesnoth.wML.WMLKey
+   * @return the meta object for class '<em>WML Key</em>'.
+   * @see org.wesnoth.wml.WMLKey
    * @generated
    */
   EClass getWMLKey();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLKey#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLKey#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.wesnoth.wML.WMLKey#getName()
+   * @see org.wesnoth.wml.WMLKey#getName()
    * @see #getWMLKey()
    * @generated
    */
   EAttribute getWMLKey_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLKey#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLKey#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Value</em>'.
-   * @see org.wesnoth.wML.WMLKey#getValue()
+   * @see org.wesnoth.wml.WMLKey#getValue()
    * @see #getWMLKey()
    * @generated
    */
   EReference getWMLKey_Value();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLKey#getEol <em>Eol</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLKey#getEol <em>Eol</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Eol</em>'.
-   * @see org.wesnoth.wML.WMLKey#getEol()
+   * @see org.wesnoth.wml.WMLKey#getEol()
    * @see #getWMLKey()
    * @generated
    */
   EAttribute getWMLKey_Eol();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLKeyValue <em>Key Value</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLKeyValue <em>WML Key Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Key Value</em>'.
-   * @see org.wesnoth.wML.WMLKeyValue
+   * @return the meta object for class '<em>WML Key Value</em>'.
+   * @see org.wesnoth.wml.WMLKeyValue
    * @generated
    */
   EClass getWMLKeyValue();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLMacroCall <em>Macro Call</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLMacroCall <em>WML Macro Call</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Macro Call</em>'.
-   * @see org.wesnoth.wML.WMLMacroCall
+   * @return the meta object for class '<em>WML Macro Call</em>'.
+   * @see org.wesnoth.wml.WMLMacroCall
    * @generated
    */
   EClass getWMLMacroCall();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacroCall#isPoint <em>Point</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLMacroCall#isPoint <em>Point</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Point</em>'.
-   * @see org.wesnoth.wML.WMLMacroCall#isPoint()
+   * @see org.wesnoth.wml.WMLMacroCall#isPoint()
    * @see #getWMLMacroCall()
    * @generated
    */
   EAttribute getWMLMacroCall_Point();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacroCall#isRelative <em>Relative</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLMacroCall#isRelative <em>Relative</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Relative</em>'.
-   * @see org.wesnoth.wML.WMLMacroCall#isRelative()
+   * @see org.wesnoth.wml.WMLMacroCall#isRelative()
    * @see #getWMLMacroCall()
    * @generated
    */
   EAttribute getWMLMacroCall_Relative();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacroCall#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLMacroCall#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.wesnoth.wML.WMLMacroCall#getName()
+   * @see org.wesnoth.wml.WMLMacroCall#getName()
    * @see #getWMLMacroCall()
    * @generated
    */
   EAttribute getWMLMacroCall_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroCall#getParams <em>Params</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLMacroCall#getParams <em>Params</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Params</em>'.
-   * @see org.wesnoth.wML.WMLMacroCall#getParams()
+   * @see org.wesnoth.wml.WMLMacroCall#getParams()
    * @see #getWMLMacroCall()
    * @generated
    */
   EReference getWMLMacroCall_Params();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroCall#getExtraMacros <em>Extra Macros</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLMacroCall#getExtraMacros <em>Extra Macros</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Extra Macros</em>'.
-   * @see org.wesnoth.wML.WMLMacroCall#getExtraMacros()
+   * @see org.wesnoth.wml.WMLMacroCall#getExtraMacros()
    * @see #getWMLMacroCall()
    * @generated
    */
   EReference getWMLMacroCall_ExtraMacros();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLLuaCode <em>Lua Code</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLLuaCode <em>WML Lua Code</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Lua Code</em>'.
-   * @see org.wesnoth.wML.WMLLuaCode
+   * @return the meta object for class '<em>WML Lua Code</em>'.
+   * @see org.wesnoth.wml.WMLLuaCode
    * @generated
    */
   EClass getWMLLuaCode();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLLuaCode#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLLuaCode#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.wesnoth.wML.WMLLuaCode#getValue()
+   * @see org.wesnoth.wml.WMLLuaCode#getValue()
    * @see #getWMLLuaCode()
    * @generated
    */
   EAttribute getWMLLuaCode_Value();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLArrayCall <em>Array Call</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLArrayCall <em>WML Array Call</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Array Call</em>'.
-   * @see org.wesnoth.wML.WMLArrayCall
+   * @return the meta object for class '<em>WML Array Call</em>'.
+   * @see org.wesnoth.wml.WMLArrayCall
    * @generated
    */
   EClass getWMLArrayCall();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLArrayCall#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLArrayCall#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Value</em>'.
-   * @see org.wesnoth.wML.WMLArrayCall#getValue()
+   * @see org.wesnoth.wml.WMLArrayCall#getValue()
    * @see #getWMLArrayCall()
    * @generated
    */
   EReference getWMLArrayCall_Value();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLMacroDefine <em>Macro Define</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLMacroDefine <em>WML Macro Define</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Macro Define</em>'.
-   * @see org.wesnoth.wML.WMLMacroDefine
+   * @return the meta object for class '<em>WML Macro Define</em>'.
+   * @see org.wesnoth.wml.WMLMacroDefine
    * @generated
    */
   EClass getWMLMacroDefine();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacroDefine#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLMacroDefine#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.wesnoth.wML.WMLMacroDefine#getName()
+   * @see org.wesnoth.wml.WMLMacroDefine#getName()
    * @see #getWMLMacroDefine()
    * @generated
    */
   EAttribute getWMLMacroDefine_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getTags <em>Tags</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLMacroDefine#getTags <em>Tags</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Tags</em>'.
-   * @see org.wesnoth.wML.WMLMacroDefine#getTags()
+   * @see org.wesnoth.wml.WMLMacroDefine#getTags()
    * @see #getWMLMacroDefine()
    * @generated
    */
   EReference getWMLMacroDefine_Tags();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getKeys <em>Keys</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLMacroDefine#getKeys <em>Keys</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Keys</em>'.
-   * @see org.wesnoth.wML.WMLMacroDefine#getKeys()
+   * @see org.wesnoth.wml.WMLMacroDefine#getKeys()
    * @see #getWMLMacroDefine()
    * @generated
    */
   EReference getWMLMacroDefine_Keys();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getMacroCalls <em>Macro Calls</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLMacroDefine#getMacroCalls <em>Macro Calls</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Macro Calls</em>'.
-   * @see org.wesnoth.wML.WMLMacroDefine#getMacroCalls()
+   * @see org.wesnoth.wml.WMLMacroDefine#getMacroCalls()
    * @see #getWMLMacroDefine()
    * @generated
    */
   EReference getWMLMacroDefine_MacroCalls();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getMacroDefines <em>Macro Defines</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLMacroDefine#getMacroDefines <em>Macro Defines</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Macro Defines</em>'.
-   * @see org.wesnoth.wML.WMLMacroDefine#getMacroDefines()
+   * @see org.wesnoth.wml.WMLMacroDefine#getMacroDefines()
    * @see #getWMLMacroDefine()
    * @generated
    */
   EReference getWMLMacroDefine_MacroDefines();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getTextdomains <em>Textdomains</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLMacroDefine#getTextdomains <em>Textdomains</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Textdomains</em>'.
-   * @see org.wesnoth.wML.WMLMacroDefine#getTextdomains()
+   * @see org.wesnoth.wml.WMLMacroDefine#getTextdomains()
    * @see #getWMLMacroDefine()
    * @generated
    */
   EReference getWMLMacroDefine_Textdomains();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getValues <em>Values</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLMacroDefine#getValues <em>Values</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Values</em>'.
-   * @see org.wesnoth.wML.WMLMacroDefine#getValues()
+   * @see org.wesnoth.wml.WMLMacroDefine#getValues()
    * @see #getWMLMacroDefine()
    * @generated
    */
   EReference getWMLMacroDefine_Values();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getIfDefs <em>If Defs</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLMacroDefine#getIfDefs <em>If Defs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>If Defs</em>'.
-   * @see org.wesnoth.wML.WMLMacroDefine#getIfDefs()
+   * @see org.wesnoth.wml.WMLMacroDefine#getIfDefs()
    * @see #getWMLMacroDefine()
    * @generated
    */
   EReference getWMLMacroDefine_IfDefs();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacroDefine#getEndName <em>End Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLMacroDefine#getEndName <em>End Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>End Name</em>'.
-   * @see org.wesnoth.wML.WMLMacroDefine#getEndName()
+   * @see org.wesnoth.wml.WMLMacroDefine#getEndName()
    * @see #getWMLMacroDefine()
    * @generated
    */
   EAttribute getWMLMacroDefine_EndName();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLPreprocIF <em>Preproc IF</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLPreprocIF <em>WML Preproc IF</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Preproc IF</em>'.
-   * @see org.wesnoth.wML.WMLPreprocIF
+   * @return the meta object for class '<em>WML Preproc IF</em>'.
+   * @see org.wesnoth.wml.WMLPreprocIF
    * @generated
    */
   EClass getWMLPreprocIF();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLPreprocIF#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLPreprocIF#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.wesnoth.wML.WMLPreprocIF#getName()
+   * @see org.wesnoth.wml.WMLPreprocIF#getName()
    * @see #getWMLPreprocIF()
    * @generated
    */
   EAttribute getWMLPreprocIF_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getTags <em>Tags</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLPreprocIF#getTags <em>Tags</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Tags</em>'.
-   * @see org.wesnoth.wML.WMLPreprocIF#getTags()
+   * @see org.wesnoth.wml.WMLPreprocIF#getTags()
    * @see #getWMLPreprocIF()
    * @generated
    */
   EReference getWMLPreprocIF_Tags();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getKeys <em>Keys</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLPreprocIF#getKeys <em>Keys</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Keys</em>'.
-   * @see org.wesnoth.wML.WMLPreprocIF#getKeys()
+   * @see org.wesnoth.wml.WMLPreprocIF#getKeys()
    * @see #getWMLPreprocIF()
    * @generated
    */
   EReference getWMLPreprocIF_Keys();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getMacroCalls <em>Macro Calls</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLPreprocIF#getMacroCalls <em>Macro Calls</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Macro Calls</em>'.
-   * @see org.wesnoth.wML.WMLPreprocIF#getMacroCalls()
+   * @see org.wesnoth.wml.WMLPreprocIF#getMacroCalls()
    * @see #getWMLPreprocIF()
    * @generated
    */
   EReference getWMLPreprocIF_MacroCalls();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getMacroDefines <em>Macro Defines</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLPreprocIF#getMacroDefines <em>Macro Defines</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Macro Defines</em>'.
-   * @see org.wesnoth.wML.WMLPreprocIF#getMacroDefines()
+   * @see org.wesnoth.wml.WMLPreprocIF#getMacroDefines()
    * @see #getWMLPreprocIF()
    * @generated
    */
   EReference getWMLPreprocIF_MacroDefines();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getTextdomains <em>Textdomains</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLPreprocIF#getTextdomains <em>Textdomains</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Textdomains</em>'.
-   * @see org.wesnoth.wML.WMLPreprocIF#getTextdomains()
+   * @see org.wesnoth.wml.WMLPreprocIF#getTextdomains()
    * @see #getWMLPreprocIF()
    * @generated
    */
   EReference getWMLPreprocIF_Textdomains();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getValues <em>Values</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLPreprocIF#getValues <em>Values</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Values</em>'.
-   * @see org.wesnoth.wML.WMLPreprocIF#getValues()
+   * @see org.wesnoth.wml.WMLPreprocIF#getValues()
    * @see #getWMLPreprocIF()
    * @generated
    */
   EReference getWMLPreprocIF_Values();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getIfDefs <em>If Defs</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLPreprocIF#getIfDefs <em>If Defs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>If Defs</em>'.
-   * @see org.wesnoth.wML.WMLPreprocIF#getIfDefs()
+   * @see org.wesnoth.wml.WMLPreprocIF#getIfDefs()
    * @see #getWMLPreprocIF()
    * @generated
    */
   EReference getWMLPreprocIF_IfDefs();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.wesnoth.wML.WMLPreprocIF#getElses <em>Elses</em>}'.
+   * Returns the meta object for the attribute list '{@link org.wesnoth.wml.WMLPreprocIF#getElses <em>Elses</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Elses</em>'.
-   * @see org.wesnoth.wML.WMLPreprocIF#getElses()
+   * @see org.wesnoth.wml.WMLPreprocIF#getElses()
    * @see #getWMLPreprocIF()
    * @generated
    */
   EAttribute getWMLPreprocIF_Elses();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLPreprocIF#getEndName <em>End Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLPreprocIF#getEndName <em>End Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>End Name</em>'.
-   * @see org.wesnoth.wML.WMLPreprocIF#getEndName()
+   * @see org.wesnoth.wml.WMLPreprocIF#getEndName()
    * @see #getWMLPreprocIF()
    * @generated
    */
   EAttribute getWMLPreprocIF_EndName();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLTextdomain <em>Textdomain</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLTextdomain <em>WML Textdomain</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Textdomain</em>'.
-   * @see org.wesnoth.wML.WMLTextdomain
+   * @return the meta object for class '<em>WML Textdomain</em>'.
+   * @see org.wesnoth.wml.WMLTextdomain
    * @generated
    */
   EClass getWMLTextdomain();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLTextdomain#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTextdomain#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.wesnoth.wML.WMLTextdomain#getName()
+   * @see org.wesnoth.wml.WMLTextdomain#getName()
    * @see #getWMLTextdomain()
    * @generated
    */
   EAttribute getWMLTextdomain_Name();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLValue <em>Value</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLValue <em>WML Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Value</em>'.
-   * @see org.wesnoth.wML.WMLValue
+   * @return the meta object for class '<em>WML Value</em>'.
+   * @see org.wesnoth.wml.WMLValue
    * @generated
    */
   EClass getWMLValue();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLValue#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLValue#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.wesnoth.wML.WMLValue#getValue()
+   * @see org.wesnoth.wml.WMLValue#getValue()
    * @see #getWMLValue()
    * @generated
    */
   EAttribute getWMLValue_Value();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.MacroTokens <em>Macro Tokens</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.MacroTokens <em>Macro Tokens</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Macro Tokens</em>'.
-   * @see org.wesnoth.wML.MacroTokens
+   * @see org.wesnoth.wml.MacroTokens
    * @generated
    */
   EClass getMacroTokens();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.MacroTokens#getVal <em>Val</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.MacroTokens#getVal <em>Val</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Val</em>'.
-   * @see org.wesnoth.wML.MacroTokens#getVal()
+   * @see org.wesnoth.wml.MacroTokens#getVal()
    * @see #getMacroTokens()
    * @generated
    */
@@ -1336,7 +1336,7 @@ public interface WMLPackage extends EPackage
    * @return the factory that creates the instances of the model.
    * @generated
    */
-  WMLFactory getWMLFactory();
+  WmlFactory getWmlFactory();
 
   /**
    * <!-- begin-user-doc -->
@@ -1353,11 +1353,11 @@ public interface WMLPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLRootImpl <em>Root</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLRootImpl <em>WML Root</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLRootImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLRoot()
+     * @see org.wesnoth.wml.impl.WMLRootImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLRoot()
      * @generated
      */
     EClass WML_ROOT = eINSTANCE.getWMLRoot();
@@ -1403,11 +1403,11 @@ public interface WMLPackage extends EPackage
     EReference WML_ROOT__IF_DEFS = eINSTANCE.getWMLRoot_IfDefs();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLTagImpl <em>Tag</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLTagImpl <em>WML Tag</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLTagImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLTag()
+     * @see org.wesnoth.wml.impl.WMLTagImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLTag()
      * @generated
      */
     EClass WML_TAG = eINSTANCE.getWMLTag();
@@ -1485,11 +1485,11 @@ public interface WMLPackage extends EPackage
     EAttribute WML_TAG__END_NAME = eINSTANCE.getWMLTag_EndName();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLKeyImpl <em>Key</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLKeyImpl <em>WML Key</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLKeyImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKey()
+     * @see org.wesnoth.wml.impl.WMLKeyImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLKey()
      * @generated
      */
     EClass WML_KEY = eINSTANCE.getWMLKey();
@@ -1519,21 +1519,21 @@ public interface WMLPackage extends EPackage
     EAttribute WML_KEY__EOL = eINSTANCE.getWMLKey_Eol();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLKeyValueImpl <em>Key Value</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLKeyValueImpl <em>WML Key Value</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLKeyValueImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKeyValue()
+     * @see org.wesnoth.wml.impl.WMLKeyValueImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLKeyValue()
      * @generated
      */
     EClass WML_KEY_VALUE = eINSTANCE.getWMLKeyValue();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLMacroCallImpl <em>Macro Call</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLMacroCallImpl <em>WML Macro Call</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLMacroCallImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLMacroCall()
+     * @see org.wesnoth.wml.impl.WMLMacroCallImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroCall()
      * @generated
      */
     EClass WML_MACRO_CALL = eINSTANCE.getWMLMacroCall();
@@ -1579,11 +1579,11 @@ public interface WMLPackage extends EPackage
     EReference WML_MACRO_CALL__EXTRA_MACROS = eINSTANCE.getWMLMacroCall_ExtraMacros();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLLuaCodeImpl <em>Lua Code</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLLuaCodeImpl <em>WML Lua Code</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLLuaCodeImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLLuaCode()
+     * @see org.wesnoth.wml.impl.WMLLuaCodeImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLLuaCode()
      * @generated
      */
     EClass WML_LUA_CODE = eINSTANCE.getWMLLuaCode();
@@ -1597,11 +1597,11 @@ public interface WMLPackage extends EPackage
     EAttribute WML_LUA_CODE__VALUE = eINSTANCE.getWMLLuaCode_Value();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLArrayCallImpl <em>Array Call</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLArrayCallImpl <em>WML Array Call</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLArrayCallImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLArrayCall()
+     * @see org.wesnoth.wml.impl.WMLArrayCallImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLArrayCall()
      * @generated
      */
     EClass WML_ARRAY_CALL = eINSTANCE.getWMLArrayCall();
@@ -1615,11 +1615,11 @@ public interface WMLPackage extends EPackage
     EReference WML_ARRAY_CALL__VALUE = eINSTANCE.getWMLArrayCall_Value();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLMacroDefineImpl <em>Macro Define</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLMacroDefineImpl <em>WML Macro Define</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLMacroDefineImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLMacroDefine()
+     * @see org.wesnoth.wml.impl.WMLMacroDefineImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroDefine()
      * @generated
      */
     EClass WML_MACRO_DEFINE = eINSTANCE.getWMLMacroDefine();
@@ -1697,11 +1697,11 @@ public interface WMLPackage extends EPackage
     EAttribute WML_MACRO_DEFINE__END_NAME = eINSTANCE.getWMLMacroDefine_EndName();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLPreprocIFImpl <em>Preproc IF</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLPreprocIFImpl <em>WML Preproc IF</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLPreprocIFImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLPreprocIF()
+     * @see org.wesnoth.wml.impl.WMLPreprocIFImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLPreprocIF()
      * @generated
      */
     EClass WML_PREPROC_IF = eINSTANCE.getWMLPreprocIF();
@@ -1787,11 +1787,11 @@ public interface WMLPackage extends EPackage
     EAttribute WML_PREPROC_IF__END_NAME = eINSTANCE.getWMLPreprocIF_EndName();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLTextdomainImpl <em>Textdomain</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLTextdomainImpl <em>WML Textdomain</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLTextdomainImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLTextdomain()
+     * @see org.wesnoth.wml.impl.WMLTextdomainImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLTextdomain()
      * @generated
      */
     EClass WML_TEXTDOMAIN = eINSTANCE.getWMLTextdomain();
@@ -1805,11 +1805,11 @@ public interface WMLPackage extends EPackage
     EAttribute WML_TEXTDOMAIN__NAME = eINSTANCE.getWMLTextdomain_Name();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLValueImpl <em>Value</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLValueImpl <em>WML Value</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLValueImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLValue()
+     * @see org.wesnoth.wml.impl.WMLValueImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLValue()
      * @generated
      */
     EClass WML_VALUE = eINSTANCE.getWMLValue();
@@ -1823,11 +1823,11 @@ public interface WMLPackage extends EPackage
     EAttribute WML_VALUE__VALUE = eINSTANCE.getWMLValue_Value();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.MacroTokensImpl <em>Macro Tokens</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.MacroTokensImpl <em>Macro Tokens</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.MacroTokensImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getMacroTokens()
+     * @see org.wesnoth.wml.impl.MacroTokensImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getMacroTokens()
      * @generated
      */
     EClass MACRO_TOKENS = eINSTANCE.getMacroTokens();
@@ -1842,4 +1842,4 @@ public interface WMLPackage extends EPackage
 
   }
 
-} //WMLPackage
+} //WmlPackage

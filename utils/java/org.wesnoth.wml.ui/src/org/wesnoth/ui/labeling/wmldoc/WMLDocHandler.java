@@ -25,8 +25,8 @@ import org.wesnoth.Logger;
 import org.wesnoth.preprocessor.Define;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.utils.ProjectUtils;
-import org.wesnoth.wML.WMLMacroCall;
-import org.wesnoth.wML.WMLTag;
+import org.wesnoth.wml.WMLMacroCall;
+import org.wesnoth.wml.WMLTag;
 
 
 /**

@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML.impl;
+package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -12,17 +12,17 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wesnoth.wML.WMLPackage;
-import org.wesnoth.wML.WMLValue;
+import org.wesnoth.wml.WMLValue;
+import org.wesnoth.wml.WmlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Value</b></em>'.
+ * An implementation of the model object '<em><b>WML Value</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLValueImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLValueImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,7 +68,7 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_VALUE;
+    return WmlPackage.Literals.WML_VALUE;
   }
 
   /**
@@ -91,7 +91,7 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
     String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_VALUE__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_VALUE__VALUE, oldValue, value));
   }
 
   /**
@@ -104,7 +104,7 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
+      case WmlPackage.WML_VALUE__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -120,7 +120,7 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
+      case WmlPackage.WML_VALUE__VALUE:
         setValue((String)newValue);
         return;
     }
@@ -137,7 +137,7 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
+      case WmlPackage.WML_VALUE__VALUE:
         setValue(VALUE_EDEFAULT);
         return;
     }
@@ -154,7 +154,7 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
+      case WmlPackage.WML_VALUE__VALUE:
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);

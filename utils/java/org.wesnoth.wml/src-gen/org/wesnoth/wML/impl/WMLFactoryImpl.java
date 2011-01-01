@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML.impl;
+package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.wesnoth.wML.*;
+import org.wesnoth.wml.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +22,7 @@ import org.wesnoth.wML.*;
  * <!-- end-user-doc -->
  * @generated
  */
-public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
+public class WmlFactoryImpl extends EFactoryImpl implements WmlFactory
 {
   /**
    * Creates the default factory implementation.
@@ -30,21 +30,21 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public static WMLFactory init()
+  public static WmlFactory init()
   {
     try
     {
-      WMLFactory theWMLFactory = (WMLFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.wesnoth.org/WML"); 
-      if (theWMLFactory != null)
+      WmlFactory theWmlFactory = (WmlFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.wesnoth.org/WML"); 
+      if (theWmlFactory != null)
       {
-        return theWMLFactory;
+        return theWmlFactory;
       }
     }
     catch (Exception exception)
     {
       EcorePlugin.INSTANCE.log(exception);
     }
-    return new WMLFactoryImpl();
+    return new WmlFactoryImpl();
   }
 
   /**
@@ -53,7 +53,7 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLFactoryImpl()
+  public WmlFactoryImpl()
   {
     super();
   }
@@ -68,18 +68,18 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
   {
     switch (eClass.getClassifierID())
     {
-      case WMLPackage.WML_ROOT: return createWMLRoot();
-      case WMLPackage.WML_TAG: return createWMLTag();
-      case WMLPackage.WML_KEY: return createWMLKey();
-      case WMLPackage.WML_KEY_VALUE: return createWMLKeyValue();
-      case WMLPackage.WML_MACRO_CALL: return createWMLMacroCall();
-      case WMLPackage.WML_LUA_CODE: return createWMLLuaCode();
-      case WMLPackage.WML_ARRAY_CALL: return createWMLArrayCall();
-      case WMLPackage.WML_MACRO_DEFINE: return createWMLMacroDefine();
-      case WMLPackage.WML_PREPROC_IF: return createWMLPreprocIF();
-      case WMLPackage.WML_TEXTDOMAIN: return createWMLTextdomain();
-      case WMLPackage.WML_VALUE: return createWMLValue();
-      case WMLPackage.MACRO_TOKENS: return createMacroTokens();
+      case WmlPackage.WML_ROOT: return createWMLRoot();
+      case WmlPackage.WML_TAG: return createWMLTag();
+      case WmlPackage.WML_KEY: return createWMLKey();
+      case WmlPackage.WML_KEY_VALUE: return createWMLKeyValue();
+      case WmlPackage.WML_MACRO_CALL: return createWMLMacroCall();
+      case WmlPackage.WML_LUA_CODE: return createWMLLuaCode();
+      case WmlPackage.WML_ARRAY_CALL: return createWMLArrayCall();
+      case WmlPackage.WML_MACRO_DEFINE: return createWMLMacroDefine();
+      case WmlPackage.WML_PREPROC_IF: return createWMLPreprocIF();
+      case WmlPackage.WML_TEXTDOMAIN: return createWMLTextdomain();
+      case WmlPackage.WML_VALUE: return createWMLValue();
+      case WmlPackage.MACRO_TOKENS: return createMacroTokens();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -222,9 +222,9 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLPackage getWMLPackage()
+  public WmlPackage getWmlPackage()
   {
-    return (WMLPackage)getEPackage();
+    return (WmlPackage)getEPackage();
   }
 
   /**
@@ -234,9 +234,9 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * @generated
    */
   @Deprecated
-  public static WMLPackage getPackage()
+  public static WmlPackage getPackage()
   {
-    return WMLPackage.eINSTANCE;
+    return WmlPackage.eINSTANCE;
   }
 
-} //WMLFactoryImpl
+} //WmlFactoryImpl

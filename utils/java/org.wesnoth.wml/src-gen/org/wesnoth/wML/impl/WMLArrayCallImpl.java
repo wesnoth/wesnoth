@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML.impl;
+package org.wesnoth.wml.impl;
 
 import java.util.Collection;
 
@@ -18,18 +18,18 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wesnoth.wML.WMLArrayCall;
-import org.wesnoth.wML.WMLPackage;
-import org.wesnoth.wML.WMLValue;
+import org.wesnoth.wml.WMLArrayCall;
+import org.wesnoth.wml.WMLValue;
+import org.wesnoth.wml.WmlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Array Call</b></em>'.
+ * An implementation of the model object '<em><b>WML Array Call</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLArrayCallImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLArrayCallImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,7 +65,7 @@ public class WMLArrayCallImpl extends WMLKeyValueImpl implements WMLArrayCall
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_ARRAY_CALL;
+    return WmlPackage.Literals.WML_ARRAY_CALL;
   }
 
   /**
@@ -77,7 +77,7 @@ public class WMLArrayCallImpl extends WMLKeyValueImpl implements WMLArrayCall
   {
     if (value == null)
     {
-      value = new EObjectContainmentEList<WMLValue>(WMLValue.class, this, WMLPackage.WML_ARRAY_CALL__VALUE);
+      value = new EObjectContainmentEList<WMLValue>(WMLValue.class, this, WmlPackage.WML_ARRAY_CALL__VALUE);
     }
     return value;
   }
@@ -92,7 +92,7 @@ public class WMLArrayCallImpl extends WMLKeyValueImpl implements WMLArrayCall
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ARRAY_CALL__VALUE:
+      case WmlPackage.WML_ARRAY_CALL__VALUE:
         return ((InternalEList<?>)getValue()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -108,7 +108,7 @@ public class WMLArrayCallImpl extends WMLKeyValueImpl implements WMLArrayCall
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ARRAY_CALL__VALUE:
+      case WmlPackage.WML_ARRAY_CALL__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -125,7 +125,7 @@ public class WMLArrayCallImpl extends WMLKeyValueImpl implements WMLArrayCall
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ARRAY_CALL__VALUE:
+      case WmlPackage.WML_ARRAY_CALL__VALUE:
         getValue().clear();
         getValue().addAll((Collection<? extends WMLValue>)newValue);
         return;
@@ -143,7 +143,7 @@ public class WMLArrayCallImpl extends WMLKeyValueImpl implements WMLArrayCall
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ARRAY_CALL__VALUE:
+      case WmlPackage.WML_ARRAY_CALL__VALUE:
         getValue().clear();
         return;
     }
@@ -160,7 +160,7 @@ public class WMLArrayCallImpl extends WMLKeyValueImpl implements WMLArrayCall
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ARRAY_CALL__VALUE:
+      case WmlPackage.WML_ARRAY_CALL__VALUE:
         return value != null && !value.isEmpty();
     }
     return super.eIsSet(featureID);

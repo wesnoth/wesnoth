@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML.impl;
+package org.wesnoth.wml.impl;
 
 import java.util.Collection;
 
@@ -22,20 +22,20 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wesnoth.wML.WMLKey;
-import org.wesnoth.wML.WMLKeyValue;
-import org.wesnoth.wML.WMLPackage;
+import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLKeyValue;
+import org.wesnoth.wml.WmlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Key</b></em>'.
+ * An implementation of the model object '<em><b>WML Key</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLKeyImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLKeyImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLKeyImpl#getEol <em>Eol</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLKeyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLKeyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLKeyImpl#getEol <em>Eol</em>}</li>
  * </ul>
  * </p>
  *
@@ -111,7 +111,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_KEY;
+    return WmlPackage.Literals.WML_KEY;
   }
 
   /**
@@ -134,7 +134,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_KEY__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_KEY__NAME, oldName, name));
   }
 
   /**
@@ -146,7 +146,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     if (value == null)
     {
-      value = new EObjectContainmentEList<WMLKeyValue>(WMLKeyValue.class, this, WMLPackage.WML_KEY__VALUE);
+      value = new EObjectContainmentEList<WMLKeyValue>(WMLKeyValue.class, this, WmlPackage.WML_KEY__VALUE);
     }
     return value;
   }
@@ -171,7 +171,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
     String oldEol = eol;
     eol = newEol;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_KEY__EOL, oldEol, eol));
+      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_KEY__EOL, oldEol, eol));
   }
 
   /**
@@ -184,7 +184,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY__VALUE:
+      case WmlPackage.WML_KEY__VALUE:
         return ((InternalEList<?>)getValue()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -200,11 +200,11 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY__NAME:
+      case WmlPackage.WML_KEY__NAME:
         return getName();
-      case WMLPackage.WML_KEY__VALUE:
+      case WmlPackage.WML_KEY__VALUE:
         return getValue();
-      case WMLPackage.WML_KEY__EOL:
+      case WmlPackage.WML_KEY__EOL:
         return getEol();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -221,14 +221,14 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY__NAME:
+      case WmlPackage.WML_KEY__NAME:
         setName((String)newValue);
         return;
-      case WMLPackage.WML_KEY__VALUE:
+      case WmlPackage.WML_KEY__VALUE:
         getValue().clear();
         getValue().addAll((Collection<? extends WMLKeyValue>)newValue);
         return;
-      case WMLPackage.WML_KEY__EOL:
+      case WmlPackage.WML_KEY__EOL:
         setEol((String)newValue);
         return;
     }
@@ -245,13 +245,13 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY__NAME:
+      case WmlPackage.WML_KEY__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case WMLPackage.WML_KEY__VALUE:
+      case WmlPackage.WML_KEY__VALUE:
         getValue().clear();
         return;
-      case WMLPackage.WML_KEY__EOL:
+      case WmlPackage.WML_KEY__EOL:
         setEol(EOL_EDEFAULT);
         return;
     }
@@ -268,11 +268,11 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY__NAME:
+      case WmlPackage.WML_KEY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case WMLPackage.WML_KEY__VALUE:
+      case WmlPackage.WML_KEY__VALUE:
         return value != null && !value.isEmpty();
-      case WMLPackage.WML_KEY__EOL:
+      case WmlPackage.WML_KEY__EOL:
         return EOL_EDEFAULT == null ? eol != null : !EOL_EDEFAULT.equals(eol);
     }
     return super.eIsSet(featureID);

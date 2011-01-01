@@ -17,8 +17,8 @@ import org.eclipse.xtext.parsetree.CompositeNode;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegion;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
-import org.wesnoth.wML.WMLKey;
-import org.wesnoth.wML.WMLTextdomain;
+import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLTextdomain;
 
 public class WMLFoldingRegionProvider extends DefaultFoldingRegionProvider
 {

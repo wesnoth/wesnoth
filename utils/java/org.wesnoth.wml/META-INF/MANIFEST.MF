@@ -25,10 +25,10 @@ Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.wesnoth,
  org.wesnoth.services,
- org.wesnoth.wML,
- org.wesnoth.wML.impl,
- org.wesnoth.wML.util,
  org.wesnoth.parseTreeConstruction,
  org.wesnoth.parser.antlr,
  org.wesnoth.parser.antlr.internal,
- org.wesnoth.validation
+ org.wesnoth.validation,
+ org.wesnoth.wml,
+ org.wesnoth.wml.impl,
+ org.wesnoth.wml.util

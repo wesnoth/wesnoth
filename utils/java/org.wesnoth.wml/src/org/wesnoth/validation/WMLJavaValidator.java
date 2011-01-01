@@ -15,11 +15,11 @@ import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.schema.Tag;
-import org.wesnoth.wML.WMLKey;
-import org.wesnoth.wML.WMLMacroCall;
-import org.wesnoth.wML.WMLPackage;
-import org.wesnoth.wML.WMLRoot;
-import org.wesnoth.wML.WMLTag;
+import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLMacroCall;
+import org.wesnoth.wml.WMLRoot;
+import org.wesnoth.wml.WMLTag;
+import org.wesnoth.wml.WmlPackage;
 
 
 /**
@@ -37,7 +37,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 	public void checkFastTagName(WMLTag tag)
 	{
 		if (!tag.getName().equals(tag.getEndName()))
-			warning(Messages.WMLJavaValidator_0, WMLPackage.WML_TAG__END_NAME);
+			warning(Messages.WMLJavaValidator_0, WmlPackage.WML_TAG__END_NAME);
 	}
 
 //	@Check(CheckType.NORMAL)
@@ -68,7 +68,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 					}
 				}
 				if (found == false)
-					warning(Messages.WMLJavaValidator_1, WMLPackage.WML_TAG__NAME);
+					warning(Messages.WMLJavaValidator_1, WmlPackage.WML_TAG__NAME);
 			}
 		}
 	}

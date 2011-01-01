@@ -4,23 +4,23 @@
  *
 
  */
-package org.wesnoth.wML;
+package org.wesnoth.wml;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Array Call</b></em>'.
+ * A representation of the model object '<em><b>WML Array Call</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wML.WMLArrayCall#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLArrayCall#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wesnoth.wML.WMLPackage#getWMLArrayCall()
+ * @see org.wesnoth.wml.WmlPackage#getWMLArrayCall()
  * @model
  * @generated
  */
@@ -28,7 +28,7 @@ public interface WMLArrayCall extends WMLKeyValue
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLValue}.
+   * The list contents are of type {@link org.wesnoth.wml.WMLValue}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Value</em>' containment reference list isn't clear,
@@ -36,7 +36,7 @@ public interface WMLArrayCall extends WMLKeyValue
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLArrayCall_Value()
+   * @see org.wesnoth.wml.WmlPackage#getWMLArrayCall_Value()
    * @model containment="true"
    * @generated
    */

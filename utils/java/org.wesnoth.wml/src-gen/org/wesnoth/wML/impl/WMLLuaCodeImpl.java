@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML.impl;
+package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -12,17 +12,17 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wesnoth.wML.WMLLuaCode;
-import org.wesnoth.wML.WMLPackage;
+import org.wesnoth.wml.WMLLuaCode;
+import org.wesnoth.wml.WmlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Lua Code</b></em>'.
+ * An implementation of the model object '<em><b>WML Lua Code</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLLuaCodeImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLLuaCodeImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,7 +68,7 @@ public class WMLLuaCodeImpl extends WMLKeyValueImpl implements WMLLuaCode
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_LUA_CODE;
+    return WmlPackage.Literals.WML_LUA_CODE;
   }
 
   /**
@@ -91,7 +91,7 @@ public class WMLLuaCodeImpl extends WMLKeyValueImpl implements WMLLuaCode
     String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_LUA_CODE__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_LUA_CODE__VALUE, oldValue, value));
   }
 
   /**
@@ -104,7 +104,7 @@ public class WMLLuaCodeImpl extends WMLKeyValueImpl implements WMLLuaCode
   {
     switch (featureID)
     {
-      case WMLPackage.WML_LUA_CODE__VALUE:
+      case WmlPackage.WML_LUA_CODE__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -120,7 +120,7 @@ public class WMLLuaCodeImpl extends WMLKeyValueImpl implements WMLLuaCode
   {
     switch (featureID)
     {
-      case WMLPackage.WML_LUA_CODE__VALUE:
+      case WmlPackage.WML_LUA_CODE__VALUE:
         setValue((String)newValue);
         return;
     }
@@ -137,7 +137,7 @@ public class WMLLuaCodeImpl extends WMLKeyValueImpl implements WMLLuaCode
   {
     switch (featureID)
     {
-      case WMLPackage.WML_LUA_CODE__VALUE:
+      case WmlPackage.WML_LUA_CODE__VALUE:
         setValue(VALUE_EDEFAULT);
         return;
     }
@@ -154,7 +154,7 @@ public class WMLLuaCodeImpl extends WMLKeyValueImpl implements WMLLuaCode
   {
     switch (featureID)
     {
-      case WMLPackage.WML_LUA_CODE__VALUE:
+      case WmlPackage.WML_LUA_CODE__VALUE:
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);

@@ -27,15 +27,14 @@ import org.wesnoth.preprocessor.Define;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.schema.Tag;
 import org.wesnoth.schema.TagKey;
-import org.wesnoth.ui.Messages;
 import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.utils.ProjectUtils;
-import org.wesnoth.wML.WMLKey;
-import org.wesnoth.wML.WMLTag;
-import org.wesnoth.wML.impl.WMLFactoryImpl;
+import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.core.ConfigFile;
+import org.wesnoth.wml.impl.WmlFactoryImpl;
 
 
 @SuppressWarnings("unused")
@@ -238,7 +237,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 					if (found == false)
 						acceptor.accept(createCompletionProposal(key.getName() + "=", //$NON-NLS-1$
 							key.getName(),
-							getImage(WMLFactoryImpl.eINSTANCE.getWMLPackage().getWMLKey()),
+							getImage(WmlFactoryImpl.eINSTANCE.getWmlPackage().getWMLKey()),
 							context, 1500));
 				}
 			}
@@ -343,7 +342,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		}
 		proposal.append(String.format("%s[/%s]",indent, tag.getName())); //$NON-NLS-1$
 		return createCompletionProposal(proposal.toString(), tag.getName(),
-					getImage(WMLFactoryImpl.eINSTANCE.getWMLPackage().getWMLTag()),
+					getImage(WmlFactoryImpl.eINSTANCE.getWmlPackage().getWMLTag()),
 					context, 100);
 	}
 

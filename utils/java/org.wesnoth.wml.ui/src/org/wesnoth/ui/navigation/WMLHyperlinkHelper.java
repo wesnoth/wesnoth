@@ -25,7 +25,7 @@ import org.wesnoth.ui.Messages;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.emf.ObjectStorageAdapter;
 import org.wesnoth.utils.ProjectUtils;
-import org.wesnoth.wML.WMLMacroCall;
+import org.wesnoth.wml.WMLMacroCall;
 
 
 public class WMLHyperlinkHelper extends HyperlinkHelper

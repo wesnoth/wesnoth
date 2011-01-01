@@ -26,7 +26,7 @@ import org.eclipse.xtext.util.Pair;
 import org.wesnoth.services.WMLGrammarAccess;
 import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
-import org.wesnoth.wML.WMLTag;
+import org.wesnoth.wml.WMLTag;
 
 import com.google.inject.Inject;
 

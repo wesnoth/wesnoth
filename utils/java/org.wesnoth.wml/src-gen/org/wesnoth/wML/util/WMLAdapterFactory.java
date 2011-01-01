@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML.util;
+package org.wesnoth.wml.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -13,17 +13,17 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.wesnoth.wML.*;
+import org.wesnoth.wml.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.wesnoth.wML.WMLPackage
+ * @see org.wesnoth.wml.WmlPackage
  * @generated
  */
-public class WMLAdapterFactory extends AdapterFactoryImpl
+public class WmlAdapterFactory extends AdapterFactoryImpl
 {
   /**
    * The cached model package.
@@ -31,7 +31,7 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
    * <!-- end-user-doc -->
    * @generated
    */
-  protected static WMLPackage modelPackage;
+  protected static WmlPackage modelPackage;
 
   /**
    * Creates an instance of the adapter factory.
@@ -39,11 +39,11 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLAdapterFactory()
+  public WmlAdapterFactory()
   {
     if (modelPackage == null)
     {
-      modelPackage = WMLPackage.eINSTANCE;
+      modelPackage = WmlPackage.eINSTANCE;
     }
   }
 
@@ -75,8 +75,8 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLSwitch<Adapter> modelSwitch =
-    new WMLSwitch<Adapter>()
+  protected WmlSwitch<Adapter> modelSwitch =
+    new WmlSwitch<Adapter>()
     {
       @Override
       public Adapter caseWMLRoot(WMLRoot object)
@@ -161,13 +161,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLRoot <em>Root</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLRoot <em>WML Root</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLRoot
+   * @see org.wesnoth.wml.WMLRoot
    * @generated
    */
   public Adapter createWMLRootAdapter()
@@ -176,13 +176,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLTag <em>Tag</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLTag <em>WML Tag</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLTag
+   * @see org.wesnoth.wml.WMLTag
    * @generated
    */
   public Adapter createWMLTagAdapter()
@@ -191,13 +191,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLKey <em>Key</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLKey <em>WML Key</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLKey
+   * @see org.wesnoth.wml.WMLKey
    * @generated
    */
   public Adapter createWMLKeyAdapter()
@@ -206,13 +206,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLKeyValue <em>Key Value</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLKeyValue <em>WML Key Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLKeyValue
+   * @see org.wesnoth.wml.WMLKeyValue
    * @generated
    */
   public Adapter createWMLKeyValueAdapter()
@@ -221,13 +221,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLMacroCall <em>Macro Call</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLMacroCall <em>WML Macro Call</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLMacroCall
+   * @see org.wesnoth.wml.WMLMacroCall
    * @generated
    */
   public Adapter createWMLMacroCallAdapter()
@@ -236,13 +236,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLLuaCode <em>Lua Code</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLLuaCode <em>WML Lua Code</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLLuaCode
+   * @see org.wesnoth.wml.WMLLuaCode
    * @generated
    */
   public Adapter createWMLLuaCodeAdapter()
@@ -251,13 +251,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLArrayCall <em>Array Call</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLArrayCall <em>WML Array Call</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLArrayCall
+   * @see org.wesnoth.wml.WMLArrayCall
    * @generated
    */
   public Adapter createWMLArrayCallAdapter()
@@ -266,13 +266,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLMacroDefine <em>Macro Define</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLMacroDefine <em>WML Macro Define</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLMacroDefine
+   * @see org.wesnoth.wml.WMLMacroDefine
    * @generated
    */
   public Adapter createWMLMacroDefineAdapter()
@@ -281,13 +281,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLPreprocIF <em>Preproc IF</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLPreprocIF <em>WML Preproc IF</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLPreprocIF
+   * @see org.wesnoth.wml.WMLPreprocIF
    * @generated
    */
   public Adapter createWMLPreprocIFAdapter()
@@ -296,13 +296,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLTextdomain <em>Textdomain</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLTextdomain <em>WML Textdomain</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLTextdomain
+   * @see org.wesnoth.wml.WMLTextdomain
    * @generated
    */
   public Adapter createWMLTextdomainAdapter()
@@ -311,13 +311,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLValue <em>Value</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLValue <em>WML Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLValue
+   * @see org.wesnoth.wml.WMLValue
    * @generated
    */
   public Adapter createWMLValueAdapter()
@@ -326,13 +326,13 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.MacroTokens <em>Macro Tokens</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.MacroTokens <em>Macro Tokens</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.MacroTokens
+   * @see org.wesnoth.wml.MacroTokens
    * @generated
    */
   public Adapter createMacroTokensAdapter()
@@ -353,4 +353,4 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
     return null;
   }
 
-} //WMLAdapterFactory
+} //WmlAdapterFactory

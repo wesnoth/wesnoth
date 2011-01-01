@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML.impl;
+package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -13,20 +13,20 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.wesnoth.wML.MacroTokens;
-import org.wesnoth.wML.WMLArrayCall;
-import org.wesnoth.wML.WMLFactory;
-import org.wesnoth.wML.WMLKey;
-import org.wesnoth.wML.WMLKeyValue;
-import org.wesnoth.wML.WMLLuaCode;
-import org.wesnoth.wML.WMLMacroCall;
-import org.wesnoth.wML.WMLMacroDefine;
-import org.wesnoth.wML.WMLPackage;
-import org.wesnoth.wML.WMLPreprocIF;
-import org.wesnoth.wML.WMLRoot;
-import org.wesnoth.wML.WMLTag;
-import org.wesnoth.wML.WMLTextdomain;
-import org.wesnoth.wML.WMLValue;
+import org.wesnoth.wml.MacroTokens;
+import org.wesnoth.wml.WMLArrayCall;
+import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLKeyValue;
+import org.wesnoth.wml.WMLLuaCode;
+import org.wesnoth.wml.WMLMacroCall;
+import org.wesnoth.wml.WMLMacroDefine;
+import org.wesnoth.wml.WMLPreprocIF;
+import org.wesnoth.wml.WMLRoot;
+import org.wesnoth.wml.WMLTag;
+import org.wesnoth.wml.WMLTextdomain;
+import org.wesnoth.wml.WMLValue;
+import org.wesnoth.wml.WmlFactory;
+import org.wesnoth.wml.WmlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ import org.wesnoth.wML.WMLValue;
  * <!-- end-user-doc -->
  * @generated
  */
-public class WMLPackageImpl extends EPackageImpl implements WMLPackage
+public class WmlPackageImpl extends EPackageImpl implements WmlPackage
 {
   /**
    * <!-- begin-user-doc -->
@@ -131,13 +131,13 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see org.eclipse.emf.ecore.EPackage.Registry
-   * @see org.wesnoth.wML.WMLPackage#eNS_URI
+   * @see org.wesnoth.wml.WmlPackage#eNS_URI
    * @see #init()
    * @generated
    */
-  private WMLPackageImpl()
+  private WmlPackageImpl()
   {
-    super(eNS_URI, WMLFactory.eINSTANCE);
+    super(eNS_URI, WmlFactory.eINSTANCE);
   }
 
   /**
@@ -150,7 +150,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
   /**
    * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
    * 
-   * <p>This method is used to initialize {@link WMLPackage#eINSTANCE} when that field is accessed.
+   * <p>This method is used to initialize {@link WmlPackage#eINSTANCE} when that field is accessed.
    * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -159,28 +159,28 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * @see #initializePackageContents()
    * @generated
    */
-  public static WMLPackage init()
+  public static WmlPackage init()
   {
-    if (isInited) return (WMLPackage)EPackage.Registry.INSTANCE.getEPackage(WMLPackage.eNS_URI);
+    if (isInited) return (WmlPackage)EPackage.Registry.INSTANCE.getEPackage(WmlPackage.eNS_URI);
 
     // Obtain or create and register package
-    WMLPackageImpl theWMLPackage = (WMLPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof WMLPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new WMLPackageImpl());
+    WmlPackageImpl theWmlPackage = (WmlPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof WmlPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new WmlPackageImpl());
 
     isInited = true;
 
     // Create package meta-data objects
-    theWMLPackage.createPackageContents();
+    theWmlPackage.createPackageContents();
 
     // Initialize created meta-data
-    theWMLPackage.initializePackageContents();
+    theWmlPackage.initializePackageContents();
 
     // Mark meta-data to indicate it can't be changed
-    theWMLPackage.freeze();
+    theWmlPackage.freeze();
 
   
     // Update the registry and return the package
-    EPackage.Registry.INSTANCE.put(WMLPackage.eNS_URI, theWMLPackage);
-    return theWMLPackage;
+    EPackage.Registry.INSTANCE.put(WmlPackage.eNS_URI, theWmlPackage);
+    return theWmlPackage;
   }
 
   /**
@@ -768,9 +768,9 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLFactory getWMLFactory()
+  public WmlFactory getWmlFactory()
   {
-    return (WMLFactory)getEFactoryInstance();
+    return (WmlFactory)getEFactoryInstance();
   }
 
   /**
@@ -973,4 +973,4 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     createResource(eNS_URI);
   }
 
-} //WMLPackageImpl
+} //WmlPackageImpl

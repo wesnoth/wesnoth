@@ -4,22 +4,22 @@
  *
 
  */
-package org.wesnoth.wML;
+package org.wesnoth.wml;
 
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Lua Code</b></em>'.
+ * A representation of the model object '<em><b>WML Lua Code</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wML.WMLLuaCode#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLLuaCode#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wesnoth.wML.WMLPackage#getWMLLuaCode()
+ * @see org.wesnoth.wml.WmlPackage#getWMLLuaCode()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface WMLLuaCode extends WMLKeyValue
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute.
    * @see #setValue(String)
-   * @see org.wesnoth.wML.WMLPackage#getWMLLuaCode_Value()
+   * @see org.wesnoth.wml.WmlPackage#getWMLLuaCode_Value()
    * @model
    * @generated
    */
   String getValue();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.WMLLuaCode#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wml.WMLLuaCode#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' attribute.

@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML;
+package org.wesnoth.wml;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -12,21 +12,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Macro Call</b></em>'.
+ * A representation of the model object '<em><b>WML Macro Call</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wML.WMLMacroCall#isPoint <em>Point</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroCall#isRelative <em>Relative</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroCall#getName <em>Name</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroCall#getParams <em>Params</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroCall#getExtraMacros <em>Extra Macros</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroCall#isPoint <em>Point</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroCall#isRelative <em>Relative</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroCall#getName <em>Name</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroCall#getParams <em>Params</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroCall#getExtraMacros <em>Extra Macros</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wesnoth.wML.WMLPackage#getWMLMacroCall()
+ * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall()
  * @model
  * @generated
  */
@@ -42,14 +42,14 @@ public interface WMLMacroCall extends WMLKeyValue
    * <!-- end-user-doc -->
    * @return the value of the '<em>Point</em>' attribute.
    * @see #setPoint(boolean)
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroCall_Point()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall_Point()
    * @model
    * @generated
    */
   boolean isPoint();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.WMLMacroCall#isPoint <em>Point</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wml.WMLMacroCall#isPoint <em>Point</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Point</em>' attribute.
@@ -68,14 +68,14 @@ public interface WMLMacroCall extends WMLKeyValue
    * <!-- end-user-doc -->
    * @return the value of the '<em>Relative</em>' attribute.
    * @see #setRelative(boolean)
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroCall_Relative()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall_Relative()
    * @model
    * @generated
    */
   boolean isRelative();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.WMLMacroCall#isRelative <em>Relative</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wml.WMLMacroCall#isRelative <em>Relative</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Relative</em>' attribute.
@@ -94,14 +94,14 @@ public interface WMLMacroCall extends WMLKeyValue
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroCall_Name()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.WMLMacroCall#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wml.WMLMacroCall#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -120,7 +120,7 @@ public interface WMLMacroCall extends WMLKeyValue
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Params</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroCall_Params()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall_Params()
    * @model containment="true"
    * @generated
    */
@@ -128,7 +128,7 @@ public interface WMLMacroCall extends WMLKeyValue
 
   /**
    * Returns the value of the '<em><b>Extra Macros</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLMacroCall}.
+   * The list contents are of type {@link org.wesnoth.wml.WMLMacroCall}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Extra Macros</em>' containment reference list isn't clear,
@@ -136,7 +136,7 @@ public interface WMLMacroCall extends WMLKeyValue
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Extra Macros</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroCall_ExtraMacros()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall_ExtraMacros()
    * @model containment="true"
    * @generated
    */

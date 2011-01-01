@@ -21,13 +21,13 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.SemanticHighlightingCalculator;
 import org.wesnoth.ui.editor.WMLEditor;
-import org.wesnoth.wML.WMLKey;
-import org.wesnoth.wML.WMLMacroCall;
-import org.wesnoth.wML.WMLMacroDefine;
-import org.wesnoth.wML.WMLPackage;
-import org.wesnoth.wML.WMLPreprocIF;
-import org.wesnoth.wML.WMLTag;
-import org.wesnoth.wML.WMLTextdomain;
+import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLMacroCall;
+import org.wesnoth.wml.WMLMacroDefine;
+import org.wesnoth.wml.WMLPreprocIF;
+import org.wesnoth.wml.WMLTag;
+import org.wesnoth.wml.WMLTextdomain;
+import org.wesnoth.wml.WmlPackage;
 
 public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalculator
 {
@@ -52,41 +52,41 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 			String beginId = null, endId = null;
 			if (current instanceof WMLTag)
 			{
-				begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_TAG__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_TAG__NAME.getName());
 				beginId = WMLHighlightingConfiguration.RULE_WML_TAG;
 
-				end = getFirstFeatureNode(current, WMLPackage.Literals.WML_TAG__END_NAME.getName());
+				end = getFirstFeatureNode(current, WmlPackage.Literals.WML_TAG__END_NAME.getName());
 				endId = WMLHighlightingConfiguration.RULE_WML_TAG;
 			}
 			else if (current instanceof WMLKey)
 			{
-				begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_KEY__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_KEY__NAME.getName());
 				beginId = WMLHighlightingConfiguration.RULE_WML_KEY;
 			}
 			else if (current instanceof WMLMacroCall)
 			{
-				begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_MACRO_CALL__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_MACRO_CALL__NAME.getName());
 				beginId = WMLHighlightingConfiguration.RULE_WML_MACRO_CALL;
 			}
 			else if (current instanceof WMLTextdomain)
 			{
-				begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_TEXTDOMAIN__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_TEXTDOMAIN__NAME.getName());
 				beginId = WMLHighlightingConfiguration.RULE_WML_TEXTDOMAIN;
 			}
 			else if (current instanceof WMLPreprocIF)
 			{
-				begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_PREPROC_IF__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_PREPROC_IF__NAME.getName());
 				beginId = WMLHighlightingConfiguration.RULE_WML_IF;
 
-				end = getFirstFeatureNode(current, WMLPackage.Literals.WML_PREPROC_IF__END_NAME.getName());
+				end = getFirstFeatureNode(current, WmlPackage.Literals.WML_PREPROC_IF__END_NAME.getName());
 				endId = WMLHighlightingConfiguration.RULE_WML_IF;
 			}
 			else if (current instanceof WMLMacroDefine)
 			{
-				begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_MACRO_DEFINE__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_MACRO_DEFINE__NAME.getName());
 				beginId = WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE;
 
-				end = getFirstFeatureNode(current, WMLPackage.Literals.WML_MACRO_DEFINE__END_NAME.getName());
+				end = getFirstFeatureNode(current, WmlPackage.Literals.WML_MACRO_DEFINE__END_NAME.getName());
 				endId = WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE;
 			}
 

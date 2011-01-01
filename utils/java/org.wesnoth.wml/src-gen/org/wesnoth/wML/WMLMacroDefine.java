@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML;
+package org.wesnoth.wml;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -12,25 +12,25 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Macro Define</b></em>'.
+ * A representation of the model object '<em><b>WML Macro Define</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getName <em>Name</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getTags <em>Tags</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getKeys <em>Keys</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getMacroCalls <em>Macro Calls</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getMacroDefines <em>Macro Defines</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getTextdomains <em>Textdomains</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getValues <em>Values</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getIfDefs <em>If Defs</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getEndName <em>End Name</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroDefine#getName <em>Name</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroDefine#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroDefine#getKeys <em>Keys</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroDefine#getMacroCalls <em>Macro Calls</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroDefine#getMacroDefines <em>Macro Defines</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroDefine#getTextdomains <em>Textdomains</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroDefine#getValues <em>Values</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroDefine#getIfDefs <em>If Defs</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroDefine#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine()
+ * @see org.wesnoth.wml.WmlPackage#getWMLMacroDefine()
  * @model
  * @generated
  */
@@ -46,14 +46,14 @@ public interface WMLMacroDefine extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_Name()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroDefine_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.WMLMacroDefine#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wml.WMLMacroDefine#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -64,7 +64,7 @@ public interface WMLMacroDefine extends EObject
 
   /**
    * Returns the value of the '<em><b>Tags</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLTag}.
+   * The list contents are of type {@link org.wesnoth.wml.WMLTag}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Tags</em>' containment reference list isn't clear,
@@ -72,7 +72,7 @@ public interface WMLMacroDefine extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Tags</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_Tags()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroDefine_Tags()
    * @model containment="true"
    * @generated
    */
@@ -80,7 +80,7 @@ public interface WMLMacroDefine extends EObject
 
   /**
    * Returns the value of the '<em><b>Keys</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLKey}.
+   * The list contents are of type {@link org.wesnoth.wml.WMLKey}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Keys</em>' containment reference list isn't clear,
@@ -88,7 +88,7 @@ public interface WMLMacroDefine extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Keys</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_Keys()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroDefine_Keys()
    * @model containment="true"
    * @generated
    */
@@ -96,7 +96,7 @@ public interface WMLMacroDefine extends EObject
 
   /**
    * Returns the value of the '<em><b>Macro Calls</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLMacroCall}.
+   * The list contents are of type {@link org.wesnoth.wml.WMLMacroCall}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Macro Calls</em>' containment reference list isn't clear,
@@ -104,7 +104,7 @@ public interface WMLMacroDefine extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Macro Calls</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_MacroCalls()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroDefine_MacroCalls()
    * @model containment="true"
    * @generated
    */
@@ -112,7 +112,7 @@ public interface WMLMacroDefine extends EObject
 
   /**
    * Returns the value of the '<em><b>Macro Defines</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLMacroDefine}.
+   * The list contents are of type {@link org.wesnoth.wml.WMLMacroDefine}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Macro Defines</em>' containment reference list isn't clear,
@@ -120,7 +120,7 @@ public interface WMLMacroDefine extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Macro Defines</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_MacroDefines()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroDefine_MacroDefines()
    * @model containment="true"
    * @generated
    */
@@ -128,7 +128,7 @@ public interface WMLMacroDefine extends EObject
 
   /**
    * Returns the value of the '<em><b>Textdomains</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLTextdomain}.
+   * The list contents are of type {@link org.wesnoth.wml.WMLTextdomain}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Textdomains</em>' containment reference list isn't clear,
@@ -136,7 +136,7 @@ public interface WMLMacroDefine extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Textdomains</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_Textdomains()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroDefine_Textdomains()
    * @model containment="true"
    * @generated
    */
@@ -144,7 +144,7 @@ public interface WMLMacroDefine extends EObject
 
   /**
    * Returns the value of the '<em><b>Values</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLValue}.
+   * The list contents are of type {@link org.wesnoth.wml.WMLValue}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Values</em>' containment reference list isn't clear,
@@ -152,7 +152,7 @@ public interface WMLMacroDefine extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Values</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_Values()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroDefine_Values()
    * @model containment="true"
    * @generated
    */
@@ -160,7 +160,7 @@ public interface WMLMacroDefine extends EObject
 
   /**
    * Returns the value of the '<em><b>If Defs</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLPreprocIF}.
+   * The list contents are of type {@link org.wesnoth.wml.WMLPreprocIF}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>If Defs</em>' containment reference list isn't clear,
@@ -168,7 +168,7 @@ public interface WMLMacroDefine extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>If Defs</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_IfDefs()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroDefine_IfDefs()
    * @model containment="true"
    * @generated
    */
@@ -184,14 +184,14 @@ public interface WMLMacroDefine extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>End Name</em>' attribute.
    * @see #setEndName(String)
-   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_EndName()
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroDefine_EndName()
    * @model
    * @generated
    */
   String getEndName();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.WMLMacroDefine#getEndName <em>End Name</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wml.WMLMacroDefine#getEndName <em>End Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>End Name</em>' attribute.

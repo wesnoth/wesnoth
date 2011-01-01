@@ -13,7 +13,7 @@ public class AbstractWMLJavaValidator extends AbstractDeclarativeValidator {
 @Override
 	protected List<EPackage> getEPackages() {
 	    List<EPackage> result = new ArrayList<EPackage>();
-	    result.add(org.wesnoth.wML.WMLPackage.eINSTANCE);
+	    result.add(org.wesnoth.wml.WmlPackage.eINSTANCE);
 		return result;
 	}
 

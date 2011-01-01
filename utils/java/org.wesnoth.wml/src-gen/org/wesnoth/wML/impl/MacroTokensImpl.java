@@ -4,7 +4,7 @@
  *
 
  */
-package org.wesnoth.wML.impl;
+package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.wesnoth.wML.MacroTokens;
-import org.wesnoth.wML.WMLPackage;
+import org.wesnoth.wml.MacroTokens;
+import org.wesnoth.wml.WmlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +23,7 @@ import org.wesnoth.wML.WMLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.MacroTokensImpl#getVal <em>Val</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.MacroTokensImpl#getVal <em>Val</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,7 +69,7 @@ public class MacroTokensImpl extends MinimalEObjectImpl.Container implements Mac
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.MACRO_TOKENS;
+    return WmlPackage.Literals.MACRO_TOKENS;
   }
 
   /**
@@ -92,7 +92,7 @@ public class MacroTokensImpl extends MinimalEObjectImpl.Container implements Mac
     String oldVal = val;
     val = newVal;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.MACRO_TOKENS__VAL, oldVal, val));
+      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.MACRO_TOKENS__VAL, oldVal, val));
   }
 
   /**
@@ -105,7 +105,7 @@ public class MacroTokensImpl extends MinimalEObjectImpl.Container implements Mac
   {
     switch (featureID)
     {
-      case WMLPackage.MACRO_TOKENS__VAL:
+      case WmlPackage.MACRO_TOKENS__VAL:
         return getVal();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -121,7 +121,7 @@ public class MacroTokensImpl extends MinimalEObjectImpl.Container implements Mac
   {
     switch (featureID)
     {
-      case WMLPackage.MACRO_TOKENS__VAL:
+      case WmlPackage.MACRO_TOKENS__VAL:
         setVal((String)newValue);
         return;
     }
@@ -138,7 +138,7 @@ public class MacroTokensImpl extends MinimalEObjectImpl.Container implements Mac
   {
     switch (featureID)
     {
-      case WMLPackage.MACRO_TOKENS__VAL:
+      case WmlPackage.MACRO_TOKENS__VAL:
         setVal(VAL_EDEFAULT);
         return;
     }
@@ -155,7 +155,7 @@ public class MacroTokensImpl extends MinimalEObjectImpl.Container implements Mac
   {
     switch (featureID)
     {
-      case WMLPackage.MACRO_TOKENS__VAL:
+      case WmlPackage.MACRO_TOKENS__VAL:
         return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
     }
     return super.eIsSet(featureID);
