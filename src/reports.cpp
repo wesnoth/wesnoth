@@ -92,35 +92,22 @@ static std::string flush(std::ostringstream &s)
 
 typedef config (*generator_function)();
 
-struct static_report_generator
-{
-	generator_function generator;
-	bool for_units;
-};
-
-struct dynamic_report_generator
-{
-	reports::generator *generator;
-	bool for_units;
-};
-
-typedef std::map<std::string, static_report_generator> static_report_generators;
-typedef std::map<std::string, dynamic_report_generator> dynamic_report_generators;
+typedef std::map<std::string, generator_function> static_report_generators;
+typedef std::map<std::string, reports::generator *> dynamic_report_generators;
 static static_report_generators static_generators;
 static dynamic_report_generators dynamic_generators;
 
 struct report_generator_helper
 {
-	report_generator_helper(const char *name, generator_function g, bool u)
+	report_generator_helper(const char *name, generator_function g)
 	{
-		static_report_generator rg = { g, u };
-		static_generators.insert(static_report_generators::value_type(name, rg));
+		static_generators.insert(static_report_generators::value_type(name, g));
 	}
 };
 
-#define REPORT_GENERATOR(n, u) \
+#define REPORT_GENERATOR(n) \
 	static config report_##n(); \
-	static report_generator_helper reg_gen_##n(#n, &report_##n, u); \
+	static report_generator_helper reg_gen_##n(#n, &report_##n); \
 	static config report_##n()
 
 static char const *naps = "</span>";
@@ -139,7 +126,7 @@ static config gray_inactive(const std::string &str)
 	return text_report(span_color(font::GRAY_COLOR) + str + naps);
 }
 
-REPORT_GENERATOR(unit_name, true)
+REPORT_GENERATOR(unit_name)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -149,7 +136,7 @@ REPORT_GENERATOR(unit_name, true)
 	return text_report(str.str(), tooltip.str());
 }
 
-REPORT_GENERATOR(unit_type, true)
+REPORT_GENERATOR(unit_type)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -160,7 +147,7 @@ REPORT_GENERATOR(unit_type, true)
 	return text_report(str.str(), tooltip.str(), "unit_" + u->type_id());
 }
 
-REPORT_GENERATOR(unit_race, true)
+REPORT_GENERATOR(unit_race)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -170,7 +157,7 @@ REPORT_GENERATOR(unit_race, true)
 	return text_report(str.str(), tooltip.str(), "..race_" + u->race()->id());
 }
 
-REPORT_GENERATOR(unit_side, true)
+REPORT_GENERATOR(unit_side)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -184,7 +171,7 @@ REPORT_GENERATOR(unit_side, true)
 	return image_report(flag_icon + mods, u_team.current_player());
 }
 
-REPORT_GENERATOR(unit_level, true)
+REPORT_GENERATOR(unit_level)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -200,7 +187,7 @@ REPORT_GENERATOR(unit_level, true)
 	return text_report(str.str(), tooltip.str());
 }
 
-REPORT_GENERATOR(unit_amla, true)
+REPORT_GENERATOR(unit_amla)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -212,7 +199,7 @@ REPORT_GENERATOR(unit_amla, true)
 	return res;
 }
 
-REPORT_GENERATOR(unit_traits, true)
+REPORT_GENERATOR(unit_traits)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -232,7 +219,7 @@ REPORT_GENERATOR(unit_traits, true)
 	return res;
 }
 
-REPORT_GENERATOR(unit_status, true)
+REPORT_GENERATOR(unit_status)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -257,7 +244,7 @@ REPORT_GENERATOR(unit_status, true)
 	return res;
 }
 
-REPORT_GENERATOR(unit_alignment, true)
+REPORT_GENERATOR(unit_alignment)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -271,7 +258,7 @@ REPORT_GENERATOR(unit_alignment, true)
 	return text_report(str.str(), tooltip.str(), "time_of_day");
 }
 
-REPORT_GENERATOR(unit_abilities, true)
+REPORT_GENERATOR(unit_abilities)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -291,7 +278,7 @@ REPORT_GENERATOR(unit_abilities, true)
 	return res;
 }
 
-REPORT_GENERATOR(unit_hp, true)
+REPORT_GENERATOR(unit_hp)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -330,7 +317,7 @@ REPORT_GENERATOR(unit_hp, true)
 	return text_report(str.str(), tooltip.str());
 }
 
-REPORT_GENERATOR(unit_xp, true)
+REPORT_GENERATOR(unit_xp)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -343,7 +330,7 @@ REPORT_GENERATOR(unit_xp, true)
 	return text_report(str.str(), tooltip.str());
 }
 
-REPORT_GENERATOR(unit_advancement_options, true)
+REPORT_GENERATOR(unit_advancement_options)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -355,7 +342,7 @@ REPORT_GENERATOR(unit_advancement_options, true)
 	return res;
 }
 
-REPORT_GENERATOR(unit_defense, true)
+REPORT_GENERATOR(unit_defense)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -392,7 +379,7 @@ REPORT_GENERATOR(unit_defense, true)
 	return text_report(str.str(), tooltip.str());
 }
 
-REPORT_GENERATOR(unit_moves, true)
+REPORT_GENERATOR(unit_moves)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -410,7 +397,7 @@ REPORT_GENERATOR(unit_moves, true)
 	return text_report(str.str());
 }
 
-REPORT_GENERATOR(unit_weapons, true)
+REPORT_GENERATOR(unit_weapons)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
@@ -568,21 +555,21 @@ REPORT_GENERATOR(unit_weapons, true)
 	return res;
 }
 
-REPORT_GENERATOR(unit_image, true)
+REPORT_GENERATOR(unit_image)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
 	return image_report(u->absolute_image() + u->image_mods());
 }
 
-REPORT_GENERATOR(unit_profile, true)
+REPORT_GENERATOR(unit_profile)
 {
 	unit *u = get_visible_unit();
 	if (!u) return report();
 	return image_report(u->small_profile());
 }
 
-REPORT_GENERATOR(time_of_day, false)
+REPORT_GENERATOR(time_of_day)
 {
 	std::ostringstream tooltip;
 	time_of_day tod;
@@ -615,7 +602,7 @@ REPORT_GENERATOR(time_of_day, false)
 	return image_report(tod_image, tooltip.str(), "time_of_day");
 }
 
-REPORT_GENERATOR(turn, false)
+REPORT_GENERATOR(turn)
 {
 	std::ostringstream str;
 	str << resources::tod_manager->turn();
@@ -624,7 +611,7 @@ REPORT_GENERATOR(turn, false)
 	return text_report(str.str());
 }
 
-REPORT_GENERATOR(gold, false)
+REPORT_GENERATOR(gold)
 {
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
@@ -642,7 +629,7 @@ REPORT_GENERATOR(gold, false)
 	return text_report(str.str());
 }
 
-REPORT_GENERATOR(villages, false)
+REPORT_GENERATOR(villages)
 {
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
@@ -662,12 +649,12 @@ REPORT_GENERATOR(villages, false)
 	return gray_inactive(str.str());
 }
 
-REPORT_GENERATOR(num_units, false)
+REPORT_GENERATOR(num_units)
 {
 	return gray_inactive(str_cast(side_units(resources::screen->viewing_side())));
 }
 
-REPORT_GENERATOR(upkeep, false)
+REPORT_GENERATOR(upkeep)
 {
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
@@ -677,7 +664,7 @@ REPORT_GENERATOR(upkeep, false)
 	return gray_inactive(str.str());
 }
 
-REPORT_GENERATOR(expenses, false)
+REPORT_GENERATOR(expenses)
 {
 	int viewing_side = resources::screen->viewing_side();
 	const team &viewing_team = (*resources::teams)[viewing_side - 1];
@@ -685,7 +672,7 @@ REPORT_GENERATOR(expenses, false)
 	return gray_inactive(str_cast(td.expenses));
 }
 
-REPORT_GENERATOR(income, false)
+REPORT_GENERATOR(income)
 {
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
@@ -702,7 +689,7 @@ REPORT_GENERATOR(income, false)
 	return text_report(str.str());
 }
 
-REPORT_GENERATOR(terrain, false)
+REPORT_GENERATOR(terrain)
 {
 	gamemap &map = *resources::game_map;
 	int viewing_side = resources::screen->viewing_side();
@@ -750,7 +737,7 @@ REPORT_GENERATOR(terrain, false)
 	return text_report(str.str());
 }
 
-REPORT_GENERATOR(position, false)
+REPORT_GENERATOR(position)
 {
 	gamemap &map = *resources::game_map;
 	map_location mouseover_hex = resources::screen->mouseover_hex(),
@@ -784,7 +771,7 @@ REPORT_GENERATOR(position, false)
 	return text_report(str.str());
 }
 
-REPORT_GENERATOR(side_playing, false)
+REPORT_GENERATOR(side_playing)
 {
 	const team &active_team = (*resources::teams)[resources::screen->playing_team()];
 	std::string flag_icon = active_team.flag_icon();
@@ -796,7 +783,7 @@ REPORT_GENERATOR(side_playing, false)
 	return image_report(flag_icon + mods, active_team.current_player());
 }
 
-REPORT_GENERATOR(observers, false)
+REPORT_GENERATOR(observers)
 {
 	const std::set<std::string> &observers = resources::screen->observers();
 	if (observers.empty())
@@ -816,7 +803,7 @@ REPORT_GENERATOR(selected_terrain, false)
 	return report();
 }
 
-REPORT_GENERATOR(edit_left_button_function, false)
+REPORT_GENERATOR(edit_left_button_function)
 {
 	return report();
 }
@@ -825,7 +812,7 @@ namespace editor {
 extern std::string selected_terrain, left_button_function;
 }
 
-REPORT_GENERATOR(selected_terrain, false)
+REPORT_GENERATOR(selected_terrain)
 {
 	if (editor::selected_terrain.empty())
 		return report();
@@ -833,7 +820,7 @@ REPORT_GENERATOR(selected_terrain, false)
 		return text_report(editor::selected_terrain);
 }
 
-REPORT_GENERATOR(edit_left_button_function, false)
+REPORT_GENERATOR(edit_left_button_function)
 {
 	if (editor::left_button_function.empty())
 		return report();
@@ -842,12 +829,12 @@ REPORT_GENERATOR(edit_left_button_function, false)
 }
 #endif
 
-REPORT_GENERATOR(editor_tool_hint, false)
+REPORT_GENERATOR(editor_tool_hint)
 {
 	return report();
 }
 
-REPORT_GENERATOR(report_clock, false)
+REPORT_GENERATOR(report_clock)
 {
 	time_t t = std::time(NULL);
 	struct tm *lt = std::localtime(&t);
@@ -858,7 +845,7 @@ REPORT_GENERATOR(report_clock, false)
 	return text_report(temp);
 }
 
-REPORT_GENERATOR(report_countdown, false)
+REPORT_GENERATOR(report_countdown)
 {
 	int viewing_side = resources::screen->viewing_side();
 	const team &viewing_team = (*resources::teams)[viewing_side - 1];
@@ -884,22 +871,24 @@ REPORT_GENERATOR(report_countdown, false)
 	return text_report(str.str());
 }
 
+static std::set<std::string> all_reports;
+
 void reports::reset_generators()
 {
 	foreach (dynamic_report_generators::value_type &rg, dynamic_generators) {
-		delete rg.second.generator;
+		delete rg.second;
 	}
 	dynamic_generators.clear();
+	all_reports.clear();
 }
 
-void reports::register_generator(const std::string &name, reports::generator *g, bool for_units)
+void reports::register_generator(const std::string &name, reports::generator *g)
 {
-	dynamic_report_generator rg = { g, for_units };
 	std::pair<dynamic_report_generators::iterator, bool> ib =
-		dynamic_generators.insert(std::make_pair(name, rg));
+		dynamic_generators.insert(std::make_pair(name, g));
 	if (!ib.second) {
-		delete ib.first->second.generator;
-		ib.first->second = rg;
+		delete ib.first->second;
+		ib.first->second = g;
 	}
 }
 
@@ -908,25 +897,22 @@ config reports::generate_report(const std::string &name, bool only_static)
 	if (!only_static) {
 		dynamic_report_generators::const_iterator i = dynamic_generators.find(name);
 		if (i != dynamic_generators.end())
-			return i->second.generator->generate();
+			return i->second->generate();
 	}
 	static_report_generators::const_iterator j = static_generators.find(name);
 	if (j != static_generators.end())
-		return j->second.generator();
+		return j->second();
 	return report();
 }
 
-static std::set<std::string> unit_reports, status_reports;
-
-const std::set<std::string> &reports::report_list(bool for_units)
+const std::set<std::string> &reports::report_list()
 {
-	std::set<std::string> &l = *(for_units ? &unit_reports : &status_reports);
-	if (!l.empty()) return l;
+	if (!all_reports.empty()) return all_reports;
 	foreach (const static_report_generators::value_type &v, static_generators) {
-		if (v.second.for_units == for_units) l.insert(v.first);
+		all_reports.insert(v.first);
 	}
 	foreach (const dynamic_report_generators::value_type &v, dynamic_generators) {
-		if (v.second.for_units == for_units) l.insert(v.first);
+		all_reports.insert(v.first);
 	}
-	return l;
+	return all_reports;
 }

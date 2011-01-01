@@ -35,12 +35,13 @@ Growl_Delegate growl_obj;
 #endif
 
 #include "foreach.hpp"
+#include "game_preferences.hpp"
 #include "halo.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
-#include "game_preferences.hpp"
+#include "reports.hpp"
 #include "resources.hpp"
 #include "tod_manager.hpp"
 #include "sound.hpp"
@@ -69,7 +70,6 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		tod_manager_(tod),
 		teams_(t),
 		level_(level),
-		invalidateUnit_(true),
 		displayedUnitHex_(),
 		overlays_(),
 		currentTeam_(0),
@@ -446,17 +446,11 @@ void game_display::draw_sidebar()
 		return;
 	}
 
-	if (invalidateUnit_) {
+	if (invalidateGameStatus_)
+	{
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
-		foreach (const std::string &name, reports::report_list(true)) {
-			draw_report(name);
-		}
-		invalidateUnit_ = false;
-	}
-
-	if (invalidateGameStatus_) {
-		foreach (const std::string &name, reports::report_list(false)) {
+		foreach (const std::string &name, reports::report_list()) {
 			draw_report(name);
 		}
 		invalidateGameStatus_ = false;

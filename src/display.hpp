@@ -42,7 +42,6 @@ class arrow;
 
 #include "font.hpp"
 #include "key.hpp"
-#include "reports.hpp"
 #include "team.hpp"
 #include "theme.hpp"
 #include "video.hpp"

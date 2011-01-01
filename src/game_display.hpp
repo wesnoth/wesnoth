@@ -133,7 +133,7 @@ public:
 	void draw_report(const std::string &report_name);
 
 	/** Function to invalidate that unit status displayed on the sidebar. */
-	void invalidate_unit() { invalidateUnit_ = true; }
+	void invalidate_unit() { invalidateGameStatus_ = true; }
 
 	/** Same as invalidate_unit() if moving the displayed unit. */
 	void invalidate_unit_after_move(const map_location& src, const map_location& dst);
@@ -351,7 +351,6 @@ private:
 
 	void invalidate_route();
 
-	bool invalidateUnit_;
 	map_location displayedUnitHex_;
 
 	struct overlay {
@@ -406,10 +405,6 @@ private:
 	/** Animated flags for each team */
 	std::vector<animated<image::locator> > flags_;
 
-	/**
-	 * the tiles invalidated at last redraw,
-	 * to simplify the cleaning up of tiles left by units
-	 */
 	static game_display * singleton_;
 };
 

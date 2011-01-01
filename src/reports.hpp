@@ -29,11 +29,11 @@ struct generator
 };
 
 void reset_generators();
-void register_generator(const std::string &name, generator *, bool for_units);
+void register_generator(const std::string &name, generator *);
 
 config generate_report(const std::string &name, bool only_static = false);
 
-const std::set<std::string> &report_list(bool for_units);
+const std::set<std::string> &report_list();
 }
 
 #endif

@@ -46,6 +46,7 @@
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "replay.hpp"
+#include "reports.hpp"
 #include "resources.hpp"
 #include "terrain_filter.hpp"
 #include "terrain_translation.hpp"
@@ -2980,7 +2981,6 @@ static int cfun_theme_item(lua_State *L)
 /**
  * Registers a generator for a theme item.
  * - Arg 1: string.
- * - Arg 2: boolean.
  */
 static int intf_register_theme_item(lua_State *L)
 {
@@ -2997,7 +2997,7 @@ static int intf_register_theme_item(lua_State *L)
 	lua_pushcclosure(L, cfun_theme_item, 1);
 	lua_rawset(L, -3);
 
-	reports::register_generator(m, new lua_report_generator(L, m), lua_toboolean(L, 2));
+	reports::register_generator(m, new lua_report_generator(L, m));
 	return 0;
 }
 
