@@ -5,6 +5,9 @@ Version 1.9.3+svn:
    * Delfadors Memoirs:
      * Fixed bug #17273: Made difficulty selection conform to the style of all
        other mainline campaigns
+   * Eastern Invasion:
+     * Fixed bug #15950: Made 11_Captured remove units from recall list,
+       preventing units being 'healed' upon load.
  * Formula language:
    * Added substring function.
    * Added length function, to determine the length of a string.
