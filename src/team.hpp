@@ -68,6 +68,7 @@ public:
 		bool gold_add;
 		int income;
 		int income_per_village;
+		mutable int minimum_recruit_price;
 		int recall_cost;
 		std::set<std::string> can_recruit;
 		std::string team_name;
@@ -159,6 +160,7 @@ public:
 		{ return info_.can_recruit; }
 	void add_recruit(const std::string &);
 	void set_recruits(const std::set<std::string>& recruits);
+	int minimum_recruit_price() const;
 	const std::string& name() const
 		{ return info_.name; }
 	const std::string& save_id() const { return info_.save_id; }

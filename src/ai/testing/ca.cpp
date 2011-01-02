@@ -76,6 +76,11 @@ double goto_phase::evaluate()
 
 	for(std::vector<map_location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
 		unit_map::const_iterator ui = units_.find(*g);
+		// passive_leader: never moves or attacks
+		if(ui->can_recruit() && get_passive_leader() && !get_passive_leader_shares_keep()){
+			continue;//@todo: only bail out if goto is on keep
+		}
+		// end of passive_leader
 		int closest_distance = -1;
 		std::pair<map_location,map_location> closest_move;
 		for(move_map::const_iterator i = get_dstsrc().begin(); i != get_dstsrc().end(); ++i) {
@@ -531,7 +536,7 @@ double combat_phase::evaluate()
 	choice_rating_ = -1000.0;
 	int ticks = SDL_GetTicks();
 
-	const std::vector<attack_analysis> analysis = get_attacks();
+	const std::vector<attack_analysis> analysis = get_attacks(); //passive_leader: in aspect_attacks::analyze_targets()
 
 	int time_taken = SDL_GetTicks() - ticks;
 	LOG_AI_TESTING_AI_DEFAULT << "took " << time_taken << " ticks for " << analysis.size()
@@ -623,8 +628,9 @@ move_leader_to_goals_phase::~move_leader_to_goals_phase()
 
 double move_leader_to_goals_phase::evaluate()
 {
-	const config &goal = get_leader_goal();
 
+	const config &goal = get_leader_goal();
+	//passive leader can reach a goal
 	if (!goal) {
 		LOG_AI_TESTING_AI_DEFAULT << get_name() << "No goal found\n";
 		return BAD_SCORE;
@@ -739,7 +745,9 @@ double move_leader_to_keep_phase::evaluate()
 {
 	unit_map &units_ = *resources::units;
 	const unit_map::iterator leader = units_.find_leader(get_side());
-
+	if(get_passive_leader() && !get_passive_leader_shares_keep()){
+		return BAD_SCORE;
+	}
 	if (leader == units_.end() || leader->incapacitated() || leader->movement_left() == 0) {
 		return BAD_SCORE;
 	}
@@ -902,7 +910,9 @@ void get_villages_phase::get_villages(
 	treachmap reachmap;
 	for(unit_map::const_iterator u_itor = units_.begin();
 			u_itor != units_.end(); ++u_itor) {
-
+		if(u_itor->can_recruit() && get_passive_leader()){
+			continue;
+		}
 		if(u_itor->side() == get_side() && u_itor->movement_left()) {
 			reachmap.insert(std::make_pair(u_itor->get_location(),	std::vector<map_location>()));
 		}
@@ -1624,6 +1634,10 @@ double get_healing_phase::evaluate()
 	for(; u_it != units_.end(); ++u_it) {
 		unit &u = *u_it;
 
+		if(u.can_recruit() && get_passive_leader()){
+			continue;
+		}
+
 		// If the unit is on our side, has lost as many or more than
 		// 1/2 round worth of healing, and doesn't regenerate itself,
 		// then try to find a vacant village for it to rest in.
@@ -1695,7 +1709,8 @@ double retreat_phase::evaluate()
 	// Get versions of the move map that assume that all units are at full movement
 	const unit_map& units_ = *resources::units;
 
-	unit_map::const_iterator leader = units_.find_leader(get_side());
+	//unit_map::const_iterator leader = units_.find_leader(get_side());
+	std::vector<unit_map::const_iterator> leaders = units_.find_leaders(get_side());
 	std::map<map_location,pathfind::paths> dummy_possible_moves;
 
 	move_map fullmove_srcdst;
@@ -1703,15 +1718,36 @@ double retreat_phase::evaluate()
 	calculate_possible_moves(dummy_possible_moves, fullmove_srcdst, fullmove_dstsrc,
 			false, true, &get_avoid());
 
-	map_location leader_adj[6];
+	/*map_location leader_adj[6];
 	if(leader != units_.end()) {
 		get_adjacent_tiles(leader->get_location(), leader_adj);
+	}*/
+	//int leader_adj_count = 0;
+	std::vector<map_location> leaders_adj_v;
+	foreach(unit_map::const_iterator leader, leaders){
+		map_location tmp_leader_adj[6];
+		get_adjacent_tiles(leader->get_location(), tmp_leader_adj);
+		foreach(map_location &loc, tmp_leader_adj){
+			bool found = false;
+			foreach(map_location &new_loc, leaders_adj_v){
+				if(new_loc == loc){
+					found = true;
+					break;
+				}
+			}
+			if(!found){
+				leaders_adj_v.push_back(loc);
+			}
+		}
 	}
+	//leader_adj_count = leaders_adj_v.size();
+
 
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 		if (i->side() == get_side() &&
 		    i->movement_left() == i->total_movement() &&
-		    unit_map::const_iterator(i) != leader &&
+		    //leaders.find(*i) == leaders.end() && //unit_map::const_iterator(i) != leader &&
+		    std::find(leaders.begin(), leaders.end(), i) == leaders.end() &&
 		    !i->incapacitated())
 		{
 			// This unit still has movement left, and is a candidate to retreat.
@@ -1734,8 +1770,9 @@ double retreat_phase::evaluate()
 					- (resources::game_map->is_village(i->get_location()) ? 10 : 0);
 				while(itors.first != itors.second) {
 
-					if(leader != units_.end() && std::count(leader_adj,
-								leader_adj + 6, itors.first->second)) {
+					//if(leader != units_.end() && std::count(leader_adj,
+					//			leader_adj + 6, itors.first->second)) {
+					if(std::find(leaders_adj_v.begin(), leaders_adj_v.end(), itors.first->second) != leaders_adj_v.end()){
 
 						can_reach_leader = true;
 						break;
@@ -1858,6 +1895,9 @@ double simple_move_and_targeting_phase::evaluate()
 	std::pair<map_location,map_location> closest_move;
 
 	for(move_map::const_iterator i = get_dstsrc().begin(); i != get_dstsrc().end(); ++i) {
+		if(my_leader_loc == i->first && get_passive_leader()){//passive_leader
+			continue;
+		}
 		int distance = distance_between(i->first, leader->get_location());
 		if(closest_distance == -1 || distance < closest_distance) {
 			if ((i->second!=my_leader_loc) && (i->second!=i->first)) {
@@ -1912,6 +1952,116 @@ void leader_control_phase::execute()
 }
 
 //==============================================================
+
+passive_leader_shares_keep_phase::passive_leader_shares_keep_phase( rca_context &context, const config &cfg )
+	:candidate_action(context, cfg)
+{
+}
+
+
+passive_leader_shares_keep_phase::~passive_leader_shares_keep_phase()
+{
+}
+
+double passive_leader_shares_keep_phase::evaluate()
+{
+	if(get_passive_leader() && !get_passive_leader_shares_keep()){
+		return BAD_SCORE;
+	}
+	std::vector<unit_map::unit_iterator> ai_leaders = resources::units->find_leaders(get_side());
+	bool allied_leaders_available = false;
+	foreach(team &tmp_team, *resources::teams){
+		if(!current_team().is_enemy(tmp_team.side())){
+			std::vector<unit_map::unit_iterator> allied_leaders = resources::units->find_leaders(get_side());
+			if (!allied_leaders.empty()){
+				allied_leaders_available = true;
+				break;
+			}
+		}
+	}
+	if(allied_leaders_available){
+		return get_score();
+	}
+	return BAD_SCORE;
+}
+
+void passive_leader_shares_keep_phase::execute()
+{
+	//get all AI leaders
+	std::vector<unit_map::unit_iterator> ai_leaders = resources::units->find_leaders(get_side());
+
+	//calculate all possible moves (AI + allies)
+	typedef std::map<map_location, pathfind::paths> path_map;
+	path_map possible_moves;
+	move_map friends_srcdst, friends_dstsrc;
+	calculate_moves(*resources::units, possible_moves, friends_srcdst, friends_dstsrc, false, true);
+
+	//check for each ai leader if he should move away from his keep
+	foreach(unit_map::unit_iterator &ai_leader, ai_leaders){
+		std::cout << "ai leader" << std::endl;
+		//only if leader is on a keep
+		if (!resources::game_map->is_keep(ai_leader->get_location())) {
+			continue;
+		}
+		const map_location &keep = ai_leader->get_location();
+		map_location recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, keep, pathfind::VACANT_CASTLE);
+		if(!resources::game_map->on_board(recruit_loc)){
+			continue;
+		}
+		bool friend_can_reach_keep = false;
+
+		//for each leader, check if he's allied and can reach our keep
+		for(path_map::const_iterator i = possible_moves.begin(); i != possible_moves.end(); i++){
+			const unit_map::const_iterator itor = resources::units->find(i->first);
+			team &leader_team = (*resources::teams)[itor->side() - 1];
+			if(itor != resources::units->end() && itor->can_recruit() && itor->side() != get_side() && (leader_team.total_income() + leader_team.gold() > leader_team.minimum_recruit_price())){
+				pathfind::paths::dest_vect::const_iterator tokeep = i->second.destinations.find(keep);
+				if(tokeep != i->second.destinations.end()){
+					friend_can_reach_keep = true;
+					break;
+				}
+			}
+		}
+		//if there's no allied leader who can reach the keep, check next ai leader
+		if(friend_can_reach_keep){
+			//determine the best place the ai leader can move to
+			map_location best_move;
+			int defense_modifier = 100;
+			for(pathfind::paths::dest_vect::const_iterator i = possible_moves[keep].destinations.begin(); i != possible_moves[keep].destinations.end(); i++){
+				if(distance_between(i->curr, keep) <= 3){
+					int tmp_def_mod = ai_leader->defense_modifier(resources::game_map->get_terrain(i->curr));
+					if(tmp_def_mod < defense_modifier){
+						defense_modifier = tmp_def_mod;
+						best_move = i->curr;
+					}
+				}
+			}
+			//only move if there's a place with a good defense
+			if(defense_modifier < 100){
+				move_result_ptr move = check_move_action(keep, best_move, true);
+				if(move->is_ok()){
+					move->execute();
+					if (!move->is_ok()){
+						LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+					}else{
+						ai_leader->set_goto(keep);
+					}
+				}else{
+					LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+				}
+			}
+		}
+		ai_leader->remove_movement_ai();
+	}
+	foreach(unit_map::unit_iterator &leader, ai_leaders){
+		leader->remove_movement_ai();
+	}
+	//ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;
+}
+
+
+//==============================================================
+
 
 } //end of namespace testing_ai_default
 

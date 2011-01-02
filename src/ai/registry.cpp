@@ -120,6 +120,8 @@ static register_candidate_action_factory<testing_ai_default::leader_control_phas
 static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
 	testing_recruitment_phase_factory("testing_ai_default::testing_recruitment_phase");
 
+static register_candidate_action_factory<testing_ai_default::passive_leader_shares_keep_phase>
+	passive_leader_shares_keep_phase_factory("testing_ai_default::passive_leader_shares_keep_phase");
 
 // =======================================================================
 // Goals

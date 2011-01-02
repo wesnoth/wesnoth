@@ -196,6 +196,9 @@ public:
 	{ return const_cast<unit_map *>(this)->find_leader(side); }
 	unit_iterator find_first_leader(int side);
 
+	std::vector<unit_iterator> find_leaders(int side);
+	std::vector<const_unit_iterator> find_leaders(int side) const;
+
 	size_t count(const map_location& loc) const { return lmap_.count(loc); }
 
 	unit_iterator begin();

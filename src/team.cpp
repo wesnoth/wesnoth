@@ -52,6 +52,7 @@ team::team_info::team_info() :
 	gold_add(false),
 	income(0),
 	income_per_village(0),
+	minimum_recruit_price(0),
 	recall_cost(0),
 	can_recruit(),
 	team_name(),
@@ -363,13 +364,36 @@ void team::lose_village(const map_location& loc)
 void team::set_recruits(const std::set<std::string>& recruits)
 {
 	info_.can_recruit = recruits;
+	info_.minimum_recruit_price = 0;
 	ai::manager::raise_recruit_list_changed();
 }
 
 void team::add_recruit(const std::string &recruit)
 {
 	info_.can_recruit.insert(recruit);
+	info_.minimum_recruit_price = 0;
 	ai::manager::raise_recruit_list_changed();
+}
+
+int team::minimum_recruit_price() const
+{
+	if(info_.minimum_recruit_price){
+		return info_.minimum_recruit_price;
+	}else{
+		int min = 20;
+		foreach(std::string recruit, info_.can_recruit){
+			const unit_type *ut = unit_types.find(recruit);
+			if(!ut)
+				continue;
+			else{
+				if(ut->cost() < min)
+					min = ut->cost();
+			}
+
+		}
+		info_.minimum_recruit_price = min;
+	}
+	return info_.minimum_recruit_price;
 }
 
 bool team::calculate_enemies(size_t index) const

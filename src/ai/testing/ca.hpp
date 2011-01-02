@@ -334,6 +334,18 @@ public:
 
 
 //============================================================================
+class passive_leader_shares_keep_phase : public candidate_action {
+public:
+
+	passive_leader_shares_keep_phase( rca_context &context, const config &cfg );
+
+	virtual ~passive_leader_shares_keep_phase();
+
+	virtual double evaluate();
+
+	virtual void execute();
+};
+//============================================================================
 
 } // end of namespace testing_ai_default
 
