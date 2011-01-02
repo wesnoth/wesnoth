@@ -44,7 +44,7 @@ namespace gui2 {
  *         This text contains the list with available languages. $
  *
  * - & & control & o &
- *         Gets the name of the language. &
+ *         Gets the name of the language. $
  *
  * @end{table}
  */
