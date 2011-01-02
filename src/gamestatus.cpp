@@ -622,7 +622,7 @@ public:
 	{
 	}
 
-	void build_team()
+	void build_team_stage_one()
 	{
 		//initialize the context variables and flags, find relevant tags, set up everything
 		init();
@@ -647,7 +647,13 @@ public:
 		//prepare units, populate obvious recall lists elements
 		prepare_units();
 
+	}
+
+
+	void build_team_stage_two()
+	{
 		//place units
+		//this is separate stage because we need to place units only after every other team is constructed
 		place_units();
 
 	}
@@ -943,15 +949,23 @@ protected:
 const std::string team_builder::default_gold_qty_ = "100";
 
 
-void game_state::build_team(const config& side_cfg,
+team_builder_ptr game_state::create_team_builder(const config& side_cfg,
 					 std::string save_id, std::vector<team>& teams,
 					 const config& level, gamemap& map, unit_map& units,
 					 bool snapshot)
 {
-	team_builder tb = team_builder(side_cfg,save_id,teams,level,map,units,snapshot,starting_pos);
-	tb.build_team();
+	return team_builder_ptr(new team_builder(side_cfg,save_id,teams,level,map,units,snapshot,starting_pos));
 }
 
+void game_state::build_team_stage_one(team_builder_ptr tb_ptr)
+{
+	tb_ptr->build_team_stage_one();
+}
+
+void game_state::build_team_stage_two(team_builder_ptr tb_ptr)
+{
+	tb_ptr->build_team_stage_two();
+}
 
 void game_state::set_menu_items(const config::const_child_itors &menu_items)
 {

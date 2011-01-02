@@ -9,6 +9,9 @@ Version 1.9.3+svn:
    * Eastern Invasion:
      * Fixed bug #15950: Made 11_Captured remove units from recall list,
        preventing units being 'healed' upon load.
+ * Engine
+   * Fixed bug #17355: split team initialization into two parts to prevent
+       wrong determination of allied sides.
  * Formula language:
    * Added substring function.
    * Added length function, to determine the length of a string.

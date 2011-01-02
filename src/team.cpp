@@ -33,6 +33,11 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
+static lg::log_domain log_engine_enemies("engine/enemies");
+#define DBG_NGE LOG_STREAM(debug, log_engine_enemies)
+#define LOG_NGE LOG_STREAM(info, log_engine_enemies)
+#define WRN_NGE LOG_STREAM(warn, log_engine_enemies)
+
 
 static std::vector<team> *&teams = resources::teams;
 
@@ -419,10 +424,18 @@ bool team::calculate_is_enemy(size_t index) const
 	// We are friends with anyone who we share a teamname with
 	std::vector<std::string> our_teams = utils::split(info_.team_name),
 						   their_teams = utils::split((*teams)[index].info_.team_name);
+
+	LOG_NGE << "team " << info_.side << " calculates if it has enemy in team "<<index+1 << "; our team_name ["<<info_.team_name<<"], their team_name is ["<<(*teams)[index].info_.team_name<<"]"<< std::endl;
 	for(std::vector<std::string>::const_iterator t = our_teams.begin(); t != our_teams.end(); ++t) {
 		if(std::find(their_teams.begin(), their_teams.end(), *t) != their_teams.end())
+		{
+			LOG_NGE << "team " << info_.side << " found same team name [" << *t << "] in team "<< index+1 << std::endl;
 			return false;
+		} else {
+			LOG_NGE << "team " << info_.side << " not found same team name [" << *t << "] in team "<< index+1 << std::endl;
+		}
 	}
+	LOG_NGE << "team " << info_.side << " has enemy in team " << index+1 << std::endl;
 	return true;
 }
 

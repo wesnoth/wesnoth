@@ -25,6 +25,7 @@
 #include "variable.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/string_utils.hpp"
+#include "boost/shared_ptr.hpp"
 
 class scoped_wml_variable;
 class team;
@@ -32,6 +33,9 @@ class gamemap;
 namespace t_translation {
 	class t_match;
 }
+
+class team_builder;
+typedef boost::shared_ptr<team_builder> team_builder_ptr;
 
 //meta information of the game
 class game_classification : public savegame::savegame_config
@@ -121,10 +125,16 @@ public:
 	PHASE phase() const { return phase_; }
 	void set_phase(PHASE phase) { phase_ = phase; }
 
-	//create and populate a team from a config
-	void build_team(const config& side_cfg, std::string save_id
+	//create an object responsible for creating and populating a team from a config
+	team_builder_ptr create_team_builder(const config& side_cfg, std::string save_id
 			, std::vector<team>& teams, const config& level, gamemap& map
 			, unit_map& units, bool snapshot);
+
+	//do first stage of team initialization (everything except unit placement)
+	void build_team_stage_one(team_builder_ptr tb_ptr);
+
+	//do second stage of team initialization (unit placement)
+	void build_team_stage_two(team_builder_ptr tb_ptr);
 
 	game_classification& classification() { return classification_; }
 	const game_classification& classification() const { return classification_; } //FIXME: const getter to allow use from const gamestatus::sog() (see ai.cpp:344) - remove after merge?
