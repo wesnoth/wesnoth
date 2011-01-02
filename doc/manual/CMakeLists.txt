@@ -11,6 +11,20 @@ find_program(ASCIIDOC_EXECUTABLE "asciidoc")
 find_program(DOS2UNIX_EXECUTABLE "dos2unix")
 find_program(XSLTPROC_EXECUTABLE "xsltproc")
 
+file(STRINGS ${PROJECT_SOURCE_DIR}/po/LINGUAS LANGUAGES)
+separate_arguments(LANGUAGES)
+
+if(ENABLE_POT_UPDATE_TARGET)
+	add_custom_target(update-po4a-manual
+		COMMAND ${CMAKE_COMMAND}
+			-DPROJECT_SOURCE_DIR="${PROJECT_SOURCE_DIR}"
+			-P "${CMAKE_MODULE_PATH}/po4a-manual.cmake"
+		DEPENDS
+			${CMAKE_CURRENT_SOURCE_DIR}/manual.txt
+		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+endif(ENABLE_POT_UPDATE_TARGET)
+
+
 if(ASCIIDOC_EXECUTABLE AND DOS2UNIX_EXECUTABLE AND XSLTPROC_EXECUTABLE)
   add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/manual.en.xml
                      COMMAND ${ASCIIDOC_EXECUTABLE} -b docbook -d book -n -a toc -o manual.en.xml ${CMAKE_CURRENT_SOURCE_DIR}/manual.txt
