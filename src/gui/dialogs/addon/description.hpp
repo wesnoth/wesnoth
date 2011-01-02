@@ -22,6 +22,17 @@
 
 struct addon_info
 {
+	addon_info()
+		: name()
+		, description()
+		, icon()
+		, version()
+		, author()
+		, sizestr()
+		, translations()
+	{
+	}
+
 	std::string name;
 	std::string description;
 	std::string icon;
