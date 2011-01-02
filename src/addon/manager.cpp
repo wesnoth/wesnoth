@@ -1372,7 +1372,7 @@ namespace {
 			dlg.set_ok_label(_("Remove"));
 			dlg.show(disp.video());
 			index = dlg.selected_index();
-			
+
 			if(index == -1)
 				return;
 

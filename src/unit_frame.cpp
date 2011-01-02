@@ -727,7 +727,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	 */
 	frame_parameters result;
 	const frame_parameters & current_val = builder_.parameters(current_time);
-	
+
 	result.primary_frame = engine_val.primary_frame;
 	if(animation_val.primary_frame != t_unset) result.primary_frame = animation_val.primary_frame;
 	if(current_val.primary_frame != t_unset) result.primary_frame = current_val.primary_frame;
@@ -821,7 +821,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	if(animation_val.auto_hflip != t_unset) result.auto_hflip = animation_val.auto_hflip;
 	if(current_val.auto_hflip != t_unset) result.auto_hflip = current_val.auto_hflip;
 	if(result.auto_hflip == t_unset) result.auto_hflip = t_true;
-	
+
 	result.auto_vflip = engine_val.auto_vflip;
 	if(animation_val.auto_vflip != t_unset) result.auto_vflip = animation_val.auto_vflip;
 	if(current_val.auto_vflip != t_unset) result.auto_vflip = current_val.auto_vflip;

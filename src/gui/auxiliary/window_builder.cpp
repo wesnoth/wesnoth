@@ -283,7 +283,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *
  *     vertical_placement & v_align & "" &
  *                                   The vertical placement of the window. $
- *     horizontal_placement & h_align & "" & 
+ *     horizontal_placement & h_align & "" &
  *                                   The horizontal placement of the window. $
  *
  *     maximum_width & unsigned & 0 &  The maximum width of the window (only

@@ -535,7 +535,7 @@ bool show_video_mode_dialog(display& disp)
 		std::ostringstream option;
 
 		if (res == current_res)
-			current_choice = static_cast<unsigned>(k);		
+			current_choice = static_cast<unsigned>(k);
 
 		option << res.first << "x" << res.second;
 		/*widescreen threshold is 16:10*/

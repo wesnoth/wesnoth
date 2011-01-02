@@ -44,7 +44,7 @@ public:
 	bool uses_global_traits() const;
 
 	const config::const_child_itors &additional_traits() const;
-  const config::const_child_itors &additional_topics() const; 
+  const config::const_child_itors &additional_topics() const;
 	unsigned int num_traits() const;
 
 private:
