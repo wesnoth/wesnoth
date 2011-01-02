@@ -185,6 +185,8 @@ void play_controller::init(CVideo& video){
 
 	std::set<std::string> seen_save_ids;
 
+	std::vector<team_builder_ptr> team_builders;
+
 	int team_num = 0;
 	foreach (const config &side, level_.child_range("side"))
 	{
@@ -199,9 +201,19 @@ void play_controller::init(CVideo& video){
 				first_human_team_ = team_num;
 			}
 		}
-		gamestate_.build_team(side, save_id, teams_, level_, map_
-				, units_, snapshot);
+		team_builders.push_back(gamestate_.create_team_builder(side,
+			save_id, teams_, level_, map_, units_, snapshot));
 		++team_num;
+	}
+
+	foreach (team_builder_ptr tb_ptr, team_builders)
+	{
+		gamestate_.build_team_stage_one(tb_ptr);
+	}
+
+	foreach (team_builder_ptr tb_ptr, team_builders)
+	{
+		gamestate_.build_team_stage_two(tb_ptr);
 	}
 
 	// mouse_handler expects at least one team for linger mode to work.
