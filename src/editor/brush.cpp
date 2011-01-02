@@ -22,6 +22,41 @@
 
 namespace editor {
 
+/*WIKI
+ * @page = BrushWML
+ *
+ * THIS PAGE IS AUTOMATICALLY GENERATED, DO NOT MODIFY DIRECTLY !!!
+ *
+ * = Brush =
+ *
+ * Each brush tag defines one brush. (0,0) is the hotspot, that is, the brush
+ * is always moved so the mouse is over the brush's (0,0) coordinate. The
+ * following keys and tags are recognized:
+ *
+ * (Note the 1.5 version and the mandatory image are for testing only.)
+ *
+ * @begin{description}{wml_reference}
+ * name & string & "" & 1.5 &
+ *         Name for the brush (will possibly show up in the tooltip for the
+ *         brush). $
+ * image & filename & & &
+ *         Icon for the brush to de displayed on the toolbar. $
+ * radius & integer & 0 & &
+ *         Include in the brushall hexes that are this or closer to the center
+ *         of the brush, excluding the (0,0) point. $
+ * [relative] & node & * & & Include in the brush a single hex with
+ *         coordinates relative from the center of the brush. $
+ *
+ *     @begin{description}{wml_reference}
+ *     x & int & 0 & & The relative x coordinate. $
+ *     y & int & 0 & & The relative y coordinate. $
+ *     @end{description}{wml_reference}
+ *
+ * @end{description}{wml_reference}
+ * A brush that has neither a radius nor any [relative] hexes will be empty
+ * which is not desired and a warning or error is to be expected.
+ */
+
 brush::brush()
 	: relative_tiles_()
 	, name_()
