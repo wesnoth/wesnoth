@@ -220,6 +220,10 @@ if(USE_ANA_NETWORK)
 	find_package( Boost 1.35 REQUIRED COMPONENTS system )
 endif(USE_ANA_NETWORK)
 
+if(ENABLE_POT_UPDATE_TARGET)
+	find_package(TranslationTools REQUIRED)
+endif(ENABLE_POT_UPDATE_TARGET)
+
 # get languages
 file(READ po/LINGUAS LINGUAS)
 string(REPLACE "\n" "" LINGUAS ${LINGUAS})
