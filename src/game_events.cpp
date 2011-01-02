@@ -739,10 +739,8 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
 {
-	if (game_config::debug) {
-		gui2::tgamestate_inspector inspect_dialog(cfg);
-		inspect_dialog.show(resources::screen->video());
-	}
+	gui2::tgamestate_inspector inspect_dialog(cfg);
+	inspect_dialog.show(resources::screen->video());
 }
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
