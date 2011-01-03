@@ -20,6 +20,7 @@
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "play_controller.hpp"
 #include "resources.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
@@ -112,6 +113,22 @@ void tod_manager::set_time_of_day(int newTime)
 const time_of_day& tod_manager::get_previous_time_of_day() const
 {
 	return get_time_of_day_turn(times_, turn_ - 1);
+}
+
+
+const time_of_day& tod_manager::get_time_of_day_of_next_turn(const int side, const map_location &loc) const
+{
+	int nturn = turn_;
+	if (resources::controller->current_side() < side)
+	{
+		//that side went before current side, its next turn will be on next game turn
+		nturn++;
+	}
+	if (loc != map_location::null_location)
+	{
+		return get_time_of_day(loc, nturn);
+	}
+	return get_time_of_day_turn(times_, nturn);
 }
 
 const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_turn) const

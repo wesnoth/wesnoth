@@ -35,6 +35,13 @@ class tod_manager : public savegame::savegame_config
 		/** Returns time of day object for current turn. */
 		const time_of_day& get_time_of_day() const;
 		const time_of_day& get_previous_time_of_day() const;
+
+		/**
+		 * Returns time of day object for the next turn of particular side
+		 * loc - optional location
+		 */
+		const time_of_day& get_time_of_day_of_next_turn(const int side, const map_location &loc = map_location::null_location) const;
+
 		/**
 		 * Returns time of day object in the turn at a location.
 		 * If nturn = 0 use current turn
