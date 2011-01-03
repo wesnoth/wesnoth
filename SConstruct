@@ -449,7 +449,7 @@ build = env["build"]
 for env in [test_env, client_env, env]:
     env["extra_flags_glibcxx_debug"] = env["extra_flags_debug"]
     env.AppendUnique(**builds[build])
-    env.Append(CXXFLAGS = os.environ.get('CXXFLAGS', []), LINKFLAGS = os.environ.get('LDFLAGS', []))
+    env.Append(CXXFLAGS = Split(os.environ.get('CXXFLAGS', [])), LINKFLAGS = Split(os.environ.get('LDFLAGS', [])))
     env.MergeFlags(env["extra_flags_" + build])
 
 if build == "base":
