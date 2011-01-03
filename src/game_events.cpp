@@ -924,6 +924,7 @@ unit *create_fake_unit(const vconfig& cfg)
 {
 	std::string type = cfg["type"];
 	std::string variation = cfg["variation"];
+	std::string img_mods = cfg["image_mods"];
 
 	size_t side_num = cfg["side"].to_int(1) - 1;
 	if (side_num >= resources::teams->size()) side_num = 0;
@@ -940,6 +941,15 @@ unit *create_fake_unit(const vconfig& cfg)
 		effect["name"] = variation;
 		fake_unit->add_modification("variation",mod);
 	}
+
+	if(!img_mods.empty()) {
+		config mod;
+		config &effect = mod.add_child("effect");
+		effect["apply_to"] = "image_mod";
+		effect["add"] = img_mods;
+		fake_unit->add_modification("image_mod",mod);
+	}
+
 	return fake_unit;
 }
 

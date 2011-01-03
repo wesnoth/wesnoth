@@ -41,6 +41,8 @@ Version 1.9.3+svn:
      addition to profile= to precisely describe portrait locations.
    * New ~BG(color) modifier for setting the background color of an image.
    * Made [inspect] tag work even without debug mode.
+   * [move_unit_fake] now accepts an image_mods= attribute, specifying
+     a list of path functions to be applied to the moving fake unit.
  * Miscellaneous and bugfixes:
    * Fix --data-dir command line option
    * Better detect mouse button state when window is activated.
