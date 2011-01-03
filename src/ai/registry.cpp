@@ -31,6 +31,7 @@
 #include "testing/ca.hpp"
 #include "testing/ca_testing_move_to_targets.hpp"
 #include "testing/ca_testing_recruitment.hpp"
+#include "testing/ca_global_fallback.hpp"
 #include "testing/stage_rca.hpp"
 #include "testing/stage_fallback.hpp"
 
@@ -122,6 +123,9 @@ static register_candidate_action_factory<testing_ai_default::testing_recruitment
 
 static register_candidate_action_factory<testing_ai_default::passive_leader_shares_keep_phase>
 	passive_leader_shares_keep_phase_factory("testing_ai_default::passive_leader_shares_keep_phase");
+
+static register_candidate_action_factory<testing_ai_default::global_fallback_phase>
+	global_fallback_phase_factory("testing_ai_default::global_fallback_phase");
 
 // =======================================================================
 // Goals

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
@@ -6303,6 +6303,34 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\ai\testing\ca_global_fallback.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\testing\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\testing\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\testing\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\ai\testing\ca_testing_move_to_targets.cpp"
 						>
 						<FileConfiguration
@@ -8091,6 +8119,10 @@
 					</File>
 					<File
 						RelativePath="..\..\src\ai\testing\ca.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\testing\ca_global_fallback.hpp"
 						>
 					</File>
 					<File
