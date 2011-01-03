@@ -22,17 +22,20 @@
 
 #include "../composite/ai.hpp"
 
-#include "../../log.hpp"
-
-/*
 #include "../actions.hpp"
-#include "../../foreach.hpp"
-#include "../../map.hpp"
-#include "../../resources.hpp"
-#include "../../team.hpp"
 
-#include <deque>
-*/
+#include "../../game_display.hpp"
+#include "../../foreach.hpp"
+#include "../../log.hpp"
+#include "../../map.hpp"
+#include "../../map_label.hpp"
+#include "../../replay.hpp"
+#include "../../resources.hpp"
+#include "../../sdl_utils.hpp"
+#include "../../team.hpp"
+#include "../../terrain_filter.hpp"
+#include "../../tod_manager.hpp"
+
 
 namespace ai {
 
@@ -44,6 +47,25 @@ static lg::log_domain log_ai_testing_ca_global_fallback("ai/ca/global_fallback")
 #define WRN_AI LOG_STREAM(warn, log_ai_testing_ca_global_fallback)
 #define ERR_AI LOG_STREAM(err, log_ai_testing_ca_global_fallback)
 
+//==================================
+// aux utils
+//
+
+static void display_label(int /*side*/, const map_location& location, const std::string& text, bool surrounded)
+{
+                game_display* gui = game_display::get_singleton();
+		std::string team_name;
+
+		SDL_Color color = int_to_color(team::get_side_rgb(surrounded ? 2 : 1 ) );//@fixme: for tests
+
+		const terrain_label *res;
+		res = gui->labels().set_label(location, text, team_name, color);
+		if (res)
+			recorder.add_label(res);
+}
+
+
+//==================================
 
 global_fallback_phase::global_fallback_phase( rca_context &context, const config &cfg )
 	: candidate_action(context,cfg)
@@ -64,7 +86,22 @@ double global_fallback_phase::evaluate()
 
 void global_fallback_phase::execute()
 {
-	//@todo: implement
+	LOG_AI << "start" << std::endl;
+	const int ticks = SDL_GetTicks();
+	double res_sum = 0;
+	foreach( unit &u, *resources::units)
+	{
+		if (u.side()!=get_side())
+		{
+			continue;
+		}
+		double res = 0.1; //@todo: how badly the unit 'u' will be hurt by enemy
+		res_sum += res;
+		display_label(get_side(),u.get_location(),str_cast(res),false);
+	}
+	LOG_AI << "sum is " << res_sum << std::endl;
+
+	LOG_AI << "end in [" << (SDL_GetTicks()-ticks) << "] ticks" << std::endl;
 }
 
 } // end of namespace testing_ai_default
