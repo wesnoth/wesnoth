@@ -201,14 +201,11 @@ void play_controller::init(CVideo& video){
 				first_human_team_ = team_num;
 			}
 		}
-		team_builders.push_back(gamestate_.create_team_builder(side,
-			save_id, teams_, level_, map_, units_, snapshot));
+		team_builder_ptr tb_ptr = gamestate_.create_team_builder(side,
+			save_id, teams_, level_, map_, units_, snapshot);
 		++team_num;
-	}
-
-	foreach (team_builder_ptr tb_ptr, team_builders)
-	{
 		gamestate_.build_team_stage_one(tb_ptr);
+		team_builders.push_back(tb_ptr);
 	}
 
 	foreach (team_builder_ptr tb_ptr, team_builders)

@@ -733,6 +733,7 @@ protected:
 			}
 		}
 
+		DBG_NG_TC << "save id: "<< save_id_ <<std::endl;
 		DBG_NG_TC << "snapshot: "<< (player_exists_ ? "true" : "false") <<std::endl;
 		DBG_NG_TC << "player_cfg: "<< (player_cfg_==NULL ? "is null" : "is not null") <<std::endl;
 		DBG_NG_TC << "player_exists: "<< (player_exists_ ? "true" : "false") <<std::endl;
