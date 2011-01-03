@@ -6,7 +6,7 @@ This parser uses the --preprocess option of wesnoth so a working
 wesnoth executable must be available at runtime.
 """
 
-import os, glob, sys, re, subprocess, optparse, tempfile
+import os, glob, sys, re, subprocess, optparse, tempfile, shutil
 
 class WMLError(Exception):
     """
@@ -183,6 +183,7 @@ class Parser:
         self.wesnoth_exe = wesnoth_exe
         self.config_dir = config_dir
         self.data_dir = data_dir
+        self.keep_temp_dir = None
         self.temp_dir = None
         self.no_preprocess = no_preprocess
         self.preprocessed = None
@@ -215,10 +216,11 @@ class Parser:
         If this is not called then the .parse method will assume the
         WML is already preprocessed.
         """
-        if self.temp_dir:
-            output = self.temp_dir
+        if self.keep_temp_dir:
+            output = self.keep_temp_dir
         else:
             output = tempfile.mkdtemp(prefix="wmlparser_")
+        self.temp_dir = output
         p_option = "-p=" + defines if defines else "-p "
         commandline = [self.wesnoth_exe]
         if self.data_dir:
@@ -425,6 +427,10 @@ class Parser:
                 self.handle_command(rawline[compos + 1:-1])
             else:
                 self.parse_line_without_commands(rawline)
+        
+        if self.keep_temp_dir is None and self.temp_dir:
+            print("removing " + self.temp_dir)
+            shutil.rmtree(self.temp_dir, ignore_errors = True)
 
     def handle_command(self, com):
         if com.startswith("line "):
@@ -691,7 +697,8 @@ code = <<
 
     p = Parser(options.wesnoth, options.config_dir, options.data_dir,
         options.no_preprocess)
-    if options.keep_temp: p.temp_dir = options.keep_temp
+    if options.keep_temp:
+        p.keep_temp_dir = options.keep_temp
     if options.verbose: p.verbose = True
     if options.input: p.parse_file(options.input, options.defines)
     elif options.text: p.parse_text(options.text, options.defines)
