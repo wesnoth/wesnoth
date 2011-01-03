@@ -1998,7 +1998,6 @@ void passive_leader_shares_keep_phase::execute()
 
 	//check for each ai leader if he should move away from his keep
 	foreach(unit_map::unit_iterator &ai_leader, ai_leaders){
-		std::cout << "ai leader" << std::endl;
 		//only if leader is on a keep
 		if (!resources::game_map->is_keep(ai_leader->get_location())) {
 			continue;
