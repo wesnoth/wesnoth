@@ -669,7 +669,7 @@ protected:
 	gamemap &map_;
 	const config *player_cfg_;
 	bool player_exists_;
-	const std::string &save_id_;
+	const std::string save_id_;
 	std::set<std::string> seen_ids_;
 	int side_;
 	const config &side_cfg_;
