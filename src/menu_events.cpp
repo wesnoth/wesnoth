@@ -3356,7 +3356,7 @@ void console_handler::do_turn_limit()
 }
 
 void console_handler::do_debug() {
-	if (network::nconnections() == 0 || game_config::mp_debug) {
+	if (network::nconnections() == 0 /*|| game_config::mp_debug*/) {
 		print(get_cmd(), _("Debug mode activated!"));
 		game_config::debug = true;
 	} else {
