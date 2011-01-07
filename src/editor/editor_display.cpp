@@ -98,7 +98,7 @@ const SDL_Rect& editor_display::get_clip_rect()
 void editor_display::draw_sidebar()
 {
 	config element;
-	config::attribute_value &text = element["text"];
+	config::attribute_value &text = element.add_child("element")["text"];
 	// Fill in the terrain report
 	if (get_map().on_board_with_border(mouseoverHex_)) {
 		text = get_map().get_terrain_editor_string(mouseoverHex_);
