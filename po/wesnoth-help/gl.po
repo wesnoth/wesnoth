@@ -9,20 +9,22 @@
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
 # Jacobo Abel Fernández García <xakobe_gz@hotmail.com>, 2007.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009-2010.
+# Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-28 13:00+0100\n"
-"PO-Revision-Date: 2010-08-13 11:47+0200\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
+"POT-Creation-Date: 2010-12-28 13:01+0100\n"
+"PO-Revision-Date: 2011-01-07 19:29+0100\n"
+"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"com>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.2\n"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -47,7 +49,7 @@ msgid ""
 msgstr ""
 "Furia:\n"
 "Usado de forma ofensiva ou defensiva, este ataque prolonga o combate ata que "
-"morre un dos combatentes, ou ata que se realicen 30 rondas de ataques."
+"morre un dos combatentes, ou ata que se realicen trinta rondas de ataques."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
@@ -64,8 +66,8 @@ msgid ""
 "ability of the unit being attacked."
 msgstr ""
 "Maxia:\n"
-"Este ataque sempre ten un 70% de probabilidade de atinar, alén das "
-"capacidades defensivas da unidade atacada."
+"Este ataque sempre atina sete de cada dez veces, sen importar as capacidades "
+"defensivas da unidade atacada."
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
@@ -88,13 +90,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
-msgstr "sanda +4"
+msgstr "sanda 4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
-msgstr "sanda +4"
+msgstr "sanda 4"
 
 # Dunha “quenda” a outra dun mesmo xogador vai unha “rolda”.
 #. [heals]: id=healing
@@ -109,8 +111,8 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Sandar +4:\n"
-"Permite ás unidades sandar ás unidades amigas adxacentes ao comezo da súa "
+"Sandar 4:\n"
+"Permite ás unidades sandar as unidades amigas adxacentes ao comezo da súa "
 "quenda.\n"
 "\n"
 "Unha unidade coidada por esta pode sandar ata catro puntos de vida por "
@@ -122,13 +124,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
-msgstr "sanda +8"
+msgstr "sanda 8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
 msgid "female^heals +8"
-msgstr "sanda +8"
+msgstr "sanda 8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
@@ -143,7 +145,7 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Sandar +8:\n"
+"Sandar 8:\n"
 "Esta unidade combina remedios de herbas con maxia para sandar ás unidades "
 "máis rápido do normal no campo de batalla.\n"
 "\n"
@@ -156,18 +158,17 @@ msgstr ""
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
 msgid "Encyclopedia"
-msgstr ""
+msgstr "Enciclopedia"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
-msgstr ""
+msgstr "<ref>dst='..geography' text='Xeografía'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:5
-#, fuzzy
 msgid "Caste"
-msgstr "Castelo"
+msgstr "Casta"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
@@ -178,11 +179,16 @@ msgid ""
 "<ref>dst='unit_Drake Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake "
 "Fighter' text='Drake Fighter'</ref>."
 msgstr ""
+"Segundo o trato especial que se lle dea aos <ref>dst='egg' text='ovos'</ref> "
+"de draconián, as tribos poden controlar a forma que adoptarán logo as "
+"<ref>dst='hatchling' text='crías'</ref>. Como resultado poderán converterse "
+"en <ref>dst='unit_Drake Clasher' text='batalladores'</ref> ou "
+"<ref>dst='unit_Drake Fighter' text='loitadores'</ref>."
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:12
 msgid "Aerie"
-msgstr ""
+msgstr "Niño"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
@@ -190,12 +196,13 @@ msgid ""
 "A drake home building, fortified. It contains the <ref>dst='breeding_pen' "
 "text='breeding pens'</ref>."
 msgstr ""
+"Casa fortificada dos draconiáns. Dentro está a <ref>dst='breeding_pen' "
+"text='sala de cría'</ref>."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:18
-#, fuzzy
 msgid "Breeding Pen"
-msgstr "aliméntase"
+msgstr "Sala de cría"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
@@ -203,11 +210,13 @@ msgid ""
 "Where the nonsentient <ref>dst='breeder' text='Breeders'</ref> live under "
 "the <ref>dst='dominant' text='Dominant'</ref>' s eye."
 msgstr ""
+"Lugar onde as <ref>dst='breeder' text='criadoras'</ref> viven ao amparo do "
+"<ref>dst='dominant' text='dominante'</ref>."
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:24
 msgid "Breeding Cycle"
-msgstr ""
+msgstr "Ciclo de cría"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
@@ -215,12 +224,14 @@ msgid ""
 "The time that passes between one <ref>dst=egg text='Egg'</ref> laying to the "
 "next."
 msgstr ""
+"O tempo que pasa dende a posta dun <ref>dst=egg text='ovo'</ref> ata a do "
+"seguinte."
 
 #. [topic]: id=world-ocean
 #. [topic]: id=new continent
 #: data/core/encyclopedia/drakes.cfg:30 data/core/encyclopedia/drakes.cfg:36
 msgid " "
-msgstr ""
+msgstr " "
 
 #. [topic]: id=world-ocean
 #: data/core/encyclopedia/drakes.cfg:31
@@ -229,6 +240,10 @@ msgid ""
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
 "the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
 msgstr ""
+"O Gran Océano é o nome do mar aberto que arrodea o arquipélago de "
+"<ref>dst='morogor' text='Morogor'</ref>. Os draconiáns teñen a crenza de que "
+"remata no <ref>dst='abyss' text='Abismo'</ref>, unha enorme e mortal "
+"catarata."
 
 #. [topic]: id=new continent
 #: data/core/encyclopedia/drakes.cfg:37
@@ -237,21 +252,24 @@ msgid ""
 "text='Morogor'</ref>. Its existence is unknown to the @drakes until the "
 "flight of @Galun."
 msgstr ""
+"O Gran Continente é o nome da gran extensión de terra que hai ao leste de "
+"<ref>dst='morogor' text='Morogor'</ref>. Os draconiáns non souberon da súa "
+"existencia ata a bandada de Galun."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
 msgid "Abyss"
-msgstr ""
+msgstr "Abismo"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:44
 msgid "A vast and deadly waterfall where the ocean falls of the world disc."
-msgstr ""
+msgstr "Unha catarata enorme e mortal pola que os océanos caen do mundo."
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
 msgid "Spiral Path"
-msgstr ""
+msgstr "O Camiño en Espiral"
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:50
@@ -260,11 +278,15 @@ msgid ""
 "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
 "Path'</ref>"
 msgstr ""
+"Unha organización medio secreta formada por draconiáns decididos a evitar "
+"por todos os medios unha gran guerra causada pola superpoboación e a falta "
+"de alimento abondo. Véxase tamén o <ref>dst='straight_path' text='Camiño "
+"Recto'</ref>."
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:55
 msgid "Straight Path"
-msgstr ""
+msgstr "O Camiño Recto"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:56
@@ -274,11 +296,15 @@ msgid ""
 "term is mostly used by the members of the <ref>dst='spiral_path' "
 "text='Spiral Path'</ref>."
 msgstr ""
+"«Os que seguen o camiño recto» ou, para abreviar, «O Camiño Recto», é unha "
+"forma de denominar a tradición dos draconiáns de expansión e conquista "
+"constantes. O termo adóitano empregar os membros do <ref>dst='spiral_path' "
+"text='Camiño en Espiral'</ref>."
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
 msgid "Dominant"
-msgstr ""
+msgstr "Dominante"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
@@ -288,11 +314,15 @@ msgid ""
 "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
 "privileges on others."
 msgstr ""
+"O <ref>dst='aspirant' text='aspirante'</ref> que se proclama líder dos "
+"draconiáns, único draconián de toda tribo que pode reproducirse coas "
+"<ref>dst='breeder' text='criadoras'</ref>. Aínda que pouco habitual, ten "
+"dereito a conferirlles privilexios de cría a outros draconiáns."
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
 msgid "Vulcaniad"
-msgstr ""
+msgstr "Volcanián"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
@@ -301,11 +331,14 @@ msgid ""
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
 "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
 msgstr ""
+"Período variable de tempo que hai entre dúas erupcións consecutivas do "
+"<ref>dst='mount_morogor' text='Monte Morogor'</ref>. O calendario de "
+"<ref>dst='long_count' text='Conta Longa'</ref> baséase en dito período."
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
 msgid "Recorder"
-msgstr ""
+msgstr "Gravador"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
@@ -315,28 +348,33 @@ msgid ""
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
 msgstr ""
+"Gardián do pergameo draconián que dominou a arte da "
+"<ref>dst='drakish_script' text='escrita dos draconiáns'</ref>. Son a única "
+"<ref>dst='caste' text='casta'</ref> dos draconiáns que non se determina de "
+"maneira biolóxica, pois son elixidos de entre as outras castas."
 
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
 msgid "Laying"
-msgstr ""
+msgstr "Posta"
 
 #. [topic]: id=laying
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
 msgid "a period in the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
 msgstr ""
+"Período de tempo que dura cada <ref>dst='breeding_cycle' text='ciclo de "
+"cría'</ref>."
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
 msgid "Hatching"
-msgstr ""
+msgstr "Postura"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
-#, fuzzy
 msgid "Hatchling"
-msgstr "Sandar"
+msgstr "Cría"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
@@ -345,12 +383,14 @@ msgid ""
 "current generation of hatchlings are the most aggressive is the behaviour of "
 "the <ref>dst='flight' text='flight'</ref>."
 msgstr ""
+"Draconián pertencente á última niñada. Canto máis nova é a última niñada, "
+"máis agresiva se volve a <ref>dst='flight' text='bandada'</ref>."
 
+# Pareceume o perfecto xogo de palabras, neste caso dos significados de «rapaz».
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
-#, fuzzy
 msgid "Fledgling"
-msgstr "Sandar"
+msgstr "Rapaz"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
@@ -359,11 +399,14 @@ msgid ""
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
+"Draconián pertencente á penúltima niñada. Se a <ref>dst='flight' "
+"text='bandada'</ref> pode permitirse perder unha xeración, comezarán a "
+"<ref>dst='swarming' text='migración'</ref>."
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
 msgid "Breeder"
-msgstr ""
+msgstr "Criadora"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:104
@@ -374,11 +417,16 @@ msgid ""
 "take care of their food for themselves when laying. Drake breeders become "
 "fertile after the next <ref>dst='hatching' text='hatching'</ref>."
 msgstr ""
+"A femia dos draconiáns. Son pouco habituais, xa que os <ref>dst='egg' "
+"text='ovos'</ref> de criadora requiren dun coidado especial. A cantidade de "
+"criadoras dependerá tamén da cantidade de machos, pois durante a posta as "
+"criadoras non poden procurarse alimento. As criadoras dos draconiáns pasan a "
+"ser fértiles tras a seguinte <ref>dst='hatching' text='niñada'</ref>."
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:109
 msgid "Egg, Drake"
-msgstr ""
+msgstr "Ovo de draconián"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:110
@@ -386,11 +434,13 @@ msgid ""
 "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid."
 msgstr ""
+"A <ref>dst=caste text='casta'</ref> á que pertencerá a <ref>dst='hatchling' "
+"text='cría'</ref> decídese xa na posta."
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
 msgid "Flight"
-msgstr ""
+msgstr "Bandada"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
@@ -399,11 +449,14 @@ msgid ""
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
+"Tribo de draconiáns, viven nun <ref>dst='aerie' text='niño'</ref>, e "
+"aliméntanse do que cazan polos arredores. Cada tribo ten un "
+"<ref>dst='dominant' text='dominante'</ref> con privilexios de cría."
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:121
 msgid "Aspirant"
-msgstr ""
+msgstr "Aspirante"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
@@ -413,23 +466,27 @@ msgid ""
 "secretion of the hormone is caused by hunt and combat actions in which the "
 "drake is involved."
 msgstr ""
+"Macho dos draconiáns que sufriu unha metamorfose hormonal que lle permite "
+"reproducirse coas <ref>dst='breeder' text='criadoras'</ref>. A secreción da "
+"hormona cáusana as accións de caza e combate que leva a cabo o draconián."
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:127
 msgid "Ascendant"
-msgstr ""
+msgstr "Devanceiro"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
+"Nome polo que os draconiáns coñecen aos <ref>dst='unit_Fire Dragon' "
+"text='dragóns de verdade'</ref>."
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
-#, fuzzy
 msgid "Intendant"
-msgstr "Intelixencia"
+msgstr "Pretendente"
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:134
@@ -441,12 +498,18 @@ msgid ""
 "likeliest to be granted mating privileges, especially after a notable "
 "service."
 msgstr ""
+"Cada un dos <ref>dst='aspirant' text='aspirantes'</ref> tenentes do "
+"<ref>dst='dominant' text='dominante'</ref>. Tradicionalmente o dominante "
+"conta cun pretendente de cada unha das outras <ref>dst=caste text='castas'</"
+"ref>, reunindo co propio dominante un exemplar de cada unha. Ás veces "
+"desígnase algún pretendente máis para misións especiais. Xeralmente, aos "
+"pretendentes concédenselles privilexios de cría, especialmente despois de "
+"levar a cabo algún deber de certa importancia."
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
-#, fuzzy
 msgid "Swarm"
-msgstr "enxame"
+msgstr "Enxame"
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:140
@@ -454,12 +517,13 @@ msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
+"Os <ref>dst='swarmlings' text='emigrantes'</ref> que deixaron atrás o seu "
+"<ref>dst='aerie' text='niño'</ref> para fundar un novo."
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
-#, fuzzy
 msgid "Swarming"
-msgstr "enxame"
+msgstr "Migración"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -468,21 +532,27 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
+"A <ref>dst='flight' text='bandada'</ref> que marcha para fundar un novo "
+"<ref>dst='aerie' text='niño'</ref>, algo que se repite en cada "
+"<ref>dst='breeding_cycle' text='ciclo de cría'</ref>. Véxase "
+"«<ref>dst='swarm' text='enxame'</ref>»."
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
 msgid "Runners"
-msgstr ""
+msgstr "Fuxitivos"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:152
 msgid "Drakish term for escaped slaves hunted as game."
 msgstr ""
+"Termo co que os draconiáns denominan a aqueles escravos que cazaron como "
+"diversión e que conseguiron escapar."
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
 msgid "Mount Morogor"
-msgstr ""
+msgstr "Monte Morogor"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
@@ -490,11 +560,13 @@ msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Montaña volcánica da illa central do arquipélago de <ref>dst='morogor' "
+"text='Morogor'</ref>."
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
 msgid "Long Count"
-msgstr ""
+msgstr "Conta Longa"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
@@ -502,21 +574,23 @@ msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
+"Calendario dos draconiáns. Baséase no <ref>dst='vulcaniad' text='Volcanián'</"
+"ref> e mailos <ref>dst=breeding_cycle text='ciclos de cría'</ref>."
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
 msgid "Long Pig"
-msgstr ""
+msgstr "Porco grande"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:170
 msgid "South Seas pidgin for human meat."
-msgstr ""
+msgstr "Termo empregado nos mares do sur para referirse á carne humana."
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
 msgid "Ceramics"
-msgstr ""
+msgstr "Cerámica"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
@@ -525,11 +599,15 @@ msgid ""
 "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
 "generate the amount of heat to cure the pieces to full strength."
 msgstr ""
+"Os draconiáns traballan o metal, pero a súa especialidade é o traballo da "
+"cerámica. Só os <ref>dst='unit_Drake Burner' text='draconiáns incendiarios'</"
+"ref> poden xerar lume dunha temperatura elevada abondo para sacarlle ás "
+"pezas o seu máximo potencial."
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:181
 msgid "Drakish, script"
-msgstr ""
+msgstr "Escrita dos draconiáns"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
@@ -538,38 +616,41 @@ msgid ""
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
 "text='Recorder'</ref> vocation."
 msgstr ""
+"Linguaxe de gravados dos draconiáns. Custodiada por <ref>dst='recorder' "
+"text='gravadores'</ref> en táboas de <ref>dst='ceramic' text='cerámica'</"
+"ref>."
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:187
 msgid "Drakish, language"
-msgstr ""
+msgstr "Lingua dos draconiáns"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:188
 msgid "The language spoken by the drakes."
-msgstr ""
+msgstr "A lingua que falan os draconiáns."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
 #: data/core/encyclopedia/geography.cfg:5
 #: data/core/encyclopedia/geography.cfg:12
 msgid "Geography"
-msgstr ""
+msgstr "Xeografía"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:19
 msgid "Arkan-thoria"
-msgstr ""
+msgstr "Arkan-thoria"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:20
 msgid "<ref>dst='heart_mountains' text='Heart Mountains'</ref>"
-msgstr ""
+msgstr "<ref>dst='heart_mountains' text='Montañas Profundas'</ref>"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:25
 msgid "Great Ocean"
-msgstr ""
+msgstr "Gran Océano"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:26
@@ -578,11 +659,14 @@ msgid ""
 "and all rivers eventually flow to it. In the middle of the great ocean is a "
 "huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Situado ao oeste do <ref>dst='great_continent' text='Gran Continente'</ref>, "
+"a el van parar todos os ríos. No medio do gran océano hai un extenso "
+"arquipélago que recibe o nome de <ref>dst='morogor' text='Morogor'</ref>."
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:31
 msgid "Morogor"
-msgstr ""
+msgstr "Morogor"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:34
@@ -593,33 +677,39 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called 'Morogor'."
 msgstr ""
+"Arquipélago situado nalgunha parte do <ref>dst='great_ocean' text='Gran "
+"Océano'</ref>, ao oeste da <ref>dst='green_isle' text='Illa Verde'</ref> e "
+"ao leste do <ref>dst=old_continent text='Vello Continente'</ref>. Está "
+"habitado principalmente por <ref>dst='..race_drake' text='draconiáns'</"
+"ref>.\n"
+"A illa central do arquipélago recibe o mesmo nome que o propio arquipélago."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:39
-#, fuzzy
 msgid "Green Isle"
-msgstr "Verde"
+msgstr "Illa Verde"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:40
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='great ocean'</ref>."
-msgstr ""
+msgstr "A illa máis grande do <ref>dst='great_ocean' text='Gran Océano'</ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:45
 msgid "Old Continent"
-msgstr ""
+msgstr "Vello Continente"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:46
 msgid "Lies in the west of <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Continente situado ao oeste de <ref>dst='morogor' text='Morogor'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:51
 msgid "Great Continent"
-msgstr ""
+msgstr "Gran Continente"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:52
@@ -628,11 +718,14 @@ msgid ""
 "Wesnoth'</ref> lies. It's west coast is surrunded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Continente no que se estableceu o <ref>dst='kingdom_wesnoth' text='Reino de "
+"Wesnoth'</ref>. O <ref>dst='great_ocean' text='Gran Océano'</ref> baña a súa "
+"costa oeste."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:57
 msgid "Irdya"
-msgstr ""
+msgstr "Irdya"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:58
@@ -642,11 +735,14 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "'the world' or, poetically, 'the wide green world'."
 msgstr ""
+"Nome co que os humanos denominan o mundo na súa totalidade, aínda que o "
+"termo rara vez se escoita, sendo máis habitual referirse a este coma «o "
+"mundo» ou, poeticamente, «o gran mundo verde»."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:63
 msgid "Kingdom of Wesnoth"
-msgstr ""
+msgstr "Reino de Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:89
@@ -705,11 +801,68 @@ msgid ""
 "south of Aldril. It receives drainage from the Brown Hills and feeds into "
 "the Great River. (Not shown on the main map.)"
 msgstr ""
+"O Reino de Wesnoth está situado na parte norte central do "
+"<ref>dst='great_continent' text='Gran Continente'</ref>. A meirande parte "
+"das campañas oficiais teñen lugar nel e nos seus arredores. Limita polo "
+"norte co Gran Río, polo oeste co Gran Océano, polo "
+"<ref>dst='southwest_elven_lands' text='suroeste'</ref> co Bosque do Edén e "
+"polo sueste coas Brañas Inhóspitas.\n"
+"\n"
+"As terras alén do Río Edén, ao sur do Forte de Tan, son unha rexión "
+"fronteiriza de Wesnoth. Esténdense en dirección sur, alén do que reflicte "
+"ningún mapa coñecido, e disque a meirande parte a ocupa un bosque do que o "
+"do Edén parece non ser máis que o seu extremo norte.\n"
+"\n"
+"    • Cidades salientables:\n"
+"          ◦ Güedin. Capital do reino.\n"
+"          ◦ Eildrin. Cidade situada na Baía das Perlas.\n"
+"          ◦ Porto das Augas Negras. Cidade situada ao sur da Baía das "
+"Perlas.\n"
+"          ◦ Corsin. Cidade situada entre os Bosques Grises e o Gran Río.\n"
+"          ◦ Danton. Cidade situada no centro de Wesnoth, ao noroeste de "
+"Güedin. Aínda que Güedin é a capital, Danton é a cidade máis poboada de todo "
+"o reino.\n"
+"          ◦ Xóuradon. Trátase do posto avanzado máis ao norte do territorio "
+"de Wesnoth, situado á beira do Río Güedin, xusto onde este desauga no Gran "
+"Río.\n"
+"          ◦ Forte de Tan. Posto avanzado situado no extremo sur do reino, "
+"preto do paso do Río Edén.\n"
+"          ◦ Taz. Importante cidade ao norte de Danton, á que lle "
+"corresponden as terras salvaxes que arrodean a Serra Dourada e aquelas "
+"situadas ao norte do Vao de Abez.\n"
+"\n"
+"    • Xeografía:\n"
+"          ◦ Alto dos Grifóns. Hábitat dos famosos grifóns.\n"
+"          ◦ Vao de Abez. Zona do Gran Río de pouca profundidade. Adoita "
+"estar baixo o control das forzas do Reino de Wesnoth.\n"
+"          ◦ Río Güedin. Nace nas montañas do sur e vai desaugar ao Gran "
+"Río.\n"
+"          ◦ Gran Chaira Central. Delimitada por Güedin, Danton e mailo Forte "
+"de Tan, esta chaira dá de comer a case toda a poboación de Wesnoth.\n"
+"          ◦ Picos de Dulatus. Elevacións do terreo que bordean a Gran Chaira "
+"Central, fonte de gran parte do alimento e agricultura de Wesnoth..\n"
+"          ◦ Serra Dourada. Terras baldías que arrodean o Alto dos Grifóns, "
+"de pouca poboación e perigosas por regra xeral.\n"
+"          ◦ Chairas das Bestas. Rexión de terras chas ao sur do Gran Río que "
+"delimitan co Bosque de Glin polo oeste, co Río Güedin polo leste e coa Gran "
+"Chaira Central polo sur. Son o fogar dos clans, e onde se crían os mellores "
+"cabalos de todo o reino.\n"
+"          ◦ Lombas de Ismar. Extensión montañosa que se estende cara o sur "
+"dende o Gran Río e ao leste do Río Güedin. A parte norte, a máis próxima ao "
+"Río Güedin, foi moitas veces habitada por xentes de Wesnoth, pero o control "
+"por parte do reino non é doado, e a zona está repleta de bandidos.\n"
+"          ◦ Bosque de Glin. Tamén coñecido coma o Bosque Real, en honor a un "
+"dos fillos de Haldric II.\n"
+"          ◦ Bosques Grises. Gran fraga situada no corazón de Wesnoth, entre "
+"Corsin e Eildrin. Di a crenza popular que está enmeigada.\n"
+"          ◦ Lameiro Verde. Gran lameiro situado no corazón de Wesnoth, ao "
+"sur de Eildrin. Recibe auga da Serra Dourada, e desauga no Gran Río (non "
+"aparece no mapa principal)."
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:94
 msgid "Elensefar"
-msgstr ""
+msgstr "Elensefar"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:101
@@ -730,11 +883,28 @@ msgid ""
 "          ◦ <ref>dst='great_river' text='Great River'</ref>: It is very wide "
 "at this point, and only ships can cross it."
 msgstr ""
+"Ao longo da historia Elensefar foi unhas veces provincia de "
+"<ref>dst='kingdom_wesnoth' text='Wesnoth'</ref>, outras un estado "
+"completamente independente e nalgunhas ocasións mesmo parte dunha federación "
+"co reino. O seu territorio delimítano o Gran Río polo norte, unha liña "
+"difusa polo leste que o separa do territorio de Wesnoth, a Baía das Perlas "
+"polo sur e o <ref>dst='great_ocean' text='océano'</ref> polo oeste. Pode "
+"atoparse máis información ao respecto nos libros de historia de Wesnoth.\n"
+"\n"
+"    • Cidades salientables:\n"
+"          ◦ Elensefar. É a capital, e está situada nunha illa fluvial no "
+"delta do <ref>dst='great_river' text='Gran Río'</ref>.\n"
+"          ◦ Corsin. Cidade situada na fronteira entre Elensefar e Wesnoth, "
+"disputada co reino.\n"
+"    • Xeografía:\n"
+"          ◦ <ref>dst='great_river' text='Gran Río'</ref>. Este vólvese moi "
+"ancho ao seu paso por Elensefar, e só pode cruzarse mediante algún tipo de "
+"embarcación."
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:106
 msgid "Northlands"
-msgstr ""
+msgstr "Terras Nórdicas"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:124
@@ -779,11 +949,53 @@ msgid ""
 "          ◦ Great River: The origin of this river is somewhere in the east "
 "of the northern lands"
 msgstr ""
+"Nas Terras Nórdicas non hai goberno. Trátase dunha rexión habitada por "
+"varios grupos de orcos, ananos, humanos e incluso elfos. As fronteiras polo "
+"norte e mailo leste non están moi claras, pero limita co "
+"<ref>dst='great_river' text='Gran Río'</ref> polo sur e co "
+"<ref>dst='great_ocean' text='Gran Océano'</ref> polo oeste.\n"
+"\n"
+"    • Cidades salientables:\n"
+"          ◦ Glendro. Capital dunha tribo de orcos.\n"
+"          ◦ Romir. Outra capital dunha tribo de orcos.\n"
+"          ◦ Wesmere. Cidade na que se atopa o Ka'lian, o consello dos "
+"elfos.\n"
+"          ◦ Portas dos Ananos. Trátase dunha cidade da rexión de Neilga, ao "
+"sur das Montañas Profundas, na que conviven ananos e humanos. A cidade é un "
+"famoso lugar de comercio.\n"
+"          ◦ Deilben e Dilgüin. Vilas dos humanos que construíron os "
+"exploradores que cruzaron as augas do Gran Río durante a idade dourada de "
+"Wesnoth. Están na actualidade abandonadas. O zona de bosque ao nordeste de "
+"Elensefar no que estaban estas vilas fora outrora a provincia de Anubin, "
+"máis coñecida a día de hoxe polo nome co que a coñecen os elfos: Wesmere.\n"
+"\n"
+"    • Xeografía:\n"
+"          ◦ Montañas Profundas. Unha barreira infranqueable de montañas "
+"entre a zona do río e as Chairas Nórdicas.\n"
+"          ◦ Cairos. Unha zona especialmente difícil de transitar, formada "
+"por picos moi altos e situada ao suroeste da Lagoa de Brugue e ao norte do "
+"Bosque de Wesmere. É a parte máis inhóspita e perigosa das Montañas "
+"Profundas, habitada unicamente por eremitas, tolos e magos.\n"
+"          ◦ Lameiro do Terror. Un gran lameiro situado entre as Montañas "
+"Profundas e o Gran Río. É un lugar bastante perigoso.\n"
+"          ◦ Lagoa de Brugue. Unha gran lagoa entre montañas cuxo río é a "
+"única maneira de atravesar as Montañas Nórdicas.\n"
+"          ◦ Río Xacer. Este río nace na Lagoa de Brugue e desauga no Río "
+"Listra. Tamén se adoita facer referencia a el empregando o seu nome na "
+"lingua dos elfos: Arkan-thoria.\n"
+"          ◦ Río Listra. Afluente do Gran Río pola súa beira norte, e "
+"receptor das augas do Río Xacer.\n"
+"          ◦ Bosque de Lintanir. É o extremo sur do Gran Bosque nórdico, unha "
+"enorme fraga da que só os elfos coñecen os seus límites polo norte e o "
+"leste. A súa capital é Elensiria, e poucos son os humanos que algunha vez "
+"tiveron a sorte de poder pór un pé nela.\n"
+"          ◦ Gran Río. Este río nace nalgunha parte al leste das terras "
+"nórdicas."
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:129
 msgid "Southwest Elven Lands"
-msgstr ""
+msgstr "Terras dos Elfos do Sur"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
@@ -800,12 +1012,23 @@ msgid ""
 "the southwest - much farther than is charted - and is home to <ref>dst='.."
 "race_elf' text='elves'</ref>."
 msgstr ""
+"Os elfos dos bosques non deben confundirse cos elfos do norte, e pouco se "
+"relacionan cos seus amigos nórdicos ou con calquera outro territorio. O seu "
+"territorio está delimitado polo Lameiro Verde na parte nordeste, o deserto "
+"polo sur (aínda que non apareza nos mapas), e o <ref>dst='great_ocean' "
+"text='océano'</ref> polo oeste.\n"
+"\n"
+"    • Cidades salientables:\n"
+"          ◦ Ningunha coñecida.\n"
+"    • Xeografía:\n"
+"          ◦ Bosque de Aethen. Trátase do bosque máis grande da parte sur, "
+"que se estende alén do que a vista humana pode alcanzar polo suroeste, e "
+"está habitado por <ref>dst='..race_elf' text='elfos'</ref>."
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:140
-#, fuzzy
 msgid "Heart Mountains"
-msgstr "Montañas"
+msgstr "Montañas Profundas"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:141
@@ -814,11 +1037,13 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
+"Unha barreira infranqueable entre as terras do <ref>dst='arkan_thoria' "
+"text='río'</ref> e as <ref>dst='far_north' text='Chairas Nórdicas'</ref>."
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:146
 msgid "Far North"
-msgstr ""
+msgstr "Chairas Nórdicas"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:170
@@ -855,6 +1080,37 @@ msgid ""
 "          ◦ River Bork\n"
 "          ◦ Wild Steppe"
 msgstr ""
+"Cunhas duras condicións climáticas e de difícil acceso, as Chairas Nórdicas "
+"son o fogar ancestral dos clans dos orcos. Están situadas ao norte das "
+"<ref>dst='heart_mountains' text='Montañas Profundas'</ref>, que or orcos "
+"chaman Haggid-Dargor e reclaman (de modo ilexítimo) como súas. Ao leste "
+"están as tribos independentes da Estepa Salvaxe, fóra do control dos clans, "
+"e habitadas por humanos. Estas á súa vez limitan co territorio dos elfos das "
+"Chairas Nórdicas (popularmente coñecidos como “elfos do norte”). Os elfos do "
+"norte viven lonxe ao leste, onde se rumorea teñen un gran reino.\n"
+"\n"
+"    • Cidades salientables:\n"
+"          ◦ Báragor. Cidade na que reside o consello dos orcos.\n"
+"          ◦ Bito.\n"
+"          ◦ Borste.\n"
+"          ◦ Castelfran.\n"
+"          ◦ Fersi.\n"
+"          ◦ Festo.\n"
+"          ◦ Grisbi.\n"
+"          ◦ Mari.\n"
+"          ◦ Melmogue.\n"
+"          ◦ Prestin.\n"
+"          ◦ Tírigaz.\n"
+"    • Xeografía:\n"
+"          ◦ Lameiro da Desolación.\n"
+"          ◦ Montañas da Dor.\n"
+"          ◦ Montañas do Riso.\n"
+"          ◦ Bosque Verde.\n"
+"          ◦ Bosque do Silencio.\n"
+"          ◦ Bosque Delien.\n"
+"          ◦ Río Oun.\n"
+"          ◦ Río Bor.\n"
+"          ◦ Estepa Salvaxe."
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -866,7 +1122,7 @@ msgstr "Introdución"
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:27 data/core/help.cfg:137
 msgid "Gameplay"
-msgstr "Instrucións"
+msgstr "Manual"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
@@ -890,7 +1146,7 @@ msgstr "Habilidades"
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:59 data/core/help.cfg:110
 msgid "Weapon Specials"
-msgstr "Propiedades das armas"
+msgstr "Propiedades dos ataques"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
@@ -902,7 +1158,7 @@ msgstr "Faccións"
 #. [topic]: id=..terrains
 #: data/core/help.cfg:74 data/core/help.cfg:478
 msgid "Terrains"
-msgstr "Terreos"
+msgstr "Tipos de terreo"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -919,9 +1175,9 @@ msgid ""
 "\n"
 msgstr ""
 "Certas unidades teñen habilidades que afectan directamente a outras unidades "
-"ou teñen un impacto no xeito en que a unidade interactúa con outras "
-"unidades. Estas habilidades listaranse neste apartado a medida que as "
-"descubras. \n"
+"ou teñen un impacto no xeito en que a unidade se relaciona con outras "
+"unidades. Estas habilidades listaranse neste apartado a medida que as vaias "
+"descubrindo. \n"
 "\n"
 
 #. [topic]: id=..weapon_specials
@@ -949,8 +1205,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Aínda non se coñece esta unidade. Debes descubrila no xogo para poder ver a "
-"súa descrición."
+"Aínda non se sabe nada desta unidade. Debes descubrila no xogo para poder "
+"ver a súa descrición."
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:128
@@ -959,7 +1215,6 @@ msgstr "Resumo"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:131
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -972,21 +1227,21 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"O Battle for Wesnoth é un xogo de estratexia por quendas ambientado nun "
-"mundo fantástico pouco habitual entre os xogos de estratexia modernos. "
-"Mentres outros xogos buscan a complexidade, o Battle for Wesnoth busca unhas "
-"regras e mais unha forma de xogo simple. Isto non fai que o xogo sexa "
-"sinxelo, senón que destas regras sinxelas xorde unha riqueza estratéxica, "
-"facendo que o xogo sexa fácil de aprender, mais difícil de dominar."
+"<italic>text='A batalla por Wesnoth'</italic> é un xogo de estratexia por "
+"quendas ambientado nun mundo fantástico pouco habitual entre os xogos de "
+"estratexia modernos. Mentres que outros xogos buscan a complexidade, en A "
+"batalla por Wesnoth procúrase que tanto as regras como a forma de xogar "
+"sexan o máis simples posible. Isto non significa que o xogo sexa sinxelo, xa "
+"que destas regras sinxelas xorde unha gran riqueza estratéxica, que fai que "
+"o xogo sexa fácil de aprender, mais difícil de dominar."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:143
 msgid "Fundamentals of Gameplay"
-msgstr "Fundamentos do xogo"
+msgstr "Limiar"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:144
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play <italic>text='Battle for "
 "Wesnoth'</italic>. They cover how to play and the basic mechanics behind the "
@@ -994,15 +1249,14 @@ msgid ""
 "come across new aspects of the game. For more detailed information on "
 "special situations and exceptions, please follow the links included."
 msgstr ""
-"Estas páxinas explican todo o que precisas saber para xogar ao Battle for "
-"Wesnoth. Isto inclúe como xogar e as mecánicas básicas do xogo. A medida que "
-"xogues, engadirase información adicional a estas páxinas cando descubras "
-"novos aspectos do xogo. Para obter información máis detallada sobre "
-"situacións especiais e excepcións, preme nas ligazóns incluídas."
+"Estas páxinas explican todo o que precisas saber para xogar, partindo da "
+"información máis básica. A medida que xogues e descubras novos aspectos do "
+"xogo, engadirase información sobre os mesmos a estas páxinas. Para obter "
+"máis información sobre situacións especiais ou excepcións, preme nas "
+"ligazóns."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:146
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1016,13 +1270,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Para comezar, o mellor é premer no botón <italic>text=Titorial</italic> do "
-"menú principal. Isto levarate ao titorial interactivo, onde aprenderás as "
-"cousas básicas do Wesnoth. Despois, cómpre que comeces por xogar a campaña "
-"Herdeiro ao trono ─preme <italic>text=Campañas</italic> e logo "
-"<italic>text='Herdeiro ao trono'</italic>─. Dado que o Battle for Wesnoth "
-"pode resultar un pouco difícil, quizais prefiras comezar en "
-"<italic>text=fácil</italic>."
+"Para comezar, o mellor é premer no botón de <bold>text='Aprendizaxe'</bold> "
+"do menú principal. Isto iniciará a aprendizaxe interactiva, onde se che "
+"ensinarán os aspectos básicos do xogo. Despois recoméndase xogar a campaña "
+"“O herdeiro ao trono” ─preme en <bold>text='Campaña'</bold> e logo escolle "
+"<italic>text='O herdeiro ao trono'</italic>─. Dado que <italic>text='A "
+"batalla por Wesnoth'</italic>pode resultar un pouco difícil, quizais "
+"prefiras comezar no nivel <italic>text='fácil'</italic>."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:149
@@ -1033,15 +1287,16 @@ msgid ""
 "encounter new <ref>dst='..abilities_section' text='abilities'</ref> for the "
 "first time."
 msgstr ""
-"Ao xogar, ten en conta que ao pór o rato enriba de moitos dos elementos do "
-"xogo, como a información que se amosa no panel lateral, amosarase unha breve "
-"descrición do elemento en cuestión. Isto é moi útil ao descubrir <ref>dst='.."
-"abilities_section' text='habilidades'</ref> por vez primeira."
+"Cando esteas a xogar, non esquezas que ao deixar o punteiro enriba de moitos "
+"dos elementos do xogo, como na información do panel lateral, amosarase unha "
+"breve descrición do elemento en cuestión. Isto pode resultar de gran "
+"utilidade ao descubrir <ref>dst='..abilities_section' text='habilidades'</"
+"ref> por vez primeira."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:154
 msgid "About the Game"
-msgstr "Acerca do xogo"
+msgstr "Información sobre o xogo"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:155
@@ -1054,12 +1309,12 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
-"O xogo ten lugar nunha serie de batallas, chamadas escenarios. Cada "
-"escenario enfronta as túas tropas contra as tropas dun ou máis adversarios. "
-"Podes xogar contra a intelixencia artificial, ou con amigos movendo por "
-"quendas as vosas unidades. Se o teu computador está conectado a unha rede, "
-"tamén podes xogar contra outra xente conectada á rede. Se tes conexión á "
-"internet, tamén podes xogar contra outra xente pola internet."
+"O xogo consiste nunha serie de batallas, chamadas escenarios. Cada escenario "
+"enfronta as túas tropas contra as tropas dun ou máis adversarios. Podes "
+"xogar contra a intelixencia artificial ou con amigos, movendo por quendas as "
+"vosas unidades. Se tes acceso a unha rede tamén podes xogar contra outra "
+"xente conectada á rede. Se tes conexión á Internet, poderás xogar contra "
+"xente de todo o mundo."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:157
@@ -1074,9 +1329,9 @@ msgstr ""
 "\n"
 "\n"
 "As campañas están formadas por varios escenarios seguidos, que contan unha "
-"historia. Nunha campaña, a miúdo precisas xogar con máis coidado, "
-"conservando as túas mellores tropas de xeito que as poidas reincorporar en "
-"escenarios posteriores da campaña."
+"historia. Nas campañas adoita ser necesario xogar con máis prudencia que nos "
+"escenarios individuais, dado que cómpre ir conservando as mellores tropas de "
+"xeito que se poidan reincorporar en escenarios posteriores da campaña."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:163
@@ -1095,14 +1350,13 @@ msgid ""
 msgstr ""
 "Presta especial atención aos obxectivos que se amosan ao comezo de cada "
 "escenario. Normalmente conseguirás a vitoria matando a todos os líderes "
-"inimigos, e só serás derrotado se matan ao teu líder. Pero os escenarios "
-"poden ter outras condicións para a vitoria (por exemplo: levar ao teu líder "
-"a un lugar concreto, rescatar a alguén, resolver un problema,  ou resistir "
-"un asedio durante un certo número de roldas)."
+"inimigos, e só te poderán derrotar matándoche o líder. Pero os escenarios "
+"poden ter outras condicións para a vitoria, como levar ao líder a un lugar "
+"concreto, rescatar a alguén, resolver un problema,  ou resistir un asedio "
+"durante un certo número de roldas."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:166
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1114,10 +1368,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Cando gañes un escenario, o mapa volverase gris e o botón de «Rematar a "
-"quenda» cambiará a «Rematar o escenario». Nese momento podes facer cousas "
-"tales coma modificar as opcións de gardado ou (se estás nunha partida en "
-"rede) conversar con outros xogadores antes de premer o botón para continuar."
+"Cando gañes un escenario, o mapa volverase gris e o botón de "
+"<bold>text='Continuar'</bold> pasará a ser un botón de "
+"<bold>text='Finalizar'</bold>. Entón poderás modificar as opcións de "
+"gardado, conversar con outros xogadores e cousas similares antes de premer o "
+"botón para avanzar."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
@@ -1126,7 +1381,6 @@ msgstr "Recrutar e reincorporar"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:174
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1139,15 +1393,17 @@ msgid ""
 "a unit to see its statistics, then press the recruit button to recruit it."
 msgstr ""
 "Cada bando comeza cun líder na súa torre. Ao principio de calquera batalla, "
-"e nalgúns momentos do seu transcurso, necesitarás recrutar <ref>dst='.."
-"units' text='unidades'</ref> para o teu exército. Para recrutar, debes ter o "
-"teu líder (por exemplo: Konrad ─na campaña Herdeiro ao trono─) no hexágono "
-"da torre dun <ref>dst='terrain_castle' text='castelo'</ref>. Entón poderás "
-"recrutar ben seleccionando recrutar no menú ou premendo co botón dereito do "
-"rato nun hexágono e escollendo <italic>text=recrutar</italic>. Isto amosa o "
-"menú de recrutamento, no cal se listan as unidades dispoñibles para "
-"recrutar, xunto co seu custo en ouro. Preme nunha unidade para ver as súas "
-"estatísticas, e despois preme no botón de recrutar para recrutala."
+"e ás veces durante a mesma, necesitarás recrutar <ref>dst='..units' "
+"text='unidades'</ref> para formar un exército. Para recrutar, debes ter o "
+"teu líder (como por exemplo Konrad na campaña “O herdeiro ao trono”) no "
+"hexágono de torre dun <ref>dst='terrain_castle' text='castelo'</ref>. Entón "
+"poderás recrutar ben accedendo dende o menú «<bold>text='Accións'</bold> → "
+"<bold>text='Recrutar'</bold>» ben premendo co botón dereito do rato nun "
+"hexágono de castelo e escollendo <bold>text='Recrutar'</bold>. Así abrirase "
+"a xanela de recrutamento, na que se listarán as unidades dispoñibles para "
+"recrutar, xunto co seu custo. Preme nunha unidade para ver as súas "
+"estatísticas na marxe esquerda, e preme  logo no botón de "
+"<bold>text='Aceptar'</bold> para recrutala."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:176
@@ -1161,11 +1417,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Se premiches co botón dereito do rato nun hexágono do castelo e "
-"seleccionaches recrutar, a nova unidade aparecerá nese hexágono. En caso "
-"contrario, aparecerá nun hexágono libre preto da torre. Só podes recrutar "
-"tantas unidades coma hexágonos libres teñas no teu castelo, e non podes "
-"gastar máis ouro reclutando do que tes nese momento."
+"Se premiches co botón dereito do rato nun hexágono de castelo e escolliches "
+"<bold>text='Recrutar'</bold>, a nova unidade aparecerá nese hexágono. Senón "
+"aparecerá nun hexágono libre calquera preto da torre. Só podes recrutar "
+"tantas unidades coma hexágonos libres teñas no castelo, e non podes recrutar "
+"se non tes ouro abondo."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:178
@@ -1192,8 +1448,9 @@ msgstr ""
 "\n"
 "\n"
 "En escenarios posteriores, tamén poderás reincorporar superviventes de "
-"batallas anteriores. Reincorporar custa sempre 20 de ouro e dáche unha lista "
-"de todas as unidades superviventes de escenarios anteriores."
+"batallas anteriores. Reincorporar custa sempre vinte moedas de ouro, e "
+"poderás escoller a unidade que queiras dunha lista con todas as unidades "
+"superviventes de escenarios anteriores."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:182
@@ -1222,13 +1479,13 @@ msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
-"Enriba da barra de enerxía que se amosa canda as túas unidades hai unha "
-"esfera. Para as unidades que controles, esta esfera será:"
+"Sobre a barra de vida que aparece canda as unidades hai unha esfera. Para as "
+"unidades que controles, esta esfera será:"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:191
 msgid "green if it hasn’t moved this turn,"
-msgstr "verde ─se aínda non se moveron nesta quenda─,"
+msgstr "verde ─se aínda non se moveron durante a quenda actual─,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
@@ -1240,6 +1497,7 @@ msgstr "amarela ─se xa se moveron pero poden seguir movéndose ou atacar─, o
 msgid ""
 "red if it has finished its turn (might still be able to move or attack)."
 msgstr ""
+"vermella ─se remataron a quenda (ao mellor aínda poden moverse ou atacar)─."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
@@ -1250,12 +1508,12 @@ msgstr "A esfera será azul se a unidade é un aliado que non podes controlar."
 #: data/core/help.cfg:195
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr ""
-"As unidades inimigas non teñen ningunha esfera sobre a súa barra de enerxía."
+"As unidades inimigas non terán ningunha esfera sobre a súa barra de vida."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:202
 msgid "Hitpoints and Experience"
-msgstr "Puntos de vida e experiencia"
+msgstr "Vida e experiencia"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:203
@@ -1265,10 +1523,10 @@ msgid ""
 "experience points (XP). A freshly recruited unit starts with no experience "
 "points, and gains experience by fighting enemies."
 msgstr ""
-"Cada unidade ten un certo número de puntos de vida. Se os puntos de vida "
-"dunha unidade baixan de un, a unidade morre. Cada unidade ten tamén un certo "
-"número de puntos de experiencia. Ao recrutarmos unha unidade estacomeza sen "
-"puntos de experiencia, e consegue experiencia loitando contra os inimigos."
+"Cada unidade ten unha certa cantidade de vida. Se os puntos de vida das "
+"unidades baixan de un, as unidades morren. Cada unidade ten tamén un certo "
+"número de puntos de experiencia. Ao recrutarmos unha unidade, esta comeza "
+"sen puntos de experiencia, e conséguea a medida que loita."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:207
@@ -1277,9 +1535,9 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
-"Os puntos de vida e os puntos de experiencia indícanse no panel lateral "
-"mediante dous números ─o valor actual e o valor máximo que a unidade pode "
-"ter─."
+"Os puntos de vida e de experiencia indícanse no panel lateral mediante "
+"parellas de números ─o valor actual e o valor máximo que a unidade pode "
+"chegar a ter─."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:208
@@ -1289,11 +1547,11 @@ msgid ""
 "experience bar, which turns white as the unit is about to "
 "<ref>dst='experience_and_advancement' text='advance'</ref>."
 msgstr ""
-"Os puntos de vida indícanse tamén usando unha barra de enerxía preto de cada "
-"unidade, que pode ser verde, amarela ou vermella. Unha unidade con polo "
-"menos un punto de experiencia ten ademais unha barra de experiencia azul, "
-"que se volve branca cando a unidade está a piques de "
-"<ref>dst='experience_and_advancement' text='avanzar'</ref>."
+"Os puntos de vida indícanse tamén usando unha barra de vida preto de cada "
+"unidade, que pode ser verde, amarela ou vermella. As unidades con polo menos "
+"un punto de experiencia teñen ademais unha barra de experiencia azul, que se "
+"volve máis clara a medida que a unidade se achega ao punto de "
+"<ref>dst='experience_and_advancement' text='avance'</ref>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:215
@@ -1302,7 +1560,6 @@ msgstr "Movemento"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:216
-#, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1317,19 +1574,18 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"O movemento no Battle for Wesnoth é sinxelo. Preme na unidade que queiras "
-"mover para seleccionala, logo preme no hexágono ao que queres movela. Ao "
-"seleccionar unha unidade, saliéntanse todos os hexágonos aos que se pode "
-"mover nesa quenda, e escurécense o resto dos hexágonos. Poñendo o rato "
-"enriba dun hexágono salientado amósase a taxa de defensa que tería a unidade "
-"se a moveses alí. Se pos o rato enriba dun hexágono escurecido amosarase "
-"tamén a cantidade de roldas necesarias para chegar a el, e se premes nel a "
-"unidade moverase cara el pola ruta máis rápida durante esta e mailas "
-"seguintes quendas. Se non consumes todos os movementos dunha unidade dunha "
-"vez, podes volvela mover. Isto resulta útil cando queres cambiar de sitio "
-"dúas unidades. Se atacas cunha unidade, xa non poderás movela nesa quenda. O "
-"mesmo ocorrerá se a moves ata unha vila que aínda non posúes, pero a unidade "
-"aínda poderá atacar."
+"O movemento no xogo é sinxelo. Preme na unidade que queiras mover para "
+"seleccionala, logo preme no hexágono ao que queiras movela. Ao seleccionar "
+"unha unidade, saliéntanse todos os hexágonos aos que se pode mover na quenda "
+"actual, e escurécense o resto dos hexágonos. Poñendo o punteiro sobre un "
+"hexágono salientado amósase a capacidade defensiva que tería a unidade nel. "
+"Se se pon o punteiro sobre un hexágono escurecido amósase tamén a cantidade "
+"de roldas necesarias para chegar a el, e premendo nel a unidade moverase "
+"cara el pola ruta máis rápida durante a quenda actual e mailas seguintes "
+"quendas necesarias para chegar. Se non consumes todos os movementos dunha "
+"unidade dunha vez, podes volvela mover. Isto resulta útil cando queres "
+"cambiar de sitio dúas unidades. As unidades que atacan ou conquistan unha "
+"vila non poden moverse ata a súa seguinte quenda."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:218
@@ -1348,15 +1604,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Cada unidade ten un certo número de puntos de movemento que se usan cando se "
-"move a un novo hexágono, dependendo do terreo dese hexágono en concreto. Por "
-"exemplo: entrar no herbal case sempre custa un punto de movemento. O número "
-"de puntos de movemento que se gastan ao entrar nun hexágono depende do tipo "
-"de unidade ─os elfos só gastan un punto nos bosques, mentres que orcos e "
-"humanos adoitan consumir dous, e as unidades a cabalo tres─. Podes saber "
-"cantos puntos de movemento precisa unha unidade para entrar nun certo tipo "
-"de terreo premendo nela co botón dereito do rato e seleccionando a "
-"descrición da unidade, e a continuación mirando os "
+"Cada unidade ten un certo número de puntos de movemento que se gastan ao "
+"moverse a un novo hexágono. A cantidade de puntos gastada dependerá do "
+"terreo dese hexágono en concreto. Por exemplo: entrar no herbal case sempre "
+"custa un punto de movemento. O número de puntos de movemento que se gastan "
+"ao entrar nun hexágono depende do tipo de unidade ─os elfos só gastan un "
+"punto nos bosques, mentres que orcos e humanos adoitan consumir dous, e as "
+"unidades a cabalo tres─. Podes saber cantos puntos de movemento precisa unha "
+"unidade para entrar nun certo tipo de terreo premendo nela co botón dereito "
+"do rato e seleccionando a descrición da unidade, e a continuación mirando os "
 "<italic>text='modificadores do terreo'</italic>."
 
 #. [topic]: id=movement
@@ -1375,10 +1631,10 @@ msgstr ""
 "\n"
 "Outra cousa que debes ter en conta ao moverte son as zonas de control. Cada "
 "unidade xera unha zona de control nos hexágonos adxacentes a ela, e calquera "
-"unidade inimiga que entra neses hexágonos remata automaticamente o seu "
-"movemento. Aprender a utilizar as zonas de control no teu proveito é unha "
-"parte importante do Wesnoth, xa que só os <ref>dst='ability_skirmisher' "
-"text='guerrilleiros'</ref> poden ignorar as zonas de control."
+"unidade inimiga que entre neses hexágonos rematará automaticamente o seu "
+"movemento. Aprender a sacarlle partido ás zonas de control éunha parte "
+"importante do xogo, xa que só os <ref>dst='ability_skirmisher' "
+"text='guerrilleiros'</ref> poden ignoralas."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:222
@@ -1392,14 +1648,14 @@ msgstr ""
 "\n"
 "\n"
 "Para ver ata onde se pode mover o inimigo durante a súa seguinte quenda, "
-"preme Ctrl+V ou Cmd+V. Ctrl+B ou Cmd+B amosa ata onde se poderían mover os "
-"inimigos se as túas unidades non estivesen no mapa para bloquear o seu "
-"avance."
+"preme «Ctrl+V» ou «Cmd+V». «Ctrl+B» ou «Cmd+B» amosa ata onde se poderían "
+"mover os inimigos se as túas unidades non estivesen no mapa para bloquear o "
+"seu avance."
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:229
 msgid "Shroud and Fog of War"
-msgstr "Manto do descoñecido e néboa da guerra"
+msgstr "Manto e néboa"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:232
@@ -1423,27 +1679,28 @@ msgid ""
 "a manual update via ‘update shroud now’ (or the end of your turn) and "
 "thereby perserve your ability to undo movement."
 msgstr ""
-"Nalgúns escenarios, haberá partes do mapa que non poidas ver. Existen dous "
-"mecanismos que poden usarse por separado ou combinados. O manto do "
-"descoñecido agocha tanto o terreo coma calquera unidade da posición que "
-"cobre. Porén, unha vez explorada, poderás ver a posición. A néboa da guerra "
-"só agocha as unidades e a propiedade das vilas (salvo que sexan túas os dos "
-"teus aliados). A néboa da guerra retírase temporalmente cando tes unidades "
-"preto, pero volve cando marchan. Tanto o manto do descoñecido coma a néboa "
+"Nalgúns escenarios haberá partes do mapa que non poidas ver. Hai dúas "
+"posibles causas, que poderán darse ben por separado ben combinadas. O manto "
+"do descoñecido agocha tanto o terreo coma calquera unidade da posición que "
+"cobre. Porén, unha vez explorada unha posición oculta polo manto, esta pode "
+"verse indefinidamente. A néboa da guerra só agocha as unidades e o bando ao "
+"que pertencen as vilas (salvo que che pertenzan a ti ou a algún aliado). A "
+"néboa da guerra retírase temporalmente cando hai unidades propias preto, "
+"pero volve cando estas se afastan. Tanto o manto do descoñecido como a néboa "
 "da guerra se retiran con unidades. Cada unidade explora as posicións "
-"adxacentes a aquelas polas que se move na durante a quenda (sen importar as "
+"adxacentes a aquelas polas que se move durante a quenda (sen importar as "
 "zonas de control nin as unidades inimigas). \n"
 "\n"
-"Normalmente podes desandar o movemento dunha unidade, sempre que non tivese "
-"lugar un evento cun resultado ao chou, coma un combate ou un recrutamento "
-"(dado que moitas das unidades reciben trazos aleatorios ao recrutarse). "
+"Normalmente podes desandar o movemento dunha unidade, sempre que non "
+"ocorrese nada de resultado imprevisíbel, coma un combate ou un recrutamento "
+"(dado que moitas das unidades reciben trazos ao chou ao recrutalas). "
 "Explorar terreo que estivese oculto polo manto do descoñecido ou a néboa da "
-"guerra tamén impedirá volver a un estado anterior. Pode que che conveña "
-"activar a opción de «Retardar as actualizacións do manto do descoñecido» no "
-"menú de accións. Isto evitará que as unidades revelen o manto do descoñecido "
-"ou a néboa da guerra ata o seguinte evento aleatorio ou ata unha "
-"actualización manual mediante «Actualizar o manto do descoñecido» (ou a fin "
-"da túa quenda) conservando así a posibilidade de desfacer os teus movementos."
+"guerra tamén impedirá desandar o andado. Pode que che conveña activar a "
+"opción de «Retardar as actualizacións do manto do descoñecido» no menú de "
+"accións. Isto evitará que as unidades revelen o manto do descoñecido ou a "
+"néboa da guerra ata o seguinte suceso imprevisíbel ou ata unha actualización "
+"manual mediante «Actualizar o manto do descoñecido» (ou a fin da quenda) "
+"conservando así a posibilidade de desfacer os movementos."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
@@ -1452,7 +1709,6 @@ msgstr "Combate"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:240
-#, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -1465,16 +1721,15 @@ msgid ""
 "fangs; and ranged, which usually involves weapons such as bows, spears and "
 "fireballs."
 msgstr ""
-"O combate no Battle for Wesnoth sempre ten lugar entre unidades que están en "
-"hexágonos adxacentes. Preme na túa unidade, e logo preme no inimigo ao que "
-"queres atacar. A túa unidade moverase cara á unidade inimiga, e candoestean "
-"a unha preto da outra, dará comezo o combate. Atacante e defensor "
-"golpearanse mutuamente ata que ambos os dous esgoten a cantidade de golpes "
-"de que dispoñen. O atacante escollerá unha das súas armas para atacar, e o "
-"defensor defenderase cun dos seus ataques do mesmo tipo. Hai dous tipos de "
-"ataques: corpo a corpo ─que normalmente implica armas coma espadas, machadas "
-"ou trabadas─ e a distancia ─que xeralmente implica armas coma arcos, lanzas "
-"ou bólas de lume─."
+"O combate sempre ten lugar entre unidades que están en hexágonos adxacentes. "
+"Preme nunha das túas unidades e a continuación no inimigo ao que queres "
+"atacar. A túa unidade moverase cara o inimigo, e cando estean xuntas dará "
+"comezo o combate. Atacante e defensor golpearanse mutuamente ata que ambos "
+"os dous esgoten a cantidade de golpes de que dispoñen. O atacante escollerá "
+"unha das súas armas para atacar, e o defensor defenderase cun dos seus "
+"ataques do mesmo tipo. Hai dous tipos de ataques: corpo a corpo ─que "
+"normalmente implica armas coma espadas, machadas ou trabadas─ e a distancia "
+"─que xeralmente implica armas coma arcos, lanzas ou bólas de lume─."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:242
@@ -1505,11 +1760,11 @@ msgstr ""
 "O atacante golpea en primeiro lugar, e logo o defensor contraataca. Cada "
 "golpe pode atinar ao inimigo, inflixindo unha determinada cantidade de dano, "
 "ou errar e non facer dano ningún. Os golpes altérnanse ata que cada unidade "
-"utilizase todos os seus. O número de golpes dunha unidade varía. Por "
-"exemplo: un elfo loitador cun ataque de 5-4 pode golpear 4 veces, e cada "
-"golpe atinado inflixirá 5 puntos de dano, mentres que un orco roñón cun "
-"ataque de 9-2 só pode golpear dúas veces ─pero fará 9 puntos de dano cada "
-"vez que atine─."
+"utilice todos os seus. O número de golpes dunha unidade varía. Por exemplo: "
+"un elfo loitador cun ataque de 5-4 pode golpear catro veces, e cada golpe "
+"atinado inflixirá cinco puntos de dano, mentres que un orco roñón cun ataque "
+"de 9-2 só pode golpear dúas veces ─pero fará nove puntos de dano cada vez "
+"que atine─."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:246
@@ -1537,14 +1792,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Cada unidade ten unha probabilidade de esquivar os ataques, que depende do "
-"terreo no que estea. Isto amósase no panel lateral, e pode verse tamén "
-"premendo co botón dereito do rato nunha unidade, seleccionando a descrición "
-"da unidade, e mirando os <italic>text='modificadores do terreo'</italic>. "
-"Por exemplo: a meirande parte dos elfos teñen unha defensa do 70% nos "
-"bosques, así que unha unidade que os ataque só ten unha probabilidade do 30% "
-"de atinarlles. E viceversa, a probabilidade de que o elfo lle atine ao "
-"atacante depende do terreo no que estea dito atacante."
+"Cada unidade ten unha probabilidade concreta de esquivar os ataques, que "
+"dependerá do terreo no que estea. Isto pode verse no panel lateral ou "
+"premendo co botón dereito do rato na unidade, seleccionando a súa descrición "
+"e mirando os <italic>text='modificadores do terreo'</italic>. Por exemplo: a "
+"meirande parte dos elfos teñen unha defensa do 70% nos bosques, así que unha "
+"unidade que os ataque só ten unha probabilidade do 30% de atinarlles. E "
+"viceversa, a probabilidade de que o elfo lle atine ao atacante dependerá do "
+"terreo no que estea dito atacante."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:250
@@ -1561,10 +1816,9 @@ msgstr ""
 "\n"
 "Existen dúas excepcións: os <ref>dst='weaponspecial_magical' text='ataques "
 "máxicos'</ref> e os ataques con <ref>dst='weaponspecial_marksman' "
-"text='puntería'</ref>. Os ataques máxicos sempre teñen un 70% de "
-"probabilidades de atinar, sen importar o terreo, e os tiradores, cando son "
-"eles os atacantes, sempre teñen como mínimo un 60% de probabilidade de "
-"atinar, independentemente do terreo."
+"text='puntería'</ref>. Os ataques máxicos sempre atinan sete de cada dez "
+"veces, sen importar o terreo, e os tiradores, cando son eles os atacantes, "
+"sempre atinan como mínimo tres de cada cinco, independentemente do terreo."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:252
@@ -1592,10 +1846,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Cada golpe atinado provoca unha cantidade base de dano que depende do tipo "
-"de ataque. Por exemplo: un elfo loitador cun ataque de 5-4 inflixe 5 puntos "
-"de dano base. Xeralmente este dano vese alterado por dúas causas: a "
-"<ref>dst='damage_types_and_resistance' text='resistencia'</ref> e mailo "
+"Cada golpe atinado fai unha cantidade base de dano que depende do tipo de "
+"ataque. Por exemplo: un elfo loitador cun ataque de 5-4 inflixe cinco puntos "
+"de dano base. Hai ademais dúas cousas que afectan ao dano final: as "
+"<ref>dst='damage_types_and_resistance' text='resistencias'</ref> e mailo "
 "<ref>dst='time_of_day' text='momento do día'</ref>. Para ver como cambia o "
 "dano base por estas circunstancias, selecciona o <italic>text='cálculo de "
 "danos'</italic> no menú de selección do ataque."
@@ -1621,7 +1875,7 @@ msgstr ""
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:262
 msgid "Damage Types and Resistance"
-msgstr "Tipos de dano e resistencias"
+msgstr "Danos e resistencias"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:263
@@ -1632,7 +1886,7 @@ msgid ""
 "and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
-"No Wesnoth hai tres tipos de dano que se asocian normalmente con ataques "
+"No xogo hai tres tipos de dano que se asocian normalmente con ataques "
 "físicos: folla, perforación e impacto. Ademais, hai tres tipos máis de dano "
 "que normalmente se asocian con ataques máxicos: lume, frío e arcano. As "
 "diferentes unidades pode ter resistencias que alteran o dano que lles fan "
@@ -1640,7 +1894,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:265
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1652,11 +1905,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"As resistencias funcionan dunha forma moi sinxela: se unha unidade ten un "
-"40% de resistencia contra un tipo de dano, entón sufrirá un 40% menos de "
-"dano cando lle atinen cun ataque dese tipo. Tamén pode ser que unha unidade "
-"sexa vulnerable a certos tipos de ataque. Se unha unidade ten unha "
-"resistencia de  −100% contra un tipo de dano, sufrirá un 100% máis de dano "
+"O funcionamento das resistencias é moi simple: se unha unidade ten un 40% de "
+"resistencia contra un tipo de dano, entón sufrirá un 40% menos de dano cando "
+"lle atinen cun ataque dese tipo. Tamén pode ser que unha unidade sexa "
+"vulnerable a certos tipos de ataque. Se unha unidade ten unha resistencia "
+"de  -100% contra un tipo de dano, sufrirá un 100% máis de dano (o dobre) "
 "cando lle atinen cun ataque dese tipo."
 
 #. [topic]: id=damage_types_and_resistance
@@ -1672,7 +1925,7 @@ msgstr ""
 "\n"
 "Por exemplo: os esqueletos son moi resistentes aos danos perforantes ou con "
 "folla, pero son vulnerables aos impactos ou ao lume, e extremadamente "
-"vulnerables aos atasques arcanos."
+"vulnerables aos ataques máxicos de tipo arcano."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:269
@@ -1685,9 +1938,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ao atinar un golpe, este sempre inflixirá como mínimo un punto de dano. Isto "
-"é así aínda cando o defensor teña un 100% de resistencia a ese tipo de "
-"ataque."
+"Ao atinar un golpe, este sempre inflixirá como mínimo un punto de dano, "
+"aínda que o defensor teña un 100% de resistencia a ese tipo de ataque."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:275
@@ -1696,7 +1948,6 @@ msgstr "Momento do día"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:280
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1705,10 +1956,13 @@ msgid ""
 " Neutral units are unaffected by the time of day."
 msgstr ""
 "O momento do día afecta ao dano que inflixen certas unidades:\n"
-" As unidades legais inflixen +25% de dano polo día, e −25% de dano pola "
-"noite.\n"
-" As unidades caóticas inflixen +25% de dano pola noite e −25% polo día.\n"
-" As unidades neutrais non están afectadas polo momento do día."
+"  • As unidades legais inflixen un cuarto máis de dano polo día, e un cuarto "
+"menos pola noite.\n"
+"  • As unidades caóticas inflixen un cuarto máis de dano pola noite e un "
+"cuarto menos polo día.\n"
+"  • As unidades aureolares inflixen un cuarto máis de dano durante o amencer "
+"e mailo anoitecer.\n"
+"  • Ás unidades neutrais non lles afecta para nada o momento do día."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:283
@@ -1722,8 +1976,8 @@ msgstr ""
 "\n"
 "\n"
 "O momento do día actual pode observarse baixo o mapa, no panel lateral. Para "
-"o ciclo normal día-noite, a mañá e maila tarde contan coma día, a noitiña e "
-"maila noite pecha contan coma noite:\n"
+"o ciclo normal día-noite, a mañá e maila tarde contan coma día, e a noitiña "
+"e maila noite pecha contan coma noite:\n"
 
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
@@ -1801,10 +2055,10 @@ msgstr ""
 "\n"
 "\n"
 "As unidades necesitan unha certa cantidade de experiencia para avanzar (que "
-"se reduce un 20% no caso das unidades intelixentes). Unha vez que acadan "
-"esta cantidade, avanzan inmediatamente ao seguinte nivel, sandando "
-"completamente no proceso. Nalgúns casos poderás escoller entre varias "
-"opcións de avance."
+"se reduce un 20% no caso das unidades <italic>text='intelixentes'</italic>). "
+"Unha vez que acadan esta cantidade, avanzan inmediatamente ao seguinte "
+"nivel, sandando completamente no proceso. Nalgúns casos poderás escoller "
+"entre varias opcións de avance."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:302
@@ -1825,16 +2079,16 @@ msgstr ""
 "\n"
 "\n"
 "Aínda que a maioría, non todas as unidades teñen tres niveis. Algunhas "
-"unidades (coma os <ref>dst='unit_Mage' text='magos'</ref>) poden ter catro. "
-"Unha vez que a unidade chega ao seu nivel máximo, esta pode realizar avances "
-"adicionais (“AMLA”). Os avances adicionais modificarán a unidade cada vez "
-"que chegue ao límite de experiencia, pero a unidade conservará o mesmo "
-"nivel. O efecto típico do avance adicional consiste en aumentar en tres "
-"puntos a vida máxima da unidade e sandala. O primeiro avance adicional "
-"acadarase xeralmente ao gañar 150 puntos de experiencia (120 no caso das "
-"unidades intelixentes). De todos xeitos, obter un avance adicional faise "
-"máis difícil con cada un que se consegue, e por iso adoita resultar máis "
-"útil intentar avanzar as unidades de menor nivel."
+"unidades (coma os <ref>dst='unit_Mage' text='magos'</ref>) poden ter ata "
+"catro. Unha vez que a unidade chega ao seu nivel máximo, esta pode realizar "
+"avances adicionais. Os avances adicionais modificarán a unidade cada vez que "
+"chegue ao límite de experiencia, pero a unidade conservará o mesmo nivel. O "
+"efecto típico do avance adicional consiste en aumentar en tres puntos a vida "
+"máxima da unidade e sandala. O primeiro avance adicional acadarase "
+"xeralmente ao gañar 150 puntos de experiencia (120 no caso das unidades "
+"intelixentes). De todos xeitos, obter un avance adicional faise máis difícil "
+"con cada un que se consegue, e por iso adoita resultar máis vantaxoso "
+"avanzar as unidades de menor nivel."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:309
@@ -1850,12 +2104,12 @@ msgid ""
 "turn or not. Wesnoth offers several other ways for your units to heal, all "
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
-"No combate, as túas han sufrir feridas antes ou despois. Cando unha unidade "
-"<ref>dst='experience_and_advancement' text='avance'</ref>, sandará "
-"completamente. Isto pode ocorrer cando remate de loitar cun inimigo, xa sexa "
-"a túa quenda ou a súa. O Wesnoth conta con varios xeitos alternativos para "
-"que as túas unidades sanden, que sempre teñen lugar ao comezo da túa quenda, "
-"antes de que fagas nada."
+"No combate as unidades han sufrir dano antes ou despois. Cando "
+"<ref>dst='experience_and_advancement' text='avancen'</ref> sandarán "
+"completamente. Isto ocorre sempre tras un combate, sen importar que a "
+"unidade fose atacante ou defensora. Existen outras formas de conseguir que "
+"as unidades sanden, que sempre teñen lugar ao comezo da quenda do bando da "
+"unidade, antes de calquera movemento:"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:312
@@ -1867,8 +2121,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Descanso: unha unidade que nin se mova, nin ataque nin sexa atacada sandará "
-"2 puntos de vida na seguinte quenda."
+"  • Descanso. As unidades que nin se movan, nin ataquen nin sexan atacadas "
+"sandarán dous puntos de vida na seguinte quenda."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:313
@@ -1877,8 +2131,8 @@ msgid ""
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 "\n"
-"Vilas: unha unidade que comece a súa quenda nunha vila sandará 8 puntos de "
-"vida."
+"  • Vilas. As unidades que comecen a súa quenda nunha vila sandarán oito "
+"puntos de vida ─salvo que estivesen envelenadas, en cuxo caso sandarán─."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:314
@@ -1888,8 +2142,9 @@ msgid ""
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst='ability_regenerates' text='Rexeneración'</ref>: certas unidades "
-"(coma os trolles) sandan 8 puntos de vida automaticamente cada rolda."
+"  • <ref>dst='ability_regenerates' text='Rexeneración'</ref>. Certas "
+"unidades (coma os trolles) sandan oito puntos de vida automaticamente cada "
+"rolda."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:315
@@ -1901,11 +2156,11 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Unidades sandadoras: as unidades coa habilidade necesaria "
+"  • Unidades sandadoras. As unidades coa habilidade necesaria "
 "<ref>dst='ability_heals +4' text='sandarán'</ref> a cada unidade aliada "
-"adxacente, normalmente <ref>dst='ability_heals +4' text='4'</ref> ou "
-"<ref>dst='ability_heals +8' text='8'</ref> puntos de vida por quenda, ou "
-"evitarán que o veleno lle afecte á unidade."
+"adxacente, normalmente <ref>dst='ability_heals +4' text='catro'</ref> ou "
+"<ref>dst='ability_heals +8' text='oito'</ref> puntos de vida por quenda, ou "
+"evitarán que o veleno lles afectes."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:316
@@ -1916,9 +2171,9 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"Unidades curadoras: as unidades coa habilidade necesaria "
+"  • Unidades curadoras. As unidades coa habilidade necesaria "
 "<ref>dst='ability_cures' text='curarán'</ref> o veleno de todas as unidades "
-"aliadas adxacentes (en vez de sandar, en caso de que tivese tamén esa "
+"aliadas adxacentes (en vez de sandar, en caso de que tivesen tamén esa "
 "habilidade)."
 
 #. [topic]: id=healing
@@ -1932,10 +2187,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"O descanso pódese combinar con outros xeitos de sandar, pero as vilas, a "
-"rexeneración, a curación e sandar non se poden combinar entre eles: usarase "
-"sempre a mellor opción. Por último, as unidades sandan completamente dun "
-"escenario a outro."
+"O descanso pódese combinar coas outras formas de sandar, pero as vilas, a "
+"rexeneración, a curación e sandar non se poden combinar entre elas: usarase "
+"sempre a mellor opción. Por último, as unidades sandan completamente ao "
+"pasar dun escenario a outro."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:325
@@ -1950,10 +2205,9 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
 msgstr ""
-"No Wesnoth non abonda con recrutar e loitar. Tamén debes ter conta do teu "
-"ouro, especialmente nas campañas, nas que podes levar ouro adicional dun "
-"escenario ao seguinte. Hai dúas cousas a ter en conta: os ingresos e mailo "
-"mantemento."
+"Non abonda con recrutar e loitar, tamén deberás ter conta do ouro, "
+"especialmente nas campañas, nas que podes levar ouro dun escenario ao "
+"seguinte. Hai dúas cousas a ter en conta: os ingresos e mailo mantemento."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:328
@@ -1967,11 +2221,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Os ingresos son simples. Tes uns ingresos base de 2 pezas de ouro por rolda. "
-"Por cada vila que controles, obterás unha peza adicional por rolda. Polo "
-"tanto, se tiveses dez vilas, conseguirías 12 pezas de ouro por rolda. A "
-"estes ingresos réstanselle os custos de mantemento, tal como se explica "
-"embaixo."
+"Os ingresos son simples. Tes uns ingresos base de dúas moedas de ouro por "
+"rolda. Por cada vila que controles, obterás unha moeda de ouro adicional por "
+"rolda. Polo tanto, se tiveses dez vilas conseguirías doce pezas de ouro por "
+"rolda. A estes ingresos réstanselle os custos de mantemento, tal como se "
+"explica embaixo."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:330
@@ -1987,10 +2241,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"O mantemento tamén é bastante simple. Cada unidade require de unha cantidade "
-"de pezas de ouro igual ao seu nivel en concepto de mantemento. Podes manter "
+"O mantemento tamén é bastante simple. Cada unidade require dunha cantidade "
+"de moedas de ouro igual ao seu nivel en concepto de mantemento. Podes manter "
 "tantos <italic>text=niveis</italic> de unidades coma aldeas teñas, sen custo "
-"de mantemento algún. Porén, terás que pagar unha peza de ouro por rolda por "
+"de mantemento algún. Porén, terás que pagar unha moeda de ouro por rolda por "
 "cada nivel de unidade que exceda do número de aldeas que posúas. Por "
 "exemplo: se tiveses doce unidades de nivel un e dez aldeas, terías que pagar "
 "dúas pezas de ouro por cada rolda en concepto de mantemento."
@@ -2006,9 +2260,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Os custos de mantemento réstanse aos teus ingresos, así que no caso de que "
-"as túas unidades sumen doce niveis e teñas dez vilas, os teus ingresos netos "
-"serán de dez pezas de ouro por rolda."
+"Os custos de mantemento réstanse aos ingresos, así que no caso de que as "
+"unidades sumen doce niveis e teñas dez vilas, os ingresos netos serían de "
+"dez moedas de ouro por rolda."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:333
@@ -2023,16 +2277,16 @@ msgid ""
 msgstr ""
 "\n"
 "Hai dúas excepcións importantes no que respecta ao mantemento: as unidades "
-"leais e os líderes non precisan mantemento. Por regra xeral, as unidades "
-"coas que comeces os escenarios (coma Delfador) ou as unidades que se che "
-"unan durante eles (coma o home a cabalo do segundo escenario de Herdeiro ao "
-"trono) serán leais. A unidade coa que esteas a xogar (coma Konrad) será case "
-"sempre un líder."
+"leais e os líderes. Ningún deles precisa mantemento. Por regra xeral, as "
+"unidades coas que comeces os escenarios (coma Delfador) ou as unidades que "
+"se che unan durante eles (coma o home a cabalo do segundo escenario da "
+"campaña “O herdeiro ao trono”) serán leais. A unidade coa que esteas a xogar "
+"(coma Konrad) será case sempre un líder."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:339
 msgid "Wrap Up"
-msgstr "Fin"
+msgstr "Epílogo"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:340
@@ -2043,35 +2297,34 @@ msgid ""
 "ref>, but you now know everything you need to know to play the Heir to the "
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
-"Con isto rematan os fundamentos do Wesnoth. Pode que queiras ler máis sobre "
-"estratexia básica, ou familiarizarte cos <ref>dst='..traits_section' "
-"text='trazos'</ref> e coas <ref>dst='..abilities_section' "
-"text='habilidades'</ref>, pero xa aprendiches todo o que necesitas para "
-"xogar a campaña Herdeiro ao trono. Pásao ben e boa sorte!"
+"Con isto remata o manual do xogo. Pode que queiras ler máis sobre estratexia "
+"básica, ou familiarizarte cos <ref>dst='..traits_section' text='trazos'</"
+"ref> e coas <ref>dst='..abilities_section' text='habilidades'</ref>, pero xa "
+"aprendiches todo o que necesitas para xogar a campaña “O herdeiro ao trono”. "
+"Pásao ben, e boa sorte!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:345
 msgid "ingame_help_item^Contributors"
-msgstr "Contribuidores"
+msgstr "Autores"
 
 #. [topic]: id=license
 #: data/core/help.cfg:351
 msgid "License"
-msgstr "Licenza"
+msgstr "Licenza (en inglés)"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:360
-#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait <italic>text='Undead'</italic>, and Woses do not receive any traits. "
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited."
 msgstr ""
-"A maioría das unidades teñen dous trazos. Porén, os non mortos só teñen o "
-"trazo “non morto”, e os woses non teñen ningún trazo. Os trazos son "
-"modificacións que cambian lixeiramente os atributos dunha unidade. "
-"Xeralmente asígnanselles ao chou ás unidades ao recrutalas."
+"Case todas as unidades teñen dous trazos. Porén, os non mortos só teñen o "
+"trazo <italic>text='non morto'</italic>, e os woses non teñen ningún trazo. "
+"Os trazos son modificacións que cambian lixeiramente os atributos das "
+"unidades. Xeralmente asígnanselles ao chou ás unidades ao recrutalas."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:362
@@ -2086,9 +2339,9 @@ msgstr ""
 "\n"
 "\n"
 "Os trazos dispoñibles para todas as unidades (salvo as antes mencionadas) "
-"son <ref>dst='traits_intelligent' text='intelixente'</ref>, "
-"<ref>dst='traits_quick' text='rápido'</ref>, <ref>dst='traits_resilient' "
-"text='resistente'</ref> e <ref>dst='traits_strong' text='forte'</ref>."
+"son <ref>dst='traits_intelligent' text='intelixencia'</ref>, "
+"<ref>dst='traits_quick' text='rapidez'</ref>, <ref>dst='traits_resilient' "
+"text='resistencia'</ref> e <ref>dst='traits_strong' text='forza'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:366
@@ -2103,8 +2356,8 @@ msgstr ""
 "\n"
 "\n"
 "Outros trazos que se lle poden asignar ás unidades son "
-"<ref>dst='traits_dextrous' text='destro'</ref>, <ref>dst='traits_loyal' "
-"text='leal'</ref> e <ref>dst='traits_undead' text='non morto'</ref>.\n"
+"<ref>dst='traits_dextrous' text='destreza'</ref>, <ref>dst='traits_loyal' "
+"text='lealdade'</ref> e <ref>dst='traits_undead' text='non morte'</ref>.\n"
 "\n"
 
 #. [topic]: id=traits_intelligent
@@ -2135,7 +2388,7 @@ msgstr ""
 "As unidades intelixentes son moi útiles ao comezo das campañas, xa que poden "
 "avanzar de nivel máis rápido. A medida que avanza a campaña a intelixencia "
 "perde utilidade porque os avances adicionais non supoñen un cambio tan "
-"significativo coma avanzar un nivel. Se tes moitas unidades ao último nivel "
+"significativo coma avanzar un nivel. Se tes moitas unidades no último nivel "
 "pode que prefiras reincorporar unidades con trazos máis útiles."
 
 #. [topic]: id=traits_quick
@@ -2147,7 +2400,7 @@ msgstr "Rapidez"
 #: data/core/help.cfg:381
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
-"As unidades rápidas teñen 1 punto de movemento adicional, pero tamén un 5% "
+"As unidades rápidas teñen un punto de movemento adicional, pero tamén un 5% "
 "menos de vida do normal."
 
 #. [topic]: id=traits_quick
@@ -2167,9 +2420,9 @@ msgstr ""
 "A rapidez é o trazo máis salientable, sobre todo para as unidades de "
 "movemento lento coma os trolles ou a infantería pesada. As unidades rápidas "
 "a miúdo incrementan en boa medida a súa mobilidade en terreos accidentados, "
-"algo que deberías ten en conta á hora de despregar as túas forzas. Tamén "
-"cómpre ter en conta que as unidades rápidas non son tan resistentes coma o "
-"resto das unidades, e polo tanto son peores para manter posicións en disputa."
+"algo que deberías ter en conta á hora de despregar as forzas. Tamén cómpre "
+"ter en conta que as unidades rápidas non son tan resistentes coma o resto "
+"das unidades, e polo tanto son peores para manter posicións en disputa."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:388
@@ -2180,8 +2433,8 @@ msgstr "Resistencia"
 #: data/core/help.cfg:389
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
-"As unidades resistentes teñen 4 puntos de vida máis 1 por nivel a maiores da "
-"vida normal."
+"As unidades resistentes teñen catro puntos de vida máis un por nivel a "
+"maiores da vida normal."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:391
@@ -2213,7 +2466,7 @@ msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
-"As unidades fortes inflixen un punto máis de dano en cada golpe atinadono "
+"As unidades fortes inflixen un punto máis de dano en cada golpe atinado no "
 "combate corpo a corpo, e teñen un punto de vida adicional."
 
 #. [topic]: id=traits_strong
@@ -2232,7 +2485,7 @@ msgstr ""
 "resulta máis efectiva nas unidades cun gran número de ataques, coma os elfo "
 "loitadores. As unidades fortes poden resultar de moita utilidade cando só se "
 "precisa un pouco máis de dano para que un ataque normal se converta nun "
-"golpe final."
+"golpe mortal."
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:404
@@ -2247,9 +2500,8 @@ msgstr ""
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:410
-#, fuzzy
 msgid "Feral"
-msgstr "Total"
+msgstr "Ferocidade"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:411
@@ -2258,6 +2510,10 @@ msgid ""
 "creatures of low intelligence. As a result, feral units receive a maximum of "
 "40% defense in any land-based village regardless of base terrain."
 msgstr ""
+"As criaturas feroces de poucas luces teñen problemas para defenderse nas "
+"complexas moradas dos seres intelixentes. É por iso que estas unidades non "
+"reciben máis que un 40% de defensa nas vilas terrestres, independentemente "
+"do terreo sobre o que estean."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:416
@@ -2271,9 +2527,8 @@ msgid ""
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
-"As unidades leais non precisan mantemento. A maioría das unidades teñen un "
-"custo de mantemento ao final de cada quenda, que é igual ao seu nivel. As "
-"unidades leais non."
+"Case todas as unidades teñen un custo de mantemento ao final de cada quenda, "
+"que é igual ao seu nivel, pero as unidades leais non."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:419
@@ -2292,9 +2547,10 @@ msgstr ""
 "Durante as campañas, certas unidades poden optar por unirse ao exército do "
 "xogador pola súa propia vontade. Estas unidades son leais. Aínda que hai que "
 "pagar para reincorporalas, non precisan mantemento. Isto pode convertelas en "
-"unidades moi valiosas durante unha campaña longa, cando o ouro escasea. Este "
-"trazo nunca se lle aplicará ás unidades recrutadas, así que pode ser pouco "
-"intelixente despedir a estas unidades ou envialas a unha morte segura."
+"unidades moi valiosas durante as campañas longas, cando o ouro escasea. Este "
+"trazo nunca se lle aplicará ás unidades recrutadas, así que pode que non "
+"sexa moi intelixente despedir a estas unidades ou envialas a unha morte "
+"segura."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:424
@@ -2307,12 +2563,11 @@ msgid ""
 "Undead units are immune to poison, also drain and plague doesn’t work on "
 "them."
 msgstr ""
-"As unidades non mortas son inmunes ao veleno, e tampouco funcionan con elas "
-"a absorción nin a peste."
+"As unidades non mortas son inmunes ao veleno, e tampouco funcionan contra "
+"elas a absorción nin a peste."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:427
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2325,7 +2580,7 @@ msgstr ""
 "\n"
 "Xeralmente as unidades non mortas só teñen este trazo. Dado que as unidades "
 "non mortas son os corpos sen vida erguidos para loitar de novo, o veleno non "
-"ten efecto nelas. Isto pode facelos moi valiosos nos enfrontamentos con "
+"ten efecto sobre elas. Isto pode facelas moi valiosas nos enfrontamentos con "
 "inimigos que empregan veleno nos seus ataques."
 
 #. [topic]: id=traits_mechanical
@@ -2344,7 +2599,6 @@ msgstr ""
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:435
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2355,8 +2609,8 @@ msgstr ""
 "\n"
 "\n"
 "Xeralmente as unidades mecánicas só teñen este trazo. Dado que as unidades "
-"mecánicas non están vivas en realidade, a absorción, o veleno e maila peste "
-"non teñen efecto nelas."
+"mecánicas non están vivas realmente, a absorción, o veleno e maila peste non "
+"teñen efecto sobre elas."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:440
@@ -2369,7 +2623,7 @@ msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "As unidades destras inflixen un punto máis de dano por cada golpe a "
-"distancia atinado no combate."
+"distancia atinado."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:443
@@ -2413,8 +2667,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"As unidades saudables teñen un punto de vida máis do normal e un punto de "
-"vida adicional por cada nivel, e sandan os dous puntos de vida por descansar "
+"As unidades saudables teñen un punto de vida máis do normal, un punto de "
+"vida adicional por cada nivel e sandan os dous puntos de vida por descansar "
 "sempre que non loitan nunha rolda. Asemade, o veleno failles só un cuarto do "
 "dano habitual."
 
@@ -2440,8 +2694,8 @@ msgstr ""
 "\n"
 "\n"
 "Ser parvo é algo moi común entre os trasnos en outras especies inferiores. "
-"Hai razóns polas que estas especies se consideran inferiores, e esta é unha "
-"delas."
+"Existen razóns polas que estas especies se consideran inferiores, e esta é "
+"unha delas."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:464
@@ -2450,10 +2704,9 @@ msgstr "Lentitude"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:465
-#, fuzzy
 msgid "Slow units have −1 movement but 5% more hitpoints."
 msgstr ""
-"As unidades lentas teñen 1 punto de movemento menos pero posúen un 5% máis "
+"As unidades lentas teñen un punto menos de movemento pero posúen un 5% máis "
 "de vida."
 
 #. [topic]: id=traits_slow
@@ -2478,10 +2731,9 @@ msgstr "Debilidade"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:473
-#, fuzzy
 msgid "Units with trait Weak get a −1 increment in hitpoints and melee damage."
 msgstr ""
-"As unidades débiles teñen un punto de vida menos quitan un punto de vida "
+"As unidades débiles teñen un punto menos de vida e quitan un punto de vida "
 "menos nos ataques corpo a corpo."
 
 #. [topic]: id=..terrains
@@ -2491,7 +2743,7 @@ msgid ""
 "unit’s defensive capability in combat.\n"
 "\n"
 msgstr ""
-"Os mapas do xogo teñen unha ampla variedade de terreos que afectan tanto ao "
+"Os mapas teñen unha ampla variedade de terreos que afectan tanto ao "
 "movemento das unidades como á súa capacidade defensiva no combate.\n"
 "\n"
 
@@ -2499,7 +2751,7 @@ msgstr ""
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:488
 msgid "Flat"
-msgstr "Herbal"
+msgstr "Chaira"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:493
@@ -2512,13 +2764,13 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"Os herbais representan as chairas abertas, xa teñan cultivos, pasto, ou "
-"estean botadas a monte. Ao ser terreo aberto, é moi fácil moverse polos "
-"herbais, pero tamén é moi difícil defenderse neles. Normalmente as unidades "
-"que se desenvolven ben nos prados son as de cabalería, ou unidades moi "
-"áxiles que se benefician dos espazos abertos.\n"
+"As chairas representan calquera tipo de terreo aberto e chan, xa teña "
+"cultivos, pasto ou estea botado a monte. Ao ser terreo aberto, é moi fácil "
+"moverse polas chairas, pero tamén é moi difícil defenderse nelas. "
+"Normalmente as unidades que se desenvolven ben nas chairas son as de "
+"cabalería, ou unidades moi áxiles que se benefician dos espazos abertos.\n"
 "\n"
-"A maioría das unidades teñen dun 30 a un 40% de defensa nos herbais."
+"Case todas as unidades teñen entre un 30% e un 40% de defensa nas chairas."
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:502
@@ -2527,16 +2779,16 @@ msgstr "Camiño"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:507
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
 "text='Flat'</ref> terrain.\n"
 "\n"
 msgstr ""
-"Os camiños son rutas de terra pisada, creados polos moitos viaxeiros que "
-"pasaron por eles. No que atinxe ao xogo, os camiños son idénticos aos "
-"<ref>dst='terrain_flat' text='herbais'</ref>."
+"Os camiños son rutas de terra pisada, creadas polos moitos viaxeiros que as "
+"percorreron. No que atinxe ao xogo, os camiños son idénticos ás "
+"<ref>dst='terrain_flat' text='chairas'</ref>.\n"
+"\n"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:514
@@ -2561,19 +2813,19 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests.\n"
 "\n"
 msgstr ""
-"Os bosques representan calquera terra con árbores con algunha maleza, "
-"suficiente para impedir o paso. Aínda que entorpecen o avance de case todas "
-"as unidades, a maioría das unidades deféndense mellor no bosque ca nos "
-"terreos abertos. Á cabalería, pola contra, cústalle tanto desprazarse por "
-"eles que ocultarse perde o seu sentido. Os elfos son unha excepción a esta "
-"regra xeral para os bosques. Non só se moven con total liberdade polos "
-"bosques, senón que ademais gañan unha considerable bonificación defensiva. "
-"Os ananos son outra excepción. Aínda que son capaces de abrirse paso a "
-"través dos bosques sen moita dificultade, o seu descoñecemento do terreo "
-"déixaos completamente vulnerables.\n"
+"Os bosques representan calquera terra con árbores e maleza suficiente para "
+"impedir o paso. Case todas as unidades son máis rápidas por chairas que por "
+"bosques, pero tamén lles resulta máis doado defenderse neles que en terra "
+"aberta. Á cabalería, pola contra, cústalle tanto desprazarse por eles que "
+"ocultarse non lles serve de nada. Os elfos son unha excepción a esta regra "
+"xeral para os bosques. Non só se moven con total liberdade por eles, senón "
+"que ademais gañan unha considerable bonificación defensiva. Os ananos son "
+"outra excepción. Aínda que son capaces de abrirse paso a través dos bosques "
+"sen moita dificultade, o seu descoñecemento do terreo déixaos completamente "
+"vulnerables.\n"
 "\n"
 "A maioría das unidades teñen un 50% de defensa no bosque, pero a cabalería "
-"está limitada ao 30%. Os elfos, por outra banda, gozan de entre un 60 e un "
+"está limitada ao 30%. Os elfos, por outra banda, gozan de entre un 60% e un "
 "70%, mesmo as unidades a cabalo. Os ananos adoitan recibir só un 30% de "
 "defensa nos bosques.\n"
 "\n"
@@ -2585,7 +2837,6 @@ msgstr "Outeiros"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:536
-#, fuzzy
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -2599,15 +2850,16 @@ msgid ""
 "\n"
 msgstr ""
 "Os outeiros representan calquera terreo razoablemente esgrevio, con altos e "
-"baixos que que serven de abeiro. A maioría das tropas teñen dificultades "
-"para moverse polos outeiros. Os ananos, trolles e orcos están tan "
-"familiarizados co terreo que poden atravesalo sen reducir a marcha. A "
-"cabalería ten tantos problemas ao desprazarse polo terreo que calquera axuda "
-"defensiva que este forneza queda contrarrestada.\n"
+"baixos que sirvan de abeiro. A maioría das tropas teñen dificultades para "
+"moverse polos outeiros. Os ananos, trolles e orcos están tan familiarizados "
+"co terreo que poden atravesalo sen reducir a marcha. A cabalería ten tantos "
+"problemas ao desprazarse polo terreo que calquera axuda defensiva que este "
+"forneza queda contrarrestada.\n"
 "\n"
-"A maioría das unidades teñen sobre un 50% de defensa nos outeiros, mentres "
-"que a cabalería está limitada ao 40%. O ananos gozan dun 60% de defensa nos "
-"outeiros."
+"Case todas as unidades teñen sobre un 50% de defensa nos outeiros, mentres "
+"que a cabalería está limitada ao 40%. O ananos gozan dun 60% de defensa "
+"nestes terreos.\n"
+"\n"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:543
@@ -2629,13 +2881,13 @@ msgid ""
 msgstr ""
 "As montañas son tan esgrevias que as unidades a miúdo teñen que gabear por "
 "obstáculos para moverse. Pola súa natureza, proporcionan unha importante "
-"bonificación defensiva á maioría das tropas, pero tamén limitan bastante o "
-"paso a través delas. A maioría da cabalería simplemente non pode entrar nos "
-"terreos montañosos. Porén, a cabalería dos elfos pode, ao igual que os "
-"trasnos montados en lobo. Os ananos e mailos trolles son naturais dos "
-"terreos montañosos, polo que se desenvolven con facilidade.\n"
+"bonificación defensiva a case todas as tropas, pero tamén limitan bastante o "
+"seu avance. A cabalería rara vez pode atravesar os terreos montañosos, coas "
+"excepcións da cabalería dos elfos e os trasnos montados en lobo. Os ananos e "
+"mailos trolles son naturais dos terreos montañosos, polo que se desenvolven "
+"moi ben por eles.\n"
 "\n"
-"A maioría das unidades reciben sobre un 60% de defensa nas montañas, mentres "
+"Case todas as unidades reciben sobre un 60% de defensa nas montañas, mentres "
 "que os ananos gozan dun 70%."
 
 #. [topic]: id=terrain_swamp_water
@@ -2655,15 +2907,15 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
-"As brañas representan calquera tipo de terras húmidas. As brañas entorpecen "
-"o avance de case calquera, e inhiben a súa capacidade de defensa. Calquera "
-"especie cun corpo afeito a moverse pola auga sería unha excepción, xa que "
-"este tipo de criaturas teñen nas brañas unha liberdade de movemento completa "
-"e mais unha bonificación defensiva. Quen nos lameiros habita, nos lameiros "
-"se agocha.\n"
+"As brañas ou lameiros representan calquera tipo de terras húmidas. "
+"Entorpecen o avance de case calquera, e adoitan inhibir a súa capacidade de "
+"defensa. Calquera especie cun corpo afeito a moverse pola auga sería unha "
+"excepción, xa que este tipo de criaturas teñen nas brañas unha liberdade de "
+"movemento completa e mais unha bonificación defensiva. Quen nos lameiros "
+"habita, nos lameiros se agocha.\n"
 "\n"
-"A maioría das unidades teñen un 30% de defensa nas brañas. Os sirénidos, os "
-"nagas e mailos saurios adoitan gozar do 60%."
+"Case todas as unidades teñen un 30% de defensa nas brañas. Porén, os "
+"sirénidos, os nagas e mailos saurios adoitan gozar do 60%."
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:567
@@ -2684,14 +2936,14 @@ msgid ""
 "Naga and Mermen enjoy 60%."
 msgstr ""
 "As augas superficiais representan calquera extensión de auga profunda abondo "
-"como para cubrir a unha persoa ata a cintura. Isto é suficiente para reducir "
-"o avance de case calquera criatura, así coma deixala case sen defensa. Os "
+"como para cubrir a un humano ata a cintura, o que abonda para reducir o "
+"avance de case calquera criatura, así coma deixala case sen defensa. Os "
 "ananos, dado que a auga lles chega case ata o pescozo, pásano "
 "verdadeiramente mal neste medio. As criaturas con corpos afeitos á natación "
 "son a excepción, pois móvense con completa liberdade na auga, ademais de "
-"gañar unha bonificación defensiva considerable..\n"
+"gañar unha bonificación defensiva considerable.\n"
 "\n"
-"A maioría das unidades teñen entre un 20 e un 30% de defensa nas augas "
+"A maioría das unidades teñen entre un 20% e un 30% de defensa nas augas "
 "superficiais, mentres que os nagas e os sirénidos gozan dun 60%."
 
 #. [topic]: id=terrain_deep_water
@@ -2736,7 +2988,7 @@ msgstr ""
 "máis defenderse neles. Nótese que as unidades nadadoras, mesmo as que poden "
 "respirar baixo a auga, non poden mergullarse baixo o xeo.\n"
 "\n"
-"A meirande parte das unidades teñen entre un 20 e un 40% de defensa nos "
+"A meirande parte das unidades teñen entre un 20% e un 40% de defensa nos "
 "terreos xeados."
 
 #. [topic]: id=terrain_castle
@@ -2757,7 +3009,7 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
-"Os castelos son calquera tipo de fortificación permanente. Case tódalas "
+"Os castelos son calquera tipo de fortificación permanente. Case todas as "
 "unidades reciben unha considerable bonificación defensiva ao estar situadas "
 "nun castelo, e todas as unidades teñen total liberdade de movemento neles. "
 "As unidades situadas dentro dun castelo representan a súa capacidade "
@@ -2784,10 +3036,10 @@ msgid ""
 msgstr ""
 "A inestabilidade da area fai que sexa difícil de cruzar para a maioría das "
 "unidades, que ademais quedan moi expostas a posibles ataques. Por outra "
-"parte, os pés grandes ou os corpos con forma de serpes das especies "
+"banda, os pés grandes ou os corpos con forma de serpes das especies "
 "similares aos lagartos fai que estas se desenvolvan moi ben neste medio.\n"
 "\n"
-"A maioría das unidades teñen entre un 20 e un 40% de defensa na area."
+"A maioría das unidades teñen entre un 20% e un 40% de defensa na area."
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:631
@@ -2832,7 +3084,7 @@ msgstr ""
 "poden. Ás veces as covas están <ref>dst='terrain_illuminated_cave' "
 "text='iluminadas'</ref>.\n"
 "\n"
-"A meirande parte das unidades reciben entre un 20 e un 40% de defensa nas "
+"A meirande parte das unidades reciben entre un 20% e un 40% de defensa nas "
 "covas, mentres que os ananos teñen un 50%."
 
 #. [topic]: id=terrain_rockbound_cave
@@ -2855,13 +3107,13 @@ msgid ""
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
 "As covas rochosas fórmanse pola acción da auga e o vento, que levan "
-"partículas erosivas que roen a rocha. Semella caverna subterránea estreita, "
-"o cal reduce a eficiencia da maioría das unidades, pero dálles abeiro. Os "
-"ananos e mailos trolles, principais habitantes das covas, poden desprazarse "
-"por este terreo con relativa facilidade. Os ananos, debido ao seu pequeno "
-"tamaño, non teñen ningún problema para moverse neste ambiente. En certas "
-"ocasións as covas están <ref>dst=terrain_illuminated_cave text=iluminadas</"
-"ref>.\n"
+"partículas erosivas que roen a rocha. Semellan cavernas subterráneas "
+"estreitas, o cal reduce a eficiencia da maioría das unidades, pero dálles "
+"abeiro. Os ananos e mailos trolles, principais habitantes das covas, poden "
+"desprazarse por este terreo con relativa facilidade. Os ananos, debido ao "
+"seu pequeno tamaño, non teñen ningún problema para moverse neste ambiente. "
+"En certas ocasións as covas están <ref>dst=terrain_illuminated_cave "
+"text=iluminadas</ref>.\n"
 "\n"
 "A maioría das unidades teñen arredor dun 50% de defensa nas covas rochosas, "
 "mentres que a cabalería está limitada ao 40%. Os ananos gozan dun 60% de "
@@ -2905,14 +3157,14 @@ msgid ""
 "receive only 20%."
 msgstr ""
 "As colonias de cogomelos son vastos bosques subterráneos de cogomelos "
-"xigantes, que medran na húmida escuridade. A maioría das unidades teñen "
+"xigantes que medran na húmida escuridade. A maioría das unidades teñen "
 "problemas ao franquear o chan esponxoso dos pequenos fungos, pero teñen "
 "moito abeiro tras os grandes talos. As unidades montadas, en troques, quedan "
 "totalmente atoadas e carecen de liberdade de movemento para o combate. As "
 "unidades non mortas teñen unha afinidade natural pola podremia e "
 "desenvólvense moi ben nos bosques de cogomelos.\n"
 "\n"
-"A maioría das unidades reciben entre un 50 e un 60% de defensa nas colonias "
+"A maioría das unidades reciben entre un 50% e un 60% de defensa nas colonias "
 "de cogomelos, mentres que a cabalería só recibe un 20%."
 
 #. [topic]: id=terrain_village
@@ -2922,7 +3174,6 @@ msgstr "Vila"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:694
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have an easy time navigating villages, and most units "
@@ -2935,14 +3186,14 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
-"As vilas representan calquera conxunto de edificios, humanos ou non. Case "
-"todas as unidades, incluso as montadas a cabalo, se moven perfectamente "
-"polas vilas, e a maioría das unidades obteñen unha bonificación defensiva "
-"por estar nunha. As vilas ofrecen ás unidades os recursos necesarios para "
-"limpar e curar as súas feridas, o que lle permite ás unidades situadas nunha "
-"sandar oito puntos de vida cada rolda, ou curar do envelenamento.\n"
+"As vilas representan calquera grupo de edificios. Case todas as unidades, "
+"incluso as montadas a cabalo, se moven perfectamente polas vilas, e a "
+"maioría das unidades obteñen unha bonificación defensiva por estar nunha. As "
+"vilas ofrecen ás unidades os recursos necesarios para limpar e curar as súas "
+"feridas, o que lle permite ás unidades situadas nunha sandar oito puntos de "
+"vida cada rolda, ou curar do envelenamento.\n"
 "\n"
-"A maioría das unidades teñen dun 50 a un 60% de defensa nas vilas, mentres "
+"A maioría das unidades teñen dun 50% a un 60% de defensa nas vilas, mentres "
 "que a cabalería só recibe un 40%.\n"
 "\n"
 
@@ -2964,16 +3215,16 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"As vilas somerxidas son o fogar dos sirénidos e dos nagas. Mentres que as "
-"criaturas acuáticas están aquí coma na casa, as terrestres teñen grandes "
-"dificultades para percorrer e defender estas aldeas. Non obstante, coma "
+"As vilas somerxidas son o fogar dos sirénidos e dos nagas. Se ben se trata "
+"do medio natural para as criaturas acuáticas, as terrestres teñen grandes "
+"dificultades para percorrer e defender estas aldeas. Non obstante, como en "
 "calquera outra aldea, as instalacións están dispoñibles para todas as "
 "criaturas, o que permite que as unidades poidan sandar as súas feridas. "
 "Calquera unidade situada nunha aldea pode sandar ata oito puntos de vida por "
 "rolda, ou ser curada do envelenamento.\n"
 "\n"
 "Os sirénidos e mailos nagas teñen un 60% de defensa nas vilas somerxidas, "
-"mentres que as unidades terrestres teñen normalmente unha baixa defensa."
+"mentres que as unidades terrestres teñen normalmente pouca defensa nelas."
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:715
@@ -2991,7 +3242,7 @@ msgstr ""
 "Un terreo intransitable é calquera abismo ou canón que, como o seu propio "
 "nome indica, non se pode transitar. Os abismos salientan por ter paredes moi "
 "esgrevias que leva días atravesar. A efectos do xogo, só as unidades capaces "
-"de voar sobre os abismos poden cruzar este terreo."
+"de voar poden cruzar estes terreos."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:725
@@ -3010,7 +3261,7 @@ msgid ""
 "from chaotic units."
 msgstr ""
 "Os perigos inherentes a intentar camiñar sobre a lava resultan bastante "
-"obvios. No que se refire ao movemento, a lava é equivalente ao terreo "
+"evidentes. No que se refire ao movemento, a lava é equivalente ao terreo "
 "<ref>dst='terrain_unwalkable' text='intransitable'</ref>, e só poden cruzala "
 "aquelas unidades capaces de voar a unha altura considerable. O magma fundido "
 "tamén produce un brillo considerable que ilumina a zona xusto enriba del, o "
@@ -3035,8 +3286,8 @@ msgstr ""
 "Cando un río é moi pouco profundo, atravesalo é unha cousa trivial para as "
 "unidades terrestres. Ademais, calquera criatura afeita a nadar ten total "
 "liberdade de movemento mesmo nestas partes dos ríos. No que concerne ao "
-"xogo, un vao trátase coma se fose un herbal ou auga superficial, elixindo a "
-"escolla que mellor acaia a cada unidade en cuestións de defensa e movemento."
+"xogo, un vao trátase coma se fose unha chaira ou auga superficial, o que "
+"mellor acaia a cada unidade en cuestións de defensa e movemento."
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:745
@@ -3081,12 +3332,12 @@ msgid ""
 "capable of occupying a bridge hex at the same time."
 msgstr ""
 "Para aqueles capaces de construílas, as pontes ofrecen unha liberación da "
-"inconstante natureza dos camiños pola auga, cuxos vaos veñen e van segundo "
-"sobe ou baixa o nivel da auga. Por non falar da comodidade de non ter os pés "
-"mollados, que non é para tomar a risa durante as estacións frías.\n"
+"inconstante natureza dos camiños que forma a auga, cuxos vaos veñen e van "
+"segundo sobe ou baixa o nivel fluvial. Por non falar da comodidade de non "
+"ter os pés mollados, que non é para tomar a risa durante o inverno.\n"
 "\n"
 "Para os anfibios unha ponte ten o mellor de ambos os dous mundos ─a efectos "
-"do xogo, trátase como un herbal ou auga superficial, segundo o que mellor "
+"do xogo, trátase como unha chaira ou auga superficial, segundo o que mellor "
 "lle acaia á criatura do hexágono en cuestións de defensa e movemento─. Ten "
 "en conta que unha unidade acuática e unha terrestre non poden ocupar un "
 "mesmo hexágono ao mesmo tempo."
@@ -3109,7 +3360,7 @@ msgstr ""
 "son as paredes de pedra sólida e montañas tan altas e empinadas que están "
 "constantemente cubertas de nubes. Nin as criaturas voadoras poden "
 "desprazarse por picos tan elevados, e nin o troll máis feroz pode atravesar "
-"grosas paredes de pedra."
+"as grosas paredes de pedra."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:786
@@ -3137,9 +3388,10 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Activar o modo de depuración (non funciona en multixogador). Consulta "
-"as<ref>dst='debug_commands' text='ordes do modo de depuración'</ref>.\n"
-"O modo de depuración desactívase ao saír do xogo ou con :nodebug.\n"
+"Activar o modo de depuración (non funciona nas partidas con varios "
+"xogadores). Consulta as <ref>dst='debug_commands' text='ordes do modo de "
+"depuración'</ref>. Este modo desactívase ao saír da partida ou coa orde «:"
+"nodebug».\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -3240,7 +3492,7 @@ msgstr ""
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:825
 msgid "Multiplayer commands"
-msgstr "Ordes multixogador"
+msgstr "Ordes para partidas con varios xogadores"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:831
@@ -3252,14 +3504,13 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Vedar a un usuario nunha partida multixogador polo seu enderezo IP e botalo "
-"da partida. Pode usarse con xogadores que non están na partida pero si no "
-"servidor (claro que evidentemente non os estarás botando da partida).\n"
+"Vedar a un usuario nunha partida con varios xogadores polo seu enderezo IP e "
+"botalo da partida. Pode usarse con xogadores que non están na partida pero "
+"si no servidor (claro que evidentemente non os estarás botando da partida).\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:834
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3272,10 +3523,12 @@ msgid ""
 msgstr ""
 "\n"
 "Ceder o control dun bando (substitúe “<side>” polo número do bando) a un "
-"usuario (substitúe “<username>” polo alcume do xogador ou observador. Podes "
-"comprobar que bando pertence a cada xogador no diálogo de «Preferencias do "
-"escenario» (preme o botón “máis” no «Cadro da situación» ─Alt+S por defecto─ "
-"para chegar). O anfitrión pode cambiar o control de calquera dos bandos.\n"
+"usuario (substitúe “<username>” polo alcume do xogador ou observador). Podes "
+"comprobar que bando pertence a cada xogador na xanela da "
+"<bold>text='Configuración do escenario'</bold> (preme o botón de "
+"<bold>text='Máis información'</bold> no <bold>text='Cadro da situación'</"
+"bold> ─o atallo predeterminado é «Alt+S»─ para chegar). O anfitrión pode "
+"cambiar o control de calquera dos bandos.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3288,14 +3541,12 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Botar a un xogador no modo multixogador. Poderá unirse de novo á partida. Se "
-"só queres cambiar o control do seu bando ou bandos, utiliza mellor a orde :"
-"control.\n"
+"Botar a un xogador da partida, pero permitirlle volver unirse. Se só queres "
+"cambiar o control do seu bando ou bandos, utiliza mellor a orde «:control».\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:840
-#, fuzzy
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3303,8 +3554,11 @@ msgid ""
 "game.\n"
 "\n"
 msgstr ""
-"Envía unha mensaxe privada. Non podes enviar mensaxes a xogadores que non "
-"controlan un dos bandos da partida na que estás."
+"\n"
+"Enviar unha mensaxe privada a un usuario (substituír “<username>” polo nome "
+"do usuario). Non podes enviar mensaxes a xogadores que non controlan ningún "
+"dos bandos da partida.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:843
@@ -3315,8 +3569,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Silenciar a un observador específico. Se non se proporciona un nome de "
-"usuario, amósanse os nomes dos usuarios silenciados.\n"
+"Silenciar a un observador específico. Se non se proporciona o nome dun "
+"usuario, listaranse os nomes dos usuarios silenciados.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3339,9 +3593,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Levantarlle a veda a un usuario nunha partida multixogador mediante o "
-"enderezo IP que usou. Pode usarse con xogadores que non estean na partida "
-"pero si no servidor.\n"
+"Levantarlle a veda a un usuario mediante o enderezo IP que empregou. Pode "
+"usarse con xogadores que non estean na partida pero si no servidor.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3381,7 +3634,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Crear unha unidade do tipo especificado no hexágono seleccionado.\n"
+"Crear unha unidade do tipo especificado (“<unit type id>”) no hexágono "
+"seleccionado.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3392,7 +3646,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Activar a néboa ou o manto para o bando actual.\n"
+"Activar a néboa da guerra ou o manto do descoñecido para o bando actual.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3403,7 +3657,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Engade a cantidade especificada ao ouro do bando actual.\n"
+"Dálle a cantidade especificada de ouro (“<ammount>”) ao bando actual.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3414,7 +3668,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Avanza inmediatamente ao seguinte escenario dunha campaña.\n"
+"Avanza inmediatamente ao seguinte escenario da campaña.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3425,7 +3679,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Establece manualmente o valor dunha variable do estado da partida.\n"
+"Establece manualmente o valor (“value”) dunha variable do estado da "
+"partida.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3447,7 +3702,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Pon en marcha manualmente o evento especificado.\n"
+"Dispara manualmente o evento indicado.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3459,8 +3714,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Modifica a propiedade especificada da unidade seleccionada. Por exemplo: :"
-"unit hitpoints=100\n"
+"Modifica a propiedade especificada (“key”) da unidade seleccionada. Por "
+"exemplo: «:unit hitpoints=100».\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3470,8 +3725,8 @@ msgid ""
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 "\n"
-"Fai que a unidade seleccionada suba de nivel N veces. Por exemplo: :unit "
-"advances=2"
+"Fai que a unidade seleccionada suba de nivel N veces. Por exemplo: «:unit "
+"advances=2»."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -3534,7 +3789,7 @@ msgid ""
 msgstr ""
 "Firmeza:\n"
 "Cando se defende, as resistencias desta unidade duplícanse, ata un máximo do "
-"50%. Isto non afecta ás súas vulnerabilidades."
+"50%. Non afecta ás súas vulnerabilidades."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
@@ -3565,13 +3820,13 @@ msgid ""
 "difference in their levels."
 msgstr ""
 "Liderado:\n"
-"Esta unidade pode liderar as nosas unidades que están preto facendo que "
-"loiten mellor.\n"
+"Esta unidade pode liderar as unidades aliadas adxacentes facendo que loiten "
+"mellor.\n"
 "\n"
-"As nosas unidades adxacentes de menor nivel inflixirán máis dano no combate. "
-"Cando unha unidade adxacente de menor nivel estea no mesmo bando que o líder "
-"que a manda ao combate, os seus ataques inflixirán un 25% máis de dano por "
-"cada nivel máis que teña o líder."
+"As unidades aliadas adxacentes de menor nivel inflixirán máis dano no "
+"combate. Cando unha unidade adxacente de menor nivel estea no mesmo bando "
+"que o líder que a manda ao combate, os seus ataques inflixirán un cuarto "
+"máis de dano por cada nivel máis que teña o líder."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
@@ -3592,7 +3847,7 @@ msgid ""
 msgstr ""
 "Guerrilla:\n"
 "Esta unidade ten a habilidade de moverse rápido entre os inimigos, e pode "
-"ignorar todas as zonas de control inimigas."
+"ignorar todas as súas zonas de control."
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
@@ -3616,7 +3871,7 @@ msgid ""
 msgstr ""
 "Iluminación:\n"
 "Esta unidade ilumina os arredores facendo que as unidades legais loiten "
-"mellor e as unidades caóticas loiten peor.\n"
+"mellor e as unidades caóticas peor.\n"
 "\n"
 "Calquera unidade adxacente a esta loitará coma se en vez de noite aínda "
 "estivese anoitecendo, e coma se fose de día cando estea anoitecendo de "
@@ -3664,8 +3919,7 @@ msgid ""
 "loses all its remaining movement."
 msgstr ""
 "Emboscada:\n"
-"Esta unidade pode ocultarse no bosque, e evitar que os seus inimigos a "
-"detecten.\n"
+"Esta unidade pode ocultarse no bosque e evitar que os inimigos a detecten.\n"
 "\n"
 "As unidades inimigas non poderán vela mentres estea no bosque, agás se teñen "
 "unidades adxacentes. A primeira unidade inimiga que descubra a esta non "
@@ -3753,8 +4007,8 @@ msgstr ""
 "polos inimigos.\n"
 "\n"
 "As unidades inimigas non poden ver a esta unidade cando estea en augas "
-"profundas, agás se teñen unidades preto dela. A primeira unidade inimiga que "
-"descubra a esta non poderá moverse máis nesa quenda."
+"profundas, agás se teñen unidades canda ela. A primeira unidade inimiga que "
+"a descubra non poderá moverse máis nesa quenda."
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
@@ -3817,7 +4071,7 @@ msgstr ""
 "Peste:\n"
 "Cando unha unidade morre polo ataque da peste, a unidade substitúese por "
 "outra idéntica do bando da unidade que a atacou coa peste. Non funciona "
-"cotra os non mortos ou as unidades en vilas."
+"contra os non mortos ou as unidades en vilas."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:594
@@ -3830,7 +4084,7 @@ msgstr ""
 "Peste:\n"
 "Cando unha unidade morre polo ataque da peste, a unidade substitúese por un "
 "cadáver andante do bando da unidade que a atacou coa peste. Non funciona "
-"cotra os non mortos ou as unidades en vilas."
+"contra os non mortos ou as unidades en vilas."
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:604
@@ -3952,25 +4206,25 @@ msgstr ""
 "Veleno:\n"
 "Este ataque envelena aos obxectivos vivos. As unidades envelenadas perden "
 "oito puntos de vida por rolda ata que curan ou chegan a ter só un punto de "
-"vida. O veleno de por si só non pode matar unha unidade."
+"vida. O veleno por si só non pode matar unha unidade."
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr ""
-"Puntos de vida máximos aumentados en 3, experiencia máxima aumentada un 20%"
+"Puntos de vida máximos aumentados en 3, experiencia máxima aumentada un 20%."
 
 #. [time]: id=indoors
 #. [illuminated_time]: id=indoors_illum
 #: data/core/macros/schedules.cfg:70 data/core/macros/schedules.cfg:76
 msgid "Indoors"
-msgstr ""
+msgstr "Cuberto"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
 #: data/core/macros/schedules.cfg:102 data/core/macros/schedules.cfg:111
 msgid "Deep Underground"
-msgstr "Moi profundo"
+msgstr "Profundidades"
 
 #: data/core/macros/special-notes.cfg:5
 msgid ""
@@ -4006,7 +4260,7 @@ msgstr " esta unidade ten unha habilidade básica para sandar."
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-" esta unidade ten a capacidade de sandar a todos os que a rodean, e curalos "
+" esta unidade ten a capacidade de sandar a todos os que a rodean e curalos "
 "do veleno."
 
 #: data/core/macros/special-notes.cfg:20
@@ -4022,7 +4276,8 @@ msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
-" esta unidade rexenera, o que lle permite sandar coma se estivera nunha vila."
+" esta unidade rexenérase, o que lle permite sandar coma se estivera nunha "
+"vila."
 
 #: data/core/macros/special-notes.cfg:26
 msgid ""
@@ -4047,7 +4302,7 @@ msgid ""
 "control and thus move unhindered around them."
 msgstr ""
 " a habilidade para a guerrilla desta unidade permítelle ignorar as zonas de "
-"control dos inimigos, podendo así moverse libremente arredor deles."
+"control dos inimigos podendo así moverse libremente arredor deles."
 
 #: data/core/macros/special-notes.cfg:35
 msgid " Illumination increases the lighting level in adjacent areas."
@@ -4104,8 +4359,8 @@ msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" cando se o seu ataque furioso, esta unidade continúa atacando ata que só un "
-"dos combatentes quede en pe."
+" cando usa o seu ataque furioso, esta unidade continúa atacando ata que só "
+"un dos combatentes queda en pe."
 
 #: data/core/macros/special-notes.cfg:59
 msgid ""
@@ -4123,7 +4378,7 @@ msgid ""
 "they are standing on a village."
 msgstr ""
 " os inimigos que perden a súa vida pola peste volverán coma non mortos, a "
-"non ser que permanezan nunha vila."
+"non ser que morresen nunha vila."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -4137,8 +4392,8 @@ msgstr ""
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
-" a habilidade de converter aos vivos en pedra fai que esta unidade resulte "
-"moi perigosa."
+" a habilidade de converter aos seres vivos en pedra fai que esta unidade "
+"resulte moi perigosa."
 
 #: data/core/macros/special-notes.cfg:71
 msgid ""
@@ -4170,7 +4425,7 @@ msgid ""
 "not affect defensive retaliation."
 msgstr ""
 " usar un ataque de carga duplica o dano inflixido e recibido. Isto non "
-"afecta aos ataques defensivos, en resposta a ataques inimigos."
+"afecta aos ataques defensivos en resposta a ataques inimigos."
 
 #: data/core/macros/special-notes.cfg:83
 msgid ""
@@ -4178,7 +4433,7 @@ msgid ""
 "health."
 msgstr ""
 " durante a batalla, esta unidade pode absorber a vida das súas vítimas para "
-"renovar a súa propia saúde."
+"renovar a súa propia."
 
 #: data/core/macros/special-notes.cfg:86
 msgid ""
@@ -4186,15 +4441,15 @@ msgid ""
 "in defense."
 msgstr ""
 " a lonxitude da arma desta unidade permítelle golpear primeiro nos "
-"enfrontamentos corpo a corpo, incluso cando se defende."
+"enfrontamentos corpo a corpo, incluso cando se está a defender."
 
 #: data/core/macros/special-notes.cfg:89
 msgid ""
 " The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" as vítimas do veleno desta unidade sufrirán dano continuamente ata que se "
-"curen nunha vila ou unha unidade que poda as cure."
+" as vítimas do veleno desta unidade sufrirán dano continuamente ata que as "
+"curen nunha vila ou unha unidade que poda."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
@@ -4206,10 +4461,11 @@ msgstr "leal"
 msgid "female^loyal"
 msgstr "leal"
 
+# Aparece como “mensaxe contextual”.
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:10
 msgid "Zero upkeep"
-msgstr "Sen mantemento"
+msgstr "Sen mantemento."
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:22
@@ -4227,7 +4483,7 @@ msgstr "non morta"
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 #: data/core/macros/traits.cfg:54
 msgid "Immune to drain, poison and plague"
-msgstr "Inmune á absorción, o veleno e a peste"
+msgstr "Inmune á absorción, o veleno e a peste."
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
@@ -4241,15 +4497,13 @@ msgstr "mecánica"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "elemental"
-msgstr "ocúltase"
+msgstr "elemental"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:53
-#, fuzzy
 msgid "female^elemental"
-msgstr "leal"
+msgstr "elemental"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:66
@@ -4314,7 +4568,7 @@ msgstr "saudable"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:148
 msgid "Always rest heals"
-msgstr "Sempre que non loita sanda coma se descansase"
+msgstr "Sempre que non loita sanda coma se descansase."
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:165 data/core/macros/traits.cfg:178
@@ -4330,24 +4584,22 @@ msgstr "afouta"
 #: data/core/macros/traits.cfg:167 data/core/macros/traits.cfg:180
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
-"Loita de forma normal durante os momentos do día ou da noite desfavorables"
+"Loita de forma normal durante os momentos do día ou da noite desfavorables."
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
-msgstr "Total"
+msgstr "feroz"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
-msgstr "neutral"
+msgstr "feroz"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
 msgid "Receive only 40% defense in land-based villages"
-msgstr ""
+msgstr "Só recibe unha defensa do 40% nas vilas terrestres."
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -4392,12 +4644,12 @@ msgstr "anciá"
 #. [race]: id=bats
 #: data/core/units.cfg:42
 msgid "race^Bat"
-msgstr "Morcego macho"
+msgstr "Morcego"
 
 #. [race]: id=bats
 #: data/core/units.cfg:43
 msgid "race+female^Bat"
-msgstr "Morcego femia"
+msgstr "Morcego"
 
 #. [race]: id=bats
 #: data/core/units.cfg:44
@@ -4413,6 +4665,12 @@ msgid ""
 "especially when encountered in groups. Typically nocturnal, they are often "
 "kept (and occasionally tamed) by those who share their love of the night."
 msgstr ""
+"Hai morcegos de moitas formas e tamaños distintos, pero case todos eles son "
+"inofensivos, pois aliméntanse unicamente de insectos e outros animais de "
+"pequeno tamaño. Os exemplares máis grandes e violentos supoñen unha ameaza "
+"para os humanos e outras especies, así como para o seu gando, especialmente "
+"cando van en grupos. Animais nocturnos por definición, a miúdo os cazan (e "
+"mesmo domestican) aqueles que comparten ese amor pola escuridade."
 
 #. [race]: id=drake
 #: data/core/units.cfg:52
@@ -4497,6 +4755,73 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
+"Os draconiáns son criaturas grandes, aladas e con alento de lume que gardan "
+"gran parecido cos dragóns. O draconián adulto medio mide tresmetros e pesa "
+"máis que un humano e un cabalo xuntos. A súa pel está formada por escamas "
+"duras, resistentes á gran maioría dos ataques físicos, exceptuando os de "
+"perforación e de frío. A meirande parte dos draconiáns son capaces de voar "
+"de verdade e poden viaxar grandes distancias en pouco tempo. Porén, o seu "
+"peso e tamaño limitan en certo modo a súa capacidade de voo, facéndoos "
+"torpes no aire. Sempre que poden aproveitan as peculiaridades do terreo, "
+"coma os outeiros, as montañas e mailas árbores, utilizándoas coma trampolíns "
+"para obter unha forza e velocidade maiores. Por sorte para os seus inimigos, "
+"son a pesar de todo criaturas torpes e sorprendentemente lentas ao combater, "
+"o que combinado co seu gran tamaño os  converte en brancos fáciles para quen "
+"ousa atacalos.\n"
+"\n"
+"Os draconiáns son criaturas máxicas por natureza, cun misterioso lume "
+"interior que lles dá a vida. Esta realidade pode comprobarse facilmente "
+"cando morren en combate. O seu lume interno libérase, reducindo o seu corpo "
+"a cinzas. O seu lume interno é tamén a súa maior debilidade. Fainos "
+"extremadamente vulnerables aos ataques con frío. A pesar da sua natureza "
+"máxica, os draconiáns son incapaces de canalizar a maxia dun xeito "
+"controlado. Aínda que a súa maxia interior lles permite cuspir lume e lles "
+"dá a vida, non son capaces de controlala a vontade.\n"
+"\n"
+"<header>text='Sociedade'</header>\n"
+"Os draconiáns son unha especie relativamente guerreira e as súas sociedades "
+"poden describirse como “sociedades marciais con cultura”. O núcleo de cada "
+"tribo confórmao un pequeno grupo de guerreiros veteranos encabezado por un "
+"<ref>dst='dominant' text='líder'</ref> respectado ─ou simplemente temido─ "
+"que dirixe a sociedade con férrea disciplina. Agárdase de cada draconián que "
+"gañe o seu lugar na estrita xerarquía, obedeza aos seus superiores e dirixa "
+"aos seus inferiores. A entrada na elite dirixente só é posible desafiando e "
+"derrotando a un superior en combate cara a cara, que é a forma na que se "
+"define a xerarquía na propia elite. O uso de calquera tipo de engano cara "
+"calquera compañeiro está considerado sen excepcións un acto de covardía "
+"inaceptable.\n"
+"\n"
+"Aínda que a súa natureza guerreira e o seu sentido do territorio os leva a "
+"defender as súas terras de forma salvaxe, os draconiáns rara vez invaden ou "
+"entran sequera nas terras xa ocupadas por outras das especies intelixentes. "
+"En troques, asentan en zonas deshabitadas que pasan a considerar territorio "
+"seu. Aliméntanse principalmente de veados que cazan nas terras baixas que "
+"rodean os seus fogares, pero sábese que as crías e os draconiáns de casta "
+"inferior tamén se alimentan de certos musgos e fungos que cultivan na "
+"profundidade das súas cavernas. A única tecnoloxía que os draconiáns valoran "
+"é a ferrería de armaduras e armas, e non coñecen nin precisan outra ciencia "
+"ou cultura. Aínda así, os poucos instrumentos que fan non teñen rival en "
+"calidade e só son equiparables aos producidos nas mellores forxas dos "
+"ananos.\n"
+"\n"
+"Os draconiáns nacen de ovos, e cando morren de forma natural adoitan facelo "
+"entre os vinte e os trinta anos. A súa forma preferida para deixareste mundo "
+"é a morte na batalla. A diferencia dos membros máis vellos doutras especies, "
+"os draconiáns fanse por natureza máis agresivos etemerarios cara a fin das "
+"súas vidas naturais, tal vez para axudar a asegurar o seu lugar nas heroicas "
+"lendas das súas xentes.\n"
+"\n"
+"<header>text='Xeografía'</header>\n"
+"Os draconiáns proveñen dun arquipélago de illas volcánicas, "
+"<ref>dst='morogor' text='Morogor'</ref>, situado no <ref>dst='great_ocean' "
+"text='Gran Océano'</ref>. Por mor do crecemento da poboación e mailo "
+"afundimento dalgunhas das illas, as colonias de draconiáns estendéronse cara "
+"o <ref>dst='great_continent' text='Gran Continente'</ref>. Os draconiáns "
+"adoitan construír os seus fogares en cavernas nas montañas preto de volcáns "
+"para protexer os seus ovos, crías e forxas. Aínda que prefiren de forma "
+"natural a calor, o seu lume interno é máis que capaz de mantelos incluso en "
+"climas relativamente fríos, algo que lles permitiu poboar mesmo algunhas das "
+"montañas do afastado norte do Gran Continente."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:89
@@ -4575,22 +4900,23 @@ msgstr ""
 "dúas razas loitaron en tres grandes guerras dende aquela, interrompidas por "
 "unhas poucas décadas de paz. Durante estas guerras os ananos non deron "
 "expulsado aos elfos dos profundos bosques do sur, pero si consolidaron as "
-"súas posicións nos outeiros e nas montañas do norte do continente, coñecidas "
+"súas posicións nos outeiros e montañas do norte do continente, coñecidas "
 "hoxe en día como as Terras Nórdicas. Dende entón construíron fantásticas "
 "fortificacións e asentamentos na profundidade das montañas e penedos do seu "
 "territorio.\n"
 "\n"
 "Posiblemente debido ao seu illamento, os ananos adoitan ser desconfiados ou "
-"hostís cara a maioría das outras especies, sobre todo cara os elfos. A única "
-"excepción a este temperamento son os humanos. Isto remóntase aos tempos de "
-"Haldric I e a chegada dos humanos e dos orcos ao continente. Nesa época os "
-"ananos comezaron a permitirlle a algúns humanos, na súa maioría disidentes e "
+"mesmo hostís cara a maioría das outras especies, sobre todo cara os elfos, "
+"sendo os humanos a única excepción. Isto remóntase aos tempos de Haldric I e "
+"a chegada dos humanos e dos orcos ao continente. Nesa época os ananos "
+"comezaron a permitirlle a algúns humanos, na súa maioría disidentes e "
 "proscritos do Reino de Wesnoth, asentarse en certas zonas das Terras "
-"Nórdicas. Os motivos eran obvios. A situación destes individuos lembráballe "
+"Nórdicas. Os motivos eran obvios, a situación destes individuos lembráballe "
 "aos ananos a persecución dos seus primeiros anos, creando un sentimento de "
 "solidariedade. Ademais os ananos tiñan moito que gañar creando lazos con "
 "estes parias. Estableceríanse en zonas nas que os ananos non gustaban de "
-"vivir: chairas, bosques e brañas. Así liberaríanse da defensa destas zonas.\n"
+"vivir: chairas, bosques e brañas. Así os ananos liberaríanse da defensa "
+"destas zonas.\n"
 "\n"
 "Os ananos son de pequena estatura en comparación cos humanos, pero non son "
 "fráxiles en absoluto. Os seus guerreiros, resistentes e poderosos, son "
@@ -4601,12 +4927,12 @@ msgstr ""
 "posiblemente só son igualados polos producidos polos armeiros dos "
 "draconiáns. A súa intelixencia e curiosidade naturais tamén os converteu na "
 "especie do continente máis avanzada tecnicamente. Un dos seus descubrimentos "
-"máis famosos e temidos foi unha misteriosa pólvora que produce unha gran "
-"explosión cando se expón ao lume ou ás faíscas. Certos guerreiros ananos "
-"usan esta pólvora para lanzar pequenos obxectos a velocidades incribles. "
-"Dadas as súas inclinacións tecnolóxicas, moitos ananos tenden a desconfiar "
-"dos que usan a maxia. Porén, algúns practican unha forma de maxia baseada no "
-"gravado de runas. Os chamados mestres das runas, usan estas inscricións para "
+"máis famosos e temidos foi un misterioso po que produce unha gran explosión "
+"cando se expón ao lume ou ás faíscas. Certos guerreiros ananos usan este po "
+"para lanzar pequenos obxectos a velocidades incribles. Dadas as súas "
+"inclinacións tecnolóxicas, moitos ananos tenden a desconfiar dos que "
+"empregan a maxia. Porén, algúns practican unha forma de maxia baseada no "
+"gravado de runas. Os chamados mestres das runas usan estas inscricións para "
 "encantar obxectos para aumentar certos aspectos das súas naturezas."
 
 #. [race]: id=elf
@@ -4663,6 +4989,41 @@ msgid ""
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
 "having existed for over a millennium."
 msgstr ""
+"Comparados cos humanos, os elfos son algo máis altos e áxiles, pero non tan "
+"rexos. Teñen orellas aguzadas, pel clara e adoitan ser louros. Pero a súa "
+"diferencia máis salientable é a vida anormalmente longa dos elfos ─a "
+"maioría, a non ser por enfermidade, accidente ou a guerra, vive dous séculos "
+"e medio─. Aínda que se sabe dalgúns elfos cunha gran aptitude para a maxia "
+"que viviron ata un século máis, a maior parte dos elfos comeza a debilitarse "
+"fisicamente entre os douscentos cincuenta e os trescentos anos, e falecen "
+"pouco despois (entre un e dous anos).\n"
+"\n"
+"Os elfos están imbuídos cun certo grao de maxia natural. Aínda que a maioría "
+"non son capaces de canalizala directamente, a súa presencia é a razón dos "
+"seus agudos sentidos e maila súa longa vida. Moitos elfos teñen talentos "
+"relacionados coa maxia, coma a puntería e a ocultación, o que lles permite "
+"facer cousas que calquera outro ser consideraría incribles. Os elfos que "
+"aprenden a controlar ese poder poden chegar a ser realmente formidables no "
+"seu uso. Moitos son os que elixen usar o seu don para sandar a outros.\n"
+"\n"
+"Os poucos elfos que se aventuran nos camiños da maxia e o misticismo "
+"vólvense sensibles ao ferro frío, que ata pode queimalos. E de acordo coas "
+"lendas dos elfos, no pasado eran moitos máis os que elixían este camiño.\n"
+"\n"
+"Os elfos pasan gran parte do seu tempo mellorando os seus talentos e "
+"habilidades. Os que non son hábiles coa maxia normalmente adícanse a "
+"mellorar as súas habilidades físicas. Así, os elfos son excelentes no uso do "
+"arco, que é quizais a súa táctica de guerra máis importante. A maioría das "
+"tropas dos elfos portan un arco e ningunha outra especie pode competir cos "
+"seus arqueiros en velocidade e puntería. Todos os elfos comparten tamén unha "
+"inexplicable afección pola natureza salvaxe, e adoitan sentirse incómodos "
+"nos espazos abertos sen vexetación. Viven principalmente nos bosques do Gran "
+"Continente: o bosque de Aethen no sueste, Wesmere no noroeste e os bastos "
+"bosques nórdicos, co bosque Lintanir no seu límite sur.\n"
+"\n"
+"Os elfos son a especie máis antiga do continente, pode que a excepción dos "
+"trolles. Moitos dos seus asentamentos non poden datarse de forma fiable, e "
+"sen dúbida existiron durante máis dun milenio."
 
 #. [race]: id=goblin
 #: data/core/units.cfg:130
@@ -4701,6 +5062,24 @@ msgid ""
 "exception of jobs that require the brute strength of true orcs. Those the "
 "orcs revel in as proof of their prowess."
 msgstr ""
+"A pesar das aparencias, os trasnos son irmáns dos orcos e da mesma especie.  "
+"Mentres que outras especies dan a luz unha ou dúas crías dunha vez, os orcos "
+"procrean camadas enteiras dunha vez, polo que a súa poboación aumenta a un "
+"ritmo desorbitado. En cada camada non adoita haber máis que un ou dous orcos "
+"de verdade, que vaian adquirir o tamaño e forza propios da súa especie. "
+"Haberá uns poucos máis que sexan medio orcos, considerablemente máis febles "
+"que os seus irmáns maiores, e relegados a funcións de apoio nas batallas, "
+"xeralmente como arqueiros. O resto da camada, a metade ou máis, son os "
+"denominados “trasnos”. Febles e esmirrados, non adoitan acadar máis altura "
+"que a dun humano novo. Afeitos a unha vida case de escravitude á sombra dos "
+"seus irmáns maiores, son enviados na primeira liña de batalla, sen apenas "
+"esperanza de vida. Pero a pesar do seu tráxico destino prosperan, en gran "
+"parte grazas ao seu gran número, e tamén porque os seus irmáns os orcos son "
+"conscientes de canto os necesitan.\n"
+"\n"
+"Os trasnos realizan case todas as tarefas que necesitan os orcos, "
+"exceptuando unicamente aquelas que requiren da forza bruta dos orcos de "
+"verdade, aquelas que lles gusta facer para demostrar a súa destreza."
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:147
@@ -4779,15 +5158,15 @@ msgstr ""
 "do Vello Continente, os humanos espalláronse por todo o mundo e dividíronse "
 "en moitas culturas e razas diferentes. Aínda que non están imbuídos pola "
 "maxia coma outras criaturas, os humanos poden aprender a usala e son capaces "
-"de aprender máis tipos de maxia cá maioría das outras especies. Non teñen "
-"máis habilidades especiais ou aptitudes aparte da súa versatilidade e o seu "
-"vigor. Aínda que a miúdo teñen problemas con todas as especies, ás veces "
-"poden formar alianzas coas menos agresivas, coma os elfos e os ananos. Os "
-"menos escrupulosos deles non teñen medo en contratar mercenarios orcos. Non "
-"teñen inimigos naturais, aínda que a maioría deles, coma case toda as "
-"criaturas, ten unha repulsión instintiva polos non mortos. Os humanos son "
-"máis baixos ca os elfos, pero máis altos ca os ananos. A súa cor de pel pode "
-"variar, dende case branca a marrón escura.\n"
+"de aprender máis tipos de maxia que a maior parte das outras especies. Non "
+"teñen máis habilidades especiais ou aptitudes aparte da súa versatilidade e "
+"o seu vigor. Aínda que a miúdo teñen problemas con todas as especies, ás "
+"veces poden formar alianzas coas menos agresivas, coma os elfos e os ananos. "
+"Os menos escrupulosos deles non teñen medo en contratar mercenarios orcos. "
+"Non teñen inimigos naturais, aínda que a maioría deles, coma case toda as "
+"criaturas, sente unha repulsión instintiva polos non mortos. Os humanos son "
+"máis baixos que os elfos, pero máis altos que os ananos. A súa cor de pel "
+"pode variar, dende case branca a marrón escura.\n"
 "\n"
 "<header>text='Súbditos da Coroa'</header>\n"
 "Existen moitos grupos diferentes de humanos, pero a maioría dos do Gran "
@@ -4803,16 +5182,16 @@ msgstr ""
 "<header>text='Os clans'</header>\n"
 "As provincias orientais de Wesnoth, coñecidas coma as Terras dos Clans, "
 "teñen unha xeografía formada por máis chairas abertas e outeiros ondulados "
-"ca nas provincias occidentais, máis civilizadas. Nelas habitan osClans dos "
+"que nas provincias occidentais, máis civilizadas. Nelas habitan os Clans dos "
 "Cabalos, aliados coa Coroa de Wesnoth pero que actúan independentemente e "
 "manteñen a súa propia identidade. Algúns considéranos un estado tributario, "
 "que envía comida e soldados á Coroa a cambio de protección. Outros din que "
 "están na mesma situación que a metade occidental de Wesnoth. En calquera "
 "caso, as provincias orientais non recrutan o seu exército do modo en que se "
-"fai no Wesnoth Occidental. O adestramento para a loita é parte do modo de "
-"vida dos Clans. Os pais apréndenlles aos nenos a montar cabalos, loitar e "
+"fai no Wesnoth occidental. O adestramento para a loita é parte do modo de "
+"vida dos clans. Os pais apréndenlles aos nenos a montar cabalos, loitar e "
 "disparar co arco dende que son pequenos. En xeral, os guerreiros dos clans "
-"están menos organizados ca os loitadores civilizados, e as fortalezas e "
+"están menos organizados que os loitadores civilizados, e as fortalezas e "
 "debilidades destes grupos compleméntanse."
 
 #. [race]: id=lizard, description=
@@ -4848,6 +5227,10 @@ msgid ""
 "neither move nor think on their own, but some do so as a result of magical "
 "enchantment."
 msgstr ""
+"O termo “máquina” emprégase para facer referencia a aqueles artefactos "
+"animados non por vida natural ou nigromancia, senón grazas ao traballo dun "
+"ser intelixente. A meirande parte das máquinas nin se moven nin pensan por "
+"si mesmas, se ben existen excepcións debidas a encantamentos máxicos."
 
 #. [race]: id=merman
 #: data/core/units.cfg:203
@@ -4877,6 +5260,17 @@ msgid ""
 "ocean. They are typically wary of dry land, as they are awkward and clumsy "
 "there and they struggle greatly to move over rough or forested terrain."
 msgstr ""
+"Os sirénidos son unha enigmática especie que a simple vista podería "
+"describirse coma un punto medio entre humano e peixe, e que conta con "
+"atributos de ambos os dous mundos. As súas fortes colas permítenlles "
+"desprazarse a unha gran velocidade nos ambientes acuáticos, mentres que as "
+"súas destras mans e maila súa intelixencia lles permiten desenvolver "
+"complexas ferramentas e trebellos. De natureza anfibia, os sirénidos poden "
+"respirar tanto na auga coma na superficie sen dificultade. Pero aínda que "
+"sexan capaces de sobrevivir en terra firme son máis rápidos e áxiles na auga "
+"e rara vez son vistos lonxe do océano. Adoitan ser cautelosos ao aventurarse "
+"en terra, pois na superficie vólvense torpes e cústalles moito atravesar "
+"bosques ou terreos agrestes."
 
 #. [race]: id=monster
 #: data/core/units.cfg:214
@@ -4895,6 +5289,10 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
+"O termo “monstro” emprégase para facer referencia a moitas bestas espantosas "
+"que habitan en covas, selvas, as profundidades oceánicas ou outros ambientes "
+"de todo o mundo. Tamén están moi presentes nas lendas e mailos pesadelos dos "
+"seus veciños."
 
 #. [race]: id=naga
 #: data/core/units.cfg:223
@@ -4928,6 +5326,19 @@ msgid ""
 "themselves at odds with merfolk when their territories overlap, but overall "
 "nagas tend to favor swamps and rivers as much as open water."
 msgstr ""
+"Os nagas son unha das especies máis incomprendidas do Gran Continente, en "
+"parte por mor da súa natureza xenófoba, en parte polo estraño ambiente no "
+"que viven. A naga é unha das poucas especies que pode moverse sen problemas "
+"nos medios acuáticos, o que lles dá acceso a todo un mundo prohibido para as "
+"criaturas terrestres, criaturas que os nagas rexeitan, e ao marxe das cales "
+"poden vivir grazas precisamente á súa mobilidade na auga. Porén, os nagas "
+"non son verdadeiras criaturas mariñas, e a súa incapacidade para respirar "
+"baixo a auga mantenos lonxe das profundidades. Vivir nas zonas costeiras "
+"dálles unha ruta de escape por terra cando se ven atacados polos habitantes "
+"das profundidades, ao tempo que os mantén á marxe das criaturas terrestres e "
+"aéreas. Aínda que de corpo feble, os nagas son máis veloces e áxiles que os "
+"seus contrincantes. Ás veces teñen disputas territoriais cos sirénidos, pero "
+"xeralmente prefiren as brañas e mailos ríos que o mar aberto."
 
 #. [race]: id=ogre
 #: data/core/units.cfg:233
@@ -4962,6 +5373,20 @@ msgid ""
 "is a sign of cooperation, domestication, or simply mutual opportunism is not "
 "known."
 msgstr ""
+"A dos ogros é unha especie salvaxe e primitiva que habita principalmente as "
+"terras salvaxes do Gran Continente. Fisicamente teñen parecido cos humanos e "
+"mailos orcos, pero son máis grandes e fortes. Ata os ogros máis novos "
+"supoñen un difícil rival para calquera humano. Case ningún núcleo de "
+"poboación sente cariño polos ogros, e ou os evitan ou os botan pola forza, "
+"quedando os ogros xeralmente relegados ás zonas montañosas afastadas da "
+"civilización, onde conseguen alimento atracando viaxeiros e caravanas. Se "
+"ben non son especialmente intelixentes ou rápidos, a súa forza e "
+"agresividade convérteos en útiles soldados nos exércitos doutras especies, "
+"moi valorados por comandantes desapiadados aos que non lles importa a súa "
+"brutalidade. Pouco se sabe deles a nivel biolóxico ou social ─se é que teñen "
+"diso─, pero disque ás veces atacan xunto con lobos e outras bestas, ora non "
+"se sabe se é cuestión de cooperación, domesticación ou un simple oportunismo "
+"mutuo."
 
 #. [race]: id=orc
 #: data/core/units.cfg:244
@@ -5038,8 +5463,8 @@ msgid ""
 "assassination."
 msgstr ""
 "En aparencia, os orcos son metade humanos e metade bestas. Son máis altos, "
-"rexos e fortes ca os humanos. Son guerreiros, salvaxes e crueis por "
-"natureza. O seu sangue é máis escuro e denso ca o dos humanos normais e "
+"rexos e fortes que os humanos. Son guerreiros, salvaxes e crueis por "
+"natureza. O seu sangue é máis escuro e denso que o dos humanos normais e "
 "teñen pouca preocupación pola hixiene persoal ou a súa aparencia física. "
 "Aínda que os orcos son violentos incluso entre eles, teñen tendencia a ir en "
 "grupo. Un orco nunca viaxa moito ou vive só en grupos de menos de media "
@@ -5048,12 +5473,12 @@ msgstr ""
 "<header>text='Sociedade'</header>\n"
 "Case todos os orcos forman parte dunha tribo ou clan. As relacións entre "
 "tribos veciñas son normalmente violentas, agás cando un inimigo mutuo ameaza "
-"a súa existencia ou a perspectiva dun gran saqueo elimine a animadversión "
+"a súa existencia ou a perspectiva dun gran saqueo elimina a animadversión "
 "mutua. De cando en vez pode emerxer un único xefe forte para liderar varias "
 "tribos, normalmente a través da intimidación dos seguidores. En tempos de "
 "paz, as tribos de orcos adoitan centrarse case exclusivamente en prepararse "
 "para o seguinte conflito armado. Sábese que os orcos teñen un sistema de "
-"escrita basto ─normalmente con sangue─, aínda que o usan comunmente  os "
+"escrita basto ─normalmente con sangue─, aínda que o usan comunmente os "
 "líderes das tribos para intercambiar insultos ou ameazas entre eles.\n"
 "\n"
 "As sociedades dos orcos baséanse en pouco máis que a forza. A forza dá o "
@@ -5062,39 +5487,40 @@ msgstr ""
 "constante loita polo poder. Un líder orco raramente vive máis dun puñado de "
 "anos para gozar da súa autoridade absoluta antes de ser asasinado pola súa "
 "posición ─aínda que se coñece na historia dalgunhas notables excepcións─. Os "
-"orcos non manteñen ningún código de honor, e se be a forza bruta "
+"orcos non manteñen ningún código de honor, e se ben a forza bruta "
 "indiscutible é normalmente o método preferido para demostrar o poder, o "
 "asasinato, o envelenamento e a puñalada polas costas son medios totalmente "
 "viables para conseguir os propios obxectivos.\n"
 "\n"
 "Os orcos viven na súa maioría en zonas rurais, a miúdo ao pé dos outeiros ou "
 "en rexións montañosas, ás veces en covas. Non cultivan nin teñen gando, pero "
-"son uns cazadores competentes debido á súa estatura física e a súa "
+"son uns cazadores competentes grazas á súa estatura física e a súa "
 "brutalidade. Debido ao seu gran número son capaces de cazar nunha zona "
 "practicamente sen nada maior que un roedor nun período de tempo "
 "relativamente curto. Por isto e pola inestabilidade do seu liderado, as "
 "tribos de orcos tenden a levar un estilo de vida seminómade, non "
 "establecéndose nunha mesma rexión moito tempo. As tribos máis numerosas "
 "poden establecerse firmemente nunha zona durante anos ou mesmo décadas e "
-"construír grandes campamentos que case parecen cidades, pero incluso estes "
+"construír grandes campamentos que mesmo semellan cidades, pero incluso estes "
 "se desmontan e abandonan facilmente se hai necesidade de cambiar de terras.\n"
 "\n"
-"Os orcos máis vellos coñecidos tiñan entre 50 e 60 anos de vida, pero poucos "
-"individuos chegan a vivir para ver máis de dúas ou tres décadas antes de "
-"chegar á súa fin na guerra ou a mans dun dos seus. Os orcos máis vellos son "
-"a miúdo xamáns, que son quizais os únicos aos que a maioría dos seusve coma "
-"seres de confianza e neutrais. As orixes deste costume son descoñecidas, xa "
-"que os xamáns non contribúen directamente moito ás sociedades dos orcos "
-"senón que actúan unicamente coma conselleiros ─algo que os orcos tampouco "
-"adoitan tolerar─. Os xamáns son en moitos sentidos o oposto da maioría dos "
-"outros orcos: a miúdo son fisicamente pálidos e débiles en comparación e "
-"carecen de habilidades para a guerra. A pesar da súa dependencia da forza "
-"bruta, case ningún orco nace para tela. Moitos orcos nacen máis pequenos e "
-"débiles ca o resto, e pouco despois de nacer os seus irmáns máis fortes "
-"póñenos no seu sitio . Os máis fortes adoitan coller a maior parte da comida "
-"e desta forma vólvense aínda máis fortes, permanecendo os seus irmáns máis "
-"débiles igual de febles. Moitos destes individuos tenden a especializarse "
-"noutras habilidades, coma o tiro con arco ou o asasinato."
+"Os orcos máis vellos coñecidos tiñan entre cincuenta e sesenta anos de vida, "
+"pero poucos individuos chegan a vivir para ver máis de dúas ou tres décadas "
+"antes de chegar á súa fin na guerra ou a mans dun dos seus. Os orcos máis "
+"vellos son a miúdo xamáns, que son quizais os únicos aos que a maioría dos "
+"seus ve coma seres de confianza e neutrais. As orixes deste costume son "
+"descoñecidas, xa que os xamáns non contribúen moito directamente ás "
+"sociedades dos orcos senón que actúan unicamente coma conselleiros ─algo que "
+"os orcos tampouco adoitan tolerar─. Os xamáns son en moitos sentidos o "
+"oposto da maioría dos outros orcos: a miúdo son fisicamente pálidos e "
+"débiles en comparación e carecen de habilidades para a guerra. A pesar da "
+"súa dependencia da forza bruta, case ningún orco nace para tela. Moitos "
+"orcos nacen máis pequenos e débiles que o resto, e pouco despois de nacer os "
+"seus irmáns máis fortes póñenos no seu sitio. Os máis fortes adoitan coller "
+"a maior parte da comida e desta forma vólvense aínda máis fortes, "
+"permanecendo os seus irmáns máis débiles igual de febles. Moitos destes "
+"individuos tenden a especializarse noutras habilidades, coma o tiro con arco "
+"ou o asasinato."
 
 #. [race]: id=troll
 #: data/core/units.cfg:263
@@ -5161,13 +5587,14 @@ msgstr ""
 "pasar moito tempo durmindo ou meditando. Os trolles teñen unha curiosa "
 "afinidade coa natureza. Non se relacionan cos seres vivos coma os elfos, "
 "senón coa terra e as rochas. Tamén senten curiosidade polo que os arrodea, e "
-"moitos dos máis cachorros máis novos mesmo gozan viaxando e vendo mundo. A "
-"medida que os trolles se fan vellos tenden a ser máis pasivos, perdendo "
-"gradualmente o interese polo seu arredor e pasando máis tempo durmindo nun "
-"tranquilo e familiar recanto da súa cova. Isto é ata que finalmente morren e "
-"os seus corpos se converten en estatuas de pedra sen vida.\n"
+"moitos dos cachorros máis novos mesmo gozan viaxando e vendo mundo. A medida "
+"que os trolles se van facendo vellos tenden a volverse máis pasivos, "
+"perdendo gradualmente o interese polo seu arredor e pasando máis tempo "
+"durmindo nun tranquilo e familiar recanto da súa cova. Isto é ata que "
+"finalmente morren e os seus corpos se converten en estatuas de pedra sen "
+"vida.\n"
 "\n"
-"Moitos ves aos trolles coma pouco máis ca outra especie de monstros "
+"Moitos ven aos trolles coma pouco máis que outra especie de monstros "
 "salvaxes. Este erro tan común perpetúano en parte orcos para convencer aos "
 "trolles para que se unan aos seus exércitos. Dado que son unha especie pouco "
 "intelixente e non entenden ás outras especies, ou ás veces nin son quen de "
@@ -5231,8 +5658,8 @@ msgstr ""
 "En realidade os non mortos non son unha especie, aínda que a miúdo se lles "
 "trate como tal. Un nigromante coas habilidades necesarias pode reanimar "
 "calquera criatura en forma de non morto. Os non mortos son principalmente "
-"criaturas antinaturais e cunha intelixencia case inexistente, que obedecen a "
-"quen os creou sen preguntar nin cuestionar. Un dos grandes misterios da "
+"criaturas contranaturais e cunha intelixencia case inexistente, que obedecen "
+"a quen os creou sen preguntar nin cuestionar. Un dos grandes misterios da "
 "nigromancia é de que xeito se manteñen estas criaturas sen o esforzo "
 "constante por parte do nigromante. Unha criatura non morta non precisa a "
 "atención constante do nigromante para recibir ordes e manterse, senón que "
@@ -5240,11 +5667,11 @@ msgstr ""
 "nigromante só ten que manter á súa creación de cando en vez, ao mellor cada "
 "poucos meses.\n"
 "\n"
-"A nigromancia está limitada case só aos humanos. Incluso as lendas de razas "
-"dadas á maxia coma os elfos ou os sirénidos apenas falan dalgún dos seus que "
-"afondase nas artes escuras. Seica a maxia dos nigromantes esixe unha gran "
-"facilidade para adaptarse e unha mente flexible, características que se "
-"atopan a miúdo nos humanos. O obxectivo definitivo da maioría dos "
+"A nigromancia está limitada case só aos humanos. Incluso as lendas de "
+"especies dadas á maxia coma os elfos ou os sirénidos apenas falan dalgún dos "
+"seus que afondasen nas artes escuras. Seica a maxia dos nigromantes esixe "
+"unha gran facilidade para adaptarse e unha mente flexible, características "
+"que se atopan a miúdo nos humanos. O obxectivo definitivo da maioría dos "
 "nigromantes é usar a mesma arte para conservar e imbuír a vida sobre eles "
 "mesmos, alterándose a si mesmos a calquera , para fuxir para sempre da morte "
 "conservando a súa mente e alma.\n"
@@ -5304,7 +5731,7 @@ msgstr "Faccións:"
 
 #: src/help.cpp:1301
 msgid "Factions are only used in multiplayer"
-msgstr "As faccións só se utilizan no modo multixogador"
+msgstr "As faccións só se utilizan en partidas de varios xogadores."
 
 #: src/help.cpp:1344
 msgid "level"
@@ -5332,7 +5759,7 @@ msgstr "Habilidades: "
 
 #: src/help.cpp:1431
 msgid "Ability Upgrades: "
-msgstr "Melloras de habilidades:"
+msgstr "Melloras das habilidades: "
 
 #: src/help.cpp:1447
 msgid "HP: "
@@ -5411,20 +5838,16 @@ msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unidades desta especie'</header>"
 
 #: src/help.cpp:1788
-#, fuzzy
 msgid "<header>text='Race specific topics'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Probabilidade de atinar'</header>"
+msgstr "<header>text='Temas relacionados coa especie'</header>"
 
 #: src/help.cpp:2700
 msgid " < Back"
-msgstr " < Atrás"
+msgstr "< Anterior"
 
 #: src/help.cpp:2701
 msgid "Forward >"
-msgstr "Adiante >"
+msgstr "Seguinte >"
 
 #: src/help.cpp:2813
 msgid "Reference to unknown topic: "
@@ -5432,7 +5855,7 @@ msgstr "Referencia a un tema descoñecido: "
 
 #: src/help.cpp:3069
 msgid "corrupted original file"
-msgstr "ficheiro orixinal corrompido"
+msgstr "o ficheiro orixinal non está ben."
 
 #: src/help.cpp:3160
 msgid "Close"
@@ -5440,8 +5863,8 @@ msgstr "Pechar"
 
 #: src/help.cpp:3163
 msgid "The Battle for Wesnoth Help"
-msgstr "Axuda do Battle for Wesnoth"
+msgstr "Axuda do xogo"
 
 #: src/help.cpp:3219
 msgid "Parse error when parsing help text: "
-msgstr "Analizar o erro ao analizar o texto da axuda: "
+msgstr "Houbo un erro ao analizar o texto da axuda: "
