@@ -51,6 +51,18 @@ class display;
 		}                                                                 \
 	} while(0)
 
+#define VALIDATE_WITH_DEV_MESSAGE(cond, message, dev_message)             \
+	do {                                                                  \
+		if(!(cond)) {                                                     \
+			wml_exception(#cond                                           \
+					, __FILE__                                            \
+					, __LINE__                                            \
+					, __func__                                            \
+					, message                                             \
+					, dev_message);                                       \
+		}                                                                 \
+	} while(0)
+
 /**
  *  Helper function, don't call this directly.
  *
@@ -60,8 +72,13 @@ class display;
  *  @param function     The function in which the test failed.
  *  @param message      The translated message to show the user.
  */
-void wml_exception(const char* cond, const char* file,
-	int line, const char *function, const std::string &message);
+void wml_exception(
+		  const char* cond
+		, const char* file
+		, int line
+		, const char *function
+		, const std::string& message
+		, const std::string& dev_message = "");
 
 /** Helper class, don't construct this directly. */
 struct twml_exception

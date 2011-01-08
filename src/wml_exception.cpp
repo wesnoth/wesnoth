@@ -28,13 +28,21 @@
 #include "gui/dialogs/message.hpp"
 #include "formula_string_utils.hpp"
 
-
-void wml_exception(const char* cond, const char* file,
-	int line, const char *function, const std::string &message)
+void wml_exception(
+		  const char* cond
+		, const char* file
+		, int line
+		, const char *function
+		, const std::string& message
+		, const std::string& dev_message)
 {
 	std::ostringstream sstr;
 	sstr << "Condition '" << cond << "' failed at "
 		<< file << ":" << line << " in function '" << function << "'.";
+
+	if(!dev_message.empty()) {
+		sstr << " Extra development information: " << dev_message;
+	}
 
 	throw twml_exception(message, sstr.str());
 }
