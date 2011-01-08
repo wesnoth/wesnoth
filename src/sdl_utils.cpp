@@ -1536,13 +1536,6 @@ void blit_surface(const surface& src,
 	// Get the blit size limits.
 	const unsigned width = std::min(src_rect.w, dst_rect.w);
 	const unsigned height = std::min(src_rect.h, dst_rect.h);
-// 	std::cout << width << " -- " << height << "\n";
-// 	std::cout << src->w << " -- " << src->h << "\n";
-// 	std::cout << srcrect->x << "," << srcrect->y << " - " << srcrect->w << "x" << srcrect->h << " - " "\n";
-// 	if (dstrect)
-// 		std::cout << dstrect->x << "," << dstrect->y << " - " << dstrect->w << "x" << dstrect->h << " - " "\n";
-// 	std::cout << src_rect.x << "," << src_rect.y << " - " << src_rect.w << "x" << src_rect.h << " - " "\n";
-// 	std::cout << dst_rect.x << "," << dst_rect.y << " - " << dst_rect.w << "x" << dst_rect.h << " - " "\n";
 
 	{
 		// Extra scoping used for the surface_lock.
