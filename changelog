@@ -35,6 +35,7 @@ Version 1.9.3+svn:
    * Fix gui2 lines drawing glitch, which happens in some rare cases.
    * Fixed: Not showing the twml_exception dialog when gui2 was called from
      lua (bug #17405).
+   * Fixed: Properly validate the height of a portrait (bug #17399).
  * WML engine:
    * New [harm_unit] tag for damaging, and eventually killing, units.
    * [allow_recruit], [disallow_recruit] and [set_recruit] now accept a
@@ -57,6 +58,7 @@ Version 1.9.3+svn:
    * Un-hardwired the [language] block in data/hardwired/english.cfg, and
      moved the file out of that subdirectory.
    * Add update-po4a-man and update-po4a-manual targets to cmake.
+   * Added: Extra validate macro VALIDATE_WITH_DEV_MESSAGE.
 
 Version 1.9.3:
  * Campaigns:
