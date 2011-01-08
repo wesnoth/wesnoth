@@ -274,18 +274,22 @@ surface flop_surface(const surface &surf, bool optimize=true);
 surface create_compatible_surface(const surface &surf, int width = -1, int height = -1);
 
 /**
- *  Replacement for sdl_blit.
+ * Replacement for sdl_blit.
  *
- *  sdl_blit has problems with blitting partly transparent surfaces so
- *  this is a replacement. It ignores the SDL_SRCALPHA and SDL_SRCCOLORKEY
- *  flags. src and dst will have the SDL_RLEACCEL flag removed.
- *  The return value of SDL_BlistSurface is normally ignored so no return value.
- *  The rectangles are const and will not be modified.
+ * sdl_blit has problems with blitting partly transparent surfaces so
+ * this is a replacement. It ignores the SDL_SRCALPHA and SDL_SRCCOLORKEY
+ * flags. src and dst will have the SDL_RLEACCEL flag removed.
+ * The return value of SDL_BlistSurface is normally ignored so no return value.
+ * The rectangles are const and will not be modified.
  *
- *  @param src          The surface to blit.
- *  @param srcrect      The region of the surface to blit
- *  @param dst          The surface to blit on.
- *  @param dstrect      The offset to blit the surface on, only x and y are used.
+ * @pre @p src contains a valid canvas.
+ * @pre @p dst contains a valid canvas.
+ * @pre The caller must make sure the @p src fits on the @p dst.
+ *
+ * @param src          The surface to blit.
+ * @param srcrect      The region of the surface to blit
+ * @param dst          The surface to blit on.
+ * @param dstrect      The offset to blit the surface on, only x and y are used.
  */
 void blit_surface(const surface& src,
 	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect);
