@@ -1,72 +1,4 @@
-set(XSLTOPTS 
-   --nonet
-  --stringparam callout.graphics 0
-  --stringparam navig.graphics 0
-  --stringparam admon.textlabel 1
-  --stringparam admon.graphics 0
-  --stringparam html.stylesheet "./styles/manual.css"
-)
-
-find_program(ASCIIDOC_EXECUTABLE "asciidoc")
-find_program(DOS2UNIX_EXECUTABLE "dos2unix")
-find_program(XSLTPROC_EXECUTABLE "xsltproc")
-
-file(STRINGS ${PROJECT_SOURCE_DIR}/po/LINGUAS LANGUAGES)
-separate_arguments(LANGUAGES)
-
-if(ENABLE_POT_UPDATE_TARGET)
-	add_custom_target(update-po4a-manual
-		COMMAND ${CMAKE_COMMAND}
-			-DPROJECT_SOURCE_DIR="${PROJECT_SOURCE_DIR}"
-			-P "${CMAKE_MODULE_PATH}/po4a-manual.cmake"
-		DEPENDS
-			${CMAKE_CURRENT_SOURCE_DIR}/manual.txt
-		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-endif(ENABLE_POT_UPDATE_TARGET)
-
-
-if(ASCIIDOC_EXECUTABLE AND DOS2UNIX_EXECUTABLE AND XSLTPROC_EXECUTABLE)
-  add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/manual.en.xml
-                     COMMAND ${ASCIIDOC_EXECUTABLE} -b docbook -d book -n -a toc -o manual.en.xml ${CMAKE_CURRENT_SOURCE_DIR}/manual.txt
-                     COMMAND ${DOS2UNIX_EXECUTABLE} manual.en.xml
-                     MAIN_DEPENDENCY manual.txt)
-  add_custom_target(manual.xml DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/manual.en.xml)
-
-  add_custom_command(OUTPUT manual.en.html
-                     COMMAND ${XSLTPROC_EXECUTABLE} ${XSLTOPTS} /etc/asciidoc/docbook-xsl/xhtml.xsl 
-                             manual.en.xml > ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.html
-                     MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/manual.en.xml)
-
-
-  if(ENABLE_NLS)
-    set(TRANSLATED)
-    foreach(LANG ${LINGUAS})
-      set(INFILE manual.${LANG}.xml)
-      set(OUTFILE ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LANG}.html)
-      set(STAMPFILE ${CMAKE_CURRENT_BINARY_DIR}/manual.${LANG}.xml.stamp)
-
-      #only build the manual if the xml file for that language is really present
-      set_source_files_properties(${STAMPFILE} PROPERTIES GENERATED TRUE)
-      add_custom_command(OUTPUT ${OUTFILE}
-                         COMMAND test -f ${INFILE} && 
-                         ${XSLTPROC_EXECUTABLE} ${XSLTOPTS} /etc/asciidoc/docbook-xsl/xhtml.xsl 
-                         ${INFILE} > ${OUTFILE} || true
-                         MAIN_DEPENDENCY ${STAMPFILE})
-
-      list(APPEND TRANSLATED ${OUTFILE})
-    endforeach(LANG ${LINGUAS})
-
-    add_custom_target(docs DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.html ${TRANSLATED})
-    #add translated documents as dependency
-    find_program(PO4A_TRANSLATE_EXECUTABLE "po4a-translate")
-    if(PO4A_TRANSLATE_EXECUTABLE)
-      add_dependencies(docs update-po4a-wesnoth-manual)
-    endif(PO4A_TRANSLATE_EXECUTABLE)
-  else()
-    add_custom_target(docs DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.html)
-  endif(ENABLE_NLS)
-
-endif(ASCIIDOC_EXECUTABLE AND DOS2UNIX_EXECUTABLE AND XSLTPROC_EXECUTABLE)
+set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
 
 install(FILES manual.en.html DESTINATION "${DOCDIR}")
 install(DIRECTORY images styles DESTINATION "${DOCDIR}"
@@ -77,3 +9,98 @@ if(ENABLE_NLS)
     install(FILES manual.${LANG}.html DESTINATION "${DOCDIR}" OPTIONAL)
   endforeach(LANG ${LINGUAS})
 endif(ENABLE_NLS)
+
+
+if(ENABLE_POT_UPDATE_TARGET)
+
+	add_custom_command(
+		OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.xml
+		COMMAND ${CMAKE_COMMAND} -E remove manual.en.xml
+	  	COMMAND ${CMAKE_COMMAND} -E remove manual.en.html
+		COMMAND ${ASCIIDOC_EXECUTABLE} ${ASCIIDOC_OPTIONS}
+				-o manual.en.xml
+				manual.txt
+		COMMAND ${DOS2UNIX_EXECUTABLE} manual.en.xml
+		COMMAND ${XSLTPROC_EXECUTABLE} ${XSLTPROC_OPTIONS} 
+				-o manual.en.html
+				/etc/asciidoc/docbook-xsl/xhtml.xsl 
+				manual.en.xml
+		DEPENDS manual.txt
+		COMMENT "[update-po4a-manual] Building manual.xml."
+		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+	)
+
+	add_custom_command(
+		OUTPUT ${PROJECT_SOURCE_DIR}/po/wesnoth-manual/wesnoth-manual.pot
+		COMMAND ${PO4A-GETTEXTIZE_EXECUTABLE} ${PO4A-GETTEXTIZE_OPTIONS}
+				-m ../../doc/manual/manual.en.xml
+				-p wesnoth-manual.pot
+		DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.xml
+		COMMENT "[update-po4a-manual] Building wesnoth-manual.pot."
+		WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/wesnoth-manual
+	)
+
+	set(UPDATE-PO4A-MANUAL_DEPENDENCIES)
+	foreach(LINGUA ${LINGUAS})
+
+		add_custom_command(
+			OUTPUT ${PROJECT_SOURCE_DIR}/po/wesnoth-manual/${LINGUA}.po
+			COMMAND ${PO4A-UPDATEPO_EXECUTABLE} ${PO4A-UPDATEPO_OPTIONS}
+					-f docbook
+					-m ../../doc/manual/manual.en.xml
+					-p ${LINGUA}.po
+			DEPENDS ${PROJECT_SOURCE_DIR}/po/wesnoth-manual/wesnoth-manual.pot
+			COMMENT "[update-po4a-manual ${LINGUA}] Building ${LINGUA}.po."
+			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/wesnoth-manual
+		)
+
+		# Create the .xml file if enough strings are translated.
+		add_custom_command(
+			OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LINGUA}.xml
+			COMMAND ${PO4A-TRANSLATE_EXECUTABLE} ${PO4A-TRANSLATE_OPTIONS}
+					-m ../../doc/manual/manual.en.xml
+					-p ${LINGUA}.po
+					-l ../../doc/manual/manual.${LINGUA}.xml
+			DEPENDS ${PROJECT_SOURCE_DIR}/po/wesnoth-manual/${LINGUA}.po
+			COMMENT "[update-po4a-manual ${LINGUA}] Building ${LINGUA}.xml."
+			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/wesnoth-manual
+		)
+
+
+		# Only create a .html if there is an .xml file. Since it's not
+		# possible to only execute cmake code if the file exists directly,
+		# build the command here. Then send it to a small script that only
+		# executes if the .html file exists. 
+		set(CMD "${XSLTPROC_EXECUTABLE} ${XSLTPROC_OPTIONS}")
+		set(CMD "${CMD} -o manual.${LINGUA}.html")
+		set(CMD "${CMD} /etc/asciidoc/docbook-xsl/xhtml.xsl")
+		set(CMD "${CMD} manual.${LINGUA}.xml")
+		add_custom_command(
+			OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LINGUA}.html
+			COMMAND ${CMAKE_COMMAND} -E remove manual.${LINGUA}.html 
+			COMMAND ${CMAKE_COMMAND}
+				-DSOURCE="manual.${LINGUA}.xml"
+				-DCMD="${CMD}"
+				-P "${CMAKE_MODULE_PATH}/po4a-manual.cmake"
+			COMMAND ${CMAKE_COMMAND} -E remove manual.${LINGUA}.xml
+			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LINGUA}.xml
+			COMMENT "[update-po4a-manual ${LINGUA}] Building ${LINGUA}.html."
+			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+		)
+
+		set(UPDATE-PO4A-MANUAL_DEPENDENCIES
+			${UPDATE-PO4A-MANUAL_DEPENDENCIES}
+			${CMAKE_CURRENT_SOURCE_DIR}/manual.${LINGUA}.html
+		)
+	endforeach(LINGUA ${LINGUAS})
+
+	add_custom_target(update-po4a-manual
+		COMMAND ${CMAKE_COMMAND} -E remove manual.en.xml
+		DEPENDS
+			${UPDATE-PO4A-MANUAL_DEPENDENCIES}		
+		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+	)
+
+endif(ENABLE_POT_UPDATE_TARGET)
+
+
