@@ -33,6 +33,8 @@ Version 1.9.3+svn:
      translations.
    * Add new gui2 drawing widget.
    * Fix gui2 lines drawing glitch, which happens in some rare cases.
+   * Fixed: Not showing the twml_exception dialog when gui2 was called from
+     lua (bug #17405).
  * WML engine:
    * New [harm_unit] tag for damaging, and eventually killing, units.
    * [allow_recruit], [disallow_recruit] and [set_recruit] now accept a

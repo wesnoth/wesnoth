@@ -8,6 +8,8 @@
 #ifndef lconfig_h
 #define lconfig_h
 
+#include "wml_exception.hpp"
+
 #include <limits.h>
 #include <stddef.h>
 
@@ -611,11 +613,15 @@ union luai_Cast { double l_d; long l_l; };
 ** and with longjmp/setjmp otherwise.
 */
 #if defined(__cplusplus)
+
+
 /* C++ exceptions */
 #define LUAI_THROW(L,c)	throw(c)
 #define LUAI_TRY(L,c,a)	try { \
 	try { a } catch(const std::exception &e) \
 	{ lua_pushstring(L, e.what()); luaG_errormsg(L); throw; } \
+	} catch(twml_exception&) { \
+		throw; \
 	} catch(...) \
 	{ if ((c)->status == 0) (c)->status = -1; }
 #define luai_jmpbuf	int  /* dummy variable */
