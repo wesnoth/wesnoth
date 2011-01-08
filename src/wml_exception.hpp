@@ -44,7 +44,12 @@ class display;
  #endif
 #endif
 
-#define VALIDATE(cond, message) if(!(cond)) wml_exception(#cond, __FILE__, __LINE__, __func__, message)
+#define VALIDATE(cond, message)                                           \
+	do {                                                                  \
+		if(!(cond)) {                                                     \
+			wml_exception(#cond, __FILE__, __LINE__, __func__, message);  \
+		}                                                                 \
+	} while(0)
 
 /**
  *  Helper function, don't call this directly.
