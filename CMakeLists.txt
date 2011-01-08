@@ -20,9 +20,12 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 find_package(SDL 1.2.7 REQUIRED)
 find_package(Boost 1.35 REQUIRED COMPONENTS iostreams regex)
-# yes, gettext is *required* even when NLS is deactivated (this is to compile
+
+# no, gettext executables are not required when NLS is deactivated
+find_package(Gettext)
+# yes, libintl is *required* even when NLS is deactivated (this is to compile
 # src/gettext.cpp since it includes libintl.h)
-find_package(Gettext REQUIRED)
+find_package(Libintl REQUIRED)
 
 find_package(X11)
 

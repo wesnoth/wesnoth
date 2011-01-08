@@ -19,6 +19,7 @@ include_directories( ${SDL_INCLUDE_DIR} )
 include_directories( ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories( ${GETTEXT_INCLUDE_DIR} )
 include_directories( ${LIBDBUS_INCLUDE_DIRS} )
+include_directories( ${LIBINTL_INCLUDE_DIR} )
 
 #optional dependencies
 if(SDLIMAGE_INCLUDE_DIR)
@@ -82,6 +83,7 @@ set(game-external-libs
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
+    ${LIBINTL_LIBRARIES}
 )
 
 if(MSVC)
@@ -103,7 +105,7 @@ if(USE_ANA_NETWORK)
 	set(server-external-libs
 		${common-external-libs}
 		${ANA_LIBRARIES}
-	)
+)
 else(USE_ANA_NETWORK)
 	set(server-external-libs
 		${common-external-libs}
@@ -737,6 +739,7 @@ target_link_libraries(campaignd
 	wesnoth-core
 	${server-external-libs}
 	${SDLNET_LIBRARY} 				# NEEDED with ANA
+	${LIBINTL_LIBRARIES}
 	)
 set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
 
