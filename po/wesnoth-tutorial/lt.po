@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-25 18:13+0100\n"
+"POT-Creation-Date: 2011-01-08 13:43+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -34,8 +34,8 @@ msgstr "Vesnoto apmokymas I dalis"
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:84
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:169
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:171
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:173
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:175
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 msgid "Konrad"
@@ -43,13 +43,13 @@ msgstr "Konradas"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:134
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:141
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:138
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:145
 msgid "Delfador"
 msgstr "Delfadoras"
 
 #. [objectives]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:149
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:153
 msgid ""
 "You will learn the basics of:\n"
 "Movement\n"
@@ -64,38 +64,38 @@ msgstr ""
 "Kaip samdyti"
 
 #. [objective]: condition=win
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:151
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:155
 msgid "Destroy a fierce enemy"
 msgstr "Nugalėkite smarkų priešą"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:155
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:159
 msgid "Get yourself killed"
 msgstr "Leiskitės užmušami"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:167
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:171
 msgid "Who would you like to play?"
 msgstr "Kuo norėtumėte žaisti?"
 
 #. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:176
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:178
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:191
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:364
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:180
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:182
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:195
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:369
 msgid "Li’sar"
 msgstr "Li’sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:206
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:212
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:210
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:216
 msgid "Welcome to Wesnoth!"
 msgstr "Sveiki atvykę į Vesnotą!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:208
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:212
 msgid ""
 "For this tutorial, you are playing Konrad.\n"
 "You are standing in the keep, and your mentor Delfador is on the east side "
@@ -105,7 +105,7 @@ msgstr ""
 "Jūs stovite bokšte, o jūsų mokytojas Delfadoras yra rytiniame upės krante."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:214
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
 msgid ""
 "For this tutorial, you are playing Li’sar.\n"
 "You are standing in the keep, and your mentor Delfador is on the east side "
@@ -117,23 +117,23 @@ msgstr ""
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:404
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:526
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:222
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:408
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:530
 msgid "Left click on Konrad"
 msgstr "Kairiu pelės klavišu paspauskite ant Konrado"
 
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:219
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:405
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:527
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:223
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:409
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:531
 msgid "Left click on Li’sar"
 msgstr "Kairiu pelės klavišu paspauskite ant Li’sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:238
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:242
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
@@ -142,7 +142,7 @@ msgstr ""
 "Vietos, kur jis gali eiti, yra pašviesintos."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:245
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:249
 msgid ""
 "<big>You have selected Li’sar.</big>\n"
 "The places she can move to are highlighted."
@@ -151,12 +151,12 @@ msgstr ""
 "Vietos, kur ji gali eiti, yra pašviesintos."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:254
 msgid "Here"
 msgstr "Čia"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:256
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:260
 msgid ""
 "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr ""
@@ -164,24 +164,24 @@ msgstr ""
 "b>."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:260
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:264
 msgid ""
 "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr ""
 "Nuveskite Li’sar šalia Delfadoro, paspaudę ant langelio su užrašu <b>Čia</b>."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:265
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:269
 msgid "Left click on tile labeled <b>Here</b>"
 msgstr "Kairiu pelės klavišu paspauskite ant užrašo <b>Čia</b>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:290
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:294
 msgid "Oops!"
 msgstr "Oj!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:292
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:296
 msgid ""
 "You moved to the wrong place! After this message, you can press <b>u</b> to "
 "undo, then try again."
@@ -190,51 +190,51 @@ msgstr ""
 "b>, kad atšauktumėte, o tada bandykite dar kartą."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Labas rytas, Delfadorai! Ar jau galiu mušti priešus?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
 msgid "Um, well..."
 msgstr "Hmm, na..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Duosi man primušti kokį orką? Ar trolį?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:330
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Tylos! Aš tau iškviesiu priešą..."
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:354
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:358
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Iškamša"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:358
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:362
 msgid "... this quintain!"
 msgstr "... šią iškamšą!"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:362
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "Iškamšą? Tu nori, kad kaučiausi su manekenu?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:369
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:373
 msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
 msgstr ""
 "Turi 32 gyvybės taškus ir kalaviją, berniuk. Aš beveik įsitikinęs, kad "
 "laimėsi."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:374
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:378
 msgid ""
 "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
 "win."
@@ -243,13 +243,13 @@ msgstr ""
 "laimėsi."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:382
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:388
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:386
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:392
 msgid "Attacking"
 msgstr "Puolimas"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:384
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:388
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -260,7 +260,7 @@ msgstr ""
 "Konradas puls."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:389
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -271,38 +271,38 @@ msgstr ""
 "Li’sar puls."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:400
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:404
 msgid "Click on the quintain to attack it"
 msgstr "Paspaudę ant iškamšos, užpulsite"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:440
 msgid "Hey! This quintain fights back!"
 msgstr "Ei! Šita iškamša atkerta atgal!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:440
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:444
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "Hmm, galbūt reikėjo pradėti nuo lėlės."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:444
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:448
 msgid "Should I retreat?"
 msgstr "Ar man atsitraukti?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:448
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:452
 msgid "Good idea!"
 msgstr "Puiki mintis!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:453
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:457
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:461
 msgid "Crowns"
 msgstr "Karūnos"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 msgid ""
 "Note: The tiny metal crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Konrad) is killed."
@@ -311,7 +311,7 @@ msgstr ""
 "pralaimėsite. Taip pat pralaimėsite, jeigu žus jūsų vadas (Konradas)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:462
 msgid ""
 "Note: The tiny metal crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Li’sar) is killed."
@@ -320,26 +320,26 @@ msgstr ""
 "pralaimėsite. Taip pat pralaimėsite, jeigu žus jūsų vadė (Li’sar)."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:470
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:474
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
 msgstr "Deja, išnaudojai savo ėjimą puldamas iškamšą. Dabar ji puls."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:475
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:479
 msgid ""
 "female^Unfortunately, you’ve used up your turn attacking the quintain. The "
 "quintain now gets to attack."
 msgstr "Deja, išnaudojai savo ėjimą puldama iškamšą. Dabar ji puls."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:481
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:485
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "<i>Manekenas</i> gaus ėjimą?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:487
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:491
 msgid ""
 "Yes. It’s a magical quintain.\n"
 "Now, this quintain gets 5 chances to hit you for 3 damage each. If it hits "
@@ -352,26 +352,26 @@ msgstr ""
 "$future_hp|. Ginkis!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:490
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:494
 msgid "Click on the <b>End Turn</b> button in the bottom right of the screen"
 msgstr ""
 "Paspauskite mygtuką <b>Baigti ėjimą</b>, esantį apatiniame dešiniajame "
 "ekrano kampe"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:511
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:515
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Oi! Man reikia pasigydyti! Liko tik $student_hp GT!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:513
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:443
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:517
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 msgid "Village"
 msgstr "Kaimas"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:518
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:522
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
@@ -380,7 +380,7 @@ msgstr ""
 "ėjimą būdamas kaime, pagysi. Marš į kaimą!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:523
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:527
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -389,22 +389,22 @@ msgstr ""
 "ėjimą būdama kaime, pagysi. Marš į kaimą!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:536
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:540
 msgid "Click on the village to move Konrad"
 msgstr "Spragtelėkite ant kaimo, kad nuvestumėte Konradą"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:537
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:541
 msgid "Click on the village to move Li’sar"
 msgstr "Spragtelėkite ant kaimo, kad nuvestumėte Li’sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:555
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:559
 msgid "Villages"
 msgstr "Kaimai"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:557
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:561
 msgid ""
 "You have captured a village! It now flies your flag and has been added to "
 "your total village count. (The house icon at the top of the screen shows how "
@@ -421,16 +421,16 @@ msgstr ""
 #. [event]
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:561
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:693
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:726
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:918
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:565
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:697
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:730
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:870
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:922
 msgid "Click on the <b>End Turn</b> button"
 msgstr "Paspauskite mygtuką <b>Baigti ėjimą</b>"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:601
 msgid ""
 "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
 "summon some help against that quintain."
@@ -439,7 +439,7 @@ msgstr ""
 "tiek pagalbos prieš šią iškamšą."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:602
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:606
 msgid ""
 "female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
 "to summon some help against that quintain."
@@ -448,19 +448,19 @@ msgstr ""
 "tiek pagalbos prieš šią iškamšą."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:608
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
 msgid "I’ll recruit some elves!"
 msgstr "Pasamdysiu elfų!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:610
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:973
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:614
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
 msgid "Keep"
 msgstr "Bokštas"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:615
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:619
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
 "have plenty of gold for that."
@@ -469,7 +469,7 @@ msgstr ""
 "turi per akis."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:620
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:624
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -478,22 +478,22 @@ msgstr ""
 "turi per akis."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:626
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:630
 msgid "Move Konrad to the keep"
 msgstr "Nuveskite Konradą į bokštą"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:627
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:631
 msgid "Move Li’sar to the keep"
 msgstr "Nuveskite Li’sar į bokštą"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:644
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:648
 msgid "Recruiting"
 msgstr "Samdymas"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:646
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
@@ -505,21 +505,21 @@ msgstr ""
 "kovotojus."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:654
 msgid "Right click on a castle tile and select <b>Recruit</b>"
 msgstr ""
 "Pilies langelyje paspauskite dešinį pelės klavišą ir pasirinkite <b>Samdyti</"
 "b>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:684
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:717
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:688
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:721
 msgid "New Recruits"
 msgstr "Nauji samdiniai"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:687
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:720
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:691
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:724
 msgid ""
 "New units cannot act in the turn they appear; you will gain control of them "
 "next turn.\n"
@@ -532,27 +532,27 @@ msgstr ""
 "ekrano krašte pamatysite jo aprašymą."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:698
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:731
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:702
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:735
 msgid "Right click on the other castle tile and recruit another unit"
 msgstr ""
 "Laisvame pilies langelyje paspauskite dešinį pelės klavišą ir samdykite dar "
 "vieną dalinį."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:753
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:757
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
 "Ei, iškamša ką tik pagijo dviem gyvybės taškais! Reikia greičiau ją užpulti!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:757
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:761
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr "Taip, jeigu karys visą ėjimą nieko neveikia, jis lėtai gyja."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:767
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
@@ -561,7 +561,7 @@ msgstr ""
 "taškais. Jeigu dalinys visą ėjimą nieko neveikia, jis lėtai gyja."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:777
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:781
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
@@ -570,29 +570,29 @@ msgstr ""
 "pulti dvejopai..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:781
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:785
 msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "Liepsiu naudoti tą, kuris daro daugiausia žalos!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:785
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
 msgid ""
 "And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
 "find out..."
 msgstr "O kas tai būtų? Kalavijas (5–4), ar lankas (3–3)? Teks išsiaiškinti..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:787
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:791
 msgid "Left click on an Elvish Fighter"
 msgstr "Paspauskite ant elfų kovotojo"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:788
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 msgid "End your turn and attack again."
 msgstr "Baikite savo ėjimą ir tada pulkite vėl."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:807
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:811
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you?\n"
@@ -602,20 +602,20 @@ msgstr ""
 "Pirmiau pasiųsk nusamdytus kovotojus, jie labai padės."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:818
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:822
 msgid "Left click on the quintain to attack it."
 msgstr "Paspauskite ant iškamšos kairiuoju mygtuku ir užpulsite ją."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:862
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
 msgid " The ranged attack would have been safer."
 msgstr " Tolima ataka būtų buvusi saugesnė."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:862
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:874
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:878
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
 "attack. The quintain defended with its melee attack (3–5)."
@@ -624,8 +624,8 @@ msgstr ""
 "i>. Iškamša taip pat gynėsi iš arti (3–5)."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:863
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:915
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:919
 msgid ""
 "\n"
 "End your turn, then attack again."
@@ -634,7 +634,7 @@ msgstr ""
 "Baikite savo ėjimą ir tada pulkite vėl."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:879
 msgid ""
 "\n"
 "You should tell the other elf to use the bow."
@@ -643,15 +643,15 @@ msgstr ""
 "Turėtumėte pasakyti kitam elfui naudoti lanką."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:878
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:927
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:882
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:931
 msgid "Attack with the other elf"
 msgstr "Pulkite su kitu elfu"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:914
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:925
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:911
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:918
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:929
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
 "attacks). The quintain has no ranged attack, only a melee attack, so it "
@@ -661,22 +661,22 @@ msgstr ""
 "Iškamša moka kovoti tik iš arti, tad negalėjo apsiginti."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:946
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:950
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Tęsk puolimą su abiem elfais pakol nepribaigsi iškamšos!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:960
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:964
 msgid "Maybe you should recruit another elf?"
 msgstr "Gal tau reiktų pasamdyti kitą elfą?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:964
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:968
 msgid "Unit Descriptions"
 msgstr "Dalinių aprašymai"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:966
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:970
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
@@ -684,12 +684,12 @@ msgstr ""
 "aprašymą</b>."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:987
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:991
 msgid "Protect Your Troops"
 msgstr "Saugokite savo karius"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:989
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:993
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points (XP)"
@@ -701,12 +701,12 @@ msgstr ""
 "galingesniais."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1010
 msgid "Support"
 msgstr "Palaikymas"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1008
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1012
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -715,12 +715,12 @@ msgstr ""
 "Po to, kiekvienas dalinys kainuoja po vieną auksinį per ėjimą."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1023
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1027
 msgid "Advancement"
 msgstr "Patobulėjimai"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1025
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1029
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
 "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will go up "
@@ -735,12 +735,12 @@ msgstr ""
 "brangiau, nei pirmo lygio."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1040
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1044
 msgid "Defenses"
 msgstr "Gynyba"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1043
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1047
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -756,12 +756,12 @@ msgstr ""
 "tikimybe, nepriklausomai nuo to, kokioje vietovėje stovi jo priešininkas. "
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1068
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1072
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "Iškamša nugalėta, o aš gavau daugiau patirties!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1074
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1078
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
@@ -774,7 +774,7 @@ msgstr ""
 "mūsų laukia tikras darbas..."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1078
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1082
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
@@ -787,12 +787,12 @@ msgstr ""
 "mūsų laukia tikras darbas..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1115
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1119
 msgid "Note"
 msgstr "Dėmesio"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1117
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1121
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -801,27 +801,27 @@ msgstr ""
 "išžudykite juos po vieną."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1126
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1130
 msgid "Do you want to keep practicing?"
 msgstr "Ar norėtumėte tęsti praktiką?"
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1128
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1132
 msgid "Yes, I’m still figuring it out."
 msgstr "Taip, aš vis dar aiškinuosi."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1131
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1135
 msgid "No, I think I’ve got it."
 msgstr "Ne, aš jau supratau."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1172
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1176
 msgid "Victory"
 msgstr "Pergalė"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1173
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1177
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over, but you will still be able to examine the final positions "
@@ -854,7 +854,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:44
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:54
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:67
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:385
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:390
 msgid "Galdrad"
 msgstr "Galdradas"
 
@@ -968,23 +968,23 @@ msgid "Thrag"
 msgstr "Tragas"
 
 #. [objective]: condition=win
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:332
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:370
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:337
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "Defeat the Orc Leader"
 msgstr "Nugalėkite orkų vadą"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:336
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:341
 msgid "Death of Konrad"
 msgstr "Konrado mirtis"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:374
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:379
 msgid "Death of Li’sar"
 msgstr "Li’sar mirtis"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:412
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:417
 msgid ""
 "Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
 "of scarecrows, perhaps?"
@@ -993,13 +993,13 @@ msgstr ""
 "Gal baidyklių gaują?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:414
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
 msgid "This is no game, Konrad! "
 msgstr "Tai ne žaidimas, Konradai! "
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:415
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:416
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:420
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:421
 msgid ""
 "Orcs have encamped across the river. This is elven country; they are fools "
 "to enter here. We Elves are fast and hard to hit in forests. You must defeat "
@@ -1011,17 +1011,17 @@ msgstr ""
 "tau patarsiu."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:415
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:420
 msgid "This is no game, Li’sar! "
 msgstr "Tai ne žaidimas, Li’sar! "
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:423
 msgid "What should I do?"
 msgstr "Ką turiu daryti?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:423
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:428
 msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river. He should be little trouble."
@@ -1030,7 +1030,7 @@ msgstr ""
 "neturėtų sukelti didelių problemų."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:424
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:429
 msgid ""
 "By then, their leader will have recruited more units to send against us and "
 "the real fight will begin."
@@ -1039,23 +1039,23 @@ msgstr ""
 "ir prasidės tikroji kova."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:425
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:426
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:427
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:428
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:429
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:430
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:431
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:432
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:433
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:434
 msgid "Shallow"
 msgstr "Negilu"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:430
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:431
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:432
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:435
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:436
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:437
 msgid "Deep water"
 msgstr "Gilus vanduo"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:434
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:439
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1068,7 +1068,7 @@ msgstr ""
 "atsidengę, o mus saugos miškas."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:444
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:449
 msgid ""
 "The more likely attack, then, is across the bridge. That middle island is "
 "the key: it has a village for healing injured units and forests in which we "
@@ -1079,7 +1079,7 @@ msgstr ""
 "mes turime pranašumą."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:450
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:455
 msgid ""
 "To start, we will need some units:\n"
 "two Elvish Fighters\n"
@@ -1092,7 +1092,7 @@ msgstr ""
 "vienos elfų šamanės"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:525
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should <i>recall</i> them now so they can "
@@ -1102,7 +1102,7 @@ msgstr ""
 "<i>sugrąžinti</i>, kad jie ir toliau kauptų patirtį, o ne samdyti naujus."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:528
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
 "and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now so "
@@ -1113,7 +1113,7 @@ msgstr ""
 "patirtį, o ne samdyti naujus."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:534
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:539
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points. "
 "You should recall that unit now, and recruit a second one (which is cheaper "
@@ -1123,12 +1123,12 @@ msgstr ""
 "pasamdyk antrą (kas vis tiek bus pigiau, nei sugrąžinti)."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:537
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:542
 msgid "RECALL $recall_name1"
 msgstr "GRĄŽINTI $recall_name1"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:538
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:543
 msgid ""
 "Right click on the tile north-east of you and <i>recall</i> $recall_name1"
 msgstr ""
@@ -1136,7 +1136,7 @@ msgstr ""
 "<i>sugrąžinkite</i> $recall_name1"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:547
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:552
 msgid ""
 "If any Elvish Fighters from your last battle had experience, we would "
 "<i>recall</i> them to the current battlefield. However, your veterans gained "
@@ -1149,7 +1149,7 @@ msgstr ""
 "naujus. Pasamdyk elfų kovotoją."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:550
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:555
 msgid ""
 "If you had any experienced units alive from your last battle we would "
 "<i>recall</i> them. Instead we must recruit some new Elvish Fighters."
@@ -1158,26 +1158,26 @@ msgstr ""
 "<i>sugrąžintume</i>. Vietoje to, teks samdyti naują elfų kovotoją."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:553
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:809
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:852
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:558
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:814
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:857
 msgid "Elvish Fighter"
 msgstr "Elfų kovotojas"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:554
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:559
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
 msgstr ""
 "Spauskite dešinį pelės klavišą ant šiaurės rytinio langelio ir pasamdykite "
 "elfų kovotoją."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:594
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:599
 msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
 msgstr "Ne! Aš sakiau pasamdyti elfų <i>šamanę</i>! Pabandyk dar kartą..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:603
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:608
 msgid ""
 "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
 "friendly units around her. She also has a special attack which <i>slows</i> "
@@ -1188,12 +1188,12 @@ msgstr ""
 "sumažina jų daromą žalą!"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:604
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:609
 msgid "So, should I end my turn now?"
 msgstr "Tai ar man jau pabaigti ėjimą?"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:606
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:611
 msgid ""
 "While none of your recruited units can move, you still can. Your five units "
 "cost you 5 gold in upkeep, leaving you 3 gold poorer per turn. You need more "
@@ -1204,89 +1204,89 @@ msgstr ""
 "reikia daugiau pajamų."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:608
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:613
 msgid "Move Konrad to capture a village"
 msgstr "Su Konradu užgrobkite kaimą"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:609
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
 msgid "Move Li’sar to capture a village"
 msgstr "Su Li’sar užgrobkite kaimą"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:631
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:670
 msgid "No! I said recruit an Elvish <i>Archer</i>! Now try again..."
 msgstr "Ne! Aš sakiau pasamdyti elfų <i>lankininką</i>! Pabandyk dar kartą..."
 
 #. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:632
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:644
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:637
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:649
 msgid "Eowynial"
 msgstr "Eovynialė"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:648
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:653
 msgid "Shaman"
 msgstr "Šamanė"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:649
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:654
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "Šiauriniame langelyje pasamdyk elfų šamanę."
 
 #. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:671
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:682
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:687
 msgid "Elriend"
 msgstr "Elriendas"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:705
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:710
 msgid "No! I said <i>recall</i> $recall_name2|! Now try again..."
 msgstr "Ne! Sakiau <i>grąžinti</i> $recall_name2|! Pabandyk dar kartą..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:714
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:751
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:719
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:756
 msgid "Archer #1"
 msgstr "Pirmas lankininkas"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:715
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:752
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:720
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:757
 msgid "Archer #2"
 msgstr "Antras lankininkas"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:717
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:754
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:722
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:759
 msgid "Recruit two Elvish Archers in the tiles to your west"
 msgstr "Pasamdykite du elfų lankininkus vakariniuose langeliuose"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:735
 msgid "No! I said recruit an Elvish <i>Fighter</i>! Now try again..."
 msgstr "Ne! Aš sakiau pasamdyti elfų <i>kovotoją</i>! Pabandyk dar kartą..."
 
 #. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:736
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:747
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:752
 msgid "Golir"
 msgstr "Goliras"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:785
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:790
 msgid "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
 msgstr ""
 "Ne! Aš pasakiau grąžinti $recall_name1, o ne $recall_name2|! Bandyk dar "
 "kartą..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:789
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:794
 msgid ""
 "No! I said <i>recall</i> $recall_name1 from the last battle, not recruit a "
 "new $recruit.language_name|! Now try again..."
@@ -1295,27 +1295,27 @@ msgstr ""
 "pasisamdyti naują $recruit.language_name|! Pabandyk dar kartą..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:805
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:810
 msgid "Right click on the tile east of you and recall $recall_name2"
 msgstr ""
 "Spauskite dešinį pelės klavišą ant rytinio langelio ir sugrąžinkite "
 "$recall_name2"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:806
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:811
 msgid "RECALL $recall_name2"
 msgstr "GRĄŽINTI $recall_name2"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:810
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:853
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:815
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:858
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
 msgstr ""
 "Spauskite dešinį pelės klavišą ant rytinio langelio ir pasamdykite elfų "
 "kovotoją"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:833
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:838
 msgid ""
 "$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</i>. "
 "Now try again..."
@@ -1325,19 +1325,19 @@ msgstr ""
 
 #. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:840
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:851
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:856
 msgid "Elindel"
 msgstr "Elindelis"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:880
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
 msgid "You’ve learned well, Konrad! "
 msgstr "Gerai išmokai, Konradai! "
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:881
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:883
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:886
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:888
 msgid ""
 "The village supports one unit and pays 1 gold per turn. You’re only losing 1 "
 "gold per turn now."
@@ -1346,19 +1346,19 @@ msgstr ""
 "tik po vieną auksinį per ėjimą."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:882
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
 msgid "You’ve learned well, Li’sar! "
 msgstr "Gerai išmokai, Li’sar! "
 
 #. [then]
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1015
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:890
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
 msgid "End your turn"
 msgstr "Baikite savo ėjimą"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:891
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:896
 msgid ""
 "You’ve captured all the villages around the keep, but stay near so you can "
 "recruit more units."
@@ -1367,7 +1367,7 @@ msgstr ""
 "daugiau dalinių."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:906
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:911
 msgid ""
 "You should leave the villages near your keep for Konrad to capture. He needs "
 "to stay nearby to recruit more units anyway."
@@ -1376,7 +1376,7 @@ msgstr ""
 "netoli, kad galėtų samdyti daugiau karių."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:907
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:912
 msgid ""
 "You should leave the villages near your keep for Li’sar to capture. She "
 "needs to stay nearby to recruit more units anyway."
@@ -1385,23 +1385,23 @@ msgstr ""
 "kad galėtų samdyti daugiau karių."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:913
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:918
 msgid "Orcish Grunts have no ranged attacks, so use your archers against them."
 msgstr "Orkų pėstininkai nemoka šaudyti, tad prieš juos naudok lankininkus."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:915
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1042
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:920
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1047
 msgid "Attack the orc with an Archer"
 msgstr "Pulkite orką su lankininku"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:916
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
 msgid "<big>Unit Summaries</big>"
 msgstr "<big>Dalinių suvestinės</big>"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:917
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:922
 msgid ""
 "\n"
 "To review the capabilities of any unit—including an enemy—hover the mouse "
@@ -1412,7 +1412,7 @@ msgstr ""
 "ekrano krašte pamatysite dalinio suvestinę su jo sugebėjimais."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:925
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:930
 msgid ""
 "Excellent. Elves are well-protected in the forest. There’s only a 30% chance "
 "of hitting an Elvish Archer in that tile."
@@ -1421,7 +1421,7 @@ msgstr ""
 "sužeisti elfų lankininką."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:934
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:939
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit when the enemy counter-attacks! "
@@ -1431,17 +1431,17 @@ msgstr ""
 "kontratakuos su 80% tikimybe pataikyti! Atšauk!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:940
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:945
 msgid "Attack the orc with the other Archer"
 msgstr "Pulkite orką su kitu lankininku"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:952
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:957
 msgid "Fighter to HERE"
 msgstr "Kovotoją ČIA"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:953
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:958
 msgid ""
 "Your other units cannot reach the orc this turn. Send a Fighter to the "
 "village in the far east of the map. It will take two turns to reach it."
@@ -1450,12 +1450,12 @@ msgstr ""
 "kaimą toli rytuose. Jis užtruks du ėjimus kol jį pasieks."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:954
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:959
 msgid "<big>Long-distance Movement</big>"
 msgstr "<big>Judėjimas dideliais atstumais</big>"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:955
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:960
 msgid ""
 "\n"
 "You can order a unit to move for multiple turns by selecting the unit and "
@@ -1468,12 +1468,12 @@ msgstr ""
 "nurodytą tikslą."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:956
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:961
 msgid "Tell a Fighter to move to the far east village"
 msgstr "Nurodyk kovotojui eiti į kaimą toli rytuose"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:974
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
 msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
 "then return to the keep to recruit more units!"
@@ -1482,44 +1482,44 @@ msgstr ""
 "tada grįžk atgal į bokštą samdyti daugiau karių!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:975
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:980
 msgid "Move your Fighter and Shaman south, then return Konrad to the keep"
 msgstr ""
 "Nuveskite kovotoją ir šamanę į pietus, o tada grąžinkite Konradą į bokštą"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:976
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:981
 msgid "Move your Fighter and Shaman south, then return Li’sar to the keep"
 msgstr ""
 "Nuveskite kovotoją ir šamanę į pietus, o tada grąžinkite Li’sar į bokštą"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:986
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:991
 msgid "Recruit another Archer and a Fighter"
 msgstr "Pasamdykite kitą lankininką ir kovotoją"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1001
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1006
 msgid "I have no more money to recruit!"
 msgstr "Nebeturiu pinigų samdymui!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1002
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
 msgid "That is often a problem, which is why owning villages is important."
 msgstr "Tai dažna problema, todėl turėti kaimus yra svarbu."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1003
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1008
 msgid "Move Konrad to another (unowned) village"
 msgstr "Nuveskite Konradą į kitą (neužgrobtą) kaimą"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1004
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1009
 msgid "Move Li’sar to another (unowned) village"
 msgstr "Nuveskite Li’sar į kitą (neužgrobtą) kaimą"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1029
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1034
 msgid ""
 "That Grunt is blocking the bridge! We must occupy that island before the "
 "Wolf Riders reach it."
@@ -1528,22 +1528,22 @@ msgstr ""
 "vilkų jojikai."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1030
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1035
 msgid "Can’t our units just move around him?"
 msgstr "O ar negali mūsų daliniai paprasčiausiai jį apeiti?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1034
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1035
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1036
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1037
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1038
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1039
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1040
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1041
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1042
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1043
 msgid "ZoC"
 msgstr "KZ"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1041
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1046
 msgid ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
 "i> and cannot move further that turn.\n"
@@ -1556,14 +1556,14 @@ msgstr ""
 
 #. [then]
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1068
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1079
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1073
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1084
 msgid "Advance other units and capture villages, then <b>End Turn</b>"
 msgstr ""
 "Veskite kitus dalinius į priekį, užimkite kaimus, tuomet <b>baikite ėjimą</b>"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1071
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1076
 msgid ""
 "No other units can reach that orc. I hope my $unit.type survives its counter-"
 "attack! I’d better grab more villages and move everyone closer for next turn."
@@ -1573,7 +1573,7 @@ msgstr ""
 "arčiau mūšio kitam ėjimui."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1072
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1077
 msgid ""
 "Yes. If your Shaman stands just behind that unit on the bridge, she will "
 "heal it at the beginning of the next turn."
@@ -1582,19 +1582,19 @@ msgstr ""
 "kito ėjimo pradžioje."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1073
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1078
 msgid "Move your Shaman onto the bridge to stand behind your other unit"
 msgstr "Nuveskite šamanę ant tilto greta kito dalinio"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1119
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1124
 msgid ""
 "Be careful: if you stand on the bridge you are exposed to attack from "
 "multiple directions!"
 msgstr "Atsargiai! Stovint ant tilto, galite būti užpultas iš daugelio pusių!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1132
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1137
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit! Cancel, and wait for them to "
@@ -1604,7 +1604,7 @@ msgstr ""
 "kontratakuos su 80% tikimybe pataikyti! Atšauk ir leisk jiems pulti pirmiems!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1142
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1147
 msgid ""
 "Don’t forget about your Fighter in the east; you can move him south to that "
 "last village near the channel."
@@ -1613,7 +1613,7 @@ msgstr ""
 "brastos."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1147
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1152
 msgid ""
 "We need to occupy that village, otherwise they will take it next turn! Move "
 "a unit into the village to stop the orcs capturing it. Whichever unit you "
@@ -1624,7 +1624,7 @@ msgstr ""
 "pasigydyti."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1159
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1164
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
 "attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
@@ -1638,12 +1638,12 @@ msgstr ""
 "naktis jų neveikia."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1160
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1165
 msgid "<big>Time of Day</big>"
 msgstr "<big>Dienos laikas</big>"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1161
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1166
 msgid ""
 "\n"
 "After this dialog, hold the mouse over the landscape image above the minimap "
@@ -1656,7 +1656,7 @@ msgstr ""
 "pranašumas."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1168
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1173
 msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
 "hitpoints at a time, while villages can heal 8 (the maximum healing for any "
@@ -1667,12 +1667,12 @@ msgstr ""
 "daliniui)."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1175
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1180
 msgid "Defend here"
 msgstr "Ginkitės čia"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1176
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1181
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
 "be hard to dislodge!"
@@ -1681,12 +1681,12 @@ msgstr ""
 "iškrapštyti."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1182
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1187
 msgid "<big>Tracking Unused Units</big>"
 msgstr "<big>Nepanaudotų dalinių peržiūra</big>"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1183
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1188
 msgid ""
 "\n"
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
@@ -1703,12 +1703,12 @@ msgstr ""
 "dalinio, galima baigti ėjimą."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1188
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1193
 msgid "<big>Victory Conditions</big>"
 msgstr "<big>Pergalės sąlygos</big>"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1189
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1194
 msgid ""
 "\n"
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
@@ -1721,12 +1721,12 @@ msgstr ""
 "<b>Meniu</b>)."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1194
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1199
 msgid "<big>Recruit the Right Unit Types</big>"
 msgstr "<big>Tinkamų dalinių samdymas</big>"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1195
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1200
 msgid ""
 "\n"
 "Remember to recruit troops useful for the situation. Archers are "
@@ -1738,7 +1738,7 @@ msgstr ""
 "vadą."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1213
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1218
 msgid ""
 "Stay near the keep! You need to be on a keep to recruit more units, and I "
 "doubt the orc leader will let you use his!"
@@ -1747,7 +1747,7 @@ msgstr ""
 "dalinių, o aš nemanau, kad orkų vadas tau paskolintų savųjų!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1227
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1232
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -1756,7 +1756,7 @@ msgstr ""
 "ir ten geriau gintis."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1243
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
@@ -1765,7 +1765,7 @@ msgstr ""
 "dar gerai ginasi."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1250
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1255
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -1774,8 +1774,8 @@ msgstr ""
 "tikiuosi, kad žinai ką darysi, jei aš nepataikysiu!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1286
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1302
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1291
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1307
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
 "16 experience points because he is second level. Choose your attacking unit "
@@ -1785,7 +1785,7 @@ msgstr ""
 "taškų, nes vadas yra antro lygio. Gerai pagalvok kam labiau reikia!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1351
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1356
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
 "points. He would have advanced to second level soon."
@@ -1794,7 +1794,7 @@ msgstr ""
 "taškų. Jau greitai būtų pasiekęs antrą lygį."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1354
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1359
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points. She would have advanced to second level soon."
@@ -1803,7 +1803,7 @@ msgstr ""
 "taškų. Jau greitai būtų pasiekusi antrą lygį."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1371
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1376
 msgid ""
 "We will miss $deadguy.name|, but at least he was not one of our experienced "
 "troops!"
@@ -1812,7 +1812,7 @@ msgstr ""
 "mirtis!"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1374
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1379
 msgid ""
 "We will miss $deadguy.name|, but at least she was not one of our experienced "
 "troops!"
@@ -1821,19 +1821,19 @@ msgstr ""
 "mirtis!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1389
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1394
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
 "Visi kariai kenčia, kai netenka gydytojo! Neleisk priešams jų pasiekti!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1390
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1395
 msgid "<big>Tracking Enemy Movement</big>"
 msgstr "<big>Priešo stebėjimas</big>"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1391
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1396
 msgid ""
 "\n"
 "You can see where an enemy can reach by moving the mouse over them. You can "
@@ -1846,7 +1846,7 @@ msgstr ""
 "<b>Rodyti priešų ėjimus</b> iš <b>Veiksmų</b> meniu."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1395
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1400
 msgid ""
 "Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
 "name|."
@@ -1855,7 +1855,7 @@ msgstr ""
 "name|."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1410
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1415
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
@@ -1864,7 +1864,7 @@ msgstr ""
 "dieną iš karto su daugeliu dalinių."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1431
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1436
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
@@ -1876,7 +1876,7 @@ msgstr ""
 "naikinant dalinius, į kuriuos sunku pataikyti."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1445
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
@@ -1888,7 +1888,7 @@ msgstr ""
 "dalinius, į kuriuos sunku pataikyti."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1456
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1461
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, and I have a special ability: <i>Ambush</"
@@ -1901,7 +1901,7 @@ msgstr ""
 "tada, jeigu prieis prie pat."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1470
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1475
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, and I have a special ability: "
@@ -1914,7 +1914,7 @@ msgstr ""
 "tad mano nauda priklauso nuo to, kur stoviu."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1485
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1490
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword, dealing 8 damage in 4 attacks."
@@ -1923,12 +1923,12 @@ msgstr ""
 "Aš ypač gerai valdau kalaviją, darau 8 taškus žalos po 4 smūgius per ėjimą."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1653
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1658
 msgid "You took too long! We’ll never be rid of these orcs!"
 msgstr "Užtrukai per ilgai! Niekada neatsikratysime šių orkų!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1671
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1676
 msgid ""
 "You have beaten the orcs! You may want to try some novice-level campaigns "
 "next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A Tale "
