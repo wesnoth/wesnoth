@@ -25,6 +25,7 @@
 #include "config.hpp"
 #include "../../image.hpp"
 #include "foreach.hpp"
+#include "formatter.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/formula.hpp"
 #include "gui/auxiliary/log.hpp"
@@ -832,27 +833,35 @@ void timage::draw(surface& canvas
 	local_variables.add("image_original_height", variant(image_->h));
 
 	unsigned w = w_(local_variables);
-	if(w && static_cast<int>(w) < 0) {
-		ERR_GUI_D << "Image: file '"
-				<< image_name_(variables)
-				<< "' won't be drawn due to a negative width of "
-				<< static_cast<int>(w) << ".\n";
-		return;
-	}
+	VALIDATE_WITH_DEV_MESSAGE(
+			  static_cast<int>(w) >= 0
+			, _("Image doesn't fit on canvas.")
+			, (formatter() << "Image '" << name
+				<< "', w = " << static_cast<int>(w) << ".").str());
 
 	unsigned h = h_(local_variables);
-	if(h && static_cast<int>(h) < 0) {
-		ERR_GUI_D << "Image: file '"
-				<< image_name_(variables)
-				<< "' won't be drawn due to a negative height of "
-				<< static_cast<int>(h) << ".\n";
-		return;
-	}
+	VALIDATE_WITH_DEV_MESSAGE(
+			  static_cast<int>(h) >= 0
+			, _("Image doesn't fit on canvas.")
+			, (formatter() << "Image '" << name
+				<< "', h = " << static_cast<int>(h) << ".").str());
 
 	local_variables.add("image_width", variant(w ? w : image_->w));
 	local_variables.add("image_height", variant(h ? h : image_->h));
+
 	const unsigned x = x_(local_variables);
+	VALIDATE_WITH_DEV_MESSAGE(
+			  static_cast<int>(x) >= 0
+			, _("Image doesn't fit on canvas.")
+			, (formatter() << "Image '" << name
+				<< "', x = " << static_cast<int>(x) << ".").str());
+
 	const unsigned y = y_(local_variables);
+	VALIDATE_WITH_DEV_MESSAGE(
+			  static_cast<int>(y) >= 0
+			, _("Image doesn't fit on canvas.")
+			, (formatter() << "Image '" << name
+				<< "', y = " << static_cast<int>(y) << ".").str());
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;
