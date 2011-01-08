@@ -5,12 +5,6 @@ add_custom_target(update-po4a)
 
 ############ Settings. ###########
 
-# Available languages.
-#first read in the space separated list
-file(STRINGS LINGUAS LANGUAGES)
-#convert all spaces into ; to have a nice "set"
-separate_arguments(LANGUAGES)
-
 # The normal domains use cpp and cfg files.
 set(NORMAL_DOMAINS
     wesnoth
@@ -146,7 +140,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 		)
 
 		# Update / generate the po files for all languages
-		foreach(LANG ${LANGUAGES})
+		foreach(LINGUA ${LINGUAS})
 
 			### Generate new po file.
 
@@ -155,42 +149,42 @@ if(ENABLE_POT_UPDATE_TARGET)
 			# if the po file doesn't exist. The case where a po file used to
 			# exist and no longer exists should never occur
 
-			if(NOT EXISTS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po)
+			if(NOT EXISTS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po)
 				add_custom_command(
-					OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po
+					OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po
 					COMMAND ${GETTEXT_MSGINIT_EXECUTABLE}
 							--no-translator 
 							--input=${DOMAIN}.pot 
-							--output-file=${LANG}.po
-							--locale=${LANG}
+							--output-file=${LINGUA}.po
+							--locale=${LINGUA}
 					WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
 					DEPENDS
 						${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot
 					COMMENT 
-						"pot-update [${DOMAIN}-${LANG}]: Initialized po file."
+						"pot-update [${DOMAIN}-${LINGUA}]: Initialized po file."
 				)
-			endif(NOT EXISTS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po)
+			endif(NOT EXISTS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po)
 
 			### Update existing po file.
 			add_custom_command(
 				# The pot-update depends on a dummy file which we promise to
 				# make. We don't make this dummy file but the pot-update
 				# still works.
-				OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po.dummy
+				OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po.dummy
 				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} 
 						--backup=none
-						-U ${LANG}.po 
+						-U ${LINGUA}.po 
 						${DOMAIN}.pot
 				DEPENDS
 					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot 
-					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po
+					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po
 				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
-				COMMENT "pot-update [${DOMAIN}-${LANG}]: Updated po file."
+				COMMENT "pot-update [${DOMAIN}-${LINGUA}]: Updated po file."
 			)
 
-			SET(pot-update-SRC ${pot-update-SRC} ${DOMAIN}/${LANG}.po.dummy)
+			SET(pot-update-SRC ${pot-update-SRC} ${DOMAIN}/${LINGUA}.po.dummy)
 
-		endforeach(LANG ${LANGUAGES})
+		endforeach(LINGUA ${LINGUAS})
 
 		# Add to target list
 		SET(pot-update-SRC 
@@ -208,44 +202,44 @@ if(ENABLE_POT_UPDATE_TARGET)
 
 
 	##### po update per language #####
-	foreach(LANG ${LANGUAGES})
+	foreach(LINGUA ${LINGUAS})
 		foreach(DOMAIN ${DOMAINS})
 			add_custom_command(
 				# The pot-update depends on a dummy file which we promise to
 				# make. We don't make this dummy file but the pot-update
 				# still works.
-				OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po.lang.dummy
+				OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po.lang.dummy
 				# After the po file is updated it might look not entirely as
 				# wanted, for example poedit reorders the file. Use msgattrib
 				# to reformat the file, use a helper file to do so.
 				COMMAND ${GETTEXT_MSGATTRIB_EXECUTABLE}
-						--output ${LANG}.po.tmp
-						${LANG}.po
+						--output ${LINGUA}.po.tmp
+						${LINGUA}.po
 				COMMAND ${CMAKE_COMMAND} -E copy
-						${LANG}.po.tmp
-						${LANG}.po
+						${LINGUA}.po.tmp
+						${LINGUA}.po
 				COMMAND ${CMAKE_COMMAND} -E remove
-						${LANG}.po.tmp
+						${LINGUA}.po.tmp
 				# Now merge with the pot file.
 				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE}
 						--backup=none
-						-U ${LANG}.po
+						-U ${LINGUA}.po
 						${DOMAIN}.pot
 				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
-				COMMENT "po-update [${DOMAIN}-${LANG}]: Updated po file."
+				COMMENT "po-update [${DOMAIN}-${LINGUA}]: Updated po file."
 			)
 
-			set(po-update-LANG-SRC ${po-update-LANG-SRC} 
-				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po.lang.dummy
+			set(po-update-LINGUA-SRC ${po-update-LINGUA-SRC} 
+				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po.lang.dummy
 			)
 
 		endforeach(DOMAIN ${DOMAINS})
-		add_custom_target(po-update-${LANG}
-			COMMENT "po-update ${LANG}: Done."
-			DEPENDS ${po-update-LANG-SRC}
+		add_custom_target(po-update-${LINGUA}
+			COMMENT "po-update ${LINGUA}: Done."
+			DEPENDS ${po-update-LINGUA-SRC}
 		)
-		set(po-update-LANG-SRC "")
-	endforeach(LANG ${LANGUAGES})
+		set(po-update-LINGUA-SRC "")
+	endforeach(LINGUA ${LINGUAS})
 
 endif(ENABLE_POT_UPDATE_TARGET)
 
@@ -256,50 +250,50 @@ if(ENABLE_NLS)
 		set(GETTEXT_MSGFMT_PARAMETER -v)
 	endif(ENABLE_POT_UPDATE_TARGET)
 
-	foreach(LANG ${LANGUAGES})
+	foreach(LINGUA ${LINGUAS})
 
 		foreach(DOMAIN ${DOMAINS})
 
 			add_custom_command(
-				OUTPUT ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES
+				OUTPUT ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES
 				COMMAND ${CMAKE_COMMAND} -E make_directory 
-						${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES
-				COMMENT "mo-update [${LANG}]: Creating locale directory."
+						${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES
+				COMMENT "mo-update [${LINGUA}]: Creating locale directory."
 			)
 
 			add_custom_command(
-				OUTPUT ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo
+				OUTPUT ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo
 				COMMAND ${GETTEXT_MSGFMT_EXECUTABLE}
 						${GETTEXT_MSGFMT_PARAMETER}
-						-o ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo ${LANG}.po
+						-o ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo ${LINGUA}.po
 				DEPENDS 
-					${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES
-					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po
+					${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES
+					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po
 				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
-				COMMENT "mo-update [${DOMAIN}-${LANG}]: Creating mo file."
+				COMMENT "mo-update [${DOMAIN}-${LINGUA}]: Creating mo file."
 			)
 
-			install(FILES ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo
-					DESTINATION ${LOCALE_INSTALL}/${LANG}/LC_MESSAGES)
+			install(FILES ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo
+					DESTINATION ${LOCALE_INSTALL}/${LINGUA}/LC_MESSAGES)
 
 			set(mo-update-SRC ${mo-update-SRC} 
-				${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo
+				${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo
 			)
-			set(mo-update-LANG-SRC ${mo-update-LANG-SRC} 
-				${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo
+			set(mo-update-LINGUA-SRC ${mo-update-LINGUA-SRC} 
+				${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo
 			)
 
 		endforeach(DOMAIN ${DOMAINS})
 
 		if(ENABLE_POT_UPDATE_TARGET)
-			add_custom_target(mo-update-${LANG}
-				COMMENT "mo-update ${LANG}: Done."
-				DEPENDS ${mo-update-LANG-SRC}
+			add_custom_target(mo-update-${LINGUA}
+				COMMENT "mo-update ${LINGUA}: Done."
+				DEPENDS ${mo-update-LINGUA-SRC}
 			)
-			set(mo-update-LANG-SRC "")
+			set(mo-update-LINGUA-SRC "")
 		endif(ENABLE_POT_UPDATE_TARGET)
 
-	endforeach(LANG ${LANGUAGES})
+	endforeach(LINGUA ${LINGUAS})
 
 	# The target to call
 	add_custom_target(mo-update ALL
