@@ -31,5 +31,5 @@ lstrlib.c
 loadlib.c
 linit.c
 """)
-liblua = env.Library("lua", lua_sources, CCCOM = env["CXXCOM"], CPPPATH = ["$CPPPATH", Dir(".").srcnode()])
+liblua = env.Library("lua", lua_sources, CCCOM = env["CXXCOM"], CPPPATH = [Dir(".").srcnode()])
 Return("liblua")
