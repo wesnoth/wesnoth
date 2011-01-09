@@ -44,15 +44,15 @@ namespace editor {
  * radius & integer & 0 & &
  *         Include in the brushall hexes that are this or closer to the center
  *         of the brush, excluding the (0,0) point. $
- * [relative] & node & * & & Include in the brush a single hex with
- *         coordinates relative from the center of the brush. $
+ * [relative] & node & 1 & & Include in the brush a single hex with
+ *         coordinates relative from the center of the brush. $ 
  *
  *     @begin{description}{wml_reference}
  *     x & int & 0 & & The relative x coordinate. $
  *     y & int & 0 & & The relative y coordinate. $
- *     @end{description}{wml_reference}
+ *     @end{description} 
  *
- * @end{description}{wml_reference}
+ * @end{description}
  * A brush that has neither a radius nor any [relative] hexes will be empty
  * which is not desired and a warning or error is to be expected.
  */

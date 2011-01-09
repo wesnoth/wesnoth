@@ -73,13 +73,13 @@ if __name__ == "__main__":
     # current block being processed
     current_block = ""
 
-    def is_empty_table(res, data):
+    def is_empty(res, data):
         """
         This checks whether or not a table is empty and writes to stderr if it is.
         It returns True if the table is empty, False otherwise.
         """
         if not res:
-            sys.stderr.write("Empty table:\n%s\n" % data)
+            sys.stderr.write("Empty container:\n%s\n" % data)
             return True
         return False
 
@@ -148,13 +148,12 @@ if __name__ == "__main__":
         # matches a line like
         # x1 & f_unsigned & 0 &            The x coordinate of the
         # startpoint. $
-        # x1 & f_unsigned &               The x coordinate of the
+        # x1 & f_unsigned & &              The x coordinate of the
         # startpoint. $
         regex = re.compile("([A-Za-z]\w*) +& +([A-Za-z]\w*) +& +([^&]*?) *& +(.*) +\$")
         res = regex.findall(data)
 
-        # empty table
-        if is_empty_table(res, data):
+        if is_empty(res, data):
             return "Empty table."
 
         result = '{| border="1"'
@@ -184,8 +183,7 @@ if __name__ == "__main__":
         regex = re.compile("([A-Za-z]\w*) +& +([A-Za-z]\w*) +& +(.*) +\$")
         res = regex.findall(data)
 
-        # empty table
-        if is_empty_table(res, data):
+        if is_empty(res, data):
             return "Empty table."
 
         result = '{| border="1"'
@@ -208,8 +206,7 @@ if __name__ == "__main__":
         regex = re.compile("([A-Za-z]\w*) +& +(.*) +\$")
         res = regex.findall(data)
 
-        # empty table
-        if is_empty_table(res, data):
+        if is_empty(res, data):
             return "Empty table."
 
         result = '{| border="1"'
@@ -229,8 +226,7 @@ if __name__ == "__main__":
         regex = re.compile("([A-Za-z]\w*) +& +(.*) +\$")
         res = regex.findall(data)
 
-        # empty table
-        if is_empty_table(res, data):
+        if is_empty(res, data):
             return "Empty table."
 
         result = '{| border="1"'
@@ -254,8 +250,7 @@ if __name__ == "__main__":
         regex = re.compile("([A-Za-z]\w*) +& +(.*) +\$")
         res = regex.findall(data)
 
-        # empty table
-        if is_empty_table(res, data):
+        if is_empty(res, data):
             return "Empty table."
 
         result = '{| border="1"'
@@ -283,7 +278,7 @@ if __name__ == "__main__":
 
         res = re.compile(regex, re.VERBOSE).findall(data)
 
-        if is_empty_table(res, data):
+        if is_empty(res, data):
             return "Empty table."
 
         result = '{| border="1"'
@@ -333,17 +328,59 @@ if __name__ == "__main__":
             sys.stderr.write("Unknown table definition '%s'.\n" % type)
             return "Unknown table definition '%s'." % type
 
+    def create_wml_reference_description(data):
+        # Matches a line like:
+        # name & string & "" & 1.5 & description
+        # [relative] & node & * & & description
+
+        regex = re.compile("(.*) +& +(.*) +& *(.*) *& +(.*) *& *(.*) +\$")
+        res = regex.findall(data)
+
+        if is_empty(res, data):
+            return "Empty description"
+
+        result = ''
+
+        for i in res:
+           # We don't strip i[0] because it allows to take care of
+           # nested items that are of the same type and that are 4
+           # spaces indented.
+           result += "%s '''''%s''''' " % ("*" * (i[0].rstrip().count(' ') / 4 + 1), i[0].strip())
+           if i[1] != 'node':
+               result += "(%s, ''%s'') " % (i[1], "default " + i[2].rstrip() if i[2] else "'mandatory'")
+           else:
+               result += "(%s) " % {'*': "zero or more times", '+': "one or more times", '?': "zero or one times", '1': "one time", '': "empty string bug."}[i[2].rstrip()]
+           result += "%s" % i[4]
+           if i[3]:
+               result += " {{DevFeature%s}}" % i[3].replace(' ', '')
+           result += "\n"
+        return result
+
+    def create_description(description):
+        """Wrapper for creating descriptions."""
+        type = description.group(1)
+
+        descriptions = {
+            "wml_reference": create_wml_reference_description}
+
+        try:
+            return descriptions[type](description.group(2) + "\n")
+        except KeyError:
+            sys.stderr.write("Unknown description definition '%s' .\n" % type)
+            return "Unknown description definition '%s'." % type
+
     def process_body(data):
         """Process the body.
 
         The body needs to be stripped of known markup values.
         """
 
-        #table_regex = re.compile("^@start_table *= *(.*?)\n(.*?)\n@end_table.*?$", re.M | re.S)
-        #data = table_regex.sub(lambda match: create_table(match), data)
 
         table_regex = re.compile("^@begin{table}\{(.*?)\}\n(.*?)\n@end{table}$", re.M | re.S)
         data = table_regex.sub(lambda match: create_table(match), data)
+
+        description_regex = re.compile("^@begin{description}\{(.*?)\}\n(.*?)\n@end{description}$", re.M | re.S)
+        data = description_regex.sub(lambda match: create_description(match), data)
         return data
 
     def process(data):
