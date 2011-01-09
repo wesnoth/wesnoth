@@ -1087,13 +1087,13 @@ void preferences_dialog::set_friends_menu()
 	for (i = friends.begin(); i != friends.end(); ++i)
 	{
 		friends_items.push_back(imgpre + "friend.png" + COLUMN_SEPARATOR
-				+ *i + COLUMN_SEPARATOR + "friend");
+				+ *i + COLUMN_SEPARATOR + _("friend"));
 		friends_names.push_back(*i);
 	}
 	for (i = ignores.begin(); i != ignores.end(); ++i)
 	{
 		friends_items.push_back(imgpre + "ignore.png" + COLUMN_SEPARATOR
-				+ *i + COLUMN_SEPARATOR + "ignored");
+				+ *i + COLUMN_SEPARATOR + _("ignored"));
 		friends_names.push_back(*i);
 	}
 	if (friends_items.empty()) {
