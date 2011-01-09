@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-08 13:43+0100\n"
+"POT-Creation-Date: 2011-01-10 00:26+0100\n"
 "PO-Revision-Date: 2010-12-09 15:57+0300\n"
 "Last-Translator: O_o <mm-94@mail.ru>\n"
 "Language-Team: ZumZoom\n"
@@ -1038,8 +1038,8 @@ msgstr "Играть кампанию"
 #: data/gui/default/window/simple_item_selector.cfg:134
 #: data/gui/default/window/unit_create.cfg:189
 #: data/gui/default/window/unit_create.cfg:190
-#: data/gui/default/window/wml_message.cfg:468
-#: data/gui/default/window/wml_message.cfg:689 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:470
+#: data/gui/default/window/wml_message.cfg:691 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
@@ -2554,6 +2554,16 @@ msgstr "да"
 msgid "no"
 msgstr "нет"
 
+#: src/game_preferences_display.cpp:1090
+#, fuzzy
+msgid "friend"
+msgstr "Друзья"
+
+#: src/game_preferences_display.cpp:1096
+#, fuzzy
+msgid "ignored"
+msgstr "Нет игнорируемых"
+
 #: src/game_preferences_display.cpp:1100
 msgid "(empty list)"
 msgstr "(список пуст)"
@@ -2599,19 +2609,25 @@ msgstr "Неизвестная тема. Попробуйте поменять �
 msgid "Find $filename server binary to host networked games"
 msgstr "Найти сервер $filename, на котором будут хоститься сетевые игры."
 
-#: src/gui/auxiliary/canvas.cpp:486
+#: src/gui/auxiliary/canvas.cpp:487
 msgid "Line doesn't fit on canvas."
 msgstr "Линия не помещается на подложке."
 
-#: src/gui/auxiliary/canvas.cpp:622
+#: src/gui/auxiliary/canvas.cpp:623
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Прямоугольник не помещается на подложке."
 
-#: src/gui/auxiliary/canvas.cpp:1058
+#: src/gui/auxiliary/canvas.cpp:838 src/gui/auxiliary/canvas.cpp:845
+#: src/gui/auxiliary/canvas.cpp:855 src/gui/auxiliary/canvas.cpp:862
+#, fuzzy
+msgid "Image doesn't fit on canvas."
+msgstr "Линия не помещается на подложке."
+
+#: src/gui/auxiliary/canvas.cpp:1067
 msgid "Text has a font size of 0."
 msgstr "Размер шрифта текста 0."
 
-#: src/gui/auxiliary/canvas.cpp:1127
+#: src/gui/auxiliary/canvas.cpp:1136
 msgid "Text doesn't start on canvas."
 msgstr "Начало текста за пределами подложки."
 
@@ -3432,7 +3448,7 @@ msgstr "Найдена  со строкой из более чем 4 симво�
 msgid "The text contains invalid markup: "
 msgstr "Текст содержит недопустимую разметку: "
 
-#: src/wml_exception.cpp:48
+#: src/wml_exception.cpp:56
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -3440,12 +3456,12 @@ msgstr ""
 "Произошла ошибка, возможно, связанная с неверным WML кодом\n"
 "Сообщение об ошибке :"
 
-#: src/wml_exception.cpp:50
+#: src/wml_exception.cpp:58
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
 "Если будете отсылать багрепорт, включите, пожалуйста, следующее сообщение:"
 
-#: src/wml_exception.cpp:68
+#: src/wml_exception.cpp:76
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -3453,7 +3469,7 @@ msgstr ""
 "В разделе '[$section|]', где '$primary_key| = $primary_value', не задан "
 "обязательный параметр '$key|' ."
 
-#: src/wml_exception.cpp:71
+#: src/wml_exception.cpp:79
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "В разделе '[$section|]' не задан обязательный параметр '$key|' ."
 

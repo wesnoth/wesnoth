@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-08 13:43+0100\n"
+"POT-Creation-Date: 2011-01-10 00:26+0100\n"
 "PO-Revision-Date: 2009-04-12 14:55+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -1123,8 +1123,8 @@ msgstr "Seferberlik"
 #: data/gui/default/window/simple_item_selector.cfg:134
 #: data/gui/default/window/unit_create.cfg:189
 #: data/gui/default/window/unit_create.cfg:190
-#: data/gui/default/window/wml_message.cfg:468
-#: data/gui/default/window/wml_message.cfg:689 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:470
+#: data/gui/default/window/wml_message.cfg:691 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
@@ -2685,6 +2685,15 @@ msgstr "evet"
 msgid "no"
 msgstr "hayır"
 
+#: src/game_preferences_display.cpp:1090
+#, fuzzy
+msgid "friend"
+msgstr "Arkadaşlar Listesi"
+
+#: src/game_preferences_display.cpp:1096
+msgid "ignored"
+msgstr ""
+
 #: src/game_preferences_display.cpp:1100
 msgid "(empty list)"
 msgstr "(boş liste)"
@@ -2732,19 +2741,25 @@ msgstr "Bilinen bir tema yok. Mevcut bir oyunun içinden değiştirmeyi deneyin.
 msgid "Find $filename server binary to host networked games"
 msgstr "Ağ oyunlarını sunacak $filename sunucu çalıştırılabilirini bulur."
 
-#: src/gui/auxiliary/canvas.cpp:486
+#: src/gui/auxiliary/canvas.cpp:487
 msgid "Line doesn't fit on canvas."
 msgstr "Çizgi tuvale sığmıyor."
 
-#: src/gui/auxiliary/canvas.cpp:622
+#: src/gui/auxiliary/canvas.cpp:623
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Dörtgen tuvali sığmıyor."
 
-#: src/gui/auxiliary/canvas.cpp:1058
+#: src/gui/auxiliary/canvas.cpp:838 src/gui/auxiliary/canvas.cpp:845
+#: src/gui/auxiliary/canvas.cpp:855 src/gui/auxiliary/canvas.cpp:862
+#, fuzzy
+msgid "Image doesn't fit on canvas."
+msgstr "Çizgi tuvale sığmıyor."
+
+#: src/gui/auxiliary/canvas.cpp:1067
 msgid "Text has a font size of 0."
 msgstr "Yazı tipi boyutu 0."
 
-#: src/gui/auxiliary/canvas.cpp:1127
+#: src/gui/auxiliary/canvas.cpp:1136
 msgid "Text doesn't start on canvas."
 msgstr "Metin tuvale sığmıyor."
 
@@ -3578,7 +3593,7 @@ msgstr "Dizgesi 4 karakterden daha uzun bir arazi bulundu; etkilenen zemin:"
 msgid "The text contains invalid markup: "
 msgstr ""
 
-#: src/wml_exception.cpp:48
+#: src/wml_exception.cpp:56
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -3586,13 +3601,13 @@ msgstr ""
 "Muhtemelen geçersiz bir WML’den dolayı bir hata oluştu\n"
 "Hata iletisi:"
 
-#: src/wml_exception.cpp:50
+#: src/wml_exception.cpp:58
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
 "Yazılım hatası bildirirken lütfen aşağıdaki hata iletisini belirtmeyi "
 "unutmayın:"
 
-#: src/wml_exception.cpp:68
+#: src/wml_exception.cpp:76
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -3600,7 +3615,7 @@ msgstr ""
 "‘[$section|]’ bölümünde ‘$primary_key| = $primary_value’ olan yerde zorunlu "
 "‘$key|’ anahtarı belirtilmemiş."
 
-#: src/wml_exception.cpp:71
+#: src/wml_exception.cpp:79
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
 

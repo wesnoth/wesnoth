@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-08 13:43+0100\n"
+"POT-Creation-Date: 2011-01-10 00:26+0100\n"
 "PO-Revision-Date: 2010-12-11 23:31+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -1104,8 +1104,8 @@ msgstr "キャンペーンをプレイする"
 #: data/gui/default/window/simple_item_selector.cfg:134
 #: data/gui/default/window/unit_create.cfg:189
 #: data/gui/default/window/unit_create.cfg:190
-#: data/gui/default/window/wml_message.cfg:468
-#: data/gui/default/window/wml_message.cfg:689 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:470
+#: data/gui/default/window/wml_message.cfg:691 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
@@ -2625,6 +2625,16 @@ msgstr "はい"
 msgid "no"
 msgstr "いいえ"
 
+#: src/game_preferences_display.cpp:1090
+#, fuzzy
+msgid "friend"
+msgstr "友人"
+
+#: src/game_preferences_display.cpp:1096
+#, fuzzy
+msgid "ignored"
+msgstr "無視していない"
+
 #: src/game_preferences_display.cpp:1100
 msgid "(empty list)"
 msgstr "(空のリスト)"
@@ -2672,19 +2682,25 @@ msgid "Find $filename server binary to host networked games"
 msgstr ""
 "ネットワークゲームを立てるために $filename サーバーのバイナリを探します"
 
-#: src/gui/auxiliary/canvas.cpp:486
+#: src/gui/auxiliary/canvas.cpp:487
 msgid "Line doesn't fit on canvas."
 msgstr "線がキャンバスに合いません。"
 
-#: src/gui/auxiliary/canvas.cpp:622
+#: src/gui/auxiliary/canvas.cpp:623
 msgid "Rectangle doesn't fit on canvas."
 msgstr "長方形がキャンバスに合いません。"
 
-#: src/gui/auxiliary/canvas.cpp:1058
+#: src/gui/auxiliary/canvas.cpp:838 src/gui/auxiliary/canvas.cpp:845
+#: src/gui/auxiliary/canvas.cpp:855 src/gui/auxiliary/canvas.cpp:862
+#, fuzzy
+msgid "Image doesn't fit on canvas."
+msgstr "線がキャンバスに合いません。"
+
+#: src/gui/auxiliary/canvas.cpp:1067
 msgid "Text has a font size of 0."
 msgstr "テキストのフォントサイズが 0 です。"
 
-#: src/gui/auxiliary/canvas.cpp:1127
+#: src/gui/auxiliary/canvas.cpp:1136
 msgid "Text doesn't start on canvas."
 msgstr "テキストがキャンバスから始まっていません。"
 
@@ -3509,7 +3525,7 @@ msgstr "4 文字以上の文字列の地形が見つかりました。影響さ�
 msgid "The text contains invalid markup: "
 msgstr ""
 
-#: src/wml_exception.cpp:48
+#: src/wml_exception.cpp:56
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -3517,11 +3533,11 @@ msgstr ""
 "無効な WML が原因だと思われるエラーが起こりました\n"
 "エラーメッセージは :"
 
-#: src/wml_exception.cpp:50
+#: src/wml_exception.cpp:58
 msgid "When reporting the bug please include the following error message :"
 msgstr "バグを報告する際には以下のエラーメッセージを含めてください :"
 
-#: src/wml_exception.cpp:68
+#: src/wml_exception.cpp:76
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -3529,7 +3545,7 @@ msgstr ""
 "「 $primary_key| = $primary_value 」である「 [$section|] 」セクションにおいて"
 "必須のキー「 $key| 」が設定されていません。"
 
-#: src/wml_exception.cpp:71
+#: src/wml_exception.cpp:79
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "「 [$section|] 」セクションにおいて必須のキー「 $key| 」が設定されていませ"
