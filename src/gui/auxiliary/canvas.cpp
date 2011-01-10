@@ -225,7 +225,11 @@ tline::tline(const config& cfg)
 	, y1_(cfg["y1"])
 	, x2_(cfg["x2"])
 	, y2_(cfg["y2"])
-	, color_(decode_color(cfg.get_old_attribute("color","colour")))
+	, color_(decode_color(get_renamed_config_attribute(
+			  cfg
+			, "colour"
+			, "color"
+			, "1.9.6")))
 	, thickness_(cfg["thickness"])
 {
 /*WIKI
@@ -557,8 +561,16 @@ trectangle::trectangle(const config& cfg)
 	, w_(cfg["w"])
 	, h_(cfg["h"])
 	, border_thickness_(cfg["border_thickness"])
-	, border_color_(decode_color(cfg.get_old_attribute("border_color","border_colour")))
-	, fill_color_(decode_color(cfg.get_old_attribute("fill_color","fill_colour")))
+	, border_color_(decode_color(get_renamed_config_attribute(
+			  cfg
+			, "border_colour"
+			, "border_color"
+			, "1.9.6.")))
+	, fill_color_(decode_color(get_renamed_config_attribute(
+			  cfg
+			, "fill_colour"
+			, "fill_color"
+			, "1.9.6")))
 {
 /*WIKI
  * @page = GUICanvasWML
@@ -1016,7 +1028,11 @@ ttext::ttext(const config& cfg)
 	, font_size_(cfg["font_size"])
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
-	, color_(decode_color(cfg.get_old_attribute("color","colour")))
+	, color_(decode_color(get_renamed_config_attribute(
+			  cfg
+			, "colour"
+			, "color"
+			, "1.9.6")))
 	, text_(cfg["text"])
 	, text_markup_(cfg["text_markup"], false)
 	, maximum_width_(cfg["maximum_width"], -1)
