@@ -148,9 +148,14 @@ void part_ui::prepare_geometry()
 
 #else // elif !defined(USE_TINY_GUI)
 
-	// The horizontal locations are always the same
-	text_x_ = 200;
-	buttons_x_ = video_.getx() - 200 - 40;
+	if(video_.getx() <= 800) {
+		text_x_ = 10;
+		buttons_x_ = video_.getx() - 100 - 20;
+	}
+	else {
+		text_x_ = 100 - 40;
+		buttons_x_ = video_.getx() - 100 - 40;
+	}
 
 	switch(p_.story_text_location())
 	{

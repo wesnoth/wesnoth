@@ -36,6 +36,8 @@ Version 1.9.3+svn:
    * Fixed: Not showing the twml_exception dialog when gui2 was called from
      lua (bug #17405).
    * Fixed: Properly validate the height of a portrait (bug #17399).
+   * Increase text area dimensions on story screens and improve space use on
+     smallgui configurations.
  * WML engine:
    * New [harm_unit] tag for damaging, and eventually killing, units.
    * [allow_recruit], [disallow_recruit] and [set_recruit] now accept a
