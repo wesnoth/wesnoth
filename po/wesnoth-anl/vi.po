@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-10-19 12:43+0200\n"
-"PO-Revision-Date: 2010-09-04 19:34+0700\n"
+"PO-Revision-Date: 2011-01-09 19:25+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: \n"
@@ -23,7 +23,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
 msgid "4p — A New Land"
-msgstr "4ng - Vùng đất mới"
+msgstr "4nc - Vùng đất mới"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:7
@@ -32,8 +32,8 @@ msgid ""
 "the land. Use map settings. Recommended starting gold=100."
 msgstr ""
 "Màn chơi sống sót cho 4 người này cho phép bạn xây dựng công trình và thay "
-"đổi vùng đất. Sử dụng thiếp lập của bản đồ. Lượng vàng ban đầu khuyến cáo là "
-"100 "
+"đổi vùng đất. Sử dụng thiếp lập của bản đồ. Lượng vàng ban đầu đề nghị là "
+"100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:25
@@ -436,13 +436,12 @@ msgstr "Không có gì"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:240
-#, fuzzy
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
 "Give 20 gold to another player"
 msgstr ""
-"Ủng hộ vàng\n"
-"Đưa 20 vàng cho người chơi khác"
+"<span color='green'>Ủng hộ</span>\n"
+"Cho người chơi khác 20 vàng"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
@@ -457,12 +456,11 @@ msgstr "Trở lại"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:273
-#, fuzzy
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
 "Help an ally with their research"
 msgstr ""
-"Chia sẽ kiến thức\n"
+"<span color='green'>Chia sẽ kiến thức</span>\n"
 "Giúp đỡ một đồng minh trong nghiên cứu"
 
 #. [message]: speaker=unit
@@ -472,28 +470,26 @@ msgstr "Bạn muốn chia sẽ kiến thức với ai?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:320
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
 "Lets you recruit a Dwarvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
-"Thương lượng với ngươi lùn\n"
-"Cho phép bạn tuyển đơn vị người lùn\n"
+"<span color='green'>Thương lượng với ngươi lùn</span>\n"
+"Cho phép bạn tuyển một đơn vị người lùn\n"
 "Quá trình thương lượng: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:346
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
 "Lets you recruit an Elvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
-"Thương lượng với thần tiên\n"
+"<span color='green'>Thương lượng với thần tiên</span>\n"
 "Cho phép bạn tuyển một đơn vị thần tiên\n"
 "Quá trình thương lượng: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
@@ -594,14 +590,13 @@ msgstr "nông nghiệp"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:133
-#, fuzzy
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
-"Khai khoáng\n"
+"<span color='green'>Khai khoáng</span>\n"
 "Công nhân mỏ sản xuất +1 gold\n"
 "Quá trình nghiên cứu: $player_$side_number|.mining.progress|/$player_"
 "$side_number|.mining.target"
@@ -615,14 +610,13 @@ msgstr "khai khoáng"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:147
-#, fuzzy
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
-"Quân sự\n"
+"<span color='green'>Quân sự</span>\n"
 "Cho phép bạn tuyển một loại lính mới\n"
 "Quá trình nghiên cứu: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
