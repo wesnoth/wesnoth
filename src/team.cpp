@@ -110,12 +110,11 @@ void team::team_info::read(const config &cfg)
 	music = cfg["music"].str();
 	side = cfg["side"].to_int(1);
 
-	///@deprecated 1.9.2 Usage of 'colour' in [side]
-	const std::string colour_error = "Usage of 'colour' in [side] is deprecated, support will be removed in 1.9.2.\n";
-	if(cfg.has_old_attribute("color","colour",colour_error))
-		color = cfg.get_old_attribute("color","colour").str();
-	else
+	if(cfg.has_attribute("color")) {
+		color = cfg["color"].str();
+	} else {
 		color = cfg["side"].str();
+	}
 
 	// If arel starting new scenario overide settings from [ai] tags
 	if (!user_team_name.translatable())

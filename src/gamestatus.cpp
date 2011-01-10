@@ -235,11 +235,7 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 				(*scenario_side)["name"] = carryover_side["name"];
 				(*scenario_side)["current_player"] = carryover_side["current_player"];
 
-				///@deprecated 1.9.2 'colour' in [side]
-				const std::string colour_error = "Usage of 'colour' in [side] is deprecated, support will be removed in 1.9.2.\n";
-				(*scenario_side)["color"] = carryover_side.get_old_attribute("color","colour",colour_error);
-				///@deprecated 1.9.2 'colour' also written in [side]
-				(*scenario_side)["colour"] = (*scenario_side)["color"];
+				(*scenario_side)["color"] = carryover_side["color"];
 
 				//add recallable units
 				foreach (const config &u, carryover_side.child_range("unit")) {
