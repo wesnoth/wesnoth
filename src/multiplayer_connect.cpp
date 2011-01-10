@@ -36,6 +36,7 @@
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 #include "tod_manager.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
 
@@ -81,7 +82,11 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	income_lock_(cfg["income_lock"].to_bool()),
 	team_lock_(cfg["team_lock"].to_bool()),
 	///@deprecated 1.9.2 "colour_lock" instead of "color_lock" in [side]
-	color_lock_(cfg.get_old_attribute("color_lock","colour_lock").to_bool()),
+	color_lock_(get_renamed_config_attribute(
+			  cfg
+			, "colour_lock"
+			, "color_lock"
+			,"1.9.6").to_bool()),
 	player_number_(parent.video(), str_cast(index + 1), font::SIZE_LARGE, font::LOBBY_COLOR),
 	combo_controller_(new gui::combo_drag(parent.disp(), parent.player_types_, parent.combo_control_group_)),
 	orig_controller_(parent.video(), current_player_, font::SIZE_SMALL),
@@ -164,7 +169,11 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		team_ = itor - parent_->team_names_.begin();
 	}
 	if (cfg.has_old_attribute("color","colour")) {
-		color_ = game_config::color_info(cfg.get_old_attribute("color","colour")).index() - 1;
+		color_ = game_config::color_info(get_renamed_config_attribute(
+				  cfg
+				, "colour"
+				, "color"
+				, "1.9.6")).index() - 1;
 	}
 	llm_.set_color(color_);
 
