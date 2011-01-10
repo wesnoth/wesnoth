@@ -27,6 +27,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
 #include "formula_string_utils.hpp"
+#include "log.hpp"
 
 void wml_exception(
 		  const char* cond
@@ -80,3 +81,68 @@ std::string missing_mandatory_wml_key(const std::string &section, const std::str
 			"mandatory key '$key|' isn't set.", symbols);
 	}
 }
+
+std::string deprecate_wml_key_warning(
+		  const std::string& key
+		, const std::string& removal_version)
+{
+	assert(!key.empty());
+	assert(!removal_version.empty());
+
+	utils::string_map symbols;
+	symbols["key"] = key;
+	symbols["removal_version"] = removal_version;
+
+	return vgettext("The key '$key' is deprecated and support "
+			"will be removed in version $removal_version.", symbols);
+}
+
+std::string deprecated_renamed_wml_key_warning(
+		  const std::string& deprecated_key
+		, const std::string& key
+		, const std::string& removal_version)
+{
+	assert(!deprecated_key.empty());
+	assert(!key.empty());
+	assert(!removal_version.empty());
+
+	utils::string_map symbols;
+	symbols["deprecated_key"] = deprecated_key;
+	symbols["key"] = key;
+	symbols["removal_version"] = removal_version;
+
+	return vgettext(
+			  "The key '$deprecated_key' has been renamed to '$key'. "
+				"Support for '$deprecated_key' will be removed in version "
+				"$removal_version."
+			, symbols);
+}
+
+const config::attribute_value& get_renamed_config_attribute(
+		  const config& cfg
+		, const std::string& deprecated_key
+		, const std::string& key
+		, const std::string& removal_version)
+{
+
+	const config::attribute_value* result = cfg.get(key);
+	if(result) {
+		return *result;
+	}
+
+	result = cfg.get(deprecated_key);
+	if(result) {
+		lg::wml_error
+			<< deprecated_renamed_wml_key_warning(
+				  deprecated_key
+				, key
+				, removal_version)
+			<< '\n';
+
+		return *result;
+	}
+
+	static const config::attribute_value empty_attribute;
+	return empty_attribute;
+}
+
