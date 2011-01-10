@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-10 00:26+0100\n"
-"PO-Revision-Date: 2011-01-01 14:18+0200\n"
+"POT-Creation-Date: 2010-12-28 12:31+0100\n"
+"PO-Revision-Date: 2011-01-06 15:25+0200\n"
 "Last-Translator: Ariel Ben-Yehuda <ariel.bys@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "Language: \n"
@@ -1029,8 +1029,8 @@ msgstr "שחק במערכה"
 #: data/gui/default/window/simple_item_selector.cfg:134
 #: data/gui/default/window/unit_create.cfg:189
 #: data/gui/default/window/unit_create.cfg:190
-#: data/gui/default/window/wml_message.cfg:470
-#: data/gui/default/window/wml_message.cfg:691 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:468
+#: data/gui/default/window/wml_message.cfg:689 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
@@ -1663,7 +1663,7 @@ msgstr "הוסף לרשימת החברים"
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:100
 msgid "Add to ignores list"
-msgstr "הוסף לרשימת השנואים"
+msgstr "הוסף לרשימת ההתעלמות"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
@@ -1857,6 +1857,7 @@ msgstr "צור משחק"
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
+"בחר את הסיסמא שאלו הרוצים להצטרף למשחקך חייבים לתת."
 
 #. [label]
 #: data/gui/default/window/mp_create_game_set_password.cfg:82
@@ -1867,7 +1868,7 @@ msgstr "סיסמא:"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr "תיבת כניסה לרב0משתתפים"
+msgstr "תיבת כניסה לרב-משתתפים"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
@@ -2061,12 +2062,12 @@ msgstr "שנה את הגדרות המשחק"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:231
 msgid "Credits"
-msgstr "הערכות"
+msgstr "תודות"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:231
 msgid "View the credits"
-msgstr "הצג את ההערכות"
+msgstr "הצג תודות"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:232
@@ -2187,7 +2188,7 @@ msgstr "הראה את כל ההצטרפות ללובי"
 
 #: src/game_preferences_display.cpp:172 src/game_preferences_display.cpp:375
 msgid "Use new lobby interface"
-msgstr ""
+msgstr "השתמש במרה הלובי החדש"
 
 #: src/game_preferences_display.cpp:173
 msgid "Sort Lobby List"
@@ -2219,7 +2220,7 @@ msgstr "הודעת תור"
 
 #: src/game_preferences_display.cpp:184
 msgid "Enable Planning Mode on Start"
-msgstr ""
+msgstr "הפעל מצב תכנון מההתחלה"
 
 #: src/game_preferences_display.cpp:185
 msgid "Turn Bell"
@@ -2404,7 +2405,7 @@ msgstr "לא תנפיש את תנועת היחידות הנשלטות ע\"י מ�
 
 #: src/game_preferences_display.cpp:347
 msgid "Sighting an allied unit interrupts your unit’s movement"
-msgstr ""
+msgstr "ראיית יחידה ידידותית תעצור את תנועת יחידתך"
 
 #: src/game_preferences_display.cpp:355
 msgid "Overlay a grid onto the map"
@@ -2440,7 +2441,7 @@ msgstr "מצא את המיקום לשרת בדי לארח משחקים מקומ�
 
 #: src/game_preferences_display.cpp:378
 msgid "View and edit your friends and ignores list"
-msgstr "ראה וערוך את רשימות החברים והשנואים שלך"
+msgstr "ראה וערוך את רשימות החברים וההתעלמות שלך"
 
 #: src/game_preferences_display.cpp:379
 msgid "Back to the multiplayer options"
@@ -2452,7 +2453,7 @@ msgstr "הוסף שם משתמש זה לרשימת החברים שלך"
 
 #: src/game_preferences_display.cpp:381
 msgid "Add this username to your ignores list"
-msgstr "הוסף שם זה לרשימת השנואים שלך"
+msgstr "הוסף שם זה לרשימת ההתעלמות שלך"
 
 #: src/game_preferences_display.cpp:382
 msgid "Remove this username from your list"
@@ -2480,7 +2481,7 @@ msgstr "הצג תיבת דו-שיח בתחילת תורך"
 
 #: src/game_preferences_display.cpp:397
 msgid "Activates Planning Mode on game start"
-msgstr ""
+msgstr "מפעיל את מצב תכנון מההתחלה"
 
 #: src/game_preferences_display.cpp:400
 msgid "Play a bell sound at the beginning of your turn"
@@ -2536,16 +2537,6 @@ msgstr "כן"
 msgid "no"
 msgstr "לא"
 
-#: src/game_preferences_display.cpp:1090
-#, fuzzy
-msgid "friend"
-msgstr "חברים"
-
-#: src/game_preferences_display.cpp:1096
-#, fuzzy
-msgid "ignored"
-msgstr "הסר שנואים"
-
 #: src/game_preferences_display.cpp:1100
 msgid "(empty list)"
 msgstr "(רשימה ריקה)"
@@ -2571,14 +2562,12 @@ msgid "Advanced section^Advanced"
 msgstr "מתקדם"
 
 #: src/game_preferences_display.cpp:1263
-#, fuzzy
 msgid "Choose theme"
-msgstr "בחר את המשחק שברצונך לטעון"
+msgstr "בחר ערכת מראה"
 
 #: src/game_preferences_display.cpp:1263
-#, fuzzy
 msgid "Saved preference:"
-msgstr "העדפות השמורות של ערכת הנושא: "
+msgstr "העדפות השמורות:"
 
 #: src/game_preferences_display.cpp:1272
 msgid "New theme will take effect on next new or loaded game."
@@ -2586,31 +2575,25 @@ msgstr "השינוי לערכת הנושא החדשה יתרחש במשחק חד
 
 #: src/game_preferences_display.cpp:1276
 msgid "No known themes. Try changing from within an existing game."
-msgstr "אין ערכות נושא ידועות. נסה לשנות מתוך משחק קיים."
+msgstr "אין ערכות מראה ידועות. נסה לשנות אחת קיימת."
 
 #: src/game_preferences_display.cpp:1319
 msgid "Find $filename server binary to host networked games"
 msgstr "מצא את קובץ השרת $filename כדי שאוכל להתחיל במשחקי רשת"
 
-#: src/gui/auxiliary/canvas.cpp:487
+#: src/gui/auxiliary/canvas.cpp:486
 msgid "Line doesn't fit on canvas."
 msgstr "הקו לא נכנס לאיזור."
 
-#: src/gui/auxiliary/canvas.cpp:623
+#: src/gui/auxiliary/canvas.cpp:622
 msgid "Rectangle doesn't fit on canvas."
 msgstr "המלבן לא נכנס לאיזור."
 
-#: src/gui/auxiliary/canvas.cpp:838 src/gui/auxiliary/canvas.cpp:845
-#: src/gui/auxiliary/canvas.cpp:855 src/gui/auxiliary/canvas.cpp:862
-#, fuzzy
-msgid "Image doesn't fit on canvas."
-msgstr "הקו לא נכנס לאיזור."
-
-#: src/gui/auxiliary/canvas.cpp:1067
+#: src/gui/auxiliary/canvas.cpp:1058
 msgid "Text has a font size of 0."
 msgstr "לטקסט יש גודל גופן של .0"
 
-#: src/gui/auxiliary/canvas.cpp:1136
+#: src/gui/auxiliary/canvas.cpp:1127
 msgid "Text doesn't start on canvas."
 msgstr "הטקסט לא נכנס באיזור"
 
@@ -2680,16 +2663,15 @@ msgstr "לא נמצאה מחסנית."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:46
 msgid "No nodes defined for a tree view."
-msgstr ""
+msgstr ".לא הוגדרו איברים לתצוגת עץ"
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:86
 msgid "[node]id 'root' is reserved for the implementation."
-msgstr ""
+msgstr "[איבר] השם 'root' שמור לאימפלמנטציה."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
-#, fuzzy
 msgid "No node defined."
-msgstr "ילא נמצא דף."
+msgstr "לא הוגדרו איברים."
 
 #: src/gui/dialogs/game_load.cpp:274
 msgid "#(Invalid)"
@@ -2749,11 +2731,11 @@ msgstr "הצרפנו לחדר $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1418
 msgid "$player has entered the room"
-msgstr ""
+msgstr "$player נכנס לחדר"
 
 #: src/gui/dialogs/lobby_main.cpp:1456
 msgid "$player has left the room"
-msgstr ""
+msgstr "$player עזב את החדר"
 
 #: src/gui/dialogs/lobby_main.cpp:1569
 msgid "Password Required"
@@ -2776,9 +2758,8 @@ msgid "Load Game..."
 msgstr "טוען משחק..."
 
 #: src/gui/dialogs/title_screen.cpp:273
-#, fuzzy
 msgid "Version "
-msgstr "גרסא: "
+msgstr "גרסא "
 
 #: src/gui/dialogs/title_screen.cpp:276
 msgid "Version"
@@ -2803,21 +2784,20 @@ msgstr "לא נמצא מצוב או איזור ציור."
 
 #: src/gui/widgets/tree_view_node.cpp:103
 msgid "Unknown builder id for tree view node."
-msgstr ""
+msgstr "קוד בונה לא ידוע לאיבר תצוגת עץ."
 
 #: src/gui/widgets/window.cpp:814
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "יציאה בלחיצה דורשת כפתור 'click_dismiss' או 'ok'"
 
 #: src/gui/widgets/window.cpp:839 src/gui/widgets/window.cpp:872
-#: src/tests/gui/test_gui2.cpp:226
+#: src/tests/gui/test_gui2.cpp:230
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "לא ניתן להציג את התיבה מכיוון שאינה מתאימה למסך."
 
 #: src/hotkeys.cpp:51
-#, fuzzy
 msgid "Animate Map"
-msgstr "צור מפה"
+msgstr "הנפש מפה"
 
 #: src/hotkeys.cpp:52
 msgid "Next Unit"
@@ -2973,7 +2953,7 @@ msgstr "נקה תגית"
 
 #: src/hotkeys.cpp:95
 msgid "Show Enemy Moves"
-msgstr "הראה תנועות אוייב"
+msgstr "הראה מהלכי אויב"
 
 #: src/hotkeys.cpp:96
 msgid "Best Possible Enemy Moves"
@@ -3009,27 +2989,27 @@ msgstr "דלג על האנימציה"
 
 #: src/hotkeys.cpp:110
 msgid "Toggle planning mode"
-msgstr ""
+msgstr "הפעל/כבה מצב תכנון"
 
 #: src/hotkeys.cpp:111
 msgid "Execute planned action"
-msgstr ""
+msgstr "בצע פעולה מתוכננת"
 
 #: src/hotkeys.cpp:112
 msgid "Execute all actions"
-msgstr ""
+msgstr "בתע את כל הפעולות"
 
 #: src/hotkeys.cpp:113
 msgid "Delete planned action"
-msgstr ""
+msgstr "מחק פעולה מתוכננת"
 
 #: src/hotkeys.cpp:114
 msgid "Move action up queue"
-msgstr ""
+msgstr "העלה פעולה בתור"
 
 #: src/hotkeys.cpp:115
 msgid "Move action down queue"
-msgstr ""
+msgstr "הורד פעולה בתור"
 
 #: src/hotkeys.cpp:118
 msgid "Quit to Desktop"
@@ -3056,9 +3036,8 @@ msgid "Save Map As"
 msgstr "שמור מפה בשם"
 
 #: src/hotkeys.cpp:127
-#, fuzzy
 msgid "Save All Maps"
-msgstr "שמור מפה"
+msgstr "שמור את כל המפות"
 
 #: src/hotkeys.cpp:128
 msgid "Revert All Changes"
@@ -3249,45 +3228,40 @@ msgid "Clear messages"
 msgstr "רוקן הודעות"
 
 #: src/hotkeys.cpp:211
-#, fuzzy
 msgid "Refresh WML"
-msgstr "עדכן"
+msgstr "עדכן WML"
 
 #: src/hotkeys.cpp:218
 msgid "Next tip of the day"
-msgstr ""
+msgstr "הטיפ הבא"
 
 #: src/hotkeys.cpp:225
-#, fuzzy
 msgid "Previous tip of the day"
-msgstr "היחידה הקודמת"
+msgstr "הטיפ הקודם"
 
 #: src/hotkeys.cpp:232
-#, fuzzy
 msgid "Start tutorial"
-msgstr "הדרכה"
+msgstr "התחל הדרכה"
 
 #: src/hotkeys.cpp:239
-#, fuzzy
 msgid "Start a campaign"
-msgstr "שחק במערכה"
+msgstr "התחל במערכה"
 
 #: src/hotkeys.cpp:246
 msgid "Start a multiplayer game"
-msgstr ""
+msgstr "התלח משחק רב-משתתפים"
 
 #: src/hotkeys.cpp:253
-#, fuzzy
 msgid "Manage addons"
-msgstr "עדכן חבילות"
+msgstr "נהל חבילות"
 
 #: src/hotkeys.cpp:261
 msgid "Start the editor"
-msgstr ""
+msgstr "פתח את עורך המפות"
 
 #: src/hotkeys.cpp:269
 msgid "Show the credits"
-msgstr ""
+msgstr "הצג תודות"
 
 #: src/hotkeys.cpp:722 src/hotkeys.cpp:1024
 msgid "Do you really want to quit?"
@@ -3386,9 +3360,8 @@ msgid "Hotkey Settings"
 msgstr "מקשי קיצור"
 
 #: src/preferences_display.cpp:301 src/preferences_display.cpp:370
-#, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "הקש על מקש הקיצור הרצוי"
+msgstr "הקש על מקש הקיצור הרצוי (Esc מבטל)"
 
 #: src/preferences_display.cpp:320
 msgid "Action"
@@ -3421,7 +3394,7 @@ msgstr "אין מצבי תצוגה חלופיים זמינים"
 
 #: src/preferences_display.cpp:543
 msgid " (widescreen)"
-msgstr ""
+msgstr " (מסך רחב)"
 
 #: src/preferences_display.cpp:547
 msgid "Choose Resolution"
@@ -3435,9 +3408,9 @@ msgstr "שטח עם שם של יותר מ-4 תווים נמצא. השתח המו
 
 #: src/text.cpp:292
 msgid "The text contains invalid markup: "
-msgstr ""
+msgstr "טקסט זה מכיל סימונים לא חוקיים: "
 
-#: src/wml_exception.cpp:56
+#: src/wml_exception.cpp:48
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -3445,13 +3418,13 @@ msgstr ""
 "שגיאה כנראה מ-WML לא חוקי נמצאה\n"
 "הודעת השגיאה היא:"
 
-#: src/wml_exception.cpp:58
+#: src/wml_exception.cpp:50
 msgid "When reporting the bug please include the following error message :"
 msgstr "בדיווח הבאב הוסף את ההודעה הזו (לא מתורגם בכוונה תחילה):"
 
 # NOT TRANSLATED INTENTIONALLY
 # NOT TO CONFUSE TYPICALLY ENGLISH-SPEAKING CAMPAIGN DEVS
-#: src/wml_exception.cpp:76
+#: src/wml_exception.cpp:68
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -3459,162 +3432,6 @@ msgstr ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 
-#: src/wml_exception.cpp:79
+#: src/wml_exception.cpp:71
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "In section '[$section|]' the mandatory key '$key|' isn't set."
-
-#~ msgid "Generate name"
-#~ msgstr "צור שם"
-
-#~ msgid "Screenshot failed"
-#~ msgstr "צילום נכשל"
-
-#~ msgid "Mushroom Grove Lit"
-#~ msgstr "חורשת פיטריות מוארת"
-
-#, fuzzy
-#~ msgid "Impassable Regular Mountains"
-#~ msgstr "הרי מדבר בלתי-עהירים"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "הרי מדבר בלתי-עהירים"
-
-#, fuzzy
-#~ msgid "Castle Human Keep"
-#~ msgstr "מצודה"
-
-#, fuzzy
-#~ msgid "Snowy Castle Keep"
-#~ msgstr "מצודה"
-
-#, fuzzy
-#~ msgid "Deep Water Medium"
-#~ msgstr "מים עמוקים"
-
-#, fuzzy
-#~ msgid "Deep Water Tropical"
-#~ msgstr "מים עמוקים"
-
-#~ msgid "Snow Forest"
-#~ msgstr "יער מושלג"
-
-#~ msgid "User-Command#2"
-#~ msgstr "פקודת-משתמש#2"
-
-#~ msgid "User-Command#3"
-#~ msgstr "פקודת-משתמש#3"
-
-#~ msgid "Chasm"
-#~ msgstr "תהום"
-
-#~ msgid "Wall"
-#~ msgstr "קיר"
-
-#~ msgid "None"
-#~ msgstr "אפס"
-
-#~ msgid "Could not get image for terrain: $terrain."
-#~ msgstr "לא נמצאה התמונה לשטח $terrain"
-
-#~ msgid "Error creating or aquiring an image."
-#~ msgstr "שגיאה ביצירת או לקיחת תמונה."
-
-#~ msgid "Fort"
-#~ msgstr "מבצר"
-
-#~ msgid "Ruin"
-#~ msgstr "חורבה"
-
-#~ msgid "Elven Keep"
-#~ msgstr "מצודה אלפית"
-
-#~ msgid "Grassland"
-#~ msgstr "אדמת מרעה"
-
-#~ msgid "Savanna"
-#~ msgstr "ערבה"
-
-#~ msgid "Road"
-#~ msgstr "דרך"
-
-#~ msgid "River Ford"
-#~ msgstr "שפך נהר"
-
-#~ msgid "Window not defined."
-#~ msgstr "הגדרת החלונות לא נמצאה."
-
-#~ msgid "Save The Map"
-#~ msgstr "שמור מפה"
-
-#~ msgid "Adjust Gamma"
-#~ msgstr "כוון גאמא"
-
-#~ msgid "Gamma:"
-#~ msgstr "גאמה:"
-
-#~ msgid "Change the brightness of the display"
-#~ msgstr "שנה את בהירות התצוגה"
-
-#, fuzzy
-#~ msgid "Change username"
-#~ msgstr "החלף שפה"
-
-#, fuzzy
-#~ msgid "No scrollbar defined."
-#~ msgstr "יצירת מפה נכשלה."
-
-#~ msgid "Your modifications to the map will be lost. Continue?"
-#~ msgstr "השינויים שביצעת במפה יאבדו. האם להמשיך?"
-
-#~ msgid "Generate New Map"
-#~ msgstr "יצירת מפה חדשה"
-
-#~ msgid "Random Generator Settings"
-#~ msgstr "אפשרויות מחולל אקראי"
-
-#~ msgid "Map creation failed."
-#~ msgstr "יצירת מפה נכשלה."
-
-#~ msgid "Video Mode"
-#~ msgstr "אופן תצוגה"
-
-#~ msgid "X-Axis"
-#~ msgstr "ציר X"
-
-#~ msgid "Y-Axis"
-#~ msgstr "ציר Y"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "הפיכה (עלול לשנות את מימדי המפה)"
-
-#~ msgid "Set Terrain"
-#~ msgstr "קביעת קרקע"
-
-#~ msgid "Save As"
-#~ msgstr "שמור בשם"
-
-#~ msgid "Set Player's keep"
-#~ msgstr "קביעת המצודה של השחקן"
-
-#~ msgid "Flood Fill"
-#~ msgstr "הצפה"
-
-#~ msgid "Flip Map"
-#~ msgstr "הפיכת מפה"
-
-#~ msgid "Draw Terrain"
-#~ msgstr "צייר קרקע"
-
-#, fuzzy
-#~ msgid "Delay transition updates"
-#~ msgstr "השהיית עדכון הסתרה"
-
-#~ msgid "Cave Lit"
-#~ msgstr "מערה מוארת"
-
-#~ msgid "Save Hotkeys"
-#~ msgstr "שמירת מקשי קיצור"
-
-#, fuzzy
-#~ msgid "Advanced Mode"
-#~ msgstr "מתקדם"
