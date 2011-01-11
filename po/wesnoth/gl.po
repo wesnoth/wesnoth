@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-10 00:26+0100\n"
-"PO-Revision-Date: 2011-01-09 18:06+0100\n"
+"PO-Revision-Date: 2011-01-10 23:11+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -4932,7 +4932,7 @@ msgstr ""
 
 #: src/menu_events.cpp:3142
 msgid "Can't change control of invalid side: '$side'."
-msgstr "Non se puido cambiar o control do bando «$side» (non é correcto)."
+msgstr "Non se puido cambiar o control do bando «$side» (non é válido)."
 
 #: src/menu_events.cpp:3148
 msgid "Can't change control of out-of-bounds side: '$side'."
@@ -5072,9 +5072,8 @@ msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
-"O alcume «$nick|» contén caracteres non soportados. Só se permiten "
-"caracteres alfanuméricos anglosaxóns (nin tiles nin eñes), guións e guións "
-"baixos."
+"O alcume «$nick|» contén caracteres non válidos. Só se permiten caracteres "
+"alfanuméricos anglosaxóns (nin tiles nin eñes), guións e guións baixos."
 
 #: src/multiplayer.cpp:311
 msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
@@ -5386,7 +5385,7 @@ msgstr "Escolleuse unha era incorrecta."
 
 #: src/multiplayer_create.cpp:336
 msgid "The map is invalid."
-msgstr "O mapa non é correcto."
+msgstr "O mapa non é válido."
 
 #: src/multiplayer_create.cpp:338
 msgid "You must enter a name."

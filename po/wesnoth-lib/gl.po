@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-10 00:26+0100\n"
-"PO-Revision-Date: 2011-01-05 02:54+0100\n"
+"PO-Revision-Date: 2011-01-10 23:16+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -883,7 +883,7 @@ msgstr "Manto do descoñecido"
 #. [terrain_type]: id=fog
 #: data/core/terrain.cfg:1899
 msgid "Fog"
-msgstr "Néboa de guerra"
+msgstr "Néboa da guerra"
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:1966
@@ -1861,7 +1861,7 @@ msgstr "Ouro das vilas"
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:452
 msgid "Fog of War"
-msgstr "Manto de guerra"
+msgstr "Néboa da guerra"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:493
@@ -2583,7 +2583,7 @@ msgstr "Liñas de conversa: "
 # Mensaxe que aparece nunha xanela ao intentar introducir un nome de usuario incorrecto (por exemplo, un baleiro) na lista de amigos e ignorados, accesible dende «Configuración → Varios xogadores → Lista de amigos».
 #: src/game_preferences_display.cpp:954 src/game_preferences_display.cpp:962
 msgid "Invalid username"
-msgstr "Ese nome de usuario non é correcto."
+msgstr "O nome de usuario non é válido."
 
 #: src/game_preferences_display.cpp:1065
 msgid "yes"
@@ -2593,17 +2593,15 @@ msgstr "si"
 msgid "no"
 msgstr "non"
 
-# Aparece na nova interface da sala de espera para partidas con varios xogadores.
+# «Configuración → Varios xogadores → Lista de amigos».
 #: src/game_preferences_display.cpp:1090
-#, fuzzy
 msgid "friend"
-msgstr "Amigos."
+msgstr "(amigo)"
 
-# Aparece na nova interface da sala de espera para partidas con varios xogadores.
+# «Configuración → Varios xogadores → Lista de amigos».
 #: src/game_preferences_display.cpp:1096
-#, fuzzy
 msgid "ignored"
-msgstr "Non ignorados."
+msgstr "(ignorado)"
 
 #: src/game_preferences_display.cpp:1100
 msgid "(empty list)"
@@ -2662,9 +2660,8 @@ msgstr "O rectángulo non colle no lenzo."
 
 #: src/gui/auxiliary/canvas.cpp:838 src/gui/auxiliary/canvas.cpp:845
 #: src/gui/auxiliary/canvas.cpp:855 src/gui/auxiliary/canvas.cpp:862
-#, fuzzy
 msgid "Image doesn't fit on canvas."
-msgstr "A liña non colle no lenzo."
+msgstr "A imaxe non colle no lenzo."
 
 #: src/gui/auxiliary/canvas.cpp:1067
 msgid "Text has a font size of 0."
@@ -2885,473 +2882,477 @@ msgstr "Non se puido amosar un dos diálogos, non collía na pantalla."
 
 #: src/hotkeys.cpp:51
 msgid "Animate Map"
-msgstr "Activar as animacións do mapa."
+msgstr "Activar as animacións do mapa"
 
 #: src/hotkeys.cpp:52
 msgid "Next Unit"
-msgstr "Seguinte unidade."
+msgstr "Seguinte unidade"
 
 #: src/hotkeys.cpp:53
 msgid "Previous Unit"
-msgstr "Unidade anterior."
+msgstr "Unidade anterior"
 
 #: src/hotkeys.cpp:54
 msgid "Add waypoint"
-msgstr "Engadir un punto do camiño."
+msgstr "Engadir un punto do camiño"
 
 #: src/hotkeys.cpp:55
 msgid "Hold Position"
-msgstr "Manter a posición."
+msgstr "Manter a posición"
 
 #: src/hotkeys.cpp:56
 msgid "End Unit Turn"
-msgstr "Rematar a quenda da unidade."
+msgstr "Rematar a quenda da unidade"
 
 #: src/hotkeys.cpp:57
 msgid "Leader"
-msgstr "Líder."
+msgstr "Líder"
 
 #: src/hotkeys.cpp:58
 msgid "Undo"
-msgstr "Desfacer."
+msgstr "Desfacer"
 
 #: src/hotkeys.cpp:59
 msgid "Redo"
-msgstr "Refacer."
+msgstr "Refacer"
 
 #: src/hotkeys.cpp:60
 msgid "Zoom In"
-msgstr "Achegar."
+msgstr "Achegar"
 
 #: src/hotkeys.cpp:61
 msgid "Zoom Out"
-msgstr "Afastar."
+msgstr "Afastar"
 
 #: src/hotkeys.cpp:62
 msgid "Default Zoom"
-msgstr "Distancia predeterminada."
+msgstr "Distancia predeterminada"
 
 #: src/hotkeys.cpp:63
 msgid "Toggle Full Screen"
-msgstr "Pór a pantalla completa."
+msgstr "Pór a pantalla completa"
 
 #: src/hotkeys.cpp:64 src/hotkeys.cpp:976
 msgid "Screenshot"
-msgstr "Facer unha captura do xogo."
+msgstr "Facer unha captura do xogo"
 
 #: src/hotkeys.cpp:65
 msgid "Map Screenshot"
-msgstr "Facer unha captura do mapa."
+msgstr "Facer unha captura do mapa"
 
 #: src/hotkeys.cpp:66
 msgid "Accelerated"
-msgstr "Activar a velocidade acelerada."
+msgstr "Activar a velocidade acelerada"
 
 #: src/hotkeys.cpp:67
 msgid "Unit Description"
-msgstr "Descrición da unidade."
+msgstr "Descrición da unidade"
 
 #: src/hotkeys.cpp:68
 msgid "Rename Unit"
-msgstr "Cambiarlle o nome á unidade."
+msgstr "Cambiarlle o nome á unidade"
 
 #: src/hotkeys.cpp:70
 msgid "Save Replay"
-msgstr "Gardar a repetición."
+msgstr "Gardar a repetición"
 
+# Aparece no editor de mapas, menú «Ficheiro».
 #: src/hotkeys.cpp:71 src/hotkeys.cpp:125
 msgid "Save Map"
-msgstr "Gardar o mapa."
+msgstr "Gardar o mapa"
 
 #: src/hotkeys.cpp:73
 msgid "Recruit"
-msgstr "Recrutar."
+msgstr "Recrutar"
 
 #: src/hotkeys.cpp:74
 msgid "Repeat Recruit"
-msgstr "Repetir o recrutamento."
+msgstr "Repetir o recrutamento"
 
 #: src/hotkeys.cpp:75
 msgid "Recall"
-msgstr "Reincorporar."
+msgstr "Reincorporar"
 
 #: src/hotkeys.cpp:76
 msgid "End Turn"
-msgstr "Rematar a quenda."
+msgstr "Rematar a quenda"
 
 #: src/hotkeys.cpp:77
 msgid "Toggle Ellipses"
-msgstr "Activar as elipses."
+msgstr "Activar as elipses"
 
 #: src/hotkeys.cpp:78
 msgid "Toggle Grid"
-msgstr "Activar a grade."
+msgstr "Activar a grade"
 
 #: src/hotkeys.cpp:79
 msgid "Mouse Scrolling"
-msgstr "Desprazamento co rato."
+msgstr "Desprazamento co rato"
 
 #: src/hotkeys.cpp:80
 msgid "Status Table"
-msgstr "Cadro da situación."
+msgstr "Cadro da situación"
 
 #: src/hotkeys.cpp:81
 msgid "Mute"
-msgstr "Silenciar."
+msgstr "Silenciar"
 
 #: src/hotkeys.cpp:82
 msgid "Speak"
-msgstr "Escribir unha mensaxe."
+msgstr "Escribir unha mensaxe"
 
 #: src/hotkeys.cpp:84
 msgid "Change Side (Debug!)"
-msgstr "Cambiar de bando (depuración!)."
+msgstr "Cambiar de bando (depuración!)"
 
 #: src/hotkeys.cpp:86
 msgid "Scenario Objectives"
-msgstr "Obxectivos do escenario."
+msgstr "Obxectivos do escenario"
 
 #: src/hotkeys.cpp:87
 msgid "Unit List"
-msgstr "Lista de unidades."
+msgstr "Lista de unidades"
 
 #: src/hotkeys.cpp:88
 msgid "Statistics"
-msgstr "Estatísticas."
+msgstr "Estatísticas"
 
 #: src/hotkeys.cpp:89 src/hotkeys.cpp:99
 msgid "Stop"
-msgstr "Deter."
+msgstr "Deter"
 
 #: src/hotkeys.cpp:90 src/hotkeys.cpp:97
 msgid "Play"
-msgstr "Reproducir."
+msgstr "Reproducir"
 
 #: src/hotkeys.cpp:92
 msgid "Set Team Label"
-msgstr "Poñer unha etiqueta do equipo."
+msgstr "Poñer unha etiqueta do equipo"
 
 #: src/hotkeys.cpp:93
 msgid "Set Label"
-msgstr "Poñer unha etiqueta."
+msgstr "Poñer unha etiqueta"
 
 #: src/hotkeys.cpp:94
 msgid "Clear Labels"
-msgstr "Quitar as etiquetas."
+msgstr "Quitar as etiquetas"
 
 #: src/hotkeys.cpp:95
 msgid "Show Enemy Moves"
-msgstr "Amosar os movementos do inimigo."
+msgstr "Amosar os movementos do inimigo"
 
 #: src/hotkeys.cpp:96
 msgid "Best Possible Enemy Moves"
-msgstr "Mellores movementos posibles do inimigo."
+msgstr "Mellores movementos posibles do inimigo"
 
 #: src/hotkeys.cpp:98
 msgid "Reset"
-msgstr "Restablecer."
+msgstr "Restablecer"
 
 #: src/hotkeys.cpp:100
 msgid "Next Turn"
-msgstr "Seguinte rolda."
+msgstr "Seguinte rolda"
 
 #: src/hotkeys.cpp:101
 msgid "Next Side"
-msgstr "Seguinte bando."
+msgstr "Seguinte bando"
 
 #: src/hotkeys.cpp:103
 msgid "Full map"
-msgstr "Mapa completo."
+msgstr "Mapa completo"
 
 #: src/hotkeys.cpp:105
 msgid "Each team"
-msgstr "Cada equipo."
+msgstr "Cada equipo"
 
 #: src/hotkeys.cpp:107
 msgid "Team 1"
-msgstr "Equipo 1."
+msgstr "Equipo 1"
 
 #: src/hotkeys.cpp:108
 msgid "Skip animation"
-msgstr "Saltarse a animación."
+msgstr "Saltarse a animación"
 
 #: src/hotkeys.cpp:110
 msgid "Toggle planning mode"
-msgstr "Activar o modo de planificación."
+msgstr "Activar o modo de planificación"
 
 #: src/hotkeys.cpp:111
 msgid "Execute planned action"
-msgstr "Executar a acción planificada."
+msgstr "Executar a acción planificada"
 
 #: src/hotkeys.cpp:112
 msgid "Execute all actions"
-msgstr "Executar todas as accións."
+msgstr "Executar todas as accións"
 
 #: src/hotkeys.cpp:113
 msgid "Delete planned action"
-msgstr "Eliminar a acción planificada."
+msgstr "Eliminar a acción planificada"
 
 #: src/hotkeys.cpp:114
 msgid "Move action up queue"
-msgstr "Adiantar a acción na cola."
+msgstr "Adiantar a acción na cola"
 
 #: src/hotkeys.cpp:115
 msgid "Move action down queue"
-msgstr "Atrasar a acción na cola."
+msgstr "Atrasar a acción na cola"
 
 #: src/hotkeys.cpp:118
 msgid "Quit to Desktop"
-msgstr "Saír ao escritorio."
+msgstr "Saír ao escritorio"
 
 #: src/hotkeys.cpp:119
 msgid "Close Map"
-msgstr "Pechar o mapa."
+msgstr "Pechar o mapa"
 
 #: src/hotkeys.cpp:120
 msgid "Switch Map"
-msgstr "Cambiar de mapa."
+msgstr "Cambiar de mapa"
 
 #: src/hotkeys.cpp:122
 msgid "Partial Undo"
-msgstr "Desfacer parcialmente."
+msgstr "Desfacer parcialmente"
 
+# Aparece no editor de mapas, menú «Ficheiro».
 #: src/hotkeys.cpp:124
 msgid "Load Map"
-msgstr "Cargar un mapa."
+msgstr "Cargar un mapa"
 
+# Aparece no editor de mapas, menú «Ficheiro».
 #: src/hotkeys.cpp:126
 msgid "Save Map As"
-msgstr "Gardar o mapa con outro nome."
+msgstr "Gardar o mapa como"
 
+# Aparece no editor de mapas, menú «Ficheiro».
 #: src/hotkeys.cpp:127
 msgid "Save All Maps"
-msgstr "Gardar todos os mapas."
+msgstr "Gardar todos os mapas"
 
 #: src/hotkeys.cpp:128
 msgid "Revert All Changes"
-msgstr "Desbotar todos os cambios."
+msgstr "Desbotar todos os cambios"
 
 #: src/hotkeys.cpp:129
 msgid "Map Information"
-msgstr "Información do mapa."
+msgstr "Información do mapa"
 
 #: src/hotkeys.cpp:131
 msgid "Swap fore- and background terrains"
-msgstr "Intercambiar os terreos en primeiro e segundo plano."
+msgstr "Intercambiar os terreos en primeiro e segundo plano"
 
 #: src/hotkeys.cpp:132
 msgid "Next Tool"
-msgstr "Seguinte ferramenta."
+msgstr "Seguinte ferramenta"
 
 #: src/hotkeys.cpp:133
 msgid "Paint Tool"
-msgstr "Ferramenta de pintura."
+msgstr "Ferramenta de pintura"
 
 #: src/hotkeys.cpp:134
 msgid "Fill Tool"
-msgstr "Ferramenta de recheo."
+msgstr "Ferramenta de recheo"
 
 #: src/hotkeys.cpp:135
 msgid "Selection Tool"
-msgstr "Ferramenta de selección."
+msgstr "Ferramenta de selección"
 
 #: src/hotkeys.cpp:137
 msgid "Set Starting Positions Tool"
-msgstr "Ferramenta de definición das posicións iniciais."
+msgstr "Ferramenta de definición das posicións iniciais"
 
 #: src/hotkeys.cpp:138
 msgid "Next Brush"
-msgstr "Seguinte brocha."
+msgstr "Seguinte brocha"
 
 #: src/hotkeys.cpp:139
 msgid "Default Brush"
-msgstr "Brocha predeterminada."
+msgstr "Brocha predeterminada"
 
 #: src/hotkeys.cpp:140
 msgid "Cut"
-msgstr "Cortar."
+msgstr "Cortar"
 
 #: src/hotkeys.cpp:141
 msgid "Copy"
-msgstr "Copiar."
+msgstr "Copiar"
 
 #: src/hotkeys.cpp:142
 msgid "Paste"
-msgstr "Pegar."
+msgstr "Pegar"
 
 #: src/hotkeys.cpp:143
 msgid "Export selected coordinates to system clipboard"
-msgstr "Exportar as coordenadas seleccionadas ao portarretallos do sistema."
+msgstr "Exportar as coordenadas seleccionadas ao portarretallos do sistema"
 
 #: src/hotkeys.cpp:145
 msgid "Select All"
-msgstr "Seleccionalo todo."
+msgstr "Seleccionalo todo"
 
 #: src/hotkeys.cpp:147
 msgid "Select Inverse"
-msgstr "Inverter a selección."
+msgstr "Inverter a selección"
 
 #: src/hotkeys.cpp:149
 msgid "Select None"
-msgstr "Non seleccionar nada."
+msgstr "Non seleccionar nada"
 
 #: src/hotkeys.cpp:151
 msgid "Rotate Clipboard Clockwise"
-msgstr "Rotar o que hai no portarretallos no sentido das agullas do reloxo."
+msgstr "Rotar o que hai no portarretallos no sentido das agullas do reloxo"
 
 #: src/hotkeys.cpp:153
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 "Rotar o que hai no portarretallos no sentido contrario ao das agullas do "
-"reloxo."
+"reloxo"
 
 #: src/hotkeys.cpp:155
 msgid "Flip Clipboard Horizontally"
-msgstr "Voltear horizontalmente o que hai no portarretallos."
+msgstr "Voltear horizontalmente o que hai no portarretallos"
 
 #: src/hotkeys.cpp:157
 msgid "Flip Clipboard Vertically"
-msgstr "Voltear verticalmente o que hai no portarretallos."
+msgstr "Voltear verticalmente o que hai no portarretallos"
 
 #: src/hotkeys.cpp:159
 msgid "Rotate Selection"
-msgstr "Rotar a selección."
+msgstr "Rotar a selección"
 
 #: src/hotkeys.cpp:161
 msgid "Flip Selection"
-msgstr "Voltear a selección."
+msgstr "Voltear a selección"
 
 #: src/hotkeys.cpp:163
 msgid "Fill Selection"
-msgstr "Encher a selección."
+msgstr "Encher a selección"
 
 #: src/hotkeys.cpp:165
 msgid "Generate Tiles In Selection"
-msgstr "Xerar hexágonos na selección."
+msgstr "Xerar hexágonos na selección"
 
 #: src/hotkeys.cpp:167
 msgid "Randomize Tiles In Selection"
-msgstr "Xerar ao chou os hexágonos da selección."
+msgstr "Xerar ao chou os hexágonos da selección"
 
 #: src/hotkeys.cpp:171
 msgid "Rotate Map"
-msgstr "Rotar o mapa."
+msgstr "Rotar o mapa"
 
 #: src/hotkeys.cpp:173
 msgid "Generate Map"
-msgstr "Xerar un mapa."
+msgstr "Xerar un mapa"
 
 #: src/hotkeys.cpp:175
 msgid "Apply a Mask"
-msgstr "Aplicar unha máscara."
+msgstr "Aplicar unha máscara"
 
 #: src/hotkeys.cpp:177
 msgid "Create Mask"
-msgstr "Crear unha máscara."
+msgstr "Crear unha máscara"
 
 #: src/hotkeys.cpp:179
 msgid "Refresh Display"
-msgstr "Actualizar a pantalla."
+msgstr "Actualizar a pantalla"
 
 #: src/hotkeys.cpp:181
 msgid "Update Terrain Transitions"
-msgstr "Actualizar as transicións dos terreos."
+msgstr "Actualizar as transicións dos terreos"
 
 #: src/hotkeys.cpp:183
 msgid "Auto-update Terrain Transitions"
-msgstr "Actualizar automaticamente as transicións dos terreos."
+msgstr "Actualizar automaticamente as transicións dos terreos"
 
 #: src/hotkeys.cpp:185
 msgid "Refresh Image Cache"
-msgstr "Actualizar a caché das imaxes."
+msgstr "Actualizar a caché das imaxes"
 
 #: src/hotkeys.cpp:187
 msgid "Draw Hex Coordinates"
-msgstr "Amosar as coordenadas dos hexágonos."
+msgstr "Amosar as coordenadas dos hexágonos"
 
 #: src/hotkeys.cpp:189
 msgid "Draw Terrain Codes"
-msgstr "Amosar os códigos dos terreos."
+msgstr "Amosar os códigos dos terreos"
 
 #: src/hotkeys.cpp:194
 msgid "Delay Shroud Updates"
-msgstr "Retardar as actualizacións do manto do descoñecido."
+msgstr "Retardar as actualizacións do manto do descoñecido"
 
 #: src/hotkeys.cpp:195
 msgid "Update Shroud Now"
-msgstr "Actualizar o manto do descoñecido."
+msgstr "Actualizar o manto do descoñecido"
 
 #: src/hotkeys.cpp:196
 msgid "Continue Move"
-msgstr "Continuar o movemento."
+msgstr "Continuar o movemento"
 
 #: src/hotkeys.cpp:197
 msgid "Find Label or Unit"
-msgstr "Buscar un elemento ou unidade."
+msgstr "Buscar un elemento ou unidade"
 
 #: src/hotkeys.cpp:198
 msgid "Speak to Ally"
-msgstr "Escribirlles unha mensaxe aos aliados."
+msgstr "Escribirlles unha mensaxe aos aliados"
 
 #: src/hotkeys.cpp:199
 msgid "Speak to All"
-msgstr "Escribirlle unha mensaxe a todo o mundo."
+msgstr "Escribirlle unha mensaxe a todo o mundo"
 
 #: src/hotkeys.cpp:201
 msgid "View Chat Log"
-msgstr "Ver o rexistro das conversas."
+msgstr "Ver o rexistro das conversas"
 
 #: src/hotkeys.cpp:204
 msgid "Enter user command"
-msgstr "Escribir unha orde."
+msgstr "Escribir unha orde"
 
 #: src/hotkeys.cpp:205
 msgid "Custom command"
-msgstr "Orde personalizada."
+msgstr "Orde personalizada"
 
 #: src/hotkeys.cpp:206
 msgid "Run AI formula"
-msgstr "Executar a fórmula da intelixencia artificial."
+msgstr "Executar a fórmula da intelixencia artificial"
 
 #: src/hotkeys.cpp:207
 msgid "Clear messages"
-msgstr "Quitar as mensaxes."
+msgstr "Quitar as mensaxes"
 
 #: src/hotkeys.cpp:211
 msgid "Refresh WML"
-msgstr "Actualizar o WML."
+msgstr "Actualizar o WML"
 
 #: src/hotkeys.cpp:218
 msgid "Next tip of the day"
-msgstr "Seguinte consello."
+msgstr "Seguinte consello"
 
 #: src/hotkeys.cpp:225
 msgid "Previous tip of the day"
-msgstr "Consello anterior."
+msgstr "Consello anterior"
 
 #: src/hotkeys.cpp:232
 msgid "Start tutorial"
-msgstr "Comezar a aprendizaxe."
+msgstr "Comezar a aprendizaxe"
 
 #: src/hotkeys.cpp:239
 msgid "Start a campaign"
-msgstr "Comezar unha campaña."
+msgstr "Comezar unha campaña"
 
 #: src/hotkeys.cpp:246
 msgid "Start a multiplayer game"
-msgstr "Comezar unha partida con varios xogadores."
+msgstr "Comezar unha partida con varios xogadores"
 
 #: src/hotkeys.cpp:253
 msgid "Manage addons"
-msgstr "Xestionar os complementos."
+msgstr "Xestionar os complementos"
 
 #: src/hotkeys.cpp:261
 msgid "Start the editor"
-msgstr "Iniciar o editor de mapas."
+msgstr "Iniciar o editor de mapas"
 
 #: src/hotkeys.cpp:269
 msgid "Show the credits"
-msgstr "Amosar a lista dos autores."
+msgstr "Amosar a lista dos autores"
 
 #: src/hotkeys.cpp:722 src/hotkeys.cpp:1024
 msgid "Do you really want to quit?"
