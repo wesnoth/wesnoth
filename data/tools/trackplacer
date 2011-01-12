@@ -433,8 +433,7 @@ class TrackController:
         self.radiobutton.set_active(track_id == editor.journey.selected_id)
         self.radiobutton.connect("toggled",
                                  editor.track_activity_callback, track_id)
-        editor.tooltips.set_tip(self.radiobutton,
-                                "Select %s for editing" % track_id)
+        self.radiobutton.set_tooltip_text("Select %s for editing" % track_id)
         self.radiobutton.show()
         self.hbox.add(self.radiobutton)
         self.checkbox = gtk.CheckButton()
@@ -442,14 +441,12 @@ class TrackController:
         self.checkbox.connect("toggled",
                               editor.track_visibility_callback, track_id)
         self.hbox.add(self.checkbox)
-        editor.tooltips.set_tip(self.checkbox,
-                                "Toggle visibility of %s" % track_id)
+        self.checkbox.set_tooltip_text("Toggle visibility of %s" % track_id)
         self.checkbox.show()
         self.rename = gtk.Entry()
         self.rename.set_text(track_id)
         self.rename.connect("activate", self.track_rename_handler, track_id)
-        editor.tooltips.set_tip(self.rename,
-                                "Change name of track %s" % track_id)
+        self.rename.set_tooltip_text("Change name of track %s" % track_id)
         self.rename.show()
         self.hbox.add(self.rename)
         # We really should have been able to do this:
@@ -467,7 +464,7 @@ class TrackController:
 
         self.deleter.connect("clicked", self.track_delete_handler, track_id)
         self.hbox.add(self.deleter)
-        editor.tooltips.set_tip(self.deleter, "Delete track %s" % track_id)
+        self.deleter.set_tooltip_text("Delete track %s" % track_id)
         self.deleter.show()
         editor.controller[track_id] = self
     def track_delete_handler(self, w, track_id):
@@ -539,8 +536,6 @@ class TracksEditor:
 
         self.window.connect("destroy", lambda w: gtk.main_quit())
 
-        self.tooltips = gtk.Tooltips()
-
         # Set up toolbar style
         toolbar = gtk.Toolbar()
         toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
@@ -573,7 +568,7 @@ class TracksEditor:
             button.connect("toggled", self.button_callback, icon.action)
             radiobox.pack_start(button, padding=7)
             button.show()
-            self.tooltips.set_tip(button, "Place %s markers" % action.lower())
+            button.set_tooltip_text("Place %s markers" % action.lower())
 
         # The delete button and its label
         button = gtk.RadioButton(button)
@@ -587,7 +582,7 @@ class TracksEditor:
         button.connect("toggled", self.button_callback, "DELETE")
         radiobox.pack_start(button, padding=7)
         button.show()
-        self.tooltips.set_tip(button, "Remove markers")
+        button.set_tooltip_text("Remove markers")
 
         # The copy button and its label
         button = gtk.RadioButton(button)
@@ -601,7 +596,7 @@ class TracksEditor:
         button.connect("toggled", self.button_callback, "COPY")
         radiobox.pack_start(button, padding=7)
         button.show()
-        self.tooltips.set_tip(button, "Copy marker from an unselected track")
+        button.set_tooltip_text("Copy marker from an unselected track")
 
         # Sigh - causes elements to jumop around in the toolbar,
         # because when it's not there the application wants the
@@ -622,45 +617,45 @@ class TracksEditor:
 
         quit = gtk.ToolButton(gtk.STOCK_QUIT)
         toolbar.insert(quit, -1)
-        self.tooltips.set_tip(quit, "Leave this program.")
+        quit.set_tooltip_text("Leave this program.")
         quit.connect("clicked", self.quit)
         quit.show()
 
         save = gtk.ToolButton(gtk.STOCK_SAVE)
         toolbar.insert(save, -1)
-        self.tooltips.set_tip(save, "Save journey tracks.")
+        save.set_tooltip_text("Save journey tracks.")
         save.connect("clicked", self.save_handler)
         save.show()
 
         properties = gtk.ToolButton(gtk.STOCK_PROPERTIES)
         toolbar.insert(properties, -1)
-        self.tooltips.set_tip(properties, "St properties of the tracks.")
+        properties.set_tooltip_text("St properties of the tracks.")
         properties.connect("clicked", self.properties_handler)
         properties.show()
 
         animate = gtk.ToolButton(gtk.STOCK_REFRESH)
         animate.set_label(label="Animate")
         toolbar.insert(animate, -1)
-        self.tooltips.set_tip(animate, "Animate tracks as in story parts.")
+        animate.set_tooltip_text("Animate tracks as in story parts.")
         animate.connect("clicked", self.animate_handler)
         animate.show()
 
         tracks = gtk.ToolButton(gtk.STOCK_INDEX)
         tracks.set_label(label="Tracks")
         toolbar.insert(tracks, -1)
-        self.tooltips.set_tip(tracks, "Add, edit, delete and rename tracks.")
+        tracks.set_tooltip_text("Add, edit, delete and rename tracks.")
         tracks.connect("clicked", self.tracks_handler)
         tracks.show()
 
         help = gtk.ToolButton(gtk.STOCK_HELP)
         toolbar.insert(help, -1)
-        self.tooltips.set_tip(quit, "Get command help for this program.")
+        quit.set_tooltip_text("Get command help for this program.")
         help.connect("clicked", self.help_handler)
         help.show()
 
         about = gtk.ToolButton(gtk.STOCK_ABOUT)
         toolbar.insert(about, -1)
-        self.tooltips.set_tip(quit, "See credits for this program.")
+        quit.set_tooltip_text("See credits for this program.")
         about.connect("clicked", self.about_handler)
         about.show()
 
