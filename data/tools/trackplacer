@@ -649,13 +649,13 @@ class TracksEditor:
 
         help = gtk.ToolButton(gtk.STOCK_HELP)
         toolbar.insert(help, -1)
-        quit.set_tooltip_text("Get command help for this program.")
+        help.set_tooltip_text("Get command help for this program.")
         help.connect("clicked", self.help_handler)
         help.show()
 
         about = gtk.ToolButton(gtk.STOCK_ABOUT)
         toolbar.insert(about, -1)
-        quit.set_tooltip_text("See credits for this program.")
+        about.set_tooltip_text("See credits for this program.")
         about.connect("clicked", self.about_handler)
         about.show()
 
