@@ -1049,6 +1049,7 @@ void menu_handler::undo(int side_num)
 				<< ", which has no recall list!\n";
 		} else {
 			current_team.recall_list().push_back(action.affected_unit);
+			resources::whiteboard->on_gamestate_change();
 		}
 	} else if(action.is_recall()) {
 
@@ -1070,6 +1071,7 @@ void menu_handler::undo(int side_num)
 			// to also do the overlapped hexes
 			gui_->invalidate(action.recall_loc);
 			units_.erase(action.recall_loc);
+			resources::whiteboard->on_gamestate_change();
 			gui_->draw();
 		}
 	} else if(action.is_recruit()) {
@@ -1093,6 +1095,7 @@ void menu_handler::undo(int side_num)
 		// to also do the ovelerlapped hexes
 		gui_->invalidate(action.recall_loc);
 		units_.erase(action.recall_loc);
+		resources::whiteboard->on_gamestate_change();
 		gui_->draw();
 	} else {
 		// Undo a move action
@@ -1130,6 +1133,7 @@ void menu_handler::undo(int side_num)
 		u->set_standing();
 
 		gui_->invalidate_unit_after_move(route.front(), route.back());
+		resources::whiteboard->on_gamestate_change();
 		gui_->draw();
 	}
 
