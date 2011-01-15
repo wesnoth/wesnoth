@@ -1,0 +1,377 @@
+# #-#-#-#-#  wesnoth-editor.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
+# Irish translations for PACKAGE package.
+# Copyright (C) 2011 Wesnoth development team
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2011.
+#
+msgid ""
+msgstr ""
+"#-#-#-#-#  wesnoth-editor.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2011-01-15 11:52+0100\n"
+"PO-Revision-Date: 2011-01-15 11:52+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ga\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  wesnoth-editor.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2011-01-15 11:52+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2;\n"
+
+#. [brush]
+#: data/core/editor/brushes.cfg:5
+msgid "Single Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor/brushes.cfg:15
+msgid "Radius 1 Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor/brushes.cfg:25
+msgid "Radius 2 Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor/brushes.cfg:55
+msgid "Hex Line NW-SE"
+msgstr ""
+
+#. [editor_group]: id=all
+#: data/core/editor/terrain-groups.cfg:10
+msgid "all"
+msgstr ""
+
+#. [editor_group]: id=water
+#: data/core/editor/terrain-groups.cfg:16
+msgid "water"
+msgstr ""
+
+#. [editor_group]: id=flat
+#: data/core/editor/terrain-groups.cfg:23
+msgid "flat"
+msgstr ""
+
+#. [editor_group]: id=desert
+#: data/core/editor/terrain-groups.cfg:30
+msgid "desert"
+msgstr ""
+
+#. [editor_group]: id=embellishments
+#: data/core/editor/terrain-groups.cfg:37
+msgid "embellishments"
+msgstr ""
+
+#. [editor_group]: id=forest
+#: data/core/editor/terrain-groups.cfg:44
+msgid "forest"
+msgstr ""
+
+#. [editor_group]: id=frozen
+#: data/core/editor/terrain-groups.cfg:51
+msgid "frozen"
+msgstr ""
+
+#. [editor_group]: id=rough
+#: data/core/editor/terrain-groups.cfg:58
+msgid "rough"
+msgstr ""
+
+#. [editor_group]: id=cave
+#: data/core/editor/terrain-groups.cfg:65
+msgid "cave"
+msgstr ""
+
+#. [editor_group]: id=obstacle
+#: data/core/editor/terrain-groups.cfg:72
+msgid "obstacle"
+msgstr ""
+
+#. [editor_group]: id=village
+#: data/core/editor/terrain-groups.cfg:79
+msgid "village"
+msgstr ""
+
+#. [editor_group]: id=castle
+#: data/core/editor/terrain-groups.cfg:86
+msgid "castle"
+msgstr ""
+
+#. [editor_group]: id=bridge
+#: data/core/editor/terrain-groups.cfg:93
+msgid "bridge"
+msgstr ""
+
+#. [editor_group]: id=special
+#: data/core/editor/terrain-groups.cfg:100
+msgid "special"
+msgstr ""
+
+#. [editor_tool_hint]: id=editor-tool-paint
+#. [editor_tool_hint]: id=editor-tool-fill
+#. [menu]: id=draw_button_editor
+#. [menu]: id=flood_button_editor
+#: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
+#: data/themes/editor.cfg:179 data/themes/editor.cfg:192
+msgid ""
+"Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
+"paint base layer only. Ctrl+click to sample terrain under cursor."
+msgstr ""
+
+#. [editor_tool_hint]: id=editor-tool-select
+#. [menu]: id=select_button_editor
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:214
+msgid ""
+"Left mouse button selects, right deselects. Hold Shift for magic-wand "
+"selection of tiles with same terrain."
+msgstr ""
+
+#. [editor_tool_hint]: id=editor-tool-starting-position
+#. [menu]: id=start_position_button_editor
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:203
+msgid ""
+"Left mouse button displays player selection, right clears. Number keys "
+"scroll to the starting position, alt+number sets respective starting "
+"position under cursor, delete clears."
+msgstr ""
+
+#. [editor_tool_hint]: id=editor-paste
+#: data/core/editor/tool-hints.cfg:30
+msgid ""
+"Click to paste, zoom out for more accuracy when pasting large areas. Use the "
+"edit menu to transform the clipboard (rotate, mirror)."
+msgstr ""
+
+#. [menu]: id=menu-editor-file
+#: data/themes/editor.cfg:120
+msgid "File"
+msgstr ""
+
+#. [menu]: id=menu-editor-edit
+#: data/themes/editor.cfg:131
+msgid "Edit"
+msgstr ""
+
+#. [menu]: id=menu-editor-map
+#: data/themes/editor.cfg:141
+msgid "Map"
+msgstr ""
+
+#. [menu]: id=menu-editor-window
+#: data/themes/editor.cfg:151
+msgid "Window"
+msgstr ""
+
+#. [label]: id=villages-icon
+#: data/themes/editor.cfg:270
+msgid "villages"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:124
+msgid "Quit Editor"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:279
+msgid "Fatal error"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:304 src/editor/editor_controller.cpp:1109
+msgid "(New Map)"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:310
+msgid "Do you really want to quit?"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:312
+msgid ""
+"Do you really want to quit? Changes in the map since the last save will be "
+"lost."
+msgstr ""
+
+#: src/editor/editor_controller.cpp:314
+msgid ""
+"Do you really want to quit? The following maps were modified and all changes "
+"since the last save will be lost:"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:319
+msgid "Quit"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:384
+msgid "No editor time-of-day found."
+msgstr ""
+
+#: src/editor/editor_controller.cpp:420
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:420
+msgid "Unsaved Changes"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:439
+msgid "Choose a Map to Open"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:474
+msgid "Save the Map As"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:477
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:494
+msgid "No random map generators found."
+msgstr ""
+
+#: src/editor/editor_controller.cpp:507 src/editor/editor_controller.cpp:511
+msgid "Map creation failed."
+msgstr ""
+
+#: src/editor/editor_controller.cpp:526
+msgid "Choose a mask to apply"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:533
+msgid "Error loading mask"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:548
+msgid "Choose target map"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:555 src/editor/editor_controller.cpp:750
+msgid "Error loading map"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:664 src/editor/editor_controller.cpp:706
+msgid "This map is already open."
+msgstr ""
+
+#: src/editor/editor_controller.cpp:685
+msgid "Map saved."
+msgstr ""
+
+#: src/editor/editor_controller.cpp:729
+msgid "Loaded embedded map data"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:730 src/editor/editor_controller.cpp:744
+msgid "Map loaded from scenario"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:740
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:1139
+msgid "Undo"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:1141
+msgid "Can’t Undo"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:1145
+msgid "Redo"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:1147
+msgid "Can’t Redo"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:1152
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:1155
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:1159
+msgid "Auto-update Terrain Transitions: No"
+msgstr ""
+
+#: src/editor/editor_map.cpp:150 src/editor/mouse_action.cpp:429
+msgid "Player"
+msgstr ""
+
+#: src/editor/editor_map.cpp:257
+msgid "The size of the target map is different from the current map"
+msgstr ""
+
+#: src/editor/editor_palettes.cpp:506
+msgid "(non-core)"
+msgstr ""
+
+#: src/editor/editor_palettes.cpp:507
+msgid "Will not work in game without extra care."
+msgstr ""
+
+#: src/editor/editor_palettes.cpp:537
+msgid "FG: "
+msgstr ""
+
+#: src/editor/editor_palettes.cpp:538
+msgid "BG: "
+msgstr ""
+
+#: src/editor/map_context.cpp:71
+msgid "File not found"
+msgstr ""
+
+#: src/editor/map_context.cpp:85
+msgid ""
+"The map file looks like a scenario, but the map_data value does not point to "
+"an existing file"
+msgstr ""
+
+#: src/editor/map_context.cpp:100
+msgid "Empty map file"
+msgstr ""
+
+#: src/editor/map_context.cpp:220
+msgid "Could not save into scenario"
+msgstr ""
+
+#: src/editor/map_context.cpp:227
+msgid "Could not save the map: $msg"
+msgstr ""
+
+#: src/editor/mouse_action.cpp:426
+msgid "(Player)^None"
+msgstr ""
+
+#: src/editor/mouse_action.cpp:433
+msgid "Choose player"
+msgstr ""
+
+#: src/editor/mouse_action.cpp:434
+msgid ""
+"Which player should start here? You can use alt and a number key to set the "
+"starting position for a player, and del to clear the starting position under "
+"the cursor. Pressing a number key by itself will scroll to that player’s "
+"starting position."
+msgstr ""
+
+#: src/gui/dialogs/editor_settings.cpp:171
+msgid "Custom setting"
+msgstr ""
