@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-03 14:55+0100\n"
+"POT-Creation-Date: 2011-01-15 11:52+0100\n"
 "PO-Revision-Date: 2010-12-03 08:29+0900\n"
 "Last-Translator: clearpotion <clearpotion+fantasy@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -504,9 +504,9 @@ msgstr "T’baran"
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:280
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:318
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:149
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:221
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:243
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:431
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:226
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:248
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:436
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:110
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:137
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_The_Saurian_Treasury.cfg:150
@@ -577,8 +577,8 @@ msgstr "Velon を最後まで守りきること"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:402
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:537
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:844
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:542
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:847
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:211
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_The_Saurian_Treasury.cfg:227
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_The_Saurian_Treasury.cfg:347
@@ -599,8 +599,8 @@ msgstr "Kalenz の死"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:406
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:541
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:848
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:546
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:851
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:215
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_The_Saurian_Treasury.cfg:231
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_The_Saurian_Treasury.cfg:351
@@ -796,8 +796,15 @@ msgstr "あの臭いトロル共が、<i>わしら</i>の領内に踏み入っ�
 msgid "Those lying elves have stepped on <i>our</i> land!"
 msgstr "嘘つきエルフ共が、<i>わしら</i>の領内に踏み入ったぞ！"
 
+#. [message]: id=Kalenz
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:208
+msgid ""
+"Spare as many dwarves as you can and don't kill their leader. We can't risk "
+"to get the dwarves as an additional enemy."
+msgstr ""
+
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:348
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:353
 msgid ""
 "It should be rare sport to watch this... Just be sure not to trespass on our "
 "land."
@@ -805,32 +812,32 @@ msgstr ""
 "こいつは見物だ！ 兎に角わしらの領内を侵犯しないように気を付けるこった！"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:360
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:365
 msgid "Up axes, and death to elves!"
 msgstr "斧を上げい、エルフ共に死を！"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:372
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:377
 msgid "Up axes, and death to trolls!"
 msgstr "斧を上げい、トロル共に死を！"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:385
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:390
 msgid "Up axes, and kill all the interlopers!"
 msgstr "斧を上げい、侵入者は皆殺しじゃい！"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:399
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:404
 msgid "Defend our bounds! Slay all who trespass them!"
 msgstr "国境を防御せい！ これを犯す者は皆殺しじゃい！"
 
 #. [side]: type=Troll Hero, type=Great Troll, id=Grugl
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:428
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:433
 msgid "Grugl"
 msgstr "Grugl"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:493
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:498
 msgid ""
 "I had hoped to avoid these paths... The eastern way is through dwarvish "
 "territory and is shorter. I pray the dwarves will grant us safe passage, "
@@ -842,7 +849,7 @@ msgstr ""
 
 # ye yer おめえ　で
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:497
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:502
 msgid ""
 "Not even in yer dreams, elf. These are dwarvish lands, and troubles we want "
 "no part of nip at yer heels. Get out and stay out!"
@@ -852,7 +859,7 @@ msgstr ""
 
 # %LAN
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:501
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:506
 msgid ""
 "Our troubles will be yours, too, whether either of us will it or not. The "
 "orcs have come down from the north like a flood; if we squabble among "
@@ -862,7 +869,7 @@ msgstr ""
 "に北から押し寄せて来ているんだぞ。内輪で揉めてりゃ、連中が喜ぶだけだ。"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:505
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:510
 msgid ""
 "Bah. More smooth words and trickery, by my beard. We know yer kind... and "
 "who needs yer help anyway, weaklings? Leave now, or feel my axe! That same "
@@ -877,12 +884,12 @@ msgstr ""
 
 # %LAN
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:509
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:514
 msgid "I cannot see how trolls could be any less friendly."
 msgstr "どうすりゃトロルだってこいつらより敵対的になれるんだか。"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:513
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:518
 msgid ""
 "Hmm... Perhaps the dwarves’ intransigence can serve our purpose. Onwards, "
 "and no matter what you do, do <i>not</i> step on the eastern bank of the "
@@ -892,18 +899,18 @@ msgstr ""
 "前進だ。ただし何があろうと、<i>決して</i>河の東側一帯には踏み入れるな！"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:528
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:533
 msgid "Kalenz must reach the signpost"
 msgstr "Kalenz が道しるべまで到達すること"
 
 # %%
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:533
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:538
 msgid "Defeat Grugl"
 msgstr "Grugl を倒す"
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:545
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:550
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:254
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:591
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:397
@@ -915,31 +922,31 @@ msgid "Death of Olurf"
 msgstr "Olurf の死"
 
 #. [message]: speaker={SPEAKER_NAME}
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:561
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:566
 msgid "We made it. Onwards to Wesmere!"
 msgstr "やったぞ。Wesmere に向かおう！"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:572
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:577
 msgid "Crazy elves! But at least they felled a few trolls before they left."
 msgstr ""
 "あのエルフ共はまともじゃねぇわな！ まぁ、何はともあれ、去る前に多少はトロル共"
 "を倒しとるわい。"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:578
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:583
 msgid "Crazy elves!"
 msgstr "あのエルフ共はまともじゃねぇわな！"
 
 #. [message]: id=Grugl
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:645
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:650
 msgid "Urgh! Grugl tried to eat dwarves, but choked on their sharp nasty axes."
 msgstr ""
 "アァァァァァ！ この Grugl  はドワーフ共を平らげようとしたのに、奴等の汚らわし"
 "い斧なんぞにやられちまうとは。"
 
 #. [message]: id=Grugl
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:661
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:666
 msgid ""
 "Urgh! Grugl wanted tasty elf-meat, but choked on their nasty pointy spears!"
 msgstr ""
@@ -1033,38 +1040,38 @@ msgstr "その知らせを Grubr 将軍に報告しろ。"
 msgid "I obey."
 msgstr "へい。言いつけ通りに。"
 
-# %% オークの戦略が  $orc_battlefield_strateg から攻撃に変わった。
-# AIの戦略が変わるだけなので、プレイヤーに違和感のないメッセージにしてみた。
-#. [message]
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:530
-msgid "$orc_battlefield_strategy changed to ‘attack’"
-msgstr "注意せよ！ そろそろオークも強く打って出てくる頃合いだ。"
-
 #. [message]: id=Mutaf-uru
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:587
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:585
 msgid "These elves are weak, mere meat for my wolves! Get them!"
 msgstr "このエルフ共は弱い、狼共の餌にすぎねぇ！ やってまえ！"
 
 #. [message]: id=Mutaf-uru
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:612
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:610
 msgid ""
 "Cursed tree-shaggers and their filthy bows! We shall await the main army."
 msgstr "木っ端共に汚ねえ弓め！ 主戦力で迎え撃ってくれるわ。"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:839
-msgid "Hold on until turns run out."
-msgstr "ターンが尽きるまで持ちこたえる。"
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:843
+#, fuzzy
+msgid "Defeat all enemy leaders."
+msgstr "すべての敵リーダーを倒す"
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:852
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:917
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:855
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:936
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:414
 msgid "Death of Galtrid"
 msgstr "Galtrid の死"
 
+#. [objective]: condition=lose
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:860
+#, fuzzy
+msgid "Death of El'Isimithir"
+msgstr "El'Ithsomir の拠点"
+
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:867
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:875
 msgid ""
 "For days, Kalenz and his small host of followers traveled, moving nearer and "
 "yet nearer to the Ka’lian. Thanks to the dense fog and elvish woodscraft, "
@@ -1078,7 +1085,7 @@ msgstr ""
 "たことで霧が晴れ、不吉な光景が姿を現しました……。"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:871
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:879
 msgid ""
 "Great hosts of orcs converge on the Ka’lian! But if we fall upon them from "
 "behind as they are fully engaged with the defenders, we and they together "
@@ -1088,13 +1095,13 @@ msgstr ""
 "しているところを、我々が背後から挟み撃ちにしてしまえば倒し易いだろう。"
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:875
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:883
 msgid "Are you our army’s vanguard? Hurry, for we are sorely pressed here."
 msgstr ""
 "貴方は前衛部隊か？ 急いで頂きたい、我々は今にもオーク達に圧倒されそうなのだ。"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:879
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:887
 msgid ""
 "No, we are fleeing an attack on our home in the Lintanir. Time enough for "
 "talk later; we must defeat these orcs together, or at least hold them off "
@@ -1105,7 +1112,7 @@ msgstr ""
 "に来るまでは持ち堪えましょう。"
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:883
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:891
 msgid ""
 "Then you have not heard the ill tidings. King Haldric has broken the treaty. "
 "The humans will not come to our help!"
@@ -1113,9 +1120,14 @@ msgstr ""
 "どうやら貴方は悪い知らせをご存じないようだ。Haldric 王は条約を破棄したのだ。"
 "人間族は我々の救援に来ない！"
 
+#. [message]: id=Landar
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:896
+msgid "How can they dare to brake the treaty!"
+msgstr ""
+
 # time over
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:908
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:922
 msgid ""
 "We have failed to relieve the defenders, and more orcish war-bands are "
 "arriving. All is lost!"
@@ -1124,17 +1136,23 @@ msgstr ""
 "だ！"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:922
-msgid "Defeat Urudin"
-msgstr "Urudin を倒す"
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:931
+msgid "Hold on until turns run out."
+msgstr "ターンが尽きるまで持ちこたえる。"
+
+#. [objective]: condition=lose
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
+#, fuzzy
+msgid "Death of El'Isomithir"
+msgstr "El'Ithsomir の拠点"
 
 #. [message]: id=guard
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:944
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:969
 msgid "Hist! Someone is sneaking about in the mist."
 msgstr "静かに！ 何者かがこの霧の中から忍び寄ってくる。"
 
 #. [message]: id=Urudin
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:948
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:973
 msgid ""
 "Ho, elves! Hand over the stone and we <i>might</i> not destroy your cute "
 "little playhouse, and we <i>might</i> spare you. Or, at the very least, we "
@@ -1146,7 +1164,7 @@ msgstr ""
 "合いだぜ。 "
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:952
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:977
 msgid ""
 "What ‘stone’, foul and clumsy orc? Your lips are not fit even to name the "
 "citadel of the Ka’lian, for it has stood since before your kind crawled into "
@@ -1157,7 +1175,7 @@ msgstr ""
 "そして貴様達の事など忘れ去られた遥か後々の世まで残るのだからな！ "
 
 #. [message]: id=Urudin
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:966
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:991
 msgid ""
 "We will cram those arrogant words back down your throat before we kill you, "
 "wose-spawned worm of an elf!"
@@ -1166,7 +1184,7 @@ msgstr ""
 "に産み落とされやがったエルフのうじ虫め！"
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1017
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1042
 msgid ""
 "To arms, elven-kin! They are many, but our army is returning and surely "
 "close at hand. We have but to hold until it arrives!"
@@ -1177,7 +1195,7 @@ msgstr ""
 # Kalenz の部隊から始めないので、このシナリオ開始時には期待しているより多い初期資金と今までとは違う雇用リストとなります。
 # %%18 実態に即した形に
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1080
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1105
 msgid ""
 "You will have a different recall list and amount of starting gold than you "
 "may be expecting at the beginning of this scenario, as you will not start "
@@ -1187,22 +1205,22 @@ msgstr ""
 "召還リストになります。"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1089
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1114
 msgid "We won! The Ka’lian is safe!"
 msgstr "勝った！ Ka'lian を守りきったぞ！"
 
 #. [unit]: id=Huraldur, type=Elvish Scout
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1105
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1130
 msgid "Huraldur"
 msgstr "Huraldur"
 
 #. [message]: id=Huraldur
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1123
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1148
 msgid "The elvish treasury is under attack! They need help desperately!"
 msgstr "エルフ族の宝物庫が攻撃されています！ 是が非でも救援が必要な状況です！"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1127
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1152
 msgid ""
 "Galtrid, your men are weary from long combat. Mine are fresher; I’ll go."
 msgstr ""
@@ -1210,12 +1228,12 @@ msgstr ""
 "疲れておりません。我々が救援に向かいましょう。"
 
 #. [message]: id=Huraldur
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1131
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1156
 msgid "Hurry! We were near overwhelmed as I left."
 msgstr "急いで下さい！ こうしている間にも制圧されそうです。"
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1135
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:1160
 msgid ""
 "Yes, go, Kalenz, I’ll guard the Ka’lian till our army returns from the front."
 msgstr ""
@@ -1283,7 +1301,8 @@ msgstr "エルフ族の宝物庫"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:48
-msgid "Chapter One, Part Two: The Treasury"
+#, fuzzy
+msgid "Chapter Two: The Treasury"
 msgstr "第一章　パート２ 宝物庫"
 
 #. [part]
@@ -5839,6 +5858,14 @@ msgstr "ダメだ！ 手遅れだ……。"
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "あなたは $amount_gold gold 奪回しました。"
 
+# %% オークの戦略が  $orc_battlefield_strateg から攻撃に変わった。
+# AIの戦略が変わるだけなので、プレイヤーに違和感のないメッセージにしてみた。
+#~ msgid "$orc_battlefield_strategy changed to ‘attack’"
+#~ msgstr "注意せよ！ そろそろオークも強く打って出てくる頃合いだ。"
+
+#~ msgid "Defeat Urudin"
+#~ msgstr "Urudin を倒す"
+
 #~ msgid "South Tower"
 #~ msgstr "South Tower"
 
@@ -5924,9 +5951,6 @@ msgstr "あなたは $amount_gold gold 奪回しました。"
 
 #~ msgid "Keep of Urug-Pir"
 #~ msgstr "Urug-Pir の拠点"
-
-#~ msgid "Keep of El'Ithsomir"
-#~ msgstr "El'Ithsomir の拠点"
 
 #~ msgid "Keep of Grubr"
 #~ msgstr "Grubr の拠点"

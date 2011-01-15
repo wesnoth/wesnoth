@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-10 00:26+0100\n"
+"POT-Creation-Date: 2011-01-15 11:52+0100\n"
 "PO-Revision-Date: 2010-03-15 22:39+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -2834,7 +2834,7 @@ msgstr "немртвост"
 msgid "unhealable"
 msgstr "расцеп"
 
-#: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1600
+#: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1609
 msgid "Victory:"
 msgstr "победа:"
 
@@ -2873,7 +2873,7 @@ msgstr "У реду"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:317 src/dialogs.cpp:637 src/dialogs.cpp:1079
-#: src/dialogs.cpp:1190 src/multiplayer_connect.cpp:978
+#: src/dialogs.cpp:1190 src/multiplayer_connect.cpp:987
 #: src/multiplayer_create.cpp:89 src/multiplayer_wait.cpp:178
 msgid "Cancel"
 msgstr "Одустани"
@@ -2921,8 +2921,8 @@ msgstr "Крај"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2384
-#: src/unit.cpp:2551
+#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2375
+#: src/unit.cpp:2542
 msgid "HP"
 msgstr "УП"
 
@@ -3088,15 +3088,15 @@ msgstr "Изабрано је неваљано оружје за нападач�
 msgid "An invalid defender weapon got selected."
 msgstr "Изабрано је неваљано оружје за браниоца."
 
-#: src/actions.cpp:2494
+#: src/actions.cpp:2500
 msgid "Ambushed!"
 msgstr "Заседа!"
 
-#: src/actions.cpp:2501
+#: src/actions.cpp:2507
 msgid "Failed teleport! Exit not empty"
 msgstr "Неуспешна телепортација! Излаз није празан."
 
-#: src/actions.cpp:2546
+#: src/actions.cpp:2552
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Уочена $friends савезничка јединица"
@@ -3104,7 +3104,7 @@ msgstr[1] "Уочене $friends савезничке јединице"
 msgstr[2] "Уочено $friends савезничких јединица"
 msgstr[3] "Уочена савезничка јединица"
 
-#: src/actions.cpp:2549
+#: src/actions.cpp:2555
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Уочена $enemies непријатељска јединица!"
@@ -3112,7 +3112,7 @@ msgstr[1] "Уочене $enemies непријатељске јединице!"
 msgstr[2] "Уочено $enemies непријатељских јединица!"
 msgstr[3] "Уочена непријатељска јединица!"
 
-#: src/actions.cpp:2554
+#: src/actions.cpp:2560
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends савезничка"
@@ -3120,7 +3120,7 @@ msgstr[1] "$friends савезничке"
 msgstr[2] "$friends савезничких"
 msgstr[3] "једна савезничка"
 
-#: src/actions.cpp:2555
+#: src/actions.cpp:2561
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies непријатељска"
@@ -3128,11 +3128,11 @@ msgstr[1] "$enemies непријатељске"
 msgstr[2] "$enemies непријатељских"
 msgstr[3] "једна непријатељска"
 
-#: src/actions.cpp:2556
+#: src/actions.cpp:2562
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Уочене јединице! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2565
+#: src/actions.cpp:2571
 msgid "(press $hotkey to keep moving)"
 msgstr "(притисните $hotkey да продужи)"
 
@@ -3219,7 +3219,7 @@ msgid "The server responded with an error: \""
 msgstr "Сервер је одговорио грешком: \""
 
 #: src/addon/manager.cpp:539 src/addon/manager.cpp:564
-#: src/multiplayer_wait.cpp:408
+#: src/multiplayer_wait.cpp:413
 msgid "Response"
 msgstr "Одзив"
 
@@ -3262,7 +3262,7 @@ msgid "Size"
 msgstr "величина"
 
 #: src/addon/manager.cpp:750 src/addon/manager.cpp:1148
-#: src/menu_events.cpp:204 src/menu_events.cpp:855 src/menu_events.cpp:1501
+#: src/menu_events.cpp:204 src/menu_events.cpp:855 src/menu_events.cpp:1505
 msgid "Type"
 msgstr "тип"
 
@@ -3441,7 +3441,7 @@ msgid "Done"
 msgstr ""
 
 #: src/addon/manager.cpp:1285 src/dialogs.cpp:622 src/menu_events.cpp:930
-#: src/menu_events.cpp:1537
+#: src/menu_events.cpp:1541
 msgid "Filter: "
 msgstr "Филтер: "
 
@@ -3872,18 +3872,18 @@ msgstr "Крај"
 msgid "System default language"
 msgstr "Системски језик"
 
-#: src/leader_list.cpp:138 src/menu_events.cpp:1527
-#: src/multiplayer_connect.cpp:221 src/multiplayer_connect.cpp:265
+#: src/leader_list.cpp:138 src/menu_events.cpp:1531
+#: src/multiplayer_connect.cpp:230 src/multiplayer_connect.cpp:274
 msgid "gender^Random"
 msgstr "насумичан"
 
-#: src/leader_list.cpp:148 src/multiplayer_connect.cpp:217
-#: src/multiplayer_connect.cpp:261
+#: src/leader_list.cpp:148 src/multiplayer_connect.cpp:226
+#: src/multiplayer_connect.cpp:270
 msgid "Female ♀"
 msgstr "женски ♀"
 
-#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:219
-#: src/multiplayer_connect.cpp:263
+#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:228
+#: src/multiplayer_connect.cpp:272
 msgid "Male ♂"
 msgstr "мушки ♂"
 
@@ -4029,11 +4029,11 @@ msgstr "Склизни до"
 msgid "Leader"
 msgstr "вођ"
 
-#: src/menu_events.cpp:370 src/multiplayer_connect.cpp:963
+#: src/menu_events.cpp:370 src/multiplayer_connect.cpp:972
 msgid "Team"
 msgstr "тим"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:974
+#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:983
 msgid "Gold"
 msgstr "злато"
 
@@ -4049,8 +4049,8 @@ msgstr "јединице"
 msgid "Upkeep"
 msgstr "издаци"
 
-#: src/menu_events.cpp:375 src/multiplayer_connect.cpp:975
-#: src/multiplayer_wait.cpp:521
+#: src/menu_events.cpp:375 src/multiplayer_connect.cpp:984
+#: src/multiplayer_wait.cpp:531
 msgid "Income"
 msgstr "приход"
 
@@ -4206,52 +4206,52 @@ msgstr[1] "Морате имати барем $cost златника да бис
 msgstr[2] "Морате имати барем $cost златника да бисте сазвали јединицу"
 msgstr[3] "Морате имати барем један златник да бисте сазвали јединицу"
 
-#: src/menu_events.cpp:1364
+#: src/menu_events.cpp:1368
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Нисте ни започели свој потез, желите ли заиста већ да га окончате?"
 
-#: src/menu_events.cpp:1372
+#: src/menu_events.cpp:1376
 #, fuzzy
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
 msgstr "Неке јединице се још могу кретати. Желите ли заиста да завршите потез?"
 
-#: src/menu_events.cpp:1380 src/menu_events.cpp:1385
+#: src/menu_events.cpp:1384 src/menu_events.cpp:1389
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Неке јединице се још могу кретати. Желите ли заиста да завршите потез?"
 
-#: src/menu_events.cpp:1420
+#: src/menu_events.cpp:1424
 msgid "Rename Unit"
 msgstr "Преименуј јединицу"
 
-#: src/menu_events.cpp:1500
+#: src/menu_events.cpp:1504
 msgid "Race"
 msgstr "раса"
 
-#: src/menu_events.cpp:1524
+#: src/menu_events.cpp:1528
 msgid "Create Unit (Debug!)"
 msgstr "Створи јединицу (испр.!)"
 
-#: src/menu_events.cpp:1527 src/multiplayer_wait.cpp:130
+#: src/menu_events.cpp:1531 src/multiplayer_wait.cpp:130
 msgid "Gender: "
 msgstr "пол: "
 
-#: src/menu_events.cpp:1822
+#: src/menu_events.cpp:1826
 msgid "Search"
 msgstr "Тражи"
 
-#: src/menu_events.cpp:1999
+#: src/menu_events.cpp:2003
 msgid "This command is currently unavailable."
 msgstr "Ова наредба тренутно није доступна."
 
-#: src/menu_events.cpp:2005
+#: src/menu_events.cpp:2009
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
 
-#: src/menu_events.cpp:2023
+#: src/menu_events.cpp:2027
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -4259,64 +4259,64 @@ msgstr ""
 "Списак доступних наредби и помоћ за њих. Употребите „help all“ да укључите и "
 "тренутно недоступне наредбе."
 
-#: src/menu_events.cpp:2025
+#: src/menu_events.cpp:2029
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:2069
+#: src/menu_events.cpp:2073
 #, fuzzy
 msgid "Error:"
 msgstr "Грешка: "
 
-#: src/menu_events.cpp:2075
+#: src/menu_events.cpp:2079
 msgid "Missing argument $arg_id"
 msgstr ""
 
-#: src/menu_events.cpp:2123
+#: src/menu_events.cpp:2127
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
 
-#: src/menu_events.cpp:2123 src/menu_events.cpp:2124 src/menu_events.cpp:2147
+#: src/menu_events.cpp:2127 src/menu_events.cpp:2128 src/menu_events.cpp:2151
 #, fuzzy
 msgid "help"
 msgstr "Помоћ"
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2128
 msgid "Type $help_command <command> for more info."
 msgstr ""
 
-#: src/menu_events.cpp:2135
+#: src/menu_events.cpp:2139
 msgid " No help available."
 msgstr " Помоћ није доступна."
 
-#: src/menu_events.cpp:2140
+#: src/menu_events.cpp:2144
 #, fuzzy
 msgid "Usage:"
 msgstr "порука:"
 
-#: src/menu_events.cpp:2145
+#: src/menu_events.cpp:2149
 msgid "aliases:"
 msgstr ""
 
-#: src/menu_events.cpp:2266
+#: src/menu_events.cpp:2270
 msgid "(A) - admin command"
 msgstr ""
 
-#: src/menu_events.cpp:2273 src/menu_events.cpp:2476
+#: src/menu_events.cpp:2277 src/menu_events.cpp:2480
 #, fuzzy
 msgid "(admin only)"
 msgstr "Само тимски"
 
-#: src/menu_events.cpp:2293
+#: src/menu_events.cpp:2297
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 "Шаље упит серверу. Без аргумената, сервер треба да наброји доступне наредбе."
 
-#: src/menu_events.cpp:2297
+#: src/menu_events.cpp:2301
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -4324,46 +4324,46 @@ msgstr ""
 "Забрањује и избацује играча или посматрача. Ако није у игри, већ на серверу, "
 "биће само забрањен."
 
-#: src/menu_events.cpp:2298 src/menu_events.cpp:2301 src/menu_events.cpp:2303
-#: src/menu_events.cpp:2305 src/menu_events.cpp:2307 src/menu_events.cpp:2332
-#: src/menu_events.cpp:2334 src/menu_events.cpp:2336 src/menu_events.cpp:2350
+#: src/menu_events.cpp:2302 src/menu_events.cpp:2305 src/menu_events.cpp:2307
+#: src/menu_events.cpp:2309 src/menu_events.cpp:2311 src/menu_events.cpp:2336
+#: src/menu_events.cpp:2338 src/menu_events.cpp:2340 src/menu_events.cpp:2354
 msgid "<nick>"
 msgstr ""
 
-#: src/menu_events.cpp:2300
+#: src/menu_events.cpp:2304
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr "Укида забрану играчу, који не мора бити у игри, али мора на серверу."
 
-#: src/menu_events.cpp:2303
+#: src/menu_events.cpp:2307
 msgid "Kick a player or observer."
 msgstr "Избацује играча или посматрача."
 
-#: src/menu_events.cpp:2305
+#: src/menu_events.cpp:2309
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Утишава посматрача. Без аргумената приказује стање утишаности."
 
-#: src/menu_events.cpp:2307
+#: src/menu_events.cpp:2311
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "Укида утишаност посматрача. Без аргумената укида утишаност свима."
 
-#: src/menu_events.cpp:2309
+#: src/menu_events.cpp:2313
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Утишава или укида утишаност свих посматрача."
 
-#: src/menu_events.cpp:2319
+#: src/menu_events.cpp:2323
 msgid "Send a message to the server admins currently online"
 msgstr "Шаље поруку администраторима сервера тренутно на вези."
 
-#: src/menu_events.cpp:2321
+#: src/menu_events.cpp:2325
 #, fuzzy
 msgid "<message>"
 msgstr "порука:"
 
-#: src/menu_events.cpp:2321
+#: src/menu_events.cpp:2325
 msgid "Send an emotion or personal action in chat."
 msgstr "Шаље емоцију или личну радњу у ћаскање."
 
-#: src/menu_events.cpp:2324
+#: src/menu_events.cpp:2328
 msgid ""
 "Sends a private message. You can’t send messages to players that don’t "
 "control a side in a running game you are in."
@@ -4371,506 +4371,506 @@ msgstr ""
 "Шаље приватну поруку. Не можете слати поруке играчима који не управљају "
 "неком страном у текућој партији у којој сте и сами."
 
-#: src/menu_events.cpp:2326
+#: src/menu_events.cpp:2330
 msgid "<nick> <message>"
 msgstr ""
 
-#: src/menu_events.cpp:2330
+#: src/menu_events.cpp:2334
 msgid "<level> <domain>"
 msgstr ""
 
-#: src/menu_events.cpp:2330
+#: src/menu_events.cpp:2334
 msgid "Change the log level of a log domain."
 msgstr "Мења ниво бележења за домен бележења."
 
-#: src/menu_events.cpp:2332
+#: src/menu_events.cpp:2336
 msgid "Add a nick to your ignores list."
 msgstr "Додаје надимак на списак игнорисаних."
 
-#: src/menu_events.cpp:2334
+#: src/menu_events.cpp:2338
 msgid "Add a nick to your friends list."
 msgstr "Додаје надимак на списак пријатеља."
 
-#: src/menu_events.cpp:2336
+#: src/menu_events.cpp:2340
 msgid "Remove a nick from your ignores or friends list."
 msgstr "Уклања играча са списка игнорисаних или пријатеља."
 
-#: src/menu_events.cpp:2338
+#: src/menu_events.cpp:2342
 msgid "Show your ignores and friends list."
 msgstr "Приказује списак игнорисаних и пријатеља."
 
-#: src/menu_events.cpp:2341
+#: src/menu_events.cpp:2345
 msgid "Display version information."
 msgstr "Приказује податак о верзији."
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2347
 msgid "<password> <email (optional)>"
 msgstr ""
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2347
 msgid "Register your nick"
 msgstr "Региструје ваш надимак."
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2349
 msgid "Drop your nick."
 msgstr "Испушта ваш надимак."
 
-#: src/menu_events.cpp:2347
+#: src/menu_events.cpp:2351
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr "Ажурира детаље вашег надимка. За могуће детаље, извршити „/details“."
 
-#: src/menu_events.cpp:2348
+#: src/menu_events.cpp:2352
 msgid "<detail> <value>"
 msgstr ""
 
-#: src/menu_events.cpp:2350
+#: src/menu_events.cpp:2354
 msgid "Request information about a nick."
 msgstr "Затражите податке о надимку."
 
-#: src/menu_events.cpp:2352
+#: src/menu_events.cpp:2356
 msgid "Request a list of details you can set for your registered nick."
 msgstr "Захтева списак детаља које можете задати уз регистровани надимак."
 
-#: src/menu_events.cpp:2354 src/menu_events.cpp:2357 src/menu_events.cpp:2359
+#: src/menu_events.cpp:2358 src/menu_events.cpp:2361 src/menu_events.cpp:2363
 msgid "<room>"
 msgstr ""
 
-#: src/menu_events.cpp:2354
+#: src/menu_events.cpp:2358
 msgid "Join a room."
 msgstr "Придружи се соби."
 
-#: src/menu_events.cpp:2357
+#: src/menu_events.cpp:2361
 msgid "Part a room."
 msgstr "Напусти собу."
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2363
 msgid "List room members."
 msgstr "Наброји чланове собе."
 
-#: src/menu_events.cpp:2361
+#: src/menu_events.cpp:2365
 msgid "List available rooms."
 msgstr "Наброји доступне собе."
 
-#: src/menu_events.cpp:2363
+#: src/menu_events.cpp:2367
 msgid "<room> <msg>"
 msgstr ""
 
-#: src/menu_events.cpp:2363
+#: src/menu_events.cpp:2367
 msgid "Room message."
 msgstr "Порука собе."
 
-#: src/menu_events.cpp:2365
+#: src/menu_events.cpp:2369
 msgid "<room> <type> [value]"
 msgstr ""
 
-#: src/menu_events.cpp:2365
+#: src/menu_events.cpp:2369
 msgid "Room query."
 msgstr "Упит собе."
 
-#: src/menu_events.cpp:2468
+#: src/menu_events.cpp:2472
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
-#: src/menu_events.cpp:2474
+#: src/menu_events.cpp:2478
 #, fuzzy
 msgid "(debug command)"
 msgstr "Исправљачке наредбе"
 
-#: src/menu_events.cpp:2475
+#: src/menu_events.cpp:2479
 #, fuzzy
 msgid "(network only)"
 msgstr "мрежни играч"
 
-#: src/menu_events.cpp:2500
+#: src/menu_events.cpp:2504
 msgid "Refresh gui."
 msgstr "Освежава сучеље."
 
-#: src/menu_events.cpp:2502
+#: src/menu_events.cpp:2506
 msgid "Switch a side to/from AI control."
 msgstr "Даје или одузима управљање страном ВИ."
 
-#: src/menu_events.cpp:2502
+#: src/menu_events.cpp:2506
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
-#: src/menu_events.cpp:2505
+#: src/menu_events.cpp:2509
 msgid "<side> <nick>"
 msgstr ""
 
-#: src/menu_events.cpp:2505
+#: src/menu_events.cpp:2509
 msgid "Assign control of a side to a different player or observer."
 msgstr "Додељује управљање страном другом играчу или посматрачу."
 
-#: src/menu_events.cpp:2507
+#: src/menu_events.cpp:2511
 msgid "Clear chat history."
 msgstr "Чисти историјат ћаскања."
 
-#: src/menu_events.cpp:2509
+#: src/menu_events.cpp:2513
 msgid "Visualize the screen refresh procedure."
 msgstr "Сагледава поступак освежавања екрана."
 
-#: src/menu_events.cpp:2511
+#: src/menu_events.cpp:2515
 msgid "Debug foreground terrain."
 msgstr ""
 
-#: src/menu_events.cpp:2513
+#: src/menu_events.cpp:2517
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:2514
+#: src/menu_events.cpp:2518
 #, fuzzy
 msgid "Show fps."
 msgstr "Пусти снимак"
 
-#: src/menu_events.cpp:2516
+#: src/menu_events.cpp:2520
 msgid "Save game."
 msgstr "Уписује позицију."
 
-#: src/menu_events.cpp:2518
+#: src/menu_events.cpp:2522
 msgid "Quit game."
 msgstr "Напушта игру."
 
-#: src/menu_events.cpp:2522
+#: src/menu_events.cpp:2526
 msgid "Save and quit."
 msgstr "Уписује и напушта."
 
-#: src/menu_events.cpp:2525
+#: src/menu_events.cpp:2529
 msgid "Ignore replay errors."
 msgstr "Игнорише грешке у снимку."
 
-#: src/menu_events.cpp:2527
+#: src/menu_events.cpp:2531
 msgid "Disable autosaves."
 msgstr "Искључује аутопозиције."
 
-#: src/menu_events.cpp:2529
+#: src/menu_events.cpp:2533
 msgid "<id>"
 msgstr ""
 
-#: src/menu_events.cpp:2529
+#: src/menu_events.cpp:2533
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Прелази на следећи сценарио, или онај са датим идентификатором."
 
-#: src/menu_events.cpp:2532
+#: src/menu_events.cpp:2536
 msgid "Choose next scenario"
 msgstr "Избор наредног сценарија."
 
-#: src/menu_events.cpp:2535
+#: src/menu_events.cpp:2539
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:2535
+#: src/menu_events.cpp:2539
 msgid "[turn]"
 msgstr ""
 
-#: src/menu_events.cpp:2537
+#: src/menu_events.cpp:2541
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:2537
+#: src/menu_events.cpp:2541
 msgid "[limit]"
 msgstr ""
 
-#: src/menu_events.cpp:2539
+#: src/menu_events.cpp:2543
 msgid "Turn debug mode on."
 msgstr "Укључује исправљачки режим."
 
-#: src/menu_events.cpp:2541
+#: src/menu_events.cpp:2545
 msgid "Turn debug mode off."
 msgstr "Искључује исправљачки режим."
 
-#: src/menu_events.cpp:2543 src/menu_events.cpp:2547
+#: src/menu_events.cpp:2547 src/menu_events.cpp:2551
 msgid "<command>[;<command>...]"
 msgstr ""
 
-#: src/menu_events.cpp:2543
+#: src/menu_events.cpp:2547
 msgid "Execute a Lua statement."
 msgstr "Извршава Lua исказ."
 
-#: src/menu_events.cpp:2545
+#: src/menu_events.cpp:2549
 msgid "Grant higher privileges to Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:2547
+#: src/menu_events.cpp:2551
 msgid "Set the command used by the custom command hotkey"
 msgstr "Поставља наредбу на пречицу посебне наредбе."
 
-#: src/menu_events.cpp:2549
+#: src/menu_events.cpp:2553
 msgid "Launch the gamestate inspector"
 msgstr "Покреће испитивач стања игре."
 
-#: src/menu_events.cpp:2551
+#: src/menu_events.cpp:2555
 msgid "Manage persistence data"
 msgstr ""
 
-#: src/menu_events.cpp:2553
+#: src/menu_events.cpp:2557
 msgid "<name>[=<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:2553
+#: src/menu_events.cpp:2557
 msgid "Set or show alias to a command"
 msgstr "Поставља или приказује алијас наредбе."
 
-#: src/menu_events.cpp:2555
+#: src/menu_events.cpp:2559
 msgid "<var>=<value>"
 msgstr ""
 
-#: src/menu_events.cpp:2555
+#: src/menu_events.cpp:2559
 msgid "Set a scenario variable."
 msgstr "Поставља променљиву сценарија."
 
-#: src/menu_events.cpp:2557
+#: src/menu_events.cpp:2561
 msgid "<var>"
 msgstr ""
 
-#: src/menu_events.cpp:2557
+#: src/menu_events.cpp:2561
 msgid "Show a scenario variable."
 msgstr "Приказује променљиву сценарија."
 
-#: src/menu_events.cpp:2559
+#: src/menu_events.cpp:2563
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "Мења променљиву јединице. (Подржани су само кључеви највишег нивоа.)"
 
-#: src/menu_events.cpp:2566
+#: src/menu_events.cpp:2570
 msgid "Discover all units in help."
 msgstr "Открива све јединице у помоћи."
 
-#: src/menu_events.cpp:2568
+#: src/menu_events.cpp:2572
 #, fuzzy
 msgid "'Undiscover' all units in help."
 msgstr "Открива све јединице у помоћи."
 
-#: src/menu_events.cpp:2570
+#: src/menu_events.cpp:2574
 msgid "Create a unit."
 msgstr "Ствара јединицу."
 
-#: src/menu_events.cpp:2572
+#: src/menu_events.cpp:2576
 msgid "Toggle fog for the current player."
 msgstr "Магла за текућег играча."
 
-#: src/menu_events.cpp:2574
+#: src/menu_events.cpp:2578
 msgid "Toggle shroud for the current player."
 msgstr "Са или без покрова за текућег играча."
 
-#: src/menu_events.cpp:2576
+#: src/menu_events.cpp:2580
 msgid "Give gold to the current player."
 msgstr "Даје злато текућем играчу."
 
-#: src/menu_events.cpp:2578
+#: src/menu_events.cpp:2582
 msgid "Fire a game event."
 msgstr "Окида догађај у игри."
 
-#: src/menu_events.cpp:2581
+#: src/menu_events.cpp:2585
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Преклапање x- и y-координата по пољима."
 
-#: src/menu_events.cpp:2584
+#: src/menu_events.cpp:2588
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Преклапање теренских кодова по пољима."
 
-#: src/menu_events.cpp:2587
+#: src/menu_events.cpp:2591
 msgid "Toggle planning mode."
 msgstr ""
 
-#: src/menu_events.cpp:2630
+#: src/menu_events.cpp:2634
 msgid "Unknown debug level: '$level'."
 msgstr "Непознат исправљачки ниво: ‘$level|’."
 
-#: src/menu_events.cpp:2632 src/menu_events.cpp:2641
+#: src/menu_events.cpp:2636 src/menu_events.cpp:2645
 msgid "error"
 msgstr "грешка"
 
-#: src/menu_events.cpp:2639
+#: src/menu_events.cpp:2643
 msgid "Unknown debug domain: '$domain'."
 msgstr "Непознат исправљачки домен: ‘$domain|’."
 
-#: src/menu_events.cpp:2648
+#: src/menu_events.cpp:2652
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Домен пребачен: ‘$domain|’ на ниво: ‘$level|’."
 
-#: src/menu_events.cpp:2719
+#: src/menu_events.cpp:2723
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/menu_events.cpp:2726
+#: src/menu_events.cpp:2730
 msgid "whisper: $sender"
 msgstr ""
 
-#: src/menu_events.cpp:2822 src/menu_events.cpp:2841
-#: src/multiplayer_connect.cpp:662
+#: src/menu_events.cpp:2826 src/menu_events.cpp:2845
+#: src/multiplayer_connect.cpp:671
 msgid "(empty)"
 msgstr "(празно)"
 
-#: src/menu_events.cpp:2822 src/menu_events.cpp:2828 src/menu_events.cpp:2878
+#: src/menu_events.cpp:2826 src/menu_events.cpp:2832 src/menu_events.cpp:2882
 #, fuzzy
 msgid "ignores list"
 msgstr "на списку игнорисаних"
 
-#: src/menu_events.cpp:2828
+#: src/menu_events.cpp:2832
 #, fuzzy
 msgid "Added to ignore list: $nick"
 msgstr "Додат на списак игнорисаних: "
 
-#: src/menu_events.cpp:2831 src/menu_events.cpp:2850
+#: src/menu_events.cpp:2835 src/menu_events.cpp:2854
 #, fuzzy
 msgid "Invalid username: $nick"
 msgstr "Неваљано корисничко име: "
 
-#: src/menu_events.cpp:2841 src/menu_events.cpp:2848 src/menu_events.cpp:2874
+#: src/menu_events.cpp:2845 src/menu_events.cpp:2852 src/menu_events.cpp:2878
 #, fuzzy
 msgid "friends list"
 msgstr "на списку пријатеља"
 
-#: src/menu_events.cpp:2848
+#: src/menu_events.cpp:2852
 #, fuzzy
 msgid "Added to friends list: $nick"
 msgstr "Додат на списак пријатеља: "
 
-#: src/menu_events.cpp:2864
+#: src/menu_events.cpp:2868
 #, fuzzy
 msgid "Removed from list: $nick"
 msgstr "Уклоњен са списка: "
 
-#: src/menu_events.cpp:2864 src/menu_events.cpp:2882
+#: src/menu_events.cpp:2868 src/menu_events.cpp:2886
 #, fuzzy
 msgid "friends and ignores list"
 msgstr "на списку игнорисаних"
 
-#: src/menu_events.cpp:2882
+#: src/menu_events.cpp:2886
 msgid "There are no players on your friends or ignore list."
 msgstr "Нема играча ни на вашем списку пријатеља ни игнорисаних."
 
-#: src/menu_events.cpp:2887
+#: src/menu_events.cpp:2891
 #, fuzzy
 msgid "version"
 msgstr "верзија"
 
-#: src/menu_events.cpp:2903
+#: src/menu_events.cpp:2907
 msgid "registering with password *** and no email address"
 msgstr ""
 
-#: src/menu_events.cpp:2907
+#: src/menu_events.cpp:2911
 msgid "registering with password *** and email address $email"
 msgstr ""
 
-#: src/menu_events.cpp:2910 src/menu_events.cpp:2921 src/menu_events.cpp:2939
-#: src/menu_events.cpp:2953
+#: src/menu_events.cpp:2914 src/menu_events.cpp:2925 src/menu_events.cpp:2943
+#: src/menu_events.cpp:2957
 msgid "nick registration"
 msgstr ""
 
-#: src/menu_events.cpp:2921
+#: src/menu_events.cpp:2925
 msgid "dropping your username"
 msgstr ""
 
-#: src/menu_events.cpp:2939
+#: src/menu_events.cpp:2943
 msgid "setting $var to $value"
 msgstr ""
 
-#: src/menu_events.cpp:2953
+#: src/menu_events.cpp:2957
 #, fuzzy
 msgid "requesting information for user $nick"
 msgstr "Затражите податке о надимку."
 
-#: src/menu_events.cpp:3066
+#: src/menu_events.cpp:3070
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Нисам могао да нађем етикету или јединицу која садржи ‘$search|’."
 
 # well-spelled: дроидовати
-#: src/menu_events.cpp:3100
+#: src/menu_events.cpp:3104
 msgid "Can't droid invalid side: '$side'."
 msgstr "Не може се дроидовати неваљана страна: ‘$side|’."
 
 # well-spelled: дроидовати
-#: src/menu_events.cpp:3105
+#: src/menu_events.cpp:3109
 msgid "Can't droid networked side: '$side'."
 msgstr "Не може се дроидовати умрежена страна: ‘$side|’."
 
-#: src/menu_events.cpp:3142
+#: src/menu_events.cpp:3146
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Не може се променити управљање над неваљаном страном: ‘$side|’."
 
-#: src/menu_events.cpp:3148
+#: src/menu_events.cpp:3152
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Не може се променити управљање над страном ван граница: ‘$side|’."
 
-#: src/menu_events.cpp:3242
+#: src/menu_events.cpp:3246
 #, fuzzy
 msgid "Layers"
 msgstr "играча: "
 
-#: src/menu_events.cpp:3315
+#: src/menu_events.cpp:3319
 msgid "Choose Scenario (Debug!)"
 msgstr "Избор сценарија (испр.!)"
 
-#: src/menu_events.cpp:3360
+#: src/menu_events.cpp:3364
 msgid "Debug mode activated!"
 msgstr "Исправљање активирано!"
 
-#: src/menu_events.cpp:3363
+#: src/menu_events.cpp:3367
 msgid "Debug mode not available in network games"
 msgstr "Исправљање није доступно у мрежним партијама."
 
-#: src/menu_events.cpp:3368
+#: src/menu_events.cpp:3372
 msgid "Debug mode deactivated!"
 msgstr "Исправљање деактивирано!"
 
-#: src/menu_events.cpp:3379
+#: src/menu_events.cpp:3383
 msgid "Unsafe Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:3380
+#: src/menu_events.cpp:3384
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
 
-#: src/menu_events.cpp:3383
+#: src/menu_events.cpp:3387
 msgid "Unsafe mode enabled!"
 msgstr ""
 
-#: src/menu_events.cpp:3426
+#: src/menu_events.cpp:3430
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:3470
+#: src/menu_events.cpp:3474
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic "
 "or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:3520
+#: src/menu_events.cpp:3524
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:3531
+#: src/menu_events.cpp:3535
 #, fuzzy
 msgid "Invalid unit type"
 msgstr "Неваљано име ознаке"
 
-#: src/menu_events.cpp:3544
+#: src/menu_events.cpp:3548
 #, fuzzy
 msgid "Invalid location"
 msgstr "Неваљана боја"
 
-#: src/menu_events.cpp:3579
+#: src/menu_events.cpp:3583
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "Исправљање активирано!"
 
-#: src/menu_events.cpp:3582
+#: src/menu_events.cpp:3586
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "Исправљање деактивирано!"
 
-#: src/menu_events.cpp:3590
+#: src/menu_events.cpp:3594
 msgid "ai"
 msgstr "ВИ"
 
-#: src/menu_events.cpp:3600 src/menu_events.cpp:3615
+#: src/menu_events.cpp:3604 src/menu_events.cpp:3619
 msgid "prompt^Command:"
 msgstr "наредба:"
 
@@ -4965,136 +4965,136 @@ msgstr "Грешка у поступку пријављивања (сервер 
 msgid "The password you provided was incorrect."
 msgstr "Дали сте неисправну лозинку."
 
-#: src/multiplayer_connect.cpp:97 src/multiplayer_connect.cpp:446
-#: src/multiplayer_connect.cpp:594
+#: src/multiplayer_connect.cpp:102 src/multiplayer_connect.cpp:455
+#: src/multiplayer_connect.cpp:603
 msgid "Normal"
 msgstr "уобичајено"
 
-#: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:590
-#: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:521
+#: src/multiplayer_connect.cpp:451 src/multiplayer_connect.cpp:599
+#: src/multiplayer_wait.cpp:523 src/multiplayer_wait.cpp:531
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:590
-#: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:524
+#: src/multiplayer_connect.cpp:451 src/multiplayer_connect.cpp:599
+#: src/multiplayer_wait.cpp:523 src/multiplayer_wait.cpp:534
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:444 src/multiplayer_connect.cpp:592
-#: src/multiplayer_wait.cpp:523
+#: src/multiplayer_connect.cpp:453 src/multiplayer_connect.cpp:601
+#: src/multiplayer_wait.cpp:533
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:622
+#: src/multiplayer_connect.cpp:631
 msgid "(Vacant slot)"
 msgstr "(слободно)"
 
-#: src/multiplayer_connect.cpp:630
+#: src/multiplayer_connect.cpp:639
 msgid "Anonymous local player"
 msgstr "Никоговић"
 
-#: src/multiplayer_connect.cpp:643 src/multiplayer_connect.cpp:1425
+#: src/multiplayer_connect.cpp:652 src/multiplayer_connect.cpp:1434
 msgid "Computer Player"
 msgstr "рачунарски играч"
 
-#: src/multiplayer_connect.cpp:646
+#: src/multiplayer_connect.cpp:655
 msgid "$playername $side"
 msgstr "$playername ($side)"
 
-#: src/multiplayer_connect.cpp:650
+#: src/multiplayer_connect.cpp:659
 msgid "(Empty slot)"
 msgstr "(празно)"
 
-#: src/multiplayer_connect.cpp:657
+#: src/multiplayer_connect.cpp:666
 msgid "(Reserved for $playername)"
 msgstr "(резервисано за $playername)"
 
-#: src/multiplayer_connect.cpp:758
+#: src/multiplayer_connect.cpp:767
 msgid "Reserved"
 msgstr "резервисано"
 
-#: src/multiplayer_connect.cpp:759
+#: src/multiplayer_connect.cpp:768
 msgid "--give--"
 msgstr "--дај--"
 
-#: src/multiplayer_connect.cpp:887
+#: src/multiplayer_connect.cpp:896
 msgid "Only random sides in the current era."
 msgstr "Само насумичне стране у изабраној епохи."
 
-#: src/multiplayer_connect.cpp:911
+#: src/multiplayer_connect.cpp:920
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Не могу да нађем тип вођа за фракцију $faction"
 
-#: src/multiplayer_connect.cpp:948
+#: src/multiplayer_connect.cpp:957
 msgid "Game Lobby: "
 msgstr "Играчки хол: "
 
-#: src/multiplayer_connect.cpp:970
+#: src/multiplayer_connect.cpp:979
 msgid "Player/Type"
 msgstr "играч/тип"
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:980
 msgid "Faction"
 msgstr "фракција"
 
-#: src/multiplayer_connect.cpp:972
+#: src/multiplayer_connect.cpp:981
 msgid "Team/Gender"
 msgstr "тим/пол"
 
-#: src/multiplayer_connect.cpp:973
+#: src/multiplayer_connect.cpp:982
 msgid "Color"
 msgstr "боја"
 
-#: src/multiplayer_connect.cpp:977
+#: src/multiplayer_connect.cpp:986
 msgid "I’m Ready"
 msgstr "У бој!"
 
-#: src/multiplayer_connect.cpp:979
+#: src/multiplayer_connect.cpp:988
 #, fuzzy
 msgid "Add named local player"
 msgstr "Никоговић"
 
-#: src/multiplayer_connect.cpp:988
+#: src/multiplayer_connect.cpp:997
 msgid "The scenario is invalid because it has no id."
 msgstr "Сценарио није није ваљан јер нема ИД."
 
-#: src/multiplayer_connect.cpp:992
+#: src/multiplayer_connect.cpp:1001
 msgid "The scenario is invalid because it has no sides."
 msgstr "Сценарио није није ваљан јер нема страна."
 
-#: src/multiplayer_connect.cpp:1059
+#: src/multiplayer_connect.cpp:1068
 msgid "Enter a name for the new player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1060 src/reports.cpp:135 src/savegame.cpp:694
+#: src/multiplayer_connect.cpp:1069 src/reports.cpp:135 src/savegame.cpp:694
 msgid "Name: "
 msgstr "Име: "
 
-#: src/multiplayer_connect.cpp:1422
+#: src/multiplayer_connect.cpp:1431
 msgid "Network Player"
 msgstr "мрежни играч"
 
-#: src/multiplayer_connect.cpp:1424
+#: src/multiplayer_connect.cpp:1433
 msgid "Local Player"
 msgstr "локални играч"
 
-#: src/multiplayer_connect.cpp:1426
+#: src/multiplayer_connect.cpp:1435
 msgid "Empty"
 msgstr "празно"
 
-#: src/multiplayer_connect.cpp:1577
+#: src/multiplayer_connect.cpp:1586
 msgid "Cannot find era $era"
 msgstr "Не могу да нађем епоху $era"
 
-#: src/multiplayer_connect.cpp:1602
+#: src/multiplayer_connect.cpp:1611
 msgid "Defeat enemy leader(s)"
 msgstr "Поразиш ли противничке вође"
 
-#: src/multiplayer_connect.cpp:1701
+#: src/multiplayer_connect.cpp:1710
 msgid "Waiting for players to join..."
 msgstr "Чекамо да се придруже играчи..."
 
-#: src/multiplayer_connect.cpp:1702
+#: src/multiplayer_connect.cpp:1711
 #, fuzzy
 msgid "Waiting for players to choose factions..."
 msgstr "Чекамо да се придруже играчи..."
@@ -5418,15 +5418,15 @@ msgstr "Нема података о епохама."
 msgid "No multiplayer sides found"
 msgstr "Нема вишеиграчких страна"
 
-#: src/multiplayer_wait.cpp:312
+#: src/multiplayer_wait.cpp:317
 msgid "Choose your faction:"
 msgstr "Изаберите своју фракцију:"
 
-#: src/multiplayer_wait.cpp:312
+#: src/multiplayer_wait.cpp:317
 msgid "Starting position: "
 msgstr "Почетни положај: "
 
-#: src/multiplayer_wait.cpp:517
+#: src/multiplayer_wait.cpp:527
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] "златник"
@@ -6110,27 +6110,27 @@ msgstr "Доба дана није одређено."
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Непознат тип јединице ‘$type|’ при стварању особина"
 
-#: src/unit.cpp:2343 src/unit.cpp:2540 src/unit.cpp:2611
+#: src/unit.cpp:2334 src/unit.cpp:2531 src/unit.cpp:2602
 msgid " and "
 msgstr " и "
 
-#: src/unit.cpp:2354
+#: src/unit.cpp:2345
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2415
+#: src/unit.cpp:2406
 msgid "moves"
 msgstr "кретњи"
 
-#: src/unit.cpp:2430 src/unit.cpp:2564
+#: src/unit.cpp:2421 src/unit.cpp:2555
 msgid "XP to advance"
 msgstr "ИП за напредовање"
 
-#: src/unit.cpp:2557
+#: src/unit.cpp:2548
 msgid " move"
 msgstr " покрет"
 
-#: src/unit.cpp:2572
+#: src/unit.cpp:2563
 msgid "$effect_description per level"
 msgstr "$effect_description по нивоу"
 

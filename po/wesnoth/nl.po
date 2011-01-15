@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-10 00:26+0100\n"
+"POT-Creation-Date: 2011-01-15 11:52+0100\n"
 "PO-Revision-Date: 2011-01-08 14:41+0100\n"
 "Last-Translator: Floris Kint <floris.kint@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -2823,7 +2823,7 @@ msgstr "ongeneesbaar"
 msgid "unhealable"
 msgstr "ongeneesbaar"
 
-#: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1600
+#: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1609
 msgid "Victory:"
 msgstr "Overwinning:"
 
@@ -2861,7 +2861,7 @@ msgstr "OK"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:317 src/dialogs.cpp:637 src/dialogs.cpp:1079
-#: src/dialogs.cpp:1190 src/multiplayer_connect.cpp:978
+#: src/dialogs.cpp:1190 src/multiplayer_connect.cpp:987
 #: src/multiplayer_create.cpp:89 src/multiplayer_wait.cpp:178
 msgid "Cancel"
 msgstr "Annuleren"
@@ -2906,8 +2906,8 @@ msgstr "Einde scenario"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2384
-#: src/unit.cpp:2551
+#: data/themes/experimental.cfg:187 src/menu_events.cpp:208 src/unit.cpp:2375
+#: src/unit.cpp:2542
 msgid "HP"
 msgstr "HP"
 
@@ -3073,43 +3073,43 @@ msgstr "Ongeldig aanvalswapen geselecteerd."
 msgid "An invalid defender weapon got selected."
 msgstr "Ongeldig verdedigingswapen geselecteerd."
 
-#: src/actions.cpp:2494
+#: src/actions.cpp:2500
 msgid "Ambushed!"
 msgstr "Hinderlaag!"
 
-#: src/actions.cpp:2501
+#: src/actions.cpp:2507
 msgid "Failed teleport! Exit not empty"
 msgstr "Teleporteren mislukt! Uitgang niet vrij"
 
-#: src/actions.cpp:2546
+#: src/actions.cpp:2552
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Bevriende eenheid in zicht!"
 msgstr[1] "$friends bevriende eenheden in zicht!"
 
-#: src/actions.cpp:2549
+#: src/actions.cpp:2555
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vijandelijke eenheid in zicht!"
 msgstr[1] "$enemies vijandelijke eenheden in zicht!"
 
-#: src/actions.cpp:2554
+#: src/actions.cpp:2560
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 vriendelijke"
 msgstr[1] "$friends vriendelijke"
 
-#: src/actions.cpp:2555
+#: src/actions.cpp:2561
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 vijandelijke"
 msgstr[1] "$enemies vijandelijke"
 
-#: src/actions.cpp:2556
+#: src/actions.cpp:2562
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Troepen gesignaleerd! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2565
+#: src/actions.cpp:2571
 msgid "(press $hotkey to keep moving)"
 msgstr "(druk $hotkey om door te gaan)"
 
@@ -3191,7 +3191,7 @@ msgid "The server responded with an error: \""
 msgstr "De server antwoordde met een fout: \""
 
 #: src/addon/manager.cpp:539 src/addon/manager.cpp:564
-#: src/multiplayer_wait.cpp:408
+#: src/multiplayer_wait.cpp:413
 msgid "Response"
 msgstr "Antwoord"
 
@@ -3235,7 +3235,7 @@ msgid "Size"
 msgstr "Grootte"
 
 #: src/addon/manager.cpp:750 src/addon/manager.cpp:1148
-#: src/menu_events.cpp:204 src/menu_events.cpp:855 src/menu_events.cpp:1501
+#: src/menu_events.cpp:204 src/menu_events.cpp:855 src/menu_events.cpp:1505
 msgid "Type"
 msgstr "Type"
 
@@ -3404,7 +3404,7 @@ msgid "Done"
 msgstr "Gereed"
 
 #: src/addon/manager.cpp:1285 src/dialogs.cpp:622 src/menu_events.cpp:930
-#: src/menu_events.cpp:1537
+#: src/menu_events.cpp:1541
 msgid "Filter: "
 msgstr "Filter: "
 
@@ -3833,18 +3833,18 @@ msgstr "Einde"
 msgid "System default language"
 msgstr "Standaardtaal Systeem"
 
-#: src/leader_list.cpp:138 src/menu_events.cpp:1527
-#: src/multiplayer_connect.cpp:221 src/multiplayer_connect.cpp:265
+#: src/leader_list.cpp:138 src/menu_events.cpp:1531
+#: src/multiplayer_connect.cpp:230 src/multiplayer_connect.cpp:274
 msgid "gender^Random"
 msgstr "Willekeurig"
 
-#: src/leader_list.cpp:148 src/multiplayer_connect.cpp:217
-#: src/multiplayer_connect.cpp:261
+#: src/leader_list.cpp:148 src/multiplayer_connect.cpp:226
+#: src/multiplayer_connect.cpp:270
 msgid "Female ♀"
 msgstr "Vrouw ♀"
 
-#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:219
-#: src/multiplayer_connect.cpp:263
+#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:228
+#: src/multiplayer_connect.cpp:272
 msgid "Male ♂"
 msgstr "Man ♂"
 
@@ -3985,11 +3985,11 @@ msgstr "Ga naar"
 msgid "Leader"
 msgstr "Leider"
 
-#: src/menu_events.cpp:370 src/multiplayer_connect.cpp:963
+#: src/menu_events.cpp:370 src/multiplayer_connect.cpp:972
 msgid "Team"
 msgstr "Team"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:974
+#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:983
 msgid "Gold"
 msgstr "Goud"
 
@@ -4005,8 +4005,8 @@ msgstr "Eenheden"
 msgid "Upkeep"
 msgstr "Onderhoud"
 
-#: src/menu_events.cpp:375 src/multiplayer_connect.cpp:975
-#: src/multiplayer_wait.cpp:521
+#: src/menu_events.cpp:375 src/multiplayer_connect.cpp:984
+#: src/multiplayer_wait.cpp:531
 msgid "Income"
 msgstr "Inkomen"
 
@@ -4159,48 +4159,48 @@ msgstr[0] "Je moet tenminste 1 goudstuk hebben om een eenheid op te roepen"
 msgstr[1] ""
 "Je moet tenminste $cost goudstukken hebben om een eenheid op te roepen"
 
-#: src/menu_events.cpp:1364
+#: src/menu_events.cpp:1368
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Je hebt deze beurt nog niets gedaan. Weet je zeker dat je de beurt wilt "
 "beëindigen?"
 
-#: src/menu_events.cpp:1372
+#: src/menu_events.cpp:1376
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
 msgstr ""
 "Sommige eenheden hebben nog geplande acties. Wil je echt je beurt beëindigen?"
 
-#: src/menu_events.cpp:1380 src/menu_events.cpp:1385
+#: src/menu_events.cpp:1384 src/menu_events.cpp:1389
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Sommige eenheden kunnen nog bewegen. Wil je echt je beurt beëindigen?"
 
-#: src/menu_events.cpp:1420
+#: src/menu_events.cpp:1424
 msgid "Rename Unit"
 msgstr "Eenheid hernoemen"
 
-#: src/menu_events.cpp:1500
+#: src/menu_events.cpp:1504
 msgid "Race"
 msgstr "Ras"
 
-#: src/menu_events.cpp:1524
+#: src/menu_events.cpp:1528
 msgid "Create Unit (Debug!)"
 msgstr "Maak eenheid (Debug!)"
 
-#: src/menu_events.cpp:1527 src/multiplayer_wait.cpp:130
+#: src/menu_events.cpp:1531 src/multiplayer_wait.cpp:130
 msgid "Gender: "
 msgstr "Geslacht: "
 
-#: src/menu_events.cpp:1822
+#: src/menu_events.cpp:1826
 msgid "Search"
 msgstr "Zoeken"
 
-#: src/menu_events.cpp:1999
+#: src/menu_events.cpp:2003
 msgid "This command is currently unavailable."
 msgstr "Het commando is op dit moment niet beschikbaar."
 
-#: src/menu_events.cpp:2005
+#: src/menu_events.cpp:2009
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
@@ -4208,7 +4208,7 @@ msgstr ""
 "Onbekend commando '$command', probeer $help_command voor een lijst van "
 "beschikbare commando's."
 
-#: src/menu_events.cpp:2023
+#: src/menu_events.cpp:2027
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -4216,19 +4216,19 @@ msgstr ""
 "Beschikbare commandolijst en commandospecifieke hulp. Gebruik \"help all\" "
 "om de commando's die nu niet beschikbaar zijn ook te laten zien."
 
-#: src/menu_events.cpp:2025
+#: src/menu_events.cpp:2029
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr "[all|<command>]"
 
-#: src/menu_events.cpp:2069
+#: src/menu_events.cpp:2073
 msgid "Error:"
 msgstr "Fout:"
 
-#: src/menu_events.cpp:2075
+#: src/menu_events.cpp:2079
 msgid "Missing argument $arg_id"
 msgstr "Ontbrekend argument $arg_id"
 
-#: src/menu_events.cpp:2123
+#: src/menu_events.cpp:2127
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -4236,35 +4236,35 @@ msgstr ""
 "Beschikbare commando's $flags_description:\n"
 "$list_of_commands"
 
-#: src/menu_events.cpp:2123 src/menu_events.cpp:2124 src/menu_events.cpp:2147
+#: src/menu_events.cpp:2127 src/menu_events.cpp:2128 src/menu_events.cpp:2151
 msgid "help"
 msgstr "help"
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2128
 msgid "Type $help_command <command> for more info."
 msgstr "Typ $help_command <commando> voor meer informatie."
 
-#: src/menu_events.cpp:2135
+#: src/menu_events.cpp:2139
 msgid " No help available."
 msgstr " Geen help beschikbaar."
 
-#: src/menu_events.cpp:2140
+#: src/menu_events.cpp:2144
 msgid "Usage:"
 msgstr "Gebruik:"
 
-#: src/menu_events.cpp:2145
+#: src/menu_events.cpp:2149
 msgid "aliases:"
 msgstr "aliassen:"
 
-#: src/menu_events.cpp:2266
+#: src/menu_events.cpp:2270
 msgid "(A) - admin command"
 msgstr "(A) - administratorcommando"
 
-#: src/menu_events.cpp:2273 src/menu_events.cpp:2476
+#: src/menu_events.cpp:2277 src/menu_events.cpp:2480
 msgid "(admin only)"
 msgstr "(enkel administrator)"
 
-#: src/menu_events.cpp:2293
+#: src/menu_events.cpp:2297
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -4272,7 +4272,7 @@ msgstr ""
 "Stuur een vraag naar de server. Zonder argumenten zal de server u de "
 "beschikbare commando's vertellen."
 
-#: src/menu_events.cpp:2297
+#: src/menu_events.cpp:2301
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -4280,49 +4280,49 @@ msgstr ""
 "Verban en verwijder een speler of toeschouwer. Als hij niet in het spel maar "
 "wel op de server is, zal hij alleen verbannen worden."
 
-#: src/menu_events.cpp:2298 src/menu_events.cpp:2301 src/menu_events.cpp:2303
-#: src/menu_events.cpp:2305 src/menu_events.cpp:2307 src/menu_events.cpp:2332
-#: src/menu_events.cpp:2334 src/menu_events.cpp:2336 src/menu_events.cpp:2350
+#: src/menu_events.cpp:2302 src/menu_events.cpp:2305 src/menu_events.cpp:2307
+#: src/menu_events.cpp:2309 src/menu_events.cpp:2311 src/menu_events.cpp:2336
+#: src/menu_events.cpp:2338 src/menu_events.cpp:2340 src/menu_events.cpp:2354
 msgid "<nick>"
 msgstr "<bijnaam>"
 
-#: src/menu_events.cpp:2300
+#: src/menu_events.cpp:2304
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Hef de ban op een gebruiker op. Hij moet zich niet in het spel of op de "
 "server bevinden."
 
-#: src/menu_events.cpp:2303
+#: src/menu_events.cpp:2307
 msgid "Kick a player or observer."
 msgstr "Verwijder een speler of observator uit het spel."
 
-#: src/menu_events.cpp:2305
+#: src/menu_events.cpp:2309
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Demp een toeschouwer. Zonder argument geeft dit de dempstatus weer."
 
-#: src/menu_events.cpp:2307
+#: src/menu_events.cpp:2311
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Leg een toeschouwer het zwijgen op. Zonder argument geeft dit de 'zwijg'-"
 "status weer."
 
-#: src/menu_events.cpp:2309
+#: src/menu_events.cpp:2313
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Demp/Ontdemp alle toeschouwers."
 
-#: src/menu_events.cpp:2319
+#: src/menu_events.cpp:2323
 msgid "Send a message to the server admins currently online"
 msgstr "Stuur een bericht naar de aanwezige server administrators"
 
-#: src/menu_events.cpp:2321
+#: src/menu_events.cpp:2325
 msgid "<message>"
 msgstr "<bericht>"
 
-#: src/menu_events.cpp:2321
+#: src/menu_events.cpp:2325
 msgid "Send an emotion or personal action in chat."
 msgstr "Stuur een emotie of persoonlijke actie in de chat."
 
-#: src/menu_events.cpp:2324
+#: src/menu_events.cpp:2328
 msgid ""
 "Sends a private message. You can’t send messages to players that don’t "
 "control a side in a running game you are in."
@@ -4330,191 +4330,191 @@ msgstr ""
 "Stuurt privéberichten. Je kunt geen berichten sturen aan spelers die geen "
 "zijde bevelen in een spel waarin jij je bevindt."
 
-#: src/menu_events.cpp:2326
+#: src/menu_events.cpp:2330
 msgid "<nick> <message>"
 msgstr "<bijnaam> <boodschap>"
 
-#: src/menu_events.cpp:2330
+#: src/menu_events.cpp:2334
 msgid "<level> <domain>"
 msgstr "<niveau> <domein>"
 
-#: src/menu_events.cpp:2330
+#: src/menu_events.cpp:2334
 msgid "Change the log level of a log domain."
 msgstr "Verander het logniveau van een logdomein."
 
-#: src/menu_events.cpp:2332
+#: src/menu_events.cpp:2336
 msgid "Add a nick to your ignores list."
 msgstr "Speler toevoegen aan de negeer lijst."
 
-#: src/menu_events.cpp:2334
+#: src/menu_events.cpp:2338
 msgid "Add a nick to your friends list."
 msgstr "Speler toevoegen aan de vriendenlijst."
 
-#: src/menu_events.cpp:2336
+#: src/menu_events.cpp:2340
 msgid "Remove a nick from your ignores or friends list."
 msgstr "Speler van de negeer- of vrienden lijst verwijderen."
 
-#: src/menu_events.cpp:2338
+#: src/menu_events.cpp:2342
 msgid "Show your ignores and friends list."
 msgstr "Negeer- en vriendenlijst weergeven."
 
-#: src/menu_events.cpp:2341
+#: src/menu_events.cpp:2345
 msgid "Display version information."
 msgstr "Laat versie-informatie zien."
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2347
 msgid "<password> <email (optional)>"
 msgstr "<wachtwoord> <email (optioneel)>"
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2347
 msgid "Register your nick"
 msgstr "Registreer je bijnaam"
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2349
 msgid "Drop your nick."
 msgstr "Verwerp je bijnaam."
 
-#: src/menu_events.cpp:2347
+#: src/menu_events.cpp:2351
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 "Vernieuw de details van uw bijnaam. Voor mogelijke details, zie '/details'."
 
-#: src/menu_events.cpp:2348
+#: src/menu_events.cpp:2352
 msgid "<detail> <value>"
 msgstr "<detail> <waarde>"
 
-#: src/menu_events.cpp:2350
+#: src/menu_events.cpp:2354
 msgid "Request information about a nick."
 msgstr "Vraag informatie over een bijnaam op."
 
-#: src/menu_events.cpp:2352
+#: src/menu_events.cpp:2356
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 "Vraag een lijst aan van details die u kunt instellen voor uw geregistreerde "
 "bijnaam."
 
-#: src/menu_events.cpp:2354 src/menu_events.cpp:2357 src/menu_events.cpp:2359
+#: src/menu_events.cpp:2358 src/menu_events.cpp:2361 src/menu_events.cpp:2363
 msgid "<room>"
 msgstr "<kamer>"
 
-#: src/menu_events.cpp:2354
+#: src/menu_events.cpp:2358
 msgid "Join a room."
 msgstr "Ga een kamer binnen."
 
-#: src/menu_events.cpp:2357
+#: src/menu_events.cpp:2361
 msgid "Part a room."
 msgstr "Verlaat een kamer."
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2363
 msgid "List room members."
 msgstr "Lijst van kamergebruikers"
 
-#: src/menu_events.cpp:2361
+#: src/menu_events.cpp:2365
 msgid "List available rooms."
 msgstr "Lijst van beschikbare kamers."
 
-#: src/menu_events.cpp:2363
+#: src/menu_events.cpp:2367
 msgid "<room> <msg>"
 msgstr "<kamer> <boodschap>"
 
-#: src/menu_events.cpp:2363
+#: src/menu_events.cpp:2367
 msgid "Room message."
 msgstr "Kamerbericht."
 
-#: src/menu_events.cpp:2365
+#: src/menu_events.cpp:2369
 msgid "<room> <type> [value]"
 msgstr "<kamer> <type> [waarde]"
 
-#: src/menu_events.cpp:2365
+#: src/menu_events.cpp:2369
 msgid "Room query."
 msgstr "Kamerzoekopdracht."
 
-#: src/menu_events.cpp:2468
+#: src/menu_events.cpp:2472
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr "(D) - enkel debug, (N) - enkel netwerk, (A) - enkel administrator"
 
-#: src/menu_events.cpp:2474
+#: src/menu_events.cpp:2478
 msgid "(debug command)"
 msgstr "(debug commando)"
 
-#: src/menu_events.cpp:2475
+#: src/menu_events.cpp:2479
 msgid "(network only)"
 msgstr "(enkel netwerk)"
 
-#: src/menu_events.cpp:2500
+#: src/menu_events.cpp:2504
 msgid "Refresh gui."
 msgstr "Vernieuw de gui."
 
-#: src/menu_events.cpp:2502
+#: src/menu_events.cpp:2506
 msgid "Switch a side to/from AI control."
 msgstr "Schakel een kant naar/van AI controle."
 
-#: src/menu_events.cpp:2502
+#: src/menu_events.cpp:2506
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<zijde>[on/off]]"
 
-#: src/menu_events.cpp:2505
+#: src/menu_events.cpp:2509
 msgid "<side> <nick>"
 msgstr "<zijde> <bijnaam>"
 
-#: src/menu_events.cpp:2505
+#: src/menu_events.cpp:2509
 msgid "Assign control of a side to a different player or observer."
 msgstr "Wijs controle over een zijde aan een andere speler of toeschouwer toe."
 
-#: src/menu_events.cpp:2507
+#: src/menu_events.cpp:2511
 msgid "Clear chat history."
 msgstr "Chatgeschiedenis opschonen."
 
-#: src/menu_events.cpp:2509
+#: src/menu_events.cpp:2513
 msgid "Visualize the screen refresh procedure."
 msgstr "Visualiseer de schermvernieuwingsprocedure."
 
-#: src/menu_events.cpp:2511
+#: src/menu_events.cpp:2515
 msgid "Debug foreground terrain."
 msgstr "Debug voorgrondterrein"
 
-#: src/menu_events.cpp:2513
+#: src/menu_events.cpp:2517
 msgid "Debug layers from terrain under the mouse."
 msgstr "Debug de lagen van het terrein onder de muisaanwijzer."
 
-#: src/menu_events.cpp:2514
+#: src/menu_events.cpp:2518
 msgid "Show fps."
 msgstr "Toon beelden per seconde."
 
-#: src/menu_events.cpp:2516
+#: src/menu_events.cpp:2520
 msgid "Save game."
 msgstr "Spel opslaan."
 
-#: src/menu_events.cpp:2518
+#: src/menu_events.cpp:2522
 msgid "Quit game."
 msgstr "Het spel verlaten."
 
-#: src/menu_events.cpp:2522
+#: src/menu_events.cpp:2526
 msgid "Save and quit."
 msgstr "Opslaan en afsluiten."
 
-#: src/menu_events.cpp:2525
+#: src/menu_events.cpp:2529
 msgid "Ignore replay errors."
 msgstr "Negeer herhalingsfouten."
 
-#: src/menu_events.cpp:2527
+#: src/menu_events.cpp:2531
 msgid "Disable autosaves."
 msgstr "Automatisch opslaan uitschakelen."
 
-#: src/menu_events.cpp:2529
+#: src/menu_events.cpp:2533
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:2529
+#: src/menu_events.cpp:2533
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 "Ga naar het volgende scenario, of het scenario geïdentificeerd door 'id'"
 
-#: src/menu_events.cpp:2532
+#: src/menu_events.cpp:2536
 msgid "Choose next scenario"
 msgstr "Kies volgend scenario"
 
-#: src/menu_events.cpp:2535
+#: src/menu_events.cpp:2539
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -4522,11 +4522,11 @@ msgstr ""
 "Verander het beurtnummer (en tijd van de dag), of vermeerder met 1 als geen "
 "getal gespecifieerd werd."
 
-#: src/menu_events.cpp:2535
+#: src/menu_events.cpp:2539
 msgid "[turn]"
 msgstr "[turn]"
 
-#: src/menu_events.cpp:2537
+#: src/menu_events.cpp:2541
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -4534,247 +4534,247 @@ msgstr ""
 "Verander de beurtenlimiet, of zet de beurtenlimiet uit als er geen getal "
 "gespecifieerd werd of als het getal -1 is."
 
-#: src/menu_events.cpp:2537
+#: src/menu_events.cpp:2541
 msgid "[limit]"
 msgstr "[limit]"
 
-#: src/menu_events.cpp:2539
+#: src/menu_events.cpp:2543
 msgid "Turn debug mode on."
 msgstr "Zet de debugmodus aan."
 
-#: src/menu_events.cpp:2541
+#: src/menu_events.cpp:2545
 msgid "Turn debug mode off."
 msgstr "Zet debugmodus uit."
 
-#: src/menu_events.cpp:2543 src/menu_events.cpp:2547
+#: src/menu_events.cpp:2547 src/menu_events.cpp:2551
 msgid "<command>[;<command>...]"
 msgstr "<commando>[;<commando>...]"
 
-#: src/menu_events.cpp:2543
+#: src/menu_events.cpp:2547
 msgid "Execute a Lua statement."
 msgstr "Een Lua commando uitvoeren."
 
-#: src/menu_events.cpp:2545
+#: src/menu_events.cpp:2549
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Verleen de Lua-scripts meer rechten."
 
-#: src/menu_events.cpp:2547
+#: src/menu_events.cpp:2551
 msgid "Set the command used by the custom command hotkey"
 msgstr "Bepaal het commando gebruikt door de aangepaste commando sneltoets"
 
-#: src/menu_events.cpp:2549
+#: src/menu_events.cpp:2553
 msgid "Launch the gamestate inspector"
 msgstr "Start de spelstatusinspecteur."
 
-#: src/menu_events.cpp:2551
+#: src/menu_events.cpp:2555
 msgid "Manage persistence data"
 msgstr "Beheer vaste gegevens"
 
-#: src/menu_events.cpp:2553
+#: src/menu_events.cpp:2557
 msgid "<name>[=<command>]"
 msgstr "<naam>[=<commando>]"
 
-#: src/menu_events.cpp:2553
+#: src/menu_events.cpp:2557
 msgid "Set or show alias to a command"
 msgstr "Zet een alias voor een commando of laat deze zien"
 
-#: src/menu_events.cpp:2555
+#: src/menu_events.cpp:2559
 msgid "<var>=<value>"
 msgstr "<var>=<waarde>"
 
-#: src/menu_events.cpp:2555
+#: src/menu_events.cpp:2559
 msgid "Set a scenario variable."
 msgstr "Stel een scenario variabele in."
 
-#: src/menu_events.cpp:2557
+#: src/menu_events.cpp:2561
 msgid "<var>"
 msgstr "<var>"
 
-#: src/menu_events.cpp:2557
+#: src/menu_events.cpp:2561
 msgid "Show a scenario variable."
 msgstr "Toon een scenario variabele."
 
-#: src/menu_events.cpp:2559
+#: src/menu_events.cpp:2563
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Verander een eenheidsvariabele. (Alleen variabelen van het hoogste niveau "
 "worden ondersteund.)"
 
-#: src/menu_events.cpp:2566
+#: src/menu_events.cpp:2570
 msgid "Discover all units in help."
 msgstr "Ontdek alle eenheden in hulp."
 
-#: src/menu_events.cpp:2568
+#: src/menu_events.cpp:2572
 msgid "'Undiscover' all units in help."
 msgstr "'Onontdek' alle eenheden in de help."
 
-#: src/menu_events.cpp:2570
+#: src/menu_events.cpp:2574
 msgid "Create a unit."
 msgstr "Creëer een eenheid."
 
-#: src/menu_events.cpp:2572
+#: src/menu_events.cpp:2576
 msgid "Toggle fog for the current player."
 msgstr "Schakel mist voor de huidige zijde aan/uit."
 
-#: src/menu_events.cpp:2574
+#: src/menu_events.cpp:2578
 msgid "Toggle shroud for the current player."
 msgstr "Schakel sluier voor de huidige zijde aan/uit."
 
-#: src/menu_events.cpp:2576
+#: src/menu_events.cpp:2580
 msgid "Give gold to the current player."
 msgstr "Geef goud aan de huidige speler."
 
-#: src/menu_events.cpp:2578
+#: src/menu_events.cpp:2582
 msgid "Fire a game event."
 msgstr "Vuur een spelgebeurtenis af."
 
-#: src/menu_events.cpp:2581
+#: src/menu_events.cpp:2585
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Schakel het bedekken van hexes met x,y coördinaten aan/uit."
 
-#: src/menu_events.cpp:2584
+#: src/menu_events.cpp:2588
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Schakel het bedekken van hexes met terreincodes aan/uit."
 
-#: src/menu_events.cpp:2587
+#: src/menu_events.cpp:2591
 msgid "Toggle planning mode."
 msgstr "Zet planmodus aan/uit."
 
-#: src/menu_events.cpp:2630
+#: src/menu_events.cpp:2634
 msgid "Unknown debug level: '$level'."
 msgstr "Onbekend debug niveau: '$level'."
 
-#: src/menu_events.cpp:2632 src/menu_events.cpp:2641
+#: src/menu_events.cpp:2636 src/menu_events.cpp:2645
 msgid "error"
 msgstr "fout"
 
-#: src/menu_events.cpp:2639
+#: src/menu_events.cpp:2643
 msgid "Unknown debug domain: '$domain'."
 msgstr "Onbekend debug domein: '$domain'."
 
-#: src/menu_events.cpp:2648
+#: src/menu_events.cpp:2652
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Schakelde domein: '$domain' naar niveau: '$level'."
 
-#: src/menu_events.cpp:2719
+#: src/menu_events.cpp:2723
 msgid "whisper to $receiver"
 msgstr "fluister tegen $receiver"
 
-#: src/menu_events.cpp:2726
+#: src/menu_events.cpp:2730
 msgid "whisper: $sender"
 msgstr "fluister: $sender"
 
-#: src/menu_events.cpp:2822 src/menu_events.cpp:2841
-#: src/multiplayer_connect.cpp:662
+#: src/menu_events.cpp:2826 src/menu_events.cpp:2845
+#: src/multiplayer_connect.cpp:671
 msgid "(empty)"
 msgstr "(leeg)"
 
-#: src/menu_events.cpp:2822 src/menu_events.cpp:2828 src/menu_events.cpp:2878
+#: src/menu_events.cpp:2826 src/menu_events.cpp:2832 src/menu_events.cpp:2882
 msgid "ignores list"
 msgstr "Negeerlijst: "
 
-#: src/menu_events.cpp:2828
+#: src/menu_events.cpp:2832
 msgid "Added to ignore list: $nick"
 msgstr "Toegevoegd aan negeerlijst: $nick"
 
-#: src/menu_events.cpp:2831 src/menu_events.cpp:2850
+#: src/menu_events.cpp:2835 src/menu_events.cpp:2854
 msgid "Invalid username: $nick"
 msgstr "Ongeldige gebruikersnaam: $nick"
 
-#: src/menu_events.cpp:2841 src/menu_events.cpp:2848 src/menu_events.cpp:2874
+#: src/menu_events.cpp:2845 src/menu_events.cpp:2852 src/menu_events.cpp:2878
 msgid "friends list"
 msgstr "vriendenlijst: "
 
-#: src/menu_events.cpp:2848
+#: src/menu_events.cpp:2852
 msgid "Added to friends list: $nick"
 msgstr "Toegevoegd aan vriendenlijst: $nick"
 
-#: src/menu_events.cpp:2864
+#: src/menu_events.cpp:2868
 msgid "Removed from list: $nick"
 msgstr "Verwijderd van lijst: $nick"
 
-#: src/menu_events.cpp:2864 src/menu_events.cpp:2882
+#: src/menu_events.cpp:2868 src/menu_events.cpp:2886
 msgid "friends and ignores list"
 msgstr "Vrienden- en negeerlijst"
 
-#: src/menu_events.cpp:2882
+#: src/menu_events.cpp:2886
 msgid "There are no players on your friends or ignore list."
 msgstr "Er zijn geen spelers in je vrienden- of negeerlijst."
 
-#: src/menu_events.cpp:2887
+#: src/menu_events.cpp:2891
 msgid "version"
 msgstr "versie"
 
-#: src/menu_events.cpp:2903
+#: src/menu_events.cpp:2907
 msgid "registering with password *** and no email address"
 msgstr "registratie met wachtwoord *** en zonder e-mailadres"
 
-#: src/menu_events.cpp:2907
+#: src/menu_events.cpp:2911
 msgid "registering with password *** and email address $email"
 msgstr "registratie met wachtwoord *** en e-mailadres $email"
 
-#: src/menu_events.cpp:2910 src/menu_events.cpp:2921 src/menu_events.cpp:2939
-#: src/menu_events.cpp:2953
+#: src/menu_events.cpp:2914 src/menu_events.cpp:2925 src/menu_events.cpp:2943
+#: src/menu_events.cpp:2957
 msgid "nick registration"
 msgstr "bijnaam registratie"
 
-#: src/menu_events.cpp:2921
+#: src/menu_events.cpp:2925
 msgid "dropping your username"
 msgstr "verwijdering van je bijnaam"
 
-#: src/menu_events.cpp:2939
+#: src/menu_events.cpp:2943
 msgid "setting $var to $value"
 msgstr "$var de waarde $value geven"
 
-#: src/menu_events.cpp:2953
+#: src/menu_events.cpp:2957
 msgid "requesting information for user $nick"
 msgstr "Informatie opvragen van gebruiker $nick"
 
-#: src/menu_events.cpp:3066
+#: src/menu_events.cpp:3070
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kon geen label of eenheid vinden met '$search'."
 
-#: src/menu_events.cpp:3100
+#: src/menu_events.cpp:3104
 msgid "Can't droid invalid side: '$side'."
 msgstr "Kan de ongeldige zijde '$side' niet door de computer laten besturen."
 
-#: src/menu_events.cpp:3105
+#: src/menu_events.cpp:3109
 msgid "Can't droid networked side: '$side'."
 msgstr "Kan de netwerkzijde '$side' niet door de computer laten besturen."
 
-#: src/menu_events.cpp:3142
+#: src/menu_events.cpp:3146
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Kan de besturing niet veranderen van ongeldige zijde: '$side'."
 
-#: src/menu_events.cpp:3148
+#: src/menu_events.cpp:3152
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Kan besturing niet veranderen van buiten bereik zijnde zijde: '$side'."
 
-#: src/menu_events.cpp:3242
+#: src/menu_events.cpp:3246
 msgid "Layers"
 msgstr "Lagen"
 
-#: src/menu_events.cpp:3315
+#: src/menu_events.cpp:3319
 msgid "Choose Scenario (Debug!)"
 msgstr "Kies een scenario (Debug!)"
 
-#: src/menu_events.cpp:3360
+#: src/menu_events.cpp:3364
 msgid "Debug mode activated!"
 msgstr "Debugmodus geactiveerd!"
 
-#: src/menu_events.cpp:3363
+#: src/menu_events.cpp:3367
 msgid "Debug mode not available in network games"
 msgstr "Debugmodus is niet beschikbaar in netwerkspellen"
 
-#: src/menu_events.cpp:3368
+#: src/menu_events.cpp:3372
 msgid "Debug mode deactivated!"
 msgstr "Debugmodus gedeactiveerd!"
 
-#: src/menu_events.cpp:3379
+#: src/menu_events.cpp:3383
 msgid "Unsafe Lua scripts."
 msgstr "Onveilige Lua-scripts."
 
-#: src/menu_events.cpp:3380
+#: src/menu_events.cpp:3384
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
@@ -4785,15 +4785,15 @@ msgstr ""
 "'OK'! Ze kunnen onmiddellijk de controle over je computer overnemen. Je bent "
 "gewaarschuwd."
 
-#: src/menu_events.cpp:3383
+#: src/menu_events.cpp:3387
 msgid "Unsafe mode enabled!"
 msgstr "Onveilige modus ingeschakeld!"
 
-#: src/menu_events.cpp:3426
+#: src/menu_events.cpp:3430
 msgid "Variable not found"
 msgstr "Variabele niet gevonden"
 
-#: src/menu_events.cpp:3470
+#: src/menu_events.cpp:3474
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic "
 "or liminal."
@@ -4802,31 +4802,31 @@ msgstr ""
 "neutraal (neutral), wetteloos (chaotic) of een schemeringseenheid (liminal) "
 "zijn."
 
-#: src/menu_events.cpp:3520
+#: src/menu_events.cpp:3524
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Wil je alle ontdekte eenheden van de help verwijderen?"
 
-#: src/menu_events.cpp:3531
+#: src/menu_events.cpp:3535
 msgid "Invalid unit type"
 msgstr "Ongeldig eenheidstype"
 
-#: src/menu_events.cpp:3544
+#: src/menu_events.cpp:3548
 msgid "Invalid location"
 msgstr "Ongeldige locatie"
 
-#: src/menu_events.cpp:3579
+#: src/menu_events.cpp:3583
 msgid "Planning mode activated!"
 msgstr "Planningsmodus geactiveerd!"
 
-#: src/menu_events.cpp:3582
+#: src/menu_events.cpp:3586
 msgid "Planning mode deactivated!"
 msgstr "Planningsmodus gedeactiveerd!"
 
-#: src/menu_events.cpp:3590
+#: src/menu_events.cpp:3594
 msgid "ai"
 msgstr "ai"
 
-#: src/menu_events.cpp:3600 src/menu_events.cpp:3615
+#: src/menu_events.cpp:3604 src/menu_events.cpp:3619
 msgid "prompt^Command:"
 msgstr "Commando:"
 
@@ -4924,135 +4924,135 @@ msgstr ""
 msgid "The password you provided was incorrect."
 msgstr "Het wachtwoord dat je hebt ingevuld was niet correct."
 
-#: src/multiplayer_connect.cpp:97 src/multiplayer_connect.cpp:446
-#: src/multiplayer_connect.cpp:594
+#: src/multiplayer_connect.cpp:102 src/multiplayer_connect.cpp:455
+#: src/multiplayer_connect.cpp:603
 msgid "Normal"
 msgstr "Normaal"
 
-#: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:590
-#: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:521
+#: src/multiplayer_connect.cpp:451 src/multiplayer_connect.cpp:599
+#: src/multiplayer_wait.cpp:523 src/multiplayer_wait.cpp:531
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:590
-#: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:524
+#: src/multiplayer_connect.cpp:451 src/multiplayer_connect.cpp:599
+#: src/multiplayer_wait.cpp:523 src/multiplayer_wait.cpp:534
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:444 src/multiplayer_connect.cpp:592
-#: src/multiplayer_wait.cpp:523
+#: src/multiplayer_connect.cpp:453 src/multiplayer_connect.cpp:601
+#: src/multiplayer_wait.cpp:533
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:622
+#: src/multiplayer_connect.cpp:631
 msgid "(Vacant slot)"
 msgstr "(Vrije plaats)"
 
-#: src/multiplayer_connect.cpp:630
+#: src/multiplayer_connect.cpp:639
 msgid "Anonymous local player"
 msgstr "Anonieme lokale speler"
 
-#: src/multiplayer_connect.cpp:643 src/multiplayer_connect.cpp:1425
+#: src/multiplayer_connect.cpp:652 src/multiplayer_connect.cpp:1434
 msgid "Computer Player"
 msgstr "Computerspeler"
 
-#: src/multiplayer_connect.cpp:646
+#: src/multiplayer_connect.cpp:655
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/multiplayer_connect.cpp:650
+#: src/multiplayer_connect.cpp:659
 msgid "(Empty slot)"
 msgstr "(Vacante plaats)"
 
-#: src/multiplayer_connect.cpp:657
+#: src/multiplayer_connect.cpp:666
 msgid "(Reserved for $playername)"
 msgstr "(Gereserveerd voor $playername)"
 
-#: src/multiplayer_connect.cpp:758
+#: src/multiplayer_connect.cpp:767
 msgid "Reserved"
 msgstr "Gereserveerd"
 
-#: src/multiplayer_connect.cpp:759
+#: src/multiplayer_connect.cpp:768
 msgid "--give--"
 msgstr "--geef--"
 
-#: src/multiplayer_connect.cpp:887
+#: src/multiplayer_connect.cpp:896
 msgid "Only random sides in the current era."
 msgstr "Alleen willekeurige partijen in het huidige tijdperk."
 
-#: src/multiplayer_connect.cpp:911
+#: src/multiplayer_connect.cpp:920
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Geen leider gevonden voor de factie $faction"
 
-#: src/multiplayer_connect.cpp:948
+#: src/multiplayer_connect.cpp:957
 msgid "Game Lobby: "
 msgstr "Spellobby: "
 
-#: src/multiplayer_connect.cpp:970
+#: src/multiplayer_connect.cpp:979
 msgid "Player/Type"
 msgstr "Speler/Type"
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:980
 msgid "Faction"
 msgstr "Factie"
 
-#: src/multiplayer_connect.cpp:972
+#: src/multiplayer_connect.cpp:981
 msgid "Team/Gender"
 msgstr "Team/Geslacht"
 
-#: src/multiplayer_connect.cpp:973
+#: src/multiplayer_connect.cpp:982
 msgid "Color"
 msgstr "Kleur"
 
-#: src/multiplayer_connect.cpp:977
+#: src/multiplayer_connect.cpp:986
 msgid "I’m Ready"
 msgstr "Ik ben klaar!"
 
-#: src/multiplayer_connect.cpp:979
+#: src/multiplayer_connect.cpp:988
 msgid "Add named local player"
 msgstr "Voeg een lokale speler toe met naam"
 
-#: src/multiplayer_connect.cpp:988
+#: src/multiplayer_connect.cpp:997
 msgid "The scenario is invalid because it has no id."
 msgstr "Dit scenario is ongeldig omdat het geen id bevat."
 
-#: src/multiplayer_connect.cpp:992
+#: src/multiplayer_connect.cpp:1001
 msgid "The scenario is invalid because it has no sides."
 msgstr "Dit scenario is ongeldig vermits het geen zijdes bevat."
 
-#: src/multiplayer_connect.cpp:1059
+#: src/multiplayer_connect.cpp:1068
 msgid "Enter a name for the new player"
 msgstr "Voer een naam in voor de nieuwe speler"
 
-#: src/multiplayer_connect.cpp:1060 src/reports.cpp:135 src/savegame.cpp:694
+#: src/multiplayer_connect.cpp:1069 src/reports.cpp:135 src/savegame.cpp:694
 msgid "Name: "
 msgstr "Naam:"
 
-#: src/multiplayer_connect.cpp:1422
+#: src/multiplayer_connect.cpp:1431
 msgid "Network Player"
 msgstr "Netwerkspeler"
 
-#: src/multiplayer_connect.cpp:1424
+#: src/multiplayer_connect.cpp:1433
 msgid "Local Player"
 msgstr "Lokale speler"
 
-#: src/multiplayer_connect.cpp:1426
+#: src/multiplayer_connect.cpp:1435
 msgid "Empty"
 msgstr "Niemand"
 
-#: src/multiplayer_connect.cpp:1577
+#: src/multiplayer_connect.cpp:1586
 msgid "Cannot find era $era"
 msgstr "Kan tijdperk $era niet vinden"
 
-#: src/multiplayer_connect.cpp:1602
+#: src/multiplayer_connect.cpp:1611
 msgid "Defeat enemy leader(s)"
 msgstr "Dood de vijandelijke leider(s)"
 
-#: src/multiplayer_connect.cpp:1701
+#: src/multiplayer_connect.cpp:1710
 msgid "Waiting for players to join..."
 msgstr "Aan het wachten op netwerkspelers..."
 
-#: src/multiplayer_connect.cpp:1702
+#: src/multiplayer_connect.cpp:1711
 msgid "Waiting for players to choose factions..."
 msgstr "Aan het wachten op de keuze van de facties door de spelers..."
 
@@ -5373,15 +5373,15 @@ msgstr "Geen tijdperkinformatie gevonden."
 msgid "No multiplayer sides found"
 msgstr "Er werden geen multiplayerzijdes gevonden"
 
-#: src/multiplayer_wait.cpp:312
+#: src/multiplayer_wait.cpp:317
 msgid "Choose your faction:"
 msgstr "Kies je factie:"
 
-#: src/multiplayer_wait.cpp:312
+#: src/multiplayer_wait.cpp:317
 msgid "Starting position: "
 msgstr "Startpositie: "
 
-#: src/multiplayer_wait.cpp:517
+#: src/multiplayer_wait.cpp:527
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] "Goud"
@@ -6027,27 +6027,27 @@ msgstr "Geen tijd van de dag gedefinieerd."
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Onbekende eenheid '$type|' tijdens het genereren van de kenmerken"
 
-#: src/unit.cpp:2343 src/unit.cpp:2540 src/unit.cpp:2611
+#: src/unit.cpp:2334 src/unit.cpp:2531 src/unit.cpp:2602
 msgid " and "
 msgstr " en "
 
-#: src/unit.cpp:2354
+#: src/unit.cpp:2345
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2415
+#: src/unit.cpp:2406
 msgid "moves"
 msgstr "zetten"
 
-#: src/unit.cpp:2430 src/unit.cpp:2564
+#: src/unit.cpp:2421 src/unit.cpp:2555
 msgid "XP to advance"
 msgstr "XP om te promoveren"
 
-#: src/unit.cpp:2557
+#: src/unit.cpp:2548
 msgid " move"
 msgstr " zet"
 
-#: src/unit.cpp:2572
+#: src/unit.cpp:2563
 msgid "$effect_description per level"
 msgstr "$effect_description per niveau"
 

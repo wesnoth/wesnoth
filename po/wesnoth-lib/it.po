@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-10 00:26+0100\n"
+"POT-Creation-Date: 2011-01-15 11:52+0100\n"
 "PO-Revision-Date: 2010-11-06 18:13+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2639,25 +2639,25 @@ msgstr ""
 msgid "Find $filename server binary to host networked games"
 msgstr "Trova l’eseguibile del server $filename per ospitare partite in rete"
 
-#: src/gui/auxiliary/canvas.cpp:487
+#: src/gui/auxiliary/canvas.cpp:491
 msgid "Line doesn't fit on canvas."
 msgstr "La linea non entra nella tela."
 
-#: src/gui/auxiliary/canvas.cpp:623
+#: src/gui/auxiliary/canvas.cpp:635
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Il rettangolo non entra nella tela."
 
-#: src/gui/auxiliary/canvas.cpp:838 src/gui/auxiliary/canvas.cpp:845
-#: src/gui/auxiliary/canvas.cpp:855 src/gui/auxiliary/canvas.cpp:862
+#: src/gui/auxiliary/canvas.cpp:850 src/gui/auxiliary/canvas.cpp:857
+#: src/gui/auxiliary/canvas.cpp:867 src/gui/auxiliary/canvas.cpp:874
 #, fuzzy
 msgid "Image doesn't fit on canvas."
 msgstr "La linea non entra nella tela."
 
-#: src/gui/auxiliary/canvas.cpp:1067
+#: src/gui/auxiliary/canvas.cpp:1083
 msgid "Text has a font size of 0."
 msgstr "Il testo ha una dimensione di carattere di 0."
 
-#: src/gui/auxiliary/canvas.cpp:1136
+#: src/gui/auxiliary/canvas.cpp:1152
 msgid "Text doesn't start on canvas."
 msgstr "Il testo non inizia su una tela."
 
@@ -3483,7 +3483,7 @@ msgstr ""
 msgid "The text contains invalid markup: "
 msgstr "Il testo contiene markup non valido: "
 
-#: src/wml_exception.cpp:56
+#: src/wml_exception.cpp:57
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -3491,12 +3491,12 @@ msgstr ""
 "Si è verificato un errore dovuto a WML probabilmente non valido\n"
 "Il messaggio di errore è:"
 
-#: src/wml_exception.cpp:58
+#: src/wml_exception.cpp:59
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
 "Quando segnali il bug per piacere includi il seguente messaggio di errore:"
 
-#: src/wml_exception.cpp:76
+#: src/wml_exception.cpp:77
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -3506,11 +3506,23 @@ msgstr ""
 "«$primary_key| = $primary_value» la chiave obbligatoria «$key|» non è "
 "impostata."
 
-#: src/wml_exception.cpp:79
+#: src/wml_exception.cpp:80
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
+
+#: src/wml_exception.cpp:96
+msgid ""
+"The key '$key' is deprecated and support will be removed in version "
+"$removal_version."
+msgstr ""
+
+#: src/wml_exception.cpp:115
+msgid ""
+"The key '$deprecated_key' has been renamed to '$key'. Support for "
+"'$deprecated_key' will be removed in version $removal_version."
+msgstr ""
 
 #~ msgid "Generate name"
 #~ msgstr "Genera nome"

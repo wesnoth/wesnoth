@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-10 00:26+0100\n"
+"POT-Creation-Date: 2011-01-15 11:52+0100\n"
 "PO-Revision-Date: 2008-09-21 19:29+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -2762,24 +2762,24 @@ msgstr "No hi ha temes coneguts. Intenta canviar-los des d'un joc existent."
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:487
+#: src/gui/auxiliary/canvas.cpp:491
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:623
+#: src/gui/auxiliary/canvas.cpp:635
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:838 src/gui/auxiliary/canvas.cpp:845
-#: src/gui/auxiliary/canvas.cpp:855 src/gui/auxiliary/canvas.cpp:862
+#: src/gui/auxiliary/canvas.cpp:850 src/gui/auxiliary/canvas.cpp:857
+#: src/gui/auxiliary/canvas.cpp:867 src/gui/auxiliary/canvas.cpp:874
 msgid "Image doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:1067
+#: src/gui/auxiliary/canvas.cpp:1083
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:1136
+#: src/gui/auxiliary/canvas.cpp:1152
 msgid "Text doesn't start on canvas."
 msgstr ""
 
@@ -3638,7 +3638,7 @@ msgstr ""
 msgid "The text contains invalid markup: "
 msgstr ""
 
-#: src/wml_exception.cpp:56
+#: src/wml_exception.cpp:57
 #, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
@@ -3647,11 +3647,11 @@ msgstr ""
 "Ha ocorregut un erro degut a un posible WML invàlit\n"
 " El mensage d'erro és :"
 
-#: src/wml_exception.cpp:58
+#: src/wml_exception.cpp:59
 msgid "When reporting the bug please include the following error message :"
 msgstr "Per favor, quan informe de l'erro incloga el següent mensage d'erro :"
 
-#: src/wml_exception.cpp:76
+#: src/wml_exception.cpp:77
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -3659,10 +3659,22 @@ msgstr ""
 "En la secció '[$section|]' on '$primary_key| = $primary_value' la clau "
 "obligatòria '$key|' no s'ha establit."
 
-#: src/wml_exception.cpp:79
+#: src/wml_exception.cpp:80
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "En la secció '[$section|]' la clau obligatòria '$key|' no s'ha establit."
+
+#: src/wml_exception.cpp:96
+msgid ""
+"The key '$key' is deprecated and support will be removed in version "
+"$removal_version."
+msgstr ""
+
+#: src/wml_exception.cpp:115
+msgid ""
+"The key '$deprecated_key' has been renamed to '$key'. Support for "
+"'$deprecated_key' will be removed in version $removal_version."
+msgstr ""
 
 #, fuzzy
 #~ msgid "Generate name"

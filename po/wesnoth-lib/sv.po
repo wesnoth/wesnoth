@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-10 00:26+0100\n"
+"POT-Creation-Date: 2011-01-15 11:52+0100\n"
 "PO-Revision-Date: 2009-02-04 17:22+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
@@ -2743,25 +2743,25 @@ msgstr "Inga kända teman. Försök att ändra i ett existerande spel."
 msgid "Find $filename server binary to host networked games"
 msgstr "Hitta serverbinären $filename för att vara värd för gruppspel"
 
-#: src/gui/auxiliary/canvas.cpp:487
+#: src/gui/auxiliary/canvas.cpp:491
 msgid "Line doesn't fit on canvas."
 msgstr "Linje ryms inte på canvas."
 
-#: src/gui/auxiliary/canvas.cpp:623
+#: src/gui/auxiliary/canvas.cpp:635
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Rektangel ryms inte på canvas."
 
-#: src/gui/auxiliary/canvas.cpp:838 src/gui/auxiliary/canvas.cpp:845
-#: src/gui/auxiliary/canvas.cpp:855 src/gui/auxiliary/canvas.cpp:862
+#: src/gui/auxiliary/canvas.cpp:850 src/gui/auxiliary/canvas.cpp:857
+#: src/gui/auxiliary/canvas.cpp:867 src/gui/auxiliary/canvas.cpp:874
 #, fuzzy
 msgid "Image doesn't fit on canvas."
 msgstr "Linje ryms inte på canvas."
 
-#: src/gui/auxiliary/canvas.cpp:1067
+#: src/gui/auxiliary/canvas.cpp:1083
 msgid "Text has a font size of 0."
 msgstr "Text har fontstorlek 0."
 
-#: src/gui/auxiliary/canvas.cpp:1136
+#: src/gui/auxiliary/canvas.cpp:1152
 msgid "Text doesn't start on canvas."
 msgstr "Text startar ej på canvas."
 
@@ -3599,7 +3599,7 @@ msgstr ""
 msgid "The text contains invalid markup: "
 msgstr ""
 
-#: src/wml_exception.cpp:56
+#: src/wml_exception.cpp:57
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -3607,11 +3607,11 @@ msgstr ""
 "Ett fel, möjligen på grund av ogiltig WML inträffade\n"
 "Felmeddelandet är :"
 
-#: src/wml_exception.cpp:58
+#: src/wml_exception.cpp:59
 msgid "When reporting the bug please include the following error message :"
 msgstr "När du rapporterar felet var god Inkludera följande felmeddelande :"
 
-#: src/wml_exception.cpp:76
+#: src/wml_exception.cpp:77
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -3619,10 +3619,22 @@ msgstr ""
 "I avsnitt '[$section|]' där '$primary_key| = $primary_value' är den the "
 "obligatoriska nyckeln '$key|' inte satt."
 
-#: src/wml_exception.cpp:79
+#: src/wml_exception.cpp:80
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "I avsnittet '[$section|]' är den obligatoriska nyckeln '$key|' inte satt."
+
+#: src/wml_exception.cpp:96
+msgid ""
+"The key '$key' is deprecated and support will be removed in version "
+"$removal_version."
+msgstr ""
+
+#: src/wml_exception.cpp:115
+msgid ""
+"The key '$deprecated_key' has been renamed to '$key'. Support for "
+"'$deprecated_key' will be removed in version $removal_version."
+msgstr ""
 
 #, fuzzy
 #~ msgid "Generate name"

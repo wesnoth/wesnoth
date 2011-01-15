@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-10 00:26+0100\n"
+"POT-Creation-Date: 2011-01-15 11:52+0100\n"
 "PO-Revision-Date: 2010-05-26 21:32+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: none\n"
@@ -2676,25 +2676,25 @@ msgstr "当前无已知主题。请尝试在游戏时切换主题。"
 msgid "Find $filename server binary to host networked games"
 msgstr "查找$filename服务器可执行文件以便建立联网游戏"
 
-#: src/gui/auxiliary/canvas.cpp:487
+#: src/gui/auxiliary/canvas.cpp:491
 msgid "Line doesn't fit on canvas."
 msgstr "线条无法在画布上显示。"
 
-#: src/gui/auxiliary/canvas.cpp:623
+#: src/gui/auxiliary/canvas.cpp:635
 msgid "Rectangle doesn't fit on canvas."
 msgstr "矩形无法在画布上显示。"
 
-#: src/gui/auxiliary/canvas.cpp:838 src/gui/auxiliary/canvas.cpp:845
-#: src/gui/auxiliary/canvas.cpp:855 src/gui/auxiliary/canvas.cpp:862
+#: src/gui/auxiliary/canvas.cpp:850 src/gui/auxiliary/canvas.cpp:857
+#: src/gui/auxiliary/canvas.cpp:867 src/gui/auxiliary/canvas.cpp:874
 #, fuzzy
 msgid "Image doesn't fit on canvas."
 msgstr "线条无法在画布上显示。"
 
-#: src/gui/auxiliary/canvas.cpp:1067
+#: src/gui/auxiliary/canvas.cpp:1083
 msgid "Text has a font size of 0."
 msgstr "字体大小是0。"
 
-#: src/gui/auxiliary/canvas.cpp:1136
+#: src/gui/auxiliary/canvas.cpp:1152
 msgid "Text doesn't start on canvas."
 msgstr "文字没有从画布上开始。"
 
@@ -3521,7 +3521,7 @@ msgstr "找到一个具有超过4个字符的字符串的地形，受影响的�
 msgid "The text contains invalid markup: "
 msgstr ""
 
-#: src/wml_exception.cpp:56
+#: src/wml_exception.cpp:57
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -3529,11 +3529,11 @@ msgstr ""
 "发现一个错误，可能是由于无效的WML导致的\n"
 "错误信息如下："
 
-#: src/wml_exception.cpp:58
+#: src/wml_exception.cpp:59
 msgid "When reporting the bug please include the following error message :"
 msgstr "报告BUG时请包含以下错误信息："
 
-#: src/wml_exception.cpp:76
+#: src/wml_exception.cpp:77
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -3541,9 +3541,21 @@ msgstr ""
 "在小节“[$section|]”中有“$primary_key| = $primary_value”，其必须设定的键"
 "值“$key|”没有设定。"
 
-#: src/wml_exception.cpp:79
+#: src/wml_exception.cpp:80
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "在小节“[$section|]”中，必须设定的键值“$key|”没有设定。"
+
+#: src/wml_exception.cpp:96
+msgid ""
+"The key '$key' is deprecated and support will be removed in version "
+"$removal_version."
+msgstr ""
+
+#: src/wml_exception.cpp:115
+msgid ""
+"The key '$deprecated_key' has been renamed to '$key'. Support for "
+"'$deprecated_key' will be removed in version $removal_version."
+msgstr ""
 
 #~ msgid "Generate name"
 #~ msgstr "生成姓名"
