@@ -304,7 +304,6 @@ public:
 
 	void backup_state();
 	void apply_modifications();
-	void remove_temporary_modifications();
 	void generate_traits(bool musthaveonly=false, game_state* state = 0);
 	void generate_name(rand_rng::simple_rng *rng = 0);
 

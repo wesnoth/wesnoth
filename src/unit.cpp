@@ -1022,15 +1022,6 @@ void unit::new_scenario()
 	goto_ = map_location();
 	waypoints_.clear();
 
-	remove_temporary_modifications();
-
-	heal_all();
-	set_state(STATE_SLOWED,false);
-	set_state(STATE_POISONED,false);
-	set_state(STATE_PETRIFIED,false);
-}
-void unit::remove_temporary_modifications()
-{
 	bool rebuild_from_type = false;
 
 	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
@@ -1051,6 +1042,11 @@ void unit::remove_temporary_modifications()
 	if(rebuild_from_type) {
 		advance_to(type());
 	}
+
+	heal_all();
+	set_state(STATE_SLOWED, false);
+	set_state(STATE_POISONED, false);
+	set_state(STATE_PETRIFIED, false);
 }
 
 void unit::heal(int amount)
