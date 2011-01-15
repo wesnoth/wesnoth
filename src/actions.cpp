@@ -1937,6 +1937,11 @@ unit get_advanced_unit(const unit &u, const std::string& advance_to)
 	unit new_unit(u);
 	new_unit.set_experience(0);
 	new_unit.advance_to(new_type);
+	new_unit.set_state(unit::STATE_POISONED, false);
+	new_unit.set_state(unit::STATE_SLOWED, false);
+	new_unit.set_state(unit::STATE_PETRIFIED, false);
+	new_unit.set_user_end_turn(false);
+	new_unit.set_hidden(false);
 	return new_unit;
 }
 

@@ -876,12 +876,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 
 	set_game_context();
 
-	set_state(STATE_POISONED,false);
-	set_state(STATE_SLOWED,false);
-	set_state(STATE_PETRIFIED,false);
-	end_turn_ = false;
 	refreshing_  = false;
-	hidden_ = false;
 }
 
 const unit_type* unit::type() const
