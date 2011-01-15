@@ -1836,6 +1836,11 @@ static int intf_find_path(lua_State *L)
 	dst.y = luaL_checkinteger(L, arg) - 1;
 	++arg;
 
+	if (!resources::game_map->on_board(src))
+		return luaL_argerror(L, 1, "invalid location");
+	if (!resources::game_map->on_board(dst))
+		return luaL_argerror(L, arg - 2, "invalid location");
+
 	std::vector<team> &teams = *resources::teams;
 	gamemap &map = *resources::game_map;
 	int viewing_side = 0;
