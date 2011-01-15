@@ -3478,7 +3478,7 @@ void console_handler::do_unit() {
 	if (name == "advances" ){
 		int int_value = lexical_cast<int>(value);
 		for (int levels=0; levels<int_value; levels++) {
-			i->get_experience(i->max_experience() - i->experience());
+			i->set_experience(i->max_experience());
 			dialogs::advance_unit(i->get_location());
 		}
 	} else {

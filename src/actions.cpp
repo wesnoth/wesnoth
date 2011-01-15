@@ -1623,17 +1623,18 @@ void attack::perform()
 		resources::screen->recalculate_minimap();
 	}
 
-	if(a_.valid()) {
-		a_.get_unit().set_standing();
-		if(a_.xp_)
-			a_.get_unit().get_experience(a_.xp_);
+	if (a_.valid()) {
+		unit &u = a_.get_unit();
+		u.set_standing();
+		u.set_experience(u.experience() + a_.xp_);
 	}
 
-	if(d_.valid()) {
-		d_.get_unit().set_standing();
-		if(d_.xp_)
-			d_.get_unit().get_experience(d_.xp_);
+	if (d_.valid()) {
+		unit &u = d_.get_unit();
+		u.set_standing();
+		u.set_experience(u.experience() + d_.xp_);
 	}
+
 	unit_display::unit_sheath_weapon(a_.loc_,a_.valid()?&a_.get_unit():NULL,a_stats_->weapon,
 			d_stats_->weapon,d_.loc_,d_.valid()?&d_.get_unit():NULL);
 
@@ -1934,7 +1935,7 @@ unit get_advanced_unit(const unit &u, const std::string& advance_to)
 			" to: " + advance_to);
 	}
 	unit new_unit(u);
-	new_unit.get_experience(-new_unit.max_experience());
+	new_unit.set_experience(0);
 	new_unit.advance_to(new_type);
 	return new_unit;
 }

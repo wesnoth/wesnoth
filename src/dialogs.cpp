@@ -219,7 +219,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 		LOG_NG << "firing advance event (AMLA)\n";
 		game_events::fire("advance",loc);
 
-		amla_unit.get_experience(-amla_unit.max_experience()); // subtract xp required
+		amla_unit.set_experience(0);
 		amla_unit.add_modification("advance",mod_option);
 		resources::units->replace(loc, amla_unit);
 

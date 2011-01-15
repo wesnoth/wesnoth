@@ -105,16 +105,14 @@ public:
 
 	int hitpoints() const { return hit_points_; }
 	int max_hitpoints() const { return max_hit_points_; }
+	void set_hitpoints(int hp) { hit_points_ = hp; }
 	int experience() const { return experience_; }
 	int max_experience() const { return max_experience_; }
+	void set_experience(int xp) { experience_ = xp; }
 	int level() const { return level_; }
 	void remove_movement_ai();
 	void remove_attacks_ai();
-	/**
-	 * Adds 'xp' points to the units experience; returns true if advancement
-	 * should occur
-	 */
-	bool get_experience(int xp) { experience_ += xp; return advances(); }
+
 	/** Colors for the unit's hitpoints. */
 	SDL_Color hp_color() const;
 	/** Colors for the unit's XP. */
@@ -146,7 +144,6 @@ public:
 	/** Called on every draw */
 	void refresh();
 
-	void set_hitpoints(int hitpoints) { hit_points_ = hitpoints; }
 	bool take_hit(int damage) { hit_points_ -= damage; return hit_points_ <= 0; }
 	void heal(int amount);
 	void heal_all() { hit_points_ = max_hitpoints(); }
