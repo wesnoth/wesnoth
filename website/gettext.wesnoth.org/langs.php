@@ -17,6 +17,7 @@ $langs['en_GB'] = 'British English';
 $langs['en@shaw'] = 'Shavian';
 $langs['eo'] = 'Esperanto';
 $langs['et'] = 'Estonian';
+$langs['ga'] = 'Irish';
 $langs['gl'] = 'Galician';
 $langs['he'] = 'Hebrew';
 $langs['hr'] = 'Croatian';
