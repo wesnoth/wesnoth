@@ -1,7 +1,7 @@
 Contents:
   1. Prerequisites
   2. Common instructions
-  3. Scons build
+  3. SCons build
   4. CMake build
 
 
@@ -31,16 +31,15 @@ These libraries are optional dependencies that unlock additional features:
 
  libdbus-1 (used for desktop notifications)
 
-There are currently three ways to build wesnoth:
- * The old autotools system
+There are currently two ways to build wesnoth:
  * scons >= 0.98.3
  * cmake >= 2.6.0
 
 2. Common steps:
 
-In the future, autotools will probably be replaced with either scons or cmake.
-Once scons and cmake are complete all build systems will be evaluated and
-one build system will be chosen as the official build system.
+The old autotools based build system has been removed. Instead you now have to
+either rely on scons or cmake. Both systems should work nicely and get all
+common tasks, that are required for building Wesnoth, done nicely.
 
 SDL* libraries can be found at: http://www.libsdl.org
 libfreetype can be found at: http://www.freetype.org
@@ -78,7 +77,7 @@ then
  $ cd wesnoth-x.y.z
 
 
-3. Scons build
+3. SCons build
 
 SCons can be found at http://www.scons.org/ .
 
@@ -234,12 +233,11 @@ Optional Packages:
 
 4. CMake build
 
-To build with cmake, you need cmake >= 2.4-patch 8 . You can get cmake at 
-http://www.cmake.org .
+To build with cmake, you need cmake >= 2.6 . You can get cmake at http://www.cmake.org .
 
-There are two ways to build wesnoth with cmake: Inside the source tree or outside.
-Out of source builds have the advantage that you can have builds with different options
-from one source directory.
+There are two ways to build wesnoth with cmake: Inside the source tree or
+outside. Out of source builds have the advantage that you can have builds with
+different options from one source directory.
 
 To build wesnoth out of source:
 
