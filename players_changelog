@@ -4,11 +4,17 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.9.3+svn:
  * Campaigns:
+   * Delfadors Memoirs:
+     * Fixed bug #17273: Made difficulty selection conform to the style of all
+       other mainline campaigns.
    * Descent into Darkness:
      * New set of portraits.
    * Eastern Invasion:
      * Fixed bug #15950: Made 11_Captured remove units from recall list,
        preventing units being 'healed' upon load.
+
+ * Graphics:
+   * Terrain: added transitions for the wood floor
 
  * Language and i18n:
    * Updated translations: Dutch, Finnish, Galician, German, Hebrew, Japanese,
@@ -17,6 +23,8 @@ Version 1.9.3+svn:
  * User interface:
    * New add-ons description dialog with further details, including bundled
      translations.
+   * Increase text area dimensions on story screens and improve space use on
+     smallgui configurations.
 
 
 Version 1.9.3:
