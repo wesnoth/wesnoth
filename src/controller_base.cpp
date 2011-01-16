@@ -94,12 +94,6 @@ void controller_base::handle_event(const SDL_Event& event)
 				int x, y;
 				Uint8 mouse_flags = SDL_GetMouseState(&x, &y);
 				if ((mouse_flags & SDL_BUTTON_LEFT) == 0) {
-					SDL_Event e;
-					e.type = SDL_MOUSEBUTTONUP;
-					e.button.state = SDL_RELEASED;
-					e.button.button = SDL_BUTTON_LEFT;
-					e.button.x = x;
-					e.button.y = y;
 					get_mouse_handler_base().mouse_press(event.button, browse_);
 					post_mouse_press(event);
 				}
