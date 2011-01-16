@@ -670,8 +670,6 @@ surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, boo
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w*surf->h;
 
-		std::map<Uint32, Uint32>::const_iterator map_rgb_end = map_rgb.end();
-
 		while(beg != end) {
 			Uint8 alpha = (*beg) >> 24;
 
