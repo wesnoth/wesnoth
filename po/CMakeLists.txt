@@ -1,4 +1,5 @@
 ############ Settings. ###########
+set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
 
 # The normal domains use cpp and cfg files.
 set(NORMAL_DOMAINS
