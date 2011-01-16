@@ -973,8 +973,10 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 	twidget* widget = find_at(location, true);
 	assert(widget);
 
+#if 0
 	const SDL_Rect widget_rect = widget->get_rect();
 	const SDL_Rect client_rect = get_client_rect();
+#endif
 
 	tooltip_.set_label(tooltip);
 	const tpoint size = tooltip_.get_best_size();
