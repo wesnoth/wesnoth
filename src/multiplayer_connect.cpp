@@ -193,7 +193,6 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 		// Hack: if there is a unit which can recruit, use it as a leader.
 		// Necessary to display leader information when loading saves.
-		config::const_child_itors side_units = cfg.child_range("unit");
 		std::string leader_type;
 		foreach (const config &side_unit, cfg.child_range("unit"))
 		{
