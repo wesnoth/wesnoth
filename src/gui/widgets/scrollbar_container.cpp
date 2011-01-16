@@ -992,8 +992,6 @@ void tscrollbar_container::scrollbar_moved()
 			: vertical_scrollbar_->get_item_position() *
 			  vertical_scrollbar_->get_step_size();
 
-	const tpoint content_size = content_grid_->get_best_size();
-
 	const tpoint content_origin = tpoint(
 			content_->get_x() - x_offset,
 			content_->get_y() - y_offset);
