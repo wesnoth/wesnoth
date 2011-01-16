@@ -250,7 +250,7 @@ void default_map_generator::user_config(display& disp)
 	link_castles.set_check(link_castles_);
 	link_castles.set_location(link_rect);
 
-	for(bool draw = true;; draw = false) {
+	while(true) {
 		nplayers_ = players_slider.value();
 		width_ = width_slider.value();
 		height_ = height_slider.value();
