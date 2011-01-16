@@ -33,7 +33,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 	add_custom_command(
 		OUTPUT ${PROJECT_SOURCE_DIR}/po/wesnoth-manual/wesnoth-manual.pot
 		COMMAND ${PO4A-GETTEXTIZE_EXECUTABLE} ${PO4A-GETTEXTIZE_OPTIONS}
-				-m ../../doc/manual/manual.en.xml
+				-m ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.xml
 				-p wesnoth-manual.pot
 		DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.xml
 		COMMENT "[update-po4a-manual] Building wesnoth-manual.pot."
@@ -47,7 +47,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 			OUTPUT ${PROJECT_SOURCE_DIR}/po/wesnoth-manual/${LINGUA}.po
 			COMMAND ${PO4A-UPDATEPO_EXECUTABLE} ${PO4A-UPDATEPO_OPTIONS}
 					-f docbook
-					-m ../../doc/manual/manual.en.xml
+					-m ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.xml
 					-p ${LINGUA}.po
 			DEPENDS ${PROJECT_SOURCE_DIR}/po/wesnoth-manual/wesnoth-manual.pot
 			COMMENT "[update-po4a-manual ${LINGUA}] Building ${LINGUA}.po."
@@ -58,9 +58,9 @@ if(ENABLE_POT_UPDATE_TARGET)
 		add_custom_command(
 			OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LINGUA}.xml
 			COMMAND ${PO4A-TRANSLATE_EXECUTABLE} ${PO4A-TRANSLATE_OPTIONS}
-					-m ../../doc/manual/manual.en.xml
+					-m ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.xml
 					-p ${LINGUA}.po
-					-l ../../doc/manual/manual.${LINGUA}.xml
+					-l ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LINGUA}.xml
 			DEPENDS ${PROJECT_SOURCE_DIR}/po/wesnoth-manual/${LINGUA}.po
 			COMMENT "[update-po4a-manual ${LINGUA}] Building ${LINGUA}.xml."
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/wesnoth-manual
