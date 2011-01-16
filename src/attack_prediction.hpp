@@ -22,6 +22,8 @@
 
 #include <vector>
 
+#include <cstring>
+
 class battle_context_unit_stats;
 
 // This encapsulates all we need to know for this combat.
