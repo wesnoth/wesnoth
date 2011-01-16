@@ -3241,11 +3241,10 @@ void console_handler::do_layers() {
 	std::ostringstream info;
 	// NOTE using ", " also allows better word wrapping
 	info << "Flags :" << utils::join(flags, ", ");
-	int choice = 0;
 	{
 		gui::dialog menu(*menu_handler_.gui_, _("Layers"), info.str(), gui::OK_CANCEL);
 		menu.set_menu(layers);
-		choice = menu.show();
+		menu.show();
 	}
 }
 void console_handler::do_fps() {
