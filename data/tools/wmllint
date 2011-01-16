@@ -1930,11 +1930,12 @@ def inner_spellcheck(nav, value, spelldict):
         value = value[:-1].rstrip()
     # Strip off string quotes
     value = string_strip(value)
-    # Discard extraneous stuff 
+    # Discard extraneous stuff
     value = value.replace("...", " ")
     value = value.replace("\"", " ")
     value = value.replace("\\n", " ")
     value = value.replace("/", " ")
+    value = value.replace("@", " ")
     value = value.replace(")", " ")
     value = value.replace("(", " ")
     value = value.replace("\xe2\x80\xa6", " ")	# UTF-8 ellipsis
@@ -1945,6 +1946,7 @@ def inner_spellcheck(nav, value, spelldict):
     value = value.replace("\xe2\x80\x98", "'")	# UTF-8 left single quote
     value = value.replace("\xe2\x80\x9d", " ")	# UTF-8 right double quote
     value = value.replace("\xe2\x80\x9c", " ")	# UTF-8 left double quote
+    value = value.replace("\xe2\x80\xa2", " ")	# UTF-8 bullet
     value = value.replace("''", "")
     value = value.replace("female^", " ")
     value = value.replace("male^", " ")
@@ -1953,6 +1955,7 @@ def inner_spellcheck(nav, value, spelldict):
     value = value.replace("weapon^", " ")
     value = value.replace("UI^", " ")
     if '<' in value:
+        value = re.sub("<ref>.*< ref>", "", value)
         value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
         value = re.sub("<[0-9,]+>", "", value)
     # Fold continued lines
