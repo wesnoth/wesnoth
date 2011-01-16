@@ -1,13 +1,15 @@
 set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
 
 install(FILES manual.en.html DESTINATION "${DOCDIR}")
-install(DIRECTORY images styles DESTINATION "${DOCDIR}"
-          PATTERN ".svn" EXCLUDE )
+install(DIRECTORY images styles
+	DESTINATION "${DOCDIR}"
+	PATTERN ".svn" EXCLUDE
+)
 
 if(ENABLE_NLS)
-  foreach(LANG ${LINGUAS})
-    install(FILES manual.${LANG}.html DESTINATION "${DOCDIR}" OPTIONAL)
-  endforeach(LANG ${LINGUAS})
+	foreach(LANG ${LINGUAS})
+		install(FILES manual.${LANG}.html DESTINATION "${DOCDIR}" OPTIONAL)
+	endforeach(LANG ${LINGUAS})
 endif(ENABLE_NLS)
 
 
@@ -16,7 +18,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 	add_custom_command(
 		OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/manual.en.xml
 		COMMAND ${CMAKE_COMMAND} -E remove manual.en.xml
-	  	COMMAND ${CMAKE_COMMAND} -E remove manual.en.html
+		COMMAND ${CMAKE_COMMAND} -E remove manual.en.html
 		COMMAND ${ASCIIDOC_EXECUTABLE} ${ASCIIDOC_OPTIONS}
 				-o manual.en.xml
 				manual.txt

@@ -6,31 +6,31 @@ add_custom_target(update-po4a)
 
 # The normal domains use cpp and cfg files.
 set(NORMAL_DOMAINS
-    wesnoth
-    wesnoth-anl
-    wesnoth-aoi
-    wesnoth-did
-    wesnoth-dm
-    wesnoth-dw
-    wesnoth-editor
-    wesnoth-ei
-    wesnoth-help
-    wesnoth-httt
-    wesnoth-l
-    wesnoth-lib
-    wesnoth-low
-    wesnoth-multiplayer
-    wesnoth-nr
-    wesnoth-sof
-    wesnoth-sotbe
-    wesnoth-tb
-    wesnoth-test
-    wesnoth-thot
-    wesnoth-trow
-    wesnoth-tsg
-    wesnoth-tutorial
-    wesnoth-units
-    wesnoth-utbs
+	wesnoth
+	wesnoth-anl
+	wesnoth-aoi
+	wesnoth-did
+	wesnoth-dm
+	wesnoth-dw
+	wesnoth-editor
+	wesnoth-ei
+	wesnoth-help
+	wesnoth-httt
+	wesnoth-l
+	wesnoth-lib
+	wesnoth-low
+	wesnoth-multiplayer
+	wesnoth-nr
+	wesnoth-sof
+	wesnoth-sotbe
+	wesnoth-tb
+	wesnoth-test
+	wesnoth-thot
+	wesnoth-trow
+	wesnoth-tsg
+	wesnoth-tutorial
+	wesnoth-units
+	wesnoth-utbs
 )
 
 # All available domains.
@@ -125,7 +125,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 				--sort-by-file 
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
-				--output  ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot
+				--output ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot
 
 			COMMAND ${CMAKE_COMMAND} -E remove 
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot

@@ -83,7 +83,7 @@ set(game-external-libs
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
-    ${LIBINTL_LIBRARIES}
+	${LIBINTL_LIBRARIES}
 )
 
 if(MSVC)
@@ -237,8 +237,8 @@ endif(SVNVERSION_EXECUTABLE)
 ########### libwesnoth-lua ###############
 
 set(libwesnoth-lua_STAT_SRC
-	lua/lapi.c                                               
-	lua/lcode.c                                             
+	lua/lapi.c
+	lua/lcode.c
 	lua/ldebug.c
 	lua/ldo.c
 	lua/ldump.c
@@ -677,8 +677,8 @@ if(ENABLE_GAME)
 	)
 
 	target_link_libraries(wesnoth
-	   ${wesnoth_LIB}
-	   ${game-external-libs}
+		${wesnoth_LIB}
+		${game-external-libs}
 	)
 	set_target_properties(wesnoth
 		PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}
