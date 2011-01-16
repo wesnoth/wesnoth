@@ -1,7 +1,3 @@
-############ Old stuff. ###########
-
-add_custom_target(update-po4a)
-
 ############ Settings. ###########
 
 # The normal domains use cpp and cfg files.
