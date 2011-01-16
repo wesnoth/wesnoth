@@ -55,61 +55,33 @@ if(ENABLE_POT_UPDATE_TARGET)
 			# misses bug address
 			OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 			# create the pot file make sure we always get output.
-			COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE}
-				--force-po
-				--add-comments=TRANSLATORS 
-				--files-from=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in 
-				--copyright-holder=\"Wesnoth development team\"
-				--msgid-bugs-address=\"http://bugs.wesnoth.org/\"
-				--from-code=UTF-8
-				--sort-by-file
-				--keyword=_
-				--keyword=N_
-				--keyword=sgettext
-				--keyword=vgettext
-				--keyword=VGETTEXT
-				--keyword=_n:1,2
-				--keyword=sngettext:1,2
-				--keyword=vngettext:1,2
-				--output=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
+			COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} ${GETTEXT_XGETTEXT_OPTIONS}
+					--files-from=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in 
+					--output=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 			# replace the chartype
 			COMMAND sed -i 
 				s/charset=CHARSET/charset=UTF-8/ 
 				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 			# Remove some header info - Need to test whether needed.
-#			COMMAND sed -i
-#				-f po/remove-potcdate.sed 
-#				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 			DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
 			COMMENT "pot-update [${DOMAIN}]: Generated source pot file."
 		)
 
 		# Generate pot file for wml data.
-#		if(EXISTS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG)
-			add_custom_command(
-				OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
+		add_custom_command(
+			OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 
-				COMMAND ${WMLXGETTEXT} 
-					--directory=${PROJECT_SOURCE_DIR} 
-					--domain=${DOMAIN} 
-					`cd ${PROJECT_SOURCE_DIR} && 
-						sh ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG`
-						> ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
-				DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG
-				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-				COMMENT "pot-update [${DOMAIN}]: Generated wml pot file."
-			)
-#		else(EXISTS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG)
-#			add_custom_command(
-#				OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
-#
-#				COMMAND touch 
-#						${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
-#				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-#				COMMENT "pot-update [${DOMAIN}]: Generated dummy wml pot file."
-#			)
-#		endif(EXISTS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG)
+			COMMAND ${WMLXGETTEXT} 
+				--directory=${PROJECT_SOURCE_DIR} 
+				--domain=${DOMAIN} 
+				`cd ${PROJECT_SOURCE_DIR} && 
+					sh ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG`
+					> ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
+			DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG
+			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+			COMMENT "pot-update [${DOMAIN}]: Generated wml pot file."
+		)
 
 		# Merge both pot files
 		add_custom_command(

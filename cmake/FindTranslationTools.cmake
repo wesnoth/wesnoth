@@ -9,10 +9,26 @@ if(NOT GETTEXT_MSGINIT_EXECUTABLE)
 endif(NOT GETTEXT_MSGINIT_EXECUTABLE)
 
 find_program(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
-if(NOT GETTEXT_XGETTEXT_EXECUTABLE )
+if(NOT GETTEXT_XGETTEXT_EXECUTABLE)
 	message("xgettext not found")
 	set(TRANSLATION_TOOLS_FOUND false)
-endif(NOT GETTEXT_XGETTEXT_EXECUTABLE )
+endif(NOT GETTEXT_XGETTEXT_EXECUTABLE)
+set(GETTEXT_XGETTEXT_OPTIONS
+	--force-po
+	--add-comments=TRANSLATORS 
+	--copyright-holder=\"Wesnoth development team\"
+	--msgid-bugs-address=\"http://bugs.wesnoth.org/\"
+	--from-code=UTF-8
+	--sort-by-file
+	--keyword=_
+	--keyword=N_
+	--keyword=sgettext
+	--keyword=vgettext
+	--keyword=VGETTEXT
+	--keyword=_n:1,2
+	--keyword=sngettext:1,2
+	--keyword=vngettext:1,2
+)
 
 find_program(GETTEXT_MSGCAT_EXECUTABLE msgcat)
 if(NOT GETTEXT_MSGCAT_EXECUTABLE )
