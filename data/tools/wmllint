@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# encoding: utf8
 #
 # wmllint -- check WML for conformance to the most recent dialect
 #
@@ -1947,6 +1948,7 @@ def inner_spellcheck(nav, value, spelldict):
     value = value.replace("\xe2\x80\x9d", " ")	# UTF-8 right double quote
     value = value.replace("\xe2\x80\x9c", " ")	# UTF-8 left double quote
     value = value.replace("\xe2\x80\xa2", " ")	# UTF-8 bullet
+    value = value.replace("◦", "")              # Why is this necessary?
     value = value.replace("''", "")
     value = value.replace("female^", " ")
     value = value.replace("male^", " ")
