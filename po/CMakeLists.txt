@@ -1,6 +1,5 @@
 ############ Old stuff. ###########
 
-INCLUDE(TranslationTargets)
 add_custom_target(update-po4a)
 
 ############ Settings. ###########
