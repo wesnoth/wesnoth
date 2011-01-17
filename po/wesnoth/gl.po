@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 13:09+0100\n"
-"PO-Revision-Date: 2011-01-15 15:29+0100\n"
+"PO-Revision-Date: 2011-01-17 18:05+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -1858,10 +1858,10 @@ msgid ""
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"As unidades aureolares loitan mellor durante o amencer e mailo anoitecer, e "
-"normal durante o día e a noite.\n"
+"As unidades crepusculares loitan mellor durante o crepúsculo (o amencer e "
+"mailo anoitecer), e normal durante o día e a noite.\n"
 "\n"
-"Un cuarto máis de dano polo día."
+"Un cuarto máis de dano durante o crepúsculo."
 
 #. [language]
 #: data/english.cfg:15
@@ -2357,8 +2357,8 @@ msgid ""
 msgstr ""
 "As unidades <i>legais</i> loitan mellor polo día, e as unidades <i>caóticas</"
 "i> loitan mellor pola noite. Ás unidades <i>neutrais</i> non lles afecta o "
-"momento do día. As unidades <i>aureolares</i> loitan mellor durante o "
-"amencer e mailo anoitecer."
+"momento do día. As unidades <i>crepusculares</i> loitan mellor durante o "
+"crepúsculo."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
@@ -4993,7 +4993,7 @@ msgid ""
 "or liminal."
 msgstr ""
 "O aliñamento «$alignment|» é incorrecto, ten que ser “lawful” (legal), "
-"“neutral”, “chaotic” (caótico) ou “liminal” (aureolar)."
+"“neutral”, “chaotic” (caótico) ou “liminal” (crepuscular)."
 
 #: src/menu_events.cpp:3524
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -6021,7 +6021,7 @@ msgstr "Unidades caóticas: "
 
 #: src/reports.cpp:595
 msgid "Liminal units: "
-msgstr "Unidades aureolares: "
+msgstr "Unidades crepusculares: "
 
 #: src/reports.cpp:793
 msgid "Observers:"
@@ -6292,7 +6292,7 @@ msgstr "legal"
 
 #: src/unit_types.cpp:968
 msgid "liminal"
-msgstr "aureolar"
+msgstr "crepuscular"
 
 #: src/unit_types.cpp:968
 msgid "neutral"
@@ -6308,7 +6308,7 @@ msgstr "legal"
 
 #: src/unit_types.cpp:969
 msgid "female^liminal"
-msgstr "aureolar"
+msgstr "crepuscular"
 
 #: src/unit_types.cpp:969
 msgid "female^neutral"
