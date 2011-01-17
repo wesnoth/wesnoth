@@ -10,24 +10,15 @@ The release team should empty this file after each release.
 
 ***
 
-The add-on description box in the Download dialog has been improved and now displays extra information about the selected add-on, including bundled translations.
+REPLACE ME WITH CONTENT...
 
 ***
 
-Custom attack ranges and types can now be translated. To do this for range "artillery" and damage type "explosive", add a top-level [+language] tag to your UMC as follows:
-[code][+language]
-    # Translate custom range
-    range_artillery= _ "artillery"
-
-    # Translate custom attack type
-    type_explosive = _ "explosive"
-[/language][/code]
-
-Failing to do so will result in your ranges having odd names starting with 'UNTLB', indicating you should fix this.
+REPLACE ME WITH CONTENT...
 
 ***
 
-Autotools are no longer a supported build system. Instead you should either switch to cmake or scons.
+REPLACE ME WITH CONTENT...
 
 ***
 
