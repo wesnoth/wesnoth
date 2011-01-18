@@ -1,4 +1,3 @@
-# translation of wesnoth-es.po to Español
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004, 2005, 2006, 2007, 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -15,13 +14,14 @@
 # Sergi March <sergi.march@gmail.com>, 2008.
 # Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008, 2009.
 # Gustavo Gingins <gusgins@gmail.com>, 2009.
+# Alvin Eloy Luna Castro <alvineloy@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 13:09+0100\n"
-"PO-Revision-Date: 2010-05-04 19:57+0100\n"
-"Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
+"PO-Revision-Date: 2011-01-17 14:31-0430\n"
+"Last-Translator: Alvin Eloy Luna Castro <alvineloy@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -63,14 +63,13 @@ msgstr "Animar mapa"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
-#, fuzzy
 msgid "Local time of day light"
-msgstr "Hace que el juego comience en un momento del día al azar"
+msgstr "Tiempo local de la luz del día"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:48
 msgid "Local time of day light effect (use more memory)."
-msgstr ""
+msgstr "Efecto del tiempo local de la luz del día (usa más memoria)"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:55
@@ -90,7 +89,7 @@ msgstr "Mostrar combate"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:76
 msgid "Ping Timeout"
-msgstr "Venció el tiempo de ping"
+msgstr "Sonido de tiempo vencido"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:77
@@ -98,8 +97,8 @@ msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr ""
-"Número de segundos que se espera una respuesta ping antes de que venza el "
-"tiempo. Desactivar con 0."
+"Número de segundos a esperar, por un sonido de respuesta, antes que "
+"detengamosel tiempo. Desactivar con 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:87
@@ -114,7 +113,7 @@ msgstr "Abrir automáticamente ventanas de susurros en la sala"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:101
 msgid "Group players in lobby"
-msgstr "Agrupar jugadores en una sala"
+msgstr "Agrupar jugadores en sala"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:108
@@ -123,9 +122,8 @@ msgstr "Sonidos de sala"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Desactiva el guardado automático."
+msgstr "Desactiva la notificaciones."
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
@@ -341,9 +339,8 @@ msgstr "Traducción indonesia"
 
 #. [about]
 #: data/core/about.cfg:2044
-#, fuzzy
 msgid "Irish Translation"
-msgstr "Traducción turca"
+msgstr "Traducción irlandesa"
 
 #. [about]
 #: data/core/about.cfg:2051
@@ -469,19 +466,17 @@ msgstr "Robots"
 #: data/core/macros/ai.cfg:494
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
-"Preguntar a $ally_leader.name (líder de la facción $ally_leader.side) para "
+"Preguntar a $ally_leader.name (líder del bando $ally_leader.side) para "
 "moverse aquí"
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
-#, fuzzy
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on them."
 msgstr ""
-"En muchos escenarios de campaña, puede darle instrucciones simples a sus "
-"aliados controlados por la computadora utilizando el menú contextual al "
-"hacer clic derecho."
+"En este escenario, le puede dar instrucciones a un aliado de otro "
+"bandopresionando el botón derecho de su ratón sobre él."
 
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
@@ -497,7 +492,7 @@ msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
-"$ally_leader.name (side $ally_side|) está cumpliendo con las siguientes "
+"$ally_leader.name (bando $ally_side|) está cumpliendo con las siguientes "
 "instrucciones:"
 
 #. [overview_message_no_instructions]: speaker=narrator
@@ -536,13 +531,12 @@ msgstr "Concentrarse en derrotar a..."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:72
-#, fuzzy
 msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 msgstr ""
-"Objetivo: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description"
+"concentrándose en derrotar a $ai_controller.side_$ally_side|"
+"_current_settings.focus_on_enemy.side_description|."
 
 #. [then]
 #. [else]
@@ -580,13 +574,12 @@ msgstr "Concentrarse en proteger a..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:202
-#, fuzzy
 msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
 msgstr ""
-"Objetivo: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description"
+"concentrándose en proteger a $ai_controller.side_$ally_side|"
+"_current_settings.protect.side_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:352
@@ -596,7 +589,9 @@ msgstr "Defender una ubicación..."
 #. [print]
 #: data/core/macros/ai_controller.cfg:368
 msgid "Right-click to select a location to defend"
-msgstr "Haga clic derecho para seleccionar una ubicación que defender"
+msgstr ""
+"Presione el botón derecho del ratón para seleccionar una ubicación para "
+"defenderla"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:375
@@ -636,7 +631,6 @@ msgstr "ninguno."
 
 #. [do]
 #: data/core/macros/ai_controller.cfg:644
-#, fuzzy
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -651,12 +645,12 @@ msgstr ""
 #. [literal]
 #: data/core/macros/ai_controller.cfg:652
 msgid "Set objective..."
-msgstr "Cambiar objetivo..."
+msgstr "Asignar objetivo..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:743
 msgid "Set behavior..."
-msgstr "Cambiar comportamiento..."
+msgstr "Asignar comportamiento..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:848
@@ -674,27 +668,28 @@ msgstr "Mover líder a..."
 #: data/core/macros/ai_controller.cfg:977
 msgid "Right-click to select a location to move leader to"
 msgstr ""
-"Haga clic derecho para seleccionar una ubicación a la que mover el líder"
+"Presione el botón derecho del ratón para seleccionar una ubicacióna dónde "
+"mover el líder"
 
 #: data/core/macros/ai_controller.cfg:978
 msgid "Move leader here"
-msgstr "Mover líder aquí"
+msgstr "Mover el líder aquí"
 
 #: data/core/macros/ai_controller.cfg:979
 msgid "moving leader to $x1|,$y1|."
-msgstr "moviendo líder a $x1|,$y1|."
+msgstr "moviendo el líder a $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:980
 msgid "Clear special orders"
-msgstr "Limpiar órdenes especiales"
+msgstr "Cancelar órdenes especiales"
 
 #: data/core/macros/ai_controller.cfg:981
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Objetivo: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description"
+"Objetivo especial: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/deprecated-utils.cfg:416
@@ -709,7 +704,7 @@ msgstr "Máxima bonificación en PV +"
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
 msgid "You have come across a wishing well. What would you like to wish for?"
-msgstr "Os habéis encontrado con un pozo de deseos. ¿Qué os gustaría desear?"
+msgstr "Ha encontrado con un pozo de deseos. ¿Qué le gustaría desear?"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:26
@@ -738,12 +733,12 @@ msgstr "Deseo que esta única pieza de oro me sea devuelta con creces."
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:52
 msgid "Peace throughout Wesnoth."
-msgstr "Paz en Wesnoth."
+msgstr "Paz en todo Wesnoth."
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:59
 msgid "The only thing worth wishing for is peace throughout the land."
-msgstr "La única cosa que vale la pena pedir es la paz en la tierra."
+msgstr "La única cosa que vale la pena pedir es la paz en toda la tierra."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:65
@@ -773,7 +768,7 @@ msgstr "Una sensación de bienestar invade al bebedor."
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:205
 msgid "You are not worthy of healing."
-msgstr "No merece la pena sanarle."
+msgstr "Usted no merece la sanación."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:239
@@ -784,17 +779,16 @@ msgstr "Veneno"
 #: data/core/macros/items.cfg:242
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr ""
-"El veneno está entrando en las venas de esta unidad en este preciso momento."
+"Se está filtrando veneno en las venas de esta unidad en este preciso momento."
 
 #: data/core/macros/items.cfg:262
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
-"Esparcir este agua hace que las armas de combate cuerpo a cuerpo posean el "
-"tipo de daño «arcano» hasta el final del escenario actual. ¿$unit.name ha de "
-"usarla?"
+"Rociar esta agua en las armas de combate cuerpo a cuerpo les otorga la "
+"habilidadde causar daño tipo «arcano» hasta el final del escenario actual. "
+"¿$unit.name hade usarla?"
 
 #: data/core/macros/items.cfg:263
 msgid "I am not suited to the use of this item! Let another take it."
@@ -808,23 +802,22 @@ msgstr "Agua bendita"
 
 #. [object]
 #: data/core/macros/items.cfg:268
-#, fuzzy
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr ""
-"Este agua hace que las armas de combate cuerpo a cuerpo posean el tipo de "
-"daño «arcano» hasta el final del escenario actual."
+"Esta agua hará que las armas de combate cuerpo a cuerpo posean la habilidad "
+"de causar daño tipo «arcano» hasta el final del escenario actual."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:297
 msgid "Potion of Strength"
-msgstr "Poción de fuerza"
+msgstr "Poción de fortaleza"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:300
 msgid "Strength is given to the drinker."
-msgstr "El bebedor tiene fuerza adicional."
+msgstr "Fortaleza es otorgada al bebedor."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:340
@@ -844,7 +837,7 @@ msgstr "Anillo de regeneración"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:380
 msgid "This ring will heal the bearer a little each turn."
-msgstr "Este anillo sanará al que lo lleve un poco cada turno."
+msgstr "Este anillo sanará al portador un poco en cada turno."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:416
@@ -854,7 +847,7 @@ msgstr "Anillo de lentitud"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:419
 msgid "The bearer of this ring is slowed."
-msgstr "El poseedor de este anillo se verá ralentizado."
+msgstr "El poseedor de este anillo está ralentizado."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:453
@@ -869,7 +862,7 @@ msgstr "Esta vara dará a su poseedor movimiento rápido."
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:457
 msgid "Only magical beings can wield such an object."
-msgstr "Sólo los seres mágicos pueden llevar este objeto."
+msgstr "Sólo los seres mágicos pueden portar este objeto."
 
 #: data/core/macros/items.cfg:507
 msgid "Only the mermen can use this item!"
@@ -882,7 +875,7 @@ msgstr "Debería $unit.name recoger el tridente?"
 #. [object]
 #: data/core/macros/items.cfg:509
 msgid "Storm Trident"
-msgstr "Tridente de las tormentas"
+msgstr "Tridente de tormentas"
 
 #. [object]
 #: data/core/macros/items.cfg:512
@@ -897,7 +890,6 @@ msgid "storm trident"
 msgstr "tridente de tormentas"
 
 #: data/core/macros/names.cfg:18
-#, fuzzy
 msgid ""
 "Egar,Elch,Ga’ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart’lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -920,7 +912,6 @@ msgstr ""
 "Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:19
-#, fuzzy
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
@@ -1692,9 +1683,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
-#, fuzzy
 msgid "Turns run out"
-msgstr "Turnos: "
+msgstr "Se acaban los turnos"
 
 #: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:101
 msgid "Early finish bonus."
@@ -1709,9 +1699,8 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(bonificación por terminar pronto)</small>"
 
 #: data/core/macros/objective-utils.cfg:25
-#, fuzzy
 msgid "(early finish bonus)"
-msgstr "Bonificación por finalizar pronto."
+msgstr "(bonificación por finalizar pronto)"
 
 #: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:111
 msgid "No gold carried over to the next scenario."
@@ -1746,9 +1735,8 @@ msgid "Alternative objective:"
 msgstr "Objetivo alternativo:"
 
 #: data/core/macros/objective-utils.cfg:52
-#, fuzzy
 msgid "Bonus objective:"
-msgstr "Objetivo alternativo:"
+msgstr "Objetivo de bonificación:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -1844,19 +1832,19 @@ msgstr "Difícil"
 msgid "Nightmare"
 msgstr "Pesadilla"
 
+# LIMINAL es una palabra del idioma latín, que hace referencia al crepúsculo (alba u ocaso). No hay traducción al español.  Para singular se utilizará la palabra LIMINAL, sin importar el género de la unidad, en plural se utilizará la palabra LIMINALES.  (AELC)
 #. [language]
 #: data/english.cfg:10
-#, fuzzy
 msgid ""
 "Liminal units fight better during twilight while fighting normally during "
 "day and night.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Las unidades legales luchan mejor de día, y peor de noche.\n"
+"Las unidades Liminales, luchan mejor durante el crepúsculo, pero de forma "
+"normal durante el día y la noche.\n"
 "\n"
-"Día: +25% del daño\n"
-"Noche: −25% del daño"
+"Crepúsculo: +25% del daño"
 
 #. [language]
 #: data/english.cfg:15
@@ -2736,6 +2724,7 @@ msgstr ""
 "aliados controlados por la computadora utilizando el menú contextual al "
 "hacer clic derecho."
 
+# La palabra BERSERK del idioma inglés es traducida por la palabra FRENESÍ del idioma español.  Esto es por ambas significar más o menos lo mismo, refiriéndose a una persona que se vuelve loca de rabia o coraje.  (AELC)
 #. [tip]
 #: data/hardwired/tips.cfg:200
 msgid ""
@@ -2746,6 +2735,13 @@ msgid ""
 "to escape; slow enemies are almost immobilized, and your own units suffer "
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
+"La habilidad «Ralentizar» es extremadamente poderosa por tener un amplio "
+"campo de efectos.  Un enemigo no-muerto obtiene la mitad del beneficio "
+"normal de su habilidad «Drenar», el daño de bonificación de «Carga» o "
+"«Apuñalar por la espalda» es cancelado y la habilidad «Frenesí» es "
+"debilitada.  Los enemigos más rápidos luchan para escapar, los enemigos "
+"lentos son casi inmobilizados y las unidades propias sufren menos daños de "
+"represalias, haciendo que sea más rápido sanarlas."
 
 #. [tip]
 #: data/hardwired/tips.cfg:204
@@ -2755,6 +2751,11 @@ msgid ""
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
+"Trate de utilizar unidades con una pequeña cantidad de ataques poderosos - "
+"como los Adeptos Oscuros, los Caballeros, los Soldados rasos orcos, y los "
+"Atronadores enanos - en grupos de dos o tres.  Esto le otorgará un mayor "
+"número de oportunidades de acertar un ataque devastador en contra del "
+"enemigo.  "
 
 #. [tip]
 #: data/hardwired/tips.cfg:208
@@ -2764,6 +2765,11 @@ msgid ""
 "leadership—or a strong or dextrous unit—whenever the extra point or two of "
 "damage makes a one-hit kill possible."
 msgstr ""
+"Unidades que contienen tres o más ataques  - especialmente ataques mágicos - "
+"son ideales para derrotar enemigos con sólo unos pocos puntos de vida "
+"restantes.  Asegúrese de utilizar unidades con liderazgo - o unidades "
+"fuertes o diestras - cuando sea necesario unos puntos adicionales para "
+"derrotar al enemigo de un sólo golpe."
 
 #. [tip]
 #: data/hardwired/tips.cfg:212
@@ -2772,6 +2778,10 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
+"Piense dos veces antes de licenciar a una unidad de la lista de "
+"reincorporar, no importa cuanta experiencia posea.  Es conveniente, algunas "
+"veces, esperar a ver exactamente el tipo de alineamiento que el enemigo "
+"pueda tener antes de tomar esta decisión.  "
 
 #. [tip]
 #: data/hardwired/tips.cfg:216
@@ -2780,12 +2790,17 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
+"Cuando una de sus unidades fuertes está demasiado herida, haga que vaya a "
+"una aldea, lejos del área de batalla, para que se pueda sanar sin peligro de "
+"muerte.  Esto puede hacer que recupere hasta 10 puntos de vida por cada "
+"turno. "
 
 #. [tip]
 #: data/hardwired/tips.cfg:217 data/hardwired/tips.cfg:229
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
+msgstr "- Señor Hamel de Knalga"
 
+# No encontré ninguna referencia para la palabra ILLUMINATES en el idioma español dentro de Wesnoth, así que elegí la palabra adecuada en el idioma español para ella, ILUMINAR.  (AELC)
 #. [tip]
 #: data/hardwired/tips.cfg:220
 msgid ""
@@ -2793,6 +2808,10 @@ msgid ""
 "work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
+"Combinar múltiples habilidades especiales puede ser desastroso.  Por otro "
+"lado, combinar las habilidades especiales «Liderazgo», «Iluminar» y «Carga» "
+"en contra de un oponente lento, puede ser difícil y a la vez dar resultados "
+"impresionantes."
 
 #. [tip]
 #: data/hardwired/tips.cfg:224
@@ -2802,6 +2821,12 @@ msgid ""
 "your units extra experience. When deciding whether or not to finish a "
 "scenario early, weigh these factors against one another."
 msgstr ""
+"Mientras que terminar la partida antes que se terminen los turnos ofrece la "
+"oportunidad de obtener oro adicional en el siguiente escenario y evitar que "
+"le eliminen unidades valiosas, esto también quiere decir que usted pierde la "
+"oportunidad de hacer que sus unidades ganen puntos de experiencia "
+"adicionales.   Piense en esto antes de decidir si terminar o no un escenario "
+"antes de tiempo."
 
 #. [tip]
 #: data/hardwired/tips.cfg:228
@@ -2812,6 +2837,12 @@ msgid ""
 "average. Plan for heavy losses, and take firm control of any hex where the "
 "land does favor you."
 msgstr ""
+"Si sus tropas tienen la desventaja en un mapa determinado ante las tropas "
+"enemigas, trate de colocar sus tropas en lugares donde su enemigo tenga la "
+"misma desventaja.  Evite los lugares donde sus tropas tengan pocas "
+"posibilidades de defenderse en comparación con las de su enemigo.  "
+"Planifique en caso de grandes pérdidas y mantenga el control de las "
+"ubicaciones donde usted se vea favorecido."
 
 #. [tip]
 #: data/hardwired/tips.cfg:233
@@ -2826,6 +2857,7 @@ msgstr ""
 "refresco de zonas oscuras» cuando quieras mover unidades y a la vez "
 "preservar tu capacidad de deshacer movimientos."
 
+# No encontré referencia alguna a unidades FERAL en el idioma español en Wesnoth, así que escogí la palabra que mejor describiera su significada en el idioma inglés, FIERAS
 #. [tip]
 #: data/hardwired/tips.cfg:237
 msgid ""
@@ -2833,6 +2865,10 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
+"Las unidades «Fieras», como los Murciélagos y demás animales salvajes, deben "
+"evitar las aldeas.  Aunque ellos ocupen dichos lugares y recuperen sus "
+"puntos de vidas, no ganarán ningún punto de defensa adicional como otras "
+"unidades."
 
 #: data/lua/wml-tags.lua:707 src/actions.cpp:1275
 msgid "female^poisoned"
@@ -2866,19 +2902,20 @@ msgstr "Derrota:"
 
 #: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
-msgstr ""
+msgstr "Oro sumado de la partida anterior:"
 
 #: data/lua/wml/objectives.lua:53
 msgid "Notes:"
-msgstr ""
+msgstr "Notas:"
 
 #: data/lua/wml/objectives.lua:69
 msgid "(%d turns left)"
-msgstr ""
+msgstr "(%d turnos restantes)"
 
 #: data/lua/wml/objectives.lua:71
+#, fuzzy
 msgid "(this turn left)"
-msgstr ""
+msgstr "(este turno restante)"
 
 #: data/lua/wml/objectives.lua:113
 #, fuzzy
@@ -2900,10 +2937,11 @@ msgstr "Aceptar"
 msgid "Cancel"
 msgstr "Cancelar"
 
+# Esta es una traducción literal, ya que puede tener varios significados en el idioma inglés.  Esto último se debe a que no tiene más palabras que de a entender a lo que se refiere en inglés.
 #. [language]
 #: data/scenario-test.cfg:2971
 msgid "very long"
-msgstr ""
+msgstr "demasiado largo"
 
 #. [language]
 #: data/scenario-test.cfg:2972
@@ -3285,21 +3323,27 @@ msgid_plural ""
 "The selected add-on has the following dependencies. Do you want to install "
 "them?"
 msgstr[0] ""
+"El complemento seleccionado requiere del siguiente archivo de dependencia.  "
+"¿Desea instalarlo?"
 msgstr[1] ""
+"El complemento seleccionado requiere de los siguientes archivos de "
+"dependencias.  ¿Desea instalarlos?"
 
 #: src/addon/manager.cpp:829
 msgid "Installation of a dependency failed"
-msgstr ""
+msgstr "La instalación de un archivo de dependencia ha fallado."
 
 #: src/addon/manager.cpp:831
 msgid ""
 "While the add-on has been installed, a dependency is missing. Try to update "
 "the installed add-ons."
 msgstr ""
+"Mientras el complemento se instalaba, se encontró que faltaba un archivo de "
+"dependencia.  Trate de actualizar dicho complemento."
 
 #: src/addon/manager.cpp:845
 msgid "Installation failed"
-msgstr ""
+msgstr "¡La instalación de usuario ha fallado!"
 
 #: src/addon/manager.cpp:847 src/addon/manager.cpp:1075
 msgid "The following add-on could not be downloaded or updated successfully:"
@@ -3361,7 +3405,7 @@ msgstr "Actualizar todos"
 #: src/addon/manager.cpp:1040 src/addon/manager.cpp:1057
 #: src/addon/manager.cpp:1322
 msgid "Installation of some dependency failed"
-msgstr ""
+msgstr "La instalación de algunos archivos de dependencia ha fallado."
 
 #: src/addon/manager.cpp:1042 src/addon/manager.cpp:1059
 #: src/addon/manager.cpp:1324
@@ -3369,6 +3413,8 @@ msgid ""
 "While the add-on has been installed, some dependency is missing. Try to "
 "update the installed add-ons."
 msgstr ""
+"Mientras el complemento se instalaba, se encontró que faltaban unos archivos "
+"de dependencia.  Trate de actualizar dicho complemento."
 
 #: src/addon/manager.cpp:1073
 msgid "Update failed"
@@ -3433,7 +3479,7 @@ msgstr "Descargas"
 
 #: src/addon/manager.cpp:1273
 msgid "Done"
-msgstr ""
+msgstr "Completado"
 
 #: src/addon/manager.cpp:1285 src/dialogs.cpp:622 src/menu_events.cpp:930
 #: src/menu_events.cpp:1541
@@ -3955,7 +4001,7 @@ msgstr "Inicializando visualización"
 
 #: src/loadscreen.cpp:238
 msgid "Building terrain rules"
-msgstr ""
+msgstr "Creando las reglas del terreno"
 
 #: src/loadscreen.cpp:240
 msgid "Starting game"
@@ -3969,11 +4015,16 @@ msgstr "Un mapa sin cabecera no está soportado"
 msgid "Random maps with an odd width aren't supported."
 msgstr "Mapas aleatorios con un ancho impar no son compatibles."
 
+# Las oraciones en inglés no tienen relación entre ellas.  La traducción al español está bien.  Parecerá confuso y que no tendrá lógica el mensaje.  Recomiendo que se verifique a qué se refiere el texto en inglés para luego poder hacerle las modificaciones necesarias al texto en español. (AELC)
 #: src/mapgen.cpp:1007
+#, fuzzy
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
 msgstr ""
+"No se encontró ninguna ubicación válidad para el castillo.  ¿Habrá "
+"demasiadas o pocas ubicaciones de montañas?  (Por favor, verifique el "
+"parámetro «Tamaño máximo de colinas»)"
 
 #: src/menu_events.cpp:96 src/menu_events.cpp:99 src/menu_events.cpp:103
 msgid "Do you really want to dismiss him?"
@@ -4525,11 +4576,13 @@ msgstr "Visualiza el procedimiento de actualización de pantalla."
 
 #: src/menu_events.cpp:2515
 msgid "Debug foreground terrain."
-msgstr ""
+msgstr "Corregir errores de la capa superior del terreno."
 
 #: src/menu_events.cpp:2517
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
+"Corregir errores de las capas del terreno que se encuentran marcados por el "
+"ratón."
 
 #: src/menu_events.cpp:2518
 msgid "Show fps."
@@ -4572,20 +4625,24 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
+"Cambie el número de turno (y el tiempo en el día), o aumentelo por uno si no "
+"hay ningún número específicado."
 
 #: src/menu_events.cpp:2539
 msgid "[turn]"
-msgstr ""
+msgstr "[turno]"
 
 #: src/menu_events.cpp:2541
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
+"Cambie el límite de los turnos o, si no se ha especificado ningún número "
+"para ello todavía o su valor es de -1,  desactívelo. "
 
 #: src/menu_events.cpp:2541
 msgid "[limit]"
-msgstr ""
+msgstr "[límite]"
 
 #: src/menu_events.cpp:2543
 msgid "Turn debug mode on."
@@ -4605,7 +4662,7 @@ msgstr "Ejecutar sentencia en Lua."
 
 #: src/menu_events.cpp:2549
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Otorga privilegios superiores a la escritura Lua."
 
 #: src/menu_events.cpp:2551
 msgid "Set the command used by the custom command hotkey"
@@ -4619,7 +4676,7 @@ msgstr "Lanzar el inspector de estado de juego"
 
 #: src/menu_events.cpp:2555
 msgid "Manage persistence data"
-msgstr ""
+msgstr "Maneja data persistente"
 
 #: src/menu_events.cpp:2557
 msgid "<name>[=<command>]"
@@ -4690,7 +4747,7 @@ msgstr "Alterna la visualización de códigos de terreno en los hexágonos."
 
 #: src/menu_events.cpp:2591
 msgid "Toggle planning mode."
-msgstr ""
+msgstr "Modo de planificación alternativo."
 
 #: src/menu_events.cpp:2634
 msgid "Unknown debug level: '$level'."
@@ -4826,7 +4883,7 @@ msgstr "¡Modo de depuración desactivado!"
 
 #: src/menu_events.cpp:3383
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Escritura Lua insegura."
 
 #: src/menu_events.cpp:3384
 msgid ""
@@ -4834,10 +4891,15 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Está a punto de abrir una zona insegura, que infringe las normas de "
+"seguridad y que le recomendamos que no haga, en Wesnoth.  ¿Está seguro que "
+"desea continuar?  (Si usted ha descargado o piensa descargar algún "
+"complemento a través de este medio, ¡no acepte instalarlo!  Esto podría "
+"causar daños irreparables en su computadora.  ¡Está siendo advertido!)"
 
 #: src/menu_events.cpp:3387
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "¡Modo inseguro activado!"
 
 #: src/menu_events.cpp:3430
 msgid "Variable not found"
@@ -4854,6 +4916,9 @@ msgstr ""
 #: src/menu_events.cpp:3524
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
+"¿Desea eliminar toda la información disponible hasta el momento, de las "
+"unidades que usted ha descubierto mediante las partidas jugadas, de los "
+"archivos de ayuda?"
 
 #: src/menu_events.cpp:3535
 msgid "Invalid unit type"
@@ -5081,7 +5146,7 @@ msgstr "El escenario es inválido, ya que no tiene bandos."
 
 #: src/multiplayer_connect.cpp:1068
 msgid "Enter a name for the new player"
-msgstr ""
+msgstr "Introduzca un nombre para el nuevo jugador"
 
 #: src/multiplayer_connect.cpp:1069 src/reports.cpp:135 src/savegame.cpp:694
 msgid "Name: "
@@ -5345,7 +5410,7 @@ msgstr "Filtro: "
 
 #: src/multiplayer_lobby.cpp:739
 msgid "Invert"
-msgstr ""
+msgstr "Invertir"
 
 #: src/multiplayer_lobby.cpp:740
 #, fuzzy
@@ -5354,7 +5419,7 @@ msgstr "Plaza libre:"
 
 #: src/multiplayer_lobby.cpp:741
 msgid "Friends in Game"
-msgstr ""
+msgstr "Amigos en la partida"
 
 #: src/multiplayer_lobby.cpp:742
 #, fuzzy
@@ -5370,25 +5435,36 @@ msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
+"Permite el filtrado de partidas.  Si no está seleccionado, todas las "
+"partidas serán mostradas, sin importar que otros filtros se hayan escogido."
 
+# Las dos oraciones, en la traducción en inglés, se contradicen una a la otra.  No hace sentido lo que quiere decir y hace que la traducción al español se dificulte.  (AELC)
 #: src/multiplayer_lobby.cpp:758
+#, fuzzy
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
+"Muestra todas las partidas que NO forman parte del filtrado que usted ha "
+"escogido.  Esto es útil para ocultar aquellas partidas que no se interesan "
+"ver."
 
 #: src/multiplayer_lobby.cpp:762
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "Solamente muestra partidas que contengan por lo menos un solo vacante."
 
 #: src/multiplayer_lobby.cpp:766
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
+"Solamente muestra partidas que están siendo jugadas u observadas por lo "
+"menos por uno de tus amigos."
 
 #: src/multiplayer_lobby.cpp:770
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
+"Solamente muestra partidas que contengan el texto introducido en su titulo o "
+"descripción."
 
 #: src/multiplayer_lobby.cpp:903
 msgid "Joining this game requires a password."
@@ -5493,6 +5569,8 @@ msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
+"La partida no está siendo sincronizada correctamente.  No tiene sentido "
+"continuar con la misma.  ¿Desea guardar la partida?"
 
 #: src/play_controller.cpp:1313 src/replay_controller.cpp:221
 #, fuzzy
@@ -5799,13 +5877,15 @@ msgstr "(Atq / def)"
 msgid "Terrain: "
 msgstr "Terreno"
 
+# No está claro a qué se refiere la traducción en inglés.
 #: src/reports.cpp:373
 msgid "maximum^max."
-msgstr ""
+msgstr "máximo"
 
+# No está claro a qué se refiere la traducción en inglés.
 #: src/reports.cpp:373
 msgid "minimum^min."
-msgstr ""
+msgstr "mínimo"
 
 #: src/reports.cpp:378
 #, fuzzy
@@ -5849,7 +5929,7 @@ msgstr "Atacante"
 
 #: src/reports.cpp:468
 msgid "Base attacks: "
-msgstr ""
+msgstr "Ataques básicos:"
 
 #: src/reports.cpp:470
 #, fuzzy
@@ -6173,9 +6253,10 @@ msgstr "caótico"
 msgid "lawful"
 msgstr "legal"
 
+# LIMINAL es una palabra del idioma latín, que hace referencia al crepúsculo (alba u ocaso). No hay traducción al español.  Para singular se utilizará la palabra LIMINAL, sin importar el género de la unidad, en plural se utilizará la palabra LIMINALES.  (AELC)
 #: src/unit_types.cpp:968
 msgid "liminal"
-msgstr ""
+msgstr "liminal"
 
 #: src/unit_types.cpp:968
 msgid "neutral"
@@ -6189,10 +6270,10 @@ msgstr "caótica"
 msgid "female^lawful"
 msgstr "legal"
 
+# LIMINAL es una palabra del idioma latín, que hace referencia al crepúsculo (alba u ocaso). No hay traducción al español.  Para singular se utilizará la palabra LIMINAL, sin importar el género de la unidad, en plural se utilizará la palabra LIMINALES.  (AELC)
 #: src/unit_types.cpp:969
-#, fuzzy
 msgid "female^liminal"
-msgstr "leal"
+msgstr "liminal"
 
 #: src/unit_types.cpp:969
 msgid "female^neutral"
