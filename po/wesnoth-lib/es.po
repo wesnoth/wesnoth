@@ -7,13 +7,14 @@
 # Roberto Romero <sildurin@gmail.com>, 2007.
 # Sergi March <sergi.march@gmail.com>, 2008.
 # Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2008, 2009, 2010.
+# Steven Panek <Majora700@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 11:52+0100\n"
-"PO-Revision-Date: 2010-12-08 14:51-0300\n"
-"Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
+"PO-Revision-Date: 2011-01-19 01:13-0400\n"
+"Last-Translator: PeterPorty <p_llorens@hotmail.com>\n"
 "Language-Team: Spanish <shadowm2006@gmail.com>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -681,9 +682,8 @@ msgstr "Aldea"
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1434
-#, fuzzy
 msgid "Village Overlay"
-msgstr "Capa de castillo"
+msgstr "Capa de aldea"
 
 #. [terrain_type]: id=encampment
 #: data/core/terrain.cfg:1449
@@ -974,39 +974,37 @@ msgstr "Cancelar"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:80
 msgid "Author:"
-msgstr ""
+msgstr "Autor:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:110
-#, fuzzy
 msgid "Version:"
 msgstr "Versión:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:141
 msgid "Size:"
-msgstr ""
+msgstr "Tamaño:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:172
-#, fuzzy
 msgid "Description:"
-msgstr "Descripción de unidad"
+msgstr "Descripción:"
 
 #. [scroll_label]: id=description
 #: data/gui/default/window/addon_description.cfg:186
 msgid "No description available."
-msgstr ""
+msgstr "No hay una descripción disponible."
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:204
 msgid "Translations:"
-msgstr ""
+msgstr "Traddicones:"
 
 #. [scroll_label]: id=translations
 #: data/gui/default/window/addon_description.cfg:218
 msgid "translations^None"
-msgstr ""
+msgstr "Ninguno"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:48
@@ -2573,14 +2571,12 @@ msgid "no"
 msgstr "no"
 
 #: src/game_preferences_display.cpp:1090
-#, fuzzy
 msgid "friend"
-msgstr "Amigos"
+msgstr "amigo"
 
 #: src/game_preferences_display.cpp:1096
-#, fuzzy
 msgid "ignored"
-msgstr "No ignorado"
+msgstr "ignorado"
 
 #: src/game_preferences_display.cpp:1100
 msgid "(empty list)"
@@ -2639,9 +2635,8 @@ msgstr "El rectángulo no cabe en el lienzo."
 
 #: src/gui/auxiliary/canvas.cpp:850 src/gui/auxiliary/canvas.cpp:857
 #: src/gui/auxiliary/canvas.cpp:867 src/gui/auxiliary/canvas.cpp:874
-#, fuzzy
 msgid "Image doesn't fit on canvas."
-msgstr "La línea no cabe en el lienzo."
+msgstr "La imagen no cabe en el lienzo."
 
 #: src/gui/auxiliary/canvas.cpp:1083
 msgid "Text has a font size of 0."
@@ -3506,12 +3501,16 @@ msgid ""
 "The key '$key' is deprecated and support will be removed in version "
 "$removal_version."
 msgstr ""
+"El atributo '$key' está obsoleto y su manutención se quitará en la versión "
+"$removal_version."
 
 #: src/wml_exception.cpp:115
 msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+"El nombre del atributo '$deprecated_key' ha cambiado a '$key'. La "
+"manutención para '$deprecated_key' se quitará en la versión $removal_version."
 
 #~ msgid "Generate name"
 #~ msgstr "Generar nombre"
