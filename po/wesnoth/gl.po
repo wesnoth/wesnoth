@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 13:09+0100\n"
-"PO-Revision-Date: 2011-01-17 18:05+0100\n"
+"PO-Revision-Date: 2011-01-19 13:57+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -2243,8 +2243,8 @@ msgid ""
 "you can get some high-level troops sooner."
 msgstr ""
 "As unidades <i>intelixentes</i> precisan menos puntos de experiencia para "
-"avanzar de nivel. Ao comezar a campaña intenta que estas unidades sexan as "
-"que inflixen o golpe mortal de forma que consigas tropas de alto nivel antes."
+"avanzar de nivel. Ao comezar as campañas intenta que sexan as que inflixan o "
+"golpe mortal para así conseguir tropas de nivel alto canto antes."
 
 #. [tip]
 #: data/hardwired/tips.cfg:13
@@ -2818,9 +2818,9 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
-"En moitos escenarios de campañas podes darlles ordes sinxelas aos teus "
-"aliados (da intelixencia artificial) mediante o menú que aparece ao premer "
-"neles co botón dereito do rato."
+"En moitos escenarios de campañas podes darlles ordes sinxelas aos aliados "
+"(da intelixencia artificial) mediante o menú que aparece ao premer neles co "
+"botón dereito do rato."
 
 #. [tip]
 #: data/hardwired/tips.cfg:200
@@ -3764,9 +3764,10 @@ msgstr "%A ás %H:%M"
 msgid "%b %d"
 msgstr "%d/%m/%y"
 
+# É o título dunha xanela.
 #: src/dialogs.cpp:578
 msgid "No Saved Games"
-msgstr "Non hai partidas gardadas."
+msgstr "Non hai partidas gardadas"
 
 #: src/dialogs.cpp:579
 msgid ""
@@ -3774,9 +3775,9 @@ msgid ""
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
-"Non hai partidas gardadas que cargar.\n"
+"Non hai partidas que cargar.\n"
 "\n"
-"(as partidas gárdanse automaticamente ao completar un escenario)"
+"As partidas gárdanse automaticamente ao completar cada escenario."
 
 #: src/dialogs.cpp:597
 msgid "Date"
@@ -4298,9 +4299,10 @@ msgstr "Non tes unidades dispoñibles para recrutar."
 msgid "Recruit"
 msgstr "Recrutar"
 
+# Mensaxe que aparece encabezando a lista de unidades a recrutar ou reincorporar. 
 #: src/menu_events.cpp:723 src/menu_events.cpp:925
 msgid "Select unit:"
-msgstr "Escoller unidade:"
+msgstr "Escolle unha unidade:"
 
 #: src/menu_events.cpp:770
 msgid "You don’t have enough gold to recruit that unit"
