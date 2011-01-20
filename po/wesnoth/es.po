@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 13:09+0100\n"
-"PO-Revision-Date: 2011-01-18 20:43-0500\n"
-"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
+"PO-Revision-Date: 2011-01-20 14:05-0400\n"
+"Last-Translator: PeterPorty <p_llorens@hotmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -128,7 +128,6 @@ msgstr "Desactiva la notificaciones."
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
-#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
 msgstr "IA RCA"
 
@@ -1919,9 +1918,8 @@ msgstr "Pantano de $name,Marisma de $name,Ciénaga de $name"
 
 #. [language]
 #: data/english.cfg:30
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "$name|bury,$name|ham,$name|ton"
+msgstr "$name|bury,$name|ham,$name|ton,$name|bury"
 
 #. [language]
 #: data/english.cfg:31
@@ -1937,11 +1935,10 @@ msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 
 #. [language]
 #: data/english.cfg:33
-#, fuzzy
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
-msgstr "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
+msgstr "Puente de|$river,Puente|$name,$bridge|ham,$bridge|ton"
 
 #. [language]
 #: data/english.cfg:34
@@ -1976,10 +1973,9 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:39
-#, fuzzy
 msgid ""
 "$road|’s Rest,$road|’s Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
-msgstr "el descanso de $road, el "
+msgstr ""
 
 #. [language]
 #: data/english.cfg:40
@@ -2178,7 +2174,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:105
 #: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:221
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>― Gran Señor Kalenz, 470DW</i>"
+msgstr "<i>― Gran señor Kalenz, 470DW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:32
@@ -2220,14 +2216,14 @@ msgstr "<i>― La communidad de Wesnoth</i>"
 # Todos los consejos del «Compendio de guerra y virtud» van dirigidos a «vos»
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>Liminal</i> unit type fights best during the twilight hours."
 msgstr ""
-"Las unidades legales luchan mejor de día, y las caóticas de noche. Las "
-"neutrales no se ven afectadas por el día o la noche."
+"Las unidades <i>legales</i> mejor de día, y las <i>caóticas</i> de noche. "
+"Las <i>neutrales</i> no se ven afectadas por el día o la noche. Las poco "
+"comunes unidades <i>liminales</i> luchan mejor durante el escrúpulo."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
@@ -2786,7 +2782,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:217 data/hardwired/tips.cfg:229
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr "- Señor Hamel de Knalga"
+msgstr "<i>―Señor Hamel de Knalga</i>"
 
 # No encontré ninguna referencia para la palabra ILLUMINATES en el idioma español dentro de Wesnoth, así que elegí la palabra adecuada en el idioma español para ella, ILUMINAR.  (AELC)
 #. [tip]
@@ -3997,7 +3993,6 @@ msgstr "Un mapa sin cabecera no está soportado"
 msgid "Random maps with an odd width aren't supported."
 msgstr "Mapas aleatorios con un ancho impar no son compatibles."
 
-# Las oraciones en inglés no tienen relación entre ellas.  La traducción al español está bien.  Parecerá confuso y que no tendrá lógica el mensaje.  Recomiendo que se verifique a qué se refiere el texto en inglés para luego poder hacerle las modificaciones necesarias al texto en español. (AELC)
 #: src/mapgen.cpp:1007
 #, fuzzy
 msgid ""
@@ -4843,9 +4838,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "No se puede cambiar el control al bando fuera de límites: «$side»."
 
 #: src/menu_events.cpp:3246
-#, fuzzy
 msgid "Layers"
-msgstr "Jugadores: "
+msgstr "Capas"
 
 #: src/menu_events.cpp:3319
 msgid "Choose Scenario (Debug!)"
@@ -5418,7 +5412,6 @@ msgstr ""
 "Permite el filtrado de partidas.  Si no está seleccionado, todas las "
 "partidas serán mostradas, sin importar que otros filtros se hayan escogido."
 
-# Las dos oraciones, en la traducción en inglés, se contradicen una a la otra.  No hace sentido lo que quiere decir y hace que la traducción al español se dificulte.  (AELC)
 #: src/multiplayer_lobby.cpp:758
 #, fuzzy
 msgid ""
@@ -5883,9 +5876,8 @@ msgid "Base damage: "
 msgstr "Daño total"
 
 #: src/reports.cpp:454
-#, fuzzy
 msgid "Time of day: "
-msgstr "Momento del día"
+msgstr "Tiempo del día:"
 
 #: src/reports.cpp:458
 msgid "Leadership: "
@@ -6169,7 +6161,7 @@ msgstr "Tipo de unidad desconocido «$type|»"
 
 #: src/unit.cpp:2334 src/unit.cpp:2531 src/unit.cpp:2602
 msgid " and "
-msgstr "and"
+msgstr " y"
 
 #: src/unit.cpp:2345
 msgid "$attack_list|: $effect_description"
