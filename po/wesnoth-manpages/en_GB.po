@@ -4,12 +4,13 @@
 #
 # Automatically generated, 2006.
 # PJR <pjr@britishlibrary.net>, 2006.
+# Steven Panek <Majora700@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "POT-Creation-Date: 2011-01-02 12:13+0100\n"
-"PO-Revision-Date: 2009-11-02 10:40-0500\n"
-"Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
+"PO-Revision-Date: 2011-01-19 22:25-0500\n"
+"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British)\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -29,7 +30,7 @@ msgstr "WESNOTH"
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2011"
-msgstr ""
+msgstr "2011"
 
 # type: TH
 #. type: TH
@@ -130,7 +131,7 @@ msgstr "sets BitsPerPixel value. Example: B<--bpp 32>"
 #: ../../doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
-msgstr ""
+msgstr "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
@@ -140,6 +141,10 @@ msgid ""
 "difficulty is 1.  The scenario must be one of the campaign's child "
 "scenarios. The default scenario is campaign's first scenario."
 msgstr ""
+"goes directly to the campaign based on the parameters.  The difficulty is a "
+"number between 1 and current campaign's difficulties number.  The default "
+"difficulty is 1.  The scenario must be one of the campaign's child "
+"scenarios. The default scenario is campaign's first scenario."
 
 # type: TP
 #. type: TP
@@ -151,7 +156,6 @@ msgstr "B<--config-dir>I<\\ name>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:61
-#, fuzzy
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -159,7 +163,9 @@ msgid ""
 "Games\""
 msgstr ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
-"Documents\\eMy Games\" for windows."
+"Documents\\eMy Games\" for windows.  You can also specify an absolute path "
+"for the configuration directory outside the $HOME or \"My Documents\\eMy "
+"Games\""
 
 # type: TP
 #. type: TP
@@ -178,12 +184,12 @@ msgstr "prints the path of the user configuration directory and exits."
 #: ../../doc/man/wesnoth.6:64
 #, no-wrap
 msgid "B<--data-dir E<lt>directoryE<gt>>"
-msgstr ""
+msgstr "B<--data-dir E<lt>directoryE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
 msgid "overrides the data directory with the one specified"
-msgstr ""
+msgstr "overrides the data directory with the one specified"
 
 # type: TP
 #. type: TP
@@ -212,13 +218,12 @@ msgstr "B<-e,\\ --editor>I<\\ file>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:77
-#, fuzzy
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
 msgstr ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
-"to B<-e --load>"
+"to B<-l --load>"
 
 # type: TP
 #. type: TP
@@ -342,9 +347,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:120
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--logdomains\\ [filter]>"
-msgstr "B<--logdomains>"
+msgstr "B<--logdomains\\ [filter]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:125
@@ -352,6 +357,8 @@ msgid ""
 "lists defined log domains (only the ones containing B<filter> if used) and "
 "exits"
 msgstr ""
+"lists defined log domains (only the ones containing B<filter> if used) and "
+"exits"
 
 # type: TP
 #. type: TP
@@ -462,7 +469,7 @@ msgstr "prints the name of the game data directory and exits."
 #: ../../doc/man/wesnoth.6:153
 #, no-wrap
 msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr ""
+msgstr "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:167
@@ -478,12 +485,22 @@ msgid ""
 "campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
 "data/campaign/camp ~/result>"
 msgstr ""
+"preprocesses a specified file/folder. The file(s) will be written in "
+"specified target directory: a plain cfg file and a processed cfg file. If a "
+"folder is specified, it will be preprocessed recursively based on the known "
+"preprocessor rules. The common macroses from the data/core/macros will be "
+"preprocessed before the specified resources.  B<define1,define2,...> - the "
+"extra defines will be added before processing the files. If you want to add "
+"them you must add the '=' character before.  If 'SKIP_CORE' is in the define "
+"list the data/core won't be preprocessed.  Example: B<-p ~/wesnoth/data/"
+"campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
+"data/campaign/camp ~/result>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:167
 #, no-wrap
 msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
-msgstr ""
+msgstr "B<--preprocess-input-macros E<lt>source fileE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:171
@@ -491,12 +508,14 @@ msgid ""
 "used only by the '--preprocess' command.  Specifies a file that contains "
 "[preproc_define]s to be included before preprocessing."
 msgstr ""
+"used only by the '--preprocess' command.  Specifies a file that contains "
+"[preproc_define]s to be included before preprocessing."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:171
 #, no-wrap
 msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
-msgstr ""
+msgstr "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:177
@@ -506,6 +525,10 @@ msgid ""
 "file '_MACROS_.cfg' in the target directory of preprocess's command.  This "
 "switch should be typed before the --preprocess command."
 msgstr ""
+"used only by the '--preprocess' command.  Will output all preprocessed "
+"macros in the target file. If the file is not specified the output will be "
+"file '_MACROS_.cfg' in the target directory of preprocess's command.  This "
+"switch should be typed before the --preprocess command."
 
 # type: TP
 #. type: TP
@@ -811,7 +834,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:268 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
-msgstr ""
+msgstr "EXIT STATUS"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:271
@@ -820,6 +843,9 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
+"fonts, etc) initialisation error. An exit status of 2 indicates an error "
+"with the command line options."
 
 # type: SH
 #. type: SH
@@ -870,12 +896,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:285 ../../doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -899,9 +922,8 @@ msgstr "SEE ALSO"
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:291
-#, fuzzy
 msgid "B<wesnothd>(6)."
-msgstr "wesnothd"
+msgstr "B<wesnothd>(6)."
 
 # type: TH
 #. type: TH
@@ -1769,6 +1791,8 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
+"Normal exit status is 0 when the server was properly shutdown. An exit "
+"status of 2 indicates an error with the command line options."
 
 # type: Plain text
 #. type: Plain text
@@ -1789,30 +1813,5 @@ msgstr ""
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:286
-#, fuzzy
 msgid "B<wesnoth>(6)."
-msgstr "wesnoth"
-
-# type: TH
-#~ msgid "2009"
-#~ msgstr "2009"
-
-# type: TP
-#~ msgid "B<-c, --campaign>"
-#~ msgstr "B<-c, --campaign>"
-
-# type: Plain text
-#~ msgid "goes directly to the campaign selection menu."
-#~ msgstr "goes directly to the campaign selection menu."
-
-# type: Plain text
-#~ msgid "Dumps a list of all log domains and exits."
-#~ msgstr "Dumps a list of all log domains and exits."
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+msgstr "B<wesnoth>(6)."

@@ -2,13 +2,14 @@
 # Peter J Ross <pjr@insurgent.org>, 2006.
 # PJR <pjr@britishlibrary.net>, 2006.
 # Peter J Ross <wesnoth@pjr.britishlibrary.net>, 2007.
+# Steven Panek <Majora700@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 13:09+0100\n"
-"PO-Revision-Date: 2009-11-02 10:07-0500\n"
-"Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
+"PO-Revision-Date: 2011-01-20 18:45-0500\n"
+"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <en@li.org>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -51,14 +52,13 @@ msgstr "Animate Map"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
-#, fuzzy
 msgid "Local time of day light"
-msgstr "Randomise time of day in begin"
+msgstr "Local time of day light"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:48
 msgid "Local time of day light effect (use more memory)."
-msgstr ""
+msgstr "Local time of day light effect (use more memory)."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:55
@@ -111,15 +111,13 @@ msgstr "Lobby sounds"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Disable autosaves."
+msgstr "Disable notifications"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
-#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
-msgstr "Multiplayer"
+msgstr "RCA AI"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -329,9 +327,8 @@ msgstr "Indonesian Translation"
 
 #. [about]
 #: data/core/about.cfg:2044
-#, fuzzy
 msgid "Irish Translation"
-msgstr "Turkish Translation"
+msgstr "Irish Translation"
 
 #. [about]
 #: data/core/about.cfg:2051
@@ -460,13 +457,12 @@ msgstr "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
-#, fuzzy
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on them."
 msgstr ""
-"In many campaign scenarios, you may issue simple instructions for your "
-"computer-controlled allies using the right-click context menu."
+"In this scenario, you may issue instructions to an allied side by right-"
+"clicking on them."
 
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
@@ -521,13 +517,12 @@ msgstr "Focus on defeating..."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:72
-#, fuzzy
 msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 msgstr ""
-"Special: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_special_description"
+"focusing on defeating $ai_controller.side_$ally_side|_current_settings."
+"focus_on_enemy.side_description|."
 
 #. [then]
 #. [else]
@@ -565,13 +560,12 @@ msgstr "Focus on protecting..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:202
-#, fuzzy
 msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
 msgstr ""
-"Special: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_special_description"
+"focusing on protecting $ai_controller.side_$ally_side|_current_settings."
+"protect.side_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:352
@@ -596,7 +590,7 @@ msgstr "focusing on defending the area around $x1|,$y1|."
 #. [print]
 #: data/core/macros/ai_controller.cfg:434
 msgid "Location selection canceled"
-msgstr "Location selection canceled"
+msgstr "Location selection cancelled"
 
 #. [revoke_objective_orders]
 #: data/core/macros/ai_controller.cfg:449
@@ -621,7 +615,6 @@ msgstr "none set."
 
 #. [do]
 #: data/core/macros/ai_controller.cfg:644
-#, fuzzy
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -630,8 +623,8 @@ msgid ""
 msgstr ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
-"Behavior: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"Behaviour: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behavior_description"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:652
@@ -641,7 +634,7 @@ msgstr "Set objective..."
 #. [literal]
 #: data/core/macros/ai_controller.cfg:743
 msgid "Set behavior..."
-msgstr "Set behavior..."
+msgstr "Set behaviour..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:848
@@ -770,13 +763,12 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Poison is seeping through the veins of this unit at this very moment."
 
 #: data/core/macros/items.cfg:262
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
-"Sprinkling this water on melee weapons grants them the 'arcane' damage type "
-"until the end of the current scenario. Should $unit.name use it?"
+"Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
+"type until the end of the current scenario. Should $unit.name use it?"
 
 #: data/core/macros/items.cfg:263
 msgid "I am not suited to the use of this item! Let another take it."
@@ -789,13 +781,12 @@ msgstr "Holy Water"
 
 #. [object]
 #: data/core/macros/items.cfg:268
-#, fuzzy
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr ""
-"This water will make melee weapons have the 'arcane' damage type until the "
-"end of the current scenario."
+"This water will make melee weapons have the <i>arcane</i> damage type until "
+"the end of the current scenario."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:297
@@ -1669,9 +1660,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
-#, fuzzy
 msgid "Turns run out"
-msgstr "Turns: "
+msgstr "Turns run out"
 
 #: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:101
 msgid "Early finish bonus."
@@ -1686,9 +1676,8 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(early finish bonus)</small>"
 
 #: data/core/macros/objective-utils.cfg:25
-#, fuzzy
 msgid "(early finish bonus)"
-msgstr "Early finish bonus."
+msgstr "(early finish bonus)"
 
 #: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:111
 msgid "No gold carried over to the next scenario."
@@ -1723,9 +1712,8 @@ msgid "Alternative objective:"
 msgstr "Alternative objective:"
 
 #: data/core/macros/objective-utils.cfg:52
-#, fuzzy
 msgid "Bonus objective:"
-msgstr "Alternative objective:"
+msgstr "Bonus objective:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -1822,17 +1810,16 @@ msgstr "Nightmare"
 
 #. [language]
 #: data/english.cfg:10
-#, fuzzy
 msgid ""
 "Liminal units fight better during twilight while fighting normally during "
 "day and night.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Lawful units fight better during the day, and worse at night.\n"
+"Liminal units fight better during twilight while fighting normally during "
+"day and night.\n"
 "\n"
-"Day: +25% Damage\n"
-"Night: −25% Damage"
+"Twilight: +25% Damage"
 
 #. [language]
 #: data/english.cfg:15
@@ -1912,7 +1899,7 @@ msgstr "$name|bury,$name|ham,$name|ton,$name|bury"
 #. [language]
 #: data/english.cfg:31
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "$name|harbor,$name|port,$lake|port,$lake|harbor"
+msgstr "$name|harbour,$name|port,$lake|port,$lake|harbour"
 
 #. [language]
 #: data/english.cfg:32
@@ -2035,32 +2022,28 @@ msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
-#, fuzzy
 msgid ""
 "Don’t neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be too weak to survive future battles."
 msgstr ""
 "Don’t neglect to earn your leader experience! You need to keep him safe, but "
-"if you coddle him too much he may be at too low a level to survive future "
-"battles."
+"if you coddle him too much he may be too weak to survive future battles."
 
 #. [tip]
 #: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:137
-#, fuzzy
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "- Great Mage Delfador, 516YW"
+msgstr "<i>― Great Mage Delfador, 516YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:8
-#, fuzzy
 msgid ""
 "In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
 "highlight all the hexes your adversary can move to (assuming your units stay "
 "where they are). Use this to make sure the enemy can’t reach your weak or "
 "injured units on his next turn."
 msgstr ""
-"In the 'Actions' menu, you can select 'Show Enemy Moves' to highlight all "
-"possible hexes your adversary can actually move to (assuming your units stay "
+"In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
+"highlight all the hexes your adversary can move to (assuming your units stay "
 "where they are). Use this to make sure the enemy can’t reach your weak or "
 "injured units on his next turn."
 
@@ -2081,31 +2064,27 @@ msgstr ""
 #: data/hardwired/tips.cfg:197 data/hardwired/tips.cfg:205
 #: data/hardwired/tips.cfg:225 data/hardwired/tips.cfg:234
 #: data/hardwired/tips.cfg:238
-#, fuzzy
 msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "- The Wesnoth Tactical Guide"
+msgstr "<i>― The Wesnoth Tactical Guide</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
-#, fuzzy
 msgid ""
 "Units with the <i>Intelligent</i> trait need fewer experience points to "
 "level up. Early in a campaign, try to give killing blows to these units so "
 "you can get some high-level troops sooner."
 msgstr ""
-"Units with the 'intelligent' trait need fewer experience points to level up. "
-"Early in a campaign, try to give killing blows to these units so you can get "
-"some high-level troops sooner."
+"Units with the <i>Intelligent</i> trait need fewer experience points to "
+"level up. Early in a campaign, try to give killing blows to these units so "
+"you can get some high-level troops sooner."
 
 #. [tip]
 #: data/hardwired/tips.cfg:13
-#, fuzzy
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "- King Konrad, 536YW"
+msgstr "<i>― King Konrad, 536YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
-#, fuzzy
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
 "By placing two units on opposite sides of an enemy, their zones of control "
@@ -2114,68 +2093,65 @@ msgid ""
 msgstr ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
 "By placing two units on opposite sides of an enemy, their zones of control "
-"will restrict it to one hex of movement in any direction."
+"will restrict it to one hex of movement in any direction. Unfortunately, you "
+"must completely surround skirmishers to immobilise them."
 
 #. [tip]
 #: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:129
-#, fuzzy
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "- Memoirs of Gweddry, 627YW"
+msgstr "<i>― Memoirs of Gweddry, 627YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:20
-#, fuzzy
 msgid ""
 "You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
 "clicking on a castle tile. That will let you choose the precise hex you put "
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
-"You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
-"castle tile. That will let you choose which hex you put a new unit in. "
-"Placing units wisely can sometimes let you reach a village a turn earlier."
+"You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
+"clicking on a castle tile. That will let you choose the precise hex you put "
+"a unit in. Placing units wisely can sometimes let you reach a village a turn "
+"earlier."
 
 #. [tip]
 #: data/hardwired/tips.cfg:24
-#, fuzzy
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
 "<b>Status Table</b> will let you know how your enemies are doing, and how "
 "you are doing in comparison."
 msgstr ""
 "There are some helpful summary screens in the main menu: for instance, the "
-"'Status Table' will let you know how your enemies are doing, and how you are "
-"doing in comparison."
+"<b>Status Table</b> will let you know how your enemies are doing, and how "
+"you are doing in comparison."
 
 #. [tip]
 #: data/hardwired/tips.cfg:28
-#, fuzzy
 msgid ""
 "Units with the <i>Quick</i> trait get an extra movement point per turn. This "
 "can be very important when moving through difficult terrain such as water or "
 "caves. It can make the difference between being able to move one hex or two."
 msgstr ""
-"Units with the 'quick' trait move one extra hex per turn. This can be very "
-"important when moving through difficult terrain such as water or caves. It "
-"can make the difference between being able to move one hex or two."
+"Units with the <i>Quick</i> trait get an extra movement point per turn. This "
+"can be very important when moving through difficult terrain such as water or "
+"caves. It can make the difference between being able to move one hex or two."
 
 #. [tip]
 #: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:105
 #: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:221
-#, fuzzy
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "- High Lord Kalenz, 470YW"
+msgstr "<i>― High Lord Kalenz, 470YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:32
-#, fuzzy
 msgid ""
 "After you have played a few scenarios, read the <b>Gameplay</b> section in "
 "the <b>Help</b> screen carefully. Details become important as scenarios get "
 "harder!"
 msgstr ""
-"After you have played a few scenarios, read the 'Gameplay' section in the "
-"help screen carefully. Details become important as scenarios get harder!"
+"After you have played a few scenarios, read the <b>Gameplay</b> section in "
+"the <b>Help</b> screen carefully. Details become important as scenarios get "
+"harder!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:36
@@ -2199,27 +2175,26 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:41
-#, fuzzy
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "- The Wesnoth Community"
+msgstr "<i>― The Wesnoth Community</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>Liminal</i> unit type fights best during the twilight hours."
 msgstr ""
-"Lawful units fight better by day, and chaotic units fight better at night. "
-"Neutral units are unaffected by the time of day."
+"<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
+"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
+"rare <i>Liminal</i> unit type fights best during the twilight hours."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
-#, fuzzy
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr "- Royal Compendium of Battle Terminology - Volume II, 212YW"
+msgstr ""
+"<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:48
@@ -2232,27 +2207,24 @@ msgstr ""
 #: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:73
 #: data/hardwired/tips.cfg:125 data/hardwired/tips.cfg:133
 #: data/hardwired/tips.cfg:213
-#, fuzzy
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
+msgstr "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
-#, fuzzy
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
-"what you’re facing. In this case, long-range scouting units are worth their "
-"cost. Try to choose scouts that can easily move across the surrounding "
-"terrain, because units see as far as they can move in one turn."
+"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
+"know what you’re facing. In this case, long-range scouting units are worth "
+"their cost. Try to choose scouts that can easily move across the surrounding "
+"terrain, because units can only see as far as they can move in one turn."
 
 #. [tip]
 #: data/hardwired/tips.cfg:56
-#, fuzzy
 msgid ""
 "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
 "<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
@@ -2260,28 +2232,27 @@ msgid ""
 "Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
-"There are six types of attacks: pierce, blade, impact, fire, cold, and "
-"arcane. Different units have weaknesses against different types of attacks. "
-"Right-click on a unit and select 'Unit Description' to see which attacks it "
-"is resistant to, and which will affect it the most."
+"There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
+"<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
+"against different types of attacks. Right-click on a unit and select <b>Unit "
+"Description</b> to see which attacks it is resistant to, and which will "
+"affect it the most."
 
 #. [tip]
 #: data/hardwired/tips.cfg:60
-#, fuzzy
 msgid ""
 "The terrain occupied by your units is the main factor determining the chance "
 "that they will be hit. The defensive rating for the currently selected unit "
 "in the currently selected terrain is displayed in the top right corner of "
 "the screen."
 msgstr ""
-"The terrain your units are occupying determines the chance your opponents "
-"have of hitting them in battle. The defensive rating for the currently "
-"selected unit in the currently selected terrain is displayed in the top "
-"right corner of the screen."
+"The terrain occupied by your units is the main factor determining the chance "
+"that they will be hit. The defensive rating for the currently selected unit "
+"in the currently selected terrain is displayed in the top right corner of "
+"the screen."
 
 #. [tip]
 #: data/hardwired/tips.cfg:64
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
@@ -2290,26 +2261,24 @@ msgid ""
 "a village or next to a unit with the <i>Cures</i> ability."
 msgstr ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
-"from death. They will remain at death’s door until the poison is removed. "
-"Healers can prevent a poisoned unit from deteriorating, but the poison will "
-"not be removed unless the unit regenerates, or begins a turn in a village or "
-"next to a unit with the 'Cures' ability."
+"from dying. They will then remain at death’s door until the poison is "
+"removed. Healers can prevent a poisoned unit from deteriorating, but the "
+"poison will not be removed unless the unit regenerates, or begins a turn in "
+"a village or next to a unit with the <i>Cures</i> ability."
 
 #. [tip]
 #: data/hardwired/tips.cfg:68
-#, fuzzy
 msgid ""
 "You can reuse units from a previous scenario by selecting <b>Recall</b> from "
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
-"You can use units from a previous scenario by selecting 'Recall' in the "
-"'Actions' menu. By recalling the same units over and over, you can build up "
-"a powerful and experienced army."
+"You can reuse units from a previous scenario by selecting <b>Recall</b> from "
+"the <b>Actions</b> menu. By recalling the same units over and over, you can "
+"build up a powerful and experienced army."
 
 #. [tip]
 #: data/hardwired/tips.cfg:72
-#, fuzzy
 msgid ""
 "Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
 "around them. If a unit moves into an enemy’s zone of control, it may not "
@@ -2317,15 +2286,14 @@ msgid ""
 "between them and still create a barrier to the enemy. Beware, though: "
 "skirmishers can pass through these gaps."
 msgstr ""
-"Units of level one and higher have a 'Zone of Control' in each of the hexes "
-"next to them. If a unit moves into an enemy’s zone of control, it may not "
+"Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
+"around them. If a unit moves into an enemy’s zone of control, it may not "
 "move any further that turn. This means that units can have two empty hexes "
-"between them and still create a barrier to the enemy. However, skirmishers "
-"are skilled enough to ignore these zones."
+"between them and still create a barrier to the enemy. Beware, though: "
+"skirmishers can pass through these gaps."
 
 #. [tip]
 #: data/hardwired/tips.cfg:76
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -2335,14 +2303,14 @@ msgid ""
 msgstr ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
-"always have a 70% chance to hit, and units with the 'marksman' ability will "
-"always have at least 60% chance to hit when attacking on their turn."
+"always have a 70% chance to hit, and units with the <i>Marksman</i> ability "
+"are guaranteed at least a 60% chance of a hit when they attack on their own "
+"turn."
 
 #. [tip]
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
+msgstr "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
@@ -2366,16 +2334,16 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:88
-#, fuzzy
 msgid ""
 "On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
 "units’ sightlines are limited by their maximum movement. If you have some "
 "valuable but slow units, keep at least one fast unit with them so that you "
 "are not caught out by a surprise attack."
 msgstr ""
-"On maps where 'Shroud' or 'Fog of War' has been enabled, a unit’s sightlines "
-"are limited by its maximum movement. Remember this when deciding what unit "
-"is best to scout specific types of terrain."
+"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
+"units’ sightlines are limited by their maximum movement. If you have some "
+"valuable but slow units, keep at least one fast unit with them so that you "
+"are not caught out by a surprise attack."
 
 #. [tip]
 #: data/hardwired/tips.cfg:92
@@ -2390,9 +2358,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:173
-#, fuzzy
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "- Sir Kaylan, 498YW"
+msgstr "<i>― Sir Kaylan, 498YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:96
@@ -2407,9 +2374,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:97
-#, fuzzy
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "- Sir Kaylan, 502YW"
+msgstr "<i>― Sir Kaylan, 502YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:100
@@ -2460,13 +2426,11 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:117
-#, fuzzy
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "- Meneldur, 123YW"
+msgstr "<i>― Meneldur, 123YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:120
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns "
@@ -2474,23 +2438,22 @@ msgid ""
 "villages and waiting for the turns to run out."
 msgstr ""
 "In most campaigns you will receive a gold bonus for finishing early, "
-"depending on the number of villages on the map and the number of turns you "
-"finish early. You will always earn more gold this way than through capturing "
-"villages and waiting for turns to run out."
+"depending on the number of villages on the map and the number of turns "
+"remaining. You will usually earn more gold this way than through capturing "
+"villages and waiting for the turns to run out."
 
 #. [tip]
 #: data/hardwired/tips.cfg:124
-#, fuzzy
 msgid ""
 "<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
 "not just the keep they start on. Sometimes your allies may be willing to "
 "make room for you on their keep so you can recruit from there, and you can "
 "even capture an enemy’s keep and use that."
 msgstr ""
-"Your leader can recruit or recall units from any keep inside a castle, not "
-"just the keep they start on. You can capture a keep from an enemy and "
-"recruit from there. Also, some of your allies may be willing to make room "
-"for you on their keep so you can recruit there."
+"<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
+"not just the keep they start on. Sometimes your allies may be willing to "
+"make room for you on their keep so you can recruit from there, and you can "
+"even capture an enemy’s keep and use that."
 
 #. [tip]
 #: data/hardwired/tips.cfg:128
@@ -2503,14 +2466,14 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:132
-#, fuzzy
 msgid ""
 "Units with the <i>Leadership</i> ability help lower-level adjacent units on "
 "the same side fight better. You can move these units slowly along your "
 "battle lines and give bonuses to large numbers of lower-level troops."
 msgstr ""
-"Units with the 'leadership' ability help lower-level adjacent units on the "
-"same side fight better. Use leaders to help your other units level up faster."
+"Units with the <i>Leadership</i> ability help lower-level adjacent units on "
+"the same side fight better. You can move these units slowly along your "
+"battle lines and give bonuses to large numbers of lower-level troops."
 
 #. [tip]
 #: data/hardwired/tips.cfg:136
@@ -2525,31 +2488,27 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:140
-#, fuzzy
 msgid "Use lines of troops to screen your injured units while they recover."
-msgstr "Use lines of units to screen injured units to let them recover."
+msgstr "Use lines of troops to screen your injured units while they recover."
 
 #. [tip]
 #: data/hardwired/tips.cfg:141
-#, fuzzy
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "- Princess Li'sar, 515YW"
+msgstr "<i>― Princess Li’sar, 515YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:144
-#, fuzzy
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-msgstr "Read the hotkeys list in the preferences menu."
+msgstr "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:148
-#, fuzzy
 msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing <b>u</b>."
 msgstr ""
 "If you move a unit, but don’t attack or discover any additional information, "
-"you can undo your move by pressing 'u'."
+"you can undo your move by pressing <b>u</b>."
 
 #. [tip]
 #: data/hardwired/tips.cfg:152
@@ -2571,31 +2530,27 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:157 data/hardwired/tips.cfg:201
-#, fuzzy
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "- The Scroll of Chantal, 516YW"
+msgstr "<i>― The Scroll of Chantal, 516YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
-#, fuzzy
 msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
 msgstr ""
-"The 'slow' attack ability makes enemy units move slower and halves the "
-"damage they do on all attacks until they end a turn."
+"The <i>Slow</i> attack makes enemy units move slower and halves the damage "
+"they do on all attacks until they end a turn."
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
-#, fuzzy
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "Arcane attacks are very powerful against undead."
+msgstr "<i>Arcane</i> attacks are very powerful against undead."
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
-#, fuzzy
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "- Great Sage Dacyn, 626YW"
+msgstr "<i>― Great Sage Dacyn, 626YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:168
@@ -2617,7 +2572,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:176
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an <i>After Maximum Level "
 "Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
@@ -2625,22 +2579,22 @@ msgid ""
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
-"Instead of leveling up, high-level units gain an 'After Maximum Level "
-"Advancement' (AMLA), which usually increases the unit’s maximum hitpoints by "
-"three and full-heals them. This is much less than the normal benefits gained "
-"from advancing a level, so it is generally more useful to try to advance "
-"your lower-level units instead."
+"Instead of levelling up, high-level units gain an <i>After Maximum Level "
+"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
+"hitpoints by three and fully heals it. This is much less than the normal "
+"benefits of advancing a level, so it is generally wiser to advance your "
+"lower-level units instead."
 
 #. [tip]
 #: data/hardwired/tips.cfg:180
-#, fuzzy
 msgid ""
 "Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
 "mouse pointer over any button or icon to get a description or explanation of "
 "what it does."
 msgstr ""
-"Nearly every icon and word in Wesnoth’s playing screen has a tooltip. Place "
-"your mouse pointer over one for an explanation or description."
+"Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
+"mouse pointer over any button or icon to get a description or explanation of "
+"what it does."
 
 #. [tip]
 #: data/hardwired/tips.cfg:184
@@ -2655,9 +2609,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:185
-#, fuzzy
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "- Queen Li'sar, 528YW"
+msgstr "<i>― Queen Li’sar, 528YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
@@ -2675,7 +2628,7 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
-"Few units have good defenses in water; a line of attackers along the edge of "
+"Few units have good defences in water; a line of attackers along the edge of "
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 
@@ -2698,6 +2651,12 @@ msgid ""
 "to escape; slow enemies are almost immobilized, and your own units suffer "
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
+"The <i>Slow</i> ability is extremely powerful because it has such wide-"
+"ranging effects. Enemy undead get half the normal benefit from their "
+"<i>Drain</i> ability, the damage bonus from <i>Charge</i> or <i>Backstab</i> "
+"is cancelled, and the <i>Berserk</i> ability is weakened. Fast foes struggle "
+"to escape; slow enemies are almost immobilised, and your own units suffer "
+"less retaliation damage, so it’s quicker to heal them."
 
 #. [tip]
 #: data/hardwired/tips.cfg:204
@@ -2707,6 +2666,10 @@ msgid ""
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
+"Try to operate units with a small number of powerful attacks—such as Dark "
+"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
+"This gives you another try whenever your first devastating attack misses — "
+"as inevitably happens from time to time."
 
 #. [tip]
 #: data/hardwired/tips.cfg:208
@@ -2716,6 +2679,10 @@ msgid ""
 "leadership—or a strong or dextrous unit—whenever the extra point or two of "
 "damage makes a one-hit kill possible."
 msgstr ""
+"Units with three or more attacks—especially magical attacks—are ideal for "
+"finishing off enemies with only a few hitpoints remaining. Be sure to use "
+"leadership—or a strong or dextrous unit—whenever the extra point or two of "
+"damage makes a one-hit kill possible."
 
 #. [tip]
 #: data/hardwired/tips.cfg:212
@@ -2724,6 +2691,9 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
+"Think twice before dismissing any unit from your recall list, no matter how "
+"little experience it has. Sometimes it’s worth paying a premium to know "
+"exactly what traits a new arrival will have."
 
 #. [tip]
 #: data/hardwired/tips.cfg:216
@@ -2732,11 +2702,14 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
+"When a tough unit is heavily injured, send it to heal in a village several "
+"turns’ movement away from the fighting. Then it can recover in peace (at 10 "
+"hitpoints per turn) without tying up front-line villages."
 
 #. [tip]
 #: data/hardwired/tips.cfg:217 data/hardwired/tips.cfg:229
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
+msgstr "<i>― Lord Hamel of Knalga</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:220
@@ -2745,6 +2718,9 @@ msgid ""
 "work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
+"Combining multiple special abilities can be deadly. While it may take some "
+"work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
+"<i>Charge</i> against a slowed opponent, the results can be impressive."
 
 #. [tip]
 #: data/hardwired/tips.cfg:224
@@ -2754,6 +2730,10 @@ msgid ""
 "your units extra experience. When deciding whether or not to finish a "
 "scenario early, weigh these factors against one another."
 msgstr ""
+"While finishing early gives a gold bonus, and reduces the opportunities for "
+"enemies to kill your valuable troops, it also means you lose chances to earn "
+"your units extra experience. When deciding whether or not to finish a "
+"scenario early, weigh these factors against one another."
 
 #. [tip]
 #: data/hardwired/tips.cfg:228
@@ -2764,18 +2744,22 @@ msgid ""
 "average. Plan for heavy losses, and take firm control of any hex where the "
 "land does favor you."
 msgstr ""
+"If your forces have weak defences everywhere on the map, occupy the areas "
+"where your enemies can only attack you by sharing the same disadvantages. "
+"Avoid places where your defences are poor and your enemy’s are merely "
+"average. Plan for heavy losses, and take firm control of any hex where the "
+"land does favor you."
 
 #. [tip]
 #: data/hardwired/tips.cfg:233
-#, fuzzy
 msgid ""
 "You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
-"You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
-"Shroud Updates' option on when you need to move units while retaining the "
-"ability to undo."
+"You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
+"the <b>Delay Shroud Updates</b> option when you need to move units while "
+"retaining the ability to undo, or use the new Whiteboard planning tool."
 
 #. [tip]
 #: data/hardwired/tips.cfg:237
@@ -2784,6 +2768,9 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
+"<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
+"if they occupy a village hex, they do not gain any defensive benefits from "
+"the village, although they will still be healed."
 
 #: data/lua/wml-tags.lua:707 src/actions.cpp:1275
 msgid "female^poisoned"
@@ -2798,14 +2785,12 @@ msgid "petrified"
 msgstr "petrified"
 
 #: data/lua/wml-tags.lua:710
-#, fuzzy
 msgid "female^unhealable"
-msgstr "undead"
+msgstr "unhealable"
 
 #: data/lua/wml-tags.lua:710
-#, fuzzy
 msgid "unhealable"
-msgstr "Unwalkable"
+msgstr "unhealable"
 
 #: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1609
 msgid "Victory:"
@@ -2817,24 +2802,23 @@ msgstr "Defeat:"
 
 #: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
-msgstr ""
+msgstr "Gold carryover:"
 
 #: data/lua/wml/objectives.lua:53
 msgid "Notes:"
-msgstr ""
+msgstr "Notes:"
 
 #: data/lua/wml/objectives.lua:69
 msgid "(%d turns left)"
-msgstr ""
+msgstr "(%d turns left)"
 
 #: data/lua/wml/objectives.lua:71
 msgid "(this turn left)"
-msgstr ""
+msgstr "(this turn left)"
 
 #: data/lua/wml/objectives.lua:113
-#, fuzzy
 msgid "%d%% of gold carried over to the next scenario."
-msgstr "No gold carried over to the next scenario."
+msgstr "%d%% of gold carried over to the next scenario."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
@@ -2854,13 +2838,12 @@ msgstr "Cancel"
 #. [language]
 #: data/scenario-test.cfg:2971
 msgid "very long"
-msgstr ""
+msgstr "very long"
 
 #. [language]
 #: data/scenario-test.cfg:2972
-#, fuzzy
 msgid "electrical"
-msgstr "mechanical"
+msgstr "electrical"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:139
@@ -3223,9 +3206,8 @@ msgid "Type"
 msgstr "Type"
 
 #: src/addon/manager.cpp:799
-#, fuzzy
 msgid "Install dependencies"
-msgstr "Dependencies"
+msgstr "Install dependencies"
 
 #: src/addon/manager.cpp:800
 msgid ""
@@ -3234,21 +3216,26 @@ msgid_plural ""
 "The selected add-on has the following dependencies. Do you want to install "
 "them?"
 msgstr[0] ""
+"The selected add-on has the following dependency. Do you want to install it?"
 msgstr[1] ""
+"The selected add-on has the following dependencies. Do you want to install "
+"them?"
 
 #: src/addon/manager.cpp:829
 msgid "Installation of a dependency failed"
-msgstr ""
+msgstr "Installation of a dependency failed"
 
 #: src/addon/manager.cpp:831
 msgid ""
 "While the add-on has been installed, a dependency is missing. Try to update "
 "the installed add-ons."
 msgstr ""
+"While the add-on has been installed, a dependency is missing. Try to update "
+"the installed add-ons."
 
 #: src/addon/manager.cpp:845
 msgid "Installation failed"
-msgstr ""
+msgstr "Installation failed"
 
 #: src/addon/manager.cpp:847 src/addon/manager.cpp:1075
 msgid "The following add-on could not be downloaded or updated successfully:"
@@ -3294,9 +3281,8 @@ msgid "Old version"
 msgstr "Old version"
 
 #: src/addon/manager.cpp:987
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Update Add-ons"
+msgstr "Update add-ons"
 
 #: src/addon/manager.cpp:988
 msgid "Select an add-on to update:"
@@ -3309,7 +3295,7 @@ msgstr "Update all"
 #: src/addon/manager.cpp:1040 src/addon/manager.cpp:1057
 #: src/addon/manager.cpp:1322
 msgid "Installation of some dependency failed"
-msgstr ""
+msgstr "Installation of some dependency failed"
 
 #: src/addon/manager.cpp:1042 src/addon/manager.cpp:1059
 #: src/addon/manager.cpp:1324
@@ -3317,6 +3303,8 @@ msgid ""
 "While the add-on has been installed, some dependency is missing. Try to "
 "update the installed add-ons."
 msgstr ""
+"While the add-on has been installed, some dependency is missing. Try to "
+"update the installed add-ons."
 
 #: src/addon/manager.cpp:1073
 msgid "Update failed"
@@ -3375,13 +3363,12 @@ msgid "Choose the add-on to download."
 msgstr "Choose the add-on to download."
 
 #: src/addon/manager.cpp:1272
-#, fuzzy
 msgid "Download"
-msgstr "Downloads"
+msgstr "Download"
 
 #: src/addon/manager.cpp:1273
 msgid "Done"
-msgstr ""
+msgstr "Done"
 
 #: src/addon/manager.cpp:1285 src/dialogs.cpp:622 src/menu_events.cpp:930
 #: src/menu_events.cpp:1541
@@ -3421,9 +3408,8 @@ msgid "Uninstall add-ons"
 msgstr "Uninstall add-on"
 
 #: src/addon/manager.cpp:1372
-#, fuzzy
 msgid "Remove"
-msgstr "moves"
+msgstr "Remove"
 
 #: src/addon/manager.cpp:1379
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -3645,9 +3631,8 @@ msgid "File I/O Error while reading the game"
 msgstr "File I/O Error while reading the game"
 
 #: src/game.cpp:1005
-#, fuzzy
 msgid "File I/O Error while reading the game: '"
-msgstr "File I/O Error while reading the game"
+msgstr "File I/O Error while reading the game: '"
 
 #: src/game.cpp:1103
 msgid "No campaigns are available.\n"
@@ -3839,44 +3824,36 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:222
-#, fuzzy
 msgid "Initializing user interface"
-msgstr "Initializing teams"
+msgstr "Initialising user interface"
 
 #: src/loadscreen.cpp:223
-#, fuzzy
 msgid "Loading game configuration"
-msgstr "Loading game configuration."
+msgstr "Loading game configuration"
 
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Verifying cache..."
+msgstr "Verifying cache"
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
-#, fuzzy
 msgid "Reading files and creating cache"
-msgstr "Reading files and creating cache..."
+msgstr "Reading files and creating cache"
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
-#, fuzzy
 msgid "Reading unit files"
-msgstr "Reading unit files..."
+msgstr "Reading unit files"
 
 #: src/loadscreen.cpp:227
-#, fuzzy
 msgid "Re-initialize fonts for the current language"
-msgstr "Re-initialise fonts for the current language."
+msgstr "Re-initialise fonts for the current language"
 
 #: src/loadscreen.cpp:228
-#, fuzzy
 msgid "Searching for installed add-ons"
-msgstr "Searching for installed add-ons."
+msgstr "Searching for installed add-ons"
 
 #: src/loadscreen.cpp:229
-#, fuzzy
 msgid "Loading title screen"
-msgstr "Loading title screen."
+msgstr "Loading title screen"
 
 #: src/loadscreen.cpp:230
 msgid "Loading data files"
@@ -3900,7 +3877,7 @@ msgstr "Initializing display"
 
 #: src/loadscreen.cpp:238
 msgid "Building terrain rules"
-msgstr ""
+msgstr "Building terrain rules"
 
 #: src/loadscreen.cpp:240
 msgid "Starting game"
@@ -3919,6 +3896,8 @@ msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
 msgstr ""
+"No valid castle location found. Too many or too few mountain hexes? (please "
+"check the 'max hill size' parameter)"
 
 #: src/menu_events.cpp:96 src/menu_events.cpp:99 src/menu_events.cpp:103
 msgid "Do you really want to dismiss him?"
@@ -4152,10 +4131,10 @@ msgstr ""
 "You have not started your turn yet. Do you really want to end your turn?"
 
 #: src/menu_events.cpp:1376
-#, fuzzy
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
-msgstr "Some units have movement left. Do you really want to end your turn?"
+msgstr ""
+"Some units have planned actions left. Do you really want to end your turn?"
 
 #: src/menu_events.cpp:1384 src/menu_events.cpp:1389
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -4190,6 +4169,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"Unknown command '$command', try $help_command for a list of available "
+"commands."
 
 #: src/menu_events.cpp:2027
 msgid ""
@@ -4201,53 +4182,51 @@ msgstr ""
 
 #: src/menu_events.cpp:2029
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "[all|<command>]"
 
 #: src/menu_events.cpp:2073
-#, fuzzy
 msgid "Error:"
-msgstr "Error: "
+msgstr "Error:"
 
 #: src/menu_events.cpp:2079
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "Missing argument $arg_id"
 
 #: src/menu_events.cpp:2127
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"Available commands $flags_description:\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2127 src/menu_events.cpp:2128 src/menu_events.cpp:2151
-#, fuzzy
 msgid "help"
-msgstr "Help"
+msgstr "help"
 
 #: src/menu_events.cpp:2128
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "Type $help_command <command> for more info."
 
 #: src/menu_events.cpp:2139
 msgid " No help available."
 msgstr " No help available."
 
 #: src/menu_events.cpp:2144
-#, fuzzy
 msgid "Usage:"
-msgstr "Message:"
+msgstr "Usage:"
 
 #: src/menu_events.cpp:2149
 msgid "aliases:"
-msgstr ""
+msgstr "aliases:"
 
 #: src/menu_events.cpp:2270
 msgid "(A) - admin command"
-msgstr ""
+msgstr "(A) - admin command"
 
 #: src/menu_events.cpp:2277 src/menu_events.cpp:2480
-#, fuzzy
 msgid "(admin only)"
-msgstr "Team only"
+msgstr "(admin only)"
 
 #: src/menu_events.cpp:2297
 msgid ""
@@ -4269,7 +4248,7 @@ msgstr ""
 #: src/menu_events.cpp:2309 src/menu_events.cpp:2311 src/menu_events.cpp:2336
 #: src/menu_events.cpp:2338 src/menu_events.cpp:2340 src/menu_events.cpp:2354
 msgid "<nick>"
-msgstr ""
+msgstr "<nick>"
 
 #: src/menu_events.cpp:2304
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -4296,9 +4275,8 @@ msgid "Send a message to the server admins currently online"
 msgstr "Send a message to the server admins currently online"
 
 #: src/menu_events.cpp:2325
-#, fuzzy
 msgid "<message>"
-msgstr "Message:"
+msgstr "<message>"
 
 #: src/menu_events.cpp:2325
 msgid "Send an emotion or personal action in chat."
@@ -4314,11 +4292,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2330
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<nick> <message>"
 
 #: src/menu_events.cpp:2334
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<level> <domain>"
 
 #: src/menu_events.cpp:2334
 msgid "Change the log level of a log domain."
@@ -4346,7 +4324,7 @@ msgstr "Display version information."
 
 #: src/menu_events.cpp:2347
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<password> <email (optional)>"
 
 #: src/menu_events.cpp:2347
 msgid "Register your nick"
@@ -4362,7 +4340,7 @@ msgstr "Update details for your nick. For possible details see '/details'"
 
 #: src/menu_events.cpp:2352
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<detail> <value>"
 
 #: src/menu_events.cpp:2354
 msgid "Request information about a nick."
@@ -4374,7 +4352,7 @@ msgstr "Request a list of details you can set for your registered nick."
 
 #: src/menu_events.cpp:2358 src/menu_events.cpp:2361 src/menu_events.cpp:2363
 msgid "<room>"
-msgstr ""
+msgstr "<room>"
 
 #: src/menu_events.cpp:2358
 msgid "Join a room."
@@ -4394,7 +4372,7 @@ msgstr "List available rooms."
 
 #: src/menu_events.cpp:2367
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<room> <msg>"
 
 #: src/menu_events.cpp:2367
 msgid "Room message."
@@ -4402,7 +4380,7 @@ msgstr "Room message."
 
 #: src/menu_events.cpp:2369
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "<room> <type> [value]"
 
 #: src/menu_events.cpp:2369
 msgid "Room query."
@@ -4410,17 +4388,15 @@ msgstr "Room query."
 
 #: src/menu_events.cpp:2472
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
-msgstr ""
+msgstr "(D) - debug only, (N) - network only, (A) - admin only"
 
 #: src/menu_events.cpp:2478
-#, fuzzy
 msgid "(debug command)"
-msgstr "Debug mode commands"
+msgstr "(debug command)"
 
 #: src/menu_events.cpp:2479
-#, fuzzy
 msgid "(network only)"
-msgstr "Network Player"
+msgstr "(network only)"
 
 #: src/menu_events.cpp:2504
 msgid "Refresh gui."
@@ -4432,11 +4408,11 @@ msgstr "Switch a side to/from AI control."
 
 #: src/menu_events.cpp:2506
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "[<side> [on/off]]"
 
 #: src/menu_events.cpp:2509
 msgid "<side> <nick>"
-msgstr ""
+msgstr "<side> <nick>"
 
 #: src/menu_events.cpp:2509
 msgid "Assign control of a side to a different player or observer."
@@ -4452,16 +4428,15 @@ msgstr "Visualise the screen refresh procedure."
 
 #: src/menu_events.cpp:2515
 msgid "Debug foreground terrain."
-msgstr ""
+msgstr "Debug foreground terrain."
 
 #: src/menu_events.cpp:2517
 msgid "Debug layers from terrain under the mouse."
-msgstr ""
+msgstr "Debug layers from terrain under the mouse."
 
 #: src/menu_events.cpp:2518
-#, fuzzy
 msgid "Show fps."
-msgstr "Show replay"
+msgstr "Show fps."
 
 #: src/menu_events.cpp:2520
 msgid "Save game."
@@ -4485,7 +4460,7 @@ msgstr "Disable autosaves."
 
 #: src/menu_events.cpp:2533
 msgid "<id>"
-msgstr ""
+msgstr "<id>"
 
 #: src/menu_events.cpp:2533
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -4500,20 +4475,24 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
+"Change turn number (and time of day), or increase by one if no number is "
+"specified."
 
 #: src/menu_events.cpp:2539
 msgid "[turn]"
-msgstr ""
+msgstr "[turn]"
 
 #: src/menu_events.cpp:2541
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
+"Change turn limit, or turn the turn limit off if no number is specified or "
+"it’s −1."
 
 #: src/menu_events.cpp:2541
 msgid "[limit]"
-msgstr ""
+msgstr "[limit]"
 
 #: src/menu_events.cpp:2543
 msgid "Turn debug mode on."
@@ -4525,7 +4504,7 @@ msgstr "Turn debug mode off."
 
 #: src/menu_events.cpp:2547 src/menu_events.cpp:2551
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<command>[;<command>...]"
 
 #: src/menu_events.cpp:2547
 msgid "Execute a Lua statement."
@@ -4533,7 +4512,7 @@ msgstr "Execute a Lua statement."
 
 #: src/menu_events.cpp:2549
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Grant higher privileges to Lua scripts."
 
 #: src/menu_events.cpp:2551
 msgid "Set the command used by the custom command hotkey"
@@ -4545,11 +4524,11 @@ msgstr "Launch the gamestate inspector"
 
 #: src/menu_events.cpp:2555
 msgid "Manage persistence data"
-msgstr ""
+msgstr "Manage persistence data"
 
 #: src/menu_events.cpp:2557
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<name>[=<command>]"
 
 #: src/menu_events.cpp:2557
 msgid "Set or show alias to a command"
@@ -4557,7 +4536,7 @@ msgstr "Set or show alias to a command"
 
 #: src/menu_events.cpp:2559
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<var>=<value>"
 
 #: src/menu_events.cpp:2559
 msgid "Set a scenario variable."
@@ -4565,7 +4544,7 @@ msgstr "Set a scenario variable."
 
 #: src/menu_events.cpp:2561
 msgid "<var>"
-msgstr ""
+msgstr "<var>"
 
 #: src/menu_events.cpp:2561
 msgid "Show a scenario variable."
@@ -4580,9 +4559,8 @@ msgid "Discover all units in help."
 msgstr "Discover all units in help."
 
 #: src/menu_events.cpp:2572
-#, fuzzy
 msgid "'Undiscover' all units in help."
-msgstr "Discover all units in help."
+msgstr "'Undiscover' all units in help."
 
 #: src/menu_events.cpp:2574
 msgid "Create a unit."
@@ -4614,7 +4592,7 @@ msgstr "Toggle overlaying of terrain codes on hexes."
 
 #: src/menu_events.cpp:2591
 msgid "Toggle planning mode."
-msgstr ""
+msgstr "Toggle planning mode."
 
 #: src/menu_events.cpp:2634
 msgid "Unknown debug level: '$level'."
@@ -4634,11 +4612,11 @@ msgstr "Switched domain: '$domain' to level: '$level'."
 
 #: src/menu_events.cpp:2723
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "whisper to $receiver"
 
 #: src/menu_events.cpp:2730
 msgid "whisper: $sender"
-msgstr ""
+msgstr "whisper: $sender"
 
 #: src/menu_events.cpp:2826 src/menu_events.cpp:2845
 #: src/multiplayer_connect.cpp:671
@@ -4646,74 +4624,65 @@ msgid "(empty)"
 msgstr "(empty)"
 
 #: src/menu_events.cpp:2826 src/menu_events.cpp:2832 src/menu_events.cpp:2882
-#, fuzzy
 msgid "ignores list"
-msgstr "On ignores list"
+msgstr "ignores list"
 
 #: src/menu_events.cpp:2832
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Added to ignore list: "
+msgstr "Added to ignore list: $nick"
 
 #: src/menu_events.cpp:2835 src/menu_events.cpp:2854
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Invalid username: "
+msgstr "Invalid username: $nick"
 
 #: src/menu_events.cpp:2845 src/menu_events.cpp:2852 src/menu_events.cpp:2878
-#, fuzzy
 msgid "friends list"
-msgstr "On friends list"
+msgstr "friends list"
 
 #: src/menu_events.cpp:2852
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Added to friends list: "
+msgstr "Added to friends list: $nick"
 
 #: src/menu_events.cpp:2868
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Removed from list: "
+msgstr "Removed from list: $nick"
 
 #: src/menu_events.cpp:2868 src/menu_events.cpp:2886
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "On ignores list"
+msgstr "friends and ignores list"
 
 #: src/menu_events.cpp:2886
 msgid "There are no players on your friends or ignore list."
 msgstr "There are no players on your friends or ignore list."
 
 #: src/menu_events.cpp:2891
-#, fuzzy
 msgid "version"
-msgstr "Version"
+msgstr "version"
 
 #: src/menu_events.cpp:2907
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "registering with password *** and no email address"
 
 #: src/menu_events.cpp:2911
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "registering with password *** and email address $email"
 
 #: src/menu_events.cpp:2914 src/menu_events.cpp:2925 src/menu_events.cpp:2943
 #: src/menu_events.cpp:2957
 msgid "nick registration"
-msgstr ""
+msgstr "nick registration"
 
 #: src/menu_events.cpp:2925
 msgid "dropping your username"
-msgstr ""
+msgstr "dropping your username"
 
 #: src/menu_events.cpp:2943
 msgid "setting $var to $value"
-msgstr ""
+msgstr "setting $var to $value"
 
 #: src/menu_events.cpp:2957
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Request information about a nick."
+msgstr "requesting information for user $nick"
 
 #: src/menu_events.cpp:3070
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -4736,9 +4705,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Can't change control of out-of-bounds side: '$side'."
 
 #: src/menu_events.cpp:3246
-#, fuzzy
 msgid "Layers"
-msgstr "Players: "
+msgstr "Layers"
 
 #: src/menu_events.cpp:3319
 msgid "Choose Scenario (Debug!)"
@@ -4758,7 +4726,7 @@ msgstr "Debug mode deactivated!"
 
 #: src/menu_events.cpp:3383
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Unsafe Lua scripts."
 
 #: src/menu_events.cpp:3384
 msgid ""
@@ -4766,44 +4734,45 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"You are about to open a security breach in Wesnoth. Are you sure you want to "
+"continue? If you have downloaded add-ons, do not click 'ok'! They would "
+"instantly take over your computer. You have been warned."
 
 #: src/menu_events.cpp:3387
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Unsafe mode enabled!"
 
 #: src/menu_events.cpp:3430
 msgid "Variable not found"
-msgstr ""
+msgstr "Variable not found"
 
 #: src/menu_events.cpp:3474
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic "
 "or liminal."
 msgstr ""
+"Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic "
+"or liminal."
 
 #: src/menu_events.cpp:3524
 msgid "Do you wish to clear all of your discovered units from help?"
-msgstr ""
+msgstr "Do you wish to clear all of your discovered units from help?"
 
 #: src/menu_events.cpp:3535
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Invalid tag name"
+msgstr "Invalid unit type"
 
 #: src/menu_events.cpp:3548
-#, fuzzy
 msgid "Invalid location"
-msgstr "Invalid Colour"
+msgstr "Invalid location"
 
 #: src/menu_events.cpp:3583
-#, fuzzy
 msgid "Planning mode activated!"
-msgstr "Debug mode activated!"
+msgstr "Planning mode activated!"
 
 #: src/menu_events.cpp:3586
-#, fuzzy
 msgid "Planning mode deactivated!"
-msgstr "Debug mode deactivated!"
+msgstr "Planning mode deactivated!"
 
 #: src/menu_events.cpp:3594
 msgid "ai"
@@ -4814,11 +4783,12 @@ msgid "prompt^Command:"
 msgstr "Command:"
 
 #: src/mouse_events.cpp:635
-#, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits "
 "left."
-msgstr "You must have your leader on a keep to recruit or recall units."
+msgstr ""
+"You cannot move your leader away from the keep with some planned recruits "
+"left."
 
 #: src/mouse_events.cpp:835 src/mouse_events.cpp:915
 msgid "Attack Enemy"
@@ -4850,7 +4820,7 @@ msgstr "Server-side redirect loop"
 
 #: src/multiplayer.cpp:262
 msgid "Bad data received from server"
-msgstr ""
+msgstr "Bad data received from server"
 
 #: src/multiplayer.cpp:303
 msgid "You must login first."
@@ -4869,9 +4839,8 @@ msgstr ""
 "underscores and hyphens are allowed."
 
 #: src/multiplayer.cpp:311
-#, fuzzy
 msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
-msgstr "The nick '$nick' is too long. Nicks must be 18 characters or less."
+msgstr "The nick '$nick' is too long. Nicks must be 20 characters or less."
 
 #: src/multiplayer.cpp:314
 msgid "The nick '$nick' is reserved and cannot be used by players."
@@ -4992,9 +4961,8 @@ msgid "I’m Ready"
 msgstr "I’m Ready"
 
 #: src/multiplayer_connect.cpp:988
-#, fuzzy
 msgid "Add named local player"
-msgstr "Anonymous local player"
+msgstr "Add named local player"
 
 #: src/multiplayer_connect.cpp:997
 msgid "The scenario is invalid because it has no id."
@@ -5006,7 +4974,7 @@ msgstr "The scenario is invalid because it has no sides."
 
 #: src/multiplayer_connect.cpp:1068
 msgid "Enter a name for the new player"
-msgstr ""
+msgstr "Enter a name for the new player"
 
 #: src/multiplayer_connect.cpp:1069 src/reports.cpp:135 src/savegame.cpp:694
 msgid "Name: "
@@ -5037,9 +5005,8 @@ msgid "Waiting for players to join..."
 msgstr "Waiting for players to join..."
 
 #: src/multiplayer_connect.cpp:1711
-#, fuzzy
 msgid "Waiting for players to choose factions..."
-msgstr "Waiting for players to join..."
+msgstr "Waiting for players to choose factions..."
 
 #: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:731
 msgid "Create Game"
@@ -5174,9 +5141,8 @@ msgid "Invalid era selected"
 msgstr "Invalid era selected"
 
 #: src/multiplayer_create.cpp:336
-#, fuzzy
 msgid "The map is invalid."
-msgstr "The game is over."
+msgstr "The map is invalid."
 
 #: src/multiplayer_create.cpp:338
 msgid "You must enter a name."
@@ -5389,9 +5355,8 @@ msgstr "Could not send initial handshake"
 
 #: src/network_manager_ana.cpp:650 src/network_manager_ana.cpp:667
 #: src/network_manager_ana.cpp:689
-#, fuzzy
 msgid "Could not connect to host"
-msgstr "Could not connect to host."
+msgstr "Could not connect to host"
 
 #: src/pathfind/pathfind.cpp:487
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -5415,18 +5380,16 @@ msgid "Back to turn "
 msgstr "Back to turn "
 
 #: src/play_controller.cpp:1312
-#, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
-"The games are out of sync and will have to exit. Do you want to save an "
-"error log of your game?"
+"The game is out of sync. It might not make much sense to continue. Do you "
+"want to save your game?"
 
 #: src/play_controller.cpp:1313 src/replay_controller.cpp:221
-#, fuzzy
 msgid "Error details:"
-msgstr "Error: "
+msgstr "Error details:"
 
 #: src/playcampaign.cpp:137 src/playcampaign.cpp:177
 msgid "Defeat"
@@ -5543,17 +5506,14 @@ msgstr[1] ""
 "starting gold."
 
 #: src/playsingle_controller.cpp:293
-#, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
 msgstr[0] ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
+"You will start the next scenario with the defined minimum starting gold."
 msgstr[1] ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
+"You will start the next scenario with the defined minimum starting gold."
 
 #: src/playsingle_controller.cpp:301
 msgid ""
@@ -5574,13 +5534,12 @@ msgid "The game is over."
 msgstr "The game is over."
 
 #: src/playsingle_controller.cpp:511
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"A network disconnection has occurred, and the game\n"
-"cannot continue. Do you want to save the game?"
+"A network disconnection has occurred, and the game cannot continue. Do you "
+"want to save the game?"
 
 #: src/playsingle_controller.cpp:667
 msgid "It is now $name|’s turn"
@@ -5619,42 +5578,36 @@ msgid "$player has left the game. What do you want to do?"
 msgstr "$player has left the game. What do you want to do?"
 
 #: src/replay_controller.cpp:220
-#, fuzzy
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
 "Do you want to save the game?"
 msgstr ""
-"A network disconnection has occurred, and the game\n"
-"cannot continue. Do you want to save the game?"
+"The replay is corrupt/out of sync. It might not make much sense to continue. "
+"Do you want to save the game?"
 
 #: src/reports.cpp:145
-#, fuzzy
 msgid "Type: "
-msgstr "Type"
+msgstr "Type: "
 
 #: src/reports.cpp:156
 msgid "Race: "
 msgstr "Race: "
 
 #: src/reports.cpp:180
-#, fuzzy
 msgid "Level: "
-msgstr "Level"
+msgstr "Level: "
 
 #: src/reports.cpp:183
-#, fuzzy
 msgid "No advancement"
-msgstr "Advancements"
+msgstr "No advancement"
 
 #: src/reports.cpp:185
-#, fuzzy
 msgid "Advances to:"
-msgstr "Advances to: "
+msgstr "Advances to:"
 
 #: src/reports.cpp:215
-#, fuzzy
 msgid "Trait: "
-msgstr "Traits"
+msgstr "Trait: "
 
 #: src/reports.cpp:229
 msgid "invisible: "
@@ -5709,9 +5662,8 @@ msgid "Alignment: "
 msgstr "Alignment: "
 
 #: src/reports.cpp:275
-#, fuzzy
 msgid "Ability: "
-msgstr "Abilities: "
+msgstr "Ability: "
 
 #: src/reports.cpp:310
 msgid "Resistances: "
@@ -5722,96 +5674,80 @@ msgid "(Att / Def)"
 msgstr "(Att / Def)"
 
 #: src/reports.cpp:355
-#, fuzzy
 msgid "Terrain: "
-msgstr "Terrain"
+msgstr "Terrain: "
 
 #: src/reports.cpp:373
 msgid "maximum^max."
-msgstr ""
+msgstr "max."
 
 #: src/reports.cpp:373
 msgid "minimum^min."
-msgstr ""
+msgstr "min."
 
 #: src/reports.cpp:378
-#, fuzzy
 msgid "Defense: "
-msgstr "Defence"
+msgstr "Defence: "
 
 #: src/reports.cpp:447
-#, fuzzy
 msgid "Weapon: "
-msgstr "weapon range: "
+msgstr "Weapon: "
 
 #: src/reports.cpp:448
-#, fuzzy
 msgid "Damage: "
-msgstr "Damage"
+msgstr "Damage: "
 
 #: src/reports.cpp:452
-#, fuzzy
 msgid "Base damage: "
-msgstr "Total damage"
+msgstr "Base damage: "
 
 #: src/reports.cpp:454
-#, fuzzy
 msgid "Time of day: "
-msgstr "Time of day"
+msgstr "Time of day: "
 
 #: src/reports.cpp:458
-#, fuzzy
 msgid "Leadership: "
-msgstr "Leadership"
+msgstr "Leadership: "
 
 #: src/reports.cpp:462
-#, fuzzy
 msgid "Slowed: "
-msgstr "slowed: "
+msgstr "Slowed: "
 
 #: src/reports.cpp:466
-#, fuzzy
 msgid "Attacks: "
-msgstr "Attacker"
+msgstr "Attacks: "
 
 #: src/reports.cpp:468
 msgid "Base attacks: "
-msgstr ""
+msgstr "Base attacks: "
 
 #: src/reports.cpp:470
-#, fuzzy
 msgid "Swarm: "
-msgstr "swarm"
+msgstr "Swarm: "
 
 #: src/reports.cpp:482
-#, fuzzy
 msgid "Weapon range: "
-msgstr "weapon range: "
+msgstr "Weapon range: "
 
 #: src/reports.cpp:483
-#, fuzzy
 msgid "Damage type: "
-msgstr "damage type: "
+msgstr "Damage type: "
 
 #: src/reports.cpp:484
-#, fuzzy
 msgid "Damage versus: "
-msgstr "damage type: "
+msgstr "Damage versus: "
 
 #: src/reports.cpp:528
-#, fuzzy
 msgid "Accuracy:"
-msgstr "% accuracy"
+msgstr "Accuracy:"
 
 #: src/reports.cpp:533
-#, fuzzy
 msgid "Parry:"
-msgstr "% parry"
+msgstr "Parry:"
 
 #: src/reports.cpp:550
-#, fuzzy
 msgid "Weapon special: "
-msgstr "Weapon Specials"
+msgstr "Weapon special: "
 
 #: src/reports.cpp:591
 msgid "Lawful units: "
@@ -5826,9 +5762,8 @@ msgid "Chaotic units: "
 msgstr "Chaotic units: "
 
 #: src/reports.cpp:595
-#, fuzzy
 msgid "Liminal units: "
-msgstr "Lawful units: "
+msgstr "Liminal units: "
 
 #: src/reports.cpp:793
 msgid "Observers:"
@@ -6090,7 +6025,7 @@ msgstr "lawful"
 
 #: src/unit_types.cpp:968
 msgid "liminal"
-msgstr ""
+msgstr "liminal"
 
 #: src/unit_types.cpp:968
 msgid "neutral"
@@ -6105,9 +6040,8 @@ msgid "female^lawful"
 msgstr "lawful"
 
 #: src/unit_types.cpp:969
-#, fuzzy
 msgid "female^liminal"
-msgstr "loyal"
+msgstr "liminal"
 
 #: src/unit_types.cpp:969
 msgid "female^neutral"
