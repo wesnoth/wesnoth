@@ -670,8 +670,8 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 					);
 		}
 		if (image != NULL) {
-			const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
-			const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2;
+			const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc);
+			const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc);
 #ifdef LOW_MEM
 			bool facing_west = false;
 #else
