@@ -1,7 +1,7 @@
 Version 1.8.5+svn:
  * Language and i18n:
-   * Updated translations: Indonesian, Japanese, Korean, Portuguese (Brazil),
-     Slovenian, Vietnamese
+   * Updated translations: British English, Indonesian, Japanese, Korean,
+     Portuguese (Brazil), Slovenian, Vietnamese
  * Miscellaneous and bug fixes:
    * Fixed: properly update cmake revision numbers (bug #16483)
 
@@ -150,7 +150,7 @@ Version 1.8.2:
    * Fixed bug #16072: Ensured that units are removed from recall list before
      being recalled
    * Fixed segfault when using [time_area]
-   
+
 Version 1.8.1:
  * Campaigns:
    * Northern Rebirth:
@@ -265,8 +265,8 @@ Version 1.7.15-1.8rc1:
 Version 1.7.14-1.8beta7:
  * AI:
    * Allow to write AI components in LUA
-   * Implemented FR #15465: 'protect' goal was split into protect_location, 
-     protect_unit, protect_my_unit [goal] tags. protect_my_unit can be used 
+   * Implemented FR #15465: 'protect' goal was split into protect_location,
+     protect_unit, protect_my_unit [goal] tags. protect_my_unit can be used
      as a direct replacement for protect_leader.
  * Graphics:
    * Fixed bug 15344: missing ice to nothing transition
@@ -330,7 +330,7 @@ Version 1.7.13-1.8beta6:
    * The manual now does support translations of alternative texts for images
      (bug #14874)
  * Multiplayer
-   * An early test version of the multiplayer port of "Legend of Wesmere" 
+   * An early test version of the multiplayer port of "Legend of Wesmere"
      is available when starting wesnoth with the commandline argument "--debug"
  * User interface:
    * Add a new tree view widget
