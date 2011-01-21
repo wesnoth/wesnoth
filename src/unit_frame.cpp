@@ -634,10 +634,10 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 
 	image::locator image_loc;
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
-		image_loc = current_data.image_diagonal;
+		image_loc = image::locator(current_data.image_diagonal,current_data.image_mod);
 	}
 	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
-		image_loc = current_data.image;
+		image_loc = image::locator(current_data.image,current_data.image_mod);
 	}
 
 	// we always invalidate our own hex because we need to be called at redraw time even
@@ -670,6 +670,8 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 					);
 		}
 		if (image != NULL) {
+			const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
+			const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2;
 #ifdef LOW_MEM
 			bool facing_west = false;
 #else
@@ -678,8 +680,8 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 			bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
 			if(!current_data.auto_vflip) facing_north = true;
 			if(!current_data.auto_hflip) facing_west = false;
-			int my_x = current_data.x+d2- image->w/2;
-			int my_y = current_data.y+d2- image->h/2;
+			int my_x = x +current_data.x+d2- image->w/2;
+			int my_y = y +current_data.y+d2- image->h/2;
 			if(facing_west) {
 				my_x += current_data.directional_x;
 			} else {
@@ -691,9 +693,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 				my_y -= current_data.directional_y;
 			}
 
-			const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+my_x;
-			const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+my_y;
-			const SDL_Rect r = create_rect(x, y, image->w, image->h);
+			const SDL_Rect r = create_rect(my_x, my_y, image->w, image->h);
 			// check if our underlying hexes are invalidated
 			// if we need to update ourselve because we changed, invalidate our hexes
 			// and return whether or not our hexs was invalidated
