@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-09-23 12:54+0200\n"
-"PO-Revision-Date: 2009-11-02 10:07-0500\n"
-"Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
+"PO-Revision-Date: 2011-01-20 23:10-0500\n"
+"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <en@li.org>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -101,21 +101,18 @@ msgstr "Lobby sounds"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Disable autosaves."
+msgstr "Disable notifications"
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
-#, fuzzy
 msgid "Multiplayer_AI^Default AI"
-msgstr "Multiplayer"
+msgstr "Default AI"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
-#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
-msgstr "Multiplayer"
+msgstr "RCA AI"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -5193,9 +5190,8 @@ msgstr "aged"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "dim"
+msgstr "aged"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -8545,6 +8541,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"Unknown command '$command', try $help_command for a list of available "
+"commands."
 
 #: src/menu_events.cpp:1951
 msgid ""
@@ -8556,53 +8554,51 @@ msgstr ""
 
 #: src/menu_events.cpp:1953
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "[all|<command>]"
 
 #: src/menu_events.cpp:1997
-#, fuzzy
 msgid "Error:"
-msgstr "Error: "
+msgstr "Error:"
 
 #: src/menu_events.cpp:2003
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "Missing argument $arg_id"
 
 #: src/menu_events.cpp:2051
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"Available commands $flags_description:\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2051 src/menu_events.cpp:2052 src/menu_events.cpp:2075
-#, fuzzy
 msgid "help"
-msgstr "Help"
+msgstr "help"
 
 #: src/menu_events.cpp:2052
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "Type $help_command <command> for more info."
 
 #: src/menu_events.cpp:2063
 msgid " No help available."
 msgstr " No help available."
 
 #: src/menu_events.cpp:2068
-#, fuzzy
 msgid "Usage:"
-msgstr "Message:"
+msgstr "Usage:"
 
 #: src/menu_events.cpp:2073
 msgid "aliases:"
-msgstr ""
+msgstr "aliases:"
 
 #: src/menu_events.cpp:2199
 msgid "(A) - admin command"
-msgstr ""
+msgstr "(A) - admin command"
 
 #: src/menu_events.cpp:2206 src/menu_events.cpp:2405
-#, fuzzy
 msgid "(admin only)"
-msgstr "Team only"
+msgstr "(admin only)"
 
 #: src/menu_events.cpp:2226
 msgid ""
@@ -8624,7 +8620,7 @@ msgstr ""
 #: src/menu_events.cpp:2238 src/menu_events.cpp:2240 src/menu_events.cpp:2265
 #: src/menu_events.cpp:2267 src/menu_events.cpp:2269 src/menu_events.cpp:2283
 msgid "<nick>"
-msgstr ""
+msgstr "<nick>"
 
 #: src/menu_events.cpp:2233
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -8651,9 +8647,8 @@ msgid "Send a message to the server admins currently online"
 msgstr "Send a message to the server admins currently online"
 
 #: src/menu_events.cpp:2254
-#, fuzzy
 msgid "<message>"
-msgstr "Message:"
+msgstr "<message>"
 
 #: src/menu_events.cpp:2254
 msgid "Send an emotion or personal action in chat."
@@ -8669,11 +8664,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2259
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<nick> <message>"
 
 #: src/menu_events.cpp:2263
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<level> <domain>"
 
 #: src/menu_events.cpp:2263
 msgid "Change the log level of a log domain."
@@ -8701,7 +8696,7 @@ msgstr "Display version information."
 
 #: src/menu_events.cpp:2276
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<password> <email (optional)>"
 
 #: src/menu_events.cpp:2276
 msgid "Register your nick"
@@ -8717,7 +8712,7 @@ msgstr "Update details for your nick. For possible details see '/details'"
 
 #: src/menu_events.cpp:2281
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<detail> <value>"
 
 #: src/menu_events.cpp:2283
 msgid "Request information about a nick."
@@ -8729,7 +8724,7 @@ msgstr "Request a list of details you can set for your registered nick."
 
 #: src/menu_events.cpp:2287 src/menu_events.cpp:2290 src/menu_events.cpp:2292
 msgid "<room>"
-msgstr ""
+msgstr "<room>"
 
 #: src/menu_events.cpp:2287
 msgid "Join a room."
@@ -8749,7 +8744,7 @@ msgstr "List available rooms."
 
 #: src/menu_events.cpp:2296
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<room> <msg>"
 
 #: src/menu_events.cpp:2296
 msgid "Room message."
@@ -8757,7 +8752,7 @@ msgstr "Room message."
 
 #: src/menu_events.cpp:2298
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "<room> <type> [value]"
 
 #: src/menu_events.cpp:2298
 msgid "Room query."
@@ -8765,17 +8760,15 @@ msgstr "Room query."
 
 #: src/menu_events.cpp:2397
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
-msgstr ""
+msgstr "(D) - debug only, (N) - network only, (A) - admin only"
 
 #: src/menu_events.cpp:2403
-#, fuzzy
 msgid "(debug command)"
-msgstr "Debug mode commands"
+msgstr "(debug command)"
 
 #: src/menu_events.cpp:2404
-#, fuzzy
 msgid "(network only)"
-msgstr "Network Player"
+msgstr "(network only)"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -8787,11 +8780,11 @@ msgstr "Switch a side to/from AI control."
 
 #: src/menu_events.cpp:2431
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "[<side> [on/off]]"
 
 #: src/menu_events.cpp:2434
 msgid "<side> <nick>"
-msgstr ""
+msgstr "<side> <nick>"
 
 #: src/menu_events.cpp:2434
 msgid "Assign control of a side to a different player or observer."
@@ -8806,9 +8799,8 @@ msgid "Visualize the screen refresh procedure."
 msgstr "Visualise the screen refresh procedure."
 
 #: src/menu_events.cpp:2439
-#, fuzzy
 msgid "Show fps."
-msgstr "Show replay"
+msgstr "Show fps."
 
 #: src/menu_events.cpp:2441
 msgid "Save game."
@@ -8832,7 +8824,7 @@ msgstr "Disable autosaves."
 
 #: src/menu_events.cpp:2454
 msgid "<id>"
-msgstr ""
+msgstr "<id>"
 
 #: src/menu_events.cpp:2454
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -8852,7 +8844,7 @@ msgstr "Turn debug mode off."
 
 #: src/menu_events.cpp:2464 src/menu_events.cpp:2468
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<command>[;<command>...]"
 
 #: src/menu_events.cpp:2464
 msgid "Execute a Lua statement."
@@ -8860,7 +8852,7 @@ msgstr "Execute a Lua statement."
 
 #: src/menu_events.cpp:2466
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Grant higher privileges to Lua scripts."
 
 #: src/menu_events.cpp:2468
 msgid "Set the command used by the custom command hotkey"
@@ -8872,7 +8864,7 @@ msgstr "Launch the gamestate inspector"
 
 #: src/menu_events.cpp:2472
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<name>[=<command>]"
 
 #: src/menu_events.cpp:2472
 msgid "Set or show alias to a command"
@@ -8880,7 +8872,7 @@ msgstr "Set or show alias to a command"
 
 #: src/menu_events.cpp:2474
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<var>=<value>"
 
 #: src/menu_events.cpp:2474
 msgid "Set a scenario variable."
@@ -8888,7 +8880,7 @@ msgstr "Set a scenario variable."
 
 #: src/menu_events.cpp:2476
 msgid "<var>"
-msgstr ""
+msgstr "<var>"
 
 #: src/menu_events.cpp:2476
 msgid "Show a scenario variable."
@@ -8948,11 +8940,11 @@ msgstr "Switched domain: '$domain' to level: '$level'."
 
 #: src/menu_events.cpp:2637
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "whisper to $receiver"
 
 #: src/menu_events.cpp:2644
 msgid "whisper: $sender"
-msgstr ""
+msgstr "whisper: $sender"
 
 #: src/menu_events.cpp:2740 src/menu_events.cpp:2759
 #: src/multiplayer_connect.cpp:699
@@ -8960,74 +8952,65 @@ msgid "(empty)"
 msgstr "(empty)"
 
 #: src/menu_events.cpp:2740 src/menu_events.cpp:2746 src/menu_events.cpp:2796
-#, fuzzy
 msgid "ignores list"
-msgstr "On ignores list"
+msgstr "ignores list"
 
 #: src/menu_events.cpp:2746
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Added to ignore list: "
+msgstr "Added to ignore list: $nick"
 
 #: src/menu_events.cpp:2749 src/menu_events.cpp:2768
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Invalid username: "
+msgstr "Invalid username: $nick"
 
 #: src/menu_events.cpp:2759 src/menu_events.cpp:2766 src/menu_events.cpp:2792
-#, fuzzy
 msgid "friends list"
-msgstr "On friends list"
+msgstr "friends list"
 
 #: src/menu_events.cpp:2766
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Added to friends list: "
+msgstr "Added to friends list: $nick"
 
 #: src/menu_events.cpp:2782
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Removed from list: "
+msgstr "Removed from list: $nick"
 
 #: src/menu_events.cpp:2782 src/menu_events.cpp:2800
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "On ignores list"
+msgstr "friends and ignores list"
 
 #: src/menu_events.cpp:2800
 msgid "There are no players on your friends or ignore list."
 msgstr "There are no players on your friends or ignore list."
 
 #: src/menu_events.cpp:2805
-#, fuzzy
 msgid "version"
-msgstr "Version"
+msgstr "version"
 
 #: src/menu_events.cpp:2821
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "registering with password *** and no email address"
 
 #: src/menu_events.cpp:2825
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "registering with password *** and email address $email"
 
 #: src/menu_events.cpp:2828 src/menu_events.cpp:2839 src/menu_events.cpp:2857
 #: src/menu_events.cpp:2871
 msgid "nick registration"
-msgstr ""
+msgstr "nick registration"
 
 #: src/menu_events.cpp:2839
 msgid "dropping your username"
-msgstr ""
+msgstr "dropping your username"
 
 #: src/menu_events.cpp:2857
 msgid "setting $var to $value"
-msgstr ""
+msgstr "setting $var to $value"
 
 #: src/menu_events.cpp:2871
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Request information about a nick."
+msgstr "requesting information for user $nick"
 
 #: src/menu_events.cpp:2983
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -9067,7 +9050,7 @@ msgstr "Debug mode deactivated!"
 
 #: src/menu_events.cpp:3191
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Unsafe Lua scripts."
 
 #: src/menu_events.cpp:3192
 msgid ""
@@ -9075,30 +9058,33 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"You are about to open a security breach in Wesnoth. Are you sure you want to "
+"continue? If you have downloaded add-ons, do not click 'ok'! They would "
+"instantly take over your computer. You have been warned."
 
 #: src/menu_events.cpp:3195
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Unsafe mode enabled!"
 
 #: src/menu_events.cpp:3238
 msgid "Variable not found"
-msgstr ""
+msgstr "Variable not found"
 
 #: src/menu_events.cpp:3276
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
+"Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
+"chaotic."
 
 #: src/menu_events.cpp:3333
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Invalid tag name"
+msgstr "Invalid unit type"
 
 #: src/menu_events.cpp:3346
-#, fuzzy
 msgid "Invalid location"
-msgstr "Invalid Colour"
+msgstr "Invalid location"
 
 #: src/menu_events.cpp:3382
 msgid "ai"
@@ -9142,7 +9128,7 @@ msgstr "Server-side redirect loop"
 
 #: src/multiplayer.cpp:256
 msgid "Bad data received from server"
-msgstr ""
+msgstr "Bad data received from server"
 
 #: src/multiplayer.cpp:297
 msgid "You must login first."
@@ -9443,9 +9429,8 @@ msgid "Invalid era selected"
 msgstr "Invalid era selected"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "The game is over."
+msgstr "The map is invalid."
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
@@ -9558,9 +9543,8 @@ msgid "Friends in Game"
 msgstr "Friends in Game"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Filter:"
-msgstr "Filter: "
+msgstr "Filter:"
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Skip quickly to the active turn when observing"
@@ -9814,17 +9798,14 @@ msgstr[1] ""
 "starting gold."
 
 #: src/playsingle_controller.cpp:254
-#, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
 msgstr[0] ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
+"You will start the next scenario with the defined minimum starting gold."
 msgstr[1] ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
+"You will start the next scenario with the defined minimum starting gold."
 
 #: src/playsingle_controller.cpp:262
 msgid ""
@@ -10181,9 +10162,8 @@ msgid "Quit the game"
 msgstr "Quit the game"
 
 #: src/titlescreen.cpp:450
-#, fuzzy
 msgid "Show previous tip of the day"
-msgstr "Show next tip of the day"
+msgstr "Show previous tip of the day"
 
 #: src/titlescreen.cpp:451
 msgid "Show next tip of the day"
