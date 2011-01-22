@@ -1847,6 +1847,9 @@ stringfixes = {
 ("your information? I don't even know your", "your information? I don’t even know your"),
 ("your people...and I don't think", "your people... and I don’t think"),
 ("your son's navigator and companion.", "your son’s navigator and companion."),
+
+# Fix another screw up
+("monolith was erected by me, ——", "monolith was erected by me, ―"),
 ),
 
 "wesnoth-tsg" : (
