@@ -3041,6 +3041,9 @@ stringfixes = {
 # Fix screw up
 # conversion added in 1.9.0+svn
 ("in the wall. ‘If you dare", "in the wall. “If you dare"),
+
+# Fixed capitalization
+("you ever heard of The", "you ever heard of the"),
 ),
 
 "1.8-announcement" : (
