@@ -876,7 +876,9 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 
 	set_game_context();
 
-	refreshing_  = false;
+	refreshing_ = false;
+	delete anim_;
+	anim_ = NULL;
 }
 
 const unit_type* unit::type() const
