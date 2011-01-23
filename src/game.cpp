@@ -2375,7 +2375,7 @@ static int do_gameloop(int argc, char** argv)
 				continue;
 			}
 		} else if(res == gui2::ttitle_screen::MULTIPLAYER) {
-			game_config::debug = false;
+			game_config::debug = game_config::mp_debug;
 			if(game.play_multiplayer() == false) {
 				continue;
 			}
