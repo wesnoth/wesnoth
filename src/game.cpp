@@ -1588,6 +1588,10 @@ void game_controller::load_game_cfg(const bool force)
 		extract_preload_scripts(game_config_);
 		game_config_.clear_children("lua");
 
+		config colorsys_info;
+		colorsys_info.splice_children(game_config_, "color_range");
+		colorsys_info.splice_children(game_config_, "color_palette");
+
 		game_config_.merge_children("units");
 		game_config_.splice_children(core_terrain_rules, "terrain_graphics");
 
@@ -1595,6 +1599,8 @@ void game_controller::load_game_cfg(const bool force)
 		foreach (const config &ch, game_config_.child_range("multiplayer")) {
 			hashes[ch["id"]] = ch.hash();
 		}
+
+		game_config::add_color_info(colorsys_info);
 
 		set_unit_data();
 
