@@ -3632,7 +3632,7 @@ stringfixes = {
 ("That isn't him...", "That isn’t him..."),
 ("that snow...? We're doomed!", "that snow...? We’re doomed!"),
 ("that this isn't going as", "that this isn’t going as"),
-("Thats right. I'll be coming", "Thats right. I’ll be coming"),
+("Thats right. I'll be coming", "That’s right. I’ll be coming"),
 ("That’s... that's the Rod", "That’s... that’s the Rod"),
 ("The 'true people' speak through", "The ‘true people’ speak through"),
 ("The dragon's cave has", "The dragon’s cave has"),
@@ -3773,6 +3773,9 @@ stringfixes = {
 ("your enemies fall.' Grave robbing", "your enemies fall.’ Grave robbing"),
 ("your face? We've never seen", "your face? We’ve never seen"),
 ("Your word can't be trusted.", "Your word can’t be trusted."),
+
+# Added missing apostrophe
+("Thats right", "That‘s right"),
 ),
 # End of pass 2, bulk apostrophe conversion
 
