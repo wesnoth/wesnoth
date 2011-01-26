@@ -2483,7 +2483,7 @@ int main(int argc, char** argv)
 		std::cerr << "caught end_level_exception (quitting)\n";
 	} catch(twml_exception& e) {
 		std::cerr << "WML exception:\nUser message: "
-			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
+			<< e.message << "\nDev message: " << e.dev_message << '\n';
 		return 1;
 	} catch(game_logic::formula_error& e) {
 		std::cerr << e.what()
