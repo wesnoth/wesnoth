@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 13:09+0100\n"
-"PO-Revision-Date: 2009-05-08 22:09+0800\n"
-"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
+"PO-Revision-Date: 2011-01-30 02:44+0800\n"
+"Last-Translator: 楊綮銘 <steven.sheep@hotmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -109,15 +109,13 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
-#, fuzzy
 msgid "Disable notifications"
-msgstr "停止自動儲存。"
+msgstr "關閉提示。"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
-#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
-msgstr "多人對戰"
+msgstr "多人對戰RCA AI"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -257,9 +255,8 @@ msgstr "英文(英國)翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1534
-#, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "英文(英國)翻譯團隊"
+msgstr "英文(蕭氏字母表)翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1558
@@ -439,9 +436,8 @@ msgstr "南加泰羅尼亞語(西班牙)翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:2620
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "簡體中文翻譯團隊"
+msgstr "越南語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:2639
@@ -520,10 +516,8 @@ msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 msgstr ""
-"目標:$ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"行徑:$ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"特殊：$ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [then]
 #. [else]
@@ -566,10 +560,8 @@ msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
 msgstr ""
-"目標:$ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"行徑:$ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"特殊：$ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:352
@@ -647,18 +639,16 @@ msgid "Exit"
 msgstr "離開"
 
 #: data/core/macros/ai_controller.cfg:975
-#, fuzzy
 msgid "Set special orders..."
-msgstr "設定行徑..."
+msgstr "設定特殊指令..."
 
 #: data/core/macros/ai_controller.cfg:976
 msgid "Move leader to..."
 msgstr ""
 
 #: data/core/macros/ai_controller.cfg:977
-#, fuzzy
 msgid "Right-click to select a location to move leader to"
-msgstr "右鍵點選要堅守的陣地"
+msgstr "又鍵點選選擇移動的地點"
 
 #: data/core/macros/ai_controller.cfg:978
 msgid "Move leader here"
@@ -669,20 +659,16 @@ msgid "moving leader to $x1|,$y1|."
 msgstr ""
 
 #: data/core/macros/ai_controller.cfg:980
-#, fuzzy
 msgid "Clear special orders"
-msgstr "取消所有指令"
+msgstr "取消特殊指令"
 
 #: data/core/macros/ai_controller.cfg:981
-#, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"目標:$ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"行徑:$ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"特殊：$ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/deprecated-utils.cfg:416
@@ -776,7 +762,9 @@ msgstr "毒素此刻正滲透到這個單位的全身。"
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
-msgstr "這瓶水將讓單位的近戰武器類型變為'秘法'直到下一幕開始."
+msgstr ""
+"近戰武器淋上這種液體後，傷害類型將變為“秘法”，直到任務結束。要讓 $unit.name "
+"使用嗎？"
 
 #: data/core/macros/items.cfg:263
 msgid "I am not suited to the use of this item! Let another take it."
@@ -1684,9 +1672,8 @@ msgid "No early finish bonus."
 msgstr "無時效奬勵： "
 
 #: data/core/macros/objective-utils.cfg:21
-#, fuzzy
 msgid "<small>(early finish bonus)</small>"
-msgstr "`（時效獎勵）"
+msgstr "<small>（時效獎勵）</small>"
 
 #: data/core/macros/objective-utils.cfg:25
 #, fuzzy
@@ -1722,14 +1709,13 @@ msgstr ""
 "20% 的金幣會帶到下一個任務。"
 
 #: data/core/macros/objective-utils.cfg:48
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "設定目標..."
+msgstr "替代目標："
 
 #: data/core/macros/objective-utils.cfg:52
 #, fuzzy
 msgid "Bonus objective:"
-msgstr "設定目標..."
+msgstr "替代目標："
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -1902,36 +1888,33 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:29
-#, fuzzy
 msgid "$name|’s Swamp,$name|marsh,$name|fen"
-msgstr "$name|漢,$name|頓,$name|菲爾德"
+msgstr "沼澤名 $name,$name|馬修,$name|芬"
 
 #. [language]
 #: data/english.cfg:30
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "$name|伯裏,$name|漢,$name|頓"
+msgstr "$name|伯里,$name|漢,$name|頓,$name|伯里"
 
 #. [language]
 #: data/english.cfg:31
-#, fuzzy
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "$name|哈勃,$name|波特"
+msgstr "$name|哈柏,$name|波特,$lake|波特,$lake|哈柏"
 
 #. [language]
 #: data/english.cfg:32
-#, fuzzy
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
-msgstr "$name|漢,$name|福德,$name|克勞斯,$river|福德,$river|克勞斯"
+msgstr "$name|漢,$name|福德,$name|克勞斯,$river|福德,$river|克勞斯,河名 $name"
 
 #. [language]
 #: data/english.cfg:33
-#, fuzzy
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
-msgstr "$river|布裏奇,$river|布裏奇,$river|布裏奇,$name|漢,$name|布裏奇"
+msgstr ""
+"$river|布裏奇,$river|布裏奇,$river|布裏奇,$name|漢,$name|布裏奇,$bridge|漢,"
+"$bridge|頓"
 
 #. [language]
 #: data/english.cfg:34
@@ -1940,11 +1923,12 @@ msgstr "$name|漢,$name|頓,$name|菲爾德"
 
 #. [language]
 #: data/english.cfg:35
-#, fuzzy
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
-msgstr "$name|漢,$name|頓,$name|伍德,$name弗裏斯特"
+msgstr ""
+"$name|漢,$name|頓,$name|伍德,$name 弗里斯特,$forest|伍德,$forest|漢,$forest|"
+"頓"
 
 #. [language]
 #: data/english.cfg:36
@@ -1971,9 +1955,8 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:40
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
-msgstr "$name|伯裏,$name|漢,$name|頓"
+msgstr "$name|伯里,$name|漢,$name|頓,$swamp|伯里,$swamp|漢,$swamp|頓,"
 
 #. [language]
 #: data/english.cfg:43
@@ -2167,8 +2150,8 @@ msgid ""
 "the <b>Help</b> screen carefully. Details become important as scenarios get "
 "harder!"
 msgstr ""
-"玩過幾個場景後,請認真閲讀幫助中的'遊戲玩法'部分.那些技巧在更難的場景中會很有"
-"用的!"
+"玩過幾個任務後，請認真閲讀幫助中的“遊戲玩法”部分。那些技巧在更難的任務中會很"
+"有用的！"
 
 #. [tip]
 #: data/hardwired/tips.cfg:36
@@ -2287,8 +2270,8 @@ msgid ""
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
-"您可以透過遊戲選單中的“徵召”選項來調用上個場景中的單位。通過不斷徵召同一組單"
-"位，您可以建立一支强力而經驗值豐富的軍隊。"
+"您可以透過遊戲選單中的“徵召”選項來調用上個任務中的單位。透過不斷徵召同一組單"
+"位，您可以建立一支強大而經驗值豐富的軍隊。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:72
@@ -2449,7 +2432,7 @@ msgid ""
 "make room for you on their keep so you can recruit from there, and you can "
 "even capture an enemy’s keep and use that."
 msgstr ""
-"您的領袖可以從城堡的主堡中招募或徵召單位——不僅僅是場景開始時的主堡——您也可以"
+"您的領袖可以從城堡的主堡中招募或徵召單位，不僅僅是任務開始時的主堡。您也可以"
 "佔領敵人的主堡，並從那裡招募單位。有些盟友願意在他們的主堡裡騰出空為讓您招募"
 "單位。"
 
@@ -2459,7 +2442,7 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"骷髏對穿刺和劍刃和冷凍攻撃具有較强抗性，但却容易受衝撃、火焰和秘法傷害。"
+"骷髏對穿刺和劍刃和冷凍攻撃具有較强抗性，但卻容易受衝撃、火焰和秘法傷害。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:132
@@ -2729,9 +2712,8 @@ msgid "female^poisoned"
 msgstr "中毒"
 
 #: data/lua/wml-tags.lua:709 src/actions.cpp:1285
-#, fuzzy
 msgid "female^petrified"
-msgstr "中毒"
+msgstr "石化"
 
 #: data/lua/wml-tags.lua:709 src/actions.cpp:1285
 msgid "petrified"
@@ -2883,15 +2865,13 @@ msgstr "等級"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:405
-#, fuzzy
 msgid "statuspanel^moves"
 msgstr "移動點數"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:414
-#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr "等級"
+msgstr "地形防禦加成。"
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
@@ -2992,14 +2972,12 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有空格，無法招募。"
 
 #: src/actions.cpp:535 src/actions.cpp:594 src/actions.cpp:1511
-#, fuzzy
 msgid "An invalid attacker weapon got selected."
-msgstr "所選時期無效"
+msgstr "無效的攻擊。"
 
 #: src/actions.cpp:540
-#, fuzzy
 msgid "An invalid defender weapon got selected."
-msgstr "所選時期無效"
+msgstr "無效的防禦。"
 
 #: src/actions.cpp:2500
 msgid "Ambushed!"
@@ -3090,13 +3068,12 @@ msgid "addon_type^Resources"
 msgstr "資源"
 
 #: src/addon/manager.cpp:472
-#, fuzzy
 msgid "addon_type^Other"
-msgstr "多人遊戲時代"
+msgstr "其他"
 
 #: src/addon/manager.cpp:474
 msgid "addon_type^(unknown)"
-msgstr "未知"
+msgstr "（未知）"
 
 #: src/addon/manager.cpp:486 src/addon/manager.cpp:559 src/multiplayer.cpp:220
 #: src/multiplayer.cpp:280 src/multiplayer_ui.cpp:82
@@ -3232,7 +3209,6 @@ msgid "Old version"
 msgstr "舊版本"
 
 #: src/addon/manager.cpp:987
-#, fuzzy
 msgid "Update add-ons"
 msgstr "更新模組"
 
@@ -3479,7 +3455,7 @@ msgstr "回合"
 
 #: src/dialogs.cpp:509
 msgid "Scenario Start"
-msgstr "場景開始"
+msgstr "任務開始"
 
 #: src/dialogs.cpp:512
 msgid "Difficulty: "
@@ -3517,7 +3493,8 @@ msgid ""
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 "没有存檔，無法載入。\n"
-"（當您完成一個場景時會自動存檔）"
+"\n"
+"（當您完成一個任務時會自動存檔）"
 
 #: src/dialogs.cpp:597
 msgid "Date"
@@ -3666,15 +3643,15 @@ msgstr "未知時代"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:266 src/multiplayer_lobby.cpp:501
 msgid "Remote scenario"
-msgstr "遠程場景"
+msgstr "長程任務"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:274 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario: $scenario_id"
-msgstr "未知場景: $scenario_id"
+msgstr "未知任務: $scenario_id"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:279 src/multiplayer_lobby.cpp:512
 msgid "Unknown scenario"
-msgstr "未知場景"
+msgstr "未知任務"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:285 src/multiplayer_lobby.cpp:517
 msgid "Reloaded game"
@@ -3705,9 +3682,8 @@ msgid "none"
 msgstr "無"
 
 #: src/gui/dialogs/lobby_player_info.cpp:98
-#, fuzzy
 msgid "In game:"
-msgstr "名稱："
+msgstr "遊戲："
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
 msgid "(observing)"
@@ -3722,14 +3698,12 @@ msgid "In lobby"
 msgstr ""
 
 #: src/gui/dialogs/lobby_player_info.cpp:129
-#, fuzzy
 msgid "On friends list"
-msgstr "已加入好友名單："
+msgstr "在好友清單"
 
 #: src/gui/dialogs/lobby_player_info.cpp:134
-#, fuzzy
 msgid "On ignores list"
-msgstr "已加入黑名單："
+msgstr "在黑名單"
 
 #: src/gui/dialogs/lobby_player_info.cpp:139
 msgid "Neither a friend nor ignored"
@@ -3787,17 +3761,17 @@ msgstr "載入遊戲配置。"
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
 #, fuzzy
 msgid "Verifying cache"
-msgstr "正在驗證暫存"
+msgstr "正在驗證暫存..."
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
 #, fuzzy
 msgid "Reading files and creating cache"
-msgstr "載入資料並新增暫存。"
+msgstr "讀取資料並新增暫存..."
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
 #, fuzzy
 msgid "Reading unit files"
-msgstr "載入部隊資料。"
+msgstr "讀取單位資料..."
 
 #: src/loadscreen.cpp:227
 #, fuzzy
@@ -3816,7 +3790,7 @@ msgstr "讀取主畫面。"
 
 #: src/loadscreen.cpp:230
 msgid "Loading data files"
-msgstr "讀取數據文件"
+msgstr "載入資料"
 
 #: src/loadscreen.cpp:234
 msgid "Loading level"
@@ -3991,7 +3965,7 @@ msgstr "是"
 
 #: src/menu_events.cpp:570
 msgid "Scenario Settings"
-msgstr "場景設定"
+msgstr "任務設定"
 
 #: src/menu_events.cpp:573
 msgid " < Back"
@@ -4139,9 +4113,8 @@ msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
 #: src/menu_events.cpp:2073
-#, fuzzy
 msgid "Error:"
-msgstr "錯誤:"
+msgstr "錯誤："
 
 #: src/menu_events.cpp:2079
 msgid "Missing argument $arg_id"
@@ -4154,7 +4127,6 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2127 src/menu_events.cpp:2128 src/menu_events.cpp:2151
-#, fuzzy
 msgid "help"
 msgstr "幫助"
 
@@ -4167,9 +4139,8 @@ msgid " No help available."
 msgstr "無資料"
 
 #: src/menu_events.cpp:2144
-#, fuzzy
 msgid "Usage:"
-msgstr "訊息："
+msgstr "用量："
 
 #: src/menu_events.cpp:2149
 msgid "aliases:"
@@ -4180,9 +4151,8 @@ msgid "(A) - admin command"
 msgstr ""
 
 #: src/menu_events.cpp:2277 src/menu_events.cpp:2480
-#, fuzzy
 msgid "(admin only)"
-msgstr "針對團隊"
+msgstr "（只限管理者）"
 
 #: src/menu_events.cpp:2297
 msgid ""
@@ -4215,23 +4185,20 @@ msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "禁止一個觀察者發言。不加參數則顯示禁言狀態。"
 
 #: src/menu_events.cpp:2311
-#, fuzzy
 msgid "Unmute an observer. Without an argument unmutes everyone."
-msgstr "禁止一個觀察者發言。不加參數則顯示禁言狀態。"
+msgstr "取消禁止觀察者發言。不加入參數則顯示禁言狀態。"
 
 #: src/menu_events.cpp:2313
-#, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "禁止所有觀察者發言。"
+msgstr "禁止/不禁止所有觀察者發言。（切換）"
 
 #: src/menu_events.cpp:2323
 msgid "Send a message to the server admins currently online"
 msgstr "發送簡訊給在線上的管理員。"
 
 #: src/menu_events.cpp:2325
-#, fuzzy
 msgid "<message>"
-msgstr "訊息："
+msgstr "<訊息>"
 
 #: src/menu_events.cpp:2325
 msgid "Send an emotion or personal action in chat."
@@ -4259,7 +4226,7 @@ msgstr "更改日誌的級別。"
 
 #: src/menu_events.cpp:2336
 msgid "Add a nick to your ignores list."
-msgstr "將玩家列入您的黑名單。用法：/list ignore <玩家id>"
+msgstr "將玩家列入您的黑名單。"
 
 #: src/menu_events.cpp:2338
 msgid "Add a nick to your friends list."
@@ -4310,18 +4277,16 @@ msgid "<room>"
 msgstr ""
 
 #: src/menu_events.cpp:2358
-#, fuzzy
 msgid "Join a room."
-msgstr "加入遊戲"
+msgstr "加入遊戲。"
 
 #: src/menu_events.cpp:2361
 msgid "Part a room."
 msgstr ""
 
 #: src/menu_events.cpp:2363
-#, fuzzy
 msgid "List room members."
-msgstr "伺服器列表"
+msgstr "成員清單。"
 
 #: src/menu_events.cpp:2365
 msgid "List available rooms."
@@ -4348,14 +4313,12 @@ msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
 #: src/menu_events.cpp:2478
-#, fuzzy
 msgid "(debug command)"
-msgstr "偵錯模式指令"
+msgstr "（偵錯指令）"
 
 #: src/menu_events.cpp:2479
-#, fuzzy
 msgid "(network only)"
-msgstr "網絡玩家"
+msgstr "（只限網路）"
 
 #: src/menu_events.cpp:2504
 msgid "Refresh gui."
@@ -4370,9 +4333,8 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
 #: src/menu_events.cpp:2509
-#, fuzzy
 msgid "<side> <nick>"
-msgstr "用法: control <陣營> <玩家id>"
+msgstr "<side> <nick>"
 
 #: src/menu_events.cpp:2509
 msgid "Assign control of a side to a different player or observer."
@@ -4395,9 +4357,8 @@ msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
 #: src/menu_events.cpp:2518
-#, fuzzy
 msgid "Show fps."
-msgstr "顯示遊戲錄影"
+msgstr "顯示fps。"
 
 #: src/menu_events.cpp:2520
 msgid "Save game."
@@ -4577,51 +4538,42 @@ msgstr ""
 
 #: src/menu_events.cpp:2826 src/menu_events.cpp:2845
 #: src/multiplayer_connect.cpp:671
-#, fuzzy
 msgid "(empty)"
-msgstr "空位"
+msgstr "（空位）"
 
 #: src/menu_events.cpp:2826 src/menu_events.cpp:2832 src/menu_events.cpp:2882
-#, fuzzy
 msgid "ignores list"
-msgstr "已加入黑名單："
+msgstr "黑名單"
 
 #: src/menu_events.cpp:2832
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "已加入黑名單："
+msgstr "已加入黑名單：$nick"
 
 #: src/menu_events.cpp:2835 src/menu_events.cpp:2854
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "無效的用户名："
+msgstr "名稱錯誤：$nick"
 
 #: src/menu_events.cpp:2845 src/menu_events.cpp:2852 src/menu_events.cpp:2878
-#, fuzzy
 msgid "friends list"
-msgstr "已加入好友名單："
+msgstr "好友名單"
 
 #: src/menu_events.cpp:2852
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "已加入好友名單："
+msgstr "已加入好友清單：$nick"
 
 #: src/menu_events.cpp:2868
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "從名單中除去："
+msgstr "從清單移除：$nick"
 
 #: src/menu_events.cpp:2868 src/menu_events.cpp:2886
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "已加入黑名單："
+msgstr "好友與黑名單"
 
 #: src/menu_events.cpp:2886
 msgid "There are no players on your friends or ignore list."
 msgstr "您的好友名單和黑名單是空的."
 
 #: src/menu_events.cpp:2891
-#, fuzzy
 msgid "version"
 msgstr "版本"
 
@@ -4647,9 +4599,8 @@ msgid "setting $var to $value"
 msgstr ""
 
 #: src/menu_events.cpp:2957
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "查看一名玩家的資訊。"
+msgstr "查看 $nick 玩家的資訊"
 
 #: src/menu_events.cpp:3070
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -4722,14 +4673,12 @@ msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
 #: src/menu_events.cpp:3535
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "無效標識名"
+msgstr "無效單位類型"
 
 #: src/menu_events.cpp:3548
-#, fuzzy
 msgid "Invalid location"
-msgstr "無效顔色"
+msgstr "無效位置"
 
 #: src/menu_events.cpp:3583
 #, fuzzy
@@ -4926,9 +4875,8 @@ msgid "Add named local player"
 msgstr "單機匿名玩家"
 
 #: src/multiplayer_connect.cpp:997
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "由於没有選擇陣營，本地圖無法使用。"
+msgstr "由於没有設定ID，此任務無法使用。"
 
 #: src/multiplayer_connect.cpp:1001
 msgid "The scenario is invalid because it has no sides."
@@ -4959,11 +4907,8 @@ msgid "Cannot find era $era"
 msgstr "找不到$era時期"
 
 #: src/multiplayer_connect.cpp:1611
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"勝利條件：\n"
-"@打敗敵人的領袖(們)"
+msgstr "擊敗敵人首領"
 
 #: src/multiplayer_connect.cpp:1710
 msgid "Waiting for players to join..."
@@ -5032,7 +4977,7 @@ msgstr "遊戲允許的最大回合數"
 
 #: src/multiplayer_create.cpp:149
 msgid "Enables user time limit"
-msgstr "開啓玩家時限"
+msgstr "開啟玩家時限"
 
 #: src/multiplayer_create.cpp:155
 msgid "Longest time allowed for first turn (seconds)"
@@ -5060,7 +5005,7 @@ msgstr "一個單位升級所需的經驗值"
 
 #: src/multiplayer_create.cpp:187
 msgid "Use scenario specific settings"
-msgstr "使用場景設置"
+msgstr "使用任務設定"
 
 #: src/multiplayer_create.cpp:190
 msgid "Randomize time of day in begin"
@@ -5100,16 +5045,15 @@ msgstr "没有找到這個時代"
 
 #: src/multiplayer_create.cpp:229
 msgid "$login|’s game"
-msgstr "$login的遊戲"
+msgstr "$login 的遊戲"
 
 #: src/multiplayer_create.cpp:290
 msgid "Invalid era selected"
 msgstr "所選時期無效"
 
 #: src/multiplayer_create.cpp:336
-#, fuzzy
 msgid "The map is invalid."
-msgstr "本遊戲結束。"
+msgstr "地圖錯誤。"
 
 #: src/multiplayer_create.cpp:338
 msgid "You must enter a name."
@@ -5161,7 +5105,7 @@ msgstr "大小"
 
 #: src/multiplayer_lobby.cpp:124
 msgid "--no games open--"
-msgstr "—當前没有已建立的遊戲—"
+msgstr "--目前没有建立遊戲--"
 
 #: src/multiplayer_lobby.cpp:158
 msgid " (Unknown Era)"
@@ -5196,16 +5140,14 @@ msgid "Quit"
 msgstr "退出"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Apply Filter"
-msgstr "過濾： "
+msgstr "套用過濾： "
 
 #: src/multiplayer_lobby.cpp:739
 msgid "Invert"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:740
-#, fuzzy
 msgid "Vacant Slots"
 msgstr "空位："
 
@@ -5354,7 +5296,7 @@ msgstr ""
 #: src/play_controller.cpp:1313 src/replay_controller.cpp:221
 #, fuzzy
 msgid "Error details:"
-msgstr "錯誤:"
+msgstr "錯誤："
 
 #: src/playcampaign.cpp:137 src/playcampaign.cpp:177
 msgid "Defeat"
@@ -5393,9 +5335,8 @@ msgid "$name has taken control"
 msgstr ""
 
 #: src/playmp_controller.cpp:93
-#, fuzzy
 msgid "Turn changed"
-msgstr "遠攻"
+msgstr "交換回合"
 
 #: src/playmp_controller.cpp:224
 msgid "Undoing moves not yet transmitted to the server."
@@ -5445,15 +5386,15 @@ msgstr "金幣： "
 
 #: src/playsingle_controller.cpp:267
 msgid "Carry over percentage: "
-msgstr "資金轉移到下一幕："
+msgstr "資金轉移比例："
 
 #: src/playsingle_controller.cpp:270
 msgid "Bonus Gold: "
-msgstr "奬勵金錢: "
+msgstr "奬勵金幣: "
 
 #: src/playsingle_controller.cpp:272
 msgid "Retained Gold: "
-msgstr "所剩資金： "
+msgstr "所剩金幣： "
 
 #: src/playsingle_controller.cpp:285
 msgid ""
@@ -5462,17 +5403,16 @@ msgid ""
 msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
-msgstr[0] "您將以 $gold 金子開始下一幕。不會考慮遊戲預定的最小起始資金。"
-msgstr[1] "你將以 $gold 金子開始下一幕。不會考慮遊戲預定的最小起始資金。"
+msgstr[0] "您將以 $gold 金幣開始下一幕。不會考慮遊戲預設的最小資金。"
+msgstr[1] "您將以 $gold 金幣開始下一幕。不會考慮遊戲預設的最小資金。"
 
 #: src/playsingle_controller.cpp:293
-#, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
-msgstr[0] "您將以 $gold 金子開始下一幕。不會考慮遊戲預定的最小起始資金。"
-msgstr[1] "你將以 $gold 金子開始下一幕。不會考慮遊戲預定的最小起始資金。"
+msgstr[0] "您將在下一任務中以預設的最小資金開始遊戲。"
+msgstr[1] "您將在下一任務中以預設的最小資金開始遊戲。"
 
 #: src/playsingle_controller.cpp:301
 msgid ""
@@ -5493,11 +5433,13 @@ msgstr "本遊戲結束。"
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
-msgstr "網絡連接已斷開，遊戲無法繼續進行。您想儲存遊戲嗎？"
+msgstr ""
+"網路連線已中斷，\n"
+"已無法進行遊戲。您要儲存此遊戲嗎？"
 
 #: src/playsingle_controller.cpp:667
 msgid "It is now $name|’s turn"
-msgstr "輪到$name|了"
+msgstr "輪到 $name| 了"
 
 #: src/playsingle_controller.cpp:896
 msgid "Scenario Report"
@@ -5536,7 +5478,9 @@ msgstr "$player 已經離開遊戲，您想做什麽？"
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
 "Do you want to save the game?"
-msgstr "網絡連接已斷開，遊戲無法繼續進行。您想儲存遊戲嗎？"
+msgstr ""
+"網路連線已中斷，\n"
+"已無法進行遊戲。您要儲存此遊戲嗎？"
 
 #: src/reports.cpp:145
 #, fuzzy
@@ -5608,9 +5552,8 @@ msgid "petrified: "
 msgstr ""
 
 #: src/reports.cpp:242
-#, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
-msgstr "本單位已石化。不能攻撃或移動。"
+msgstr "本單位已被石化。不能攻撃或移動它。"
 
 #: src/reports.cpp:256
 msgid "Alignment: "
@@ -5765,9 +5708,8 @@ msgid "This is not a multiplayer save"
 msgstr "這不是多人對戰的存檔"
 
 #: src/savegame.cpp:607
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "無法儲存遊戲"
+msgstr "無法儲存遊戲："
 
 #: src/savegame.cpp:694
 msgid "Save already exists. Do you want to overwrite it?"
@@ -5838,9 +5780,8 @@ msgid "Unexpected closing tag"
 msgstr "意外的結束標識"
 
 #: src/serialization/parser.cpp:195
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgstr "發現無效的$tag標志的結束標志$tag2（打開於 $pos 處）"
+msgstr "發現無效的 $tag1 標籤並取消標籤 $tag2（在 $pos 開啓）"
 
 #: src/serialization/parser.cpp:220 src/serialization/parser.cpp:232
 msgid "Empty variable name"
@@ -5891,7 +5832,6 @@ msgid "Damage"
 msgstr "傷害"
 
 #: src/statistics_dialog.cpp:176
-#, fuzzy
 msgid "Overall"
 msgstr "累計"
 
@@ -6022,6 +5962,9 @@ msgstr "忠誠"
 msgid "female^neutral"
 msgstr "中立"
 
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "多人對戰預設AI"
+
 #~ msgid "Underground"
 #~ msgstr "地下"
 
@@ -6108,456 +6051,6 @@ msgstr "中立"
 #~ "'治療+4'能力無法解除附近單位的中毒效果,只有進入村莊或者靠近擁有'治愈'能力"
 #~ "的單位可以解毒"
 
-#~ msgid "race^Bat"
-#~ msgstr "蝙蝠"
-
-#~ msgid "race+female^Bat"
-#~ msgstr "蝙蝠"
-
-#~ msgid "race^Bats"
-#~ msgstr "蝙蝠"
-
-#~ msgid "race^Drake"
-#~ msgstr "龍族"
-
-#~ msgid "race+female^Drake"
-#~ msgstr "龍族"
-
-#~ msgid "race^Drakes"
-#~ msgstr "龍族"
-
-#, fuzzy
-#~ msgid ""
-#~ "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#~ "true dragons. On average, an adult drake stands around three meters tall "
-#~ "and easily weighs more than a man and a horse combined. Their skin is "
-#~ "made up of hard scales, resistant to most physical strikes except "
-#~ "piercing and cold damage. Most drakes are capable of true flight and can "
-#~ "travel long distances quickly. However, their sheer weight and bulk "
-#~ "limits their flight ability somewhat, making them ungainly in the air. "
-#~ "Where possible, they make use of terrain features such as hills, "
-#~ "mountains and trees as launch points in order to gain greater height and "
-#~ "speed. Fortunately for their enemies, they are still quite clumsy "
-#~ "creatures and surprisingly slow in combat. This, combined with their "
-#~ "large size, renders them easy targets for those who dare attack them.\n"
-#~ "\n"
-#~ "Drakes are inherently magical creatures, with a mysterious internal fire "
-#~ "fueling their very lives. This can easily be witnessed when one of their "
-#~ "kind perishes in combat; its internal fire is released, burning their "
-#~ "remains in to ashes. Their internal fire is also their greatest weakness; "
-#~ "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#~ "nature, drakes are incapable of channeling magic in a controlled manner. "
-#~ "While the magic imbued within a drake’s body enables it to spit fire and "
-#~ "gives it life, they have no willful control over its functions of this "
-#~ "magic.\n"
-#~ "\n"
-#~ "<header>text='Society'</header>\n"
-#~ "Drakes are a relatively warlike race and their societies can be best "
-#~ "described as cultured martial societies. The core of a drake tribe is a "
-#~ "small group of veteran warriors headed by a mutually respected — or "
-#~ "simply feared — <ref>dst='dominant' text='dominant'</ref> who rules the "
-#~ "society with an iron fist. Every drake is expected to earn their place in "
-#~ "the strict hierarchy, to obey their superiors and command their "
-#~ "inferiors. Entry to the ruling elite is only possible through challenging "
-#~ "and defeating a superior in single combat, which is the way the hierarchy "
-#~ "within the elite itself is established. The use of deception of any kind "
-#~ "towards any fellow drake is, without exception, seen as cowardly and "
-#~ "unacceptable.\n"
-#~ "\n"
-#~ "While their warlike nature and sense of territory drives them to defend "
-#~ "their territories savagely, drakes rarely invade or trespass on areas "
-#~ "already occupied by the other major races. Instead, they settle in "
-#~ "unpopulated areas to establish their own territory there. They primarily "
-#~ "feed on large game they hunt in the lowlands around their homes, but "
-#~ "hatchlings and lower caste drakes are known to feed also on certain of "
-#~ "moss and fungi they cultivate deep in their caverns. The only technology "
-#~ "drakes value is armor- and weapon-smithing, and neither know or need "
-#~ "other science and culture besides this. However the few implements they "
-#~ "do fashion are almost unrivaled in quality, only matched by those "
-#~ "produced in the finest Dwarvish foundries.\n"
-#~ "\n"
-#~ "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
-#~ "years. Death in battle is the most preferred way for a drake to leave "
-#~ "this world. Unlike the elder members of other races, drakes naturally "
-#~ "grow more aggressive and reckless towards the ends of their natural "
-#~ "lives, perhaps to help ensure their place in the heroic legends of their "
-#~ "kind.\n"
-#~ "\n"
-#~ "<header>text='Geography'</header>\n"
-#~ "Drakes originated from an archipelago of volcanic islands called "
-#~ "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#~ "text='Great Ocean'</ref>. A combination of population pressure and the "
-#~ "subsidence of many of their home islands has caused colonies of drakes to "
-#~ "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#~ "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#~ "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#~ "warmth, their internal fire is more than capable of sustaining them even "
-#~ "in a relatively cold climate, a feature which has allowed them to "
-#~ "populate even some of the mountains of the far north of the Great "
-#~ "Continent."
-#~ msgstr ""
-#~ "龍族是龐大，有翼，呼吸火焰的生物，龍的後裔。平允而言，成年龍族站起有三米"
-#~ "高，和一個人加一匹馬的總重量相當。而且皮膚由堅硬的鱗片覆蓋，抵抗除了刺和冰"
-#~ "凍之外的所有攻撃。他們大多會飛，能快速地遠距離移動。但是他們體重和碩大影響"
-#~ "了飛行能力。所以他們常常在山間樹叢起飛，獲取加速度。對於敵人來説幸運的是，"
-#~ "龍族還是太大了，戰鬥中移動緩慢。這様的大身材，讓那些膽敢襲撃他們的家夥容易"
-#~ "撃中目標。"
-
-#~ msgid "race^Dwarf"
-#~ msgstr "矮人"
-
-#~ msgid "race+female^Dwarf"
-#~ msgstr "矮人"
-
-#~ msgid "race^Dwarves"
-#~ msgstr "矮人"
-
-#~ msgid ""
-#~ "The dwarves are a race famed for their miners, blacksmiths, merchants and "
-#~ "warriors. Considered as the third oldest race on the great continent "
-#~ "after the elves and trolls, their early history is shrouded in mystery. "
-#~ "Legends tell of a time long forgotten when their people began emerging "
-#~ "from their underground world through caves. Nothing is known about their "
-#~ "life prior to their arrival, or their reasons for entering the surface "
-#~ "world, but they have been an integral part of the history of the "
-#~ "continent since. Soon after their emergence from the underground, the "
-#~ "dwarves entered into conflict with the original inhabitants of the land, "
-#~ "the elves. The original reason for their dispute has been lost to "
-#~ "history, but the two races have since fought three long wars, interrupted "
-#~ "by a few decades of peace. During these wars the dwarves could not "
-#~ "dislodge the elves from the deep forests in the south, but managed to "
-#~ "consolidate their position in hills and the mountains in the north of the "
-#~ "continent, known now as the Northlands. Since then they have constructed "
-#~ "fantastic fortifications and settlements deep within the mountains and "
-#~ "crags of their territory.\n"
-#~ "\n"
-#~ "Possibly due to their isolation, the dwarves are generally distrustful or "
-#~ "hostile towards most other races, particularly the elves. The single "
-#~ "exception to this temperament is towards humans. This could be traced "
-#~ "back to the era of Haldric I and the arrival of humans and orcs to the "
-#~ "continent. At this point the dwarves began allowing some humans, mostly "
-#~ "dissidents and outlaws from the Kingdom of Wesnoth, to settle in certain "
-#~ "areas of the Northlands. Their motivation was unsurprising. The plight of "
-#~ "these individuals reminded the dwarves of their early history of "
-#~ "persecution, eliciting a sense of solidarity. The dwarves also had much "
-#~ "to gain in forming a bond with these outcasts. They would settle in areas "
-#~ "where dwarves disliked living themselves; plains, forests, and swamps, "
-#~ "freeing them from defending these areas.\n"
-#~ "\n"
-#~ "Dwarves are of small stature by human measure, but they are by no means "
-#~ "fragile. Their warriors, tough and powerful are both feared and respected "
-#~ "throughout the continent for their prowess in battle. In addition, "
-#~ "dwarves are known for their calculating intellects and superb "
-#~ "craftsmanship. Dwarven smiths are renowned for their deadly weapons and "
-#~ "heavy armor. These accouterments are unrivaled in quality, possibly only "
-#~ "matched by those produced by drake armorers. Their intelligence and "
-#~ "natural inquisitiveness has also made them the most technically advanced "
-#~ "race on the continent. One of their most famous, and feared, discoveries "
-#~ "was a mysterious powder that produces an immense explosion when exposed "
-#~ "to fire or sparks. Certain dwarf warriors use this powder to hurl small "
-#~ "objects at tremendous speeds. Given their technological inclinations, "
-#~ "many dwarves tend to distrust magic users. However some practice a form "
-#~ "of magic based on the engraving of runes. Called runesmiths, they use "
-#~ "these carvings to enchant items in order to augment certain aspects of "
-#~ "their natures."
-#~ msgstr ""
-#~ "矮人族以其為礦工、鐵匠、商人和戰士而著名。他們是在大陸上僅次於精靈和巨魔最"
-#~ "古老的種族，其早期歷史一直是個謎。傳説很久之前他們從地下世界穿過洞窟上來。"
-#~ "而那之前的一切生活都没有任何記録，包括來到地表的理由。他們從地底扶蘇不久，"
-#~ "他們和這大陸上的原住民精靈發生紛爭。原因也已逝，但兩族發生了三次大戰爭，每"
-#~ "次都有幾個世紀的間隔。During these wars the dwarves could not dislodge "
-#~ "the elves from the deep forests in the south, but managed to consolidate "
-#~ "their position in hills and the mountains in the north of the continent, "
-#~ "known now as the Northlands. Since then they have constructed fantastic "
-#~ "fortifications and settlements deep within the mountains and crags of "
-#~ "their territory.\n"
-#~ "\n"
-#~ "Possibly due to their isolation, the dwarves are generally distrustful or "
-#~ "hostile towards most other races, particularly the elves. The single "
-#~ "exception to this temperament is towards humans. This could be traced "
-#~ "back to the era of 海德洛克一世 and the arrival of humans and orcs to the "
-#~ "continent. At this point the dwarves started allowing some humans, mostly "
-#~ "dissidents and outlaws from the Crown of Wesnoth, to settle in certain "
-#~ "areas of the Northlands. Their motivation was unsurprising. The plight of "
-#~ "these individuals reminded the dwarves of their early history of "
-#~ "persecution, eliciting a sense of solidarity. The dwarves also had much "
-#~ "to gain in forming a bond with these outcasts. They would settle in areas "
-#~ "where dwarves disliked living themselves; plains, forests, and swamps, "
-#~ "freeing them from defending these areas. Later, when threatened by the "
-#~ "Orcs, the dwarves and their human allies formed The Alliance of Knalga to "
-#~ "defend their common realm.\n"
-#~ "\n"
-#~ "Dwarves are of small stature by human measure, but they are by no means "
-#~ "fragile. Their warriors, tough and powerful are both feared and respected "
-#~ "throughout the continent for their prowess in battle. In addition, "
-#~ "dwarves are known for their calculating intellects and superb "
-#~ "craftsmanship. Dwarven smiths are renowned for their deadly weapons and "
-#~ "heavy armor. These accouterments are unrivaled in quality, possibly only "
-#~ "matched by those produced by drake armourers. Their intelligence and "
-#~ "natural inquisitiveness has also made them the most technically advanced "
-#~ "race on the continent. One of their most famous, and feared, discoveries "
-#~ "was a mysterious powder that produces an immense explosion when exposed "
-#~ "to fire or sparks. Certain dwarf warriors use this powder to hurl small "
-#~ "objects at tremendous speeds. Given their technological inclinations, "
-#~ "many dwarves tend to distrust magic users. However some practice a form "
-#~ "of magic based on the engraving of runes. Called runesmiths, they use "
-#~ "these carvings to enchant items in order to augment certain aspects of "
-#~ "their natures."
-
-#~ msgid "race^Elf"
-#~ msgstr "精靈"
-
-#~ msgid "race+female^Elf"
-#~ msgstr "精靈"
-
-#~ msgid "race^Elves"
-#~ msgstr "精靈"
-
-# 未完成
-#, fuzzy
-#~ msgid ""
-#~ "Compared to humans, elves are somewhat taller, more agile but less "
-#~ "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
-#~ "Few differences between humans and elves are more pronounced than the "
-#~ "Elves’ unusually long life — most, unless claimed by illness, accident or "
-#~ "war, live a full two and a half centuries. While some elves possessing a "
-#~ "high magical aptitude have been known to live an additional full century, "
-#~ "most elves begin to grow physically frail at some point between 250 and "
-#~ "300 years of age and pass away rapidly (generally within a year or two) "
-#~ "thereafter.\n"
-#~ "\n"
-#~ "Elves are naturally imbued with magic to a small degree. Though most are "
-#~ "unable to channel it directly, its latent presence gives them their keen "
-#~ "senses and long life. Many elves have magic-driven talents such as "
-#~ "marksmanship or stealth, allowing them to achieve tasks that most normal "
-#~ "beings would find astonishing. Those elves that learn to wield this power "
-#~ "in more general ways can become truly formidable in its use. Many choose "
-#~ "to use their gift to heal others.\n"
-#~ "\n"
-#~ "A few elves, venturing far down the paths of magic and mysticism, become "
-#~ "sensitive to the presence of cold iron and can even be burned by it. "
-#~ "Elvish legend hints that this was more common in the far past.\n"
-#~ "\n"
-#~ "Elves spend much of their time honing their talents and skills. Those not "
-#~ "adept at the magical arts typically devote their time honing their "
-#~ "physical skills. As a result, elves excel at archery, which is perhaps "
-#~ "their most important method of warfare. Most elvish troops carry a bow "
-#~ "and no other race can rival their archers in speed and accuracy. All "
-#~ "elves also share an intense affection for unspoiled nature. They often "
-#~ "feel uncomfortable in open unvegetated spaces. They live primarily in the "
-#~ "forests of the Great Continent; the Aethenwood in the southwest, Wesmere "
-#~ "in the northwest, and the great northern woods of which the Lintanir "
-#~ "Forest is the southernmost edge.\n"
-#~ "\n"
-#~ "Elves are the eldest race of the continent, with the possible exception "
-#~ "of trolls. Many of their settlements cannot be reliably dated, "
-#~ "undoubtedly having existed for over a millennium."
-#~ msgstr ""
-#~ "相較於人類，精靈長得較高且行動敏捷，但是體格方面不比人類壯碩。他們有對尖長"
-#~ "的耳朵、較淡的膚色且通常是ㄧ頭金髮。跟人類稍微不一樣的地方就是他們有非比尋"
-#~ "常的生命力，除了疾病、戰爭及等等的意外，他們大概可以活兩百年。大部分的精靈"
-#~ "活到190年後就開始變得虛弱，在剩下的十年內就會死亡，不過據了解一些擁有高魔"
-#~ "法資質的精靈可以多活一百年。精靈天生就有微弱的魔力，雖然大部分的精靈不會善"
-#~ "用魔法，不過這潛藏的魔力賦予他們敏捷及長壽。許多精靈會透過魔法駕馭像是射術"
-#~ "或偷竊的能力，使他們完成令人為之驚訝的任務。那些學會掌握這股力量的精靈會變"
-#~ "成傑出的使用者，而通常他們將這個天賦用來治療他人。\n"
-#~ "\n"
-#~ "      精靈花很多時間來鍛鍊技能和能力，對魔法不熟悉的就鍛鍊他們的體技。因此"
-#~ "這樣的精靈擅長箭術，或許這是戰爭重要的技術的關係。不管是在精準度或速度，通"
-#~ "常沒有一個種族可以跟精靈部隊的射手匹敵。所有的精靈對自然都有種無法解釋的情"
-#~ "感。他們很難適應暴露在沒有植物的地帶，這就是為什麼他們的家園會在森林，像是"
-
-#~ msgid "race^Goblin"
-#~ msgstr "地精"
-
-#~ msgid "race+female^Goblin"
-#~ msgstr "地精"
-
-#~ msgid "race^Goblins"
-#~ msgstr "地精"
-
-#~ msgid "race^Gryphon"
-#~ msgstr "獅鷲"
-
-#~ msgid "race+female^Gryphon"
-#~ msgstr "獅鷲"
-
-#~ msgid "race^Gryphons"
-#~ msgstr "獅鷲"
-
-#~ msgid "race^Human"
-#~ msgstr "人類"
-
-#~ msgid "race+female^Human"
-#~ msgstr "人類"
-
-#~ msgid "race^Humans"
-#~ msgstr "人類"
-
-#~ msgid "race^Saurian"
-#~ msgstr "蜥蜴人"
-
-#~ msgid "race+female^Saurian"
-#~ msgstr "蜥蜴人"
-
-#~ msgid "race^Saurians"
-#~ msgstr "蜥蜴人"
-
-#~ msgid "race^Mechanical"
-#~ msgstr "機械"
-
-#~ msgid "race+plural^Mechanical"
-#~ msgstr "機械"
-
-#~ msgid "race^Merman"
-#~ msgstr "人魚"
-
-#~ msgid "race^Mermaid"
-#~ msgstr "人魚"
-
-#~ msgid "race^Mermen"
-#~ msgstr "人魚"
-
-#~ msgid "race^Monster"
-#~ msgstr "怪物"
-
-#~ msgid "race^Monsters"
-#~ msgstr "怪物"
-
-#~ msgid "race^Naga"
-#~ msgstr "納迦"
-
-#~ msgid "race^Nagani"
-#~ msgstr "納迦"
-
-#~ msgid "race^Nagas"
-#~ msgstr "納迦"
-
-#~ msgid "race^Ogre"
-#~ msgstr "食人魔"
-
-#~ msgid "race+female^Ogre"
-#~ msgstr "食人魔"
-
-#~ msgid "race^Ogres"
-#~ msgstr "食人魔"
-
-#~ msgid "race^Orc"
-#~ msgstr "半獸人"
-
-#~ msgid "race+female^Orc"
-#~ msgstr "半獸人"
-
-#~ msgid "race^Orcs"
-#~ msgstr "半獸人"
-
-#~ msgid "race^Troll"
-#~ msgstr "巨魔"
-
-#~ msgid "race+female^Troll"
-#~ msgstr "巨魔"
-
-#~ msgid "race^Trolls"
-#~ msgstr "巨魔"
-
-#~ msgid "race^Undead"
-#~ msgstr "不死族"
-
-#~ msgid "race+female^Undead"
-#~ msgstr "不死族"
-
-#~ msgid "race+plural^Undead"
-#~ msgstr "不死族"
-
-#~ msgid ""
-#~ "Undead are not really a single race of creatures, although often treated "
-#~ "as such. Almost any dead creature can, by a sufficiently skilled "
-#~ "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#~ "most part unnatural but mindless constructs, obeying whoever created them "
-#~ "without question nor thought. A greater mystery of necromancy is in how "
-#~ "constructs are sustained without continuous effort from the necromancer. "
-#~ "An undead creature does not require the constant attention of the "
-#~ "necromancer to command and sustain, but can work autonomously according "
-#~ "to the commands of it’s master. Only rarely, perhaps once every few "
-#~ "months, does the necromancer need to maintain his creation.\n"
-#~ "\n"
-#~ "Necromancy is almost solely limited to humans. Even the legends of "
-#~ "magically apt races like elves and mermen tell of very few of their kind "
-#~ "who have ever delved in the dark arts. It is surmised that necromantic "
-#~ "magic requires great adaptability and a flexible mind, extremes of which "
-#~ "are most commonly found in humans. The ultimate goal of most necromancers "
-#~ "is to turn the same art of preserving and imbuing life upon themselves, "
-#~ "to alter themselves at whatever cost, to ultimately escape death by "
-#~ "preserving their own mind and spirit.\n"
-#~ "\n"
-#~ "<header>text='Geography'</header>\n"
-#~ "While undead lords arrived on the Great Continent in considerable numbers "
-#~ "only in the wake of Haldric I, they were not completely unheard of by "
-#~ "elves and dwarves before that."
-#~ msgstr ""
-#~ "儘管我們這樣分類，事實上，不死族並不是真正的「單一種族」生物。藉有足夠力量"
-#~ "的死靈法師協助，幾乎所有生物都能夠在死後被重新賦與活力，並站到不死族的這"
-#~ "邊。不死族大部份都是不自然的，同時也是缺乏心智的，他們會遵行創造者的任何命"
-#~ "令，不會去思考或詢問問題。死靈術最神祕的地方，就是如何維持這樣的一個體系，"
-#~ "而不需要死靈法師持續提供影響力。一個不死生物不需要死靈法師不斷注意他們、給"
-#~ "予他們命令或維持他們，這些「生物」能自動地根據主人的指示而做任何事情。只有"
-#~ "在極少數的時候--也許是隔好幾個月，死靈法師才需要去維護一次他的作品。\n"
-#~ "\n"
-#~ "死靈術的使用者幾乎只限於人類。即使是具有神奇魔法技藝的種族，如精靈或人魚，"
-#~ "對這種黑暗的技巧也只有非常少的研究。或許是因為死靈魔法要求使用者心靈極大的"
-#~ "適應能力與彈性，而這種極端的特質通常只有在人類中才找得到。絕大多數死靈魔法"
-#~ "師的終極目標，是利用同樣技術，不計一切代價地改變自己，藉著保存自己的靈魂與"
-#~ "心志達到永生不死的目的。\n"
-#~ "\n"
-#~ "<header>text='Geography'</header>\n"
-#~ "While undead lords arrived on the Great Continent in considerable numbers "
-#~ "only in the wake of Haldric I, they were not completely unheard of by "
-#~ "elves and dwarves before that."
-
-#~ msgid "race^Wolf"
-#~ msgstr "狼"
-
-#~ msgid "race^Wolves"
-#~ msgstr "狼"
-
-#~ msgid "race^Wose"
-#~ msgstr "樹人"
-
-#~ msgid "race^Woses"
-#~ msgstr "樹人"
-
-#, fuzzy
-#~ msgid "Caste"
-#~ msgstr "城堡"
-
-#, fuzzy
-#~ msgid "Breeding Pen"
-#~ msgstr "祭祀"
-
-#, fuzzy
-#~ msgid "Hatchling"
-#~ msgstr "治療"
-
-#, fuzzy
-#~ msgid "Fledgling"
-#~ msgstr "治療"
-
-#, fuzzy
-#~ msgid "Intendant"
-#~ msgstr "聰慧"
-
-#, fuzzy
-#~ msgid "Swarm"
-#~ msgstr "連撃"
-
-#, fuzzy
-#~ msgid "Swarming"
-#~ msgstr "連撃"
-
-#, fuzzy
-#~ msgid "Drakish, language"
-#~ msgstr "切換語言"
-
 #~ msgid "Introduction"
 #~ msgstr "遊戲介紹"
 
@@ -6570,12 +6063,8 @@ msgstr "中立"
 #~ msgid "Abilities"
 #~ msgstr "技能"
 
-#~ msgid "Weapon Specials"
-#~ msgstr "專長"
-
-#, fuzzy
 #~ msgid "Factions"
-#~ msgstr "部隊"
+#~ msgstr "陣營"
 
 #~ msgid "Terrains"
 #~ msgstr "地形"
@@ -6616,16 +6105,15 @@ msgstr "中立"
 #~ msgid "Overview"
 #~ msgstr "概述"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
-#~ "strategy game somewhat unusual among modern strategy games. While other "
-#~ "games strive for complexity, Battle for Wesnoth strives for simplicity of "
-#~ "both rules and gameplay. This does not make the game simple, however — "
-#~ "from these simple rules arise a wealth of strategy, making the game easy "
-#~ "to learn but a challenge to master."
+#~ "Battle for Wesnoth is a turn-based fantasy strategy game somewhat unusual "
+#~ "among modern strategy games. While other games strive for complexity, "
+#~ "Battle for Wesnoth strives for simplicity of both rules and gameplay. "
+#~ "This does not make the game simple, however — from these simple rules "
+#~ "arise a wealth of strategy, making the game easy to learn but a challenge "
+#~ "to master."
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
@@ -6636,29 +6124,27 @@ msgstr "中立"
 #~ msgid "Fundamentals of Gameplay"
 #~ msgstr "遊戲基本教學"
 
-#, fuzzy
 #~ msgid ""
-#~ "These pages outline all you need to know to play <italic>text='Battle for "
-#~ "Wesnoth'</italic>. They cover how to play and the basic mechanics behind "
-#~ "the game. As you play the game, new information is added to these pages "
-#~ "as you come across new aspects of the game. For more detailed information "
-#~ "on special situations and exceptions, please follow the links included."
+#~ "These pages outline all you need to know to play Battle for Wesnoth. They "
+#~ "cover how to play and the basic mechanics behind the game. As you play "
+#~ "the game, new information is added to these pages as you come across new "
+#~ "aspects of the game. For more detailed information on special situations "
+#~ "and exceptions, please follow the links included."
 #~ msgstr ""
 #~ "這篇文章描述了玩“韋諾之戰”所必需的知識，包括教學與基本遊戲規則。當您在遊戲"
 #~ "中遇到新的資訊時，發現的新資訊也會添加到這裡。需要了解詳情或是特殊情况與例"
 #~ "外，請繼續閱讀以下的連結。"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "To begin with, it’s best to click the <bold>text=Tutorial</bold> button "
-#~ "at the main menu. This will take you to the interactive tutorial, which "
-#~ "will teach you the basics of Wesnoth. After this, it is recommended that "
-#~ "you play the Heir to the Throne campaign first — click "
-#~ "<bold>text=Campaign</bold> then <italic>text='Heir to the Throne'</"
-#~ "italic>. As <italic>text='Battle for Wesnoth'</italic> can be quite "
-#~ "challenging, you may wish to start on <italic>text=Easy</italic>."
+#~ "To begin with, it’s best to click the <italic>text=Tutorial</italic> "
+#~ "button at the main menu. This will take you to the interactive tutorial, "
+#~ "which will teach you the basics of Wesnoth. After this, it is recommended "
+#~ "that you play the Heir to the Throne campaign first — click "
+#~ "<italic>text=Campaign</italic> then <italic>text='Heir to the Throne'</"
+#~ "italic>. As Battle for Wesnoth can be quite challenging, you may wish to "
+#~ "start on <italic>text=Easy</italic>."
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
@@ -6723,15 +6209,13 @@ msgstr "中立"
 #~ "領陣亡時遊戲失敗。但是有些任務可能有其他目標－讓您的首領到達指定地點，或者"
 #~ "救人，或者解决一個迷題，或者與敵人對抗並堅守一定回合數。"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "When you win a scenario, the map will gray over and the <bold>text='End "
-#~ "Turn'</bold> button will change to <bold>text='End Scenario'</bold>. You "
-#~ "can now do things like changing your save options or (if you are in a "
-#~ "multiplayer game) chatting with other players before pressing that button "
-#~ "to advance."
+#~ "When you win a scenario, the map will gray over and the 'End Turn' button "
+#~ "will change to 'End Scenario'. You can now do things like changing your "
+#~ "save options or (if you are in a multiplayer game) chatting with other "
+#~ "players before pressing that button to advance."
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
@@ -6741,7 +6225,6 @@ msgstr "中立"
 #~ msgid "Recruiting and Recalling"
 #~ msgstr "招募與徵召"
 
-#, fuzzy
 #~ msgid ""
 #~ "Each side begins with one leader in their keep. At the start of any "
 #~ "battle, and at times during it, you will need to recruit <ref>dst='.."
@@ -6749,10 +6232,10 @@ msgstr "中立"
 #~ "leader (for instance, Konrad in the Heir to the Throne campaign) on the "
 #~ "Keep square of a <ref>dst='terrain_castle' text='Castle'</ref>. Then you "
 #~ "may recruit by either choosing Recruit from the menu or right-clicking on "
-#~ "a hex and selecting <bold>text=Recruit</bold>. This brings up the recruit "
-#~ "menu, which lists units available for recruitment, along with their gold "
-#~ "cost. Click on a unit to see its statistics, then press the recruit "
-#~ "button to recruit it."
+#~ "a hex and selecting <italic>text=Recruit</italic>. This brings up the "
+#~ "recruit menu, which lists units available for recruitment, along with "
+#~ "their gold cost. Click on a unit to see its statistics, then press the "
+#~ "recruit button to recruit it."
 #~ msgstr ""
 #~ "遊戲開始時，每一方的指揮官都在城堡的主堡上。戰鬥開始之前或戰鬥過程中，您可"
 #~ "能需要為部隊招募<ref>dst=units text=士兵</ref>。要想招募士兵，指揮官（例"
@@ -6824,6 +6307,9 @@ msgstr "中立"
 #~ msgid "yellow if it has moved, but could still move further or attack, or"
 #~ msgstr "您控制這個士兵，該士兵本回合已經移動過，但還可以繼續移動或攻擊。"
 
+#~ msgid "red if it has used all its movement this turn."
+#~ msgstr "您控制這個士兵，該士兵已經不能行動。"
+
 #~ msgid "The orb is blue if the unit is an ally you do not control."
 #~ msgstr "您不能控制的同盟士兵"
 
@@ -6864,21 +6350,19 @@ msgstr "中立"
 #~ msgid "Movement"
 #~ msgstr "移動"
 
-#, fuzzy
 #~ msgid ""
-#~ "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click "
-#~ "on the unit you wish to move to select it, then click on the hex you wish "
-#~ "to move it to. When a unit is selected, everywhere it can move this turn "
-#~ "will be highlighted, and all other hexes on the map are made dull. "
-#~ "Mousing over a highlighted hex shows the defense rating the unit would "
-#~ "have if you moved it to that hex. Mousing over a dull hex will also show "
-#~ "the number of turns required to reach it, and clicking will cause the "
-#~ "unit to move towards it by the fastest route over this and subsequent "
-#~ "turns. If you don’t use up all of a unit’s movement when you first move a "
-#~ "unit, you may move it again. This is useful when having two units switch "
-#~ "places. Attacking with a unit will use up its movement. Ending a move in "
-#~ "a village you don’t already own will also use up a unit’s movement, but "
-#~ "will still allow it to attack."
+#~ "Movement in Battle for Wesnoth is simple. Click on the unit you wish to "
+#~ "move to select it, then click on the hex you wish to move it to. When a "
+#~ "unit is selected, everywhere it can move this turn will be highlighted, "
+#~ "and all other hexes on the map are made dull. Mousing over a highlighted "
+#~ "hex shows the defense rating the unit would have if you moved it to that "
+#~ "hex. Mousing over a dull hex will also show the number of turns required "
+#~ "to reach it, and clicking will cause the unit to move towards it by the "
+#~ "fastest route over this and subsequent turns. If you don’t use up all of "
+#~ "a unit’s movement when you first move a unit, you may move it again. This "
+#~ "is useful when having two units switch places. Attacking with a unit will "
+#~ "use up its movement. Ending a move in a village you don’t already own "
+#~ "will also use up a unit’s movement, but will still allow it to attack."
 #~ msgstr ""
 #~ "韋諾之戰中移動士兵很簡單。只需點選您想要移動的士兵，再點選目的地就行了。當"
 #~ "士兵被選中時，該士兵在本回合可移動的範圍就會顯示出來，而本回合無法到達的區"
@@ -6945,18 +6429,17 @@ msgstr "中立"
 #~ msgid "Combat"
 #~ msgstr "戰鬥"
 
-#, fuzzy
 #~ msgid ""
-#~ "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
-#~ "between units in adjacent hexes. Click on your unit, and click on the "
-#~ "enemy you want to attack: your unit will move towards the enemy unit, and "
-#~ "when they are next to each other, combat will begin. The attacker and "
-#~ "defender alternate strikes until each has used their allotted number of "
-#~ "strikes. The attacker chooses one of its weapons to attack with, and the "
-#~ "defender retaliates with one of its attacks of the same type. There are "
-#~ "two types of attacks: melee, which usually involves weapons such as "
-#~ "swords, axes or fangs; and ranged, which usually involves weapons such as "
-#~ "bows, spears and fireballs."
+#~ "Combat in Battle for Wesnoth always takes place between units in adjacent "
+#~ "hexes. Click on your unit, and click on the enemy you want to attack: "
+#~ "your unit will move towards the enemy unit, and when they are next to "
+#~ "each other, combat will begin. The attacker and defender alternate "
+#~ "strikes until each has used their allotted number of strikes. The "
+#~ "attacker chooses one of its weapons to attack with, and the defender "
+#~ "retaliates with one of its attacks of the same type. There are two types "
+#~ "of attacks: melee, which usually involves weapons such as swords, axes or "
+#~ "fangs; and ranged, which usually involves weapons such as bows, spears "
+#~ "and fireballs."
 #~ msgstr ""
 #~ "韋諾之戰中的戰鬥總是發生在相鄰的兩個單位之間。單撃選中您的單位，然後再點選"
 #~ "您想攻撃的敵人：您的單位會向敵人方向移動，當與敵人單位相鄰時，戰鬥就會開"
@@ -7092,7 +6575,6 @@ msgstr "中立"
 #~ "在韋諾裏，物理傷害通常有三種：劍刃，穿刺和衝撃傷害。此外，還有三種魔法攻"
 #~ "撃：火焰，寒冷和秘法攻撃。不同的單位對不同的傷害有不同的抗性。"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -7134,12 +6616,10 @@ msgstr "中立"
 #~ msgid "Time of Day"
 #~ msgstr "時刻"
 
-#, fuzzy
 #~ msgid ""
 #~ "The time of day affects the damage of certain units as follows:\n"
 #~ " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
 #~ " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-#~ " Liminal units get +25% damage during twilight.\n"
 #~ " Neutral units are unaffected by the time of day."
 #~ msgstr ""
 #~ "時間對不同種類的單位的攻撃强度有不同的影響，具體如下：\n"
@@ -7180,7 +6660,7 @@ msgstr "中立"
 #~ msgid ""
 #~ "Keep in mind that some scenarios take place underground, where it is "
 #~ "perpetually night!"
-#~ msgstr "記住，有些場景是發生在地下的，那裏一直是晚上。"
+#~ msgstr "記住，有些任務是發生在地下的，那裏一直是黑夜。"
 
 #~ msgid "Experience and Advancement"
 #~ msgstr "經驗值和升級"
@@ -7230,6 +6710,9 @@ msgstr "中立"
 #~ "增加3點最大生命值並補滿血。通常情况下，單位會在獲得100點經驗值（聰慧單位是"
 #~ "80點）後獲得第一次AMLA。不過，以後每次獲得AMLA的難度逐漸變大，所以讓您的低"
 #~ "等級單位升級一般會更有用處。"
+
+#~ msgid "Healing"
+#~ msgstr "治療"
 
 #~ msgid ""
 #~ "In combat, your units will inevitably take damage. When a unit "
@@ -7371,7 +6854,7 @@ msgstr "中立"
 #~ msgstr ""
 #~ "\n"
 #~ "費用的支付規則中有一個重要的例外：即具有忠誠特質的單位不需支付費用。每一幕"
-#~ "開始時您擁有的單位（比如康拉德或迪法多），或在場景中加入己方的單位（如"
+#~ "開始時您擁有的單位（比如康拉德或迪法多），或在任務中加入己方的單位（如"
 #~ "在“王位繼承者”第二幕中加入的騎兵）通常都具有忠誠特質。"
 
 #~ msgid "Wrap Up"
@@ -7394,13 +6877,11 @@ msgstr "中立"
 #~ msgid "License"
 #~ msgstr "授權"
 
-#, fuzzy
 #~ msgid ""
 #~ "Most units have two traits. However, Undead units are assigned the single "
-#~ "trait <italic>text='Undead'</italic>, and Woses do not receive any "
-#~ "traits. Traits are modifications that change a unit’s attributes "
-#~ "slightly. They are usually randomly assigned to a unit when it is "
-#~ "recruited."
+#~ "trait 'Undead', and Woses do not receive any traits. Traits are "
+#~ "modifications that change a unit’s attributes slightly. They are usually "
+#~ "randomly assigned to a unit when it is recruited."
 #~ msgstr ""
 #~ "大多數單位有兩種特質。然而，不死族只有一種特質，即“不死”。’和樹人則没有任"
 #~ "何特質。特質會細微的修正單位的屬性。通常招募的單位會獲得隨機的特質。"
@@ -7433,6 +6914,9 @@ msgstr "中立"
 #~ "<ref>dst=traits_loyal text=忠誠</ref>，和<ref>dst=traits_undead text=不死"
 #~ "</ref> 。\n"
 #~ "\n"
+
+#~ msgid "Intelligent"
+#~ msgstr "聰慧"
 
 #~ msgid "Intelligent units require 20% less experience than usual to advance."
 #~ msgstr "擁有聰慧特質的單位每次升級所需的經驗值比通常情况少20%。"
@@ -7528,10 +7012,6 @@ msgstr "中立"
 #~ "Aversion to light and dark holds no sway over these brave individuals."
 #~ msgstr "擁有無畏特質的單位的攻撃力不會因為白天或黑夜時段的不適而下降。"
 
-#, fuzzy
-#~ msgid "Feral"
-#~ msgstr "累計"
-
 #~ msgid "Loyal"
 #~ msgstr "忠誠"
 
@@ -7568,14 +7048,13 @@ msgstr "中立"
 #~ "them."
 #~ msgstr "擁有不死特質的單位免疫毒素,吸血和瘟疫。"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "Undead units generally have <italic>text='Undead'</italic> as their only "
-#~ "trait. Since Undead units are the bodies of the dead, risen to fight "
-#~ "again, poison has no effect upon them. This can make them invaluable in "
-#~ "dealing with foes who use poison in conjunction with their attacks."
+#~ "Undead units generally have 'Undead' as their only trait. Since Undead "
+#~ "units are the bodies of the dead, risen to fight again, poison has no "
+#~ "effect upon them. This can make them invaluable in dealing with foes who "
+#~ "use poison in conjunction with their attacks."
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
@@ -7591,13 +7070,12 @@ msgstr "中立"
 #~ "on them."
 #~ msgstr "擁有機械特質的單位免疫毒素、吸血和瘟疫也不起作用。"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "Mechanical units generally have <italic>text='Mechanical'</italic> as "
-#~ "their only trait. Since mechanical units don’t really have life, drain, "
-#~ "poison and plague has no effect upon them."
+#~ "Mechanical units generally have 'Mechanical' as their only trait. Since "
+#~ "mechanical units don’t really have life, drain, poison and plague has no "
+#~ "effect upon them."
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
@@ -7667,8 +7145,7 @@ msgstr "中立"
 #~ msgid "Slow"
 #~ msgstr "緩速"
 
-#, fuzzy
-#~ msgid "Slow units have −1 movement but 5% more hitpoints."
+#~ msgid "Slow units have -1 movement but 5% more hitpoints."
 #~ msgstr "擁有緩速特質的單位少1點移動點數奬勵，但是會多5%的生命值。"
 
 #~ msgid ""
@@ -7686,9 +7163,8 @@ msgstr "中立"
 #~ msgid "Weak"
 #~ msgstr "虛弱"
 
-#, fuzzy
 #~ msgid ""
-#~ "Units with trait Weak get a −1 increment in hitpoints and melee damage."
+#~ "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 #~ msgstr "擁有虛弱特質的單位,攻擊次數和近戰傷害各-1。"
 
 #~ msgid ""
@@ -7721,12 +7197,10 @@ msgstr "中立"
 #~ msgid "Road"
 #~ msgstr "道路"
 
-#, fuzzy
 #~ msgid ""
 #~ "Roads are beaten paths of dirt, formed by many travelers passing over "
 #~ "them. As far as gameplay is concerned, Roads behave as "
-#~ "<ref>dst='terrain_flat' text='Flat'</ref> terrain.\n"
-#~ "\n"
+#~ "<ref>dst='terrain_flat' text='Flat'</ref> terrain."
 #~ msgstr ""
 #~ "道路是有許許多多旅行者在鬆軟的泥土上行走時踩出來的。就遊戲而言，道路和"
 #~ "<ref>dst=terrain_grassland text=草原</ref>没有兩様。"
@@ -7764,7 +7238,6 @@ msgstr "中立"
 #~ msgid "Hills"
 #~ msgstr "丘陵"
 
-#, fuzzy
 #~ msgid ""
 #~ "Hills represent any reasonably rough terrain, with enough dips and rises "
 #~ "in the ground to provide some cover. Hills are difficult for most troops "
@@ -7774,8 +7247,7 @@ msgstr "中立"
 #~ "cover is negated.\n"
 #~ "\n"
 #~ "Most units have about 50% defense in hills, whereas cavalry are limited "
-#~ "to 40%. Dwarves enjoy 60% defense in hills.\n"
-#~ "\n"
+#~ "to 40%. Dwarves enjoy 60% defense in hills."
 #~ msgstr ""
 #~ "丘陵地帶由適度崎嶇的地形組成，並有足够的溝壑來形成保護帶。大部分部隊想穿越"
 #~ "丘陵都有難度，矮人，巨魔和獸人則因為非常熟悉地形，所以速度不受影響。騎兵在"
@@ -7876,6 +7348,9 @@ msgstr "中立"
 #~ "大多數單位會由於雪的影響减慢行進速度，並且很難作有效的自我防禦。\n"
 #~ "\n"
 #~ "在雪地大多數單位有20%到40%的閃避幾率。"
+
+#~ msgid "Castle"
+#~ msgstr "城堡"
 
 #~ msgid ""
 #~ "Castles are any sort of permanent fortification. Nearly all units receive "
@@ -8001,10 +7476,9 @@ msgstr "中立"
 #~ "\n"
 #~ "大部分兵種在蘑菇林中的閃避率在50%至60%之間，騎兵則只有20%。"
 
-#, fuzzy
 #~ msgid ""
 #~ "Villages represent any group of buildings, human or otherwise. Almost all "
-#~ "units, even cavalry, have an easy time navigating villages, and most "
+#~ "units, even cavalry, have any easy time navigating villages, and most "
 #~ "units gain a defensive bonus from being stationed in a village. Villages "
 #~ "allow units the resources to clean and tend to their wounds, which allows "
 #~ "any unit stationed therein to heal eight hitpoints each turn, or to be "
@@ -8246,10 +7720,9 @@ msgstr "中立"
 #~ "\n"
 #~ "Change the controller for side (write here the number of the side) to "
 #~ "username (write here the nick of the player or observer). You can check "
-#~ "what side belongs to which player in the <bold>text='Scenario Settings'</"
-#~ "bold> dialog (Press the <bold>text='More'</bold> button in the "
-#~ "<bold>text='Status Table'</bold> (alt+s by default) to get there.). The "
-#~ "host can change control of any side.\n"
+#~ "what side belongs to which player in the 'Scenario Settings' dialog "
+#~ "(Press the 'more' button in the 'Status Table' (alt+s by default) to get "
+#~ "there.). The host can change control of any side.\n"
 #~ "\n"
 #~ msgstr ""
 #~ "\n"
@@ -8270,17 +7743,6 @@ msgstr "中立"
 #~ "從多人對戰中踢出一個玩家。他們還可以重新進入本局對戰。通常來説，通過這種方"
 #~ "法移除遇到網絡連接問題或其它問題的玩家，是一種友好的行為。\n"
 #~ "\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "Send a private message to a user. When in a game, it is not possible to "
-#~ "send private messages to players who are currently controlling a side in "
-#~ "the same game.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "發送私人訊息。您不能傳送訊息給正在遊戲中任何一方的玩家。用法：/msg <玩家"
-#~ "id> <消息>"
 
 #~ msgid ""
 #~ "\n"
@@ -8313,16 +7775,14 @@ msgstr "中立"
 #~ "在多人遊戲中，把某個玩家踢出遊戲並且封禁他所使用的IP地址(所謂的Ban IP)\n"
 #~ "\n"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "Unmute a specific observer. If no username is supplied the list of muted "
 #~ "observers is cleared."
 #~ msgstr ""
 #~ "\n"
-#~ "隱藏一個指定的觀察者。如果没有指定觀察者的用户名，則輸出被隱藏的觀察者的名"
-#~ "單。\n"
-#~ "\n"
+#~ "指定一個觀察者取消禁言。如果没有指定觀察者的名稱，則顯示被隱藏的觀察者的名"
+#~ "單。"
 
 #~ msgid "Debug mode commands"
 #~ msgstr "偵錯模式指令"
@@ -8401,7 +7861,6 @@ msgstr "中立"
 #~ "手動觸發指定的事件.\n"
 #~ "\n"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "Modifies the specified property of the selected unit. Example: :unit "
@@ -8409,8 +7868,8 @@ msgstr "中立"
 #~ "\n"
 #~ msgstr ""
 #~ "\n"
-#~ "改變選定單位的某個屬性。例如:\n"
-#~ " :unit hitpoint=100"
+#~ "改變選定單位的某個數值。例如：unit hitpoint=100\n"
+#~ "\n"
 
 #~ msgid "cures"
 #~ msgstr "治癒"
@@ -8606,6 +8065,9 @@ msgstr "中立"
 #~ "敵人不能看見或攻撃這些在深水中的單位，除非這些單位上個回合進行過攻撃，或是"
 #~ "有敵方單位與此單位相鄰。"
 
+#~ msgid "feeding"
+#~ msgstr "祭祀"
+
 #~ msgid "female^feeding"
 #~ msgstr "食屍"
 
@@ -8670,18 +8132,16 @@ msgstr "中立"
 #~ "本攻撃减緩目標的動作，直到本回合結束。减速攻撃使目標的攻撃减半，移動速度也"
 #~ "减半（向上舍入）。"
 
-#, fuzzy
 #~ msgid "petrifies"
-#~ msgstr "輸出"
+#~ msgstr "石化"
 
-#, fuzzy
 #~ msgid ""
 #~ "Petrify:\n"
 #~ "This attack petrifies the target, turning it to stone. Units that have "
 #~ "been petrified may not move or attack."
 #~ msgstr ""
 #~ "石化：\n"
-#~ "本攻撃會讓單位變成石頭。變成石頭的單位不能移動或攻撃。"
+#~ "本攻撃會讓單位石化，就是變成石頭。變成石頭的單位不能移動或攻撃。"
 
 #~ msgid "marksman"
 #~ msgstr "精準"
@@ -8693,9 +8153,6 @@ msgstr "中立"
 #~ msgstr ""
 #~ "精準：\n"
 #~ "進攻時，本攻撃至少有60%的命中率。"
-
-#~ msgid "swarm"
-#~ msgstr "連撃"
 
 #~ msgid ""
 #~ "Swarm:\n"
@@ -8744,6 +8201,18 @@ msgstr "中立"
 #~ "毒素：\n"
 #~ "本攻撃使目標中毒，中毒單位每回合失去8點生命值，直到他們被治愈或生命值降到"
 #~ "1。"
+
+#~ msgid "Which enemy side to focus on?"
+#~ msgstr "主要在對付哪個敵方單位？"
+
+#~ msgid "focusing on defeating $this_enemy_description|."
+#~ msgstr "重點攻擊 $this_enemy_description|。"
+
+#~ msgid "Which friendly side to protect?"
+#~ msgstr "主要保護哪個同盟單位？"
+
+#~ msgid "focusing on protecting $this_ally_description|."
+#~ msgstr "重點防禦 $this_ally_description|。"
 
 #~ msgid "Max HP bonus +3, Max XP +20%"
 #~ msgstr "最大生命值奬勵+3,最大經驗值+20%"
@@ -8805,7 +8274,7 @@ msgstr "中立"
 #~ msgid ""
 #~ " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 #~ "control and thus move unhindered around them."
-#~ msgstr "本單位游撃能力使其能够忽視敵人的控制區域，隨意繞行至對方的身後。"
+#~ msgstr "本單位游撃能力使其能夠忽視敵人的控制區域，隨意繞行至對方的身後。"
 
 #~ msgid " Illumination increases the lighting level in adjacent areas."
 #~ msgstr "'照明'能力增加相鄰區域的亮度。"
@@ -8922,9 +8391,6 @@ msgstr "中立"
 #~ msgid "loyal"
 #~ msgstr "忠誠"
 
-#~ msgid "female^loyal"
-#~ msgstr "忠誠"
-
 #~ msgid "Zero upkeep"
 #~ msgstr "無支出"
 
@@ -8936,14 +8402,6 @@ msgstr "中立"
 
 #~ msgid "female^mechanical"
 #~ msgstr "機械"
-
-#, fuzzy
-#~ msgid "elemental"
-#~ msgstr "隱藏"
-
-#, fuzzy
-#~ msgid "female^elemental"
-#~ msgstr "忠誠"
 
 #~ msgid "strong"
 #~ msgstr "强壯"
@@ -8990,14 +8448,6 @@ msgstr "中立"
 #~ msgid "Fights normally during unfavorable times of day/night"
 #~ msgstr "在不適應的時段(白天/夜晚)也能正常作戰"
 
-#, fuzzy
-#~ msgid "feral"
-#~ msgstr "累計"
-
-#, fuzzy
-#~ msgid "female^feral"
-#~ msgstr "中立"
-
 #~ msgid "weak"
 #~ msgstr "虛弱"
 
@@ -9016,13 +8466,488 @@ msgstr "中立"
 #~ msgid "female^dim"
 #~ msgstr "幽暗"
 
-#, fuzzy
 #~ msgid "aged"
-#~ msgstr "遠攻"
+#~ msgstr "年長"
 
-#, fuzzy
 #~ msgid "female^aged"
-#~ msgstr "幽暗"
+#~ msgstr "年長"
+
+#~ msgid "race^Bat"
+#~ msgstr "蝙蝠"
+
+#~ msgid "race+female^Bat"
+#~ msgstr "蝙蝠"
+
+#~ msgid "race^Bats"
+#~ msgstr "蝙蝠"
+
+#~ msgid "race^Drake"
+#~ msgstr "龍族"
+
+#~ msgid "race+female^Drake"
+#~ msgstr "龍族"
+
+#~ msgid "race^Drakes"
+#~ msgstr "龍族"
+
+#~ msgid ""
+#~ "Drakes are large, winged and fire-breathing creatures, reminiscent of "
+#~ "true dragons. On average, an adult drake stands around three meters tall "
+#~ "and easily weighs more than a man and a horse combined. Their skin is "
+#~ "made up of hard scales, resistant to most physical strikes except "
+#~ "piercing and cold damage. Most drakes are capable of true flight and can "
+#~ "travel long distances quickly. However, their sheer weight and bulk "
+#~ "limits their flight ability somewhat, making them ungainly in the air. "
+#~ "Where possible, they make use of terrain features such as hills, "
+#~ "mountains and trees as launch points in order to gain greater height and "
+#~ "speed. Fortunately for their enemies, they are still quite clumsy "
+#~ "creatures and surprisingly slow in combat. This, combined with their "
+#~ "large size, renders them easy targets for those who dare attack them.\n"
+#~ "\n"
+#~ "Drakes are inherently magical creatures, with a mysterious internal fire "
+#~ "fueling their very lives. This can easily be witnessed when one of their "
+#~ "kind perishes in combat; its internal fire is released, burning their "
+#~ "remains in to ashes. Their internal fire is also their greatest weakness; "
+#~ "it makes them extremely vulnerable to cold attacks. Despite their magical "
+#~ "nature, drakes are incapable of channeling magic in a controlled manner. "
+#~ "While the magic imbued within a drake’s body enables it to spit fire and "
+#~ "gives it life, they have no willful control over its functions of this "
+#~ "magic.\n"
+#~ "\n"
+#~ "<header>text='Society'</header>\n"
+#~ "Drakes are a relatively warlike race and their societies can be best "
+#~ "described as cultured martial societies. The core of a drake tribe is a "
+#~ "small group of veteran warriors headed by a mutually respected — or "
+#~ "simply feared — leader who rules the society with an iron fist. Every "
+#~ "drake is expected to earn their place in the strict hierarchy, to obey "
+#~ "their superiors and command their inferiors. Entry to the ruling elite is "
+#~ "only possible through challenging and defeating a superior in single "
+#~ "combat, which is the way the hierarchy within the elite itself is "
+#~ "established. The use of deception of any kind towards any fellow drake "
+#~ "is, without exception, seen as cowardly and unacceptable.\n"
+#~ "\n"
+#~ "While their warlike nature and sense of territory drives them to defend "
+#~ "their territories savagely, drakes rarely invade or trespass on areas "
+#~ "already occupied by the other major races. Instead, they settle in "
+#~ "unpopulated areas to establish their own territory there. They primarily "
+#~ "feed on large game they hunt in the lowlands around their homes, but "
+#~ "hatchlings and lower caste drakes are known to feed also on certain of "
+#~ "moss and fungi they cultivate deep in their caverns. The only technology "
+#~ "drakes value is armor- and weapon-smithing, and neither know or need "
+#~ "other science and culture besides this. However the few implements they "
+#~ "do fashion are almost unrivaled in quality, only matched by those "
+#~ "produced in the finest Dwarvish foundries.\n"
+#~ "\n"
+#~ "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
+#~ "years. Death in battle is the most preferred way for a drake to leave "
+#~ "this world. Unlike the elder members of other races, drakes naturally "
+#~ "grow more aggressive and reckless towards the ends of their natural "
+#~ "lives, perhaps to help ensure their place in the heroic legends of their "
+#~ "kind.\n"
+#~ "\n"
+#~ "<header>text='Geography'</header>\n"
+#~ "Drakes originated from a chain of volcanic islands in the Great Ocean. A "
+#~ "combination of population pressure and the subsidence of many of their "
+#~ "home islands has caused colonies of drakes to spread to the Great "
+#~ "Continent. Drakes tend to make their homes in mountain caverns near "
+#~ "volcanoes to protect their eggs, hatchings and forges. While drakes "
+#~ "naturally prefer warmth, their internal fire is more than capable of "
+#~ "sustaining them even in a relatively cold climate, a feature which has "
+#~ "allowed them to populate even some of the mountains of the far north of "
+#~ "the Great Continent."
+#~ msgstr ""
+#~ "龍族是龐大，有翼，呼吸火焰的生物，龍的後裔。平允而言，成年龍族站起有三米"
+#~ "高，和一個人加一匹馬的總重量相當。而且皮膚由堅硬的鱗片覆蓋，抵抗除了刺和冰"
+#~ "凍之外的所有攻撃。他們大多會飛，能快速地遠距離移動。但是他們體重和碩大影響"
+#~ "了飛行能力。所以他們常常在山間樹叢起飛，獲取加速度。對於敵人來説幸運的是，"
+#~ "龍族還是太大了，戰鬥中移動緩慢。這様的大身材，讓那些膽敢襲撃他們的家夥容易"
+#~ "撃中目標。"
+
+#~ msgid "race^Dwarf"
+#~ msgstr "矮人"
+
+#~ msgid "race+female^Dwarf"
+#~ msgstr "矮人"
+
+#~ msgid "race^Dwarves"
+#~ msgstr "矮人"
+
+#~ msgid ""
+#~ "The dwarves are a race famed for their miners, blacksmiths, merchants and "
+#~ "warriors. Considered as the third oldest race on the great continent "
+#~ "after the elves and trolls, their early history is shrouded in mystery. "
+#~ "Legends tell of a time long forgotten when their people began emerging "
+#~ "from their underground world through caves. Nothing is known about their "
+#~ "life prior to their arrival, or their reasons for entering the surface "
+#~ "world, but they have been an integral part of the history of the "
+#~ "continent since. Soon after their emergence from the underground, the "
+#~ "dwarves entered into conflict with the original inhabitants of the land, "
+#~ "the elves. The original reason for their dispute has been lost to "
+#~ "history, but the two races have since fought three long wars, interrupted "
+#~ "by a few decades of peace. During these wars the dwarves could not "
+#~ "dislodge the elves from the deep forests in the south, but managed to "
+#~ "consolidate their position in hills and the mountains in the north of the "
+#~ "continent, known now as the Northlands. Since then they have constructed "
+#~ "fantastic fortifications and settlements deep within the mountains and "
+#~ "crags of their territory.\n"
+#~ "\n"
+#~ "Possibly due to their isolation, the dwarves are generally distrustful or "
+#~ "hostile towards most other races, particularly the elves. The single "
+#~ "exception to this temperament is towards humans. This could be traced "
+#~ "back to the era of Haldric I and the arrival of humans and orcs to the "
+#~ "continent. At this point the dwarves began allowing some humans, mostly "
+#~ "dissidents and outlaws from the Kingdom of Wesnoth, to settle in certain "
+#~ "areas of the Northlands. Their motivation was unsurprising. The plight of "
+#~ "these individuals reminded the dwarves of their early history of "
+#~ "persecution, eliciting a sense of solidarity. The dwarves also had much "
+#~ "to gain in forming a bond with these outcasts. They would settle in areas "
+#~ "where dwarves disliked living themselves; plains, forests, and swamps, "
+#~ "freeing them from defending these areas.\n"
+#~ "\n"
+#~ "Dwarves are of small stature by human measure, but they are by no means "
+#~ "fragile. Their warriors, tough and powerful are both feared and respected "
+#~ "throughout the continent for their prowess in battle. In addition, "
+#~ "dwarves are known for their calculating intellects and superb "
+#~ "craftsmanship. Dwarven smiths are renowned for their deadly weapons and "
+#~ "heavy armor. These accouterments are unrivaled in quality, possibly only "
+#~ "matched by those produced by drake armorers. Their intelligence and "
+#~ "natural inquisitiveness has also made them the most technically advanced "
+#~ "race on the continent. One of their most famous, and feared, discoveries "
+#~ "was a mysterious powder that produces an immense explosion when exposed "
+#~ "to fire or sparks. Certain dwarf warriors use this powder to hurl small "
+#~ "objects at tremendous speeds. Given their technological inclinations, "
+#~ "many dwarves tend to distrust magic users. However some practice a form "
+#~ "of magic based on the engraving of runes. Called runesmiths, they use "
+#~ "these carvings to enchant items in order to augment certain aspects of "
+#~ "their natures."
+#~ msgstr ""
+#~ "矮人族以其為礦工、鐵匠、商人和戰士而著名。他們是在大陸上僅次於精靈和巨魔最"
+#~ "古老的種族，其早期歷史一直是個謎。傳説很久之前他們從地下世界穿過洞窟上來。"
+#~ "而那之前的一切生活都没有任何記録，包括來到地表的理由。他們從地底扶蘇不久，"
+#~ "他們和這大陸上的原住民精靈發生紛爭。原因也已逝，但兩族發生了三次大戰爭，每"
+#~ "次都有幾個世紀的間隔。During these wars the dwarves could not dislodge "
+#~ "the elves from the deep forests in the south, but managed to consolidate "
+#~ "their position in hills and the mountains in the north of the continent, "
+#~ "known now as the Northlands. Since then they have constructed fantastic "
+#~ "fortifications and settlements deep within the mountains and crags of "
+#~ "their territory.\n"
+#~ "\n"
+#~ "Possibly due to their isolation, the dwarves are generally distrustful or "
+#~ "hostile towards most other races, particularly the elves. The single "
+#~ "exception to this temperament is towards humans. This could be traced "
+#~ "back to the era of 海德洛克一世 and the arrival of humans and orcs to the "
+#~ "continent. At this point the dwarves started allowing some humans, mostly "
+#~ "dissidents and outlaws from the Crown of Wesnoth, to settle in certain "
+#~ "areas of the Northlands. Their motivation was unsurprising. The plight of "
+#~ "these individuals reminded the dwarves of their early history of "
+#~ "persecution, eliciting a sense of solidarity. The dwarves also had much "
+#~ "to gain in forming a bond with these outcasts. They would settle in areas "
+#~ "where dwarves disliked living themselves; plains, forests, and swamps, "
+#~ "freeing them from defending these areas. Later, when threatened by the "
+#~ "Orcs, the dwarves and their human allies formed The Alliance of Knalga to "
+#~ "defend their common realm.\n"
+#~ "\n"
+#~ "Dwarves are of small stature by human measure, but they are by no means "
+#~ "fragile. Their warriors, tough and powerful are both feared and respected "
+#~ "throughout the continent for their prowess in battle. In addition, "
+#~ "dwarves are known for their calculating intellects and superb "
+#~ "craftsmanship. Dwarven smiths are renowned for their deadly weapons and "
+#~ "heavy armor. These accouterments are unrivaled in quality, possibly only "
+#~ "matched by those produced by drake armourers. Their intelligence and "
+#~ "natural inquisitiveness has also made them the most technically advanced "
+#~ "race on the continent. One of their most famous, and feared, discoveries "
+#~ "was a mysterious powder that produces an immense explosion when exposed "
+#~ "to fire or sparks. Certain dwarf warriors use this powder to hurl small "
+#~ "objects at tremendous speeds. Given their technological inclinations, "
+#~ "many dwarves tend to distrust magic users. However some practice a form "
+#~ "of magic based on the engraving of runes. Called runesmiths, they use "
+#~ "these carvings to enchant items in order to augment certain aspects of "
+#~ "their natures."
+
+#~ msgid "race^Elf"
+#~ msgstr "精靈"
+
+#~ msgid "race+female^Elf"
+#~ msgstr "精靈"
+
+#~ msgid "race^Elves"
+#~ msgstr "精靈"
+
+# 未完成
+#, fuzzy
+#~ msgid ""
+#~ "Compared to humans, elves are somewhat taller, more agile but less "
+#~ "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
+#~ "Few differences between humans and elves are more pronounced than the "
+#~ "Elves’ unusually long life - most, unless claimed by illness, accident or "
+#~ "war, live a full two and a half centuries. While some elves possessing a "
+#~ "high magical aptitude have been known to live an additional full century, "
+#~ "most elves begin to grow physically frail at some point between 250 and "
+#~ "300 years of age and pass away rapidly (generally within a year or two) "
+#~ "thereafter.\n"
+#~ "\n"
+#~ "Elves are naturally imbued with magic to a small degree. Though most are "
+#~ "unable to channel it directly, its latent presence gives them their keen "
+#~ "senses and long life. Many elves have magic-driven talents such as "
+#~ "marksmanship or stealth, allowing them to achieve tasks that most normal "
+#~ "beings would find astonishing. Those elves that learn to wield this power "
+#~ "in more general ways can become truly formidable in its use. Many choose "
+#~ "to use their gift to heal others.\n"
+#~ "\n"
+#~ "A few elves, venturing far down the paths of magic and mysticism, become "
+#~ "sensitive to the presence of cold iron and can even be burned by it. "
+#~ "Elvish legend hints that this was more common in the far past.\n"
+#~ "\n"
+#~ "Elves spend much of their time honing their talents and skills. Those not "
+#~ "adept at the magical arts typically devote their time honing their "
+#~ "physical skills. As a result, elves excel at archery, which is perhaps "
+#~ "their most important method of warfare. Most elvish troops carry a bow "
+#~ "and no other race can rival their archers in speed and accuracy. All "
+#~ "elves also share an intense affection for unspoiled nature. They often "
+#~ "feel uncomfortable in open unvegetated spaces. They live primarily in the "
+#~ "forests of the Great Continent; the Aethenwood in the southwest, Wesmere "
+#~ "in the northwest, and the great northern woods of which the Lintanir "
+#~ "Forest is the southernmost edge. \n"
+#~ "\n"
+#~ "Elves are the eldest race of the continent, with the possible exception "
+#~ "of trolls. Many of their settlements cannot be reliably dated, "
+#~ "undoubtedly having existed for over a millennium."
+#~ msgstr ""
+#~ "相較於人類，精靈長得較高且行動敏捷，但是體格方面不比人類壯碩。他們有對尖長"
+#~ "的耳朵、較淡的膚色且通常是ㄧ頭金髮。跟人類稍微不一樣的地方就是他們有非比尋"
+#~ "常的生命力，除了疾病、戰爭及等等的意外，他們大概可以活兩百年。大部分的精靈"
+#~ "活到190年後就開始變得虛弱，在剩下的十年內就會死亡，不過據了解一些擁有高魔"
+#~ "法資質的精靈可以多活一百年。精靈天生就有微弱的魔力，雖然大部分的精靈不會善"
+#~ "用魔法，不過這潛藏的魔力賦予他們敏捷及長壽。許多精靈會透過魔法駕馭像是射術"
+#~ "或偷竊的能力，使他們完成令人為之驚訝的任務。那些學會掌握這股力量的精靈會變"
+#~ "成傑出的使用者，而通常他們將這個天賦用來治療他人。\n"
+#~ "\n"
+#~ "      精靈花很多時間來鍛鍊技能和能力，對魔法不熟悉的就鍛鍊他們的體技。因此"
+#~ "這樣的精靈擅長箭術，或許這是戰爭重要的技術的關係。不管是在精準度或速度，通"
+#~ "常沒有一個種族可以跟精靈部隊的射手匹敵。所有的精靈對自然都有種無法解釋的情"
+#~ "感。他們很難適應暴露在沒有植物的地帶，這就是為什麼他們的家園會在森林，像是"
+
+#~ msgid "race^Goblin"
+#~ msgstr "地精"
+
+#~ msgid "race+female^Goblin"
+#~ msgstr "地精"
+
+#~ msgid "race^Goblins"
+#~ msgstr "地精"
+
+#~ msgid "race^Gryphon"
+#~ msgstr "獅鷲"
+
+#~ msgid "race+female^Gryphon"
+#~ msgstr "獅鷲"
+
+#~ msgid "race^Gryphons"
+#~ msgstr "獅鷲"
+
+#~ msgid "race^Human"
+#~ msgstr "人類"
+
+#~ msgid "race+female^Human"
+#~ msgstr "人類"
+
+#~ msgid "race^Humans"
+#~ msgstr "人類"
+
+#~ msgid "race^Saurian"
+#~ msgstr "蜥蜴人"
+
+#~ msgid "race+female^Saurian"
+#~ msgstr "蜥蜴人"
+
+#~ msgid "race^Saurians"
+#~ msgstr "蜥蜴人"
+
+#~ msgid "race^Mechanical"
+#~ msgstr "機械"
+
+#~ msgid "race+plural^Mechanical"
+#~ msgstr "機械"
+
+#~ msgid "race^Merman"
+#~ msgstr "人魚"
+
+#~ msgid "race^Mermaid"
+#~ msgstr "人魚"
+
+#~ msgid "race^Mermen"
+#~ msgstr "人魚"
+
+#~ msgid "race^Monster"
+#~ msgstr "怪物"
+
+#~ msgid "race^Monsters"
+#~ msgstr "怪物"
+
+#~ msgid "race^Naga"
+#~ msgstr "納迦"
+
+#~ msgid "race^Nagani"
+#~ msgstr "納迦"
+
+#~ msgid "race^Nagas"
+#~ msgstr "納迦"
+
+#~ msgid "race^Ogre"
+#~ msgstr "食人魔"
+
+#~ msgid "race+female^Ogre"
+#~ msgstr "食人魔"
+
+#~ msgid "race^Ogres"
+#~ msgstr "食人魔"
+
+#~ msgid "race^Orc"
+#~ msgstr "半獸人"
+
+#~ msgid "race+female^Orc"
+#~ msgstr "半獸人"
+
+#~ msgid "race^Orcs"
+#~ msgstr "半獸人"
+
+#~ msgid "race^Troll"
+#~ msgstr "巨魔"
+
+#~ msgid "race+female^Troll"
+#~ msgstr "巨魔"
+
+#~ msgid "race^Trolls"
+#~ msgstr "巨魔"
+
+#~ msgid "race^Undead"
+#~ msgstr "不死族"
+
+#~ msgid "race+female^Undead"
+#~ msgstr "不死族"
+
+#~ msgid "race+plural^Undead"
+#~ msgstr "不死族"
+
+#~ msgid ""
+#~ "Undead are not really a single race of creatures, although often treated "
+#~ "as such. Almost any dead creature can, by a sufficiently skilled "
+#~ "necromancer, be reanimated and rise again in undeath. Undead are for the "
+#~ "most part unnatural but mindless constructs, obeying whoever created them "
+#~ "without question nor thought. A greater mystery of necromancy is in how "
+#~ "constructs are sustained without continuous effort from the necromancer. "
+#~ "An undead creature does not require the constant attention of the "
+#~ "necromancer to command and sustain, but can work autonomously according "
+#~ "to the commands of it’s master. Only rarely, perhaps once every few "
+#~ "months, does the necromancer need to maintain his creation.\n"
+#~ "\n"
+#~ "Necromancy is almost solely limited to humans. Even the legends of "
+#~ "magically apt races like elves and mermen tell of very few of their kind "
+#~ "who have ever delved in the dark arts. It is surmised that necromantic "
+#~ "magic requires great adaptability and a flexible mind, extremes of which "
+#~ "are most commonly found in humans. The ultimate goal of most necromancers "
+#~ "is to turn the same art of preserving and imbuing life upon themselves, "
+#~ "to alter themselves at whatever cost, to ultimately escape death by "
+#~ "preserving their own mind and spirit.\n"
+#~ "\n"
+#~ "<header>text='Geography'</header>\n"
+#~ "While undead lords arrived on the Great Continent in considerable numbers "
+#~ "only in the wake of Haldric I, they were not completely unheard of by "
+#~ "elves and dwarves before that."
+#~ msgstr ""
+#~ "儘管我們這樣分類，事實上，不死族並不是真正的「單一種族」生物。藉有足夠力量"
+#~ "的死靈法師協助，幾乎所有生物都能夠在死後被重新賦與活力，並站到不死族的這"
+#~ "邊。不死族大部份都是不自然的，同時也是缺乏心智的，他們會遵行創造者的任何命"
+#~ "令，不會去思考或詢問問題。死靈術最神祕的地方，就是如何維持這樣的一個體系，"
+#~ "而不需要死靈法師持續提供影響力。一個不死生物不需要死靈法師不斷注意他們、給"
+#~ "予他們命令或維持他們，這些「生物」能自動地根據主人的指示而做任何事情。只有"
+#~ "在極少數的時候--也許是隔好幾個月，死靈法師才需要去維護一次他的作品。\n"
+#~ "\n"
+#~ "死靈術的使用者幾乎只限於人類。即使是具有神奇魔法技藝的種族，如精靈或人魚，"
+#~ "對這種黑暗的技巧也只有非常少的研究。或許是因為死靈魔法要求使用者心靈極大的"
+#~ "適應能力與彈性，而這種極端的特質通常只有在人類中才找得到。絕大多數死靈魔法"
+#~ "師的終極目標，是利用同樣技術，不計一切代價地改變自己，藉著保存自己的靈魂與"
+#~ "心志達到永生不死的目的。\n"
+#~ "\n"
+#~ "<header>text='Geography'</header>\n"
+#~ "While undead lords arrived on the Great Continent in considerable numbers "
+#~ "only in the wake of Haldric I, they were not completely unheard of by "
+#~ "elves and dwarves before that."
+
+#~ msgid "race^Wolf"
+#~ msgstr "狼"
+
+#~ msgid "race^Wolves"
+#~ msgstr "狼"
+
+#~ msgid "race^Wose"
+#~ msgstr "樹人"
+
+#~ msgid "race^Woses"
+#~ msgstr "樹人"
+
+#~ msgid ""
+#~ "You can send the Wesnoth Project an anonymous summary of your progress "
+#~ "using the 'Help Wesnoth' button (indicated by the envelope icon near the "
+#~ "lower-right-hand corner of the game main screen). This information is "
+#~ "vital so we can adjust campaign difficulty."
+#~ msgstr ""
+#~ "您可以透過“幫助韋諾之戰”按鈕（在主螢幕右下角的信封圖示）發送匿名的匯總進度"
+#~ "信息給韋諾項目組。這些信息對我們調整戰役難度有重大意義。"
+
+#~ msgid "About to upload statistics — Help us make Wesnoth better for you!"
+#~ msgstr "關於上傳的資料，會幫助我們讓韋諾更好！"
+
+#~ msgid "Save my reply and do not ask again"
+#~ msgstr "記住我的選擇以後不再詢問。"
+
+#~ msgid ""
+#~ "To change the setting later on, click on the envelope icon in the main "
+#~ "menu."
+#~ msgstr "如果往後想要更改設定，可以點選主畫面上的信封圖示。"
+
+#~ msgid "Send"
+#~ msgstr "寄送"
+
+#~ msgid "Don’t send"
+#~ msgstr "不要寄送"
+
+#~ msgid "Do not ask every time before sending data"
+#~ msgstr "傳送數據前將不在詢問"
+
+#~ msgid ""
+#~ "$addon_title depends upon the following add-on which you have not "
+#~ "installed yet:"
+#~ msgid_plural ""
+#~ "$addon_title depends upon the following add-ons which you have not "
+#~ "installed yet:"
+#~ msgstr[0] "$addon_title 需要您安裝以下套件："
+#~ msgstr[1] "$addon_title 需要您安裝以下套件："
+
+#~ msgid "Difficulty"
+#~ msgstr "難度"
+
+#~ msgid "Select difficulty level:"
+#~ msgstr "選擇難度："
+
+#~ msgid "tooltip^damage"
+#~ msgid_plural "damage"
+#~ msgstr[0] "傷害"
+#~ msgstr[1] "傷害"
+
+#~ msgid "tooltip^attack"
+#~ msgid_plural "attacks"
+#~ msgstr[0] "攻撃"
+#~ msgstr[1] "攻撃"
+
+#~ msgid "tooltip^% accuracy"
+#~ msgstr "精準度"
+
+#~ msgid "tooltip^% parry"
+#~ msgstr "迴避"
+
+#~ msgid "vs"
+#~ msgstr "vs"
 
 #~ msgid "Help"
 #~ msgstr "幫助"
@@ -9033,29 +8958,20 @@ msgstr "中立"
 #~ msgid "<header>text='Units having this ability'</header>"
 #~ msgstr "<header>text='擁有這種技能的單位：'</header>"
 
-#, fuzzy
 #~ msgid "Leaders:"
 #~ msgstr "英雄： "
 
-#, fuzzy
 #~ msgid "Recruits:"
 #~ msgstr "招募： "
 
-#, fuzzy
 #~ msgid "Factions:"
-#~ msgstr "部隊"
+#~ msgstr "部隊："
 
 #~ msgid "Advances from: "
 #~ msgstr "升級自："
 
-#~ msgid "Advances to: "
-#~ msgstr "升級為： "
-
 #~ msgid "race^Miscellaneous"
 #~ msgstr "其它"
-
-#~ msgid "Abilities: "
-#~ msgstr "能力： "
 
 #~ msgid "Ability Upgrades: "
 #~ msgstr "能力提升:"
@@ -9093,12 +9009,6 @@ msgstr "中立"
 #~ msgid "Terrain Modifiers"
 #~ msgstr "地形影響"
 
-#~ msgid "Terrain"
-#~ msgstr "地形"
-
-#~ msgid "Defense"
-#~ msgstr "閃避幾率"
-
 #~ msgid "Movement Cost"
 #~ msgstr "移動點數耗費"
 
@@ -9120,23 +9030,6 @@ msgstr "中立"
 #~ msgid "Parse error when parsing help text: "
 #~ msgstr "分析幫助文本時語法錯誤： "
 
-#~ msgid "red if it has used all its movement this turn."
-#~ msgstr "您控制這個士兵，該士兵已經不能行動。"
-
-#~ msgid "Set Password"
-#~ msgstr "設定密碼"
-
-#~ msgid ""
-#~ "Set the password that people wanting to join your game as players must "
-#~ "enter."
-#~ msgstr "設定您的密碼，以便讓您所等待的玩家進入，並不受他人干擾。"
-
-#~ msgid "Difficulty"
-#~ msgstr "難度"
-
-#~ msgid "Select difficulty level:"
-#~ msgstr "選擇難度："
-
 #~ msgid "Place Label"
 #~ msgstr "設置標簽"
 
@@ -9149,86 +9042,14 @@ msgstr "中立"
 #~ msgid "User-Command#3"
 #~ msgstr "使用者命令#3"
 
-#, fuzzy
-#~ msgid ""
-#~ "<i>― Haldric II, 42 YW, from Handbook of Tactical Analysis: Volume I</i>"
-#~ msgstr "- 戰術分析手冊- 第一冊 - 海德洛克二世，42YW"
-
-#~ msgid "About to upload statistics — Help us make Wesnoth better for you!"
-#~ msgstr "關於上傳的資料，會幫助我們讓韋諾更好！"
-
-#~ msgid "Save my reply and do not ask again"
-#~ msgstr "記住我的選擇以後不再詢問。"
+#~ msgid "Set Password"
+#~ msgstr "設定密碼"
 
 #~ msgid ""
-#~ "To change the setting later on, click on the envelope icon in the main "
-#~ "menu."
-#~ msgstr "如果往後想要更改設定，可以點選主畫面上的信封圖示。"
+#~ "Set the password that people wanting to join your game as players must "
+#~ "enter."
+#~ msgstr "設定您的密碼，以便讓您所等待的玩家進入，並不受他人干擾。"
 
-#~ msgid "Send"
-#~ msgstr "寄送"
-
-#~ msgid "Don’t send"
-#~ msgstr "不要寄送"
-
-#~ msgid "Do not ask every time before sending data"
-#~ msgstr "傳送數據前將不在詢問"
-
-#~ msgid ""
-#~ "You can send the Wesnoth Project an anonymous summary of your progress "
-#~ "using the 'Help Wesnoth' button (indicated by the envelope icon near the "
-#~ "lower-right-hand corner of the game main screen). This information is "
-#~ "vital so we can adjust campaign difficulty."
-#~ msgstr ""
-#~ "您可以透過“幫助韋諾之戰”按鈕（在主螢幕右下角的信封圖示）發送匿名的匯總進度"
-#~ "信息給韋諾項目組。這些信息對我們調整戰役難度有重大意義。"
-
-#~ msgid "vs"
-#~ msgstr "vs"
-
-#, fuzzy
-#~ msgid "Multiplayer_AI^Default AI"
-#~ msgstr "多人對戰"
-
-#~ msgid "Which enemy side to focus on?"
-#~ msgstr "主要在對付哪個敵方單位？"
-
-#~ msgid "focusing on defeating $this_enemy_description|."
-#~ msgstr "重點攻擊 $this_enemy_description|。"
-
-#~ msgid "Which friendly side to protect?"
-#~ msgstr "主要保護哪個同盟單位？"
-
-#~ msgid "focusing on protecting $this_ally_description|."
-#~ msgstr "重點防禦 $this_ally_description|。"
-
-#, fuzzy
-#~ msgid ""
-#~ "$addon_title depends upon the following add-on which you have not "
-#~ "installed yet:"
-#~ msgid_plural ""
-#~ "$addon_title depends upon the following add-ons which you have not "
-#~ "installed yet:"
-#~ msgstr[0] "這個模組需要以下額外的需求:"
-#~ msgstr[1] "這個模組需要以下額外的需求:"
-
-#~ msgid "tooltip^damage"
-#~ msgid_plural "damage"
-#~ msgstr[0] "傷害"
-#~ msgstr[1] "傷害"
-
-#~ msgid "tooltip^attack"
-#~ msgid_plural "attacks"
-#~ msgstr[0] "攻撃"
-#~ msgstr[1] "攻撃"
-
-#~ msgid "tooltip^% accuracy"
-#~ msgstr "精準度"
-
-#~ msgid "tooltip^% parry"
-#~ msgstr "迴避"
-
-#, fuzzy
 #~ msgid "Filter:"
 #~ msgstr "過濾： "
 
@@ -9294,6 +9115,9 @@ msgstr "中立"
 #~ msgid "Start the map editor"
 #~ msgstr "開啟地圖編輯器"
 
+#~ msgid "Change the language"
+#~ msgstr "切換語言"
+
 #~ msgid "Configure the game’s settings"
 #~ msgstr "更改遊戲設定"
 
@@ -9303,9 +9127,8 @@ msgstr "中立"
 #~ msgid "Quit the game"
 #~ msgstr "退出遊戲"
 
-#, fuzzy
 #~ msgid "Show previous tip of the day"
-#~ msgstr "顯示下一個每日提示"
+#~ msgstr "顯示上一個每日提示"
 
 #~ msgid "Show next tip of the day"
 #~ msgstr "顯示下一個每日提示"
@@ -9446,6 +9269,10 @@ msgstr "中立"
 
 #~ msgid "An invalid weapon is send, possibly due to the Python AI."
 #~ msgstr "傳出了一個無效的武器，可能是Python AI造成的。"
+
+#, fuzzy
+#~ msgid "Update Add-ons"
+#~ msgstr "取得模組"
 
 #~ msgid "Login: "
 #~ msgstr "登録名： "

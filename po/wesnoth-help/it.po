@@ -7,13 +7,13 @@
 #
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
-# Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010.
+# Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 13:09+0100\n"
-"PO-Revision-Date: 2011-01-02 17:32+0100\n"
+"PO-Revision-Date: 2011-01-29 23:26+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -165,7 +165,7 @@ msgstr "Enciclopedia"
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
-msgstr ""
+msgstr "<ref>dst='..geography' text='Geografia'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:5
@@ -193,6 +193,8 @@ msgid ""
 "A drake home building, fortified. It contains the <ref>dst='breeding_pen' "
 "text='breeding pens'</ref>."
 msgstr ""
+"L’edificio residenziale di un drago, fortificato. Contiene i "
+"<ref>dst='breeding_pen' text='recinti di riproduzione'</ref>."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:18
@@ -205,6 +207,8 @@ msgid ""
 "Where the nonsentient <ref>dst='breeder' text='Breeders'</ref> live under "
 "the <ref>dst='dominant' text='Dominant'</ref>' s eye."
 msgstr ""
+"Dove le <ref>dst='breeder' text='fattrici'</ref> (non senzienti) vivono "
+"sotto l’occhio del the <ref>dst='dominant' text='dominante'</ref>."
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:24
@@ -217,6 +221,8 @@ msgid ""
 "The time that passes between one <ref>dst=egg text='Egg'</ref> laying to the "
 "next."
 msgstr ""
+"Il tempo che trascorre tra la posa di un <ref>dst=egg text='uovo'</ref> e la "
+"successiva."
 
 #. [topic]: id=world-ocean
 #. [topic]: id=new continent
@@ -249,6 +255,8 @@ msgstr "Abisso"
 #: data/core/encyclopedia/drakes.cfg:44
 msgid "A vast and deadly waterfall where the ocean falls of the world disc."
 msgstr ""
+"Una vasta e mortale cascata in cui l’acqua dell’oceano cade dal disco del "
+"mondo."
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
@@ -280,7 +288,7 @@ msgstr ""
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
 msgid "Dominant"
-msgstr ""
+msgstr "Dominante"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
@@ -294,7 +302,7 @@ msgstr ""
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
 msgid "Vulcaniad"
-msgstr ""
+msgstr "Vulcaniade"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
@@ -307,7 +315,7 @@ msgstr ""
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
 msgid "Recorder"
-msgstr ""
+msgstr "Cronosta"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
@@ -317,6 +325,10 @@ msgid ""
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
 msgstr ""
+"Draghi che padroneggiano la <ref>dst='drakish_script' text='scrittura'</"
+"ref>. I cronisti sono la sola <ref>dst='caste' text='casta'</ref> dei draghi "
+"che non è biologicamente determinata: recluta i suoi membri da tutte le "
+"altre caste."
 
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
@@ -328,6 +340,7 @@ msgstr "Posa"
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
 msgid "a period in the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
 msgstr ""
+"un periodo del <ref>dst='breeding_cycle' text='ciclo riproduttivo'</ref>."
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
@@ -349,9 +362,8 @@ msgstr ""
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
-#, fuzzy
 msgid "Fledgling"
-msgstr "Guarigione"
+msgstr "Giovane"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
@@ -475,7 +487,7 @@ msgstr "Corridori"
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:152
 msgid "Drakish term for escaped slaves hunted as game."
-msgstr ""
+msgstr "Termine draghesco per schiavi fuggiaschi cacciati come selvaggina."
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
@@ -1227,18 +1239,16 @@ msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
-"Sulla parte superiore della barra dell’energia vicina a ogni unità è "
-"collocata una sfera. Per le unità che controlli, la sfera può essere:"
+"Sulla parte superiore della barra dell’energia vicina a ogni unità c’è una "
+"sfera. Per le unità che controlli, la sfera può essere:"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
-#, fuzzy
 msgid " green if it hasn’t moved this turn,"
 msgstr "verde se in questo turno non ha effettuato movimenti,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:193
-#, fuzzy
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 "gialla, se l’unità è stata mossa ma può essere ancora mossa o può attaccare, "
@@ -1249,20 +1259,17 @@ msgstr ""
 msgid ""
 " red if it has finished its turn (might still be able to move or attack)."
 msgstr ""
+" rossa se ha completato il turno (potrebbe ancora muoversi o attaccare)."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:195
-#, fuzzy
 msgid " blue if the unit is an ally you do not control."
-msgstr ""
-"La sfera blu indica che l’unità è un alleato ma non può essere controllata."
+msgstr " blu se l’unità è alleata ma non sotto il tuo controllo."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:196
-#, fuzzy
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr ""
-"Le unità nemiche non hanno alcuna sfera in cima alla loro barra dell’energia."
+msgstr "Le unità nemiche non hanno sfere in cima alla barra dell’energia."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:203
@@ -1690,7 +1697,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:268
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1700,9 +1706,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Per esempio gli scheletri sono molto resistenti nei confronti di attacchi da "
-"taglio e da perforazione, ma sono vulnerabili al danno causato da impatto e "
-"da fuoco ed estremamente vulnerabili al danno esoterico."
+"Per esempio gli scheletri sono molto resistenti agli attacchi da taglio e da "
+"perforazione, ma sono vulnerabili al danno causato da impatto e da fuoco ed "
+"estremamente vulnerabili al danno esoterico."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:270
@@ -1741,7 +1747,6 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:284
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1891,7 +1896,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:313
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1900,19 +1904,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Riposo: un’unità che non si muove, che non attacca e che non viene attaccata "
-"recupera 2 PF nel turno successivo."
+"<italic>text='Riposo'</italic>: un’unità che non si muove, che non attacca e "
+"che non viene attaccata recupera 2 PF nel turno successivo."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:314
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Villages'</italic>: A unit which starts a turn in a village "
 "will heal 8HP."
 msgstr ""
 "\n"
-"Villaggi: un’unità che inizia il turno dentro un villaggio recupera 8 PF."
+"<italic>text='Villaggi'</italic>: un’unità che inizia il turno in un "
+"villaggio recupera 8 PF."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:315

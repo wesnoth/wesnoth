@@ -1,11 +1,11 @@
 # translation of it.po to Italian
-# Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009.
+# Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-08 13:43+0100\n"
-"PO-Revision-Date: 2010-11-06 17:53+0100\n"
+"PO-Revision-Date: 2011-01-29 22:51+0100\n"
 "Last-Translator: Antonio Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -624,7 +624,7 @@ msgstr "Fai clic col tasto sinistro sulla quintana per attaccarla."
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
 msgid " The ranged attack would have been safer."
-msgstr ""
+msgstr " L’attacco a distanza sarebbe stato più sicuro."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
@@ -699,12 +699,12 @@ msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
 "Puoi fare clic col tasto destro su un’unità per vedere la sua <b>Descrizione "
-"dell'unità</b> dettagliata."
+"dell’unità</b> dettagliata."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:991
 msgid "Protect Your Troops"
-msgstr ""
+msgstr "Proteggi le tue truppe"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:993
@@ -720,7 +720,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1010
 msgid "Support"
-msgstr ""
+msgstr "Supporto"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1012
@@ -943,7 +943,7 @@ msgid ""
 "Advance other units onto the island or to capture villages, then <b>End "
 "Turn</b>"
 msgstr ""
-"Fai avanzare le altre unità sino all’isola o occupa i villaggi, poi premi "
+"Fai avanzare altre unità fino all’isola o occupa i villaggi, poi premi "
 "<b>Fine turno</b>"
 
 #. [then]
@@ -1117,28 +1117,26 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should <i>recall</i> them now so they can "
 "gain more experience, rather than recruiting new Fighters."
 msgstr ""
-"Durante la tua esercitazione, sia $recall_name1 che $recall_name2 hanno "
-"guadagnato $recall_xp1 punti esperienza. Dovresti richiamarli in modo da far "
-"loro guadagnare più esperienza, al posto di reclutare nuove unità."
+"Durante l’esercitazione, sia $recall_name1 che $recall_name2 hanno "
+"guadagnato $recall_xp1 punti esperienza. Dovresti <i>richiamarli</i> in modo "
+"da far loro guadagnare più esperienza, al posto di reclutare nuove unità."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
-#, fuzzy
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
 "and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now so "
 "they can gain more experience, rather than recruiting new Fighters."
 msgstr ""
-"Durante la tua esercitazione, $recall_name1 ha guadagnato $recall_xp1 punti "
+"Durante l’esercitazione, $recall_name1 ha guadagnato $recall_xp1 punti "
 "esperienza e $recall_name2 ne ha guadagnati $recall_xp2. Sarebbe meglio che "
-"tu li richiamassi in modo da far loro guadagnare più esperienza, al posto di "
-"reclutare nuove unità."
+"tu li <i>richiamassi</i> in modo da far loro guadagnare più esperienza, al "
+"posto di reclutare nuove unità."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:539
@@ -1166,28 +1164,25 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:552
-#, fuzzy
 msgid ""
 "If any Elvish Fighters from your last battle had experience, we would "
 "<i>recall</i> them to the current battlefield. However, your veterans gained "
 "no experience so it’s cheaper to recruit new units instead. Recruit an "
 "Elvish Fighter."
 msgstr ""
-"Se qualche elfo combattente della tua battaglia precedente avesse guadagnato "
-"dell’esperienza, sarebbe stato meglio richiamarlo: dato che non hanno "
-"combattuto per niente, sarà più economico reclutarne di nuovi. Quindi, "
-"recluta un elfo combattente."
+"Se uno degli elfi combattenti della tua battaglia precedente avesse "
+"guadagnato dell’esperienza, sarebbe stato meglio <i>richiamarlo</i>. Poiché "
+"però i tuoi veterani non hanno fatto esperienza, sarà più economico "
+"reclutarne di nuovi. Recluta un elfo combattente."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:555
-#, fuzzy
 msgid ""
 "If you had any experienced units alive from your last battle we would "
 "<i>recall</i> them. Instead we must recruit some new Elvish Fighters."
 msgstr ""
-"Se qualche unità utilizzata nella battaglia precedente fosse sopravvissuta, "
-"l’avremmo richiamata. Visto che hai combattuto da kamikaze, dovremo "
-"reclutare un nuovo elfo combattente."
+"Se avessi unità esperte sopravvissute alla battaglia precedente, le avremmo "
+"<i>richiamate</i>. Dovremo invece reclutare dei nuovi elfo combattente."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:558
@@ -1210,15 +1205,14 @@ msgstr "No! Ho detto di reclutare una <i>sciamana</i> elfica! Dai, riprova..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:608
-#, fuzzy
 msgid ""
 "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
 "friendly units around her. She also has a special attack which <i>slows</i> "
 "enemies, halving the damage they do."
 msgstr ""
-"La sciamana è un’unità piuttosto debole, ma ha l’abilità di curare le unità "
-"che le sono accanto. Ha anche un attacco speciale che permette di rallentare "
-"i nemici, diminuendo il danno che causano!"
+"La sciamana è un’unità piuttosto debole, ma ha l’abilità di <i>curare</i> le "
+"unità che le sono accanto. Ha anche un attacco speciale che permette di "
+"<i>rallentare</i> i nemici, diminuendo il danno che causano!"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:609
@@ -1421,22 +1415,21 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:918
-#, fuzzy
 msgid "Orcish Grunts have no ranged attacks, so use your archers against them."
 msgstr ""
-"Gli orchi non hanno degli attacchi a distanza quindi è meglio utilizzare gli "
+"Gli orchi recluta non hanno degli attacchi a distanza, quindi usa gli "
 "arcieri contro di loro."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:920
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1047
 msgid "Attack the orc with an Archer"
-msgstr "Attacca l’orco con un arciere."
+msgstr "Attacca l’orco con un arciere"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
 msgid "<big>Unit Summaries</big>"
-msgstr "<big>Sommario dell'unità</big>"
+msgstr "<big>Sommario dell’unità</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:922
@@ -1447,7 +1440,7 @@ msgid ""
 msgstr ""
 "\n"
 "Per esaminare le capacità di qualsiasi unità – nemici compresi – passa il "
-"mouse su di essa, vedrai il sommario dell'unità sulla destra dello schermo"
+"mouse su di essa, vedrai il sommario dell’unità sulla destra dello schermo"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:930
@@ -1586,18 +1579,16 @@ msgstr "ZdC"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1046
-#, fuzzy
 msgid ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
 "i> and cannot move further that turn.\n"
 "To move your troops onto that island without wading slowly through the "
 "water, you’ll have to kill the Grunt."
 msgstr ""
-"No: Una volta che ti muovi vicino ad un’unità nemica ti vieni a trovare "
-"nella sua <i>Zona di controllo</i>, e non potrai muoverla sino alla fine del "
-"turno.\n"
-"Per muovere le tue truppe sino all’isola senza essere impedito dall’acqua, "
-"lo devi uccidere."
+"No: una volta che ti muovi vicino ad un’unità nemica entri nella sua <i>Zona "
+"di controllo</i>, e non potrai muoverti fino alla fine del turno.\n"
+"Per muovere le tue truppe fino all’isola senza essere impedito dall’acqua, "
+"dovrai uccidere l’orco recluta."
 
 #. [then]
 #. [event]
@@ -1609,14 +1600,13 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1076
-#, fuzzy
 msgid ""
 "No other units can reach that orc. I hope my $unit.type survives its counter-"
 "attack! I’d better grab more villages and move everyone closer for next turn."
 msgstr ""
-"Nessun’altra unità può raggiungere quell’orco: Spero che l’arciere "
-"sopravviva al contrattacco! Sarà meglio che m’impadronisca di più villaggi "
-"ed al prossimo turno muova tutti quanti più vicino."
+"Nessun’altra unità può raggiungere quell’orco: spero che l’arciere "
+"sopravviva al contrattacco! Sarà meglio che m’impadronisca di più villaggi e "
+"al prossimo turno muova tutti quanti più vicino."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1077
@@ -1675,7 +1665,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1164
-#, fuzzy
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
 "attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
@@ -1683,10 +1672,10 @@ msgid ""
 "at night. Your elvish warriors are <i>neutral</i>: unaffected by the time of "
 "day."
 msgstr ""
-"Attenzione! E arrivata la notte. Gli orchi sono caotici: i loro attacchi "
-"sono il 25% più forti durante la notte e il 25% più deboli durante il "
-"giorno. Tu invece sei legale: ossia più forte durante il giorno. Gli elfi "
-"invece sono neutrali: non veniamo influenzati dal trascorrere del giorno e "
+"Attenzione! E arrivata la notte. Gli orchi sono <i>caotici</i>: i loro "
+"attacchi sono il 25% più forti durante la notte e il 25% più deboli durante "
+"il giorno. Tu sei <i>legale</i>: ossia più forte durante il giorno. Gli elfi "
+"invece sono <i>neutrali</i>: non sono influenzati dal periodo del giorno o "
 "della notte."
 
 #. [event]
@@ -1735,11 +1724,10 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1187
 msgid "<big>Tracking Unused Units</big>"
-msgstr ""
+msgstr "<big>Controllare le unità non usate</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1188
-#, fuzzy
 msgid ""
 "\n"
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
@@ -1748,9 +1736,12 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"Puoi assicurati di aver utilizzato tutte le tue unità per questo turno: "
-"premendo «n» per l’unità successiva, SPAZIO per indicare di aver finito.\n"
-"Quando «n» non seleziona una nuova unità, puoi terminare il turno."
+"\n"
+"Puoi assicurati di aver usato tutte le unità in questo turno premendo <b>n</"
+"b> per passare da un’unità a quella successiva. Se premi <b>spazio</b> puoi "
+"indicare che l’unità attuale ha terminato il suo turno, che evita di "
+"spostarla per sbaglio di seguito. Quando <b>n</b> non seleziona più nuove "
+"unità, puoi terminare il turno con tranquillità."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1193
@@ -1765,6 +1756,10 @@ msgid ""
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
+"\n"
+"In questo scenario devi solo sconfiggere il capo degli orchi per vincere. "
+"(Le condizioni di vittoria di uno scenario sono fornite dalla voce "
+"<b>Obiettivi dello scenario</b> del <b>Menù principale</b>)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1199
@@ -1879,20 +1874,20 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1395
 msgid "<big>Tracking Enemy Movement</big>"
-msgstr ""
+msgstr "<big>Controllare le mosse dei nemici</big>"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1396
-#, fuzzy
 msgid ""
 "\n"
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
+"\n"
 "Puoi vedere dove un nemico può arrivare spostando il mouse sopra di lui. È "
-"possibile vedere tutte le possibili mosse nemiche in una volta con «Mostra "
-"le mosse nemiche» nel menù «Azioni»."
+"possibile vedere tutte le possibili mosse nemiche in una volta con <b>Mostra "
+"le mosse nemiche</b> nel menù <b>Azioni</b>."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1400
@@ -1914,29 +1909,27 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1436
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
 "deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
-"Avanzando di un livello ho recuperato tutti i PF!\n"
-"Ho una possibilità di colpire un avversario con l’arco pari al 60% e causerò "
-"9 punti ferita per ognuno dei quattro attacchi. Utilizzami per abbattere le "
-"unità più difficili da abbattere."
+"L’avanzamento di un livello mi ha guarito completamente!\n"
+"Ho sempre una possibilità del 60% di fare centro con la mia abilità di "
+"<i>tiratore scelto</i> e causerò 9 punti ferita per ognuno dei quattro "
+"attacchi. Utilizzami per abbattere le unità più difficili da abbattere."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1445
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
 "deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
-"Avanzando di un livello ho recuperato tutti i PF!\n"
-"Ho una possibilità di colpire un avversario con l’arco pari al 60% e causerò "
-"9 punti ferita per ognuno dei quattro attacchi. Utilizzami per abbattere le "
-"unità più difficili da abbattere."
+"L’avanzamento di un livello mi ha guarito completamente!\n"
+"Ho sempre una possibilità del 60% di fare centro con la mia abilità di "
+"<i>tiratrice scelta</i> e causerò 9 punti ferita per ognuno dei quattro "
+"attacchi. Utilizzami per abbattere le unità più difficili da abbattere."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1461
