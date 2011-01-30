@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "POT-Creation-Date: 2011-01-17 20:26+0100\n"
-"PO-Revision-Date: 2010-06-22 09:01+0800\n"
-"Last-Translator: YP_Lin <yenpinlin@gmail.com>\n"
+"PO-Revision-Date: 2011-01-30 22:28+0800\n"
+"Last-Translator: 楊綮銘 <steven.sheep@hotmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,7 @@ msgid ""
 "different terrains against all manner of opposition."
 msgstr ""
 "建造一支強大的部隊，招募新兵培養成更強的戰士。在往後的游戲中，組成一支無堅不"
-"摧的部隊。培養不同職業的士兵，在各式不同的地形中與不同的對手進行戰鬥。"
+"摧的部隊。培養不同職業的單位，在各式不同的地形中與不同的對手進行戰鬥。"
 
 #. type: Content of: <book><preface><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:18
@@ -72,8 +72,8 @@ msgid ""
 "challenge your friends – or strangers – and fight in epic multi-player "
 "fantasy battles."
 msgstr ""
-"遊戲中有超過200種的士兵（步兵，騎兵，弓箭手和法師只是個開始），從小規模伏擊到"
-"大規模的正面衝突，有各種戰場。您甚至可以設計自己的士兵，任務，甚至整個戰役。"
+"遊戲中有超過200種的單位（步兵，騎兵，弓箭手和法師只是個開始），從小規模伏擊到"
+"大規模的正面衝突，有各種戰場。您甚至可以設計自己的單位，任務，甚至整個戰役。"
 "您可以在多人對戰中和您的朋友或者是陌生人對戰。"
 
 #. type: Content of: <book><preface><simpara>
@@ -146,7 +146,7 @@ msgid ""
 "there and can travel more easily and fight better when they are in familiar "
 "terrain."
 msgstr ""
-"大地上零星分布著村莊。村莊可以治療您的士兵，也可以提供收入。通常您需要越過高"
+"大地上零星分布著村莊。村莊可以治療您的單位，也可以提供收入。通常您需要越過高"
 "山和河流，穿過森林、山丘和苔原，路過廣闊的草地。在這些地形上，不同的生物有不"
 "同的適應性。在熟悉的地域，他們較能發揮全力。"
 
@@ -304,8 +304,7 @@ msgid ""
 msgstr ""
 "選擇這個選項開始一場遊戲。您可以選擇一個或者是多個對手，可以選擇加入官方伺服"
 "器也可以區網連線，可以和電腦對戰也可以和玩家對戰。選擇這個選項後會進入一個選"
-"單讓您選擇要如何進行遊戲。更多說明參考<link linkend=\"scenarios\">戰役</"
-"link>。"
+"單讓您選擇要如何進行遊戲。更多說明參考<xref linkend=\"戰役\"/>。"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:149
@@ -495,9 +494,9 @@ msgid ""
 "the next, so you don&#8217;t lose units you don&#8217;t use."
 msgstr ""
 "戰役是一系列由任務串起來的劇情遊戲。通常一個戰役有10－20個任務。戰役的一大特"
-"色是允許您培養自己的部隊。當您完成一個任務時，存活下來的士兵都會i被保留到下個"
-"任務。即使您在下一場戰鬥裡面完全没有用到這些士兵，他們也會再被保留到下個任"
-"務，所以不用擔心您沒使用的士兵會消失。"
+"色是允許您培養自己的部隊。當您完成一個任務時，存活下來的單位都會被保留到下個"
+"任務。即使您在下一場戰鬥裡面完全没有用到這些單位，他們也會再被保留到下個任"
+"務，所以不用擔心您沒使用的單位會消失。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:302
@@ -523,8 +522,8 @@ msgid ""
 "players either over the internet or at your computer. Scenarios are accessed "
 "through the \"Multiplayer\" button on the main menu."
 msgstr ""
-"一個任務遊戲時間30分鐘到2小時不等。這是最快的遊戲方式，不過您的士兵不會被保留"
-"下來，而且您不能使用戰役的某些士兵。任務可以選擇和電腦對戰或是透過網路和其他"
+"一個任務遊戲時間30分鐘到2小時不等。這是最快的遊戲方式，不過您的單位不會被保留"
+"下來，而且您不能使用戰役的某些單位。任務可以選擇和電腦對戰或是透過網路和其他"
 "玩家對抗。要玩任務遊戲，選擇主選單上的\"多人遊戲\"按鈕。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -545,7 +544,7 @@ msgstr ""
 "由韋諾之戰多人遊戲伺服器提供服務。多人遊戲時間可能從1小時到10小時不等，這取決"
 "於地圖大小和參與人數。平均一局要玩３到７個小時。遊戲可以隨時在中途儲存或讀"
 "取，也由於這個原因，有些遊戲可以持續１到２個星期，儘管實際遊戲時間才幾個小時"
-"而已。多人遊戲裡面的士兵不能從一個任務保留到下一個。您部隊的能力值只能從當前"
+"而已。多人遊戲裡面的單位不能從一個任務保留到下一個。您部隊的能力值只能從當前"
 "的任務裡面提升。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -779,7 +778,7 @@ msgstr "村莊(您的村莊/總村莊數)"
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:436
 msgid "Your total units"
-msgstr "士兵數"
+msgstr "單位數"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:441
@@ -868,9 +867,9 @@ msgid ""
 "recall experienced units that survived earlier scenarios. From here, you can "
 "start to build your army to conquer the enemy."
 msgstr ""
-"在遊戲剛開始的時候您只擁有少量的士兵。其中之一是指揮官（有小皇冠標示）。開始"
+"在遊戲剛開始的時候您只擁有少量的單位。其中之一是指揮官（有小皇冠標示）。開始"
 "時指揮官通常在城堡的一個特殊位置，稱為軍情處。當指揮官站在軍情處並且有足夠錢"
-"時，您就可以招募軍隊。戰役裡面如果有之前任務存活下來的老兵，也可以徵召。招募"
+"時，您就可以招募軍隊。戰役裡面如果有之前任務存活下來的單位，也可以徵召。招募"
 "或徵召時，指揮官不僅可以站在自己的城堡上，也可以在您已經攻克的敵人城堡上。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -886,10 +885,10 @@ msgid ""
 "don&#8217;t dilly-dally looking at the scenery, there&#8217;s a battle to be "
 "won."
 msgstr ""
-"遊戲中，您要做的第一件事情可能就是招募第一個士兵。按快捷鍵 <literal>Ctrl-R</"
+"遊戲中，您要做的第一件事情可能就是招募第一個單位。按快捷鍵 <literal>Ctrl-R</"
 "literal>（或在城堡的空餘位置上點選右鍵選擇\"招募\"）然後從所有您可以招募的兵"
-"種中選擇一個單位。每個招募的士兵佔據城堡的一個位置。一旦城堡滿了，就必須先把"
-"他們移走才能繼續招募新的士兵。您的對手也會在他城堡的軍情處上招募士兵; 所以不"
+"種中選擇一個單位。每個招募的單位佔據城堡的一個位置。一旦城堡滿了，就必須先把"
+"他們移走才能繼續招募新的單位。您的對手也會在他城堡的軍情處上招募單位; 所以不"
 "要閒著看風景，好好準備戰鬥吧。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -917,8 +916,8 @@ msgid ""
 "their Resistances, current Terrain, and Level. Full details are in the in "
 "game help."
 msgstr ""
-"每個士兵因種族，等級而不同。根據防禦、地形和等級的不同，他們各有優缺點。詳細"
-"資訊參見士兵列表和移動類類型表"
+"每個單位因種族，等級而不同。根據防禦、地形和等級的不同，他們各有優缺點。詳細"
+"資訊參見單位列表和移動類型表"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:531
@@ -933,9 +932,9 @@ msgid ""
 "recruit and recall more when that happens. But choose wisely, for each has "
 "strengths and weaknesses a cunning opponent will quickly exploit."
 msgstr ""
-"您的部隊在獲得經驗值後，會學會更多技能且變得更強壯。有些士兵可能在戰場陣亡，"
-"所以這時您需要招募新士兵或者召回老士兵。這兩種方法各有優缺點。您要作出明智的"
-"選擇，不然狡猾的對手可能利用這點迅速擊垮您。"
+"您的部隊在獲得經驗值後，會學會更多技能且變得更強壯。有些單位可能在戰場陣亡，"
+"所以這時您需要招募新單位或者召回單位。這兩種方法各有優缺點。您要作出明智的選"
+"擇，不然狡猾的對手可能利用這點迅速擊垮您。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:538
@@ -990,12 +989,12 @@ msgid ""
 "current gold and current income at the top of the screen as described in the "
 "section on the <link linkend=\"game_screen\">game screen</link>."
 msgstr ""
-"部隊不是免費為您打仗的。招募士兵時需要花錢，維持他們也需要花錢。每次開始一個"
-"任務時您的金錢是從上個任務傳下來的（如果您在上一關所剩無幾，遊戲會保證給您一"
-"個最小金錢數）。您可以盡早完成任務獲得金錢獎勵。佔領村莊也可以提供收入。每個"
-"佔領的村莊每回合可以提供２個士兵的資金。當一個遊戲開始時，您應該盡可能的多佔"
-"領村莊讓收入足以支撐戰争費用。您可以在畫面頂端看到現在擁有的金錢和當前收入。"
-"參見<link linkend=\"game_screen\">遊戲畫面</link>。"
+"部隊不是免費為您打仗的。招募時需要花錢，維持他們也需要花錢。每次開始一個任務"
+"時您的金錢是從上個任務傳下來的（如果您在上一關所剩無幾，遊戲會保證給您一個最"
+"小金錢數）。您可以盡早完成任務獲得金錢獎勵。佔領村莊也可以提供收入。每個佔領"
+"的村莊每回合可以提供２個單位的資金。當一個遊戲開始時，您應該盡可能的多佔領村"
+"莊讓收入足以支撐戰争費用。您可以在畫面頂端看到現在擁有的金錢和當前收入。參見"
+"<link linkend=\"game_screen\">遊戲畫面</link>。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:566
@@ -1071,7 +1070,7 @@ msgstr "左鍵點選"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:615
 msgid "Select unit, move unit"
-msgstr "選擇士兵，移動士兵"
+msgstr "選擇單位，移動單位"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:620
@@ -1281,7 +1280,7 @@ msgstr "Alt-u"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:799
 msgid "Show unit list"
-msgstr "顯示士兵列表"
+msgstr "顯示單位列表"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:810
@@ -1318,7 +1317,7 @@ msgstr "Ctrl-r"
 #: /src/wesnoth/doc/manual/manual.en.xml:847
 #: /src/wesnoth/doc/manual/manual.en.xml:1254
 msgid "Recruit unit"
-msgstr "招募士兵"
+msgstr "招募單位"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:852
@@ -1340,7 +1339,7 @@ msgstr "Alt-r"
 #: /src/wesnoth/doc/manual/manual.en.xml:863
 #: /src/wesnoth/doc/manual/manual.en.xml:1278
 msgid "Recall unit"
-msgstr "徵召士兵"
+msgstr "徵召單位"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:874
@@ -1350,7 +1349,7 @@ msgstr "Ctrl-n"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:877
 msgid "Rename unit"
-msgstr "重新命名士兵"
+msgstr "重新命名單位"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:882
@@ -1403,7 +1402,7 @@ msgstr "n"
 #: /src/wesnoth/doc/manual/manual.en.xml:923
 #: /src/wesnoth/doc/manual/manual.en.xml:1270
 msgid "Cycle through units that have movement left"
-msgstr "輪流選擇還可移動的士兵"
+msgstr "輪流選擇還可移動的單位"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:928
@@ -1414,7 +1413,7 @@ msgstr "Shift-Space"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:931
 msgid "Cycle through units that have movement left, in reverse order"
-msgstr "輪流選擇還可移動的士兵(反向)"
+msgstr "輪流選擇還可移動的單位(反向)"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:942
@@ -1434,7 +1433,7 @@ msgstr "Ctrl-b"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:953
 msgid "Show potential enemy moves, if your units were not on the map"
-msgstr "顯示假設没有您的士兵，敵方可能的移動範圍"
+msgstr "顯示假設没有您的單位，敵方可能的移動範圍"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:958
@@ -1444,7 +1443,7 @@ msgstr "1-7"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:961
 msgid "Show how far currently selected unit can move in that many turns"
-msgstr "顯示在那個回合數中士兵可能移動的距離"
+msgstr "顯示在那個回合數中單位可能移動的距離"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:972
@@ -1454,7 +1453,7 @@ msgstr "Space"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:975
 msgid "End unit turn and cycle to next unit that has movement left"
-msgstr "結束當前士兵的回合，定位到下一個還可移動的士兵。"
+msgstr "結束當前單位的回合，定位到下一個還可移動的單位。"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:980
@@ -1464,7 +1463,7 @@ msgstr "Shift-Space"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:983
 msgid "Make currently selected unit hold position (end its movement)"
-msgstr "命令目標士兵待命"
+msgstr "命令目標單位待命"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:988
@@ -1554,7 +1553,7 @@ msgstr "和另一位玩家聊天（多人遊戲中）"
 #: /src/wesnoth/doc/manual/manual.en.xml:1068
 #, fuzzy
 msgid "Ctrl-m"
-msgstr "Ctrl-s"
+msgstr "Ctrl-r"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1071
@@ -1616,7 +1615,7 @@ msgstr "/"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1123
 msgid "Search (find label or unit by name)"
-msgstr "查尋（查尋標籤或士兵名）"
+msgstr "搜尋（搜尋標籤或單位名）"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1128
@@ -1800,7 +1799,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
 #: /src/wesnoth/doc/manual/manual.en.xml:1314
 msgid "Recruit dialog"
-msgstr "招募士兵對話框"
+msgstr "招募單位對話框"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1316
@@ -1810,8 +1809,8 @@ msgid ""
 "recruited or recalled when the leader is on a keep whose castle has at least "
 "one vacant castle hex."
 msgstr ""
-"金錢的主要作用是通過招募和徵召士兵組織軍隊。當指揮官在城堡的軍情處上，並且城"
-"堡中至少有一個空位時，可以招募或徵召士兵。"
+"金錢的主要作用是通過招募和招回單位組織軍隊。當指揮官在城堡的軍情處上，並且城"
+"堡中至少有一個空位時，可以招募或招回單位。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1323
@@ -1820,8 +1819,8 @@ msgid ""
 "from the list that is presented. The cost to Recruit depends on the unit, "
 "but is usually between 10 and 20 gold."
 msgstr ""
-"右鍵點選城堡的一個空位，選擇招募來招募顯示列表中的新士兵。招募花費的金錢取決"
-"於士兵職業，不過通常是10－20金幣。"
+"右鍵點選城堡的一個空位，選擇招募來招募顯示列表中的新單位。招募花費的金錢取決"
+"於單位職業，不過通常是10－20金幣。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1330
@@ -1830,8 +1829,8 @@ msgid ""
 "previous scenarios. Recalling costs 20 pieces of gold per unit. See <link "
 "linkend=\"unit_recall\">recalling units</link> for more information."
 msgstr ""
-"右鍵點選城堡的一個空位，選擇召回來召回上一任務存活的士兵。召回金額每士兵20金"
-"幣。查看<link linkend=\"unit_recall\">徵召士兵</link>獲取更多信息。"
+"右鍵點選城堡的一個空位，選擇招回來招回上一任務存活的單位。召回金額每單位20金"
+"幣。查看<link linkend=\"unit_recall\">招回單位</link>獲取更多信息。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1338
@@ -1840,7 +1839,6 @@ msgstr "支出"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1339
-#, fuzzy
 msgid ""
 "Each unit also has an upkeep cost. The upkeep cost is generally equal to the "
 "level of the unit, unless the unit has the \"Loyal\" trait (<link linkend="
@@ -1850,8 +1848,8 @@ msgid ""
 "than the number of villages that side controls. Upkeep paid is the "
 "difference between the number of villages and the upkeep cost."
 msgstr ""
-"每個士兵都有對應的支出。整體來說，士兵的支出與他的等級相等，但是有“忠誠”特質"
-"的士兵除外。通常非招募產生的士兵，例如：指揮官或者志願加入隊伍的士兵，會有“忠"
+"每個單位都有對應的支出。整體來說，單位的支出與他的等級相等，但是有“忠誠”特質"
+"的單位除外。通常非招募產生的單位，例如：指揮官或者志願加入隊伍的單位，會有“忠"
 "誠”特質。只有支出的總和（在數量上）比您擁有的村莊數多時，才需要支付支出。需要"
 "支付的支出是上述兩者的差值。"
 
@@ -1875,7 +1873,7 @@ msgstr "2 + 村莊數 - maximum(0, 支出 - 村莊數)"
 #: /src/wesnoth/doc/manual/manual.en.xml:1350
 msgid ""
 "where upkeep is equal to the sum of the levels of all your non-loyal units."
-msgstr "支出與您非“忠誠”士兵等級之和相等。"
+msgstr "支出與您非“忠誠”單位等級之和相等。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1352
@@ -1889,7 +1887,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1357
 msgid "Units"
-msgstr "士兵"
+msgstr "單位"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1358
@@ -1900,9 +1898,9 @@ msgid ""
 "other units of the same type. Finally, campaign designers can add unique "
 "units to their campaigns to further expand the options available to players."
 msgstr ""
-"韋諾之戰擁有上百種士兵。他們是根據很豐富的统計資料來定義的。另外，每個士兵都"
-"會不同的性格，<link linkend=\"traits\">性格特質</link>會使得同一類型的士兵略"
-"有不同。戰役設計者也可以添加自己特有的士兵來增加玩家的選擇。"
+"韋諾之戰擁有上百種單位。他們是根據很豐富的统計資料來定義的。另外，每個單位都"
+"會不同的性格，<xref linkend=\"性格特質\"/>會使得同一類型的單位略有不同。戰役"
+"設計者也可以添加自己特有的單位來增加玩家的選擇。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1363
@@ -1912,7 +1910,7 @@ msgid ""
 "In addition, units have other characteristics, such as alignment and special "
 "abilities, that are described in more detail below."
 msgstr ""
-"士兵的基本属性有生命值(HP)，移動力，可以使用的武器和傷害數值。另外，士兵還可"
+"單位的基本属性有生命值(HP)，移動力，可以使用的武器和傷害數值。另外，單位還可"
 "以有其它属性，例如属於哪個陣營和特殊技能，下面會詳細描述。"
 
 #. type: Content of: <book><chapter><section><section><title>
@@ -1928,9 +1926,9 @@ msgid ""
 "the time of day. Lawful units do more damage during the day and less at "
 "night. Chaotic units do more damage at night and less during the day."
 msgstr ""
-"每個士兵都属於一個陣營：守序、中立和混亂。陣營影響士兵在不同時間的表現。中立"
-"士兵不受時間影響。守序士兵在白天更具攻擊力，晚上攻擊力降低。混亂士兵與守序士"
-"兵相反。"
+"每個單位都属於一個陣營：守序、中立和混亂。陣營影響單位在不同時間的表現。中立"
+"單位不受時間影響。守序單位在白天更具攻擊力，晚上攻擊力降低。混亂單位與守序單"
+"位相反。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1374
@@ -1947,7 +1945,7 @@ msgstr ""
 msgid ""
 "The following table shows the effects of different times of the day on the "
 "damage dealt by lawful and chaotic units:"
-msgstr "下表顯示不同時段對守序士兵和混亂士兵攻擊力的影響："
+msgstr "下表顯示不同時段對守序單位和混亂單位攻擊力的影響："
 
 #. type: Content of: <book><chapter><section><section><table><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1383
@@ -2205,17 +2203,17 @@ msgid ""
 "Watch, the Lawful unit would do 9 points compared to the Chaotic unit&#8217;"
 "s 15."
 msgstr ""
-"例如：來看攻擊力都是12的一個守序士兵和一個混亂士兵的戰鬥。破曉和黄昏，他們每"
-"下打中的攻擊都是12點。在上午或下午，守序士兵攻擊為(<literal>12 * 1.25 </"
-"literal>) 15點，混亂士兵攻擊為(<literal>12 * 0.75</literal>) 9點。在前半夜或"
-"後半夜，守序士兵攻擊為9點，混亂士兵攻擊為15點。"
+"例如：來看攻擊力都是12的一個守序單位和一個混亂單位的戰鬥。破曉和黄昏，他們每"
+"下打中的攻擊都是12點。在上午或下午，守序單位攻擊為(<literal>12 * 1.25 </"
+"literal>) 15點，混亂單位攻擊為(<literal>12 * 0.75</literal>) 9點。在前半夜或"
+"後半夜，守序單位攻擊為9點，混亂單位攻擊為15點。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1575
 msgid ""
 "If an equivalent Neutral unit were fighting, it would always do 12 points of "
 "damage regardless of the hour."
-msgstr "如果是換作是同樣攻擊力的中立士兵，不管在什麼時間，他永遠是12點攻擊力。"
+msgstr "如果是換作是同樣攻擊力的中立單位，不管在什麼時間，他永遠是12點攻擊力。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1579
@@ -2229,13 +2227,13 @@ msgid ""
 "assigned randomly to units when they are created. Most units receive two "
 "traits."
 msgstr ""
-"士兵的特質是他們内在性格的表現。特質是在徵召士兵的時候随機分配的。大多數士兵"
+"單位的特質是他們内在性格的表現。特質是在招募單位的時候随機分配的。大多數單位"
 "擁有兩種性格特質。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1583
 msgid "The possible traits for most units are as follows:"
-msgstr "大多數士兵可能擁有以下性格特質："
+msgstr "大多數單位可能擁有以下性格特質："
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1587
@@ -2253,10 +2251,10 @@ msgid ""
 "you have many <emphasis>maximum level</emphasis> units you may wish to "
 "recall units with more useful traits."
 msgstr ""
-"聰慧士兵升級需要的經驗值比一般士兵少20%，巨魔除外。聰慧士兵在戰役初期很有用，"
-"因為他們能更快升到高等級。戰役後期聰慧特質則顯得無關緊要，因為士兵滿級後再升"
-"級並不會發生重大變化。如果您已經擁有很多<emphasis>滿級</emphasis>士兵，可以考"
-"慮召回一些擁有更有用特質的士兵。"
+"聰慧單位升級需要的經驗值比一般單位少20%，巨魔除外。聰慧單位在戰役初期很有用，"
+"因為他們能更快升到高等級。戰役後期聰慧特質則顯得無關緊要，因為單位滿級後再升"
+"級並不會發生重大變化。如果您已經擁有很多<emphasis>滿級</emphasis>單位，可以考"
+"慮招回一些擁有更有用特質的單位。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1603
@@ -2274,10 +2272,10 @@ msgid ""
 "units without this trait and are subsequently less good at holding contested "
 "positions."
 msgstr ""
-"敏捷士兵比一般士兵多１點移動力，但是少５％血量。敏捷是最容易察覺的一個特質，"
-"尤其是對於移動緩慢的士兵，比如巨魔或者重甲步兵。擁有敏捷特質的士兵在不平坦的"
+"敏捷單位比一般單位多１點移動力，但是少５％血量。敏捷是最容易察覺的一個特質，"
+"尤其是對於移動緩慢的單位，比如巨魔或者重甲步兵。擁有敏捷特質的單位在不平坦的"
 "地域有很好的機動性。因為這個原因，在組織兵力時要重點考慮這個問題。不過同時敏"
-"捷士兵不像一般士兵那麼強壯，因此不適宜用來駐守某個地點。"
+"捷單位不像一般單位那麼強壯，因此不適宜用來駐守某個地點。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1619
@@ -2294,9 +2292,9 @@ msgid ""
 "resistances. Resilient units are especially useful for holding strategic "
 "positions against opponents."
 msgstr ""
-"堅韌士兵與一般士兵相比每4點血多加1點血。在戰役每個階段堅韌士兵都很有用，不管"
-"對什麼士兵，堅韌特質都很有用。堅韌與低攻擊、防高或者抗性高的組合時最為有用。"
-"堅韌士兵在駐守戰略要地時特別有用。"
+"堅韌單位與一般單位相比每4點血多加1點血。在戰役每個階段堅韌單位都很有用，不管"
+"對什麼單位，堅韌特質都很有用。堅韌與低攻擊、防高或者抗性高的組合時最為有用。"
+"堅韌單位在駐守戰略要地時特別有用。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1634
@@ -2312,16 +2310,16 @@ msgid ""
 "Fighter. Strong units can be very useful when a tiny bit of extra damage is "
 "all that is needed to turn a damaging stroke into a killing blow."
 msgstr ""
-"強壯士兵在每次成功的近戰連擊中多1點攻擊，另外比一般士兵多1點血。盡管強壯對所"
-"有可以近戰連擊士兵都有用，不過對於連擊次數多的士兵最具成效，比如精靈戰士。強"
-"壯士兵跟其他士兵血量差異小時，變得非常有用。"
+"強壯單位在每次成功的近戰連擊中多1點攻擊，另外比一般單位多1點血。盡管強壯對所"
+"有可以近戰連擊單位都有用，不過對於連擊次數多的單位最具成效，比如精靈戰士。強"
+"壯單位跟其他單位血量差異小時，變得非常有用。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1648
 msgid ""
 "There are also some traits that are assigned only for certain units or only "
 "for units of a certain race. These are:"
-msgstr "有些特質只對特定士兵或者特定種族的士兵有效。它們是："
+msgstr "有些特質只對特定單位或者特定種族的單位有效。它們是："
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1653
@@ -2337,7 +2335,7 @@ msgid ""
 "however, are gifted with natural talent that exceeds their brethren. These "
 "elves inflict an additional point of damage with each arrow."
 msgstr ""
-"靈敏士兵在每次成功的遠程連擊中多1點攻擊。靈敏是精靈獨有的特質。精靈以姿態優雅"
+"靈敏單位在每次成功的遠程連擊中多1點攻擊。靈敏是精靈獨有的特質。精靈以姿態優雅"
 "和射術精湛而聞名於世。其中一些則擁有比天份更出色的能力。這些精靈每支箭多1點額"
 "外攻擊。"
 
@@ -2378,7 +2376,7 @@ msgid ""
 "the unit type:"
 msgstr ""
 "有些特質不是隨機分配的。這些特質有些可以由戰役制作者分配，有些則跟随特定類型"
-"的士兵出現。"
+"的單位出現。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1696
@@ -2397,11 +2395,11 @@ msgid ""
 "gold is in short supply.  This trait is never given to recruited units, so "
 "it may be unwise to dismiss such units or to send them to a foolish death."
 msgstr ""
-"忠誠的士兵不需支出金幣。大部分士兵必須給予與他們等級相等的維持費用，但是忠誠"
-"士兵無需此費用。在戰役中，有些士兵可能志願加入玩家隊伍。這些士兵被賦予忠誠特"
-"質。盡管徵召忠誠士兵仍需耗費金錢，但是他們絕對不需要維持費用。這點使他們在資"
-"金短缺的長戰役裡面特別珍貴。新招募的士兵永遠不會有此項特質，所以解散這樣的士"
-"兵或者讓他們白白送死是很不明智的。"
+"忠誠的單位不需支出金幣。大部分單位必須給予與他們等級相等的維持費用，但是忠誠"
+"單位無需此費用。在戰役中，有些單位可能志願加入玩家隊伍。這些單位被賦予忠誠特"
+"質。盡管招回忠誠單位仍需耗費金錢，但是他們絕對不需要維持費用。這點使他們在資"
+"金短缺的長程戰役裡面特別珍貴。新招募的單位永遠不會有此項特質，所以解散這樣的"
+"單位或者讓他們白白送死是很不明智的。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1714
@@ -2417,8 +2415,8 @@ msgid ""
 "again, poison has no effect upon them. This can make them invaluable in "
 "dealing with foes who use poison in conjunction with their attacks."
 msgstr ""
-"不死族士兵對毒免疫，吸血和瘟疫對他們也没有作用。不死族的士兵通常只有"
-"<emphasis>不死</emphasis>這一個特質。因為不死族士兵是屍體重新站起來戰鬥，所以"
+"不死族單位對毒免疫，吸血和瘟疫對他們也没有作用。不死族的單位通常只有"
+"<emphasis>不死</emphasis>這一個特質。因為不死族單位是屍體重新站起來戰鬥，所以"
 "毒對他們没有作用。這在對付擁有毒性攻擊的對手時很有用。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2433,18 +2431,18 @@ msgid ""
 "drain and plague doesn&#8217;t work on them.  Mechanical units generally "
 "have <emphasis>Mechanical</emphasis> as their only trait."
 msgstr ""
-"機械士兵不是生物，所以對毒性攻擊免疫，同樣的，吸血和瘟疫對他們也没有作用。機"
-"械士兵通常只有<emphasis>機械</emphasis>這一個特質。"
+"機械單位不是生物，所以對毒性攻擊免疫，同樣的，吸血和瘟疫對他們也没有作用。機"
+"械單位通常只有<emphasis>機械</emphasis>這一個特質。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1741
 msgid "Unit Specialties"
-msgstr "士兵特長"
+msgstr "單位特長"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1742
 msgid "Certain units have special attacks. These are listed below:"
-msgstr "有些士兵有獨特的攻擊方式。列舉如下："
+msgstr "有些單位有獨特的攻擊方式。列舉如下："
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1746
@@ -2458,7 +2456,7 @@ msgid ""
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (e.g. petrified)."
 msgstr ""
-"當進行攻擊時，.若該士兵站在敵人背後，且該敵人具有行動力（例如：未被石化）時，"
+"當進行攻擊時，若該單位站在敵人背後，且該敵人具有行動力（例如：未被石化）時，"
 "背刺能產生雙倍攻擊力。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2547,8 +2545,8 @@ msgid ""
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn&#8217;t work on Undead or units in villages."
 msgstr ""
-"當一個士兵死於瘟疫攻擊時，在死亡地點會產生一個僵屍，而該殭屍與發動瘟疫攻擊之"
-"一方同一陣營。這種攻擊對不死族或在村莊上的士兵無效。"
+"當一個單位死於瘟疫攻擊時，在死亡地點會產生一個僵屍，而該殭屍與發動瘟疫攻擊之"
+"一方同一陣營。這種攻擊對不死族或在村莊上的單位無效。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1835
@@ -2563,8 +2561,8 @@ msgid ""
 "they are cured or are reduced to 1 HP. Poison can not, of itself, kill a "
 "unit."
 msgstr ""
-"這種攻擊使目標單位中毒。中毒的士兵每回合減少8點血，直到被治癒或者血量減到1"
-"點。也就是說，光靠毒藥不會殺死士兵。"
+"這種攻擊使目標單位中毒。中毒的單位每回合減少8點血，直到被治癒或者血量減到1"
+"點。也就是說，光靠毒藥不會殺死單位。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1847
@@ -2579,8 +2577,8 @@ msgid ""
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"這種攻擊可以緩慢目標士兵一回合。緩慢是對方攻擊减半，移動能力减半。被緩慢的士"
-"兵會在右側資訊欄中顯示一個蝸牛圖標。"
+"這種攻擊可以緩慢目標單位一回合。緩慢是對方攻擊减半，移動能力减半。被緩慢的單"
+"位會在右側資訊欄中顯示一個蝸牛圖標。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1860
@@ -2592,7 +2590,7 @@ msgstr "石化"
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
-msgstr "這種攻擊會把目標變成石頭。被石化的士兵不能移動或者攻擊。"
+msgstr "這種攻擊會把目標變成石頭。被石化的單位不能移動或者攻擊。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1871
@@ -2607,8 +2605,8 @@ msgid ""
 "For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
 "strikes."
 msgstr ""
-"當士兵受傷時這種攻擊方式攻擊次數减少。攻擊次數减少的比例與失血比例相同。例"
-"如：有3/4血的士兵只有原攻擊次數的3/4。"
+"當單位受傷時這種攻擊方式攻擊次數减少。攻擊次數减少的比例與失血比例相同。例"
+"如：有3/4血的單位只有原攻擊次數的3/4。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1885
@@ -2622,7 +2620,7 @@ msgid ""
 "an effect on how the unit interacts with other units. These abilities are "
 "listed below:"
 msgstr ""
-"有些士兵擁有技能，這些技能有些直接影響其它士兵，有些對該士兵與其他士兵的相互"
+"有些單位擁有技能，這些技能有些直接影響其它單位，有些對該單位與其他單位的相互"
 "作用有影響。列舉如下："
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2638,8 +2636,8 @@ msgid ""
 "next to it. Any enemy unit that first discovers this unit immediately loses "
 "all its remaining movement."
 msgstr ""
-"這種士兵可以在森林中隱形，不會被敵人發現。這種士兵在森林中時，敵方士兵無法發"
-"現。除非有一個士兵緊貼在他旁邊。第一個發現隱形士兵的士兵立即失去剩餘的移動"
+"這種單位可以在森林中隱形，不會被敵人發現。這種單位在森林中時，敵方單位無法發"
+"現。除非有一個單位緊貼在他旁邊。第一個發現隱形單位的單位立即失去剩餘的移動"
 "力。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2656,8 +2654,8 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"這種士兵可以在村莊（水上村莊除外）中隱形。除非有士兵緊貼在他旁邊才會被發現。"
-"第一個發現隱形士兵的士兵立即失去剩餘的移動力。"
+"這種單位可以在村莊（水上村莊除外）中隱形。除非有單位緊貼在他旁邊才會被發現。"
+"第一個發現隱形單位的單位立即失去剩餘的移動力。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1919
@@ -2669,7 +2667,7 @@ msgstr "治癒"
 msgid ""
 "A unit which can cure an ally of poison, although the ally will receive no "
 "additional healing on the turn it is cured of the poison."
-msgstr "這種士兵可以治癒中毒的同伴，但是治癒的那一回合不能享受到額外的回血。"
+msgstr "這種單位可以治癒中毒的同伴，但是治癒的那一回合不能享受到額外的回血。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1930
@@ -2685,8 +2683,8 @@ msgid ""
 "its poison by a healer, and must seek the care of a village or a unit that "
 "can cure."
 msgstr ""
-"使得該士兵能在每回合開始前治療友軍士兵。接受治療的士兵每回合回血4點或者中毒效"
-"果該回合不减血。中毒士兵不能被該技能治癒，必須到村莊或者具有治癒技能的士兵旁"
+"使得該單位能在每回合開始前治療友軍單位。接受治療的單位每回合回血4點或者中毒效"
+"果該回合不减血。中毒單位不能被該技能治癒，必須到村莊或者具有治癒技能的單位旁"
 "邊。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2703,9 +2701,9 @@ msgid ""
 "that turn.  A poisoned unit cannot be cured of its poison by a healer, and "
 "must seek the care of a village or a unit that can cure."
 msgstr ""
-"這個士兵同時使用草藥和魔法來治療士兵，在戰場上比一般的治療更快。接受治療的士"
-"兵每回合回血4點或者中毒效果該回合不减血。中毒士兵不能被該技能治癒，必須到村莊"
-"或者具有治癒技能的士兵旁邊。"
+"這個單位同時使用草藥和魔法來治療單位，在戰場上比一般的治療更快。接受治療的單"
+"位每回合回血4點或者中毒效果該回合不减血。中毒單位不能被該技能治癒，必須到村莊"
+"或者具有治癒技能的單位旁邊。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1960
@@ -2720,7 +2718,7 @@ msgid ""
 "fight as if it were dusk when it is night, and as if it were day when it is "
 "dusk."
 msgstr ""
-"這個士兵照亮周圍的區域，使守序士兵戰鬥力增强，混亂士兵戰鬥力下降。在這個士兵"
+"這個單位照亮周圍的區域，使守序單位戰鬥力增强，混亂單位戰鬥力下降。在這個單位"
 "周圍，夜晚被當作黄昏，黄昏被當作白天。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2737,7 +2735,7 @@ msgid ""
 "side as a unit with Leadership engages in combat, its attacks do 25% more "
 "damage times the difference in their levels."
 msgstr ""
-"這個士兵會使他周圍的友軍更具戰鬥力。周圍比他等級低的友軍在戰鬥中會給對方造成"
+"這個單位會使他周圍的友軍更具戰鬥力。周圍比他等級低的友軍在戰鬥中會給對方造成"
 "更大的傷害，連擊時多(25% * 級别之差)的傷害。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2752,8 +2750,8 @@ msgid ""
 "at night, except if they have units next to it. Any enemy unit that first "
 "discovers this unit immediately loses all its remaining movement."
 msgstr ""
-"這種士兵在晚上隱形。除非有士兵緊貼在他旁邊才會被發現。第一個發現隱形士兵的士"
-"兵立即失去剩餘的移動力。"
+"這種單位在晚上隱形。除非有單位緊貼在他旁邊才會被發現。第一個發現隱形單位的單"
+"位立即失去剩餘的移動力。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:2001
@@ -2765,7 +2763,7 @@ msgstr "癒合"
 msgid ""
 "This unit will heal itself 8HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
-msgstr "這種士兵每回合治療自己8HP生命值。如果中毒則消除中毒效果，而不加血。"
+msgstr "這種單位每回合治療自己8HP生命值。如果中毒則消除中毒效果，而不加血。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:2012
@@ -2777,7 +2775,7 @@ msgstr "游擊"
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
-msgstr "這種士兵能迅速穿越敵人防線，忽略所有敵人的控制區域。"
+msgstr "這種單位能迅速穿越敵人防線，忽略所有敵人的控制區域。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:2023
@@ -2789,7 +2787,7 @@ msgstr "堅定"
 msgid ""
 "This unit&#8217;s resistances are doubled, up to a maximum of 50%, when "
 "defending. Vulnerabilities are not affected."
-msgstr "防守時，此一士兵防禦加倍，上限為50%。該士兵的弱點不受這個技能影響。"
+msgstr "防守時，此一單位防禦加倍，上限為50%。該單位的弱點不受這個技能影響。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:2034
@@ -2804,8 +2802,8 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"這種士兵在深水中隱形。除非有士兵緊貼在他旁邊才會被發現。第一個發現隱形士兵的"
-"士兵立即失去剩餘的移動力。"
+"這種單位在深水中隱形。除非有單位緊貼在他旁邊才會被發現。第一個發現隱形單位的"
+"單位立即失去剩餘的移動力。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:2047
@@ -2817,7 +2815,7 @@ msgstr "傳送"
 msgid ""
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
-msgstr "這種士兵可以在兩個友軍村莊之间傳送，僅耗費1的移動力。"
+msgstr "這種單位可以在兩個友軍村莊之间傳送，僅耗費1的移動力。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2059
@@ -2836,9 +2834,9 @@ msgid ""
 "a battle without killing their opponents are awarded 1 experience point per "
 "level of the enemy. In other words:"
 msgstr ""
-"士兵因戰鬥而獲得經驗值。取得足夠的經驗值後會升級，變得更强大。士兵取得的經驗"
-"值多少取決於對方士兵的等級和戰鬥結果：如果殺死地方士兵，每等級獲取8點經驗值，"
-"0級士兵對應4點經驗值。如果没有殺死對方則獲取每等級獲取1點經驗值。也就是說："
+"單位因戰鬥而獲得經驗值。取得足夠的經驗值後會升級，變得更强大。單位取得的經驗"
+"值多少取決於對方單位的等級和戰鬥結果：如果殺死地方單位，每等級獲取8點經驗值，"
+"0級單位對應4點經驗值。如果没有殺死對方則獲取每等級獲取1點經驗值。也就是說："
 
 #. type: Content of: <book><chapter><section><section><table><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2071
@@ -2893,7 +2891,7 @@ msgstr "48"
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2172
 msgid "Recalling units"
-msgstr "徵召士兵"
+msgstr "招回單位"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2173
@@ -2904,8 +2902,8 @@ msgid ""
 "previous Level, Experience Points, (sometimes) any magic items acquired, and "
 "will arrive with full hitpoints."
 msgstr ""
-"當您完成一個任務時，所有存活下來的士兵都可以在下一個任務召回。剛被招募或召回"
-"的士兵在那一回合不能移動或者攻擊。召回士兵保留原來的等級、經驗值、（有時會"
+"當您完成一個任務時，所有存活下來的單位都可以在下一個任務召回。剛被招募或召回"
+"的單位在那一回合不能移動或者攻擊。召回單位保留原來的等級、經驗值、（有時會"
 "有）取得的魔法道具，並且以滿血出現。"
 
 #. type: Content of: <book><chapter><section><title>
@@ -2930,13 +2928,13 @@ msgid ""
 "top of a unit&#8217;s energy bar provide a quick way to see which of your "
 "units have already moved or can move further in the current turn."
 msgstr ""
-"點選一個士兵來確定他在目前回合所能移動到的位置，而他不能到達的區域會暗化。按"
+"點選一個單位來確定他在目前回合所能移動到的位置，而他不能到達的區域會暗化。按"
 "住數字鍵２－７可以確定對應回合數可以移動到的位置。這時把游標移到某一格上會出"
 "現移動的路徑和額外資訊，例如那個地點的防禦力，或者要到達該地點所需的回合數"
-"（如果所需超過１回合的話）。如果您不想移動士兵，可以透過選擇其他士兵（點選新"
-"士兵，或者使用<literal>n</literal>/<literal>N</literal>快捷鍵），或者點選滑鼠"
-"右鍵取消移動。士兵左上角的<link linkend=\"orbs\">行動圖示</link>可以幫您區分"
-"那些士兵已經移動過了，那些還可移動。"
+"（如果所需超過１回合的話）。如果您不想移動單位，可以透過選擇其他單位（點選新"
+"單位，或者使用<literal>n</literal>/<literal>N</literal>快捷鍵），或者點選滑鼠"
+"右鍵取消移動。單位左上角的<xref linkend=\"行動圖示\"/>可以幫您區分那些單位已"
+"經移動過了，那些還可移動。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2195
@@ -2951,11 +2949,11 @@ msgid ""
 "by selecting that unit and choosing a new destination or clicking the unit "
 "again to cancel the <emphasis>goto</emphasis>."
 msgstr ""
-"如果您要移動所選士兵，點選該士兵要移動到的位置。如果所選的位置１回合不能到"
-"達，則該士兵會自動移動到離目的地最近的地方，並進入<emphasis>自動移動模式</"
-"emphasis>。在<emphasis>自動移動模式</emphasis>下，士兵在接下來的幾個回合會自"
-"動移動到指定的地點。您可以透過選擇士兵，重新選擇一個目的地來改變士兵的目的"
-"地，也可以透過點選士兵來取消<emphasis>自動移動模式</emphasis>。"
+"如果您要移動所選單位，點選該單位要移動到的位置。如果所選的位置１回合不能到"
+"達，則該單位會自動移動到離目的地最近的地方，並進入<emphasis>自動移動模式</"
+"emphasis>。在<emphasis>自動移動模式</emphasis>下，單位在接下來的幾個回合會自"
+"動移動到指定的地點。您可以透過選擇單位，重新選擇一個目的地來改變單位的目的"
+"地，也可以透過點選單位來取消<emphasis>自動移動模式</emphasis>。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2204
@@ -2963,7 +2961,7 @@ msgid ""
 "Moving onto a village that is neutral or owned by an enemy will take "
 "ownership of it and end your move for that unit."
 msgstr ""
-"移動到中立或者敵方控制的村莊上會取得村莊的控制權，並且耗盡士兵的移動力。"
+"移動到中立或者敵方控制的村莊上會取得村莊的控制權，並且耗盡單位的移動力。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2206
@@ -2973,8 +2971,8 @@ msgid ""
 "reflected in both the path that is displayed for your unit and the hexes it "
 "may move to on the current turn."
 msgstr ""
-"控制區域對大部分士兵都有作用。控制區域會影響士兵能到達的地點和移動路徑。控制"
-"區域的限制自動反應在您想要移動士兵時顯示的路徑和可到達位置上。"
+"控制區域對大部分單位都有作用。控制區域會影響單位能到達的地點和移動路徑。控制"
+"區域的限制自動反應在您想要移動單位時顯示的路徑和可到達位置上。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2211
@@ -2991,10 +2989,10 @@ msgid ""
 "units are considered too feeble to generate a zone of control and all units "
 "are able to move through the hexes around an enemy level 0 unit freely."
 msgstr ""
-"一個士兵的控制區域是指與他相臨的周圍６個位置。當您移動到敵方士兵的控制區域時"
-"會被迫停下來。擁有游擊技能的士兵可以無視所有控制區域，他們可以不受限制地輕鬆"
-"穿越控制區域。０級士兵由於太弱，所以不能生成控制區域。所有士兵都可以自由穿過"
-"０級士兵的相鄰區域。"
+"一個單位的控制區域是指與他相臨的周圍６個位置。當您移動到敵方單位的控制區域時"
+"會被迫停下來。擁有游擊技能的單位可以無視所有控制區域，他們可以不受限制地輕鬆"
+"穿越控制區域。０級單位由於太弱，所以不能生成控制區域。所有單位都可以自由穿過"
+"０級單位的相鄰區域。"
 
 #. type: Content of: <book><chapter><section><section><table><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2221
@@ -3007,7 +3005,7 @@ msgstr "行動圖示"
 msgid ""
 "On the top of the energy bar shown next to each unit of yours is an orb. "
 "This orb is:"
-msgstr "行動圖示位於士兵左上角，能量條上方當這個圖示顏色是："
+msgstr "行動圖示位於單位左上角，能量條上方當這個圖示顏色是："
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:2236
@@ -3039,7 +3037,7 @@ msgstr "綠色行動圖示"
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:2260
 msgid "If you control the unit and it hasn&#8217;t moved this turn"
-msgstr "如果您控制這個士兵且該士兵當前回合尚未移動。"
+msgstr "如果您控制這個單位且該單位當前回合尚未移動。"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:2265
@@ -3064,7 +3062,7 @@ msgid ""
 "If you control the unit and it has moved this turn, but could still move "
 "further or attack"
 msgstr ""
-"您可以控制這個士兵，該士兵當前回合已經移動過，但還可以繼續移動或者攻擊敵人。"
+"您可以控制這個單位，該單位當前回合已經移動過，但還可以繼續移動或者攻擊敵人。"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:2281
@@ -3090,7 +3088,7 @@ msgid ""
 "If you control the unit, but it has ended its turn (might still be able to "
 "move or attack)"
 msgstr ""
-"您可以控制這個士兵，該士兵當前回合已經移動過，但還可以繼續移動或者攻擊敵人。"
+"您可以控制這個單位，該單位當前回合已經移動過，但還可以繼續移動或者攻擊敵人。"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:2297
@@ -3112,7 +3110,7 @@ msgstr "藍色行動圖示"
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:2308
 msgid "If the unit is an ally you do not control"
-msgstr "您不能控制的友軍士兵。"
+msgstr "您不能控制的友軍單位。"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: /src/wesnoth/doc/manual/manual.en.xml:2317
@@ -3129,7 +3127,7 @@ msgstr "無行動圖示"
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:2324
 msgid "Enemy units have no orb on the top of their energy bar"
-msgstr "沒有標示顏色的為敵方士兵。"
+msgstr "沒有標示顏色的為敵方單位。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2332
@@ -3144,8 +3142,8 @@ msgid ""
 "team color will also show up in parts of the unit&#8217;s clothing, or "
 "possibly on a shield insignia."
 msgstr ""
-"每個士兵下面都有一個光環。光環顏色表示該單位之陣營；在戰役中，人類玩家控制的"
-"陣營是紅色的。陣營顏色會顯示在士兵的衣著上，也會顯示在盾徽上。"
+"每個單位下面都有一個光環。光環顏色表示該單位之陣營；在戰役中，人類玩家控制的"
+"陣營是紅色的。陣營顏色會顯示在單位的衣著上，也會顯示在盾徽上。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2337
@@ -3155,7 +3153,7 @@ msgid ""
 "Control."
 msgstr ""
 "像一個實心圓底光環，因為視角關係所以看起來像橢圓。有時候您看見的是像直升機螺"
-"旋槳的光環，這表明那個士兵没有控制區域。例如0級士兵。"
+"旋槳的光環，這表明那個單位没有控制區域。例如0級單位。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2340
@@ -3185,8 +3183,8 @@ msgid ""
 "swords, are melee weapons, and some weapons, such as bows, are ranged "
 "weapons."
 msgstr ""
-"當您移到一個敵方士兵旁邊時，就可以攻擊他。點選您自己的士兵，再點選要攻擊的敵"
-"方士兵，就會出現攻擊選項畫面。每個士兵擁有一種或多種攻擊武器。有些武器（比如"
+"當您移到一個敵方單位旁邊時，就可以攻擊他。點選您自己的單位，再點選要攻擊的敵"
+"方單位，就會出現攻擊選項畫面。每個單位擁有一種或多種攻擊武器。有些武器（比如"
 "劍）是近戰武器，有些武器（比如弓）是遠程武器。"
 
 #. type: Content of: <book><chapter><section><simpara>
@@ -3227,9 +3225,9 @@ msgid ""
 "rating will be displayed as a percentage value in the status pane, as well "
 "as shown over the terrain hex."
 msgstr ""
-"每個士兵被擊中的機率取決於他所在的地形。例如：在城堡和村莊裡面士兵被擊中的機"
-"率比較低，精靈們在森林裡被擊中機率比較低。要查看士兵在特定地形上的防禦率（不"
-"被擊中的機率），點選士兵，然後將滑鼠移動到您決定的地形上，防禦率就會在狀態欄"
+"每個單位被擊中的機率取決於他所在的地形。例如：在城堡和村莊裡面單位被擊中的機"
+"率比較低，精靈們在森林裡被擊中機率比較低。要查看單位在特定地形上的防禦率（不"
+"被擊中的機率），點選單位，然後將滑鼠移動到您決定的地形上，防禦率就會在狀態欄"
 "和所指的地形中顯示出來。"
 
 #. type: Content of: <book><chapter><section><simpara>
@@ -3319,8 +3317,8 @@ msgid ""
 "unit will suffer less damages from the attack type. A negative resistance "
 "figure indicates that the unit is especially vulnerable to this attack type."
 msgstr ""
-"每種士兵對不同攻擊的抗性不同。士兵描述中有6個數字分别表示士兵對6種攻擊方式的"
-"抗性。正的抗性表示士兵抗性高，受這種攻擊傷害少。負的抗性表示士兵抗性低，容易"
+"每種單位對不同攻擊的抗性不同。單位描述中有6個數字分别表示單位對6種攻擊方式的"
+"抗性。正的抗性表示單位抗性高，受這種攻擊傷害少。負的抗性表示單位抗性低，容易"
 "受這種攻擊傷害。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3358,15 +3356,15 @@ msgid ""
 "added on top of hitpoints recovered through healing so it is possible for a "
 "unit to recover up to a total of 10 hit points per turn."
 msgstr ""
-"每個士兵每回合透過治療最多可以回8點血。如果一個士兵在回合内既不移動也不攻擊，"
-"我們就說這個士兵在<emphasis>休息</emphasis>。<emphasis>休息</emphasis>可以回2"
+"每個單位每回合透過治療最多可以回8點血。如果一個單位在回合内既不移動也不攻擊，"
+"我們就說這個單位在<emphasis>休息</emphasis>。<emphasis>休息</emphasis>可以回2"
 "點血。透過<emphasis>休息</emphasis>回血是附加到治療回血之上的，所以一個單位一"
 "回合最多可能回10點血。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2445
 msgid "There are two basic ways for a unit to be healed:"
-msgstr "士兵可以透過兩種方式接受治療："
+msgstr "單位可以透過兩種方式接受治療："
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2449
@@ -3381,7 +3379,7 @@ msgid ""
 "description. This is invariably <emphasis>heals +4</emphasis> or "
 "<emphasis>heals +8</emphasis>."
 msgstr ""
-"站在有<emphasis>治療</emphasis>技能的士兵旁邊。回血能力在治療技能裡面有描述。"
+"站在有<emphasis>治療</emphasis>技能的單位旁邊。回血能力在治療技能裡面有描述。"
 "治療技能分為<emphasis>治療 +４</emphasis>或者<emphasis>治療 +８</emphasis>。"
 
 #. type: Content of: <book><chapter><section><section><title>
@@ -3399,7 +3397,7 @@ msgid ""
 "healing unit."
 msgstr ""
 "巨魔和樹人可以通過癒合自然回復。他們如果受傷了，每回合自動回８點血。注意，因"
-"為所有士兵每回合最多通過治療回８點血，巨魔和樹人不能享受村莊或者治療者的額外"
+"為所有單位每回合最多通過治療回８點血，巨魔和樹人不能享受村莊或者治療者的額外"
 "效果。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3415,11 +3413,11 @@ msgid ""
 "until it is cured of poisoning. Resting is still allowed, although it will "
 "not substantially diminish the poison&#8217;s effect."
 msgstr ""
-"有些攻擊可以使您的士兵中毒。中毒士兵在被治癒前，每回合損８點血。毒性可以通過"
-"在村莊休息或者站到擁有<emphasis>治癒</emphasis>技能士兵旁邊來消除。擁有"
-"<emphasis>治療</emphasis>技能的士兵只能阻止毒性擴散引起傷害，而不能消除毒性。"
-"士兵被治癒的回合既不被治療加血也不被毒藥減血。中毒狀態的士兵毒性治癒前不能加"
-"血。即使休息不能消除中毒的效果，該中毒士兵仍然可以進行休息。"
+"有些攻擊可以使您的單位中毒。中毒單位在被治癒前，每回合損８點血。毒性可以通過"
+"在村莊休息或者站到擁有<emphasis>治癒</emphasis>技能單位旁邊來消除。擁有"
+"<emphasis>治療</emphasis>技能的單位只能阻止毒性擴散引起傷害，而不能消除毒性。"
+"單位被治癒的回合既不被治療加血也不被毒藥減血。中毒狀態的單位毒性治癒前不能加"
+"血。即使休息不能消除中毒的效果，該中毒單位仍然可以進行休息。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2478
@@ -3429,7 +3427,7 @@ msgstr "關於治療的小提示："
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2482
 msgid "A unit may take several turns to be fully healed."
-msgstr "一個士兵可以透過多個回合的治療完全回復"
+msgstr "一個單位可以透過多個回合的治療完全回復"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2487
@@ -3438,12 +3436,12 @@ msgid ""
 "Light, Paladin) heal all wounded units around them, so you can keep units "
 "close to the battle without losing them."
 msgstr ""
-"治療對治療者周圍的士兵都有效。所以在戰場上保持隊形緊湊可以好好的保護士兵。"
+"治療對治療者周圍的單位都有效。所以在戰場上保持隊形緊湊可以好好的保護單位。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2494
 msgid "Healers do not heal enemy units."
-msgstr "治療者不會治療敵方士兵。"
+msgstr "治療者不會治療敵方單位。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2499
@@ -3465,7 +3463,7 @@ msgstr "多個治療者可以治療同一個單位來加速單位回復。"
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2515
 msgid "Trolls and Woses cannot regenerate other units."
-msgstr "巨魔和樹人無法治療其它士兵"
+msgstr "巨魔和樹人無法治療其它單位"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2520
@@ -3493,7 +3491,7 @@ msgstr "下面的基本原則和技巧目的是幫助您能快速適應韋諾之
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2535
 msgid "Don&#8217;t waste units"
-msgstr "不要浪費您的士兵"
+msgstr "不要浪費您的單位"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2536
@@ -3504,9 +3502,9 @@ msgid ""
 "care of a healer (like Elvish Shamans or White Mages). Healers are very "
 "useful!"
 msgstr ""
-"不要讓受傷的士兵去送死。一旦一個士兵僅剩餘50% HP，您就應該認真考慮把他撤退到"
-"安全地點。然後把他置於村莊或者能治療的士兵旁邊（譬如精靈巫醫和白袍法師）。有"
-"治療技能的士兵非常有用。"
+"不要讓受傷的單位去送死。一旦一個單位僅剩餘50% HP，您就應該認真考慮把他撤退到"
+"安全地點。然後把他置於村莊或者能治療的單位旁邊（譬如精靈巫醫和白袍法師）。有"
+"治療技能的單位非常有用。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2541
@@ -3519,11 +3517,11 @@ msgid ""
 "a replacement, it is most often far away from the battle front. So don&#8217;"
 "t waste your units."
 msgstr ""
-"原因很簡單：一個受重傷的士兵守不住據點，也殺不死敵人。在攻擊和反擊中，他很可"
-"能會死掉。更進一步，如果讓士兵送死，所有他獲得的經驗值就消失了。重新招募一個"
-"士兵來代替可能是不切實際的，因為戰鬥時您的指揮官可能不在軍情處，而且金幣也可"
-"能不夠。即使您能夠新招募一個同樣的士兵，他也離戰争前線很遠。所以，不要浪費您"
-"的士兵。"
+"原因很簡單：一個受重傷的單位守不住據點，也殺不死敵人。在攻擊和反擊中，他很可"
+"能會死掉。更進一步，如果讓單位送死，所有他獲得的經驗值就消失了。重新招募一個"
+"單位來代替可能是不切實際的，因為戰鬥時您的指揮官可能不在軍情處，而且金幣也可"
+"能不夠。即使您能夠新招募一個同樣的單位，他也離戰争前線很遠。所以，不要浪費您"
+"的單位。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2550
@@ -3538,7 +3536,7 @@ msgid ""
 "come near them. The next section about zone of control (ZOC) shows how to "
 "restrict the enemy&#8217;s moves."
 msgstr ""
-"您該如何保護受傷的士兵？最好是讓他們在敵人到不了的地方。敵人接近不了他們，就"
+"您該如何保護受傷的單位？最好是讓他們在敵人到不了的地方。敵人接近不了他們，就"
 "不能攻擊他們。下一部分講控制區域，告訴您怎樣利用控制區域限制敵人的移動。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3550,7 +3548,7 @@ msgid ""
 "behind, indeed cannot be attacked as the enemy cannot move close to it."
 msgstr ""
 "在動作選單，您可以選擇 \"顯示敵方移動\"來檢視所有對手能到達的區域。這個命令考"
-"慮了控制區域的影響。這樣您就可以檢查並確保没有敵人可以靠近您的瀕死士兵。"
+"慮了控制區域的影響。這樣您就可以檢查並確保没有敵人可以靠近您的瀕死單位。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2560
@@ -3559,7 +3557,7 @@ msgid ""
 "to end your move out of striking range of the enemy army. He cannot attack "
 "but most likely will close into your striking range."
 msgstr ""
-"兩軍交戰時，您肯定想先發制人。所以您可以試著在結束回合時，讓您的士兵停留在敵"
+"兩軍交戰時，您肯定想先發制人。所以您可以試著在結束回合時，讓您的單位停留在敵"
 "人攻擊範圍外。對手不能攻擊您，但是很可能進入您的射程範圍。"
 
 #. type: Content of: <book><chapter><section><section><title>
@@ -3575,9 +3573,9 @@ msgid ""
 "six neighboring tiles, it is forced to halt and its movement phase ends "
 "(only enemies with the rare skirmisher ability ignore this)."
 msgstr ""
-"每個1級（或以上）士兵都在他周圍6個格子生成一個控制區域。當敵人移動到這6個格子"
-"中的任何一個，就被迫停下來，結束當前回合的移動。只有極少數擁有“游擊”技能的士"
-"兵忽略控制區域。"
+"每個1級（或以上）單位都在他周圍6個格子生成一個控制區域。當敵人移動到這6個格子"
+"中的任何一個，就被迫停下來，結束當前回合的移動。只有極少數擁有“游擊”技能的單"
+"位忽略控制區域。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2570
@@ -3589,10 +3587,10 @@ msgid ""
 "He has to defeat the units imposing the ZOC first. If the enemy can barely "
 "reach it, even a single unit may shield a small region behind itself."
 msgstr ""
-"由於控制區域的存在，敵人不能從兩個位置相對，中間隔1－2格的士兵中穿過。透過組"
-"合成對這樣的士兵，排成一條直線或者在不同的方向使用，您就可以不讓敵人靠近陣形"
-"後面受傷的士兵。他必須先打敗組成控制區域防線的士兵。如果只有很少的敵人能攻擊"
-"到受傷士兵，甚至單單一個士兵也能在他後面形成一小範圍的安全區域。"
+"由於控制區域的存在，敵人不能從兩個位置相對，中間隔1－2格的單位中穿過。透過組"
+"合成對這樣的單位，排成一條直線或者在不同的方向使用，您就可以不讓敵人靠近陣形"
+"後面受傷的單位。他必須先打敗組成控制區域防線的單位。如果只有很少的敵人能攻擊"
+"到受傷單位，甚至單單一個單位也能在他後面形成一小範圍的安全區域。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2579
@@ -3607,7 +3605,7 @@ msgid ""
 "Wesnoth uses hexes, a east-to-west \"line\" is not a straight line but a zig-"
 "zag curve. The north south line and the diagonals are the \"real\" lines."
 msgstr ""
-"將您的士兵排成一條線，兩兩之間最多留一個格子，就能形成一條相當牢固的防線。注"
+"將您的單位排成一條線，兩兩之間最多留一個格子，就能形成一條相當牢固的防線。注"
 "意，韋諾之戰是六角戰棋遊戲，東西方向的不是直線，而是鋸齒曲線。南北向和對角才"
 "是真正的直線。"
 
@@ -3619,9 +3617,9 @@ msgid ""
 "without particular weakness can withstand an attack from two normal enemy "
 "units of the same level or lower without getting killed."
 msgstr ""
-"如果敵人只從防線的一個方向進攻，您的任何一個士兵最多受到對方兩個士兵同時攻"
-"擊。一般來說，一個没有特别缺陷的健康士兵可以承受兩個與他同級或更低等級普通士"
-"兵的攻擊，而不會被殺死。"
+"如果敵人只從防線的一個方向進攻，您的任何一個單位最多受到對方兩個單位同時攻"
+"擊。一般來說，一個没有特别缺陷的健康單位可以承受兩個與他同級或更低等級普通單"
+"位的攻擊，而不會被殺死。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2589
@@ -3634,9 +3632,9 @@ msgid ""
 "experience points (XP) for this purpose."
 msgstr ""
 "不幸的是，您的防線經常不得不彎曲而形成尖角，或者受到地形限制(而不能排成直"
-"線)。在折點的士兵可能會同時受到3個敵人的攻擊。這種情况在太短的防線的兩端也會"
-"發生。應該使用具有高攻擊，能適應地形或者對地方攻擊抗性高的士兵把守這些薄弱"
-"點。這種位置的士兵最可能被殺掉，所以應該使用没有或者只有很少經驗值的士兵。"
+"線)。在折點的單位可能會同時受到3個敵人的攻擊。這種情况在太短的防線的兩端也會"
+"發生。應該使用具有高攻擊，能適應地形或者對地方攻擊抗性高的單位把守這些薄弱"
+"點。這種位置的單位最可能被殺掉，所以應該使用没有或者只有很少經驗值的單位。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2595
@@ -3645,8 +3643,8 @@ msgid ""
 "them. For ZOC reasons, a unit with one enemy behind it and one in front is "
 "trapped."
 msgstr ""
-"把部隊列成直線可以有效避免單個士兵被對方包圍。由於控制區域的限制，前後各有一"
-"個敵人的士兵就被卡住了。"
+"把部隊列成直線可以有效避免單個單位被對方包圍。由於控制區域的限制，前後各有一"
+"個敵人的單位就被卡住了。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2600
@@ -3662,14 +3660,14 @@ msgid ""
 "front line. If you have healers, damaged units in the second line will "
 "quickly recover."
 msgstr ""
-"當前線有士兵嚴重受傷時，您可以把他安全轉移到防線後面。為了保持防線，您需要用"
-"一個後備士兵來頂替他的位置。所以應該随時保持兩三個士兵在防線後面備用。如果您"
-"有帶治療技能的士兵，後方受傷士兵很快就能恢復。"
+"當前線有單位嚴重受傷時，您可以把他安全轉移到防線後面。為了保持防線，您需要用"
+"一個後備單位來頂替他的位置。所以應該随時保持兩三個單位在防線後面備用。如果您"
+"有帶治療技能的單位，後方受傷單位很快就能恢復。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2606
 msgid "Note that your units can pass through hexes containing your own troops."
-msgstr "可以注意到：您的士兵能穿過被己方士兵佔據的格子。"
+msgstr "可以注意到：您的單位能穿過被己方單位佔據的格子。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2609
@@ -3683,7 +3681,7 @@ msgid ""
 "defense against an enemy in a hex with low terrain. That way, the "
 "enemy&#8217;s counterstrikes will be less likely to do damage."
 msgstr ""
-"盡量把您的士兵擺在地形防禦力高於敵人所處地形防禦力的位置上。這樣敵人反擊能造"
+"盡量把您的單位擺在地形防禦力高於敵人所處地形防禦力的位置上。這樣敵人反擊能造"
 "成傷害機率要小一些。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3693,7 +3691,7 @@ msgid ""
 "that attacking orcs must stand on grassland while your elves enjoy the high "
 "forest defenses."
 msgstr ""
-"例如：您可以把精靈士兵剛好放到森林邊上，這樣進攻的半獸人就必須站在草地上，而"
+"例如：您可以把精靈單位剛好放到森林邊上，這樣進攻的半獸人就必須站在草地上，而"
 "您的精靈則享受森林地形的高防禦。"
 
 #. type: Content of: <book><chapter><section><section><title>
@@ -3722,10 +3720,10 @@ msgid ""
 "enemy and next turn, he is going to strike back. Perhaps a Horseman can "
 "deliver the killing blow."
 msgstr ""
-"通常您會派出幾個士兵去圍攻對方一個士兵，但是這些士兵是您防線的一部分，而這條"
-"防線現在裂開了。如果這些士兵在其它敵方士兵的攻擊範圍外，這可能没有關系。但是"
-"可能您無一次殺死對方一個強壯的士兵，只是削弱了他。這時您就有麻煩了；對方的士"
-"兵下回合的反擊可能就是他的騎士一擊幹掉您的士兵。"
+"通常您會派出幾個單位去圍攻對方一個單位，但是這些單位是您防線的一部分，而這條"
+"防線現在裂開了。如果這些單位在其它敵方單位的攻擊範圍外，這可能没有關系。但是"
+"可能您無一次殺死對方一個強壯的單位，只是削弱了他。這時您就有麻煩了；對方的單"
+"位下回合的反擊可能就是他的騎士一擊幹掉您的單位。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2629
@@ -3737,8 +3735,8 @@ msgid ""
 "they get to attack back on their turn, so you might have weaknesses the "
 "enemy may exploit."
 msgstr ""
-"優先攻擊是有優勢的，因為這樣您可以選擇面對那些敵方士兵。利用敵人的弱點：例"
-"如：用您的遠程武器士兵攻擊只有近程武器的敵人。利用騎士容易受到穿刺攻擊的弱"
+"優先攻擊是有優勢的，因為這樣您可以選擇面對那些敵方單位。利用敵人的弱點：例"
+"如：用您的遠程武器單位攻擊只有近程武器的敵人。利用騎士容易受到穿刺攻擊的弱"
 "點。記住，敵人在下回合會還擊，所以您可能也有弱點被敵人利用。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3777,7 +3775,7 @@ msgid ""
 "necessary."
 msgstr ""
 "特别是，如果對方没有遠程武器，您應該使用遠程武器攻擊。電腦預設是選擇傷害最大"
-"的攻擊方式，所以使用預設武器可能會使您的士兵承受更多不必要的傷害。"
+"的攻擊方式，所以使用預設武器可能會使您的單位承受更多不必要的傷害。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2652
@@ -3794,7 +3792,7 @@ msgid ""
 "defensive position. When its weak time is about to arise, your advance will "
 "push forth."
 msgstr ""
-"您還記得守序士兵（人類）在白天能更好戰鬥，混亂士兵（獸族，不死族）在晚上能更"
+"您還記得守序單位（人類）在白天能更好戰鬥，混亂單位（獸族，不死族）在晚上能更"
 "好戰鬥吧。最理想的是在您戰鬥力增强，敵人戰鬥力减弱的時候接觸他們。在敵人戰鬥"
 "能力增强的時候，通常穩固防線，堅守防守位置是值得的。當他們戰鬥能力即將减弱"
 "時，您就開始前進。"
@@ -3816,8 +3814,8 @@ msgid ""
 "force. Later scenarios will assume you have level 2 and 3 units available "
 "for recall."
 msgstr ""
-"在戰役中，建造一支有經驗的部隊是非常重要的。往後的任務會假設您擁有2級和3級士"
-"兵可供召回。"
+"在戰役中，建造一支有經驗的部隊是非常重要的。往後的任務會假設您擁有2級和3級單"
+"位可供召回。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2668
@@ -3828,8 +3826,8 @@ msgid ""
 "of the XP. Healers in particular are often weak in combat and often need to "
 "<emphasis>steal</emphasis> kills in this way to advance levels."
 msgstr ""
-"獲取經驗值主要靠殺死對方士兵(根據對方等級，每等級8點)。所以，應該用高等級士兵"
-"削弱敵人，然後把最後一擊留給更需要經驗的士兵。特别的，治療者通常在連續對抗中"
+"獲取經驗值主要靠殺死對方單位(根據對方等級，每等級8點)。所以，應該用高等級單位"
+"削弱敵人，然後把最後一擊留給更需要經驗的單位。特别的，治療者通常在連續對抗中"
 "很弱，需要<emphasis>撿尾刀</emphasis>來升到更高等級。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3839,8 +3837,8 @@ msgid ""
 "most kills to a small handful of your units. This will fast-track them to "
 "becoming Level 2 units, and they can then shepherd others."
 msgstr ""
-"剛開始的時候（這時您没有高等級士兵），試著把最後一擊留給一小部份的士兵。這會"
-"讓他們更快的到達2級，之後他們可以帶領您的其它士兵戰鬥。"
+"剛開始的時候（這時您没有高等級單位），試著把最後一擊留給一小部份的單位。這會"
+"讓他們更快的到達2級，之後他們可以帶領您的其它單位戰鬥。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2676
@@ -3882,7 +3880,7 @@ msgid ""
 "Don&#8217;t sweat it too much when you lose some units. The campaign was "
 "designed to accommodate the player losing some units along the way."
 msgstr ""
-"不要太擔心有士兵陣亡。每個戰役在設計時，已經考慮到玩家會在遊戲過程中失去士兵"
+"不要太擔心有單位陣亡。每個戰役在設計時，已經考慮到玩家會在遊戲過程中失去單位"
 "的情形。"
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
@@ -3920,7 +3918,7 @@ msgid ""
 "game where you never lose a unit, by all means, go right ahead!"
 msgstr ""
 "不過，仍然要記住，遊戲目標是快樂！您可以有與開發者不同的看法，怎麼想怎麼做就"
-"對了。如果您喜歡每犯一個錯誤都重新讀取，希望不損失任何一個士兵<emphasis>完美"
+"對了。如果您喜歡每犯一個錯誤都重新讀取，希望不損失任何一個單位<emphasis>完美"
 "</emphasis>過關，不管怎麼樣，繼續玩下去就對了。"
 
 #. type: Content of: <book><chapter><section><section><title>
@@ -3954,8 +3952,8 @@ msgid ""
 "support. Fast units can be used as scouts, for exploring the map and to "
 "quickly conquer villages."
 msgstr ""
-"然後，開始招募士兵。便宜的士兵在阻擋敵人第一波進攻時很有用；此後派高等級士兵"
-"上場支援。移動速度快的士兵可以用來偵察、探測地圖和快速佔領村莊。"
+"然後，開始招募單位。便宜的單位在阻擋敵人第一波進攻時很有用；此後派高等級單位"
+"上場支援。移動速度快的單位可以用來偵察、探測地圖和快速佔領村莊。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:2753
@@ -3976,8 +3974,8 @@ msgid ""
 "you can outnumber each enemy unit. Put your units in a line so that the "
 "enemy cannot attack any one of your units from more than two sides."
 msgstr ""
-"保持陣形緊凑，這樣敵人不能從多個方向攻擊您的士兵，您可以以數量優勢打擊敵人。"
-"把您的士兵排成線形，這樣敵人不能同時從3面攻擊您的士兵。"
+"保持陣形緊凑，這樣敵人不能從多個方向攻擊您的單位，您可以以數量優勢打擊敵人。"
+"把您的單位排成線形，這樣敵人不能同時從3面攻擊您的單位。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2770
@@ -3986,8 +3984,8 @@ msgid ""
 "and who they are attacking; right click on units and select \"Unit "
 "Description\" to learn more."
 msgstr ""
-"不同的士兵有不同的優點和缺點，這取決於他們所在的地形和他們的攻擊目標；右鍵點"
-"選士兵，選擇 \"士兵描述\"作進一步學習。"
+"不同的單位有不同的優點和缺點，這取決於他們所在的地形和他們的攻擊目標；右鍵點"
+"選單位，選擇 \"單位描述\"作進一步學習。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2777
@@ -4005,7 +4003,7 @@ msgid ""
 "with lower level units — to give them more experience (and finally make them "
 "advance to next level)."
 msgstr ""
-"您可以用高等級士兵傷害敵人，但是讓低等級士兵撿尾刀。這樣低等級士兵能獲得更多"
+"您可以用高等級單位傷害敵人，但是讓低等級單位撿尾刀。這樣低等級單位能獲得更多"
 "經驗。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
@@ -4015,13 +4013,13 @@ msgid ""
 "Shaman), put it in the middle of a circle of units to heal them as they move "
 "across the map (Shamans can do this too, but not as well)."
 msgstr ""
-"當您擁有白袍法師（從法師升級）或者德魯依（從巫醫升級）時，把他們置於一圈士兵"
+"當您擁有白袍法師（從法師升級）或者德魯依（從巫醫升級）時，把他們置於一圈單位"
 "中間。一路移動，一路治療。（巫醫也可以，但是没有這麼强。）"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2797
 msgid "Losing units is expected, even advanced units."
-msgstr "損失士兵是意料之中的事，即使是高等級的士兵。"
+msgstr "損失單位是意料之中的事，即使是高等級的單位。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2802
@@ -4031,12 +4029,12 @@ msgstr "時段真的很重要："
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2807
 msgid "lawful units do more damage at day and less damage at night"
-msgstr "守序士兵白天戰鬥力增强，晚上减弱。"
+msgstr "守序單位白天戰鬥力增强，晚上减弱。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2812
 msgid "chaotic units do more damage at night and less damage at day"
-msgstr "混亂士兵晚上戰鬥力增强，白天减弱。"
+msgstr "混亂單位晚上戰鬥力增强，白天减弱。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2817
@@ -4055,9 +4053,9 @@ msgid ""
 "\"Unit Description\", then select \"Resistance\". It will show you how "
 "resistant a unit is to different types of attacks."
 msgstr ""
-"有些士兵對某種攻擊具有特别的抗性，或者特别容易受到某種攻擊傷害。騎士面對穿刺"
-"攻擊很脆弱。炎系和秘法攻擊能狠狠地打擊不死族。要了解士兵對攻擊類型的抗性，右"
-"鍵點選士兵，選擇\"士兵描述\"。裡面有士兵對不同攻擊方式的抗性。"
+"有些單位對某種攻擊具有特别的抗性，或者特别容易受到某種攻擊傷害。騎士面對穿刺"
+"攻擊很脆弱。炎系和秘法攻擊能狠狠地打擊不死族。要了解單位對攻擊類型的抗性，右"
+"鍵點選單位，選擇\"單位描述\"。裡面有單位對不同攻擊方式的抗性。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2838
@@ -4068,7 +4066,7 @@ msgid ""
 "Mage). Some other units you will encounter, such as Trolls, have the ability "
 "to heal themselves naturally."
 msgstr ""
-"要贏下戰役，保持士兵健康是很重要的一環。當士兵受到傷害時，您可以通過村莊或者"
+"要贏下戰役，保持單位健康是很重要的一環。當單位受到傷害時，您可以通過村莊或者"
 "治療者（例如：精靈巫醫和白袍法師）給他們治療。有些您將要面對的敵人，例如巨"
 "魔，可以自然回復。"
 
@@ -4082,7 +4080,7 @@ msgstr "贏得戰役"
 msgid ""
 "Advanced units are needed to quickly kill enemy commanders, and to avoid "
 "losing lots of units."
-msgstr "高等級士兵對迅速解決敵人首領，避免損失過多士兵是很必要的。"
+msgstr "高等級單位對迅速解決敵人首領，避免損失過多單位是很必要的。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2855
@@ -4113,28 +4111,28 @@ msgid ""
 "gold and experience (advanced units)."
 msgstr ""
 "經過痛苦的關卡（會遭受很多損失）後，通常會有輕鬆的關卡在後面等著您。這些關的"
-"任務中您可以輕鬆獲取金幣和經驗（高等級士兵）。"
+"任務中您可以輕鬆獲取金幣和經驗（高等級單位）。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2879
 msgid ""
 "Advanced units have higher upkeep than lower level units (1 gp per level), "
 "loyal units are an exception."
-msgstr "高等級士兵比低等級士兵支出高（每等級高1點）。忠誠士兵除外。"
-
-#~ msgid "ctrl-m"
-#~ msgstr "ctrl-m"
+msgstr "高等級單位比低等級單位支出高（每等級高1點）。忠誠單位除外。"
 
 #~ msgid ""
 #~ "These are the default control keys. You can change them to your taste "
 #~ "using the Preferences menu."
 #~ msgstr "這是預設的按鍵設定，您可以依照需求在選單中調整。"
 
+#~ msgid "ctrl-m"
+#~ msgstr "ctrl-m"
+
 #~ msgid "N"
 #~ msgstr "N"
 
 #~ msgid "Describe current unit"
-#~ msgstr "目標士兵描述"
+#~ msgstr "目標單位描述"
 
 #~ msgid "S"
 #~ msgstr "S"
@@ -4146,7 +4144,7 @@ msgstr "高等級士兵比低等級士兵支出高（每等級高1點）。忠�
 #~ msgstr "延遲戰争迷霧刷新"
 
 #~ msgid "If you control the unit, but it has used all its movement this turn"
-#~ msgstr "您可以控制這個士兵，該士兵已經無法行動。"
+#~ msgstr "您可以控制這個單位，該單位已經無法行動。"
 
 #~ msgid "</inlinemediaobject>"
 #~ msgstr "</inlinemediaobject>"

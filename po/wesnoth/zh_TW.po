@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 13:09+0100\n"
-"PO-Revision-Date: 2011-01-30 02:44+0800\n"
+"PO-Revision-Date: 2011-01-30 22:27+0800\n"
 "Last-Translator: 楊綮銘 <steven.sheep@hotmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "Language: \n"
@@ -27,7 +27,7 @@ msgstr "壓縮存檔"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "刪除儲存確認"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -78,34 +78,34 @@ msgstr "戰鬥動畫"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:76
 msgid "Ping Timeout"
-msgstr ""
+msgstr "連線逾時"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:77
 msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
-msgstr ""
+msgstr "等待幾秒鐘後默認逾時。預設為0。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:87
 msgid "Accept whisper messages from friends only"
-msgstr ""
+msgstr "只接收好友傳來的訊息"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:94
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
+msgstr "在大廳自動打開訊息"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:101
 msgid "Group players in lobby"
-msgstr ""
+msgstr "在大廳組隊"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:108
 msgid "Lobby sounds"
-msgstr ""
+msgstr "大廳音效"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
@@ -452,7 +452,7 @@ msgstr "電腦"
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
 #: data/core/macros/ai.cfg:494
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
-msgstr ""
+msgstr "讓 $ally_leader.name ($ally_leader.side 陣營的指揮官) 移動到這裡"
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
@@ -644,7 +644,7 @@ msgstr "設定特殊指令..."
 
 #: data/core/macros/ai_controller.cfg:976
 msgid "Move leader to..."
-msgstr ""
+msgstr "移動指揮官到..."
 
 #: data/core/macros/ai_controller.cfg:977
 msgid "Right-click to select a location to move leader to"
@@ -652,11 +652,11 @@ msgstr "又鍵點選選擇移動的地點"
 
 #: data/core/macros/ai_controller.cfg:978
 msgid "Move leader here"
-msgstr ""
+msgstr "移動指揮官到這裡"
 
 #: data/core/macros/ai_controller.cfg:979
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "移動指揮官至 $x1|,$y1|。"
 
 #: data/core/macros/ai_controller.cfg:980
 msgid "Clear special orders"
@@ -896,6 +896,7 @@ msgstr ""
 "Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
 
 #: data/core/macros/names.cfg:23
+#, fuzzy
 msgid ""
 "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
 "Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
@@ -986,6 +987,7 @@ msgstr ""
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 
 #: data/core/macros/names.cfg:27
+#, fuzzy
 msgid ""
 "Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
 "Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
@@ -1104,6 +1106,7 @@ msgstr ""
 "Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 
 #: data/core/macros/names.cfg:28
+#, fuzzy
 msgid ""
 "Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
 "Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
@@ -1236,10 +1239,12 @@ msgstr ""
 "Vówien"
 
 #: data/core/macros/names.cfg:33
+#, fuzzy
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 msgstr "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 
 #: data/core/macros/names.cfg:34
+#, fuzzy
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
@@ -1438,6 +1443,7 @@ msgstr ""
 "Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 
 #: data/core/macros/names.cfg:43
+#, fuzzy
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -1462,6 +1468,7 @@ msgstr ""
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #: data/core/macros/names.cfg:47
+#, fuzzy
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -1480,6 +1487,7 @@ msgstr ""
 "Triton,Vizi,Vodnik,Vourukasa"
 
 #: data/core/macros/names.cfg:48
+#, fuzzy
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -1492,6 +1500,7 @@ msgstr ""
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #: data/core/macros/names.cfg:52
+#, fuzzy
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -1508,6 +1517,7 @@ msgstr ""
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
 #: data/core/macros/names.cfg:53
+#, fuzzy
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -1526,6 +1536,7 @@ msgstr ""
 "Zsekp"
 
 #: data/core/macros/names.cfg:57
+#, fuzzy
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -1542,6 +1553,7 @@ msgstr ""
 "Urkark"
 
 #: data/core/macros/names.cfg:61
+#, fuzzy
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -1610,6 +1622,7 @@ msgstr ""
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #: data/core/macros/names.cfg:65
+#, fuzzy
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -1622,6 +1635,7 @@ msgstr ""
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #: data/core/macros/names.cfg:69
+#, fuzzy
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -1650,6 +1664,7 @@ msgstr ""
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #: data/core/macros/names.cfg:73
+#, fuzzy
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -1734,12 +1749,12 @@ msgstr "紅"
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "淺紅"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "深紅"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -1859,53 +1874,54 @@ msgstr ""
 #. [language]
 #: data/english.cfg:23
 msgid "$name|’s Bridge,$name|’s Crossing"
-msgstr "$name橋,$name渡口"
+msgstr "$name|’s Bridge,$name|’s Crossing"
 
 #. [language]
 #: data/english.cfg:24
 msgid "$name|’s Highway,$name|’s Pass,Path of $name"
-msgstr "$name|’s大道,$name隘口,$name小路"
+msgstr "$name|’s Highway,$name|’s Pass,Path of $name"
 
 #. [language]
 #: data/english.cfg:25
 msgid "$name River,River $name"
-msgstr "$name河,$name河"
+msgstr "$name River,River $name"
 
 #. [language]
 #: data/english.cfg:26
 msgid "$name Forest,$name|’s Forest"
-msgstr "$name森林,$name森林"
+msgstr "$name Forest,$name|’s Forest"
 
 #. [language]
 #: data/english.cfg:27
 msgid "$name Lake"
-msgstr "$name湖"
+msgstr "$name Lake"
 
 #. [language]
 #: data/english.cfg:28
 msgid "$name|’s Peak,Mount $name"
-msgstr ""
+msgstr "$name|’s Peak,Mount $name"
 
 #. [language]
 #: data/english.cfg:29
 msgid "$name|’s Swamp,$name|marsh,$name|fen"
-msgstr "沼澤名 $name,$name|馬修,$name|芬"
+msgstr "$name|’s Swamp,$name|marsh,$name|fen"
 
 #. [language]
 #: data/english.cfg:30
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "$name|伯里,$name|漢,$name|頓,$name|伯里"
+msgstr "$name|bury,$name|ham,$name|ton,$name|bury"
 
 #. [language]
 #: data/english.cfg:31
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "$name|哈柏,$name|波特,$lake|波特,$lake|哈柏"
+msgstr "$name|harbor,$name|port,$lake|port,$lake|harbor"
 
 #. [language]
 #: data/english.cfg:32
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
-msgstr "$name|漢,$name|福德,$name|克勞斯,$river|福德,$river|克勞斯,河名 $name"
+msgstr ""
+"$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
 
 #. [language]
 #: data/english.cfg:33
@@ -1913,13 +1929,13 @@ msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
 msgstr ""
-"$river|布裏奇,$river|布裏奇,$river|布裏奇,$name|漢,$name|布裏奇,$bridge|漢,"
-"$bridge|頓"
+"$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
+"$bridge|ton"
 
 #. [language]
 #: data/english.cfg:34
 msgid "$name|ham,$name|ton,$name|field"
-msgstr "$name|漢,$name|頓,$name|菲爾德"
+msgstr "$name|ham,$name|ton,$name|field"
 
 #. [language]
 #: data/english.cfg:35
@@ -1927,36 +1943,37 @@ msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
 msgstr ""
-"$name|漢,$name|頓,$name|伍德,$name 弗里斯特,$forest|伍德,$forest|漢,$forest|"
-"頓"
+"$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
+"ton"
 
 #. [language]
 #: data/english.cfg:36
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name|漢,$name|伯裏,$name|頓,$name|希爾,$name|克裏斯特"
+msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 
 #. [language]
 #: data/english.cfg:37
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr ""
+msgstr "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
 
 #. [language]
 #: data/english.cfg:38
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"$name|漢,$name|伯裏,$name|頓,$name|蒙特,$name|蒙特,$name|克利夫,$name|克利夫"
+"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 
 #. [language]
 #: data/english.cfg:39
 msgid ""
 "$road|’s Rest,$road|’s Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr ""
+"$road|’s Rest,$road|’s Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 
 #. [language]
 #: data/english.cfg:40
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
-msgstr "$name|伯里,$name|漢,$name|頓,$swamp|伯里,$swamp|漢,$swamp|頓,"
+msgstr "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
 
 #. [language]
 #: data/english.cfg:43
@@ -2011,12 +2028,12 @@ msgstr "非官方伺服器"
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
 msgid "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
-msgstr "wqy-zenhei.ttc,DejaVuSans.ttf,Andagii.ttf"
+msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
-msgstr ""
+msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -2717,7 +2734,7 @@ msgstr "石化"
 
 #: data/lua/wml-tags.lua:709 src/actions.cpp:1285
 msgid "petrified"
-msgstr ""
+msgstr "石化"
 
 #: data/lua/wml-tags.lua:710
 #, fuzzy
@@ -3304,7 +3321,7 @@ msgstr "過濾： "
 
 #: src/addon/manager.cpp:1290
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 #: src/addon/manager.cpp:1334
 msgid "Network communication error."
@@ -3687,15 +3704,15 @@ msgstr "遊戲："
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
 msgid "(observing)"
-msgstr ""
+msgstr "（觀察中）"
 
 #: src/gui/dialogs/lobby_player_info.cpp:102
 msgid "(playing)"
-msgstr ""
+msgstr "（遊戲中）"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "In lobby"
-msgstr ""
+msgstr "在大廳"
 
 #: src/gui/dialogs/lobby_player_info.cpp:129
 msgid "On friends list"
@@ -3707,11 +3724,11 @@ msgstr "在黑名單"
 
 #: src/gui/dialogs/lobby_player_info.cpp:139
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "不在好友或黑名單中"
 
 #: src/gui/dialogs/lobby_player_info.cpp:144
 msgid "You"
-msgstr ""
+msgstr "你"
 
 #: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:555
 msgid "Error"
@@ -4098,7 +4115,7 @@ msgstr "目前無法使用這個指令。"
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
-msgstr ""
+msgstr "未知指令 '$command'，使用 $help_command 來取得指令清單。"
 
 #: src/menu_events.cpp:2027
 msgid ""
@@ -4110,7 +4127,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2029
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "不轉換 “所有”^[all|<指令>]"
 
 #: src/menu_events.cpp:2073
 msgid "Error:"
@@ -4118,13 +4135,15 @@ msgstr "錯誤："
 
 #: src/menu_events.cpp:2079
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "缺少參數 $arg_id"
 
 #: src/menu_events.cpp:2127
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"可用指令 $flags_description：\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2127 src/menu_events.cpp:2128 src/menu_events.cpp:2151
 msgid "help"
@@ -4132,7 +4151,7 @@ msgstr "幫助"
 
 #: src/menu_events.cpp:2128
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "輸入 $help_command <指令> 取得更多資訊。"
 
 #: src/menu_events.cpp:2139
 msgid " No help available."
@@ -4144,11 +4163,11 @@ msgstr "用量："
 
 #: src/menu_events.cpp:2149
 msgid "aliases:"
-msgstr ""
+msgstr "別名："
 
 #: src/menu_events.cpp:2270
 msgid "(A) - admin command"
-msgstr ""
+msgstr "(A) - 管理者指令"
 
 #: src/menu_events.cpp:2277 src/menu_events.cpp:2480
 msgid "(admin only)"
@@ -4170,11 +4189,11 @@ msgstr "禁止並踢出一個玩家或觀察者。如果他不在遊戲中，則
 #: src/menu_events.cpp:2309 src/menu_events.cpp:2311 src/menu_events.cpp:2336
 #: src/menu_events.cpp:2338 src/menu_events.cpp:2340 src/menu_events.cpp:2354
 msgid "<nick>"
-msgstr ""
+msgstr "<暱稱>"
 
 #: src/menu_events.cpp:2304
 msgid "Unban a user. He does not have to be in the game but on the server."
-msgstr ""
+msgstr "解除封鎖一名玩家。不必在遊戲裡，但需在伺服器上。"
 
 #: src/menu_events.cpp:2307
 msgid "Kick a player or observer."
@@ -4214,11 +4233,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2330
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<暱稱> <訊息>"
 
 #: src/menu_events.cpp:2334
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<等級> <區域>"
 
 #: src/menu_events.cpp:2334
 msgid "Change the log level of a log domain."
@@ -4246,7 +4265,7 @@ msgstr "顯示版本資訊。"
 
 #: src/menu_events.cpp:2347
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<密碼> <Email (選擇性)>"
 
 #: src/menu_events.cpp:2347
 msgid "Register your nick"
@@ -4262,7 +4281,7 @@ msgstr "設定帳號資料。輸入/details可查看設定的内容。"
 
 #: src/menu_events.cpp:2352
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<詳細資訊> <值>"
 
 #: src/menu_events.cpp:2354
 msgid "Request information about a nick."
@@ -4274,7 +4293,7 @@ msgstr "取得您註冊帳號的詳細資訊。"
 
 #: src/menu_events.cpp:2358 src/menu_events.cpp:2361 src/menu_events.cpp:2363
 msgid "<room>"
-msgstr ""
+msgstr "<遊戲>"
 
 #: src/menu_events.cpp:2358
 msgid "Join a room."
@@ -4282,7 +4301,7 @@ msgstr "加入遊戲。"
 
 #: src/menu_events.cpp:2361
 msgid "Part a room."
-msgstr ""
+msgstr "部份遊戲。"
 
 #: src/menu_events.cpp:2363
 msgid "List room members."
@@ -4290,27 +4309,27 @@ msgstr "成員清單。"
 
 #: src/menu_events.cpp:2365
 msgid "List available rooms."
-msgstr ""
+msgstr "可加入遊戲列表。"
 
 #: src/menu_events.cpp:2367
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<遊戲> <訊息>"
 
 #: src/menu_events.cpp:2367
 msgid "Room message."
-msgstr ""
+msgstr "遊戲訊息。"
 
 #: src/menu_events.cpp:2369
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "<遊戲> <類型> [值]"
 
 #: src/menu_events.cpp:2369
 msgid "Room query."
-msgstr ""
+msgstr "遊戲查詢。"
 
 #: src/menu_events.cpp:2472
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
-msgstr ""
+msgstr "(D) - 偵錯專用, (N) - 網路專用, (A) - 管理者專用"
 
 #: src/menu_events.cpp:2478
 msgid "(debug command)"
@@ -4330,7 +4349,7 @@ msgstr "切換其中一方的AI控制。"
 
 #: src/menu_events.cpp:2506
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "不轉換 開/關^[<陣營> [on/off]]"
 
 #: src/menu_events.cpp:2509
 msgid "<side> <nick>"
@@ -4382,7 +4401,7 @@ msgstr "停止自動儲存。"
 
 #: src/menu_events.cpp:2533
 msgid "<id>"
-msgstr ""
+msgstr "<ID>"
 
 #: src/menu_events.cpp:2533
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -4422,15 +4441,15 @@ msgstr "關閉除錯模式。"
 
 #: src/menu_events.cpp:2547 src/menu_events.cpp:2551
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<指令>[;<指令>...]"
 
 #: src/menu_events.cpp:2547
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "執行 Lua 狀態。"
 
 #: src/menu_events.cpp:2549
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "給與 Lua 程序更高權限。"
 
 #: src/menu_events.cpp:2551
 msgid "Set the command used by the custom command hotkey"
@@ -4438,7 +4457,7 @@ msgstr "自定指令的快捷鍵"
 
 #: src/menu_events.cpp:2553
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "啟動遊戲狀態檢視器"
 
 #: src/menu_events.cpp:2555
 msgid "Manage persistence data"
@@ -4446,7 +4465,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2557
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<名字>[=<指令>]"
 
 #: src/menu_events.cpp:2557
 msgid "Set or show alias to a command"
@@ -4454,7 +4473,7 @@ msgstr "設定或顯示指令的名稱"
 
 #: src/menu_events.cpp:2559
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<變數>=<值>"
 
 #: src/menu_events.cpp:2559
 msgid "Set a scenario variable."
@@ -4462,7 +4481,7 @@ msgstr "設定遊戲變量。"
 
 #: src/menu_events.cpp:2561
 msgid "<var>"
-msgstr ""
+msgstr "<變數>"
 
 #: src/menu_events.cpp:2561
 msgid "Show a scenario variable."
@@ -4474,11 +4493,12 @@ msgstr "修改一個單位數值。（只能更動最大數值）"
 
 #: src/menu_events.cpp:2570
 msgid "Discover all units in help."
-msgstr ""
+msgstr "在說明中發現所有單位。"
 
 #: src/menu_events.cpp:2572
+#, fuzzy
 msgid "'Undiscover' all units in help."
-msgstr ""
+msgstr "在說明中發現所有單位。"
 
 #: src/menu_events.cpp:2574
 msgid "Create a unit."
@@ -4530,11 +4550,11 @@ msgstr "域已切換：'$domain' 切换到 '$level' 級別。"
 
 #: src/menu_events.cpp:2723
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "對 $receiver 發出悄悄話"
 
 #: src/menu_events.cpp:2730
 msgid "whisper: $sender"
-msgstr ""
+msgstr "悄悄話：$sender"
 
 #: src/menu_events.cpp:2826 src/menu_events.cpp:2845
 #: src/multiplayer_connect.cpp:671
@@ -4579,24 +4599,24 @@ msgstr "版本"
 
 #: src/menu_events.cpp:2907
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "以密碼 *** 註冊，未輸入電子郵件"
 
 #: src/menu_events.cpp:2911
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "以密碼 *** 和電子郵件 $email 註冊"
 
 #: src/menu_events.cpp:2914 src/menu_events.cpp:2925 src/menu_events.cpp:2943
 #: src/menu_events.cpp:2957
 msgid "nick registration"
-msgstr ""
+msgstr "暱稱註冊"
 
 #: src/menu_events.cpp:2925
 msgid "dropping your username"
-msgstr ""
+msgstr "正在移除您的玩家名稱"
 
 #: src/menu_events.cpp:2943
 msgid "setting $var to $value"
-msgstr ""
+msgstr "正在設定 $var 為 $value"
 
 #: src/menu_events.cpp:2957
 msgid "requesting information for user $nick"
@@ -4645,7 +4665,7 @@ msgstr "調試模式關閉！"
 
 #: src/menu_events.cpp:3383
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "危險 Lua 程序"
 
 #: src/menu_events.cpp:3384
 msgid ""
@@ -4653,20 +4673,23 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"您的操作可能影響遊戲本身的安全性。您確定要繼續？如果您下載了其他模組，請不要"
+"點選“確定”！這些模組將可能控制您的電腦！警告！"
 
 #: src/menu_events.cpp:3387
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "危險模式啟用！"
 
 #: src/menu_events.cpp:3430
 msgid "Variable not found"
-msgstr ""
+msgstr "未發現"
 
 #: src/menu_events.cpp:3474
+#, fuzzy
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic "
 "or liminal."
-msgstr ""
+msgstr "無效陣營 '$alignment', 應該為守序、中立或混亂。"
 
 #: src/menu_events.cpp:3524
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -4733,7 +4756,7 @@ msgstr "伺服器重定向循環"
 
 #: src/multiplayer.cpp:262
 msgid "Bad data received from server"
-msgstr ""
+msgstr "從伺服器收到損毀的資料"
 
 #: src/multiplayer.cpp:303
 msgid "You must login first."
@@ -4819,7 +4842,7 @@ msgstr "電腦玩家"
 
 #: src/multiplayer_connect.cpp:655
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:659
 msgid "(Empty slot)"
@@ -5145,7 +5168,7 @@ msgstr "套用過濾： "
 
 #: src/multiplayer_lobby.cpp:739
 msgid "Invert"
-msgstr ""
+msgstr "反轉"
 
 #: src/multiplayer_lobby.cpp:740
 msgid "Vacant Slots"
@@ -5153,7 +5176,7 @@ msgstr "空位："
 
 #: src/multiplayer_lobby.cpp:741
 msgid "Friends in Game"
-msgstr ""
+msgstr "好友在遊戲中"
 
 #: src/multiplayer_lobby.cpp:742
 #, fuzzy
@@ -5168,26 +5191,26 @@ msgstr "觀察遊戲時快速跳至當前進行中的回合"
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
-msgstr ""
+msgstr "使用過濾條件。不勾選將顯示所有遊戲，而無視任何條件。"
 
 #: src/multiplayer_lobby.cpp:758
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
-msgstr ""
+msgstr "顯示符合過濾條件的遊戲。當您想隱藏不感興趣的遊戲時很有用。"
 
 #: src/multiplayer_lobby.cpp:762
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "只顯示有空位的遊戲"
 
 #: src/multiplayer_lobby.cpp:766
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
-msgstr ""
+msgstr "只顯示好友正在加入或觀察的遊戲"
 
 #: src/multiplayer_lobby.cpp:770
 msgid "Only show games whose title or description contain the entered text"
-msgstr ""
+msgstr "只顯示標題或描述中所輸入文字的遊戲"
 
 #: src/multiplayer_lobby.cpp:903
 msgid "Joining this game requires a password."
@@ -5240,8 +5263,8 @@ msgstr "起始位置:"
 #: src/multiplayer_wait.cpp:527
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "金幣"
+msgstr[1] "金幣"
 
 #: src/network.cpp:109
 msgid "invalid network handle"
@@ -5272,11 +5295,11 @@ msgstr "遇到耗費移動力小於1的地形"
 
 #: src/play_controller.cpp:236
 msgid "time left for current turn"
-msgstr ""
+msgstr "本回合剩餘時間"
 
 #: src/play_controller.cpp:238 src/replay_controller.cpp:129
 msgid "current local time"
-msgstr ""
+msgstr "當地時間"
 
 #: src/play_controller.cpp:1057 src/savegame.cpp:296 src/savegame.cpp:308
 #: src/savegame.cpp:978 src/savegame.cpp:980
@@ -5332,7 +5355,7 @@ msgstr "未知任務： '"
 
 #: src/playmp_controller.cpp:91
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name 取得控制權"
 
 #: src/playmp_controller.cpp:93
 msgid "Turn changed"
@@ -5549,7 +5572,7 @@ msgstr ""
 
 #: src/reports.cpp:241
 msgid "petrified: "
-msgstr ""
+msgstr "石化："
 
 #: src/reports.cpp:242
 msgid "This unit has been petrified. It may not move or attack."
@@ -7703,7 +7726,6 @@ msgstr "中立"
 #~ msgid "Multiplayer commands"
 #~ msgstr "多人對戰指令"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "Ban a user in a multiplayer game by the IP address used by that username "
@@ -7712,10 +7734,10 @@ msgstr "中立"
 #~ "\n"
 #~ msgstr ""
 #~ "\n"
-#~ "在多人遊戲中，把某個玩家踢出遊戲並且封禁他所使用的IP地址(所謂的Ban IP)\n"
+#~ "在多人遊戲中把某個玩家踢出遊戲並且阻擋他所使用的IP地址。可適用於在伺服器上"
+#~ "的使用者但不適用於在遊戲裡的玩家。（當然他當下並不會被踢出遊戲。）\n"
 #~ "\n"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "Change the controller for side (write here the number of the side) to "
@@ -7726,12 +7748,11 @@ msgstr "中立"
 #~ "\n"
 #~ msgstr ""
 #~ "\n"
-#~ "將某一方的控制權（在這裏輸入第n方的號碼）賦予某個玩家（在這裏輸入玩家或觀"
-#~ "察者的id）。您可以通過'場景設置'對話框(在'狀態列表'中按'更多'按鈕)查看誰控"
-#~ "制着哪一方。\n"
+#~ "將某一陣營的控制權（在這裡輸入對方的號碼）賦予某個玩家（在這裡輸入玩家或觀"
+#~ "察者的ID）。您可以透過“場景設定”的對話框(在“狀態列表”中按“更多”按鈕)查看誰"
+#~ "控制著哪一方。\n"
 #~ "\n"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -7740,8 +7761,8 @@ msgstr "中立"
 #~ "\n"
 #~ msgstr ""
 #~ "\n"
-#~ "從多人對戰中踢出一個玩家。他們還可以重新進入本局對戰。通常來説，通過這種方"
-#~ "法移除遇到網絡連接問題或其它問題的玩家，是一種友好的行為。\n"
+#~ "從多人對戰中踢出一個玩家。他們還可以重新進入本局對戰。如果您只是希望改變他"
+#~ "所屬的陣營，請使用：控制指令。\n"
 #~ "\n"
 
 #~ msgid ""
@@ -7755,16 +7776,15 @@ msgstr "中立"
 #~ "單。\n"
 #~ "\n"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "Toggle muting/silencing of all observers on/off.\n"
 #~ "\n"
 #~ msgstr ""
 #~ "\n"
-#~ "隱藏/取消隱藏所有觀察者。"
+#~ "設定所有的觀察者可以交談。\n"
+#~ "\n"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "Unban a user in a multiplayer game by the IP address used by that "
@@ -7772,7 +7792,8 @@ msgstr "中立"
 #~ "\n"
 #~ msgstr ""
 #~ "\n"
-#~ "在多人遊戲中，把某個玩家踢出遊戲並且封禁他所使用的IP地址(所謂的Ban IP)\n"
+#~ "解除阻擋一個玩家的IP位址。可適用於在伺服器上的使用者但不適用於在遊戲裡的玩"
+#~ "家。\n"
 #~ "\n"
 
 #~ msgid ""
@@ -7870,6 +7891,13 @@ msgstr "中立"
 #~ "\n"
 #~ "改變選定單位的某個數值。例如：unit hitpoint=100\n"
 #~ "\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Makes the selected unit level up N times. Example: :unit advances=2"
+#~ msgstr ""
+#~ "\n"
+#~ "使被選擇的單位連升 N 級。例如：unit advances=2"
 
 #~ msgid "cures"
 #~ msgstr "治癒"
@@ -8439,6 +8467,9 @@ msgstr "中立"
 #~ msgid "female^healthy"
 #~ msgstr "活力"
 
+#~ msgid "Always rest heals"
+#~ msgstr "總是能得到休息治療"
+
 #~ msgid "fearless"
 #~ msgstr "無畏"
 
@@ -8490,6 +8521,7 @@ msgstr "中立"
 #~ msgid "race^Drakes"
 #~ msgstr "龍族"
 
+#, fuzzy
 #~ msgid ""
 #~ "Drakes are large, winged and fire-breathing creatures, reminiscent of "
 #~ "true dragons. On average, an adult drake stands around three meters tall "
@@ -8572,6 +8604,7 @@ msgstr "中立"
 #~ msgid "race^Dwarves"
 #~ msgstr "矮人"
 
+#, fuzzy
 #~ msgid ""
 #~ "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 #~ "warriors. Considered as the third oldest race on the great continent "
@@ -8673,8 +8706,6 @@ msgstr "中立"
 #~ msgid "race^Elves"
 #~ msgstr "精靈"
 
-# 未完成
-#, fuzzy
 #~ msgid ""
 #~ "Compared to humans, elves are somewhat taller, more agile but less "
 #~ "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
@@ -8715,17 +8746,26 @@ msgstr "中立"
 #~ msgstr ""
 #~ "相較於人類，精靈長得較高且行動敏捷，但是體格方面不比人類壯碩。他們有對尖長"
 #~ "的耳朵、較淡的膚色且通常是ㄧ頭金髮。跟人類稍微不一樣的地方就是他們有非比尋"
-#~ "常的生命力，除了疾病、戰爭及等等的意外，他們大概可以活兩百年。大部分的精靈"
-#~ "活到190年後就開始變得虛弱，在剩下的十年內就會死亡，不過據了解一些擁有高魔"
-#~ "法資質的精靈可以多活一百年。精靈天生就有微弱的魔力，雖然大部分的精靈不會善"
-#~ "用魔法，不過這潛藏的魔力賦予他們敏捷及長壽。許多精靈會透過魔法駕馭像是射術"
-#~ "或偷竊的能力，使他們完成令人為之驚訝的任務。那些學會掌握這股力量的精靈會變"
-#~ "成傑出的使用者，而通常他們將這個天賦用來治療他人。\n"
+#~ "常的生命力，除了疾病、戰爭及等等的意外，他們大概可以活兩百五十年。不過據了"
+#~ "解一些擁有高魔法資質的精靈可以多活一百年，大部分的精靈活到250到300年之間就"
+#~ "會開始變得虛弱甚至死亡（一般在一年或兩年內）。\n"
 #~ "\n"
-#~ "      精靈花很多時間來鍛鍊技能和能力，對魔法不熟悉的就鍛鍊他們的體技。因此"
-#~ "這樣的精靈擅長箭術，或許這是戰爭重要的技術的關係。不管是在精準度或速度，通"
-#~ "常沒有一個種族可以跟精靈部隊的射手匹敵。所有的精靈對自然都有種無法解釋的情"
-#~ "感。他們很難適應暴露在沒有植物的地帶，這就是為什麼他們的家園會在森林，像是"
+#~ "精靈天生就有微弱的魔力，雖然大部分的精靈不會善用魔法，不過這潛藏的魔力賦予"
+#~ "他們敏捷及長壽。許多精靈會透過魔法駕馭像是射術或偷竊的能力，使他們完成令人"
+#~ "為之驚訝的任務。那些學會掌握這股力量的精靈會變成傑出的使用者，而通常他們將"
+#~ "這個天賦用來治療他人。\n"
+#~ "\n"
+#~ "少數的精靈，因在追求魔法與秘法遙遠旅程，個性變得冰冷且十分敏感，甚至出賣自"
+#~ "己得靈魂。這是在精靈傳說中常常聽到的事情。\n"
+#~ "\n"
+#~ "精靈花很多時間來鍛鍊技能和能力，不擅魔法得就鍛鍊他們的體能。因此這樣的精靈"
+#~ "擅長箭術，或許這是戰爭重要技術的關係。不管是在精準度或速度，通常沒有一個種"
+#~ "族可以跟精靈部隊的射手匹敵。所有的精靈對自然都有種無法解釋的情感。他們很難"
+#~ "適應暴露在沒有植物的地帶，這就是為什麼他們的家園會在森林，像是西南邊得亞瑟"
+#~ "森林，西北邊的韋斯摩爾森林，及以林丹爾森林為南端的廣大森林地區。\n"
+#~ "\n"
+#~ "也許除了巨魔外，精靈是這片大陸上最古老的種族。他們有許多居住地都無法確定究"
+#~ "竟已有多少年的歷史，但毋庸置疑的是至少都存在一千年以上。"
 
 #~ msgid "race^Goblin"
 #~ msgstr "地精"
@@ -8820,6 +8860,61 @@ msgstr "中立"
 #~ msgid "race^Trolls"
 #~ msgstr "巨魔"
 
+#~ msgid ""
+#~ "Trolls are ancient creatures, one of the oldest known races known to "
+#~ "inhabit the Great Continent. They are large, slow, simple-minded, and "
+#~ "live extremely long lives inside deep caves or atop high mountains. The "
+#~ "most unique characteristic of trolls is an internal vitality that "
+#~ "sustains and heals them from within. As a result they live very different "
+#~ "lives from almost any known creature. Trolls have few real needs: they "
+#~ "require little food or water, and thus they have little incentive to "
+#~ "pursue much besides protection from those who are hostile towards them. "
+#~ "This in turn means they rarely have to worry about anything and can spend "
+#~ "much of their time sleeping or in contemplation. Trolls have a curious "
+#~ "affinity with nature. They do not relate with living things like elves "
+#~ "do, but instead with earth and stone. They are also somewhat curious of "
+#~ "their surroundings and many younger whelps even enjoy traveling and "
+#~ "seeing the world. As trolls grow older they tend to become increasingly "
+#~ "passive, gradually losing interest in their environment and spending more "
+#~ "of their time sleeping in a quiet, familiar corner of their home cave. "
+#~ "This is until they finally pass away as their bodies themselves slowly "
+#~ "turn into lifeless statues of stone.\n"
+#~ "\n"
+#~ "Trolls are seen by many as being little more than yet another race of "
+#~ "savage monsters. This common misconception is in part perpetuated by orcs "
+#~ "to persuade trolls to join their armies. Because they are rather simple "
+#~ "and do not understand the ways of other races or sometimes can even tell "
+#~ "them apart, it is usually easy for an orcish band to convince a group of "
+#~ "trolls that by joining them they get to exact revenge on those that have "
+#~ "before hunted them. These new recruits are then directed to attack "
+#~ "whoever the orcs themselves are currently in conflict with, whether "
+#~ "previously a foe of the trolls or not, accumulating even more enemies for "
+#~ "the misled trolls. The most common enemy of trolls are dwarves, and the "
+#~ "animosity between these two races is ancient.\n"
+#~ "\n"
+#~ "<header>text='Geography'</header>\n"
+#~ "Trolls have inhabited the mountains of the Great Continent longer than "
+#~ "the dwarves who migrated there. Trolls are a common sight on the mountain "
+#~ "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
+#~ msgstr ""
+#~ "巨魔是遠古生物，是大陸上已知生物中最古老的種族。他們龐大、速度緩慢、頭腦簡"
+#~ "單及極為長壽，他們居住在洞穴或者是高山中。最獨特的地方是巨魔是一個自我循環"
+#~ "的生物。因此，他們跟其他所有物種非常不同。巨魔很少有什麼需求：他們需要極少"
+#~ "的食物跟水，所以他們沒有甚麼動力去追求太多東西，除了保護自己外。這意味著他"
+#~ "們很少花時間擔心甚麼，反而花很多時間睡覺或發呆。巨魔有著奇怪的自然親和力。"
+#~ "他們不太喜歡做像是精靈做的事，反而喜歡泥土或者是石頭。他們也是有點好奇的，"
+#~ "許多年輕的巨魔喜歡旅行到處看世界。隨著年齡增長，巨魔逐漸變的越來越被動，逐"
+#~ "漸失去興趣反而花更多時間再睡覺上。\n"
+#~ "\n"
+#~ "巨魔常常被很多種族認為是一個野蠻的種族。這種常見的誤解是因為獸人說服他們加"
+#~ "入軍隊。因為他們頭腦相當簡單，不懂的如何與其他種族相處，他們通常被獸人說服"
+#~ "而加入軍隊。這些巨魔在戰場上幫助獸人征戰，無論對方是否為巨魔的仇敵，導致巨"
+#~ "魔累積了更多的敵人。最常見的敵人是矮人，而這兩個種族在很久以前就是仇敵。\n"
+#~ "\n"
+#~ "<header>text=“地理”</header>\n"
+#~ "在矮人移居到大陸山脈裡之前，巨魔就在那些地方居住了。在山脈的北方和韋諾的東"
+#~ "方常有巨魔的蹤影，有時會在獸人軍隊理出沒。"
+
 #~ msgid "race^Undead"
 #~ msgstr "不死族"
 
@@ -8829,6 +8924,7 @@ msgstr "中立"
 #~ msgid "race+plural^Undead"
 #~ msgstr "不死族"
 
+#, fuzzy
 #~ msgid ""
 #~ "Undead are not really a single race of creatures, although often treated "
 #~ "as such. Almost any dead creature can, by a sufficiently skilled "
@@ -8855,13 +8951,13 @@ msgstr "中立"
 #~ "only in the wake of Haldric I, they were not completely unheard of by "
 #~ "elves and dwarves before that."
 #~ msgstr ""
-#~ "儘管我們這樣分類，事實上，不死族並不是真正的「單一種族」生物。藉有足夠力量"
-#~ "的死靈法師協助，幾乎所有生物都能夠在死後被重新賦與活力，並站到不死族的這"
-#~ "邊。不死族大部份都是不自然的，同時也是缺乏心智的，他們會遵行創造者的任何命"
-#~ "令，不會去思考或詢問問題。死靈術最神祕的地方，就是如何維持這樣的一個體系，"
-#~ "而不需要死靈法師持續提供影響力。一個不死生物不需要死靈法師不斷注意他們、給"
-#~ "予他們命令或維持他們，這些「生物」能自動地根據主人的指示而做任何事情。只有"
-#~ "在極少數的時候--也許是隔好幾個月，死靈法師才需要去維護一次他的作品。\n"
+#~ "不死族並不是真正單一生物的種族，儘管常常被這樣認為。藉有能力的死靈法師協"
+#~ "助，幾乎所有生物都能夠在死後被重新賦與活力，並站到不死族的陣營。不死族大部"
+#~ "份都是不自然的，同時也是缺乏心智的，他們會遵行創造者的任何命令，不會去思考"
+#~ "或詢問問題。死靈術最神祕的地方，就是如何維持這樣的一個體系，而不需要死靈法"
+#~ "師持續提供影響力。一個不死生物不需要死靈法師不斷注意他們、給予他們命令或維"
+#~ "持他們，這些「生物」能自動地根據主人的指示而做任何事情。只有在極少數的時"
+#~ "候--也許是隔好幾個月，死靈法師才需要去維護一次他的作品。\n"
 #~ "\n"
 #~ "死靈術的使用者幾乎只限於人類。即使是具有神奇魔法技藝的種族，如精靈或人魚，"
 #~ "對這種黑暗的技巧也只有非常少的研究。或許是因為死靈魔法要求使用者心靈極大的"
@@ -8924,11 +9020,20 @@ msgstr "中立"
 #~ msgstr[0] "$addon_title 需要您安裝以下套件："
 #~ msgstr[1] "$addon_title 需要您安裝以下套件："
 
+#~ msgid ""
+#~ "Do you still want to download $addon_title|? (You will have to install "
+#~ "all the dependencies in order to play.)"
+#~ msgstr ""
+#~ "您仍然希望下載$addon_title|嗎？（您將必須安裝所有相關項目才能進行遊戲。）"
+
 #~ msgid "Difficulty"
 #~ msgstr "難度"
 
 #~ msgid "Select difficulty level:"
 #~ msgstr "選擇難度："
+
+#~ msgid "[unit_worth]'s filter didn't match any units!"
+#~ msgstr "[unit_worth] 的過濾條件尚未找到任何單位！"
 
 #~ msgid "tooltip^damage"
 #~ msgid_plural "damage"
@@ -8965,7 +9070,10 @@ msgstr "中立"
 #~ msgstr "招募： "
 
 #~ msgid "Factions:"
-#~ msgstr "部隊："
+#~ msgstr "陣營："
+
+#~ msgid "Factions are only used in multiplayer"
+#~ msgstr "陣營只用在多人遊戲"
 
 #~ msgid "Advances from: "
 #~ msgstr "升級自："
