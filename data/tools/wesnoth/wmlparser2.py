@@ -364,7 +364,8 @@ class Parser:
             att = att.strip()
             node = AttributeNode(att)
             self.temp_key_nodes.append(node)
-            self.parent_node[-1].append(node)
+            if self.parent_node:
+                self.parent_node[-1].append(node)
 
         if remainder:
             self.parse_outside_strings(remainder)
