@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 11:52+0100\n"
-"PO-Revision-Date: 2011-01-29 22:28+0700\n"
+"PO-Revision-Date: 2011-02-02 22:17+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -48,7 +48,7 @@ msgstr "(Thử thách)"
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
 msgid "Evoker"
-msgstr "Pháp sư gọi hồn"
+msgstr "Pháp sư bóng tối"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:19
@@ -58,7 +58,7 @@ msgstr "(Khó)"
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:19
 msgid "Summoner"
-msgstr "Pháp sư bóng tối"
+msgstr "Pháp sư gọi hồn"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:22
@@ -1582,12 +1582,19 @@ msgid ""
 "seen by the night watchmen, we will have to make a run for it. Our forces "
 "are not strong enough to take the whole city."
 msgstr ""
+"Quyển sách bị đánh cắp nằm trong trang viên của Chủ tướng Karres ở phía Bắc "
+"thành phố. Chúng ta không thể đánh bại toàn bộ lính gác, vì vậy chúng ta "
+"phải ẩn nấp càng lâu càng tốt. Màn đêm và lớp sương mù này sẽ che chở cho "
+"chúng ta. Một khi lính gác đêm phát hiện ra chúng ta, chúng ta sẽ phải chạy "
+"thoát thật nhanh. Lực lượng của ta không đủ mạnh để đánh bại cả thành phố."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:227
 msgid ""
 "Note: Only the units you recruit now will be available to you once inside."
 msgstr ""
+"Chú ý: Một khi đã vào trong trang viên, bạn chỉ có thể sử dụng những binh "
+"lính bạn đã tuyển trong màn chơi này."
 
 #. [message]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:254
@@ -1595,21 +1602,22 @@ msgid ""
 "Sir! Undead creatures are coming out of the forest! Wake the guard "
 "immediately!"
 msgstr ""
+"Thưa ngài! Ma quỷ đang tràn ra từ khu rừng! Đánh thức lính gác ngay lập tức!"
 
 #. [message]: speaker=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:258
 msgid "To arms, men!"
-msgstr ""
+msgstr "Binh lính đâu, tấn công!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:299
 msgid "Ooouuuh! It burns... burrrrnnns..."
-msgstr ""
+msgstr "Ốốốii! Nó cháy... cháyy..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:303
 msgid "What in the name of all demons of hell was this thing?"
-msgstr ""
+msgstr "Thứ đó là cái quái quỷ gì vậy?"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:307
@@ -1618,26 +1626,29 @@ msgid ""
 "is brewed in a complicated and mysterious procedure only known to a few "
 "priests and often used to fight resurrected creatures."
 msgstr ""
+"Đó là tác động của một thứ được biết đến với cái tên là nước thánh. Nó được "
+"tinh chế từ một quá trình rắc rối và bí ẩn mà chỉ có một số pháp sư biết và "
+"nó thường được dùng để chống lại những sinh vật được hồi sinh."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:361
 msgid "Here is the entrance! Hurry!"
-msgstr ""
+msgstr "Lối vào đây rồi! Nhanh lên!"
 
 #. [scenario]: id=08_A_Small_Favor2
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:6
 msgid "A Small Favor — Part 2"
-msgstr ""
+msgstr "Một yêu cầu nhỏ — Phần 2"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:65
 msgid "Find the mage Lord Karres"
-msgstr ""
+msgstr "Tìm Chủ tướng Pháp sư Karres"
 
 #. [unit]: type=Arch Mage, type=Great Mage, id=Lord Karres
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:121
 msgid "Lord Karres"
-msgstr ""
+msgstr "Chủ tướng Karres"
 
 #. [do]
 #. [event]
@@ -1645,7 +1656,7 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:189
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:126
 msgid "Guard"
-msgstr ""
+msgstr "Lính gác"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:358
@@ -1653,6 +1664,8 @@ msgid ""
 "Malin and Darken Volk enter the mage lord’s manor, quickly closing the heavy "
 "gates behind them."
 msgstr ""
+"Malin và Darken Volk vào bên trong trang viên của vị chủ tướng pháp sư, rồi "
+"nhanh chóng đóng cánh cổng nặng nề lại sau lưng họ."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:363
@@ -1660,6 +1673,8 @@ msgid ""
 "That gate won’t hold back the soldiers for more than a few hours. We’d "
 "better hurry."
 msgstr ""
+"Cánh cổng sẽ không cầm chân được binh lính bên ngoài quá vài giờ đâu. Chúng "
+"ta phải nhanh lên."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:383
@@ -1667,16 +1682,18 @@ msgid ""
 "I feel the breaking of an illusion spell. The book must be in the great "
 "hall, in the northwest corner of the manor. Let us move quickly now!"
 msgstr ""
+"Ta cảm thấy câu thần chú ảo ảnh đã bị phá vỡ. Quyển sách nằm trong đại "
+"sảnh , ở góc Tây Bắc của trang viên. Chúng ta phải nhanh chóng đến đó!"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:390
 msgid "Move through the passageway in the northwest leading to the great hall"
-msgstr ""
+msgstr "Theo lối đi ở phía Tây Bắc dẫn đến đại sảnh"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:418
 msgid "I think I have found the passage to the great hall. Follow me quickly!"
-msgstr ""
+msgstr "Tôi nghĩ tôi đã tìm ra lối đến đại sảnh. Theo tôi mau lên!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:436
@@ -1685,16 +1702,18 @@ msgid ""
 "As dawn breaks, the city guards force their way into the manor and capture "
 "the two necromancers."
 msgstr ""
+"Khi bình minh vừa lên, lính gác của thành phố xông vào được trang viên và "
+"bắt cả hai pháp sư gọi hồn."
 
 #. [scenario]: id=09_A_Small_Favor3
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:6
 msgid "A Small Favor — Part 3"
-msgstr ""
+msgstr "Một yêu cầu nhỏ — Phần 3"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:84
 msgid "Find the book"
-msgstr ""
+msgstr "Tìm quyển sách"
 
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:102
@@ -1707,18 +1726,19 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:135
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:136
 msgid "Guardian"
-msgstr ""
+msgstr "Lính gác"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:210
 msgid "I feel the book is very close, somewhere to the northwest."
-msgstr ""
+msgstr "Tôi cảm thấy quyển sách đang ở rất gần, đâu đó về phía Tây Bắc."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:276
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:364
 msgid "We’ve got the book, but now how do we get out of here?"
 msgstr ""
+"Chúng ta đã có quyển sách rồi, nhưng giờ chúng ta ra khỏi đây như thế nào?"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:280
@@ -1726,32 +1746,34 @@ msgid ""
 "There’s a small tunnel in the cellar to the northeast. It will lead us far "
 "enough out of the city that we can escape pursuit."
 msgstr ""
+"Có một đường hầm nhỏ ở hầm chứa phía Đông Bắc. Nó sẽ dẫn chúng ta đi đủ xa "
+"khỏi thành phố để trốn thoát truy đuổi."
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:289
 msgid "Escape via the tunnel in the northeast cellar"
-msgstr ""
+msgstr "Trốn thoát bằng đường hầm trong hầm chứa ở phía Đông Bắc"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:310
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:401
 msgid "Phew! Let’s get out of here."
-msgstr ""
+msgstr "Phù! Hãy ra khỏi đây thôi."
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:343
 msgid "Escape the manor"
-msgstr ""
+msgstr "Thoát khỏi trang viên"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:371
 msgid "Wait, you aren’t leaving me behind, are you?"
-msgstr ""
+msgstr "Khoan, ngài không định để tôi ở lại, đúng không?"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:382
 msgid "You have served me well, my apprentice."
-msgstr ""
+msgstr "Cậu đã phục vụ ta tốt lắm, học trò của ta."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:386
@@ -1759,11 +1781,13 @@ msgid ""
 "As he heads into the tunnel Darken Volk collapses its entrance, leaving "
 "Malin to be captured and executed by the city guards."
 msgstr ""
+"Ngay sau khi vào đường hầm thì Darken Volk làm sập lối vào, bỏ Malin lại để "
+"bị lính canh bắt và xử tử."
 
 #. [scenario]: id=10_Alone_at_Last
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:6
 msgid "Alone at Last"
-msgstr ""
+msgstr "Cuối cùng lại cô độc"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:23
@@ -1773,6 +1797,10 @@ msgid ""
 "necromancers turn and begin walking down the pitch-black tunnel, temporarily "
 "safe from pursuit."
 msgstr ""
+"Ngay sau khi vào đường hầm bên dưới trang viên của Chủ tướng Karres, Darken "
+"Volk quay lại và, với chỉ một lời và động tác đã khiến lối vào hang sụp "
+"xuống. Hai pháp sư gọi hồn quay đi vfa bắt đầu đi xuống đường hầm tối đen, "
+"tạm thời thoát khỏi truy đuổi."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:28
@@ -1780,17 +1808,19 @@ msgid ""
 "They continue walking through the damp, cold air all through the morning and "
 "day, finally emerging as the last rays of sun sink below the horizon."
 msgstr ""
+"Họ tiếp tục đi qua lớp không khí lạnh và ẩm ướt suốt cả buổi sáng và ban "
+"ngày, cuối cùng ra khỏi đường hầm khi mặt trời vừa bắt đầu lặn."
 
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:88
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:120
 msgid "Wesnothians"
-msgstr ""
+msgstr "Người dân Wesnoth"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:143
 msgid "Take the book back from Darken Volk"
-msgstr ""
+msgstr "Lấy lại quyển sách từ Darken Volk"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:224
@@ -1798,43 +1828,48 @@ msgid ""
 "Well, we made it out. We got your precious book. What’s in it, anyway? And "
 "what do we do now?"
 msgstr ""
+"Tốt rồi, chúng ta đã thoát ra. Chúng ta đã lấy được quyển sách quý giá của "
+"ngài. Có cái gì bên trong vậy? Bây giờ chúng ta làm gì?"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:228
 msgid "‘We’? <i>We</i> do nothing. You are no longer my apprentice."
 msgstr ""
+"‘Chúng ta’? <i>Chúng ta</i> không làm gì cả. Ngươi không còn là học trò của "
+"ta."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:242
 msgid "Now give the book to me."
-msgstr ""
+msgstr "Giờ thì đưa quyển sách cho ta."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:246
 msgid ""
 "Darken Volk grabs the mysterious book from Malin’s hands and stalks away."
-msgstr ""
+msgstr "Darken Volk giật quyển sách từ tay Malin và vội bước đi."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:251
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:262
 msgid "You can’t just leave me here!"
-msgstr ""
+msgstr "Ngài không thể bỏ tôi ở đây!"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:258
 msgid "Now go your own way, and I will go mine."
-msgstr ""
+msgstr "Giờ thì ngươi đi đường ngươi, và ta sẽ đi đường ta."
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:286
 msgid "Master, do you not see? He has merely been using you to get that book!"
 msgstr ""
+"Chủ nhân, người không thấy ư? Hắn chỉ lợi dùng người để lấy quyển sách đó!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:290
 msgid "What do you mean?"
-msgstr ""
+msgstr "Ý ngươi là gì?"
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:294
@@ -1842,11 +1877,14 @@ msgid ""
 "He cares not about your noble quest to push back the orcs. He needed your "
 "help to fight the mages! The book is rightfully yours!"
 msgstr ""
+"Hắn không quan tâm đến công việc cao cả của người là đẩy lùi bọn người thú. "
+"Hắn chỉ cần người để chiến đấu với những pháp sư! Quyển sách xứng đáng thuộc "
+"về người!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:298
 msgid "Wait!"
-msgstr ""
+msgstr "Chờ đã!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:302
@@ -1854,11 +1892,13 @@ msgid ""
 "All of the training you gave me, that was just so I would help you get that "
 "book! Return it to me now, or I will take it by force."
 msgstr ""
+"Tất cả sự rèn luyện mà ngươi cho ta, chỉ để ta có thể giúp ngươi lấy quyển "
+"sách đó! Trả nó cho ta ngay, không thì ta sẽ dùng đến vũ lực."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:306
 msgid "You are even more of a fool than I thought."
-msgstr ""
+msgstr "Ngươi còn ngốc hơn ta nghĩ."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:344
@@ -1866,6 +1906,8 @@ msgid ""
 "You let me believe Parthyn would accept me back so when they didn’t I would "
 "be willing to attack my own countrymen!"
 msgstr ""
+"Ngươi để ta tin rằng Parthyn sẽ chấp nhận ta trở về vì vậy khi họ không chấp "
+"nhận ta thì ta sẽ sẵn sàng tấn công chính người dân của mình!"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:348
@@ -1874,6 +1916,10 @@ msgid ""
 "prattle. I gave you more power than you could have possibly dreamed. Use it "
 "to fight the orcs that annoy you so, not me."
 msgstr ""
+"Những gì ngươi để cho mình tin vào không phải là lỗi của ta. Thôi nói chuyện "
+"ngu ngốc đi. Ta đã cho ngươi nhiều sức mạnh hơn cả ngươi dám mơ tới. Chính "
+"việc dùng sức mạnh đó để tấn công bọn người thú mới là vấn đề của ngươi, "
+"không phải của ta."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:352
@@ -1881,21 +1927,23 @@ msgid ""
 "So it is true! You took my home away from me. You took Drogan away. Now that "
 "all of that is gone, I will at least keep the fruits of my labors."
 msgstr ""
+"Vậy là đúng rồi! Ngươi cướp đi quê hương ta. Ngươi cướp đi Drogan. Giờ thì "
+"tất cả đã tiêu tan, ít nhất ta sẽ giữ lấy thành quả lao động của ta."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:356
 msgid "Hardly. I will crush you easily."
-msgstr ""
+msgstr "Không đơn giản đâu. Ta sẽ dễ dàng nghiền nát ngươi."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:360
 msgid "Perhaps, but I have nothing left to lose."
-msgstr ""
+msgstr "Có lẽ, nhưng ta cũng không có gì để mất."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:377
 msgid "Now you shall pay for what you have done to me."
-msgstr ""
+msgstr "Giờ thì ngươi sẽ trả giá vì những gì ngươi gây ra cho ta."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:381
@@ -1903,11 +1951,13 @@ msgid ""
 "Done? I have done nothing but give you an opportunity. You have chosen your "
 "own path. Now leave me alone!"
 msgstr ""
+"Gây ra? Ta chẳng gây ra gì cả ngoài cho ngươi một cơ hội. Ngươi đã chọn cho "
+"mình con đường của riêng ngươi. Giờ thì để ta yên!"
 
 #. [unit]: type=Paladin, id=Sir Cadaeus
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:404
 msgid "Sir Cadaeus"
-msgstr ""
+msgstr "Ngài Cadaeus"
 
 #. [message]: speaker=Sir Cadaeus
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:430
@@ -1916,6 +1966,10 @@ msgid ""
 "have been tracking you for weeks, with our purpose renewed this morning upon "
 "hearing of the disaster you wreaked upon the goodly city of Tath."
 msgstr ""
+"Các ngươi đã bị phát hiện khi đi qua vùng này, đồ pháp sư gọi hồn xấu xa! "
+"Chúng ta đã theo dấu các ngươi hàng tuần rồi, mục đích của chúng ta đã rõ "
+"ràng hơn sau khi nghe tin báo sáng hôm nay về thảm họa mà các ngươi đã gây "
+"ra ở thành phố Tath tráng lệ."
 
 #. [message]: speaker=Sir Cadaeus
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:434
@@ -1923,6 +1977,9 @@ msgid ""
 "Do not even think of running away — my horsemen can easily catch you. Yes, "
 "on this day you shall have to answer for your innumerable crimes."
 msgstr ""
+"Đừng hòng nghĩ đến chuyện trốn chạy — kỵ binh của ta sẽ bắt kịp ngươi dễ "
+"dàng. Đúng thế, ngày hôm nay các ngươi phải trả giá cho vô số tội lỗi đã gây "
+"ra."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:438
@@ -1930,6 +1987,8 @@ msgid ""
 "We’ll see how well your pompous words protect you from the blades of the "
 "undead once I have finished this upstart."
 msgstr ""
+"Hãy chờ xem liệu những lời nói phô trương đó có thể bảo vệ ngươi khỏi lưỡi "
+"kiếm của ma quái không một khi ta hoàn thành việc ở đây."
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:545
@@ -1938,6 +1997,9 @@ msgid ""
 "will not suffer you to bring any further harm to my people, and so you will "
 "not live to see another sunset."
 msgstr ""
+"Ta đã nói rồi, Malin, rằng ta sẽ lại đến tìm ngươi, và ta đã giữ lời. Ta sẽ "
+"không để ngươi gây hại cho người dân của ta nữa, và vì cậy ngươi sẽ không "
+"sống đủ lâu để nhìn thấy mặt trời lặn lần nữa đâu."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:549
@@ -1945,26 +2007,28 @@ msgid ""
 "You wrong me, sister. I have only tried to help. Have you not seen fewer "
 "orcs this past summer?"
 msgstr ""
+"Em hiểu sai ta rồi, em gái. Ta chỉ cố gắng để giúp đỡ. Em không thấy mùa hè "
+"vừa qua có ít người thú hơn ư?"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:553
 msgid "I will not listen to any more of your lies. Men, attack!"
-msgstr ""
+msgstr "Ta sẽ không nghe những lời giả dối của ngươi đâu. Bính lính, tấn công!"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:565
 msgid "With my dying breath I curse you, Malin the Damned!"
-msgstr ""
+msgstr "Với hơi thở cuối cùng ta nguyền rủa ngươi, Malin đáng chết!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:569
 msgid "Now I’ve just got to get that book out of the battleground!"
-msgstr ""
+msgstr "Giờ thì ta chỉ phải lấy quyển sách đó ra khỏi chiến trường!"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:576
 msgid "Bring the book back to Malin’s castle"
-msgstr ""
+msgstr "Đem quyển sách đến lâu đài của Malin"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:591
@@ -1972,16 +2036,18 @@ msgid ""
 "Pick up the book by moving a unit onto it. Bats and ghosts cannot carry the "
 "book."
 msgstr ""
+"Nhặt quyển sách bằng cách cho một đơn vị lính di chuyển đến đó. Dơi và ma "
+"không thể nhặt quyển sách."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:636
 msgid "I have the book."
-msgstr ""
+msgstr "Tôi có quyển sách rồi."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:657
 msgid "I am sorry master, that is too heavy for me."
-msgstr ""
+msgstr "Xin chủ nhân tha lỗi cho tôi, nó quá nặng đối với tôi."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:691
@@ -1989,11 +2055,14 @@ msgid ""
 "The paladins will not be able to pursue me through the mountains, and Dela "
 "will not dare take the soldiers too far from Parthyn."
 msgstr ""
+"Những hiệp sĩ sẽ không thể đuổi theo ta qua những ngọn núi, và Dela sẽ không "
+"dám đưa quân quá xa khỏi Parthyn."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:18
 msgid "<i>“To become a lich, one must first die.”</i>"
 msgstr ""
+"<i>“Để trở thành một xương ma, người thực hiện đầu tiên phải chết.”</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:23
@@ -2005,6 +2074,14 @@ msgid ""
 "the spirits of others. Because he retains his own will, however, the lich "
 "can call upon the awesome powers of the spirit world.”</i>"
 msgstr ""
+"Và Malin bắt đầu đọc quyển sách đã giành lại được. <i>“Những câu thần chú "
+"của thuật gọi hồn trói buộc lấy linh hồn, nhưng chỉ một khi linh hồn đó đã "
+"rời khỏi thể xác. Để trở thành một xương ma, người pháp sư phải đọc những "
+"thần chú cần thiết ngay trước lúc chết. Qua đó trói buộc lấy linh hồn của "
+"chính mình cũng tương tự như cách các pháp sư gọi hồn trói buộc lấy linh hồn "
+"của kẻ khác. Tuy nhiên, bởi vì người pháp sư vẫn giữ nguyên được ý chí của "
+"mình, nên xương ma có thể triệu đến những sức mạnh khủng khiếp của thế giới "
+"linh hồn.”</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:28
@@ -2015,6 +2092,12 @@ msgid ""
 "overrun by orcs, it rekindles hatred within him. With renewed purpose, he "
 "raises his undead minions and travels northward."
 msgstr ""
+"Những lời nói, và suy nghĩ, bám lấy tâm trí của cậu. Với cả Wesnoth chối bỏ "
+"cậu, Malin tìm nơi trú thân ở một ngôi làng biên giới vô danh nơi rất ít câu "
+"hỏi về cậu được đưa ra. Và rồi khi tin tức truyền đến thị trấn rằng người "
+"thú đã tràn vào Parthyn, nó làm bùng cháy sự căm thù trong cậu. Với mục đích "
+"được khẳng định lại, cậu triệu dậy binh lính ma quái của mình và đi lên phía "
+"Bắc."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:33
@@ -2025,23 +2108,28 @@ msgid ""
 "driven back, and badly injured by a thrown orcish dagger as he retreats. He "
 "finds refuge in a small cave."
 msgstr ""
+"Malin nhanh chóng tìm thấy một binh đoàn người thú khổng lồ, và đi theo "
+"chúng đến doanh trại. Khi nhìn thấy số lượng người thú, sự lớn lao của công "
+"việc bắt đầu đè nặng lên cậu. Cậu tấn công doanh trại nhưng nhanh chóng bị "
+"đẩy lùi, và bị thương nặng khi rút lui bởi một con dao găm của người thú ném "
+"từ xa. Cậu tìm thấy nơi trú ẩn trong một cái hang nhỏ."
 
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:66
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:91
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:109
 msgid "Trolls"
-msgstr ""
+msgstr "Quỷ núi"
 
 #. [unit]: type=Ancient Wose, id=Dumdumbadoom
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:244
 msgid "Dumdumbadoom"
-msgstr ""
+msgstr "Dumdumbadoom"
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:259
 msgid "Master, you are gravely injured!"
-msgstr ""
+msgstr "Chủ nhân, người bị thương nặng rồi!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:263
@@ -2049,11 +2137,13 @@ msgid ""
 "I won’t go down like this, felled by an orc’s blade. I won’t see them defeat "
 "me!"
 msgstr ""
+"Ta sẽ không chết như thế này đâu, chết bởi một cái dao găm của bọn người "
+"thú. Ta sẽ không để chúng đánh bại ta!"
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:267
 msgid "There is another way, master. Remember the book..."
-msgstr ""
+msgstr "Thưa chủ nhân, vẫn còn có một cách khác. Hãy nhớ quyển sách..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:271
@@ -2062,16 +2152,19 @@ msgid ""
 "the transformation they’ll begin to fall before me. And I will continue to "
 "hound them until the last one falls!"
 msgstr ""
+"Đúng... đúng thế. Bọn người thú bây giờ quá mạnh đối với ta, nhưng một khi "
+"ta đã hoàn thành quá trình biến đối thì chúng sẽ bắt đầu ngã gục trước ta. "
+"Và ta sẽ tiếp tục săn đuổi chúng đến khi tên cuối cùng bỏ mạng!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:275
 msgid "Leave me now while I prepare."
-msgstr ""
+msgstr "Hãy lui đi trong khi ta chuẩn bị."
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:279
 msgid "Yes, master."
-msgstr ""
+msgstr "Vâng, thưa chủ nhân."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:286
@@ -2079,81 +2172,84 @@ msgid ""
 "With his last bits of strength, Malin assembles an altar as the book "
 "instructs."
 msgstr ""
+"Với chút sức lực còn lại, Malin dựng lên một bệ thờ như trong sách hướng dẫn."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:310
 msgid "I pray that I am strong enough to complete the spell."
-msgstr ""
+msgstr "Hy vọng rằng ta có đủ sức mạnh để hoàn thành bùa chú."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:314
 msgid "I’m ready. Do it."
-msgstr ""
+msgstr "Ta sẵn sàng rồi. Làm đi."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:369
 msgid "There is darkness..."
-msgstr ""
+msgstr "Có bóng đêm..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:374
 msgid "and peace..."
-msgstr ""
+msgstr "và sự yên bình..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:379
 msgid "for a moment."
-msgstr ""
+msgstr "trong chốc lát."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:385
 msgid ""
 "Then they are replaced by a pulling, a pain too strong to resist, and then..."
 msgstr ""
+"Và rồi chúng bị thay bởi một cái giật, sự đau đớn đến tột cùng, và rồi... "
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:390
 msgid "by emptiness."
-msgstr ""
+msgstr "bởi sự trống rỗng."
 
 #. [side]: type=Lich, id=Mal Keshar
 #. [unit]: type=Lich DiD, id=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:401
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:32
 msgid "Mal Keshar"
-msgstr ""
+msgstr "Mal Keshar"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:417
 msgid "<big>AAAaaiiigghh!!</big>"
-msgstr ""
+msgstr "<big>AAAaaaaa!!</big>"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:422
 msgid "The cold, it burns!"
-msgstr ""
+msgstr "Cái lạnh, nó cháy!"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:426
 msgid "I need warmth... life... I sense some here!"
-msgstr ""
+msgstr "Ta cần hơi ấm... sự sống... ta cảm nhận thấy nó ở đâu đó quanh đây!"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:479
 msgid "Regain your strength"
-msgstr ""
+msgstr "Hồi phục lại sức mạnh"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:483
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:581
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:76
 msgid "Destruction of Mal Keshar"
-msgstr ""
+msgstr "Sự hủy diệt của Mal Keshar"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:521
 msgid "Yes! I can draw energy even from these insignificant creatures."
 msgstr ""
+"Đúng thế! Ta có thể thu lấy năng lượng kể cả từ những sinh vật nhỏ bé này."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:549
@@ -2162,22 +2258,28 @@ msgid ""
 "there I will build by armies. But I am still too weak to clear the vermin "
 "from it. I must finish regaining my strength."
 msgstr ""
+"Dọc theo con đường này, ta cảm nhận được một nơi sẽ đáng làm nơi trú ẩn mới "
+"cho ta. Từ đó ta sẽ gây dựng đội quân của mình. Nhưng ta vẫn còn quá yếu để "
+"dọn sạch lũ quái vật ở đó. Trước tiên ta phải phục hồi lại sức mạnh."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:553
 msgid ""
 "I will need a castle from which to call upon my soldiers. I sense one nearby."
 msgstr ""
+"Ta sẽ cần một lâu đài mà ở đó ta sẽ gọi lên binh lính của mình. Ta cảm nhận "
+"được một lâu đài gần đây."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:570
 msgid "Yes, this will do until I can take my new home."
 msgstr ""
+"Tốt lắm, lâu đài này sẽ có ích cho đến khi ta chiếm được nơi trú ẩn mới."
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:577
 msgid "Clear your new home of trolls"
-msgstr ""
+msgstr "Dọn dẹp quỷ núi khỏi nơi trú ẩn mới"
 
 #. [message]: speaker=Dumdumbadoom
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:658
@@ -2185,16 +2287,18 @@ msgid ""
 "Who has awoken me from my slumber? Undead? I shall not suffer the existence "
 "of such foul creatures."
 msgstr ""
+"Kẻ nào đã đánh thức ta dậy? Ma quái ư? Ta sẽ không để thứ sinh vật xấu xa "
+"như vậy tồn tại đâu."
 
 #. [message]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:676
 msgid "<big>AAAaaaggghhhh!! ...</big>"
-msgstr ""
+msgstr "<big>AAAaaaaaa!! ...</big>"
 
 #. [scenario]: id=12_Endless_Night
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:6
 msgid "Endless Night"
-msgstr ""
+msgstr "Đêm dài vô tận"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:14
@@ -2204,6 +2308,11 @@ msgid ""
 "dwarvish patrols that get in the way. Every year the undead inflict some "
 "damage before being repelled and retreating to the caves."
 msgstr ""
+"Nhiều năm trôi qua. Mỗi mùa hè khi những hẽm núi trở nên quang đãng, Malin "
+"nay đã trở thành xương ma lại gửi binh lính đi tấn công bọn người thú, loại "
+"bỏ bất cứ con người, thần tiên hay người lùn nào trên đường đi. Mỗi năm binh "
+"lính ma quái lại gây ra một số thiệt hại trước khi bị đẩy lùi và rút lui trở "
+"về hang."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:19
@@ -2211,11 +2320,13 @@ msgid ""
 "Rumors circulate of a lich that preys on scouting patrols. A hero, gathering "
 "his loyal troops to him, decides to put an end to the evil."
 msgstr ""
+"Lời đồn đi rằng có một bộ xương ma thường tấn công nhóm tuần tra. Một anh "
+"hùng, tập hợp binh lính trung thành của mình, quyết định tiêu diệt kẻ ác này."
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:72
 msgid "Defeat the foolish hero"
-msgstr ""
+msgstr "Đánh bại anh hùng ngu ngốc"
 
 #. [unit]: type=Royal Guard, id=Foolish Hero
 #. [unit]: type=Assassin, id=Foolish Hero
@@ -2228,12 +2339,14 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:199
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:222
 msgid "Foolish Hero"
-msgstr ""
+msgstr "Anh hùng ngu ngốc"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:280
 msgid "Your doom is at hand, foul lich! I shall bring you down by my own hand."
 msgstr ""
+"Thời khắc tận số của ngươi đã đến rồi, đồ xương ma xấu xa! Tự tay ta sẽ giết "
+"ngươi."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:284
@@ -2241,6 +2354,8 @@ msgid ""
 "The only doom at hand is yours, if you do not leave now. Go back to your "
 "manors and taverns, and do not trouble me further."
 msgstr ""
+"Nếu ngay bây giờ ngươi không rời đi, ngươi mới là kẻ tận số. Trở về trang "
+"viên và quán rựu của ngươi đi, và đừng làm phiền ta nữa."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:296
@@ -2248,11 +2363,14 @@ msgid ""
 "You have preyed on too many of my boys. I have come here to end this, once "
 "and for all."
 msgstr ""
+"Ngươi đã giết quá nhiều người của ta. Ta đến đây để kết thúc việc này vĩnh "
+"viễn."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:300
 msgid "Not even real soldiers. I will sweep you aside."
 msgstr ""
+"Các ngươi còn chẳng phải là binh lính thực thụ. Ta sẽ quét sạch các ngươi."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:312
@@ -2260,6 +2378,8 @@ msgid ""
 "Your kind is an abomination. I am here to see that you inflict no more harm "
 "on the spirits that have passed on."
 msgstr ""
+"Các ngươi là những sinh vật ghê tởm. Ta đến đây để kết thúc việc ngươi làm "
+"hại đến linh hồn của những người đã chết."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:316
@@ -2267,6 +2387,8 @@ msgid ""
 "Fool! By leaving your forests and coming into my domain, you have sacrificed "
 "your own spirits."
 msgstr ""
+"Đồ ngu! Bằng việc rời khỏi khu rừng của mình và đến lãnh địa của ta, ngươi "
+"cũng đã hiến cho ta linh hồn của chính mình."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:328
@@ -2274,6 +2396,9 @@ msgid ""
 "I’ve been itching for a chance to break some bones with my hammer, and now "
 "you’ve given me cause. Goodness knows you’ve got plenty of bones over there."
 msgstr ""
+"Ta đã rất nóng lòng được đập vài cái xương với cây búa của mình, giờ thì "
+"ngươi cho ta cơ hội đó rồi. Có trời mới biết ngươi có nhiều xương đến chừng "
+"nào."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:332
@@ -2281,6 +2406,8 @@ msgid ""
 "Go back to your tunnels and your mines, and do not trouble me unless you "
 "want your hammers to work for me once you are dead."
 msgstr ""
+"Trở về với đường hầm và hầm mỏ của ngươi đi, và đừng làm phiền ta trừ khi "
+"ngươi muốn cây búa của mình phục vụ cho ta một khi ngươi đã chết."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:336
@@ -2288,6 +2415,8 @@ msgid ""
 "Hear that boys, he’s threatening us! It’s time he learned what real dwarves "
 "are made of."
 msgstr ""
+"Mọi người nghe chưa, hắn đang đe dọa chúng ta! Đến lúc cho hắn biết thế nào "
+"là người lùn thực thụ rồi."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:348
@@ -2295,6 +2424,9 @@ msgid ""
 "So, I’ve finally found your lair, lich. You, who have been attacking the "
 "orcs for years and have destroyed many of our tribes."
 msgstr ""
+"Vậy là cuối cùng ta cũng tìm ra hang ổ của ngươi rồi, bộ xương ma kia. "
+"Ngươi, kẻ đã tấn công người thú trong nhiều năm và tiêu diệt rất nhiều bộ "
+"tộc người thú."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:352
@@ -2304,6 +2436,11 @@ msgid ""
 "grateful to you for coming here, foolish hero. My hatred toward your race "
 "makes me stronger and I again get a chance to kill orcs!"
 msgstr ""
+"Người thú ư? Chính các ngươi đã buộc ta phải chọn con đường ta thuật, và "
+"chính các ngươi đã kết thúc cuộc sống trần thế của ta và khiến ta trở thành "
+"một bộ xương ma. Ta rất biết ơn khi ngươi đến đây, đồ anh hùng ngu ngốc. "
+"Lòng căm thù của ta đối với chủng tộc các ngươi khiến ta mạnh hơn và một lần "
+"nữa ta lại có cơ hội để giết người thú!"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:356
@@ -2312,6 +2449,9 @@ msgid ""
 "and for the rest of my people you and your minions have killed, lich. Orcs, "
 "attack! The one who brings me his skull gets a bag of gold."
 msgstr ""
+"Không gì có thể cản ta khỏi báo thù cho cha ta người đã bị ngươi giết và "
+"người dân ta bị thuộc hạ của ngươi tàn sát. Lính đâu, tấn công! Ai mang cho "
+"ta cái sọ của hắn sẽ được thưởng một túi vàng."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:370
@@ -2319,11 +2459,13 @@ msgid ""
 "Is there an endless supply of foolish heroes with death wishes? Honestly, "
 "where do you all come from?"
 msgstr ""
+"Chẳng lẽ lại có một nguồn vô tận những tên anh hùng ngu ngốc muốn chết ư? "
+"Tất cả chúng từ đâu ra vậy?"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:406
 msgid "Well, that is the end of his evil ways."
-msgstr ""
+msgstr "Tốt rồi, vậy là những việc làm xấu xa của hắn đã kết thúc."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:410
@@ -2331,6 +2473,8 @@ msgid ""
 "I wonder who he was in life, before falling into the evil ways that led him "
 "to today."
 msgstr ""
+"Tôi tự hỏi hắn từng là ai khi còn sống, trước khi rời vào con đường xấu xa "
+"dẫn hắn đến ngày hôm nay."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:414
@@ -2338,16 +2482,19 @@ msgid ""
 "Once he chose this unlife for himself and his soldiers, he forfeited any "
 "claim to our compassion. Does it even matter who he was?"
 msgstr ""
+"Một khi hắn đã chọn sự sống giả tạo cho hắn và binh lính của hắn, hắn đã để "
+"mất cơ hội được chúng ta thương hại. Hắn từng là ai thì cũng đâu có gì quan "
+"trọng?"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:418
 msgid "No, I suppose it does not."
-msgstr ""
+msgstr "Không, tôi cũng nghĩ vậy."
 
 #. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:4
 msgid "Apprentice Mage"
-msgstr ""
+msgstr "Pháp sư tập sự"
 
 #. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:19
@@ -2355,23 +2502,26 @@ msgid ""
 "Trained in swordsmanship as a boy and the magical arts as a young man, Malin "
 "Keshar is talented at both but an expert in neither."
 msgstr ""
+"Được huấn luyện với kiếm thuật khi còn là một cậu bé và với pháp thuật khi "
+"là một chàng trai, Malin Keshar có tài ở cả hai nhưng không thành thạo ở cái "
+"nào cả."
 
 #. [attack]: type=blade
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:24
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:23
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:23
 msgid "short sword"
-msgstr ""
+msgstr "kiếm ngắn"
 
 #. [attack]: type=impact
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:33
 msgid "magic blast"
-msgstr ""
+msgstr "luồng phép thuật"
 
 #. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:4
 msgid "Apprentice Necromancer"
-msgstr ""
+msgstr "Pháp sư gọi hồn học việc"
 
 #. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:18
@@ -2379,23 +2529,25 @@ msgid ""
 "Despite his increased magical powers, Malin holds on to his short sword as "
 "his melee weapon of choice."
 msgstr ""
+"Mặc dù sức mạnh phép thuật của cậu đã tăng lên, Malin vẫn giữ cây kiếm ngắn "
+"của mình như là vũ khí cận chiến yêu thích."
 
 #. [attack]: type=cold
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:32
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:35
 msgid "chill wave"
-msgstr ""
+msgstr "sóng lạnh"
 
 #. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:44
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:47
 msgid "shadow wave"
-msgstr ""
+msgstr "sóng bóng tối"
 
 #. [unit_type]: id=Dark Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:4
 msgid "Dark Mage"
-msgstr ""
+msgstr "Pháp sư bóng tối"
 
 #. [unit_type]: id=Dark Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:18
@@ -2403,11 +2555,13 @@ msgid ""
 "Although Malin’s sword has grown rusty from lack of proper care, his "
 "increasing skill with magic more than compensates."
 msgstr ""
+"Mặc dù cây kiếm của Malin đã trở nên gỉ sét vì thiết sự chăm sóc thích hợp, "
+"khả năng pháp thuật đang gia tăng của cậu còn bù đắp hơn vậy."
 
 #. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:6
 msgid "female^Frontier Baroness"
-msgstr ""
+msgstr "Nữ bá tước biên giới"
 
 #. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:24
@@ -2418,32 +2572,40 @@ msgid ""
 "proficient are more than a match for any orcs foolish enough to engage them "
 "in combat."
 msgstr ""
+"Ở biên giới Wesnoth, tất cả đàn ông và phụ nữ có đủ khả năng đều phải bảo vệ "
+"thị trấn khi cần thiết. Trong khi đàn ông thường được huấn luyện để dùng "
+"kiếm hay cung, phụ nữ lại học cách sử dụng gậy và dây văng đá. Những người "
+"tài giỏi nhất sẽ đánh bại được cả bất kỳ người thú nào đủ ngu ngốc mà tấn "
+"công họ trong trận chiến."
 
 #. [attack]: type=impact
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:93
 msgid "staff"
-msgstr ""
+msgstr "gậy"
 
 #. [attack]: type=impact
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:102
 msgid "sling"
-msgstr ""
+msgstr "dây văng đá"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/utils/deaths.cfg:12
 msgid "I’m not ready to die..."
-msgstr ""
+msgstr "Ta không sẵn sàng để chết..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/utils/deaths.cfg:28
 msgid ""
 "Fool boy! You have allowed my death, and now none in this world will aid you."
 msgstr ""
+"Đồ ngu! Cậu đã để ta chết, và giờ không ai trên thế giới này sẽ giúp đỡ cậu."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/utils/deaths.cfg:44
 msgid "No! I will not fall this close to achieving the goal of so many years!"
 msgstr ""
+"Không! Ta không thể thất bại khi đã gần đạt được mục đích sau nhiều năm như "
+"vậy!"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/utils/deaths.cfg:57
@@ -2451,8 +2613,10 @@ msgid ""
 "Your incompetence at this simple task is appalling. You will never grow "
 "strong enough to be of use to me."
 msgstr ""
+"Sự yếu kém của cậu trong công việc đơn giản này thật khủng khiếp. Cậu sẽ "
+"không bao giờ đủ mạnh để có ích cho ta."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/utils/deaths.cfg:73
 msgid "Then my battle against the orcs is lost!"
-msgstr ""
+msgstr "Vậy là cuộc chiến của ta với bọn người thú đã kết thúc rồi!"
