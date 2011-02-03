@@ -379,8 +379,6 @@ template<
 	last_clicked_widget_ = NULL;
 	focus_ = 0;
 	is_down_ = is_down;
-	signal_handler_sdl_button_down_entered_ = false;
-	signal_handler_sdl_button_up_entered_ = false;
 }
 
 template<
