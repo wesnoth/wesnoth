@@ -243,6 +243,17 @@ void capture_mouse(tdispatcher* dispatcher);
  */
 void release_mouse(tdispatcher* dispatcher);
 
+/**
+ * Captures the keyboard.
+ *
+ * A dispatcher can capture the keyboard, when for example it's pressed on a
+ * button, this means all keyboard events after that are send to that widget.
+ *
+ * @param dispatcher              The dispatcher which should get the keyboard
+ *                                focus.
+ */
+void capture_keyboard(tdispatcher* dispatcher);
+
 std::ostream& operator<<(std::ostream& stream, const tevent event);
 
 } // namespace event

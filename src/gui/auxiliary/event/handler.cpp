@@ -245,6 +245,7 @@ private:
 	 * NOTE the keyboard events aren't really wired in yet so doesn't do much.
 	 */
 	tdispatcher* keyboard_focus_;
+	friend void capture_keyboard(tdispatcher*);
 };
 
 thandler::thandler()
@@ -683,6 +684,13 @@ void release_mouse(tdispatcher* dispatcher)
 	if(handler->mouse_focus == dispatcher) {
 		handler->mouse_focus = NULL;
 	}
+}
+
+void capture_keyboard(tdispatcher* dispatcher)
+{
+	assert(handler);
+	assert(dispatcher);
+	handler->keyboard_focus_ = dispatcher;
 }
 
 std::ostream& operator<<(std::ostream& stream, const tevent event)
