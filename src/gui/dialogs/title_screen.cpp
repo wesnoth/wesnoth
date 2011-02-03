@@ -98,6 +98,7 @@ static bool hotkey(twindow& window, const ttitle_screen::tresult result)
 
 ttitle_screen::ttitle_screen()
 	: logo_timer_id_(0)
+	, debug_clock_(NULL)
 {
 }
 
@@ -106,6 +107,7 @@ ttitle_screen::~ttitle_screen()
 	if(logo_timer_id_) {
 		remove_timer(logo_timer_id_);
 	}
+	delete debug_clock_;
 }
 
 static void animate_logo(
@@ -387,8 +389,13 @@ void ttitle_screen::show_debug_clock_window(CVideo& video)
 {
 	assert(show_debug_clock_button);
 
-	tdebug_clock dlg;
-	dlg.show(video);
+	if(debug_clock_) {
+		delete debug_clock_;
+		debug_clock_ = 0;
+	} else {
+		debug_clock_ = new tdebug_clock();
+		debug_clock_->show_tooltip(video);
+	}
 }
 
 } // namespace gui2

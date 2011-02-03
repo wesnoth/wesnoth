@@ -77,6 +77,9 @@ private:
 	/** The progress bar time for the logo. */
 	unsigned long logo_timer_id_;
 
+	/** Holds the debug clock dialog. */
+	tdialog* debug_clock_;
+
 	/**
 	 * Updates the tip of day widget.
 	 *
