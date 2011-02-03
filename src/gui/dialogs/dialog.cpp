@@ -29,6 +29,8 @@ tdialog::~tdialog()
 	foreach(tfield_* field, fields_) {
 		delete field;
 	}
+
+	delete window_;
 }
 
 void tdialog::show(CVideo& video, const unsigned auto_close_time)
@@ -69,6 +71,25 @@ void tdialog::show(CVideo& video, const unsigned auto_close_time)
 	}
 
 	post_show(*window);
+}
+
+void tdialog::show_tooltip(CVideo& video/*, const unsigned auto_close_time*/)
+{
+	if(video.faked()) {
+		return;
+	}
+
+	window_ = build_window(video);
+
+	post_build(video, *window_);
+
+	window_->set_owner(this);
+
+	init_fields(*window_);
+
+	pre_show(video, *window_);
+
+	window_->show_tooltip(/*auto_close_time*/);
 }
 
 tfield_bool* tdialog::register_bool(

@@ -378,6 +378,7 @@ void twindow::update_screen_size()
 		}
 	}
 }
+
 twindow::tretval twindow::get_retval_by_id(const std::string& id)
 {
 /*WIKI
@@ -438,6 +439,23 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	} else {
 		return NONE;
 	}
+}
+
+void twindow::show_tooltip(/*const unsigned auto_close_timeout*/)
+{
+	log_scope2(log_gui_draw, "Window: show as tooltip.");
+
+	generate_dot_file("show", SHOW);
+
+	assert(status_ == NEW);
+
+	/*
+	 * Before show has been called, some functions might have done some testing
+	 * on the window and called layout, which can give glitches. So
+	 * reinvalidate the window to avoid those glitches.
+	 */
+	invalidate_layout();
+	suspend_drawing_ = false;
 }
 
 int twindow::show(const bool restore, const unsigned auto_close_timeout)
@@ -508,6 +526,15 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 
 		delay_event(event, auto_close_timeout);
 	}
+
+	/** @todo Evaluate whether capturing can be done cleaner. */
+	/*
+	 * Capture the input. This way a tooltip shown doesn't grab the focus if
+	 * drawn above us. This also means the window shown is always modal.
+	 */
+	capture_keyboard(dynamic_cast<gui2::event::tdispatcher*>(this));
+	event::capture_mouse(dynamic_cast<gui2::event::tdispatcher*>(this));
+
 	try {
 		// Start our loop drawing will happen here as well.
 		for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {

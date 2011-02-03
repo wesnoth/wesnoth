@@ -90,7 +90,8 @@ public:
 	tdialog() :
 		retval_(0),
 		fields_(),
-		restore_(true)
+		restore_(true),
+		window_(NULL)
 	{}
 
 	virtual ~tdialog();
@@ -107,6 +108,21 @@ public:
 	 *                            after the minimum.
 	 */
 	void show(CVideo& video, const unsigned auto_close_time = 0);
+
+	/**
+	 * Shows the window as a tooltip.
+	 *
+	 * A tooltip can't be interacted with and is just shown.
+	 *
+	 * @todo Implement @p auto_close_time.
+	 *
+	 * @todo Look at merging @ref show and @ref show_tooltip. Maybe more types
+	 * are needed, have a look at it later.
+	 *
+	 * @param video               The video which contains the surface to draw
+	 *                            upon.
+	 */
+	void show_tooltip(CVideo& video/*, const unsigned auto_close_time = 0*/);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -181,6 +197,9 @@ private:
 	 * behaviour so they can change it in pre_show().
 	 */
 	bool restore_;
+
+	/** The window, used in show modal. */
+	twindow* window_;
 
 	/** The id of the window to build. */
 	virtual const std::string& window_id() const = 0;

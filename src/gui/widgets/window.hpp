@@ -143,6 +143,21 @@ public:
 			const unsigned auto_close_timeout = 0);
 
 	/**
+	 * Shows the window as a tooltip.
+	 *
+	 * A tooltip can't be interacted with and is just shown.
+	 *
+	 * @todo implement @p auto_close_timeout.
+	 *
+	 * @param auto_close_timeout  The time in ms after which the window will
+	 *                            automatically close, if 0 it doesn't close.
+	 *                            @note the timeout is a minimum time and
+	 *                            there's no quarantee about how fast it closes
+	 *                            after the minimum.
+	 */
+	void show_tooltip(/*const unsigned auto_close_timeout = 0*/);
+
+	/**
 	 * Draws the window.
 	 *
 	 * This routine draws the window if needed, it's called from the event
