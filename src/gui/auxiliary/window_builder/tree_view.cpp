@@ -62,12 +62,12 @@ twidget* tbuilder_tree_view::build() const
 	widget->set_indention_step_size(indention_step_size);
 
 	DBG_GUI_G << "Window builder: placed tree_view '"
-		<< id << "' with definition '"
-		<< definition << "'.\n";
+			<< id << "' with definition '"
+			<< definition << "'.\n";
 
 	boost::intrusive_ptr<const ttree_view_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const ttree_view_definition::tresolution>(widget->config());
+			boost::dynamic_pointer_cast
+				<const ttree_view_definition::tresolution>(widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);

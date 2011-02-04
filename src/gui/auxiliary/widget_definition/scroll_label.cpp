@@ -64,7 +64,6 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
  * The following states exist:
  * * state_enabled, the scroll label is enabled.
  * * state_disabled, the scroll label is disabled.
- *
  */
 	// Note the order should be the same as the enum tstate is scroll_label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));

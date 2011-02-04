@@ -45,7 +45,6 @@ trepeating_button_definition::tresolution::tresolution(const config& cfg)
  * * state_disabled, the repeating_button is disabled.
  * * state_pressed, the left mouse repeating_button is down.
  * * state_focussed, the mouse is over the repeating_button.
- *
  */
 	// Note the order should be the same as the enum tstate in
 	// repeating_button.hpp.
