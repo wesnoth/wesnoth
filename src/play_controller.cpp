@@ -513,7 +513,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	team& current_team = teams_[team_index];
 
 	mouse_handler_.set_side(team_index + 1);
-
+	
 	// If we are observers we move to watch next team if it is allowed
 	if (is_observer()
 		&& !current_team.get_disallow_observers()) {
@@ -535,13 +535,13 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 		|| is_replay)
 		return;
 	if (!loading_game_) recorder.init_side();
-	do_init_side(team_index);
+	do_init_side(team_index, is_replay);
 }
 
 /**
  * Called by replay handler or init_side() to do actual work for turn change.
  */
-void play_controller::do_init_side(const unsigned int team_index){
+void play_controller::do_init_side(const unsigned int team_index, bool is_replay) {
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 
@@ -563,7 +563,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 		game_events::fire("side " + side_num + " turn " + turn_num);
 	}
 
-	if(current_team.is_human()) {
+	if(current_team.is_human() && !is_replay) {
 		gui_->set_team(player_number_ - 1);
 		gui_->recalculate_minimap();
 		gui_->invalidate_all();

@@ -871,7 +871,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 		else if (cfg->child("init_side"))
 		{
-			resources::controller->do_init_side(side_num - 1);
+			resources::controller->do_init_side(side_num - 1, true);
 		}
 
 		//if there is an end turn directive

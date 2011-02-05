@@ -348,15 +348,18 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 }
 
 void replay_controller::update_teams(){
+
 	int next_team = player_number_;
 	if(static_cast<size_t>(next_team) > teams_.size()) {
 		next_team = 1;
 	}
 
-	if (!show_team_)
-		gui_->set_team(next_team - 1, show_everything_);
-
+	if (!show_team_) {
+		gui_->set_team(next_team - 1, show_everything_);	
+	}
+	
 	::clear_shroud(next_team);
+	
 	gui_->set_playing_team(next_team - 1);
 	gui_->invalidate_all();
 }
