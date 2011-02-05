@@ -331,6 +331,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 			finish_turn();
 			player_number_ = 1;
 			current_turn_++;
+			gui_->new_turn();
 		}
 
 		update_teams();
