@@ -10,8 +10,9 @@
 #include "player.hpp"
 #include "room_manager.hpp"
 #include "simple_wml.hpp"
-#include <boost/scoped_ptr.hpp>
 
+#include <boost/function.hpp>
+#include <boost/scoped_ptr.hpp>
 
 class server
 {
@@ -137,8 +138,38 @@ private:
 	void update_game_in_lobby(const wesnothd::game* g, network::connection exclude=0);
 
 	void start_new_server();
+
+	void setup_handlers();
+
+	typedef boost::function5<void, server*, const std::string&, const std::string&, std::string&, std::ostringstream *> cmd_handler;
+	std::map<std::string, cmd_handler> cmd_handlers_;
+
+	void shut_down_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void restart_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void sample_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void help_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void stats_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void metrics_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void requests_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void games_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void wml_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void netstats_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void adminmsg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void pm_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void msg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void lobbymsg_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void status_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void clones_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void bans_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void ban_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void unban_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void ungban_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void kick_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void kickban_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void gban_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void motd_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void searchlog_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void dul_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 };
-
-
 
 #endif
