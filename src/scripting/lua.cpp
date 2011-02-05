@@ -3316,7 +3316,7 @@ void LuaKernel::initialize()
 }
 
 static char const *handled_file_tags[] = {
-	"color_palette", "color_range", "era", "event", "illuminated_time",
+	"color_palette", "color_range", "era", "event", "generator", "illuminated_time",
 	"label", "lua", "menu_item", "music", "side", "sound_source", "story",
 	"terrain_graphics", "time", "time_area", "variables"
 };
