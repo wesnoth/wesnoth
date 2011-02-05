@@ -356,6 +356,8 @@ void replay_controller::update_teams(){
 
 	if (!show_team_) {
 		gui_->set_team(next_team - 1, show_everything_);	
+	} else {
+		gui_->set_team(show_team_ - 1, show_everything_);	  
 	}
 	
 	::clear_shroud(next_team);
