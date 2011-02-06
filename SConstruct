@@ -102,6 +102,7 @@ opts.AddVariables(
     BoolVariable('distcc', 'Use distcc', False),
     BoolVariable('ccache', "Use ccache", False),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
+    BoolVariable('cxx0x', 'Use C++0x features.', False),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False)
     )
@@ -369,11 +370,16 @@ for env in [test_env, client_env, env]:
     env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 
     if "gcc" in env["TOOLS"]:
-        env.AppendUnique(CCFLAGS = Split("-W -Wall"), CFLAGS = ["-std=c99"], CXXFLAGS="-std=c++98")
+        env.AppendUnique(CCFLAGS = Split("-W -Wall"), CFLAGS = ["-std=c99"])
+
+        if env['cxx0x']:
+            env.AppendUnique(CXXFLAGS = "-std=c++0x")
+            env.Append(CPPDEFINES = "HAVE_CXX0X")
+        else:
+            env.AppendUnique(CXXFLAGS = "-std=c++98")
+
         if env['strict']:
-            # The current networking code breaks strict aliasing in g++ 4.5.
-            # Once the code is converted to boost::asio it might be reenabled.
-            env.AppendUnique(CCFLAGS = Split("-Werror -Wno-strict-aliasing"))
+            env.AppendUnique(CCFLAGS = Split("-Werror"))
 
         env["OPT_FLAGS"] = "-O2"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
