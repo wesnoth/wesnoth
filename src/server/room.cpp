@@ -120,17 +120,15 @@ void room::send_data(simple_wml::document& data,
 	wesnothd::send_to_many(data, members(), exclude, packet_type);
 }
 
-void room::send_server_message_to_all(const char* message,
-									  network::connection exclude) const
+void room::send_server_message_to_all(const char* message, network::connection exclude) const
 {
 	simple_wml::document doc;
 	send_server_message(message, 0, &doc);
 	send_data(doc, exclude, "message");
 }
 
-void room::send_server_message(const char* message,
-							   network::connection sock,
-							   simple_wml::document* docptr) const
+void room::send_server_message(const char* message, network::connection sock,
+						   simple_wml::document* docptr) const
 {
 	simple_wml::document docbuf;
 	if(docptr == NULL) {

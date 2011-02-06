@@ -21,12 +21,16 @@ public:
 	void run();
 private:
 	void send_error(network::connection sock, const char* msg, const char* error_code ="") const;
+	void send_error(network::connection sock, const std::string &msg, const char* error_code = "") const
+	{
+		send_error(sock, msg.c_str(), error_code);
+	}
 
 	// The same as send_error(), we just add an extra child to the response
 	// telling the client the chosen username requires a password.
-	void send_password_request(network::connection sock, const char* msg,
+	void send_password_request(network::connection sock, const std::string& msg,
 			const std::string& user, const char* error_code ="",
-			bool force_confirmation =false);
+			bool force_confirmation = false);
 
 	const network::manager net_manager_;
 	network::server_manager server_;

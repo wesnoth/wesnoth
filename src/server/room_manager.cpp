@@ -365,7 +365,7 @@ void room_manager::process_message(simple_wml::document &data, const player_map:
 		std::stringstream ss;
 		ss << "You are not a member of the room '" << room_name << "'. "
 			<< "Your message has not been relayed.";
-		lobby_->send_server_message(ss.str().c_str(), user->first);
+		lobby_->send_server_message(ss.str(), user->first);
 		return;
 	}
 	if (user->second.is_message_flooding()) {

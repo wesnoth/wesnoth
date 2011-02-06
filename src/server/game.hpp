@@ -140,11 +140,24 @@ public:
 	bool describe_slots();
 
 	void send_server_message_to_all(const char* message, network::connection exclude=0) const;
+	void send_server_message_to_all(const std::string& message, network::connection exclude=0) const
+	{
+		send_server_message_to_all(message.c_str(), exclude);
+	}
+
 	void send_server_message(const char* message, network::connection sock=0, simple_wml::document* doc=NULL) const;
+	void send_server_message(const std::string& message, network::connection sock=0, simple_wml::document* doc=NULL) const
+	{
+		send_server_message(message.c_str(), sock, doc);
+	}
 
 	/** Send data to all players in this game except 'exclude'. */
-	void send_and_record_server_message(const char* message,
-			const network::connection exclude=0);
+	void send_and_record_server_message(const char* message, const network::connection exclude=0);
+	void send_and_record_server_message(const std::string& message,	const network::connection exclude=0)
+	{
+		send_and_record_server_message(message.c_str(), exclude);
+	}
+
 	void send_data(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
 
 	void clear_history();

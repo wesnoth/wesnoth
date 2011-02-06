@@ -420,7 +420,7 @@ void server::send_error(network::connection sock, const char* msg, const char* e
 	send_doc(doc, sock, "error");
 }
 
-void server::send_password_request(network::connection sock, const char* msg,
+void server::send_password_request(network::connection sock, const std::string& msg,
 	const std::string& user, const char* error_code, bool force_confirmation)
 {
 	std::string salt = user_handler_->create_salt();
@@ -438,7 +438,7 @@ void server::send_password_request(network::connection sock, const char* msg,
 
 	simple_wml::document doc;
 	simple_wml::node& e = doc.root().add_child("error");
-	e.set_attr("message", msg);
+	e.set_attr("message", msg.c_str());
 	e.set_attr("password_request", "yes");
 	e.set_attr("phpbb_encryption", user_handler_->use_phpbb_encryption() ? "yes" : "no");
 	e.set_attr("salt", spices.c_str());
@@ -711,7 +711,7 @@ void server::run() {
 				const std::string reason = is_ip_banned(ip);
 				if (!reason.empty()) {
 					LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
-					send_error(sock, ("You are banned. Reason: " + reason).c_str());
+					send_error(sock, "You are banned. Reason: " + reason);
 					network::disconnect(sock);
 				} else if (ip_exceeds_connection_limit(ip)) {
 					LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
@@ -751,7 +751,7 @@ void server::run() {
 
 				} catch (simple_wml::error& e) {
 					WRN_CONFIG << "simple_wml error in received data: " << e.message << std::endl;
-					send_error(sock, ("Invalid WML received: " + e.message).c_str());
+					send_error(sock, "Invalid WML received: " + e.message);
 					delete [] buf_ptr;
 					continue;
 				} catch(...) {
@@ -1010,13 +1010,13 @@ void server::process_login(const network::connection sock,
 	// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
 	std::string username = (*login)["username"].to_string();
 	if (!utils::isvalid_username(username)) {
-		send_error(sock, ("The nick '" + username + "' contains invalid "
+		send_error(sock, "The nick '" + username + "' contains invalid "
 			"characters. Only alpha-numeric characters, underscores and hyphens"
-			"are allowed.").c_str(), MP_INVALID_CHARS_IN_NAME_ERROR);
+			"are allowed.", MP_INVALID_CHARS_IN_NAME_ERROR);
 		return;
 	}
 	if (username.size() > 20) {
-		send_error(sock, ("The nick '" + username + "' is too long. Nicks must be 20 characters or less.").c_str(),
+		send_error(sock, "The nick '" + username + "' is too long. Nicks must be 20 characters or less.",
 			MP_NAME_TOO_LONG_ERROR);
 		return;
 	}
@@ -1027,7 +1027,7 @@ void server::process_login(const network::connection sock,
 		if (utils::wildcard_string_match(utils::lowercase(username),
 			utils::lowercase(*d_it)))
 		{
-			send_error(sock, ("The nick '" + username + "' is reserved and cannot be used by players").c_str(),
+			send_error(sock, "The nick '" + username + "' is reserved and cannot be used by players",
 				MP_NAME_RESERVED_ERROR);
 			return;
 		}
@@ -1041,8 +1041,8 @@ void server::process_login(const network::connection sock,
 				user_handler_->password_reminder(username);
 				send_error(sock, "Your password reminder email has been sent.");
 			} catch (user_handler::error e) {
-				send_error(sock, ("There was an error sending your password reminder email. The error message was: " +
-				e.message).c_str());
+				send_error(sock, "There was an error sending your password reminder email. The error message was: " +
+				e.message);
 			}
 			return;
 		}
@@ -1075,12 +1075,12 @@ void server::process_login(const network::connection sock,
 			// This name is registered and no password provided
 			if(password.empty()) {
 				if(p == players_.end()) {
-					send_password_request(sock, ("The nick '" + username +"' is registered on this server.").c_str(),
+					send_password_request(sock, "The nick '" + username +"' is registered on this server.",
 							username, MP_PASSWORD_REQUEST);
 				} else {
-					send_password_request(sock, ("The nick '" + username + "' is registered on this server."
+					send_password_request(sock, "The nick '" + username + "' is registered on this server."
 							"\n\nWARNING: There is already a client using this username, "
-							"logging in will cause that client to be kicked!").c_str(),
+							"logging in will cause that client to be kicked!",
 							username, MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME, true);
 				}
 				return;
@@ -1095,8 +1095,8 @@ void server::process_login(const network::connection sock,
 			else if(!(user_handler_->login(username, password, seeds_[sock]))) {
 				// Reset the random seed
 				seeds_.erase(sock);
-				send_password_request(sock, ("The password you provided for the nick '" + username +
-						"' was incorrect.").c_str(), username, MP_INCORRECT_PASSWORD_ERROR);
+				send_password_request(sock, "The password you provided for the nick '" + username +
+						"' was incorrect.", username, MP_INCORRECT_PASSWORD_ERROR);
 
 				LOG_SERVER << network::ip_address(sock) << "\t"
 						<< "Login attempt with incorrect password for nick '" << username << "'.\n";
@@ -1112,8 +1112,8 @@ void server::process_login(const network::connection sock,
 
 	// If we disallow unregistered users and this user is not registered send an error
 	if(user_handler_ && !registered && deny_unregistered_login_) {
-		send_error(sock, ("The nick '" + username + "' is not registered. "
-				"This server disallows unregistered nicks.").c_str(), MP_NAME_UNREGISTERED_ERROR);
+		send_error(sock, "The nick '" + username + "' is not registered. "
+				"This server disallows unregistered nicks.", MP_NAME_UNREGISTERED_ERROR);
 		return;
 	}
 
@@ -1122,7 +1122,7 @@ void server::process_login(const network::connection sock,
 			// If there is already a client using this username kick it
 			process_command("kick " + p->second.name() + " autokick by registered user", username);
 		} else {
-			send_error(sock, ("The nick '" + username + "' is already taken.").c_str(), MP_NAME_TAKEN_ERROR);
+			send_error(sock, "The nick '" + username + "' is already taken.", MP_NAME_TAKEN_ERROR);
 			return;
 		}
 	}
@@ -1158,7 +1158,7 @@ void server::process_login(const network::connection sock,
 	send_doc(games_and_users_list_, sock);
 
 	if (motd_ != "") {
-		rooms_.lobby().send_server_message(motd_.c_str(), sock);
+		rooms_.lobby().send_server_message(motd_, sock);
 	}
 
 	// Send other players in the lobby the update that the player has joined
@@ -1172,7 +1172,7 @@ void server::process_login(const network::connection sock,
 
 	for (std::vector<wesnothd::game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
 		// Note: This string is parsed by the client to identify lobby join messages!
-		(*g)->send_server_message_to_all((username + " has logged into the lobby").c_str());
+		(*g)->send_server_message_to_all(username + " has logged into the lobby");
 	}
 
 	if(user_handler_ && user_handler_->user_is_moderator(username)) {
@@ -1266,7 +1266,7 @@ void server::process_query(const network::connection sock,
 	} else {
 		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
 	}
-	rooms_.lobby().send_server_message(response.str().c_str(), sock);
+	rooms_.lobby().send_server_message(response.str(), sock);
 }
 
 void server::start_new_server() {
@@ -1504,9 +1504,9 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			return;
 		}
 
-		rooms_.lobby().send_server_message_to_all(parameters.c_str());
+		rooms_.lobby().send_server_message_to_all(parameters);
 		for (std::vector<wesnothd::game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
-			(*g)->send_server_message_to_all(parameters.c_str());
+			(*g)->send_server_message_to_all(parameters);
 		}
 
 		LOG_SERVER << "<server" << (parameters.find("/me ") == 0
@@ -1524,7 +1524,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			return;
 		}
 
-		rooms_.lobby().send_server_message_to_all(parameters.c_str());
+		rooms_.lobby().send_server_message_to_all(parameters);
 		LOG_SERVER << "<server" << (parameters.find("/me ") == 0
 				? std::string(parameters.begin() + 3, parameters.end()) + ">"
 				: "> " + parameters) << "\n";
@@ -1720,7 +1720,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 					if (utils::wildcard_string_match(network::ip_address(pl->first), target)) {
 						*out << "\nKicked " << pl->second.name() << " ("
 							<< network::ip_address(pl->first) << ").";
-						send_error(pl->first, ("You have been banned. Reason: " + reason).c_str());
+						send_error(pl->first, "You have been banned. Reason: " + reason);
 						network::queue_disconnect(pl->first);
 					}
 				}
@@ -1734,7 +1734,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 						const std::string ip = network::ip_address(pl->first);
 						*out << ban_manager_.ban(ip, parsed_time, reason, issuer_name, dummy_group, target);
 						*out << "\nKicked " << pl->second.name() << " (" << ip << ").";
-						send_error(pl->first, ("You have been banned. Reason: " + reason).c_str());
+						send_error(pl->first, "You have been banned. Reason: " + reason);
 						network::queue_disconnect(pl->first);
 					}
 				}
@@ -1876,7 +1876,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 				*out << "Kicked " << pl->second.name() << " ("
 					<< network::ip_address(pl->first) << "). '"
 					<< kick_message << "'";
-				send_error(pl->first, kick_message.c_str());
+				send_error(pl->first, kick_message);
 				network::queue_disconnect(pl->first);
 			}
 		}
@@ -1968,7 +1968,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 					// Warn that providing an email address might be a good idea
 					((*data.child("register"))["mail"].empty() ?
 					" It is recommended that you provide an email address for password recovery." : "");
-			rooms_.lobby().send_server_message(msg.str().c_str(), sock);
+			rooms_.lobby().send_server_message(msg.str(), sock);
 
 			// Mark the player as registered and send the other clients
 			// an update to dislpay this change
@@ -1980,8 +1980,8 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 			rooms_.lobby().send_data(diff);
 
 		} catch (user_handler::error e) {
-			rooms_.lobby().send_server_message(("There was an error registering your username. The error message was: "
-			+ e.message).c_str(), sock);
+			rooms_.lobby().send_server_message("There was an error registering your username. The error message was: "
+			+ e.message, sock);
 		}
 		return;
 	}
@@ -1989,8 +1989,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 	// A user requested to update his password or mail
 	if(data.child("set")) {
 		if(!(user_handler_->user_exists(pl->second.name()))) {
-			rooms_.lobby().send_server_message("You are not registered. Please register first.",
-					sock);
+			rooms_.lobby().send_server_message("You are not registered. Please register first.", sock);
 			return;
 		}
 
@@ -2002,8 +2001,8 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 			rooms_.lobby().send_server_message("Your details have been updated.", sock);
 
 		} catch (user_handler::error e) {
-			rooms_.lobby().send_server_message(("There was an error updating your details. The error message was: "
-			+ e.message).c_str(), sock);
+			rooms_.lobby().send_server_message("There was an error updating your details. The error message was: "
+			+ e.message, sock);
 		}
 
 		return;
@@ -2011,8 +2010,8 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 
 	// A user requested information about another user
 	if(data.child("details")) {
-		rooms_.lobby().send_server_message(("Valid details for this server are: " +
-				user_handler_->get_valid_details()).c_str(), sock);
+		rooms_.lobby().send_server_message("Valid details for this server are: " +
+				user_handler_->get_valid_details(), sock);
 		return;
 	}
 
@@ -2020,11 +2019,11 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 	if(data.child("info")) {
 		try {
 			std::string res = user_handler_->user_info((*data.child("info"))["name"].to_string());
-			rooms_.lobby().send_server_message(res.c_str(), sock);
+			rooms_.lobby().send_server_message(res, sock);
 		} catch (user_handler::error e) {
-			rooms_.lobby().send_server_message(("There was an error looking up the details of the user '" +
+			rooms_.lobby().send_server_message("There was an error looking up the details of the user '" +
 			(*data.child("info"))["name"].to_string() + "'. " +" The error message was: "
-			+ e.message).c_str(), sock);
+			+ e.message, sock);
 		}
 		return;
 	}
@@ -2032,8 +2031,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 	// A user requested to delete his nick
 	if(data.child("drop")) {
 		if(!(user_handler_->user_exists(pl->second.name()))) {
-			rooms_.lobby().send_server_message("You are not registered.",
-					sock);
+			rooms_.lobby().send_server_message("You are not registered.", sock);
 			return;
 		}
 
@@ -2041,8 +2039,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 		// registerd username without the password we should never get
 		// to call this
 		if(!(pl->second.registered())) {
-			rooms_.lobby().send_server_message("You are not logged in.",
-					sock);
+			rooms_.lobby().send_server_message("You are not logged in.", sock);
 			return;
 		}
 
@@ -2059,8 +2056,8 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 						 "user", pl->second.config_address(), diff);
 			rooms_.lobby().send_data(diff);
 		} catch (user_handler::error e) {
-			rooms_.lobby().send_server_message(("There was an error dropping your username. The error message was: "
-			+ e.message).c_str(), sock);
+			rooms_.lobby().send_server_message("There was an error dropping your username. The error message was: "
+			+ e.message, sock);
 		}
 		return;
 	}
@@ -2306,7 +2303,7 @@ void server::process_data_game(const network::connection sock,
 			std::stringstream msg;
 			msg << "This server does not support games with more than "
 				<< gamemap::MAX_PLAYERS << " sides. Game aborted.";
-			rooms_.lobby().send_server_message(msg.str().c_str(), sock);
+			rooms_.lobby().send_server_message(msg.str(), sock);
 			return;
 		}
 
@@ -2406,7 +2403,7 @@ void server::process_data_game(const network::connection sock,
 			std::stringstream msg;
 			msg << "This server does not support games with more than "
 				<< gamemap::MAX_PLAYERS << " sides.";
-			rooms_.lobby().send_server_message(msg.str().c_str(), sock);
+			rooms_.lobby().send_server_message(msg.str(), sock);
 			return;
 		}
 		// Record the full scenario in g->level()
@@ -2574,7 +2571,7 @@ void server::process_data_game(const network::connection sock,
 		if ((*info)["type"] == "termination") {
 			g->set_termination_reason((*info)["condition"].to_string());
 			if ((*info)["condition"].to_string() == "out of sync") {
-				g->send_server_message_to_all((pl->second.name() + " reports out of sync errors.").c_str());
+				g->send_server_message_to_all(pl->second.name() + " reports out of sync errors.");
 			}
 		}
 		return;

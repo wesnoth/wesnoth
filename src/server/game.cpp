@@ -194,7 +194,7 @@ void game::start_game(const player_map::const_iterator starter) {
 				std::stringstream msg;
 				msg << "Side "  << side_num + 1 << " has no controller but should! The host needs to assign control for the game to proceed past that side's turn.";
 				LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
-				send_and_record_server_message(msg.str().c_str());
+				send_and_record_server_message(msg.str());
 			}
 			(*s)->set_attr("controller", "human");
 		}
@@ -345,7 +345,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		std::ostringstream msg;
 		msg << "The side number has to be between 1 and "
 		    << gamemap::MAX_PLAYERS << ".";
-		send_server_message(msg.str().c_str(), sock);
+		send_server_message(msg.str(), sock);
 		return;
 	}
 
@@ -373,7 +373,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 			std::stringstream msg;
 			msg << "Wrong controller type received: '" << cfg["controller"] << "'";
 			DBG_GAME << msg.str() << "\n";
-			send_server_message(msg.str().c_str(), sock);
+			send_server_message(msg.str(), sock);
 			return;
 		}
 		change_controller(side_num - 1, old_player, old_player_name, false, cfg["controller"].to_string());
@@ -386,7 +386,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		msg << "You can't give away side " << side_num << ". It's controlled by '"
 			<< old_player_name << "' not you.";
 		DBG_GAME << msg.str() << "\n";
-		send_server_message(msg.str().c_str(), sock);
+		send_server_message(msg.str(), sock);
 		return;
 	}
 	//find the player that is passed control
@@ -394,14 +394,14 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 
 	// Is he in this game?
 	if (newplayer == player_info_->end() || !is_member(newplayer->first)) {
-		send_server_message((newplayer_name.to_string() + " is not in this game").c_str(), sock);
+		send_server_message(newplayer_name.to_string() + " is not in this game", sock);
 		return;
 	}
 
 	if (newplayer->first == old_player) {
 		std::stringstream msg;
 		msg << "That's already " << newplayer_name << "'s side, silly.";
-		send_server_message(msg.str().c_str(), sock);
+		send_server_message(msg.str(), sock);
 		return;
 	}
 	sides_[side_num - 1] = 0;
@@ -412,7 +412,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		oldplayer->second.set_status(player::OBSERVING);
 		players_.erase(std::remove(players_.begin(), players_.end(), old_player), players_.end());
 		// Tell others that the player becomes an observer.
-		send_and_record_server_message((old_player_name + " becomes an observer.").c_str());
+		send_and_record_server_message(old_player_name + " becomes an observer.");
 		// Update the client side observer list for everyone except old player.
 		simple_wml::document observer_join;
 		observer_join.root().add_child("observer").set_attr_dup("name", old_player_name.c_str());
@@ -444,12 +444,11 @@ void game::change_controller(const size_t side_num,
 	if (player_left && side_controllers_[side_num] == "ai") {
 		// Automatic AI side transfer.
 	} else if (controller.empty()) {
-		send_and_record_server_message((player_name
-				+ " takes control of side " + side + ".").c_str());
+		send_and_record_server_message(player_name + " takes control of side " + side + ".");
 		side_controllers_[side_num] = "human";
 	} else {
-		send_and_record_server_message((player_name + (controller == "human_ai" ? " " : " un")
-				+ "droids side " + side + ".").c_str());
+		send_and_record_server_message(player_name + (controller == "human_ai" ? " " : " un")
+				+ "droids side " + side + ".");
 		side_controllers_[side_num] = (controller == "human_ai" ? "ai" : "human");
 	}
 
@@ -493,7 +492,7 @@ void game::notify_new_host(){
 	if (!wesnothd::send_to_one(cfg, owner_)) {
 		message += " But an internal error occurred. You probably have to abandon this game.";
 	}
-	send_and_record_server_message(message.c_str());
+	send_and_record_server_message(message);
 }
 
 bool game::describe_slots() {
@@ -545,7 +544,7 @@ void game::send_muted_observers(const player_map::const_iterator user) const
 	}
 	std::string muted_nicks = list_users(muted_observers_, __func__);
 
-	send_server_message(("Muted observers: " + muted_nicks).c_str(), user->first);
+	send_server_message("Muted observers: " + muted_nicks, user->first);
 }
 
 void game::mute_observer(const simple_wml::node& mute,
@@ -567,7 +566,7 @@ void game::mute_observer(const simple_wml::node& mute,
 	 * also allow muting of usernames not in the game.
 	 */
 	if (user == player_info_->end() || !is_observer(user->first)) {
-		send_server_message(("Observer '" + username.to_string() + "' not found.").c_str(), muter->first);
+		send_server_message("Observer '" + username.to_string() + "' not found.", muter->first);
 		return;
 	}
 
@@ -577,7 +576,7 @@ void game::mute_observer(const simple_wml::node& mute,
 		return;
 	}
 	if (is_muted_observer(user->first)) {
-		send_server_message((username.to_string() + " is already muted.").c_str(), muter->first);
+		send_server_message(username.to_string() + " is already muted.", muter->first);
 		return;
 	}
 	LOG_GAME << network::ip_address(muter->first) << "\t"
@@ -585,7 +584,7 @@ void game::mute_observer(const simple_wml::node& mute,
 		<< network::ip_address(user->first) << ")\tin game:\t\""
 		<< name_ << "\" (" << id_ << ")\n";
 	muted_observers_.push_back(user->first);
-	send_and_record_server_message((username.to_string() + " has been muted.").c_str());
+	send_and_record_server_message(username.to_string() + " has been muted.");
 }
 
 void game::unmute_observer(const simple_wml::node& unmute,
@@ -604,12 +603,12 @@ void game::unmute_observer(const simple_wml::node& unmute,
 
 	const player_map::const_iterator user = find_user(username);
 	if (user == player_info_->end() || !is_observer(user->first)) {
-		send_server_message(("Observer '" + username.to_string() + "' not found.").c_str(), unmuter->first);
+		send_server_message("Observer '" + username.to_string() + "' not found.", unmuter->first);
 		return;
 	}
 
 	if (!is_muted_observer(user->first)) {
-		send_server_message((username.to_string() + " is not muted.").c_str(), unmuter->first);
+		send_server_message(username.to_string() + " is not muted.", unmuter->first);
 		return;
 	}
 
@@ -619,7 +618,7 @@ void game::unmute_observer(const simple_wml::node& unmute,
 		<< name_ << "\" (" << id_ << ")\n";
 	muted_observers_.erase(std::remove(muted_observers_.begin(),
 				muted_observers_.end(), user->first), muted_observers_.end());
-	send_and_record_server_message((username.to_string() + " has been unmuted.").c_str());
+	send_and_record_server_message(username.to_string() + " has been unmuted.");
 }
 
 void game::send_leave_game(network::connection user) const
@@ -638,7 +637,7 @@ network::connection game::kick_member(const simple_wml::node& kick,
 	const simple_wml::string_span& username = kick["username"];
 	const player_map::const_iterator user = find_user(username);
 	if (user == player_info_->end() || !is_member(user->first)) {
-		send_server_message(("'" + username.to_string() + "' is not a member of this game.").c_str(), kicker->first);
+		send_server_message("'" + username.to_string() + "' is not a member of this game.", kicker->first);
 		return 0;
 	} else if (user->first == kicker->first) {
 		send_server_message("Don't kick yourself, silly.", kicker->first);
@@ -651,7 +650,7 @@ network::connection game::kick_member(const simple_wml::node& kick,
 		<< kicker->second.name() << "\tkicked: " << username << " ("
 		<< network::ip_address(user->first) << ")\tfrom game:\t\""
 		<< name_ << "\" (" << id_ << ")\n";
-	send_and_record_server_message((username.to_string() + " has been kicked.").c_str());
+	send_and_record_server_message(username.to_string() + " has been kicked.");
 
 	// Tell the user to leave the game.
 	send_leave_game(user->first);
@@ -669,13 +668,13 @@ network::connection game::ban_user(const simple_wml::node& ban,
 	const simple_wml::string_span& username = ban["username"];
 	const player_map::const_iterator user = find_user(username);
 	if (user == player_info_->end()) {
-		send_server_message(("User '" + username.to_string() + "' not found.").c_str(), banner->first);
+		send_server_message("User '" + username.to_string() + "' not found.", banner->first);
 		return 0;
 	} else if (user->first == banner->first) {
 		send_server_message("Don't ban yourself, silly.", banner->first);
 		return 0;
 	} else if (player_is_banned(user->first)) {
-		send_server_message(("'" + username.to_string() + "' is already banned.").c_str(), banner->first);
+		send_server_message("'" + username.to_string() + "' is already banned.", banner->first);
 		return 0;
 	} else if (user->second.is_moderator()) {
 		send_server_message("You're not allowed to ban a moderator.", banner->first);
@@ -686,7 +685,7 @@ network::connection game::ban_user(const simple_wml::node& ban,
 		<< network::ip_address(user->first) << ")\tfrom game:\t\""
 		<< name_ << "\" (" << id_ << ")\n";
 	bans_.push_back(network::ip_address(user->first));
-	send_and_record_server_message((username.to_string() + " has been banned.").c_str());
+	send_and_record_server_message(username.to_string() + " has been banned.");
 	if (is_member(user->first)) {
 		//tell the user to leave the game.
 		send_leave_game(user->first);
@@ -707,11 +706,11 @@ void game::unban_user(const simple_wml::node& unban,
 	const simple_wml::string_span& username = unban["username"];
 	const player_map::const_iterator user = find_user(username);
 	if (user == player_info_->end()) {
-		send_server_message(("User '" + username.to_string() + "' not found.").c_str(), unbanner->first);
+		send_server_message("User '" + username.to_string() + "' not found.", unbanner->first);
 		return;
 	}
 	if (!player_is_banned(user->first)) {
-		send_server_message(("'" + username.to_string() + "' is not banned.").c_str(), unbanner->first);
+		send_server_message("'" + username.to_string() + "' is not banned.", unbanner->first);
 		return;
 	}
 	LOG_GAME << network::ip_address(unbanner->first) << "\t"
@@ -719,7 +718,7 @@ void game::unban_user(const simple_wml::node& unban,
 		<< network::ip_address(user->first) << ")\tfrom game:\t\""
 		<< name_ << "\" (" << id_ << ")\n";
 	bans_.erase(std::remove(bans_.begin(), bans_.end(), network::ip_address(user->first)), bans_.end());
-	send_and_record_server_message((username.to_string() + " has been unbanned.").c_str());
+	send_and_record_server_message(username.to_string() + " has been unbanned.");
 }
 
 void game::process_message(simple_wml::document& data, const player_map::iterator user) {
@@ -790,7 +789,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 				<< " (" << end_turn_ + 1 << "/" << nsides_ << ").";
 			LOG_GAME << msg.str() << " (socket: " << current_player()
 				<< ") (game id: " << id_ << ")\n";
-			send_and_record_server_message(msg.str().c_str());
+			send_and_record_server_message(msg.str());
 
 			marked.push_back(index - marked.size());
 		} else if ((**command).child("speak")) {
@@ -869,7 +868,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 			msg << "Removing illegal message from " << user->second.name() << " to " << std::string(team_name.begin(), team_name.end()) << ".";
 			const std::string& msg_str = msg.str();
 			LOG_GAME << msg_str << std::endl;
-			send_and_record_server_message(msg_str.c_str());
+			send_and_record_server_message(msg_str);
 			continue;
 		}
 
@@ -934,7 +933,7 @@ bool game::add_player(const network::connection player, bool observer) {
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
 		user->second.set_status(player::PLAYING);
-		send_and_record_server_message((user->second.name() + " has joined the game.").c_str(), player);
+		send_and_record_server_message(user->second.name() + " has joined the game.", player);
 	} else if (!allow_observers() && !user->second.is_moderator()) {
 		return false;
 	} else {
@@ -944,7 +943,7 @@ bool game::add_player(const network::connection player, bool observer) {
 		}
 		DBG_GAME << "adding observer...\n";
 		observers_.push_back(player);
-		if (!allow_observers()) send_and_record_server_message((user->second.name() + " is now observing the game.").c_str(), player);
+		if (!allow_observers()) send_and_record_server_message(user->second.name() + " is now observing the game.", player);
 
 		simple_wml::document observer_join;
 		observer_join.root().add_child("observer").set_attr_dup("name", user->second.name().c_str());
@@ -978,7 +977,7 @@ bool game::add_player(const network::connection player, bool observer) {
 
 	const std::string clones = has_same_ip(player, observer);
 	if (!clones.empty()) {
-		send_and_record_server_message((user->second.name() + " has the same IP as: " + clones).c_str());
+		send_and_record_server_message(user->second.name() + " has the same IP as: " + clones);
 	}
 
 	if (became_observer) {
@@ -1018,7 +1017,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		<< (disconnect ? " and disconnected" : "")
 		<< ". (socket: " << user->first << ")\n";
 	if (game_ended && started_ && !(observer && destruct)) {
-		send_server_message_to_all((user->second.name() + " ended the game.").c_str(), player);
+		send_server_message_to_all(user->second.name() + " ended the game.", player);
 	}
 	if (game_ended || destruct) return game_ended;
 
@@ -1030,8 +1029,8 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	if (observer) {
 		send_observerquit(user);
 	} else {
-		send_and_record_server_message((user->second.name()
-				+ (disconnect ? " has disconnected." : " has left the game.")).c_str(), player);
+		send_and_record_server_message(user->second.name()
+				+ (disconnect ? " has disconnected." : " has left the game."), player);
 	}
 	// If the player was host choose a new one.
 	if (host) {
@@ -1094,7 +1093,7 @@ void game::send_user_list(const network::connection exclude) const {
 }
 
 void game::load_next_scenario(const player_map::const_iterator user) const {
-	send_server_message_to_all((user->second.name() + " advances to the next scenario").c_str(), user->first);
+	send_server_message_to_all(user->second.name() + " advances to the next scenario", user->first);
 	simple_wml::document cfg_scenario;
 	level_.root().copy_into(cfg_scenario.root().add_child("next_scenario"));
 	if (!wesnothd::send_to_one(cfg_scenario, user->first)) return;
@@ -1366,8 +1365,7 @@ player_map::iterator game::find_user(const simple_wml::string_span& name)
 	return pl;
 }
 
-void game::send_and_record_server_message(const char* message,
-		                                  const network::connection exclude)
+void game::send_and_record_server_message(const char* message, const network::connection exclude)
 {
 	simple_wml::document* doc = new simple_wml::document;
 	send_server_message(message, 0, doc);
@@ -1401,6 +1399,7 @@ void game::send_server_message(const char* message, network::connection sock, si
 		msg.set_attr("sender", "server");
 		msg.set_attr_dup("message", message);
 	}
+
 
 	if(sock) {
 		wesnothd::send_to_one(doc, sock, "message");

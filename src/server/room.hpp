@@ -143,6 +143,10 @@ public:
 	 * @param exclude if nonzero, do not send to this player
 	 */
 	void send_server_message_to_all(const char* message, network::connection exclude=0) const;
+	void send_server_message_to_all(const std::string& message, network::connection exclude=0) const
+	{
+		send_server_message_to_all(message.c_str(), exclude);
+	}
 
 	/**
 	 * Prepare a text message and/or send it to a player. If a nonzero sock
@@ -155,6 +159,12 @@ public:
 	 */
 	void send_server_message(const char* message, network::connection sock,
 		simple_wml::document* docptr = NULL) const;
+
+	void send_server_message(const std::string& message, network::connection sock,
+		simple_wml::document* docptr = NULL) const
+	{
+		send_server_message(message.c_str(), sock, docptr);
+	}
 
 
 private:
