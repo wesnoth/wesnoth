@@ -251,7 +251,7 @@ bool make_change_diff(const simple_wml::node& src,
 	//inserts will be processed first by the client, so insert at index+1,
 	//and then when the delete is processed we'll slide into the right position
 	simple_wml::node& insert = diff.add_child("insert_child");
-	insert.set_attr_int("index", index+1);
+	insert.set_attr_int("index", index + 1);
 	children[index]->copy_into(insert.add_child(type));
 	return true;
 }
@@ -259,10 +259,10 @@ bool make_change_diff(const simple_wml::node& src,
 std::string player_status(wesnothd::player_map::const_iterator pl) {
 	std::ostringstream out;
 	const network::connection_stats& stats = network::get_connection_stats(pl->first);
-	const int time_connected = stats.time_connected/1000;
-	const int seconds = time_connected%60;
-	const int minutes = (time_connected/60)%60;
-	const int hours = time_connected/(60*60);
+	const int time_connected = stats.time_connected / 1000;
+	const int seconds = time_connected % 60;
+	const int minutes = (time_connected / 60) % 60;
+	const int hours = time_connected / (60 * 60);
 	out << "'" << pl->second.name() << "' @ " << network::ip_address(pl->first)
 		<< " connected for " << std::setw(2) << hours << ":" << std::setw(2) << minutes << ":" << std::setw(2) << seconds
 		<< " sent " << stats.bytes_sent << " bytes, received "
@@ -276,7 +276,7 @@ class fps_limiter {
 	size_t start_ticks_;
 	size_t ms_per_frame_;
 public:
-	fps_limiter(size_t ms_per_frame = 20) : start_ticks_(0),ms_per_frame_(ms_per_frame)
+	fps_limiter(size_t ms_per_frame = 20) : start_ticks_(0), ms_per_frame_(ms_per_frame)
 	{}
 
 	void limit() {
@@ -318,7 +318,7 @@ namespace {
 
 server::server(int port, const std::string& config_file, size_t min_threads,
 		size_t max_threads) :
-	net_manager_(min_threads,max_threads),
+	net_manager_(min_threads, max_threads),
 	server_(port),
 	ban_manager_(),
 	ip_log_(),
@@ -434,7 +434,7 @@ void server::send_password_request(network::connection sock, const std::string& 
 		return;
 	}
 
-	seeds_.insert(std::pair<network::connection,std::string>(sock, salt));
+	seeds_.insert(std::pair<network::connection, std::string>(sock, salt));
 
 	simple_wml::document doc;
 	simple_wml::node& e = doc.root().add_child("error");
@@ -655,7 +655,7 @@ void server::run() {
 				// and check if bans have expired
 				ban_manager_.check_ban_times(now);
 				// Make sure we log stats every 5 minutes
-				if (last_stats_ + 5*60 <= now) {
+				if (last_stats_ + 5 * 60 <= now) {
 					dump_stats(now);
 					if (rooms_.dirty()) rooms_.write_rooms();
 				}
@@ -828,7 +828,7 @@ void server::run() {
 					rooms_.lobby().send_data(diff, e.socket);
 				}
 
-				games_and_users_list_.root().remove_child("user",index);
+				games_and_users_list_.root().remove_child("user", index);
 			} else {
 				ERR_SERVER << ip << "ERROR: Could not find user to remove: "
 					<< pl_it->second.name() << " in games_and_users_list_.\n";
@@ -940,7 +940,7 @@ void server::process_login(const network::connection sock,
 		// Check if it is an accepted version.
 		for (accepted_it = accepted_versions_.begin();
 			accepted_it != accepted_versions_.end(); ++accepted_it) {
-			if (utils::wildcard_string_match(version_str,*accepted_it)) break;
+			if (utils::wildcard_string_match(version_str, *accepted_it)) break;
 		}
 		if (accepted_it != accepted_versions_.end()) {
 			LOG_SERVER << network::ip_address(sock)
@@ -949,12 +949,12 @@ void server::process_login(const network::connection sock,
 			send_doc(login_response_, sock);
 			return;
 		}
-		std::map<std::string,config>::const_iterator config_it;
+		std::map<std::string, config>::const_iterator config_it;
 		// Check if it is a redirected version
 		for (config_it = redirected_versions_.begin();
 			config_it != redirected_versions_.end(); ++config_it)
 		{
-			if (utils::wildcard_string_match(version_str,config_it->first))
+			if (utils::wildcard_string_match(version_str, config_it->first))
 				break;
 		}
 		if (config_it != redirected_versions_.end()) {
@@ -963,7 +963,7 @@ void server::process_login(const network::connection sock,
 				<< ":\tredirecting them to " << config_it->second["host"]
 				<< ":" << config_it->second["port"] << "\n";
 			config response;
-			response.add_child("redirect",config_it->second);
+			response.add_child("redirect", config_it->second);
 			network::send_data(response, sock, "redirect");
 			return;
 		}
@@ -971,7 +971,7 @@ void server::process_login(const network::connection sock,
 		for (config_it = proxy_versions_.begin();
 			config_it != proxy_versions_.end(); ++config_it)
 		{
-			if (utils::wildcard_string_match(version_str,config_it->first))
+			if (utils::wildcard_string_match(version_str, config_it->first))
 				break;
 		}
 		if (config_it != proxy_versions_.end()) {
@@ -979,7 +979,7 @@ void server::process_login(const network::connection sock,
 				<< "\tplayer joined using version " << version_str
 				<< ":\tconnecting them by proxy to " << config_it->second["host"]
 				<< ":" << config_it->second["port"] << "\n";
-			proxy::create_proxy(sock,config_it->second["host"],
+			proxy::create_proxy(sock, config_it->second["host"],
 				config_it->second["port"].to_int(15000));
 			return;
 		}
@@ -1300,9 +1300,9 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		}
 	}
 
-	const std::string::iterator i = std::find(query.begin(),query.end(),' ');
-	const std::string command = utils::lowercase(std::string(query.begin(),i));
-	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
+	const std::string::iterator i = std::find(query.begin(), query.end(), ' ');
+	const std::string command = utils::lowercase(std::string(query.begin(), i));
+	std::string parameters = (i == query.end() ? "" : std::string(i + 1, query.end()));
 	utils::strip(parameters);
 
 	std::ostringstream out;
@@ -1459,7 +1459,6 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		*out << "Message sent to " << n << " admins.";
 	}
 
-	// pm privatemsg
 	void server::pm_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 		assert(out != NULL);
 
@@ -1495,7 +1494,6 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		*out << "No such nick: " << receiver;
 	}
 
-	//msg lobbymsg
 	void server::msg_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 		assert(out != NULL);
 
@@ -1900,7 +1898,6 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		*out << "Message of the day set to: " << motd_;
 	}
 
-	// searchlog sl
 	void server::searchlog_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 		assert(out != NULL);
 
@@ -1933,7 +1930,6 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		if (!found_something) *out << "\nNo match found.";
 	}
 
-	// dul deny_unregistered_login
 	void server::dul_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 		assert(out != NULL);
 
@@ -2166,7 +2162,7 @@ void server::process_data_lobby(const network::connection sock,
 		int game_id = (*join)["id"].to_int();
 
 		const std::vector<wesnothd::game*>::iterator g =
-			std::find_if(games_.begin(),games_.end(), wesnothd::game_id_matches(game_id));
+			std::find_if(games_.begin(), games_.end(), wesnothd::game_id_matches(game_id));
 
 		static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 		if (g == games_.end()) {
@@ -2206,7 +2202,7 @@ void server::process_data_lobby(const network::connection sock,
 		// Hack to work around problems of players not getting properly removed
 		// from a game. Still need to figure out actual cause...
 		const std::vector<wesnothd::game*>::iterator g2 =
-			std::find_if(games_.begin(),games_.end(), wesnothd::game_is_member(sock));
+			std::find_if(games_.begin(), games_.end(), wesnothd::game_is_member(sock));
 		if (g2 != games_.end()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join a second game. He's already in game:\t\""
@@ -2279,7 +2275,7 @@ void server::process_data_game(const network::connection sock,
 	}
 
 	const std::vector<wesnothd::game*>::iterator itor =
-		std::find_if(games_.begin(),games_.end(), wesnothd::game_is_member(sock));
+		std::find_if(games_.begin(), games_.end(), wesnothd::game_is_member(sock));
 	if (itor == games_.end()) {
 		ERR_SERVER << "ERROR: Could not find game for player: "
 			<< pl->second.name() << ". (socket: " << sock << ")\n";
@@ -2703,7 +2699,7 @@ int main(int argc, char** argv) {
 		if ((val == "--config" || val == "-c") && arg+1 != argc) {
 			config_file = argv[++arg];
 		} else if (val == "--verbose" || val == "-v") {
-			lg::set_log_domain_severity("all",3);
+			lg::set_log_domain_severity("all", 3);
 		} else if (val.substr(0, 6) == "--log-") {
 			size_t p = val.find('=');
 			if (p == std::string::npos) {
