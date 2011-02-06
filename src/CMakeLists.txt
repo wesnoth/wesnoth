@@ -487,6 +487,8 @@ set(wesnoth-main_SRC
 	multiplayer_create.cpp
 	multiplayer_lobby.cpp
 	${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
+	pathfind/pathfind.cpp
+	pathfind/teleport.cpp
 	persist_context.cpp
 	persist_manager.cpp
 	persist_var.cpp
@@ -625,11 +627,6 @@ set(libwesnoth-game_STAT_SRC
 	widgets/textbox.cpp
 	widgets/widget.cpp
 	wml_exception.cpp
-)
-
-set(libwesnoth-game_STAT_SRC
-	${libwesnoth-game_STAT_SRC}
-	pathfind/pathfind.cpp
 )
 
 if(ENABLE_GAME AND ENABLE_TESTS)

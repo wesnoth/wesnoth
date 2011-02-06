@@ -31,6 +31,8 @@ struct undo_action;
 
 namespace soundsource { class manager; }
 
+namespace pathfind { class manager; }
+
 namespace wb { class manager; } //whiteboard manager
 
 namespace resources
@@ -44,6 +46,7 @@ namespace resources
 	extern LuaKernel *lua_kernel;
 	extern play_controller *controller;
 	extern tod_manager *tod_manager;
+	extern pathfind::manager *tunnels;
 	extern wb::manager *whiteboard;
 	extern std::vector<undo_action> *undo_stack;
 	extern std::vector<undo_action> *redo_stack;

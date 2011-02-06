@@ -29,6 +29,7 @@
 #include "../../log.hpp"
 #include "../../map_label.hpp"
 #include "../../menu_events.hpp"
+#include "../../pathfind/teleport.hpp"
 #include "../../replay.hpp"
 #include "../../resources.hpp"
 #include "../../terrain_filter.hpp"
@@ -664,7 +665,7 @@ private:
 		if (units.find(loc) == units.end()){
 			return variant();
 		}
-		const pathfind::paths unit_paths(*resources::game_map, units, loc ,*resources::teams, false, false, ai_.current_team());
+		const pathfind::paths unit_paths(*resources::game_map, units, loc ,*resources::teams, false, true, ai_.current_team());
 		return variant(new location_callable(ai_.suitable_keep(loc,unit_paths)));
 	}
 
@@ -979,7 +980,7 @@ private:
 			throw formula_error( str.str(), "", "", 0);
 		}
 
-                std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
+		pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
 		pathfind::plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
@@ -1029,7 +1030,7 @@ private:
 			throw formula_error( str.str(), "", "", 0);
 		}
 
-                std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
+		pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
 		pathfind::emergency_path_calculator em_calc(*unit_it, *resources::game_map);
 
@@ -1083,7 +1084,7 @@ private:
 			throw formula_error( str.str(), "", "", 0);
 		}
 
-                std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
+		pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
 		pathfind::plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 

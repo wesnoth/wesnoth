@@ -51,6 +51,9 @@ namespace soundsource {
 	class manager;
 } // namespace soundsource
 
+namespace pathfind {
+	class manager;
+}
 
 namespace tooltips {
 	struct manager;
@@ -186,6 +189,7 @@ protected:
 	events::menu_handler menu_handler_;
 	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
 	tod_manager tod_manager_;
+	boost::scoped_ptr<pathfind::manager> pathfind_manager_;
 	persist_manager persist_;
 
 	//other objects

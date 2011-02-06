@@ -1319,9 +1319,8 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 		    !gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible)
 		{
 			const unit_movement_resetter move_reset(*u);
-			bool teleports = u->get_ability_bool("teleport");
 			const pathfind::paths& path = pathfind::paths(map_,units_,
-				u->get_location(), teams_, false, teleports,
+				u->get_location(), teams_, false, true,
 				teams_[gui_->viewing_team()], 0, false, ignore_units);
 
 			gui_->highlight_another_reach(path);

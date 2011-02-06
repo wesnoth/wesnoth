@@ -34,6 +34,7 @@
 #include "map.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
+#include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
 #include "sound.hpp"
 #include "replay.hpp"
@@ -274,12 +275,11 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				//since the future state includes changes to units' movement.
 				unit_movement_resetter move_reset(*un);
 
-				bool teleport = un->get_ability_bool("teleport");
 
 				{ // start planned unit map scope
 					wb::scoped_planned_pathfind_map planned_pathfind_map;
 					current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
-														false,teleport,viewing_team(),path_turns_);
+														false,true,viewing_team(),path_turns_);
 				} // end planned unit map scope
 
 				gui().highlight_reach(current_paths_);
@@ -415,7 +415,7 @@ pathfind::marked_route mouse_handler::get_route(unit* un, map_location go_to, co
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const pathfind::shortest_path_calculator calc(*un, team, units_, teams_, map_);
 
-	std::set<map_location> allowed_teleports = pathfind::get_teleport_locations(*un, viewing_team());
+	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*un, viewing_team());
 
 	pathfind::plain_route route;
 
@@ -681,10 +681,9 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 				wb::scoped_real_unit_map real_unit_map;
 				unit_movement_resetter move_reset(*u, u->side() != side_num_);
 			} // end enforced real unit map scope
-			bool teleport = u->get_ability_bool("teleport");
 
 			current_paths_ = pathfind::paths(map_, units_, hex, teams_,
-				false, teleport, viewing_team(), path_turns_);
+				false, true, viewing_team(), path_turns_);
 		}
 		show_attack_options(u);
 		gui().highlight_reach(current_paths_);
