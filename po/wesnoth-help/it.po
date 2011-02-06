@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 13:09+0100\n"
-"PO-Revision-Date: 2011-01-29 23:26+0100\n"
+"PO-Revision-Date: 2011-02-06 12:18+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -185,7 +185,7 @@ msgstr ""
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:12
 msgid "Aerie"
-msgstr ""
+msgstr "Nido"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
@@ -359,6 +359,9 @@ msgid ""
 "current generation of hatchlings are the most aggressive is the behaviour of "
 "the <ref>dst='flight' text='flight'</ref>."
 msgstr ""
+"Un giovane drago che non ha visto schiudere altre nidiate. I più giovani "
+"della generazione attuale sono i più aggressivi, è un comportamento dello "
+"<ref>dst='flight' text='stormo'</ref>."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
@@ -399,6 +402,9 @@ msgid ""
 "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid."
 msgstr ""
+"La <ref>dst=caste text='casta'</ref> a cui apparterrà il "
+"<ref>dst='hatchling' text='nidiaceo'</ref> è determinata dal periodo della "
+"posa."
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
@@ -966,7 +972,6 @@ msgstr "Introduzione"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:131
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -981,11 +986,11 @@ msgstr ""
 "\n"
 "<italic>text='Battle for Wesnoth'</italic> è un gioco strategico a turni di "
 "ambientazione fantasy, abbastanza differente dalla maggior parte dei moderni "
-"giochi strategici. Mentre altri giochi ricercano la complessità, Battle for "
-"Wesnoth punta sulla semplicità delle regole e della modalità di gioco. Ciò "
-"tuttavia non rende il gioco piatto perché, nonostante le regole semplici, il "
-"gioco può divenire strategicamente molto complesso, e quindi è facile da "
-"imparare, ma difficile da padroneggiare completamente."
+"giochi strategici. Mentre altri giochi ricercano la complessità, "
+"<italic>text='Battle for Wesnoth'</italic> punta sulla semplicità delle "
+"regole e della modalità di gioco. Ciò tuttavia non rende il gioco piatto – "
+"nonostante le regole semplici, il gioco può divenire strategicamente molto "
+"complesso, e quindi è facile da imparare, ma difficile da padroneggiare."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:143
@@ -994,7 +999,6 @@ msgstr "Fondamenti del gioco"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:144
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play <italic>text='Battle for "
 "Wesnoth'</italic>. They cover how to play and the basic mechanics behind the "
@@ -1003,15 +1007,14 @@ msgid ""
 "special situations and exceptions, please follow the links included."
 msgstr ""
 "In queste pagine si tratterà tutto ciò che serve sapere per poter giocare a "
-"Battle for Wesnoth. Si spiegano le regole ed i meccanismi che sono alla base "
-"del gioco. Durante la partita verranno aggiunte nuove informazioni su queste "
-"pagine per darti la possibilità di scoprire i nuovi aspetti del gioco. Se "
-"vuoi informazioni più dettagliate su situazioni particolari prova a seguire "
-"i collegamenti inclusi."
+"<italic>text='Battle for Wesnoth'</italic>. Si spiegano le regole ed i "
+"meccanismi che sono alla base del gioco. Durante la partita verranno "
+"aggiunte nuove informazioni su queste pagine per darti la possibilità di "
+"scoprire i nuovi aspetti del gioco. Se vuoi informazioni più dettagliate su "
+"situazioni particolari prova a seguire i collegamenti inclusi."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:146
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1024,13 +1027,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Per iniziare, è meglio scegliere il pulsante <italic>text=Introduzione</"
-"italic> nel menù principale. Questo ti porterà alla missione introduttiva "
-"che ti insegnerà le basi di Wesnoth. Dopo averla terminato è consigliabile "
+"Per iniziare, è meglio scegliere il pulsante <bold>text='Introduzione'</"
+"bold> nel menù principale. Questo ti porterà alla missione introduttiva che "
+"ti insegnerà le basi di Wesnoth. Dopo averla terminato è consigliabile "
 "giocare per prima la campagna L’erede al trono — fai clic su "
-"<italic>text=Campagna</italic> poi <italic>text='Erede al Trono'</italic>. "
-"Il gioco può risultare impegnativo, quindi prova a iniziare con la modalità "
-"<italic>text=Facile</italic>."
+"<bold>text='Campagna'</bold> poi <bold>text='Erede al Trono'</bold>. Il "
+"gioco può risultare impegnativo, quindi prova a iniziare con la modalità "
+"facile."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:149
@@ -1054,7 +1057,6 @@ msgstr "Informazioni sul gioco"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:155
-#, fuzzy
 msgid ""
 "The game takes place over a series of battles, called "
 "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
@@ -1064,17 +1066,16 @@ msgid ""
 "other people connected to that network. If your computer has a connection to "
 "the Internet, you can play against other people across the Internet."
 msgstr ""
-"Il gioco è costituito da una serie di battaglie, chiamati scenari. Ogni "
-"scenario contrappone le tue truppe contro le truppe di uno o più avversari. "
-"Puoi giocare contro il computer o con gli amici dandovi il cambio al "
-"computer (partita multigiocatore in locale). Se il computer è connesso a una "
-"rete, potrai giocare contro altri giocatori connessi a essa. Se il computer "
-"è connesso ad internet, potrai giocare contro altri giocatori connessi a "
-"internet."
+"Il gioco è costituito da una serie di battaglie, chiamati "
+"<italic>text='scenari'</italic>. Ogni scenario contrappone le tue truppe "
+"contro le truppe di uno o più avversari. Puoi giocare contro il computer o "
+"con gli amici dandovi il cambio al computer (partita multigiocatore in "
+"locale). Se il computer è connesso a una rete, potrai giocare contro altri "
+"giocatori connessi a essa. Se il computer è connesso ad internet, potrai "
+"giocare contro altri giocatori connessi a internet."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:157
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1085,10 +1086,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le campagne consistono in una serie di scenari che si susseguono raccontando "
-"una storia. Nelle campagne è necessaria una maggiore attenzione nel "
-"preservare le proprie truppe migliori, in modo da poterle usare negli "
-"scenari successivi della campagna."
+"Le <italic>text='campagne'</italic> consistono in una serie di scenari che "
+"si susseguono raccontando una storia. Nelle campagne è necessaria una "
+"maggiore attenzione nel preservare le proprie truppe migliori, in modo da "
+"poterle usare negli scenari successivi della campagna."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:163
@@ -1097,7 +1098,6 @@ msgstr "Vittoria e sconfitta"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. Usually you will achieve victory by killing "
@@ -1106,12 +1106,13 @@ msgid ""
 "designated point, say, or rescuing someone, or solving a puzzle, or holding "
 "out against a siege until a certain number of turns have elapsed."
 msgstr ""
-"Fai molta attenzione ai riquadri degli Obiettivi che compaiono all’inizio di "
-"ciascuno scenario. Di solito si ottiene la vittoria uccidendo i condottieri "
-"nemici, e si viene sconfitti solo con l’uccisione del proprio condottiero. "
-"Alcuni scenari però hanno obiettivi diversi – far raggiungere una certa "
-"destinazione al tuo condottiero, ad esempio, o salvare qualcuno, o risolvere "
-"un rompicapo, o resistere ad un assedio per un certo numero di turni."
+"Fai molta attenzione ai riquadri degli <bold>text='Obiettivi'</bold> che "
+"compaiono all’inizio di ciascuno scenario. Di solito si ottiene la vittoria "
+"uccidendo i condottieri nemici, e si viene sconfitti solo con l’uccisione "
+"del proprio condottiero. Alcuni scenari però hanno obiettivi diversi – far "
+"raggiungere una certa destinazione al tuo condottiero, ad esempio, o salvare "
+"qualcuno, o risolvere un rompicapo, o resistere ad un assedio per un certo "
+"numero di turni."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:166
@@ -1184,7 +1185,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:179
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1213,7 +1213,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:183
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1224,7 +1223,7 @@ msgstr ""
 "\n"
 "\n"
 "Ricorda che le unità non hanno solo un costo per essere reclutate o "
-"richiamate, ma necessitano anche un costo per essere mantenute. Leggi "
+"richiamate, ma necessitano di denaro anche per il mantenimento. Leggi "
 "<ref>dst='income_and_upkeep' text='Entrate e mantenimento'</ref> per saperne "
 "di più."
 
@@ -1278,7 +1277,6 @@ msgstr "Punti ferita ed esperienza"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:204
-#, fuzzy
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1286,11 +1284,11 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
-"Ogni unità ha un certo numero di Punti Ferita (PF). Se i punti ferita di "
-"un’unità scendono al di sotto di 1, l’unità muore. Inoltre ciascuna unità "
-"possiede un determinato numero di Punti Esperienza (PE). Un’unità appena "
-"reclutata non ha punti esperienza e può guadagnare esperienza combattendo "
-"contro i nemici."
+"Ogni unità ha un certo numero di <italic>text='punti ferita'</italic> (PF). "
+"Se i punti ferita di un’unità scendono al di sotto di 1, l’unità muore. "
+"Inoltre ciascuna unità possiede un determinato numero di <italic>text='punti "
+"esperienza'</italic> (PE). Un’unità appena reclutata non ha punti esperienza "
+"e può guadagnare esperienza combattendo contro i nemici."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:208
@@ -1323,7 +1321,6 @@ msgstr "Movimento"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:217
-#, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1338,24 +1335,23 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"I movimenti in Battle for Wesnoth sono semplici: fai clic sull’unità che "
-"vuoi spostare e quindi premi sull’esagono dove vuoi che arrivi. Quando "
-"selezioni l’unità tutti gli esagoni che possono essere raggiunti nel turno "
-"in corso saranno evidenziati, mentre quelli dove non si può arrivare "
-"verranno resi scuri. Spostando il cursore su un punto evidenziato verrà "
-"visualizzata la percentuale di difesa dell’unità su quell’esagono. Muovendo "
-"il cursore su un punto oscurato verrà mostrato il numero di turni necessari "
-"per arrivare su quel punto e se si clicca su di esso si farà muovere l’unità "
-"verso quel punto utilizzando il percorso più veloce che continuerà nei turni "
-"successivi. Se non completi il movimento dell’unità potrai successivamente "
-"farlo per tutto il turno in corso. Ciò è utile se hai due unità che si "
-"suddividono uno spazio. Attaccare con un’unità provoca la perdita dei suoi "
-"punti movimento e la stessa cosa avviene se l’unità viene spostata su una "
-"casa non ancora occupata, ma in questo caso sarà ancora possibile attaccare."
+"I movimenti in <italic>text='Battle for Wesnoth'</italic> sono semplici: fai "
+"clic sull’unità da spostare e poi sull’esagono dove vuoi che vada. Quando "
+"selezioni l’unità tutti gli esagoni raggiungibili nel turno in corso saranno "
+"evidenziati, mentre quelli dove non si può arrivare verranno resi scuri. "
+"Sorvolando col cursore su un punto evidenziato verrà mostrata la percentuale "
+"di difesa dell’unità su quell’esagono. Sorvolando col cursore su un punto "
+"oscurato verrà mostrato il numero di turni necessari per arrivarvi, e se fai "
+"clic su di esso farai muovere l’unità verso quel punto con il percorso più "
+"veloce possibile, per questo turno e per quelli successivi. Se non completi "
+"il movimento dell’unità potrai successivamente farlo per tutto il turno in "
+"corso. Ciò è utile se hai due unità che si suddividono uno spazio. Attaccare "
+"con un’unità provoca la perdita dei suoi punti movimento e la stessa cosa "
+"avviene se l’unità viene spostata su una casa non ancora occupata, ma in "
+"questo caso sarà ancora possibile attaccare."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1380,12 +1376,11 @@ msgstr ""
 "di orchi ne utilizzano 2, mentre i cavalieri ne utilizzano 3. Puoi sapere "
 "quanti punti movimento sono necessari a un’unità per entrare in un certo "
 "tipo di terreno facendo clic col tasto destro su di essa, selezionando "
-"«Descrizione dell’unità» e quindi leggendo la voce "
-"<italic>text='Modificatori del terreno'</italic>."
+"<bold>text='Descrizione dell’unità'</bold> e quindi leggendo la voce "
+"<bold>text='Modificatori del terreno'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:221
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1399,10 +1394,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Un’altra cosa da tenere in mente mentre ci si muove sono le “zone di "
-"controllo”. Ciascuna unità genera una zona di controllo negli esagoni "
-"immediatamente intorno a essa. Imparare a usare le zone di controllo a "
-"proprio vantaggio è una parte importante di Wesnoth, dato che solo gli "
+"Un’altra cosa da tenere in mente durante la mossa sono le <italic>text='zone "
+"di controllo'</italic>. Ogni unità genera una zona di controllo negli "
+"esagoni che la circondano, e qualsiasi unità nemica che vi entri termina "
+"immediatamente la mossa. Imparare a usare le zone di controllo a proprio "
+"vantaggio è una parte importante di Wesnoth, dato che solo gli "
 "<ref>dst='ability_skirmisher' text='incursori'</ref> possono ignorarle."
 
 #. [topic]: id=movement
@@ -1507,7 +1503,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1519,7 +1514,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1534,16 +1528,16 @@ msgstr ""
 "\n"
 "\n"
 "Chi attacca ha l’iniziativa, successivamente risponde chi difende. Ogni "
-"colpo andato a segno causa un determinato danno o, se manca il bersaglio, "
-"non causa alcun danno. Questo alternarsi continua finché tutte e due le "
-"unità hanno esaurito gli attacchi concessi. Il numero degli attacchi di ogni "
-"unità può variare; per esempio un elfo combattente con una spada da 5–4 può "
-"colpire 4 volte infliggendo 5 danni per colpo, mentre un fante orchesco con "
-"9–2 colpisce 2 sole volte (causando però 9 danni per colpo)."
+"colpo può andare a segno e causare un determinato danno o mancare il "
+"bersaglio, senza causare alcun danno. Questo alternarsi continua finché "
+"tutte e due le unità hanno esaurito gli attacchi concessi. Il numero degli "
+"attacchi di ogni unità può variare; per esempio un elfo combattente con una "
+"spada da 5–4 può colpire 4 volte infliggendo 5 danni per colpo, mentre un "
+"fante orchesco con 9–2 colpisce 2 sole volte (causando però 9 danni per "
+"colpo)."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1555,7 +1549,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:249
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1569,19 +1562,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ogni unità ha una probabilità di essere colpita in base al terreno su cui si "
-"trova. Questa probabilità viene visualizzata sul pannello di stato e può "
-"essere visualizzata anche facendo clic con il destro sull’unità, "
-"selezionando «Descrizione dell’unità» e infine guardando i "
-"<italic>text='modificatori del terreno'</italic>. Per esempio gli elfi hanno "
-"una percentuale di difesa del 70% nella foresta, ciò vuol dire che un’unità "
-"che li attacca ha solo il 30% di probabilità di colpirli. Allo stesso modo, "
-"la probabilità degli elfi di colpire l’attaccante in difesa dipende dal tipo "
-"di territorio dove quest’ultimo si trova."
+"Ogni unità ha una probabilità di essere colpita, a seconda del "
+"<italic>text='terreno'</italic> su cui si trova. Questa probabilità è "
+"mostrata nel pannello di stato e può essere controllata anche facendo clic "
+"con il tasto destro sull’unità, selezionando <bold>text='Descrizione "
+"dell’unità'</bold> e infine guardando i <bold>text='Modificatori del "
+"terreno'</bold>. Per esempio molti elfi hanno una percentuale di difesa del "
+"70% nella foresta, cioè un’unità che li attacca ha solo il 30% di "
+"probabilità di colpirli. Analogamente, la probabilità degli elfi di colpire "
+"l’attaccante in difesa dipende dal tipo di territorio dove quest’ultimo si "
+"trova."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:251
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1596,8 +1589,8 @@ msgstr ""
 "text='attacchi magici'</ref> e i <ref>dst='weaponspecial_marksman' "
 "text='tiratori scelti'</ref>. Gli attacchi magici hanno sempre una "
 "probabilità del 70% di colpire indipendentemente dal terreno, mentre i "
-"tiratori scelti, quando vengono utilizzati in attacco, hanno almeno una "
-"possibilità del 60% di colpire, indipendentemente dal terreno."
+"tiratori scelti, in attacco, hanno almeno una possibilità del 60% di "
+"colpire, indipendentemente dal terreno."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:253
@@ -1865,13 +1858,13 @@ msgstr ""
 "La maggior parte delle unità hanno tre livelli, ma non tutte. Alcune (come i "
 "<ref>dst='unit_Mage' text='maghi'</ref>) possono averne quattro. Una volta "
 "che un’unità ha raggiunto il suo livello massimo, potrà avere un "
-"“Avanzamento Oltre il Livello Massimo” (AOLM) disponibile. L’AOLM modifica "
-"l’unità quando l’esperienza richiesta è raggiunta, ma il livello resterà lo "
-"stesso. L’AOLM, normalmente, fa crescere il livello massimo di PF dell’unità "
-"di 3 punti e la guarisce completamente. Il primo AOML sarà raggiunto dopo "
-"100 PE guadagnati (80 PE per le unità intelligenti). Però guadagnare AOLM "
-"diventa progressivamente più difficile a ogni AOLM ricevuto e quindi è "
-"spesso più utile cercare di fare avanzare le unità di livello più basso."
+"“Avanzamento Oltre il Massimo” (AOLM) disponibile. L’AOLM modifica l’unità "
+"quando l’esperienza richiesta è raggiunta, ma il livello resterà lo stesso. "
+"L’AOLM, normalmente, fa crescere il livello massimo di PF dell’unità di 3 "
+"punti e la guarisce completamente. Il primo AOML sarà raggiunto dopo 100 PE "
+"guadagnati (80 PE per le unità intelligenti). Però guadagnare AOLM diventa "
+"progressivamente più difficile a ogni AOLM ricevuto e quindi è spesso più "
+"utile cercare di fare avanzare le unità di livello più basso."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:310
@@ -1931,7 +1924,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:316
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Healing units'</italic>: Units with the "
@@ -1941,15 +1933,14 @@ msgid ""
 "from causing that unit damage."
 msgstr ""
 "\n"
-"Unità guaritrici: le unità con l’abilità <ref>dst='ability_heals +4' "
-"text='Guarigione'</ref> guariranno un’unità alleata adiacente di solito di "
-"<ref>dst='ability_heals +4' text='4PF'</ref> o <ref>dst='ability_heals +8' "
-"text='8PF'</ref> PF per turno e impediranno i danni provenienti dal veleno "
-"su questa unità."
+"<italic>text='Unità guaritrici'</italic>: le unità con l’abilità "
+"<ref>dst='ability_heals +4' text='Guarigione'</ref> guariranno un’unità "
+"alleata adiacente di solito di <ref>dst='ability_heals +4' text='4PF'</ref> "
+"o <ref>dst='ability_heals +8' text='8PF'</ref> PF per turno e impediranno i "
+"danni provenienti dal veleno su questa unità."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Curing units'</italic>: Units with the "
@@ -1958,10 +1949,10 @@ msgid ""
 "well)."
 msgstr ""
 "\n"
-"Unità curatrici: Le unità con l’abilità <ref>dst='ability_cures' "
-"text='Cura'</ref> cureranno dall’avvelenamento tutte le unità alleate "
-"adiacenti (preferenzialmente rispetto alla guarigione, se l’unità ha anche "
-"questa abilità)."
+"<italic>text='Unità curatrici'</italic>: Le unità con l’abilità "
+"<ref>dst='ability_cures' text='cura'</ref> cureranno dall’avvelenamento "
+"tutte le unità alleate adiacenti (preferenzialmente rispetto alla "
+"guarigione, se l’unità ha anche questa abilità)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:319
@@ -1986,7 +1977,6 @@ msgstr "Entrate e mantenimento"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:327
-#, fuzzy
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1996,11 +1986,11 @@ msgstr ""
 "In Wesnoth non basta semplicemente reclutare le unità e combattere. Devi "
 "controllare anche le tue riserve d’oro, soprattutto nelle campagne, dove "
 "puoi trasportare dell’oro supplementare da uno scenario al seguente. "
-"Esistono due indicatori appositi: entrate e mantenimento."
+"Esistono due indicatori appositi: <italic>text='entrate'</italic> e "
+"<italic>text='mantenimento'</italic>."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:329
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2041,7 +2031,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:333
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2051,9 +2040,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Questi costi vengono sottratti dalle tue entrate, così se hai dodici livelli "
-"di unità e dieci villaggi, le entrate complessive saranno di 10 pezzi d’oro "
-"per turno."
+"Questi costi vengono sottratti dalle tue entrate, quindi se hai dodici "
+"livelli di unità e dieci villaggi, le entrate complessive saranno di 10 "
+"pezzi d’oro per turno."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:334
@@ -2109,7 +2098,6 @@ msgstr "Licenza"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:361
-#, fuzzy
 msgid ""
 "Most units have two traits. However, undead units are assigned the single "
 "trait <italic>text='undead'</italic>, and woses do not receive any traits. "
@@ -2173,7 +2161,6 @@ msgstr ""
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:376
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2186,13 +2173,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le unità intelligenti sono molto utili all’inizio di una campagna, dato che "
-"possono giungere molto più velocemente al livello superiore. "
-"Successivamente, durante le campagne le unità intelligenti divengono meno "
-"utili in quanto l’Avanzamento Oltre il Livello Massimo Livello (AOLM) non è "
-"così decisivo come l’avanzamento di un livello. Se ci si ritrova con tante "
-"unità al “livello massimo” è più conveniente richiamare unità con qualità "
-"più utili a lungo termine."
+"Le unità <italic>text='intelligenti'</italic> sono molto utili all’inizio di "
+"una campagna, dato che possono giungere molto più velocemente al livello "
+"superiore. Successivamente, durante le campagne le unità intelligenti "
+"divengono meno utili in quanto l’<italic>text='Avanzamento Oltre il Livello "
+"Massimo'</italic> (AOLM) non è così decisivo come l’avanzamento di un "
+"livello. Se ci si ritrova con tante unità al “livello massimo” è più "
+"conveniente richiamare unità con qualità più utili a lungo termine."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:381
@@ -2201,17 +2188,15 @@ msgstr "Veloce"
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:382
-#, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "HP than usual."
 msgstr ""
-"Le unità veloci hanno 1 punto di movimento extra, ma il 5% di PF in meno del "
-"normale."
+"Le unità <italic>text='veloci'</italic> hanno 1 punto di movimento extra, ma "
+"il 5% di PF in meno del normale."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:384
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2238,11 +2223,12 @@ msgstr "Resistente"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:390
-#, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
 "than usual."
-msgstr "Le unità resistenti hanno 4 PF più 1 PF per livello più del solito."
+msgstr ""
+"Le unità <italic>text='resistenti'</italic> hanno 4 PF più 1 PF per livello "
+"più del solito."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:392
@@ -2269,17 +2255,15 @@ msgstr "Forte"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:398
-#, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 more HP."
 msgstr ""
-"Le unità forti causano 1 punto di danno in più per ogni colpo andato a segno "
-"nel combattimento ravvicinato e hanno 1 PF in più."
+"Le unità <italic>text='forti'</italic> causano 1 punto di danno in più per "
+"ogni colpo andato a segno nel combattimento ravvicinato e hanno 1 PF in più."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:400
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2293,7 +2277,7 @@ msgstr ""
 "Utile per qualunque unità per combattimenti ravvicinati, la qualità forte "
 "rende potentissime le unità che possono colpire un numero elevato di volte "
 "come i combattenti elfici. Le unità forti possono essere utili quando c'è "
-"bisogno di un po' di danno extra per trasformare un colpo offensivo in uno "
+"bisogno di un po’ di danno extra per trasformare un colpo offensivo in uno "
 "mortale."
 
 #. [topic]: id=traits_fearless
@@ -2329,15 +2313,14 @@ msgstr "Leale"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:418
-#, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
 "units do not incur this cost."
 msgstr ""
-"Le unità leali non necessitano di mantenimento. Gran parte delle unità hanno "
-"un costo di mantenimento alla fine di ogni turno, pari al loro livello. Le "
-"unità leali non lo hanno."
+"Le unità <italic>text='leali'</italic> non necessitano di mantenimento. Gran "
+"parte delle unità hanno un costo di mantenimento alla fine di ogni turno, "
+"pari al loro livello. Le unità leali non lo hanno."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:420
@@ -2368,17 +2351,15 @@ msgstr "Non-morto"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:426
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, also drain and "
 "plague doesn’t work on them."
 msgstr ""
-"I non-morti sono immuni al veleno, ed inoltre gli attacchi di assorbimento e "
-"contagio non funzionano su di loro."
+"I <italic>text='non-morti'</italic> sono immuni al veleno, ed inoltre gli "
+"attacchi di assorbimento e contagio non funzionano su di loro."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:428
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2401,17 +2382,15 @@ msgstr "Meccanica"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:434
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, also drain "
 "and plague doesn’t work on them."
 msgstr ""
-"Le unità meccaniche sono immuni al veleno; inoltre gli attacchi di "
-"assorbimento e contagio non funzionano su di loro."
+"Le unità <italic>text='meccaniche'</italic> sono immuni al veleno; inoltre "
+"gli attacchi di assorbimento e contagio non funzionano su di loro."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:436
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2432,17 +2411,15 @@ msgstr "Agile"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:442
-#, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
 msgstr ""
-"Le unità agili causano un punto di danno in più per ogni colpo andato a "
-"segno nel combattimento a distanza."
+"Le unità <italic>text='agili'</italic> causano un punto di danno in più per "
+"ogni colpo andato a segno nel combattimento a distanza."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:444
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2475,7 +2452,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:452
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2485,9 +2461,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le unità sane hanno 1 PF più 1 PF per livello più del solito ed il riposo "
-"cura 2 PF in più dopo ogni turno in cui non hanno combattuto; inoltre "
-"patiscono solo un quarto dei danni da veleno."
+"Le unità <italic>text='sane'</italic> hanno 1 PF più 1 PF per livello più "
+"del solito ed il riposo cura 2 PF in più dopo ogni turno in cui non hanno "
+"combattuto; inoltre patiscono solo un quarto dei danni da veleno."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:457
@@ -2496,13 +2472,12 @@ msgstr "Ottuso"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:458
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
-"Le unità ottuse hanno una penalità del 20% di esperienza richiesta per "
-"avanzare."
+"Le unità <italic>text='ottuse'</italic> hanno una penalità del 20% di "
+"esperienza richiesta per avanzare."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:460
@@ -2524,11 +2499,11 @@ msgstr "Lento"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:466
-#, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
 msgstr ""
-"Le unità lente hanno 1 punto di movimento in meno, ma il 5% di PF in più."
+"Le unità <italic>text='lente'</italic> hanno 1 punto di movimento in meno, "
+"ma il 5% di PF in più."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:468
@@ -2552,13 +2527,12 @@ msgstr "Debole"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:474
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
 "hitpoints and melee damage."
 msgstr ""
-"Le unità deboli hanno un incremento di −1 in punti ferita e danno nel "
-"combattimento corpo a corpo."
+"Le unità <italic>text='deboli'</italic> hanno un incremento di −1 in punti "
+"ferita e danno nel combattimento corpo a corpo."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:482
@@ -2579,7 +2553,6 @@ msgstr "Pianura"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:494
-#, fuzzy
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild. Being open ground, grassland is "
@@ -2589,15 +2562,15 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"La prateria caratterizza le pianure più estese e può essere coltivata, "
-"utilizzata per il pascolo o selvaggia. Essendo all’aperto, la prateria è un "
-"terreno su cui ci si può spostare molto facilmente, ma risulta molto "
-"difficile difendersi su di essa. Generalmente le unità che si muovono meglio "
-"sulle praterie sono la cavalleria e quelle unità agili che sono "
-"avvantaggiate dagli spazi aperti.\n"
+"La <italic>text='prateria'</italic> caratterizza le pianure più estese e può "
+"essere coltivata, utilizzata per il pascolo o selvaggia. Essendo un terreno "
+"aperto, la prateria permette spostamenti rapidi, ma è molto difficile "
+"difendersi su di essa. Generalmente le unità che si muovono meglio sulle "
+"praterie sono la cavalleria e quelle unità agili che sono avvantaggiate "
+"dagli spazi aperti.\n"
 "\n"
-"La maggior parte delle unità hanno una percentuale di difesa che va dal 30% "
-"al 40% sulla prateria."
+"La maggior parte delle unità hanno una difesa che va dal 30% al 40% sulla "
+"prateria."
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:503
@@ -2606,16 +2579,15 @@ msgstr "Strada"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:508
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, roads behave as <ref>dst='terrain_flat' "
 "text='flat'</ref> terrain.\n"
 "\n"
 msgstr ""
-"Le strade sono dei percorsi di terra battuta che sono stati formati dal "
+"Le strade sono percorsi di terra battuta che sono stati formati dal "
 "passaggio di molti viaggiatori. Nel gioco esse hanno le stesse "
-"caratteristiche della <ref>dst='terrain_flat' text='Pianura'</ref>."
+"caratteristiche della <ref>dst='terrain_flat' text='pianura'</ref>.\n"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:515
@@ -2624,7 +2596,6 @@ msgstr "Foresta"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:522
-#, fuzzy
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2642,16 +2613,17 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests.\n"
 "\n"
 msgstr ""
-"Le foreste rappresentano le zone boschive con una notevole quantità di "
-"sottobosco, abbastanza rigoglioso da rendere il passaggio difficile. Anche "
-"se le foreste rallentano quasi tutte le creature, in queste zone si ha una "
-"maggiore difesa rispetto alle zone aperte. La cavalleria però ha molti "
-"problemi a muoversi attraverso la foresta. Gli elfi sono l’eccezione alla "
-"regola. Non solo riescono a muoversi con agilità attraverso le foreste, ma "
-"hanno un vantaggio significativo nella difesa. I nani sono un’altra "
-"eccezione; anche se riescono a muoversi nelle foreste senza diminuire troppo "
-"l’andatura, la loro scarsa conoscenza del terreno li rende molto vulnerabili "
-"agli attacchi.\n"
+"Le <italic>text='foreste'</italic> rappresentano le zone boschive con una "
+"notevole quantità di sottobosco, abbastanza rigoglioso da rendere il "
+"passaggio difficile. Anche se le foreste rallentano quasi tutte le creature, "
+"in queste zone si ha una maggiore difesa rispetto alle zone aperte. La "
+"cavalleria però ha così tanti problemi a muoversi attraverso la foresta, che "
+"qualsiasi vantaggio dovuto alla copertura è negato. Gli elfi sono "
+"l’eccezione alla regola. Non solo riescono a muoversi con agilità attraverso "
+"le foreste, ma hanno un vantaggio significativo nella difesa. I nani sono "
+"un’altra eccezione; anche se riescono a muoversi nelle foreste senza "
+"diminuire troppo l’andatura, la loro assoluta mancanza di familiarità col "
+"terreno elimina qualsiasi vantaggio difensivo.\n"
 "\n"
 "Gran parte delle unità ha il 50% di difesa nelle foreste, mentre la "
 "cavalleria ha il 30%. Gli elfi, d’altro canto, godono del 60–70% di difesa, "
@@ -2666,7 +2638,6 @@ msgstr "Colline"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:537
-#, fuzzy
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2679,16 +2650,17 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills.\n"
 "\n"
 msgstr ""
-"Le colline rappresentano un territorio sufficientemente irregolare, tale da "
-"fornire una discreta protezione alle truppe. Le colline però sono difficili "
-"da attraversare per la maggior parte delle truppe. I nani, i troll e gli "
-"orchi hanno una buona familiarità con questo terreno e riescono ad "
-"attraversarlo senza subire rallentamenti. La cavalleria ha notevoli "
-"difficoltà nell’attraversare questo tipo di terreno e subisce una notevole "
-"diminuzione della propria difesa.\n"
+"Le <italic>text='colline'</italic> rappresentano un territorio abbastanza "
+"irregolare, tale da fornire una discreta protezione alle truppe. Le colline "
+"però sono difficili da attraversare per la maggior parte delle truppe. I "
+"nani, i troll e gli orchi hanno una buona familiarità con questo terreno e "
+"riescono ad attraversarlo senza subire rallentamenti. La cavalleria ha "
+"notevoli difficoltà nell’attraversare questo tipo di terreno e subisce una "
+"notevole diminuzione della propria difesa.\n"
 "\n"
 "Gran parte delle unità hanno il 50% di difesa sulle colline, mentre la "
-"cavalleria solo il 40%. I nani godono di una difesa pari al 60% su di esse."
+"cavalleria solo il 40%. I nani godono di una difesa pari al 60% su di esse.\n"
+"\n"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:544
@@ -2697,7 +2669,6 @@ msgstr "Montagne"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:549
-#, fuzzy
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move. By this nature, they provide a considerable "
@@ -2709,14 +2680,14 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
-"Le montagne sono tanto ripide che spesso le unità devono arrampicarsi su di "
-"esse per muoversi. A causa della loro natura esse forniscono un notevole "
-"vantaggio in difesa per la maggior parte delle truppe, ma spesso intralciano "
-"qualunque tipo di movimento sulla loro superficie. La maggior parte della "
-"cavalleria non può attraversare i terreni montuosi; anche se i cavalieri "
-"elfici e i goblin cavalcatori di lupi sono un’eccezione alla regola. I nani "
-"e i troll, essendo nati sui terreni montuosi, sono notevolmente favoriti nel "
-"muoversi su di essi.\n"
+"Le <italic>text='montagne'</italic> sono tanto ripide che spesso le unità "
+"devono arrampicarsi su di esse per muoversi. A causa della loro natura esse "
+"forniscono un notevole vantaggio in difesa per la maggior parte delle "
+"truppe, ma spesso intralciano qualunque tipo di movimento sulla loro "
+"superficie. La maggior parte della cavalleria non può attraversare i terreni "
+"montuosi; anche se i cavalieri elfici e i goblin cavalcatori di lupi sono "
+"un’eccezione alla regola. I nani e i troll, essendo nati sui terreni "
+"montuosi, sono notevolmente favoriti nel muoversi su di essi.\n"
 "\n"
 "Quasi tutte le unità ricevono circa il 60% di difesa nelle montagne mentre i "
 "nani giungono sino al 70%."
@@ -2728,7 +2699,6 @@ msgstr "Palude"
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:561
-#, fuzzy
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps slow "
 "down nearly everyone, and inhibit their ability to defend themselves. An "
@@ -2739,12 +2709,12 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
-"Le paludi rappresentano qualunque tipo di territorio fangoso. Le paludi "
-"rallentano quasi tutte le unità e le rendono dei facili bersagli. "
-"Un’eccezione a questa regola è rappresentata da tutte le razze capaci di "
-"muoversi agilmente nell’acqua, queste godono di pieno movimento e di un "
-"bonus in difesa. Quelli che vivono nei terreni fangosi sono anche capaci di "
-"utilizzarli per nascondersi.\n"
+"Le <italic>text='paludi'</italic> rappresentano qualunque tipo di territorio "
+"fangoso. Le paludi rallentano quasi tutte le unità e le rendono dei facili "
+"bersagli. Un’eccezione a questa regola è rappresentata da tutte le razze "
+"capaci di muoversi agilmente nell’acqua, queste godono di pieno movimento e "
+"di un bonus in difesa. Quelli che vivono nei terreni fangosi sono anche "
+"capaci di utilizzarli per nascondersi.\n"
 "\n"
 "Gran parte delle unità hanno il 30% di difesa nelle paludi. Nereidi, naga e "
 "sauri godono generalmente del 60%."
@@ -2756,7 +2726,6 @@ msgstr "Acque basse"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:573
-#, fuzzy
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man’s waist. This is enough to slow down nearly anyone and leave them wide "
@@ -2768,13 +2737,12 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
-"Le acque basse rappresentano qualunque massa d’acqua che può essere "
-"attraversata dalle unità che non possono nuotare. Queste acque sono "
-"sufficientemente profonde da rallentare e rendere vulnerabile qualunque "
-"unità. I nani, dato che il livello delle acque basse è di poco al di sotto "
-"della loro testa, risultano essere molto impacciati da queste. L’eccezione a "
-"questa regola sono tutte le razze che possono nuotare, per questo ricevono "
-"un notevole bonus di difesa e pieno movimento.\n"
+"Le acque basse rappresentano qualunque massa d’acqua che arriva grossomodo "
+"alla vita di un uomo.Sono sufficientemente profonde da rallentare e rendere "
+"vulnerabile qualunque unità. I nani, poiché l'acqua giunge quasi al loro "
+"mento, sono molto particolarmente impacciati. L’eccezione a questa regola "
+"sono tutte le razze che possono nuotare, per questo ricevono un notevole "
+"vantaggio difensivo e pieno movimento.\n"
 "\n"
 "La maggior parte delle unità ricevono dal 20 al 30% di difesa nell’acqua "
 "bassa, mentre sia naga che nereidi ricevono il 60%."
@@ -2786,7 +2754,6 @@ msgstr "Acque profonde"
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:585
-#, fuzzy
 msgid ""
 "Deep water represents any body of water deep enough to cover a man’s head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -2799,8 +2766,8 @@ msgstr ""
 "profonde: essa è infatti il dominio delle unità che possono volare o che "
 "sono degli buoni nuotatori.\n"
 "\n"
-"I nereidi ed i naga ricevono ambedue il 50% di difesa nelle acque profonde e "
-"hanno massima libertà di movimento."
+"Nereidi ed naga ricevono il 50% di difesa nelle acque profonde e hanno "
+"massima libertà di movimento."
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:592
@@ -2809,7 +2776,6 @@ msgstr "Congelato"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:597
-#, fuzzy
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice. Most units are slowed down on it, and have a harder "
@@ -2818,9 +2784,11 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"Il terreno congelato rappresenta tutte le aree pianeggianti coperte da neve "
-"o ghiaccio. Quasi tutte le unità vengono rallentate da questo terreno e "
-"hanno maggior difficoltà nel difendersi.\n"
+"Il terreno <italic>text='congelato'</italic> rappresenta tutte le aree "
+"pianeggianti coperte da neve o ghiaccio. Quasi tutte le unità vengono "
+"rallentate da questo terreno e hanno maggior difficoltà nel difendersi. Le "
+"unità nuotatrici, anche quelle che respirano sott’acqua, non possono nuotare "
+"sotto il ghiaccio.\n"
 "\n"
 "La maggior parte delle unità ha dal 20% al 40% di difesa su terreno "
 "congelato."
@@ -2832,7 +2800,6 @@ msgstr "Castello"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:611
-#, fuzzy
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2844,13 +2811,13 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
-"I castelli sono qualunque genere di fortificazione permanente. Quasi tutte "
-"le unità ricevono un bonus considerevole alla loro difesa stazionando in un "
-"castello e tutte le unità ricevono movimento pieno dentro di esso. Le unità "
-"stazionate in un castello rappresentano la sua capacità difensiva. Se non vi "
-"è un’unità in ogni esagono del castello, un’unità nemica si può insinuare in "
-"esso senza combattere, guadagnando lo stesso bonus difensivo delle altre "
-"unità al suo interno.\n"
+"I <italic>text='castelli'</italic> sono qualunque genere di fortificazione "
+"permanente. Quasi tutte le unità ricevono un vantaggio difensivo "
+"considerevole stazionando in un castello e tutte le unità ricevono movimento "
+"pieno dentro di esso. Le unità stazionate in un castello rappresentano la "
+"sua capacità difensiva. Se non c’è un’unità in ogni esagono del castello, "
+"un’unità nemica si può insinuare in esso senza combattere, guadagnando lo "
+"stesso bonus difensivo delle altre unità al suo interno.\n"
 "\n"
 "La maggior parte delle unità ha circa il 60% di difesa nel castello.\n"
 "\n"
@@ -2862,7 +2829,6 @@ msgstr "Sabbia"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:625
-#, fuzzy
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -2884,16 +2850,15 @@ msgstr "Deserto"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:635
-#, fuzzy
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
-"I deserti hanno una composizione leggermente differente rispetto ai piccoli "
-"cumuli si sabbia o alle spiagge, comunque influiscono in maniera identica "
-"sul gioco. Leggi <ref>dst='terrain_sand' text='Sabbia'</ref> per saperne di "
-"più."
+"I <italic>text='deserti'</italic> hanno una composizione leggermente "
+"differente rispetto ai piccoli cumuli si sabbia o alle spiagge, ma sono "
+"trattati in maniera identica nel gioco. Leggi <ref>dst='terrain_sand' "
+"text='sabbia'</ref> per saperne di più."
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:642
@@ -3018,7 +2983,6 @@ msgstr "Villaggio"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:695
-#, fuzzy
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise. Almost all units, even cavalry, have an easy time navigating "
@@ -3031,12 +2995,12 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
-"I villaggi rappresentano qualsiasi gruppo di edifici, umani e non. Quasi "
-"tutte le unità, compresa la cavalleria, riescono a muoversi velocemente sui "
-"villaggi e ricevono un bonus di difesa fermandosi su di essi. I villaggi "
-"offrono le risorse per pulire e curare le ferite, e ciò permette ad un’unità "
-"che riposa in un villaggio di recuperare 8 punti ferita per turno o di "
-"essere curata dal veleno.\n"
+"I <italic>text='villaggi'</italic> rappresentano qualsiasi gruppo di "
+"edifici, umani e non. Quasi tutte le unità, compresa la cavalleria, riescono "
+"a muoversi velocemente sui villaggi e ricevono un bonus di difesa fermandosi "
+"su di essi. I villaggi offrono le risorse per pulire e curare le ferite, e "
+"ciò permette ad un’unità che riposa in un villaggio di recuperare 8 punti "
+"ferita per turno o di essere curata dal veleno.\n"
 "\n"
 "La maggior parte delle unità hanno dal 50 al 60% di difesa nei villaggi, "
 "mentre la cavalleria riceve solo il 40%.\n"
@@ -3228,7 +3192,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:796
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3238,7 +3201,7 @@ msgid ""
 msgstr ""
 "\n"
 "Attiva la modalità di debug (non funziona in multiplayer). Vedi "
-"<ref>dst='debug_commands' text='Comandi di debug'</ref>.\n"
+"<ref>dst='debug_commands' text='comandi di debug'</ref>.\n"
 "La modalità debug si disattiva abbandonando la partita o usando :nodebug.\n"
 "\n"
 
@@ -4945,6 +4908,10 @@ msgid ""
 "neither move nor think on their own, but some do so as a result of magical "
 "enchantment."
 msgstr ""
+"Non animati dalla vita naturale né dalla negromanzia, il termine “meccanico” "
+"descrive un manufatto creato da un essere intelligente. La maggior parte "
+"delle cose meccaniche non si muove o pensa per conto proprio, ma alcune lo "
+"fanno come risultato di incantesimi magici."
 
 #. [race]: id=merman
 #: data/core/units.cfg:203
@@ -4992,6 +4959,9 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
+"Il termine “mostro” comprende molte bestie orribili che infestano le "
+"caverne, le terre abbandonate, le profondità degli oceani e altri luoghi "
+"sperduti. Compaiono spesso nelle favole e negli incubi di molti popoli."
 
 #. [race]: id=naga
 #: data/core/units.cfg:223
@@ -5248,30 +5218,33 @@ msgstr ""
 "I troll sono creature antiche, uan delle più vecchie razze che hanno abitato "
 "il grande continente. Sono grossi, lenti, ingenui e vivono molto a lungo in "
 "profonde caverne o in cime ad alte montagne. La caratteristica distintiva "
-"dei troll è una vitalità interna che li sostiene e li guarisce dall’interno. "
-"Per questo motivo, vivono in modo molto diverso rispetto alla maggior parte "
-"delle altre creature. I troll hanno bisogno di poco: gli serve un po' di "
-"cibo o acqua e così hanno pochi motivi per combattere se non per protezione "
-"da coloro che sono ostili nei loro confronti. D’altra parte ciò vuol dire "
-"che raramente devono preoccuparsi di qualcosa e possono spendere la maggior "
+"dei troll è una vitalità che li sostiene e li guarisce dall’interno. Per "
+"questo motivo, vivono in modo molto diverso rispetto alla maggior parte "
+"delle altre creature. I troll hanno pochissime necessità: richiedono poco "
+"cibo e acqua, quindi hanno pochi incentivi a fare lunghi inseguimenti, se "
+"non per proteggersi da chi gli è ostile. D’altra parte ciò vuol dire che "
+"raramente devono preoccuparsi di qualcosa e possono spendere la maggior "
 "parte del loro tempo a dormire o a meditare. I troll hanno una curiosa "
 "affinità con la natura; non nei confronti delle cose viventi come gli elfi, "
 "ma con la terra e la roccia. Sono in un certo senso curiosi dei dintorni e "
 "parecchi giovani cuccioli spesso si divertono a viaggiare per vedere il "
 "mondo. Quando i troll crescono, tendono a diventare sempre più passivi, "
-"perdendo gradualmente interesse per il loro ambiente.\n"
+"perdono gradualmente interesse per l’ambiente che li circonda e spendono "
+"sempre più tempo in un tranquillo angolino della loro caverna. Alla fine la "
+"scintilla della vita si affievolisce, e si tramutano lentamente in statue di "
+"pietra.\n"
 "\n"
 "I troll sono visti da molti solo come un’altra razza di mostri selvaggi. "
 "Questa idea sbagliata abbastanza diffusa è in parte perpetuata dagli orchi "
 "per persuadere i troll a unirsi ai loro eserciti. Poiché sono abbastanza "
 "semplici e non comprendono i modi delle altre razze o a volte non riescono "
 "nemmeno a parlarci, di solito è facile per una banda di orchi convincere un "
-"gruppo di troll che unirsi a loro sarebbe il modo giusto per vendicarsi di "
-"quelli che hanno dato loro la caccia in precedenza. Queste nuove reclute "
-"vengono poi mandate contro chiunque sia in conflitto al momento gli orchi, "
-"che sia o no un precedente nemico dei troll, aumentando quindi il numero di "
-"nemici dei troll ingannati. Il nemico più comune dei troll sono i nani e "
-"l’animosità tra le due razze è molto antica.\n"
+"gruppo di troll che unirsi a loro sia il modo giusto per vendicarsi di chi "
+"ha dato loro la caccia. Queste nuove reclute vengono poi mandate contro "
+"chiunque sia in conflitto al momento con gli orchi, che sia o no un "
+"precedente nemico dei troll, aumentando quindi il numero di nemici dei troll "
+"ingannati. Il nemico più comune dei troll sono i nani e l’animosità tra le "
+"due razze è molto antica.\n"
 "\n"
 "<header>text='Geografia'</header>\n"
 "I troll hanno abitato le montagne del grande continente più a lungo dei nani "

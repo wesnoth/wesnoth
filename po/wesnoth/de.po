@@ -2,15 +2,15 @@
 #  Andre Schmidt <andre@schmidtandre.de>, 2004, 2005
 #  Boris Stumm <wesnoth@bstumm.de>, 2005
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
-#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2010
+#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2011
 #  Gerfried Fuchs <rhonda@deb.at>, 2005, 2006, 2010
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.8\n"
+"Project-Id-Version: Battle for Wesnoth 1.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 13:09+0100\n"
-"PO-Revision-Date: 2010-11-05 10:36+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2011-02-06 16:15+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -118,7 +118,7 @@ msgstr "Deaktiviert Benachrichtigungen"
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
 msgid "Multiplayer_AI^RCA AI"
-msgstr "RCA AI"
+msgstr "RCA KI"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -328,9 +328,8 @@ msgstr "Indonesische Übersetzung"
 
 #. [about]
 #: data/core/about.cfg:2044
-#, fuzzy
 msgid "Irish Translation"
-msgstr "Türkische Übersetzung"
+msgstr "Irische Übersetzung"
 
 #. [about]
 #: data/core/about.cfg:2051
@@ -621,7 +620,6 @@ msgstr "nichts ausgewählt"
 
 #. [do]
 #: data/core/macros/ai_controller.cfg:644
-#, fuzzy
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -631,7 +629,7 @@ msgstr ""
 "Ziel: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
 "Verhalten: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"currently_doing_behavior_description"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:652
@@ -777,13 +775,12 @@ msgstr ""
 "In diesem Augenblick beginnt Gift durch die Adern dieser Einheit zu kriechen."
 
 #: data/core/macros/items.cfg:262
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
 "Jedwede Waffe, die mit diesem Wasser übergossen wird, gilt bis zum Ende des "
-"Szenarios als »arkane« Waffe. Soll $unit.name das Wasser verwenden?"
+"Szenarios als <i>arkane</i> Waffe. Soll $unit.name das Wasser verwenden?"
 
 #: data/core/macros/items.cfg:263
 msgid "I am not suited to the use of this item! Let another take it."
@@ -797,13 +794,12 @@ msgstr "Weihwasser"
 
 #. [object]
 #: data/core/macros/items.cfg:268
-#, fuzzy
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr ""
 "Jedwede Waffe, die mit diesem Wasser übergossen wird, gilt bis zum Ende des "
-"Szenarios als »arkane« Waffe"
+"Szenarios als <i>arkane</i> Waffe"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:297
@@ -1735,9 +1731,8 @@ msgid "Alternative objective:"
 msgstr "Alternativziel:"
 
 #: data/core/macros/objective-utils.cfg:52
-#, fuzzy
 msgid "Bonus objective:"
-msgstr "Alternativziel:"
+msgstr "Bonusziel:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -1834,18 +1829,17 @@ msgstr "Alptraum"
 
 #. [language]
 #: data/english.cfg:10
-#, fuzzy
 msgid ""
 "Liminal units fight better during twilight while fighting normally during "
 "day and night.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Redliche Einheiten können bei Tag besser kämpfen als andere. Mit Anbruch der "
-"Dämmerung aber sinkt ihr Kampfesmut.\n"
+"Zwielichtige Einheiten können während Morgengrauen und Abenddämmerung besser "
+"kämpfen als andere, müssen aber keine Mali während der übrigen Zeit in Kauf "
+"nehmen.\n"
 "\n"
-"Tag: +25% Schaden\n"
-"Nacht: −25% Schaden"
+"Zwielicht: +25% Schaden"
 
 #. [language]
 #: data/english.cfg:15
@@ -2056,7 +2050,6 @@ msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
-#, fuzzy
 msgid ""
 "Don’t neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be too weak to survive future battles."
@@ -2072,18 +2065,17 @@ msgstr "<i>― Großmagier Delfador, 516JW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:8
-#, fuzzy
 msgid ""
 "In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
 "highlight all the hexes your adversary can move to (assuming your units stay "
 "where they are). Use this to make sure the enemy can’t reach your weak or "
 "injured units on his next turn."
 msgstr ""
-"Ihr könnt »Gegn. Bewegungen zeigen« aus dem »Aktionen« Menü auswählen, um "
-"die Zugmöglichkeiten Eures Gegners herauszufinden (Es wird von den aktuellen "
-"Positionen Eurer Einheiten ausgegangen). Benutzt diese Möglichkeit, um "
-"sicherzustellen, dass der Gegner Eure schwachen und verwundeten Einheiten in "
-"seinem nächsten Zug nicht angreifen kann."
+"Ihr könnt <b>Gegn. Bewegungen zeigen</b> aus dem <b>Aktionen</b> Menü "
+"auswählen, um die Zugmöglichkeiten Eures Gegners herauszufinden (Es wird von "
+"den aktuellen Positionen Eurer Einheiten ausgegangen). Benutzt diese "
+"Möglichkeit, um sicherzustellen, dass der Gegner Eure schwachen und "
+"verwundeten Einheiten in seinem nächsten Zug nicht angreifen kann."
 
 #. [tip]
 #: data/hardwired/tips.cfg:9 data/hardwired/tips.cfg:21
@@ -2107,17 +2099,16 @@ msgstr "<i>― Das Buch der Taktik</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
-#, fuzzy
 msgid ""
 "Units with the <i>Intelligent</i> trait need fewer experience points to "
 "level up. Early in a campaign, try to give killing blows to these units so "
 "you can get some high-level troops sooner."
 msgstr ""
-"Einheiten mit der Charakteristik »intelligent« benötigen weniger Erfahrung, "
-"um eine Stufe aufzusteigen. Zu Beginn einer Kampagne solltet Ihr versuchen, "
-"solche Einheiten den letzten Schlag gegen eine verwundete, gegnerische "
-"Einheit führen zu lassen. So könnt Ihr recht früh höherstufige Truppen in "
-"den Kampf schicken."
+"Einheiten mit der Charakteristik <i>intelligent</i> benötigen weniger "
+"Erfahrung, um eine Stufe aufzusteigen. Zu Beginn einer Kampagne solltet Ihr "
+"versuchen, solche Einheiten den letzten Schlag gegen eine verwundete, "
+"gegnerische Einheit führen zu lassen. So könnt Ihr recht früh höherstufige "
+"Truppen in den Kampf schicken."
 
 #. [tip]
 #: data/hardwired/tips.cfg:13
@@ -2126,7 +2117,6 @@ msgstr "<i>―  König Konrad, 536JW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
-#, fuzzy
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
 "By placing two units on opposite sides of an enemy, their zones of control "
@@ -2137,7 +2127,8 @@ msgstr ""
 "wirkungsvoll. Vor allem Einheiten, die sich sehr schnell bewegen können, "
 "werden hierdurch an einer Flucht gehindert. Stehen Eure Einheiten sogar "
 "gegenüber, so kann sich die eingekreiste Einheit nur ein Feld in ihrem "
-"nächsten Zug bewegen."
+"nächsten Zug bewegen. Plänkler müssen leider vollständig eingekreist werden, "
+"um ihnen ihre Bewegungsmöglichkeiten zu nehmen."
 
 #. [tip]
 #: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:129
@@ -2146,42 +2137,39 @@ msgstr "<i>― Erinnerungen von Gweddry, 627JW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:20
-#, fuzzy
 msgid ""
 "You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
 "clicking on a castle tile. That will let you choose the precise hex you put "
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
-"Die Befehle »Ausbilden« und »Einberufen« könnt Ihr über einen Rechtsklick "
-"auf ein Burgfeld erreichen. Dadurch könnt Ihr entscheiden, auf welchem Feld "
-"eine Einheit aufgestellt wird. Weise platzierte Einheiten können es Euch "
-"ermöglichen, Dörfer einen Zug früher einzunehmen."
+"Die Befehle <b>Ausbilden</b> und <b>Einberufen</b> könnt Ihr über einen "
+"Rechtsklick auf ein Burgfeld erreichen. Dadurch könnt Ihr entscheiden, auf "
+"welchem Feld eine Einheit aufgestellt wird. Weise platzierte Einheiten "
+"können es Euch ermöglichen, Dörfer einen Zug früher einzunehmen."
 
 #. [tip]
 #: data/hardwired/tips.cfg:24
-#, fuzzy
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
 "<b>Status Table</b> will let you know how your enemies are doing, and how "
 "you are doing in comparison."
 msgstr ""
-"Es gibt einige nützliche Zusammenfassungen, die Ihr über das »Menü« im Spiel "
-"erreichen könnt: die »Spielübersicht« zum Beispiel zeigt Euch, wie es um "
-"Eure Gegner steht und wie es Euch im Verhältnis ergeht."
+"Es gibt einige nützliche Zusammenfassungen, die Ihr über das <b>Menü</b> im "
+"Spiel erreichen könnt: die <b>Spielübersicht</b> zum Beispiel zeigt Euch, "
+"wie es um Eure Gegner steht und wie es Euch im Verhältnis ergeht."
 
 #. [tip]
 #: data/hardwired/tips.cfg:28
-#, fuzzy
 msgid ""
 "Units with the <i>Quick</i> trait get an extra movement point per turn. This "
 "can be very important when moving through difficult terrain such as water or "
 "caves. It can make the difference between being able to move one hex or two."
 msgstr ""
-"Einheiten mit dem Charakteristikum »schnell« können sich ein Feld weiter "
-"bewegen. Dies kann für die Durchquerung von schwierigem Gelände, wie Wasser "
-"oder Höhlen, sehr wichtig sein. Es kann den Unterschied machen, ob Eure "
-"Einheit sich ein oder zwei Felder weit bewegen kann."
+"Einheiten mit dem Charakteristikum <i>schnell</i> können sich ein Feld "
+"weiter bewegen. Dies kann für die Durchquerung von schwierigem Gelände, wie "
+"Wasser oder Höhlen, sehr wichtig sein. Es kann den Unterschied machen, ob "
+"Eure Einheit sich ein oder zwei Felder weit bewegen kann."
 
 #. [tip]
 #: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:105
@@ -2191,15 +2179,14 @@ msgstr "<i>― Fürst Kalenz, 470JW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:32
-#, fuzzy
 msgid ""
 "After you have played a few scenarios, read the <b>Gameplay</b> section in "
 "the <b>Help</b> screen carefully. Details become important as scenarios get "
 "harder!"
 msgstr ""
 "Nachdem Ihr einige Szenarien gespielt habt, solltet Ihr den Abschnitt "
-"»Spielregeln« in der Hilfe zu Rate ziehen. Im weiteren Spielverlauf wird "
-"tieferes Wissen über die Spielmechanik sehr hilfreich sein."
+"<b>Spielregeln</b> in der <b>Hilfe</b> zu Rate ziehen. Im weiteren "
+"Spielverlauf wird tieferes Wissen über die Spielmechanik sehr hilfreich sein."
 
 #. [tip]
 #: data/hardwired/tips.cfg:36
@@ -2228,22 +2215,23 @@ msgstr "<i>―  Die Gemeinschaft Wesnoths</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>Liminal</i> unit type fights best during the twilight hours."
 msgstr ""
-"Redliche Einheiten kämpfen besser am Tage, während lichtscheue Einheiten im "
-"Schutze der Nacht Angriffsvorteile genießen. Neutrale Einheiten sind vom Tag-"
-"Nacht-Wechsel nicht betroffen."
+"<i>Redliche</i> Einheiten kämpfen besser am Tage, während <i>lichtscheue</i> "
+"Einheiten im Schutze der Nacht Angriffsvorteile genießen. Die seltenen "
+"<i>zwielichtigen</i> Einheiten nutzen Tagesanbruch und Dämmerung zu ihrer "
+"Überlegenheit. <i>Neutrale</i> Einheiten sind vom Tag-Nacht-Wechsel nicht "
+"betroffen."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
-#, fuzzy
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr "– Königliche Enzyklopädie des Krieges – Band II, 212JW"
+msgstr ""
+"<i>– Königliche Enzyklopädie des Krieges – Band II (nachgedruckt 221JW)</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:48
@@ -2257,28 +2245,26 @@ msgstr ""
 #: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:73
 #: data/hardwired/tips.cfg:125 data/hardwired/tips.cfg:133
 #: data/hardwired/tips.cfg:213
-#, fuzzy
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "– Handbuch der taktischen Kriegsführung, Band I, Haldric II., 42JW"
+msgstr ""
+"<i>– Handbuch der taktischen Kriegsführung, Band I, Haldric II., 42JW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
-#, fuzzy
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"Wenn das Schlachtfeld vom »Nebel des Krieges« oder vom »Schleier der "
-"Finsternis« verdeckt wird, solltet Ihr darüber nachdenken, Kundschafter "
+"Wenn das Schlachtfeld vom <b>Nebel des Krieges</b> oder vom <b>Schleier der "
+"Finsternis</b> verdeckt wird, solltet Ihr darüber nachdenken, Kundschafter "
 "auszubilden. Wählt jene, die sich im umgebenden Gelände am besten auskennen, "
 "denn Eure Einheiten können soviele Felder einsehen, wie sie sich in einem "
 "Zug bewegen können."
 
 #. [tip]
 #: data/hardwired/tips.cfg:56
-#, fuzzy
 msgid ""
 "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
 "<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
@@ -2286,16 +2272,15 @@ msgid ""
 "Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
-"Es gibt sechs Schadensarten in Wesnoth: Stich, Klinge, Wucht, Feuer, Kälte "
-"und Arkan. Jede Einheit hat Stärken und Schwächen gegen unterschiedliche "
-"Arten von Angriffen. Klickt mit der rechten Maustaste auf eine Einheit und "
-"wählt die Option »Einheitenbeschreibung« aus. Die Tabelle »Resistenz« gibt "
-"darüber Auskunft, wie hoch der Widerstand gegen eine bestimmte Schadensart "
-"ist."
+"Es gibt sechs Schadensarten in Wesnoth: <i>Stich</i>, <i>Klinge</i>, "
+"<i>Wucht</i>, <i>Feuer</i>, <i>Kälte</i> und <i>Arkan</i>. Jede Einheit hat "
+"Stärken und Schwächen gegen unterschiedliche Arten von Angriffen. Klickt mit "
+"der rechten Maustaste auf eine Einheit und wählt die Option "
+"<b>Einheitenbeschreibung</b> aus. Die Tabelle »Resistenz« gibt darüber "
+"Auskunft, wie hoch der Widerstand gegen eine bestimmte Schadensart ist."
 
 #. [tip]
 #: data/hardwired/tips.cfg:60
-#, fuzzy
 msgid ""
 "The terrain occupied by your units is the main factor determining the chance "
 "that they will be hit. The defensive rating for the currently selected unit "
@@ -2309,7 +2294,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:64
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
@@ -2322,19 +2306,18 @@ msgstr ""
 "kuriert ist, werden sie in diesem bedauernswerten Zustand verbleiben. Heiler "
 "können die Wirkung des Giftes aufhalten, aber nicht aufheben. Nur der "
 "Aufenthalt in einem Dorf oder die Behandlung durch eine Einheit, mit der "
-"Fertigkeit »Kurieren« schafft Abhilfe."
+"Fertigkeit <i>Kurieren</i> schafft Abhilfe."
 
 #. [tip]
 #: data/hardwired/tips.cfg:68
-#, fuzzy
 msgid ""
 "You can reuse units from a previous scenario by selecting <b>Recall</b> from "
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
 "Ihr könnt Einheiten aus früheren Szenarien verwenden, wenn Ihr sie "
-"einberuft. Wenn Ihr dies über mehrere Szenarien tut, bilden diese Einheiten "
-"eine immer mächtiger und erfahrener werdende Armee."
+"<b>einberuft</b>. Wenn Ihr dies über mehrere Szenarien tut, bilden diese "
+"Einheiten eine immer mächtiger und erfahrener werdende Armee."
 
 #. [tip]
 #: data/hardwired/tips.cfg:72
@@ -2354,7 +2337,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:76
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -2365,14 +2347,14 @@ msgstr ""
 "Die Wahrscheinlichkeit, dass eine Attacke eine Einheit trifft, hängt "
 "normalerweise davon ab, wie gut sich diese Einheit in der aktuellen "
 "Geländeart verteidigen kann. Magische Angriffe haben grundsätzlich eine "
-"Trefferwahrscheinlichkeit von 70%. Scharfschützen verfügen über eine "
-"Trefferwahrscheinlichkeit von mindestens 60%."
+"Trefferwahrscheinlichkeit von 70%. <i>Treffsichere</i> Einheiten haben "
+"mindestens eine Wahrscheinlichkeit von 60% ihren Gegner zu treffen."
 
 #. [tip]
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "– Handbuch der taktischen Kriegsführung, Band I, Haldric II., 42JW"
+msgstr ""
+"<i>– Handbuch der taktischen Kriegsführung, Band II, Haldric II., 43JW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
@@ -2397,17 +2379,16 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:88
-#, fuzzy
 msgid ""
 "On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
 "units’ sightlines are limited by their maximum movement. If you have some "
 "valuable but slow units, keep at least one fast unit with them so that you "
 "are not caught out by a surprise attack."
 msgstr ""
-"Auf Karten, für die der »Nebel des Krieges« oder der »Schleier der "
-"Finsternis« eingeschaltet wurde, ist die Sichtweite einer Einheit durch ihre "
-"Bewegungsreichweite beschränkt. Behaltet dies im Hinterkopf, wenn Ihr Eure "
-"Späher für ein bestimmtes Gelände auswählt."
+"Auf Karten, für die der <i>Nebel des Krieges</i> oder der <i>Schleier der "
+"Finsternis</i> eingeschaltet wurde, ist die Sichtweite einer Einheit durch "
+"ihre Bewegungsreichweite beschränkt. Behaltet dies im Hinterkopf, wenn Ihr "
+"Eure Späher für ein bestimmtes Gelände auswählt."
 
 #. [tip]
 #: data/hardwired/tips.cfg:92
@@ -2514,18 +2495,17 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:124
-#, fuzzy
 msgid ""
 "<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
 "not just the keep they start on. Sometimes your allies may be willing to "
 "make room for you on their keep so you can recruit from there, and you can "
 "even capture an enemy’s keep and use that."
 msgstr ""
-"Euer Heerführer kann in jeder Burg Einheiten ausbilden oder einberufen, "
-"nicht nur in der Startburg. Ihr könnt gegnerische Festungen einnehmen und "
-"von dort aus Einheiten in die Schlacht rufen. Eure Verbündeten können auch "
-"Platz für Euch in ihrer Burg schaffen, damit Ihr dort Einheiten ausbilden "
-"könnt."
+"Euer <i>Heerführer</i> kann in jeder Burg Einheiten ausbilden oder "
+"einberufen, nicht nur in der Startburg. Ihr könnt gegnerische Festungen "
+"einnehmen und von dort aus Einheiten in die Schlacht rufen. Eure Verbündeten "
+"können auch Platz für Euch in ihrer Burg schaffen, damit Ihr dort Einheiten "
+"ausbilden könnt."
 
 #. [tip]
 #: data/hardwired/tips.cfg:128
@@ -2539,14 +2519,13 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:132
-#, fuzzy
 msgid ""
 "Units with the <i>Leadership</i> ability help lower-level adjacent units on "
 "the same side fight better. You can move these units slowly along your "
 "battle lines and give bonuses to large numbers of lower-level troops."
 msgstr ""
 "Truppen niedriger Stufe genießen Vorteile im Kampf, wenn sie an der Seite "
-"einer Einheit mit »Führungsqualitäten« kämpfen."
+"einer Einheit mit <i>Führungsqualitäten</i> kämpfen."
 
 #. [tip]
 #: data/hardwired/tips.cfg:136
@@ -2562,7 +2541,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:140
-#, fuzzy
 msgid "Use lines of troops to screen your injured units while they recover."
 msgstr ""
 "Bildet mit Einheiten einen Wall, um verletzte Einheiten zu schützen und "
@@ -2575,9 +2553,8 @@ msgstr "<i>― Prinzessin Li'sar, 515JW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:144
-#, fuzzy
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-msgstr "Lest die Liste der Tastenkombinationen im Einstellungsmenü."
+msgstr "Lest die Liste der <b>Tastenkombinationen</b> im Einstellungsmenü."
 
 #. [tip]
 #: data/hardwired/tips.cfg:148
@@ -2616,20 +2593,18 @@ msgstr "<i>― Schriften von Chantal, 516JW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
-#, fuzzy
 msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
 msgstr ""
-"Der »Verlangsamungs«-Angriff verringert die Anzahl gegnerischer "
+"Der <i>Verlangsamungs</i>-Angriff verringert die Anzahl gegnerischer "
 "Bewegungspunkte und halbiert außerdem den angerichteten Schaden bei jeder "
 "gegnerischen Attacke."
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
-#, fuzzy
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "Untote sind sehr anfällig gegen geweihte Waffen und heilige Magie."
+msgstr "Untote sind sehr anfällig gegen <i>arkane</i> Angriffe."
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
@@ -2657,7 +2632,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:176
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an <i>After Maximum Level "
 "Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
@@ -2674,7 +2648,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:180
-#, fuzzy
 msgid ""
 "Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
 "mouse pointer over any button or icon to get a description or explanation of "
@@ -2780,7 +2753,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:217 data/hardwired/tips.cfg:229
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
+msgstr "<i>- Fürst Hamel von Knalga</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:220
@@ -2811,7 +2784,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:233
-#, fuzzy
 msgid ""
 "You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
@@ -2820,7 +2792,7 @@ msgstr ""
 "Ein Zug, der den Schleier der Finsternis lüftet oder den Nebel des Krieges "
 "verweht, kann nicht rückgängig gemacht werden. Wenn Ihr die Möglichkeit "
 "behalten möchtet, die Züge Eurer Einheiten rückgängig zu machen, solltet Ihr "
-"die Einstellung »Schleier verspätet aktualisieren« aktivieren."
+"die Einstellung <b>Schleier verspätet aktualisieren</b> aktivieren."
 
 #. [tip]
 #: data/hardwired/tips.cfg:237
@@ -2843,14 +2815,12 @@ msgid "petrified"
 msgstr "versteinert"
 
 #: data/lua/wml-tags.lua:710
-#, fuzzy
 msgid "female^unhealable"
-msgstr "untot"
+msgstr "unheilbar"
 
 #: data/lua/wml-tags.lua:710
-#, fuzzy
 msgid "unhealable"
-msgstr "Unbegehbar"
+msgstr "unheilbar"
 
 #: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1609
 msgid "Victory:"
@@ -3281,11 +3251,15 @@ msgid_plural ""
 "The selected add-on has the following dependencies. Do you want to install "
 "them?"
 msgstr[0] ""
+"Die ausgewählte Erweiterung hat die folgende Abhängigkeit. Möchtet Ihr sie "
+"installieren?"
 msgstr[1] ""
+"Die ausgewählte Erweiterung hat die folgenden Abhängigkeiten. Möchtet Ihr "
+"sie installieren?"
 
 #: src/addon/manager.cpp:829
 msgid "Installation of a dependency failed"
-msgstr ""
+msgstr "Installation einer Abhängigkeit fehlgeschlagen"
 
 #: src/addon/manager.cpp:831
 msgid ""
@@ -3295,7 +3269,7 @@ msgstr ""
 
 #: src/addon/manager.cpp:845
 msgid "Installation failed"
-msgstr ""
+msgstr "Installation fehlgeschlagen"
 
 #: src/addon/manager.cpp:847 src/addon/manager.cpp:1075
 msgid "The following add-on could not be downloaded or updated successfully:"
@@ -3346,7 +3320,6 @@ msgid "Old version"
 msgstr "Alte Version"
 
 #: src/addon/manager.cpp:987
-#, fuzzy
 msgid "Update add-ons"
 msgstr "Erweiterungen aktualisieren"
 
@@ -3427,9 +3400,8 @@ msgid "Choose the add-on to download."
 msgstr "Wählt die Erweiterung aus, die Ihr herunterladen wollt."
 
 #: src/addon/manager.cpp:1272
-#, fuzzy
 msgid "Download"
-msgstr "Geladen"
+msgstr "Herunterladen"
 
 #: src/addon/manager.cpp:1273
 msgid "Done"
@@ -3473,9 +3445,8 @@ msgid "Uninstall add-ons"
 msgstr "Erweiterungen entfernen"
 
 #: src/addon/manager.cpp:1372
-#, fuzzy
 msgid "Remove"
-msgstr "BP"
+msgstr "Entfernen"
 
 #: src/addon/manager.cpp:1379
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -4201,12 +4172,11 @@ msgstr ""
 "schon beenden?"
 
 #: src/menu_events.cpp:1376
-#, fuzzy
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
 msgstr ""
-"Einige Eurer Einheiten verfügen noch über Bewegungspunkte. Wollt Ihr Euren "
-"Zug wirklich schon beenden?"
+"Einige Eurer Einheiten haben ihre geplanten Aktionen noch nicht ausgeführt. "
+"Wollt Ihr Euren Zug wirklich schon beenden?"
 
 #: src/menu_events.cpp:1384 src/menu_events.cpp:1389
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -4845,13 +4815,13 @@ msgid "Variable not found"
 msgstr "Variable nicht gefunden"
 
 #: src/menu_events.cpp:3474
-#, fuzzy
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic "
 "or liminal."
 msgstr ""
 "Ungültiger Wert für »alignment« (Tag-/Nachteinfluss): »$alignment«. Gültig "
-"sind »lawful« (redlich), »neutral« (neutral) oder »chaotic« (lichtscheu)."
+"sind »lawful« (redlich), »neutral« (neutral), »chaotic« (lichtscheu) oder "
+"»liminal« (zwielichtig)."
 
 #: src/menu_events.cpp:3524
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -4866,14 +4836,12 @@ msgid "Invalid location"
 msgstr "Ungültiger Ort"
 
 #: src/menu_events.cpp:3583
-#, fuzzy
 msgid "Planning mode activated!"
-msgstr "Debugmodus aktiviert!"
+msgstr "Planungsmodus aktiviert!"
 
 #: src/menu_events.cpp:3586
-#, fuzzy
 msgid "Planning mode deactivated!"
-msgstr "Debugmodus deaktiviert!"
+msgstr "Planungsmodus deaktiviert!"
 
 #: src/menu_events.cpp:3594
 msgid "ai"
@@ -4940,10 +4908,9 @@ msgstr ""
 "Zeichen, Unter- und Bindestriche sind erlaubt."
 
 #: src/multiplayer.cpp:311
-#, fuzzy
 msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgstr ""
-"Der Benutzername »$nick« ist zu lang. Benuternamen dürfen maximal 18 Zeichen "
+"Der Benutzername »$nick« ist zu lang. Benuternamen dürfen maximal 20 Zeichen "
 "lang sein."
 
 #: src/multiplayer.cpp:314
@@ -5113,9 +5080,8 @@ msgid "Waiting for players to join..."
 msgstr "Warte auf weitere Mitspieler..."
 
 #: src/multiplayer_connect.cpp:1711
-#, fuzzy
 msgid "Waiting for players to choose factions..."
-msgstr "Warte auf weitere Mitspieler..."
+msgstr "Warte auf Spielerfraktionswahl..."
 
 #: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:731
 msgid "Create Game"
@@ -5503,7 +5469,6 @@ msgid ""
 msgstr ""
 
 #: src/play_controller.cpp:1313 src/replay_controller.cpp:221
-#, fuzzy
 msgid "Error details:"
 msgstr "Fehler:"
 
@@ -5710,18 +5675,16 @@ msgstr ""
 "Spielstand speichern?"
 
 #: src/reports.cpp:145
-#, fuzzy
 msgid "Type: "
-msgstr "Typ"
+msgstr "Typ: "
 
 #: src/reports.cpp:156
 msgid "Race: "
 msgstr "Rasse: "
 
 #: src/reports.cpp:180
-#, fuzzy
 msgid "Level: "
-msgstr "Beschriftung: "
+msgstr "Stufe: "
 
 #: src/reports.cpp:183
 #, fuzzy
@@ -5729,14 +5692,12 @@ msgid "No advancement"
 msgstr "Stufenaufstiege"
 
 #: src/reports.cpp:185
-#, fuzzy
 msgid "Advances to:"
 msgstr "Nächste Stufe: "
 
 #: src/reports.cpp:215
-#, fuzzy
 msgid "Trait: "
-msgstr "Charakteristiken"
+msgstr "Charakteristik: "
 
 #: src/reports.cpp:229
 msgid "invisible: "
@@ -5795,9 +5756,8 @@ msgid "Alignment: "
 msgstr "Tag-/Nachteinfluss: "
 
 #: src/reports.cpp:275
-#, fuzzy
 msgid "Ability: "
-msgstr "Fertigkeiten: "
+msgstr "Fertigkeit: "
 
 #: src/reports.cpp:310
 msgid "Resistances: "
@@ -5808,32 +5768,28 @@ msgid "(Att / Def)"
 msgstr "(Ang / Ver)"
 
 #: src/reports.cpp:355
-#, fuzzy
 msgid "Terrain: "
-msgstr "Gelände"
+msgstr "Gelände: "
 
 #: src/reports.cpp:373
 msgid "maximum^max."
-msgstr ""
+msgstr "max."
 
 #: src/reports.cpp:373
 msgid "minimum^min."
-msgstr ""
+msgstr "min."
 
 #: src/reports.cpp:378
-#, fuzzy
 msgid "Defense: "
-msgstr "Verteidigung"
+msgstr "Verteidigung: "
 
 #: src/reports.cpp:447
-#, fuzzy
 msgid "Weapon: "
-msgstr "Reichweite: "
+msgstr "Waffe: "
 
 #: src/reports.cpp:448
-#, fuzzy
 msgid "Damage: "
-msgstr "Schaden"
+msgstr "Schaden: "
 
 #: src/reports.cpp:452
 #, fuzzy
@@ -5870,12 +5826,10 @@ msgid "Swarm: "
 msgstr "Schwarm"
 
 #: src/reports.cpp:482
-#, fuzzy
 msgid "Weapon range: "
 msgstr "Reichweite: "
 
 #: src/reports.cpp:483
-#, fuzzy
 msgid "Damage type: "
 msgstr "Schadenstyp: "
 
@@ -5885,19 +5839,16 @@ msgid "Damage versus: "
 msgstr "Schadenstyp: "
 
 #: src/reports.cpp:528
-#, fuzzy
 msgid "Accuracy:"
-msgstr "% Treffsicherheit"
+msgstr "Treffsicherheit: "
 
 #: src/reports.cpp:533
-#, fuzzy
 msgid "Parry:"
-msgstr "% Parade"
+msgstr "Parade: "
 
 #: src/reports.cpp:550
-#, fuzzy
 msgid "Weapon special: "
-msgstr "Waffenfähigkeiten"
+msgstr "Waffenfähigkeiten: "
 
 #: src/reports.cpp:591
 msgid "Lawful units: "
@@ -5912,9 +5863,8 @@ msgid "Chaotic units: "
 msgstr "Lichtscheue Einheiten: "
 
 #: src/reports.cpp:595
-#, fuzzy
 msgid "Liminal units: "
-msgstr "Redliche Einheiten: "
+msgstr "Zwielichtige Einheiten: "
 
 #: src/reports.cpp:793
 msgid "Observers:"
@@ -6185,7 +6135,7 @@ msgstr "redlich"
 
 #: src/unit_types.cpp:968
 msgid "liminal"
-msgstr ""
+msgstr "zwielichtig"
 
 #: src/unit_types.cpp:968
 msgid "neutral"
@@ -6200,9 +6150,8 @@ msgid "female^lawful"
 msgstr "redlich"
 
 #: src/unit_types.cpp:969
-#, fuzzy
 msgid "female^liminal"
-msgstr "loyal"
+msgstr "zwielichtig"
 
 #: src/unit_types.cpp:969
 msgid "female^neutral"
