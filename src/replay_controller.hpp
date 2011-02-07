@@ -77,6 +77,29 @@ private:
 
 	bool show_everything_;
 	unsigned int show_team_;
+	
+	
+	class replay_buttons_wrapper {
+	
+		bool is_valid_;
+	
+	public:
+		replay_buttons_wrapper() : is_valid_(false) {}
+	
+		gui::button* play_button_;
+		gui::button* stop_button_;
+		gui::button* reset_button_;
+		gui::button* play_turn_button_;
+		gui::button* play_side_button_;
+
+		void update(boost::scoped_ptr<game_display>& gui_);
+		void playback_should_start();
+		void playback_should_stop(bool is_playing);
+
+		void reset_buttons();
+	};
+	
+	replay_buttons_wrapper buttons_;
 };
 
 
