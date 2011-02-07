@@ -96,6 +96,7 @@ static void put_pixel(
  * Draws a line.
  *
  * @pre @p x2 >= @p x1
+ * @pre @p canvas is locked.
  *
  * @param canvas          The canvas to draw upon, the caller should lock the
  *                        surface before calling.
@@ -175,6 +176,72 @@ static void draw_line(
 		if(e2 <  dy) {
 			err += dx;
 			y1 += step_y;
+		}
+	}
+}
+
+/**
+ * Draws a circle.
+ *
+ * @pre The circle must fit on the canvas.
+ * @pre @p canvas is locked.
+ *
+ * @param canvas          The canvas to draw upon, the caller should lock the
+ *                        surface before calling.
+ * @param color           The color of the circle to draw.
+ * @param x_centre        The x coordinate of the centre of the circle to draw.
+ * @param y_centre        The y coordinate of the centre of the circle to draw.
+ * @param radius          The radius of the circle to draw.
+ */
+static void draw_circle(
+		  surface& canvas
+		, Uint32 color
+		, const unsigned x_centre
+		, const unsigned y_centre
+		, const unsigned radius)
+{
+	color = SDL_MapRGBA(canvas->format,
+		((color & 0xFF000000) >> 24),
+		((color & 0x00FF0000) >> 16),
+		((color & 0x0000FF00) >> 8),
+		((color & 0x000000FF)));
+
+	ptrdiff_t start = reinterpret_cast<ptrdiff_t>(canvas->pixels);
+	unsigned w = canvas->w;
+
+	DBG_GUI_D << "Shape: draw circle at "
+			<< x_centre << ',' << y_centre
+			<< " with radius " << radius
+			<< " canvas width " << w << " canvas height "
+			<< canvas->h << ".\n";
+
+	assert(static_cast<int>(x_centre + radius) < canvas->w);
+	assert(static_cast<int>(x_centre - radius) >= 0);
+	assert(static_cast<int>(y_centre + radius) < canvas->h);
+	assert(static_cast<int>(y_centre - radius) >= 0);
+
+	// Algorithm based on
+	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
+	// version of 2011.02.07.
+	int d = -radius;
+	int x = radius;
+	int y = 0;
+	while(!(y > x)) {
+		put_pixel(start, color, w, x_centre + x, y_centre + y);
+		put_pixel(start, color, w, x_centre + x, y_centre - y);
+		put_pixel(start, color, w, x_centre - x, y_centre + y);
+		put_pixel(start, color, w, x_centre - x, y_centre - y);
+
+		put_pixel(start, color, w, x_centre + y, y_centre + x);
+		put_pixel(start, color, w, x_centre + y, y_centre - x);
+		put_pixel(start, color, w, x_centre - y, y_centre + x);
+		put_pixel(start, color, w, x_centre - y, y_centre - x);
+
+		d += 2 * y + 1;
+		++y;
+		if(d > 0) {
+			d -= 2 * x + 2;
+			--x;
 		}
 	}
 }
@@ -672,6 +739,119 @@ void trectangle::draw(surface& canvas
 			draw_line(canvas, fill_color_, left, i, right, i);
 		}
 	}
+}
+
+/***** ***** ***** ***** ***** CIRCLE ***** ***** ***** ***** *****/
+
+/** Definition of a circle shape. */
+class tcircle
+	: public tcanvas::tshape
+{
+public:
+
+	/**
+	 * Constructor.
+	 *
+	 * @param cfg                 The config object to define the circle see
+	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Circle
+	 *                            for more info.
+	 */
+	explicit tcircle(const config& cfg);
+
+	/** Implement shape::draw(). */
+	void draw(surface& canvas
+			, const game_logic::map_formula_callable& variables);
+
+private:
+	tformula<unsigned>
+		x_,       /**< The centre x coordinate of the circle. */
+		y_,       /**< The centre y coordinate of the circle. */
+		radius_;  /**< The radius of the circle. */
+
+	/** The color of the circle. */
+	Uint32 color_;
+
+};
+
+tcircle::tcircle(const config& cfg)
+	: x_(cfg["x"])
+	, y_(cfg["y"])
+	, radius_(cfg["radius"])
+	, color_(decode_color(cfg["color"]))
+{
+/*WIKI
+ * @page = GUICanvasWML
+ *
+ * == Circle ==
+ * Definition of a circle. When drawing a circle it doesn't get blended on
+ * the surface but replaces the pixels instead. A blitting flag might be
+ * added later if needed.
+ *
+ * Keys:
+ * @begin{table}{config}
+ * x      & f_unsigned & 0 &       The x coordinate of the centre. $
+ * y      & f_unsigned & 0 &       The y coordinate of the centre. $
+ * radius & f_unsigned & 0 &       The radius of the circle if 0 nothing is
+ *                                 drawn. $
+ * debug & string & "" &           Debug message to show upon creation$ this
+ *                                 message is not stored. $
+ * @end{table}
+ *
+ * Variables:
+ * See [[#general_variables|Line]].
+ *
+ * Drawing outside the area will result in unpredictable results including
+ * crashing. (That should be fixed, when encountered.)
+ */
+
+	const std::string& debug = (cfg["debug"]);
+	if(!debug.empty()) {
+		DBG_GUI_P << "Circle: found debug message '" << debug << "'.\n";
+	}
+}
+
+void tcircle::draw(surface& canvas
+		, const game_logic::map_formula_callable& variables)
+{
+	/**
+	 * @todo formulas are now recalculated every draw cycle which is a bit
+	 * silly unless there has been a resize. So to optimize we should use an
+	 * extra flag or do the calculation in a separate routine.
+	 */
+
+	const unsigned x = x_(variables);
+	const unsigned y = y_(variables);
+	const unsigned radius = radius_(variables);
+
+	DBG_GUI_D << "Circle: drawn at "
+			<< x << ',' << y << " radius " << radius
+			<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
+
+	VALIDATE_WITH_DEV_MESSAGE(
+			 static_cast<int>(x - radius) >= 0
+			, _("Circle doesn't fit on canvas.")
+			, (formatter() << "x = " << x << ", radius = " << radius).str());
+
+	VALIDATE_WITH_DEV_MESSAGE(
+			 static_cast<int>(y - radius) >= 0
+			, _("Circle doesn't fit on canvas.")
+			, (formatter() << "y = " << y << ", radius = " << radius).str());
+
+	VALIDATE_WITH_DEV_MESSAGE(
+			 static_cast<int>(x + radius) < canvas->w
+			, _("Circle doesn't fit on canvas.")
+			, (formatter() << "x = " << x << ", radius = " << radius
+				<< "', canvas width = " << canvas->w << ".").str());
+
+	VALIDATE_WITH_DEV_MESSAGE(
+			 static_cast<int>(y + radius) < canvas->h
+			, _("Circle doesn't fit on canvas.")
+			, (formatter() << "y = " << y << ", radius = " << radius
+				<< "', canvas height = " << canvas->h << ".").str());
+
+	// lock the surface
+	surface_lock locker(canvas);
+	draw_circle(canvas, color_, x, y, radius);
 }
 
 /***** ***** ***** ***** ***** IMAGE ***** ***** ***** ***** *****/
@@ -1246,6 +1426,8 @@ void tcanvas::parse_cfg(const config& cfg)
 			shapes_.push_back(new tline(data));
 		} else if(type == "rectangle") {
 			shapes_.push_back(new trectangle(data));
+		} else if(type == "circle") {
+			shapes_.push_back(new tcircle(data));
 		} else if(type == "image") {
 			shapes_.push_back(new timage(data));
 		} else if(type == "text") {
