@@ -125,7 +125,7 @@ private:
 	/** Holds a pointer to the buttons. */
 	std::vector<tbutton_status> buttons_;
 
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 

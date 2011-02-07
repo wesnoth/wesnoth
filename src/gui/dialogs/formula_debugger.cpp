@@ -62,7 +62,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(formula_debugger)
+REGISTER_DIALOG(formula_debugger)
 
 void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 {

@@ -61,7 +61,7 @@ public:
 	void set_use_mdi(bool value);
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */

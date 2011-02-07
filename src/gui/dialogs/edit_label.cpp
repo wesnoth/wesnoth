@@ -46,7 +46,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(edit_label)
+REGISTER_DIALOG(edit_label)
 
 tedit_label::tedit_label(const std::string& label, bool team_only)
 	: team_only_(team_only)

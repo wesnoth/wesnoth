@@ -87,7 +87,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(editor_resize_map)
+REGISTER_DIALOG(editor_resize_map)
 
 /**
  * @todo Test whether the slider can be changed to an interger selector.

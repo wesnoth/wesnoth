@@ -74,7 +74,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(editor_settings)
+REGISTER_DIALOG(editor_settings)
 
 teditor_settings::teditor_settings()
 	: redraw_callback_()

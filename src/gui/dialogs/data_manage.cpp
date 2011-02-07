@@ -47,7 +47,7 @@
 namespace gui2 {
 
 
-REGISTER_WINDOW(data_manage)
+REGISTER_DIALOG(data_manage)
 
 tdata_manage::tdata_manage(const config& cache_config)
 	: txtFilter_(register_text("txtFilter", false))

@@ -26,7 +26,7 @@
 
 namespace gui2 {
 
-REGISTER_WINDOW(transient_message)
+REGISTER_DIALOG(transient_message)
 
 void ttransient_message::pre_show(CVideo& /*video*/, twindow& window)
 {

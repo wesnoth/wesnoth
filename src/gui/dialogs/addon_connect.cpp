@@ -45,7 +45,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(addon_connect)
+REGISTER_DIALOG(addon_connect)
 
 void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)
 {

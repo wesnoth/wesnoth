@@ -52,7 +52,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(editor_generate_map)
+REGISTER_DIALOG(editor_generate_map)
 
 teditor_generate_map::teditor_generate_map()
 	: map_generators_()

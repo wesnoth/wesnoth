@@ -28,7 +28,7 @@
 
 namespace gui2 {
 
-REGISTER_WINDOW(message)
+REGISTER_DIALOG(message)
 
 /**
  * Helper to implement private functions without modifying the header.

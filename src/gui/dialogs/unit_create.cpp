@@ -77,7 +77,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(unit_create)
+REGISTER_DIALOG(unit_create)
 
 tunit_create::tunit_create()
 	: gender_(last_gender)

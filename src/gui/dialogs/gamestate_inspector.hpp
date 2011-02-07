@@ -36,7 +36,7 @@ public:
 	boost::shared_ptr<view> get_view();
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	boost::shared_ptr<view> view_;

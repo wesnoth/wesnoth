@@ -44,7 +44,7 @@ private:
 	std::string              choice_;
 	std::vector<std::string> type_ids_;
 
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */

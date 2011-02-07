@@ -27,7 +27,7 @@
 
 namespace gui2 {
 
-REGISTER_WINDOW(lobby_player_info)
+REGISTER_DIALOG(lobby_player_info)
 
 tlobby_player_info::tlobby_player_info(events::chat_handler& chat, user_info& info, const lobby_info& li)
 : chat_(chat), info_(info), reason_(NULL), time_(NULL), relation_(NULL),

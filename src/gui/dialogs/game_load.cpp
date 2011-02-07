@@ -88,7 +88,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(game_load)
+REGISTER_DIALOG(game_load)
 
 tgame_load::tgame_load(const config& cache_config)
 	: txtFilter_(register_text("txtFilter", false))

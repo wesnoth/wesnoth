@@ -73,7 +73,7 @@ private:
 
 	EXPAND_DIRECTION expand_direction_;
 
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	void pre_show(CVideo& video, twindow& window);

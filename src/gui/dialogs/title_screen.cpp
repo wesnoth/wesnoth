@@ -85,7 +85,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(title_screen)
+REGISTER_DIALOG(title_screen)
 
 bool show_debug_clock_button = false;
 

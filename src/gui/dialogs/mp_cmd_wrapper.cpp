@@ -70,7 +70,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(mp_cmd_wrapper)
+REGISTER_DIALOG(mp_cmd_wrapper)
 
 tmp_cmd_wrapper::tmp_cmd_wrapper(const t_string& user) :
 		message_(), reason_(), time_(), user_(user) { }

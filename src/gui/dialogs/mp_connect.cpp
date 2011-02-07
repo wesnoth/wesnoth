@@ -72,7 +72,7 @@ public:
 private:
 	std::string host_name_;
 
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
@@ -82,7 +82,7 @@ private:
 	void post_show(twindow& window);
 };
 
-REGISTER_WINDOW(mp_server_list)
+REGISTER_DIALOG(mp_server_list)
 
 void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 {
@@ -143,7 +143,7 @@ void tmp_server_list::post_show(twindow& window)
  * @end{table}
  */
 
-REGISTER_WINDOW(mp_connect)
+REGISTER_DIALOG(mp_connect)
 
 tmp_connect::tmp_connect() :
 	video_(0),
@@ -218,7 +218,7 @@ void tmp_connect::show_server_list(twindow& window)
  * @end{table}
  */
 
-REGISTER_WINDOW(mp_login)
+REGISTER_DIALOG(mp_login)
 
 tmp_login::tmp_login(const t_string& label,	const bool focus_password) :
 		label_(label), focus_password_(focus_password) { }

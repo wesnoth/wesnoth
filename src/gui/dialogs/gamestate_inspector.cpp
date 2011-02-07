@@ -554,7 +554,7 @@ private:
 };
 
 
-REGISTER_WINDOW(gamestate_inspector)
+REGISTER_DIALOG(gamestate_inspector)
 
 tgamestate_inspector::tgamestate_inspector(const vconfig &cfg)
 	: view_()

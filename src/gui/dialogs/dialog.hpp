@@ -28,53 +28,74 @@ namespace gui2 {
 /**
  * Registers a window.
  *
- * Call this function to register a window. In the header of the class add the
- * following code:
+ * This function registers a window. The registration is used to validate
+ * whether the config for the window exists when starting Wesnoth.
+ *
+ * @note Most of the time you want to call @ref REGISTER_DIALOG instead of this
+ * function. It also directly adds the code for the dialog's id function.
+ *
+ * @todo Rename the function to its full name once the old name has been unused
+ * for a while.
+ *
+ * @param id                      Id of the window, multiple dialogs can use
+ *                                the same window so the id doesn't need to be
+ *                                unique.
+ */
+#define REGISTER_WND(                                                      \
+		  id)                                                              \
+namespace {                                                                \
+                                                                           \
+	namespace ns_##id {                                                    \
+                                                                           \
+		struct tregister_helper {                                          \
+			tregister_helper()                                             \
+			{                                                              \
+				register_window(#id);                                      \
+			}                                                              \
+		};                                                                 \
+                                                                           \
+		tregister_helper register_helper;                                  \
+	}                                                                      \
+}
+
+/**
+ * Registers a window for a dialog.
+ * 
+ * Call this function to register a window. In the header of the class it adds
+ * the following code:
  *@code
- *  // Inherited from tdialog, implemented by REGISTER_WINDOW.
+ *  // Inherited from tdialog, implemented by REGISTER_DIALOG.
  *	virtual const std::string& id() const;
  *@endcode
  * Then use this macro in the implementation, inside the gui2 namespace.
  *
  * @note When the @ref id is "foo" and the type tfoo it's easier to use
- * REGISTER_WINDOW(foo).
+ * REGISTER_DIALOG(foo).
  *
  * @param type                    Class type of the window to register.
  * @param id                      Id of the window, multiple dialogs can use
  *                                the same window so the id doesn't need to be
  *                                unique.
  */
-#define REGISTER_WINDOW2(                                                  \
+#define REGISTER_DIALOG2(                                                  \
 		  type                                                             \
 		, id)                                                              \
-namespace {                                                                \
                                                                            \
-	namespace ns_##type {                                                  \
-                                                                           \
-		struct tregister_helper {                                          \
-			tregister_helper()                                             \
-			{                                                              \
-				register_window(id);                                       \
-			}                                                              \
-		};                                                                 \
-                                                                           \
-		tregister_helper register_helper;                                  \
-	}                                                                      \
-}                                                                          \
+REGISTER_WND(id)                                                           \
                                                                            \
 const std::string&                                                         \
 type::window_id() const                                                    \
 {                                                                          \
-	static const std::string result(id);                                   \
+	static const std::string result(#id);                                  \
 	return result;                                                         \
 }
 
 /**
- * Wrapper for REGISTER_WINDOW2.
+ * Wrapper for REGISTER_DIALOG2.
  *
- * "Calls" REGISTER_WINDOW2(twindow_id, "window_id")
+ * "Calls" REGISTER_DIALOG2(twindow_id, window_id)
  */
-#define REGISTER_WINDOW(window_id) REGISTER_WINDOW2(t##window_id, #window_id)
+#define REGISTER_DIALOG(window_id) REGISTER_DIALOG2(t##window_id, window_id)
 
 /**
  * Abstract base class for all dialogs.

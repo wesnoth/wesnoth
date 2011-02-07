@@ -37,7 +37,7 @@
 #endif
 namespace gui2 {
 
-REGISTER_WINDOW(mp_create_game)
+REGISTER_DIALOG(mp_create_game)
 
 tmp_create_game::tmp_create_game(const config& cfg) :
 	cfg_(cfg),

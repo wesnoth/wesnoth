@@ -58,7 +58,7 @@ private:
 	/** An optional image to show at the left of the text. */
 	std::string image_;
 
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 

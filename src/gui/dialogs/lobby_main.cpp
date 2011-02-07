@@ -72,7 +72,7 @@ static lg::log_domain log_lobby("lobby");
 
 namespace gui2 {
 
-REGISTER_WINDOW(lobby_main)
+REGISTER_DIALOG(lobby_main)
 
 void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 {

@@ -60,7 +60,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(campaign_difficulty)
+REGISTER_DIALOG(campaign_difficulty)
 
 tcampaign_difficulty::tcampaign_difficulty(const std::vector<std::string>& items)
 	: index_(-1), items_()

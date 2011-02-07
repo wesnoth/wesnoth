@@ -61,7 +61,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(simple_item_selector)
+REGISTER_DIALOG(simple_item_selector)
 
 tsimple_item_selector::tsimple_item_selector(const std::string& title, const std::string& message, list_type const& items, bool title_uses_markup, bool message_uses_markup)
 	: index_(-1)

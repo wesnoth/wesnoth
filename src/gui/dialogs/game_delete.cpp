@@ -35,7 +35,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(game_delete)
+REGISTER_DIALOG(game_delete)
 
 tgame_delete::tgame_delete()
 	: chk_dont_ask_again_(register_bool("dont_ask_again"))

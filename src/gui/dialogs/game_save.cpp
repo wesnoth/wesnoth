@@ -45,7 +45,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(game_save)
+REGISTER_DIALOG(game_save)
 
 tgame_save::tgame_save(const std::string& title, const std::string& filename) :
 	txtFilename_(register_text("txtFilename", false)),
@@ -70,7 +70,7 @@ void tgame_save::post_show(twindow& window)
 }
 
 
-REGISTER_WINDOW(game_save_message)
+REGISTER_DIALOG(game_save_message)
 
 tgame_save_message::tgame_save_message(const std::string& title, const std::string& filename, const std::string& message)
 	: tgame_save(title, filename),
@@ -84,7 +84,7 @@ void tgame_save_message::pre_show(CVideo& video, twindow& window)
 	tgame_save::pre_show(video, window);
 }
 
-REGISTER_WINDOW(game_save_oos)
+REGISTER_DIALOG(game_save_oos)
 
 tgame_save_oos::tgame_save_oos(const std::string& title, const std::string& filename, const std::string& message)
 	: tgame_save_message(title, filename, message),

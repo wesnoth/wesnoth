@@ -39,7 +39,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(mp_create_game_set_password)
+REGISTER_DIALOG(mp_create_game_set_password)
 
 tmp_create_game_set_password::tmp_create_game_set_password(const std::string& password)
 	: password_(password)

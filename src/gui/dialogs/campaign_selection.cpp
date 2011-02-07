@@ -74,7 +74,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(campaign_selection)
+REGISTER_DIALOG(campaign_selection)
 
 void tcampaign_selection::campaign_selected(twindow& window)
 {

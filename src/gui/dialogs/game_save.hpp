@@ -37,7 +37,7 @@ protected:
 
 private:
 
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	tfield_text* txtFilename_;
@@ -51,7 +51,7 @@ public:
 	tgame_save_message(const std::string& title, const std::string& filename="", const std::string& message="");
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tgame_save. */
@@ -68,7 +68,7 @@ public:
 	bool ignore_all() const { return ignore_all_; }
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */

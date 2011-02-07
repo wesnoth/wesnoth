@@ -156,9 +156,9 @@ void twml_message_::post_show(twindow& window)
 	}
 }
 
-REGISTER_WINDOW(wml_message_left)
+REGISTER_DIALOG(wml_message_left)
 
-REGISTER_WINDOW(wml_message_right)
+REGISTER_DIALOG(wml_message_right)
 
 int show_wml_message(const bool left_side
 		, CVideo& video

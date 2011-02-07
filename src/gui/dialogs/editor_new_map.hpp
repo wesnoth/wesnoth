@@ -38,7 +38,7 @@ private:
 	tfield_integer* map_width_;
 	tfield_integer* map_height_;
 
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 

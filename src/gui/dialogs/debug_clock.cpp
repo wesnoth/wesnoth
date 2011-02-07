@@ -70,7 +70,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(debug_clock)
+REGISTER_DIALOG(debug_clock)
 
 void tdebug_clock::pre_show(CVideo& /*video*/, twindow& window)
 {

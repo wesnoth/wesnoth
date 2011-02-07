@@ -33,7 +33,7 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	tfield_bool* chk_dont_ask_again_;

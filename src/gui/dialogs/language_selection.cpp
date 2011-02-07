@@ -49,7 +49,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(language_selection)
+REGISTER_DIALOG(language_selection)
 
 void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 {

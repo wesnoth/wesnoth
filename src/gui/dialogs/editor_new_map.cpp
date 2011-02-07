@@ -40,7 +40,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(editor_new_map)
+REGISTER_DIALOG(editor_new_map)
 
 teditor_new_map::teditor_new_map() :
 	map_width_(register_integer("width", false)),

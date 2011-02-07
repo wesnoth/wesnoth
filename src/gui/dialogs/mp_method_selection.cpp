@@ -51,7 +51,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(mp_method_selection)
+REGISTER_DIALOG(mp_method_selection)
 
 void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 {

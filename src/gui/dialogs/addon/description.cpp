@@ -71,7 +71,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(addon_description)
+REGISTER_DIALOG(addon_description)
 
 void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 {

@@ -54,7 +54,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WINDOW(unit_attack)
+REGISTER_DIALOG(unit_attack)
 
 tunit_attack::tunit_attack(
 		  const unit_map::iterator& attacker_itor
