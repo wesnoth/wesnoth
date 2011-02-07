@@ -801,7 +801,7 @@ namespace {                                                                \
 /**
  * Wrapper for REGISTER_WIDGET3.
  *
- * "Calls" REGISTER_WINDOW3(tid_definition, id, _4)
+ * "Calls" REGISTER_WIDGET3(tid_definition, id, _4)
  */
 #define REGISTER_WIDGET(id) REGISTER_WIDGET3(t##id##_definition, id, _4)
 
