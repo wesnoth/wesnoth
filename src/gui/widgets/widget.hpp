@@ -332,6 +332,10 @@ public:
 	 * A window is most of the time created by a dialog, this function returns
 	 * that dialog.
 	 *
+	 * @deprecated The function was used to install callbacks to member
+	 * functions of the dialog. Once all widgets are converted to signals this
+	 * function will be removed.
+	 *
 	 * @returns                   The toplevel dialog.
 	 * @retval 0                  No toplevel window or the toplevel window is
 	 *                            not owned by a dialog.
