@@ -756,18 +756,21 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 
 	invert_filter_.set_check(preferences::fi_invert());
 	invert_filter_.set_help_string(_("Show all games that do *not* match your filter. Useful for hiding games you are not interested in."));
-    invert_filter_.enable(apply_filter_.checked());
+	invert_filter_.enable(apply_filter_.checked());
 
 	vacant_slots_.set_check(preferences::fi_vacant_slots());
 	vacant_slots_.set_help_string(_("Only show games that have at least one vacant slot"));
-    vacant_slots_.enable(apply_filter_.checked());
+	vacant_slots_.enable(apply_filter_.checked());
 
 	friends_in_game_.set_check(preferences::fi_friends_in_game());
 	friends_in_game_.set_help_string(_("Only show games that are played or observed by at least one of your friends"));
-    friends_in_game_.enable(apply_filter_.checked());
+	friends_in_game_.enable(apply_filter_.checked());
+	
+	filter_label_.enable(apply_filter_.checked());
 
-    filter_text_.set_text(search_string_);
+	filter_text_.set_text(search_string_);
 	filter_text_.set_help_string(_("Only show games whose title or description contain the entered text"));
+	filter_text_.set_editable(apply_filter_.checked());
 #endif
 
 	gamelist_updated();
