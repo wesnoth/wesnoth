@@ -91,6 +91,7 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	invalidateGameStatus_(true),
 	map_labels_(new map_labels(*this, 0)),
 	scroll_event_("scrolled"),
+	complete_redraw_event_("completely_redrawn"),
 	nextDraw_(0),
 	reportRects_(),
 	reportSurfaces_(),
@@ -1960,6 +1961,8 @@ void display::redraw_everything()
 	foreach (boost::function<void(display&)> f, redraw_observers_) {
 		f(*this);
 	}
+	
+	complete_redraw_event_.notify_observers();
 }
 
 void display::add_redraw_observer(boost::function<void(display&)> f)

@@ -85,7 +85,8 @@ replay_controller::~replay_controller()
 	//YogiHH
 	//not absolutely sure if this is needed, but it makes me feel a lot better ;-)
 	//feel free to delete this if it is not necessary
-	gui_->get_theme().theme_reset().detach_handler(this);
+	gui_->get_theme().theme_reset_event().detach_handler(this);
+	gui_->complete_redraw_event().detach_handler(this);
 }
 
 void replay_controller::init(){
@@ -118,7 +119,8 @@ void replay_controller::init_replay_display(){
 	DBG_REPLAY << "initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	rebuild_replay_theme();
-	gui_->get_theme().theme_reset().attach_handler(this);
+	gui_->get_theme().theme_reset_event().attach_handler(this);
+	gui_->complete_redraw_event().attach_handler(this);
 	DBG_REPLAY << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
@@ -230,8 +232,10 @@ void replay_controller::reset_replay(){
 	player_number_ = 1;
 	current_turn_ = 1;
 	previous_turn_ = 0;
+	skip_replay_ = false;
 	tod_manager_= tod_manager_start_;
 	recorder.start_replay();
+	recorder.set_skip(false);
 	units_ = units_start_;
 	gamestate_ = gamestate_start_;
 	teams_ = teams_start_;
@@ -326,8 +330,8 @@ void replay_controller::replay_show_team1(){
 }
 
 void replay_controller::replay_skip_animation(){
-	recorder.set_skip(!recorder.is_skipping());
 	skip_replay_ = !skip_replay_;
+	recorder.set_skip(skip_replay_);
 }
 
 //move all sides till stop/end
@@ -458,8 +462,17 @@ void replay_controller::show_statistics(){
 	menu_handler_.show_statistics(gui_->playing_team()+1);
 }
 
-void replay_controller::handle_generic_event(const std::string& /*name*/){
-	rebuild_replay_theme();
+void replay_controller::handle_generic_event(const std::string& name){
+	
+	if( name == "completely_redrawn" ) {
+		buttons_.update(gui_);
+		
+		gui::button* skip_animation_button = gui_->find_button("skip-animation");
+		
+		skip_animation_button->set_check(skip_replay_);
+	} else {
+		rebuild_replay_theme();
+	}
 }
 
 bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const

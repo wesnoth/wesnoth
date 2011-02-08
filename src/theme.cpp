@@ -524,7 +524,7 @@ theme::menu::menu(const config &cfg):
 }
 
 theme::theme(const config& cfg, const SDL_Rect& screen) :
-	theme_reset_("theme_reset"),
+	theme_reset_event_("theme_reset"),
 	cur_theme(),
 	cfg_(),
 	panels_(),
@@ -594,7 +594,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 			m->set_title(title_stash[m->get_id()]);
 	}
 
-	theme_reset_.notify_observers();
+	theme_reset_event_.notify_observers();
 
 	return result;
 }

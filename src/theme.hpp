@@ -223,7 +223,7 @@ public:
 
 	const tborder& border() const { return border_; }
 
-	events::generic_event& theme_reset() { return theme_reset_; }
+	events::generic_event& theme_reset_event() { return theme_reset_event_; }
 
 private:
 	theme::object& find_element(std::string id);
@@ -233,7 +233,7 @@ private:
 
 	//notify observers that the theme has been rebuilt completely
 	//atm this is used for replay_controller to add replay controls to the standard theme
-	events::generic_event theme_reset_;
+	events::generic_event theme_reset_event_;
 
 	static std::map<std::string, config> known_themes;
 	std::string cur_theme;
