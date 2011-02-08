@@ -5,6 +5,8 @@ Version 1.9.4+svn:
    * Updated translations: British English, Chinese (Traditional), Dutch,
      Finnish, French, Galician, German, Irish, Italian, Japanese,
      Portuguese (Brazil), Spanish, Vietnamese
+ * User interface:
+   * Added: circle to the gui2 canvas. 
  * WML engine:
    * Allow [color_range] and [color_palette] nodes to be inserted at top-level
      by add-ons to globally define custom ranges and palettes.
@@ -12,6 +14,7 @@ Version 1.9.4+svn:
      a SUF. The [teleport] ability retrofitted to use this tag.
  * Miscellaneous and bugfixes:
    * Fixed: g++ compiler warnings.
+   * Added: cmake target to build the gui design pdf.
 
 Version 1.9.4:
  * AI:
