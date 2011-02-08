@@ -1317,305 +1317,374 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 	return out.str();
 }
 
-	// Shutdown, restart and sample commands can only be issued via the socket.
-	void server::shut_down_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
+// Shutdown, restart and sample commands can only be issued via the socket.
+void server::shut_down_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
 
-		if (issuer_name != "*socket*" && !allow_remote_shutdown_) {
-			*out << denied_msg;
-			return;
-		}
-		if (parameters == "now") {
-			throw network::error("shut down");
-		} else {
-			// Graceful shut down.
-			server_.stop();
-			input_.reset();
-			graceful_restart = true;
-			process_command("msg The server is shutting down. You may finish your games but can't start new ones. Once all games have ended the server will exit.", issuer_name);
-			*out << "Server is doing graceful shut down.";
-		}
+	if (issuer_name != "*socket*" && !allow_remote_shutdown_) {
+		*out << denied_msg;
+		return;
+	}
+	if (parameters == "now") {
+		throw network::error("shut down");
+	} else {
+		// Graceful shut down.
+		server_.stop();
+		input_.reset();
+		graceful_restart = true;
+		process_command("msg The server is shutting down. You may finish your games but can't start new ones. Once all games have ended the server will exit.", issuer_name);
+		*out << "Server is doing graceful shut down.";
+	}
+}
+
+void server::restart_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
+	assert(out != NULL);
+
+	if (issuer_name != "*socket*" && !allow_remote_shutdown_) {
+		*out << denied_msg;
+		return;
 	}
 
-	void server::restart_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
-		assert(out != NULL);
+	if (restart_command.empty()) {
+		*out << "No restart_command configured! Not restarting.";
+	} else {
+		graceful_restart = true;
+		// stop listening socket
+		server_.stop();
+		input_.reset();
+		// start new server
+		start_new_server();
+		process_command("msg The server has been restarted. You may finish current games but can't start new ones and new players can't join this (old) server instance. (So if a player of your game disconnects you have to save, reconnect and reload the game on the new server instance. It is actually recommended to do that right away.)", issuer_name);
+		*out << "New server started.";
+	}
+}
 
-		if (issuer_name != "*socket*" && !allow_remote_shutdown_) {
-			*out << denied_msg;
-			return;
-		}
+void server::sample_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
 
-		if (restart_command.empty()) {
-			*out << "No restart_command configured! Not restarting.";
-		} else {
-			graceful_restart = true;
-			// stop listening socket
-			server_.stop();
-			input_.reset();
-			// start new server
-			start_new_server();
-			process_command("msg The server has been restarted. You may finish current games but can't start new ones and new players can't join this (old) server instance. (So if a player of your game disconnects you have to save, reconnect and reload the game on the new server instance. It is actually recommended to do that right away.)", issuer_name);
-			*out << "New server started.";
-		}
+	if (parameters.empty()) {
+		*out << "Current sample frequency: " << request_sample_frequency;
+		return;
+	} else if (issuer_name != "*socket*") {
+		*out << denied_msg;
+		return;
+	}
+	request_sample_frequency = atoi(parameters.c_str());
+	if (request_sample_frequency <= 0) {
+		*out << "Sampling turned off.";
+	} else {
+		*out << "Sampling every " << request_sample_frequency << " requests.";
+	}
+}
+
+void server::help_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
+	assert(out != NULL);
+	*out << help_msg;
+}
+
+void server::stats_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
+	assert(out != NULL);
+
+	*out << "Number of games = " << games_.size()
+		<< "\nTotal number of users = " << players_.size()
+		<< "\nNumber of users in the lobby = " << rooms_.lobby().size();
+}
+
+void server::metrics_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
+	assert(out != NULL);
+	*out << metrics_;
+}
+
+void server::requests_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
+	assert(out != NULL);
+	metrics_.requests(*out);
+}
+
+void server::games_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
+	assert(out != NULL);
+	metrics_.games(*out);
+}
+
+void server::wml_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
+	assert(out != NULL);
+	*out << simple_wml::document::stats();
+}
+
+void server::netstats_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
+
+	network::pending_statistics stats = network::get_pending_stats();
+	*out << "Network stats:\nPending send buffers: "
+		<< stats.npending_sends << "\nBytes in buffers: "
+		<< stats.nbytes_pending_sends << "\n";
+
+	if (utils::lowercase(parameters) == "all") {
+		*out << network::get_bandwidth_stats_all();
+	} else {
+		*out << network::get_bandwidth_stats(); // stats from previuos hour
+	}
+}
+
+void server::adminmsg_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
+
+	if (parameters == "") {
+		*out << "You must type a message.";
+		return;
 	}
 
-	void server::sample_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
+	const std::string& sender = issuer_name;
+	const std::string& message = parameters;
+	LOG_SERVER << "Admin message: <" << sender << (message.find("/me ") == 0
+			? std::string(message.begin() + 3, message.end()) + ">"
+			: "> " + message) << "\n";
 
-		if (parameters.empty()) {
-			*out << "Current sample frequency: " << request_sample_frequency;
-			return;
-		} else if (issuer_name != "*socket*") {
-			*out << denied_msg;
-			return;
-		}
-		request_sample_frequency = atoi(parameters.c_str());
-		if (request_sample_frequency <= 0) {
-			*out << "Sampling turned off.";
-		} else {
-			*out << "Sampling every " << request_sample_frequency << " requests.";
-		}
-	}
-
-	void server::help_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
-		assert(out != NULL);
-		*out << help_msg;
-	}
-
-	void server::stats_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
-		assert(out != NULL);
-
-		*out << "Number of games = " << games_.size()
-			<< "\nTotal number of users = " << players_.size()
-			<< "\nNumber of users in the lobby = " << rooms_.lobby().size();
-	}
-
-	void server::metrics_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
-		assert(out != NULL);
-		*out << metrics_;
-	}
-
-	void server::requests_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
-		assert(out != NULL);
-		metrics_.requests(*out);
-	}
-
-	void server::games_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
-		assert(out != NULL);
-		metrics_.games(*out);
-	}
-
-	void server::wml_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
-		assert(out != NULL);
-		*out << simple_wml::document::stats();
-	}
-
-	void server::netstats_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
-
-		network::pending_statistics stats = network::get_pending_stats();
-		*out << "Network stats:\nPending send buffers: "
-		    << stats.npending_sends << "\nBytes in buffers: "
-			<< stats.nbytes_pending_sends << "\n";
-
-		if (utils::lowercase(parameters) == "all") {
-			*out << network::get_bandwidth_stats_all();
-		} else {
-			*out << network::get_bandwidth_stats(); // stats from previuos hour
-		}
-	}
-
-	void server::adminmsg_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
-
-		if (parameters == "") {
-			*out << "You must type a message.";
-			return;
-		}
-
-		const std::string& sender = issuer_name;
-		const std::string& message = parameters;
-		LOG_SERVER << "Admin message: <" << sender << (message.find("/me ") == 0
-				? std::string(message.begin() + 3, message.end()) + ">"
-				: "> " + message) << "\n";
-
-		simple_wml::document data;
-		simple_wml::node& msg = data.root().add_child("whisper");
-		msg.set_attr_dup("sender", ("admin message from " + sender).c_str());
-		msg.set_attr_dup("message", message.c_str());
-		int n = 0;
-		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-			if (pl->second.is_moderator()) {
-				++n;
-				send_doc(data, pl->first);
-			}
-		}
-
-		if (n == 0) {
-			*out << "Sorry, no admin available right now. But your message got logged.";
-			return;
-		}
-
-		*out << "Message sent to " << n << " admins.";
-	}
-
-	void server::pm_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
-
-		std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
-		if (first_space == parameters.end()) {
-			*out << "You must name a receiver.";
-			return;
-		}
-
-		const std::string& sender = issuer_name;
-		const std::string receiver(parameters.begin(), first_space);
-		std::string message(first_space + 1, parameters.end());
-		utils::strip(message);
-		if (message.empty()) {
-			*out << "You must type a message.";
-			return;
-		}
-
-		simple_wml::document data;
-		simple_wml::node& msg = data.root().add_child("whisper");
-		// This string is parsed by the client!
-		msg.set_attr_dup("sender", ("server message from " + sender).c_str());
-		msg.set_attr_dup("message", message.c_str());
-		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-			if (receiver != pl->second.name().c_str()) {
-				continue;
-			}
+	simple_wml::document data;
+	simple_wml::node& msg = data.root().add_child("whisper");
+	msg.set_attr_dup("sender", ("admin message from " + sender).c_str());
+	msg.set_attr_dup("message", message.c_str());
+	int n = 0;
+	for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+		if (pl->second.is_moderator()) {
+			++n;
 			send_doc(data, pl->first);
-			*out << "Message to " << receiver << " successfully sent.";
-			return;
 		}
-
-		*out << "No such nick: " << receiver;
 	}
 
-	void server::msg_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
-
-		if (parameters == "") {
-			*out << "You must type a message.";
-			return;
-		}
-
-		rooms_.lobby().send_server_message_to_all(parameters);
-		for (std::vector<wesnothd::game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
-			(*g)->send_server_message_to_all(parameters);
-		}
-
-		LOG_SERVER << "<server" << (parameters.find("/me ") == 0
-				? std::string(parameters.begin() + 3, parameters.end()) + ">"
-				: "> " + parameters) << "\n";
-
-		*out << "message '" << parameters << "' relayed to players";
+	if (n == 0) {
+		*out << "Sorry, no admin available right now. But your message got logged.";
+		return;
 	}
 
-	void server::lobbymsg_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
+	*out << "Message sent to " << n << " admins.";
+}
 
-		if (parameters == "") {
-			*out << "You must type a message.";
-			return;
-		}
+void server::pm_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
 
-		rooms_.lobby().send_server_message_to_all(parameters);
-		LOG_SERVER << "<server" << (parameters.find("/me ") == 0
-				? std::string(parameters.begin() + 3, parameters.end()) + ">"
-				: "> " + parameters) << "\n";
-
-		*out << "message '" << parameters << "' relayed to players";
+	std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
+	if (first_space == parameters.end()) {
+		*out << "You must name a receiver.";
+		return;
 	}
 
-	void server::status_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
+	const std::string& sender = issuer_name;
+	const std::string receiver(parameters.begin(), first_space);
+	std::string message(first_space + 1, parameters.end());
+	utils::strip(message);
+	if (message.empty()) {
+		*out << "You must type a message.";
+		return;
+	}
 
-		*out << "STATUS REPORT for '" << parameters << "'";
-		bool found_something = false;
-		// If a simple username is given we'll check for its IP instead.
-		if (utils::isvalid_username(parameters)) {
-			for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-				if (parameters == pl->second.name()) {
-					parameters = network::ip_address(pl->first);
-					found_something = true;
-					break;
-				}
-			}
-			if (!found_something) {
-				//out << "\nNo match found. You may want to check with 'searchlog'.";
-				//return out.str();
-				*out << process_command("searchlog " + parameters, issuer_name);
-				return;
-			}
+	simple_wml::document data;
+	simple_wml::node& msg = data.root().add_child("whisper");
+	// This string is parsed by the client!
+	msg.set_attr_dup("sender", ("server message from " + sender).c_str());
+	msg.set_attr_dup("message", message.c_str());
+	for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+		if (receiver != pl->second.name().c_str()) {
+			continue;
 		}
-		const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
+		send_doc(data, pl->first);
+		*out << "Message to " << receiver << " successfully sent.";
+		return;
+	}
+
+	*out << "No such nick: " << receiver;
+}
+
+void server::msg_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
+
+	if (parameters == "") {
+		*out << "You must type a message.";
+		return;
+	}
+
+	rooms_.lobby().send_server_message_to_all(parameters);
+	for (std::vector<wesnothd::game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
+		(*g)->send_server_message_to_all(parameters);
+	}
+
+	LOG_SERVER << "<server" << (parameters.find("/me ") == 0
+			? std::string(parameters.begin() + 3, parameters.end()) + ">"
+			: "> " + parameters) << "\n";
+
+	*out << "message '" << parameters << "' relayed to players";
+}
+
+void server::lobbymsg_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
+
+	if (parameters == "") {
+		*out << "You must type a message.";
+		return;
+	}
+
+	rooms_.lobby().send_server_message_to_all(parameters);
+	LOG_SERVER << "<server" << (parameters.find("/me ") == 0
+			? std::string(parameters.begin() + 3, parameters.end()) + ">"
+			: "> " + parameters) << "\n";
+
+	*out << "message '" << parameters << "' relayed to players";
+}
+
+void server::status_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
+
+	*out << "STATUS REPORT for '" << parameters << "'";
+	bool found_something = false;
+	// If a simple username is given we'll check for its IP instead.
+	if (utils::isvalid_username(parameters)) {
 		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-			if (parameters == "" || parameters == "*"
-			|| (match_ip && utils::wildcard_string_match(network::ip_address(pl->first), parameters))
-			|| (!match_ip && utils::wildcard_string_match(pl->second.name(), parameters))) {
+			if (parameters == pl->second.name()) {
+				parameters = network::ip_address(pl->first);
 				found_something = true;
-				*out << std::endl << player_status(pl);
+				break;
 			}
 		}
-		if (!found_something) *out << "\nNo match found. You may want to check with 'searchlog'.";
+		if (!found_something) {
+			//out << "\nNo match found. You may want to check with 'searchlog'.";
+			//return out.str();
+			*out << process_command("searchlog " + parameters, issuer_name);
+			return;
+		}
 	}
+	const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
+	for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+		if (parameters == "" || parameters == "*"
+		|| (match_ip && utils::wildcard_string_match(network::ip_address(pl->first), parameters))
+		|| (!match_ip && utils::wildcard_string_match(pl->second.name(), parameters))) {
+			found_something = true;
+			*out << std::endl << player_status(pl);
+		}
+	}
+	if (!found_something) *out << "\nNo match found. You may want to check with 'searchlog'.";
+}
 
-	void server::clones_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
-		assert(out != NULL);
+void server::clones_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
+	assert(out != NULL);
 
-		*out << "CLONES STATUS REPORT";
-		std::set<std::string> clones;
-		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-			if (clones.find(network::ip_address(pl->first)) != clones.end()) continue;
-			bool found = false;
-			for (wesnothd::player_map::const_iterator clone = boost::next(pl); clone != players_.end(); ++clone) {
-				if (network::ip_address(pl->first) == network::ip_address(clone->first)) {
-					if (!found) {
-						found = true;
-						clones.insert(network::ip_address(pl->first));
-						*out << std::endl << player_status(pl);
-					}
-					*out << std::endl << player_status(clone);
+	*out << "CLONES STATUS REPORT";
+	std::set<std::string> clones;
+	for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+		if (clones.find(network::ip_address(pl->first)) != clones.end()) continue;
+		bool found = false;
+		for (wesnothd::player_map::const_iterator clone = boost::next(pl); clone != players_.end(); ++clone) {
+			if (network::ip_address(pl->first) == network::ip_address(clone->first)) {
+				if (!found) {
+					found = true;
+					clones.insert(network::ip_address(pl->first));
+					*out << std::endl << player_status(pl);
 				}
+				*out << std::endl << player_status(clone);
 			}
 		}
-		if (clones.empty()) {
-			*out << "No clones found.";
-		}
+	}
+	if (clones.empty()) {
+		*out << "No clones found.";
+	}
+}
+
+void server::bans_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
+
+	if (parameters.empty()) {
+		ban_manager_.list_bans(*out);
+	} else if (utils::lowercase(parameters) == "deleted") {
+		ban_manager_.list_deleted_bans(*out);
+	} else if (utils::lowercase(parameters).find("deleted") == 0) {
+		std::string mask = parameters.substr(7);
+		ban_manager_.list_deleted_bans(*out, utils::strip(mask));
+	} else {
+		ban_manager_.list_bans(*out, utils::strip(parameters));
+	}
+}
+
+void server::ban_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
+
+	bool banned = false;
+	std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
+
+	if (first_space == parameters.end()) {
+		*out << ban_manager_.get_ban_help();
+		return;
 	}
 
-	void server::bans_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
+	std::string::iterator second_space = std::find(first_space + 1, parameters.end(), ' ');
+	const std::string target(parameters.begin(), first_space);
 
-		if (parameters.empty()) {
-			ban_manager_.list_bans(*out);
-		} else if (utils::lowercase(parameters) == "deleted") {
-			ban_manager_.list_deleted_bans(*out);
-		} else if (utils::lowercase(parameters).find("deleted") == 0) {
-			std::string mask = parameters.substr(7);
-			ban_manager_.list_deleted_bans(*out, utils::strip(mask));
-		} else {
-			ban_manager_.list_bans(*out, utils::strip(parameters));
-		}
+	const std::string duration(first_space + 1, second_space);
+	time_t parsed_time = time(NULL);
+	if (ban_manager_.parse_time(duration, &parsed_time) == false) {
+		*out << "Failed to parse the ban duration: '" << duration << "'\n"
+			<< ban_manager_.get_ban_help();
+		return;
 	}
 
-	void server::ban_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	if (second_space == parameters.end()) {
+		--second_space;
+	}
+	std::string reason(second_space + 1, parameters.end());
+	utils::strip(reason);
+	if (reason.empty()) {
+		*out << "You need to give a reason for the ban.";
+		return;
+	}
+
+	std::string dummy_group;
+
+	// if we find a '.' consider it an ip mask
+	/** @todo  FIXME: make a proper check for valid IPs. */
+	if (std::count(target.begin(), target.end(), '.') >= 1) {
+		banned = true;
+
+		*out << ban_manager_.ban(target, parsed_time, reason, issuer_name, dummy_group);
+	} else {
+		for (wesnothd::player_map::const_iterator pl = players_.begin();
+				pl != players_.end(); ++pl)
+		{
+			if (utils::wildcard_string_match(pl->second.name(), target)) {
+				if (banned) *out << "\n";
+				else banned = true;
+				const std::string ip = network::ip_address(pl->first);
+				*out << ban_manager_.ban(ip, parsed_time, reason, issuer_name, dummy_group, target);
+			}
+		}
+		if (!banned) {
+			// If nobody was banned yet check the ip_log but only if a
+			// simple username was used to prevent accidental bans.
+			// @todo FIXME: since we can have several entries now we should only ban the latest or so
+			/*if (utils::isvalid_username(target)) {
+				for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
+						i != ip_log_.end(); ++i) {
+					if (i->nick == target) {
+						if (banned) out << "\n";
+						else banned = true;
+						out << ban_manager_.ban(i->ip, parsed_time, reason, issuer_name, group, target);
+					}
+				}
+			}*/
+			if(!banned) {
+				*out << "Nickmask '" << target << "' did not match, no bans set.";
+			}
+		}
+	}
+}
+
+void server::kickban_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 		assert(out != NULL);
 
 		bool banned = false;
 		std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
-
 		if (first_space == parameters.end()) {
 			*out << ban_manager_.get_ban_help();
 			return;
 		}
-
 		std::string::iterator second_space = std::find(first_space + 1, parameters.end(), ' ');
 		const std::string target(parameters.begin(), first_space);
-
 		const std::string duration(first_space + 1, second_space);
 		time_t parsed_time = time(NULL);
 		if (ban_manager_.parse_time(duration, &parsed_time) == false) {
@@ -1642,6 +1711,17 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			banned = true;
 
 			*out << ban_manager_.ban(target, parsed_time, reason, issuer_name, dummy_group);
+
+			for (wesnothd::player_map::const_iterator pl = players_.begin();
+					pl != players_.end(); ++pl)
+			{
+				if (utils::wildcard_string_match(network::ip_address(pl->first), target)) {
+					*out << "\nKicked " << pl->second.name() << " ("
+						<< network::ip_address(pl->first) << ").";
+					send_error(pl->first, "You have been banned. Reason: " + reason);
+					network::queue_disconnect(pl->first);
+				}
+			}
 		} else {
 			for (wesnothd::player_map::const_iterator pl = players_.begin();
 					pl != players_.end(); ++pl)
@@ -1651,6 +1731,9 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 					else banned = true;
 					const std::string ip = network::ip_address(pl->first);
 					*out << ban_manager_.ban(ip, parsed_time, reason, issuer_name, dummy_group, target);
+					*out << "\nKicked " << pl->second.name() << " (" << ip << ").";
+					send_error(pl->first, "You have been banned. Reason: " + reason);
+					network::queue_disconnect(pl->first);
 				}
 			}
 			if (!banned) {
@@ -1674,7 +1757,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		}
 	}
 
-	void server::kickban_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+void server::gban_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 			assert(out != NULL);
 
 			bool banned = false;
@@ -1685,6 +1768,11 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			}
 			std::string::iterator second_space = std::find(first_space + 1, parameters.end(), ' ');
 			const std::string target(parameters.begin(), first_space);
+
+			std::string group = std::string(first_space + 1, second_space);
+			first_space = second_space;
+			second_space = std::find(first_space + 1, parameters.end(), ' ');
+
 			const std::string duration(first_space + 1, second_space);
 			time_t parsed_time = time(NULL);
 			if (ban_manager_.parse_time(duration, &parsed_time) == false) {
@@ -1703,25 +1791,12 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 				return;
 			}
 
-			std::string dummy_group;
-
 			// if we find a '.' consider it an ip mask
 			/** @todo  FIXME: make a proper check for valid IPs. */
 			if (std::count(target.begin(), target.end(), '.') >= 1) {
 				banned = true;
 
-				*out << ban_manager_.ban(target, parsed_time, reason, issuer_name, dummy_group);
-
-				for (wesnothd::player_map::const_iterator pl = players_.begin();
-						pl != players_.end(); ++pl)
-				{
-					if (utils::wildcard_string_match(network::ip_address(pl->first), target)) {
-						*out << "\nKicked " << pl->second.name() << " ("
-							<< network::ip_address(pl->first) << ").";
-						send_error(pl->first, "You have been banned. Reason: " + reason);
-						network::queue_disconnect(pl->first);
-					}
-				}
+				*out << ban_manager_.ban(target, parsed_time, reason, issuer_name, group);
 			} else {
 				for (wesnothd::player_map::const_iterator pl = players_.begin();
 						pl != players_.end(); ++pl)
@@ -1730,10 +1805,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 						if (banned) *out << "\n";
 						else banned = true;
 						const std::string ip = network::ip_address(pl->first);
-						*out << ban_manager_.ban(ip, parsed_time, reason, issuer_name, dummy_group, target);
-						*out << "\nKicked " << pl->second.name() << " (" << ip << ").";
-						send_error(pl->first, "You have been banned. Reason: " + reason);
-						network::queue_disconnect(pl->first);
+						*out << ban_manager_.ban(ip, parsed_time, reason, issuer_name, group, target);
 					}
 				}
 				if (!banned) {
@@ -1757,189 +1829,117 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			}
 		}
 
-	void server::gban_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-				assert(out != NULL);
+void server::unban_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
 
-				bool banned = false;
-				std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
-				if (first_space == parameters.end()) {
-					*out << ban_manager_.get_ban_help();
-					return;
-				}
-				std::string::iterator second_space = std::find(first_space + 1, parameters.end(), ' ');
-				const std::string target(parameters.begin(), first_space);
+	if (parameters == "") {
+		*out << "You must enter an ipmask to unban.";
+		return;
+	}
+	ban_manager_.unban(*out, parameters);
+}
 
-				std::string group = std::string(first_space + 1, second_space);
-				first_space = second_space;
-				second_space = std::find(first_space + 1, parameters.end(), ' ');
+void server::ungban_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
 
-				const std::string duration(first_space + 1, second_space);
-				time_t parsed_time = time(NULL);
-				if (ban_manager_.parse_time(duration, &parsed_time) == false) {
-					*out << "Failed to parse the ban duration: '" << duration << "'\n"
-						<< ban_manager_.get_ban_help();
-					return;
-				}
+	if (parameters == "") {
+		*out << "You must enter an ipmask to ungban.";
+		return;
+	}
+	ban_manager_.unban_group(*out, parameters);
+}
 
-				if (second_space == parameters.end()) {
-					--second_space;
-				}
-				std::string reason(second_space + 1, parameters.end());
-				utils::strip(reason);
-				if (reason.empty()) {
-					*out << "You need to give a reason for the ban.";
-					return;
-				}
+void server::kick_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
 
-				// if we find a '.' consider it an ip mask
-				/** @todo  FIXME: make a proper check for valid IPs. */
-				if (std::count(target.begin(), target.end(), '.') >= 1) {
-					banned = true;
+	if (parameters == "") {
+		*out <<  "You must enter a mask to kick.";
+		return;
+	}
+	std::string::iterator i = std::find(parameters.begin(), parameters.end(), ' ');
+	const std::string kick_mask = std::string(parameters.begin(), i);
+	const std::string kick_message =
+			(i == parameters.end() ? "You have been kicked."
+			: "You have been kicked. Reason: " + std::string(i + 1, parameters.end()));
+	bool kicked = false;
+	// if we find a '.' consider it an ip mask
+	const bool match_ip = (std::count(kick_mask.begin(), kick_mask.end(), '.') >= 1);
+	for (wesnothd::player_map::const_iterator pl = players_.begin();
+		pl != players_.end(); ++pl)
+	{
+		if ((match_ip && utils::wildcard_string_match(network::ip_address(pl->first), kick_mask))
+		|| (!match_ip && utils::wildcard_string_match(pl->second.name(), kick_mask))) {
+			if (kicked) *out << "\n";
+			else kicked = true;
+			*out << "Kicked " << pl->second.name() << " ("
+				<< network::ip_address(pl->first) << "). '"
+				<< kick_message << "'";
+			send_error(pl->first, kick_message);
+			network::queue_disconnect(pl->first);
+		}
+	}
+	if (!kicked) *out << "No user matched '" << kick_mask << "'.";
+}
 
-					*out << ban_manager_.ban(target, parsed_time, reason, issuer_name, group);
-				} else {
-					for (wesnothd::player_map::const_iterator pl = players_.begin();
-							pl != players_.end(); ++pl)
-					{
-						if (utils::wildcard_string_match(pl->second.name(), target)) {
-							if (banned) *out << "\n";
-							else banned = true;
-							const std::string ip = network::ip_address(pl->first);
-							*out << ban_manager_.ban(ip, parsed_time, reason, issuer_name, group, target);
-						}
-					}
-					if (!banned) {
-						// If nobody was banned yet check the ip_log but only if a
-						// simple username was used to prevent accidental bans.
-						// @todo FIXME: since we can have several entries now we should only ban the latest or so
-						/*if (utils::isvalid_username(target)) {
-							for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
-									i != ip_log_.end(); ++i) {
-								if (i->nick == target) {
-									if (banned) out << "\n";
-									else banned = true;
-									out << ban_manager_.ban(i->ip, parsed_time, reason, issuer_name, group, target);
-								}
-							}
-						}*/
-						if(!banned) {
-							*out << "Nickmask '" << target << "' did not match, no bans set.";
-						}
-					}
-				}
-			}
+void server::motd_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
 
-	void server::unban_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
-
-		if (parameters == "") {
-			*out << "You must enter an ipmask to unban.";
+	if (parameters == "") {
+		if (motd_ != "") {
+			*out << "Message of the day:\n" << motd_;
 			return;
-		}
-		ban_manager_.unban(*out, parameters);
-	}
-
-	void server::ungban_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
-
-		if (parameters == "") {
-			*out << "You must enter an ipmask to ungban.";
-			return;
-		}
-		ban_manager_.unban_group(*out, parameters);
-	}
-
-	void server::kick_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
-
-		if (parameters == "") {
-			*out <<  "You must enter a mask to kick.";
-			return;
-		}
-		std::string::iterator i = std::find(parameters.begin(), parameters.end(), ' ');
-		const std::string kick_mask = std::string(parameters.begin(), i);
-		const std::string kick_message =
-				(i == parameters.end() ? "You have been kicked."
-				: "You have been kicked. Reason: " + std::string(i + 1, parameters.end()));
-		bool kicked = false;
-		// if we find a '.' consider it an ip mask
-		const bool match_ip = (std::count(kick_mask.begin(), kick_mask.end(), '.') >= 1);
-		for (wesnothd::player_map::const_iterator pl = players_.begin();
-			pl != players_.end(); ++pl)
-		{
-			if ((match_ip && utils::wildcard_string_match(network::ip_address(pl->first), kick_mask))
-			|| (!match_ip && utils::wildcard_string_match(pl->second.name(), kick_mask))) {
-				if (kicked) *out << "\n";
-				else kicked = true;
-				*out << "Kicked " << pl->second.name() << " ("
-					<< network::ip_address(pl->first) << "). '"
-					<< kick_message << "'";
-				send_error(pl->first, kick_message);
-				network::queue_disconnect(pl->first);
-			}
-		}
-		if (!kicked) *out << "No user matched '" << kick_mask << "'.";
-	}
-
-	void server::motd_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
-
-		if (parameters == "") {
-			if (motd_ != "") {
-				*out << "Message of the day:\n" << motd_;
-				return;
-			} else {
-				*out << "No message of the day set.";
-				return;
-			}
-		}
-
-		motd_ = parameters;
-		*out << "Message of the day set to: " << motd_;
-	}
-
-	void server::searchlog_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
-
-		if (parameters.empty()) {
-			*out << "You must enter a mask to search for.";
-			return;
-		}
-		*out << "IP/NICK LOG for '" << parameters << "'";
-
-		bool found_something = false;
-
-		// If this looks like an IP look up which nicks have been connected from it
-		// Otherwise look for the last IP the nick used to connect
-		const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
-		for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
-				i != ip_log_.end(); ++i) {
-			const std::string& username = i->nick;
-			const std::string& ip = i->ip;
-			if ((match_ip && utils::wildcard_string_match(ip, parameters))
-			|| (!match_ip && utils::wildcard_string_match(username, parameters))) {
-				found_something = true;
-				wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_user, _1, username, ip));
-				if (pl != players_.end()) {
-					*out << std::endl << player_status(pl);
-				} else {
-					*out << "\n'" << username << "' @ " << ip << " last seen: " << lg::get_timestamp(i->log_off, "%H:%M:%S %d.%m.%Y");
-				}
-			}
-		}
-		if (!found_something) *out << "\nNo match found.";
-	}
-
-	void server::dul_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-		assert(out != NULL);
-
-		if (parameters == "") {
-			*out << "Unregistered login is " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
 		} else {
-			deny_unregistered_login_ = (utils::lowercase(parameters) == "yes");
-			*out << "Unregistered login is now " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
+			*out << "No message of the day set.";
+			return;
 		}
 	}
+
+	motd_ = parameters;
+	*out << "Message of the day set to: " << motd_;
+}
+
+void server::searchlog_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
+
+	if (parameters.empty()) {
+		*out << "You must enter a mask to search for.";
+		return;
+	}
+	*out << "IP/NICK LOG for '" << parameters << "'";
+
+	bool found_something = false;
+
+	// If this looks like an IP look up which nicks have been connected from it
+	// Otherwise look for the last IP the nick used to connect
+	const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
+	for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
+			i != ip_log_.end(); ++i) {
+		const std::string& username = i->nick;
+		const std::string& ip = i->ip;
+		if ((match_ip && utils::wildcard_string_match(ip, parameters))
+		|| (!match_ip && utils::wildcard_string_match(username, parameters))) {
+			found_something = true;
+			wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_user, _1, username, ip));
+			if (pl != players_.end()) {
+				*out << std::endl << player_status(pl);
+			} else {
+				*out << "\n'" << username << "' @ " << ip << " last seen: " << lg::get_timestamp(i->log_off, "%H:%M:%S %d.%m.%Y");
+			}
+		}
+	}
+	if (!found_something) *out << "\nNo match found.";
+}
+
+void server::dul_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
+	assert(out != NULL);
+
+	if (parameters == "") {
+		*out << "Unregistered login is " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
+	} else {
+		deny_unregistered_login_ = (utils::lowercase(parameters) == "yes");
+		*out << "Unregistered login is now " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
+	}
+}
 
 void server::process_nickserv(const network::connection sock, simple_wml::node& data) {
 	const wesnothd::player_map::iterator pl = players_.find(sock);
