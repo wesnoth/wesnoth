@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 13:09+0100\n"
-"PO-Revision-Date: 2011-01-19 13:57+0100\n"
+"PO-Revision-Date: 2011-01-25 22:38+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -3083,7 +3083,7 @@ msgstr "Exp."
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:266
 #: data/themes/experimental.cfg:205
 msgid "gold"
-msgstr "Ouro"
+msgstr "moedas"
 
 #. [label]: id=villages-icon
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:275
@@ -3941,9 +3941,10 @@ msgstr "Escenario descoñecido"
 msgid "Reloaded game"
 msgstr "Partida recargada"
 
+# Refírese á cantidade de roldas xogadas nas partidas de varios xogadores que se están xogando.
 #: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:533
 msgid "Turn "
-msgstr "Quenda "
+msgstr "Rolda "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:537
 msgid "Vacant Slot:"
@@ -4165,6 +4166,7 @@ msgstr "Líder"
 msgid "Team"
 msgstr "Alianza"
 
+# Encabezado.
 #: src/menu_events.cpp:371 src/multiplayer_connect.cpp:983
 msgid "Gold"
 msgstr "Ouro"
@@ -4299,7 +4301,7 @@ msgstr "Non tes unidades dispoñibles para recrutar."
 msgid "Recruit"
 msgstr "Recrutar"
 
-# Mensaxe que aparece encabezando a lista de unidades a recrutar ou reincorporar. 
+# Mensaxe que aparece encabezando a lista de unidades a recrutar ou reincorporar.
 #: src/menu_events.cpp:723 src/menu_events.cpp:925
 msgid "Select unit:"
 msgstr "Escolle unha unidade:"
@@ -5185,7 +5187,7 @@ msgstr "Non se atopou ningún tipo de líder para a facción $faction|."
 
 #: src/multiplayer_connect.cpp:957
 msgid "Game Lobby: "
-msgstr "Sala de espera: "
+msgstr "Sala de espera. Escenario: "
 
 #: src/multiplayer_connect.cpp:979
 msgid "Player/Type"
@@ -5276,9 +5278,10 @@ msgstr "Era:"
 msgid "Map to play:"
 msgstr "Mapa a xogar:"
 
+# Aparece nalgúns elementos da lista de partidas para varios xogadores.
 #: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:276
 msgid "Use map settings"
-msgstr "Usar a configuración do mapa"
+msgstr "Úsase a configuración do mapa"
 
 #: src/multiplayer_create.cpp:85
 msgid "Random start time"
@@ -5342,7 +5345,7 @@ msgstr "A cantidade de experiencia que necesitan as unidades para avanzar."
 
 #: src/multiplayer_create.cpp:187
 msgid "Use scenario specific settings"
-msgstr "Usar a configuración específica do escenario."
+msgstr "Úsase a configuración específica do escenario"
 
 #: src/multiplayer_create.cpp:190
 msgid "Randomize time of day in begin"
@@ -5447,9 +5450,10 @@ msgstr "Tamaño: "
 msgid "--no games open--"
 msgstr "Non hai ningunha partida aberta."
 
+# Vai canda os nomes das partidas no modo con varios xogadores.
 #: src/multiplayer_lobby.cpp:158
 msgid " (Unknown Era)"
-msgstr " (Era descoñecida)"
+msgstr " (era descoñecida)"
 
 #: src/multiplayer_lobby.cpp:540 src/multiplayer_lobby.cpp:902
 msgid "Password Required"
@@ -5601,7 +5605,7 @@ msgstr "manexo da rede incorrecto"
 #: src/network.cpp:142 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
 msgid "Client disconnected"
-msgstr "Desconectouse un cliente."
+msgstr "O cliente desconectouse."
 
 #: src/network.cpp:557
 msgid "Could not add socket to socket set"
