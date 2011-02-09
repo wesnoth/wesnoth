@@ -1,0 +1,182 @@
+\chapter{Design details}
+
+Now that the big picture regarding the library is known, I dive into parts of
+the code that can use more explanation. A part not explained here, doesn't mean
+the code is obvious or simple, lack of time to document it properly is more
+likely the excuse.
+
+\section{Boot strapping the library}
+
+Before the library can be started the available widgets and windows need to
+be registered. This registering is done before \textsc{main()} is started.
+The registering is done by some small static classes that do the registering
+of the item\footnote{Widget or Window.} in its constructor. Since this
+involves some redundant typing there are REGISTER\_XXX macros written.
+
+After all items are register the library can be started, which is simply
+done by \textsc{gui2::init()}. This function does all required steps to get
+the library up and running.
+
+\section{Layout algorithm}
+
+An important part of the gui engine is to properly layout the widgets in the
+available space. The documentation of that algorithm is written in
+doxygen\footnote{\url{http://devdocs.wesnoth.org/layout\_algorihm.html}}.
+
+\section{Event handling and dispatching}
+\label{event_handling}
+
+The event handling translates the ``raw'' SDL events to an event structure
+specific to gui2, effectively decoupling the interface. This also allows adding
+frameworks to fake events. The documentation of that code is written in doxygen
+doxygen\footnote{\url{http://devdocs.wesnoth.org/event_dispatching.html}}
+
+\section{Iterator}
+
+The iterator class is written\footnote{The code hasn't been written yet only
+designed how it should look. Still I feel the design is rather finished and I
+can update this paper if details change too much.} to alleviate certain
+problems. The scrollbar containers have their own grid and a grid for it's
+content. The implantation makes the looping over all children tricky. This has
+been solved, but the design of the solution is rather awkward. Obviously fixing
+the design is the right thing to do, but that breaks the iteration.
+
+By first writing an iteration class the interface for iteration can be kept
+cleaner and the classes can easily be refactored.
+
+\subsection{Design}
+
+There are two basic kind of iterators in the design, the simple ones that can
+only travel themselves and their direct children. This type will be referred to
+as basic iterator hereafter. 
+
+This basic iterator is a superclass for several specific subclasses. The
+superclass is a concrete class, which can be instantiated. This class acts as a
+sentinel iterator, signalling the end of a list.
+
+Every widget has it's own creation function returning a pointer to a subclass
+object, allowing the main iterator to keep pointers to basic iterators, which it
+uses for travelling.
+
+\paragraph{}
+
+The other kind is called the main iterator. This iterator is the type the user
+normally creates and uses. The class is a template class, where a policy designs
+how the travelling should go\footnote{For now only one policy is planned, but I
+can think of more kinds}.
+
+When the main iterator is created it's possible to add a predicate to the
+constructor. The predicate determines what the travelling routine does with a
+candidate widget.
+
+Now that we know the players in the game look further about the implementation
+details and the decisions made.
+
+\subsubsection{Travelling}
+
+A widget can have several ``layers'' namely:
+
+\begin{description}
+\item[self] The widget itself.
+\item[grid] Container widget have a grid which is another layer, note that for a
+	grid widget, its grid and self layer are the same.
+\item[content] Scrollbar containers have a grid, containing their scrollbars and
+	a dummy content spacer. Their real content is stored in a separate internal
+	node, which is used as content layer.
+\end{description}
+
+The travel policy decides in which order these layers are visited, and when a
+node from a ``grid'' or ``content'' is returned, which direction to travel?
+Travel over them first and then into their children or children first? These
+decisions are coded in the travelling policy.
+
+While travelling, the policy finds a candidate widget to travel to. This widget is
+offered for evaluation to the predicate, which returns one of the following
+values:
+
+\begin{description}
+\item[return] The widget referred by the iterator is accepted and the algorithm
+	found its target.
+\item[continue] The widget is skipped and the next candidate is sought.
+\item[break] The widget is not allowed and the travelling at this layer stops.
+	This doesn't mean the algorithm gives up. This layer is cancelled but the
+	travelling path might have more options, which are used. At the moment there's
+	no way to tell that the candidate has failed and that the searching should stop
+	altogether, a ``exit'' result might be added for that case.
+\end{description}
+
+Obviously these names are inspired by the C++ keywords.
+
+\subsubsection{Copying}
+
+The basic iterators are copyable since their state can easily be copied.
+
+\paragraph{}
+
+The main iterator can't be copied, it would involve copying the state
+and copying the iterator is deemed not to be needed.
+
+\subsubsection{Operator++(int) (postfix increment)}
+
+The postfix increment operator hasn't been added to either widget type. For the
+basic iterators, there's the problem that the type iterator returned after
+iteration might not be the original type. This works properly on the prefix
+increment operator since it's a virtual function, using the covariant return
+type.
+
+The postfix version needs to return an object and that would involve slicing the
+returned object instead of binding it to a reference.
+
+\paragraph{}
+
+The main iterator has no postfix increment operator since it's not copyable.
+This of course is a bit the chicken and the egg problem, since I wanted to
+prevent the postfix increment operator I made the class not copyable.
+
+For most (standard) iterator classes the overhead of copying isn't too high
+since those iterators carry little state.  This iterator carries a lot of state,
+so you don't want to copy it. The cost of copying is $O(n)$ where $n$ is the
+depth in the widget tree the iterator is\footnote{This might depend on the
+travelling policy, but it won't get cheap}. So in the same spirit that the
+standard library doesn't add operator[] for std::list I omitted the postfix
+increment operator.
+
+
+\section{Callbacks}
+
+\S~\ref{event_handling} describes the generic event handling for the widgets but
+in some cases a widget wants to notify other widgets of a state change. Parts of
+gui2 use simple C-style callbacks for that purpose, but using boost::function
+makes better replacement. Therefore the code was analysed closer and another
+problem should be rectified; The callback causes a binding between two objects,
+but they are not notified of the deletion of the object leaving a hole for
+calling a destroyed object.
+
+In order to fix the problem two classes are defined:
+
+\begin{description}
+\item[tnotifier] The class sending the wanted notification.
+\item[tnotifiee] The class to manage the lifetime of the connection.
+\end{description}
+
+The tnotifiee is a small class that holds a pointer to the receiver its
+connected to, upon destruction it uses this pointer to deregister itself by the
+receiver. There after the callback function will no longer be called.
+
+The class should be used as member of a class so it can manage the lifetime of
+the connection with the tnotifier.
+
+\paragraph{}
+
+The tnotifier is the main class, when a callback is registered it stores the
+callbacks in an internal list and updates the pointer in the tnotifiee to
+itself.
+
+Upon destruction it clears the pointer in all tnotifiees that point to use, that
+way upon destruction of the tnotifiee it won't try to deregister itself with
+this destroyed object.
+
+Subclasses of the tnotifier should add an notification function so the notifier
+can call all callbacks in the list. The notifier should take care of this
+calling.
+

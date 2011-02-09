@@ -1,0 +1,105 @@
+\chapter{Introduction}
+
+This paper describes the general design of the gui2 project. The paper is
+divided in several chapters:
+\begin{description}
+\item[Chapter 1] Explains why yet another document is added instead of using the
+	doxygen and a short history of the gui2 project.
+\item[Chapter 2] Goes into the general design and structure of the gui2 project.
+\item[Chapter 3] Dives deeper into certain parts of the design of certain
+	classes and algorithms.
+\end{description}
+
+A omission in this paper is the simple story of how to add your own widgets in
+the C++ code\footnote{The WML part is described in the wiki.}. I have a slightly
+outdated paper on the subject, but decided not to add it; the paper needs
+polishing and updates, but I've some design changes planned for the 1.9
+development series. These changes will also change the way of adding new
+widgets, so that paper needs to be rewritten and added after the rewrite is
+complete.
+
+\section{Why why why?}
+
+Why is this document written in \LaTeX{} instead of doxygen? The reason is
+simple; during the development of the iterator class I felt I had to write a
+lot. Writing much documentation in doxygen feels awkward. A lot of time is spend
+on formatting, the number of subsections is limited (too low in my opinion).
+Also it's not possible to document why certain functions aren't implemented, a
+solution would be to make the function private and declared only, but that feels
+like an ugly hack.
+
+Why is the document needed? In my opinion most manuals written in doxygen are
+great as reference manuals but fail to explain how to do certain things with the
+library and fail to explain why certain things are implemented in the way it is.
+Writing a separate document separated from the code has the disadvantage of
+getting earlier out of sync when an implementation details differs, but this can
+be used as an advantage as well. Since it's hard to keep the details in sync,
+it's a good reason not to dive into these details. This makes a natural
+separation between which part should be in doxygen and which part in this
+manual.
+
+Why after the above, are some parts of gui2 documented in separate pages in
+doxygen? This indeed seems a contradiction, but it's not. Remember the first
+paragraph stating it's annoying to write this kind of documentation in doxygen?
+These parts are where I realized it's annoying to do it in doxygen and haven't
+been incorporated in this document\footnote{These parts are still mentioned in
+this paper, but they refer to the doxygen documentation.}.
+
+\section{History}
+
+The gui2 project was started late in 2007 to fix several problems I had with the
+current gui at that time. The problems I had were:
+\begin{enumerate}
+\item When using small resolutions the gui started to look bad, since widgets
+	simply left their container and were drawn outside it.
+\item Most of the gui was hard-coded in the C++ code and thus not configurable
+	for normal users.
+\item ThemeWML, the part that allows the user to configure the layout, is not
+	well understood by the current developers.
+\end{enumerate}
+
+This let to the following design goals:
+
+\begin{enumerate}
+\item The gui should look well at every possible resolution and automatically
+	fit well.
+\item Everything, or at least as much as possible should be configurable by WML.
+\item The project needed more documentation as the current ThemeWML, and explain
+	how to create your own guis.
+\end{enumerate}
+
+At the time of this writing the project is still work in progress\footnote{It
+was never expected to be a short during project.} and will still take while to
+finish. This initial goals were pretty clear, and still are. On the other hand
+how to implement certain parts provided to be less clear.
+
+The library is the first time I designed a gui toolkit and like with all larger
+projects, you need to learn from mistakes; preferably of others, but your doomed
+to make your own as well. The design process is an iterative one, causing some
+parts of the design to be changed several times. At the time of
+writing\footnote{Shortly before the 1.8 release.} a lot of areas feel stable,
+but others are still planned to be rewritten. Mainly the handling of scrollbar
+widgets feels awkward and hacky and are slated for a redesign.
+
+Other parts of the gui are still in the planning stage and not implemented yet,
+but the project moves along at a steady pace and more features will be added in
+the future.
+
+\paragraph{}
+
+The history of this document also goes back a long time, it's mostly build from
+various scraps of notes I have on my system. The plan was to change these notes
+to doxygen format some day put it in the source. The problem was to find a nice
+place in the source to do so.
+
+This lead to the fact the notes just stayed on my system and the number of
+notes accumulated. During travelling to work I started to design some things for
+the 1.9 development series and for the iterator class I needed a new kind of
+document. I decided that was the final straw and started to work on writing this
+document while travelling.
+
+Since you read this document it's uploaded in the Wesnoth source tree, this
+doesn't mean the document is complete. In fact it more means the opposite, the
+draft is uploaded and I can start to work on finishing the document by adding
+the missing information.
+

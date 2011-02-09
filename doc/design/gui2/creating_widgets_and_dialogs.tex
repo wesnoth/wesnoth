@@ -1,0 +1,388 @@
+\chapter{Creating new widgets and dialogues}
+
+This chapter dives into the area of creating your own widgets or dialogues. For
+this example we use a real widget and dialogue under development. The widget
+being developed is the progress bar and the screen the initial load screen.
+
+First we make the widget then the screen in order to test the widget, this
+happens often when you need to add a new widget that you need it for a new
+dialogue so you need to create both for testing. Another option is to add the
+widget as dummy item to another existing dialogue. When adding a dialogue for
+which all widgets already exist this doesn't matter and you can directly dive
+into generating the dialogue.
+
+\section{Creating the widget}
+\label{sec:creating_the_widget}
+
+The widget is normally split in 7 different files. Three .cpp/.hpp files and one
+WML file. Usually I start to create the new files by simply copy pasting the old
+files and pick a rather small class like timage or something. Then I start to
+update the build system files, followed by creating the code for the
+classes\footnote{Obviously I already thought about the design of the class
+before that, but that's of less importance in this tutorial}.
+
+Now we start to explain what the various files do, first a general overview of
+the files after which I dive more into the implementation of the file.
+
+\begin{description}
+
+\item[src/gui/auxiliary/widget\_definition/progress\_bar.*]
+	These files contain the definition of the progress bar. This mainly involves
+	the fixed fields for the widget. This widget has no extra fields so the copy
+	pasted version suffices. This file contains the \emph{static} properties for
+	a certain definition of a progress bar.
+
+\begin{description}
+\item[hpp] Listing \ref{widget_definition.hpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{widget_definition.hpp:control}] Normally a
+		widget definition inherits from tcontrol\_definition which defines the
+		basic mandatory fields for a widget definition and a templated load
+		function for the resolution. Most widgets don't add more members to this
+		class.
+	\item[Line \ref{widget_definition.hpp:resolution}] Normally a resolution
+		definition inherits from tresolution\_definition\_ which define the
+		basic mandatory fields for a resolution definition. Not all widgets use
+		these members, but most do. Most widgets don't add more members to this
+		class, except most container classes that add a grid builder
+		definition. Another example is are the scrollbars which define some
+		minimum sizes for parts of their control.
+	\end{description}
+
+\item[cpp] Listing \ref{widget_definition.cpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{widget_definition.cpp:textdomain}] Every file in the library
+		is inside the ``wesnoth-lib'' text domain.
+	\item[Line \ref{widget_definition.cpp:constructor}] The constructor used is
+		pretty typical for all widgets.
+	\item[Line \ref{widget_definition.cpp:resolution_constructor}] The
+		constructor used is semi-typical. Resolutions that have their own
+		members initialize them in the constructor, but also validate mandatory
+		fields for their existence.
+
+		Also the progress bar only has one state, most widgets have more and
+		thus add more states.
+
+		And maybe the most important part of this constructor is the wiki
+		comment. This comment is used to generate wiki pages about the widget.
+		These wiki pages are used by content creators to know how to create a
+		proper WML file for the class.
+	\end{description}
+\end{description}
+
+\item[data/gui/default/widget/progress\_bar\_default.cfg]
+	Now that the widget is defined, we can decide how it should look. Which is
+	done in this file. Note that in the formula we use ``percentage'' which is
+	the percentage of the bar to be filled.
+
+	\begin{description}
+	\item[Line \ref{progress_bar.cfg:textdomain}] Every file in the library
+		is inside the ``wesnoth-lib'' text domain.
+
+	\item[Line \ref{progress_bar.cfg:class}]
+		Beginning of the progress bar, this part is much better documented in
+		the wiki %TODO ref
+		since this part is aimed at WML authors, duplicating that effort here
+		makes no sense so just visit the wiki.
+
+	\end{description}
+
+\item[src/gui/auxiliary/window\_builder/progress\_bar.*]
+	These files contain the code to build a widget from the definition described
+	above and a config object as defined in the window. This file contains the
+	\emph{dynamic} properties of the progress bar. Since the progress bar has no
+	dynamic content this file is also rather short.
+
+\begin{description}
+\item[hpp] Listing \ref{window_builder.hpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{window_builder.hpp:control}] Normally a
+		window builder inherits from tbuilder\_control which defines the
+		basic mandatory fields for a window builder.
+
+		The function also declares the build function.
+
+		Widget define their own member if they want to have some runtime
+		settings, e.g. the spacer defines its fixed size if needed.
+	\end{description}
+
+\item[cpp] Listing \ref{window_builder.cpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{window_builder.cpp:textdomain}] Every file in the library
+		is inside the ``wesnoth-lib'' text domain.
+	\item[Line \ref{window_builder.cpp:constructor}] The constructor used is
+		pretty typical for all widgets.
+
+		If the constructor initialize custom members it may add some validation.
+		This is also true when the widget has a grid, like the listbox or
+		multi\_page.
+	\item[Line \ref{window_builder.cpp:build}]
+		This build() is semi-typical, it creates the widget initializes the
+		default fields and returns the created object.
+
+		Widgets with their own members initialize them after initializing the
+		default members.
+	\item[Line \ref{window_builder.cpp:wiki}]
+		At the end of the file it contains two wiki comment sections:
+
+		The first defines a macro with a short description of the widget.
+
+		The second describes the extra fields for the instance of the widget.
+	\end{description}
+\end{description}
+
+\item[src/gui/widgets/progress\_bar.*]
+	These files contain the interaction the widget has with the outer world and
+	how it reacts to events. Again the progress bar is rather boring. The
+	interesting part is the setter of the percentage, here the value of the
+	percentage use in the drawing routines is set\footnote{Other classes have a
+	separate update canvas, but that's because the canvas in those classes is
+	invalidated in several functions.}
+
+\begin{description}
+\item[hpp] Listing \ref{progress_bar.hpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{progress_bar.hpp:class}]
+		Most simple widgets derive from tcontrol, which is the base class of the
+		visual widgets. Another common base is tcontainer or
+		tscrollbar\_container.
+
+	\item[Line \ref{progress_bar.hpp:constructor}]
+		The class calls the control constructor with the number of states, which
+		is the number of canvases used. Other then that it does the
+		initialization of its members. Some constructors do a bit more
+		processing but where a lot needs to be done, it's often deferred to a
+		finalize function.	
+
+	\item[Line \ref{progress_bar.hpp:inherited}]
+		This section implements or overrides member functions of the base class.
+		Some functions are pure virtual and need to be overridden others to
+		change behaviour.\footnote{Of course a list of which functions are
+		common the add here would be nice, however the library is still too
+		volatile to do so, no need to create a soon out of date list.}
+
+	\item[Line \ref{progress_bar.hpp:settersgetters}]
+		This section contains the setters and getters for the class. The
+		list below shows the common convention where T is the type of the
+		setter/getter and ``foo'' the name of the member without trailing
+		underscore.
+
+		\begin{description}
+		\item{setter}
+			Signature void set\_foo(const T foo); The type T can be by reference
+			if a larger class.
+
+		\item{getter}
+			Signature T get\_foo() const { return foo\_; } The type T is always
+			returned by value.
+
+		\item{reference}
+			Signature T\& foo() { return foo\_; } This version returns the value
+			by reference, and it should also have a const version. These
+			functions or at least the non-const version are often not public.
+
+		\item{pointer}
+			Signature T* foo() { return foo\_; } Almost the same as the
+			reference version and is used for members that are pointers. The
+			text of the reference also applies here.
+
+			Furthermore this version often has no normal getter but may have a
+			setter.
+		\end{description}
+
+	\item[Line \ref{progress_bar.hpp:state}]
+		The state has the list of states available and normally has COUNT as
+		last value, which in turn is used in the constructor to initialize the
+		base class.
+
+	\end{description}
+
+\item[cpp] Listing \ref{progress_bar.cpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{progress_bar.cpp:textdomain}] Every file in the library
+		is inside the ``wesnoth-lib'' text domain.
+
+	\item[Line \ref{progress_bar.cpp:logheader}]
+		The common headers used for logging, this makes sure the output of the
+		items always have the same format. Used by
+		LOG\_FOO \textless\textless{} LOG\_HEADER \textless\textless{} "foo.\textbackslash{}n"; or
+		log\_scope(foo, LOG\_SCOPE); % check function signature
+
+	\item[Line \ref{progress_bar.cpp:register}]
+		Registers a widget, this part is really volatile and still has some
+		hoops and rings to jump through. Normally it works if not too bad and
+		look through the other widgets to see how to fix it. 
+
+		\textbf{Caveat emptor} just when all compiles fine you get a runtime
+		error about your new nice class, the builder claims your widget doesn't
+		exist. \emph{Don't panic} probably you did nothing wrong grep TRY in
+		src/gui/auxiliary/window\_builder.cpp (at the moment of writing line 96)
+		and read the comment above, dully add your class to the list and be
+		happy.
+
+	\item[Line \ref{progress_bar.cpp:get_control_type}]
+		Simple helper to get the human readable name of the class. The first
+		version was inlined in the header, but that seems to be an ODR
+		violation. At least at some point a compiler or linker complained, can't
+		really remember which one. % TODO git pick-axe
+
+	\end{description}
+\end{description}
+
+This completes the writing of the files for the new classes, some files need to
+be modified to get things up and running. The build system files need the three
+new .cpp files listed, these are:
+\begin{itemize}
+\item src/Makefile.am
+\item src/SConstruct
+\item src/CmakeLists.txt
+\end{itemize}
+
+The next step has become optional now that most build systems can glob the files
+needed for translation, but I still add them manually as well. The file is 
+po/wesnoth-lib/POTFILES.IN which holds the files for the wesnoth-lib text
+domain.
+
+The last file to be edited is src/gui/widgets/settings.cpp here a wiki comment
+for the new class needs to be added, this might change. The reason is that
+before automatically registering widgets this file needed more modification so
+it was done in one fell swoop.
+
+\end{description}
+
+This completes the simple progress bar widget. Of course we haven't tested it
+yet since there's no dialogue to test it in. So let's implement a dialogue.
+
+
+\section{Creating the window}
+\label{sec:creating_the_window}
+
+The window is normally split in 3 files. One .cpp/.hpp file and one WML file.
+The dialogue used is the unit attack dialogue, at least an initial version. This
+version barely does what it needs to do, and the in game version will be more
+polished. This simple version is nice as example here since it's not too large.
+
+Now we start to explain what the various files do, first a general overview of
+the files after which I dive more into the implementation of the file.
+
+\begin{description}
+
+\item[src/gui/dialogs/unit\_attack.*pp]
+	These files contain the code of the dialogue. This code `binds' the WML
+	code and allows the C++ code to show the dialogue show the right data at the
+	right place. In several cases this also allows the designer of the WML file
+	to decide which widget s/he picks.
+
+\begin{description}
+\item[hpp] Listing \ref{unit_attack.hpp} contains the sample code. 
+	\begin{description}
+	\item[Line \ref{unit_attack.hpp:class}]
+		Defines the class itself, which normally inherits from tdialog.
+		Sometimes a class inherits from another class, but that class then
+derives from tdialog, for example the wml\_dialogs have a common base and
+separate classes for left and right.
+
+	\item[Line \ref{unit_attack.hpp:constructor}]
+		Dialogues are often created and then shown once before being destroyed,
+therefore the constructor often takes all parameters needed. Since the show
+function shouldn't be overloaded the only other alternative would be member
+functions to set the members. Note when keeping `references' to widgets these
+member must be pointers and set to NULL in the constructor, this due to the
+simple fact that the widgets aren't created at this point. Also keep in mind
+when
+the dialogue is shown twice (using the \emph{same} object) the widgets won't be
+the same. The window owning the widgets is destroyed after being shown and
+a new one created upon the next call to show.
+
+	\item[Line \ref{unit_attack.hpp:settersgetters}]
+		As said before there are often no setters, since all is set in the
+contructor. Most members also remain hidden since the caller has the
+information. Only members that change are `exported'. The most common example in
+a class with a listbox, the last selected item is made public, since this is
+often used as choice the user made.
+
+	\item[Line \ref{unit_attack.hpp:window_id}]
+		This function is part of the window registration and only needs to be
+declared in the header, the definition will be provided by a macro.
+
+	\item[Line \ref{unit_attack.hpp:pre_show}]
+		This function is called after the window is created but before being
+shown. This is the point to set the members that point to a widget. As said
+before every time the dialogue is shown a newly created window is shown, so
+setting the pointers can be unconditional. This is also the place to fill the
+widgets with the proper content, if needed. Eg filling the languages in the
+language selection dialogue.
+
+	\item[Line \ref{unit_attack.hpp:post_show}]
+		Called after the dialogue is shown, this allows you to update certain
+statuses. E.g. if the dialogue is closed with the OK button set the selected
+language to the newly selected language. You can also update it unconditionally
+and let the caller test the status.
+
+	\item[Line \ref{unit_attack.hpp:member}]
+		At this point the list of private members start.
+
+	\end{description}
+
+\item[cpp] Listing \ref{unit_attack.cpp} contains the sample code. Note some
+parts are already described more verbose in the header and thus not mentioned
+here.
+	\begin{description}
+	\item[Line \ref{unit_attack.cpp:textdomain}]
+		Like written for the widget, every file is inside the `wesnoth-lib' text
+domain.
+
+	\item[Line \ref{unit_attack.cpp:wiki}]
+		Directly after the includes (inside the gui2 namespace) the wiki
+documentation starts.
+
+
+	\item[Line \ref{unit_attack.cpp:register}]
+		After the wiki documentation the registration code follows, it defines
+the window\_id function and does some other registration parts.
+
+	\item[Line \ref{unit_attack.cpp:pre_show}]
+		The pre\_show is already mentioned in the header file and it the one
+used here uses several static helper functions to do it's job.
+
+	\end{description}
+
+\end{description}
+
+\item[src/gui/dialogs/unit\_attack.cfg]
+	This file contains the WML that defines the widget. It should honour the
+restrains set in the wiki comment like \ref{unit_attack.cpp:wiki}. These
+constrains set the minimum set of needed widgets and their types, and mentions
+the optional widgets. How the widgets are placed and whether only the optional
+ones are set is up to the designer of the dialog. The gui toolkit wiki has more
+information on the subject. Still some parts are worth mentioning.
+
+	\begin{description}
+	\item[Line \ref{unit_attack.cfg:textdomain}]
+		Every file in the library is inside the ``wesnoth-lib'' text domain.
+
+	\item[Line \ref{unit_attack.cfg:defines}]
+		With larger dialogs I often design them on paper and then divide the
+dialog in several sections. These sections often are turned into defines in
+order to keep the main dialog rather simple. WML tends to be verbose and deeply
+nested, and the GUI's also tend to have a lot of nested items, these powers
+combined result in deeply nested structure, where one can easily lose the way.
+Also not that all local macros are prefixed with \_GUI, this to avoid clashes
+with other macros. The BIG in the names are just because I want to make a
+different definition of high resolution screens (this will be the first screen
+using that feature, but that will be added later).
+
+	\item[Line \ref{unit_attack.cfg:window}]
+		Not much to tell about this part, since it's all documented in the wiki.
+But do note that due to the defines above the grid in the window itself is
+rather simple.
+
+	\item[Line \ref{unit_attack.cfg:undefines}]
+		The local macros are no longer needed so undefine them, I normally
+undefine them in the oposite order of the definitions, I'm quite sure that's not
+actually needed, but it feels the right way\texttrademark.
+
+	\end{description}
+
+\end{description}
+

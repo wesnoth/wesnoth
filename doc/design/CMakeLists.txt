@@ -13,6 +13,20 @@ if(ENABLE_DESIGN_DOCUMENTS)
 	ADD_LATEX_DOCUMENT(
 		gui2.tex
 	INPUTS
+		#
+		# LaTeX files
+		#
+		gui2.sty
+		gui2/abstract.tex
+		gui2/introduction.tex
+		gui2/overall_design.tex
+		gui2/design_details.tex
+		gui2/creating_widgets_and_dialogs.tex
+		gui2/files_for_the_widget.tex
+		gui2/files_for_the_window.tex
+		#
+		# Source files.
+		#
 		gui2/progress_bar.cpp
 		gui2/unit_attack.cpp
 		gui2/widget_definition.cpp
