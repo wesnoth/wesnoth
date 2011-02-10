@@ -31,7 +31,7 @@ class scoped_wml_variable;
 class team;
 class gamemap;
 namespace t_translation {
-	class t_match;
+	struct t_match;
 }
 
 class team_builder;

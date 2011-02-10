@@ -36,7 +36,7 @@
 #endif
 
 class battle_context;
-class battle_context_unit_stats;
+struct battle_context_unit_stats;
 class game_display;
 class gamemap;
 class variant;

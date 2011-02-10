@@ -18,7 +18,7 @@
 #include <cstddef>
 
 class gamemap;
-class surface;
+struct surface;
 class team;
 
 namespace image {

@@ -24,7 +24,7 @@
 
 #include <cstring>
 
-class battle_context_unit_stats;
+struct battle_context_unit_stats;
 
 // This encapsulates all we need to know for this combat.
 /** All combat-related info. */
