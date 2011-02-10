@@ -16,8 +16,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-import org.wesnoth.preferences.Preferences;
-import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.PreprocessorUtils;
 import org.wesnoth.utils.ProjectCache;
 import org.wesnoth.utils.ProjectUtils;
@@ -31,9 +29,14 @@ public class Activator extends AbstractUIPlugin
 {
 	// The shared instance
 	private static Activator	plugin;
-	// a switch for knowing if we already started checking conditions
-	private static boolean checkingConditions = false;
-
+	/**
+	 * Switch for knowing if we already started checking conditions
+	 * This way we prevent a stack overflow occuring
+	 */
+	public static boolean IsCheckingConditions = false;
+	/**
+	 * Switch for knowing if we already intend to setup the workspace
+	 */
 	public static boolean IsSettingUpWorkspace = false;
 
 	/**
@@ -74,21 +77,13 @@ public class Activator extends AbstractUIPlugin
 	 */
 	public static Activator getDefault()
 	{
-		if (checkingConditions == false &&
+		if (IsCheckingConditions == false &&
 			PlatformUI.isWorkbenchRunning())
 		{
-			if (!checkConditions())
+			if (WorkspaceUtils.checkConditions(false) == false &&
+				IsSettingUpWorkspace == false)
 			{
-				GUIUtils.showInfoMessageBox(
-						Messages.Activator_0 +
-						Messages.Activator_1 +
-						Messages.Activator_2 +
-						Messages.Activator_3 +
-						Messages.Activator_4 +
-				Messages.Activator_5);
-
-				if (IsSettingUpWorkspace == false)
-					WorkspaceUtils.setupWorkspace(true);
+				WorkspaceUtils.setupWorkspace(true);
 			}
 		}
 		return plugin;
@@ -115,24 +110,4 @@ public class Activator extends AbstractUIPlugin
 	{
 		return plugin.getWorkbench().getDisplay().getActiveShell();
 	}
-
-	/**
-	 * Checks if the user has set some needed preferences and they are valid
-	 */
-	public static boolean checkConditions()
-	{
-		checkingConditions = true;
-		String execDir = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
-		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
-		String wmltoolsDir = Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR);
-		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
-
-		if (!WorkspaceUtils.validPath(execDir) || !WorkspaceUtils.validPath(userDir) ||
-			!WorkspaceUtils.validPath(wmltoolsDir) || !WorkspaceUtils.validPath(workingDir))
-		{
-			return false;
-		}
-		return true;
-	}
-
 }

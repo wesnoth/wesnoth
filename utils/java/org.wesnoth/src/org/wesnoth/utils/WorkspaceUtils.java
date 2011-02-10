@@ -286,6 +286,17 @@ public class WorkspaceUtils
 	 */
 	public static void setupWorkspace(final boolean guided)
 	{
+		if (guided)
+		{
+			GUIUtils.showInfoMessageBox(
+					Messages.Activator_0 +
+					Messages.Activator_1 +
+					Messages.Activator_2 +
+					Messages.Activator_3 +
+					Messages.Activator_4 +
+			Messages.Activator_5);
+		}
+
 		if (!checkConditions(false))
 		{
 			PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
@@ -444,8 +455,10 @@ public class WorkspaceUtils
 	 * @param displayWarning true to display a messagebox warning
 	 * 		  the user if conditions are not met
 	 */
-	private static boolean checkConditions(boolean displayWarning)
+	public static boolean checkConditions(boolean displayWarning)
 	{
+		Activator.IsCheckingConditions = true;
+
 		String execDir = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
 		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
 		String wmltoolsDir = Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR);

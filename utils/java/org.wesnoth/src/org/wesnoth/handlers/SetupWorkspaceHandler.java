@@ -19,7 +19,7 @@ public class SetupWorkspaceHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) {
 		Activator.IsSettingUpWorkspace = true;
-		WorkspaceUtils.setupWorkspace(false);
+		WorkspaceUtils.setupWorkspace(true);
 		Activator.IsSettingUpWorkspace = false;
 		return null;
 	}
