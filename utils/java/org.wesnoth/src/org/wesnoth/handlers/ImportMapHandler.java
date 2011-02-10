@@ -29,6 +29,7 @@ public class ImportMapHandler extends AbstractHandler
 		{
 			Logger.getInstance().log(Messages.ImportMapHandler_0,
 				Messages.ImportMapHandler_1);
+			return null;
 		}
 
 		if (!selectedFolder.getName().equals("maps") && //$NON-NLS-1$
