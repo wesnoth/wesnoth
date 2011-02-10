@@ -34,6 +34,8 @@ public class Activator extends AbstractUIPlugin
 	// a switch for knowing if we already started checking conditions
 	private static boolean checkingConditions = false;
 
+	public static boolean IsSettingUpWorkspace = false;
+
 	/**
 	 * The constructor
 	 */
@@ -84,7 +86,9 @@ public class Activator extends AbstractUIPlugin
 						Messages.Activator_3 +
 						Messages.Activator_4 +
 				Messages.Activator_5);
-				WorkspaceUtils.setupWorkspace(true);
+
+				if (IsSettingUpWorkspace == false)
+					WorkspaceUtils.setupWorkspace(true);
 			}
 		}
 		return plugin;
