@@ -32,6 +32,7 @@
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/auxiliary/window_builder/control.hpp"
 #include "gui/dialogs/title_screen.hpp"
+#include "gui/dialogs/tip.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -247,9 +248,11 @@ twindow::twindow(CVideo& video,
 	, cursor::setter(cursor::NORMAL)
 	, video_(video)
 	, status_(NEW)
+	, show_mode_(none)
 	, retval_(NONE)
 	, owner_(0)
 	, need_layout_(true)
+	, variables_()
 	, invalidate_layout_blocked_(false)
 	, suspend_drawing_(true)
 	, restorer_()
@@ -338,6 +341,17 @@ twindow::~twindow()
 		for(unsigned col = 0; col < grid().get_cols(); ++col) {
 			grid().remove_child(row, col);
 		}
+	}
+
+	/*
+	 * The tip needs to be closed if the window closes and the window is
+	 * not a tip. If we don't do that the tip will unrender in the next
+	 * window and cause drawing glitches.
+	 * Another issue is that on smallgui and an MP game the tooltip not
+	 * unrendered properly can capture the mouse and make playing impossible.
+	 */
+	if(show_mode_ == modal) {
+		tip::remove();
 	}
 
 	tmanager::instance().remove(*this);
@@ -449,6 +463,8 @@ void twindow::show_tooltip(/*const unsigned auto_close_timeout*/)
 
 	assert(status_ == NEW);
 
+	show_mode_ = tooltip;
+
 	/*
 	 * Before show has been called, some functions might have done some testing
 	 * on the window and called layout, which can give glitches. So
@@ -456,10 +472,19 @@ void twindow::show_tooltip(/*const unsigned auto_close_timeout*/)
 	 */
 	invalidate_layout();
 	suspend_drawing_ = false;
+
 }
 
 int twindow::show(const bool restore, const unsigned auto_close_timeout)
 {
+	/*
+	 * Removes the old tip if one shown. The show_tip doesn't remove
+	 * the tip, since it's the tip.
+	 */
+	tip::remove();
+
+	show_mode_ = modal;
+
 	/**
 	 * Helper class to set and restore the drawing interval.
 	 *
@@ -734,6 +759,17 @@ void twindow::draw()
 	update_rect(rect);
 }
 
+void twindow::undraw()
+{
+	if(restorer_) {
+		SDL_Rect rect = get_rect();
+		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
+		// Since the old area might be bigger as the new one, invalidate
+		// it.
+		update_rect(rect);
+	}
+}
+
 twindow::tinvalidate_layout_blocker::tinvalidate_layout_blocker(twindow& window)
 	: window_(window)
 {
@@ -809,20 +845,19 @@ void twindow::layout()
 
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
-	const game_logic::map_formula_callable variables =
-		get_screen_size_variables();
+	get_screen_size_variables(variables_);
 
 	const int maximum_width = automatic_placement_
 			?  maximum_width_
 				? std::min(maximum_width_, settings::screen_width)
 				: settings::screen_width
-			: w_(variables);
+			: w_(variables_);
 
 	const int maximum_height = automatic_placement_
 			? maximum_height_
 				? std::min(maximum_height_, settings::screen_height)
 				: settings::screen_height
-			: h_(variables);
+			: h_(variables_);
 
 	/***** Handle click dismiss status. *****/
 	tbutton* click_dismiss_button = NULL;
@@ -937,11 +972,11 @@ void twindow::layout()
 				assert(false);
 		}
 	} else {
-		origin.x = x_(variables);
-		origin.y = y_(variables);
+		origin.x = x_(variables_);
+		origin.y = y_(variables_);
 
-		size.x = w_(variables);
-		size.y = h_(variables);
+		size.x = w_(variables_);
+		size.y = h_(variables_);
 	}
 
 	/***** Set the window size *****/
@@ -995,59 +1030,13 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 {
 	DBG_GUI_G << LOG_HEADER << " message: '" << tooltip << "'.\n";
 
-	assert(!tooltip.empty());
-
-	twidget* widget = find_at(location, true);
-	assert(widget);
-
-#if 0
-	const SDL_Rect widget_rect = widget->get_rect();
-	const SDL_Rect client_rect = get_client_rect();
-#endif
-
-	tooltip_.set_label(tooltip);
-	const tpoint size = tooltip_.get_best_size();
-
-	SDL_Rect tooltip_rect = ::create_rect(
-		  (settings::screen_width - size.x) / 2
-		, settings::screen_height - size.y
-		, size.x
-		, size.y);
-#if 0
-	// Find the best position to place the widget
-	if(widget_rect.y - size.y > 0) {
-		// put above
-		tooltip_rect.y = widget_rect.y - size.y;
-	} else {
-		//put below no test
-		tooltip_rect.y = widget_rect.y + widget_rect.h;
-	}
-
-	if(widget_rect.x + size.x < client_rect.w) {
-		// Directly above the mouse
-		tooltip_rect.x = widget_rect.x;
-	} else {
-		// shift left, no test
-		tooltip_rect.x = client_rect.w - size.x;
-	}
-#endif
-
-	tooltip_.place(
-			tpoint(tooltip_rect.x, tooltip_rect.y),
-			tpoint(tooltip_rect.w, tooltip_rect.h));
-
-	tooltip_.set_visible(twidget::VISIBLE);
-
-	tooltip_restorer_= get_surface_portion(video_.getSurface(), tooltip_rect);
+	/** @todo Make not hard coded. */
+	tip::show(video_, "tooltip_large", tooltip, location);
 }
 
 void twindow::do_remove_tooltip()
 {
-	SDL_Rect rect = tooltip_.get_rect();
-	sdl_blit(tooltip_restorer_, 0, video_.getSurface(), &rect);
-	update_rect(tooltip_.get_rect());
-
-	tooltip_.set_visible(twidget::HIDDEN);
+	tip::remove();
 }
 
 void twindow::do_show_help_popup(const tpoint& location, const t_string& help_popup)

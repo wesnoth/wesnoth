@@ -168,6 +168,11 @@ public:
 	void draw();
 
 	/**
+	 * Undraws the window.
+	 */
+	void undraw();
+
+	/**
 	 * Adds an item to the dirty_list_.
 	 *
 	 * @param call_stack          The list of widgets traversed to get to the
@@ -378,6 +383,12 @@ public:
 
 	bool get_need_layout() const { return need_layout_; }
 
+	void set_variable(const std::string& key, const variant& value)
+	{
+		variables_.add(key, value);
+		set_dirty();
+	}
+
 private:
 
 	/** Needed so we can change what's drawn on the screen. */
@@ -385,6 +396,19 @@ private:
 
 	/** The status of the window. */
 	tstatus status_;
+
+	enum tshow_mode {
+		  none
+		, modal
+		, tooltip
+	};
+
+	/**
+	 * The mode in which the window is shown. 
+	 *
+	 * This is used to determine whether or not to remove the tip.
+	 */
+	tshow_mode show_mode_;
 
 	// return value of the window, 0 default.
 	int retval_;
@@ -399,6 +423,9 @@ private:
 	 * the window is resized.
 	 */
 	bool need_layout_;
+
+	/** The variables of the canvas. */
+	game_logic::map_formula_callable variables_;
 
 	/** Is invalidate layout blocked see tinvalidate_layout_blocker. */
 	bool invalidate_layout_blocked_;

@@ -8,6 +8,9 @@ Version 1.9.4+svn:
      Portuguese (Brazil), Spanish, Vietnamese
  * User interface:
    * Added: circle to the gui2 canvas. 
+   * Added: new tip class for tooltips and helptips.
+   * Reimplemented: the tooltips use the new tip class and look much better.
+   * Fixed: the tooltips no longer stack when the MP dialog is opened.
  * WML engine:
    * Allow [color_range] and [color_palette] nodes to be inserted at top-level
      by add-ons to globally define custom ranges and palettes.
