@@ -712,7 +712,13 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 	}
 
 	int recruit_res = 0;
+	bool left_side = true;
+	int gold = current_team.gold();
+	std::string unit_type = "Elvish Fighter";
+	recruit_res = gui2::show_recruit_message(left_side, gui_->video(),
+			sample_units, &unit_type, side_num, gold);
 
+/*	TODO old gui1 call, can be removed
 	{
 		dialogs::unit_types_preview_pane unit_preview(
 			sample_units, NULL, side_num);
@@ -729,12 +735,15 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 		rmenu.set_panes(preview_panes);
 		recruit_res = rmenu.show();
 	}
+*/
 
-	if(recruit_res != -1) {
-		do_recruit(item_keys[recruit_res], side_num, last_hex);
+	//TODO fix the dialog and enable again
+//	if(recruit_res != -1) {
+	if(recruit_res == -1) {
+		do_recruit(unit_type, side_num, last_hex);
 	}
-}
 
+}
 
 void menu_handler::repeat_recruit(int side_num, const map_location &last_hex)
 {

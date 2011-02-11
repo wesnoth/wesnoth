@@ -17,6 +17,8 @@
 #define GUI_DIALOGS_WML_MESSAGE_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+//TODO get rid of this here
+#include "unit.hpp"
 
 namespace gui2 {
 
@@ -56,10 +58,45 @@ public:
 	void set_input(const std::string& caption,
 			std::string* text, const unsigned maximum_length);
 
+	/**
+	 * Sets the option list.
+	 *
+	 * @param option_list			Vector of options to choice from.
+	 * @param chosen_option			Number of the option that was chosen.
+	 */
 	void set_option_list(
 			const std::vector<std::string>& option_list, int* chosen_option);
 
+	/**
+	 * Sets the unit list.
+	 *
+	 * @param unit_list          TODO
+	 * @param chosen_unit        TODO
+	 */
+	void set_unit_list(
+			const std::vector<unit>& unit_list, std::string* chosen_unit);
+
+	/**
+	 * Sets the type list
+	 *
+	 * @param type_list 		TODO
+	 * @param type_id			TODO
+	 * @param side_num			TODO
+	 * @param gold				TODO
+	 */
+	void set_type_list(
+				std::vector<const unit_type*> type_list, std::string* type_id, int side_num, int gold);
 private:
+
+
+	/** Handler for changed unit selection. */
+	void update_unit_list(twindow& window);
+
+	/** Handler for the profile button event. */
+	void profile_pressed();
+
+	/** Handler for the help button event */
+	void help_pressed();
 
 	/** The title for the dialog. */
 	std::string title_;
@@ -91,11 +128,26 @@ private:
 	/** The maximum length of the input text. */
 	unsigned input_maximum_lenght_;
 
-	/** The list of options the user can choose. */
+	/** The unit id. */
+	std::string* unit_id_;
+
+	/** The list of units the player can choose. */
+	std::vector<unit> unit_list_;
+
+	/** The list of unit_types the player can choose. */
+	//std::vector<const unit_type*> type_list_;
+
+	/** The list of options the player can choose. */
 	std::vector<std::string> option_list_;
 
 	/** The chosen option. */
 	int *chosen_option_;
+
+	/** The chosen unit. */
+	unit *chosen_unit_;
+
+	/** Gold */
+	int gold_;
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
@@ -161,6 +213,13 @@ private:
  *                                Will be set to the chosen_option when the
  *                                dialog closes.
  */
+int show_recruit_message(const bool left_side
+		, CVideo& video
+	    , std::vector<const unit_type*> type_list
+	    , std::string* type_id
+	    , int side_num
+	    , int gold);
+
 int show_wml_message(const bool left_side
 		, CVideo& video
 		, const std::string& title
@@ -171,6 +230,9 @@ int show_wml_message(const bool left_side
 		, const std::string& input_caption
 		, std::string* input_text
 	    , const unsigned maximum_length
+	    , const bool has_unit
+	    , std::string* unit_id
+	    , const std::vector<unit>& unit_list
 		, const std::vector<std::string>& option_list
 		, int* chosen_option);
 
