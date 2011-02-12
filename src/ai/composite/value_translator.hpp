@@ -226,7 +226,7 @@ public:
 
 	static T variant_to_value(const variant &var)
 	{
-		T value;
+		T value = T();
 		variant_to_value(var,value);
 		return value;
 	}

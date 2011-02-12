@@ -76,7 +76,7 @@ namespace ana
 
             /** Copy constructor. */
             _generic_client_predicate(const _generic_client_predicate<predicate>& other )
-                : pred(other.pred)
+                : client_predicate(), pred(other.pred)
             {
             }
         private:
