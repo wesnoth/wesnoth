@@ -250,41 +250,30 @@ bool tdispatcher::fire(const tevent event
 			, ttrigger_keyboard(key, modifier, unicode));
 }
 
+/** Helper struct to wrap the functor call. */
+class ttrigger_notification
+{
+public:
+
+	void operator()(tsignal_notification_function functor
+			, tdispatcher& dispatcher
+			, const tevent event
+			, bool& handled
+			, bool& halt)
+	{
+		functor(dispatcher, event, handled, halt, NULL);
+	}
+};
+
 bool tdispatcher::fire(const tevent event
 		, twidget& target
 		, void*)
 {
 	assert(find<tset_event_notification>(event, tevent_in_set()));
-	/**
-	 * @todo The firing needs some polishing.
-	 *
-	 * Make sure the events can't be added to pre and post chain since they are
-	 * not used.
-	 */
-
-	// Fire it here directly since we need special handling.
-	bool handled = false;
-	bool halt = false;
-
-	if(target.has_event(event, child)) {
-
-		tsignal<tsignal_notification_function>& signal =
-				target.signal_notification_queue_.queue[event];
-
-		for(std::vector<tsignal_notification_function>::iterator
-					itor = signal.child.begin();
-				itor != signal.child.end();
-				++itor) {
-
-			(*itor)(*this, event, handled, halt, NULL);
-
-			if(halt) {
-				assert(handled);
-				break;
-			}
-		}
-	}
-	return handled;
+	return fire_event<tsignal_notification_function>(event
+			, dynamic_cast<twidget*>(this)
+			, &target
+			, ttrigger_notification());
 }
 
 void tdispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id

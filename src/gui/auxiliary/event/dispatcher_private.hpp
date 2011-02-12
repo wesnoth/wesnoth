@@ -385,6 +385,7 @@ namespace implementation {
  *
  * @returns                       The list of widgets with a handler.
  */
+template<class T>
 inline std::vector<std::pair<twidget*, tevent> > build_event_chain(
 		  const tevent event
 		, twidget* dispatcher
@@ -407,6 +408,32 @@ inline std::vector<std::pair<twidget*, tevent> > build_event_chain(
 	}
 
 	return result;
+}
+
+/**
+ * Build the event chain for tsignal_notification_function.
+ *
+ * The notification is only send to the receiver it returns an empty chain.
+ * Since the pre and post queues are unused, it validates whether they are
+ * empty (using asserts).
+ */
+template<>
+inline std::vector<std::pair<twidget*, tevent> >
+build_event_chain<tsignal_notification_function>(
+		  const tevent event
+		, twidget* dispatcher
+		, twidget* widget)
+{
+	assert(dispatcher);
+	assert(widget);
+
+	assert(!widget->has_event(
+			  event
+			, tdispatcher::tevent_type(
+					  tdispatcher::pre
+					| tdispatcher::post)));
+
+	return std::vector<std::pair<twidget*, tevent> >();
 }
 
 /**
@@ -538,7 +565,7 @@ inline bool fire_event(const tevent event
 	assert(widget);
 
 	std::vector<std::pair<twidget*, tevent> > event_chain =
-			implementation::build_event_chain(event, dispatcher, widget);
+			implementation::build_event_chain<T>(event, dispatcher, widget);
 
 	return implementation::fire_event<T>(event
 			, event_chain
