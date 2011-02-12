@@ -5,7 +5,6 @@
 # Prerequisites are:
 # 1. Subversion command-line client programs svnstatus and svnversion.
 # 2. Unix file(1), on installation only.
-# 3. Unix convert(1), on installation only, if using tinygui.
 # 4. msgfmt(1) for making builds with i18n support.
 # 5. graph-includes for making the project dependency graph.
 
@@ -86,7 +85,6 @@ opts.AddVariables(
     BoolVariable('pool_alloc', 'Enable custom pool malloc', False),
     ('server_gid', 'group id of the user who runs wesnothd', ""),
     ('server_uid', 'user id of the user who runs wesnothd', ""),
-    EnumVariable('gui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs)', "normal", ["normal", "tiny"]),
     BoolVariable('strict', 'Set to strict compilation', False),
     BoolVariable('static_test', 'Staticaly build against boost test (Not supported yet)', False),
     BoolVariable('verbose', 'Emit progress messages during data installation.', False),
@@ -387,9 +385,6 @@ for env in [test_env, client_env, env]:
     if "suncc" in env["TOOLS"]:
         env["OPT_FLAGS"] = "-g0"
         env["DEBUG_FLAGS"] = "-g"
-
-    if env['gui'] == 'tiny':
-        env.Append(CPPDEFINES = "USE_TINY_GUI")
 
     if env['lowmem']:
         env.Append(CPPDEFINES = "LOW_MEM")
