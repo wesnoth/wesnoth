@@ -37,18 +37,11 @@
  *
  * tdistributor is the main class to be used in the user code. This class
  * contains the handling of the keyboard as well.
- *
- * @todo Finish hovering and tooltips.
- *
- * The code for these functions is available but commented out so that can be
- * used as example for how to implement it.
  */
 
 #include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/widgets/event_executor.hpp"
 #include "gui/widgets/helper.hpp"
-
-class t_string;
 
 namespace gui2{
 
@@ -288,38 +281,6 @@ public:
 	 */
 	void keyboard_remove_from_chain(twidget* widget);
 
-	/**
-	 * Shows a tooltip.
-	 *
-	 * A tooltip is a small shortly visible item which is meant to show the user
-	 * extra information. It shows after a short time hovering over a widget and
-	 * automatically disappears again after a while. Only one tooltip or help
-	 * message can be active at a time.
-	 *
-	 * @param message             The message to show.
-	 * @param timeout             The time the tooltip is shown, 0 means
-	 *                            forever.
-	 */
-	void show_tooltip(const t_string& message, const unsigned timeout);
-
-	/** Removes the currently shown tooltip. */
-	void remove_tooltip();
-
-	/**
-	 * Shows a help message.
-	 *
-	 * A help message is like a tooltip, but in general contains more info and
-	 * the user needs to trigger it (most of the time with the F1 button).
-	 *
-	 * @param message             The message to show.
-	 * @param timeout             The time the help message is shown, 0 means
-	 *                            forever.
-	 */
-	void show_help_popup(const t_string& message, const unsigned timeout);
-
-	/** Removes the currently show tooltip. */
-	void remove_help_popup();
-
 private:
 
 	bool hover_pending_;			   /**< Is there a hover event pending? */
@@ -353,49 +314,6 @@ private:
 	 * registered.
 	 */
 	std::vector<twidget*> keyboard_focus_chain_;
-
-#if 0
-	/**
-	 * Raises a hover request.
-	 *
-	 * @param test_on_widget      Do we need to test whether we're on a widget.
-	 */
-	void set_hover(const bool test_on_widget = false);
-
-	/**
-	 * The function to do the real job of showing the tooltip.
-	 *
-	 * @param location            The location in the window where to show the
-	 *                            tooltip.
-	 * @param tooltip             The message to show.
-	 */
-	virtual void do_show_tooltip(
-		const tpoint& location, const t_string& tooltip) = 0;
-
-	/** Function to do the real removal of the tooltip. */
-	virtual void do_remove_tooltip() = 0;
-
-	/**
-	 * The function to do the real job of showing the help popup.
-	 *
-	 * @param location            The location in the window where to show the
-	 *                            help popup.
-	 * @param help_popup          The message to show.
-	 */
-	virtual void do_show_help_popup(
-		const tpoint& location, const t_string& help_popup) = 0;
-
-	/** Function to do the real removal of the help popup. */
-	virtual void do_remove_help_popup() = 0;
-
-	/**
-	 * Handler for the click dismiss functionallity.
-	 *
-	 * @returns                   True if the click dismiss action is performed,
-	 *                            false otherwise.
-	 */
-	virtual bool click_dismiss() = 0;
-#endif
 
 	/**
 	 * Set of functions that handle certain events and sends them to the proper
