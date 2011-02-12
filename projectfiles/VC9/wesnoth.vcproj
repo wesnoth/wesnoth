@@ -1865,6 +1865,30 @@
 					<File
 						RelativePath="..\..\src\gui\dialogs\campaign_difficulty.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\campaign_selection.cpp"
@@ -1933,6 +1957,22 @@
 								ObjectFile="$(IntDir)\Gui\Dialogs\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\dialog.cpp"
@@ -1965,6 +2005,30 @@
 					<File
 						RelativePath="..\..\src\gui\dialogs\edit_label.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\editor_generate_map.cpp"
@@ -2417,6 +2481,30 @@
 					<File
 						RelativePath="..\..\src\gui\dialogs\mp_create_game_set_password.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\mp_method_selection.cpp"
@@ -2447,8 +2535,88 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\popup.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\simple_item_selector.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\tip.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\title_screen.cpp"
@@ -7358,7 +7526,15 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\popup.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\simple_item_selector.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\tip.hpp"
 						>
 					</File>
 					<File
