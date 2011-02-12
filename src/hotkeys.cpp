@@ -271,6 +271,14 @@ const struct {
 		, hotkey::SCOPE_GENERAL
 	},
 
+	{
+		  hotkey::GLOBAL__HELPTIP
+		, "global__helptip"
+		, N_("Show the helptip")
+		, false
+		, hotkey::SCOPE_GENERAL
+	},
+
 	{ hotkey::HOTKEY_NULL, NULL, NULL, true, hotkey::SCOPE_GENERAL }
 };
 

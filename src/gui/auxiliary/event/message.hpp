@@ -63,6 +63,25 @@ struct tmessage_show_tooltip
 	const tpoint location;
 };
 
+/** The message for MESSAGE_SHOW_HELPTIP. */
+struct tmessage_show_helptip
+	: public tmessage
+{
+	tmessage_show_helptip(
+			  const std::string& message_
+			, const tpoint& location_)
+		: message(message_)
+		, location(location_)
+	{
+	}
+
+	/** The message to show on the helptip. */
+	const std::string message;
+
+	/** The location where to show the helptip. */
+	const tpoint location;
+};
+
 } // namespace event
 
 } // namespace gui2

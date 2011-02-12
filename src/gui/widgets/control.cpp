@@ -56,6 +56,13 @@ tcontrol::tcontrol(const unsigned canvas_count)
 			, _3
 			, _5));
 
+	connect_signal<event::SHOW_HELPTIP>(boost::bind(
+			  &tcontrol::signal_handler_show_helptip
+			, this
+			, _2
+			, _3
+			, _5));
+
 	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(boost::bind(
 			  &tcontrol::signal_handler_notify_remove_tooltip
 			, this
@@ -397,6 +404,19 @@ void tcontrol::signal_handler_show_tooltip(
 	if(!tooltip_.empty()) {
 		event::tmessage_show_tooltip message(tooltip_, location);
 		handled = fire(event::MESSAGE_SHOW_TOOLTIP, *this, message);
+	}
+}
+
+void tcontrol::signal_handler_show_helptip(
+		  const event::tevent event
+		, bool& handled
+		, const tpoint& location)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	if(!help_message_.empty()) {
+		event::tmessage_show_helptip message(help_message_, location);
+		handled = fire(event::MESSAGE_SHOW_HELPTIP, *this, message);
 	}
 }
 

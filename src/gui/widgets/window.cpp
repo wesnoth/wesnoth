@@ -149,6 +149,31 @@ static void delay_event(const SDL_Event& event, const Uint32 delay)
 }
 
 /**
+ * Adds a SHOW_HELPTIP event to the SDL event queue.
+ *
+ * The event is used to show the helptip for the currently focussed widget.
+ */
+static bool helptip()
+{
+	DBG_GUI_E << "Pushing SHOW_HELPTIP_EVENT event in queue.\n";
+
+	SDL_Event event;
+	SDL_UserEvent data;
+
+	data.type = SHOW_HELPTIP_EVENT;
+	data.code = 0;
+	data.data1 = NULL;
+	data.data2 = NULL;
+
+	event.type = SHOW_HELPTIP_EVENT;
+	event.user = data;
+
+	SDL_PushEvent(&event);
+
+	return true;
+}
+
+/**
  * Small helper class to get an unique id for every window instance.
  *
  * This is used to send event to the proper window, this allows windows to post
@@ -325,6 +350,17 @@ twindow::twindow(CVideo& video,
 				, _3
 				, _5)
 			, event::tdispatcher::back_pre_child);
+
+	connect_signal<event::MESSAGE_SHOW_HELPTIP>(
+			  boost::bind(
+				  &twindow::signal_handler_message_show_helptip
+				, this
+				, _2
+				, _3
+				, _5)
+			, event::tdispatcher::back_pre_child);
+
+	register_hotkey(hotkey::GLOBAL__HELPTIP, boost::bind(helptip));
 }
 
 twindow::~twindow()
@@ -1272,6 +1308,22 @@ void twindow::signal_handler_message_show_tooltip(
 
 	/** @todo Make not hard coded. */
 	tip::show(video_, "tooltip_large", tooltip.message, tooltip.location);
+
+	handled = true;
+}
+
+void twindow::signal_handler_message_show_helptip(
+		  const event::tevent event
+		, bool& handled
+		, event::tmessage& message)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	event::tmessage_show_helptip& helptip =
+			dynamic_cast<event::tmessage_show_helptip&>(message);
+
+	/** @todo Make not hard coded. */
+	tip::show(video_, "tooltip_large", helptip.message, helptip.location);
 
 	handled = true;
 }

@@ -295,6 +295,10 @@ void thandler::handle_event(const SDL_Event& event)
 					, event.button.button);
 			break;
 
+		case SHOW_HELPTIP_EVENT:
+			mouse(SHOW_HELPTIP, get_mouse_position());
+			break;
+
 		case HOVER_REMOVE_POPUP_EVENT:
 //			remove_popup();
 			break;
@@ -741,6 +745,8 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 		case NOTIFY_REMOVE_TOOLTIP  : stream << "notify remove tooltip"; break;
 		case SDL_ACTIVATE           : stream << "SDL activate"; break;
 		case MESSAGE_SHOW_TOOLTIP   : stream << "message show tooltip"; break;
+		case SHOW_HELPTIP           : stream << "show helptip"; break;
+		case MESSAGE_SHOW_HELPTIP   : stream << "message show helptip"; break;
 	}
 
 	return stream;

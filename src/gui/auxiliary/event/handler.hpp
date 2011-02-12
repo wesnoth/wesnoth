@@ -128,6 +128,14 @@ enum tevent {
 	                               * Request for somebody to show the tooltip
 	                               * based on the data send.
 	                               */
+	, SHOW_HELPTIP                /**<
+	                               * Request the widget to show its hover
+	                               * helptip.
+	                               */
+	, MESSAGE_SHOW_HELPTIP        /**<
+	                               * Request for somebody to show the helptip
+	                               * based on the data send.
+	                               */
 };
 
 /**
@@ -183,6 +191,7 @@ typedef
 			, boost::mpl::int_<SDL_RIGHT_BUTTON_DOWN>
 			, boost::mpl::int_<SDL_RIGHT_BUTTON_UP>
 			, boost::mpl::int_<SHOW_TOOLTIP>
+			, boost::mpl::int_<SHOW_HELPTIP>
 		>
 		tset_event_mouse;
 
@@ -227,6 +236,7 @@ typedef
 typedef
 		boost::mpl::set<
 			  boost::mpl::int_<MESSAGE_SHOW_TOOLTIP>
+			, boost::mpl::int_<MESSAGE_SHOW_HELPTIP>
 		>
 		tset_event_message;
 

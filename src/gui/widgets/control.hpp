@@ -371,6 +371,11 @@ private:
 			, bool& handled
 			, const tpoint& location);
 
+	void signal_handler_show_helptip(
+			  const event::tevent event
+			, bool& handled
+			, const tpoint& location);
+
 	void signal_handler_notify_remove_tooltip(
 			  const event::tevent event
 			, bool& handled);

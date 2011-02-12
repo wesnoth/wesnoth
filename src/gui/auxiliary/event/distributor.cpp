@@ -123,6 +123,11 @@ tmouse_motion::tmouse_motion(twidget& owner
 		  boost::bind(&tmouse_motion::signal_handler_sdl_mouse_motion
 			  , this, _2, _3, _5)
 		, queue_position);
+
+	owner.connect_signal<event::SHOW_HELPTIP>(
+		  boost::bind(&tmouse_motion::signal_handler_show_helptip
+			  , this, _2, _3, _5)
+		, queue_position);
 }
 
 tmouse_motion::~tmouse_motion()
@@ -177,6 +182,32 @@ void tmouse_motion::signal_handler_sdl_mouse_motion(
 			assert(!mouse_focus_ && !mouse_over);
 		}
 	}
+	handled = true;
+}
+
+void tmouse_motion::signal_handler_show_helptip(
+		  const event::tevent event
+		, bool& handled
+		, const tpoint& coordinate)
+{
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
+
+	if(mouse_captured_) {
+		assert(mouse_focus_);
+		if(owner_.fire(event, *mouse_focus_, coordinate)) {
+			stop_hover_timer();
+		}
+	} else {
+		twidget* mouse_over = owner_.find_at(coordinate, true);
+		if(mouse_over) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << event << ".\n";
+			if(owner_.fire(event, *mouse_over, coordinate)) {
+				stop_hover_timer();
+			}
+
+		}
+	}
+
 	handled = true;
 }
 

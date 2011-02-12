@@ -640,6 +640,11 @@ private:
 			  const event::tevent event
 			, bool& handled
 			, event::tmessage& message);
+
+	void signal_handler_message_show_helptip(
+			  const event::tevent event
+			, bool& handled
+			, event::tmessage& message);
 };
 
 } // namespace gui2
