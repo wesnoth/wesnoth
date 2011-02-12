@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-15 11:52+0100\n"
+"POT-Creation-Date: 2011-02-12 13:10+0100\n"
 "PO-Revision-Date: 2010-03-21 17:51+0100\n"
 "Last-Translator: Alexander Laux <alexander.laux@kabelbw.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -1069,8 +1069,9 @@ msgstr "Galtrid fällt in der Schlacht"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:860
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
 #, fuzzy
-msgid "Death of El'Isimithir"
+msgid "Death of El'Isomithir"
 msgstr "Galtrid fällt in der Schlacht"
 
 #. [message]: speaker=narrator
@@ -1144,12 +1145,6 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:931
 msgid "Hold on until turns run out."
 msgstr ""
-
-#. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
-#, fuzzy
-msgid "Death of El'Isomithir"
-msgstr "Galtrid fällt in der Schlacht"
 
 #. [message]: id=guard
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:969
@@ -2624,13 +2619,13 @@ msgstr "einige erfahrene Krieger"
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:265
 #, fuzzy
-msgid "$left_behind and $l3_store_{NAME}[$i].name"
+msgid "$left_behind_{NAME} and $l3_store_{NAME}[$i].name"
 msgstr "$left_behind und $l3_store[$i].name"
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:271
 #, fuzzy
-msgid "$left_behind|, $l3_store_{NAME}[$i].name"
+msgid "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
 msgstr "$left_behind|, $l3_store[$i].name"
 
 #. [objective]: condition=win
@@ -5737,6 +5732,10 @@ msgstr "Oh nein! Wir sind zu spät..."
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:33
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Ihr erhaltet $amount_gold Goldstücke."
+
+#, fuzzy
+#~ msgid "Death of El'Isimithir"
+#~ msgstr "Galtrid fällt in der Schlacht"
 
 #, fuzzy
 #~ msgid "$orc_battlefield_strategy changed to ‘attack’"

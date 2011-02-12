@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-15 11:52+0100\n"
+"POT-Creation-Date: 2011-02-12 13:10+0100\n"
 "PO-Revision-Date: 2010-04-26 21:55+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -1030,6 +1030,7 @@ msgstr "Připojit"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
+#. [button]: id=canel
 #: data/gui/default/window/addon_connect.cfg:220
 #: data/gui/default/window/campaign_dialog.cfg:433
 #: data/gui/default/window/campaign_difficulty.cfg:182
@@ -1052,7 +1053,9 @@ msgstr "Připojit"
 #: data/gui/default/window/simple_item_selector.cfg:147
 #: data/gui/default/window/unit_attack.cfg:208
 #: data/gui/default/window/unit_create.cfg:201
-#: data/gui/default/window/unit_create.cfg:202 src/construct_dialog.cpp:133
+#: data/gui/default/window/unit_create.cfg:202
+#: data/gui/default/window/wml_message.cfg:834
+#: data/gui/default/window/wml_message.cfg:1087 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Zrušit"
@@ -1117,8 +1120,8 @@ msgstr "Hraj tažení"
 #: data/gui/default/window/simple_item_selector.cfg:134
 #: data/gui/default/window/unit_create.cfg:189
 #: data/gui/default/window/unit_create.cfg:190
-#: data/gui/default/window/wml_message.cfg:470
-#: data/gui/default/window/wml_message.cfg:691 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:818
+#: data/gui/default/window/wml_message.cfg:1069 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
@@ -1433,8 +1436,8 @@ msgstr "Už se mě nikdy neptej!"
 #: data/gui/default/window/game_delete.cfg:129
 #: data/gui/default/window/game_save_message.cfg:139
 #: data/gui/default/window/game_save_message.cfg:140
-#: data/gui/default/window/game_save_oos.cfg:186
 #: data/gui/default/window/game_save_oos.cfg:187
+#: data/gui/default/window/game_save_oos.cfg:188
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
 #: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:176
@@ -1445,7 +1448,7 @@ msgstr "Ano"
 #. [button]: id=cancel
 #: data/gui/default/window/game_delete.cfg:143
 #: data/gui/default/window/game_save_message.cfg:154
-#: data/gui/default/window/game_save_oos.cfg:201
+#: data/gui/default/window/game_save_oos.cfg:202
 #: data/gui/default/window/game_save_overwrite.cfg:103
 #: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:178
 msgid "No"
@@ -1485,7 +1488,7 @@ msgstr "Ulož hru"
 #. [label]
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
-#: data/gui/default/window/game_save_oos.cfg:82
+#: data/gui/default/window/game_save_oos.cfg:83
 msgid "Name:"
 msgstr "Jméno:"
 
@@ -1500,13 +1503,13 @@ msgid "OOS error"
 msgstr "Chyba synchronizace (OOS)"
 
 #. [toggle_button]: id=ignore_all
-#: data/gui/default/window/game_save_oos.cfg:134
+#: data/gui/default/window/game_save_oos.cfg:135
 msgid "Ignore All"
 msgstr "Ignoruj vše"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:91
+#: data/gui/default/window/game_save_oos.cfg:160 src/hotkeys.cpp:91
 msgid "Quit Game"
 msgstr "Ukončit hru"
 
@@ -2063,7 +2066,8 @@ msgstr "Vybrat"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:200
+#: data/gui/default/window/title_screen.cfg:146
+#: data/gui/default/window/wml_message.cfg:788 src/hotkeys.cpp:200
 msgid "Help"
 msgstr "Nápověda"
 
@@ -2211,6 +2215,11 @@ msgstr "Ženské"
 #: data/gui/default/window/unit_create.cfg:111
 msgid "Race"
 msgstr "Národ"
+
+#. [button]: id=profile
+#: data/gui/default/window/wml_message.cfg:802
+msgid "Profile"
+msgstr ""
 
 #: src/filechooser.cpp:76
 msgid "File: "
@@ -2707,25 +2716,31 @@ msgstr "Žádná známá témata. Zkus změnit během existující hry."
 msgid "Find $filename server binary to host networked games"
 msgstr "Najít binární soubor $filename serveru pro hostování síťových her"
 
-#: src/gui/auxiliary/canvas.cpp:491
+#: src/gui/auxiliary/canvas.cpp:558
 msgid "Line doesn't fit on canvas."
 msgstr "Čára se nevejde na plátno."
 
-#: src/gui/auxiliary/canvas.cpp:635
+#: src/gui/auxiliary/canvas.cpp:702
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Obdélník se nevejde na plátno."
 
-#: src/gui/auxiliary/canvas.cpp:850 src/gui/auxiliary/canvas.cpp:857
-#: src/gui/auxiliary/canvas.cpp:867 src/gui/auxiliary/canvas.cpp:874
+#: src/gui/auxiliary/canvas.cpp:832 src/gui/auxiliary/canvas.cpp:837
+#: src/gui/auxiliary/canvas.cpp:842 src/gui/auxiliary/canvas.cpp:848
+#, fuzzy
+msgid "Circle doesn't fit on canvas."
+msgstr "Čára se nevejde na plátno."
+
+#: src/gui/auxiliary/canvas.cpp:1030 src/gui/auxiliary/canvas.cpp:1037
+#: src/gui/auxiliary/canvas.cpp:1047 src/gui/auxiliary/canvas.cpp:1054
 #, fuzzy
 msgid "Image doesn't fit on canvas."
 msgstr "Čára se nevejde na plátno."
 
-#: src/gui/auxiliary/canvas.cpp:1083
+#: src/gui/auxiliary/canvas.cpp:1263
 msgid "Text has a font size of 0."
 msgstr "Text má výšku fontu nula."
 
-#: src/gui/auxiliary/canvas.cpp:1152
+#: src/gui/auxiliary/canvas.cpp:1332
 msgid "Text doesn't start on canvas."
 msgstr "Text nezačíná na plátně."
 
@@ -2736,7 +2751,7 @@ msgstr "Není definováno žádné rozlišení."
 
 #: src/gui/auxiliary/widget_definition/listbox.cpp:105
 #: src/gui/auxiliary/widget_definition/multi_page.cpp:55
-#: src/gui/auxiliary/widget_definition/scroll_label.cpp:74
+#: src/gui/auxiliary/widget_definition/scroll_label.cpp:73
 #: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:62
 #: src/gui/auxiliary/widget_definition/stacked_widget.cpp:57
 #: src/gui/auxiliary/widget_definition/tree_view.cpp:58
@@ -2892,14 +2907,23 @@ msgstr "Chyba"
 msgid "Load Game..."
 msgstr "Načti hru..."
 
-#: src/gui/dialogs/title_screen.cpp:273
+#: src/gui/dialogs/title_screen.cpp:275
 #, fuzzy
 msgid "Version "
 msgstr "Verze: "
 
-#: src/gui/dialogs/title_screen.cpp:276
+#: src/gui/dialogs/title_screen.cpp:278
 msgid "Version"
 msgstr "Verze"
+
+#: src/gui/dialogs/wml_message.cpp:338 src/hotkeys.cpp:73
+msgid "Recruit"
+msgstr "Naverbuj"
+
+#: src/gui/dialogs/wml_message.cpp:339
+#, fuzzy
+msgid "Select unit:"
+msgstr "Vyber nic"
 
 #: src/gui/widgets/helper.cpp:137
 msgid "Mandatory widget '$id' hasn't been defined."
@@ -2922,13 +2946,13 @@ msgstr "Není definován stav či region vykreslení."
 msgid "Unknown builder id for tree view node."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:814
+#: src/gui/widgets/window.cpp:876
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 "Zavření kliknutím kamkoliv vyžaduje přítomnost parametru nebo tlačítka s id "
 "nastaveným na 'click_dismiss' nebo 'ok'."
 
-#: src/gui/widgets/window.cpp:839 src/gui/widgets/window.cpp:872
+#: src/gui/widgets/window.cpp:901 src/gui/widgets/window.cpp:934
 #: src/tests/gui/test_gui2.cpp:226
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Nebyl zobrazen dialog, který se nevejde na obrazovku."
@@ -3013,10 +3037,6 @@ msgstr "Ulož záznam"
 #: src/hotkeys.cpp:71 src/hotkeys.cpp:125
 msgid "Save Map"
 msgstr "Ulož mapu"
-
-#: src/hotkeys.cpp:73
-msgid "Recruit"
-msgstr "Naverbuj"
 
 #: src/hotkeys.cpp:74
 msgid "Repeat Recruit"
@@ -3489,7 +3509,7 @@ msgstr "Vnitrozemí"
 msgid "Island"
 msgstr "Ostrov"
 
-#: src/marked-up_text.cpp:423
+#: src/marked-up_text.cpp:422
 msgid "The maximum text width is less than 1."
 msgstr "Maximální šířka textu je menší než 1."
 

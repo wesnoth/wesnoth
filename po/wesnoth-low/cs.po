@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-15 11:52+0100\n"
+"POT-Creation-Date: 2011-02-12 13:10+0100\n"
 "PO-Revision-Date: 2010-04-10 16:13+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -1092,8 +1092,9 @@ msgstr "Galtrid zemře"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:860
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
 #, fuzzy
-msgid "Death of El'Isimithir"
+msgid "Death of El'Isomithir"
 msgstr "Galtrid zemře"
 
 #. [message]: speaker=narrator
@@ -1164,12 +1165,6 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:931
 msgid "Hold on until turns run out."
 msgstr ""
-
-#. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
-#, fuzzy
-msgid "Death of El'Isomithir"
-msgstr "Galtrid zemře"
 
 #. [message]: id=guard
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:969
@@ -2615,13 +2610,13 @@ msgstr "někteří zkušení válečníci"
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:265
 #, fuzzy
-msgid "$left_behind and $l3_store_{NAME}[$i].name"
+msgid "$left_behind_{NAME} and $l3_store_{NAME}[$i].name"
 msgstr "$left_behind a $l3_store[$i].name"
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:271
 #, fuzzy
-msgid "$left_behind|, $l3_store_{NAME}[$i].name"
+msgid "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
 msgstr "$left_behind|, $l3_store[$i].name"
 
 #. [objective]: condition=win
@@ -5632,6 +5627,10 @@ msgstr "Ach ne! Přišli jsme pozdě..."
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:33
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Získal jsi $amount_gold zlatých."
+
+#, fuzzy
+#~ msgid "Death of El'Isimithir"
+#~ msgstr "Galtrid zemře"
 
 #, fuzzy
 #~ msgid "$orc_battlefield_strategy changed to ‘attack’"

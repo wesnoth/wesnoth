@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-15 11:52+0100\n"
+"POT-Creation-Date: 2011-02-12 13:10+0100\n"
 "PO-Revision-Date: 2010-12-03 08:29+0900\n"
 "Last-Translator: clearpotion <clearpotion+fantasy@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -1066,8 +1066,9 @@ msgstr "Galtrid の死"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:860
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
 #, fuzzy
-msgid "Death of El'Isimithir"
+msgid "Death of El'Isomithir"
 msgstr "El'Ithsomir の拠点"
 
 #. [message]: speaker=narrator
@@ -1139,12 +1140,6 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:931
 msgid "Hold on until turns run out."
 msgstr "ターンが尽きるまで持ちこたえる。"
-
-#. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
-#, fuzzy
-msgid "Death of El'Isomithir"
-msgstr "El'Ithsomir の拠点"
 
 #. [message]: id=guard
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:969
@@ -2681,13 +2676,15 @@ msgstr "some experienced warriors"
 # %%
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:265
-msgid "$left_behind and $l3_store_{NAME}[$i].name"
+#, fuzzy
+msgid "$left_behind_{NAME} and $l3_store_{NAME}[$i].name"
 msgstr "$left_behind and $l3_store_{NAME}[$i].name"
 
 # %%
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:271
-msgid "$left_behind|, $l3_store_{NAME}[$i].name"
+#, fuzzy
+msgid "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
 msgstr "$left_behind|, $l3_store_{NAME}[$i].name"
 
 #. [objective]: condition=win
@@ -5857,6 +5854,10 @@ msgstr "ダメだ！ 手遅れだ……。"
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:33
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "あなたは $amount_gold gold 奪回しました。"
+
+#, fuzzy
+#~ msgid "Death of El'Isimithir"
+#~ msgstr "El'Ithsomir の拠点"
 
 # %% オークの戦略が  $orc_battlefield_strateg から攻撃に変わった。
 # AIの戦略が変わるだけなので、プレイヤーに違和感のないメッセージにしてみた。

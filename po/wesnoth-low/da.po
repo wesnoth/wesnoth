@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth 1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-15 11:52+0100\n"
+"POT-Creation-Date: 2011-02-12 13:10+0100\n"
 "PO-Revision-Date: 2008-12-27 22:09+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -1045,8 +1045,9 @@ msgstr "Galtrids død"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:860
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
 #, fuzzy
-msgid "Death of El'Isimithir"
+msgid "Death of El'Isomithir"
 msgstr "Galtrids død"
 
 #. [message]: speaker=narrator
@@ -1111,12 +1112,6 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:931
 msgid "Hold on until turns run out."
 msgstr ""
-
-#. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
-#, fuzzy
-msgid "Death of El'Isomithir"
-msgstr "Galtrids død"
 
 #. [message]: id=guard
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:969
@@ -2585,12 +2580,12 @@ msgstr "nogle erfarne krigere"
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:265
-msgid "$left_behind and $l3_store_{NAME}[$i].name"
+msgid "$left_behind_{NAME} and $l3_store_{NAME}[$i].name"
 msgstr ""
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:271
-msgid "$left_behind|, $l3_store_{NAME}[$i].name"
+msgid "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
 msgstr ""
 
 #. [objective]: condition=win
@@ -5803,6 +5798,10 @@ msgstr "Oh, nej! Vi er kommet for sent..."
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:33
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Du modtager $amount_gold guldstykker."
+
+#, fuzzy
+#~ msgid "Death of El'Isimithir"
+#~ msgstr "Galtrids død"
 
 #, fuzzy
 #~ msgid "Defeat Urudin"

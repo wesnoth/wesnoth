@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-15 11:52+0100\n"
+"POT-Creation-Date: 2011-02-12 13:10+0100\n"
 "PO-Revision-Date: 2010-11-27 10:04+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -23,13 +23,13 @@ msgstr "Dưới lòng đất"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
-#: data/core/macros/abilities.cfg:554
+#: data/core/macros/abilities.cfg:581
 msgid "berserk"
 msgstr "điên cuồng"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
-#: data/core/macros/abilities.cfg:556
+#: data/core/macros/abilities.cfg:583
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -41,13 +41,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
-#: data/core/macros/abilities.cfg:640
+#: data/core/macros/abilities.cfg:667
 msgid "magical"
 msgstr "phép thuật"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
-#: data/core/macros/abilities.cfg:642
+#: data/core/macros/abilities.cfg:669
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -59,13 +59,13 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
-#: data/core/macros/abilities.cfg:689
+#: data/core/macros/abilities.cfg:716
 msgid "firststrike"
 msgstr "đánh trước"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
-#: data/core/macros/abilities.cfg:691
+#: data/core/macros/abilities.cfg:718
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -154,74 +154,74 @@ msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgstr ""
 
 #. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:5
+#: data/core/encyclopedia/drakes.cfg:7
 #, fuzzy
 msgid "Caste"
 msgstr "Lâu đài"
 
 #. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:7
+#: data/core/encyclopedia/drakes.cfg:8
 msgid ""
-"Depending on special treatments to the drake <ref>dst='egg' text='egg'</ref> "
-"a tribe can control the form the later <ref>dst='hatchling' "
-"text='hatchling'</ref> takes on. The outcome can either be a "
-"<ref>dst='unit_Drake Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake "
-"Fighter' text='Drake Fighter'</ref>."
-msgstr ""
-
-#. [topic]: id=aerie
-#: data/core/encyclopedia/drakes.cfg:12
-msgid "Aerie"
+"One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
+"Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
+"Fighter'</ref>."
 msgstr ""
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
+msgid "Aerie"
+msgstr ""
+
+#. [topic]: id=aerie
+#: data/core/encyclopedia/drakes.cfg:14
 msgid ""
-"A drake home building, fortified. It contains the <ref>dst='breeding_pen' "
-"text='breeding pens'</ref>."
+"A very large castle-like structure that is home to a <ref>dst='flight' "
+"text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
+"pens'</ref>."
 msgstr ""
 
 #. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:18
+#: data/core/encyclopedia/drakes.cfg:19
 #, fuzzy
 msgid "Breeding Pen"
 msgstr "bồi dưỡng"
 
 #. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:19
+#: data/core/encyclopedia/drakes.cfg:20
 msgid ""
-"Where the nonsentient <ref>dst='breeder' text='Breeders'</ref> live under "
-"the <ref>dst='dominant' text='Dominant'</ref>' s eye."
-msgstr ""
-
-#. [topic]: id=breeding_cycle
-#: data/core/encyclopedia/drakes.cfg:24
-msgid "Breeding Cycle"
+"The portion of an <ref>dst='aerie' text='aerie'</ref> where the nonsentient "
+"<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
+"text='Dominant'</ref>' s eye."
 msgstr ""
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
+msgid "Breeding Cycle"
+msgstr ""
+
+#. [topic]: id=breeding_cycle
+#: data/core/encyclopedia/drakes.cfg:26
 msgid ""
-"The time that passes between one <ref>dst=egg text='Egg'</ref> laying to the "
+"The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
 "next."
 msgstr ""
 
 #. [topic]: id=world-ocean
 #. [topic]: id=new continent
-#: data/core/encyclopedia/drakes.cfg:30 data/core/encyclopedia/drakes.cfg:36
+#: data/core/encyclopedia/drakes.cfg:31 data/core/encyclopedia/drakes.cfg:37
 msgid " "
 msgstr ""
 
 #. [topic]: id=world-ocean
-#: data/core/encyclopedia/drakes.cfg:31
+#: data/core/encyclopedia/drakes.cfg:32
 msgid ""
-"The Great Ocean is the name of the open seas that sourround the archipelago "
+"The Great Ocean is the name of the open seas that surround the archipelago "
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
 "the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
 msgstr ""
 
 #. [topic]: id=new continent
-#: data/core/encyclopedia/drakes.cfg:37
+#: data/core/encyclopedia/drakes.cfg:38
 msgid ""
 "Great Continent -- The great continent to the east of <ref>dst='morogor' "
 "text='Morogor'</ref>. Its existence is unknown to the @drakes until the "
@@ -229,63 +229,64 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:43
+#: data/core/encyclopedia/drakes.cfg:44
 msgid "Abyss"
 msgstr ""
 
 #. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:44
-msgid "A vast and deadly waterfall where the ocean falls of the world disc."
-msgstr ""
-
-#. [topic]: id=spiral_path
-#: data/core/encyclopedia/drakes.cfg:49
-msgid "Spiral Path"
+#: data/core/encyclopedia/drakes.cfg:45
+msgid ""
+"In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
+"falls off the world-disc."
 msgstr ""
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:50
+msgid "Spiral Path"
+msgstr ""
+
+#. [topic]: id=spiral_path
+#: data/core/encyclopedia/drakes.cfg:51
 msgid ""
-"A quasi-secret organization among the drakes devoted to somehow avoiding a "
+"A quasi-secret organization among the drakes devoted to avoiding a "
 "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
 "Path'</ref>"
 msgstr ""
 
 #. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:55
+#: data/core/encyclopedia/drakes.cfg:56
 msgid "Straight Path"
 msgstr ""
 
 #. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:56
+#: data/core/encyclopedia/drakes.cfg:57
 msgid ""
-"'Those who follow the straight path' or short 'The Straight Path' as a "
-"single word for drakish traditions of perpetual expansion and conquest. This "
-"term is mostly used by the members of the <ref>dst='spiral_path' "
-"text='Spiral Path'</ref>."
-msgstr ""
-
-#. [topic]: id=dominant
-#: data/core/encyclopedia/drakes.cfg:61
-msgid "Dominant"
+"'The drakish tradition of perpetual expansion and conquest. This term is "
+"mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
+"ref>."
 msgstr ""
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
+msgid "Dominant"
+msgstr ""
+
+#. [topic]: id=dominant
+#: data/core/encyclopedia/drakes.cfg:63
 msgid ""
-"The <ref>dst='aspirant' text='Aspirant'</ref> that established as the drake "
+"The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
 "leader, the only drake in the tribe that is allowed to reproduce with the "
 "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
 "privileges on others."
 msgstr ""
 
 #. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:67
+#: data/core/encyclopedia/drakes.cfg:68
 msgid "Vulcaniad"
 msgstr ""
 
 #. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:68
+#: data/core/encyclopedia/drakes.cfg:69
 msgid ""
 "The (irregular) period between consecutive eruptions of "
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
@@ -293,57 +294,57 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:73
+#: data/core/encyclopedia/drakes.cfg:74
 msgid "Recorder"
 msgstr ""
 
 #. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:74
+#: data/core/encyclopedia/drakes.cfg:75
 msgid ""
-"Drakish scrollkeeper whose have mastered the drakish "
+"A Redorder is a Drakish scrollkeeper whose has mastered the drakish "
 "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
 msgstr ""
 
 #. [topic]: id=laying
-#: data/core/encyclopedia/drakes.cfg:79
+#: data/core/encyclopedia/drakes.cfg:80
 msgid "Laying"
 msgstr ""
 
 #. [topic]: id=laying
 #. [topic]: id=hatching
-#: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
-msgid "a period in the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
+#: data/core/encyclopedia/drakes.cfg:81 data/core/encyclopedia/drakes.cfg:87
+msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
 msgstr ""
 
 #. [topic]: id=hatching
-#: data/core/encyclopedia/drakes.cfg:85
+#: data/core/encyclopedia/drakes.cfg:86
 msgid "Hatching"
 msgstr ""
 
 #. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:91
+#: data/core/encyclopedia/drakes.cfg:92
 #, fuzzy
 msgid "Hatchling"
 msgstr "Hồi máu"
 
 #. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:92
+#: data/core/encyclopedia/drakes.cfg:93
 msgid ""
-"A young drake that hasn't seen another generation hatch. The younger of the "
-"current generation of hatchlings are the most aggressive is the behaviour of "
-"the <ref>dst='flight' text='flight'</ref>."
+"A young drake that has not yet seen another generation hatch. The younger of "
+"the current generation of hatchlings are the most aggressive is the behavior "
+"of the <ref>dst='flight' text='flight'</ref>."
 msgstr ""
 
 #. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:97
+#: data/core/encyclopedia/drakes.cfg:98
 #, fuzzy
 msgid "Fledgling"
 msgstr "Hồi máu"
 
 #. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:98
+#: data/core/encyclopedia/drakes.cfg:99
 msgid ""
 "A young drake that has seen another generation hatch. If the "
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
@@ -351,12 +352,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:103
+#: data/core/encyclopedia/drakes.cfg:104
 msgid "Breeder"
 msgstr ""
 
 #. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:104
+#: data/core/encyclopedia/drakes.cfg:105
 msgid ""
 "The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> that "
 "become breeders have to be handled with extra care. The number of breeders "
@@ -366,24 +367,25 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:109
+#: data/core/encyclopedia/drakes.cfg:110
 msgid "Egg, Drake"
 msgstr ""
 
 #. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:110
+#: data/core/encyclopedia/drakes.cfg:111
 msgid ""
 "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
-"text='Hatchling'</ref> will belongs to is determined by the time it is laid."
-msgstr ""
-
-#. [topic]: id=flight
-#: data/core/encyclopedia/drakes.cfg:115
-msgid "Flight"
+"text='Hatchling'</ref> will belongs to is determined by the time it is laid "
+"and to some extent the ambient temperature."
 msgstr ""
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
+msgid "Flight"
+msgstr ""
+
+#. [topic]: id=flight
+#: data/core/encyclopedia/drakes.cfg:117
 msgid ""
 "Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
@@ -391,12 +393,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:121
+#: data/core/encyclopedia/drakes.cfg:122
 msgid "Aspirant"
 msgstr ""
 
 #. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:122
+#: data/core/encyclopedia/drakes.cfg:123
 msgid ""
 "Male drake that has passed through a hormonal metamorphosis that makes him "
 "able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
@@ -405,54 +407,54 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:127
+#: data/core/encyclopedia/drakes.cfg:128
 msgid "Ascendant"
 msgstr ""
 
 #. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:128
+#: data/core/encyclopedia/drakes.cfg:129
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
 
 #. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:133
+#: data/core/encyclopedia/drakes.cfg:134
 #, fuzzy
 msgid "Intendant"
 msgstr "Thông minh"
 
 #. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:134
+#: data/core/encyclopedia/drakes.cfg:135
 msgid ""
 "One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
 "<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of each "
 "<ref>dst=caste text='caste'</ref> other than his own. Additional "
-"'Intendants' are sometimes designated for special duties.  Intendants are "
+"'Intendants' are sometimes designated for special duties. Intendants are "
 "likeliest to be granted mating privileges, especially after a notable "
 "service."
 msgstr ""
 
 #. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:139
+#: data/core/encyclopedia/drakes.cfg:140
 #, fuzzy
 msgid "Swarm"
 msgstr "liên hoàn"
 
 #. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:140
+#: data/core/encyclopedia/drakes.cfg:141
 msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
 
 #. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:145
+#: data/core/encyclopedia/drakes.cfg:146
 #, fuzzy
 msgid "Swarming"
 msgstr "liên hoàn"
 
 #. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:146
+#: data/core/encyclopedia/drakes.cfg:147
 msgid ""
 " The <ref>dst='flight' text='flight'</ref> for a new drake <ref>dst='aerie' "
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
@@ -460,56 +462,58 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:151
+#: data/core/encyclopedia/drakes.cfg:152
 msgid "Runners"
 msgstr ""
 
 #. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:152
+#: data/core/encyclopedia/drakes.cfg:153
 msgid "Drakish term for escaped slaves hunted as game."
 msgstr ""
 
 #. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:157
+#: data/core/encyclopedia/drakes.cfg:158
 msgid "Mount Morogor"
 msgstr ""
 
 #. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:158
+#: data/core/encyclopedia/drakes.cfg:159
 msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
 
 #. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:163
+#: data/core/encyclopedia/drakes.cfg:164
 msgid "Long Count"
 msgstr ""
 
 #. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:164
+#: data/core/encyclopedia/drakes.cfg:165
 msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
 
 #. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:169
+#: data/core/encyclopedia/drakes.cfg:170
 msgid "Long Pig"
 msgstr ""
 
 #. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:170
-msgid "South Seas pidgin for human meat."
-msgstr ""
-
-#. [topic]: id=ceramic
-#: data/core/encyclopedia/drakes.cfg:175
-msgid "Ceramics"
+#: data/core/encyclopedia/drakes.cfg:171
+msgid ""
+"South Seas pidgin for human meat, used to translate a Drakish word with the "
+"same meaning."
 msgstr ""
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
+msgid "Ceramics"
+msgstr ""
+
+#. [topic]: id=ceramic
+#: data/core/encyclopedia/drakes.cfg:177
 msgid ""
 "The drakes work metal, but are are masters in the craftsmanship of making "
 "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
@@ -517,12 +521,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:181
+#: data/core/encyclopedia/drakes.cfg:182
 msgid "Drakish, script"
 msgstr ""
 
 #. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:182
+#: data/core/encyclopedia/drakes.cfg:183
 msgid ""
 "The scripted language of the drakes. Stored on <ref>dst='ceramic' "
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
@@ -530,52 +534,54 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:187
+#: data/core/encyclopedia/drakes.cfg:188
 msgid "Drakish, language"
 msgstr ""
 
 #. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:188
+#: data/core/encyclopedia/drakes.cfg:189
 msgid "The language spoken by the drakes."
 msgstr ""
 
 #. [section]: id=geography
 #. [topic]: id=..geography
-#: data/core/encyclopedia/geography.cfg:5
-#: data/core/encyclopedia/geography.cfg:12
+#: data/core/encyclopedia/geography.cfg:11
+#: data/core/encyclopedia/geography.cfg:18
 msgid "Geography"
 msgstr ""
 
 #. [topic]: id=arkan_thoria
-#: data/core/encyclopedia/geography.cfg:19
+#: data/core/encyclopedia/geography.cfg:25
 msgid "Arkan-thoria"
 msgstr ""
 
 #. [topic]: id=arkan_thoria
-#: data/core/encyclopedia/geography.cfg:20
-msgid "<ref>dst='heart_mountains' text='Heart Mountains'</ref>"
+#: data/core/encyclopedia/geography.cfg:26
+msgid ""
+"A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
+"ref> and running east to the Listra."
 msgstr ""
 
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:25
+#: data/core/encyclopedia/geography.cfg:31
 msgid "Great Ocean"
 msgstr ""
 
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:26
+#: data/core/encyclopedia/geography.cfg:32
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
-"and all rivers eventually flow to it. In the middle of the great ocean is a "
-"huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
+"and all rivers eventually flow to it. Far to the west in the the Great Ocean "
+"is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
 
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:31
+#: data/core/encyclopedia/geography.cfg:37
 msgid "Morogor"
 msgstr ""
 
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:34
+#: data/core/encyclopedia/geography.cfg:40
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
 "ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> and "
@@ -585,47 +591,49 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:39
+#: data/core/encyclopedia/geography.cfg:45
 #, fuzzy
 msgid "Green Isle"
 msgstr "Xanh lá cây"
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:40
+#: data/core/encyclopedia/geography.cfg:46
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='great ocean'</ref>."
 msgstr ""
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:45
+#: data/core/encyclopedia/geography.cfg:51
 msgid "Old Continent"
 msgstr ""
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:46
-msgid "Lies in the west of <ref>dst='morogor' text='Morogor'</ref>."
+#: data/core/encyclopedia/geography.cfg:52
+msgid ""
+"Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
+"<ref>dst='Great Ocean' text='Great Ocean'</ref>."
 msgstr ""
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:51
+#: data/core/encyclopedia/geography.cfg:57
 msgid "Great Continent"
 msgstr ""
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:52
+#: data/core/encyclopedia/geography.cfg:58
 msgid ""
 "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
-"Wesnoth'</ref> lies. It's west coast is surrunded by the "
+"Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:57
+#: data/core/encyclopedia/geography.cfg:63
 msgid "Irdya"
 msgstr ""
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:58
+#: data/core/encyclopedia/geography.cfg:64
 msgid ""
 "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref> is situated is 'Irdya'. This term is , however, only "
@@ -634,12 +642,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:63
+#: data/core/encyclopedia/geography.cfg:69
 msgid "Kingdom of Wesnoth"
 msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:89
+#: data/core/encyclopedia/geography.cfg:95
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -697,12 +705,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:94
+#: data/core/encyclopedia/geography.cfg:100
 msgid "Elensefar"
 msgstr ""
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:101
+#: data/core/encyclopedia/geography.cfg:107
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -722,12 +730,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:106
+#: data/core/encyclopedia/geography.cfg:112
 msgid "Northlands"
 msgstr ""
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:124
+#: data/core/encyclopedia/geography.cfg:130
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
@@ -771,12 +779,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:129
+#: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
 msgstr ""
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:135
+#: data/core/encyclopedia/geography.cfg:141
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -792,13 +800,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:140
+#: data/core/encyclopedia/geography.cfg:146
 #, fuzzy
 msgid "Heart Mountains"
 msgstr "Núi"
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:141
+#: data/core/encyclopedia/geography.cfg:147
 msgid ""
 "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
@@ -806,12 +814,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:146
+#: data/core/encyclopedia/geography.cfg:152
 msgid "Far North"
 msgstr ""
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:170
+#: data/core/encyclopedia/geography.cfg:176
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -860,7 +868,7 @@ msgstr "Cách chơi"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:33 data/core/help.cfg:359
+#: data/core/help.cfg:33 data/core/help.cfg:360
 msgid "Traits"
 msgstr "Đặc điểm"
 
@@ -890,13 +898,13 @@ msgstr "Liên minh"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
-#: data/core/help.cfg:74 data/core/help.cfg:479
+#: data/core/help.cfg:74 data/core/help.cfg:480
 msgid "Terrains"
 msgstr "Địa hình"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:81 data/core/help.cfg:781
+#: data/core/help.cfg:81 data/core/help.cfg:782
 msgid "Commands"
 msgstr "Lệnh"
 
@@ -1233,7 +1241,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
 msgid ""
-" red if it has finished its turn (might still be able to move or attack)."
+" red if it can no longer move or attack, or the user ended the unit's turn."
 msgstr ""
 
 #. [topic]: id=orbs
@@ -1972,9 +1980,11 @@ msgid ""
 "\n"
 "\n"
 "Income is simple. You have a base income of 2 gold per turn. For every "
-"village you control, you gain one additional gold each turn. Thus, if you "
-"have ten villages, you would normally gain 12 gold each turn. Your upkeep "
-"costs are subtracted from this income, as detailed below."
+"village you control, you gain one additional gold each turn. (In general "
+"this is configurable but in campaigns it is almost always one gold per "
+"village.) Thus, if you have ten villages, you would normally gain 12 gold "
+"each turn. Your upkeep costs are subtracted from this income, as detailed "
+"below."
 msgstr ""
 "\n"
 "\n"
@@ -2022,9 +2032,10 @@ msgstr ""
 "sẽ là 10 lượng vàng mỗi lượt."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:334
+#: data/core/help.cfg:335
 #, fuzzy
 msgid ""
+"\n"
 "\n"
 "There are two important exceptions to upkeep: units with the loyal trait and "
 "leaders never incur upkeep. Units you begin the scenario with (such as "
@@ -2042,12 +2053,12 @@ msgstr ""
 "Konrad) gần như luôn là một người chỉ huy."
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:340
+#: data/core/help.cfg:341
 msgid "Wrap Up"
 msgstr "Tóm lược"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:341
+#: data/core/help.cfg:342
 #, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -2063,17 +2074,17 @@ msgstr ""
 "dịch Người thừa kế ngai vàng. Chúc vui vẻ, và chúc may mắn!"
 
 #. [topic]: id=about
-#: data/core/help.cfg:346
+#: data/core/help.cfg:347
 msgid "ingame_help_item^Contributors"
 msgstr "Những người đóng góp"
 
 #. [topic]: id=license
-#: data/core/help.cfg:352
+#: data/core/help.cfg:353
 msgid "License"
 msgstr "Giấy phép"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:361
+#: data/core/help.cfg:362
 #, fuzzy
 msgid ""
 "Most units have two traits. However, undead units are assigned the single "
@@ -2087,7 +2098,7 @@ msgstr ""
 "vị. Chúng thường được cấp ngẫu nhiên cho một đơn vị khi tuyển quân."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:363
+#: data/core/help.cfg:364
 #, fuzzy
 msgid ""
 "\n"
@@ -2105,7 +2116,7 @@ msgstr ""
 "text='bền bỉ'</ref>, và <ref>dst='traits_strong' text='mạnh mẽ'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:367
+#: data/core/help.cfg:368
 #, fuzzy
 msgid ""
 "\n"
@@ -2123,19 +2134,19 @@ msgstr ""
 "\n"
 
 #. [topic]: id=traits_intelligent
-#: data/core/help.cfg:373
+#: data/core/help.cfg:374
 msgid "Intelligent"
 msgstr "Thông minh"
 
 #. [topic]: id=traits_intelligent
-#: data/core/help.cfg:374
+#: data/core/help.cfg:375
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Các đơn vị thông minh đòi hỏi điểm kinh nghiệm để nâng cấp ít hơn bình "
 "thường 20%."
 
 #. [topic]: id=traits_intelligent
-#: data/core/help.cfg:376
+#: data/core/help.cfg:377
 #, fuzzy
 msgid ""
 "\n"
@@ -2156,12 +2167,12 @@ msgstr ""
 "đa', bạn có thể gọi lại các đơn vị có những đặc điểm khác tốt hơn."
 
 #. [topic]: id=traits_quick
-#: data/core/help.cfg:381
+#: data/core/help.cfg:382
 msgid "Quick"
 msgstr "Nhanh nhẹn"
 
 #. [topic]: id=traits_quick
-#: data/core/help.cfg:382
+#: data/core/help.cfg:383
 #, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
@@ -2171,7 +2182,7 @@ msgstr ""
 "thường 5%."
 
 #. [topic]: id=traits_quick
-#: data/core/help.cfg:384
+#: data/core/help.cfg:385
 #, fuzzy
 msgid ""
 "\n"
@@ -2193,12 +2204,12 @@ msgstr ""
 "hơn khi trấn giữ những vị trí tranh chấp."
 
 #. [topic]: id=traits_resilient
-#: data/core/help.cfg:389
+#: data/core/help.cfg:390
 msgid "Resilient"
 msgstr "Bền bỉ"
 
 #. [topic]: id=traits_resilient
-#: data/core/help.cfg:390
+#: data/core/help.cfg:391
 #, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
@@ -2208,7 +2219,7 @@ msgstr ""
 "máu với mỗi cấp độ."
 
 #. [topic]: id=traits_resilient
-#: data/core/help.cfg:392
+#: data/core/help.cfg:393
 msgid ""
 "\n"
 "\n"
@@ -2227,12 +2238,12 @@ msgstr ""
 "trí chiến lược trước đối thủ."
 
 #. [topic]: id=traits_strong
-#: data/core/help.cfg:397
+#: data/core/help.cfg:398
 msgid "Strong"
 msgstr "Mạnh mẽ"
 
 #. [topic]: id=traits_strong
-#: data/core/help.cfg:398
+#: data/core/help.cfg:399
 #, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
@@ -2242,7 +2253,7 @@ msgstr ""
 "trong chiến đấu cận chiến, và có nhiều hơn 1 đơn vị máu."
 
 #. [topic]: id=traits_strong
-#: data/core/help.cfg:400
+#: data/core/help.cfg:401
 #, fuzzy
 msgid ""
 "\n"
@@ -2261,25 +2272,25 @@ msgstr ""
 "kết liễu."
 
 #. [topic]: id=traits_fearless
-#: data/core/help.cfg:405
+#: data/core/help.cfg:406
 msgid "Fearless"
 msgstr "Dũng cảm"
 
 #. [topic]: id=traits_fearless
-#: data/core/help.cfg:406
+#: data/core/help.cfg:407
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 "Ánh sáng và bóng tối không làm giảm tinh thần chiến đấu của những chiến binh "
 "can đảm này."
 
 #. [topic]: id=traits_feral
-#: data/core/help.cfg:411
+#: data/core/help.cfg:412
 #, fuzzy
 msgid "Feral"
 msgstr "Toàn bộ"
 
 #. [topic]: id=traits_feral
-#: data/core/help.cfg:412
+#: data/core/help.cfg:413
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
@@ -2288,12 +2299,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_loyal
-#: data/core/help.cfg:417
+#: data/core/help.cfg:418
 msgid "Loyal"
 msgstr "Trung thành"
 
 #. [topic]: id=traits_loyal
-#: data/core/help.cfg:418
+#: data/core/help.cfg:419
 #, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
@@ -2305,7 +2316,7 @@ msgstr ""
 "thành không đòi chi phí này."
 
 #. [topic]: id=traits_loyal
-#: data/core/help.cfg:420
+#: data/core/help.cfg:421
 #, fuzzy
 msgid ""
 "\n"
@@ -2328,12 +2339,12 @@ msgstr ""
 "đơn vị trung thành hoặc để chúng chết một cách dại dột."
 
 #. [topic]: id=traits_undead
-#: data/core/help.cfg:425
+#: data/core/help.cfg:426
 msgid "trait^Undead"
 msgstr "Ma quái"
 
 #. [topic]: id=traits_undead
-#: data/core/help.cfg:426
+#: data/core/help.cfg:427
 #, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, also drain and "
@@ -2343,7 +2354,7 @@ msgstr ""
 "có tác dụng với chúng."
 
 #. [topic]: id=traits_undead
-#: data/core/help.cfg:428
+#: data/core/help.cfg:429
 #, fuzzy
 msgid ""
 "\n"
@@ -2361,12 +2372,12 @@ msgstr ""
 "thanh toán những địch thủ sử dụng chất độc kết hợp với tấn công."
 
 #. [topic]: id=traits_mechanical
-#: data/core/help.cfg:433
+#: data/core/help.cfg:434
 msgid "trait^Mechanical"
 msgstr "Cơ giới"
 
 #. [topic]: id=traits_mechanical
-#: data/core/help.cfg:434
+#: data/core/help.cfg:435
 #, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, also drain "
@@ -2376,12 +2387,12 @@ msgstr ""
 "có hiệu lực với chúng."
 
 #. [topic]: id=traits_mechanical
-#: data/core/help.cfg:436
+#: data/core/help.cfg:437
 #, fuzzy
 msgid ""
 "\n"
 "\n"
-"Mechanical units generally have mechanocal as their only trait. Since "
+"Mechanical units generally have mechanical as their only trait. Since "
 "mechanical units don’t really have life, drain, poison and plague has no "
 "effect upon them."
 msgstr ""
@@ -2392,12 +2403,12 @@ msgstr ""
 "với chúng."
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:441
+#: data/core/help.cfg:442
 msgid "Dextrous"
 msgstr "Khéo léo"
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:442
+#: data/core/help.cfg:443
 #, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
@@ -2407,7 +2418,7 @@ msgstr ""
 "trong chiến đấu từ xa."
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:444
+#: data/core/help.cfg:445
 #, fuzzy
 msgid ""
 "\n"
@@ -2425,12 +2436,12 @@ msgstr ""
 "thiệt hại với mỗi mũi tên."
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:449
+#: data/core/help.cfg:450
 msgid "Healthy"
 msgstr "Khỏe mạnh"
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:450
+#: data/core/help.cfg:451
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
@@ -2439,7 +2450,7 @@ msgstr ""
 "khác và có thể nghỉ ngơi kể cả khi di chuyển."
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:452
+#: data/core/help.cfg:453
 #, fuzzy
 msgid ""
 "\n"
@@ -2456,12 +2467,12 @@ msgstr ""
 "tư."
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:457
+#: data/core/help.cfg:458
 msgid "Dim"
 msgstr "Đần độn"
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:458
+#: data/core/help.cfg:459
 #, fuzzy
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
@@ -2471,7 +2482,7 @@ msgstr ""
 "để nâng cấp."
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:460
+#: data/core/help.cfg:461
 msgid ""
 "\n"
 "\n"
@@ -2485,19 +2496,19 @@ msgstr ""
 "trong số chúng."
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:465
+#: data/core/help.cfg:466
 msgid "Slow"
 msgstr "Chậm chạp"
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:466
+#: data/core/help.cfg:467
 #, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
 msgstr "Các đơn vị chậm chạp có di chuyển -1 nhưng nhiều máu hơn 5%."
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:468
+#: data/core/help.cfg:469
 msgid ""
 "\n"
 "\n"
@@ -2512,12 +2523,12 @@ msgstr ""
 "hơn một chút."
 
 #. [topic]: id=traits_weak
-#: data/core/help.cfg:473
+#: data/core/help.cfg:474
 msgid "Weak"
 msgstr "Yếu ớt"
 
 #. [topic]: id=traits_weak
-#: data/core/help.cfg:474
+#: data/core/help.cfg:475
 #, fuzzy
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
@@ -2526,7 +2537,7 @@ msgstr ""
 "Các đơn vị có đặc điểm yếu ớt giảm 1 lượng máu và lượng thiệt hại cận chiến."
 
 #. [topic]: id=..terrains
-#: data/core/help.cfg:482
+#: data/core/help.cfg:483
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat.\n"
@@ -2537,12 +2548,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_flat
-#: data/core/help.cfg:489
+#: data/core/help.cfg:490
 msgid "Flat"
 msgstr "Đất phẳng"
 
 #. [topic]: id=terrain_flat
-#: data/core/help.cfg:494
+#: data/core/help.cfg:495
 #, fuzzy
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
@@ -2562,17 +2573,17 @@ msgstr ""
 "Hầu hết các đơn vị có tỷ lệ phòng thủ 30% đến 40% trên đồng cỏ."
 
 #. [topic]: id=terrain_road
-#: data/core/help.cfg:503
+#: data/core/help.cfg:504
 msgid "Road"
 msgstr "Đường"
 
 #. [topic]: id=terrain_road
-#: data/core/help.cfg:508
+#: data/core/help.cfg:509
 #, fuzzy
 msgid ""
-"Roads are beaten paths of dirt, formed by many travelers passing over them. "
-"As far as gameplay is concerned, roads behave as <ref>dst='terrain_flat' "
-"text='flat'</ref> terrain.\n"
+"<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
+"travelers passing over them. As far as gameplay is concerned, roads behave "
+"as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
 "\n"
 msgstr ""
 "Đường là những con đường mòn bằng đất đá, được tạo nên dưới dấu chân của "
@@ -2580,12 +2591,12 @@ msgstr ""
 "<ref>dst='terrain_flat' text='đất phẳng'</ref>."
 
 #. [topic]: id=terrain_forest
-#: data/core/help.cfg:515
+#: data/core/help.cfg:516
 msgid "Forest"
 msgstr "Rừng"
 
 #. [topic]: id=terrain_forest
-#: data/core/help.cfg:522
+#: data/core/help.cfg:523
 #, fuzzy
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
@@ -2620,12 +2631,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_hills
-#: data/core/help.cfg:530
+#: data/core/help.cfg:531
 msgid "Hills"
 msgstr "Đồi"
 
 #. [topic]: id=terrain_hills
-#: data/core/help.cfg:537
+#: data/core/help.cfg:538
 #, fuzzy
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
@@ -2649,12 +2660,12 @@ msgstr ""
 "chỉ có 40%. Người lùn hưởng tỷ lệ phòng thủ 60% trên đồi."
 
 #. [topic]: id=terrain_mountains
-#: data/core/help.cfg:544
+#: data/core/help.cfg:545
 msgid "Mountains"
 msgstr "Núi"
 
 #. [topic]: id=terrain_mountains
-#: data/core/help.cfg:549
+#: data/core/help.cfg:550
 #, fuzzy
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
@@ -2678,12 +2689,12 @@ msgstr ""
 "lùn hưởng 70%."
 
 #. [topic]: id=terrain_swamp_water
-#: data/core/help.cfg:556
+#: data/core/help.cfg:557
 msgid "Swamp"
 msgstr "Đầm lầy"
 
 #. [topic]: id=terrain_swamp_water
-#: data/core/help.cfg:561
+#: data/core/help.cfg:562
 #, fuzzy
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps slow "
@@ -2705,20 +2716,21 @@ msgstr ""
 "và thằn lằn tất cả nói chung hưởng 60%."
 
 #. [topic]: id=terrain_shallow_water
-#: data/core/help.cfg:568
+#: data/core/help.cfg:569
 msgid "Shallow Water"
 msgstr "Nước nông"
 
 #. [topic]: id=terrain_shallow_water
-#: data/core/help.cfg:573
+#: data/core/help.cfg:574
 #, fuzzy
 msgid ""
-"Shallow water represents any body of water deep enough to come up to roughly "
-"a man’s waist. This is enough to slow down nearly anyone and leave them wide "
-"open to attack. Dwarves, given that the water reaches up almost to their "
-"heads, have an extremely hard time of this. The exception is any race whose "
-"bodies naturally lend themselves to swimming, for which they receive a "
-"considerable defensive bonus and full movement.\n"
+"<italic>text='Shallow water'</italic> represents any body of water deep "
+"enough to come up to roughly a man’s waist. This is enough to slow down "
+"nearly anyone and leave them wide open to attack. Dwarves, given that the "
+"water reaches up almost to their heads, have an extremely hard time of this. "
+"The exception is any race whose bodies naturally lend themselves to "
+"swimming, for which they receive a considerable defensive bonus and full "
+"movement.\n"
 "\n"
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
@@ -2733,17 +2745,17 @@ msgstr ""
 "cả người rắn lẫn người cá đều hưởng 60%."
 
 #. [topic]: id=terrain_deep_water
-#: data/core/help.cfg:580
+#: data/core/help.cfg:581
 msgid "Deep Water"
 msgstr "Nước sâu"
 
 #. [topic]: id=terrain_deep_water
-#: data/core/help.cfg:585
+#: data/core/help.cfg:586
 #, fuzzy
 msgid ""
-"Deep water represents any body of water deep enough to cover a man’s head. "
-"Most units cannot enter deep water: it is the domain of units which can "
-"either fly, or are exceptionally strong swimmers.\n"
+"<italic>text='Deep water'</italic> represents any body of water deep enough "
+"to cover a man’s head. Most units cannot enter deep water: it is the domain "
+"of units which can either fly, or are exceptionally strong swimmers.\n"
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
@@ -2755,12 +2767,12 @@ msgstr ""
 "với khả năng tự do di chuyển."
 
 #. [topic]: id=terrain_frozen
-#: data/core/help.cfg:592
+#: data/core/help.cfg:593
 msgid "Frozen"
 msgstr "Băng"
 
 #. [topic]: id=terrain_frozen
-#: data/core/help.cfg:597
+#: data/core/help.cfg:598
 #, fuzzy
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
@@ -2778,12 +2790,12 @@ msgstr ""
 "Hầu hết các đơn vị có tỷ lệ phòng thủ 20% đến 40% trên địa hình băng."
 
 #. [topic]: id=terrain_castle
-#: data/core/help.cfg:604
+#: data/core/help.cfg:605
 msgid "Castle"
 msgstr "Lâu đài"
 
 #. [topic]: id=terrain_castle
-#: data/core/help.cfg:611
+#: data/core/help.cfg:612
 #, fuzzy
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
@@ -2807,17 +2819,18 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_sand
-#: data/core/help.cfg:620
+#: data/core/help.cfg:621
 msgid "Sand"
 msgstr "Cát"
 
 #. [topic]: id=terrain_sand
-#: data/core/help.cfg:625
+#: data/core/help.cfg:626
 #, fuzzy
 msgid ""
-"The instability of sand makes it harder for most units to cross, and leaves "
-"them wide open to attack. In contrast, the wide feet or snakelike bodies of "
-"the reptilian races make sand much easier for them to navigate.\n"
+"The instability of <italic>text='sand'</italic> makes it harder for most "
+"units to cross, and leaves them wide open to attack. In contrast, the wide "
+"feet or snakelike bodies of the reptilian races make sand much easier for "
+"them to navigate.\n"
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
@@ -2829,12 +2842,12 @@ msgstr ""
 "Hầu hết các đơn vị nhận tỷ lệ phòng thủ 20% đến 40% trên cát."
 
 #. [topic]: id=terrain_desert
-#: data/core/help.cfg:632
+#: data/core/help.cfg:633
 msgid "Desert"
 msgstr "Sa mạc"
 
 #. [topic]: id=terrain_desert
-#: data/core/help.cfg:635
+#: data/core/help.cfg:636
 #, fuzzy
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
@@ -2846,12 +2859,12 @@ msgstr ""
 "ref>."
 
 #. [topic]: id=terrain_cave
-#: data/core/help.cfg:642
+#: data/core/help.cfg:643
 msgid "Cave"
 msgstr "Hang động"
 
 #. [topic]: id=terrain_cave
-#: data/core/help.cfg:647
+#: data/core/help.cfg:648
 #, fuzzy
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
@@ -2876,21 +2889,22 @@ msgstr ""
 "khi người lùn có 50%."
 
 #. [topic]: id=terrain_rockbound_cave
-#: data/core/help.cfg:654
+#: data/core/help.cfg:655
 msgid "Rockbound Cave"
 msgstr "Hang đá"
 
 #. [topic]: id=terrain_rockbound_cave
-#: data/core/help.cfg:659
+#: data/core/help.cfg:660
 #, fuzzy
 msgid ""
-"Rockbound cave terrain is formed by the action of water and wind, carrying "
-"erosive particles that carve the rock. It resembles a scraggy underground "
-"cavern which reduces efficiency of most units, but shoulders defense. "
-"Dwarves and trolls, who are main settlers of caves, have a relatively easy "
-"time navigating this terrain. Dwarves, who by dint of their small size have "
-"the full advantage of navigation in such topography. Occasionally caves are "
-"<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
+"<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
+"water and wind, carrying erosive particles that carve the rock. It resembles "
+"a scraggy underground cavern which reduces efficiency of most units, but "
+"shoulders defense. Dwarves and trolls, who are main settlers of caves, have "
+"a relatively easy time navigating this terrain. Dwarves, who by dint of "
+"their small size have the full advantage of navigation in such topography. "
+"Occasionally caves are <ref>dst='terrain_illuminated_cave' "
+"text='illuminated'</ref>\n"
 "\n"
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
@@ -2907,12 +2921,12 @@ msgstr ""
 "binh chỉ có 40%. Người lùn hưởng tỷ lệ phòng thủ 60% trong hang đá."
 
 #. [topic]: id=terrain_illuminated_cave
-#: data/core/help.cfg:666
+#: data/core/help.cfg:667
 msgid "Illuminated Cave"
 msgstr "Hang động được chiếu sáng"
 
 #. [topic]: id=terrain_illuminated_cave
-#: data/core/help.cfg:669
+#: data/core/help.cfg:670
 #, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2928,19 +2942,20 @@ msgstr ""
 "động thông thường."
 
 #. [topic]: id=terrain_fungus
-#: data/core/help.cfg:676
+#: data/core/help.cfg:677
 msgid "Mushroom Grove"
 msgstr "Lùm nấm"
 
 #. [topic]: id=terrain_fungus
-#: data/core/help.cfg:681
+#: data/core/help.cfg:682
+#, fuzzy
 msgid ""
-"Mushroom groves are vast underground forests of giant mushrooms, which "
-"thrive in the damp darkness. Most units have trouble negotiating the spongy "
-"floor of smaller fungi, but they have plenty of cover behind the larger "
-"stalks. Mounted units, however, become completely mired and lack proper "
-"freedom of movement in combat. Undead units have a natural affinity for "
-"decay and function quite well in mushroom forests.\n"
+"<italic>text='Mushroom groves'</italic> are vast underground forests of "
+"giant mushrooms, which thrive in the damp darkness. Most units have trouble "
+"negotiating the spongy floor of smaller fungi, but they have plenty of cover "
+"behind the larger stalks. Mounted units, however, become completely mired "
+"and lack proper freedom of movement in combat. Undead units have a natural "
+"affinity for decay and function quite well in mushroom forests.\n"
 "\n"
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
@@ -2956,12 +2971,12 @@ msgstr ""
 "khi kỵ binh chỉ nhận 20%."
 
 #. [topic]: id=terrain_village
-#: data/core/help.cfg:688
+#: data/core/help.cfg:689
 msgid "Village"
 msgstr "Làng"
 
 #. [topic]: id=terrain_village
-#: data/core/help.cfg:695
+#: data/core/help.cfg:696
 #, fuzzy
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
@@ -2987,20 +3002,20 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_water_village
-#: data/core/help.cfg:704
+#: data/core/help.cfg:705
 msgid "Submerged Village"
 msgstr "Làng ngập nước"
 
 #. [topic]: id=terrain_water_village
-#: data/core/help.cfg:709
+#: data/core/help.cfg:710
 #, fuzzy
 msgid ""
-"Submerged villages are the homes of merfolk and nagas. While water-dwelling "
-"creatures are at home here, land-dwellers have a hard time navigating and "
-"defending these villages. However, like any village, the facilites are "
-"available to all creatures which allow units to tend to their wounds. Any "
-"unit stationed in a village can heal eight hitpoints each turn, or be cured "
-"of poison.\n"
+"<italic>text='Submerged villages'</italic> are the homes of merfolk and "
+"nagas. While water-dwelling creatures are at home here, land-dwellers have a "
+"hard time navigating and defending these villages. However, like any "
+"village, the facilites are available to all creatures which allow units to "
+"tend to their wounds. Any unit stationed in a village can heal eight "
+"hitpoints each turn, or be cured of poison.\n"
 "\n"
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
@@ -3016,12 +3031,12 @@ msgstr ""
 "các đơn vị chiến đấu trên cạn thường có tỷ lệ phòng thủ thấp."
 
 #. [topic]: id=terrain_unwalkable
-#: data/core/help.cfg:716
+#: data/core/help.cfg:717
 msgid "Unwalkable"
 msgstr "Không thể đi bộ qua"
 
 #. [topic]: id=terrain_unwalkable
-#: data/core/help.cfg:719
+#: data/core/help.cfg:720
 #, fuzzy
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
@@ -3035,21 +3050,21 @@ msgstr ""
 "đơn vị có khả năng bay mới có thể vượt qua địa hình này."
 
 #. [topic]: id=terrain_lava
-#: data/core/help.cfg:726
+#: data/core/help.cfg:727
 msgid "Lava"
 msgstr "Dung nham"
 
 #. [topic]: id=terrain_lava
-#: data/core/help.cfg:729
+#: data/core/help.cfg:730
 #, fuzzy
 msgid ""
-"The dangers inherent in trying to walk on lava are fairly obvious. As far as "
-"movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
-"text='unwalkable'</ref> terrain, and can only be crossed by those units "
-"capable of flying a considerable distance above it. The molten magma also "
-"produces a substantial glow, illuminating the area immediately above it. "
-"This provides an attack bonus for lawful units and removes the attack bonus "
-"from chaotic units."
+"The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
+"fairly obvious. As far as movement is concerned, lava is equivalent to "
+"<ref>dst='terrain_unwalkable' text='unwalkable'</ref> terrain, and can only "
+"be crossed by those units capable of flying a considerable distance above "
+"it. The molten magma also produces a substantial glow, illuminating the area "
+"immediately above it. This provides an attack bonus for lawful units and "
+"removes the attack bonus from chaotic units."
 msgstr ""
 "Những nguy hiểm khi thử đi trên dung nham là rõ ràng. Xét về mặt di chuyển, "
 "dung nham tương đương với địa hình <ref>dst='terrain_unwalkable' text='không "
@@ -3060,12 +3075,12 @@ msgstr ""
 "hỗn độn."
 
 #. [topic]: id=terrain_ford
-#: data/core/help.cfg:736
+#: data/core/help.cfg:737
 msgid "River Ford"
 msgstr "Chỗ cạn ở sông"
 
 #. [topic]: id=terrain_ford
-#: data/core/help.cfg:739
+#: data/core/help.cfg:740
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -3082,17 +3097,18 @@ msgstr ""
 "và di chuyển tốt nhất cho đơn vị đứng trên nó."
 
 #. [topic]: id=terrain_reef
-#: data/core/help.cfg:746
+#: data/core/help.cfg:747
 msgid "Coastal Reef"
 msgstr "Đá ngầm ven biển"
 
 #. [topic]: id=terrain_reef
-#: data/core/help.cfg:751
+#: data/core/help.cfg:752
+#, fuzzy
 msgid ""
-"Coastal reefs are shallows formed by stone, coral and sand. This provides "
-"most land units with a more steady footing and defensive positions than "
-"wading in shallow water normally would and also grants most water-dwelling "
-"races an exceptionally high defense.\n"
+"<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
+"and sand. This provides most land units with a more steady footing and "
+"defensive positions than wading in shallow water normally would and also "
+"grants most water-dwelling races an exceptionally high defense.\n"
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
@@ -3105,18 +3121,19 @@ msgstr ""
 "ven biển."
 
 #. [topic]: id=terrain_bridge
-#: data/core/help.cfg:758
+#: data/core/help.cfg:759
 msgid "Bridge"
 msgstr "Cầu"
 
 #. [topic]: id=terrain_bridge
-#: data/core/help.cfg:764
+#: data/core/help.cfg:765
+#, fuzzy
 msgid ""
-"To those capable of building one, the ability to lay a bridge offers a "
-"liberation from the fickle nature of waterways, whose fords come and go with "
-"the rise and fall of the waterline. This is to say nothing of the luxury of "
-"dry feet, the loss of which is no laughing matter in the cold months of the "
-"year.\n"
+"To those capable of building one, the ability to lay a "
+"<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
+"waterways, whose fords come and go with the rise and fall of the waterline. "
+"This is to say nothing of the luxury of dry feet, the loss of which is no "
+"laughing matter in the cold months of the year.\n"
 "\n"
 "For those who go by land or sea, a bridge is the best of both worlds — for "
 "gameplay purposes, it is treated either as grassland or the underlying "
@@ -3138,12 +3155,12 @@ msgstr ""
 "giác cầu."
 
 #. [topic]: id=terrain_impassable
-#: data/core/help.cfg:771
+#: data/core/help.cfg:772
 msgid "Impassable"
 msgstr "Không thể qua"
 
 #. [topic]: id=terrain_impassable
-#: data/core/help.cfg:774
+#: data/core/help.cfg:775
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -3158,12 +3175,12 @@ msgstr ""
 "quỷ núi dữ tợn nhất cũng không thể đập thủng những bức tường đá dày."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:787
+#: data/core/help.cfg:788
 msgid "General commands"
 msgstr "Lệnh chung"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:792
+#: data/core/help.cfg:793
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3174,7 +3191,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:796
+#: data/core/help.cfg:797
 #, fuzzy
 msgid ""
 "\n"
@@ -3190,7 +3207,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:799
+#: data/core/help.cfg:800
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3209,7 +3226,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:802
+#: data/core/help.cfg:803
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3220,7 +3237,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:805
+#: data/core/help.cfg:806
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3231,7 +3248,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:808
+#: data/core/help.cfg:809
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3242,7 +3259,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:811
+#: data/core/help.cfg:812
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3253,7 +3270,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:814
+#: data/core/help.cfg:815
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3264,7 +3281,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:817
+#: data/core/help.cfg:818
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3275,7 +3292,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:818
+#: data/core/help.cfg:819
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3284,12 +3301,12 @@ msgstr ""
 "Lưu trò chơi và thoát khỏi màn (không nhắc nhở)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:826
+#: data/core/help.cfg:827
 msgid "Multiplayer commands"
 msgstr "Lệnh nhiều người chơi"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:832
+#: data/core/help.cfg:833
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3304,7 +3321,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:835
+#: data/core/help.cfg:836
 #, fuzzy
 msgid ""
 "\n"
@@ -3325,7 +3342,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:838
+#: data/core/help.cfg:839
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3340,7 +3357,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:841
+#: data/core/help.cfg:842
 #, fuzzy
 msgid ""
 "\n"
@@ -3353,7 +3370,7 @@ msgstr ""
 "điều khiển phe nào trong trò chơi bạn đang tham gia."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:844
+#: data/core/help.cfg:845
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3366,7 +3383,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:847
+#: data/core/help.cfg:848
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3377,7 +3394,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:850
+#: data/core/help.cfg:851
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3391,7 +3408,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:851
+#: data/core/help.cfg:852
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3402,12 +3419,12 @@ msgstr ""
 "xóa danh sách những người quan sát đã bị chặn tiếng."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:858
+#: data/core/help.cfg:859
 msgid "Debug mode commands"
 msgstr "Lệnh  trong chế độ gỡ lỗi"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:862
+#: data/core/help.cfg:863
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3419,7 +3436,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:865
+#: data/core/help.cfg:866
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3430,7 +3447,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:868
+#: data/core/help.cfg:869
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3441,7 +3458,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:871
+#: data/core/help.cfg:872
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3452,7 +3469,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:874
+#: data/core/help.cfg:875
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3463,7 +3480,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:877
+#: data/core/help.cfg:878
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3474,7 +3491,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:880
+#: data/core/help.cfg:881
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3485,7 +3502,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:883
+#: data/core/help.cfg:884
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3496,7 +3513,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:886
+#: data/core/help.cfg:887
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3508,7 +3525,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:887
+#: data/core/help.cfg:888
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3687,17 +3704,17 @@ msgstr ""
 "phe nó sở hữu, sử dụng một điểm di chuyển."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
+#: data/core/macros/abilities.cfg:417 data/core/macros/abilities.cfg:419
 msgid "ambush"
 msgstr "mai phục"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:391 data/core/macros/abilities.cfg:393
+#: data/core/macros/abilities.cfg:418 data/core/macros/abilities.cfg:420
 msgid "female^ambush"
 msgstr "mai phục"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:397 data/core/macros/abilities.cfg:401
+#: data/core/macros/abilities.cfg:424 data/core/macros/abilities.cfg:428
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -3714,13 +3731,13 @@ msgstr ""
 "vị này đều mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:416 data/core/macros/abilities.cfg:417
-#: data/core/macros/abilities.cfg:422
+#: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:444
+#: data/core/macros/abilities.cfg:449
 msgid "nightstalk"
 msgstr "săn đêm"
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:421 data/core/macros/abilities.cfg:427
+#: data/core/macros/abilities.cfg:448 data/core/macros/abilities.cfg:454
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -3737,22 +3754,22 @@ msgstr ""
 "mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:423
+#: data/core/macros/abilities.cfg:450
 msgid "female^nightstalk"
 msgstr "săn đêm"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
+#: data/core/macros/abilities.cfg:469 data/core/macros/abilities.cfg:475
 msgid "concealment"
 msgstr "ẩn nấp"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:449
+#: data/core/macros/abilities.cfg:470 data/core/macros/abilities.cfg:476
 msgid "female^concealment"
 msgstr "ẩn nấp"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:447 data/core/macros/abilities.cfg:453
+#: data/core/macros/abilities.cfg:474 data/core/macros/abilities.cfg:480
 msgid ""
 "Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
@@ -3771,17 +3788,17 @@ msgstr ""
 "vị này đều mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
+#: data/core/macros/abilities.cfg:495 data/core/macros/abilities.cfg:501
 msgid "submerge"
 msgstr "lặn"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:469 data/core/macros/abilities.cfg:475
+#: data/core/macros/abilities.cfg:496 data/core/macros/abilities.cfg:502
 msgid "female^submerge"
 msgstr "lặn"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:473 data/core/macros/abilities.cfg:479
+#: data/core/macros/abilities.cfg:500 data/core/macros/abilities.cfg:506
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -3798,17 +3815,17 @@ msgstr ""
 "đơn vị này đều mất ngay lập tức toàn bộ  điểm di chuyển còn lại."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:497
+#: data/core/macros/abilities.cfg:524
 msgid "feeding"
 msgstr "bồi dưỡng"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:498
+#: data/core/macros/abilities.cfg:525
 msgid "female^feeding"
 msgstr "bồi dưỡng"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:500
+#: data/core/macros/abilities.cfg:527
 msgid ""
 "Feeding:\n"
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
@@ -3818,17 +3835,17 @@ msgstr ""
 "Đơn vị này tăng thêm 1 đơn vị máu tối đa khi nó giết một đơn vị có sự sống."
 
 #. [unstore_unit]
-#: data/core/macros/abilities.cfg:524
+#: data/core/macros/abilities.cfg:551
 msgid "+1 max HP"
 msgstr "+1 đơn vị máu tối đa"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:566
+#: data/core/macros/abilities.cfg:593
 msgid "backstab"
 msgstr "đánh lén"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:568
+#: data/core/macros/abilities.cfg:595
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3842,12 +3859,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:580 data/core/macros/abilities.cfg:592
+#: data/core/macros/abilities.cfg:607 data/core/macros/abilities.cfg:619
 msgid "plague"
 msgstr "bệnh dịch"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:582
+#: data/core/macros/abilities.cfg:609
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3860,7 +3877,7 @@ msgstr ""
 "truyền. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:594
+#: data/core/macros/abilities.cfg:621
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -3874,12 +3891,12 @@ msgstr ""
 "trong làng."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:604
+#: data/core/macros/abilities.cfg:631
 msgid "slows"
 msgstr "chậm"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:606
+#: data/core/macros/abilities.cfg:633
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -3894,12 +3911,12 @@ msgstr ""
 "tượng con ốc sên trong thông tin bên phải màn hình khi chọn nó."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:615
+#: data/core/macros/abilities.cfg:642
 msgid "petrifies"
 msgstr "hóa đá"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:617
+#: data/core/macros/abilities.cfg:644
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3910,12 +3927,12 @@ msgstr ""
 "đá không thể di chuyển hay tấn công."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:626
+#: data/core/macros/abilities.cfg:653
 msgid "marksman"
 msgstr "thiện xạ"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:628
+#: data/core/macros/abilities.cfg:655
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -3925,12 +3942,12 @@ msgstr ""
 "là 60%."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:653
+#: data/core/macros/abilities.cfg:680
 msgid "swarm"
 msgstr "liên hoàn"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:655
+#: data/core/macros/abilities.cfg:682
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3945,12 +3962,12 @@ msgstr ""
 "được phép."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:664
+#: data/core/macros/abilities.cfg:691
 msgid "charge"
 msgstr "xung kích"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:666
+#: data/core/macros/abilities.cfg:693
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
@@ -3962,12 +3979,12 @@ msgstr ""
 "đôi từ đòn phản công của đối phương."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:678
+#: data/core/macros/abilities.cfg:705
 msgid "drains"
 msgstr "bòn rút"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:680
+#: data/core/macros/abilities.cfg:707
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -3978,12 +3995,12 @@ msgstr ""
 "thân một lượng bằng một nửa lượng thiệt hại mà nó gây ra (làm tròn xuống)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:700
+#: data/core/macros/abilities.cfg:727
 msgid "poison"
 msgstr "độc"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:702
+#: data/core/macros/abilities.cfg:729
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -4454,22 +4471,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=drake
-#: data/core/units.cfg:52
+#: data/core/units.cfg:53
 msgid "race^Drake"
 msgstr "Người rồng"
 
 #. [race]: id=drake
-#: data/core/units.cfg:53
+#: data/core/units.cfg:54
 msgid "race+female^Drake"
 msgstr "Người rồng"
 
 #. [race]: id=drake
-#: data/core/units.cfg:54
+#: data/core/units.cfg:55
 msgid "race^Drakes"
 msgstr "Người rồng"
 
 #. [race]: id=drake
-#: data/core/units.cfg:67
+#: data/core/units.cfg:68
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4538,22 +4555,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:89
+#: data/core/units.cfg:90
 msgid "race^Dwarf"
 msgstr "Người lùn"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:90
+#: data/core/units.cfg:91
 msgid "race+female^Dwarf"
 msgstr "Người lùn"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:91
+#: data/core/units.cfg:92
 msgid "race^Dwarves"
 msgstr "Người lùn"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:96
+#: data/core/units.cfg:97
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -4648,22 +4665,22 @@ msgstr ""
 "người lùn."
 
 #. [race]: id=elf
-#: data/core/units.cfg:108
+#: data/core/units.cfg:109
 msgid "race^Elf"
 msgstr "Thần tiên"
 
 #. [race]: id=elf
-#: data/core/units.cfg:109
+#: data/core/units.cfg:110
 msgid "race+female^Elf"
 msgstr "Thần tiên"
 
 #. [race]: id=elf
-#: data/core/units.cfg:110
+#: data/core/units.cfg:111
 msgid "race^Elves"
 msgstr "Thần tiên"
 
 #. [race]: id=elf
-#: data/core/units.cfg:120
+#: data/core/units.cfg:121
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -4703,22 +4720,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=goblin
-#: data/core/units.cfg:130
+#: data/core/units.cfg:131
 msgid "race^Goblin"
 msgstr "Yêu tinh"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:131
+#: data/core/units.cfg:132
 msgid "race+female^Goblin"
 msgstr "Yêu tinh"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:132
+#: data/core/units.cfg:133
 msgid "race^Goblins"
 msgstr "Yêu tinh"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:135
+#: data/core/units.cfg:136
 msgid ""
 "Goblins are, despite their appearance, born as siblings to the orcs and "
 "members of the same race. While other races usually bear children singly or "
@@ -4740,37 +4757,37 @@ msgid ""
 msgstr ""
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:147
+#: data/core/units.cfg:148
 msgid "race^Gryphon"
 msgstr "Sư tử đầu chim"
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:148
+#: data/core/units.cfg:149
 msgid "race+female^Gryphon"
 msgstr "Sư tử đầu chim"
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:149
+#: data/core/units.cfg:150
 msgid "race^Gryphons"
 msgstr "Sư tử đầu chim"
 
 #. [race]: id=human
-#: data/core/units.cfg:164
+#: data/core/units.cfg:165
 msgid "race^Human"
 msgstr "Con người"
 
 #. [race]: id=human
-#: data/core/units.cfg:165
+#: data/core/units.cfg:166
 msgid "race+female^Human"
 msgstr "Con người"
 
 #. [race]: id=human
-#: data/core/units.cfg:166
+#: data/core/units.cfg:167
 msgid "race^Humans"
 msgstr "Con người"
 
 #. [race]: id=human
-#: data/core/units.cfg:173
+#: data/core/units.cfg:174
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -4848,32 +4865,32 @@ msgstr ""
 "mạnh và điểm yếu của hai nhóm này bổ sung lẫn nhau."
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:181
+#: data/core/units.cfg:182
 msgid "race^Saurian"
 msgstr "Thằn lằn"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:182
+#: data/core/units.cfg:183
 msgid "race+female^Saurian"
 msgstr "Thằn lằn"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:183
+#: data/core/units.cfg:184
 msgid "race^Saurians"
 msgstr "Thằn lằn"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:192
+#: data/core/units.cfg:193
 msgid "race^Mechanical"
 msgstr "Máy móc"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:193
+#: data/core/units.cfg:194
 msgid "race+plural^Mechanical"
 msgstr "Máy móc"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:194
+#: data/core/units.cfg:195
 msgid ""
 "Animated neither by natural life nor by necromancy, the term ”mechanical” "
 "describes a created artifact of an intelligent being. Most mechanical things "
@@ -4882,22 +4899,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=merman
-#: data/core/units.cfg:203
+#: data/core/units.cfg:204
 msgid "race^Merman"
 msgstr "Người cá"
 
 #. [race]: id=merman
-#: data/core/units.cfg:204
+#: data/core/units.cfg:205
 msgid "race^Mermaid"
 msgstr "Người cá"
 
 #. [race]: id=merman
-#: data/core/units.cfg:205
+#: data/core/units.cfg:206
 msgid "race^Mermen"
 msgstr "Người cá"
 
 #. [race]: id=merman
-#: data/core/units.cfg:207
+#: data/core/units.cfg:208
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -4911,17 +4928,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=monster
-#: data/core/units.cfg:214
+#: data/core/units.cfg:215
 msgid "race^Monster"
 msgstr "Quái vật"
 
 #. [race]: id=monster
-#: data/core/units.cfg:215
+#: data/core/units.cfg:216
 msgid "race^Monsters"
 msgstr "Quái vật"
 
 #. [race]: id=monster
-#: data/core/units.cfg:216
+#: data/core/units.cfg:217
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -4929,22 +4946,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=naga
-#: data/core/units.cfg:223
+#: data/core/units.cfg:224
 msgid "race^Naga"
 msgstr "Người rắn"
 
 #. [race]: id=naga
-#: data/core/units.cfg:224
+#: data/core/units.cfg:225
 msgid "race^Nagani"
 msgstr "Người rắn"
 
 #. [race]: id=naga
-#: data/core/units.cfg:225
+#: data/core/units.cfg:226
 msgid "race^Nagas"
 msgstr "Người rắn"
 
 #. [race]: id=naga
-#: data/core/units.cfg:226
+#: data/core/units.cfg:227
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -4962,22 +4979,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=ogre
-#: data/core/units.cfg:233
+#: data/core/units.cfg:234
 msgid "race^Ogre"
 msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:234
+#: data/core/units.cfg:235
 msgid "race+female^Ogre"
 msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:235
+#: data/core/units.cfg:236
 msgid "race^Ogres"
 msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:236
+#: data/core/units.cfg:237
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -4996,22 +5013,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:244
+#: data/core/units.cfg:245
 msgid "race^Orc"
 msgstr "Người thú"
 
 #. [race]: id=orc
-#: data/core/units.cfg:245
+#: data/core/units.cfg:246
 msgid "race+female^Orc"
 msgstr "Người thú"
 
 #. [race]: id=orc
-#: data/core/units.cfg:246
+#: data/core/units.cfg:247
 msgid "race^Orcs"
 msgstr "Người thú"
 
 #. [race]: id=orc
-#: data/core/units.cfg:256
+#: data/core/units.cfg:257
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5125,22 +5142,22 @@ msgstr ""
 "môn hóa các kỹ năng khác, như bắn cung hoặc ám sát."
 
 #. [race]: id=troll
-#: data/core/units.cfg:263
+#: data/core/units.cfg:264
 msgid "race^Troll"
 msgstr "Quỷ núi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:264
+#: data/core/units.cfg:265
 msgid "race+female^Troll"
 msgstr "Quỷ núi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:265
+#: data/core/units.cfg:266
 msgid "race^Trolls"
 msgstr "Quỷ núi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:271
+#: data/core/units.cfg:272
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5214,22 +5231,22 @@ msgstr ""
 "qua."
 
 #. [race]: id=undead
-#: data/core/units.cfg:285
+#: data/core/units.cfg:286
 msgid "race^Undead"
 msgstr "Ma quái"
 
 #. [race]: id=undead
-#: data/core/units.cfg:286
+#: data/core/units.cfg:287
 msgid "race+female^Undead"
 msgstr "Ma quái"
 
 #. [race]: id=undead
-#: data/core/units.cfg:287
+#: data/core/units.cfg:288
 msgid "race+plural^Undead"
 msgstr "Ma quái"
 
 #. [race]: id=undead
-#: data/core/units.cfg:293
+#: data/core/units.cfg:294
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5282,22 +5299,22 @@ msgstr ""
 "chúng trước đó."
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:301
+#: data/core/units.cfg:302
 msgid "race^Wolf"
 msgstr "Chó sói"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:302
+#: data/core/units.cfg:303
 msgid "race^Wolves"
 msgstr "Chó sói"
 
 #. [race]: id=wose, description=
-#: data/core/units.cfg:311
+#: data/core/units.cfg:312
 msgid "race^Wose"
 msgstr "Thần rừng"
 
 #. [race]: id=wose, description=
-#: data/core/units.cfg:312
+#: data/core/units.cfg:313
 msgid "race^Woses"
 msgstr "Thần rừng"
 

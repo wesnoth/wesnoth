@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-15 11:52+0100\n"
+"POT-Creation-Date: 2011-02-12 13:10+0100\n"
 "PO-Revision-Date: 2010-07-26 17:43+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: none\n"
@@ -1012,8 +1012,9 @@ msgstr "格尔泰德阵亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:860
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
 #, fuzzy
-msgid "Death of El'Isimithir"
+msgid "Death of El'Isomithir"
 msgstr "Keep of El'Ithsomir"
 
 #. [message]: speaker=narrator
@@ -1078,12 +1079,6 @@ msgstr "我们没能成功援救防线，更多兽人军队开来了。一切都
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:931
 msgid "Hold on until turns run out."
 msgstr ""
-
-#. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
-#, fuzzy
-msgid "Death of El'Isomithir"
-msgstr "Keep of El'Ithsomir"
 
 #. [message]: id=guard
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:969
@@ -2458,13 +2453,13 @@ msgstr "一些久经沙场的战士"
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:265
 #, fuzzy
-msgid "$left_behind and $l3_store_{NAME}[$i].name"
+msgid "$left_behind_{NAME} and $l3_store_{NAME}[$i].name"
 msgstr "$left_behind 和 $l3_store[$i].name"
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:271
 #, fuzzy
-msgid "$left_behind|, $l3_store_{NAME}[$i].name"
+msgid "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
 msgstr "$left_behind|， $l3_store[$i].name"
 
 #. [objective]: condition=win
@@ -5287,6 +5282,10 @@ msgstr "噢不！我们太迟了……"
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:33
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "你得到了$amount_gold金币。"
+
+#, fuzzy
+#~ msgid "Death of El'Isimithir"
+#~ msgstr "Keep of El'Ithsomir"
 
 #, fuzzy
 #~ msgid "$orc_battlefield_strategy changed to ‘attack’"

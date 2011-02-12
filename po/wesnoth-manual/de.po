@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
-"POT-Creation-Date: 2011-01-17 20:26+0100\n"
+"POT-Creation-Date: 2011-02-12 13:09+0100\n"
 "PO-Revision-Date: 2010-01-18 17:28+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -3838,11 +3838,10 @@ msgstr "Rote Sphäre"
 #: /src/wesnoth/doc/manual/manual.en.xml:2292
 #, fuzzy
 msgid ""
-"If you control the unit, but it has ended its turn (might still be able to "
-"move or attack)"
+"If you control the unit, but it can no longer move or attack, or the user "
+"ended the unit&#8217;s turn"
 msgstr ""
-"Wenn Ihr die Einheit kontrolliert und sie in dieser Runde bereits bewegt "
-"wurde, aber noch weiter bewegen oder angreifen könnte"
+"Wenn Ihr die Einheit kontrolliert und sie sich bereits vollständig bewegt hat"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -5165,6 +5164,15 @@ msgstr ""
 "Fortgeschrittene Einheiten haben höhere Unterhaltskosten als jene mit einer "
 "geringeren Stufe (1 GP pro Stufe), loyale Einheiten bilden eine Ausnahme."
 
+# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
+#, fuzzy
+#~ msgid ""
+#~ "If you control the unit, but it has ended its turn (might still be able "
+#~ "to move or attack)"
+#~ msgstr ""
+#~ "Wenn Ihr die Einheit kontrolliert und sie in dieser Runde bereits bewegt "
+#~ "wurde, aber noch weiter bewegen oder angreifen könnte"
+
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #~ msgid "ctrl-m"
 #~ msgstr "Strg-m"
@@ -5196,9 +5204,3 @@ msgstr ""
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #~ msgid "Delay shroud updates"
 #~ msgstr "Schleier der Finsternis verspätet aktualisieren"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#~ msgid "If you control the unit, but it has used all its movement this turn"
-#~ msgstr ""
-#~ "Wenn Ihr die Einheit kontrolliert und sie sich bereits vollständig bewegt "
-#~ "hat"

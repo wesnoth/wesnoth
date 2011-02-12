@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-15 11:52+0100\n"
+"POT-Creation-Date: 2011-02-12 13:10+0100\n"
 "PO-Revision-Date: 2010-08-16 09:05+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -1045,8 +1045,9 @@ msgstr "Galtridi surm"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:860
+#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
 #, fuzzy
-msgid "Death of El'Isimithir"
+msgid "Death of El'Isomithir"
 msgstr "El'Ithsomiri kindlus"
 
 #. [message]: speaker=narrator
@@ -1116,12 +1117,6 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:931
 msgid "Hold on until turns run out."
 msgstr ""
-
-#. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:941
-#, fuzzy
-msgid "Death of El'Isomithir"
-msgstr "El'Ithsomiri kindlus"
 
 #. [message]: id=guard
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:969
@@ -2560,13 +2555,13 @@ msgstr "mõned kogenud sõdalased"
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:265
 #, fuzzy
-msgid "$left_behind and $l3_store_{NAME}[$i].name"
+msgid "$left_behind_{NAME} and $l3_store_{NAME}[$i].name"
 msgstr "$left_behind ja $l3_store[$i].name"
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:271
 #, fuzzy
-msgid "$left_behind|, $l3_store_{NAME}[$i].name"
+msgid "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
 msgstr "$left_behind|, $l3_store[$i].name"
 
 #. [objective]: condition=win
@@ -5554,6 +5549,10 @@ msgstr "Oo ei! Jäime hiljaks..."
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:33
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Sa said $amount_gold kuldraha!"
+
+#, fuzzy
+#~ msgid "Death of El'Isimithir"
+#~ msgstr "El'Ithsomiri kindlus"
 
 #, fuzzy
 #~ msgid "$orc_battlefield_strategy changed to ‘attack’"

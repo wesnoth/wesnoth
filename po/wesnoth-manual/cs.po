@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
-"POT-Creation-Date: 2011-01-17 20:26+0100\n"
+"POT-Creation-Date: 2011-02-12 13:09+0100\n"
 "PO-Revision-Date: 2010-03-17 22:29+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -3645,11 +3645,11 @@ msgstr "Červená koule"
 #: /src/wesnoth/doc/manual/manual.en.xml:2292
 #, fuzzy
 msgid ""
-"If you control the unit, but it has ended its turn (might still be able to "
-"move or attack)"
+"If you control the unit, but it can no longer move or attack, or the user "
+"ended the unit&#8217;s turn"
 msgstr ""
-"Koule je žlutá, pokud jednotka patří Vám a již se v tomto kole pohnula, ale "
-"ještě může zaútočit či pohnout se."
+"Koule je červená, pokud jednotka patří Vám, ale již nemůže v tomto kole nic "
+"dělat."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -4891,6 +4891,15 @@ msgstr ""
 "Povýšené jednotky vyžadují vyšší žold, než na základní úrovni (1 zlatý na "
 "úroveň), výjimkou jsou věrné jednotky."
 
+# type: Content of: <book><chapter><section><section><simpara>
+#, fuzzy
+#~ msgid ""
+#~ "If you control the unit, but it has ended its turn (might still be able "
+#~ "to move or attack)"
+#~ msgstr ""
+#~ "Koule je žlutá, pokud jednotka patří Vám a již se v tomto kole pohnula, "
+#~ "ale ještě může zaútočit či pohnout se."
+
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #~ msgid "ctrl-m"
 #~ msgstr "ctrl-m"
@@ -4922,9 +4931,3 @@ msgstr ""
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #~ msgid "Delay shroud updates"
 #~ msgstr "Pozdrž překreslování mlhy"
-
-# type: Content of: <book><chapter><section><section><simpara>
-#~ msgid "If you control the unit, but it has used all its movement this turn"
-#~ msgstr ""
-#~ "Koule je červená, pokud jednotka patří Vám, ale již nemůže v tomto kole "
-#~ "nic dělat."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-01-15 11:52+0100\n"
+"POT-Creation-Date: 2011-02-12 13:10+0100\n"
 "PO-Revision-Date: 2008-01-13 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -1039,6 +1039,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
+#. [button]: id=canel
 #: data/gui/default/window/addon_connect.cfg:220
 #: data/gui/default/window/campaign_dialog.cfg:433
 #: data/gui/default/window/campaign_difficulty.cfg:182
@@ -1061,7 +1062,9 @@ msgstr ""
 #: data/gui/default/window/simple_item_selector.cfg:147
 #: data/gui/default/window/unit_attack.cfg:208
 #: data/gui/default/window/unit_create.cfg:201
-#: data/gui/default/window/unit_create.cfg:202 src/construct_dialog.cpp:133
+#: data/gui/default/window/unit_create.cfg:202
+#: data/gui/default/window/wml_message.cfg:834
+#: data/gui/default/window/wml_message.cfg:1087 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Annuller"
@@ -1125,8 +1128,8 @@ msgstr ""
 #: data/gui/default/window/simple_item_selector.cfg:134
 #: data/gui/default/window/unit_create.cfg:189
 #: data/gui/default/window/unit_create.cfg:190
-#: data/gui/default/window/wml_message.cfg:470
-#: data/gui/default/window/wml_message.cfg:691 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:818
+#: data/gui/default/window/wml_message.cfg:1069 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
@@ -1459,8 +1462,8 @@ msgstr ""
 #: data/gui/default/window/game_delete.cfg:129
 #: data/gui/default/window/game_save_message.cfg:139
 #: data/gui/default/window/game_save_message.cfg:140
-#: data/gui/default/window/game_save_oos.cfg:186
 #: data/gui/default/window/game_save_oos.cfg:187
+#: data/gui/default/window/game_save_oos.cfg:188
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
 #: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:176
@@ -1471,7 +1474,7 @@ msgstr "Ja"
 #. [button]: id=cancel
 #: data/gui/default/window/game_delete.cfg:143
 #: data/gui/default/window/game_save_message.cfg:154
-#: data/gui/default/window/game_save_oos.cfg:201
+#: data/gui/default/window/game_save_oos.cfg:202
 #: data/gui/default/window/game_save_overwrite.cfg:103
 #: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:178
 msgid "No"
@@ -1514,7 +1517,7 @@ msgstr "Gem spil"
 #. [label]
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
-#: data/gui/default/window/game_save_oos.cfg:82
+#: data/gui/default/window/game_save_oos.cfg:83
 #, fuzzy
 msgid "Name:"
 msgstr "Navn: "
@@ -1530,13 +1533,13 @@ msgid "OOS error"
 msgstr ""
 
 #. [toggle_button]: id=ignore_all
-#: data/gui/default/window/game_save_oos.cfg:134
+#: data/gui/default/window/game_save_oos.cfg:135
 msgid "Ignore All"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:91
+#: data/gui/default/window/game_save_oos.cfg:160 src/hotkeys.cpp:91
 msgid "Quit Game"
 msgstr "Afslut spil"
 
@@ -2121,7 +2124,8 @@ msgstr "Vælg alt"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:200
+#: data/gui/default/window/title_screen.cfg:146
+#: data/gui/default/window/wml_message.cfg:788 src/hotkeys.cpp:200
 msgid "Help"
 msgstr "Hjælp"
 
@@ -2274,6 +2278,11 @@ msgstr ""
 #, fuzzy
 msgid "Race"
 msgstr "Annuller"
+
+#. [button]: id=profile
+#: data/gui/default/window/wml_message.cfg:802
+msgid "Profile"
+msgstr ""
 
 #: src/filechooser.cpp:76
 msgid "File: "
@@ -2766,24 +2775,29 @@ msgstr "Ingen kendte temaer. Prøv at ændre inde fra et eksisterende spil."
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:491
+#: src/gui/auxiliary/canvas.cpp:558
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:635
+#: src/gui/auxiliary/canvas.cpp:702
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:850 src/gui/auxiliary/canvas.cpp:857
-#: src/gui/auxiliary/canvas.cpp:867 src/gui/auxiliary/canvas.cpp:874
+#: src/gui/auxiliary/canvas.cpp:832 src/gui/auxiliary/canvas.cpp:837
+#: src/gui/auxiliary/canvas.cpp:842 src/gui/auxiliary/canvas.cpp:848
+msgid "Circle doesn't fit on canvas."
+msgstr ""
+
+#: src/gui/auxiliary/canvas.cpp:1030 src/gui/auxiliary/canvas.cpp:1037
+#: src/gui/auxiliary/canvas.cpp:1047 src/gui/auxiliary/canvas.cpp:1054
 msgid "Image doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:1083
+#: src/gui/auxiliary/canvas.cpp:1263
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:1152
+#: src/gui/auxiliary/canvas.cpp:1332
 msgid "Text doesn't start on canvas."
 msgstr ""
 
@@ -2795,7 +2809,7 @@ msgstr "Ingen server er defineret."
 
 #: src/gui/auxiliary/widget_definition/listbox.cpp:105
 #: src/gui/auxiliary/widget_definition/multi_page.cpp:55
-#: src/gui/auxiliary/widget_definition/scroll_label.cpp:74
+#: src/gui/auxiliary/widget_definition/scroll_label.cpp:73
 #: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:62
 #: src/gui/auxiliary/widget_definition/stacked_widget.cpp:57
 #: src/gui/auxiliary/widget_definition/tree_view.cpp:58
@@ -2954,13 +2968,22 @@ msgstr "Fejl"
 msgid "Load Game..."
 msgstr "Indlæs spil"
 
-#: src/gui/dialogs/title_screen.cpp:273
+#: src/gui/dialogs/title_screen.cpp:275
 msgid "Version "
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:276
+#: src/gui/dialogs/title_screen.cpp:278
 msgid "Version"
 msgstr ""
+
+#: src/gui/dialogs/wml_message.cpp:338 src/hotkeys.cpp:73
+msgid "Recruit"
+msgstr "Rekrutter"
+
+#: src/gui/dialogs/wml_message.cpp:339
+#, fuzzy
+msgid "Select unit:"
+msgstr "Vælg alt"
 
 #: src/gui/widgets/helper.cpp:137
 #, fuzzy
@@ -2986,11 +3009,11 @@ msgstr "Ingen server er defineret."
 msgid "Unknown builder id for tree view node."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:814
+#: src/gui/widgets/window.cpp:876
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:839 src/gui/widgets/window.cpp:872
+#: src/gui/widgets/window.cpp:901 src/gui/widgets/window.cpp:934
 #: src/tests/gui/test_gui2.cpp:226
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
@@ -3076,10 +3099,6 @@ msgstr "Gem spilresume"
 #: src/hotkeys.cpp:71 src/hotkeys.cpp:125
 msgid "Save Map"
 msgstr "Gem kort"
-
-#: src/hotkeys.cpp:73
-msgid "Recruit"
-msgstr "Rekrutter"
 
 #: src/hotkeys.cpp:74
 msgid "Repeat Recruit"
@@ -3570,7 +3589,7 @@ msgstr "Indland"
 msgid "Island"
 msgstr "Ø"
 
-#: src/marked-up_text.cpp:423
+#: src/marked-up_text.cpp:422
 msgid "The maximum text width is less than 1."
 msgstr "Den maksimale tekstbredde er mindre end 1."
 
