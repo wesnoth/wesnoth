@@ -21,6 +21,7 @@
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/event/message.hpp"
+#include "gui/dialogs/tip.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "marked-up_text.hpp"
@@ -54,6 +55,12 @@ tcontrol::tcontrol(const unsigned canvas_count)
 			, _2
 			, _3
 			, _5));
+
+	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(boost::bind(
+			  &tcontrol::signal_handler_notify_remove_tooltip
+			, this
+			, _2
+			, _3));
 }
 
 void tcontrol::set_members(const string_map& data)
@@ -391,6 +398,22 @@ void tcontrol::signal_handler_show_tooltip(
 		event::tmessage_show_tooltip message(tooltip_, location);
 		handled = fire(event::MESSAGE_SHOW_TOOLTIP, *this, message);
 	}
+}
+
+void tcontrol::signal_handler_notify_remove_tooltip(
+		  const event::tevent event
+		, bool& handled)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	/*
+	 * This makes the class know the tip code rather intimately. An
+	 * alternative is to add a message to the window to remove the tip.
+	 * Might be done later.
+	 */
+	tip::remove();
+
+	handled = true;
 }
 
 } // namespace gui2

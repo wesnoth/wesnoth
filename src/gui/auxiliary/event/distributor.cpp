@@ -245,10 +245,10 @@ void tmouse_motion::mouse_leave()
 		owner_.fire(event::MOUSE_LEAVE, *mouse_focus_);
 	}
 
+	owner_.fire(NOTIFY_REMOVE_TOOLTIP, *mouse_focus_, NULL);
+
 	mouse_focus_ = NULL;
 
-	/** @todo also a bit ugly. */
-	owner_.get_window()->do_remove_tooltip();
 	stop_hover_timer();
 }
 

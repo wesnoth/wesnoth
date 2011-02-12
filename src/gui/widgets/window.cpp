@@ -1036,11 +1036,6 @@ void twindow::layout_linked_widgets()
 	}
 }
 
-void twindow::do_remove_tooltip()
-{
-	tip::remove();
-}
-
 void twindow::do_show_help_popup(const tpoint& location, const t_string& help_popup)
 {
 	// Note copy past of twindow::do_show_tooltip except that the help may be empty.
