@@ -436,20 +436,6 @@ private:
 	/** When the window closes this surface is used to undraw the window. */
 	surface restorer_;
 
-	/** Widget for the tooltip. */
-	ttooltip tooltip_;
-
-	/**
-	 * Restorer for the tooltip area.
-	 *
-	 * @todo the current way of showing a tooltip is a kind of hack which
-	 * should be polished post 1.6.
-	 */
-	surface tooltip_restorer_;
-
-	/** Widget for the help popup FIXME should be thelp_popup. */
-	ttooltip help_popup_;
-
 	/** Do we wish to place the widget automatically? */
 	const bool automatic_placement_;
 
@@ -566,13 +552,6 @@ private:
 	 * @see layout_algorihm for more information.
 	 */
 	void layout_linked_widgets();
-
-	/** Inherited from tevent_handler. */
-	void do_show_help_popup(const tpoint& location, const t_string& help_popup);
-
-	/** Inherited from tevent_handler. */
-	void do_remove_help_popup()
-		{ help_popup_.set_visible(twidget::HIDDEN); }
 
 	/** Inherited from tevent_handler. */
 	bool click_dismiss();

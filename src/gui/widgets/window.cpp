@@ -257,9 +257,6 @@ twindow::twindow(CVideo& video,
 	, invalidate_layout_blocked_(false)
 	, suspend_drawing_(true)
 	, restorer_()
-	, tooltip_()
-	, tooltip_restorer_()
-	, help_popup_()
 	, automatic_placement_(automatic_placement)
 	, horizontal_placement_(horizontal_placement)
 	, vertical_placement_(vertical_placement)
@@ -284,14 +281,6 @@ twindow::twindow(CVideo& video,
 	// Our caller did update the screen size so no need for us to do that again.
 	set_definition(definition);
 	load_config();
-
-	tooltip_.set_definition("default");
-	tooltip_.set_parent(this);
-	tooltip_.set_visible(twidget::HIDDEN);
-
-	help_popup_.set_definition("default");
-	help_popup_.set_parent(this);
-	help_popup_.set_visible(twidget::HIDDEN);
 
 	tmanager::instance().add(*this);
 
@@ -652,10 +641,6 @@ void twindow::draw()
 		// Now find the widgets that are dirty.
 		std::vector<twidget*> call_stack;
 		populate_dirty_list(*this, call_stack);
-	}
-
-	if(tooltip_.get_visible() == twidget::VISIBLE && tooltip_.get_dirty()) {
-		dirty_list_.push_back(std::vector<twidget*>(1, &tooltip_));
 	}
 
 	if(dirty_list_.empty()) {
@@ -1034,49 +1019,6 @@ void twindow::layout_linked_widgets()
 			widget->set_layout_size(size);
 		}
 	}
-}
-
-void twindow::do_show_help_popup(const tpoint& location, const t_string& help_popup)
-{
-	// Note copy past of twindow::do_show_tooltip except that the help may be empty.
-	DBG_GUI_G << LOG_HEADER << " message: '" << help_popup << "'.\n";
-
-	if(help_popup.empty()) {
-		return;
-	}
-	twidget* widget = find_at(location, true);
-	assert(widget);
-
-	const SDL_Rect widget_rect = widget->get_rect();
-	const SDL_Rect client_rect = get_client_rect();
-
-	help_popup_.set_label(help_popup);
-	const tpoint size = help_popup_.get_best_size();
-
-	SDL_Rect help_popup_rect = ::create_rect(0, 0, size.x, size.y);
-
-	// Find the best position to place the widget
-	if(widget_rect.y - size.y > 0) {
-		// put above
-		help_popup_rect.y = widget_rect.y - size.y;
-	} else {
-		//put below no test
-		help_popup_rect.y = widget_rect.y + widget_rect.h;
-	}
-
-	if(widget_rect.x + size.x < client_rect.w) {
-		// Directly above the mouse
-		help_popup_rect.x = widget_rect.x;
-	} else {
-		// shift left, no test
-		help_popup_rect.x = client_rect.w - size.x;
-	}
-
-	help_popup_.place(
-			tpoint(help_popup_rect.w, help_popup_rect.h),
-			tpoint(help_popup_rect.x, help_popup_rect.y));
-
-	help_popup_.set_visible(twidget::VISIBLE);
 }
 
 bool twindow::click_dismiss()
