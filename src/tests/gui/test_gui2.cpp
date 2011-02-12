@@ -149,7 +149,6 @@ void test()
 		gui2::new_widgets = true;
 	}
 }
-#endif
 
 } // namespace
 
