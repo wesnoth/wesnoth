@@ -32,6 +32,7 @@ tdispatcher::tdispatcher()
 	, signal_mouse_queue_()
 	, signal_keyboard_queue_()
 	, signal_notification_queue_()
+	, signal_message_queue_()
 	, connected_(false)
 	, hotkeys_()
 {
@@ -70,6 +71,9 @@ bool tdispatcher::has_event(const tevent event
 			<< " notification "
 			<< find<tset_event_notification>(event, tdispatcher_implementation
 				::thas_handler(event_type, *this))
+			<< " message "
+			<< find<tset_event_message>(event, tdispatcher_implementation
+				::thas_handler(event_type, *this))
 			<< ".\n";
 #endif
 
@@ -80,7 +84,10 @@ bool tdispatcher::has_event(const tevent event
 			|| find<tset_event_keyboard>(event, tdispatcher_implementation
 					::thas_handler(event_type, *this))
 			|| find<tset_event_notification>(event, tdispatcher_implementation
-					::thas_handler(event_type, *this));
+					::thas_handler(event_type, *this))
+			|| find<tset_event_message>(event, tdispatcher_implementation
+					::thas_handler(event_type, *this))
+			;
 }
 
 /**
@@ -274,6 +281,37 @@ bool tdispatcher::fire(const tevent event
 			, dynamic_cast<twidget*>(this)
 			, &target
 			, ttrigger_notification());
+}
+
+/** Helper struct to wrap the functor call. */
+class ttrigger_message
+{
+public:
+	ttrigger_message(tmessage& message)
+		: message_(message)
+	{
+	}
+
+	void operator()(tsignal_message_function functor
+			, tdispatcher& dispatcher
+			, const tevent event
+			, bool& handled
+			, bool& halt)
+	{
+		functor(dispatcher, event, handled, halt, message_);
+	}
+
+private:
+	tmessage& message_;
+};
+
+bool tdispatcher::fire(const tevent event, twidget& target, tmessage& message)
+{
+	assert(find<tset_event_message>(event, tevent_in_set()));
+	return fire_event<tsignal_message_function>(event
+			, dynamic_cast<twidget*>(this)
+			, &target
+			, ttrigger_message(message));
 }
 
 void tdispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id

@@ -214,6 +214,52 @@ struct tdispatcher_implementation
 	}
 
 	/**
+	 * Returns the signal structure for a tsignal_message_function.
+	 *
+	 * There are several functions that only overload the return value, in
+	 * order to do so they use SFINAE.
+	 *
+	 * @tparam F                  tsignal_message_function.
+	 * @param dispatcher          The dispatcher whose signal queue is used.
+	 * @param event               The event to get the signal for.
+	 *
+	 * @returns                   The signal of the type tdispatcher
+	 *                            ::tsignal<tsignal_message_function>
+	 */
+	template<class F>
+	static typename boost::enable_if<
+			  boost::is_same<F, tsignal_message_function>
+			, tdispatcher::tsignal<tsignal_message_function>
+			>::type&
+	event_signal(tdispatcher& dispatcher, const tevent event)
+	{
+		return dispatcher.signal_message_queue_.queue[event];
+	}
+
+	/**
+	 * Returns the signal structure for a key in tset_event_message.
+	 *
+	 * There are several functions that only overload the return value, in
+	 * order to do so they use SFINAE.
+	 *
+	 * @tparam K                  A key in tset_event_message.
+	 * @param dispatcher          The dispatcher whose signal queue is used.
+	 * @param event               The event to get the signal for.
+	 *
+	 * @returns                   The signal of the type tdispatcher
+	 *                            ::tsignal<tsignal_message_function>
+	 */
+	template<class K>
+	static typename boost::enable_if<
+			  boost::mpl::has_key<tset_event_message, K>
+			, tdispatcher::tsignal<tsignal_message_function>
+			>::type&
+	event_signal(tdispatcher& dispatcher, const tevent event)
+	{
+		return dispatcher.signal_message_queue_.queue[event];
+	}
+
+	/**
 	 * A helper class to find out whether dispatcher has an handler for a
 	 * certain event.
 	 */
@@ -365,6 +411,29 @@ inline bool find(E event, F functor)
 
 namespace implementation {
 
+/*
+ * Small sample to illustrate the effects of the various build_event_chain
+ * functions. Assume the widgets are in an window with the following widgets:
+ *
+ *  -----------------------
+ *  | dispatcher          |
+ *  | ------------------- |
+ *  | | container 1     | |
+ *  | | --------------- | |
+ *  | | | container 2 | | |
+ *  | | | ----------- | | |
+ *  | | | | widget  | | | |
+ *  | | | ----------- | | |
+ *  | | --------------- | |
+ *  | ------------------- |
+ *  -----------------------
+ *
+ * Note that the firing routine fires the events from:
+ * - pre child for chain.end() - > chain.begin()
+ * - child for widget
+ * - post child for chain.begin() -> chain.end()
+ */
+
 /**
  * Build the event chain.
  *
@@ -384,6 +453,11 @@ namespace implementation {
  * @param widget                  The widget should parent(s) to check.
  *
  * @returns                       The list of widgets with a handler.
+ *                                The order will be (assuming all have a
+ *                                handler):
+ *                                * container 2
+ *                                * container 1
+ *                                * dispatcher
  */
 template<class T>
 inline std::vector<std::pair<twidget*, tevent> > build_event_chain(
@@ -416,6 +490,8 @@ inline std::vector<std::pair<twidget*, tevent> > build_event_chain(
  * The notification is only send to the receiver it returns an empty chain.
  * Since the pre and post queues are unused, it validates whether they are
  * empty (using asserts).
+ *
+ * @returns                       An empty vector.
  */
 template<>
 inline std::vector<std::pair<twidget*, tevent> >
@@ -434,6 +510,50 @@ build_event_chain<tsignal_notification_function>(
 					| tdispatcher::post)));
 
 	return std::vector<std::pair<twidget*, tevent> >();
+}
+
+/**
+ * Build the event chain for tsignal_message_function.
+ *
+ * This function expects that the widget sending it is also the receiver. This
+ * assumption might change, but is valid for now. The function doesn't build an
+ * event chain from @p dispatcher to @p widget but from @p widget to its
+ * toplevel item (the first one without a parent) which we call @p window.
+ * 
+ * @pre                           dispatcher == widget
+ * 
+ * @returns                       The list of widgets with a handler.
+ *                                The order will be (assuming all have a
+ *                                handler):
+ *                                * window
+ *                                * container 1
+ *                                * container 2
+ */
+template<>
+inline std::vector<std::pair<twidget*, tevent> >
+build_event_chain<tsignal_message_function>(
+		  const tevent event
+		, twidget* dispatcher
+		, twidget* widget)
+{
+	assert(dispatcher);
+	assert(widget);
+	assert(widget == dispatcher);
+
+	std::vector<std::pair<twidget*, tevent> > result;
+
+	/* We only should add the parents of the widget to the chain. */
+	while((widget = widget->parent())) {
+		assert(widget);
+
+		if(widget->has_event(event, tdispatcher::tevent_type(
+				tdispatcher::pre | tdispatcher::post))) {
+
+			result.insert(result.begin(), std::make_pair(widget, event));
+		}
+	}
+
+	return result;
 }
 
 /**

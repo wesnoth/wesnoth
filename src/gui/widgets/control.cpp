@@ -20,9 +20,12 @@
 #include "font.hpp"
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/event/message.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "marked-up_text.hpp"
+
+#include <boost/bind.hpp>
 
 #include <iomanip>
 
@@ -45,6 +48,12 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	, text_alignment_(PANGO_ALIGN_LEFT)
 	, shrunken_(false)
 {
+	connect_signal<event::SHOW_TOOLTIP>(boost::bind(
+			  &tcontrol::signal_handler_show_tooltip
+			, this
+			, _2
+			, _3
+			, _5));
 }
 
 void tcontrol::set_members(const string_map& data)
@@ -369,6 +378,19 @@ tpoint tcontrol::get_best_text_size(
 			<< "' result " << size
 			<< ".\n";
 	return size;
+}
+
+void tcontrol::signal_handler_show_tooltip(
+		  const event::tevent event
+		, bool& handled
+		, const tpoint& location)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	if(!tooltip_.empty()) {
+		event::tmessage_show_tooltip message(tooltip_, location);
+		handled = fire(event::MESSAGE_SHOW_TOOLTIP, *this, message);
+	}
 }
 
 } // namespace gui2

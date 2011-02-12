@@ -737,9 +737,10 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 		case NOTIFY_MODIFIED        : stream << "notify modified"; break;
 		case RECEIVE_KEYBOARD_FOCUS : stream << "receive keyboard focus"; break;
 		case LOSE_KEYBOARD_FOCUS    : stream << "lose keyboard focus"; break;
-		case SHOW_HOVER_TOOLTIP     : stream << "show hover tooltip"; break;
-		case REMOVE_TOOLTIP         : stream << "remove tooltip"; break;
+		case SHOW_TOOLTIP           : stream << "show tooltip"; break;
+		case NOTIFY_REMOVE_TOOLTIP  : stream << "notify remove tooltip"; break;
 		case SDL_ACTIVATE           : stream << "SDL activate"; break;
+		case MESSAGE_SHOW_TOOLTIP   : stream << "message show tooltip"; break;
 	}
 
 	return stream;

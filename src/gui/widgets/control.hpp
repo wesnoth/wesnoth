@@ -363,6 +363,13 @@ private:
 
 	/** Is the widget smaller as it's best size? */
 	bool shrunken_;
+
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_show_tooltip(
+			  const event::tevent event
+			, bool& handled
+			, const tpoint& location);
 };
 
 } // namespace gui2

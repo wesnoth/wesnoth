@@ -135,14 +135,14 @@ private:
 	 */
 	void mouse_motion(twidget* mouse_over, const tpoint& coordinate);
 
+	/** Called when the mouse wants the widget to show its tooltip. */
+	void show_tooltip();
+
 	bool signal_handler_sdl_mouse_motion_entered_;
 	void signal_handler_sdl_mouse_motion(
 			  const event::tevent event
 			, bool& handled
 			, const tpoint& coordinate);
-
-	void signal_handler_show_hover_tooltip(const event::tevent event);
-
 };
 
 /***** ***** ***** ***** tmouse_button ***** ***** ***** ***** *****/

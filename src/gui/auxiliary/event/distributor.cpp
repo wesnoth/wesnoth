@@ -123,11 +123,6 @@ tmouse_motion::tmouse_motion(twidget& owner
 		  boost::bind(&tmouse_motion::signal_handler_sdl_mouse_motion
 			  , this, _2, _3, _5)
 		, queue_position);
-
-	owner.connect_signal<event::SHOW_HOVER_TOOLTIP>(
-		  boost::bind(&tmouse_motion::signal_handler_show_hover_tooltip
-			  , this, _2)
-		, queue_position);
 }
 
 tmouse_motion::~tmouse_motion()
@@ -216,6 +211,31 @@ void tmouse_motion::mouse_motion(twidget* mouse_over, const tpoint& coordinate)
 	}
 }
 
+void tmouse_motion::show_tooltip()
+{
+	DBG_GUI_E << LOG_HEADER << "Firing: " << event::SHOW_TOOLTIP << ".\n";
+
+	if(!hover_widget_) {
+		// See tmouse_motion::stop_hover_timer.
+		ERR_GUI_E << LOG_HEADER
+				<< event::SHOW_TOOLTIP << " bailing out, no hover widget.\n";
+		return;
+	}
+
+	/*
+	 * Ignore the result of the event, always mark the tooltip as shown. If
+	 * there was no handler, there is no reason to assume there will be one
+	 * next time.
+	 */
+	owner_.fire(SHOW_TOOLTIP, *hover_widget_, hover_position_);
+
+	hover_shown_ = true;
+
+	hover_timer_ = 0;
+	hover_widget_ = NULL;
+	hover_position_ = tpoint(0, 0);
+}
+
 void tmouse_motion::mouse_leave()
 {
 	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_LEAVE << ".\n";
@@ -244,15 +264,10 @@ void tmouse_motion::start_hover_timer(twidget* widget, const tpoint& coordinate)
 	DBG_GUI_E << LOG_HEADER << "Start hover timer for widget '"
 			<< widget->id() << "' at address " << widget << ".\n";
 
-	hover_timer_ = add_timer(50
-			, boost::bind(
-				  static_cast<bool (tdispatcher::*) (const tevent
-					  , twidget&
-					  , void*)>(&tdispatcher::fire)
-				, &owner_
-				, SHOW_HOVER_TOOLTIP
-				, boost::ref(owner_)
-				, static_cast<void*>(NULL)));
+	hover_timer_ = add_timer(
+			  50
+			, boost::bind(&tmouse_motion::show_tooltip, this));
+
 	if(hover_timer_) {
 		hover_widget_ = widget;
 		hover_position_ = coordinate;
@@ -277,31 +292,6 @@ void tmouse_motion::stop_hover_timer()
 		hover_widget_ = NULL;
 		hover_position_ = tpoint(0, 0);
 	}
-}
-
-void tmouse_motion::signal_handler_show_hover_tooltip(const event::tevent event)
-{
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
-
-	if(!hover_widget_) {
-		// See tmouse_motion::stop_hover_timer.
-		ERR_GUI_E << LOG_HEADER << event << " bailing out, no hover widget.\n";
-		return;
-	}
-
-	/**
-	 * @todo See whether this code can be cleanup a bit.
-	 *
-	 * It now feels a bit hacky with all the casts. It should work but just is
-	 * a bit ugly.
-	 */
-	owner_.get_window()->do_show_tooltip(hover_position_
-			, dynamic_cast<tcontrol&>(*hover_widget_).tooltip());
-	hover_shown_ = true;
-
-	hover_timer_ = 0;
-	hover_widget_ = NULL;
-	hover_position_ = tpoint(0, 0);
 }
 
 /***** ***** ***** ***** tmouse_button ***** ***** ***** ***** *****/

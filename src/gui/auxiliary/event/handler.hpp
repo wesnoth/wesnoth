@@ -16,6 +16,9 @@
 #ifndef GUI_WIDGETS_AUXILIARY_EVENT_HANDLER_HPP_INCLUDED
 #define GUI_WIDGETS_AUXILIARY_EVENT_HANDLER_HPP_INCLUDED
 
+#define BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
+#define BOOST_MPL_LIMIT_SET_SIZE 30
+
 #include <boost/mpl/set.hpp>
 
 #include <iosfwd>
@@ -106,13 +109,25 @@ enum tevent {
 	                               * widget. If not documented the modified
 	                               * means nothing.
 	                               */
-	, RECEIVE_KEYBOARD_FOCUS     /**< Widget gets keyboard focus. */
-	, LOSE_KEYBOARD_FOCUS        /**< Widget loses keyboard focus. */
-	, SHOW_HOVER_TOOLTIP         /**< Request to show the hover tooltip. */
-	, REMOVE_TOOLTIP             /**< Request to remove a tooltip. */
-	, SDL_ACTIVATE               /**<
-	                              * The main application window is activated.
-	                              */
+
+	, RECEIVE_KEYBOARD_FOCUS      /**< Widget gets keyboard focus. */
+	, LOSE_KEYBOARD_FOCUS         /**< Widget loses keyboard focus. */
+	, SHOW_TOOLTIP                /**<
+	                               * Request the widget to show its hover
+	                               * tooltip.
+	                               */
+	, NOTIFY_REMOVE_TOOLTIP       /**<
+	                               * Request the widget to show its hover
+	                               * tooltip.
+	                               */
+	, SDL_ACTIVATE                /**<
+	                               * The main application window is activated.
+	                               */
+
+	, MESSAGE_SHOW_TOOLTIP        /**<
+	                               * Request for somebody to show the tooltip
+	                               * based on the data send.
+	                               */
 };
 
 /**
@@ -167,6 +182,7 @@ typedef
 			, boost::mpl::int_<SDL_MIDDLE_BUTTON_UP>
 			, boost::mpl::int_<SDL_RIGHT_BUTTON_DOWN>
 			, boost::mpl::int_<SDL_RIGHT_BUTTON_UP>
+			, boost::mpl::int_<SHOW_TOOLTIP>
 		>
 		tset_event_mouse;
 
@@ -195,11 +211,24 @@ typedef
 			, boost::mpl::int_<NOTIFY_MODIFIED>
 			, boost::mpl::int_<RECEIVE_KEYBOARD_FOCUS>
 			, boost::mpl::int_<LOSE_KEYBOARD_FOCUS>
-			, boost::mpl::int_<SHOW_HOVER_TOOLTIP>
-			, boost::mpl::int_<REMOVE_TOOLTIP>
+			, boost::mpl::int_<NOTIFY_REMOVE_TOOLTIP>
 			, boost::mpl::int_<SDL_ACTIVATE>
 		>
 		tset_event_notification;
+
+/**
+ * Helper for catching use error of tdispatcher::connect_signal.
+ *
+ * This version is for callbacks with a sender aka notification messages.
+ * Unlike the notifications this message is send through the chain. The event
+ * is send from a widget all the way up to the window, who always is the
+ * receiver of the message (unless somebody grabbed it before).
+ */
+typedef
+		boost::mpl::set<
+			  boost::mpl::int_<MESSAGE_SHOW_TOOLTIP>
+		>
+		tset_event_message;
 
 /**
  * Connects a dispatcher to the event handler.

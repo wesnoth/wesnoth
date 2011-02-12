@@ -569,9 +569,6 @@ private:
 
 public:
 	/** Inherited from tevent_handler. */
-	void do_show_tooltip(const tpoint& location, const t_string& tooltip);
-
-	/** Inherited from tevent_handler. */
 	void do_remove_tooltip();
 private:
 
@@ -665,6 +662,11 @@ private:
 
 	void signal_handler_sdl_key_down(
 			const event::tevent event, bool& handled, const SDLKey key);
+
+	void signal_handler_message_show_tooltip(
+			  const event::tevent event
+			, bool& handled
+			, event::tmessage& message);
 };
 
 } // namespace gui2

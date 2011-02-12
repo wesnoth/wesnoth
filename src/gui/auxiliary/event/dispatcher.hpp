@@ -35,6 +35,8 @@ class twidget;
 
 namespace event {
 
+struct tmessage;
+
 /**
  * Callback function signature.
  *
@@ -97,6 +99,19 @@ typedef
 			, void*)>
 		tsignal_notification_function;
 
+/**
+ * Callback function signature.
+ *
+ * This function is used for the callbacks in tset_message_notification.
+ */
+typedef
+		boost::function<void(
+			  tdispatcher& dispatcher
+			, const tevent event
+			, bool& handled
+			, bool& halt
+			, tmessage& message)>
+		tsignal_message_function;
 
 /** Hotkey function handler signature. */
 typedef
@@ -197,6 +212,19 @@ public:
 	 * @param target                 The widget that should receive the event.
 	 */
 	bool fire(const tevent event, twidget& target, void*);
+
+	/**
+	 * Fires an event which takes message parameters.
+	 *
+	 * @param event                  The event to fire.
+	 * @param target                 The widget that should receive the event.
+	 *                               Normally this is the window holding the
+	 *                               widget.
+	 * @param message                The extra information needed for a window
+	 *                               (or another widget in the chain) to handle
+	 *                               the message.
+	 */
+	bool fire(const tevent event, twidget& target, tmessage& message);
 
 	/**
 	 * The position where to add a new callback in the signal handler.
@@ -403,6 +431,49 @@ public:
 	}
 
 	/**
+	 * Connect a signal for callback in tset_event_message.
+	 *
+	 * @tparam E                     The event the callback needs to react to.
+	 * @param signal                 The callback function.
+	 * @param position               The position to place the callback. Since
+	 *                               the message is send to a widget directly
+	 *                               the pre and post positions make no sense
+	 *                               and shouldn't be used.
+	 */
+	template<tevent E>
+	typename boost::enable_if<boost::mpl::has_key<
+			tset_event_message, boost::mpl::int_<E> > >::type
+	connect_signal(const tsignal_message_function& signal
+			, const tposition position = back_child)
+	{
+		signal_message_queue_.connect_signal(E, position, signal);
+	}
+
+	/**
+	 * Disconnect a signal for callback in tset_event_message.
+	 *
+	 * @tparam E                     The event the callback was used for.
+	 * @param signal                 The callback function.
+	 * @param position               The place where the function was added.
+	 *                               Needed remove the event from the right
+	 *                               place. (The function doesn't care whether
+	 *                               was added in front or back, but it needs
+	 *                               to know the proper queue so it's save to
+	 *                               add with front_child and remove with
+	 *                               back_child. But it's not save to add with
+	 *                               front_child and remove with
+	 *                               front_pre_child)
+	 */
+	template<tevent E>
+	typename boost::enable_if<boost::mpl::has_key<
+			tset_event_message, boost::mpl::int_<E> > >::type
+	disconnect_signal(const tsignal_message_function& signal
+			, const tposition position = back_child)
+	{
+		signal_message_queue_.disconnect_signal(E, position, signal);
+	}
+
+	/**
 	 * The behaviour of the mouse events.
 	 *
 	 * Normally for mouse events there's first cheched whether a dispatcher has
@@ -601,6 +672,9 @@ private:
 
 	/** Signal queue for callbacks in tset_event_notification. */
 	tsignal_queue<tsignal_notification_function> signal_notification_queue_;
+
+	/** Signal queue for callbacks in tset_event_message. */
+	tsignal_queue<tsignal_message_function> signal_message_queue_;
 
 	/** Are we connected to the event handler. */
 	bool connected_;

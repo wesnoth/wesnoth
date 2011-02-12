@@ -28,6 +28,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "gui/auxiliary/event/distributor.hpp"
+#include "gui/auxiliary/event/message.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/auxiliary/window_builder/control.hpp"
@@ -326,6 +327,15 @@ twindow::twindow(CVideo& video,
 	connect_signal<event::SDL_KEY_DOWN>(
 			  boost::bind(&twindow::signal_handler_sdl_key_down
 				  , this, _2, _3, _5));
+
+	connect_signal<event::MESSAGE_SHOW_TOOLTIP>(
+			  boost::bind(
+				  &twindow::signal_handler_message_show_tooltip
+				, this
+				, _2
+				, _3
+				, _5)
+			, event::tdispatcher::back_pre_child);
 }
 
 twindow::~twindow()
@@ -1026,14 +1036,6 @@ void twindow::layout_linked_widgets()
 	}
 }
 
-void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
-{
-	DBG_GUI_G << LOG_HEADER << " message: '" << tooltip << "'.\n";
-
-	/** @todo Make not hard coded. */
-	tip::show(video_, "tooltip_large", tooltip, location);
-}
-
 void twindow::do_remove_tooltip()
 {
 	tip::remove();
@@ -1319,6 +1321,22 @@ void twindow::signal_handler_sdl_key_down(
 		handled = true;
 	}
 #endif
+}
+
+void twindow::signal_handler_message_show_tooltip(
+		  const event::tevent event
+		, bool& handled
+		, event::tmessage& message)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	event::tmessage_show_tooltip& tooltip =
+			dynamic_cast<event::tmessage_show_tooltip&>(message);
+
+	/** @todo Make not hard coded. */
+	tip::show(video_, "tooltip_large", tooltip.message, tooltip.location);
+
+	handled = true;
 }
 
 } // namespace gui2
