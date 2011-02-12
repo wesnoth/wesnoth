@@ -56,7 +56,6 @@ set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.w
 
 #Game options
 option(ENABLE_FRIBIDI "Enable FriBIDi support" ON)
-set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 320x240 (PDAs) (normal|tiny)")
 
 #server options
 set(SERVER_UID "" CACHE STRING "User id of the user who runs wesnothd")
@@ -162,10 +161,6 @@ if(PREFERENCES_DIR)
 	add_definitions(-DPREFERENCES_DIR=\\\"${PREFERENCES_DIR}\\\")
 endif(PREFERENCES_DIR)
 
-if(GUI STREQUAL "tiny")
-	add_definitions(-DUSE_TINY_GUI)
-endif(GUI STREQUAL "tiny")
-
 if(ENABLE_LOW_MEM)
 	add_definitions(-DLOW_MEM)
 endif(ENABLE_LOW_MEM)
@@ -246,47 +241,10 @@ endif (GETTEXT_FOUND AND ENABLE_NLS)
 add_subdirectory(src)
 
 #
-# shrink images for tinygui
+# Install files
 #
+install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS PATTERN ".svn" EXCLUDE )
 
-if(GUI STREQUAL "tiny")
-	FIND_PACKAGE( ImageMagick REQUIRED )
-
-	if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
-		set(IMAGE_BUILD_DIR ${CMAKE_SOURCE_DIR}/tiny_images)
-	else()
-		set(IMAGE_BUILD_DIR ${CMAKE_BINARY_DIR})
-	endif()
-
-	set(IMAGE_FILES data/*.jpg data/*.png images/*.jpg images/*.png)
-
-	add_custom_target(shrink-images ALL 
-		COMMAND ${CMAKE_COMMAND}
-		ARGS -DIMAGE_FILES="${IMAGE_FILES}" -DIMAGE_BUILD_DIR="${IMAGE_BUILD_DIR}" -DIMAGEMAGICK_IDENTIFY_EXECUTABLE="${IMAGEMAGICK_IDENTIFY_EXECUTABLE}" -DIMAGEMAGICK_CONVERT_EXECUTABLE="${IMAGEMAGICK_CONVERT_EXECUTABLE}" -P "${CMAKE_MODULE_PATH}/ShrinkImages.cmake"
-		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-		COMMENT "Creating resized images for tinygui.")
-
-	#
-	# Install files (exclude images from data-dir, we install them from our build dir)
-	#
-
-	# this is a workaround for a bug in 2.4-7
-	file(MAKE_DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images)
-	install(DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS)
-	install(DIRECTORY data fonts sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS
-		PATTERN "*.png" EXCLUDE
-		PATTERN "*.jpg" EXCLUDE
-		PATTERN ".svn" EXCLUDE
-	 )
-
-else(GUI STREQUAL "tiny")
-
-	#
-	# Install files
-	#
-	install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS PATTERN ".svn" EXCLUDE )
-
-endif(GUI STREQUAL "tiny")
 
 #
 # Install desktop file so wesnoth appears in the application start menu with an icon
