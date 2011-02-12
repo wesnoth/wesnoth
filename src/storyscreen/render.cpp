@@ -158,7 +158,6 @@ void part_ui::prepare_geometry()
 	back_button_.set_location(buttons_x_, buttons_y_ - 30);
 	next_button_.set_location(buttons_x_ + play_button_.width() - next_button_.width(), buttons_y_ - 30);
 	play_button_.set_location(buttons_x_, buttons_y_);
-#endif
 
 	next_button_.set_volatile(true);
 	play_button_.set_volatile(true);
