@@ -374,7 +374,6 @@ set(wesnoth-main_SRC
 	gui/auxiliary/widget_definition/text_box.cpp
 	gui/auxiliary/widget_definition/toggle_button.cpp
 	gui/auxiliary/widget_definition/toggle_panel.cpp
-	gui/auxiliary/widget_definition/tooltip.cpp
 	gui/auxiliary/widget_definition/tree_view.cpp
 	gui/auxiliary/widget_definition/vertical_scrollbar.cpp
 	gui/auxiliary/widget_definition/window.cpp
@@ -468,7 +467,6 @@ set(wesnoth-main_SRC
 	gui/widgets/text_box.cpp
 	gui/widgets/toggle_button.cpp 
 	gui/widgets/toggle_panel.cpp 
-	gui/widgets/tooltip.cpp
 	gui/widgets/tree_view.cpp
 	gui/widgets/tree_view_node.cpp
 	gui/widgets/vertical_scrollbar.cpp
