@@ -718,25 +718,6 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 	recruit_res = gui2::show_recruit_message(left_side, gui_->video(),
 			sample_units, &unit_type, side_num, gold);
 
-/*	TODO old gui1 call, can be removed
-	{
-		dialogs::unit_types_preview_pane unit_preview(
-			sample_units, NULL, side_num);
-		std::vector<gui::preview_pane*> preview_panes;
-		preview_panes.push_back(&unit_preview);
-
-		gui::dialog rmenu(*gui_, _("Recruit") + get_title_suffix(side_num),
-				  _("Select unit:") + std::string("\n"),
-				  gui::OK_CANCEL,
-				  gui::dialog::default_style);
-		rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
-			gui::dialog::BUTTON_HELP);
-		rmenu.set_menu(items);
-		rmenu.set_panes(preview_panes);
-		recruit_res = rmenu.show();
-	}
-*/
-
 	//TODO fix the dialog and enable again
 //	if(recruit_res != -1) {
 	if(recruit_res == -1) {

@@ -37,6 +37,7 @@
 #include "map.hpp"
 #include "help.hpp"
 #include "gettext.hpp" //could be done in menu_events
+#include <boost/bind.hpp>
 
 namespace gui2 {
 
@@ -53,7 +54,7 @@ void twml_message_::help_pressed() {
 }
 
 void twml_message_::update_unit_list(twindow& window) {
-	tlistbox& unit_listbox = find_widget<tlistbox> (&window, "unit_list", false);
+	tlistbox& unit_listbox = find_widget<tlistbox> (&window, "recruit_list", false);
 
 	//TODO this hack does not respect the sorting of the list.
 	chosen_unit_ = &unit_list_[unit_listbox.get_selected_row()];
@@ -103,6 +104,7 @@ void twml_message_::set_unit_list(
 
 	unit_id_ = unit_id;
 	unit_list_ = unit_list;
+	chosen_unit_ = &unit_list_[0];
 }
 
 void twml_message_::set_type_list(
@@ -119,12 +121,10 @@ void twml_message_::set_type_list(
 
 	for (it = type_list.begin(); it != type_list.end(); it++)
 	{
-//		TODO false is the right value
-		//unit new_unit(*it, side_num, false);
-		unit new_unit(*it, side_num, true);
-		//new_unit.set_
+		unit new_unit(*it, side_num, false);
 		unit_list_.push_back(new_unit);
 	}
+	chosen_unit_ = &unit_list_[0];
 }
 
 /**
@@ -169,12 +169,32 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 	}
 
 	// Find the unit list related fields:
-	tlistbox& units = find_widget<tlistbox>(&window, "unit_list", true);
+//	tlistbox& units = find_widget<tlistbox>(&window, "unit_list", true);
+	tlistbox& units = find_widget<tlistbox>(&window, "recruit_list", true);
 	units.set_callback_value_change(dialog_callback<twml_message_,
 			&twml_message_::update_unit_list> );
 
-
 	if(!unit_list_.empty()) {
+
+		window.canvas(1).set_variable("portrait_image", variant(
+				chosen_unit_->big_profile()));
+		window.set_dirty();
+
+		//TODO make it optional
+		connect_signal_mouse_left_click(
+							  find_widget<tbutton>(&window, "help", true)
+							, boost::bind(
+								  &twml_message_::help_pressed
+								, this
+								));
+
+		connect_signal_mouse_left_click(
+					  find_widget<tbutton>(&window, "profile", true)
+					, boost::bind(
+						  &twml_message_::profile_pressed
+						, this
+						));
+
 		std::map<std::string, string_map> data;
 		for(size_t i = 0; i < unit_list_.size(); ++i) {
 
@@ -195,7 +215,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 
 			// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
 			const int level_number = unit.level();
-			//TODO enabe the switch construct after replacing the font::NORMAL_TEXT etc.
+			//TODO enable the switch construct after replacing the font::NORMAL_TEXT etc.
 			//			switch(level_number)
 			//			{
 			//			case 0: level << "<150,150,150>";
@@ -218,6 +238,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			// Add the data.
 			data["cost"]["label"] = cost.str();
 			data["cost"]["use_markup"] = "true";
+			data["gold"]["label"] = "items/gold-coins-small.png";
 			data["usage"]["label"] = unit.usage();
 			data["icon"]["label"] = icon;
 			data["icon"]["use_markup"] = "true";
@@ -226,10 +247,14 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			data["label"]["use_markup"] = "true";
 			data["level"]["label"] = level.str();
 			data["xp"]["label"] = xp.str();
+			//TODO traits handling changed through the versions
 			//data["traits"]["label"] = unit.traits_description();
 			units.add_row(data);
 		}
 	} else {
+		tbutton* profile_button = find_widget<tbutton> (&window, "profile", false,
+					false);
+		profile_button->set_visible(twidget::INVISIBLE);
 		units.set_visible(twidget::INVISIBLE);
 	}
 
@@ -312,8 +337,7 @@ int show_recruit_message(const bool left_side
 {
 	const std::string title   = _("Recruit");
 	const std::string message = _("Select unit:");
-	//TODO correct fetching the portrait
-	const std::string portrait = "";//type_list.begin()->big_profile();      //.begin().big_profile();
+	const std::string portrait = "";
 	const bool mirror = false;
 	std::auto_ptr<twml_message_> dlg;
 	if(left_side) {
