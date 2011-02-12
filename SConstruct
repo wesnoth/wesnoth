@@ -4,9 +4,8 @@
 #
 # Prerequisites are:
 # 1. Subversion command-line client programs svnstatus and svnversion.
-# 2. Unix file(1), on installation only.
-# 4. msgfmt(1) for making builds with i18n support.
-# 5. graph-includes for making the project dependency graph.
+# 2. msgfmt(1) for making builds with i18n support.
+# 3. graph-includes for making the project dependency graph.
 
 EnsureSConsVersion(0,98,3)
 
