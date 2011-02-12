@@ -185,6 +185,8 @@ public:
 
 	/** draw a unit.  */
 	void redraw_unit();
+	/** draw the unit's report. Used to display units that are offmap */
+	void draw_report();
 	/** Clear unit_halo_  */
 	void clear_haloes();
 
@@ -330,7 +332,12 @@ public:
 	const tportrait* portrait(
 		const unsigned size, const tportrait::tside side) const;
 
+	//TODO move to the right place
+	static unit* selected_unit_;// = NULL;
+
 private:
+
+
 	void advance_to(const config &old_cfg, const unit_type *t,
 		bool use_traits, game_state *state);
 

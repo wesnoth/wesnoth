@@ -67,7 +67,7 @@ void twml_message_::update_unit_list(twindow& window) {
 		resources::screen->scroll_to_tile(loc,
 				game_display::SCROLL, true);
 	} else {
-	//TODO add code to draw units we can't scroll to.
+		chosen_unit_->draw_report();
 	}
 
 	window.canvas(1).set_variable("portrait_image", variant(
@@ -180,6 +180,8 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 				chosen_unit_->big_profile()));
 		window.set_dirty();
 
+		chosen_unit_->draw_report();
+
 		//TODO make it optional
 		connect_signal_mouse_left_click(
 							  find_widget<tbutton>(&window, "help", true)
@@ -256,6 +258,14 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 					false);
 		profile_button->set_visible(twidget::INVISIBLE);
 		units.set_visible(twidget::INVISIBLE);
+
+		tbutton* help_button = find_widget<tbutton> (&window, "help", false,
+					false);
+		help_button->set_visible(twidget::INVISIBLE);
+
+		tbutton* cancel_button = find_widget<tbutton> (&window, "cancel", false,
+					false);
+		cancel_button->set_visible(twidget::INVISIBLE);
 	}
 
 	// Find the option list related fields.
