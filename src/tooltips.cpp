@@ -29,11 +29,7 @@ namespace {
 CVideo* video_ = NULL;
 
 static const int font_size = font::SIZE_SMALL;
-#ifdef USE_TINY_GUI
-static const int text_width = 260;
-#else
 static const int text_width = 400;
-#endif
 
 struct tooltip
 {
@@ -73,11 +69,7 @@ static void show_tooltip(const tooltip& tip)
 	const SDL_Color bgcolor = {0,0,0,160};
 	SDL_Rect area = screen_area();
 
-#ifdef USE_TINY_GUI
-	unsigned int border = 2;
-#else
 	unsigned int border = 10;
-#endif
 
 	font::floating_label flabel(tip.message);
 	flabel.set_font_size(font_size);

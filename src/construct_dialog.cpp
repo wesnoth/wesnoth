@@ -46,12 +46,7 @@ const size_t dialog::image_h_pad = font::relative_size(/*image_ == NULL ? 0 :*/ 
 const size_t dialog::top_padding = font::relative_size(10);
 const size_t dialog::bottom_padding = font::relative_size(10);
 
-
-#ifdef USE_TINY_GUI
-	const int dialog::max_menu_width = 300;
-#else
-	const int dialog::max_menu_width = -1;
-#endif
+const int dialog::max_menu_width = -1;
 
 }
 

@@ -24,12 +24,7 @@
 ///the surface corresponding to that image.
 //
 namespace image {
-#ifdef USE_TINY_GUI
-	// images in tiny-gui will be scaled at install time
-	const int tile_size = 36;
-#else
 	const int tile_size = 72;
-#endif
 
 	template<typename T>
 	class cache_type;

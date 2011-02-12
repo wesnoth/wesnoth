@@ -168,19 +168,15 @@ private:
 	gui::button join_game_;
 	gui::button create_game_;
 	gui::button skip_replay_;
-#ifndef USE_TINY_GUI
 	gui::button game_preferences_;
-#endif
 	gui::button quit_game_;
 
-#ifndef USE_TINY_GUI
 	gui::button apply_filter_;
 	gui::button invert_filter_;
 	gui::button vacant_slots_;
 	gui::button friends_in_game_;
 	gui::label filter_label_;
 	gui::textbox filter_text_;
-#endif
 
 	int last_selected_game_;
 

@@ -419,11 +419,7 @@ void save_preview_pane::draw_contents()
 			map_surf = itor->second;
 		} else if(map_ != NULL) {
 			try {
-#ifdef USE_TINY_GUI
-				const int minimap_size = 60;
-#else
 				const int minimap_size = 100;
-#endif
 				map_->read(map_data);
 
 				map_surf = image::getMinimap(minimap_size, minimap_size, *map_);
@@ -1062,15 +1058,9 @@ void show_unit_description(const unit_type &t)
 
 static network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
 {
-#ifdef USE_TINY_GUI
-	const size_t width = 200;
-	const size_t height = 40;
-	const size_t border = 10;
-#else
 	const size_t width = 300;
 	const size_t height = 80;
 	const size_t border = 20;
-#endif
 	const int left = disp.w()/2 - width/2;
 	const int top  = disp.h()/2 - height/2;
 
@@ -1175,13 +1165,8 @@ namespace dialogs
 
 network::connection network_connect_dialog(display& disp, const std::string& msg, const std::string& hostname, int port)
 {
-#ifdef USE_TINY_GUI
-	const size_t width = 200;
-	const size_t height = 20;
-#else
 	const size_t width = 250;
 	const size_t height = 20;
-#endif
 	const int left = disp.w()/2 - width/2;
 	const int top  = disp.h()/2 - height/2;
 

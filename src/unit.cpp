@@ -1936,11 +1936,7 @@ void unit::redraw_unit()
 		if(max_hitpoints() > 0) {
 			unit_energy = double(hitpoints())/double(max_hitpoints());
 		}
-#ifdef USE_TINY_GUI
-		const int bar_shift = static_cast<int>(-2.5*disp.get_zoom_factor());
-#else
 		const int bar_shift = static_cast<int>(-5*disp.get_zoom_factor());
-#endif
 		const int hp_bar_height = static_cast<int>(max_hitpoints()*game_config::hp_bar_scaling);
 
 		const fixed_t bar_alpha = (loc_ == disp.mouseover_hex() || loc_ == disp.selected_hex()) ? ftofxp(1.0): ftofxp(0.8);

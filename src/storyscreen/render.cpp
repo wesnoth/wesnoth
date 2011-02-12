@@ -54,13 +54,8 @@ namespace {
 	int const titleshadow_g = 0;
 	int const titleshadow_b = 0;
 
-#ifndef USE_TINY_GUI
 	int const titlebox_font_size = 20; // pt?
 	int const storybox_font_size = 14; // pt?
-#else
-	int const titlebox_font_size = 11; // pt?
-	int const storybox_font_size = 10; // pt?
-#endif
 
 	Uint32 const titlebox_font_color = 0xFFFFFFFF;
 	Uint32 const storybox_font_color = 0xDDDDDDFF;
@@ -134,19 +129,6 @@ void part_ui::prepare_geometry()
 	base_rect_.y = (video_.gety() - background_->h) / 2;
 	base_rect_.w = background_->w;
 	base_rect_.h = background_->h;
-
-#ifdef USE_TINY_GUI
-	// Use the whole screen for text on tinygui
-	text_x_ = 10;
-	text_y_ = 0;
-	buttons_x_ = video_.getx() - 50;
-	buttons_y_ = base_rect_.y + base_rect_.h - 20;
-
-	back_button_.set_location(buttons_x_, buttons_y_ - 20);
-	next_button_.set_location(buttons_x_ + play_button_.width() - next_button_.width(), buttons_y_ - 20);
-	play_button_.set_location(buttons_x_, buttons_y_);
-
-#else // elif !defined(USE_TINY_GUI)
 
 	if(video_.getx() <= 800) {
 		text_x_ = 10;

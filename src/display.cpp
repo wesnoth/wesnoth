@@ -51,11 +51,7 @@ static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
 
 namespace {
-#ifdef USE_TINY_GUI
-	const int DefaultZoom = 36;
-#else
 	const int DefaultZoom = 72;
-#endif
 	const int SmallZoom   = DefaultZoom / 2;
 
 	const int MinZoom = 4;
@@ -1144,9 +1140,6 @@ void display::draw_text_in_hex(const map_location& loc,
 	if (text.empty()) return;
 
 	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor()
-#ifdef USE_TINY_GUI
-		/ 2	// the hex is only half size
-#endif
 	);
 
 	surface text_surf = font::get_rendered_text(text, font_sz, color);

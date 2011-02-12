@@ -138,21 +138,13 @@ void button::calculate_size()
 	if (!change_size)
 		return;
 
-#ifdef USE_TINY_GUI
-	set_height(textRect_.h+vertical_padding);
-#else
 	set_height(std::max(textRect_.h+vertical_padding,base_height_));
-#endif
 	if(type_ == TYPE_PRESS) {
-#ifdef USE_TINY_GUI
-		set_width(textRect_.w + horizontal_padding);
-#else
 		if(spacing_ == MINIMUM_SPACE) {
 			set_width(textRect_.w + horizontal_padding);
 		} else {
 			set_width(std::max(textRect_.w+horizontal_padding,base_width_));
 		}
-#endif
 	} else {
 		if(label_.empty()) {
 			set_width(base_width_);

@@ -24,12 +24,7 @@
 
 namespace gui {
 
-#ifdef USE_TINY_GUI
-	const std::string combo::empty_combo_label = "           ";
-#else
-	const std::string combo::empty_combo_label = "";
-#endif
-
+const std::string combo::empty_combo_label = "";
 
 const int combo::font_size = font::SIZE_SMALL;
 const int combo::horizontal_padding = 10;

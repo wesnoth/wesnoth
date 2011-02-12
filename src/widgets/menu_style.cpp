@@ -32,11 +32,7 @@ menu::imgsel_style menu::bluebg_style("misc/selection2", true,
 										   0.35, 0.0, 0.3);
 menu::style menu::simple_style;
 
-#ifdef USE_TINY_GUI
-menu::style &menu::default_style = menu::simple_style;
-#else
 menu::style &menu::default_style = menu::bluebg_style;
-#endif
 menu *empty_menu = NULL;
 
 	//constructors

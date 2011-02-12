@@ -460,11 +460,7 @@ int CVideo::set_help_string(const std::string& str)
 
 	const SDL_Color color = { 0, 0, 0, 0xbb };
 
-#ifdef USE_TINY_GUI
-	int size = font::SIZE_NORMAL;
-#else
 	int size = font::SIZE_LARGE;
-#endif
 
 	while(size > 0) {
 		if(font::line_width(str, size) > getx()) {
@@ -474,11 +470,7 @@ int CVideo::set_help_string(const std::string& str)
 		}
 	}
 
-#ifdef USE_TINY_GUI
-	const int border = 2;
-#else
 	const int border = 5;
-#endif
 
 	font::floating_label flabel(str);
 	flabel.set_font_size(size);

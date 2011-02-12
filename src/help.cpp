@@ -2715,11 +2715,7 @@ void help_browser::adjust_layout()
   const int menu_buttons_padding = font::relative_size(10);
 	const int menu_y = location().y;
 	const int menu_x = location().x;
-#ifdef USE_TINY_GUI
-	const int menu_w = 120;
-#else
 	const int menu_w = 250;
-#endif
 	const int menu_h = height() - back_button_.height() - menu_buttons_padding;
 
 	const int menu_text_area_padding = font::relative_size(10);

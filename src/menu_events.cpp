@@ -846,9 +846,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		<< COLUMN_SEPARATOR << _("Name")
 		<< COLUMN_SEPARATOR << _("Level^Lvl.")
 		<< COLUMN_SEPARATOR << _("XP");
-#ifndef USE_TINY_GUI
 	heading << COLUMN_SEPARATOR << _("Traits");
-#endif
 
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(1).set_alpha_sort(2);
@@ -894,13 +892,11 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 			option_to_filter << u.type_name() << " " << name << " " << u.level();
 
-		#ifndef USE_TINY_GUI
 			option << COLUMN_SEPARATOR;
 			foreach (const t_string& trait, u.trait_names()) {
 				option << trait << '\n';
 				option_to_filter << " " << trait;
 			}
-		#endif
 
 			options.push_back(option.str());
 			options_to_filter.push_back(option_to_filter.str());

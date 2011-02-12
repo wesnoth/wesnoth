@@ -70,9 +70,6 @@ namespace game_config {
 		defines_map_.clear();
 		// set-up default defines map
 
-#ifdef USE_TINY_GUI
-		defines_map_["TINY"] = preproc_define();
-#endif
 #ifdef LOW_MEM
 		defines_map_["LOW_MEM"] = preproc_define();
 #endif

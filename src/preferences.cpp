@@ -178,10 +178,6 @@ void _set_scroll_to_action(bool ison)
 
 int min_allowed_width()
 {
-#ifdef USE_TINY_GUI
-	return 320;
-#endif
-
 	// Most things (not all) in the new widgets library work properly on tiny
 	// gui resolution. So allow them, which makes initial testing easier.
 	if(gui2::new_widgets) {
@@ -193,10 +189,6 @@ int min_allowed_width()
 
 int min_allowed_height()
 {
-#ifdef USE_TINY_GUI
-	return 240;
-#endif
-
 	// Most things (not all) in the new widgets library work properly on tiny
 	// gui resolution. So allow them, which makes initial testing easier.
 	if(gui2::new_widgets) {

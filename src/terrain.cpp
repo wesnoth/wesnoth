@@ -145,9 +145,6 @@ terrain_type::terrain_type(const config& cfg) :
 	std::sort(union_type_.begin(),union_type_.end());
 	union_type_.erase(std::unique(union_type_.begin(), union_type_.end()), union_type_.end());
 
-#ifdef USE_TINY_GUI
-	height_adjust_ /= 2;
-#endif
 
 
 	//mouse over message are only shown on villages

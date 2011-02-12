@@ -112,26 +112,6 @@ namespace {
 		}
 	}
 
-#ifdef USE_TINY_GUI
-
-const tresolution_list& get_tiny_gui_resolutions()
-{
-	static tresolution_list result;
-	if(result.empty()) {
-		result.push_back(std::make_pair(320, 240));
-		result.push_back(std::make_pair(640, 480));
-	}
-	return result;
-}
-
-template<class T>
-void test()
-{
-	test_resolutions<T>(get_tiny_gui_resolutions());
-}
-
-#else
-
 const tresolution_list& get_small_gui_resolutions()
 {
 	static tresolution_list result;
@@ -183,9 +163,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	cache.add_define("EDITOR");
 #endif
 	cache.add_define("MULTIPLAYER");
-#ifdef USE_TINY_GUI
-	cache.add_define("TINY");
-#endif
 	cache.get_config(game_config::path +"/data", main_config);
 
 	const binary_paths_manager bin_paths_manager(main_config);

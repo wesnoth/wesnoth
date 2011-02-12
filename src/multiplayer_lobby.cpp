@@ -730,18 +730,14 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	join_game_(disp.video(), _("Join Game")),
 	create_game_(disp.video(), _("Create Game")),
 	skip_replay_(disp.video(), _("Quick Replays"), gui::button::TYPE_CHECK),
-#ifndef USE_TINY_GUI
 	game_preferences_(disp.video(), _("Preferences")),
-#endif
 	quit_game_(disp.video(), _("Quit")),
-#ifndef USE_TINY_GUI
 	apply_filter_(disp.video(), _("Apply Filter"), gui::button::TYPE_CHECK),
 	invert_filter_(disp.video(), _("Invert"), gui::button::TYPE_CHECK),
 	vacant_slots_(disp.video(), _("Vacant Slots"), gui::button::TYPE_CHECK),
 	friends_in_game_(disp.video(), _("Friends in Game"), gui::button::TYPE_CHECK),
 	filter_label_(disp.video(), _("Search:")),
 	filter_text_(disp.video(), 150),
-#endif
 	last_selected_game_(-1), sorter_(gamelist),
 	games_menu_(disp.video(),cfg.child("multiplayer_hashes")),
 	minimaps_(),
@@ -750,7 +746,6 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	skip_replay_.set_check(preferences::skip_mp_replay());
 	skip_replay_.set_help_string(_("Skip quickly to the active turn when observing"));
 
-#ifndef USE_TINY_GUI
 	apply_filter_.set_check(preferences::filter_lobby());
 	apply_filter_.set_help_string(_("Enable the games filter. If unchecked all games are shown, regardless of any filter."));
 
@@ -771,7 +766,6 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	filter_text_.set_text(search_string_);
 	filter_text_.set_help_string(_("Only show games whose title or description contain the entered text"));
 	filter_text_.set_editable(apply_filter_.checked());
-#endif
 
 	gamelist_updated();
 	sound::play_music_repeatedly(game_config::lobby_music);
@@ -786,40 +780,29 @@ void lobby::hide_children(bool hide)
 	join_game_.hide(hide);
 	create_game_.hide(hide);
 	skip_replay_.hide(hide);
-#ifndef USE_TINY_GUI
 	game_preferences_.hide(hide);
-#endif
 	quit_game_.hide(hide);
-#ifndef USE_TINY_GUI
 	apply_filter_.hide(hide);
 	invert_filter_.hide(hide);
 	vacant_slots_.hide(hide);
 	friends_in_game_.hide(hide);
 	filter_label_.hide(hide);
 	filter_text_.hide(hide);
-#endif
 }
 
 void lobby::layout_children(const SDL_Rect& rect)
 {
 	ui::layout_children(rect);
 
-#ifdef USE_TINY_GUI
-	int btn_space = 3;
-	int xborder   = 0;
-	int yborder   = 0;
-#else
 	int btn_space = 5;
 	int xborder   = 10;
 	int yborder   = 7;
-#endif
 
 	// Align to the left border
 	join_game_.set_location(xscale(xborder), yscale(yborder));
 	observe_game_.set_location(join_game_.location().x + join_game_.location().w + btn_space, yscale(yborder));
 	create_game_.set_location(observe_game_.location().x + observe_game_.location().w + btn_space, yscale(yborder));
 
-#ifndef USE_TINY_GUI
 	// Align 'Quit' to the right border
 	quit_game_.set_location(xscale(xscale_base - xborder) - quit_game_.location().w, yscale(yborder));
 
@@ -829,20 +812,13 @@ void lobby::layout_children(const SDL_Rect& rect)
 	if (space < btn_space) space = btn_space;
 	skip_replay_.set_location(create_game_.location().x + create_game_.location().w + space, yscale(yborder));
 	game_preferences_.set_location(quit_game_.location().x - game_preferences_.location().w - space, yscale(yborder));
-#else
-	skip_replay_.set_location(create_game_.location().x + create_game_.location().w, yscale(yborder));
-	quit_game_.set_location(skip_replay_.location().x + skip_replay_.location().w + btn_space, yscale(yborder));
-#endif
 
 	games_menu_.set_location(client_area().x, client_area().y + title().height());
 	games_menu_.set_measurements(client_area().w, client_area().h
 			- title().height() - gui::ButtonVPadding
-#ifndef USE_TINY_GUI
 			- apply_filter_.location().h
-#endif
 			);
 
-#ifndef USE_TINY_GUI
     apply_filter_.set_location(client_area().x, games_menu_.location().y + games_menu_.location().h + gui::ButtonVPadding);
     invert_filter_.set_location(client_area().x + apply_filter_.location().w + btn_space, games_menu_.location().y + games_menu_.location().h + gui::ButtonVPadding);
     vacant_slots_.set_location(client_area().w - apply_filter_.location().w, games_menu_.location().y + games_menu_.location().h + gui::ButtonVPadding);
@@ -851,7 +827,6 @@ void lobby::layout_children(const SDL_Rect& rect)
     filter_label_.set_location(filter_text_.location().x - filter_label_.location().w - btn_space, games_menu_.location().y + games_menu_.location().h + gui::ButtonVPadding
             + (apply_filter_.location().h - filter_label_.location().h) / 2);
 
-#endif
 }
 
 void lobby::gamelist_updated(bool silent)
@@ -937,12 +912,10 @@ void lobby::process_event()
 		return;
 	}
 
-#ifndef USE_TINY_GUI
 	if(game_preferences_.pressed()) {
 		set_result(PREFERENCES);
 		return;
 	}
-#endif
 
 	if(quit_game_.pressed()) {
 		recorder.set_skip(false);
@@ -950,7 +923,6 @@ void lobby::process_event()
 		return;
 	}
 
-#ifndef USE_TINY_GUI
 	if(apply_filter_.pressed()) {
 		preferences::set_filter_lobby(apply_filter_.checked());
 		invert_filter_.enable(apply_filter_.checked());
@@ -991,7 +963,6 @@ void lobby::process_event()
 	    preferences::set_fi_text(search_string_);
 	    gamelist_updated();
 	}
-#endif
 
 }
 

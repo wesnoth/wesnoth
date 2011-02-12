@@ -33,10 +33,6 @@ static preproc_map setup_test_preproc_map()
 {
 	preproc_map defines_map;
 
-#ifdef USE_TINY_GUI
-	defines_map["TINY"] = preproc_define();
-#endif
-
 	if (game_config::small_gui)
 		defines_map["SMALL_GUI"] = preproc_define();
 

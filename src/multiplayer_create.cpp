@@ -411,11 +411,7 @@ void create::process_event()
 	const int xpmod = xp_modifier_slider_.value();
 	buf.str("");
 
-#ifdef USE_TINY_GUI
-	buf << N_("Exp. Mod.: ") << xpmod << "%";
-#else
 	buf << _("Experience Modifier: ") << xpmod << "%";
-#endif
 
 	xp_modifier_label_.set_text(buf.str());
 
@@ -463,11 +459,9 @@ void create::process_event()
 					generator_.assign(create_map_generator(level["map_generation"], level.child("generator")));
 				}
 
-#ifndef USE_TINY_GUI
 				if (!level["description"].empty()) {
 					tooltips::add_tooltip(minimap_rect_, level["description"]);
 				}
-#endif
 			}
 		} else {
 			parameters_.scenario_data.clear();
@@ -511,10 +505,8 @@ void create::process_event()
 		} catch(incorrect_map_format_error& e) {
 			ERR_CF << "map could not be loaded: " << e.message << "\n";
 
-#ifndef USE_TINY_GUI
 			tooltips::clear_tooltips(minimap_rect_);
 			tooltips::add_tooltip(minimap_rect_,e.message);
-#endif
 		} catch(twml_exception& e) {
 			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
 		}
@@ -533,13 +525,11 @@ void create::process_event()
 			side["controller"] = "human";
 		}
 
-#ifndef USE_TINY_GUI
 		if(map.get() != NULL) {
 			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,*map,0));
 			SDL_Color back_color = {0,0,0,255};
 			draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
 		}
-#endif
 
 		int nsides = 0;
 		foreach (const config &k, parameters_.scenario_data.child_range("side")) {
@@ -664,11 +654,9 @@ void create::hide_children(bool hide)
 		try {
 			gamemap map(game_config(), map_data);
 
-#ifndef USE_TINY_GUI
 			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
 			SDL_Color back_color = {0,0,0,255};
 			draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
-#endif
 		} catch(incorrect_map_format_error& e) {
 			ERR_CF << "map could not be loaded: " << e.message << "\n";
 		} catch(twml_exception& e) {
@@ -678,7 +666,6 @@ void create::hide_children(bool hide)
 	}
 }
 
-#ifndef USE_TINY_GUI
 void create::layout_children(const SDL_Rect& rect)
 {
 	ui::layout_children(rect);
@@ -963,8 +950,6 @@ void create::layout_children(const SDL_Rect& rect)
 	right_button->set_location(xpos + left_button->width() + 2 * border_size, ypos);
 }
 
-
-#endif
 
 } // namespace mp
 

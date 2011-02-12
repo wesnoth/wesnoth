@@ -585,18 +585,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 				savegame::scenariostart_savegame save(gamestate, preferences::compress_saves());
 
-#ifdef USE_TINY_GUI
-				bool retry = true;
-
-				while(retry) {
-					retry = false;
-					retry = !save.save_game_interactive(disp.video()
-									, _("Do you want to save your game?")
-									, gui::YES_NO);
-				}
-#else
 				save.save_game_automatic(disp.video());
-#endif /* USE_TINY_GUI */
 			}
 
 			if (gamestate.classification().campaign_type != "multiplayer"){

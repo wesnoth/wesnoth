@@ -496,9 +496,6 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 
 	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
 	height = static_cast<size_t>(height*get_zoom_factor());
-#ifdef USE_TINY_GUI
-	height /= 2;
-#endif
 
 	surface surf(image::get_image(image,image::SCALED_TO_HEX));
 

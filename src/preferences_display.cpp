@@ -78,10 +78,6 @@ bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& b
 	res_list.push_back(res_t(800, 600));
 	if (game_config::small_gui)
 		res_list.push_back(res_t(800, 480));
-#ifdef USE_TINY_GUI
-	res_list.push_back(res_t(640, 480));
-	res_list.push_back(res_t(320, 240));
-#endif
 
 	bpp = video.modePossible(resolution.first, resolution.second,
 		DefaultBPP, video_flags, true);
@@ -277,14 +273,8 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 	const int centerx = disp.w()/2;
 	const int centery = disp.h()/2;
-#ifdef USE_TINY_GUI
-	const int width  = 300;			  /** @todo FIXME: We should compute this, but using what data ? */
-		/** @todo FIXME:  suokko: window width and height could be useful. min(300,disp.w()*0.9)  So it would be either 300 or max 90% of width */
-	const int height = 220;
-#else
 	const int width  = 700;
 	const int height = 500;
-#endif
 	const int xpos = centerx  - width/2;
 	const int ypos = centery  - height/2;
 
