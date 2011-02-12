@@ -1017,6 +1017,7 @@ void menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 	}
 
 	resources::redo_stack->clear();
+	gui_->recalculate_minimap();
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
 	recorder.add_checksum_check(recall_location);
