@@ -22,6 +22,9 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
+static lg::log_domain log_config("config");
+#define ERR_CFG LOG_STREAM(warn , log_config)
+
 namespace gui2 {
 
 /*WIKI
@@ -138,11 +141,26 @@ void show(CVideo& video
 		, const t_string& message
 		, const tpoint& mouse)
 {
+	/*
+	 * For now allow invalid tip names, might turn them to invalid wml messages
+	 * later on.
+	 */
 	ttip& t = tip();
 	t.set_window_id(window_id);
 	t.set_message(message);
 	t.set_mouse(mouse);
-	t.show(video);
+	try {
+		t.show(video);
+	} catch(twindow_builder_invalid_id&) {
+		ERR_CFG << "Tip with the requested id '" << window_id
+				<< "' doesn't exist, fall back to the default.\n";
+		t.set_window_id("tooltip_large");
+		try {
+			t.show(video);
+		} catch(twindow_builder_invalid_id&) {
+			ERR_CFG << "Default tooltip doesn't exist, no message shown.\n";
+		}
+	}
 }
 
 void remove()

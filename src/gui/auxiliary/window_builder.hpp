@@ -162,6 +162,17 @@ public:
 
 		std::vector<tlinked_group> linked_groups;
 
+		/** Helper struct to store information about the tips. */
+		struct ttip
+		{
+			ttip(const config& cfg);
+
+			std::string id;
+		};
+
+		ttip tooltip;
+		ttip helptip;
+
 		tbuilder_grid_ptr grid;
 	};
 

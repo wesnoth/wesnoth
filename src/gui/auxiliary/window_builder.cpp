@@ -146,7 +146,9 @@ twindow *build(CVideo &video, const twindow_builder::tresolution *definition)
 			, definition->vertical_placement
 			, definition->maximum_width
 			, definition->maximum_height
-			, definition->definition);
+			, definition->definition
+			, definition->tooltip
+			, definition->helptip);
 	assert(window);
 
 	foreach(const twindow_builder::tresolution::tlinked_group& lg,
@@ -254,6 +256,8 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	click_dismiss(cfg["click_dismiss"].to_bool()),
 	definition(cfg["definition"]),
 	linked_groups(),
+	tooltip(cfg.child_or_empty("tooltip")), /** @todo will be mandatory soon. */
+	helptip(cfg.child_or_empty("helptip")), /** @todo will be mandatory soon. */
 	grid(0)
 {
 /*WIKI
@@ -319,6 +323,11 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *
  *     linked_group & sections & [] &  A group of linked widget sections. $
  *
+ *     tooltip & section & &         Information regarding the tooltip for this
+ *                                   window. $
+ *     helptip & section & &         Information regarding the helptip for this
+ *                                   window. $
+ *
  *     grid & grid & &                  The grid with the widgets to show. $
  * @end{table}
  *
@@ -331,8 +340,13 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *     fixed_height & bool & false &   Should widget in this group have the same
  *                                   height. $
  * @end{table}
- *
  * A linked group needs to have at least one size fixed.
+ *
+ * A tooltip and helptip section have the following field:
+ * @begin{table}{config}
+ *     id & string & &               The id of the tip to show. $
+ * @begin{table}{config}
+ * Note more fields will probably be added later on.
  */
 
 	const config &c = cfg.child("grid");
@@ -377,6 +391,21 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 
 		linked_groups.push_back(linked_group);
 	}
+}
+
+twindow_builder::tresolution::ttip::ttip(const config& cfg)
+	: id(cfg["id"])
+{
+	/** @todo Remove for 1.9.7. */
+	if(id.empty()) {
+		lg::wml_error << "Window builder: parsing resolution tip with empty "
+				<< "'id' field. Will become mandatory in 1.9.7.\n";
+		id = "tooltip_large";
+		return;
+	}
+
+	VALIDATE(!id.empty()
+			, missing_mandatory_wml_key("[window][resolution][tip]", "id"));
 }
 
 tbuilder_grid::tbuilder_grid(const config& cfg) :

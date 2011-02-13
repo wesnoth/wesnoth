@@ -550,7 +550,8 @@ tresolution_definition_ptr get_control(
 	ERROR_LOG(false);
 }
 
-std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(const std::string& type)
+std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(
+		const std::string& type)
 {
 	twindow::update_screen_size();
 
@@ -558,7 +559,9 @@ std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(con
 		window = current_gui->second.window_types.find(type);
 
 	if(true) { // FIXME Test for default gui.
-		assert(window != current_gui->second.window_types.end());
+		if(window == current_gui->second.window_types.end()) {
+			throw twindow_builder_invalid_id();
+		}
 	} else {
 		// FIXME Get the definition in the default gui and do an assertion test.
 	}

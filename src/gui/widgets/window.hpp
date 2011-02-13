@@ -69,7 +69,9 @@ public:
 		const unsigned vertical_placement,
 		const unsigned maximum_width,
 		const unsigned maximum_height,
-		const std::string& definition);
+		const std::string& definition,
+		const twindow_builder::tresolution::ttip& tooltip,
+		const twindow_builder::tresolution::ttip& helptip);
 
 	~twindow();
 
@@ -471,6 +473,12 @@ private:
 
 	/** The formula to calulate the height of the dialog. */
 	tformula<unsigned>h_;
+
+	/** The settings for the tooltip. */
+	twindow_builder::tresolution::ttip tooltip_;
+
+	/** The settings for the helptip. */
+	twindow_builder::tresolution::ttip helptip_;
 
 	/**
 	 * Do we want to have easy close behaviour?

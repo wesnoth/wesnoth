@@ -269,7 +269,9 @@ twindow::twindow(CVideo& video,
 		const unsigned vertical_placement,
 		const unsigned maximum_width,
 		const unsigned maximum_height,
-		const std::string& definition)
+		const std::string& definition,
+		const twindow_builder::tresolution::ttip& tooltip,
+		const twindow_builder::tresolution::ttip& helptip)
 	: tpanel()
 	, cursor::setter(cursor::NORMAL)
 	, video_(video)
@@ -291,6 +293,8 @@ twindow::twindow(CVideo& video,
 	, y_(y)
 	, w_(w)
 	, h_(h)
+	, tooltip_(tooltip)
+	, helptip_(helptip)
 	, click_dismiss_(false)
 	, enter_disabled_(false)
 	, escape_disabled_(false)
@@ -360,7 +364,7 @@ twindow::twindow(CVideo& video,
 				, _5)
 			, event::tdispatcher::back_pre_child);
 
-	register_hotkey(hotkey::GLOBAL__HELPTIP, boost::bind(helptip));
+	register_hotkey(hotkey::GLOBAL__HELPTIP, boost::bind(gui2::helptip));
 }
 
 twindow::~twindow()
@@ -1303,11 +1307,10 @@ void twindow::signal_handler_message_show_tooltip(
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	event::tmessage_show_tooltip& tooltip =
+	event::tmessage_show_tooltip& request =
 			dynamic_cast<event::tmessage_show_tooltip&>(message);
 
-	/** @todo Make not hard coded. */
-	tip::show(video_, "tooltip_large", tooltip.message, tooltip.location);
+	tip::show(video_, tooltip_.id, request.message, request.location);
 
 	handled = true;
 }
@@ -1319,11 +1322,10 @@ void twindow::signal_handler_message_show_helptip(
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	event::tmessage_show_helptip& helptip =
+	event::tmessage_show_helptip& request =
 			dynamic_cast<event::tmessage_show_helptip&>(message);
 
-	/** @todo Make not hard coded. */
-	tip::show(video_, "tooltip_large", helptip.message, helptip.location);
+	tip::show(video_, helptip_.id, request.message, request.location);
 
 	handled = true;
 }

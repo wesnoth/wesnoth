@@ -123,6 +123,25 @@ void load_widget_definitions(
 	tresolution_definition_ptr get_control(
 		const std::string& control_type, const std::string& definition);
 
+	/** Helper struct to signal that get_window_builder failed. */
+	struct twindow_builder_invalid_id {};
+
+	/**
+	 * Returns an interator to the requested builder.
+	 *
+	 * The builder is determined by the @p type and the current screen
+	 * resolution.
+	 *
+	 * @pre                       There is a valid builder for @p type at the
+	 *                            current resolution.
+	 *
+	 * @throw twindow_builder_invalid_id
+	 *                            When the precondition is violated.
+	 *
+	 * @param type                The type of builder window to get.
+	 *
+	 * @returns                   An iterator to the requested builder.
+	 */
 	std::vector<twindow_builder::tresolution>::const_iterator
 		get_window_builder(const std::string& type);
 
