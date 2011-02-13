@@ -1635,34 +1635,6 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\gui\widgets\tooltip.cpp"
-						>
-						<FileConfiguration
-							Name="Debug|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Widgets\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Widgets\"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Debug (fast)|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\Gui\Widgets\"
-							/>
-						</FileConfiguration>
-					</File>
-					<File
 						RelativePath="..\..\src\gui\widgets\tree_view.cpp"
 						>
 						<FileConfiguration
@@ -2833,6 +2805,10 @@
 								/>
 							</FileConfiguration>
 						</File>
+					</Filter>
+					<Filter
+						Name="Image_Message"
+						>
 					</Filter>
 				</Filter>
 				<Filter
@@ -4287,34 +4263,6 @@
 						</File>
 						<File
 							RelativePath="..\..\src\gui\auxiliary\widget_definition\toggle_panel.cpp"
-							>
-							<FileConfiguration
-								Name="Debug|Win32"
-								>
-								<Tool
-									Name="VCCLCompilerTool"
-									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
-								/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Release|Win32"
-								>
-								<Tool
-									Name="VCCLCompilerTool"
-									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
-								/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Debug (fast)|Win32"
-								>
-								<Tool
-									Name="VCCLCompilerTool"
-									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
-								/>
-							</FileConfiguration>
-						</File>
-						<File
-							RelativePath="..\..\src\gui\auxiliary\widget_definition\tooltip.cpp"
 							>
 							<FileConfiguration
 								Name="Debug|Win32"
@@ -7573,6 +7521,10 @@
 							>
 						</File>
 					</Filter>
+					<Filter
+						Name="Image_Message"
+						>
+					</Filter>
 				</Filter>
 				<Filter
 					Name="Widgets"
@@ -7715,10 +7667,6 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\widgets\toggle_panel.hpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\gui\widgets\tooltip.hpp"
 						>
 					</File>
 					<File
@@ -7912,6 +7860,10 @@
 							RelativePath="..\..\src\gui\auxiliary\event\handler.hpp"
 							>
 						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\event\message.hpp"
+							>
+						</File>
 					</Filter>
 					<Filter
 						Name="Widget_Definition"
@@ -7990,10 +7942,6 @@
 						</File>
 						<File
 							RelativePath="..\..\src\gui\auxiliary\widget_definition\toggle_panel.hpp"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\gui\auxiliary\widget_definition\tooltip.hpp"
 							>
 						</File>
 						<File
