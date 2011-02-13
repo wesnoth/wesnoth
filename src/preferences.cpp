@@ -178,27 +178,12 @@ void _set_scroll_to_action(bool ison)
 
 int min_allowed_width()
 {
-	// Most things (not all) in the new widgets library work properly on tiny
-	// gui resolution. So allow them, which makes initial testing easier.
-	if(gui2::new_widgets) {
-		return 320;
-	}
-
 	return 800;
 }
 
 int min_allowed_height()
 {
-	// Most things (not all) in the new widgets library work properly on tiny
-	// gui resolution. So allow them, which makes initial testing easier.
-	if(gui2::new_widgets) {
-		return 240;
-	}
-
-	if (game_config::small_gui)
-		return 480;
-
-	return 600;
+	return 480;
 }
 
 std::pair<int,int> resolution()
