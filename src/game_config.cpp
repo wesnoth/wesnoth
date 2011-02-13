@@ -217,16 +217,6 @@ namespace game_config
 		foot_teleport_enter = v["footprint_teleport_enter"].str();
 		foot_teleport_exit = v["footprint_teleport_exit"].str();
 
-		title_logo_x = v["logo_x"];
-		title_logo_y = v["logo_y"];
-		title_buttons_x = v["buttons_x"];
-		title_buttons_y = v["buttons_y"];
-		title_buttons_padding = v["buttons_padding"];
-
-		title_tip_x = v["tip_x"].to_int();
-		title_tip_width = v["tip_width"].to_int();
-		title_tip_padding = v["tip_padding"].to_int();
-
 		shroud_prefix = v["shroud_prefix"].str();
 		fog_prefix  = v["fog_prefix"].str();
 
