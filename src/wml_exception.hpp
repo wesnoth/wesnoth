@@ -104,19 +104,25 @@ struct twml_exception: game::error
 };
 
 /**
- *  Returns a standard message for a missing wml key.
+ * Returns a standard message for a missing wml key.
  *
- *  @param section      The section is which the key should appear.
- *  @param key          The ommitted key.
- *  @param primary_key  The primary key of the section.
- *  @param primary_value
- *                      The value of the primary key (mandatory if primary key
- *                      isn't empty).
+ * @param section                 The section is which the key should appear
+ *                                (this should include the section brackets).
+ *                                It may contain parent sections to make it
+ *                                easier to find the wanted sections. They are
+ *                                listed like [parent][child][section].
+ * @param key                     The ommitted key.
+ * @param primary_key             The primary key of the section.
+ * @param primary_value           The value of the primary key (mandatory if
+ *                                primary key isn't empty).
  *
- *  @return             The error message.
+ * @returns                       The error message.
  */
-std::string missing_mandatory_wml_key(const std::string& section, const std::string& key,
-		const std::string& primary_key = "", const std::string& primary_value = "");
+std::string missing_mandatory_wml_key(
+		  const std::string& section
+		, const std::string& key
+		, const std::string& primary_key = ""
+		, const std::string& primary_value = "");
 /**
  * Returns a standard warning message for using a deprecated wml key.
  *

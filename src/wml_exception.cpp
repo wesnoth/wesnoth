@@ -29,6 +29,9 @@
 #include "formula_string_utils.hpp"
 #include "log.hpp"
 
+static lg::log_domain log_engine("engine");
+#define WRN_NG LOG_STREAM(warn, log_engine)
+
 void wml_exception(
 		  const char* cond
 		, const char* file
@@ -62,11 +65,23 @@ void twml_exception::show(display &disp)
 	gui2::show_error_message(disp.video(), sstr.str());
 }
 
-std::string missing_mandatory_wml_key(const std::string &section, const std::string &key,
-		const std::string& primary_key, const std::string& primary_value)
+std::string missing_mandatory_wml_key(
+		  const std::string &section
+		, const std::string &key
+		, const std::string& primary_key
+		, const std::string& primary_value)
 {
 	utils::string_map symbols;
-	symbols["section"] = section;
+	if(!section.empty()) {
+		if(section[0] == '[') {
+			symbols["section"] = section;
+		} else {
+			WRN_NG << __func__
+					<< " parameter 'section' should contain brackets."
+					<< " Added them.\n";
+			symbols["section"] = "[" + section + "]";
+		}
+	}
 	symbols["key"] = key;
 	if(!primary_key.empty()) {
 		assert(!primary_value.empty());
