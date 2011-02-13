@@ -80,18 +80,38 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 			&tscrollbar_container::signal_handler_sdl_key_down
 				, this, _2, _3, _5, _6));
 
-	connect_signal<event::SDL_WHEEL_UP>(boost::bind(
-			&tscrollbar_container::signal_handler_sdl_wheel_up
-				, this, _2, _3));
-	connect_signal<event::SDL_WHEEL_DOWN>(boost::bind(
-			&tscrollbar_container::signal_handler_sdl_wheel_down
-				, this, _2, _3));
-	connect_signal<event::SDL_WHEEL_LEFT>(boost::bind(
-			&tscrollbar_container::signal_handler_sdl_wheel_left
-				, this, _2, _3));
-	connect_signal<event::SDL_WHEEL_RIGHT>(boost::bind(
-			&tscrollbar_container::signal_handler_sdl_wheel_right
-				, this, _2, _3));
+
+	connect_signal<event::SDL_WHEEL_UP>(
+			boost::bind(
+				  &tscrollbar_container::signal_handler_sdl_wheel_up
+				, this
+				, _2
+				, _3)
+			, event::tdispatcher::back_post_child);
+
+	connect_signal<event::SDL_WHEEL_DOWN>(
+			boost::bind(
+				&tscrollbar_container::signal_handler_sdl_wheel_down
+				, this
+				, _2
+				, _3)
+			, event::tdispatcher::back_post_child);
+
+	connect_signal<event::SDL_WHEEL_LEFT>(
+			boost::bind(
+				&tscrollbar_container::signal_handler_sdl_wheel_left
+				, this
+				, _2
+				, _3)
+			, event::tdispatcher::back_post_child);
+
+	connect_signal<event::SDL_WHEEL_RIGHT>(
+			boost::bind(
+				&tscrollbar_container::signal_handler_sdl_wheel_right
+				, this
+				, _2
+				, _3)
+			, event::tdispatcher::back_post_child);
 }
 
 void tscrollbar_container::layout_init(const bool full_initialization)

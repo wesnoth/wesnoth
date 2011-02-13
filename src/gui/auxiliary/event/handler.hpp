@@ -167,10 +167,6 @@ typedef
 			, boost::mpl::int_<RIGHT_BUTTON_UP>
 			, boost::mpl::int_<RIGHT_BUTTON_CLICK>
 			, boost::mpl::int_<RIGHT_BUTTON_DOUBLE_CLICK>
-			, boost::mpl::int_<SDL_WHEEL_LEFT>
-			, boost::mpl::int_<SDL_WHEEL_RIGHT>
-			, boost::mpl::int_<SDL_WHEEL_UP>
-			, boost::mpl::int_<SDL_WHEEL_DOWN>
 		>
 		tset_event;
 
@@ -192,6 +188,10 @@ typedef
 			, boost::mpl::int_<SDL_RIGHT_BUTTON_UP>
 			, boost::mpl::int_<SHOW_TOOLTIP>
 			, boost::mpl::int_<SHOW_HELPTIP>
+			, boost::mpl::int_<SDL_WHEEL_UP>
+			, boost::mpl::int_<SDL_WHEEL_DOWN>
+			, boost::mpl::int_<SDL_WHEEL_LEFT>
+			, boost::mpl::int_<SDL_WHEEL_RIGHT>
 		>
 		tset_event_mouse;
 

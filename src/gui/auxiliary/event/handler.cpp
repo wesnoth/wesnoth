@@ -509,16 +509,16 @@ void thandler::mouse_button_up(const tpoint& position, const Uint8 button)
 			break;
 
 		case SDL_BUTTON_WHEELLEFT :
-			keyboard(SDL_WHEEL_LEFT);
+			mouse(SDL_WHEEL_LEFT, get_mouse_position());
 			break;
 		case SDL_BUTTON_WHEELRIGHT :
-			keyboard(SDL_WHEEL_RIGHT);
+			mouse(SDL_WHEEL_RIGHT, get_mouse_position());
 			break;
 		case SDL_BUTTON_WHEELUP :
-			keyboard(SDL_WHEEL_UP);
+			mouse(SDL_WHEEL_UP, get_mouse_position());
 			break;
 		case SDL_BUTTON_WHEELDOWN :
-			keyboard(SDL_WHEEL_DOWN);
+			mouse(SDL_WHEEL_DOWN, get_mouse_position());
 			break;
 
 		default:

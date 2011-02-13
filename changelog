@@ -12,6 +12,8 @@ Version 1.9.4+svn:
    * Reimplemented: the tooltips use the new tip class and look much better.
    * Fixed: the tooltips no longer stack when the MP dialog is opened.
    * Implemented: the helptips.
+   * Changed: the scroll wheel, in gui2 code, now also follows the mouse focus
+     instead of the keyboard focus.
  * WML engine:
    * Allow [color_range] and [color_palette] nodes to be inserted at top-level
      by add-ons to globally define custom ranges and palettes.

@@ -124,6 +124,23 @@ tmouse_motion::tmouse_motion(twidget& owner
 			  , this, _2, _3, _5)
 		, queue_position);
 
+	owner_.connect_signal<event::SDL_WHEEL_UP>(
+			boost::bind(
+				  &tmouse_motion::signal_handler_sdl_wheel
+				, this, _2, _3, _5));
+	owner_.connect_signal<event::SDL_WHEEL_DOWN>(
+			boost::bind(
+				  &tmouse_motion::signal_handler_sdl_wheel
+				, this, _2, _3, _5));
+	owner_.connect_signal<event::SDL_WHEEL_LEFT>(
+			boost::bind(
+				  &tmouse_motion::signal_handler_sdl_wheel
+				, this, _2, _3, _5));
+	owner_.connect_signal<event::SDL_WHEEL_RIGHT>(
+			boost::bind(
+				  &tmouse_motion::signal_handler_sdl_wheel
+				, this, _2, _3, _5));
+
 	owner.connect_signal<event::SHOW_HELPTIP>(
 		  boost::bind(&tmouse_motion::signal_handler_show_helptip
 			  , this, _2, _3, _5)
@@ -180,6 +197,25 @@ void tmouse_motion::signal_handler_sdl_mouse_motion(
 			mouse_enter(mouse_over);
 		} else {
 			assert(!mouse_focus_ && !mouse_over);
+		}
+	}
+	handled = true;
+}
+
+void tmouse_motion::signal_handler_sdl_wheel(
+		  const event::tevent event
+		, bool& handled
+		, const tpoint& coordinate)
+{
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
+
+	if(mouse_captured_) {
+		assert(mouse_focus_);
+		owner_.fire(event, *mouse_focus_, coordinate);
+	} else {
+		twidget* mouse_over = owner_.find_at(coordinate, true);
+		if(mouse_over) {
+			owner_.fire(event, *mouse_over, coordinate);
 		}
 	}
 	handled = true;
@@ -610,26 +646,6 @@ tdistributor::tdistributor(twidget& owner
 			boost::bind(&tdistributor::signal_handler_sdl_key_down
 				, this, _5, _6, _7));
 
-
-	owner_.connect_signal<event::SDL_WHEEL_UP>(
-			boost::bind(
-				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_UP>
-				, this));
-	owner_.connect_signal<event::SDL_WHEEL_DOWN>(
-			boost::bind(
-				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_DOWN>
-				, this));
-	owner_.connect_signal<event::SDL_WHEEL_LEFT>(
-			boost::bind(
-				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_LEFT>
-				, this));
-	owner_.connect_signal<event::SDL_WHEEL_RIGHT>(
-			boost::bind(
-				  &tdistributor::signal_handler_sdl_wheel<
-					  event::SDL_WHEEL_RIGHT>
-				, this));
-
-
 	owner_.connect_signal<event::NOTIFY_REMOVAL>(
 			boost::bind(
 				  &tdistributor::signal_handler_notify_removal
@@ -645,26 +661,6 @@ tdistributor::~tdistributor()
 	owner_.disconnect_signal<event::SDL_KEY_DOWN>(
 			boost::bind(&tdistributor::signal_handler_sdl_key_down
 				, this, _5, _6, _7));
-
-
-	owner_.disconnect_signal<event::SDL_WHEEL_UP>(
-			boost::bind(
-				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_UP>
-				, this));
-	owner_.disconnect_signal<event::SDL_WHEEL_DOWN>(
-			boost::bind(
-				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_DOWN>
-				, this));
-	owner_.disconnect_signal<event::SDL_WHEEL_LEFT>(
-			boost::bind(
-				  &tdistributor::signal_handler_sdl_wheel<event::SDL_WHEEL_LEFT>
-				, this));
-	owner_.disconnect_signal<event::SDL_WHEEL_RIGHT>(
-			boost::bind(
-				  &tdistributor::signal_handler_sdl_wheel<
-					  event::SDL_WHEEL_RIGHT>
-				, this));
-
 
 	owner_.disconnect_signal<event::NOTIFY_REMOVAL>(
 			boost::bind(
@@ -785,19 +781,6 @@ void tdistributor::signal_handler_sdl_key_down(const SDLKey key
 
 			return;
 		}
-	}
-}
-
-template<tevent event>
-void tdistributor::signal_handler_sdl_wheel()
-{
-	/** @todo Test whether recursion protection is needed. */
-
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
-
-	if(keyboard_focus_) {
-		DBG_GUI_E << LOG_HEADER << "Firing: " << event  << ".\n";
-		owner_.fire(event, *keyboard_focus_);
 	}
 }
 

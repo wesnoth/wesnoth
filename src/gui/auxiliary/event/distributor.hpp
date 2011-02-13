@@ -137,6 +137,11 @@ private:
 			, bool& handled
 			, const tpoint& coordinate);
 
+	void signal_handler_sdl_wheel(
+			  const event::tevent event
+			, bool& handled
+			, const tpoint& coordinate);
+
 	void signal_handler_show_helptip(
 			  const event::tevent event
 			, bool& handled
@@ -323,10 +328,6 @@ private:
 	void signal_handler_sdl_key_down(const SDLKey key
 			, const SDLMod modifier
 			, const Uint16 unicode);
-
-
-	template<tevent event>
-	void signal_handler_sdl_wheel();
 
 	void signal_handler_notify_removal(tdispatcher& widget, const tevent event);
 };
