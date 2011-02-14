@@ -76,8 +76,7 @@ bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& b
 	res_list.push_back(res_t(1024, 768));
 	res_list.push_back(res_t(1024, 600));
 	res_list.push_back(res_t(800, 600));
-	if (game_config::small_gui)
-		res_list.push_back(res_t(800, 480));
+	res_list.push_back(res_t(800, 480));
 
 	bpp = video.modePossible(resolution.first, resolution.second,
 		DefaultBPP, video_flags, true);
