@@ -623,11 +623,15 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	// create an option for whether the replay should be shown or not
 	if(show_replay != NULL) {
 		lmenu.add_option(_("Show replay"), false,
-			game_config::small_gui ? gui::dialog::BUTTON_CHECKBOX : gui::dialog::BUTTON_STANDARD);
+			// use smallgui layout as default, otherwise the load screen glitches at low res!
+			//game_config::small_gui ? gui::dialog::BUTTON_CHECKBOX : gui::dialog::BUTTON_STANDARD);
+			gui::dialog::BUTTON_CHECKBOX);
 	}
 	if(cancel_orders != NULL) {
 		lmenu.add_option(_("Cancel orders"), false,
-			game_config::small_gui ? gui::dialog::BUTTON_STANDARD : gui::dialog::BUTTON_EXTRA);
+			// use smallgui layout as default, otherwise the load screen glitches at low res!
+			//game_config::small_gui ? gui::dialog::BUTTON_STANDARD : gui::dialog::BUTTON_EXTRA);
+			gui::dialog::BUTTON_STANDARD);
 	}
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("OK"),0,false), gui::dialog::BUTTON_STANDARD);
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("Cancel"),1,true), gui::dialog::BUTTON_STANDARD);
@@ -636,7 +640,9 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
 
 	lmenu.add_button(delete_button,
-		game_config::small_gui ? gui::dialog::BUTTON_HELP : gui::dialog::BUTTON_EXTRA);
+		// use smallgui layout as default, otherwise the load screen glitches at low res!
+		//game_config::small_gui ? gui::dialog::BUTTON_HELP : gui::dialog::BUTTON_EXTRA);
+		gui::dialog::BUTTON_HELP);
 
 	int res = lmenu.show();
 
