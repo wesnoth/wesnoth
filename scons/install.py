@@ -13,25 +13,6 @@ def InstallFilteredHook(target, source, env):
     def do_copy(target, source):
         if CopyFilter(source):
             if os.path.isfile(source):
-                if (env["gui"] == "tiny") and (source.endswith("jpg") or source.endswith("png")):
-                    image_info = Popen(["identify", "-verbose", source], stdout = PIPE).communicate()[0]
-                    if "Alpha: " in image_info:
-                        command = "convert -filter point -resize %s %s %s"
-                    else:
-                        command = "convert -resize %s %s %s"
-                    for (large, small) in (("1024x768","320x240"),
-                                            ("640x480","240x180"),
-                                            ("205x205","80x80")):
-                        if ("Geometry: " + large) in image_info:
-                            command = command % (small, source, target)
-                            break
-                    else:
-                            command = command % ("50%", source, target)
-                    if env["verbose"]:
-                        print command
-                    call(Split(command))
-                else:
-                    # Just copy non-images, and images if tinygui is off
                     if env["verbose"]:
                         print "cp %s %s" % (source, target)
                     shutil.copy2(source, target)
