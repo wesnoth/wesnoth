@@ -434,20 +434,28 @@ bool luaW_pcall(lua_State *L
 
 	if (res)
 	{
+		/*
+		 * When an exception is thrown which doesn't derive from
+		 * std::exception m will be NULL pointer.
+		 */
 		char const *m = lua_tostring(L, -1);
-		if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
-			m += 5;
-			char const *e = strstr(m, "stack traceback");
-			lg::wml_error << std::string(m, e ? e - m : strlen(m));
-		} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
-			m += 5;
-			char const *e = NULL, *em = m;
-			while (em[0] && ((em = strstr(em + 1, "stack traceback"))))
-				e = em;
-			chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
+		if(m) {
+			if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
+				m += 5;
+				char const *e = strstr(m, "stack traceback");
+				lg::wml_error << std::string(m, e ? e - m : strlen(m));
+			} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
+				m += 5;
+				char const *e = NULL, *em = m;
+				while (em[0] && ((em = strstr(em + 1, "stack traceback"))))
+					e = em;
+				chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
+			} else {
+				ERR_LUA << m << '\n';
+				chat_message("Lua error", m);
+			}
 		} else {
-			ERR_LUA << m << '\n';
-			chat_message("Lua error", m);
+			chat_message("Lua caught unknown exception", "");
 		}
 		lua_pop(L, 2);
 		return false;
