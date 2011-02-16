@@ -61,7 +61,7 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 	} catch (incorrect_map_format_error& e) {
 		throw wrap_exc("format", e.message, "");
 	} catch (twml_exception& e) {
-		throw wrap_exc("wml", e.message, "");
+		throw wrap_exc("wml", e.user_message, "");
 	} catch (config::error& e) {
 		throw wrap_exc("config", e.message, "");
 	}
