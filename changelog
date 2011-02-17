@@ -26,9 +26,11 @@ Version 1.9.4+svn:
    * Fixed: g++ compiler warnings.
    * Added: cmake target to build the gui design pdf.
    * Removed support for TinyGUI: Devices with a resolution below 800x480 are
-     not supported anymore
+     not supported anymore.
    * Changed: The minimum screen resolution is 800x480, no need to use
-   --smallgui anymore.
+     --smallgui anymore.
+   * Reverted hotkey for clearing cache for Mac OS X back to F5. Control-F5
+     still works (and is necessary when in windowed mode).
 
 Version 1.9.4:
  * AI:
