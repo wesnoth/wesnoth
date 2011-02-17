@@ -31,6 +31,8 @@ Version 1.9.4+svn:
      --smallgui anymore.
    * Reverted hotkey for clearing cache for Mac OS X back to F5. Control-F5
      still works (and is necessary when in windowed mode).
+   * Let cmake use absolute locale dirs when set to an absolute path.
+     (Windows always uses a relative path.) (patch #2280)
 
 Version 1.9.4:
  * AI:

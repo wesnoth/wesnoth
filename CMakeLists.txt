@@ -151,9 +151,17 @@ if(X11_FOUND)
 	add_definitions(-D_X11)
 endif(X11_FOUND)
 
-add_definitions(-DHAS_RELATIVE_LOCALEDIR=1)
 add_definitions(-DLOCALEDIR=\\\"${LOCALEDIR}\\\")
-set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
+
+# When the path starts with a / on a Unix system it's an absolute path. 
+# This means that on Windows the path used is always relative.
+if(LOCALEDIR MATCHES "^/")
+	add_definitions(-DHAS_RELATIVE_LOCALEDIR=0)
+	set(LOCALE_INSTALL ${LOCALEDIR})
+else(LOCALEDIR MATCHES "^/")
+	add_definitions(-DHAS_RELATIVE_LOCALEDIR=1)
+	set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
+endif(LOCALEDIR MATCHES "^/")
 
 add_definitions(-DFIFODIR=\\\"${FIFO_DIR}\\\")
 
