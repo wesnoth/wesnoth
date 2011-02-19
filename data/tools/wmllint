@@ -1275,7 +1275,7 @@ def global_sanity_check(filename, lines):
                 if capitalization_error.search(lines[i]):
                     print '"%s", line %d: probable capitalization or punctuation error' \
                           % (filename, i+1)
-                if key == "message" and in_message and not in_option:
+                if key == "message" and in_message and not in_option and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     lines[i] = pangoize(lines[i], filename, i)
             else:
                 if (in_scenario or in_multiplayer) and key == "id":
