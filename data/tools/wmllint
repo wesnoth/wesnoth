@@ -1355,7 +1355,11 @@ def consistency_check():
                         print '"%s", line %d: %s has no usage type' % \
                               (filename, rl, rtype)
                         continue
-                utype = usage[base]
+                if not base in usage:
+                    print '"%s", line %d: %s has unkown base %s' % \
+                              (filename, rl, rtype, base)
+                else:
+                    utype = usage[base]
                 utypes.append(utype)
                 for (pdifficulty, (pl, recruit_pattern)) in patterndict.items():
                     if condition_match(pdifficulty, rdifficulty):
