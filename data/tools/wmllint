@@ -626,9 +626,6 @@ notepairs = [
     ]
 
 
-# This needs to match the list of usage types in ai_python.cpp
-usage_types = ("scout", "fighter", "mixed fighter", "archer", "healer")
-
 # These are accumulated by sanity_check() and examined by consistency_check()
 unit_types = []
 derived_units = []
@@ -1078,10 +1075,6 @@ def global_sanity_check(filename, lines):
                               % (filename, i+1)
                 else:
                     recruitment_pattern[ifdef_stack[-1]] = (i+1, map(lambda x: x.strip(), value.split(",")))
-                    for utype in recruitment_pattern[ifdef_stack[-1]][1]:
-                        if not utype in usage_types:
-                            print '"%s", line %d: unknown usage class %s' \
-                                  % (filename, i+1, utype)
             elif key == "side" and not in_ai:
                 try:
                     if not in_generator and sidecount != int(value):
