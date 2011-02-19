@@ -237,6 +237,7 @@ endif(SVNVERSION_EXECUTABLE)
 ########### libwesnoth-lua ###############
 
 set(libwesnoth-lua_STAT_SRC
+	lua_jailbreak_exception.cpp
 	lua/lapi.c
 	lua/lcode.c
 	lua/ldebug.c

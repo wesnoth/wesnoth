@@ -1,6 +1,7 @@
 # vi: syntax=python:et:ts=4
 Import("env")
 lua_sources = Split("""
+../lua_jailbreak_exception.cpp
 lapi.c                                               
 lcode.c                                             
 ldebug.c

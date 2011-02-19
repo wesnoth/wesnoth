@@ -42,6 +42,7 @@
 #include "game_display.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
+#include "lua_jailbreak_exception.hpp"
 #include "map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
@@ -430,6 +431,7 @@ bool luaW_pcall(lua_State *L
 
 	// Call the function.
 	int res = lua_pcall(L, nArgs, nRets, -2 - nArgs);
+	tlua_jailbreak_exception::rethrow();
 	game::exception::rethrow();
 
 	if (res)
