@@ -34,6 +34,9 @@
 				</Linker>
 			</Target>
 		</Build>
+		<Compiler>
+			<Add directory="..\..\src" />
+		</Compiler>
 		<Unit filename="..\..\src\lua\lapi.c">
 			<Option compilerVar="CC" />
 		</Unit>
