@@ -1064,6 +1064,8 @@ def global_sanity_check(filename, lines):
         elif in_side and "[/unit]" in lines[i]:
             in_subunit = False
             continue
+        if "wmllint: skip-side" in lines[i]:
+            sidecount += 1
         if not in_side or in_subunit or '=' not in lines[i]:
             continue
         try:
