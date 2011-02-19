@@ -345,11 +345,17 @@ REPORT_GENERATOR(unit_advancement_options)
 REPORT_GENERATOR(unit_defense)
 {
 	unit *u = get_visible_unit();
-	if (!u) return report();
+	if(!u) {
+		return report();
+	}
+
 	std::ostringstream str, tooltip;
 	const gamemap &map = *resources::game_map;
 	const map_location& displayed_unit_hex = resources::screen->displayed_unit_hex();
-	if (!resources::game_map->on_board(displayed_unit_hex)) return report();
+	if(!resources::game_map->on_board(displayed_unit_hex)) {
+		return report();
+	}
+
 	const t_translation::t_terrain &terrain = map[displayed_unit_hex];
 	int def = 100 - u->defense_modifier(terrain);
 	SDL_Color color = int_to_color(game_config::red_to_green(def));
