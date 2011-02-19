@@ -574,18 +574,18 @@ inline bool fire_event(const tevent event
 
 	/***** ***** ***** Pre ***** ***** *****/
 	for(std::vector<std::pair<twidget*, tevent> >
-				::iterator itor_widget = event_chain.begin();
-			itor_widget != event_chain.end();
-			++itor_widget) {
+				::reverse_iterator ritor_widget = event_chain.rbegin();
+			ritor_widget != event_chain.rend();
+			++ritor_widget) {
 
 		tdispatcher::tsignal<T>& signal = tdispatcher_implementation
-				::event_signal<T>(*itor_widget->first, itor_widget->second);
+				::event_signal<T>(*ritor_widget->first, ritor_widget->second);
 
 		for(typename std::vector<T>::iterator itor = signal.pre_child.begin();
 				itor != signal.pre_child.end();
 				++itor) {
 
-			functor(*itor, *dispatcher, itor_widget->second, handled, halt);
+			functor(*itor, *dispatcher, ritor_widget->second, handled, halt);
 			if(halt) {
 				assert(handled);
 				break;
@@ -622,18 +622,18 @@ inline bool fire_event(const tevent event
 
 	/***** ***** ***** Post ***** ***** *****/
 	for(std::vector<std::pair<twidget*, tevent> >
-				::reverse_iterator ritor_widget = event_chain.rbegin();
-			ritor_widget != event_chain.rend();
-			++ritor_widget) {
+				::iterator itor_widget = event_chain.begin();
+			itor_widget != event_chain.end();
+			++itor_widget) {
 
 		tdispatcher::tsignal<T>& signal = tdispatcher_implementation
-				::event_signal<T>(*ritor_widget->first, ritor_widget->second);
+				::event_signal<T>(*itor_widget->first, itor_widget->second);
 
 		for(typename std::vector<T>::iterator itor = signal.post_child.begin();
 				itor != signal.post_child.end();
 				++itor) {
 
-			functor(*itor, *dispatcher, ritor_widget->second, handled, halt);
+			functor(*itor, *dispatcher, itor_widget->second, handled, halt);
 			if(halt) {
 				assert(handled);
 				break;
