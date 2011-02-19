@@ -1931,6 +1931,8 @@ static int do_gameloop(int argc, char** argv)
 			}
         }
 
+		loadscreen_manager.reset();
+
 		if(game.play_test() == false) {
 			return 0;
 		}
@@ -1960,7 +1962,6 @@ static int do_gameloop(int argc, char** argv)
 			return 0;
 		}
 #endif
-		loadscreen_manager.reset();
 
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::NOTHING;
 
