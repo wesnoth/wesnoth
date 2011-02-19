@@ -66,7 +66,6 @@ set(FIFO_DIR "/var/run/wesnothd" CACHE STRING "Directory for the wesnothd fifo s
 option(ENABLE_GAME "Enable compilation of the game" ON)
 option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
 option(ENABLE_SERVER "Enable compilation of server" ON)
-option(ENABLE_EDITOR "Enable compilation of the new map editor into the game executable" ON)
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
@@ -142,10 +141,6 @@ endif(NOT WIN32)
 if(NOT ENABLE_POOL_ALLOC OR WIN32)
 	add_definitions(-DDISABLE_POOL_ALLOC)
 endif(NOT ENABLE_POOL_ALLOC OR WIN32)
-
-if(NOT ENABLE_EDITOR)
-	add_definitions(-DDISABLE_EDITOR)
-endif(NOT ENABLE_EDITOR)
 
 if(X11_FOUND)
 	add_definitions(-D_X11)
@@ -272,16 +267,14 @@ if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 	install(FILES icons/wesnoth.desktop DESTINATION ${DESKTOPDIR} )
 	install(FILES icons/wesnoth-icon.png DESTINATION ${ICONDIR} )
  
-	if(ENABLE_EDITOR)
-		# do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
-		#    file(READ icons/wesnoth_editor.desktop wesnoth-editor-desktop-orig)
-		#    string(REPLACE "Exec=wesnoth -e" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} -e" wesnoth-editor-desktop-modified ${wesnoth-editor-desktop-orig} )
-		#    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop ${wesnoth-editor-desktop-modified} )
-		# install the generated .desktop file
-		#    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
-		install(FILES icons/wesnoth_editor.desktop DESTINATION ${DESKTOPDIR} )
-		install(FILES icons/wesnoth_editor-icon.png DESTINATION ${ICONDIR} )
-	endif(ENABLE_EDITOR)
+	# do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
+	#    file(READ icons/wesnoth_editor.desktop wesnoth-editor-desktop-orig)
+	#    string(REPLACE "Exec=wesnoth -e" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} -e" wesnoth-editor-desktop-modified ${wesnoth-editor-desktop-orig} )
+	#    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop ${wesnoth-editor-desktop-modified} )
+	# install the generated .desktop file
+	#    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
+	install(FILES icons/wesnoth_editor.desktop DESTINATION ${DESKTOPDIR} )
+	install(FILES icons/wesnoth_editor-icon.png DESTINATION ${ICONDIR} )
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
 

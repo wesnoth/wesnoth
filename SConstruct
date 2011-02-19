@@ -68,7 +68,6 @@ opts.AddVariables(
     PathVariable('mandir', 'sets the man pages directory to a non-default location', "$datarootdir/man", PathVariable.PathAccept),
     PathVariable('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/wesnoth", PathVariable.PathAccept),
     PathVariable('python_site_packages_dir', 'sets the directory where python modules are installed', "lib/python/site-packages/wesnoth", PathVariable.PathAccept),
-    BoolVariable('editor', 'Enable editor', True),
     BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
@@ -390,9 +389,6 @@ for env in [test_env, client_env, env]:
 
     if env['internal_data']:
         env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
-
-    if not env["editor"]:
-        env.Append(CPPDEFINES = "DISABLE_EDITOR")
 
     if env["PLATFORM"] == "win32":
         env["pool_alloc"] = False

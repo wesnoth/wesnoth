@@ -18,9 +18,7 @@
 #include "SDL.h"
 #include "SDL_mixer.h"
 
-#ifndef DISABLE_EDITOR
 #include "SDL_getenv.h"
-#endif
 
 #include "about.hpp"
 #include "ai/configuration.hpp"
@@ -87,9 +85,7 @@
 //#include "locale.h"
 //#endif
 
-#ifndef DISABLE_EDITOR
 #include "editor/editor_main.hpp"
-#endif
 
 #include "wesconfig.h"
 
@@ -174,9 +170,8 @@ public:
 	bool new_campaign();
 	bool goto_campaign();
 	bool goto_multiplayer();
-#ifndef DISABLE_EDITOR
 	bool goto_editor();
-#endif
+
 	bool play_multiplayer();
 	bool change_language();
 
@@ -185,9 +180,9 @@ public:
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void launch_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
-#ifndef DISABLE_EDITOR
+
 	editor::EXIT_STATUS start_editor(const std::string& filename = "");
-#endif
+
 	void start_wesnothd();
 	const config& game_config() const { return game_config_; }
 
@@ -235,9 +230,9 @@ private:
 	std::string multiplayer_server_;
 	bool jump_to_multiplayer_;
 	jump_to_campaign_info jump_to_campaign_;
-#ifndef DISABLE_EDITOR
+
 	bool jump_to_editor_;
-#endif
+
 	game_config::config_cache& cache_;
 };
 
@@ -270,9 +265,7 @@ game_controller::game_controller(int argc, char** argv) :
 	multiplayer_server_(),
 	jump_to_multiplayer_(false),
 	jump_to_campaign_(false,-1,"","")
-#ifndef DISABLE_EDITOR
 	 ,jump_to_editor_(false)
-#endif
 	,cache_(game_config::config_cache::instance())
 {
 	bool no_music = false;
@@ -292,10 +285,8 @@ game_controller::game_controller(int argc, char** argv) :
 		font_manager_.update_font_path();
 	}
 
-#ifndef DISABLE_EDITOR
 	const std::string app_basename = file_name(argv[0]);
 	jump_to_editor_ = app_basename.find("editor") != std::string::npos;
-#endif
 
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
 		const std::string val(argv_[arg_]);
@@ -354,7 +345,6 @@ game_controller::game_controller(int argc, char** argv) :
 			no_sound = true;
 			preferences::disable_preferences_save();
 		}
-#ifndef DISABLE_EDITOR
 		else if(val == "--screenshot") {
 			if(arg_+2 != argc_) {
 				++arg_;
@@ -367,7 +357,6 @@ game_controller::game_controller(int argc, char** argv) :
 				force_bpp_ = 32;
 			}
 		}
-#endif
 		else if(val == "--smallgui") {
 			game_config::small_gui = true;
 		} else if(val == "--config-dir" || val == "--data-dir") {
@@ -500,7 +489,6 @@ game_controller::game_controller(int argc, char** argv) :
 			gui2::new_widgets = true;
         } else if(val == "--clock") {
 			gui2::show_debug_clock_button = true;
-#ifndef DISABLE_EDITOR
 		} else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
 			if(arg_+1 != argc_) {
@@ -509,7 +497,6 @@ game_controller::game_controller(int argc, char** argv) :
 					game::load_game_exception::game = argv_[arg_];
 				}
 			}
-#endif
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
@@ -634,16 +621,11 @@ bool game_controller::init_config(const bool force)
 	if (test_mode_)
 		cache_.add_define("TEST");
 
-#ifndef DISABLE_EDITOR
 	if (jump_to_editor_)
 		cache_.add_define("EDITOR");
 
 	if (!multiplayer_mode_ && !test_mode_ && !jump_to_editor_)
 		cache_.add_define("TITLE_SCREEN");
-#else
-	if (!multiplayer_mode_ && !test_mode_)
-		cache_.add_define("TITLE_SCREEN");
-#endif
 
 	load_game_cfg(force);
 
@@ -717,7 +699,6 @@ bool game_controller::play_screenshot_mode()
 		return true;
 	}
 
-#ifndef DISABLE_EDITOR
 	cache_.clear_defines();
 	cache_.add_define("EDITOR");
 	load_game_cfg();
@@ -726,9 +707,6 @@ bool game_controller::play_screenshot_mode()
 
 	editor::start(game_config(), video_, screenshot_map_, true, screenshot_filename_);
 	return false;
-#else
-	return false;
-#endif
 }
 
 bool game_controller::play_multiplayer_mode()
@@ -1254,7 +1232,6 @@ bool game_controller::goto_multiplayer()
 	return true;
 }
 
-#ifndef DISABLE_EDITOR
 bool game_controller::goto_editor()
 {
 	if(jump_to_editor_){
@@ -1268,7 +1245,6 @@ bool game_controller::goto_editor()
 	}
 	return true;
 }
-#endif
 
 namespace
 {
@@ -1676,7 +1652,6 @@ void game_controller::play_replay()
 	}
 }
 
-#ifndef DISABLE_EDITOR
 editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 {
 	while(true){
@@ -1696,7 +1671,6 @@ editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 	}
 	return editor::EXIT_ERROR; // not supposed to happen
 }
-#endif
 
 game_controller::~game_controller()
 {
@@ -1817,10 +1791,8 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               The data can also be generated when the F12 is\n"
 			<< "                               pressed in a dialog.\n"
 #endif
-#ifndef DISABLE_EDITOR
 			<< "  -e, --editor [<file>]        starts the in-game map editor directly. If <file>\n"
 			<< "                               is specified, equivalent to -e --load <file>.\n"
-#endif
 			<< "  --fps                        displays the number of frames per second the\n"
 			<< "                               game is currently running at, in a corner of\n"
 			<< "                               the screen.\n"
@@ -1833,12 +1805,10 @@ static int process_command_args(int argc, char** argv) {
 			<< "  -h, --help                   prints this message and exits.\n"
 			<< "  -l, --load <file>            loads the save <file> from the standard save\n"
 			<< "                               game directory.\n"
-#ifndef DISABLE_EDITOR
 			<< "                               When launching the map editor via -e, the map\n"
 			<< "                               <file> is loaded, relative to the current\n"
 			<< "                               directory. If it is a directory, the editor\n"
 			<< "                               will start with a load map dialog opened there.\n"
-#endif
 			<< "  --log-<level>=<domain1>,<domain2>,...\n"
 			<< "                               sets the severity level of the log domains.\n"
 			<< "                               'all' can be used to match any log domain.\n"
@@ -1925,7 +1895,6 @@ static int process_command_args(int argc, char** argv) {
 			          << "\n";
 			return 0;
 		}
-#ifndef DISABLE_EDITOR
 		else if (val == "--screenshot" ) {
 			if(!(argc > arg + 2)) {
 				std::cerr << "format of " << val << " command: " << val << " <map file> <output file>\n";
@@ -1934,7 +1903,6 @@ static int process_command_args(int argc, char** argv) {
 			static char opt[] = "SDL_VIDEODRIVER=dummy";
 			SDL_putenv(opt);
 		}
-#endif
 		else if(val == "--config-dir") {
 			if (argc <= ++arg)
 				break;
@@ -2337,11 +2305,11 @@ static int do_gameloop(int argc, char** argv)
 		if(game.goto_multiplayer() == false){
 			continue; //Go to main menu
 		}
-#ifndef DISABLE_EDITOR
+
 		if (game.goto_editor() == false) {
 			return 0;
 		}
-#endif
+
 		loadscreen_manager.reset();
 
 		gui2::ttitle_screen::tresult res = game.is_loading()
@@ -2414,14 +2382,12 @@ static int do_gameloop(int argc, char** argv)
 			game.reload_changed_game_config();
 			image::flush_cache();
 			continue;
-#ifndef DISABLE_EDITOR
 		} else if(res == gui2::ttitle_screen::START_MAP_EDITOR) {
 			///@todo editor can ask the game to quit completely
 			if (game.start_editor() == editor::EXIT_QUIT_TO_DESKTOP) {
 				return 0;
 			}
 			continue;
-#endif
 		}
 
 		if (recorder.at_end()){

@@ -317,14 +317,14 @@ set(wesnoth-main_SRC
 	ai/lua/core.cpp
 	ai/manager.cpp
 	ai/registry.cpp
+	ai/testing.cpp
 	ai/testing/aspect_attacks.cpp
 	ai/testing/ca.cpp
 	ai/testing/ca_global_fallback.cpp
 	ai/testing/ca_testing_move_to_targets.cpp
 	ai/testing/ca_testing_recruitment.cpp
-	ai/testing/stage_rca.cpp
 	ai/testing/stage_fallback.cpp
-	ai/testing.cpp
+	ai/testing/stage_rca.cpp
 	animated_game.cpp
 	attack_prediction.cpp
 	attack_prediction_display.cpp
@@ -332,14 +332,26 @@ set(wesnoth-main_SRC
 	config_cache.cpp
 	controller_base.cpp
 	dialogs.cpp
+	editor/action.cpp
+	editor/brush.cpp
+	editor/editor_controller.cpp
+	editor/editor_display.cpp
+	editor/editor_layout.cpp
+	editor/editor_main.cpp
+	editor/editor_map.cpp
+	editor/editor_palettes.cpp
+	editor/editor_preferences.cpp
+	editor/map_context.cpp
+	editor/map_fragment.cpp
+	editor/mouse_action.cpp
 	exceptions.cpp
 	floating_textbox.cpp
 	formula.cpp
 	formula_debugger.cpp
 	formula_debugger_fwd.cpp
 	formula_function.cpp
-	formula_tokenizer.cpp
 	formula_string_utils.cpp
+	formula_tokenizer.cpp
 	game_display.cpp
 	game_events.cpp
 	game_preferences.cpp
@@ -377,9 +389,10 @@ set(wesnoth-main_SRC
 	gui/auxiliary/widget_definition/tree_view.cpp
 	gui/auxiliary/widget_definition/vertical_scrollbar.cpp
 	gui/auxiliary/widget_definition/window.cpp
+	gui/auxiliary/window_builder.cpp
 	gui/auxiliary/window_builder/button.cpp
-	gui/auxiliary/window_builder/drawing.cpp
 	gui/auxiliary/window_builder/control.cpp
+	gui/auxiliary/window_builder/drawing.cpp
 	gui/auxiliary/window_builder/helper.cpp
 	gui/auxiliary/window_builder/horizontal_listbox.cpp
 	gui/auxiliary/window_builder/horizontal_scrollbar.cpp
@@ -388,6 +401,9 @@ set(wesnoth-main_SRC
 	gui/auxiliary/window_builder/listbox.cpp
 	gui/auxiliary/window_builder/minimap.cpp
 	gui/auxiliary/window_builder/multi_page.cpp
+	gui/auxiliary/window_builder/panel.cpp
+	gui/auxiliary/window_builder/password_box.cpp
+	gui/auxiliary/window_builder/progress_bar.cpp
 	gui/auxiliary/window_builder/repeating_button.cpp
 	gui/auxiliary/window_builder/scroll_label.cpp
 	gui/auxiliary/window_builder/scrollbar_panel.cpp
@@ -396,25 +412,25 @@ set(wesnoth-main_SRC
 	gui/auxiliary/window_builder/stacked_widget.cpp
 	gui/auxiliary/window_builder/text_box.cpp
 	gui/auxiliary/window_builder/toggle_button.cpp
-	gui/auxiliary/window_builder/vertical_scrollbar.cpp
-	gui/auxiliary/window_builder/panel.cpp
-	gui/auxiliary/window_builder/progress_bar.cpp
-	gui/auxiliary/window_builder/password_box.cpp
 	gui/auxiliary/window_builder/toggle_panel.cpp
 	gui/auxiliary/window_builder/tree_view.cpp
-	gui/auxiliary/window_builder.cpp
+	gui/auxiliary/window_builder/vertical_scrollbar.cpp
+	gui/dialogs/addon/description.cpp
 	gui/dialogs/addon_connect.cpp
 	gui/dialogs/addon_list.cpp
-	gui/dialogs/addon/description.cpp
 	gui/dialogs/campaign_difficulty.cpp
 	gui/dialogs/campaign_selection.cpp
 	gui/dialogs/data_manage.cpp
 	gui/dialogs/debug_clock.cpp
 	gui/dialogs/dialog.cpp
 	gui/dialogs/edit_label.cpp
+	gui/dialogs/editor_generate_map.cpp
+	gui/dialogs/editor_new_map.cpp
+	gui/dialogs/editor_resize_map.cpp
+	gui/dialogs/editor_settings.cpp
 	gui/dialogs/formula_debugger.cpp
-	gui/dialogs/game_load.cpp
 	gui/dialogs/game_delete.cpp
+	gui/dialogs/game_load.cpp
 	gui/dialogs/game_save.cpp
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/language_selection.cpp
@@ -423,24 +439,24 @@ set(wesnoth-main_SRC
 	gui/dialogs/lobby_main.cpp
 	gui/dialogs/lobby_player_info.cpp
 	gui/dialogs/message.cpp
+	gui/dialogs/mp_cmd_wrapper.cpp
 	gui/dialogs/mp_connect.cpp
 	gui/dialogs/mp_create_game.cpp
 	gui/dialogs/mp_create_game_set_password.cpp
 	gui/dialogs/mp_method_selection.cpp
-	gui/dialogs/mp_cmd_wrapper.cpp
 	gui/dialogs/popup.cpp
 	gui/dialogs/simple_item_selector.cpp
+	gui/dialogs/tip.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp
-	gui/dialogs/tip.cpp
 	gui/dialogs/unit_attack.cpp
 	gui/dialogs/unit_create.cpp
 	gui/dialogs/wml_message.cpp
 	gui/widgets/button.cpp
-	gui/widgets/drawing.cpp
-	gui/widgets/control.cpp
 	gui/widgets/container.cpp
+	gui/widgets/control.cpp
 	gui/widgets/debug.cpp
+	gui/widgets/drawing.cpp
 	gui/widgets/generator.cpp
 	gui/widgets/grid.cpp
 	gui/widgets/helper.cpp
@@ -452,14 +468,14 @@ set(wesnoth-main_SRC
 	gui/widgets/minimap.cpp
 	gui/widgets/multi_page.cpp
 	gui/widgets/panel.cpp
-	gui/widgets/progress_bar.cpp
 	gui/widgets/password_box.cpp
+	gui/widgets/progress_bar.cpp
 	gui/widgets/repeating_button.cpp
-	gui/widgets/settings.cpp
 	gui/widgets/scroll_label.cpp
+	gui/widgets/scrollbar.cpp
 	gui/widgets/scrollbar_container.cpp
 	gui/widgets/scrollbar_panel.cpp
-	gui/widgets/scrollbar.cpp
+	gui/widgets/settings.cpp
 	gui/widgets/slider.cpp 
 	gui/widgets/spacer.cpp
 	gui/widgets/stacked_widget.cpp
@@ -481,19 +497,18 @@ set(wesnoth-main_SRC
 	mouse_handler_base.cpp
 	mp_game_settings.cpp
 	multiplayer.cpp
-	multiplayer_ui.cpp
-	multiplayer_wait.cpp
 	multiplayer_connect.cpp
 	multiplayer_create.cpp
 	multiplayer_lobby.cpp
-	${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
+	multiplayer_ui.cpp
+	multiplayer_wait.cpp
 	pathfind/pathfind.cpp
 	pathfind/teleport.cpp
 	persist_context.cpp
 	persist_manager.cpp
 	persist_var.cpp
-	playcampaign.cpp
 	play_controller.cpp
+	playcampaign.cpp
 	playmp_controller.cpp
 	playsingle_controller.cpp
 	playturn.cpp
@@ -505,13 +520,13 @@ set(wesnoth-main_SRC
 	savegame.cpp
 	savegame_config.cpp
 	scripting/lua.cpp
-	sha1.cpp
 	settings.cpp
+	sha1.cpp
 	side_filter.cpp
 	statistics.cpp
 	statistics_dialog.cpp
-	storyscreen/interface.cpp
 	storyscreen/controller.cpp
+	storyscreen/interface.cpp
 	storyscreen/part.cpp
 	storyscreen/render.cpp
 	team.cpp
@@ -531,10 +546,10 @@ set(wesnoth-main_SRC
 	variant.cpp
 	whiteboard/action.cpp
 	whiteboard/attack.cpp
-	whiteboard/manager.cpp
-	whiteboard/move.cpp
 	whiteboard/highlight_visitor.cpp
+	whiteboard/manager.cpp
 	whiteboard/mapbuilder_visitor.cpp
+	whiteboard/move.cpp
 	whiteboard/recall.cpp
 	whiteboard/recruit.cpp
 	whiteboard/side_actions.cpp
@@ -545,30 +560,8 @@ set(wesnoth-main_SRC
 	widgets/combo_drag.cpp
 	widgets/drop_target.cpp
 	widgets/scrollpane.cpp
+	${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
 )
-
-
-if(ENABLE_EDITOR)
-	set(wesnoth-main_SRC
-		gui/dialogs/editor_generate_map.cpp
-		gui/dialogs/editor_new_map.cpp
-		gui/dialogs/editor_resize_map.cpp
-		gui/dialogs/editor_settings.cpp
-		editor/action.cpp
-		editor/brush.cpp
-		editor/editor_main.cpp
-		editor/editor_controller.cpp
-		editor/editor_display.cpp
-		editor/editor_layout.cpp
-		editor/editor_map.cpp
-		editor/editor_palettes.cpp
-		editor/editor_preferences.cpp
-		editor/map_context.cpp
-		editor/map_fragment.cpp
-		editor/mouse_action.cpp
-		${wesnoth-main_SRC}
-	)
-endif(ENABLE_EDITOR)
 
 ########### libwesnoth-game ###############
 # rename libwesnoth.a to libwesnoth-game.a to have clearer targets

@@ -459,10 +459,8 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	 */
 	} else if(id == "tutorial") {
 		return static_cast<tretval>(ttitle_screen::TUTORIAL);
-#ifndef DISABLE_EDITOR
 	} else if(id == "editor") {
 		return static_cast<tretval>(ttitle_screen::START_MAP_EDITOR);
-#endif
 	} else if(id == "credits") {
 		return static_cast<tretval>(ttitle_screen::SHOW_ABOUT);
 	} else if(id == "quit") {

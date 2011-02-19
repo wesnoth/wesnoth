@@ -43,9 +43,7 @@ public:
 			                       */
 			, LOAD_GAME
 			, GET_ADDONS
-#ifndef DISABLE_EDITOR
 			, START_MAP_EDITOR
-#endif
 			, CHANGE_LANGUAGE
 			, EDIT_PREFERENCES
 			, SHOW_ABOUT          /**< Show credits */

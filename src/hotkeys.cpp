@@ -114,7 +114,6 @@ const struct {
 	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("Move action up queue"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("Move action down queue"), false, hotkey::SCOPE_GAME },
 
-#ifndef DISABLE_EDITOR
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_CLOSE_MAP, "editor-close-map", N_("Close Map"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SWITCH_MAP, "editor-switch-map", N_("Switch Map"), false, hotkey::SCOPE_EDITOR },
@@ -189,7 +188,6 @@ const struct {
 		N_("Draw Terrain Codes"), false, hotkey::SCOPE_EDITOR },
 
 
-#endif
 
 	{ hotkey::HOTKEY_DELAY_SHROUD, "delayshroud", N_("Delay Shroud Updates"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_UPDATE_SHROUD, "updateshroud", N_("Update Shroud Now"), false, hotkey::SCOPE_GAME },
@@ -254,7 +252,6 @@ const struct {
 		, false
 		, hotkey::SCOPE_GENERAL
 	},
-#ifndef DISABLE_EDITOR
 	{
 		  hotkey::TITLE_SCREEN__EDITOR
 		, "title_screen__editor"
@@ -262,7 +259,6 @@ const struct {
 		, false
 		, hotkey::SCOPE_GENERAL
 	},
-#endif
 	{
 		  hotkey::TITLE_SCREEN__CREDITS
 		, "title_screen__credits"

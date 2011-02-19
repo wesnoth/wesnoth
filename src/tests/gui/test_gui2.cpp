@@ -28,12 +28,10 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
-#ifndef DISABLE_EDITOR
 #include "gui/dialogs/editor_generate_map.hpp"
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/dialogs/editor_resize_map.hpp"
 #include "gui/dialogs/editor_settings.hpp"
-#endif
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/message.hpp"
@@ -158,9 +156,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	game_config::config_cache& cache = game_config::config_cache::instance();
 
 	cache.clear_defines();
-#ifndef DISABLE_EDITOR
 	cache.add_define("EDITOR");
-#endif
 	cache.add_define("MULTIPLAYER");
 	cache.get_config(game_config::path +"/data", main_config);
 
@@ -173,12 +169,10 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::taddon_connect>();
 	test<gui2::taddon_list>();
 	test<gui2::tcampaign_selection>();
-#ifndef DISABLE_EDITOR
 	test<gui2::teditor_generate_map>();
 	test<gui2::teditor_new_map>();
 	test<gui2::teditor_resize_map>();
 	test<gui2::teditor_settings>();
-#endif
 	test<gui2::tgame_save>();
 	test<gui2::tlanguage_selection>();
 	test<gui2::tmessage>();

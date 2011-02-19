@@ -240,13 +240,11 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 					, boost::ref(window)
 					, GET_ADDONS));
 
-#ifndef DISABLE_EDITOR
 	window.register_hotkey(hotkey::TITLE_SCREEN__EDITOR
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
 					, START_MAP_EDITOR));
-#endif
 
 	window.register_hotkey(hotkey::TITLE_SCREEN__CREDITS
 				, boost::bind(

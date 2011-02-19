@@ -799,7 +799,6 @@ REPORT_GENERATOR(observers)
 	return image_report(game_config::images::observer, str.str());
 }
 
-#ifndef DISABLE_EDITOR
 namespace editor {
 extern std::string selected_terrain, left_button_function;
 }
@@ -819,7 +818,6 @@ REPORT_GENERATOR(edit_left_button_function)
 	else
 		return text_report(editor::left_button_function);
 }
-#endif
 
 REPORT_GENERATOR(editor_tool_hint)
 {
