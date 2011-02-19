@@ -45,6 +45,8 @@ public:
  * eg the windows signal handler for SDL_MOUSE_MOTION can generate a
  * MOUSE_ENTER, MOUSE_MOTION and MOUSE_LEAVE event and send that to it's
  * children.
+ *
+ * @note When adding a new entry to the enum also add a unit test.
  */
 enum tevent {
 	  DRAW                        /**< Periodic redraw request. */
