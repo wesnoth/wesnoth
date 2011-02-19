@@ -23,6 +23,7 @@
 #define WML_EXCEPTION_HPP_INCLUDED
 
 #include "config.hpp"
+#include "lua_jailbreak_exception.hpp"
 
 #include <string>
 
@@ -84,6 +85,7 @@ void wml_exception(
 
 /** Helper class, don't construct this directly. */
 struct twml_exception
+	: public tlua_jailbreak_exception
 {
 	twml_exception(const std::string& user_msg, const std::string& dev_msg)
 		: user_message(user_msg)
@@ -111,6 +113,8 @@ struct twml_exception
 	 *  @param disp         The display object to show the message on.
 	 */
 	void show(display &disp);
+private:
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(twml_exception)
 };
 
 /**

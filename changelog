@@ -18,6 +18,8 @@ Version 1.9.4+svn:
    * Implemented: the helptips.
    * Changed: the scroll wheel, in gui2 code, now also follows the mouse focus
      instead of the keyboard focus.
+   * Fixed again: Not showing the twml_exception dialog when gui2 was called
+     from Lua (bug #17405).
  * WML engine:
    * Allow [color_range] and [color_palette] nodes to be inserted at top-level
      by add-ons to globally define custom ranges and palettes.
