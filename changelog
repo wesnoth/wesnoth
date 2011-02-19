@@ -20,6 +20,8 @@ Version 1.9.4+svn:
      instead of the keyboard focus.
    * Fixed again: Not showing the twml_exception dialog when gui2 was called
      from Lua (bug #17405).
+   * Fix old multiplayer lobby glitches caused by the loadscreen code when
+     skipping to the lobby with -s <server> command line.
  * WML engine:
    * Allow [color_range] and [color_palette] nodes to be inserted at top-level
      by add-ons to globally define custom ranges and palettes.

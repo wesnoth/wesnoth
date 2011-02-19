@@ -2278,6 +2278,8 @@ static int do_gameloop(int argc, char** argv)
 			}
         }
 
+		loadscreen_manager.reset();
+
 		if(game.play_test() == false) {
 			return 0;
 		}
@@ -2309,8 +2311,6 @@ static int do_gameloop(int argc, char** argv)
 		if (game.goto_editor() == false) {
 			return 0;
 		}
-
-		loadscreen_manager.reset();
 
 		gui2::ttitle_screen::tresult res = game.is_loading()
 				? gui2::ttitle_screen::LOAD_GAME
