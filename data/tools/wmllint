@@ -812,12 +812,13 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     ancestors = nav.ancestors()
     in_definition = "#define" in ancestors
     in_call = filter(lambda x: x.startswith("{"), ancestors)
+    ignored = "wmllint: ignore" in nav.text
     parent = None
     if ancestors:
         parent = ancestors[-1]
         ancestors = ancestors[:-1]
     # Check for things marked translated that aren't strings
-    if "_" in nav.text and not "wmllint: ignore" in nav.text:
+    if "_" in nav.text and not ignored:
         m = re.search(r'[=(]\s*_\s+("?)', nav.text)
         if m and not m.group(1):
             print errlead + 'translatability mark before non-string'
@@ -835,7 +836,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if key == "email" and " " in value:
             print errlead + 'space in email name'
     # Check for various things that shouldn't be outside an [ai] tag
-    if not in_definition and not in_call and not "[ai]" in nav.ancestors():
+    if not in_definition and not in_call and not "[ai]" in nav.ancestors() and not ignored:
         if key in ("number_of_possible_recruits_to_force_recruit",
                    "recruitment_ignore_bad_movement",
                    "recruitment_ignore_bad_combat",
