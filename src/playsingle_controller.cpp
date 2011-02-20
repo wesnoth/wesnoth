@@ -340,11 +340,15 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	end_level.carryover_percentage = level_["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
 	end_level.carryover_add = level_["carryover_add"].to_bool();
 
+	bool past_prestart = false;
+
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
 
 		fire_prestart(!loading_game_);
 		init_gui();
+
+		past_prestart = true;
 
 		LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
@@ -391,6 +395,14 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 		throw lge;
 	} catch (end_level_exception &end_level_exn) {
+		if(!past_prestart) {
+			draw_solid_tinted_rectangle(
+				0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
+				gui_->video().getSurface()
+			);
+			update_rect(0, 0, gui_->video().getx(), gui_->video().gety());
+		}
+
 		game::exception::sticky = NULL;
 		ai_testing::log_game_end();
 		LEVEL_RESULT end_level_result = end_level_exn.result;
