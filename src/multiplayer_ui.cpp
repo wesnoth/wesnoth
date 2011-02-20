@@ -532,8 +532,13 @@ void ui::process_message(const config& msg, const bool whisper) {
 		// too annoying and probably not any helpful
 		//sound::play_UI_sound(game_config::sounds::receive_message);
 	}
+
+	std::string prefix = "";
+	if(whisper) prefix = _("whisper: ");
+
 	if (!room.empty()) room = room + ": ";
-	chat_.add_message(time(NULL), room + (whisper ? "whisper: " : "") + msg["sender"],
+
+	chat_.add_message(time(NULL), room + prefix + msg["sender"],
 			msg["message"]);
 	chat_.update_textbox(chat_textbox_);
 }
