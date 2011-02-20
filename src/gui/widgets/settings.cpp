@@ -56,6 +56,8 @@ namespace settings {
 	std::string sound_toggle_panel_click = "";
 	std::string sound_slider_adjust = "";
 
+	t_string has_helptip_message;
+
 	std::vector<ttip> tips;
 
 	std::vector<ttip> get_tips()
@@ -107,6 +109,7 @@ struct tgui_definition
 		, sound_toggle_button_click_()
 		, sound_toggle_panel_click_()
 		, sound_slider_adjust_()
+		, has_helptip_message_()
 		, tips_()
 	{
 	}
@@ -144,6 +147,9 @@ private:
 	std::string sound_toggle_button_click_;
 	std::string sound_toggle_panel_click_;
 	std::string sound_slider_adjust_;
+
+	t_string has_helptip_message_;
+
 	std::vector<ttip> tips_;
 };
 
@@ -336,6 +342,12 @@ const std::string& tgui_definition::read(const config& cfg)
  *     sound_slider_adjust & string & "" &
  *                                     The sound played if a slider is
  *                                     adjusted. $
+ *
+ *     has_helptip_message & tstring & &
+ *                                     The string used to append the tooltip
+ *                                     if there is also a helptip. The WML
+ *                                     variable $hotkey can be used to get show
+ *                                     the name of the hotkey for the help.$
  * @end{table}
  */
 
@@ -363,6 +375,16 @@ const std::string& tgui_definition::read(const config& cfg)
 	sound_toggle_panel_click_ = settings["sound_toggle_panel_click"].str();
 	sound_slider_adjust_ = settings["sound_slider_adjust"].str();
 
+	has_helptip_message_ = settings["has_helptip_message"];
+
+	if(has_helptip_message_.empty()) {
+		/** @deprecated 1.9.7. */
+		lg::wml_error << "Empty 'has_helptip_message' is deprecated, "
+				<< "support will be removed in 1.9.7.\n";
+	}
+//	VALIDATE(!has_helptip_message_.empty(),
+//			missing_mandatory_wml_key("[settings]", "has_helptip_message"));
+
 	tips_ = tips::load(cfg);
 
 	return id;
@@ -379,6 +401,7 @@ void tgui_definition::activate() const
 	settings::sound_toggle_button_click = sound_toggle_button_click_;
 	settings::sound_toggle_panel_click = sound_toggle_panel_click_;
 	settings::sound_slider_adjust = sound_slider_adjust_;
+	settings::has_helptip_message = has_helptip_message_;
 	settings::tips = tips_;
 }
 

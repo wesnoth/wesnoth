@@ -19,6 +19,7 @@
 
 #include "font.hpp"
 #include "foreach.hpp"
+#include "formula_string_utils.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/event/message.hpp"
 #include "gui/dialogs/tip.hpp"
@@ -402,7 +403,18 @@ void tcontrol::signal_handler_show_tooltip(
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(!tooltip_.empty()) {
-		event::tmessage_show_tooltip message(tooltip_, location);
+		std::string tip = tooltip_;
+		if(!help_message_.empty()) {
+			utils::string_map symbols;
+			symbols["hotkey"] =
+					hotkey::get_hotkey(hotkey::GLOBAL__HELPTIP).get_name();
+
+			tip = tooltip_ + utils::interpolate_variables_into_string(
+					  settings::has_helptip_message
+					, &symbols);
+		}
+
+		event::tmessage_show_tooltip message(tip, location);
 		handled = fire(event::MESSAGE_SHOW_TOOLTIP, *this, message);
 	}
 }

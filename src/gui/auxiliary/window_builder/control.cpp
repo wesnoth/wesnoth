@@ -43,6 +43,18 @@ tbuilder_control::tbuilder_control(const config& cfg)
 		definition = "default";
 	}
 
+	if(!(help.empty() || !tooltip.empty())) {
+		/** @deprecated 1.9.7. */
+		lg::wml_error << "A widget with a helptip without a tooltip is "
+				<< "deprecated, support will be removed in 1.9.7.\n";
+	}
+//	VALIDATE(help.empty() || !tooltip.empty()
+//			, _("Found a widget with a helptip and without a tooltip.")
+//			, (formatter() << "id '" << id <<
+//				<< "' label '" << label <<
+//				<< "' helptip '" << help << "'.").str());
+
+
 	DBG_GUI_P << "Window builder: found control with id '"
 			<< id << "' and definition '" << definition << "'.\n";
 }
@@ -102,13 +114,14 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     for other purposes, this is documented
  *                                     at the widget. $
  *
- *     tooltip & tstring & "" &          If you hover over a widget a while (the
+ *     tooltip & tstring & "" &        If you hover over a widget a while (the
  *                                     time it takes can differ per widget) a
  *                                     short help can show up.This defines the
- *                                     text of that message. $
+ *                                     text of that message. This field may not
+ *                                     be empty when 'help' is set. $
  *
  *
- *     help & tstring & "" &             If you hover over a widget and press F1 a
+ *     help & tstring & "" &           If you hover over a widget and press F10 a
  *                                     help message can show up. This help
  *                                     message might be the same as the tooltip
  *                                     but in general (if used) this message

@@ -177,6 +177,8 @@ void load_widget_definitions(
 		extern std::string sound_toggle_panel_click;
 		extern std::string sound_slider_adjust;
 
+		extern t_string has_helptip_message;
+
 		std::vector<ttip> get_tips();
 	}
 
