@@ -304,14 +304,16 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	turbo_button_.set_check(turbo());
 	turbo_button_.set_help_string(_("Make units move and fight faster"));
 
-	//0.25 0.5 1 2 4 8 16
 	std::vector< double > turbo_items;
 	turbo_items.push_back(0.25);
 	turbo_items.push_back(0.5);
 	turbo_items.push_back(0.75);
 	turbo_items.push_back(1);
+	turbo_items.push_back(1.25);
 	turbo_items.push_back(1.5);
+	turbo_items.push_back(1.75);
 	turbo_items.push_back(2);
+	turbo_items.push_back(3);
 	turbo_items.push_back(4);
 	turbo_items.push_back(8);
 	turbo_items.push_back(16);
