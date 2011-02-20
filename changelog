@@ -29,6 +29,9 @@ Version 1.9.4+svn:
      by add-ons to globally define custom ranges and palettes.
    * New [tunnel] tag to create teleports between two SLFs for units matching
      a SUF. The [teleport] ability retrofitted to use this tag.
+   * New [allow_end_turn] and [disallow_end_turn] commands to enable/disable
+     the human players' ability to end their turn from the user interface
+     (feature request #13141).
  * Miscellaneous and bugfixes:
    * Fixed: g++ compiler warnings.
    * Added: cmake target to build the gui design pdf.

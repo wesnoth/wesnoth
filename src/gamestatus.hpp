@@ -143,6 +143,9 @@ public:
 	mp_game_settings& mp_settings() { return mp_settings_; }
 	const mp_game_settings& mp_settings() const { return mp_settings_; }
 
+	bool allow_end_turn() const { return can_end_turn_; }
+	void set_allow_end_turn(bool value) { can_end_turn_ = value; }
+
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps
 	 * to take the game up to the position it was saved at.
@@ -177,6 +180,7 @@ private:
 	game_classification classification_;
 	mp_game_settings mp_settings_;
 	PHASE phase_;
+	bool can_end_turn_;
 };
 
 

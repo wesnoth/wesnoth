@@ -2732,6 +2732,16 @@ WML_HANDLER_FUNCTION(replace_schedule, /*event_info*/, cfg)
 	}
 }
 
+WML_HANDLER_FUNCTION(allow_end_turn, /*event_info*/, cfg)
+{
+	resources::state_of_game->set_allow_end_turn(true);
+}
+
+WML_HANDLER_FUNCTION(disallow_end_turn, /*event_info*/, cfg)
+{
+	resources::state_of_game->set_allow_end_turn(false);
+}
+
 // Adding new events
 WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 {

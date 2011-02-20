@@ -1331,6 +1331,11 @@ void menu_handler::update_shroud_now(int side_num)
 
 bool menu_handler::end_turn(int side_num)
 {
+	if(!resources::state_of_game->allow_end_turn()) {
+		gui2::show_message((*gui_).video(), "", _("You cannot end your turn yet!"), gui2::tmessage::ok_button);
+		return false;
+	}
+
 	bool unmoved_units = false, partmoved_units = false, some_units_have_moved = false;
 	int units_alive = 0;
 	for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {

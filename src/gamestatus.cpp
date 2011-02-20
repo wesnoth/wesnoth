@@ -166,7 +166,8 @@ game_state::game_state()  :
 		generator_setter(&recorder),
 		classification_(),
 		mp_settings_(),
-		phase_(INITIAL)
+		phase_(INITIAL),
+		can_end_turn_(true)
 		{}
 
 void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, const bool merge_side)
@@ -264,7 +265,8 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		generator_setter(&recorder),
 		classification_(cfg),
 		mp_settings_(cfg),
-		phase_(INITIAL)
+		phase_(INITIAL),
+		can_end_turn_(true)
 {
 	n_unit::id_manager::instance().set_save_id(cfg["next_underlying_unit_id"]);
 	log_scope("read_game");
@@ -281,6 +283,8 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	} else {
 		assert(replay_start);
 	}
+
+	can_end_turn_ = cfg["can_end_turn"].to_bool(true);
 
 	LOG_NG << "scenario: '" << classification_.scenario << "'\n";
 	LOG_NG << "next_scenario: '" << classification_.next_scenario << "'\n";
@@ -348,6 +352,7 @@ void game_state::write_snapshot(config& cfg) const
 	cfg["campaign_define"] = classification_.campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(classification_.campaign_xtra_defines);
 	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
+	cfg["can_end_turn"] = can_end_turn_;
 
 	cfg["random_seed"] = rng_.get_random_seed();
 	cfg["random_calls"] = rng_.get_random_calls();
@@ -551,7 +556,8 @@ game_state::game_state(const game_state& state) :
 	generator_setter(&recorder),
 	classification_(),
 	mp_settings_(),
-	phase_(INITIAL)
+	phase_(INITIAL),
+	can_end_turn_(true)
 {
 	*this = state;
 }
@@ -566,6 +572,7 @@ game_state& game_state::operator=(const game_state& state)
 	scoped_variables = state.scoped_variables;
 	classification_ = game_classification(state.classification());
 	mp_settings_ = mp_game_settings(state.mp_settings());
+	can_end_turn_ = state.can_end_turn_;
 
 	clear_wmi(wml_menu_items);
 	std::map<std::string, wml_menu_item*>::const_iterator itor;
