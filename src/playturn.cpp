@@ -23,6 +23,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "log.hpp"
+#include "map_label.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "rng.hpp"
@@ -155,7 +156,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			if (!player.empty() && leader.valid())
 				leader->rename(player);
 
-
 			if (controller == "human" && !tm.is_human()) {
 				if (!(*resources::teams)[resources::screen->playing_team()].is_human())
 				{
@@ -175,6 +175,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			{
 				restart = false;
 			}
+
+			resources::screen->labels().recalculate_labels();
 
 			return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
 		}
