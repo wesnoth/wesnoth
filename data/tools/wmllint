@@ -945,12 +945,15 @@ def global_sanity_check(filename, lines):
                         advances.append((unit_id, filename, nav.lineno+1, advancements))
             except TypeError:
                 pass
-            if "{SPECIAL_NOTES}" in nav.text:
+            precomment = nav.text
+            if '#' in nav.text:
+                precomment = nav.text[:nav.text.find("#")]
+            if "{SPECIAL_NOTES}" in precomment:
                 has_special_notes = True
             for (p, q) in notepairs:
-                if p in nav.text:
+                if p in precomment:
                     traits.append(p)
-                if q in nav.text:
+                if q in precomment:
                     notes.append(q)
     # Detect units that speak in their death events
     filter_subject = None
