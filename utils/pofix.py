@@ -3819,6 +3819,10 @@ stringfixes = {
 ("Plan ahead - think about", "Plan ahead — think about"),
 ),
 
+"wesnoth-help" : (
+("Immune to drain, poison and plague", "Immune to drain, poison, and plague"),
+),
+
 }
 
 # Speak, if all argument files are newer than this timestamp
