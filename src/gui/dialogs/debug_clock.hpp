@@ -16,7 +16,7 @@
 #ifndef GUI_DIALOGS_DEBUG_CLOCK_HPP_INCLUDED
 #define GUI_DIALOGS_DEBUG_CLOCK_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/popup.hpp"
 
 #include "gui/auxiliary/event/dispatcher.hpp"
 
@@ -28,11 +28,11 @@ class tinteger_selector_;
 
 /** Clock to test the draw events. */
 class tdebug_clock
-	: public tdialog
+	: public tpopup
 {
 public:
 	tdebug_clock()
-		: tdialog()
+		: tpopup()
 		, hour_percentage_(NULL)
 		, minute_percentage_(NULL)
 		, second_percentage_(NULL)

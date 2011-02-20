@@ -392,7 +392,7 @@ void ttitle_screen::show_debug_clock_window(CVideo& video)
 		debug_clock_ = 0;
 	} else {
 		debug_clock_ = new tdebug_clock();
-		debug_clock_->show_tooltip(video);
+		debug_clock_->show(video, true);
 	}
 }
 

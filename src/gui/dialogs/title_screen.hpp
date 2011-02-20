@@ -20,6 +20,8 @@
 
 namespace gui2 {
 
+class tpopup;
+
 /** Do we wish to show the button for the debug clock. */
 extern bool show_debug_clock_button;
 
@@ -76,7 +78,7 @@ private:
 	unsigned long logo_timer_id_;
 
 	/** Holds the debug clock dialog. */
-	tdialog* debug_clock_;
+	tpopup* debug_clock_;
 
 	/**
 	 * Updates the tip of day widget.
