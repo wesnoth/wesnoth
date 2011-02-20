@@ -32,7 +32,9 @@ tpopup::~tpopup()
 	hide();
 }
 
-void tpopup::show(CVideo& video, const unsigned /*auto_close_time*/)
+void tpopup::show(CVideo& video
+		, const bool allow_interaction
+		, const unsigned /*auto_close_time*/)
 {
 	if(video.faked()) {
 		return;
@@ -46,7 +48,11 @@ void tpopup::show(CVideo& video, const unsigned /*auto_close_time*/)
 
 	pre_show(video, *window_);
 
-	window_->show_tooltip(/*auto_close_time*/);
+	if(allow_interaction) {
+		window_->show_non_modal();
+	} else {
+		window_->show_tooltip(/*auto_close_time*/);
+	}
 }
 
 void tpopup::hide()

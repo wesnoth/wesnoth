@@ -42,13 +42,19 @@ public:
 	 *
 	 * @param video               The video which contains the surface to draw
 	 *                            upon.
+	 * @param allow_interaction   Does the dialog allow interaction?
+	 *                            * true a non modal window is shown
+	 *                            * false a tooltip windw is shown
 	 * @param auto_close_time     The time in ms after which the dialog will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
 	 *                            there's no quarantee about how fast it closes
 	 *                            after the minimum.
 	 */
-	void show(CVideo& video, const unsigned auto_close_time = 0);
+	void show(CVideo& video
+			, const bool allow_interaction = false
+			, const unsigned auto_close_time = 0);
+
 
 	/**
 	 * Hides the window.

@@ -127,6 +127,12 @@ public:
 	static tretval get_retval_by_id(const std::string& id);
 
 	/**
+	 * @todo Clean up the show functions.
+	 *
+	 * the show functions are a bit messy and can use a proper cleanup.
+	 */
+
+	/**
 	 * Shows the window.
 	 *
 	 * @param restore             Restore the screenarea the window was on
@@ -157,6 +163,21 @@ public:
 	 *                            after the minimum.
 	 */
 	void show_tooltip(/*const unsigned auto_close_timeout = 0*/);
+
+	/**
+	 * Shows the window non modal.
+	 *
+	 * A tooltip can be interacted with unlike the tooltip.
+	 *
+	 * @todo implement @p auto_close_timeout.
+	 *
+	 * @param auto_close_timeout  The time in ms after which the window will
+	 *                            automatically close, if 0 it doesn't close.
+	 *                            @note the timeout is a minimum time and
+	 *                            there's no quarantee about how fast it closes
+	 *                            after the minimum.
+	 */
+	void show_non_modal(/*const unsigned auto_close_timeout = 0*/);
 
 	/**
 	 * Draws the window.
