@@ -29,6 +29,7 @@
 #include "sound.hpp"
 #include "replay.hpp"
 #include "wml_separators.hpp"
+#include "formula_string_utils.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -542,10 +543,21 @@ void ui::process_message(const config& msg, const bool whisper) {
 		// too annoying and probably not any helpful
 		//sound::play_UI_sound(game_config::sounds::receive_message);
 	}
+
+	std::string prefix;
+
+	if(whisper) {
+		utils::string_map symbols;
+		symbols["sender"] = msg["sender"];
+		prefix = VGETTEXT("whisper: $sender", symbols);
+	}
+	else {
+		prefix = msg["sender"];
+	}
+
 	if (room == "lobby") room = "";
 	if (!room.empty()) room = room + ": ";
-	chat_.add_message(time(NULL), room + (whisper ? "whisper: " : "") + msg["sender"],
-			msg["message"]);
+	chat_.add_message(time(NULL), room + prefix, msg["message"]);
 	chat_.update_textbox(chat_textbox_);
 }
 
