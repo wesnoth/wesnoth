@@ -1859,9 +1859,12 @@ def translator(filename, mapxforms, textxform):
                 unbalanced = False
             if "wmllint: match" in comment:
                 comment = comment.strip()
-                fields = comment.split()
-                if len(fields) == 5 and fields[3] == "with":
-                    notepairs.append((fields[2], fields[4]))
+                try:
+                    fields = comment.split("match ", 1)[1].split(" with ", 1)
+                    if len(fields) == 2:
+                        notepairs.append((fields[0], fields[1]))
+                except IndexError:
+                    pass
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
@@ -1899,7 +1902,7 @@ def translator(filename, mapxforms, textxform):
 		if not display_state and quotecount % 2 and transformed[i:i+2] != "\n\n" and transformed[i-1:i+1] != "\n\n":
                     print '"%s", line %d: nonstandard word-wrap style within message' % (filename, linecount)
             linecount += 1
-        elif transformed[i-7:i] == "message" and not transformed[i] == ']':
+        elif transformed[i-7:i] == "message" and transformed[i] == '=':
             singleline = True
         elif re.match(" *wmllint: *display +on", transformed[i:]):
             display_state = True
