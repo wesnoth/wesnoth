@@ -607,7 +607,7 @@ public:
 		     bool snapshot, const config &starting_pos)
 		: gold_info_ngold_(0)
 		, gold_info_add_(false)
-		, leader_cfg_()
+		, leader_configs_()
 		, level_(level)
 		, map_(map)
 		, player_cfg_(NULL)
@@ -667,7 +667,7 @@ protected:
 
 	int gold_info_ngold_;
 	bool gold_info_add_;
-	config leader_cfg_;
+	std::deque<config> leader_configs_;
 	const config &level_;
 	gamemap &map_;
 	const config *player_cfg_;
@@ -743,7 +743,6 @@ protected:
 
 		unit_configs_.clear();
 		seen_ids_.clear();
-		leader_cfg_ = config();
 
 	}
 
@@ -861,6 +860,18 @@ protected:
 		}
 	}
 
+	void handle_leader(const config &leader)
+	{
+		leader_configs_.push_back(leader);
+
+		config::attribute_value &a1 = leader_configs_.back()["canrecruit"];
+		if (a1.blank()) a1 = true;
+		config::attribute_value &a2 = leader_configs_.back()["placement"];
+		if (a2.blank()) a2 = "map,leader";
+
+		handle_unit(leader_configs_.back(), "leader_cfg");
+	}
+
 	void leader()
 	{
 		log_step("leader");
@@ -871,16 +882,10 @@ protected:
 
 		// If this side tag describes the leader of the side
 		if (!side_cfg_["no_leader"].to_bool() && side_cfg_["controller"] != "null") {
-			leader_cfg_ = side_cfg_;
-
-			config::attribute_value &a1 = leader_cfg_["canrecruit"];
-			if (a1.blank()) a1 = true;
-			config::attribute_value &a2 = leader_cfg_["placement"];
-			if (a2.blank()) a2 = "map,leader";
-
-			handle_unit(leader_cfg_,"leader_cfg");
-		} else {
-			leader_cfg_ = config();
+			handle_leader(side_cfg_);
+		}
+		foreach (const config &l, side_cfg_.child_range("leader")) {
+			handle_leader(l);
 		}
 	}
 

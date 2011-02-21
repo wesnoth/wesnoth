@@ -36,6 +36,8 @@ Version 1.9.4+svn:
    * New [allow_end_turn] and [disallow_end_turn] commands to enable/disable
      the human players' ability to end their turn from the user interface
      (feature request #13141).
+   * [side] tags may now contain [leader] tags to create their leader(s), as
+     opposed to mixing the leader's attributes with the side attributes.
  * Miscellaneous and bugfixes:
    * Fixed: g++ compiler warnings.
    * Added: cmake target to build the gui design pdf.
