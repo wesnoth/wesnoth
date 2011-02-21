@@ -12,7 +12,7 @@ $msgfmt="/usr/bin/msgfmt";
 
 $branch="1.8"; //version of current stable (folder name of the checkout folder)
 $wescampbranchversion="1.8";
-$wescamptrunkversion="1.7";
+$wescamptrunkversion="1.10";
 
 $trunkbasedir="/usr/src/svn-checkouts/trunk/";
 $branchbasedir="/usr/src/svn-checkouts/$branch/";
