@@ -158,6 +158,9 @@ stringfixes = {
 # conversion added in 1.9.3+svn
 ("threadments", "treatments"),
 ("text='edd'", "text='egg'"),
+
+# Kill ugly hyphenated version
+("Re-initialize fonts", "Reinitialize fonts"),
 ),
 
 "wesnoth-anl" : (

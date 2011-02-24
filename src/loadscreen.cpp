@@ -224,7 +224,7 @@ static load_stage const stages[nb_stages] =
 	{ "verify cache", N_("Verifying cache"), 20, 164 },
 	{ "create cache", N_("Reading files and creating cache"), 21, 80287 },
 	{ "load unit types", N_("Reading unit files"), 94, 467 },
-	{ "init fonts", N_("Re-initialize fonts for the current language"), 98, 17 },
+	{ "init fonts", N_("Reinitialize fonts for the current language"), 98, 17 },
 	{ "refresh addons", N_("Searching for installed add-ons"), 99, 0 },
 	{ "titlescreen", N_("Loading title screen"), 100, 0 },
 	{ "load data", N_("Loading data files"), 0, 0 },
