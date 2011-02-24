@@ -3802,6 +3802,9 @@ stringfixes = {
 #uncomment it for the moment, please only reactivate after capitalization of
 #'add-ons' is/was fixed everywhere!
 #("Update add-ons", "Update Add-ons"),
+
+# Use "Wooden"
+("Wood Bridge", "Wooden Bridge"),
 ),
 
 "wesnoth-manual" : (
