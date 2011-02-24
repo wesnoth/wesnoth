@@ -3805,6 +3805,10 @@ stringfixes = {
 
 # Use "Wooden"
 ("Wood Bridge", "Wooden Bridge"),
+
+# Use "Gray"
+("Grey Deep Water", "Gray Deep Water"),
+("Clean Grey Cobbles", "Clean Gray Cobbles"),
 ),
 
 "wesnoth-manual" : (
