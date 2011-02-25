@@ -737,3 +737,33 @@ function wml_actions.harm_unit(cfg)
 	end
 end
 
+function wml_actions.transform_unit(cfg)
+	local transform_to = cfg.transform_to
+
+	for index, unit in ipairs(wesnoth.get_units(cfg)) do
+		local hitpoints = unit.hitpoints
+
+		if transform_to then
+			wesnoth.transform_unit( unit, transform_to )
+		else
+			local experience = unit.experience
+			unit.experience = unit.max_experience
+			local status = helper.get_child( unit.__cfg, "status" )
+
+			wml_actions.store_unit { { "filter", { id = unit.id } }, variable = "Lua_store_unit", kill = true }
+			wml_actions.unstore_unit { variable = "Lua_store_unit", find_vacant = false, advance = true, fire_event = false }
+			wesnoth.set_variable ( "Lua_store_unit")
+
+			unit.experience = experience
+
+			for key, value in pairs(status) do unit.status[key] = value end
+		end
+
+		unit.hitpoints = hitpoints
+
+		if unit.status.not_living then unit.status.poisoned = nil end
+	end
+
+	wml_actions.redraw {}
+end
+
