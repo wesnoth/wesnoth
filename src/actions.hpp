@@ -295,7 +295,7 @@ unit get_advanced_unit(const unit &u, const std::string &advance_to);
  * we couldn't safely pass in a reference to the item in the map
  * that we're going to delete, since deletion would invalidate the reference.
  */
-void advance_unit(map_location loc, const std::string &advance_to);
+void advance_unit(map_location loc, const std::string &advance_to, const bool &fire_event = true);
 
 /**
  * function which tests if the unit at loc is currently affected by leadership.

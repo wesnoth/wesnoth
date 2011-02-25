@@ -2049,7 +2049,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 					(*resources::teams)[side - 1].is_human();
 				config selected = mp_sync::get_user_choice("choose",
 					unstore_unit_advance_choice(total_opt, loc, use_dialog));
-				dialogs::animate_unit_advancement(loc, selected["value"]);
+				dialogs::animate_unit_advancement(loc, selected["value"], cfg["fire_event"].to_bool(false));
 			}
 		} else {
 			team& t = (*resources::teams)[u.side()-1];

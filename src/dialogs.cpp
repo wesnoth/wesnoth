@@ -176,7 +176,7 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 	}
 }
 
-bool animate_unit_advancement(const map_location &loc, size_t choice)
+bool animate_unit_advancement(const map_location &loc, size_t choice, const bool &fire_event)
 {
 	const events::command_disabler cmd_disabler;
 
@@ -211,20 +211,27 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 	if(choice < options.size()) {
 		// chosen_unit is not a reference, since the unit may disappear at any moment.
 		std::string chosen_unit = options[choice];
-		::advance_unit(loc, chosen_unit);
+		::advance_unit(loc, chosen_unit, fire_event);
 	} else {
 		unit amla_unit(*u);
 		const config &mod_option = mod_options[choice - options.size()];
 
-		LOG_NG << "firing advance event (AMLA)\n";
-		game_events::fire("advance",loc);
+		if(fire_event)
+		{
+			LOG_NG << "firing advance event (AMLA)\n";
+			game_events::fire("advance",loc);
+		}
 
 		amla_unit.set_experience(amla_unit.experience() - amla_unit.max_experience());
 		amla_unit.add_modification("advance",mod_option);
 		resources::units->replace(loc, amla_unit);
 
-		LOG_NG << "firing post_advance event (AMLA)\n";
-		game_events::fire("post_advance",loc);
+		if(fire_event)
+		{
+			LOG_NG << "firing post_advance event (AMLA)\n";
+			game_events::fire("post_advance",loc);
+		}
+
 	}
 
 	u = resources::units->find(loc);

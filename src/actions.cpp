@@ -1945,7 +1945,7 @@ unit get_advanced_unit(const unit &u, const std::string& advance_to)
 	return new_unit;
 }
 
-void advance_unit(map_location loc, const std::string &advance_to)
+void advance_unit(map_location loc, const std::string &advance_to, const bool &fire_event)
 {
 	unit_map::unit_iterator u = resources::units->find(loc);
 	if(!u.valid()) {
@@ -1953,16 +1953,20 @@ void advance_unit(map_location loc, const std::string &advance_to)
 	}
 	// original_type is not a reference, since the unit may disappear at any moment.
 	std::string original_type = u->type_id();
-	LOG_NG << "firing advance event at " << loc <<"\n";
 
-	game_events::fire("advance",loc);
-
-	if (!u.valid() || u->experience() < u->max_experience() ||
-	    u->type_id() != original_type)
+	if(fire_event)
 	{
-		LOG_NG << "WML has invalidated the advancing unit, abort\n";
-		return;
+		LOG_NG << "firing advance event at " << loc <<"\n";
+		game_events::fire("advance",loc);
+
+		if (!u.valid() || u->experience() < u->max_experience() ||
+			u->type_id() != original_type)
+		{
+			LOG_NG << "WML has invalidated the advancing unit, abort\n";
+			return;
+		}
 	}
+
 
 	loc = u->get_location();
 	unit new_unit = get_advanced_unit(*u, advance_to);
@@ -1972,8 +1976,11 @@ void advance_unit(map_location loc, const std::string &advance_to)
 	LOG_CF << "Added '" << new_unit.type_id() << "' to encountered units\n";
 
 	resources::units->replace(loc, new_unit);
-	LOG_NG << "firing post_advance event at " << loc << "\n";
-	game_events::fire("post_advance",loc);
+	if(fire_event)
+	{
+		LOG_NG << "firing post_advance event at " << loc << "\n";
+		game_events::fire("post_advance",loc);
+	}
 
 	resources::whiteboard->on_gamestate_change();
 }
