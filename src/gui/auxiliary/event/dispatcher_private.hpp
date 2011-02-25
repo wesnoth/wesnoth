@@ -28,236 +28,91 @@ namespace event {
 
 struct tdispatcher_implementation
 {
-	/**
-	 * Returns the signal structure for a tsignal_function.
-	 *
-	 * There are several functions that only overload the return value, in
-	 * order to do so they use SFINAE.
-	 *
-	 * @tparam F                  tsignal_function.
-	 * @param dispatcher          The dispatcher whose signal queue is used.
-	 * @param event               The event to get the signal for.
-	 *
-	 * @returns                   The signal of the type
-	 *                            tdispatcher::tsignal<tsignal_function>
-	 */
-	template<class F>
-	static typename boost::enable_if<
-			  boost::is_same<F, tsignal_function>
-			, tdispatcher::tsignal<tsignal_function>
-			>::type&
-	event_signal(tdispatcher& dispatcher, const tevent event)
-	{
-		return dispatcher.signal_queue_.queue[event];
-	}
+/**
+ * Helper macro to implement the various event_signal functions.
+ *
+ * Implements two helper functions as documented in the macro.
+ *
+ * @param SET                     The set in which the event type needs to be
+ *                                eg the @ref tset_event or a similar set
+ *                                defined in that header.
+ * @param FUNCTION                The function signature to validate the
+ *                                implementation function SFINAE against eg the
+ *                                @ref tsignal_function or another one in that
+ *                                header.
+ * @param QUEUE                   The queue in which the @p event is slotted.
+ */
+#define IMPLEMENT_EVENT_SIGNAL(SET, FUNCTION, QUEUE)                          \
+	/**                                                                       \
+	 * Returns the signal structure for a FUNCTION.                           \
+	 *                                                                        \
+	 * There are several functions that only overload the return value, in    \
+	 * order to do so they use SFINAE.                                        \
+	 *                                                                        \
+	 * @tparam F                  tsignal_function.                           \
+	 * @param dispatcher          The dispatcher whose signal queue is used.  \
+	 * @param event               The event to get the signal for.            \
+	 *                                                                        \
+	 * @returns                   The signal of the type                      \
+	 *                            tdispatcher::tsignal<FUNCTION>              \
+	 */                                                                       \
+	template<class F>                                                         \
+	static typename boost::enable_if<                                         \
+			  boost::is_same<F, FUNCTION>                                     \
+			, tdispatcher::tsignal<FUNCTION>                                  \
+			>::type&                                                          \
+	event_signal(tdispatcher& dispatcher, const tevent event)                 \
+	{                                                                         \
+		return dispatcher.QUEUE.queue[event];                                 \
+	}                                                                         \
+                                                                              \
+	/**                                                                       \
+	 * Returns the signal structure for a key in SET.                         \
+	 *                                                                        \
+	 * There are several functions that only overload the return value, in    \
+	 * order to do so they use SFINAE.                                        \
+	 *                                                                        \
+	 * @tparam K                  A key in tset_event.                        \
+	 * @param dispatcher          The dispatcher whose signal queue is used.  \
+	 * @param event               The event to get the signal for.            \
+	 *                                                                        \
+	 * @returns                   The signal of the type                      \
+	 *                            tdispatcher::tsignal<FUNCTION>              \
+	 */                                                                       \
+	template<class K>                                                         \
+	static typename boost::enable_if<                                         \
+			  boost::mpl::has_key<SET, K>                                     \
+			, tdispatcher::tsignal<FUNCTION>                                  \
+			>::type&                                                          \
+	event_signal(tdispatcher& dispatcher, const tevent event)                 \
+	{                                                                         \
+		return dispatcher.QUEUE.queue[event];                                 \
+	}                                                                         \
 
-	/**
-	 * Returns the signal structure for a key in tset_event.
-	 *
-	 * There are several functions that only overload the return value, in
-	 * order to do so they use SFINAE.
-	 *
-	 * @tparam K                  A key in tset_event.
-	 * @param dispatcher          The dispatcher whose signal queue is used.
-	 * @param event               The event to get the signal for.
-	 *
-	 * @returns                   The signal of the type
-	 *                            tdispatcher::tsignal<tsignal_function>
-	 */
-	template<class K>
-	static typename boost::enable_if<
-			  boost::mpl::has_key<tset_event, K>
-			, tdispatcher::tsignal<tsignal_function>
-			>::type&
-	event_signal(tdispatcher& dispatcher, const tevent event)
-	{
-		return dispatcher.signal_queue_.queue[event];
-	}
 
-	/**
-	 * Returns the signal structure for a tsignal_mouse_function.
-	 *
-	 * There are several functions that only overload the return value, in
-	 * order to do so they use SFINAE.
-	 *
-	 * @tparam F                  tsignal_mouse_function.
-	 * @param dispatcher          The dispatcher whose signal queue is used.
-	 * @param event               The event to get the signal for.
-	 *
-	 * @returns                   The signal of the type
-	 *                            tdispatcher::tsignal<tsignal_mouse_function>
-	 */
-	template<class F>
-	static typename boost::enable_if<
-			  boost::is_same<F, tsignal_mouse_function>
-			, tdispatcher::tsignal<tsignal_mouse_function>
-			>::type&
-	event_signal(tdispatcher& dispatcher, const tevent event)
-	{
-		return dispatcher.signal_mouse_queue_.queue[event];
-	}
+	IMPLEMENT_EVENT_SIGNAL(tset_event, tsignal_function, signal_queue_)
 
-	/**
-	 * Returns the signal structure for a key in tset_event_mouse.
-	 *
-	 * There are several functions that only overload the return value, in
-	 * order to do so they use SFINAE.
-	 *
-	 * @tparam K                  A key in tset_event._mouse
-	 * @param dispatcher          The dispatcher whose signal queue is used.
-	 * @param event               The event to get the signal for.
-	 *
-	 * @returns                   The signal of the type
-	 *                            tdispatcher::tsignal<tsignal_mouse_function>
-	 */
-	template<class K>
-	static typename boost::enable_if<
-			  boost::mpl::has_key<tset_event_mouse, K >
-			, tdispatcher::tsignal<tsignal_mouse_function>
-			>::type&
-	event_signal(tdispatcher& dispatcher,const tevent event)
-	{
-		return dispatcher.signal_mouse_queue_.queue[event];
-	}
+/**
+ * Small helper macro to wrap @ref IMPLEMENT_EVENT_SIGNAL.
+ *
+ * Since the parameters to @ref IMPLEMENT_EVENT_SIGNAL use the same parameters
+ * with a slight difference per type this macro wraps the function by its type.
+ *
+ * @param TYPE                    The type to wrap for @ref
+ *                                IMPLEMENT_EVENT_SIGNAL.
+ */
+#define IMPLEMENT_EVENT_SIGNAL_WRAPPER(TYPE)                                  \
+	IMPLEMENT_EVENT_SIGNAL(tset_event_##TYPE                                  \
+			, tsignal_##TYPE##_function                                       \
+			, signal_##TYPE##_queue_)                                         \
 
-	/**
-	 * Returns the signal structure for a tsignal_keyboard_function.
-	 *
-	 * There are several functions that only overload the return value, in
-	 * order to do so they use SFINAE.
-	 *
-	 * @tparam F                  tsignal_keyboard_function.
-	 * @param dispatcher          The dispatcher whose signal queue is used.
-	 * @param event               The event to get the signal for.
-	 *
-	 * @returns                   The signal of the type tdispatcher
-	 *                            ::tsignal<tsignal_keyboard_function>
-	 */
-	template<class F>
-	static typename boost::enable_if<
-			  boost::is_same<F, tsignal_keyboard_function>
-			, tdispatcher::tsignal<tsignal_keyboard_function>
-			>::type&
-	event_signal(tdispatcher& dispatcher, const tevent event)
-	{
-		return dispatcher.signal_keyboard_queue_.queue[event];
-	}
+	IMPLEMENT_EVENT_SIGNAL_WRAPPER(mouse)
+	IMPLEMENT_EVENT_SIGNAL_WRAPPER(keyboard)
+	IMPLEMENT_EVENT_SIGNAL_WRAPPER(notification)
+	IMPLEMENT_EVENT_SIGNAL_WRAPPER(message)
 
-	/**
-	 * Returns the signal structure for a key in tset_event_keyboard.
-	 *
-	 * There are several functions that only overload the return value, in
-	 * order to do so they use SFINAE.
-	 *
-	 * @tparam K                  A key in tset_event._mouse
-	 * @param dispatcher          The dispatcher whose signal queue is used.
-	 * @param event               The event to get the signal for.
-	 *
-	 * @returns                   The signal of the type
-	 *                            tdispatcher::
-	 *                            tsignal<tsignal_keyboard_function>
-	 */
-	template<class K>
-	static typename boost::enable_if<
-			  boost::mpl::has_key<tset_event_keyboard, K >
-			, tdispatcher::tsignal<tsignal_keyboard_function>
-			>::type&
-	event_signal(tdispatcher& dispatcher, const tevent event)
-	{
-		return dispatcher.signal_keyboard_queue_.queue[event];
-	}
-
-	/**
-	 * Returns the signal structure for a tsignal_notification_function.
-	 *
-	 * There are several functions that only overload the return value, in
-	 * order to do so they use SFINAE.
-	 *
-	 * @tparam F                  tsignal_notification_function.
-	 * @param dispatcher          The dispatcher whose signal queue is used.
-	 * @param event               The event to get the signal for.
-	 *
-	 * @returns                   The signal of the type tdispatcher
-	 *                            ::tsignal<tsignal_notification_function>
-	 */
-	template<class F>
-	static typename boost::enable_if<
-			  boost::is_same<F, tsignal_notification_function>
-			, tdispatcher::tsignal<tsignal_notification_function>
-			>::type&
-	event_signal(tdispatcher& dispatcher, const tevent event)
-	{
-		return dispatcher.signal_notification_queue_.queue[event];
-	}
-
-	/**
-	 * Returns the signal structure for a key in tset_event_notification.
-	 *
-	 * There are several functions that only overload the return value, in
-	 * order to do so they use SFINAE.
-	 *
-	 * @tparam K                  A key in tset_event_notification.
-	 * @param dispatcher          The dispatcher whose signal queue is used.
-	 * @param event               The event to get the signal for.
-	 *
-	 * @returns                   The signal of the type tdispatcher
-	 *                            ::tsignal<tsignal_notification_function>
-	 */
-	template<class K>
-	static typename boost::enable_if<
-			  boost::mpl::has_key<tset_event_notification, K>
-			, tdispatcher::tsignal<tsignal_notification_function>
-			>::type&
-	event_signal(tdispatcher& dispatcher, const tevent event)
-	{
-		return dispatcher.signal_notification_queue_.queue[event];
-	}
-
-	/**
-	 * Returns the signal structure for a tsignal_message_function.
-	 *
-	 * There are several functions that only overload the return value, in
-	 * order to do so they use SFINAE.
-	 *
-	 * @tparam F                  tsignal_message_function.
-	 * @param dispatcher          The dispatcher whose signal queue is used.
-	 * @param event               The event to get the signal for.
-	 *
-	 * @returns                   The signal of the type tdispatcher
-	 *                            ::tsignal<tsignal_message_function>
-	 */
-	template<class F>
-	static typename boost::enable_if<
-			  boost::is_same<F, tsignal_message_function>
-			, tdispatcher::tsignal<tsignal_message_function>
-			>::type&
-	event_signal(tdispatcher& dispatcher, const tevent event)
-	{
-		return dispatcher.signal_message_queue_.queue[event];
-	}
-
-	/**
-	 * Returns the signal structure for a key in tset_event_message.
-	 *
-	 * There are several functions that only overload the return value, in
-	 * order to do so they use SFINAE.
-	 *
-	 * @tparam K                  A key in tset_event_message.
-	 * @param dispatcher          The dispatcher whose signal queue is used.
-	 * @param event               The event to get the signal for.
-	 *
-	 * @returns                   The signal of the type tdispatcher
-	 *                            ::tsignal<tsignal_message_function>
-	 */
-	template<class K>
-	static typename boost::enable_if<
-			  boost::mpl::has_key<tset_event_message, K>
-			, tdispatcher::tsignal<tsignal_message_function>
-			>::type&
-	event_signal(tdispatcher& dispatcher, const tevent event)
-	{
-		return dispatcher.signal_message_queue_.queue[event];
-	}
+#undef IMPLEMENT_EVENT_SIGNAL_WRAPPER
+#undef IMPLEMENT_EVENT_SIGNAL
 
 	/**
 	 * A helper class to find out whether dispatcher has an handler for a
