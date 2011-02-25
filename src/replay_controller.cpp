@@ -75,6 +75,7 @@ replay_controller::replay_controller(const config& level,
 {
 	units_start_ = units_;
 	teams_start_ = teams_;
+	tod_manager_start_ = tod_manager_;
 
 	init();
 	reset_replay();

@@ -50,6 +50,8 @@ Version 1.9.4+svn:
    * Let cmake use absolute locale dirs when set to an absolute path.
      (Windows always uses a relative path.) (patch #2280)
    * Make it impossible to build Wesnoth without the editor.
+   * Fixed a replay OOS issue caused by ToD areas defined outside of events
+     (bug #17783).
 
 Version 1.9.4:
  * AI:
