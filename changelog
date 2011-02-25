@@ -13,7 +13,7 @@ Version 1.9.4+svn:
    * Recalculate map labels to account for team changes when switching players
      with :control.
  * User interface:
-   * Added: circle to the gui2 canvas. 
+   * Added: circle to the gui2 canvas.
    * Added: new tip class for tooltips and helptips.
    * Reimplemented: the tooltips use the new tip class and look much better
      (bug #14818).
@@ -38,6 +38,8 @@ Version 1.9.4+svn:
      (feature request #13141).
    * [side] tags may now contain [leader] tags to create their leader(s), as
      opposed to mixing the leader's attributes with the side attributes.
+   * [unstore_unit] now accepts a fire_event= key to control firing of
+     (post) advance events
  * Miscellaneous and bugfixes:
    * Fixed: g++ compiler warnings.
    * Added: cmake target to build the gui design pdf.
