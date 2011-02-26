@@ -23,7 +23,7 @@ public:
 
 private:
 
-	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */ /*@ \label{unit_attack.hpp:member} @*/
+	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */ /*@ \label{unit_attack.hpp:window_id} @*/
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */ /*@ \label{unit_attack.hpp:pre_show} @*/
