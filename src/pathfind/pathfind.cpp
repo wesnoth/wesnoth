@@ -61,14 +61,19 @@ map_location pathfind::find_vacant_tile(const gamemap& map,
 		//Iterate over all the hexes we need to check
 		foreach (const map_location &loc, tiles_checking)
 		{
-			//If the unit cannot reach this area or it's not a castle but should, skip it.
-			if ((vacancy == pathfind::VACANT_CASTLE && !map.is_castle(loc))
-			|| (pass_check && pass_check->movement_cost(map[loc])
-					== unit_movement_type::UNREACHABLE))
-				continue;
-			//If the hex is empty, return it.
-			if (units.find(loc) == units.end())
-				return loc;
+			//If this area is not a castle but should, skip it.
+			if (vacancy == pathfind::VACANT_CASTLE && !map.is_castle(loc)) continue;
+			const bool pass_check_and_unreachable = pass_check
+				&& pass_check->movement_cost(map[loc]) == unit_movement_type::UNREACHABLE;
+			//If the unit can't reach the tile and we have searched
+			//an area of at least radius 10 (arbitrary), skip the tile.
+			//Neccessary for cases such as an unreachable
+			//starting hex surrounded by 6 other unreachable hexes, in which case
+			//the algorithm would not even search distance==1
+			//even if there's a reachable hex for distance==2.
+			if (pass_check_and_unreachable && distance > 10) continue;
+			//If the hex is empty and we do either no pass check or the hex is reachable, return it.
+			if (units.find(loc) == units.end() && !pass_check_and_unreachable) return loc;
 			map_location adjs[6];
 			get_adjacent_tiles(loc,adjs);
 			foreach (const map_location &loc, adjs)

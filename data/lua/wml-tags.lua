@@ -561,9 +561,8 @@ function wml_actions.move_unit(cfg)
 			while true do
 				x = tonumber(x) or helper.wml_error(coordinate_error)
 				y = tonumber(y) or helper.wml_error(coordinate_error)
-				local move_cost = wesnoth.unit_movement_cost(current_unit, wesnoth.get_terrain(x, y))
-				if move_cost >= 99 then helper.wml_error(coordinate_error) end
 				x, y = wesnoth.find_vacant_tile(x, y, current_unit)
+				if not x or not y then helper.wml_error("Could not find a reachable vacant hex near to one of the target hexes in [move_unit].") end
 				move_string_x = string.format("%s,%u", move_string_x, x)
 				move_string_y = string.format("%s,%u", move_string_y, y)
 				local next_x, next_y = xs(), ys()
