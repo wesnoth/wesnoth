@@ -159,7 +159,7 @@ private:
 	/***** Handlers *****/
 
 	/** Fires a draw event. */
-	void draw();
+	void draw(const bool force);
 
 	/**
 	 * Fires a video resize event.
@@ -304,7 +304,7 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		case DRAW_EVENT:
-			draw();
+			draw(false);
 			break;
 
 		case TIMER_EVENT:
@@ -325,6 +325,10 @@ void thandler::handle_event(const SDL_Event& event)
 
 		case SDL_KEYDOWN:
 			key_down(event.key);
+			break;
+
+		case SDL_VIDEOEXPOSE:
+			draw(true);
 			break;
 
 		case SDL_VIDEORESIZE:
@@ -413,12 +417,17 @@ void thandler::activate()
 	}
 }
 
-void thandler::draw()
+void thandler::draw(const bool force)
 {
 	// Don't display this event since it floods the screen
 	//DBG_GUI_E << "Firing " << DRAW << ".\n";
 
-	bool first = true;
+	/*
+	 * In normal draw mode the first window in not forced to be drawn the
+	 * others are. So for forced mode we only need to force the first window to
+	 * be drawn the others are already handled.
+	 */
+	bool first = !force;
 
 	/**
 	 * @todo Need to evaluate which windows really to redraw.
