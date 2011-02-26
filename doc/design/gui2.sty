@@ -1,4 +1,4 @@
-\usepackage{listings}
+\RequirePackage{listings}
 \lstset{
 	  basicstyle=\footnotesize
 	, numbers = left
@@ -17,4 +17,27 @@
 \lstdefinestyle{WML}{
 	  language = WML
 	, escapeinside = {/*@}{@*/}}
+
+%
+% Cleveref
+%
+\RequirePackage{cleveref}
+%               \crefalias{lstnumber}{line}%
+%              \crefalias{lstlisting}{listing}%
+\newcommand{\equationname}{Equation}
+
+% Set default formats, the uppercase format also sets the lowercase format.
+\Crefformat{appendix}{\appendixname~#2#1#3}
+\Crefformat{chapter}{\chaptername~#2#1#3}
+\Crefformat{equation}{\equationname\relax~#2#1#3}
+\Crefformat{figure}{\figurename\relax~#2#1#3}
+\Crefformat{section}{\S#2#1#3}
+\Crefformat{table}{\tablename~#2#1#3}
+\Crefformat{lstlisting}{\lstlistingname~#2#1#3}
+
+\newcommand{\Liref}[1]{Listing \ref{#1}}
+
+\newcommand{\Lref}[1]{Line \ref{#1}}
+\newcommand{\lref}[1]{line \ref{#1}}
+
 
