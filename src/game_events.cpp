@@ -2026,12 +2026,14 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
 		if(loc.valid()) {
 			if (cfg["find_vacant"].to_bool()) {
+				const unit* pass_check = &u;
+				if (cfg["ignore_passability"].to_bool(false)) pass_check = 0;
 				loc = pathfind::find_vacant_tile(
-					*resources::game_map,
-					*resources::units,
-					loc,
-					pathfind::VACANT_ANY,
-					&u);
+						*resources::game_map,
+						*resources::units,
+						loc,
+						pathfind::VACANT_ANY,
+						pass_check);
 			}
 
 			resources::units->erase(loc);
