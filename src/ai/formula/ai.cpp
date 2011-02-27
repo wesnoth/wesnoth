@@ -1032,7 +1032,7 @@ config formula_ai::to_config() const
 		{
 			try {
 				i->second.serialize_to_string(str);
-			} catch (type_error te) {
+			} catch (type_error&) {
 				WRN_AI << "variable ["<< i->first <<"] is not serializable - it will not be persisted across savegames"<<std::endl;
 				continue;
 			}
