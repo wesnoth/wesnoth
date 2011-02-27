@@ -38,7 +38,7 @@ const config cutter::load_config(const std::string &filename)
 	try {
 		scoped_istream stream = preprocess_file(conf_string);
 		read(res, *stream);
-	} catch(config::error err) {
+	} catch(config::error& err) {
 		throw exploder_failure("Unable to load the configuration for the file " + filename + ": "+ err.message);
 	}
 
