@@ -829,7 +829,7 @@ void generate_contents()
 			hidden_cfg.add_child("toplevel", hidden_toplevel);
 			hidden_sections = parse_config(&hidden_cfg);
 		}
-		catch (parse_error e) {
+		catch (parse_error& e) {
 			std::stringstream msg;
 			msg << "Parse error when parsing help text: '" << e.message << "'";
 			std::cerr << msg.str() << std::endl;
@@ -2255,7 +2255,7 @@ void help_text_area::set_items()
 #undef TRY
 
 			}
-			catch (config::error e) {
+			catch (config::error& e) {
 				std::stringstream msg;
 				msg << "Error when parsing help markup as WML: '" << e.message << "'";
 				throw parse_error(msg.str());
@@ -3060,7 +3060,7 @@ std::vector<std::string> split_in_width(const std::string &s, const int font_siz
 		res.push_back(s.substr(first_line.size()));
 	}
 	}
-	catch (utils::invalid_utf8_exception e)
+	catch (utils::invalid_utf8_exception&)
 	{
 		throw parse_error (_("corrupted original file"));
 	}
@@ -3210,7 +3210,7 @@ void show_help(display &disp, const section &toplevel_sec,
 			disp.delay(10);
 		}
 	}
-	catch (parse_error e) {
+	catch (parse_error& e) {
 		std::stringstream msg;
 		msg << _("Parse error when parsing help text: ") << "'" << e.message << "'";
 		gui2::show_transient_message(disp.video(), "", msg.str());
