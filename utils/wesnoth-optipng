@@ -34,6 +34,8 @@ max_number_threads=1
 total_original_size=0
 total_savings_size=0
 total_savings_filecount=0
+new_file_list="new_file_list.tmp"
+old_file_list="old_file_list.tmp"
 
 if [ -e "/proc/cpuinfo" ] && [ `grep processor /proc/cpuinfo | wc -l` -gt 1 ]; then
         max_number_threads=`grep processor /proc/cpuinfo | wc -l`
@@ -86,6 +88,9 @@ optimize_imgfile()
 	nice -n $2 advdef -z -3 ${1}.new > /dev/null
 	nice -n $2 advdef -z -2 ${1}.new > /dev/null
 	nice -n $2 advdef -z -1 ${1}.new > /dev/null
+
+	echo ${1}.new >> ${new_file_list}
+	echo ${1} >> ${old_file_list}
 }
 
 # gather statistics and remove the temp files
@@ -213,6 +218,19 @@ done
 # wait till all threads are done before going on in the script
 wait
 
+# compare compressed images pixel-by-pixel to detect possible corruption
+echo -ne "\n"
+echo "****************************************************"
+echo "* comparing original and new images pixel-by-pixel *"
+echo "****************************************************"
+$(dirname ${0})/compare_images.py ${old_file_list} ${new_file_list}
+
+if [ $? -ne 0 ]; then
+	echo "****************************************************"
+	echo "* Unable to compare compressed and original images *"
+	echo "****************************************************"
+fi
+
 # collect statistics and remove temp files
 # this is in a seperate part because the stats would not be correct when
 # run with several threads
@@ -225,6 +243,10 @@ do
 	get_statistics_and_delete_temp_files $f $opti_nice
 done
 
+rm -f ${old_file_list}
+rm -f ${new_file_list}
+
 print_statistics
 
 exit 0
+
