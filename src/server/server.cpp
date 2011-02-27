@@ -879,7 +879,7 @@ void server::run() {
 		// server from going down completely. Once we are sure
 		// all user_handler exceptions are caught correctly
 		// this can removed.
-		} catch (user_handler::error e) {
+		} catch (user_handler::error& e) {
 			ERR_SERVER << "Uncaught user_handler exception: " << e.message << "\n";
 		}
 	}
@@ -1040,7 +1040,7 @@ void server::process_login(const network::connection sock,
 			try {
 				user_handler_->password_reminder(username);
 				send_error(sock, "Your password reminder email has been sent.");
-			} catch (user_handler::error e) {
+			} catch (user_handler::error& e) {
 				send_error(sock, "There was an error sending your password reminder email. The error message was: " +
 				e.message);
 			}
@@ -1975,7 +1975,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 						 "user", pl->second.config_address(), diff);
 			rooms_.lobby().send_data(diff);
 
-		} catch (user_handler::error e) {
+		} catch (user_handler::error& e) {
 			rooms_.lobby().send_server_message("There was an error registering your username. The error message was: "
 			+ e.message, sock);
 		}
@@ -1996,7 +1996,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 
 			rooms_.lobby().send_server_message("Your details have been updated.", sock);
 
-		} catch (user_handler::error e) {
+		} catch (user_handler::error& e) {
 			rooms_.lobby().send_server_message("There was an error updating your details. The error message was: "
 			+ e.message, sock);
 		}
@@ -2016,7 +2016,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 		try {
 			std::string res = user_handler_->user_info((*data.child("info"))["name"].to_string());
 			rooms_.lobby().send_server_message(res, sock);
-		} catch (user_handler::error e) {
+		} catch (user_handler::error& e) {
 			rooms_.lobby().send_server_message("There was an error looking up the details of the user '" +
 			(*data.child("info"))["name"].to_string() + "'. " +" The error message was: "
 			+ e.message, sock);
@@ -2051,7 +2051,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 			make_change_diff(games_and_users_list_.root(), NULL,
 						 "user", pl->second.config_address(), diff);
 			rooms_.lobby().send_data(diff);
-		} catch (user_handler::error e) {
+		} catch (user_handler::error& e) {
 			rooms_.lobby().send_server_message("There was an error dropping your username. The error message was: "
 			+ e.message, sock);
 		}
