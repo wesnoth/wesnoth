@@ -148,7 +148,7 @@ bool move::execute()
 		team const& owner_team = resources::teams->at(team_index());
 		try {
 			steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates());
-		} catch (end_turn_exception e) {
+		} catch (end_turn_exception&) {
 			arrow_->set_style(arrow::STYLE_STANDARD);
 			throw; // we rely on the caller to delete this action
 		}
