@@ -36,6 +36,7 @@ total_savings_size=0
 total_savings_filecount=0
 new_file_list="new_file_list.tmp"
 old_file_list="old_file_list.tmp"
+broken_file_list="broken_file_list.tmp"
 
 if [ -e "/proc/cpuinfo" ] && [ `grep processor /proc/cpuinfo | wc -l` -gt 1 ]; then
         max_number_threads=`grep processor /proc/cpuinfo | wc -l`
@@ -223,12 +224,14 @@ echo -ne "\n"
 echo "****************************************************"
 echo "* comparing original and new images pixel-by-pixel *"
 echo "****************************************************"
-$(dirname ${0})/compare_images.py ${old_file_list} ${new_file_list}
+$(dirname ${0})/compare_images.py ${old_file_list} ${new_file_list} > ${broken_file_list}
 
 if [ $? -ne 0 ]; then
 	echo "****************************************************"
 	echo "* Unable to compare compressed and original images *"
 	echo "****************************************************"
+else
+	echo "list of broken files saved to: ${broken_file_list}"
 fi
 
 # collect statistics and remove temp files
