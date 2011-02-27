@@ -103,7 +103,7 @@ public:
 	virtual void process(pump_info& info) = 0;
 };
 
-int discard(Uint32 event_mask=SDL_ALLEVENTS);
+int discard(Uint32 event_mask);
 
 void raise_process_event();
 void raise_draw_event();
