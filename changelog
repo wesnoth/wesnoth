@@ -40,8 +40,11 @@ Version 1.9.4+svn:
      (feature request #13141).
    * [side] tags may now contain [leader] tags to create their leader(s), as
      opposed to mixing the leader's attributes with the side attributes.
+   * New wml action tag [transform_unit], like the {TRANSFORM_UNIT..} macro.
    * [unstore_unit] now accepts a fire_event= key to control firing of
-     (post) advance events
+     (post) advance events and an ignore_passability= (default no, previously it was
+     always yes/non-existant) key controlling whether to check for suitable terrain
+     when placing units
  * Miscellaneous and bugfixes:
    * Fixed: g++ compiler warnings.
    * Added: cmake target to build the gui design pdf.
