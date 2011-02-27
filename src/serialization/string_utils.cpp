@@ -601,7 +601,7 @@ std::string wstring_to_string(const wide_string &src)
 
 		return ret;
 	}
-	catch(invalid_utf8_exception e) {
+	catch(invalid_utf8_exception&) {
 		ERR_GENERAL << "Invalid wide character string\n";
 		return ret;
 	}
@@ -628,7 +628,7 @@ wide_string string_to_wstring(const std::string &src)
 			++i1;
 		}
 	}
-	catch(invalid_utf8_exception e) {
+	catch(invalid_utf8_exception&) {
 		ERR_GENERAL << "Invalid UTF-8 string: \"" << src << "\"\n";
 		return res;
 	}
