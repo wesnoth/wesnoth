@@ -193,7 +193,7 @@ static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 			chunks.push_back(current_chunk);
 		}
 	}
-	catch(utils::invalid_utf8_exception e) {
+	catch(utils::invalid_utf8_exception&) {
 		WRN_FT << "Invalid UTF-8 string: \"" << utf8_text << "\"\n";
 	}
 	return chunks;
