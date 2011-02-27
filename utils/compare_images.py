@@ -18,7 +18,7 @@
 #  hope that it will be useful, but WITHOUT ANY WARRANTY. See the COPYING
 #  file for more details.
 #
-from sys import argv, exit
+from sys import argv
 
 try:
     import Image as PIL
@@ -39,4 +39,4 @@ for path1, path2 in zip(list1, list2):
     if image1.tostring() != image2.tostring():
         print path1 + " and " + path2 + " differ!"
 
-# vim: set ts=4:sw=4:expandtab
+# vim: ts=4:sw=4:expandtab
