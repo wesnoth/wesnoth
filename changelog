@@ -45,6 +45,8 @@ Version 1.9.4+svn:
      (post) advance events and an ignore_passability= (default no, previously it was
      always yes/non-existant) key controlling whether to check for suitable terrain
      when placing units
+   * Introduced [move_unit]ignore_passability= (default no, previously it was
+     always no/non-existant) key to allow disabling the check for suitable terrain.
  * Miscellaneous and bugfixes:
    * Fixed: g++ compiler warnings.
    * Added: cmake target to build the gui design pdf.

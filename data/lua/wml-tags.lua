@@ -556,13 +556,15 @@ function wml_actions.move_unit(cfg)
 			local xs, ys = string.gmatch(to_x, pattern), string.gmatch(to_y, pattern)
 			local move_string_x = current_unit.x
 			local move_string_y = current_unit.y
+			local pass_check = current_unit
+			if cfg.ignore_passability then pass_check = nil end
 
 			local x, y = xs(), ys()
 			while true do
 				x = tonumber(x) or helper.wml_error(coordinate_error)
 				y = tonumber(y) or helper.wml_error(coordinate_error)
-				x, y = wesnoth.find_vacant_tile(x, y, current_unit)
-				if not x or not y then helper.wml_error("Could not find a reachable vacant hex near to one of the target hexes in [move_unit].") end
+				x, y = wesnoth.find_vacant_tile(x, y, pass_check)
+				if not x or not y then helper.wml_error("Could not find a suitable hex near to one of the target hexes in [move_unit].") end
 				move_string_x = string.format("%s,%u", move_string_x, x)
 				move_string_y = string.format("%s,%u", move_string_y, y)
 				local next_x, next_y = xs(), ys()
