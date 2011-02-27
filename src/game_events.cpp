@@ -623,9 +623,9 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	const map_location dst = cfg_to_loc(cfg);
 	if (dst == u->get_location() || !resources::game_map->on_board(dst)) return;
 
-	const unit *pass_check = &*u;
-	if (cfg["ignore_passability"].to_bool())
-		pass_check = NULL;
+	const unit* pass_check = NULL;
+	if (cfg["check_passability"].to_bool(true))
+		pass_check = &*u;
 	const map_location vacant_dst = find_vacant_tile(*resources::game_map, *resources::units, dst, pathfind::VACANT_ANY, pass_check);
 	if (!resources::game_map->on_board(vacant_dst)) return;
 
@@ -2026,8 +2026,8 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
 		if(loc.valid()) {
 			if (cfg["find_vacant"].to_bool()) {
-				const unit* pass_check = &u;
-				if (cfg["ignore_passability"].to_bool(false)) pass_check = 0;
+				const unit* pass_check = NULL;
+				if (cfg["check_passability"].to_bool(true)) pass_check = &u;
 				loc = pathfind::find_vacant_tile(
 						*resources::game_map,
 						*resources::units,

@@ -546,6 +546,7 @@ function wml_actions.move_unit(cfg)
 	local to_x = tostring(cfg.to_x) or helper.wml_error(coordinate_error)
 	local to_y = tostring(cfg.to_y) or helper.wml_error(coordinate_error)
 	local fire_event = cfg.fire_event
+	local check_passability = cfg.check_passability; if check_passability == nil then check_passability = true end
 	cfg = helper.literal(cfg)
 	cfg.to_x, cfg.to_y, cfg.fire_event = nil, nil, nil
 	local units = wesnoth.get_units(cfg)
@@ -556,8 +557,8 @@ function wml_actions.move_unit(cfg)
 			local xs, ys = string.gmatch(to_x, pattern), string.gmatch(to_y, pattern)
 			local move_string_x = current_unit.x
 			local move_string_y = current_unit.y
-			local pass_check = current_unit
-			if cfg.ignore_passability then pass_check = nil end
+			local pass_check = nil
+			if check_passability then pass_check = current_unit end
 
 			local x, y = xs(), ys()
 			while true do
