@@ -414,7 +414,7 @@ config default_map_generator::create_scenario(const std::vector<std::string>& ar
 	try{
 		res["map_data"] = generate_map(args,&labels);
 	}
-	catch (mapgen_exception exc){
+	catch (mapgen_exception& exc){
 		res["map_data"] = "";
 		res["error_message"] = exc.message;
 	}
