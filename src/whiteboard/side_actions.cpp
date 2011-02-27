@@ -193,7 +193,7 @@ bool side_actions::execute(side_actions::iterator position)
 	bool finished;
 	try	{
 		 finished = action->execute();
-	} catch (end_turn_exception e) {
+	} catch (end_turn_exception&) {
 		actions_.erase(position);
 		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
 		validate_actions();
