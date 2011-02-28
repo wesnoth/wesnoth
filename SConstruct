@@ -99,6 +99,7 @@ opts.AddVariables(
     BoolVariable('ccache', "Use ccache", False),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
     BoolVariable('cxx0x', 'Use C++0x features.', False),
+    BoolVariable('openmp', 'Enable openmp use.', False),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False)
     )
@@ -373,6 +374,9 @@ for env in [test_env, client_env, env]:
             env.Append(CPPDEFINES = "HAVE_CXX0X")
         else:
             env.AppendUnique(CXXFLAGS = "-std=c++98")
+
+        if env['openmp']:
+            env.AppendUnique(CXXFLAGS = ["-fopenmp"], LIBS = ["gomp"])
 
         if env['strict']:
             env.AppendUnique(CCFLAGS = Split("-Werror"))
