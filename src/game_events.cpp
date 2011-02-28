@@ -2024,7 +2024,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 		preferences::encountered_units().insert(u.type_id());
 		map_location loc = cfg_to_loc(
 			(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
-		if(loc.valid()) {
+		if(resources::game_map->on_board(loc)) {
 			if (cfg["find_vacant"].to_bool()) {
 				const unit* pass_check = NULL;
 				if (cfg["check_passability"].to_bool(true)) pass_check = &u;
