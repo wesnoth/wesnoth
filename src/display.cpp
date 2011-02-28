@@ -2416,6 +2416,9 @@ void display::invalidate_all()
 {
 	DBG_DP << "invalidate_all()\n";
 	invalidateAll_ = true;
+#ifdef _OPENMP
+#pragma omp critical(invalidated_)
+#endif //_OPENMP
 	invalidated_.clear();
 	update_rect(map_area());
 }
@@ -2425,7 +2428,12 @@ bool display::invalidate(const map_location& loc)
 	if(invalidateAll_)
 		return false;
 
-	return invalidated_.insert(loc).second;
+	bool tmp;
+#ifdef _OPENMP
+#pragma omp critical(invalidated_)
+#endif //_OPENMP
+	tmp = invalidated_.insert(loc).second;
+	return tmp;
 }
 
 bool display::invalidate(const std::set<map_location>& locs)
@@ -2434,6 +2442,9 @@ bool display::invalidate(const std::set<map_location>& locs)
 		return false;
 	bool ret = false;
 	foreach (const map_location& loc, locs) {
+#ifdef _OPENMP
+#pragma omp critical(invalidated_)
+#endif //_OPENMP
 		ret = invalidated_.insert(loc).second || ret;
 	}
 	return ret;
@@ -2447,19 +2458,26 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 	if(locs.size()<=1)
 		return false; // propagation never needed
 
-	// search the first hex invalidated (if any)
-	std::set<map_location>::const_iterator i = locs.begin();
-	for(; i != locs.end() && invalidated_.count(*i) == 0 ; ++i) {}
+	bool result = false;
+#ifdef _OPENMP
+#pragma omp critical(invalidated_)
+#endif //_OPENMP
+	{
+		// search the first hex invalidated (if any)
+		std::set<map_location>::const_iterator i = locs.begin();
+		for(; i != locs.end() && invalidated_.count(*i) == 0 ; ++i) {}
 
-	if (i == locs.end())
-		return false; // no invalidation, don't propagate
+		if (i != locs.end()) {
 
-	// propagate invalidation
-	// 'i' is already in, but I suspect that splitting the range is bad
-	// especially because locs are often adjacents
-	size_t previous_size = invalidated_.size();
-	invalidated_.insert(locs.begin(), locs.end());
-	return previous_size < invalidated_.size();
+			// propagate invalidation
+			// 'i' is already in, but I suspect that splitting the range is bad
+			// especially because locs are often adjacents
+			size_t previous_size = invalidated_.size();
+			invalidated_.insert(locs.begin(), locs.end());
+			result = previous_size < invalidated_.size();
+		}
+	}
+	return result;
 }
 
 bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)

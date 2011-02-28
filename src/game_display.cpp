@@ -905,16 +905,23 @@ void game_display::invalidate_animations()
 	foreach(unit* temp_unit, temp_units_) {
 		temp_unit->refresh();
 	}
-	bool new_inval = true;
-	while(new_inval) {
-		new_inval = false;
-		foreach (unit& u, units_) {
-			new_inval |= u.invalidate(u.get_location());
-		}
-		foreach(unit* temp_unit, temp_units_) {
-			new_inval |= temp_unit->invalidate(temp_unit->get_location());
-		}
+	std::vector<unit*> unit_list;
+	foreach (unit &u, units_) {
+		unit_list.push_back(&u);
 	}
+	foreach (unit *u, temp_units_) {
+		unit_list.push_back(u);
+	}
+	bool new_inval;
+	do {
+		new_inval = false;
+#ifdef _OPENMP
+#pragma omp parallel for reduction(|:new_inval) shared(unit_list) schedule(guided)
+#endif //_OPENMP
+		for(unsigned int i=0; i < unit_list.size(); i++) {
+			new_inval |=  unit_list[i]->invalidate(unit_list[i]->get_location());
+		}
+	}while(new_inval);
 }
 
 int& game_display::debug_highlight(const map_location& loc)

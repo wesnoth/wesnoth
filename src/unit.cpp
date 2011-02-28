@@ -1996,7 +1996,7 @@ bool unit::invalidate(const map_location &loc)
 	// Very early calls, anim not initialized yet
 	if(get_animation()) {
 		frame_parameters params;
-		game_display * disp =  game_display::get_singleton();
+		const game_display * disp =  game_display::get_singleton();
 		const gamemap & map = disp->get_map();
 		const t_translation::t_terrain terrain = map.get_terrain(loc);
 		const terrain_type& terrain_info = map.get_terrain_info(terrain);

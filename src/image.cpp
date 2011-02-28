@@ -146,19 +146,24 @@ static int last_index_ = 0;
 
 void flush_cache()
 {
-	images_.flush();
-	hexed_images_.flush();
-	tod_colored_images_.flush();
-	scaled_to_zoom_.flush();
-	scaled_to_hex_images_.flush();
-	brightened_images_.flush();
-	semi_brightened_images_.flush();
-	in_hex_info_.flush();
-	mini_terrain_cache.clear();
-	mini_fogged_terrain_cache.clear();
-	reversed_images_.clear();
-	image_existence_map.clear();
-	precached_dirs.clear();
+#ifdef _OPENMP
+#pragma omp critical(image_cache)
+#endif //_OPENMP
+	{
+		images_.flush();
+		hexed_images_.flush();
+		tod_colored_images_.flush();
+		scaled_to_zoom_.flush();
+		scaled_to_hex_images_.flush();
+		brightened_images_.flush();
+		semi_brightened_images_.flush();
+		in_hex_info_.flush();
+		mini_terrain_cache.clear();
+		mini_fogged_terrain_cache.clear();
+		reversed_images_.clear();
+		image_existence_map.clear();
+		precached_dirs.clear();
+	}
 	/* We can't reset last_index_, since some locators are still alive
 	   when using :refresh. That would cause them to point to the wrong
 	   images. Not resetting the variable causes a memory leak, though. */
@@ -1080,8 +1085,20 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	}
 
 	// return the image if already cached
-	if(i_locator.in_cache(*imap))
-		return i_locator.locate_in_cache(*imap);
+	bool tmp;
+#ifdef _OPENMP
+#pragma omp critical(image_cache)
+#endif //_OPENMP
+	tmp=i_locator.in_cache(*imap);
+
+	if(tmp) {
+		surface result;
+#ifdef _OPENMP
+#pragma omp critical(image_cache)
+#endif //_OPENMP
+		result = i_locator.locate_in_cache(*imap);
+		return result;
+	}
 
 	// not cached, generate it
 	switch(type) {
@@ -1115,6 +1132,9 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	if(res)
 		res = create_optimized_surface(res);
 
+#ifdef _OPENMP
+#pragma omp critical(image_cache)
+#endif //_OPENMP
 	i_locator.add_to_cache(*imap, res);
 
 	return res;
@@ -1128,8 +1148,13 @@ surface get_hexmask()
 
 bool is_in_hex(const locator& i_locator)
 {
+	bool result;
+#ifdef _OPENMP
+#pragma omp critical(in_hex_info_)
+#endif //_OPENMP
+	{
 	if(i_locator.in_cache(in_hex_info_)) {
-		return i_locator.locate_in_cache(in_hex_info_);
+		result= i_locator.locate_in_cache(in_hex_info_);
 	} else {
 		const surface image(get_image(i_locator, UNSCALED));
 
@@ -1140,8 +1165,10 @@ bool is_in_hex(const locator& i_locator)
 		//std::cout << "in_hex : " << i_locator.get_filename()
 		//		<< " " << (res ? "yes" : "no") << "\n";
 
-		return res;
+		result= res;
 	}
+	}
+	return result;
 }
 
 

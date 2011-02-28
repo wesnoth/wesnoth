@@ -663,13 +663,24 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 			result.insert(src.get_direction(map_location::SOUTH_WEST));
 		}
 	} else {
-		surface image;
-		if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
-			image=image::get_image(image_loc,
-					image::SCALED_TO_ZOOM
-					);
+		int w=0;
+		int h =0;
+#ifdef _OPENMP
+#pragma omp critical(frame_surface) // with the way surfaces work it's hard to lock the refcount within sdl_utils
+#endif //_OPENMP
+		{
+			surface image;
+			if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
+				image=image::get_image(image_loc,
+						image::SCALED_TO_ZOOM
+						);
+			}
+			if(image != NULL) {
+				w = image->w;
+				h = image->h;
+			}
 		}
-		if (image != NULL) {
+		if (w != 0 || h != 0) {
 			const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc);
 			const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc);
 #ifdef LOW_MEM
@@ -680,8 +691,8 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 			bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
 			if(!current_data.auto_vflip) facing_north = true;
 			if(!current_data.auto_hflip) facing_west = false;
-			int my_x = x +current_data.x+d2- image->w/2;
-			int my_y = y +current_data.y+d2- image->h/2;
+			int my_x = x +current_data.x+d2- w/2;
+			int my_y = y +current_data.y+d2- h/2;
 			if(facing_west) {
 				my_x += current_data.directional_x;
 			} else {
@@ -693,7 +704,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 				my_y -= current_data.directional_y;
 			}
 
-			const SDL_Rect r = create_rect(my_x, my_y, image->w, image->h);
+			const SDL_Rect r = create_rect(my_x, my_y, w, h);
 			// check if our underlying hexes are invalidated
 			// if we need to update ourselve because we changed, invalidate our hexes
 			// and return whether or not our hexs was invalidated
