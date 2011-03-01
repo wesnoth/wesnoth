@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-02-12 13:10+0100\n"
-"PO-Revision-Date: 2011-01-22 00:15-0500\n"
-"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
+"PO-Revision-Date: 2011-02-23 17:00+0100\n"
+"Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -723,7 +723,7 @@ msgid ""
 "Velon has fallen. He counseled weakness, but did not deserved such an ugly "
 "death. We shall return with swords to avenge him!"
 msgstr ""
-"Velon has fallen. He counseled weakness, but did not deserved such an ugly "
+"Velon has fallen. He counselled weakness, but did not deserved such an ugly "
 "death. We shall return with swords to avenge him!"
 
 #. [message]: race=orc
@@ -1047,6 +1047,7 @@ msgstr "Death of Galtrid"
 msgid "Death of El'Isomithir"
 msgstr "Death of El'Isomithir"
 
+# Woodcraft? I perforce smell an esrism.
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:875
 msgid ""
@@ -1056,11 +1057,11 @@ msgid ""
 "arrived at their destination, the north wind blew, and the fog lifted to "
 "reveal a grim sight..."
 msgstr ""
-"For days, Kalenz and his small host of followers traveled, moving nearer and "
-"yet nearer to the Ka’lian. Thanks to the dense fog and elvish woodscraft, "
-"the band was able to evade the orcish hunters. Then, as they were almost "
-"arrived at their destination, the north wind blew, and the fog lifted to "
-"reveal a grim sight..."
+"For days, Kalenz and his small host of followers travelled, moving nearer "
+"and yet nearer to the Ka’lian. Thanks to the dense fog and elvish "
+"woodscraft, the band was able to evade the orcish hunters. Then, as they "
+"were almost arrived at their destination, the north wind blew, and the fog "
+"lifted to reveal a grim sight..."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:879
@@ -1362,6 +1363,7 @@ msgstr "Tameril-Isimeril"
 msgid "Laril"
 msgstr "Laril"
 
+# May need rewording
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:433
 msgid ""
@@ -1907,8 +1909,8 @@ msgid ""
 "In this scenario, you may change the behavior of an allied side’s AI using a "
 "context menu brought up by clicking on the allied side’s leader."
 msgstr ""
-"In this scenario, you may change the behavior of an allied side’s AI using a "
-"context menu brought up by clicking on the allied side’s leader."
+"In this scenario, you may change the behaviour of an allied side’s AI using "
+"a context menu brought up by clicking on the allied side’s leader."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:583
@@ -2587,15 +2589,13 @@ msgstr "some experienced warriors"
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:265
-#, fuzzy
 msgid "$left_behind_{NAME} and $l3_store_{NAME}[$i].name"
-msgstr "$left_behind and $l3_store_{NAME}[$i].name"
+msgstr "$left_behind_[NAME] and $l3_store_{NAME}[$i].name"
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:271
-#, fuzzy
 msgid "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
-msgstr "$left_behind|, $l3_store_{NAME}[$i].name"
+msgstr "$left_behind_[NAME]|, $l3_store_{NAME}[$i].name"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:381
@@ -2617,6 +2617,7 @@ msgstr "I saw them first, fool! The bounty is all mine."
 msgid "What are they talking about?"
 msgstr "What are they talking about?"
 
+# I don't like "effrontery".
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:424
 msgid ""
@@ -3178,7 +3179,7 @@ msgid ""
 "the elves are hiding it. But now, they suspect they have been fooled. "
 "Haldric and his people will pay for his arrogance."
 msgstr ""
-"It’s the source of your troubles. It is a very powerful magical artifact. "
+"It’s the source of your troubles. It is a very powerful magical artefact. "
 "The tyrant Haldric has it, but he has fooled the orcs into believing that "
 "the elves are hiding it. But now, they suspect they have been fooled. "
 "Haldric and his people will pay for his arrogance."
@@ -3699,6 +3700,7 @@ msgstr "Grol"
 msgid "Khafa-Urg"
 msgstr "Khafa-Urg"
 
+# Needs rewording
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:413
 msgid "Last for the end of turns"
@@ -4194,6 +4196,8 @@ msgstr "Crelanu’s philter affecting Kalenz"
 msgid "Crelanu’s philter affecting Landar"
 msgstr "Crelanu’s philter affecting Landar"
 
+# T'was strange, t'was passing strange
+# t'was pitiful, t'was wondrous pitiful.
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_Must_Die.cfg:318
 msgid ""
@@ -5249,8 +5253,8 @@ msgid ""
 "Gitamoth..."
 msgstr ""
 "It is said that the battle with the North Elves was the beginning of the end "
-"for Landar’s revolt. But civil war smoldered on for many more years, neither "
-"side mustering enough strength to achieve a decisive victory. Until, "
+"for Landar’s revolt. But civil war smouldered on for many more years, "
+"neither side mustering enough strength to achieve a decisive victory. Until, "
 "eventually, Landar’s increasingly harsh and arrogant ways drove away many of "
 "his followers. After assembling all the troops he could, Kalenz marched "
 "against his old friend and now mortal enemy, Landar, in the forest of "
@@ -5418,7 +5422,7 @@ msgstr ""
 "their children. Sundered from his kin by their mortality, fleeing the "
 "reflections in their eyes of his lost beloved, he left his home and wandered "
 "for many a year across the Great Continent. Oft did he arrive unexpected at "
-"times and places when his people were in dire straits, and succor them with "
+"times and places when his people were in dire straits, and succour them with "
 "wisdom or magic or his bright keen blade."
 
 #. [part]
