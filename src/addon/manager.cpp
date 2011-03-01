@@ -1507,7 +1507,8 @@ void refresh_addon_version_info_cache()
 		else if (!file_exists(parentd+"/"+addon+".pbl")
 			  && !file_exists(parentd+"/"+addon+"/_server.pbl")
 			  && !file_exists(parentd+"/"+addon+"/.svn")
-			  && !file_exists(parentd+"/"+addon+"/.git")) {
+			  && !file_exists(parentd+"/"+addon+"/.git")
+			  && !file_exists(parentd+"/"+addon+"/.hg")) {
 				WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info\n";
 		}
 	}
