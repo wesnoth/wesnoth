@@ -235,7 +235,7 @@ bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
 		y < area.y || y > area.y + area.h - y_thresh);
 }
 
-// This function use the screen as reference
+// This function uses the screen as reference
 const map_location display::hex_clicked_on(int xclick, int yclick) const
 {
 	const SDL_Rect& rect = map_area();
@@ -250,7 +250,7 @@ const map_location display::hex_clicked_on(int xclick, int yclick) const
 }
 
 
-// This function use the rect of map_area as reference
+// This function uses the rect of map_area as reference
 const map_location display::pixel_position_to_hex(int x, int y) const
 {
 	// adjust for the border
@@ -301,81 +301,6 @@ const map_location display::pixel_position_to_hex(int x, int y) const
 	}
 
 	return map_location(x_base + x_modifier - offset, y_base + y_modifier - offset);
-
-
-	// NOTE: This code to get nearest_hex and second_nearest_hex
-	// is not used anymore. However, it can be useful later.
-	// So, keep it here for the moment.
-	/*
-	if(nearest_hex != NULL) {
-		// Our x and y use the map_area as reference.
-		// The coordinates given by get_location use the screen as reference,
-		// so we need to convert it.
-		const int centerx = (get_location_x(res) - map_area().x + xpos_) + hex_size()/2 - hex_width();
-		const int centery = (get_location_y(res) - map_area().y + ypos_) + hex_size()/2 - hex_size();
-		const int x_offset = x - centerx;
-		const int y_offset = y - centery;
-		if(y_offset > 0) {
-			if(x_offset > y_offset/2) {
-				*nearest_hex = map_location::SOUTH_EAST;
-				if(second_nearest_hex != NULL) {
-					if(x_offset/2 > y_offset) {
-						*second_nearest_hex = map_location::NORTH_EAST;
-					} else {
-						*second_nearest_hex = map_location::SOUTH;
-					}
-				}
-			} else if(-x_offset > y_offset/2) {
-				*nearest_hex = map_location::SOUTH_WEST;
-				if(second_nearest_hex != NULL) {
-					if(-x_offset/2 > y_offset) {
-						*second_nearest_hex = map_location::NORTH_WEST;
-					} else {
-						*second_nearest_hex = map_location::SOUTH;
-					}
-				}
-			} else {
-				*nearest_hex = map_location::SOUTH;
-				if(second_nearest_hex != NULL) {
-					if(x_offset > 0) {
-						*second_nearest_hex = map_location::SOUTH_EAST;
-					} else {
-						*second_nearest_hex = map_location::SOUTH_WEST;
-					}
-				}
-			}
-		} else { // y_offset <= 0
-			if(x_offset > -y_offset/2) {
-				*nearest_hex = map_location::NORTH_EAST;
-				if(second_nearest_hex != NULL) {
-					if(x_offset/2 > -y_offset) {
-						*second_nearest_hex = map_location::SOUTH_EAST;
-					} else {
-						*second_nearest_hex = map_location::NORTH;
-					}
-				}
-			} else if(-x_offset > -y_offset/2) {
-				*nearest_hex = map_location::NORTH_WEST;
-				if(second_nearest_hex != NULL) {
-					if(-x_offset/2 > -y_offset) {
-						*second_nearest_hex = map_location::SOUTH_WEST;
-					} else {
-						*second_nearest_hex = map_location::NORTH;
-					}
-				}
-			} else {
-				*nearest_hex = map_location::NORTH;
-				if(second_nearest_hex != NULL) {
-					if(x_offset > 0) {
-						*second_nearest_hex = map_location::NORTH_EAST;
-					} else {
-						*second_nearest_hex = map_location::NORTH_WEST;
-					}
-				}
-			}
-		}
-	}
-	*/
 }
 
 void display::rect_of_hexes::iterator::operator++()
