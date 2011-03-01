@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-02-12 13:10+0100\n"
+"POT-Creation-Date: 2011-03-01 11:25+0100\n"
 "PO-Revision-Date: 2008-01-21 18:54+0200\n"
 "Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -428,7 +428,7 @@ msgstr ""
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:75
 msgid ""
-"A Redorder is a Drakish scrollkeeper whose has mastered the drakish "
+"A Recorder is a Drakish scrollkeeper whose has mastered the drakish "
 "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
@@ -1026,13 +1026,13 @@ msgstr "Παράταξη"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
-#: data/core/help.cfg:74 data/core/help.cfg:480
+#: data/core/help.cfg:74 data/core/help.cfg:488
 msgid "Terrains"
 msgstr "Εδάφη"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:81 data/core/help.cfg:782
+#: data/core/help.cfg:81 data/core/help.cfg:790
 msgid "Commands"
 msgstr "Διαταγές"
 
@@ -1322,7 +1322,7 @@ msgstr "κίτρινο άν έχει κινηθεί αλλά μπορεί νά �
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
 msgid ""
-" red if it can no longer move or attack, or the user ended the unit's turn."
+" red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
 
 #. [topic]: id=orbs
@@ -2266,8 +2266,7 @@ msgstr ""
 #: data/core/help.cfg:427
 #, fuzzy
 msgid ""
-"<italic>text='Undead'</italic> units are immune to poison, also drain and "
-"plague doesn’t work on them."
+"<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr "Οι Ζωντανές-Νεκρές μονάδες δέν μπορούν να δηλητηριαστούν. "
 
 #. [topic]: id=traits_undead
@@ -2298,8 +2297,8 @@ msgstr ""
 #: data/core/help.cfg:435
 #, fuzzy
 msgid ""
-"<italic>text='Mechanical'</italic> units are immune to poison, also drain "
-"and plague doesn’t work on them."
+"<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
+"plague."
 msgstr "Οι Ζωντανές-Νεκρές μονάδες δέν μπορούν να δηλητηριαστούν. "
 
 #. [topic]: id=traits_mechanical
@@ -2308,24 +2307,48 @@ msgid ""
 "\n"
 "\n"
 "Mechanical units generally have mechanical as their only trait. Since "
-"mechanical units don’t really have life, drain, poison and plague has no "
+"mechanical units don’t really have life, drain, poison, and plague have no "
+"effect upon them."
+msgstr ""
+
+#. [topic]: id=traits_elemental
+#: data/core/help.cfg:442
+#, fuzzy
+msgid "trait^Elemental"
+msgstr "απόκρυψη"
+
+#. [topic]: id=traits_elemental
+#: data/core/help.cfg:443
+#, fuzzy
+msgid ""
+"<italic>text='Elemental'</italic> units are immune to poison, drain, and "
+"plague."
+msgstr "Οι Ζωντανές-Νεκρές μονάδες δέν μπορούν να δηλητηριαστούν. "
+
+#. [topic]: id=traits_elemental
+#: data/core/help.cfg:445
+msgid ""
+"\n"
+"\n"
+"Elemental units generally have elemental as their only trait. Since "
+"elemental units are energy-based beings, drain, poison, and plague have no "
 "effect upon them."
 msgstr ""
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:442
+#: data/core/help.cfg:450
 msgid "Dextrous"
 msgstr "Επιδέξιος"
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:443
+#: data/core/help.cfg:451
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
 msgstr ""
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:445
+#: data/core/help.cfg:453
 #, fuzzy
 msgid ""
 "\n"
@@ -2343,19 +2366,19 @@ msgstr ""
 "κάνουν έναν επιπλέον πόνο ζημιάς μέ κάθε βέλος. "
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:450
+#: data/core/help.cfg:458
 msgid "Healthy"
 msgstr "Υγιής"
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:451
+#: data/core/help.cfg:459
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:453
+#: data/core/help.cfg:461
 msgid ""
 "\n"
 "\n"
@@ -2365,20 +2388,20 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:458
+#: data/core/help.cfg:466
 #, fuzzy
 msgid "Dim"
 msgstr "Μέτριο"
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:459
+#: data/core/help.cfg:467
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:461
+#: data/core/help.cfg:469
 msgid ""
 "\n"
 "\n"
@@ -2387,13 +2410,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:466
+#: data/core/help.cfg:474
 #, fuzzy
 msgid "Slow"
 msgstr "Επιβραδυμένος"
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:467
+#: data/core/help.cfg:475
 #, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
@@ -2402,7 +2425,7 @@ msgstr ""
 "βαθμούς υγείας από τό κανονικό. "
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:469
+#: data/core/help.cfg:477
 msgid ""
 "\n"
 "\n"
@@ -2412,19 +2435,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_weak
-#: data/core/help.cfg:474
+#: data/core/help.cfg:482
 msgid "Weak"
 msgstr ""
 
 #. [topic]: id=traits_weak
-#: data/core/help.cfg:475
+#: data/core/help.cfg:483
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
 "hitpoints and melee damage."
 msgstr ""
 
 #. [topic]: id=..terrains
-#: data/core/help.cfg:483
+#: data/core/help.cfg:491
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat.\n"
@@ -2432,12 +2455,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_flat
-#: data/core/help.cfg:490
+#: data/core/help.cfg:498
 msgid "Flat"
 msgstr ""
 
 #. [topic]: id=terrain_flat
-#: data/core/help.cfg:495
+#: data/core/help.cfg:503
 #, fuzzy
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
@@ -2457,12 +2480,12 @@ msgstr ""
 " Οι περισσότερες μονάδες έχουν 30 μέ 40% άμυνα στά λειβάδια. "
 
 #. [topic]: id=terrain_road
-#: data/core/help.cfg:504
+#: data/core/help.cfg:512
 msgid "Road"
 msgstr "Δρόμος"
 
 #. [topic]: id=terrain_road
-#: data/core/help.cfg:509
+#: data/core/help.cfg:517
 #, fuzzy
 msgid ""
 "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
@@ -2475,12 +2498,12 @@ msgstr ""
 "<ref>dst=terrain_grassland text=Λειβαδι</ref>."
 
 #. [topic]: id=terrain_forest
-#: data/core/help.cfg:516
+#: data/core/help.cfg:524
 msgid "Forest"
 msgstr "Δάσος"
 
 #. [topic]: id=terrain_forest
-#: data/core/help.cfg:523
+#: data/core/help.cfg:531
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2500,12 +2523,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_hills
-#: data/core/help.cfg:531
+#: data/core/help.cfg:539
 msgid "Hills"
 msgstr "Λόφοι"
 
 #. [topic]: id=terrain_hills
-#: data/core/help.cfg:538
+#: data/core/help.cfg:546
 #, fuzzy
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
@@ -2531,12 +2554,12 @@ msgstr ""
 "ιππικό αυτό τό ποσοστό είναι μόνο 40%. Οι νάνοι έχουν άμυνα 60% στούς λόφους."
 
 #. [topic]: id=terrain_mountains
-#: data/core/help.cfg:545
+#: data/core/help.cfg:553
 msgid "Mountains"
 msgstr "Βουνά"
 
 #. [topic]: id=terrain_mountains
-#: data/core/help.cfg:550
+#: data/core/help.cfg:558
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move. By this nature, they provide a considerable "
@@ -2550,12 +2573,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_swamp_water
-#: data/core/help.cfg:557
+#: data/core/help.cfg:565
 msgid "Swamp"
 msgstr "Βάλτος"
 
 #. [topic]: id=terrain_swamp_water
-#: data/core/help.cfg:562
+#: data/core/help.cfg:570
 #, fuzzy
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps slow "
@@ -2578,12 +2601,12 @@ msgstr ""
 "Νάγκα καί οι Σαυράνθρωπο έχουν γενικά 60%. "
 
 #. [topic]: id=terrain_shallow_water
-#: data/core/help.cfg:569
+#: data/core/help.cfg:577
 msgid "Shallow Water"
 msgstr "Ρηχά Νερά"
 
 #. [topic]: id=terrain_shallow_water
-#: data/core/help.cfg:574
+#: data/core/help.cfg:582
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2598,12 +2621,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_deep_water
-#: data/core/help.cfg:581
+#: data/core/help.cfg:589
 msgid "Deep Water"
 msgstr "Βαθιά Νερά"
 
 #. [topic]: id=terrain_deep_water
-#: data/core/help.cfg:586
+#: data/core/help.cfg:594
 #, fuzzy
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
@@ -2621,12 +2644,12 @@ msgstr ""
 "κινητικότητα. "
 
 #. [topic]: id=terrain_frozen
-#: data/core/help.cfg:593
+#: data/core/help.cfg:601
 msgid "Frozen"
 msgstr ""
 
 #. [topic]: id=terrain_frozen
-#: data/core/help.cfg:598
+#: data/core/help.cfg:606
 #, fuzzy
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
@@ -2644,12 +2667,12 @@ msgstr ""
 "Οι περισσότερες μονάδες έχουν άμυνα στό χιόνι 20 μέ 40%."
 
 #. [topic]: id=terrain_castle
-#: data/core/help.cfg:605
+#: data/core/help.cfg:613
 msgid "Castle"
 msgstr "Κάστρο"
 
 #. [topic]: id=terrain_castle
-#: data/core/help.cfg:612
+#: data/core/help.cfg:620
 #, fuzzy
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
@@ -2672,12 +2695,12 @@ msgstr ""
 "Οι περισσότερες μονάδες έχουν 60% άμυνα σέ ένα κάστρο."
 
 #. [topic]: id=terrain_sand
-#: data/core/help.cfg:621
+#: data/core/help.cfg:629
 msgid "Sand"
 msgstr "Άμμος"
 
 #. [topic]: id=terrain_sand
-#: data/core/help.cfg:626
+#: data/core/help.cfg:634
 #, fuzzy
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
@@ -2695,12 +2718,12 @@ msgstr ""
 "Οι περισσότερες μονάδες έχουν 20 μέ 40% άμυνα στην άμμο."
 
 #. [topic]: id=terrain_desert
-#: data/core/help.cfg:633
+#: data/core/help.cfg:641
 msgid "Desert"
 msgstr "Ερημος"
 
 #. [topic]: id=terrain_desert
-#: data/core/help.cfg:636
+#: data/core/help.cfg:644
 #, fuzzy
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
@@ -2712,12 +2735,12 @@ msgstr ""
 "<ref>dst=terrain_sand text=Αμμος.</ref>."
 
 #. [topic]: id=terrain_cave
-#: data/core/help.cfg:643
+#: data/core/help.cfg:651
 msgid "Cave"
 msgstr "Σπηλιά"
 
 #. [topic]: id=terrain_cave
-#: data/core/help.cfg:648
+#: data/core/help.cfg:656
 #, fuzzy
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
@@ -2741,12 +2764,12 @@ msgstr ""
 "έχουν 50%."
 
 #. [topic]: id=terrain_rockbound_cave
-#: data/core/help.cfg:655
+#: data/core/help.cfg:663
 msgid "Rockbound Cave"
 msgstr ""
 
 #. [topic]: id=terrain_rockbound_cave
-#: data/core/help.cfg:660
+#: data/core/help.cfg:668
 #, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
@@ -2772,12 +2795,12 @@ msgstr ""
 "έχουν 50%."
 
 #. [topic]: id=terrain_illuminated_cave
-#: data/core/help.cfg:667
+#: data/core/help.cfg:675
 msgid "Illuminated Cave"
 msgstr ""
 
 #. [topic]: id=terrain_illuminated_cave
-#: data/core/help.cfg:670
+#: data/core/help.cfg:678
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2787,12 +2810,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_fungus
-#: data/core/help.cfg:677
+#: data/core/help.cfg:685
 msgid "Mushroom Grove"
 msgstr ""
 
 #. [topic]: id=terrain_fungus
-#: data/core/help.cfg:682
+#: data/core/help.cfg:690
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -2806,12 +2829,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_village
-#: data/core/help.cfg:689
+#: data/core/help.cfg:697
 msgid "Village"
 msgstr "Χωριό"
 
 #. [topic]: id=terrain_village
-#: data/core/help.cfg:696
+#: data/core/help.cfg:704
 #, fuzzy
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
@@ -2836,13 +2859,13 @@ msgstr ""
 "μόνο 40%."
 
 #. [topic]: id=terrain_water_village
-#: data/core/help.cfg:705
+#: data/core/help.cfg:713
 #, fuzzy
 msgid "Submerged Village"
 msgstr "Κάστρο των Νάνων"
 
 #. [topic]: id=terrain_water_village
-#: data/core/help.cfg:710
+#: data/core/help.cfg:718
 #, fuzzy
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
@@ -2866,12 +2889,12 @@ msgstr ""
 "μόνο 40%."
 
 #. [topic]: id=terrain_unwalkable
-#: data/core/help.cfg:717
+#: data/core/help.cfg:725
 msgid "Unwalkable"
 msgstr ""
 
 #. [topic]: id=terrain_unwalkable
-#: data/core/help.cfg:720
+#: data/core/help.cfg:728
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
@@ -2880,12 +2903,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_lava
-#: data/core/help.cfg:727
+#: data/core/help.cfg:735
 msgid "Lava"
 msgstr "Λάβα"
 
 #. [topic]: id=terrain_lava
-#: data/core/help.cfg:730
+#: data/core/help.cfg:738
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -2897,12 +2920,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_ford
-#: data/core/help.cfg:737
+#: data/core/help.cfg:745
 msgid "River Ford"
 msgstr "Πέρασμα Ποταμού"
 
 #. [topic]: id=terrain_ford
-#: data/core/help.cfg:740
+#: data/core/help.cfg:748
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2919,13 +2942,13 @@ msgstr ""
 "αμυντικά μπόνους καί μπόνους κίνησης γιά τη μονάδα πού είναι πάνω του."
 
 #. [topic]: id=terrain_reef
-#: data/core/help.cfg:747
+#: data/core/help.cfg:755
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "Κάστρο"
 
 #. [topic]: id=terrain_reef
-#: data/core/help.cfg:752
+#: data/core/help.cfg:760
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand. This provides most land units with a more steady footing and "
@@ -2936,12 +2959,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_bridge
-#: data/core/help.cfg:759
+#: data/core/help.cfg:767
 msgid "Bridge"
 msgstr "Γέφυρα"
 
 #. [topic]: id=terrain_bridge
-#: data/core/help.cfg:765
+#: data/core/help.cfg:773
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -2957,13 +2980,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_impassable
-#: data/core/help.cfg:772
+#: data/core/help.cfg:780
 #, fuzzy
 msgid "Impassable"
 msgstr "Αδιάβατα Βουνά"
 
 #. [topic]: id=terrain_impassable
-#: data/core/help.cfg:775
+#: data/core/help.cfg:783
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2973,12 +2996,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:788
+#: data/core/help.cfg:796
 msgid "General commands"
 msgstr "Γενικές διαταγές"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:793
+#: data/core/help.cfg:801
 #, fuzzy
 msgid ""
 "\n"
@@ -2989,7 +3012,7 @@ msgstr ""
 "Καθαρισμός μηνυμάτων συζήτησης."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:797
+#: data/core/help.cfg:805
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2999,7 +3022,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:800
+#: data/core/help.cfg:808
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3011,7 +3034,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:803
+#: data/core/help.cfg:811
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3019,7 +3042,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:806
+#: data/core/help.cfg:814
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3027,7 +3050,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:809
+#: data/core/help.cfg:817
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3035,7 +3058,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:812
+#: data/core/help.cfg:820
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3043,7 +3066,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:815
+#: data/core/help.cfg:823
 #, fuzzy
 msgid ""
 "\n"
@@ -3054,7 +3077,7 @@ msgstr ""
 "Έξοδος από το σενάριο (χωρίς προειδοποίηση)."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:818
+#: data/core/help.cfg:826
 #, fuzzy
 msgid ""
 "\n"
@@ -3065,7 +3088,7 @@ msgstr ""
 "Αποθήκευση παιχνιδιού (χωρίς προειδοποίηση)."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:819
+#: data/core/help.cfg:827
 #, fuzzy
 msgid ""
 "\n"
@@ -3075,12 +3098,12 @@ msgstr ""
 "Αποθήκευση παιχνιδιού και έξοδος από το σενάριο (χωρίς προειδοποίηση)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:827
+#: data/core/help.cfg:835
 msgid "Multiplayer commands"
 msgstr "Δικτυακές λειτουργίες"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:833
+#: data/core/help.cfg:841
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3090,7 +3113,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:836
+#: data/core/help.cfg:844
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3103,7 +3126,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:839
+#: data/core/help.cfg:847
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3113,7 +3136,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:842
+#: data/core/help.cfg:850
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3123,7 +3146,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:845
+#: data/core/help.cfg:853
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3132,7 +3155,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:848
+#: data/core/help.cfg:856
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3140,7 +3163,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:851
+#: data/core/help.cfg:859
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3149,7 +3172,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:852
+#: data/core/help.cfg:860
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3157,13 +3180,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:859
+#: data/core/help.cfg:867
 #, fuzzy
 msgid "Debug mode commands"
 msgstr "Γενικές διαταγές"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:863
+#: data/core/help.cfg:871
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3172,7 +3195,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:866
+#: data/core/help.cfg:874
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3180,7 +3203,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:869
+#: data/core/help.cfg:877
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3188,7 +3211,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:872
+#: data/core/help.cfg:880
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3196,7 +3219,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:875
+#: data/core/help.cfg:883
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3204,7 +3227,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:878
+#: data/core/help.cfg:886
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3212,7 +3235,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:881
+#: data/core/help.cfg:889
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3220,7 +3243,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:884
+#: data/core/help.cfg:892
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3228,7 +3251,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:887
+#: data/core/help.cfg:895
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3237,7 +3260,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:888
+#: data/core/help.cfg:896
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4927,22 +4950,22 @@ msgstr "< Πίσω"
 msgid "Forward >"
 msgstr "Επόμενο >"
 
-#: src/help.cpp:2813
+#: src/help.cpp:2809
 msgid "Reference to unknown topic: "
 msgstr "Μονάδες αυτής της φυλής:"
 
-#: src/help.cpp:3069
+#: src/help.cpp:3065
 msgid "corrupted original file"
 msgstr "χαλασμένο αρχείο"
 
-#: src/help.cpp:3160
+#: src/help.cpp:3156
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: src/help.cpp:3163
+#: src/help.cpp:3159
 msgid "The Battle for Wesnoth Help"
 msgstr "Η Μάχη για το Γουέσνοθ Βοήθεια"
 
-#: src/help.cpp:3219
+#: src/help.cpp:3215
 msgid "Parse error when parsing help text: "
 msgstr ""

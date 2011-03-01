@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-02-12 13:10+0100\n"
+"POT-Creation-Date: 2011-03-01 11:25+0100\n"
 "PO-Revision-Date: 2009-07-13 00:55+0300\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
@@ -309,7 +309,7 @@ msgstr ""
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:75
 msgid ""
-"A Redorder is a Drakish scrollkeeper whose has mastered the drakish "
+"A Recorder is a Drakish scrollkeeper whose has mastered the drakish "
 "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
@@ -906,13 +906,13 @@ msgstr "סיעות"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
-#: data/core/help.cfg:74 data/core/help.cfg:480
+#: data/core/help.cfg:74 data/core/help.cfg:488
 msgid "Terrains"
 msgstr "סוגי שטח"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:81 data/core/help.cfg:782
+#: data/core/help.cfg:81 data/core/help.cfg:790
 msgid "Commands"
 msgstr "פקודות"
 
@@ -1236,7 +1236,7 @@ msgstr "צהוב אם היא זזה, אבל עדיין יכולה להמשיך �
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
 msgid ""
-" red if it can no longer move or attack, or the user ended the unit's turn."
+" red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
 
 #. [topic]: id=orbs
@@ -2293,8 +2293,7 @@ msgstr "אל-מתה"
 #: data/core/help.cfg:427
 #, fuzzy
 msgid ""
-"<italic>text='Undead'</italic> units are immune to poison, also drain and "
-"plague doesn’t work on them."
+"<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
 "יחידות אל-מתות הינם חסינות לרעל, ויכולות יניקה ומגיפה אינם משפיעות עליהם. "
 
@@ -2325,8 +2324,8 @@ msgstr "מכני"
 #: data/core/help.cfg:435
 #, fuzzy
 msgid ""
-"<italic>text='Mechanical'</italic> units are immune to poison, also drain "
-"and plague doesn’t work on them."
+"<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
+"plague."
 msgstr ""
 "יחידות מכניות הינם חסינות לרעל, ויכולות יניקה ומגיפה אינם משפיעות עליהם. "
 
@@ -2337,7 +2336,37 @@ msgid ""
 "\n"
 "\n"
 "Mechanical units generally have mechanical as their only trait. Since "
-"mechanical units don’t really have life, drain, poison and plague has no "
+"mechanical units don’t really have life, drain, poison, and plague have no "
+"effect upon them."
+msgstr ""
+"\n"
+"\n"
+"ליחידות מכניות (כגון סירות) יש בדרך כלל את 'מכני' ככשרון היחיד שלהם. מכיוון "
+"שיחידות אלו לא באמת חיות, יניקה, רעל ומגיפה לא משפיעים עליהם. "
+
+#. [topic]: id=traits_elemental
+#: data/core/help.cfg:442
+#, fuzzy
+msgid "trait^Elemental"
+msgstr "הסתתרות"
+
+#. [topic]: id=traits_elemental
+#: data/core/help.cfg:443
+#, fuzzy
+msgid ""
+"<italic>text='Elemental'</italic> units are immune to poison, drain, and "
+"plague."
+msgstr ""
+"יחידות מכניות הינם חסינות לרעל, ויכולות יניקה ומגיפה אינם משפיעות עליהם. "
+
+#. [topic]: id=traits_elemental
+#: data/core/help.cfg:445
+#, fuzzy
+msgid ""
+"\n"
+"\n"
+"Elemental units generally have elemental as their only trait. Since "
+"elemental units are energy-based beings, drain, poison, and plague have no "
 "effect upon them."
 msgstr ""
 "\n"
@@ -2346,12 +2375,12 @@ msgstr ""
 "שיחידות אלו לא באמת חיות, יניקה, רעל ומגיפה לא משפיעים עליהם. "
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:442
+#: data/core/help.cfg:450
 msgid "Dextrous"
 msgstr "זריזה"
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:443
+#: data/core/help.cfg:451
 #, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
@@ -2359,7 +2388,7 @@ msgid ""
 msgstr "יחידות חזקות עושות נקודת נזק אחת יותר עבור כל פגיעה מוצלחת בטווח רחוק."
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:445
+#: data/core/help.cfg:453
 #, fuzzy
 msgid ""
 "\n"
@@ -2376,12 +2405,12 @@ msgstr ""
 "אלפים אלו מורדים נקודה נוספת של נזק בכל התקפת טווח-רחוק."
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:450
+#: data/core/help.cfg:458
 msgid "Healthy"
 msgstr "בריאה"
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:451
+#: data/core/help.cfg:459
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
@@ -2390,7 +2419,7 @@ msgstr ""
 "תנועה."
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:453
+#: data/core/help.cfg:461
 #, fuzzy
 msgid ""
 "\n"
@@ -2406,12 +2435,12 @@ msgstr ""
 "פחות נזק/תור מרעל. "
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:458
+#: data/core/help.cfg:466
 msgid "Dim"
 msgstr "טיפשה"
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:459
+#: data/core/help.cfg:467
 #, fuzzy
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
@@ -2419,7 +2448,7 @@ msgid ""
 msgstr "יחידות טיפשות צריכות 20% יותר נסיון בשביל להצליח לעלות רמה"
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:461
+#: data/core/help.cfg:469
 msgid ""
 "\n"
 "\n"
@@ -2432,19 +2461,19 @@ msgstr ""
 "אלו הינם אלו הם הפחותים, וזה אחד מהם."
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:466
+#: data/core/help.cfg:474
 msgid "Slow"
 msgstr "איטית"
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:467
+#: data/core/help.cfg:475
 #, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
 msgstr "ליחידות איטיות יש נקודת תנועה אחת פחות, אבל 5% יותר נק\"פ"
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:469
+#: data/core/help.cfg:477
 msgid ""
 "\n"
 "\n"
@@ -2458,12 +2487,12 @@ msgstr ""
 "יותר קשוחים. "
 
 #. [topic]: id=traits_weak
-#: data/core/help.cfg:474
+#: data/core/help.cfg:482
 msgid "Weak"
 msgstr "חלשה"
 
 #. [topic]: id=traits_weak
-#: data/core/help.cfg:475
+#: data/core/help.cfg:483
 #, fuzzy
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
@@ -2472,7 +2501,7 @@ msgstr ""
 "ליחידות חלשות יש נקודת פגיעה 1 פחות ומורידים 1 פחות נזק בהתקפות קפא\"פ. "
 
 #. [topic]: id=..terrains
-#: data/core/help.cfg:483
+#: data/core/help.cfg:491
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat.\n"
@@ -2483,12 +2512,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_flat
-#: data/core/help.cfg:490
+#: data/core/help.cfg:498
 msgid "Flat"
 msgstr "שטוח"
 
 #. [topic]: id=terrain_flat
-#: data/core/help.cfg:495
+#: data/core/help.cfg:503
 #, fuzzy
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
@@ -2507,12 +2536,12 @@ msgstr ""
 "לרוב היחידות יש הגנה של 30 עד 40% על אדמת מרעה."
 
 #. [topic]: id=terrain_road
-#: data/core/help.cfg:504
+#: data/core/help.cfg:512
 msgid "Road"
 msgstr "דרך"
 
 #. [topic]: id=terrain_road
-#: data/core/help.cfg:509
+#: data/core/help.cfg:517
 #, fuzzy
 msgid ""
 "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
@@ -2524,12 +2553,12 @@ msgstr ""
 "נוגע למשחק, דרכים הינם שטח <ref>dst='terrain_flat' text='שטוח'</ref>."
 
 #. [topic]: id=terrain_forest
-#: data/core/help.cfg:516
+#: data/core/help.cfg:524
 msgid "Forest"
 msgstr "יער"
 
 #. [topic]: id=terrain_forest
-#: data/core/help.cfg:523
+#: data/core/help.cfg:531
 #, fuzzy
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
@@ -2561,12 +2590,12 @@ msgstr ""
 "30% הגנה ביערות.\n"
 
 #. [topic]: id=terrain_hills
-#: data/core/help.cfg:531
+#: data/core/help.cfg:539
 msgid "Hills"
 msgstr "גבעות"
 
 #. [topic]: id=terrain_hills
-#: data/core/help.cfg:538
+#: data/core/help.cfg:546
 #, fuzzy
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
@@ -2589,12 +2618,12 @@ msgstr ""
 "מ 60% הגנה בגבעות."
 
 #. [topic]: id=terrain_mountains
-#: data/core/help.cfg:545
+#: data/core/help.cfg:553
 msgid "Mountains"
 msgstr "הרים"
 
 #. [topic]: id=terrain_mountains
-#: data/core/help.cfg:550
+#: data/core/help.cfg:558
 #, fuzzy
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
@@ -2616,12 +2645,12 @@ msgstr ""
 "רוב היחידות מקבלות בערך 60% הגנה בהרים, בעוד שגמדים נהנים מ - 70%."
 
 #. [topic]: id=terrain_swamp_water
-#: data/core/help.cfg:557
+#: data/core/help.cfg:565
 msgid "Swamp"
 msgstr "ביצה"
 
 #. [topic]: id=terrain_swamp_water
-#: data/core/help.cfg:562
+#: data/core/help.cfg:570
 #, fuzzy
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps slow "
@@ -2642,12 +2671,12 @@ msgstr ""
 "כולם באופן כללי מ 60%."
 
 #. [topic]: id=terrain_shallow_water
-#: data/core/help.cfg:569
+#: data/core/help.cfg:577
 msgid "Shallow Water"
 msgstr "מים רדודים"
 
 #. [topic]: id=terrain_shallow_water
-#: data/core/help.cfg:574
+#: data/core/help.cfg:582
 #, fuzzy
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
@@ -2671,12 +2700,12 @@ msgstr ""
 "בני-ים נהנים מ - 60%."
 
 #. [topic]: id=terrain_deep_water
-#: data/core/help.cfg:581
+#: data/core/help.cfg:589
 msgid "Deep Water"
 msgstr "מים עמוקים"
 
 #. [topic]: id=terrain_deep_water
-#: data/core/help.cfg:586
+#: data/core/help.cfg:594
 #, fuzzy
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
@@ -2692,12 +2721,12 @@ msgstr ""
 "גם אנשי-ים וגם נאגה מקבלים 50% הגנה במים עמוקים, עם תנועה מלאה."
 
 #. [topic]: id=terrain_frozen
-#: data/core/help.cfg:593
+#: data/core/help.cfg:601
 msgid "Frozen"
 msgstr "שלג"
 
 #. [topic]: id=terrain_frozen
-#: data/core/help.cfg:598
+#: data/core/help.cfg:606
 #, fuzzy
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
@@ -2715,12 +2744,12 @@ msgstr ""
 "לרוב היחידות יש 20 עד 40% הגנה בשלג."
 
 #. [topic]: id=terrain_castle
-#: data/core/help.cfg:605
+#: data/core/help.cfg:613
 msgid "Castle"
 msgstr "טירה"
 
 #. [topic]: id=terrain_castle
-#: data/core/help.cfg:612
+#: data/core/help.cfg:620
 #, fuzzy
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
@@ -2742,12 +2771,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_sand
-#: data/core/help.cfg:621
+#: data/core/help.cfg:629
 msgid "Sand"
 msgstr "חול"
 
 #. [topic]: id=terrain_sand
-#: data/core/help.cfg:626
+#: data/core/help.cfg:634
 #, fuzzy
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
@@ -2764,12 +2793,12 @@ msgstr ""
 "לרוב היחידות יש בין 20 ל 40% הגנה בחול."
 
 #. [topic]: id=terrain_desert
-#: data/core/help.cfg:633
+#: data/core/help.cfg:641
 msgid "Desert"
 msgstr "מדבר"
 
 #. [topic]: id=terrain_desert
-#: data/core/help.cfg:636
+#: data/core/help.cfg:644
 #, fuzzy
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
@@ -2780,12 +2809,12 @@ msgstr ""
 "זהים. ראה ערך <ref>dst=terrain_sand text=חול</ref>."
 
 #. [topic]: id=terrain_cave
-#: data/core/help.cfg:643
+#: data/core/help.cfg:651
 msgid "Cave"
 msgstr "מערה"
 
 #. [topic]: id=terrain_cave
-#: data/core/help.cfg:648
+#: data/core/help.cfg:656
 #, fuzzy
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
@@ -2806,12 +2835,12 @@ msgstr ""
 "רוב היחידות מקבלות 20 עד 40% הגנה במערות, בעוד למדים יש 50%."
 
 #. [topic]: id=terrain_rockbound_cave
-#: data/core/help.cfg:655
+#: data/core/help.cfg:663
 msgid "Rockbound Cave"
 msgstr "מערה מלאה סלעים"
 
 #. [topic]: id=terrain_rockbound_cave
-#: data/core/help.cfg:660
+#: data/core/help.cfg:668
 #, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
@@ -2836,12 +2865,12 @@ msgstr ""
 "גמדים נהנים מ 60% הגנה במערות מלאות סלעים."
 
 #. [topic]: id=terrain_illuminated_cave
-#: data/core/help.cfg:667
+#: data/core/help.cfg:675
 msgid "Illuminated Cave"
 msgstr "מערה מוארת"
 
 #. [topic]: id=terrain_illuminated_cave
-#: data/core/help.cfg:670
+#: data/core/help.cfg:678
 #, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2855,12 +2884,12 @@ msgstr ""
 "שטח זה זהה לשטח מערה רגיל. "
 
 #. [topic]: id=terrain_fungus
-#: data/core/help.cfg:677
+#: data/core/help.cfg:685
 msgid "Mushroom Grove"
 msgstr "חורשת פיטריות"
 
 #. [topic]: id=terrain_fungus
-#: data/core/help.cfg:682
+#: data/core/help.cfg:690
 #, fuzzy
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
@@ -2883,12 +2912,12 @@ msgstr ""
 "רק 20%."
 
 #. [topic]: id=terrain_village
-#: data/core/help.cfg:689
+#: data/core/help.cfg:697
 msgid "Village"
 msgstr "כפר"
 
 #. [topic]: id=terrain_village
-#: data/core/help.cfg:696
+#: data/core/help.cfg:704
 #, fuzzy
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
@@ -2911,12 +2940,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_water_village
-#: data/core/help.cfg:705
+#: data/core/help.cfg:713
 msgid "Submerged Village"
 msgstr "כפר ימי"
 
 #. [topic]: id=terrain_water_village
-#: data/core/help.cfg:710
+#: data/core/help.cfg:718
 #, fuzzy
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
@@ -2937,12 +2966,12 @@ msgstr ""
 "הגנה נמוכה. "
 
 #. [topic]: id=terrain_unwalkable
-#: data/core/help.cfg:717
+#: data/core/help.cfg:725
 msgid "Unwalkable"
 msgstr "בלתי הליך"
 
 #. [topic]: id=terrain_unwalkable
-#: data/core/help.cfg:720
+#: data/core/help.cfg:728
 #, fuzzy
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
@@ -2955,12 +2984,12 @@ msgstr ""
 "למשחק, רק יחידות בעלות יכולת תעופה יכולות לחצות את סוג השטח הזה."
 
 #. [topic]: id=terrain_lava
-#: data/core/help.cfg:727
+#: data/core/help.cfg:735
 msgid "Lava"
 msgstr "לבה"
 
 #. [topic]: id=terrain_lava
-#: data/core/help.cfg:730
+#: data/core/help.cfg:738
 #, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
@@ -2977,12 +3006,12 @@ msgstr ""
 "מגדיל את הנזק של יצורי סדר ומקטין את זה של יצורי תוהו."
 
 #. [topic]: id=terrain_ford
-#: data/core/help.cfg:737
+#: data/core/help.cfg:745
 msgid "River Ford"
 msgstr "שפך נהר"
 
 #. [topic]: id=terrain_ford
-#: data/core/help.cfg:740
+#: data/core/help.cfg:748
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2997,12 +3026,12 @@ msgstr ""
 "שנותן את בונוסי ההגנה והתנועה הגבוהים ביותר ליחידה."
 
 #. [topic]: id=terrain_reef
-#: data/core/help.cfg:747
+#: data/core/help.cfg:755
 msgid "Coastal Reef"
 msgstr "שונית אלמוגים"
 
 #. [topic]: id=terrain_reef
-#: data/core/help.cfg:752
+#: data/core/help.cfg:760
 #, fuzzy
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
@@ -3019,12 +3048,12 @@ msgstr ""
 "בני-ים ונאגות מקבלים 70% הגנה בשוניות."
 
 #. [topic]: id=terrain_bridge
-#: data/core/help.cfg:759
+#: data/core/help.cfg:767
 msgid "Bridge"
 msgstr "גשר"
 
 #. [topic]: id=terrain_bridge
-#: data/core/help.cfg:765
+#: data/core/help.cfg:773
 #, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a "
@@ -3050,12 +3079,12 @@ msgstr ""
 "קרקע לא יכולות להמצא על משבצת הגשר באותו זמן."
 
 #. [topic]: id=terrain_impassable
-#: data/core/help.cfg:772
+#: data/core/help.cfg:780
 msgid "Impassable"
 msgstr "בלתי-עביר"
 
 #. [topic]: id=terrain_impassable
-#: data/core/help.cfg:775
+#: data/core/help.cfg:783
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -3069,12 +3098,12 @@ msgstr ""
 "קשה. "
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:788
+#: data/core/help.cfg:796
 msgid "General commands"
 msgstr "פקודות סטנדרטיות"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:793
+#: data/core/help.cfg:801
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3085,7 +3114,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:797
+#: data/core/help.cfg:805
 #, fuzzy
 msgid ""
 "\n"
@@ -3101,7 +3130,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:800
+#: data/core/help.cfg:808
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3119,7 +3148,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:803
+#: data/core/help.cfg:811
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3130,7 +3159,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:806
+#: data/core/help.cfg:814
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3141,7 +3170,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:809
+#: data/core/help.cfg:817
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3152,7 +3181,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:812
+#: data/core/help.cfg:820
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3163,7 +3192,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:815
+#: data/core/help.cfg:823
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3174,7 +3203,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:818
+#: data/core/help.cfg:826
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3185,7 +3214,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:819
+#: data/core/help.cfg:827
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3194,12 +3223,12 @@ msgstr ""
 "שמור את המשחק וצא מההתקלות הנוכחית."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:827
+#: data/core/help.cfg:835
 msgid "Multiplayer commands"
 msgstr "פקודות למשחק רב משתתפים"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:833
+#: data/core/help.cfg:841
 #, fuzzy
 msgid ""
 "\n"
@@ -3214,7 +3243,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:836
+#: data/core/help.cfg:844
 #, fuzzy
 msgid ""
 "\n"
@@ -3233,7 +3262,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:839
+#: data/core/help.cfg:847
 #, fuzzy
 msgid ""
 "\n"
@@ -3248,7 +3277,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:842
+#: data/core/help.cfg:850
 #, fuzzy
 msgid ""
 "\n"
@@ -3260,7 +3289,7 @@ msgstr ""
 "שלח הודעה פרטית. אי אפשר לשלוח הודעות פרטיות לשחקנים שלא שולטים בצד במשחק. "
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:845
+#: data/core/help.cfg:853
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3273,7 +3302,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:848
+#: data/core/help.cfg:856
 #, fuzzy
 msgid ""
 "\n"
@@ -3284,7 +3313,7 @@ msgstr ""
 "הדלק/כבה השתקת כל הצופים."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:851
+#: data/core/help.cfg:859
 #, fuzzy
 msgid ""
 "\n"
@@ -3298,7 +3327,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:852
+#: data/core/help.cfg:860
 #, fuzzy
 msgid ""
 "\n"
@@ -3311,14 +3340,14 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:859
+#: data/core/help.cfg:867
 msgid "Debug mode commands"
 msgstr "פקודות למצב דיבוג (עם אתה לא יודע מה זה אז אתה כנראה לא צריך את זה)."
 
 # I'm skipping this for a moment as most users who use Debug Mode
 # (Campaign Developers, for example) know english
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:863
+#: data/core/help.cfg:871
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3327,7 +3356,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:866
+#: data/core/help.cfg:874
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3335,7 +3364,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:869
+#: data/core/help.cfg:877
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3343,7 +3372,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:872
+#: data/core/help.cfg:880
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3351,7 +3380,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:875
+#: data/core/help.cfg:883
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3359,7 +3388,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:878
+#: data/core/help.cfg:886
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3367,7 +3396,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:881
+#: data/core/help.cfg:889
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3375,7 +3404,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:884
+#: data/core/help.cfg:892
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3383,7 +3412,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:887
+#: data/core/help.cfg:895
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3392,7 +3421,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:888
+#: data/core/help.cfg:896
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -5102,22 +5131,22 @@ msgstr "< חזרה "
 msgid "Forward >"
 msgstr "קדימה >"
 
-#: src/help.cpp:2813
+#: src/help.cpp:2809
 msgid "Reference to unknown topic: "
 msgstr "הפנייה לנושא לא ידוע: "
 
-#: src/help.cpp:3069
+#: src/help.cpp:3065
 msgid "corrupted original file"
 msgstr "הקובץ המקורי פגום"
 
-#: src/help.cpp:3160
+#: src/help.cpp:3156
 msgid "Close"
 msgstr "סגור"
 
-#: src/help.cpp:3163
+#: src/help.cpp:3159
 msgid "The Battle for Wesnoth Help"
 msgstr "העזרה של הקרב של ווסנות'"
 
-#: src/help.cpp:3219
+#: src/help.cpp:3215
 msgid "Parse error when parsing help text: "
 msgstr "טעות ניתוח בניתוח טקסט העזרה: "
