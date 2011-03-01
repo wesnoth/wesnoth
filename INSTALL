@@ -1,13 +1,13 @@
 Contents:
   1. Prerequisites
-  2. Common instructions
-  3. SCons build
-  4. CMake build
+  2. Common Instructions
+  3. SCons Build
+  4. CMake Build
 
 
 1. Prerequisites:
 
-You'll need to have these libraries (with equivalent devel versions) to build Wesnoth:
+You'll need to have these libraries and their development headers to build Wesnoth:
 
  boost_iostreams >= 1.35.0
  boost_regex >= 1.35.0
@@ -24,10 +24,10 @@ You'll need to have these libraries (with equivalent devel versions) to build We
  libsdl-ttf >= 2.0.8
  libz
 
-Note there are several reports with SDL 1.2.14, for now we advice to use SDL
-1.2.13.
+Note that problems with SDL 1.2.14 have been reported, thus we advise you to use SDL
+1.2.13 for now.
 
-These libraries are optional dependencies that unlock additional features:
+These libraries are optional dependencies that enable additional features:
 
  libdbus-1 (used for desktop notifications)
 
@@ -35,40 +35,39 @@ There are currently two ways to build wesnoth:
  * scons >= 0.98.3
  * cmake >= 2.6.0
 
-2. Common steps:
+2. Common Steps:
 
-The old autotools based build system has been removed. Instead you now have to
-either rely on scons or cmake. Both systems should work nicely and get all
+The old autotools build system has been removed, thus you now have to use
+either SCons or CMake. Both systems should work nicely and get all
 common tasks, that are required for building Wesnoth, done nicely.
 
-SDL* libraries can be found at: http://www.libsdl.org
+SDL libraries can be found at: http://www.libsdl.org
 libfreetype can be found at: http://www.freetype.org
 Python can be found at: http://www.python.org
 Pango can be found at: http://www.pango.org/
-The boost libraries can be found at: http://www.boost.org
+The Boost libraries can be found at: http://www.boost.org
 
 You will also need to have a working installation of GNU gettext to build the
 translations.
 
-Note: It has been reported (see https://gna.org/bugs/index.php?10326)
-that under gcc 3.3.6 you need to turn off optimizations or you will
-get a build that doesn't work for multiplayer.  We recommend building
-with gcc 4.
+Note: It has been reported that using gcc 3.3.6 and under with optimizations
+will result in a build that is incapable of using multiplayer.
+See https://gna.org/bugs/index.php?10326 for further details. We recommend using
+gcc 4 to build Wesnoth.
 
-If you see lots of messages like "Type 'svnversion --help' for usage.",
-you have a Subversion client installed but it is not implementing the 
--n option of svnversion. Time to update it.
+While building, if you see messages such as "Type 'svnversion --help' for usage.",
+you have an outdated Subversion client installed. If you have an outdated Subversion
+client installed, you should update it, for output from svnversion is used in
+the build processes.
 
-Source-code:
+Source Code:
 
-You can get it here:
-
- http://www.wesnoth.org/downloads
+You can get the source code from: http://www.wesnoth.org/downloads
 
 
 Compiling:
 
-First untar the package:
+First, untar the package:
 
  $ tar xfjv wesnoth-x.y.z.tar.bz2
 
@@ -77,23 +76,22 @@ then
  $ cd wesnoth-x.y.z
 
 
-3. SCons build
+3. SCons Build
 
-SCons can be found at http://www.scons.org/ .
+SCons can be found at: http://www.scons.org/ .
 
 Simply type 'scons' in the top-level directory to build the game with the
 server. It is possible to select individual targets by naming
-them as scons arguments, including wesnothd (the Wesnoth multiplayer server)
+them as arguments, including wesnothd (the Wesnoth multiplayer server)
 and campaignd (the campaign server).
 
-scons takes a prefix= argument that says where to install the game
-and its data.  The prefix defaults to /usr/local; for production builds
-you may want to set prefix=/usr.
+SCons takes a prefix= argument that says where to install the game
+and its data. The prefix defaults to /usr/local; for production builds,
+you may wish to set prefix=/usr.
 
 The target 'all' is equivalent to 'wesnoth cutter exploder wesnothd campaignd'.
 
-So, for example, this builds game and campaign server,
-enabling debugging on all:
+So, for example, this builds the game and the campaign server while enabling debugging:
 
     scons build=debug wesnoth campaignd 
 
@@ -101,36 +99,36 @@ To build wesnothd:
 
    scons server_uid=<user> server_group=<group> wesnothd
 
-where <user> and <group> are valid on your system.  A wesnothd
+where <user> and <group> are valid on your system. A wesnothd
 subdirectory will be created under /var/run owned by
-<user>:<group>. This is relevant if you want to be able to communicate
-with wesnothd through a FIFO or named socket.  You have to run
+<user>:<group>. This is relevant if you wish to be able to communicate
+with wesnothd through a FIFO or named socket. You have to run
 wesnothd with the user specified while configuring in order for it to
-work.  You can also specify the FIFO directory directly by using
+work. You can also specify the FIFO directory directly by using
 fifodir=<directory>.
 
-If you want to install several versions of wesnoth you should use the
-prefsdir= parameter to get distinct preferences directories.  The
+If you wish to install several versions of wesnoth, you should use the
+prefsdir= parameter to get distinct preferences directories. The
 default is '.wesnoth'.
 
 Installation productions 'install',
-'install-wesnothd' and 'install-campaignd' are available.
+'install-wesnothd', and 'install-campaignd' are available.
 
 A plain 'install' installs all binary executables that exist -- so
 'scons install' after a plain 'scons' installs game and server, but
-after 'scons all' it will install all binaries.
+after 'scons all', it will install all binaries.
 
-Notes on scons for autotools users
+Notes on SCons for autotools users:
 
-The scons build process works in a different way than configure.  It runs
-in one step, checking your configuration and building, rather than (as
-autotools does) generating makefiles to be run later.  So not all autotools
-options have exact scons equivalents.  
+The scons build process works in a different way than configure. The scons
+build process runs in one step, checking your configuration and building,
+rather than generating makefiles to be run later. Not all autotools
+options have exact SCons equivalents.  
 
-But here is a translation key, autotools configure options on the left
-and scons command-line options on the right.  Defaults are given in square
-brackets, and are the same as those for corresponding configure options.  
-Configure options with no scons equivalents are marked N/A
+Here is a translation key. Autotools configure options are on the left, and
+scons commandline options are on the right. Defaults are given in square
+brackets and are the same as those for corresponding configure options.  
+Configure options with no scons equivalents are marked with 'N/A'.
 
 Configuration:
   -h, --help              --help
@@ -229,12 +227,12 @@ Optional Packages:
   --with-boost=DIR                boostdir=DIR boostlibdir=DIR boost_suffix=suffix(e.g. -gcc41-mt-1_35)
 
 
-4. CMake build
+4. CMake Build
 
-To build with cmake, you need cmake >= 2.6 . You can get cmake at http://www.cmake.org .
+To build with CMake, you need cmake >= 2.6 . You can get cmake at http://www.cmake.org .
 
-There are two ways to build wesnoth with cmake: Inside the source tree or
-outside. Out of source builds have the advantage that you can have builds with
+There are two ways to build wesnoth with CMake: inside the source tree or
+outside of it. Out-of-source builds have the advantage that you can have builds with
 different options from one source directory.
 
 To build wesnoth out of source:
@@ -250,7 +248,7 @@ To build wesnoth in the source directory:
  $ make
  $ make install
 
-To change build options, you can either pass the options on the command line:
+To change build options, you can either pass the options on the commandline:
 
  $ cmake .. -DOPTION=value
 
