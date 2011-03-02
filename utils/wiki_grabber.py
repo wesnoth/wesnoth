@@ -34,7 +34,7 @@ except ImportError:
 
 if __name__ == "__main__":
     # setup and parse command line arguments
-	# The defaults are set to the values of the older hardcoded implementation.
+    # The defaults are set to the values of the older hardcoded implementation.
     parser = argparse.ArgumentParser(description='The wiki grabber is a tool'
             + ' to convert wiki comment formatting into a text page which can'
             + ' be used in the wiki. For more details, see'
@@ -83,7 +83,6 @@ if __name__ == "__main__":
             return True
         return False
 
-
     def reindent(data):
         """Converts the raw input to an easier to use format.
 
@@ -100,7 +99,10 @@ if __name__ == "__main__":
         return data
 
     def get_value(data, key):
-        """Extracts data from a key value pair, a key must start at the start of a line."""
+        """
+        Extracts data from a key value pair, a key must start at the start of
+        a line.
+        """
 
         res = re.compile("^" + key + " *= *(.*)$", re.M).search(data)
 
@@ -246,7 +248,7 @@ if __name__ == "__main__":
     def create_window_overview_table(data):
         """Creates a table for all available windows."""
         #matches a line like
-        # Addon_connect &               The dialog to connect to the addon server $
+        # Addon_connect & The dialog to connect to the addon server $
         regex = re.compile("([A-Za-z]\w*) +& +(.*) +\$")
         res = regex.findall(data)
 
@@ -328,53 +330,73 @@ if __name__ == "__main__":
             sys.stderr.write("Unknown table definition '%s'.\n" % type)
             return "Unknown table definition '%s'." % type
 
-    def create_wml_reference_description(data):
+    def create_wml_reference_description(data, nest_level):
+        """ Creates a description for wml reference purposes."""
         # Matches a line like:
         # name & string & "" & 1.5 & description
         # [relative] & node & * & & description
 
-        regex = re.compile("(.*) +& +(.*) +& *(.*) *& +(.*) *& *(.*) +\$")
+        regex = re.compile("(.*) +& +(.*) +& *(.*) *& +(.*) *& *(.*)")
         res = regex.findall(data)
 
         if is_empty(res, data):
             return "Empty description"
 
-        result = ''
-
-        for i in res:
-           # We don't strip i[0] because it allows to take care of
-           # nested items that are of the same type and that are 4
-           # spaces indented.
-           result += "%s '''''%s''''' " % ("*" * (i[0].rstrip().count(' ') / 4 + 1), i[0].strip())
-           if i[1] != 'node':
-               result += "(%s, ''%s'') " % (i[1], "default " + i[2].rstrip() if i[2] else "'mandatory'")
-           else:
-               result += "(%s) " % {'*': "zero or more times", '+': "one or more times", '?': "zero or one times", '1': "one time", '': "empty string bug."}[i[2].rstrip()]
-           result += "%s" % i[4]
-           if i[3]:
-               result += " {{DevFeature%s}}" % i[3].replace(' ', '')
-           result += "\n"
-        return result
+        i = res[0]
+        result = "%s '''''%s''''' " % ("*" * nest_level, i[0].strip())
+        if i[1] != 'node':
+            result += "(%s, ''%s'') " % (i[1], "default " + i[2].rstrip() if i[2] else "'mandatory'")
+        else:
+            result += "(%s) " % {'*': "zero or more times", '+': "one or more times", '?': "zero or one times", '1': "one time", '': "empty string bug."}[i[2].rstrip()]
+        result += "%s" % i[4]
+        if i[3]:
+            result += " {{DevFeature%s}}" % i[3].replace(' ', '')
+        return result + "\n"
 
     def create_description(description):
         """Wrapper for creating descriptions."""
-        type = description.group(1)
 
+        # List of descriptions used.
         descriptions = {
             "wml_reference": create_wml_reference_description}
 
-        try:
-            return descriptions[type](description.group(2) + "\n")
-        except KeyError:
-            sys.stderr.write("Unknown description definition '%s' .\n" % type)
-            return "Unknown description definition '%s'." % type
+        # We use a list because it's easier to handle nested elements
+        type = [description.group(1)]
+
+        # The $ are the separators between rows of a description
+        parseme = description.group(2).split("$")
+        # We strip everything that we don't need
+        parseme = [i.replace("\n", "").strip() for i in parseme]
+
+        nest_level = 1
+        data = ""
+
+        for i in parseme:
+
+            # If it's a new block, we need to handle it.
+            if i.startswith("@begin"):
+                nest_level += 1
+                i = i.lstrip("@begin{description}{")
+                type += [i[:i.find("}")]]
+                i = i.strip(type[nest_level-1] + "}")
+
+            # We also handle end of blocks.
+            elif i.startswith("@end") and i != "@end{description}":
+                nest_level -= 1
+                i = i.lstrip("@end{description}")
+                type = type[:-1]
+
+            # Send content unless special "@end" case.
+            if not i == "@end{description}":
+                data += descriptions[type[nest_level-1]](i + "\n", nest_level)
+
+        return data
 
     def process_body(data):
         """Process the body.
 
         The body needs to be stripped of known markup values.
         """
-
 
         table_regex = re.compile("^@begin{table}\{(.*?)\}\n(.*?)\n@end{table}$", re.M | re.S)
         data = table_regex.sub(lambda match: create_table(match), data)
@@ -468,7 +490,6 @@ if __name__ == "__main__":
 
         return macro_map[macro.group(1)]
 
-
     def replace_macros(data):
         """Replaces all macros found in the data.
 
@@ -506,7 +527,6 @@ if __name__ == "__main__":
                 macro_regex = re.compile("^@start_macro *= *(.*?)\n(.*?)\n@end_macro.*?$", re.M | re.S)
                 macro_regex.sub(lambda match: create_macro(match), section)
 
-
     def process_directory_macros(dir):
         """Processes a directory looking for macros.
 
@@ -526,7 +546,6 @@ if __name__ == "__main__":
                 process_file_macros(os.path.join(dir, item))
 
     ##### ##### ##### MAIN ##### ##### #####
-
 
     process_directory_macros(src_directory)
     process_directory(src_directory)
