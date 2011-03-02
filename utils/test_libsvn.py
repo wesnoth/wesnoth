@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
-# $Id$  
-"""             
+# $Id$
+"""
    Copyright (C) 2007 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -11,9 +11,8 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
-"""
 
-"""
+
 This module is meant to test the libsvn.py library.
 """
 
@@ -22,71 +21,71 @@ import sys, os.path, optparse
 sys.path.append("data/tools")
 import wesnoth.libsvn as libsvn
 
-"""
-Evaluates the result send from the library.
-"""
+
 def evaluate(res):
-    if(options.verbose):
-        print "Status:", res.status 
+    """
+    Evaluates the result send from the library.
+    """
+    if options.verbose:
+        print "Status:", res.status
         print res.out
-    if(res.status == -1):
+    if res.status == -1:
         print "Error: " + res.err
 
-"""
-The main program.
-"""
+# The main program.
+
 if __name__ == "__main__":
 
     optionparser = optparse.OptionParser("%prog [options] path")
 
     # -o file:///home/mark/addond/repo /tmp/checkout
-    optionparser.add_option("-o", "--checkout", help = "checkout a repo") #   V
+    optionparser.add_option("-o", "--checkout", help="checkout a repo") #   V
 
     # -u /tmp/checkout
-    optionparser.add_option("-u", "--update", help = "update a local copy",
-        action = "store_true") #   V
+    optionparser.add_option("-u", "--update", help="update a local copy",
+        action="store_true") #   V
 
     # -u --rev=1 /tmp/checkout
-    optionparser.add_option("--rev", help = "update to a certain revision") #   V
+    optionparser.add_option("--rev", help="update to a certain revision") #   V
 
     # -c "foo bar" /tmp/checkout/
-    optionparser.add_option("-c", "--commit", help = "commits a change") # V
-    
-    # NOTE the checkout is overkill maybe not make it mandatory after all
-    # -a /tmp/checkout/bar /tmp/checkout
-    optionparser.add_option("-a", "--add", help = "add a file / directory") #   V
+    optionparser.add_option("-c", "--commit", help="commits a change") # V
 
     # NOTE the checkout is overkill maybe not make it mandatory after all
     # -a /tmp/checkout/bar /tmp/checkout
-    optionparser.add_option("-r", "--remove", help = "remove a file / directory") #   V
+    optionparser.add_option("-a", "--add", help="add a file / directory") #   V
 
-    optionparser.add_option("-s", "--sync", help = 
+    # NOTE the checkout is overkill maybe not make it mandatory after all
+    # -a /tmp/checkout/bar /tmp/checkout
+    optionparser.add_option("-r", "--remove", help="remove a file / directory") #   V
+
+    optionparser.add_option("-s", "--sync", help=
         "syncs the local checkout with a separate directory, requires PATH") #   \
 
     # just add a v to a command
-    optionparser.add_option("-v", "--verbose", help = "show verbose output",
-        action = "store_true") #   V
+    optionparser.add_option("-v", "--verbose", help="show verbose output",
+        action="store_true") #   V
 
-    optionparser.add_option("-f", "--files", help = 
+    optionparser.add_option("-f", "--files", help=
         "do action only for selected files (only in combination with update/checkout)")
 
-    optionparser.add_option("-e", "--exclude", help = 
+    optionparser.add_option("-e", "--exclude", help=
         "exclude selected files (only in combination with sync)")
 
-    optionparser.add_option("-t", "--stat", help = "gives the status of a file")
+    optionparser.add_option("-t", "--stat", help="gives the status of a file")
 
     options, args = optionparser.parse_args()
-    if(len(args) != 1):
+    if len(args) != 1:
         optionparser.error("incorrect number of arguments")
 
     svn = libsvn.SVN(args[0])
 
 ### checkout
-    if(options.checkout != None):
+    if options.checkout != None:
 
         # print debug info
-        if(options.verbose):
-            print "checkout " + options.checkout + " to " + args[0]
+        if options.verbose:
+            print "checkout %s to %s" % (options.checkout, args[0])
 
         # fire command
         res = svn.checkout(options.checkout)
@@ -95,12 +94,12 @@ if __name__ == "__main__":
         evaluate(res)
 
 ### update
-    elif(options.update):
+    elif options.update:
 
         # print debug info
-        if(options.verbose):
+        if options.verbose:
             msg = "update " + args[0]
-            if(options.rev != None):
+            if options.rev != None:
                 msg += " to rev " + options.rev
 
             print msg
@@ -112,11 +111,11 @@ if __name__ == "__main__":
         evaluate(res)
 
 ### add
-    elif(options.add != None):
+    elif options.add != None:
 
         # print debug info
-        if(options.verbose):
-            print "add " + options.add + " to " + args[0]
+        if options.verbose:
+            print "add %s to %s" % (options.add, args[0])
 
         # fire command
         res = svn.add(options.add)
@@ -125,11 +124,11 @@ if __name__ == "__main__":
         evaluate(res)
 
 ### remove
-    elif(options.remove != None):
+    elif options.remove != None:
 
         # print debug info
-        if(options.verbose):
-            print "remove " + options.remove + " from " + args[0]
+        if options.verbose:
+            print "remove %s from %s" % (options.remove, args[0])
 
         # fire command
         res = svn.remove(options.remove)
@@ -138,11 +137,11 @@ if __name__ == "__main__":
         evaluate(res)
 
 ### commit
-    elif(options.commit != None):
+    elif options.commit != None:
 
         # print debug info
-        if(options.verbose):
-            print "commit " + args[0] + " message: " + options.commit
+        if options.verbose:
+            print "commit %s message: %s" % (args[0], options.commit)
 
         # fire command
         res = svn.commit(options.commit)
@@ -151,18 +150,18 @@ if __name__ == "__main__":
         evaluate(res)
 
 ### sync
-    elif(options.sync != None):
+    elif options.sync != None:
 
         # print debug info
-        if(options.verbose):
-            print "sync " + args[0] + " path " + options.sync
+        if options.verbose:
+            print "sync %s path %s" % (args[0], options.sync)
 
         # do some sanity checks
-        if(not(os.path.isdir(args[0]))):
+        if not os.path.isdir(args[0]):
             print "repo not found " + args[0]
             sys.exit()
 
-        if(not(os.path.isdir(options.sync))):
+        if not os.path.isdir(options.sync):
             print "path not found " + options.sync
             sys.exit()
 
@@ -173,11 +172,11 @@ if __name__ == "__main__":
         evaluate(res)
 
 ### status
-    elif(options.stat != None):
+    elif options.stat != None:
 
         # print debug info
-        if(options.verbose):
-            print "status " + options.stat + " of " + args[0]
+        if options.verbose:
+            print "status %s of %s" % (options.stat, args[0])
 
         # fire command
         res = svn.status(options.stat)
@@ -187,4 +186,3 @@ if __name__ == "__main__":
 
     else:
         optionparser.print_help()
-
