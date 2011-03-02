@@ -23,7 +23,7 @@ namespace gui2 {
 twidget::twidget()
 	: id_("")
 	, definition_("default")
-	, parent_(0)
+	, parent_(NULL)
 	, x_(-1)
 	, y_(-1)
 	, w_(0)
@@ -139,13 +139,13 @@ void twidget::set_size(const tpoint& size)
 twidget* twidget::find_at(const tpoint& coordinate,
 		const bool must_be_active)
 {
-	return is_at(coordinate, must_be_active) ? this : 0;
+	return is_at(coordinate, must_be_active) ? this : NULL;
 }
 
 const twidget* twidget::find_at(const tpoint& coordinate,
 		const bool must_be_active) const
 {
-	return is_at(coordinate, must_be_active) ? this : 0;
+	return is_at(coordinate, must_be_active) ? this : NULL;
 }
 
 SDL_Rect twidget::get_dirty_rect() const
@@ -186,7 +186,7 @@ const twindow* twidget::get_window() const
 tdialog* twidget::dialog()
 {
 	twindow* window = get_window();
-	return window ? window->dialog() : 0;
+	return window ? window->dialog() : NULL;
 }
 
 void twidget::populate_dirty_list(twindow& caller,

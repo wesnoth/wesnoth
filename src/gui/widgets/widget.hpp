@@ -541,24 +541,27 @@ public:
 private:
 
 	/**
-	 * The id is the unique name of the widget in a certain context. This is
-	 * needed for certain widgets so the engine knows which widget is which.
-	 * Eg it knows which button is pressed and thus which engine action is
-	 * connected to the button. This doesn't mean that the id is unique in a
+	 * The id is the unique name of the widget in a certain context.
+	 *
+	 * This is needed for certain widgets so the engine knows which widget is
+	 * which. Eg it knows which button is pressed and thus which engine action
+	 * is connected to the button. This doesn't mean that the id is unique in a
 	 * window, eg a listbox can have the same id for every row.
 	 */
 	std::string id_;
 
 	/**
-	 * The definition is the id of that widget class. Eg for a button it
-	 * [button_definition]id. A button can have multiple definitions which all
-	 * look different but for the engine still is a button.
+	 * The definition is the id of that widget class.
+	 *
+	 * Eg for a button it [button_definition]id. A button can have multiple
+	 * definitions which all look different but for the engine still is a
+	 * button.
 	 */
 	std::string definition_;
 
 	/**
 	 * The parent widget, if the widget has a parent it contains a pointer to
-	 * the parent, else it's set to 0.
+	 * the parent, else it's set to NULL.
 	 */
 	twidget* parent_;
 
