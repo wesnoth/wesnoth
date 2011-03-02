@@ -142,7 +142,7 @@ public:
 	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
 	{
 		return (twidget::find_at(coordinate, must_be_active)
-			&& (!must_be_active || get_active())) ? this : 0;
+			&& (!must_be_active || get_active())) ? this : NULL;
 	}
 
 	/** Inherited from twidget. */
@@ -150,14 +150,14 @@ public:
 			const bool must_be_active) const
 	{
 		return (twidget::find_at(coordinate, must_be_active)
-			&& (!must_be_active || get_active())) ? this : 0;
+			&& (!must_be_active || get_active())) ? this : NULL;
 	}
 
 	/** Inherited from twidget.*/
 	twidget* find(const std::string& id, const bool must_be_active)
 	{
 		return (twidget::find(id, must_be_active)
-			&& (!must_be_active || get_active())) ? this : 0;
+			&& (!must_be_active || get_active())) ? this : NULL;
 	}
 
 	/** Inherited from twidget.*/
@@ -165,7 +165,7 @@ public:
 			const bool must_be_active) const
 	{
 		return (twidget::find(id, must_be_active)
-			&& (!must_be_active || get_active())) ? this : 0;
+			&& (!must_be_active || get_active())) ? this : NULL;
 	}
 
 	/**

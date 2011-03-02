@@ -44,7 +44,7 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	, tooltip_()
 	, help_message_()
 	, canvas_(canvas_count)
-	, config_(0)
+	, config_(NULL)
 	, renderer_()
 	, text_maximum_width_(0)
 	, text_alignment_(PANGO_ALIGN_LEFT)
@@ -192,7 +192,7 @@ tpoint tcontrol::calculate_best_size() const
 
 	/**
 	 * @todo The value send should subtract the border size
-	 * and readd it after calculation to get the proper result.
+	 * and read it after calculation to get the proper result.
 	 */
 	tpoint result = get_best_text_size(minimum, maximum);
 	DBG_GUI_L << LOG_HEADER
