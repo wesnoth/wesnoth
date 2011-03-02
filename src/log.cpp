@@ -46,7 +46,28 @@ static std::ostream null_ostream(new null_streambuf);
 static int indent = 0;
 static bool timestamp = true;
 
+static std::ostream *output_stream = NULL;
+
+static std::ostream& output()
+{
+	if(output_stream) {
+		return *output_stream;
+	}
+	return std::cerr;
+}
+
 namespace lg {
+
+tredirect_output_setter::tredirect_output_setter(std::ostream& stream)
+	: old_stream_(output_stream)
+{
+	output_stream = &stream;
+}
+
+tredirect_output_setter::~tredirect_output_setter()
+{
+	output_stream = old_stream_;
+}
 
 typedef std::map<std::string, int> domain_map;
 static domain_map *domains;
@@ -108,17 +129,18 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 	if (severity_ > domain.domain_->second)
 		return null_ostream;
 	else {
+		std::ostream& stream = output();
 		if(do_indent) {
 			for(int i = 0; i != indent; ++i)
-				std::cerr << "  ";
+				stream << "  ";
 			}
 		if (timestamp) {
-			std::cerr << get_timestamp(time(NULL));
+			stream << get_timestamp(time(NULL));
 		}
 		if (show_names) {
-			std::cerr << name_ << ' ' << domain.domain_->first << ": ";
+			stream << name_ << ' ' << domain.domain_->first << ": ";
 		}
-		return std::cerr;
+		return stream;
 	}
 }
 

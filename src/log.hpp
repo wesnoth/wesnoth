@@ -35,6 +35,35 @@
 
 namespace lg {
 
+/**
+ * Helper class to redirect the output of the logger in a certain scope.
+ *
+ * The main usage of the redirection is for the unit tests to validate the
+ * ourput on the logger with the expected output.
+ */
+class tredirect_output_setter
+{
+public:
+
+	/**
+	 * Constructor.
+	 *
+	 * @param stream              The stream to direct the output to.
+	 */
+	explicit tredirect_output_setter(std::ostream& stream);
+
+	~tredirect_output_setter();
+
+private:
+
+	/**
+	 * The previously set redirection.
+	 *
+	 * This value is stored here to be restored in this destructor.
+	 */
+	std::ostream* old_stream_;
+};
+
 class logger;
 
 typedef std::pair<const std::string, int> logd;
