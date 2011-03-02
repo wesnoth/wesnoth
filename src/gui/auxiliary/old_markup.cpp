@@ -17,7 +17,7 @@
 
 namespace gui2 {
 
-legacy_menu_item::legacy_menu_item(const std::string& str)
+tlegacy_menu_item::tlegacy_menu_item(const std::string& str)
 	: icon_(), label_(str), desc_(), default_(false)
 {
 	if(label_.empty()) {
@@ -58,3 +58,4 @@ legacy_menu_item::legacy_menu_item(const std::string& str)
 }
 
 }
+

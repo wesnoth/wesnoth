@@ -280,7 +280,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			 * a new syntax which doesn't use those hacks (also avoids the problem
 			 * with special meanings for certain characters.
 			 */
-			legacy_menu_item item(option_list_[i]);
+			tlegacy_menu_item item(option_list_[i]);
 
 			if(item.is_default()) {
 				// Number of items hasn't been increased yet so i is ok.

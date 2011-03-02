@@ -24,7 +24,7 @@ namespace gui2
 /**
  * Implements simple parsing of legacy GUI1 item markup.
  */
-class legacy_menu_item
+class tlegacy_menu_item
 {
 	/*
 	 * Legacy options/menu items have some special markup:
@@ -41,7 +41,7 @@ class legacy_menu_item
 	 * with special meanings for certain characters.
 	 */
 public:
-	legacy_menu_item(const std::string& str = std::string());
+	tlegacy_menu_item(const std::string& str = std::string());
 
 	const std::string& icon() const {
 		return icon_;
@@ -59,17 +59,30 @@ public:
 		return default_;
 	}
 
-	legacy_menu_item& operator=(const legacy_menu_item& o) {
-		if(&o != this) {
-			icon_ = o.icon_;
-			label_ = o.label_;
-			desc_ = o.desc_;
+	tlegacy_menu_item& operator=(const tlegacy_menu_item& rhs) {
+		if(&rhs != this) {
+			icon_ = rhs.icon_;
+			label_ = rhs.label_;
+			desc_ = rhs.desc_;
 		}
 		return *this;
 	}
 
 private:
-	std::string icon_, label_, desc_;
+	/** The icon for the menu item. */
+	std::string icon_;
+
+	/** The first text item of the menu item, normally a short string. */
+	std::string label_;
+
+	/** The second text item of the menu item, normally a longer string. */
+	std::string desc_;
+
+	/**
+	 * Is the item the default item and thus initially selected.
+	 *
+	 * It's unspecified what happens if multiple items in a menu are selected.
+	 */
 	bool default_;
 };
 

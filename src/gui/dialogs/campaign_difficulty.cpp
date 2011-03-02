@@ -77,7 +77,7 @@ void tcampaign_difficulty::pre_show(CVideo& /*video*/, twindow& window)
 
 	std::map<std::string, string_map> data;
 
-	foreach(const legacy_menu_item& item, items_) {
+	foreach(const tlegacy_menu_item& item, items_) {
 		if(item.is_default()) {
 			index_ = list.get_item_count();
 		}
