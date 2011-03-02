@@ -221,18 +221,18 @@ bool load_strings(bool complain)
 	DBG_G << "Loading strings\n";
 	config cfg;
 
-	LOG_G << "There are " << languages_.size() << " [locale] blocks\n";
+	LOG_G << "There are " << languages_.size() << " [language] blocks\n";
 	if (complain && languages_.empty()) {
-		std::cerr << "No [locale] block found\n";
+		std::cerr << "No [language] block found\n";
 		return false;
 	}
 	foreach (const config &lang, languages_) {
-		DBG_G << "[locale]\n";
+		DBG_G << "[language]\n";
 		foreach (const config::attribute &j, lang.attribute_range()) {
 			DBG_G << j.first << "=\"" << j.second << "\"\n";
 			strings_[j.first] = j.second;
 		}
-		DBG_G << "[/locale]\n";
+		DBG_G << "[/language]\n";
 	}
 	DBG_G << "done";
 
