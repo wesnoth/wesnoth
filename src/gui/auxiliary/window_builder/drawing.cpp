@@ -27,11 +27,11 @@ namespace implementation {
 
 tbuilder_drawing::tbuilder_drawing(const config& cfg)
 	: tbuilder_control(cfg)
-	, width_(cfg["width"])
-	, height_(cfg["height"])
-	, draw_(cfg.child("draw"))
+	, width(cfg["width"])
+	, height(cfg["height"])
+	, draw(cfg.child("draw"))
 {
-	assert(!draw_.empty());
+	assert(!draw.empty());
 }
 
 twidget* tbuilder_drawing::build() const
@@ -43,14 +43,14 @@ twidget* tbuilder_drawing::build() const
 	const game_logic::map_formula_callable& size =
 			get_screen_size_variables();
 
-	const unsigned width = width_(size);
-	const unsigned height = height_(size);
+	const unsigned w = width(size);
+	const unsigned h = height(size);
 
-	if(width || height) {
-		widget->set_best_size(tpoint(width, height));
+	if(w || h) {
+		widget->set_best_size(tpoint(w, h));
 	}
 
-	widget->canvas().front().set_cfg(draw_);
+	widget->canvas().front().set_cfg(draw);
 
 	DBG_GUI_G << "Window builder: placed drawing '"
 			<< id << "' with definition '"

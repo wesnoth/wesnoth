@@ -30,15 +30,14 @@ struct tbuilder_drawing
 
 	twidget* build () const;
 
-private:
 	/** The width of the widget. */
-	tformula<unsigned> width_;
+	tformula<unsigned> width;
 
 	/** The height of the widget. */
-	tformula<unsigned> height_;
+	tformula<unsigned> height;
 
 	/** Config containing what to draw on the widgets canvas. */
-	config draw_;
+	config draw;
 };
 
 } // namespace implementation
