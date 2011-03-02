@@ -35,7 +35,7 @@ static lg::log_domain log_engine("engine");
 void wml_exception(
 		  const char* cond
 		, const char* file
-		, int line
+		, const int line
 		, const char *function
 		, const std::string& message
 		, const std::string& dev_message)
