@@ -30,8 +30,7 @@ public:
 
 	twidget* build () const;
 
-private:
-	std::string history_;
+	std::string history;
 };
 
 

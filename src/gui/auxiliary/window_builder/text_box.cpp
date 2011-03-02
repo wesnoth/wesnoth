@@ -27,7 +27,7 @@ namespace implementation {
 
 tbuilder_text_box::tbuilder_text_box(const config& cfg)
 	: tbuilder_control(cfg)
-	, history_(cfg["history"])
+	, history(cfg["history"])
 {
 }
 
@@ -40,8 +40,8 @@ twidget* tbuilder_text_box::build() const
 	// A textbox doesn't have a label but a text
 	widget->set_value(label);
 
-	if (!history_.empty()) {
-		widget->set_history(history_);
+	if (!history.empty()) {
+		widget->set_history(history);
 	}
 
 	DBG_GUI_G << "Window builder: placed text box '"
@@ -62,8 +62,8 @@ twidget* tbuilder_text_box::build() const
  * == Text box ==
  *
  * @begin{table}{config}
- *     label & tstring & "" &            The initial text of the text box. $
- *     history & string & "" &           The name of the history for the text
+ *     label & tstring & "" &          The initial text of the text box. $
+ *     history & string & "" &         The name of the history for the text
  *                                     box.
  *                                     A history saves the data entered in a
  *                                     text box between the games. With the up
