@@ -3105,6 +3105,9 @@ stringfixes = {
 
 # Fixed capitalization
 ("you ever heard of The", "you ever heard of the"),
+
+# Kill the hyphens
+("Mid-day", "Midday"),
 ),
 
 "1.8-announcement" : (
