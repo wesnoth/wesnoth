@@ -171,9 +171,10 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 	// Find the unit list related fields:
 //	tlistbox& units = find_widget<tlistbox>(&window, "unit_list", true);
 	tlistbox& units = find_widget<tlistbox>(&window, "recruit_list", true);
+#ifndef GUI2_EXPERIMENTAL_LISTBOX
 	units.set_callback_value_change(dialog_callback<twml_message_,
 			&twml_message_::update_unit_list> );
-
+#endif
 	if(!unit_list_.empty()) {
 
 		window.canvas(1).set_variable("portrait_image", variant(
