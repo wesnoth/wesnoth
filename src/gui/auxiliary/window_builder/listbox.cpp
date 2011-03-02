@@ -155,18 +155,18 @@ twidget* tbuilder_listbox::build() const
  *                                     Determines whether or not to show the
  *                                     scrollbar. $
  *
- *     header & grid & [] &              Defines the grid for the optional
+ *     header & grid & [] &            Defines the grid for the optional
  *                                     header. (This grid will automatically
  *                                     get the id _header_grid.) $
- *     footer & grid & [] &              Defines the grid for the optional
+ *     footer & grid & [] &            Defines the grid for the optional
  *                                     footer. (This grid will automatically
  *                                     get the id _footer_grid.) $
  *
- *     list_definition & section & &      This defines how a listbox item
+ *     list_definition & section & &   This defines how a listbox item
  *                                     looks. It must contain the grid
  *                                     definition for 1 row of the list. $
  *
- *     list_data & section & [] &         A grid alike section which stores the
+ *     list_data & section & [] &      A grid alike section which stores the
  *                                     initial data for the listbox. Every row
  *                                     must have the same number of columns as
  *                                     the 'list_definition'. $

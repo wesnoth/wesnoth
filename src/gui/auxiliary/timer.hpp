@@ -81,7 +81,7 @@ remove_timer(const unsigned long id);
  *                                id returned by add_timer.
  *
  * @returns                       Status, false if the timer couldn't be
- *                                removed.
+ *                                executed.
  */
 bool
 execute_timer(const unsigned long id);

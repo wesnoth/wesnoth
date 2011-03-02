@@ -64,7 +64,7 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
  * @begin{table}{config}
  *     window_width & unsigned & 0 &   Width of the application window. $
  *     window_height & unsigned & 0 &
- *                                   Height of the application window. $
+ *                                     Height of the application window. $
  *     min_width & unsigned & 0 &      The minimum width of the widget. $
  *     min_height & unsigned & 0 &     The minimum height of the widget. $
  *
@@ -75,21 +75,21 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
  *     max_height & unsigned & 0 &     The maximum height of the widget. $
  *
  *     text_extra_width & unsigned & 0 &
- *                                   The extra width needed to determine the
- *                                   minimal size for the text. $
+ *                                     The extra width needed to determine the
+ *                                     minimal size for the text. $
  *     text_extra_height & unsigned & 0 &
- *                                   The extra height needed to determine the
- *                                   minimal size for the text. $
+ *                                     The extra height needed to determine the
+ *                                     minimal size for the text. $
  *     text_font_size & unsigned & 0 & The font size, which needs to be used to
- *                                   determine the minimal size for the text. $
+ *                                     determine the minimal size for the text. $
  *     text_font_style & font_style & "" &
- *                                   The font style, which needs to be used to
- *                                   determine the minimal size for the text. $
+ *                                     The font style, which needs to be used to
+ *                                     determine the minimal size for the text. $
  *
- *     state & section & &           Every widget has one or more state
- *                                   sections.
- *                                   Note they aren't called state but state_xxx
- *                                   the exact names are listed per widget. $
+ *     state & section & &             Every widget has one or more state
+ *                                     sections.
+ *                                     Note they aren't called state but state_xxx
+ *                                     the exact names are listed per widget. $
  * @end{table}
  */
 
@@ -115,10 +115,10 @@ tcontrol_definition::tcontrol_definition(const config& cfg)
  * following fields.
  *
  * @begin{table}{config}
- *     id & string & &                  Unique id for this gui (theme). $
- *     description & t_string & &       Unique translatable name for this gui. $
+ *     id & string & &               Unique id for this gui (theme). $
+ *     description & t_string & &    Unique translatable name for this gui. $
  *
- *     resolution & section & &         The definitions of the widget in various
+ *     resolution & section & &      The definitions of the widget in various
  *                                   resolutions. $
  * @end{table}
  */

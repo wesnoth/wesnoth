@@ -88,7 +88,7 @@ void tbuilder_control::init_control(tcontrol* control) const
  *
  * All widgets placed in the cell have some values in common:
  * @begin{table}{config}
- *     id & string & "" &                This value is used for the engine to
+ *     id & string & "" &              This value is used for the engine to
  *                                     identify 'special' items. This means that
  *                                     for example a text_box can get the proper
  *                                     initial value. This value should be
@@ -99,20 +99,22 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     and these should be unique per composed
  *                                     widget. $
  *
- *     definition & string & "default" & The id of the widget definition to use.
+ *     definition & string & "default" &
+ *                                     The id of the widget definition to use.
  *                                     This way it's possible to select a
  *                                     specific version of the widget e.g. a
  *                                     title label when the label is used as
  *                                     title. $
  *
- *     linked_group & string & "" &       The linked group the control belongs
+ *     linked_group & string & "" &    The linked group the control belongs
  *                                     to. $
  *
- *     label & tstring & "" &            Most widgets have some text associated
+ *     label & tstring & "" &          Most widgets have some text associated
  *                                     with them, this field contain the value
  *                                     of that text. Some widgets use this value
  *                                     for other purposes, this is documented
- *                                     at the widget. $
+ *                                     at the widget. E.g. an image uses the
+ *                                     filename in this field. $
  *
  *     tooltip & tstring & "" &        If you hover over a widget a while (the
  *                                     time it takes can differ per widget) a
@@ -121,12 +123,13 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     be empty when 'help' is set. $
  *
  *
- *     help & tstring & "" &           If you hover over a widget and press F10 a
- *                                     help message can show up. This help
- *                                     message might be the same as the tooltip
- *                                     but in general (if used) this message
- *                                     should show more help. This defines the
- *                                     text of that message. $
+ *     help & tstring & "" &           If you hover over a widget and press F10
+ *                                     (or the key the user defined for the help
+ *                                     tip) a help message can show up. This
+ *                                     help message might be the same as the
+ *                                     tooltip but in general (if used) this
+ *                                     message should show more help. This
+ *                                     defines the text of that message. $
  *
  *    use_tooltip_on_label_overflow & bool & true &
  *                                     If the text on the label is truncated and
@@ -134,7 +137,8 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     used for the tooltip. If this variable is
  *                                     set to true this will happen. $
  *
- *   debug_border_mode & unsigned & 0 &  The mode for showing the debug border.
+ *   debug_border_mode & unsigned & 0 &
+ *                                     The mode for showing the debug border.
  *                                     This border shows the area reserved for
  *                                     a widget. This function is only meant
  *                                     for debugging and might not be

@@ -67,19 +67,21 @@ twidget* tbuilder_toggle_panel::build() const
  *
  * == Toggle panel ==
  *
- * A panel is an item which can hold other items. The difference between a
- * grid and a panel is that it's possible to define how a panel looks. A grid
+ * A toggle panel is an item which can hold other items. The difference between
+ * a grid and a panel is that it's possible to define how a panel looks. A grid
  * in an invisible container to just hold the items. The toggle panel is a
- * combination of the panel and a toggle button, it allows a toggle button
- * with its own grid.
+ * combination of the panel and a toggle button, it allows a toggle button with
+ * its own grid.
  *
  * @begin{table}{config}
- *     grid & grid & &                    Defines the grid with the widgets to
+ *     grid & grid & &                 Defines the grid with the widgets to
  *                                     place on the panel. $
- *     return_value_id & string & "" &   The return value id, see
- *                                     [[GUIToolkitWML#Button]] for more info. $
- *     return_value & int & 0 &          The return value, see
- *                                     [[GUIToolkitWML#Button]] for more info. $
+ *     return_value_id & string & "" & The return value id, see
+ *                                     [[GUIToolkitWML#Button]] for more
+ *                                     information. $
+ *     return_value & int & 0 &        The return value, see
+ *                                     [[GUIToolkitWML#Button]] for more
+ *                                     information. $
  * @end{table}
  */
 

@@ -95,8 +95,8 @@ twidget* tbuilder_multi_page::build() const
  * @start_macro = multi_page_description
  *
  *        A multi page is a control that contains several 'pages' of which
- *        only one is visible. The pages can contain the same of different
- *        info.
+ *        only one is visible. The pages can contain the same widgets containing
+ *        the same 'kind' of data or look completely different.
  * @end_macro
  */
 
@@ -110,11 +110,11 @@ twidget* tbuilder_multi_page::build() const
  *
  * List with the multi page specific variables:
  * @begin{table}{config}
- *     page_definition & section & &      This defines how a multi page item
+ *     page_definition & section & &   This defines how a multi page item
  *                                     looks. It must contain the grid
  *                                     definition for at least one page. $
  *
- *     page_data & section & [] &         A grid alike section which stores the
+ *     page_data & section & [] &      A grid alike section which stores the
  *                                     initial data for the multi page. Every
  *                                     row must have the same number of columns
  *                                     as the 'page_definition'. $

@@ -75,7 +75,7 @@ twidget* tbuilder_spacer::build() const
  *
  * @macro = spacer_description
  *
- * If either the width or the height is not zero the spacer functions as a
+ * If either the width or the height is non-zero the spacer functions as a
  * fixed size spacer.
  *
  * @begin{table}{config}

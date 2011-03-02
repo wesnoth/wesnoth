@@ -61,11 +61,13 @@ twidget* tbuilder_toggle_button::build() const
  * == Toggle button ==
  *
  * @begin{table}{config}
- *     icon & f_string & "" &            The name of the icon file to show. $
- *     return_value_id & string & "" &   The return value id, see
- *                                     [[GUIToolkitWML#Button]] for more info. $
- *     return_value & int & 0 &          The return value, see
- *                                     [[GUIToolkitWML#Button]] for more info. $
+ *     icon & f_string & "" &          The name of the icon file to show. $
+ *     return_value_id & string & "" & The return value id, see
+ *                                     [[GUIToolkitWML#Button]] for more
+ *                                     information. $
+ *     return_value & int & 0 &        The return value, see
+ *                                     [[GUIToolkitWML#Button]] for more
+ *                                     information. $
  * @end{table}
  */
 

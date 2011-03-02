@@ -70,7 +70,7 @@ twidget* tbuilder_label::build() const
  *
  * List with the label specific variables:
  * @begin{table}{config}
- *     wrap & bool & false &        Is wrapping enabled for the label. $
+ *     wrap & bool & false &      Is wrapping enabled for the label. $
  *     text_alignment & h_align & "left" &
  *                                How is the text aligned in the label. $
  * @end{table}
