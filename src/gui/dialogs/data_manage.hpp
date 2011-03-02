@@ -27,16 +27,13 @@ namespace gui2 {
 class tdata_manage : public tdialog
 {
 public:
-	tdata_manage(const config& cache_config);
+	explicit tdata_manage(const config& cache_config);
 
 	const std::string& filename() const { return filename_; }
 
 protected:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
-
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
 
 private:
 

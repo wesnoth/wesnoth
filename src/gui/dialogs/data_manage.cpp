@@ -68,17 +68,16 @@ void tdata_manage::pre_show(CVideo& /*video*/, twindow& window)
 	filter->set_text_changed_callback(boost::bind(
 			&tdata_manage::filter_text_changed, this, _1, _2));
 
-	tlistbox* list = find_widget<tlistbox>(
-			&window, "persist_list", false, true);
-	window.keyboard_capture(list);
+	tlistbox& list = find_widget<tlistbox>(&window, "persist_list", false);
+	window.keyboard_capture(&list);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*list, boost::bind(
+	connect_signal_notify_modified(list, boost::bind(
 				  &tdata_manage::list_item_clicked
-				, *this
+				, this
 				, boost::ref(window)));
 #else
-	list->set_callback_value_change(
+	list.set_callback_value_change(
 			dialog_callback<tdata_manage, &tdata_manage::list_item_clicked>);
 #endif
 
@@ -94,7 +93,6 @@ void tdata_manage::pre_show(CVideo& /*video*/, twindow& window)
 				  &tdata_manage::delete_button_callback
 				, this
 				, boost::ref(window)));
-
 }
 
 void tdata_manage::fill_game_list(twindow& window
@@ -164,10 +162,6 @@ bool tdata_manage::filter_text_changed(ttext_* textbox, const std::string& text)
 	list.set_row_shown(show_items);
 
 	return false;
-}
-
-void tdata_manage::post_show(twindow& /*window*/)
-{
 }
 
 void tdata_manage::delete_button_callback(twindow& window)
