@@ -61,7 +61,7 @@ private:
 
 protected:
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	virtual void pre_show(CVideo& video, twindow& window);
 
 };
 
