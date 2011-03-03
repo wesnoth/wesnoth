@@ -59,11 +59,10 @@ private:
 	/** Mirror the portrait? */
 	bool mirror_;
 
+protected:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
 };
 
 /** Shows a dialog with the portrait on the left side. */
@@ -88,7 +87,7 @@ class timage_message_right : public timage_message_
 public:
 	timage_message_right(const std::string& title, const std::string& message,
 			const std::string& portrait, const bool mirror)
-		: twml_message_(title, message, portrait, mirror)
+		: timage_message_(title, message, portrait, mirror)
 	{
 	}
 

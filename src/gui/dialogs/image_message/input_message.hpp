@@ -33,11 +33,7 @@ public:
 	tinput_message_(const std::string& title, const std::string& message,
 			const std::string& portrait, const bool mirror,
 			const std::string& caption, std::string* text, const unsigned maximum_length)
-		: title_(title)
-		, image_("")
-		, message_(message)
-		, portrait_(portrait)
-		, mirror_(mirror)
+		: timage_message_(title, message, portrait, mirror)
 		, input_caption_(caption)
 		, input_text_(text)
 		, input_maximum_lenght_(maximum_length)
@@ -67,8 +63,9 @@ class tinput_message_left : public tinput_message_
 {
 public:
 	tinput_message_left(const std::string& title, const std::string& message,
-			const std::string& portrait, const bool mirror)
-		: tinput_message_(title, message, portrait, mirror)
+			const std::string& portrait, const bool mirror,
+			const std::string& caption, std::string* text, const unsigned maximum_length)
+		: tinput_message_(title, message, portrait, mirror, caption, text, maximum_length)
 	{
 	}
 
@@ -83,8 +80,9 @@ class tinput_message_right : public tinput_message_
 {
 public:
 	tinput_message_right(const std::string& title, const std::string& message,
-			const std::string& portrait, const bool mirror)
-		: tinput_message_(title, message, portrait, mirror)
+			const std::string& portrait, const bool mirror,
+			const std::string& caption, std::string* text, const unsigned maximum_length)
+		: tinput_message_(title, message, portrait, mirror, caption, text, maximum_length)
 	{
 	}
 

@@ -15,7 +15,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/wml_message.hpp"
+#include "gui/dialogs/image_message/input_message.hpp"
 
 #include "foreach.hpp"
 #include "gui/dialogs/helper.hpp"
@@ -28,24 +28,15 @@
 
 namespace gui2 {
 
-void tinput_message_::set_input(const std::string& caption,
-		std::string* text, const unsigned maximum_length)
-{
-	assert(text);
-
-	input_caption_ = caption;
-	input_text_ = text;
-	input_maximum_lenght_ = maximum_length;
-}
-
 /**
  * @todo This function enables the wml markup for all items, but the interface
  * is a bit hacky. Especially the fiddling in the internals of the listbox is
  * ugly. There needs to be a clean interface to set whether a widget has a
  * markup and what kind of markup. These fixes will be post 1.6.
  */
-void tinput_message_::pre_show(CVideo& /*video*/, twindow& window)
+void tinput_message_::pre_show(CVideo& video, twindow& window)
 {
+	timage_message_::pre_show(video, window);
 	// Find the input box related fields.
 	tlabel& caption = find_widget<tlabel>(&window, "input_caption", false);
 	ttext_box& input = find_widget<ttext_box>(&window, "input", true);
