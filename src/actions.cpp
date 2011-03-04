@@ -2660,40 +2660,38 @@ void apply_shroud_changes(undo_list &undos, int side)
 	for(undo_list::iterator un = undos.begin(); un != undos.end(); ++un) {
 		LOG_NG << "Turning an undo...\n";
 		//NOTE: for the moment shroud cleared during recall seems never delayed
-		if(un->is_recall() || un->is_recruit()) continue;
+		//Shroud update during recall can be delayed, during recruit as well
+		//if we have a non-random recruit (e.g. undead)
+		//if(un->is_recall() || un->is_recruit()) continue;
 
 		// Make a temporary unit move in map and hide the original
-		unit_map::iterator unit_itor = units.find(un->affected_unit.underlying_id());
+		const unit_map::const_unit_iterator unit_itor = units.find(un->affected_unit.underlying_id());
 		// check if the unit is still existing (maybe killed by an event)
 		// FIXME: A wml-killed unit will not update the shroud explored before its death
 		if(unit_itor == units.end())
 			continue;
 
-		unit temporary_unit(*unit_itor);
-		// We're not really going to mutate the unit, just temporarily
-		// set its moves to maximum, but then switch them back.
-		const unit_movement_resetter move_resetter(temporary_unit);
+		//copy the actual unit and reset the copy's current moves
+		//to calculate the visible area correctly
+		unit temp_unit(*unit_itor);
+		const unit_movement_resetter move_resetter(temp_unit);
+		//store the unit's current actual location for raising the sighted events since
+		//unit_itor will be invalid during that step of the loop when we hit this location
+		const map_location actual_location = unit_itor->get_location();
 
 		std::vector<map_location>::const_iterator step;
 		for(step = un->route.begin(); step != un->route.end(); ++step) {
-			// we skip places where
 
-			if (*step != unit_itor->get_location()
-				&& units.find(*step) != units.end())
-				continue;
+			// we skip places where there is now a unit on the path we moved
+			//Doing this skip is critical since it may miss some situations in which
+			//shroud would have been updated.
+			//Doing it not is also problematic since any units there gets replaced with the
+			//temp_unit for the cause of that loop step - we'll see
+			//if (*step != unit_itor->get_location() && units.find(*step) != units.end()) continue;
+			
 			// We have to swap out any unit that is already in the hex,
 			// so we can put our unit there, then we'll swap back at the end.
-			boost::scoped_ptr<temporary_unit_placer> unit_placer;
-			if (*step != unit_itor->get_location())
-			{
-				unit_placer.reset(new temporary_unit_placer(units,*step, temporary_unit));
-			}
-
-			// In theory we don't know this clone, but
-			// - he can't be in newly cleared locations
-			// - clear_shroud_unit skip "self-detection"
-			// so we normaly don't need to flood known_units with temporary stuff
-			// known_units.insert(*step);
+			const temporary_unit_placer unit_placer(units, *step, temp_unit);
 
 			// Clear the shroud, and collect new seen_units
 			std::set<map_location> seen_units;
@@ -2711,7 +2709,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 				assert(new_unit != units.end());
 				tm.see(new_unit->side() - 1);
 
-				game_events::raise("sighted", *sight_it, unit_itor->get_location());
+				game_events::raise("sighted", *sight_it, actual_location);
 				sighted_event = true;
 			}
 			for (std::set<map_location>::iterator sight_it = petrified_units.begin();
@@ -2721,7 +2719,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 				assert(new_unit != units.end());
 				tm.see(new_unit->side() - 1);
 
-				game_events::raise("sighted", *sight_it, unit_itor->get_location());
+				game_events::raise("sighted", *sight_it, actual_location);
 				sighted_event = true;
 			}
 		}
