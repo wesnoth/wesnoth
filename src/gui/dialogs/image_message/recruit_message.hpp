@@ -13,8 +13,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_WML_MESSAGE_HPP_INCLUDED
-#define GUI_DIALOGS_WML_MESSAGE_HPP_INCLUDED
+#ifndef GUI_DIALOGS_RECRUIT_MESSAGE_HPP_INCLUDED
+#define GUI_DIALOGS_RECRUIT_MESSAGE_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
 //TODO get rid of this here
@@ -27,11 +27,11 @@ namespace gui2 {
  *
  * We have a separate sub class for left and right images.
  */
-class twml_message_
+class trecruit_message_
 	: public tdialog
 {
 public:
-	twml_message_(const std::string& title, const std::string& message,
+	trecruit_message_(const std::string& title, const std::string& message,
 			const std::string& portrait, const bool mirror)
 		: title_(title)
 		, image_("")
@@ -157,12 +157,12 @@ private:
 };
 
 /** Shows a dialog with the portrait on the left side. */
-class twml_message_left : public twml_message_
+class trecruit_message_left : public trecruit_message_
 {
 public:
-	twml_message_left(const std::string& title, const std::string& message,
+	trecruit_message_left(const std::string& title, const std::string& message,
 			const std::string& portrait, const bool mirror)
-		: twml_message_(title, message, portrait, mirror)
+		: trecruit_message_(title, message, portrait, mirror)
 	{
 	}
 
@@ -173,12 +173,12 @@ private:
 };
 
 /** Shows a dialog with the portrait on the right side. */
-class twml_message_right : public twml_message_
+class trecruit_message_right : public trecruit_message_
 {
 public:
-	twml_message_right(const std::string& title, const std::string& message,
+	trecruit_message_right(const std::string& title, const std::string& message,
 			const std::string& portrait, const bool mirror)
-		: twml_message_(title, message, portrait, mirror)
+		: trecruit_message_(title, message, portrait, mirror)
 	{
 	}
 
@@ -220,21 +220,21 @@ int show_recruit_message(const bool left_side
 	    , int side_num
 	    , int gold);
 
-int show_wml_message(const bool left_side
-		, CVideo& video
-		, const std::string& title
-		, const std::string& message
-		, const std::string& portrait
-		, const bool mirror
-		, const bool has_input
-		, const std::string& input_caption
-		, std::string* input_text
-	    , const unsigned maximum_length
-	    , const bool has_unit
-	    , std::string* unit_id
-	    , const std::vector<unit>& unit_list
-		, const std::vector<std::string>& option_list
-		, int* chosen_option);
+//int show_wml_message(const bool left_side
+//		, CVideo& video
+//		, const std::string& title
+//		, const std::string& message
+//		, const std::string& portrait
+//		, const bool mirror
+//		, const bool has_input
+//		, const std::string& input_caption
+//		, std::string* input_text
+//	    , const unsigned maximum_length
+//	    , const bool has_unit
+//	    , std::string* unit_id
+//	    , const std::vector<unit>& unit_list
+//		, const std::vector<std::string>& option_list
+//		, int* chosen_option);
 
 
 } // namespace gui2

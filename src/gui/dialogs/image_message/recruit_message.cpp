@@ -15,11 +15,12 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/wml_message.hpp"
+#include "gui/dialogs/image_message/recruit_message.hpp"
 
 #include "foreach.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/auxiliary/old_markup.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -42,18 +43,18 @@
 namespace gui2 {
 
 //should be active in every dialog that involves units.
-void twml_message_::profile_pressed() {
+void trecruit_message_::profile_pressed() {
 	assert(chosen_unit_);
 	const unit_type& t = *chosen_unit_->type();
 	help::show_unit_help(*resources::screen, t.id(), t.hide_help());
 }
 
 //TODO this is very specific, might need to go into another class
-void twml_message_::help_pressed() {
+void trecruit_message_::help_pressed() {
 	help::show_help(*resources::screen,"recruit_and_recall");
 }
 
-void twml_message_::update_unit_list(twindow& window) {
+void trecruit_message_::update_unit_list(twindow& window) {
 	tlistbox& unit_listbox = find_widget<tlistbox> (&window, "recruit_list", false);
 
 	//TODO this hack does not respect the sorting of the list.
@@ -70,12 +71,17 @@ void twml_message_::update_unit_list(twindow& window) {
 		chosen_unit_->draw_report();
 	}
 
-	window.canvas(1).set_variable("portrait_image", variant(
-			chosen_unit_->big_profile()));
+	//window.canvas(1).set_variable("portrait_image", variant(
+		//	chosen_unit_->big_profile()));
+
+	timage& unit_portrait = find_widget<timage> (&window, "unit_portrait", true);
+	unit_portrait.set_image(chosen_unit_->big_profile());
+	unit_portrait.set_dirty();
 	window.set_dirty();
+	//resources::screen->redraw_everything();
 }
 
-void twml_message_::set_input(const std::string& caption,
+void trecruit_message_::set_input(const std::string& caption,
 		std::string* text, const unsigned maximum_length)
 {
 	assert(text);
@@ -86,7 +92,7 @@ void twml_message_::set_input(const std::string& caption,
 	input_maximum_lenght_ = maximum_length;
 }
 
-void twml_message_::set_option_list(
+void trecruit_message_::set_option_list(
 		const std::vector<std::string>& option_list, int* chosen_option)
 {
 	assert(!option_list.empty());
@@ -96,7 +102,7 @@ void twml_message_::set_option_list(
 	chosen_option_ = chosen_option;
 }
 
-void twml_message_::set_unit_list(
+void trecruit_message_::set_unit_list(
 		const std::vector<unit>& unit_list, std::string* unit_id)
 {
 	assert(unit_id);
@@ -107,7 +113,7 @@ void twml_message_::set_unit_list(
 	chosen_unit_ = &unit_list_[0];
 }
 
-void twml_message_::set_type_list(
+void trecruit_message_::set_type_list(
 		std::vector<const unit_type*> type_list, std::string* type_id, int side_num, int gold)
 {
 	assert(!type_list.empty());
@@ -133,7 +139,7 @@ void twml_message_::set_type_list(
  * ugly. There needs to be a clean interface to set whether a widget has a
  * markup and what kind of markup. These fixes will be post 1.6.
  */
-void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
+void trecruit_message_::pre_show(CVideo& /*video*/, twindow& window)
 {
 	window.canvas(1).set_variable("portrait_image", variant(portrait_));
 	window.canvas(1).set_variable("portrait_mirror", variant(mirror_));
@@ -152,34 +158,27 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 	window.keyboard_capture(&message);
 
 	// Find the input box related fields.
-	tlabel& caption = find_widget<tlabel>(&window, "input_caption", false);
-	ttext_box& input = find_widget<ttext_box>(&window, "input", true);
-
-	if(has_input_) {
-		caption.set_label(input_caption_);
-		caption.set_use_markup(true);
-		input.set_value(*input_text_);
-		input.set_maximum_length(input_maximum_lenght_);
-		window.keyboard_capture(&input);
-		window.set_click_dismiss(false);
-		window.set_escape_disabled(true);
-	} else {
-		caption.set_visible(twidget::INVISIBLE);
-		input.set_visible(twidget::INVISIBLE);
-	}
+//	tlabel& caption = find_widget<tlabel>(&window, "input_caption", false);
+//	ttext_box& input = find_widget<ttext_box>(&window, "input", true);
 
 	// Find the unit list related fields:
 //	tlistbox& units = find_widget<tlistbox>(&window, "unit_list", true);
 	tlistbox& units = find_widget<tlistbox>(&window, "recruit_list", true);
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
-	units.set_callback_value_change(dialog_callback<twml_message_,
-			&twml_message_::update_unit_list> );
+	units.set_callback_value_change(dialog_callback<trecruit_message_,
+			&trecruit_message_::update_unit_list> );
 #endif
 	if(!unit_list_.empty()) {
 
-		window.canvas(1).set_variable("portrait_image", variant(
+		window.canvas(0).set_variable("portrait_image", variant(
 				chosen_unit_->big_profile()));
 		window.set_dirty();
+
+		timage& unit_portrait = find_widget<timage> (&window, "unit_portrait", true);
+			unit_portrait.set_image(chosen_unit_->big_profile());
+		//	unit_portrait.set_dirty();
+		//	window.set_dirty();
+
 
 		chosen_unit_->draw_report();
 
@@ -187,14 +186,14 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 		connect_signal_mouse_left_click(
 							  find_widget<tbutton>(&window, "help", true)
 							, boost::bind(
-								  &twml_message_::help_pressed
+								  &trecruit_message_::help_pressed
 								, this
 								));
 
 		connect_signal_mouse_left_click(
 					  find_widget<tbutton>(&window, "profile", true)
 					, boost::bind(
-						  &twml_message_::profile_pressed
+						  &trecruit_message_::profile_pressed
 						, this
 						));
 
@@ -254,90 +253,21 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			//data["traits"]["label"] = unit.traits_description();
 			units.add_row(data);
 		}
-	} else {
-		tbutton* profile_button = find_widget<tbutton> (&window, "profile", false,
-					false);
-		profile_button->set_visible(twidget::INVISIBLE);
-		units.set_visible(twidget::INVISIBLE);
-
-		tbutton* help_button = find_widget<tbutton> (&window, "help", false,
-					false);
-		help_button->set_visible(twidget::INVISIBLE);
-
-		tbutton* cancel_button = find_widget<tbutton> (&window, "cancel", false,
-					false);
-		cancel_button->set_visible(twidget::INVISIBLE);
 	}
 
-	// Find the option list related fields.
-	tlistbox& options = find_widget<tlistbox>(&window, "input_list", true);
-
-	if(!option_list_.empty()) {
-		std::map<std::string, string_map> data;
-		for(size_t i = 0; i < option_list_.size(); ++i) {
-			/**
-			 * @todo This syntax looks like a bad hack, it would be nice to write
-			 * a new syntax which doesn't use those hacks (also avoids the problem
-			 * with special meanings for certain characters.
-			 */
-			tlegacy_menu_item item(option_list_[i]);
-
-			if(item.is_default()) {
-				// Number of items hasn't been increased yet so i is ok.
-				*chosen_option_ = i;
-			}
-
-			// Add the data.
-			data["icon"]["label"] = item.icon();
-			data["label"]["label"] = item.label();
-			data["label"]["use_markup"] = "true";
-			data["description"]["label"] = item.description();
-			data["description"]["use_markup"] = "true";
-			options.add_row(data);
-		}
-
-		// Avoid negetive and 0 since item 0 is already selected.
-		if(*chosen_option_ > 0
-				&& static_cast<size_t>(*chosen_option_)
-				< option_list_.size()) {
-
-			options.select_row(*chosen_option_);
-		}
-
-		if(!has_input_) {
-			window.keyboard_capture(&options);
-			window.set_click_dismiss(false);
-			window.set_escape_disabled(true);
-		} else {
-			window.add_to_keyboard_chain(&options);
-			// click_dismiss has been disabled due to the input.
-		}
-	} else {
-		options.set_visible(twidget::INVISIBLE);
-	}
-	window.set_click_dismiss(!has_input_ && option_list_.empty() && unit_list_.empty());
+	window.set_click_dismiss(false);
 }
 
-void twml_message_::post_show(twindow& window)
+void trecruit_message_::post_show(twindow& /*window*/)
 {
-	if(has_input_) {
-		*input_text_ =
-				find_widget<ttext_box>(&window, "input", true).get_value();
-	}
-
-	if(!option_list_.empty()) {
-		*chosen_option_ =
-				find_widget<tlistbox>(&window, "input_list", true).get_selected_row();
-	}
-
 	if(!unit_list_.empty()) {
 		*unit_id_ = chosen_unit_->type_id();
 	}
 }
 
-REGISTER_DIALOG(wml_message_left)
+REGISTER_DIALOG(recruit_message_left)
 
-REGISTER_DIALOG(wml_message_right)
+REGISTER_DIALOG(recruit_message_right)
 
 int show_recruit_message(const bool left_side
 		, CVideo& video
@@ -350,11 +280,11 @@ int show_recruit_message(const bool left_side
 	const std::string message = _("Select unit:");
 	const std::string portrait = "";
 	const bool mirror = false;
-	std::auto_ptr<twml_message_> dlg;
+	std::auto_ptr<trecruit_message_> dlg;
 	if(left_side) {
-		dlg.reset(new twml_message_left(title, message, portrait, mirror));
+		dlg.reset(new trecruit_message_left(title, message, portrait, mirror));
 	} else {
-		dlg.reset(new twml_message_right(title, message, portrait, mirror));
+		dlg.reset(new trecruit_message_right(title, message, portrait, mirror));
 	}
 	assert(dlg.get());
 
@@ -364,45 +294,45 @@ int show_recruit_message(const bool left_side
 	return dlg->get_retval();
 }
 
-int show_wml_message(const bool left_side
-		, CVideo& video
-		, const std::string& title
-		, const std::string& message
-		, const std::string& portrait
-		, const bool mirror
-		, const bool has_input
-		, const std::string& input_caption
-		, std::string* input_text
-		, const unsigned maximum_length
-		, const bool has_unit
-		, std::string* unit_id
-		, const std::vector<unit>& unit_list
-		, const std::vector<std::string>& option_list
-		, int* chosen_option)
-{
-	std::auto_ptr<twml_message_> dlg;
-	if(left_side) {
-		dlg.reset(new twml_message_left(title, message, portrait, mirror));
-	} else {
-		dlg.reset(new twml_message_right(title, message, portrait, mirror));
-	}
-	assert(dlg.get());
-
-	if(has_input) {
-		dlg->set_input(input_caption, input_text, maximum_length);
-	}
-
-	if(has_unit) {
-		dlg->set_unit_list(unit_list, unit_id);
-	}
-
-	if(!option_list.empty()) {
-		dlg->set_option_list(option_list, chosen_option);
-	}
-
-	dlg->show(video);
-	return dlg->get_retval();
-}
+//int show_wml_message(const bool left_side
+//		, CVideo& video
+//		, const std::string& title
+//		, const std::string& message
+//		, const std::string& portrait
+//		, const bool mirror
+//		, const bool has_input
+//		, const std::string& input_caption
+//		, std::string* input_text
+//		, const unsigned maximum_length
+//		, const bool has_unit
+//		, std::string* unit_id
+//		, const std::vector<unit>& unit_list
+//		, const std::vector<std::string>& option_list
+//		, int* chosen_option)
+//{
+//	std::auto_ptr<twml_message_> dlg;
+//	if(left_side) {
+//		dlg.reset(new twml_message_left(title, message, portrait, mirror));
+//	} else {
+//		dlg.reset(new twml_message_right(title, message, portrait, mirror));
+//	}
+//	assert(dlg.get());
+//
+//	if(has_input) {
+//		dlg->set_input(input_caption, input_text, maximum_length);
+//	}
+//
+//	if(has_unit) {
+//		dlg->set_unit_list(unit_list, unit_id);
+//	}
+//
+//	if(!option_list.empty()) {
+//		dlg->set_option_list(option_list, chosen_option);
+//	}
+//
+//	dlg->show(video);
+//	return dlg->get_retval();
+//}
 
 } // namespace gui2
 
