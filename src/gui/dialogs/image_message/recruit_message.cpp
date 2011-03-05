@@ -137,8 +137,10 @@ void trecruit_message_::pre_show(CVideo& /*video*/, twindow& window)
 	units.set_callback_value_change(dialog_callback<trecruit_message_,
 			&trecruit_message_::update_unit_list> );
 #else
-	units.connect_signal_notify_modified(dialog_callback<trecruit_message_,
-			&trecruit_message_::update_unit_list> );
+    connect_signal_notify_modified(units, boost::bind(
+                                  &trecruit_message_::update_unit_list
+                                , this
+                                , boost::ref(window)));
 #endif
 	if(!unit_list_.empty()) {
 
