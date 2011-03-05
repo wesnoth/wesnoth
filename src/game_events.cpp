@@ -30,7 +30,10 @@
 #include "gettext.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/wml_message.hpp"
+// include "gui/dialogs/wml_message.hpp"
+#include "gui/dialogs/image_message/image_message.hpp"
+#include "gui/dialogs/image_message/input_message.hpp"
+#include "gui/dialogs/image_message/option_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "log.hpp"
@@ -2474,29 +2477,17 @@ struct message_user_choice : mp_sync::user_choice
 			image.erase(right_offset);
 		}
 
-		// Parse input text, if not available all fields are empty
-		std::string text_input_label = text_input_element["label"];
-		std::string text_input_content = text_input_element["text"];
-		unsigned input_max_size = text_input_element["max_length"].to_int(256);
-		if (input_max_size > 1024 || input_max_size < 1) {
-			lg::wml_error << "invalid maximum size for input "
-				<< input_max_size << '\n';
-			input_max_size = 256;
-		}
-
-		// TODO Parse unit input, here?
-		std::string unit_input_content; // = unit_input_element[""]; // default?
+		std::string unit_input_content;
 		std::string unit_input_types = unit_input_element["types"];
 
 		std::vector<unit> unit_list;
 
 		if (has_unit_input) {
-			const config empty_filter;
 			vconfig filter = unit_input_element.child("filter");
-//			if(filter.null()) {
-//				filter = empty_filter;
-//				lg::wml_error << "[unit_input] missing required [filter] tag\n";
-//			}
+			if(filter.null()) {
+				//TODO handle the missing filter
+				lg::wml_error << "[unit_input] missing required [filter] tag\n";
+			}
 
 			for(unit_map::iterator i = resources::units->begin(); i != resources::units->end(); i++) {
 				if(game_events::unit_matches_filter(*i,filter) == true) {
@@ -2504,15 +2495,45 @@ struct message_user_choice : mp_sync::user_choice
 				}
 			}
 			unit_input_content = unit_list.front().id();
+			//TODO call the unit_message dialog
 		}
 
-		int option_chosen;
-		int dlg_result = gui2::show_wml_message(left_side,
-			resources::screen->video(), caption, cfg["message"],
-			image, false, has_text_input, text_input_label,
-			&text_input_content, input_max_size,
-			has_unit_input, &unit_input_content, unit_list,
-			options, &option_chosen);
+		int counter = 0;
+		if (has_text_input) counter++;
+		if (has_unit_input) counter++;
+		if (!options.empty()) counter++;
+
+		if (counter > 1) {
+			lg::wml_error << "option, input and unit_input conflict with each other!";
+		}
+
+		int dlg_result;
+		if (!has_text_input && !has_unit_input && options.empty()) {
+			dlg_result = gui2::show_image_message(left_side, resources::screen->video(),
+					caption, cfg["message"], image, false);
+		}
+
+		std::string text_input_content = text_input_element["text"];
+		if (has_text_input) {
+			// Parse input text, if not available all fields are empty
+			std::string text_input_label = text_input_element["label"];
+			unsigned input_max_size = text_input_element["max_length"].to_int(256);
+			if (input_max_size > 1024 || input_max_size < 1) {
+				lg::wml_error << "invalid maximum size for input "
+					<< input_max_size << '\n';
+				input_max_size = 256;
+			}
+			dlg_result = gui2::show_input_message(left_side, resources::screen->video(),
+					caption, cfg["message"], image, false,
+					text_input_label, &text_input_content, input_max_size);
+		}
+
+		int option_chosen = 0;
+		if (!options.empty()) {
+			dlg_result = gui2::show_option_message(left_side, resources::screen->video(),
+					caption, cfg["message"], image, false,
+					options, &option_chosen);
+		}
 
 		/* Since gui2::show_wml_message needs to do undrawing the
 		   chatlines can get garbled and look dirty on screen. Force a
