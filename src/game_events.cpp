@@ -2507,7 +2507,7 @@ struct message_user_choice : mp_sync::user_choice
 			lg::wml_error << "option, input and unit_input conflict with each other!";
 		}
 
-		int dlg_result;
+		int dlg_result = 0;
 		if (!has_text_input && !has_unit_input && options.empty()) {
 			dlg_result = gui2::show_image_message(left_side, resources::screen->video(),
 					caption, cfg["message"], image, false);
