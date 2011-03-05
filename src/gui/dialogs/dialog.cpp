@@ -31,10 +31,10 @@ tdialog::~tdialog()
 	}
 }
 
-void tdialog::show(CVideo& video, const unsigned auto_close_time)
+bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 {
 	if(video.faked()) {
-		return;
+		return false;
 	}
 
 	std::auto_ptr<twindow> window(build_window(video));
@@ -69,6 +69,8 @@ void tdialog::show(CVideo& video, const unsigned auto_close_time)
 	}
 
 	post_show(*window);
+
+	return retval_ == twindow::OK;
 }
 
 tfield_bool* tdialog::register_bool(
@@ -83,6 +85,21 @@ tfield_bool* tdialog::register_bool(
 			, optional
 			, callback_load_value
 			, callback_save_value, callback_change);
+
+	fields_.push_back(field);
+	return field;
+}
+
+tfield_bool* tdialog::register_bool(const std::string& id
+		, const bool optional
+		, bool& linked_variable
+		, void (*callback_change) (twidget* widget))
+{
+	tfield_bool* field =  new tfield_bool(
+			  id
+			, optional
+			, linked_variable
+			, callback_change);
 
 	fields_.push_back(field);
 	return field;
@@ -104,6 +121,19 @@ tfield_integer* tdialog::register_integer(
 	return field;
 }
 
+tfield_integer* tdialog::register_integer(const std::string& id
+		, const bool optional
+		, int& linked_variable)
+{
+	tfield_integer* field =  new tfield_integer(
+			  id
+			, optional
+			, linked_variable);
+
+	fields_.push_back(field);
+	return field;
+}
+
 tfield_text* tdialog::register_text(
 		  const std::string& id
 		, const bool optional
@@ -115,6 +145,19 @@ tfield_text* tdialog::register_text(
 			, optional
 			, callback_load_value
 			, callback_save_value);
+
+	fields_.push_back(field);
+	return field;
+}
+
+tfield_text* tdialog::register_text(const std::string& id
+		, const bool optional
+		, std::string& linked_variable)
+{
+	tfield_text* field =  new tfield_text(
+			  id
+			, optional
+			, linked_variable);
 
 	fields_.push_back(field);
 	return field;

@@ -104,6 +104,24 @@ type::window_id() const                                                    \
  * class will hold the parameters used for a certain window, eg a server
  * connection dialog will hold the name of the selected server as parameter that
  * way the caller doesn't need to know about the 'contents' of the window.
+ *
+ * @par Usage
+ *
+ * Simple dialogs that are shown to query user information it is recommended to
+ * add a static member called @p execute. The parameters to the function are:
+ * - references to in + out parameters by reference
+ * - references to the in parameters
+ * - the parameters for @ref tdialog::show.
+ *
+ * The 'in + out parameters' are used as initial value and final value when the
+ * OK button is pressed. The 'in parameters' are just extra parameters for
+ * showing. 
+ *
+ * When a function only has 'in parameters' it should return a void value and
+ * the function should be called @p display, if it has 'in + out parameters' it
+ * must return a bool value. This value indicates whether or not the OK button
+ * was pressed to close the dialog. See @ref teditor_new_map::execute for an
+ * example.
  */
 class tdialog
 {
@@ -134,8 +152,11 @@ public:
 	 *                            @note the timeout is a minimum time and
 	 *                            there's no quarantee about how fast it closes
 	 *                            after the minimum.
+	 *
+	 * @returns                   Whether the final retval_ == twindow::OK
 	 */
-	void show(CVideo& video, const unsigned auto_close_time = 0);
+	bool show(CVideo& video, const unsigned auto_close_time = 0);
+
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -171,9 +192,29 @@ protected:
 			, void (*callback_change) (twidget* widget) = NULL);
 
 	/**
+	 * Creates a new boolean field.
+	 *
+	 * The field created is owned by tdialog, the returned pointer can be used
+	 * in the child classes as access to a field.
+	 *
+	 * @param id                  Id of the widget, same value as in WML.
+	 * @param optional            Is the widget mandatory or optional.
+	 * @param linked_variable     The variable the widget is linked to. See
+	 *                            @ref tfield::tfield for more information.
+	 * @param callback_change     When the value of the widget changes this
+	 *                            callback is called.
+	 *
+	 * @returns                   Pointer to the created widget.
+	 */
+	tfield_bool* register_bool(const std::string& id
+			, const bool optional
+			, bool& linked_variable
+			, void (*callback_change) (twidget* widget) = NULL);
+
+	/**
 	 * Creates a new integer field.
 	 *
-	 * See register_bool for more info.
+	 * See @ref register_bool for more info.
 	 */
 	tfield_integer* register_integer(const std::string& id
 			, const bool optional = false
@@ -181,14 +222,31 @@ protected:
 			, void (*callback_save_value) (const int value) = NULL);
 
 	/**
+	 * Creates a new integer field.
+	 *
+	 * See @ref register_bool for more info.
+	 */
+	tfield_integer* register_integer(const std::string& id
+			, const bool optional
+			, int& linked_variable);
+	/**
 	 * Creates a new text field.
 	 *
-	 * See register_bool for more info.
+	 * See @ref register_bool for more info.
 	 */
 	tfield_text* register_text(const std::string& id
 			, const bool optional = false
 			, std::string (*callback_load_value) () = NULL
 			, void (*callback_save_value) (const std::string& value) = NULL);
+
+	/**
+	 * Creates a new text field.
+	 *
+	 * See @ref register_bool for more info.
+	 */
+	tfield_text* register_text(const std::string& id
+			, const bool optional
+			, std::string& linked_variable);
 private:
 	/** Returns the window exit status, 0 means not shown. */
 	int retval_;
