@@ -3,8 +3,7 @@
 
 """
 A script to create the "Terrain Table" on the TerrainCodesWML wiki page.
-Run this and splice the output into the wiki whenever you add a new
-terrain type to mainline.
+Add the output to the wiki whenever a new terrain is added to mainline.
 """
 
 from __future__ import with_statement   # For python < 2.6
@@ -78,7 +77,7 @@ if __name__ == "__main__":
 convert the terrain codes located in terrain.cfg to wiki formatted text.')
     parser.add_argument('-f', '--file', default='data/core/terrain.cfg',
 dest='path', help="The location of the terrain.ctg file.")
-    parser.add_argument('-o', '--output', default='output.tmp',
+    parser.add_argument('-o', '--output', default='/tmp/TerrainCodesWML',
 dest='output_path', help="The location of the ouput file.")
     args = parser.parse_args()
 
