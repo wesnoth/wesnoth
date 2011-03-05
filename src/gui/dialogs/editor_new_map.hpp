@@ -23,12 +23,24 @@ namespace gui2 {
 class teditor_new_map : public tdialog
 {
 public:
-	teditor_new_map();
 
-	void set_map_width(int value);
-	int map_width() const;
-	void set_map_height(int value);
-	int map_height() const;
+	/**
+	 * Constructor.
+	 *
+	 * @param width [in]          The initial width of the map.
+	 * @param width [out]         The selected width of the map if the dialog
+	 *                            returns @ref twindow::OK undefined otherwise.
+	 * @param height [in]         The initial height of the map.
+	 * @param height [out]        The selected height of the map if the dialog
+	 *                            returns @ref twindow::OK undefined otherwise.
+	 */
+	teditor_new_map(int& width, int& height);
+
+	/** The excute function see @ref tdialog for more information. */
+	static bool execute(int& width, int& height, CVideo& video)
+	{
+		return teditor_new_map(width, height).show(video);
+	}
 
 private:
 	/**

@@ -444,17 +444,14 @@ void editor_controller::load_map_dialog(bool force_same_context /* = false */)
 
 void editor_controller::new_map_dialog()
 {
-	if (!use_mdi_ && !confirm_discard()) return;
-	gui2::teditor_new_map dialog;
-	dialog.set_map_width(get_map().w());
-	dialog.set_map_height(get_map().h());
+	if (!use_mdi_ && !confirm_discard()) {
+		return;
+	}
 
-	dialog.show(gui().video());
-	int res = dialog.get_retval();
-	if(res == gui2::twindow::OK) {
-		int w = dialog.map_width();
-		int h = dialog.map_height();
-		t_translation::t_terrain fill = t_translation::GRASS_LAND;
+	int w = get_map().w();
+	int h = get_map().h();
+	if(gui2::teditor_new_map::execute(w, h, gui().video())) {
+		const t_translation::t_terrain fill = t_translation::GRASS_LAND;
 		new_map(w, h, fill, use_mdi_);
 	}
 }

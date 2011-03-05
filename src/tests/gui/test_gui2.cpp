@@ -474,6 +474,17 @@ struct twrapper<gui2::teditor_generate_map>
 };
 
 template<>
+struct twrapper<gui2::teditor_new_map>
+{
+	static gui2::teditor_new_map* create()
+	{
+		static int width;
+		static int height;
+		return new gui2::teditor_new_map(width, height);
+	}
+};
+
+template<>
 struct twrapper<gui2::teditor_settings>
 {
 	static void dummy_callback(int, int, int) {}
