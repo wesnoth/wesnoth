@@ -57,7 +57,6 @@ void trecruit_message_::help_pressed() {
 void trecruit_message_::update_unit_list(twindow& window) {
 	tlistbox& unit_listbox = find_widget<tlistbox> (&window, "recruit_list", false);
 
-	//TODO this hack does not respect the sorting of the list.
 	chosen_unit_ = &unit_list_[unit_listbox.get_selected_row()];
 
 	const map_location& loc = chosen_unit_->get_location();
@@ -71,35 +70,10 @@ void trecruit_message_::update_unit_list(twindow& window) {
 		chosen_unit_->draw_report();
 	}
 
-	//window.canvas(1).set_variable("portrait_image", variant(
-		//	chosen_unit_->big_profile()));
-
 	timage& unit_portrait = find_widget<timage> (&window, "unit_portrait", true);
 	unit_portrait.set_image(chosen_unit_->big_profile());
-	unit_portrait.set_dirty();
-	window.set_dirty();
-	//resources::screen->redraw_everything();
-}
-
-void trecruit_message_::set_input(const std::string& caption,
-		std::string* text, const unsigned maximum_length)
-{
-	assert(text);
-
-	has_input_ = true;
-	input_caption_ = caption;
-	input_text_ = text;
-	input_maximum_lenght_ = maximum_length;
-}
-
-void trecruit_message_::set_option_list(
-		const std::vector<std::string>& option_list, int* chosen_option)
-{
-	assert(!option_list.empty());
-	assert(chosen_option);
-
-	option_list_ = option_list;
-	chosen_option_ = chosen_option;
+//	unit_portrait.set_dirty();
+//	window.set_dirty();
 }
 
 void trecruit_message_::set_unit_list(
@@ -157,15 +131,13 @@ void trecruit_message_::pre_show(CVideo& /*video*/, twindow& window)
 	// shouldn't hurt.
 	window.keyboard_capture(&message);
 
-	// Find the input box related fields.
-//	tlabel& caption = find_widget<tlabel>(&window, "input_caption", false);
-//	ttext_box& input = find_widget<ttext_box>(&window, "input", true);
-
 	// Find the unit list related fields:
-//	tlistbox& units = find_widget<tlistbox>(&window, "unit_list", true);
 	tlistbox& units = find_widget<tlistbox>(&window, "recruit_list", true);
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
 	units.set_callback_value_change(dialog_callback<trecruit_message_,
+			&trecruit_message_::update_unit_list> );
+#else
+	units.connect_signal_notify_modified(dialog_callback<trecruit_message_,
 			&trecruit_message_::update_unit_list> );
 #endif
 	if(!unit_list_.empty()) {
@@ -293,46 +265,6 @@ int show_recruit_message(const bool left_side
 	dlg->show(video);
 	return dlg->get_retval();
 }
-
-//int show_wml_message(const bool left_side
-//		, CVideo& video
-//		, const std::string& title
-//		, const std::string& message
-//		, const std::string& portrait
-//		, const bool mirror
-//		, const bool has_input
-//		, const std::string& input_caption
-//		, std::string* input_text
-//		, const unsigned maximum_length
-//		, const bool has_unit
-//		, std::string* unit_id
-//		, const std::vector<unit>& unit_list
-//		, const std::vector<std::string>& option_list
-//		, int* chosen_option)
-//{
-//	std::auto_ptr<twml_message_> dlg;
-//	if(left_side) {
-//		dlg.reset(new twml_message_left(title, message, portrait, mirror));
-//	} else {
-//		dlg.reset(new twml_message_right(title, message, portrait, mirror));
-//	}
-//	assert(dlg.get());
-//
-//	if(has_input) {
-//		dlg->set_input(input_caption, input_text, maximum_length);
-//	}
-//
-//	if(has_unit) {
-//		dlg->set_unit_list(unit_list, unit_id);
-//	}
-//
-//	if(!option_list.empty()) {
-//		dlg->set_option_list(option_list, chosen_option);
-//	}
-//
-//	dlg->show(video);
-//	return dlg->get_retval();
-//}
 
 } // namespace gui2
 
