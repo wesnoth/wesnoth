@@ -175,6 +175,7 @@ if(MSVC)
 	SOURCE_GROUP("src gui auxiliary window_builder" REGULAR_EXPRESSION "gui/auxiliary/window_builder/.*")
 	SOURCE_GROUP("src gui dialogs" REGULAR_EXPRESSION "gui/dialogs/.*")
 	SOURCE_GROUP("src gui dialogs lobby" REGULAR_EXPRESSION "gui/dialogs/lobby/.*")
+	SOURCE_GROUP("src gui dialogs lobby" REGULAR_EXPRESSION "gui/dialogs/image_message/.*")
 	SOURCE_GROUP("src lua" REGULAR_EXPRESSION "lua/.*")
 	SOURCE_GROUP("src widgets" REGULAR_EXPRESSION "widgets/.*")
 	SOURCE_GROUP("src gui widgets" REGULAR_EXPRESSION "gui/widgets/.*")
@@ -452,7 +453,10 @@ set(wesnoth-main_SRC
 	gui/dialogs/transient_message.cpp
 	gui/dialogs/unit_attack.cpp
 	gui/dialogs/unit_create.cpp
-	gui/dialogs/wml_message.cpp
+	gui/dialogs/image_message/image_message.cpp
+	gui/dialogs/image_message/input_message.cpp
+	gui/dialogs/image_message/option_message.cpp
+	gui/dialogs/image_message/recruit_message.cpp
 	gui/widgets/button.cpp
 	gui/widgets/container.cpp
 	gui/widgets/control.cpp
