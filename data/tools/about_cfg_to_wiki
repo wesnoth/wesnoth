@@ -25,10 +25,12 @@ def output(text):
     sys.stdout.write(text.encode("utf8"))
 
 if __name__ == "__main__":
-    import optparse, subprocess
-    try: import psyco
-    except ImportError: pass
-    else: psyco.full()
+    import optparse
+    try:
+        import psyco
+        psyco.full()
+    except ImportError:
+        pass
 
     optionparser = optparse.OptionParser()
     options, args = optionparser.parse_args()
@@ -61,7 +63,8 @@ if __name__ == "__main__":
                 # Interpret our local conventions for obfuscsting in SVN files
                 email = email.replace("_AT_", "&#x40;").replace("_DOT_", "&#x2E;")
                 section.lines.append((name, comment, wikiuser, email))
-            if section.title: sections.append(section)
+            if section.title:
+                sections.append(section)
         chapters.append((arg, sections))
 
     # Output.
@@ -94,7 +97,8 @@ developer to do it for you.
                 if name == "*":
                     output("<hr>\n")
                     continue
-                if comment: comment = " - " + comment
+                if comment:
+                    comment = " - " + comment
                 if wikiuser:
                     # If a wiki user is given, the nickname is turned into a
                     # wiki link, or else the whole name.
