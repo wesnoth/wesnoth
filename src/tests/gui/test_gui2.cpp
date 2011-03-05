@@ -52,8 +52,8 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_attack.hpp"
 #include "gui/dialogs/unit_create.hpp"
-#include "gui/dialogs/image_message/image_message.hpp"
 //TODO enable when safe
+//#include "gui/dialogs/image_message/image_message.hpp"
 //#include "gui/dialogs/image_message/input_message.hpp"
 //#include "gui/dialogs/image_message/option_message.hpp"
 #include "gui/widgets/settings.hpp"
@@ -232,9 +232,9 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::ttransient_message>();
 //	test<gui2::tunit_attack>(); /** @todo ENABLE */
 	test<gui2::tunit_create>();
-	test<gui2::timage_message_left>();
-	test<gui2::timage_message_right>();
 //TODO enable when safe
+//	test<gui2::timage_message_left>();
+//	test<gui2::timage_message_right>();
 //	test<gui2::tinput_message_left>();
 //	test<gui2::tinput_message_right>();
 //	test<gui2::toption_message_left>();
@@ -518,23 +518,24 @@ struct twrapper<gui2::ttransient_message>
 	}
 };
 
-template<>
-struct twrapper<gui2::timage_message_left>
-{
-	static gui2::timage_message_left* create()
-	{
-		return new gui2::timage_message_left("Title", "Message", "", false);
-	}
-};
-
-template<>
-struct twrapper<gui2::timage_message_right>
-{
-	static gui2::timage_message_right* create()
-	{
-		return new gui2::timage_message_right("Title", "Message", "", false);
-	}
-};
+//TODO enable again when safe
+//template<>
+//struct twrapper<gui2::timage_message_left>
+//{
+//	static gui2::timage_message_left* create()
+//	{
+//		return new gui2::timage_message_left("Title", "Message", "", false);
+//	}
+//};
+//
+//template<>
+//struct twrapper<gui2::timage_message_right>
+//{
+//	static gui2::timage_message_right* create()
+//	{
+//		return new gui2::timage_message_right("Title", "Message", "", false);
+//	}
+//};
 
 } // namespace
 
