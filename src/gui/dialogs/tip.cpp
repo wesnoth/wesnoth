@@ -55,7 +55,7 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_WND(tooltip_large)
+REGISTER_WINDOW(tooltip_large)
 
 /**
  * Class to show the tips.

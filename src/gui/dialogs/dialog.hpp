@@ -34,14 +34,11 @@ namespace gui2 {
  * @note Most of the time you want to call @ref REGISTER_DIALOG instead of this
  * function. It also directly adds the code for the dialog's id function.
  *
- * @todo Rename the function to its full name once the old name has been unused
- * for a while.
- *
  * @param id                      Id of the window, multiple dialogs can use
  *                                the same window so the id doesn't need to be
  *                                unique.
  */
-#define REGISTER_WND(                                                      \
+#define REGISTER_WINDOW(                                                   \
 		  id)                                                              \
 namespace {                                                                \
                                                                            \
@@ -81,7 +78,7 @@ namespace {                                                                \
 		  type                                                             \
 		, id)                                                              \
                                                                            \
-REGISTER_WND(id)                                                           \
+REGISTER_WINDOW(id)                                                        \
                                                                            \
 const std::string&                                                         \
 type::window_id() const                                                    \
