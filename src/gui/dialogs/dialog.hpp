@@ -107,6 +107,14 @@ type::window_id() const                                                    \
  */
 class tdialog
 {
+	/**
+	 * Special helper function to get the id of the window.
+	 *
+	 * This is used in the unit tests, but these implementation details
+	 * shouldn't be used in the normal code.
+	 */
+	friend void unit_test_mark_as_tested(const tdialog& dialog);
+
 public:
 	tdialog() :
 		retval_(0),

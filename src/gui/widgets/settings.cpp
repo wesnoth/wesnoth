@@ -453,6 +453,11 @@ void register_window(const std::string& id)
 	}
 }
 
+std::vector<std::string> tunit_test_access_only::get_registered_window_list()
+{
+	return gui2::registered_window_types();
+}
+
 void load_settings()
 {
 	LOG_GUI_G << "Setting: init gui.\n";

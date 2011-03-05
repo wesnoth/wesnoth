@@ -53,6 +53,20 @@ extern bool new_widgets;
 void register_window(const std::string& id);
 
 /**
+ * Special helper class to get the list of registered windows.
+ *
+ * This is used in the unit tests, but these implementation details shouldn't
+ * be used in the normal code.
+ */
+class tunit_test_access_only
+{
+	friend std::vector<std::string>& unit_test_registered_window_list();
+
+	/** Returns a copy of the list of registered windows. */
+	static std::vector<std::string> get_registered_window_list();
+};
+
+/**
  * Registers a widgets.
  *
  * This function registers the available widgets defined in WML. All widgets

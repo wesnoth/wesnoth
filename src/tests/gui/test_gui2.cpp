@@ -21,6 +21,7 @@
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
+#include "formula_debugger.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
@@ -28,19 +29,29 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
+#include "gui/dialogs/data_manage.hpp"
+#include "gui/dialogs/debug_clock.hpp"
+#include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/editor_generate_map.hpp"
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/dialogs/editor_resize_map.hpp"
 #include "gui/dialogs/editor_settings.hpp"
+#include "gui/dialogs/formula_debugger.hpp"
+#include "gui/dialogs/game_delete.hpp"
+#include "gui/dialogs/game_load.hpp"
 #include "gui/dialogs/game_save.hpp"
+#include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/mp_cmd_wrapper.hpp"
 #include "gui/dialogs/mp_connect.hpp"
 #include "gui/dialogs/mp_create_game.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
-#include "gui/dialogs/mp_cmd_wrapper.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/unit_attack.hpp"
+#include "gui/dialogs/unit_create.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
 #include "language.hpp"
@@ -52,6 +63,26 @@
 #include <boost/bind.hpp>
 
 #include <memory>
+
+namespace gui2 {
+
+std::vector<std::string>& unit_test_registered_window_list()
+{
+	static std::vector<std::string> result =
+			tunit_test_access_only::get_registered_window_list();
+
+	return result;
+}
+
+void unit_test_mark_as_tested(const tdialog& dialog)
+{
+	std::vector<std::string>& list = unit_test_registered_window_list();
+	list.erase(
+			std::remove(list.begin(), list.end(), dialog.window_id())
+			, list.end());
+}
+
+}// namespace gui2
 
 namespace {
 
@@ -83,6 +114,9 @@ namespace {
 
 			std::auto_ptr<T> dlg(twrapper<T>::create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
+
+			gui2::unit_test_mark_as_tested(
+					dynamic_cast<gui2::tdialog&>(*(dlg.get())));
 
 			std::string exception;
 			try {
@@ -169,20 +203,64 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::taddon_connect>();
 	test<gui2::taddon_list>();
 	test<gui2::tcampaign_selection>();
+	test<gui2::tdata_manage>();
+	test<gui2::tedit_label>();
 	test<gui2::teditor_generate_map>();
 	test<gui2::teditor_new_map>();
 	test<gui2::teditor_resize_map>();
 	test<gui2::teditor_settings>();
+	test<gui2::tformula_debugger>();
+	test<gui2::tgame_delete>();
+	test<gui2::tgame_load>();
 	test<gui2::tgame_save>();
+	test<gui2::tgame_save_message>();
+	test<gui2::tgame_save_oos>();
+//	test<gui2::tgamestate_inspector>(); /** @todo ENABLE */
 	test<gui2::tlanguage_selection>();
 	test<gui2::tmessage>();
+	test<gui2::tsimple_item_selector>();
 	test<gui2::tmp_cmd_wrapper>();
 	test<gui2::tmp_connect>();
 	test<gui2::tmp_create_game>();
+	test<gui2::tmp_login>();
 	test<gui2::tmp_method_selection>();
+//	test<gui2::tmp_server_list>(); /** @todo ENABLE */
 	test<gui2::ttitle_screen>();
+	test<gui2::ttransient_message>();
+//	test<gui2::tunit_attack>(); /** @todo ENABLE */
+	test<gui2::tunit_create>();
 	test<gui2::twml_message_left>();
 	test<gui2::twml_message_right>();
+
+	std::vector<std::string>& list = gui2::unit_test_registered_window_list();
+
+	/**
+	 * @todo Clear this list of removals.
+	 *
+	 * This list marks some dialogs as tested that are not tested.
+	 * This list should be removed so all dialogs are properly tested.
+	 */
+	list.erase(
+			std::remove(list.begin(), list.end(), "debug_clock")
+			, list.end());
+	list.erase(
+			std::remove(list.begin(), list.end(), "gamestate_inspector")
+			, list.end());
+	list.erase(
+			std::remove(list.begin(), list.end(), "unit_attack")
+			, list.end());
+	list.erase(
+			std::remove(list.begin(), list.end(), "mp_server_list")
+			, list.end());
+	list.erase(
+			std::remove(list.begin(), list.end(), "tooltip_large")
+			, list.end());
+
+	// Test size() instead of empty() to get the number of offenders
+	BOOST_CHECK_EQUAL(list.size(), 0);
+	foreach(const std::string& id, list) {
+		std::cerr << "Window '" << id << "' registerd but not tested.\n";
+	}
 }
 
 BOOST_AUTO_TEST_CASE(test_make_test_fake)
@@ -228,6 +306,46 @@ struct twrapper<gui2::tcampaign_selection>
 };
 
 template<>
+struct twrapper<gui2::tdata_manage>
+{
+	static gui2::tdata_manage* create()
+	{
+		/** @todo Would be nice to add real data to the config. */
+		return new gui2::tdata_manage(config());
+	}
+};
+
+template<>
+struct twrapper<gui2::tedit_label>
+{
+	static gui2::tedit_label* create()
+	{
+		return new gui2::tedit_label("Label text to modify", false);
+	}
+};
+
+template<>
+struct twrapper<gui2::tformula_debugger>
+{
+	static gui2::tformula_debugger* create()
+	{
+		static game_logic::formula_debugger debugger;
+		return new gui2::tformula_debugger(debugger);
+	}
+};
+
+template<>
+struct twrapper<gui2::tgame_load>
+{
+	static gui2::tgame_load* create()
+	{
+		/** @todo Would be nice to add real data to the config. */
+		return new gui2::tgame_load(config());
+	}
+
+};
+
+template<>
 struct twrapper<gui2::tgame_save>
 {
 	static gui2::tgame_save* create()
@@ -236,6 +354,39 @@ struct twrapper<gui2::tgame_save>
 	}
 
 };
+
+template<>
+struct twrapper<gui2::tgame_save_message>
+{
+	static gui2::tgame_save_message* create()
+	{
+		return new gui2::tgame_save_message("Title", "filename", "message");
+	}
+
+};
+
+template<>
+struct twrapper<gui2::tgame_save_oos>
+{
+	static gui2::tgame_save_oos* create()
+	{
+		return new gui2::tgame_save_oos("Title", "filename", "message");
+	}
+
+};
+
+#if 0
+template<>
+struct twrapper<gui2::tgamestate_inspector>
+{
+	static gui2::tgamestate_inspector* create()
+	{
+		/** @todo Would be nice to add real data to the vconfig. */
+		return new gui2::tgamestate_inspector(vconfig());
+	}
+
+};
+#endif
 
 template<>
 struct twrapper<gui2::tmessage>
@@ -261,6 +412,28 @@ struct twrapper<gui2::tmp_create_game>
 	static gui2::tmp_create_game* create()
 	{
 		return new gui2::tmp_create_game(main_config);
+	}
+};
+
+template<>
+struct twrapper<gui2::tmp_login>
+{
+	static gui2::tmp_login* create()
+	{
+		return new gui2::tmp_login("label", true);
+	}
+};
+
+template<>
+struct twrapper<gui2::tsimple_item_selector>
+{
+	static gui2::tsimple_item_selector* create()
+	{
+		return new gui2::tsimple_item_selector("title"
+				, "message"
+				, std::vector<std::string>()
+				, false
+				, false);
 	}
 };
 
