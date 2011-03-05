@@ -53,11 +53,32 @@ namespace gui2 {
  * This shows the title screen.
  *
  * @begin{table}{dialog_widgets}
+ * tutorial & & button & m &
+ *         The button to start the tutorial. $
+ *
+ * campaign & & button & m &
+ *         The button to start a campaign. $
+ *
+ * multiplayer & & button & m &
+ *         The button to start multiplayer mode. $
+ *
+ * load & & button & m &
+ *         The button to load a saved game. $
+ *
+ * editor & & button & m &
+ *         The button to start the editor. $
+ *
  * addons & & button & m &
- *         The button to get the addons. $
+ *         The button to start managing the addons. $
  *
  * language & & button & m &
- *         The button to change the language. $
+ *         The button to select the game language. $
+ *
+ * credits & & button & m &
+ *         The button to show Wesnoth's contributors. $
+ *
+ * quit & & button & m &
+ *         The button to quit Wesnoth. $
  *
  * tips & & multi_page & m &
  *         A multi_page to hold all tips, when this widget is used the area of
@@ -65,10 +86,11 @@ namespace gui2 {
  *         is pressed. $
  *
  * -tip & & label & o &
- *         The tip of the day. $
+ *         Shows the text of the current tip. $
  *
  * -source & & label & o &
- *         The source for the tip of the day. $
+ *         The source (the one who's quoted or the book referenced) of the
+ *         current tip. $
  *
  * next_tip & & button & m &
  *         The button show the next tip of the day. $
@@ -77,10 +99,11 @@ namespace gui2 {
  *         The button show the previous tip of the day. $
  *
  * logo & & progress_bar & o &
- *         A progress bar to "animate" the image. $
+ *         A progress bar to "animate" the Wesnoth logo. $
  *
  * revision_number & & control & o &
- *         A widget to show the version number. $
+ *         A widget to show the version number when the version number is
+ *         known. $
  *
  * @end{table}
  */
@@ -328,6 +351,10 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	tprogress_bar* logo =
 			find_widget<tprogress_bar>(&window, "logo", false, false);
 	if(logo) {
+		/*
+		 * A 'singleton' value, since the progress bar only needs to progress
+		 * once its state needs to be global.
+		 */
 		static unsigned percentage = preferences::startup_effect() ? 0 : 100;
 		logo->set_percentage(percentage);
 
@@ -389,7 +416,7 @@ void ttitle_screen::show_debug_clock_window(CVideo& video)
 
 	if(debug_clock_) {
 		delete debug_clock_;
-		debug_clock_ = 0;
+		debug_clock_ = NULL;
 	} else {
 		debug_clock_ = new tdebug_clock();
 		debug_clock_->show(video, true);

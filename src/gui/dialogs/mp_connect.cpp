@@ -145,9 +145,23 @@ void tmp_server_list::post_show(twindow& window)
 
 REGISTER_DIALOG(mp_connect)
 
-tmp_connect::tmp_connect() :
-	video_(0),
-	host_name_(register_text("host_name", false,
+static void show_server_list(
+		  CVideo& video
+		, twindow& window
+		, tfield_text* host_name)
+{
+	assert(host_name);
+
+	tmp_server_list dlg;
+	dlg.show(video);
+
+	if(dlg.get_retval() == twindow::OK) {
+		host_name->set_widget_value(window, dlg.host_name());
+	}
+}
+
+tmp_connect::tmp_connect()
+	: host_name_(register_text("host_name", false,
 		preferences::network_host,
 		preferences::set_network_host))
 {
@@ -155,9 +169,7 @@ tmp_connect::tmp_connect() :
 
 void tmp_connect::pre_show(CVideo& video, twindow& window)
 {
-	assert(!video_);
 	assert(host_name_);
-	video_ = &video;
 
 	window.keyboard_capture(host_name_->widget(window));
 
@@ -165,29 +177,12 @@ void tmp_connect::pre_show(CVideo& video, twindow& window)
 	if(tbutton* button = find_widget<tbutton>(&window, "list", false, false)) {
 
 		connect_signal_mouse_left_click(*button, boost::bind(
-				  &tmp_connect::show_server_list
-				, this
-				, boost::ref(window)));
+				  show_server_list
+				, boost::ref(video)
+				, boost::ref(window)
+				, host_name_));
 	}
 
-}
-
-void tmp_connect::post_show(twindow& /*window*/)
-{
-	video_ = 0;
-}
-
-void tmp_connect::show_server_list(twindow& window)
-{
-	assert(video_);
-	assert(host_name_);
-
-	tmp_server_list dlg;
-	dlg.show(*video_);
-
-	if(dlg.get_retval() == twindow::OK) {
-		host_name_->set_widget_value(window, dlg.host_name());
-	}
 }
 
 /*WIKI
@@ -220,8 +215,11 @@ void tmp_connect::show_server_list(twindow& window)
 
 REGISTER_DIALOG(mp_login)
 
-tmp_login::tmp_login(const t_string& label,	const bool focus_password) :
-		label_(label), focus_password_(focus_password) { }
+tmp_login::tmp_login(const t_string& label,	const bool focus_password)
+	: label_(label)
+	, focus_password_(focus_password)
+{
+}
 
 void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 {

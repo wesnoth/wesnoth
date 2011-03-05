@@ -51,9 +51,7 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	/** Config which contains the list with the campaigns. */
-
-	/** Campaign list. */
+	/** Contains the config objects for all campaigns. */
 	const std::vector<config> &campaigns_;
 
 	/** The chosen campaign. */

@@ -36,26 +36,32 @@ namespace gui2 {
  *
  * == Language selection ==
  *
- * This shows the dialog to select the language to use.
+ * This shows the dialog to select the language to use. When the dialog is
+ * closed with the OK button it also updates the selected language in the
+ * preferences.
  *
  * @begin{table}{dialog_widgets}
  *
  * language_list & & listbox & m &
- *         This text contains the list with available languages. $
+ *         This listbox contains the list with available languages. $
  *
  * - & & control & o &
- *         Gets the name of the language. $
+ *         Show the name of the language in the current row. $
  *
  * @end{table}
+ */
+
+/**
+ * @todo show we also reset the translations and is the tips of day call
+ * really needed?
  */
 
 REGISTER_DIALOG(language_selection)
 
 void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlistbox* list = find_widget<tlistbox>(
-			&window, "language_list", false, true);
-	window.keyboard_capture(list);
+	tlistbox& list = find_widget<tlistbox>(&window, "language_list", false);
+	window.keyboard_capture(&list);
 
 	const std::vector<language_def>& languages = get_languages();
 	const language_def& current_language = get_language();
@@ -63,9 +69,9 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 		string_map item;
 		item.insert(std::make_pair("label", lang.language));
 
-		list->add_row(item);
+		list.add_row(item);
 		if(lang == current_language) {
-			list->select_row(list->get_item_count() - 1);
+			list.select_row(list.get_item_count() - 1);
 		}
 	}
 }
@@ -73,10 +79,9 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tlanguage_selection::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		tlistbox* list = find_widget<tlistbox>(
-				&window, "language_list", false, true);
+		const int res = find_widget<tlistbox>(&window, "language_list", false)
+				.get_selected_row();
 
-		const int res = list->get_selected_row();
 		assert(res != -1);
 
 		const std::vector<language_def>& languages = get_languages();

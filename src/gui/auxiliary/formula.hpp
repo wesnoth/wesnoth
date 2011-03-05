@@ -37,7 +37,7 @@ namespace gui2{
  * is done by this function, leading whitespace is significant.
  *
  * Upon getting the value of the formula a variable map is send. The variables
- * of in the map can be used in the formula. The 'owners' of the class need to
+ * in the map can be used in the formula. The 'owners' of the class need to
  * document the variables available.
  *
  * @tparam T                      The type of the formula. This type needs to

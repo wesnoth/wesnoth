@@ -44,7 +44,8 @@ namespace {
  *
  * = Canvas =
  *
- * A canvas is a blank drawing area on which the user can add various items.
+ * A canvas is a blank drawing area on which the user can draw several shapes.
+ * The drawing is done by adding WML structures to the canvas.
  */
 
 /*WIKI
@@ -55,7 +56,8 @@ namespace {
  * This section contains the pre commit functions. These functions will be
  * executed before the drawn canvas is applied on top of the normal
  * background. There should only be one pre commit section and its order
- * regarding the other shapes doesn't matter.
+ * regarding the other shapes doesn't matter. The function has effect on the
+ * entire canvas, it's not possible to affect only a small part of the canvas.
  *
  * The section can have one of the following subsections.
  *
@@ -73,11 +75,15 @@ namespace {
 /***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
 
 /**
- * Draws a single pixel.
+ * Draws a single pixel on a surface.
+ *
+ * @pre                   The caller needs to make sure the selected coordinate
+ *                        fits on the @p surface.
+ * @pre                   The @p canvas is locked.
  *
  * @param start           The memory address which is the start of the surface
  *                        buffer to draw in.
- * @param color          The color of the pixel to draw.
+ * @param color           The color of the pixel to draw.
  * @param w               The width of the surface.
  * @param x               The x coordinate of the pixel to draw.
  * @param y               The y coordinate of the pixel to draw.
@@ -93,10 +99,12 @@ static void put_pixel(
 }
 
 /**
- * Draws a line.
+ * Draws a line on a surface.
  *
- * @pre @p x2 >= @p x1
- * @pre @p canvas is locked.
+ * @pre                   The caller needs to make sure the entire line fits on
+ *                        the @p surface.
+ * @pre                   @p x2 >= @p x1
+ * @pre                   The @p surface is locked.
  *
  * @param canvas          The canvas to draw upon, the caller should lock the
  *                        surface before calling.
@@ -181,10 +189,10 @@ static void draw_line(
 }
 
 /**
- * Draws a circle.
+ * Draws a circle on a surface.
  *
- * @pre The circle must fit on the canvas.
- * @pre @p canvas is locked.
+ * @pre                   The circle must fit on the canvas.
+ * @pre                   The @p surface is locked.
  *
  * @param canvas          The canvas to draw upon, the caller should lock the
  *                        surface before calling.
@@ -259,7 +267,7 @@ public:
 	 *
 	 * @param cfg                 The config object to define the line see
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Line
-	 *                            for more info.
+	 *                            for more information.
 	 */
 	explicit tline(const config& cfg);
 
@@ -309,10 +317,10 @@ tline::tline(const config& cfg)
  *
  * Keys:
  * @begin{table}{config}
- *     x1 & f_unsigned & 0 &             The x coordinate of the startpoint. $
- *     y1 & f_unsigned & 0 &             The y coordinate of the startpoint. $
- *     x2 & f_unsigned & 0 &             The x coordinate of the endpoint. $
- *     y2 & f_unsigned & 0 &             The y coordinate of the endpoint. $
+ *     x1 & f_unsigned & 0 &           The x coordinate of the startpoint. $
+ *     y1 & f_unsigned & 0 &           The y coordinate of the startpoint. $
+ *     x2 & f_unsigned & 0 &           The x coordinate of the endpoint. $
+ *     y2 & f_unsigned & 0 &           The y coordinate of the endpoint. $
  *     color & color & "" &            The color of the line. $
  *     thickness & unsigned & 0 &      The thickness of the line if 0 nothing
  *                                     is drawn. $
@@ -322,24 +330,24 @@ tline::tline(const config& cfg)
  *
  * <span id="general_variables">Variables:</span>.
  * @begin{table}{formula}
- *     width & unsigned &                  The width of the canvas. $
+ *     width & unsigned &                 The width of the canvas. $
  *     height & unsigned &                The height of the canvas. $
  *     text & tstring &                   The text to render on the widget. $
  *     text_maximum_width & unsigned &    The maximum width available for the text
- *                                     on the widget. $
+ *                                        on the widget. $
  *     text_maximum_height & unsigned &   The maximum height available for the text
- *                                     on the widget. $
- *     text_wrap_mode & int  &             When the text doesn't fit in the
- *                                     available width there are several ways
- *                                     to fix that. This variable holds the
- *                                     best method. (NOTE this is a 'hidden'
- *                                     variable meant to copy state from a
- *                                     widget to its canvas so there's no
- *                                     reason to use this variable and thus
- *                                     its values are not listed and might
- *                                     change without further notice.) $
+ *                                        on the widget. $
+ *     text_wrap_mode & int  &            When the text doesn't fit in the
+ *                                        available width there are several ways
+ *                                        to fix that. This variable holds the
+ *                                        best method. (NOTE this is a 'hidden'
+ *                                        variable meant to copy state from a
+ *                                        widget to its canvas so there's no
+ *                                        reason to use this variable and thus
+ *                                        its values are not listed and might
+ *                                        change without further notice.) $
  *     text_alignment & h_align &         The way the text is aligned inside the
- *                                     canvas. $
+ *                                        canvas. $
  *@end{table}
  *
  * The size variables are copied to the window and will be determined at
@@ -347,15 +355,15 @@ tline::tline(const config& cfg)
  * needs to resize accordingly. The following variables are available:
  * @begin{table}{formula}
  *     screen_width & unsigned &        The usable width of the Wesnoth main
- *                                   window. $
+ *                                      window. $
  *     screen_height & unsigned &       The usable height of the Wesnoth main
- *                                   window. $
+ *                                      window. $
  *     gamemap_width & unsigned &       The usable width of the Wesnoth gamemap,
- *                                   if no gamemap shown it's the same value as
- *                                   screen_width. $
- *     gamemap_height & unsigned &     The usable height of the Wesnoth gamemap,
- *                                   if no gamemap shown it's the same value as
- *                                   screen_height. $
+ *                                      if no gamemap shown it's the same value as
+ *                                      screen_width. $
+ *     gamemap_height & unsigned &      The usable height of the Wesnoth gamemap,
+ *                                      if no gamemap shown it's the same value as
+ *                                      screen_height. $
  * @end{table}
  *
  * Note when drawing the valid coordinates are:<br>
@@ -408,22 +416,22 @@ tline::tline(const config& cfg)
  * The simple types are types which have one value or a short list of options.
  *
  * @begin{table}{variable_types}
- *     unsigned &                       Unsigned number (positive whole numbers
+ *     unsigned &                      Unsigned number (positive whole numbers
  *                                     and zero). $
- *     f_unsigned &                     Unsigned number or formula returning an
+ *     f_unsigned &                    Unsigned number or formula returning an
  *                                     unsigned number. $
- *     int &                            Signed number (whole numbers). $
- *     f_int &                          Signed number or formula returning an
+ *     int &                           Signed number (whole numbers). $
+ *     f_int &                         Signed number or formula returning an
  *                                     signed number. $
- *     bool &                           A boolean value accepts the normal
+ *     bool &                          A boolean value accepts the normal
  *                                     values as the rest of the game. $
- *     f_bool &                         Boolean value or a formula returning a
+ *     f_bool &                        Boolean value or a formula returning a
  *                                     boolean value. $
  *     string &                        A text. $
- *     tstring &                        A translatable string. $
- *     f_tstring &                      Formula returning a translatable string. $
+ *     tstring &                       A translatable string. $
+ *     f_tstring &                     Formula returning a translatable string. $
  *
- *     color &                          A string which contains the color, this
+ *     color &                         A string which contains the color, this
  *                                     a group of 4 numbers between 0 and 255
  *                                     separated by a comma. The numbers are red
  *                                     component, green component, blue
@@ -431,7 +439,7 @@ tline::tline(const config& cfg)
  *                                     available. An alpha of 255 is fully
  *                                     transparent. Omitted values are set to 0. $
  *
- *     font_style &                     A string which contains the style of the
+ *     font_style &                    A string which contains the style of the
  *                                     font:
  *                                     @* normal    normal font
  *                                     @* bold      bold font
@@ -442,9 +450,13 @@ tline::tline(const config& cfg)
  *                                     will allow multiple options, this type
  *                                     will be transformed to a comma separated
  *                                     list. If empty we default to the normal
- *                                     style. $
+ *                                     style. Since the render engine is
+ *                                     replaced by Pango markup this field will
+ *                                     change later on. Note widgets that allow
+ *                                     marked up text can use markup to change
+ *                                     the font style.$
  *
- *     v_align &                        Vertical alignment; how an item is
+ *     v_align &                       Vertical alignment; how an item is
  *                                     aligned vertically in the available
  *                                     space. Possible values:
  *                                     @* top    aligned at the top
@@ -452,7 +464,7 @@ tline::tline(const config& cfg)
  *                                     @* center centered
  *                                     @-When nothing is set or an another
  *                                     value as in the list the item is
- *                                     centred. $
+ *                                     centered. $
  *
  *     h_align &                       Horizontal alignment; how an item is
  *                                     aligned horizontal in the available
@@ -461,10 +473,10 @@ tline::tline(const config& cfg)
  *                                     @* right  aligned at the right side
  *                                     @* center centered $
  *
- *     f_h_align &                      A horizontal alignment or a formula
+ *     f_h_align &                     A horizontal alignment or a formula
  *                                     returning a horizontal alignment.$
  *
- *     border &                         Comma separated list of borders to use.
+ *     border &                        Comma separated list of borders to use.
  *                                     Possible values:
  *                                     @* left   border at the left side
  *                                     @* right  border at the right side
@@ -473,7 +485,7 @@ tline::tline(const config& cfg)
  *                                     @* all    alias for "left, right, top,
  *                                     bottom" $
  *
- *     scrollbar_mode &                 How to show the scrollbar of a widget.
+ *     scrollbar_mode &                How to show the scrollbar of a widget.
  *                                     Possible values:
  *                                     @* always       The scrollbar is always
  *                                     shown, regardless whether it's required
@@ -496,7 +508,7 @@ tline::tline(const config& cfg)
  *                                     when not needed eg the language list
  *                                     will need a scrollbar on most screens. $
  *
- *     resize_mode &                    Determines how an image is resized.
+ *     resize_mode &                   Determines how an image is resized.
  *                                     Possible values:
  *                                     @* scale        The image is scaled.
  *                                     @* stretch      The first row or column
@@ -517,11 +529,11 @@ tline::tline(const config& cfg)
  * which contain various widgets. Here's the list of sections.
  *
  * @begin{table}{variable_types}
- *     section &                        A generic section. The documentation
+ *     section &                       A generic section. The documentation
  *                                     about the section should describe the
  *                                     section in further detail. $
  *
- *     grid &                           A grid contains several widgets. (TODO
+ *     grid &                          A grid contains several widgets. (TODO
  *                                     add link to generic grid page.) $
  * @end{table}
  */
@@ -585,7 +597,7 @@ public:
 	 *
 	 * @param cfg                 The config object to define the rectangle see
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Rectangle
-	 *                            for more info.
+	 *                            for more information.
 	 */
 	explicit trectangle(const config& cfg);
 
@@ -650,11 +662,12 @@ trectangle::trectangle(const config& cfg)
  *
  * Keys:
  * @begin{table}{config}
- *     x & f_unsigned & 0 &              The x coordinate of the top left corner. $
- *     y & f_unsigned & 0 &              The y coordinate of the top left corner. $
- *     w & f_unsigned & 0 &              The width of the rectangle. $
- *     h & f_unsigned & 0 &              The height of the rectangle. $
- *     border_thickness & unsigned & 0 & The thickness of the border if the
+ *     x & f_unsigned & 0 &            The x coordinate of the top left corner. $
+ *     y & f_unsigned & 0 &            The y coordinate of the top left corner. $
+ *     w & f_unsigned & 0 &            The width of the rectangle. $
+ *     h & f_unsigned & 0 &            The height of the rectangle. $
+ *     border_thickness & unsigned & 0 &
+ *                                     The thickness of the border if the
  *                                     thickness is zero it's not drawn. $
  *     border_color & color & "" &     The color of the border if empty it's
  *                                     not drawn. $
@@ -754,7 +767,7 @@ public:
 	 *
 	 * @param cfg                 The config object to define the circle see
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Circle
-	 *                            for more info.
+	 *                            for more information.
 	 */
 	explicit tcircle(const config& cfg);
 
@@ -783,6 +796,7 @@ tcircle::tcircle(const config& cfg)
  * @page = GUICanvasWML
  *
  * == Circle ==
+ *
  * Definition of a circle. When drawing a circle it doesn't get blended on
  * the surface but replaces the pixels instead. A blitting flag might be
  * added later if needed.
@@ -793,6 +807,7 @@ tcircle::tcircle(const config& cfg)
  * y      & f_unsigned & 0 &       The y coordinate of the centre. $
  * radius & f_unsigned & 0 &       The radius of the circle if 0 nothing is
  *                                 drawn. $
+ * color & color & "" &            The color of the circle. $
  * debug & string & "" &           Debug message to show upon creation$ this
  *                                 message is not stored. $
  * @end{table}
@@ -867,7 +882,7 @@ public:
 	 *
 	 * @param cfg                 The config object to define the image see
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Image
-	 *                            for more info.
+	 *                            for more infomation.
 	 */
 	explicit timage(const config& cfg);
 
@@ -892,8 +907,8 @@ private:
 	 * Name of the image.
 	 *
 	 * This value is only used when the image name is a formula. If it isn't a
-	 * formula the image will be loaded at construction. If a formula it will
-	 * be loaded every draw cycles. This allows 'changing' images.
+	 * formula the image will be loaded in the constructor. If it's a formula it
+	 * will be loaded every draw cycles. This allows 'changing' images.
 	 */
 	tformula<std::string> image_name_;
 
@@ -938,12 +953,12 @@ timage::timage(const config& cfg)
  *
  * Keys:
  * @begin{table}{config}
- *     x & f_unsigned & 0 &              The x coordinate of the top left corner. $
- *     y & f_unsigned & 0 &              The y coordinate of the top left corner. $
- *     w & f_unsigned & 0 &              The width of the image, if not zero the
+ *     x & f_unsigned & 0 &            The x coordinate of the top left corner. $
+ *     y & f_unsigned & 0 &            The y coordinate of the top left corner. $
+ *     w & f_unsigned & 0 &            The width of the image, if not zero the
  *                                     image will be scaled to the desired
  *                                     width. $
- *     h & f_unsigned & 0 &              The height of the image, if not zero the
+ *     h & f_unsigned & 0 &            The height of the image, if not zero the
  *                                     image will be scaled to the desired
  *                                     height. $
  *     resize_mode & resize_mode & scale &
@@ -951,29 +966,31 @@ timage::timage(const config& cfg)
  *                                     the wanted size. $
  *     vertical_mirror & f_bool & false &
  *                                     Mirror the image over the vertical axis. $
- *     name & f_string & "" &            The name of the image. $
+ *     name & f_string & "" &          The name of the image. $
  *     debug & string & "" &           Debug message to show upon creation
  *                                     this message is not stored. $
  *
  * @end{table}
  * Variables:
  * @begin{table}{formula}
- *     image_width & unsigned &            The width of the image, either the
+ *     image_width & unsigned &         The width of the image, either the
  *                                      requested width or the natural width of
  *                                      the image. This value can be used to set
  *                                      the x (or y) value of the image. (This
  *                                      means x and y are evaluated after the
  *                                      width and height.) $
- *     image_height & unsigned &           The height of the image, either the
+ *     image_height & unsigned &        The height of the image, either the
  *                                      requested height or the natural height
  *                                      of the image. This value can be used to
  *                                      set the y (or x) value of the image.
  *                                      (This means x and y are evaluated after
  *                                      the width and height.) $
- *     image_original_width & unsigned &   The width of the image as stored on
+ *     image_original_width & unsigned &
+ *                                      The width of the image as stored on
  *                                      disk, can be used to set x or w
  *                                      (also y and h can be set). $
- *     image_original_height & unsigned &  The height of the image as stored on
+ *     image_original_height & unsigned &
+ *                                      The height of the image as stored on
  *                                      disk, can be used to set y or h
  *                                      (also x and y can be set). $
  * @end{table}
@@ -999,8 +1016,7 @@ void timage::draw(surface& canvas
 	const std::string& name = image_name_(variables);
 
 	if(name.empty()) {
-		DBG_GUI_D
-				<< "Image: formula returned no value, will not be drawn.\n";
+		DBG_GUI_D << "Image: formula returned no value, will not be drawn.\n";
 		return;
 	}
 
@@ -1011,8 +1027,7 @@ void timage::draw(surface& canvas
 	surface tmp(image::get_image(image::locator(name)));
 
 	if(!tmp) {
-		ERR_GUI_D << "Image: '" << name
-				<< "' not found and won't be drawn.\n";
+		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn.\n";
 		return;
 	}
 
@@ -1160,7 +1175,7 @@ public:
 	 *
 	 * @param cfg                 The config object to define the text see
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Text
-	 *                            for more info.
+	 *                            for more information.
 	 */
 	explicit ttext(const config& cfg);
 
@@ -1227,22 +1242,22 @@ ttext::ttext(const config& cfg)
  *
  * Keys:
  * @begin{table}{config}
- *     x & f_unsigned & 0 &              The x coordinate of the top left corner. $
- *     y & f_unsigned & 0 &              The y coordinate of the top left corner. $
- *     w & f_unsigned & 0 &              The width of the text's bounding
+ *     x & f_unsigned & 0 &            The x coordinate of the top left corner. $
+ *     y & f_unsigned & 0 &            The y coordinate of the top left corner. $
+ *     w & f_unsigned & 0 &            The width of the text's bounding
  *                                     rectangle. $
- *     h & f_unsigned & 0 &              The height of the text's bounding
+ *     h & f_unsigned & 0 &            The height of the text's bounding
  *                                     rectangle. $
- *     font_size & unsigned & &           The size of the text font. $
- *     font_style & font_style & "" &    The style of the text. $
+ *     font_size & unsigned & &        The size of the text font. $
+ *     font_style & font_style & "" &  The style of the text. $
  *     text_alignment & f_h_align & "left" &
  *                                     The alignment of the text. $
  *     color & color & "" &            The color of the text. $
- *     text & f_tstring & "" &           The text to draw (translatable). $
- *     text_markup & f_bool & false &    Can the text have markup? $
- *     maximum_width & f_int & -1 &      The maximum width the text is allowed to
+ *     text & f_tstring & "" &         The text to draw (translatable). $
+ *     text_markup & f_bool & false &  Can the text have mark-up? $
+ *     maximum_width & f_int & -1 &    The maximum width the text is allowed to
  *                                     be. $
- *     maximum_height & f_int & -1 &     The maximum height the text is allowed
+ *     maximum_height & f_int & -1 &   The maximum height the text is allowed
  *                                     to be. $
  *     debug & string & "" &           Debug message to show upon creation
  *                                     this message is not stored. $

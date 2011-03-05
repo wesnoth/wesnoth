@@ -28,21 +28,13 @@ public:
 
 private:
 
-	/** Used in show in order to show list. */
-	CVideo* video_;
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
-public:
-	void show_server_list(twindow& window);
-
-private:
+	/** The host name of the selected servef. */
 	tfield_text* host_name_;
 };
 
@@ -50,7 +42,7 @@ class tmp_login : public tdialog
 {
 public:
 	tmp_login(const t_string& label,
-		const bool focus_password = false);
+		const bool focus_password);
 
 private:
 
@@ -64,6 +56,8 @@ private:
 	void post_show(twindow& window);
 
 	t_string label_;
+
+	/** Should the password box be focussed upon showing the dialog? */
 	bool focus_password_;
 };
 

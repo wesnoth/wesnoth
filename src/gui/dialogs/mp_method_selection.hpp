@@ -33,9 +33,12 @@ public:
 	int get_choice() const { return choice_; }
 
 private:
-	std::string user_name_;
-	int choice_;
 
+	/** The name to use on the MP server. */
+	std::string user_name_;
+
+	/** The selected method to `connect' to the MP server. */
+	int choice_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

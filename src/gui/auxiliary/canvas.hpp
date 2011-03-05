@@ -85,8 +85,8 @@ public:
 	/**
 	 * Blits the canvas unto another surface.
 	 *
-	 * It makes sure the image on the canvas is up to date.
-	 * Also executes the preblitting functions.
+	 * It makes sure the image on the canvas is up to date. Also executes the
+	 * pre-blitting functions.
 	 *
 	 * @param surf                The surface to blit upon.
 	 * @param rect                The place to blit to.
@@ -97,7 +97,8 @@ public:
 	 * Sets the config.
 	 *
 	 * @param cfg                 The config object with the data to draw, see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
+	 *                            http://www.wesnoth.org/wiki/GUICanvasWML for
+	 *                            more information.
 	 */
 	void set_cfg(const config& cfg) { parse_cfg(cfg); }
 

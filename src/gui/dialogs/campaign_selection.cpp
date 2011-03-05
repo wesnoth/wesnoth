@@ -43,7 +43,8 @@ namespace gui2 {
  *
  * == Campaign selection ==
  *
- * This shows the dialog choose which campaign the user wants to play.
+ * This shows the dialog which allows the user to choose which campaign to
+ * play.
  *
  * @begin{table}{dialog_widgets}
  *
@@ -116,7 +117,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 		tree.set_selection_change_callback(boost::bind(
 				  &tcampaign_selection::campaign_selected
-				, *this
+				, this
 				, boost::ref(window)));
 
 		window.keyboard_capture(&tree);
@@ -192,7 +193,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(list, boost::bind(
 				  &tcampaign_selection::campaign_selected
-				, *this
+				, this
 				, boost::ref(window)));
 #else
 		list.set_callback_value_change(dialog_callback
@@ -200,7 +201,6 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 				, &tcampaign_selection::campaign_selected>);
 #endif
 			window.keyboard_capture(&list);
-
 
 		/***** Setup campaign details. *****/
 		tmulti_page& multi_page = find_widget<tmulti_page>(

@@ -25,6 +25,14 @@ class tpopup;
 /** Do we wish to show the button for the debug clock. */
 extern bool show_debug_clock_button;
 
+/**
+ * This class implements the title screen.
+ *
+ * The menu buttons return a result back to the caller with the button pressed.
+ * So at the moment it only handles the tips itself.
+ *
+ * @todo Evaluate whether we can handle more buttons in this class.
+ */
 class ttitle_screen : public tdialog
 {
 public:
