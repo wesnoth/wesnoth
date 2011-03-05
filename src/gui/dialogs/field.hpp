@@ -39,6 +39,13 @@ class tfield_
 {
 public:
 
+	/**
+	 * Constructor.
+	 *
+	 * @param id                  The id of the widget to connect to the window.
+	 *                            A widget can only be connected once.
+	 * @param optional            Is the widget optional?
+	 */
 	tfield_(const std::string& id, const bool optional) :
 		id_(id),
 		optional_(optional)
@@ -208,14 +215,56 @@ template<class T, class W, class CT> class tfield : public tfield_
 {
 public:
 
+	/**
+	 * Constructor.
+	 *
+	 * @param id                  The id of the widget to connect to the window.
+	 *                            A widget can only be connected once.
+	 * @param optional            Is the widget optional?
+	 * @param callback_load_value A callback function which is called when the
+	 *                            window is shown. This callback returns the
+	 *                            initial value of the field.
+	 * @param callback_save_value A callback function which is called when the
+	 *                            window closed with the OK button. The
+	 *                            callback is executed with the new value of
+	 *                            the field. It's meant to set the value of
+	 *                            some variable in the engine after the window
+	 *                            is closed with OK.
+	 */
 	tfield(const std::string& id,
 			const bool optional,
 			T (*callback_load_value) (),
 			void (*callback_save_value) (CT value)) :
 		tfield_(id, optional),
 		value_(T()),
+		link_(value_),
 		callback_load_value_(callback_load_value),
 		callback_save_value_(callback_save_value)
+	{
+	}
+
+	/**
+	 * Constructor.
+	 *
+	 * @param id                  The id of the widget to connect to the window.
+	 *                            A widget can only be connected once.
+	 * @param optional            Is the widget optional?
+	 * @param linked_variable     The variable which is linked to the field.
+	 *                            * Upon loading its value is used as initial
+	 *                              value of the widget.
+	 *                            * Upon closing:
+	 *                              * with OK its value is set to the value of
+	 *                                the widget.
+	 *                              * else, its value is undefined.
+	 */
+	tfield(const std::string& id
+			, const bool optional
+			, T& linked_variable)
+		: tfield_(id, optional)
+		, value_(T())
+		, link_(linked_variable)
+		, callback_load_value_(NULL)
+		, callback_save_value_(NULL)
 	{
 	}
 
@@ -267,6 +316,8 @@ public:
 	 * This function gets the value of the widget and stores that in the
 	 * internal cache, then that value is returned.
 	 *
+	 * @deprecated Use references to a variable instead.
+	 *
 	 * @param window              The window containing the widget.
 	 *
 	 * @returns                   The current value of the widget.
@@ -284,6 +335,8 @@ public:
 	 * used after the widget no longer exists. The cache is normally updated
 	 * when the window is closed with succes.
 	 *
+	 * @deprecated Use references to a variable instead.
+	 *
 	 * @returns                   The currently value of the internal cache.
 	 */
 	T get_cache_value()
@@ -300,6 +353,14 @@ private:
 	T value_;
 
 	/**
+	 * The variable linked to the field.
+	 *
+	 * When set determines the initial value and the final value is stored here
+	 * in the finallizer.
+	 */
+	T& link_;
+
+	/**
 	 * The callback function to load the value.
 	 *
 	 * This is used to load the initial value of the widget, if defined.
@@ -313,6 +374,8 @@ private:
 
 		if(callback_load_value_) {
 			value_ = callback_load_value_();
+		} else {
+			value_ = link_;
 		}
 
 		restore(window);
@@ -325,6 +388,8 @@ private:
 
 		if(callback_save_value_) {
 			callback_save_value_(value_);
+		} else {
+			link_ = value_;
 		}
 	}
 
@@ -393,6 +458,15 @@ public:
 		{
 		}
 
+	tfield_bool(const std::string& id
+			, const bool optional
+			, bool& linked_variable
+			, void (*callback_change) (twidget* widget))
+		: tfield<bool, gui2::tselectable_>(id, optional, linked_variable)
+		, callback_change_(callback_change)
+	{
+	}
+
 private:
 
 	/** Overridden from tfield_. */
@@ -423,6 +497,16 @@ public:
 			(id, optional, callback_load_value, callback_save_value)
 		{
 		}
+
+	tfield_text(const std::string& id
+			, const bool optional
+			, std::string& linked_variable)
+		: tfield<std::string, ttext_, const std::string&>(
+				id
+				, optional
+				, linked_variable)
+	{
+	}
 
 private:
 	/** Overridden from tfield_. */
