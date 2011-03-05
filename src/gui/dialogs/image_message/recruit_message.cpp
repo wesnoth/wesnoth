@@ -73,7 +73,7 @@ void trecruit_message_::update_unit_list(twindow& window) {
 	timage& unit_portrait = find_widget<timage> (&window, "unit_portrait", true);
 	unit_portrait.set_image(chosen_unit_->big_profile());
 //	unit_portrait.set_dirty();
-//	window.set_dirty();
+	window.set_dirty();
 }
 
 void trecruit_message_::set_unit_list(
@@ -148,11 +148,8 @@ void trecruit_message_::pre_show(CVideo& /*video*/, twindow& window)
 				chosen_unit_->big_profile()));
 		window.set_dirty();
 
-		timage& unit_portrait = find_widget<timage> (&window, "unit_portrait", true);
-			unit_portrait.set_image(chosen_unit_->big_profile());
-		//	unit_portrait.set_dirty();
-		//	window.set_dirty();
-
+	timage& unit_portrait = find_widget<timage> (&window, "unit_portrait", true);
+		unit_portrait.set_image(chosen_unit_->big_profile());
 
 		chosen_unit_->draw_report();
 
