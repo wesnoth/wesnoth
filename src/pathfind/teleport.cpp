@@ -92,14 +92,22 @@ config pathfind::teleport_group::to_config() const {
 	return retval;
 }
 
-pathfind::teleport_map::teleport_map(std::vector<teleport_group> groups, const unit& u, const unit_map &/*units*/, const team &viewing_team, bool see_all, bool ignore_units)
-	: teleport_map_(), sources_(), targets_() {
+pathfind::teleport_map::teleport_map(
+		  const std::vector<teleport_group>& groups
+		, const unit& u
+		, const team &viewing_team
+		, const bool see_all
+		, const bool ignore_units)
+	: teleport_map_()
+	, sources_()
+	, targets_()
+{
 
-	for (std::vector<teleport_group>::iterator it = groups.begin(); it != groups.end(); ++it) {
+	foreach(const teleport_group& group, groups) {
 
 		teleport_pair locations;
-		it->get_teleport_pair(locations, u, ignore_units);
-		if (!see_all && !it->always_visible() && viewing_team.is_enemy(u.side())) {
+		group.get_teleport_pair(locations, u, ignore_units);
+		if (!see_all && !group.always_visible() && viewing_team.is_enemy(u.side())) {
 			teleport_pair filter_locs;
 			foreach(const map_location &loc, locations.first)
 				if(!viewing_team.fogged(loc))
@@ -110,7 +118,7 @@ pathfind::teleport_map::teleport_map(std::vector<teleport_group> groups, const u
 			locations.first.swap(filter_locs.first);
 			locations.second.swap(filter_locs.second);
 		}
-		std::string teleport_id = it->get_teleport_id();
+		std::string teleport_id = group.get_teleport_id();
 
 		std::set<map_location>::iterator source_it = locations.first.begin();
 		for (; source_it != locations.first.end(); ++source_it ) {
@@ -184,7 +192,7 @@ const pathfind::teleport_map pathfind::get_teleport_locations(const unit &u,
 	const std::vector<teleport_group>& global_groups = resources::tunnels->get();
 	groups.insert(groups.end(), global_groups.begin(), global_groups.end());
 
-	return teleport_map(groups, u, *resources::units, viewing_team, see_all, ignore_units);
+	return teleport_map(groups, u, viewing_team, see_all, ignore_units);
 }
 
 pathfind::manager::manager(const config &cfg) : tunnels_(), id_(lexical_cast_default<int>(cfg["next_teleport_group_id"], 0)) {

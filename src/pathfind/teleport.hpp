@@ -74,9 +74,13 @@ private:
 
 class teleport_map {
 public:
-	teleport_map(std::vector<teleport_group> teleport_groups, const unit& u,
-			const unit_map &units, const team &viewing_team, bool see_all,
-			bool ignore_units);
+	teleport_map(
+			  const std::vector<teleport_group>& teleport_groups
+			, const unit& u
+			, const team &viewing_team
+			, const bool see_all
+			, const bool ignore_units);
+
 	teleport_map() :
 		teleport_map_(), sources_(), targets_() {
 	}
