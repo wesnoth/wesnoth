@@ -77,12 +77,12 @@ private:
 
 	bool show_everything_;
 	unsigned int show_team_;
-	
-	
+
+
 	class replay_buttons_wrapper {
-	
+
 		bool is_valid_;
-	
+
 	public:
 		replay_buttons_wrapper()
 			: is_valid_(false)
@@ -93,7 +93,7 @@ private:
 			, play_side_button_(NULL)
 		{
 		}
-	
+
 		gui::button* play_button_;
 		gui::button* stop_button_;
 		gui::button* reset_button_;
@@ -106,7 +106,7 @@ private:
 
 		void reset_buttons();
 	};
-	
+
 	replay_buttons_wrapper buttons_;
 };
 

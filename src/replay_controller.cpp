@@ -112,7 +112,7 @@ void replay_controller::init_gui(){
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		t->reset_objectives_changed();
 	}
-	
+
 	buttons_.update(gui_);
 }
 
@@ -146,29 +146,29 @@ void replay_controller::replay_buttons_wrapper::update(boost::scoped_ptr<game_di
 	reset_button_ = gui_->find_button("button-resetreplay");
 	play_turn_button_ = gui_->find_button("button-nextturn");
 	play_side_button_ = gui_->find_button("button-nextside");
-	
+
 	//check if we have all buttons - if someone messed with theme then some buttons may be missing
 	//if any of the buttons is missing, we just disable every one
 	if( !play_button_ || !stop_button_ || !reset_button_ || !play_turn_button_ || !play_side_button_ ) {
-	 
+
 		is_valid_ = false;
-		
+
 		if( play_button_ ) {
 		  play_button_->enable(false);
 		}
-		
+
 		if( stop_button_ ) {
 		  stop_button_->enable(false);
 		}
-		
+
 		if( reset_button_ ) {
 		  reset_button_->enable(false);
 		}
-		
+
 		if( play_turn_button_ ) {
 		  play_turn_button_->enable(false);
 		}
-		
+
 		if( play_side_button_ ) {
 		  play_side_button_->enable(false);
 		}
@@ -177,28 +177,28 @@ void replay_controller::replay_buttons_wrapper::update(boost::scoped_ptr<game_di
 	}
 }
 
-void replay_controller::replay_buttons_wrapper::playback_should_start() 
+void replay_controller::replay_buttons_wrapper::playback_should_start()
 {
 	if( !is_valid_ )
 		return;
-	
+
 	play_button_->enable(false);
 	reset_button_->enable(false);
 	play_turn_button_->enable(false);
 	play_side_button_->enable(false);
 }
 
-void replay_controller::replay_buttons_wrapper::playback_should_stop(bool is_playing) 
+void replay_controller::replay_buttons_wrapper::playback_should_stop(bool is_playing)
 {
 	if( !is_valid_)
 		return;
-	
+
 	if( !recorder.at_end() ) {
 		play_button_->enable(true);
 		reset_button_->enable(true);
 		play_turn_button_->enable(true);
 		play_side_button_->enable(true);
-	
+
 		play_button_->release();
 		play_turn_button_->release();
 		play_side_button_->release();
@@ -206,18 +206,18 @@ void replay_controller::replay_buttons_wrapper::playback_should_stop(bool is_pla
 		reset_button_->enable(true);
 		stop_button_->enable(false);
 	}
-	
+
 	if( !is_playing ) {
 		//user interrupted
 		stop_button_->release();
-	}	
+	}
 }
 
-void replay_controller::replay_buttons_wrapper::reset_buttons() 
+void replay_controller::replay_buttons_wrapper::reset_buttons()
 {
 	if( !is_valid_ )
 		return;
-	
+
 	play_button_->enable(true);
 	stop_button_->enable(true);
 	reset_button_->enable(true);
@@ -263,7 +263,7 @@ void replay_controller::reset_replay(){
 	init_gui();
 	fire_start(true);
 	update_gui();
-	
+
 	buttons_.reset_buttons();
 }
 
@@ -273,21 +273,21 @@ void replay_controller::stop_replay(){
 
 void replay_controller::replay_next_turn(){
 	is_playing_ = true;
-	buttons_.playback_should_start();	
+	buttons_.playback_should_start();
 
 	play_turn();
 
  	if (!skip_replay_ || !is_playing_){
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
-	
+
 	buttons_.playback_should_stop(is_playing_);
 }
 
 void replay_controller::replay_next_side(){
 	is_playing_ = true;
 	buttons_.playback_should_start();
-	
+
 	play_side(player_number_ - 1, false);
 
 	if (!skip_replay_ || !is_playing_) {
@@ -351,7 +351,7 @@ void replay_controller::play_replay(){
 		for(; !recorder.at_end() && is_playing_; first_player_ = 1) {
 			play_turn();
 		}
-		
+
 		if (!is_playing_) {
 			gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 		}
@@ -359,7 +359,7 @@ void replay_controller::play_replay(){
 	catch(end_level_exception& e){
 		if (e.result == QUIT) throw;
 	}
-	
+
 	buttons_.playback_should_stop(is_playing_);
 }
 
@@ -439,9 +439,9 @@ void replay_controller::update_teams(){
 	} else {
 		gui_->set_team(show_team_ - 1, show_everything_);
 	}
-	
+
 	::clear_shroud(next_team);
-	
+
 	gui_->set_playing_team(next_team - 1);
 	gui_->invalidate_all();
 }
@@ -464,12 +464,12 @@ void replay_controller::show_statistics(){
 }
 
 void replay_controller::handle_generic_event(const std::string& name){
-	
+
 	if( name == "completely_redrawn" ) {
 		buttons_.update(gui_);
-		
+
 		gui::button* skip_animation_button = gui_->find_button("skip-animation");
-		
+
 		skip_animation_button->set_check(skip_replay_);
 	} else {
 		rebuild_replay_theme();

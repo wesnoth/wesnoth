@@ -1879,7 +1879,7 @@ void display::redraw_everything()
 	foreach (boost::function<void(display&)> f, redraw_observers_) {
 		f(*this);
 	}
-	
+
 	complete_redraw_event_.notify_observers();
 }
 

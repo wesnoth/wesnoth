@@ -518,7 +518,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	team& current_team = teams_[team_index];
 
 	mouse_handler_.set_side(team_index + 1);
-	
+
 	// If we are observers we move to watch next team if it is allowed
 	if (is_observer()
 		&& !current_team.get_disallow_observers()) {

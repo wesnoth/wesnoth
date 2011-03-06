@@ -426,7 +426,7 @@ private:
 	};
 
 	/**
-	 * The mode in which the window is shown. 
+	 * The mode in which the window is shown.
 	 *
 	 * This is used to determine whether or not to remove the tip.
 	 */

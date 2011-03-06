@@ -374,9 +374,9 @@ build_event_chain<tsignal_notification_function>(
  * assumption might change, but is valid for now. The function doesn't build an
  * event chain from @p dispatcher to @p widget but from @p widget to its
  * toplevel item (the first one without a parent) which we call @p window.
- * 
+ *
  * @pre                           dispatcher == widget
- * 
+ *
  * @returns                       The list of widgets with a handler.
  *                                The order will be (assuming all have a
  *                                handler):

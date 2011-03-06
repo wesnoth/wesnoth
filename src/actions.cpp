@@ -2688,7 +2688,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 			//Doing it not is also problematic since any units there gets replaced with the
 			//temp_unit for the cause of that loop step - we'll see
 			//if (*step != unit_itor->get_location() && units.find(*step) != units.end()) continue;
-			
+
 			// We have to swap out any unit that is already in the hex,
 			// so we can put our unit there, then we'll swap back at the end.
 			const temporary_unit_placer unit_placer(units, *step, temp_unit);

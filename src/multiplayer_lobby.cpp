@@ -760,7 +760,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	friends_in_game_.set_check(preferences::fi_friends_in_game());
 	friends_in_game_.set_help_string(_("Only show games that are played or observed by at least one of your friends"));
 	friends_in_game_.enable(apply_filter_.checked());
-	
+
 	filter_label_.enable(apply_filter_.checked());
 
 	filter_text_.set_text(search_string_);

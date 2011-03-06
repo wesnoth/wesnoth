@@ -57,7 +57,7 @@ namespace {                                                                \
 
 /**
  * Registers a window for a dialog.
- * 
+ *
  * Call this function to register a window. In the header of the class it adds
  * the following code:
  *@code
@@ -112,7 +112,7 @@ type::window_id() const                                                    \
  *
  * The 'in + out parameters' are used as initial value and final value when the
  * OK button is pressed. The 'in parameters' are just extra parameters for
- * showing. 
+ * showing.
  *
  * When a function only has 'in parameters' it should return a void value and
  * the function should be called @p display, if it has 'in + out parameters' it
