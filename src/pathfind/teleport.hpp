@@ -41,7 +41,7 @@ public:
 	/*
 	 *
 	 */
-	teleport_group(vconfig cfg, bool way_back = false);
+	teleport_group(const vconfig& cfg, bool way_back = false);
 
 	/*
 	 * Fills the argument loc_pair if the unit u matches the groups filter.

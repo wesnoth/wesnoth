@@ -38,7 +38,7 @@ pathfind::teleport_group::teleport_group(const config& cfg) : cfg_(cfg, true), r
 	assert(!cfg_.get_children("filter").empty());
 }
 
-pathfind::teleport_group::teleport_group(vconfig cfg, bool reversed) : cfg_(cfg), reversed_(reversed), id_()
+pathfind::teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg), reversed_(reversed), id_()
 {
 	assert(!cfg_.get_children("source").empty());
 	assert(!cfg_.get_children("target").empty());
