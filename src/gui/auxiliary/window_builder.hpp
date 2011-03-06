@@ -119,6 +119,14 @@ typedef boost::intrusive_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
 class twindow_builder
 {
 public:
+
+	twindow_builder()
+		: resolutions()
+		, id_()
+		, description_()
+	{
+	}
+
 	const std::string& read(const config& cfg);
 
 	struct tresolution
