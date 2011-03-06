@@ -360,7 +360,8 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	metrics_(),
 	last_ping_(time(NULL)),
 	last_stats_(last_ping_),
-	last_uh_clean_(last_ping_)
+	last_uh_clean_(last_ping_),
+	cmd_handlers_()
 {
 	setup_handlers();
 	load_config();
