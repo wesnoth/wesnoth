@@ -243,7 +243,7 @@ void playmp_controller::play_human_turn(){
 			check_end_level();
 		} catch(end_level_exception& e) {
 			turn_data_->send_data();
-			throw e;
+			throw;
 		}
 
 		if (!linger_ && (current_team().countdown_time() > 0) && gamestate_.mp_settings().mp_countdown) {
@@ -406,7 +406,7 @@ void playmp_controller::wait_for_upload()
 
 		} catch(end_level_exception& e) {
 			turn_data_->send_data();
-			throw e;
+			throw;
 		}
 	}
 
