@@ -37,7 +37,7 @@ public:
 	/*
 	 * Used to create the object from a saved file.
 	 */
-	teleport_group(const config cfg);
+	teleport_group(const config& cfg);
 	/*
 	 *
 	 */
