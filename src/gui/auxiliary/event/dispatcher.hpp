@@ -524,6 +524,13 @@ public:
 	template<class T>
 	struct tsignal
 	{
+		tsignal()
+			: pre_child()
+			, child()
+			, post_child()
+		{
+		}
+
 		std::vector<T> pre_child;
 		std::vector<T> child;
 		std::vector<T> post_child;
