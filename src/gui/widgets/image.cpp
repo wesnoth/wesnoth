@@ -36,13 +36,33 @@ tpoint timage::calculate_best_size() const
 {
 	surface image(image::get_image(image::locator(label())));
 
-	tpoint result(0, 0);
-	if(image) {
-		result = tpoint(image->w, image->h);
+	if(!image) {
+		DBG_GUI_L << LOG_HEADER << " empty image return default.\n";
+		return get_config_default_size();
+	}
+
+	const tpoint minimum = get_config_default_size();
+	const tpoint maximum = get_config_maximum_size();
+
+	tpoint result = tpoint(image->w, image->h);
+
+	if(minimum.x > 0 && result.x < minimum.x) {
+		DBG_GUI_L << LOG_HEADER << " increase width to minimum.\n";
+		result.x = minimum.x;
+	} else if(maximum.x > 0 && result.x > maximum.x) {
+		DBG_GUI_L << LOG_HEADER << " decrease width to maximum.\n";
+		result.x = maximum.x;
+	}
+
+	if(minimum.y > 0 && result.y < minimum.y) {
+		DBG_GUI_L << LOG_HEADER << " increase height to minimum.\n";
+		result.y = minimum.y;
+	} else if(maximum.y > 0 && result.y > maximum.y) {
+		DBG_GUI_L << LOG_HEADER << " decrease height to maximum.\n";
+		result.y = maximum.y;
 	}
 
 	DBG_GUI_L << LOG_HEADER
-		<< " empty image " << !image
 		<< " result " << result
 		<< ".\n";
 	return result;
