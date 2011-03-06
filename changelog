@@ -34,7 +34,7 @@ Version 1.9.4+svn:
    * Add 1.25, 1.75 and 3.0 animation speed factors to display preferences
      (feature request #15713).
    * Implemented: The expose event in gui2.
-   * Fixed: Image widget now honours its minimum and maximum size.
+   * Fixed: Image widget now honors its minimum and maximum size.
  * WML engine:
    * Allow [color_range] and [color_palette] nodes to be inserted at top-level
      by add-ons to globally define custom ranges and palettes.
@@ -48,12 +48,12 @@ Version 1.9.4+svn:
    * New wml action tag [transform_unit], like the {TRANSFORM_UNIT..} macro.
    * [unstore_unit] now accepts a fire_event= key to control firing of
      (post) advance events and a check_passability= (default yes, previously it was
-     always no/non-existant) key controlling whether to check for suitable terrain
+     always no/non-existent) key controlling whether to check for suitable terrain
      when placing units
    * Renamed [teleport]ignore_passability= to check_passability= to get rid of
      a confusing negation.
    * Introduced [move_unit]check_passability= (default yes, previously it was
-     always yes/non-existant) key to allow disabling the check for suitable terrain.
+     always yes/non-existent) key to allow disabling the check for suitable terrain.
    * Added TAKE_IT_STRING and LEAVE_IT_STRING arguments to PICKUPPABLE_ITEM
  * Miscellaneous and bugfixes:
    * Fixed: g++ compiler warnings.
