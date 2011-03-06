@@ -178,7 +178,10 @@ public:
 	{
 		model_.clear_stuff_list();
 
-		const config &vars = resources::state_of_game->get_variables();
+		const config &vars = resources::state_of_game
+				? resources::state_of_game->get_variables()
+				: config();
+
 		foreach( const config::attribute &a, vars.attribute_range()) {
 			model_.add_row_to_stuff_list(a.first,a.first);
 		}
@@ -200,7 +203,9 @@ public:
 		}
 
 		int i = 0;///@todo replace with precached data
-		const config &vars = resources::state_of_game->get_variables();
+		const config &vars = resources::state_of_game
+				? resources::state_of_game->get_variables()
+				: config();
 
 		foreach( const config::attribute &a, vars.attribute_range()) {
 			if (selected==i) {
@@ -239,25 +244,30 @@ public:
 	{
 		model_.clear_stuff_list();
 
-		for(unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
-			std::stringstream s;
-			s << '(' << i->get_location();
-			s << ") side=" << i->side() << ' ';
-			if (i->can_recruit()) {
-				s << "LEADER ";
-			}
+		if(resources::units) {
+			for(unit_map::iterator i = resources::units->begin()
+					; i != resources::units->end()
+					; ++i) {
 
-			s << "id=[" << i->id() << "] " << i->type_id()
-				<< "; L" << i->level()<< "; " << i->experience()
-				<< '/' << i->max_experience() << " xp; "
-				<< i->hitpoints() << '/' << i->max_hitpoints()
-				<< " hp; ";
-			foreach (const std::string &str, i->get_traits_list()) {
-				s << str <<" ";
-			}
+				std::stringstream s;
+				s << '(' << i->get_location();
+				s << ") side=" << i->side() << ' ';
+				if (i->can_recruit()) {
+					s << "LEADER ";
+				}
 
-			std::string key = s.str();
-			model_.add_row_to_stuff_list(key,key);
+				s << "id=[" << i->id() << "] " << i->type_id()
+					<< "; L" << i->level()<< "; " << i->experience()
+					<< '/' << i->max_experience() << " xp; "
+					<< i->hitpoints() << '/' << i->max_hitpoints()
+					<< " hp; ";
+				foreach (const std::string &str, i->get_traits_list()) {
+					s << str <<" ";
+				}
+
+				std::string key = s.str();
+				model_.add_row_to_stuff_list(key,key);
+			}
 		}
 
 		model_.set_inspect_window_text("");
@@ -273,14 +283,18 @@ public:
 		}
 
 		int i = 0;///@todo replace with precached data
-		for(unit_map::iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
-			if (selected==i) {
-				config c_unit;
-				u->write(c_unit);
-				model_.set_inspect_window_text(c_unit.debug());
-				return;
+		if(resources::units) {
+			for(unit_map::iterator u = resources::units->begin()
+					; u != resources::units->end()
+					; ++u) {
+				if (selected==i) {
+					config c_unit;
+					u->write(c_unit);
+					model_.set_inspect_window_text(c_unit.debug());
+					return;
+				}
+				i++;
 			}
-			i++;
 		}
 		model_.set_inspect_window_text("");
 
@@ -325,7 +339,9 @@ public:
 		}
 
 		if (selected==0) {
-			config c = resources::teams->at(side_-1).to_config();
+			config c = resources::teams
+					? resources::teams->at(side_-1).to_config()
+					: config();
 			c.clear_children("ai");
 			c.clear_children("village");
 			c.remove_attribute("shroud_data");
@@ -344,7 +360,10 @@ public:
 		}
 
 		if (selected==3) {
-			const std::vector<unit> recall_list = resources::teams->at(side_-1).recall_list();
+			const std::vector<unit> recall_list = resources::teams
+					? resources::teams->at(side_-1).recall_list()
+					: std::vector<unit>();
+
 			std::stringstream s;
 			foreach (const unit &u, recall_list) {
 				s << "id=["<<u.id() << "] "<<u.type_id() << "; L"<<u.level()<<"; " << u.experience() <<"/" << u.max_experience()<< " xp "<< std::endl;
@@ -358,7 +377,10 @@ public:
 		}
 
 		if (selected==4) {
-			const std::vector<unit> recall_list = resources::teams->at(side_-1).recall_list();
+			const std::vector<unit> recall_list = resources::teams
+					? resources::teams->at(side_-1).recall_list()
+					: std::vector<unit>();
+
 			config c;
 			foreach (const unit &u, recall_list) {
 				config c_unit;
@@ -377,25 +399,29 @@ public:
 
 		if (selected==6) {
 			std::stringstream s;
-			for(unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
-				if (i->side()!=side_) {
-					continue;
-				}
-				s << i->get_location();
-				if (i->can_recruit()) {
-					s << " LEADER ";
-				}
+			if(resources::units) {
+				for(unit_map::iterator i = resources::units->begin()
+						; i != resources::units->end()
+						; ++i) {
+					if (i->side()!=side_) {
+						continue;
+					}
+					s << i->get_location();
+					if (i->can_recruit()) {
+						s << " LEADER ";
+					}
 
-				s << "id=[" << i->id() << "] " << i->type_id()
-					<< "; L" << i->level()<< "; "
-					<< i->experience() << '/'
-					<< i->max_experience() << " xp; "
-					<< i->hitpoints() << '/'
-					<< i->max_hitpoints()<<" hp.\n";
-				foreach (const std::string &str, i->get_traits_list() ) {
-					s << "\t" << str<< std::endl;
+					s << "id=[" << i->id() << "] " << i->type_id()
+						<< "; L" << i->level()<< "; "
+						<< i->experience() << '/'
+						<< i->max_experience() << " xp; "
+						<< i->hitpoints() << '/'
+						<< i->max_hitpoints()<<" hp.\n";
+					foreach (const std::string &str, i->get_traits_list() ) {
+						s << "\t" << str<< std::endl;
+					}
+					s << std::endl << std::endl;
 				}
-				s << std::endl << std::endl;
 			}
 			model_.set_inspect_window_text(s.str());
 			return;
@@ -426,7 +452,9 @@ public:
 		sm_controllers_.push_back(
 				boost::shared_ptr<single_mode_controller>(new unit_mode_controller("units",model_)));
 		//foreach team
-		int sides = static_cast<int>((*resources::teams).size());
+		int sides = resources::teams
+				? static_cast<int>((*resources::teams).size())
+				: 0;
 		for( int side = 1; side<=sides; ++side) {
 			std::string side_str = str_cast(side);
 			sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
