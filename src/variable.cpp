@@ -269,7 +269,7 @@ const config vconfig::get_parsed_config() const
 					res.add_child("insert_tag", insert_cfg.get_config());
 				} else {
 					// throw to the top [insert_tag] which started the recursion
-					throw err;
+					throw;
 				}
 			}
 		} else {
