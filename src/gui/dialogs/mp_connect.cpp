@@ -181,5 +181,10 @@ void tmp_connect::pre_show(CVideo& video, twindow& window)
 
 }
 
+tdialog* tmp_connect::mp_server_list_for_unit_test()
+{
+	return new tmp_server_list();
+}
+
 } // namespace gui2
 

@@ -22,6 +22,8 @@ namespace gui2 {
 
 class tmp_connect : public tdialog
 {
+	/** The unit test needs to be able to test the tmp_connect dialog. */
+	friend tdialog* unit_test_mp_server_list();
 public:
 	tmp_connect();
 
@@ -35,6 +37,13 @@ private:
 
 	/** The host name of the selected servef. */
 	tfield_text* host_name_;
+
+	/**
+	 * The unit test needs to be able to test the tmp_connect dialog.
+	 *
+	 * @returns                   A newly allocated tmp_server_list.
+	 */
+	static tdialog* mp_server_list_for_unit_test();
 };
 
 } // namespace gui2

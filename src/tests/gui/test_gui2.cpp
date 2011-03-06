@@ -84,7 +84,15 @@ std::string unit_test_mark_as_tested(const tdialog& dialog)
 	return dialog.window_id();
 }
 
-}// namespace gui2
+
+class tmp_server_list;
+
+tdialog* unit_test_mp_server_list()
+{
+	return tmp_connect::mp_server_list_for_unit_test();
+}
+
+} // namespace gui2
 
 namespace {
 
@@ -225,7 +233,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tmp_create_game>();
 	test<gui2::tmp_login>();
 	test<gui2::tmp_method_selection>();
-//	test<gui2::tmp_server_list>(); /** @todo ENABLE */
+	test<gui2::tmp_server_list>();
 	test<gui2::ttitle_screen>();
 	test<gui2::ttransient_message>();
 //	test<gui2::tunit_attack>(); /** @todo ENABLE */
@@ -249,9 +257,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 			, list.end());
 	list.erase(
 			std::remove(list.begin(), list.end(), "unit_attack")
-			, list.end());
-	list.erase(
-			std::remove(list.begin(), list.end(), "mp_server_list")
 			, list.end());
 	list.erase(
 			std::remove(list.begin(), list.end(), "tooltip_large")
@@ -498,6 +503,15 @@ struct twrapper<gui2::teditor_settings>
 		result->set_redraw_callback(boost::bind(dummy_callback, _1, _2, _3));
 
 		return result;
+	}
+};
+
+template<>
+struct twrapper<gui2::tmp_server_list>
+{
+	static gui2::tdialog* create()
+	{
+		return gui2::unit_test_mp_server_list();
 	}
 };
 
