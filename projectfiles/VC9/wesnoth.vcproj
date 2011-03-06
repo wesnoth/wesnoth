@@ -2483,6 +2483,34 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\mp_login.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\mp_method_selection.cpp"
 						>
 						<FileConfiguration
@@ -2809,10 +2837,6 @@
 								/>
 							</FileConfiguration>
 						</File>
-					</Filter>
-					<Filter
-						Name="Image_Message"
-						>
 					</Filter>
 				</Filter>
 				<Filter
@@ -7478,6 +7502,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\mp_login.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\mp_method_selection.hpp"
 						>
 					</File>
@@ -7528,10 +7556,6 @@
 							RelativePath="..\..\src\gui\dialogs\addon\description.hpp"
 							>
 						</File>
-					</Filter>
-					<Filter
-						Name="Image_Message"
-						>
 					</Filter>
 				</Filter>
 				<Filter
