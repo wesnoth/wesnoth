@@ -32,6 +32,22 @@ class twindow;
  */
 class tpopup
 {
+	/**
+	 * Special helper function to get the id of the window.
+	 *
+	 * This is used in the unit tests, but these implementation details
+	 * shouldn't be used in the normal code.
+	 */
+	friend std::string unit_test_mark_popup_as_tested(const tpopup& dialog);
+
+	/**
+	 * Special helper function for the unit test to the the window.
+	 *
+	 * This is used in the unit tests, but these implementation details
+	 * shouldn't be used in the normal code.
+	 */
+	friend twindow* unit_test_window(const tpopup& dialog);
+
 public:
 	tpopup();
 

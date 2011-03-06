@@ -55,6 +55,7 @@
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "map_create.hpp"
 #include "tests/utils/fake_display.hpp"
@@ -84,6 +85,19 @@ std::string unit_test_mark_as_tested(const tdialog& dialog)
 	return dialog.window_id();
 }
 
+std::string unit_test_mark_popup_as_tested(const tpopup& dialog)
+{
+	std::vector<std::string>& list = unit_test_registered_window_list();
+	list.erase(
+			std::remove(list.begin(), list.end(), dialog.window_id())
+			, list.end());
+	return dialog.window_id();
+}
+
+twindow* unit_test_window(const tpopup& dialog)
+{
+	return dialog.window_;
+}
 
 class tmp_server_list;
 
@@ -153,6 +167,50 @@ namespace {
 		}
 	}
 
+	template<class T>
+	void test_popup_resolutions(const tresolution_list& resolutions)
+	{
+		bool interact = false;
+		for(int i = 0; i < 2; ++i) {
+			foreach(const tresolution& resolution, resolutions) {
+				video.make_test_fake(resolution.first, resolution.second);
+
+				std::auto_ptr<gui2::tpopup> dlg(twrapper<T>::create());
+				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
+
+				const std::string id = gui2::unit_test_mark_popup_as_tested(*(dlg.get()));
+
+				std::string exception;
+				try {
+					dlg->show(video, interact);
+					gui2::twindow* window = gui2::unit_test_window((*dlg.get()));
+					BOOST_REQUIRE_NE(window, (void*)NULL);
+					window->draw();
+				} catch(gui2::tlayout_exception_width_modified&) {
+					exception = "gui2::tlayout_exception_width_modified";
+				} catch(gui2::tlayout_exception_width_resize_failed&) {
+					exception = "gui2::tlayout_exception_width_resize_failed";
+				} catch(gui2::tlayout_exception_height_resize_failed&) {
+					exception = "gui2::tlayout_exception_height_resize_failed";
+				} catch(twml_exception& e) {
+					exception = e.dev_message;
+				} catch(std::exception& e) {
+					exception = e.what();
+				} catch(...) {
+					exception = "unknown";
+				}
+				BOOST_CHECK_MESSAGE(exception.empty(),
+						"Test for '" << id
+						<< "' Failed\nnew widgets = " << gui2::new_widgets
+						<< " small gui = " << game_config::small_gui
+						<< " resolution = " << resolution.first
+						<< 'x' << resolution.second
+						<< "\nException caught: " << exception << '.');
+			}
+
+			interact = true;
+		}
+	}
 const tresolution_list& get_small_gui_resolutions()
 {
 	static tresolution_list result;
@@ -191,6 +249,23 @@ void test()
 	}
 }
 
+template<class T>
+void test_popup()
+{
+	gui2::new_widgets = false;
+
+	for(size_t i = 0; i < 2; ++i) {
+
+		game_config::small_gui = true;
+		test_popup_resolutions<T>(get_small_gui_resolutions());
+
+		game_config::small_gui = false;
+		test_popup_resolutions<T>(get_gui_resolutions());
+
+		gui2::new_widgets = true;
+	}
+}
+
 } // namespace
 
 BOOST_AUTO_TEST_CASE(test_gui2)
@@ -209,6 +284,8 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	game_config::load_config(main_config.child("game_config"));
 
 	/**** Run the tests. *****/
+
+	/* The tdialog classes. */
 	test<gui2::taddon_connect>();
 	test<gui2::taddon_list>();
 	test<gui2::tcampaign_selection>();
@@ -241,6 +318,9 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::twml_message_left>();
 	test<gui2::twml_message_right>();
 
+	/* The tpopup classes. */
+	test_popup<gui2::tdebug_clock>();
+
 	std::vector<std::string>& list = gui2::unit_test_registered_window_list();
 
 	/**
@@ -249,9 +329,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	 * This list marks some dialogs as tested that are not tested.
 	 * This list should be removed so all dialogs are properly tested.
 	 */
-	list.erase(
-			std::remove(list.begin(), list.end(), "debug_clock")
-			, list.end());
 	list.erase(
 			std::remove(list.begin(), list.end(), "unit_attack")
 			, list.end());
