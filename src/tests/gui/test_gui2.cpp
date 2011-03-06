@@ -46,6 +46,7 @@
 #include "gui/dialogs/mp_cmd_wrapper.hpp"
 #include "gui/dialogs/mp_connect.hpp"
 #include "gui/dialogs/mp_create_game.hpp"
+#include "gui/dialogs/mp_login.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/title_screen.hpp"
