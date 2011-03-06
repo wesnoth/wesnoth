@@ -1074,6 +1074,13 @@ static bool kde_style = false;
 
 struct wnotify
 {
+	wnotify()
+		: id()
+		, owner()
+		, message()
+	{
+	}
+
 	uint32_t id;
 	std::string owner;
 	std::string message;
