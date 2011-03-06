@@ -84,7 +84,15 @@ private:
 		bool is_valid_;
 	
 	public:
-		replay_buttons_wrapper() : is_valid_(false) {}
+		replay_buttons_wrapper()
+			: is_valid_(false)
+			, play_button_(NULL)
+			, stop_button_(NULL)
+			, reset_button_(NULL)
+			, play_turn_button_(NULL)
+			, play_side_button_(NULL)
+		{
+		}
 	
 		gui::button* play_button_;
 		gui::button* stop_button_;
