@@ -224,7 +224,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tgame_save>();
 	test<gui2::tgame_save_message>();
 	test<gui2::tgame_save_oos>();
-//	test<gui2::tgamestate_inspector>(); /** @todo ENABLE */
+	test<gui2::tgamestate_inspector>();
 	test<gui2::tlanguage_selection>();
 	test<gui2::tmessage>();
 	test<gui2::tsimple_item_selector>();
@@ -251,9 +251,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	 */
 	list.erase(
 			std::remove(list.begin(), list.end(), "debug_clock")
-			, list.end());
-	list.erase(
-			std::remove(list.begin(), list.end(), "gamestate_inspector")
 			, list.end());
 	list.erase(
 			std::remove(list.begin(), list.end(), "unit_attack")
@@ -381,18 +378,21 @@ struct twrapper<gui2::tgame_save_oos>
 
 };
 
-#if 0
 template<>
 struct twrapper<gui2::tgamestate_inspector>
 {
 	static gui2::tgamestate_inspector* create()
 	{
-		/** @todo Would be nice to add real data to the vconfig. */
-		return new gui2::tgamestate_inspector(vconfig());
+		/**
+		 * @todo Would be nice to add real data to the vconfig.
+		 * It would also involve adding real data to the resources.
+		 */
+		static config cfg;
+		static vconfig vcfg(cfg);
+		return new gui2::tgamestate_inspector(vcfg);
 	}
 
 };
-#endif
 
 template<>
 struct twrapper<gui2::tmessage>
