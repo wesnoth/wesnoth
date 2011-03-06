@@ -392,11 +392,9 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	std::vector<std::string>& list = gui2::unit_test_registered_window_list();
 
-	/**
-	 * @todo Clear this list of removals.
-	 *
-	 * This list marks some dialogs as tested that are not tested.
-	 * This list should be removed so all dialogs are properly tested.
+	/*
+	 * The unit attack unit test are disabled for now, they calling parameters
+	 * don't allow 'NULL's needs to be fixed.
 	 */
 	list.erase(
 			std::remove(list.begin(), list.end(), "unit_attack")
@@ -405,7 +403,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
 	foreach(const std::string& id, list) {
-		std::cerr << "Window '" << id << "' registerd but not tested.\n";
+		std::cerr << "Window '" << id << "' registered but not tested.\n";
 	}
 }
 
