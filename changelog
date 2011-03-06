@@ -5,7 +5,10 @@ Version 1.9.4+svn:
    * New elf-style flag
    * New portrait for Drake Enforcer/Thrasher
    * New tall encampment keep
-   * New Water Lilies embellishment
+   * New water lilies embellishment
+   * Moved the ruined desert castle to core
+   * New ruined desert keep
+   * New stones and sand drifts embellishment
  * Language and i18n:
    * Updated translations: British English, Chinese (Simplified),
      Chinese (Traditional), Czech, Dutch, Finnish, French, Galician, German,
@@ -51,6 +54,7 @@ Version 1.9.4+svn:
      a confusing negation.
    * Introduced [move_unit]check_passability= (default yes, previously it was
      always yes/non-existant) key to allow disabling the check for suitable terrain.
+   * Added TAKE_IT_STRING and LEAVE_IT_STRING arguments to PICKUPPABLE_ITEM
  * Miscellaneous and bugfixes:
    * Fixed: g++ compiler warnings.
    * Added: cmake target to build the gui design pdf.
