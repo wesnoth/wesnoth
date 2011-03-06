@@ -52,7 +52,10 @@ pathfind::teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cf
 	}
 }
 
-void pathfind::teleport_group::get_teleport_pair(teleport_pair& loc_pair, const unit& u, bool ignore_units)
+void pathfind::teleport_group::get_teleport_pair(
+		  teleport_pair& loc_pair
+		, const unit& u
+		, const bool ignore_units) const
 {
 	const map_location &loc = u.get_location();
 	static unit_map empty_unit_map;

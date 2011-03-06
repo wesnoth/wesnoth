@@ -46,7 +46,10 @@ public:
 	/*
 	 * Fills the argument loc_pair if the unit u matches the groups filter.
 	 */
-	void get_teleport_pair(teleport_pair& loc_pair, const unit& u, bool ignore_units);
+	void get_teleport_pair(
+			  teleport_pair& loc_pair
+			, const unit& u
+			, const bool ignore_units) const;
 	/*
 	 * Returns the unique id of the teleport group.
 	 * Can be set by the id attribute or is randomly chosen.
