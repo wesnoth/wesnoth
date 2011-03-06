@@ -2706,6 +2706,34 @@
 							/>
 						</FileConfiguration>
 					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\wml_message.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+					</File>
 					<Filter
 						Name="Lobby"
 						>
@@ -2785,54 +2813,6 @@
 					<Filter
 						Name="Image_Message"
 						>
-						<File
-							RelativePath="..\..\src\gui\dialogs\image_message\image_message.cpp"
-							>
-							<FileConfiguration
-								Name="Debug|Win32"
-								>
-								<Tool
-									Name="VCCLCompilerTool"
-									ObjectFile="$(IntDir)\Gui\Dialogs\Image_Message\"
-								/>
-							</FileConfiguration>
-						</File>
-						<File
-							RelativePath="..\..\src\gui\dialogs\image_message\input_message.cpp"
-							>
-							<FileConfiguration
-								Name="Debug|Win32"
-								>
-								<Tool
-									Name="VCCLCompilerTool"
-									ObjectFile="$(IntDir)\Gui\Dialogs\Image_Message\"
-								/>
-							</FileConfiguration>
-						</File>
-						<File
-							RelativePath="..\..\src\gui\dialogs\image_message\option_message.cpp"
-							>
-							<FileConfiguration
-								Name="Debug|Win32"
-								>
-								<Tool
-									Name="VCCLCompilerTool"
-									ObjectFile="$(IntDir)\Gui\Dialogs\Image_Message\"
-								/>
-							</FileConfiguration>
-						</File>
-						<File
-							RelativePath="..\..\src\gui\dialogs\image_message\recruit_message.cpp"
-							>
-							<FileConfiguration
-								Name="Debug|Win32"
-								>
-								<Tool
-									Name="VCCLCompilerTool"
-									ObjectFile="$(IntDir)\Gui\Dialogs\Image_Message\"
-								/>
-							</FileConfiguration>
-						</File>
 					</Filter>
 				</Filter>
 				<Filter
@@ -7525,6 +7505,10 @@
 						RelativePath="..\..\src\gui\dialogs\unit_attack.hpp"
 						>
 					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\wml_message.hpp"
+						>
+					</File>
 					<Filter
 						Name="Lobby"
 						>
@@ -7548,22 +7532,6 @@
 					<Filter
 						Name="Image_Message"
 						>
-						<File
-							RelativePath="..\..\src\gui\dialogs\image_message\image_message.hpp"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\gui\dialogs\image_message\input_message.hpp"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\gui\dialogs\image_message\option_message.hpp"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\gui\dialogs\image_message\recruit_message.hpp"
-							>
-						</File>
 					</Filter>
 				</Filter>
 				<Filter

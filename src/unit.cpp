@@ -50,9 +50,6 @@ static lg::log_domain log_config("config");
 #define WRN_CF LOG_STREAM(warn, log_config)
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 
-//TODO this works here but is ugly
-unit* unit::selected_unit_ = NULL;
-
 namespace {
 	const std::string ModificationTypes[] = { "advance", "trait", "object" };
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/
@@ -2802,18 +2799,10 @@ unit_map::iterator find_visible_unit(const map_location &loc,
 unit *get_visible_unit(const map_location &loc,
 	const team &current_team, bool see_all)
 {
-	if (unit::selected_unit_ != NULL) return unit::selected_unit_;
 	unit_map::iterator ui = find_visible_unit(loc,
 		current_team, see_all);
 	if (ui == resources::units->end()) return NULL;
 	return &*ui;
-}
-
-void unit::draw_report() {
-	selected_unit_ = this;
-	resources::screen->invalidate_unit();
-	resources::screen->draw(false, false);
-	selected_unit_ = NULL;
 }
 
 void unit::refresh()
@@ -2922,6 +2911,7 @@ void unit::remove_attacks_ai()
 	}
 	set_attacks(0);
 }
+
 
 void unit::remove_movement_ai()
 {

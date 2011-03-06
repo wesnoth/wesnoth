@@ -1,4 +1,4 @@
-/* $Id: unit_message.hpp -1   $ */
+/* $Id$ */
 /*
    Copyright (C) 2008 - 2011 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -13,52 +13,53 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_UNIT_MESSAGE_HPP_INCLUDED
-#define GUI_DIALOGS_UNIT_MESSAGE_HPP_INCLUDED
+#ifndef GUI_DIALOGS_WML_MESSAGE_HPP_INCLUDED
+#define GUI_DIALOGS_WML_MESSAGE_HPP_INCLUDED
 
-#include "gui/dialogs/image_message/image_message.hpp"
-#include "unit.hpp"
+#include "gui/dialogs/dialog.hpp"
 
 namespace gui2 {
 
 /**
- * Base class for the unit option messages.
+ * Base class for the wml generated messages.
  *
  * We have a separate sub class for left and right images.
  */
-class tunit_message_
-	: public timage_message_
+class twml_message_
+	: public tdialog
 {
 public:
-	tunit_message_(const std::string& title, const std::string& message,
+	twml_message_(const std::string& title, const std::string& message,
 			const std::string& portrait, const bool mirror)
 		: title_(title)
 		, image_("")
 		, message_(message)
 		, portrait_(portrait)
 		, mirror_(mirror)
+		, has_input_(false)
+		, input_caption_("")
+		, input_text_(NULL)
+		, input_maximum_lenght_(0)
+		, option_list_()
+		, chosen_option_(NULL)
 	{
 	}
 
 	/**
-	 * Sets the unit list.
+	 * Sets the input text variables.
 	 *
-	 * @param unit_list          TODO
-	 * @param chosen_unit        TODO
+	 * @param caption             The caption for the label.
+	 * @param text                The initial text, after showing the final
+	 *                            text.
+	 * @param maximum_length      The maximum length of the text.
 	 */
-	void set_unit_list(
-			const std::vector<unit>& unit_list, std::string* chosen_unit);
+	void set_input(const std::string& caption,
+			std::string* text, const unsigned maximum_length);
+
+	void set_option_list(
+			const std::vector<std::string>& option_list, int* chosen_option);
 
 private:
-
-	/** Handler for changed unit selection. */
-	void update_unit_list(twindow& window);
-
-	/** Handler for the profile button event. */
-	void profile_pressed();
-
-	/** Handler for the help button event */
-	void help_pressed();
 
 	/** The title for the dialog. */
 	std::string title_;
@@ -78,20 +79,23 @@ private:
 	/** Mirror the portrait? */
 	bool mirror_;
 
-	/** The unit id. */
-	std::string* unit_id_;
+	/** Do we need to show an input box? */
+	bool has_input_;
 
-	/** The list of units the player can choose. */
-	std::vector<unit> unit_list_;
+	/** The caption to show for the input text. */
+	std::string input_caption_;
 
-	/** The list of unit_types the player can choose. */
-	//std::vector<const unit_type*> type_list_;
+	/** The text input. */
+	std::string* input_text_;
 
-	/** The chosen unit. */
-	unit *chosen_unit_;
+	/** The maximum length of the input text. */
+	unsigned input_maximum_lenght_;
 
-	/** Gold */
-	int gold_;
+	/** The list of options the user can choose. */
+	std::vector<std::string> option_list_;
+
+	/** The chosen option. */
+	int *chosen_option_;
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
@@ -157,13 +161,6 @@ private:
  *                                Will be set to the chosen_option when the
  *                                dialog closes.
  */
-int show_recruit_message(const bool left_side
-		, CVideo& video
-	    , std::vector<const unit_type*> type_list
-	    , std::string* type_id
-	    , int side_num
-	    , int gold);
-
 int show_wml_message(const bool left_side
 		, CVideo& video
 		, const std::string& title
@@ -174,9 +171,6 @@ int show_wml_message(const bool left_side
 		, const std::string& input_caption
 		, std::string* input_text
 	    , const unsigned maximum_length
-	    , const bool has_unit
-	    , std::string* unit_id
-	    , const std::vector<unit>& unit_list
 		, const std::vector<std::string>& option_list
 		, int* chosen_option);
 

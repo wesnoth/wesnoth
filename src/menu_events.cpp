@@ -35,7 +35,7 @@
 #include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/image_message/recruit_message.hpp"
+#include "gui/dialogs/wml_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/data_manage.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
@@ -712,19 +712,29 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 	}
 
 	int recruit_res = 0;
-	bool left_side = true;
-	int gold = current_team.gold();
-	std::string unit_type = "Elvish Fighter";
-	recruit_res = gui2::show_recruit_message(left_side, gui_->video(),
-			sample_units, &unit_type, side_num, gold);
 
-	//TODO fix the dialog and enable again
-//	if(recruit_res != -1) {
-	if(recruit_res == -1) {
-		do_recruit(unit_type, side_num, last_hex);
+	{
+		dialogs::unit_types_preview_pane unit_preview(
+			sample_units, NULL, side_num);
+		std::vector<gui::preview_pane*> preview_panes;
+		preview_panes.push_back(&unit_preview);
+
+		gui::dialog rmenu(*gui_, _("Recruit") + get_title_suffix(side_num),
+				  _("Select unit:") + std::string("\n"),
+				  gui::OK_CANCEL,
+				  gui::dialog::default_style);
+		rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
+			gui::dialog::BUTTON_HELP);
+		rmenu.set_menu(items);
+		rmenu.set_panes(preview_panes);
+		recruit_res = rmenu.show();
 	}
 
+	if(recruit_res != -1) {
+		do_recruit(item_keys[recruit_res], side_num, last_hex);
+	}
 }
+
 
 void menu_handler::repeat_recruit(int side_num, const map_location &last_hex)
 {

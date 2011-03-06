@@ -30,10 +30,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/transient_message.hpp"
-// include "gui/dialogs/wml_message.hpp"
-#include "gui/dialogs/image_message/image_message.hpp"
-#include "gui/dialogs/image_message/input_message.hpp"
-#include "gui/dialogs/image_message/option_message.hpp"
+#include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "log.hpp"
@@ -2456,14 +2453,12 @@ struct message_user_choice : mp_sync::user_choice
 	unit_map::iterator speaker;
 	vconfig text_input_element;
 	bool has_text_input;
-	vconfig unit_input_element;
-	bool has_unit_input;
 	const std::vector<std::string> &options;
 
 	message_user_choice(const vconfig &c, const unit_map::iterator &s,
-		const vconfig &t, bool ht, const vconfig &u, bool hu, const std::vector<std::string> &o)
+		const vconfig &t, bool ht, const std::vector<std::string> &o)
 		: cfg(c), speaker(s), text_input_element(t)
-		, has_text_input(ht), unit_input_element(u), has_unit_input(hu), options(o)
+		, has_text_input(ht), options(o)
 	{}
 
 	virtual config query_user() const
@@ -2477,63 +2472,22 @@ struct message_user_choice : mp_sync::user_choice
 			image.erase(right_offset);
 		}
 
-		std::string unit_input_content;
-		std::string unit_input_types = unit_input_element["types"];
-
-		std::vector<unit> unit_list;
-
-		if (has_unit_input) {
-			vconfig filter = unit_input_element.child("filter");
-			if(filter.null()) {
-				//TODO handle the missing filter
-				lg::wml_error << "[unit_input] missing required [filter] tag\n";
-			}
-
-			for(unit_map::iterator i = resources::units->begin(); i != resources::units->end(); i++) {
-				if(game_events::unit_matches_filter(*i,filter) == true) {
-					unit_list.push_back(*i);
-				}
-			}
-			unit_input_content = unit_list.front().id();
-			//TODO call the unit_message dialog
-		}
-
-		int counter = 0;
-		if (has_text_input) counter++;
-		if (has_unit_input) counter++;
-		if (!options.empty()) counter++;
-
-		if (counter > 1) {
-			lg::wml_error << "option, input and unit_input conflict with each other!";
-		}
-
-		int dlg_result = 0;
-		if (!has_text_input && !has_unit_input && options.empty()) {
-			dlg_result = gui2::show_image_message(left_side, resources::screen->video(),
-					caption, cfg["message"], image, false);
-		}
-
+		// Parse input text, if not available all fields are empty
+		std::string text_input_label = text_input_element["label"];
 		std::string text_input_content = text_input_element["text"];
-		if (has_text_input) {
-			// Parse input text, if not available all fields are empty
-			std::string text_input_label = text_input_element["label"];
-			unsigned input_max_size = text_input_element["max_length"].to_int(256);
-			if (input_max_size > 1024 || input_max_size < 1) {
-				lg::wml_error << "invalid maximum size for input "
-					<< input_max_size << '\n';
-				input_max_size = 256;
-			}
-			dlg_result = gui2::show_input_message(left_side, resources::screen->video(),
-					caption, cfg["message"], image, false,
-					text_input_label, &text_input_content, input_max_size);
+		unsigned input_max_size = text_input_element["max_length"].to_int(256);
+		if (input_max_size > 1024 || input_max_size < 1) {
+			lg::wml_error << "invalid maximum size for input "
+				<< input_max_size << '\n';
+			input_max_size = 256;
 		}
 
-		int option_chosen = 0;
-		if (!options.empty()) {
-			dlg_result = gui2::show_option_message(left_side, resources::screen->video(),
-					caption, cfg["message"], image, false,
-					options, &option_chosen);
-		}
+		int option_chosen;
+		int dlg_result = gui2::show_wml_message(left_side,
+			resources::screen->video(), caption, cfg["message"],
+			image, false, has_text_input, text_input_label,
+			&text_input_content, input_max_size, options,
+			&option_chosen);
 
 		/* Since gui2::show_wml_message needs to do undrawing the
 		   chatlines can get garbled and look dirty on screen. Force a
@@ -2549,7 +2503,6 @@ struct message_user_choice : mp_sync::user_choice
 		config cfg;
 		if (!options.empty()) cfg["value"] = option_chosen;
 		if (has_text_input) cfg["text"] = text_input_content;
-		if (has_unit_input) cfg["unit"] = unit_input_content;
 		return cfg;
 	}
 
@@ -2564,12 +2517,11 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 {
 	// Check if there is any input to be made, if not the message may be skipped
 	const vconfig::child_list menu_items = cfg.get_children("option");
-	const vconfig::child_list unit_input_elements = cfg.get_children("unit_input");
+
 	const vconfig::child_list text_input_elements = cfg.get_children("text_input");
 	const bool has_text_input = (text_input_elements.size() == 1);
-	const bool has_unit_input = (unit_input_elements.size() == 1);
 
-	const bool has_input = (has_text_input || has_unit_input || !menu_items.empty() );
+	bool has_input= (has_text_input || !menu_items.empty() );
 
 	// skip messages during quick replay
 	play_controller *controller = resources::controller;
@@ -2639,8 +2591,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		}
 	}
 
-	//TODO I think that redeclaration of has_input is obsolete and dangerous
-	//has_input = !options.empty() || has_text_input;
+	has_input = !options.empty() || has_text_input;
 	if (!has_input && get_replay_source().is_skipping()) {
 		// No input to get and the user is not interested either.
 		return;
@@ -2654,23 +2605,15 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		lg::wml_error << "too many text_input tags, only one accepted\n";
 	}
 
-	if(unit_input_elements.size()>1) {
-		lg::wml_error << "too many unit_input tags, only one accepted\n";
-	}
-
 	const vconfig text_input_element = has_text_input ?
 		text_input_elements.front() : vconfig::empty_vconfig();
 
-	const vconfig unit_input_element = has_unit_input ?
-			unit_input_elements.front() : vconfig::empty_vconfig();
-
 	int option_chosen = 0;
-	std::string unit_input_result;
 	std::string text_input_result;
 
 	DBG_DP << "showing dialog...\n";
 
-	message_user_choice msg(cfg, speaker, text_input_element, has_text_input, unit_input_element, has_unit_input,
+	message_user_choice msg(cfg, speaker, text_input_element, has_text_input,
 		options);
 	if (!has_input)
 	{
@@ -2682,7 +2625,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	{
 		config choice = mp_sync::get_user_choice("input", msg, 0, true);
 		option_chosen = choice["value"];
-		unit_input_result = choice["unit"].str();
 		text_input_result = choice["text"].str();
 	}
 
@@ -2706,12 +2648,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		if(variable_name.empty())
 			variable_name="input";
 		resources::state_of_game->set_variable(variable_name, text_input_result);
-	}
-	if(has_unit_input) {
-		std::string variable_name=unit_input_element["variable"];
-		if(variable_name.empty())
-			variable_name="unit_input";
-		resources::state_of_game->set_variable(variable_name, unit_input_result);
 	}
 }
 
