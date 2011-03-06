@@ -50,6 +50,7 @@
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/title_screen.hpp"
+#include "gui/dialogs/tip.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_attack.hpp"
 #include "gui/dialogs/unit_create.hpp"
@@ -211,6 +212,55 @@ namespace {
 			interact = true;
 		}
 	}
+
+	void test_tip_resolutions(const tresolution_list& resolutions
+			, const std::string& id)
+	{
+		foreach(const tresolution& resolution, resolutions) {
+			video.make_test_fake(resolution.first, resolution.second);
+
+			std::vector<std::string>& list =
+					gui2::unit_test_registered_window_list();
+			list.erase(std::remove(list.begin(), list.end(), id), list.end());
+
+			std::string exception;
+			try {
+/**
+ * @todo The code crashes for some unknown reason when this code is disabled.
+ * The backtrace however doesn't show this path, in fact the crash occurs
+ * before this code is used. So not entirely sure whether it's a compiler bug
+ * or a part of the static initialization fiasco. Need to test with different
+ * compilers and try to find the cause.
+ */
+#if 0
+				gui2::tip::show(video
+						, id
+						, "Test messsage for a tooltip."
+						, gui2::tpoint(0, 0));
+#endif
+			} catch(gui2::tlayout_exception_width_modified&) {
+				exception = "gui2::tlayout_exception_width_modified";
+			} catch(gui2::tlayout_exception_width_resize_failed&) {
+				exception = "gui2::tlayout_exception_width_resize_failed";
+			} catch(gui2::tlayout_exception_height_resize_failed&) {
+				exception = "gui2::tlayout_exception_height_resize_failed";
+			} catch(twml_exception& e) {
+				exception = e.dev_message;
+			} catch(std::exception& e) {
+				exception = e.what();
+			} catch(...) {
+				exception = "unknown";
+			}
+			BOOST_CHECK_MESSAGE(exception.empty(),
+					"Test for tip '" << id
+					<< "' Failed\nnew widgets = " << gui2::new_widgets
+					<< " small gui = " << game_config::small_gui
+					<< " resolution = " << resolution.first
+					<< 'x' << resolution.second
+					<< "\nException caught: " << exception << '.');
+		}
+	}
+
 const tresolution_list& get_small_gui_resolutions()
 {
 	static tresolution_list result;
@@ -261,6 +311,22 @@ void test_popup()
 
 		game_config::small_gui = false;
 		test_popup_resolutions<T>(get_gui_resolutions());
+
+		gui2::new_widgets = true;
+	}
+}
+
+void test_tip(const std::string& id)
+{
+	gui2::new_widgets = false;
+
+	for(size_t i = 0; i < 2; ++i) {
+
+		game_config::small_gui = true;
+		test_tip_resolutions(get_small_gui_resolutions(), id);
+
+		game_config::small_gui = false;
+		test_tip_resolutions(get_gui_resolutions(), id);
 
 		gui2::new_widgets = true;
 	}
@@ -321,6 +387,9 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	/* The tpopup classes. */
 	test_popup<gui2::tdebug_clock>();
 
+	/* The tooltip classes. */
+	test_tip("tooltip_large");
+
 	std::vector<std::string>& list = gui2::unit_test_registered_window_list();
 
 	/**
@@ -331,9 +400,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	 */
 	list.erase(
 			std::remove(list.begin(), list.end(), "unit_attack")
-			, list.end());
-	list.erase(
-			std::remove(list.begin(), list.end(), "tooltip_large")
 			, list.end());
 
 	// Test size() instead of empty() to get the number of offenders
