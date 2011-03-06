@@ -75,12 +75,13 @@ std::vector<std::string>& unit_test_registered_window_list()
 	return result;
 }
 
-void unit_test_mark_as_tested(const tdialog& dialog)
+std::string unit_test_mark_as_tested(const tdialog& dialog)
 {
 	std::vector<std::string>& list = unit_test_registered_window_list();
 	list.erase(
 			std::remove(list.begin(), list.end(), dialog.window_id())
 			, list.end());
+	return dialog.window_id();
 }
 
 }// namespace gui2
@@ -113,11 +114,10 @@ namespace {
 		foreach(const tresolution& resolution, resolutions) {
 			video.make_test_fake(resolution.first, resolution.second);
 
-			std::auto_ptr<T> dlg(twrapper<T>::create());
+			std::auto_ptr<gui2::tdialog> dlg(twrapper<T>::create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
-			gui2::unit_test_mark_as_tested(
-					dynamic_cast<gui2::tdialog&>(*(dlg.get())));
+			const std::string id = gui2::unit_test_mark_as_tested(*(dlg.get()));
 
 			std::string exception;
 			try {
@@ -136,8 +136,8 @@ namespace {
 				exception = "unknown";
 			}
 			BOOST_CHECK_MESSAGE(exception.empty(),
-					"Test for " << typeid(T).name()
-					<< " Failed\nnew widgets = " << gui2::new_widgets
+					"Test for '" << id
+					<< "' Failed\nnew widgets = " << gui2::new_widgets
 					<< " small gui = " << game_config::small_gui
 					<< " resolution = " << resolution.first
 					<< 'x' << resolution.second
