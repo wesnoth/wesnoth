@@ -2010,7 +2010,7 @@ void passive_leader_shares_keep_phase::execute()
 		bool friend_can_reach_keep = false;
 
 		//for each leader, check if he's allied and can reach our keep
-		for(path_map::const_iterator i = possible_moves.begin(); i != possible_moves.end(); i++){
+		for(path_map::const_iterator i = possible_moves.begin(); i != possible_moves.end(); ++i){
 			const unit_map::const_iterator itor = resources::units->find(i->first);
 			team &leader_team = (*resources::teams)[itor->side() - 1];
 			if(itor != resources::units->end() && itor->can_recruit() && itor->side() != get_side() && (leader_team.total_income() + leader_team.gold() > leader_team.minimum_recruit_price())){
@@ -2026,7 +2026,10 @@ void passive_leader_shares_keep_phase::execute()
 			//determine the best place the ai leader can move to
 			map_location best_move;
 			int defense_modifier = 100;
-			for(pathfind::paths::dest_vect::const_iterator i = possible_moves[keep].destinations.begin(); i != possible_moves[keep].destinations.end(); i++){
+			for(pathfind::paths::dest_vect::const_iterator i = possible_moves[keep].destinations.begin()
+					; i != possible_moves[keep].destinations.end()
+					; ++i){
+
 				if(distance_between(i->curr, keep) <= 3){
 					int tmp_def_mod = ai_leader->defense_modifier(resources::game_map->get_terrain(i->curr));
 					if(tmp_def_mod < defense_modifier){
