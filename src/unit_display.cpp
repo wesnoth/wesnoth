@@ -454,7 +454,6 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 
 	disp->draw();
 	u->set_hidden(false);
-	u->set_facing(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS));
 	animator.add_animation(&*u, "recruited", loc, leader_loc);
 	animator.start_animations();
 	animator.wait_for_end();

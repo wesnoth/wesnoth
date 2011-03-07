@@ -232,7 +232,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	role_(cfg["role"]),
 	ai_special_(cfg["ai_special"]),
 	attacks_(),
-	facing_(map_location::SOUTH_EAST),
+	facing_(map_location::NDIRECTIONS),
 	trait_names_(),
 	trait_descriptions_(),
 	unit_value_(),
@@ -278,7 +278,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 
 	facing_ = map_location::parse_direction(cfg["facing"]);
-	if(facing_ == map_location::NDIRECTIONS) facing_ = map_location::SOUTH_EAST;
+	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS);
 
 	if (const config &mods = cfg.child("modifications")) {
 		modifications_ = mods;
@@ -576,7 +576,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	role_(),
 	ai_special_(),
 	attacks_(),
-	facing_(map_location::SOUTH_EAST),
+	facing_(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS)),
 	trait_names_(),
 	trait_descriptions_(),
 	unit_value_(),
