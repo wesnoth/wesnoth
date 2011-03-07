@@ -544,26 +544,44 @@ namespace {
 
 static void toggle_shroud(const bool remove, const vconfig& cfg)
 {
-	int side_num = cfg["side"].to_int(1);
-	const size_t index = side_num-1;
+	std::string side_for_raw = cfg["side"];
 
-	if (index < resources::teams->size())
-	{
-		team &t = (*resources::teams)[index];
-		std::set<map_location> locs;
-		terrain_filter filter(cfg, *resources::units);
-		filter.restrict_size(game_config::max_loop);
-		filter.get_locations(locs, true);
-
-		foreach (map_location const &loc, locs)
-		{
-			if (remove) {
-				t.clear_shroud(loc);
-			} else {
-				t.place_shroud(loc);
-			}
+	//If they didn't define any sides then we are making a comma separated list for them
+	//It contains all the sides from 1 to the max number of sides in play
+	if (side_for_raw.empty()) {
+	side_for_raw = "1";
+		for (size_t side_index = 1; side_index < resources::teams->size(); side_index++) {
+			std::string side_fake = lexical_cast<std::string>( side_index + 1 );
+			side_for_raw = side_for_raw + "," + side_fake;
 		}
 	}
+	//iterate through the list
+	std::vector<std::string> side_for =
+		utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
+	std::vector<std::string>::iterator itSide;
+	size_t side;
+	for (itSide = side_for.begin(); itSide != side_for.end(); ++itSide)
+	{
+		side = lexical_cast_default<size_t>(*itSide);
+		size_t index = side-1;
+		if (index < resources::teams->size())
+		{
+			team &t = (*resources::teams)[index];
+			std::set<map_location> locs;
+			terrain_filter filter(cfg, *resources::units);
+			filter.restrict_size(game_config::max_loop);
+			filter.get_locations(locs, true);
+
+			foreach (map_location const &loc, locs)
+			{
+				if (remove) {
+					t.clear_shroud(loc);
+				} else {
+					t.place_shroud(loc);
+				}
+			}
+		}
+ 	}
 
 	resources::screen->labels().recalculate_shroud();
 	resources::screen->recalculate_minimap();
