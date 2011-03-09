@@ -29,20 +29,21 @@ namespace {
 }
 
 // This constructor is *only* meant for loading from saves
-pathfind::teleport_group::teleport_group(const config& cfg) : cfg_(cfg, true), reversed_(utils::string_bool(cfg["reversed"], false)), id_(cfg["id"])
+pathfind::teleport_group::teleport_group(const config& cfg) : cfg_(cfg), reversed_(utils::string_bool(cfg["reversed"], false)), id_(cfg["id"])
 {
 	assert(cfg.has_attribute("id"));
 	assert(cfg.has_attribute("reversed"));
-	assert(!cfg_.get_children("source").empty());
-	assert(!cfg_.get_children("target").empty());
-	assert(!cfg_.get_children("filter").empty());
+
+	assert(cfg_.child_count("source") == 1);
+	assert(cfg_.child_count("target") == 1);
+	assert(cfg_.child_count("filter") == 1);
 }
 
-pathfind::teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg), reversed_(reversed), id_()
+pathfind::teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg.get_config()), reversed_(reversed), id_()
 {
-	assert(!cfg_.get_children("source").empty());
-	assert(!cfg_.get_children("target").empty());
-	assert(!cfg_.get_children("filter").empty());
+	assert(cfg_.child_count("source") == 1);
+	assert(cfg_.child_count("target") == 1);
+	assert(cfg_.child_count("filter") == 1);
 	if (cfg["id"].empty()) {
 		id_ = resources::tunnels->next_unique_id();
 	} else {
@@ -65,14 +66,17 @@ void pathfind::teleport_group::get_teleport_pair(
 	} else {
 		units = resources::units;
 	}
-	if (u.matches_filter(cfg_.child("filter"), loc)) {
+	vconfig filter(cfg_.child_or_empty("filter"), true);
+	vconfig source(cfg_.child_or_empty("source"), true);
+	vconfig target(cfg_.child_or_empty("target"), true);
+	if (u.matches_filter(filter, loc)) {
 
 		scoped_xy_unit teleport_unit("teleport_unit", loc.x, loc.y, *resources::units);
 
-		terrain_filter source_filter(cfg_.child("source"), *units);
+		terrain_filter source_filter(source, *units);
 		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first);
 
-		terrain_filter target_filter(cfg_.child("target"), *units);
+		terrain_filter target_filter(target, *units);
 		target_filter.get_locations(reversed_ ? loc_pair.first : loc_pair.second);
 	}
 }
@@ -86,7 +90,7 @@ bool pathfind::teleport_group::always_visible() const {
 }
 
 config pathfind::teleport_group::to_config() const {
-	config retval = cfg_.get_config();
+	config retval = cfg_;
 	retval["reversed"] = reversed_ ? "yes" : "no";
 	retval["id"] = id_;
 	return retval;

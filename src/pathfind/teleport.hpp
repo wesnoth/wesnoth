@@ -66,7 +66,7 @@ public:
 
 private:
 
-	vconfig cfg_;
+	config cfg_;
 	bool reversed_;
 	std::string id_;
 };
@@ -100,7 +100,6 @@ private:
 	std::map<std::string, std::set<map_location> > targets_;
 };
 
-//TODO clean up the interface
 const teleport_map get_teleport_locations(const unit &u, const team &viewing_team,
 		bool see_all = false, bool ignore_units = false);
 
