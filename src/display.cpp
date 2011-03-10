@@ -101,6 +101,7 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	fog_image_("terrain/" + get_map().get_terrain_info(t_translation::FOGGED).minimap_image() + ".png"),
 	tod_(time_of_day()),
 	scroll_event_("scrolled"),
+	complete_redraw_event_("completely_redrawn"),
 	nextDraw_(0),
 	report_(),
 	buttons_(),
@@ -1864,6 +1865,8 @@ void display::redraw_everything()
 	foreach (boost::function<void(display&)> f, redraw_observers_) {
 		f(*this);
 	}
+	
+	complete_redraw_event_.notify_observers();
 }
 
 void display::add_redraw_observer(boost::function<void(display&)> f)

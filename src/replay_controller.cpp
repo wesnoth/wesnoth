@@ -66,7 +66,8 @@ replay_controller::replay_controller(const config& level,
 	delay_(0),
 	is_playing_(false),
 	show_everything_(false),
-	show_team_(state_of_game.classification().campaign_type == "multiplayer" ? 0 : 1)
+	show_team_(state_of_game.classification().campaign_type == "multiplayer" ? 0 : 1),
+	buttons_()
 {
 	init();
 	gamestate_start_ = gamestate_;
@@ -77,7 +78,8 @@ replay_controller::~replay_controller()
 	//YogiHH
 	//not absolutely sure if this is needed, but it makes me feel a lot better ;-)
 	//feel free to delete this if it is not necessary
-	gui_->get_theme().theme_reset().detach_handler(this);
+	gui_->get_theme().theme_reset_event().detach_handler(this);
+	gui_->complete_redraw_event().detach_handler(this);
 }
 
 void replay_controller::init(){
@@ -116,13 +118,16 @@ void replay_controller::init_gui(){
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		t->reset_objectives_changed();
 	}
+	
+	buttons_.update(gui_);
 }
 
 void replay_controller::init_replay_display(){
 	DBG_REPLAY << "initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	rebuild_replay_theme();
-	gui_->get_theme().theme_reset().attach_handler(this);
+	gui_->get_theme().theme_reset_event().attach_handler(this);
+	gui_->complete_redraw_event().attach_handler(this);
 	DBG_REPLAY << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
@@ -140,17 +145,120 @@ void replay_controller::rebuild_replay_theme()
 	}
 }
 
+
+void replay_controller::replay_buttons_wrapper::update(boost::scoped_ptr<game_display>& gui_)
+{
+ 	play_button_ = gui_->find_button("button-playreplay");
+	stop_button_ = gui_->find_button("button-stopreplay");
+	reset_button_ = gui_->find_button("button-resetreplay");
+	play_turn_button_ = gui_->find_button("button-nextturn");
+	play_side_button_ = gui_->find_button("button-nextside");
+	
+	//check if we have all buttons - if someone messed with theme then some buttons may be missing
+	//if any of the buttons is missing, we just disable everything
+	if( !play_button_ || !stop_button_ || !reset_button_ || !play_turn_button_ || !play_side_button_ ) {
+	 
+		is_valid_ = false;
+		enabled_buttons_ = 0;
+	} else {
+		is_valid_ = true;
+		if( enabled_buttons_ == 0)
+			enabled_buttons_ = PLAY_BUTTON_ENABLED | PLAY_TURN_BUTTON_ENABLED | PLAY_SIDE_BUTTON_ENABLED;
+	}
+	
+	update_buttons_states();
+}
+
+void replay_controller::replay_buttons_wrapper::update_buttons_states()
+{
+	if( enabled_buttons_ & PLAY_BUTTON_ENABLED ) {
+		play_button_->enable(true);
+	} else
+		play_button_->enable(false);
+	
+	if( enabled_buttons_ & STOP_BUTTON_ENABLED ) {
+		stop_button_->enable(true);
+	} else
+		stop_button_->enable(false);
+	
+	if( enabled_buttons_ & RESET_BUTTON_ENABLED ) {
+		reset_button_->enable(true);
+	} else
+		reset_button_->enable(false);		
+	
+	if( enabled_buttons_ & PLAY_TURN_BUTTON_ENABLED ) {
+		play_turn_button_->enable(true);
+	} else
+		play_turn_button_->enable(false);
+	
+	if( enabled_buttons_ & PLAY_SIDE_BUTTON_ENABLED ) {
+		play_side_button_->enable(true);
+	} else
+		play_side_button_->enable(false);	
+}
+
+void replay_controller::replay_buttons_wrapper::playback_should_start() 
+{
+	if( !is_valid_ )
+		return;
+	
+	play_button_->enable(false);
+	stop_button_->enable(true);
+	reset_button_->enable(false);
+	play_turn_button_->enable(false);
+	play_side_button_->enable(false);
+	
+	enabled_buttons_ = STOP_BUTTON_ENABLED;
+}
+
+void replay_controller::replay_buttons_wrapper::playback_should_stop(bool is_playing) 
+{
+	if( !is_valid_)
+		return;
+	
+	if( !recorder.at_end() ) {
+		
+		enabled_buttons_ = PLAY_BUTTON_ENABLED | RESET_BUTTON_ENABLED | PLAY_TURN_BUTTON_ENABLED | PLAY_SIDE_BUTTON_ENABLED;	
+		
+		update_buttons_states();
+	
+		play_button_->release();
+		play_turn_button_->release();
+		play_side_button_->release();
+	} else {
+		enabled_buttons_ = RESET_BUTTON_ENABLED;
+		
+		update_buttons_states();
+	}
+	
+	if( !is_playing ) {
+		//user interrupted
+		stop_button_->release();
+	}	
+}
+
+void replay_controller::replay_buttons_wrapper::reset_buttons() 
+{
+	if( !is_valid_ )
+		return;
+	
+	enabled_buttons_ = PLAY_BUTTON_ENABLED | PLAY_TURN_BUTTON_ENABLED | PLAY_SIDE_BUTTON_ENABLED;
+	
+	stop_button_->release();
+	reset_button_->release();
+	
+	update_buttons_states();
+}
+
 void replay_controller::reset_replay(){
-	gui::button* b = gui_->find_button("button-playreplay");
-	if (b != NULL) { b->release(); }
-	b = gui_->find_button("button-stopreplay");
-	if (b != NULL) { b->release(); }
 	gui_->clear_chat_messages();
 	is_playing_ = false;
 	player_number_ = 1;
 	current_turn_ = 1;
+	skip_replay_ = false;
 	tod_manager_= tod_manager_start_;
 	recorder.start_replay();
+	recorder.set_skip(false);
 	units_ = units_start_;
 	gamestate_ = gamestate_start_;
 	teams_ = teams_start_;
@@ -177,30 +285,33 @@ void replay_controller::reset_replay(){
 	events::raise_draw_event();
 	(*gui_).invalidate_all();
 	(*gui_).draw();
-	b = gui_->find_button("button-resetreplay");
-	if (b != NULL) { b->release(); }
+	gui_->set_team(player_number_-1, show_everything_);
+	//gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
+
+	buttons_.reset_buttons();
 }
 
 void replay_controller::stop_replay(){
 	is_playing_ = false;
-	gui::button* b = gui_->find_button("button-playreplay");
-	if (b != NULL) { b->release(); }
 }
 
 void replay_controller::replay_next_turn(){
 	is_playing_ = true;
+	buttons_.playback_should_start();
+	
 	play_turn();
 
- 	if (!skip_replay_){
+ 	if (!skip_replay_ || !is_playing_){
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
-	is_playing_ = false;
-	gui::button* b = gui_->find_button("button-nextturn");
-	if (b != NULL) { b->release(); }
+
+	buttons_.playback_should_stop(is_playing_);
 }
 
 void replay_controller::replay_next_side(){
 	is_playing_ = true;
+	buttons_.playback_should_start();
+	
 	play_side(player_number_ - 1, false);
 
 	if (static_cast<size_t>(player_number_) > teams_.size()) {
@@ -208,13 +319,11 @@ void replay_controller::replay_next_side(){
 		current_turn_++;
 	}
 
-	if (!skip_replay_) {
+	if (!skip_replay_ || !is_playing_) {
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 
-	is_playing_ = false;
-	gui::button* b = gui_->find_button("button-nextside");
-	if (b != NULL) { b->release(); }
+	buttons_.playback_should_stop(is_playing_);
 }
 
 void replay_controller::process_oos(const std::string& msg) const
@@ -252,35 +361,37 @@ void replay_controller::replay_show_team1(){
 }
 
 void replay_controller::replay_skip_animation(){
-	recorder.set_skip(!recorder.is_skipping());
 	skip_replay_ = !skip_replay_;
+	recorder.set_skip(skip_replay_);
 }
 
 void replay_controller::play_replay(){
-	gui::button* b = gui_->find_button("button-stopreplay");
-	if (b != NULL) { b->release(); }
+
 	if (recorder.at_end()){
 		return;
 	}
 
 	try{
 		is_playing_ = true;
+		buttons_.playback_should_start();
 
 		DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 		for(; !recorder.at_end() && is_playing_; first_player_ = 1) {
 			play_turn();
 		} //end for loop
-		is_playing_ = false;
+		
+		if (!is_playing_) {
+			gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
+		}
 	}
 	catch(end_level_exception& e){
 		if (e.result == QUIT) { throw e; }
 	}
+	
+	buttons_.playback_should_stop(is_playing_);
 }
 
 void replay_controller::play_turn(){
-	if (recorder.at_end()){
-		return;
-	}
 
 	LOG_REPLAY << "turn: " << current_turn_ << "\n";
 
@@ -298,9 +409,6 @@ void replay_controller::play_turn(){
 }
 
 void replay_controller::play_side(const unsigned int /*team_index*/, bool){
-	if (recorder.at_end()){
-		return;
-	}
 
 	DBG_REPLAY << "Status turn number: " << turn() << "\n";
 	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";
@@ -333,6 +441,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 			finish_turn();
 			player_number_ = 1;
 			current_turn_++;
+			gui_->new_turn();
 		}
 
 		update_teams();
@@ -350,10 +459,14 @@ void replay_controller::update_teams(){
 		next_team = 1;
 	}
 
-	if (!show_team_)
-		gui_->set_team(next_team - 1, show_everything_);
+	if (!show_team_) {
+ 		gui_->set_team(next_team - 1, show_everything_);
+	} else {
+		gui_->set_team(show_team_ - 1, show_everything_);
+	}
 
 	::clear_shroud(next_team);
+	
 	gui_->set_playing_team(next_team - 1);
 	gui_->invalidate_all();
 }
@@ -375,8 +488,17 @@ void replay_controller::show_statistics(){
 	menu_handler_.show_statistics(gui_->playing_team()+1);
 }
 
-void replay_controller::handle_generic_event(const std::string& /*name*/){
-	rebuild_replay_theme();
+void replay_controller::handle_generic_event(const std::string& name){
+	
+	if( name == "completely_redrawn" ) {
+		buttons_.update(gui_);
+		
+		gui::button* skip_animation_button = gui_->find_button("skip-animation");
+		
+		skip_animation_button->set_check(skip_replay_);
+	} else {
+		rebuild_replay_theme();
+	}
 }
 
 bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const

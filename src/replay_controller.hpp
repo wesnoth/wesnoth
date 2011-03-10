@@ -64,7 +64,7 @@ private:
 	void update_gui();
 	void init_replay_display();
 	void rebuild_replay_theme();
-	void handle_generic_event(const std::string& /*name*/);
+	void handle_generic_event(const std::string& name);
 
 	game_state gamestate_start_;
 	unit_map units_start_;
@@ -76,6 +76,39 @@ private:
 
 	bool show_everything_;
 	unsigned int show_team_;
+	
+	class replay_buttons_wrapper {
+	
+		bool is_valid_;
+		
+		//bit mask
+		uint enabled_buttons_;
+		
+		void update_buttons_states();
+	
+	public:
+		static const uint PLAY_BUTTON_ENABLED = 1;
+		static const uint STOP_BUTTON_ENABLED = 2;
+		static const uint RESET_BUTTON_ENABLED = 4;
+		static const uint PLAY_TURN_BUTTON_ENABLED = 8;
+		static const uint PLAY_SIDE_BUTTON_ENABLED = 16;
+		
+		replay_buttons_wrapper() : is_valid_(false), enabled_buttons_() {}
+	
+		gui::button* play_button_;
+		gui::button* stop_button_;
+		gui::button* reset_button_;
+		gui::button* play_turn_button_;
+		gui::button* play_side_button_;
+
+		void update(boost::scoped_ptr<game_display>& gui_);
+		void playback_should_start();
+		void playback_should_stop(bool is_playing);
+
+		void reset_buttons();
+	};
+	
+	replay_buttons_wrapper buttons_;
 };
 
 
