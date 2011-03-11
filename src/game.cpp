@@ -1862,8 +1862,6 @@ static int process_command_args(int argc, char** argv) {
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
 			<< "  --rng-seed <number>          seeds the random number generator with number\n"
 			<< "                               Example: --rng-seed 0\n"
-			<< "  --smallgui                   allows to use screen resolutions down to 800x480\n"
-			<< "                               and resizes a few interface elements.\n"
 			<< "  --screenshot <map> <output>  Saves a screenshot of <map> to <output> without\n"
 			<< "                               initializing a screen. Editor must be compiled\n"
 			<< "                               in for this to work.\n"
