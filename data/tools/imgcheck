@@ -12,7 +12,7 @@ The Python Imaging Library must be available for this tool to work
 
 import sys, Image
 
-# Extract a color table list from the images 
+# Extract a color table list from the images
 colortables = []
 for filename in sys.argv[1:]:
     img = Image.open(filename).convert("RGB")
@@ -32,7 +32,7 @@ for i in range(1, len(colortables)):
     for (n, rgb) in colortables[i][1]:
         if rgb not in basecolors:
             exiguous.append((n, rgb))
-    exiguous.sort(lambda (an, argb), (bn, brgb): cmp(argb, brgb)) 
+    exiguous.sort(lambda (an, argb), (bn, brgb): cmp(argb, brgb))
     subtracted.append((colortables[i][0], exiguous))
 
 print "Base colors:"
@@ -41,8 +41,3 @@ for (filename, colors) in subtracted:
     print filename + ":"
     for (n, rgb) in colors:
         print `rgb` + " * " + `n`
-
-    
-
-    
-

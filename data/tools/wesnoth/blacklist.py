@@ -57,9 +57,9 @@ def blacklist_if_faulty(wml, d):
     return False
 
 def check_runaway():
-    
+
     campaigns = {}
-    
+
     udir = get_userdir() + "/data/add-ons"
     g.p = wmlparser2.Parser(options.wesnoth, options.config_dir,
         options.data_dir, no_preprocess = False)
@@ -68,11 +68,11 @@ def check_runaway():
         return "'" + name.replace("'", "'\\''") + "'"
 
     def move(f, t, name):
-        
+
         if os.path.exists(f + "/" + name + ".cfg"):
             com = "mv " + f + "/" + bash(name + ".cfg") + " " + t + "/"
             shell(com)
-        
+
         com = "mv " + f + "/" + bash(name) + " " + t + "/"
         shell(com)
 
@@ -84,8 +84,8 @@ def check_runaway():
 
         print("__________\nTesting " + name)
         move(options.runaway, udir, name)
-        
-        
+
+
         ok = True
         try:
             g.p.parse_text("{~add-ons}")
@@ -97,7 +97,7 @@ def check_runaway():
             if pu:
                 print("Found runaway [+units]!")
                 ok = False
-                
+
             names = []
             for units in u + pu:
                 for un in units.get_all(tag = "unit_type"):
@@ -111,7 +111,7 @@ def check_runaway():
             print("***")
             print("")
             ok = False
-        
+
         if ok:
             campaigns[name] = g.p.get_all(tag = "campaign")
 
@@ -123,12 +123,12 @@ def check_runaway():
 
     print("\n%d/%d addons passed runaway test. Trying to parse them." % (
         len(passed), len(total)))
-  
+
     parsed = []
     for name in passed:
         print("__________\nParsing " + name)
         move(options.runaway, udir, name)
-        
+
         ok = True
         campaign = campaigns[name]
         if campaign and campaign[0].get_text_val("define", None):
@@ -145,13 +145,13 @@ def check_runaway():
 
         if ok:
             parsed.append(name)
-    
-    
+
+
     print("\n%d/%d addons could be parsed. Moving them to the add-ons folder.\n" % (
         len(parsed), len(total)))
     for name in parsed:
         move(options.runaway, udir, name)
-    
+
     print("\nSome addons may have failed simply because of unmet "
         "dependencies, as this test considers each one in isolation. "
         "TODO: Someone should fix this or tell me how to fix it.")
@@ -172,11 +172,11 @@ def main():
         "this script will then move them into the add-ons folder "
         "making sure there are no run-away units.")
     options, args = p.parse_args()
-    
+
     if not options.wesnoth:
         sys.stderr.write("No Wesnoth executable given.\n")
         sys.exit(1)
-    
+
     if options.runaway:
         check_runaway()
         sys.exit(0)

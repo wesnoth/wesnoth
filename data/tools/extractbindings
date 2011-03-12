@@ -45,4 +45,3 @@ for line in sys.stdin:
                 print >>sys.stderr, "Malformed line: %s" % `line`
                 sys.exit(1)
             entry[key] = value
-    

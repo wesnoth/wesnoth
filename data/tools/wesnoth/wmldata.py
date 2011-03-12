@@ -179,7 +179,7 @@ class DataSub(Data):
 
     def write_file(self, f, indent=0, textdomain=""):
         f.write(self.make_string( indent, textdomain))
-        
+
     def make_string(self, indent = 0, textdomain = ""):
         """Write the data object to the given file object."""
         ifdef = 0
@@ -496,7 +496,7 @@ class DataSub(Data):
         """Gets all macros matching the name"""
         return [macro for macro in self.get_all(name)
             if isinstance(macro, DataMacro)]
-            
+
     def get_all_macros(self):
         """Gets all macros"""
         return [macro for macro in self.data

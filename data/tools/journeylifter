@@ -65,9 +65,9 @@ if __name__ == "__main__":
         n = 0
         id_list = []
         indent = 8
-        
+
         for name in files:
-            out[name] = [] 
+            out[name] = []
             lineno = 0
             scenario_id = None
             inside = False

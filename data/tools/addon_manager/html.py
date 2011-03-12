@@ -93,7 +93,7 @@ Select the add-on you want to install from the list and click "OK". The download
                     src = root_dir + "images/misc/missing-image.png"
                     imgurl = "icons/missing-image.png"
             images_to_tc.append( (src, path + "/" + imgurl) )
-                
+
         type = v("type", "none")
         size = float(v("size", "0"))
         name = v("title", "unknown")

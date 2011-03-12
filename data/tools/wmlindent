@@ -132,7 +132,7 @@ def reindent(name, infp, outfp):
         elif "wmlindent: closer" in line:
             tag = line.split('"')[1]
             if verbose and not quiet:
-                print >>sys.stderr, "wmlindent: declaring outdent exception for %s" % tag 
+                print >>sys.stderr, "wmlindent: declaring outdent exception for %s" % tag
             closer_prefixes.append(tag)
         # Implement passthrough mode
         if "wmlindent: start ignoring" in line:
@@ -150,7 +150,7 @@ def reindent(name, infp, outfp):
         # Detect things we can't handle
         if multitag.search(line):
             raise bailout(name, countlines, "multiple tags on the line")
-        # Strip each line, unless we're in something like a multiline string. 
+        # Strip each line, unless we're in something like a multiline string.
         if dostrip:
             transformed = line.strip() + "\n"
         else:

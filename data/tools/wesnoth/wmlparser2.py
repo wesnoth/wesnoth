@@ -428,7 +428,7 @@ class Parser:
                 self.handle_command(rawline[compos + 1:-1])
             else:
                 self.parse_line_without_commands(rawline)
-        
+
         if self.keep_temp_dir is None and self.temp_dir:
             print("removing " + self.temp_dir)
             shutil.rmtree(self.temp_dir, ignore_errors = True)
@@ -713,4 +713,3 @@ code = <<
         print '</root>';
     else:
         print(p.root.debug())
-

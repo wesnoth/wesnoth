@@ -101,7 +101,7 @@ class Forest:
             if exclude:
                 self.forest[i] = filter(lambda x: not re.search(exclude, x), self.forest[i])
             self.forest[i] = filter(lambda x: not x.endswith("-bak"), self.forest[i])
-        # Compute cliques (will be used later for visibility checks) 
+        # Compute cliques (will be used later for visibility checks)
         self.clique = {}
         counter = 0
         for tree in self.forest:
@@ -318,7 +318,7 @@ class Reference:
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
     file_reference =  re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.@-]*\.(" + "|".join(resource_extensions) + ")(?=(~.*)?)")
-    tag_parse = re.compile("\s*([a-z_]+)\s*=(.*)") 
+    tag_parse = re.compile("\s*([a-z_]+)\s*=(.*)")
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
         pattern = pattern.replace("+", r"\+")
@@ -518,7 +518,7 @@ class CrossRef:
                 dfp = open(filename)
                 for line in dfp:
                     self.xref[line.strip()] = True
-                dfp.close()            
+                dfp.close()
         # Next, decorate definitions with all references from the filelist.
         self.unresolved = []
         self.missing = []
@@ -800,7 +800,7 @@ class Translations:
             except TranslationError, e:
                 sys.stderr.write(str(e))
                 self.translations[t] = Translation(textdomain, "C", self.topdir)
-        result = self.translations[t].get(key, default)   
+        result = self.translations[t].get(key, default)
         return result
 
 ## Namespace management

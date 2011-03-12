@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
-# $Id$ 
+# $Id$
 """
    Copyright (C) 2007 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -11,7 +11,7 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
-"""   
+"""
 
 """
 This utility provides two tools
@@ -34,8 +34,8 @@ class tempdir:
     def __init__(self):
         self.path = tempfile.mkdtemp()
         logging.debug("created tempdir '%s'", self.path)
-    
-        # for some reason we need to need a variable to shutil otherwise the 
+
+        # for some reason we need to need a variable to shutil otherwise the
         #__del__() will fail. This is caused by import of campaignserver_client
         # or libsvn, according to esr it's a bug in Python.
         self.dummy = shutil
@@ -48,14 +48,14 @@ if __name__ == "__main__":
 
     """Download an addon from the server.
 
-    server              The url of the addon server eg 
+    server              The url of the addon server eg
                         add-ons.wesnoth.org:15005.
     addon               The name of the addon.
     path                Directory to unpack the campaign in.
     returns             Nothing.
     """
     def extract(server, addon, path):
-        
+
         logging.debug("extract addon server = '%s' addon = '%s' path = '%s'",
             server, addon, path)
 
@@ -65,14 +65,14 @@ if __name__ == "__main__":
 
     """Get a list of addons on the server.
 
-    server              The url of the addon server eg 
+    server              The url of the addon server eg
                         add-ons.wesnoth.org:15005.
     translatable_only   If True only returns translatable addons.
     returns             A dictonary with the addon as key and the translatable
                         status as value.
     """
     def list(server, translatable_only):
-        
+
         logging.debug("list addons server = '%s' translatable_only = %s",
             server, translatable_only)
 
@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
     """Get the timestamp of a campaign on the server.
 
-    server              The url of the addon server eg 
+    server              The url of the addon server eg
                         add-ons.wesnoth.org:15005.
     addon               The name of the addon.
     returns             The timestamp of the campaign, -1 if not on the server.
@@ -122,8 +122,8 @@ if __name__ == "__main__":
         return -1
 
     """Upload a addon from the server to wescamp.
-    
-    server              The url of the addon server eg 
+
+    server              The url of the addon server eg
                         add-ons.wesnoth.org:15005.
     addon               The name of the addon.
     temp_dir            The directory where the unpacked campaign can be stored.
@@ -132,7 +132,7 @@ if __name__ == "__main__":
     def upload(server, addon, temp_dir, svn_dir):
 
         logging.debug("upload addon to wescamp server = '%s' addon = '%s' "
-            + "temp_dir = '%s' svn_dir = '%s'", 
+            + "temp_dir = '%s' svn_dir = '%s'",
             server, addon, temp_dir, svn_dir)
 
         # Is the addon in the list with campaigns to be translated.
@@ -148,8 +148,8 @@ if __name__ == "__main__":
         # If the directory in svn doesn't exist we need to create and commit it.
         message = "wescamp.py automatic update"
         if(os.path.isdir(svn_dir + "/" + addon) == False):
-            
-            logging.info("Creating directory in svn '%s'.", 
+
+            logging.info("Creating directory in svn '%s'.",
                 svn_dir + "/" + addon)
 
             svn = libsvn.SVN(svn_dir)
@@ -167,7 +167,7 @@ if __name__ == "__main__":
         # Translation needs to be prevented from the campaign to overwrite
         # the ones in wescamp.
         # The other files are present in wescamp and shouldn't be deleted.
-        if(svn.copy_to_svn(temp_dir, ["translations", "po", "campaign.def", 
+        if(svn.copy_to_svn(temp_dir, ["translations", "po", "campaign.def",
             "config.status", "Makefile"])):
 
             svn.commit("wescamp_client: automatic update of addon '"
@@ -178,8 +178,8 @@ if __name__ == "__main__":
                 addon)
 
     """Update the translations from wescamp to the server.
-    
-    server              The url of the addon server eg 
+
+    server              The url of the addon server eg
                         add-ons.wesnoth.org:15005.
     addon               The name of the addon.
     temp_dir            The directory where the unpacked campaign can be stored.
@@ -196,10 +196,10 @@ if __name__ == "__main__":
     def download(server, addon, temp_dir, svn_dir, password, stamp = None):
 
         logging.debug("download addon from wescamp server = '%s' addon = '%s' "
-            + "temp_dir = '%s' svn_dir = '%s' password is not shown", 
+            + "temp_dir = '%s' svn_dir = '%s' password is not shown",
             server, addon, temp_dir, svn_dir)
 
-        # update the wescamp checkout for the translation, 
+        # update the wescamp checkout for the translation,
         svn = libsvn.SVN(wescamp + "/" + addon)
 
         # The result of the update can be ignored, no changes when updating
@@ -207,7 +207,7 @@ if __name__ == "__main__":
         svn.update()
 
         # test whether the svn has a translations dir, if not we can stop
-        if(os.path.isdir(wescamp + "/" 
+        if(os.path.isdir(wescamp + "/"
             + addon + "/" + addon + "/translations") == False):
 
             logging.info("Wescamp has no translations directory so we can stop.")
@@ -232,12 +232,12 @@ if __name__ == "__main__":
         # send it unconditionally.
         wml = libwml.CampaignClient(server)
         if(stamp == None):
-            wml.put_campaign("", addon, "", password, "", "", "",  
+            wml.put_campaign("", addon, "", password, "", "", "",
                 temp_dir + "/" + addon + ".cfg", temp_dir + "/" + addon + "/")
             logging.info("New version of addon '%s' downloaded.", addon)
         else:
             if(stamp == get_timestamp(server, addon)):
-                wml.put_campaign("", addon, "", password, "", "", "",  
+                wml.put_campaign("", addon, "", password, "", "", "",
                     temp_dir + "/" + addon + ".cfg", temp_dir + "/" + addon + "/")
                 logging.info("New version of addon '%s' downloaded.", addon)
                 return True
@@ -251,7 +251,7 @@ if __name__ == "__main__":
 
         svn = libsvn.SVN(wescamp)
 
-        svn.update(None, addon) 
+        svn.update(None, addon)
 
         svn.remove(addon)
 
@@ -259,27 +259,27 @@ if __name__ == "__main__":
 
     optionparser = optparse.OptionParser("%prog [options]")
 
-    optionparser.add_option("-l", "--list", action = "store_true", 
+    optionparser.add_option("-l", "--list", action = "store_true",
         help = "List available addons. Usage [SERVER [PORT] [VERBOSE]")
 
-    optionparser.add_option("-L", "--list-translatable", action = "store_true", 
+    optionparser.add_option("-L", "--list-translatable", action = "store_true",
         help = "List addons available for translation. "
         + "Usage [SERVER [PORT] [VERBOSE]")
 
-    optionparser.add_option("-u", "--upload", 
+    optionparser.add_option("-u", "--upload",
         help = "Upload a addon to wescamp. Usage: 'addon' WESCAMP-CHECKOUT "
         + "[SERVER [PORT]] [TEMP-DIR] [VERBOSE]")
 
-    optionparser.add_option("-U", "--upload-all", action = "store_true", 
+    optionparser.add_option("-U", "--upload-all", action = "store_true",
         help = "Upload all addons to wescamp. Usage WESCAMP-CHECKOUT "
         + " [SERVER [PORT]] [VERBOSE]")
 
-    optionparser.add_option("-d", "--download", 
+    optionparser.add_option("-d", "--download",
         help = "Download the translations from wescamp and upload to the addon "
         + "server. Usage 'addon' WESCAMP-CHECKOUT PASSWORD [SERVER [PORT]] "
         + "[TEMP-DIR] [VERBOSE]")
 
-    optionparser.add_option("-D", "--download-all", action = "store_true", 
+    optionparser.add_option("-D", "--download-all", action = "store_true",
         help = "Download all translations from wescamp and upload them to the "
         + "addon server. Usage WESCAMP-CHECKOUT PASSWORD [SERVER [PORT]] "
         + " [VERBOSE]")
@@ -288,32 +288,32 @@ if __name__ == "__main__":
         help = "Erase an addon from wescamp. Usage 'addon' WESCAMP-CHECKOUT "
                 + "[VERBOSE]")
 
-    optionparser.add_option("-s", "--server", 
+    optionparser.add_option("-s", "--server",
         help = "Server to connect to [localhost]")
 
-    optionparser.add_option("-p", "--port", 
-        help = "Port on the server to connect to ['']") 
+    optionparser.add_option("-p", "--port",
+        help = "Port on the server to connect to ['']")
 
     optionparser.add_option("-t", "--temp-dir", help = "Directory to store the "
         + "tempory data, if omitted a tempdir is created and destroyed after "
         + "usage, if specified the data is left in the tempdir. ['']")
 
-    optionparser.add_option("-w", "--wescamp-checkout", 
-        help = "The directory containing the wescamp checkout root. ['']") 
+    optionparser.add_option("-w", "--wescamp-checkout",
+        help = "The directory containing the wescamp checkout root. ['']")
 
-    optionparser.add_option("-v", "--verbose", action = "store_true", 
+    optionparser.add_option("-v", "--verbose", action = "store_true",
         help = "Show more verbose output. [FALSE]")
 
-    optionparser.add_option("-P", "--password", 
+    optionparser.add_option("-P", "--password",
         help = "The master password for the addon server. ['']")
 
     options, args = optionparser.parse_args()
 
     if(options.verbose):
-        logging.basicConfig(level=logging.DEBUG, 
+        logging.basicConfig(level=logging.DEBUG,
             format='[%(levelname)s] %(message)s')
     else:
-        logging.basicConfig(level=logging.INFO, 
+        logging.basicConfig(level=logging.INFO,
             format='[%(levelname)s] %(message)s')
 
     server = "localhost"
@@ -413,7 +413,7 @@ if __name__ == "__main__":
             except IOError, e:
                 print "Unexpected error occured: " + str(e)
                 error = True
-        
+
         if(error):
             sys.exit(1)
 
@@ -468,7 +468,7 @@ if __name__ == "__main__":
 
                     timestamp = 0
                     while(True): # upload loop
-                        
+
                         # get the upload timestamp of the addon
                         timestamp = get_timestamp(server, k)
 
@@ -481,7 +481,7 @@ if __name__ == "__main__":
                             break
                         else:
                             logging.warning("Addon '%s' has been modified on "
-                                + "the campaign server, force another" 
+                                + "the campaign server, force another"
                                 + "wescamp sync", k)
 
                     # Create a new temp dir for every download.
@@ -502,7 +502,7 @@ if __name__ == "__main__":
             except IOError, e:
                 print "Unexpected error occured: " + str(e)
                 error = True
-        
+
         if(error):
             sys.exit(1)
 
@@ -527,5 +527,3 @@ if __name__ == "__main__":
 
     else:
         optionparser.print_help()
-
-

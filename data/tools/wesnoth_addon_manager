@@ -128,7 +128,7 @@ if __name__ == "__main__":
 
             print "Unpacking %s..." % name
             cs.unpackdir(decoded, cdir, verbose = options.verbose)
-            
+
 
             info = os.path.join(dirname, "_info.cfg")
             try:
@@ -248,7 +248,7 @@ if __name__ == "__main__":
                 if options.verbose:
                     print "Not downloading", name, \
                         "because it is already up-to-date."
-                        
+
     elif options.unpack:
         cs = CampaignClient(address)
         data = file(options.unpack).read()
@@ -321,7 +321,7 @@ if __name__ == "__main__":
         for field in ["title", "author", "passphrase", "description",
             "version", "icon", "type", "email", "translate"]:
             stuff[field] = pbl.get_text_val(field)
-        
+
         mythread = cs.put_campaign_async(name, cfgfile, wmldir, ign, stuff)
 
         pcounter = 0
@@ -362,7 +362,7 @@ if __name__ == "__main__":
                         sys.stdout.write(" ? " + dirname + " - has no " +
                             "version info on the server.\n")
                     elif srev == lrev:
-                        sys.stdout.write("   " + dirname + 
+                        sys.stdout.write("   " + dirname +
                             " - is up to date.\n")
                     elif sversion == lversion:
                         sys.stdout.write(" # " + dirname + " - is version " +
@@ -378,7 +378,7 @@ if __name__ == "__main__":
                             " is available.\n")
                         if options.update: get(dirname, sversion, srev, cdir)
                 else:
-                    sys.stdout.write(" ? " + dirname + 
+                    sys.stdout.write(" ? " + dirname +
                         " - is installed but has no " +
                         "version info.\n")
                     if options.update: get(dirname, sversion, srev, cdir)

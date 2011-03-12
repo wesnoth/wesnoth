@@ -32,7 +32,7 @@ class ImageCollector:
         self.verbose = 0
         self.datadir = datadir
         self.userdir = userdir
-        
+
         if not self.datadir: self.datadir = get_datadir(wesnoth_exe)
         if not self.userdir: self.userdir = get_userdir(wesnoth_exe)
 
@@ -70,7 +70,7 @@ class ImageCollector:
         ipath, error = self.find_image(path, campaign)
         if ipath in self.ipaths:
             return self.ipaths[ipath], False
-    
+
         name = "%05d_" % self.id
         name += os.path.basename(path)
         self.id += 1
@@ -82,7 +82,7 @@ class ImageCollector:
         else:
             self.notfound[(campaign, path)] = name
             return name, True
-        
+
     def add_image(self, campaign, path):
         name, error = self.add_image_check(campaign, path)
         return name
@@ -126,7 +126,7 @@ class WesnothList:
         self.campaign_lookup = {}
         self.parser = wmlparser2.Parser(wesnoth_exe, config_dir,
             data_dir, no_preprocess = False)
-        
+
 
     def add_terrains(self):
         """
@@ -207,7 +207,7 @@ class WesnothList:
         Find all addon eras and campaigns.
         """
         self.parser.parse_text("{multiplayer}{~add-ons}", "MULTIPLAYER")
-        
+
         cn = 0
         for campaign in self.parser.get_all(tag = "campaign"):
             cid = self.add_campaign(campaign)
@@ -226,7 +226,7 @@ class WesnothList:
         image_collector.add_binary_paths_from_WML("addons",
             self.parser.root)
         return cn, en, un
-    
+
     def add_mainline_units(self):
         self.parser.parse_text("{core/units.cfg}")
         return self.add_units("mainline")
@@ -235,17 +235,17 @@ class WesnothList:
         campaign = self.campaign_lookup[cname]
         define = campaign.get_text_val("define")
         self.parser.parse_text("{campaigns}", define + ",NORMAL")
-        
+
         image_collector.add_binary_paths_from_WML(cname,
             self.parser.root)
-        
+
         return self.add_units(cname)
 
     def add_addon_campaign_units(self, cname, image_collector):
         campaign = self.campaign_lookup[cname]
         define = campaign.get_text_val("define")
         self.parser.parse_text("{~add-ons}", define)
-        
+
         image_collector.add_binary_paths_from_WML(cname,
             self.parser.root)
 
@@ -309,7 +309,7 @@ class WesnothList:
             movetype = self.get_unit_value(unit, "movement_type")
             try: unit.movetype = self.movetype_lookup[movetype]
             except KeyError: unit.movetype = None
-            
+
             unit.advance = []
             advanceto = unit.get_text_val("advances_to")
             # Add backwards compatibility for 1.4
@@ -397,7 +397,7 @@ class UnitForest:
         valid list of children in unit.child_ids, also fill in unit.parent_ids
         and update the unit.children shortcut.
         """
-        
+
         # Complete the network
         for uid, u in self.lookup.items():
             for cid in u.child_ids:
@@ -411,7 +411,7 @@ class UnitForest:
         for uid, u in self.lookup.items():
             if not u.parent_ids:
                 self.trees[uid] = u
-        
+
         # Sanity check because some argGRRxxx addons have units who advance to
         # themselves.
 
@@ -432,15 +432,15 @@ class UnitForest:
             recurse(u, already)
 
     def update(self):
-        self.create_network()       
-    
+        self.create_network()
+
         self.breadth = sum([x.update_breadth() for x in self.trees.values()])
         return self.breadth
 
     def get_children(self, uid):
         un = self.lookup[uid]
         return un.child_ids
-    
+
     def get_parents(self, uid):
         un = self.lookup[uid]
         return un.parent_ids
@@ -462,9 +462,8 @@ class UnitNode:
             self.breadth = 1
         else:
             self.breadth = sum([x.update_breadth() for x in self.children])
-        return self.breadth   
+        return self.breadth
 
 class GroupNode:
     def __init__(self, data):
         self.data = data
-

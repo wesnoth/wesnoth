@@ -1,5 +1,5 @@
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
-# $Id$ 
+# $Id$
 """
    Copyright (C) 2007 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -10,11 +10,11 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
-"""   
+"""
 
 """
 This library provides an interface to svn, the interface is build upon
-the command line svn tool. 
+the command line svn tool.
 """
 
 
@@ -24,7 +24,7 @@ the command line svn tool.
 # call to __execute
 
 import os, shutil, logging
-from subprocess import Popen, PIPE 
+from subprocess import Popen, PIPE
 class error(Exception):
     """Base class for exceptions in this module."""
     pass
@@ -32,7 +32,7 @@ class error(Exception):
 
 class SVN:
     """Initializes a SVN object.
-    
+
     Checkout the root of the local checkout eg /src/wesnoth
     do not include a trailing slash!
     """
@@ -43,8 +43,8 @@ class SVN:
         self.checkout_path = checkout
 
     """Makes a new checkout.
-    
-    repo                The repo to checkout eg 
+
+    repo                The repo to checkout eg
                         http://svn.gna.org/svn/wesnoth/trunk.
     returns             Nothing.
     """
@@ -52,7 +52,7 @@ class SVN:
 
         logging.debug("checkout repo = '%s'", repo)
 
-        out, err = self.__execute(["svn", "co", "--non-interactive", 
+        out, err = self.__execute(["svn", "co", "--non-interactive",
             repo, self.checkout_path])
 
         if(err != ""):
@@ -64,7 +64,7 @@ class SVN:
 
     After deleting a local file and committing that change the file remains.
     msg                 The commit message.
-    files               Optional list with files/directories to commit if 
+    files               Optional list with files/directories to commit if
                         ommitted all modifications are send.
     returns             True if committed, False if nothing to commit.
     """
@@ -135,13 +135,13 @@ class SVN:
         logging.debug("export to '%s'", target)
 
         command = ["svn", "export", self.checkout_path, target]
- 
+
         # execute
         out, err = self.__execute(command)
 
         return (err == "")
 
- 
+
 
     """Add an item to the repo.
 
@@ -172,10 +172,10 @@ class SVN:
         self.__svn_remove(self.checkout_path + "/" + item)
 
     """Copies local files to an svn checkout.
-    
+
     src                 Directory with the source files.
     exclude             List with names to ignore.
-    returns             True if the copy resulted in a modified checkout, 
+    returns             True if the copy resulted in a modified checkout,
                         False otherwise.
     """
     def copy_to_svn(self, src, exclude):
@@ -185,7 +185,7 @@ class SVN:
 
         # Check whether the status of the repo is clean.
         out, err = self.__execute(["svn", "st", self.checkout_path])
-        
+
         # If not clean or an error bail out.
         if(err != ""):
             raise error("status failed with message:" + err)
@@ -214,7 +214,7 @@ class SVN:
 
         # Check whether the status of the repo is clean.
         out, err = self.__execute(["svn", "st", self.checkout_path])
-        
+
         # If not clean or an error bail out.
         if(err != ""):
             raise error("status failed with message:" + err)
@@ -303,10 +303,10 @@ class SVN:
             if not os.path.isdir(src + "/" + dir):
                 # dest only
                 self.__dir_remove(dest + "/" + dir, not(src_svn))
-                
+
         # If a file exists in the src but not in the dest, it needs to be copied.
 
-        # If a file doesn't exist in the src but does in the dest, it needs to be 
+        # If a file doesn't exist in the src but does in the dest, it needs to be
         # deleted.
 
         # If a file exists in both it needs to be copied.
@@ -326,7 +326,7 @@ class SVN:
 
     """Gets a list with files and directories.
 
-    The function always ignores .svn entries. Items which aren't a directory 
+    The function always ignores .svn entries. Items which aren't a directory
     are assumed a file.
     dir                 The directory to get the info from.
     exclude             List with names to ignore.
@@ -350,7 +350,7 @@ class SVN:
             # Ignore exclude list.
             if(exclude != None and item in exclude):
                 continue
-            
+
             # An item is either a directory or not, in the latter case it's
             # assumed to be a file.
             if(os.path.isdir(dir + "/" + item)):
@@ -386,11 +386,11 @@ class SVN:
         # copy files
         for file in files:
             self.__file_add(src + "/" + file, dest + "/" + file, src_svn)
-           
+
         # copy dirs
         for dir in dirs:
             self.__dir_add(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
-        
+
     """Removes a directory.
 
     file                The directory to remove.
@@ -418,7 +418,7 @@ class SVN:
     returns             Nothing.
     """
     def __file_add(self, src, dest, src_svn):
-        
+
         logging.debug("__file_add src = '%s' dest = '%s' src_svn = '%s'",
             src, dest, src_svn)
 
@@ -477,4 +477,3 @@ class SVN:
         logging.debug("===== stderr ====\n\n\n%s\n\n\n===== stderr ====", err)
 
         return out, err
-

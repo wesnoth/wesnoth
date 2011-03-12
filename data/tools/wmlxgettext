@@ -25,7 +25,7 @@ def allcfgfiles(dir):
                 datafiles.append(dir)
     else:
         for root, dirs, files in os.walk(dir):
-            for vcsubdir in vctypes: 
+            for vcsubdir in vctypes:
                 if vcsubdir in dirs:
                     dirs.remove(vcsubdir)
             for name in files:
@@ -181,7 +181,7 @@ msgstr ""
                     print "Passthrough for", nav
                 opener_stack.append((nav.element, fn, nav.lineno))
                 translatables.append((nav.text.lstrip(), opener_stack[:]))
-                opener_stack.pop()                
+                opener_stack.pop()
             elif verbose > 1:
                 print "Unhandled", nav
         # Gather a list describing the context of every
@@ -204,7 +204,7 @@ msgstr ""
                 for nav in WmllintIterator(lines, fn):
                     handle_element(nav, fn)
                 opener_stack.pop()
-                
+
         # Debugging output
         if verbose:
             print "Translatables:"
@@ -237,4 +237,3 @@ msgstr ""
             print ""
     except KeyboardInterrupt:
         print >>sys.stderr, "wmlxgettext: aborted."
-        

@@ -110,9 +110,9 @@ class CampaignClient:
             return None
 
         self.length = l = struct.unpack("!i", packet)[0]
-        
+
         sys.stderr.write("Receiving %d bytes.\n" % self.length)
-    
+
         packet = ""
         while len(packet) < l and not self.canceled:
             r = self.sock.recv(l - len(packet))
@@ -122,9 +122,9 @@ class CampaignClient:
             self.counter = len(packet)
         if self.canceled:
             return None
-        
+
         sys.stderr.write("Received %d bytes.\n" % len(packet))
-        
+
         if packet.startswith("\x1F\x8B"):
             if self.verbose:
                 sys.stderr.write("GZIP compression found...\n")
@@ -363,7 +363,7 @@ class CampaignClient:
 
     def get_campaign_raw_async(self, name):
         """
-        This is like get_campaign_raw, but returns immediately, 
+        This is like get_campaign_raw, but returns immediately,
         doing server communications in a background thread.
         """
         class MyThread(threading.Thread):
@@ -392,7 +392,7 @@ class CampaignClient:
 
     def put_campaign_async(self, *args):
         """
-        This is like put_campaign, but returns immediately, 
+        This is like put_campaign, but returns immediately,
         doing server communications in a background thread.
         """
         class MyThread(threading.Thread):
@@ -421,8 +421,8 @@ class CampaignClient:
 
     def unpackdir(self, data, path, i = 0, verbose = False):
         """
-        Call this to unpack a campaign contained in a WML object 
-        to the filesystem. The data parameter is the WML object, 
+        Call this to unpack a campaign contained in a WML object
+        to the filesystem. The data parameter is the WML object,
         path is the path under which it will be placed.
         """
 

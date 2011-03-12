@@ -163,7 +163,7 @@ def relevant_macros():
     "Compute indices of (X, Y) pairs in formals of all mainline macros."
     # Cross-reference all files.
     here = os.getcwd()
-    pop_to_top("wmlflip")  
+    pop_to_top("wmlflip")
     cref = CrossRef(scopelist())
     os.chdir(here)
 
@@ -180,7 +180,7 @@ def relevant_macros():
                 if arg == "Y" or arg.endswith("_Y"):
                     have_y = i
             if have_x is not None and have_y is not None:
-                relevant[name] = (have_x, have_y)    
+                relevant[name] = (have_x, have_y)
     return relevant
 
 def transformables(filename, relevant, verbose):
@@ -238,7 +238,7 @@ if __name__ == '__main__':
     mapfile = None
     translate = False
     (options, arguments) = getopt.getopt(sys.argv[1:], "m:txyv")
-    
+ 
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             sys.stderr.write(__doc__)
@@ -293,7 +293,7 @@ if __name__ == '__main__':
             # Compute the target coordinate pairs
             target = []
             for (x, y) in source:
-    
+
                 # Note: This is the *only* part of this code that is
                 # specific to a particular transform.  The rest of the
                 # code doesn't care how the target pairs are derived

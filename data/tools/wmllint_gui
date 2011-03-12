@@ -18,15 +18,15 @@ class TextOutput(file):
     def write(self, text):
         self.text_ctrl.AppendText(text+"\n")
         self.text_ctrl.Refresh()
-            
+
     def writelines(self, list):
         for text in list:
             self.text_ctrl.AppendText(text+"\n")
         self.text_ctrl.Refresh()
-        
+
     def fileno(self):
         return 1
-        
+
     def clear(self):
         self.text_ctrl.Clear()
 
@@ -51,9 +51,9 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_BUTTON, self.button_browse, self.choose_file)
         self.Bind(wx.EVT_BUTTON, self.button_convert, self.Convert)
         # end wxGlade
-        
+
         self.text_output = TextOutput(self.Output)
-        
+
         self.process = None
         self.Bind(wx.EVT_IDLE, self.on_idle)
         self.Bind(wx.EVT_END_PROCESS, self.subprocess_finished)
@@ -97,7 +97,7 @@ class MainFrame(wx.Frame):
         sizer_3.SetSizeHints(self)
         self.Layout()
         # end wxGlade
-        
+
     def start_wmllint(self,output,\
         arguments,\
         clean = False,\
@@ -109,7 +109,7 @@ class MainFrame(wx.Frame):
         stripcr = False,\
         spell_check = False,\
         verbose = 0):
-        
+
         cmd = "python -u wmllint"
         if clean:
             cmd+=" -c"
@@ -127,7 +127,7 @@ class MainFrame(wx.Frame):
             cmd+=" -v"
         for path in arguments:
             cmd+=" "+path
-            
+
         self.text_output.write("Executing \""+cmd+"\".")
 
         self.process = wx.Process(self)
@@ -139,9 +139,9 @@ class MainFrame(wx.Frame):
     		self.process.Kill(self.wmllint_pid)
     	else:
 			self.text_output.clear()
-			
+
 			path = self.path_ctrl.GetValue()
-			
+
 			clean = False
 			diffs = False
 			dryrun = False
@@ -151,7 +151,7 @@ class MainFrame(wx.Frame):
 			stripcr = False
 			spell_check = False
 			verbose = 0
-			
+
 			mode = self.action_choice.GetStringSelection()
 			if(mode == "Clean"):
 				clean = True
@@ -161,21 +161,21 @@ class MainFrame(wx.Frame):
 				dryrun = True
 			if(mode == "Revert"):
 				revert = True
-			
+
 			spell_check = self.spell_check.GetValue()
 			stripcr = self.unix_endings.GetValue()
-			
+
 			verbose = self.verbosity.GetSelection()
-			
+
 			if not os.path.exists(path):
 				self.text_output.write("Path could not be found.")
 				return
-			
+
 			self.start_wmllint(self.text_output, [path], clean, diffs, dryrun, future, revert,\
 				stringfreeze, stripcr, spell_check, verbose)
-				
+
 			self.set_running(True)
-        
+
     def set_running(self, val):
         if val == True:
             self.Convert.SetLabel("Stop")
@@ -193,11 +193,11 @@ class MainFrame(wx.Frame):
             self.verbosity.Enable(True)
             self.path_ctrl.Enable(True)
             self.choose_file.Enable(True)
-            
+
     def subprocess_finished(self, event):
         self.set_running(False)
         self.process = None
-        
+
 
     def button_browse(self, event): # wxGlade: MainFrame.<event_handler>
         dir_dialog = wx.DirDialog(self)
@@ -206,7 +206,7 @@ class MainFrame(wx.Frame):
         self.path_ctrl.SetValue(path)
         dir_dialog.Show(False)
         del dir_dialog
-        
+
     def on_idle(self, evt):
         if self.process is not None:
             stream = self.process.GetInputStream()

@@ -3,20 +3,20 @@ wmliterator.py -- Python routines for navigating a Battle For Wesnoth WML tree
 Author: Sapient (Patrick Parker), 2007
 
 Purpose:
- The WmlIterator class can be used to analyze and search the structure of WML 
- files non-invasively (i.e. preserving existing line structure), and its main 
+ The WmlIterator class can be used to analyze and search the structure of WML
+ files non-invasively (i.e. preserving existing line structure), and its main
  use is to determine when a transformation of deprecated content needs to take
- place. (I wrote it was because wmllint was trying to do a lot of things with 
+ place. (I wrote it was because wmllint was trying to do a lot of things with
  regular expressions which really required a more algorithmic approach. Also,
- wmllint was often inconsistent with correct handling of comments and values 
+ wmllint was often inconsistent with correct handling of comments and values
  inside strings.)
- 
+
 Limitations:
- The WmlIterator does not attempt to expand macros, only to recognize them as 
+ The WmlIterator does not attempt to expand macros, only to recognize them as
  another level of nesting. Also, the handling of multiple assignment syntax
- is somewhat limited (for similar reasons). Adding seamless support for these 
- would be ideal, but it presents a design challenge since the iteration is 
- supposed to be non-invasive. Thus, the current behavior is considered good 
+ is somewhat limited (for similar reasons). Adding seamless support for these
+ would be ideal, but it presents a design challenge since the iteration is
+ supposed to be non-invasive. Thus, the current behavior is considered good
  enough for now.
 """
 
@@ -208,7 +208,7 @@ Important Attributes:
 
     def parseElements(self, text):
         """Remove any closed scopes, return a list of element names
-        and list of new unclosed scopes    
+        and list of new unclosed scopes
     Element Types:
         tags: one of "[tag_name]" or "[/tag_name]"
             [tag_name] - opens a scope
@@ -332,7 +332,7 @@ Important Attributes:
         self.span = 1
         self.element = ""
         return self
-        
+
     def seek(self, lineno, clearEnd=True):
         """Move the iterator to a specific line number"""
         if clearEnd:

@@ -125,7 +125,7 @@ class HTMLOutput:
         self.translation = Translation(options.transdir, isocode)
         self.isocode = isocode
         global_htmlout = self
-    
+
     def translate(self, string, domain):
         return self.translation.translate(string, domain)
 
@@ -380,9 +380,9 @@ class HTMLOutput:
                 if not name: name = ability.name
                 anames.append(name)
         return anames
-    
+
     def get_recursive_attacks(self, this_unit):
-    
+
         def copy_attributes(copy_from, copy_to):
             for c in copy_from.data:
                 if isinstance(c, wmlparser2.AttributeNode):
@@ -401,7 +401,7 @@ class HTMLOutput:
                 copy_attributes(attack, attacks[i])
             else:
                 attacks.append(attack)
-                
+
         return attacks
 
     def write_units(self):
@@ -413,7 +413,7 @@ class HTMLOutput:
         for i in range(6):
             write("<col class=\"col%d\" />" % i)
         write("</colgroup>")
-        
+
         pic = image_collector.add_image("mainline",
             "../../../images/misc/leader-crown.png")
         crownimage = os.path.join("../pics", pic)
@@ -478,7 +478,7 @@ class HTMLOutput:
 
                         write('<div class="pic">')
                         image = self.pic(u, u)
-                        
+
                         write('<a href=\"%s\">' % link)
 
                         if crown == u" ♚":
@@ -487,21 +487,21 @@ class HTMLOutput:
                             write("</div>")
                         else:
                             write('<img src="%s" alt="(image)" />' % image)
-                            
+
                         write('</a>\n</div>\n')
                         write("<div class=\"attributes\">")
                         write("%s%s<br />" % (_("Cost: "), cost))
                         write("%s%s<br />" % (_("HP: "), hp))
                         write("%s%s<br />" % (_("MP: "), mp))
                         write("%s%s<br />" % (_("XP: "), xp))
-                            
+
                         # Write info about abilities.
                         anames = self.get_abilities(u)
                         if anames:
                             write("\n<div style=\"clear:both\">")
                             write(", ".join(anames))
                             write("</div>")
-                        
+
                         # Write info about attacks.
                         write("\n<div style=\"clear:both\">")
                         attacks = self.get_recursive_attacks(u)
@@ -661,7 +661,7 @@ class HTMLOutput:
             if val == "alignment": x = _(x)
             write("<td>%s</td>" % x)
             write("</tr>\n")
-        
+
         # Write info about abilities.
         anames = self.get_abilities(unit)
 
@@ -681,7 +681,7 @@ class HTMLOutput:
 
             aid = attack.get_text_val("name")
             aname = T(attack, "description")
-            
+
             icon = attack.get_text_val("icon")
             if not icon:
                 icon = "attacks/%s.png" % aid
@@ -841,7 +841,7 @@ def generate_campaign_report(out_path, isocode, campaign, wesnoth):
 def generate_era_report(out_path, isocode, eid, wesnoth):
     path = os.path.join(out_path, isocode)
     if not os.path.isdir(path): os.mkdir(path)
-    
+
     output = MyFile(os.path.join(path, "%s.html" % eid), "w")
     html = HTMLOutput(isocode, output, eid, wesnoth)
     html.target = "%s.html" % eid
@@ -900,7 +900,7 @@ def parse_game():
         options.config_dir,
         options.data_dir,
         options.transdir)
-    
+
     def p(x): sys.stdout.write(x); sys.stdout.flush()
     def pn(x): print(x)
 
@@ -936,9 +936,9 @@ def parse_game():
         p("    Parsing %s units ... " % cname)
         n = stuff.add_campaign_units(cname, image_collector)
         pn("%d units found." % n)
-    
+
     mainline_campaigns = set(stuff.campaign_lookup.keys())
-    
+
     stuff.is_mainline_unit = {}
     for uid in stuff.unit_lookup.keys():
         stuff.is_mainline_unit[uid] = True
@@ -958,7 +958,7 @@ def parse_game():
             pn("%d units found." % n)
 
     stuff.find_unit_factions()
-    
+
     return stuff
 
 def generate_report(stuff, isocode):
@@ -970,7 +970,7 @@ def generate_report(stuff, isocode):
     * Each addon era's units sorted by faction
     * Each addon campaign's units sorted by race
     """
-    
+
     print "Generating report for %s." % (isocode)
     reset_errors()
 
@@ -993,7 +993,7 @@ def generate_report(stuff, isocode):
     generate_single_unit_reports(options.output, isocode, stuff)
 
 if __name__ == '__main__':
-	
+
     # We change the process name to "wmlunits"
     try:
         import ctypes
@@ -1004,7 +1004,7 @@ if __name__ == '__main__':
 
     global options
     global image_collector
-    
+
     gc.disable()
 
     op = optparse.OptionParser()
@@ -1067,7 +1067,7 @@ if __name__ == '__main__':
         else: r = "none"
         u.rid = r
         u.id = u.get_text_val("id")
-        
+
     # Write a list with all unit ids, just for fun.
     uids = wesnoth.unit_lookup.keys()
     def by_race(u1, u2):
@@ -1090,7 +1090,7 @@ if __name__ == '__main__':
     f.write("</ul>")
     f.write("</body></html>")
     f.close()
-    
+
     # Write animation statistics
     f = MyFile(os.path.join(options.output, "animations.html"), "w")
     animations.write_table(f, wesnoth)

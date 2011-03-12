@@ -46,8 +46,8 @@ def write_table_row(out, unit, color, name = None):
         "draw_weapon_anim",
         "sheath_weapon_anim"
     ]
-    
-    
+
+
     needed = {}
     for at in anim_types: needed[at] = True
 
@@ -60,7 +60,7 @@ def write_table_row(out, unit, color, name = None):
         if abil.get_all(tag = "leadership"):
             needed["leading_anim"] = True
         if abil.get_all(tag = "teleport"):
-            needed["teleport"] = True     
+            needed["teleport"] = True
 
     if name == None: name = unit.id
 
@@ -118,7 +118,7 @@ def put_units(f, us):
 """.lstrip())
 
     f.write("</tr>\n")
-    
+
     def by_race(u1, u2):
         r1 = u1.rid
         r2 = u2.rid
@@ -154,15 +154,14 @@ td.none {border: solid 1px; background-color: #ffffff;}
 """.lstrip())
     f.write("<h1>animation statistics</h1>\n")
     f.write("<i>total frames (number of animations)</i>\n")
-    
+
     f.write("<h2>Mainline</h2>\n")
     us = [x for x in wesnoth.unit_lookup.values() if x.campaign == "mainline"]
     put_units(f, us)
-    
+
     f.write("<h2>Campaigns and Addons</h2>\n")
     us = [x for x in wesnoth.unit_lookup.values() if x.campaign != "mainline"]
     put_units(f, us)
 
     f.write("</body></html>")
-    f.close()    
-
+    f.close()

@@ -75,7 +75,7 @@ class Parser:
         self.macro_callback = None
         self.macro_not_found_callback = None
         self.no_macros = False
-        
+
         # If set to a function, the function is called with the current
         # textdomain and string as arguments for any translatable string, and
         # is expected to return a translation.
@@ -282,8 +282,8 @@ class Parser:
                         break
                 else:
                     continue
-            
-            
+
+
             quotation = line.find('"', line_start)
             while quotation >= 0:
                 in_string = True
@@ -292,7 +292,7 @@ class Parser:
                 line_start = string_end + 1
                 in_string = False
                 quotation = line.find('"', line_start)
-            
+
             if not in_string:
                 end = line.find(string, line_start)
                 if end >= 0:
@@ -354,10 +354,10 @@ class Parser:
 
         preserve = macro
         macro = macro[:-1] # Get rid of final }
-        
+
         if self.macro_callback:
             if not self.macro_callback(macro): return None
-        
+
         # If the macro starts with ~, assume a file in userdata.
         if macro[0] == "~":
             if self.user_dir:
@@ -470,7 +470,7 @@ class Parser:
                     # Ignore () within strings
                     if c == '"':
                         in_string = not in_string
-                        
+
                     if not in_string:
                         if c == "(":
                             balance += 1
@@ -504,7 +504,7 @@ class Parser:
                     qe = rep.find('"', q + 1)
                     rep = self.gettext(self.textdomain, rep[q + 1:qe])
                     rep = '"' + rep + '"'
-                if self.verbose:                        
+                if self.verbose:
                     #s = "Replacing {%s} with %s\n" % (macro.params[i], rep)
                     ##sys.stderr.write(s.encode("utf8"))
                     pass
@@ -593,7 +593,7 @@ class Parser:
                         variables += [variable]
                         variable = ""
                     else:
-                        variable += c  
+                        variable += c
             else:
                 if c == "<" and self.peek_next() == "<":
                     self.read_next() #skip the rest of the opening
@@ -673,7 +673,7 @@ class Parser:
                         if name: params += [name]
                         if sep == "\n": break
                         self.read_while(" ")
-                        
+
                     text = self.read_lines_until("#enddef")
                     if text == None:
                         raise Error(self, "#define without #enddef")
@@ -746,7 +746,7 @@ class Parser:
                         raise Error(self, "#else without #ifdef")
 
                     self.read_until("\n")
-                    
+
                     # We seen an #else - that means we are at the end of a
                     # conditional preprocessor block which has executed. So
                     # we should now ignore everything up to the #endif.
@@ -921,7 +921,7 @@ if __name__ == "__main__":
             print "gettext: '%s' '%s'" % (domain, x)
             return x
         wmlparser.gettext = gt
-    
+
     wmlparser.do_preprocessor_logic = True
 
     if options.execute:
@@ -940,4 +940,3 @@ if __name__ == "__main__":
         xmlify(data, True)
     else:
         data.debug(show_contents = options.contents, use_color = options.color)
-

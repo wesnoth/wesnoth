@@ -26,7 +26,7 @@
 #   * unbalanced tags
 #   * strings that need a translation mark and should not have them
 #   * strings that have a translation mark and should not
-#   * translatable strings containing macro references 
+#   * translatable strings containing macro references
 #   * filter references by id= not matched by an actual unit
 #   * abilities or traits without matching special notes, or vice-versa
 #   * consistency between recruit= and recruitment_pattern= instances
@@ -117,7 +117,7 @@
 # A comment containing "no spellcheck" disables spellchecking on the
 # line where it occurs.
 #
-# A comment of the form 
+# A comment of the form
 #
 # #wmllint: match {ABILITY_FOO} with {SPECIAL_NOTES_IOO}
 #
@@ -531,7 +531,7 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     # Detect a malformation that will cause the game to barf while attempting
     # to deserialize an empty unit.  The final "and attributes" ias a blatant
     # hack; some compaigns like to generate entire side declarations with
-    # macros. 
+    # macros.
     if "scenario" in ancestors and closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors and attributes:
         print '"%s", line %d: [side] without type attribute' % (filename, lineno)
     # This assumes that conversion will always happen in units/ files.
@@ -666,7 +666,7 @@ translatables = (\
                "source",
                "story",
                "summary",
-               "text", 
+               "text",
                "title",
                "title2",
                "tooltip",
@@ -976,7 +976,7 @@ def global_sanity_check(filename, lines):
                 # Check if it's a death event
                 fields = parse_attribute(nav.text)
                 if fields:
-                    (key, prefix, value, comment) = fields 
+                    (key, prefix, value, comment) = fields
                     if key == 'name' and value == 'die':
                         die_event = True
             elif die_event and not filter_subject and parent == "[filter]":
@@ -991,7 +991,7 @@ def global_sanity_check(filename, lines):
                 # Who is speaking?
                 fields = parse_attribute(nav.text)
                 if fields:
-                    (key, prefix, value, comment) = fields 
+                    (key, prefix, value, comment) = fields
                     if key in ("id", "speaker"):
                         if deathcheck and (value == filter_subject) or (value == "unit"):
                             print '"%s", line %d: %s speaks in his/her death event' % (filename, nav.lineno+1, value)
@@ -1092,7 +1092,7 @@ def global_sanity_check(filename, lines):
         # Interpret magic comments for setting the usage pattern of units.
         # This copes with some wacky UtBS units that are defined with
         # variant-spawning macros.  The prototype comment looks like this:
-        #wmllint: usage of "Desert Fighter" is fighter 
+        #wmllint: usage of "Desert Fighter" is fighter
         m = re.match('# *wmllint: usage of "([^"]*)" is +(.*)', lines[i])
         if m:
             usage[m.group(1)] = m.group(2).strip()
@@ -1240,7 +1240,7 @@ def global_sanity_check(filename, lines):
                 # FIXME: This test is rather bogus as is.
                 # Doing a better job would require tokenizing to pick up the
                 # string boundaries. I'd do it, but AI0867 is already working
-                # on a parser-based wmllint.   
+                # on a parser-based wmllint.
                 if '{' in value and "+" not in value and value.find('{') > value.find("_"):
                     print '"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1)
@@ -1252,7 +1252,7 @@ def global_sanity_check(filename, lines):
                 pass
             elif key.startswith("{"):
                 pass
-            elif key == 'letter':	# May be led with _s for void 
+            elif key == 'letter':	# May be led with _s for void
                 pass
             elif key in ('name', 'male_name', 'female_name'):		# FIXME: check this someday
                 pass
@@ -1287,7 +1287,7 @@ def global_sanity_check(filename, lines):
                               % (filename, i+1, value)
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print '"%s", line %d: %s should not have a translation mark' \
-                              % (filename, i+1, key)                
+                              % (filename, i+1, key)
                     lines[i] = lines[i].replace("_", "", 1)
     # Now that we know who's present, register all these names as spellings
     declared_spellings[filename] = map(lambda x: x.lower(), present)
@@ -1316,7 +1316,7 @@ def global_sanity_check(filename, lines):
 
 def condition_match(p, q):
     "Do two condition-states match?"
-    # The empty condition state is represented by None 
+    # The empty condition state is represented by None
     if p is None or q is None or (p == q):
         return True
     # Past this point it's all about handling cases with negation
@@ -1481,15 +1481,15 @@ def hack_syntax(filename, lines):
         if lines[i].startswith("#"):
             pass
         elif "{DOT_CENTERED" in lines[i]:
-            lines[i] = lines[i].replace("DOT_CENTERED", "NEW_JOURNEY")    
+            lines[i] = lines[i].replace("DOT_CENTERED", "NEW_JOURNEY")
         elif "{DOT_WHITE_CENTERED" in lines[i]:
             lines[i] = lines[i].replace("DOT_WHITE_CENTERED", "OLD_JOURNEY")
         elif "{CROSS_CENTERED" in lines[i]:
-            lines[i] = lines[i].replace("CROSS_CENTERED", "NEW_BATTLE")    
+            lines[i] = lines[i].replace("CROSS_CENTERED", "NEW_BATTLE")
         elif "{CROSS_WHITE_CENTERED" in lines[i]:
             lines[i] = lines[i].replace("CROSS_WHITE_CENTERED", "OLD_BATTLE")
         elif "{FLAG_RED_CENTERED" in lines[i]:
-            lines[i] = lines[i].replace("FLAG_RED_CENTERED", "NEW_REST")    
+            lines[i] = lines[i].replace("FLAG_RED_CENTERED", "NEW_REST")
         elif "{FLAG_WHITE_CENTERED" in lines[i]:
             lines[i] = lines[i].replace("FLAG_WHITE_CENTERED", "OLD_REST")
         elif "{DOT " in lines[i] or "CROSS" in lines[i]:
@@ -1668,7 +1668,7 @@ def translator(filename, mapxforms, textxform):
             lineno += 1
         # Check for one certain error condition
         if line.count("{") and line.count("}"):
-            refname = line[line.find("{"):line.rfind("}")]            
+            refname = line[line.find("{"):line.rfind("}")]
             # Ignore all-caps macro arguments.
             if refname == refname.upper():
                 pass
@@ -1784,7 +1784,7 @@ def translator(filename, mapxforms, textxform):
                 for i in range(len(outmap)):
                     outmap[i] = [outmap[i][0]] + outmap[i] + [outmap[i][-1]]
                 # Strip villages out of the edges
-                outermap(lambda n: re.sub(r"\^V[a-z]+", "", n), outmap) 
+                outermap(lambda n: re.sub(r"\^V[a-z]+", "", n), outmap)
                 # Strip keeps out of the edges
                 outermap(lambda n: re.sub(r"K([a-z]+)", r"C\1", n), outmap)
                 # Strip the starting positions out of the edges
@@ -1810,7 +1810,7 @@ def translator(filename, mapxforms, textxform):
             if refre:
                 mapfile = refre.group(1)
                 if not mapfile.endswith(".map") and is_map(mapfile):
-                    newline = newline.replace(mapfile, mapfile + ".map") 
+                    newline = newline.replace(mapfile, mapfile + ".map")
             newdata.append(newline + terminator)
             if newline != line:
                 if verbose > 0:
@@ -1838,7 +1838,7 @@ def translator(filename, mapxforms, textxform):
                         tagstack.append((tag, {}))
                     else:
                         if len(tagstack) == 0:
-                            print '"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag) 
+                            print '"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag)
                         elif tagstack[-1][0] != tag:
                             print '"%s", line %d: unbalanced [%s] closed with [/%s].' % (filename, lineno+1, tagstack[-1][0], tag)
                         else:
@@ -2026,7 +2026,7 @@ def inner_spellcheck(nav, value, spelldict):
         if re.match("s+h+", lowered):
             continue
         nav.printError('possible misspelling "%s"' % token)
-                
+
 
 def spellcheck(fn, d):
     "Spell-check a file using an Enchant dictionary object."
@@ -2111,7 +2111,7 @@ def allcfgfiles(dir):
                 datafiles.append(dir)
     else:
         for root, dirs, files in os.walk(dir):
-            for vcsubdir in vctypes: 
+            for vcsubdir in vctypes:
                 if vcsubdir in dirs:
                     dirs.remove(vcsubdir)
             for name in files:
@@ -2167,7 +2167,7 @@ if __name__ == '__main__':
     stripcr = False
     verbose = 0
     dospellcheck = True
-    progress = False 
+    progress = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -2244,10 +2244,10 @@ if __name__ == '__main__':
             line = re.sub(r"user_description\s*=", "description=", line)
         # Alas, WML variable references cannot be converted so
         # automatically.
-        if ".description" in line: 
+        if ".description" in line:
             print '"%s", line %d: .description may need hand fixup' % \
                                    (filename, lineno)
-        if ".user_description" in line: 
+        if ".user_description" in line:
             print '"%s", line %d: .user_description may need hand fixup' % \
                                    (filename, lineno)
         # In unit type definitions

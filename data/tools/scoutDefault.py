@@ -7,7 +7,7 @@ import os
 import getopt
 import re
 
-overwrite = False 
+overwrite = False
 defaultValue = 4
 suffix = ''
 
@@ -56,7 +56,7 @@ def getIndent(itemText, subitemText):
     if item[0] == ' ' and subitem[0] == ' ':
         return (len(subitem) - len(item)) * ' '
     return '\t'
-    
+
 class wikiAi:
     def __init__(self):
         self.start = ""
@@ -100,7 +100,7 @@ class wikiSide:
                     break
                 searchStart = aiDetail.end()
                 aiDetail = ai_block.search(sideContent, searchStart)
-     
+
 
     def updateAi(self, sides):
         if not len(self.ai):
@@ -125,7 +125,7 @@ class wikiSide:
                     updateDescription(self.ai[0], sides)
         if self.ai[0].full_description != self.ai[0].updated_description:
             self.updated_description = self.updated_description.replace(self.ai[0].full_description, self.ai[0].updated_description, 1)
-            
+
     def getCurrentAiNumber(self):
         return len(self.ai) - 1
 
@@ -238,7 +238,7 @@ Example of use:
   ./scoutDefault.py -f 2p_Blitz.cfg -O
     Run the script on 2p_Blitz.cfg and delete previous value"""
 
-recursive = False 
+recursive = False
 entryPoint = os.getcwd()
 entryFile = os.listdir(os.getcwd())
 resourcesFile = {}
@@ -253,7 +253,7 @@ for (option, parameter) in opts:
         printUsage()
         sys.exit(0)
     elif option == '-R':
-        recursive = True 
+        recursive = True
     elif option == '-O':
         overwrite = False
     elif option == '-d':

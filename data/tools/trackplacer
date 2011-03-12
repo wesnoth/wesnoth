@@ -15,7 +15,7 @@ select ends the program; Selecting a file takes you to a main screen.
 For command help on the main screen, click the Help button.
 
 Can be started with a map image, in which case we are editing a new journey.
-Can be started with a .cfg file, in which case it will look for 
+Can be started with a .cfg file, in which case it will look for
 track information enclosed in special comments that look like this:
 
    # trackplacer: tracks begin
@@ -334,7 +334,7 @@ class JourneyTracks:
         if len(neighbors) >= 2 and neighbors[0][0] != len(neighbors)-1:
             closest = neighbors[0]
             next_closest = neighbors[1]
-            # If the neighbors are adjacent, insert between them 
+            # If the neighbors are adjacent, insert between them
             if abs(closest[0] - next_closest[0]) == 1:
                 self.selected_track().insert(max(closest[0], next_closest[0]), (action, x, y))
                 self.modified += 1
@@ -471,7 +471,7 @@ class TrackController:
         if track_id in self.editor.visible_set:
             self.editor.visible_set.remove(track_id)
         if track_id == self.editor.journey.selected_id:
-            self.editor.track_select(w, self.editor.visible_set[-1]) 
+            self.editor.track_select(w, self.editor.visible_set[-1])
         # FIXME: This redraw fails when we delete the last track.
         self.editor.redraw(self.editor.drawing_area)
         self.editor.journey.remove_track(track_id)
@@ -486,7 +486,7 @@ class TracksEditor:
     def __init__(self, path=None, verbose=False, force_save=False):
         self.verbose = verbose
         self.force_save = force_save
-        # Initialize our info about the map and track 
+        # Initialize our info about the map and track
         self.journey = JourneyTracks()
         self.last_read = None
         self.journey.read(path)
@@ -544,7 +544,7 @@ class TracksEditor:
         vbox.pack_start(toolbar, expand = False)
         toolbar.show()
 
-        # Toolbar widget has a fit when we try to pack these separately. 
+        # Toolbar widget has a fit when we try to pack these separately.
         radiobox1 = gtk.ToolItem()
         radiobox = gtk.HBox()
         radiobox1.add(radiobox)
@@ -756,7 +756,7 @@ class TracksEditor:
                     self.log("Redrawing action=%s" % ((na, nx, ny),))
                     self.draw_feature(widget,
                                       (na, nx, ny),
-                                      save_select == self.journey.selected_id) 
+                                      save_select == self.journey.selected_id)
         self.journey.set_selected_track(save_select)
 
     def draw_feature(self, widget, (action, x, y), selected):
@@ -879,7 +879,7 @@ class TracksEditor:
         state = event.state
 
         # This code enables dragging icons wit h the middle button.
-        if state & gtk.gdk.BUTTON2_MASK and self.pixmap != None:            
+        if state & gtk.gdk.BUTTON2_MASK and self.pixmap != None:
            if self.selected is not None:
                (action, lx, ly) = self.journey[self.selected]
                self.erase_feature(widget, (action, lx, ly))
@@ -897,7 +897,7 @@ class TracksEditor:
     def quit(self, w):
         if self.journey.has_unsaved_changes():
             self.quit_check = gtk.Dialog(title="Really quit?",
-                           parent=None, 
+                           parent=None,
                            flags=gtk.DIALOG_MODAL,
                            buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
                                     gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
@@ -957,11 +957,11 @@ class TracksEditor:
                                             % self.last_read
                 elif os.stat(filename).st_mtime > self.time_last_io:
                     confirmation_required = "File has changed "\
-                                            "since last read or written." 
+                                            "since last read or written."
             if confirmation_required:
                 confirmation_required += "\nReally overwrite %s?" % filename
                 save_check = gtk.Dialog(title="Really overwrite?",
-                                             parent=None, 
+                                             parent=None,
                                              flags=gtk.DIALOG_MODAL,
                                              buttons=(gtk.STOCK_CANCEL,
                                                       gtk.RESPONSE_REJECT,
@@ -980,7 +980,7 @@ class TracksEditor:
             try:
                 self.journey.write(filename)
                 if not self.journey.mapfile:
-                    self.journey.mapfile = filename 
+                    self.journey.mapfile = filename
                 self.time_last_io = time.time()
             except IOError:
                 w = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
@@ -1116,7 +1116,7 @@ class TracksEditor:
     def properties_handler(self, w):
         "Display a dialog for editing track properties."
         w = gtk.Dialog(title="Track properties editor",
-                       parent=None, 
+                       parent=None,
                        flags=gtk.DIALOG_MODAL,
                        buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
                                 gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
@@ -1205,7 +1205,7 @@ if __name__ == "__main__":
             if e.lineno:
                 sys.stderr.write(('"%s", line %d: ' % (e.path, e.lineno)) + e.message + "\n")
             else:
-                sys.stderr.write(e.path + ": " + e.message + "\n") 
+                sys.stderr.write(e.path + ": " + e.message + "\n")
     else:
         while True:
             try:
