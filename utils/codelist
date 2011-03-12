@@ -8,35 +8,36 @@
 
 import sys
 
+
 def rangeify(lst):
-    "Turn ranges of adjacent ints in a list into [start, end] list elements."
+    """
+    Turn ranges of adjacent ints in a list into [start, end] list elements.
+    """
     lst.sort()
     lst.append(None)
     while True:
-        for i in range(len(lst)-1):
-            if type(lst[i]) == type(0) and lst[i+1] == lst[i]+1:
-                lst = lst[:i] + [[lst[i], lst[i+1]]] + lst[i+2:]
+        for i in range(len(lst) - 1):
+            if isinstance(lst[i], int) and lst[i + 1] == lst[i] + 1:
+                lst = lst[:i] + [[lst[i], lst[i + 1]]] + lst[i + 2:]
                 break
-            elif type(lst[i]) == type([]) and lst[i+1] == lst[i][-1]+1:
-                lst[i][1] = lst[i+1]
-                lst = lst[:i+1] + lst[i+2:]
+            elif isinstance(lst[i], list) and lst[i + 1] == lst[i][-1] + 1:
+                lst[i][1] = lst[i + 1]
+                lst = lst[:i + 1] + lst[i + 2:]
                 break
         else:
             break
     lst.pop()
     return lst
 
+
 def printbyrange(lst):
     out = ""
     for elt in lst:
-        if type(elt) == type(0):
-            out += `elt` + ","
+        if isinstance(elt, int):
+            out += repr(elt) + ","
         else:
             out += "%d-%d," % tuple(elt)
     return out[:-1]
 
 codepoints = map(lambda x: int(x.strip()), sys.stdin.readlines())
 print printbyrange(rangeify(codepoints))
-
-
-
