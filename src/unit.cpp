@@ -496,7 +496,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		"max_hitpoints", "max_moves", "max_experience",
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
 		"experience", "resting", "unrenamable", "alignment",
-		"canrecruit", "x", "y",
+		"canrecruit", "x", "y", "placement",
 		// Useless attributes created when saving units to WML:
 		"flag_rgb", "language_name" };
 	foreach (const char *attr, internalized_attrs) {

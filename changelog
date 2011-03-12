@@ -39,6 +39,7 @@ Version 1.9.4+svn:
    * Fixed: Image widget now honors its minimum and maximum size.
    * Fixed: Black lines in the minimap.
  * WML engine:
+   * Added support for map_passable and leader_passable for [placement]
    * Allow [color_range] and [color_palette] nodes to be inserted at top-level
      by add-ons to globally define custom ranges and palettes.
    * New [tunnel] tag to create teleports between two SLFs for units matching
