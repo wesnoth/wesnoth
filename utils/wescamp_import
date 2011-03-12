@@ -30,12 +30,12 @@ Usage: wescamp_import {-h | wescamp-path campaign-name textdomain}
     else:
         wescamp_path = arguments[0]
     if len(arguments) == 1:
-        sys.stderr.write("wescamp_import: a campaign name is required.\n") 
+        sys.stderr.write("wescamp_import: a campaign name is required.\n")
         sys.exit(1)
     else:
         campaign = arguments[1]
     if len(arguments) == 2:
-        sys.stderr.write("wescamp_import: a text domain name is required.\n") 
+        sys.stderr.write("wescamp_import: a text domain name is required.\n")
         sys.exit(1)
     else:
         textdomain = arguments[2]
