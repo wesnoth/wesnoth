@@ -508,7 +508,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 /**
  * Called by replay handler or init_side() to do actual work for turn change.
  */
-void play_controller::do_init_side(const unsigned int team_index, bool is_replay) {
+void play_controller::do_init_side(const unsigned int team_index, bool /*is_replay*/) {
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 
