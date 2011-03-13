@@ -1620,23 +1620,19 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 
 	const terrain_label* old_label = gui_->labels().get_label(loc);
 	std::string label = old_label ? old_label->text() : "";
-	gui2::tedit_label d(label, team_only);
-	d.show(gui_->video());
 
-	if(d.get_retval() != gui2::twindow::CANCEL) {
+	if(gui2::tedit_label::execute(label, team_only, gui_->video())) {
 		std::string team_name;
 		SDL_Color color = font::LABEL_COLOR;
 
-		label = d.label();
-
-		if (d.team_only()) {
+		if (team_only) {
 			team_name = gui_->labels().team_name();
 		} else {
 			color = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 		}
 		const std::string& old_team_name = old_label ? old_label->team_name() : "";
 		// remove the old label if we changed the team_name
-		if (d.team_only() == (old_team_name == "")) {
+		if (team_only == (old_team_name == "")) {
 			const terrain_label* old = gui_->labels().set_label(loc, "", old_team_name, color);
 			if (old) recorder.add_label(old);
 		}

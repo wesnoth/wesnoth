@@ -17,48 +17,35 @@
 #define GUI_DIALOGS_EDIT_LABEL_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/dialogs/field-fwd.hpp"
-
-#include <vector>
 
 namespace gui2 {
 
 class tedit_label : public tdialog
 {
 public:
-	tedit_label(const std::string& label, bool team_only = true);
+	/**
+	 * Constructor.
+	 *
+	 * @param label [in]          The initial value of the label.
+	 * @param label [out]         The label text the user entered if the dialog
+	 *                            returns @ref twindow::OK undefined otherise.
+	 * @param team_only [in]      The initial value of the team only toggle.
+	 * @param team_only [out]     The final value of the team only toggle if the
+	 *                            dialog returns @ref twindow::OK undefined
+	 *                            otherise.
+	 */
+	tedit_label(std::string& label, bool& team_only);
 
-	const std::string& label() const {
-		return label_;
-	}
-
-	void set_label(const std::string& label) {
-		label_ = label;
-	}
-
-	/** Whether only the current team should be able to see the label. */
-	bool team_only() const {
-		return team_only_;
-	}
-
-	void set_team_only(bool team_only) {
-		team_only_ = team_only;
+	/** The excute function see @ref tdialog for more information. */
+	static bool execute(std::string& label, bool& team_only, CVideo& video)
+	{
+		return tedit_label(label, team_only).show(video);
 	}
 
 private:
-	bool team_only_;
-	std::string label_;
-
-	tfield_text* label_field_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
-
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
 };
 
 }

@@ -464,7 +464,9 @@ struct twrapper<gui2::tedit_label>
 {
 	static gui2::tedit_label* create()
 	{
-		return new gui2::tedit_label("Label text to modify", false);
+		static std::string label = "Label text to modify";
+		static bool team_only = false;
+		return new gui2::tedit_label(label, team_only);
 	}
 };
 
