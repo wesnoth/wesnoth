@@ -939,7 +939,7 @@ size_t ana_network_manager::send_raw_data( const char*         base_char,
     }
     else
     {
-        if ( components_.size() == 0 )
+        if ( components_.empty() )
             return 0;
         else
         {
