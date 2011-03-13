@@ -510,6 +510,7 @@ public:
 	}
 
 	/***** ***** ***** setters/getters ***** ***** *****/
+
 	void set_mouse_behaviour(const tmouse_behaviour mouse_behaviour)
 	{
 		mouse_behaviour_ = mouse_behaviour;
@@ -518,6 +519,16 @@ public:
 	tmouse_behaviour get_mouse_behaviour() const
 	{
 		return mouse_behaviour_;
+	}
+
+	void set_want_keyboard_input(const bool want_keyboard_input)
+	{
+		want_keyboard_input_ = want_keyboard_input;
+	}
+
+	bool get_want_keyboard_input() const
+	{
+		return want_keyboard_input_;
 	}
 
 	/** Helper struct to generate the various signal types. */
@@ -667,6 +678,18 @@ private:
 
 	/** The mouse behaviour for the dispatcher. */
 	tmouse_behaviour mouse_behaviour_;
+
+	/**
+	 * Does the dispatcher want to receive keyboard input.
+	 *
+	 * @todo The entire mouse and keyboard handling can use a code review to
+	 * seen whether it might be combined in one flag field. At the moment the
+	 * keyboard doesn't look whether a dialog has the mouse focus before
+	 * sending the event, so maybe we should add an active dispatcher to keep
+	 * track of it. But since at the moment there are only non-modal windows
+	 * and tooltips it's not a problem.
+	 */
+	bool want_keyboard_input_;
 
 	/** Signal queue for callbacks in tset_event. */
 	tsignal_queue<tsignal_function> signal_queue_;

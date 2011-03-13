@@ -195,6 +195,14 @@ private:
 	void mouse_button_down(const tpoint& position, const Uint8 button);
 
 	/**
+	 * Gets the dispatcher that wants to receive the keyboard input.
+	 *
+	 * @returns                   The dispatcher.
+	 * @retval NULL               No dispatcher found.
+	 */
+	tdispatcher* keyboard_dispatcher();
+
+	/**
 	 * Fires a key down event.
 	 *
 	 * @param event                  The SDL keyboard event triggered.
@@ -567,6 +575,23 @@ void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
 	}
 }
 
+tdispatcher* thandler::keyboard_dispatcher()
+{
+	if(keyboard_focus_) {
+		return keyboard_focus_;
+	}
+
+	for(std::vector<tdispatcher*>::reverse_iterator ritor =
+			dispatchers_.rbegin(); ritor != dispatchers_.rend(); ++ritor) {
+
+		if((**ritor).get_want_keyboard_input()) {
+			return *ritor;
+		}
+	}
+
+	return NULL;
+}
+
 void thandler::key_down(const SDL_KeyboardEvent& event)
 {
 	const hotkey::hotkey_item& hk = hotkey::get_hotkey(event);
@@ -581,14 +606,13 @@ void thandler::key_down(const SDL_KeyboardEvent& event)
 
 bool thandler::hotkey_pressed(const hotkey::hotkey_item& key)
 {
-	tdispatcher* focus = keyboard_focus_
-			? keyboard_focus_
-			: dispatchers_.back();
-	if(!focus) {
+	tdispatcher* dispatcher = keyboard_dispatcher();
+
+	if(!dispatcher) {
 		return false;
 	}
 
-	return focus->execute_hotkey(key.get_id());
+	return dispatcher->execute_hotkey(key.get_id());
 }
 
 void thandler::key_down(const SDLKey key
@@ -597,17 +621,9 @@ void thandler::key_down(const SDLKey key
 {
 	DBG_GUI_E << "Firing: " << SDL_KEY_DOWN << ".\n";
 
-	assert(!dispatchers_.empty());
-
-	if(keyboard_focus_) {
-		keyboard_focus_->fire(SDL_KEY_DOWN
-				, dynamic_cast<twidget&>(*keyboard_focus_)
-				, key
-				, modifier
-				, unicode);
-	} else {
-		dispatchers_.back()->fire(SDL_KEY_DOWN
-				, dynamic_cast<twidget&>(*dispatchers_.back())
+	if(tdispatcher* dispatcher = keyboard_dispatcher()) {
+		dispatcher->fire(SDL_KEY_DOWN
+				, dynamic_cast<twidget&>(*dispatcher)
 				, key
 				, modifier
 				, unicode);
@@ -618,13 +634,8 @@ void thandler::keyboard(const tevent event)
 {
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
-	assert(!dispatchers_.empty());
-
-	if(keyboard_focus_) {
-		keyboard_focus_->fire(event, dynamic_cast<twidget&>(*keyboard_focus_));
-	} else {
-		dispatchers_.back()->fire(event
-				, dynamic_cast<twidget&>(*dispatchers_.back()));
+	if(tdispatcher* dispatcher = keyboard_dispatcher()) {
+		dispatcher->fire(event, dynamic_cast<twidget&>(*dispatcher));
 	}
 }
 
@@ -703,6 +714,8 @@ void capture_keyboard(tdispatcher* dispatcher)
 {
 	assert(handler);
 	assert(dispatcher);
+	assert(dispatcher->get_want_keyboard_input());
+
 	handler->keyboard_focus_ = dispatcher;
 }
 

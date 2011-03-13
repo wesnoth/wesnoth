@@ -501,6 +501,7 @@ void twindow::show_tooltip(/*const unsigned auto_close_timeout*/)
 	assert(status_ == NEW);
 
 	set_mouse_behaviour(event::tdispatcher::none);
+	set_want_keyboard_input(false);
 
 	show_mode_ = tooltip;
 

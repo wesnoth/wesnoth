@@ -28,6 +28,7 @@ namespace event {
 
 tdispatcher::tdispatcher()
 	: mouse_behaviour_(all)
+	, want_keyboard_input_(true)
 	, signal_queue_()
 	, signal_mouse_queue_()
 	, signal_keyboard_queue_()
