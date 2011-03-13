@@ -831,7 +831,7 @@ double get_villages_phase::evaluate()
 	moves_.clear();
 	unit_map::const_iterator leader = resources::units->find_leader(get_side());
 	get_villages(get_dstsrc(),get_enemy_dstsrc(),leader);
-	if (moves_.size()>0) {
+	if (!moves_.empty()) {
 		return get_score();
 	}
 	return BAD_SCORE;
