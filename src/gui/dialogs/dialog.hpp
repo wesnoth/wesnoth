@@ -298,6 +298,12 @@ protected:
 			, std::string& linked_variable
 			, const bool capture_focus = false);
 
+	tfield_text* register_text2(const std::string& id
+			, const bool mandatory
+			, std::string (*callback_load_value) () = NULL
+			, void (*callback_save_value) (const std::string& value) = NULL
+			, const bool capture_focus = false);
+
 	/**
 	 * Registers a new control as a label.
 	 *
