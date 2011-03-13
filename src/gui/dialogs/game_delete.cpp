@@ -13,8 +13,9 @@
    See the COPYING file for more details.
 */
 
-#include "gui/dialogs/field.hpp"
 #include "gui/dialogs/game_delete.hpp"
+
+#include "game_preferences.hpp"
 #include "gui/widgets/settings.hpp"
 
 namespace gui2 {
@@ -37,14 +38,32 @@ namespace gui2 {
 
 REGISTER_DIALOG(game_delete)
 
-tgame_delete::tgame_delete()
-	: chk_dont_ask_again_(register_bool("dont_ask_again"))
-	, dont_ask_again_(false)
-{}
-
-void tgame_delete::post_show(twindow& window)
+/**
+ * Helper to invert @ref !preferences::ask_delete_saves.
+ *
+ * The value stored and the way shown is inverted.
+ */
+static bool get_dont_ask_again()
 {
-	dont_ask_again_ = chk_dont_ask_again_->get_widget_value(window);
+	return !preferences::ask_delete_saves();
+}
+
+/**
+ * Helper to invert @ref !preferences::set_ask_delete_saves.
+ *
+ * The value stored and the way shown is inverted.
+ */
+static void set_dont_ask_again(const bool ask_again)
+{
+	preferences::set_ask_delete_saves(!ask_again);
+}
+
+tgame_delete::tgame_delete()
+{
+	register_bool("dont_ask_again"
+			, false
+			, &get_dont_ask_again
+			, &set_dont_ask_again);
 }
 
 } // namespace gui2

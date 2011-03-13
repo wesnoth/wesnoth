@@ -173,15 +173,8 @@ void tdata_manage::delete_button_callback(twindow& window)
 
 		// See if we should ask the user for deletion confirmation
 		if(preferences::ask_delete_saves()) {
-			gui2::tgame_delete dlg_delete;
-			dlg_delete.show(window.video(), 0);
-			int res = dlg_delete.get_retval();
-
-			if (res == twindow::CANCEL)
+			if(!gui2::tgame_delete::execute(window.video())) {
 				return;
-
-			if (dlg_delete.dont_ask_again()) {
-				preferences::set_ask_delete_saves(false);
 			}
 		}
 

@@ -24,20 +24,19 @@ class tgame_delete
 	: public tdialog
 {
 public:
+
 	tgame_delete();
 
-	bool dont_ask_again() const { return dont_ask_again_; }
+	/** The excute function see @ref tdialog for more information. */
+	static bool execute(CVideo& video)
+	{
+		return tgame_delete().show(video);
+	}
 
 private:
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-
-	tfield_bool* chk_dont_ask_again_;
-	bool dont_ask_again_;
 };
 
 }
