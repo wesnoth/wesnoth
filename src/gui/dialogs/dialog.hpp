@@ -351,6 +351,8 @@ private:
 	/**
 	 * Actions to be taken directly after the window is build.
 	 *
+	 * At this point the registered fields are not yet registered.
+	 *
 	 * @param video               The video which contains the surface to draw
 	 *                            upon.
 	 * @param window              The window just created.
@@ -360,6 +362,9 @@ private:
 	/**
 	 * Actions to be taken before showing the window.
 	 *
+	 * At this point the registered fields are registered and initialized with
+	 * their initial values.
+	 *
 	 * @param video               The video which contains the surface to draw
 	 *                            upon.
 	 * @param window              The window to be shown.
@@ -368,6 +373,9 @@ private:
 
 	/**
 	 * Actions to be taken after the window has been shown.
+	 *
+	 * At this point the registered fields already stored their values (if the
+	 * OK has been pressed).
 	 *
 	 * @param window              The window which has been shown.
 	 */
