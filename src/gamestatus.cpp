@@ -529,52 +529,38 @@ static void clear_wmi(std::map<std::string, wml_menu_item *> &gs_wmi)
 }
 
 game_state::game_state(const game_state& state) :
-	/* default construct everything to silence compiler warnings. */
-	variable_set(),
-	scoped_variables(),
+	variable_set(), // Not sure why empty, copied from old code
+	scoped_variables(state.scoped_variables),
 	wml_menu_items(),
-	replay_data(),
-	starting_pos(),
-	snapshot(),
-	last_selected(),
-	rng_(),
-	variables_(),
-	temporaries_(),
-	generator_setter_(&recorder),
-	classification_(),
-	mp_settings_(),
-	phase_(INITIAL),
-	can_end_turn_(true)
+	replay_data(state.replay_data),
+	starting_pos(state.starting_pos),
+	snapshot(state.snapshot),
+	last_selected(state.last_selected),
+	rng_(state.rng_),
+	variables_(state.variables_),
+	temporaries_(), // Not sure why empty, copied from old code
+	generator_setter_(state.generator_setter_),
+	classification_(state.classification_),
+	mp_settings_(state.mp_settings_),
+	phase_(state.phase_),
+	can_end_turn_(state.can_end_turn_)
 {
-	*this = state;
-}
-
-game_state& game_state::operator=(const game_state& state)
-{
-	if(this == &state) {
-		return *this;
-	}
-
-	rng_ = state.rng_;
-	scoped_variables = state.scoped_variables;
-	classification_ = game_classification(state.classification());
-	mp_settings_ = mp_game_settings(state.mp_settings());
-	can_end_turn_ = state.can_end_turn_;
-
 	clear_wmi(wml_menu_items);
 	std::map<std::string, wml_menu_item*>::const_iterator itor;
 	for (itor = state.wml_menu_items.begin(); itor != state.wml_menu_items.end(); ++itor) {
 		wml_menu_item*& mref = wml_menu_items[itor->first];
 		mref = new wml_menu_item(*(itor->second));
 	}
+}
 
-	replay_data = state.replay_data;
-	starting_pos = state.starting_pos;
-	snapshot = state.snapshot;
-	last_selected = state.last_selected;
-	variables_ = state.variables_;
-
-	return *this;
+game_state& game_state::operator=(const game_state& state)
+{
+	// Use copy constructor to make sure we are coherant
+	if (this != &state) {
+		this->~game_state();
+		new (this) game_state(state) ;
+	}
+	return *this ;
 }
 
 game_state::~game_state() {
