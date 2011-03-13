@@ -64,7 +64,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 	 */
 	events::discard(SDL_EVENTMASK(DOUBLE_CLICK_EVENT));
 
-	if(retval_ ==  twindow::OK) {
+	if(retval_ ==  twindow::OK || always_save_fields_) {
 		finalize_fields(*window);
 	}
 

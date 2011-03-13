@@ -133,6 +133,7 @@ class tdialog
 public:
 	tdialog() :
 		retval_(0),
+		always_save_fields_(false),
 		fields_(),
 		focus_(),
 		restore_(true)
@@ -159,6 +160,11 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	int get_retval() const { return retval_; }
+
+	void set_always_save_fields(const bool always_save_fields)
+	{
+		always_save_fields_ = always_save_fields;
+	}
 
 	void set_restore(const bool restore) { restore_ = restore; }
 
@@ -337,6 +343,16 @@ protected:
 private:
 	/** Returns the window exit status, 0 means not shown. */
 	int retval_;
+
+	/**
+	 * Always save the fields upon closing.
+	 *
+	 * Normally fields are only saved when the twindow::OK button is pressed.
+	 * With this flag set is always saves. Be careful with the flag since it
+	 * also updates upon canceling, which can be a problem when the field sets
+	 * a preference.
+	 */
+	bool always_save_fields_;
 
 	/**
 	 * Contains the automatically managed fields.
