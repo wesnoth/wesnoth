@@ -733,7 +733,7 @@ void combatant::one_strike_fight(combatant &opp, bool levelup_considered)
 			opp.summary[0][opp.u_.hp] = 1.0 - hit_chances_[0];
 			opp.summary[0][std::max<int>(opp.u_.hp - u_.damage, 0)] = hit_chances_[0];
 		} else {
-			assert(hit_chances_.size() == 0);
+			assert(hit_chances_.empty());
 			opp.summary[0][opp.u_.hp] = 1.0;
 		}
 	} else {
