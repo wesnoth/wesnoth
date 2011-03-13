@@ -195,6 +195,8 @@ protected:
 	 * The field created is owned by tdialog, the returned pointer can be used
 	 * in the child classes as access to a field.
 	 *
+	 * @deprecated use @ref register_bool2 instead.
+	 *
 	 * @param id                  Id of the widget, same value as in WML.
 	 * @param optional            Is the widget mandatory or optional.
 	 * @param linked_variable     The variable the widget is linked to. See
@@ -206,6 +208,26 @@ protected:
 	 */
 	tfield_bool* register_bool(const std::string& id
 			, const bool optional
+			, bool& linked_variable
+			, void (*callback_change) (twidget* widget) = NULL);
+
+	/**
+	 * Creates a new boolean field.
+	 *
+	 * The field created is owned by tdialog, the returned pointer can be used
+	 * in the child classes as access to a field.
+	 *
+	 * @param id                  Id of the widget, same value as in WML.
+	 * @param mandatory           Is the widget mandatory or optional.
+	 * @param linked_variable     The variable the widget is linked to. See
+	 *                            @ref tfield::tfield for more information.
+	 * @param callback_change     When the value of the widget changes this
+	 *                            callback is called.
+	 *
+	 * @returns                   Pointer to the created widget.
+	 */
+	tfield_bool* register_bool2(const std::string& id
+			, const bool mandatory
 			, bool& linked_variable
 			, void (*callback_change) (twidget* widget) = NULL);
 
