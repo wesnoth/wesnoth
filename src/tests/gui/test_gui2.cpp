@@ -484,7 +484,8 @@ struct twrapper<gui2::tgame_load>
 	static gui2::tgame_load* create()
 	{
 		/** @todo Would be nice to add real data to the config. */
-		return new gui2::tgame_load(config());
+		static config cfg;
+		return new gui2::tgame_load(cfg);
 	}
 
 };
