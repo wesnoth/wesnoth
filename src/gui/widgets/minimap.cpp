@@ -162,6 +162,10 @@ static void shrink_cache()
 
 const surface tminimap::get_image(const int w, const int h) const
 {
+	if(!terrain_) {
+		return NULL;
+	}
+
 	if(terrain_ != terrain) {
 #ifdef DEBUG_MINIMAP_CACHE
 		std::cerr << "\nFlush cache.\n";
