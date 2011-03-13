@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-12-08 18:05+0100\n"
-"PO-Revision-Date: 2010-04-26 21:53+0100\n"
+"POT-Creation-Date: 2011-03-01 11:25+0100\n"
+"PO-Revision-Date: 2011-03-12 20:11+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -712,7 +712,6 @@ msgstr "Temná předpověď - náhodný přežívací scénář"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
-#, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
@@ -743,6 +742,8 @@ msgstr ""
 "\n"
 "Vlny nepřátel jsou vytvářeny náhodně a budou se lišit pokaždé, když je Temná "
 "předpověď hrána.\n"
+"\n"
+"\n"
 "Objevují se na všech okrajích kromě východního, ale nejpravděpodobněji na "
 "západě. Intervaly mezi nimi jsou částečně pravidelné.\n"
 "\n"
@@ -761,7 +762,6 @@ msgstr ""
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
-#, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Takže toto je to prokleté údolí. Země, kterou zabereme."
 
@@ -1418,14 +1418,13 @@ msgstr "4p — Obležené hrady"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
-#, fuzzy
 msgid ""
 "36X36 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
-"Mapa 40x30 pro 4 hráče, kde mezi dvěma řekami proti sobě stojí čtyři mocné "
-"tvrze. Dobře hratelné pro dva proti dvěma či všichni proti všem. Na mapě je "
-"přibližně 45 vesnic."
+"Mapa 36x36 pro 4 hráče, kde proti sobě stojí čtyři mocné tvrze na soutoku "
+"dvou řek. Dobře hratelné pro dva proti dvěma či všichni proti všem. Na mapě "
+"je přibližně 45 vesnic."
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
@@ -1575,15 +1574,13 @@ msgstr "Obránce"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:426
-#, fuzzy
 msgid "Survive all enemy attacks"
-msgstr "Přežij všechny nepřátelské útoky."
+msgstr "Přežij všechny nepřátelské útoky"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:432
-#, fuzzy
 msgid "Death of your team leaders"
-msgstr "Vůdci tvých týmů zemřou."
+msgstr "Vůdci tvých týmů zemřou"
 
 # alt.: "Tip: hodně pomáhá znát místa, kde se nepřátelé objevují a jejich typy."
 #. [note]
@@ -1855,6 +1852,3 @@ msgid ""
 msgstr ""
 "Test rychlosti Wesnothu, použij --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "Survive for 32 turns."
-#~ msgstr "Přežij po 32 kol."
