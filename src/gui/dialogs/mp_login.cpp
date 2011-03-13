@@ -43,6 +43,10 @@ namespace gui2 {
  * password & & text_box & m &
  *         The password. $
  *
+ * remember_password & & toggle_button & o &
+ *         A toggle button to offer to remember the password in the
+ *         preferences.$
+ *
  * password_reminder & & button & o &
  *         Request a password reminder. $
  *
@@ -57,24 +61,29 @@ namespace gui2 {
 
 REGISTER_DIALOG(mp_login)
 
-tmp_login::tmp_login(const t_string& label,	const bool focus_password)
-	: label_(label)
-	, focus_password_(focus_password)
+tmp_login::tmp_login(const std::string& label, const bool focus_password)
 {
+	register_label2("login_label", false, label);
+	register_text2("user_name"
+			, true
+			, &preferences::login
+			, &preferences::set_login
+			, !focus_password);
+
+	register_text2("password"
+			, true
+			, &preferences::password
+			, NULL /* The password box returns '*' as value. */
+			, focus_password);
+
+	register_bool("remember_password"
+			, true
+			, &preferences::remember_password
+			, &preferences::set_remember_password);
 }
 
 void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 {
-	ttext_box* username =
-			find_widget<ttext_box>(&window, "user_name", false, true);
-	username->set_value(preferences::login());
-
-	tpassword_box* password =
-			find_widget<tpassword_box>(&window, "password", false, true);
-	password->set_value(preferences::password());
-
-	window.keyboard_capture(focus_password_ ? password : username);
-
 	if(tbutton* button = find_widget<tbutton>(
 			&window, "password_reminder", false, false)) {
 
@@ -86,32 +95,11 @@ void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 
 		button->set_retval(2);
 	}
-
-	// Needs to be a scroll_label since the text can get long and a normal
-	// label can't wrap (at the moment).
-	tcontrol* label =
-		dynamic_cast<tscroll_label*>(window.find("login_label", false));
-	if(label) label->set_label(label_);
-
-	if(ttoggle_button* button = find_widget<ttoggle_button>(
-			&window, "remember_password", false, false)) {
-
-		button->set_value(preferences::remember_password());
-	}
 }
 
 void tmp_login::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		if(ttoggle_button* button = find_widget<ttoggle_button>(
-				&window, "remember_password", false, false)) {
-
-			preferences::set_remember_password(button->get_value());
-		}
-
-		preferences::set_login(find_widget<ttext_box>(
-				&window, "user_name", false).get_value());
-
 		preferences::set_password(find_widget<tpassword_box>(
 				&window, "password", false).get_real_value());
 	}

@@ -17,14 +17,13 @@
 #define GUI_DIALOGS_MP_LOGIN_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "tstring.hpp"
 
 namespace gui2 {
 
 class tmp_login : public tdialog
 {
 public:
-	tmp_login(const t_string& label,
+	tmp_login(const std::string& label,
 		const bool focus_password);
 
 private:
@@ -37,11 +36,6 @@ private:
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
-
-	t_string label_;
-
-	/** Should the password box be focussed upon showing the dialog? */
-	bool focus_password_;
 };
 
 } // namespace gui2
