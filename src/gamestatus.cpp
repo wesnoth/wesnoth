@@ -140,19 +140,6 @@ config game_classification::to_config() const
 	return cfg;
 }
 
-#ifdef __UNUSED__
-std::string generate_game_uuid()
-{
-	struct timeval ts;
-	std::stringstream uuid;
-	gettimeofday(&ts, NULL);
-
-	uuid << preferences::login() << "@" << ts.tv_sec << "." << ts.tv_usec;
-
-	return uuid.str();
-}
-#endif
-
 game_state::game_state()  :
 		scoped_variables(),
 		wml_menu_items(),
