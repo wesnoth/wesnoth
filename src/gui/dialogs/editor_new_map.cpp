@@ -15,9 +15,8 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "gui/dialogs/editor_new_map.hpp"
-#include "gui/widgets/integer_selector.hpp"
+
 #include "gui/widgets/settings.hpp"
-#include "gui/dialogs/field.hpp"
 
 namespace gui2 {
 
@@ -43,9 +42,9 @@ namespace gui2 {
 REGISTER_DIALOG(editor_new_map)
 
 teditor_new_map::teditor_new_map(int& width, int& height)
-	: map_width_(register_integer("width", false, width))
-	, map_height_(register_integer("height", false, height))
 {
+	register_integer("width", false, width);
+	register_integer("height", false, height);
 }
 
 } // namespace gui2
