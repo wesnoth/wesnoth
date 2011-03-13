@@ -28,7 +28,7 @@ class tformula_debugger
 	: public tdialog
 {
 public:
-	tformula_debugger(game_logic::formula_debugger &fdb) :
+	explicit tformula_debugger(game_logic::formula_debugger &fdb) :
 		fdb_(fdb)
 	{}
 
@@ -43,12 +43,9 @@ private:
 	/***** ***** button callbacks ***** *****/
 	void callback_continue_button(twindow& window);
 
-
 	void callback_next_button(twindow& window);
 
-
 	void callback_step_button(twindow& window);
-
 
 	void callback_stepout_button(twindow& window);
 
@@ -56,6 +53,6 @@ private:
 
 };
 
-}
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_FORMULA_DEBUGGER_HPP_INCLUDED */

@@ -160,7 +160,6 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 	}
 }
 
-
 void tformula_debugger::callback_continue_button(twindow& window)
 {
 	fdb_.add_breakpoint_continue_to_end();
