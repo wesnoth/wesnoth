@@ -169,7 +169,7 @@ void editor_controller::init_brushes(const config& game_config)
 	foreach (const config &i, game_config.child_range("brush")) {
 		brushes_.push_back(brush(i));
 	}
-	if (brushes_.size() == 0) {
+	if (brushes_.empty()) {
 		ERR_ED << "No brushes defined!";
 		brushes_.push_back(brush());
 		brushes_[0].add_relative_location(0, 0);
