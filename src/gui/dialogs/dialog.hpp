@@ -134,6 +134,7 @@ public:
 	tdialog() :
 		retval_(0),
 		fields_(),
+		focus_(),
 		restore_(true)
 	{}
 
@@ -240,10 +241,40 @@ protected:
 	 * Creates a new text field.
 	 *
 	 * See @ref register_bool for more info.
+	 *
+	 * @deprecated Use @ref register_text2 instead.
 	 */
 	tfield_text* register_text(const std::string& id
 			, const bool optional
 			, std::string& linked_variable);
+
+	/**
+	 * Creates a new text field.
+	 *
+	 * The field created is owned by tdialog, the returned pointer can be used
+	 * in the child classes as access to a field.
+	 *
+	 * @note This function uses @p mandatory instead of @p optional as in other
+	 * functions, the other functions need to be converted to use @p mandatory
+	 * as well.
+	 *
+	 * @todo Convert more functions to this new style once done drop the 2 from
+	 * the function name.
+	 *
+	 * @param id                  Id of the widget, same value as in WML.
+	 * @param mandatory           Is the widget mandatory or optional.
+	 * @param linked_variable     The variable the widget is linked to. See
+	 *                            @ref tfield::tfield for more information.
+	 * @param capture_focus       Does this widget need to capture the focus
+	 *                            when created? @warning Only one widget may
+	 *                            capture the focus.
+	 *
+	 * @returns                   Pointer to the created widget.
+	 */
+	tfield_text* register_text2(const std::string& id
+			, const bool mandatory
+			, std::string& linked_variable
+			, const bool capture_focus = false);
 private:
 	/** Returns the window exit status, 0 means not shown. */
 	int retval_;
@@ -256,6 +287,11 @@ private:
 	 * needed the creator should store a copy of the pointer.
 	 */
 	std::vector<tfield_*> fields_;
+
+	/**
+	 * Contains the widget that should get the focus when the window is shown.
+	 */
+	std::string focus_;
 
 	/**
 	 * Restore the screen after showing?
@@ -307,7 +343,7 @@ private:
 	virtual void post_show(twindow& /*window*/) {}
 
 	/**
-	 * Initializes all fields in the dialog.
+	 * Initializes all fields in the dialog and set the keyboard focus.
 	 *
 	 * @param window              The window which has been shown.
 	 */

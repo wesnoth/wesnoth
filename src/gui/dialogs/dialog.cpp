@@ -163,6 +163,20 @@ tfield_text* tdialog::register_text(const std::string& id
 	return field;
 }
 
+tfield_text* tdialog::register_text2(const std::string& id
+			, const bool mandatory
+			, std::string& linked_variable
+			, const bool capture_focus)
+{
+	assert(!capture_focus || focus_.empty());
+
+	if(capture_focus) {
+		focus_ = id;
+	}
+
+	return tdialog::register_text(id, !mandatory, linked_variable);
+}
+
 twindow* tdialog::build_window(CVideo& video) const
 {
 	return build(video, window_id());
@@ -172,6 +186,12 @@ void tdialog::init_fields(twindow& window)
 {
 	foreach(tfield_* field, fields_) {
 		field->widget_init(window);
+	}
+
+	if(!focus_.empty()) {
+		if(twidget* widget = window.find(focus_, false)) {
+			window.keyboard_capture(widget);
+		}
 	}
 }
 
