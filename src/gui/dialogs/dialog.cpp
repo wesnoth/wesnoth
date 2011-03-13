@@ -177,6 +177,21 @@ tfield_text* tdialog::register_text2(const std::string& id
 	return tdialog::register_text(id, !mandatory, linked_variable);
 }
 
+tfield_label* tdialog::register_label2(const std::string& id
+		, const bool mandatory
+		, const std::string& text
+		, const bool use_markup)
+{
+	tfield_label* field =  new tfield_label(
+			  id
+			, mandatory
+			, text
+			, use_markup);
+
+	fields_.push_back(field);
+	return field;
+}
+
 twindow* tdialog::build_window(CVideo& video) const
 {
 	return build(video, window_id());

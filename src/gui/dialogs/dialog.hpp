@@ -275,6 +275,37 @@ protected:
 			, const bool mandatory
 			, std::string& linked_variable
 			, const bool capture_focus = false);
+
+	/**
+	 * Registers a new control as a label.
+	 *
+	 * The label is used for a control to set the 'label' since it calls the
+	 * @ref tcontrol::set_label it can also be used for the @ref timage since
+	 * there this sets the filename. (The @p use_markup makes no sense in an
+	 * image but that's a detail.)
+	 *
+	 * @note In general it's prefered a widget sets its markup flag in WML, but
+	 * some generice windows (like messages) may need different versions
+	 * depending on where used.
+	 *
+	 * @param id                  Id of the widget, same value as in WML.
+	 * @param mandatory           Is the widget mandatory or optional.
+	 * @param text                The text for the label.
+	 * @param use_markup          Whether or not use markup for the label.
+	 */
+	tfield_label* register_label2(const std::string& id
+			, const bool mandatory
+			, const std::string& text
+			, const bool use_markup = false);
+
+	/** Registers a new control as image. */
+	tfield_label* register_image2(const std::string& id
+			, const bool mandatory
+			, const std::string& filename)
+	{
+		return register_label2(id, mandatory, filename);
+	}
+
 private:
 	/** Returns the window exit status, 0 means not shown. */
 	int retval_;
