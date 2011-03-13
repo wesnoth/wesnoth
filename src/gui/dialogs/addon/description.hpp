@@ -47,17 +47,24 @@ namespace gui2 {
 class taddon_description : public tdialog
 {
 public:
-	taddon_description(const addon_info& ainfo)
-		: ainfo_(ainfo) {}
+
+	/**
+	 * Constructor.
+	 *
+	 * @param addon               The information about the addon to show.
+	 */
+	explicit taddon_description(const addon_info& addon);
+
+	/** The display function see @ref tdialog for more information. */
+	static void display(const addon_info& addon, CVideo& video)
+	{
+		taddon_description(addon).show(video);
+	}
+
+private:
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
-
-private:
-	addon_info ainfo_;
 };
 
 }

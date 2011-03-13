@@ -19,7 +19,6 @@
 
 #include "foreach.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 #include "language.hpp"
 
 namespace {
@@ -63,48 +62,48 @@ namespace gui2 {
  *         Label for displaying the add-on package size. $
  *
  * description & & control & m &
- *         Text label for displaying the add-on's description. $
+ *         Text label for displaying the add-on's description. The control can
+ *         be given a text, this text is shown when the addon has no
+ *         description. If the addon has a description this field shows the
+ *         description of the addon. $
  *
  * translations & & control & m &
- *         Label for displaying a list of translations provided by the add-on. $
+ *         Label for displaying a list of translations provided by the add-on.
+ *         Like the ''description'' it can also show a default text if no
+ *         translations are available. $
  *
  * @end{table}
  */
 
 REGISTER_DIALOG(addon_description)
 
-void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
+taddon_description::taddon_description(const addon_info& addon)
 {
-	find_widget<tcontrol>(&window, "image", false).set_label(ainfo_.icon);
-	find_widget<tcontrol>(&window, "title", false).set_label(ainfo_.name);
-	find_widget<tcontrol>(&window, "version", false).set_label(ainfo_.version);
-	find_widget<tcontrol>(&window, "author", false).set_label(ainfo_.author);
-	find_widget<tcontrol>(&window, "size", false).set_label(ainfo_.sizestr);
-
-	// Validate widget presence in either path
-	tcontrol& ctl_description = find_widget<tcontrol>(&window, "description", false);
-	if(ainfo_.description.empty() == false) {
-		ctl_description.set_label(ainfo_.description);
+	register_label2("image", true, addon.icon);
+	register_label2("title", true, addon.name);
+	register_label2("version", true, addon.version);
+	register_label2("author", true, addon.author);
+	register_label2("size", true, addon.sizestr);
+	if(!addon.description.empty()) {
+		register_label2("description", true, addon.description);
 	}
 
 	std::string languages;
 
-	foreach(const std::string& lc, ainfo_.translations) {
+	foreach(const std::string& lc, addon.translations) {
 		const std::string& langlabel = langcode_to_string(lc);
-		if(langlabel.empty() == false) {
-			if(languages.empty() == false) {
+		if(!langlabel.empty()) {
+			if(!languages.empty()) {
 				languages += ", ";
 			}
 			languages += langlabel;
 		}
 	}
 
-	// Validate widget presence in either path
-	tcontrol& ctl_languages = find_widget<tcontrol>(&window, "translations", false);
-	if(languages.empty() == false) {
-		ctl_languages.set_label(languages);
+	if(!languages.empty()) {
+		register_label2("translations", true, languages);
 	}
 }
 
-}
+} // namespace  gui2
 

@@ -348,8 +348,9 @@ namespace {
 			size_t const uchoice = static_cast<size_t>(menu_selection);
 
 			if(uchoice < infov_.size()) {
-				gui2::taddon_description ddlg(infov_[uchoice]);
-				ddlg.show(disp_.video());
+				gui2::taddon_description::display(
+						  infov_[uchoice]
+						, disp_.video());
 			}
 
 			return gui::CONTINUE_DIALOG;
