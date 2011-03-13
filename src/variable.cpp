@@ -585,7 +585,7 @@ variable_info::variable_info(const std::string& varname,
 	assert(repos != NULL);
 	activate_scope_variable(varname);
 
-	vars = &repos->variables;
+	vars = &repos->variables_;
 	key = varname;
 	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
 	int dot_index = key.find('.');
@@ -634,17 +634,17 @@ variable_info::variable_info(const std::string& varname,
 			case variable_info::TYPE_CONTAINER:
 				WRN_NG << "variable_info: using reserved WML variable as wrong type, "
 					<< varname << std::endl;
-				is_valid = force_valid || repos->temporaries.child(varname);
+				is_valid = force_valid || repos->temporaries_.child(varname);
 				break;
 			case variable_info::TYPE_SCALAR:
 			default:
 				// Store the length of the array as a temporary variable
-				repos->temporaries[varname] = int(size);
+				repos->temporaries_[varname] = int(size);
 				is_valid = true;
 				break;
 			}
 			key = varname;
-			vars = &repos->temporaries;
+			vars = &repos->temporaries_;
 			return;
 		}
 

@@ -90,7 +90,7 @@ public:
 	std::vector<scoped_wml_variable*> scoped_variables;
 	std::map<std::string, wml_menu_item*> wml_menu_items;
 
-	const config& get_variables() const { return variables; }
+	const config& get_variables() const { return variables_; }
 	void set_variables(const config& vars);
 
 	void set_menu_items(const config::const_child_itors &menu_items);
@@ -172,10 +172,10 @@ public:
 	map_location last_selected;
 
 private:
-	rand_rng::simple_rng rng_ ;
-	config variables;
-	mutable config temporaries; // lengths of arrays, etc.
-	const rand_rng::set_random_generator generator_setter; /**< Make sure that rng is initialized first */
+	rand_rng::simple_rng rng_;
+	config variables_;
+	mutable config temporaries_; // lengths of arrays, etc.
+	const rand_rng::set_random_generator generator_setter_; /**< Make sure that rng is initialized first */
 	friend struct variable_info;
 	game_classification classification_;
 	mp_game_settings mp_settings_;

@@ -161,9 +161,9 @@ game_state::game_state()  :
 		snapshot(),
 		last_selected(map_location::null_location),
 		rng_(),
-		variables(),
-		temporaries(),
-		generator_setter(&recorder),
+		variables_(),
+		temporaries_(),
+		generator_setter_(&recorder),
 		classification_(),
 		mp_settings_(),
 		phase_(INITIAL),
@@ -260,9 +260,9 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		snapshot(),
 		last_selected(map_location::null_location),
 		rng_(cfg),
-		variables(),
-		temporaries(),
-		generator_setter(&recorder),
+		variables_(),
+		temporaries_(),
+		generator_setter_(&recorder),
 		classification_(cfg),
 		mp_settings_(cfg),
 		phase_(INITIAL),
@@ -360,7 +360,7 @@ void game_state::write_snapshot(config& cfg) const
 	cfg["end_text"] = classification_.end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(classification_.end_text_duration);
 
-	cfg.add_child("variables", variables);
+	cfg.add_child("variables", variables_);
 
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=wml_menu_items.begin();
 	    j!=wml_menu_items.end(); ++j) {
@@ -482,7 +482,7 @@ config::attribute_value game_state::get_variable_const(const std::string &key) c
 	variable_info to_get(key, false, variable_info::TYPE_SCALAR);
 	if (!to_get.is_valid)
 	{
-		config::attribute_value &to_return = temporaries[key];
+		config::attribute_value &to_return = temporaries_[key];
 		if (key.size() > 7 && key.substr(key.size() - 7) == ".length") {
 			// length is a special attribute, so guarantee its correctness
 			to_return = 0;
@@ -551,9 +551,9 @@ game_state::game_state(const game_state& state) :
 	snapshot(),
 	last_selected(),
 	rng_(),
-	variables(),
-	temporaries(),
-	generator_setter(&recorder),
+	variables_(),
+	temporaries_(),
+	generator_setter_(&recorder),
 	classification_(),
 	mp_settings_(),
 	phase_(INITIAL),
@@ -585,7 +585,7 @@ game_state& game_state::operator=(const game_state& state)
 	starting_pos = state.starting_pos;
 	snapshot = state.snapshot;
 	last_selected = state.last_selected;
-	variables = state.variables;
+	variables_ = state.variables_;
 
 	return *this;
 }
@@ -595,7 +595,7 @@ game_state::~game_state() {
 }
 
 void game_state::set_variables(const config& vars) {
-	variables = vars;
+	variables_ = vars;
 }
 
 
@@ -999,7 +999,7 @@ void game_state::write_config(config_writer& out, bool write_variables) const
 	out.write_key_val("random_seed", lexical_cast<std::string>(rng_.get_random_seed()));
 	out.write_key_val("random_calls", lexical_cast<std::string>(rng_.get_random_calls()));
 	if (write_variables) {
-		out.write_child("variables", variables);
+		out.write_child("variables", variables_);
 	}
 
 	for(std::map<std::string, wml_menu_item *>::const_iterator j = wml_menu_items.begin();
