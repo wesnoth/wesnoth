@@ -25,10 +25,13 @@
 #define GUI_DIALOGS_FIELD_HPP_INCLUDED
 
 #include "gui/dialogs/field-fwd.hpp"
+#include "gui/widgets/control.hpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
+
+#include <boost/static_assert.hpp>
 
 namespace gui2 {
 
@@ -241,6 +244,7 @@ public:
 		callback_load_value_(callback_load_value),
 		callback_save_value_(callback_save_value)
 	{
+		BOOST_STATIC_ASSERT((!boost::is_same<tcontrol, W>::value));
 	}
 
 	/**
@@ -266,6 +270,36 @@ public:
 		, callback_load_value_(NULL)
 		, callback_save_value_(NULL)
 	{
+		BOOST_STATIC_ASSERT((!boost::is_same<tcontrol, W>::value));
+	}
+
+	/**
+	 * Constructor.
+	 *
+	 * This version is used for read only variables.
+	 *
+	 * @note The difference between this constructor and the one above is the
+	 * sending of the third parameter as const ref instead of a non-const ref.
+	 * So it feels a bit tricky. Since this constructor is only used for a
+	 * the @ref tcontrol class and the other constructors not the issue is
+	 * solved by using static asserts to test whether the proper constructor
+	 * is used.
+	 *
+	 * @param optional            Is the widget optional?
+	 * @param id                  The id of the widget to connect to the window.
+	 *                            A widget can only be connected once.
+	 * @param value               The value of the widget.
+	 */
+	tfield(const std::string& id
+			, const bool optional
+			, const T& value)
+		: tfield_(id, optional)
+		, value_(value)
+		, link_(value_)
+		, callback_load_value_(NULL)
+		, callback_save_value_(NULL)
+	{
+		BOOST_STATIC_ASSERT((boost::is_same<tcontrol, W>::value));
 	}
 
 	/** Inherited from tfield_. */
@@ -420,28 +454,61 @@ private:
 	 * @param window              The window containing the widget.
 	 * @param must_be_active      If true only active widgets will store their value.
 	 */
-	void save(twindow& window, const bool must_be_active)
-	{
-		const W* widget =
-			dynamic_cast<const W*>(window.find(id(), must_be_active));
-
-		if(widget) {
-			value_ = widget->get_value();
-		}
-	}
+	void save(twindow& window, const bool must_be_active);
 
 	/**
 	 * Stores the internal value_ in the widget.
+	 *
+	 * @param window              The window containing the widget.
 	 */
-	void restore(twindow& window)
-	{
-		W* widget = dynamic_cast<W*>(window.find(id(), false));
+	void restore(twindow& window);
 
-		if(widget) {
-			widget->set_value(value_);
-		}
-	}
 };
+
+template<class T, class W, class CT>
+void tfield<T, W, CT>::save(twindow& window, const bool must_be_active)
+{
+	const W* widget =
+			find_widget<const W>(&window, id(), must_be_active, false);
+
+	if(widget) {
+		value_ = widget->get_value();
+	}
+}
+
+template<>
+inline void tfield<std::string, tcontrol, const std::string&>::save(
+		  twindow& window
+		, const bool must_be_active)
+{
+	const tcontrol* control =
+			find_widget<const tcontrol>(&window, id(), must_be_active, false);
+
+	if(control) {
+		value_ = control->label();
+	}
+}
+
+template<class T, class W, class CT>
+void tfield<T, W, CT>::restore(twindow& window)
+{
+	W* widget = find_widget<W>(&window, id(), false, false);
+
+	if(widget) {
+		widget->set_value(value_);
+	}
+}
+
+template<>
+inline void tfield<std::string, tcontrol, const std::string&>::restore(
+		  twindow& window)
+{
+	tcontrol* control = find_widget<tcontrol>(&window, id(), false, false);
+
+	if(control) {
+		control->set_label(value_);
+	}
+}
 
 /** Specialized field class for boolean. */
 class tfield_bool : public tfield<bool, tselectable_>
@@ -517,6 +584,35 @@ private:
 		if(widget) {
 			widget->save_to_history();
 		}
+	}
+};
+
+/** Specialized field class for a control, used for labels and images.. */
+class tfield_label : public tfield<std::string, tcontrol, const std::string&>
+{
+public:
+	tfield_label(const std::string& id
+			, const bool mandatory
+			, const std::string& text
+			, const bool use_markup)
+		: tfield<std::string, tcontrol, const std::string&>(
+				id
+				, !mandatory
+				, text)
+		, use_markup_(use_markup)
+
+		{
+		}
+
+private:
+
+	/** Whether or not the label uses markup. */
+	bool use_markup_;
+
+	/** Overridden from tfield_. */
+	void init_specialized(twindow& window)
+	{
+		find_widget<tcontrol>(&window, id(), false).set_use_markup(use_markup_);
 	}
 };
 

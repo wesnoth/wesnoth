@@ -28,6 +28,7 @@ class twindow;
 
 class tfield_;
 class tfield_bool;
+class tfield_label;
 class tfield_text;
 
 // NOTE the const must be in the template else things fail :/ bug in gcc?
