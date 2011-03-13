@@ -26,6 +26,7 @@
 #include "game_events.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
+#include "gui/dialogs/game_delete.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
 #include "language.hpp"
@@ -284,17 +285,7 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 
 		// See if we should ask the user for deletion confirmation
 		if(preferences::ask_delete_saves()) {
-			gui::dialog dmenu(disp_,"",
-					       _("Do you really want to delete this game?"),
-					       gui::YES_NO);
-			dmenu.add_option(_("Don’t ask me again!"), false);
-			const int res = dmenu.show();
-			// See if the user doesn't want to be asked this again
-			if(dmenu.option_checked()) {
-				preferences::set_ask_delete_saves(false);
-			}
-
-			if(res != 0) {
+			if(!gui2::tgame_delete::execute(disp_.video())) {
 				return gui::CONTINUE_DIALOG;
 			}
 		}
