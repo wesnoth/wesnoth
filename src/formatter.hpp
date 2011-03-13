@@ -48,10 +48,6 @@ public:
 		return stream_.str();
 	}
 
-	const char* c_str() {
-		return str().c_str();
-	}
-
 private:
 	std::ostringstream stream_;
 };
