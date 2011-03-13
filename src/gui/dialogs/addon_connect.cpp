@@ -47,29 +47,31 @@ namespace gui2 {
 
 REGISTER_DIALOG(addon_connect)
 
+taddon_connect::taddon_connect(std::string& host_name
+		, const bool allow_updates
+		, const bool allow_remove)
+	: allow_updates_(allow_updates)
+	, allow_remove_(allow_remove)
+{
+	register_text2("host_name", false, host_name, true);
+}
+
 void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)
 {
-	ttext_box& host_widget =
-			find_widget<ttext_box>(&window, "host_name", false);
-	tbutton& update_cmd =
-			find_widget<tbutton>(&window, "update_addons", false);
-	update_cmd.set_active(allow_updates_);
-	tbutton& remove_cmd =
-			find_widget<tbutton>(&window, "remove_addons", false);
-	remove_cmd.set_active(allow_remove_);
+	find_widget<tbutton>(&window, "update_addons", false)
+			.set_active(allow_updates_);
 
-	host_widget.set_value(host_name_);
-	window.keyboard_capture(&host_widget);
+	find_widget<tbutton>(&window, "remove_addons", false)
+			.set_active(allow_remove_);
 }
 
 void taddon_connect::post_show(twindow& window)
 {
-	if(get_retval() == twindow::OK) {
+	if(get_retval() == twindow::OK || get_retval() == 3) {
 		ttext_box& host_widget =
 				find_widget<ttext_box>(&window, "host_name", false);
 
 		host_widget.save_to_history();
-		host_name_= host_widget.get_value();
 	}
 }
 

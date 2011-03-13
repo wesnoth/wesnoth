@@ -426,6 +426,16 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 namespace {
 
 template<>
+struct twrapper<gui2::taddon_connect>
+{
+	static gui2::taddon_connect* create()
+	{
+		static std::string host_name = "host_name";
+		return new gui2::taddon_connect(host_name, true, true);
+	}
+};
+
+template<>
 struct twrapper<gui2::taddon_list>
 {
 	static gui2::taddon_list* create()

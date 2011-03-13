@@ -1427,19 +1427,14 @@ void manage_addons(game_display& disp)
 {
 	int res;
 	bool do_refresh = false;
-	std::string remote_host;
-	const std::string default_host = preferences::campaign_server();
+	std::string host_name = preferences::campaign_server();
 	const bool have_addons = !installed_addons().empty();
 
-	gui2::taddon_connect addon_dlg;
+	gui2::taddon_connect addon_dlg(host_name, have_addons, have_addons);
 
-	addon_dlg.set_host_name(default_host);
-	addon_dlg.set_allow_remove(have_addons);
-	addon_dlg.set_allow_updates(have_addons);
 	addon_dlg.show(disp.video());
 
 	res = addon_dlg.get_retval();
-	remote_host = addon_dlg.host_name();
 
 	if(res == gui2::twindow::OK) {
 		res = addon_download;
@@ -1448,7 +1443,7 @@ void manage_addons(game_display& disp)
 	switch(res) {
 		case addon_update:
 		case addon_download:
-			download_addons(disp, remote_host, res==addon_update, &do_refresh);
+			download_addons(disp, host_name, res==addon_update, &do_refresh);
 			break;
 		case addon_uninstall:
 			uninstall_local_addons(disp, &do_refresh);

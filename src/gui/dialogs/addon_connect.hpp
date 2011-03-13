@@ -25,38 +25,26 @@ class taddon_connect
 	: public tdialog
 {
 public:
-	taddon_connect()
-		: host_name_()
-		, allow_updates_()
-		, allow_remove_()
-	{
-	}
-
-	bool allow_updates() const { return allow_updates_; }
-
-	void set_allow_updates(bool allow_updates)
-	{
-		allow_updates_ = allow_updates;
-	}
-
-	bool allow_remove() const { return allow_remove_; }
-
-	void set_allow_remove(bool allow_remove)
-	{
-		allow_remove_ = allow_remove;
-	}
-
-	const std::string& host_name() const { return host_name_; }
-
-	void set_host_name(const std::string& host_name)
-	{
-		host_name_ = host_name;
-	}
+	/**
+	 * Constructor.
+	 *
+	 * @param host_name [in]      The initial value for the host_name.
+	 * @param host_name [out]     The final value of the host_name if the
+	 *                            dialog returns @ref twindow::OK or 3
+	 *                            undefined otherwise.
+	 * @param allow_updates       Sets @ref allow_updates_.
+	 * @param allow_remove        Sets @ref allow_remove_.
+	 */
+	taddon_connect(std::string& host_name
+			, const bool allow_updates
+			, const bool allow_remove);
 
 private:
-	std::string host_name_;
 
+	/** Enable the update addon button? */
 	bool allow_updates_;
+
+	/** Enable the addon remove button? */
 	bool allow_remove_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
