@@ -24,7 +24,15 @@ namespace gui2 {
 class tmp_cmd_wrapper : public tdialog
 {
 public:
+
+	/**
+	 * Constructor.
+	 *
+	 * The text which shows the selected user.
+	 */
 	tmp_cmd_wrapper(const t_string& user);
+
+	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	const std::string& message() const { return message_; }
 	const std::string& reason() const { return reason_; }
@@ -32,20 +40,20 @@ public:
 
 private:
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** The message to send to another user. */
+	std::string message_;
+
+	/** The reason for an action; kick, ban. */
+	std::string reason_;
+
+	/** The duration of a ban. */
+	std::string time_;
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
-
-	std::string message_;
-	std::string reason_;
-	std::string time_;
-
-	t_string user_;
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const;
 };
 
 } // namespace gui2

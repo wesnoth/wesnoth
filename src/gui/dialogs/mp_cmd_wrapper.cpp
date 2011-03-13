@@ -18,9 +18,8 @@
 #include "gui/dialogs/mp_cmd_wrapper.hpp"
 
 #include "gui/widgets/button.hpp"
-#include "gui/dialogs/field.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
 
 #include "game_preferences.hpp"
 
@@ -45,6 +44,9 @@ namespace gui2 {
  *
  * time & & text_box & o &
  *         The time the ban lasts. $
+ *
+ * user_label & & label & o &
+ *         The label to show which user has been selected. $
  *
  * send_message & & button & m &
  *         Execute /msg. $
@@ -72,13 +74,24 @@ namespace gui2 {
 
 REGISTER_DIALOG(mp_cmd_wrapper)
 
-tmp_cmd_wrapper::tmp_cmd_wrapper(const t_string& user) :
-		message_(), reason_(), time_(), user_(user) { }
+tmp_cmd_wrapper::tmp_cmd_wrapper(const t_string& user)
+	: message_()
+	, reason_()
+	, time_()
+{
+	register_text2("message", false, message_, true);
+	register_text2("reason", false, reason_);
+	register_text2("time", false, time_);
+	register_label2("user_label", false, user);
+
+	set_always_save_fields(true);
+}
 
 void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 {
+#if defined(_WIN32) || defined(__APPLE__)
 	ttext_box* message =
-		dynamic_cast<ttext_box*>(window.find("message", false));
+			find_widget<ttext_box>(&window, "message", false, false);
 	if(message) {
 		/**
 		 * @todo For some reason the text wrapping fails on Windows and Mac,
@@ -86,66 +99,52 @@ void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 		 * to the main menu. So avoid that problem by imposing a maximum
 		 * length (the number of letters W that fit).
 		 */
-#if defined(_WIN32) || defined(__APPLE__)
 		message->set_maximum_length(18);
+	}
 #endif
-		window.keyboard_capture(message);
+
+	const bool authenticated = preferences::is_authenticated();
+
+	if(tbutton* b = find_widget<tbutton>(&window, "status", false, false)) {
+		b->set_active(authenticated);
 	}
 
-	message = dynamic_cast<ttext_box*>(window.find("reason", false));
-	if(message) message->set_active(preferences::is_authenticated());
+	if(tbutton* b = find_widget<tbutton>(&window, "kick", false, false)) {
+		b->set_active(authenticated);
+	}
 
-	message = dynamic_cast<ttext_box*>(window.find("time", false));
-	if(message) message->set_active(preferences::is_authenticated());
+	if(tbutton* b = find_widget<tbutton>(&window, "ban", false, false)) {
+		b->set_active(authenticated);
+	}
 
-	tlabel* label =
-		dynamic_cast<tlabel*>(window.find("user_label", false));
-	if(label) label->set_label(user_);
+	/**
+	 * @todo Not really happy with the retval code in general. Need to give it
+	 * some more thought. Therefore seperated the set_retval from the
+	 * set_active code.
+	 */
+	if(tbutton* b = find_widget<tbutton>(&window, "add_friend", false, false)) {
+		b->set_retval(1);
+	}
 
+	if(tbutton* b = find_widget<tbutton>(&window, "add_ignore", false, false)) {
+		b->set_retval(2);
+	}
 
-	tbutton* b = dynamic_cast<tbutton*>(window.find("add_friend", false));
-	if(b) b->set_retval(1);
+	if(tbutton* b = find_widget<tbutton>(&window, "remove", false, false)) {
+		b->set_retval(3);
+	}
 
-	b = dynamic_cast<tbutton*>(window.find("add_ignore", false));
-	if(b) b->set_retval(2);
-
-	b = dynamic_cast<tbutton*>(window.find("remove", false));
-	if(b) b->set_retval(3);
-
-	b = dynamic_cast<tbutton*>(window.find("status", false));
-	if(b) {
+	if(tbutton* b = find_widget<tbutton>(&window, "status", false, false)) {
 		b->set_retval(4);
-		b->set_active(preferences::is_authenticated());
 	}
 
-	b = dynamic_cast<tbutton*>(window.find("kick", false));
-	if(b) {
+	if(tbutton* b = find_widget<tbutton>(&window, "kick", false, false)) {
 		b->set_retval(5);
-		b->set_active(preferences::is_authenticated());
 	}
 
-	b = dynamic_cast<tbutton*>(window.find("ban", false));
-	if(b) {
+	if(tbutton* b = find_widget<tbutton>(&window, "ban", false, false)) {
 		b->set_retval(6);
-		b->set_active(preferences::is_authenticated());
 	}
-
-}
-
-void tmp_cmd_wrapper::post_show(twindow& window)
-{
-	ttext_box* message =
-		dynamic_cast<ttext_box*>(window.find("message", false));
-	message_ = message ? message_ = message->get_value() : "";
-
-	ttext_box* reason =
-		dynamic_cast<ttext_box*>(window.find("reason", false));
-	reason_ = reason ? reason_ = reason->get_value() : "";
-
-	ttext_box* time =
-		dynamic_cast<ttext_box*>(window.find("time", false));
-	time_ = time ? time_ = time->get_value() : "";
-
 }
 
 } // namespace gui2
