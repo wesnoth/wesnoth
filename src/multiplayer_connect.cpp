@@ -891,7 +891,7 @@ void connect::side::resolve_random()
 			}
 		}
 
-		if (nonrandom_sides.size() == 0) {
+		if (nonrandom_sides.empty()) {
 			throw config::error(_("Only random sides in the current era."));
 		}
 
