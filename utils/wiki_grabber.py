@@ -499,6 +499,10 @@ if __name__ == "__main__":
         data = macro_regex.sub(lambda match: instanciate_macro(match), data)
         return data
 
+    def create_macro_old(macro):
+        print "Found old style macro '%s'" % macro.group(1)
+        create_macro(macro)
+
     def create_macro(macro):
         """Wrapper for creating macros."""
 
@@ -525,6 +529,8 @@ if __name__ == "__main__":
                 current_block = i[0]
                 section = reindent(i[1])
                 macro_regex = re.compile("^@start_macro *= *(.*?)\n(.*?)\n@end_macro.*?$", re.M | re.S)
+                macro_regex.sub(lambda match: create_macro_old(match), section)
+                macro_regex = re.compile("^@begin{macro}{(.*?)}\n(.*?)\n@end{macro}.*?$", re.M | re.S)
                 macro_regex.sub(lambda match: create_macro(match), section)
 
     def process_directory_macros(dir):

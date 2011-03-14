@@ -53,11 +53,11 @@ twidget* tbuilder_button::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = button_description
+ * @begin{macro}{button_description}
  *
- *        A button is a control that can be pushed to start an action or
- *        close a dialog.
- * @end_macro
+ *        A button is a control that can be pushed to start an action or close
+ *        a dialog.
+ * @end{macro}
  */
 
 /*WIKI

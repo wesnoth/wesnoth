@@ -48,12 +48,12 @@ twidget* tbuilder_horizontal_scrollbar::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = horizontal_scrollbar_description
+ * @begin{macro}{horizontal_scrollbar_description}
  *
  *        A horizontal scrollbar is a widget that shows a horizontal scrollbar.
  *        This widget is most of the time used in a container to control the
  *        scrolling of its contents.
- * @end_macro
+ * @end{macro}
  */
 
 /*WIKI

@@ -59,11 +59,11 @@ twidget* tbuilder_spacer::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = spacer_description
+ * @begin{macro}{spacer_description}
  *
  *        A spacer is a dummy item to either fill in a widget since no empty
  *        items are allowed or to reserve a fixed space.
- * @end_macro
+ * @end{macro}
  */
 
 

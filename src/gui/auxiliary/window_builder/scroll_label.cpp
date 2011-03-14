@@ -65,12 +65,12 @@ twidget* tbuilder_scroll_label::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = scroll_label_description
+ * @begin{macro}{scroll_label_description}
  *
  *        A scroll label is a label that wraps its text and also has a
  *        vertical scrollbar. This way a text can't be too long to be shown
  *        for this widget.
- * @end_macro
+ * @end{macro}
  */
 
 /*WIKI

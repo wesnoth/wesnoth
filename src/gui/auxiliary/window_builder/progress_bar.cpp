@@ -48,10 +48,9 @@ twidget* tbuilder_progress_bar::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = progress_bar_description
- *
- *        A progress bar shows the progress of a certain object.
- * @end_macro
+ * @begin{macro}{progress_bar_description}
+ * A progress bar shows the progress of a certain object.
+ * @end{macro}
  */
 
 /*WIKI

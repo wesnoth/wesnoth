@@ -64,12 +64,12 @@ twidget* tbuilder_drawing::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = drawing_description
+ * @begin{macro}{drawing_description}
  *
  *        A drawing is widget with a fixed size and gives access to the
  *        canvas of the widget in the window instance. This allows special
  *        display only widgets.
- * @end_macro
+ * @end{macro}
  */
 
 

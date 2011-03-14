@@ -130,12 +130,12 @@ twidget* tbuilder_listbox::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = listbox_description
+ * @begin{macro}{listbox_description}
  *
  *        A listbox is a control that holds several items of the same type.
  *        Normally the items in a listbox are ordered in rows, this version
  *        might allow more options for ordering the items in the future.
- * @end_macro
+ * @end{macro}
  */
 
 /*WIKI

@@ -48,12 +48,12 @@ twidget* tbuilder_repeating_button::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = repeating_button_description
+ * @begin{macro}{repeating_button_description}
  *
  *        A repeating_button is a control that can be pushed down and repeat a
  *        certain action. Once the button is down every x milliseconds it is
  *        down a new down event is triggered.
- * @end_macro
+ * @end{macro}
  */
 
 /*WIKI

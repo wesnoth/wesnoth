@@ -84,11 +84,9 @@ twidget* tbuilder_slider::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = slider_description
- *
- *        A slider is a control that can select a value by moving a grip on a
- *        groove.
- * @end_macro
+ * @begin{macro}{slider_description}
+ * A slider is a control that can select a value by moving a grip on a groove.
+ * @end{macro}
  */
 
 /*WIKI

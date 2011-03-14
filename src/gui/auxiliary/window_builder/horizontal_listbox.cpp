@@ -116,12 +116,12 @@ twidget* tbuilder_horizontal_listbox::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = horizontal_listbox_description
+ * @begin{macro}{horizontal_listbox_description}
  *
  *        A horizontal listbox is a control that holds several items of the
  *        same type.  Normally the items in a listbox are ordered in rows,
  *        this version orders them in columns instead.
- * @end_macro
+ * @end{macro}
  */
 
 /*WIKI

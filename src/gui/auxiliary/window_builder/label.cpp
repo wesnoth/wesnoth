@@ -53,11 +53,11 @@ twidget* tbuilder_label::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = label_description
+ * @begin{macro}{label_description}
  *
  *        A label displays a text, the text can be wrapped but no scrollbars
  *        are provided.
- * @end_macro
+ * @end{macro}
  */
 
 /*WIKI

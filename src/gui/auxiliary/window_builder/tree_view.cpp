@@ -97,14 +97,14 @@ tbuilder_tree_view::tnode::tnode(const config& cfg)
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = tree_view_description
+ * @begin{macro}{tree_view_description}
  *
  *        A tree view is a control that holds several items of the same or
  *        different types. The items shown are called tree view nodes and when
  *        a node has children, these can be shown or hidden. Nodes that contain
  *        children need to provide a clickable button in order to fold or
  *        unfold the children.
- * @end_macro
+ * @end{macro}
  */
 
 /*WIKI

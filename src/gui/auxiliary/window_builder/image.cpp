@@ -48,10 +48,9 @@ twidget* tbuilder_image::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = image_description
- *
- *        An image shows a static image.
- * @end_macro
+ * @begin{macro}{image_description}
+ * An image shows a static image.
+ * @end{macro}
  */
 
 /*WIKI

@@ -48,12 +48,12 @@ twidget* tbuilder_minimap::build() const
 } // namespace gui2
 
 /*WIKI_MACRO
- * @start_macro = minimap_description
+ * @begin{macro}{minimap_description}
  *
  *        A minimap to show the gamemap, this only shows the map and has no
  *        interaction options. This version is used for map previews, there
  *        will be a another version which allows interaction.
- * @end_macro
+ * @end{macro}
  */
 
 /*WIKI
