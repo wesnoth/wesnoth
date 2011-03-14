@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-01 11:25+0100\n"
-"PO-Revision-Date: 2011-03-03 14:08-0800\n"
+"PO-Revision-Date: 2011-03-13 16:16-0800\n"
 "Last-Translator: Carson Callis <tree_rings@rocketmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ga\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : "
+"4;\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
@@ -683,7 +684,7 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:39
 msgid "Lots of gold"
-msgstr ""
+msgstr "Móran óir"
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:46
@@ -693,7 +694,7 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:52
 msgid "Peace throughout Wesnoth."
-msgstr ""
+msgstr "Síocháin agus ordú."
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:59
@@ -718,7 +719,7 @@ msgstr ""
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:201
 msgid "Potion of Healing"
-msgstr ""
+msgstr "Deoch Shláinte"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:204
@@ -765,7 +766,7 @@ msgstr ""
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:297
 msgid "Potion of Strength"
-msgstr ""
+msgstr "Deoch Neart"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:300
@@ -775,7 +776,7 @@ msgstr ""
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:340
 msgid "Potion of Decay"
-msgstr ""
+msgstr "Deoch Leighis"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:343
@@ -805,7 +806,7 @@ msgstr ""
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:453
 msgid "Staff of Swiftness"
-msgstr ""
+msgstr "Bachall Luas"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:456
@@ -1633,7 +1634,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
 msgid "Turns run out"
-msgstr ""
+msgstr "Críochnú seala"
 
 #: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:101
 msgid "Early finish bonus."
@@ -1675,11 +1676,11 @@ msgstr ""
 
 #: data/core/macros/objective-utils.cfg:48
 msgid "Alternative objective:"
-msgstr ""
+msgstr "Aidhm Eile:"
 
 #: data/core/macros/objective-utils.cfg:52
 msgid "Bonus objective:"
-msgstr ""
+msgstr "Aidhm bónas:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -1702,7 +1703,7 @@ msgstr "Liathdhearga"
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Dúdhearg "
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
@@ -1809,7 +1810,7 @@ msgstr ""
 #. [language]
 #: data/english.cfg:23
 msgid "$name|’s Bridge,$name|’s Crossing"
-msgstr ""
+msgstr "Droichead $name|,Ath $name "
 
 #. [language]
 #: data/english.cfg:24
@@ -1819,12 +1820,12 @@ msgstr ""
 #. [language]
 #: data/english.cfg:25
 msgid "$name River,River $name"
-msgstr ""
+msgstr "Abhainn $name,Abhainn $name"
 
 #. [language]
 #: data/english.cfg:26
 msgid "$name Forest,$name|’s Forest"
-msgstr ""
+msgstr "Foraois $name,Foraois $name"
 
 #. [language]
 #: data/english.cfg:27
@@ -2493,7 +2494,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:217 data/hardwired/tips.cfg:229
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
+msgstr "<i>― Tiarna Hámal na Knalga</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:220
@@ -2718,7 +2719,7 @@ msgstr ""
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:80
 msgid "Stop"
-msgstr ""
+msgstr "Stad"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:81
@@ -2941,7 +2942,7 @@ msgstr "Ainm"
 
 #: src/addon/manager.cpp:749 src/addon/manager.cpp:1147
 msgid "Version"
-msgstr ""
+msgstr "Insint"
 
 #: src/addon/manager.cpp:750 src/addon/manager.cpp:936
 #: src/addon/manager.cpp:1148
@@ -2951,7 +2952,7 @@ msgstr "Údar"
 #: src/addon/manager.cpp:750 src/addon/manager.cpp:936
 #: src/addon/manager.cpp:1148
 msgid "Size"
-msgstr ""
+msgstr "Méid"
 
 #: src/addon/manager.cpp:750 src/addon/manager.cpp:1148
 #: src/menu_events.cpp:204 src/menu_events.cpp:845 src/menu_events.cpp:1496
@@ -3019,11 +3020,11 @@ msgstr ""
 
 #: src/addon/manager.cpp:935
 msgid "New version"
-msgstr ""
+msgstr "Insint nua"
 
 #: src/addon/manager.cpp:935
 msgid "Old version"
-msgstr ""
+msgstr "Insint sean"
 
 #: src/addon/manager.cpp:987
 msgid "Update add-ons"
@@ -3242,7 +3243,7 @@ msgstr ""
 
 #: src/dialogs.cpp:458 src/savegame.cpp:135
 msgid "%a %b %d %H:%M %Y"
-msgstr ""
+msgstr "%H:%M %a %d %b %Y"
 
 #: src/dialogs.cpp:473
 msgid "#(Invalid)"
@@ -3266,7 +3267,7 @@ msgstr ""
 
 #: src/dialogs.cpp:510 src/savegame.cpp:1036
 msgid "Turn"
-msgstr ""
+msgstr "Seal"
 
 #: src/dialogs.cpp:512
 msgid "Scenario Start"
@@ -3278,24 +3279,24 @@ msgstr "Deacracht"
 
 #: src/dialogs.cpp:517
 msgid "Version: "
-msgstr ""
+msgstr "Insint:"
 
 #: src/dialogs.cpp:541 src/dialogs.cpp:557 src/savegame.cpp:164
 #: src/savegame.cpp:180
 msgid "%b %d %y"
-msgstr ""
+msgstr "%d %b %y"
 
 #: src/dialogs.cpp:547 src/savegame.cpp:170
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/dialogs.cpp:550 src/savegame.cpp:173
 msgid "%A, %H:%M"
-msgstr ""
+msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:553 src/savegame.cpp:176
 msgid "%b %d"
-msgstr ""
+msgstr "%d %b"
 
 #: src/dialogs.cpp:581
 msgid "No Saved Games"
@@ -3334,11 +3335,11 @@ msgstr ""
 
 #: src/dialogs.cpp:705
 msgid "Profile"
-msgstr ""
+msgstr "Próifíl"
 
 #: src/dialogs.cpp:818
 msgid "level"
-msgstr ""
+msgstr "leibhéal"
 
 #: src/dialogs.cpp:831
 msgid "HP: "
@@ -3415,7 +3416,7 @@ msgstr[2] ""
 
 #: src/game.cpp:1557
 msgid "ERROR DETAILS:"
-msgstr ""
+msgstr "MIONPHÁIRTEANNA ERRÁID:"
 
 #: src/game.cpp:1589
 msgid "Error loading game configuration files: '"
@@ -3431,7 +3432,7 @@ msgstr ""
 
 #: src/game_events.cpp:178
 msgid "Error: "
-msgstr ""
+msgstr "Earráid:"
 
 #: src/game_events.cpp:181
 msgid "Warning: "
@@ -3471,7 +3472,7 @@ msgstr ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:533
 msgid "Turn "
-msgstr ""
+msgstr "Seal"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:537
 msgid "Vacant Slot:"
@@ -3546,12 +3547,12 @@ msgstr ""
 #: src/leader_list.cpp:148 src/multiplayer_connect.cpp:225
 #: src/multiplayer_connect.cpp:269
 msgid "Female ♀"
-msgstr ""
+msgstr "Baineann ♀"
 
 #: src/leader_list.cpp:152 src/multiplayer_connect.cpp:227
 #: src/multiplayer_connect.cpp:271
 msgid "Male ♂"
-msgstr ""
+msgstr "Fireann ♂"
 
 #: src/leader_list.cpp:163 src/leader_list.cpp:188
 msgid "Random"
@@ -3619,7 +3620,7 @@ msgstr ""
 
 #: src/loadscreen.cpp:240
 msgid "Starting game"
-msgstr ""
+msgstr "Preabadh cluiche"
 
 #: src/map.cpp:194
 msgid "A map without a header is not supported"
@@ -3669,15 +3670,15 @@ msgstr ""
 
 #: src/menu_events.cpp:209 src/menu_events.cpp:847
 msgid "Level^Lvl."
-msgstr ""
+msgstr "Lbhl."
 
 #: src/menu_events.cpp:211
 msgid "unit list^Traits"
-msgstr ""
+msgstr "Treithe"
 
 #: src/menu_events.cpp:309
 msgid "Unit List"
-msgstr ""
+msgstr "Liosta Aonaid"
 
 #: src/menu_events.cpp:315 src/menu_events.cpp:337
 msgid "Scroll To"
@@ -3689,7 +3690,7 @@ msgstr "Treoraí"
 
 #: src/menu_events.cpp:370 src/multiplayer_connect.cpp:971
 msgid "Team"
-msgstr ""
+msgstr "Foireann"
 
 #: src/menu_events.cpp:371 src/multiplayer_connect.cpp:982
 msgid "Gold"
@@ -3805,9 +3806,11 @@ msgstr ""
 #: src/menu_events.cpp:703
 msgid "unit^Gold"
 msgid_plural "Gold"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "píosa óir"
+msgstr[1] "phíosa óir"
+msgstr[2] "phíosa óir"
+msgstr[3] "bpíosa óir"
+msgstr[4] "phíosa óir"
 
 #: src/menu_events.cpp:710
 msgid "You have no units available to recruit."
@@ -3914,7 +3917,7 @@ msgstr "Earráid:"
 
 #: src/menu_events.cpp:2070
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "Argóint ar iarraidh $arg_id"
 
 #: src/menu_events.cpp:2118
 msgid ""
@@ -3940,7 +3943,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2140
 msgid "aliases:"
-msgstr ""
+msgstr "ainmneacha bréige:"
 
 #: src/menu_events.cpp:2261
 msgid "(A) - admin command"
@@ -4369,7 +4372,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2882
 msgid "version"
-msgstr ""
+msgstr "insint"
 
 #: src/menu_events.cpp:2898
 msgid "registering with password *** and no email address"
@@ -4648,7 +4651,7 @@ msgstr "Faicsean"
 
 #: src/multiplayer_connect.cpp:980
 msgid "Team/Gender"
-msgstr ""
+msgstr "Foireann/Inscne"
 
 #: src/multiplayer_connect.cpp:981
 msgid "Color"
@@ -4656,7 +4659,7 @@ msgstr "Dath"
 
 #: src/multiplayer_connect.cpp:985
 msgid "I’m Ready"
-msgstr ""
+msgstr "Táim Réidh"
 
 #: src/multiplayer_connect.cpp:987
 msgid "Add named local player"
@@ -4696,7 +4699,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:1610
 msgid "Defeat enemy leader(s)"
-msgstr ""
+msgstr "Buaigh ar na cheannfo(i)rt naimhdeach(a)"
 
 #: src/multiplayer_connect.cpp:1709
 msgid "Waiting for players to join..."
@@ -4736,7 +4739,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:86
 msgid "Fog Of War"
-msgstr ""
+msgstr "Ceo Chatha"
 
 #: src/multiplayer_create.cpp:88
 msgid "Observers"
@@ -4860,7 +4863,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:391
 msgid "Turn Bonus: "
-msgstr ""
+msgstr "Bónas Seal:"
 
 #: src/multiplayer_create.cpp:395
 msgid "Reservoir: "
@@ -4884,7 +4887,7 @@ msgstr "Imreoiri:"
 
 #: src/multiplayer_create.cpp:542
 msgid "Size: "
-msgstr ""
+msgstr "Méid:"
 
 #: src/multiplayer_lobby.cpp:124
 msgid "--no games open--"
@@ -4936,7 +4939,7 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:738
 msgid "Friends in Game"
-msgstr ""
+msgstr "Cairde i Cluiche"
 
 #: src/multiplayer_lobby.cpp:739
 msgid "Search:"
@@ -5212,7 +5215,7 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:679
 msgid "It is now $name|’s turn"
-msgstr ""
+msgstr "Tá seala $name| anois"
 
 #: src/playsingle_controller.cpp:908
 msgid "Scenario Report"
@@ -5262,7 +5265,7 @@ msgstr "Cine:"
 
 #: src/reports.cpp:180
 msgid "Level: "
-msgstr ""
+msgstr "Leibhéal:"
 
 #: src/reports.cpp:183
 msgid "No advancement"
@@ -5374,7 +5377,7 @@ msgstr ""
 
 #: src/reports.cpp:474
 msgid "Attacks: "
-msgstr ""
+msgstr "Ionsaithe:"
 
 #: src/reports.cpp:476
 msgid "Base attacks: "
@@ -5426,7 +5429,7 @@ msgstr "Aonad le chlapsholais:"
 
 #: src/reports.cpp:801
 msgid "Observers:"
-msgstr ""
+msgstr "Féachadóirí:"
 
 #: src/savegame.cpp:207 src/savegame.cpp:209
 msgid " replay"
@@ -5568,7 +5571,7 @@ msgstr "Maruithe"
 
 #: src/statistics_dialog.cpp:107
 msgid "Details"
-msgstr ""
+msgstr "Mionpháirteanna"
 
 #: src/statistics_dialog.cpp:175
 msgid "Damage"
@@ -5580,7 +5583,7 @@ msgstr ""
 
 #: src/statistics_dialog.cpp:178
 msgid "This Turn"
-msgstr ""
+msgstr "Seal Seo"
 
 #: src/statistics_dialog.cpp:182
 msgid "Inflicted"
@@ -5663,7 +5666,7 @@ msgstr[2] ""
 #: src/unit_types.cpp:213
 #, no-c-format
 msgid "% accuracy"
-msgstr ""
+msgstr "% cruinneas"
 
 #: src/unit_types.cpp:224
 #, no-c-format
@@ -5672,7 +5675,7 @@ msgstr "% coiscim"
 
 #: src/unit_types.cpp:912
 msgid "No description available."
-msgstr ""
+msgstr "Níl an tuarascáil infhaighte."
 
 #: src/unit_types.cpp:968
 msgid "chaotic"

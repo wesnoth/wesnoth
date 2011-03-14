@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-01 11:25+0100\n"
-"PO-Revision-Date: 2011-03-05 09:56-0800\n"
+"PO-Revision-Date: 2011-03-13 17:32-0800\n"
 "Last-Translator: Carson Callis <tree_rings@rocketmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ga\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : "
+"4;\n"
 
 #. [terrain_type]: id=deep_water_gray
 #: data/core/terrain.cfg:18
@@ -31,7 +32,7 @@ msgstr "Uisce Domhain"
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:29
 msgid "Medium Deep Water"
-msgstr ""
+msgstr "Liath Uisce Ríalta"
 
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:38
@@ -1475,7 +1476,7 @@ msgstr ""
 #: data/gui/default/window/gamestate_inspector.cfg:153
 #: data/gui/default/window/unit_create.cfg:131
 msgid "Type"
-msgstr ""
+msgstr "Sórt"
 
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:214
@@ -1553,7 +1554,7 @@ msgstr ""
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:186
 msgid "Time limit"
-msgstr ""
+msgstr "Teorainn ama"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:305
@@ -1588,7 +1589,7 @@ msgstr "Forsheomra"
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:340
 msgid "Other games"
-msgstr ""
+msgstr "Cluichí eile"
 
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:479
@@ -1834,7 +1835,7 @@ msgstr ""
 #. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:204
 msgid "Default"
-msgstr ""
+msgstr "Loiceadh"
 
 #. [button]: id=password
 #. [label]: id=title
@@ -2980,7 +2981,7 @@ msgstr "Staitistic"
 
 #: src/hotkeys.cpp:89 src/hotkeys.cpp:99
 msgid "Stop"
-msgstr ""
+msgstr "Stad"
 
 #: src/hotkeys.cpp:90 src/hotkeys.cpp:97
 msgid "Play"

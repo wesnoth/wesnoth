@@ -9,24 +9,25 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-01 11:25+0100\n"
-"PO-Revision-Date: 2011-03-03 14:42-0800\n"
+"PO-Revision-Date: 2011-03-13 17:25-0800\n"
 "Last-Translator: Carson Callis <tree_rings@rocketmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ga\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : "
+"4;\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:11
 msgid "Heir to the Throne"
-msgstr "Tánaiste"
+msgstr "Oidhre le Ríchathaoir"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:12
 msgid "HttT"
-msgstr "T"
+msgstr "OlR"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
@@ -474,7 +475,7 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:428
 msgid "Die, villain, die!"
-msgstr ""
+msgstr "Faigh bás, a diabhal!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:439
@@ -494,7 +495,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:472
 msgid "I am Delfador the Great. Prepare to die!"
-msgstr ""
+msgstr "Mise Deilfeadór Mór. Déan reidh le bás a fháil!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:484
@@ -1199,8 +1200,9 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:704
+#, fuzzy
 msgid "Now where is Delfador? I hope he’s safe!"
-msgstr ""
+msgstr "Ca bhuil Deilfeadór anois? I hope he's safe!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:723
@@ -1573,7 +1575,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:205
 msgid "You receive 100 pieces of gold!"
-msgstr ""
+msgstr "Fuair tú 100 píosa óir!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:214
@@ -1980,7 +1982,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:593
 #, fuzzy
 msgid "The Sceptre of Fire? What’s that?"
-msgstr "Ríshlat na Tine? Cad é seo?"
+msgstr "Ríshlat as Tine? Cad é seo?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:598
@@ -2761,7 +2763,7 @@ msgstr ""
 #. [scenario]: id=11_The_Ford_of_Abez
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:4
 msgid "The Ford of Abez"
-msgstr ""
+msgstr "An Áth Aibes"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:21
@@ -2943,12 +2945,12 @@ msgstr "Cudaliasc"
 #. [message]: type=Water Serpent
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:395
 msgid "Ruaarrrrrrrr!"
-msgstr ""
+msgstr "Ruaarrrrrrrr!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:399
 msgid "What is that?"
-msgstr ""
+msgstr "Cad é seo?!?"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:403
@@ -3427,7 +3429,7 @@ msgstr ""
 #. [message]: speaker=Cuttle Fish
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:636
 msgid "Ruarrrrr!!!"
-msgstr ""
+msgstr "Ruarrrrr!!!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:640
@@ -3462,7 +3464,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:21
 msgid "Find the dwarves"
-msgstr ""
+msgstr "Faigh ar na abhaic"
 
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:94
@@ -4195,7 +4197,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:33
 #, fuzzy
 msgid "The Sceptre of Fire"
-msgstr "Ríshlat na Tine"
+msgstr "Ríshlat as Tine"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:15
@@ -5185,7 +5187,7 @@ msgstr ""
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:625
 msgid "GRRROOOOAAAAR!"
-msgstr ""
+msgstr "GRRROOOOAAAAR!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:629
@@ -5234,7 +5236,7 @@ msgstr ""
 #. [message]: type=Water Serpent
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:788
 msgid "Grrroar"
-msgstr ""
+msgstr "Grrroar"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:795
@@ -5801,22 +5803,22 @@ msgstr ""
 #. [side]: type=Elvish Lord, id=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:36
 msgid "Uradredia"
-msgstr ""
+msgstr "Úradraidia"
 
 #. [side]: type=Elvish Lady, id=Parandra
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:46
 msgid "Parandra"
-msgstr ""
+msgstr "Parandra"
 
 #. [unit]: type=Elvish Champion, id=Bellrok
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:80
 msgid "Bellrok"
-msgstr ""
+msgstr "Bealroc"
 
 #. [unit]: type=Elvish Avenger, id=Tindolean
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:89
 msgid "Tindolean"
-msgstr ""
+msgstr "Tindelean"
 
 #. [unit]: type=Elvish Enchantress, id=Everlore
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:97
@@ -6210,7 +6212,7 @@ msgstr "Iósafas"
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:127
 msgid "Dwar-Ni"
-msgstr ""
+msgstr "Duar-Ní"
 
 #. [side]: type=General, id=Malatus
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:146
@@ -6220,7 +6222,7 @@ msgstr "Malatus"
 #. [message]: speaker=Malatus
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:179
 msgid "Halt! Who goes there?"
-msgstr ""
+msgstr "Stad! Ce atá ann?"
 
 #. [message]: speaker=Dwar-Ni
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:183
@@ -6250,7 +6252,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:207
 msgid "Dacayan"
-msgstr ""
+msgstr "Dacayan"
 
 #. [message]: speaker=Dacayan
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:214
@@ -6277,7 +6279,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:39
 msgid "Defeat $units_to_slay enemy units"
-msgstr ""
+msgstr "Buaigh ar na $units_to_slay aonad naimhdeacha"
 
 #. [side]: type=Grand Knight, id=Sir Alric
 #. [side]: type=Grand Knight, id=Sir Ruga
@@ -6421,7 +6423,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:289
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:293
 msgid "Aye."
-msgstr ""
+msgstr "Sea."
 
 #. [message]: speaker=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:316
@@ -6634,7 +6636,7 @@ msgstr ""
 #. [side]: type=Cavalier, id=Sir Kalm
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:140
 msgid "Sir Kalm"
-msgstr ""
+msgstr "Ridire Cailm"
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:234
@@ -6882,7 +6884,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:83
 msgid "female^Battle Princess"
-msgstr ""
+msgstr "Banphríonsa Chatha"
 
 #. [variation]: id=Battle Princess, race=human
 #. [unit_type]: id=Battle Princess, race=human
@@ -7073,7 +7075,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:45
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:162
 msgid "Yes"
-msgstr ""
+msgstr "Tá"
 
 #. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:49
@@ -7111,7 +7113,7 @@ msgstr "claoímh lasrach"
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:122
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:232
 msgid "No"
-msgstr ""
+msgstr "Níl"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:160
@@ -7161,7 +7163,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
 #, fuzzy
 msgid "Sceptre of Fire"
-msgstr "Ríshlat an Tine"
+msgstr "Ríshlat as Tine"
 
 #. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387

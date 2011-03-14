@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-02-12 13:15+0100\n"
-"PO-Revision-Date: 2011-03-03 15:04-0800\n"
+"PO-Revision-Date: 2011-03-13 17:56-0800\n"
 "Last-Translator: Carson Callis <tree_rings@rocketmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ga\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : "
+"4;\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
@@ -26,7 +27,7 @@ msgstr "An Ord Dhúrsagain"
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:12
 msgid "THoT"
-msgstr "AoD"
+msgstr "AOD"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
@@ -429,7 +430,7 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:196
 msgid "Aye, my Lord Hamel."
-msgstr ""
+msgstr "Sea, mo Thiarna Hámal"
 
 #. [message]: speaker=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:200
@@ -546,7 +547,7 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:224
 msgid "For the Alliance! Axes up!"
-msgstr ""
+msgstr "Mar Cairdeas! Tuanna suas!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:236
@@ -734,12 +735,12 @@ msgstr ""
 #. [scenario]: id=06_High_Pass
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:3
 msgid "High Pass"
-msgstr ""
+msgstr "Ard Altán"
 
 #. [side]: type=Gryphon, id=Kaara
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:49
 msgid "Kaara"
-msgstr ""
+msgstr "Caara"
 
 #. [side]: type=Gryphon, id=Kaara
 #. [side]
@@ -776,7 +777,7 @@ msgstr ""
 #. [unit]: type=Arch Mage, id=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:241
 msgid "Ratheln"
-msgstr ""
+msgstr "Raitheln"
 
 #. [message]: speaker=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:255
@@ -891,12 +892,12 @@ msgstr "Dragain"
 #. [unit]: type=White Mage, id=Preceptor
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:94
 msgid "Preceptor"
-msgstr ""
+msgstr "Preceptor"
 
 #. [unit]: type=Red Mage, id=Warder
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:107
 msgid "Warder"
-msgstr ""
+msgstr "Warder"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:120
@@ -968,12 +969,12 @@ msgstr ""
 #. [unit]: type=Mage, id=Lorinne
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:199
 msgid "Lorinne"
-msgstr ""
+msgstr "Loirinne"
 
 #. [unit]: type=Mage, id=Darchas
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:207
 msgid "Darchas"
-msgstr ""
+msgstr "Dorchas"
 
 #. [message]: speaker=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:215
@@ -1048,7 +1049,7 @@ msgstr "Eagla"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:211
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:224
 msgid "Masked Dwarf"
-msgstr ""
+msgstr "Masc-Abhaic"
 
 #. [side]: type=Dwarvish Rune Lord, id=Karrag
 #. [side]: type=Dwarvish Masked Steelclad, id=Dufon
