@@ -18,6 +18,9 @@
 #include "gui/dialogs/mp_cmd_wrapper.hpp"
 
 #include "gui/widgets/button.hpp"
+#if defined(_WIN32) || defined(__APPLE__)
+	#include "gui/dialogs/field.hpp"
+#endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
