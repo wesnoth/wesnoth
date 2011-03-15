@@ -149,7 +149,7 @@ def formaltype(f):
     # Deduce the expected type of the formal
     if f.startswith("_"):
         f = f[1:]
-    if f == "SIDE" or f.endswith("_SIDE"):
+    if f == "SIDE" or f.endswith("_SIDE") or re.match("SIDE[0-9]", f):
         ftype = "side"
     elif f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "PROB", "LAYER", "TIME", "DURATION") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("COST") or f.endswith("RADIUS") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR") or f.endswith("_TIME") or f.endswith("_SIZE"):
         ftype = "numeric"
