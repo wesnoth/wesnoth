@@ -265,7 +265,7 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 	if(!xloc.empty()) {
 		const std::string::const_iterator dash =
 		             std::find(xloc.begin(),xloc.end(),'-');
-		if(dash != xloc.end()) {
+		if(dash != xloc.begin() && dash != xloc.end()) {
 			const std::string beg(xloc.begin(),dash);
 			const std::string end(dash+1,xloc.end());
 
@@ -284,7 +284,7 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 		const std::string::const_iterator dash =
 		             std::find(yloc.begin(),yloc.end(),'-');
 
-		if(dash != yloc.end()) {
+		if(dash != yloc.begin() && dash != yloc.end()) {
 			const std::string beg(yloc.begin(),dash);
 			const std::string end(dash+1,yloc.end());
 
