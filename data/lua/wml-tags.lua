@@ -495,9 +495,10 @@ function wml_actions.modify_unit(cfg)
 
 	local function handle_child(cfg, unit_path)
 		local children_handled = {}
+		local cfg = helper.shallow_parsed(cfg)
 		handle_attributes(cfg, unit_path)
 
-		for current_index, current_table in ipairs(helper.shallow_parsed(cfg)) do
+		for current_index, current_table in ipairs(cfg) do
 			local current_tag = current_table[1]
 			local tag_index = children_handled[current_tag] or 0
 			handle_child(current_table[2], string.format("%s.%s[%u]",
@@ -507,7 +508,6 @@ function wml_actions.modify_unit(cfg)
 	end
 
 	local filter = helper.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
-	local type = cfg.type
 	local function handle_unit(unit_num)
 		local children_handled = {}
 		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
@@ -532,8 +532,8 @@ function wml_actions.modify_unit(cfg)
 			end
 		end
 
-		if type then
-			if type ~= "" then wesnoth.set_variable(unit_path .. ".advances_to", type) end
+		if cfg.type then
+			if cfg.type ~= "" then wesnoth.set_variable(unit_path .. ".advances_to", cfg.type) end
 			wesnoth.set_variable(unit_path .. ".experience", wesnoth.get_variable(unit_path .. ".max_experience"))
 		end
 		wml_actions.unstore_unit { variable = unit_path }
