@@ -486,8 +486,8 @@ function wml_actions.modify_unit(cfg)
 	local unit_variable = "LUA_modify_unit"
 
 	local function handle_attributes(cfg, unit_path)
-		for current_key, current_value in pairs(cfg) do
-			if type(current_value) ~= "table" then
+		for current_key, current_value in pairs(helper.shallow_parsed(cfg)) do
+			if type(current_value) ~= "table" and current_key ~= "type" then
 				wesnoth.set_variable(string.format("%s.%s", unit_path, current_key), current_value)
 			end
 		end
@@ -497,7 +497,7 @@ function wml_actions.modify_unit(cfg)
 		local children_handled = {}
 		handle_attributes(cfg, unit_path)
 
-		for current_index, current_table in ipairs(cfg) do
+		for current_index, current_table in ipairs(helper.shallow_parsed(cfg)) do
 			local current_tag = current_table[1]
 			local tag_index = children_handled[current_tag] or 0
 			handle_child(current_table[2], string.format("%s.%s[%u]",
@@ -507,14 +507,14 @@ function wml_actions.modify_unit(cfg)
 	end
 
 	local filter = helper.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
-	local cfg = helper.parsed(cfg)
-	local type = cfg.type; cfg.type = nil
+	local type = cfg.type
 	local function handle_unit(unit_num)
 		local children_handled = {}
 		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
+		wesnoth.set_variable("this_unit", wesnoth.get_variable(unit_path))
 		handle_attributes(cfg, unit_path)
 
-		for current_index, current_table in ipairs(cfg) do
+		for current_index, current_table in ipairs(helper.shallow_parsed(cfg)) do
 			local current_tag = current_table[1]
 			if current_tag == "filter" then
 				-- nothing
@@ -546,6 +546,7 @@ function wml_actions.modify_unit(cfg)
 		handle_unit(current_unit)
 	end
 
+	wesnoth.set_variable("this_unit")
 	wesnoth.set_variable(unit_variable)
 end
 
