@@ -485,9 +485,9 @@ end
 function wml_actions.modify_unit(cfg)
 	local unit_variable = "LUA_modify_unit"
 
-	local function handle_attributes(cfg, unit_path)
+	local function handle_attributes(cfg, unit_path, toplevel)
 		for current_key, current_value in pairs(helper.shallow_parsed(cfg)) do
-			if type(current_value) ~= "table" and current_key ~= "type" then
+			if type(current_value) ~= "table" and (not toplevel or current_key ~= "type") then
 				wesnoth.set_variable(string.format("%s.%s", unit_path, current_key), current_value)
 			end
 		end
@@ -512,7 +512,7 @@ function wml_actions.modify_unit(cfg)
 		local children_handled = {}
 		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
 		wesnoth.set_variable("this_unit", wesnoth.get_variable(unit_path))
-		handle_attributes(cfg, unit_path)
+		handle_attributes(cfg, unit_path, true)
 
 		for current_index, current_table in ipairs(helper.shallow_parsed(cfg)) do
 			local current_tag = current_table[1]
