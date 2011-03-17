@@ -448,26 +448,7 @@ class Parser:
         return self.root.get_text_val(name, default, translation)
 
 
-########################################################################
-#                                                                      #
-# EVERYTHING BELOW IS ONLY TESTING STUFF AND CAN BE SAFELY IGNORED OR  #
-# REMOVED.                                                             #
-#                                                                      #
-########################################################################
-
-try:
-    strify = __import__("json").dumps
-except ImportError:
-    def strify(string):
-        """
-Massage a string into what appears to be a JSON-compatible form.
-This can be replaced with json.dumps() in python 2.6.
-"""
-        s = repr(string)
-        front = s.index("'")
-        s = s.replace('"', '\\"')
-        return '"%s"' % s[front+1:len(s)-1]
-
+import json
 def jsonify(tree, verbose=False, depth=0):
     """
 Convert a DataSub into JSON
@@ -511,7 +492,7 @@ If verbose, insert a linebreak after every brace and comma (put every item on it
         if verbose:
             sys.stdout.write(sdepth2)
         print '"%s":' % child.name,
-        print strify(child.get_text()),
+        print json.dumps(child.get_text()),
     if verbose:
         sys.stdout.write(sdepth1)
     sys.stdout.write("}")

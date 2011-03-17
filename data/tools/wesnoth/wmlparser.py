@@ -815,19 +815,7 @@ class Parser:
                     data.insert(subdata)
 
 
-try:
-    strify = __import__("json").dumps
-except ImportError:
-    def strify(string):
-        """
-Massage a string into what appears to be a JSON-compatible form.
-This can be replaced with json.dumps() in python 2.6.
-"""
-        s = repr(string)
-        front = s.index("'")
-        s = s.replace('"', '\\"')
-        return '"%s"' % s[front+1:len(s)-1]
-
+import json
 def jsonify(tree, verbose=False, depth=0):
     """
 Convert a DataSub into JSON
@@ -849,7 +837,7 @@ If verbose, insert a linebreak after every brace and comma (put every item on it
         if child.get_type() == "DataSub":
             jsonify(child, verbose, depth + 1)
         else:
-            print strify(child.get_value()),
+            print json.dumps(child.get_value()),
     if verbose:
         sys.stdout.write(sdepth1)
     sys.stdout.write("}")
