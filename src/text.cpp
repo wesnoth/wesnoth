@@ -462,7 +462,7 @@ public:
 				pango_font_description_set_weight(font_, PANGO_WEIGHT_BOLD);
 			}
 			if(style & ttext::STYLE_UNDERLINE) {
-				assert(false); // Not implemented yet
+				/* Do nothing here, underline is a property of the layout. */
 			}
 		}
 	}
@@ -493,6 +493,15 @@ void ttext::recalculate(const bool force) const
 
 		tfont font(get_font_families(), font_size_, font_style_);
 		pango_layout_set_font_description(layout_, font.get());
+
+		if(font_style_ & ttext::STYLE_UNDERLINE) {
+			PangoAttrList *attribute_list = pango_attr_list_new();
+			pango_attr_list_insert(attribute_list
+					, pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
+
+			pango_layout_set_attributes (layout_, attribute_list);
+			pango_attr_list_unref(attribute_list);
+		}
 
 		/*
 		 * See set_maximum_width for some more background info as well.
