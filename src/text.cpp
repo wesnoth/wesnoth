@@ -41,11 +41,11 @@ namespace {
  * Needed to make sure it gets freed properly.
  */
 class titor
+	: private boost::noncopyable
 {
-	titor(const titor&);
-	titor& operator=(const titor&);
 public:
-	titor(PangoLayout* layout_) :
+
+	explicit titor(PangoLayout* layout_) :
 		itor_(pango_layout_get_iter(layout_))
 	{
 	}
@@ -55,6 +55,7 @@ public:
 	operator PangoLayoutIter*() { return itor_; }
 
 private:
+
 	PangoLayoutIter* itor_;
 };
 
@@ -444,9 +445,8 @@ namespace {
 
 /** Small helper class to make sure the font object is destroyed properly. */
 class tfont
+	: private boost::noncopyable
 {
-	tfont(const tfont&);
-	tfont& operator=(const tfont&);
 public:
 	tfont(const std::string& name, const unsigned size, const unsigned style) :
 		font_(pango_font_description_new())
