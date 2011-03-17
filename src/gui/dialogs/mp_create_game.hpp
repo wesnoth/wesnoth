@@ -22,13 +22,11 @@ class config;
 
 namespace gui2 {
 
-class twidget;
-class ttext_box;
-
 class tmp_create_game : public tdialog
 {
 public:
-	tmp_create_game(const config& cfg);
+
+	explicit tmp_create_game(const config& cfg);
 
 private:
 
