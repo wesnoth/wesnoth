@@ -430,7 +430,8 @@ class Parser:
                 self.parse_line_without_commands(rawline)
 
         if self.keep_temp_dir is None and self.temp_dir:
-            print("removing " + self.temp_dir)
+            if self.verbose:
+                print("removing " + self.temp_dir)
             shutil.rmtree(self.temp_dir, ignore_errors = True)
 
     def handle_command(self, com):
