@@ -66,7 +66,7 @@ namespace {                                                                \
  *@endcode
  * Then use this macro in the implementation, inside the gui2 namespace.
  *
- * @note When the @ref id is "foo" and the type tfoo it's easier to use
+ * @note When the @p id is "foo" and the type tfoo it's easier to use
  * REGISTER_DIALOG(foo).
  *
  * @param type                    Class type of the window to register.
