@@ -18,7 +18,6 @@
 
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
@@ -37,10 +36,10 @@ namespace gui2 {
  *
  * @begin{table}{dialog_widgets}
  *
- * old_width & & label & m &
+ * old_width & & label & o &
  *         Shows the old width of the map. $
  *
- * old_height & & label & m &
+ * old_height & & label & o &
  *         Shows the old height of the map. $
  *
  * width & & slider & m &
@@ -89,78 +88,38 @@ namespace gui2 {
 
 REGISTER_DIALOG(editor_resize_map)
 
-/**
- * @todo Test whether the slider can be changed to an interger selector.
- * Should be possible, since it's also done in the new map dialog.
- */
-teditor_resize_map::teditor_resize_map() :
-	map_width_(register_integer("width", false)),
-	map_height_(register_integer("height", false)),
-	height_(NULL),
-	width_(NULL),
-	copy_edge_terrain_(register_bool("copy_edge_terrain", false)),
-	old_width_(),
-	old_height_(),
-	expand_direction_(EXPAND_BOTTOM_RIGHT)
+teditor_resize_map::teditor_resize_map(
+			  int& width
+			, int& height
+			, EXPAND_DIRECTION& expand_direction
+			, bool& copy_edge_terrain)
+	: width_(register_integer("width", false, width))
+	, height_(register_integer("height", false, height))
+	, old_width_(width)
+	, old_height_(height)
+	, expand_direction_(expand_direction)
 {
-}
+	register_bool("copy_edge_terrain", true, copy_edge_terrain);
 
-void teditor_resize_map::set_map_width(int value)
-{
-	map_width_->set_cache_value(value);
-}
-
-int teditor_resize_map::map_width() const
-{
-	return map_width_->get_cache_value();
-}
-
-void teditor_resize_map::set_map_height(int value)
-{
-	map_height_->set_cache_value(value);
-}
-
-int teditor_resize_map::map_height() const
-{
-	return map_height_->get_cache_value();
-}
-
-void teditor_resize_map::set_old_map_width(int value)
-{
-	old_width_ = value;
-}
-
-void teditor_resize_map::set_old_map_height(int value)
-{
-	old_height_ = value;
-}
-
-bool teditor_resize_map::copy_edge_terrain() const
-{
-	return copy_edge_terrain_->get_cache_value();
+	register_label2("old_width", false, str_cast(width));
+	register_label2("old_height", false, str_cast(height));
 }
 
 void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlabel& old_width = find_widget<tlabel>(&window, "old_width", false);
-	tlabel& old_height = find_widget<tlabel>(&window, "old_height", false);
-	height_ = find_widget<tslider>(&window, "height", false, true);
-	width_ = find_widget<tslider>(&window, "width", false, true);
-
-	connect_signal_notify_modified(*height_
+	tslider& height = find_widget<tslider>(&window, "height", false);
+	connect_signal_notify_modified(height
 			, boost::bind(
 				  &teditor_resize_map::update_expand_direction
 				, this
 				, boost::ref(window)));
 
-	connect_signal_notify_modified(*width_
+	tslider& width = find_widget<tslider>(&window, "width", false);
+	connect_signal_notify_modified(width
 			, boost::bind(
 				  &teditor_resize_map::update_expand_direction
 				, this
 				, boost::ref(window)));
-
-	old_width.set_label(lexical_cast<std::string>(old_width_));
-	old_height.set_label(lexical_cast<std::string>(old_height_));
 
 	std::string name_prefix = "expand";
 	for (int i = 0; i < 9; ++i) {
@@ -176,8 +135,11 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 	update_expand_direction(window);
 }
 
-/** Convert a coordinate on a 3  by 3 grid to an index, return 9 for out of bounds */
-static int resize_grid_xy_to_idx(int x, int y)
+/**
+ * Convert a coordinate on a 3  by 3 grid to an index, return 9 for out of
+ * bounds
+ */
+static int resize_grid_xy_to_idx(const int x, const int y)
 {
 	if (x < 0 || x > 2 || y < 0 || y > 2) {
 		return 9;
@@ -189,7 +151,8 @@ static int resize_grid_xy_to_idx(int x, int y)
 void teditor_resize_map::set_direction_icon(int index, std::string icon)
 {
 	if (index < 9) {
-		direction_buttons_[index]->set_icon_name("buttons/resize-direction-" + icon + ".png");
+		direction_buttons_[index]->set_icon_name(
+				"buttons/resize-direction-" + icon + ".png");
 	}
 }
 
@@ -197,7 +160,9 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 {
 	std::string name_prefix = "expand";
 	for (int i = 0; i < 9; ++i) {
-		if (direction_buttons_[i]->get_value() && static_cast<int>(expand_direction_) != i) {
+		if (direction_buttons_[i]->get_value()
+					&& static_cast<int>(expand_direction_) != i) {
+
 			expand_direction_ = static_cast<EXPAND_DIRECTION>(i);
 			break;
 		}
@@ -212,8 +177,8 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 		set_direction_icon(i, "none");
 	}
 
-	int xdiff = map_width_->get_widget_value(window) - old_width_ ;
-	int ydiff = map_height_->get_widget_value(window) - old_height_ ;
+	int xdiff = width_->get_widget_value(window) - old_width_ ;
+	int ydiff = height_->get_widget_value(window) - old_height_ ;
 	int x = static_cast<int>(expand_direction_) % 3;
 	int y = static_cast<int>(expand_direction_) / 3;
 	set_direction_icon(expand_direction_, "center");

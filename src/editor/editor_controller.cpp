@@ -560,25 +560,20 @@ void editor_controller::create_mask_to_dialog()
 
 void editor_controller::resize_map_dialog()
 {
-	gui2::teditor_resize_map dialog;
-	dialog.set_map_width(get_map().w());
-	dialog.set_map_height(get_map().h());
-	dialog.set_old_map_width(get_map().w());
-	dialog.set_old_map_height(get_map().h());
+	int w = get_map().w();
+	int h = get_map().h();
+	gui2::teditor_resize_map::EXPAND_DIRECTION dir;
+	bool copy = false;
+	if(gui2::teditor_resize_map::execute(w, h, dir, copy, gui().video())) {
 
-	dialog.show(gui().video());
-	int res = dialog.get_retval();
-	if(res == gui2::twindow::OK) {
-		int w = dialog.map_width();
-		int h = dialog.map_height();
 		if (w != get_map().w() || h != get_map().h()) {
 			t_translation::t_terrain fill = background_terrain_;
-			if (dialog.copy_edge_terrain()) {
+			if (copy) {
 				fill = t_translation::NONE_TERRAIN;
 			}
 			int x_offset = get_map().w() - w;
 			int y_offset = get_map().h() - h;
-			switch (dialog.expand_direction()) {
+			switch (dir) {
 				case gui2::teditor_resize_map::EXPAND_BOTTOM_RIGHT:
 				case gui2::teditor_resize_map::EXPAND_BOTTOM:
 				case gui2::teditor_resize_map::EXPAND_BOTTOM_LEFT:
@@ -597,7 +592,7 @@ void editor_controller::resize_map_dialog()
 					y_offset = 0;
 					WRN_ED << "Unknown resize expand direction\n";
 			}
-			switch (dialog.expand_direction()) {
+			switch (dir) {
 				case gui2::teditor_resize_map::EXPAND_BOTTOM_RIGHT:
 				case gui2::teditor_resize_map::EXPAND_RIGHT:
 				case gui2::teditor_resize_map::EXPAND_TOP_RIGHT:

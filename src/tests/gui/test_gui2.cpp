@@ -645,6 +645,24 @@ struct twrapper<gui2::teditor_new_map>
 };
 
 template<>
+struct twrapper<gui2::teditor_resize_map>
+{
+	static gui2::teditor_resize_map* create()
+	{
+		static int width = 0;
+		static int height = 0;
+		static gui2::teditor_resize_map::EXPAND_DIRECTION expand_direction =
+				gui2::teditor_resize_map::EXPAND_TOP;
+		static bool copy = false;
+		return new gui2::teditor_resize_map(
+				  width
+				, height
+				, expand_direction
+				, copy);
+	}
+};
+
+template<>
 struct twrapper<gui2::teditor_settings>
 {
 	static void dummy_callback(int, int, int) {}
