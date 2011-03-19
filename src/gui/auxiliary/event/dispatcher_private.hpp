@@ -34,12 +34,12 @@ struct tdispatcher_implementation
  * Implements two helper functions as documented in the macro.
  *
  * @param SET                     The set in which the event type needs to be
- *                                eg the @ref tset_event or a similar set
- *                                defined in that header.
+ *                                eg the @ref gui2::event::tset_event or a
+ *                                similar set defined in that header.
  * @param FUNCTION                The function signature to validate the
  *                                implementation function SFINAE against eg the
- *                                @ref tsignal_function or another one in that
- *                                header.
+ *                                @ref gui2::event::tsignal_function or another
+ *                                one in that header.
  * @param QUEUE                   The queue in which the @p event is slotted.
  */
 #define IMPLEMENT_EVENT_SIGNAL(SET, FUNCTION, QUEUE)                          \
@@ -125,7 +125,7 @@ struct tdispatcher_implementation
 		 * Constructor.
 		 *
 		 * @param event_type      The type of event to look for.
-	     * @param dispatcher      The dispatcher whose signal queue is used.
+		* @param dispatcher      The dispatcher whose signal queue is used.
 		 */
 		thas_handler(const tdispatcher::tevent_type event_type
 				, tdispatcher& dispatcher)
@@ -140,8 +140,8 @@ struct tdispatcher_implementation
 		 * constructor.
 		 *
 		 * @tparam T              A key from an event set used to instanciate
-		 *                        the proper @ref event_signal function.
-	     * @param event           The event to get the signal for.
+		 *                        the proper @p event_signal function.
+		* @param event           The event to get the signal for.
 		 *
 		 * @returns               Whether or not the handler is found.
 		 */
@@ -177,42 +177,42 @@ namespace implementation {
 template<bool done = true>
 struct find
 {
-    template<
-          typename itor
-        , typename end
-        , typename E
+	template<
+		  typename itor
+		, typename end
+		, typename E
 		, typename F
-        >
-    static bool execute(
-          itor*
-        , end*
-        , E
+		>
+	static bool execute(
+		  itor*
+		, end*
+		, E
 		, F
-        )
-    {
+		)
+	{
 		return false;
-    }
+	}
 };
 
 /** Specialized class when itor != end */
 template<>
 struct find<false>
 {
-    template<
-          typename itor
-        , typename end
-        , typename E
+	template<
+		  typename itor
+		, typename end
+		, typename E
 		, typename F
-        >
-    static bool execute(
-          itor*
-        , end*
+		>
+	static bool execute(
+		  itor*
+		, end*
 		, E event
 		, F functor
-        )
-    {
-        typedef typename boost::mpl::deref<itor>::type item;
-        typedef typename
+		)
+	{
+		typedef typename boost::mpl::deref<itor>::type item;
+		typedef typename
 				boost::mpl::apply1<boost::mpl::identity<>, item>::type arg;
 
 		boost::value_initialized<arg> x;
@@ -225,7 +225,7 @@ struct find<false>
 			return find<boost::is_same<titor, end>::value>
 				::execute((titor*)0, (end*)0, event, functor);
 		}
-    }
+	}
 };
 
 } // namespace implementation
@@ -251,10 +251,10 @@ struct find<false>
  * @returns                       Whether or not the function found a result.
  */
 template<
-      typename sequence
-    , typename E
+	  typename sequence
+	, typename E
 	, typename F
-    >
+	>
 inline bool find(E event, F functor)
 {
 	typedef typename boost::mpl::begin<sequence>::type begin;
