@@ -39,7 +39,7 @@ namespace gui2 {
 REGISTER_DIALOG(game_delete)
 
 /**
- * Helper to invert @ref !preferences::ask_delete_saves.
+ * Helper to invert @ref preferences::ask_delete_saves.
  *
  * The value stored and the way shown is inverted.
  */
@@ -49,7 +49,7 @@ static bool get_dont_ask_again()
 }
 
 /**
- * Helper to invert @ref !preferences::set_ask_delete_saves.
+ * Helper to invert @ref preferences::set_ask_delete_saves.
  *
  * The value stored and the way shown is inverted.
  */
