@@ -18,8 +18,6 @@
 #include "SDL.h"
 #include "SDL_mixer.h"
 
-#include "SDL_getenv.h"
-
 #include "about.hpp"
 #include "ai/configuration.hpp"
 #include "config.hpp"
