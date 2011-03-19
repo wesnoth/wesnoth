@@ -764,7 +764,7 @@ T& find_widget(typename tconst_duplicator<T, twidget>::type* widget
  * Call this function to register a widget. Use this macro in the
  * implementation, inside the gui2 namespace.
  *
- * @see @ref load_widget_definitions for more information.
+ * @see @ref gui2::load_widget_definitions for more information.
  *
  * @note When the type is tfoo_definition, the id "foo" and no special key best
  * use RESISTER_WIDGET(foo) instead.
