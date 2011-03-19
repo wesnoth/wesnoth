@@ -15,9 +15,9 @@
 
 /**
  * @file
- * This file contains the defintions for the @ref tmessage class.
+ * This file contains the defintions for the @ref gui2::event::tmessage class.
  *
- * The class is used in the @ref tsignal_message_function
+ * The class is used in the @ref gui2::event::tsignal_message_function
  */
 
 #ifndef GUI_WIDGETS_AUXILIARY_EVENT_MESSAGE_HPP_INCLUDED
