@@ -838,6 +838,11 @@ private:
 	bool draw_coordinates_;
 	/** Debug flag - overlay terrain codes on tiles */
 	bool draw_terrain_codes_;
+
+#if defined(__GLIBC__)
+	/** Flag for bug #17573 - this is set in the constructor **/
+	bool do_reverse_memcpy_workaround_;
+#endif
 };
 
 #endif
