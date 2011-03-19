@@ -17,37 +17,35 @@
 #define GUI_DIALOGS_MP_CREATE_GAME_SET_PASSWORD_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/dialogs/field-fwd.hpp"
 
 namespace gui2 {
 
 class tmp_create_game_set_password : public tdialog
 {
 public:
-	tmp_create_game_set_password(const std::string& password);
 
-	const std::string& password() const {
-		return password_;
-	}
+	/**
+	 * Constructor.
+	 *
+	 * @param password [in]       The initial value for the password.
+	 * @param password [out]      The password selected by the user if the
+	 *                            dialog returns @ref twindow::OK undefined
+	 *                            otherwise.
+	 */
+	explicit tmp_create_game_set_password(std::string& password);
 
-	void set_password(const std::string& password) {
-		password_ = password;
+	/** The excute function see @ref tdialog for more information. */
+	static bool execute(std::string& password, CVideo& video)
+	{
+		return tmp_create_game_set_password(password).show(video);
 	}
 
 private:
-	std::string password_;
-	tfield_text* password_field_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
-
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
 };
 
-}
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_MP_CREATE_GAME_SET_PASSWORD_HPP_INCLUDED */

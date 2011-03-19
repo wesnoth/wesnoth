@@ -17,9 +17,8 @@
 
 #include "gui/dialogs/mp_create_game_set_password.hpp"
 
-#include "gui/dialogs/field.hpp"
+//#include "gui/dialogs/field.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 
 namespace gui2 {
 
@@ -41,26 +40,11 @@ namespace gui2 {
 
 REGISTER_DIALOG(mp_create_game_set_password)
 
-tmp_create_game_set_password::tmp_create_game_set_password(const std::string& password)
-	: password_(password)
-	, password_field_(register_text("password", false))
+tmp_create_game_set_password::tmp_create_game_set_password(
+		std::string& password)
 {
+	register_text2("password", true, password, true);
 }
 
-void tmp_create_game_set_password::pre_show(CVideo& /*video*/, twindow& window)
-{
-	assert(password_field_);
-	password_field_->set_widget_value(window, password_);
-	window.keyboard_capture(password_field_->widget(window));
-}
+} // namespace gui2
 
-void tmp_create_game_set_password::post_show(twindow& window)
-{
-	if(get_retval() != twindow::OK) {
-		return;
-	}
-
-	password_ = password_field_->get_widget_value(window);
-}
-
-}

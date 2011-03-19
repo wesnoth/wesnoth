@@ -343,9 +343,10 @@ void create::process_event()
 	}
 
 	if(password_button_.pressed()) {
-		gui2::tmp_create_game_set_password pwd_dlg(parameters_.password);
-		pwd_dlg.show(disp_.video());
-		parameters_.password = pwd_dlg.password();
+		gui2::tmp_create_game_set_password::execute(
+				  parameters_.password
+				, disp_.video());
+
 	}
 
 	// Turns per game
