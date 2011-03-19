@@ -47,56 +47,36 @@ namespace gui2 {
 
 REGISTER_DIALOG(game_save)
 
-tgame_save::tgame_save(const std::string& title, const std::string& filename) :
-	txtFilename_(register_text("txtFilename", false)),
-	title_(title),
-	filename_(filename)
+tgame_save::tgame_save(std::string& filename, const std::string& title)
 {
+	register_text2("txtFilename", false, filename, true);
+	register_label2("lblTitle", true, title);
 }
-
-void tgame_save::pre_show(CVideo& /*video*/, twindow& window)
-{
-	assert(txtFilename_);
-
-	find_widget<tlabel>(&window, "lblTitle", false).set_label(title_);
-
-	txtFilename_->set_widget_value(window, filename_);
-	window.keyboard_capture(txtFilename_->widget(window));
-}
-
-void tgame_save::post_show(twindow& window)
-{
-	filename_ = txtFilename_->get_widget_value(window);
-}
-
 
 REGISTER_DIALOG(game_save_message)
 
-tgame_save_message::tgame_save_message(const std::string& title, const std::string& filename, const std::string& message)
-	: tgame_save(title, filename),
-	message_(message)
-{}
-
-void tgame_save_message::pre_show(CVideo& video, twindow& window)
+tgame_save_message::tgame_save_message(
+		const std::string& title
+		, const std::string& filename
+		, const std::string& message)
 {
-	find_widget<tlabel>(&window, "lblMessage", false).set_label(message_);
-
-	tgame_save::pre_show(video, window);
+	register_label2("lblTitle", true, title);
+	register_label2("txtFilename", false, filename);
+	register_label2("lblMessage", true, message);
 }
 
 REGISTER_DIALOG(game_save_oos)
 
-tgame_save_oos::tgame_save_oos(const std::string& title, const std::string& filename, const std::string& message)
-	: tgame_save_message(title, filename, message),
-	btnIgnoreAll_(register_bool("ignore_all", false)),
-	ignore_all_(false)
-{}
-
-void tgame_save_oos::post_show(twindow& window)
+tgame_save_oos::tgame_save_oos(
+		  bool& ignore_all
+		, const std::string& title
+		, const std::string& filename
+		, const std::string& message)
 {
-	tgame_save::post_show(window);
-
-	ignore_all_ = btnIgnoreAll_->get_widget_value(window);
+	register_label2("lblTitle", true, title);
+	register_label2("txtFilename", false, filename);
+	register_label2("lblMessage", true, message);
+	register_bool2("ignore_all", true, ignore_all);
 }
 
 } // namespace gui2

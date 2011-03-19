@@ -507,7 +507,9 @@ struct twrapper<gui2::tgame_save>
 {
 	static gui2::tgame_save* create()
 	{
-		return new gui2::tgame_save("Title", "filename");
+		static std::string title = "Title";
+		static std::string filename = "filename";
+		return new gui2::tgame_save(title, filename);
 	}
 
 };
@@ -517,7 +519,10 @@ struct twrapper<gui2::tgame_save_message>
 {
 	static gui2::tgame_save_message* create()
 	{
-		return new gui2::tgame_save_message("Title", "filename", "message");
+		static std::string title = "Title";
+		static std::string filename = "filename";
+		static std::string message = "message";
+		return new gui2::tgame_save_message(title, filename, message);
 	}
 
 };
@@ -527,7 +532,11 @@ struct twrapper<gui2::tgame_save_oos>
 {
 	static gui2::tgame_save_oos* create()
 	{
-		return new gui2::tgame_save_oos("Title", "filename", "message");
+		static bool ignore_all = false;
+		static std::string title = "Title";
+		static std::string filename = "filename";
+		static std::string message = "message";
+		return new gui2::tgame_save_oos(ignore_all, title, filename, message);
 	}
 
 };

@@ -24,58 +24,66 @@ namespace gui2 {
 class tgame_save : public tdialog
 {
 public:
-	tgame_save(const std::string& title, const std::string& filename="");
 
-	const std::string& filename() const { return filename_; }
+	tgame_save(std::string& filename, const std::string& title);
 
-protected:
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
-
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	static bool execute(std::string& filename
+			, const std::string& title
+			, CVideo& video)
+	{
+		return tgame_save(filename, title).show(video);
+	}
 
 private:
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-
-	tfield_text* txtFilename_;
-	std::string title_;
-	std::string filename_;
 };
 
-class tgame_save_message : public tgame_save
+class tgame_save_message : public tdialog
 {
 public:
-	tgame_save_message(const std::string& title, const std::string& filename="", const std::string& message="");
+	tgame_save_message(const std::string& title
+			, const std::string& filename
+			, const std::string& message);
+
+	static bool execute(
+			  const std::string& title
+			, const std::string& filename
+			, const std::string& message
+			, CVideo& video)
+	{
+		return tgame_save_message(title, filename, message).show(video);
+	}
 
 private:
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-
-	/** Inherited from tgame_save. */
-	void pre_show(CVideo& video, twindow& window);
-
-	std::string message_;
 };
 
-class tgame_save_oos : public tgame_save_message
+class tgame_save_oos : public tdialog
 {
 public:
-	tgame_save_oos(const std::string& title, const std::string& filename="", const std::string& message="");
+	tgame_save_oos(
+			  bool& ignore_all
+			, const std::string& title
+			, const std::string& filename
+			, const std::string& message);
 
-	bool ignore_all() const { return ignore_all_; }
-
+	static bool execute(
+			  bool& ignore_all
+			, const std::string& title
+			, const std::string& filename
+			, const std::string& message
+			, CVideo& video)
+	{
+		return tgame_save_oos(ignore_all, title, filename, message).show(video);
+	}
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
-
-	tfield_bool* btnIgnoreAll_;
-	bool ignore_all_;
 };
 
 }
