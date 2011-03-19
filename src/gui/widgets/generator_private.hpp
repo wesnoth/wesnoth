@@ -89,20 +89,20 @@ struct tnone
 	: public virtual tgenerator_
 {
 
-	/** See tone::set_item_shown(). */
+	/** See @ref minimum_selection::tone::set_item_shown(). */
 	void set_item_shown(const unsigned index, const bool show);
 
-	/** See minimum_selection::tone::create_item() */
+	/** See @ref minimum_selection::tone::create_item() */
 	void create_item(const unsigned /*index*/) {}
 
-	/** See minimum_selection::tone::deselect_item() */
+	/** See @ref minimum_selection::tone::deselect_item() */
 	bool deselect_item(const unsigned index)
 	{
 		do_deselect_item(index);
 		return true;
 	}
 
-	/** See ::minimum_selection::tone::delete_item() */
+	/** See @ref minimum_selection::tone::delete_item() */
 	void delete_item(const unsigned index)
 	{
 		if(is_selected(index)) {
