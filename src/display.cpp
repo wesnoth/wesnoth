@@ -45,6 +45,12 @@
 #endif
 #include <cmath>
 
+// Includes for bug #17573
+#if defined(__GLIBC__)
+#include <gnu/libc-version.h> 
+#include <cstdio>
+#endif
+
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 #define LOG_DP LOG_STREAM(info, log_display)
@@ -130,6 +136,20 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	set_idle_anim_rate(preferences::idle_anim_rate());
 
 	image::set_zoom(zoom_);
+
+#if defined(__GLIBC__)
+	// Runtime checks for bug #17573
+	// Get glibc runtime version information
+	int glibc, glibc_minor; 
+	sscanf(gnu_get_libc_version(), "%d.%d", &glibc, &glibc_minor);
+
+	// Get SDL runtime version information
+	const SDL_version* v = SDL_Linked_Version();
+
+	do_reverse_memcpy_workaround_ = (glibc > 2 || (glibc == 2 && glibc_minor >= 13)) &&
+		(v->major < 1 || (v->major == 1 && v->minor < 2) || 
+			(v->major == 1 && v->minor == 2 && v->patch < 15) );
+#endif
 }
 
 display::~display()
@@ -1449,8 +1469,20 @@ bool display::scroll(int xmove, int ymove)
 	SDL_Rect srcrect = dstrect;
 	srcrect.x -= dx;
 	srcrect.y -= dy;
-	if (!screen_.update_locked())
-		sdl_blit(screen,&srcrect,screen,&dstrect);
+	if (!screen_.update_locked()) {
+
+// Hack to workaround bug #17573
+#if defined(__GLIBC__)
+		if (do_reverse_memcpy_workaround_) {
+			surface screen_copy = make_neutral_surface(screen);
+			SDL_BlitSurface(screen_copy,&srcrect,screen,&dstrect);
+		} else {
+			SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
+		}
+#else 
+		SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
+#endif
+	}
 
 //This is necessary to avoid a crash in some SDL versions on some systems
 //see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=462794

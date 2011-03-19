@@ -834,6 +834,11 @@ private:
 	typedef std::map<map_location, arrows_list_t > arrows_map_t;
 	/** Maps the list of arrows for each location */
 	arrows_map_t arrows_map_;
+
+#if defined(__GLIBC__)
+	/** Flag for bug #17573 - this is set in the constructor **/
+	bool do_reverse_memcpy_workaround_;
+#endif
 };
 
 #endif
