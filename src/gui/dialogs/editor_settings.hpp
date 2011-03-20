@@ -17,24 +17,35 @@
 #define GUI_DIALOGS_EDITOR_SETTINGS_HPP_INCLUDED
 
 #include "time_of_day.hpp"
-#include "gui/auxiliary/notifiee.hpp"
 #include "gui/dialogs/dialog.hpp"
 
 #include <vector>
-#include <boost/function.hpp>
+
+namespace editor {
+
+class editor_display;
+
+} // namespace editor
 
 namespace gui2 {
 
 class tlabel;
 class ttoggle_button;
-class tslider;
 
 class teditor_settings : public tdialog
 {
 public:
-	teditor_settings();
+	teditor_settings(editor::editor_display* display
+			, const std::vector<time_of_day>& tods);
 
-	void set_redraw_callback(boost::function<void (int, int, int)> callback) { redraw_callback_ = callback; }
+	static bool execute(editor::editor_display* display
+			, const std::vector<time_of_day>& tods
+			, CVideo& video)
+	{
+		return teditor_settings(display, tods).show(video);
+	}
+
+private:
 
 	/** Callback for the next tod button */
 	void do_next_tod(twindow& window);
@@ -43,22 +54,10 @@ public:
 
 	void slider_update_callback(twindow& window);
 
-	void set_tods(const std::vector<time_of_day>& tods) { tods_ = tods; }
-	const std::vector<time_of_day>& get_tods() const { return tods_; }
-
-	void set_current_adjustment(int r, int g, int b);
-
 	void set_selected_tod(time_of_day tod);
 	const time_of_day& get_selected_tod() const;
 
-	int get_red() const;
-	int get_green() const;
-	int get_blue() const;
-
 	void update_selected_tod_info(twindow& window);
-
-	bool get_use_mdi() const;
-	void set_use_mdi(bool value);
 
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -66,8 +65,6 @@ private:
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
-
-	boost::function<void (int, int, int)> redraw_callback_;
 
 	/** Available time_of_days */
 	std::vector<time_of_day> tods_;
@@ -86,15 +83,17 @@ private:
 
 	tfield_bool* custom_tod_toggle_field_;
 
-	tslider* custom_tod_red_;
-	tslider* custom_tod_green_;
-	tslider* custom_tod_blue_;
-
 	tfield_integer* custom_tod_red_field_;
 	tfield_integer* custom_tod_green_field_;
 	tfield_integer* custom_tod_blue_field_;
 
-	tfield_bool* use_mdi_field_;
+	/**
+	 * The display to update when the ToD changes.
+	 *
+	 * The pointer may be NULL, in the unit tests, but normally it should be a
+	 * pointer to a valid object.
+	 */
+	editor::editor_display* display_;
 };
 
 } // namespace gui2

@@ -17,19 +17,19 @@
 
 #include "gui/dialogs/editor_settings.hpp"
 
+#include "editor/editor_preferences.hpp"
+#include "editor/editor_display.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
-
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gettext.hpp"
+#include "image.hpp"
 
 #include <boost/bind.hpp>
-
-#define ERR_ED LOG_STREAM_INDENT(err, editor)
 
 namespace gui2 {
 
@@ -76,23 +76,33 @@ namespace gui2 {
 
 REGISTER_DIALOG(editor_settings)
 
-teditor_settings::teditor_settings()
-	: redraw_callback_()
-	, tods_()
+teditor_settings::teditor_settings(editor::editor_display* display
+		, const std::vector<time_of_day>& tods)
+	: tods_(tods)
 	, current_tod_(0)
 	, current_tod_label_(NULL)
 	, current_tod_image_(NULL)
 	, custom_tod_toggle_(NULL)
 	, custom_tod_auto_refresh_(NULL)
 	, custom_tod_toggle_field_(register_bool("custom_tod_toggle", false))
-	, custom_tod_red_(NULL)
-	, custom_tod_green_(NULL)
-	, custom_tod_blue_(NULL)
-	, custom_tod_red_field_(register_integer("custom_tod_red", false))
-	, custom_tod_green_field_(register_integer("custom_tod_green", false))
-	, custom_tod_blue_field_(register_integer("custom_tod_blue", false))
-	, use_mdi_field_(register_bool("use_mdi"))
+	, custom_tod_red_field_(register_integer("custom_tod_red"
+				, false
+				, &preferences::editor::tod_r
+				, &preferences::editor::set_tod_r))
+	, custom_tod_green_field_(register_integer("custom_tod_green"
+				, false
+				, &preferences::editor::tod_g
+				, &preferences::editor::set_tod_g))
+	, custom_tod_blue_field_(register_integer("custom_tod_blue"
+				, false
+				, &preferences::editor::tod_b
+				, &preferences::editor::set_tod_b))
+	, display_(display)
 {
+	register_bool("use_mdi"
+			, false
+			, &preferences::editor::use_mdi
+			, &preferences::editor::set_use_mdi);
 }
 
 void teditor_settings::do_next_tod(twindow& window)
@@ -109,34 +119,17 @@ const time_of_day& teditor_settings::get_selected_tod() const
 	return tods_[current_tod_];
 }
 
-int teditor_settings::get_red() const
-{
-	return custom_tod_red_field_->get_cache_value();
-}
-int teditor_settings::get_green() const
-{
-	return custom_tod_green_field_->get_cache_value();
-}
-int teditor_settings::get_blue() const
-{
-	return custom_tod_blue_field_->get_cache_value();
-}
-
-void teditor_settings::set_use_mdi(bool value)
-{
-	use_mdi_field_->set_cache_value(value);
-}
-
-bool teditor_settings::get_use_mdi() const
-{
-	return use_mdi_field_->get_cache_value();
-}
-
 void teditor_settings::update_tod_display(twindow& window)
 {
-	redraw_callback_(custom_tod_red_->get_value(),
-		custom_tod_green_->get_value(),
-		custom_tod_blue_->get_value());
+	image::set_color_adjustment(
+			  custom_tod_red_field_->get_widget_value(window)
+			, custom_tod_green_field_->get_widget_value(window)
+			, custom_tod_blue_field_->get_widget_value(window));
+
+	if(display_) {
+		display_->redraw_everything();
+	}
+
 	window.set_dirty(true);
 }
 
@@ -145,23 +138,6 @@ void teditor_settings::slider_update_callback(twindow& window)
 	if (custom_tod_auto_refresh_->get_value()) {
 		update_tod_display(window);
 	}
-}
-
-void teditor_settings::set_current_adjustment(int r, int g, int b)
-{
-	for (size_t i = 0; i < tods_.size(); ++i) {
-		time_of_day& tod = tods_[i];
-		if (tod.red == r && tod.green == g && tod.blue == b) {
-			current_tod_ = i;
-			custom_tod_toggle_field_->set_cache_value(false);
-			return;
-		}
-	}
-	/* custom tod */
-	custom_tod_red_field_->set_cache_value(r);
-	custom_tod_green_field_->set_cache_value(g);
-	custom_tod_blue_field_->set_cache_value(b);
-	custom_tod_toggle_field_->set_cache_value(true);
 }
 
 void teditor_settings::update_selected_tod_info(twindow& window)
@@ -182,16 +158,19 @@ void teditor_settings::update_selected_tod_info(twindow& window)
 		 * image widget.
 		 */
 		//current_tod_image_->set_icon_name(get_selected_tod().image);
-		custom_tod_red_->set_value(get_selected_tod().red);
-		custom_tod_green_->set_value(get_selected_tod().green);
-		custom_tod_blue_->set_value(get_selected_tod().blue);
-		custom_tod_red_field_->set_cache_value(get_selected_tod().red);
-		custom_tod_green_field_->set_cache_value(get_selected_tod().green);
-		custom_tod_blue_field_->set_cache_value(get_selected_tod().blue);
+		custom_tod_red_field_->set_widget_value(
+				  window
+				, get_selected_tod().red);
+		custom_tod_green_field_->set_widget_value(
+				  window
+				, get_selected_tod().green);
+		custom_tod_blue_field_->set_widget_value(
+				  window
+				, get_selected_tod().blue);
 	}
-	custom_tod_red_->set_active(custom);
-	custom_tod_green_->set_active(custom);
-	custom_tod_blue_->set_active(custom);
+	custom_tod_red_field_->widget()->set_active(custom);
+	custom_tod_green_field_->widget()->set_active(custom);
+	custom_tod_blue_field_->widget()->set_active(custom);
 	current_tod_label_->set_active(!custom);
 	update_tod_display(window);
 	window.invalidate_layout();
@@ -208,12 +187,6 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 			&window, "custom_tod_toggle", false, true);
 	custom_tod_auto_refresh_ = find_widget<ttoggle_button>(
 			&window, "custom_tod_auto_refresh", false, true);
-	custom_tod_red_ = find_widget<tslider>(
-			&window, "custom_tod_red", false, true);
-	custom_tod_green_ = find_widget<tslider>(
-			&window, "custom_tod_green", false, true);
-	custom_tod_blue_ = find_widget<tslider>(
-			&window, "custom_tod_blue", false, true);
 
 	tbutton& next_tod_button = find_widget<tbutton>(
 			&window, "next_tod", false);
@@ -234,23 +207,39 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 			dialog_callback<teditor_settings
 				, &teditor_settings::update_selected_tod_info>);
 
-	connect_signal_notify_modified(*custom_tod_red_
+	connect_signal_notify_modified(*(custom_tod_red_field_->widget())
 			, boost::bind(
 				  &teditor_settings::slider_update_callback
 				, this
 				, boost::ref(window)));
 
-	connect_signal_notify_modified(*custom_tod_green_
+	connect_signal_notify_modified(*(custom_tod_green_field_->widget())
 			, boost::bind(
 				  &teditor_settings::slider_update_callback
 				, this
 				, boost::ref(window)));
 
-	connect_signal_notify_modified(*custom_tod_blue_
+	connect_signal_notify_modified(*(custom_tod_blue_field_->widget())
 			, boost::bind(
 				  &teditor_settings::slider_update_callback
 				, this
 				, boost::ref(window)));
+
+	for (size_t i = 0; i < tods_.size(); ++i) {
+
+		time_of_day& tod = tods_[i];
+		const int r = custom_tod_red_field_->get_widget_value(window);
+		const int g = custom_tod_green_field_->get_widget_value(window);
+		const int b = custom_tod_blue_field_->get_widget_value(window);
+		if (tod.red == r && tod.green == g && tod.blue == b) {
+			current_tod_ = i;
+			custom_tod_toggle_->set_value(false);
+			return;
+		}
+	}
+
+	/* custom tod */
+	custom_tod_toggle_->set_value(true);
 
 	update_selected_tod_info(window);
 }

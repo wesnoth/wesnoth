@@ -665,13 +665,8 @@ struct twrapper<gui2::teditor_resize_map>
 template<>
 struct twrapper<gui2::teditor_settings>
 {
-	static void dummy_callback(int, int, int) {}
-
 	static gui2::teditor_settings* create()
 	{
-		gui2::teditor_settings* result = new gui2::teditor_settings();
-		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
-
 		const config &cfg = main_config.child("editor_times");
 		BOOST_REQUIRE_MESSAGE(cfg, "No editor time-of-day defined");
 
@@ -679,11 +674,7 @@ struct twrapper<gui2::teditor_settings>
 		foreach (const config &i, cfg.child_range("time")) {
 			tods.push_back(time_of_day(i));
 		}
-		result->set_tods(tods);
-
-		result->set_redraw_callback(boost::bind(dummy_callback, _1, _2, _3));
-
-		return result;
+		return new gui2::teditor_settings(NULL, tods);
 	}
 };
 

@@ -103,7 +103,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, background_terrain_(t_translation::GRASS_LAND)
 	, clipboard_()
 	, auto_update_transitions_(preferences::editor::auto_update_transitions())
-	, use_mdi_(preferences::editor::use_mdi())
 	, default_dir_(preferences::editor::default_dir())
 {
 	create_default_context();
@@ -385,23 +384,8 @@ void editor_controller::editor_settings_dialog()
 		return;
 	}
 
-	gui2::teditor_settings dialog;
-	dialog.set_tods(tods_);
-	dialog.set_current_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
-	dialog.set_redraw_callback(boost::bind(&editor_controller::editor_settings_dialog_redraw_callback, this, _1, _2, _3));
 	image::color_adjustment_resetter adjust_resetter;
-	dialog.set_use_mdi(use_mdi_);
-	dialog.show(gui().video());
-
-	int res = dialog.get_retval();
-	if(res == gui2::twindow::OK) {
-		image::set_color_adjustment(dialog.get_red(), dialog.get_green(), dialog.get_blue());
-		preferences::editor::set_tod_r(dialog.get_red());
-		preferences::editor::set_tod_g(dialog.get_green());
-		preferences::editor::set_tod_b(dialog.get_blue());
-		use_mdi_ = dialog.get_use_mdi();
-		preferences::editor::set_use_mdi(use_mdi_);
-	} else {
+	if(!gui2::teditor_settings::execute(&(gui()), tods_, gui().video())) {
 		adjust_resetter.reset();
 	}
 	refresh_all();
@@ -431,20 +415,25 @@ void editor_controller::set_default_dir(const std::string& str)
 
 void editor_controller::load_map_dialog(bool force_same_context /* = false */)
 {
-	if (!use_mdi_ && !confirm_discard()) return;
+	if (!preferences::editor::use_mdi() && !confirm_discard()) {
+		return;
+	}
+
 	std::string fn = directory_name(get_map_context().get_filename());
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Map to Open"));
 	if (res == 0) {
-		load_map(fn, force_same_context ? false : use_mdi_);
+		load_map(fn, force_same_context
+				? false
+				: preferences::editor::use_mdi());
 	}
 }
 
 void editor_controller::new_map_dialog()
 {
-	if (!use_mdi_ && !confirm_discard()) {
+	if (!preferences::editor::use_mdi() && !confirm_discard()) {
 		return;
 	}
 
@@ -452,7 +441,7 @@ void editor_controller::new_map_dialog()
 	int h = get_map().h();
 	if(gui2::teditor_new_map::execute(w, h, gui().video())) {
 		const t_translation::t_terrain fill = t_translation::GRASS_LAND;
-		new_map(w, h, fill, use_mdi_);
+		new_map(w, h, fill, preferences::editor::use_mdi());
 	}
 }
 
