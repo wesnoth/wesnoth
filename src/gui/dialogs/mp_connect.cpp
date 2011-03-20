@@ -157,17 +157,17 @@ static void show_server_list(
 }
 
 tmp_connect::tmp_connect()
-	: host_name_(register_text("host_name", false,
-		preferences::network_host,
-		preferences::set_network_host))
+	: host_name_(register_text2("host_name"
+			, true
+			, preferences::network_host
+			, preferences::set_network_host
+			, true))
 {
 }
 
 void tmp_connect::pre_show(CVideo& video, twindow& window)
 {
 	assert(host_name_);
-
-	window.keyboard_capture(host_name_->widget(window));
 
 	// Set view list callback button.
 	if(tbutton* button = find_widget<tbutton>(&window, "list", false, false)) {
