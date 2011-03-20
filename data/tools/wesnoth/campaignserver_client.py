@@ -314,7 +314,7 @@ class CampaignClient:
 
         def put_file(name, f):
             for ig in ign:
-                if ig[-1] != "/" and fnmatch.fnmatch(name, ig):
+                if ig and ig[-1] != "/" and fnmatch.fnmatch(name, ig):
                     print("Ignored file", name)
                     return None
             fileNode = wmldata.DataSub("file")
@@ -334,9 +334,10 @@ class CampaignClient:
 
         def put_dir(name, path):
             for ig in ign:
-                if ig[-1] == "/" and fnmatch.fnmatch(name, ig[:-1]):
+                if ig and ig[-1] == "/" and fnmatch.fnmatch(name, ig[:-1]):
                     print("Ignored dir", name)
                     return None
+
             dataNode = wmldata.DataSub("dir")
             dataNode.set_text_val("name", name)
             for fn in glob.glob(path + "/*"):

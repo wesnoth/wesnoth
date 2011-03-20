@@ -292,7 +292,7 @@ if __name__ == "__main__":
         if os.path.exists(ignfile):
             ign = open(ignfile).readlines()
             # strip line endings and whitespace
-            ign = [i.strip() for i in ign]
+            ign = [i.strip() for i in ign if i.strip()]
         else:
             ign = [
                 ".*",
