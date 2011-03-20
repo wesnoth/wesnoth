@@ -78,14 +78,14 @@ CATALOGS = @CATALOGS@
 .SUFFIXES: .po .gmo .mo .sed .sin .nop .po-create .po-update
 
 .po.mo:
-	@echo "$(MSGFMT) -c -o $@ $<"; \
-	$(MSGFMT) -c -o t-$@ $< && mv t-$@ $@
+	@echo "$(MSGFMT) --check-format --check-domain -o $@ $<"; \
+	$(MSGFMT) --check-format --check-domain -o t-$@ $< && mv t-$@ $@
 
 .po.gmo:
 	@lang=`echo $* | sed -e 's,.*/,,'`; \
 	test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
-	echo "$${cdcmd}rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics -o $${lang}.gmo $${lang}.po"; \
-	cd $(srcdir) && rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics -o t-$${lang}.gmo $${lang}.po && if test -f t-$${lang}.gmo; then mv t-$${lang}.gmo $${lang}.gmo; fi
+	echo "$${cdcmd}rm -f $${lang}.gmo && $(GMSGFMT) --check-format --check-domain --statistics -o $${lang}.gmo $${lang}.po"; \
+	cd $(srcdir) && rm -f $${lang}.gmo && $(GMSGFMT) --check-format --check-domain --statistics -o t-$${lang}.gmo $${lang}.po && if test -f t-$${lang}.gmo; then mv t-$${lang}.gmo $${lang}.gmo; fi
 
 .sin.sed:
 	sed -e '/^#/d' $< > t-$@
