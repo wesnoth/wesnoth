@@ -1,5 +1,7 @@
 <?php
 $langs['af'] = 'Afrikaans';
+$langs['ang'] = 'Old English';
+$langs['ang@latin'] = 'Old English (Latin chars)';
 $langs['ar'] = 'Arabic';
 $langs['bg'] = 'Bulgarian';
 $langs['ca'] = 'Catalan';
