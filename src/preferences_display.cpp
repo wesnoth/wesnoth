@@ -25,6 +25,7 @@
 
 #include "construct_dialog.hpp"
 #include "display.hpp"
+#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"

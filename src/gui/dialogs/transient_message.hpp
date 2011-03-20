@@ -17,7 +17,6 @@
 #define GUI_DIALOGS_TRANSIENT_MESSAGE_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/control.hpp"
 
 namespace gui2 {
 
@@ -26,37 +25,14 @@ class ttransient_message
 	: public tdialog
 {
 public:
-	ttransient_message(const std::string& title,
-			bool title_use_markup,
-			const std::string& message,
-			bool message_use_markup,
-			const std::string& image)
-		: title_(title)
-		, title_use_markup_(title_use_markup)
-		, message_(message)
-		, message_use_markup_(message_use_markup)
-		, image_(image)
-	{}
 
-protected:
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	ttransient_message(const std::string& title
+			, const bool title_use_markup
+			, const std::string& message
+			, const bool message_use_markup
+			, const std::string& image);
 
 private:
-	/** The title for the dialog. */
-	std::string title_;
-
-	/** Use markup for the title. */
-	bool title_use_markup_;
-
-	/** The message to show to the user. */
-	std::string message_;
-
-	/** Use markup for the message. */
-	bool message_use_markup_;
-
-	/** An optional image to show at the left of the text. */
-	std::string image_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
@@ -68,7 +44,7 @@ private:
  * This shows a dialog with a short message which can be dismissed with a
  * single click.
  *
- * @note The message _should_ be small enough to fit on the window, the test
+ * @note The message _should_ be small enough to fit on the window, the text
  * can contain newlines and will wrap when needed.
  *
  * @param video               The video which contains the surface to draw
@@ -79,11 +55,12 @@ private:
  * @param message_use_markup  Use markup for the message?
  * @param title_use_markup    Use markup for the title?
  */
-void show_transient_message(CVideo& video, const std::string& title,
-	const std::string& message,
-	const std::string& image = std::string(),
-	bool message_use_markup = false,
-	bool title_use_markup = false);
+void show_transient_message(CVideo& video
+		, const std::string& title
+		, const std::string& message
+		, const std::string& image = std::string()
+		, const bool message_use_markup = false
+		, const bool title_use_markup = false);
 
 /**
  * Shows a transient error message to the user.
@@ -100,7 +77,7 @@ void show_transient_message(CVideo& video, const std::string& title,
 void show_transient_error_message(CVideo& video
 		, const std::string& message
 		, const std::string& image = std::string()
-		, bool message_use_markup = false);
+		, const bool message_use_markup = false);
 
 } // namespace gui2
 

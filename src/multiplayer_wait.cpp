@@ -26,6 +26,7 @@
 #include "marked-up_text.hpp"
 #include "multiplayer_wait.hpp"
 #include "statistics.hpp"
+#include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
