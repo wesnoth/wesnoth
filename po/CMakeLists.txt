@@ -213,9 +213,11 @@ endif(ENABLE_POT_UPDATE_TARGET)
 
 if(ENABLE_NLS)
 
+	set(GETTEXT_MSGFMT_PARAMETER --check-format --check-domain )
+
 	if(ENABLE_POT_UPDATE_TARGET)
 		# Only set the verbose flag for maintainers.
-		set(GETTEXT_MSGFMT_PARAMETER -v)
+		set(GETTEXT_MSGFMT_PARAMETER -v ${GETTEXT_MSGFMT_PARAMETER} )
 	endif(ENABLE_POT_UPDATE_TARGET)
 
 	foreach(LINGUA ${LINGUAS})
