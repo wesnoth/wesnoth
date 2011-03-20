@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-01 11:25+0100\n"
+"POT-Creation-Date: 2011-03-20 16:54+0100\n"
 "PO-Revision-Date: 2009-10-12 21:45-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -688,19 +688,42 @@ msgstr "𐑢𐑺𐑦𐑙 𐑞𐑦𐑕 𐑨𐑥𐑘𐑩𐑤𐑩𐑑 𐑢𐑦𐑤 
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:782
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:329
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:533
-msgid "I am not suited to using this item! Let another take it."
-msgstr "𐑲 𐑨𐑥 𐑯𐑪𐑑 𐑕𐑿𐑑𐑩𐑛 𐑑 𐑿𐑟𐑦𐑙 𐑞𐑦𐑕 𐑲𐑑𐑩𐑥! 𐑤𐑧𐑑 𐑩𐑯𐑳𐑞𐑼 𐑑𐑱𐑒 𐑦𐑑."
+#, fuzzy
+msgid "holy amulet^Take it"
+msgstr "𐑣𐑴𐑤𐑰 𐑨𐑥𐑘𐑩𐑤𐑩𐑑"
 
-#. [object]
+#. [scenario]: id=05_Northern_Outpost
+#. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=09_Xenophobia
+#. [scenario]: id=11_Captured
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:213
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:783
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:330
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:534
+msgid "holy amulet^Leave it"
+msgstr ""
+
+#. [scenario]: id=05_Northern_Outpost
+#. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=09_Xenophobia
+#. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:214
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:784
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:331
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:535
+msgid "I am not suited to using this item! Let another take it."
+msgstr "𐑲 𐑨𐑥 𐑯𐑪𐑑 𐑕𐑿𐑑𐑩𐑛 𐑑 𐑿𐑟𐑦𐑙 𐑞𐑦𐑕 𐑲𐑑𐑩𐑥! 𐑤𐑧𐑑 𐑩𐑯𐑳𐑞𐑼 𐑑𐑱𐑒 𐑦𐑑."
+
+#. [object]
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:216
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:786
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:333
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:537
 msgid "Holy Amulet"
 msgstr "𐑣𐑴𐑤𐑰 𐑨𐑥𐑘𐑩𐑤𐑩𐑑"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:250
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:252
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold."
@@ -708,12 +731,12 @@ msgstr ""
 "𐑞𐑺 𐑦𐑟 𐑩 𐑜𐑮𐑱𐑑 𐑓𐑹𐑑𐑿𐑯 𐑦𐑯 𐑞𐑦𐑕 𐑗𐑧𐑕𐑑 𐑝 𐑑𐑮𐑧𐑠𐑼! 𐑲 𐑒𐑨𐑯 𐑒𐑬𐑯𐑑 𐑑𐑵 𐑣𐑳𐑯𐑛𐑮𐑧𐑛 𐑐𐑰𐑕𐑩𐑟 𐑝 𐑜𐑴𐑤𐑛."
 
 #. [message]: speaker=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:326
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:329
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "𐑢𐑰 𐑣𐑨𐑝 𐑓𐑬𐑯𐑛 𐑿, 𐑓𐑤𐑧𐑖𐑚𐑨𐑜! 𐑐𐑮𐑰𐑐𐑺 𐑑 𐑛𐑲!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:330
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:333
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
 "leading east. That is unfortunate, for it will take us further from Weldyn. "
@@ -723,7 +746,7 @@ msgstr ""
 "𐑦𐑟 𐑳𐑯𐑓𐑹𐑑𐑿𐑯𐑩𐑑, 𐑓𐑹 𐑦𐑑 𐑢𐑦𐑤 𐑑𐑱𐑒 𐑳𐑕 𐑓𐑻𐑞𐑼 𐑓𐑮𐑪𐑥 ·𐑢𐑧𐑤𐑛𐑦𐑯. 𐑚𐑳𐑑 𐑦𐑑 𐑦𐑟 𐑬𐑼 𐑴𐑯𐑤𐑦 𐑪𐑐𐑖𐑩𐑯."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:343
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:346
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "𐑢𐑰 𐑣𐑨𐑝 𐑮𐑰𐑗𐑑 𐑞 𐑧𐑯𐑛 𐑝 𐑞 𐑑𐑳𐑯𐑩𐑤. 𐑲 𐑕𐑰 𐑛𐑱𐑤𐑲𐑑 𐑩𐑚𐑳𐑝 𐑳𐑕!"
 
@@ -2286,12 +2309,12 @@ msgid "Huh? Who’s there, who said that?"
 msgstr "𐑣𐑩? 𐑣𐑵𐑟 𐑞𐑺, 𐑣𐑵 𐑕𐑧𐑛 𐑞𐑨𐑑?"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:571
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:573
 msgid "I see the exit to the tunnel! Onward!"
 msgstr "𐑲 𐑕𐑰 𐑞 𐑧𐑜𐑟𐑦𐑑 𐑑 𐑞 𐑑𐑳𐑯𐑩𐑤! 𐑪𐑯𐑢𐑼𐑛!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:575
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:577
 msgid ""
 "Wait! We cannot go out that way. There are too many orcs. We must exit "
 "through the south-west gates."
@@ -2300,12 +2323,12 @@ msgstr ""
 "𐑜𐑱𐑑𐑕."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:579
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:581
 msgid "Very well. We must go the other way."
 msgstr "𐑝𐑧𐑮𐑦 𐑢𐑧𐑤. 𐑢𐑰 𐑥𐑳𐑕𐑑 𐑜𐑴 𐑞 𐑳𐑞𐑼 𐑢𐑱."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:594
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:596
 msgid "Good! We have escaped these accursed caves!"
 msgstr "𐑜𐑫𐑛! 𐑢𐑰 𐑣𐑨𐑝 𐑦𐑕𐑒𐑱𐑐𐑑 𐑞𐑰𐑟 𐑩𐑒𐑻𐑕𐑑 𐑒𐑱𐑝𐑟!"
 

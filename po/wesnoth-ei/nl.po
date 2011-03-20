@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-01 11:25+0100\n"
+"POT-Creation-Date: 2011-03-20 16:54+0100\n"
 "PO-Revision-Date: 2007-02-16 00:58+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -701,21 +701,44 @@ msgstr "Het dragen van dit amulet maakt elke klap die je uitdeelt heilig!"
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:782
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:329
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:533
+#, fuzzy
+msgid "holy amulet^Take it"
+msgstr "Heilig Amulet"
+
+#. [scenario]: id=05_Northern_Outpost
+#. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=09_Xenophobia
+#. [scenario]: id=11_Captured
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:213
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:783
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:330
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:534
+msgid "holy amulet^Leave it"
+msgstr ""
+
+#. [scenario]: id=05_Northern_Outpost
+#. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=09_Xenophobia
+#. [scenario]: id=11_Captured
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:214
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:784
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:331
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:535
 msgid "I am not suited to using this item! Let another take it."
 msgstr ""
 "Ik ben niet in staat dit voorwerp te gebruiken. Laat een ander er wel bij "
 "varen."
 
 #. [object]
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:214
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:784
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:331
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:535
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:216
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:786
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:333
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:537
 msgid "Holy Amulet"
 msgstr "Heilig Amulet"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:250
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:252
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold."
@@ -723,13 +746,13 @@ msgstr ""
 "Deze koffer bevat een heuse schat! Ik kan tweehonderd goudstukken tellen!"
 
 #. [message]: speaker=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:326
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:329
 #, fuzzy
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "We hebben je gevonden, levende! Maak je klaar om te sterven!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:330
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:333
 #, fuzzy
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
@@ -741,7 +764,7 @@ msgstr ""
 "we hebben geen keus."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:343
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:346
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "We hebben het einde van de tunnel bereikt! Ik zie daglicht boven ons!"
 
@@ -2413,12 +2436,12 @@ msgid "Huh? Who’s there, who said that?"
 msgstr "Huh? Wie is daar? Wie zei dat?"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:571
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:573
 msgid "I see the exit to the tunnel! Onward!"
 msgstr "Ik zie de uitgang! Voorwaarts!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:575
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:577
 msgid ""
 "Wait! We cannot go out that way. There are too many orcs. We must exit "
 "through the south-west gates."
@@ -2427,12 +2450,12 @@ msgstr ""
 "zuid-west poorten uit."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:579
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:581
 msgid "Very well. We must go the other way."
 msgstr "Goed, we moeten de andere kant op."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:594
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:596
 msgid "Good! We have escaped these accursed caves!"
 msgstr "Goed! We zijn eindelijk uit deze vervloekte grotten ontsnapt!"
 

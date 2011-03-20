@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ei-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-01 11:25+0100\n"
+"POT-Creation-Date: 2011-03-20 16:54+0100\n"
 "PO-Revision-Date: 2010-09-25 15:09+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team:  <en@li.org>\n"
@@ -699,32 +699,55 @@ msgstr "Nošenje tega amuleta bo povzročilo, da bodo vsi napadi sveti!"
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:782
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:329
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:533
-msgid "I am not suited to using this item! Let another take it."
-msgstr "Ta predmet ni primeren zame! Naj ga vzame kdo drug."
+#, fuzzy
+msgid "holy amulet^Take it"
+msgstr "Sveti amulet"
 
-#. [object]
+#. [scenario]: id=05_Northern_Outpost
+#. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=09_Xenophobia
+#. [scenario]: id=11_Captured
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:213
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:783
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:330
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:534
+msgid "holy amulet^Leave it"
+msgstr ""
+
+#. [scenario]: id=05_Northern_Outpost
+#. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=09_Xenophobia
+#. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:214
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:784
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:331
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:535
+msgid "I am not suited to using this item! Let another take it."
+msgstr "Ta predmet ni primeren zame! Naj ga vzame kdo drug."
+
+#. [object]
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:216
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:786
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:333
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:537
 msgid "Holy Amulet"
 msgstr "Sveti amulet"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:250
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:252
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold."
 msgstr "V tej skrinji je celo bogastvo! Naštel sem dvesto kosov zlata!"
 
 #. [message]: speaker=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:326
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:329
 #, fuzzy
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "Našli smo te, človek! Pripravi se na smrt!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:330
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:333
 #, fuzzy
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
@@ -735,7 +758,7 @@ msgstr ""
 "žalost nas bo to privedlo še dlje of Weldyna. A to je naša edina možnost."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:343
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:346
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "Dosegli smo konec rova! Nad nami vidim dnevno svetlobo!"
 
@@ -2359,12 +2382,12 @@ msgid "Huh? Who’s there, who said that?"
 msgstr "Kaj za...? Kdo je tam, kdo je to rekel?"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:571
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:573
 msgid "I see the exit to the tunnel! Onward!"
 msgstr "Vidim konec rova! Naprej!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:575
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:577
 msgid ""
 "Wait! We cannot go out that way. There are too many orcs. We must exit "
 "through the south-west gates."
@@ -2373,12 +2396,12 @@ msgstr ""
 "jugozahodna vrata."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:579
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:581
 msgid "Very well. We must go the other way."
 msgstr "V redu. Iti moram po drugi poti."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:594
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:596
 msgid "Good! We have escaped these accursed caves!"
 msgstr "Dobro! Zbežali smo iz teh prekletih jam!"
 

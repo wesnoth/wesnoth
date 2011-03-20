@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-01 11:25+0100\n"
+"POT-Creation-Date: 2011-03-20 16:54+0100\n"
 "PO-Revision-Date: 2009-03-20 20:10+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -700,31 +700,54 @@ msgstr "Bu tılsım, kullanan kişinin her vuruşunun gizemli olmasını sağlar
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:782
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:329
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:533
-msgid "I am not suited to using this item! Let another take it."
-msgstr "Ben bu nesneyi kullanmak için uygun değilim. Başka biri alsın."
+#, fuzzy
+msgid "holy amulet^Take it"
+msgstr "Kutsal Tılsım"
 
-#. [object]
+#. [scenario]: id=05_Northern_Outpost
+#. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=09_Xenophobia
+#. [scenario]: id=11_Captured
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:213
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:783
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:330
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:534
+msgid "holy amulet^Leave it"
+msgstr ""
+
+#. [scenario]: id=05_Northern_Outpost
+#. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=09_Xenophobia
+#. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:214
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:784
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:331
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:535
+msgid "I am not suited to using this item! Let another take it."
+msgstr "Ben bu nesneyi kullanmak için uygun değilim. Başka biri alsın."
+
+#. [object]
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:216
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:786
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:333
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:537
 msgid "Holy Amulet"
 msgstr "Kutsal Tılsım"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:250
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:252
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold."
 msgstr "Bu define sandığında büyük bir servet var. İki yüz altın sayabildim."
 
 #. [message]: speaker=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:326
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:329
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "Seni bulduk, et torbası! Ölmeye hazırlan!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:330
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:333
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
 "leading east. That is unfortunate, for it will take us further from Weldyn. "
@@ -735,7 +758,7 @@ msgstr ""
 "Fakat tek seçeneğimiz bu."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:343
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:346
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "Tünelinin sonuna ulaştık. Gün ışığını görebiliyorum."
 
@@ -2368,12 +2391,12 @@ msgid "Huh? Who’s there, who said that?"
 msgstr "Huh? Kim o? Kim konuştu?"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:571
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:573
 msgid "I see the exit to the tunnel! Onward!"
 msgstr "Tünelde bir çıkış görüyorum. İleri!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:575
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:577
 msgid ""
 "Wait! We cannot go out that way. There are too many orcs. We must exit "
 "through the south-west gates."
@@ -2382,12 +2405,12 @@ msgstr ""
 "kullanarak kaçmalıyız."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:579
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:581
 msgid "Very well. We must go the other way."
 msgstr "İyi. Diğer yoldan gitmeliyiz."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:594
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:596
 msgid "Good! We have escaped these accursed caves!"
 msgstr "Güzel! Bu lanetli mağaralardan kaçtık!"
 
