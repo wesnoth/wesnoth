@@ -37,6 +37,10 @@ namespace gui2 {
 
 /**
  * Abstract base class for the fields.
+ *
+ * @note In this context a widget is a @ref gui2::tcontrol and not a @ref
+ * gui2::twidget. This name widget is a generic name and fits, however some
+ * functions used are first declared in a control.
  */
 class tfield_
 {
@@ -49,13 +53,37 @@ public:
 	 *                            A widget can only be connected once.
 	 * @param optional            Is the widget optional?
 	 */
-	tfield_(const std::string& id, const bool optional) :
-		id_(id),
-		optional_(optional)
+	tfield_(const std::string& id, const bool optional)
+		: id_(id)
+		, optional_(optional)
+		, mandatory_(!optional)
+		, widget_(NULL)
 	{
 	}
 
 	virtual ~tfield_() {}
+
+	/**
+	 * Attaches the field to a window.
+	 *
+	 * When attached the widget which we're a wrapper around is stored linked
+	 * in here.
+	 *
+	 * @warning After attaching the window must remain a valid. Before the
+	 * window is destroyed the @ref detach_from_window function must be called.
+	 *
+	 * @todo Most functions that have a window parameter only use it to get the
+	 * widget. Evaluate and remove the window parameter where applicable.
+	 *
+	 * @pre widget_ == NULL
+	 *
+	 * @param window               The window to be attached to.
+	 */
+	void attach_to_window(twindow& window)
+	{
+		assert(!widget_);
+		widget_ = find_widget<tcontrol>(&window, id(), false, mandatory_);
+	}
 
 	/**
 	 * Initializes the widget.
@@ -98,6 +126,19 @@ public:
 	{
 		finalize_generic(window);
 		finalize_specialized(window);
+	}
+
+	/**
+	 * Detaches the field from a window.
+	 *
+	 * @pre widget_ != NULL || !mandatory_
+	 *
+	 * @param window               The window to be attached to.
+	 */
+	void detach_from_window()
+	{
+		assert(!mandatory_ || widget_);
+		widget_ = NULL;
 	}
 
 	/**
@@ -157,34 +198,38 @@ public:
 		widget->set_active(enable);
 	}
 
-	/**
-	 * Returns the widget associated with the field.
-	 *
-	 * @param window              The window containing the widget.
-	 *
-	 * @returns                   The widget NULL if not found and optional.
-	 */
-	twidget* widget(twindow& window) {
-
-		twidget* widget = dynamic_cast<tcontrol*>(window.find(id(), false));
-		VALIDATE(optional_ || widget, missing_widget(id()));
-
-		return widget;
-	}
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	const std::string& id() const { return id_; }
 
 	bool is_optional() const { return optional_; }
 
+	tcontrol* widget()
+	{
+		return widget_;
+	}
+
+	const tcontrol* widget() const
+	{
+		return widget_;
+	}
+
 private:
 	/** The id field of the widget, should be unique in a window. */
 	const std::string id_;
 
-	/** Is the widget optional or mandatory in this window. */
-	bool optional_;
+	/**
+	 * Is the widget optional or mandatory in this window.
+	 *
+	 * @deprecated Use @ref mandatory_ instead.
+	 */
+	const bool optional_;
 
+	/** Is the widget optional or mandatory in this window. */
+	const bool mandatory_;
+
+	/** The widget attached to the field. */
+	tcontrol* widget_;
 
 	/** See widget_init. */
 	virtual void init_generic(twindow& window) = 0;

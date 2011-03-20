@@ -64,9 +64,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 	 */
 	events::discard(SDL_EVENTMASK(DOUBLE_CLICK_EVENT));
 
-	if(retval_ ==  twindow::OK || always_save_fields_) {
-		finalize_fields(*window);
-	}
+	finalize_fields(*window, (retval_ ==  twindow::OK || always_save_fields_));
 
 	post_show(*window);
 
@@ -226,6 +224,7 @@ twindow* tdialog::build_window(CVideo& video) const
 void tdialog::init_fields(twindow& window)
 {
 	foreach(tfield_* field, fields_) {
+		field->attach_to_window(window);
 		field->widget_init(window);
 	}
 
@@ -236,10 +235,13 @@ void tdialog::init_fields(twindow& window)
 	}
 }
 
-void tdialog::finalize_fields(twindow& window)
+void tdialog::finalize_fields(twindow& window, const bool save_fields)
 {
 	foreach(tfield_* field, fields_) {
-		field->widget_finalize(window);
+		if(save_fields) {
+			field->widget_finalize(window);
+		}
+		field->detach_from_window();
 	}
 }
 

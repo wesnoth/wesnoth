@@ -438,8 +438,9 @@ private:
 	 * Saving only happens if a callback handler is installed.
 	 *
 	 * @param window              The window which has been shown.
+	 * @param save_fields         Does the value in the fields need to be saved?
 	 */
-	virtual void finalize_fields(twindow& window);
+	virtual void finalize_fields(twindow& window, const bool save_fields);
 };
 
 } // namespace gui2
