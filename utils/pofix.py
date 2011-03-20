@@ -161,6 +161,10 @@ stringfixes = {
 
 # Kill ugly hyphenated version
 ("Re-initialize fonts", "Reinitialize fonts"),
+
+# add the font for Old English
+("DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc", "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"),
+("DejaVu Sans,Andagii,WenQuanYi Zen Hei", "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"),
 ),
 
 "wesnoth-anl" : (
