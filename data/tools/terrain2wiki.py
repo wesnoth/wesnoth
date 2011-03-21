@@ -13,7 +13,7 @@ import re
 try:
     import argparse
 except ImportError:
-    print 'Please install argparse by running "easy_install argparse"'
+    print('Please install argparse by running "easy_install argparse"')
     sys.exit(1)
 
 
@@ -85,7 +85,7 @@ dest='output_path', help="The location of the ouput file.")
     output_path = args.output_path
 
     if not os.path.exists(path) and not path.endswith('.cfg'):
-        print "Invalid path: '%s' does not exist" % path
+        print("Invalid path: '%s' does not exist") % path
         sys.exit(1)
 
     with open(path, "r") as input_file:
