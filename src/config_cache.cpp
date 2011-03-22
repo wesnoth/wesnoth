@@ -27,6 +27,7 @@
 #include "sha1.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
+#include "version.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
 
@@ -80,6 +81,8 @@ namespace game_config {
 #if defined(__APPLE__)
 		defines_map_["APPLE"] = preproc_define();
 #endif
+
+		defines_map_["VERSION"] = preproc_define(game_config::wesnoth_version.str());
 
 	}
 
