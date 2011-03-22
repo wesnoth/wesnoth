@@ -36,6 +36,7 @@
 #include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/auxiliary/window_builder/button.hpp"
 #include "gui/auxiliary/window_builder/drawing.hpp"
+#include "gui/auxiliary/window_builder/password_box.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -110,6 +111,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(minimap);
 	TRY(button);
 	TRY(drawing);
+	TRY(password_box);
 #undef TRY
 #endif
 
