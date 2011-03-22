@@ -162,9 +162,13 @@ namespace game_config {
 		defines_string << path;
 		for(preproc_map::const_iterator i = defines_map_.begin(); i != defines_map_.end(); ++i) {
 			if(i->second.value != "" || i->second.arguments.empty() == false) {
-				is_valid = false;
-				ERR_CACHE << "Preprocessor define not valid\n";
-				break;
+				// VERSION is defined non-empty by the engine,
+				// it should be safe to rely on caches containing it.
+				if(i->first != "VERSION") {
+					is_valid = false;
+					ERR_CACHE << "Preprocessor define not valid\n";
+					break;
+				}
 			}
 
 			defines_string << " " << i->first;
