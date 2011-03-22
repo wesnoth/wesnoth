@@ -82,7 +82,7 @@ namespace game_config {
 		defines_map_["APPLE"] = preproc_define();
 #endif
 
-		defines_map_["VERSION"] = preproc_define(game_config::wesnoth_version.str());
+		defines_map_["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
 
 	}
 
@@ -164,7 +164,7 @@ namespace game_config {
 			if(i->second.value != "" || i->second.arguments.empty() == false) {
 				// VERSION is defined non-empty by the engine,
 				// it should be safe to rely on caches containing it.
-				if(i->first != "VERSION") {
+				if(i->first != "WESNOTH_VERSION") {
 					is_valid = false;
 					ERR_CACHE << "Preprocessor define not valid\n";
 					break;

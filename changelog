@@ -62,7 +62,7 @@ Version 1.9.4+svn:
    * Introduced [move_unit]check_passability= (default yes, previously it was
      always yes/non-existent) key to allow disabling the check for suitable terrain.
    * Added TAKE_IT_STRING and LEAVE_IT_STRING arguments to PICKUPPABLE_ITEM
-   * Added an engine-defined VERSION macro that expands to the Wesnoth engine
+   * Added an engine-defined WESNOTH_VERSION macro that expands to the Wesnoth engine
      version string.
    * The tags [remove_shroud] and [place_shroud] now take comma-separated lists of sides.
      They default to affecting all sides now if no side is set.
