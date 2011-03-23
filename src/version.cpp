@@ -47,7 +47,10 @@ version_info::version_info(const std::string& str)
 	, special_separator_('\0')
 	, sane_(true)
 {
-	if(str.empty())
+	std::string v = str;
+	utils::strip(v);
+
+	if(v.empty())
 		return;
 
 	//
@@ -56,10 +59,10 @@ version_info::version_info(const std::string& str)
 	//
 	// For 1.5.2 it is at npos.
 	//
-	const std::string::size_type breakpoint_pos = str.find_first_not_of(".0123456789");
+	const std::string::size_type breakpoint_pos = v.find_first_not_of(".0123456789");
 	std::string left_side;
 	if(breakpoint_pos != std::string::npos) {
-		const std::string right_side = str.substr(breakpoint_pos);
+		const std::string right_side = v.substr(breakpoint_pos);
 		assert(right_side.empty() == false);
 
 		if((right_side[0] >= 'A' && right_side[0] <= 'Z') || (right_side[0] >= 'a' && right_side[0] <= 'z')) {
@@ -73,10 +76,10 @@ version_info::version_info(const std::string& str)
 			}
 		}
 
-		left_side = str.substr(0, breakpoint_pos);
+		left_side = v.substr(0, breakpoint_pos);
 	}
 	else {
-		left_side = str;
+		left_side = v;
 	}
 
 	const std::vector<std::string> components = utils::split(left_side, '.');
