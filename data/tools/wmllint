@@ -1020,10 +1020,10 @@ def global_sanity_check(filename, lines):
     recruitment_pattern = {}
     ifdef_stack = [None]
     for i in range(len(lines)):
-        if lines[i].startswith("#ifdef") or lines[i].startswith("#ifhave"):
+        if lines[i].startswith("#ifdef") or lines[i].startswith("#ifhave") or lines[i].startswith("#ifver"):
             ifdef_stack.append(lines[i].strip().split()[1])
             continue
-        if lines[i].startswith("#ifndef") or lines[i].startswith("#ifnhave"):
+        if lines[i].startswith("#ifndef") or lines[i].startswith("#ifnhave") or lines[i].startswith("#ifnver"):
             ifdef_stack.append("!" + lines[i].strip().split()[1])
             continue
         if lines[i].startswith("#else"):

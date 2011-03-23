@@ -65,6 +65,8 @@ Version 1.9.4+svn:
    * Added TAKE_IT_STRING and LEAVE_IT_STRING arguments to PICKUPPABLE_ITEM
    * Added an engine-defined WESNOTH_VERSION macro that expands to the Wesnoth engine
      version string.
+   * New #ifver/#ifnver preprocessor macro to compare Wesnoth or UMC-defined version
+     numbers as in '#ifver WESNOTH_VERSION >= 1.9.5'.
    * The tags [remove_shroud] and [place_shroud] now take comma-separated lists of sides.
      They default to affecting all sides now if no side is set.
    * The [gold] tag now takes a comma-separated list of sides, and defaults to
