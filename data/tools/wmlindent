@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """\
 wmlindent - re-indent WML in a uniform way.
 
@@ -68,7 +69,7 @@ opener_prefixes = ["{FOREACH "]
 
 def is_directive(str):
     "Identify things that shouldn't be indented."
-    for prefix in ("#ifdef", "#ifndef", "#else", "#endif", "#define", "#enddef", "#undef"):
+    for prefix in ("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#else", "#endif", "#define", "#enddef", "#undef"):
         if str.startswith(prefix):
             return True
     return False
