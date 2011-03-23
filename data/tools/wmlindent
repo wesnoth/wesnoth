@@ -69,7 +69,7 @@ opener_prefixes = ["{FOREACH "]
 
 def is_directive(str):
     "Identify things that shouldn't be indented."
-    for prefix in ("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#else", "#endif", "#define", "#enddef", "#undef"):
+    for prefix in ("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#ifver", "#ifnver", "#else", "#endif", "#define", "#enddef", "#undef"):
         if str.startswith(prefix):
             return True
     return False
