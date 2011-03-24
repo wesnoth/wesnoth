@@ -1,5 +1,5 @@
 Tools for hacking or generating WML, maps, images, and sounds belong here.
-Tools for sanity-checking the mainline campaigns and associated data 
+Tools for sanity-checking the mainline campaigns and associated data
 also belong here.
 
 == Scripts ==
@@ -23,7 +23,7 @@ the add-on server.
 
 Experimental tool that can hack a .cfg referring to a mapfile so that
 all macros with X,Y coordinate pair arguments get their calls transformed
-in a specified way.  Now supports only flipping the map around the Y 
+in a specified way.  Now supports only flipping the map around the Y
 axis, but provides a framework that should make other transformations
 easy.
 
@@ -69,14 +69,14 @@ Presently this generates a table suitable for wiki inclusion.
 === terrain2wiki.rb ===
 
 A script to create the "Terrain Table" on the TerrainLettersWML wiki page.
-Run this and splice the outtput into the wiki whenever you add a new 
+Run this and splice the outtput into the wiki whenever you add a new
 terrain type to mainline.
 
 == Python API ==
 
 === wmltools.py ===
 
-The main facility in this module is a cross-referencer class.  
+The main facility in this module is a cross-referencer class.
 It also contains utility methods for working with the data tree.
 See the header comment of wmltools.py for details
 

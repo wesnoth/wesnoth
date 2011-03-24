@@ -23,7 +23,7 @@ class GameResult:
 	end_turn = '0'
 	version_string = ''
 	winner_side = '0'
-	
+
 	def __init__(self,_ai_config1,_ai_config2,_faction1,_faction2,_map,_test):
 		self.ai_config1 = _ai_config1
 		self.ai_config2 = _ai_config2
@@ -44,11 +44,11 @@ def construct_command_line(cfg,ai1,ai2,f1,f2,map):
 		optmap=''
 	else:
 		optmap='--scenario='+map
-		
-	return wesnoth+' '+options+' '+optmap+' '+ai_config1+' '+ai_config2 
+
+	return wesnoth+' '+options+' '+optmap+' '+ai_config1+' '+ai_config2
 
 def do_filter(str,substring):
-	n = str.find(substring)	
+	n = str.find(substring)
 	if (n>-1):
 		return n,str[n+len(substring):].strip()
 	return n,''
@@ -66,14 +66,14 @@ def run_game(cfg,game_result):
 		str = filter_non_printable(line.strip())
 		n,s = do_filter(str,'info ai/testing: WINNER:')
 		if (n>-1):
-			print 'AND THE WINNER IS: '+s	
+			print 'AND THE WINNER IS: '+s
 			game_result.winner_side = s
 			game_result.is_success = 'true'
 			continue
 
 		n,s = do_filter(str,'info ai/testing: VERSION:')
 		if (n>-1):
-			#print 'AND THE VERSION IS: '+s	
+			#print 'AND THE VERSION IS: '+s
 			game_result.version_string = s
 			n1 = s.rfind('(')
 			n2 = s.rfind(')')
@@ -90,43 +90,43 @@ def run_game(cfg,game_result):
 
 		n,s = do_filter(str,'info ai/testing: GAME_END_TURN:')
 		if (n>-1):
-			print 'AND THE VICTORY_TURN IS: '+s	
+			print 'AND THE VICTORY_TURN IS: '+s
 			game_result.end_turn = s
 			continue
 
 		n,s = do_filter(str,'info ai/testing: AI_IDENTIFIER1:')
 		if (n>-1):
-			#print 'AND THE AI_IDENTIFIER1 IS: '+s	
+			#print 'AND THE AI_IDENTIFIER1 IS: '+s
 			game_result.ai_ident1 = s.strip()
 			continue
 
 		n,s = do_filter(str,'info ai/testing: AI_IDENTIFIER2:')
 		if (n>-1):
-			#print 'AND THE AI_IDENTIFIER2 IS: '+s	
+			#print 'AND THE AI_IDENTIFIER2 IS: '+s
 			game_result.ai_ident2 = s.strip()
 			continue
 
 		n,s = do_filter(str,'info ai/testing: FACTION1:')
 		if (n>-1):
-			#print 'AND THE FACTION1 IS: '+s	
+			#print 'AND THE FACTION1 IS: '+s
 			game_result.faction1 = s
 			continue
 
 		n,s = do_filter(str,'info ai/testing: FACTION2:')
 		if (n>-1):
-			#print 'AND THE FACTION2 IS: '+s	
+			#print 'AND THE FACTION2 IS: '+s
 			game_result.faction2 = s
 			continue
 
 	game_result.duration = time() - start
 	if (game_result.is_success=='false'):
 		print 'Warning: not success!'
-		print '===================='	
+		print '===================='
 		print 'stderr:'
 		for line in outerrlines:
 			print filter_non_printable(line.strip())
-		print '===================='	
-		
+		print '===================='
+
 	return game_result
 
 def save_result(cfg,log_file,game_result):
@@ -143,7 +143,7 @@ def maps(cfg):
 			yield cfg.get('default','map'+`mp`);
 			mp= mp+1
 		except:
-			return	
+			return
 
 def tests(cfg):
 	ai1=cfg.get('default','ai_config1').strip()
@@ -164,7 +164,7 @@ def tests(cfg):
 		else:
 			game_result = GameResult(ai2,ai1,f2,f1,map,'default')
 		yield game_result
-	
+
 # main
 
 cfg = ConfigParser.ConfigParser()
