@@ -935,6 +935,7 @@ static int impl_unit_set(lua_State *L)
 	modify_int_attrib("moves", u.set_movement(value));
 	modify_int_attrib("hitpoints", u.set_hitpoints(value));
 	modify_int_attrib("experience", u.set_experience(value));
+	modify_int_attrib("attacks_left", u.set_attacks(value));
 	modify_bool_attrib("resting", u.set_resting(value));
 	modify_tstring_attrib("name", u.set_name(value));
 	modify_string_attrib("role", u.set_role(value));
