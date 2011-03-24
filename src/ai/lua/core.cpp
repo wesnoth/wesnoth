@@ -61,6 +61,15 @@ void lua_ai_context::init(lua_State *L)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 }
 
+static ai::engine_lua &get_engine(lua_State *L)
+{
+	return *((ai::engine_lua*)lua_touserdata(L, lua_upvalueindex(1)));
+}
+
+static ai::readonly_context &get_readonly_context(lua_State *L)
+{
+	return get_engine(L).get_readonly_context();
+}
 
 static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result)
 {
@@ -104,7 +113,7 @@ static int ai_execute_move(lua_State *L, bool remove_movement)
 		return luaL_typerror(L, index, "location (unit/integers)");
 	}
 
-	int side = ((ai::engine_lua*)lua_touserdata(L,lua_upvalueindex(1)))->get_readonly_context().get_side();
+	int side = get_readonly_context(L).get_side();
 	map_location from, to;
 	if (!to_map_location(L, index, from)) goto error_call_destructors;
 	if (!to_map_location(L, index, to)) goto error_call_destructors;
@@ -130,7 +139,7 @@ static int cfun_ai_execute_attack(lua_State *L)
 		return luaL_typerror(L, index, "location (unit/integers)");
 	}
 
-	ai::readonly_context &context = ((ai::engine_lua*)lua_touserdata(L,lua_upvalueindex(1)))->get_readonly_context();
+	ai::readonly_context &context = get_readonly_context(L);
 
 	int side = context.get_side();
 	map_location attacker, defender;
@@ -160,7 +169,7 @@ static int ai_execute_stopunit_select(lua_State *L, bool remove_movement, bool r
 		return luaL_typerror(L, index, "location (unit/integers)");
 	}
 
-	int side = ((ai::engine_lua*)lua_touserdata(L,lua_upvalueindex(1)))->get_readonly_context().get_side();
+	int side = get_readonly_context(L).get_side();
 	map_location loc;
 	if (!to_map_location(L, index, loc)) goto error_call_destructors;
 
@@ -186,7 +195,7 @@ static int cfun_ai_execute_stopunit_all(lua_State *L)
 static int cfun_ai_execute_recruit(lua_State *L)
 {
 	const char *unit_name = luaL_checkstring(L, 1);
-	int side = ((ai::engine_lua*)lua_touserdata(L,lua_upvalueindex(1)))->get_readonly_context().get_side();
+	int side = get_readonly_context(L).get_side();
 	map_location where;
 	if (!lua_isnoneornil(L, 2)) {
 		where.x = lua_tonumber(L, 2) - 1;
@@ -200,7 +209,7 @@ static int cfun_ai_execute_recruit(lua_State *L)
 static int cfun_ai_execute_recall(lua_State *L)
 {
 	const char *unit_id = luaL_checkstring(L, 1);
-	int side = ((ai::engine_lua*)lua_touserdata(L,lua_upvalueindex(1)))->get_readonly_context().get_side();
+	int side = get_readonly_context(L).get_side();
 	map_location where;
 	if (!lua_isnoneornil(L, 2)) {
 		where.x = lua_tonumber(L, 2) - 1;
@@ -209,6 +218,13 @@ static int cfun_ai_execute_recall(lua_State *L)
 
 	ai::recall_result_ptr recall_result = ai::actions::execute_recall_action(side,true,std::string(unit_id),where);
 	return transform_ai_action(L,recall_result);
+}
+
+static int cfun_ai_get_aggression(lua_State *L)
+{
+	double aggression = get_readonly_context(L).get_aggression();
+	lua_pushnumber(L, aggression);
+	return 1;
 }
 
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
@@ -230,6 +246,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 
 	static luaL_reg const callbacks[] = {
 		{ "attack",           &cfun_ai_execute_attack           },
+		{ "get_aggression",   &cfun_ai_get_aggression           },
 		{ "move",             &cfun_ai_execute_move_partial     },
 		{ "move_full",        &cfun_ai_execute_move_full        },
 		{ "recall",           &cfun_ai_execute_recall           },
