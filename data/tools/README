@@ -1,6 +1,6 @@
 Tools for hacking or generating WML, maps, images, and sounds belong here.
 Tools for sanity-checking the mainline campaigns and associated data
-also belong here.
+also belong here. Other utils are in utils/.
 
 == Scripts ==
 
@@ -66,10 +66,10 @@ unit_tree).
 Extract and format a list of keystroke bindings from a theme file.
 Presently this generates a table suitable for wiki inclusion.
 
-=== terrain2wiki.rb ===
+=== terrain2wiki.py ===
 
 A script to create the "Terrain Table" on the TerrainLettersWML wiki page.
-Run this and splice the outtput into the wiki whenever you add a new
+Run this and splice the output into the wiki whenever you add a new
 terrain type to mainline.
 
 == Python API ==
