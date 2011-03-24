@@ -135,6 +135,7 @@ public:
 	void set_user_end_turn(bool value=true) { end_turn_ = value; }
 	bool user_end_turn() const { return end_turn_; }
 	int attacks_left() const { return (attacks_left_ == 0 || incapacitated()) ? 0 : attacks_left_; }
+	int max_attacks() const { return max_attacks_; }
 	void set_movement(int moves);
 	void set_attacks(int left) { attacks_left_ = std::max<int>(0,std::min<int>(left,max_attacks_)); }
 	void unit_hold_position() { hold_position_ = end_turn_ = true; }
