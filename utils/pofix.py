@@ -3112,6 +3112,7 @@ stringfixes = {
 
 # Kill the hyphens
 ("Mid-day", "Midday"),
+("During the daytime (Dawn, Morning, Mid-day", "During the daytime (Dawn, Morning, Midday"),
 ),
 
 "1.8-announcement" : (
