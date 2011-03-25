@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-20 16:54+0100\n"
-"PO-Revision-Date: 2011-02-23 17:00+0100\n"
-"Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
+"PO-Revision-Date: 2011-03-25 05:37-0500\n"
+"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -316,13 +316,12 @@ msgstr "The Uprooting"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:55
-#, fuzzy
 msgid ""
 "<i>The Legend of Wesmere</i>,\n"
 "Chapter One\n"
 "Flight and fight"
 msgstr ""
-"The Legend of Wesmere,\n"
+"<i>The Legend of Wesmere</i>,\n"
 "Chapter One\n"
 "Flight and fight"
 
@@ -887,9 +886,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:535
-#, fuzzy
 msgid "Kalenz or Landar must reach the signpost"
-msgstr "Kalenz must reach the signpost"
+msgstr "Kalenz or Landar must reach the signpost"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:540
@@ -1099,19 +1097,17 @@ msgstr ""
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:892
-#, fuzzy
 msgid ""
 "Then you have not heard the ill tidings. King Haldric has broken the treaty. "
 "The humans will not come to our aid!"
 msgstr ""
 "Then you have not heard the ill tidings. King Haldric has broken the treaty. "
-"The humans will not come to our help!"
+"The humans will not come to our aid!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:897
-#, fuzzy
 msgid "How can they dare to break the treaty!"
-msgstr "How can they dare to brake the treaty!"
+msgstr "How can they dare to break the treaty!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:923
@@ -5488,15 +5484,13 @@ msgstr "bow"
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:10
-#, fuzzy
 msgid "elates Kalenz"
-msgstr "heals Kalenz +4"
+msgstr "elates Kalenz"
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:11
-#, fuzzy
 msgid "female^elates Kalenz"
-msgstr "heals Kalenz +4"
+msgstr "felates Kalenz"
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:15
@@ -5506,6 +5500,10 @@ msgid ""
 "better.\n"
 "Adjacent to Cleodil, Kalenz will do 25% more damage in battle."
 msgstr ""
+"elates Kalenz:\n"
+"Through the special bond between Kalenz and Cleodil, she elates him to fight "
+"better.\n"
+"Adjacent to Cleodil, Kalenz will do 25% more damage in battle."
 
 #. [heals]: id=heals_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:35
@@ -5519,17 +5517,16 @@ msgstr "heals Kalenz +4"
 
 #. [heals]: id=heals_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:38
-#, fuzzy
 msgid ""
 "heals +4:\n"
 "If a shyde has developed a special bond to a person her healing abilities "
 "increase for him.  This allows Cleodil to give Kalenz extra points of "
 "healing at the beginning of your turn."
 msgstr ""
-"Heals +4:\n"
+"heals +4:\n"
 "If a shyde has developed a special bond to a person her healing abilities "
 "increase for him.  This allows Cleodil to give Kalenz extra points of "
-"healing at the beginning of our turn."
+"healing at the beginning of your turn."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:139
