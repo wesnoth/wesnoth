@@ -426,7 +426,7 @@ if __name__ == "__main__":
             print "\n\nNo page defined, dropped."
             return
 
-        if not file_map.has_key(header[0]):
+        if not header[0] in file_map:
             file_map[header[0]] = []
 
         file_map[header[0]].append([header[1], body])
@@ -484,7 +484,7 @@ if __name__ == "__main__":
 
         global macro_map
 
-        if not macro_map.has_key(macro.group(1)):
+        if not macro.group(1) in macro_map:
             print "Macro '%s' is not defined." % macro.group(1)
             return macro.group(0)
 
@@ -508,7 +508,7 @@ if __name__ == "__main__":
 
         global macro_map
 
-        if macro_map.has_key(macro.group(1)):
+        if macro.group(1) in macro_map:
             print "Macro '%s' is being redefined." % macro.group(1)
 
         macro_map[macro.group(1)] = macro.group(2)
