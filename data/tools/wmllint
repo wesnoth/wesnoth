@@ -1449,7 +1449,7 @@ def hack_syntax(filename, lines):
                         if "no-icon" not in comment:
                             new_line = leader(syntactic) + "description=_"+description
                             if verbose:
-                                print '"%s", line %d: inserting %s' % (filename, i+1, `new_line`)
+                                print '"%s", line %d: inserting %s' % (filename, i+1, repr(new_line))
                             lines.insert(j+1, new_line)
                             j += 1
                     j += 1

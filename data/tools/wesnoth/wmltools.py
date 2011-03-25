@@ -289,7 +289,7 @@ class Reference:
     def dump_references(self):
         "Dump all known references to this definition."
         for (file, refs) in self.references.items():
-            print "    %s: %s" % (file, `map(lambda x: x[0], refs)`[1:-1])
+            print "    %s: %s" % (file, repr(map(lambda x: x[0], refs))[1:-1])
     def __cmp__(self, other):
         "Compare two documentation objects for place in the sort order."
         # Major sort by file, minor by line number.  This presumes that the
@@ -367,7 +367,7 @@ class CrossRef:
         latch_unit = in_base_unit = in_theme = False
         for (n, line) in enumerate(dfp):
             if self.warnlevel > 1:
-                print `line`[1:-1]
+                print repr(line)[1:-1]
             if line.strip().startswith("#textdomain"):
                 continue
             m = re.search("# *wmlscope: warnlevel ([0-9]*)", line)

@@ -40,4 +40,4 @@ print basecolors
 for (filename, colors) in subtracted:
     print filename + ":"
     for (n, rgb) in colors:
-        print `rgb` + " * " + `n`
+        print repr(rgb) + " * " + repr(n)

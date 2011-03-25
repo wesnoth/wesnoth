@@ -42,6 +42,6 @@ for line in sys.stdin:
             try:
                 (key, value) = line.split("=")
             except ValueError:
-                print >>sys.stderr, "Malformed line: %s" % `line`
+                print >>sys.stderr, "Malformed line: %s" % repr(line)
                 sys.exit(1)
             entry[key] = value

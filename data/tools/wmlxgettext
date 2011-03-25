@@ -168,7 +168,7 @@ msgstr ""
                 opener_stack.pop()
             elif inMacroContinuation(nav):
                 if verbose > 1:
-                    print "In macro continuation", `nav.text`
+                    print "In macro continuation", repr(nav.text)
                 nav.element = "argument"
                 get_translatables(nav, fn)
             elif isInlineMacro(nav):

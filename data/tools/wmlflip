@@ -314,8 +314,8 @@ if __name__ == '__main__':
 
             # Perform the actual transformation
             for (((xs, xe), (ys, ye)), (xn, yn)) in zip(pairs, target):
-                content = content[:ys] + `yn` + content[ye:]
-                content = content[:xs] + `xn` + content[xe:]
+                content = content[:ys] + repr(yn) + content[ye:]
+                content = content[:xs] + repr(xn) + content[xe:]
 
             fp = open(filename, "w")
             fp.write(content)

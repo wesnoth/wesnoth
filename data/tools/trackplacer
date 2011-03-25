@@ -351,10 +351,10 @@ class JourneyTracks:
             self.tracks[self.selected_id] = track[:found[-1]] + track[found[-1]+1:]
             self.modified += 1
     def __str__(self):
-        rep = self.mapfile + `self.track_order`+ "\n"
+        rep = self.mapfile + repr(self.track_order) + "\n"
         for name in self.track_order:
             track = self.tracks[name]
-            rep += name + ": " + `track` + ":\n"
+            rep += name + ": " + repr(track) + ":\n"
         return rep
 
 class ContextPopup:
