@@ -556,6 +556,9 @@ stringfixes = {
 
 # Spelling fix in 1.9.0+svn @ 46436
 ("truely formidible", "truly formidable"),
+
+# Convert fake em dash
+("A king who is skilled at combat commands great respect--especially", "A king who is skilled at combat commands great respect — especially"),
 ),
 
 "wesnoth-ei" : (
