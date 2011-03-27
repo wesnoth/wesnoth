@@ -387,13 +387,13 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			save = true;
 		} //end for loop
 
-	} catch(game::load_game_exception& lge) {
+	} catch(const game::load_game_exception& lge) {
 		// Loading a new game is effectively a quit.
 		//
 		if (lge.game != "") {
 			gamestate_ = game_state();
 		}
-		throw lge;
+		throw;
 	} catch (end_level_exception &end_level_exn) {
 		if(!past_prestart) {
 			draw_solid_tinted_rectangle(
@@ -748,12 +748,12 @@ void playsingle_controller::linger()
 			play_slice();
 			gui_->draw();
 		}
-	} catch(game::load_game_exception& lge) {
+	} catch(const game::load_game_exception& lge) {
 		// Loading a new game is effectively a quit.
 		if (lge.game != "") {
 			gamestate_ = game_state();
 		}
-		throw lge;
+		throw;
 	}
 
 	// revert the end-turn button text to its normal label
