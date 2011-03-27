@@ -23,7 +23,6 @@
 #ifndef GAME_END_EXCEPTIONS_HPP_INCLUDED
 #define GAME_END_EXCEPTIONS_HPP_INCLUDED
 
-#include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
 
 enum LEVEL_RESULT {
@@ -38,11 +37,22 @@ enum LEVEL_RESULT {
 /**
  * Exception used to signal the end of a player turn.
  */
-struct end_turn_exception : game::exception
+class end_turn_exception
+	: public tlua_jailbreak_exception
 {
+public:
+
 	end_turn_exception(unsigned r = 0)
-		: game::exception("End turn"), redo(r) {}
+		: tlua_jailbreak_exception()
+		, redo(r)
+	{
+	}
+
 	unsigned redo;
+
+private:
+
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_turn_exception)
 };
 
 /**
