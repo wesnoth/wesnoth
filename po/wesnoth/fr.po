@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-27 13:20+0200\n"
+"POT-Creation-Date: 2011-03-27 14:22+0200\n"
 "PO-Revision-Date: 2010-08-18 18:54+0100\n"
 "Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -4337,7 +4337,7 @@ msgid "(A) - admin command"
 msgstr "(A) - commande admin"
 
 # team labels
-#: src/menu_events.cpp:2274 src/menu_events.cpp:2477
+#: src/menu_events.cpp:2274 src/menu_events.cpp:2479
 msgid "(admin only)"
 msgstr "(réservé aux admins)"
 
@@ -4358,8 +4358,8 @@ msgstr ""
 "qu'il se trouve sur le serveur, il sera seulement banni."
 
 #: src/menu_events.cpp:2299 src/menu_events.cpp:2302 src/menu_events.cpp:2304
-#: src/menu_events.cpp:2306 src/menu_events.cpp:2308 src/menu_events.cpp:2333
-#: src/menu_events.cpp:2335 src/menu_events.cpp:2337 src/menu_events.cpp:2351
+#: src/menu_events.cpp:2306 src/menu_events.cpp:2308 src/menu_events.cpp:2335
+#: src/menu_events.cpp:2337 src/menu_events.cpp:2339 src/menu_events.cpp:2353
 msgid "<nick>"
 msgstr "<pseudo>"
 
@@ -4388,470 +4388,473 @@ msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Donne/rend la parole à tous les observateurs (alterne entre les deux)."
 
 #: src/menu_events.cpp:2320
-msgid "Send a message to the server admins currently online"
-msgstr "Envoie un message aux administrateurs qui sont en ligne"
+msgid ""
+"Report abuse, rule violations, etc. to the server moderators. Make sure to "
+"mention relevant nicks, etc."
+msgstr ""
 
-#: src/menu_events.cpp:2322
+#: src/menu_events.cpp:2324
 msgid "<message>"
 msgstr "<message>"
 
-#: src/menu_events.cpp:2322
+#: src/menu_events.cpp:2324
 msgid "Send an emotion or personal action in chat."
 msgstr "Envoie une émotion ou une action personnelle dans la discussion."
 
-#: src/menu_events.cpp:2325
+#: src/menu_events.cpp:2327
+#, fuzzy
 msgid ""
-"Sends a private message. You can’t send messages to players that don’t "
-"control a side in a running game you are in."
+"Sends a private message. You cannot send private messages to players in a "
+"running game you observe or play in."
 msgstr ""
 "Envoie un message privé. Vous ne pouvez envoyer de messages privés qu'aux "
 "joueurs qui contrôlent un camp dans la partie où vous êtes."
 
-#: src/menu_events.cpp:2327
+#: src/menu_events.cpp:2329
 msgid "<nick> <message>"
 msgstr "<pseudo> <message>"
 
-#: src/menu_events.cpp:2331
+#: src/menu_events.cpp:2333
 msgid "<level> <domain>"
 msgstr "<niveau> <domaine>"
 
-#: src/menu_events.cpp:2331
+#: src/menu_events.cpp:2333
 msgid "Change the log level of a log domain."
 msgstr "Change le niveau de journalisation pour un domaine particulier."
 
-#: src/menu_events.cpp:2333
+#: src/menu_events.cpp:2335
 msgid "Add a nick to your ignores list."
 msgstr "Ajoute un joueur à la liste des ignorés."
 
-#: src/menu_events.cpp:2335
+#: src/menu_events.cpp:2337
 msgid "Add a nick to your friends list."
 msgstr "Ajoute un joueur à la liste des amis."
 
-#: src/menu_events.cpp:2337
+#: src/menu_events.cpp:2339
 msgid "Remove a nick from your ignores or friends list."
 msgstr "Retire un joueur de la liste des amis ou ignorés."
 
-#: src/menu_events.cpp:2339
+#: src/menu_events.cpp:2341
 msgid "Show your ignores and friends list."
 msgstr "Affiche votre liste d'amis et d'ignorés."
 
-#: src/menu_events.cpp:2342
+#: src/menu_events.cpp:2344
 msgid "Display version information."
 msgstr "Affiche la version."
 
-#: src/menu_events.cpp:2344
+#: src/menu_events.cpp:2346
 msgid "<password> <email (optional)>"
 msgstr "<mot de passe> <email (optionnel)>"
 
-#: src/menu_events.cpp:2344
+#: src/menu_events.cpp:2346
 msgid "Register your nick"
 msgstr "Enregistrer votre pseudonyme"
 
-#: src/menu_events.cpp:2346
+#: src/menu_events.cpp:2348
 msgid "Drop your nick."
 msgstr "Supprimer votre pseudonyme"
 
-#: src/menu_events.cpp:2348
+#: src/menu_events.cpp:2350
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 "Mettre à jour les détails de votre pseudonyme. Pour les détails disponibles, "
 "consultez '/détails',"
 
-#: src/menu_events.cpp:2349
+#: src/menu_events.cpp:2351
 msgid "<detail> <value>"
 msgstr "<détail> <valeur>"
 
-#: src/menu_events.cpp:2351
+#: src/menu_events.cpp:2353
 msgid "Request information about a nick."
 msgstr "Obtenir des informations à propos d'un pseudo."
 
-#: src/menu_events.cpp:2353
+#: src/menu_events.cpp:2355
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 "Demander une liste des détails que vous pouvez établir pour votre pseudonyme "
 "enregistré."
 
-#: src/menu_events.cpp:2355 src/menu_events.cpp:2358 src/menu_events.cpp:2360
+#: src/menu_events.cpp:2357 src/menu_events.cpp:2360 src/menu_events.cpp:2362
 msgid "<room>"
 msgstr "<salle>"
 
-#: src/menu_events.cpp:2355
+#: src/menu_events.cpp:2357
 msgid "Join a room."
 msgstr "Se connecter à une salle de discussion."
 
-#: src/menu_events.cpp:2358
+#: src/menu_events.cpp:2360
 msgid "Part a room."
 msgstr "Quitter une salle."
 
-#: src/menu_events.cpp:2360
+#: src/menu_events.cpp:2362
 msgid "List room members."
 msgstr "Liste des membres d'une salle."
 
-#: src/menu_events.cpp:2362
+#: src/menu_events.cpp:2364
 msgid "List available rooms."
 msgstr "Liste des salles disponibles."
 
-#: src/menu_events.cpp:2364
+#: src/menu_events.cpp:2366
 msgid "<room> <msg>"
 msgstr "<salle> <message>"
 
-#: src/menu_events.cpp:2364
+#: src/menu_events.cpp:2366
 msgid "Room message."
 msgstr "Message de salle."
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2368
 msgid "<room> <type> [value]"
 msgstr "<salle> <type> [valeur]"
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2368
 msgid "Room query."
 msgstr "Requête de salle."
 
-#: src/menu_events.cpp:2469
+#: src/menu_events.cpp:2471
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 "(D) - débogage uniquement, (N) - réseau uniquement, (A) - admin uniquement"
 
-#: src/menu_events.cpp:2475
+#: src/menu_events.cpp:2477
 msgid "(debug command)"
 msgstr "(commandes de débogage)"
 
-#: src/menu_events.cpp:2476
+#: src/menu_events.cpp:2478
 msgid "(network only)"
 msgstr "(réseau uniquement)"
 
-#: src/menu_events.cpp:2501
+#: src/menu_events.cpp:2503
 msgid "Refresh gui."
 msgstr "Rafraîchit l'IHM."
 
-#: src/menu_events.cpp:2503
+#: src/menu_events.cpp:2505
 msgid "Switch a side to/from AI control."
 msgstr "Passe ou reprend le contrôle d'un camp à l'IA."
 
-#: src/menu_events.cpp:2503
+#: src/menu_events.cpp:2505
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<camp> [on/off]]"
 
-#: src/menu_events.cpp:2506
+#: src/menu_events.cpp:2508
 msgid "<side> <nick>"
 msgstr "<camp> <pseudo>"
 
-#: src/menu_events.cpp:2506
+#: src/menu_events.cpp:2508
 msgid "Assign control of a side to a different player or observer."
 msgstr "Donne le contrôle d'un camp à un autre joueur ou à un observateur."
 
-#: src/menu_events.cpp:2508
+#: src/menu_events.cpp:2510
 msgid "Clear chat history."
 msgstr "Efface l'historique de la discussion."
 
-#: src/menu_events.cpp:2510
+#: src/menu_events.cpp:2512
 msgid "Visualize the screen refresh procedure."
 msgstr "Visualiser la procédure de rafraîchissement de l'écran."
 
-#: src/menu_events.cpp:2512
+#: src/menu_events.cpp:2514
 msgid "Debug foreground terrain."
 msgstr ""
 
-#: src/menu_events.cpp:2514
+#: src/menu_events.cpp:2516
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:2515
+#: src/menu_events.cpp:2517
 msgid "Show fps."
 msgstr "Montrez les fps"
 
-#: src/menu_events.cpp:2517
+#: src/menu_events.cpp:2519
 msgid "Save game."
 msgstr "Sauvegarde le jeu."
 
-#: src/menu_events.cpp:2519
+#: src/menu_events.cpp:2521
 msgid "Quit game."
 msgstr "Quitte le jeu."
 
-#: src/menu_events.cpp:2523
+#: src/menu_events.cpp:2525
 msgid "Save and quit."
 msgstr "Sauvegarde et quitte le jeu."
 
-#: src/menu_events.cpp:2526
+#: src/menu_events.cpp:2528
 msgid "Ignore replay errors."
 msgstr "Ignore les erreurs du film"
 
-#: src/menu_events.cpp:2528
+#: src/menu_events.cpp:2530
 msgid "Disable autosaves."
 msgstr "Désactive les sauvegardes automatiques."
 
-#: src/menu_events.cpp:2530
+#: src/menu_events.cpp:2532
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:2530
+#: src/menu_events.cpp:2532
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Avance au prochain scénario ou à celui portant l'identifiant 'id'"
 
-#: src/menu_events.cpp:2533
+#: src/menu_events.cpp:2535
 msgid "Choose next scenario"
 msgstr "Choisit le scénario suivant"
 
-#: src/menu_events.cpp:2536
+#: src/menu_events.cpp:2538
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:2536
+#: src/menu_events.cpp:2538
 msgid "[turn]"
 msgstr ""
 
-#: src/menu_events.cpp:2538
+#: src/menu_events.cpp:2540
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:2538
+#: src/menu_events.cpp:2540
 msgid "[limit]"
 msgstr ""
 
-#: src/menu_events.cpp:2540
+#: src/menu_events.cpp:2542
 msgid "Turn debug mode on."
 msgstr "Active le mode débug."
 
-#: src/menu_events.cpp:2542
+#: src/menu_events.cpp:2544
 msgid "Turn debug mode off."
 msgstr "Désactive le mode débug."
 
-#: src/menu_events.cpp:2544 src/menu_events.cpp:2548
+#: src/menu_events.cpp:2546 src/menu_events.cpp:2550
 msgid "<command>[;<command>...]"
 msgstr "<commande>[;<commande>...]"
 
-#: src/menu_events.cpp:2544
+#: src/menu_events.cpp:2546
 msgid "Execute a Lua statement."
 msgstr "Exécute une commande Lua."
 
-#: src/menu_events.cpp:2546
+#: src/menu_events.cpp:2548
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Accorder des privilèges plus élevés pour les scripts Lua."
 
-#: src/menu_events.cpp:2548
+#: src/menu_events.cpp:2550
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 "Définit les commandes associées aux combinaisons de touches personnalisées"
 
-#: src/menu_events.cpp:2550
+#: src/menu_events.cpp:2552
 msgid "Launch the gamestate inspector"
 msgstr "Lancer le débogueur d'état de partie"
 
-#: src/menu_events.cpp:2552
+#: src/menu_events.cpp:2554
 msgid "Manage persistence data"
 msgstr ""
 
-#: src/menu_events.cpp:2554
+#: src/menu_events.cpp:2556
 msgid "<name>[=<command>]"
 msgstr "<nom>[=<commande>]"
 
-#: src/menu_events.cpp:2554
+#: src/menu_events.cpp:2556
 msgid "Set or show alias to a command"
 msgstr "Crée ou affiche un alias vers une commande"
 
-#: src/menu_events.cpp:2556
+#: src/menu_events.cpp:2558
 msgid "<var>=<value>"
 msgstr "<variable>=<valeur>"
 
-#: src/menu_events.cpp:2556
+#: src/menu_events.cpp:2558
 msgid "Set a scenario variable."
 msgstr "Change une variable du scénario."
 
-#: src/menu_events.cpp:2558
+#: src/menu_events.cpp:2560
 msgid "<var>"
 msgstr "<variable>"
 
-#: src/menu_events.cpp:2558
+#: src/menu_events.cpp:2560
 msgid "Show a scenario variable."
 msgstr "Affiche une variable du scénario."
 
-#: src/menu_events.cpp:2560
+#: src/menu_events.cpp:2562
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Modifie une variable d'unité (Seules les clés du niveau supérieur sont "
 "prises en charge)."
 
-#: src/menu_events.cpp:2567
+#: src/menu_events.cpp:2569
 msgid "Discover all units in help."
 msgstr "Découvrir toutes les unités dans l'aide."
 
-#: src/menu_events.cpp:2569
+#: src/menu_events.cpp:2571
 #, fuzzy
 msgid "'Undiscover' all units in help."
 msgstr "Découvrir toutes les unités dans l'aide."
 
-#: src/menu_events.cpp:2571
+#: src/menu_events.cpp:2573
 msgid "Create a unit."
 msgstr "Crée une unité."
 
-#: src/menu_events.cpp:2573
+#: src/menu_events.cpp:2575
 msgid "Toggle fog for the current player."
 msgstr "Active/désactive le brouillard pour le joueur en train de jouer."
 
-#: src/menu_events.cpp:2575
+#: src/menu_events.cpp:2577
 msgid "Toggle shroud for the current player."
 msgstr "Active/désactive le voile pour le joueur en train de jouer."
 
-#: src/menu_events.cpp:2577
+#: src/menu_events.cpp:2579
 msgid "Give gold to the current player."
 msgstr "Donne de l'or au joueur en train de jouer."
 
-#: src/menu_events.cpp:2579
+#: src/menu_events.cpp:2581
 msgid "Fire a game event."
 msgstr "Déclenche un événement."
 
-#: src/menu_events.cpp:2582
+#: src/menu_events.cpp:2584
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Bascule la superposition des coordonnées x,y sur les hexagones."
 
-#: src/menu_events.cpp:2585
+#: src/menu_events.cpp:2587
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Active/désactive l'affichage des codes de terrain sur les hexagones."
 
-#: src/menu_events.cpp:2588
+#: src/menu_events.cpp:2590
 msgid "Toggle planning mode."
 msgstr ""
 
-#: src/menu_events.cpp:2631
+#: src/menu_events.cpp:2633
 msgid "Unknown debug level: '$level'."
 msgstr "Niveau de débogage inconnu : « $level »."
 
-#: src/menu_events.cpp:2633 src/menu_events.cpp:2642
+#: src/menu_events.cpp:2635 src/menu_events.cpp:2644
 msgid "error"
 msgstr "erreur"
 
-#: src/menu_events.cpp:2640
+#: src/menu_events.cpp:2642
 msgid "Unknown debug domain: '$domain'."
 msgstr "Domaine de débug inconnu : « $domain »."
 
-#: src/menu_events.cpp:2649
+#: src/menu_events.cpp:2651
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Affectation du domaine « $domain » au niveau « $level »."
 
-#: src/menu_events.cpp:2720
+#: src/menu_events.cpp:2722
 msgid "whisper to $receiver"
 msgstr "chuchoter à $receiver"
 
-#: src/menu_events.cpp:2727 src/multiplayer_ui.cpp:542
+#: src/menu_events.cpp:2729 src/multiplayer_ui.cpp:542
 msgid "whisper: $sender"
 msgstr "chuchotement: $sender"
 
-#: src/menu_events.cpp:2823 src/menu_events.cpp:2842
+#: src/menu_events.cpp:2825 src/menu_events.cpp:2844
 #: src/multiplayer_connect.cpp:670
 msgid "(empty)"
 msgstr "(vide)"
 
-#: src/menu_events.cpp:2823 src/menu_events.cpp:2829 src/menu_events.cpp:2879
+#: src/menu_events.cpp:2825 src/menu_events.cpp:2831 src/menu_events.cpp:2881
 msgid "ignores list"
 msgstr "liste des ignorés"
 
-#: src/menu_events.cpp:2829
+#: src/menu_events.cpp:2831
 msgid "Added to ignore list: $nick"
 msgstr "Ajouté à la liste des ignorés : $nick"
 
-#: src/menu_events.cpp:2832 src/menu_events.cpp:2851
+#: src/menu_events.cpp:2834 src/menu_events.cpp:2853
 msgid "Invalid username: $nick"
 msgstr "Nom d'utilisateur incorrect : $nick"
 
-#: src/menu_events.cpp:2842 src/menu_events.cpp:2849 src/menu_events.cpp:2875
+#: src/menu_events.cpp:2844 src/menu_events.cpp:2851 src/menu_events.cpp:2877
 msgid "friends list"
 msgstr "liste des amis"
 
-#: src/menu_events.cpp:2849
+#: src/menu_events.cpp:2851
 msgid "Added to friends list: $nick"
 msgstr "Ajouté à la liste des amis : $nick"
 
-#: src/menu_events.cpp:2865
+#: src/menu_events.cpp:2867
 msgid "Removed from list: $nick"
 msgstr "Enlevé de la liste : $nick"
 
-#: src/menu_events.cpp:2865 src/menu_events.cpp:2883
+#: src/menu_events.cpp:2867 src/menu_events.cpp:2885
 msgid "friends and ignores list"
 msgstr "liste d'amis et des ignorés"
 
-#: src/menu_events.cpp:2883
+#: src/menu_events.cpp:2885
 msgid "There are no players on your friends or ignore list."
 msgstr "Il n'y a pas de joueurs dans vos listes d'amis ou d'ignorés."
 
-#: src/menu_events.cpp:2888
+#: src/menu_events.cpp:2890
 msgid "version"
 msgstr "Version"
 
-#: src/menu_events.cpp:2904
+#: src/menu_events.cpp:2906
 msgid "registering with password *** and no email address"
 msgstr "enregistrement avec le mot de passe *** et pas d'adresse email"
 
-#: src/menu_events.cpp:2908
+#: src/menu_events.cpp:2910
 msgid "registering with password *** and email address $email"
 msgstr "enregistrement avec le mot de passe *** et l'adresse email $email"
 
-#: src/menu_events.cpp:2911 src/menu_events.cpp:2922 src/menu_events.cpp:2940
-#: src/menu_events.cpp:2954
+#: src/menu_events.cpp:2913 src/menu_events.cpp:2924 src/menu_events.cpp:2942
+#: src/menu_events.cpp:2956
 msgid "nick registration"
 msgstr "enregistrement de pseudo"
 
-#: src/menu_events.cpp:2922
+#: src/menu_events.cpp:2924
 msgid "dropping your username"
 msgstr "libération de votre nom d'utilisateur"
 
-#: src/menu_events.cpp:2940
+#: src/menu_events.cpp:2942
 msgid "setting $var to $value"
 msgstr "$value affectée à $var"
 
-#: src/menu_events.cpp:2954
+#: src/menu_events.cpp:2956
 msgid "requesting information for user $nick"
 msgstr "Obtenir des informations sur l'utilisateur $nick"
 
-#: src/menu_events.cpp:3067
+#: src/menu_events.cpp:3069
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Impossible de trouver une note ou une unité contenant : « $search »."
 
-#: src/menu_events.cpp:3101
+#: src/menu_events.cpp:3103
 msgid "Can't droid invalid side: '$side'."
 msgstr "Impossible de robotiser ce camp non valide : « $side »."
 
-#: src/menu_events.cpp:3106
+#: src/menu_events.cpp:3108
 msgid "Can't droid networked side: '$side'."
 msgstr "Impossible de robotiser ce camp distant : « $side »."
 
-#: src/menu_events.cpp:3143
+#: src/menu_events.cpp:3145
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Impossible de changer le contrôle de ce camp non valide : « $side »."
 
-#: src/menu_events.cpp:3149
+#: src/menu_events.cpp:3151
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Impossible de changer le contrôle de ce camp hors-limites : « $side »."
 
-#: src/menu_events.cpp:3242
+#: src/menu_events.cpp:3244
 #, fuzzy
 msgid "Layers"
 msgstr "Joueurs : "
 
-#: src/menu_events.cpp:3315
+#: src/menu_events.cpp:3317
 msgid "Choose Scenario (Debug!)"
 msgstr "Choisir un scénario (débogage !)"
 
-#: src/menu_events.cpp:3360
+#: src/menu_events.cpp:3362
 msgid "Debug mode activated!"
 msgstr "Mode debug activé !"
 
-#: src/menu_events.cpp:3363
+#: src/menu_events.cpp:3365
 msgid "Debug mode not available in network games"
 msgstr "Mode debug non disponible lors des parties réseau"
 
-#: src/menu_events.cpp:3368
+#: src/menu_events.cpp:3370
 msgid "Debug mode deactivated!"
 msgstr "Mode debug désactivé !"
 
-#: src/menu_events.cpp:3379
+#: src/menu_events.cpp:3381
 msgid "Unsafe Lua scripts."
 msgstr "Dangereux scripts Lua."
 
-#: src/menu_events.cpp:3380
+#: src/menu_events.cpp:3382
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
@@ -4862,15 +4865,15 @@ msgstr ""
 "cliquez pas sur « OK » ! Ils prendraient instantanément le contrôle de votre "
 "ordinateur. Vous aurez été prévenu."
 
-#: src/menu_events.cpp:3383
+#: src/menu_events.cpp:3385
 msgid "Unsafe mode enabled!"
 msgstr "Activée en mode non sécurisé !"
 
-#: src/menu_events.cpp:3426
+#: src/menu_events.cpp:3428
 msgid "Variable not found"
 msgstr "Variable non trouvée"
 
-#: src/menu_events.cpp:3470
+#: src/menu_events.cpp:3472
 #, fuzzy
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic "
@@ -4879,33 +4882,33 @@ msgstr ""
 "Alignement invalide : « $alignment ». Doit être « lawful », « neutral » ou "
 "« chaotic »."
 
-#: src/menu_events.cpp:3520
+#: src/menu_events.cpp:3522
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:3531
+#: src/menu_events.cpp:3533
 msgid "Invalid unit type"
 msgstr "Type d'unité incorrect"
 
-#: src/menu_events.cpp:3544
+#: src/menu_events.cpp:3546
 msgid "Invalid location"
 msgstr "Emplacement non valide"
 
-#: src/menu_events.cpp:3579
+#: src/menu_events.cpp:3581
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "Mode debug activé !"
 
-#: src/menu_events.cpp:3582
+#: src/menu_events.cpp:3584
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "Mode debug désactivé !"
 
-#: src/menu_events.cpp:3590
+#: src/menu_events.cpp:3592
 msgid "ai"
 msgstr "IA"
 
-#: src/menu_events.cpp:3600 src/menu_events.cpp:3615
+#: src/menu_events.cpp:3602 src/menu_events.cpp:3617
 msgid "prompt^Command:"
 msgstr "Commande :"
 
@@ -6222,6 +6225,9 @@ msgstr "fidèle"
 #: src/unit_types.cpp:969
 msgid "female^neutral"
 msgstr "neutre"
+
+#~ msgid "Send a message to the server admins currently online"
+#~ msgstr "Envoie un message aux administrateurs qui sont en ligne"
 
 #~ msgid "Take it"
 #~ msgstr "Prenez-le"

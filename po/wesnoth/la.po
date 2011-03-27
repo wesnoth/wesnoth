@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-27 13:20+0200\n"
+"POT-Creation-Date: 2011-03-27 14:22+0200\n"
 "PO-Revision-Date: 2010-04-30 14:14-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -4314,7 +4314,7 @@ msgstr ""
 msgid "(A) - admin command"
 msgstr ""
 
-#: src/menu_events.cpp:2274 src/menu_events.cpp:2477
+#: src/menu_events.cpp:2274 src/menu_events.cpp:2479
 #, fuzzy
 msgid "(admin only)"
 msgstr "Caeruleus illustris"
@@ -4332,8 +4332,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2299 src/menu_events.cpp:2302 src/menu_events.cpp:2304
-#: src/menu_events.cpp:2306 src/menu_events.cpp:2308 src/menu_events.cpp:2333
-#: src/menu_events.cpp:2335 src/menu_events.cpp:2337 src/menu_events.cpp:2351
+#: src/menu_events.cpp:2306 src/menu_events.cpp:2308 src/menu_events.cpp:2335
+#: src/menu_events.cpp:2337 src/menu_events.cpp:2339 src/menu_events.cpp:2353
 msgid "<nick>"
 msgstr "<nomen>"
 
@@ -4358,549 +4358,551 @@ msgid "Mute/Unmute all observers. (toggles)"
 msgstr ""
 
 #: src/menu_events.cpp:2320
-msgid "Send a message to the server admins currently online"
+msgid ""
+"Report abuse, rule violations, etc. to the server moderators. Make sure to "
+"mention relevant nicks, etc."
 msgstr ""
 
-#: src/menu_events.cpp:2322
+#: src/menu_events.cpp:2324
 msgid "<message>"
 msgstr "<nuntius>"
 
-#: src/menu_events.cpp:2322
+#: src/menu_events.cpp:2324
 #, fuzzy
 msgid "Send an emotion or personal action in chat."
 msgstr ""
 "Commotionem animi vel actionem personalem in sermone mittere. Syntaxis: /"
 "emote [nuntium]"
 
-#: src/menu_events.cpp:2325
+#: src/menu_events.cpp:2327
 #, fuzzy
 msgid ""
-"Sends a private message. You can’t send messages to players that don’t "
-"control a side in a running game you are in."
+"Sends a private message. You cannot send private messages to players in a "
+"running game you observe or play in."
 msgstr ""
 "Nuntium privatum mittit. Non potes mittere nuntios lusoribus qui partes in "
 "lusione imperant. Syntaxis: /whisper [cognomini] [nuntium]"
 
-#: src/menu_events.cpp:2327
+#: src/menu_events.cpp:2329
 msgid "<nick> <message>"
 msgstr "<nomen> <nuntius> "
 
-#: src/menu_events.cpp:2331
+#: src/menu_events.cpp:2333
 msgid "<level> <domain>"
 msgstr ""
 
-#: src/menu_events.cpp:2331
+#: src/menu_events.cpp:2333
 msgid "Change the log level of a log domain."
 msgstr ""
 
-#: src/menu_events.cpp:2333
+#: src/menu_events.cpp:2335
 #, fuzzy
 msgid "Add a nick to your ignores list."
 msgstr ""
 "Lusorem ad elenchum tuum utentium ignoratorum. Syntaxis: /ignore add "
 "[argumentum]"
 
-#: src/menu_events.cpp:2335
+#: src/menu_events.cpp:2337
 #, fuzzy
 msgid "Add a nick to your friends list."
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:2337
+#: src/menu_events.cpp:2339
 #, fuzzy
 msgid "Remove a nick from your ignores or friends list."
 msgstr ""
 "Lusorem ex elencho tuo utentium ignoratorum. Syntaxis: /ignore remove "
 "[argumentum]"
 
-#: src/menu_events.cpp:2339
+#: src/menu_events.cpp:2341
 #, fuzzy
 msgid "Show your ignores and friends list."
 msgstr "Elenchum utentium ignoratorum monstrare. Syntaxis: /ignore list"
 
-#: src/menu_events.cpp:2342
+#: src/menu_events.cpp:2344
 #, fuzzy
 msgid "Display version information."
 msgstr "Nulla saecula inventa"
 
-#: src/menu_events.cpp:2344
+#: src/menu_events.cpp:2346
 msgid "<password> <email (optional)>"
 msgstr ""
 
-#: src/menu_events.cpp:2344
+#: src/menu_events.cpp:2346
 msgid "Register your nick"
 msgstr ""
 
-#: src/menu_events.cpp:2346
+#: src/menu_events.cpp:2348
 msgid "Drop your nick."
 msgstr ""
 
-#: src/menu_events.cpp:2348
+#: src/menu_events.cpp:2350
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 
-#: src/menu_events.cpp:2349
+#: src/menu_events.cpp:2351
 msgid "<detail> <value>"
 msgstr ""
 
-#: src/menu_events.cpp:2351
+#: src/menu_events.cpp:2353
 #, fuzzy
 msgid "Request information about a nick."
 msgstr "Nulla saecula inventa"
 
-#: src/menu_events.cpp:2353
+#: src/menu_events.cpp:2355
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 
-#: src/menu_events.cpp:2355 src/menu_events.cpp:2358 src/menu_events.cpp:2360
+#: src/menu_events.cpp:2357 src/menu_events.cpp:2360 src/menu_events.cpp:2362
 msgid "<room>"
 msgstr ""
 
-#: src/menu_events.cpp:2355
+#: src/menu_events.cpp:2357
 #, fuzzy
 msgid "Join a room."
 msgstr "Ad Lusum Coniungere"
 
-#: src/menu_events.cpp:2358
+#: src/menu_events.cpp:2360
 msgid "Part a room."
 msgstr ""
 
-#: src/menu_events.cpp:2360
+#: src/menu_events.cpp:2362
 #, fuzzy
 msgid "List room members."
 msgstr "Ad Moderatrum Coniungere"
 
-#: src/menu_events.cpp:2362
+#: src/menu_events.cpp:2364
 msgid "List available rooms."
 msgstr ""
 
-#: src/menu_events.cpp:2364
+#: src/menu_events.cpp:2366
 msgid "<room> <msg>"
 msgstr ""
 
-#: src/menu_events.cpp:2364
+#: src/menu_events.cpp:2366
 msgid "Room message."
 msgstr ""
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2368
 msgid "<room> <type> [value]"
 msgstr ""
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2368
 msgid "Room query."
 msgstr ""
 
-#: src/menu_events.cpp:2469
+#: src/menu_events.cpp:2471
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
-#: src/menu_events.cpp:2475
+#: src/menu_events.cpp:2477
 #, fuzzy
 msgid "(debug command)"
 msgstr "Imperia Vulgaria"
 
-#: src/menu_events.cpp:2476
+#: src/menu_events.cpp:2478
 #, fuzzy
 msgid "(network only)"
 msgstr "Lusor ex Reti"
 
-#: src/menu_events.cpp:2501
+#: src/menu_events.cpp:2503
 msgid "Refresh gui."
 msgstr ""
 
-#: src/menu_events.cpp:2503
+#: src/menu_events.cpp:2505
 msgid "Switch a side to/from AI control."
 msgstr ""
 
-#: src/menu_events.cpp:2503
+#: src/menu_events.cpp:2505
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
-#: src/menu_events.cpp:2506
+#: src/menu_events.cpp:2508
 msgid "<side> <nick>"
 msgstr "<pars> <nomen>"
 
-#: src/menu_events.cpp:2506
+#: src/menu_events.cpp:2508
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2508
+#: src/menu_events.cpp:2510
 #, fuzzy
 msgid "Clear chat history."
 msgstr ""
 "\n"
 "Tollere nuntios sermonis."
 
-#: src/menu_events.cpp:2510
+#: src/menu_events.cpp:2512
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
-#: src/menu_events.cpp:2512
+#: src/menu_events.cpp:2514
 msgid "Debug foreground terrain."
 msgstr ""
 
-#: src/menu_events.cpp:2514
+#: src/menu_events.cpp:2516
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:2515
+#: src/menu_events.cpp:2517
 #, fuzzy
 msgid "Show fps."
 msgstr "Remonstare"
 
-#: src/menu_events.cpp:2517
+#: src/menu_events.cpp:2519
 msgid "Save game."
 msgstr "Serva ludum."
 
-#: src/menu_events.cpp:2519
+#: src/menu_events.cpp:2521
 msgid "Quit game."
 msgstr "Exi ludum."
 
-#: src/menu_events.cpp:2523
+#: src/menu_events.cpp:2525
 msgid "Save and quit."
 msgstr "Serva et exi."
 
-#: src/menu_events.cpp:2526
+#: src/menu_events.cpp:2528
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:2528
+#: src/menu_events.cpp:2530
 msgid "Disable autosaves."
 msgstr ""
 
-#: src/menu_events.cpp:2530
+#: src/menu_events.cpp:2532
 msgid "<id>"
 msgstr ""
 
-#: src/menu_events.cpp:2530
+#: src/menu_events.cpp:2532
 #, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Exspecto initium lusus..."
 
-#: src/menu_events.cpp:2533
+#: src/menu_events.cpp:2535
 #, fuzzy
 msgid "Choose next scenario"
 msgstr "Stipendium proximum trahitur..."
 
-#: src/menu_events.cpp:2536
+#: src/menu_events.cpp:2538
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:2536
+#: src/menu_events.cpp:2538
 msgid "[turn]"
 msgstr ""
 
-#: src/menu_events.cpp:2538
+#: src/menu_events.cpp:2540
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:2538
+#: src/menu_events.cpp:2540
 msgid "[limit]"
 msgstr ""
 
-#: src/menu_events.cpp:2540
+#: src/menu_events.cpp:2542
 #, fuzzy
 msgid "Turn debug mode on."
 msgstr "Imperia Vulgaria"
 
-#: src/menu_events.cpp:2542
+#: src/menu_events.cpp:2544
 msgid "Turn debug mode off."
 msgstr ""
 
-#: src/menu_events.cpp:2544 src/menu_events.cpp:2548
+#: src/menu_events.cpp:2546 src/menu_events.cpp:2550
 msgid "<command>[;<command>...]"
 msgstr ""
 
-#: src/menu_events.cpp:2544
+#: src/menu_events.cpp:2546
 msgid "Execute a Lua statement."
 msgstr ""
 
-#: src/menu_events.cpp:2546
+#: src/menu_events.cpp:2548
 msgid "Grant higher privileges to Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:2548
+#: src/menu_events.cpp:2550
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:2550
+#: src/menu_events.cpp:2552
 msgid "Launch the gamestate inspector"
 msgstr ""
 
-#: src/menu_events.cpp:2552
+#: src/menu_events.cpp:2554
 msgid "Manage persistence data"
 msgstr ""
 
-#: src/menu_events.cpp:2554
+#: src/menu_events.cpp:2556
 msgid "<name>[=<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:2554
+#: src/menu_events.cpp:2556
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:2556
+#: src/menu_events.cpp:2558
 msgid "<var>=<value>"
 msgstr "<var>=<pretium>"
 
-#: src/menu_events.cpp:2556
+#: src/menu_events.cpp:2558
 #, fuzzy
 msgid "Set a scenario variable."
 msgstr "variabilis"
 
-#: src/menu_events.cpp:2558
+#: src/menu_events.cpp:2560
 msgid "<var>"
 msgstr "<var>"
 
-#: src/menu_events.cpp:2558
+#: src/menu_events.cpp:2560
 #, fuzzy
 msgid "Show a scenario variable."
 msgstr "variabilis"
 
-#: src/menu_events.cpp:2560
+#: src/menu_events.cpp:2562
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:2567
+#: src/menu_events.cpp:2569
 msgid "Discover all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:2569
+#: src/menu_events.cpp:2571
 msgid "'Undiscover' all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:2571
+#: src/menu_events.cpp:2573
 #, fuzzy
 msgid "Create a unit."
 msgstr "Lusum Creare"
 
-#: src/menu_events.cpp:2573
+#: src/menu_events.cpp:2575
 msgid "Toggle fog for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2575
+#: src/menu_events.cpp:2577
 msgid "Toggle shroud for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2577
+#: src/menu_events.cpp:2579
 msgid "Give gold to the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2579
+#: src/menu_events.cpp:2581
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:2582
+#: src/menu_events.cpp:2584
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2585
+#: src/menu_events.cpp:2587
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2588
+#: src/menu_events.cpp:2590
 msgid "Toggle planning mode."
 msgstr ""
 
-#: src/menu_events.cpp:2631
+#: src/menu_events.cpp:2633
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2633 src/menu_events.cpp:2642
+#: src/menu_events.cpp:2635 src/menu_events.cpp:2644
 msgid "error"
 msgstr "error"
 
-#: src/menu_events.cpp:2640
+#: src/menu_events.cpp:2642
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:2649
+#: src/menu_events.cpp:2651
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2720
+#: src/menu_events.cpp:2722
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/menu_events.cpp:2727 src/multiplayer_ui.cpp:542
+#: src/menu_events.cpp:2729 src/multiplayer_ui.cpp:542
 msgid "whisper: $sender"
 msgstr ""
 
-#: src/menu_events.cpp:2823 src/menu_events.cpp:2842
+#: src/menu_events.cpp:2825 src/menu_events.cpp:2844
 #: src/multiplayer_connect.cpp:670
 msgid "(empty)"
 msgstr "(inanis)"
 
-#: src/menu_events.cpp:2823 src/menu_events.cpp:2829 src/menu_events.cpp:2879
+#: src/menu_events.cpp:2825 src/menu_events.cpp:2831 src/menu_events.cpp:2881
 #, fuzzy
 msgid "ignores list"
 msgstr "In inventario amicorum"
 
-#: src/menu_events.cpp:2829
+#: src/menu_events.cpp:2831
 #, fuzzy
 msgid "Added to ignore list: $nick"
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:2832 src/menu_events.cpp:2851
+#: src/menu_events.cpp:2834 src/menu_events.cpp:2853
 #, fuzzy
 msgid "Invalid username: $nick"
 msgstr "Nomen irritum: "
 
-#: src/menu_events.cpp:2842 src/menu_events.cpp:2849 src/menu_events.cpp:2875
+#: src/menu_events.cpp:2844 src/menu_events.cpp:2851 src/menu_events.cpp:2877
 #, fuzzy
 msgid "friends list"
 msgstr "In inventario amicorum"
 
-#: src/menu_events.cpp:2849
+#: src/menu_events.cpp:2851
 #, fuzzy
 msgid "Added to friends list: $nick"
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:2865
+#: src/menu_events.cpp:2867
 #, fuzzy
 msgid "Removed from list: $nick"
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:2865 src/menu_events.cpp:2883
+#: src/menu_events.cpp:2867 src/menu_events.cpp:2885
 #, fuzzy
 msgid "friends and ignores list"
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:2883
+#: src/menu_events.cpp:2885
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:2888
+#: src/menu_events.cpp:2890
 msgid "version"
 msgstr "versio"
 
-#: src/menu_events.cpp:2904
+#: src/menu_events.cpp:2906
 msgid "registering with password *** and no email address"
 msgstr ""
 
-#: src/menu_events.cpp:2908
+#: src/menu_events.cpp:2910
 msgid "registering with password *** and email address $email"
 msgstr ""
 
-#: src/menu_events.cpp:2911 src/menu_events.cpp:2922 src/menu_events.cpp:2940
-#: src/menu_events.cpp:2954
+#: src/menu_events.cpp:2913 src/menu_events.cpp:2924 src/menu_events.cpp:2942
+#: src/menu_events.cpp:2956
 msgid "nick registration"
 msgstr ""
 
-#: src/menu_events.cpp:2922
+#: src/menu_events.cpp:2924
 msgid "dropping your username"
 msgstr ""
 
-#: src/menu_events.cpp:2940
+#: src/menu_events.cpp:2942
 msgid "setting $var to $value"
 msgstr ""
 
-#: src/menu_events.cpp:2954
+#: src/menu_events.cpp:2956
 #, fuzzy
 msgid "requesting information for user $nick"
 msgstr "Nulla saecula inventa"
 
-#: src/menu_events.cpp:3067
+#: src/menu_events.cpp:3069
 #, fuzzy
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Titulus aut unitas qui litteras '$search' continet non invenitur."
 
-#: src/menu_events.cpp:3101
+#: src/menu_events.cpp:3103
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:3106
+#: src/menu_events.cpp:3108
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:3143
+#: src/menu_events.cpp:3145
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:3149
+#: src/menu_events.cpp:3151
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:3242
+#: src/menu_events.cpp:3244
 #, fuzzy
 msgid "Layers"
 msgstr "Lusores: "
 
-#: src/menu_events.cpp:3315
+#: src/menu_events.cpp:3317
 msgid "Choose Scenario (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:3360
+#: src/menu_events.cpp:3362
 #, fuzzy
 msgid "Debug mode activated!"
 msgstr "Imperia Vulgaria"
 
-#: src/menu_events.cpp:3363
+#: src/menu_events.cpp:3365
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:3368
+#: src/menu_events.cpp:3370
 #, fuzzy
 msgid "Debug mode deactivated!"
 msgstr "Imperia Vulgaria"
 
-#: src/menu_events.cpp:3379
+#: src/menu_events.cpp:3381
 msgid "Unsafe Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:3380
+#: src/menu_events.cpp:3382
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
 
-#: src/menu_events.cpp:3383
+#: src/menu_events.cpp:3385
 msgid "Unsafe mode enabled!"
 msgstr ""
 
-#: src/menu_events.cpp:3426
+#: src/menu_events.cpp:3428
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:3470
+#: src/menu_events.cpp:3472
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic "
 "or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:3520
+#: src/menu_events.cpp:3522
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:3531
+#: src/menu_events.cpp:3533
 #, fuzzy
 msgid "Invalid unit type"
 msgstr "Nomen elementi invalidum"
 
-#: src/menu_events.cpp:3544
+#: src/menu_events.cpp:3546
 #, fuzzy
 msgid "Invalid location"
 msgstr "Color invalidus"
 
-#: src/menu_events.cpp:3579
+#: src/menu_events.cpp:3581
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "Imperia Vulgaria"
 
-#: src/menu_events.cpp:3582
+#: src/menu_events.cpp:3584
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "Imperia Vulgaria"
 
-#: src/menu_events.cpp:3590
+#: src/menu_events.cpp:3592
 msgid "ai"
 msgstr "ia"
 
-#: src/menu_events.cpp:3600 src/menu_events.cpp:3615
+#: src/menu_events.cpp:3602 src/menu_events.cpp:3617
 #, fuzzy
 msgid "prompt^Command:"
 msgstr "Imperium:"
