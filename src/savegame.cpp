@@ -435,7 +435,10 @@ void loadgame::load_game()
 		throw game::load_game_exception(filename_, show_replay_, cancel_orders_);
 }
 
-void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_orders)
+void loadgame::load_game(
+		  const std::string& filename
+		, const bool show_replay
+		, const bool cancel_orders)
 {
 	filename_ = filename;
 

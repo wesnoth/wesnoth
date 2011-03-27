@@ -102,7 +102,10 @@ public:
 	/** Load a game without providing any information. */
 	void load_game();
 	/** Load a game with pre-setting information for the load-game dialog. */
-	void load_game(std::string& filename, bool show_replay, bool cancel_orders);
+	void load_game(
+			  const std::string& filename
+			, const bool show_replay
+			, const bool cancel_orders);
 	/** Loading a game from within the multiplayer-create dialog. */
 	void load_multiplayer_game();
 	/** Populates the level-config for multiplayer from the loaded savegame information. */
