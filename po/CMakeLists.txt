@@ -141,6 +141,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 				OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po.dummy
 				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} 
 						--backup=none
+						--previous
 						-U ${LINGUA}.po 
 						${DOMAIN}.pot
 				DEPENDS
@@ -191,6 +192,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 				# Now merge with the pot file.
 				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE}
 						--backup=none
+						--previous
 						-U ${LINGUA}.po
 						${DOMAIN}.pot
 				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
