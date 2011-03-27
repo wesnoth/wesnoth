@@ -5,35 +5,23 @@ Just dump whatever you want to have mentioned in the release notes here. Please 
 Stuff that belongs in here:
 * groundbreaking changes (new campaigns, extremely new feature, ...)
 * changed dependencies (new things, version bumps, stuff that was removed)
+* known bugs
 
 The release team should empty this file after each release.
 
-***
+
+=======
+CHANGES
+=======
 
 Since Tiny-GUI, a system that scaled images down at install time to a smaller size and display those things ingame, was utterly broken, it was removed from the game. Because of this, for the moment there will be no support for resolutions below 800x480. Before, you had to compile a specific binary for this size as well as convert all images; this is no longer possible. Resolutions below 800x480 might eventually be supported again after the move to GUI2 is completed and we get OpenGL(ES) support, since then defining a smaller GUI should be possible more easily and zooming should almost come for free. When starting Wesnoth without any parameters the minimum resolution is now 800x480 instead of 800x600.
 
-***
-
 The option to build without the editor has been removed. The editor is now always built into the game.
 
-***
 
-REPLACE ME WITH CONTENT...
+==========
+KNOWN BUGS
+==========
 
-***
+<content>
 
-REPLACE ME WITH CONTENT...
-
-***
-
-REPLACE ME WITH CONTENT...
-
-***
-
-REPLACE ME WITH CONTENT...
-
-***
-
-REPLACE ME WITH CONTENT...
-
-***
