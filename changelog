@@ -1,22 +1,25 @@
-Version 1.9.4+svn:
+Version 1.9.5:
  * Graphics:
-   * New and improved swamp villages
-   * New and improved tropical villages
-   * New elf-style flag
-   * New portrait for Drake Enforcer/Thrasher
-   * New tall encampment keep
-   * New water lilies embellishment
-   * Moved the ruined desert castle to core
-   * New ruined desert keep
-   * New stones and sand drifts embellishment
+   * Portraits:
+     * New portrait for Drake Enforcer/Thrasher.
+   * Terrains:
+     * Moved the ruined desert castle to core.
+     * New and improved swamp villages.
+     * New and improved tropical villages.
+     * New ruined desert keep.
+     * New stones and sand drifts embellishment.
+     * New tall encampment keep.
+     * New water lilies embellishment.
+   * Other:
+     * New elf-style flag.
  * Language and i18n:
+   * Added missing Windows locale associations
+   * Fixed Windows locale association for tr/Turkish
    * New translation: Old English.
    * Updated translations: British English, Chinese (Simplified),
      Chinese (Traditional), Czech, Dutch, Finnish, French, Galician, German,
      Irish, Italian, Japanese, Portuguese (Brazil), Slovak, Spanish, Vietnamese
    * Updated DejaVu Sans to 2.33
-   * Added missing Windows locale associations
-   * Fixed Windows locale association for tr/Turkish
  * Multiplayer:
    * Don't show team labels to observers (feature request #9648).
    * Recalculate map labels to account for team changes when switching players
@@ -57,19 +60,21 @@ Version 1.9.4+svn:
      opposed to mixing the leader's attributes with the side attributes.
    * New wml action tag [transform_unit], like the {TRANSFORM_UNIT..} macro.
    * [unstore_unit] now accepts a fire_event= key to control firing of
-     (post) advance events and a check_passability= (default yes, previously it was
-     always no/non-existent) key controlling whether to check for suitable terrain
-     when placing units
+     (post) advance events and a check_passability= (default yes, previously
+     it was always no/non-existent) key controlling whether to check for
+     suitable terrain when placing units
    * Renamed [teleport]ignore_passability= to check_passability= to get rid of
      a confusing negation.
    * Introduced [move_unit]check_passability= (default yes, previously it was
-     always yes/non-existent) key to allow disabling the check for suitable terrain.
+     always yes/non-existent) key to allow disabling the check for suitable
+     terrain.
    * Added TAKE_IT_STRING and LEAVE_IT_STRING arguments to PICKUPPABLE_ITEM
-   * Added an engine-defined WESNOTH_VERSION macro that expands to the Wesnoth engine
-     version string.
-   * New #ifver/#ifnver preprocessor macro to compare Wesnoth or UMC-defined version
-     numbers as in '#ifver WESNOTH_VERSION >= 1.9.5'.
-   * The tags [remove_shroud] and [place_shroud] now take comma-separated lists of sides.
+   * Added an engine-defined WESNOTH_VERSION macro that expands to the Wesnoth
+     engine version string.
+   * New #ifver/#ifnver preprocessor macro to compare Wesnoth or UMC-defined
+     version numbers as in '#ifver WESNOTH_VERSION >= 1.9.5'.
+   * The tags [remove_shroud] and [place_shroud] now take comma-separated lists
+     of sides.
    * The [gold] tag now takes a comma-separated list of sides.
  * Miscellaneous and bugfixes:
    * Fixed: g++ compiler warnings.

@@ -2,17 +2,20 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
-Version 1.9.4+svn:
+Version 1.9.5:
  * Graphics:
-   * New and improved swamp villages.
-   * New and improved tropical villages.
-   * New elf-style flag.
-   * New portrait for Drake Enforcer/Thrasher
-   * New tall encampment keep
-   * New water lilies embellishment
-   * Moved the ruined desert castle to core
-   * New ruined desert keep
-   * New stones and sand drifts embellishment
+   * Portraits:
+     * New portrait for Drake Enforcer/Thrasher.
+   * Terrains:
+     * Moved the ruined desert castle to core.
+     * New and improved swamp villages.
+     * New and improved tropical villages.
+     * New ruined desert keep.
+     * New stones and sand drifts embellishment.
+     * New tall encampment keep.
+     * New water lilies embellishment.
+   * Other:
+     * New elf-style flag.
 
  * Language and i18n:
    * New translation: Old English.
@@ -29,10 +32,10 @@ Version 1.9.4+svn:
    * Fixed the problem with black lines in the minimap.
 
  * Miscellaneous and bugfixes:
+   * Fixed replay OOS issue triggered by time-of-day areas in scenarios.
    * Removed support for TinyGUI: Devices with a resolution below 800x480 are
      not supported anymore.
    * The minimum screen resolution is now 800x480 instead of 800x600.
-   * Fixed replay OOS issue triggered by time-of-day areas in scenarios.
 
 
 Version 1.9.4:
