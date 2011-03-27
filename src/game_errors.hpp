@@ -17,6 +17,7 @@
 #define GAME_ERRORS_HPP_INCLUDED
 
 #include "exceptions.hpp"
+#include "lua_jailbreak_exception.hpp"
 
 namespace game {
 
@@ -51,15 +52,21 @@ struct game_error : public error {
  * Exception used to signal that the user has decided to abort a game,
  * and to load another game instead.
  */
-struct load_game_exception : exception
+class load_game_exception
+	: public tlua_jailbreak_exception
 {
+public:
+
 	load_game_exception()
-		: exception("Abort the current game and load a new one", "load game")
+		: tlua_jailbreak_exception()
 	{
 	}
 
-	load_game_exception(const std::string &game_, bool show_replay_, bool cancel_orders_)
-		: exception("Abort the current game and load a new one", "load game")
+	load_game_exception(
+			  const std::string& game_
+			, const bool show_replay_
+			, const bool cancel_orders_)
+		: tlua_jailbreak_exception()
 	{
 		game = game_;
 		show_replay = show_replay_;
@@ -69,7 +76,12 @@ struct load_game_exception : exception
 	static std::string game;
 	static bool show_replay;
 	static bool cancel_orders;
+
+private:
+
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(load_game_exception)
 };
+
 }
 
 #endif
