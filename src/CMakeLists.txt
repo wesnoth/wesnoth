@@ -345,7 +345,6 @@ set(wesnoth-main_SRC
 	editor/map_context.cpp
 	editor/map_fragment.cpp
 	editor/mouse_action.cpp
-	exceptions.cpp
 	floating_textbox.cpp
 	formula.cpp
 	formula_debugger.cpp

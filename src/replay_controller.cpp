@@ -51,7 +51,6 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 		}
 	}
 	catch(end_level_exception&){
-		game::exception::sticky = NULL;
 		DBG_NG << "play_replay_level: end_level_exception\n";
 	}
 

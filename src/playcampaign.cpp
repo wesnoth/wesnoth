@@ -145,7 +145,6 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 			playcontroller.linger();
 		} catch(end_level_exception& e) {
 			if (e.result == QUIT) {
-				game::exception::sticky = NULL;
 				return QUIT;
 			}
 		}
@@ -192,7 +191,6 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 				playcontroller.linger();
 			} catch(end_level_exception& e) {
 				if (e.result == QUIT) {
-					game::exception::sticky = NULL;
 					return QUIT;
 				}
 			}

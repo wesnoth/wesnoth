@@ -403,7 +403,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			update_rect(0, 0, gui_->video().getx(), gui_->video().gety());
 		}
 
-		game::exception::sticky = NULL;
 		ai_testing::log_game_end();
 		LEVEL_RESULT end_level_result = end_level_exn.result;
 		if (!end_level.custom_endlevel_music.empty()) {

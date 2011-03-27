@@ -39,42 +39,6 @@ struct error : std::exception
 	}
 };
 
-/**
- * Base class for all the exceptions for changing the control flow.
- * Its message only carries a description of the exception.
- * It also handles sticky exceptions that are automatically rethrown if
- * lost; such exceptions cannot have any embedded payload, since it would
- * still be lost.
- */
-struct exception : std::exception
-{
-	const char *message;
-
-	/**
-	 * Rethrows the current sticky exception, if any.
-	 */
-	static void rethrow();
-
-	/**
-	 * Marks an exception of name @a sticky as a rethrow candidate.
-	 * @note The value should be set to NULL in order to discard the
-	 *       sticky exception once it has been handled.
-	 */
-	static const char *sticky;
-
-	exception(const char *msg, const char *stick = NULL) : message(msg)
-	{
-		sticky = stick;
-	}
-
-	~exception() throw() {}
-
-	const char *what() const throw()
-	{
-		return message;
-	}
-};
-
 }
 
 #endif

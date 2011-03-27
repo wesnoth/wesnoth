@@ -2252,8 +2252,6 @@ static int do_gameloop(int argc, char** argv)
 
 	for (;;)
 	{
-		game::exception::sticky = NULL;
-
 		// reset the TC, since a game can modify it, and it may be used
 		// by images in add-ons or campaigns dialogs
 		image::set_team_colors();
