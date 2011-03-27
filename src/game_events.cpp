@@ -546,15 +546,12 @@ static void toggle_shroud(const bool remove, const vconfig& cfg)
 {
 	std::string side_for_raw = cfg["side"];
 
-	//If they didn't define any sides then we are making a comma separated list for them
-	//It contains all the sides from 1 to the max number of sides in play
+	// If they didn't define any sides fall back to the old behaviour of
+	// selecting side 1.
 	if (side_for_raw.empty()) {
-	side_for_raw = "1";
-		for (size_t side_index = 1; side_index < resources::teams->size(); side_index++) {
-			std::string side_fake = lexical_cast<std::string>( side_index + 1 );
-			side_for_raw = side_for_raw + "," + side_fake;
-		}
+		side_for_raw = "1";
 	}
+
 	//iterate through the list
 	std::vector<std::string> side_for =
 		utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
