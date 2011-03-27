@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-20 16:54+0100\n"
+"POT-Creation-Date: 2011-03-27 13:20+0200\n"
 "PO-Revision-Date: 2009-11-08 21:05+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
@@ -178,23 +178,23 @@ msgstr "Okno"
 msgid "villages"
 msgstr "wioski"
 
-#: src/editor/editor_controller.cpp:124
+#: src/editor/editor_controller.cpp:123
 msgid "Quit Editor"
 msgstr "Wyjście z edytora"
 
-#: src/editor/editor_controller.cpp:279
+#: src/editor/editor_controller.cpp:278
 msgid "Fatal error"
 msgstr "Błąd krytyczny"
 
-#: src/editor/editor_controller.cpp:304 src/editor/editor_controller.cpp:1101
+#: src/editor/editor_controller.cpp:303 src/editor/editor_controller.cpp:1090
 msgid "(New Map)"
 msgstr "(Nowa mapa)"
 
-#: src/editor/editor_controller.cpp:310
+#: src/editor/editor_controller.cpp:309
 msgid "Do you really want to quit?"
 msgstr "Czy naprawdę chcesz wyjść?"
 
-#: src/editor/editor_controller.cpp:312
+#: src/editor/editor_controller.cpp:311
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -202,7 +202,7 @@ msgstr ""
 "Czy naprawdę chcesz wyjść? Zmiany mapy dokonane od ostatniego zapisu zostaną "
 "utracone."
 
-#: src/editor/editor_controller.cpp:314
+#: src/editor/editor_controller.cpp:313
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -210,77 +210,77 @@ msgstr ""
 "Czy naprawdę chcesz wyjść? Te mapy zostały zmodyfikowane i wszystkie zmiany "
 "od ostatniego zapisu zostaną utracone:"
 
-#: src/editor/editor_controller.cpp:319
+#: src/editor/editor_controller.cpp:318
 msgid "Quit"
 msgstr "Wyjdź"
 
-#: src/editor/editor_controller.cpp:384
+#: src/editor/editor_controller.cpp:383
 msgid "No editor time-of-day found."
 msgstr "Nie znaleziono pory dnia edytora."
 
-#: src/editor/editor_controller.cpp:420
+#: src/editor/editor_controller.cpp:404
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Czy chcesz odrzucić wszystkie zmiany mapy wprowadzone od ostatniego zapisu?"
 
-#: src/editor/editor_controller.cpp:420
+#: src/editor/editor_controller.cpp:404
 msgid "Unsaved Changes"
 msgstr "Niezapisane zmiany"
 
-#: src/editor/editor_controller.cpp:439
+#: src/editor/editor_controller.cpp:426
 msgid "Choose a Map to Open"
 msgstr "Wybierz mapę do załadowania"
 
-#: src/editor/editor_controller.cpp:471
+#: src/editor/editor_controller.cpp:460
 msgid "Save the Map As"
 msgstr "Zapisz Mapę Jako"
 
-#: src/editor/editor_controller.cpp:474
+#: src/editor/editor_controller.cpp:463
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Ten plik już istnieje. Czy chcesz go nadpisać?"
 
-#: src/editor/editor_controller.cpp:491
+#: src/editor/editor_controller.cpp:480
 msgid "No random map generators found."
 msgstr "Nie znaleziono losowych generatorów map."
 
-#: src/editor/editor_controller.cpp:504 src/editor/editor_controller.cpp:508
+#: src/editor/editor_controller.cpp:493 src/editor/editor_controller.cpp:497
 msgid "Map creation failed."
 msgstr "Tworzenie mapy się nie powiodło."
 
-#: src/editor/editor_controller.cpp:523
+#: src/editor/editor_controller.cpp:512
 msgid "Choose a mask to apply"
 msgstr "Wybierz maskę do zastosowania"
 
-#: src/editor/editor_controller.cpp:530
+#: src/editor/editor_controller.cpp:519
 msgid "Error loading mask"
 msgstr "Błąd ładowania maski"
 
-#: src/editor/editor_controller.cpp:545
+#: src/editor/editor_controller.cpp:534
 msgid "Choose target map"
 msgstr "Wybierz docelową mapę"
 
-#: src/editor/editor_controller.cpp:552 src/editor/editor_controller.cpp:742
+#: src/editor/editor_controller.cpp:541 src/editor/editor_controller.cpp:731
 msgid "Error loading map"
 msgstr "Błąd ładowania mapy"
 
-#: src/editor/editor_controller.cpp:656 src/editor/editor_controller.cpp:698
+#: src/editor/editor_controller.cpp:645 src/editor/editor_controller.cpp:687
 msgid "This map is already open."
 msgstr "Ta mapa jest już otwarta."
 
-#: src/editor/editor_controller.cpp:677
+#: src/editor/editor_controller.cpp:666
 msgid "Map saved."
 msgstr "Mapa zapisana."
 
-#: src/editor/editor_controller.cpp:721
+#: src/editor/editor_controller.cpp:710
 msgid "Loaded embedded map data"
 msgstr "Załadowano osadzone dane mapy"
 
-#: src/editor/editor_controller.cpp:722 src/editor/editor_controller.cpp:736
+#: src/editor/editor_controller.cpp:711 src/editor/editor_controller.cpp:725
 msgid "Map loaded from scenario"
 msgstr "Załadowano mapę ze scenariusza"
 
-#: src/editor/editor_controller.cpp:732
+#: src/editor/editor_controller.cpp:721
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -288,31 +288,31 @@ msgstr ""
 "Załadowano używany plik mapy:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1131
+#: src/editor/editor_controller.cpp:1120
 msgid "Undo"
 msgstr "Cofnij"
 
-#: src/editor/editor_controller.cpp:1133
+#: src/editor/editor_controller.cpp:1122
 msgid "Can’t Undo"
 msgstr "Nie można cofnąć"
 
-#: src/editor/editor_controller.cpp:1137
+#: src/editor/editor_controller.cpp:1126
 msgid "Redo"
 msgstr "Ponów"
 
-#: src/editor/editor_controller.cpp:1139
+#: src/editor/editor_controller.cpp:1128
 msgid "Can’t Redo"
 msgstr "Nie można powtórzyć"
 
-#: src/editor/editor_controller.cpp:1144
+#: src/editor/editor_controller.cpp:1133
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Automatyczna aktualizacja przejść terenu: Tak"
 
-#: src/editor/editor_controller.cpp:1147
+#: src/editor/editor_controller.cpp:1136
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Automatyczna aktualizacja przejść terenu: Częściowa"
 
-#: src/editor/editor_controller.cpp:1151
+#: src/editor/editor_controller.cpp:1140
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Automatyczna aktualizacja przejść terenu: Nie"
 
@@ -383,7 +383,7 @@ msgstr ""
 "gracza, a Delete usuwa zaznaczoną pozycję początkową. Naciśnięcie klawisza "
 "cyfry spowoduje ustawienie ekranu na odpowiedniej pozycji początkowej."
 
-#: src/gui/dialogs/editor_settings.cpp:171
+#: src/gui/dialogs/editor_settings.cpp:147
 msgid "Custom setting"
 msgstr "Ustawienie niestandardowe"
 

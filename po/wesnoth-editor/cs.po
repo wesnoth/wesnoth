@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-20 16:54+0100\n"
+"POT-Creation-Date: 2011-03-27 13:20+0200\n"
 "PO-Revision-Date: 2011-03-12 22:20+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -187,30 +187,30 @@ msgstr "Okno"
 msgid "villages"
 msgstr "vesnic"
 
-#: src/editor/editor_controller.cpp:124
+#: src/editor/editor_controller.cpp:123
 msgid "Quit Editor"
 msgstr "Ukončení editoru"
 
-#: src/editor/editor_controller.cpp:279
+#: src/editor/editor_controller.cpp:278
 msgid "Fatal error"
 msgstr "Kritická chyba"
 
-#: src/editor/editor_controller.cpp:304 src/editor/editor_controller.cpp:1101
+#: src/editor/editor_controller.cpp:303 src/editor/editor_controller.cpp:1090
 msgid "(New Map)"
 msgstr "(Nová mapa)"
 
-#: src/editor/editor_controller.cpp:310
+#: src/editor/editor_controller.cpp:309
 msgid "Do you really want to quit?"
 msgstr "Opravdu si přejete skončit?"
 
-#: src/editor/editor_controller.cpp:312
+#: src/editor/editor_controller.cpp:311
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 "Opravdu si přeješ skončit? Změny v mapě od posledního uložení budou ztraceny."
 
-#: src/editor/editor_controller.cpp:314
+#: src/editor/editor_controller.cpp:313
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -218,77 +218,77 @@ msgstr ""
 "Opravdu si přeješ skončit? Následující mapy byly změněny; všechny změny od "
 "posledního uložení budou ztraceny:"
 
-#: src/editor/editor_controller.cpp:319
+#: src/editor/editor_controller.cpp:318
 msgid "Quit"
 msgstr "Konec"
 
-#: src/editor/editor_controller.cpp:384
+#: src/editor/editor_controller.cpp:383
 msgid "No editor time-of-day found."
 msgstr "Nenalezena žádná denní doba pro editor."
 
-#: src/editor/editor_controller.cpp:420
+#: src/editor/editor_controller.cpp:404
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
 
-#: src/editor/editor_controller.cpp:420
+#: src/editor/editor_controller.cpp:404
 msgid "Unsaved Changes"
 msgstr "Neuložené změny"
 
-#: src/editor/editor_controller.cpp:439
+#: src/editor/editor_controller.cpp:426
 msgid "Choose a Map to Open"
 msgstr "Vyber mapu k načtení"
 
-#: src/editor/editor_controller.cpp:471
+#: src/editor/editor_controller.cpp:460
 msgid "Save the Map As"
 msgstr "Ulož mapu jako"
 
-#: src/editor/editor_controller.cpp:474
+#: src/editor/editor_controller.cpp:463
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Mapa už existuje. Přeješ si ji přepsat?"
 
-#: src/editor/editor_controller.cpp:491
+#: src/editor/editor_controller.cpp:480
 msgid "No random map generators found."
 msgstr "Nebyly nalezeny žádné generátory map."
 
-#: src/editor/editor_controller.cpp:504 src/editor/editor_controller.cpp:508
+#: src/editor/editor_controller.cpp:493 src/editor/editor_controller.cpp:497
 msgid "Map creation failed."
 msgstr "Mapu se nepodařilo vygenerovat."
 
 # co je zase toto?
-#: src/editor/editor_controller.cpp:523
+#: src/editor/editor_controller.cpp:512
 msgid "Choose a mask to apply"
 msgstr "Vyber masku k aplikaci"
 
-#: src/editor/editor_controller.cpp:530
+#: src/editor/editor_controller.cpp:519
 msgid "Error loading mask"
 msgstr "Chyba při načítání masky"
 
-#: src/editor/editor_controller.cpp:545
+#: src/editor/editor_controller.cpp:534
 msgid "Choose target map"
 msgstr "vyber cílovou mapu"
 
-#: src/editor/editor_controller.cpp:552 src/editor/editor_controller.cpp:742
+#: src/editor/editor_controller.cpp:541 src/editor/editor_controller.cpp:731
 msgid "Error loading map"
 msgstr "Chyba načítání mapy"
 
-#: src/editor/editor_controller.cpp:656 src/editor/editor_controller.cpp:698
+#: src/editor/editor_controller.cpp:645 src/editor/editor_controller.cpp:687
 msgid "This map is already open."
 msgstr "Tato mapa již je otevřena."
 
-#: src/editor/editor_controller.cpp:677
+#: src/editor/editor_controller.cpp:666
 msgid "Map saved."
 msgstr "Mapa byla uložena."
 
-#: src/editor/editor_controller.cpp:721
+#: src/editor/editor_controller.cpp:710
 msgid "Loaded embedded map data"
 msgstr "Načtena vložená data mapy"
 
-#: src/editor/editor_controller.cpp:722 src/editor/editor_controller.cpp:736
+#: src/editor/editor_controller.cpp:711 src/editor/editor_controller.cpp:725
 msgid "Map loaded from scenario"
 msgstr "Mapa načtena ze scénáře"
 
-#: src/editor/editor_controller.cpp:732
+#: src/editor/editor_controller.cpp:721
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -296,31 +296,31 @@ msgstr ""
 "Načten odkazovaný soubor mapy:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1131
+#: src/editor/editor_controller.cpp:1120
 msgid "Undo"
 msgstr "Zpátky"
 
-#: src/editor/editor_controller.cpp:1133
+#: src/editor/editor_controller.cpp:1122
 msgid "Can’t Undo"
 msgstr "Nelze vrátit"
 
-#: src/editor/editor_controller.cpp:1137
+#: src/editor/editor_controller.cpp:1126
 msgid "Redo"
 msgstr "Vrať"
 
-#: src/editor/editor_controller.cpp:1139
+#: src/editor/editor_controller.cpp:1128
 msgid "Can’t Redo"
 msgstr "Nelze opakovat"
 
-#: src/editor/editor_controller.cpp:1144
+#: src/editor/editor_controller.cpp:1133
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Automaticky aktualizovat přechody terénu: Ano"
 
-#: src/editor/editor_controller.cpp:1147
+#: src/editor/editor_controller.cpp:1136
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Automaticky aktualizovat přechody terénu: Částečně"
 
-#: src/editor/editor_controller.cpp:1151
+#: src/editor/editor_controller.cpp:1140
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Automaticky aktualizovat přechody terénu: Ne"
 
@@ -392,6 +392,6 @@ msgstr ""
 "Zmáčknutí čísla bez Altu pouze posune zobrazení k již nastavené pozici "
 "odpovídajícího hráče."
 
-#: src/gui/dialogs/editor_settings.cpp:171
+#: src/gui/dialogs/editor_settings.cpp:147
 msgid "Custom setting"
 msgstr "Vlastní nastavení"

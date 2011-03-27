@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-20 16:54+0100\n"
+"POT-Creation-Date: 2011-03-27 13:20+0200\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -121,14 +121,14 @@ msgstr "Veelspeler"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:306
-#: data/lua/wml-tags.lua:718 src/actions.cpp:1277
+#: data/lua/wml-tags.lua:714 src/actions.cpp:1277
 msgid "poisoned"
 msgstr "vergiftig"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1352
-#: data/lua/wml-tags.lua:719 src/actions.cpp:1282
+#: data/lua/wml-tags.lua:715 src/actions.cpp:1282
 #, fuzzy
 msgid "female^slowed"
 msgstr "Misdadiger"
@@ -136,7 +136,7 @@ msgstr "Misdadiger"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1355
-#: data/lua/wml-tags.lua:719 src/actions.cpp:1282
+#: data/lua/wml-tags.lua:715 src/actions.cpp:1282
 msgid "slowed"
 msgstr "vertraag"
 
@@ -193,319 +193,325 @@ msgid "Miscellaneous Contributors"
 msgstr "+Algemeen"
 
 #. [about]
-#: data/core/about.cfg:1157
+#: data/core/about.cfg:1160
 #, fuzzy
 msgid "Internationalization Managers"
 msgstr "+Internasionalisering Bestuurders"
 
 #. [about]
-#: data/core/about.cfg:1182
+#: data/core/about.cfg:1185
 #, fuzzy
 msgid "English strings edition"
 msgstr "+Engelse (Britse) Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1189
+#: data/core/about.cfg:1192
 #, fuzzy
 msgid "Afrikaans Translation"
 msgstr "+Afrikaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1205
+#: data/core/about.cfg:1208
 #, fuzzy
 msgid "Arabic Translation"
 msgstr "+Serwiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1212
+#: data/core/about.cfg:1215
 #, fuzzy
 msgid "Basque Translation"
 msgstr "+Baskiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1225
+#: data/core/about.cfg:1228
 #, fuzzy
 msgid "Bulgarian Translation"
 msgstr "+Bulgaarse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1244
+#: data/core/about.cfg:1247
 #, fuzzy
 msgid "Catalan Translation"
 msgstr "+Katalaniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1285
+#: data/core/about.cfg:1288
 #, fuzzy
 msgid "Chinese Translation"
 msgstr "+Sjinese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1347
+#: data/core/about.cfg:1350
 #, fuzzy
 msgid "Chinese (Taiwan) Translation"
 msgstr "+Sjinese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1357
+#: data/core/about.cfg:1360
 #, fuzzy
 msgid "Croatian Translation"
 msgstr "+Katalaniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1364
+#: data/core/about.cfg:1367
 #, fuzzy
 msgid "Czech Translation"
 msgstr "+Tsjeggiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1424
+#: data/core/about.cfg:1427
 #, fuzzy
 msgid "Danish Translation"
 msgstr "+Deense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1455
+#: data/core/about.cfg:1458
 #, fuzzy
 msgid "Dutch Translation"
 msgstr "+Nederlandse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1516
+#: data/core/about.cfg:1519
 #, fuzzy
 msgid "English (GB) Translation"
 msgstr "+Engelse (Britse) Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1538
+#: data/core/about.cfg:1541
 #, fuzzy
 msgid "English (Shaw) Translation"
 msgstr "+Engelse (Britse) Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1562
+#: data/core/about.cfg:1565
 #, fuzzy
 msgid "Esperanto Translation"
 msgstr "+Duitse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1581
+#: data/core/about.cfg:1584
 #, fuzzy
 msgid "Estonian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1591
+#: data/core/about.cfg:1594
 #, fuzzy
 msgid "Filipino Translation"
 msgstr "+Finse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1601
+#: data/core/about.cfg:1604
 #, fuzzy
 msgid "Finnish Translation"
 msgstr "+Finse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1647
+#: data/core/about.cfg:1650
 #, fuzzy
 msgid "French Translation"
 msgstr "+Franse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1803
+#: data/core/about.cfg:1806
 #, fuzzy
 msgid "Friulian Translation"
 msgstr "+Finse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1810
+#: data/core/about.cfg:1813
 #, fuzzy
 msgid "Galician Translation"
 msgstr "+Sloweense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1846
+#: data/core/about.cfg:1849
 #, fuzzy
 msgid "German Translation"
 msgstr "+Duitse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1913
+#: data/core/about.cfg:1916
 #, fuzzy
 msgid "Greek Translation"
 msgstr "+Griekse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1947
+#: data/core/about.cfg:1950
 #, fuzzy
 msgid "Hebrew Translation"
 msgstr "+Hebreeuse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1960
+#: data/core/about.cfg:1963
 #, fuzzy
 msgid "Hungarian Translation"
 msgstr "+Hongaarse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2021
+#: data/core/about.cfg:2024
 #, fuzzy
 msgid "Icelandic Translation"
 msgstr "+Italiaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2031
+#: data/core/about.cfg:2034
 #, fuzzy
 msgid "Indonesian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2048
+#: data/core/about.cfg:2051
 #, fuzzy
 msgid "Irish Translation"
 msgstr "+Turkse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2055
+#: data/core/about.cfg:2058
 #, fuzzy
 msgid "Italian Translation"
 msgstr "+Italiaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2090
+#: data/core/about.cfg:2093
 #, fuzzy
 msgid "Japanese Translation"
 msgstr "+Japannese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2150
+#: data/core/about.cfg:2157
 #, fuzzy
 msgid "Korean Translation"
 msgstr "+Noorweegse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2162
+#: data/core/about.cfg:2169
 #, fuzzy
 msgid "Latin Translation"
 msgstr "+Latynse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2189
+#: data/core/about.cfg:2196
 #, fuzzy
 msgid "Latvian Translation"
 msgstr "+Latynse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2200
+#: data/core/about.cfg:2207
 #, fuzzy
 msgid "Lithuanian Translation"
 msgstr "+Italiaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2223
+#: data/core/about.cfg:2230
 #, fuzzy
 msgid "Macedonian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2230
+#: data/core/about.cfg:2237
 #, fuzzy
 msgid "Marathi Translation"
 msgstr "+Latynse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2239
+#: data/core/about.cfg:2246
 #, fuzzy
 msgid "Norwegian Translation"
 msgstr "+Noorweegse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2264
+#: data/core/about.cfg:2271
+#, fuzzy
+msgid "Old English Translation"
+msgstr "+Engelse (Britse) Vertaling"
+
+#. [about]
+#: data/core/about.cfg:2280
 #, fuzzy
 msgid "Polish Translation"
 msgstr "+Poolse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2304
+#: data/core/about.cfg:2320
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+Portugese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2311
+#: data/core/about.cfg:2327
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+Portugese (Brasiliaanse) Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2353
+#: data/core/about.cfg:2369
 #, fuzzy
 msgid "Romanian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2361
+#: data/core/about.cfg:2377
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+Russiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2431
+#: data/core/about.cfg:2447
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+Serwiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2450
+#: data/core/about.cfg:2466
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+Slowaakse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2476
+#: data/core/about.cfg:2492
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+Sloweense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2492
+#: data/core/about.cfg:2508
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+Spaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2562
+#: data/core/about.cfg:2578
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+Sweedse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2591
+#: data/core/about.cfg:2607
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+Turkse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2613
+#: data/core/about.cfg:2629
 #, fuzzy
 msgid "Valencian (southern Catalan) Translation"
 msgstr "+Sloweense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2626
+#: data/core/about.cfg:2642
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "+Sjinese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2645
+#: data/core/about.cfg:2661
 #, fuzzy
 msgid "RACV’s Translation"
 msgstr "+Sjinese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2652
+#: data/core/about.cfg:2668
 #, fuzzy
 msgid "Bots"
 msgstr "+Internet Robot"
@@ -2404,26 +2410,26 @@ msgid ""
 "the village, although they will still be healed."
 msgstr ""
 
-#: data/lua/wml-tags.lua:718 src/actions.cpp:1277
+#: data/lua/wml-tags.lua:714 src/actions.cpp:1277
 #, fuzzy
 msgid "female^poisoned"
 msgstr "Uitvaagsel"
 
-#: data/lua/wml-tags.lua:720 src/actions.cpp:1287
+#: data/lua/wml-tags.lua:716 src/actions.cpp:1287
 #, fuzzy
 msgid "female^petrified"
 msgstr "Uitvaagsel"
 
-#: data/lua/wml-tags.lua:720 src/actions.cpp:1287
+#: data/lua/wml-tags.lua:716 src/actions.cpp:1287
 msgid "petrified"
 msgstr ""
 
-#: data/lua/wml-tags.lua:721
+#: data/lua/wml-tags.lua:717
 #, fuzzy
 msgid "female^unhealable"
 msgstr "Uitvaagsel"
 
-#: data/lua/wml-tags.lua:721
+#: data/lua/wml-tags.lua:717
 msgid "unhealable"
 msgstr ""
 
@@ -2466,7 +2472,7 @@ msgstr "Goed"
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:391 src/dialogs.cpp:635 src/dialogs.cpp:1073
 #: src/dialogs.cpp:1179 src/multiplayer_connect.cpp:986
-#: src/multiplayer_create.cpp:89 src/multiplayer_wait.cpp:178
+#: src/multiplayer_create.cpp:89 src/multiplayer_wait.cpp:179
 msgid "Cancel"
 msgstr "Kanselleer"
 
@@ -2800,7 +2806,7 @@ msgid "The server responded with an error: \""
 msgstr "Die bediener het 'n foutboodskap gestuur: \""
 
 #: src/addon/manager.cpp:540 src/addon/manager.cpp:565
-#: src/multiplayer_wait.cpp:413
+#: src/multiplayer_wait.cpp:414
 msgid "Response"
 msgstr "Antwoord"
 
@@ -3667,7 +3673,7 @@ msgid "Upkeep"
 msgstr "Onderhoud"
 
 #: src/menu_events.cpp:375 src/multiplayer_connect.cpp:983
-#: src/multiplayer_wait.cpp:531
+#: src/multiplayer_wait.cpp:532
 msgid "Income"
 msgstr "Inkomste"
 
@@ -3862,7 +3868,7 @@ msgstr "knuppel"
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1532 src/multiplayer_wait.cpp:130
+#: src/menu_events.cpp:1532 src/multiplayer_wait.cpp:131
 #, fuzzy
 msgid "Gender: "
 msgstr "Leier: "
@@ -4599,17 +4605,17 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:450 src/multiplayer_connect.cpp:598
-#: src/multiplayer_wait.cpp:523 src/multiplayer_wait.cpp:531
+#: src/multiplayer_wait.cpp:524 src/multiplayer_wait.cpp:532
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:450 src/multiplayer_connect.cpp:598
-#: src/multiplayer_wait.cpp:523 src/multiplayer_wait.cpp:534
+#: src/multiplayer_wait.cpp:524 src/multiplayer_wait.cpp:535
 msgid ")"
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:452 src/multiplayer_connect.cpp:600
-#: src/multiplayer_wait.cpp:533
+#: src/multiplayer_wait.cpp:534
 msgid "+"
 msgstr ""
 
@@ -4942,7 +4948,7 @@ msgstr "Onbekende scenario: '"
 msgid "Password Required"
 msgstr "swaard"
 
-#: src/multiplayer_lobby.cpp:724 src/multiplayer_wait.cpp:177
+#: src/multiplayer_lobby.cpp:724 src/multiplayer_wait.cpp:178
 msgid "Game Lobby"
 msgstr "Spelsaal"
 
@@ -5039,41 +5045,41 @@ msgstr "Ongeldige kleur"
 msgid "Selected user: "
 msgstr "Kies eenheid:"
 
-#: src/multiplayer_wait.cpp:128
+#: src/multiplayer_wait.cpp:129
 msgid "Leader: "
 msgstr "Leier: "
 
-#: src/multiplayer_wait.cpp:132
+#: src/multiplayer_wait.cpp:133
 msgid "Recruits: "
 msgstr "Rekrute: "
 
-#: src/multiplayer_wait.cpp:179
+#: src/multiplayer_wait.cpp:180
 msgid "Waiting for game to start..."
 msgstr "Wag vir spel om te begin..."
 
-#: src/multiplayer_wait.cpp:202
+#: src/multiplayer_wait.cpp:203
 msgid "Getting game data..."
 msgstr "Besig om speldata te lees..."
 
-#: src/multiplayer_wait.cpp:264
+#: src/multiplayer_wait.cpp:265
 #, fuzzy
 msgid "No era information found."
 msgstr "Geen tydperke gevind"
 
-#: src/multiplayer_wait.cpp:268
+#: src/multiplayer_wait.cpp:269
 msgid "No multiplayer sides found"
 msgstr "Geen veelspeler kante gevind nie"
 
-#: src/multiplayer_wait.cpp:317
+#: src/multiplayer_wait.cpp:318
 #, fuzzy
 msgid "Choose your faction:"
 msgstr "Kies aan watter kant jy wil wees:"
 
-#: src/multiplayer_wait.cpp:317
+#: src/multiplayer_wait.cpp:318
 msgid "Starting position: "
 msgstr ""
 
-#: src/multiplayer_wait.cpp:527
+#: src/multiplayer_wait.cpp:528
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] ""
