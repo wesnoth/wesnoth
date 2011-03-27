@@ -17,6 +17,7 @@
 
 #include "events.hpp"
 #include "exceptions.hpp"
+#include "lua_jailbreak_exception.hpp"
 
 #include <boost/utility.hpp>
 
@@ -72,9 +73,19 @@ class CVideo : private boost::noncopyable {
 		error() : game::error("Video initialization failed") {}
 	};
 
-	struct quit : public game::exception
+	class quit
+		: public tlua_jailbreak_exception
 	{
-		quit() : game::exception("Exit game", "quit") {}
+	public:
+
+		quit()
+			: tlua_jailbreak_exception()
+		{
+		}
+
+	private:
+
+		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(quit)
 	};
 
 	//functions to allow changing video modes when 16BPP is emulated
