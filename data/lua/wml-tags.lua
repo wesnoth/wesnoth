@@ -71,17 +71,13 @@ function wml_actions.chat(cfg)
 end
 
 function wml_actions.gold(cfg)
-	local side_list = cfg.side
+	local side_list = cfg.side or 1
 	local amount = tonumber(cfg.amount) or
 		helper.wml_error "[gold] missing required amount= attribute."
-	if side_list == nil then
-		for side in helper.all_teams() do side.gold = side.gold + amount end
-	else
-		side_list = side_list .. ","
-		for v in string.gmatch(side_list, "(%w+),") do
-			local side = wesnoth.get_side(tonumber(v))
-			side.gold = side.gold + amount
-		end
+	side_list = side_list .. ","
+	for v in string.gmatch(side_list, "(%w+),") do
+		local side = wesnoth.get_side(tonumber(v))
+		side.gold = side.gold + amount
 	end
 end
 
