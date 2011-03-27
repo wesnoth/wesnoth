@@ -388,6 +388,7 @@ void server::setup_handlers()
 	cmd_handlers_["games"] = &server::games_handler;
 	cmd_handlers_["wml"] = &server::wml_handler;
 	cmd_handlers_["netstats"] = &server::netstats_handler;
+	cmd_handlers_["report"]   = &server::adminmsg_handler;
 	cmd_handlers_["adminmsg"] = &server::adminmsg_handler;
 	cmd_handlers_["pm"] = &server::pm_handler;
 	cmd_handlers_["privatemsg"] = &server::pm_handler;

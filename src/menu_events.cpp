@@ -2316,15 +2316,17 @@ class chat_command_handler : public map_command_handler<chat_command_handler>
 				"", "", "A");
 			register_command("yellow", &chat_command_handler::do_network_send_req_arg,
 				"", "", "A");
-			register_command("adminmsg", &chat_command_handler::do_network_send_req_arg,
-				_("Send a message to the server admins currently online"), "");
+			register_command("report", &chat_command_handler::do_network_send_req_arg,
+				_("Report abuse, rule violations, etc. to the server moderators. "
+				"Make sure to mention relevant nicks, etc."), "");
+			register_alias("report", "adminmsg");  // deprecated
 			register_command("emote", &chat_command_handler::do_emote,
 				_("Send an emotion or personal action in chat."), _("<message>"));
 			register_alias("emote", "me");
 			register_command("whisper", &chat_command_handler::do_whisper,
 				_("Sends a private message. "
-				"You can’t send messages to players that don’t control "
-				"a side in a running game you are in."), _("<nick> <message>"));
+				"You cannot send private messages to players in a running game you observe or play in."),
+				_("<nick> <message>"));
 			register_alias("whisper", "msg");
 			register_alias("whisper", "m");
 			register_command("log", &chat_command_handler::do_log,
@@ -2669,8 +2671,8 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 		data.add_child("query")["type"] = "lobbymsg #" + args;
 	} else if (cmd == "yellow") {
 		data.add_child("query")["type"] = "lobbymsg <255,255,0>" + args;
-	} else if (cmd == "adminmsg") {
-		data.add_child("query")["type"] = "adminmsg " + args;
+	} else if (cmd == "report") {
+		data.add_child("query")["type"] = "report " + args;
 	} else if (cmd == "join") {
 		data.add_child("room_join")["room"] = args;
 	} else if (cmd == "part") {
