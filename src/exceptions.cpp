@@ -23,7 +23,6 @@ char const *game::exception::sticky;
 void game::exception::rethrow()
 {
 	if (!sticky) return;
-	if (strcmp(sticky, "end level") == 0) throw end_level_exception(QUIT);
 	throw game::exception("Unknown exception", "unknown");
 }
 

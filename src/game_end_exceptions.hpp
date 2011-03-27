@@ -24,6 +24,7 @@
 #define GAME_END_EXCEPTIONS_HPP_INCLUDED
 
 #include "exceptions.hpp"
+#include "lua_jailbreak_exception.hpp"
 
 enum LEVEL_RESULT {
 	NONE,
@@ -47,12 +48,22 @@ struct end_turn_exception : game::exception
 /**
  * Exception used to signal the end of a scenario.
  */
-struct end_level_exception : game::exception
+class end_level_exception
+	: public tlua_jailbreak_exception
 {
+public:
+
 	end_level_exception(LEVEL_RESULT res)
-		: game::exception("End level", res == QUIT ? "end level" : NULL)
-		, result(res) {}
+		: tlua_jailbreak_exception()
+		, result(res)
+	{
+	}
+
 	LEVEL_RESULT result;
+
+private:
+
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_level_exception)
 };
 
 
