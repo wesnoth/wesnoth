@@ -24,6 +24,7 @@
 #define GAME_END_EXCEPTIONS_HPP_INCLUDED
 
 #include "lua_jailbreak_exception.hpp"
+#include <string>
 
 enum LEVEL_RESULT {
 	NONE,
