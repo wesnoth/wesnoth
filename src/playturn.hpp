@@ -54,7 +54,7 @@ public:
 	events::generic_event& host_transfer() { return host_transfer_; }
 private:
 	static void change_controller(const std::string& side, const std::string& controller);
-	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
+	static void change_side_controller(const std::string& side, const std::string& player);
 
 	unsigned int team_num_;
 

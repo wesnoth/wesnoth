@@ -283,10 +283,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 					const size_t index = static_cast<size_t>(action - 3);
 					if (index < observers.size()) {
-						change_side_controller(side_str, observers[index], false /*not our own side*/);
+						change_side_controller(side_str, observers[index]);
 					} else if (index < options.size() - 1) {
 						size_t i = index - observers.size();
-						change_side_controller(side_str, allies[i]->current_player(), false /*not our own side*/);
+						change_side_controller(side_str, allies[i]->current_player());
 					} else {
 						tm.make_human_ai();
 						tm.set_current_player("ai"+side_str);
@@ -331,13 +331,12 @@ void turn_info::change_controller(const std::string& side, const std::string& co
 }
 
 
-void turn_info::change_side_controller(const std::string& side, const std::string& player, bool own_side)
+void turn_info::change_side_controller(const std::string& side, const std::string& player)
 {
 	config cfg;
 	config& change = cfg.add_child("change_controller");
 	change["side"] = side;
 	change["player"] = player;
-	if (own_side) change["own_side"] = true;
 	network::send_data(cfg, 0);
 }
 

@@ -3122,6 +3122,7 @@ void console_handler::do_droid() {
 	}
 	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
 }
+
 void console_handler::do_theme() {
 	preferences::show_theme_dialog(*menu_handler_.gui_);
 }
@@ -3155,7 +3156,7 @@ void console_handler::do_control() {
 	if (menu_handler_.teams_[side_num - 1].is_human()) {
 		if (player == preferences::login())
 			return;
-		menu_handler_.change_side_controller(side,player,true);
+		menu_handler_.change_side_controller(side,player);
 	} else {
 		//it is not our side, the server will decide if we can change the
 		//controller (that is if we are host of the game)
@@ -3632,16 +3633,12 @@ void menu_handler::change_controller(const std::string& side, const std::string&
 	network::send_data(cfg, 0);
 }
 
-void menu_handler::change_side_controller(const std::string& side, const std::string& player, bool own_side)
+void menu_handler::change_side_controller(const std::string& side, const std::string& player)
 {
 	config cfg;
 	config& change = cfg.add_child("change_controller");
 	change["side"] = side;
 	change["player"] = player;
-
-	if(own_side) {
-		change["own_side"] = true;
-	}
 
 	network::send_data(cfg, 0);
 }

@@ -114,7 +114,7 @@ private:
 	bool has_friends() const;
 	bool clear_shroud(int side_num);
 	static void change_controller(const std::string& side, const std::string& controller);
-	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
+	static void change_side_controller(const std::string& side, const std::string& player);
 	void scenario_settings_table(int selected=0);
 
 	game_display* gui_;
