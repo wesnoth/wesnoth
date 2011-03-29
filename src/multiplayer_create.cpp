@@ -43,6 +43,9 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
+static lg::log_domain log_mp_create("mp/create");
+#define DBG_MP LOG_STREAM(debug, log_mp_create)
+
 namespace {
 const SDL_Rect null_rect = {0, 0, 0, 0};
 }
@@ -101,6 +104,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	parameters_()
 {
 	// Build the list of scenarios to play
+
+	DBG_MP << "constructing multiplayer create dialog" << std::endl;
 
 	// Add the 'load game' option
 	std::string markup_txt = "`~";
@@ -235,13 +240,16 @@ create::~create()
 {
 	// Only save the settings if the dialog was 'accepted'
 	if(get_result() != CREATE) {
+		DBG_MP << "destructing multiplayer create dialog - aborted game creation" << std::endl;
 		return;
 	}
+	DBG_MP << "destructing multiplayer create dialog - a game will be created" << std::endl;
 
 	// Retrieve values
 	get_parameters();
 
 	// Save values for next game
+	DBG_MP << "storing parameter values in preferences" << std::endl;
 	preferences::set_allow_observers(parameters_.allow_observers);
 	preferences::set_use_map_settings(parameters_.use_map_settings);
 	preferences::set_countdown(parameters_.mp_countdown);
@@ -266,6 +274,7 @@ create::~create()
 
 mp_game_settings& create::get_parameters()
 {
+	DBG_MP << "getting parameter values from widgets" << std::endl;
 	num_turns_ = turns_slider_.value() < turns_slider_.max_value() ?
 		turns_slider_.value() : -1;
 
@@ -603,6 +612,8 @@ void create::process_event()
 
 void create::hide_children(bool hide)
 {
+	DBG_MP << (hide ? "hiding" : "showing" ) << " children widgets" << std::endl;
+
 	ui::hide_children(hide);
 
 	maps_menu_.hide(hide);
@@ -668,6 +679,8 @@ void create::hide_children(bool hide)
 
 void create::layout_children(const SDL_Rect& rect)
 {
+	DBG_MP << "laying out the children" << std::endl;
+
 	ui::layout_children(rect);
 	SDL_Rect ca = client_area();
 

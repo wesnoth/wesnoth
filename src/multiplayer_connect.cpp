@@ -48,6 +48,9 @@ static lg::log_domain log_config("config");
 #define WRN_CF LOG_STREAM(warn, log_config)
 #define ERR_CF LOG_STREAM(err, log_config)
 
+static lg::log_domain log_mp_connect("mp/connect");
+#define DBG_MP LOG_STREAM(debug, log_mp_connect)
+
 namespace {
 	const char* controller_names[] = {
 		"network",
@@ -105,6 +108,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	enabled_(!parent_->params_.saved_game), changed_(false),
 	llm_(parent.era_sides_, enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
 {
+	DBG_MP << "initializing side" << std::endl;
 	// convert ai controllers
 	if (cfg_["controller"] == "human_ai"
 			|| cfg_["controller"] == "network_ai")
@@ -987,6 +991,7 @@ connect::connect(game_display& disp, const config& game_config,
 	add_local_player_(video(), _("Add named local player")),
 	combo_control_group_(new gui::drop_group_manager())
 {
+	DBG_MP << "setting up connect dialog" << std::endl;
 	load_game();
 
 	if(get_result() == QUIT
@@ -1118,6 +1123,7 @@ const game_state& connect::get_state()
 
 void connect::start_game()
 {
+	DBG_MP << "starting a new game" << std::endl;
 	// Resolves the "random faction", "random gender" and "random message"
 	for (side_list::iterator itor = sides_.begin(); itor != sides_.end();
 			++itor) {
@@ -1139,6 +1145,8 @@ void connect::start_game()
 
 void connect::hide_children(bool hide)
 {
+	DBG_MP << (hide ? "hiding" : "showing" ) << " children widgets" << std::endl;
+
 	ui::hide_children(hide);
 
 	waiting_label_.hide(hide);
@@ -1527,6 +1535,8 @@ void connect::lists_init()
 
 void connect::load_game()
 {
+	DBG_MP << "loading game parameters" << std::endl;
+
 	if(params_.saved_game) {
 		try{
 			savegame::loadgame load(disp(), game_config(), state_);
@@ -1633,6 +1643,7 @@ config* connect::current_config(){
 
 void connect::update_level()
 {
+	DBG_MP << "updating level" << std::endl;
 	// Import all sides into the level
 	level_.clear_children("side");
 	for(side_list::const_iterator itor = sides_.begin(); itor != sides_.end();
@@ -1644,6 +1655,7 @@ void connect::update_level()
 
 void connect::update_and_send_diff(bool update_time_of_day)
 {
+
 	config old_level = level_;
 	update_level();
 	if (update_time_of_day)
@@ -1664,9 +1676,11 @@ bool connect::sides_ready() const
 {
 	for(side_list::const_iterator itor = sides_.begin(); itor != sides_.end(); ++itor) {
 		if (!itor->ready_for_start()) {
+			DBG_MP << "not all sides are ready, side " << itor->get_config().get("side")->str() << " not ready" << std::endl;
 			return false;
 		}
 	}
+	DBG_MP << "all sides are ready" << std::endl;
 	return true;
 }
 
@@ -1704,6 +1718,8 @@ bool connect::can_start_game() const
 
 void connect::update_playerlist_state(bool silent)
 {
+	DBG_MP << "updating player list state" << std::endl;
+
 	waiting_label_.set_text(can_start_game() ? ""
 			: sides_available()
 				? _("Waiting for players to join...")

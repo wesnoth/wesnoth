@@ -43,6 +43,9 @@
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 
+static lg::log_domain log_mp("mp/main");
+#define DBG_MP LOG_STREAM(debug, log_mp)
+
 namespace {
 
 class network_game_manager
@@ -67,6 +70,7 @@ public:
 
 static void run_lobby_loop(display& disp, mp::ui& ui)
 {
+	DBG_MP << "running lobby loop" << std::endl;
 	disp.video().modeChanged();
 	bool first = true;
 	font::cache_mode(font::CACHE_LOBBY);
@@ -106,6 +110,7 @@ enum server_type {
 
 static server_type open_connection(game_display& disp, const std::string& original_host)
 {
+	DBG_MP << "opening connection" << std::endl;
 	std::string h = original_host;
 
 	if(h.empty()) {
@@ -383,6 +388,8 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 static void enter_wait_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, bool observe)
 {
+	DBG_MP << "entering wait mode" << std::endl;
+
 	mp::ui::result res;
 	game_state state;
 	network_game_manager m;
@@ -431,6 +438,8 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 		mp::chat& chat, config& gamelist, const mp_game_settings& params,
 		const int num_turns, mp::controller default_controller, bool local_players_only = false)
 {
+	DBG_MP << "entering connect mode" << std::endl;
+
 	mp::ui::result res;
 	game_state state;
 	const network::manager net_manager(1,1);
@@ -471,6 +480,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 
 static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool local_players_only)
 {
+	DBG_MP << "entering create mode" << std::endl;
 	if (gui2::new_widgets) {
 
 		gui2::tmp_create_game dlg(game_config);
@@ -507,6 +517,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 
 static void do_preferences_dialog(game_display& disp, const config& game_config)
 {
+	DBG_MP << "displaying preferences dialog" << std::endl;
 	const preferences::display_manager disp_manager(&disp);
 	preferences::show_preferences_dialog(disp,game_config);
 
@@ -526,7 +537,7 @@ static void do_preferences_dialog(game_display& disp, const config& game_config)
 
 static void enter_lobby_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist)
 {
-
+	DBG_MP << "entering lobby mode" << std::endl;
 
 	mp::ui::result res;
 
@@ -632,6 +643,7 @@ namespace mp {
 void start_local_game(game_display& disp, const config& game_config,
 		mp::controller default_controller)
 {
+	DBG_MP << "starting local game" << std::endl;
 	const rand_rng::set_random_generator generator_setter(&recorder);
 	mp::chat chat;
 	config gamelist;
@@ -643,6 +655,7 @@ void start_local_game(game_display& disp, const config& game_config,
 void start_client(game_display& disp, const config& game_config,
 		const std::string& host)
 {
+	DBG_MP << "starting client" << std::endl;
 	const rand_rng::set_random_generator generator_setter(&recorder);
 	const network::manager net_manager(1,1);
 
