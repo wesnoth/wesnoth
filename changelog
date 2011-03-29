@@ -1,6 +1,8 @@
 Version 1.9.5+svn:
  * Language and i18n:
    * Updated translations: British English, Galician, Old English
+ * WML engine:
+   * Patch #2610: changed default for turns in [scenario] tag to -1 (unlimited)
  * Miscellaneous and bugfixes:
    * Changed : replaced all sticky excpetions by lua jailbreak exceptions
      (fixes bug #17743).
