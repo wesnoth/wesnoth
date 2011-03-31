@@ -14,14 +14,14 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-Since Tiny-GUI, a system that scaled images down at install time to a smaller size and display those things ingame, was utterly broken, it was removed from the game. Because of this, for the moment there will be no support for resolutions below 800x480. Before, you had to compile a specific binary for this size as well as convert all images; this is no longer possible. Resolutions below 800x480 might eventually be supported again after the move to GUI2 is completed and we get OpenGL(ES) support, since then defining a smaller GUI should be possible more easily and zooming should almost come for free. When starting Wesnoth without any parameters the minimum resolution is now 800x480 instead of 800x600.
+[section="section title"]text[/section]
 
-The option to build without the editor has been removed. The editor is now always built into the game.
-
+[section="section title 2"]text 2[/section]
 
 ==========
 KNOWN BUGS
 ==========
 
-Starting locations are not initially visible in the map editor unless you perform some change to them. See bug [bug]17956[/bug].
-
+[list][*] known issue
+[*] known issue 2
+[/list]
