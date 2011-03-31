@@ -933,6 +933,9 @@ stringfixes = {
 ("but as Asheviere's grip", "but as Asheviere’s grip"),
 ("I don't want to touch it.", "I don’t want to touch it."),
 ("With bitter humor he realized that Lord Maddock's", "With bitter humor he realized that Lord Maddock’s"),
+
+# Insert a diaeresis
+("I am not so naive", "I am not so naïve"),
 ),
 
 "wesnoth-low" : (
