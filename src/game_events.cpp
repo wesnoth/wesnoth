@@ -1711,7 +1711,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				if(pass_check || (resources::units->count(loc) > 0)) {
 					loc = pathfind::find_vacant_tile(*resources::game_map, *resources::units, loc, pathfind::VACANT_ANY, pass_check);
 				}
-				if(!resources::game_map->on_board(loc)) ERR_NG << "Trying to recall on invalid location!\n";
+				if(!resources::game_map->on_board(loc)) { ERR_NG << "Trying to recall on invalid location!\n"; }
 				place_recruit(to_recruit, loc, true, cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false), true, true);
 				unit_recalled = true;
 				break;
