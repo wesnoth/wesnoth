@@ -57,6 +57,7 @@ if __name__ == "__main__":
     optionparser.add_option("-t", "--tar",
         help = "When used together with --download, create tarballs of any " +
         "downloaded addons and put into the specified directory.")
+    optionparser.add_option("--pbl", help = "override standard PBL location")
     optionparser.add_option("-u", "--upload",
         help = "Upload an add-on. " +
         "UPLOAD should be either the name of an add-on subdirectory," +
@@ -287,6 +288,9 @@ if __name__ == "__main__":
             wmldir = os.path.join(os.path.dirname(options.upload), name)
             cfgfile = options.upload.replace(".pbl", ".cfg")
             ignfile = options.upload.replace(".pbl", ".ign")
+        
+        if options.pbl:
+            pblfile = options.pbl
 
         pbl = wmldata.read_file(pblfile, "PBL")
         if os.path.exists(ignfile):
