@@ -83,8 +83,7 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
  * @return an empty string on success. Otherwise a human-readable message
  *         describing the failure is returned.
  */
-std::string find_recruit_location(int side, map_location &recruit_location,
-	bool need_castle = true);
+std::string find_recruit_location(int side, map_location &recruit_location);
 
 /**
  * Place a unit into the game.
