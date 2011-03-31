@@ -1698,10 +1698,20 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 			DBG_NG << "checking unit against filter...\n";
 			scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
 			if (u->matches_filter(unit_filter, map_location())) {
-				map_location loc = cfg_to_loc(cfg);
-				unit to_recruit(*u);
+				const unit to_recruit(*u);
 				avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
-				find_recruit_location(index + 1, loc, false);
+				const unit* pass_check = &to_recruit;
+				if(!cfg["check_passability"].to_bool(true)) pass_check = NULL;
+				map_location loc = cfg_to_loc(cfg);
+				if(!resources::game_map->on_board(loc))
+				{
+					unit_map::const_unit_iterator leader = resources::units->find_leader(index + 1);
+					if(leader != resources::units->end()) loc = leader->get_location();
+				}
+				if(pass_check || (resources::units->count(loc) > 0)) {
+					loc = pathfind::find_vacant_tile(*resources::game_map, *resources::units, loc, pathfind::VACANT_ANY, pass_check);
+				}
+				if(!resources::game_map->on_board(loc)) ERR_NG << "Trying to recall on invalid location!\n";
 				place_recruit(to_recruit, loc, true, cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false), true, true);
 				unit_recalled = true;
 				break;
