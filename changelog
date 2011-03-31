@@ -7,6 +7,8 @@ Version 1.9.5+svn:
    * Updated translations: British English, Galician, Greek, Old English
  * WML engine:
    * Patch #2610: changed default for turns in [scenario] tag to -1 (unlimited)
+   * Introduced [recall]check_passability=yes|no key (default yes)
+     for placing units only on suitable terrain when recalling.
  * Miscellaneous and bugfixes:
    * Changed : replaced all sticky excpetions by lua jailbreak exceptions
      (fixes bug #17743).
