@@ -8,7 +8,7 @@
 #ifndef lconfig_h
 #define lconfig_h
 
-#include "lua_jailbreak_exception.hpp"
+#include "../lua_jailbreak_exception.hpp"
 
 #include <limits.h>
 #include <stddef.h>
