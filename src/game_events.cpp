@@ -2316,49 +2316,74 @@ WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 {
-	unit_map *units = resources::units;
-
-	bool animated = cfg["animate"].to_bool();
-
-	const vconfig healed_filter = cfg.child("filter");
-	unit_map::iterator u;
-
-	if (healed_filter.null()) {
-		// Try to take the unit at loc1
-		u = units->find(event_info.loc1);
-	}
-	else {
-		for(u  = units->begin(); u != units->end(); ++u) {
-			if (game_events::unit_matches_filter(*u, healed_filter))
-				break;
-		}
-	}
-
-	if (!u.valid()) return;
+	unit_map* units = resources::units;
 
 	const vconfig healers_filter = cfg.child("filter_second");
-	std::vector<unit *> healers;
-
+	std::vector<unit*> healers;
 	if (!healers_filter.null()) {
-		foreach (unit &v, *units) {
-			if (game_events::unit_matches_filter(v, healers_filter) &&
-			    v.has_ability_type("heals")) {
-				healers.push_back(&v);
+		foreach (unit& u, *units) {
+			if (game_events::unit_matches_filter(u, healers_filter) && u.has_ability_type("heals")) {
+				healers.push_back(&u);
 			}
 		}
 	}
 
-	int amount = cfg["amount"];
-	int real_amount = u->hitpoints();
-	u->heal(amount);
-	real_amount = u->hitpoints() - real_amount;
+	const config::attribute_value amount = cfg["amount"];
+	const config::attribute_value moves = cfg["moves"];
+	const bool restore_attacks = cfg["restore_attacks"].to_bool(false);
+	const bool restore_statuses = cfg["restore_statuses"].to_bool(true);
+	const bool animate = cfg["animate"].to_bool(false);
 
-	if (animated) {
-		unit_display::unit_healing(*u, u->get_location(),
-			healers, real_amount);
+	const vconfig healed_filter = cfg.child("filter");
+	unit_map::const_unit_iterator u;
+	bool only_unit_at_loc1 = healed_filter.null();
+	bool heal_amount_to_set = true;
+	for(u  = units->begin(); u != units->end(); ++u) {
+		if (only_unit_at_loc1)
+		{
+			u = units->find(event_info.loc1);
+			if(!u.valid()) return;
+		}
+		else if (!game_events::unit_matches_filter(*u, healed_filter)) continue;
+
+		int memory = u->hitpoints();
+		if(amount.blank() || amount == "full") u->heal_all();
+		else {
+			u->heal(lexical_cast_default<int, config::attribute_value> (amount, u->max_hitpoints() - u->hitpoints()));
+			// results to 1 <= hitpoints <= max_hitpoints
+		}
+		memory = u->hitpoints() - memory;
+
+		if(!moves.blank()) {
+			if(moves == "full") u->set_movement(u->total_movement());
+			else {
+				// set_movement doesn't set below 0
+				u->set_movement(std::min<int>(
+					u->total_movement(),
+					u->movement_left() + lexical_cast_default<int, config::attribute_value> (moves, 0)
+					));
+			}
+		}
+
+		if(restore_attacks) u->set_attacks(u->max_attacks());
+
+		if(restore_statuses)
+		{
+			u->set_state(unit::STATE_POISONED, false);
+			u->set_state(unit::STATE_SLOWED, false);
+			u->set_state(unit::STATE_PETRIFIED, false);
+			u->set_state(unit::STATE_UNHEALABLE, false);
+		}
+
+		if (heal_amount_to_set)
+		{
+			heal_amount_to_set = false;
+			resources::state_of_game->get_variable("heal_amount") = memory;
+		}
+
+		if(animate) unit_display::unit_healing(*u, u->get_location(), healers, memory);
+		if(only_unit_at_loc1) return;
 	}
-
-	resources::state_of_game->get_variable("heal_amount") = real_amount;
 }
 
 // Allow undo sets the flag saying whether the event has mutated the game to false
