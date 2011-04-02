@@ -3395,7 +3395,19 @@ void LuaKernel::save_game(config &cfg)
 	{
 		config::all_children_iterator i = v.ordered_begin();
 		if (i == v.ordered_end()) break;
-		if (is_handled_file_tag(i->key)) continue;
+		if (is_handled_file_tag(i->key))
+		{
+			/*
+			 * It seems the only tags appearing in the config v variable here
+			 * are the core-lua-handled (currently [item] and [objectives])
+			 * and the extra UMC ones.
+			 */
+			const std::string m = "Tag is already used: [" + i->key + "]";
+			chat_message("Lua error", m);
+			ERR_LUA << m << '\n';
+			v.erase(i);
+			continue;
+		}
 		cfg.splice_children(v, i->key);
 	}
 }
