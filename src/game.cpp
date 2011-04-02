@@ -1122,21 +1122,8 @@ bool game_controller::new_campaign()
 	if (jump_to_campaign_.scenario_id_.empty())
 		state_.classification().scenario = campaign["first_scenario"].str();
 	else
-	{
-		bool found = false;
-		foreach(const config &sc, campaign.child_range("scenario"))
-		{
-			if (sc["id"] == jump_to_campaign_.scenario_id_)
-				found = true;
-		}
-
-		if (!found)
-		{
-			std::cerr<<"No such scenario id to jump to: ["<<jump_to_campaign_.scenario_id_<<"]\n";
-			return false;
-		}
 		state_.classification().scenario = jump_to_campaign_.scenario_id_;
-	}
+
 	state_.classification().end_text = campaign["end_text"].str();
 	state_.classification().end_text_duration = campaign["end_text_duration"];
 
