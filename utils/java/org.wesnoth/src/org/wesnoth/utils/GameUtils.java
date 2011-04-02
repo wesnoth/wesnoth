@@ -69,10 +69,12 @@ public class GameUtils
 			String campaignId = null;
 			String scenarioId = null;
 
-			campaignId = ResourceUtils.getCampaignID(selectedResource);
+			campaignId = ProjectUtils.getCacheForProject(selectedResource.getProject()).
+			        getConfig("_main.cfg").getCampaignId();
 
 			if (scenario == true && selectedResource instanceof IFile)
-				scenarioId = ResourceUtils.getScenarioID((IFile)selectedResource);
+				scenarioId = ProjectUtils.getCacheForProject(selectedResource.getProject()).
+				    getConfig(selectedResource.getName()).getScenarioId();
 
 			if (campaignId == null)
 			{
