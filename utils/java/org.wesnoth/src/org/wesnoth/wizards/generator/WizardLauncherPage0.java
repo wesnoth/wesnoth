@@ -232,7 +232,8 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 		// opened file
 		lblCurrentFileOpened.setEnabled(!radioNewFile.getSelection());
 
-		txtDirectory_.setText(getWizard().getSelectionContainer().getFullPath().toString());
+		if (getWizard().getSelectionContainer() != null)
+		    txtDirectory_.setText(getWizard().getSelectionContainer().getFullPath().toString());
 		updatePageIsComplete();
 	}
 
