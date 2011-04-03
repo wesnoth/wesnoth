@@ -181,6 +181,14 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 				wmlToolsField_.setStringValue(path);
 		}
 
+		// guess the userdata path
+        if (wesnothUserDirField_.getStringValue().isEmpty() &&
+            !wesnothWorkingDirField_.getStringValue().isEmpty())
+        {
+            String path = wesnothWorkingDirField_.getStringValue() + "/userdata"; //$NON-NLS-1$
+            testPaths(new String[] { path },wesnothUserDirField_);
+        }
+
 		checkState();
 	}
 
@@ -204,8 +212,9 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 	}
 
 	/**
-	 * Tests the list of paths and if any path exists will
+	 * Tests the list of paths and if any path exists it will
 	 * set it as the string value to the field editor
+	 * if the field editor value is empty
 	 * @param list The list to search in
 	 * @param field The field to put the path in
 	 */
