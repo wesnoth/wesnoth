@@ -280,8 +280,9 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	}
 
 	assert(validate_iterator(position));
-	//Do nothing if the result position would be impossible
-	if(!validate_iterator(position - 1))
+
+	//Do nothing if ...
+	if(position == begin()) //... because (position-1) would cause deque assertion failure.
 		return end();
 
 	side_actions::iterator previous = position - 1;
@@ -456,7 +457,12 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 	if (!actions_.empty() && validate_iterator(position))
 	{
 		LOG_WB << "Erasing action at position #" << distance + 1 << "\n";
-		actions_.erase(position);
+
+		{//prevent erase() statement from destroying action object, potentially causing infinite recursion
+			action_ptr action = *position;
+			actions_.erase(position);
+		}//Now safely destruct action object (if zero references)
+
 		if (validate_after_delete)
 		{
 			validate_actions();

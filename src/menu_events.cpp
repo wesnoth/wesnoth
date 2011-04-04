@@ -1165,11 +1165,12 @@ void menu_handler::redo(int side_num)
 			ERR_NG << "trying to redo a dismiss for side " << side_num
 				<< ", which has no recall list!\n";
 		} else {
-		//redo a dismissal
-		recorder.add_disband(action.affected_unit.id());
-		std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(),
-			current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, action.affected_unit.id()));
-		current_team.recall_list().erase(unit_it);
+			//redo a dismissal
+			recorder.add_disband(action.affected_unit.id());
+			std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(),
+				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, action.affected_unit.id()));
+			current_team.recall_list().erase(unit_it);
+			resources::whiteboard->on_gamestate_change();
 		}
 	} else if(action.is_recall()) {
 		if(!current_team.persistent()) {
@@ -1200,6 +1201,7 @@ void menu_handler::redo(int side_num)
 				recorder.undo();
 				gui::dialog(*gui_,"",msg,gui::OK_ONLY).show();
 			}
+			resources::whiteboard->on_gamestate_change();
 		}
 	} else if(action.is_recruit()) {
 		// Redo recruit action
@@ -1243,6 +1245,7 @@ void menu_handler::redo(int side_num)
 			recorder.undo();
 			gui::dialog(*gui_,"",msg,gui::OK_ONLY).show();
 		}
+		resources::whiteboard->on_gamestate_change();
 	} else {
 		// Redo movement action
 		const int starting_moves = action.starting_moves;
@@ -1276,6 +1279,7 @@ void menu_handler::redo(int side_num)
 		}
 
 		gui_->invalidate_unit_after_move(route.front(), route.back());
+		resources::whiteboard->on_gamestate_change();
 		gui_->draw();
 
 		recorder.add_movement(action.route);
