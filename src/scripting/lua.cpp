@@ -56,6 +56,7 @@
 #include "sound.hpp"
 #include "unit.hpp"
 #include "ai/lua/core.hpp"
+#include "version.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -2448,6 +2449,27 @@ static int intf_scroll_to_tile(lua_State *L)
 }
 
 /**
+ * Compares 2 version strings - which is newer.
+ * - Args 1,3: version strings
+ * - Arg 2: comparison operator (string)
+ * - Ret 1: comparison result
+ */
+static int intf_compare_versions(lua_State* L)
+{
+	char const *v1 = luaL_checkstring(L, 1);
+
+	const VERSION_COMP_OP vop = parse_version_op(luaL_checkstring(L, 2));
+	if(vop == OP_INVALID) return luaL_argerror(L, 2, "unknown version comparison operator - allowed are ==, !=, <, <=, > and >=");
+
+	char const *v2 = luaL_checkstring(L, 3);
+
+	const bool result = do_version_check(version_info(v1), vop, version_info(v2));
+	lua_pushboolean(L, result);
+
+	return 1;
+}
+
+/**
  * Selects the given location on the map.
  * - Args 1,2: location.
  */
@@ -3051,6 +3073,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "add_modification",         &intf_add_modification         },
 		{ "add_tile_overlay",         &intf_add_tile_overlay         },
 		{ "clear_messages",           &intf_clear_messages           },
+		{ "compare_versions",         &intf_compare_versions         },
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
 		{ "delay",                    &intf_delay                    },
