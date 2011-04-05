@@ -18,6 +18,8 @@ import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Text;
@@ -73,34 +75,39 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 	@Override
 	public void createFieldEditors()
 	{
-		ModifyListener listener = new ModifyListener() {
-			@Override
-			public void modifyText(ModifyEvent e)
-			{
-				checkState();
-				guessDefaultPaths();
-			}
-		};
+	    ModifyListener listener = new ModifyListener() {
+
+            @Override
+            public void modifyText(ModifyEvent e)
+            {
+                checkState();
+                guessDefaultPaths();
+            }
+        };
 
 		wesnothExecutableField_ = new FileFieldEditor(Constants.P_WESNOTH_EXEC_PATH,
 				Messages.WesnothPreferencesPage_5, getFieldEditorParent());
 		wesnothExecutableField_.getTextControl(getFieldEditorParent()).
-			addModifyListener(new ModifyListener() {
-				@Override
-				public void modifyText(ModifyEvent e)
-				{
-					checkState();
-					String wesnothExec = wesnothExecutableField_.getStringValue();
-					if (wesnothWorkingDirField_.getStringValue().isEmpty() &&
-						!wesnothExec.isEmpty() &&
-						new File(wesnothExec.substring(0,
-								wesnothExec.lastIndexOf(new File(wesnothExec).getName()))).exists())
-					{
-						wesnothWorkingDirField_.setStringValue(wesnothExec.substring(0,
-								wesnothExec.lastIndexOf(new File(wesnothExec).getName()))
-						);
-					}
-				}
+			addFocusListener(new FocusListener() {
+                @Override
+                public void focusLost(FocusEvent e)
+                {
+                    checkState();
+                    String wesnothExec = wesnothExecutableField_.getStringValue();
+                    if (wesnothWorkingDirField_.getStringValue().isEmpty() &&
+                        !wesnothExec.isEmpty() &&
+                        new File(wesnothExec.substring(0,
+                                wesnothExec.lastIndexOf(new File(wesnothExec).getName()))).exists())
+                    {
+                        wesnothWorkingDirField_.setStringValue(wesnothExec.substring(0,
+                                wesnothExec.lastIndexOf(new File(wesnothExec).getName()))
+                        );
+                    }
+                }
+                @Override
+                public void focusGained(FocusEvent e)
+                {
+                }
 			});
 		addField(wesnothExecutableField_, Messages.WesnothPreferencesPage_6);
 
