@@ -38,6 +38,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.IWorkingSetManager;
@@ -46,7 +48,9 @@ import org.wesnoth.Activator;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
+import org.wesnoth.navigator.WesnothProjectsExplorer;
 import org.wesnoth.preferences.Preferences;
+import org.wesnoth.product.WMLPerspective;
 
 
 public class WorkspaceUtils
@@ -185,7 +189,6 @@ public class WorkspaceUtils
 		return (IContainer) selection.getFirstElement();
 	}
 
-
 	/**
 	 * Gets the selected resource(file/folder/project) or null if none selected
 	 * @return
@@ -207,6 +210,15 @@ public class WorkspaceUtils
 	}
 
 	/**
+	 * Returns the current workbench
+	 * @return
+	 */
+	public static IWorkbench getWorkbench()
+	{
+	    return Activator.getDefault().getWorkbench();
+	}
+
+	/**
 	 * Returns the first WorkbenchWindow available. This is not always the same
 	 * with ActiveWorkbecnWindow
 	 *
@@ -214,11 +226,13 @@ public class WorkspaceUtils
 	 */
 	public static IWorkbenchWindow getWorkbenchWindow()
 	{
-		if (Activator.getDefault().getWorkbench().getActiveWorkbenchWindow() != null)
-			return Activator.getDefault().getWorkbench().getActiveWorkbenchWindow();
-		if (Activator.getDefault().getWorkbench().getWorkbenchWindowCount() == 0)
+		if (getWorkbench().getActiveWorkbenchWindow() != null)
+			return getWorkbench().getActiveWorkbenchWindow();
+
+		if (getWorkbench().getWorkbenchWindowCount() == 0)
 			return null;
-		return Activator.getDefault().getWorkbench().getWorkbenchWindows()[0];
+
+		return getWorkbench().getWorkbenchWindows()[0];
 	}
 
 	/**
@@ -227,7 +241,26 @@ public class WorkspaceUtils
 	 */
 	public static IWorkingSetManager getWorkingSetManager()
 	{
-		return getWorkbenchWindow().getWorkbench().getWorkingSetManager();
+		return getWorkbench().getWorkingSetManager();
+	}
+
+	/**
+	 * Returns the view with the specified id or null if none found
+	 * @param id The id of the searched View
+	 * @return
+	 */
+	public static IViewPart getView(String id)
+	{
+	    return getWorkbenchWindow().getActivePage().findView(id);
+	}
+
+	/**
+	 * Returns the Wesnoth Projects Explorer view
+	 * @return
+	 */
+	public static WesnothProjectsExplorer getProjectsExplorer()
+	{
+	    return (WesnothProjectsExplorer)getView(WMLPerspective.WESNOTH_PROJ_EXPLORER_ID);
 	}
 
 	/**

@@ -144,6 +144,9 @@ public class ProjectUtils
 					TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true); //$NON-NLS-1$
 		}
 		monitor.worked(10);
+
+		WorkspaceUtils.getProjectsExplorer().getCommonViewer().refresh();
+
 		return 0;
 	}
 }
