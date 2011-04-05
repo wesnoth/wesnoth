@@ -44,6 +44,12 @@ public class WesnothProjectsExplorer extends CommonNavigator implements IAdaptab
 	    return ResourcesPlugin.getWorkspace().getRoot();
 	}
 
+	@Override
+	public void saveState(IMemento aMemento)
+	{
+	    //super.saveState(aMemento);
+	}
+
 	public IAdaptable createElement(IMemento memento)
 	{
 		return ResourcesPlugin.getWorkspace().getRoot();
