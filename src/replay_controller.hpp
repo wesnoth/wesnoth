@@ -82,16 +82,16 @@ private:
 		bool is_valid_;
 		
 		//bit mask
-		uint enabled_buttons_;
+		unsigned enabled_buttons_;
 		
 		void update_buttons_states();
 	
 	public:
-		static const uint PLAY_BUTTON_ENABLED = 1;
-		static const uint STOP_BUTTON_ENABLED = 2;
-		static const uint RESET_BUTTON_ENABLED = 4;
-		static const uint PLAY_TURN_BUTTON_ENABLED = 8;
-		static const uint PLAY_SIDE_BUTTON_ENABLED = 16;
+		static const unsigned PLAY_BUTTON_ENABLED = 1;
+		static const unsigned STOP_BUTTON_ENABLED = 2;
+		static const unsigned RESET_BUTTON_ENABLED = 4;
+		static const unsigned PLAY_TURN_BUTTON_ENABLED = 8;
+		static const unsigned PLAY_SIDE_BUTTON_ENABLED = 16;
 		
 		replay_buttons_wrapper() : is_valid_(false), enabled_buttons_() {}
 	
