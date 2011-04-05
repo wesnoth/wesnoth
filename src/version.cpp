@@ -299,3 +299,44 @@ bool operator>=(const version_info& l, const version_info& r)
 {
 	return l > r || l == r;
 }
+
+VERSION_COMP_OP parse_version_op(const std::string& op_str)
+{
+	if(op_str == "==") {
+		return OP_EQUAL;
+	} else if(op_str == "!=") {
+		return OP_NOT_EQUAL;
+	} else if(op_str == "<") {
+		return OP_LESS;
+	} else if(op_str == "<=") {
+		return OP_LESS_OR_EQUAL;
+	} else if(op_str == ">") {
+		return OP_GREATER;
+	} else if(op_str == ">=") {
+		return OP_GREATER_OR_EQUAL;
+	}
+
+	return OP_INVALID;
+}
+
+bool do_version_check(const version_info& a, VERSION_COMP_OP op, const version_info& b)
+{
+	switch(op) {
+	case OP_EQUAL:
+		return a == b;
+	case OP_NOT_EQUAL:
+		return a != b;
+	case OP_LESS:
+		return a < b;
+	case OP_LESS_OR_EQUAL:
+		return a <= b;
+	case OP_GREATER:
+		return a > b;
+	case OP_GREATER_OR_EQUAL:
+		return a >= b;
+	default:
+		;
+	}
+
+	return false;
+}

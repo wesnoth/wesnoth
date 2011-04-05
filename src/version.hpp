@@ -160,4 +160,17 @@ bool operator>=(const version_info&, const version_info&);
 /** Less-than-or-equal operator for version_info. */
 bool operator<=(const version_info&, const version_info&);
 
+enum VERSION_COMP_OP {
+	OP_INVALID,
+	OP_EQUAL,
+	OP_NOT_EQUAL,
+	OP_LESS,
+	OP_LESS_OR_EQUAL,
+	OP_GREATER,
+	OP_GREATER_OR_EQUAL,
+};
+
+VERSION_COMP_OP parse_version_op(const std::string& op_str);
+bool do_version_check(const version_info& a, VERSION_COMP_OP op, const version_info& b);
+
 #endif /* !VERSION_HPP_INCLUDED */

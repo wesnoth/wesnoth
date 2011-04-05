@@ -54,16 +54,6 @@ static t_file_number_map file_number_map;
 
 static bool encode_filename = true;
 
-enum PREPROCESSOR_VERSION_OP {
-	OP_INVALID,
-	OP_EQUAL,
-	OP_NOT_EQUAL,
-	OP_LESS,
-	OP_LESS_OR_EQUAL,
-	OP_GREATER,
-	OP_GREATER_OR_EQUAL,
-};
-
 // get filename associated to this code
 static std::string get_filename(const std::string& file_code){
 	if(!encode_filename)
@@ -115,47 +105,6 @@ static std::string get_location(const std::string& loc)
 		res += ' ';
 	}
 	return res;
-}
-
-static PREPROCESSOR_VERSION_OP parse_version_op(const std::string& op_str)
-{
-	if(op_str == "==") {
-		return OP_EQUAL;
-	} else if(op_str == "!=") {
-		return OP_NOT_EQUAL;
-	} else if(op_str == "<") {
-		return OP_LESS;
-	} else if(op_str == "<=") {
-		return OP_LESS_OR_EQUAL;
-	} else if(op_str == ">") {
-		return OP_GREATER;
-	} else if(op_str == ">=") {
-		return OP_GREATER_OR_EQUAL;
-	}
-
-	return OP_INVALID;
-}
-
-static bool do_version_check(const version_info& a, PREPROCESSOR_VERSION_OP op, const version_info& b)
-{
-	switch(op) {
-	case OP_EQUAL:
-		return a == b;
-	case OP_NOT_EQUAL:
-		return a != b;
-	case OP_LESS:
-		return a < b;
-	case OP_LESS_OR_EQUAL:
-		return a <= b;
-	case OP_GREATER:
-		return a > b;
-	case OP_GREATER_OR_EQUAL:
-		return a >= b;
-	default:
-		;
-	}
-
-	return false;
 }
 
 bool preproc_define::operator==(preproc_define const &v) const {
@@ -933,7 +882,7 @@ bool preprocessor_data::get_chunk()
 			skip_spaces();
 			std::string const& vverstr = read_word();
 
-			const PREPROCESSOR_VERSION_OP vop = parse_version_op(vopstr);
+			const VERSION_COMP_OP vop = parse_version_op(vopstr);
 
 			if(vop == OP_INVALID) {
 				target_.error("Invalid #ifver/#ifnver operator", linenum_);
