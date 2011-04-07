@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: The Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-20 16:54+0100\n"
-"PO-Revision-Date: 2011-03-01 06:58+0900\n"
+"PO-Revision-Date: 2011-04-07 18:45+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
 "Language: Japanese\n"
@@ -323,13 +323,12 @@ msgstr "根絶"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:55
-#, fuzzy
 msgid ""
 "<i>The Legend of Wesmere</i>,\n"
 "Chapter One\n"
 "Flight and fight"
 msgstr ""
-"Wesmere の伝説\n"
+"<i>Wesmere の伝説</i>\n"
 "第一章\n"
 "逃走と闘争"
 
@@ -802,6 +801,8 @@ msgid ""
 "Spare as many dwarves as you can and don't kill their leader. We can't risk "
 "to get the dwarves as an additional enemy."
 msgstr ""
+"できるだけ多くのドワーフを救い、彼らの指導者を殺させてはならない。我々はド"
+"ワーフまで敵にまわす危険を冒すわけにはいかない。"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:354
@@ -900,9 +901,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:535
-#, fuzzy
 msgid "Kalenz or Landar must reach the signpost"
-msgstr "Kalenz が道しるべまで到達すること"
+msgstr "Kalenz か Landar が道しるべまで到達すること"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:540
@@ -1118,7 +1118,6 @@ msgstr ""
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:892
-#, fuzzy
 msgid ""
 "Then you have not heard the ill tidings. King Haldric has broken the treaty. "
 "The humans will not come to our aid!"
@@ -1129,7 +1128,7 @@ msgstr ""
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:897
 msgid "How can they dare to break the treaty!"
-msgstr ""
+msgstr "彼らはどうして条約を破棄するんだ！"
 
 # time over
 #. [message]: id=Kalenz
@@ -5710,16 +5709,13 @@ msgstr "弓"
 # %%
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:10
-#, fuzzy
 msgid "elates Kalenz"
-msgstr "Kalenz を +4 回復"
+msgstr "Kalenz の高揚"
 
-# % 更に4回復かも
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:11
-#, fuzzy
 msgid "female^elates Kalenz"
-msgstr "Kalenz を +4 回復する。"
+msgstr "Kalenz の高揚"
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:15
@@ -5729,6 +5725,11 @@ msgid ""
 "better.\n"
 "Adjacent to Cleodil, Kalenz will do 25% more damage in battle."
 msgstr ""
+"Kalenz の高揚\n"
+"Kalenz と Cleodil の間には特別な絆があるため、彼女は彼がよりよく戦えるように"
+"高揚させることができます。\n"
+"Cleodil に隣接しているとき、Kalenz は戦いにおいて 25% ほど多くのダメージを与"
+"えるでしょう。"
 
 # %%
 #. [heals]: id=heals_kalenz
@@ -5745,7 +5746,6 @@ msgstr "Kalenz を +4 回復する。"
 # %%
 #. [heals]: id=heals_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:38
-#, fuzzy
 msgid ""
 "heals +4:\n"
 "If a shyde has developed a special bond to a person her healing abilities "

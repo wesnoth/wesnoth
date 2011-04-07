@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-01 11:25+0100\n"
-"PO-Revision-Date: 2011-02-11 21:08+0100\n"
+"PO-Revision-Date: 2011-03-27 18:14+0100\n"
 "Last-Translator: Crommy\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
@@ -81,7 +81,7 @@ msgid ""
 "your troops!\n"
 "\n"
 msgstr ""
-"Ihr seid Cai Krellis, Sohn und Erbe des letzten König des Meervolks, und "
+"Ihr seid Cai Krellis, Sohn und Erbe des letzten Königs des Meervolks, und "
 "doch noch sehr jung an Jahren. Ein Totenbeschwörer verpestet Eure Heimat und "
 "verwandelt Eure treuen Untertanen in untote Sklaven. Führt Euer Volk durch "
 "die Wirren des Krieges und überzeugt eine mächtige Meerjungfrau, an Eurer "
@@ -124,14 +124,15 @@ msgid ""
 msgstr ""
 "Im hohen Norden, wo die Berge von Dorth sich zur Küste neigen, liegt eine "
 "Lagune. Dort am stillen Wasser findet man Jotha, die Heimstatt des "
-"Meervolks. Die geschützte Lage des Hafens und der Wohlstand des Meervolkes "
+"Meervolks. Die geschützte Lage des Hafens und der Wohlstand des Meervolks "
 "zog den gierigen Blick vieler Neider auf sich. Doch niemand kam gegen die "
-"Stärke des Meervolks in ihrem nassen Herrschaftsgebiet an. Jahr um Jahr "
+"Stärke des Meervolks in ihrem nassen Herrschaftsbereich an. Jahr um Jahr "
 "kamen Orkhorden aus der nördlichen Hafenstadt Tirigaz und in alljährlicher "
 "Schlacht spülte erst die nächste Flut so manch stinkendes Orkblut von den "
 "Stränden Jothas und brannte in den offenen Wunden der zurückgeschlagenen "
 "Orks."
 
+# Ich glaube der Narrator sollte kein ’ benutzen
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:49
 msgid ""
@@ -149,7 +150,7 @@ msgstr ""
 "in ihrer Geschichte angegriffen wurde. Der König der Meermenschen, Cai "
 "Laudiss schlug die Angreifer unter großen Verlusten zurück und unter den "
 "Opfern war die Königin. In gerechtem Zorn mobilisierte er alle verfügbaren "
-"Truppen und setzte den flüchtigen Orks nach. Nicht Rache war’s, die ihn "
+"Truppen und setzte den flüchtigen Orks nach. Nicht Rache war es, die ihn "
 "trieb, aber die Sicherheit von Jotha solle ein für allemal garantiert sein. "
 "Nach einem Gewaltmarsch stellte er das flüchtige Heer der Orks in der "
 "Hafenstadt Tirigaz zur Entscheidungsschlacht."
@@ -165,11 +166,11 @@ msgid ""
 "vastly outnumbered."
 msgstr ""
 "Im Schutze der Dunkelheit bezogen die Meermenschen ihre Angriffspositionen "
-"und schlugen im Morgengrauen los – doch die Orks hatten ihrerseits eine "
+"um im Morgengrauen los zu schlagen – doch die Orks hatten ihrerseits eine "
 "heimtückische Falle vorbereitet. Die Wracks in der Buchtmündung spien "
-"plötzlich Unmengen von Orks aus, die den Rückzug zum Meer versperrten. "
-"Gleichzeitig eröffnete die orkische Hauptstreitmacht den Angriff von der "
-"Stadt aus auf die nun eingeschlossenen und unterlegenen Meermenschen."
+"plötzlich Unmengen von Orks aus, die den Rückzug zum Meer versperrten. Nun "
+"eröffnete die orkische Hauptstreitmacht den Angriff von der Stadt aus. Die "
+"Meermenschen waren eingeschlossen."
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:57
@@ -184,15 +185,15 @@ msgid ""
 "destroyed. When the remaining soldiers returned to Jotha, Krellis, the young "
 "son of Kai Laudiss, learned that he had become kai."
 msgstr ""
-"Fünf Orks für jeden ihrer gefallenen Kameraden töteten Cai Laudiss Truppen "
+"Fünf Orks für jeden ihrer gefallenen Kameraden töteten Cai Laudiss’ Truppen "
 "in ihrer Wut. Der König selbst kämpfte ohne Rücksicht und Feind um Feind "
-"fiel unter dem fürchterlichen Schlag seines Streitkolbens. Die Orks mussten "
-"erkennen, dass sie die eingeschlossenen Meermenschen unterschätzt hatten und "
-"die Flucht vor den Vergeltung übenden Speeren trieb sie in die Hügel und "
-"Wälder zurück. Die orkische Niederlage würde unvergessen bleiben, aber sie "
-"forderte einen hohen Tribut – ein vergifteter Pfeil tötete den König und "
-"auch ein Großteil des Heeres war verloren. Von den Heimkehrern erfuhr "
-"Krellis, der noch junge Sohn des Königs, dass er nun Herrscher der "
+"fiel unter den fürchterlichen Schlägen seines Streitkolbens. Die Orks "
+"mussten erkennen, dass sie die eingeschlossenen Meermenschen unterschätzt "
+"hatten und die Flucht vor den Vergeltung übenden Speeren trieb sie in die "
+"Hügel und Wälder zurück. Die orkische Niederlage würde unvergessen bleiben, "
+"aber sie forderte einen hohen Tribut – ein vergifteter Pfeil tötete den "
+"König und auch ein Großteil des Heeres war verloren. Von den Heimkehrern "
+"erfuhr Krellis, der noch junge Sohn des Königs, dass er nun Herrscher der "
 "Meermenschen war."
 
 #. [part]
@@ -308,14 +309,16 @@ msgstr ""
 "Wahr gesprochen. Du musst kämpfen; ich werde dir soweit wie möglich den "
 "Rücken freihalten… doch im Krieg kämpft der Cai. So ist’s des Meervolks Art."
 
+# Begriff Waffengattung eingeführt
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:373
 msgid ""
 "You have few trained fighters, so you can only recruit three of each level 1 "
 "unit. There is no limit on citizens."
 msgstr ""
-"Euch stehen nur wenige ausgebildete Kämpfer zur Verfügung. Ihr könnt daher "
-"nur drei Soldaten der Stufe 1 Einheit rekrutieren, sonst nur Seebürger."
+"Die Schlacht ließ nur wenig ausgebildete Kämpfer übrig; nur drei Veteranen "
+"der 1. Stufe stehen Euch aus jeder Waffengattung zur Verfügung. Seebürger "
+"gibt es soviel Ihr bezahlen könnt."
 
 #. [message]: speaker=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:403
@@ -504,9 +507,9 @@ msgid ""
 "help we could probably defeat these enemies. Our task is to convince her to "
 "leave her enclave."
 msgstr ""
-"Gar nicht. Nicht ohne Hilfe. Meine Meisterin, Tyegëa, lehrt auf einer Insel "
-"im Norden. Sie und ihre Priesterinnen sind mächtig. Nur mit ihrer Hilfe "
-"können wir auf den Sieg hoffen. Wir müssen sie nur überzeugen, ihre "
+"Gar nicht. Nicht ohne Hilfe. Meine Lehrmeisterin, Tyegëa, lebt auf einer "
+"Insel im Norden. Sie und ihre Priesterinnen sind mächtig. Nur mit ihrer "
+"Hilfe können wir auf den Sieg hoffen. Wir müssen sie nur überzeugen, ihre "
 "friedvolle Einsamkeit aufzugeben."
 
 #. [message]: speaker=Kai Krellis
@@ -548,10 +551,11 @@ msgid ""
 "southwest of Tirigaz. Everyone will have to go; it is now deadly perilous "
 "here, and the open ocean west of Tirigaz can be dangerous for small groups."
 msgstr ""
-"Wir folgen zunächst dem Nordstrom und dann gen Westen zur Insel Bilheld. "
-"Tyegëa lebt auf einem kleinen Eiland westlich der Insel, Kurs west-südwest "
-"von Tirigaz. Niemand darf zurückbleiben, hier wäre nur Tod sicher. Außerdem "
-"ist das offene Meer zu gefährlich für eine kleine Gruppen."
+"Wir folgen zunächst dem Nordstrom und dann geht’s gen Westen zur Insel "
+"Bilheld. Tyegëa lebt auf einem kleinen Eiland westlich der Insel, Kurs west-"
+"südwest von Tirigaz. Hier ist man ja selbst im Tode nicht sicher. Niemand "
+"darf zurückbleiben, außerdem ist das offene Meer zu gefährlich für einen zu "
+"kleinen Trupp."
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:358
@@ -571,7 +575,7 @@ msgid ""
 "adventure. First you must prove you are not afraid of danger. If you leave "
 "now, many will think the mission is but an excuse to flee."
 msgstr ""
-"Doch gib acht. In so ein gewagtes Abenteuer wird nicht jeder freiwillig "
+"Doch gib Acht. In so ein gewagtes Abenteuer wird nicht jeder freiwillig "
 "folgen. Kämpfe um die Seelen deiner Bürger. Zeige, dass dein Geist dem Sturm "
 "trotzt. Wenn du jetzt einfach verschwindest, glauben alle, du läufst fort "
 "wie ein kleiner Junge."
@@ -666,7 +670,7 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:505
 msgid "I would feel bad about that. It is, uh, licking my hand."
-msgstr "Das könnte ich nicht. Schaut, es leckt mir meine Hand."
+msgstr "Das könnte ich nicht. Schaut, er leckt mir die Hand."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:513
@@ -686,7 +690,7 @@ msgstr "Ihr erhaltet 200 Goldstücke."
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:560
 msgid "It galls me to flee from our home, but we will return."
-msgstr "Es schmerzt, die Heimat zu verlassen. Aber wir kehren zurück!"
+msgstr "Es schmerzt, die Heimat zu verlassen. Aber wir werden zurückkehren!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:644
@@ -765,17 +769,17 @@ msgid ""
 "Smells like lots of death in the south. There must be a good feast near that "
 "merman town."
 msgstr ""
+"Tod liegt in der Luft, ein Leichenschmaus gar – dort, nicht weit der "
+"Meermenschenstadt."
 
 #. [message]: speaker=Vrunt
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:208
-#, fuzzy
 msgid "Let’s hope those wild wolves over there don’t get to it before we do."
 msgstr ""
 "Hoffen wir, dass die wilden Wölfe das Festmahl nicht vor uns erreichen."
 
 #. [message]: speaker=Gashnok
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:213
-#, fuzzy
 msgid ""
 "Hold on...It looks like a better feast is coming our way! Fresh fish, boys! "
 "Go get it."
@@ -851,7 +855,7 @@ msgid ""
 "Cylanna and a few soldiers had been farther."
 msgstr ""
 "Nun waren sie weiter in die Fremde vorgedrungen, als die meisten "
-"Meermenschen. Nur Cylanna und ein paar wenige Veteranen waren weiter "
+"Meermenschen. Nur Cylanna und wenige Veteranen waren schon einmal weiter "
 "geschwommen."
 
 #. [side]
@@ -1052,13 +1056,14 @@ msgid ""
 "were to hand. Screams and curses came from the saurian castles."
 msgstr ""
 "Freudenschreie durchbrachen die Stille und die ehemaligen Sklaven erhoben "
-"sich und griffen mit jeder Waffe an, derer sie habhaft wurden. Schreie und "
-"Flüche hallten durch die saurianischen Zitadellen."
+"sich und griffen ihre Unterdrücker mit jeder Waffe an, derer sie habhaft "
+"wurden. Und wares die bloße Faust oder der Wackerstein vom Wegesrand. "
+"Schreie und Flüche hallten durch die saurianischen Zitadellen."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:559
 msgid "There is a treasure chest there! Good bat!"
-msgstr "Da ist ein Schatzkiste! Braves Fledi, brav."
+msgstr "Da ist eine Schatzkiste! Braver Fledi, brav."
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:565
@@ -1366,7 +1371,7 @@ msgstr "Man glaubt nicht, wie der eigentlich Handel treibt, bei den Manieren."
 msgid ""
 "One hour will work for us. It will not take all of us to defeat the undead. "
 msgstr ""
-"Ein Stunde reicht. Wir brauchen nicht die volle Truppe für die paar Untoten."
+"Eine Stunde reicht. Wir brauchen nicht die volle Truppe für die paar Untoten."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:415
@@ -1407,7 +1412,7 @@ msgstr ""
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:670
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:683
 msgid "Now maybe we can head west undisturbed."
-msgstr "Nun können wir in Ruhe nach Westen ziehen."
+msgstr "Nun können wir in Ruhe gen Westen ziehen."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:681
@@ -1570,8 +1575,8 @@ msgid ""
 "Of course, of course. I promise! I never wanted to hurt you nice people "
 "anyway."
 msgstr ""
-"Ja, ja, natürlich. Ich verspreche es. Ich wollte nie jemandem nicht kein "
-"bisschen wehtun."
+"Ja, ja, natürlich. Ich verspreche es. Ich wollte nie jemandem nich’ keine "
+"Schuppe krümmen."
 
 #. [unit]: type=Cuttle Fish, id=Inky
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:308
@@ -1850,6 +1855,7 @@ msgstr ""
 msgid "Well, I defeated the Drakes on your island."
 msgstr "Nun, ich besiegte die Draken auf deiner Insel!"
 
+# »Höre!« - schönstes oberlehrer und alte-tante-Deutsch
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:229
 msgid ""
@@ -1858,7 +1864,7 @@ msgid ""
 "good of the merfolk. Listen."
 msgstr ""
 "Mumpitz. Draken sehen nur gefährlich aus. Speere machen mit denen kurzen "
-"Prozess. Nein, mir deucht etwas anderes. Du wirst ein große Tat für das "
+"Prozess. Nein, mir deucht etwas anderes. Du wirst eine große Tat für das "
 "Meervolk vollbringen. Höre!"
 
 #. [message]: speaker=Tyegea
@@ -1927,6 +1933,7 @@ msgstr ""
 "Ihr sollt nicht mit leeren Händen aufbrechen. Für einen eurer Soldaten kann "
 "ich noch Weihwasser erübrigen."
 
+# Im Spiel benutzen wir immer ausbilden statt rekrutieren
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:264
 msgid ""
@@ -1936,7 +1943,7 @@ msgid ""
 msgstr ""
 "Das Wasser weiht eine Nahkampfwaffe, so dass Angriffe dann <i>arkanen</i> "
 "Schaden bis zum Ende der Kampagne verursachen. Wählt Eure Einheit weise. Ihr "
-"könnt dazu eine alte Einheit einberufen oder eine neue Einheit rekrutieren."
+"könnt dazu eine alte Einheit einberufen oder eine neue Einheit ausbilden."
 
 #. [object]: id=holywater1
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:277
@@ -1986,9 +1993,9 @@ msgid ""
 msgstr ""
 "Tage vergingen bis ihnen der sumpfige Gestank in die Nasen stieg und sie "
 "trafen auf die verfallenen Burgruine, genau wie Tyegëa sagte. Die Nacht "
-"brach an und Dunkelheit kroch zwischen die Bäume. Krellis verweilte nicht, "
-"denn ihn drängte es, die Reise zu beenden. Er entschied, sofort anzulanden, "
-"um den Magier zu suchen."
+"brach an und Dunkelheit kroch zwischen die Bäume. Cai Krellis verweilte "
+"nicht, denn ihn drängte es, die Reise zu beenden. Er entschied, sofort "
+"anzulanden, um den Magier zu suchen."
 
 #. [side]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:104
@@ -2369,7 +2376,7 @@ msgid ""
 "You can now recruit human villagers, but you will not be able to recall them "
 "in future scenarios."
 msgstr ""
-"Ihr könnt nun Dorfbewohner rekrutieren, für die Folgeszenarien stehen diese "
+"Ihr könnt nun Dorfbewohner ausbilden, für die Folgeszenarien stehen diese "
 "aber nicht als Veteranen zur Verfügung."
 
 #. [message]: speaker=Siddry
@@ -2378,7 +2385,7 @@ msgid ""
 "Kai Krellis! What are you doing here? I thought you were traveling south "
 "when I met you."
 msgstr ""
-"Cai Krellis! Was tut ihr denn hier? Als wir uns trafen, wart ihr da nicht "
+"Cai Krellis! Was macht ihr denn hier? Als wir uns trafen, wart ihr da nicht "
 "auf dem Weg nach Süden?"
 
 #. [message]: speaker=Kai Krellis
@@ -2505,7 +2512,7 @@ msgstr "Dieses Schwert ist 8-4, magisch und verursacht <i>Feuerschaden</i>."
 #. [option]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1017
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
-msgstr "Ich werde Untote mit feurigem Hiebe niederstrecken."
+msgstr "Ich werde Untote mit feurigen Hieben niederstrecken."
 
 #. [option]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1026
@@ -2703,7 +2710,7 @@ msgstr "Im Morgengrauen beobachteten die Meermenschen ihre Gegner."
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:591
 msgid "This doesn’t look too bad."
-msgstr "Das sieht nicht soo schlimm aus."
+msgstr "Das sieht nicht so schlimm aus."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:596
@@ -2858,7 +2865,7 @@ msgid ""
 "shallows. Many of those children were named after Kai Krellis, Gwabbo, "
 "Cylanna, and the other heroes."
 msgstr ""
-"Nicht alles wurde so wie früher. Viele fehlten in den Reihen des Meervolkes, "
+"Nicht alles wurde so wie früher. Viele fehlten in den Reihen des Meervolks, "
 "gefallen während der ersten Angriffe und während der Reise. Die "
 "Priesterinnen taten ihr möglichstes, um die Familien der Verlorenen zu "
 "trösten und die Zeit heilte alle Wunden. Nach wenigen Monaten hallte "
@@ -2949,10 +2956,10 @@ msgid ""
 "beautiful daughters. When the orcs who had learned to fear his father tested "
 "Jotha again, they learned to fear Kai Krellis even more."
 msgstr ""
-"Krellis gründete seine Familie schon bald und ihr entstammten kräftige Söhne "
-"und wunderhübsche Töchter. Als die Orks ihre Lehre aus der Schlacht mit "
-"Krellis Vater langsam vergaßen, verschärfte er die Lektion und prügelte sie "
-"in die dumpfen Orkschädel ein für allemal hinein."
+"Cai Krellis gründete seine Familie schon bald und ihr entstammten kräftige "
+"Söhne und wunderhübsche Töchter. Als die Orks ihre Lehre aus der Schlacht "
+"mit Cai Krellis’ Vater langsam vergaßen, verschärfte er die Lektion und "
+"prügelte sie ein für allemal in die dumpfen Orkschädel hinein."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:150
@@ -3185,7 +3192,7 @@ msgstr ""
 #. [option]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:246
 msgid "We will let the bat have the ring. It will make him more helpful."
-msgstr "Lasst den Ring ruhig Fledi. Sie wird dadurch nur noch nützlicher."
+msgstr "Lasst den Ring ruhig Fledi. Er wird dadurch nur noch nützlicher."
 
 #. [option]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:255
