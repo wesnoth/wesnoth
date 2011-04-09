@@ -769,7 +769,7 @@ const color_range team::get_side_color_range(int side){
   return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
 }
 
-const SDL_Color team::get_minimap_color(int side)
+SDL_Color team::get_minimap_color(int side)
 {
 	// Note: use mid() instead of rep() unless
 	// high contrast is needed over a map or minimap!
