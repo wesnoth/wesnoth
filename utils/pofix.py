@@ -559,6 +559,9 @@ stringfixes = {
 
 # Convert fake em dash
 ("A king who is skilled at combat commands great respect--especially", "A king who is skilled at combat commands great respect — especially"),
+
+# Convert straight apostrophe
+("I'll join you right now!", "I’ll join you right now!"),
 ),
 
 "wesnoth-ei" : (
