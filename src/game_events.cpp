@@ -1150,14 +1150,6 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		var = value;
 	}
 
-	config::attribute_value format = cfg["format"];
-	if (!format.blank()) {
-		///@deprecated 1.9.2 Usage of 'format' instead of 'value'
-		lg::wml_error << "Usage of 'format' is deprecated, use 'value' instead, "
-			"support will be removed in 1.9.2.\n";
-		var = format;
-	}
-
 	const std::string to_variable = cfg["to_variable"];
 	if(to_variable.empty() == false) {
 		var = state_of_game->get_variable(to_variable);
