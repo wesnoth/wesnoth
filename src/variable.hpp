@@ -19,6 +19,8 @@
 
 #include "config.hpp"
 
+#include <utility>
+
 class game_state;
 class unit_map;
 
@@ -30,6 +32,17 @@ class unit_map;
 class vconfig
 {
 private:
+
+/*
+ * Starting with the rc of gcc 4.6 the code failed to compile due to the
+ * missing default constructor for vconfig. Not entirely sure whether it's a
+ * bug in gcc or not. For now make the code conditional.
+ */
+#if __GNUC__ == 4 && __GNUC_MINOR__ == 6 && defined(__GXX_EXPERIMENTAL_CXX0X__)
+	template<class T1, class T2> 
+	friend class std::pair;
+#endif
+
 	vconfig();
 	vconfig(const config* cfg, const config* cache_key);
 public:
