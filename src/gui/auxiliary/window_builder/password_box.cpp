@@ -38,15 +38,9 @@ twidget* tbuilder_password_box::build() const
 
 	init_control(widget);
 
-	// A password box doesn't have a label but a text
+	// A password box doesn't have a label but a text.
+	// It also has no history.
 	widget->set_value(label);
-
-	if(!history_.empty()) {
-		///@deprecated 1.9.2 history field for a password box
-		ERR_GUI_G << "A history field for a password box is deprecated "
-				" and will be removed in 1.9.2.\n";
-		widget->set_history(history_);
-	}
 
 	DBG_GUI_G << "Window builder: placed password box '"
 			<< id << "' with definition '"
