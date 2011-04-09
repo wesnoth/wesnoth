@@ -70,6 +70,13 @@ static void inspect_ai(twindow& window, int side)
 }
 */
 
+/**
+ * Template for dialog callbacks for dialogs using model-view-controller architecture pattern.
+ * It allows delegating of the callback to a private view class, which should be accessible via
+ * dialog->get_view() (and return a pointer to the view class). Example usage:
+ * widget->set_callback(dialog_callback<my_dialog_class, my_dialog_class::inner_view_class
+ * &my_dialog_class::inner_view_class::member_function>);
+ */
 template <class D, class V, void (V::*fptr)(twindow&)>
 void dialog_view_callback(twidget* caller)
 {
@@ -466,7 +473,7 @@ public:
 	{
 		int selected = model_.stuff_types_list->get_selected_row();
 		if (selected==-1) {
-			//TODO: select row
+			//TODO: select row (maybe remember last selected row?...)
 			selected=0;
 		}
 		return sm_controllers_.at(selected);

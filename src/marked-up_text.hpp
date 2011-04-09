@@ -40,7 +40,7 @@ extern const SDL_Color weapon_color,
 		unit_type_color,
 		race_color;
 
-// separator bewteen damage-hits and range--type
+// separator between damage-hits and range--type
 extern const std::string weapon_numbers_sep, weapon_details_sep;
 
 /** Parses the markup-tags at the front of a string. */
@@ -116,7 +116,7 @@ std::string span_color(const SDL_Color &color);
 /**
  * Wrap text.
  *
- * - If the text exceedes the specified max width, wrap it one a word basis.
+ * - If the text exceedes the specified max width, wrap it on a word basis.
  * - If this is not possible, e.g. the word is too big to fit, wrap it on a
  * - char basis.
  */
