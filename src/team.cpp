@@ -769,6 +769,11 @@ const color_range team::get_side_color_range(int side){
   return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
 }
 
+SDL_Color team::get_side_color(int side)
+{
+	return int_to_color(get_side_color_range(side).mid());
+}
+
 SDL_Color team::get_minimap_color(int side)
 {
 	// Note: use mid() instead of rep() unless
