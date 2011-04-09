@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-27 14:22+0200\n"
-"PO-Revision-Date: 2011-02-16 17:15-0500\n"
+"PO-Revision-Date: 2011-02-23 20:15-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -215,7 +215,7 @@ msgstr "Traducción afrikáans"
 #. [about]
 #: data/core/about.cfg:1208
 msgid "Arabic Translation"
-msgstr "Traducción Arábica"
+msgstr "Traducción arábica"
 
 #. [about]
 #: data/core/about.cfg:1215
@@ -240,7 +240,7 @@ msgstr "Traducción china"
 #. [about]
 #: data/core/about.cfg:1350
 msgid "Chinese (Taiwan) Translation"
-msgstr "Traducción China (Taiwan)"
+msgstr "Traducción china (Taiwan)"
 
 #. [about]
 #: data/core/about.cfg:1360
@@ -390,6 +390,7 @@ msgstr "Traducción noruega"
 #. [about]
 #: data/core/about.cfg:2271
 #, fuzzy
+#| msgid "English (GB) Translation"
 msgid "Old English Translation"
 msgstr "Traducción inglesa (GB)"
 
@@ -879,11 +880,13 @@ msgstr "Debería $unit.name recoger el tridente?"
 
 #: data/core/macros/items.cfg:513
 #, fuzzy
+#| msgid "storm trident"
 msgid "storm trident^Leave it"
 msgstr "tridente de las tormentas"
 
 #: data/core/macros/items.cfg:513
 #, fuzzy
+#| msgid "storm trident"
 msgid "storm trident^Take it"
 msgstr "tridente de las tormentas"
 
@@ -2046,13 +2049,17 @@ msgstr "Servidor alternativo de Wesnoth"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
+#, fuzzy
+#| msgid "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
 msgid "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
-msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
+msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
+#, fuzzy
+#| msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
 msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
-msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
+msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -3901,6 +3908,8 @@ msgid "Reading unit files"
 msgstr "Leyendo archivos de unidades"
 
 #: src/loadscreen.cpp:227
+#, fuzzy
+#| msgid "Re-initialize fonts for the current language"
 msgid "Reinitialize fonts for the current language"
 msgstr "Reinicia tipografías para el idioma actual"
 
@@ -4188,6 +4197,7 @@ msgstr[1] ""
 
 #: src/menu_events.cpp:1345
 #, fuzzy
+#| msgid "pause at end of turn"
 msgid "You cannot end your turn yet!"
 msgstr "pausa al final del turno"
 
@@ -4362,6 +4372,9 @@ msgstr "Envía una emoción o acción personal a la conversación."
 
 #: src/menu_events.cpp:2327
 #, fuzzy
+#| msgid ""
+#| "Sends a private message. You can’t send messages to players that don’t "
+#| "control a side in a running game you are in."
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -6168,15 +6181,17 @@ msgstr "liminal"
 msgid "female^neutral"
 msgstr "neutral"
 
-#~ msgid "Send a message to the server admins currently online"
-#~ msgstr ""
-#~ "Enviar un mensaje a los administradores del servidor que estén en línea"
-
 #~ msgid "Take it"
 #~ msgstr "Tomar"
 
 #~ msgid "Leave it"
 #~ msgstr "Dejar"
+
+#~ msgid "Act."
+#~ msgstr "Acc."
+
+#~ msgid "short end-turn^E."
+#~ msgstr "F."
 
 #~ msgid "Do you really want to delete this game?"
 #~ msgstr "¿Está seguro de que quiere borrar esta partida?"
@@ -6184,11 +6199,9 @@ msgstr "neutral"
 #~ msgid "Don’t ask me again!"
 #~ msgstr "¡No me lo vuelva a preguntar!"
 
-#~ msgid "Act."
-#~ msgstr "Acc."
-
-#~ msgid "short end-turn^E."
-#~ msgstr "F."
+#~ msgid "Send a message to the server admins currently online"
+#~ msgstr ""
+#~ "Enviar un mensaje a los administradores del servidor que estén en línea"
 
 #~ msgid "Exp. Mod.: "
 #~ msgstr "Mod. Exp.: "
