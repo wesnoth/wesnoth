@@ -2224,6 +2224,10 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	end_level_data &data = resources::controller->get_end_level_data();
 
 	std::string result = cfg["result"];
+	VALIDATE_WITH_DEV_MESSAGE(
+			  result.empty() || result == "victory" || result == "defeat"
+			, _("Invalid value in the result key for [end_level]")
+			, "result = '"  + result + "'.");
 	data.custom_endlevel_music = cfg["music"].str();
 	data.carryover_report = cfg["carryover_report"].to_bool(true);
 	data.prescenario_save = cfg["save"].to_bool(true);
@@ -2234,32 +2238,11 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	data.carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
 	data.carryover_add = cfg["carryover_add"].to_bool();
 
-	if (result.empty() || result == "victory") {
-		resources::controller->force_end_level(VICTORY);
-	} else if (result == "continue") {
-		///@deprecated 1.9.2 continue as result in [endlevel]
-		lg::wml_error << "continue is deprecated as result in [endlevel]"
-			" and will be removed in 1.9.2,"
-			" use the new attributes instead.\n";
-		data.carryover_percentage = 100;
-		data.carryover_add = false;
-		data.carryover_report = false;
-		data.linger_mode = false;
-		resources::controller->force_end_level(VICTORY);
-	} else if (result == "continue_no_save") {
-		///@deprecated 1.9.2 continue as result in [endlevel]
-		lg::wml_error << "continue_no_save is deprecated as result in [endlevel]"
-			" and will be removed in 1.9.2,"
-			" use the new attributes instead.\n";
-		data.carryover_percentage = 100;
-		data.carryover_add = false;
-		data.carryover_report = false;
-		data.prescenario_save = false;
-		data.linger_mode = false;
-		resources::controller->force_end_level(VICTORY);
-	} else {
+	if(result == "defeat") {
 		data.carryover_add = false;
 		resources::controller->force_end_level(DEFEAT);
+	} else {
+		resources::controller->force_end_level(VICTORY);
 	}
 }
 
