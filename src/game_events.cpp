@@ -1245,16 +1245,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	// Each element in the list will be considered a separate choice,
 	// unless it contains "..". In this case, it must be a numerical
 	// range (i.e. -1..-10, 0..100, -10..10, etc).
-	const std::string random = cfg["random"];
-	std::string rand = cfg["rand"];
-	if(random.empty() == false) {
-		///@deprecated 1.9.2 Usage of 'random' instead or 'rand'
-		lg::wml_error << "Usage of 'random' is deprecated, use 'rand' instead, "
-			"support will be removed in 1.9.2.\n";
-		if(rand.empty()) {
-			rand = random;
-		}
-	}
+	const std::string rand = cfg["rand"];
 
 	// The new random generator, the logic is a copy paste of the old random.
 	if(rand.empty() == false) {
