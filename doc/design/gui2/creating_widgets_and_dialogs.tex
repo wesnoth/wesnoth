@@ -185,10 +185,11 @@ the files after which I dive more into the implementation of the file.
 			Signature T* foo() { return foo\_; } Almost the same as the
 			reference version and is used for members that are pointers. The
 			text of the reference also applies here.
-
-			Furthermore this version often has no normal getter but may have a
-			setter.
 		\end{description}
+
+		The setter is normally available. The getter is often omitted when a
+		reference or pointer function are used. Especially it there is a const
+		version of these functions.
 
 	\item[\Lref{progress_bar.hpp:state}]
 		The state has the list of states available and normally has COUNT as
