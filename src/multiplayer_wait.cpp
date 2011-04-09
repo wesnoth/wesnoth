@@ -271,12 +271,7 @@ void wait::join_game(bool observe)
 			}
 
 			int color = side_num;
-			const std::string color_str = get_renamed_config_attribute(
-					  *side_choice
-					, "colour"
-					, "color"
-					, "1.9.6");
-
+			const std::string color_str = (*side_choice)["color"];
 			if (!color_str.empty())
 				color = game_config::color_info(color_str).index() - 1;
 
@@ -487,11 +482,7 @@ void wait::generate_menu()
 #ifdef LOW_MEM
 			leader_image = utg.image();
 #else
-			std::string RCcolor = get_renamed_config_attribute(
-					  sd
-					, "colour"
-					, "color"
-					, "1.9.6");
+			std::string RCcolor = sd["color"];
 
 			if (RCcolor.empty())
 				RCcolor = sd["side"].str();
@@ -537,14 +528,10 @@ void wait::generate_menu()
 
 		str << COLUMN_SEPARATOR << t_string::from_serialized(sd["user_team_name"].str());
 
-		int disp_color = get_renamed_config_attribute(
-				  sd
-				, "colour"
-				, "color"
-				, "1.9.6");
-		if(!sd.get_old_attribute("color","colour").empty()) {
+		int disp_color = sd["color"];
+		if(!sd["color"].empty()) {
 			try {
-				disp_color = game_config::color_info(sd.get_old_attribute("color","colour")).index();
+				disp_color = game_config::color_info(sd["color"]).index();
 			} catch(config::error&) {
 				//ignore
 			}
