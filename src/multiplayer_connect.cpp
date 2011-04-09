@@ -84,12 +84,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	gold_lock_(cfg["gold_lock"].to_bool()),
 	income_lock_(cfg["income_lock"].to_bool()),
 	team_lock_(cfg["team_lock"].to_bool()),
-	///@deprecated 1.9.2 "colour_lock" instead of "color_lock" in [side]
-	color_lock_(get_renamed_config_attribute(
-			  cfg
-			, "colour_lock"
-			, "color_lock"
-			,"1.9.6").to_bool()),
+	color_lock_(cfg["color_lock"].to_bool()),
 	player_number_(parent.video(), str_cast(index + 1), font::SIZE_LARGE, font::LOBBY_COLOR),
 	combo_controller_(new gui::combo_drag(parent.disp(), parent.player_types_, parent.combo_control_group_)),
 	orig_controller_(parent.video(), current_player_, font::SIZE_SMALL),
@@ -172,12 +167,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	} else {
 		team_ = itor - parent_->team_names_.begin();
 	}
-	if (cfg.has_old_attribute("color","colour")) {
-		color_ = game_config::color_info(get_renamed_config_attribute(
-				  cfg
-				, "colour"
-				, "color"
-				, "1.9.6")).index() - 1;
+	if (cfg.has_attribute("color")) {
+		color_ = game_config::color_info(cfg["color"]).index() - 1;
 	}
 	llm_.set_color(color_);
 
