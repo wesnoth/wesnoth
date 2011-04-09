@@ -178,6 +178,8 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 			str << weapon->damage();
 			right_strings.push_back(str.str());
 		} else {
+			assert(set_dmg_effect->ability);
+
 			left_strings.push_back((*set_dmg_effect->ability)["name"]);
 			str.str("");
 			str << set_dmg_effect->value;
