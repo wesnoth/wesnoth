@@ -288,20 +288,12 @@ static bool image_exists(const std::string& name)
 {
 	bool precached = name.find("..") == std::string::npos;
 
-	if(precached) {
-		if(image::precached_file_exists(name))
-			return true;
-	} else if (image::exists(name)){
+	if(precached && image::precached_file_exists(name)) {
+		return true;
+	} else if(image::exists(name)) {
 		return true;
 	}
-	// This warning can be removed after 1.9.2
-	///@deprecated 1.9.2 warning for missing .png in terrain images
-	if(name.find(".png") == std::string::npos) {
-		const std::string name_png = name + ".png";
-		if(image::exists(name_png) || (precached && image::precached_file_exists(name_png))) {
-			lg::wml_error << "Terrain image '" << name << "' misses the '.png' extension\n";
-		}
-	}
+
 	return false;
 }
 
