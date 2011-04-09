@@ -1347,7 +1347,7 @@ void twindow::signal_handler_message_show_helptip(
 
 
 /**
- * @page layout_algorihm Layout algorithm
+ * @page layout_algorithm Layout algorithm
  *
  * @section introduction Introduction
  *

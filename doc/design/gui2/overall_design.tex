@@ -21,22 +21,22 @@ there are three resolution groups:
 \item[PC] For the usage on PC's Wesnoth offers the resolutions $800\times 600$
 	-- $2560\times 1600$\footnote{And larger once screens that size become
 	available.}.
-\item[Netbooks] When the first netbooks were introduced the normal resolution
-	was $800\times 480$, which is slightly smaller as the minimum PC resolution.
+\item[Netbooks] The first time when netbooks were introduced the normal resolution
+	was $800\times 480$, which is slightly smaller than the minimum PC resolution.
 	Therefore a start option \textsc{--smallgui} was added making minimal
 	modifications to the layout\footnote{Actually this is gui1 only.}.
 \end{description}
 
 In order to facilitate this range of resolutions the gui2 code allows several
 definitions of a window, tuned for a specific resolution. The reason is twofold;
-first to make a difference between the hand-held devices and PCs, second allow
+first to make a difference between the hand-held devices and PCs, second to allow
 different views for different resolutions.
 
 The main example of this feature\footnote{Not yet implemented, but one of the
 main reasons to add this feature.} is the attack dialogue. The dialogue has a
 button to show the damage calculation, which shows a new dialogue with the
-calculation overview. From an UI point of view I consider that rather ugly and
-rather have tabs to switch between the view. But when I have a larger screen the
+calculation overview. From the UI point of view I consider that rather ugly and
+rather have tabs to switch between the views. But when I have a larger screen the
 dialogue only fills a small part and I need to switch between tabs to see the
 info, in that case I rather have one dialogue without tabs, which directly shows
 all information. When the user changes the resolution the dialogue should switch
@@ -45,7 +45,7 @@ between these two views, depending on the current resolution.
 \paragraph{}
 
 The gui should be able to adapt to the size actually needed, the current gui
-uses fixed sizes at some places. This leads to problems that when the screen
+uses fixed sizes at some places. This leads to problems such as when the screen
 resolution is reduced widgets end up outside the dialogue or get truncated. The
 same for some translated texts, where the translation is much longer as the
 English original. Gui2 solves this problem by dynamically determining the size
@@ -60,7 +60,7 @@ dialogue fits again, might be a bit ugly but at least everything fits again.
 
 It must be possible for WML designers to change the entire gui of Wesnoth with
 their own version. For example Spacenoth\footnote{That project is dead, but
-that doesn't matter for this example.} is Wesnoth is a space setting, so the
+that doesn't matter for this example.} is Wesnoth in a space setting, so the
 project might want to use a more fitting user interface.
 
 Adding a new gui is a lot of work and can't be done in one fell swoop, so the
@@ -96,7 +96,7 @@ The definition determines how a widget looks and some basic properties, these
 properties are the same for all instances of that widget. For example a button
 has a minimum size so the decoration can be drawn. It's possible to make
 multiple definitions of a button. These different definitions, can look
-different have different minimum sizes and other properties.
+different, have different minimum sizes and other properties.
 
 These definitions are written in WML and a small loader class loads and
 validates the definition. The definition is then added to the list of known
@@ -109,16 +109,16 @@ also be reduced.
 
 \paragraph{The builder}
 The builder is started from the C++ code, started while building a window. This
-window definition contains a list of widget to build with more instance specific
+window definition contains a list of widgets to build with more instance specific
 values. For example a label builder has the text to show to the user as
 parameter.
 
-These builder ``scripts'' are also written in WML and loaded by as small loader
-class that does the validation and build the needed widget.
+These builder ``scripts'' are also written in WML and loaded by a small loader
+class that does the validation and builds the needed widget.
 
 \paragraph{Widget}
 The widget itself is written in a larger C++ class and it defines the behaviour
-and provide various hooks to modify the properties of that widget. These hooks
+and provides various hooks to modify the properties of that widget. These hooks
 are used by the builder, but can also be modified later by the engine.
 
 Other hooks provide bindings to react to events. The bindings are now rather
@@ -126,8 +126,8 @@ static, but with the new event handling added late in the 1.8 release series
 more things are possible. The plan is to enhance this part during the 1.9
 release series and deprecate and remove the current interface.
 
-Of course the question ``why wait until 1.9'' raises. The reason is simple it
-was added late in the 1.8 cycle to fix certain issues with the MP lobby at that
+Of course the question ``why wait until 1.9'' raises. The reason is simple: it
+was added late in the 1.8 cycle to fix certain issues with the MP lobby. At that
 time I had no time to convert the rest of the code, since I was working on the
 MP lobby instead.
 
@@ -144,21 +144,21 @@ or the window can look completely different.
 
 \subsection{Dialogue}
 
-A dialogue is a pure C++ thing. A dialogue shows a window, but is not a window.
+A dialogue is a pure C++ thing. A dialogue shows a window, but is not a window itself.
 So what's the difference\footnote{These are the definitions used in the gui2
 code and not the definition of other window toolkits.}? A window is a dumb
 combination of widgets created depending on the definitions in a WML file. After
-the window is created it often needs extra content and react to certain events.
+the window is created it often needs extra content and reacts to certain events.
 For example the language dialogue after building has an empty list of languages.
 This is where the dialogue comes into play. The user asks for the language
 selection dialogue. The code creates and shows a dialogue. The dialogue code
-builds a window, then fills the language list with the available languages and
+builds a window, then fills the language list with the available languages,
 selects the current language and then shows it to the user.
 
 In other dialogues the code also needs to wire in event handlers or build other
 structures. It searches the wanted widget by id, in some cases it doesn't even
 care what kind of widget is used. In other cases it needs to be of a certain
-class or ``concept''. This allows a flexible design and let the user select the
+class or ``concept''. This allows a flexible design and lets the user select the
 kind of widget used in some cases.
 
 So the dialogue is the sugar between the WML window and an interactive dialogue
@@ -166,8 +166,8 @@ shown in the game.
 
 \section{Directory structure}
 
-This section describes the directories available, instead of listing them in
-alphabetic order I list them in a order that makes explaining them more natural.
+This section describes the directories available. Instead of listing them in
+alphabetic order, I list them in an order that makes explaining them more natural.
 
 \begin{description}
 \item[src/gui] The general source code directory with all parts used for the gui.
@@ -180,11 +180,11 @@ alphabetic order I list them in a order that makes explaining them more natural.
 \item[widgets] This directory contains all widgets used in the library. Every
 	file contains one widget. Also base classes or concepts of widgets are
 	stored in this directory. During the development it also accumulated some
-	helper files, which don't fit in the aforementioned descriptions, this lead
+	helper files, which don't fit in the aforementioned descriptions - this led
 	to the creation of the auxiliary directory. Some files haven't been moved to
 	this new directory yet.
-\item[auxiliary] This directory contains items auxiliary classes. Some helper
-	parts are so large that they got their own subdirectory.
+\item[auxiliary] This directory contains auxiliary classes. Some helper
+	parts became so large that they got their own subdirectory.
 
 \begin{description}
 \item[event] Contains all event handling code, the translation from SDL events
@@ -195,7 +195,7 @@ alphabetic order I list them in a order that makes explaining them more natural.
 	single tasked files over huge files controlling a lot of code\footnote{Some
 	might remember I started with a single file, which did exactly that, but the
 	file got too large to maintain efficiently.}.
-\item[window\_builder] Contains the code to create a widget object, from the
+\item[window\_builder] Contains the code to create a widget object from the
 	widget definition and the data supplied in the window definition. Again the
 	name of the file matches the name of widget they build. (These files are
 	also mostly small.)
@@ -216,10 +216,10 @@ alphabetic order I list them in a order that makes explaining them more natural.
 \item[macro] This directory contains some helper macros, for default font sizes.
 \item[widget] This directory contains the definitions of widgets. Since there
 	can be multiple definitions of a widget their name is the name of the widget
-	with a suffix. The suffix for the default widgets is, \textsc{default} for
+	with a suffix. The suffix for the default widgets is \textsc{default}, for
 	the others an appropriate name is picked.
-\item[window] Contains the definitions of windows, the name of the files is the
-	name of the dialogue they represent.
+\item[window] Contains definitions of windows, the name of the file is the
+	name of the dialogue it represents.
 \end{description}
 
 \end{description}

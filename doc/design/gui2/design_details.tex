@@ -1,7 +1,7 @@
 \chapter{Design details}
 
 Now that the big picture regarding the library is known, I dive into parts of
-the code that can use more explanation. A part not explained here, doesn't mean
+the code that can use more explanation. If a part is not explained here, it doesn't mean
 the code is obvious or simple, lack of time to document it properly is more
 likely the excuse.
 
@@ -13,7 +13,7 @@ The registering is done by some small static classes that do the registering
 of the item\footnote{Widget or Window.} in its constructor. Since this
 involves some redundant typing there are REGISTER\_XXX macros written.
 
-After all items are register the library can be started, which is simply
+After all items are registered the library can be started, which is simply
 done by \textsc{gui2::init()}. This function does all required steps to get
 the library up and running.
 
@@ -21,7 +21,7 @@ the library up and running.
 
 An important part of the gui engine is to properly layout the widgets in the
 available space. The documentation of that algorithm is written in
-doxygen\footnote{\url{http://devdocs.wesnoth.org/layout\_algorihm.html}}.
+doxygen\footnote{\url{http://devdocs.wesnoth.org/layout\_algorithm.html}}.
 
 \section{Event handling and dispatching}
 \label{event_handling}
@@ -33,10 +33,10 @@ doxygen\footnote{\url{http://devdocs.wesnoth.org/event_dispatching.html}}
 
 \section{Iterator}
 
-The iterator class is written\footnote{The code hasn't been written yet only
+The iterator class is written\footnote{The code hasn't been written yet, only
 designed how it should look. Still I feel the design is rather finished and I
 can update this paper if details change too much.} to alleviate certain
-problems. The scrollbar containers have their own grid and a grid for it's
+problems. The scrollbar containers have their own grid and a grid for its
 content. The implantation makes the looping over all children tricky. This has
 been solved, but the design of the solution is rather awkward. Obviously fixing
 the design is the right thing to do, but that breaks the iteration.
@@ -47,42 +47,42 @@ cleaner and the classes can easily be refactored.
 \subsection{Design}
 
 There are two basic kind of iterators in the design, the simple ones that can
-only travel themselves and their direct children. This type will be referred to
+only travel to themselves and their direct children. This type will be referred to
 as basic iterator hereafter. 
 
 This basic iterator is a superclass for several specific subclasses. The
 superclass is a concrete class, which can be instantiated. This class acts as a
 sentinel iterator, signalling the end of a list.
 
-Every widget has it's own creation function returning a pointer to a subclass
+Every widget has its own creation function returning a pointer to a subclass
 object, allowing the main iterator to keep pointers to basic iterators, which it
 uses for travelling.
 
 \paragraph{}
 
-The other kind is called the main iterator. This iterator is the type the user
+The other kind is called the main iterator. This iterator is of the type which the user
 normally creates and uses. The class is a template class, where a policy designs
 how the travelling should go\footnote{For now only one policy is planned, but I
 can think of more kinds}.
 
-When the main iterator is created it's possible to add a predicate to the
+When the main iterator is created, it's possible to add a predicate to the
 constructor. The predicate determines what the travelling routine does with a
 candidate widget.
 
-Now that we know the players in the game look further about the implementation
+Now that we know the players in the game, let's look further into the implementation
 details and the decisions made.
 
 \subsubsection{Travelling}
 
-A widget can have several ``layers'' namely:
+A widget can have several ``layers'', namely:
 
 \begin{description}
 \item[self] The widget itself.
-\item[grid] Container widget have a grid which is another layer, note that for a
+\item[grid] Container widget has a grid which is another layer, note that for a
 	grid widget, its grid and self layer are the same.
 \item[content] Scrollbar containers have a grid, containing their scrollbars and
 	a dummy content spacer. Their real content is stored in a separate internal
-	node, which is used as content layer.
+	node, which is used as the content layer.
 \end{description}
 
 The travel policy decides in which order these layers are visited, and when a
@@ -102,10 +102,10 @@ values:
 	This doesn't mean the algorithm gives up. This layer is cancelled but the
 	travelling path might have more options, which are used. At the moment there's
 	no way to tell that the candidate has failed and that the searching should stop
-	altogether, a ``exit'' result might be added for that case.
+	altogether, an ``exit'' result might be added for that case.
 \end{description}
 
-Obviously these names are inspired by the C++ keywords.
+Obviously, these names are inspired by the C++ keywords.
 
 \subsubsection{Copying}
 
@@ -114,7 +114,7 @@ The basic iterators are copyable since their state can easily be copied.
 \paragraph{}
 
 The main iterator can't be copied, it would involve copying the state
-and copying the iterator is deemed not to be needed.
+and copying the main iterator is deemed not to be needed.
 
 \subsubsection{Operator++(int) (postfix increment)}
 
@@ -130,7 +130,7 @@ returned object instead of binding it to a reference.
 \paragraph{}
 
 The main iterator has no postfix increment operator since it's not copyable.
-This of course is a bit the chicken and the egg problem, since I wanted to
+This of course is a bit like the chicken and the egg problem: since I wanted to
 prevent the postfix increment operator I made the class not copyable.
 
 For most (standard) iterator classes the overhead of copying isn't too high
@@ -144,7 +144,7 @@ increment operator.
 
 \section{Callbacks}
 
-\Cref{event_handling} describes the generic event handling for the widgets but
+\Cref{event_handling} describes the generic event handling for the widgets, but
 in some cases a widget wants to notify other widgets of a state change. Parts of
 gui2 use simple C-style callbacks for that purpose, but using boost::function
 makes better replacement. Therefore the code was analysed closer and another
@@ -159,24 +159,24 @@ In order to fix the problem two classes are defined:
 \item[tnotifiee] The class to manage the lifetime of the connection.
 \end{description}
 
-The tnotifiee is a small class that holds a pointer to the receiver its
+The tnotifiee is a small class that holds a pointer to the receiver it's
 connected to, upon destruction it uses this pointer to deregister itself by the
-receiver. There after the callback function will no longer be called.
+receiver. After that the callback function will no longer be called.
 
 The class should be used as member of a class so it can manage the lifetime of
 the connection with the tnotifier.
 
 \paragraph{}
 
-The tnotifier is the main class, when a callback is registered it stores the
+The tnotifier is the main class. When a callback is registered it stores the
 callbacks in an internal list and updates the pointer in the tnotifiee to
 itself.
 
-Upon destruction it clears the pointer in all tnotifiees that point to use, that
+Upon destruction it clears the pointer in all tnotifiees that point to use. This
 way upon destruction of the tnotifiee it won't try to deregister itself with
 this destroyed object.
 
-Subclasses of the tnotifier should add an notification function so the notifier
+Subclasses of the tnotifier should add an notification function, so the notifier
 can call all callbacks in the list. The notifier should take care of this
 calling.
 
