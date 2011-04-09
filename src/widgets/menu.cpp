@@ -1036,7 +1036,8 @@ void menu::draw()
 
 	bg_restore();
 
-	clip_rect_setter(video().getSurface(), clip_rect(), clip_rect() != NULL);
+	clip_rect_setter clipping_rect =
+			clip_rect_setter(video().getSurface(), clip_rect(), clip_rect() != NULL);
 
 	draw_contents();
 
