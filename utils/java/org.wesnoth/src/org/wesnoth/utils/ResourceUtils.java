@@ -91,7 +91,7 @@ public class ResourceUtils
 		if (!file.exists() || !file.isFile())
 			return ""; //$NON-NLS-1$
 
-		String contentsString = ""; //$NON-NLS-1$
+		StringBuilder contentsString = new StringBuilder();
 		BufferedReader reader = null;
 		try
 		{
@@ -99,7 +99,7 @@ public class ResourceUtils
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 			while ((line = reader.readLine()) != null)
 			{
-				contentsString += (line + "\n"); //$NON-NLS-1$
+				contentsString.append(line + "\n"); //$NON-NLS-1$
 			}
 		} catch (IOException e)
 		{
@@ -115,7 +115,7 @@ public class ResourceUtils
 				Logger.getInstance().logException(e);
 			}
 		}
-		return contentsString;
+		return contentsString.toString();
 	}
 
 	/**
@@ -290,7 +290,7 @@ public class ResourceUtils
 		if (fileName == null || propertyName.isEmpty())
 			return null;
 
-		String value = ""; //$NON-NLS-1$
+		StringBuilder value = new StringBuilder();
 		File file = new File(fileName);
 		if (!file.exists())
 			return null;
@@ -316,11 +316,11 @@ public class ResourceUtils
 				fileContents.charAt(index) != ' ' &&
 				fileContents.charAt(index) != '\r' && fileContents.charAt(index) != '\n')
 		{
-			value += fileContents.charAt(index);
+			value.append(fileContents.charAt(index));
 			++index;
 		}
 
-		return value;
+		return value.toString();
 	}
 
 	/**
