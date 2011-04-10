@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.tools.ant.BuildLogger;
 import org.apache.tools.ant.DefaultLogger;
@@ -50,12 +51,11 @@ public class AntUtils
 			File buildFile = new File(antFile);
 			ProjectHelper.configureProject(project, buildFile);
 
-			Iterator<String> iterator = properties.keySet().iterator();
+			Iterator<Entry<String, String>> iterator = properties.entrySet().iterator();
 			while (iterator.hasNext())
 			{
-				String key = iterator.next();
-				String value = properties.get(key);
-				project.setUserProperty(key, value);
+				Entry<String, String> key = iterator.next();
+				project.setUserProperty(key.getKey(), key.getValue());
 			}
 			project.executeTarget(project.getDefaultTarget());
 
