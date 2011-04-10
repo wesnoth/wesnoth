@@ -272,6 +272,9 @@ public:
 	/** Inherited from tcontrol. */
 	bool disable_click_dismiss() const;
 
+	/** Inherited from twidget. */
+	virtual iterator::twalker_* create_walker();
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_rows(const unsigned rows);
@@ -374,6 +377,9 @@ public:
 		iterator operator--() { return iterator(--itor_); }
 		twidget* operator->() { return itor_->widget(); }
 		twidget* operator*() { return itor_->widget(); }
+
+		bool operator==(const iterator& i) const
+			{ return i.itor_ == this->itor_; }
 
 		bool operator!=(const iterator& i) const
 			{ return i.itor_ != this->itor_; }

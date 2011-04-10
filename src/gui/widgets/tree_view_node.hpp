@@ -121,6 +121,13 @@ public:
 //		void unfold(const texpand_mode mode); // FIXME implement
 #endif
 
+	/**
+	 * Inherited from twidget.
+	 *
+	 * @todo Implement properly.
+	 */
+	virtual iterator::twalker_* create_walker() { return NULL; }
+
 	/** Inherited from twidget.*/
 	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
 

@@ -32,6 +32,10 @@ namespace gui2 {
 class tdialog;
 class twindow;
 
+namespace iterator {
+	class twalker_;
+} // namespace iterator
+
 typedef std::map< std::string, t_string > string_map;
 
 /**
@@ -346,6 +350,9 @@ public:
 
 	/** Does the widget disable easy close? */
 	virtual bool disable_click_dismiss() const = 0;
+
+	/** Creates a new walker object on the heap. */
+	virtual iterator::twalker_* create_walker() = 0;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

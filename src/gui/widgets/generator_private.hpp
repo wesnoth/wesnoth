@@ -846,6 +846,13 @@ public:
 		return false;
 	}
 
+	/**
+	 * Inherited from twidget.
+	 *
+	 * @todo Implement properly.
+	 */
+	virtual iterator::twalker_* create_walker() { return NULL; }
+
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */

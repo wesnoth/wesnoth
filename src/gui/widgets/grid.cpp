@@ -17,6 +17,7 @@
 
 #include "gui/widgets/grid_private.hpp"
 
+#include "gui/auxiliary/iterator/walker_grid.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
 
@@ -649,6 +650,11 @@ bool tgrid::disable_click_dismiss() const
 		}
 	}
 	return false;
+}
+
+iterator::twalker_* tgrid::create_walker()
+{
+	return new gui2::iterator::tgrid(*this);
 }
 
 void tgrid::set_rows(const unsigned rows)

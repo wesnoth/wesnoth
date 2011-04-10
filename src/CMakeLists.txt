@@ -363,6 +363,9 @@ set(wesnoth-main_SRC
 	gui/auxiliary/event/dispatcher.cpp
 	gui/auxiliary/event/distributor.cpp
 	gui/auxiliary/event/handler.cpp
+	gui/auxiliary/iterator/iterator.cpp
+	gui/auxiliary/iterator/walker_grid.cpp
+	gui/auxiliary/iterator/walker_widget.cpp
 	gui/auxiliary/log.cpp
 	gui/auxiliary/old_markup.cpp
 	gui/auxiliary/timer.cpp
@@ -798,9 +801,11 @@ if(ENABLE_TESTS)
 		tests/test_util.cpp
 		tests/test_serialization.cpp
 		tests/test_version.cpp
+		tests/gui/iterator.cpp
 		tests/gui/fire_event.cpp
 		tests/gui/test_drop_target.cpp
 		tests/gui/test_gui2.cpp
+		tests/gui/visitor.cpp
 		tests/gui/test_save_dialog.cpp
 	)
 	if(NOT ENABLE_GAME)

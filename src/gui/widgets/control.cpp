@@ -20,6 +20,7 @@
 #include "font.hpp"
 #include "foreach.hpp"
 #include "formula_string_utils.hpp"
+#include "gui/auxiliary/iterator/walker_widget.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/event/message.hpp"
 #include "gui/dialogs/tip.hpp"
@@ -109,6 +110,11 @@ void tcontrol::set_members(const string_map& data)
 bool tcontrol::disable_click_dismiss() const
 {
 	return get_visible() == twidget::VISIBLE && get_active();
+}
+
+iterator::twalker_* tcontrol::create_walker()
+{
+	return new iterator::walker::twidget(*this);
 }
 
 tpoint tcontrol::get_config_minimum_size() const

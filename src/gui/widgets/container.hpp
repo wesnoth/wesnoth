@@ -149,6 +149,13 @@ public:
 	bool disable_click_dismiss() const;
 
 	/**
+	 * Inherited from twidget.
+	 *
+	 * @todo Implement properly.
+	 */
+	virtual iterator::twalker_* create_walker() { return NULL; }
+
+	/**
 	 * Initializes and builds the grid.
 	 *
 	 * This function should only be called upon an empty grid. This grid is

@@ -80,6 +80,9 @@ public:
 	 */
 	bool disable_click_dismiss() const;
 
+	/** Inherited from twidget. */
+	virtual iterator::twalker_* create_walker();
+
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/**
