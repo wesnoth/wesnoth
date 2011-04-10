@@ -37,6 +37,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/mp_change_control.hpp"
 #include "gui/dialogs/data_manage.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/unit_create.hpp"
@@ -2456,6 +2457,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_set_var();
 		void do_show_var();
 		void do_inspect();
+		void do_control_dialog();
 		void do_manage();
 		void do_unit();
 		// void do_buff();
@@ -2552,6 +2554,11 @@ class console_handler : public map_command_handler<console_handler>, private cha
 				_("Grant higher privileges to Lua scripts."), "", "D");
 			register_command("custom", &console_handler::do_custom,
 				_("Set the command used by the custom command hotkey"), _("<command>[;<command>...]"));
+			register_command("give_control"
+					, &console_handler::do_control_dialog
+					, _("Invoke a dialog allowing changing control of MP sides.")
+					, ""
+					, "N");
 			register_command("inspect", &console_handler::do_inspect,
 				_("Launch the gamestate inspector"), "", "D");
 			register_command("manage", &console_handler::do_manage,
@@ -3156,16 +3163,7 @@ void console_handler::do_control() {
 		command_failed(vgettext("Can't change control of out-of-bounds side: '$side'.",	symbols));
 		return;
 	}
-	//if this is our side we are always allowed to change the controller
-	if (menu_handler_.teams_[side_num - 1].is_human()) {
-		if (player == preferences::login())
-			return;
-		menu_handler_.change_side_controller(side,player);
-	} else {
-		//it is not our side, the server will decide if we can change the
-		//controller (that is if we are host of the game)
-		menu_handler_.change_side_controller(side,player);
-	}
+	menu_handler_.request_control_change(side_num,player);
 	menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
 }
 void console_handler::do_clear() {
@@ -3444,6 +3442,12 @@ void console_handler::do_inspect() {
 	inspect_dialog.show(resources::screen->video());
 }
 
+void console_handler::do_control_dialog()
+{
+	gui2::tmp_change_control mp_change_control(&menu_handler_);
+	mp_change_control.show(resources::screen->video());
+}
+
 void console_handler::do_manage() {
 	config cfg;
 	gui2::tdata_manage manager(cfg);
@@ -3605,6 +3609,21 @@ void menu_handler::do_ai_formula(const std::string& str,
 void menu_handler::user_command()
 {
 	textbox_info_.show(gui::TEXTBOX_COMMAND,sgettext("prompt^Command:"), "", false, *gui_);
+}
+
+void menu_handler::request_control_change ( int side_num, const std::string& player )
+{
+	std::string side = str_cast(side_num);
+	//if this is our side we are always allowed to change the controller
+	if (teams_[side_num - 1].is_human()) {
+		if (player == preferences::login())
+			return;
+		change_side_controller(side,player);
+	} else {
+		//it is not our side, the server will decide if we can change the
+		//controller (that is if we are host of the game)
+		change_side_controller(side,player);
+	}
 }
 
 void menu_handler::custom_command()

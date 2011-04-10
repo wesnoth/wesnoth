@@ -440,6 +440,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/lobby_main.cpp
 	gui/dialogs/lobby_player_info.cpp
 	gui/dialogs/message.cpp
+	gui/dialogs/mp_change_control.cpp
 	gui/dialogs/mp_cmd_wrapper.cpp
 	gui/dialogs/mp_connect.cpp
 	gui/dialogs/mp_create_game.cpp

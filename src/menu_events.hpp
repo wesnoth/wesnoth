@@ -81,6 +81,7 @@ public:
 	void unit_hold_position(mouse_handler &mousehandler, int side_num);
 	void end_unit_turn(mouse_handler &mousehandler, int side_num);
 	void search();
+	void request_control_change(int side_num, const std::string &player);
 	void user_command();
 	void custom_command();
 	void ai_formula();

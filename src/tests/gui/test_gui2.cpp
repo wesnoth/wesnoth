@@ -43,6 +43,7 @@
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/mp_change_control.hpp"
 #include "gui/dialogs/mp_cmd_wrapper.hpp"
 #include "gui/dialogs/mp_connect.hpp"
 #include "gui/dialogs/mp_create_game.hpp"
@@ -371,6 +372,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tlanguage_selection>();
 	test<gui2::tmessage>();
 	test<gui2::tsimple_item_selector>();
+	test<gui2::tmp_change_control>();
 	test<gui2::tmp_cmd_wrapper>();
 	test<gui2::tmp_connect>();
 	test<gui2::tmp_create_game>();
@@ -563,6 +565,15 @@ struct twrapper<gui2::tmessage>
 	static gui2::tmessage* create()
 	{
 		return new gui2::tmessage("Title", "Message", false);
+	}
+};
+
+template<>
+struct twrapper<gui2::tmp_change_control>
+{
+	static gui2::tmp_change_control* create()
+	{
+		return new gui2::tmp_change_control(NULL);
 	}
 };
 
