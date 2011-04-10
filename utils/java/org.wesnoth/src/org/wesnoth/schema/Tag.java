@@ -84,7 +84,7 @@ public class Tag
 	@Override
 	public String toString()
 	{
-		return new String(name_ + " " + extendedTagName_); //$NON-NLS-1$
+		return (name_ + " " + extendedTagName_); //$NON-NLS-1$
 	}
 
 	public String getName()
