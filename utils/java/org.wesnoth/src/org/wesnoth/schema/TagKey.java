@@ -8,6 +8,7 @@
  *******************************************************************************/
 package org.wesnoth.schema;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
@@ -58,9 +59,11 @@ public class TagKey
 	/**
 	 * A tag comparator that sorts just after required cardinality.
 	 */
-	public static class CardinalityComparator implements Comparator<TagKey>
+	public static class CardinalityComparator implements Comparator<TagKey>, Serializable
 	{
-		@Override
+		private static final long serialVersionUID = 6103884038547449868L;
+
+        @Override
 		public int compare(TagKey o1, TagKey o2)
 		{
 			if (o1.cardinality_ == o2.cardinality_)
