@@ -493,8 +493,6 @@ public class WorkspaceUtils
 	 */
 	public static boolean checkConditions(boolean displayWarning)
 	{
-		Activator.getDefault().IsCheckingConditions = true;
-
 		String execDir = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
 		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
 		String wmltoolsDir = Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR);

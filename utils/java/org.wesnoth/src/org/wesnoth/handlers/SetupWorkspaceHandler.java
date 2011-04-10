@@ -10,7 +10,6 @@ package org.wesnoth.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
-import org.wesnoth.Activator;
 import org.wesnoth.utils.WorkspaceUtils;
 
 
@@ -18,9 +17,7 @@ public class SetupWorkspaceHandler extends AbstractHandler
 {
 	@Override
 	public Object execute(ExecutionEvent event) {
-		Activator.getDefault().IsSettingUpWorkspace = true;
 		WorkspaceUtils.setupWorkspace(true);
-		Activator.getDefault().IsSettingUpWorkspace = false;
 		return null;
 	}
 }

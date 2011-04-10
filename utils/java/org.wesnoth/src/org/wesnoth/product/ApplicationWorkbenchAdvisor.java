@@ -12,6 +12,7 @@ import org.eclipse.ui.application.IWorkbenchConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.eclipse.ui.ide.IDE;
+import org.wesnoth.utils.WorkspaceUtils;
 
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisorHack {
 
@@ -38,5 +39,14 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisorHack {
 	public void preStartup()
 	{
 		IDE.registerAdapters();
+	}
+
+	@Override
+	public void postStartup()
+	{
+	    if (WorkspaceUtils.checkConditions(false) == false)
+        {
+            WorkspaceUtils.setupWorkspace(true);
+        }
 	}
 }

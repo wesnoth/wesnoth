@@ -13,14 +13,11 @@ import java.util.Map.Entry;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.wesnoth.utils.PreprocessorUtils;
 import org.wesnoth.utils.ProjectCache;
 import org.wesnoth.utils.ProjectUtils;
-import org.wesnoth.utils.WorkspaceUtils;
-
 
 /**
  * The activator class controls the plug-in life cycle
@@ -29,15 +26,6 @@ public class Activator extends AbstractUIPlugin
 {
 	// The shared instance
 	private static Activator	plugin;
-	/**
-	 * Switch for knowing if we already started checking conditions
-	 * This way we prevent a stack overflow occuring
-	 */
-	public boolean IsCheckingConditions = false;
-	/**
-	 * Switch for knowing if we already intend to setup the workspace
-	 */
-	public boolean IsSettingUpWorkspace = false;
 
 	/**
 	 * The constructor
@@ -77,15 +65,6 @@ public class Activator extends AbstractUIPlugin
 	 */
 	public static Activator getDefault()
 	{
-		if (plugin.IsCheckingConditions == false &&
-			PlatformUI.isWorkbenchRunning())
-		{
-			if (WorkspaceUtils.checkConditions(false) == false &&
-				plugin.IsSettingUpWorkspace == false)
-			{
-				WorkspaceUtils.setupWorkspace(true);
-			}
-		}
 		return plugin;
 	}
 

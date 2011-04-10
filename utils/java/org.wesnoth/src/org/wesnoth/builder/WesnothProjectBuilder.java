@@ -40,8 +40,6 @@ import org.wesnoth.utils.WMLSaxHandler;
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.wml.core.ConfigFile;
 
-
-@SuppressWarnings("unused")
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
 	public WesnothProjectBuilder()
