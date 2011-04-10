@@ -69,10 +69,12 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 	 *
 	 * @param pageName
 	 */
-	public ScenarioPage0() {
+	public ScenarioPage0(IContainer container) {
 		super("scenarioPage0"); //$NON-NLS-1$
 		setTitle(Messages.ScenarioPage0_1);
 		setDescription(Messages.ScenarioPage0_2);
+
+		container_ = container;
 	}
 
 	@Override

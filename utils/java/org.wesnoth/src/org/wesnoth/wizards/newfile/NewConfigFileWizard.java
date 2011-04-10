@@ -21,7 +21,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
@@ -33,7 +32,6 @@ import org.wesnoth.wizards.NewWizardTemplate;
 
 public class NewConfigFileWizard extends NewWizardTemplate {
 	private NewConfigFilePage0 page_;
-	private ISelection selection;
 
 	/**
 	 * Constructor for NewConfigFileWizard.
@@ -48,7 +46,7 @@ public class NewConfigFileWizard extends NewWizardTemplate {
 	 */
 	@Override
 	public void addPages() {
-		page_ = new NewConfigFilePage0(selection);
+		page_ = new NewConfigFilePage0(selection_);
 		addPage(page_);
 
 		super.addPages();
