@@ -43,8 +43,7 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 	 */
 	public void initialize()
 	{
-		if (selection_ != null && selection_.isEmpty() == false &&
-			selection_ instanceof IStructuredSelection)
+		if (selection_ != null && selection_.isEmpty() == false)
 		{
 			IStructuredSelection ssel = selection_;
 			if (ssel.size() > 1)
