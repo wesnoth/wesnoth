@@ -33,11 +33,11 @@ public class Activator extends AbstractUIPlugin
 	 * Switch for knowing if we already started checking conditions
 	 * This way we prevent a stack overflow occuring
 	 */
-	public static boolean IsCheckingConditions = false;
+	public boolean IsCheckingConditions = false;
 	/**
 	 * Switch for knowing if we already intend to setup the workspace
 	 */
-	public static boolean IsSettingUpWorkspace = false;
+	public boolean IsSettingUpWorkspace = false;
 
 	/**
 	 * The constructor
@@ -77,11 +77,11 @@ public class Activator extends AbstractUIPlugin
 	 */
 	public static Activator getDefault()
 	{
-		if (IsCheckingConditions == false &&
+		if (plugin.IsCheckingConditions == false &&
 			PlatformUI.isWorkbenchRunning())
 		{
 			if (WorkspaceUtils.checkConditions(false) == false &&
-				IsSettingUpWorkspace == false)
+				plugin.IsSettingUpWorkspace == false)
 			{
 				WorkspaceUtils.setupWorkspace(true);
 			}

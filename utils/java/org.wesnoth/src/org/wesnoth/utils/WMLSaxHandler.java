@@ -22,7 +22,7 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class WMLSaxHandler extends DefaultHandler
 {
-	private static Stack<String> stack_;
+	private Stack<String> stack_;
 	private Variable tmpVar_;
 	private String filePath_;
 	private ConfigFile cfg_;

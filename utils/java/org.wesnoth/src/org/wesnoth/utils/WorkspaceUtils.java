@@ -491,7 +491,7 @@ public class WorkspaceUtils
 	 */
 	public static boolean checkConditions(boolean displayWarning)
 	{
-		Activator.IsCheckingConditions = true;
+		Activator.getDefault().IsCheckingConditions = true;
 
 		String execDir = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
 		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);

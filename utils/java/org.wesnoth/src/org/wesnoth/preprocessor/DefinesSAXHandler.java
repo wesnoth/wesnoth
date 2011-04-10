@@ -23,7 +23,7 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class DefinesSAXHandler extends DefaultHandler
 {
-	private static Stack<String> stack_;
+	private Stack<String> stack_;
 	private Map<String, Define> defines_;
 
 	// indexes for different define properties
