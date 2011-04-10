@@ -153,35 +153,37 @@ public class SchemaParser
 				else if (tagStack.peek().equals("description")) //$NON-NLS-1$
 				{
 					String[] tokens = line.trim().split("="); //$NON-NLS-1$
-					String value = ""; //$NON-NLS-1$
+					StringBuilder value = new StringBuilder(); //$NON-NLS-1$
+
 					// this *should* happen only in [description]
 					// multi-line string
 					if (StringUtils.countOf(tokens[1], '"') % 2 != 0)
 					{
-						value = tokens[1] + "\n"; //$NON-NLS-1$
+						value.append(tokens[1] + "\n"); //$NON-NLS-1$
 						++index;
 						while (StringUtils.countOf(lines[index], '"') % 2 == 0 &&
 								!StringUtils.startsWith(lines[index], "#") && //$NON-NLS-1$
 								index < lines.length)
 						{
-							value += (lines[index] + "\n"); //$NON-NLS-1$
+							value.append(lines[index] + "\n"); //$NON-NLS-1$
 							++index;
 						}
-						value += lines[index];
+						value.append(lines[index]);
 					}
 					else
 					{
-						value = tokens[1];
+						value.append(tokens[1]);
 					}
 
+					// get rid of the quotes
 					if (value.length() >= 2)
 					{
-						value = value.substring(1, value.length() - 1);
+						value = new StringBuilder(value.substring(1, value.length() - 1));
 					}
 
 					currentTag.setDescription(new Tag(Messages.SchemaParser_25, '?'));
 					currentTag.getDescription().getKeyChildren().add(
-							new TagKey(tokens[0], '?', "", value, true)); //$NON-NLS-1$
+							new TagKey(tokens[0], '?', "", value.toString(), true)); //$NON-NLS-1$
 				}
 				else
 				{
