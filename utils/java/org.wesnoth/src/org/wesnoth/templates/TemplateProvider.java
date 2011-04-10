@@ -28,17 +28,23 @@ import org.wesnoth.utils.StringUtils;
 
 public class TemplateProvider
 {
-	private static TemplateProvider		instance_;
+    /**
+     * Holds the instance of the TemplateProvider.
+     * This is based on the Initialization on demand holder idiom
+     */
+    private static class TemplateProviderInstance{
+        private static final TemplateProvider instance_ = new TemplateProvider();
+    }
+
 	private final Map<String, String>	templates_	= new HashMap<String, String>();
 
-	public static TemplateProvider getInstance()
+	private TemplateProvider(){
+	    loadTemplates();
+	}
+
+	public static  TemplateProvider getInstance()
 	{
-		if (instance_ == null)
-		{
-			instance_ = new TemplateProvider();
-			instance_.loadTemplates();
-		}
-		return instance_;
+		return TemplateProviderInstance.instance_;
 	}
 
 	/**
