@@ -56,8 +56,7 @@ public class Logger {
 			if (WorkspaceUtils.getTemporaryFolder() == null)
 			    throw new IOException(Messages.Logger_6);
 
-			if (new File(WorkspaceUtils.getTemporaryFolder() + "/logs/").mkdirs() == false) //$NON-NLS-1$
-			    throw new IOException(Messages.Logger_4);
+			new File(WorkspaceUtils.getTemporaryFolder() + "/logs/").mkdirs(); //$NON-NLS-1$
 
 			logWriter_ = new BufferedWriter(new FileWriter(logFilePath));
 			log(Messages.Logger_2);

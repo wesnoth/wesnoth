@@ -55,7 +55,7 @@ import org.wesnoth.product.WMLPerspective;
 
 public class WorkspaceUtils
 {
-	private static String	temporaryFolder_	= ""; //$NON-NLS-1$
+	private static String	temporaryFolder_	= null; //$NON-NLS-1$
 
 	/**
 	 * Gets the selected project or or null if none selected
@@ -270,15 +270,17 @@ public class WorkspaceUtils
 	 */
 	public static String getTemporaryFolder()
 	{
-		if (temporaryFolder_.isEmpty())
+		if (temporaryFolder_ == null || temporaryFolder_.isEmpty())
 		{
 			temporaryFolder_ = System.getProperty("java.io.tmpdir") + //$NON-NLS-1$
 						Path.SEPARATOR + "wesnoth_plugin" + Path.SEPARATOR; //$NON-NLS-1$
 
 			File tmpFile = new File(temporaryFolder_);
 
-			if (!tmpFile.exists() || !tmpFile.mkdirs())
+			if (!tmpFile.exists())
 				temporaryFolder_ = null;
+			else
+			    tmpFile.mkdirs();
 		}
 		return temporaryFolder_;
 	}
