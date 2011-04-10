@@ -322,144 +322,145 @@ public class WorkspaceUtils
 	 */
 	public static void setupWorkspace(final boolean guided)
 	{
-		if (guided)
-		{
-			GUIUtils.showInfoMessageBox(
-					Messages.Activator_0 +
-					Messages.Activator_1 +
-					Messages.Activator_2 +
-					Messages.Activator_3 +
-					Messages.Activator_4 +
-			Messages.Activator_5);
-		}
+        if (guided)
+        {
+            GUIUtils.showInfoMessageBox(
+                    Messages.Activator_0 +
+                    Messages.Activator_1 +
+                    Messages.Activator_2 +
+                    Messages.Activator_3 +
+                    Messages.Activator_4 +
+            Messages.Activator_5);
+        }
 
-		if (!checkConditions(false))
-		{
-			PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
-					Activator.getShell(), "wml_plugin_preferences", null, null); //$NON-NLS-1$
-			if (pref.open() == Window.CANCEL || !checkConditions(true))
-			{
-				GUIUtils.showErrorMessageBox(Messages.WorkspaceUtils_7 +
-						Messages.WorkspaceUtils_8);
-				return;
-			}
+        if (!checkConditions(false))
+        {
+            PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
+                    Activator.getShell(), "wml_plugin_preferences", null, null); //$NON-NLS-1$
+            if (pref.open() == Window.CANCEL || !checkConditions(true))
+            {
+                GUIUtils.showErrorMessageBox(Messages.WorkspaceUtils_7 +
+                        Messages.WorkspaceUtils_8);
+                return;
+            }
 
-			if (guided)
-			{
-				GUIUtils.showInfoMessageBox(
-						Messages.WorkspaceUtils_9 +
-						Messages.WorkspaceUtils_10+
-						Messages.WorkspaceUtils_11+
-						Messages.WorkspaceUtils_12);
-			}
-		}
+            if (guided)
+            {
+                GUIUtils.showInfoMessageBox(
+                        Messages.WorkspaceUtils_9 +
+                        Messages.WorkspaceUtils_10+
+                        Messages.WorkspaceUtils_11+
+                        Messages.WorkspaceUtils_12);
+            }
+        }
 
-		WorkspaceJob job = new WorkspaceJob(Messages.WorkspaceUtils_13) {
-			@Override
-			public IStatus runInWorkspace(IProgressMonitor monitor)
-			{
-				try
-				{
-					// create a default working set
-					IWorkingSetManager manager = getWorkingSetManager();
-					IWorkingSet defaultSet = manager.getWorkingSet("Default"); //$NON-NLS-1$
-					if (defaultSet == null)
-					{
-						// we could get an assert exception if too many
-						// 'setup workspace' are running at a time
-						try
-						{
-							defaultSet = manager.createWorkingSet("Default", new IAdaptable[0]); //$NON-NLS-1$
-							manager.addWorkingSet(defaultSet);
-						}
-						catch(AssertionFailedException e)
-						{
-							Logger.getInstance().logWarn(e.getMessage());
-						}
-					}
+        WorkspaceJob job = new WorkspaceJob(Messages.WorkspaceUtils_13){
+            @Override
+            public IStatus runInWorkspace(IProgressMonitor monitor)
+            {
+                try
+                {
+                    // create a default working set
+                    IWorkingSetManager manager = getWorkingSetManager();
+                    IWorkingSet defaultSet = manager.getWorkingSet("Default"); //$NON-NLS-1$
+                    if (defaultSet == null)
+                    {
+                        // we could get an assert exception if too many
+                        // 'setup workspace' are running at a time
+                        try
+                        {
+                            defaultSet = manager.createWorkingSet("Default", new IAdaptable[0]); //$NON-NLS-1$
+                            manager.addWorkingSet(defaultSet);
+                        }
+                        catch(AssertionFailedException e)
+                        {
+                            Logger.getInstance().logWarn(e.getMessage());
+                        }
+                    }
 
-					// automatically import 'special' folders as projects
-					List<File> files = new ArrayList<File>();
-					String addonsDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR)+"/data/add-ons/"; //$NON-NLS-1$
-					String campaignsDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) + "/data/campaigns/"; //$NON-NLS-1$
+                    // automatically import 'special' folders as projects
+                    List<File> files = new ArrayList<File>();
+                    String addonsDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR)+"/data/add-ons/"; //$NON-NLS-1$
+                    String campaignsDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) + "/data/campaigns/"; //$NON-NLS-1$
 
-					File[] tmp = null;
-					if (GUIUtils.showMessageBox(Messages.WorkspaceUtils_18 +
-							Messages.WorkspaceUtils_19,
-							SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
-					{
-						// useraddons/add-ons/data
-						tmp = new File(addonsDir).listFiles();
-						if (tmp != null)
-							files.addAll(Arrays.asList(tmp));
-					}
+                    File[] tmp = null;
+                    if (GUIUtils.showMessageBox(Messages.WorkspaceUtils_18 +
+                            Messages.WorkspaceUtils_19,
+                            SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
+                    {
+                        // useraddons/add-ons/data
+                        tmp = new File(addonsDir).listFiles();
+                        if (tmp != null)
+                            files.addAll(Arrays.asList(tmp));
+                    }
 
-					if (GUIUtils.showMessageBox(Messages.WorkspaceUtils_20 +
-							Messages.WorkspaceUtils_21,
-							SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
-					{
-						// workingdir/data/campaigns
-						tmp = new File(campaignsDir).listFiles();
-						if (tmp != null)
-							files.addAll(Arrays.asList(tmp));
-					}
+                    if (GUIUtils.showMessageBox(Messages.WorkspaceUtils_20 +
+                            Messages.WorkspaceUtils_21,
+                            SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
+                    {
+                        // workingdir/data/campaigns
+                        tmp = new File(campaignsDir).listFiles();
+                        if (tmp != null)
+                            files.addAll(Arrays.asList(tmp));
+                    }
 
-					monitor.beginTask(Messages.WorkspaceUtils_22, files.size() * 35);
-					for(File file: files)
-					{
-						if (file.isDirectory() == false ||
-							file.getName().startsWith(".")) //$NON-NLS-1$
-							continue;
+                    monitor.beginTask(Messages.WorkspaceUtils_22, files.size() * 35);
+                    for(File file: files)
+                    {
+                        if (file.isDirectory() == false ||
+                            file.getName().startsWith(".")) //$NON-NLS-1$
+                            continue;
 
-						String projectName = file.getName();
-						if (StringUtils.normalizePath(file.getAbsolutePath()).contains(
-							StringUtils.normalizePath(campaignsDir)))
-						{
-							projectName = "_Mainline_" + file.getName(); //$NON-NLS-1$
-						}
+                        String projectName = file.getName();
+                        if (StringUtils.normalizePath(file.getAbsolutePath()).contains(
+                            StringUtils.normalizePath(campaignsDir)))
+                        {
+                            projectName = "_Mainline_" + file.getName(); //$NON-NLS-1$
+                        }
 
-						IProjectDescription description =
-							ResourcesPlugin.getWorkspace().newProjectDescription(projectName);
-						description.setLocation(new Path(file.getAbsolutePath()));
+                        IProjectDescription description =
+                            ResourcesPlugin.getWorkspace().newProjectDescription(projectName);
+                        description.setLocation(new Path(file.getAbsolutePath()));
 
-						IContainer container = ResourcesPlugin.getWorkspace().getRoot().
-							getContainerForLocation(new Path(file.getAbsolutePath()));
+                        IContainer container = ResourcesPlugin.getWorkspace().getRoot().
+                            getContainerForLocation(new Path(file.getAbsolutePath()));
 
-						IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-						// don't create the project if it exists already
-						if (container == null)
-						{
-							ProjectUtils.createWesnothProject(project, description,
-									true, false, monitor);
-							container = project;
-						}
-						manager.addToWorkingSets(container, new IWorkingSet[] { defaultSet });
-					}
+                        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+                        // don't create the project if it exists already
+                        if (container == null)
+                        {
+                            ProjectUtils.createWesnothProject(project, description,
+                                    true, false, monitor);
+                            container = project;
+                        }
+                        manager.addToWorkingSets(container, new IWorkingSet[] { defaultSet });
+                    }
 
-					//TODO select the default working set manager as the active one
-					if (guided)
-					{
-						GUIUtils.showInfoMessageBox(
-								Messages.WorkspaceUtils_25 +
-								Messages.WorkspaceUtils_26 +
-								Messages.WorkspaceUtils_27);
-					}
-					else
-					{
-						Logger.getInstance().log(Messages.WorkspaceUtils_28,
-								Messages.WorkspaceUtils_29);
-					}
-				} catch (Exception e)
-				{
-					Logger.getInstance().logException(e);
-					GUIUtils.showErrorMessageBox(Messages.WorkspaceUtils_30);
-				}
+                    //TODO select the default working set manager as the active one
+                    if (guided)
+                    {
+                        GUIUtils.showInfoMessageBox(
+                                Messages.WorkspaceUtils_25 +
+                                Messages.WorkspaceUtils_26 +
+                                Messages.WorkspaceUtils_27);
+                    }
+                    else
+                    {
+                        Logger.getInstance().log(Messages.WorkspaceUtils_28,
+                                Messages.WorkspaceUtils_29);
+                    }
+                } catch (Exception e)
+                {
+                    Logger.getInstance().logException(e);
+                    GUIUtils.showErrorMessageBox(Messages.WorkspaceUtils_30);
+                }
 
-				monitor.done();
-				return Status.OK_STATUS;
-			}
-		};
-		job.schedule();
+                monitor.done();
+                return Status.OK_STATUS;
+            }
+        };
+        job.schedule();
+
 	}
 
 	/**

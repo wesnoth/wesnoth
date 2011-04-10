@@ -12,12 +12,15 @@ import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.wesnoth.utils.PreprocessorUtils;
 import org.wesnoth.utils.ProjectCache;
 import org.wesnoth.utils.ProjectUtils;
+import org.wesnoth.utils.WorkspaceUtils;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -39,6 +42,19 @@ public class Activator extends AbstractUIPlugin
 		super.start(context);
 		plugin = this;
 		Logger.getInstance().startLogger();
+
+		if (PlatformUI.isWorkbenchRunning()){
+		    if (WorkspaceUtils.checkConditions(false) == false)
+	        {
+		        Display.getDefault().asyncExec(new Runnable() {
+                    @Override
+                    public void run()
+                    {
+                        WorkspaceUtils.setupWorkspace(true);
+                    }
+                });
+	        }
+		}
 	}
 
 	@Override
