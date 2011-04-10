@@ -198,7 +198,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 					defines.add("SKIP_CORE"); //$NON-NLS-1$
 
 				// we use a single _MACROS_.cfg file for each project
-				int preprocResult = PreprocessorUtils.getInstance().preprocessFile(file,
+				PreprocessorUtils.getInstance().preprocessFile(file,
 						PreprocessorUtils.getInstance().getDefinesLocation(file), defines);
 				monitor.worked(5);
 
