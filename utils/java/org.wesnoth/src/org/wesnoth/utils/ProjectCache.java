@@ -28,8 +28,6 @@ import org.wesnoth.wml.core.Variable;
  */
 public class ProjectCache
 {
-	private IProject associatedProject_;
-
 	private long propertiesTimetamp_;
 	private long definesTimetamp_;
 
@@ -115,11 +113,6 @@ public class ProjectCache
 			Logger.getInstance().logException(e);
 			propertiesTimetamp_ = 0; // force to re-read the file
 		}
-	}
-
-	public IProject getAssociatedProject()
-	{
-		return associatedProject_;
 	}
 
 	/**
