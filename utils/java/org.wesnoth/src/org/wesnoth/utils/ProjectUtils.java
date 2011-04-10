@@ -145,7 +145,8 @@ public class ProjectUtils
 		}
 		monitor.worked(10);
 
-		WorkspaceUtils.getProjectsExplorer().getCommonViewer().refresh();
+		if (WorkspaceUtils.getProjectsExplorer() != null)
+		    WorkspaceUtils.getProjectsExplorer().getCommonViewer().refresh();
 
 		return 0;
 	}
