@@ -11,6 +11,7 @@ package org.wesnoth.templates;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -83,7 +84,7 @@ public class TemplateProvider
 				}
 			}
 			reader.close();
-		} catch (Exception e)
+		} catch (IOException e)
 		{
 			Logger.getInstance().logException(e);
 		}
