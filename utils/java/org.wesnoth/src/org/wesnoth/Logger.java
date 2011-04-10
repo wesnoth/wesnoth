@@ -53,7 +53,11 @@ public class Logger {
 			String logFilePath = String.format("%s/logs/log%s.txt", //$NON-NLS-1$
 				WorkspaceUtils.getTemporaryFolder(), WorkspaceUtils.getRandomFileName());
 
-			new File(WorkspaceUtils.getTemporaryFolder() + "/logs/").mkdirs(); //$NON-NLS-1$
+			if (WorkspaceUtils.getTemporaryFolder() == null)
+			    throw new IOException(Messages.Logger_6);
+
+			if (new File(WorkspaceUtils.getTemporaryFolder() + "/logs/").mkdirs() == false) //$NON-NLS-1$
+			    throw new IOException(Messages.Logger_4);
 
 			logWriter_ = new BufferedWriter(new FileWriter(logFilePath));
 			log(Messages.Logger_2);

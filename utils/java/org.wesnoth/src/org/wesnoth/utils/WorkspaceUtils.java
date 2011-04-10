@@ -276,8 +276,9 @@ public class WorkspaceUtils
 						Path.SEPARATOR + "wesnoth_plugin" + Path.SEPARATOR; //$NON-NLS-1$
 
 			File tmpFile = new File(temporaryFolder_);
-			if (!tmpFile.exists())
-				tmpFile.mkdirs();
+
+			if (!tmpFile.exists() || !tmpFile.mkdirs())
+				temporaryFolder_ = null;
 		}
 		return temporaryFolder_;
 	}

@@ -184,6 +184,7 @@ public class Messages extends NLS
 	public static String Logger_3;
 	public static String Logger_4;
 	public static String Logger_5;
+	public static String Logger_6;
 	public static String MapUtils_0;
 	public static String MapUtils_1;
 	public static String MapUtils_2;
