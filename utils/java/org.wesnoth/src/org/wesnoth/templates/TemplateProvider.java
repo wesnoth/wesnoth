@@ -54,7 +54,8 @@ public class TemplateProvider
 			BufferedReader reader = new BufferedReader(
 					new FileReader(Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME));
 			BufferedReader tmpReader;
-			String line, tmpLine, content;
+			String line, tmpLine;
+			StringBuilder content = new StringBuilder();
 
 			// read the main "templatesIndex.txt" file
 			while ((line = reader.readLine()) != null)
@@ -69,7 +70,7 @@ public class TemplateProvider
 				if (tokensStrings.length != 2)
 					continue;
 
-				content = ""; //$NON-NLS-1$
+				content.setLength(0);
 
 				if (new File(Constants.PLUGIN_FULL_PATH + tokensStrings[1]).exists())
 				{
@@ -77,9 +78,9 @@ public class TemplateProvider
 							new FileReader(Constants.PLUGIN_FULL_PATH + tokensStrings[1]));
 					while ((tmpLine = tmpReader.readLine()) != null)
 					{
-						content += tmpLine + '\n';
+						content.append(tmpLine + '\n');
 					}
-					templates_.put(tokensStrings[0], content);
+					templates_.put(tokensStrings[0], content.toString());
 					tmpReader.close();
 				}
 			}
@@ -103,7 +104,7 @@ public class TemplateProvider
 		if (tmpTemplate == null || parameters == null)
 			return null;
 
-		String result = ""; //$NON-NLS-1$
+		StringBuilder result = new StringBuilder(); //$NON-NLS-1$
 		String[] template = StringUtils.getLines(tmpTemplate);
 		boolean skipLine;
 
@@ -138,9 +139,9 @@ public class TemplateProvider
 			}
 
 			if (skipLine == false)
-				result += template[i] + "\n"; //$NON-NLS-1$
+				result.append(template[i] + "\n"); //$NON-NLS-1$
 		}
-		return result;
+		return result.toString();
 	}
 
 	/**
