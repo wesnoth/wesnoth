@@ -23,13 +23,14 @@ public class ListUtils
 	{
 		if (list == null || list.isEmpty())
 			return ""; //$NON-NLS-1$
-		String result = ""; //$NON-NLS-1$
+		StringBuilder result = new StringBuilder(); //$NON-NLS-1$
 		for (int i = 0; i < list.size() - 1; i++)
 		{
-			result += (list.get(i) + separator);
+		    result.append(list.get(i) + separator);
 		}
-		result += list.get(list.size() - 1);
-		return result;
+		result.append(list.get(list.size() - 1));
+
+		return result.toString();
 	}
 
 	/**
@@ -44,12 +45,13 @@ public class ListUtils
 		if (array == null || array.length == 0)
 			return ""; //$NON-NLS-1$
 
-		String result = ""; //$NON-NLS-1$
+		StringBuilder result = new StringBuilder(); //$NON-NLS-1$
 		for (int i = 0; i < array.length - 1; i++)
 		{
-			result += (array[i] + separator);
+			result.append(array[i] + separator);
 		}
-		result += array[array.length - 1];
-		return result;
+		result.append(array[array.length - 1]);
+
+		return result.toString();
 	}
 }
