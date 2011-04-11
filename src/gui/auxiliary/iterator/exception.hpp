@@ -24,6 +24,7 @@
 #include "lua_jailbreak_exception.hpp"
 
 #include <stdexcept>
+#include <string>
 
 namespace gui2 {
 
