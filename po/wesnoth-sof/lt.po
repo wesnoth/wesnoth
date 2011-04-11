@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-02-12 13:10+0100\n"
+"POT-Creation-Date: 2011-02-12 13:15+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -64,7 +64,6 @@ msgstr "(Eksperto lygis, 9 scenarijai.)"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:31
-#, fuzzy
 msgid ""
 "The land of Wesnoth’s banner bold\n"
 "Comes not from its own land;\n"
@@ -76,14 +75,14 @@ msgid ""
 "Their tale I now relate...\n"
 "\n"
 msgstr ""
-"Šalies Vesnoto vėliava\n"
-"Nerados jos pulkuos;\n"
+"Vesnoto sosto vėliava\n"
+"Kurta kituos kraštuos;\n"
 "Ją tvėrė dvarfų broliava,\n"
 "Runakaliai urvuos.\n"
 "Išgirskit apie skeptrą, tad,\n"
 "Didingąjį ugnies,\n"
 "Ir jį, ir sutvėrėjus jo,\n"
-"Sakmė šita palies...\n"
+"Sakmė šita minės...\n"
 "\n"
 
 #. [about]
@@ -483,9 +482,8 @@ msgstr "Alaninas"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:318
-#, fuzzy
 msgid "That’s right. I’ll be coming over along with the silver."
-msgstr "Gerai, aš atvežu sidabrą."
+msgstr "Gerai. Atvyksiu kartu su sidabru."
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:322
@@ -1879,6 +1877,10 @@ msgid ""
 "were others — many others. Thus I present Theganli, the jeweler. His role is "
 "small, but an important one."
 msgstr ""
+"Rugnuras ir jo draugai sugrįžo namo. Tačiau nenorėčiau sudaryti įspūdžio, "
+"kad tik Rugnuras ir Tursaganas dirbo ties šiuo šedevru. Buvo ir kitų – ir "
+"daugelis kitų. Taigi pristatau Teganlį, juvelyrą. Jo vaidmuo yra mažas, bet "
+"svarbus."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:149
@@ -1888,11 +1890,16 @@ msgid ""
 "northern clans. So now go to the forge and make your sceptre. What do you "
 "need to annoy me for?"
 msgstr ""
+"Taigi grįžote. Manau, kad gavote reikalingas medžiagas? Mano juvelyras "
+"Teganlis praleido pastaruosius dvejus metus pirkdamas brangakmenius iš kai "
+"kurių šiaurinių klanų. Taigi dabar eikite į kalvę ir pasidarykite savo "
+"skeptrą. Kam dar reikia erzinti mane?"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:153
 msgid "We don’t. Not everything is about you. We need to talk to Theganli."
 msgstr ""
+"Nereikia. Ne viskas sukasi aplink tave. Mums reikia pasikalbėti su Teganliu."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:157
@@ -1900,6 +1907,8 @@ msgid ""
 "That makes sense, I guess you would to plan the sceptre’s design... what in "
 "particular do you want him to do?"
 msgstr ""
+"Aišku, manau, norėsite suplanuoti skeptro dizainą... Ko konkrečiai norite, "
+"kad jis pagamintų?"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:161
@@ -1907,11 +1916,12 @@ msgid ""
 "I need to make the plans for the sceptre, then have him cut the ruby to "
 "match them."
 msgstr ""
+"Reikia sukurti planus skeptrui, o tada jis turėtų išpjauti tinkamą rubiną."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:165
 msgid "You’re going to cut the jewel?! Are you insane?"
-msgstr ""
+msgstr "Ketini išpjauti brangakmenį?! Ar išprotėjai?"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:169
@@ -1919,27 +1929,29 @@ msgid ""
 "What are you talking about, sir? You knew all along the jewel would have to "
 "be cut to make the sceptre out of."
 msgstr ""
+"Ką čia kalbate, pone? Visą laiką žinojote, kad brangakmenis turės būti "
+"išpjautas, kad pagamintumėte skeptrą."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:173
 msgid "Oh... right, right. Fine. Theganli?"
-msgstr ""
+msgstr "A... Taip, taip. Gerai. Teganli?"
 
 #. [message]: speaker=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:177
 msgid "He’s in his shop, in the southern tunnel."
-msgstr ""
+msgstr "Jis savo dirbtuvėje, pietiniame tunelyje."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:181
 msgid "Whatever. Kuhnar, go, summon him here."
-msgstr ""
+msgstr "Tiek to. Kuhnarai, eik, pakviesk jį čia."
 
 #. [message]: speaker=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:186
 msgid ""
 "Theganli! Come out of there, Durstorn orders you to come to the citadel."
-msgstr ""
+msgstr "Teganli! Išlįsk iš ten, Durstornas įsako tau ateiti į citadelę."
 
 #. [unit]: type=Dwarvish Runesmith, id=Theganli
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:193
@@ -1949,7 +1961,7 @@ msgstr "Teganlis"
 #. [message]: speaker=Theganli
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:197
 msgid "I’m coming... coming... stop pounding on the door..."
-msgstr ""
+msgstr "Einu... Einu... Baik daužyti duris..."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:201
@@ -1957,31 +1969,33 @@ msgid ""
 "He doesn’t need to come here, I’ll take the jewel to his shop. He’ll need "
 "his tools anyway."
 msgstr ""
+"Jam nebūtina čia ateiti, nunešiu brangakmenį į jo dirbtuves. Jam vis vien "
+"reiks savo įrankių."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:206
 msgid "Well, Theganli, what do you think of this jewel?"
-msgstr ""
+msgstr "Na, Theganli, ką manai apie šį brangakmenį?"
 
 #. [message]: speaker=Theganli
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:210
 msgid "Uh, um, yes, yes, very impressive jewel, impressive, yes..."
-msgstr ""
+msgstr "Ėė, hm, taip, taip, labai įspūdingas brangakmenis, įspūdingas, taip..."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:214
 msgid "Do you think you could cut it in the manner my plans specify?"
-msgstr ""
+msgstr "Ar manai, kad galima išpjauti jį taip, kaip parodyta mano planuose?"
 
 #. [message]: speaker=Theganli
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:218
 msgid "Well, uh, um, maybe... maybe... it will be hard... let me see..."
-msgstr ""
+msgstr "Na, ėė, hm, gal... Gal... Bus sunku... Leisk man pažiūrėti..."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:222
 msgid "Very well. See what you can do."
-msgstr ""
+msgstr "Labai gerai. Pažiūrėk, ką gali padaryti."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:227
@@ -1989,11 +2003,14 @@ msgid ""
 "Theganli spent many months cutting the jewels that would go into the Sceptre "
 "of Fire, and the Ruby of Fire he attempted last. But he could not cut it."
 msgstr ""
+"Teganlis praleido daug mėnesių išpjaudamas brangakmenius, kurie įsistatytų į "
+"Ugnies skeptrą, ir Ugnies rubiną jis pasiliko paskutinį. Bet jis nesugebėjo "
+"jo išpjauti."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:232
 msgid "Well, do you have anything yet?!"
-msgstr ""
+msgstr "Na, ar jau turi ką nors?!"
 
 #. [message]: speaker=Theganli
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:236
@@ -2001,6 +2018,9 @@ msgid ""
 "Ah, well, uh, no... no, not yet... unfortunately... it seems... it can’t be "
 "cut... or scratched... or damaged at all... at least not by my tools..."
 msgstr ""
+"Aa, na, hmm, ne... Ne, dar ne... Deja... Atrodo... Jis negali būti "
+"išpjautas... Ar įbrėžtas... Arba iš vis kaip nors sugadintas... Bent jau ne "
+"mano įrankiais..."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:240
@@ -2008,6 +2028,8 @@ msgid ""
 "So what do you propose we do? We need this jewel cut in a very specific way "
 "to make sure... well, it doesn’t matter why."
 msgstr ""
+"Taigi, ką siūlai mums daryti? Reikia išpjauti šį brangakmenį labai ypatingu "
+"būtu, kad įsitikintumėme... gerai, nesvarbu kodėl."
 
 #. [message]: speaker=Theganli
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:244
@@ -2015,6 +2037,7 @@ msgid ""
 "Well... maybe... the Shorbear clan? They have good tools... yes, yes, they "
 "do..."
 msgstr ""
+"Na... Gal... Šorbero klanas? Jie turi gerų įrankių... Taip, taip, jie turi..."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:248
@@ -2027,6 +2050,9 @@ msgid ""
 "Another group... of dwarves... live south of here... above ground... yes... "
 "best jewelers I know of... have special tools... tools, yes..."
 msgstr ""
+"Kita grupė... Dvarfų... Gyvena į pietus nuo čia... Virš žemės paviršiaus... "
+"Taip... Geriausi juvelyrai, kokius tik žinau... Turi specialių įrankių... "
+"Įrankių, taip..."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:256
@@ -2034,6 +2060,8 @@ msgid ""
 "Well, Rugnur, what are you waiting for? Go down and get these tools from "
 "them, and carve the jewel!"
 msgstr ""
+"Na, Rugnurai, ko lauki? Eik ir gauk iš jų tuos įrankius, ir išraižyk "
+"brangakmenį!"
 
 #. [message]: speaker=Baglur
 #. [message]: speaker=Rugnur
@@ -2043,11 +2071,13 @@ msgid ""
 "We can’t just go in there and take their property. We’ll have to buy, or "
 "rent, it from them."
 msgstr ""
+"Negalime tiesiog taip nueiti ir paimti jų turtą. Turėsime nusipirkti ar "
+"išsinuomoti."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:277
 msgid "Fine. Go rent it from them."
-msgstr ""
+msgstr "Gerai. Eik išsinuomok."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:281
@@ -2060,22 +2090,24 @@ msgid ""
 "Wait! Last time you made a bargain by yourself you lost us five thousand "
 "pieces of silver. I’m going with you this time!"
 msgstr ""
+"Palauk! Paskutinį kartą, kai pats derėjaisi, praradai mums penkis "
+"tūkstančius sidabrinių. Šį kartą eisiu su tavimi!"
 
 #. [message]: speaker=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:289
 msgid "Are you sure that is wise, lord?"
-msgstr ""
+msgstr "Ar esate tikras, kad tai išmintinga, valdove?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:293
 msgid ""
 "Of course! To be safe, though, you and Noiraran are going to come with us."
-msgstr ""
+msgstr "Žinoma! Vis tik dėl saugumo tu ir Noiraranas eisite su mumis."
 
 #. [message]: speaker=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:297
 msgid "Yes sir... (<i>Sigh</i>)"
-msgstr ""
+msgstr "Taip pone... (<i>Atsidūsta</i>)"
 
 #. [scenario]: id=5_Hills_of_the_Shorbear_Clan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:3
@@ -2101,12 +2133,15 @@ msgid ""
 "were no exception. They were crafters of crafters — they made tools. The "
 "best in the land. And they bartered well."
 msgstr ""
+"Visi dvarfai garsėja savo meile auksui ir akmenine širdimi. Šorberai nebuvo "
+"išimtis. Jie buvo amatininkų amatininkai – gamino įrankius. Geriausius "
+"šalyje. Ir derėtis jie mokėjo gerai."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:117
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:384
 msgid "Defeat Glonoin, the Shorbear clan leader"
-msgstr ""
+msgstr "Nugalėkite Glonoiną, Šorbero klano vadą"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:137
@@ -2120,7 +2155,7 @@ msgstr "Durstorno mirtis"
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:207
 msgid ""
 "Here we are; the hills of the Shorbear clan. What are we here for, anyway?"
-msgstr ""
+msgstr "Štai ir atėjome; Šorbero klano kalvos. O kam mes čia keliavome?"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:211
@@ -2128,11 +2163,13 @@ msgid ""
 "If I understand it correctly, we’re here to bargain with the Shorbears, and "
 "arrange for us to use their tools to cut the ruby."
 msgstr ""
+"Jei suprantu teisingai, atvykome čia derėtis su Šorberais, ir susitarti, kad "
+"mums leistų naudotis jų įrankiais išpjauti rubiną."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:215
 msgid "Exactly."
-msgstr "Tiksliai."
+msgstr "Būtent."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:219
@@ -2140,11 +2177,13 @@ msgid ""
 "And I’ll be doing the talking; I remember what happened last time you "
 "negotiated a deal! We lost five thousand pieces of silver."
 msgstr ""
+"O kalbėsiu aš; prisimenu, kas atsitiko praeitą kartą, kai tu derėjaisi! "
+"Praradome penkis tūkstančius sidabrinių."
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:223
 msgid "Och, its some o’ them cave-dwarves. What business do you have here?"
-msgstr ""
+msgstr "Oho, tai vieni iš tų, urvinių dvarfų. Kokių reikalų čia turite?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:227
@@ -2153,6 +2192,9 @@ msgid ""
 "workers, and so we come to rent some of your tools for a short time, a few "
 "years at most."
 msgstr ""
+"Aš valdovas Durstornas, savo genties karaliaus. Man  buvo pasakyta, kad "
+"esate puikūs juvelyrai ir meistrai, taigi atėjome trumpam laikui, daugiausia "
+"keliems metams, išsinuomoti įrankių."
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:231
@@ -2160,16 +2202,18 @@ msgid ""
 "You’re a king?! Must be a pretty small kingdom for you to come yourself to "
 "bargain with us!"
 msgstr ""
+"Jūs karalius?! Turėtų būt gan maža karalystė, kad pats atėjote su mumis "
+"derėtis!"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:235
 msgid "You insult me! Do you want my business, or not?"
-msgstr ""
+msgstr "Įžeidinėji mane! Tu nori su manim turėt komercinių reikalų, ar nenori?"
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:239
 msgid "Well, fine, I’ll hear your offer."
-msgstr ""
+msgstr "Na, gerai, išklausysiu jūsų pasiūlymą."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:243
@@ -2177,6 +2221,9 @@ msgid ""
 "We’d like to rent your best tools for a short period of time. We’ll only be "
 "cutting one jewel with it. My starting offer is two hundred silver."
 msgstr ""
+"Norėtume trumpam laikui išsinuomoti geriausius jūsų įrankius. Mes tik "
+"išpjausime vieną brangakmenį. Mano pradinis pasiūlymas yra du šimtai "
+"sidabrinių."
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:247
@@ -2184,6 +2231,8 @@ msgid ""
 "It must be worth a lot for you to come this way and offer that much! How "
 "much are you going to sell it for, eh?"
 msgstr ""
+"Jis turėtų būti daug vertas, kad atėjai tokį kelią ir pasiūlei tiek daug! Už "
+"kiek ketini jį parduoti, a?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:251
@@ -2198,12 +2247,12 @@ msgstr "Imsiu dvidešimt penkis šimtus, mažiausiai."
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:259
 msgid "Durstorn, that would be a quarter of all our profits!"
-msgstr ""
+msgstr "Durstornai, tai būtų ketvirtadalis viso mūsų pelno!"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:263
 msgid "I know that. Uh, Glonoin, how about five hundred?"
-msgstr ""
+msgstr "Žinau. Uch, Glonoinai, kaip dėl penkių šimtų?"
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:267
@@ -2211,11 +2260,13 @@ msgid ""
 "Twenty-three hundred is my lowest offer. I can tell I don’t need the money "
 "as much as you need the jewel cut!"
 msgstr ""
+"Dvidešimt trys šimtai yra mano mažiausias pasiūlymas. Galiu pasakyti, kad "
+"man nereikia pinigų taip, kaip jums reikia išpjauti brangakmenį!"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:271
 msgid "You must be mad! I’ll offer one thousand, but no higher!"
-msgstr "Tu esi pamišęs! Siūlau tūkstantį, bet ne daugiau!"
+msgstr "Tu turbūt pamišęs! Siūlau tūkstantį, bet ne daugiau!"
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:275
@@ -2225,12 +2276,12 @@ msgstr "Du tūkstančiai, ir daugiau nebenuleisiu!"
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:279
 msgid "What are we going to do? We can’t go much higher!"
-msgstr ""
+msgstr "Ką darysime? Negalime kelti daug daugiau!"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:283
 msgid "Offer him fifteen hundred, but don’t go up, even if he refuses."
-msgstr ""
+msgstr "Pasiūlyk jam penkiolika šimtų, bet ne daugiau, net jei jis atsisakys."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:287
@@ -2239,16 +2290,19 @@ msgid ""
 "earlier, and all the other expenses, if we pay more than a thousand we’ll "
 "barely even make a profit!"
 msgstr ""
+"Ba! Išpjovimas nėra tiek daug vertas; su Rugnuro ankstesne klaida, ir "
+"visomis kitomis išlaidomis, jei mokėsime daugiau nei tūkstantį, liksime "
+"beveik be jokio pelno!"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:291
 msgid "So what are you going to do?"
-msgstr ""
+msgstr "Taigi, ką ketini daryti?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:295
 msgid "Fight him, and take the tools by force."
-msgstr ""
+msgstr "Kovoti su juo, ir paimti įrankius jėga."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:299
@@ -2261,8 +2315,8 @@ msgid ""
 "Of course not! Now, Glonoin; one thousand was my final offer. If you won’t "
 "accept it, we will take the tools from you by force!"
 msgstr ""
-"Žinoma ne! Dabar, Glonoinai; tūkstantis buvo galutinis mano pasiūlymas. "
-"Jeigu jo nepriimsi, įrankius iš jūsų paimsime jėga!"
+"Žinoma, kad ne! Dabar, Glonoinai; tūkstantis buvo paskutinis mano "
+"pasiūlymas. Jeigu jo nepriimsi, įrankius iš jūsų paimsime jėga!"
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:307
@@ -2272,7 +2326,7 @@ msgstr "Norėčiau pamatyt, kaip bandysi!"
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:311
 msgid "You’re making a mistake, Durstorn."
-msgstr "Tu darai klaidą, Durstornai."
+msgstr "Darai klaidą, Durstornai."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:326
@@ -2290,6 +2344,8 @@ msgid ""
 "Aha! I’ve spent years looking for you dwarves, but now I’ve found you! "
 "Prepare to die!"
 msgstr ""
+"Aha! Daug metų praleidau ieškodamas jūsų, dvarfų, bet pagaliau radau! "
+"Pasiruoškite mirti!"
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:347
@@ -2302,6 +2358,8 @@ msgid ""
 "I thought we left the elves behind at the gates four years ago! It seems we "
 "have two enemies now."
 msgstr ""
+"Maniau, kad palikome elfus už vartų prieš ketverius metus! Atrodo, kad dabar "
+"turime du priešus."
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:355
@@ -2309,11 +2367,13 @@ msgid ""
 "So, elves, are you against these dwarves too? They’re attacking my clan for "
 "absolutely no reason!"
 msgstr ""
+"Taigi, elfai, ar jūs irgi prieš šiuos dvarfus? Jie puola mano klaną "
+"absoliučiai be jokios priežasties!"
 
 #. [message]: speaker=Lyndar
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:359
 msgid "I see. So you don’t have the ruby?"
-msgstr ""
+msgstr "Matau. Taigi jūs neturite rubino?"
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:363
@@ -2321,6 +2381,8 @@ msgid ""
 "No, they do. They wanted to rent my tools to cut it, but they didn’t offer "
 "me nearly enough!"
 msgstr ""
+"Ne, jie turi. Jie norėjo išsinuomoti mano įrankius, kad išpjautų jį, bet "
+"nepasiūlė nė arti pakankamos sumos!"
 
 #. [message]: speaker=Lyndar
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:367
@@ -2328,6 +2390,8 @@ msgid ""
 "How about this — I help you defeat them, and you let me keep the ruby when "
 "we have?"
 msgstr ""
+"Kaip apie tai – galiu padėti nugalėti juos, o jūs man leisite pasilikti "
+"rubiną, kai nugalėsime?"
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:371
@@ -2337,7 +2401,7 @@ msgstr "Sutarta!"
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:375
 msgid "Ah, they don’t scare me! We can take both of them!"
-msgstr ""
+msgstr "Ak, jie manęs negąsdina! Galime nugalėti juos abu!"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:379
@@ -2346,18 +2410,22 @@ msgid ""
 "these dwarves, but if we have to fight we should retreat once we get what we "
 "came for, the tools!"
 msgstr ""
+"Nebūk kvailas! Negalime nugalėti elfų, pulti šiuos dvarfus irgi buvo klaida, "
+"bet jei jau turime kautis, tai reiktų atsitraukti, kai tik gausime tai, ko "
+"atėjome, įrankius!"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:388
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:494
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:558
 msgid "Have all heroes in the Shorbear caves while no enemies are in the caves"
-msgstr ""
+msgstr "Visi herojai turi būti Šorbero urvuose, kuriuose neturi būti priešų"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:442
 msgid "Ha! Now we can get those tools easily, and go back to our own caves."
 msgstr ""
+"Cha! Dabar mes lengvai galime gauti tuos įrankius ir grįžti į savo urvus."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:446
@@ -2365,6 +2433,8 @@ msgid ""
 "And how do you plan on doing that? There are elves swarming these hills, "
 "trying to kill us."
 msgstr ""
+"Ir kaip planuoji tai padaryti? Šiose kalvose knibžda elfai, bandantys mus "
+"nužudyti."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:450
@@ -2372,6 +2442,8 @@ msgid ""
 "You are right... well, we will be able to break out eventually, and while "
 "we’re here, we’ll be able to finally make the sceptre."
 msgstr ""
+"Esi teisus... Gerai, galiausiai sugebėsime iš čia ištrūkti, o kol esame čia, "
+"pagaliau galėsime pagaminti skeptrą."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:482
@@ -2379,12 +2451,15 @@ msgid ""
 "Well, back to the battle — we are all in the caves, but there are still "
 "enemies in here also!"
 msgstr ""
+"Na, grįžkime prie mūšio – visi esame urvuose, bet čia vis dar yra priešų!"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:486
 msgid ""
 "Indeed. Kill them! And make sure no more enter. Then we can close the gates."
 msgstr ""
+"Iš tiesų. Nužudykime juos! Ir įsitikinkite, kad daugiau neįeitų. Tada "
+"galėsime užverti vartus."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:529
@@ -2392,11 +2467,13 @@ msgid ""
 "We have driven all of the dwarves and elves out of these caves. They are not "
 "ours, though, and we can’t stay here forever."
 msgstr ""
+"Išstūmėme visus dvarfus ir elfus iš šių urvų. Vis tik jie yra ne mūsų, "
+"negalima čia likti amžinai."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:533
 msgid "True. I suspect these elves will try to besiege us here."
-msgstr ""
+msgstr "Tiesa. Įtariu, kad elfai bandys mus čia apgulti."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:546
@@ -2404,11 +2481,13 @@ msgid ""
 "Well, back to the battle — we need everyone to get into the Shorbear caves. "
 "And then stop any enemies from coming in here."
 msgstr ""
+"Na, grįžkime prie mūšio – reikia kiekvienam įeiti į Šorbero urvus. Ir tada "
+"neleisti jokiems priešams čia patekti."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:550
 msgid "Indeed. Everyone to the caves, and kill those still inside!"
-msgstr ""
+msgstr "Iš tiesų. Visi į urvus, ir nužudykite tuos, kurie bus viduje!"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:635
@@ -2417,14 +2496,14 @@ msgstr ""
 msgid ""
 "We have driven all of the dwarves and elves out of these caves! Now, seal "
 "the gates!"
-msgstr ""
+msgstr "Išstūmėme visus dvarfus ir elfus iš šių urvų! Dabar, užverkite vartus!"
 
 #. [message]: speaker=Durstorn
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:795
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:61
 msgid "Gaanngh..."
-msgstr ""
+msgstr "Gaanngh..."
 
 #. [scenario]: id=6_Towards_the_Caves
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:3
@@ -2757,27 +2836,27 @@ msgstr ""
 #. [unit]: type=Elvish Outrider, id=Asaeri
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:113
 msgid "Lord Asaeri"
-msgstr ""
+msgstr "Lordas Asaeris"
 
 #. [unit]: type=Elvish Outrider, id=Gaelir
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:124
 msgid "Gaelir"
-msgstr ""
+msgstr "Gaeliras"
 
 #. [unit]: type=Elvish Outrider, id=Salira
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:135
 msgid "Salira"
-msgstr ""
+msgstr "Saliras"
 
 #. [unit]: type=Elvish Outrider, id=Losnin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:147
 msgid "Losnin"
-msgstr ""
+msgstr "Losninas"
 
 #. [unit]: type=Elvish Outrider, id=Ealin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:159
 msgid "Ealin"
-msgstr ""
+msgstr "Ealinas"
 
 #. [message]: speaker=Asaeri
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:177
@@ -2794,7 +2873,7 @@ msgstr ""
 #. [unit]: type=Elvish Outrider, id=Raesil
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:190
 msgid "Raesil"
-msgstr ""
+msgstr "Raesilas"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:207
@@ -2802,21 +2881,24 @@ msgid ""
 "The villagers here are loyal to Wesnoth. They should be willing to help me "
 "escape these elves!"
 msgstr ""
+"Kaimiečiai čia yra ištikimi Vesnotui. Jie turėtų padėt mums pasprukti nuo "
+"elfų!"
 
 #. [unit]: type=Spearman, id=Rolin    # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:212
 msgid "Rolin"
-msgstr ""
+msgstr "Rolinas"
 
 #. [message]: speaker=Rolin   # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:223
 msgid "We will certainly help any warrior of Wesnoth who needs our help!"
 msgstr ""
+"Būtinai padėsime bet kuriam Vesnoto kariui, kuriam reikia mūsų pagalbos!"
 
 #. [unit]: type=Lieutenant, id=Hadlin   # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:275
 msgid "Hadlin"
-msgstr ""
+msgstr "Hadlinas"
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:287
@@ -2846,7 +2928,7 @@ msgstr "Drakonas"
 #. [side]: type=Elvish Marshal, id=Crintil
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:39
 msgid "Crintil"
-msgstr ""
+msgstr "Krintilas"
 
 #. [side]: type=Fire Dragon, id=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:89
@@ -2866,7 +2948,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:124
 msgid "Get all heroes to the end of the tunnel"
-msgstr ""
+msgstr "Nuveskite visus herojus iki tunelio pabaigos"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:186
@@ -2920,7 +3002,7 @@ msgstr ""
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:235
 msgid "Look, there’s a dragon in these caves!"
-msgstr ""
+msgstr "Žiūrėkite, šiuose urvuose yra drakonas!"
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:239
@@ -2930,7 +3012,7 @@ msgstr "O, šviežia mėsa!"
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:243
 msgid "And which of the great dragons are you?"
-msgstr ""
+msgstr "Ir kuris iš didžiųjų drakonų esi tu?"
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:248
@@ -2948,6 +3030,8 @@ msgstr ""
 msgid ""
 "I’d rather face one powerful dragon than hundreds of mighty elves. Continue!"
 msgstr ""
+"Geriau stosiu prieš vieną galingą drakoną, nei prieš šimtus stiprių elfų. "
+"Tęskime!"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:270
@@ -3049,7 +3133,7 @@ msgstr ""
 #. [scenario]: id=9_Caverns_of_Flame
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:3
 msgid "Caverns of Flame"
-msgstr ""
+msgstr "Liepsnos urvai"
 
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
@@ -3109,7 +3193,7 @@ msgstr ""
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:274
 msgid "This sounds... plausible."
-msgstr ""
+msgstr "Skamba... Įtikinamai."
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:278
@@ -3147,12 +3231,12 @@ msgstr "Aendanas"
 #. [message]: speaker=Aendan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:326
 msgid "We have caught up to the dwarves. Now, prepare to destroy them!"
-msgstr ""
+msgstr "Pavijome dvarfus. Dabar, pasiruoškite juos sunaikinti!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:365
 msgid "Thursagan! The elves are right on our tail; what should we do?"
-msgstr ""
+msgstr "Tursaganai! Elfai lipa tiesiai mums ant kulnų; ką darysime?"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:369
@@ -3165,12 +3249,12 @@ msgstr ""
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:428
 msgid "These orcs appear to be guarding something."
-msgstr ""
+msgstr "Atrodo, kad šie orkai kažką saugo."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:432
 msgid "It is probably the magical object. Attack them!"
-msgstr ""
+msgstr "Tai turbūt magiškas objektas. Pulkite juos!"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:437
@@ -3221,11 +3305,12 @@ msgid ""
 "Wait, what’s going on? The volcano is going to erupt! Everyone, try to get "
 "out of these caves!"
 msgstr ""
+"Palaukite, kas vyksta? Ugnikalnis tuoj išsiverš! Visi, sprukit iš šių urvų!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:585
 msgid "I must go report to my superiors!"
-msgstr ""
+msgstr "Turiu pranešti vyresniesiems!"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:589
@@ -3294,7 +3379,7 @@ msgstr "Vartų sargas"
 #. [message]: speaker=Gatekeeper
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:107
 msgid "Halt! What is your business in Weldyn, capital of Wesnoth?"
-msgstr ""
+msgstr "Stot! Kokių reikalų turi Veldyne, Vesnoto sostinėje?"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:111
@@ -3306,7 +3391,7 @@ msgstr ""
 #. [message]: speaker=Gatekeeper
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:115
 msgid "Very well. You may pass."
-msgstr ""
+msgstr "Labai gerai. Gali praeiti."
 
 #. [message]: speaker=Guard Captain
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:120
@@ -3336,7 +3421,7 @@ msgstr ""
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:137
 msgid "Well, was the Sceptre completed? Do you have it? Give it to me!"
-msgstr ""
+msgstr "Na, ar skeptras buvo užbaigtas? Ar tu jį turi? Duok jį man!"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:141
@@ -3344,6 +3429,8 @@ msgid ""
 "I believe it was completed, but, I do not have it. It is buried deep in the "
 "mountains of the Northlands."
 msgstr ""
+"Manau, kad buvo užbaigtas, bet aš jo neturiu. Jis palaidotas giliai po "
+"šiaurinių žemių kalnais."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:145
@@ -3362,7 +3449,7 @@ msgstr ""
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:153
 msgid "Why were you returning without the sceptre, then?"
-msgstr ""
+msgstr "Kodėl tada tu grįžai be skeptro?"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:157
@@ -3413,7 +3500,7 @@ msgstr ""
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:206
 msgid "What the devil is he saying?"
-msgstr ""
+msgstr "Ką, po velnių, jis sako?"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:210

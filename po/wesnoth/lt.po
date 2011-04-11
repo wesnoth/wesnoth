@@ -325,9 +325,8 @@ msgstr "Indoneziečių vertimas"
 
 #. [about]
 #: data/core/about.cfg:2051
-#, fuzzy
 msgid "Irish Translation"
-msgstr "Turkų vertimas"
+msgstr "Airių vertimas"
 
 #. [about]
 #: data/core/about.cfg:2058
@@ -376,9 +375,8 @@ msgstr "Norvegų vertimas"
 
 #. [about]
 #: data/core/about.cfg:2271
-#, fuzzy
 msgid "Old English Translation"
-msgstr "Anglų (DB) vertimas"
+msgstr "Senosios anglų vertimas"
 
 #. [about]
 #: data/core/about.cfg:2280
@@ -771,11 +769,11 @@ msgstr ""
 
 #: data/core/macros/items.cfg:267
 msgid "holy water^Take it"
-msgstr ""
+msgstr "Paimti"
 
 #: data/core/macros/items.cfg:268
 msgid "holy water^Leave it"
-msgstr ""
+msgstr "Palikti"
 
 #: data/core/macros/items.cfg:269
 msgid "I am not suited to the use of this item! Let another take it."
@@ -859,14 +857,12 @@ msgid "Should $unit.name pick up the trident?"
 msgstr "Ar $unit.name turėtų paimti trišakį?"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
 msgid "storm trident^Leave it"
-msgstr "trišakis audronaša"
+msgstr "Palikti"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
 msgid "storm trident^Take it"
-msgstr "trišakis audronaša"
+msgstr "Paimti"
 
 #. [object]
 #: data/core/macros/items.cfg:515
@@ -2105,7 +2101,7 @@ msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
-msgstr "DejaVu Sans,Andagii.ttf,WenQuanYi Zen Hei"
+msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -2793,14 +2789,12 @@ msgid "petrified"
 msgstr "suakmenėjęs"
 
 #: data/lua/wml-tags.lua:717
-#, fuzzy
 msgid "female^unhealable"
-msgstr "nemirėlė"
+msgstr "negydoma"
 
 #: data/lua/wml-tags.lua:717
-#, fuzzy
 msgid "unhealable"
-msgstr "Nevaikštoma"
+msgstr "negydomas"
 
 #: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1608
 msgid "Victory:"
@@ -2849,12 +2843,12 @@ msgstr "Atšaukti"
 #. [language]
 #: data/scenario-test.cfg:3044
 msgid "very long"
-msgstr ""
+msgstr "labai tolima"
 
 #. [language]
 #: data/scenario-test.cfg:3045
 msgid "electrical"
-msgstr ""
+msgstr "elektrinė"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:139
@@ -4124,9 +4118,8 @@ msgstr[2] "Privalote turėti bent $cost auksinius, kad grąžintumėte dalinį."
 msgstr[3] "Privalote turėti bent $cost auksinių, kad grąžintumėte dalinį."
 
 #: src/menu_events.cpp:1345
-#, fuzzy
 msgid "You cannot end your turn yet!"
-msgstr "pauzė ėjimo pabaigoje"
+msgstr "Dar negalite baigti savo ėjimo!"
 
 #: src/menu_events.cpp:1369
 msgid ""
@@ -4134,10 +4127,11 @@ msgid ""
 msgstr "Jūs dar nepradėjote savo ėjimo. Ar tikrai norite pabaigti ėjimą?"
 
 #: src/menu_events.cpp:1377
-#, fuzzy
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
-msgstr "Kai kurie daliniai dar gali judėti. Ar tikrai norite baigti ėjimą?"
+msgstr ""
+"Kai kurie daliniai dar turi suplanuotų veiksmų. Ar tikrai norite baigti "
+"ėjimą?"
 
 #: src/menu_events.cpp:1385 src/menu_events.cpp:1390
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -4281,13 +4275,12 @@ msgid "Send an emotion or personal action in chat."
 msgstr "Siųsti emociją ar asmeninį veiksmą pokalbyje."
 
 #: src/menu_events.cpp:2327
-#, fuzzy
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
-"Siunčia privatų pranešimą. Jūs negalite siųsti pranešimus žaidėjams, kurie "
-"nevaldo jokios pusės jūsų žaidime."
+"Siunčia privatų pranešimą. Negalite siųsti pranešimų žaidėjams, "
+"žaidžiantiems žaidime, kurį stebite, ar kuriame žaidžiate."
 
 #: src/menu_events.cpp:2329
 msgid "<nick> <message>"
@@ -4298,7 +4291,6 @@ msgid "<level> <domain>"
 msgstr "<lygis> <sritis>"
 
 #: src/menu_events.cpp:2333
-#, fuzzy
 msgid "Change the log level of a log domain."
 msgstr "Keisti žurnalo srities žurnalo lygį."
 
@@ -4521,16 +4513,15 @@ msgstr "Lua scenarijams suteikti aukštesnes privilegijas."
 #: src/menu_events.cpp:2550
 #, fuzzy
 msgid "Set the command used by the custom command hotkey"
-msgstr "Nustatyti komandą naudojamą pasirinktininės komandos sparčiųjų klavišų"
+msgstr "Nustatyti komandą naudojamą pasirinktinės komandos sparčiųjų klavišų"
 
 #: src/menu_events.cpp:2552
 msgid "Launch the gamestate inspector"
 msgstr "Įjungti žaidimo būklės inspektorių"
 
 #: src/menu_events.cpp:2554
-#, fuzzy
 msgid "Manage persistence data"
-msgstr "Valdyti atkaklumo, ištvermės duomenis"
+msgstr ""
 
 #: src/menu_events.cpp:2556
 msgid "<name>[=<command>]"
@@ -4851,11 +4842,10 @@ msgstr ""
 "raides, pabraukimą ir brūkšnį."
 
 #: src/multiplayer.cpp:312
-#, fuzzy
 msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Slapyvardis „$nick“ yra per ilgas. Slapyvardžiai privalo būti neilgesni nei "
-"18 simbolių."
+"20 simbolių."
 
 #: src/multiplayer.cpp:315
 msgid "The nick '$nick' is reserved and cannot be used by players."
@@ -4978,9 +4968,8 @@ msgid "I’m Ready"
 msgstr "Aš pasiruošęs"
 
 #: src/multiplayer_connect.cpp:987
-#, fuzzy
 msgid "Add named local player"
-msgstr "Anoniminis vietinis žaidėjas"
+msgstr "Pridėti vietinį žaidėją su vardu"
 
 #: src/multiplayer_connect.cpp:996
 msgid "The scenario is invalid because it has no id."
@@ -6089,30 +6078,3 @@ msgstr "prieblandos"
 #: src/unit_types.cpp:969
 msgid "female^neutral"
 msgstr "neutrali"
-
-#~ msgid "Send a message to the server admins currently online"
-#~ msgstr "Siųsti pranešimą dabar prisijungusiems serverio administratoriams"
-
-#~ msgid "Take it"
-#~ msgstr "Paimti"
-
-#~ msgid "Leave it"
-#~ msgstr "Palikti"
-
-#~ msgid "Do you really want to delete this game?"
-#~ msgstr "Ar tikrai norite ištrinti šį žaidimą?"
-
-#~ msgid "Don’t ask me again!"
-#~ msgstr "Daugiau manęs nebeklausti!"
-
-#~ msgid "Act."
-#~ msgstr "Vksm."
-
-#~ msgid "short end-turn^E."
-#~ msgstr "B."
-
-#~ msgid "Exp. Mod.: "
-#~ msgstr "Pat. mod.: "
-
-#~ msgid "Do you want to save your game?"
-#~ msgstr "Ar norite išsaugoti savo žaidimą?"

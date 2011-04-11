@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-27 13:20+0200\n"
+"POT-Creation-Date: 2011-03-27 14:22+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -220,12 +220,12 @@ msgstr ""
 #. [terrain_type]: id=water-lilies
 #: data/core/terrain.cfg:388
 msgid "Water Lilies"
-msgstr ""
+msgstr "Vandens lelija"
 
 #. [terrain_type]: id=water-lilies-flower
 #: data/core/terrain.cfg:398
 msgid "Flowering Water Lilies"
-msgstr ""
+msgstr "Žydinti vandens lelija"
 
 #. [terrain_type]: id=great_tree
 #: data/core/terrain.cfg:412
@@ -458,7 +458,7 @@ msgstr "Uolėtas urvas"
 #: data/core/terrain.cfg:906 data/core/terrain.cfg:918
 #: data/core/terrain.cfg:930
 msgid "Mine Rail"
-msgstr ""
+msgstr "Kasyklų geležinkelis"
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:947
@@ -673,9 +673,8 @@ msgstr ""
 
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1424
-#, fuzzy
 msgid "Swamp Village"
-msgstr "Kaimas"
+msgstr "Pelkės kaimas"
 
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
@@ -966,7 +965,6 @@ msgstr "Serveris:"
 #. [button]: id=update_addons
 #: data/gui/default/window/addon_connect.cfg:145
 #: data/gui/default/window/addon_connect.cfg:146
-#, fuzzy
 msgid "Update Add-ons"
 msgstr "Atnaujinti priedus"
 
@@ -1016,39 +1014,37 @@ msgstr "Atšaukti"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
 msgid "Author:"
-msgstr ""
+msgstr "Autorius:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:118
-#, fuzzy
 msgid "Version:"
-msgstr "Versija: "
+msgstr "Versija:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:149
 msgid "Size:"
-msgstr ""
+msgstr "Dydis:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
-#, fuzzy
 msgid "Description:"
-msgstr "Dalinio aprašymas"
+msgstr "Aprašymas:"
 
 #. [scroll_label]: id=description
 #: data/gui/default/window/addon_description.cfg:194
 msgid "No description available."
-msgstr ""
+msgstr "Nėra jokio aprašymo."
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
 msgid "Translations:"
-msgstr ""
+msgstr "Vertimai:"
 
 #. [scroll_label]: id=translations
 #: data/gui/default/window/addon_description.cfg:226
 msgid "translations^None"
-msgstr ""
+msgstr "Nėra"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:56
@@ -1082,14 +1078,13 @@ msgstr "Gerai"
 
 #. [label]: id=title
 #: data/gui/default/window/campaign_difficulty.cfg:57
-#, fuzzy
 msgid "Difficulty"
-msgstr "Sudėtingumas: "
+msgstr "Sudėtingumas"
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/campaign_difficulty.cfg:77
 msgid "Select difficulty level:"
-msgstr ""
+msgstr "Pasirinkite sudėtingumo lygį:"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
@@ -1148,15 +1143,13 @@ msgstr "Nustatyti žymę"
 
 #. [label]
 #: data/gui/default/window/edit_label.cfg:72
-#, fuzzy
 msgid "Label:"
-msgstr "Nustatyti žymę"
+msgstr "Žymė:"
 
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/default/window/edit_label.cfg:110
-#, fuzzy
 msgid "Team only"
-msgstr "Komanda 1"
+msgstr "Tik komandai"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:46
@@ -2590,14 +2583,12 @@ msgid "no"
 msgstr "ne"
 
 #: src/game_preferences_display.cpp:1081
-#, fuzzy
 msgid "friend"
-msgstr "Draugai"
+msgstr "draugas"
 
 #: src/game_preferences_display.cpp:1087
-#, fuzzy
 msgid "ignored"
-msgstr "Nėra ignoruojamų"
+msgstr "ignoruojamas"
 
 #: src/game_preferences_display.cpp:1091
 msgid "(empty list)"
@@ -3518,7 +3509,3 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-
-#, fuzzy
-#~ msgid "Select unit:"
-#~ msgstr "Nieko nežymėti"
