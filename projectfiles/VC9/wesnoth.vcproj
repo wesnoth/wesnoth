@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="wesnoth"
 	ProjectGUID="{65ACA13F-5F5C-4768-A89A-ECF6C16F1512}"
 	RootNamespace="wesnoth"
@@ -2374,6 +2374,34 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\mp_change_control.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\mp_cmd_wrapper.cpp"
 						>
 						<FileConfiguration
@@ -4401,6 +4429,94 @@
 								<Tool
 									Name="VCCLCompilerTool"
 									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+					</Filter>
+					<Filter
+						Name="Iterator"
+						>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\iterator\iterator.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\iterator\walker_grid.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\iterator\walker_widget.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
 								/>
 							</FileConfiguration>
 						</File>
@@ -7489,6 +7605,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\mp_change_control.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\mp_cmd_wrapper.hpp"
 						>
 					</File>
@@ -7737,7 +7857,15 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\auxiliary\iterator\exception.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\auxiliary\formula.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\auxiliary\iterator\iterator.hpp"
 						>
 					</File>
 					<File
@@ -7753,11 +7881,31 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\auxiliary\iterator\policy_order.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\auxiliary\iterator\policy_visit.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\auxiliary\timer.hpp"
 						>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\tips.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\auxiliary\iterator\walker.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\auxiliary\iterator\walker_grid.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\auxiliary\iterator\walker_widget.hpp"
 						>
 					</File>
 					<File
