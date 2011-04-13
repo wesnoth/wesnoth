@@ -403,6 +403,7 @@ void menu_handler::status_table(int selected)
 		const bool known = viewing_team.knows_about_team(n, network::nconnections() > 0);
 		const bool enemy = viewing_team.is_enemy(n+1);
 
+		bool fogged;
 		std::stringstream str;
 
 		const team_data data = calculate_team_data(teams_[n],n+1);
@@ -412,10 +413,10 @@ void menu_handler::status_table(int selected)
 		//output the number of the side first, and this will
 		//cause it to be displayed in the correct color
 		if(leader != units_.end()) {
-
+			fogged=viewing_team.fogged(leader->get_location());
 			// Add leader image. If it's fogged
 			// show only a random leader image.
-			if (known || game_config::debug) {
+			if (!fogged || known || game_config::debug) {
 				str << IMAGE_PREFIX << leader->absolute_image();
 				leader_bools.push_back(true);
 				leader_name = leader->name();
@@ -517,6 +518,7 @@ void menu_handler::scenario_settings_table(int selected)
 
 	const team& viewing_team = teams_[gui_->viewing_team()];
 	bool settings_table_empty = true;
+	bool fogged;
 
 	for(size_t n = 0; n != teams_.size(); ++n) {
 		if(teams_[n].is_empty()||teams_[n].hidden()) {
@@ -530,7 +532,8 @@ void menu_handler::scenario_settings_table(int selected)
 		if(leader != units_.end()) {
 			// Add leader image. If it's fogged
 			// show only a random leader image.
-			if (viewing_team.knows_about_team(n, network::nconnections() > 0) || game_config::debug) {
+			fogged=viewing_team.fogged(leader->get_location());
+			if (!fogged || viewing_team.knows_about_team(n, network::nconnections() > 0) || game_config::debug) {
 				str << IMAGE_PREFIX << leader->absolute_image();
 				leader_bools.push_back(true);
 			} else {
