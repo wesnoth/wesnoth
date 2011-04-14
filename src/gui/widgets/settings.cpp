@@ -220,7 +220,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                   which is used for eg checkboxes and
  *                                   radioboxes. $
  *     Toggle_panel &                 Like a toggle button but then as panel so
- *                                   can hold multiple items in a grid.
+ *                                   can hold multiple items in a grid. $
  *     Tooltip &                      A small tooltip with help. $
  *     Tree_view &                    A tree view widget. $
  *     Vertical_scrollbar &           A vertical scrollbar. $
