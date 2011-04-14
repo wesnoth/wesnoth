@@ -172,6 +172,19 @@ if __name__ == "__main__":
         regex = re.compile("([A-Za-z]\w*) +& +([A-Za-z]\w*) +& +([^&]*?) *& +(.*) +\$")
         res = regex.findall(data)
 
+        regex  = re_record_start
+        regex += re_variable           # 0 variable id
+        regex += re_field_separator
+        regex += re_variable           # 1 variable type
+        regex += re_field_separator
+        regex += '(.*?)'               # 2 optional default value, if omitted mandatory field
+        regex += re_field_separator
+        regex += re_string             # 3 description
+        regex += re_record_end
+
+        regex = re.compile(regex, re.DOTALL | re.MULTILINE)
+        res = regex.findall(data)
+
         if is_empty(res, data):
             return "Empty table."
 
