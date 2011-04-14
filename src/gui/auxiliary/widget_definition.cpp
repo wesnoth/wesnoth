@@ -62,34 +62,39 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
  * themselves). It's wise to set all sizes to 0 for these kind of widgets.
  *
  * @begin{table}{config}
- *     window_width & unsigned & 0 &   Width of the application window. $
- *     window_height & unsigned & 0 &
- *                                     Height of the application window. $
- *     min_width & unsigned & 0 &      The minimum width of the widget. $
- *     min_height & unsigned & 0 &     The minimum height of the widget. $
+ * window_width & unsigned & 0 &   Width of the application window. $
+ * window_height & unsigned & 0 &  Height of the application window. $
  *
- *     default_width & unsigned & 0 &  The default width of the widget. $
- *     default_height & unsigned & 0 & The default height of the widget. $
  *
- *     max_width & unsigned & 0 &      The maximum width of the widget. $
- *     max_height & unsigned & 0 &     The maximum height of the widget. $
+ * min_width & unsigned & 0 &      The minimum width of the widget. $
+ * min_height & unsigned & 0 &     The minimum height of the widget. $
  *
- *     text_extra_width & unsigned & 0 &
- *                                     The extra width needed to determine the
- *                                     minimal size for the text. $
- *     text_extra_height & unsigned & 0 &
- *                                     The extra height needed to determine the
- *                                     minimal size for the text. $
- *     text_font_size & unsigned & 0 & The font size, which needs to be used to
- *                                     determine the minimal size for the text. $
- *     text_font_style & font_style & "" &
- *                                     The font style, which needs to be used to
- *                                     determine the minimal size for the text. $
  *
- *     state & section & &             Every widget has one or more state
- *                                     sections.
- *                                     Note they aren't called state but state_xxx
- *                                     the exact names are listed per widget. $
+ * default_width & unsigned & 0 &  The default width of the widget. $
+ * default_height & unsigned & 0 & The default height of the widget. $
+ *
+ *
+ * max_width & unsigned & 0 &      The maximum width of the widget. $
+ * max_height & unsigned & 0 &     The maximum height of the widget. $
+ *
+ * text_extra_width & unsigned & 0 &
+ *     The extra width needed to determine the minimal size for the text. $
+ *
+ * text_extra_height & unsigned & 0 &
+ *     The extra height needed to determine the minimal size for the text. $
+ *
+ * text_font_size & unsigned & 0 &
+ *     The font size, which needs to be used to determine the minimal size for
+ *     the text. $
+ *
+ * text_font_style & font_style & "" &
+ *     The font style, which needs to be used to determine the minimal size for
+ *     the text. $
+ *
+ *
+ * state & section & &
+ *     Every widget has one or more state sections. Note they aren't called
+ *     state but state_xxx the exact names are listed per widget. $
  * @end{table}
  */
 
