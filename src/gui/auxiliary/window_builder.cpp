@@ -269,68 +269,67 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * == Resolution ==
  *
  * @begin{table}{config}
- *     window_width & unsigned & 0 &   Width of the application window. $
- *     window_height & unsigned & 0 &  Height of the application window. $
+ * window_width & unsigned & 0 &   Width of the application window. $
+ * window_height & unsigned & 0 &  Height of the application window. $
  *
  *
- *     automatic_placement & bool & true &
- *                                   Automatically calculate the best size for
- *                                   the window and place it. If automatically
- *                                   placed ''vertical_placement'' and
- *                                   ''horizontal_placement'' can be used to
- *                                   modify the final placement. If not
- *                                   automatically placed the ''width'' and
- *                                   ''height'' are mandatory. $
+ * automatic_placement & bool & true &
+ *     Automatically calculate the best size for the window and place it. If
+ *     automatically placed ''vertical_placement'' and ''horizontal_placement''
+ *     can be used to modify the final placement. If not automatically placed
+ *     the ''width'' and ''height'' are mandatory. $
  *
- *     x & f_unsigned & 0 &            X coordinate of the window to show. $
- *     y & f_unsigned & 0 &            Y coordinate of the window to show. $
- *     width & f_unsigned & 0 &        Width of the window to show. $
- *     height & f_unsigned & 0 &       Height of the window to show. $
  *
- *     vertical_placement & v_align & "" &
- *                                   The vertical placement of the window. $
- *     horizontal_placement & h_align & "" &
- *                                   The horizontal placement of the window. $
+ * x & f_unsigned & 0 &            X coordinate of the window to show. $
+ * y & f_unsigned & 0 &            Y coordinate of the window to show. $
+ * width & f_unsigned & 0 &        Width of the window to show. $
+ * height & f_unsigned & 0 &       Height of the window to show. $
  *
- *     maximum_width & unsigned & 0 &  The maximum width of the window (only
- *                                   used for automatic placement). $
- *     maximum_height & unsigned & 0 & The maximum height of the window (only
- *                                   used for automatic placement). $
  *
- *     click_dismiss & bool & false &  Does the window need click dismiss
- *                                   behaviour? Click dismiss behaviour means
- *                                   that any mouse click will close the
- *                                   dialog. Note certain widgets will
- *                                   automatically disable this behaviour since
- *                                   they need to process the clicks as well,
- *                                   for example buttons do need a click and a
- *                                   misclick on button shouldn't close the
- *                                   dialog. NOTE with some widgets this
- *                                   behaviour depends on their contents (like
- *                                   scrolling labels) so the behaviour might
- *                                   get changed depending on the data in the
- *                                   dialog. NOTE the default behaviour might
- *                                   be changed since it will be disabled when
- *                                   can't be used due to widgets which use the
- *                                   mouse, including buttons, so it might be
- *                                   wise to set the behaviour explicitly when
- *                                   not wanted and no mouse using widgets are
- *                                   available. This means enter, escape or an
- *                                   external source needs to be used to close
- *                                   the dialog (which is valid). $
+ * vertical_placement & v_align & "" &
+ *     The vertical placement of the window. $
  *
- *     definition & string & "default" &
- *                                   Definition of the window which we want to
- *                                   show. $
+ * horizontal_placement & h_align & "" &
+ *     The horizontal placement of the window. $
  *
- *     linked_group & sections & [] &  A group of linked widget sections. $
  *
- *     tooltip & section & &         Information regarding the tooltip for this
- *                                   window. $
- *     helptip & section & &         Information regarding the helptip for this
- *                                   window. $
+ * maximum_width & unsigned & 0 &
+ *     The maximum width of the window (only used for automatic placement). $
  *
- *     grid & grid & &                  The grid with the widgets to show. $
+ * maximum_height & unsigned & 0 &
+ *     The maximum height of the window (only used for automatic placement). $
+ *
+ *
+ * click_dismiss & bool & false &
+ *     Does the window need click dismiss behaviour? Click dismiss behaviour
+ *     means that any mouse click will close the dialog. Note certain widgets
+ *     will automatically disable this behaviour since they need to process the
+ *     clicks as well, for example buttons do need a click and a misclick on
+ *     button shouldn't close the dialog. NOTE with some widgets this behaviour
+ *     depends on their contents (like scrolling labels) so the behaviour might
+ *     get changed depending on the data in the dialog. NOTE the default
+ *     behaviour might be changed since it will be disabled when can't be used
+ *     due to widgets which use the mouse, including buttons, so it might be
+ *     wise to set the behaviour explicitly when not wanted and no mouse using
+ *     widgets are available. This means enter, escape or an external source
+ *     needs to be used to close the dialog (which is valid). $
+ *
+ *
+ * definition & string & "default" &
+ *     Definition of the window which we want to show. $
+ *
+ *
+ * linked_group & sections & [] &  A group of linked widget sections. $
+ *
+ *
+ * tooltip & section & &
+ *     Information regarding the tooltip for this window. $
+ *
+ * helptip & section & &
+ *     Information regarding the helptip for this window. $
+ *
+ *
+ * grid & grid & &                 The grid with the widgets to show. $
  * @end{table}
  *
  * A linked_group section has the following fields:
