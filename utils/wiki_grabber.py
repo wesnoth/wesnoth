@@ -219,10 +219,13 @@ if __name__ == "__main__":
     def create_variable_types_table(data):
         """Creates a table for the variable types."""
 
-        #matches a line like
-        # int &                            Signed number (whole
-        # numbers). $
-        regex = re.compile("([A-Za-z]\w*) +& +(.*) +\$")
+        regex  = re_record_start
+        regex += re_variable           # 0 variable type
+        regex += re_field_separator
+        regex += re_string             # 1 description
+        regex += re_record_end
+
+        regex = re.compile(regex, re.DOTALL | re.MULTILINE)
         res = regex.findall(data)
 
         if is_empty(res, data):
