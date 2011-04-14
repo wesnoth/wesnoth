@@ -546,7 +546,7 @@ namespace {
 /** Gets a set of sides from side= attribute in a given config node.
     Promotes consistent behaviour and returns always non-empty set with valid teams.
     Default side, when in doubt is currently side 1. */
-std::set<int> get_sides_set(const vconfig& cfg)
+static std::set<int> get_sides_set(const vconfig& cfg)
 {
 	std::set<int> result;
 	const config::attribute_value sides = cfg["side"];
