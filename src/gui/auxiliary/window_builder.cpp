@@ -294,7 +294,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *
  *     maximum_width & unsigned & 0 &  The maximum width of the window (only
  *                                   used for automatic placement). $
- *     maximum_height & unsigned & 0 & The maximum height of the window (only
+ *     maximum_height & unsigned & 0 & The maximum height of the window (only
  *                                   used for automatic placement). $
  *
  *     click_dismiss & bool & false &  Does the window need click dismiss

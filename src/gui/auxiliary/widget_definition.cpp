@@ -66,7 +66,7 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
  *     window_height & unsigned & 0 &
  *                                     Height of the application window. $
  *     min_width & unsigned & 0 &      The minimum width of the widget. $
- *     min_height & unsigned & 0 &     The minimum height of the widget. $
+ *     min_height & unsigned & 0 &     The minimum height of the widget. $
  *
  *     default_width & unsigned & 0 &  The default width of the widget. $
  *     default_height & unsigned & 0 & The default height of the widget. $
