@@ -36,7 +36,8 @@ static lg::log_domain log_engine_sf("engine/side_filter");
 #pragma warning(disable:4413)
 side_filter::side_filter():
 	cfg_(vconfig::unconstructed_vconfig()),
-	flat_()
+	flat_(),
+	side_string_()
 {
 	assert(false);
 }
@@ -46,17 +47,60 @@ side_filter::side_filter():
 
 side_filter::side_filter(const vconfig& cfg, bool flat_tod) :
 	cfg_(cfg),
-	flat_(flat_tod)
+	flat_(flat_tod),
+	side_string_()
 {
+}
+
+side_filter::side_filter(const vconfig &cfg, const std::string &side_string, bool flat_tod)
+	: cfg_(cfg), flat_(flat_tod), side_string_(side_string)
+{
+}
+
+
+side_filter::side_filter(const std::string &side_string, bool flat_tod)
+	: cfg_(vconfig::empty_vconfig()), flat_(flat_tod), side_string_(side_string)
+{
+}
+
+std::set<int> side_filter::get_teams() const
+{
+	//@todo: replace with better implementation
+	std::set<int> result;
+	foreach (const team &t, *resources::teams) {
+		if (match(t)) {
+			result.insert(t.side());
+		}
+	}
+	return result;
+}
+
+static bool check_side_number(const team &t, const std::string &str)
+{
+		std::vector<std::string> list = utils::split(str);
+		std::string side_number = str_cast(t.side());
+		if ((std::find(list.begin(),list.end(),side_number)==list.end())
+		    && (std::find(list.begin(),list.end(),"all")==list.end()))
+		{
+			return false;
+		}
+		return true;
 }
 
 bool side_filter::match_internal(const team &t) const
 {
 	if (cfg_.has_attribute("side_in")) {
-		std::vector<std::string> list = utils::split(cfg_["side_in"]);
-		std::string side_number = str_cast(t.side());
-		if (std::find(list.begin(),list.end(),side_number)==list.end())
-		{
+		if (!check_side_number(t,cfg_["side_in"])) {
+			return false;
+		}
+	}
+	if (cfg_.has_attribute("side")) {
+		if (!check_side_number(t,cfg_["side"])) {
+			return false;
+		}
+	}
+	if (!side_string_.empty()) {
+		if (!check_side_number(t,side_string_)) {
 			return false;
 		}
 	}

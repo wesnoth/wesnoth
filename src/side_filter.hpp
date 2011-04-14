@@ -36,11 +36,14 @@ public:
 	side_filter();
 #endif
 
+	side_filter(const vconfig &cfg, const std::string &side_string, bool flat_tod = false);
+	side_filter(const std::string &side_string, bool flat_tod = false);
 	side_filter(const vconfig &cfg, bool flat_tod = false);
 
 	//match: returns true if and only if the given team matches this filter
 	bool match(const team& t) const;
 	bool match(const int side) const;
+	std::set<int> get_teams() const;
 
 private:
 	side_filter(const side_filter &other);
@@ -51,6 +54,8 @@ private:
 	const vconfig cfg_; //config contains WML for a Standard Side Filter
 
 	bool flat_;
+	std::string side_string_;
+
 };
 
 #endif

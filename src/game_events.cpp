@@ -42,6 +42,7 @@
 #include "reports.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"
+#include "side_filter.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "terrain_filter.hpp"
@@ -542,43 +543,52 @@ namespace {
 
 } // end anonymous namespace (4)
 
-static void toggle_shroud(const bool remove, const vconfig& cfg)
+/** Gets a set of sides from side= attribute in a given config node.
+    Promotes consistent behaviour and returns always non-empty set with valid teams.
+    Default side, when in doubt is currently side 1. */
+std::set<int> get_sides_set(const vconfig& cfg)
 {
-	std::string side_for_raw = cfg["side"];
+	std::set<int> result;
+	const config::attribute_value sides = cfg["side"];
+	const vconfig &ssf = cfg.child("filter_side");
 
-	// If they didn't define any sides fall back to the old behaviour of
-	// selecting side 1.
-	if (side_for_raw.empty()) {
-		side_for_raw = "1";
+	if (!ssf.null()) {
+		side_filter filter(ssf,sides.str());
+		return filter.get_teams();
 	}
 
-	//iterate through the list
-	std::vector<std::string> side_for =
-		utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-	std::vector<std::string>::iterator itSide;
-	size_t side;
-	for (itSide = side_for.begin(); itSide != side_for.end(); ++itSide)
-	{
-		side = lexical_cast_default<size_t>(*itSide);
-		size_t index = side-1;
-		if (index < resources::teams->size())
-		{
-			team &t = (*resources::teams)[index];
-			std::set<map_location> locs;
-			terrain_filter filter(cfg, *resources::units);
-			filter.restrict_size(game_config::max_loop);
-			filter.get_locations(locs, true);
+	if (sides.blank()) {
+		put_wml_message("error","empty side= and no [filter_side] is deprecated");
+		result.insert(1); // we make sure the set is not empty and the current default is maintained
+		return result;
+	}
+	side_filter filter(sides.str());
+	return filter.get_teams();
+}
 
-			foreach (map_location const &loc, locs)
-			{
-				if (remove) {
-					t.clear_shroud(loc);
-				} else {
-					t.place_shroud(loc);
-				}
+static void toggle_shroud(const bool remove, const vconfig& cfg)
+{
+	std::set<int> sides = get_sides_set(cfg);
+	size_t index;
+
+	foreach (const int &side_num, sides)
+	{
+		index = side_num - 1;
+		team &t = (*resources::teams)[index];
+		std::set<map_location> locs;
+		terrain_filter filter(cfg, *resources::units);
+		filter.restrict_size(game_config::max_loop);
+		filter.get_locations(locs, true);
+
+		foreach (map_location const &loc, locs)
+		{
+			if (remove) {
+				t.clear_shroud(loc);
+			} else {
+				t.place_shroud(loc);
 			}
 		}
- 	}
+	}
 
 	resources::screen->labels().recalculate_shroud();
 	resources::screen->recalculate_minimap();
@@ -674,27 +684,16 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 
 WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 {
-	const config::attribute_value sides = cfg["side"];
-	const std::string& sides_string = sides;
+	std::set<int> sides = get_sides_set(cfg);
 
-	if (sides.blank() || (std::find(sides_string.begin(), sides_string.end(), ',') == sides_string.end())) {
-		//no side= given or not a comma-separated list
-		const unsigned index = sides.to_int(1) - 1;
-		if (index >= resources::teams->size()) return;
-		foreach (const std::string &type, utils::split(cfg["type"])) {
+	foreach(const int &side_num, sides)
+	{
+		const std::vector<std::string> types = utils::split(cfg["type"]);
+		foreach(const std::string &type, types)
+		{
+			const unsigned index = side_num - 1;
 			(*resources::teams)[index].add_recruit(type);
 			preferences::encountered_units().insert(type);
-		}
-	}
-	else {
-		const std::vector<std::string> types = utils::split(cfg["type"]);
-		foreach (const std::string& side, utils::split(sides_string)) {
-			const unsigned index = lexical_cast_default<int, const std::string&>(side, 1) - 1;
-			if (index >= resources::teams->size()) continue;
-			foreach (const std::string& type, types) {
-				(*resources::teams)[index].add_recruit(type);
-				preferences::encountered_units().insert(type);
-			}
 		}
 	}
 }
@@ -785,11 +784,11 @@ WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 {
-	int side_num = cfg["side"].to_int(1);
-	if (side_num==0) {
-		return;
+	std::set<int> sides = get_sides_set(cfg);
+	foreach (const int &side_num, sides)
+	{
+		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
 	}
-	ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
 }
 
 WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
@@ -810,11 +809,12 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	 */
 	std::string switch_ai = cfg["switch_ai"];
 
-	int side_num = cfg["side"].to_int(1);
-	const size_t team_index = side_num-1;
+	std::set<int> sides = get_sides_set(cfg);
+	size_t team_index;
 
-	if (team_index < teams.size())
+	foreach (const int &side_num, sides)
 	{
+		team_index = side_num - 1;
 		LOG_NG << "modifying side: " << side_num << "\n";
 		if(!team_name.empty()) {
 			LOG_NG << "change side's team to team_name '" << team_name << "'\n";
