@@ -195,36 +195,38 @@ const std::string& tgui_definition::read(const config& cfg)
  *
  * <span id="widget_list"></span>List of available widgets:
  * @begin{table}{widget_overview}
- *     Button &                       @macro = button_description $
- *     Image &                        @macro = image_description $
- *     Horizontal_listbox &           @macro = horizontal_listbox_description $
- *     Horizontal_scrollbar &         @macro = horizontal_scrollbar_description $
- *     Label &                        @macro = label_description $
- *     Listbox &                      @macro = listbox_description $
- *     Minimap &                      @macro = minimap_description $
- *     Multi_page &                   @macro = multi_page_description $
- *     Panel &                        @macro = panel_description $
- *     Repeating_button &             @macro = repeating_button_description $
- *     Scroll_label &                 @macro = scroll_label_description $
- *     Slider &                       @macro = slider_description $
- *     Spacer &                       @macro = spacer_description $
- *     Stacked_widget &               A stacked widget is a control several
- *                                   widgets can be stacked on top of each
- *                                   other in the same space. This is mainly
- *                                   intended for over- and underlays. (The
- *                                   widget is still experimental.) $
- *     Text_box &                     A single line text box. $
- *     Tree_view &                    @macro = tree_view_description $
- *     Toggle_button &                A kind of button with two 'states' normal
- *                                   and selected. This is a more generic widget
- *                                   which is used for eg checkboxes and
- *                                   radioboxes. $
- *     Toggle_panel &                 Like a toggle button but then as panel so
- *                                   can hold multiple items in a grid. $
- *     Tooltip &                      A small tooltip with help. $
- *     Tree_view &                    A tree view widget. $
- *     Vertical_scrollbar &           A vertical scrollbar. $
- *     Window &                       A window. $
+ * Button &                       @macro = button_description $
+ * Image &                        @macro = image_description $
+ * Horizontal_listbox &           @macro = horizontal_listbox_description $
+ * Horizontal_scrollbar &         @macro = horizontal_scrollbar_description $
+ * Label &                        @macro = label_description $
+ * Listbox &                      @macro = listbox_description $
+ * Minimap &                      @macro = minimap_description $
+ * Multi_page &                   @macro = multi_page_description $
+ * Panel &                        @macro = panel_description $
+ * Repeating_button &             @macro = repeating_button_description $
+ * Scroll_label &                 @macro = scroll_label_description $
+ * Slider &                       @macro = slider_description $
+ * Spacer &                       @macro = spacer_description $
+ * Stacked_widget &
+ *     A stacked widget is a control several widgets can be stacked on top of
+ *     each other in the same space. This is mainly intended for over- and
+ *     underlays. (The widget is still experimental.) $
+ *
+ * Text_box &                     A single line text box. $
+ * Tree_view &                    @macro = tree_view_description $
+ * Toggle_button &
+ *     A kind of button with two 'states' normal and selected. This is a more
+ *     generic widget which is used for eg checkboxes and radioboxes. $
+ *
+ * Toggle_panel &
+ *     Like a toggle button but then as panel so can hold multiple items in a
+ *     grid. $
+ *
+ * Tooltip &                      A small tooltip with help. $
+ * Tree_view &                    A tree view widget. $
+ * Vertical_scrollbar &           A vertical scrollbar. $
+ * Window &                       A window. $
  * @end{table}
  *
  * <span id="window_list"></span>List of available windows:
