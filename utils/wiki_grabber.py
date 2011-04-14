@@ -310,11 +310,36 @@ if __name__ == "__main__":
         result += "|}"
 
         return result
+    
+    def validate_table(table):
+        """Validates a table.
+
+        At the moments tests for whitespace around separators."""
+
+        # There is no escape yet, probably will be the @ character
+        regex  = '[^\\s]&[^\\s]'
+        invalid_field_separators = re.compile(regex, re.VERBOSE).findall(table)
+
+        # There is no escape yet, probably will be the @ character
+        regex  = '[^\\s]\$[^$]'
+        invalid_record_terminator = re.compile(regex, re.VERBOSE).findall(table)
+
+        if len(invalid_field_separators) or len(invalid_record_terminator):
+            result = "Found %i invalid field separators " % (len(invalid_field_separators))
+            result += "and %i invalid record separators " % (len(invalid_record_terminator))
+            result += "in:\n%s\n\n" % (table)
+            return result
+        else:
+            return None 
 
     def create_table(table):
         """Wrapper for creating tables."""
 
         type = table.group(1)
+
+        errors = validate_table(table.group(2))
+        if errors:
+            sys.stderr.write(errors)
 
         functions = {
         "config": create_config_table,
