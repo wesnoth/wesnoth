@@ -196,10 +196,15 @@ if __name__ == "__main__":
         A formula table is a table with info about which function parameters
         are available for processing in WML formulas.
         """
+        regex  = re_record_start
+        regex += re_variable           # 0 variable id
+        regex += re_field_separator
+        regex += re_variable           # 1 variable type
+        regex += re_field_separator
+        regex += re_string             # 2 description
+        regex += re_record_end
 
-        #matches a line like
-        #width & unsigned &                 The width of the canvas. $
-        regex = re.compile("([A-Za-z]\w*) +& +([A-Za-z]\w*) +& +(.*) +\$")
+        regex = re.compile(regex, re.DOTALL | re.MULTILINE)
         res = regex.findall(data)
 
         if is_empty(res, data):
