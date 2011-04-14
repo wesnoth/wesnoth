@@ -74,7 +74,13 @@ if __name__ == "__main__":
     current_block = ""
 
     re_record_start = '^\s*'
-    re_field_separator = '\s+&\s+' # Todo make & & work as well
+    # There must be whitespace between the field seperator (&).
+    # However if there is an empty field eg '...foo & & bar...'
+    # The first field separator eats the whitespace before the second
+    # which would \s+ cause to fail.
+    # The solution is to make the whitespace optional and assert the
+    # character before the ampersand is whitespace.
+    re_field_separator = '\s*(?:(?<=\s))&\s+'
     re_record_end = '\s+\$$'
 
     re_variable = '([a-zA-Z]\w*)'
@@ -284,16 +290,21 @@ if __name__ == "__main__":
     def create_dialog_widgets_table(data):
         """Creates a table for the widgets in a dialog."""
 
-        regex  = """
-        \ *(-*)                                 # 0 indention marker
-        ((?:[a-z]|[A-Z]|[0-9]|_)+\ |)\ *&       # 1 optional id may start with an underscore
-        \ *(.*)\ +&                             # 2 retval
-        \ *(.*?)\ +&                            # 3 type
-        \ *(m|o)\ +&                            # 4 mandatory flag
-        \ *(.*)\ +\$                            # 5 description
-        """
+        regex  = re_record_start
+        regex += '(-*)'                     # 0 indention markers
+        regex += '((?:[a-zA-Z_]?)\w*)'      # 1 optional id may start with an underscore
+        regex += re_field_separator
+        regex += '(.*?)'                    # 2 optional retval
+        regex += re_field_separator
+        regex += re_variable                # 3 type
+        regex += re_field_separator
+        regex += '([om])'                   # 4 mandatory flag
+        regex += re_field_separator
+        regex += re_string                  # 5 description
+        regex += re_record_end
 
-        res = re.compile(regex, re.VERBOSE).findall(data)
+        regex = re.compile(regex, re.DOTALL | re.MULTILINE)
+        res = regex.findall(data)
 
         if is_empty(res, data):
             return "Empty table."
