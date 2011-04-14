@@ -320,7 +320,7 @@ tline::tline(const config& cfg)
  *     color & color & "" &            The color of the line. $
  *     thickness & unsigned & 0 &      The thickness of the line if 0 nothing
  *                                     is drawn. $
- *     debug & string & "" &           Debug message to show upon creation$
+ *     debug & string & "" &           Debug message to show upon creation
  *                                     this message is not stored. $
  * @end{table}
  *
@@ -450,7 +450,7 @@ tline::tline(const config& cfg)
  *                                     replaced by Pango markup this field will
  *                                     change later on. Note widgets that allow
  *                                     marked up text can use markup to change
- *                                     the font style.$
+ *                                     the font style. $
  *
  *     v_align &                       Vertical alignment; how an item is
  *                                     aligned vertically in the available
@@ -470,7 +470,7 @@ tline::tline(const config& cfg)
  *                                     @* center centered $
  *
  *     f_h_align &                     A horizontal alignment or a formula
- *                                     returning a horizontal alignment.$
+ *                                     returning a horizontal alignment. $
  *
  *     border &                        Comma separated list of borders to use.
  *                                     Possible values:
@@ -796,7 +796,7 @@ tcircle::tcircle(const config& cfg)
  * radius & f_unsigned & 0 &       The radius of the circle if 0 nothing is
  *                                 drawn. $
  * color & color & "" &            The color of the circle. $
- * debug & string & "" &           Debug message to show upon creation$ this
+ * debug & string & "" &           Debug message to show upon creation this
  *                                 message is not stored. $
  * @end{table}
  *

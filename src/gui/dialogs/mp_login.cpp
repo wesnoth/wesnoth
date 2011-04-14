@@ -45,7 +45,7 @@ namespace gui2 {
  *
  * remember_password & & toggle_button & o &
  *         A toggle button to offer to remember the password in the
- *         preferences.$
+ *         preferences. $
  *
  * password_reminder & & button & o &
  *         Request a password reminder. $
