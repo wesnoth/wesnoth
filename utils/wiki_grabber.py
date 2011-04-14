@@ -73,6 +73,13 @@ if __name__ == "__main__":
     # current block being processed
     current_block = ""
 
+    re_record_start = '^\s*'
+    re_field_separator = '\s+&\s+' # Todo make & & work as well
+    re_record_end = '\s+\$$'
+
+    re_variable = '([a-zA-Z]\w*)'
+    re_string = '(.*?)'
+
     def is_empty(res, data):
         """
         This checks whether or not a table is empty and writes to stderr if it is.
@@ -135,8 +142,12 @@ if __name__ == "__main__":
     def format(data):
         """Formats the data for the wiki.
 
-        @* -> \n* needed in a list.
-        @- -> \n needed to add text after a list."""
+        Replaces the following:
+        -  An end of line and its surrounding whitespace to a single space.
+        - @* -> \n* needed in a list.
+        - @- -> \n needed to add text after a list.
+        """
+        data = re.sub(r'\s*\n\s*', ' ', data)
         data = re.sub(r'@\*', "\n*", data)
         data = re.sub(r'@\-', "\n", data)
         return data
@@ -223,9 +234,13 @@ if __name__ == "__main__":
 
     def create_widget_overview_table(data):
         """Creates a table for all available widgets."""
-        #matches a line like
-        # Button &                       A push button. $
-        regex = re.compile("([A-Za-z]\w*) +& +(.*) +\$")
+  
+        regex  = re_record_start
+        regex += re_variable           # widget type
+        regex += re_field_separator
+        regex += re_string             # description
+        regex += re_record_end
+        regex = re.compile(regex, re.DOTALL | re.MULTILINE)
         res = regex.findall(data)
 
         if is_empty(res, data):
