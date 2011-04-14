@@ -84,7 +84,7 @@ if __name__ == "__main__":
     re_record_end = '\s+\$$'
 
     re_variable = '([a-zA-Z]\w*)'
-    re_string = '(.*?)'
+    re_string = '(.+?)'
 
     def is_empty(res, data):
         """
