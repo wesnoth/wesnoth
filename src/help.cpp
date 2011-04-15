@@ -1548,7 +1548,7 @@ public:
 			else
 				color = "green";
 
-			std::string lang_weapon = gettext(dam_it->first.c_str());
+			std::string lang_weapon = string_table["type_" + dam_it->first];
 			push_tab_pair(row, lang_weapon);
 			std::stringstream str;
 			str << "<format>color=" << color << " text='"<< resi << "'</format>";
