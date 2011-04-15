@@ -585,7 +585,7 @@ set(libwesnoth-game_STAT_SRC
 	font.cpp
 	hotkeys.cpp
 	image.cpp
-	image_function.cpp
+	image_modifications.cpp
 	key.cpp
 	language.cpp
 	loadscreen.cpp

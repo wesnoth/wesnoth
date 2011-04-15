@@ -168,6 +168,8 @@ namespace image {
 	///using NULL will reset to default TC
 	void set_team_colors(const std::vector<std::string>* colors = NULL);
 
+	const std::vector<std::string>& get_team_colors();
+
 	///sets the pixel format used by the images. Is called every time the
 	///video mode changes. Invalidates all images.
 	void set_pixel_format(SDL_PixelFormat* format);
