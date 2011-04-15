@@ -12,6 +12,7 @@ import org.eclipse.jface.text.hyperlink.IHyperlinkDetector;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
+import org.eclipse.xtext.resource.containers.IAllContainersState;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategy;
@@ -44,6 +45,7 @@ import org.wesnoth.ui.syntax.WMLSemanticHighlightingCalculator;
 import org.wesnoth.ui.syntax.bracketmatching.WMLBracketMatching;
 
 import com.google.inject.Binder;
+import com.google.inject.Provider;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -151,5 +153,11 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	public Class<? extends DefaultFoldingRegionProvider> bindDefaultFoldingRegionProvider()
 	{
 		return WMLFoldingRegionProvider.class;
+	}
+
+	@Override
+	public Provider<IAllContainersState> provideIAllContainersState()
+	{
+	    return org.eclipse.xtext.ui.shared.Access.getWorkspaceProjectsState();
 	}
 }
