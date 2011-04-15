@@ -277,10 +277,9 @@ public class WorkspaceUtils
 
 			File tmpFile = new File(temporaryFolder_);
 
+            tmpFile.mkdirs();
 			if (!tmpFile.exists())
 				temporaryFolder_ = null;
-			else
-			    tmpFile.mkdirs();
 		}
 		return temporaryFolder_;
 	}

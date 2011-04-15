@@ -17,6 +17,8 @@ import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 import org.eclipse.core.runtime.IStatus;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.WorkspaceUtils;
@@ -63,8 +65,7 @@ public class Logger {
 			log(Messages.Logger_3);
 		} catch (IOException e)
 		{
-			GUIUtils.showErrorMessageBox(Messages.Logger_4 +
-					e.getMessage());
+		    JOptionPane.showMessageDialog(null, Messages.Logger_4 + e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -152,7 +153,6 @@ public class Logger {
 			}
 		}
 		System.out.println(message);
-		//Activator.getDefault().getLog().log(new Status(IStatus.INFO,"wesnoth_plugin",message));
 	}
 
 	/**
