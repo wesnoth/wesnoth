@@ -2588,22 +2588,22 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 	const t_string& mod_description = mod["description"];
 	if (!mod_description.empty()) {
 		description = mod_description + " ";
-	}
 
-	// Punctuation should be translatable: not all languages use latin punctuation.
-	// (However, there maybe is a better way to do it)
-	if(effects_description.empty() == false) {
-		for(std::vector<t_string>::const_iterator i = effects_description.begin();
-				i != effects_description.end(); ++i) {
-			description += *i;
-			if(i+1 != effects_description.end())
-				description += t_string(N_(" and "), "wesnoth");
+		// Punctuation should be translatable: not all languages use latin punctuation.
+		// (However, there maybe is a better way to do it)
+		if(effects_description.empty() == false) {
+			for(std::vector<t_string>::const_iterator i = effects_description.begin();
+					i != effects_description.end(); ++i) {
+				description += *i;
+				if(i+1 != effects_description.end())
+					description += t_string(N_(" and "), "wesnoth");
+			}
 		}
-	}
 
-	// store trait info
-	if(type == "trait") {
-		add_trait_description(mod, description);
+		// store trait info
+		if(type == "trait") {
+			add_trait_description(mod, description);
+		}
 	}
 
 	//NOTE: if not a trait, description is currently not used
