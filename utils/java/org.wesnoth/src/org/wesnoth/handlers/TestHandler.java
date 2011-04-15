@@ -21,6 +21,8 @@ public class TestHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
+
+
 //		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path("E:\\work\\java\\runtime-EclipseApplication\\A_Simple_Campaign\\scenarios\\atemplate.cfg"));
 //		try
 //		{
