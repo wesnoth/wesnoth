@@ -4,11 +4,11 @@ Version 1.9.5+svn:
      * Fixed time over event in the High Pass
        (http://forums.wesnoth.org/viewtopic.php?f=4&t=33435)
  * Language and i18n:
-   * Updated translations: British English, French, Galician, German, Greek,
-     Irish, Latin, Lithuanian, Japanese, Old English, Spanish
+   * Updated translations: British English, Dutch, French, Galician, German,
+     Greek, Irish, Latin, Lithuanian, Japanese, Old English, Spanish
  * User interface:
-   * Patch #2625: added a GUI interface to changing control in multiplayer games. The
-     command to access it is currently :give_control
+   * Patch #2625: added a GUI interface to changing control in multiplayer
+     games. The command to access it is currently :give_control
  * WML engine:
    * Patch #2610: changed default for turns in [scenario] tag to -1 (unlimited)
    * Introduced [recall]check_passability=yes|no key (default yes)
@@ -21,7 +21,8 @@ Version 1.9.5+svn:
    * Applied patch #2611: removed redundant own_side attribute
    * Applied patch #2600: improved MP creation screen logging
    * Added: New gui2 iterator framework.
-   * Patch #2624: Solved enemy leaders never appearing on status table on foggy/shrouded maps, even when visible.
+   * Patch #2624: Solved enemy leaders never appearing on status table on
+     foggy/shrouded maps, even when visible.
 
 Version 1.9.5:
  * Graphics:
