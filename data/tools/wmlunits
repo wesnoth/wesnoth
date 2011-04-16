@@ -557,7 +557,7 @@ class HTMLOutput:
                 mty = None
                 if mtx:
                     mty = mtx[0].get_text_val(key)
-            x = unit.get_all(att = what)
+            x = unit.get_all(tag = what)
             y = None
             if x:
                 y = x[0].get_text_val(key,
