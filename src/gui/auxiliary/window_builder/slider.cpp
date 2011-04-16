@@ -119,7 +119,7 @@ twidget* tbuilder_slider::build() const
  *                                    (eg unlimited)). When this key has a
  *                                    value that value will be shown if the
  *                                    maximum is selected. $
- *     value_labels & [] &              It might be the labels need to be shown
+ *     value_labels & [] &              It might be the labels need to be shown
  *                                    are not a linear number sequence eg
  *                                    (0.5, 1, 2, 4) in that case for all
  *                                    items this section can be filled with

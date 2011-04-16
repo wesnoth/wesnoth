@@ -141,7 +141,7 @@ twidget* tbuilder_horizontal_listbox::build() const
  *                                     Determines whether or not to show the
  *                                     scrollbar. $
  *
- *     list_definition & section & &   This defines how a listbox item
+ *     list_definition & section & &   This defines how a listbox item
  *                                     looks. It must contain the grid
  *                                     definition for 1 column of the list. $
  *

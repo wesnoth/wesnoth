@@ -106,7 +106,7 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     title label when the label is used as
  *                                     title. $
  *
- *     linked_group & string & "" &    The linked group the control belongs
+ *     linked_group & string & "" &    The linked group the control belongs
  *                                     to. $
  *
  *     label & tstring & "" &          Most widgets have some text associated
