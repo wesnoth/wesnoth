@@ -348,7 +348,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     has_helptip_message & tstring & &
  *                                     The string used to append the tooltip
  *                                     if there is also a helptip. The WML
- *                                     variable $hotkey can be used to get show
+ *                                     variable @$hotkey can be used to get show
  *                                     the name of the hotkey for the help. $
  * @end{table}
  */

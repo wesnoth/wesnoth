@@ -150,10 +150,14 @@ if __name__ == "__main__":
 
         Replaces the following:
         -  An end of line and its surrounding whitespace to a single space.
+        - @$ -> $
+        - @& -> &
         - @* -> \n* needed in a list.
         - @- -> \n needed to add text after a list.
         """
         data = re.sub(r'\s*\n\s*', ' ', data)
+        data = re.sub(r'@\$', '$', data)
+        data = re.sub(r'@&', '&', data)
         data = re.sub(r'@\*', "\n*", data)
         data = re.sub(r'@\-', "\n", data)
         return data
@@ -368,13 +372,16 @@ if __name__ == "__main__":
 
         At the moments tests for whitespace around separators."""
 
-        # There is no escape yet, probably will be the @ character
-        regex  = '[^\\s]&[^\\s]'
-        invalid_field_separators = re.compile(regex, re.VERBOSE).findall(table)
+        regex = '((?<![@\s])&)|([^@]&(?!\s))'
+        regex = re.compile(regex)
+        invalid_field_separators = regex.findall(table)
 
-        # There is no escape yet, probably will be the @ character
-        regex  = '[^\\s]\$[^$]'
-        invalid_record_terminator = re.compile(regex, re.VERBOSE).findall(table)
+        # Not the last test should actually be (\$(?![\s\Z]) but that fails as
+        # work-around add a space to the input so when it would match the end
+        # of the string it now matches the added space.
+        regex = '((?<![@\s])\$)|([^@]\$(?!\s))'
+        regex = re.compile(regex)
+        invalid_record_terminator = regex.findall(table + ' ')
 
         if len(invalid_field_separators) or len(invalid_record_terminator):
             result = "Found %i invalid field separators " % (len(invalid_field_separators))
