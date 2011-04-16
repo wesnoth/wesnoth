@@ -918,7 +918,7 @@ void game_display::invalidate_animations()
 #ifdef _OPENMP
 #pragma omp parallel for reduction(|:new_inval) shared(unit_list) schedule(guided)
 #endif //_OPENMP
-		for(unsigned int i=0; i < unit_list.size(); i++) {
+		for(int i=0; i < (int)unit_list.size(); i++) {
 			new_inval |=  unit_list[i]->invalidate(unit_list[i]->get_location());
 		}
 	}while(new_inval);

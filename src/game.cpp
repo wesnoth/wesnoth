@@ -80,7 +80,8 @@
 #include "version.hpp"
 
 //#ifdef _WIN32
-//#include "locale.h"
+//#include <process.h>
+//#include <env.h>
 //#endif
 
 #include "editor/editor_main.hpp"
@@ -2390,6 +2391,24 @@ void init_custom_malloc();
 
 int main(int argc, char** argv)
 {
+#if defined(_OPENMP) && !defined(_WIN32)
+	// Wesnoth is a special case for OMP
+	// OMP wait strategy is to have threads busy-loop for 100ms
+	// if there is nothing to do, they then go to sleep.
+	// this avoids the scheduler putting the thread to sleep when work
+	// is about to be available
+	//
+	// However Wesnoth has a lot of very small jobs that need to be done
+	// at each redraw => 50fps every 2ms. 
+	// All the threads are thus busy-waiting all the time, hogging the CPU
+	// To avoid that problem, we need to set the OMP_WAIT_POLICY env var
+	// but that var is read by OMP at library loading time (before main)
+	// thus the relaunching of ourselves after setting the ariable
+	if (!getenv("OMP_WAIT_POLICY")) {
+		setenv("OMP_WAIT_POLICY", "PASSIVE", 1);
+		execv(argv[0], argv);
+	}
+#endif
 #ifndef DISABLE_POOL_ALLOC
 	init_custom_malloc();
 #endif

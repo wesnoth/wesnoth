@@ -15,6 +15,10 @@ CHANGES
 =======
 
 [section="section title"]text[/section]
+Wesnoth now has experimental support for OpenMP tu better use multiple cores. This needs to be enabled at compile time.
+
+OpenMP has been tested under linux and windows but needs some testing under MacO, which is why it is currently optional.
+In particular we are interested in abnormal CPU usage when openMP is enabled. Please report to Boucman for debug instructions
 
 [section="section title 2"]text 2[/section]
 
