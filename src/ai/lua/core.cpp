@@ -108,26 +108,27 @@ static bool to_map_location(lua_State *L, int &index, map_location &res)
 static int cfun_ai_get_suitable_keep(lua_State *L)
 {
 	int index = 1;
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, index, "location (unit/integers)");
-	}
 
 	ai::readonly_context &context = get_readonly_context(L);
 	unit const *leader;
 	if (lua_isuserdata(L, index))
 	{
 		leader = luaW_tounit(L, index);
-		if (!leader) goto error_call_destructors;
-	}
-	else goto error_call_destructors;
+		if (!leader) return luaL_argerror(L, 1, "unknown unit");
+	} 
+	else return luaL_typerror(L, 1, "unit");
 	const map_location loc = leader->get_location();
 	const pathfind::paths leader_paths(*resources::game_map, *resources::units, loc,
 		*resources::teams, false, true, context.current_team());
 	const map_location &res = context.suitable_keep(loc,leader_paths);
-	lua_pushnumber(L, res.x+1);
-	lua_pushnumber(L, res.y+1);
-	return 2;
+	if (!res.valid()) {
+		return 0;
+	}
+	else {
+		lua_pushnumber(L, res.x+1);
+		lua_pushnumber(L, res.y+1);
+		return 2;
+	}
 }
 
 static int ai_execute_move(lua_State *L, bool remove_movement)
