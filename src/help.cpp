@@ -1785,10 +1785,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	for (std::set<std::string, string_less>::iterator u = race_units.begin(); u != race_units.end(); ++u) {
 		text << (*u) << "\n";
 	}
-	text << "\n\n" << _("<header>text='Race specific topics'</header>") << "\n";
-	for (std::set<std::string, string_less>::iterator u = race_topics.begin(); u != race_topics.end(); ++u) {
-		text << (*u) << "\n";
-	}
+
 	topics.push_back(topic(race_name, race_id, text.str()) );
 
 	if (sort_generated)
