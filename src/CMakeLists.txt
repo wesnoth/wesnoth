@@ -795,6 +795,7 @@ if(ENABLE_TESTS)
 		tests/test_config_cache.cpp
 		tests/test_formula_ai.cpp
 		tests/test_formula_function.cpp
+		tests/test_image_modifications.cpp
 		tests/test_lexical_cast.cpp
 		tests/test_network_worker.cpp
 		tests/test_team.cpp

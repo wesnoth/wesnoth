@@ -298,7 +298,7 @@ int bl_modification::get_depth() const
 surface brighten_modification::operator()(const surface &src) const
 {
 	surface ret = make_neutral_surface(src);
-	surface tod_bright(image::get_image(game_config::images:: tod_bright));
+	surface tod_bright(image::get_image(game_config::images::tod_bright));
 	if (tod_bright)
 		blit_surface(tod_bright, NULL, ret, NULL);
 	return ret;
@@ -451,7 +451,7 @@ REGISTER_MOD_PARSER(RC, args)
 		}
 	}
 
-		return NULL;
+	return NULL;
 }
 
 // Palette switch
@@ -538,7 +538,7 @@ REGISTER_MOD_PARSER(CROP, args)
 	std::vector<std::string> const& slice_params = utils::split(args, ',', utils::STRIP_SPACES);
 	const size_t s = slice_params.size();
 
-	if(s == 0) {
+	if(s == 0 || (s == 1 && slice_params[0].empty())) {
 		ERR_DP << "no arguments passed to the ~CROP() function\n";
 		return NULL;
 	}
@@ -583,7 +583,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 	std::vector<std::string> param = utils::parenthetical_split(args, ',');
 	const size_t s = param.size();
 
-	if(s == 0){
+	if(s == 0 || (s == 1 && param[0].empty())){
 		ERR_DP << "no arguments passed to the ~BLIT() function\n";
 		return NULL;
 	}
@@ -611,7 +611,7 @@ REGISTER_MOD_PARSER(MASK, args)
 	std::vector<std::string> param = utils::parenthetical_split(args, ',');
 	const size_t s = param.size();
 
-	if(s == 0){
+	if(s == 0 || (s == 1 && param[0].empty())){
 		ERR_DP << "no arguments passed to the ~MASK() function\n";
 		return NULL;
 	}
@@ -652,7 +652,7 @@ REGISTER_MOD_PARSER(SCALE, args)
 	std::vector<std::string> const& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
 	const size_t s = scale_params.size();
 
-	if(s == 0) {
+	if(s == 0 || (s == 1 && scale_params[0].empty())) {
 		ERR_DP << "no arguments passed to the ~SCALE() function\n";
 		return NULL;
 	}
