@@ -490,8 +490,9 @@ surface locator::load_image_sub_file() const
 
 	modification_queue mods = modification::decode(val_.modifications_);
 
-	for(; !mods.empty(); mods.pop()) {
+	while(!mods.empty()) {
 		modification* mod = mods.top();
+		mods.pop();
 
 		surf = (*mod)(surf);
 		delete mod;
