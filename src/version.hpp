@@ -167,7 +167,7 @@ enum VERSION_COMP_OP {
 	OP_LESS,
 	OP_LESS_OR_EQUAL,
 	OP_GREATER,
-	OP_GREATER_OR_EQUAL,
+	OP_GREATER_OR_EQUAL
 };
 
 VERSION_COMP_OP parse_version_op(const std::string& op_str);
