@@ -6,7 +6,7 @@ REM ou = organizational unit
 REM o = organization
 REM c = Country
 SET PLUGIN_VERSION=1.0.2
-SET PLUGIN_WML_VERSIOn=1.1.2
+SET PLUGIN_WML_VERSION=1.0.2
 IF EXIST keystore (
 echo deleting previous keystore file
 DEL keystore
