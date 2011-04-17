@@ -923,14 +923,9 @@ private:
 
 		int d = decimal.as_decimal();
 
-		int f = d%1000;
-
-		if( f > 0 ) {
+		if( (d>=0) && (d%1000 != 0) ) {
 			d/=1000;
 			return variant( ++d );
-		} else if( f < 0 ) {
-			d/=1000;
-			return variant( --d );
 		} else {
 			d/=1000;
 			return variant( d );
@@ -975,9 +970,9 @@ private:
 
 		int d = decimal.as_decimal();
 
-		if( d%1000 != 0 ) {
+		if( (d<0) && (d%1000 != 0) ) {
 			d/=1000;
-			return variant( d );
+			return variant( --d );
 		} else {
 			d/=1000;
 			return variant( d );
