@@ -243,6 +243,12 @@ void playsingle_controller::whiteboard_bump_down_action()
 	whiteboard_manager_->contextual_bump_down_action();
 }
 
+void playsingle_controller::whiteboard_suppose_dead()
+{
+	wb::scoped_planned_unit_map spum;
+	whiteboard_manager_->save_suppose_dead(*menu_handler_.current_unit());
+}
+
 void playsingle_controller::report_victory(
 	std::ostringstream &report, int player_gold, int remaining_gold,
 	int finishing_bonus_per_turn, int turns_left, int finishing_bonus)
@@ -1040,6 +1046,13 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 		case hotkey::HOTKEY_WB_BUMP_UP_ACTION:
 		case hotkey::HOTKEY_WB_BUMP_DOWN_ACTION:
 			return resources::whiteboard->can_reorder_action();
+		case hotkey::HOTKEY_WB_SUPPOSE_DEAD:
+		{
+			if(!resources::whiteboard->is_active())
+				return false;
+			wb::scoped_planned_unit_map spum;
+			return menu_handler_.current_unit() != units_.end(); //implicit break;
+		}
 
 		default: return play_controller::can_execute_command(command, index);
 	}

@@ -118,6 +118,9 @@ public:
 	/// @return true if manager has saved a planned recall
 	bool save_recall(const unit& unit, int side_num, const map_location& recall_hex);
 
+	/// Creates a suppose-dead action for the current side
+	void save_suppose_dead(unit& curr_unit);
+
 	/** Executes first action in the queue for current side */
 	void contextual_execute();
 	/** Executes all actions in the queue in sequence */

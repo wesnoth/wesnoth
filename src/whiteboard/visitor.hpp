@@ -41,6 +41,7 @@ public:
 	virtual void visit_attack(attack_ptr attack) = 0;
 	virtual void visit_recruit(recruit_ptr recruit) = 0;
 	virtual void visit_recall(recall_ptr recall) = 0;
+	virtual void visit_suppose_dead(suppose_dead_ptr sup_d) = 0;
 
 protected:
 	virtual void visit_all_actions();

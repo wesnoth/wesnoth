@@ -113,6 +113,7 @@ const struct {
 	{ hotkey::HOTKEY_WB_DELETE_ACTION, "wbdeleteaction", N_("Delete planned action"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("Move action up queue"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("Move action down queue"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("Suppose dead"), false, hotkey::SCOPE_GAME },
 
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_CLOSE_MAP, "editor-close-map", N_("Close Map"), false, hotkey::SCOPE_EDITOR },
@@ -943,6 +944,9 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			 break;
 		 case HOTKEY_WB_BUMP_DOWN_ACTION:
 			 whiteboard_bump_down_action();
+			 break;
+		 case HOTKEY_WB_SUPPOSE_DEAD:
+			 whiteboard_suppose_dead();
 			 break;
 		 default:
 			 return false;

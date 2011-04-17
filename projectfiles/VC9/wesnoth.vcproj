@@ -5452,6 +5452,34 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath="..\..\src\whiteboard\suppose_dead.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Whiteboard\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Whiteboard\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug (fast)|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Whiteboard\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath="..\..\src\whiteboard\utility.cpp"
 					>
 				</File>
@@ -8260,6 +8288,10 @@
 				</File>
 				<File
 					RelativePath="..\..\src\whiteboard\side_actions.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\whiteboard\suppose_dead.hpp"
 					>
 				</File>
 				<File

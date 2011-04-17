@@ -65,6 +65,7 @@ public:
 	virtual void visit_attack(attack_ptr attack);
 	virtual void visit_recruit(recruit_ptr recruit);
 	virtual void visit_recall(recall_ptr recall);
+	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
 
 private:
 	void unhighlight();

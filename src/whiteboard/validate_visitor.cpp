@@ -24,6 +24,7 @@
 #include "recall.hpp"
 #include "recruit.hpp"
 #include "side_actions.hpp"
+#include "suppose_dead.hpp"
 
 #include "arrow.hpp"
 #include "foreach.hpp"
@@ -134,8 +135,7 @@ void validate_visitor::visit_move(move_ptr move)
 
 		if (move->valid_)
 		{
-			if ((!std::equal(new_route.steps.begin(), new_route.steps.end(), move->get_route().steps.begin()))
-				|| new_route.move_cost != move->get_route().move_cost)
+			if(new_route.steps!=move->get_route().steps || new_route.move_cost != move->get_route().move_cost)
 			{
 				//new valid path differs from the previous one, replace
 				move->set_route(new_route);
@@ -282,6 +282,50 @@ void validate_visitor::visit_recall(recall_ptr recall)
 	{
 		LOG_WB << "Invalid recall detected, adding to actions_to_erase_.\n";
 		actions_to_erase_.insert(recall);
+	}
+}
+
+void validate_visitor::visit_suppose_dead(suppose_dead_ptr sup_d)
+{
+	DBG_WB << "visiting suppose_dead on hex " << sup_d->loc_ << "\n";
+	//invalidate suppose-dead hex so number display is updated properly
+	resources::screen->invalidate(sup_d->loc_);
+
+	if(!sup_d->get_source_hex().valid())
+		sup_d->set_valid(false);
+
+	unit_map::const_iterator unit_it;
+	//Check that the unit still exists in the source hex
+	if(sup_d->valid_)
+	{
+		unit_it = resources::units->find(sup_d->get_source_hex());
+
+		if(unit_it == resources::units->end())
+		{
+			sup_d->set_valid(false);
+			sup_d->unit_ = NULL;
+		}
+	}
+
+	//check if the unit in the source hex has the same unit id as before,
+	//i.e. that it's the same unit
+	if(sup_d->valid_ && sup_d->unit_id_ != unit_it->id())
+	{
+		sup_d->set_valid(false);
+		sup_d->unit_ = NULL;
+	}
+
+	if(sup_d->valid_)
+	{
+		// Now call the superclass to apply the result of this move to the unit map,
+		// so that further pathfinding takes it into account.
+		mapbuilder_visitor::visit_suppose_dead(sup_d);
+	}
+	else
+		//FIXME: temporary until invalid arrow styles are in: delete invalid moves
+	{
+		LOG_WB << "Invalid suppose_dead detected, adding to actions_to_erase_.\n";
+		actions_to_erase_.insert(sup_d);
 	}
 }
 

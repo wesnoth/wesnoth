@@ -25,6 +25,7 @@
 #include "recall.hpp"
 #include "recruit.hpp"
 #include "side_actions.hpp"
+#include "suppose_dead.hpp"
 
 #include "arrow.hpp"
 #include "foreach.hpp"
@@ -333,6 +334,31 @@ void highlight_visitor::visit_recall(recall_ptr recall)
 			resources::screen->add_exclusive_draw(recall->fake_unit_->get_location(), *recall->fake_unit_);
 			exclusive_display_hexes_.insert(recall->fake_unit_->get_location());
 		}
+		break;
+	default:
+		assert (false);
+	}
+}
+
+void highlight_visitor::visit_suppose_dead(suppose_dead_ptr sup_d)
+{
+	switch(mode_)
+	{
+	case FIND_MAIN_HIGHLIGHT:
+		if (sup_d->get_source_hex() == mouseover_hex_)
+		{
+			main_highlight_ = sup_d;
+		}
+		break;
+	case FIND_SECONDARY_HIGHLIGHTS:
+		break;
+	case HIGHLIGHT_MAIN:
+		break;
+	case HIGHLIGHT_SECONDARY:
+		break;
+	case UNHIGHLIGHT_MAIN:
+		break;
+	case UNHIGHLIGHT_SECONDARY:
 		break;
 	default:
 		assert (false);

@@ -132,6 +132,12 @@ public:
 	iterator queue_recall(const unit& unit, const map_location& recall_hex);
 
 	/**
+	 * Queues a suppose_dead to be executed last
+	 * @return The queued suppose_dead's position (an iterator to it)
+	 */
+	iterator queue_suppose_dead(unit& curr_unit);
+
+	/**
 	 * Inserts an action at the specified position. The begin() and end() functions might prove useful here.
 	 * @return The inserted action's position.
 	 */

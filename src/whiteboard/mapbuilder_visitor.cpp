@@ -24,6 +24,7 @@
 #include "recall.hpp"
 #include "recruit.hpp"
 #include "side_actions.hpp"
+#include "suppose_dead.hpp"
 
 #include "foreach.hpp"
 #include "unit.hpp"
@@ -117,6 +118,20 @@ void mapbuilder_visitor::visit_recall(recall_ptr recall)
 	else if (mode_ == RESTORE_NORMAL_MAP)
 	{
 		recall->remove_temp_modifier(unit_map_);
+	}
+}
+
+void mapbuilder_visitor::visit_suppose_dead(suppose_dead_ptr sup_d)
+{
+	if(mode_ == BUILD_PLANNED_MAP)
+	{
+		sup_d->apply_temp_modifier(unit_map_);
+		//remember which actions we applied, so we can unapply them later
+		applied_actions_.push_back(sup_d);
+	}
+	else if(mode_ == RESTORE_NORMAL_MAP)
+	{
+		sup_d->remove_temp_modifier(unit_map_);
 	}
 }
 

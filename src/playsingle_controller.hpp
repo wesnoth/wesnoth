@@ -60,6 +60,7 @@ public:
 	virtual void whiteboard_delete_action();
 	virtual void whiteboard_bump_up_action();
 	virtual void whiteboard_bump_down_action();
+	virtual void whiteboard_suppose_dead();
 	void linger();
 
 	virtual void force_end_level(LEVEL_RESULT res)

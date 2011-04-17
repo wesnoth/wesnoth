@@ -67,6 +67,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_WB_DELETE_ACTION,
 	HOTKEY_WB_BUMP_UP_ACTION,
 	HOTKEY_WB_BUMP_DOWN_ACTION,
+	HOTKEY_WB_SUPPOSE_DEAD,
 
 	HOTKEY_EDITOR_QUIT_TO_DESKTOP,
 	HOTKEY_EDITOR_CLOSE_MAP, HOTKEY_EDITOR_SWITCH_MAP,
@@ -311,6 +312,7 @@ public:
 	virtual void whiteboard_delete_action() {}
 	virtual void whiteboard_bump_up_action() {}
 	virtual void whiteboard_bump_down_action() {}
+	virtual void whiteboard_suppose_dead() {}
 
 	//Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ""; }

@@ -53,6 +53,7 @@ class move;
 class attack;
 class recall;
 class recruit;
+class suppose_dead;
 class side_actions;
 
 typedef boost::shared_ptr<arrow> arrow_ptr;
@@ -72,6 +73,8 @@ typedef boost::shared_ptr<recruit> recruit_ptr;
 typedef boost::shared_ptr<recruit const> recruit_const_ptr;
 typedef boost::shared_ptr<recall> recall_ptr;
 typedef boost::shared_ptr<recall const> recall_const_ptr;
+typedef boost::shared_ptr<suppose_dead> suppose_dead_ptr;
+typedef boost::shared_ptr<suppose_dead const> suppose_dead_const_ptr;
 
 } // end namespace wb
 

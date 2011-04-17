@@ -25,6 +25,7 @@
 #include "move.hpp"
 #include "recall.hpp"
 #include "recruit.hpp"
+#include "suppose_dead.hpp"
 #include "highlight_visitor.hpp"
 #include "utility.hpp"
 #include "validate_visitor.hpp"
@@ -247,6 +248,13 @@ side_actions::iterator side_actions::queue_recall(const unit& unit, const map_lo
 	recall_ptr new_recall;
 	new_recall.reset(new recall(team_index(), unit, recall_hex));
 	return queue_action(new_recall);
+}
+
+side_actions::iterator side_actions::queue_suppose_dead(unit& curr_unit)
+{
+	suppose_dead_ptr new_suppose_dead;
+	new_suppose_dead.reset(new suppose_dead(team_index(),curr_unit));
+	return queue_action(new_suppose_dead);
 }
 
 side_actions::iterator side_actions::insert_action(iterator position, action_ptr action)

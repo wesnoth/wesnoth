@@ -569,6 +569,12 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 	return created_planned_recall;
 }
 
+void manager::save_suppose_dead(unit& curr_unit)
+{
+	if(active_ && !executing_actions_ && !resources::controller->is_linger_mode())
+		viewer_actions()->queue_suppose_dead(curr_unit);
+}
+
 void manager::contextual_execute()
 {
 	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
