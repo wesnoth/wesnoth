@@ -877,7 +877,7 @@ bool in_mask_surface(const surface &surf, const surface &mask)
 		return true;
 	}
 
-	if (surf->w != surf->w || surf->h != mask->h ) {
+	if (surf->w != mask->w || surf->h != mask->h ) {
 		// not same size, consider it doesn't fit
 		return false;
 	}
