@@ -25,15 +25,14 @@ public class Constants
 	/**
 	 * The boolean value whether this machine is running windows or not
 	 */
-	public static boolean IS_WINDOWS_MACHINE =
+	public static final boolean IS_WINDOWS_MACHINE =
 		System.getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("windows"); //$NON-NLS-1$ //$NON-NLS-2$
-
 	/**
 	 * The boolean value whether this machine is running Machintosh or not
 	 */
-	public static boolean IS_MAC_MACHINE =
+	public static final boolean IS_MAC_MACHINE =
 		System.getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("mac"); //$NON-NLS-1$ //$NON-NLS-2$
-	public static String MACHINE_OS =
+	public static final String MACHINE_OS =
 		System.getProperty("os.name").toLowerCase(Locale.ENGLISH); //$NON-NLS-1$
 
 	/** Preferences Constants **/
