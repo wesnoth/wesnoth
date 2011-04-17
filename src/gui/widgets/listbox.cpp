@@ -87,7 +87,7 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 		count = get_item_count();
 	}
 
-	unsigned height_reduced = 0;
+	int height_reduced = 0;
 	for(; count; --count) {
 		if(generator_->item(row).get_visible() != INVISIBLE) {
 			height_reduced += generator_->item(row).get_height();
