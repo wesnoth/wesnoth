@@ -164,7 +164,7 @@ public:
 
 		std::set<std::string> nicks;
 		for (std::vector<team>::const_iterator it = resources::teams->begin();
-			 it != resources::teams->end(); it++)
+			 it != resources::teams->end(); ++it)
 		{
 			if (!it->is_ai() && it->controller()!=team::team_info::EMPTY && it->current_player().size()>0)
 				nicks.insert(it->current_player());
