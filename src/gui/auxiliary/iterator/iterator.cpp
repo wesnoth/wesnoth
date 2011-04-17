@@ -101,7 +101,7 @@ namespace iterator {
  *
  *
  * @subsection gui2_iterator_visit_policy_top_down Top down
- * 
+ *
  * The widgets visited first is the initial widget. After that it tries to go
  * down to a child widget and will continue down. Once that fails it will visit
  * the siblings at that level before going up again.

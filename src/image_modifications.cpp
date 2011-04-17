@@ -48,50 +48,50 @@ std::map<std::string, mod_parser> mod_parsers;
 /** Decodes a single modification using an appropriate mod_parser
  *
  * @param encoded_mod A string representing a single modification
- * 
+ *
  * @return A pointer to the decoded modification object
  * @retval NULL if the string is invalid or a parser isn't found
  */
 modification* decode_modification(const std::string& encoded_mod)
 {
 	std::vector<std::string> split = utils::parenthetical_split(encoded_mod);
-	
+
 	if(split.size() != 2) {
-		ERR_DP << "error parsing image modifications: " 
+		ERR_DP << "error parsing image modifications: "
 		       << encoded_mod << "\n";
 		return NULL;
 	}
-	
+
 	std::string mod_type = split[0];
 	std::string args = split[1];
-	
+
 	if(mod_parsers.find(mod_type) == mod_parsers.end()) {
-		ERR_DP << "unknown image function in path: " 
+		ERR_DP << "unknown image function in path: "
 		       << mod_type << '\n';
 		return NULL;
 	}
-	
+
 	return (*mod_parsers[mod_type])(args);
-}	
+}
 } // end anon namespace
 
 /** Decodes the modification string
  *
  * Important:
  * It creates new objects which need to be deleted after use
- * 
+ *
  * @param encoded_mods A string representing any number of modifications
- * 
+ *
  * @return A modification_queue filled with decoded modification pointers
  */
 modification_queue modification::decode(const std::string& encoded_mods)
 {
 	modification_queue mods;
-	
-	foreach(const std::string& encoded_mod, 
+
+	foreach(const std::string& encoded_mod,
 		utils::parenthetical_split(encoded_mods, '~')) {
 		modification* mod = decode_modification(encoded_mod);
-		
+
 		if(mod) {
 			mods.push(mod);
 		}
@@ -316,7 +316,7 @@ surface darken_modification::operator()(const surface &src) const
 surface background_modification::operator()(const surface &src) const
 {
 	surface ret = make_neutral_surface(src);
-	SDL_FillRect(ret, NULL, SDL_MapRGBA(ret->format, color_.r, color_.g, 
+	SDL_FillRect(ret, NULL, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.unused));
 	SDL_SetAlpha(src, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
 	SDL_BlitSurface(src, NULL, ret, NULL);
@@ -357,14 +357,14 @@ REGISTER_MOD_PARSER(TC, args)
 
 	if(params.size() < 2) {
 		ERR_DP << "too few arguments passed to the ~TC() function\n";
-		
+
 		return NULL;
 	}
-	
+
 	int side_n = lexical_cast_default<int>(params[0], -1);
 	std::string team_color;
 	if (side_n < 1) {
-		ERR_DP << "invalid team (" << side_n 
+		ERR_DP << "invalid team (" << side_n
 		       << ") passed to the ~TC() function\n";
 		return NULL;
 	}
@@ -381,25 +381,25 @@ REGISTER_MOD_PARSER(TC, args)
 			return NULL;
 		}
 	}
-	
+
 	//
 	// Pass argseters for RC functor
 	//
 	if(!game_config::tc_info(params[1]).size()){
-		ERR_DP << "could not load TC info for '" << params[1] 
+		ERR_DP << "could not load TC info for '" << params[1]
 		       << "' palette\n"
 		       << "bailing out from TC\n";
-		
+
 		return NULL;
 	}
-	
+
 	std::map<Uint32, Uint32> rc_map;
 	try {
 		color_range const& new_color =
 			game_config::color_info(team_color);
 		std::vector<Uint32> const& old_color =
 			game_config::tc_info(params[1]);
-		
+
 		rc_map = recolor_range(new_color,old_color);
 	}
 	catch(config::error const& e) {
@@ -410,7 +410,7 @@ REGISTER_MOD_PARSER(TC, args)
 
 		return NULL;
 	}
-	
+
 	return new rc_modification(rc_map);
 }
 
@@ -418,7 +418,7 @@ REGISTER_MOD_PARSER(TC, args)
 REGISTER_MOD_PARSER(RC, args)
 {
 	const std::vector<std::string> recolor_params = utils::split(args,'>');
-					
+
 	if(recolor_params.size()>1){
 		//
 		// recolor source palette to color range
@@ -429,7 +429,7 @@ REGISTER_MOD_PARSER(RC, args)
 				game_config::color_info(recolor_params[1]);
 			std::vector<Uint32> const& old_color =
 				game_config::tc_info(recolor_params[0]);
-			
+
 			rc_map = recolor_range(new_color,old_color);
 		}
 		catch (config::error& e) {
@@ -441,7 +441,7 @@ REGISTER_MOD_PARSER(RC, args)
 				<< "bailing out from RC\n";
 			rc_map.clear();
 		}
-		
+
 		return new rc_modification(rc_map);
 	}
 	else {
@@ -473,7 +473,7 @@ REGISTER_MOD_PARSER(PAL, args)
 			game_config::tc_info(remap_params[0]);
 		std::vector<Uint32> const& new_palette =
 			game_config::tc_info(remap_params[1]);
-		
+
 		for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
 			rc_map[old_palette[i]] = new_palette[i];
 		}
@@ -487,7 +487,7 @@ REGISTER_MOD_PARSER(PAL, args)
 			<< '\n';
 		ERR_DP
 			<< "bailing out from PAL\n";
-		
+
 		return NULL;
 	}
 }
@@ -517,9 +517,9 @@ REGISTER_MOD_PARSER(CS, args)
 		ERR_DP << "no arguments passed to the ~CS() function\n";
 		return NULL;
 	}
-	
+
 	int r = 0, g = 0, b = 0;
-	
+
 	r = lexical_cast_default<int>(factors[0]);
 
 	if( s > 1 ) {
@@ -528,7 +528,7 @@ REGISTER_MOD_PARSER(CS, args)
 	if( s > 2 ) {
 		b = lexical_cast_default<int>(factors[2]);
 	}
-	
+
 	return new cs_modification(r, g, b);
 }
 
@@ -544,9 +544,9 @@ REGISTER_MOD_PARSER(CROP, args)
 	}
 
 	SDL_Rect slice_rect = { 0, 0, 0, 0 };
-		
+
 	slice_rect.x = lexical_cast_default<Sint16, const std::string&>(slice_params[0]);
-	
+
 	if(s > 1) {
 		slice_rect.y = lexical_cast_default<Sint16, const std::string&>(slice_params[1]);
 	}
@@ -556,7 +556,7 @@ REGISTER_MOD_PARSER(CROP, args)
 	if(s > 3) {
 		slice_rect.h = lexical_cast_default<Uint16, const std::string&>(slice_params[3]);
 	}
-	
+
 	return new crop_modification(slice_rect);
 }
 
@@ -599,9 +599,9 @@ REGISTER_MOD_PARSER(BLIT, args)
 		ERR_DP << "negative position arguments in ~BLIT() function\n";
 		return NULL;
 	}
-		
+
 	surface surf = get_image(param[0]);
-	
+
 	return new blit_modification(surf, x, y);
 }
 
@@ -622,7 +622,7 @@ REGISTER_MOD_PARSER(MASK, args)
 		x = lexical_cast_default<int>(param[1]);
 		y = lexical_cast_default<int>(param[2]);
 	}
-	
+
 	if(x < 0 || y < 0) { //required by blit_surface
 		ERR_DP << "negative position arguments in ~MASK() function\n";
 		return NULL;
@@ -658,13 +658,13 @@ REGISTER_MOD_PARSER(SCALE, args)
 	}
 
 	int w = 0, h = 0;
-	
+
 	w = lexical_cast_default<int, const std::string&>(scale_params[0]);
 
 	if(s > 1) {
 		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
-	
+
 	return new scale_modification(w, h);
 }
 

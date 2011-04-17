@@ -93,7 +93,7 @@ public:
 	 *
 	 * @param level               Determines on which level the test should be
 	 *                            executed.
-	 *                            
+	 *
 	 *
 	 * @returns                   Whether the current widget is valid.
 	 */

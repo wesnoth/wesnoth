@@ -47,7 +47,7 @@
 
 // Includes for bug #17573
 #if defined(__GLIBC__)
-#include <gnu/libc-version.h> 
+#include <gnu/libc-version.h>
 #include <cstdio>
 #endif
 
@@ -140,14 +140,14 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 #if defined(__GLIBC__)
 	// Runtime checks for bug #17573
 	// Get glibc runtime version information
-	int glibc, glibc_minor; 
+	int glibc, glibc_minor;
 	sscanf(gnu_get_libc_version(), "%d.%d", &glibc, &glibc_minor);
 
 	// Get SDL runtime version information
 	const SDL_version* v = SDL_Linked_Version();
 
 	do_reverse_memcpy_workaround_ = (glibc > 2 || (glibc == 2 && glibc_minor >= 13)) &&
-		(v->major < 1 || (v->major == 1 && v->minor < 2) || 
+		(v->major < 1 || (v->major == 1 && v->minor < 2) ||
 			(v->major == 1 && v->minor == 2 && v->patch < 15) );
 #endif
 }
@@ -1479,7 +1479,7 @@ bool display::scroll(int xmove, int ymove)
 		} else {
 			SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
 		}
-#else 
+#else
 		SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
 #endif
 	}

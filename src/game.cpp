@@ -2399,7 +2399,7 @@ int main(int argc, char** argv)
 	// is about to be available
 	//
 	// However Wesnoth has a lot of very small jobs that need to be done
-	// at each redraw => 50fps every 2ms. 
+	// at each redraw => 50fps every 2ms.
 	// All the threads are thus busy-waiting all the time, hogging the CPU
 	// To avoid that problem, we need to set the OMP_WAIT_POLICY env var
 	// but that var is read by OMP at library loading time (before main)

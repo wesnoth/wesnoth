@@ -42,7 +42,7 @@ public:
 		set_up_team_colors();
 		set_up_image_paths();
 	}
-	
+
 private:
 	/** Sets up color_info configuration
 	 *
@@ -52,11 +52,11 @@ private:
 	{
 		config cfg;
 		cfg.add_child("color_range",
-			       create_color_range("red", 
+			       create_color_range("red",
 						  "FF0000,FFFFFF,000000,FF0000",
 						  "Red"));
-		cfg.add_child("color_range", 
-			       create_color_range("blue", 
+		cfg.add_child("color_range",
+			       create_color_range("blue",
 						  "2E419B,FFFFFF,0F0F0F,0000FF",
 						  "Blue"));
 
@@ -85,15 +85,15 @@ private:
 	void set_up_image_paths()
 	{
 		config cfg;
-		
+
 		cfg.add_child("binary_path",
 			      create_path_config("data/core"));
 
 		paths_manager_.set_paths(cfg);
 	}
 
-	config create_color_range(const std::string& id, 
-				  const std::string& rgb, 
+	config create_color_range(const std::string& id,
+				  const std::string& rgb,
 				  const std::string& name)
 	{
 		config cfg;
@@ -101,14 +101,14 @@ private:
 		cfg["id"] = id;
 		cfg["rgb"] = rgb;
 		cfg["name"] = name;
-		
+
 		return cfg;
 	}
 
 	config create_path_config(const std::string& path)
 	{
 		config cfg;
-		
+
 		cfg["path"] = path;
 
 		return cfg;
@@ -133,7 +133,7 @@ BOOST_AUTO_TEST_CASE(test_modificaiton_queue_order)
 	modification_queue queue;
 	modification* low_priority_mod = new fl_modification();
 	modification* high_priority_mod = new rc_modification();
-	
+
 	queue.push(low_priority_mod);
 	queue.push(high_priority_mod);
 
@@ -163,9 +163,9 @@ BOOST_AUTO_TEST_CASE(test_modificaiton_queue_order)
 BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 {
 	modification_queue queue = modification::decode("~TC(1,blue)");
-	
+
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
-	
+
 	rc_modification* mod = dynamic_cast<rc_modification*>(queue.top());
 
 	// The dynamic_cast returns NULL if the argument doesn't match the type
@@ -177,7 +177,7 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 	std::map<Uint32, Uint32> expected = recolor_range(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
-	
+
 	delete mod;
 }
 
@@ -185,7 +185,7 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 BOOST_AUTO_TEST_CASE(test_tc_modification_decoding_invalid_args)
 {
 	modification_queue queue = modification::decode("~TC()~TC(1)~TC(0,blue)");
-	
+
 	BOOST_REQUIRE_EQUAL(queue.size(), 0);
 }
 
@@ -193,11 +193,11 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding_invalid_args)
 BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 {
 	modification_queue queue = modification::decode("~RC(red>blue)");
-	
+
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	rc_modification* mod = dynamic_cast<rc_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -214,20 +214,20 @@ BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 BOOST_AUTO_TEST_CASE(test_rc_modification_decoding_invalid_args)
 {
 	modification_queue queue = modification::decode("~RC()~RC(blue)~RC(>)");
-	
+
 	BOOST_REQUIRE_EQUAL(queue.size(), 0);
 }
 
 /// Tests if the PAL modification is correctly decoded
 BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 {
-	modification_queue queue = 
+	modification_queue queue =
 		modification::decode("~PAL(000000,005000 > FFFFFF,FF00FF)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	rc_modification* mod = dynamic_cast<rc_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -247,7 +247,7 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 /// Tests if the PAL modification with invalid arguments is ignored
 BOOST_AUTO_TEST_CASE(test_pal_modification_decoding_invalid_args)
 {
-	modification_queue queue = 
+	modification_queue queue =
 		modification::decode("~PAL()~PAL(>)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 0);
@@ -261,13 +261,13 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_default)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	fl_modification* mod = dynamic_cast<fl_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
 	BOOST_CHECK(mod->get_horiz());
 	BOOST_CHECK(!mod->get_vert());
-	
+
 	delete mod;
 }
 
@@ -279,13 +279,13 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	fl_modification* mod = dynamic_cast<fl_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
 	BOOST_CHECK(mod->get_horiz());
 	BOOST_CHECK(!mod->get_vert());
-	
+
 	delete mod;
 }
 
@@ -297,13 +297,13 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_vert)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	fl_modification* mod = dynamic_cast<fl_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
 	BOOST_CHECK(!mod->get_horiz());
 	BOOST_CHECK(mod->get_vert());
-	
+
 	delete mod;
 }
 
@@ -315,13 +315,13 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz_and_vert)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	fl_modification* mod = dynamic_cast<fl_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
 	BOOST_CHECK(mod->get_horiz());
 	BOOST_CHECK(mod->get_vert());
-	
+
 	delete mod;
 }
 
@@ -333,7 +333,7 @@ BOOST_AUTO_TEST_CASE(test_gs_modification_decoding)
 	BOOST_REQUIRE(queue.size() == 1);
 
 	gs_modification* mod = dynamic_cast<gs_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_CHECK(mod != NULL);
 
@@ -356,7 +356,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_1_arg)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	crop_modification* mod = dynamic_cast<crop_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -366,7 +366,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_1_arg)
 	BOOST_CHECK_EQUAL(slice.y, 0);
 	BOOST_CHECK_EQUAL(slice.w, 0);
 	BOOST_CHECK_EQUAL(slice.h, 0);
-	
+
 	delete mod;
 }
 
@@ -378,7 +378,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_2_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	crop_modification* mod = dynamic_cast<crop_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -388,7 +388,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_2_args)
 	BOOST_CHECK_EQUAL(slice.y, 2);
 	BOOST_CHECK_EQUAL(slice.w, 0);
 	BOOST_CHECK_EQUAL(slice.h, 0);
-	
+
 	delete mod;
 }
 
@@ -400,7 +400,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_3_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	crop_modification* mod = dynamic_cast<crop_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -410,7 +410,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_3_args)
 	BOOST_CHECK_EQUAL(slice.y, 2);
 	BOOST_CHECK_EQUAL(slice.w, 3);
 	BOOST_CHECK_EQUAL(slice.h, 0);
-	
+
 	delete mod;
 }
 
@@ -422,7 +422,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_4_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	crop_modification* mod = dynamic_cast<crop_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -432,7 +432,7 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_4_args)
 	BOOST_CHECK_EQUAL(slice.y, 2);
 	BOOST_CHECK_EQUAL(slice.w, 3);
 	BOOST_CHECK_EQUAL(slice.h, 4);
-	
+
 	delete mod;
 }
 
@@ -447,14 +447,14 @@ BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_1_arg)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	blit_modification* mod = dynamic_cast<blit_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
 	BOOST_CHECK(!mod->get_surface().null());
 	BOOST_CHECK_EQUAL(mod->get_x(), 0);
 	BOOST_CHECK_EQUAL(mod->get_y(), 0);
-	
+
 	delete mod;
 }
 
@@ -469,21 +469,21 @@ BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_3_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	blit_modification* mod = dynamic_cast<blit_modification*>(queue.top());
-	
+
 	BOOST_REQUIRE(mod != NULL);
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 
 	BOOST_CHECK(!mod->get_surface().null());
 	BOOST_CHECK_EQUAL(mod->get_x(), 1);
 	BOOST_CHECK_EQUAL(mod->get_y(), 2);
-	
+
 	delete mod;
 }
 
 /// Tests if the BLIT modification with invalid arguments is ignored
 BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_invalid_args)
 {
-	modification_queue queue = 
+	modification_queue queue =
 		modification::decode("~BLIT()"
 				     "~BLIT(wesnoth-icon.png,1,-2)"
 				     "~BLIT(wesnoth-icon.png,-1,2)"
@@ -503,14 +503,14 @@ BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_1_arg)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	mask_modification* mod = dynamic_cast<mask_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
 	BOOST_CHECK(!mod->get_mask().null());
 	BOOST_CHECK_EQUAL(mod->get_x(), 0);
 	BOOST_CHECK_EQUAL(mod->get_y(), 0);
-	
+
 	delete mod;
 }
 
@@ -525,21 +525,21 @@ BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_3_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	mask_modification* mod = dynamic_cast<mask_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
 	BOOST_CHECK(!mod->get_mask().null());
 	BOOST_CHECK_EQUAL(mod->get_x(), 3);
 	BOOST_CHECK_EQUAL(mod->get_y(), 4);
-	
+
 	delete mod;
 }
 
 /// Tests if the MASK modification with invalid arguments is ignored
 BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_invalid_args)
 {
-	modification_queue queue = 
+	modification_queue queue =
 		modification::decode("~MASK()"
 				     "~MASK(wesnoth-icon.png,3,-4)"
 				     "~MASK(wesnoth-icon.png,-3,4)"
@@ -567,12 +567,12 @@ BOOST_AUTO_TEST_CASE(test_l_modification_decoding_1_arg)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	light_modification* mod = dynamic_cast<light_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
 	BOOST_CHECK(!mod->get_surface().null());
-	
+
 	delete mod;
 }
 
@@ -592,7 +592,7 @@ BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_1_arg)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	scale_modification* mod = dynamic_cast<scale_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -610,7 +610,7 @@ BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_2_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	scale_modification* mod = dynamic_cast<scale_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -628,7 +628,7 @@ BOOST_AUTO_TEST_CASE(test_o_modification_decoding_percent_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	o_modification* mod = dynamic_cast<o_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -645,7 +645,7 @@ BOOST_AUTO_TEST_CASE(test_o_modification_decoding_fraction_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	o_modification* mod = dynamic_cast<o_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -662,12 +662,12 @@ BOOST_AUTO_TEST_CASE(test_bl_modification_decoding_no_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	bl_modification* mod = dynamic_cast<bl_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
 	BOOST_CHECK_EQUAL(mod->get_depth(), 0);
-	
+
 	delete mod;
 }
 
@@ -679,7 +679,7 @@ BOOST_AUTO_TEST_CASE(test_bl_modification_decoding)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	bl_modification* mod = dynamic_cast<bl_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -697,14 +697,14 @@ BOOST_AUTO_TEST_CASE(test_rgb_modification_decoding_no_args)
 
 	for(int i = 0; i < 3; i++) {
 		cs_modification* mod = dynamic_cast<cs_modification*>(queue.top());
-		
+
 		// The dynamic_cast returns NULL if the argument doesn't match the type
 		BOOST_REQUIRE(mod != NULL);
-		
+
 		BOOST_CHECK_EQUAL(mod->get_r(), 0);
 		BOOST_CHECK_EQUAL(mod->get_g(), 0);
 		BOOST_CHECK_EQUAL(mod->get_b(), 0);
-		
+
 		queue.pop();
 
 		delete mod;
@@ -719,10 +719,10 @@ BOOST_AUTO_TEST_CASE(test_r_modification_decoding)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	cs_modification* mod = dynamic_cast<cs_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
-	
+
 	BOOST_CHECK_EQUAL(mod->get_r(), 123);
 	BOOST_CHECK_EQUAL(mod->get_g(), 0);
 	BOOST_CHECK_EQUAL(mod->get_b(), 0);
@@ -738,10 +738,10 @@ BOOST_AUTO_TEST_CASE(test_g_modification_decoding)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	cs_modification* mod = dynamic_cast<cs_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
-	
+
 	BOOST_CHECK_EQUAL(mod->get_r(), 0);
 	BOOST_CHECK_EQUAL(mod->get_g(), 132);
 	BOOST_CHECK_EQUAL(mod->get_b(), 0);
@@ -757,10 +757,10 @@ BOOST_AUTO_TEST_CASE(test_b_modification_decoding)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	cs_modification* mod = dynamic_cast<cs_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
-	
+
 	BOOST_CHECK_EQUAL(mod->get_r(), 0);
 	BOOST_CHECK_EQUAL(mod->get_g(), 0);
 	BOOST_CHECK_EQUAL(mod->get_b(), 312);
@@ -776,7 +776,7 @@ BOOST_AUTO_TEST_CASE(test_brighten_modification_decoding)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	brighten_modification* mod = dynamic_cast<brighten_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_CHECK(mod != NULL);
 
@@ -791,7 +791,7 @@ BOOST_AUTO_TEST_CASE(test_draken_modification_decoding)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	darken_modification* mod = dynamic_cast<darken_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_CHECK(mod != NULL);
 
@@ -806,7 +806,7 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_no_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	background_modification* mod = dynamic_cast<background_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -826,7 +826,7 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_1_arg)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	background_modification* mod = dynamic_cast<background_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -846,7 +846,7 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_2_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	background_modification* mod = dynamic_cast<background_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -866,7 +866,7 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_3_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	background_modification* mod = dynamic_cast<background_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
@@ -886,7 +886,7 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_4_args)
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
 	background_modification* mod = dynamic_cast<background_modification*>(queue.top());
-	
+
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 

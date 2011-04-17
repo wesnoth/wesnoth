@@ -23,10 +23,10 @@
 
 namespace image {
 
-class modification;	
+class modification;
 struct mod_ptr_comparator_;
 /// A priority queue used to enforce using the rc modifications first
-typedef std::priority_queue<modification*, 
+typedef std::priority_queue<modification*,
 			    std::vector<modification*>,
 			    mod_ptr_comparator_> modification_queue;
 
@@ -336,10 +336,10 @@ private:
 
 namespace image {
 
-class modification;	
+class modification;
 struct mod_ptr_comparator_;
 /// A priority queue used to enforce using the rc modifications first
-typedef std::priority_queue<modification*, 
+typedef std::priority_queue<modification*,
 			    std::vector<modification*>,
 			    mod_ptr_comparator_> modification_queue;
 

@@ -115,7 +115,7 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 	{
 		leader = luaW_tounit(L, index);
 		if (!leader) return luaL_argerror(L, 1, "unknown unit");
-	} 
+	}
 	else return luaL_typerror(L, 1, "unit");
 	const map_location loc = leader->get_location();
 	const pathfind::paths leader_paths(*resources::game_map, *resources::units, loc,
