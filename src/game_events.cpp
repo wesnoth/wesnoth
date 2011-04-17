@@ -1026,20 +1026,20 @@ std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vecto
 		pathfind::plain_route route = pathfind::a_star_search(src, dst, 10000, &calc,
 			game_map->w(), game_map->h());
 
-		if (route.steps.size() == 0) {
+		if (route.steps.empty()) {
 			WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities\n";
 			pathfind::emergency_path_calculator calc(fake_unit, *game_map);
 
 			route = pathfind::a_star_search(src, dst, 10000, &calc,
 					game_map->w(), game_map->h());
-			if(route.steps.size() == 0) {
+			if(route.steps.empty()) {
 				// This would occur when trying to do a MUF of a unit
 				// over locations which are unreachable to it (infinite movement
 				// costs). This really cannot fail.
 				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain\n";
 				pathfind::dummy_path_calculator calc(fake_unit, *game_map);
 				route = a_star_search(src, dst, 10000, &calc, game_map->w(), game_map->h());
-				assert(route.steps.size() > 0);
+				assert(!route.steps.empty());
 			}
 		}
 		// we add this section to the end of the complete path
