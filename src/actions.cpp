@@ -1805,7 +1805,7 @@ void calculate_healing(int side, bool update_display)
 				healing = regen_effect.get_composite_value();
 				healers.clear();
 			}
-			if(regen.cfgs.size()) {
+			if(!regen.cfgs.empty()) {
 				for (std::vector<std::pair<const config *, map_location> >::const_iterator regen_it = regen.cfgs.begin(); regen_it != regen.cfgs.end(); ++regen_it) {
 					if((*regen_it->first)["poison"] == "cured") {
 						curer = units.end();
