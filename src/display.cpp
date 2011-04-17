@@ -1156,8 +1156,8 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 
 		if(submerge_height != surf->h) {
 			//the lower part will be transparent
-			float alpha_base = 0.3; // 30% alpha at surface of water
-			float alpha_delta = 0.015; // lose 1.5% per pixel depth
+			float alpha_base = 0.3f; // 30% alpha at surface of water
+			float alpha_delta = 0.015f; // lose 1.5% per pixel depth
 			alpha_delta *= zoom_ / DefaultZoom; // adjust with zoom
 			surf = submerge_alpha(surf, depth, alpha_base, alpha_delta, false);
 
