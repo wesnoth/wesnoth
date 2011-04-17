@@ -2403,7 +2403,7 @@ int main(int argc, char** argv)
 	// All the threads are thus busy-waiting all the time, hogging the CPU
 	// To avoid that problem, we need to set the OMP_WAIT_POLICY env var
 	// but that var is read by OMP at library loading time (before main)
-	// thus the relaunching of ourselves after setting the ariable
+	// thus the relaunching of ourselves after setting the variable.
 	if (!getenv("OMP_WAIT_POLICY")) {
 		setenv("OMP_WAIT_POLICY", "PASSIVE", 1);
 		execv(argv[0], argv);
