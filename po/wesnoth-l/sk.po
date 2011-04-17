@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-20 16:54+0100\n"
-"PO-Revision-Date: 2011-03-21 20:54+0100\n"
+"POT-Creation-Date: 2011-03-27 14:22+0200\n"
+"PO-Revision-Date: 2011-04-07 20:53+0100\n"
 "Last-Translator: Vlado Zelik <v.zelik@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -50,6 +50,7 @@ msgstr "Utečenec"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:27
 #, fuzzy
+#| msgid "(Intermediate level, 9 scenarios)"
 msgid "(Intermediate level, 8 scenarios.)"
 msgstr "(Stredná úroveň, 9 máp)"
 
@@ -335,6 +336,7 @@ msgstr ""
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:255
 #, fuzzy
+#| msgid "...I know... All right now, let’s stop these goblins!"
 msgid "... I know... All right now, let’s stop these goblins!"
 msgstr "...Viem... Tak dobre, poďme zastaviť tých goblinov!"
 
@@ -550,6 +552,9 @@ msgstr "Harper, uteč odtiaľto. Toto nie je boj pre teba."
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:202
 #, fuzzy
+#| msgid ""
+#| "I am the magistrate of Dallben, and it is YOU who will be leaving "
+#| "Dallben, be it dead or alive."
 msgid ""
 "I am the magistrate of Dallben, and it is <i>you</i> who will be leaving "
 "Dallben, be it dead or alive."
@@ -667,12 +672,17 @@ msgstr "Porazíš oboch nepriateľských veliteľov"
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:139
 #, fuzzy
+#| msgid "Death of Relnan"
 msgid "Death of Relana"
 msgstr "Umrie Relnan"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:177
 #, fuzzy
+#| msgid ""
+#| "Relnan, thank you for welcoming our messenger and agreeing to meet with "
+#| "us. In your many years as Delwyn’s magistrate I have never known your "
+#| "judgment to err."
 msgid ""
 "Relana, thank you for welcoming our messenger and agreeing to meet with us. "
 "In your many years as Delwyn’s magistrate I have never known your judgment "
@@ -753,6 +763,9 @@ msgstr ""
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:209
 #, fuzzy
+#| msgid ""
+#| "We need evidence. Hard evidence...but wait, are those orcish war drums I "
+#| "hear?"
 msgid ""
 "We need evidence. Hard evidence... but wait— Are those orcish war drums I "
 "hear?"
@@ -804,6 +817,9 @@ msgstr "Tak je. A zlato v ich vreckách vyzeralo ako práve vyrazené v mincovni
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:251
 #, fuzzy
+#| msgid ""
+#| "Can the darkest rumors be true, then? Does the Kingdom...does Queen "
+#| "Asheviere...send orcs against her own people?"
 msgid ""
 "Can the darkest rumors be true, then? Does the Kingdom— Does Queen "
 "Asheviere... send orcs against her own people?"
@@ -825,6 +841,10 @@ msgstr ""
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:273
 #, fuzzy
+#| msgid ""
+#| "We have tarried here for far too long... there is no way we can reach "
+#| "Elensefar and return with help before the Wesnoth army destroys our "
+#| "homes. Retreat!!"
 msgid ""
 "We have tarried here for far too long... There is no way we can reach "
 "Elensefar and return with help before the Wesnoth army destroys our homes. "
@@ -836,6 +856,11 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:279
 #, fuzzy
+#| msgid ""
+#| "Baldras and Relnan returned to their villages to find them destroyed, "
+#| "with those who fought left dead and the few survivors born away to "
+#| "unguessable fates. It was a bitter doom, and as Wesnoth descended into "
+#| "darkness they would live to see worse."
 msgid ""
 "Baldras and Relana returned to their villages to find them destroyed, with "
 "those who fought left dead and the few survivors born away to unguessable "
@@ -890,6 +915,11 @@ msgstr "Rothel"
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:190
 #, fuzzy
+#| msgid ""
+#| "Baldras, your trip here was not wise. The Queen’s patrols have been "
+#| "visiting the local villages and bringing the elders here. Those that "
+#| "swear allegiance to the Queen are allowed to return home. Those that do "
+#| "not..."
 msgid ""
 "Baldras, your trip here was not wise. The Queen’s patrols have been visiting "
 "the local villages and bringing the elders here. Those that swear allegiance "
@@ -902,6 +932,9 @@ msgstr ""
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:194
 #, fuzzy
+#| msgid ""
+#| "...are dispatched on the spot. I know the price of dissent. But what of "
+#| "you?"
 msgid ""
 "— Are dispatched on the spot. I know the price of dissent. But what of you?"
 msgstr "...sú na mieste popravení. Poznám cenu odporu. Ale ako je to s Vami?"
@@ -1214,6 +1247,7 @@ msgstr ""
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:658
 #, fuzzy
+#| msgid "They’ve seen us, RUN!"
 msgid "They’ve seen us! <i>Run</i>!"
 msgstr "Videli nás, rýchlo preč!"
 
@@ -1270,6 +1304,7 @@ msgstr "Bež... možno ich ešte strasieme v Šedých lesoch."
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:753
 #, fuzzy
+#| msgid "Lead the way..."
 msgid "Lead the way."
 msgstr "Bež teda, pôjdeme za tebou..."
 
@@ -1378,6 +1413,7 @@ msgstr ""
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:249
 #, fuzzy
+#| msgid "I...see, I think. Why do you want to help us?"
 msgid "I... see, I think. Why do you want to help us?"
 msgstr "Rozumiem... aspoň myslím. Prečo nám chcete pomôcť?"
 
@@ -1395,6 +1431,11 @@ msgstr ""
 #. [message]: speaker=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:264
 #, fuzzy
+#| msgid ""
+#| "Carcyn is always foggy as of late because these woods have recently "
+#| "become home to a lich and two of its underling necromancers. Our "
+#| "experiments may have actually aroused it from sleep... we’re not exactly "
+#| "sure."
 msgid ""
 "Carcyn is always foggy as of late because these woods have recently become "
 "home to a lich and two of its underling necromancers. Our experiments may "
@@ -1419,6 +1460,7 @@ msgstr ""
 #. [message]: speaker=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:293
 #, fuzzy
+#| msgid "Finally that creature is dead, yet its foolish minions resist."
 msgid "Finally, that creature is dead, yet its foolish minions resist."
 msgstr ""
 "Táto.. príšera je konečne mŕtva, no jej bláznivý prisluhovači stále "
@@ -1547,6 +1589,10 @@ msgstr "Želám si, aby ste sa k nám pridal v boji proti kráľovniným silám.
 #. [message]: speaker=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:414
 #, fuzzy
+#| msgid ""
+#| "Alright. I need time to clean up this forest and recall my men from the "
+#| "countryside. We will be ready to march in 7 days. All now hinges on you! "
+#| "Until then..."
 msgid ""
 "All right. I need time to clean up this forest and recall my men from the "
 "countryside. We will be ready to march in seven days. All now hinges on you! "
@@ -1591,6 +1637,9 @@ msgstr ""
 #. [part]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:31
 #, fuzzy
+#| msgid ""
+#| "Knowing they too would be labeled criminals, he reluctantly accepted "
+#| "their help. (Baldras is now able to recruit outlaws.)"
 msgid ""
 "Knowing they too would be labeled criminals, he reluctantly accepted their "
 "help.\n"
@@ -1652,6 +1701,10 @@ msgstr ""
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:158
 #, fuzzy
+#| msgid ""
+#| "What’s worse is that she appears to have taken notice. We have counted "
+#| "five platoons of heavy infantry marching towards the garrison in just the "
+#| "last 2 hours."
 msgid ""
 "What’s worse is that she appears to have taken notice. We have counted five "
 "platoons of heavy infantry marching towards the garrison in just the last "
@@ -1695,6 +1748,10 @@ msgstr "Jazdec! Nekrič, kým nás niekto neobjaví! Poď k nám, ale potichu!"
 #. [message]: speaker=Pitcher
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:187
 #, fuzzy
+#| msgid ""
+#| "Master Baldras, I bring news from the north. During the past week, "
+#| "several patrols have again ventured across the Great River into Annuvin. "
+#| "A man named Relnan opposed them with a small militia. He was victorious."
 msgid ""
 "Master Baldras, I bring news from the north. During the past week, several "
 "patrols have again ventured across the Great River into Annuvin. A woman "
@@ -1843,6 +1900,11 @@ msgstr "Víťazstvo"
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:25
 #, fuzzy
+#| msgid ""
+#| "In the Year of Wesnoth 161, 338 years before Asheviere’s betrayal, the "
+#| "newly crowned king sought to make safe once and for all the wildlands "
+#| "that separated the human cities surrounding Weldyn and the coastal "
+#| "regions of Elensefar."
 msgid ""
 "In the Year of Wesnoth 161 the newly crowned king sought to make safe once "
 "and for all the wildlands that separated the human cities surrounding Weldyn "
@@ -2106,6 +2168,9 @@ msgstr "Trúbte na postup!"
 #. [message]: speaker=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:572
 #, fuzzy
+#| msgid ""
+#| "Knights of Elensefar, behold: the battle has already begun! Make camp "
+#| "here. Then, we CHARGE!"
 msgid ""
 "Knights of Elensefar, behold: the battle has already begun! Make camp here. "
 "Then, we charge!"
@@ -2180,12 +2245,18 @@ msgstr "Nemôžme tu ostať. Pevnosť sa začala rúcať!"
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:806
 #, fuzzy
+#| msgid "I think it’s working! Everybody get clear NOW!"
 msgid "I think it’s working! Everybody get clear <i>now</i>!"
 msgstr "Funguje to! Všetci von, IHNEĎ!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:830
 #, fuzzy
+#| msgid ""
+#| "With a thunderous earthquake and a vast billowing of dust, thousands of "
+#| "tons of stone and wood crashed in on itself. Some of it tumbled down the "
+#| "steep sides, while the remainder came to rest several hundred feet below "
+#| "ground, in the bowels of the hollowed-out mountain."
 msgid ""
 "With a thunderous roar and a vast billowing of dust, thousands of tons of "
 "stone and wood crashed in on itself. Some of it tumbled down the steep "
@@ -2240,6 +2311,10 @@ msgstr "Náš sen o slobode... je preč... oogh..."
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:956
 #, fuzzy
+#| msgid ""
+#| "The rebellion had stakes its all on victory at Halstead, but win or lose, "
+#| "there would be no help for the villagers, ground beneath the wheels of "
+#| "Asheviere’s wrath."
 msgid ""
 "The rebellion had staked its all on victory at Halstead, but win or lose, "
 "there would be no help for the villagers, ground beneath the wheels of "
@@ -2307,6 +2382,8 @@ msgstr "Toto nebolo malé víťazstvo. Podceňuješ totiž silu túžby po slobo
 #. [message]: speaker=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:1066
 #, fuzzy
+#| msgid ""
+#| "You... underestimate the... cruelty and ambition of your Queen... unngh.."
 msgid ""
 "You... underestimate the... cruelty and ambition of your Queen... Uungh..."
 msgstr ""
@@ -2416,6 +2493,9 @@ msgstr ""
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:36
 #, fuzzy
+#| msgid ""
+#| "...a grimy note nailed to a charred post that read, “Baldras, You would "
+#| "have been proud. We gave ’em hell. But in the end, it wasn’t enough.”"
 msgid ""
 "... a grimy note nailed to a charred post that read, <i>“Baldras, You would "
 "have been proud. We gave ’em hell. But in the end, it wasn’t enough.”</i>"
@@ -2427,6 +2507,9 @@ msgstr ""
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:40
 #, fuzzy
+#| msgid ""
+#| "“We fled like criminals in the night, but we made sure that no one would "
+#| "harass us anymore.”"
 msgid ""
 "<i>“We fled like criminals in the night, but we made sure that no one would "
 "harass us anymore.”</i>"
@@ -2437,6 +2520,9 @@ msgstr ""
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:44
 #, fuzzy
+#| msgid ""
+#| "“If you wish to find us, head southwest. When you reach the land’s end, "
+#| "just keep going. See you in the Three Sisters, old friend. ― Relnan” "
 msgid ""
 "<i>“If you wish to find us, head southwest. When you reach the land’s end, "
 "just keep going. See you in the Three Sisters, old friend. ― Relana”</i>"
@@ -2653,6 +2739,7 @@ msgstr ""
 #. [female]
 #: data/campaigns/Liberty/units/Villagers.cfg:58
 #, fuzzy
+#| msgid "Senior Village Elder"
 msgid "female^Senior Village Elder"
 msgstr "Dedinský starešina"
 
@@ -2720,7 +2807,7 @@ msgstr "Pohraničiarka"
 #. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:190
 msgid "Peasant Hunter"
-msgstr "Pytliak"
+msgstr "Poľovník"
 
 #. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:193
@@ -2729,14 +2816,14 @@ msgid ""
 "bring in much of their food supply. Their stealth and intimate knowledge of "
 "local terrain can be valuable assets in combat."
 msgstr ""
-"Osady, hlavne v divokých oblastiach blízko hraníc, potrebujú pytliakov, "
+"Osady, hlavne v divokých oblastiach blízko hraníc, potrebujú poľovníkov, "
 "ktorí im zabezpečujú veľkú časť zásob. Ich nenápadnosť a dokonalá znalosť "
 "terénu sú v boji cenným prínosom."
 
 #. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:206
 msgid "Peasant Trapper"
-msgstr "Stopár"
+msgstr "Pasciar"
 
 #. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:210
@@ -2745,14 +2832,14 @@ msgid ""
 "Their hunting experience makes them most valuable at night and in forests "
 "and swamps."
 msgstr ""
-"Stopári sú skúsení lovci, ktorí dodávajú jedlo a kožušinu niekoľkým osadám. "
+"Pasciari sú skúsení lovci, ktorí dodávajú jedlo a kožušinu niekoľkým osadám. "
 "Ich skúsenosť s lovom ich robí najcennejšími v noci, hlavne v lesoch a "
 "močiaroch."
 
 #. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:223
 msgid "Peasant Huntsman"
-msgstr "Lovec"
+msgstr "Tulák"
 
 #. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:228
@@ -2761,7 +2848,7 @@ msgid ""
 "wilderness homes. They can bullseye wamprats and track anything that moves "
 "in their territory."
 msgstr ""
-"Lovci strávili väčšinu života odrezaní od sveta v hlbokej divočine, v "
+"Tuláci strávili väčšinu života odrezaní od sveta v hlbokej divočine, v "
 "hustých lesoch a močiaroch. S lukom tak vedia narábať s neuveriteľnou "
 "zručnosťou, a vystopovať dokážu čokoľvek, čo sa hýbe na ich území."
 

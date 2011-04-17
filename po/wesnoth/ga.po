@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-27 14:22+0200\n"
-"PO-Revision-Date: 2011-04-02 20:22-0800\n"
+"PO-Revision-Date: 2011-04-16 21:37-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -27,8 +27,9 @@ msgstr "Sábhála Comhbhrúite"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
+#, fuzzy
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Uasmhéid Uath-Sábháilte: "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -62,13 +63,15 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:55
+#, fuzzy
 msgid "Show Titlescreen Animation"
-msgstr ""
+msgstr "Taispeáin "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:62
+#, fuzzy
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "Anam do $unit.name"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:69
@@ -100,7 +103,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:101
 msgid "Group players in lobby"
-msgstr ""
+msgstr "Grúpimreoirí i bhforhalla"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:108
@@ -191,7 +194,7 @@ msgstr "Bainisteoir Idirnáisiúnú"
 #. [about]
 #: data/core/about.cfg:1185
 msgid "English strings edition"
-msgstr "Béarla"
+msgstr "Eagrán Béarla"
 
 #. [about]
 #: data/core/about.cfg:1192
@@ -375,10 +378,8 @@ msgstr "Aistriúchán Ioruais"
 
 #. [about]
 #: data/core/about.cfg:2271
-#, fuzzy
-#| msgid "English (GB) Translation"
 msgid "Old English Translation"
-msgstr "Aistriúchán Béarla (Bhreatain Mór)"
+msgstr "Aistriúchán Angla-Shacsanais"
 
 #. [about]
 #: data/core/about.cfg:2280
@@ -512,7 +513,7 @@ msgstr "cosantach"
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:71
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Dírigh ar bristeacha..."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:72
@@ -553,7 +554,7 @@ msgstr "Siar"
 #. [protect]
 #: data/core/macros/ai_controller.cfg:201
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Dírigh ar cosanta..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:202
@@ -584,29 +585,31 @@ msgstr ""
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:434
+#, fuzzy
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Cosain an láthair seo"
 
 #. [revoke_objective_orders]
 #: data/core/macros/ai_controller.cfg:449
 msgid "Clear objective orders"
-msgstr ""
+msgstr "Glan orduithe aidhme"
 
 #. [revoke_behavior_orders]
 #: data/core/macros/ai_controller.cfg:461
 msgid "Clear behavior orders"
-msgstr ""
+msgstr "Glan orduithe iompraíochta"
 
 #. [revoke_all_orders]
 #: data/core/macros/ai_controller.cfg:474
 msgid "Clear all orders"
-msgstr ""
+msgstr "Glan orduithe uile"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:591
 #: data/core/macros/ai_controller.cfg:602
+#, fuzzy
 msgid "none set."
-msgstr ""
+msgstr "Suigh Lipéad"
 
 #. [do]
 #: data/core/macros/ai_controller.cfg:644
@@ -620,12 +623,12 @@ msgstr ""
 #. [literal]
 #: data/core/macros/ai_controller.cfg:652
 msgid "Set objective..."
-msgstr ""
+msgstr "Socraigh aidhm..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:743
 msgid "Set behavior..."
-msgstr ""
+msgstr "Socraigh iompar..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:848
@@ -634,7 +637,7 @@ msgstr "Dún"
 
 #: data/core/macros/ai_controller.cfg:975
 msgid "Set special orders..."
-msgstr ""
+msgstr "Socraigh orduithe speisialta"
 
 #: data/core/macros/ai_controller.cfg:976
 msgid "Move leader to..."
@@ -654,7 +657,7 @@ msgstr ""
 
 #: data/core/macros/ai_controller.cfg:980
 msgid "Clear special orders"
-msgstr ""
+msgstr "Glan orduithe speisialta"
 
 #: data/core/macros/ai_controller.cfg:981
 msgid ""
@@ -664,13 +667,15 @@ msgstr ""
 
 #. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/deprecated-utils.cfg:416
+#, fuzzy
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr "Uasmhéid # focail in easnamh:"
 
 #. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/deprecated-utils.cfg:416
+#, fuzzy
 msgid "Max HP bonus +"
-msgstr ""
+msgstr "Folmhaigh na Uaimheanna (Bónas)"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
@@ -712,7 +717,7 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:67
 msgid "Don’t make a wish."
-msgstr ""
+msgstr "Ná mian a dhéanamh."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:205
@@ -1657,8 +1662,9 @@ msgid "Early finish bonus."
 msgstr "Bónas luath-críochnaigh."
 
 #: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:103
+#, fuzzy
 msgid "No early finish bonus."
-msgstr ""
+msgstr "<small>(bónas luath-críochnaigh)</small>"
 
 #: data/core/macros/objective-utils.cfg:21
 msgid "<small>(early finish bonus)</small>"
@@ -1945,7 +1951,7 @@ msgstr "lann"
 #. [language]
 #: data/english.cfg:48
 msgid "pierce"
-msgstr "pollaim"
+msgstr "polladh"
 
 #. [language]
 #: data/english.cfg:49
@@ -2152,6 +2158,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:56
+#, fuzzy
 msgid ""
 "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
 "<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
@@ -2159,6 +2166,11 @@ msgid ""
 "Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
+"Sé chineál ionsaithe atá ann: <i>polladh</i>, <i>lann</i>, <i>turraing</i>, "
+"<i>tine</i>, <i>fuar</i> agus <i>rúnda</i>. Different units have weaknesses "
+"against different types of attacks. Right-click on a unit and select <b>Unit "
+"Description</b> to see which attacks it is resistant to, and which will "
+"affect it the most."
 
 #. [tip]
 #: data/hardwired/tips.cfg:60
@@ -2277,6 +2289,9 @@ msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
+"Gluaiseann agus troideann aonaid ealbh go sármhaith i gcoillte. Gluaiseann "
+"agus troideann aonaid abhcacha go sármhaith ar chnoic, ar sléibhte agus in "
+"uaimheanna."
 
 #. [tip]
 #: data/hardwired/tips.cfg:108
@@ -2383,7 +2398,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:157 data/hardwired/tips.cfg:201
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr ""
+msgstr "<i>― An Scrolla Séantál, 516YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
@@ -2395,7 +2410,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:164
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "Is an-cumasach iad ionsaithe <i>rúnda</i> in aghaidh neamh-mharbha."
+msgstr "Tá ionsaithe <i>rúnda</i> an-cumasach in aghaidh neamh-mharbha."
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
@@ -2575,8 +2590,9 @@ msgid "petrified"
 msgstr "clochraithe"
 
 #: data/lua/wml-tags.lua:717
+#, fuzzy
 msgid "female^unhealable"
-msgstr ""
+msgstr "éagruthach"
 
 #: data/lua/wml-tags.lua:717
 msgid "unhealable"
@@ -2599,12 +2615,14 @@ msgid "Notes:"
 msgstr "Nótaí:"
 
 #: data/lua/wml/objectives.lua:69
+#, fuzzy
 msgid "(%d turns left)"
-msgstr ""
+msgstr "Cléchliceáil"
 
 #: data/lua/wml/objectives.lua:71
+#, fuzzy
 msgid "(this turn left)"
-msgstr ""
+msgstr "[ag dearbhú na haistriúcháin: %i fágtha]"
 
 #: data/lua/wml/objectives.lua:113
 msgid "%d%% of gold carried over to the next scenario."
@@ -2716,8 +2734,9 @@ msgstr "gluaiseachtaí"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:414
+#, fuzzy
 msgid "statuspanel^terrain def."
-msgstr ""
+msgstr "Tiomsú rialacha tír-raon"
 
 #. [label]: id=label-mp
 #: data/themes/dfool.cfg:257
@@ -2756,8 +2775,9 @@ msgstr "Athshocraigh"
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:95
+#, fuzzy
 msgid "reset to beginning"
-msgstr ""
+msgstr "Athshocraigh chuig réamhshocruithe"
 
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:108
@@ -2766,8 +2786,9 @@ msgstr "Seala Eile"
 
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:109
+#, fuzzy
 msgid "play turn"
-msgstr ""
+msgstr "Bónas Seal:"
 
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:122
@@ -2776,8 +2797,9 @@ msgstr "Foireann Eile"
 
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:123
+#, fuzzy
 msgid "play side turn"
-msgstr ""
+msgstr "Seal a 11: Tuaisceartachtaí"
 
 #. [menu]: id=show-what
 #: data/themes/macros.cfg:135
@@ -2787,7 +2809,7 @@ msgstr "Peirspictíocht"
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
 msgid "Skip animation"
-msgstr ""
+msgstr "Scipeáil bheochana"
 
 #: src/about.cpp:196 src/menu_events.cpp:317 src/menu_events.cpp:344
 #: src/statistics_dialog.cpp:114
@@ -2823,9 +2845,10 @@ msgid "Failed teleport! Exit not empty"
 msgstr ""
 
 #: src/actions.cpp:2561
+#, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] ""
+msgstr[0] "Radharcach aonad naimhdeach!"
 msgstr[1] ""
 msgstr[2] ""
 
@@ -2848,9 +2871,10 @@ msgstr[3] "$friends gcairdeachais"
 msgstr[4] "$friends gcairdeachais"
 
 #: src/actions.cpp:2570
+#, fuzzy
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] ""
+msgstr[0] "$friends cairdeachais"
 msgstr[1] ""
 msgstr[2] ""
 
@@ -2921,7 +2945,7 @@ msgstr "(anaithnid)"
 #: src/addon/manager.cpp:487 src/addon/manager.cpp:560 src/multiplayer.cpp:221
 #: src/multiplayer.cpp:281 src/multiplayer_ui.cpp:83
 msgid "Connection timed out"
-msgstr ""
+msgstr "Nasc am istigh"
 
 #: src/addon/manager.cpp:490
 msgid "The server responded with an error: \"$error|\""
@@ -3087,7 +3111,7 @@ msgstr "Nuashonrúchán i gcrích"
 
 #: src/addon/manager.cpp:1085
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "Tá an forlíontán '$addon|' nuashonraithe."
 
 #: src/addon/manager.cpp:1086
 msgid "All add-ons updated successfully."
@@ -3102,8 +3126,9 @@ msgid "Could not connect to host."
 msgstr ""
 
 #: src/addon/manager.cpp:1120
+#, fuzzy
 msgid "Requesting list of add-ons"
-msgstr ""
+msgstr "Cuir comhadlann leis an réim"
 
 #: src/addon/manager.cpp:1132
 msgid "An error occurred while communicating with the server."
@@ -3135,11 +3160,11 @@ msgstr ""
 
 #: src/addon/manager.cpp:1273
 msgid "Download"
-msgstr "Traschóipeáil"
+msgstr "Íoslódáil"
 
 #: src/addon/manager.cpp:1274
 msgid "Done"
-msgstr "Dùn"
+msgstr "Dún"
 
 #: src/addon/manager.cpp:1286 src/dialogs.cpp:616 src/menu_events.cpp:926
 #: src/menu_events.cpp:1542
@@ -3152,7 +3177,7 @@ msgstr "Cuntas"
 
 #: src/addon/manager.cpp:1335
 msgid "Network communication error."
-msgstr ""
+msgstr "Earráid líonra cumasáide."
 
 #: src/addon/manager.cpp:1338
 msgid "Remote host disconnected."
@@ -3222,7 +3247,7 @@ msgstr "Ceannas"
 
 #: src/attack_prediction_display.cpp:238
 msgid " resistance vs "
-msgstr ""
+msgstr " seasmhacht vs "
 
 #: src/attack_prediction_display.cpp:239
 msgid " vulnerability vs "
@@ -3237,8 +3262,9 @@ msgid "Total damage"
 msgstr "Damáiste iomlán"
 
 #: src/attack_prediction_display.cpp:261 src/mouse_events.cpp:835
+#, fuzzy
 msgid "No usable weapon"
-msgstr ""
+msgstr "Níl orc mé!"
 
 #: src/attack_prediction_display.cpp:266
 msgid "Chance of being unscathed"
@@ -3250,7 +3276,7 @@ msgstr "Suimeanna Damáiste"
 
 #: src/dialogs.cpp:122
 msgid "Advance Unit"
-msgstr ""
+msgstr "Ardaigh Aonad"
 
 #: src/dialogs.cpp:123
 msgid "What should our victorious unit become?"
@@ -3258,7 +3284,7 @@ msgstr ""
 
 #: src/dialogs.cpp:260
 msgid "No objectives available"
-msgstr ""
+msgstr "Ní aidhmeanna infhaighte"
 
 #: src/dialogs.cpp:449 src/savegame.cpp:135
 msgid "%a %b %d %H:%M %Y"
@@ -3298,7 +3324,7 @@ msgstr "Deacracht: "
 
 #: src/dialogs.cpp:508
 msgid "Version: "
-msgstr "Insint: "
+msgstr "Leagan: "
 
 #: src/dialogs.cpp:532 src/dialogs.cpp:548 src/savegame.cpp:164
 #: src/savegame.cpp:180
@@ -3318,8 +3344,9 @@ msgid "%b %d"
 msgstr "%d %b"
 
 #: src/dialogs.cpp:572
+#, fuzzy
 msgid "No Saved Games"
-msgstr ""
+msgstr "Lódáil cluiche sábháilte"
 
 #: src/dialogs.cpp:573
 msgid ""
@@ -3338,7 +3365,7 @@ msgstr "Lódáil Cluiche"
 
 #: src/dialogs.cpp:609
 msgid "Choose the game to load"
-msgstr ""
+msgstr "Roghnaigh an cluiche le lódáil"
 
 #: src/dialogs.cpp:623
 msgid "Show replay"
@@ -3374,7 +3401,7 @@ msgstr "Gluaiseachtaí: "
 
 #: src/game.cpp:653 src/game.cpp:1435
 msgid "The Battle for Wesnoth"
-msgstr "An Cath do Wesnoth"
+msgstr "An Cath ar son Wesnoth"
 
 #: src/game.cpp:960 src/game.cpp:978
 msgid "The file you have tried to load is corrupt"
@@ -3408,7 +3435,7 @@ msgstr ""
 
 #: src/game.cpp:1325
 msgid "Don’t show again"
-msgstr ""
+msgstr "Ná taispeáin arís!"
 
 #: src/game.cpp:1396
 msgid "Error while starting server: "
@@ -3443,11 +3470,12 @@ msgstr ""
 
 #: src/game.cpp:1588
 msgid "' (The game will now exit)"
-msgstr ""
+msgstr "' (Scoirfidh é an cluiche anois)"
 
 #: src/game_config.cpp:302
+#, fuzzy
 msgid "Invalid color range: "
-msgstr ""
+msgstr "Taispeáin Cúrsóirí Daite"
 
 #: src/game_events.cpp:178
 msgid "Error: "
@@ -3475,7 +3503,7 @@ msgstr "Aois anaithnid"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:266 src/multiplayer_lobby.cpp:501
 msgid "Remote scenario"
-msgstr ""
+msgstr "Cianmisean"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:274 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario: $scenario_id"
@@ -3487,7 +3515,7 @@ msgstr "Misean anaithnid"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:285 src/multiplayer_lobby.cpp:517
 msgid "Reloaded game"
-msgstr ""
+msgstr "Cluiche athlódáilte"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:533
 msgid "Turn "
@@ -3533,12 +3561,14 @@ msgid "In lobby"
 msgstr "I bhforhalla"
 
 #: src/gui/dialogs/lobby_player_info.cpp:129
+#, fuzzy
 msgid "On friends list"
-msgstr ""
+msgstr "&Réim aistriúcháin scáthaithe"
 
 #: src/gui/dialogs/lobby_player_info.cpp:134
+#, fuzzy
 msgid "On ignores list"
-msgstr ""
+msgstr "&Réim aistriúcháin scáthaithe"
 
 #: src/gui/dialogs/lobby_player_info.cpp:139
 msgid "Neither a friend nor ignored"
@@ -3557,8 +3587,9 @@ msgid "The End"
 msgstr "Deaireadh Sceil"
 
 #: src/language.cpp:102
+#, fuzzy
 msgid "System default language"
-msgstr ""
+msgstr "(Bain feidhm as an béarla réamhshocraithe)"
 
 #: src/leader_list.cpp:138 src/menu_events.cpp:1532
 #: src/multiplayer_connect.cpp:229 src/multiplayer_connect.cpp:273
@@ -3584,24 +3615,26 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:222
+#, fuzzy
 msgid "Initializing user interface"
-msgstr ""
+msgstr "Fuaimeanna Comhéadan Úsáideora"
 
 #: src/loadscreen.cpp:223
+#, fuzzy
 msgid "Loading game configuration"
-msgstr ""
+msgstr "Cairde i Cluiche"
 
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
 msgid "Verifying cache"
-msgstr "Fíorú taisc"
+msgstr "Taisc a fíorú "
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
 msgid "Reading files and creating cache"
-msgstr ""
+msgstr "Comhaid a léamh agus teasc a cruthú"
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
 msgid "Reading unit files"
-msgstr "Léamh comhaid aonad"
+msgstr "Comhaid aonad a léamh"
 
 #: src/loadscreen.cpp:227
 msgid "Reinitialize fonts for the current language"
@@ -3613,15 +3646,15 @@ msgstr ""
 
 #: src/loadscreen.cpp:229
 msgid "Loading title screen"
-msgstr "Lódáilte scáileán theideal"
+msgstr "Scáileán theideal a lódáilte"
 
 #: src/loadscreen.cpp:230
 msgid "Loading data files"
-msgstr "Lódáilte comhaid sonraí"
+msgstr "Comhaid sonraí a lódáilte"
 
 #: src/loadscreen.cpp:234
 msgid "Loading level"
-msgstr "Lódáil an leibhéal"
+msgstr "Leibhéal a lódáil"
 
 #: src/loadscreen.cpp:235
 msgid "Initializing teams"
@@ -3637,7 +3670,7 @@ msgstr "Réimniú teaispeáint"
 
 #: src/loadscreen.cpp:238
 msgid "Building terrain rules"
-msgstr "Tiomsú rialacha tír-raon"
+msgstr "Rialacha tír-raon a tiomsú"
 
 #: src/loadscreen.cpp:240
 msgid "Starting game"
@@ -3763,6 +3796,8 @@ msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
+"Bun\n"
+"Ioncam"
 
 #: src/menu_events.cpp:504
 msgid ""
@@ -3962,7 +3997,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2136
 msgid " No help available."
-msgstr ""
+msgstr " Ní infhaighte é cabhair."
 
 #: src/menu_events.cpp:2141
 msgid "Usage:"
@@ -3973,12 +4008,13 @@ msgid "aliases:"
 msgstr "ainmneacha bréige:"
 
 #: src/menu_events.cpp:2267
+#, fuzzy
 msgid "(A) - admin command"
-msgstr ""
+msgstr "Ordú teipthe: %s"
 
 #: src/menu_events.cpp:2274 src/menu_events.cpp:2479
 msgid "(admin only)"
-msgstr ""
+msgstr "(riarthóir amháin)"
 
 #: src/menu_events.cpp:2294
 msgid ""
@@ -4043,12 +4079,14 @@ msgid "<nick> <message>"
 msgstr "<leasainm> <teachtaireacht>"
 
 #: src/menu_events.cpp:2333
+#, fuzzy
 msgid "<level> <domain>"
-msgstr ""
+msgstr "Lbhl."
 
 #: src/menu_events.cpp:2333
+#, fuzzy
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #: src/menu_events.cpp:2335
 msgid "Add a nick to your ignores list."
@@ -4067,8 +4105,9 @@ msgid "Show your ignores and friends list."
 msgstr ""
 
 #: src/menu_events.cpp:2344
+#, fuzzy
 msgid "Display version information."
-msgstr ""
+msgstr "Taispeáin uimhreacha na &línte"
 
 #: src/menu_events.cpp:2346
 msgid "<password> <email (optional)>"
@@ -4111,12 +4150,14 @@ msgid "Part a room."
 msgstr "Scar seomra."
 
 #: src/menu_events.cpp:2362
+#, fuzzy
 msgid "List room members."
-msgstr ""
+msgstr "B<room_save_file>"
 
 #: src/menu_events.cpp:2364
+#, fuzzy
 msgid "List available rooms."
-msgstr ""
+msgstr "Níl an tuarascáil infhaighte."
 
 #: src/menu_events.cpp:2366
 msgid "<room> <msg>"
@@ -4127,24 +4168,27 @@ msgid "Room message."
 msgstr "Teachtaireacht seomra."
 
 #: src/menu_events.cpp:2368
+#, fuzzy
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "Feachtas"
 
 #: src/menu_events.cpp:2368
+#, fuzzy
 msgid "Room query."
-msgstr ""
+msgstr "Seomra Ríchathaoir"
 
 #: src/menu_events.cpp:2471
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
 #: src/menu_events.cpp:2477
+#, fuzzy
 msgid "(debug command)"
-msgstr ""
+msgstr "Ordú teipthe: %s"
 
 #: src/menu_events.cpp:2478
 msgid "(network only)"
-msgstr ""
+msgstr "(líonra amháin)"
 
 #: src/menu_events.cpp:2503
 msgid "Refresh gui."
@@ -4168,15 +4212,16 @@ msgstr ""
 
 #: src/menu_events.cpp:2510
 msgid "Clear chat history."
-msgstr ""
+msgstr "Glan stair comhrá."
 
 #: src/menu_events.cpp:2512
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
 #: src/menu_events.cpp:2514
+#, fuzzy
 msgid "Debug foreground terrain."
-msgstr ""
+msgstr "Tiomsú rialacha tír-raon"
 
 #: src/menu_events.cpp:2516
 msgid "Debug layers from terrain under the mouse."
@@ -4184,7 +4229,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2517
 msgid "Show fps."
-msgstr ""
+msgstr "Taispeáin FPS."
 
 #: src/menu_events.cpp:2519
 msgid "Save game."
@@ -4199,12 +4244,14 @@ msgid "Save and quit."
 msgstr "Sábháil agus scoir."
 
 #: src/menu_events.cpp:2528
+#, fuzzy
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "B<replay_save_path>"
 
 #: src/menu_events.cpp:2530
+#, fuzzy
 msgid "Disable autosaves."
-msgstr ""
+msgstr "Díchumasaigh fógraí"
 
 #: src/menu_events.cpp:2532
 msgid "<id>"
@@ -4247,12 +4294,14 @@ msgid "Turn debug mode off."
 msgstr ""
 
 #: src/menu_events.cpp:2546 src/menu_events.cpp:2550
+#, fuzzy
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "Ordú teipthe: %s"
 
 #: src/menu_events.cpp:2546
+#, fuzzy
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Ní féidir an ríomhoideas a rith:"
 
 #: src/menu_events.cpp:2548
 msgid "Grant higher privileges to Lua scripts."
@@ -4267,24 +4316,27 @@ msgid "Launch the gamestate inspector"
 msgstr ""
 
 #: src/menu_events.cpp:2554
+#, fuzzy
 msgid "Manage persistence data"
-msgstr ""
+msgstr "Lódáilte comhaid sonraí"
 
 #: src/menu_events.cpp:2556
+#, fuzzy
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "Ordú teipthe: %s"
 
 #: src/menu_events.cpp:2556
 msgid "Set or show alias to a command"
 msgstr ""
 
 #: src/menu_events.cpp:2558
+#, fuzzy
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<sonra> <fiúntas>"
 
 #: src/menu_events.cpp:2558
 msgid "Set a scenario variable."
-msgstr ""
+msgstr "Socraigh athróg misin"
 
 #: src/menu_events.cpp:2560
 msgid "<var>"
@@ -4292,7 +4344,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2560
 msgid "Show a scenario variable."
-msgstr ""
+msgstr "Taispeáin athróg misin."
 
 #: src/menu_events.cpp:2562
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -4323,8 +4375,9 @@ msgid "Give gold to the current player."
 msgstr ""
 
 #: src/menu_events.cpp:2581
+#, fuzzy
 msgid "Fire a game event."
-msgstr ""
+msgstr "Cairde i Cluiche"
 
 #: src/menu_events.cpp:2584
 msgid "Toggle overlaying of x,y coordinates on hexes."
@@ -4339,16 +4392,18 @@ msgid "Toggle planning mode."
 msgstr "Scoránaigh mód pleanála."
 
 #: src/menu_events.cpp:2633
+#, fuzzy
 msgid "Unknown debug level: '$level'."
-msgstr ""
+msgstr "(Leibhéal Meánach, 9 misin.)"
 
 #: src/menu_events.cpp:2635 src/menu_events.cpp:2644
 msgid "error"
 msgstr "earráid"
 
 #: src/menu_events.cpp:2642
+#, fuzzy
 msgid "Unknown debug domain: '$domain'."
-msgstr ""
+msgstr "Cruthaigh Aonad (Dífhabhtaigh!)"
 
 #: src/menu_events.cpp:2651
 msgid "Switched domain: '$domain' to level: '$level'."
@@ -4356,11 +4411,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2722
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "cogar a thabhairt do $receiver"
 
 #: src/menu_events.cpp:2729 src/multiplayer_ui.cpp:542
 msgid "whisper: $sender"
-msgstr ""
+msgstr "cogar: $sender"
 
 #: src/menu_events.cpp:2825 src/menu_events.cpp:2844
 #: src/multiplayer_connect.cpp:670
@@ -4368,8 +4423,9 @@ msgid "(empty)"
 msgstr "(folamh)"
 
 #: src/menu_events.cpp:2825 src/menu_events.cpp:2831 src/menu_events.cpp:2881
+#, fuzzy
 msgid "ignores list"
-msgstr ""
+msgstr "Réim Comhaid"
 
 #: src/menu_events.cpp:2831
 msgid "Added to ignore list: $nick"
@@ -4388,8 +4444,9 @@ msgid "Added to friends list: $nick"
 msgstr ""
 
 #: src/menu_events.cpp:2867
+#, fuzzy
 msgid "Removed from list: $nick"
-msgstr ""
+msgstr "Roghnaigh béarla ón réim de bhéarlaí aitheanta"
 
 #: src/menu_events.cpp:2867 src/menu_events.cpp:2885
 msgid "friends and ignores list"
@@ -4457,16 +4514,18 @@ msgid "Choose Scenario (Debug!)"
 msgstr "Roghnaigh Misean (Dífhabhtaigh)"
 
 #: src/menu_events.cpp:3362
+#, fuzzy
 msgid "Debug mode activated!"
-msgstr ""
+msgstr "Scoránaigh mód pleanála"
 
 #: src/menu_events.cpp:3365
 msgid "Debug mode not available in network games"
 msgstr ""
 
 #: src/menu_events.cpp:3370
+#, fuzzy
 msgid "Debug mode deactivated!"
-msgstr ""
+msgstr "Scoránaigh mód pleanála"
 
 #: src/menu_events.cpp:3381
 msgid "Unsafe Lua scripts."
@@ -4480,12 +4539,14 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:3385
+#, fuzzy
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Scoránaigh mód pleanála"
 
 #: src/menu_events.cpp:3428
+#, fuzzy
 msgid "Variable not found"
-msgstr ""
+msgstr "Níl breathnóirí ceadaithe"
 
 #: src/menu_events.cpp:3472
 msgid ""
@@ -4506,12 +4567,14 @@ msgid "Invalid location"
 msgstr "Suíomh neamhbhailí"
 
 #: src/menu_events.cpp:3581
+#, fuzzy
 msgid "Planning mode activated!"
-msgstr ""
+msgstr "Scoránaigh mód pleanála"
 
 #: src/menu_events.cpp:3584
+#, fuzzy
 msgid "Planning mode deactivated!"
-msgstr ""
+msgstr "Scoránaigh mód pleanála"
 
 #: src/menu_events.cpp:3592
 msgid "ai"
@@ -4519,7 +4582,7 @@ msgstr "is"
 
 #: src/menu_events.cpp:3602 src/menu_events.cpp:3617
 msgid "prompt^Command:"
-msgstr ""
+msgstr "Ordú:"
 
 #: src/mouse_events.cpp:635
 msgid ""
@@ -4537,11 +4600,12 @@ msgstr "Roghnaigh arm:"
 
 #: src/multiplayer.cpp:143 src/multiplayer.cpp:180
 msgid "Connecting to Server..."
-msgstr ""
+msgstr "Nasctha chuig Freastalaí..."
 
 #: src/multiplayer.cpp:153
+#, fuzzy
 msgid "Reading from Server..."
-msgstr ""
+msgstr "Freastalaí Wesnoth Oifigiúil"
 
 #: src/multiplayer.cpp:163
 msgid ""
@@ -4558,8 +4622,9 @@ msgid "Bad data received from server"
 msgstr ""
 
 #: src/multiplayer.cpp:304
+#, fuzzy
 msgid "You must login first."
-msgstr ""
+msgstr "Ní foláir nó go bhfuil tú an Tallan clúiteach."
 
 #: src/multiplayer.cpp:306
 msgid "The nick '$nick' is already taken."
@@ -4691,8 +4756,9 @@ msgid "I’m Ready"
 msgstr "Táim Réidh"
 
 #: src/multiplayer_connect.cpp:987
+#, fuzzy
 msgid "Add named local player"
-msgstr ""
+msgstr "Athsholáthair le imreoir logánta"
 
 #: src/multiplayer_connect.cpp:996
 msgid "The scenario is invalid because it has no id."
@@ -4723,8 +4789,9 @@ msgid "Empty"
 msgstr "Folamh"
 
 #: src/multiplayer_connect.cpp:1585
+#, fuzzy
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "Aois anaithnid: $era_id"
 
 #: src/multiplayer_connect.cpp:1610
 msgid "Defeat enemy leader(s)"
@@ -4756,15 +4823,16 @@ msgstr "Aois:"
 
 #: src/multiplayer_create.cpp:83
 msgid "Map to play:"
-msgstr ""
+msgstr "Léarscáil go imirt:"
 
 #: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:276
 msgid "Use map settings"
-msgstr ""
+msgstr "Úsáid roghanna léarscáil"
 
 #: src/multiplayer_create.cpp:85
+#, fuzzy
 msgid "Random start time"
-msgstr ""
+msgstr "Tús randamach"
 
 #: src/multiplayer_create.cpp:86
 msgid "Fog Of War"
@@ -4784,7 +4852,7 @@ msgstr "Socruithe..."
 
 #: src/multiplayer_create.cpp:93
 msgid "Set Password..."
-msgstr ""
+msgstr "Socraigh Pasfhocal"
 
 #: src/multiplayer_create.cpp:110
 msgid "Load Game..."
@@ -4823,8 +4891,11 @@ msgid "The amount of experience a unit needs to advance"
 msgstr ""
 
 #: src/multiplayer_create.cpp:187
+#, fuzzy
 msgid "Use scenario specific settings"
 msgstr ""
+"Óir i\n"
+"dTús Baire"
 
 #: src/multiplayer_create.cpp:190
 msgid "Randomize time of day in begin"
@@ -4844,39 +4915,43 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:203
 msgid "Share View"
-msgstr ""
+msgstr "Comhroinn Amharc"
 
 #: src/multiplayer_create.cpp:204
 msgid "Share Maps"
-msgstr ""
+msgstr "Comhroinn Léarscáileanna"
 
 #: src/multiplayer_create.cpp:205
 msgid "Share None"
-msgstr ""
+msgstr "Comhroinn Neamhní"
 
 #: src/multiplayer_create.cpp:215
+#, fuzzy
 msgid "No eras found."
-msgstr ""
+msgstr "Níor aimsíodh comhaid i:"
 
 #: src/multiplayer_create.cpp:216
+#, fuzzy
 msgid "No eras found"
-msgstr ""
+msgstr "Níor aimsíodh comhaid i:"
 
 #: src/multiplayer_create.cpp:229
 msgid "$login|’s game"
 msgstr "Cluiche $login|"
 
 #: src/multiplayer_create.cpp:290
+#, fuzzy
 msgid "Invalid era selected"
-msgstr ""
+msgstr "Aois anaithnid"
 
 #: src/multiplayer_create.cpp:336
 msgid "The map is invalid."
 msgstr "Tá an léarscáil anaithnid"
 
 #: src/multiplayer_create.cpp:338
+#, fuzzy
 msgid "You must enter a name."
-msgstr ""
+msgstr "Ní foláir nó go bhfuil tú an Tallan clúiteach."
 
 #: src/multiplayer_create.cpp:357
 msgid "Turns: "
@@ -4888,7 +4963,7 @@ msgstr "Sealanna gan teorainn"
 
 #: src/multiplayer_create.cpp:387
 msgid "Init. Limit: "
-msgstr ""
+msgstr "Tústeorainn"
 
 #: src/multiplayer_create.cpp:392
 msgid "Turn Bonus: "
@@ -4900,7 +4975,7 @@ msgstr "Taiscumar: "
 
 #: src/multiplayer_create.cpp:401
 msgid "Action Bonus: "
-msgstr ""
+msgstr "Bónas Gníomh: "
 
 #: src/multiplayer_create.cpp:408
 msgid "Village Gold: "
@@ -4920,7 +4995,7 @@ msgstr "Méid: "
 
 #: src/multiplayer_lobby.cpp:124
 msgid "--no games open--"
-msgstr ""
+msgstr "--níl cluichí oscailte--"
 
 #: src/multiplayer_lobby.cpp:158
 msgid " (Unknown Era)"
@@ -4928,7 +5003,7 @@ msgstr " (Aois Anaithnid)"
 
 #: src/multiplayer_lobby.cpp:540 src/multiplayer_lobby.cpp:880
 msgid "Password Required"
-msgstr ""
+msgstr "Pasfhocal Riachtanach"
 
 #: src/multiplayer_lobby.cpp:724 src/multiplayer_wait.cpp:178
 msgid "Game Lobby"
@@ -4944,7 +5019,7 @@ msgstr "Téigh isteach an cluiche"
 
 #: src/multiplayer_lobby.cpp:732
 msgid "Quick Replays"
-msgstr ""
+msgstr "Athfhéachaintí Tapa"
 
 #: src/multiplayer_lobby.cpp:733
 msgid "Preferences"
@@ -4956,7 +5031,7 @@ msgstr "Dún"
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Apply Filter"
-msgstr ""
+msgstr "Cuir Scagaire"
 
 #: src/multiplayer_lobby.cpp:736
 msgid "Invert"
@@ -5033,15 +5108,17 @@ msgstr ""
 
 #: src/multiplayer_wait.cpp:203
 msgid "Getting game data..."
-msgstr ""
+msgstr "Sonraí cluiche a faighte"
 
 #: src/multiplayer_wait.cpp:265
+#, fuzzy
 msgid "No era information found."
-msgstr ""
+msgstr "Níor aimsíodh comhaid i:"
 
 #: src/multiplayer_wait.cpp:269
+#, fuzzy
 msgid "No multiplayer sides found"
-msgstr ""
+msgstr "Níor aimsíodh comhaid i:"
 
 #: src/multiplayer_wait.cpp:318
 msgid "Choose your faction:"
@@ -5049,7 +5126,7 @@ msgstr "Roghnaigh do faicsean:"
 
 #: src/multiplayer_wait.cpp:318
 msgid "Starting position: "
-msgstr ""
+msgstr "Suíomh tosaithe: "
 
 #: src/multiplayer_wait.cpp:528
 msgid "multiplayer_starting_gold^Gold"
@@ -5061,8 +5138,9 @@ msgstr[3] "Ór"
 msgstr[4] "Ór"
 
 #: src/network.cpp:109
+#, fuzzy
 msgid "invalid network handle"
-msgstr ""
+msgstr "Tá an léarscáil anaithnid"
 
 #: src/network.cpp:142 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
@@ -5119,7 +5197,7 @@ msgstr "Díomua"
 
 #: src/playcampaign.cpp:138 src/playcampaign.cpp:178
 msgid "You have been defeated!"
-msgstr ""
+msgstr "Is díomuach tú!"
 
 #: src/playcampaign.cpp:385
 msgid "Error while reading the WML: "
@@ -5127,7 +5205,7 @@ msgstr ""
 
 #: src/playcampaign.cpp:420 src/playsingle_controller.cpp:442
 msgid "Game Over"
-msgstr ""
+msgstr "Cluiche Thart"
 
 #: src/playcampaign.cpp:421
 msgid "This scenario has ended. Do you want to continue the campaign?"
@@ -5135,7 +5213,7 @@ msgstr ""
 
 #: src/playcampaign.cpp:448
 msgid "Downloading next scenario..."
-msgstr ""
+msgstr "Misean eile á íosódáil"
 
 #: src/playcampaign.cpp:602
 msgid "Unknown scenario: '$scenario|'"
@@ -5146,8 +5224,9 @@ msgid "$name has taken control"
 msgstr ""
 
 #: src/playmp_controller.cpp:93
+#, fuzzy
 msgid "Turn changed"
-msgstr ""
+msgstr "Bónas Seal:"
 
 #: src/playmp_controller.cpp:224
 msgid "Undoing moves not yet transmitted to the server."
@@ -5168,8 +5247,9 @@ msgid ""
 msgstr ""
 
 #: src/playsingle_controller.cpp:251
+#, fuzzy
 msgid "Remaining gold: "
-msgstr ""
+msgstr "Móran óir"
 
 #: src/playsingle_controller.cpp:255
 msgid "Early finish bonus: "
@@ -5180,8 +5260,9 @@ msgid "per turn"
 msgstr "sár seal"
 
 #: src/playsingle_controller.cpp:258
+#, fuzzy
 msgid "Turns finished early: "
-msgstr ""
+msgstr "Bónas luath-críochnaigh."
 
 #: src/playsingle_controller.cpp:260
 msgid "Bonus: "
@@ -5192,16 +5273,18 @@ msgid "Gold: "
 msgstr "Ór: "
 
 #: src/playsingle_controller.cpp:267
+#, fuzzy
 msgid "Carry over percentage: "
-msgstr ""
+msgstr "Tá deireadh leis. Tá mé an tuar nite."
 
 #: src/playsingle_controller.cpp:270
 msgid "Bonus Gold: "
 msgstr "Ór Bónas: "
 
 #: src/playsingle_controller.cpp:272
+#, fuzzy
 msgid "Retained Gold: "
-msgstr ""
+msgstr "Móran óir"
 
 #: src/playsingle_controller.cpp:285
 msgid ""
@@ -5236,7 +5319,7 @@ msgstr[2] ""
 
 #: src/playsingle_controller.cpp:443
 msgid "The game is over."
-msgstr ""
+msgstr "Tá an cluiche thart."
 
 #: src/playsingle_controller.cpp:523
 msgid ""
@@ -5258,7 +5341,7 @@ msgstr "Bua"
 
 #: src/playsingle_controller.cpp:912
 msgid "You have emerged victorious!"
-msgstr ""
+msgstr "Tá an bua agat!"
 
 #: src/playturn.cpp:219
 msgid "Replace with AI"
@@ -5299,12 +5382,13 @@ msgid "Level: "
 msgstr "Leibhéal: "
 
 #: src/reports.cpp:183
+#, fuzzy
 msgid "No advancement"
-msgstr ""
+msgstr "B<--no-delay>"
 
 #: src/reports.cpp:185
 msgid "Advances to:"
-msgstr ""
+msgstr "Ardóidh go:"
 
 #: src/reports.cpp:215
 msgid "Trait: "
@@ -5392,7 +5476,7 @@ msgstr "Damàiste"
 
 #: src/reports.cpp:460
 msgid "Base damage: "
-msgstr ""
+msgstr "Bundamaiste: "
 
 #: src/reports.cpp:462
 msgid "Time of day: "
@@ -5412,7 +5496,7 @@ msgstr "Ionsaithe:"
 
 #: src/reports.cpp:476
 msgid "Base attacks: "
-msgstr ""
+msgstr "Ionsaithe bunaidh: "
 
 #: src/reports.cpp:478
 msgid "Swarm: "
@@ -5428,7 +5512,7 @@ msgstr "Cineál damaiste: "
 
 #: src/reports.cpp:492
 msgid "Damage versus: "
-msgstr ""
+msgstr "Damaiste vs: "
 
 #: src/reports.cpp:536
 msgid "Accuracy:"
@@ -5537,8 +5621,9 @@ msgid "Unterminated [element] tag"
 msgstr ""
 
 #: src/serialization/parser.cpp:165 src/serialization/parser.cpp:201
+#, fuzzy
 msgid "Invalid tag name"
-msgstr ""
+msgstr "Athróg ainm folamh"
 
 #: src/serialization/parser.cpp:168
 msgid "Unterminated [+element] tag"
@@ -5569,8 +5654,9 @@ msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 
 #: src/serialization/parser.cpp:260 src/serialization/parser.cpp:288
+#, fuzzy
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Teaghrán le haimsiú:"
 
 #: src/serialization/parser.cpp:335
 msgid "$error, value '$value', previous '$previous_value' at $pos"
@@ -5590,7 +5676,7 @@ msgstr "Athghairmeacha"
 
 #: src/statistics_dialog.cpp:78 src/statistics_dialog.cpp:147
 msgid "Advancements"
-msgstr ""
+msgstr "Arduithe"
 
 #: src/statistics_dialog.cpp:82 src/statistics_dialog.cpp:155
 msgid "Losses"
@@ -5642,7 +5728,7 @@ msgstr "Baile Namhaid"
 
 #: src/terrain.cpp:169
 msgid "Owned village"
-msgstr ""
+msgstr "Baile úinéireacht"
 
 #: src/theme.cpp:314
 msgid "border_size should be between 0.0 and 0.5."
@@ -5669,34 +5755,36 @@ msgid "moves"
 msgstr "gluaiseachtaí"
 
 #: src/unit.cpp:2419 src/unit.cpp:2553
+#, fuzzy
 msgid "XP to advance"
-msgstr ""
+msgstr "Cosán chuig an Bunachar Sonraí:"
 
 #: src/unit.cpp:2546
 msgid " move"
 msgstr "aistriú"
 
 #: src/unit.cpp:2561
+#, fuzzy
 msgid "$effect_description per level"
-msgstr ""
+msgstr "$attack_list|: $effect_description"
 
 #: src/unit_types.cpp:190 src/unit_types.cpp:260
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "damáiste"
-msgstr[1] "dhamáistí"
-msgstr[2] "dhamáistí"
-msgstr[3] ""
-msgstr[4] "damáistí"
+msgstr[1] "dhamáiste"
+msgstr[2] "dhamáiste"
+msgstr[3] "ndamáiste"
+msgstr[4] "damáiste"
 
 #: src/unit_types.cpp:201 src/unit_types.cpp:268
 msgid "strike"
 msgid_plural "strikes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
+msgstr[0] "bualadh"
+msgstr[1] "bhualadh"
+msgstr[2] "bhualadh"
+msgstr[3] "mbualadh"
+msgstr[4] "bhualadh"
 
 #: src/unit_types.cpp:213
 #, no-c-format
@@ -5710,7 +5798,7 @@ msgstr "% coiscim"
 
 #: src/unit_types.cpp:912
 msgid "No description available."
-msgstr "Níl an tuarascáil infhaighte."
+msgstr "Ní infhaighte é tuarascáil."
 
 #: src/unit_types.cpp:968
 msgid "chaotic"

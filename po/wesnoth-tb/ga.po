@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-01-15 11:52+0100\n"
-"PO-Revision-Date: 2011-04-02 22:17-0800\n"
+"PO-Revision-Date: 2011-04-15 22:28-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -421,7 +421,7 @@ msgstr ""
 #. [scenario]: id=02_The_Chase
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:4
 msgid "The Chase"
-msgstr "Fiach"
+msgstr "An Fiach"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:30
@@ -479,7 +479,7 @@ msgstr "Nil-Gailion"
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:150
 msgid "Elves"
-msgstr "Sióga"
+msgstr "Eilbh"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:240
@@ -643,10 +643,13 @@ msgstr "Breana"
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:420
+#, fuzzy
 msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
 msgstr ""
+"Dia Dhaoibh. Is mise Breana, an Carbad ar Iomramh. Chonnaic mé sibh téigh sa "
+"tóir ar na neamh-mharbha bréana."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:424
@@ -735,7 +738,7 @@ msgstr ""
 #. [scenario]: id=03_Guarded_Castle
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:16
 msgid "Guarded Castle"
-msgstr ""
+msgstr "Caisléan Cosanta"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:54
@@ -830,32 +833,32 @@ msgstr ""
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:313
 msgid "Halt! Friend or foe? Give the password."
-msgstr ""
+msgstr "Stad! Cairde nó naimhde? Tabhair dom an pasfhocal."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:318
 msgid "The password is"
-msgstr "Is é an focal faire:"
+msgstr "Is:"
 
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:320
 msgid "$first_password_1|!"
-msgstr "$first_password_1|!"
+msgstr "$first_password_1|  é an pasfhocal!"
 
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:326
 msgid "$first_password_2|!"
-msgstr "$first_password_2|!"
+msgstr "$first_password_2|  é an pasfhocal!"
 
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:332
 msgid "$first_password_3|!"
-msgstr "$first_password_3|!"
+msgstr "$first_password_3|  é an pasfhocal!"
 
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:338
 msgid "$first_password_4|!"
-msgstr "$first_password_4|!"
+msgstr "$first_password_4|  é an pasfhocal!"
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:354
@@ -872,7 +875,7 @@ msgstr ""
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:380
 msgid "Wrong! Die!"
-msgstr ""
+msgstr "Níl aon chuid den cheart agat! Faigh bás, a naimhde!"
 
 #. [message]: speaker=Knago-Brek
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:394
@@ -931,25 +934,25 @@ msgstr ""
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:485
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:601
 msgid "$second_password_1|!"
-msgstr "$second_password_1|!"
+msgstr "$second_password_1|  é an pasfhocal!"
 
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:491
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:607
 msgid "$second_password_2|!"
-msgstr "$second_password_2|!"
+msgstr "$second_password_2|  é an pasfhocal!"
 
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:497
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:613
 msgid "$second_password_3|!"
-msgstr "$second_password_3|!"
+msgstr "$second_password_3|  é an pasfhocal!"
 
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:503
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:619
 msgid "$second_password_4|!"
-msgstr "$second_password_4|!"
+msgstr "$second_password_4|  é an pasfhocal!"
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:518
@@ -985,7 +988,7 @@ msgstr "‘Taireách’? Cad é nó cé atá Taireách?"
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:678
 #, fuzzy
 msgid "There’s a key in his robes."
-msgstr "Tá an eochair sa a chuid róbaí ann."
+msgstr "Tá eochair sa a chuid róbaí ann."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:682
@@ -1297,7 +1300,7 @@ msgstr ""
 #. [scenario]: id=05_Epilogue
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:4
 msgid "A Tale of Two Brothers — Epilogue"
-msgstr "Scéal ar Dhá Deartháireacha — Iarfhocal"
+msgstr "Scéal na Beirt Dheartháireacha — Iarfhocal"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:25
