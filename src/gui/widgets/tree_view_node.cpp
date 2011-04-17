@@ -214,7 +214,7 @@ void ttree_view_node::unfold(const texpand_mode /*mode*/)
 void ttree_view_node::clear()
 {
 	/** @todo Also try to find the optimal width. */
-	unsigned height_reduction = 0;
+	int height_reduction = 0;
 
 	if(!is_folded()) {
 		foreach(const ttree_view_node& node, children_) {
