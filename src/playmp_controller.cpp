@@ -241,7 +241,7 @@ void playmp_controller::play_human_turn(){
 
 			play_slice();
 			check_end_level();
-		} catch(end_level_exception& e) {
+		} catch(const end_level_exception&) {
 			turn_data_->send_data();
 			throw;
 		}
@@ -404,7 +404,7 @@ void playmp_controller::wait_for_upload()
 				}
 			}
 
-		} catch(end_level_exception& e) {
+		} catch(const end_level_exception&) {
 			turn_data_->send_data();
 			throw;
 		}
