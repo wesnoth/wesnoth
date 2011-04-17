@@ -1793,10 +1793,10 @@ struct lua_calculator : pathfind::cost_calculator
 	int index;
 
 	lua_calculator(lua_State *L_, int i): L(L_), index(i) {}
-	double cost(const map_location &loc, double so_far) const;
+	double cost(const map_location &loc, const double so_far) const;
 };
 
-double lua_calculator::cost(const map_location &loc, double so_far) const
+double lua_calculator::cost(const map_location &loc, const double so_far) const
 {
 	// Copy the user function and push the location and current cost.
 	lua_pushvalue(L, index);
