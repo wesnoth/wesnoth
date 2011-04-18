@@ -48,7 +48,7 @@ namespace wb
 	, loc_(curr_unit.get_location())
 	, valid_(true)
 	{
-		assert(unit_);
+		resources::screen->invalidate(loc_);
 	}
 
 	suppose_dead::~suppose_dead()
