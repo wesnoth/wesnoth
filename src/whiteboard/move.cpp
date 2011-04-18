@@ -98,11 +98,12 @@ move::move(size_t team_index, const pathfind::marked_route& route,
 
 move::~move()
 {
+	// The ghost of the last fake unit in a chain of planned actions is supposed to look different
+	// If the last remaining action of the unit that owned this move is a move as well,
+	// adjust its appearance accordingly.
 	if (resources::teams)
 	{
 		side_actions_ptr side_actions = resources::teams->at(team_index()).get_side_actions();
-
-		LOG_WB << "Entering ~move, side_actions size is " << side_actions->size() << "\n";
 
 		side_actions::iterator action_it = side_actions->find_last_action_of(unit_);
 		if (action_it != side_actions->end())
@@ -168,7 +169,7 @@ bool move::execute()
 	}
 	else if (final_location == route_->steps.front())
 	{
-		LOG_WB << "Move execution resulted in zero movement.\n";
+		WRN_WB << "Move execution resulted in zero movement.\n";
 	}
 	else if (final_location.valid() &&
 			(unit_it = resources::units->find(final_location)) != resources::units->end()
@@ -179,9 +180,9 @@ bool move::execute()
 			// Move was interrupted, probably by enemy unit sighted: let the game take care of it
 			move_finished_completely = true;
 		}
-		else // TODO: Verify this code path is possible...
+		else // @todo: Verify this code path is possible...
 		{
-			LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "), analyzing\n";
+			WRN_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "), analyzing\n";
 			std::vector<map_location>::iterator start_new_path;
 			bool found = false;
 			for (start_new_path = route_->steps.begin(); ((start_new_path != route_->steps.end()) && !found); ++start_new_path)
@@ -204,14 +205,14 @@ bool move::execute()
 			else //Unit ended up in location outside path, likely due to a WML event
 			{
 				move_finished_completely = true;
-				LOG_WB << "Unit ended up in location outside path during move execution.\n";
+				WRN_WB << "Unit ended up in location outside path during move execution.\n";
 			}
 		}
 	}
 	else //Unit disappeared from the map, likely due to a WML event
 	{
 		move_finished_completely = true;
-		LOG_WB << "Unit disappeared from map during move execution.\n";
+		WRN_WB << "Unit disappeared from map during move execution.\n";
 	}
 
 	if (!move_finished_completely)
@@ -260,10 +261,10 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	if (get_source_hex() == get_dest_hex())
 		return; //zero-hex move, used by attack subclass
 
-	//TODO: deal with multi-turn moves, which may for instance end their first turn
+	//@todo: deal with multi-turn moves, which may for instance end their first turn
 	// by capturing a village
 
-	//TODO: we may need to change unit status here and change it back in remove_temp_modifier
+	//@todo: we may need to change unit status here and change it back in remove_temp_modifier
 
 	unit_map::iterator unit_it = unit_map.find(get_source_hex());
 	assert(unit_it != unit_map.end());
@@ -316,7 +317,7 @@ void move::set_valid(bool valid)
 {
 	valid_ = valid;
 
-	//TODO: restore this once we have artwork for invalid arrows,
+	//@todo: restore this once we have artwork for invalid arrows,
 	// and if we decide not to delete them after all.
 //	if (valid_)
 //	{
@@ -335,7 +336,7 @@ void move::calculate_move_cost()
 	if (get_source_hex().valid() && get_dest_hex().valid() && get_source_hex() != get_dest_hex())
 	{
 
-		// TODO: find a better treatment of movement points when defining moves out-of-turn
+		// @todo: find a better treatment of movement points when defining moves out-of-turn
 		if(get_unit()->movement_left() - route_->move_cost < 0
 				&& resources::controller->current_side() == resources::screen->viewing_side()) {
 			WRN_WB << "Move defined with insufficient movement left.\n";
