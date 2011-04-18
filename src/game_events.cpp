@@ -3233,8 +3233,6 @@ namespace game_events {
 			return false;
 		}
 
-		resources::whiteboard->on_gamestate_change();
-
 		bool result = false;
 		while(events_queue.empty() == false) {
 			game_events::queued_event ev = events_queue.front();
@@ -3245,7 +3243,10 @@ namespace game_events {
 			// due to status changes by WML. Every event will flush the cache.
 			unit::clear_status_caches();
 
-			resources::lua_kernel->run_event(ev);
+			bool lua_event_triggered = resources::lua_kernel->run_event(ev);
+
+			if (lua_event_triggered)
+				resources::whiteboard->on_gamestate_change();
 
 			bool init_event_vars = true;
 
@@ -3263,7 +3264,10 @@ namespace game_events {
 
 				LOG_NG << "processing event '" << event_name << "'\n";
 				if(process_event(handler, ev))
+				{
+					resources::whiteboard->on_gamestate_change();
 					result = true;
+				}
 			}
 
 			// Only commit new handlers when finished iterating over event_handlers.
