@@ -132,7 +132,11 @@ bool move::execute()
 		return false;
 
 	if (get_source_hex() == get_dest_hex())
-		return true; //zero-hex move, probably used by attack subclass
+		return true; //zero-hex move, used by attack subclass
+
+	//Ensure destination hex is free
+	if (resources::units->find(get_dest_hex()) != resources::units->end())
+		return false;
 
 	LOG_WB << "Executing: " << shared_from_this() << "\n";
 
