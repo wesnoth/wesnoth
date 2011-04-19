@@ -1538,6 +1538,9 @@ public:
 			int resistance = 100 - atoi((*dam_it).second.c_str());
 			char resi[16];
 			snprintf(resi,sizeof(resi),"% 4d%%",resistance);	// range: -100% .. +70%
+			std::string resist = resi;
+			if (const size_t pos = resist.find('-') != std::string::npos)
+				resist.replace(pos, 1, utils::unicode_minus);
 			std::string color;
 			if (resistance < 0)
 				color = "red";
@@ -1554,7 +1557,7 @@ public:
 			str << "<format>color=" << color << " text='"<< resi << "'</format>";
 			const std::string markup = str.str();
 			str.str(clear_stringstream);
-			str << resi;
+			str << resist;
 			row.push_back(std::make_pair(markup,
 						     font::line_width(str.str(), normal_font_size)));
 			resistance_table.push_back(row);
