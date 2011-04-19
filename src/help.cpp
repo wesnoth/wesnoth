@@ -1555,7 +1555,7 @@ public:
 			std::string lang_weapon = string_table["type_" + dam_it->first];
 			push_tab_pair(row, lang_weapon);
 			std::stringstream str;
-			str << "<format>color=" << color << " text='"<< resi << "'</format>";
+			str << "<format>color=" << color << " text='"<< resist << "'</format>";
 			const std::string markup = str.str();
 			str.str(clear_stringstream);
 			str << resist;
