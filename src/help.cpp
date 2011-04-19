@@ -1489,7 +1489,7 @@ public:
 				push_tab_pair(row, lang_weapon);
 				push_tab_pair(row, lang_type);
 				attack_ss.str(clear_stringstream);
-				attack_ss << attack_it->damage() << '-' << attack_it->num_attacks() << " " << attack_it->accuracy_parry_description();
+				attack_ss << attack_it->damage() << "–" << attack_it->num_attacks() << " " << attack_it->accuracy_parry_description();
 				push_tab_pair(row, attack_ss.str());
 				attack_ss.str(clear_stringstream);
 				push_tab_pair(row, string_table["range_" + (*attack_it).range()]);
@@ -1628,7 +1628,7 @@ public:
 					// A 5 MP margin; if the movement costs go above
 					// the unit's max moves + 5, we replace it with dashes.
 					if(cannot_move && (moves > type_.movement() + 5)) {
-						str << "'-'";
+						str << "'‒'";
 					} else {
 						str << moves;
 					}
