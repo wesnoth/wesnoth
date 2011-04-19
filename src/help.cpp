@@ -1539,7 +1539,8 @@ public:
 			char resi[16];
 			snprintf(resi,sizeof(resi),"% 4d%%",resistance);	// range: -100% .. +70%
 			std::string resist = resi;
-			if (const size_t pos = resist.find('-') != std::string::npos)
+			const size_t pos = resist.find('-');
+			if (pos != std::string::npos)
 				resist.replace(pos, 1, utils::unicode_minus);
 			std::string color;
 			if (resistance < 0)
