@@ -889,7 +889,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 			 << att.damage << font::weapon_numbers_sep << att.num_blows
 			 << "  " << att_weapon_special << "\n"
 			 << font::color2markup(att_cth_color) << att.chance_to_hit << "%"
-			 << COLUMN_SEPARATOR << font::weapon_details << "- " << range << " -" << COLUMN_SEPARATOR
+			 << COLUMN_SEPARATOR << font::weapon_details << utils::unicode_em_dash + " " << range << " " + utils::unicode_em_dash << COLUMN_SEPARATOR
 			 << font::BOLD_TEXT << defw_name  << "\n"
 			 << def.damage << font::weapon_numbers_sep << def.num_blows
 			 << "  " << def_weapon_special << "\n"
