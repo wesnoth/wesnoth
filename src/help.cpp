@@ -1632,7 +1632,7 @@ public:
 					// A 5 MP margin; if the movement costs go above
 					// the unit's max moves + 5, we replace it with dashes.
 					if(cannot_move && (moves > type_.movement() + 5)) {
-						str << "'‒'";
+						str << utils::unicode_figure_dash;
 					} else {
 						str << moves;
 					}

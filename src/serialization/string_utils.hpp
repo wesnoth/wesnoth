@@ -41,6 +41,7 @@ namespace utils {
 const std::string unicode_minus = "−";
 const std::string unicode_en_dash = "–";
 const std::string unicode_em_dash = "—";
+const std::string unicode_figure_dash= "‒";
 
 bool isnewline(const char c);
 bool portable_isspace(const char c);
