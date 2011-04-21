@@ -73,7 +73,7 @@ void leader_list_manager::update_leader_list(int side_index)
 	if (side["random_faction"].to_bool()) {
 		if(leader_combo_ != NULL) {
 			std::vector<std::string> dummy;
-			dummy.push_back("-");
+			dummy.push_back(utils::unicode_em_dash);
 			leader_combo_->enable(false);
 			leader_combo_->set_items(dummy);
 			leader_combo_->set_selected(0);
@@ -118,7 +118,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 	if (leader == "random" || leader == "-" || leader == "?") {
 		// Assume random/unknown leader/faction == unknown gender
 		gender_ids_.push_back("null");
-		genders_.push_back("-");
+		genders_.push_back(utils::unicode_em_dash);
 		if (gender_combo_ != NULL) {
 			gender_combo_->enable(false);
 			gender_combo_->set_items(genders_);
