@@ -527,7 +527,7 @@ bool show_video_mode_dialog(display& disp)
 		if (res == current_res)
 			current_choice = static_cast<unsigned>(k);
 
-		option << res.first << "x" << res.second;
+		option << res.first << utils::unicode_multiplication_sign << res.second;
 		/*widescreen threshold is 16:10*/
 		if ((double)res.first/res.second >= 16.0/10.0)
 		  option << _(" (widescreen)");

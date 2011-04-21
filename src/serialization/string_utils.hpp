@@ -42,6 +42,7 @@ const std::string unicode_minus = "−";
 const std::string unicode_en_dash = "–";
 const std::string unicode_em_dash = "—";
 const std::string unicode_figure_dash = "‒";
+const std::string unicode_multiplication_sign = "×";
 
 bool isnewline(const char c);
 bool portable_isspace(const char c);
