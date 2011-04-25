@@ -355,7 +355,7 @@ size_t hash_value(const locator::value& val) {
 static std::set<std::string> fuzzy_localized_files;
 static bool localized_file_uptodate (const std::string& loc_file)
 {
-	if (fuzzy_localized_files.size() == 0) {
+	if (fuzzy_localized_files.empty()) {
 		// First call, parse track index to collect fuzzy files by path.
 		std::string fsep = "\xC2\xA6"; // UTF-8 for "broken bar"
 		std::string trackpath = get_binary_file_location("", "l10n-track");
