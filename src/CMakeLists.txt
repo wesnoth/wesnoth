@@ -829,6 +829,7 @@ if(ENABLE_TESTS)
 	target_link_libraries(test
 		wesnoth-core
 		wesnoth-game
+		wesnoth-lua
 		${game-external-libs}
 		boost_unit_test_framework
 	)
