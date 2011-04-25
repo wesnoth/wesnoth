@@ -111,10 +111,10 @@ namespace {
 			config cfg_;
 			const std::string file_;
 			const network::manager net_manager_;
-			const network::server_manager server_manager_;
 			std::map<std::string, std::string> hooks_;
 			input_stream* input_;
 			int compress_level_;
+			const network::server_manager server_manager_;
 
 	};
 
@@ -174,10 +174,10 @@ namespace {
 		cfg_(),
 		file_(cfgfile),
 		net_manager_(min_thread,max_thread),
-		server_manager_(load_config()),
 		hooks_(),
 		input_(0),
-		compress_level_(compress_level_) // Already set by load_config()
+		compress_level_(0), // Will be properly set by load_config()
+		server_manager_(load_config())
 	{
 #ifndef _MSC_VER
 		signal(SIGHUP, exit_sighup);
