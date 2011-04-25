@@ -123,6 +123,9 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	draw_coordinates_(false),
 	draw_terrain_codes_(false),
 	arrows_map_()
+#if defined(__GLIBC__)
+	, do_reverse_memcpy_workaround_(false)
+#endif
 {
 	if(non_interactive()
 		&& (get_video_surface() != NULL
