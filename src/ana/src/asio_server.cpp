@@ -62,25 +62,25 @@ asio_server::~asio_server()
 {
     io_service_.stop();
 
-    std::list< boost::thread* >::iterator it;
+    std::list< boost::thread* >::iterator thread_it;
 
-    it = io_threads_.begin();
+    thread_it = io_threads_.begin();
 
-    while (it != io_threads_.end())
+    while (thread_it != io_threads_.end())
     {
-        (*it)->join();
-        it = io_threads_.erase( it );
+        (*thread_it)->join();
+        thread_it = io_threads_.erase( thread_it );
     }
 
     /* Since the asio_client_proxy destuctor removes the client from client_proxies_
        I'll just delete every proxy from a different list. */
     std::list<client_proxy*> copy( client_proxies_ );
 
-    for (std::list<client_proxy*>::iterator it = copy.begin();
-         it != copy.end();
-         ++it)
+    for (std::list<client_proxy*>::iterator proxy_it = copy.begin();
+         proxy_it != copy.end();
+         ++proxy_it)
     {
-        delete *it;
+        delete *proxy_it;
     }
 
     assert( client_proxies_.empty() );
