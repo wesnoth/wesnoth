@@ -245,7 +245,7 @@ const language_def& get_locale()
 {
 	//TODO: Add in support for querying the locale on Windows
 
-	assert(known_languages.size() != 0);
+	assert(!known_languages.empty());
 
 	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
