@@ -932,7 +932,7 @@ void get_villages_phase::get_villages(
 		}
 	}
 
-	if(reachmap.size()) {
+	if(!reachmap.empty()) {
 		DBG_AI_TESTING_AI_DEFAULT << reachmap.size() << " units left after removing the ones who "
 			"can't reach a village, send the to the dispatcher.\n";
 
