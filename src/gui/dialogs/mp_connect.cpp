@@ -27,6 +27,7 @@
 #include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
+#include "video.hpp"
 
 #include <boost/bind.hpp>
 
