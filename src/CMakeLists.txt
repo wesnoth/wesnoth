@@ -38,7 +38,6 @@ if(ZLIB_INCLUDE_DIR)
 	include_directories( ${ZLIB_INCLUDE_DIR} )
 endif()
 
-
 set(network_implementation_files network.cpp network_worker.cpp)
 
 if(USE_ANA_NETWORK)
@@ -270,6 +269,13 @@ set(libwesnoth-lua_STAT_SRC
 )
 # We explicitly want lua compiled as C++ version, so this line is required:
 set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
+
+if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
+	# Assume the compiler is the clang compiler.
+	# It needs the files to be forced as c++ manually, it might be a newer
+	# version of cmake will be able to this for us.
+	set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES COMPILE_FLAGS "-x c++")
+endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here

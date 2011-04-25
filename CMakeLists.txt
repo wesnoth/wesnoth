@@ -132,6 +132,11 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
+if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
+	# Assume the compiler is the clang compiler.
+	set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
+endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
+
 # compose datadir path of datarootdir and datadirname
 set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
 
