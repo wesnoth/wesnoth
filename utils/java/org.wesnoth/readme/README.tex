@@ -33,6 +33,7 @@ The following image will highlight the terms used: 1 - Navigator, 2 - Project, 3
 
 \section{Common prerequisites}
 \begin{enumerate}
+\item The plugin runs on the following platforms: Windows 32/64 bit, Linux 32/64 bit and Mac OSX 64bit. Note that \textbf{Mac OSX 32 bit} is \textbf{not supported}. If you want to know why, please consult the Frequently Asked Questions section.
 \item Download and install Sun's Java:
 \begin{enumerate}
 \item If you are going just to use the plugin (User): \href{https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=jre-6u21-oth-JPR@CDS-CDS_Developer}{Download JRE}
@@ -185,6 +186,10 @@ Eclipse is a Java framework. It is very extensible, so people can actually make 
 \subsection{What if I don't want to install eclipse?}
 You're lucky. There will be a slimmed version of Eclipse, actually only the plugin itself. The size will be 3 or 4 times smaller than the current eclipse, and there will be no extra plugins. This version isn't released yet.
 
-\subsection{Where can I submit any found bugs?}
+\subsection{Where can I submit any bugs found?}
 Go over to Wesnoth's bug tracker: \href{https://gna.org/bugs/?func=additem&group=wesnoth&bug_group_id=116}{Add new bug}. Please be as specific as possible. Also, if you have any logs, please attach them.
+
+\subsection{Why Mac OSX 32 bit is not supported?}
+Apple decided to manage itself the versions that can run on each Mac version. Thus the modern Java SE6 version - which is used by the plugin - is not available on 32 bit Macs but on 64bit only. The 32bit Macs have just Java SE5 version available. Trying to port the plugin to the ``outdated'' java version is not likely to be done, so please consider upgrading your OS.
+
 \end{document}
