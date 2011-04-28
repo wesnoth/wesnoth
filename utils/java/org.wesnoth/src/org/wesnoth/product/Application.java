@@ -13,20 +13,27 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
+import org.wesnoth.Logger;
 
 public class Application implements IApplication
 {
 	@Override
-	public Object start(IApplicationContext context) throws Exception
+	public Object start(IApplicationContext context)
 	{
 		Display display = PlatformUI.createDisplay();
+        Logger.getInstance().startLogger();
 		try {
 			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
 			if (returnCode == PlatformUI.RETURN_RESTART)
 				return IApplication.EXIT_RESTART;
 			else
 				return IApplication.EXIT_OK;
-		} finally {
+		}
+		catch(Exception e){
+		    Logger.getInstance().logException(e);
+		    return IApplication.EXIT_OK;
+		}
+		finally {
 			display.dispose();
 		}
 	}
@@ -36,6 +43,7 @@ public class Application implements IApplication
 	{
 		if (!PlatformUI.isWorkbenchRunning())
 			return;
+
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		final Display display = workbench.getDisplay();
 		display.syncExec(new Runnable() {

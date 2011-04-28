@@ -41,6 +41,7 @@ public class WMLPerspective implements IPerspectiveFactory
         bottom.addView(IPageLayout.ID_PROBLEM_VIEW);
         bottom.addView(IPageLayout.ID_PROGRESS_VIEW);
         bottom.addView(IConsoleConstants.ID_CONSOLE_VIEW);
+        bottom.addView("org.eclipse.pde.runtime.LogView"); //$NON-NLS-1$
 
         IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.68f, editorArea); //$NON-NLS-1$
         right.addView(IPageLayout.ID_OUTLINE);
