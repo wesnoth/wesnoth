@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-27 13:20+0200\n"
-"PO-Revision-Date: 2009-02-05 00:57+0100\n"
-"Last-Translator: Gustav Tiger <admin@tigge.org>\n"
+"PO-Revision-Date: 2011-04-25 04:55+0100\n"
+"Last-Translator: Niklas Bolmdahl <niklas.spamfilter@karragard.com>\n"
 "Language-Team: Swedish\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -63,7 +63,7 @@ msgstr "öken"
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
 msgid "embellishments"
-msgstr ""
+msgstr "utsmyckning"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:44
@@ -88,7 +88,7 @@ msgstr "grotta"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "obstacle"
-msgstr ""
+msgstr "hinder"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:79
@@ -103,7 +103,7 @@ msgstr "slott"
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:93
 msgid "bridge"
-msgstr ""
+msgstr "bro"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:100
@@ -114,47 +114,31 @@ msgstr "speciell"
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
-#: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor.cfg:179 data/themes/editor.cfg:192
-#, fuzzy
-msgid ""
-"Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
-"paint base layer only. Ctrl+click to sample terrain under cursor."
-msgstr ""
-"Använd vänster/höger musknapp för att rita för-/bakgrundsterräng. Håll ner "
-"shift för att enbart rita baslagret."
+#: data/core/editor/tool-hints.cfg:7
+#: data/core/editor/tool-hints.cfg:13
+#: data/themes/editor.cfg:179
+#: data/themes/editor.cfg:192
+msgid "Use left/right mouse button to draw fore-/background terrain. Hold Shift to paint base layer only. Ctrl+click to sample terrain under cursor."
+msgstr "Använd vänster/höger musknapp för att rita för-/bakgrundsterräng. Håll ner shift för att enbart rita baslagret. Med ctrl-klick kopierar du terrängen under muspekaren."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:214
-msgid ""
-"Left mouse button selects, right deselects. Hold Shift for magic-wand "
-"selection of tiles with same terrain."
-msgstr ""
-"Vänster musknapp markerar, höger avmarkerar. Håll ner shift för trollspö-"
-"markering av rutor med samma terräng."
+#: data/core/editor/tool-hints.cfg:19
+#: data/themes/editor.cfg:214
+msgid "Left mouse button selects, right deselects. Hold Shift for magic-wand selection of tiles with same terrain."
+msgstr "Vänster musknapp markerar, höger avmarkerar. Håll ner shift för trollspö-markering av rutor med samma terräng."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:203
-msgid ""
-"Left mouse button displays player selection, right clears. Number keys "
-"scroll to the starting position, alt+number sets respective starting "
-"position under cursor, delete clears."
-msgstr ""
-"Vänster musknapp visar spelarmarkering, höger musknapp rensar. Sifferknappar "
-"rullar till startposition, alt+siffra sätter respektive startposition under "
-"markören, delete rensar."
+#: data/core/editor/tool-hints.cfg:25
+#: data/themes/editor.cfg:203
+msgid "Left mouse button displays player selection, right clears. Number keys scroll to the starting position, alt+number sets respective starting position under cursor, delete clears."
+msgstr "Vänster musknapp visar spelarmarkering, höger musknapp rensar. Sifferknappar rullar till startposition, alt+siffra sätter respektive startposition under markören, delete rensar."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
-msgid ""
-"Click to paste, zoom out for more accuracy when pasting large areas. Use the "
-"edit menu to transform the clipboard (rotate, mirror)."
-msgstr ""
-"Klicka för att klistra in, zooma ut för större noggrannhet vid inklistring "
-"av större ytor. Använd redigera-menyn för att transformera urklipp (rotera, "
-"spegla)."
+msgid "Click to paste, zoom out for more accuracy when pasting large areas. Use the edit menu to transform the clipboard (rotate, mirror)."
+msgstr "Klicka för att klistra in, zooma ut för större noggrannhet vid inklistring av större ytor. Använd redigera-menyn för att transformera urklipp (rotera, spegla)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor.cfg:120
@@ -189,7 +173,8 @@ msgstr "Vill du verkligen sluta?"
 msgid "Fatal error"
 msgstr "Allvarligt fel"
 
-#: src/editor/editor_controller.cpp:303 src/editor/editor_controller.cpp:1090
+#: src/editor/editor_controller.cpp:303
+#: src/editor/editor_controller.cpp:1090
 msgid "(New Map)"
 msgstr "(Ny karta)"
 
@@ -198,20 +183,12 @@ msgid "Do you really want to quit?"
 msgstr "Vill du verkligen avsluta?"
 
 #: src/editor/editor_controller.cpp:311
-msgid ""
-"Do you really want to quit? Changes in the map since the last save will be "
-"lost."
-msgstr ""
-"Vill du verkligen avsluta? Ändringar i kartan sedan den senast sparats "
-"kommer att förloras."
+msgid "Do you really want to quit? Changes in the map since the last save will be lost."
+msgstr "Vill du verkligen avsluta? Ändringar i kartan sedan den senast sparats kommer att förloras."
 
 #: src/editor/editor_controller.cpp:313
-msgid ""
-"Do you really want to quit? The following maps were modified and all changes "
-"since the last save will be lost:"
-msgstr ""
-"Vill du verkligen avsluta? Följande kartor har modifierats och alla "
-"ändringar sedan de senast sparats kommer att förloras."
+msgid "Do you really want to quit? The following maps were modified and all changes since the last save will be lost:"
+msgstr "Vill du verkligen avsluta? Följande kartor har modifierats och alla ändringar sedan de senast sparats kommer att förloras."
 
 #: src/editor/editor_controller.cpp:318
 msgid "Quit"
@@ -222,11 +199,8 @@ msgid "No editor time-of-day found."
 msgstr "Ingen tid-på-dan för editorn hittades."
 
 #: src/editor/editor_controller.cpp:404
-msgid ""
-"Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
-"Vill du överge alla ändringar du har gjort i kartan sedan den senast "
-"sparades?"
+msgid "Do you want to discard all changes you made to the map since the last save?"
+msgstr "Vill du överge alla ändringar du har gjort i kartan sedan den senast sparades?"
 
 #: src/editor/editor_controller.cpp:404
 msgid "Unsaved Changes"
@@ -248,7 +222,8 @@ msgstr "Filen existerar redan. Vill du skriva över den?"
 msgid "No random map generators found."
 msgstr "Ingen slumpgeneratorer för kartor hittades."
 
-#: src/editor/editor_controller.cpp:493 src/editor/editor_controller.cpp:497
+#: src/editor/editor_controller.cpp:493
+#: src/editor/editor_controller.cpp:497
 msgid "Map creation failed."
 msgstr "Misslyckades med att skapa karta."
 
@@ -264,11 +239,13 @@ msgstr "Fel vid öppning av markering"
 msgid "Choose target map"
 msgstr "Välj målkarta"
 
-#: src/editor/editor_controller.cpp:541 src/editor/editor_controller.cpp:731
+#: src/editor/editor_controller.cpp:541
+#: src/editor/editor_controller.cpp:731
 msgid "Error loading map"
 msgstr "Fel vid öppning av karta"
 
-#: src/editor/editor_controller.cpp:645 src/editor/editor_controller.cpp:687
+#: src/editor/editor_controller.cpp:645
+#: src/editor/editor_controller.cpp:687
 msgid "This map is already open."
 msgstr "Den här kartan är redan öppen."
 
@@ -278,17 +255,20 @@ msgstr "Kartan har sparats."
 
 #: src/editor/editor_controller.cpp:710
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Laddade inbyggd kart-data"
 
-#: src/editor/editor_controller.cpp:711 src/editor/editor_controller.cpp:725
+#: src/editor/editor_controller.cpp:711
+#: src/editor/editor_controller.cpp:725
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Karta från scenario laddad"
 
 #: src/editor/editor_controller.cpp:721
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Hänvisad kartfil laddad:\n"
+"$new"
 
 #: src/editor/editor_controller.cpp:1120
 msgid "Undo"
@@ -308,18 +288,18 @@ msgstr "Kan inte göra om"
 
 #: src/editor/editor_controller.cpp:1133
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
+msgstr "Uppdatera övergångar automatiskt: Ja"
 
 #: src/editor/editor_controller.cpp:1136
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "Uppdatera övergångar automatiskt: Delvis"
 
 #: src/editor/editor_controller.cpp:1140
-#, fuzzy
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Uppdatera övergångar"
+msgstr "Uppdatera övergångar automatiskt: Nej"
 
-#: src/editor/editor_map.cpp:150 src/editor/mouse_action.cpp:429
+#: src/editor/editor_map.cpp:150
+#: src/editor/mouse_action.cpp:429
 msgid "Player"
 msgstr "Spelare"
 
@@ -329,39 +309,35 @@ msgstr "Storleken på målkartan är skiljer sig från den aktuella kartan"
 
 #: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
-msgstr ""
+msgstr "(ej standard)"
 
 #: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Kommer inte fungera i spelet utan speciell hänsyn."
 
 #: src/editor/editor_palettes.cpp:537
 msgid "FG: "
-msgstr ""
+msgstr "FG:"
 
 #: src/editor/editor_palettes.cpp:538
 msgid "BG: "
-msgstr ""
+msgstr "BG:"
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"
-msgstr ""
+msgstr "Filen kunde inte hittas"
 
 #: src/editor/map_context.cpp:85
-msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
-"an existing file"
-msgstr ""
+msgid "The map file looks like a scenario, but the map_data value does not point to an existing file"
+msgstr "Kartfilen ser ut som ett scenario, men värdet i map_data pekar inte på en existerande fil"
 
 #: src/editor/map_context.cpp:100
-#, fuzzy
 msgid "Empty map file"
-msgstr "Tom kartfil eller filen kunde inte hittas"
+msgstr "Tom kartfil"
 
 #: src/editor/map_context.cpp:220
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Kunde inte spara kartan: $msg"
+msgstr "Kunde inte spara till ett scenario"
 
 #: src/editor/map_context.cpp:227
 msgid "Could not save the map: $msg"
@@ -376,12 +352,8 @@ msgid "Choose player"
 msgstr "Välj spelare"
 
 #: src/editor/mouse_action.cpp:434
-msgid ""
-"Which player should start here? You can use alt and a number key to set the "
-"starting position for a player, and del to clear the starting position under "
-"the cursor. Pressing a number key by itself will scroll to that player’s "
-"starting position."
-msgstr ""
+msgid "Which player should start here? You can use alt and a number key to set the starting position for a player, and del to clear the starting position under the cursor. Pressing a number key by itself will scroll to that player’s starting position."
+msgstr "Vilken spelare ska starta här? Du kan använda alt+siffra för att markera startposition för en spelare, eller delete-knappen för att ta bort startpositionen du pekar på. Siffertangenterna utan alt-knapp förflyttar kartvyn till motsvarande spelares startposition."
 
 #: src/gui/dialogs/editor_settings.cpp:147
 msgid "Custom setting"
