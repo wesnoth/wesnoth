@@ -143,7 +143,6 @@ public:
 	bool is_skipping_replay() const { return skip_replay_;};
 protected:
 	void slice_before_scroll();
-	void slice_end();
 
 	events::mouse_handler& get_mouse_handler_base();
 	game_display& get_display();

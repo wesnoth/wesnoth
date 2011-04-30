@@ -14,6 +14,8 @@ Version 1.8.5+svn:
      skipping to the lobby with -s <server> command line.
  * Miscellaneous and bug fixes:
    * Fixed: properly update cmake revision numbers (bug #16483)
+   * Backport r45510: fixes a crash triggered by WML code changing the
+     objectives after end of scenario conditions were already reached.
 
 Version 1.8.5:
  * AI:
