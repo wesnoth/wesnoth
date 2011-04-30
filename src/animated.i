@@ -140,7 +140,7 @@ void animated<T,T_void_value>::update_last_draw_time(double acceleration)
 	}
 	if(cycles_) {
 		while(get_animation_time() > get_end_time()){  // cut extra time
-			start_tick_ += static_cast<int>(get_animation_duration()/acceleration_);
+			start_tick_ += std::max<int>(static_cast<int>(get_animation_duration()/acceleration_),1);
 			current_frame_key_ = 0;
 		}
 	}
