@@ -30,7 +30,7 @@ import org.wesnoth.utils.WorkspaceUtils;
 public class Logger {
 
 	private static Logger instance_;
-	public Logger() { }
+	private Logger() { }
 
 	private BufferedWriter logWriter_;
 
