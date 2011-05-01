@@ -9,6 +9,7 @@
 package org.wesnoth.preprocessor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -84,15 +85,20 @@ public class Define
 	/**
 	 * Reads the defines from the specified file
 	 * @param file
-	 * @return
+	 * @return Returns a map of defines
 	 */
 	public static Map<String, Define> readDefines(String file)
 	{
 		DefinesSAXHandler handler = (DefinesSAXHandler) ResourceUtils.
 				getWMLSAXHandlerFromResource(file, new DefinesSAXHandler());
 
-		Logger.getInstance().log(Messages.Define_0 + handler.getDefines().size() + Messages.Define_1 + file);
-		return handler.getDefines();
+		if (handler != null){
+		    Logger.getInstance().log(Messages.Define_0 + handler.getDefines().size() + Messages.Define_1 + file);
+		    return handler.getDefines();
+		}
+
+	    Logger.getInstance().log(Messages.Define_2);
+		return new HashMap<String, Define>(0);
 	}
 
 	/**

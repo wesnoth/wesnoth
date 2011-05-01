@@ -77,6 +77,7 @@ public class Messages extends NLS
 	public static String CampaignPage2_8;
 	public static String Define_0;
 	public static String Define_1;
+	public static String Define_2;
 	public static String EmptyProjectNewWizard_0;
 	public static String EmptyProjectNewWizard_1;
 	public static String EmptyProjectPage0_1;

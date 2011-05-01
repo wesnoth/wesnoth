@@ -42,6 +42,7 @@ public class WMLTools
 	 * @param dryrun true to run "wmlindent" in dry mode - i.e. no changes in the config file.
 	 * @param stdout The array of streams where to output the stdout content
 	 * @param stderr The array of streams where to output the stderr content
+	 * @return  null if there were errors or an ExternalToolInvoker instance
 	 */
 	public static ExternalToolInvoker runWMLIndent(String resourcePath, String stdin,
 			boolean dryrun, OutputStream[] stdout, OutputStream[] stderr)
@@ -75,7 +76,7 @@ public class WMLTools
 	/**
 	 * Runs a wmlparser on the target resource
 	 * @param resourcePath
-	 * @return
+	 * @return null if there were errors or an ExternalToolInvoker instance
 	 */
 	public static ExternalToolInvoker runWMLParser2(String resourcePath)
 	{
@@ -119,6 +120,7 @@ public class WMLTools
 	 *
 	 * @param resourcePath the full path of the target where "wmllint" will be runned on
 	 * @param dryrun true to run "wmllint" in dry mode - i.e. no changes in the config file.
+	 * @return  null if there were errors or an ExternalToolInvoker instance
 	 */
 	public static ExternalToolInvoker runWMLLint(String resourcePath, boolean dryrun, boolean showProgress)
 	{
@@ -171,7 +173,7 @@ public class WMLTools
 	 * Runs "wmlscope" on the specified resource (directory/file)
 	 *
 	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
-	 * @return
+	 * @return  null if there were errors or an ExternalToolInvoker instance
 	 */
 	public static ExternalToolInvoker runWMLScope(String resourcePath, boolean showProgress)
 	{
@@ -184,7 +186,7 @@ public class WMLTools
 	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
 	 * @param stdout The array of streams where to output the stdout content
 	 * @param stderr The array of streams where to output the stderr content
-	 * @return
+	 * @return  null if there were errors or an ExternalToolInvoker instance
 	 */
 	public static ExternalToolInvoker runWMLScope(String resourcePath, boolean showProgress,
 			OutputStream[] stdout, OutputStream[] stderr)
@@ -382,7 +384,7 @@ public class WMLTools
 	 * @param containerPath The container to upload
 	 * @param stdout The array of streams where to output the stdout content
 	 * @param stderr The array of streams where to output the stderr content
-	 * @return
+	 * @return  null if there were errors or an ExternalToolInvoker instance
 	 */
 	public static ExternalToolInvoker runWesnothAddonManager(String containerPath,
 			OutputStream[] stdout, OutputStream[] stderr)
@@ -448,16 +450,23 @@ public class WMLTools
 	 *
 	 * @param filePath the file to be processed by the wml tool
 	 * @param wmlTool the wml tool file
-	 * @return
+	 * @return True if the prerequisites are valid or false otherwise
 	 */
 	public static boolean checkPrerequisites(String filePath, String wmlTool)
 	{
+        if (filePath == null || filePath.isEmpty() || !new File(filePath).exists())
+        {
+            Logger.getInstance().logWarn(Messages.WMLTools_48 + filePath);
+            return false;
+        }
+
 		if (Preferences.getString(Constants.P_PYTHON_PATH).equals("")) //$NON-NLS-1$
 		{
 			GUIUtils.showWarnMessageBox(Messages.WMLTools_42 +
 				Messages.WMLTools_43);
 			return false;
 		}
+
 		if (wmlTool != null)
 		{
 			if (Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR).equals("")) //$NON-NLS-1$
@@ -475,11 +484,6 @@ public class WMLTools
 						wmlToolFile));
 				return false;
 			}
-		}
-		if (filePath != null && (filePath.isEmpty() || !new File(filePath).exists()))
-		{
-			Logger.getInstance().logWarn(Messages.WMLTools_48 + filePath);
-			return false;
 		}
 
 		return true;
