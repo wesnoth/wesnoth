@@ -3,6 +3,7 @@
 
 #include <string.h>
 
+#include <cstddef>
 #include <iosfwd>
 #include <map>
 #include <string>
