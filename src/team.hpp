@@ -261,6 +261,7 @@ public:
 	static const SDL_Color get_minimap_colour(int side);
 	static std::string get_side_colour_index(int side);
 	static std::string get_side_highlight(int side);
+	static std::string get_side_highlight_pango(int side);
 
 	void log_recruitable();
 

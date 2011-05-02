@@ -29,6 +29,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
@@ -621,8 +622,13 @@ void menu_handler::preferences()
 
 void menu_handler::show_chat_log()
 {
-	std::string text = recorder.build_chat_log();
-	gui::show_dialog(*gui_,NULL,_("Chat Log"),"",gui::CLOSE_ONLY,NULL,NULL,"",&text);
+        config c;
+        c["name"] = "prototype of chat log";
+        gui2::tchat_log chat_log_dialog(vconfig(c),&recorder);
+        chat_log_dialog.show(resources::screen->video());
+        //std::string text = recorder.build_chat_log();
+        //gui::show_dialog(*gui_,NULL,_("Chat Log"),"",gui::CLOSE_ONLY,NULL,NULL,"",&text);
+
 }
 
 void menu_handler::show_help()

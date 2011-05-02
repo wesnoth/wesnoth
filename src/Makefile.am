@@ -158,6 +158,7 @@ wesnoth_source = \
 	gui/dialogs/addon_connect.cpp \
 	gui/dialogs/addon_list.cpp \
 	gui/dialogs/campaign_selection.cpp \
+	gui/dialogs/chat_log.cpp \
 	gui/dialogs/dialog.cpp \
 	gui/dialogs/formula_debugger.cpp \
 	gui/dialogs/game_load.cpp \

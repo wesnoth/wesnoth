@@ -35,6 +35,7 @@ enum twindow_type {
 	ADDON_CONNECT,           /**< The addon server connection dialog. */
 	ADDON_LIST,              /**< The addon list dialog. */
 	CAMPAIGN_SELECTION,      /**< The campaign selection dialog. */
+	CHAT_LOG,                /**< The chat log window. */
 	LANGUAGE_SELECTION,      /**< The language selection dialog. */
 	MESSAGE,                 /**< A generic message dialog. */
 	TRANSIENT_MESSAGE,       /**< A transient message dialog. */

@@ -32,6 +32,19 @@ class unit_map;
 class play_controller;
 struct time_of_day;
 
+class chat_msg {
+public:
+	const std::string &text() const { return text_; }
+	const std::string &nick() const { return nick_; }
+	const std::string &color() const { return color_; }
+	chat_msg(const config &cfg);
+	virtual ~chat_msg();
+private:
+	std::string color_;
+	std::string nick_;
+	std::string text_;
+};
+
 class replay: public rand_rng::rng
 {
 public:
@@ -93,7 +106,7 @@ public:
 
 	void add_chat_message_location();
 	void speak(const config& cfg);
-	std::string build_chat_log();
+	const std::vector<chat_msg>& build_chat_log();
 
 	//get data range will get a range of moves from the replay system.
 	//if data_type is 'ALL_DATA' then it will return all data in this range
@@ -134,7 +147,7 @@ private:
 
 	void add_value(const std::string& type, int value);
 
-	void add_chat_log_entry(const config &speak, std::ostream &str) const;
+	void add_chat_log_entry(const config &speak, std::back_insert_iterator< std::vector<chat_msg> > &i) const;
 
 	const config::child_list& commands() const;
 	void remove_command(int);

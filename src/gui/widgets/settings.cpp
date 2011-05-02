@@ -427,6 +427,7 @@ static void fill_window_types()
 	window_type_list[ADDON_CONNECT] = "addon_connect";
 	window_type_list[ADDON_LIST] = "addon_list";
 	window_type_list[CAMPAIGN_SELECTION] = "campaign_selection";
+	window_type_list[CHAT_LOG] = "chat_log";
 	window_type_list[LANGUAGE_SELECTION] = "language_selection";
 	window_type_list[WML_MESSAGE_LEFT] = "wml_message_left";
 	window_type_list[WML_MESSAGE_RIGHT] = "wml_message_right";

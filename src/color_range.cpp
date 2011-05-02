@@ -28,6 +28,7 @@
 
 #include <cassert>
 #include <set>
+#include <iomanip>
 
 std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::vector<Uint32>& old_rgb){
 	std::map<Uint32, Uint32> map_rgb;
@@ -158,6 +159,16 @@ std::string rgb2highlight(Uint32 rgb)
 	h << "<" << ((rgb & 0xFF0000) >> 16)
 	  << "," << ((rgb & 0x00FF00) >> 8)
 	  << "," << (rgb & 0x0000FF) << ">";
+	return h.str();
+}
+
+std::string rgb2highlight_pango(Uint32 rgb)
+{
+	std::ostringstream h;
+	// Must match what the pango expects
+	h << "#" << std::hex << std::setfill('0') << std::setw(2) << ((rgb & 0xFF0000) >> 16)
+	  << std::hex << std::setfill('0') << std::setw(2) <<((rgb & 0x00FF00) >> 8)
+	  << std::hex << std::setfill('0') << std::setw(2) <<(rgb & 0x0000FF);
 	return h.str();
 }
 
