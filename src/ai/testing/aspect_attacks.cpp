@@ -130,28 +130,10 @@ void aspect_attacks::do_attack_analysis(
 	unit_map &units_ = get_info().units;
 	std::vector<team> &teams_ = get_info().teams;
 
-	static double best_results[6];
-	if(result.empty()) {
-		for(int i = 0; i != 6; ++i) {
-			best_results[i] = 0.0;
-		}
-	}
-
 	const size_t max_positions = 1000;
 	if(result.size() > max_positions && !cur_analysis.movements.empty()) {
 		LOG_AI << "cut analysis short with number of positions\n";
 		return;
-	}
-
-	const double cur_rating = cur_analysis.movements.empty() ? -1.0 :
-	                          cur_analysis.rating(get_aggression(),*this);
-
-	double rating_to_beat = cur_rating;
-
-	if(!cur_analysis.movements.empty()) {
-		assert(cur_analysis.movements.size() < 6);
-		double& best_res = best_results[cur_analysis.movements.size()-1];
-		rating_to_beat = best_res = std::max(best_res,cur_rating);
 	}
 
 	for(size_t i = 0; i != units.size(); ++i) {
