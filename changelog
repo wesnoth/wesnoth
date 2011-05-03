@@ -1,5 +1,7 @@
 Version 1.8.5+svn:
  * Campaigns:
+   * Liberty:
+     * Don't show dummy epilogue gamemap
    * The Hammer of Thursagan:
      * Fixed time over event in the High Pass
        (http://forums.wesnoth.org/viewtopic.php?f=4&t=33435)
@@ -9,15 +11,23 @@ Version 1.8.5+svn:
      Portuguese (Brazil), Slovak, Slovenian, Vietnamese.
    * Added missing Windows locale associations
    * Fixed Windows locale association for tr/Turkish
+ * Multiplayer:
+   * A New Land:
+     * Award correct amount of research to units (bug #17406).
  * User interface:
    * Fix old multiplayer lobby glitches caused by the loadscreen code when
      skipping to the lobby with -s <server> command line.
    * Added a new version of multiplayer chat log history dialog
+   * Fixed bug with filter textbox not being properly set up while loading the MP
+     lobby view
+   * Several improvements and fixes for replay controller and control buttons
  * Miscellaneous and bug fixes:
    * Fixed: properly update cmake revision numbers (bug #16483)
    * Backport r45510: fixes a crash triggered by WML code changing the
      objectives after end of scenario conditions were already reached.
    * Fixed: A gcc 4.6 compilation error (Debian bug #624914).
+   * Fixed graphics corruption with certain version combinations of glibc and SDL
+     (bug #17573)
 
 Version 1.8.5:
  * AI:
