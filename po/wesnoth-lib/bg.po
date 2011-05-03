@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-11 12:55+0100\n"
+"POT-Creation-Date: 2011-05-03 14:27+0200\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -652,6 +652,58 @@ msgstr ""
 msgid "OK"
 msgstr "ОК "
 
+#. [window]: id=chat_log
+#: data/gui/default/window/chat_log.cfg:8
+msgid "Chat log dialog."
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:28
+#, fuzzy
+msgid "Chat log"
+msgstr "Преглед на дневника на разговорите"
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:53
+msgid "Page"
+msgstr ""
+
+#. [slider]: id=page_number
+#: data/gui/default/window/chat_log.cfg:64
+msgid "Last"
+msgstr ""
+
+#. [button]: id=previous_page
+#. [button]: id=previous_tip
+#: data/gui/default/window/chat_log.cfg:72
+#: data/gui/default/window/title_screen.cfg:124
+#, fuzzy
+msgid "Previous"
+msgstr "Предишна единица"
+
+#. [button]: id=next_tod
+#. [button]: id=next_page
+#. [button]: id=next_tip
+#: data/gui/default/window/chat_log.cfg:80
+#: data/gui/default/window/editor_settings.cfg:75
+#: data/gui/default/window/editor_settings.cfg:76
+#: data/gui/default/window/title_screen.cfg:138
+#, fuzzy
+msgid "Next"
+msgstr "Следваща единица"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=cancel
+#. [button]: id=close_window
+#: data/gui/default/window/chat_log.cfg:133
+#: data/gui/default/window/gamestate_inspector.cfg:331
+#: data/gui/default/window/lobby_main.cfg:619
+#: data/gui/default/window/lobby_player_info.cfg:192
+#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
+msgid "Close"
+msgstr "Затваряне"
+
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:38
 msgid "Generate Random Map"
@@ -760,15 +812,6 @@ msgstr "Настройка на горещите клавиши"
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
 msgstr ""
-
-#. [button]: id=next_tod
-#. [button]: id=next_tip
-#: data/gui/default/window/editor_settings.cfg:75
-#: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/title_screen.cfg:138
-#, fuzzy
-msgid "Next"
-msgstr "Следваща единица"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
@@ -1047,17 +1090,6 @@ msgstr ""
 #: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
 msgstr ""
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=cancel
-#. [button]: id=close_window
-#: data/gui/default/window/gamestate_inspector.cfg:331
-#: data/gui/default/window/lobby_main.cfg:619
-#: data/gui/default/window/lobby_player_info.cfg:192
-#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
-msgid "Close"
-msgstr "Затваряне"
 
 #. [grid]
 #. [label]
@@ -1579,12 +1611,6 @@ msgstr "Избор на всичко"
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
 msgid "Help"
 msgstr "Помощ"
-
-#. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:124
-#, fuzzy
-msgid "Previous"
-msgstr "Предишна единица"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -2318,11 +2344,11 @@ msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:495
+#: src/gui/widgets/settings.cpp:496
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:522
+#: src/gui/widgets/settings.cpp:523
 msgid "No state or draw section defined."
 msgstr ""
 

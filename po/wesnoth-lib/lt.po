@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-11 12:55+0100\n"
+"POT-Creation-Date: 2011-05-03 14:27+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -621,6 +621,56 @@ msgstr "Žaisti kampaniją"
 msgid "OK"
 msgstr "Gerai"
 
+#. [window]: id=chat_log
+#: data/gui/default/window/chat_log.cfg:8
+msgid "Chat log dialog."
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:28
+#, fuzzy
+msgid "Chat log"
+msgstr "Žiūrėti pokalbių žurnalą"
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:53
+msgid "Page"
+msgstr ""
+
+#. [slider]: id=page_number
+#: data/gui/default/window/chat_log.cfg:64
+msgid "Last"
+msgstr ""
+
+#. [button]: id=previous_page
+#. [button]: id=previous_tip
+#: data/gui/default/window/chat_log.cfg:72
+#: data/gui/default/window/title_screen.cfg:124
+msgid "Previous"
+msgstr "Ankstesnis"
+
+#. [button]: id=next_tod
+#. [button]: id=next_page
+#. [button]: id=next_tip
+#: data/gui/default/window/chat_log.cfg:80
+#: data/gui/default/window/editor_settings.cfg:75
+#: data/gui/default/window/editor_settings.cfg:76
+#: data/gui/default/window/title_screen.cfg:138
+msgid "Next"
+msgstr "Kitas"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=cancel
+#. [button]: id=close_window
+#: data/gui/default/window/chat_log.cfg:133
+#: data/gui/default/window/gamestate_inspector.cfg:331
+#: data/gui/default/window/lobby_main.cfg:619
+#: data/gui/default/window/lobby_player_info.cfg:192
+#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
+msgid "Close"
+msgstr "Užverti"
+
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:38
 msgid "Generate Random Map"
@@ -719,14 +769,6 @@ msgstr "Redaktoriaus nustatymai"
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
 msgstr ""
-
-#. [button]: id=next_tod
-#. [button]: id=next_tip
-#: data/gui/default/window/editor_settings.cfg:75
-#: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/title_screen.cfg:138
-msgid "Next"
-msgstr "Kitas"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
@@ -989,17 +1031,6 @@ msgstr "Tipas"
 #: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
 msgstr "Kintamasis"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=cancel
-#. [button]: id=close_window
-#: data/gui/default/window/gamestate_inspector.cfg:331
-#: data/gui/default/window/lobby_main.cfg:619
-#: data/gui/default/window/lobby_player_info.cfg:192
-#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
-msgid "Close"
-msgstr "Užverti"
 
 #. [grid]
 #. [label]
@@ -1489,11 +1520,6 @@ msgstr "Pasirinkti"
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
 msgid "Help"
 msgstr "Pagalba"
-
-#. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:124
-msgid "Previous"
-msgstr "Ankstesnis"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -2209,11 +2235,11 @@ msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:495
+#: src/gui/widgets/settings.cpp:496
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:522
+#: src/gui/widgets/settings.cpp:523
 msgid "No state or draw section defined."
 msgstr ""
 

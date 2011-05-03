@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-11 12:55+0100\n"
+"POT-Creation-Date: 2011-05-03 14:27+0200\n"
 "PO-Revision-Date: 2009-02-27 22:16+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: none\n"
@@ -639,6 +639,57 @@ msgstr "Felttog"
 msgid "OK"
 msgstr "OK"
 
+#. [window]: id=chat_log
+#: data/gui/default/window/chat_log.cfg:8
+msgid "Chat log dialog."
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:28
+#, fuzzy
+msgid "Chat log"
+msgstr "Se meldingslogg"
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:53
+msgid "Page"
+msgstr ""
+
+#. [slider]: id=page_number
+#: data/gui/default/window/chat_log.cfg:64
+msgid "Last"
+msgstr ""
+
+#. [button]: id=previous_page
+#. [button]: id=previous_tip
+#: data/gui/default/window/chat_log.cfg:72
+#: data/gui/default/window/title_screen.cfg:124
+#, fuzzy
+msgid "Previous"
+msgstr "Forrige enhet"
+
+#. [button]: id=next_tod
+#. [button]: id=next_page
+#. [button]: id=next_tip
+#: data/gui/default/window/chat_log.cfg:80
+#: data/gui/default/window/editor_settings.cfg:75
+#: data/gui/default/window/editor_settings.cfg:76
+#: data/gui/default/window/title_screen.cfg:138
+msgid "Next"
+msgstr "Neste"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=cancel
+#. [button]: id=close_window
+#: data/gui/default/window/chat_log.cfg:133
+#: data/gui/default/window/gamestate_inspector.cfg:331
+#: data/gui/default/window/lobby_main.cfg:619
+#: data/gui/default/window/lobby_player_info.cfg:192
+#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
+msgid "Close"
+msgstr "Lukk"
+
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:38
 msgid "Generate Random Map"
@@ -737,14 +788,6 @@ msgstr "Innstillinger for kartverktøy"
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
 msgstr "Forhåndsinnstilt lyssetting (Tid på Dagen)"
-
-#. [button]: id=next_tod
-#. [button]: id=next_tip
-#: data/gui/default/window/editor_settings.cfg:75
-#: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/title_screen.cfg:138
-msgid "Next"
-msgstr "Neste"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
@@ -1021,17 +1064,6 @@ msgstr ""
 #: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
 msgstr ""
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=cancel
-#. [button]: id=close_window
-#: data/gui/default/window/gamestate_inspector.cfg:331
-#: data/gui/default/window/lobby_main.cfg:619
-#: data/gui/default/window/lobby_player_info.cfg:192
-#: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:140
-msgid "Close"
-msgstr "Lukk"
 
 #. [grid]
 #. [label]
@@ -1547,12 +1579,6 @@ msgstr "Velg"
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
 msgid "Help"
 msgstr "Hjelp"
-
-#. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:124
-#, fuzzy
-msgid "Previous"
-msgstr "Forrige enhet"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -2275,11 +2301,11 @@ msgid ""
 msgstr ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 
-#: src/gui/widgets/settings.cpp:495
+#: src/gui/widgets/settings.cpp:496
 msgid "No default gui defined."
 msgstr "Ingen standard GUI er definert"
 
-#: src/gui/widgets/settings.cpp:522
+#: src/gui/widgets/settings.cpp:523
 msgid "No state or draw section defined."
 msgstr "No state or draw section defined."
 
