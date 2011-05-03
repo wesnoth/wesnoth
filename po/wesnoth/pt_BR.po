@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-27 14:22+0200\n"
-"PO-Revision-Date: 2010-11-03 22:58-0300\n"
+"PO-Revision-Date: 2011-05-03 12:38-0300\n"
 "Last-Translator: Diego Inácio Goergen <thegoergen@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: \n"
@@ -51,12 +51,12 @@ msgstr "Animar Mapa"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
 msgid "Local time of day light"
-msgstr ""
+msgstr "Hora do dia local"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:48
 msgid "Local time of day light effect (use more memory)."
-msgstr ""
+msgstr "Efeito da hora local (usa mais memória)."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:55
@@ -325,9 +325,8 @@ msgstr "Tradução para o Indonésio"
 
 #. [about]
 #: data/core/about.cfg:2051
-#, fuzzy
 msgid "Irish Translation"
-msgstr "Tradução para o Turco"
+msgstr "Tradução para o Irlandês"
 
 #. [about]
 #: data/core/about.cfg:2058
@@ -376,9 +375,8 @@ msgstr "Tradução para o Norueguês"
 
 #. [about]
 #: data/core/about.cfg:2271
-#, fuzzy
 msgid "Old English Translation"
-msgstr "Tradução para o Inglês Britânico"
+msgstr "Tradução para o Inglês Arcaico"
 
 #. [about]
 #: data/core/about.cfg:2280
@@ -464,7 +462,6 @@ msgstr ""
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
-#, fuzzy
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
@@ -770,11 +767,11 @@ msgstr ""
 
 #: data/core/macros/items.cfg:267
 msgid "holy water^Take it"
-msgstr ""
+msgstr "Pegue-a"
 
 #: data/core/macros/items.cfg:268
 msgid "holy water^Leave it"
-msgstr ""
+msgstr "Deixe-a"
 
 #: data/core/macros/items.cfg:269
 msgid "I am not suited to the use of this item! Let another take it."
@@ -858,14 +855,12 @@ msgid "Should $unit.name pick up the trident?"
 msgstr "$unit.name deve pegar o tridente?"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
 msgid "storm trident^Leave it"
-msgstr "tridente da tempestade"
+msgstr "Deixe-o"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
 msgid "storm trident^Take it"
-msgstr "tridente da tempestade"
+msgstr "Pegue-o"
 
 #. [object]
 #: data/core/macros/items.cfg:515
@@ -1939,7 +1934,7 @@ msgstr "$name|ópolis,$name|lândia,$name|ville"
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
-msgstr ""
+msgstr "Floresta $name,Floresta $forest,Mata $name,Mata $forest"
 
 #. [language]
 #: data/english.cfg:36
@@ -1949,7 +1944,7 @@ msgstr "$name|ópolis, $name|burgo,$name|lândia,$name|lina,Monte $name"
 #. [language]
 #: data/english.cfg:37
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr ""
+msgstr "Monte $mountain,Montanha $mountain,Morro $mountain"
 
 #. [language]
 #: data/english.cfg:38
@@ -2137,14 +2132,13 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:28
-#, fuzzy
 msgid ""
 "Units with the <i>Quick</i> trait get an extra movement point per turn. This "
 "can be very important when moving through difficult terrain such as water or "
 "caves. It can make the difference between being able to move one hex or two."
 msgstr ""
-"Unidades com a característica 'veloz' tem um ponto de movimento a mais. Isto "
-"pode ser muito importante quando precisar movimentar-se por terrenos "
+"Unidades com a característica <i>Veloz</i> tem um ponto de movimento a mais. "
+"Isto pode ser muito importante quando precisar movimentar-se por terrenos "
 "difíceis, como água ou cavernas. Esse ponto pode ser a diferença entre andar "
 "um hexágono ou dois."
 
@@ -2279,7 +2273,7 @@ msgstr ""
 "Unidades envenenadas perderão 8HP por turno até que estejam a apenas um "
 "ponto da morte. Eles irão permanecer, então, nos portões do submundo da "
 "morte até que o veneno seja removido. Curandeiros (com a habilidade de "
-"<i>Medicar</i:) podem prevenir que a unidade se deteriore, mas o veneno não "
+"<i>Medicar</i>) podem prevenir que a unidade se deteriore, mas o veneno não "
 "será removido a menos que a unidade se regenere, comece o turno em uma vila "
 "ou esteja próximo de uma unidade com a habilidade de <i>Curar</i>"
 
@@ -2810,14 +2804,12 @@ msgid "petrified"
 msgstr "petrificado"
 
 #: data/lua/wml-tags.lua:717
-#, fuzzy
 msgid "female^unhealable"
-msgstr "morta-viva"
+msgstr "incurável"
 
 #: data/lua/wml-tags.lua:717
-#, fuzzy
 msgid "unhealable"
-msgstr "Impassível"
+msgstr "incurável"
 
 #: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1608
 msgid "Victory:"
@@ -2842,9 +2834,8 @@ msgid "(%d turns left)"
 msgstr "(%d turnos restando)"
 
 #: data/lua/wml/objectives.lua:71
-#, fuzzy
 msgid "(this turn left)"
-msgstr "(%d turnos restando)"
+msgstr "(resta um turno)"
 
 #: data/lua/wml/objectives.lua:113
 msgid "%d%% of gold carried over to the next scenario."
@@ -2872,9 +2863,8 @@ msgstr ""
 
 #. [language]
 #: data/scenario-test.cfg:3045
-#, fuzzy
 msgid "electrical"
-msgstr "mecânico"
+msgstr "elétrico"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:139
@@ -3286,7 +3276,6 @@ msgid "Old version"
 msgstr "Antiga Versão"
 
 #: src/addon/manager.cpp:988
-#, fuzzy
 msgid "Update add-ons"
 msgstr "Atualizar Extras"
 
@@ -3372,7 +3361,7 @@ msgstr "Download"
 
 #: src/addon/manager.cpp:1274
 msgid "Done"
-msgstr ""
+msgstr "Feito"
 
 #: src/addon/manager.cpp:1286 src/dialogs.cpp:616 src/menu_events.cpp:926
 #: src/menu_events.cpp:1542
@@ -3411,9 +3400,8 @@ msgid "Uninstall add-ons"
 msgstr "Desinstalar Extras"
 
 #: src/addon/manager.cpp:1373
-#, fuzzy
 msgid "Remove"
-msgstr "move"
+msgstr "Remove"
 
 #: src/addon/manager.cpp:1380
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -4121,9 +4109,8 @@ msgstr[1] ""
 "Você deve possuir pelo menos $cost peças de ouro para convocar uma unidade"
 
 #: src/menu_events.cpp:1345
-#, fuzzy
 msgid "You cannot end your turn yet!"
-msgstr "pausa no fim do turno"
+msgstr "Você ainda não pode acabar o turno!"
 
 #: src/menu_events.cpp:1369
 msgid ""
@@ -4215,7 +4202,7 @@ msgstr " Nenhuma ajuda disponível."
 
 #: src/menu_events.cpp:2141
 msgid "Usage:"
-msgstr ""
+msgstr "Uso:"
 
 #: src/menu_events.cpp:2146
 msgid "aliases:"
@@ -4247,7 +4234,7 @@ msgstr ""
 #: src/menu_events.cpp:2306 src/menu_events.cpp:2308 src/menu_events.cpp:2335
 #: src/menu_events.cpp:2337 src/menu_events.cpp:2339 src/menu_events.cpp:2353
 msgid "<nick>"
-msgstr ""
+msgstr "<nick>"
 
 #: src/menu_events.cpp:2301
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -4277,14 +4264,13 @@ msgstr ""
 
 #: src/menu_events.cpp:2324
 msgid "<message>"
-msgstr ""
+msgstr "<message>"
 
 #: src/menu_events.cpp:2324
 msgid "Send an emotion or personal action in chat."
 msgstr "Envia uma ação ou emoticon no chat."
 
 #: src/menu_events.cpp:2327
-#, fuzzy
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -4294,11 +4280,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2329
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<nick> <message>"
 
 #: src/menu_events.cpp:2333
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<level> <domain>"
 
 #: src/menu_events.cpp:2333
 msgid "Change the log level of a log domain."
@@ -4329,7 +4315,7 @@ msgstr "Mostra informação da versão."
 
 #: src/menu_events.cpp:2346
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<password> <email (optional)>"
 
 #: src/menu_events.cpp:2346
 msgid "Register your nick"
@@ -4345,7 +4331,7 @@ msgstr "Atualiza detalhes de seu nick. Para visualizar veja '/details'."
 
 #: src/menu_events.cpp:2351
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<detail> <value>"
 
 #: src/menu_events.cpp:2353
 msgid "Request information about a nick."
@@ -4357,7 +4343,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2357 src/menu_events.cpp:2360 src/menu_events.cpp:2362
 msgid "<room>"
-msgstr ""
+msgstr "<room>"
 
 #: src/menu_events.cpp:2357
 msgid "Join a room."
@@ -4377,7 +4363,7 @@ msgstr "Lista de salas disponíveis."
 
 #: src/menu_events.cpp:2366
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<room> <msg>"
 
 #: src/menu_events.cpp:2366
 msgid "Room message."
@@ -4417,7 +4403,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2508
 msgid "<side> <nick>"
-msgstr ""
+msgstr "<side> <nick>"
 
 #: src/menu_events.cpp:2508
 msgid "Assign control of a side to a different player or observer."
@@ -4465,7 +4451,7 @@ msgstr "Desabilitar salvamento automático."
 
 #: src/menu_events.cpp:2532
 msgid "<id>"
-msgstr ""
+msgstr "<id>"
 
 #: src/menu_events.cpp:2532
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -4497,7 +4483,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2540
 msgid "[limit]"
-msgstr ""
+msgstr "[limit]"
 
 #: src/menu_events.cpp:2542
 msgid "Turn debug mode on."
@@ -4509,7 +4495,7 @@ msgstr "Desligar modo debug."
 
 #: src/menu_events.cpp:2546 src/menu_events.cpp:2550
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<command>[;<command>...]"
 
 #: src/menu_events.cpp:2546
 msgid "Execute a Lua statement."
@@ -4533,7 +4519,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2556
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<name>[=<command>]"
 
 #: src/menu_events.cpp:2556
 msgid "Set or show alias to a command"
@@ -4541,7 +4527,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2558
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<var>=<value>"
 
 #: src/menu_events.cpp:2558
 msgid "Set a scenario variable."
@@ -4549,7 +4535,7 @@ msgstr "Mostra uma variável do cenário."
 
 #: src/menu_events.cpp:2560
 msgid "<var>"
-msgstr ""
+msgstr "<var>"
 
 #: src/menu_events.cpp:2560
 msgid "Show a scenario variable."
@@ -4561,11 +4547,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2569
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Abre todas as unidades na ajuda."
 
 #: src/menu_events.cpp:2571
 msgid "'Undiscover' all units in help."
-msgstr ""
+msgstr "'Esconde' todas as unidades na ajuda."
 
 #: src/menu_events.cpp:2573
 msgid "Create a unit."
@@ -4723,7 +4709,7 @@ msgstr "Modo debug ativado!"
 
 #: src/menu_events.cpp:3365
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "Modo debug não está disponível nos jogos em rede"
 
 #: src/menu_events.cpp:3370
 msgid "Debug mode deactivated!"
@@ -4742,7 +4728,7 @@ msgstr ""
 
 #: src/menu_events.cpp:3385
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Modo não-seguro ativado!"
 
 #: src/menu_events.cpp:3428
 msgid "Variable not found"
@@ -4758,7 +4744,7 @@ msgstr ""
 
 #: src/menu_events.cpp:3522
 msgid "Do you wish to clear all of your discovered units from help?"
-msgstr ""
+msgstr "Você quer limpar todas as unidades da ajuda?"
 
 #: src/menu_events.cpp:3533
 msgid "Invalid unit type"
@@ -4840,10 +4826,9 @@ msgstr ""
 "alfanuméricos, underlines (\"_\") e hífens (\"-\")."
 
 #: src/multiplayer.cpp:312
-#, fuzzy
 msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgstr ""
-"O nick '$nick' é muito grando. Nicks devem conter 18 ou menos caracteres."
+"O nick '$nick' é muito grande. Nicks devem conter 20 caracteres ou menos."
 
 #: src/multiplayer.cpp:315
 msgid "The nick '$nick' is reserved and cannot be used by players."
@@ -5386,9 +5371,8 @@ msgid ""
 msgstr ""
 
 #: src/play_controller.cpp:1317 src/replay_controller.cpp:306
-#, fuzzy
 msgid "Error details:"
-msgstr "Erro:"
+msgstr "Detalhes do erro:"
 
 #: src/playcampaign.cpp:137 src/playcampaign.cpp:177
 msgid "Defeat"
@@ -5530,13 +5514,12 @@ msgid "The game is over."
 msgstr "O jogo terminou."
 
 #: src/playsingle_controller.cpp:523
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Uma desconecção de rede ocorreu, e o jogo não pode\n"
-" prosseguir. Você quer salvar o jogo?"
+"Uma desconexão de rede ocorreu, e o jogo não pode prosseguir. Você quer "
+"salvar o jogo?"
 
 #: src/playsingle_controller.cpp:679
 msgid "It is now $name|’s turn"
@@ -5575,13 +5558,12 @@ msgid "$player has left the game. What do you want to do?"
 msgstr "$player saiu do jogo. O que você quer fazer?"
 
 #: src/replay_controller.cpp:305
-#, fuzzy
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
 "Do you want to save the game?"
 msgstr ""
-"Uma desconecção de rede ocorreu, e o jogo não pode\n"
-" prosseguir. Você quer salvar o jogo?"
+"O replay está corrompido ou dessincronizado. Não faz sentido continuar. Você "
+"quer salvar o jogo?"
 
 #: src/reports.cpp:145
 msgid "Type: "
