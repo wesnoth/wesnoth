@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-27 13:20+0200\n"
-"PO-Revision-Date: 2010-12-25 23:05+0100\n"
+"POT-Creation-Date: 2011-03-27 14:22+0200\n"
+"PO-Revision-Date: 2011-05-03 21:11+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -22,6 +22,7 @@ msgstr ""
 #. [terrain_type]: id=deep_water_gray
 #: data/core/terrain.cfg:18
 #, fuzzy
+#| msgid "Deep Water"
 msgid "Gray Deep Water"
 msgstr "Hlboká voda"
 
@@ -33,18 +34,21 @@ msgstr "Hlboká voda"
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:29
 #, fuzzy
+#| msgid "Deep Water"
 msgid "Medium Deep Water"
 msgstr "Hlboká voda"
 
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:38
 #, fuzzy
+#| msgid "Deep Water"
 msgid "Tropical Deep Water"
 msgstr "Hlboká voda"
 
 #. [terrain_type]: id=gray_tropical_water
 #: data/core/terrain.cfg:48
 #, fuzzy
+#| msgid "Shallow Water"
 msgid "Gray Shallow Water"
 msgstr "Plytká voda"
 
@@ -56,12 +60,14 @@ msgstr "Plytká voda"
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:59
 #, fuzzy
+#| msgid "Shallow Water"
 msgid "Medium Shallow Water"
 msgstr "Plytká voda"
 
 #. [terrain_type]: id=tropical_water
 #: data/core/terrain.cfg:68
 #, fuzzy
+#| msgid "Shallow Water"
 msgid "Tropical Shallow Water"
 msgstr "Plytká voda"
 
@@ -108,6 +114,7 @@ msgstr ""
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:165
 #, fuzzy
+#| msgid "Dirt"
 msgid "Dark Dirt"
 msgstr "Poľná cesta"
 
@@ -119,6 +126,7 @@ msgstr ""
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:183
 #, fuzzy
+#| msgid "Dirt"
 msgid "Dry Dirt"
 msgstr "Poľná cesta"
 
@@ -130,6 +138,7 @@ msgstr ""
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:201
 #, fuzzy
+#| msgid "Clear Labels"
 msgid "Clean Gray Cobbles"
 msgstr "Vymaž značky"
 
@@ -151,6 +160,7 @@ msgstr "Sneh"
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:245
 #, fuzzy
+#| msgid "Desert Mountains"
 msgid "Desert Sands"
 msgstr "Púštne hory"
 
@@ -182,6 +192,7 @@ msgstr "Kráter"
 #. [terrain_type]: id=flowers_mixed
 #: data/core/terrain.cfg:298
 #, fuzzy
+#| msgid "Fall Mixed Forest"
 msgid "Mixed Flowers"
 msgstr "Jesenný zmiešaný les"
 
@@ -203,12 +214,14 @@ msgstr ""
 #. [terrain_type]: id=mushrooms_farm
 #: data/core/terrain.cfg:334
 #, fuzzy
+#| msgid "Mushroom Grove"
 msgid "Mushroom Farm"
 msgstr "Hubový porast"
 
 #. [terrain_type]: id=desert_plants
 #: data/core/terrain.cfg:343
 #, fuzzy
+#| msgid "Desert Mountains"
 msgid "Desert Plants"
 msgstr "Púštne hory"
 
@@ -320,6 +333,7 @@ msgstr ""
 #. [terrain_type]: id=hills_dry
 #: data/core/terrain.cfg:548
 #, fuzzy
+#| msgid "Hills"
 msgid "Dry Hills"
 msgstr "Kopce"
 
@@ -341,6 +355,7 @@ msgstr "Hory"
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:589
 #, fuzzy
+#| msgid "Desert Mountains"
 msgid "Dry Mountains"
 msgstr "Púštne hory"
 
@@ -395,6 +410,7 @@ msgstr "Letné kopce so zmiešaným lesom"
 #. [terrain_type]
 #: data/core/terrain.cfg:682 data/core/terrain.cfg:773
 #, fuzzy
+#| msgid "Snowy Mixed Forested Hills"
 msgid "Fall Mixed Forested Hills"
 msgstr "Zasnežené kopce so zmiešaným lesom"
 
@@ -435,6 +451,7 @@ msgstr "Jaskyňa"
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:839
 #, fuzzy
+#| msgid "Cave Wall"
 msgid "Cave Floor"
 msgstr "Stena jaskyne"
 
@@ -451,6 +468,7 @@ msgstr ""
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:865
 #, fuzzy
+#| msgid "Cave path"
 msgid "Cave Path"
 msgstr "Cesta v jaskyni"
 
@@ -462,6 +480,7 @@ msgstr "Hubový porast"
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:883
 #, fuzzy
+#| msgid "Mushroom Grove"
 msgid "Lit Mushroom Grove"
 msgstr "Hubový porast"
 
@@ -481,12 +500,14 @@ msgstr ""
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:947
 #, fuzzy
+#| msgid "Lava Chasm"
 msgid "Regular Chasm"
 msgstr "Trhlina s lávou"
 
 #. [terrain_type]: id=chasm_earthy
 #: data/core/terrain.cfg:957
 #, fuzzy
+#| msgid "Lava Chasm"
 msgid "Earthy Chasm"
 msgstr "Trhlina s lávou"
 
@@ -513,30 +534,35 @@ msgstr ""
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1012
 #, fuzzy
+#| msgid "Impassable Mountains"
 msgid "Regular Impassable Mountains"
-msgstr "Neprekonateľné hory"
+msgstr "Neprekročiteľné hory"
 
 #. [terrain_type]: id=clouddesert
 #: data/core/terrain.cfg:1021
 #, fuzzy
+#| msgid "Impassable Mountains"
 msgid "Desert Impassable Mountains"
-msgstr "Neprekonateľné hory"
+msgstr "Neprekročiteľné hory"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1030
 #, fuzzy
+#| msgid "Impassable Mountains"
 msgid "Snowy Impassable Mountains"
-msgstr "Neprekonateľné hory"
+msgstr "Neprekročiteľné hory"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1040
 #, fuzzy
+#| msgid "Cave Wall"
 msgid "Natural Cave Wall"
 msgstr "Stena jaskyne"
 
 #. [terrain_type]: id=cavewall_hewn
 #: data/core/terrain.cfg:1050
 #, fuzzy
+#| msgid "Cave Wall"
 msgid "Hewn Cave Wall"
 msgstr "Stena jaskyne"
 
@@ -553,6 +579,7 @@ msgstr ""
 #. [terrain_type]: id=wall_stone
 #: data/core/terrain.cfg:1080
 #, fuzzy
+#| msgid "Cave Wall"
 msgid "Stone Wall"
 msgstr "Stena jaskyne"
 
@@ -564,8 +591,9 @@ msgstr ""
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1100
 #, fuzzy
+#| msgid "Impassable"
 msgid "Impassable Overlay"
-msgstr "Neprekonateľné"
+msgstr "Neprekročiteľné"
 
 #. [terrain_type]: id=void
 #: data/core/terrain.cfg:1111
@@ -575,6 +603,7 @@ msgstr "Prázdnota"
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1126
 #, fuzzy
+#| msgid "Village"
 msgid "Adobe Village"
 msgstr "Dedina"
 
@@ -586,12 +615,14 @@ msgstr ""
 #. [terrain_type]: id=camp_village
 #: data/core/terrain.cfg:1150
 #, fuzzy
+#| msgid "Village"
 msgid "Tent Village"
 msgstr "Dedina"
 
 #. [terrain_type]: id=orcish_village
 #: data/core/terrain.cfg:1164
 #, fuzzy
+#| msgid "Village"
 msgid "Orcish Village"
 msgstr "Dedina"
 
@@ -608,6 +639,7 @@ msgstr ""
 #. [terrain_type]: id=elven_village
 #: data/core/terrain.cfg:1202
 #, fuzzy
+#| msgid "Village"
 msgid "Elven Village"
 msgstr "Dedina"
 
@@ -619,12 +651,14 @@ msgstr ""
 #. [terrain_type]: id=snow_village
 #: data/core/terrain.cfg:1228
 #, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Cottage"
 msgstr "Zasnežené hory"
 
 #. [terrain_type]: id=human_village_ruin
 #: data/core/terrain.cfg:1240
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Cottage"
 msgstr "Ruiny hradnej pevnosti"
 
@@ -661,36 +695,42 @@ msgstr ""
 #. [terrain_type]: id=tropical_forest_village
 #: data/core/terrain.cfg:1324
 #, fuzzy
+#| msgid "Tropical Forest"
 msgid "Tropical Village"
 msgstr "Tropický les"
 
 #. [terrain_type]: id=drake_village
 #: data/core/terrain.cfg:1336
 #, fuzzy
+#| msgid "Village"
 msgid "Drake Village"
 msgstr "Dedina"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:1350
 #, fuzzy
+#| msgid "Village"
 msgid "Cave Village"
 msgstr "Dedina"
 
 #. [terrain_type]: id=dwarven_village
 #: data/core/terrain.cfg:1362
 #, fuzzy
+#| msgid "Village"
 msgid "Dwarven Village"
 msgstr "Dedina"
 
 #. [terrain_type]: id=hut_village
 #: data/core/terrain.cfg:1374
 #, fuzzy
+#| msgid "Cut"
 msgid "Hut"
 msgstr "Vystrihni"
 
 #. [terrain_type]: id=hut_snow_village
 #: data/core/terrain.cfg:1386
 #, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Hut"
 msgstr "Zasnežené hory"
 
@@ -702,12 +742,14 @@ msgstr ""
 #. [terrain_type]: id=logcabin_snow_village
 #: data/core/terrain.cfg:1410
 #, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Log Cabin"
 msgstr "Zasnežené hory"
 
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1424
 #, fuzzy
+#| msgid "Village"
 msgid "Swamp Village"
 msgstr "Dedina"
 
@@ -715,6 +757,7 @@ msgstr "Dedina"
 #. [terrain_type]: id=swamp_merfolk-village
 #: data/core/terrain.cfg:1436 data/core/terrain.cfg:1449
 #, fuzzy
+#| msgid "Village"
 msgid "Aquatic Village"
 msgstr "Dedina"
 
@@ -737,6 +780,7 @@ msgstr "Dedina"
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1463
 #, fuzzy
+#| msgid "Village gold"
 msgid "Village Overlay"
 msgstr "Zlato za dedinu"
 
@@ -748,12 +792,14 @@ msgstr "Tábor"
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1489
 #, fuzzy
+#| msgid "Encampment"
 msgid "Snowy Encampment"
 msgstr "Tábor"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:1500
 #, fuzzy
+#| msgid "Castle"
 msgid "Orcish Castle"
 msgstr "Hrad"
 
@@ -771,56 +817,65 @@ msgstr "Hrad"
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:1523
 #, fuzzy
+#| msgid "Castle"
 msgid "Human Castle"
 msgstr "Hrad"
 
 #. [terrain_type]: id=snow_castle
 #: data/core/terrain.cfg:1533
 #, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Human Castle"
 msgstr "Zasnežené hory"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1543
 #, fuzzy
+#| msgid "Castle"
 msgid "Elvish Castle"
 msgstr "Hrad"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1554
 #, fuzzy
+#| msgid "Castle"
 msgid "Dwarven Castle"
 msgstr "Hrad"
 
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:1565
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Human Castle"
 msgstr "Ruiny hradnej pevnosti"
 
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:1576
 #, fuzzy
+#| msgid "Sunken Ruin"
 msgid "Sunken Human Ruin"
 msgstr "Zatopená ruina"
 
 #. [terrain_type]: id=swampruin
 #: data/core/terrain.cfg:1588
 #, fuzzy
+#| msgid "Swamp Ruin"
 msgid "Swamp Human Ruin"
 msgstr "Ruina v močiari"
 
 #. [terrain_type]: id=sand_castle
 #: data/core/terrain.cfg:1600
 #, fuzzy
+#| msgid "Castle"
 msgid "Desert Castle"
 msgstr "Hrad"
 
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:1611
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Desert Castle"
-msgstr "Hrad"
+msgstr "Ruiny hradnej pevnosti"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:1626
@@ -830,18 +885,21 @@ msgstr "Táborová pevnosť"
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:1638
 #, fuzzy
+#| msgid "Encampment Keep"
 msgid "Tall Encampment Keep"
 msgstr "Táborová pevnosť"
 
 #. [terrain_type]: id=encampment_snow_keep
 #: data/core/terrain.cfg:1650
 #, fuzzy
+#| msgid "Encampment Keep"
 msgid "Snowy Encampment Keep"
 msgstr "Táborová pevnosť"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:1662
 #, fuzzy
+#| msgid "Fort Keep"
 msgid "Orcish Keep"
 msgstr "Pevnosť v opevnení"
 
@@ -862,72 +920,84 @@ msgstr "Pevnosť"
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:1687
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Human Castle Keep"
 msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:1699
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Snowy Human Castle Keep"
 msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:1711
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Elven Castle Keep"
 msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:1723
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Dwarven Castle Keep"
 msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1735
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Human Castle Keep"
 msgstr "Ruiny hradnej pevnosti"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1747
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Sunken Keep"
 msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1748
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Sunken Human Castle Keep"
 msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1760
 #, fuzzy
+#| msgid "Swamp"
 msgid "Swamp Keep"
 msgstr "Močiar"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1761
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Swamp Human Castle Keep"
 msgstr "Zatopená hradná pevnosť"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:1774
 #, fuzzy
+#| msgid "Desert"
 msgid "Desert Keep"
 msgstr "Púšť"
 
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1787
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Desert Keep"
-msgstr "Púšť"
+msgstr "Ruiny hradnej pevnosti"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:1801
 #, fuzzy
+#| msgid "Castle Keep"
 msgid "Castle Overlay"
 msgstr "Hradná pevnosť"
 
@@ -942,6 +1012,7 @@ msgstr ""
 #: data/core/terrain.cfg:1830 data/core/terrain.cfg:1841
 #: data/core/terrain.cfg:1852
 #, fuzzy
+#| msgid "Bridge"
 msgid "Wooden Bridge"
 msgstr "Most"
 
@@ -993,7 +1064,7 @@ msgstr "Zamrznuté"
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2052
 msgid "Impassable"
-msgstr "Neprekonateľné"
+msgstr "Neprekročiteľné"
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:2059
@@ -1024,6 +1095,7 @@ msgstr "Server:"
 #: data/gui/default/window/addon_connect.cfg:145
 #: data/gui/default/window/addon_connect.cfg:146
 #, fuzzy
+#| msgid "Update add-ons"
 msgid "Update Add-ons"
 msgstr "Aktualizovať doplnky"
 
@@ -1078,6 +1150,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_description.cfg:118
 #, fuzzy
+#| msgid "Version: "
 msgid "Version:"
 msgstr "Verzia: "
 
@@ -1089,6 +1162,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
 #, fuzzy
+#| msgid "Unit Description"
 msgid "Description:"
 msgstr "Popis jednotky"
 
@@ -1140,6 +1214,7 @@ msgstr "OK"
 #. [label]: id=title
 #: data/gui/default/window/campaign_difficulty.cfg:57
 #, fuzzy
+#| msgid "Difficulty: "
 msgid "Difficulty"
 msgstr "Náročnosť:"
 
@@ -1200,18 +1275,21 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/default/window/edit_label.cfg:42
 #, fuzzy
+#| msgid "Set Label"
 msgid "Place Label"
 msgstr "Nastav značku"
 
 #. [label]
 #: data/gui/default/window/edit_label.cfg:72
 #, fuzzy
+#| msgid "Set Label"
 msgid "Label:"
 msgstr "Nastav značku"
 
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/default/window/edit_label.cfg:110
 #, fuzzy
+#| msgid "Team 1"
 msgid "Team only"
 msgstr "Tím 1"
 
@@ -2131,6 +2209,7 @@ msgstr "Načítať"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
 #, fuzzy
+#| msgid "Reloaded game"
 msgid "Load a saved game"
 msgstr "Načítaná hra"
 
@@ -2147,6 +2226,7 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
 #, fuzzy
+#| msgid "Editor"
 msgid "Map Editor"
 msgstr "Editor"
 
@@ -2179,6 +2259,7 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:232
 #, fuzzy
+#| msgid "Quit Game"
 msgid "Quit the game"
 msgstr "Vypni hru"
 
@@ -2651,11 +2732,13 @@ msgstr "nie"
 
 #: src/game_preferences_display.cpp:1081
 #, fuzzy
+#| msgid "Friends"
 msgid "friend"
 msgstr "Priatelia"
 
 #: src/game_preferences_display.cpp:1087
 #, fuzzy
+#| msgid "No ignored"
 msgid "ignored"
 msgstr "Bez ignorovaných"
 
@@ -2685,11 +2768,13 @@ msgstr "Rozšírené"
 
 #: src/game_preferences_display.cpp:1254
 #, fuzzy
+#| msgid "Choose the game to load"
 msgid "Choose theme"
 msgstr "Vyber hru na načítanie"
 
 #: src/game_preferences_display.cpp:1254
 #, fuzzy
+#| msgid "Saved Theme Preference: "
 msgid "Saved preference:"
 msgstr "Uložená zvolená téma: "
 
@@ -2716,12 +2801,14 @@ msgstr "Štvorec sa nezmestí na plochu."
 #: src/gui/auxiliary/canvas.cpp:847 src/gui/auxiliary/canvas.cpp:852
 #: src/gui/auxiliary/canvas.cpp:857 src/gui/auxiliary/canvas.cpp:863
 #, fuzzy
+#| msgid "Line doesn't fit on canvas."
 msgid "Circle doesn't fit on canvas."
 msgstr "Čiara sa nezmestí na plochu."
 
 #: src/gui/auxiliary/canvas.cpp:1045 src/gui/auxiliary/canvas.cpp:1052
 #: src/gui/auxiliary/canvas.cpp:1062 src/gui/auxiliary/canvas.cpp:1069
 #, fuzzy
+#| msgid "Line doesn't fit on canvas."
 msgid "Image doesn't fit on canvas."
 msgstr "Čiara sa nezmestí na plochu."
 
@@ -2807,6 +2894,7 @@ msgstr ""
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
 #, fuzzy
+#| msgid "No page defined."
 msgid "No node defined."
 msgstr "Nebola definovaná žiadna stránka."
 
@@ -2896,6 +2984,7 @@ msgstr "Načítaj hru..."
 
 #: src/gui/dialogs/title_screen.cpp:296
 #, fuzzy
+#| msgid "Version: "
 msgid "Version "
 msgstr "Verzia: "
 
@@ -2936,6 +3025,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:51
 #, fuzzy
+#| msgid "Generate Map"
 msgid "Animate Map"
 msgstr "Generuj mapu"
 
@@ -3177,6 +3267,7 @@ msgstr "Ulož mapu ako"
 
 #: src/hotkeys.cpp:126
 #, fuzzy
+#| msgid "Save Map"
 msgid "Save All Maps"
 msgstr "Ulož mapu"
 
@@ -3370,6 +3461,7 @@ msgstr "Vymaž správy"
 
 #: src/hotkeys.cpp:209
 #, fuzzy
+#| msgid "Refresh"
 msgid "Refresh WML"
 msgstr "Prekresliť"
 
@@ -3379,16 +3471,19 @@ msgstr ""
 
 #: src/hotkeys.cpp:223
 #, fuzzy
+#| msgid "Previous Unit"
 msgid "Previous tip of the day"
 msgstr "Predchádzajúca jednotka"
 
 #: src/hotkeys.cpp:230
 #, fuzzy
+#| msgid "Tutorial"
 msgid "Start tutorial"
 msgstr "Výcvik"
 
 #: src/hotkeys.cpp:237
 #, fuzzy
+#| msgid "Play a campaign"
 msgid "Start a campaign"
 msgstr "Hrať výpravu"
 
@@ -3398,6 +3493,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:251
 #, fuzzy
+#| msgid "Update add-ons"
 msgid "Manage addons"
 msgstr "Aktualizovať doplnky"
 
@@ -3598,10 +3694,6 @@ msgid ""
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
 
-#, fuzzy
-#~ msgid "Select unit:"
-#~ msgstr "Zruš označenie"
-
 #~ msgid "None"
 #~ msgstr "Nič"
 
@@ -3636,10 +3728,22 @@ msgstr ""
 #~ msgstr "Riečny brod"
 
 #~ msgid "Impassable Desert Mountains"
-#~ msgstr "Neprekonateľné púštne hory"
+#~ msgstr "Neprekročiteľné púštne hory"
 
 #~ msgid "Wall"
 #~ msgstr "Stena"
+
+#~ msgid "Chat log dialog."
+#~ msgstr "Okno záznamu hovoru."
+
+#~ msgid "Chat log"
+#~ msgstr "Záznam rozhovoru"
+
+#~ msgid "Page"
+#~ msgstr "Strana"
+
+#~ msgid "Last"
+#~ msgstr "Posledná"
 
 #~ msgid "Generate name"
 #~ msgstr "Generuj meno"
