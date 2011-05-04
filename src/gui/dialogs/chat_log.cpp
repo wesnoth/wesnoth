@@ -1,4 +1,4 @@
-/* $Id: chat_log.cpp 48153 2011-01-01 15:57:50Z mordante $ */
+/* $Id$ */
 /*
    Copyright (C) 2011 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -26,7 +26,7 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/slider.cpp"
+#include "gui/widgets/slider.hpp"
 
 #include "../../foreach.hpp"
 #include "../../gamestatus.hpp"
