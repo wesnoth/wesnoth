@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Németh Tamás <ntomasz@vipmail.hu>, 2008.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-10-19 12:43+0200\n"
-"PO-Revision-Date: 2009-11-26 23:08+0100\n"
+"PO-Revision-Date: 2011-01-09 13:00+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "Language: hu\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
 msgid "4p — A New Land"
-msgstr "4j - Egy új ország"
+msgstr "4j – Egy új ország"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:7
@@ -313,7 +313,7 @@ msgid ""
 "your chosen research target. Right-click on a mage in a university to change "
 "research target."
 msgstr ""
-"A \"tünde stílusú\" falvak felelnek meg az egyetemeknek. A köröd elején az "
+"A „tünde stílusú” falvak felelnek meg az egyetemeknek. A köröd elején az "
 "egyetemeken lévő mágusok automatikusan hozzájárulnak a kitűzött tudományos "
 "célod kutatási folyamatának előmozdításához. Ha egy egyetemen lévő mágusra "
 "kattintasz jobb gombbal, megváltoztathatod a kitűzött tudományos célt."
@@ -344,7 +344,7 @@ msgstr "Súgó"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:103
 msgid "A New Land — Help"
-msgstr "Egy új ország - Súgó"
+msgstr "Egy új ország – Súgó"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:104
@@ -437,12 +437,11 @@ msgstr "Semmit"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:240
-#, fuzzy
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
 "Give 20 gold to another player"
 msgstr ""
-"Pénzt adományozok\n"
+"<span color='green'>Pénzt adományozok</span>\n"
 "20 aranyat adok egy másik játékosnak"
 
 #. [message]: speaker=unit
@@ -458,12 +457,11 @@ msgstr "Vissza"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:273
-#, fuzzy
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
 "Help an ally with their research"
 msgstr ""
-"Megosztom az ismereteket\n"
+"<span color='green'>Megosztom az ismereteket</span>\n"
 "Segítek egy szövetségesnek a kutatásaiban"
 
 #. [message]: speaker=unit
@@ -473,28 +471,26 @@ msgstr "Kivel osztod meg az ismereteket?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:320
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
 "Lets you recruit a Dwarvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
-"Tárgyalok a törpökkel\n"
+"<span color='green'>Tárgyalok a törpökkel</span>\n"
 "Lehetővé teszi egy törp egység toborzását\n"
 "A tárgyalás állása: $player_$side_number|.leader_option_1.progress|/$player_"
 "$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:346
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
 "Lets you recruit an Elvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
-"Tárgyalok a tündékkel\n"
+"<span color='green'>Tárgyalok a tündékkel</span>\n"
 "Lehetővé teszi egy tünde egység toborzását\n"
 "A tárgyalás állása: $player_$side_number|.leader_option_2.progress|/$player_"
 "$side_number|.leader_option_2.target"
@@ -511,7 +507,7 @@ msgid ""
 "Our talks are complete — the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
 msgstr ""
-"A megbeszélésnek vége - a törpök örömmel harcolnak a te oldaladon. Melyik "
+"A megbeszélésnek vége – a törpök örömmel harcolnak a te oldaladon. Melyik "
 "testvérünket szeretnéd toborozni?"
 
 #. [message]: speaker=narrator
@@ -520,7 +516,7 @@ msgid ""
 "Our talks are complete — the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
 msgstr ""
-"A megbeszélésnek vége - a tündék segítségedre lesznek ebben a csatában. "
+"A megbeszélésnek vége – a tündék segítségedre lesznek ebben a csatában. "
 "Melyik rokonunkat szeretnéd toborozni?"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
@@ -594,14 +590,13 @@ msgstr "mezőgazdaság"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:133
-#, fuzzy
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
-"Bányászat\n"
+"<span color='green'>Bányászat</span>\n"
 "A bányászok egy arannyal többet termelnek\n"
 "A kutatás állása: $player_$side_number|.mining.progress|/$player_"
 "$side_number|.mining.target"
@@ -615,14 +610,13 @@ msgstr "bányászat"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:147
-#, fuzzy
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
-"Hadviselés\n"
+"<span color='green'>Hadviselés</span>\n"
 "Új típusú egységek toborzását teszi lehetővé\n"
 "A kutatás állása: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
