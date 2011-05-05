@@ -114,6 +114,8 @@ Version 1.9.5:
    * The tags [remove_shroud] and [place_shroud] now take comma-separated lists
      of sides.
    * The [gold] tag now takes a comma-separated list of sides.
+   * Added automatically stored variable this_unit to [modify_unit]
+     for self-reference via $this_unit
  * Miscellaneous and bugfixes:
    * Fixed: g++ compiler warnings.
    * Added: cmake target to build the gui design pdf.
