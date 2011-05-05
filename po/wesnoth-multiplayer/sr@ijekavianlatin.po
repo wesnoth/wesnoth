@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-27 13:20+0200\n"
+"POT-Creation-Date: 2011-05-05 10:12+0200\n"
 "PO-Revision-Date: 2010-04-28 16:24+0200\n"
 "Last-Translator: Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>\n"
 "Language-Team: Serbian\n"
@@ -41,35 +41,45 @@ msgstr "podrazumevana"
 msgid "Age of Heroes"
 msgstr "Doba heroja"
 
+#. [era]: id=era_khalifate
+#: data/multiplayer/eras.cfg:200
+msgid "Default + Khalifate"
+msgstr ""
+
 #. [multiplayer_side]: id=Drakes, type=Drake Flare
-#. [multiplayer_side]: id=Drakes, type=Drake Flameheart
+#. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
 msgstr "Zmagovi"
 
+#. [multiplayer_side]: id=khalifate, type=Muharib
+#: data/multiplayer/factions/khalifate-default.cfg:4
+msgid "Khalifate"
+msgstr ""
+
 #. [multiplayer_side]: id=Knalgan Alliance, type=Dwarvish Steelclad
-#. [multiplayer_side]: id=Knalgan Alliance, type=Dwarvish Lord
+#. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Knalganski savez"
 
 #. [multiplayer_side]: id=Loyalists, type=Lieutenant
-#. [multiplayer_side]: id=Loyalists, type=General
+#. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
 msgstr "Lojalisti"
 
-#. [multiplayer_side]: id=Northerners, type=Orcish Warlord
+#. [multiplayer_side]: id=Northerners, type=random
 #. [multiplayer_side]: id=Northerners, type=Orcish Warrior
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Sjevernjaci"
 
-#. [multiplayer_side]: id=Rebels, type=Elvish Marshal
+#. [multiplayer_side]: id=Rebels, type=random
 #. [multiplayer_side]: id=Rebels, type=Elvish Captain
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
@@ -77,11 +87,85 @@ msgid "Rebels"
 msgstr "Pobunjenici"
 
 #. [multiplayer_side]: id=Undead, type=Dark Sorcerer
-#. [multiplayer_side]: id=Undead, type=Lich
+#. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
 msgid "Undead"
 msgstr "Nemrtvi"
+
+#. [multiplayer]: id=multiplayer_Arcanclave_Citadel
+#: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:5
+msgid "2p — Arcanclave Citadel"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Arcanclave_Citadel
+#: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
+msgid ""
+"Arcanclave Citadel is the central stronghold of the Arcanclave region. It "
+"was finished in the year 968 YW, and served as the military headquarters of "
+"Cynsaun the First. Designed by Doc Paterson."
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:21
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:32
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
+#: data/multiplayer/scenarios/3p_Morituri.cfg:31
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
+#: data/multiplayer/scenarios/4p_Clash.cfg:29
+#: data/multiplayer/scenarios/4p_Clash.cfg:51
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
+#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:30
+#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:43
+#: data/multiplayer/scenarios/4p_Underworld.cfg:31
+#: data/multiplayer/scenarios/4p_Underworld.cfg:42
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:21
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:57
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:69
+#: data/multiplayer/scenarios/6p_Volcano.cfg:26
+#: data/multiplayer/scenarios/6p_Volcano.cfg:35
+#: data/multiplayer/scenarios/6p_Volcano.cfg:53
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:19
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:41
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
+msgid "teamname^East"
+msgstr "Istok"
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:34
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:21
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:27
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
+#: data/multiplayer/scenarios/3p_Morituri.cfg:42
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
+#: data/multiplayer/scenarios/4p_Clash.cfg:18
+#: data/multiplayer/scenarios/4p_Clash.cfg:40
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
+#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:17
+#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:56
+#: data/multiplayer/scenarios/4p_Underworld.cfg:20
+#: data/multiplayer/scenarios/4p_Underworld.cfg:53
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:31
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:33
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:45
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:81
+#: data/multiplayer/scenarios/6p_Volcano.cfg:17
+#: data/multiplayer/scenarios/6p_Volcano.cfg:44
+#: data/multiplayer/scenarios/6p_Volcano.cfg:62
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:30
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:52
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
+msgid "teamname^West"
+msgstr "Zapad"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
@@ -110,6 +194,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:21
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:67
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:22
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:70
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:21
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:20
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:20
@@ -141,6 +226,7 @@ msgstr "Sjever"
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:32
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:55
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:33
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:57
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:32
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:33
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:45
@@ -403,6 +489,20 @@ msgstr ""
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:160
 msgid ""
+"It would seem that no one knows the tale of this brave spider.\n"
+"(inscribed by WinnerA)"
+msgstr ""
+
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:168
+msgid ""
+"The tale of this unlucky highwayman is yet to be told.\n"
+"(inscribed by WinnerB)"
+msgstr ""
+
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
+msgid ""
 "A brave hero of Wesnoth’s Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
 "the foul creatures, many of his fellows were killed, but he fought "
@@ -421,12 +521,12 @@ msgstr ""
 "(urezao Finmir)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:164
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:180
 msgid "Bramwythl"
 msgstr "Bramvitl"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:169
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:185
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other Woses. More than any other Wose, he enjoyed simply standing alone in "
@@ -464,12 +564,12 @@ msgstr ""
 "(urezao Vilin-pljačkaš)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:173
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:189
 msgid "Talael Ryndoc"
 msgstr "Talajel Rindok"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:192
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
@@ -478,12 +578,12 @@ msgstr ""
 "Korinom, ali se dva čovjeka nikada ne sretoše."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:179
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:195
 msgid "Aethec Corryn"
 msgstr "Etek Korin"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:184
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:200
 msgid ""
 "The last words spoken by Grand Marshal Aethec Corryn: “Talael Ryndoc! I am "
 "through searching for you! I shall make my way back to Haldric’s Hall, and "
@@ -500,12 +600,12 @@ msgstr ""
 "Možda nije trebalo da viče toliko glasno..."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:188
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
 msgid "Rilhon"
 msgstr "Rilon"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:191
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:207
 msgid ""
 "This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
 "treasure that had been lost in these watery caves— a spear whose head was "
@@ -532,7 +632,7 @@ msgstr ""
 "(urezao Paterson)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:212
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:228
 msgid ""
 "Through waves and rocky channels\n"
 "blue and white\n"
@@ -848,71 +948,20 @@ msgstr ""
 "Nekada davano, sruči se sa nebesa velika zvijezda, ostavivši svoj biljeg na "
 "ovoj zimzelenoj zemlji."
 
-#. [side]
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:21
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:27
-#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
-#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
-#: data/multiplayer/scenarios/3p_Morituri.cfg:42
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
-#: data/multiplayer/scenarios/4p_Clash.cfg:18
-#: data/multiplayer/scenarios/4p_Clash.cfg:40
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
-#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:17
-#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:56
-#: data/multiplayer/scenarios/4p_Underworld.cfg:20
-#: data/multiplayer/scenarios/4p_Underworld.cfg:53
-#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:31
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:33
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:45
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:81
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:30
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:52
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
-msgid "teamname^West"
-msgstr "Zapad"
-
-#. [side]
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:32
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
-#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
-#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
-#: data/multiplayer/scenarios/3p_Morituri.cfg:31
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
-#: data/multiplayer/scenarios/4p_Clash.cfg:29
-#: data/multiplayer/scenarios/4p_Clash.cfg:51
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
-#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:30
-#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:43
-#: data/multiplayer/scenarios/4p_Underworld.cfg:31
-#: data/multiplayer/scenarios/4p_Underworld.cfg:42
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:21
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:57
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:69
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:19
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:41
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
-msgid "teamname^East"
-msgstr "Istok"
-
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p — Hamlets"
 msgstr "2i: Seoca"
 
-#. [multiplayer]: id=multiplayer_4p_Hamlets
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
-#: data/multiplayer/scenarios/4p_Hamlets.cfg:6
+#, fuzzy
+#| msgid ""
+#| "Warfare transforms the simple farms and villages of a peaceful region "
+#| "into a subtly parceled battlefield."
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
-"subtly parceled battlefield."
+"subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
 "Ratovanje pretvara prostodušne farme i sela miroljubive oblasti u prepredeno "
 "isparčano bojište."
@@ -1075,6 +1124,91 @@ msgstr ""
 "svojih zemalja, odbijajući velike zvjeri sa zapadnih granica, a karoratske "
 "cariste sa istočnih."
 
+#. [multiplayer]: id=multiplayer_thousand_stings_garrison
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:34
+msgid "2p — Thousand Stings Garrison"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_thousand_stings_garrison
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:36
+msgid "Designed by Doc Paterson."
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:88
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:92
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:96
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:100
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:104
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:108
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:112
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:116
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:120
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:124
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:128
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:132
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:136
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:140
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:144
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:148
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:152
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:156
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:160
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:164
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:168
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:172
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:176
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:180
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:184
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:188
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:192
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:196
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:200
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:204
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:208
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:212
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:216
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:220
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:224
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:228
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:232
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:236
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:240
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:244
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:248
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:252
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:256
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:260
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:264
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:268
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:272
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:276
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:280
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:284
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:288
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:292
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:296
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:300
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:304
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:308
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:312
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:316
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:320
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:324
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:328
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:332
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:336
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:340
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:344
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:348
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:352
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:356
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:360
+#, fuzzy
+#| msgid "statue"
+msgid "Statue"
+msgstr "kip"
+
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 msgid "2p — Weldyn Channel"
@@ -1224,6 +1358,15 @@ msgstr "Mala mapa za 2 na 2."
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p — Hamlets"
 msgstr "4i: Seoca"
+
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:6
+msgid ""
+"Warfare transforms the simple farms and villages of a peaceful region into a "
+"subtly parceled battlefield."
+msgstr ""
+"Ratovanje pretvara prostodušne farme i sela miroljubive oblasti u prepredeno "
+"isparčano bojište."
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
@@ -1645,6 +1788,20 @@ msgstr ""
 "oblast teškog terena, u kojoj je lako završiti van položaja ili previše "
 "rastegnut. Timovi su podešeni za igrače 145 pr. 236 (istok pr. zapada). "
 "Projektovano za 100 zlata na početku, ima 33 sela."
+
+#. [multiplayer]: id=multiplayer_Volcano
+#: data/multiplayer/scenarios/6p_Volcano.cfg:7
+#, fuzzy
+#| msgid "6p — Hexcake"
+msgid "6p — Volcano"
+msgstr "6i: Šestokolač"
+
+#. [multiplayer]: id=multiplayer_Volcano
+#: data/multiplayer/scenarios/6p_Volcano.cfg:9
+msgid ""
+"A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
+"volcanic eruption. It has 36 villages."
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7

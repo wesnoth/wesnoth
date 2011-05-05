@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-27 13:20+0200\n"
+"POT-Creation-Date: 2011-05-05 10:12+0200\n"
 "PO-Revision-Date: 2011-04-29 12:35+0100\n"
 "Last-Translator: Niklas Bolmdahl <niklas.spamfilter@karragard.com>\n"
 "Language-Team: Swedish\n"
@@ -36,35 +36,45 @@ msgstr "Standard"
 msgid "Age of Heroes"
 msgstr "Hjältarnas tid"
 
+#. [era]: id=era_khalifate
+#: data/multiplayer/eras.cfg:200
+msgid "Default + Khalifate"
+msgstr ""
+
 #. [multiplayer_side]: id=Drakes, type=Drake Flare
-#. [multiplayer_side]: id=Drakes, type=Drake Flameheart
+#. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
 msgstr "Drakfolket"
 
+#. [multiplayer_side]: id=khalifate, type=Muharib
+#: data/multiplayer/factions/khalifate-default.cfg:4
+msgid "Khalifate"
+msgstr ""
+
 #. [multiplayer_side]: id=Knalgan Alliance, type=Dwarvish Steelclad
-#. [multiplayer_side]: id=Knalgan Alliance, type=Dwarvish Lord
+#. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Knalgas allians"
 
 #. [multiplayer_side]: id=Loyalists, type=Lieutenant
-#. [multiplayer_side]: id=Loyalists, type=General
+#. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
 msgstr "Lojalister"
 
-#. [multiplayer_side]: id=Northerners, type=Orcish Warlord
+#. [multiplayer_side]: id=Northerners, type=random
 #. [multiplayer_side]: id=Northerners, type=Orcish Warrior
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Nordbor"
 
-#. [multiplayer_side]: id=Rebels, type=Elvish Marshal
+#. [multiplayer_side]: id=Rebels, type=random
 #. [multiplayer_side]: id=Rebels, type=Elvish Captain
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
@@ -72,11 +82,85 @@ msgid "Rebels"
 msgstr "Rebeller"
 
 #. [multiplayer_side]: id=Undead, type=Dark Sorcerer
-#. [multiplayer_side]: id=Undead, type=Lich
+#. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
 msgid "Undead"
 msgstr "Vandöda"
+
+#. [multiplayer]: id=multiplayer_Arcanclave_Citadel
+#: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:5
+msgid "2p — Arcanclave Citadel"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Arcanclave_Citadel
+#: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
+msgid ""
+"Arcanclave Citadel is the central stronghold of the Arcanclave region. It "
+"was finished in the year 968 YW, and served as the military headquarters of "
+"Cynsaun the First. Designed by Doc Paterson."
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:21
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:32
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
+#: data/multiplayer/scenarios/3p_Morituri.cfg:31
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
+#: data/multiplayer/scenarios/4p_Clash.cfg:29
+#: data/multiplayer/scenarios/4p_Clash.cfg:51
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
+#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:30
+#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:43
+#: data/multiplayer/scenarios/4p_Underworld.cfg:31
+#: data/multiplayer/scenarios/4p_Underworld.cfg:42
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:21
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:57
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:69
+#: data/multiplayer/scenarios/6p_Volcano.cfg:26
+#: data/multiplayer/scenarios/6p_Volcano.cfg:35
+#: data/multiplayer/scenarios/6p_Volcano.cfg:53
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:19
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:41
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
+msgid "teamname^East"
+msgstr "Öst"
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:34
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:21
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:27
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
+#: data/multiplayer/scenarios/3p_Morituri.cfg:42
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
+#: data/multiplayer/scenarios/4p_Clash.cfg:18
+#: data/multiplayer/scenarios/4p_Clash.cfg:40
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
+#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:17
+#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:56
+#: data/multiplayer/scenarios/4p_Underworld.cfg:20
+#: data/multiplayer/scenarios/4p_Underworld.cfg:53
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:31
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:33
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:45
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:81
+#: data/multiplayer/scenarios/6p_Volcano.cfg:17
+#: data/multiplayer/scenarios/6p_Volcano.cfg:44
+#: data/multiplayer/scenarios/6p_Volcano.cfg:62
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:30
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:52
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
+msgid "teamname^West"
+msgstr "Väst"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
@@ -85,8 +169,14 @@ msgstr "2s - Basiliskens grotta"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:35
-msgid "These caves were once the lair of Chak’kso Ney’yks, a legendary Elder Basilisk. The petrified forms of his victims remain as monuments to his savage power."
-msgstr "Dessa grottor var en gång i tiden hem åt den legendariska gamla basilisken Chak'kso Ney'yks. De förstenade gestalterna av hans offer finns kvar som ett monument till hans brutala  krafter."
+msgid ""
+"These caves were once the lair of Chak’kso Ney’yks, a legendary Elder "
+"Basilisk. The petrified forms of his victims remain as monuments to his "
+"savage power."
+msgstr ""
+"Dessa grottor var en gång i tiden hem åt den legendariska gamla basilisken "
+"Chak'kso Ney'yks. De förstenade gestalterna av hans offer finns kvar som ett "
+"monument till hans brutala  krafter."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:49
@@ -99,6 +189,7 @@ msgstr "Dessa grottor var en gång i tiden hem åt den legendariska gamla basili
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:21
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:67
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:22
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:70
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:21
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:20
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:20
@@ -130,6 +221,7 @@ msgstr "Nord"
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:32
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:55
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:33
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:57
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:32
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:33
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:45
@@ -196,8 +288,45 @@ msgstr "Xikkrisx"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:110
-msgid "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region by the Elders of the Rysssrylosszkk Clan (translation: “The Hunts-Foes-In-Boiling-Rivers Clan”). The Elders were preparing to make war on a human outpost, and were in great need of the powerful magics of Oxsrrsk, a Saurian Mystic who had last been seen heading in the direction of Ruaskkolin Lake. Xikkrisx found the petrified body of Oxsrrsk, along with a carefully bound scroll that had apparently been dropped into a small crevice in the cave floor. He opened the scroll and read a brief passage from the middle of the text: “After he was bound and cast from the Upper World, Chak’kso’s enraged spirit sought release, and was able to exert a corrupting influence on certain regions of the Upper World, channeled through ‘pathways of stone’ that extend from the surface into the depths of the Under Reaches. This rage altered the eggs of great lizards, shaping their bodies and spirits into implements of Chak’kso’s hatred.” Confused, Xikkrisx fixed his attention on the task at hand. Thinking that perhaps the Elders could find some way to restore Oxsrrsk, he began the long and strenuous task of hauling the statue back to the domain of the Rysssrylosszkk Clan. Exhausted, and not having traveled far from the lake, Xikkrisx set the statue down inside of a small cave, and lay down to rest. He was awoken by a bone-chilling roar."
-msgstr "Xikkrisx från Syrsszk var en mäktig krigare hos ödlefolket, och sändes till detta område av de Äldste av Rysssrylosszkk-klanen (\"Jagar-Fiender-i-Kokande-Flodenklanen\"). De Äldste förberedde krig mot en av människornas utposter, och var i stort behov av den kraftfulla magin som besatts av Oxsrrsk, en av ödlefolkets mystiker, som senast setts färdas i riktning mot Ruaskkolin-sjön. Xikkrisx fann Oxsrrsk förstenad, tillsammans med en nogsamt knuten textrulle som hamnat i en liten skreva i grottgolvet. Han öppnade rullen och läste ett kort stycke från mitten av texten: \"Efter att han bundits och kastats ut från den Övre världen, sökte Chak'ksos vredgade ande friheten, och kunde utöva ett förvridande inflytande på vissa områden i den Övre världen, kanaliserat genom 'stenvägar' som sträcker sig från ytan ner i djupen av de Undre strömmarna. Denna vrede förändrade de stora ödlornas ägg, och formade deras kroppar och andar efter Chak'ksos hat.\" Konfunderad vände Xikkrisx uppmärksamheten till sin uppgift. Han tänkte att de Äldste kunde finna något sätt att återställa Oxsrrsk, och påbörjade det långa och slitsamma arbetet att släpa statyn tillbaka till Rysssrylosszkk-klanens områden. Utmattad, inte långt från sjön, lade Xikkrisx ner statyn i en liten grotta och lade sig för att vila. Han väcktes av ett skräckinjagande rytande."
+msgid ""
+"Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region by "
+"the Elders of the Rysssrylosszkk Clan (translation: “The Hunts-Foes-In-"
+"Boiling-Rivers Clan”). The Elders were preparing to make war on a human "
+"outpost, and were in great need of the powerful magics of Oxsrrsk, a Saurian "
+"Mystic who had last been seen heading in the direction of Ruaskkolin Lake. "
+"Xikkrisx found the petrified body of Oxsrrsk, along with a carefully bound "
+"scroll that had apparently been dropped into a small crevice in the cave "
+"floor. He opened the scroll and read a brief passage from the middle of the "
+"text: “After he was bound and cast from the Upper World, Chak’kso’s enraged "
+"spirit sought release, and was able to exert a corrupting influence on "
+"certain regions of the Upper World, channeled through ‘pathways of stone’ "
+"that extend from the surface into the depths of the Under Reaches. This rage "
+"altered the eggs of great lizards, shaping their bodies and spirits into "
+"implements of Chak’kso’s hatred.” Confused, Xikkrisx fixed his attention on "
+"the task at hand. Thinking that perhaps the Elders could find some way to "
+"restore Oxsrrsk, he began the long and strenuous task of hauling the statue "
+"back to the domain of the Rysssrylosszkk Clan. Exhausted, and not having "
+"traveled far from the lake, Xikkrisx set the statue down inside of a small "
+"cave, and lay down to rest. He was awoken by a bone-chilling roar."
+msgstr ""
+"Xikkrisx från Syrsszk var en mäktig krigare hos ödlefolket, och sändes till "
+"detta område av de Äldste av Rysssrylosszkk-klanen (\"Jagar-Fiender-i-"
+"Kokande-Flodenklanen\"). De Äldste förberedde krig mot en av människornas "
+"utposter, och var i stort behov av den kraftfulla magin som besatts av "
+"Oxsrrsk, en av ödlefolkets mystiker, som senast setts färdas i riktning mot "
+"Ruaskkolin-sjön. Xikkrisx fann Oxsrrsk förstenad, tillsammans med en nogsamt "
+"knuten textrulle som hamnat i en liten skreva i grottgolvet. Han öppnade "
+"rullen och läste ett kort stycke från mitten av texten: \"Efter att han "
+"bundits och kastats ut från den Övre världen, sökte Chak'ksos vredgade ande "
+"friheten, och kunde utöva ett förvridande inflytande på vissa områden i den "
+"Övre världen, kanaliserat genom 'stenvägar' som sträcker sig från ytan ner i "
+"djupen av de Undre strömmarna. Denna vrede förändrade de stora ödlornas ägg, "
+"och formade deras kroppar och andar efter Chak'ksos hat.\" Konfunderad vände "
+"Xikkrisx uppmärksamheten till sin uppgift. Han tänkte att de Äldste kunde "
+"finna något sätt att återställa Oxsrrsk, och påbörjade det långa och "
+"slitsamma arbetet att släpa statyn tillbaka till Rysssrylosszkk-klanens "
+"områden. Utmattad, inte långt från sjön, lade Xikkrisx ner statyn i en liten "
+"grotta och lade sig för att vila. Han väcktes av ett skräckinjagande rytande."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:113
@@ -206,8 +335,44 @@ msgstr "Oxsrrsk"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:116
-msgid "Oxsrrsk was a powerful Saurian Oracle, who had, in a raid against the rival Xraxss Clan, acquired (from the vaults of the now-dead Oracle Hesx-Rzzak) a most fascinating scroll. The scroll was entitled “Ney’yks of the Granite Gaze,” and told of a creature known as the “Chak’kso Ney’yks,” a name which, in an ancient saurian tongue, meant “Eldest Child of Chak’kso.” Chak’kso was believed to have been a powerful demigod of the Under Reaches, described as a ‘great demon of the earth’ in the Elvish Histories. According to these histories, Chak’kso had once sought to transform all life on the planet to stone; so great was his hatred for creatures of flesh. He was ultimately defeated and bound by powerful magics, but in the centuries following his banishment (to a realm far below the surface of the world) a new breed of creature began appearing in the Histories, a breed with the ability to turn any being of flesh into stone. There was a period when these Basilisks (as they came to be known) wreaked havoc on the world of the living, turning thousands to stone. One by one, and at great cost, the Basilisks were defeated. All, it would seem, but one; the Basilisk known as “The Ney’yks,” or “The Eldest Child,” in the modern tongue. Supremely convinced of his ability to locate and bind this powerful creature into his service, Oxsrrsk set out on his journey..."
-msgstr "Oxsrrsk var ett mäktigt orakel bland ödlefolket som, i en räd mot den rivaliserande Xraxss-klanen, kom över en mycket intressant textrulle (från det framlidne oraklet Hesx-Rzzaks valv). Rullen hade titeln \"Ney'yks av Granitblicken\", och förtäljde historien om en varelse känd som \"Chak'kso Ney'yks\", ett namn som på ödefolkets urgamla språk betydde \"Chak'ksos äldsta barn\". Chak'kso troddes ha varit en mäktig halvgud av de Undre strömmarna, beskriven som \"en stor jordens demon\" i alvernas Krönikor. Enligt dessa krönikor sökte Chak'kso en gång omvandla allt liv på planeten till sten; så starkt var hans hat mot köttsliga varelser. Till slut besegrades han och bands av mäktig magi, men under århundradena efter hans bannlysning (till ett rike långt under världens yta) började en ny art dyka upp i Krönikorna, en art med förmågan att förstena köttsliga varelser. Under en period spred dessa basilisker (som de blev kända som) förödelse över de levandes värld, och förstenade tusentals. En efter en besegrades basiliskerna, under stora uppoffringar. Alla, utom en; basilisken känd som Ney'yks, eller \"Chak'ksos äldsta barn\". Helt övertygad om sin förmåga att finna och binda denna varelse i sin tjänst, gav sig Oxsrrsk ut på sin resa."
+msgid ""
+"Oxsrrsk was a powerful Saurian Oracle, who had, in a raid against the rival "
+"Xraxss Clan, acquired (from the vaults of the now-dead Oracle Hesx-Rzzak) a "
+"most fascinating scroll. The scroll was entitled “Ney’yks of the Granite "
+"Gaze,” and told of a creature known as the “Chak’kso Ney’yks,” a name which, "
+"in an ancient saurian tongue, meant “Eldest Child of Chak’kso.” Chak’kso was "
+"believed to have been a powerful demigod of the Under Reaches, described as "
+"a ‘great demon of the earth’ in the Elvish Histories. According to these "
+"histories, Chak’kso had once sought to transform all life on the planet to "
+"stone; so great was his hatred for creatures of flesh. He was ultimately "
+"defeated and bound by powerful magics, but in the centuries following his "
+"banishment (to a realm far below the surface of the world) a new breed of "
+"creature began appearing in the Histories, a breed with the ability to turn "
+"any being of flesh into stone. There was a period when these Basilisks (as "
+"they came to be known) wreaked havoc on the world of the living, turning "
+"thousands to stone. One by one, and at great cost, the Basilisks were "
+"defeated. All, it would seem, but one; the Basilisk known as “The Ney’yks,” "
+"or “The Eldest Child,” in the modern tongue. Supremely convinced of his "
+"ability to locate and bind this powerful creature into his service, Oxsrrsk "
+"set out on his journey..."
+msgstr ""
+"Oxsrrsk var ett mäktigt orakel bland ödlefolket som, i en räd mot den "
+"rivaliserande Xraxss-klanen, kom över en mycket intressant textrulle (från "
+"det framlidne oraklet Hesx-Rzzaks valv). Rullen hade titeln \"Ney'yks av "
+"Granitblicken\", och förtäljde historien om en varelse känd som \"Chak'kso "
+"Ney'yks\", ett namn som på ödefolkets urgamla språk betydde \"Chak'ksos "
+"äldsta barn\". Chak'kso troddes ha varit en mäktig halvgud av de Undre "
+"strömmarna, beskriven som \"en stor jordens demon\" i alvernas Krönikor. "
+"Enligt dessa krönikor sökte Chak'kso en gång omvandla allt liv på planeten "
+"till sten; så starkt var hans hat mot köttsliga varelser. Till slut "
+"besegrades han och bands av mäktig magi, men under århundradena efter hans "
+"bannlysning (till ett rike långt under världens yta) började en ny art dyka "
+"upp i Krönikorna, en art med förmågan att förstena köttsliga varelser. Under "
+"en period spred dessa basilisker (som de blev kända som) förödelse över de "
+"levandes värld, och förstenade tusentals. En efter en besegrades "
+"basiliskerna, under stora uppoffringar. Alla, utom en; basilisken känd som "
+"Ney'yks, eller \"Chak'ksos äldsta barn\". Helt övertygad om sin förmåga att "
+"finna och binda denna varelse i sin tjänst, gav sig Oxsrrsk ut på sin resa."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:129
@@ -238,14 +403,32 @@ msgstr "Blum Duk"
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:138
 msgid ""
-"Blum Duk was renowned among his goblin clan for having tamed one of the Dire Wolves of the mountains, and he had the courage to match. His leadership and skills alone were what kept the area’s goblins alive despite human and elvish menaces. Rumor had it that his wolf had slain fifty men and a hundred Elves.\n"
-"Thus, when he heard of the awful monster that was inhabiting the area, it was only natural that he ride out alone to face it. All the other goblins expected him to slay the creature easily and drag back its carcass to feast on.\n"
-"He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk cowered in fright. He tried to wheel his wolf around to run away, but it wouldn’t move. As the creature stalked towards him, he screamed his last words: Good Gog, dog, are yer legs made of stone?!\n"
+"Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
+"Wolves of the mountains, and he had the courage to match. His leadership and "
+"skills alone were what kept the area’s goblins alive despite human and "
+"elvish menaces. Rumor had it that his wolf had slain fifty men and a hundred "
+"Elves.\n"
+"Thus, when he heard of the awful monster that was inhabiting the area, it "
+"was only natural that he ride out alone to face it. All the other goblins "
+"expected him to slay the creature easily and drag back its carcass to feast "
+"on.\n"
+"He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
+"cowered in fright. He tried to wheel his wolf around to run away, but it "
+"wouldn’t move. As the creature stalked towards him, he screamed his last "
+"words: Good Gog, dog, are yer legs made of stone?!\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
-"Blum Duk var vitt känd i sin vätteklan, då han tämjt en av monstervargarna från bergen. Hans mod och ledarskap var det enda som höll vättarna vid liv trots hoten från människorna och alverna. Ryktena gjorde gällande att hans varg hade dräpt femtio människor och hundra alver.\n"
-"När han hörde att ett ondskefullt monster flyttat in i området, föll det sig alltså naturligt att han red ut ensam för att möta det. Alla andra vättar förväntade sig att han skulle förgöra monstret och ta med sig kadavret tillbaka för klanen att festa på.\n"
-"Han blev mäkta förvånad när han såg basilisken, och kröp ihop i skräck. Han försökte vända sin varg och fly, men den rörde sig inte. När besten närmade sig skrek han sina sista ord: Gode Gog, hund, är dina ben gjorda av sten?!?\n"
+"Blum Duk var vitt känd i sin vätteklan, då han tämjt en av monstervargarna "
+"från bergen. Hans mod och ledarskap var det enda som höll vättarna vid liv "
+"trots hoten från människorna och alverna. Ryktena gjorde gällande att hans "
+"varg hade dräpt femtio människor och hundra alver.\n"
+"När han hörde att ett ondskefullt monster flyttat in i området, föll det sig "
+"alltså naturligt att han red ut ensam för att möta det. Alla andra vättar "
+"förväntade sig att han skulle förgöra monstret och ta med sig kadavret "
+"tillbaka för klanen att festa på.\n"
+"Han blev mäkta förvånad när han såg basilisken, och kröp ihop i skräck. Han "
+"försökte vända sin varg och fly, men den rörde sig inte. När besten närmade "
+"sig skrek han sina sista ord: Gode Gog, hund, är dina ben gjorda av sten?!?\n"
 "(Inristat av Elvish Pillager)"
 
 #. [side]
@@ -255,87 +438,185 @@ msgstr "Rah Ihn Mar"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:144
-msgid "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin Lake region in pursuit of the Elvish Hero Terowydlithrol, known among Elves as ‘The Dragonbane’. It was said that Terowydlithrol had killed a Dragon of Fire that threatened an Elvish village, and initiated a ‘counterattack’ in which some 37 Drakes, camping in a nearby ravine and believed to be in allegiance with the Dragon, were slaughtered. Knowing that these Drakes were innocent, Rah Ihn Mar came to Ruaskkolin Lake to hunt down and slay Terowydlithrol, who had been seen entering the region but a day ago. Burning for vengeance, Rah Ihn Mar began the hunt....."
-msgstr "Rah Ihn Mar, Brinnande kullarnas förkämpe, fann vägen till Ruaskkolin-sjön på jakt efter alvhjälten Terowydlithrol, bland alver känd som Drakbane. Det sägs att Terowydlithrol dödat en Elddrake som hotade en alvby, och sedan lett en \"motattack\" i vilken 37 drakar, som slagit läger i den ravin i närheten och som troddes vara allierade med draken, slaktades. Då Rah Ihn Mar visste att dessa drakar var oskyldiga, kom han till Ruaskkolin-sjön för att jaga och dräpa Terowydlithrol, som nyligen hade setts i området. Med ett brinnande hämndbegär började Rah Ihn Mar jakten..."
+msgid ""
+"Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
+"Lake region in pursuit of the Elvish Hero Terowydlithrol, known among Elves "
+"as ‘The Dragonbane’. It was said that Terowydlithrol had killed a Dragon of "
+"Fire that threatened an Elvish village, and initiated a ‘counterattack’ in "
+"which some 37 Drakes, camping in a nearby ravine and believed to be in "
+"allegiance with the Dragon, were slaughtered. Knowing that these Drakes were "
+"innocent, Rah Ihn Mar came to Ruaskkolin Lake to hunt down and slay "
+"Terowydlithrol, who had been seen entering the region but a day ago. Burning "
+"for vengeance, Rah Ihn Mar began the hunt....."
+msgstr ""
+"Rah Ihn Mar, Brinnande kullarnas förkämpe, fann vägen till Ruaskkolin-sjön "
+"på jakt efter alvhjälten Terowydlithrol, bland alver känd som Drakbane. Det "
+"sägs att Terowydlithrol dödat en Elddrake som hotade en alvby, och sedan "
+"lett en \"motattack\" i vilken 37 drakar, som slagit läger i den ravin i "
+"närheten och som troddes vara allierade med draken, slaktades. Då Rah Ihn "
+"Mar visste att dessa drakar var oskyldiga, kom han till Ruaskkolin-sjön för "
+"att jaga och dräpa Terowydlithrol, som nyligen hade setts i området. Med ett "
+"brinnande hämndbegär började Rah Ihn Mar jakten..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:152
 msgid ""
-"He had lived there for ages upon ages, in the depths of the water, preying upon the various fish and frogs and merfolk that entered his domain. It was his lake, no other’s, and though it was not large, he was its master. Then, the Basilisk came, and looked into the Serpent’s eyes. And the Serpent had not died, but it was no longer alive. Thus the new lord of the lake had arrived.\n"
+"He had lived there for ages upon ages, in the depths of the water, preying "
+"upon the various fish and frogs and merfolk that entered his domain. It was "
+"his lake, no other’s, and though it was not large, he was its master. Then, "
+"the Basilisk came, and looked into the Serpent’s eyes. And the Serpent had "
+"not died, but it was no longer alive. Thus the new lord of the lake had "
+"arrived.\n"
 "(inscribed by Turin)"
 msgstr ""
-"Han hade levt där i evärdliga tider, i vattnets djup, och levt på de fiskar och grodor och sjöfolk som trädde in på hans domäner. Det var hans sjö, ingen annans, och även om den inte var stor, så var han dess herre. Så kom basilisken, och såg in i ormens ögon. Och ormen var inte död, men den var inte heller vid liv. Så fick sjön sin nye härskare.\n"
+"Han hade levt där i evärdliga tider, i vattnets djup, och levt på de fiskar "
+"och grodor och sjöfolk som trädde in på hans domäner. Det var hans sjö, "
+"ingen annans, och även om den inte var stor, så var han dess herre. Så kom "
+"basilisken, och såg in i ormens ögon. Och ormen var inte död, men den var "
+"inte heller vid liv. Så fick sjön sin nye härskare.\n"
 "(Inristat av Turin)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:160
 msgid ""
-"A brave hero of Wesnoth’s Golden Age, this great rider and commander of men came to this evil place while on a raid against the orcs. Caught unaware by the foul creatures, many of his fellows were killed, but he fought valiantly, slaying many a foe. But alas! The foul Basilisk turned him to stone even as he slew the last orc. Now all that is left is a stark reminder of his once great bearing and strength.\n"
+"It would seem that no one knows the tale of this brave spider.\n"
+"(inscribed by WinnerA)"
+msgstr ""
+
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:168
+msgid ""
+"The tale of this unlucky highwayman is yet to be told.\n"
+"(inscribed by WinnerB)"
+msgstr ""
+
+#. [unit]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
+msgid ""
+"A brave hero of Wesnoth’s Golden Age, this great rider and commander of men "
+"came to this evil place while on a raid against the orcs. Caught unaware by "
+"the foul creatures, many of his fellows were killed, but he fought "
+"valiantly, slaying many a foe. But alas! The foul Basilisk turned him to "
+"stone even as he slew the last orc. Now all that is left is a stark reminder "
+"of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
 msgstr ""
-"En modig krigare från Wesnoth gyllene ålder, en mäktig riddare och befälhavare bland människorna, kom till denna onda plats för en räd mot orcherna. De hamnade i bakhåll av de onda varelserna, och många av hans mannar dödades, men han slogs tappert och dräpte många fiender. Men ack! Den vidriga basilisken förstenade honom när han stack ned den sista orchen. Allt som finns kvar är en påminnelse om hans forna styrka och glans.\n"
+"En modig krigare från Wesnoth gyllene ålder, en mäktig riddare och "
+"befälhavare bland människorna, kom till denna onda plats för en räd mot "
+"orcherna. De hamnade i bakhåll av de onda varelserna, och många av hans "
+"mannar dödades, men han slogs tappert och dräpte många fiender. Men ack! Den "
+"vidriga basilisken förstenade honom när han stack ned den sista orchen. Allt "
+"som finns kvar är en påminnelse om hans forna styrka och glans.\n"
 "(Inristat av Fynmiir)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:164
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:180
 msgid "Bramwythl"
 msgstr "Bramwythl"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:169
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:185
 msgid ""
-"Bramwythl the Wose was always considered a slow, taciturn fellow, even by other Woses. More than any other Wose, he enjoyed simply standing alone in the sun, arms upraised, admiring the beauty of the empty sky. Once, even, he confided in a fellow that his greatest wish was to be able to bask forever in the sun’s glory.\n"
-"However, not long after, the local wose community heard of the approach of a horrible monster, powerful enough to easily destroy the few woses that lived in the area. They quickly moved off (quickly for Woses, anyway), but Bramwythl was left behind — in their haste, no one had remembered to find him and tell him of the danger.\n"
-"He was taken quite unawares by the Basilisk, and turned to stone before he even recognized the beast. His petrified form still stands there today, warmed by the sun’s rays, under an open sky. His greatest wish has been granted.\n"
+"Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
+"other Woses. More than any other Wose, he enjoyed simply standing alone in "
+"the sun, arms upraised, admiring the beauty of the empty sky. Once, even, he "
+"confided in a fellow that his greatest wish was to be able to bask forever "
+"in the sun’s glory.\n"
+"However, not long after, the local wose community heard of the approach of a "
+"horrible monster, powerful enough to easily destroy the few woses that lived "
+"in the area. They quickly moved off (quickly for Woses, anyway), but "
+"Bramwythl was left behind — in their haste, no one had remembered to find "
+"him and tell him of the danger.\n"
+"He was taken quite unawares by the Basilisk, and turned to stone before he "
+"even recognized the beast. His petrified form still stands there today, "
+"warmed by the sun’s rays, under an open sky. His greatest wish has been "
+"granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
-"Enten Bramwythl betraktades som långsam och fåordig, även bland andra enter. Mer än andra enter tyckte han om att stå ensam i solen, med armarna uppsträckta, och beundra den öppna himlens skönhet. En gång talade han om för en vän att hans största önskan var att stå i solens sken för evigt.\n"
-"Det var inte långt efter detta som enterna i området hörde att ett fruktansvärt monster närmade sig, ett monster som var mäktigt nog att förgöra de få enter som levde där. De gav sig snabbt (för enter i alla fall) därifrån, men Bramwythl blev lämnad efter - i sin brådska hade det glömt bort att leta upp honom och varsko honom om hotet.\n"
-"Utan förvarning, innan han ens hann känna igen basilisken, hade den förstenat honom. Han står där än idag, uppvärmd av solens strålar, under en öppen himmel. Hans högsta önskan har blivit uppfylld.\n"
+"Enten Bramwythl betraktades som långsam och fåordig, även bland andra enter. "
+"Mer än andra enter tyckte han om att stå ensam i solen, med armarna "
+"uppsträckta, och beundra den öppna himlens skönhet. En gång talade han om "
+"för en vän att hans största önskan var att stå i solens sken för evigt.\n"
+"Det var inte långt efter detta som enterna i området hörde att ett "
+"fruktansvärt monster närmade sig, ett monster som var mäktigt nog att "
+"förgöra de få enter som levde där. De gav sig snabbt (för enter i alla fall) "
+"därifrån, men Bramwythl blev lämnad efter - i sin brådska hade det glömt "
+"bort att leta upp honom och varsko honom om hotet.\n"
+"Utan förvarning, innan han ens hann känna igen basilisken, hade den "
+"förstenat honom. Han står där än idag, uppvärmd av solens strålar, under en "
+"öppen himmel. Hans högsta önskan har blivit uppfylld.\n"
 "(Inristat av Elvish Pillager)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:173
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:189
 msgid "Talael Ryndoc"
 msgstr "Talael Ryndoc"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
-msgid "General Talael Ryndoc came to this place to fight a duel with the Grand Marshal Aethec Corryn, but the two men never found one another. "
-msgstr "General Talael Ryndoc kom till denna plats för en duell med överstemarskalk Aethec Corryn, men de två fann varandra aldrig."
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:192
+msgid ""
+"General Talael Ryndoc came to this place to fight a duel with the Grand "
+"Marshal Aethec Corryn, but the two men never found one another. "
+msgstr ""
+"General Talael Ryndoc kom till denna plats för en duell med överstemarskalk "
+"Aethec Corryn, men de två fann varandra aldrig."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:179
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:195
 msgid "Aethec Corryn"
 msgstr "Aethec Corryn"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:184
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:200
 msgid ""
-"The last words spoken by Grand Marshal Aethec Corryn: “Talael Ryndoc! I am through searching for you! I shall make my way back to Haldric’s Hall, and inform the court that you were too much of a coward to attend our duel! Your disgrace shall be more agonizing than the death I’d have given you!”\n"
+"The last words spoken by Grand Marshal Aethec Corryn: “Talael Ryndoc! I am "
+"through searching for you! I shall make my way back to Haldric’s Hall, and "
+"inform the court that you were too much of a coward to attend our duel! Your "
+"disgrace shall be more agonizing than the death I’d have given you!”\n"
 "\n"
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
-"Överstemarskalk Aethec Corryns sista ord: \"Talael Ryndoc! Jag har slutat söka efter dig! Jag återvänder till Haldrics hallar och informerar hovet att du var för mycket av en ynkrygg för att närvara vid vår duell! Din skam kommer att smärta dig mer än döden jag skulle gett dig!\"\n"
+"Överstemarskalk Aethec Corryns sista ord: \"Talael Ryndoc! Jag har slutat "
+"söka efter dig! Jag återvänder till Haldrics hallar och informerar hovet att "
+"du var för mycket av en ynkrygg för att närvara vid vår duell! Din skam "
+"kommer att smärta dig mer än döden jag skulle gett dig!\"\n"
 "\n"
 "Kanske skulle han inte ropat riktigt så högt..."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:188
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
 msgid "Rilhon"
 msgstr "Rilhon"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:191
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:207
 msgid ""
-"This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous treasure that had been lost in these watery caves— a spear whose head was said to have been fashioned from the tooth of Chak’kso Ney’yks, an Elder Basilisk slain long ago by the Elvish hero, Eloralduil. According to the legend, the weapon rested somewhere on the bottom of this very lake (Ruaskkolin Lake, named for a well-known Sea Serpent who made it his home). Having prepared himself for battle with the Serpent, Rilhon met with two rather large surprises. The first was the petrified form of Ruaskkolin the Serpent. The second was the very-much-alive Chak’kso Ney’yks, who was, oddly enough, in possession of all of his teeth.\n"
+"This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
+"treasure that had been lost in these watery caves— a spear whose head was "
+"said to have been fashioned from the tooth of Chak’kso Ney’yks, an Elder "
+"Basilisk slain long ago by the Elvish hero, Eloralduil. According to the "
+"legend, the weapon rested somewhere on the bottom of this very lake "
+"(Ruaskkolin Lake, named for a well-known Sea Serpent who made it his home). "
+"Having prepared himself for battle with the Serpent, Rilhon met with two "
+"rather large surprises. The first was the petrified form of Ruaskkolin the "
+"Serpent. The second was the very-much-alive Chak’kso Ney’yks, who was, oddly "
+"enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
-"Den modiga kämpen som bland Nagafolket var känd som Rilhon, hörde om en fantastisk skatt som hade förlorats i grottorna i vattnet - ett spjut vars huvud påstods ha blivit skapat av en tand från Chak'kso Ney'yks, en åldrig basilisk som för länge sedan dräptes av alvhjälten Eloralduil. Enligt legenden vilade vapnet någonstans på botten av denna sjö (Ruaskkolin-sjön, efter en välkänd sjöorm som slagit sig ner här). Efter att ha förberett sig för striden med ormen, råkade Rilhon ut för två ganska stora överraskningar. Den första var den förstenade Ruaskkolin Sjöormen. Den andra var den i högsta grad levande Chak'kso Ney'yks som, märkligt nog, hade alla sina tänder i behåll.\n"
+"Den modiga kämpen som bland Nagafolket var känd som Rilhon, hörde om en "
+"fantastisk skatt som hade förlorats i grottorna i vattnet - ett spjut vars "
+"huvud påstods ha blivit skapat av en tand från Chak'kso Ney'yks, en åldrig "
+"basilisk som för länge sedan dräptes av alvhjälten Eloralduil. Enligt "
+"legenden vilade vapnet någonstans på botten av denna sjö (Ruaskkolin-sjön, "
+"efter en välkänd sjöorm som slagit sig ner här). Efter att ha förberett sig "
+"för striden med ormen, råkade Rilhon ut för två ganska stora överraskningar. "
+"Den första var den förstenade Ruaskkolin Sjöormen. Den andra var den i "
+"högsta grad levande Chak'kso Ney'yks som, märkligt nog, hade alla sina "
+"tänder i behåll.\n"
 "(Inristat av Paterson)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:212
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:228
 msgid ""
 "Through waves and rocky channels\n"
 "blue and white\n"
@@ -376,8 +657,12 @@ msgstr "2p — Cynsauns slagfält"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:8
-msgid "Cynsaun Province was named for Warrior-Queen Cynsaun the First, who drove the necromancers from these lands in 961 YW."
-msgstr "Provinsen Cynsaun namngavs efter krigardrottningen Cansaun den första som drev nekromanterna från dessa länder 961 YW."
+msgid ""
+"Cynsaun Province was named for Warrior-Queen Cynsaun the First, who drove "
+"the necromancers from these lands in 961 YW."
+msgstr ""
+"Provinsen Cynsaun namngavs efter krigardrottningen Cansaun den första som "
+"drev nekromanterna från dessa länder 961 YW."
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
@@ -387,23 +672,40 @@ msgstr "2s - Vädrets makter (Överlevnad)"
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
 msgid ""
-"Dark Forecast is a survival scenario for solitaire or two-player team-based play against randomly AI spawned units. Victory is achieved by surviving all enemy waves. During the course of play, the terrain will change based on random weather effects.\n"
+"Dark Forecast is a survival scenario for solitaire or two-player team-based "
+"play against randomly AI spawned units. Victory is achieved by surviving all "
+"enemy waves. During the course of play, the terrain will change based on "
+"random weather effects.\n"
 "\n"
 "Note: You need to use map settings for the scenario to work right."
 msgstr ""
-"Vädrets makter är ett överlevnadsscenario för en eller två spelare mot slumpvalda AI-trupper. Segern vinns genom att överleva alla anfallsvågor. Under spelets gång ändras terrängen som följd av olika slumpmässiga ändringar i vädret.\n"
+"Vädrets makter är ett överlevnadsscenario för en eller två spelare mot "
+"slumpvalda AI-trupper. Segern vinns genom att överleva alla anfallsvågor. "
+"Under spelets gång ändras terrängen som följd av olika slumpmässiga "
+"ändringar i vädret.\n"
 "\n"
-"Notera: Du behöver använda kartinställningar för att detta scenario ska fungera korrekt."
+"Notera: Du behöver använda kartinställningar för att detta scenario ska "
+"fungera korrekt."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:434
-msgid "The screams and pleas for mercy are finally silenced, as you remove your blood soaked blade from the last of the rebels. There will be no more resistance from the local scum. Your reign has finally earned stability."
-msgstr "Skriken och bönerna efter nåd tystnar till slut, när du lösgör ditt blodfläckade svärd från den sista av rebellerna. Det här packet kommer inte att orsaka mer problem. Ditt styre får äntligen sitt grepp."
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Skriken och bönerna efter nåd tystnar till slut, när du lösgör ditt "
+"blodfläckade svärd från den sista av rebellerna. Det här packet kommer inte "
+"att orsaka mer problem. Ditt styre får äntligen sitt grepp."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:795
-msgid "The last and most powerful of these creatures are almost upon us. I feel that if we can finish them off in time, we shall be victorious."
-msgstr "De sista och mäktigaste av dessa varelser är snart här. Om vi kan dräpa dem i tid, så kommer vi att segra."
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"De sista och mäktigaste av dessa varelser är snart här. Om vi kan dräpa dem "
+"i tid, så kommer vi att segra."
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:972
@@ -475,12 +777,16 @@ msgstr "Vädrets makter - ett slumpmässigt överlevnadsscenario"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
 msgid ""
-"Your aim is to survive the spawning waves and defeat the final arch-enemies.\n"
+"Your aim is to survive the spawning waves and defeat the final arch-"
+"enemies.\n"
 "\n"
-"The spawning waves are generated randomly and will different each time Dark Forecast is played.\n"
+"The spawning waves are generated randomly and will different each time Dark "
+"Forecast is played.\n"
 "\n"
 "\n"
-"They appear along the north, south and west map edges — though they are most likely to spawn on the west edge. The spawn waves appear at somewhat regular intervals.\n"
+"They appear along the north, south and west map edges — though they are most "
+"likely to spawn on the west edge. The spawn waves appear at somewhat regular "
+"intervals.\n"
 "\n"
 "\n"
 "The weather will also change randomly, affecting the layout of the map.\n"
@@ -495,12 +801,15 @@ msgid ""
 "<span color='green'>Rhuvaen</span>\n"
 "— WML implementation"
 msgstr ""
-"Ditt mål är att överleva fiendens anfallsvågor och besegra de slutliga ärkefienderna.\n"
+"Ditt mål är att överleva fiendens anfallsvågor och besegra de slutliga "
+"ärkefienderna.\n"
 "\n"
-"Anfallsvågorna genereras slumpmässigt och är olika varje gång Vädrets makter spelas.\n"
+"Anfallsvågorna genereras slumpmässigt och är olika varje gång Vädrets makter "
+"spelas.\n"
 "\n"
 "\n"
-"Anfallsvågorna kommer från kartans norra, södra och västra kanter - troligast västerifrån. De uppstår med någorlunda regelbundet intervall. \n"
+"Anfallsvågorna kommer från kartans norra, södra och västra kanter - "
+"troligast västerifrån. De uppstår med någorlunda regelbundet intervall. \n"
 "\n"
 "\n"
 "Vädret ändras också slumpmässigt, och påverkar kartans utseende.\n"
@@ -522,28 +831,52 @@ msgstr "Så detta är den fördömda dalen - alldeles öppet för oss att ta öv
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1458
-msgid "The inhabitants are rumored to be a strange alliance of man and beast, and our claim is not going to be unopposed. We must be prepared for the surprises of this land."
-msgstr "Invånarna ryktas vara en märklig allians mellan människor och djur, och vårt anspråk kommer inte att stå oemotsagt. Vi måste vara redo för de överraskningar vi kan möta här."
+msgid ""
+"The inhabitants are rumored to be a strange alliance of man and beast, and "
+"our claim is not going to be unopposed. We must be prepared for the "
+"surprises of this land."
+msgstr ""
+"Invånarna ryktas vara en märklig allians mellan människor och djur, och vårt "
+"anspråk kommer inte att stå oemotsagt. Vi måste vara redo för de "
+"överraskningar vi kan möta här."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1462
-msgid "Then let us discover what lies in waiting and teach them not to oppose our claim."
-msgstr "Låt oss då utröna vad som väntar på oss, och lära dem att inte protestera mot vårt anspråk."
+msgid ""
+"Then let us discover what lies in waiting and teach them not to oppose our "
+"claim."
+msgstr ""
+"Låt oss då utröna vad som väntar på oss, och lära dem att inte protestera "
+"mot vårt anspråk."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1499
-msgid "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken me..."
-msgstr "Argh! Hur gick det här till? Besegrad av simpla barbarer! Mina gudar har övergivit mig..."
+msgid ""
+"Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
+"me..."
+msgstr ""
+"Argh! Hur gick det här till? Besegrad av simpla barbarer! Mina gudar har "
+"övergivit mig..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1513
-msgid "Cheers of your enemy are the last thing you hear as you slip into death...their joy fills your last moments with pure hate."
-msgstr "Dina fienders jubel är det sista du hör när du glider in i döden... Deras glädje fyller dina sista ögonblick med brännande hat."
+msgid ""
+"Cheers of your enemy are the last thing you hear as you slip into death..."
+"their joy fills your last moments with pure hate."
+msgstr ""
+"Dina fienders jubel är det sista du hör när du glider in i döden... Deras "
+"glädje fyller dina sista ögonblick med brännande hat."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1535
-msgid "The enemy cheers as a dark mist rises from the land, engulfing you. As ghostly wisps drain away your will, you realize that your time in this land is over."
-msgstr "Fienden jublar och en mörk dimma reser sig ur marken och omvärver dig. Spöklika dimstråk tömmer din vilja och du inser att din tid i detta land är slut."
+msgid ""
+"The enemy cheers as a dark mist rises from the land, engulfing you. As "
+"ghostly wisps drain away your will, you realize that your time in this land "
+"is over."
+msgstr ""
+"Fienden jublar och en mörk dimma reser sig ur marken och omvärver dig. "
+"Spöklika dimstråk tömmer din vilja och du inser att din tid i detta land är "
+"slut."
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -552,8 +885,22 @@ msgstr "2s - Onis lya"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:7
-msgid "This most unusual of caves was once known as the Chamber of Laughing Devils, and was the inner citadel of the Kah Ruuk Oni. The Kah Ruuk were a wicked and cunning race of man-eating demons, who terrorized the people of the Eastern Lands for nearly four hundred years, before vanishing from Irdya without a trace. Since that time, many factions have vied for dominion over the Den of Onis, hoping to unlock the strange and mysterious magics of its creators."
-msgstr "Denna grotta - en av de mest ovanliga bland grottor - kallades en gång för De skrattande djävlarnas grotta och var Kah Ruuk Onis inre fästning. Kah Ruuk var ett hemska och slugt släkte av människoätande demoner som terroriserade folket i de östra landen i nära fyrahundra år innan de spårlöst försvan från Irdya. Sedan dess har många fraktioner konkurrerat om herraväldet över Onis håla i förhoppningen om att kunna låsa upp hemligheten till den underliga och mystiska magi som dess skapare brukade."
+msgid ""
+"This most unusual of caves was once known as the Chamber of Laughing Devils, "
+"and was the inner citadel of the Kah Ruuk Oni. The Kah Ruuk were a wicked "
+"and cunning race of man-eating demons, who terrorized the people of the "
+"Eastern Lands for nearly four hundred years, before vanishing from Irdya "
+"without a trace. Since that time, many factions have vied for dominion over "
+"the Den of Onis, hoping to unlock the strange and mysterious magics of its "
+"creators."
+msgstr ""
+"Denna grotta - en av de mest ovanliga bland grottor - kallades en gång för "
+"De skrattande djävlarnas grotta och var Kah Ruuk Onis inre fästning. Kah "
+"Ruuk var ett hemska och slugt släkte av människoätande demoner som "
+"terroriserade folket i de östra landen i nära fyrahundra år innan de "
+"spårlöst försvan från Irdya. Sedan dess har många fraktioner konkurrerat om "
+"herraväldet över Onis håla i förhoppningen om att kunna låsa upp hemligheten "
+"till den underliga och mystiska magi som dess skapare brukade."
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
@@ -562,8 +909,12 @@ msgstr "2p - Elensefars borggård"
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:7
-msgid "Fight through corridors and gardens, and dominate the eastern courtyard of what used to be the glorious city of Elensefar."
-msgstr "Slåss i korridorer och trädgårdar för dominans över vad som en gång var den mäktiga staden Elensefars östra borggård. "
+msgid ""
+"Fight through corridors and gardens, and dominate the eastern courtyard of "
+"what used to be the glorious city of Elensefar."
+msgstr ""
+"Slåss i korridorer och trädgårdar för dominans över vad som en gång var den "
+"mäktiga staden Elensefars östra borggård. "
 
 #. [time]: id=underground_illum
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:111
@@ -577,73 +928,30 @@ msgstr "2s - Meteorsjön"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
-msgid "Long ago, a great star fell from the heavens, leaving its mark on this coniferous region."
-msgstr "För länge sedan föll en meteor ner från skyarna, och lämnade ett stort ärr i detta skogsbevuxna område."
-
-#. [side]
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:21
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:27
-#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
-#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
-#: data/multiplayer/scenarios/3p_Morituri.cfg:42
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
-#: data/multiplayer/scenarios/4p_Clash.cfg:18
-#: data/multiplayer/scenarios/4p_Clash.cfg:40
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
-#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:17
-#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:56
-#: data/multiplayer/scenarios/4p_Underworld.cfg:20
-#: data/multiplayer/scenarios/4p_Underworld.cfg:53
-#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:31
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:33
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:45
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:81
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:30
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:52
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
-msgid "teamname^West"
-msgstr "Väst"
-
-#. [side]
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:32
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
-#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
-#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
-#: data/multiplayer/scenarios/3p_Morituri.cfg:31
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
-#: data/multiplayer/scenarios/4p_Clash.cfg:29
-#: data/multiplayer/scenarios/4p_Clash.cfg:51
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
-#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:30
-#: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:43
-#: data/multiplayer/scenarios/4p_Underworld.cfg:31
-#: data/multiplayer/scenarios/4p_Underworld.cfg:42
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:21
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:57
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:69
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:19
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:41
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
-msgid "teamname^East"
-msgstr "Öst"
+msgid ""
+"Long ago, a great star fell from the heavens, leaving its mark on this "
+"coniferous region."
+msgstr ""
+"För länge sedan föll en meteor ner från skyarna, och lämnade ett stort ärr i "
+"detta skogsbevuxna område."
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p — Hamlets"
 msgstr "2s - Byar"
 
-#. [multiplayer]: id=multiplayer_4p_Hamlets
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
-#: data/multiplayer/scenarios/4p_Hamlets.cfg:6
-msgid "Warfare transforms the simple farms and villages of a peaceful region into a subtly parceled battlefield."
-msgstr "Krig förvandlar denna fridfulla regions enkla bondgårdar och byar till ett svårmanövrerat slagfält."
+#, fuzzy
+#| msgid ""
+#| "Warfare transforms the simple farms and villages of a peaceful region "
+#| "into a subtly parceled battlefield."
+msgid ""
+"Warfare transforms the simple farms and villages of a peaceful region into a "
+"subtly parceled battlefield. Designed by Doc Paterson."
+msgstr ""
+"Krig förvandlar denna fridfulla regions enkla bondgårdar och byar till ett "
+"svårmanövrerat slagfält."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
@@ -652,7 +960,9 @@ msgstr "2s - Hornhajsön"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
-msgid "Players must navigate the dispersive terrain of this small but topographically dense island."
+msgid ""
+"Players must navigate the dispersive terrain of this small but "
+"topographically dense island."
 msgstr "Spelarna måste navigera den spridda terrängen på denna lilla ö."
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
@@ -662,8 +972,12 @@ msgstr "2s - Tjutande spökstenöknen"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
-msgid "Little remains of this once wealthy mining colony, now a haven for raiders and thieves."
-msgstr "Inte mycket återstår av denna en gång välmående gruvprovins som nu är en fristad för plundrare och tjuvar."
+msgid ""
+"Little remains of this once wealthy mining colony, now a haven for raiders "
+"and thieves."
+msgstr ""
+"Inte mycket återstår av denna en gång välmående gruvprovins som nu är en "
+"fristad för plundrare och tjuvar."
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
@@ -672,8 +986,12 @@ msgstr "2s - Sabelstensdeltat"
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
-msgid "Two armies collide on this disjointed coastal landscape of hidden caves and jagged rivers."
-msgstr "Två arméer kolliderar på detta kustlandskap med dolda grottor och irrande floder."
+msgid ""
+"Two armies collide on this disjointed coastal landscape of hidden caves and "
+"jagged rivers."
+msgstr ""
+"Två arméer kolliderar på detta kustlandskap med dolda grottor och irrande "
+"floder."
 
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
@@ -682,8 +1000,12 @@ msgstr "2s - Silverhuvudet"
 
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
-msgid "Players must traverse all manner of terrain in pursuit of victory on this multi-fronted duel map."
-msgstr "Spelarna måste ta sig fram på alla sorters terräng i jakten på segern på denna duellkarta."
+msgid ""
+"Players must traverse all manner of terrain in pursuit of victory on this "
+"multi-fronted duel map."
+msgstr ""
+"Spelarna måste ta sig fram på alla sorters terräng i jakten på segern på "
+"denna duellkarta."
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
@@ -702,8 +1024,12 @@ msgstr "2s - Sullas ruiner"
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:40
-msgid "Flooded by the seas and battered by the winter elements, only ruins, water and ice now remain in the shadow of this once mighty empire."
-msgstr "Bara ruiner, vatten och is återstår av det en gång så mäktiga imperiet, nu översvämmat av havet och vittrat av många hårda vintrar."
+msgid ""
+"Flooded by the seas and battered by the winter elements, only ruins, water "
+"and ice now remain in the shadow of this once mighty empire."
+msgstr ""
+"Bara ruiner, vatten och is återstår av det en gång så mäktiga imperiet, nu "
+"översvämmat av havet och vittrat av många hårda vintrar."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
@@ -712,8 +1038,14 @@ msgstr "Sullas staty"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:89
-msgid "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
-msgstr "En stenskulptur av Sulla den Store, även känd som Sulla den Rättvise, Sulla Tyrannen, Det sjunkande tornets kejsarinna, Vandrande glaciärens dam, Sulla Förbrännaren, Sulla den Stolte och Sulla den Rättfärdiga."
+msgid ""
+"A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
+"Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
+"Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
+msgstr ""
+"En stenskulptur av Sulla den Store, även känd som Sulla den Rättvise, Sulla "
+"Tyrannen, Det sjunkande tornets kejsarinna, Vandrande glaciärens dam, Sulla "
+"Förbrännaren, Sulla den Stolte och Sulla den Rättfärdiga."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:91
@@ -762,8 +1094,105 @@ msgstr "2s - De fria länderna"
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:8
-msgid "The Freelands, also known to the people of the far east as The Land of No Kings, lie in between the Wilderlands and the Kingdom of Carorath, separating a land of absolute law from a land of absolute savagery. The people of the Freelands have been battling would-be conquerors of their land for hundreds of years, repelling great beasts from their western borders, and Carorathian Imperialists from their eastern borders."
-msgstr "Frilanden, också kända för folket i fjärran öster som No-kungarnas land, ligger mellan Vilderlanden och Kungadömmet Carorath och separerar ett land med absolut lag från ett land i absolut barbari. Folket i Frilanden har slagits mot tilltänkta erövrare av deras land i århundraden, drivit tillbaka stora bestar från deras västra gränser och Carorathianska imperalister från deras östra gränser."
+msgid ""
+"The Freelands, also known to the people of the far east as The Land of No "
+"Kings, lie in between the Wilderlands and the Kingdom of Carorath, "
+"separating a land of absolute law from a land of absolute savagery. The "
+"people of the Freelands have been battling would-be conquerors of their land "
+"for hundreds of years, repelling great beasts from their western borders, "
+"and Carorathian Imperialists from their eastern borders."
+msgstr ""
+"Frilanden, också kända för folket i fjärran öster som No-kungarnas land, "
+"ligger mellan Vilderlanden och Kungadömmet Carorath och separerar ett land "
+"med absolut lag från ett land i absolut barbari. Folket i Frilanden har "
+"slagits mot tilltänkta erövrare av deras land i århundraden, drivit tillbaka "
+"stora bestar från deras västra gränser och Carorathianska imperalister från "
+"deras östra gränser."
+
+#. [multiplayer]: id=multiplayer_thousand_stings_garrison
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:34
+msgid "2p — Thousand Stings Garrison"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_thousand_stings_garrison
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:36
+msgid "Designed by Doc Paterson."
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:88
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:92
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:96
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:100
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:104
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:108
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:112
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:116
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:120
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:124
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:128
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:132
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:136
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:140
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:144
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:148
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:152
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:156
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:160
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:164
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:168
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:172
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:176
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:180
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:184
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:188
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:192
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:196
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:200
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:204
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:208
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:212
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:216
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:220
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:224
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:228
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:232
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:236
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:240
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:244
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:248
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:252
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:256
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:260
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:264
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:268
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:272
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:276
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:280
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:284
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:288
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:292
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:296
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:300
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:304
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:308
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:312
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:316
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:320
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:324
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:328
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:332
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:336
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:340
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:344
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:348
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:352
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:356
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:360
+#, fuzzy
+#| msgid "statue"
+msgid "Statue"
+msgstr "staty"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -772,8 +1201,12 @@ msgstr "2s - Weldyn-kanalen"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
-msgid "This vital supply route has played a key role in many of Wesnoth’s greatest battles."
-msgstr "Denn viktiga försörjningsled har spelat en nyckelroll i många av Wesnoths största strider."
+msgid ""
+"This vital supply route has played a key role in many of Wesnoth’s greatest "
+"battles."
+msgstr ""
+"Denn viktiga försörjningsled har spelat en nyckelroll i många av Wesnoths "
+"största strider."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
@@ -812,7 +1245,9 @@ msgstr " Två guld per by rekommenderas."
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 msgid "Three players come head to head on this water-cut battlefield."
-msgstr "Tre spelare befinner sig på kollisionskurs på detta vattengenomskurna slagfält."
+msgstr ""
+"Tre spelare befinner sig på kollisionskurs på detta vattengenomskurna "
+"slagfält."
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
@@ -821,8 +1256,12 @@ msgstr "3s - Horatiernas ö"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
-msgid "Controlling the central island is often the key to victory in this 21x21hex 3 player free for all map."
-msgstr "Kontrollen över den centrala ön är ofta nyckeln till segern på denna 21x21-rutors karta för tre spelare."
+msgid ""
+"Controlling the central island is often the key to victory in this 21x21hex "
+"3 player free for all map."
+msgstr ""
+"Kontrollen över den centrala ön är ofta nyckeln till segern på denna 21x21-"
+"rutors karta för tre spelare."
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
@@ -831,7 +1270,9 @@ msgstr "3s - Morituri"
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
-msgid "Only one faction will emerge victorious from this tightly bordered three-player map."
+msgid ""
+"Only one faction will emerge victorious from this tightly bordered three-"
+"player map."
 msgstr "Det finns bara en vinnare på denna slutna karta för tre spelare."
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
@@ -841,8 +1282,16 @@ msgstr "4s - Blåvattenprovinsen"
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
-msgid "Historians write that Bluewater Province has been destroyed and rebuilt some twenty times. Now, as armies once again converge on the rocky streams and snowcapped mountains of this small province, its villagers hardly seem to take notice."
-msgstr "Historikerna skriver att Blåvattenprovinsen har blivit förstörd och återuppbyggd omkring tjugo gånger. Nu samlas arméer återigen vid dess steniga forsar och snötäckta berg, vilket byborna knappt verkar ta någon notis om."
+msgid ""
+"Historians write that Bluewater Province has been destroyed and rebuilt some "
+"twenty times. Now, as armies once again converge on the rocky streams and "
+"snowcapped mountains of this small province, its villagers hardly seem to "
+"take notice."
+msgstr ""
+"Historikerna skriver att Blåvattenprovinsen har blivit förstörd och "
+"återuppbyggd omkring tjugo gånger. Nu samlas arméer återigen vid dess "
+"steniga forsar och snötäckta berg, vilket byborna knappt verkar ta någon "
+"notis om."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
@@ -895,6 +1344,15 @@ msgstr "En liten karta för spel 2 mot 2."
 msgid "4p — Hamlets"
 msgstr "4s - Byar"
 
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:6
+msgid ""
+"Warfare transforms the simple farms and villages of a peaceful region into a "
+"subtly parceled battlefield."
+msgstr ""
+"Krig förvandlar denna fridfulla regions enkla bondgårdar och byar till ett "
+"svårmanövrerat slagfält."
+
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p — Isar’s Cross"
@@ -902,8 +1360,16 @@ msgstr "4s - Isars kors"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
-msgid "A very small 2 vs. 2 map. Close quarters fighting means the successful rotation of units and planning of moves is important. Teams set for players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 villages."
-msgstr "En mycket liten 2 mot 2-karta. I så trängda situationer är det viktigt att rotera sina trupper och planera sina drag på rätt sätt. Det är lämpligt att spela 1 och 4 mot 2 och 3 (nordöst mot sydväst). Rekommenderat är 75 startguld. Kartan innehåller 20 byar."
+msgid ""
+"A very small 2 vs. 2 map. Close quarters fighting means the successful "
+"rotation of units and planning of moves is important. Teams set for players "
+"1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
+"villages."
+msgstr ""
+"En mycket liten 2 mot 2-karta. I så trängda situationer är det viktigt att "
+"rotera sina trupper och planera sina drag på rätt sätt. Det är lämpligt att "
+"spela 1 och 4 mot 2 och 3 (nordöst mot sydväst). Rekommenderat är 75 "
+"startguld. Kartan innehåller 20 byar."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -945,8 +1411,12 @@ msgstr " Två guld per by och 150 startguld rekommenderas."
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
-msgid "Controlling the area around the central keep is very lucrative in this 36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
-msgstr "Kontroll över området runt den centrala fästningen är mycket fördelaktigt på denna 36x36-rutors alla mot alla-karta för 4 spelare. Den har 36 byar."
+msgid ""
+"Controlling the area around the central keep is very lucrative in this 36X36 "
+"4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
+msgstr ""
+"Kontroll över området runt den centrala fästningen är mycket fördelaktigt på "
+"denna 36x36-rutors alla mot alla-karta för 4 spelare. Den har 36 byar."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
@@ -994,8 +1464,12 @@ msgstr "4s - Lorisfloden"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
-msgid "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
-msgstr "En 25x25-rutors karta för spel två mot två vid en flod med fästningar i motsatta hörn. Gruppera enligt 1 och 4 mot 2 och 3. Kartan har 28 byar."
+msgid ""
+"A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
+"Designed for players 1&4 vs. 2&3. There are 28 villages."
+msgstr ""
+"En 25x25-rutors karta för spel två mot två vid en flod med fästningar i "
+"motsatta hörn. Gruppera enligt 1 och 4 mot 2 och 3. Kartan har 28 byar."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -1019,8 +1493,13 @@ msgstr " Två guld per by rekommenderas. Kartan har 28 byar."
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
-msgid "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
-msgstr "En 35x27-rutors karta med fem olika attackrutter. Balanserad för att spelas öst mot väst (1 och 4 mot 2 och 3), men fungerar även väl för andra indelningar och alla mot alla."
+msgid ""
+"A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
+"played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
+msgstr ""
+"En 35x27-rutors karta med fem olika attackrutter. Balanserad för att spelas "
+"öst mot väst (1 och 4 mot 2 och 3), men fungerar även väl för andra "
+"indelningar och alla mot alla."
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
@@ -1029,8 +1508,12 @@ msgstr "4p — Terra-Dwelves ruiner"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
-msgid "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. Large multi-fronted 2vs2 set in a vast underground complex."
-msgstr "Slåss för de mytomspunna skatterna i de åldriga ruinerna i Terra-Dwelve. Stor 2 vs 2 med flera fronter i ett stort underjordiskt komplex."
+msgid ""
+"Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
+"Large multi-fronted 2vs2 set in a vast underground complex."
+msgstr ""
+"Slåss för de mytomspunna skatterna i de åldriga ruinerna i Terra-Dwelve. "
+"Stor 2 vs 2 med flera fronter i ett stort underjordiskt komplex."
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
@@ -1039,8 +1522,12 @@ msgstr "4s - Belägring"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
-msgid "36X36 4 player map where 4 mighty castles face off at the convergence of two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
-msgstr "En 36x36-rutors karta där styrkorna från 4 borgar stöter ihop där två floder löper samman. Lämplig för spel 2 mot 2 eller alla mot alla. Ungefär 45 byar."
+msgid ""
+"36X36 4 player map where 4 mighty castles face off at the convergence of two "
+"rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
+msgstr ""
+"En 36x36-rutors karta där styrkorna från 4 borgar stöter ihop där två floder "
+"löper samman. Lämplig för spel 2 mot 2 eller alla mot alla. Ungefär 45 byar."
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
@@ -1059,8 +1546,12 @@ msgstr "4s - Xanthe-röran"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
-msgid "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the center common."
-msgstr "En 24x28 rutors 2 mot 2-karta med extra fästningar, och ett stort rörigt slag i mitten."
+msgid ""
+"A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
+"center common."
+msgstr ""
+"En 24x28 rutors 2 mot 2-karta med extra fästningar, och ett stort rörigt "
+"slag i mitten."
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
@@ -1069,8 +1560,17 @@ msgstr "5s - Auktion X"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
-msgid "4 players surround a central keep, play vs the AI survival style, or as a FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, and the best way to determine how much is an auction, LOWEST bid wins. It is a very small map so 75 gold is recommended for the other players."
-msgstr "Fyra spelare runt en central fästning. Spela mot datorn för att överleva, alla mot alla, eller 4 mot 1. Mittspelaren behöver mer guld vid spel 4 mot 1 eller alla mot alla, och det bästa sättet att avgöra hur mycket är genom en auktion, där det LÄGSTA budet vinner. Det är en mycket liten karta, så 75 guld rekommenderas för de andra spelarna."
+msgid ""
+"4 players surround a central keep, play vs the AI survival style, or as a "
+"FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
+"and the best way to determine how much is an auction, LOWEST bid wins. It is "
+"a very small map so 75 gold is recommended for the other players."
+msgstr ""
+"Fyra spelare runt en central fästning. Spela mot datorn för att överleva, "
+"alla mot alla, eller 4 mot 1. Mittspelaren behöver mer guld vid spel 4 mot 1 "
+"eller alla mot alla, och det bästa sättet att avgöra hur mycket är genom en "
+"auktion, där det LÄGSTA budet vinner. Det är en mycket liten karta, så 75 "
+"guld rekommenderas för de andra spelarna."
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
@@ -1114,8 +1614,12 @@ msgstr "5p - Vildmarken"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
-msgid "A vast region of wild, untamed wilderness, its terrain dotted with forests, caves, rivers, and the ruins of ancient fortresses."
-msgstr "Ett vida utsträckt område av otämjd vildmark, med skogar, grottor, floder och uråldriga ruiner."
+msgid ""
+"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
+"caves, rivers, and the ruins of ancient fortresses."
+msgstr ""
+"Ett vida utsträckt område av otämjd vildmark, med skogar, grottor, floder "
+"och uråldriga ruiner."
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
@@ -1124,8 +1628,14 @@ msgstr "6s - Korsfararnas slagfält"
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
-msgid "The rallying cries of battle can once again be heard on this time-worn field of war, where the ghosts of thousands of brave warriors float invisibly through the mountains, trees and rivers."
-msgstr "Stridslarmet kan återigen höras från detta av tidens tand angripna slagfält, där tusentals modiga krigares andar svävar osynligt över bergen, genom träden och över floderna."
+msgid ""
+"The rallying cries of battle can once again be heard on this time-worn field "
+"of war, where the ghosts of thousands of brave warriors float invisibly "
+"through the mountains, trees and rivers."
+msgstr ""
+"Stridslarmet kan återigen höras från detta av tidens tand angripna slagfält, "
+"där tusentals modiga krigares andar svävar osynligt över bergen, genom "
+"träden och över floderna."
 
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
@@ -1175,7 +1685,9 @@ msgstr "Dina lags ledare dör"
 #. [note]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:437
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
-msgstr "Ledtråd: det underlättar att lära sig var fienden kommer fram och vilka de är."
+msgstr ""
+"Ledtråd: det underlättar att lära sig var fienden kommer fram och vilka de "
+"är."
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:443
@@ -1219,8 +1731,14 @@ msgstr "Fevärld"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:581
-msgid "Congratulations for surviving the map that so many people claim is impossible. Frankly, I haven’t got a clue as to how you did it, so send me the replay by mail to: roze@roze.mine.nu. Thank You!"
-msgstr "Många gratulationer för att du lyckades överleva på kartan som så många hävdar är omöjlig att klara! Jag har ingen aning om hur du lyckades, så skicka en repris per epost till roze@roze.mine.nu. Tack!"
+msgid ""
+"Congratulations for surviving the map that so many people claim is "
+"impossible. Frankly, I haven’t got a clue as to how you did it, so send me "
+"the replay by mail to: roze@roze.mine.nu. Thank You!"
+msgstr ""
+"Många gratulationer för att du lyckades överleva på kartan som så många "
+"hävdar är omöjlig att klara! Jag har ingen aning om hur du lyckades, så "
+"skicka en repris per epost till roze@roze.mine.nu. Tack!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:595
@@ -1229,8 +1747,12 @@ msgstr "Döden"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:597
-msgid "You have lost this game, but fear not. You can always try again. And again. And again. *Muahahaha*"
-msgstr "Du har förlorat, men förtvivla icke. Du kan alltid försöka igen. Och igen. Och igen. *Moahahaha*"
+msgid ""
+"You have lost this game, but fear not. You can always try again. And again. "
+"And again. *Muahahaha*"
+msgstr ""
+"Du har förlorat, men förtvivla icke. Du kan alltid försöka igen. Och igen. "
+"Och igen. *Moahahaha*"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
@@ -1239,8 +1761,30 @@ msgstr "6s - Manzivan-fällorna"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
-msgid "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and confusing area of terrain where it is easy to end up out of position or over extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 starting gold, has 33 villages."
-msgstr "En 40x20-rutors karta för spel 3 mot 3. Manzivan-fällorna är ökänt för att vara ett farligt och förvirrande område, där det är lätt att hamna i svåra positioner. Lagen är 145 mot 236 (öst mot väst). Det rekommenderas att man börjar med 100 guld. Kartan har 33 byar."
+msgid ""
+"A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
+"confusing area of terrain where it is easy to end up out of position or over "
+"extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
+"starting gold, has 33 villages."
+msgstr ""
+"En 40x20-rutors karta för spel 3 mot 3. Manzivan-fällorna är ökänt för att "
+"vara ett farligt och förvirrande område, där det är lätt att hamna i svåra "
+"positioner. Lagen är 145 mot 236 (öst mot väst). Det rekommenderas att man "
+"börjar med 100 guld. Kartan har 33 byar."
+
+#. [multiplayer]: id=multiplayer_Volcano
+#: data/multiplayer/scenarios/6p_Volcano.cfg:7
+#, fuzzy
+#| msgid "6p — Hexcake"
+msgid "6p — Volcano"
+msgstr "6s - Hexagon"
+
+#. [multiplayer]: id=multiplayer_Volcano
+#: data/multiplayer/scenarios/6p_Volcano.cfg:9
+msgid ""
+"A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
+"volcanic eruption. It has 36 villages."
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
@@ -1249,8 +1793,16 @@ msgstr "6s - Solnedgång i Waterloo"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
-msgid "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. south), but having players 146 or 136 as a team is also interesting. Designed for 150 starting gold, has 44 villages."
-msgstr "En karta med 40x30 rutor för spel 3 mot 3. Flexibelt koordinerande tillsammans med dina allierade krävs för att behålla övertaget. Standardlagen är spelare 145 mot 236 (nord mot syd), men 146 eller 136 tillsammans ger också intressant spel. 150 startguld rekommenderas."
+msgid ""
+"A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
+"avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
+"south), but having players 146 or 136 as a team is also interesting. "
+"Designed for 150 starting gold, has 44 villages."
+msgstr ""
+"En karta med 40x30 rutor för spel 3 mot 3. Flexibelt koordinerande "
+"tillsammans med dina allierade krävs för att behålla övertaget. "
+"Standardlagen är spelare 145 mot 236 (nord mot syd), men 146 eller 136 "
+"tillsammans ger också intressant spel. 150 startguld rekommenderas."
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
@@ -1259,8 +1811,12 @@ msgstr "8s - Mokena-prärien"
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
-msgid "Inspired from Morituri, this 8 player map creates an epic battle scene that requires two teams to coordinate on both offense and defense."
-msgstr "Denna Morituri-inspirerade karta för 8 spelare utgör scenen för ett episkt slag, som kräver två lag för att koordinera anfall och försvar."
+msgid ""
+"Inspired from Morituri, this 8 player map creates an epic battle scene that "
+"requires two teams to coordinate on both offense and defense."
+msgstr ""
+"Denna Morituri-inspirerade karta för 8 spelare utgör scenen för ett episkt "
+"slag, som kräver två lag för att koordinera anfall och försvar."
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
@@ -1269,8 +1825,12 @@ msgstr "8s - Morituri"
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
-msgid "Teamwork and tactics are key to victory in this unusual battlefield, where eight armies fight to the finish."
-msgstr "Samarbete och taktik är nyckeln till segern på detta ovanliga slagfält, där åtta arméer slåss till sista man."
+msgid ""
+"Teamwork and tactics are key to victory in this unusual battlefield, where "
+"eight armies fight to the finish."
+msgstr ""
+"Samarbete och taktik är nyckeln till segern på detta ovanliga slagfält, där "
+"åtta arméer slåss till sista man."
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
@@ -1279,8 +1839,15 @@ msgstr "9s - Merkwuerdigliebe"
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
-msgid "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the large number of players. The teams are players 159 vs. 267 vs. 348 (north vs. southeast vs. southwest). There are very few villages per player, so 3 gold per villages is recommended."
-msgstr "En liten 3 mot 3 mot 3-karta. 60-sekundersdrag rekommenderas pga det stora antalet spelare. Lagen är 159 mot 267 mot 348 (nord mot sydöst mot sydväst). Det finns mycket få byar, så 3 guld per by rekommenderas."
+msgid ""
+"A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
+"large number of players. The teams are players 159 vs. 267 vs. 348 (north "
+"vs. southeast vs. southwest). There are very few villages per player, so 3 "
+"gold per villages is recommended."
+msgstr ""
+"En liten 3 mot 3 mot 3-karta. 60-sekundersdrag rekommenderas pga det stora "
+"antalet spelare. Lagen är 159 mot 267 mot 348 (nord mot sydöst mot sydväst). "
+"Det finns mycket få byar, så 3 guld per by rekommenderas."
 
 #. [scenario]: id=multiplayer_Random_Map
 #. [multiplayer]: id=multiplayer_Random_Map
@@ -1291,8 +1858,12 @@ msgstr "Slumpkarta"
 
 #. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
-msgid "Randomly generated map. Note: random maps are often unbalanced, but if you have time, you can regenerate them until you get a good one."
-msgstr "Slumpmässigt genererad karta. Observera att slumpkartor ofta är obalanserade, men i mån av tid kan du skapa om dem tills du får en bra karta."
+msgid ""
+"Randomly generated map. Note: random maps are often unbalanced, but if you "
+"have time, you can regenerate them until you get a good one."
+msgstr ""
+"Slumpmässigt genererad karta. Observera att slumpkartor ofta är "
+"obalanserade, men i mån av tid kan du skapa om dem tills du får en bra karta."
 
 #. [scenario]: id=multiplayer_Random_Map_Desert
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
@@ -1303,8 +1874,14 @@ msgstr "Slumpkarta (öken)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
-msgid "A random map with sand as the primary terrain. Note: random maps are often unbalanced, but if you have time, you can regenerate them until you get a good one."
-msgstr "En slumpkarta med sand som huvudsaklig terräng. Observera att slumpkartor ofta är obalanserade, men i mån av tid kan du skapa om dem tills du får en bra karta."
+msgid ""
+"A random map with sand as the primary terrain. Note: random maps are often "
+"unbalanced, but if you have time, you can regenerate them until you get a "
+"good one."
+msgstr ""
+"En slumpkarta med sand som huvudsaklig terräng. Observera att slumpkartor "
+"ofta är obalanserade, men i mån av tid kan du skapa om dem tills du får en "
+"bra karta."
 
 #. [scenario]: id=multiplayer_Random_Map_Marsh
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
@@ -1315,8 +1892,14 @@ msgstr "Slumpkarta (sumpmark)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:6
-msgid "A random map with swamp as the primary terrain. Note: random maps are often unbalanced, but if you have time, you can regenerate them until you get a good one."
-msgstr "En slumpkarta med träsk som huvudsaklig terräng. Observera att slumpkartor ofta är obalanserade, men i mån av tid kan du skapa om dem tills du får en bra karta."
+msgid ""
+"A random map with swamp as the primary terrain. Note: random maps are often "
+"unbalanced, but if you have time, you can regenerate them until you get a "
+"good one."
+msgstr ""
+"En slumpkarta med träsk som huvudsaklig terräng. Observera att slumpkartor "
+"ofta är obalanserade, men i mån av tid kan du skapa om dem tills du får en "
+"bra karta."
 
 #. [scenario]: id=multiplayer_Random_Map_Winter
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
@@ -1327,8 +1910,14 @@ msgstr "Slumpkarta (vinter)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:6
-msgid "A random map set in the break between spring and winter, mainly with snowy terrains. Note: random maps are often unbalanced, but if you have time, you can regenerate them until you get a good one."
-msgstr "En slumpkarta som utspelar sig i brytningen mellan vår och vinter, och som huvudsakligen har snötäckt terräng. Observera att slumpkartor ofta är obalanserade, men i mån av tid kan du skapa om dem tills du får en bra karta."
+msgid ""
+"A random map set in the break between spring and winter, mainly with snowy "
+"terrains. Note: random maps are often unbalanced, but if you have time, you "
+"can regenerate them until you get a good one."
+msgstr ""
+"En slumpkarta som utspelar sig i brytningen mellan vår och vinter, och som "
+"huvudsakligen har snötäckt terräng. Observera att slumpkartor ofta är "
+"obalanserade, men i mån av tid kan du skapa om dem tills du får en bra karta."
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
@@ -1337,8 +1926,12 @@ msgstr "Prestandamätning: AI"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:10
-msgid "A wesnoth benchmark, use --nogui --no-delay --multiplayer --scenario=wesbench_ai --exit-at-end."
-msgstr "För denna prestandamätning, använd flaggorna --nogui --no-delay --multiplayer --scenario=wesbench_ai --exit-at-end."
+msgid ""
+"A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
+"scenario=wesbench_ai --exit-at-end."
+msgstr ""
+"För denna prestandamätning, använd flaggorna --nogui --no-delay --"
+"multiplayer --scenario=wesbench_ai --exit-at-end."
 
 #. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:9
@@ -1347,8 +1940,12 @@ msgstr "Prestandamätning: skärmrullning"
 
 #. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:10
-msgid "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll --exit-at-end."
-msgstr "För denna prestandamätning, använd flaggorna --no-delay --multiplayer --scenario=wesbench_scroll --exit-at-end."
+msgid ""
+"A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
+"--exit-at-end."
+msgstr ""
+"För denna prestandamätning, använd flaggorna --no-delay --multiplayer --"
+"scenario=wesbench_scroll --exit-at-end."
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:9
@@ -1357,8 +1954,12 @@ msgstr "Prestandamätning: genomkorsa slöja"
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:10
-msgid "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_shroud_walk --exit-at-end."
-msgstr "För denna prestandamätning, använd flaggorna --no-delay --multiplayer --scenario=wesbench_shroud_walk --exit-at-end."
+msgid ""
+"A wesnoth benchmark, use --no-delay --multiplayer --"
+"scenario=wesbench_shroud_walk --exit-at-end."
+msgstr ""
+"För denna prestandamätning, använd flaggorna --no-delay --multiplayer --"
+"scenario=wesbench_shroud_walk --exit-at-end."
 
 #~ msgid "Survive for 32 turns."
 #~ msgstr "Överlev i 32 drag."

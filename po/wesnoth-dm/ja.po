@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Battle for Wesnoth 1.9.3+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-20 16:54+0100\n"
+"POT-Creation-Date: 2011-05-05 10:12+0200\n"
 "PO-Revision-Date: 2011-04-07 18:46+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -1500,6 +1500,11 @@ msgstr "Rattles"
 msgid "Bones"
 msgstr "Bones"
 
+#. [scenario]: id=09_Houses_of_the_Dead
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:331
+msgid "Penella"
+msgstr ""
+
 #. [message]: speaker=Penella
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:335
 msgid ""
@@ -1513,6 +1518,11 @@ msgstr ""
 "た……そして疫病が蔓延した……俺の家族は飢えていた。やむを得ず死した人間の肉を食"
 "べたのだ。"
 
+#. [scenario]: id=09_Houses_of_the_Dead
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:342
+msgid "Roddry"
+msgstr ""
+
 #. [message]: speaker=Roddry
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:346
 msgid ""
@@ -1523,10 +1533,22 @@ msgstr ""
 "お前は骸骨に出会ったか？ 奴等の城がこの北にある。襲撃するのは難しいが、"
 "Sythan の村を越えた谷の中に秘密の入り口が存在する。"
 
+#. [scenario]: id=09_Houses_of_the_Dead
+#. [unit]: id=Nameless, type=Spectre
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:349
+#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:171
+msgid "Nameless"
+msgstr "Nameless"
+
 #. [message]: speaker=Nameless
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:353
 msgid "I died a long time ago. I have forgotten my name."
 msgstr "俺が死んだのはずいぶん昔の事だ。名前なんぞ忘れてしまった。"
+
+#. [scenario]: id=09_Houses_of_the_Dead
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:356
+msgid "Melinna"
+msgstr ""
 
 #. [message]: speaker=Melinna
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:360
@@ -1555,6 +1577,11 @@ msgstr ""
 "かつて私はここで幸せだった。だが Iliah-Malal は私を生ける者が見ているようにこ"
 "の国を見るように変えてしまった……岩とほこりの場所だ。"
 
+#. [scenario]: id=09_Houses_of_the_Dead
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:371
+msgid "Sythan"
+msgstr ""
+
 #. [message]: speaker=Sythan
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:375
 msgid ""
@@ -1563,6 +1590,11 @@ msgid ""
 msgstr ""
 "私はかつては偉大なる支配者だった……私は軍隊に命令していたのだ！ Iliah-Malal は"
 "再び支配者になれると約束してくれた。"
+
+#. [scenario]: id=09_Houses_of_the_Dead
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:378
+msgid "Hereld"
+msgstr ""
 
 #. [message]: speaker=Hereld
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:382
@@ -2957,11 +2989,6 @@ msgid ""
 "We should try to go west. I sense things are worse on the eastern front."
 msgstr "私たちは西へ行ってみるべきね。 東戦線の状況はもっと悪そうだわ。"
 
-#. [unit]: id=Nameless, type=Spectre
-#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:171
-msgid "Nameless"
-msgstr "Nameless"
-
 #. [unit]: id=Hraul, type=Spectre
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:179
 msgid "Hraul"
@@ -3408,7 +3435,7 @@ msgstr "Weldynにたちこめる暗雲"
 
 # fuzzy ride
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:19
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:20
 msgid ""
 "Kalenz and Chantal and their troops departed to ride against the remnants of "
 "the orcish Great Horde. Delfador returned to Weldyn with the King and his "
@@ -3424,20 +3451,20 @@ msgstr ""
 "状況の下で Leollyn が既に死んでいたことを知り深く悲しみました。"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:24
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:36
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:61
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:70
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:78
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:93
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:105
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:117
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:129
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:25
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:37
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:62
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:71
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:79
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:94
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:106
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:118
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:130
 msgid "King Garard"
 msgstr "Garard 王"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:24
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:25
 msgid ""
 "We have assembled here with good and bad news: The good news is that the "
 "orcs have been defeated decisively. Their Great Chief is dead and their army "
@@ -3448,18 +3475,18 @@ msgstr ""
 "しい勝利はDelfador に負うたところが大きい。"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:28
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:44
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:52
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:101
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:109
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:121
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:29
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:45
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:53
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:102
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:110
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:122
 #: data/campaigns/Delfadors_Memoirs/utils/characters.cfg:23
 msgid "Delfador"
 msgstr "Delfador"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:28
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:29
 msgid ""
 "I did very little, sire. It was actually the elves who saved us on that day."
 msgstr ""
@@ -3468,21 +3495,21 @@ msgstr ""
 
 #. [part]
 #. [side]: type=General, id=Lionel
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:32
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:40
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:66
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:74
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:82
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:97
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:113
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:125
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:33
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:41
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:67
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:75
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:83
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:98
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:114
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:126
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:57
 #: data/campaigns/Delfadors_Memoirs/utils/characters.cfg:69
 msgid "Lionel"
 msgstr "Lionel"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:32
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:33
 msgid ""
 "We owe the elves nothing, sire. They refused to send their archers when we "
 "needed them!"
@@ -3492,7 +3519,7 @@ msgstr ""
 
 # %c young master...
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:36
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:37
 msgid ""
 "Peace, Lionel. The elves fought well and have earned Our respect. But this "
 "council is here to address an alarming matter. Young master Delfador here "
@@ -3506,7 +3533,7 @@ msgstr ""
 
 # 選抜した部下→精鋭
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:40
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:41
 msgid ""
 "With your permission, sire, I will take some picked men north and crush "
 "these abominations."
@@ -3516,7 +3543,7 @@ msgstr ""
 
 # %c 全部陛下w……あとで sire検討 あと、Unless以下 若干ファジー
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:44
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:45
 msgid ""
 "Your majesty, these are no stray undead; this lunatic, Iliah-Malal, has "
 "opened a portal to the Land of the Dead. Unless we close this portal soon, "
@@ -3535,7 +3562,7 @@ msgstr ""
 "るのに最も効果的なのです。"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:48
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:49
 msgid ""
 "I think our young and inexperienced friend overestimates the powers of the "
 "enemy. I’m sure they’ll be no match for Wesnothian troops."
@@ -3545,14 +3572,14 @@ msgstr ""
 
 #. [part]
 #. [side]: type=Lich, id=Sagus
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:48
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:49
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:42
 msgid "Sagus"
 msgstr "Sagus"
 
 # Delfador
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:52
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:53
 msgid ""
 "I have fought these things, and I know what I am talking about. This is a "
 "deadly serious threat."
@@ -3562,7 +3589,7 @@ msgstr ""
 
 # Artuman 魔術師
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:57
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:58
 msgid ""
 "Are you saying Master Sagus speaks idly? Somebody needs to teach you respect!"
 msgstr ""
@@ -3570,13 +3597,13 @@ msgstr ""
 "えて差し上げる必要がある！"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:57
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:58
 msgid "Artuman"
 msgstr "Artuman"
 
 # King
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:61
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:62
 msgid ""
 "You have proven your bravery, young Delfador, but I think you underestimate "
 "the might of our army."
@@ -3586,14 +3613,14 @@ msgstr ""
 
 # Lionel
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:66
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:67
 msgid "Sire, may I lead some part of your army to crush the undead?"
 msgstr ""
 "陛下、私にアンデッドを壊滅させる為、軍の一部の指揮をお任せ下さいませんか？"
 
 # King
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:70
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:71
 msgid ""
 "No, Lionel. This should be too simple a task for my best general. I will "
 "send Dudpon, instead with most of my army."
@@ -3603,13 +3630,13 @@ msgstr ""
 
 # Lionel
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:74
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:75
 msgid "What are my orders, then?"
 msgstr "では、私へのご命令は？"
 
 # King
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:78
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:79
 msgid ""
 "As a reward for Delfador’s bravery, I am temporarily appointing you and your "
 "men to be his personal guard. Make sure nothing untoward happens to him, as "
@@ -3621,12 +3648,12 @@ msgstr ""
 
 # Lionel
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:82
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:83
 msgid "As you command, sire!"
 msgstr "ご命令通りに、陛下！"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:89
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:90
 msgid ""
 "And so it was that the Wesnothian army left Weldyn to seek out and crush "
 "Iliah-Malal’s forces. But the campaign proved a disaster. Less than a "
@@ -3642,7 +3669,7 @@ msgstr ""
 
 # King
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:93
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:94
 msgid ""
 "This is a disaster. I should have led the army myself and died with them. "
 "And I should have listened to you, Delfador."
@@ -3652,13 +3679,13 @@ msgstr ""
 
 # Lionel
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:97
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:98
 msgid "We will fight till the last man, my King."
 msgstr "国王陛下、我々は最後の一兵まで戦い抜く所存であります。"
 
 # Delf
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:101
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:102
 msgid ""
 "My Lord, things are very grave indeed, but all is not yet lost. There is "
 "still hope if we do not falter."
@@ -3668,12 +3695,12 @@ msgstr ""
 
 # King
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:105
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:106
 msgid "Yes, Delfador. This time we will follow your advice."
 msgstr "そうだなDelfador。 余等は今回はそなたの助言に従おう。"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:109
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:110
 msgid ""
 "There are three things we must do. First, we must organize our defenses as "
 "best we can. Second, we need to ask the elves to create a diversion, to "
@@ -3694,19 +3721,19 @@ msgstr ""
 
 # Lionel
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:113
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:114
 msgid "My Lord, I can arrange the defenses around the city."
 msgstr "陛下、私に都市周りの防衛隊の編成をお任せ下さい。"
 
 # King
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:117
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:118
 msgid "Very well, Lionel, take command."
 msgstr "よかろう、Lionel。指揮を執れ。"
 
 # Del
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:121
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:122
 msgid ""
 "These are only the first steps. If we are to defeat the undead, we need to "
 "use and train the army differently than we have. First, you must recall "
@@ -3720,7 +3747,7 @@ msgstr ""
 
 # Lionel
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:125
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:126
 msgid ""
 "But heavy infantry is too slow! And mages in the army? Who can command these "
 "know-it-alls?"
@@ -3729,7 +3756,7 @@ msgstr ""
 "揮できる者などおらんぞ？"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:129
+#: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:130
 msgid ""
 "Delfador could. You will command the heavy infantry. Make sure to shield the "
 "mages in battle, for they are precious. Now, go, close the portal and come "
@@ -4841,7 +4868,7 @@ msgid "Epilogue"
 msgstr "エピローグ"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/23_Epilogue.cfg:17
+#: data/campaigns/Delfadors_Memoirs/scenarios/23_Epilogue.cfg:18
 msgid ""
 "Delfador returned to Weldyn, but not before secreting the Book of Crelanu in "
 "a place known only to him. To his surprise, Asheviere made no further "
@@ -4858,7 +4885,7 @@ msgstr ""
 "御します。"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/23_Epilogue.cfg:20
+#: data/campaigns/Delfadors_Memoirs/scenarios/23_Epilogue.cfg:21
 msgid ""
 "Delfador’s last great quest, after that battle, is described in the tale "
 "called <i>Heir to the Throne</i>. In it is told how he ended the usurpation "
@@ -4870,7 +4897,7 @@ msgstr ""
 
 # % ちょっとだけ意訳っぽい。
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/23_Epilogue.cfg:23
+#: data/campaigns/Delfadors_Memoirs/scenarios/23_Epilogue.cfg:24
 msgid ""
 "After restoring the rightful heir to the throne of Wesnoth, Delfador lived "
 "the rest of his life as an advisor to the new rulers. He devoted much of his "
