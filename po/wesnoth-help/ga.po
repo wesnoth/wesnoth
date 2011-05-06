@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-05 10:12+0200\n"
-"PO-Revision-Date: 2011-04-14 10:39-0800\n"
+"PO-Revision-Date: 2011-05-04 22:06-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -1130,7 +1130,7 @@ msgstr ""
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:191
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "Pointí Sláinte agus Taithí"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:192
@@ -1482,7 +1482,7 @@ msgstr ""
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:286
 msgid "Experience and Advancement"
-msgstr ""
+msgstr "Taithí agus Ardú"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:287
@@ -2473,7 +2473,7 @@ msgstr ""
 #. [topic]: id=general_commands
 #: data/core/help.cfg:790
 msgid "General commands"
-msgstr ""
+msgstr "Orduithe ginearálta"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:795
@@ -2563,7 +2563,7 @@ msgstr ""
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:829
 msgid "Multiplayer commands"
-msgstr ""
+msgstr "Orduithe Ilimreoir"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:835
@@ -2645,7 +2645,7 @@ msgstr ""
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:861
 msgid "Debug mode commands"
-msgstr ""
+msgstr "Orduithe in mód dífhabhtúcháin"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:865
@@ -2749,7 +2749,7 @@ msgstr ""
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
 msgid "regenerates"
-msgstr "athginiùnach"
+msgstr "athginiúnach"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
@@ -2880,6 +2880,7 @@ msgstr "luíochán"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:424 data/core/macros/abilities.cfg:428
+#, fuzzy
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -2888,6 +2889,13 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
+"Luíochán:\n"
+"Tá an t-aonad seo in ann folaithe sa choill, and remain undetected by its "
+"enemies.\n"
+"\n"
+"Enemy units cannot see this unit while it is in forest, except if they have "
+"units next to it. Any enemy unit that first discovers this unit immediately "
+"loses all its remaining movement."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:444
@@ -2975,12 +2983,12 @@ msgstr ""
 #. [unstore_unit]
 #: data/core/macros/abilities.cfg:551
 msgid "+1 max HP"
-msgstr ""
+msgstr "+1 uas PS"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:593
 msgid "backstab"
-msgstr "buille fill"
+msgstr "sá sa droim"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:595
@@ -3113,7 +3121,7 @@ msgstr ""
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr ""
+msgstr "Uas bónas PS +3, Uas PT +20%"
 
 #. [time]: id=indoors
 #. [illuminated_time]: id=indoors_illum
@@ -4168,7 +4176,7 @@ msgstr "Ealbh"
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:304
 msgid "race^Wolves"
-msgstr "Mactíre"
+msgstr "Mictíre"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:313
@@ -4229,7 +4237,7 @@ msgstr "Daonnaí"
 
 #: src/help.cpp:51
 msgid "Help"
-msgstr "Inneachair"
+msgstr "Cabhair"
 
 #: src/help.cpp:1151
 msgid "<header>text='Units having this special attack'</header>"
@@ -4289,7 +4297,7 @@ msgstr ""
 
 #: src/help.cpp:1447
 msgid "HP: "
-msgstr ""
+msgstr "PS: "
 
 #: src/help.cpp:1448
 msgid "Moves: "
