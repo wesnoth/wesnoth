@@ -216,10 +216,8 @@ void play_controller::init(CVideo& video){
 		gamestate_.build_team_stage_two(tb_ptr);
 	}
 
-	
-	if (teams_.empty()) {
-		throw game::game_error("The scenario is invalid, it has no sides!");
-	}
+	// mouse_handler expects at least one team for linger mode to work.
+	if (teams_.empty()) end_level_data_.linger_mode = false;
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << "\n";
 	loadscreen::start_stage("load units");
