@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-05 10:12+0200\n"
-"PO-Revision-Date: 2011-03-21 00:01+0100\n"
+"PO-Revision-Date: 2011-04-14 04:53+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin\n"
 "Language: \n"
@@ -384,10 +384,8 @@ msgstr "Versio Lingua Norvegica"
 
 #. [about]
 #: data/core/about.cfg:2288
-#, fuzzy
-#| msgid "English (GB) Translation"
 msgid "Old English Translation"
-msgstr "Versio Lingua Anglica Britanniae"
+msgstr "Versio Lingua Anglica Prisca"
 
 #. [about]
 #: data/core/about.cfg:2297
@@ -773,11 +771,11 @@ msgstr ""
 
 #: data/core/macros/items.cfg:267
 msgid "holy water^Take it"
-msgstr ""
+msgstr "Capere"
 
 #: data/core/macros/items.cfg:268
 msgid "holy water^Leave it"
-msgstr ""
+msgstr "Linquere"
 
 #: data/core/macros/items.cfg:269
 #, fuzzy
@@ -863,16 +861,12 @@ msgid "Should $unit.name pick up the trident?"
 msgstr "Debesne $unit.name tridentem carpere?"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
-#| msgid "storm trident"
 msgid "storm trident^Leave it"
-msgstr "tridens tempestatum"
+msgstr "Capere"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
-#| msgid "storm trident"
 msgid "storm trident^Take it"
-msgstr "tridens tempestatum"
+msgstr "Linquere"
 
 #. [object]
 #: data/core/macros/items.cfg:515
@@ -4474,9 +4468,8 @@ msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 
 #: src/menu_events.cpp:2486
-#, fuzzy
 msgid "(debug command)"
-msgstr "Imperia Vulgaria"
+msgstr "(imperium cimicandi)"
 
 #: src/menu_events.cpp:2487
 #, fuzzy
@@ -4807,7 +4800,7 @@ msgstr "Coria"
 
 #: src/menu_events.cpp:3323
 msgid "Choose Scenario (Debug!)"
-msgstr ""
+msgstr "Scaenarium Eligere (Cimicare!)"
 
 #: src/menu_events.cpp:3368
 #, fuzzy
@@ -5707,14 +5700,12 @@ msgid "Level: "
 msgstr "Ordo: "
 
 #: src/reports.cpp:183
-#, fuzzy
 msgid "No advancement"
-msgstr "Promotiones Gradu"
+msgstr "Nulla promotio"
 
 #: src/reports.cpp:185
-#, fuzzy
 msgid "Advances to:"
-msgstr "Promovetur ad: "
+msgstr "Producitur ad: "
 
 #: src/reports.cpp:215
 msgid "Trait: "
@@ -5792,7 +5783,7 @@ msgstr "Terra: "
 
 #: src/reports.cpp:381
 msgid "maximum^max."
-msgstr "fin. "
+msgstr "max. "
 
 #: src/reports.cpp:381
 msgid "minimum^min."

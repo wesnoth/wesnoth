@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-05 10:12+0200\n"
-"PO-Revision-Date: 2009-11-07 15:34-0500\n"
-"Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
+"PO-Revision-Date: 2011-04-19 23:06+0100\n"
+"Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
 msgid "A Tale of Two Brothers"
-msgstr "Fabula Duorum Fraturum"
+msgstr "Fabula Duorum Fratrum"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -34,7 +34,7 @@ msgstr "FDF"
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "(Beginner)"
-msgstr ""
+msgstr "(Tiro)"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
@@ -44,7 +44,7 @@ msgstr "Eques"
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "(Challenging)"
-msgstr ""
+msgstr "(Provocans)"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
@@ -54,57 +54,60 @@ msgstr "Eques Ordinis"
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
 msgid "(Novice level, 4 scenarios.)"
-msgstr ""
+msgstr "(Ordo facilis, IV scaenarii.)"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
 #, fuzzy
+#| msgid ""
+#| "An evil mage is threatening the small village of Maghre and its "
+#| "inhabitants. The village’s mage Bjarn sends for his brother to help, but "
+#| "not all goes as planned. Can you help?\n"
+#| "\n"
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The village’s mage sends to his warrior brother for help, but not all goes "
 "as planned. Can you help?\n"
 "\n"
 msgstr ""
-"Magus Niger pagum loci et incolentes eius minatur. Cum dux eius Biarnus "
-"adiutorium a fratre suo Arne petit, vincit, sed Biarnus ipse surrepitur. "
-"Potesne ei subvenire?\n"
-"Stipendia valde brevis, pro incipientibus in facili et provocans pro "
-"professionalibus in difficili."
+"Magus malum parvo pago Magerhis et incolis minatur. Magus pagi Biarnus "
+"auxilium petit, sed rem male gerebat. Potesne subvenire?\n"
+"\n"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:28
 msgid "Campaign Design"
-msgstr ""
+msgstr "Forma Militiae"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:37
 msgid "Prose and Story Edits"
-msgstr ""
+msgstr "Verba Soluta et Mutationes Fabulae"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:46
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Conservatio Militiae"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:52
 msgid "Artwork and Graphics Design"
-msgstr ""
+msgstr "Imagines"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:68
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Alia"
 
 #. [entry]
 #: data/campaigns/Two_Brothers/_main.cfg:82
 msgid "And special thanks to everyone else who I forgot to mention."
-msgstr ""
+msgstr "Et nultas gratias pro omnibus mei oblitiis agitur."
 
 #. [scenario]: id=01_Rooting_Out_a_Mage
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:4
 msgid "Rooting Out a Mage"
-msgstr "Magum Eradicans"
+msgstr "Magum Reperiens"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:55
@@ -115,6 +118,10 @@ msgid ""
 "them not, until the day a dark mage settled in the region and began seeking "
 "sacrifices for his evil summonings."
 msgstr ""
+"Olim fundi liberi Magerhis in finibus occidentibus Rengi Vesnotei longinqui "
+"pacati fuerunt, pleraeque incolarum nesciae rerum publicarum. Bella et "
+"opinies bellorum illos non attigerunt, usque donec magus ater in regione "
+"sedavit ac victimas pro peccatis petere coepit."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:59
@@ -126,9 +133,23 @@ msgid ""
 "more than a day’s ride distant, and messengers sent to seek his help did not "
 "return."
 msgstr ""
+"Ossa cadaveraque pecora trucidaverunt et agros arserunt. <i>“Timete,”</i> "
+"cruenta clamare <i>“Pareteque Mordaccho Mago!”</i> dum nefas facebant. "
+"Populus sic e fundis deviis evanuit; viri mulieresque noctem metuere "
+"coeperunt, ac liberi dies clarum. Sed proximus dominus a magis quam die "
+"equitandi distare, nec nuntii missi subsidium eius petitum redierunt."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:63
+#, fuzzy
+#| msgid ""
+#| "There was a man named Bjarn who had shown talent as a mage when he was "
+#| "young, gone to the great Academy on the Isle of Alduin, and returned to "
+#| "work his magic in the land where he was born. The people looked to him "
+#| "for help and leadership. He found weapons half-forgotten from the times "
+#| "of their sires and grandsires hanging in many houses, and bade the "
+#| "villagers to take them down and clean and oil them. He set the smiths of "
+#| "Maghre to making spearheads and ax-blades for the rest."
 msgid ""
 "There was a man named Baran who had shown talent as a mage when he was "
 "young, gone to the great Academy on the Isle of Alduin, and returned to work "
@@ -138,9 +159,22 @@ msgid ""
 "them down and clean and oil them. He set the smiths of Maghre to making "
 "spearheads and ax-blades for the rest."
 msgstr ""
+"Erat vir Biarnus vocatus artem temptatus dum magus iuvenis, ad Scholam "
+"Magnam Alduini progressus, et in patria artem magicam usum redivit. Quare "
+"populus illum prospicebant ut se adiuvaret et duceret. Etiam Arma neglectum "
+"avorum invenit in multis domibus pendentes, itaque paganos iussit ea sumere "
+"et abluere limareque: fabros Magerhis ceteris hastas securesque facere."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:67
+#, fuzzy
+#| msgid ""
+#| "Now Bjarn had a brother named Arne who had also left Maghre to seek his "
+#| "fortune, and had become the leader of a small band of horsemen who hired "
+#| "out as guards to merchant caravans. Fortunate it was for all that when "
+#| "Bjarn was but an apprentice mage, he had made a pair of amulets for "
+#| "himself and his brother, with which they might call to each other when in "
+#| "dire need. Bjarn sent out that call."
 msgid ""
 "Now Baran had a brother named Arvith who had also left Maghre to seek his "
 "fortune, and had become the leader of a small band of horsemen who hired out "
@@ -149,9 +183,26 @@ msgid ""
 "brother, with which they might call to each other when in dire need. Baran "
 "sent out that call."
 msgstr ""
+"Iam Biarno frater Arnis nomine erat, quoque e Magerhi divitiis egressus, et "
+"dux manus equitum pro custodibus mercatoribus locantium factus est. Omnibus "
+"beatis cum Biarnus magus discipulus esset, amuleta duae ipsi fratrique "
+"factus est, quibus subsidio indigens utrum vocarent, etiam Biarnus vocavit."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:76
+#, fuzzy
+#| msgid ""
+#| "12 V, 363 YW\n"
+#| "Excerpt from the journal of Bjarn of Maghre\n"
+#| "\n"
+#| "If I could but face this ‘Mordak’! I think my magic might prove stronger "
+#| "than his. But he bides in the hills, well-guarded by his servants, and I "
+#| "muster frightened peasants to fight his minions with blades and sticks. I "
+#| "need my brother; he always had a better head for battle than I.\n"
+#| "\n"
+#| "Will he heed the call? I do not know if he has kept the amulet; we have "
+#| "not spoken since that evil day at Toen Caric. If he will not come for me, "
+#| "perhaps he will return to aid our village in its hour of desperate need."
 msgid ""
 "12 V, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -165,19 +216,35 @@ msgid ""
 "spoken since that evil day at Toen Caric. If he will not come for me, "
 "perhaps he will return to aid our village in its hour of desperate need."
 msgstr ""
+"XII V, AVC CCCLXIII\n"
+"A diario Biarni Magehris\n"
+"\n"
+"Utinam cum isto ‘Mordaccho’ certare possit! Puto magiam meam fortior eo "
+"esse. Sed in collibus sedat, bene servis defensus, et colloco paganos "
+"territos ut ferro ac baculo eos pugnent. Egeo fratro; ille semper melius "
+"quam ego pugnabat.\n"
+"\n"
+"Audietne vocatus? Nescio utrum amuletum tenuerit; non locuti sumus quo die "
+"malo Toeni Carici. Si mihi venerit, fortasse redibat pagum mostrum adiutum "
+"cum temus fatalem attingat. "
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:80
+#, fuzzy
+#| msgid ""
+#| "Heeding the call of his amulet, Arne gathered such men as he could and "
+#| "hurried to Maghre to help Bjarn."
 msgid ""
 "Heeding the call of his amulet, Arvith gathered such men as he could and "
 "hurried to Maghre to help Baran."
 msgstr ""
+"Arnis amuletum vocatum audiens, quales quam celerrime viri civit et Magehri "
+"Biarno festinavit subventum."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:91
-#, fuzzy
 msgid "Slay Mordak, the evil mage"
-msgstr "Magum Nigrum Occidere"
+msgstr "Magum malum Mordacchum occidere"
 
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:95
@@ -212,28 +279,27 @@ msgstr ""
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:147
 msgid "Alwyn"
-msgstr ""
+msgstr "Alvynius"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:148
-#, fuzzy
 msgid "Brent"
-msgstr "Brena"
+msgstr "Brentus"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:149
 msgid "Cadell"
-msgstr ""
+msgstr "Cadellus"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:150
 msgid "Dannen"
-msgstr ""
+msgstr "Dannenus"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:151
 msgid "Efran"
-msgstr ""
+msgstr "Efranius"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:152
@@ -263,12 +329,12 @@ msgstr ""
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:96
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:138
 msgid "Humans"
-msgstr ""
+msgstr "Homines"
 
 #. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:174
 msgid "Mordak"
-msgstr ""
+msgstr "Mordacchus"
 
 #. [side]: type=Orcish Warlord, id=Tairach
 #. [side]: type=Dark Sorcerer, id=Rotharik
@@ -279,27 +345,29 @@ msgstr ""
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:156
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:125
 msgid "Enemies"
-msgstr ""
+msgstr "Hostes"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:207
 msgid "Greetings, brother, and welcome home."
-msgstr ""
+msgstr "Te saluto, frater, et domus."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:211
 msgid "Hail."
-msgstr ""
+msgstr "Ave."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:215
+#, fuzzy
+#| msgid "Is that all, Arne? I understand, but..."
 msgid "Is that all, Arvith? I understand, but..."
-msgstr ""
+msgstr "Tantum est, Arnis? Intellego, sed..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:219
 msgid "You called, and I came; be content with that. What ails Maghre?"
-msgstr ""
+msgstr "Vocavisti, et veni; sis contentus. Quid Magehre polluit?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:223
@@ -309,6 +377,9 @@ msgid ""
 "itself! The villagers of Maghre have taken up weapons but they are not "
 "trained fighters; but we need your men, and you to lead them."
 msgstr ""
+"Magus ater in pagum invasit; creata illius Mordacchus vocant. Continentes "
+"fundos vastaverunt, et veremur ut mox pagum ipsum pugnent! Pagani Magehris "
+"arma adsumpserunt sed non milites sunt; at tuis egemus, quibus praesis."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:227
@@ -316,13 +387,15 @@ msgid ""
 "I can feel Mordak’s foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days’ ride."
 msgstr ""
+"Possum tactum Mordacchi foedi in canalibus secretis terrae aerisque sentire. "
+"Alicubi adhuc boream adest, dicam non magis quam biduum equitandi. "
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:231
 msgid ""
 "All right. I will do this for the village. Can you keep the mage off our "
 "backs?"
-msgstr ""
+msgstr "Esto. Pro pago agam. Potesne magum resistere?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:235
@@ -332,29 +405,39 @@ msgid ""
 "Mordak himself with magic at an unguarded moment. You shall be the right "
 "hand, I the left... aye, brother?"
 msgstr ""
+"Furtim cum manu spectatorum optimorum silvicolarumque. Dum contra eum "
+"consistetis et creata interficietis, tempore Mordacchum ipsum magia vincere "
+"conabo. Dextra eris, pars laeva ero... fietne, frater? "
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:239
 msgid "... Aye. Just make sure you’re there when we need you."
-msgstr ""
+msgstr "... Aio. Modo fac ut adsis cum necesse sit."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:250
 #, fuzzy
+#| msgid ""
+#| "Bjarn should be in position by now. Press them, distract the adept so "
+#| "Bjarn can spring his trap!"
 msgid ""
 "Baran should be in position by now. Press them, distract the adept so Baran "
 "can spring his trap!"
-msgstr "Biarnus iam in loco esse debet. Num quid ei accidit?"
+msgstr ""
+"Biarnus iam in paratus esse debet. Eos persequimini, adseculam distrahite ut "
+"Biarno insidias usui sit!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:258
+#, fuzzy
+#| msgid "Bjarn has not made his attack!"
 msgid "Baran has not made his attack!"
-msgstr ""
+msgstr "Biarnus non impetum fecit!"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:262
 msgid "Could he have abandoned us?"
-msgstr ""
+msgstr "Deseruistine nos?"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:266
@@ -362,71 +445,84 @@ msgid ""
 "No... No. This is something else. I’m worried about him... but right now it "
 "means we have to deal with this Mordak ourselves."
 msgstr ""
+"nego... nego. Non tamtum est. Ille mihi curae est... sed nunc signat nos "
+"ipsos Mordacchum delere debere."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:277
-#, fuzzy
 msgid "Argh!"
-msgstr "A!!!"
+msgstr "A!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:281
 msgid "Good work, men! But what has become of my brother?"
-msgstr ""
+msgstr "Optime, viri! Sed Quid fratri meo accidit?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:285
-#, fuzzy
 msgid "Worried about him, are you? E-he-he... hergh... gaargh..."
-msgstr "Tene vexat de eo? Hahahae...gaargh. . ."
+msgstr "Nonne anxius es? Hahahae... hergh... gaargh..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:293
+#, fuzzy
+#| msgid ""
+#| "There’s nothing more to be had from this one; we will have to search for "
+#| "Bjarn ourselves!"
 msgid ""
 "There’s nothing more to be had from this one; we will have to search for "
 "Baran ourselves!"
-msgstr ""
+msgstr "Numquam hic dicet; Biarnum nos ipsi debemus!"
 
 #. [message]: role=Reporter
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:301
+#, fuzzy
+#| msgid ""
+#| "Sir, our scouts report that Bjarn was seen captured and carried away "
+#| "further north!"
 msgid ""
 "Sir, our scouts report that Baran was seen captured and carried away further "
 "north!"
 msgstr ""
+"Domine, spectatores dicunt Biarnum captum videri et longe ad septentrionem "
+"auferri!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:305
 msgid "That they should dare this! We will give chase at once."
-msgstr ""
+msgstr "Hoc audere! Statim illos fugemus."
 
 #. [message]: speaker=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:319
 msgid "Your brother’s plan to ambush me has failed. He is our prisoner now."
-msgstr ""
+msgstr "Consilium fratri defuit ut me capam. Iam captivo nostrum est. "
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:323
+#, fuzzy
+#| msgid ""
+#| "My brother, kidnapped? I have failed you, Bjarn! And even now Mordak’s "
+#| "forces descend upon the village!"
 msgid ""
 "My brother, kidnapped? I have failed you, Baran! And even now Mordak’s "
 "forces descend upon the village!"
 msgstr ""
+"Fraterne, captus? Tibi defui, Biarne! Etiam nunc copiae Mordacchi in pagum "
+"descendunt!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:338
-#, fuzzy
 msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
-msgstr "Audivi creaturas has quasi immunes contra tela nostra esse, vidamus!"
+msgstr "Audio has beluas fere tela nostra non sentire, inveniamus!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:353
-#, fuzzy
 msgid "That was not so hard!"
-msgstr "Non tantum durum erat!"
+msgstr "Facile factu!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:364
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:544
-#, fuzzy
 msgid "All is lost now that I am dead..."
 msgstr "Omnis perit quia morior..."
 
@@ -437,11 +533,30 @@ msgstr "Venatio"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:30
+#, fuzzy
+#| msgid "Arne and his band rode north in search of his missing brother."
 msgid "Arvith and his band rode north in search of his missing brother."
-msgstr ""
+msgstr "Arnis manusque ad boream equitavit fratrum amissum inventum."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:41
+#, fuzzy
+#| msgid ""
+#| "16 V, 363 YW\n"
+#| "Excerpt from the journal of Arne of Maghre\n"
+#| "\n"
+#| "We’ve been searching three days for Bjarn, and turned up nothing. My best "
+#| "hunch was to head north into the borderlands, where the necromancer’s "
+#| "minions could safely hide; everywhere else is more farmland. At first I "
+#| "thought the search might be useless, but late in the first day we found a "
+#| "set of tracks. Some of them had been made by skeletal feet.\n"
+#| "\n"
+#| "We’re close enough to be certain now: those tracks are heading into the "
+#| "Grey Woods. No one from Maghre or any of the other villages has gone into "
+#| "that forest in living memory. Stories have been passed down for "
+#| "generations warning against it. Supposedly the place is haunted by lost "
+#| "souls who hunger for the living, and anyone who dies there is doomed to "
+#| "join them."
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -458,9 +573,38 @@ msgid ""
 "warning against it. Supposedly the place is haunted by lost souls who hunger "
 "for the living, and anyone who dies there is doomed to join them."
 msgstr ""
+"XVI V, AVC CCCLXIII\n"
+"A diario Arnis Magehris\n"
+"\n"
+"Tres dies Biarnum petivimus, et nil invenimus. Opinatus sum nos in finibus "
+"debuisse, ubi servi venefici tute latere possunt; ubique plus arvorum "
+"adsunt. Primum putavi petendum inutile esse, sed primum diem vestigia "
+"invenimus. Nonnulli pedibus osseis facti sunt.\n"
+"\n"
+"Adeo adiacemus ut nunc pro certo habeamus: vestigia Silvam Lividam "
+"appropinquant. Ne quis a Magehri ne ullo pago adeo in illam silvam ivit "
+"memoria mei. Saecula fabulae narratae sunt quae monent, ne quis adhuc eat. "
+"Fertur locum ab animis amissis viventium cupidis frequentari, et aliquid ibi "
+"morientem velut illos facturum esse.  "
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:50
+#, fuzzy
+#| msgid ""
+#| "16 V, 363 YW\n"
+#| "Excerpt from the journal of Arne of Maghre\n"
+#| "\n"
+#| "But I’m past superstitions now; I’ve seen enough of the world to guess at "
+#| "the truth behind these sorts of tales. The forest is home to elves — "
+#| "unfriendly ones, if the stories have any basis at all. I worry for my "
+#| "men; horses don’t fight well in forests, and the elves will be more "
+#| "dangerous in their own territory. But there are things that need done and "
+#| "questions that need answered. Something bigger is happening. One "
+#| "necromancer terrorizing townsfolk is nothing new, but why didn’t his "
+#| "servants scatter when he was killed? Where are they headed now? And most "
+#| "importantly, why did they take Bjarn with them?\n"
+#| "\n"
+#| "Besides... I want my brother back."
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -477,27 +621,40 @@ msgid ""
 "\n"
 "Besides... I want my brother back."
 msgstr ""
+"XVI V, AVC CCCLXIII\n"
+"A diario Arnis Magerhis\n"
+"\n"
+"Sed iam superstitionem veto; satis mundi vidi ut vera qualium fabularum "
+"sciam. Silva sedes dryadalium est — hostiles, si saltem fabulae ullo modo "
+"vera dicunt. Meiis curae sunt; equi male in silva pugnant, et dryadales in "
+"terra propria magis periculosi erunt. Sed agendum est respondendumque. "
+"Aliquis gravior est. Non mirandum est si unus venificus oppidanos vastat, "
+"sed illo interfecto cur servi non dimiserunt? Iam quo vadent? Ac cur Biarnum "
+"secum non ceperunt?\n"
+"\n"
+"Etenim... volo fratrem videre."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:86
 msgid "Fight your way through the woods before the kidnappers escape"
-msgstr "Viam per silvas pugno expedire priusquam surreptores effugiunt"
+msgstr "Pro via per silvas pugnare priusquam abripientes effugere"
 
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:143
 msgid "Nil-Galion"
-msgstr "Nilus-Galionis"
+msgstr "Nilus Galionis"
 
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:150
 msgid "Elves"
-msgstr ""
+msgstr "Dryadales"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:240
 msgid ""
 "Come on, men. A stroll through such lovely green woods, what could be finer?"
 msgstr ""
+"Agitedum. Nonne ambulare per tantum amoenum silvam viridem perbonum est? "
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:244
@@ -506,9 +663,8 @@ msgstr "Tu! Siste et te explica."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:248
-#, fuzzy
 msgid "We’re chasing after some men who kidnapped my brother!"
-msgstr "Persequimur viros qui fratrem meum surrepserunt!"
+msgstr "Persequimur homines qui fratrem meum abripuerunt!"
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:252
@@ -516,13 +672,20 @@ msgid ""
 "Those men told me their prisoner had attempted to murder their master, and "
 "warned that evil men would follow him. Advance no further, or you will die."
 msgstr ""
+"Isti me dixerunt captivum erum occidere conatos esse, et monitos esse malos "
+"eum secuturos esse. Manete, ne moriantur. "
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:256
+#, fuzzy
+#| msgid ""
+#| "So much for those ghost stories. Mere elves will not stop me from freeing "
+#| "Bjarn!"
 msgid ""
 "So much for those ghost stories. Mere elves will not stop me from freeing "
 "Baran!"
 msgstr ""
+"Fabulae phasmarum, malum. Dryadales me non prohibebunt quin Biarno subveniam!"
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:260
@@ -531,6 +694,8 @@ msgid ""
 "will have us at a disadvantage; our horses will not maneuver well in the "
 "trees."
 msgstr ""
+"Gaudeo saltem quod sunt nullae phasmae certandae. Sed dryadales nobis "
+"praestent; equi nostri male in his arboribus ibunt. "
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:264
@@ -539,6 +704,9 @@ msgid ""
 "woods. We have faced and won through greater perils than those amateurs can "
 "offer."
 msgstr ""
+"Fu, modo manete in viis; hastati nostri et sagittarii in silvis penitis "
+"pugnare possunt. Certavimus viximusque peiores pericula quam illos tirones "
+"dare possunt."
 
 #. [unit]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:279
@@ -548,7 +716,7 @@ msgstr "Muffus Toras"
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:327
 msgid "I see them! There they are!"
-msgstr "Eos vidi! Illic sunt!"
+msgstr "Eos vidi! Ecce hem!"
 
 #. [message]: speaker=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:331
@@ -556,17 +724,17 @@ msgid ""
 "Curses! If they had been an hour slower our master’s reinforcements would "
 "already be here to meet us."
 msgstr ""
+"Malum! Si lentius ivissent novae copiae eri iam adirent nos coniunctum."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:336
 msgid "Kill the Dark Adept before his reinforcements arrive"
-msgstr "Peritum Obscurum occidere priusquam copiae novae adveniunt"
+msgstr "Adseculam Venefici occidere priusquam copiae novae adveniunt"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:357
-#, fuzzy
 msgid "Come on, men, let’s catch those kidnappers!"
-msgstr "Porro, viri, capiamus surreptores!"
+msgstr "Porro, viri, capiamus abripientes!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:368
@@ -575,6 +743,8 @@ msgid ""
 "precious brother the mage north with half my men a day since; he will be "
 "safely locked away in our master’s dungeons by now."
 msgstr ""
+"Ha! Vos me cepisti, sed haudquaquam proderit. Frater amatus misi abhinc unum "
+"diem cum dimidio meorum ad boream; tute in carcere eri conclaudetur."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:372
@@ -582,72 +752,76 @@ msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
 msgstr ""
+"Gladius meus ante teum gutturem. Ostende viam ad fratrem, aut humum cruorem "
+"effundam."
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:375
-#, fuzzy
 msgid "Sithrak"
-msgstr "Sitracius!"
+msgstr "Sithracchus"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:376
-#, fuzzy
 msgid "Eleben"
-msgstr "Elebenis."
+msgstr "Elebenis"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:377
 msgid "Jarlom"
-msgstr ""
+msgstr "Iarlon"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:378
 msgid "Hamik"
-msgstr ""
+msgstr "Hamiccus"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:381
 msgid "Akranbral"
-msgstr ""
+msgstr "Akranbral"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:382
 msgid "Drakanal"
-msgstr ""
+msgstr "Drakanal"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:383
-#, fuzzy
 msgid "Xaskanat"
-msgstr "Colonus"
+msgstr "Xaskanas"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:384
 msgid "Katklagad"
-msgstr ""
+msgstr "Kataklagadus"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:389
-#, fuzzy
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password_number and $second_password_"
 "$second_password_number|."
 msgstr ""
-"Iter trium dierum inter septentriones et orientem in castello deserto. "
-"Tesserae custodum sunt Sitracius et Elebenis."
+"Triduum equitandi inter septentriones et orientem in castello deserto. "
+"Tesserae custodibus sunt $first_password_$first_password_number "
+"$second_password_$second_password_number|que."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:393
 msgid "Bind him and take him with us. If he has played us false, he will die."
-msgstr ""
+msgstr "Illum vincite et nobiscum ducite. Si mentitus est, morietur."
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:397
+#, fuzzy
+#| msgid ""
+#| "Captain, what are we riding into? I thought you wanted nothing to do with "
+#| "Bjarn any more, not since Toen Caric."
 msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
 msgstr ""
+"Dux, quo vademus? Putavi te Biarnum videre nolere, ex quo res Toeni Carici. "
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:401
@@ -655,6 +829,8 @@ msgid ""
 "I’m no longer sure. What’s between us remains, but knowing someone else has "
 "lain hands on him changes things. Mount up, and let’s get moving."
 msgstr ""
+"Non iam pro certo habeo. Quod accidit manet, sed, scire alium illi iniustiam "
+"agere, res vertet. In equum ascendite, ac pergamus."
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:411
@@ -667,6 +843,8 @@ msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
 msgstr ""
+"Avete. Brena sum, eques errans. Vos vidi persequentes inmortus foedus "
+"pugnantesque. Suntne plures delenda? "
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:424
@@ -674,37 +852,35 @@ msgid ""
 "Aye. We think there’s a nest of them north-east of here. They’ve captured my "
 "brother."
 msgstr ""
+"Aio. Putamus latibulum inter orientem et septentrionem adesse. Isti fratrem "
+"meum abripuerunt."
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:428
 msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
-msgstr ""
+msgstr "Magne istos odi. Vos sequar et vobiscum pugnabo, tua venia."
 
 #. [message]: type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:432
-#, fuzzy
 msgid "He would only slow us down!"
-msgstr "Tantum nos lentificent!"
+msgstr "Tantum nos moretur!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:436
-#, fuzzy
 msgid "It is my place to decide this."
-msgstr "Ego decerno."
+msgstr "Mihi decernendum est."
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:438
 msgid "Oh, all right then. Come along with us."
-msgstr "Bene. Venite nobiscum."
+msgstr "Bene, venite nobiscum."
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:442
 msgid "Thank you. My comrades and I will help you on your noble quest."
-msgstr ""
-"Tibi gratias ago. Ego et socii mei te adiuvabunt in investigatione tua "
-"nobili."
+msgstr "Tibi gratias ago. Ego et socii te adiuvabunt in militia nobili."
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:450
@@ -717,18 +893,18 @@ msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
 msgstr ""
-"Hoc accipe, tunc, quia video te in investigatione esse. Socii mei te "
-"adiuvabunt quandocumque vocas."
+"Hoc accipe, tunc, quia video te in miltia esse. Socii te adiuvabunt cum "
+"vocas."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:471
 msgid "You receive 70 pieces of gold!"
-msgstr "Accipis LXX nummos auri!"
+msgstr "Accipis LXX nummos aurorum!"
 
 #. [message]: speaker=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:492
 msgid "My reinforcements are here!"
-msgstr "Copiae novae adveniunt!"
+msgstr "Copiae novae adsunt!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:496
@@ -737,30 +913,28 @@ msgstr "Nos effugit..."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:507
-#, fuzzy
 msgid ""
 "Foolish human, you have killed me but you will not catch the undead in time. "
 "I have fulfilled my contract, and will be reanimated soon to become a lord "
 "of their armies."
 msgstr ""
-"Homo ignare, me occidisti, sed numquam inmortuos attinges. Pactum complevi "
-"et mox reanimatus ero ut dominus in exercitu eorum."
+"Asine, me occidisti, sed non tempore inmortus attinges. Pactum complevi, et "
+"mox iterum animatus dominus exercitus fiam."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:515
 msgid "Follow their back trail!"
-msgstr ""
+msgstr "Sequemini vestigia!"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:520
-#, fuzzy
 msgid "Catch the kidnappers"
-msgstr "Porro, viri, capiamus surreptores!"
+msgstr "Abripientes capere"
 
 #. [terrain_type]: id=magic_irongate
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:6
 msgid "Irongate"
-msgstr ""
+msgstr "Ostiferrea"
 
 #. [scenario]: id=03_Guarded_Castle
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:16
@@ -789,6 +963,19 @@ msgid ""
 "man rumored to be this mage’s brother. If that is true, he will stop at "
 "nothing, no more than would I if they held Mordak."
 msgstr ""
+"IX IV, AVC CCCLXIII\n"
+"A diario Rotharici Genticarentis\n"
+"\n"
+"Reliqui servorum Mordacchi mane mortem narrantes adierunt, quoque nescioquid "
+"adeo vinctum ut vix humanum videatur. Mordacchus semper audax erat. Totum "
+"ingenium desperatum sibi erat, et opinor me illum ob omnes passa accusare "
+"posse, si etiam intersit. Qui orces deo vexabat. Sed etiam, officum egit. "
+"Etiam finem rei suspicor; adhuc aliquando semper passi eramus."
+"\\nSperaveramus nos magum Tairacho pro vita dare. Nescio quod bellipotens ab "
+"homine vult, sed vultus similis descriptionis est. Arbitror consilium "
+"Mordacchi perbene perfectum esse, sine aspectu equitum. Iam huc veniunt, ab "
+"homine ducti, de quo fama est id fratrem magi esse. Si vera fertur, numquam "
+"desistet, ut ego si Mordacchum teneant."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:62
@@ -806,11 +993,15 @@ msgid ""
 "be different, but we are broken... and these two men are whole. In each "
 "other, in the ties that bind them, they have strength."
 msgstr ""
+"IX IV, AVC CCCLXIII\n"
+"A diario Rotharici Genticarentis\n"
+"\n"
+"Fecit quid potis est ut castellum obsoletum muniam. Orces "
 
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:97
 msgid "Rotharik"
-msgstr "Rotaricus"
+msgstr "Rotharicus"
 
 #. [unit]: id=Guard_leader, type=Assassin
 #. [unit]: role=Guard, type=Bandit
@@ -834,7 +1025,7 @@ msgstr "Custos"
 #. [unit]: id=Knago-Brek, type=Orcish Warrior
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:162
 msgid "Knago-Brek"
-msgstr "Knago-Breccus"
+msgstr "Gnago Breccus"
 
 #. [unit]: type=Orcish Grunt
 #. [unit]: type=Orcish Warrior
@@ -854,10 +1045,16 @@ msgstr "Biarno Subvenire"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:309
+#, fuzzy
+#| msgid ""
+#| "Arne and his men halt outside of the castle, gazing for a moment at the "
+#| "hulking mass of stone looming in the fog. There is movement in the mist."
 msgid ""
 "Arvith and his men halt outside of the castle, gazing for a moment at the "
 "hulking mass of stone looming in the fog. There is movement in the mist."
 msgstr ""
+"Arnis suique extra castellum desistunt, aspicientes molem immanem in "
+"caligine eminentes. Est motus in nebula."
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:313
@@ -872,22 +1069,22 @@ msgstr "Tessera est"
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:320
 msgid "$first_password_1|!"
-msgstr ""
+msgstr "$first_password_1|!"
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:326
 msgid "$first_password_2|!"
-msgstr ""
+msgstr "$first_password_2|!"
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:332
 msgid "$first_password_3|!"
-msgstr ""
+msgstr "$first_password_3|!"
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:338
 msgid "$first_password_4|!"
-msgstr ""
+msgstr "$first_password_4|!"
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:354
@@ -900,6 +1097,8 @@ msgid ""
 "The adept didn’t lead us astray after all. I’ll keep my word, distasteful as "
 "it may be; cut him loose, and let’s be rid of him."
 msgstr ""
+"Ita adsecula nos non fefellit. Sponso parebo, tamen odiosum; illum solve, et "
+"dimitte."
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:380
@@ -912,96 +1111,91 @@ msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!!"
 msgstr ""
-"Hahae! Homines diu non interfecimus. Telum sanguinem vult. Nunc occidimus "
+"Hahae! Homines non diu interfecimus. Telum cruorem vult. Nunc occidimus "
 "homines!!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:398
-#, fuzzy
 msgid ""
 "My sword-arm has a say in who will do the dying. Come on, men, let’s kill "
 "some orcs."
-msgstr ""
-"Sapivi necesse esse pugnare ut fratrem servemus! Venite viri, occidamus "
-"orcos."
+msgstr "Lacerti mei quem morte afficiunt! Venite viri, occidamus orces."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:409
 msgid "One less braggart orc in the world."
-msgstr ""
+msgstr "Igitur unus mortuus est gloriosus."
 
 #. [message]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:416
 msgid "Captain, what are <i>orcs</i> doing this far south?"
-msgstr ""
+msgstr "Dux, quare <i>orces</i> adeo in septentrionalia adsunt?"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:420
 msgid "Good question. Perhaps my brother will have found out."
-msgstr ""
+msgstr "Bene dicis. Fortasse frater meus scit."
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:471
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:587
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
-msgstr "Suntne vices nostras? Possumusne nunc abire?"
+msgstr "Suntne novae copiae nostrum? Possumusne nunc exire?"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:475
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:591
 msgid "Um, yes. Fine. You can go."
-msgstr "Mmm, ita. Bene. Abite."
+msgstr "Mmm, ita. Bene. Exite."
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:479
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:595
-#, fuzzy
 msgid "Um, you’re supposed to give the password."
-msgstr "Mmm, debes tesseram dicere."
+msgstr "Um, debes tesseram dicere."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:483
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:599
 msgid "Oh, of course. I had nearly forgotten."
-msgstr "O, sane, prope oblitus sum."
+msgstr "O, sane, haud multum afuit quin obliviscerer."
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:485
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:601
 msgid "$second_password_1|!"
-msgstr ""
+msgstr "$second_password_1|!"
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:491
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:607
 msgid "$second_password_2|!"
-msgstr ""
+msgstr "$second_password_2|!"
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:497
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:613
 msgid "$second_password_3|!"
-msgstr ""
+msgstr "$second_password_3|!"
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:503
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:619
 msgid "$second_password_4|!"
-msgstr ""
+msgstr "$second_password_4|!"
 
+# ritiolus = diminutive of ritus
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:518
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:634
-#, fuzzy
 msgid "Thanks! Irritating little formality, isn’t it?"
-msgstr "Gratias ago! Nonne ritus hic tibi stomachum movet?"
+msgstr "Gratias! Nonne ritiolus molestus est?"
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:531
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:647
-#, fuzzy
 msgid "That’s the wrong password! These aren’t our relief! Get them!"
-msgstr "Tessera falsa est! Non sunt hi vices nostrae! Occidite eos!"
+msgstr "Tessera falsa est! Non sunt novae copiae! Hos capite!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:537
@@ -1009,32 +1203,33 @@ msgstr "Tessera falsa est! Non sunt hi vices nostrae! Occidite eos!"
 msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
-msgstr ""
+msgstr "Puto me meos in acie adiuvare debere ut certo fratrem meum solvant."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:666
 msgid "Your hand or Tairach’s, death is still death... (argh)"
-msgstr ""
+msgstr "Sive manu tui sive Tairachi, etiam mors est mors... (ah) "
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:674
 msgid "‘Tairach’? Who or what is Tairach?"
-msgstr ""
+msgstr "‘Tairachus’? Quis est Tairachus?"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:678
 msgid "There’s a key in his robes."
-msgstr "Clavis est in vestimento eius."
+msgstr "Est clavis in vestimento."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:682
 #, fuzzy
+#| msgid ""
+#| "That may well be the key to the cell they’re holding Bjarn in! I will "
+#| "take it."
 msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
-msgstr ""
-"Debet esse clavis carceris in quo tenent Biarnum! Clavem fero. Non possum "
-"exspectare quia mox fratrem videbo. Venite, eum liberemus."
+msgstr "Debet clavis carceri ubi Biarnum tenent esse! Capiam."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:688
@@ -1045,97 +1240,96 @@ msgstr "Arnem ad carcerem movere ut fratrem liberes"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:721
-#, fuzzy
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
-msgstr "Videte quod hic inveni! Numero centum nummos auri."
+msgstr "Ecce quod hic inveni! Numero centum nummos aurorum."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:734
 msgid "Look what I have found in here! I can count fifty pieces of gold."
-msgstr "Videte quod inveni! Numero quinquaginta nummos auri."
+msgstr "Ecce quod inveni! Numero quinquaginta nummos aurorum."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:782
 #, fuzzy
 #| msgid "I found Bjarn. He is in this cell."
 msgid "I found Baran. He is in this cell."
-msgstr "Biarnum inveni. Est in carcere hac."
+msgstr "Biarnum inveni. Est in hoc clauso."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:792
 #, fuzzy
+#| msgid "It’s good to see you, Arne."
 msgid "It’s good to see you, Arvith."
-msgstr "Felix sum te rursus videre."
+msgstr "Te videre bonum est, Arnis."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:796
 msgid "And you too, brother."
-msgstr ""
+msgstr "Et te, frater."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:802
 #, fuzzy
+#| msgid ""
+#| "You must be one of Arne’s men. Please help me get out of this dungeon."
 msgid ""
 "You must be one of Arvith’s men. Please help me get out of this dungeon."
-msgstr "Nonne eris vir Arnis? Amabo te, adiuva me ex carcere exire."
+msgstr "Nonne est unus Arnis? Amabo, adiuva me ut ex carcere exeam."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:808
-#, fuzzy
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
 "it from him to free me."
 msgstr ""
-"Veneficus Tenebrosus damnatus Rotaricus me inclusit trans hanc portam "
-"magicam. Oportet clavem ab eo carpere ut me liberes. Tantum clave aperienda "
-"est."
+"Veneficus damnatus Rotharicus me conclausit trans portam ferream magicam. "
+"Quae tantum recta clave aperiri potest. Clavis capiendum est."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:819
-#, fuzzy
 msgid "Kill the dark sorcerer to get the cell key"
-msgstr "Veneficum tenebrosum occidere ut clavem carpas"
+msgstr "Veneficum occidere ut clavem carpas"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:860
-#, fuzzy
 msgid "Thank you for saving me. I... was not certain you would come."
-msgstr "Tibi gratias ago quia me servavisti. Quasi spem liberationis perdidi."
+msgstr "Tibi gratias ago quia me servavisti. Non... pro certo habui te venire."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:864
+#, fuzzy
+#| msgid "Have you no faith in your brother, Bjarn?"
 msgid "Have you no faith in your brother, Baran?"
-msgstr ""
+msgstr "Nonne fratro credi, Biarne?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:868
 msgid ""
 "It’s not that. Perhaps I deserved to rot here. I failed you. I failed you "
 "again."
-msgstr ""
+msgstr "Non tantum est. Fortasse me decet hic emori. Tibi defui. Iterum defui."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:872
 msgid ""
 "That is as may be. But you are my brother still. And... I never doubted you "
 "would have come for me."
-msgstr ""
+msgstr "Fiat. At etiam frater me es. Ac... numquam dubito quin mihi venires."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:876
-#, fuzzy
 msgid ""
 "It was no great trial, after all. A few elves, one or two dark sorcerers, a "
 "gang of orcs and some undead. Really just a day’s work for the company."
 msgstr ""
-"Nullum erat, nonnulli dryadales, unus aut duo venefici tenebrosi, multi "
-"orci, et nonnulli inmortui. Re vera tantum labor diei mercennariis nobis."
+"Nullum periculum erat, nonnulli dryadalium, unus duoque veneficiorum, manus "
+"orcum, et nonnulli inmortuum. Vix dies laboris mercennariis."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:880
 msgid "Thank you for coming to my aid. Let us return to the village."
-msgstr "Gratias ago vobis pro adiutorium. Regrediamur ad pagum."
+msgstr "Gratias ago subvenio. Redeamus ad pagum."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:906
@@ -1145,15 +1339,13 @@ msgstr "Omnis perit quia morior..."
 
 #. [message]: speaker=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:918
-#, fuzzy
 msgid "You are too late! Your brother is already dead! Muahahaha...!"
-msgstr "Nimis sero es! Iam mortuus est frater tuus! Muhahahahae..."
+msgstr "Seri estis! Iam mortuus est frater! Muhahahae...!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:922
-#, fuzzy
 msgid "Argh!!"
-msgstr "A!!!"
+msgstr "A!!"
 
 #. [scenario]: id=04_Return_to_the_Village
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:4
@@ -1162,6 +1354,23 @@ msgstr "Regressus ad Pagum"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:37
+#, fuzzy
+#| msgid ""
+#| "27 V, 363 YW\n"
+#| "Excerpt from the journal of Bjarn of Maghre\n"
+#| "\n"
+#| "Almost home now. The last week has been full of mixed feelings for me — "
+#| "blissful and difficult by turns. It was wonderful to be out of that "
+#| "dungeon cell and in the sunlight again without the threat of death or "
+#| "worse hanging over my head... but with that behind me, I turned to the "
+#| "almost equally daunting task of making amends with my brother.\n"
+#| "\n"
+#| "Arne had largely forgiven me by the time he freed me from my cell. All "
+#| "the same, it has taken all of the past week for us to rebuild the sense "
+#| "of comfort in each other we once had. It is fortunate that we have been "
+#| "able to take our time getting back — we gave the Grey Woods a wide berth, "
+#| "and on our way around it we traveled through some truly beautiful "
+#| "countryside. It has given us plenty of time to talk."
 msgid ""
 "27 V, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -1179,9 +1388,41 @@ msgid ""
 "way around it we traveled through some truly beautiful countryside. It has "
 "given us plenty of time to talk."
 msgstr ""
+"XXVII V, AVC CCCLXIII\n"
+"A diario Biarni Magerhis\n"
+"\n"
+"Paene adiemus. Hoc tempus mihi plenum sensuum variorum est — invicem felix "
+"difficilis. A carcere isto abesse et sub luce sive sine morte minace sive "
+"peiore pendente super capite beatus erat... sed illo facto, curavi ut cum "
+"fratre meo pacatus essem, factum aequaliter eminens.\n"
+"\n"
+"Arnis post fere me donaverat quam me a clauso liberavit. Tamen, omnem tempus "
+"carpsimus ut solacium olim inter se restituamus. Beatus sum, quia lente ire "
+"potuimus — Silvam Lividam evitavimus, et in itinere per amoenissimum rurem "
+"ibamus. Quare tempus loqui."
 
+# There seems to be no known technical term, so I used a phrase I found in Frontinus Stra 2.7. Livy uses a similar phrase (22 47)
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:47
+#, fuzzy
+#| msgid ""
+#| "27 V, 363 YW\n"
+#| "Excerpt from the journal of Bjarn of Maghre\n"
+#| "\n"
+#| "Though I am more at ease now, my thoughts often turn back to Toen Caric. "
+#| "We should have been able to repel the orcs without great loss — the "
+#| "pincer attack Arne devised would surely have carried the day but for me. "
+#| "It was reckless of me to leave my men behind — I wounded the warlord and "
+#| "forced him to flee the field, but the cost far outweighed the gain. Those "
+#| "under my command could have been saved if I had remained with them.\n"
+#| "\n"
+#| "I can hardly blame Arne for having taken their deaths ill, and I can "
+#| "never undo the wrong that I have done, but I suppose that time heals some "
+#| "things. We return to the village as brothers once more.\n"
+#| "\n"
+#| "But I am still troubled. I wonder... is this sense of foreboding I feel "
+#| "merely a remnant of my time locked away in that dungeon, or is it a sign "
+#| "of something real?"
 msgid ""
 "27 V, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -1201,11 +1442,24 @@ msgid ""
 "merely a remnant of my time locked away in that dungeon, or is it a sign of "
 "something real?"
 msgstr ""
+"XXVII V, AVC CCCLXIII\n"
+"A diario Biarni Magerhis\n"
+"\n"
+"Etsi securior sum, saepe cogito Toenum Caricum. Orces sine muta morte "
+"depellere possemus — acies sinuata Arnis certe vicisset sine me. Relinquere "
+"meos audax erat — bellipotentem vulneravi et a campo effugere coegit, sed "
+"sumptus peior fructu erat. Illi me reci servati essent si secum manuissem.\n"
+"\n"
+"Vix Arni culpam dare possum mortes inviso, et numquam colligere possum nefas "
+"actum, sed opinor tempus sanare. Ad pagum fratres rursus redimus.\n"
+"\n"
+"Sed etiam anxius sum. Cogito... estne sensus ominis modo vestigium carceris, "
+"aut signum verum? "
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:56
 msgid "Find out what is happening in the village"
-msgstr "Cognoscere quid accidit in pago"
+msgstr "Quid accidit in pago aperire"
 
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:64
@@ -1219,87 +1473,83 @@ msgstr "Mors Biarni"
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:103
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:63
 msgid "Tairach"
-msgstr "Tairacis"
+msgstr "Tairachus"
 
 #. [side]: type=Longbowman, id=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:132
 msgid "Reeve Hoban"
-msgstr ""
+msgstr "Hobanus Praefectus"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:163
-#, fuzzy
 msgid ""
 "There. The village is just across those hills, and already I see men coming "
 "to greet us!"
 msgstr ""
-"Illic. Pagus est trans colles hos et iam video viros venientes salutum nos."
+"Ecce. Pagus trans hos colles est, etiam video viros venientes nos salutatum!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:167
-#, fuzzy
 msgid ""
 "No, they are fleeing from something. We must find out what is happening over "
 "there!"
-msgstr "Non. Ab aliquo fugiunt. Oportet cognoscere quid accidit illic!"
+msgstr "Non salutatum. Ab aliquo fugiunt. Oportet invenire quid accidit illic!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:171
 msgid "Men! Ready your arms!"
-msgstr ""
+msgstr "Viri! Parate arma!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:175
-#, fuzzy
 msgid "We should find Reeve Hoban. Maybe he knows what is going on here."
 msgstr ""
-"Debemus ire et cum Decurione Hobane loqui. Forsitan sapis quid hic accidit."
+"Debemus Praefactum Hobanum invenire. Fortasse intellegit quid hic accidit."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:186
 msgid "We’re almost there!"
-msgstr ""
+msgstr "Adiacemus!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:190
 msgid "That warlord! It’s..."
-msgstr ""
+msgstr "Bellipotentem! Est..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:194
 msgid "Yes, I’d know that face anywhere. Especially after what you did to it."
-msgstr ""
+msgstr "Est, sciam alicubi faciem. Praesertim ideo quod illam violavisti."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:198
 msgid "The warlord from Toen Caric."
-msgstr ""
+msgstr "Bellipotens a Toeno Carico."
 
 #. [message]: speaker=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:202
 msgid "You! The mage who scarred me with fire! KILL THEM!"
-msgstr ""
+msgstr "Tu! Magus me igne vexatus! EOS TRUCIDATE!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:206
 msgid "Let’s finish what we started, brother."
-msgstr ""
+msgstr "Finiamus quod incepimus, frater."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:210
 msgid "Aye. I’ll be the right arm, and you’ll be the left. Let’s go!"
-msgstr ""
+msgstr "Aio. Dextra ero, et pars laeva eris. Agedum!"
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:221
-#, fuzzy
 msgid "I am glad to see you returned."
-msgstr "Felix sum te rursus videre."
+msgstr "Gaudeo quod redisti."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:225
 msgid "No gladder than I am to be here. But what has happened to Maghre?"
-msgstr ""
+msgstr "Non magis quam ego vivus. Sed quid Magerhi accidit?"
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:229
@@ -1307,49 +1557,50 @@ msgid ""
 "Soon after you departed we were beset by orcs. With half the men of Maghre "
 "gone, we could not stop them."
 msgstr ""
+"Simulac existis ab orcibus expugnabamus. Dimiduo virum Magerhi cesso, "
+"resistere non potuimus."
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:233
-#, fuzzy
 msgid ""
 "The orcish warlord aims to enslave us. We will not be able to hold out for "
 "much longer."
 msgstr ""
-"Dominus Belli orcorum nos in servitutem redigere vult. Non possumus diu "
-"resistere."
+"Orcs bellipotens nos in servitutem ducere vult. Non poterimus diu resistere."
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:237
-#, fuzzy
 msgid ""
 "Have a care, his men are fell fighters and have killed many. Very few remain "
 "who can bear arms, but I will send them to aid you in battle."
 msgstr ""
-"Cautus estote, multos nostrorum occidit. Pauci sunt qui arma gerere possunt, "
-"sed eos in adiutorio tuo mittam."
+"Praecave, sui feroces et multos occiderunt. Pauci sunt qui arma gerere "
+"possint, sed illos mittam te in pugna adiutum."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:242
-#, fuzzy
 msgid "Slay the Orcish Warlord to free the village"
-msgstr "Dominum Belli orcorum occidere ut pagum liberes"
+msgstr "Orcem Bellipotentem occidere ut pagum liberes"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:262
+#, fuzzy
+#| msgid ""
+#| "It is finished. We’ve defeated him at last. It was good to have you at my "
+#| "side, Bjarn."
 msgid ""
 "It is finished. We’ve defeated him at last. It was good to have you at my "
 "side, Baran."
-msgstr ""
+msgstr "Finitum est. Denique vincimus. Mihi conspectus tuus placebat, Biarne."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:266
-#, fuzzy
 msgid ""
 "So much has been destroyed. It will be difficult to repair all that the orcs "
 "and undead have wrecked. And they could come again."
 msgstr ""
-"Tantum perditur. Difficile erit damna orcorum et inmortuorum reficere. Spero "
-"ut numquam rursum accidat."
+"Tantum perditur. Difficile erit damna orcum et inmortuum purgare. Ac "
+"fortasse redibunt."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:270
@@ -1357,32 +1608,46 @@ msgid ""
 "I must go back to earning my living. But we have our amulets, little "
 "brother. If you are beset again, I will come."
 msgstr ""
+"Redire opertet est. Sed amuleta nostra habemus, Biarnule. Si quis te "
+"pugnaverit, veniam."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:285
 msgid "It is over, I am vanquished."
-msgstr "Finitus est, victus sum."
+msgstr "Finitum est, victus sum."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:310
-#, fuzzy
 msgid "I don’t think we can rescue anyone from these villages. It is too late."
-msgstr "Non puto nos aliquem ex pagis servare posse. Nimis sero est."
+msgstr "Non puto nos aliquem e pagis servare posse. Serum est."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:314
-#, fuzzy
 msgid "I was too weak to protect these people. Oh, why did this happen to me?!"
-msgstr "Nimis debilis eram ut populum defendissem. O cur mihi hoc accidit?!?"
+msgstr "Nimis debilis fui ut populum defendissem. O, cur mihi accidit?!"
 
 #. [scenario]: id=05_Epilogue
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:4
-#, fuzzy
 msgid "A Tale of Two Brothers — Epilogue"
-msgstr "Historia Duorum Fratrum"
+msgstr "Fabula Duorum Fratrum — Epilogus"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:25
+#, fuzzy
+#| msgid ""
+#| "22 IX, 365 YW\n"
+#| "Excerpt from the journal of Arne of Maghre\n"
+#| "\n"
+#| "Maghre is looking much better than the last time I saw it. Bjarn has done "
+#| "wonders in two years. The village is rebuilt, and the surrounding "
+#| "farmlands are restored and reoccupied. Despite my brother’s worries, our "
+#| "people have faced no new threats in that time.\n"
+#| "\n"
+#| "It has been more difficult to stay away in those two years, but I have my "
+#| "calling and Bjarn has his, and we have had little opportunity to meet "
+#| "again. But as the company and I are passing through this part of the "
+#| "kingdom with a new patron, I have asked leave of him to visit my brother "
+#| "and he gave it."
 msgid ""
 "22 IX, 365 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -1397,9 +1662,32 @@ msgid ""
 "But as the company and I are passing through this part of the kingdom with a "
 "new patron, I have asked leave of him to visit my brother and he gave it."
 msgstr ""
+"XX IX, AVC CCCLXV\n"
+"A diario Arnis Magerhis\n"
+"\n"
+"Magerhe valde melior videtur ex quo redivi. Biarnus mira duobus annis fecit. "
+"Pagus iterum aedificatus est, et fundi continentes restituti receptique "
+"sunt. Tamen frater anxius erat, hinc populus noster nullo periculo obviam "
+"ierunt.\n"
+"\n"
+"Magis dificilior erat, ut illos duos annos distem, sed officium est mihi "
+"sibique, et erat nulla facultas rursrum conventum. Sed quod mercennarii "
+"egoque cum patrono novo per hanc partem regni eunt, petivi, venia sua, ut "
+"fratrem videam, et ita dedit.  "
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:34
+#, fuzzy
+#| msgid ""
+#| "22 IX, 365 YW\n"
+#| "Excerpt from the journal of Arne of Maghre\n"
+#| "\n"
+#| "This patron is, of all things, an elf. I never thought I’d befriend one, "
+#| "but he is less arrogant than the rest. Kalenz, he calls himself. He’s "
+#| "seen too much; I can tell that just by meeting his eyes. I think we will "
+#| "have to work for our pay soon.\n"
+#| "\n"
+#| "In the meantime, though, it’s good to relax and enjoy the peace."
 msgid ""
 "22 IX, 365 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -1411,6 +1699,14 @@ msgid ""
 "\n"
 "In the meantime, though, it’s good to relax and enjoy the peace."
 msgstr ""
+"XXII IX, AVC CCCLXV\n"
+"A diario Arnis Magerhis\n"
+"\n"
+"Hic patronus mire dryadales est. Numquam putabam me amicum uni fore, sed "
+"minor superbus ceteris est. Calens, ut se vocat. Nimis vidit; sentio oculos "
+"aspiciendo. Puto nos mox stipendio laborare debere.\n"
+"\n"
+"Saltem bonum est quiescere et pacem uti."
 
 #~ msgid "Arne"
 #~ msgstr "Arnis"
@@ -1418,15 +1714,14 @@ msgstr ""
 #~ msgid "Bjarn"
 #~ msgstr "Biarnus"
 
-#, fuzzy
 #~ msgid "Fargus"
-#~ msgstr "Magnus"
+#~ msgstr "Fargus"
 
 #~ msgid "Erik"
 #~ msgstr "Ericus"
 
 #~ msgid "Heine"
-#~ msgstr "Henricus"
+#~ msgstr "Heinius"
 
 #~ msgid "Magnus"
 #~ msgstr "Magnus"

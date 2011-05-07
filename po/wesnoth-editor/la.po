@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-27 14:22+0200\n"
-"PO-Revision-Date: 2011-02-25 09:48+0100\n"
+"PO-Revision-Date: 2011-04-14 04:31+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin\n"
 "Language: \n"
@@ -29,15 +29,13 @@ msgstr "Hexagonum Solum"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
-#, fuzzy
 msgid "Radius 1 Hex"
-msgstr "Sexangula in spatio uno"
+msgstr "Radius I Hexagoni"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
-#, fuzzy
 msgid "Radius 2 Hex"
-msgstr "Sexangula in spatio duobus"
+msgstr "Radius II Hexagonorum"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
@@ -224,9 +222,8 @@ msgid ""
 msgstr "Visne repudiare omnes commutationes nonservatas?"
 
 #: src/editor/editor_controller.cpp:404
-#, fuzzy
 msgid "Unsaved Changes"
-msgstr "Commutationes nonservatae"
+msgstr "Mutationes non servatae"
 
 #: src/editor/editor_controller.cpp:426
 msgid "Choose a Map to Open"
@@ -283,7 +280,7 @@ msgstr ""
 
 #: src/editor/editor_controller.cpp:711 src/editor/editor_controller.cpp:725
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Charta ab scaenario adepta"
 
 #: src/editor/editor_controller.cpp:721
 msgid ""
@@ -357,17 +354,15 @@ msgstr ""
 
 #: src/editor/map_context.cpp:100
 msgid "Empty map file"
-msgstr ""
+msgstr "Fasciculus inanis chartae"
 
 #: src/editor/map_context.cpp:220
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "|Charta non servare potest: $msg"
+msgstr "Non potis est ad scaenarium servare"
 
 #: src/editor/map_context.cpp:227
-#, fuzzy
 msgid "Could not save the map: $msg"
-msgstr "|Charta non servare potest: $msg"
+msgstr "Non potis est chartam servare: $msg"
 
 #: src/editor/mouse_action.cpp:426
 msgid "(Player)^None"

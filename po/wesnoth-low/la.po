@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-05 10:12+0200\n"
-"PO-Revision-Date: 2011-04-14 01:44+0100\n"
+"PO-Revision-Date: 2011-04-18 17:20+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -192,7 +192,7 @@ msgstr "Pons Septentrionalis"
 #. [event]
 #: data/campaigns/Legend_of_Wesmere/maps/Kalian_map.cfg:42
 msgid "Brightleaf Wood"
-msgstr "Nemus Folicandidus"
+msgstr "Nemus Candifolii"
 
 #. [event]
 #: data/campaigns/Legend_of_Wesmere/maps/Kalian_map.cfg:43
@@ -322,17 +322,12 @@ msgstr "Eradicare"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:55
-#, fuzzy
-#| msgid ""
-#| "The Legend of Wesmere,\n"
-#| "Chapter One\n"
-#| "Flight and fight"
 msgid ""
 "<i>The Legend of Wesmere</i>,\n"
 "Chapter One\n"
 "Flight and fight"
 msgstr ""
-"Heroica Fabella Vesmerei,\n"
+"<i>Heroica Fabella Vesmerei</i>,\n"
 "Liber I\n"
 "Fuga pugnaque"
 
@@ -612,7 +607,7 @@ msgstr "Mors Calentis"
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_Siege.cfg:258
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:290
 msgid "Death of Landar"
-msgstr "Mors Landris"
+msgstr "Mors Landri"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:424
@@ -886,10 +881,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:534
-#, fuzzy
-#| msgid "Kalenz must reach the signpost"
 msgid "Kalenz or Landar must reach the signpost"
-msgstr "Necesse est Calenti signum attingere"
+msgstr "Calens Landerve signum attingere debent"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:539
@@ -930,38 +923,48 @@ msgstr ""
 msgid "Crazy elves!"
 msgstr "Dryadales insanos!"
 
+# esse is the infinitive of "edo", not "sum"
+# adortus is pre-classical
+# anctus is antiquated
 #. [message]: id=Grugl
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:657
 msgid "Urgh! Grugl tried to eat dwarves, but choked on their sharp nasty axes."
 msgstr ""
+"Uh! Grugelius nanos esse adortus est, sed a securibus malis acutis anctus "
+"est."
 
 #. [message]: id=Grugl
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_Mountains.cfg:673
 msgid ""
 "Urgh! Grugl wanted tasty elf-meat, but choked on their nasty pointy spears!"
 msgstr ""
+"Uh! Grugelius carnem dryadalem volebat, sed ab hastis malis acutis anctus "
+"est!"
 
 #. [scenario]: id=03_Kalian_under_Attack
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:38
 msgid "Ka’lian under Attack"
-msgstr ""
+msgstr "Calianis Oppugnatus"
 
+# invideo with the pre-classical evil-eye meaning.
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:80
 msgid ""
 "Events at the Ka’lian took an ominous turn before Kalenz and his band could "
 "arrive there..."
 msgstr ""
+"Eventa Calianem ominibus inviderunt antequam Calens manusque adire "
+"potebant... "
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:183
 msgid "Chief, the cursed tree-shaggers are defeating us!"
-msgstr ""
+msgstr "Princeps, cinaedifolii damnata nos vincunt!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:268
 msgid "We die, but more come after us, Orcs will rule all!"
-msgstr ""
+msgstr "Morimur, at plures postea venient. Orces omnes regent!"
 
 #. [unit]: type=Orcish Slayer, id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:380
@@ -976,12 +979,12 @@ msgstr "Murudin"
 #. [unit]: type=Orcish Warlord, id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:400
 msgid "Mutaf-uru"
-msgstr ""
+msgstr "Mutafus Uru"
 
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:425
 msgid "Good, you are returned. What news is there?"
-msgstr ""
+msgstr "Bene, adisti. Quid novi?"
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:429
@@ -989,47 +992,50 @@ msgid ""
 "The elvish scum refused to surrender, Warlord. We have begun the attack, as "
 "planned."
 msgstr ""
+"Caenum dryadale vetant se deditura esse, Bellipotens. Impetum decretum "
+"adorti sumus. "
 
+# potis est, pre-classical phrase
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:433
 msgid "Were you able to breach their citadel?"
-msgstr ""
+msgstr "Potis eratis arcem expugnavisse?"
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:441
 msgid "Yes. We slaughtered them in great numbers."
-msgstr ""
+msgstr "Potis. Plurimos trucidavimus."
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:450
 msgid "No, our attack was repulsed."
-msgstr ""
+msgstr "Non potis, impetus depulsus est."
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:456
 msgid "They resisted us fiercely; the battle is not yet done."
-msgstr ""
+msgstr "Ferociter restiterunt; proelium non iam finitur."
 
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:472
 msgid "Go, report this news to the warlord Grubr."
-msgstr ""
+msgstr "Agedum, hoc nuntia Grubro bellipotenti."
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:476
 msgid "I obey."
-msgstr ""
+msgstr "Nuntiabo."
 
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:584
 msgid "These elves are weak, mere meat for my wolves! Get them!"
-msgstr ""
+msgstr "Dryadales debiles sunt, modo carno lupis! Sequimini!"
 
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:609
 msgid ""
 "Cursed tree-shaggers and their filthy bows! We shall await the main army."
-msgstr ""
+msgstr "Cinaedifolia damnata arcosque foedos! Exspectabimus primum exercitum."
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:842
@@ -1041,13 +1047,13 @@ msgstr "Omnes duces hostium vincere."
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:934
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:415
 msgid "Death of Galtrid"
-msgstr ""
+msgstr "Mors Galtridii"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:859
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:939
 msgid "Death of El'Isomithir"
-msgstr ""
+msgstr "Mors ElIsomithiris"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:874
@@ -1058,6 +1064,10 @@ msgid ""
 "arrived at their destination, the north wind blew, and the fog lifted to "
 "reveal a grim sight..."
 msgstr ""
+"Calens dies noctesque cum turba sequentibus ibant, iam adientes iam "
+"adiacentes Calianem, et ob nebulam densam et arten ligneam dryadalium, orcum "
+"manus venatores posse evitare. Demum fere attingentibus, Borea flato, nebula "
+"diffluens aspectum horriferum aperuit...  "
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:878
@@ -1727,7 +1737,7 @@ msgstr "Truugl"
 #. [side]: type=Orcish Warlord, id=Grubr
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:331
 msgid "Grubr"
-msgstr ""
+msgstr "Gruber"
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:471
@@ -4869,17 +4879,13 @@ msgstr "arcus"
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:10
-#, fuzzy
-#| msgid "heals Kalenz +4"
 msgid "elates Kalenz"
-msgstr "sanat Calentem +IV"
+msgstr "delectat Calentem"
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:11
-#, fuzzy
-#| msgid "female^heals Kalenz +4"
 msgid "female^elates Kalenz"
-msgstr "sanat Calentem +IV"
+msgstr "delectat Calentem"
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:15

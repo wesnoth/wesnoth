@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-27 14:22+0200\n"
-"PO-Revision-Date: 2011-03-21 19:35+0100\n"
+"PO-Revision-Date: 2011-04-14 04:10+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -33,7 +33,7 @@ msgstr ""
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
 msgid "Wesnoth Tutorial Part I"
-msgstr "Rudimentum Vesnotei II"
+msgstr "Rudimentum Vesnotei I"
 
 #. [side]: type=Fighter, id=student
 #. [command]
@@ -1642,7 +1642,8 @@ msgid ""
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"Post colloquium, tene murem super rure infra chartam dextra ut descriptio "
+"\n"
+"Post colloquium, tene murem super imagine ruris chartam dextra ut descriptio "
 "horae videas."
 
 #. [event]
@@ -1676,7 +1677,6 @@ msgstr "<big>Sequi Actores Otiosos</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1190
-#, fuzzy
 msgid ""
 "\n"
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
@@ -1685,9 +1685,11 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"Potes confirmare te omnes actores quidque vicem uti per 'n' tangitur ut "
-"actorem secundum eligas. Signum spatii designabit actorem finire.\n"
-"Cum 'n' non actorem novum iam eligat vicem finire potes.   "
+"\n"
+"Potes confirmare te omnes actores quidque vicem uti <b>n</b> tangendo ut "
+"actorem secundum eligas. Si <b>signum spatii</b> tangis actores electos "
+"vicem finitos potes notare, quod te prohibet quominus mox forte tangas. Cum "
+"<b>n</b> non actorem novum iam eligat, vicem finire potes.   "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1195
@@ -1813,7 +1815,6 @@ msgstr "<big>Sequi Motus Hostis</big>"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1398
-#, fuzzy
 msgid ""
 "\n"
 "You can see where an enemy can reach by moving the mouse over them. You can "
@@ -1821,9 +1822,9 @@ msgid ""
 "command from the <b>Actions</b> menu."
 msgstr ""
 "\n"
-"Potes quo hostem attingere potest videre per murem super se movetur. Potes "
-"vias possibiles alias aliter cum imperio 'Tactus Hostis Signare' a tabula "
-"'Actiones' videre."
+"Potes quo hostem attingere potest videre murem super se movendo. Potes vias "
+"possibiles alias aliter cum imperio <b>Motus Hostis Ostendere</b> a tabula "
+"<b>Actiones</b> videre."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1402
