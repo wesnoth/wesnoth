@@ -2550,6 +2550,9 @@ stringfixes = {
 ("from the 'skeletons' which often", "from the ‘skeletons’ which often"),
 ("In their masters' hands, these", "In their masters’ hands, these"),
 ("masters' powers. They", "masters’ powers. They"),
+
+("taking a foe's head clean off.", "taking a foe’s head clean off."),
+("poor horses' stamina", "poor horses’ stamina"),
 ),
 
 "wesnoth-utbs" : (
