@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-05 10:12+0200\n"
-"PO-Revision-Date: 2010-11-27 10:04+0700\n"
+"PO-Revision-Date: 2011-05-07 10:11+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
@@ -46,14 +46,13 @@ msgstr "Hoạt hóa bản đồ"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
-#, fuzzy
 msgid "Local time of day light"
-msgstr "Chọn ngẫu nhiên thời điểm trong ngày ban đầu"
+msgstr "Thời gian trong ngày cục bộ"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:48
 msgid "Local time of day light effect (use more memory)."
-msgstr ""
+msgstr "Hiệu ứng thời gian cục bộ (tốn nhiều bộ nhớ hơn)."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:55
@@ -320,9 +319,8 @@ msgstr "Bản dịch tiếng In-đô-nê-xi-a"
 
 #. [about]
 #: data/core/about.cfg:2068
-#, fuzzy
 msgid "Irish Translation"
-msgstr "Bản dịch tiếng Thổ Nhĩ Kỳ"
+msgstr "Bản dịch tiếng Ai-len"
 
 #. [about]
 #: data/core/about.cfg:2075
@@ -371,9 +369,8 @@ msgstr "Bản dịch tiếng Na Uy"
 
 #. [about]
 #: data/core/about.cfg:2288
-#, fuzzy
 msgid "Old English Translation"
-msgstr "Bản dịch tiếng Anh (Vương quốc Anh)"
+msgstr "Bản dịch tiếng Anh Cũ"
 
 #. [about]
 #: data/core/about.cfg:2297
@@ -766,11 +763,11 @@ msgstr ""
 
 #: data/core/macros/items.cfg:267
 msgid "holy water^Take it"
-msgstr ""
+msgstr "Giữ lấy"
 
 #: data/core/macros/items.cfg:268
 msgid "holy water^Leave it"
-msgstr ""
+msgstr "Bỏ lại"
 
 #: data/core/macros/items.cfg:269
 msgid "I am not suited to the use of this item! Let another take it."
@@ -855,14 +852,12 @@ msgid "Should $unit.name pick up the trident?"
 msgstr "$unit.name có nên lấy cây đinh ba không?"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
 msgid "storm trident^Leave it"
-msgstr "đinh ba giông bão"
+msgstr "Bỏ lại"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
 msgid "storm trident^Take it"
-msgstr "đinh ba giông bão"
+msgstr "Giữ lấy"
 
 #. [object]
 #: data/core/macros/items.cfg:515
@@ -1528,6 +1523,80 @@ msgid ""
 "Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
 "Ziyad,Zubayr,Zuhayr"
 msgstr ""
+"Aban,Abbas,Abbud,Abdul-'Adl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+"Abdul-Aziz,Abdul-Badi,Abdul-Ba'ith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
+"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
+"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
+"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
+"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdi',"
+"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Mu'id,Abdul-Mu'izz,"
+"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
+"Muta'al,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
+"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
+"Rahman,Abdul-Rashid,Abdul-Ra'uf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
+"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
+"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,'Abid,'Abidin,Abu Bakr,Aby al-Khayr,"
+"Adil,Adham,Adib,'Adli,'Adnan,'Afif,Ahmad,'Ajib,'Akif,Akil,Akram,Ala',Ala' al-"
+"Din,Al' Abbas,Aladdin,Al-Bara,Al-Hakam,Al-Harith,Alhasan,Alhusain,Ali,Alim,"
+"Almahdi,Al-Safi,Altaf,Altair,Al-Tayyib,Al-Tijani,Al-Tufail,Amid,'Amid,Amin,"
+"Amir,'Amir,Amjad,'Ammar,'Amro,Anas,Anis,'Antarah,Anwar,'Aqil,Arfan,"
+"Arif,'Arif,Asad,As'ad,Asadel,Ashraf,Asif,'Asim,Aswad,Ata',Ata' Allah,Ata' al-"
+"Rahman,Athil,Athir,'Atif,'Awad,'Awf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,"
+"Aza,'Azab,Azhar,Azim,'Aziz,'Azzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
+"Baha',Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
+"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
+"Bushr,Butrus,Dabir,Dani,Darwish,Da'ud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
+"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
+"Fa'iz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
+"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
+"Fida,Fikri,Firas,Fu'ad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
+"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
+"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hana'i,Hanbal,Hani,Hanif,"
+"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
+"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
+"Din,Ibrahim,'Id,Idris,Ihsan,Ihtisham,'Ikrimah,Ilias,'Imad,Imad al-Din,Imran,"
+"Imtiyaz,In'am,Iqbal,'Irfan,'Isa,'Isam,Ishaq,Isma'il,Iyad,Iyas,Izz al-Din,"
+"Jabbar,Jabr,Jabir,Jad Allah,Ja'far,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
+"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
+"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
+"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
+"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
+"Kutaiba,Labib,Lablab,Latif,Layth,Lu'ayLubayd,Luqman,Lut,Lutfi,Ma'd,Madani,"
+"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
+"Majid,Makin,Malik,Mamduh,Ma'mun,Ma'in,Mandhur,Mansur,Marghub,Marid,Ma'ruf,"
+"Marwan,Marzuq,Mash'al,Mashhur,Masrur,Mas'ud,Masun,Maysarah,Mazhar,Mazin,"
+"Mehmed,Mihran,Mihyar,Mika'il,Miqdad,Misbah,Mish'al,Miyaz,Mu'adh,Mu'awiyah,"
+"Mu'ayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
+"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Mu'in,Mu'izz,Mujab,"
+"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Mu'mmar,Mu'min,Mumtaz,Munahid,"
+"Mundhir,Munib,Munif,Munir,Mu'nis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
+"Murtada,Musa,Mus'ab,Musa'id,Mushtaq,Muslih,Muslim,Mutafa,Muta',Mu'tasim,"
+"Mutawalli,Mu'tazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
+"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafi',Nahid,Na'il,Na'im,Naji,Najib,"
+"Najid,Najjar,Najm al-Din,Na'aman,Namir,Nash'ah,Nash'at,Nashwan,Nasib,Nasih,"
+"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
+"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nu'aym,Nuh,Nuhayd,Numair,Nu'man,Nur al-"
+"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
+"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Ra'id,"
+"Ra'if,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
+"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Ra'uf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
+"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Sa'adah,Sab,Sabih,Sabir,Sabri,"
+"Sa'd,Sa'd al-Din,Sadad,Sadid,Sadiq,Sa'dun,Sa'id,Safi,Safiy,Safiy al-Din,"
+"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Sa'ib,Saif,Saif al-Din,Sajid,"
+"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
+"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Sha'ban,Shadi,Shadin,Shafi,Shafiq,"
+"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
+"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shu'ayb,Shukri,Shumayl,Siddiq,"
+"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
+"Sumrah,Suraqah,Su'ud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
+"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
+"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,'Ubaidah,Ubaid,"
+"Ubayy,'Udayl,'Uday,'Umar,Umarah,Umair,'Urwah,Usaym,Usama,'Utbah,Uthal,Uthman,"
+"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Wa'il,Wajdi,Wajid,Wajih,Wakil,"
+"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
+"Wazir,Yahya,Yaman,Ya'qub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
+"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
+"Ziyad,Zubayr,Zuhayr"
 
 #: data/core/macros/names.cfg:47
 msgid ""
@@ -1751,9 +1820,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
-#, fuzzy
 msgid "Turns run out"
-msgstr "Số lượt: "
+msgstr "Hết lượt"
 
 #: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:101
 msgid "Early finish bonus."
@@ -1768,9 +1836,8 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(thưởng kết thúc sớm)</small>"
 
 #: data/core/macros/objective-utils.cfg:25
-#, fuzzy
 msgid "(early finish bonus)"
-msgstr "Thưởng kết thúc sớm."
+msgstr "(thưởng kết thúc sớm)"
 
 #: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:111
 msgid "No gold carried over to the next scenario."
@@ -1805,9 +1872,8 @@ msgid "Alternative objective:"
 msgstr "Mục tiêu thay thế:"
 
 #: data/core/macros/objective-utils.cfg:52
-#, fuzzy
 msgid "Bonus objective:"
-msgstr "Mục tiêu thay thế:"
+msgstr "Mục tiêu thưởng thêm:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -2112,14 +2178,13 @@ msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
-#, fuzzy
 msgid ""
 "Don’t neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be too weak to survive future battles."
 msgstr ""
 "Đừng sao lãng việc giành điểm kinh nghiệm cho người chỉ huy của bạn! Bạn cần "
-"giữ anh ta an toàn, nhưng nếu bạn nâng niu quá mức, anh ta sẽ quá yếu để có "
-"thể sống sót trong những trận chiến trong tương lai."
+"giữ anh ta an toàn, nhưng nếu bạn nâng niu quá mức, người chỉ huy sẽ quá yếu "
+"để có thể sống sót trong những trận chiến trong tương lai."
 
 #. [tip]
 #: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:137
@@ -2279,9 +2344,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:41
-#, fuzzy
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "- Cộng đồng Wesnoth"
+msgstr "<i>― Cộng đồng Wesnoth</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
@@ -2825,7 +2889,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:217 data/hardwired/tips.cfg:229
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
+msgstr "<i>― Chủ tướng Hamel của Knalga</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:220
@@ -2887,14 +2951,12 @@ msgid "petrified"
 msgstr "bị hóa đá"
 
 #: data/lua/wml-tags.lua:717
-#, fuzzy
 msgid "female^unhealable"
-msgstr "ma quái"
+msgstr "không thể hồi máu"
 
 #: data/lua/wml-tags.lua:717
-#, fuzzy
 msgid "unhealable"
-msgstr "Không thể đi bộ qua"
+msgstr "Không thể hồi máu"
 
 #: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1609
 msgid "Victory:"
@@ -2910,7 +2972,7 @@ msgstr ""
 
 #: data/lua/wml/objectives.lua:53
 msgid "Notes:"
-msgstr ""
+msgstr "Lưu ý:"
 
 #: data/lua/wml/objectives.lua:69
 msgid "(%d turns left)"
@@ -2943,7 +3005,7 @@ msgstr "Hủy bỏ"
 #. [language]
 #: data/scenario-test.cfg:3048
 msgid "very long"
-msgstr ""
+msgstr "rất dài"
 
 #. [language]
 #: data/scenario-test.cfg:3049
@@ -3141,22 +3203,22 @@ msgstr "Dịch chuyển tức thời thất bại! Lối ra không trống"
 #: src/actions.cpp:2557
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "Dịch chuyển tức thời thất bại! Lối ra không trống"
+msgstr[0] "Nhìn thất $friends đơn vị bạn"
 
 #: src/actions.cpp:2560
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
-msgstr[0] "Dịch chuyển tức thời thất bại! Lối ra không trống"
+msgstr[0] "Nhìn thất $friends đơn vị kẻ địch"
 
 #: src/actions.cpp:2565
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] "Dịch chuyển tức thời thất bại! Lối ra không trống"
+msgstr[0] ""
 
 #: src/actions.cpp:2566
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] "Dịch chuyển tức thời thất bại! Lối ra không trống"
+msgstr[0] ""
 
 #: src/actions.cpp:2567
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -3293,9 +3355,8 @@ msgid "Type"
 msgstr "Kiểu"
 
 #: src/addon/manager.cpp:800
-#, fuzzy
 msgid "Install dependencies"
-msgstr "Phụ thuộc"
+msgstr "Cài đặt phần phụ thuộc"
 
 #: src/addon/manager.cpp:801
 msgid ""
@@ -3355,7 +3416,6 @@ msgid "Old version"
 msgstr "Phiên bản cũ"
 
 #: src/addon/manager.cpp:988
-#, fuzzy
 msgid "Update add-ons"
 msgstr "Cập nhật phần bổ sung"
 
@@ -3436,13 +3496,12 @@ msgid "Choose the add-on to download."
 msgstr "Chọn phần bổ sung cần tải về."
 
 #: src/addon/manager.cpp:1273
-#, fuzzy
 msgid "Download"
-msgstr "Số lượt tải về"
+msgstr "Tải về"
 
 #: src/addon/manager.cpp:1274
 msgid "Done"
-msgstr ""
+msgstr "Xong"
 
 #: src/addon/manager.cpp:1286 src/dialogs.cpp:616 src/menu_events.cpp:930
 #: src/menu_events.cpp:1550
@@ -3482,9 +3541,8 @@ msgid "Uninstall add-ons"
 msgstr "Gỡ bỏ phần bổ sung"
 
 #: src/addon/manager.cpp:1373
-#, fuzzy
 msgid "Remove"
-msgstr "di chuyển"
+msgstr "Gỡ bỏ"
 
 #: src/addon/manager.cpp:1380
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -3698,9 +3756,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Lỗi vào/ra tập tin khi đọc trò chơi"
 
 #: src/game.cpp:974
-#, fuzzy
 msgid "File I/O Error while reading the game: '"
-msgstr "Lỗi vào/ra tập tin khi đọc trò chơi"
+msgstr "Lỗi vào/ra tập tin khi đọc trò chơi: '"
 
 #: src/game.cpp:1072
 msgid "No campaigns are available.\n"
@@ -3741,7 +3798,7 @@ msgstr "Không thể tải bản đồ trò chơi: "
 #: src/game.cpp:1536
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "Không thể tải bản đồ trò chơi: "
+msgstr[0] "Không thể tải phần bổ sung: "
 
 #: src/game.cpp:1543
 msgid "ERROR DETAILS:"
@@ -3894,44 +3951,36 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:222
-#, fuzzy
 msgid "Initializing user interface"
-msgstr "Đang khởi tạo các đội"
+msgstr "Đang khởi tạo giao diện người dùng"
 
 #: src/loadscreen.cpp:223
-#, fuzzy
 msgid "Loading game configuration"
-msgstr "Đang tải cấu hình trò chơi."
+msgstr "Đang tải cấu hình trò chơi"
 
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Đang kiểm tra bộ nhớ đệm..."
+msgstr "Đang kiểm tra bộ nhớ đệm"
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
-#, fuzzy
 msgid "Reading files and creating cache"
-msgstr "Đang đọc các tập tin và tạo bộ nhớ đệm..."
+msgstr "Đang đọc các tập tin và tạo bộ nhớ đệm"
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
-#, fuzzy
 msgid "Reading unit files"
-msgstr "Đang đọc các tập tin đơn vị..."
+msgstr "Đang đọc các tập tin đơn vị"
 
 #: src/loadscreen.cpp:227
-#, fuzzy
 msgid "Reinitialize fonts for the current language"
-msgstr "Đang khởi tạo lại phông cho ngôn ngữ hiện thời."
+msgstr "Đang khởi tạo lại phông cho ngôn ngữ hiện thời"
 
 #: src/loadscreen.cpp:228
-#, fuzzy
 msgid "Searching for installed add-ons"
-msgstr "Đang tìm kiếm các phần bổ sung đã cài đặt."
+msgstr "Đang tìm kiếm các phần bổ sung đã cài đặt"
 
 #: src/loadscreen.cpp:229
-#, fuzzy
 msgid "Loading title screen"
-msgstr "Đang tải màn hình tiêu đề."
+msgstr "Đang tải màn hình tiêu đề"
 
 #: src/loadscreen.cpp:230
 msgid "Loading data files"
@@ -4142,11 +4191,11 @@ msgstr "Tin nhắn:"
 
 #: src/menu_events.cpp:642
 msgid "Send to allies only"
-msgstr "Chỉ gửi cho đồng minh"
+msgstr "Chỉ cho đồng minh thấy"
 
 #: src/menu_events.cpp:642
 msgid "Send to observers only"
-msgstr "Chỉ gửi cho người quan sát"
+msgstr "Chỉ cho người quan sát thấy"
 
 #: src/menu_events.cpp:707
 msgid "unit^Gold"
@@ -4199,9 +4248,8 @@ msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Giải tán đơn vị"
 
 #: src/menu_events.cpp:1353
-#, fuzzy
 msgid "You cannot end your turn yet!"
-msgstr "tạm dừng ở cuối lượt"
+msgstr "Bạn chưa thể kết thúc lượt!"
 
 #: src/menu_events.cpp:1377
 msgid ""
@@ -4210,12 +4258,11 @@ msgstr ""
 "Bạn còn chưa bắt đầu lượt của bạn. Bạn có thực sự muốn kết thúc lượt không?"
 
 #: src/menu_events.cpp:1385
-#, fuzzy
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
 msgstr ""
-"Một số đơn vị vẫn còn có thể di chuyển. Bạn có thực sự muốn kết thúc lượt "
-"không?"
+"Một số đơn vị vẫn còn hành động đã được lên kế hoạch. Bạn có thực sự muốn "
+"kết thúc lượt không?"
 
 #: src/menu_events.cpp:1393 src/menu_events.cpp:1398
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -4571,7 +4618,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2547
 msgid "[turn]"
-msgstr ""
+msgstr "[lượt]"
 
 #: src/menu_events.cpp:2549
 msgid ""
@@ -4581,7 +4628,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2549
 msgid "[limit]"
-msgstr ""
+msgstr "[giới hạn]"
 
 #: src/menu_events.cpp:2551
 msgid "Turn debug mode on."
@@ -4652,9 +4699,8 @@ msgid "Discover all units in help."
 msgstr "Khám phá tất cả các đơn vị trong trợ giúp."
 
 #: src/menu_events.cpp:2585
-#, fuzzy
 msgid "'Undiscover' all units in help."
-msgstr "Khám phá tất cả các đơn vị trong trợ giúp."
+msgstr "'Khám phá' tất cả các đơn vị trong phần trợ giúp."
 
 #: src/menu_events.cpp:2587
 msgid "Create a unit."
@@ -4686,7 +4732,7 @@ msgstr "Bật tắt phủ mã địa hình trên các ô lục giác."
 
 #: src/menu_events.cpp:2604
 msgid "Toggle planning mode."
-msgstr ""
+msgstr "Bật chế độ lên kế hoạch"
 
 #: src/menu_events.cpp:2647
 msgid "Unknown debug level: '$level'."
@@ -4799,9 +4845,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Không thể thay đổi quyền điều khiển của phe ngoài phạm vi: '$side'."
 
 #: src/menu_events.cpp:3250
-#, fuzzy
 msgid "Layers"
-msgstr "người chơi : "
+msgstr "Lớp: "
 
 #: src/menu_events.cpp:3323
 msgid "Choose Scenario (Debug!)"
@@ -4863,14 +4908,12 @@ msgid "Invalid location"
 msgstr " Vị trí không hợp lệ"
 
 #: src/menu_events.cpp:3593
-#, fuzzy
 msgid "Planning mode activated!"
-msgstr "Đã kích hoạt chế độ gỡ lỗi!"
+msgstr "Đã kích hoạt chế độ lên kế hoạch!"
 
 #: src/menu_events.cpp:3596
-#, fuzzy
 msgid "Planning mode deactivated!"
-msgstr "Đã ngừng kích hoạt chế độ gỡ lỗi!"
+msgstr "Đã ngừng kích hoạt chế độ lên kế hoạch!"
 
 #: src/menu_events.cpp:3604
 msgid "ai"
@@ -5059,9 +5102,8 @@ msgid "I’m Ready"
 msgstr "Tôi đã sẵn sàng"
 
 #: src/multiplayer_connect.cpp:982
-#, fuzzy
 msgid "Add named local player"
-msgstr "người chơi  cục bộ ẩn danh"
+msgstr "Thêm người chơi cục bộ"
 
 #: src/multiplayer_connect.cpp:992
 msgid "The scenario is invalid because it has no id."
@@ -5104,9 +5146,8 @@ msgid "Waiting for players to join..."
 msgstr "Đang chờ các người chơi  tham gia..."
 
 #: src/multiplayer_connect.cpp:1717
-#, fuzzy
 msgid "Waiting for players to choose factions..."
-msgstr "Đang chờ các người chơi  tham gia..."
+msgstr "Đang chờ các người chơi chọn phe..."
 
 #: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:731
 msgid "Create Game"
@@ -5453,9 +5494,8 @@ msgstr "Không thể gửi lệnh giao tiếp ban đầu"
 
 #: src/network_manager_ana.cpp:650 src/network_manager_ana.cpp:667
 #: src/network_manager_ana.cpp:689
-#, fuzzy
 msgid "Could not connect to host"
-msgstr "Không thể kết nối đến máy chủ."
+msgstr "Không thể kết nối đến máy chủ"
 
 #: src/pathfind/pathfind.cpp:473
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -5485,9 +5525,8 @@ msgid ""
 msgstr ""
 
 #: src/play_controller.cpp:1319 src/replay_controller.cpp:305
-#, fuzzy
 msgid "Error details:"
-msgstr "Lỗi: "
+msgstr "Chi tiết lỗi: "
 
 #: src/playcampaign.cpp:137 src/playcampaign.cpp:176
 msgid "Defeat"
@@ -5669,33 +5708,28 @@ msgstr ""
 "Bạn có muốn lưu trò chơi không?"
 
 #: src/reports.cpp:145
-#, fuzzy
 msgid "Type: "
-msgstr "Kiểu"
+msgstr "Kiểu:"
 
 #: src/reports.cpp:156
 msgid "Race: "
 msgstr "Chủng tộc: "
 
 #: src/reports.cpp:180
-#, fuzzy
 msgid "Level: "
-msgstr "Trình độ"
+msgstr "Cấp độ:"
 
 #: src/reports.cpp:183
-#, fuzzy
 msgid "No advancement"
-msgstr "Nâng cấp"
+msgstr "Không nâng cấp"
 
 #: src/reports.cpp:185
-#, fuzzy
 msgid "Advances to:"
 msgstr "Nâng cấp thành: "
 
 #: src/reports.cpp:215
-#, fuzzy
 msgid "Trait: "
-msgstr "Đặc điểm"
+msgstr "Đặc điểm:"
 
 #: src/reports.cpp:229
 msgid "invisible: "
@@ -5751,7 +5785,6 @@ msgid "Alignment: "
 msgstr "Phân loại: "
 
 #: src/reports.cpp:275
-#, fuzzy
 msgid "Ability: "
 msgstr "Khả năng: "
 
@@ -5764,96 +5797,80 @@ msgid "(Att / Def)"
 msgstr "(TC / PT)"
 
 #: src/reports.cpp:363
-#, fuzzy
 msgid "Terrain: "
-msgstr "Địa hình"
+msgstr "Địa hình:"
 
 #: src/reports.cpp:381
 msgid "maximum^max."
-msgstr ""
+msgstr "tối đa."
 
 #: src/reports.cpp:381
 msgid "minimum^min."
-msgstr ""
+msgstr "tối thiểu."
 
 #: src/reports.cpp:386
-#, fuzzy
 msgid "Defense: "
-msgstr "Phòng thủ"
+msgstr "Phòng thủ:"
 
 #: src/reports.cpp:455
-#, fuzzy
 msgid "Weapon: "
-msgstr "phạm vi vũ khí: "
+msgstr "Vũ khí:"
 
 #: src/reports.cpp:456
-#, fuzzy
 msgid "Damage: "
-msgstr "Thiệt hại"
+msgstr "Thiệt hại:"
 
 #: src/reports.cpp:460
-#, fuzzy
 msgid "Base damage: "
-msgstr "Tổng thiệt hại"
+msgstr "Thiệt hại ban đầu:"
 
 #: src/reports.cpp:462
-#, fuzzy
 msgid "Time of day: "
-msgstr "Thời điểm trong ngày"
+msgstr "Thời điểm trong ngày:"
 
 #: src/reports.cpp:466
-#, fuzzy
 msgid "Leadership: "
-msgstr "Lãnh đạo"
+msgstr "Lãnh đạo:"
 
 #: src/reports.cpp:470
-#, fuzzy
 msgid "Slowed: "
-msgstr "bị chậm: "
+msgstr "Bị chậm: "
 
 #: src/reports.cpp:474
-#, fuzzy
 msgid "Attacks: "
-msgstr "Người tấn công"
+msgstr "Tấn công:"
 
 #: src/reports.cpp:476
 msgid "Base attacks: "
-msgstr ""
+msgstr "Đòn tấn công ban đầu:"
 
 #: src/reports.cpp:478
-#, fuzzy
 msgid "Swarm: "
-msgstr "liên hoàn"
+msgstr "Liên hoàn:"
 
 #: src/reports.cpp:490
-#, fuzzy
 msgid "Weapon range: "
-msgstr "phạm vi vũ khí: "
+msgstr "Tầm xa của vũ khí: "
 
 #: src/reports.cpp:491
-#, fuzzy
 msgid "Damage type: "
-msgstr "kiểu thiệt hại: "
+msgstr "Kiểu thiệt hại: "
 
 #: src/reports.cpp:492
-#, fuzzy
 msgid "Damage versus: "
-msgstr "kiểu thiệt hại: "
+msgstr "Thiệt hại chống lạ:"
 
 #: src/reports.cpp:536
-#, fuzzy
 msgid "Accuracy:"
-msgstr "% chính xác"
+msgstr "Độ chính xác:"
 
 #: src/reports.cpp:541
-#, fuzzy
 msgid "Parry:"
-msgstr "% tránh né"
+msgstr "Đỡ đòn:"
 
 #: src/reports.cpp:558
-#, fuzzy
 msgid "Weapon special: "
-msgstr "Tính đặc biệt của vũ khí"
+msgstr "Tính đặc biệt của vũ khí:"
 
 #: src/reports.cpp:599
 msgid "Lawful units: "
@@ -5868,9 +5885,8 @@ msgid "Chaotic units: "
 msgstr "Đơn vị hỗn độn: "
 
 #: src/reports.cpp:603
-#, fuzzy
 msgid "Liminal units: "
-msgstr "Đơn vị chính thống: "
+msgstr "Đơn vị trung gian: "
 
 #: src/reports.cpp:801
 msgid "Observers:"
@@ -6129,7 +6145,7 @@ msgstr "chính thống"
 
 #: src/unit_types.cpp:968
 msgid "liminal"
-msgstr ""
+msgstr "trung gian"
 
 #: src/unit_types.cpp:968
 msgid "neutral"
@@ -6144,9 +6160,8 @@ msgid "female^lawful"
 msgstr "chính thống"
 
 #: src/unit_types.cpp:969
-#, fuzzy
 msgid "female^liminal"
-msgstr "trung thành"
+msgstr "trung gian"
 
 #: src/unit_types.cpp:969
 msgid "female^neutral"
