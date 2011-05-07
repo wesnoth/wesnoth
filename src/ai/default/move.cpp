@@ -515,10 +515,8 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 			location best_loc;
 			int best_defense = 0;
 			double best_vulnerability = 0.0;
-			int best_distance = 0;
 
 			for(std::vector<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
-				const int distance = distance_between(*i,best_target->loc);
 				const int defense = best->second.defense_modifier(map_.get_terrain(*i));
 				//FIXME: suokko multiplied by 10 * get_caution(). ?
 				const double vulnerability = power_projection(*i,enemy_dstsrc);
@@ -527,7 +525,6 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 					best_loc = *i;
 					best_defense = defense;
 					best_vulnerability = vulnerability;
-					best_distance = distance;
 				}
 			}
 
