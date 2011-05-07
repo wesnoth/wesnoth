@@ -352,6 +352,7 @@ bool ai_default::desperate_attack(const map_location &loc)
 
 	double best_kill_prob = 0.0;
 	unsigned int best_weapon = 0;
+	int best_def_weapon = -1;
 	unsigned best_dir = 0;
 
 	for (unsigned n = 0; n != 6; ++n)
@@ -373,6 +374,7 @@ bool ai_default::desperate_attack(const map_location &loc)
 				continue;
 			best_kill_prob = def.hp_dist[0];
 			best_weapon = i;
+			best_def_weapon = bc.get_defender_stats().attack_num;
 			best_dir = n;
 		}
 	}
