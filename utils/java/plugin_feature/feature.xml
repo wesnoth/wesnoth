@@ -2,8 +2,9 @@
 <feature
       id="Wesnoth_Eclipse_Plugin"
       label="Wesnoth User Made Content Plugin"
-      version="1.0.3.dev"
-      provider-name="www.wesnoth.org">
+      version="1.0.3"
+      provider-name="www.wesnoth.org"
+      os="linux,macosx,win32">
 
    <description>
       This is the Wesnoth Eclipse UMC Plugin developed as part of Google Summer of Code 2010.
@@ -251,20 +252,20 @@ litigation.
          id="org.wesnoth.wml"
          download-size="0"
          install-size="0"
-         version="1.0.3.dev"
+         version="1.0.3"
          unpack="false"/>
 
    <plugin
          id="org.wesnoth.wml.ui"
          download-size="0"
          install-size="0"
-         version="1.0.3.dev"
+         version="1.0.3"
          unpack="false"/>
 
    <plugin
          id="org.wesnoth"
          download-size="0"
          install-size="0"
-         version="1.0.3.dev"/>
+         version="1.0.3"/>
 
 </feature>
