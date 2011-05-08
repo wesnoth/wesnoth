@@ -523,13 +523,15 @@ namespace game_events {
 		const vconfig &ssf = cfg.child("filter_side");
 
 		if (!ssf.null()) {
-			side_filter filter(ssf,sides.str());
+			if(!sides.empty()) { WRN_NG << "ignoring duplicate side filter information (inline side=)\n"; } 
+			side_filter filter(ssf);
 			return filter.get_teams();
 		}
 
 		if (sides.blank()) {
-
-			put_wml_message("error","empty side= and no [filter_side] is deprecated");
+			//To deprecate the current default (side=1), require one of the currently two ways
+			//of specifying a side - putting inline side= or [filter_side].
+			put_wml_message("error", "empty side= and no [filter_side] is deprecated");
 			std::set<int> result;
 			result.insert(1); // we make sure the set is not empty and the current default is maintained
 			return result;
