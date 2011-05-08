@@ -1,8 +1,8 @@
 # Translation of wesnoth.po into Serbian.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010.
-# Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010, 2011.
+# Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010, 2011.
 #
 # Branko Kokanovic, 2006.
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-03 14:27+0200\n"
-"PO-Revision-Date: 2010-08-13 20:51+0200\n"
+"PO-Revision-Date: 2011-04-17 21:57+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "Language: sr\n"
@@ -71,7 +71,7 @@ msgstr "Prikaz borbe"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr "Prekovreme pinga"
+msgstr "Prekovrijeme pinga"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
@@ -105,7 +105,7 @@ msgstr "Zvukovi hola"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Disable notifications"
-msgstr "Bez obaveštenja"
+msgstr "Bez obavještenja"
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
@@ -221,8 +221,8 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Lečenje +4:\n"
-"Omogućava jedinici da liječi susedne savezničke jedinice na početku svakog "
+"Liječenje +4:\n"
+"Omogućava jedinici da liječi susjedne savezničke jedinice na početku svakog "
 "poteza.\n"
 "\n"
 "Jedinica pod uticajem ovog vidara može povratiti do 4 UP po potezu, ili ne "
@@ -255,7 +255,7 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Lečenje +8:\n"
+"Liječenje +8:\n"
 "Ova jedinica objedinjuje ljekovite trave i magiju kako bi liječila brže nego "
 "što je to uobičajeno na bojnom polju.\n"
 "\n"
@@ -1024,7 +1024,7 @@ msgstr ""
 "da pokrenete da je izaberete, a zatim na polje gdje želite da se pomjeri. "
 "Kada je jedinica izabrana, sva polja koje može doseći u ovom potezu bivaju "
 "istaknuta, a sva ostala polja zatamnjena. Prelaz mišem preko istaknutog "
-"polja daje odbrambeni razred koji će jedinica imati ako se pomeri na nj. "
+"polja daje odbrambeni razred koji će jedinica imati ako se pomjeri na nj. "
 "Prelaz mišem preko zatamnjenog polja će dodatno prikazati broj poteza "
 "neophodan da ga jedinica dosegne, a klikom ćete poslati jedinicu tamo "
 "najbržim putem u toku ovog i narednih poteza. Ako ne istrošite svu "
@@ -1077,7 +1077,7 @@ msgstr ""
 "U toku pomijeranja takođe morate imati na umu „nadzorne pojaseve“. Svaka "
 "jedinica stvara nadzorni pojas u poljima koja je neposredno okružuju, i "
 "neprijateljska jedinica koja kroči u pojas odmah okončava svoje kretanje. "
-"Naučiti kako koristiti nadzorne pojaseve za sopstvenu dobit, važan je deo "
+"Naučiti kako koristiti nadzorne pojaseve za sopstvenu dobit, važan je dio "
 "taktike Vesnota — samo malobrojni <ref>dst='ability_skirmisher' "
 "text='čarkaši'</ref> mogu ignorisati nadzorne pojaseve."
 
@@ -1354,7 +1354,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Na primer, skeleti su vrlo otporni na oštećenja sječivom i probojem, ali "
+"Na primjer, skeleti su vrlo otporni na oštećenja sječivom i probojem, ali "
 "ranjivi na udar i vatru, i izuzetno ranjivi na volšebnu štetu."
 
 #. [topic]: id=damage_types_and_resistance
@@ -1384,7 +1384,7 @@ msgid ""
 " Chaotic units get +25% damage at night, and -25% in daytime.\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
-"Doba dana utiče na štetu koju jedinice nanose, na sledeći način:\n"
+"Doba dana utiče na štetu koju jedinice nanose, na sljedeći način:\n"
 "- zakonite jedinice čine +25% štete tokom dana, a -25% tokom noći,\n"
 "- haotične jedinice čine +25% štete tokom noći, a -25% tokom dana,\n"
 "- neutralne jedinice nisu pod uticajem doba dana."
@@ -1591,7 +1591,7 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"Isceliteljske jedinice: Jedinice sa sposobnošću <ref>dst='ability_cures' "
+"Iscjeliteljske jedinice: Jedinice sa sposobnošću <ref>dst='ability_cures' "
 "text='iscjelivanja'</ref> oslobađaće otrova sve susjedne prijateljske "
 "jedinice (kao prioritetno nad liječenjem, ako jedinica ima i tu sposobnost)."
 
@@ -1878,8 +1878,8 @@ msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
-"Kršne jedinice čine 1 poen štete više za svaki uspešan udar u bliskoj borbi, "
-"i imaju 1 UP više."
+"Kršne jedinice čine 1 poen štete više za svaki uspješan udar u bliskoj "
+"borbi, i imaju 1 UP više."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:396
@@ -2284,9 +2284,9 @@ msgid ""
 "all generally enjoy 60%."
 msgstr ""
 "Močvaru čine sve vrste kliznog zemljišta. Močvare usporavaju skoro svakog, a "
-"i smetaju odbrani. Izuzetak tome su rase vešte u kretanju vodom, koje imaju "
+"i smetaju odbrani. Izuzetak tome su rase vješte u kretanju vodom, koje imaju "
 "i punu pokretljivost i zaštitu. Oni koji prebivaju u ovakvim krajevima, "
-"takođe su umešni u korišćenju močvarnog terena za skrivanje.\n"
+"takođe su umješni u korišćenju močvarnog terena za skrivanje.\n"
 "\n"
 "Većina jedinica mora se pomiriti sa 30% zaštite u močvarama. Nasuprot njima, "
 "morejci, nagajci i saurijanci uživaju čak 60%."
@@ -2332,7 +2332,7 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
-"Duboka voda predstavlja sve pojaseve dovoljno duboke da pređu čoveku preko "
+"Duboka voda predstavlja sve pojaseve dovoljno duboke da pređu čovjeku preko "
 "glave. Većina jedinica ne može ući u duboku vodu; ona je pogodna onima koji "
 "ili lete, ili su odlični plivači.\n"
 "\n"
@@ -2390,7 +2390,7 @@ msgstr ""
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:601
 msgid "Sand"
-msgstr "pesak"
+msgstr "pijesak"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:606
@@ -2550,7 +2550,7 @@ msgstr ""
 "jedinice, čak i konjica, nemaju problema u kretanju kroz sela, a većina ih "
 "dobija i prednost u odbrani dok su u selu. Jedinice se u selu mogu "
 "okrijepiti i izvidati povrede, usljed čega svaka jedinica dobija 8 UP po "
-"potezu dok se nalazi u selu; takođe, biva isijeceljena ukoliko je otrovana.\n"
+"potezu dok se nalazi u selu; takođe, biva iscijeljena ukoliko je otrovana.\n"
 "\n"
 "Većina jedinica dobija 50 do 60% zaštite u selima, a konjica samo 40%.\n"
 "\n"
@@ -2586,7 +2586,7 @@ msgstr ""
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:697
 msgid "Unwalkable"
-msgstr "rascep"
+msgstr "rascjep"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:700
@@ -2760,8 +2760,8 @@ msgstr ""
 "\n"
 "zadaje ili prebacuje stranu igrača između čoveka i VI. Igrač/klijent koji "
 "upravlja tom stranom mora da izda ovu naredbu. Ako se drugi parametar ne "
-"zada, obrće između čoveka i VI; ako je ‘on’, upravljač postaje VI, a uz "
-"‘off’ čovek. Spada na trenutno aktivnu stranu ako se ne zada ni jedan "
+"zada, obrće između čovjeka i VI; ako je ‘on’, upravljač postaje VI, a uz "
+"‘off’ čovjek. Spada na trenutno aktivnu stranu ako se ne zada ni jedan "
 "parametar.\n"
 "\n"
 
@@ -2891,7 +2891,7 @@ msgstr ""
 "\n"
 "izbacuje igrača iz igre. Izbačeni će moći da se ponovo priključe. Ako samo "
 "želite da izmijenite kojom stranom igrač upravlja, upotrijebite naredbu :"
-"control umesto ove.\n"
+"control umjesto ove.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3201,7 +3201,7 @@ msgstr ""
 "Jedinica osvjetljava okolno područje, što čini da se zakonite jedinice bore "
 "uspješnije, a haotične lošije.\n"
 "\n"
-"Sve jedinice susedne ovoj boriće se u toku noći kao da je sumrak, a u "
+"Sve jedinice susjedne ovoj boriće se u toku noći kao da je sumrak, a u "
 "vrijeme sumraka kao da je dan."
 
 #. [teleport]: id=teleport
@@ -5400,7 +5400,7 @@ msgstr ""
 "jednog zmaga, smrt u boju je najpoželjniji način da se napusti ovaj svijet. "
 "Za razliku od starijih članova drugih rasa, zmagovi prirodno postaju sve "
 "nasrtljiviji i neobuzdaniji kako se bliže kraju života, možda kako bi "
-"osigurali sebi mesto u junačkim predanjima svoje vrste.\n"
+"osigurali sebi mjesto u junačkim predanjima svoje vrste.\n"
 "\n"
 "<header>text='Rasprostranjenost'</header>\n"
 "Postojbina zmagova biješe lanac vulkanskih ostrva u Velikom okeanu. Sprega "
@@ -5488,7 +5488,7 @@ msgstr ""
 "povremeno prekidana nekolikim decenijama mira. Tokom ratova, patuljci ne "
 "smogaše izglaviti vilenjake iz dubokih šuma na jugu, ali utvrdiše svoje "
 "položaje u brdima i planinama na sjeveru kontinenta, poznatim kao "
-"Severozemlje. Od tog vremena, spraviše patuljci čudesne utvrde i naseobine "
+"Sjeverozemlje. Od tog vremena, spraviše patuljci čudesne utvrde i naseobine "
 "duboko u planinama i krševima svojih posjeda.\n"
 "\n"
 "Može biti zbog svoje podvojenosti, patuljci su obično nepovjerljivi ili "
@@ -5584,7 +5584,7 @@ msgstr ""
 "\n"
 "Vilenjaci su u maloj mjeri prirodno prožeti magijom. Iako se pretežno ne "
 "umiju njome neposredno služiti, njeno potajno prisustvo pruža im oštra čula "
-"i dug vijek. Magija u vilenjaka potpomaže i izvjesne veštine, poput "
+"i dug vijek. Magija u vilenjaka potpomaže i izvjesne vještine, poput "
 "streljaštva ili prikrivanja, omogućavajući postignuća u njima većini "
 "ovosvjetskih bića zapanjujućim. Vilenjaci koji se nauče opštijim načinima "
 "upotrebe ove moći mogu postati njeni istinski vladari. Mnogi izaberu da svoj "
@@ -5596,7 +5596,7 @@ msgstr ""
 "\n"
 "Vilenjaci provode puno vremena izoštravajući svoju nadarenost i vještine. "
 "Oni koji nisu pristali magijskim umijećima obično se posvećuju fizičkim "
-"veštinama. Ishod toga je vilenjačko nenadmašno streljaštvo, možda njihov "
+"vještinama. Ishod toga je vilenjačko nenadmašno streljaštvo, možda njihov "
 "najznačajniji ratnički pravac. Gotovo svi vilenjački borci nose luk, a "
 "nijedna se druga rasa ne može mjeriti s vilin-strijelcima po hitrosti i "
 "preciznosti. Svi vilenjaci takođe dijele silnu privrženost neiskvarenoj "
@@ -5724,7 +5724,7 @@ msgstr ""
 "ih drže za vazalsku državu, što Kruni podaje hranu i vojnike u zamjenu za "
 "zaštitu. Drugi, pak, vele da su na ravnoj nozi sa zapadnom polovinom "
 "Vesnota. Kako bilo, istočne pokrajine ne održavaju stajaću vojsku kako to "
-"čini Zapadni Vesnot. Uvježbavanje za boj sastavni je deo života u Klanovima; "
+"čini Zapadni Vesnot. Uvježbavanje za boj sastavni je dio života u Klanovima; "
 "roditelji djecu podučavaju jahanju, borenju i rukovanju lukom od malih nogu. "
 "U presjeku, klanski su ratnici slabije organizovani od civilizovanih boraca, "
 "ali se vrline i mane ovih družina međusobno nadopunjuju."
@@ -5883,9 +5883,9 @@ msgid ""
 "individuals tend to specialize in other skills, like archery or "
 "assassination."
 msgstr ""
-"Orkovi su pola nalik ljudima, pola zverima. Viši su, kršniji i snažniji od "
+"Orkovi su pola nalik ljudima, pola zvjerima. Viši su, kršniji i snažniji od "
 "ljudi, a po naravi ratoborni, divlji i okrutni. Krv im je tamnija i gušća od "
-"čovekove, i nimalo se ne osvrću na ličnu higijenu ili pojavu. Iako su "
+"čovjekove, i nimalo se ne osvrću na ličnu higijenu ili pojavu. Iako su "
 "nasilni i jedni prema drugima, čoporski su nastrojeni; jedan ork nikada ne "
 "putuje sâm niti bivstvuje u družinama manjim od po desetka.\n"
 "\n"
@@ -6819,10 +6819,11 @@ msgstr ""
 "Koristi vidare kao podršku u napadima — dobijaće ti bitke, a da sami ništa "
 "napali nisu."
 
+# >> Chantal is an elvish druid (female).
 #. [tip]
 #: data/hardwired/tips.cfg:152
 msgid "- The Scroll of Chantal, 516YW"
-msgstr "— Svitak Čantalov, 516.gv."
+msgstr "— Svitak Čantalin, 516.gv."
 
 #. [tip]
 #: data/hardwired/tips.cfg:155
@@ -6932,7 +6933,7 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
-"Ne možete opozvati pokretanje koje otkrije deo magle ili pokrova. Uključite "
+"Ne možete opozvati pokretanje koje otkrije dio magle ili pokrova. Uključite "
 "opciju „Zastoj ažuriranja pokrova“ ako želite da uvijek možete opozvati "
 "pokretanje."
 
@@ -7458,7 +7459,7 @@ msgstr "Ažuriraj sve"
 
 #: src/addon_management.cpp:944
 msgid "Update failed"
-msgstr "Ažuriranje nije uspelo"
+msgstr "Ažuriranje nije uspjelo"
 
 #: src/addon_management.cpp:946
 msgid "The following add-on could not be downloaded or updated successfully:"
@@ -7940,8 +7941,8 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Ova jedinica je otrovana. Gubiće 8 UP u svakom potezu, sve dok se ne izleči "
-"u selu ili pored prijateljske iscjeliteljske jedinice.\n"
+"Ova jedinica je otrovana. Gubiće 8 UP u svakom potezu, sve dok se ne "
+"izliječi u selu ili pored prijateljske iscjeliteljske jedinice.\n"
 "\n"
 "Jedinice ne mogu biti ubijene samo otrovom. Otrov neće smanjiti UP ispod 1."
 
@@ -8819,7 +8820,7 @@ msgstr "<strana> <nadimak>"
 
 #: src/menu_events.cpp:2440
 msgid "Assign control of a side to a different player or observer."
-msgstr "Dodeljuje upravljanje stranom drugom igraču ili posmatraču."
+msgstr "Dodjeljuje upravljanje stranom drugom igraču ili posmatraču."
 
 #: src/menu_events.cpp:2442
 msgid "Clear chat history."
@@ -8859,7 +8860,7 @@ msgstr "<id>"
 
 #: src/menu_events.cpp:2460
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "Prelazi na sledeći scenario, ili onaj sa datim identifikatorom."
+msgstr "Prelazi na sljedeći scenario, ili onaj sa datim identifikatorom."
 
 #: src/menu_events.cpp:2463
 msgid "Choose next scenario"
@@ -8903,19 +8904,19 @@ msgstr "Postavlja ili prikazuje alijas naredbe."
 
 #: src/menu_events.cpp:2480
 msgid "<var>=<value>"
-msgstr "<promenljiva>=<vrednost>"
+msgstr "<promjenljiva>=<vrijednost>"
 
 #: src/menu_events.cpp:2480
 msgid "Set a scenario variable."
-msgstr "Postavlja promenljivu scenarija."
+msgstr "Postavlja promjenljivu scenarija."
 
 #: src/menu_events.cpp:2482
 msgid "<var>"
-msgstr "<promenljiva>"
+msgstr "<promjenljiva>"
 
 #: src/menu_events.cpp:2482
 msgid "Show a scenario variable."
-msgstr "Prikazuje promenljivu scenarija."
+msgstr "Prikazuje promjenljivu scenarija."
 
 #: src/menu_events.cpp:2484
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -9084,7 +9085,7 @@ msgstr "Ispravljanje deaktivirano!"
 
 #: src/menu_events.cpp:3197
 msgid "Unsafe Lua scripts."
-msgstr "Nebezbedne Lua skripte."
+msgstr "Nebezbjedne Lua skripte."
 
 #: src/menu_events.cpp:3198
 msgid ""
@@ -9092,17 +9093,17 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
-"Ovim ćete otvoriti bezbednosni procep u Vesnotu. Želite li zaista da "
+"Ovim ćete otvoriti bezbjednosni procjep u Vesnotu. Želite li zaista da "
 "nastavite? Ako ste preuzeli neke dodatke, ne klikćite na „U redu“! — mogli "
 "bi tog trenutka preuzeti vaš računar. Upozorili smo vas."
 
 #: src/menu_events.cpp:3201
 msgid "Unsafe mode enabled!"
-msgstr "Uključen nebezbedan režim!"
+msgstr "Uključen nebezbijedan režim!"
 
 #: src/menu_events.cpp:3244
 msgid "Variable not found"
-msgstr "Promenljiva nije nađena"
+msgstr "Promjenljiva nije nađena"
 
 #: src/menu_events.cpp:3282
 msgid ""
@@ -9155,7 +9156,7 @@ msgstr "Server zahtijeva verziju '$version1', dok je vaša '$version2'."
 
 #: src/multiplayer.cpp:168
 msgid "Server-side redirect loop"
-msgstr "Petlja preusmeravanja na strani servera"
+msgstr "Petlja preusmjeravanja na strani servera"
 
 #: src/multiplayer.cpp:256
 msgid "Bad data received from server"
@@ -9701,11 +9702,11 @@ msgstr "Pripremam prikaz..."
 
 #: src/play_controller.cpp:211
 msgid "time left for current turn"
-msgstr "preostalo vreme za tekući potez"
+msgstr "preostalo vrijeme za tekući potez"
 
 #: src/play_controller.cpp:213 src/replay_controller.cpp:141
 msgid "current local time"
-msgstr "trenutno lokalno vreme"
+msgstr "trenutno lokalno vrijeme"
 
 #: src/play_controller.cpp:251
 msgid "Starting game"
@@ -9738,7 +9739,7 @@ msgstr "Scenario je okončan. Želite li da nastavite pohod?"
 
 #: src/playcampaign.cpp:478
 msgid "Downloading next scenario..."
-msgstr "Preuzimam sledeći scenario..."
+msgstr "Preuzimam sljedeći scenario..."
 
 #: src/playcampaign.cpp:626
 msgid "Do you want to save your game?"
@@ -9892,7 +9893,7 @@ msgstr "Izvještaj scenarija"
 
 #: src/playsingle_controller.cpp:880
 msgid "Victory"
-msgstr "Pobeda"
+msgstr "Pobjeda"
 
 #: src/playsingle_controller.cpp:881
 msgid "You have emerged victorious!"
@@ -10039,7 +10040,7 @@ msgstr "Nedovršen tekst pod navodnicima"
 
 #: src/serialization/parser.cpp:348
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr "$error, vrednost „$value“, prethodna „$previous_value“ kod $pos"
+msgstr "$error, vrijednost „$value“, prethodna „$previous_value“ kod $pos"
 
 #: src/serialization/parser.cpp:352
 msgid "$error, value '$value' at $pos"
@@ -10307,6 +10308,3 @@ msgstr "zakonita"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "neutralna"
-
-#~ msgid "Chat Log"
-#~ msgstr "Dnevnik ćaskanja"
