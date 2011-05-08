@@ -2903,14 +2903,16 @@ static int intf_match_side(lua_State *L)
 	return 1;
 }
 
+/**
+ * Returns a proxy table array for all sides matching the given SSF.
+ * - Arg 1: SSF (without a tag)
+ * - Arg 2: hidden optional argument, SSF with outer [filter_side] tag, for backwards-compatibility
+ * - Ret 1: proxy table array
+ */
 static int intf_get_sides(lua_State* L)
 {
 	std::set<int> sides;
-	if(!lua_isnoneornil(L, 2)) {
-		const vconfig ssf_with_filter_tag = luaW_checkvconfig(L, 2);
-		sides = game_events::get_sides_set(ssf_with_filter_tag);
-	}
-	else {
+	if(lua_isnoneornil(L, 2)) {
 		const vconfig ssf = luaW_checkvconfig(L, 1, true);
 		if (ssf.null()) {
 			for(unsigned side_number = 1; side_number <= resources::teams->size(); ++side_number) {
@@ -2918,6 +2920,10 @@ static int intf_get_sides(lua_State* L)
 			}
 		}
 		else sides = game_events::get_sides_set(ssf, true);
+	}
+	else {
+		const vconfig ssf_with_filter_tag = luaW_checkvconfig(L, 2);
+		sides = game_events::get_sides_set(ssf_with_filter_tag);
 	}
 
 	//keep this stack in the loop:
@@ -2932,6 +2938,7 @@ static int intf_get_sides(lua_State* L)
 	lua_createtable(L, sides.size(), 0);
 	unsigned index = 1;
 	foreach(int side, sides) {
+		// Create a full userdata containing a pointer to the team.
 		team** t = static_cast<team**>(lua_newuserdata(L, sizeof(team*)));
 		*t = &((*resources::teams)[side - 1]);
 		lua_pushvalue(L, 1);
@@ -3346,6 +3353,9 @@ void LuaKernel::initialize()
 	lua_State *L = mState;
 
 	// Create the sides table.
+	// note: 
+	// This table is redundant to the return value of wesnoth.get_sides({}).
+	// Still needed for backwards compatibility.
 	lua_getglobal(L, "wesnoth");
 	std::vector<team> &teams = *resources::teams;
 	lua_pushlightuserdata(L, (void *)&getsideKey);
