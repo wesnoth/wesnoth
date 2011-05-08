@@ -52,12 +52,6 @@ side_filter::side_filter(const vconfig& cfg, bool flat_tod) :
 {
 }
 
-side_filter::side_filter(const vconfig &cfg, const std::string &side_string, bool flat_tod)
-	: cfg_(cfg), flat_(flat_tod), side_string_(side_string)
-{
-}
-
-
 side_filter::side_filter(const std::string &side_string, bool flat_tod)
 	: cfg_(vconfig::empty_vconfig()), flat_(flat_tod), side_string_(side_string)
 {

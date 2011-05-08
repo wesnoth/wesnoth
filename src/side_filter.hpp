@@ -36,7 +36,6 @@ public:
 	side_filter();
 #endif
 
-	side_filter(const vconfig &cfg, const std::string &side_string, bool flat_tod = false);
 	side_filter(const std::string &side_string, bool flat_tod = false);
 	side_filter(const vconfig &cfg, bool flat_tod = false);
 
