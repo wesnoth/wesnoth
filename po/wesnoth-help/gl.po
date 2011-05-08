@@ -10,13 +10,14 @@
 # Jacobo Abel Fernández García <xakobe_gz@hotmail.com>, 2007.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009-2010.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2011.
+# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-08 17:06+0200\n"
-"PO-Revision-Date: 2011-03-29 14:02+0200\n"
-"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"PO-Revision-Date: 2011-05-08 21:35+0200\n"
+"Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
@@ -204,11 +205,6 @@ msgstr "Sala de cría"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The portion of an <ref>dst='aerie' text='aerie'</ref> where the "
-#| "nonsentient <ref>dst='breeder' text='Breeders'</ref> live under the "
-#| "<ref>dst='dominant' text='Dominant'</ref>' s eye."
 msgid ""
 "The portion of an <ref>dst='aerie' text='aerie'</ref> where the nonsentient "
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
@@ -234,49 +230,33 @@ msgstr ""
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
-#, fuzzy
-#| msgid "Great Ocean"
 msgid "World Ocean"
-msgstr "Gran Océano"
+msgstr "Océano"
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:32
-#, fuzzy
-#| msgid ""
-#| "The Great Ocean is the name of the open seas that surround the "
-#| "archipelago of <ref>dst='morogor' text='Morogor'</ref>. The drakes "
-#| "believe it to end at the <ref>dst='abyss' text='Abyss'</ref>, a vast and "
-#| "deadly waterfall."
 msgid ""
 "The World Ocean is the name of the open seas that surround the archipelago "
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
 "the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
 msgstr ""
-"O Gran Océano é o nome do mar aberto que arrodea o arquipélago de "
-"<ref>dst='morogor' text='Morogor'</ref>. Os draconiáns teñen a crenza de que "
-"remata no <ref>dst='abyss' text='Abismo'</ref>, unha enorme e mortal "
-"catarata."
+"O Océano é o mar aberto que arrodea o arquipélago de <ref>dst='morogor' "
+"text='Morogor'</ref>. Os draconiáns teñen a crenza de que remata no "
+"<ref>dst='abyss' text='Abismo'</ref>, unha enorme e mortal catarata."
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
-#, fuzzy
-#| msgid "Great Continent"
 msgid "New Continent"
-msgstr "Gran Continente"
+msgstr "Novo Continente"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
-#, fuzzy
-#| msgid ""
-#| "Great Continent -- The great continent to the east of <ref>dst='morogor' "
-#| "text='Morogor'</ref>. Its existence is unknown to the @drakes until the "
-#| "flight of @Galun."
 msgid ""
 "New Continent -- The great continent to the east of <ref>dst='morogor' "
 "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
 "flight of Galun."
 msgstr ""
-"O Gran Continente é o nome da gran extensión de terra que hai ao leste de "
+"O Novo Continente é a gran extensión de terra que hai ao leste de "
 "<ref>dst='morogor' text='Morogor'</ref>. Os draconiáns non souberon da súa "
 "existencia ata a bandada de Galun."
 
@@ -291,8 +271,8 @@ msgid ""
 "In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
 "falls off the world-disc."
 msgstr ""
-"Na cosmoloxía dos draconiáns, catarata enorme e mortal pola que os océanos "
-"caen do mundo."
+"Na cosmoloxía dos draconiáns, catarata enorme e mortal pola que o océano cae "
+"do mundo."
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
@@ -2842,23 +2822,18 @@ msgstr ""
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
-#, fuzzy
-#| msgid "trait^Undead"
 msgid "trait^Aged"
-msgstr "Non morte"
+msgstr "Vellez"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:477
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
-#| "hitpoints and melee damage."
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
 msgstr ""
-"As unidades <italic>text='débiles'</italic> teñen un punto menos de vida e "
-"quitan un punto de vida menos nos ataques corpo a corpo."
+"As unidades <italic>text='vellas'</italic> teñen oito puntos menos de vida, "
+"quitan un punto de vida menos nos ataques corpo a corpo e teñen un movemento "
+"menos por rolda."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:485
@@ -4730,10 +4705,8 @@ msgstr "feroz"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
-#, fuzzy
-#| msgid "Receive only 40% defense in land-based villages"
 msgid "Receive only 50% defense in land-based villages"
-msgstr "Só recibe unha defensa do 40% nas vilas terrestres."
+msgstr "Só recibe unha defensa do 50% nas vilas terrestres."
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -5355,12 +5328,6 @@ msgstr "Máquinas"
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:194
-#, fuzzy
-#| msgid ""
-#| "Animated neither by natural life nor by necromancy, the term ”mechanical” "
-#| "describes a created artifact of an intelligent being. Most mechanical "
-#| "things neither move nor think on their own, but some do so as a result of "
-#| "magical enchantment."
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5419,8 +5386,6 @@ msgstr "Monstro"
 
 #. [race]: id=monster
 #: data/core/units.cfg:215
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "Monstro"
 
@@ -5444,14 +5409,12 @@ msgstr ""
 #. [race]: id=naga
 #: data/core/units.cfg:224
 msgid "race^Naga"
-msgstr "Naga"
+msgstr "Naga macho"
 
 #. [race]: id=naga
 #: data/core/units.cfg:225
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
-msgstr "Naga"
+msgstr "Naga femia"
 
 #. [race]: id=naga
 #: data/core/units.cfg:226
@@ -5837,10 +5800,8 @@ msgstr "Lobo"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:303
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
-msgstr "Elfa"
+msgstr "Loba"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:304
@@ -5859,50 +5820,38 @@ msgstr "Woses"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:324
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Khalifate Human"
-msgstr "Humano"
+msgstr "Humano do califato"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:325
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Khalifate Human"
-msgstr "Humana"
+msgstr "Humana do califato"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:326
-#, fuzzy
-#| msgid "race+plural^Mechanical"
 msgid "race+plural^Khalifate"
-msgstr "Máquinas"
+msgstr "Califato"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:327
 msgid "This race does not have a description yet."
-msgstr ""
+msgstr "Aínda non hai ningunha descrición para esta especie ou raza."
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:336
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Falcon"
-msgstr "Humano"
+msgstr "Falcón macho"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:337
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Falcon"
-msgstr "Humana"
+msgstr "Falcón femia"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:338
-#, fuzzy
-#| msgid "race^Humans"
 msgid "race^Falcons"
-msgstr "Humanos"
+msgstr "Falcóns"
 
 #: src/help.cpp:51
 msgid "Help"
