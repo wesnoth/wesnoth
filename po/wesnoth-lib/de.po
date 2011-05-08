@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-05 10:12+0200\n"
-"PO-Revision-Date: 2011-02-11 18:27+0100\n"
+"POT-Creation-Date: 2011-05-08 16:00+0200\n"
+"PO-Revision-Date: 2011-05-07 16:05+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
@@ -16,12 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Country: GERMANY\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [terrain_type]: id=deep_water_gray
 #: data/core/terrain.cfg:18
+#, fuzzy
+#| msgid "Deep Water"
 msgid "Gray Deep Water"
-msgstr "Grautiefes Wasser"
+msgstr "Tiefes Wasser"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:28
@@ -30,18 +31,24 @@ msgstr "Tiefes Wasser"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:29
+#, fuzzy
+#| msgid "Deep Water"
 msgid "Medium Deep Water"
-msgstr "Mitteltiefes Wasser"
+msgstr "Tiefes Wasser"
 
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:38
+#, fuzzy
+#| msgid "Deep Water"
 msgid "Tropical Deep Water"
-msgstr "Tropisches tiefes Wasser"
+msgstr "Tiefes Wasser"
 
 #. [terrain_type]: id=gray_tropical_water
 #: data/core/terrain.cfg:48
+#, fuzzy
+#| msgid "Shallow Water"
 msgid "Gray Shallow Water"
-msgstr "Grauseichtes Wasser"
+msgstr "Seichtes Wasser"
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:58
@@ -50,18 +57,22 @@ msgstr "Seichtes Wasser"
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:59
+#, fuzzy
+#| msgid "Shallow Water"
 msgid "Medium Shallow Water"
-msgstr "Mittelseichtes Wasser"
+msgstr "Seichtes Wasser"
 
 #. [terrain_type]: id=tropical_water
 #: data/core/terrain.cfg:68
+#, fuzzy
+#| msgid "Shallow Water"
 msgid "Tropical Shallow Water"
-msgstr "Tropisches seichtes Wasser"
+msgstr "Seichtes Wasser"
 
 #. [terrain_type]: id=ford
 #: data/core/terrain.cfg:78
 msgid "Ford"
-msgstr "Furt"
+msgstr ""
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:88
@@ -91,7 +102,7 @@ msgstr ""
 #. [terrain_type]: id=grass_dry
 #: data/core/terrain.cfg:145
 msgid "Dry Grass"
-msgstr "Trockenes Gras"
+msgstr ""
 
 #. [terrain_type]: id=leaf_litter
 #: data/core/terrain.cfg:154
@@ -100,18 +111,22 @@ msgstr ""
 
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:165
+#, fuzzy
+#| msgid "Dirt"
 msgid "Dark Dirt"
-msgstr "Dunkler Dreck"
+msgstr "Dreck"
 
 #. [terrain_type]: id=dirt
 #: data/core/terrain.cfg:174
 msgid "Regular Dirt"
-msgstr "Gewöhnlicher Dreck"
+msgstr ""
 
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:183
+#, fuzzy
+#| msgid "Dirt"
 msgid "Dry Dirt"
-msgstr "Trockener Dreck"
+msgstr "Dreck"
 
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:192
@@ -121,6 +136,7 @@ msgstr ""
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:201
 #, fuzzy
+#| msgid "Clear Labels"
 msgid "Clean Gray Cobbles"
 msgstr "Beschriftungen entfernen"
 
@@ -142,6 +158,7 @@ msgstr "Schnee"
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:245
 #, fuzzy
+#| msgid "Desert Mountains"
 msgid "Desert Sands"
 msgstr "Wüstenberge"
 
@@ -153,7 +170,7 @@ msgstr "Sand"
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:255
 msgid "Beach Sands"
-msgstr "Sandstrand"
+msgstr ""
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:263
@@ -173,6 +190,7 @@ msgstr "Krater"
 #. [terrain_type]: id=flowers_mixed
 #: data/core/terrain.cfg:298
 #, fuzzy
+#| msgid "Fall Mixed Forest"
 msgid "Mixed Flowers"
 msgstr "Herbstlicher Mischwald"
 
@@ -189,32 +207,36 @@ msgstr ""
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:325
 msgid "Small Mushrooms"
-msgstr "Kleine Pilze"
+msgstr ""
 
 #. [terrain_type]: id=mushrooms_farm
 #: data/core/terrain.cfg:334
+#, fuzzy
+#| msgid "Mushroom Grove"
 msgid "Mushroom Farm"
 msgstr "Pilzhain"
 
 #. [terrain_type]: id=desert_plants
 #: data/core/terrain.cfg:343
+#, fuzzy
+#| msgid "Desert Mountains"
 msgid "Desert Plants"
-msgstr "Wüstenpflanzen"
+msgstr "Wüstenberge"
 
 #. [terrain_type]: id=desert_plants_sans_bones
 #: data/core/terrain.cfg:352
 msgid "Desert Plants without Bones"
-msgstr "Wüstenpflanzen ohne Knochen"
+msgstr ""
 
 #. [terrain_type]: id=windmill
 #: data/core/terrain.cfg:361
 msgid "Windmill"
-msgstr "Windmühle"
+msgstr ""
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:370
 msgid "Fence"
-msgstr "Zaun"
+msgstr ""
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:379
@@ -304,12 +326,14 @@ msgstr "Hügel"
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:540
 msgid "Regular Hills"
-msgstr "Gewöhnliche Hügel"
+msgstr ""
 
 #. [terrain_type]: id=hills_dry
 #: data/core/terrain.cfg:548
+#, fuzzy
+#| msgid "Hills"
 msgid "Dry Hills"
-msgstr "Trockene Hügel"
+msgstr "Hügel"
 
 #. [terrain_type]: id=desert_hills
 #: data/core/terrain.cfg:557
@@ -328,8 +352,10 @@ msgstr "Berge"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:589
+#, fuzzy
+#| msgid "Desert Mountains"
 msgid "Dry Mountains"
-msgstr "Trockene Berge"
+msgstr "Wüstenberge"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:598
@@ -381,8 +407,10 @@ msgstr "Sommerlicher Bergmischwald"
 #. [terrain_type]: id=mixed_forest_fall_hills
 #. [terrain_type]
 #: data/core/terrain.cfg:682 data/core/terrain.cfg:773
+#, fuzzy
+#| msgid "Snowy Mixed Forested Hills"
 msgid "Fall Mixed Forested Hills"
-msgstr "Herbstlicher Bergmischwald"
+msgstr "Verschneiter Bergmischwald"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #. [terrain_type]
@@ -420,8 +448,10 @@ msgstr "Höhle"
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:839
+#, fuzzy
+#| msgid "Cave Wall"
 msgid "Cave Floor"
-msgstr "Höhlenboden"
+msgstr "Höhlenwand"
 
 #. [terrain_type]: id=cave_earthy
 #: data/core/terrain.cfg:847
@@ -435,6 +465,8 @@ msgstr ""
 
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:865
+#, fuzzy
+#| msgid "Cave path"
 msgid "Cave Path"
 msgstr "Höhlenpfad"
 
@@ -445,8 +477,10 @@ msgstr "Pilzhain"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:883
+#, fuzzy
+#| msgid "Mushroom Grove"
 msgid "Lit Mushroom Grove"
-msgstr "Erleuchteter Pilzhain"
+msgstr "Pilzhain"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:894
@@ -478,6 +512,8 @@ msgstr ""
 
 #. [terrain_type]: id=lava_chasm
 #: data/core/terrain.cfg:977
+#, fuzzy
+#| msgid "Lava chasm"
 msgid "Lava Chasm"
 msgstr "Lavakluft"
 
@@ -489,31 +525,40 @@ msgstr "Lava"
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:998
 msgid "Volcano"
-msgstr "Vulkan"
+msgstr ""
 
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1012
+#, fuzzy
+#| msgid "Impassable Mountains"
 msgid "Regular Impassable Mountains"
-msgstr "Gewöhnliche unpassierbare Berge"
+msgstr "Unpassierbare Berge"
 
 #. [terrain_type]: id=clouddesert
 #: data/core/terrain.cfg:1021
+#, fuzzy
+#| msgid "Impassable Mountains"
 msgid "Desert Impassable Mountains"
-msgstr "Unpassierbare Wüstenberge"
+msgstr "Unpassierbare Berge"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1030
+#, fuzzy
+#| msgid "Impassable Mountains"
 msgid "Snowy Impassable Mountains"
-msgstr "Verschneite unpassierbare Berge"
+msgstr "Unpassierbare Berge"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1040
+#, fuzzy
+#| msgid "Cave Wall"
 msgid "Natural Cave Wall"
-msgstr "Natürliche Höhlenwand"
+msgstr "Höhlenwand"
 
 #. [terrain_type]: id=cavewall_hewn
 #: data/core/terrain.cfg:1050
 #, fuzzy
+#| msgid "Cave Wall"
 msgid "Hewn Cave Wall"
 msgstr "Höhlenwand"
 
@@ -529,17 +574,20 @@ msgstr ""
 
 #. [terrain_type]: id=wall_stone
 #: data/core/terrain.cfg:1080
+#, fuzzy
+#| msgid "Cave Wall"
 msgid "Stone Wall"
-msgstr "Steinwand"
+msgstr "Höhlenwand"
 
 #. [terrain_type]: id=wall_stone_lit
 #: data/core/terrain.cfg:1090
 msgid "Lit Stone Wall"
-msgstr "Beleuchtete Steinwand"
+msgstr ""
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1100
 #, fuzzy
+#| msgid "Impassable"
 msgid "Impassable Overlay"
 msgstr "Unpassierbar"
 
@@ -551,38 +599,45 @@ msgstr "Nichts"
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1126
 #, fuzzy
+#| msgid "Village"
 msgid "Adobe Village"
 msgstr "Dorf"
 
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1138
 msgid "Desert Tent Village"
-msgstr "Wüstenzeltdorf"
+msgstr ""
 
 #. [terrain_type]: id=camp_village
 #: data/core/terrain.cfg:1150
+#, fuzzy
+#| msgid "Village"
 msgid "Tent Village"
-msgstr "Zeltdorf"
+msgstr "Dorf"
 
 #. [terrain_type]: id=orcish_village
 #: data/core/terrain.cfg:1164
+#, fuzzy
+#| msgid "Village"
 msgid "Orcish Village"
-msgstr "Orkdorf"
+msgstr "Dorf"
 
 #. [terrain_type]: id=orcish_snow_village
 #: data/core/terrain.cfg:1176
 msgid "Snowy Orcish Village"
-msgstr "Verschneites Orkdorf"
+msgstr ""
 
 #. [terrain_type]: id=elven_snow_village
 #: data/core/terrain.cfg:1190
 msgid "Snowy Elven Village"
-msgstr "Verschneites Elfendorf"
+msgstr ""
 
 #. [terrain_type]: id=elven_village
 #: data/core/terrain.cfg:1202
+#, fuzzy
+#| msgid "Village"
 msgid "Elven Village"
-msgstr "Elfendorf"
+msgstr "Dorf"
 
 #. [terrain_type]: id=human_village
 #: data/core/terrain.cfg:1216
@@ -592,30 +647,31 @@ msgstr ""
 #. [terrain_type]: id=snow_village
 #: data/core/terrain.cfg:1228
 #, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Cottage"
 msgstr "Eingeschneite Berge"
 
 #. [terrain_type]: id=human_village_ruin
 #: data/core/terrain.cfg:1240
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Cottage"
-msgstr "Eingeschneite Berge"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1252
 msgid "Human City"
-msgstr "Menschenstadt"
+msgstr ""
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1264
 msgid "Snowy Human City"
-msgstr "Menschenstadt (verschneit)"
+msgstr ""
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1276
-#, fuzzy
 msgid "Ruined Human City"
-msgstr "Burgfried"
+msgstr ""
 
 #. [terrain_type]: id=hill_village
 #: data/core/terrain.cfg:1288
@@ -629,39 +685,50 @@ msgstr ""
 
 #. [terrain_type]: id=hill_village_ruin
 #: data/core/terrain.cfg:1312
-#, fuzzy
 msgid "Ruined Hill Stone Village"
-msgstr "Dorf"
+msgstr ""
 
 #. [terrain_type]: id=tropical_forest_village
 #: data/core/terrain.cfg:1324
+#, fuzzy
+#| msgid "Tropical Forest"
 msgid "Tropical Village"
-msgstr "Tropendorf"
+msgstr "Tropischer Wald"
 
 #. [terrain_type]: id=drake_village
 #: data/core/terrain.cfg:1336
+#, fuzzy
+#| msgid "Village"
 msgid "Drake Village"
-msgstr "Drakendorf"
+msgstr "Dorf"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:1350
+#, fuzzy
+#| msgid "Village"
 msgid "Cave Village"
-msgstr "Höhlendorf"
+msgstr "Dorf"
 
 #. [terrain_type]: id=dwarven_village
 #: data/core/terrain.cfg:1362
+#, fuzzy
+#| msgid "Village"
 msgid "Dwarven Village"
-msgstr "Zwergendorf"
+msgstr "Dorf"
 
 #. [terrain_type]: id=hut_village
 #: data/core/terrain.cfg:1374
+#, fuzzy
+#| msgid "Cut"
 msgid "Hut"
-msgstr "Hütte"
+msgstr "Ausschneiden"
 
 #. [terrain_type]: id=hut_snow_village
 #: data/core/terrain.cfg:1386
+#, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Hut"
-msgstr "Eingeschneite Hütte"
+msgstr "Eingeschneite Berge"
 
 #. [terrain_type]: id=logcabin_village
 #: data/core/terrain.cfg:1398
@@ -671,6 +738,7 @@ msgstr ""
 #. [terrain_type]: id=logcabin_snow_village
 #: data/core/terrain.cfg:1410
 #, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Log Cabin"
 msgstr "Eingeschneite Berge"
 
@@ -681,13 +749,16 @@ msgstr ""
 
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1436
+#, fuzzy
+#| msgid "Village"
 msgid "Swamp Village"
-msgstr "Sumpfdorf"
+msgstr "Dorf"
 
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
 #: data/core/terrain.cfg:1448 data/core/terrain.cfg:1461
 #, fuzzy
+#| msgid "Village"
 msgid "Aquatic Village"
 msgstr "Dorf"
 
@@ -710,8 +781,9 @@ msgstr "Dorf"
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1475
 #, fuzzy
+#| msgid "Village gold"
 msgid "Village Overlay"
-msgstr "Burgfried"
+msgstr "Steuereinnahmen pro Dorf:"
 
 #. [terrain_type]: id=encampment
 #: data/core/terrain.cfg:1490
@@ -720,18 +792,22 @@ msgstr "Lager"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1501
+#, fuzzy
+#| msgid "Encampment"
 msgid "Snowy Encampment"
-msgstr "Verschneites Lager"
+msgstr "Lager"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:1512
+#, fuzzy
+#| msgid "Castle"
 msgid "Orcish Castle"
-msgstr "Orkburg"
+msgstr "Burg"
 
 #. [terrain_type]: id=snow_orcish_fort
 #: data/core/terrain.cfg:1523
 msgid "Snowy Orcish Castle"
-msgstr "Verschneite Orkburg"
+msgstr ""
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=castle_overlay
@@ -741,52 +817,66 @@ msgstr "Burg"
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:1535
+#, fuzzy
+#| msgid "Castle"
 msgid "Human Castle"
-msgstr "Menschenburg"
+msgstr "Burg"
 
 #. [terrain_type]: id=snow_castle
 #: data/core/terrain.cfg:1545
+#, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Human Castle"
-msgstr "Menschenburg (verschneit)"
+msgstr "Eingeschneite Berge"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1555
+#, fuzzy
+#| msgid "Castle"
 msgid "Elvish Castle"
-msgstr "Elfenburg"
+msgstr "Burg"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1566
+#, fuzzy
+#| msgid "Castle"
 msgid "Dwarven Castle"
-msgstr "Zwergenburg"
+msgstr "Burg"
 
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:1577
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Human Castle"
 msgstr "Burgfried"
 
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:1588
 #, fuzzy
+#| msgid "Sunken Ruin"
 msgid "Sunken Human Ruin"
 msgstr "versunkene Ruine"
 
 #. [terrain_type]: id=swampruin
 #: data/core/terrain.cfg:1600
 #, fuzzy
+#| msgid "Swamp Ruin"
 msgid "Swamp Human Ruin"
 msgstr "Sumpfruine"
 
 #. [terrain_type]: id=sand_castle
 #: data/core/terrain.cfg:1612
+#, fuzzy
+#| msgid "Castle"
 msgid "Desert Castle"
-msgstr "Wüstenburg"
+msgstr "Burg"
 
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:1623
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Desert Castle"
-msgstr "Wüstenburg"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:1638
@@ -796,23 +886,28 @@ msgstr "Anführerzelt"
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:1650
 #, fuzzy
+#| msgid "Encampment Keep"
 msgid "Tall Encampment Keep"
 msgstr "Anführerzelt"
 
 #. [terrain_type]: id=encampment_snow_keep
 #: data/core/terrain.cfg:1662
+#, fuzzy
+#| msgid "Encampment Keep"
 msgid "Snowy Encampment Keep"
-msgstr "Verschneites Anführerzelt"
+msgstr "Anführerzelt"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:1674
+#, fuzzy
+#| msgid "Fort Keep"
 msgid "Orcish Keep"
-msgstr "Orkburgfried"
+msgstr "Hauptgebäude"
 
 #. [terrain_type]: id=snow_orcish_keep
 #: data/core/terrain.cfg:1686
 msgid "Snowy Orcish Keep"
-msgstr "Verschneiter Orkburgfried"
+msgstr ""
 
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=desert_keep
@@ -825,63 +920,85 @@ msgstr "Burgfried"
 
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:1699
+#, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Human Castle Keep"
-msgstr "Menschenburgfried"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:1711
+#, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Snowy Human Castle Keep"
-msgstr "Menschenburgfried (verschneit)"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:1723
+#, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Elven Castle Keep"
-msgstr "Elfenburgfried"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:1735
+#, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Dwarven Castle Keep"
-msgstr "Zwergenburgfried"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1747
+#, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Human Castle Keep"
-msgstr "Menschenburgfried (verfallen)"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1759
+#, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Sunken Keep"
-msgstr "Burgfried (versunken)"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1760
+#, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Sunken Human Castle Keep"
-msgstr "Menschenburgfried (versunken)"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1772
+#, fuzzy
+#| msgid "Swamp"
 msgid "Swamp Keep"
-msgstr "Sumpfburgfried"
+msgstr "Sumpf"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1773
+#, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Swamp Human Castle Keep"
-msgstr "Menschenburgfried (versumpft)"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:1786
+#, fuzzy
+#| msgid "Desert"
 msgid "Desert Keep"
-msgstr "Wüstenbergfried"
+msgstr "Wüste"
 
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1799
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Desert Keep"
-msgstr "Wüstenbergfried"
+msgstr "Burgfried"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:1813
 #, fuzzy
+#| msgid "Castle Keep"
 msgid "Castle Overlay"
 msgstr "Burgfried"
 
@@ -895,8 +1012,10 @@ msgstr ""
 #. [terrain_type]: id=bridgediag2
 #: data/core/terrain.cfg:1842 data/core/terrain.cfg:1853
 #: data/core/terrain.cfg:1864
+#, fuzzy
+#| msgid "Bridge"
 msgid "Wooden Bridge"
-msgstr "Holzbrücke"
+msgstr "Brücke"
 
 #. [terrain_type]: id=stone_bridge
 #: data/core/terrain.cfg:1877 data/core/terrain.cfg:1888
@@ -909,9 +1028,8 @@ msgstr ""
 #. [terrain_type]: id=bridgechasmdiag2
 #: data/core/terrain.cfg:1912 data/core/terrain.cfg:1922
 #: data/core/terrain.cfg:1933
-#, fuzzy
 msgid "Cave Chasm Bridge"
-msgstr "Brücke"
+msgstr ""
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:1949
@@ -977,6 +1095,8 @@ msgstr "Server: "
 #. [button]: id=update_addons
 #: data/gui/default/window/addon_connect.cfg:145
 #: data/gui/default/window/addon_connect.cfg:146
+#, fuzzy
+#| msgid "Update add-ons"
 msgid "Update Add-ons"
 msgstr "Erweiterungen aktualisieren"
 
@@ -1027,37 +1147,41 @@ msgstr "Abbrechen"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
 msgid "Author:"
-msgstr "Autor:"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:118
+#, fuzzy
+#| msgid "Version: "
 msgid "Version:"
-msgstr "Version:"
+msgstr "Version: "
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:149
 msgid "Size:"
-msgstr "Größe:"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
+#, fuzzy
+#| msgid "Unit Description"
 msgid "Description:"
-msgstr "Beschreibung:"
+msgstr "Einheitenbeschreibung"
 
 #. [scroll_label]: id=description
 #: data/gui/default/window/addon_description.cfg:194
 msgid "No description available."
-msgstr "Keine Beschreibung verfügbar."
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
 msgid "Translations:"
-msgstr "Übersetzungen:"
+msgstr ""
 
 #. [scroll_label]: id=translations
 #: data/gui/default/window/addon_description.cfg:226
 msgid "translations^None"
-msgstr "Keine"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:56
@@ -1092,8 +1216,10 @@ msgstr "Okay"
 
 #. [label]: id=title
 #: data/gui/default/window/campaign_difficulty.cfg:57
+#, fuzzy
+#| msgid "Difficulty: "
 msgid "Difficulty"
-msgstr "Schwierigkeitsgrad"
+msgstr "Schwierigkeitsgrad: "
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/campaign_difficulty.cfg:77
@@ -1151,17 +1277,22 @@ msgstr ""
 
 #. [label]: id=title
 #: data/gui/default/window/edit_label.cfg:42
+#, fuzzy
+#| msgid "Set Label"
 msgid "Place Label"
 msgstr "Beschriftung erstellen"
 
 #. [label]
 #: data/gui/default/window/edit_label.cfg:72
+#, fuzzy
+#| msgid "Set Label"
 msgid "Label:"
-msgstr "Beschriftung:"
+msgstr "Beschriftung erstellen"
 
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/default/window/edit_label.cfg:110
 #, fuzzy
+#| msgid "Team 1"
 msgid "Team only"
 msgstr "Team 1"
 
@@ -1270,7 +1401,7 @@ msgstr "Tageszeitvoreinstellungen"
 #: data/gui/default/window/editor_settings.cfg:84
 #: data/gui/default/window/title_screen.cfg:177
 msgid "Next"
-msgstr "Nächste"
+msgstr "Weiter"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:91
@@ -1383,8 +1514,10 @@ msgstr "Möchtet Ihr diesen Spielstand wirklich löschen?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:80
+#, fuzzy
+#| msgid "Don't ask me again!"
 msgid "Don’t ask me again!"
-msgstr "Nicht nochmals fragen!"
+msgstr "Nicht nochmal fragen!"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1702,6 +1835,8 @@ msgstr "Schneller Verlauf"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:38
+#, fuzzy
+#| msgid "Player Info - "
 msgid "Player Info — "
 msgstr "Spielerinformationen - "
 
@@ -2016,6 +2151,8 @@ msgstr "Netzwerkpartie eröffnen"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:167
+#, fuzzy
+#| msgid "Host a game using dedicated server 'wesnothd'"
 msgid "Host a game using dedicated server ‘wesnothd’"
 msgstr ""
 "Ausrichten einer Partie unter Zuhilfenahme des dedizierten »wesnothd« Servers"
@@ -2054,7 +2191,7 @@ msgstr ""
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:162
 msgid "Previous"
-msgstr "Vorheriger"
+msgstr "Zurück"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:163
@@ -2103,6 +2240,7 @@ msgstr "Laden"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
 #, fuzzy
+#| msgid "Reloaded game"
 msgid "Load a saved game"
 msgstr "Spiel neu geladen"
 
@@ -2118,8 +2256,10 @@ msgstr ""
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
+#, fuzzy
+#| msgid "Editor"
 msgid "Map Editor"
-msgstr "Karteneditor"
+msgstr "Editor"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
@@ -2150,6 +2290,7 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:232
 #, fuzzy
+#| msgid "Quit Game"
 msgid "Quit the game"
 msgstr "Spiel beenden"
 
@@ -2489,6 +2630,8 @@ msgid "Do not animate AI units moving"
 msgstr "Die Züge der Einheiten des Computers werden nicht animiert"
 
 #: src/game_preferences_display.cpp:345
+#, fuzzy
+#| msgid "Sighting an allied unit interrupts your unit's movement"
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr ""
 "Die Sichtung einer gegnerischen Einheit unterbricht die Bewegung Eurer "
@@ -2635,11 +2778,13 @@ msgstr "Nein"
 
 #: src/game_preferences_display.cpp:1081
 #, fuzzy
+#| msgid "Friends"
 msgid "friend"
 msgstr "Freunde"
 
 #: src/game_preferences_display.cpp:1087
 #, fuzzy
+#| msgid "No ignored"
 msgid "ignored"
 msgstr "Nicht ignoriert"
 
@@ -2669,11 +2814,13 @@ msgstr "Diverses"
 
 #: src/game_preferences_display.cpp:1254
 #, fuzzy
+#| msgid "Choose the game to load"
 msgid "Choose theme"
 msgstr "Wählt den zu ladenden Spielstand"
 
 #: src/game_preferences_display.cpp:1254
 #, fuzzy
+#| msgid "Saved Theme Preference: "
 msgid "Saved preference:"
 msgstr "Derzeitiges Grafikthema: "
 
@@ -2704,13 +2851,16 @@ msgstr "Das Rechteck passt nicht auf die Zeichenfläche."
 #: src/gui/auxiliary/canvas.cpp:835 src/gui/auxiliary/canvas.cpp:840
 #: src/gui/auxiliary/canvas.cpp:845 src/gui/auxiliary/canvas.cpp:851
 #, fuzzy
+#| msgid "Line doesn't fit on canvas."
 msgid "Circle doesn't fit on canvas."
 msgstr "Die Linie passt nicht auf die Zeichenfläche."
 
 #: src/gui/auxiliary/canvas.cpp:1033 src/gui/auxiliary/canvas.cpp:1040
 #: src/gui/auxiliary/canvas.cpp:1050 src/gui/auxiliary/canvas.cpp:1057
+#, fuzzy
+#| msgid "Line doesn't fit on canvas."
 msgid "Image doesn't fit on canvas."
-msgstr "Das Bild passt nicht auf die Zeichenfläche."
+msgstr "Die Linie passt nicht auf die Zeichenfläche."
 
 #: src/gui/auxiliary/canvas.cpp:1262
 msgid "Text has a font size of 0."
@@ -2797,6 +2947,7 @@ msgstr ""
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
 #, fuzzy
+#| msgid "No page defined."
 msgid "No node defined."
 msgstr "Keine Seite definiert."
 
@@ -2845,6 +2996,10 @@ msgid "Observers not allowed"
 msgstr "Beobachter nicht zugelassen"
 
 #: src/gui/dialogs/lobby_main.cpp:1106
+#, fuzzy
+#| msgid ""
+#| "Whisper session with $name started. If you don't want to receive messages "
+#| "from this user, type /ignore $name\n"
 msgid ""
 "Whisper session with $name started. If you don’t want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2889,8 +3044,10 @@ msgid "Load Game..."
 msgstr "Spielstand laden..."
 
 #: src/gui/dialogs/title_screen.cpp:296
+#, fuzzy
+#| msgid "Version: "
 msgid "Version "
-msgstr "Version "
+msgstr "Version: "
 
 #: src/gui/dialogs/title_screen.cpp:299
 msgid "Version"
@@ -2933,8 +3090,10 @@ msgstr ""
 "Fenstergröße."
 
 #: src/hotkeys.cpp:51
+#, fuzzy
+#| msgid "Generate Map"
 msgid "Animate Map"
-msgstr "Karte animieren"
+msgstr "Karte erzeugen"
 
 #: src/hotkeys.cpp:52
 msgid "Next Unit"
@@ -2978,7 +3137,7 @@ msgstr "Verkleinern"
 
 #: src/hotkeys.cpp:62
 msgid "Default Zoom"
-msgstr "Vergrößerung zurücksetzen"
+msgstr "Keine Vergrößerung"
 
 #: src/hotkeys.cpp:63
 msgid "Toggle Full Screen"
@@ -3177,8 +3336,10 @@ msgid "Save Map As"
 msgstr "Karte speichern unter"
 
 #: src/hotkeys.cpp:127
+#, fuzzy
+#| msgid "Save Map"
 msgid "Save All Maps"
-msgstr "Alle Karten speichern"
+msgstr "Karte speichern"
 
 #: src/hotkeys.cpp:128
 msgid "Revert All Changes"
@@ -3369,8 +3530,10 @@ msgid "Clear messages"
 msgstr "Mitteilungen löschen"
 
 #: src/hotkeys.cpp:210
+#, fuzzy
+#| msgid "Refresh"
 msgid "Refresh WML"
-msgstr "WML neuladen"
+msgstr "Aktualisieren"
 
 #: src/hotkeys.cpp:217
 msgid "Next tip of the day"
@@ -3378,24 +3541,31 @@ msgstr ""
 
 #: src/hotkeys.cpp:224
 #, fuzzy
+#| msgid "Previous Unit"
 msgid "Previous tip of the day"
 msgstr "Vorherige Einheit"
 
 #: src/hotkeys.cpp:231
+#, fuzzy
+#| msgid "Tutorial"
 msgid "Start tutorial"
-msgstr "Einführung starten"
+msgstr "Einführung"
 
 #: src/hotkeys.cpp:238
+#, fuzzy
+#| msgid "Play a campaign"
 msgid "Start a campaign"
-msgstr "Kampagne starten"
+msgstr "Eine Kampagne spielen"
 
 #: src/hotkeys.cpp:245
 msgid "Start a multiplayer game"
 msgstr ""
 
 #: src/hotkeys.cpp:252
+#, fuzzy
+#| msgid "Update add-ons"
 msgid "Manage addons"
-msgstr "Erweiterungen verwalten"
+msgstr "Erweiterungen aktualisieren"
 
 #: src/hotkeys.cpp:259
 msgid "Start the editor"
@@ -3543,7 +3713,7 @@ msgstr "Es sind keine weitere Videomodi verfügbar"
 
 #: src/preferences_display.cpp:533
 msgid " (widescreen)"
-msgstr " (Breitbild)"
+msgstr ""
 
 #: src/preferences_display.cpp:537
 msgid "Choose Resolution"
@@ -3598,65 +3768,8 @@ msgid ""
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
 
-#, fuzzy
-#~ msgid "Select unit:"
-#~ msgstr "Nichts auswählen"
-
-#~ msgid "Generate name"
-#~ msgstr "Namen generieren"
-
-#~ msgid "Screenshot failed"
-#~ msgstr "Erstellen des Bildschirmfotos fehlgeschlagen"
-
-#~ msgid "Mushroom Grove Lit"
-#~ msgstr "Erhellter Pilzhain"
-
-#, fuzzy
-#~ msgid "Impassable Regular Mountains"
-#~ msgstr "Unpassierbare Wüstenberge"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "Unpassierbare Wüstenberge"
-
-#, fuzzy
-#~ msgid "Castle Human Keep"
-#~ msgstr "Burgfried"
-
-#, fuzzy
-#~ msgid "Snowy Castle Keep"
-#~ msgstr "Burgfried"
-
-#, fuzzy
-#~ msgid "Deep Water Medium"
-#~ msgstr "Tiefes Wasser"
-
-#, fuzzy
-#~ msgid "Deep Water Tropical"
-#~ msgstr "Tiefes Wasser"
-
-#~ msgid "Snow Forest"
-#~ msgstr "Verschneiter Wald"
-
-#~ msgid "User-Command#2"
-#~ msgstr "Benutzerkommando#2"
-
-#~ msgid "User-Command#3"
-#~ msgstr "Benutzerkommando#3"
-
-#~ msgid "Chasm"
-#~ msgstr "Kluft"
-
-#~ msgid "Wall"
-#~ msgstr "Wand"
-
 #~ msgid "None"
 #~ msgstr "Nichts"
-
-#~ msgid "Could not get image for terrain: $terrain."
-#~ msgstr "Für Gelände $terrain wurde keine Grafik gefunden."
-
-#~ msgid "Error creating or aquiring an image."
-#~ msgstr "Fehler beim Erstellen oder Laden einer Grafik."
 
 #~ msgid "Fort"
 #~ msgstr "Kastell"
@@ -3667,17 +3780,47 @@ msgstr ""
 #~ msgid "Elven Keep"
 #~ msgstr "Burgfried"
 
+#~ msgid "Snow Forest"
+#~ msgstr "Verschneiter Wald"
+
 #~ msgid "Grassland"
 #~ msgstr "Wiese"
 
 #~ msgid "Savanna"
 #~ msgstr "Savanne"
 
+#~ msgid "Chasm"
+#~ msgstr "Kluft"
+
 #~ msgid "Road"
 #~ msgstr "Straße"
 
+#~ msgid "Mushroom Grove Lit"
+#~ msgstr "Erhellter Pilzhain"
+
 #~ msgid "River Ford"
 #~ msgstr "Furt"
+
+#~ msgid "Impassable Desert Mountains"
+#~ msgstr "Unpassierbare Wüstenberge"
+
+#~ msgid "Wall"
+#~ msgstr "Wand"
+
+#~ msgid "Chat log dialog."
+#~ msgstr "Dialog des Gesprächsprotokolls."
+
+#~ msgid "Chat log"
+#~ msgstr "Gesprächsprotokoll"
+
+#~ msgid "Page"
+#~ msgstr "Seite"
+
+#~ msgid "Last"
+#~ msgstr "Letzte"
+
+#~ msgid "Generate name"
+#~ msgstr "Namen generieren"
 
 #~ msgid ""
 #~ "mouseover^Use new lobby interface (only works after a manual reconnect to "
@@ -3688,3 +3831,18 @@ msgstr ""
 
 #~ msgid "Window not defined."
 #~ msgstr "Fenster nicht definiert."
+
+#~ msgid "User-Command#2"
+#~ msgstr "Benutzerkommando#2"
+
+#~ msgid "User-Command#3"
+#~ msgstr "Benutzerkommando#3"
+
+#~ msgid "Screenshot failed"
+#~ msgstr "Erstellen des Bildschirmfotos fehlgeschlagen"
+
+#~ msgid "Could not get image for terrain: $terrain."
+#~ msgstr "Für Gelände $terrain wurde keine Grafik gefunden."
+
+#~ msgid "Error creating or aquiring an image."
+#~ msgstr "Fehler beim Erstellen oder Laden einer Grafik."

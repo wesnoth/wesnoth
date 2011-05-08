@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-05 10:12+0200\n"
+"POT-Creation-Date: 2011-05-08 16:00+0200\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -27,13 +27,13 @@ msgstr "Under jorden"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
-#: data/core/macros/abilities.cfg:581
+#: data/core/macros/abilities.cfg:625
 msgid "berserk"
 msgstr "bersærk"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
-#: data/core/macros/abilities.cfg:583
+#: data/core/macros/abilities.cfg:627
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -45,13 +45,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
-#: data/core/macros/abilities.cfg:667
+#: data/core/macros/abilities.cfg:711
 msgid "magical"
 msgstr "magisk"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
-#: data/core/macros/abilities.cfg:669
+#: data/core/macros/abilities.cfg:713
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -63,13 +63,13 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
-#: data/core/macros/abilities.cfg:716
+#: data/core/macros/abilities.cfg:760
 msgid "firststrike"
 msgstr "initiativ"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
-#: data/core/macros/abilities.cfg:718
+#: data/core/macros/abilities.cfg:762
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -3852,19 +3852,19 @@ msgstr ""
 "enhed."
 
 #. [unstore_unit]
-#: data/core/macros/abilities.cfg:551
+#: data/core/macros/abilities.cfg:576
 msgid "+1 max HP"
 msgstr "+1 maks liv"
 
 # Der må være noget bedre end "stikke i ryggen"... Hvad med "dolke"?
 # snigangreb eller bagholdsangreb er vist bedre som abilities. Joe 18.feb 2007.
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:593
+#: data/core/macros/abilities.cfg:637
 msgid "backstab"
 msgstr "snigangreb"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:595
+#: data/core/macros/abilities.cfg:639
 #, fuzzy
 msgid ""
 "Backstab:\n"
@@ -3879,12 +3879,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:607 data/core/macros/abilities.cfg:619
+#: data/core/macros/abilities.cfg:651 data/core/macros/abilities.cfg:663
 msgid "plague"
 msgstr "pest"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:609
+#: data/core/macros/abilities.cfg:653
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3897,7 +3897,7 @@ msgstr ""
 "pestangrebet. Dette gælder ikke for udøde eller enheder i landsbyer."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:621
+#: data/core/macros/abilities.cfg:665
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -3910,12 +3910,12 @@ msgstr ""
 "ikke for udøde eller enheder i landsbyer."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:631
+#: data/core/macros/abilities.cfg:675
 msgid "slows"
 msgstr "langsom"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:633
+#: data/core/macros/abilities.cfg:677
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -3930,13 +3930,13 @@ msgstr ""
 "lille ikon på dens informationssidepanel, når den vælges."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:642
+#: data/core/macros/abilities.cfg:686
 #, fuzzy
 msgid "petrifies"
 msgstr "Slag"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:644
+#: data/core/macros/abilities.cfg:688
 #, fuzzy
 msgid ""
 "Petrify:\n"
@@ -3948,12 +3948,12 @@ msgstr ""
 "bevæge sig eller angribe."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:653
+#: data/core/macros/abilities.cfg:697
 msgid "marksman"
 msgstr "skarpskytte"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:655
+#: data/core/macros/abilities.cfg:699
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -3962,12 +3962,12 @@ msgstr ""
 "Hvis anvendt offensivt, har dette angreb en træfsikkerhed på mindst 60 %."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:680
+#: data/core/macros/abilities.cfg:724
 msgid "swarm"
 msgstr "sværm"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:682
+#: data/core/macros/abilities.cfg:726
 #, fuzzy
 msgid ""
 "Swarm:\n"
@@ -3983,12 +3983,12 @@ msgstr ""
 
 # kan også være angrib
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:691
+#: data/core/macros/abilities.cfg:735
 msgid "charge"
 msgstr "storm"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:693
+#: data/core/macros/abilities.cfg:737
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
@@ -3999,12 +3999,12 @@ msgstr ""
 "gør også, at enheden selv modtager dobbelt skade fra modstanderens modangreb."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:705
+#: data/core/macros/abilities.cfg:749
 msgid "drains"
 msgstr "dræn"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:707
+#: data/core/macros/abilities.cfg:751
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -4015,12 +4015,12 @@ msgstr ""
 "med halvdelen af det drænede (nedrundet)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:727
+#: data/core/macros/abilities.cfg:771
 msgid "poison"
 msgstr "gift"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:729
+#: data/core/macros/abilities.cfg:773
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "

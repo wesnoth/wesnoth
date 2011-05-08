@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-05 10:12+0200\n"
+"POT-Creation-Date: 2011-05-08 16:00+0200\n"
 "PO-Revision-Date: 2010-04-10 16:18+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -782,8 +782,6 @@ msgstr "válečná sekera"
 #: data/core/units/dwarves/Scout.cfg:42 data/core/units/dwarves/Scout.cfg:50
 #: data/core/units/khalifate/Batal.cfg:22
 #: data/core/units/khalifate/Jundi.cfg:22
-#: data/core/units/khalifate/Mighwar.cfg:25
-#: data/core/units/khalifate/Monawish.cfg:25
 #: data/core/units/khalifate/Muharib.cfg:22
 #: data/core/units/undead/Skele_Deathblade.cfg:162
 #: data/core/units/undead/Skele_Draug.cfg:43
@@ -3375,7 +3373,7 @@ msgstr ""
 #. [unit_type]: id=Arif, race=khalifate
 #: data/core/units/khalifate/Arif.cfg:17
 msgid ""
-"The Amir form the backbone of any Khalifate foot advance. They are often "
+"The Arif form the backbone of any Khalifate foot advance. They are often "
 "sent against fortified enemy positions where their valor and skill with a "
 "sword allows them to assault seemingly inpenetrable defenses."
 msgstr ""
@@ -3384,6 +3382,8 @@ msgstr ""
 #: data/core/units/khalifate/Arif.cfg:22
 #: data/core/units/khalifate/Ghazi.cfg:22
 #: data/core/units/khalifate/Khalid.cfg:22
+#: data/core/units/khalifate/Mighwar.cfg:25
+#: data/core/units/khalifate/Monawish.cfg:25
 #: data/core/units/khalifate/Shuja.cfg:22
 #, fuzzy
 #| msgid "longsword"
@@ -3449,7 +3449,7 @@ msgstr "Starý mág"
 #: data/core/units/khalifate/Elder_Falcon.cfg:20
 msgid ""
 "These falcons have been through many perils and somehow managed to surivive "
-"them. Their dives can be so fast that stories abound of them taking a foe's "
+"them. Their dives can be so fast that stories abound of them taking a foe’s "
 "head clean off."
 msgstr ""
 
@@ -3494,7 +3494,7 @@ msgstr ""
 #. [unit_type]: id=Hakim, race=khalifate
 #: data/core/units/khalifate/Hakim.cfg:24
 msgid ""
-"Ekim use their knowledge of ancient medicine and herbal concoctions to "
+"Hakim use their knowledge of ancient medicine and herbal concoctions to "
 "quickly bring the Khalifate soldiers back to the front lines."
 msgstr ""
 
@@ -3503,14 +3503,10 @@ msgstr ""
 msgid "Jawal"
 msgstr ""
 
-#. [unit_type]: id=Rami, race=khalifate
-#. [unit_type]: id=Saree, race=khalifate
 #. [unit_type]: id=Jawal, race=khalifate
 #: data/core/units/khalifate/Jawal.cfg:18
-#: data/core/units/khalifate/Rami.cfg:18
-#: data/core/units/khalifate/Saree.cfg:18
 msgid ""
-"Karadis are excellent horsemen and few can shoot as well from horseback as "
+"Jawal are excellent horsemen and few can shoot as well from horseback as "
 "they. They love to circle and harass enemies from afar while using their "
 "superior speed to avoid heavy counter attack.."
 msgstr ""
@@ -3546,7 +3542,7 @@ msgstr ""
 #. [unit_type]: id=Khaiyal, race=khalifate
 #: data/core/units/khalifate/Khaiyal.cfg:18
 msgid ""
-"The Ghulam wear truly heavy armor, and thus close with a single high impact "
+"The Khaiyal wear truly heavy armor, and thus close with a single high impact "
 "lance charge in order to save their poor horses’ stamina before switching "
 "over to their trusty maces."
 msgstr ""
@@ -3589,20 +3585,20 @@ msgstr ""
 #. [unit_type]: id=Naffat, race=khalifate
 #: data/core/units/khalifate/Naffat.cfg:17
 msgid ""
-"Rami frequently use burning arrows to set fire to enemy fortifications and "
+"Naffat frequently use burning arrows to set fire to enemy fortifications and "
 "generally sow terror amongst the enemy. Such tactics may also have other "
 "uses in a land of many strange wonders..."
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/khalifate/Naffat.cfg:23
+#: data/core/units/khalifate/Naffat.cfg:22
 #: data/core/units/khalifate/Qatif-al-nar.cfg:22
 #: data/core/units/khalifate/Tineen.cfg:22
-msgid "napalm attack"
+msgid "naptha attack"
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/khalifate/Naffat.cfg:33
+#: data/core/units/khalifate/Naffat.cfg:31
 #: data/core/units/khalifate/Qatif-al-nar.cfg:31
 #: data/core/units/khalifate/Tineen.cfg:31
 #, fuzzy
@@ -3624,6 +3620,14 @@ msgstr ""
 msgid "Rami"
 msgstr ""
 
+#. [unit_type]: id=Rami, race=khalifate
+#: data/core/units/khalifate/Rami.cfg:18
+msgid ""
+"Rami are excellent horsemen and few can shoot as well from horseback as "
+"they. They love to circle and harass enemies from afar while using their "
+"superior speed to avoid heavy counter attack.."
+msgstr ""
+
 #. [unit_type]: id=Rasikh, race=khalifate
 #: data/core/units/khalifate/Rasikh.cfg:4
 msgid "Rasikh"
@@ -3632,6 +3636,14 @@ msgstr ""
 #. [unit_type]: id=Saree, race=khalifate
 #: data/core/units/khalifate/Saree.cfg:4
 msgid "Saree"
+msgstr ""
+
+#. [unit_type]: id=Saree, race=khalifate
+#: data/core/units/khalifate/Saree.cfg:18
+msgid ""
+"Saree are excellent horsemen and few can shoot as well from horseback as "
+"they. They love to circle and harass enemies from afar while using their "
+"superior speed to avoid heavy counter attack.."
 msgstr ""
 
 #. [unit_type]: id=Shuja, race=khalifate

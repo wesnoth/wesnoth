@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-05 10:12+0200\n"
+"POT-Creation-Date: 2011-05-08 16:00+0200\n"
 "PO-Revision-Date: 2009-05-08 22:09+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -28,13 +28,13 @@ msgstr "地下"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
-#: data/core/macros/abilities.cfg:581
+#: data/core/macros/abilities.cfg:625
 msgid "berserk"
 msgstr "狂暴"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
-#: data/core/macros/abilities.cfg:583
+#: data/core/macros/abilities.cfg:627
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -45,13 +45,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
-#: data/core/macros/abilities.cfg:667
+#: data/core/macros/abilities.cfg:711
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
-#: data/core/macros/abilities.cfg:669
+#: data/core/macros/abilities.cfg:713
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -62,13 +62,13 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
-#: data/core/macros/abilities.cfg:716
+#: data/core/macros/abilities.cfg:760
 msgid "firststrike"
 msgstr "先發制人"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
-#: data/core/macros/abilities.cfg:718
+#: data/core/macros/abilities.cfg:762
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -3622,17 +3622,17 @@ msgstr ""
 "這種單位每殺死一個單位能為自己添加一點攻撃力。"
 
 #. [unstore_unit]
-#: data/core/macros/abilities.cfg:551
+#: data/core/macros/abilities.cfg:576
 msgid "+1 max HP"
 msgstr "+1 最大生命值"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:593
+#: data/core/macros/abilities.cfg:637
 msgid "backstab"
 msgstr "背刺"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:595
+#: data/core/macros/abilities.cfg:639
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3645,12 +3645,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:607 data/core/macros/abilities.cfg:619
+#: data/core/macros/abilities.cfg:651 data/core/macros/abilities.cfg:663
 msgid "plague"
 msgstr "瘟疫"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:609
+#: data/core/macros/abilities.cfg:653
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3662,7 +3662,7 @@ msgstr ""
 "戰友。(這對不死或在村莊中的單位不起作用)。 "
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:621
+#: data/core/macros/abilities.cfg:665
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -3674,12 +3674,12 @@ msgstr ""
 "對不死或在村莊中的單位不起作用)。"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:631
+#: data/core/macros/abilities.cfg:675
 msgid "slows"
 msgstr "减速"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:633
+#: data/core/macros/abilities.cfg:677
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -3692,13 +3692,13 @@ msgstr ""
 "半（向上舍入）。"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:642
+#: data/core/macros/abilities.cfg:686
 #, fuzzy
 msgid "petrifies"
 msgstr "輸出"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:644
+#: data/core/macros/abilities.cfg:688
 #, fuzzy
 msgid ""
 "Petrify:\n"
@@ -3709,12 +3709,12 @@ msgstr ""
 "本攻撃會讓單位變成石頭。變成石頭的單位不能移動或攻撃。"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:653
+#: data/core/macros/abilities.cfg:697
 msgid "marksman"
 msgstr "精準"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:655
+#: data/core/macros/abilities.cfg:699
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -3723,12 +3723,12 @@ msgstr ""
 "進攻時，本攻撃至少有60%的命中率。"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:680
+#: data/core/macros/abilities.cfg:724
 msgid "swarm"
 msgstr "連撃"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:682
+#: data/core/macros/abilities.cfg:726
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3741,12 +3741,12 @@ msgstr ""
 "值成正比。例如，一個剩下3/4生命值的單位，其攻撃次數也只有3/4次。"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:691
+#: data/core/macros/abilities.cfg:735
 msgid "charge"
 msgstr "衝鋒"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:693
+#: data/core/macros/abilities.cfg:737
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
@@ -3756,12 +3756,12 @@ msgstr ""
 "這種攻擊使得目標的傷害增加1倍。但同時如果對方反擊擊中，自己也承受雙倍傷害。"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:705
+#: data/core/macros/abilities.cfg:749
 msgid "drains"
 msgstr "吸血"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:707
+#: data/core/macros/abilities.cfg:751
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -3771,12 +3771,12 @@ msgstr ""
 "通過吸食生物單位的生命來治療自己，能治療造成傷害一半的生命值。"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:727
+#: data/core/macros/abilities.cfg:771
 msgid "poison"
 msgstr "毒素"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:729
+#: data/core/macros/abilities.cfg:773
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
