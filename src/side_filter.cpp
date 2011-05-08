@@ -79,8 +79,7 @@ static bool check_side_number(const team &t, const std::string &str)
 {
 		std::vector<std::string> list = utils::split(str);
 		std::string side_number = str_cast(t.side());
-		if ((std::find(list.begin(),list.end(),side_number)==list.end())
-		    && (std::find(list.begin(),list.end(),"all")==list.end()))
+		if (std::find(list.begin(),list.end(),side_number)==list.end())
 		{
 			return false;
 		}

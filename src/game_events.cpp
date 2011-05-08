@@ -514,8 +514,6 @@ namespace game_events {
 
 	std::set<int> get_sides_set(const vconfig& cfg, const bool only_ssf)
 	{
-		std::set<int> result;
-
 		if(only_ssf) {
 			side_filter filter(cfg);
 			return filter.get_teams();
@@ -530,10 +528,14 @@ namespace game_events {
 		}
 
 		if (sides.blank()) {
+
 			put_wml_message("error","empty side= and no [filter_side] is deprecated");
+			std::set<int> result;
 			result.insert(1); // we make sure the set is not empty and the current default is maintained
 			return result;
 		}
+		// uncomment if the decision will be made to make [filter_side] the only & final syntax for specifying sides
+		// put_wml_message("error","specifying side via inline side= is deprecated, use [filter_side] ");
 		side_filter filter(sides.str());
 		return filter.get_teams();
 	}
