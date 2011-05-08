@@ -512,6 +512,32 @@ namespace game_events {
 		lg::wml_error << message << '\n';
 	}
 
+	std::set<int> get_sides_set(const vconfig& cfg, const bool only_ssf)
+	{
+		std::set<int> result;
+
+		if(only_ssf) {
+			side_filter filter(cfg);
+			return filter.get_teams();
+		}
+
+		const config::attribute_value sides = cfg["side"];
+		const vconfig &ssf = cfg.child("filter_side");
+
+		if (!ssf.null()) {
+			side_filter filter(ssf,sides.str());
+			return filter.get_teams();
+		}
+
+		if (sides.blank()) {
+			put_wml_message("error","empty side= and no [filter_side] is deprecated");
+			result.insert(1); // we make sure the set is not empty and the current default is maintained
+			return result;
+		}
+		side_filter filter(sides.str());
+		return filter.get_teams();
+	}
+
 } // end namespace game_events (1)
 
 namespace {
@@ -543,32 +569,9 @@ namespace {
 
 } // end anonymous namespace (4)
 
-/** Gets a set of sides from side= attribute in a given config node.
-    Promotes consistent behaviour and returns always non-empty set with valid teams.
-    Default side, when in doubt is currently side 1. */
-static std::set<int> get_sides_set(const vconfig& cfg)
-{
-	std::set<int> result;
-	const config::attribute_value sides = cfg["side"];
-	const vconfig &ssf = cfg.child("filter_side");
-
-	if (!ssf.null()) {
-		side_filter filter(ssf,sides.str());
-		return filter.get_teams();
-	}
-
-	if (sides.blank()) {
-		put_wml_message("error","empty side= and no [filter_side] is deprecated");
-		result.insert(1); // we make sure the set is not empty and the current default is maintained
-		return result;
-	}
-	side_filter filter(sides.str());
-	return filter.get_teams();
-}
-
 static void toggle_shroud(const bool remove, const vconfig& cfg)
 {
-	std::set<int> sides = get_sides_set(cfg);
+	std::set<int> sides = game_events::get_sides_set(cfg);
 	size_t index;
 
 	foreach (const int &side_num, sides)
@@ -684,7 +687,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 
 WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 {
-	std::set<int> sides = get_sides_set(cfg);
+	std::set<int> sides = game_events::get_sides_set(cfg);
 
 	foreach(const int &side_num, sides)
 	{
@@ -784,7 +787,7 @@ WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 {
-	std::set<int> sides = get_sides_set(cfg);
+	std::set<int> sides = game_events::get_sides_set(cfg);
 	foreach (const int &side_num, sides)
 	{
 		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
@@ -809,7 +812,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	 */
 	std::string switch_ai = cfg["switch_ai"];
 
-	std::set<int> sides = get_sides_set(cfg);
+	std::set<int> sides = game_events::get_sides_set(cfg);
 	size_t team_index;
 
 	foreach (const int &side_num, sides)

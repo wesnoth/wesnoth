@@ -2903,6 +2903,46 @@ static int intf_match_side(lua_State *L)
 	return 1;
 }
 
+static int intf_get_sides(lua_State* L)
+{
+	std::set<int> sides;
+	if(!lua_isnoneornil(L, 2)) {
+		const vconfig ssf_with_filter_tag = luaW_checkvconfig(L, 2);
+		sides = game_events::get_sides_set(ssf_with_filter_tag);
+	}
+	else {
+		const vconfig ssf = luaW_checkvconfig(L, 1, true);
+		if (ssf.null()) {
+			for(unsigned side_number = 1; side_number <= resources::teams->size(); ++side_number) {
+				sides.insert(side_number);
+			}
+		}
+		else sides = game_events::get_sides_set(ssf, true);
+	}
+
+	//keep this stack in the loop:
+	//1: getsideKey getmetatable
+	//2: return table
+	//3: userdata for a side
+	//4: getsideKey metatable copy (of index 1)
+
+	lua_settop(L, 0);
+	lua_pushlightuserdata(L, (void*)&getsideKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_createtable(L, sides.size(), 0);
+	unsigned index = 1;
+	foreach(int side, sides) {
+		team** t = static_cast<team**>(lua_newuserdata(L, sizeof(team*)));
+		*t = &((*resources::teams)[side - 1]);
+		lua_pushvalue(L, 1);
+		lua_setmetatable(L, 3);
+		lua_rawseti(L, 2, index);
+		++index;
+	}
+
+	return 1;
+}
+
 /**
  * Adds a modification to a unit.
  * - Arg 1: unit.
@@ -3093,6 +3133,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_mouseover_tile",       &intf_get_mouseover_tile       },
 		{ "get_recall_units",         &intf_get_recall_units         },
 		{ "get_selected_tile",        &intf_get_selected_tile        },
+		{ "get_sides",                &intf_get_sides                },
 		{ "get_terrain",              &intf_get_terrain              },
 		{ "get_terrain_info",         &intf_get_terrain_info         },
 		{ "get_unit",                 &intf_get_unit                 },
