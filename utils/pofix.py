@@ -2553,6 +2553,9 @@ stringfixes = {
 
 ("taking a foe's head clean off.", "taking a foe’s head clean off."),
 ("poor horses' stamina", "poor horses’ stamina"),
+
+# "naptha" -> "naphtha"
+("naptha attack", "naphtha attack"),
 ),
 
 "wesnoth-utbs" : (
