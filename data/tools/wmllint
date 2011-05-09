@@ -637,50 +637,42 @@ races = []
 unit_races = []
 
 # Attributes that should have translation marks
-translatables = (\
-               "abbrev",
-               "cannot_use_message",
-               "caption",
-               "current_player",
-               "currently_doing_description",
-               "description",
-               "description_inactive",
-               "editor_name",
-               "end_text",
-               "difficulty_descriptions",
-               "female_name_inactive",
-               "female_names",
-               "label",
-               "male_names",
-               "message",
-               "name",
-               "name_inactive",
-               "note",
-               "option_description",
-               "option_name",
-               "order",
-               "plural_name",
-               "prefix",
-               "set_description",
-               "source",
-               "story",
-               "summary",
-               "text",
-               "title",
-               "title2",
-               "tooltip",
-               "translator_comment",
-               "user_team_name",
-               "type_blade",
-               "type_pierce",
-               "type_impact",
-               "type_fire",
-               "type_cold",
-               "type_arcane",
-               "type_electrical",
-               "range_melee",
-               "range_ranged",
-               )
+translatables = re.compile( \
+               "^abbrev$|" \
+               "^cannot_use_message$|" \
+               "^caption$|" \
+               "^current_player$|" \
+               "^currently_doing_description$|" \
+               "^description$|" \
+               "^description_inactive$|" \
+               "^editor_name$|" \
+               "^end_text$|" \
+               "^difficulty_descriptions$|" \
+               "^female_name_inactive$|" \
+               "^female_names$|" \
+               "^label$|" \
+               "^male_names$|" \
+               "^message$|" \
+               "^name$|" \
+               "^name_inactive$|" \
+               "^note$|" \
+               "^option_description$|" \
+               "^option_name$|" \
+               "^order$|" \
+               "^plural_name$|" \
+               "^prefix$|" \
+               "^set_description$|" \
+               "^source$|" \
+               "^story$|" \
+               "^summary$|" \
+               "^text$|" \
+               "^title$|" \
+               "^title2$|" \
+               "^tooltip$|" \
+               "^translator_comment$|" \
+               "^user_team_name$|" \
+               "^type_.[a-z]*$|" \
+               "^range_[a-z]*$")
 
 spellcheck_these = (\
     "cannot_use_message=",
@@ -1264,7 +1256,7 @@ def global_sanity_check(filename, lines):
                 pass
             elif key in ('name', 'male_name', 'female_name'):		# FIXME: check this someday
                 pass
-            elif key in translatables:
+            elif translatables.search(key):
                 if markcheck and has_tr_mark and lines[i].find("\"\"")>-1:
                     print '"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
                           % (filename, i+1, key)
