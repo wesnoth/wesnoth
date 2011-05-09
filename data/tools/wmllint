@@ -591,12 +591,11 @@ def standard_unit_filter():
 # Sanity checking
 
 # Associations for the ability sanity checks.
-# Note: Depends on ABILITY_EXTRA_HEAL not occurring outside ABILITY_CURES.
 notepairs = [
     ("movement_type=undeadspirit", "{SPECIAL_NOTES_SPIRIT}"),
     ("type=arcane", "{SPECIAL_NOTES_ARCANE}"),
     ("{ABILITY_HEALS}", "{SPECIAL_NOTES_HEALS}"),
-    #("{ABILITY_EXTRA_HEAL}", "{SPECIAL_NOTES_EXTRA_HEAL}"),
+    ("{ABILITY_EXTRA_HEAL}", "{SPECIAL_NOTES_EXTRA_HEAL}"),
     ("{ABILITY_UNPOISON}", "{SPECIAL_NOTES_UNPOISON}"),
     ("{ABILITY_CURES}", "{SPECIAL_NOTES_CURES}"),
     ("{ABILITY_REGENERATES}", "{SPECIAL_NOTES_REGENERATES}"),
