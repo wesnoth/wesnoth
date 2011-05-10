@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="Wesnoth_Eclipse_Plugin"
+      id="org.wesnoth.feature"
       label="Wesnoth User Made Content Plugin"
       version="1.0.3"
       provider-name="www.wesnoth.org"
@@ -224,7 +224,6 @@ litigation.
       <import plugin="org.eclipse.osgi.util" version="3.2.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.osgi" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.apache.log4j"/>
-      <import plugin="org.wesnoth.wml"/>
       <import plugin="org.eclipse.xtext.ui"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
@@ -246,6 +245,7 @@ litigation.
       <import plugin="org.eclipse.ui.navigator.resources"/>
       <import plugin="org.eclipse.ui.intro"/>
       <import plugin="org.eclipse.ui.intro.universal"/>
+      <import plugin="org.wesnoth.wml"/>
    </requires>
 
    <plugin
