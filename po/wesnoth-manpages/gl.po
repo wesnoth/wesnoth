@@ -7,12 +7,13 @@
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008, 2010.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2011.
+# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "POT-Creation-Date: 2011-03-20 16:53+0100\n"
-"PO-Revision-Date: 2011-01-10 23:25+0100\n"
-"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"PO-Revision-Date: 2011-05-09 23:19+0200\n"
+"Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: \n"
@@ -339,7 +340,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:111 ../../doc/man/wesnothd.6:58
 #, no-wrap
 msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
-msgstr "B<--log->I<nivel>B<=>I<dominio_1>B<,>I<dominio_2>B<,>I<...>"
+msgstr "B<--log->I<nivel>B<=>I<dominio_1>B<,>I<dominio_2>B<,>I<…>"
 
 # type: Plain text
 #. type: Plain text
@@ -477,12 +478,25 @@ msgstr "Devolve o directorio de datos do xogo."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:153
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,…] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
 msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr "B<--preprocess, -p[=E<lt>definición_1E<gt>,E<lt>definición_2E<gt>,...] E<lt>ficheiro ou cartafolE<gt> E<lt>directorio_de_destinoE<gt>>"
+msgstr "B<--preprocess, -p[=E<lt>definición_1E<gt>,E<lt>definición_2E<gt>,…] E<lt>ficheiro ou cartafolE<gt> E<lt>directorio_de_destinoE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:167
+#, fuzzy
+#| msgid ""
+#| "preprocesses a specified file/folder. The file(s) will be written in "
+#| "specified target directory: a plain cfg file and a processed cfg file. If "
+#| "a folder is specified, it will be preprocessed recursively based on the "
+#| "known preprocessor rules. The common macroses from the data/core/macros "
+#| "will be preprocessed before the specified resources.  B<define1,define2,…"
+#| "> - the extra defines will be added before processing the files. If you "
+#| "want to add them you must add the '=' character before.  If 'SKIP_CORE' "
+#| "is in the define list the data/core won't be preprocessed.  Example: B<-p "
+#| "~/wesnoth/data/campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,"
+#| "MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 msgid ""
 "preprocesses a specified file/folder. The file(s) will be written in "
 "specified target directory: a plain cfg file and a processed cfg file. If a "
@@ -500,7 +514,7 @@ msgstr ""
 "outro procesado. Se se indica un cartafol, preprocesaranse todos os seus "
 "contidos baseándose nas regras para o preprocesador coñecidas. Os macros "
 "comúns dos directorios dos datos, do núcleo e dos macros preprocesaranse "
-"antes que os recursos indicados. B<definición_1,definición_2,...> son as "
+"antes que os recursos indicados. B<definición_1,definición_2,…> son as "
 "definicións adicionais que se engadirán antes de preprocesar os ficheiros. "
 "Se quere engadilas terá que prefixalas co carácter «=». Se «SKIP_CORE» está "
 "na lista de definicións o directorio dos datos e o do núcleo non se "
@@ -686,7 +700,7 @@ msgid ""
 "side. Available values: B<idle_ai> and B<sample_ai>."
 msgstr ""
 "Fai que a intelixencia artificial do bando indicado empregue o algoritmo non "
-"estándar indicado. Os seus posibles valores son B<idle_ai> e B<sample_ai>."
+"estándar indicado. Os seus posíbeis valores son B<idle_ai> e B<sample_ai>."
 
 # type: TP
 #. type: TP
@@ -776,7 +790,7 @@ msgid ""
 msgstr ""
 "Establece parámetros adicionais para o bando. Este parámetro depende das "
 "opcións usadas con B<--controller> e B<--algorithm>. Só debería resultarlle "
-"útila quen estea a deseñar a súa propia intelixencia artificial (aínda non "
+"útil a quen estea a deseñar a súa propia intelixencia artificial (aínda non "
 "está completamente documentado)."
 
 # type: TP
@@ -980,7 +994,7 @@ msgid ""
 msgstr ""
 "Xestiona partidas de A batalla por Wesnoth con varios xogadores. Véxanse en "
 "«http://www.wesnoth.org/wiki/ServerAdministration» (en inglés) as ordes que "
-"acepta o servidor a través do cliente wesnoth (/query [...]) ou do fifo."
+"acepta o servidor a través do cliente wesnoth (/query […]) ou do fifo."
 
 # type: TP
 #. type: TP
@@ -1141,7 +1155,7 @@ msgstr "I<clave>=\"I<valor>\""
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:105
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "I<clave>=\"I<valor>,I<valor>,...\""
+msgstr "I<clave>=\"I<valor>,I<valor>,…\""
 
 # type: Plain text
 #. type: Plain text
@@ -1261,7 +1275,7 @@ msgid ""
 "B</var/run/socket/wesnothd/socket>)."
 msgstr ""
 "A ruta ao fifo polo que se poden enviar ordes ao servidor —equivalente ao “/"
-"query ...” dende o wesnoth—. Se non se especifica outra cousa, toma a ruta "
+"query …” dende o wesnoth—. Se non se especifica outra cousa, toma a ruta "
 "indicada como valor predeterminado durante a compilación (en principio B</"
 "var/run/socket/wesnothd/socket>)."
 
@@ -1569,7 +1583,7 @@ msgid ""
 "Example: B<time=\"1D12h30m\"> results in a ban time of 1 day, 12 hours and "
 "30 minutes."
 msgstr ""
-"A duración. O formato é «%d[%s[%d%s[...]]]», onde %s será «s» (segundos), "
+"A duración. O formato é «%d[%s[%d%s[…]]]», onde %s será «s» (segundos), "
 "«m» (minutos), «h» (horas), «D» (días), «M» (meses) ou «Y» (anos), e %d será "
 "un número. Se non se fornece un modificador de tempo, interpretarase a "
 "cantidade indicada como minutos. Por exemplo: time=\"1D12h30m\" é unha veda "
@@ -1674,7 +1688,7 @@ msgid ""
 "(e.g. phpbb3_users)."
 msgstr ""
 "O nome da táboa na que o foro phpbb almacena os datos do usuario (para "
-"«user_handler=forum»). O máis probable é que dita táboa sexa E<lt>prefixo-da-"
+"«user_handler=forum»). O máis probábel é que dita táboa sexa E<lt>prefixo-da-"
 "táboaE<gt>_users (por exemplo, «phpbb3_users»)."
 
 # type: TP
