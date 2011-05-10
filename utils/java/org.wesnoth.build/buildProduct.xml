@@ -1,0 +1,28 @@
+<project default="main">
+    <property file="build.properties"/>
+    <target name="main">
+        <property name="baseLocation" value="${eclipse.home}"/>
+        <!-- by default, check for deltapack co-located with eclipse -->
+        <property name="deltapack" value="${eclipse.home}/deltapack/eclipse"/>
+
+        <!-- Check that we have a deltapack -->
+        <available property="haveDeltaPack" file="${deltapack}"/>
+        <fail unless="haveDeltaPack" message="The deltapack is required to build this product.  Please edit buildProduct.xml or set the &quot;deltapack&quot; property." />
+            
+        <property name="builder" value="${basedir}" />
+        <property name="buildDirectory" value="${basedir}/buildDirectory"/>
+        <property name="pluginPath" value="${basedir}/..${path.separator}${deltapack}" />
+        <property name="buildTempFolder" value="${buildDirectory}" />
+            
+        <ant antfile="${eclipse.pdebuild.scripts}/productBuild/productBuild.xml" />
+
+        <move todir="${basedir}">
+            <fileset dir="${buildDirectory}/${buildLabel}" includes="*.zip"/>
+        </move>
+
+        <!-- refresh the workspace -->
+        <eclipse.convertPath fileSystemPath="${basedir}" property="resourcePath"/>
+        <eclipse.refreshLocal resource="${resourcePath}" depth="infinite"/>
+    </target>
+</project>
+        
