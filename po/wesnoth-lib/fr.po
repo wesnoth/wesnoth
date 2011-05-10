@@ -3,14 +3,15 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
+# Gérard Bodin <bodin.gnork@gmail.com>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-03 14:27+0200\n"
-"PO-Revision-Date: 2010-05-28 08:49+0100\n"
-"Last-Translator: Guigou <guillaume.guigou@cnfpt.fr>\n"
+"PO-Revision-Date: 2011-05-10 00:41+0200\n"
+"Last-Translator: Gérard Bodin <bodin.gnork@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -629,23 +630,22 @@ msgstr "Ok"
 #. [window]: id=chat_log
 #: data/gui/default/window/chat_log.cfg:8
 msgid "Chat log dialog."
-msgstr ""
+msgstr "Formulaire d'historique des discussions."
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:28
-#, fuzzy
 msgid "Chat log"
-msgstr "Afficher l'historique des discussions"
+msgstr "Historique des discussions"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:53
 msgid "Page"
-msgstr ""
+msgstr "Page"
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:64
 msgid "Last"
-msgstr ""
+msgstr "Dernier"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
@@ -2067,7 +2067,7 @@ msgstr ""
 #: src/game_preferences_display.cpp:1235
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
-"Aucun thème connu. Essayez de le changer à partie d'une partie en cours."
+"Aucun thème connu. Essayez de le changer à partir d'une partie en cours."
 
 #: src/game_preferences_display.cpp:1278
 msgid "Find $filename server binary to host networked games"
@@ -2292,7 +2292,7 @@ msgstr "Ajouter un point de passage"
 
 #: src/hotkeys.cpp:49
 msgid "Hold Position"
-msgstr "Garder position"
+msgstr "Tenir la position"
 
 #: src/hotkeys.cpp:50
 msgid "End Unit Turn"
