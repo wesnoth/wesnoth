@@ -117,7 +117,8 @@ unit::unit(const unit& o):
            experience_(o.experience_),
            max_experience_(o.max_experience_),
            level_(o.level_),
-	canrecruit_(o.canrecruit_),
+           canrecruit_(o.canrecruit_),
+           recruit_list_(o.recruit_list_),
            alignment_(o.alignment_),
            flag_rgb_(o.flag_rgb_),
            image_mods_(o.image_mods_),
@@ -203,6 +204,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	max_experience_(0),
 	level_(0),
 	canrecruit_(cfg["canrecruit"].to_bool()),
+	recruit_list_(),
 	alignment_(),
 	flag_rgb_(),
 	image_mods_(),
@@ -496,7 +498,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		"max_hitpoints", "max_moves", "max_experience",
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
 		"experience", "resting", "unrenamable", "alignment",
-		"canrecruit", "x", "y", "placement",
+		"canrecruit", "unit_recruit", "x", "y", "placement",
 		// Useless attributes created when saving units to WML:
 		"flag_rgb", "language_name" };
 	foreach (const char *attr, internalized_attrs) {
@@ -514,6 +516,11 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	foreach (const config::attribute &attr, input_cfg.attribute_range()) {
 		if (attr.first == "do_not_list") continue;
 		WRN_UT << "Unknown attribute '" << attr.first << "' discarded.\n";
+	}
+
+	std::vector<std::string> recruits = utils::split(cfg["unit_recruit"]);
+	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
+		recruit_list_.insert(*i);
 	}
 }
 
@@ -546,6 +553,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	max_experience_(0),
 	level_(0),
 	canrecruit_(false),
+	recruit_list_(),
 	alignment_(),
 	flag_rgb_(),
 	image_mods_(),
@@ -619,12 +627,13 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	 */
 	unrenamable_ = false;
 	anim_ = NULL;
-	getsHit_=0;
+	getsHit_ = 0;
 	end_turn_ = false;
 	hold_position_ = false;
 	next_idling_ = 0;
 	frame_begin_time_ = 0;
 	unit_halo_ = halo::NO_HALO;
+
 }
 
 unit::~unit()
@@ -1597,6 +1606,8 @@ void unit::write(config& cfg) const
 
 	if(can_recruit())
 		cfg["canrecruit"] = true;
+
+	cfg["unit_recruit"] = utils::join(recruit_list_);
 
 	cfg["facing"] = map_location::write_direction(facing_);
 

@@ -348,6 +348,29 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 	return !rt.steps.empty();
 }
 
+const std::set<std::string> get_recruits_for_location(int side, const map_location &recruit_loc)
+{
+	LOG_NG << "getting recruit list for side " << side << "\n";
+
+	std::set<std::string> recruit_list = (*resources::teams)[side -1].recruits();
+
+	unit_map::const_iterator u = resources::units->begin(),
+			u_end = resources::units->end(), leader = u_end, leader_keep = u_end;
+
+	for(; u != u_end; ++u) {
+		if (u->can_recruit() && u->side() == side) {
+			leader = u;
+			if (resources::game_map->is_keep(leader->get_location())) {
+				leader_keep = leader;
+				if (can_recruit_on(*resources::game_map, leader_keep->get_location(), recruit_loc))
+					recruit_list.insert(leader_keep->recruits().begin(), leader_keep->recruits().end());
+			}
+		}
+	}
+
+	return recruit_list;
+}
+
 std::string find_recruit_location(int side, map_location &recruit_loc)
 {
 	LOG_NG << "finding recruit location for side " << side << "\n";

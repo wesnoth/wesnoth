@@ -86,6 +86,14 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 std::string find_recruit_location(int side, map_location &recruit_location);
 
 /**
+ * Get's the recruitable units from a side's leaders' personal recruit lists who can recruit on a specific hex field.
+ * @param side of the leaders to search for their personal recruit lists.
+ * @param recruit_location the hex field being part of the castle the player wants to recruit on.
+ * @return a set of units that can be recruited by leaders on a keep connected by castle tiles with recruit_loc.
+ */
+const std::set<std::string> get_recruits_for_location(int side, const map_location &recruit_loc);
+
+/**
  * Place a unit into the game.
  * The unit will be placed on @a recruit_location, which should be retrieved
  * through a call to recruit_location().

@@ -127,6 +127,8 @@ public:
 	fixed_t alpha() const { return alpha_; }
 
 	bool can_recruit() const { return canrecruit_; }
+	const std::set<std::string>& recruits() const
+		{ return recruit_list_; }
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
 	int total_movement() const { return max_movement_; }
 	int movement_left() const { return (movement_ == 0 || incapacitated()) ? 0 : movement_; }
@@ -311,7 +313,7 @@ public:
 	// Only see_all=true use caching
 	bool invisible(const map_location& loc, bool see_all=true) const;
 
-	/** Mark this unit as clone so it can be insterted to unit_map
+	/** Mark this unit as clone so it can be inserted to unit_map
 	 * @returns                   self (for convenience)
 	 **/
 	unit& clone(bool is_temporary=true);
@@ -372,6 +374,7 @@ private:
 	int max_experience_;
 	int level_;
 	bool canrecruit_;
+	std::set<std::string> recruit_list_;
 	unit_type::ALIGNMENT alignment_;
 	std::string flag_rgb_;
 	std::string image_mods_;

@@ -679,7 +679,11 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 	gui_->draw(); //clear the old menu
 	std::vector<std::string> item_keys;
 	std::vector<std::string> items;
-	const std::set<std::string>& recruits = current_team.recruits();
+
+	map_location recruit_loc = last_hex;
+	find_recruit_location(side_num, recruit_loc);
+	std::set<std::string> recruits = get_recruits_for_location(side_num, recruit_loc);
+
 	for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
 		const unit_type *type = unit_types.find(*it);
 		if (!type) {
@@ -753,7 +757,8 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 
 	//search for the unit to be recruited in recruits
 	int recruit_num = 0;
-	const std::set<std::string>& recruits = current_team.recruits();
+	std::set<std::string> recruits = get_recruits_for_location(side_num, last_hex);
+
 	for(std::set<std::string>::const_iterator r = recruits.begin(); ; ++r) {
 		if (r == recruits.end()) {
 			return;
