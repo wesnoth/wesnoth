@@ -692,7 +692,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 
 WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 {
-	std::set<int> sides = game_events::get_sides_set(cfg);
+	std::set<int> sides = game_events::get_sides_set(cfg, false, true);
 
 	foreach(const int &side_num, sides)
 	{
