@@ -240,6 +240,7 @@ public:
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::view::pre_show" << std::endl;
 		controller_.update_view_from_model();
+		window.keyboard_capture(model_.msg_label);
 		window.invalidate_layout();//workaround for assertion failure
 		LOG_CHAT_LOG << "Exiting tchat_log::view::pre_show" << std::endl;
 	}
