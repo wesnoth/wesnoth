@@ -2923,7 +2923,8 @@ static int intf_get_sides(lua_State* L)
 	}
 	else {
 		const vconfig ssf_with_filter_tag = luaW_checkvconfig(L, 2);
-		sides = game_events::get_sides_set(ssf_with_filter_tag);
+		const bool only_side = lua_toboolean(L, 3);
+		sides = game_events::get_sides_set(ssf_with_filter_tag, false, only_side);
 	}
 
 	//keep this stack in the loop:

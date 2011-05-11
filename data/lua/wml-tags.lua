@@ -73,7 +73,7 @@ end
 function wml_actions.gold(cfg)
 	local amount = tonumber(cfg.amount) or
 		helper.wml_error "[gold] missing required amount= attribute."
-	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg)) do
+	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg, false)) do
 		team.gold = team.gold + amount
 	end
 end
@@ -134,7 +134,7 @@ function wml_actions.fire_event(cfg)
 end
 
 function wml_actions.disallow_recruit(cfg)
-	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg)) do
+	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg, false)) do
 		local v = team.recruit
 		for w in string.gmatch(cfg.type, "[^%s,][^,]*") do
 			for i, r in ipairs(v) do
@@ -149,7 +149,7 @@ function wml_actions.disallow_recruit(cfg)
 end
 
 function wml_actions.set_recruit(cfg)
-	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg)) do
+	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg, false)) do
 		local v = {}
 		local recruit = cfg.recruit or helper.wml_error("[set_recruit] missing required recruit= attribute")
 		for w in string.gmatch(recruit, "[^%s,][^,]*") do
