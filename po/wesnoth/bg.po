@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-03 14:27+0200\n"
+"POT-Creation-Date: 2011-05-12 12:14+0200\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -6421,7 +6421,7 @@ msgid ""
 "computer-controlled allies using the right-click context menu."
 msgstr ""
 
-#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1611
 msgid "Victory:"
 msgstr "Победа:"
 
@@ -7216,7 +7216,7 @@ msgid "OK"
 msgstr "ОК"
 
 #: src/dialogs.cpp:611 src/dialogs.cpp:1025 src/dialogs.cpp:1132
-#: src/multiplayer_connect.cpp:1032 src/multiplayer_create.cpp:86
+#: src/multiplayer_connect.cpp:1031 src/multiplayer_create.cpp:86
 #: src/multiplayer_wait.cpp:175
 msgid "Cancel"
 msgstr "Отказ"
@@ -7245,106 +7245,106 @@ msgstr "Опит: "
 msgid "Moves: "
 msgstr "Ходове: "
 
-#: src/game.cpp:573 src/game.cpp:1304
+#: src/game.cpp:573 src/game.cpp:1297
 msgid "The Battle for Wesnoth"
 msgstr "Битката за Уеснот"
 
-#: src/game.cpp:902 src/game.cpp:910
+#: src/game.cpp:895 src/game.cpp:903
 msgid "The file you have tried to load is corrupt"
 msgstr "Файлът е повреден"
 
-#: src/game.cpp:905 src/game.cpp:913 src/savegame.cpp:534
+#: src/game.cpp:898 src/game.cpp:906 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Файлът който се опитвате да заредите е повреден: '"
 
-#: src/game.cpp:917
+#: src/game.cpp:910
 msgid "File I/O Error while reading the game"
 msgstr "Грешка Вход/Изход при четене на играта"
 
-#: src/game.cpp:1012
+#: src/game.cpp:1005
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Няма цели"
 
-#: src/game.cpp:1050
+#: src/game.cpp:1043
 msgid "Difficulty"
 msgstr "Трудност"
 
-#: src/game.cpp:1051
+#: src/game.cpp:1044
 msgid "Select difficulty level:"
 msgstr "Избери ниво на трудност:"
 
-#: src/game.cpp:1186
+#: src/game.cpp:1179
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Наистина ли искате ли да изтриете записа?"
 
-#: src/game.cpp:1187
+#: src/game.cpp:1180
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1191
+#: src/game.cpp:1184
 #, fuzzy
 msgid "Don't show again"
 msgstr "Не ме питай отново."
 
-#: src/game.cpp:1262
+#: src/game.cpp:1255
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Грешка по време на игра : "
 
-#: src/game.cpp:1264 src/playcampaign.cpp:131 src/playcampaign.cpp:406
+#: src/game.cpp:1257 src/playcampaign.cpp:131 src/playcampaign.cpp:406
 msgid "The game could not be loaded: "
 msgstr "Играта не може да се зареди: "
 
-#: src/game.cpp:1266 src/playcampaign.cpp:133 src/playcampaign.cpp:409
+#: src/game.cpp:1259 src/playcampaign.cpp:133 src/playcampaign.cpp:409
 msgid "Error while playing the game: "
 msgstr "Грешка по време на игра : "
 
-#: src/game.cpp:1284 src/playcampaign.cpp:135 src/playcampaign.cpp:412
+#: src/game.cpp:1277 src/playcampaign.cpp:135 src/playcampaign.cpp:412
 msgid "The game map could not be loaded: "
 msgstr "Картата не може да се зареди: "
 
-#: src/game.cpp:1422
+#: src/game.cpp:1415
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 msgstr[1] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 
-#: src/game.cpp:1429
+#: src/game.cpp:1422
 msgid "ERROR DETAILS:"
 msgstr "ПОДРОБНОСТИ ЗА ГРЕШКАТА:"
 
-#: src/game.cpp:1449
+#: src/game.cpp:1442
 msgid "Error loading game configuration files: '"
 msgstr "Грешка при зареждане на файловете с настройките: '"
 
-#: src/game.cpp:1450
+#: src/game.cpp:1443
 msgid "' (The game will now exit)"
 msgstr "' (Следва изход от играта)"
 
-#: src/game.cpp:1459
+#: src/game.cpp:1452
 #, fuzzy
 msgid "Loading data files"
 msgstr "Четена на файловете с единици."
 
-#: src/game.cpp:1885
+#: src/game.cpp:1878
 msgid "Loading game configuration."
 msgstr "Зареждане на настройките на играта."
 
-#: src/game.cpp:1891
+#: src/game.cpp:1884
 msgid "Re-initialize fonts for the current language."
 msgstr "Обновяване на шрифтовете за текущият език."
 
-#: src/game.cpp:1899
+#: src/game.cpp:1892
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Пращане на допълнението"
 
-#: src/game.cpp:1908
+#: src/game.cpp:1901
 msgid "Loading title screen."
 msgstr "Зареждане на главният екран."
 
@@ -7749,18 +7749,18 @@ msgid "System default language"
 msgstr "Език по подразбиране за системата"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1469
-#: src/multiplayer_connect.cpp:221 src/multiplayer_connect.cpp:265
+#: src/multiplayer_connect.cpp:220 src/multiplayer_connect.cpp:264
 #, fuzzy
 msgid "gender^Random"
 msgstr "Случайна"
 
-#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:217
-#: src/multiplayer_connect.cpp:261
+#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:216
+#: src/multiplayer_connect.cpp:260
 msgid "Female ♀"
 msgstr ""
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:219
-#: src/multiplayer_connect.cpp:263
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:218
+#: src/multiplayer_connect.cpp:262
 msgid "Male ♂"
 msgstr ""
 
@@ -7859,11 +7859,11 @@ msgstr ""
 msgid "Leader"
 msgstr "Водач"
 
-#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1017
+#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1016
 msgid "Team"
 msgstr "Отбор"
 
-#: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1028
+#: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1027
 msgid "Gold"
 msgstr "Злато"
 
@@ -7879,7 +7879,7 @@ msgstr "Единици"
 msgid "Upkeep"
 msgstr "Издръжки"
 
-#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1029
+#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1028
 #: src/multiplayer_wait.cpp:507
 msgid "Income"
 msgstr "Приход"
@@ -8508,7 +8508,7 @@ msgid "whisper: $sender"
 msgstr ""
 
 #: src/menu_events.cpp:2746 src/menu_events.cpp:2765
-#: src/multiplayer_connect.cpp:699
+#: src/multiplayer_connect.cpp:698
 #, fuzzy
 msgid "(empty)"
 msgstr "Празно"
@@ -8749,127 +8749,127 @@ msgstr ""
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:95 src/multiplayer_connect.cpp:485
-#: src/multiplayer_connect.cpp:629
+#: src/multiplayer_connect.cpp:95 src/multiplayer_connect.cpp:484
+#: src/multiplayer_connect.cpp:628
 msgid "Normal"
 msgstr "Нормално"
 
-#: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:625
+#: src/multiplayer_connect.cpp:480 src/multiplayer_connect.cpp:624
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:507
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:625
+#: src/multiplayer_connect.cpp:480 src/multiplayer_connect.cpp:624
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:510
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:483 src/multiplayer_connect.cpp:627
+#: src/multiplayer_connect.cpp:482 src/multiplayer_connect.cpp:626
 #: src/multiplayer_wait.cpp:509
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:659
+#: src/multiplayer_connect.cpp:658
 msgid "(Vacant slot)"
 msgstr "(Свободно място)"
 
-#: src/multiplayer_connect.cpp:667
+#: src/multiplayer_connect.cpp:666
 msgid "Anonymous local player"
 msgstr "Анонимен локален играч"
 
-#: src/multiplayer_connect.cpp:680 src/multiplayer_connect.cpp:1443
+#: src/multiplayer_connect.cpp:679 src/multiplayer_connect.cpp:1442
 msgid "Computer Player"
 msgstr "Компютър"
 
-#: src/multiplayer_connect.cpp:683
+#: src/multiplayer_connect.cpp:682
 msgid "$playername $side"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:687
+#: src/multiplayer_connect.cpp:686
 msgid "(Empty slot)"
 msgstr "(Празно място)"
 
-#: src/multiplayer_connect.cpp:694
+#: src/multiplayer_connect.cpp:693
 msgid "(Reserved for $playername)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:806
+#: src/multiplayer_connect.cpp:805
 #, fuzzy
 msgid "Reserved"
 msgstr "Резерв: "
 
-#: src/multiplayer_connect.cpp:807
+#: src/multiplayer_connect.cpp:806
 msgid "--give--"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:942
+#: src/multiplayer_connect.cpp:941
 #, fuzzy
 msgid "Only random sides in the current era."
 msgstr "Няма непроизволни страни в текущата ера"
 
-#: src/multiplayer_connect.cpp:966
+#: src/multiplayer_connect.cpp:965
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Намирането на тип водач за фракция $faction е невъзможно"
 
-#: src/multiplayer_connect.cpp:1003
+#: src/multiplayer_connect.cpp:1002
 #, fuzzy
 msgid "Game Lobby: "
 msgstr "Лоби на играта"
 
-#: src/multiplayer_connect.cpp:1024
+#: src/multiplayer_connect.cpp:1023
 msgid "Player/Type"
 msgstr "Играч/Тип"
 
-#: src/multiplayer_connect.cpp:1025
+#: src/multiplayer_connect.cpp:1024
 msgid "Faction"
 msgstr "Фракция"
 
-#: src/multiplayer_connect.cpp:1026
+#: src/multiplayer_connect.cpp:1025
 #, fuzzy
 msgid "Team/Gender"
 msgstr "Защитаващ се"
 
-#: src/multiplayer_connect.cpp:1027
+#: src/multiplayer_connect.cpp:1026
 msgid "Color"
 msgstr "Цвят"
 
-#: src/multiplayer_connect.cpp:1031
+#: src/multiplayer_connect.cpp:1030
 msgid "I'm Ready"
 msgstr "Готов съм"
 
-#: src/multiplayer_connect.cpp:1041
+#: src/multiplayer_connect.cpp:1040
 #, fuzzy
 msgid "The scenario is invalid because it has no id."
 msgstr "Мисията е невалидна, защото няма страни."
 
-#: src/multiplayer_connect.cpp:1045
+#: src/multiplayer_connect.cpp:1044
 msgid "The scenario is invalid because it has no sides."
 msgstr "Мисията е невалидна, защото няма страни."
 
-#: src/multiplayer_connect.cpp:1440
+#: src/multiplayer_connect.cpp:1439
 msgid "Network Player"
 msgstr "Играч в мрежата"
 
-#: src/multiplayer_connect.cpp:1442
+#: src/multiplayer_connect.cpp:1441
 msgid "Local Player"
 msgstr "Локален Играч"
 
-#: src/multiplayer_connect.cpp:1444
+#: src/multiplayer_connect.cpp:1443
 msgid "Empty"
 msgstr "Празно"
 
-#: src/multiplayer_connect.cpp:1589
+#: src/multiplayer_connect.cpp:1588
 msgid "Cannot find era $era"
 msgstr "Ера $era не е открита"
 
-#: src/multiplayer_connect.cpp:1614
+#: src/multiplayer_connect.cpp:1613
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Условия за победа\n"
 "@Побеждаване на вражеския водач(и)"
 
-#: src/multiplayer_connect.cpp:1718
+#: src/multiplayer_connect.cpp:1717
 msgid "Waiting for players to join..."
 msgstr "Изчакване на играчи да се присъединят..."
 
@@ -9429,24 +9429,24 @@ msgstr "Победа"
 msgid "You have emerged victorious!"
 msgstr "Вие сте победител!"
 
-#: src/playturn.cpp:219
+#: src/playturn.cpp:221
 msgid "Replace with AI"
 msgstr "Замяна с компютър"
 
-#: src/playturn.cpp:220
+#: src/playturn.cpp:222
 msgid "Replace with local player"
 msgstr "Замяна с локален играч"
 
-#: src/playturn.cpp:221
+#: src/playturn.cpp:223
 msgid "Abort game"
 msgstr "Прекъсване на играта"
 
-#: src/playturn.cpp:227 src/playturn.cpp:241
+#: src/playturn.cpp:229 src/playturn.cpp:243
 #, fuzzy
 msgid "Replace with $player"
 msgstr "Замяна с локален играч"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:249
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "излезе от играта. Как ще постъпите?"

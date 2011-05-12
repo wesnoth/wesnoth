@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-03 14:27+0200\n"
+"POT-Creation-Date: 2011-05-12 12:14+0200\n"
 "PO-Revision-Date: 2010-09-02 11:07+0700\n"
 "Last-Translator: yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -7082,7 +7082,7 @@ msgstr ""
 "untuk sekutu-sekutu yang dikontrol oleh computer menggunakan menu konteks "
 "klik kanan."
 
-#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1611
 msgid "Victory:"
 msgstr "Kemenangan:"
 
@@ -7844,7 +7844,7 @@ msgid "OK"
 msgstr "OK"
 
 #: src/dialogs.cpp:611 src/dialogs.cpp:1025 src/dialogs.cpp:1132
-#: src/multiplayer_connect.cpp:1032 src/multiplayer_create.cpp:86
+#: src/multiplayer_connect.cpp:1031 src/multiplayer_create.cpp:86
 #: src/multiplayer_wait.cpp:175
 msgid "Cancel"
 msgstr "Batalkan"
@@ -7873,39 +7873,39 @@ msgstr "AP:"
 msgid "Moves: "
 msgstr "Gerakan:"
 
-#: src/game.cpp:573 src/game.cpp:1304
+#: src/game.cpp:573 src/game.cpp:1297
 msgid "The Battle for Wesnoth"
 msgstr "Peperangan untuk Wesnoth"
 
-#: src/game.cpp:902 src/game.cpp:910
+#: src/game.cpp:895 src/game.cpp:903
 msgid "The file you have tried to load is corrupt"
 msgstr "File yang anda coba load rusak"
 
-#: src/game.cpp:905 src/game.cpp:913 src/savegame.cpp:534
+#: src/game.cpp:898 src/game.cpp:906 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "File yang anda coba load rusak: '"
 
-#: src/game.cpp:917
+#: src/game.cpp:910
 msgid "File I/O Error while reading the game"
 msgstr "Error file I/O ketika membaca permainan"
 
-#: src/game.cpp:1012
+#: src/game.cpp:1005
 msgid "No campaigns are available.\n"
 msgstr "Tidak ada kampanye yang tersedia.\n"
 
-#: src/game.cpp:1050
+#: src/game.cpp:1043
 msgid "Difficulty"
 msgstr "Tingkat Kesulitan"
 
-#: src/game.cpp:1051
+#: src/game.cpp:1044
 msgid "Select difficulty level:"
 msgstr "Pilih tingkat kesulitan:"
 
-#: src/game.cpp:1186
+#: src/game.cpp:1179
 msgid "Do you really want to start the server?"
 msgstr "Apakah anda benar-benar hendak memulai server?"
 
-#: src/game.cpp:1187
+#: src/game.cpp:1180
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7913,62 +7913,62 @@ msgstr ""
 "Server tersebut akan bekerja di proses latar belakang sampai semua pemain "
 "sudah diputuskan."
 
-#: src/game.cpp:1191
+#: src/game.cpp:1184
 msgid "Don't show again"
 msgstr "Jangan tunjukkan lagi"
 
-#: src/game.cpp:1262
+#: src/game.cpp:1255
 msgid "Error while starting server: "
 msgstr "Error ketika memulai server:"
 
-#: src/game.cpp:1264 src/playcampaign.cpp:131 src/playcampaign.cpp:406
+#: src/game.cpp:1257 src/playcampaign.cpp:131 src/playcampaign.cpp:406
 msgid "The game could not be loaded: "
 msgstr "Permainan tidak bisa diload:"
 
-#: src/game.cpp:1266 src/playcampaign.cpp:133 src/playcampaign.cpp:409
+#: src/game.cpp:1259 src/playcampaign.cpp:133 src/playcampaign.cpp:409
 msgid "Error while playing the game: "
 msgstr "Error ketika memainkan permainan:"
 
-#: src/game.cpp:1284 src/playcampaign.cpp:135 src/playcampaign.cpp:412
+#: src/game.cpp:1277 src/playcampaign.cpp:135 src/playcampaign.cpp:412
 msgid "The game map could not be loaded: "
 msgstr "Peta permainan tidak bisa diload:"
 
-#: src/game.cpp:1422
+#: src/game.cpp:1415
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
 "1 Add-on berikut memiliki error dan tidak bisa diload: Semua add-on berikut "
 "memiliki error dan tidak bisa diload:"
 
-#: src/game.cpp:1429
+#: src/game.cpp:1422
 msgid "ERROR DETAILS:"
 msgstr "RINCI-RINCI ERROR:"
 
-#: src/game.cpp:1449
+#: src/game.cpp:1442
 msgid "Error loading game configuration files: '"
 msgstr "Error meload file konfigurasi permainan: '"
 
-#: src/game.cpp:1450
+#: src/game.cpp:1443
 msgid "' (The game will now exit)"
 msgstr "'(Permainan akan sekarang ditutup)"
 
-#: src/game.cpp:1459
+#: src/game.cpp:1452
 msgid "Loading data files"
 msgstr "Meload file-file data"
 
-#: src/game.cpp:1885
+#: src/game.cpp:1878
 msgid "Loading game configuration."
 msgstr "Meload konfigurasi permainan."
 
-#: src/game.cpp:1891
+#: src/game.cpp:1884
 msgid "Re-initialize fonts for the current language."
 msgstr "Memulai ulang huruf-huruf untuk bahasa yang dipilih."
 
-#: src/game.cpp:1899
+#: src/game.cpp:1892
 msgid "Searching for installed add-ons."
 msgstr "Mencari tambahan terinstal."
 
-#: src/game.cpp:1908
+#: src/game.cpp:1901
 msgid "Loading title screen."
 msgstr "Meload layar judul."
 
@@ -8342,17 +8342,17 @@ msgid "System default language"
 msgstr "Bahasa sistem yang asli"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1469
-#: src/multiplayer_connect.cpp:221 src/multiplayer_connect.cpp:265
+#: src/multiplayer_connect.cpp:220 src/multiplayer_connect.cpp:264
 msgid "gender^Random"
 msgstr "Acak"
 
-#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:217
-#: src/multiplayer_connect.cpp:261
+#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:216
+#: src/multiplayer_connect.cpp:260
 msgid "Female ♀"
 msgstr "Wanita ♀"
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:219
-#: src/multiplayer_connect.cpp:263
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:218
+#: src/multiplayer_connect.cpp:262
 msgid "Male ♂"
 msgstr "Pria ♂"
 
@@ -8436,11 +8436,11 @@ msgstr "Gulung Ke"
 msgid "Leader"
 msgstr "Pemimpin"
 
-#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1017
+#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1016
 msgid "Team"
 msgstr "Tim"
 
-#: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1028
+#: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1027
 msgid "Gold"
 msgstr "Emas"
 
@@ -8456,7 +8456,7 @@ msgstr "Unit"
 msgid "Upkeep"
 msgstr "Pengeluaran"
 
-#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1029
+#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1028
 #: src/multiplayer_wait.cpp:507
 msgid "Income"
 msgstr "Pendapatan"
@@ -9065,7 +9065,7 @@ msgid "whisper: $sender"
 msgstr "bisikan: $sender"
 
 #: src/menu_events.cpp:2746 src/menu_events.cpp:2765
-#: src/multiplayer_connect.cpp:699
+#: src/multiplayer_connect.cpp:698
 msgid "(empty)"
 msgstr "Kosong"
 
@@ -9304,121 +9304,121 @@ msgstr ""
 msgid "The password you provided was incorrect."
 msgstr "Kata sandi yang anda berikan salah."
 
-#: src/multiplayer_connect.cpp:95 src/multiplayer_connect.cpp:485
-#: src/multiplayer_connect.cpp:629
+#: src/multiplayer_connect.cpp:95 src/multiplayer_connect.cpp:484
+#: src/multiplayer_connect.cpp:628
 msgid "Normal"
 msgstr "Normal"
 
-#: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:625
+#: src/multiplayer_connect.cpp:480 src/multiplayer_connect.cpp:624
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:507
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:625
+#: src/multiplayer_connect.cpp:480 src/multiplayer_connect.cpp:624
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:510
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:483 src/multiplayer_connect.cpp:627
+#: src/multiplayer_connect.cpp:482 src/multiplayer_connect.cpp:626
 #: src/multiplayer_wait.cpp:509
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:659
+#: src/multiplayer_connect.cpp:658
 msgid "(Vacant slot)"
 msgstr "(Celah luang)"
 
-#: src/multiplayer_connect.cpp:667
+#: src/multiplayer_connect.cpp:666
 msgid "Anonymous local player"
 msgstr "Pemain lokal tanpa nama"
 
-#: src/multiplayer_connect.cpp:680 src/multiplayer_connect.cpp:1443
+#: src/multiplayer_connect.cpp:679 src/multiplayer_connect.cpp:1442
 msgid "Computer Player"
 msgstr "Pemain Komputer"
 
-#: src/multiplayer_connect.cpp:683
+#: src/multiplayer_connect.cpp:682
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/multiplayer_connect.cpp:687
+#: src/multiplayer_connect.cpp:686
 msgid "(Empty slot)"
 msgstr "(Celah kosong)"
 
-#: src/multiplayer_connect.cpp:694
+#: src/multiplayer_connect.cpp:693
 msgid "(Reserved for $playername)"
 msgstr "(Disimpan untuk $playername)"
 
-#: src/multiplayer_connect.cpp:806
+#: src/multiplayer_connect.cpp:805
 msgid "Reserved"
 msgstr "Disimpan"
 
-#: src/multiplayer_connect.cpp:807
+#: src/multiplayer_connect.cpp:806
 msgid "--give--"
 msgstr "--beri--"
 
-#: src/multiplayer_connect.cpp:942
+#: src/multiplayer_connect.cpp:941
 msgid "Only random sides in the current era."
 msgstr "Hanya sisi acak di era ini"
 
-#: src/multiplayer_connect.cpp:966
+#: src/multiplayer_connect.cpp:965
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Tidak bisa menemukan tipe pemimpin untuk faction $faction"
 
-#: src/multiplayer_connect.cpp:1003
+#: src/multiplayer_connect.cpp:1002
 msgid "Game Lobby: "
 msgstr "Lobi Permainan:"
 
-#: src/multiplayer_connect.cpp:1024
+#: src/multiplayer_connect.cpp:1023
 msgid "Player/Type"
 msgstr "Pemain/Tipe"
 
-#: src/multiplayer_connect.cpp:1025
+#: src/multiplayer_connect.cpp:1024
 msgid "Faction"
 msgstr "Faction"
 
-#: src/multiplayer_connect.cpp:1026
+#: src/multiplayer_connect.cpp:1025
 msgid "Team/Gender"
 msgstr "Tim/Jenis Kelamin"
 
-#: src/multiplayer_connect.cpp:1027
+#: src/multiplayer_connect.cpp:1026
 msgid "Color"
 msgstr "Warna"
 
-#: src/multiplayer_connect.cpp:1031
+#: src/multiplayer_connect.cpp:1030
 msgid "I'm Ready"
 msgstr "Saya Siap"
 
-#: src/multiplayer_connect.cpp:1041
+#: src/multiplayer_connect.cpp:1040
 msgid "The scenario is invalid because it has no id."
 msgstr "Skenario ini tidak berlaku karena ia tidak memiliki identitas."
 
-#: src/multiplayer_connect.cpp:1045
+#: src/multiplayer_connect.cpp:1044
 msgid "The scenario is invalid because it has no sides."
 msgstr "Skenario ini tidak berlaku karena ia tidak memiliki sisi."
 
-#: src/multiplayer_connect.cpp:1440
+#: src/multiplayer_connect.cpp:1439
 msgid "Network Player"
 msgstr "Pemain Jaringan"
 
-#: src/multiplayer_connect.cpp:1442
+#: src/multiplayer_connect.cpp:1441
 msgid "Local Player"
 msgstr "Pemain Lokal"
 
-#: src/multiplayer_connect.cpp:1444
+#: src/multiplayer_connect.cpp:1443
 msgid "Empty"
 msgstr "Kosong"
 
-#: src/multiplayer_connect.cpp:1589
+#: src/multiplayer_connect.cpp:1588
 msgid "Cannot find era $era"
 msgstr "Tidak bisa menemukan era $era"
 
-#: src/multiplayer_connect.cpp:1614
+#: src/multiplayer_connect.cpp:1613
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Kemenangan:\n"
 "Kalahkan pemimpin musuh"
 
-#: src/multiplayer_connect.cpp:1718
+#: src/multiplayer_connect.cpp:1717
 msgid "Waiting for players to join..."
 msgstr "Menunggu pemain-pemain menggabungkan diri..."
 
@@ -9972,23 +9972,23 @@ msgstr "Menang"
 msgid "You have emerged victorious!"
 msgstr "Anda sudah menang!"
 
-#: src/playturn.cpp:219
+#: src/playturn.cpp:221
 msgid "Replace with AI"
 msgstr "Gantikan oleh AI"
 
-#: src/playturn.cpp:220
+#: src/playturn.cpp:222
 msgid "Replace with local player"
 msgstr "Gantikan oleh pemain lokal"
 
-#: src/playturn.cpp:221
+#: src/playturn.cpp:223
 msgid "Abort game"
 msgstr "Batalkan permainan"
 
-#: src/playturn.cpp:227 src/playturn.cpp:241
+#: src/playturn.cpp:229 src/playturn.cpp:243
 msgid "Replace with $player"
 msgstr "Gantikan oleh $player"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:249
 msgid "$player has left the game. What do you want to do?"
 msgstr " $player sudah meninggalkan permainan. Apa yang anda ingin lakukan?"
 

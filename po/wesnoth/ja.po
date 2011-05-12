@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-03 14:27+0200\n"
+"POT-Creation-Date: 2011-05-12 12:14+0200\n"
 "PO-Revision-Date: 2010-09-11 18:02+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -6891,7 +6891,7 @@ msgstr ""
 "多くのキャンペーンシナリオでは、右クリックのコンテキストメニューを使って、コ"
 "ンピュータが操作する友軍に単純な指示を発行するかもしれません。"
 
-#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
+#: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1611
 msgid "Victory:"
 msgstr "勝利条件:"
 
@@ -7645,7 +7645,7 @@ msgid "OK"
 msgstr "OK"
 
 #: src/dialogs.cpp:611 src/dialogs.cpp:1025 src/dialogs.cpp:1132
-#: src/multiplayer_connect.cpp:1032 src/multiplayer_create.cpp:86
+#: src/multiplayer_connect.cpp:1031 src/multiplayer_create.cpp:86
 #: src/multiplayer_wait.cpp:175
 msgid "Cancel"
 msgstr "キャンセル"
@@ -7674,39 +7674,39 @@ msgstr "経験: "
 msgid "Moves: "
 msgstr "移動: "
 
-#: src/game.cpp:573 src/game.cpp:1304
+#: src/game.cpp:573 src/game.cpp:1297
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:902 src/game.cpp:910
+#: src/game.cpp:895 src/game.cpp:903
 msgid "The file you have tried to load is corrupt"
 msgstr "読み込もうとしたファイルは壊れています。"
 
-#: src/game.cpp:905 src/game.cpp:913 src/savegame.cpp:534
+#: src/game.cpp:898 src/game.cpp:906 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "ロードしようとしたファイルは壊れています: 「"
 
-#: src/game.cpp:917
+#: src/game.cpp:910
 msgid "File I/O Error while reading the game"
 msgstr "ゲーム読み込み中のファイル入出力エラー"
 
-#: src/game.cpp:1012
+#: src/game.cpp:1005
 msgid "No campaigns are available.\n"
 msgstr "キャンペーンが存在しません。\n"
 
-#: src/game.cpp:1050
+#: src/game.cpp:1043
 msgid "Difficulty"
 msgstr "難易度"
 
-#: src/game.cpp:1051
+#: src/game.cpp:1044
 msgid "Select difficulty level:"
 msgstr "難易度を選択して下さい:"
 
-#: src/game.cpp:1186
+#: src/game.cpp:1179
 msgid "Do you really want to start the server?"
 msgstr "本当にサーバーを開始しますか？"
 
-#: src/game.cpp:1187
+#: src/game.cpp:1180
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7714,60 +7714,60 @@ msgstr ""
 "サーバーはすべてのユーザーが切断するまでバックグラウンドプロセスで動作しま"
 "す。"
 
-#: src/game.cpp:1191
+#: src/game.cpp:1184
 msgid "Don't show again"
 msgstr "二度と表示しない"
 
-#: src/game.cpp:1262
+#: src/game.cpp:1255
 msgid "Error while starting server: "
 msgstr "サーバー開始中のエラー: "
 
-#: src/game.cpp:1264 src/playcampaign.cpp:131 src/playcampaign.cpp:406
+#: src/game.cpp:1257 src/playcampaign.cpp:131 src/playcampaign.cpp:406
 msgid "The game could not be loaded: "
 msgstr "ゲームはロードできませんでした: "
 
-#: src/game.cpp:1266 src/playcampaign.cpp:133 src/playcampaign.cpp:409
+#: src/game.cpp:1259 src/playcampaign.cpp:133 src/playcampaign.cpp:409
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1284 src/playcampaign.cpp:135 src/playcampaign.cpp:412
+#: src/game.cpp:1277 src/playcampaign.cpp:135 src/playcampaign.cpp:412
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした: "
 
-#: src/game.cpp:1422
+#: src/game.cpp:1415
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下のアドオンキャンペーンには問題があり、読み込めませんでした:"
 
-#: src/game.cpp:1429
+#: src/game.cpp:1422
 msgid "ERROR DETAILS:"
 msgstr "エラー詳細:"
 
-#: src/game.cpp:1449
+#: src/game.cpp:1442
 msgid "Error loading game configuration files: '"
 msgstr "ゲーム設定ファイルの読み込みエラー: 「"
 
-#: src/game.cpp:1450
+#: src/game.cpp:1443
 msgid "' (The game will now exit)"
 msgstr "」 （このゲームは終了します）"
 
-#: src/game.cpp:1459
+#: src/game.cpp:1452
 msgid "Loading data files"
 msgstr "データファイル読み込み中"
 
-#: src/game.cpp:1885
+#: src/game.cpp:1878
 msgid "Loading game configuration."
 msgstr "ゲーム設定を読み込んでいます。"
 
-#: src/game.cpp:1891
+#: src/game.cpp:1884
 msgid "Re-initialize fonts for the current language."
 msgstr "現在の言語でフォントを再初期化します。"
 
-#: src/game.cpp:1899
+#: src/game.cpp:1892
 msgid "Searching for installed add-ons."
 msgstr "導入されたアドオンを検索中"
 
-#: src/game.cpp:1908
+#: src/game.cpp:1901
 msgid "Loading title screen."
 msgstr "タイトル画面を読み込んでいます。"
 
@@ -8139,17 +8139,17 @@ msgid "System default language"
 msgstr "システムデフォルト言語"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1469
-#: src/multiplayer_connect.cpp:221 src/multiplayer_connect.cpp:265
+#: src/multiplayer_connect.cpp:220 src/multiplayer_connect.cpp:264
 msgid "gender^Random"
 msgstr "ランダム"
 
-#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:217
-#: src/multiplayer_connect.cpp:261
+#: src/leader_list.cpp:147 src/multiplayer_connect.cpp:216
+#: src/multiplayer_connect.cpp:260
 msgid "Female ♀"
 msgstr "女性 ♀"
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:219
-#: src/multiplayer_connect.cpp:263
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:218
+#: src/multiplayer_connect.cpp:262
 msgid "Male ♂"
 msgstr "男性 ♂"
 
@@ -8233,11 +8233,11 @@ msgstr "スクロールする"
 msgid "Leader"
 msgstr "リーダー"
 
-#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1017
+#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1016
 msgid "Team"
 msgstr "チーム"
 
-#: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1028
+#: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1027
 msgid "Gold"
 msgstr "所持金"
 
@@ -8253,7 +8253,7 @@ msgstr "ユニット"
 msgid "Upkeep"
 msgstr "維持"
 
-#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1029
+#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1028
 #: src/multiplayer_wait.cpp:507
 msgid "Income"
 msgstr "収入"
@@ -8856,7 +8856,7 @@ msgid "whisper: $sender"
 msgstr "ささやき: $sender"
 
 #: src/menu_events.cpp:2746 src/menu_events.cpp:2765
-#: src/multiplayer_connect.cpp:699
+#: src/multiplayer_connect.cpp:698
 msgid "(empty)"
 msgstr "（空）"
 
@@ -9090,119 +9090,119 @@ msgstr "ログイン処理中のエラー（サーバーに接続の種があり
 msgid "The password you provided was incorrect."
 msgstr "入力したパスワードは間違っています。"
 
-#: src/multiplayer_connect.cpp:95 src/multiplayer_connect.cpp:485
-#: src/multiplayer_connect.cpp:629
+#: src/multiplayer_connect.cpp:95 src/multiplayer_connect.cpp:484
+#: src/multiplayer_connect.cpp:628
 msgid "Normal"
 msgstr "ノーマル"
 
-#: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:625
+#: src/multiplayer_connect.cpp:480 src/multiplayer_connect.cpp:624
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:507
 msgid "("
 msgstr "（"
 
-#: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:625
+#: src/multiplayer_connect.cpp:480 src/multiplayer_connect.cpp:624
 #: src/multiplayer_wait.cpp:499 src/multiplayer_wait.cpp:510
 msgid ")"
 msgstr "）"
 
-#: src/multiplayer_connect.cpp:483 src/multiplayer_connect.cpp:627
+#: src/multiplayer_connect.cpp:482 src/multiplayer_connect.cpp:626
 #: src/multiplayer_wait.cpp:509
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:659
+#: src/multiplayer_connect.cpp:658
 msgid "(Vacant slot)"
 msgstr "（空席スロット）"
 
-#: src/multiplayer_connect.cpp:667
+#: src/multiplayer_connect.cpp:666
 msgid "Anonymous local player"
 msgstr "匿名ローカルプレイヤー"
 
-#: src/multiplayer_connect.cpp:680 src/multiplayer_connect.cpp:1443
+#: src/multiplayer_connect.cpp:679 src/multiplayer_connect.cpp:1442
 msgid "Computer Player"
 msgstr "コンピュータ"
 
-#: src/multiplayer_connect.cpp:683
+#: src/multiplayer_connect.cpp:682
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/multiplayer_connect.cpp:687
+#: src/multiplayer_connect.cpp:686
 msgid "(Empty slot)"
 msgstr "（空きスロット）"
 
-#: src/multiplayer_connect.cpp:694
+#: src/multiplayer_connect.cpp:693
 msgid "(Reserved for $playername)"
 msgstr "（ $playername のために予約済み）"
 
-#: src/multiplayer_connect.cpp:806
+#: src/multiplayer_connect.cpp:805
 msgid "Reserved"
 msgstr "予約済み"
 
-#: src/multiplayer_connect.cpp:807
+#: src/multiplayer_connect.cpp:806
 msgid "--give--"
 msgstr "＜投了＞"
 
-#: src/multiplayer_connect.cpp:942
+#: src/multiplayer_connect.cpp:941
 msgid "Only random sides in the current era."
 msgstr "この時代にはランダム以外の陣営はありません。"
 
-#: src/multiplayer_connect.cpp:966
+#: src/multiplayer_connect.cpp:965
 msgid "Unable to find a leader type for faction $faction"
 msgstr "党派 $faction のリーダーのタイプが見つかりません。"
 
-#: src/multiplayer_connect.cpp:1003
+#: src/multiplayer_connect.cpp:1002
 msgid "Game Lobby: "
 msgstr "ゲームロビー: "
 
-#: src/multiplayer_connect.cpp:1024
+#: src/multiplayer_connect.cpp:1023
 msgid "Player/Type"
 msgstr "プレイヤー"
 
-#: src/multiplayer_connect.cpp:1025
+#: src/multiplayer_connect.cpp:1024
 msgid "Faction"
 msgstr "党派"
 
-#: src/multiplayer_connect.cpp:1026
+#: src/multiplayer_connect.cpp:1025
 msgid "Team/Gender"
 msgstr "チーム/性別"
 
-#: src/multiplayer_connect.cpp:1027
+#: src/multiplayer_connect.cpp:1026
 msgid "Color"
 msgstr "色"
 
-#: src/multiplayer_connect.cpp:1031
+#: src/multiplayer_connect.cpp:1030
 msgid "I'm Ready"
 msgstr "準備完了"
 
-#: src/multiplayer_connect.cpp:1041
+#: src/multiplayer_connect.cpp:1040
 msgid "The scenario is invalid because it has no id."
 msgstr "ID がないため、シナリオは無効です。"
 
-#: src/multiplayer_connect.cpp:1045
+#: src/multiplayer_connect.cpp:1044
 msgid "The scenario is invalid because it has no sides."
 msgstr "チームがないため、シナリオは無効です。"
 
-#: src/multiplayer_connect.cpp:1440
+#: src/multiplayer_connect.cpp:1439
 msgid "Network Player"
 msgstr "ネットプレイヤー"
 
-#: src/multiplayer_connect.cpp:1442
+#: src/multiplayer_connect.cpp:1441
 msgid "Local Player"
 msgstr "ローカルプレイヤー"
 
-#: src/multiplayer_connect.cpp:1444
+#: src/multiplayer_connect.cpp:1443
 msgid "Empty"
 msgstr "なし"
 
-#: src/multiplayer_connect.cpp:1589
+#: src/multiplayer_connect.cpp:1588
 msgid "Cannot find era $era"
 msgstr "$era の時代が見つかりません"
 
-#: src/multiplayer_connect.cpp:1614
+#: src/multiplayer_connect.cpp:1613
 msgid "Defeat enemy leader(s)"
 msgstr "敵のリーダー（達）を倒す"
 
-#: src/multiplayer_connect.cpp:1718
+#: src/multiplayer_connect.cpp:1717
 msgid "Waiting for players to join..."
 msgstr "プレイヤーの参加待ち……"
 
@@ -9748,23 +9748,23 @@ msgstr "勝利"
 msgid "You have emerged victorious!"
 msgstr "あなたの勝利が明らかになりました！"
 
-#: src/playturn.cpp:219
+#: src/playturn.cpp:221
 msgid "Replace with AI"
 msgstr "AI と交代する"
 
-#: src/playturn.cpp:220
+#: src/playturn.cpp:222
 msgid "Replace with local player"
 msgstr "ローカルプレイヤーと交代する"
 
-#: src/playturn.cpp:221
+#: src/playturn.cpp:223
 msgid "Abort game"
 msgstr "ゲームを中断する"
 
-#: src/playturn.cpp:227 src/playturn.cpp:241
+#: src/playturn.cpp:229 src/playturn.cpp:243
 msgid "Replace with $player"
 msgstr "$player と交代する"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:249
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player はゲームを去りました。どうしますか？"
 
