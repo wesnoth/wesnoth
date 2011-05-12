@@ -2878,6 +2878,13 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		}
 	}
 
+	foreach (const vconfig &f, filters.get_children("filter_side"))
+	{
+		side_filter ssf(f);
+		const int current_side = resources::controller->current_side();
+		if(!ssf.match(current_side)) return false;
+	}
+
 	vconfig::child_list special_filters = filters.get_children("filter_attack");
 	bool special_matches = special_filters.empty();
 	foreach (const vconfig &f, special_filters)
