@@ -52,6 +52,7 @@ struct mp_game_settings : public savegame::savegame_config
 	bool fog_game;
 	bool shroud_game;
 	bool allow_observers;
+	bool shuffle_sides;
 	bool share_view;
 	bool share_maps;
 

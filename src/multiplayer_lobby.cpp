@@ -50,6 +50,7 @@ gamebrowser::gamebrowser(CVideo& video, const config &map_hashes) :
 	time_limit_icon_locator_("themes/sand-clock.png"),
 	observer_icon_locator_("misc/eye.png"),
 	no_observer_icon_locator_("misc/no_observer.png"),
+	shuffle_sides_icon_locator_("misc/shuffle-sides.png"),
 	map_hashes_(map_hashes),
 	item_height_(100),
 	margin_(5),
@@ -201,6 +202,17 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 		// all text and icons can be aligned symmetrical to it
 		ypos -= observer_icon->h/2;
 		xpos += observer_icon->w + 2 * h_padding_;
+	}
+
+	// Draw shuffle icon
+	if (game.shuffle_sides)
+	{
+		const surface shuffle_icon(image::get_image(shuffle_sides_icon_locator_));
+		if(shuffle_icon) {
+			video().blit_surface(xpos, ypos - shuffle_icon->h/2, shuffle_icon);
+
+			xpos += shuffle_icon->w + 2 * h_padding_;
+		}
 	}
 
 	// Draw gold icon
@@ -572,6 +584,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		}
 		games_.back().xp = game["experience_modifier"] + "%";
 		games_.back().observers = game["observer"].to_bool(true);
+		games_.back().shuffle_sides = game["shuffle_sides"].to_bool(true);
 		games_.back().verified = verified;
 
 		// Hack...

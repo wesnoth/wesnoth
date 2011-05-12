@@ -56,6 +56,7 @@ public:
 			fog(false),
 			shroud(false),
 			observers(false),
+			shuffle_sides(false),
 			use_map_settings(false),
 			verified(false),
 			password_required(false),
@@ -81,6 +82,7 @@ public:
 		bool fog;
 		bool shroud;
 		bool observers;
+		bool shuffle_sides;
 		bool use_map_settings;
 		bool verified;
 		bool password_required;
@@ -116,6 +118,7 @@ private:
 	image::locator time_limit_icon_locator_;
 	image::locator observer_icon_locator_;
 	image::locator no_observer_icon_locator_;
+	image::locator shuffle_sides_icon_locator_;
 
 	const config &map_hashes_;
 

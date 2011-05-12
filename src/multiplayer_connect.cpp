@@ -777,6 +777,16 @@ void connect::side::update_user_list()
 	update_controller_ui();
 }
 
+int connect::side::get_index()
+{
+	return index_;
+}
+
+void connect::side::set_index(int index)
+{
+	index_ = index;
+}
+
 const std::string& connect::side::get_player_id() const
 {
 	return player_id_;
@@ -790,6 +800,49 @@ void connect::side::set_player_id(const std::string& player_id)
 		controller_ = i->controller;
 	}
 	update_ui();
+}
+
+int connect::side::get_team()
+{
+	return team_;
+}
+
+void connect::side::set_team(int team)
+{
+	team_ = team;
+}
+
+std::vector<std::string> connect::side::get_children_to_swap()
+{
+	std::vector<std::string> children;
+
+	children.push_back("village");
+	children.push_back("unit");
+	children.push_back("ai");
+
+	return children;
+}
+
+std::map<std::string, config> connect::side::get_side_children()
+{
+	std::map<std::string, config> children;
+
+	foreach(const std::string& children_to_swap, get_children_to_swap())
+		foreach(const config& child, cfg_.child_range(children_to_swap))
+			children.insert(std::pair<std::string, config>(children_to_swap, child));
+
+	return children;
+}
+
+void connect::side::set_side_children(std::map<std::string, config> children)
+{
+	foreach(const std::string& children_to_remove, get_children_to_swap())
+		cfg_.clear_children(children_to_remove);
+
+	std::pair<std::string, config> child_map;
+
+	foreach(child_map, children)
+		cfg_.add_child(child_map.first, child_map.second);
 }
 
 void connect::side::set_ready_for_start(bool ready_for_start)
@@ -1115,6 +1168,42 @@ const game_state& connect::get_state()
 void connect::start_game()
 {
 	DBG_MP << "starting a new game" << std::endl;
+
+		// Shuffle sides (check preferences and if it is a re-loaded game)
+	if (preferences::shuffle_sides() && !(level_.child("snapshot") && level_.child("snapshot").child("side")))
+	{
+		// Only playable sides should be shuffled
+		std::vector<int> playable_sides;
+
+		// Find ids of playable sides
+		for (side_list::iterator itor = sides_.begin(); itor != sides_.end(); itor++)
+			if (itor->allow_player()) playable_sides.push_back(itor->get_index());
+
+		// Now do Fisher-Yates shuffle
+		for (int i = playable_sides.size(); i > 1; i--)
+		{
+			int j_side = playable_sides[get_random() % i];
+			int i_side = playable_sides[i - 1];
+
+			int tmp_index = sides_[j_side].get_index();
+			sides_[j_side].set_index(sides_[i_side].get_index());
+			sides_[i_side].set_index(tmp_index);
+
+			int tmp_team = sides_[j_side].get_team();
+			sides_[j_side].set_team(sides_[i_side].get_team());
+			sides_[i_side].set_team(tmp_team);
+
+			std::map<std::string, config> tmp_side_children = sides_[j_side].get_side_children();
+			sides_[j_side].set_side_children(sides_[i_side].get_side_children());
+			sides_[i_side].set_side_children(tmp_side_children);
+
+			// This is needed otherwise fog bugs will apear
+			side tmp_side = sides_[j_side];
+			sides_[j_side] = sides_[i_side];
+			sides_[i_side] = tmp_side;
+		}
+	}
+
 	// Resolves the "random faction", "random gender" and "random message"
 	for (side_list::iterator itor = sides_.begin(); itor != sides_.end();
 			++itor) {
@@ -1604,6 +1693,7 @@ void connect::load_game()
 	level_["version"] = game_config::version;
 
 	level_["observer"] = params_.allow_observers;
+	level_["shuffle_sides"] = params_.shuffle_sides;
 
 	if(level_["objectives"].empty()) {
 		level_["objectives"] = "<big>" + t_string(N_("Victory:"), "wesnoth") +

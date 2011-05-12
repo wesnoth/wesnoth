@@ -744,6 +744,7 @@ void tlobby_main::adjust_game_row_contents(const game_info& game, int idx, tgrid
 	set_visible_if_exists(grid, "vision_shroud", game.shroud);
 	set_visible_if_exists(grid, "vision_none", !(game.fog || game.shroud));
 	set_visible_if_exists(grid, "observers_yes", game.observers);
+	set_visible_if_exists(grid, "shuffle_sides_icon", game.shuffle_sides);
 	set_visible_if_exists(grid, "observers_no", !game.observers);
 	set_visible_if_exists(grid, "needs_password", game.password_required);
 	set_visible_if_exists(grid, "reloaded", game.reloaded);

@@ -89,6 +89,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	fog_game_(disp.video(), _("Fog Of War"), gui::button::TYPE_CHECK),
 	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
+	shuffle_sides_(disp.video(), _("Shuffle sides"), gui::button::TYPE_CHECK),
 	cancel_game_(disp.video(), _("Cancel")),
 	launch_game_(disp.video(), _("OK")),
 	regenerate_map_(disp.video(), _("Regenerate")),
@@ -203,6 +204,9 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	observers_game_.set_check(preferences::allow_observers());
 	observers_game_.set_help_string(_("Allow users who are not playing to watch the game"));
 
+	shuffle_sides_.set_check(preferences::shuffle_sides());
+	shuffle_sides_.set_help_string(_("Assign sides to players at random"));
+
 	// The possible vision settings
 	std::vector<std::string> vision_types;
 	vision_types.push_back(_("Share View"));
@@ -251,6 +255,7 @@ create::~create()
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;
 	preferences::set_allow_observers(parameters_.allow_observers);
+	preferences::set_shuffle_sides(parameters_.shuffle_sides);
 	preferences::set_use_map_settings(parameters_.use_map_settings);
 	preferences::set_countdown(parameters_.mp_countdown);
 	preferences::set_countdown_init_time(parameters_.mp_countdown_init_time);
@@ -315,6 +320,7 @@ mp_game_settings& create::get_parameters()
 	parameters_.fog_game = fog_game_.checked();
 	parameters_.shroud_game = shroud_game_.checked();
 	parameters_.allow_observers = observers_game_.checked();
+	parameters_.shuffle_sides = shuffle_sides_.checked();
 	parameters_.share_view = vision_combo_.selected() == 0;
 	parameters_.share_maps = vision_combo_.selected() == 1;
 
@@ -646,6 +652,7 @@ void create::hide_children(bool hide)
 	fog_game_.hide(hide);
 	shroud_game_.hide(hide);
 	observers_game_.hide(hide);
+	shuffle_sides_.hide(hide);
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
 	regenerate_map_.hide(hide || generator_ == NULL);
@@ -779,8 +786,11 @@ void create::layout_children(const SDL_Rect& rect)
 	shroud_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += observers_game_.height() + border_size;
 
-	countdown_game_.set_location(xpos, ypos);
+	shuffle_sides_.set_location(xpos, ypos);
 	random_start_time_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
+	ypos += shuffle_sides_.height() + border_size;
+
+	countdown_game_.set_location(xpos, ypos);
 	ypos += countdown_game_.height() + border_size;
 
 	countdown_init_time_label_.set_location(xpos, ypos);

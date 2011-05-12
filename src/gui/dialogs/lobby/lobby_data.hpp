@@ -134,6 +134,7 @@ struct game_info
 	bool fog;
 	bool shroud;
 	bool observers;
+	bool shuffle_sides;
 	bool use_map_settings;
 	bool verified;
 	bool password_required;

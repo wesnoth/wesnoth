@@ -98,6 +98,9 @@ namespace preferences {
 	bool allow_observers();
 	void set_allow_observers(bool value);
 
+	bool shuffle_sides();
+	void set_shuffle_sides(bool value);
+
 	bool use_map_settings();
 	void set_use_map_settings(bool value);
 

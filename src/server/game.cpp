@@ -171,6 +171,7 @@ void game::start_game(const player_map::const_iterator starter) {
 		<< "\tfog: "       << s["mp_fog"]
 		<< "\tshroud: "    << s["mp_shroud"]
 		<< "\tobservers: " << s["observer"]
+		<< "\tshuffle: "   << s["shuffle_sides"]
 		<< "\ttimer: "     << s["mp_countdown"]
 		<< (s["mp_countdown"].to_bool() ?
 			"\treservoir time: " + s["mp_countdown_reservoir_time"].to_string() +

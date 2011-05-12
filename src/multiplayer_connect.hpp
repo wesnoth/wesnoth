@@ -94,6 +94,10 @@ public:
 		const std::string& get_current_player() const
 			{ return current_player_; }
 
+		int get_index();
+
+		void set_index(int index);
+
 		const std::string& get_player_id() const;
 
 		/** Sets the username of this side. */
@@ -101,6 +105,16 @@ public:
 
 		/** Sets if the joining player has chosen his leader. */
 		void set_ready_for_start(bool ready_for_start);
+
+		int get_team();
+
+		void set_team(int team);
+
+		std::vector<std::string> get_children_to_swap();
+
+		std::map<std::string, config> get_side_children();
+
+		void set_side_children(std::map<std::string, config> children);
 
 		/**
 		 * Imports data from the network into this side, and updates the UI

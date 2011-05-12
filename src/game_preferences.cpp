@@ -422,6 +422,16 @@ void set_allow_observers(bool value)
 	preferences::set("allow_observers", value);
 }
 
+bool shuffle_sides()
+{
+	return preferences::get("shuffle_sides", false);
+}
+
+void set_shuffle_sides(bool value)
+{
+	preferences::set("shuffle_sides", value);
+}
+
 bool use_map_settings()
 {
 	return preferences::get("mp_use_map_settings", true);
