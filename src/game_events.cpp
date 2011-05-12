@@ -529,10 +529,10 @@ namespace game_events {
 		}
 
 		if (sides.blank()) {
-			if(only_side) put_wml_message("error", "empty side= is deprecated");
+			if(only_side) put_wml_message("error", "empty side= is deprecated, use side=1");
 			//To deprecate the current default (side=1), require one of the currently two ways
 			//of specifying a side - putting inline side= or [filter_side].
-			else put_wml_message("error", "empty side= and no [filter_side] is deprecated");
+			else put_wml_message("error", "empty side= and no [filter_side] is deprecated, use either side=1 or [filter_side]");
 			std::set<int> result;
 			result.insert(1); // we make sure the set is not empty and the current default is maintained
 			return result;
