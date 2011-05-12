@@ -15,14 +15,14 @@
 # Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008, 2009.
 # Gustavo Gingins <gusgins@gmail.com>, 2009.
 # Alvin Eloy Luna Castro <alvineloy@gmail.com>, 2011.
-# Steven Panek <Majora700@gmail.com>, 2011.
+# Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-08 16:00+0200\n"
-"PO-Revision-Date: 2011-02-23 20:15-0500\n"
-"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
+"POT-Creation-Date: 2011-05-08 17:06+0200\n"
+"PO-Revision-Date: 2011-04-10 01:58-0300\n"
+"Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);X-Generator: KBabel 1.11.4X-"
 "Generator: KBabel 1.11.4\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
@@ -389,10 +389,8 @@ msgstr "Traducción noruega"
 
 #. [about]
 #: data/core/about.cfg:2288
-#, fuzzy
-#| msgid "English (GB) Translation"
 msgid "Old English Translation"
-msgstr "Traducción inglesa (GB)"
+msgstr "Traddución al anglosajón"
 
 #. [about]
 #: data/core/about.cfg:2297
@@ -478,13 +476,12 @@ msgstr ""
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
-#, fuzzy
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
 msgstr ""
-"En este escenario le puede dar instrucciones a un bando aliado a través del "
-"menú del botón derecho."
+"En este escenario, Ud. puede darle instrucciones a un bando aliado haciendo "
+"clic con el botón derecho en una unidad del bando deseado."
 
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
@@ -790,11 +787,11 @@ msgstr ""
 
 #: data/core/macros/items.cfg:267
 msgid "holy water^Take it"
-msgstr ""
+msgstr "Tomarla"
 
 #: data/core/macros/items.cfg:268
 msgid "holy water^Leave it"
-msgstr ""
+msgstr "Dejarla"
 
 #: data/core/macros/items.cfg:269
 msgid "I am not suited to the use of this item! Let another take it."
@@ -879,16 +876,12 @@ msgid "Should $unit.name pick up the trident?"
 msgstr "Debería $unit.name recoger el tridente?"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
-#| msgid "storm trident"
 msgid "storm trident^Leave it"
-msgstr "tridente de las tormentas"
+msgstr "Dejarlo"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
-#| msgid "storm trident"
 msgid "storm trident^Take it"
-msgstr "tridente de las tormentas"
+msgstr "Tomarlo"
 
 #. [object]
 #: data/core/macros/items.cfg:515
@@ -2127,17 +2120,13 @@ msgstr "Servidor alternativo de Wesnoth"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
-#, fuzzy
-#| msgid "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
 msgid "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
-msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
+msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
-#, fuzzy
-#| msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
 msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
-msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
+msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -3990,8 +3979,6 @@ msgid "Reading unit files"
 msgstr "Leyendo archivos de unidades"
 
 #: src/loadscreen.cpp:227
-#, fuzzy
-#| msgid "Re-initialize fonts for the current language"
 msgid "Reinitialize fonts for the current language"
 msgstr "Reinicia tipografías para el idioma actual"
 
@@ -4278,10 +4265,8 @@ msgstr[1] ""
 "Ha de tener por lo menos $cost piezas de oro para reincorporar a una unidad"
 
 #: src/menu_events.cpp:1353
-#, fuzzy
-#| msgid "pause at end of turn"
 msgid "You cannot end your turn yet!"
-msgstr "pausa al final del turno"
+msgstr "¡No puede terminar su turno aún!"
 
 #: src/menu_events.cpp:1377
 msgid ""
@@ -4443,6 +4428,8 @@ msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicks, etc."
 msgstr ""
+"Reporte abusos, violaciones de las reglas, etc. a los moderadores del "
+"servidor. Asegúrese de mencionar nombres de usarios, etc."
 
 #: src/menu_events.cpp:2332
 msgid "<message>"
@@ -4453,16 +4440,12 @@ msgid "Send an emotion or personal action in chat."
 msgstr "Envía una emoción o acción personal a la conversación."
 
 #: src/menu_events.cpp:2335
-#, fuzzy
-#| msgid ""
-#| "Sends a private message. You can’t send messages to players that don’t "
-#| "control a side in a running game you are in."
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
-"Envía un mensaje privado. No se pueden enviar mensajes a jugadores que "
-"controlen algún bando del juego en que se encuentra."
+"Envía un mensaje privado. No se pueden enviar mensajes a jugadores de una "
+"partida en curso que Ud. esté observando o jugando."
 
 #: src/menu_events.cpp:2337
 msgid "<nick> <message>"
@@ -6185,7 +6168,7 @@ msgstr ""
 
 #: src/unit.cpp:2332 src/unit.cpp:2529 src/unit.cpp:2600
 msgid " and "
-msgstr "y"
+msgstr " y "
 
 #: src/unit.cpp:2343
 msgid "$attack_list|: $effect_description"

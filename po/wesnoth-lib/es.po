@@ -6,15 +6,14 @@
 # Isaac Clerencia <isaac@warp.es>, 2006.
 # Roberto Romero <sildurin@gmail.com>, 2007.
 # Sergi March <sergi.march@gmail.com>, 2008.
-# Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2008, 2009, 2010.
-# Steven Panek <Majora700@gmail.com>, 2011.
+# Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-05 10:12+0200\n"
-"PO-Revision-Date: 2011-01-19 01:13-0400\n"
-"Last-Translator: PeterPorty <p_llorens@hotmail.com>\n"
+"POT-Creation-Date: 2011-05-08 17:06+0200\n"
+"PO-Revision-Date: 2011-04-10 02:03-0300\n"
+"Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
 "Language-Team: Spanish <shadowm2006@gmail.com>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -25,8 +24,6 @@ msgstr ""
 
 #. [terrain_type]: id=deep_water_gray
 #: data/core/terrain.cfg:18
-#, fuzzy
-#| msgid "Grey Deep Water"
 msgid "Gray Deep Water"
 msgstr "Aguas profundas grises"
 
@@ -127,10 +124,8 @@ msgstr "Adoquines regulares"
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:201
-#, fuzzy
-#| msgid "Clean Grey Cobbles"
 msgid "Clean Gray Cobbles"
-msgstr "Adoquines limpios"
+msgstr "Adoquines limpios grises"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:210
@@ -150,7 +145,7 @@ msgstr "Nieve"
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:245
 msgid "Desert Sands"
-msgstr "Arena desértica"
+msgstr "Arena de desierto"
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:254
@@ -225,17 +220,17 @@ msgstr "Cerco"
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:379
 msgid "Stones with Sand Drifts"
-msgstr ""
+msgstr "Piedras con montones de arena"
 
 #. [terrain_type]: id=water-lilies
 #: data/core/terrain.cfg:388
 msgid "Water Lilies"
-msgstr ""
+msgstr "Nenúfares"
 
 #. [terrain_type]: id=water-lilies-flower
 #: data/core/terrain.cfg:398
 msgid "Flowering Water Lilies"
-msgstr ""
+msgstr "Nenúfares en flor"
 
 #. [terrain_type]: id=great_tree
 #: data/core/terrain.cfg:412
@@ -777,10 +772,8 @@ msgstr "Castillo desértico"
 
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:1623
-#, fuzzy
-#| msgid "Desert Castle"
 msgid "Ruined Desert Castle"
-msgstr "Castillo desértico"
+msgstr "Castillo desértico en ruinas"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:1638
@@ -789,10 +782,8 @@ msgstr "Torreón en campamento"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:1650
-#, fuzzy
-#| msgid "Encampment Keep"
 msgid "Tall Encampment Keep"
-msgstr "Torreón en campamento"
+msgstr "Torreón alto en campamento"
 
 #. [terrain_type]: id=encampment_snow_keep
 #: data/core/terrain.cfg:1662
@@ -866,14 +857,12 @@ msgstr "Torreó de castillo humano pantanoso"
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:1786
 msgid "Desert Keep"
-msgstr "Torreón de desierto"
+msgstr "Torreón desértico"
 
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1799
-#, fuzzy
-#| msgid "Desert Keep"
 msgid "Ruined Desert Keep"
-msgstr "Torreón de desierto"
+msgstr "Torreón desértico en ruinas"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:1813
@@ -890,8 +879,6 @@ msgstr "Capa de torreón"
 #. [terrain_type]: id=bridgediag2
 #: data/core/terrain.cfg:1842 data/core/terrain.cfg:1853
 #: data/core/terrain.cfg:1864
-#, fuzzy
-#| msgid "Wood Bridge"
 msgid "Wooden Bridge"
 msgstr "Puente de madera"
 
@@ -2704,9 +2691,8 @@ msgstr "El rectángulo no cabe en el lienzo."
 
 #: src/gui/auxiliary/canvas.cpp:835 src/gui/auxiliary/canvas.cpp:840
 #: src/gui/auxiliary/canvas.cpp:845 src/gui/auxiliary/canvas.cpp:851
-#, fuzzy
 msgid "Circle doesn't fit on canvas."
-msgstr "La línea no cabe en el lienzo."
+msgstr "El círculo no cabe en el lienzo."
 
 #: src/gui/auxiliary/canvas.cpp:1033 src/gui/auxiliary/canvas.cpp:1040
 #: src/gui/auxiliary/canvas.cpp:1050 src/gui/auxiliary/canvas.cpp:1057
@@ -3402,10 +3388,8 @@ msgid "Show the credits"
 msgstr "Mostrar los créditos"
 
 #: src/hotkeys.cpp:274
-#, fuzzy
-#| msgid "Show the credits"
 msgid "Show the helptip"
-msgstr "Mostrar los créditos"
+msgstr "Mostrar la información de ayuda"
 
 #: src/hotkeys.cpp:727 src/hotkeys.cpp:1032
 msgid "Do you really want to quit?"
