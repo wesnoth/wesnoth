@@ -49,7 +49,7 @@ function wml_actions.chat(cfg)
 		speaker = "WML"
 	end
 
-	for side_number, side in ipairs(side_list) do
+	for index, side in ipairs(side_list) do
 		if side.controller == "human" then
 			wesnoth.message(speaker, message)
 			break
@@ -60,7 +60,7 @@ end
 function wml_actions.gold(cfg)
 	local amount = tonumber(cfg.amount) or
 		helper.wml_error "[gold] missing required amount= attribute."
-	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg, false)) do
+	for index, team in ipairs(wesnoth.get_sides(nil, cfg, false)) do
 		team.gold = team.gold + amount
 	end
 end
@@ -121,9 +121,9 @@ function wml_actions.fire_event(cfg)
 end
 
 function wml_actions.allow_recruit(cfg)
-	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
+	for index, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
 		local v = team.recruit
-		for type in string.gmatch(cfg.type, "[^%s,][^,]*") do 
+		for type in string.gmatch(cfg.type, "[^%s,][^,]*") do
 			table.insert(v, type)
 			wesnoth.add_known_unit(type)
 		end
@@ -135,7 +135,7 @@ function wml_actions.allow_extra_recruit(cfg)
 	local filter = helper.get_child(cfg, "filter") or helper.wml_error("[allow_extra_recruit] missing required [filter] tag")
 	local types = cfg.type or helper.wml_error("[allow_extra_recruit] missing required type= attribute")
 	for index, unit in ipairs(wesnoth.get_units(filter)) do
-		local v = unit.extra_recruit 
+		local v = unit.extra_recruit
 		for type in string.gmatch(types, "[^%s,][^,]*") do
 			table.insert(v, type)
 			wesnoth.add_known_unit(type)
@@ -145,7 +145,7 @@ function wml_actions.allow_extra_recruit(cfg)
 end
 
 function wml_actions.disallow_recruit(cfg)
-	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
+	for index, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
 		local v = team.recruit
 		for w in string.gmatch(cfg.type, "[^%s,][^,]*") do
 			for i, r in ipairs(v) do
@@ -177,8 +177,8 @@ function wml_actions.disallow_extra_recruit(cfg)
 end
 
 function wml_actions.set_recruit(cfg)
-        local recruit = cfg.recruit or helper.wml_error("[set_recruit] missing required recruit= attribute")
-	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
+	local recruit = cfg.recruit or helper.wml_error("[set_recruit] missing required recruit= attribute")
+	for index, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
 		local v = {}
 		for w in string.gmatch(recruit, "[^%s,][^,]*") do
 			table.insert(v, w)
