@@ -74,8 +74,8 @@ function wml_actions.gold(cfg)
 end
 
 function wml_actions.store_gold(cfg)
-	local team = get_team(cfg.side, "[store_gold]")
-	wesnoth.set_variable(cfg.variable or "gold", team.gold)
+	local team = wesnoth.get_sides(cfg)[1]
+	if team then wesnoth.set_variable(cfg.variable or "gold", team.gold) end
 end
 
 function wml_actions.clear_variable(cfg)
