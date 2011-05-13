@@ -480,6 +480,24 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		cfg_["upkeep"] = "full";
 	}
 
+	std::vector<std::string> recruits = utils::split(cfg["extra_recruit"]);
+	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
+
+		//std::string recruit_type_string(*i);
+		const unit_type *recruit_type = unit_types.find(*i);
+
+		if (!recruit_type) {
+			std::string error_message = _("Unknown unit type '$type|' in extra_recruit attribute");
+			utils::string_map symbols;
+			symbols["type"] = *i;
+			error_message = utils::interpolate_variables_into_string(error_message, &symbols);
+			ERR_NG << "unit of type " << *i << " not found!\n";
+			throw game::game_error(error_message);
+		} else {
+		recruit_list_.insert(*i);
+		}
+	}
+
 	/** @todo Are these modified by read? if not they can be removed. */
 	getsHit_=0;
 	end_turn_ = false;
@@ -498,7 +516,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		"max_hitpoints", "max_moves", "max_experience",
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
 		"experience", "resting", "unrenamable", "alignment",
-		"canrecruit", "unit_recruit", "x", "y", "placement",
+		"canrecruit", "extra_recruit", "x", "y", "placement",
 		// Useless attributes created when saving units to WML:
 		"flag_rgb", "language_name" };
 	foreach (const char *attr, internalized_attrs) {
@@ -518,10 +536,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		WRN_UT << "Unknown attribute '" << attr.first << "' discarded.\n";
 	}
 
-	std::vector<std::string> recruits = utils::split(cfg["unit_recruit"]);
-	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
-		recruit_list_.insert(*i);
-	}
 }
 
 void unit::clear_status_caches()
@@ -867,7 +881,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 		// This will add any "musthave" traits to the new unit that it doesn't already have.
 		// This covers the Dark Sorcerer advancing to Lich and gaining the "undead" trait,
 		// but random and/or optional traits are not added,
-		// and neither are inappropiate traits removed.
+		// and neither are inappropriate traits removed.
 		generate_traits(true);
 	}
 
@@ -991,6 +1005,18 @@ SDL_Color unit::xp_color() const
 
 void unit::set_recruits(const std::set<std::string>& recruits)
 {
+	foreach (std::string const &unit, recruits) {
+		const unit_type *type = unit_types.find(unit);
+		if (!type) {
+			std::string error_message = _("Unknown unit type '$type|' while setting extra recruit list");
+			utils::string_map symbols;
+			symbols["type"] = type_id();
+			error_message = utils::interpolate_variables_into_string(error_message, &symbols);
+			ERR_NG << "unit of type " << type_id() << " not found!\n";
+			throw game::game_error(error_message);
+		}
+	}
+
 	recruit_list_ = recruits;
 	//TODO
 	//info_.minimum_recruit_price = 0;
@@ -999,7 +1025,17 @@ void unit::set_recruits(const std::set<std::string>& recruits)
 
 void unit::add_recruit(const std::string &recruit)
 {
-	recruit_list_.insert(recruit);
+	const unit_type *type = unit_types.find(recruit);
+	if (!type) {
+		std::string error_message = _("Unknown unit type '$type|' while adding extra recruit");
+		utils::string_map symbols;
+		symbols["type"] = type_id();
+		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
+		ERR_NG << "unit of type " << type_id() << " not found!\n";
+		throw game::game_error(error_message);
+	} else {
+		recruit_list_.insert(recruit);
+	}
 	//TODO
 	//info_.minimum_recruit_price = 0;
 	//ai::manager::raise_recruit_list_changed();
