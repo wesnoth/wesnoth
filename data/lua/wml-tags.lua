@@ -37,14 +37,6 @@ function wml_actions.message(cfg)
 	end
 end
 
-local function get_team(side, tag)
-	side = tonumber(side or 1) or
-		helper.wml_error(tag .. " given a noninteger side= attribute.")
-	local team = wesnoth.sides[side] or
-		helper.wml_error(tag .. " given an invalid side= attribute.")
-	return team
-end
-
 function wml_actions.chat(cfg)
 	local side_list = wesnoth.get_sides(cfg)
 	local message = tostring(cfg.message) or
