@@ -895,13 +895,13 @@ static int impl_unit_get(lua_State *L)
 		std::set<std::string> const &recruits = u.recruits();
 		lua_createtable(L, recruits.size(), 0);
 		int i = 1;
-		foreach (std::string const &r, u.recruits()) {
+		foreach (std::string const &r, recruits) {
 			lua_pushstring(L, r.c_str());
-			lua_rawseti(L, -2, i++);
+			lua_rawseti(L, -2, i);
+			++i;
 		}
 		return 1;
 	}
-
 
 	if (strcmp(m, "status") == 0) {
 		lua_createtable(L, 1, 0);
@@ -957,16 +957,19 @@ static int impl_unit_set(lua_State *L)
 	modify_bool_attrib("hidden", u.set_hidden(value));
 
 	if (strcmp(m, "extra_recruit") == 0) {
-			u.set_recruits(std::set<std::string>());
-			if (!lua_istable(L, 3)) return 0;
-			for (int i = 1;; ++i) {
-				lua_rawgeti(L, 3, i);
-				if (lua_isnil(L, -1)) break;
-				u.add_recruit(lua_tostring(L, -1));
-				lua_pop(L, 1);
-			}
-			return 0;
+		std::set<std::string> recruits;
+		char const* message = "table with unnamed indices holding type id strings required";
+		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message);
+		for (unsigned i = 1; i <= lua_objlen(L, 3); ++i) {
+			lua_rawgeti(L, 3, i);
+			char const* type = lua_tostring(L, 4);
+			if(!type) return luaL_argerror(L, 2 + i, message);
+			recruits.insert(type);
+			lua_pop(L, 1);
 		}
+		u.set_recruits(recruits);
+		return 0;
+	}
 
 	if (!lu->on_map()) {
 		map_location loc = u.get_location();
