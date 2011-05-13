@@ -177,10 +177,17 @@ function wml_actions.disallow_extra_recruit(cfg)
 end
 
 function wml_actions.set_recruit(cfg)
-	local recruit = cfg.recruit or helper.wml_error("[set_recruit] missing required recruit= attribute")
+	local types
+	if cfg.recruit then
+		wesnoth.message("warning", "[set_recruit]recruit= is deprecated, use type=")
+		types = cfg.recruit
+	elseif cfg.type then types = cfg.type
+	else helper.wml_error("[set_recruit] missing required type= attribute")
+	end
+
 	for index, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
 		local v = {}
-		for w in string.gmatch(recruit, "[^%s,][^,]*") do
+		for w in string.gmatch(types, "[^%s,][^,]*") do
 			table.insert(v, w)
 		end
 		team.recruit = v
