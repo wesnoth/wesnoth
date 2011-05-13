@@ -196,10 +196,10 @@ end
 
 function wml_actions.set_extra_recruit(cfg)
 	local filter = helper.get_child(cfg, "filter") or helper.wml_error("[disallow_extra_recruit] missing required [filter] tag")
-	local recruit = cfg.extra_recruit or helper.wml_error("[set_extra_recruit] missing required extra_recruit= attribute")
+	local types = cfg.type or helper.wml_error("[set_extra_recruit] missing required type= attribute")
 	local v = {}
 
-	for w in string.gmatch(recruit, "[^%s,][^,]*") do
+	for w in string.gmatch(types, "[^%s,][^,]*") do
 		table.insert(v, w)
 	end
 
