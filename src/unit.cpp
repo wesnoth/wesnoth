@@ -483,7 +483,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	std::vector<std::string> recruits = utils::split(cfg["extra_recruit"]);
 	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
 
-		//std::string recruit_type_string(*i);
 		const unit_type *recruit_type = unit_types.find(*i);
 
 		if (!recruit_type) {
@@ -1029,9 +1028,9 @@ void unit::add_recruit(const std::string &recruit)
 	if (!type) {
 		std::string error_message = _("Unknown unit type '$type|' while adding extra recruit");
 		utils::string_map symbols;
-		symbols["type"] = type_id();
+		symbols["type"] = type->type_name();
 		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-		ERR_NG << "unit of type " << type_id() << " not found!\n";
+		ERR_NG << "unit of type " << type->type_name() << " not found!\n";
 		throw game::game_error(error_message);
 	} else {
 		recruit_list_.insert(recruit);
