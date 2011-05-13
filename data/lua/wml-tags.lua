@@ -46,7 +46,7 @@ local function get_team(side, tag)
 end
 
 function wml_actions.chat(cfg)
-	local side_list = cfg.side
+	local side_list = wesnoth.get_sides(cfg)
 	local message = tostring(cfg.message) or
 		helper.wml_error "[chat] missing required message= attribute."
 
@@ -57,15 +57,10 @@ function wml_actions.chat(cfg)
 		speaker = "WML"
 	end
 
-	if not side_list then
-		wesnoth.message(speaker, message)
-	else
-		for v in string.gmatch(side_list, "[^%s,][^,]*") do
-			local side = wesnoth.get_side(tonumber(v))
-			if side.controller == "human" then
-				wesnoth.message(speaker, message)
-				break
-			end
+	for side_number, side in ipairs(side_list) do
+		if side.controller == "human" then
+			wesnoth.message(speaker, message)
+			break
 		end
 	end
 end
