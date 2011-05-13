@@ -129,6 +129,9 @@ public:
 	bool can_recruit() const { return canrecruit_; }
 	const std::set<std::string>& recruits() const
 		{ return recruit_list_; }
+	void add_recruit(const std::string &);
+	void set_recruits(const std::set<std::string>& recruits);
+
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
 	int total_movement() const { return max_movement_; }
 	int movement_left() const { return (movement_ == 0 || incapacitated()) ? 0 : movement_; }

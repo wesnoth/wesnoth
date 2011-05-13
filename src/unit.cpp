@@ -989,6 +989,22 @@ SDL_Color unit::xp_color() const
 	return(color);
 }
 
+void unit::set_recruits(const std::set<std::string>& recruits)
+{
+	recruit_list_ = recruits;
+	//TODO
+	//info_.minimum_recruit_price = 0;
+	//ai::manager::raise_recruit_list_changed();
+}
+
+void unit::add_recruit(const std::string &recruit)
+{
+	recruit_list_.insert(recruit);
+	//TODO
+	//info_.minimum_recruit_price = 0;
+	//ai::manager::raise_recruit_list_changed();
+}
+
 std::string unit::side_id() const {return teams_manager::get_teams()[side()-1].save_id(); }
 
 void unit::set_movement(int moves)

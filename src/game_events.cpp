@@ -690,22 +690,6 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	resources::screen->draw();
 }
 
-WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
-{
-	std::set<int> sides = game_events::get_sides_set(cfg, false, true);
-
-	foreach(const int &side_num, sides)
-	{
-		const std::vector<std::string> types = utils::split(cfg["type"]);
-		foreach(const std::string &type, types)
-		{
-			const unsigned index = side_num - 1;
-			(*resources::teams)[index].add_recruit(type);
-			preferences::encountered_units().insert(type);
-		}
-	}
-}
-
 WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 {
 

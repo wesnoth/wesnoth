@@ -40,6 +40,7 @@
 #include "filesystem.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
+#include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"
@@ -889,6 +890,19 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("attacks_left", u.attacks_left());
 	return_tstring_attrib("name", u.name());
 	return_bool_attrib("canrecruit", u.can_recruit());
+
+	if (strcmp(m, "extra_recruit") == 0) {
+		std::set<std::string> const &recruits = u.recruits();
+		lua_createtable(L, recruits.size(), 0);
+		int i = 1;
+		foreach (std::string const &r, u.recruits()) {
+			lua_pushstring(L, r.c_str());
+			lua_rawseti(L, -2, i++);
+		}
+		return 1;
+	}
+
+
 	if (strcmp(m, "status") == 0) {
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, 1);
@@ -941,6 +955,19 @@ static int impl_unit_set(lua_State *L)
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
 	modify_bool_attrib("hidden", u.set_hidden(value));
+
+	if (strcmp(m, "extra_recruit") == 0) {
+			u.set_recruits(std::set<std::string>());
+			if (!lua_istable(L, 3)) return 0;
+			for (int i = 1;; ++i) {
+				lua_rawgeti(L, 3, i);
+				if (lua_isnil(L, -1)) break;
+				u.add_recruit(lua_tostring(L, -1));
+				lua_pop(L, 1);
+			}
+			return 0;
+		}
+
 	if (!lu->on_map()) {
 		map_location loc = u.get_location();
 		modify_int_attrib("x", loc.x = value - 1; u.set_location(loc));
@@ -2971,6 +2998,18 @@ static int intf_add_modification(lua_State *L)
 }
 
 /**
+ * Adds a new known unit type to the help system.
+ * - Arg 1: string.
+ */
+static int intf_add_known_unit(lua_State *L)
+{
+	char const *ty = luaL_checkstring(L, 1);
+	std::string type = ty;
+	preferences::encountered_units().insert(type);
+	return 0;
+}
+
+/**
  * Adds an overlay on a tile.
  * - Args 1,2: location.
  * - Arg 3: WML table.
@@ -3118,6 +3157,7 @@ LuaKernel::LuaKernel(const config &cfg)
 
 	// Put some callback functions in the scripting environment.
 	static luaL_reg const callbacks[] = {
+		{ "add_known_unit",           &intf_add_known_unit           },
 		{ "add_modification",         &intf_add_modification         },
 		{ "add_tile_overlay",         &intf_add_tile_overlay         },
 		{ "clear_messages",           &intf_clear_messages           },

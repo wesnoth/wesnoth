@@ -128,6 +128,31 @@ function wml_actions.fire_event(cfg)
 	wesnoth.fire_event(cfg.name, x1, y1, x2, y2, w1, w2)
 end
 
+function wml_actions.allow_recruit(cfg)
+   for side_number, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
+      local v = team.recruit
+      for type in string.gmatch(cfg.type, "[^%s,][^,]*") do 
+	 table.insert(v, type)
+	 wesnoth.add_known_unit(type)
+      end
+      team.recruit = v
+   end
+end
+
+function wml_actions.allow_extra_recruit(cfg)
+   local filter = helper.get_child(cfg, "filter") or helper.wml_error("[allow_extra_recruit] missing required [filter] tag")
+   local types = cfg.type or helper.wml_error("[allow_extra_recruit] missing required type= attribute")
+
+   for index, unit in ipairs(wesnoth.get_units(filter)) do
+      local v = unit.extra_recruit 
+      for type in string.gmatch(types, "[^%s,][^,]*") do
+	 table.insert(v, type)
+	 wesnoth.add_known_unit(type)
+      end
+      unit.extra_recruit = v
+   end
+end
+
 function wml_actions.disallow_recruit(cfg)
 	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
 		local v = team.recruit
@@ -143,15 +168,46 @@ function wml_actions.disallow_recruit(cfg)
 	end
 end
 
+function wml_actions.disallow_extra_recruit(cfg)
+   local filter = helper.get_child(cfg, "filter") or helper.wml_error("[disallow_extra_recruit] missing required [filter] tag")
+   local types = cfg.type or helper.wml_error("[allow_extra_recruit] missing required type= attribute")
+   for index, unit in ipairs(wesnoth.get_units(filter)) do
+      local v = unit.extra_recruit
+      for w in string.gmatch(types, "[^%s,][^,]*") do
+	 for i, r in ipairs(v) do
+	    if r == w then
+	       table.remove(v, i)
+	       break
+	    end
+	 end
+      end
+      unit.extra_recruit = v
+   end
+end
+
 function wml_actions.set_recruit(cfg)
+        local recruit = cfg.recruit or helper.wml_error("[set_recruit] missing required recruit= attribute")
 	for side_number, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
 		local v = {}
-		local recruit = cfg.recruit or helper.wml_error("[set_recruit] missing required recruit= attribute")
 		for w in string.gmatch(recruit, "[^%s,][^,]*") do
 			table.insert(v, w)
 		end
 		team.recruit = v
 	end
+end
+
+function wml_actions.set_extra_recruit(cfg)
+  local filter = helper.get_child(cfg, "filter") or helper.wml_error("[disallow_extra_recruit] missing required [filter] tag")
+   local recruit = cfg.extra_recruit or helper.wml_error("[set_extra_recruit] missing required extra_recruit= attribute")
+   local v = {}
+
+   for w in string.gmatch(recruit, "[^%s,][^,]*") do
+      table.insert(v, w)
+   end
+
+   for index, unit in ipairs(wesnoth.get_units(filter)) do
+      unit.extra_recruit = v
+   end
 end
 
 function wml_actions.store_map_dimensions(cfg)
