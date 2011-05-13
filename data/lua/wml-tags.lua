@@ -161,7 +161,7 @@ end
 
 function wml_actions.disallow_extra_recruit(cfg)
 	local filter = helper.get_child(cfg, "filter") or helper.wml_error("[disallow_extra_recruit] missing required [filter] tag")
-	local types = cfg.type or helper.wml_error("[allow_extra_recruit] missing required type= attribute")
+	local types = cfg.type or helper.wml_error("disallow_extra_recruit] missing required type= attribute")
 	for index, unit in ipairs(wesnoth.get_units(filter)) do
 		local v = unit.extra_recruit
 		for w in string.gmatch(types, "[^%s,][^,]*") do
@@ -195,7 +195,7 @@ function wml_actions.set_recruit(cfg)
 end
 
 function wml_actions.set_extra_recruit(cfg)
-	local filter = helper.get_child(cfg, "filter") or helper.wml_error("[disallow_extra_recruit] missing required [filter] tag")
+	local filter = helper.get_child(cfg, "filter") or helper.wml_error("[set_extra_recruit] missing required [filter] tag")
 	local types = cfg.type or helper.wml_error("[set_extra_recruit] missing required type= attribute")
 	local v = {}
 
