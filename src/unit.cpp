@@ -1658,7 +1658,7 @@ void unit::write(config& cfg) const
 	if(can_recruit())
 		cfg["canrecruit"] = true;
 
-	cfg["unit_recruit"] = utils::join(recruit_list_);
+	cfg["extra_recruit"] = utils::join(recruit_list_);
 
 	cfg["facing"] = map_location::write_direction(facing_);
 
