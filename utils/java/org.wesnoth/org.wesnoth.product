@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Wesnoth User Made Content" uid="org.wesnoth.product" id="org.wesnoth.product" application="Wesnoth_Eclipse_Plugin.application" version="1.0.3" useFeatures="false" includeLaunchers="true">
+<product name="Wesnoth UMC Dev" uid="org.wesnoth.product" id="org.wesnoth.product" application="Wesnoth_Eclipse_Plugin.application" version="1.0.3" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.wesnoth/icons/wesnoth-about.png"/>
       <text>
-         Battle for Wesnoth User Made Content Plugin
+         Battle for Wesnoth User Made Content Development
       </text>
    </aboutInfo>
 
@@ -346,11 +346,11 @@ litigation.
       <plugin id="org.eclipse.ui.navigator"/>
       <plugin id="org.eclipse.ui.navigator.resources"/>
       <plugin id="org.eclipse.ui.views"/>
+      <plugin id="org.eclipse.ui.views.log"/>
       <plugin id="org.eclipse.ui.views.properties.tabbed"/>
       <plugin id="org.eclipse.ui.win32" fragment="true"/>
       <plugin id="org.eclipse.ui.workbench"/>
       <plugin id="org.eclipse.ui.workbench.texteditor"/>
-      <plugin id="org.eclipse.wb.jdt.fragment" fragment="true"/>
       <plugin id="org.eclipse.xpand"/>
       <plugin id="org.eclipse.xtend"/>
       <plugin id="org.eclipse.xtend.typesystem.emf"/>
