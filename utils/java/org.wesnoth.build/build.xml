@@ -18,9 +18,10 @@
             
         <ant antfile="${eclipse.pdebuild.scripts}/productBuild/productBuild.xml" />
 
-        <move todir="${basedir}">
+        <move todir="${basedir}/${buildLabel}">
             <fileset dir="${buildDirectory}/${buildLabel}" includes="*.zip"/>
         </move>
+
     </target>
 </project>
         
