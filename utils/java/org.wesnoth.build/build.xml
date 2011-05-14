@@ -19,10 +19,6 @@
         <move todir="${basedir}">
             <fileset dir="${buildDirectory}/${buildLabel}" includes="*.zip"/>
         </move>
-
-        <!-- refresh the workspace -->
-        <eclipse.convertPath fileSystemPath="${basedir}" property="resourcePath"/>
-        <eclipse.refreshLocal resource="${resourcePath}" depth="infinite"/>
     </target>
 </project>
         
