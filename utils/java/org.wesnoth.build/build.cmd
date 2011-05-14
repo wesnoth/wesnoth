@@ -1,7 +1,7 @@
 @echo off
 
-set ECLIPSEBIN=d:\work\java\eclipse\3.6.2\eclipse\
-set BUILDDIR=d:\tmp\eclipse_build
+set ECLIPSEBIN=%1
+set BUILDDIR=%TEMP%\eclipse_build
 
 mkdir %BUILDDIR%
 
@@ -18,3 +18,7 @@ java -cp %EQUINOXJAR% org.eclipse.core.launcher.Main -data workspace -applicatio
 IF EXIST ../org.wesnoth/build.xml rm ../org.wesnoth/build.xml
 IF EXIST ../org.wesnoth.wml/build.xml rm ../org.wesnoth.wml/build.xml
 IF EXIST ../org.wesnoth.wml.ui/build.xml rm ../org.wesnoth.wml.ui/build.xml
+
+:end
+echo Script finished.
+pause
