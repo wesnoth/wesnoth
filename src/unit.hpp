@@ -127,10 +127,9 @@ public:
 	fixed_t alpha() const { return alpha_; }
 
 	bool can_recruit() const { return canrecruit_; }
-	const std::set<std::string>& recruits() const
+	const std::vector<std::string>& recruits() const
 		{ return recruit_list_; }
-	void add_recruit(const std::string &);
-	void set_recruits(const std::set<std::string>& recruits);
+	void set_recruits(const std::vector<std::string>& recruits);
 
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
 	int total_movement() const { return max_movement_; }
@@ -377,7 +376,7 @@ private:
 	int max_experience_;
 	int level_;
 	bool canrecruit_;
-	std::set<std::string> recruit_list_;
+	std::vector<std::string> recruit_list_;
 	unit_type::ALIGNMENT alignment_;
 	std::string flag_rgb_;
 	std::string image_mods_;

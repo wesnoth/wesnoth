@@ -892,7 +892,7 @@ static int impl_unit_get(lua_State *L)
 	return_bool_attrib("canrecruit", u.can_recruit());
 
 	if (strcmp(m, "extra_recruit") == 0) {
-		std::set<std::string> const &recruits = u.recruits();
+		std::vector<std::string> const &recruits = u.recruits();
 		lua_createtable(L, recruits.size(), 0);
 		int i = 1;
 		foreach (std::string const &r, recruits) {
@@ -957,14 +957,14 @@ static int impl_unit_set(lua_State *L)
 	modify_bool_attrib("hidden", u.set_hidden(value));
 
 	if (strcmp(m, "extra_recruit") == 0) {
-		std::set<std::string> recruits;
+		std::vector<std::string> recruits;
 		char const* message = "table with unnamed indices holding type id strings required";
 		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message);
 		for (unsigned i = 1; i <= lua_objlen(L, 3); ++i) {
 			lua_rawgeti(L, 3, i);
 			char const* type = lua_tostring(L, 4);
 			if(!type) return luaL_argerror(L, 2 + i, message);
-			recruits.insert(type);
+			recruits.push_back(type);
 			lua_pop(L, 1);
 		}
 		u.set_recruits(recruits);

@@ -480,22 +480,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		cfg_["upkeep"] = "full";
 	}
 
-	std::vector<std::string> recruits = utils::split(cfg["extra_recruit"]);
-	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
-
-		const unit_type *recruit_type = unit_types.find(*i);
-
-		if (!recruit_type) {
-			std::string error_message = _("Unknown unit type '$type|' in extra_recruit attribute");
-			utils::string_map symbols;
-			symbols["type"] = *i;
-			error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-			ERR_NG << "unit of type " << *i << " not found!\n";
-			throw game::game_error(error_message);
-		} else {
-		recruit_list_.insert(*i);
-		}
-	}
+	set_recruits(utils::split(cfg["extra_recruit"]));
 
 	/** @todo Are these modified by read? if not they can be removed. */
 	getsHit_=0;
@@ -1002,39 +987,21 @@ SDL_Color unit::xp_color() const
 	return(color);
 }
 
-void unit::set_recruits(const std::set<std::string>& recruits)
+void unit::set_recruits(const std::vector<std::string>& recruits)
 {
 	foreach (std::string const &unit, recruits) {
 		const unit_type *type = unit_types.find(unit);
 		if (!type) {
 			std::string error_message = _("Unknown unit type '$type|' while setting extra recruit list");
 			utils::string_map symbols;
-			symbols["type"] = type_id();
+			symbols["type"] = unit;
 			error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-			ERR_NG << "unit of type " << type_id() << " not found!\n";
+			ERR_NG << "unit of type " << unit << " not found!\n";
 			throw game::game_error(error_message);
 		}
 	}
 
 	recruit_list_ = recruits;
-	//TODO
-	//info_.minimum_recruit_price = 0;
-	//ai::manager::raise_recruit_list_changed();
-}
-
-void unit::add_recruit(const std::string &recruit)
-{
-	const unit_type *type = unit_types.find(recruit);
-	if (!type) {
-		std::string error_message = _("Unknown unit type '$type|' while adding extra recruit");
-		utils::string_map symbols;
-		symbols["type"] = type->type_name();
-		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-		ERR_NG << "unit of type " << type->type_name() << " not found!\n";
-		throw game::game_error(error_message);
-	} else {
-		recruit_list_.insert(recruit);
-	}
 	//TODO
 	//info_.minimum_recruit_price = 0;
 	//ai::manager::raise_recruit_list_changed();
