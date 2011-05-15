@@ -989,22 +989,17 @@ SDL_Color unit::xp_color() const
 
 void unit::set_recruits(const std::vector<std::string>& recruits)
 {
-	foreach (std::string const &unit, recruits) {
-		const unit_type *type = unit_types.find(unit);
-		if (!type) {
-			std::string error_message = _("Unknown unit type '$type|' while setting extra recruit list");
-			utils::string_map symbols;
-			symbols["type"] = unit;
-			error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-			ERR_NG << "unit of type " << unit << " not found!\n";
-			throw game::game_error(error_message);
-		}
-	}
-
+	unit_types.check_types(recruits);
 	recruit_list_ = recruits;
 	//TODO
 	//info_.minimum_recruit_price = 0;
 	//ai::manager::raise_recruit_list_changed();
+}
+
+void unit::set_advances_to(const std::vector<std::string>& advances_to)
+{
+	unit_types.check_types(advances_to);
+	advances_to_ = advances_to;
 }
 
 std::string unit::side_id() const {return teams_manager::get_teams()[side()-1].save_id(); }
