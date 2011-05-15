@@ -822,7 +822,7 @@ static int impl_vconfig_collect(lua_State *L)
 #define modify_vector_string_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		std::vector<std::string> vector; \
-		char const* message = "table with unnamed indices holding strings required"; \
+		char const* message = "table with unnamed indices holding strings expected"; \
 		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message); \
 		unsigned length = lua_objlen(L, 3); \
 		for (unsigned i = 1; i <= length; ++i) { \
@@ -978,6 +978,7 @@ static int impl_unit_set(lua_State *L)
 	modify_bool_attrib("hidden", u.set_hidden(value));
 
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
+	modify_vector_string_attrib("advances_to", u.set_advances_to(vector));
 
 	if (!lu->on_map()) {
 		map_location loc = u.get_location();
