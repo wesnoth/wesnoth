@@ -360,6 +360,7 @@ public:
 	void set_config(config &cfg);
 
 	const unit_type *find(const std::string &key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
+	void check_types(const std::vector<std::string>& types) const;
 	const unit_race *find_race(const std::string &) const;
 
 	void build_all(unit_type::BUILD_STATUS status);

@@ -1181,6 +1181,13 @@ const unit_type *unit_type_data::find(const std::string& key, unit_type::BUILD_S
 	return &itor->second;
 }
 
+void unit_type_data::check_types(const std::vector<std::string>& types) const
+{
+	foreach(const std::string& type, types) {
+		if(!find(type)) throw game::game_error("unknown unit type: " + type);
+	}
+}
+
 const config& unit_type_data::find_config(const std::string& key) const
 {
 	const config &cfg = unit_cfg_->find_child("unit_type", "id", key);
