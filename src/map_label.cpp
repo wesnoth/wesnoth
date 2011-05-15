@@ -468,7 +468,7 @@ bool terrain_label::visible() const
             return false;
 	}
 
-	return ((parent_->team_name() == team_name_ && !is_observer())
+	return ((parent_->team_name() == team_name_ && (!is_observer() || !team::nteams()))
 			|| (team_name_.empty() && parent_->visible_global_label(loc_)));
 }
 
