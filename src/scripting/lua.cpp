@@ -778,6 +778,19 @@ static int impl_vconfig_collect(lua_State *L)
 		return 1; \
 	}
 
+#define return_vector_string_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+		const std::vector<std::string>& vector = accessor; \
+		lua_createtable(L, vector.size(), 0); \
+		int i = 1; \
+		foreach (const std::string& s, vector) { \
+			lua_pushstring(L, s.c_str()); \
+			lua_rawseti(L, -2, i); \
+			++i; \
+		} \
+		return 1; \
+	}
+
 #define modify_tstring_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		t_string value = luaW_checktstring(L, 3); \
@@ -802,6 +815,23 @@ static int impl_vconfig_collect(lua_State *L)
 #define modify_bool_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		bool value = lua_toboolean(L, 3); \
+		accessor; \
+		return 0; \
+	}
+
+#define modify_vector_string_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+		std::vector<std::string> vector; \
+		char const* message = "table with unnamed indices holding strings required"; \
+		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message); \
+		unsigned length = lua_objlen(L, 3); \
+		for (unsigned i = 1; i <= length; ++i) { \
+			lua_rawgeti(L, 3, i); \
+			char const* string = lua_tostring(L, 4); \
+			if(!string) return luaL_argerror(L, 2 + i, message); \
+			vector.push_back(string); \
+			lua_pop(L, 1); \
+		} \
 		accessor; \
 		return 0; \
 	}
@@ -891,17 +921,8 @@ static int impl_unit_get(lua_State *L)
 	return_tstring_attrib("name", u.name());
 	return_bool_attrib("canrecruit", u.can_recruit());
 
-	if (strcmp(m, "extra_recruit") == 0) {
-		std::vector<std::string> const &recruits = u.recruits();
-		lua_createtable(L, recruits.size(), 0);
-		int i = 1;
-		foreach (std::string const &r, recruits) {
-			lua_pushstring(L, r.c_str());
-			lua_rawseti(L, -2, i);
-			++i;
-		}
-		return 1;
-	}
+	return_vector_string_attrib("extra_recruit", u.recruits());
+	return_vector_string_attrib("advances_to", u.advances_to());
 
 	if (strcmp(m, "status") == 0) {
 		lua_createtable(L, 1, 0);
@@ -956,20 +977,7 @@ static int impl_unit_set(lua_State *L)
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
 	modify_bool_attrib("hidden", u.set_hidden(value));
 
-	if (strcmp(m, "extra_recruit") == 0) {
-		std::vector<std::string> recruits;
-		char const* message = "table with unnamed indices holding type id strings required";
-		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message);
-		for (unsigned i = 1; i <= lua_objlen(L, 3); ++i) {
-			lua_rawgeti(L, 3, i);
-			char const* type = lua_tostring(L, 4);
-			if(!type) return luaL_argerror(L, 2 + i, message);
-			recruits.push_back(type);
-			lua_pop(L, 1);
-		}
-		u.set_recruits(recruits);
-		return 0;
-	}
+	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
 
 	if (!lu->on_map()) {
 		map_location loc = u.get_location();
