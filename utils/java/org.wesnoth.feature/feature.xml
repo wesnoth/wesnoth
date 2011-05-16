@@ -215,6 +215,10 @@ litigation.
       <discovery label="Update site" url="http://eclipse.wesnoth.org/"/>
    </url>
 
+   <includes
+         id="org.eclipse.equinox.p2.user.ui"
+         version="0.0.0"/>
+
    <requires>
       <import plugin="org.eclipse.xtext"/>
       <import plugin="org.eclipse.xtext.util"/>
@@ -225,6 +229,7 @@ litigation.
       <import plugin="org.eclipse.osgi.util" version="3.2.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.osgi" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.apache.log4j"/>
+      <import plugin="org.wesnoth.wml"/>
       <import plugin="org.eclipse.xtext.ui"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
@@ -246,7 +251,7 @@ litigation.
       <import plugin="org.eclipse.ui.navigator.resources"/>
       <import plugin="org.eclipse.ui.intro"/>
       <import plugin="org.eclipse.ui.intro.universal"/>
-      <import plugin="org.wesnoth.wml"/>
+      <import plugin="org.eclipse.ui.views.log" version="1.0.100" match="greaterOrEqual"/>
    </requires>
 
    <plugin
