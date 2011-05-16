@@ -21,7 +21,9 @@
         <move todir="${basedir}/${buildLabel}">
             <fileset dir="${buildDirectory}/${buildLabel}" includes="*.zip"/>
         </move>
-
+    	<move todir="${basedir}/update_site">
+    	     <fileset dir="${buildDirectory}/repository"/>
+        </move>
     </target>
 </project>
         
