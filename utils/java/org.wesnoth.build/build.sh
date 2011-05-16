@@ -3,6 +3,12 @@
 eclipse_dir=$1
 build_dir=/tmp/eclipse_build
 
+echo Cleaning build directory
+if [[ -d "$build_dir" ]]
+	rm -rf "$build_dir"
+fi
+
+
 mkdir -p "$build_dir"
 if [[ -z "$eclipse_dir" ]] 
 then

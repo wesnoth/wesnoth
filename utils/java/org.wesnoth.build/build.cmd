@@ -3,22 +3,26 @@
 set ECLIPSEBIN=%1
 set BUILDDIR=%TEMP%\eclipse_build
 
-mkdir -p %BUILDDIR%
+echo Clearing build dir...
+IF EXIST %BUILDDIR%	rm -rf %BUILDDIR%
+mkdir %BUILDDIR%
 
 REM get path to equinox jar inside ECLIPSEBIN folder
 for /f "delims= tokens=1" %%c in ('dir /B /S /OD %ECLIPSEBIN%\plugins\org.eclipse.equinox.launcher_*.jar') do set EQUINOXJAR=%%c
-echo Found equinox jar: %EQUINOXJAR%
 
-IF NOT EXIST %EQUINOXJAR% DO (
+IF EXIST %EQUINOXJAR% (
+echo Found equinox jar: %EQUINOXJAR%
+) ELSE (
 echo Couldn't find the equinox launcher jar
 goto end
 )
 
 REM find pde build folder
 for /f "delims= tokens=1" %%c in ('dir /B /S /OD %ECLIPSEBIN%\plugins\org.eclipse.pde.build_*') do set PDEBUILD_DIR=%%c
-echo Found pde folder: %PDEBUILD_DIR%
 
-IF NOT EXIST %PDEBUILD_DIR% DO (
+IF EXIST %PDEBUILD_DIR% (
+echo Found pde folder: %PDEBUILD_DIR%
+) ELSE (
 echo Couldn't find the pde build plugin. Are you using a RCP eclipse version?
 goto end
 )
