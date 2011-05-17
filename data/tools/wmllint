@@ -1078,7 +1078,7 @@ def global_sanity_check(filename, lines):
             continue
         try:
             (key, prefix, value, comment) = parse_attribute(lines[i])
-            if key == "recruit" and value:
+            if key in ("recruit", "extra_recruit") and value:
                 recruit[ifdef_stack[-1]] = (i+1, map(lambda x: x.strip(), value.split(",")))
             elif key == "recruitment_pattern" and value:
                 if not in_ai:
