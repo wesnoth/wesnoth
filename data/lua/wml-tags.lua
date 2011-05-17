@@ -826,7 +826,8 @@ function wml_actions.store_side(cfg)
 				user_team_name = t.user_team_name,
 				color = t.color,
 				colour = t.color,
-				gold = t.gold
+				gold = t.gold,
+				side = side_number
 			}
 		wesnoth.set_variable(string.format("%s[%u]", variable, index), container)
 		index = index + 1
