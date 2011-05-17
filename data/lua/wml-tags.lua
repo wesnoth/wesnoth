@@ -808,3 +808,34 @@ function wml_actions.transform_unit(cfg)
 	wml_actions.redraw {}
 end
 
+function wml_actions.store_side(cfg)
+	local variable = cfg.variable or "side"
+	local index = 0
+	wesnoth.set_variable(variable)
+	for t, side_number in helper.get_sides(cfg) do
+		local container = {
+				controller = t.controller,
+				recruit = table.concat(t.recruit, ","),
+				fog = t.fog,
+				shroud = t.shroud,
+				hidden = t.hidden,
+				income = t.total_income,
+				village_gold = t.village_gold,
+				name = t.name,
+				team_name = t.team_name,
+				user_team_name = t.user_team_name,
+				color = t.color,
+				colour = t.color,
+				gold = t.gold
+			}
+		wesnoth.set_variable(string.format("%s[%u]", variable, index), container)
+		index = index + 1
+	end
+	-- deprecated starting with 1.9.0
+	-- added message starting with 1.9.7
+	-- assuming that a wml author will usually be in debug mode and a player will not...
+	if wesnoth.game_config.debug then
+		wesnoth.message("warning", string.format("$%s.colour is deprecated, use $%s.color (if needed)", variable, variable))
+	end
+end
+

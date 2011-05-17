@@ -892,38 +892,6 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(store_side, /*event_info*/, cfg)
-{
-	game_state *state_of_game = resources::state_of_game;
-	std::vector<team> &teams = *resources::teams;
-
-	std::string var_name = cfg["variable"];
-	if (var_name.empty()) var_name = "side";
-
-	int side_num = cfg["side"].to_int(1);
-	size_t team_index = side_num - 1;
-	if (team_index >= teams.size()) return;
-
-	config side_data;
-	teams[team_index].write(side_data);
-	state_of_game->get_variable(var_name+".controller") = side_data["controller"];
-	state_of_game->get_variable(var_name+".recruit") = side_data["recruit"];
-	state_of_game->get_variable(var_name+".fog") = side_data["fog"];
-	state_of_game->get_variable(var_name+".shroud") = side_data["shroud"];
-	state_of_game->get_variable(var_name+".hidden") = side_data["hidden"];
-
-	state_of_game->get_variable(var_name+".income") = teams[team_index].total_income();
-	state_of_game->get_variable(var_name+".village_gold") = teams[team_index].village_gold();
-	state_of_game->get_variable(var_name+".name") = teams[team_index].name();
-	state_of_game->get_variable(var_name+".team_name") = teams[team_index].team_name();
-	state_of_game->get_variable(var_name+".user_team_name") = teams[team_index].user_team_name();
-	state_of_game->get_variable(var_name+".color") = teams[team_index].map_color_to();
-	///@deprecated 1.9.2 'colour'
-	state_of_game->get_variable(var_name+".colour") = teams[team_index].map_color_to();
-
-	state_of_game->get_variable(var_name+".gold") = teams[team_index].gold();
-}
-
 WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 {
 	config::attribute_value value = cfg["value"];
