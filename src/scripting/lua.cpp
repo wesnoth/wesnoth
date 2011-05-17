@@ -1472,8 +1472,13 @@ static int impl_side_get(lua_State *L)
 	return_int_attrib("base_income", t.base_income());
 	return_int_attrib("total_income", t.total_income());
 	return_bool_attrib("objectives_changed", t.objectives_changed());
+	return_bool_attrib("fog", t.uses_fog());
+	return_bool_attrib("shroud", t.uses_shroud());
+	return_bool_attrib("hidden", t.hidden());
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
+	return_string_attrib("name", t.name());
+	return_string_attrib("color", t.map_color_to());
 	return_cstring_attrib("controller", t.controller_string());
 
 	if (strcmp(m, "recruit") == 0) {
