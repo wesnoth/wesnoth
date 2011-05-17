@@ -4,14 +4,17 @@ local helper = {}
 
 --! Returns an iterator over all the sides matching a given filter that can be used in a for-in loop.
 function helper.get_sides(cfg)
-	local function f(dummy, i)
+	local function f(s)
+		local i = s.i
 		while i < #wesnoth.sides do
 			i = i + 1
-			if wesnoth.match_side(i, cfg) then return i end
+			if wesnoth.match_side(i, cfg) then
+				s.i = i
+				return wesnoth.sides[i], i
+			end
 		end
-		return nil
 	end
-	return f, nil, 0
+	return f, { i = 0 }
 end
 
 --! Interrupts the current execution and displays a chat message that looks like a WML error.
