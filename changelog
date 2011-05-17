@@ -11,6 +11,7 @@ Version 1.9.6+svn:
    * proxy getters and setters for unit attributes extra_recruit
      and advances_to
    * new function wesnoth.add_known_unit
+   * new proxy getters for sides: fog, shroud, hidden, name, color
  * Multiplayer:
    * New "Shuffle sides" option in MP creation list, allowing to randomize
      player to side assignment (patch #1937 by Quetzalcoatl)
@@ -30,6 +31,7 @@ Version 1.9.6+svn:
         -- removes unit types from a leader's recruit list
      * [event] [set_extra_recruit] [filter] [/filter] extra_recruit=
         -- assigns a new recruit list to the leader
+   * added support for SSF to [store_side]
 
 Version 1.9.6:
  * Campaigns:
