@@ -15,7 +15,7 @@ import org.eclipse.ui.console.IConsoleConstants;
 
 public class WMLPerspective implements IPerspectiveFactory
 {
-	public static final String WESNOTH_PROJ_EXPLORER_ID = "wesnoth_eclipse_plugin.views.projects"; //$NON-NLS-1$
+	public static final String WESNOTH_PROJ_EXPLORER_ID = "org.wesnoth.views.projects"; //$NON-NLS-1$
 
 	@Override
 	public void createInitialLayout(IPageLayout layout)
