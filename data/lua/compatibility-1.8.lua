@@ -7,7 +7,7 @@ function wesnoth.get_side(i)
 	return wesnoth.sides[i]
 end
 
-function wesnoth.get_side_count(i)
+function wesnoth.get_side_count()
 	return #wesnoth.sides
 end
 
