@@ -356,7 +356,8 @@ function wml_actions.select_unit(cfg)
 	local u = wesnoth.get_units(cfg)[1]
 	if not u then return end
 	local fire_event = cfg.fire_event
-	local highlight = (cfg.highlight or true)
+	local highlight = cfg.highlight
+	if highlight == nil then highlight = true end
 
 	wesnoth.select_hex(u.x, u.y)
 
