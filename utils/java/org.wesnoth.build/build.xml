@@ -24,6 +24,14 @@
     	<move todir="${basedir}/update_site">
     	     <fileset dir="${buildDirectory}/repository"/>
         </move>
+        <delete>
+            <fileset dir="${basedir}/update_site/binary" />
+        </delete>
+        <delete>
+            <fileset dir="${basedir}/update_site/plugins">
+            	<exclude name="org.wesnoth*"/>
+        	</fileset>
+        </delete>
     </target>
 </project>
         
