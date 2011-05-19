@@ -129,7 +129,7 @@ class ChatClient : public ana::listener_handler,
                 if (msg == "/quit")
                     std::cout << "\nExiting.\n";
                 else
-                    if (msg.size() > 0)
+                    if (!msg.empty())
                         client_->send( ana::buffer( msg ), this);
 
             } while ( (msg != "/quit") && continue_);
