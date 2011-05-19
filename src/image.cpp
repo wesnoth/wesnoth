@@ -208,7 +208,7 @@ locator::locator(const locator &a, const std::string& mods):
 	index_(-1),
 	val_(a.val_)
 {
-	if(mods.size()){
+	if(!mods.empty()){
 			val_.modifications_ += mods;
 			val_.type_=SUB_FILE;
 			init_index();
