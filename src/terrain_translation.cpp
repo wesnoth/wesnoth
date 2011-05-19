@@ -694,7 +694,7 @@ static t_terrain get_mask_(const t_terrain& terrain)
 
 static t_layer string_to_layer_(const std::string& str)
 {
-	if (str.size() == 0)
+	if (str.empty())
 		return NO_LAYER;
 
 	t_layer result = 0;
