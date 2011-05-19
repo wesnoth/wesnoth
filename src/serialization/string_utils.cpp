@@ -644,7 +644,7 @@ wide_string string_to_wstring(const std::string &src)
 
 utf8_string lowercase(const utf8_string& s)
 {
-	if(s.size() > 0) {
+	if(!s.empty()) {
 		utf8_iterator itor(s);
 		std::string res;
 
