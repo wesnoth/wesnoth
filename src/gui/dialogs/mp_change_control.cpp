@@ -81,7 +81,13 @@ void dialog_view_callback(twidget* caller)
  */
 class tmp_change_control::model {
 public:
-	model() {}
+	model()
+		: sides_list(NULL)
+		, nicks_list(NULL)
+		, sides()
+		, nicks()
+	{
+	}
 
 	tlistbox *sides_list;
 	tlistbox *nicks_list;
@@ -220,6 +226,7 @@ public:
 	typedef std::vector< boost::shared_ptr<side_controller> > side_controller_ptr_vector;
 	controller(model &m)
 		: model_(m)
+		, side_controllers_()
 	{
 	}
 
