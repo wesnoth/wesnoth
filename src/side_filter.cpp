@@ -132,6 +132,16 @@ bool side_filter::match_internal(const team &t) const
 				break;
 			}
 		}
+		if(!found && unit_filter["search_recall_list"].to_bool(false)) {
+			const std::vector<unit>& recall_list = t.recall_list();
+			foreach(const unit& u, recall_list) {
+				scoped_recall_unit this_unit("this_unit", t.save_id(), &u - &recall_list[0]);
+				if(u.matches_filter(unit_filter, u.get_location(), flat_)) {
+					found = true;
+					break;
+				}
+			}
+		}
 		if (!found) {
 			return false;
 		}
