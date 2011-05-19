@@ -205,7 +205,7 @@ std::string file_menu::get_path_up(const std::string& path, const unsigned level
 			break;
 		}
 	}
-	if (curr_path.size() == 0) {
+	if (curr_path.empty()) {
 		// The root was reached, represent this as one delimiter only.
 		curr_path = path_delim;
 	}
@@ -225,16 +225,16 @@ std::string file_menu::strip_last_delim(const std::string& path) const {
 
 bool file_menu::is_root(const std::string& path) const {
 #ifdef __AMIGAOS4__
-	return path.size() == 0 || path[path.size()-1] == ':';
+	return path.empty() || path[path.size()-1] == ':';
 #else
-	return path.size() == 0 || (path.size() == 1 && path[0] == path_delim);
+	return path.empty() || (path.size() == 1 && path[0] == path_delim);
 #endif
 }
 
 std::string file_menu::add_path(const std::string& path, const std::string& to_add) const
 {
 	std::string joined_path = strip_last_delim(path);
-	if (to_add.size() > 0) {
+	if (!to_add.empty()) {
 		if (to_add == path_up) {
 			return get_path_up(path);
 		}
