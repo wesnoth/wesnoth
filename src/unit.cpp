@@ -1695,7 +1695,7 @@ const surface unit::still_image(bool scaled) const
 	image_loc = image::locator(absolute_image());
 #else
 	std::string mods=image_mods();
-	if(mods.size()){
+	if(!mods.empty()){
 		image_loc = image::locator(absolute_image(),mods);
 	} else {
 		image_loc = image::locator(absolute_image());
@@ -2903,7 +2903,7 @@ temporary_unit_mover::~temporary_unit_mover()
 
 std::string unit::TC_image_mods() const{
 	std::stringstream modifier;
-	if(flag_rgb_.size()){
+	if(!flag_rgb_.empty()){
 		modifier << "~RC("<< flag_rgb_ << ">" << team::get_side_color_index(side()) << ")";
 	}
 	return modifier.str();
@@ -2911,7 +2911,7 @@ std::string unit::TC_image_mods() const{
 std::string unit::image_mods() const{
 	std::stringstream modifier;
 	modifier << TC_image_mods();
-	if(image_mods_.size()){
+	if(!image_mods_.empty()){
 		modifier << "~" << image_mods_;
 	}
 	return modifier.str();
