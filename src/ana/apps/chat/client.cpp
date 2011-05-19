@@ -194,7 +194,7 @@ class ChatClient : public ana::listener_handler,
                     client_->send( ana::buffer( empty_str ), this );
                 }
                 else
-                    if (msg.size() > 0)
+                    if (!msg.empty())
                         client_->send( ana::buffer( msg ), this);
 
             } while ( (msg != "/quit") && continue_);
