@@ -660,7 +660,7 @@ surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, boo
 	if(surf == NULL)
 		return NULL;
 
-	if(map_rgb.size()){
+	if(!map_rgb.empty()){
 	     surface nsurf(make_neutral_surface(surf));
 	     if(nsurf == NULL) {
 			std::cerr << "failed to make neutral surface\n";
