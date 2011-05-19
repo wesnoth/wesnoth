@@ -523,7 +523,7 @@ namespace game_events {
 		const vconfig &ssf = cfg.child("filter_side");
 
 		if (!ssf.null() && !only_side) {
-			if(!sides.empty()) { WRN_NG << "ignoring duplicate side filter information (inline side=)\n"; } 
+			if(!sides.empty()) { WRN_NG << "ignoring duplicate side filter information (inline side=)\n"; }
 			side_filter filter(ssf);
 			return filter.get_teams();
 		}

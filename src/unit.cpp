@@ -2638,7 +2638,7 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 	const std::string& gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
 	t_string const &gender_specific_name = trait[gender_string];
 
-	// if this is a t_string& instead of a t_string, msvc9 compiled windows binaries 
+	// if this is a t_string& instead of a t_string, msvc9 compiled windows binaries
 	// choke on the case where both gender_specific_name and trait["name"] are empty.
 	const t_string name = gender_specific_name.empty() ?
 		 trait["name"] : gender_specific_name;

@@ -3411,7 +3411,7 @@ void LuaKernel::initialize()
 	lua_State *L = mState;
 
 	// Create the sides table.
-	// note: 
+	// note:
 	// This table is redundant to the return value of wesnoth.get_sides({}).
 	// Still needed for backwards compatibility.
 	lua_getglobal(L, "wesnoth");
