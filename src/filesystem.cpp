@@ -445,7 +445,7 @@ bool create_directory_if_missing_recursive(const std::string& dirname)
 		// remove trailing slashes or backslashes
 		while ((tmp_dirname[tmp_dirname.size()-1] == '/' ||
 			  tmp_dirname[tmp_dirname.size()-1] == '\\') &&
-			  tmp_dirname.size()>0)
+			  !tmp_dirname.empty())
 		{
 			tmp_dirname.erase(tmp_dirname.size()-1);
 		}
