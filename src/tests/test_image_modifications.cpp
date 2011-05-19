@@ -36,7 +36,9 @@ class environment_setup
 public:
 	environment_setup()
 		// redirects the output to an ignored stream
-		:output_redirect_(ignored_stream_)
+		: ignored_stream_()
+		, output_redirect_(ignored_stream_)
+		, paths_manager_()
 	{
 		set_up_color_info();
 		set_up_team_colors();
