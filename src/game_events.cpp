@@ -2272,13 +2272,14 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 		}
 		else if (!game_events::unit_matches_filter(*u, healed_filter)) continue;
 
-		int memory = u->hitpoints();
-		if(amount.blank() || amount == "full") u->heal_all();
+		int heal_amount = u->max_hitpoints() - u->hitpoints();
+		if(amount.blank() || amount == "full") u->set_hitpoints(u->max_hitpoints());
 		else {
-			u->heal(lexical_cast_default<int, config::attribute_value> (amount, u->max_hitpoints() - u->hitpoints()));
-			// results to 1 <= hitpoints <= max_hitpoints
+			heal_amount = lexical_cast_default<int, config::attribute_value> (amount, heal_amount);
+			const int& new_hitpoints = std::max(1, std::min(u->max_hitpoints(), u->hitpoints() + heal_amount));
+			heal_amount = new_hitpoints - u->hitpoints();
+			u->set_hitpoints(new_hitpoints);
 		}
-		memory = u->hitpoints() - memory;
 
 		if(!moves.blank()) {
 			if(moves == "full") u->set_movement(u->total_movement());
@@ -2304,10 +2305,10 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 		if (heal_amount_to_set)
 		{
 			heal_amount_to_set = false;
-			resources::state_of_game->get_variable("heal_amount") = memory;
+			resources::state_of_game->get_variable("heal_amount") = heal_amount;
 		}
 
-		if(animate) unit_display::unit_healing(*u, u->get_location(), healers, memory);
+		if(animate) unit_display::unit_healing(*u, u->get_location(), healers, heal_amount);
 		if(only_unit_at_loc1) return;
 	}
 }
