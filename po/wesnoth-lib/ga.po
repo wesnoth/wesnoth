@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-05 10:12+0200\n"
-"PO-Revision-Date: 2011-05-04 21:57-0800\n"
+"POT-Creation-Date: 2011-05-08 17:06+0200\n"
+"PO-Revision-Date: 2011-05-20 15:03-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -668,7 +668,7 @@ msgstr "Sean tigh Sneachtùil"
 #. [terrain_type]: id=igloo
 #: data/core/terrain.cfg:1422
 msgid "Igloo"
-msgstr ""
+msgstr "Ioglú"
 
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1436
@@ -1294,7 +1294,7 @@ msgstr "Feidhm a Bheith"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:36
 msgid "Formula debugger"
-msgstr ""
+msgstr "Dífhabhtóir foirmle"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:59
@@ -1320,7 +1320,7 @@ msgstr "Gníomhuithe"
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:128
 msgid "Step operation"
-msgstr ""
+msgstr "Oibríocht chéime"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:139
@@ -1329,9 +1329,8 @@ msgstr "Oibríocht Eile"
 
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:150
-#, fuzzy
 msgid "Step out"
-msgstr "Zúmáil Amach"
+msgstr "Imigh ón gcluiche"
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:161
@@ -1341,7 +1340,7 @@ msgstr "Coinním ar bun"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:178
 msgid "Execution trace"
-msgstr ""
+msgstr "Lorg rite"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1362,7 +1361,7 @@ msgstr "Scrios Sábháil"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:60
 msgid "Do you really want to delete this game?"
-msgstr ""
+msgstr "An dteastaíonn uait scrios an cluiche seo?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:80
@@ -1438,9 +1437,8 @@ msgstr "x"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:60
-#, fuzzy
 msgid "OOS error"
-msgstr "Botún bunachar sonraí: %s"
+msgstr "Erráid OOS"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:143
@@ -1466,7 +1464,7 @@ msgstr "Sábháil ann cheana. Forscríobh?"
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:46
 msgid "Gamestate Inspector"
-msgstr ""
+msgstr "Cigire Staidcluiche"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:100
@@ -1561,7 +1559,7 @@ msgstr "Óir ó gach baile"
 #: data/gui/default/window/lobby_main.cfg:184
 #: data/gui/default/window/mp_create_game.cfg:420
 msgid "Experience modifier"
-msgstr ""
+msgstr "Mionathraitheoir taithí"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:186
@@ -1708,9 +1706,8 @@ msgstr "Cuir comhadlann leis an réim"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:117
-#, fuzzy
 msgid "Remove from list"
-msgstr "&Réim aistriúcháin scáthaithe"
+msgstr "Bain de liosta"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:141
@@ -1719,9 +1716,8 @@ msgstr "Modhnóireacht"
 
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:148
-#, fuzzy
 msgid "Check status"
-msgstr "Aonaid"
+msgstr "Seiceáil stádas"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:155
@@ -1746,22 +1742,18 @@ msgstr "Cic / Toirmeasc"
 
 #. [label]: id=side_title
 #: data/gui/default/window/mp_change_control.cfg:21
-#, fuzzy
-#| msgid "Next Side"
 msgid "Side"
-msgstr "Foireann Eile"
+msgstr "Foireann"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
 msgid "Nick"
-msgstr ""
+msgstr "Leasainm"
 
 #. [label]
 #: data/gui/default/window/mp_change_control.cfg:194
-#, fuzzy
-#| msgid "Change Hotkey"
 msgid "Change control"
-msgstr "Athraigh Eochair aicearra"
+msgstr "Athraigh rial"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1788,7 +1780,7 @@ msgstr "Seol teachtaireacht príobháideach"
 #: data/gui/default/window/mp_cmd_wrapper.cfg:141
 #, fuzzy
 msgid "Friends/Ignored List"
-msgstr "&Réim aistriúcháin scáthaithe"
+msgstr "Déan Cairdeas"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -1841,7 +1833,7 @@ msgstr "Toirmeasc"
 #: data/gui/default/window/mp_connect.cfg:60
 #: data/gui/default/window/mp_server_list.cfg:69
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "Nascfaidh tú chuig an friothálaí ilimreoir anois."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:158
@@ -1931,8 +1923,9 @@ msgstr "Focal Faire:"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
+#, fuzzy
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Nascfaidh tú chuig an friothálaí ilimreoir anois."
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:41
@@ -2240,19 +2233,20 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:169
 msgid "Do Not Show Lobby Joins"
-msgstr ""
+msgstr "Ná Taispeáin Comhcheangail Forhalla"
 
 #: src/game_preferences_display.cpp:170
+#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr ""
+msgstr "Ná Taispeáin Comhcheangail Forhalla"
 
 #: src/game_preferences_display.cpp:171
 msgid "Show All Lobby Joins"
-msgstr ""
+msgstr "Taispeáin Comhcheangail Forhalla Uile"
 
 #: src/game_preferences_display.cpp:172 src/game_preferences_display.cpp:373
 msgid "Use new lobby interface"
-msgstr ""
+msgstr "Úsáid an comhéadan forhalla nua"
 
 #: src/game_preferences_display.cpp:173
 msgid "Sort Lobby List"
@@ -2264,9 +2258,8 @@ msgid "Iconize Lobby List"
 msgstr "Sórtáil Liosta Forhalla"
 
 #: src/game_preferences_display.cpp:176
-#, fuzzy
 msgid "Set path to wesnothd"
-msgstr "B<wesnoth> [I<ROGHNACHAIS>] [I<COSÁN_SONRAÍ>]"
+msgstr "Socraigh cosán go wesnothd"
 
 #: src/game_preferences_display.cpp:177
 msgid "Friends List"
@@ -2331,9 +2324,8 @@ msgid "Music"
 msgstr "Ceol"
 
 #: src/game_preferences_display.cpp:196
-#, fuzzy
 msgid "Chat Timestamping"
-msgstr "Línte Comhra: "
+msgstr "Stampáil Ama Comhra"
 
 #: src/game_preferences_display.cpp:197
 msgid "sound^Advanced Options"
@@ -2353,7 +2345,7 @@ msgstr "Saincheaptha"
 
 #: src/game_preferences_display.cpp:204
 msgid "Show Unit Idle Animations"
-msgstr ""
+msgstr "Taispeáin Beochan Aonaid Díomhaoin"
 
 #: src/game_preferences_display.cpp:206
 msgid "Music Volume:"
@@ -2412,9 +2404,8 @@ msgid "Change the sound volume for button clicks, etc."
 msgstr ""
 
 #: src/game_preferences_display.cpp:259
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Ráta Samplála (Hz):"
+msgstr "Athraigh an ráta samplála."
 
 #: src/game_preferences_display.cpp:268
 msgid "User defined sample rate"
@@ -2459,7 +2450,7 @@ msgstr "Luas aonaid"
 
 #: src/game_preferences_display.cpp:327
 msgid "Show unit idle animations"
-msgstr ""
+msgstr "Taispeáin beochan aonaid díomhaoin"
 
 #: src/game_preferences_display.cpp:333
 msgid "Set the frequency of unit idle animations"
@@ -2661,21 +2652,21 @@ msgstr ""
 
 #: src/gui/auxiliary/canvas.cpp:566
 msgid "Line doesn't fit on canvas."
-msgstr ""
+msgstr "Ní oireann an líne seo ar an gcanbhás."
 
 #: src/gui/auxiliary/canvas.cpp:703
 msgid "Rectangle doesn't fit on canvas."
-msgstr ""
+msgstr "Ní oireann an dronuilleog seo ar an gcanbhás."
 
 #: src/gui/auxiliary/canvas.cpp:835 src/gui/auxiliary/canvas.cpp:840
 #: src/gui/auxiliary/canvas.cpp:845 src/gui/auxiliary/canvas.cpp:851
 msgid "Circle doesn't fit on canvas."
-msgstr ""
+msgstr "Ní oireann an ciorcal seo ar an gcanbhás."
 
 #: src/gui/auxiliary/canvas.cpp:1033 src/gui/auxiliary/canvas.cpp:1040
 #: src/gui/auxiliary/canvas.cpp:1050 src/gui/auxiliary/canvas.cpp:1057
 msgid "Image doesn't fit on canvas."
-msgstr ""
+msgstr "Ní oireann an íomhá seo ar an gcanbhás."
 
 #: src/gui/auxiliary/canvas.cpp:1262
 #, fuzzy
@@ -2684,7 +2675,7 @@ msgstr "Bain feidhm as chló saincheaptha do réimsí téasc"
 
 #: src/gui/auxiliary/canvas.cpp:1331
 msgid "Text doesn't start on canvas."
-msgstr ""
+msgstr "Ní oireann na téacsanna ar an gcanbhás."
 
 #: src/gui/auxiliary/widget_definition.cpp:141
 #: src/gui/auxiliary/window_builder.cpp:236
@@ -2849,7 +2840,7 @@ msgstr "Earráid"
 
 #: src/gui/dialogs/mp_change_control.cpp:237
 msgid "Side $side"
-msgstr ""
+msgstr "Foireann $side"
 
 #: src/gui/dialogs/mp_create_game.cpp:89
 msgid "Load Game..."
@@ -2906,9 +2897,8 @@ msgid "Previous Unit"
 msgstr "Aonad Roimhe"
 
 #: src/hotkeys.cpp:54
-#, fuzzy
 msgid "Add waypoint"
-msgstr "Cuir comhaid le"
+msgstr "Cuir comhartha talún"
 
 #: src/hotkeys.cpp:55
 msgid "Hold Position"
@@ -3051,9 +3041,8 @@ msgid "Clear Labels"
 msgstr "Glan Lipéid"
 
 #: src/hotkeys.cpp:95
-#, fuzzy
 msgid "Show Enemy Moves"
-msgstr "Scipeáil gluaiseachtaí IS"
+msgstr "Taispeáin Gluaiseachtaí Naimhdeacha"
 
 #: src/hotkeys.cpp:96
 msgid "Best Possible Enemy Moves"
@@ -3097,9 +3086,8 @@ msgid "Execute planned action"
 msgstr "Ní féidir an ríomhoideas a rith:"
 
 #: src/hotkeys.cpp:112
-#, fuzzy
 msgid "Execute all actions"
-msgstr "Buaigh ar na naimhde go léir"
+msgstr "Rith gníomhuithe uile"
 
 #: src/hotkeys.cpp:113
 #, fuzzy
@@ -3116,7 +3104,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:116
 msgid "Suppose dead"
-msgstr ""
+msgstr "Glac marbh"
 
 #: src/hotkeys.cpp:118
 msgid "Quit to Desktop"
@@ -3127,9 +3115,8 @@ msgid "Close Map"
 msgstr "Dún Léarscáil"
 
 #: src/hotkeys.cpp:120
-#, fuzzy
 msgid "Switch Map"
-msgstr "Léarscáil Nua"
+msgstr "Lasc Léarscáil"
 
 #: src/hotkeys.cpp:122
 msgid "Partial Undo"
@@ -3275,12 +3262,11 @@ msgstr "Athnuaigh teaispeáint"
 #: src/hotkeys.cpp:181
 #, fuzzy
 msgid "Update Terrain Transitions"
-msgstr "Tiomsú rialacha tír-raon"
+msgstr "Uath-nuashonraigh Trasdulta Tír-raonta"
 
 #: src/hotkeys.cpp:183
-#, fuzzy
 msgid "Auto-update Terrain Transitions"
-msgstr "Uath-nuashonraigh amharc léarscáil"
+msgstr "Uath-nuashonraigh Trasdulta Tír-raonta"
 
 #: src/hotkeys.cpp:185
 msgid "Refresh Image Cache"
@@ -3323,19 +3309,16 @@ msgid "View Chat Log"
 msgstr "Féach Loga Comhrá"
 
 #: src/hotkeys.cpp:203
-#, fuzzy
 msgid "Enter user command"
-msgstr "Fuaimeanna Comhéadan Úsáideora"
+msgstr "Iontráil ordú úsáideora"
 
 #: src/hotkeys.cpp:204
-#, fuzzy
 msgid "Custom command"
-msgstr "Ordú teipthe: %s"
+msgstr "Ordú saincheaptha"
 
 #: src/hotkeys.cpp:205
-#, fuzzy
 msgid "Run AI formula"
-msgstr "RCA IS"
+msgstr "Rith foirmle IS"
 
 #: src/hotkeys.cpp:206
 msgid "Clear messages"

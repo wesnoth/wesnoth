@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-03-20 16:54+0100\n"
-"PO-Revision-Date: 2011-05-04 22:11-0800\n"
+"PO-Revision-Date: 2011-05-20 16:48-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -59,6 +59,11 @@ msgid ""
 "Healing\n"
 "Recruiting"
 msgstr ""
+"Foghlóidh tú na bhunsraith:\n"
+"Gluaiseacht\n"
+"Ionsaithe\n"
+"Cneasú\n"
+"Earcú"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:155
@@ -189,8 +194,9 @@ msgstr "Dia duit ar maidin, a Dheilfeadóir! Is it time to attacks things?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
+#, fuzzy
 msgid "Um, well..."
-msgstr ""
+msgstr "Go han-mhaith."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
@@ -275,8 +281,9 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:452
+#, fuzzy
 msgid "Good idea!"
-msgstr ""
+msgstr "Maith. Tá ocras orm."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:457
@@ -314,8 +321,9 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:485
+#, fuzzy
 msgid "The <i>dummy</i> gets a turn?"
-msgstr ""
+msgstr "Seal a 11: Tuaisceartachtaí"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:491
@@ -613,7 +621,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:991
 msgid "Protect Your Troops"
-msgstr ""
+msgstr "Cosain Do Chuid Trúpaí"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:993
@@ -703,8 +711,9 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1130
+#, fuzzy
 msgid "Do you want to keep practicing?"
-msgstr ""
+msgstr "An dteastaíonn uait an togra a scrios?"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1132
@@ -891,7 +900,7 @@ msgstr "Níl seo an cluiche, a Li’sar!"
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:425
 msgid "What should I do?"
-msgstr ""
+msgstr "Cad é a dhéanfaidh mé?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:430
@@ -1040,8 +1049,9 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:615
+#, fuzzy
 msgid "Move Konrad to capture a village"
-msgstr ""
+msgstr "Téigh Conrad go dtí an cuaille eolais thiar ó thuaidh"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:616
@@ -1178,7 +1188,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:892
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1022
 msgid "End your turn"
-msgstr ""
+msgstr "Chrióchnú do sheal"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:898
@@ -1260,7 +1270,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:961
 msgid "<big>Long-distance Movement</big>"
-msgstr ""
+msgstr "<big>Gluaiseacht Fad-achair</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:962
@@ -1338,7 +1348,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1044
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1045
 msgid "ZoC"
-msgstr ""
+msgstr "ZR"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1048
@@ -1418,7 +1428,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1167
 msgid "<big>Time of Day</big>"
-msgstr "<big>Tráth den Lá</big>"
+msgstr "<big>Tráth an Lae</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1168
