@@ -270,7 +270,7 @@ public:
 	 *
 	 * @param id                  The id of the widget to connect to the window.
 	 *                            A widget can only be connected once.
-	 * @param optional            Is the widget optional?
+	 * @param mandatory           Is the widget mandatory?
 	 * @param callback_load_value A callback function which is called when the
 	 *                            window is shown. This callback returns the
 	 *                            initial value of the field.
@@ -282,10 +282,11 @@ public:
 	 *                            is closed with OK.
 	 */
 	tfield(const std::string& id,
-			const bool optional,
+			const tunused_parameter&,
+			const bool mandatory,
 			T (*callback_load_value) (),
 			void (*callback_save_value) (CT value)) :
-		tfield_(id, tunused_parameter(), !optional),
+		tfield_(id, tunused_parameter(), mandatory),
 		value_(T()),
 		link_(value_),
 		callback_load_value_(callback_load_value),
@@ -299,7 +300,7 @@ public:
 	 *
 	 * @param id                  The id of the widget to connect to the window.
 	 *                            A widget can only be connected once.
-	 * @param optional            Is the widget optional?
+	 * @param mandatory           Is the widget mandatory?
 	 * @param linked_variable     The variable which is linked to the field.
 	 *                            * Upon loading its value is used as initial
 	 *                              value of the widget.
@@ -309,9 +310,10 @@ public:
 	 *                              * else, its value is undefined.
 	 */
 	tfield(const std::string& id
-			, const bool optional
+			, const tunused_parameter&
+			, const bool mandatory
 			, T& linked_variable)
-		: tfield_(id, tunused_parameter(), !optional)
+		: tfield_(id, tunused_parameter(), mandatory)
 		, value_(T())
 		, link_(linked_variable)
 		, callback_load_value_(NULL)
@@ -332,15 +334,16 @@ public:
 	 * solved by using static asserts to test whether the proper constructor
 	 * is used.
 	 *
-	 * @param optional            Is the widget optional?
+	 * @param mandatory            Is the widget mandatory?
 	 * @param id                  The id of the widget to connect to the window.
 	 *                            A widget can only be connected once.
 	 * @param value               The value of the widget.
 	 */
 	tfield(const std::string& id
-			, const bool optional
+			, const tunused_parameter&
+			, const bool mandatory
 			, const T& value)
-		: tfield_(id, tunused_parameter(), !optional)
+		: tfield_(id, tunused_parameter(), mandatory)
 		, value_(value)
 		, link_(value_)
 		, callback_load_value_(NULL)
@@ -567,7 +570,7 @@ public:
 			void (*callback_save_value) (const bool value),
 			void (*callback_change) (twidget* widget)) :
 		tfield<bool, gui2::tselectable_>
-			(id, optional, callback_load_value, callback_save_value),
+			(id, tunused_parameter(), !optional, callback_load_value, callback_save_value),
 		callback_change_(callback_change)
 		{
 		}
@@ -576,7 +579,7 @@ public:
 			, const bool optional
 			, bool& linked_variable
 			, void (*callback_change) (twidget* widget))
-		: tfield<bool, gui2::tselectable_>(id, optional, linked_variable)
+		: tfield<bool, gui2::tselectable_>(id, tunused_parameter(), !optional, linked_variable)
 		, callback_change_(callback_change)
 	{
 	}
@@ -608,7 +611,7 @@ public:
 			std::string (*callback_load_value) (),
 			void (*callback_save_value) (const std::string& value)) :
 		tfield<std::string, ttext_, const std::string& >
-			(id, optional, callback_load_value, callback_save_value)
+			(id, tunused_parameter(), !optional, callback_load_value, callback_save_value)
 		{
 		}
 
@@ -617,7 +620,8 @@ public:
 			, std::string& linked_variable)
 		: tfield<std::string, ttext_, const std::string&>(
 				id
-				, optional
+				, tunused_parameter()
+				, !optional
 				, linked_variable)
 	{
 	}
@@ -644,7 +648,8 @@ public:
 			, const bool use_markup)
 		: tfield<std::string, tcontrol, const std::string&>(
 				id
-				, !mandatory
+				, tunused_parameter()
+				, mandatory
 				, text)
 		, use_markup_(use_markup)
 

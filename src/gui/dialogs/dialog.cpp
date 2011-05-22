@@ -119,7 +119,8 @@ tfield_integer* tdialog::register_integer(
 {
 	tfield_integer* field =  new tfield_integer(
 			  id
-			, optional
+			, tunused_parameter()
+			, !optional
 			, callback_load_value
 			, callback_save_value);
 
@@ -133,7 +134,8 @@ tfield_integer* tdialog::register_integer(const std::string& id
 {
 	tfield_integer* field =  new tfield_integer(
 			  id
-			, optional
+			, tunused_parameter()
+			, !optional
 			, linked_variable);
 
 	fields_.push_back(field);
