@@ -10,8 +10,8 @@ package org.wesnoth.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
+import org.wesnoth.WesnothPlugin;
 
 /**
  * Class used to initialize default preference values.
@@ -48,6 +48,9 @@ public class Preferences extends AbstractPreferenceInitializer
 
 		// advanced
 		store.setDefault(Constants.P_ADV_NO_TERRAIN_GFX, true);
+
+		// installs
+		store.setDefault(Constants.P_INST_DEFAULT_INSTALL, "none"); // $NON-NLS-1$
 	}
 
 	/**

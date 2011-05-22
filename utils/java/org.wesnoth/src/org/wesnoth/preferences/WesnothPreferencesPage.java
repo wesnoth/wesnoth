@@ -24,9 +24,9 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
-import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
 import org.wesnoth.Messages;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.StringUtils;
@@ -66,12 +66,6 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 		wmlToolsList_.add("wesnoth_addon_manager"); //$NON-NLS-1$
 	}
 
-	/**
-	 * Creates the field editors. Field editors are abstractions of
-	 * the common GUI blocks needed to manipulate various types
-	 * of preferences. Each field editor knows how to save and
-	 * restore itself.
-	 */
 	@Override
 	public void createFieldEditors()
 	{

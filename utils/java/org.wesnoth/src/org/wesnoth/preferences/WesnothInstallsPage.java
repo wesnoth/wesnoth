@@ -8,12 +8,19 @@
  *******************************************************************************/
 package org.wesnoth.preferences;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -42,16 +49,39 @@ public class WesnothInstallsPage extends PreferencePage implements IWorkbenchPre
             return null;
         }
         public String getColumnText(Object element, int columnIndex) {
-            return element.toString();
+            if (element instanceof WesnothInstall){
+
+                if (columnIndex == 0){ // name
+                   return ((WesnothInstall)element).Name;
+                }else if (columnIndex == 1){ // version
+                    return ((WesnothInstall)element).Version;
+                }else if ( columnIndex == 2 ) { // default or not
+                    return ((WesnothInstall)element).Default == true ? "Default" : "";
+                }
+            }
+            return "";
         }
     }
 
-    private Button btnAdd_;
-    private Button btnEdit_;
-    private Button btnRemove_;
-    private Button btnSetAsDefault_;
+    public static class WesnothInstall
+    {
+        public String Name;
+        public String Version;
+        public boolean Default;
+
+        public WesnothInstall(String name, String version)
+        {
+            Name = name;
+            Version = version;
+        }
+    }
+
+    private List<WesnothInstall> _installs;
+
     public WesnothInstallsPage()
     {
+        _installs = new ArrayList<WesnothInstall>();
+
         setPreferenceStore(WesnothPlugin.getDefault().getPreferenceStore());
         setTitle("Wesnoth Installs Preferences");
     }
@@ -64,18 +94,25 @@ public class WesnothInstallsPage extends PreferencePage implements IWorkbenchPre
 
         TableViewer tableViewer = new TableViewer(comp, SWT.BORDER | SWT.FULL_SELECTION);
         Table table = tableViewer.getTable();
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseDoubleClick(MouseEvent e) {
+                editInstall();
+            }
+        });
         table.setHeaderVisible(true);
         table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
         TableColumn tblclmnName = new TableColumn(table, SWT.NONE);
         tblclmnName.setWidth(100);
-        tblclmnName.setText("Name");
+        tblclmnName.setText("Install Name");
 
         TableColumn tblclmnWesnothVersion = new TableColumn(table, SWT.NONE);
         tblclmnWesnothVersion.setWidth(100);
         tblclmnWesnothVersion.setText("Wesnoth version");
         tableViewer.setContentProvider(new ContentProvider());
         tableViewer.setLabelProvider(new TableLabelProvider());
+        tableViewer.setInput(_installs);
 
         Composite composite = new Composite(comp, SWT.NONE);
         FillLayout fl_composite = new FillLayout(SWT.VERTICAL);
@@ -86,23 +123,83 @@ public class WesnothInstallsPage extends PreferencePage implements IWorkbenchPre
         gd_composite.widthHint = 23;
         composite.setLayoutData(gd_composite);
 
-        btnAdd_ = new Button(composite, SWT.NONE);
-        btnAdd_.setText("Add");
+        Button btnAdd = new Button(composite, SWT.NONE);
+        btnAdd.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                addInstall();
+            }
+        });
+        btnAdd.setText("Add");
 
-        btnEdit_ = new Button(composite, SWT.NONE);
-        btnEdit_.setText("Edit");
+        Button btnEdit = new Button(composite, SWT.NONE);
+        btnEdit.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                editInstall();
+            }
+        });
+        btnEdit.setText("Edit");
 
-        btnRemove_ = new Button(composite, SWT.NONE);
-        btnRemove_.setText("Remove");
+        Button btnRemove = new Button(composite, SWT.NONE);
+        btnRemove.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                removeInstall();
+            }
+        });
+        btnRemove.setText("Remove");
 
-        btnSetAsDefault_ = new Button(composite, SWT.NONE);
-        btnSetAsDefault_.setText("Set as default");
+        Button btnSetAsDefault = new Button(composite, SWT.NONE);
+        btnSetAsDefault.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                setInstallAsDefault();
+            }
+        });
+        btnSetAsDefault.setText("Set as default");
 
         return comp;
     }
 
+    protected void removeInstall()
+    {
+
+    }
+
+    protected void addInstall()
+    {
+        WesnothInstallDialog dlg = new WesnothInstallDialog(getShell());
+        dlg.setTitle("Add a new Wesnoth Install");
+        dlg.open();
+    }
+
+    protected void editInstall()
+    {
+        WesnothInstallDialog dlg = new WesnothInstallDialog(getShell());
+        dlg.setTitle("Edit the Wesnoth Install");
+        dlg.open();
+    }
+
+    protected void setInstallAsDefault()
+    {
+
+    }
     @Override
     public void init(IWorkbench workbench)
     {
+        // load the installs strings
+
+        // dummy entries
+        _installs.add(new WesnothInstall("name1", "1.9.0"));
+        _installs.add(new WesnothInstall("name2", "1.9.0+svn"));
+        _installs.add(new WesnothInstall("name3", "1.9.0x"));
+    }
+
+    @Override
+    public boolean performOk()
+    {
+        // pack settings
+        return true;
     }
 }

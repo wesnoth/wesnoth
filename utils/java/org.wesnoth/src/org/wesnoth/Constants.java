@@ -64,6 +64,9 @@ public class Constants
 	/** Advanced preferences */
 	public static final String	P_ADV_NO_TERRAIN_GFX	= "adv_no_terrain_gfx"; //$NON-NLS-1$
 
+	/** Install preferences */
+	public static final String P_INST_DEFAULT_INSTALL   = "inst_default"; //$NON-NLS-1$
+
 	/** Wizards Constants **/
 	public static final int		WIZ_TextBoxHeight       = 21;
 	public static final int		WIZ_MaxTextBoxesOnPage  = 10;
