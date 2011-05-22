@@ -58,7 +58,7 @@ private:
 class room_info
 {
 public:
-	room_info(const std::string& name);
+	explicit room_info(const std::string& name);
 
 	const std::string& name() const { return name_; }
 	const std::set<std::string>& members() const { return members_; }
@@ -82,7 +82,7 @@ private:
  */
 struct user_info
 {
-	user_info(const config& c);
+	explicit user_info(const config& c);
 
 	void update_state(int selected_game_id, const room_info* current_room = NULL);
 	void update_relation();
@@ -162,7 +162,7 @@ template<class T>
 class game_filter_not : public game_filter_base
 {
 public:
-	game_filter_not(const T& t) : t(t) {}
+	explicit game_filter_not(const T& t) : t(t) {}
 	bool match(const game_info& game) const { return !t.match(game); }
 	T t;
 };
@@ -196,7 +196,7 @@ template <class T, T game_info::*member, class OP = std::equal_to<T> >
 class game_filter_value : public game_filter_base
 {
 public:
-	game_filter_value(const T& value)
+	explicit game_filter_value(const T& value)
 	: member_(member), value_(value)
 	{
 	}
@@ -211,7 +211,7 @@ private:
 class game_filter_general_string_part : public game_filter_base
 {
 public:
-	game_filter_general_string_part(const std::string& value)
+	explicit game_filter_general_string_part(const std::string& value)
 	: value_(value)
 	{
 	}
