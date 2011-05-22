@@ -565,21 +565,23 @@ class tfield_bool : public tfield<bool, tselectable_>
 {
 public:
 	tfield_bool(const std::string& id,
-			const bool optional,
+			const tunused_parameter&,
+			const bool mandatory,
 			bool (*callback_load_value) (),
 			void (*callback_save_value) (const bool value),
 			void (*callback_change) (twidget* widget)) :
 		tfield<bool, gui2::tselectable_>
-			(id, tunused_parameter(), !optional, callback_load_value, callback_save_value),
+			(id, tunused_parameter(), mandatory, callback_load_value, callback_save_value),
 		callback_change_(callback_change)
 		{
 		}
 
 	tfield_bool(const std::string& id
-			, const bool optional
+			, const tunused_parameter&
+			, const bool mandatory
 			, bool& linked_variable
 			, void (*callback_change) (twidget* widget))
-		: tfield<bool, gui2::tselectable_>(id, tunused_parameter(), !optional, linked_variable)
+		: tfield<bool, gui2::tselectable_>(id, tunused_parameter(), mandatory, linked_variable)
 		, callback_change_(callback_change)
 	{
 	}

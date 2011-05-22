@@ -80,7 +80,8 @@ tfield_bool* tdialog::register_bool(
 {
 	tfield_bool* field =  new tfield_bool(
 			  id
-			, optional
+			, tunused_parameter()
+			, !optional
 			, callback_load_value
 			, callback_save_value, callback_change);
 
@@ -95,7 +96,8 @@ tfield_bool* tdialog::register_bool(const std::string& id
 {
 	tfield_bool* field =  new tfield_bool(
 			  id
-			, optional
+			, tunused_parameter()
+			, !optional
 			, linked_variable
 			, callback_change);
 
