@@ -265,7 +265,8 @@ protected:
 	 * See @ref register_bool for more info.
 	 */
 	tfield_text* register_text(const std::string& id
-			, const bool optional = false
+			, const tunused_parameter&
+			, const bool mandatory
 			, std::string (*callback_load_value) () = NULL
 			, void (*callback_save_value) (const std::string& value) = NULL);
 
@@ -277,7 +278,8 @@ protected:
 	 * @deprecated Use @ref register_text2 instead.
 	 */
 	tfield_text* register_text(const std::string& id
-			, const bool optional
+			, const tunused_parameter&
+			, const bool mandatory
 			, std::string& linked_variable);
 
 	/**

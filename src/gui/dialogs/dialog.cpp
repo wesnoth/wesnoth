@@ -150,14 +150,15 @@ tfield_integer* tdialog::register_integer(const std::string& id
 
 tfield_text* tdialog::register_text(
 		  const std::string& id
-		, const bool optional
+		, const tunused_parameter&
+		, const bool mandatory
 		, std::string (*callback_load_value) ()
 		, void (*callback_save_value) (const std::string& value))
 {
 	tfield_text* field =  new tfield_text(
 			  id
 			, tunused_parameter()
-			, !optional
+			, mandatory
 			, callback_load_value
 			, callback_save_value);
 
@@ -166,13 +167,14 @@ tfield_text* tdialog::register_text(
 }
 
 tfield_text* tdialog::register_text(const std::string& id
-		, const bool optional
+		, const tunused_parameter&
+		, const bool mandatory
 		, std::string& linked_variable)
 {
 	tfield_text* field =  new tfield_text(
 			  id
 			, tunused_parameter()
-			, !optional
+			, mandatory
 			, linked_variable);
 
 	fields_.push_back(field);
@@ -190,7 +192,7 @@ tfield_text* tdialog::register_text2(const std::string& id
 		focus_ = id;
 	}
 
-	return tdialog::register_text(id, !mandatory, linked_variable);
+	return tdialog::register_text(id, tunused_parameter(), mandatory, linked_variable);
 }
 
 tfield_text* tdialog::register_text2(const std::string& id
@@ -206,7 +208,8 @@ tfield_text* tdialog::register_text2(const std::string& id
 	}
 
 	return tdialog::register_text(id
-			, !mandatory
+			, tunused_parameter()
+			, mandatory
 			, callback_load_value
 			, callback_save_value);
 }

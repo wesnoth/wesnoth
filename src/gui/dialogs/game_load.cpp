@@ -91,7 +91,7 @@ namespace gui2 {
 REGISTER_DIALOG(game_load)
 
 tgame_load::tgame_load(const config& cache_config)
-	: txtFilter_(register_text("txtFilter", false))
+	: txtFilter_(register_text("txtFilter", tunused_parameter(), true))
 	, chk_show_replay_(register_bool("show_replay", tunused_parameter(), true))
 	, chk_cancel_orders_(register_bool("cancel_orders", tunused_parameter(), true))
 	, filename_()
