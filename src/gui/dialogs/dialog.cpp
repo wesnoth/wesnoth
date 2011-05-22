@@ -152,7 +152,8 @@ tfield_text* tdialog::register_text(
 {
 	tfield_text* field =  new tfield_text(
 			  id
-			, optional
+			, tunused_parameter()
+			, !optional
 			, callback_load_value
 			, callback_save_value);
 
@@ -166,7 +167,8 @@ tfield_text* tdialog::register_text(const std::string& id
 {
 	tfield_text* field =  new tfield_text(
 			  id
-			, optional
+			, tunused_parameter()
+			, !optional
 			, linked_variable);
 
 	fields_.push_back(field);
