@@ -36,7 +36,7 @@ public:
 	 *
 	 * @param canvas_count        The canvas count for tcontrol.
 	 */
-	tpanel(const unsigned canvas_count = 2) :
+	explicit tpanel(const unsigned canvas_count = 2) :
 		tcontainer_(canvas_count)
 	{
 	}
