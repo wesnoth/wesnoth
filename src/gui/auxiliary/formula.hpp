@@ -57,7 +57,7 @@ public:
 	 *                            be converted to the type T.
 	 * @param value               The default value for the object.
 	 */
-	tformula<T>(const std::string& str, const T value = T());
+	explicit tformula<T>(const std::string& str, const T value = T());
 
 	/**
 	 * Returns the value, can only be used if the data is no formula.
