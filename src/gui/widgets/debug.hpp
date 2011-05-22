@@ -53,7 +53,7 @@ public:
 	 * @param window              The window, whose information will be
 	 *                            generated.
 	 */
-	tdebug_layout_graph(const twindow* window);
+	explicit tdebug_layout_graph(const twindow* window);
 
 	/***** ***** ***** ***** FLAGS ***** ***** ***** *****/
 
