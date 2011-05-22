@@ -30,7 +30,7 @@ public:
 	 *
 	 * The text which shows the selected user.
 	 */
-	tmp_cmd_wrapper(const t_string& user);
+	explicit tmp_cmd_wrapper(const t_string& user);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
