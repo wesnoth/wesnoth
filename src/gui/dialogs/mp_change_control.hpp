@@ -28,7 +28,7 @@ public:
 	class view;
 	class controller;
 
-	tmp_change_control(events::menu_handler *mh);
+	explicit tmp_change_control(events::menu_handler *mh);
 	boost::shared_ptr<view> get_view();
 
 private:
