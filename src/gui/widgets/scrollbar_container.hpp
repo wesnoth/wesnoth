@@ -52,7 +52,7 @@ class tscrollbar_container
 
 public:
 
-	tscrollbar_container(const unsigned canvas_count);
+	explicit tscrollbar_container(const unsigned canvas_count);
 
 	~tscrollbar_container() { delete content_grid_; }
 
