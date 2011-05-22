@@ -26,7 +26,7 @@
 class lobby_info
 {
 public:
-	lobby_info(const config& game_config);
+	explicit lobby_info(const config& game_config);
 
 	~lobby_info();
 
