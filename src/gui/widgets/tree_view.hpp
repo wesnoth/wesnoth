@@ -43,7 +43,7 @@ public:
 	 * @param select              Select an item when selected, if false it
 	 *                            changes the visible state instead.
 	 */
-	ttree_view(const std::vector<tnode_definition>& node_definitions);
+	explicit ttree_view(const std::vector<tnode_definition>& node_definitions);
 
 	using tscrollbar_container::finalize_setup;
 
