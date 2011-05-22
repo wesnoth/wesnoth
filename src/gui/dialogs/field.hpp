@@ -55,7 +55,6 @@ public:
 	 */
 	tfield_(const std::string& id, const bool optional)
 		: id_(id)
-		, optional_(optional)
 		, mandatory_(!optional)
 		, widget_(NULL)
 	{
@@ -202,7 +201,7 @@ public:
 
 	const std::string& id() const { return id_; }
 
-	bool is_optional() const { return optional_; }
+	bool is_mandatory() const { return mandatory_; }
 
 	tcontrol* widget()
 	{
@@ -217,13 +216,6 @@ public:
 private:
 	/** The id field of the widget, should be unique in a window. */
 	const std::string id_;
-
-	/**
-	 * Is the widget optional or mandatory in this window.
-	 *
-	 * @deprecated Use @ref mandatory_ instead.
-	 */
-	const bool optional_;
 
 	/** Is the widget optional or mandatory in this window. */
 	const bool mandatory_;
@@ -487,7 +479,7 @@ private:
 	 */
 	void validate_widget(twindow& window)
 	{
-		if(is_optional()) {
+		if(!is_mandatory()) {
 			return;
 		}
 		find_widget<const W>(&window, id(), false);
