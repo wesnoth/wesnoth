@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.utils.GUIUtils;
@@ -29,7 +29,7 @@ public class UploadAddon extends ObjectActionDelegate
 	public void run(IAction action)
 	{
 		final String fullPath = WorkspaceUtils.getSelectedResource().getLocation().toOSString();
-		ProgressMonitorDialog dialog = new ProgressMonitorDialog(Activator.getShell());
+		ProgressMonitorDialog dialog = new ProgressMonitorDialog(WesnothPlugin.getShell());
 		try
 		{
 			dialog.run(false, false, new IRunnableWithProgress() {

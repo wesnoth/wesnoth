@@ -14,7 +14,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 
@@ -33,7 +33,7 @@ public class MapUtils
 			return;
 		}
 
-		FileDialog mapDialog = new FileDialog(Activator.getShell(), SWT.OPEN);
+		FileDialog mapDialog = new FileDialog(WesnothPlugin.getShell(), SWT.OPEN);
 		mapDialog.setText(Messages.MapUtils_2);
 		mapDialog.setFilterExtensions(new String[] {"*.map" }); //$NON-NLS-1$
 		String file = mapDialog.open();

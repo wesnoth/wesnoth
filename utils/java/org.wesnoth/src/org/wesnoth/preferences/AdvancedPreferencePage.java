@@ -9,7 +9,7 @@
 package org.wesnoth.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
 import org.wesnoth.Messages;
 
@@ -19,7 +19,7 @@ public class AdvancedPreferencePage extends AbstractPreferencePage
 	{
 		super(GRID);
 
-		setPreferenceStore(Activator.getDefault().getPreferenceStore());
+		setPreferenceStore(WesnothPlugin.getDefault().getPreferenceStore());
 		setDescription(Messages.AdvancedPreferencePage_0);
 	}
 

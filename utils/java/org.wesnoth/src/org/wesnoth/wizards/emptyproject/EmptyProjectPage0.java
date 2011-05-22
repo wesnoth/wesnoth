@@ -10,7 +10,7 @@ package org.wesnoth.wizards.emptyproject;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Messages;
 
 
@@ -27,7 +27,7 @@ public class EmptyProjectPage0 extends WizardNewProjectCreationPage
 		setTitle(Messages.EmptyProjectPage0_1);
 		setMessage(Messages.EmptyProjectPage0_2);
 
-		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(getShell(),
+		WesnothPlugin.getDefault().getWorkbench().getHelpSystem().setHelp(getShell(),
 				"org.wesnoth.wizardHelp"); //$NON-NLS-1$
 	}
 }

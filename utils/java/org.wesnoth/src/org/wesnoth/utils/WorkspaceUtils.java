@@ -44,7 +44,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.IWorkingSetManager;
 import org.eclipse.ui.dialogs.PreferencesUtil;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
@@ -215,7 +215,7 @@ public class WorkspaceUtils
 	 */
 	public static IWorkbench getWorkbench()
 	{
-	    return Activator.getDefault().getWorkbench();
+	    return WesnothPlugin.getDefault().getWorkbench();
 	}
 
 	/**
@@ -335,7 +335,7 @@ public class WorkspaceUtils
         if (!checkConditions(false))
         {
             PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
-                    Activator.getShell(), "org.wesnoth.preferences.UMCPage", null, null); //$NON-NLS-1$
+                    WesnothPlugin.getShell(), "org.wesnoth.preferences.UMCPage", null, null); //$NON-NLS-1$
             if (pref.open() == Window.CANCEL || !checkConditions(true))
             {
                 GUIUtils.showErrorMessageBox(Messages.WorkspaceUtils_7 +

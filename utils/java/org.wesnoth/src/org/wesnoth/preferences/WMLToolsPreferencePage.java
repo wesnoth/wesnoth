@@ -11,7 +11,7 @@ package org.wesnoth.preferences;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.ScaleFieldEditor;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
 import org.wesnoth.Messages;
 
@@ -21,7 +21,7 @@ public class WMLToolsPreferencePage extends AbstractPreferencePage
 	{
 		super(GRID);
 
-		setPreferenceStore(Activator.getDefault().getPreferenceStore());
+		setPreferenceStore(WesnothPlugin.getDefault().getPreferenceStore());
 		setDescription(Messages.WMLToolsPreferencePage_0);
 	}
 

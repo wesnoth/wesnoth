@@ -52,7 +52,7 @@ import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Logger;
 import org.wesnoth.ui.Messages;
 import org.wesnoth.ui.WMLUiModule;
@@ -78,7 +78,7 @@ public class WMLEditor extends XtextEditor
 		if (WMLUiModule.DEBUG)
 			org.apache.log4j.Logger.getLogger(XtextEditor.class).setLevel(Level.DEBUG);
 		// activate the wesnoth plugin
-		Activator.getDefault();
+		WesnothPlugin.getDefault();
 	}
 
 	@Override

@@ -8,7 +8,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Messages;
 
 
@@ -22,7 +22,7 @@ public class NewWizardPageTemplate extends WizardPage
 	@Override
 	public void createControl(Composite parent)
 	{
-		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(getShell(),
+		WesnothPlugin.getDefault().getWorkbench().getHelpSystem().setHelp(getShell(),
 				"org.wesnoth.wizardHelp"); //$NON-NLS-1$
 	}
 

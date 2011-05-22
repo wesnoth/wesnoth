@@ -15,7 +15,7 @@ import java.util.Map.Entry;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
 import org.wesnoth.Messages;
 import org.wesnoth.jface.RegexStringFieldEditor;
@@ -34,7 +34,7 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
 		ports_.put("15005", "1.4.x"); //$NON-NLS-1$ //$NON-NLS-2$
 		ports_.put("15004", "trunk"); //$NON-NLS-1$ //$NON-NLS-2$
 
-		setPreferenceStore(Activator.getDefault().getPreferenceStore());
+		setPreferenceStore(WesnothPlugin.getDefault().getPreferenceStore());
 		setDescription(Messages.AddonUploadPreferencePage_10);
 	}
 

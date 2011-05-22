@@ -25,15 +25,15 @@ import org.wesnoth.utils.WorkspaceUtils;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin
+public class WesnothPlugin extends AbstractUIPlugin
 {
 	// The shared instance
-	private static Activator	plugin;
+	private static WesnothPlugin	plugin;
 
 	/**
 	 * The constructor
 	 */
-	public Activator() {
+	public WesnothPlugin() {
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class Activator extends AbstractUIPlugin
 	 *
 	 * @return the shared instance
 	 */
-	public static Activator getDefault()
+	public static WesnothPlugin getDefault()
 	{
 		return plugin;
 	}

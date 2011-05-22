@@ -24,7 +24,7 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
 import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
@@ -56,7 +56,7 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 	public WesnothPreferencesPage() {
 		super(GRID);
 
-		setPreferenceStore(Activator.getDefault().getPreferenceStore());
+		setPreferenceStore(WesnothPlugin.getDefault().getPreferenceStore());
 		setDescription(Messages.WesnothPreferencesPage_0);
 
 		wmlToolsList_ = new ArrayList<String>();

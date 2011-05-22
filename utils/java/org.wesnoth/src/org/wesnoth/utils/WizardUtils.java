@@ -12,7 +12,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.wizards.NewWizardTemplate;
 
 
@@ -31,7 +31,7 @@ public class WizardUtils
 		if (wizard == null)
 			return Window.CANCEL;
 
-		wizard.init(Activator.getDefault().getWorkbench(), selection);
+		wizard.init(WesnothPlugin.getDefault().getWorkbench(), selection);
 		wizard.setForcePreviousAndNextButtons(true);
 
 		WizardDialog wizardDialog = new WizardDialog(shell, wizard);
@@ -41,7 +41,7 @@ public class WizardUtils
 		y += ((shell.getBounds().height - wizardDialog.getShell().getBounds().height)/2);
 		wizardDialog.getShell().setLocation(x, y);
 		wizardDialog.setHelpAvailable(true);
-		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(wizardDialog.getShell(),
+		WesnothPlugin.getDefault().getWorkbench().getHelpSystem().setHelp(wizardDialog.getShell(),
 				"org.wesnoth.help.wizardHelp"); //$NON-NLS-1$
 
 		return wizardDialog.open();

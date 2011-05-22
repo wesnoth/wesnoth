@@ -22,7 +22,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.DialogSettings;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
@@ -231,7 +231,7 @@ public class PreprocessorUtils
 	 */
 	public void saveTimestamps()
 	{
-		IPath path = Activator.getDefault().getStateLocation();
+		IPath path = WesnothPlugin.getDefault().getStateLocation();
 		String filename = path.append("preprocessed.txt").toOSString(); //$NON-NLS-1$
 		DialogSettings settings = new DialogSettings("preprocessed"); //$NON-NLS-1$
 		try
@@ -257,7 +257,7 @@ public class PreprocessorUtils
 	 */
 	public void restoreTimestamps()
 	{
-		IPath path = Activator.getDefault().getStateLocation();
+		IPath path = WesnothPlugin.getDefault().getStateLocation();
 		String filename = path.append("preprocessed.txt").toOSString(); //$NON-NLS-1$
 		DialogSettings settings = new DialogSettings("preprocessed"); //$NON-NLS-1$
 		filesTimeStamps_.clear();

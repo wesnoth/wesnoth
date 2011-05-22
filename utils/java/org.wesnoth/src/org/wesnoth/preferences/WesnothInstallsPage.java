@@ -8,28 +8,17 @@
  *******************************************************************************/
 package org.wesnoth.preferences;
 
-import org.eclipse.jface.preference.PreferencePage;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchPreferencePage;
+import org.wesnoth.WesnothPlugin;
 
-public class WesnothInstallsPage extends PreferencePage implements IWorkbenchPreferencePage
+public class WesnothInstallsPage extends AbstractPreferencePage
 {
-
     public WesnothInstallsPage()
     {
-    }
-
-    public WesnothInstallsPage(String title)
-    {
-        super(title);
-    }
-
-    public WesnothInstallsPage(String title, ImageDescriptor image)
-    {
-        super(title, image);
+        setPreferenceStore(WesnothPlugin.getDefault().getPreferenceStore());
+        setTitle("Wesnoth Installs Preferences");
     }
 
     @Override
@@ -41,5 +30,11 @@ public class WesnothInstallsPage extends PreferencePage implements IWorkbenchPre
     protected Control createContents(Composite parent)
     {
         return null;
+    }
+
+    @Override
+    protected void createFieldEditors()
+    {
+
     }
 }

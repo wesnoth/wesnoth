@@ -10,7 +10,7 @@ package org.wesnoth.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.wesnoth.Activator;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
 
 /**
@@ -21,7 +21,7 @@ public class Preferences extends AbstractPreferenceInitializer
 	@Override
 	public void initializeDefaultPreferences()
 	{
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		IPreferenceStore store = WesnothPlugin.getDefault().getPreferenceStore();
 		// general settings
 		store.setDefault(Constants.P_WESNOTH_EXEC_PATH, ""); //$NON-NLS-1$
 		store.setDefault(Constants.P_WESNOTH_WORKING_DIR, ""); //$NON-NLS-1$
@@ -46,7 +46,7 @@ public class Preferences extends AbstractPreferenceInitializer
 		store.setDefault(Constants.P_WAU_ADDRESS, "add-ons.wesnoth.org"); //$NON-NLS-1$
 		store.setDefault(Constants.P_WAU_PORT, 15002);
 
-		// adnvaced
+		// advanced
 		store.setDefault(Constants.P_ADV_NO_TERRAIN_GFX, true);
 	}
 
@@ -55,7 +55,7 @@ public class Preferences extends AbstractPreferenceInitializer
  	*/
 	public static IPreferenceStore getPreferences()
 	{
-		return Activator.getDefault().getPreferenceStore();
+		return WesnothPlugin.getDefault().getPreferenceStore();
 	}
 
 	/**
