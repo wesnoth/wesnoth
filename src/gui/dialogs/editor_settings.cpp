@@ -86,15 +86,18 @@ teditor_settings::teditor_settings(editor::editor_display* display
 	, custom_tod_auto_refresh_(NULL)
 	, custom_tod_toggle_field_(register_bool("custom_tod_toggle", tunused_parameter(), true))
 	, custom_tod_red_field_(register_integer("custom_tod_red"
-				, false
+				, tunused_parameter()
+				, true
 				, &preferences::editor::tod_r
 				, &preferences::editor::set_tod_r))
 	, custom_tod_green_field_(register_integer("custom_tod_green"
-				, false
+				, tunused_parameter()
+				, true
 				, &preferences::editor::tod_g
 				, &preferences::editor::set_tod_g))
 	, custom_tod_blue_field_(register_integer("custom_tod_blue"
-				, false
+				, tunused_parameter()
+				, true
 				, &preferences::editor::tod_b
 				, &preferences::editor::set_tod_b))
 	, display_(display)

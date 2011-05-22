@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/editor_new_map.hpp"
 
+#include "gui/dialogs/field.hpp" // for tunused_parameter
 #include "gui/widgets/settings.hpp"
 
 namespace gui2 {
@@ -43,8 +44,8 @@ REGISTER_DIALOG(editor_new_map)
 
 teditor_new_map::teditor_new_map(int& width, int& height)
 {
-	register_integer("width", false, width);
-	register_integer("height", false, height);
+	register_integer("width", tunused_parameter(), true, width);
+	register_integer("height", tunused_parameter(), true, height);
 }
 
 } // namespace gui2

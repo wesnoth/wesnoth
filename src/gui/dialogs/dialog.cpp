@@ -117,14 +117,15 @@ tfield_bool* tdialog::register_bool2(const std::string& id
 
 tfield_integer* tdialog::register_integer(
 		  const std::string& id
-		, const bool optional
+		, const tunused_parameter&
+		, const bool mandatory
 		, int (*callback_load_value) ()
 		, void (*callback_save_value) (const int value))
 {
 	tfield_integer* field =  new tfield_integer(
 			  id
 			, tunused_parameter()
-			, !optional
+			, mandatory
 			, callback_load_value
 			, callback_save_value);
 
@@ -133,13 +134,14 @@ tfield_integer* tdialog::register_integer(
 }
 
 tfield_integer* tdialog::register_integer(const std::string& id
-		, const bool optional
+		, const tunused_parameter&
+		, const bool mandatory
 		, int& linked_variable)
 {
 	tfield_integer* field =  new tfield_integer(
 			  id
 			, tunused_parameter()
-			, !optional
+			, mandatory
 			, linked_variable);
 
 	fields_.push_back(field);

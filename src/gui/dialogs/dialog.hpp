@@ -245,7 +245,8 @@ protected:
 	 * See @ref register_bool for more info.
 	 */
 	tfield_integer* register_integer(const std::string& id
-			, const bool optional = false
+			, const tunused_parameter&
+			, const bool mandatory
 			, int (*callback_load_value) () = NULL
 			, void (*callback_save_value) (const int value) = NULL);
 
@@ -255,7 +256,8 @@ protected:
 	 * See @ref register_bool for more info.
 	 */
 	tfield_integer* register_integer(const std::string& id
-			, const bool optional
+			, const tunused_parameter&
+			, const bool mandatory
 			, int& linked_variable);
 	/**
 	 * Creates a new text field.
