@@ -453,6 +453,9 @@ void playmp_controller::finish_side_turn(){
 
 	//halt and cancel the countdown timer
 	reset_countdown();
+
+	// avoid callback getting called in the wrong turn
+	rand_rng::clear_new_seed_callback();
 }
 
 void playmp_controller::play_network_turn(){
