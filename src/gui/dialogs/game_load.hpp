@@ -27,7 +27,7 @@ namespace gui2 {
 class tgame_load : public tdialog
 {
 public:
-	tgame_load(const config& cache_config);
+	explicit tgame_load(const config& cache_config);
 
 	const std::string& filename() const { return filename_; }
 	bool show_replay() const { return show_replay_; }
