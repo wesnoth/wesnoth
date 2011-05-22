@@ -42,7 +42,7 @@ class ttoggle_button;
 
 struct tlobby_chat_window
 {
-	tlobby_chat_window(std::string name, bool whisper)
+	tlobby_chat_window(const std::string& name, bool whisper)
 		: name(name), whisper(whisper), pending_messages(0)
 	{
 	}
