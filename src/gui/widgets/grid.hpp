@@ -36,7 +36,7 @@ class tgrid : public virtual twidget
 
 public:
 
-	tgrid(const unsigned rows = 0, const unsigned cols = 0);
+	explicit tgrid(const unsigned rows = 0, const unsigned cols = 0);
 
 	virtual ~tgrid();
 
