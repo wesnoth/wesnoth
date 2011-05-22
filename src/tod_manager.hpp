@@ -47,10 +47,6 @@ class tod_manager : public savegame::savegame_config
 		 * If nturn = 0 use current turn
 		 */
 		const time_of_day& get_time_of_day(const map_location& loc, int n_turn = 0) const;
-		/**
-		 * Sets global time of day in this turn.
-		 */
-		void set_time_of_day(int newTime);
 
 		static bool is_start_ToD(const std::string&);
 
@@ -103,7 +99,7 @@ class tod_manager : public savegame::savegame_config
 		void set_number_of_turns(int num);
 
 		/** Dynamically change the current turn number. */
-		void set_turn(unsigned int num);
+		void set_turn(const int num);
 
 		/**
 		 * Function to move to the next turn.
@@ -122,11 +118,30 @@ class tod_manager : public savegame::savegame_config
 		void set_start_ToD(config&, int current_turn);
 
 		/**
-		 * Returns time of day object in the turn.
+		 * Returns time of day object in the turn "nturn".
 		 *
 		 * Correct time is calculated from current time.
 		 */
-		const time_of_day& get_time_of_day_turn(const std::vector<time_of_day>& times, int nturn) const;
+		const time_of_day& get_time_of_day_turn(const std::vector<time_of_day>& times, int nturn, const int current_time) const;
+
+		/**
+		 * Computes for the main time or a time area the index of its times where we're currently at.
+		 * number_of_times: size of that main time or time area's times vector
+		 * for_turn_number: for which current turn
+		 * current_time: the main or time area's current time
+		 */
+		const int calculate_current_time(
+			const int number_of_times,
+			const int for_turn_number,
+			const int current_time,
+			const bool only_to_allowed_range = false) const;
+
+		/**
+		 * For a change of the current turn number, sets the current times of the main time
+		 * and all time areas.
+		 */
+		void set_new_current_times(const int new_current_turn_number);
+
 
 		struct area_time_of_day {
 			area_time_of_day() :
@@ -134,20 +149,25 @@ class tod_manager : public savegame::savegame_config
 				ysrc(),
 				id(),
 				times(),
-				hexes()
+				hexes(),
+				currentTime(0)
 			{}
 
 			std::string xsrc, ysrc;
 			std::string id;
 			std::vector<time_of_day> times;
 			std::set<map_location> hexes;
+			int currentTime;
 		};
 
+		//index of the times vector of the main time where we're currently at
 		int currentTime_;
 		std::vector<time_of_day> times_;
 		std::vector<area_time_of_day> areas_;
 
+		// current turn
 		int turn_;
+		//turn limit
 		int num_turns_;
 };
 #endif

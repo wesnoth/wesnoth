@@ -91,6 +91,7 @@ config tod_manager::to_config() const
 		for(t = i->times.begin(); t != i->times.end(); ++t) {
 			t->write(area.add_child("time"));
 		}
+		area["current_time"] = i->currentTime;
 	}
 	return cfg;
 }
@@ -100,19 +101,9 @@ const time_of_day& tod_manager::get_time_of_day() const
 	return times_[currentTime_];
 }
 
-void tod_manager::set_time_of_day(int newTime)
-{
-	newTime = newTime % times_.size();
-	while(newTime < 0) {
-		newTime += times_.size();
-	}
-
-	currentTime_ = newTime;
-}
-
 const time_of_day& tod_manager::get_previous_time_of_day() const
 {
-	return get_time_of_day_turn(times_, turn_ - 1);
+	return get_time_of_day_turn(times_, turn_ - 1, currentTime_);
 }
 
 
@@ -128,7 +119,7 @@ const time_of_day& tod_manager::get_time_of_day_of_next_turn(const int side, con
 	{
 		return get_time_of_day(loc, nturn);
 	}
-	return get_time_of_day_turn(times_, nturn);
+	return get_time_of_day_turn(times_, nturn, currentTime_);
 }
 
 const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_turn) const
@@ -141,10 +132,10 @@ const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_t
 	{
 		if (i->hexes.count(loc) != 1) continue;
 		VALIDATE(i->times.size(), _("No time of day has been defined."));
-		return get_time_of_day_turn(i->times, n_turn);
+		return get_time_of_day_turn(i->times, n_turn, i->currentTime);
 	}
 
-	return get_time_of_day_turn(times_, n_turn);
+	return get_time_of_day_turn(times_, n_turn, currentTime_);
 }
 
 bool tod_manager::is_start_ToD(const std::string& random_start_time)
@@ -157,6 +148,7 @@ void tod_manager::replace_schedule(const config& time_cfg)
 {
 	times_.clear();
 	time_of_day::parse_times(time_cfg,times_);
+	currentTime_ = 0;
 }
 
 void tod_manager::add_time_area(const config& cfg)
@@ -166,6 +158,7 @@ void tod_manager::add_time_area(const config& cfg)
 	area.id = cfg["id"].str();
 	area.xsrc = cfg["x"].str();
 	area.ysrc = cfg["y"].str();
+	area.currentTime = cfg["current_time"].to_int(0);
 	std::vector<map_location> const& locs = parse_location_range(area.xsrc, area.ysrc, true);
 	std::copy(locs.begin(), locs.end(), std::inserter(area.hexes, area.hexes.end()));
 	time_of_day::parse_times(cfg, area.times);
@@ -202,7 +195,7 @@ void tod_manager::set_start_ToD(config &level, int current_turn)
 {
 	if (!level["current_tod"].empty())
 	{
-		set_time_of_day(level["current_tod"]);
+		currentTime_ = calculate_current_time(times_.size(), current_turn, level["current_tod"], true);
 		return;
 	}
 	std::string random_start_time = level["random_start_time"];
@@ -214,18 +207,24 @@ void tod_manager::set_start_ToD(config &level, int current_turn)
 		if (utils::string_bool(random_start_time,false))
 		{
 			// We had boolean value
-			set_time_of_day(rand()%times_.size());
+			currentTime_ = calculate_current_time(times_.size(), current_turn, rand(), true);
 		}
 		else
 		{
-			set_time_of_day(atoi(start_strings[rand()%start_strings.size()].c_str()) - 1);
+			const int index = calculate_current_time(start_strings.size(),
+				current_turn, rand(), true);
+			currentTime_ = calculate_current_time(
+					times_.size(),
+					current_turn,
+					lexical_cast_default<int, std::string>(start_strings[index], 1) - 1,
+					true
+				);
 		}
 	}
 	else
 	{
 		// We have to set right ToD for oldsaves
-
-		set_time_of_day((current_turn - 1) % times_.size());
+		currentTime_ = calculate_current_time(times_.size(), current_turn, currentTime_);
 	}
 	// Setting ToD to level data
 
@@ -233,14 +232,9 @@ void tod_manager::set_start_ToD(config &level, int current_turn)
 
 }
 
-const time_of_day& tod_manager::get_time_of_day_turn(const std::vector<time_of_day>& times, int nturn) const
+const time_of_day& tod_manager::get_time_of_day_turn(const std::vector<time_of_day>& times, int nturn, const int current_time) const
 {
-	int time = (currentTime_ + nturn  - turn_) % times.size();
-
-	while(time < 0)	{
-		time += times.size();
-	}
-
+	const int time = calculate_current_time(times.size(), nturn, current_time);
 	return times[time];
 }
 
@@ -299,27 +293,46 @@ void tod_manager::set_number_of_turns(int num)
 	num_turns_ = std::max<int>(num, -1);
 }
 
-void tod_manager::set_turn(unsigned int num)
+void tod_manager::set_turn(const int num)
 {
-	const unsigned int old_num = turn_;
+	const int new_turn = std::max<int>(num, 1);
+	LOG_NG << "changing current turn number from " << turn_ << " to " << new_turn << '\n';
 	// Correct ToD
-	int current_time = (currentTime_ + num - old_num) % times_.size();
-	if (current_time < 0) {
-		current_time += times_.size();
-	}
-	set_time_of_day(current_time);
+	set_new_current_times(new_turn);
 
-	if(static_cast<int>(num) > num_turns_ && num_turns_ != -1) {
-		set_number_of_turns(num);
+	if((new_turn > num_turns_) && num_turns_ != -1) {
+		set_number_of_turns(new_turn);
 	}
-	turn_ = num;
+	turn_ = new_turn;
+}
 
-	LOG_NG << "changed current turn number from " << old_num << " to " << num << '\n';
+void tod_manager::set_new_current_times(const int new_current_turn_number)
+{
+	currentTime_ = calculate_current_time(times_.size(), new_current_turn_number, currentTime_);
+	foreach(area_time_of_day& area, areas_) {
+		area.currentTime = calculate_current_time(
+			area.times.size(),
+			new_current_turn_number,
+			area.currentTime);
+	}
+}
+
+const int tod_manager::calculate_current_time(
+	const int number_of_times,
+	const int for_turn_number,
+	const int current_time,
+	const bool only_to_allowed_range) const
+{
+	int new_current_time = 0;
+	if(only_to_allowed_range) new_current_time = current_time % number_of_times;
+	else new_current_time = (current_time + for_turn_number - turn_) % number_of_times;
+	while(new_current_time < 0) { new_current_time += number_of_times; }
+	return new_current_time;
 }
 
 bool tod_manager::next_turn()
 {
-	currentTime_ = (currentTime_ + 1)%times_.size();
+	set_new_current_times(turn_ + 1);
 	++turn_;
 	return is_time_left();
 }
