@@ -84,7 +84,7 @@ teditor_settings::teditor_settings(editor::editor_display* display
 	, current_tod_image_(NULL)
 	, custom_tod_toggle_(NULL)
 	, custom_tod_auto_refresh_(NULL)
-	, custom_tod_toggle_field_(register_bool("custom_tod_toggle", false))
+	, custom_tod_toggle_field_(register_bool("custom_tod_toggle", tunused_parameter(), true))
 	, custom_tod_red_field_(register_integer("custom_tod_red"
 				, false
 				, &preferences::editor::tod_r
@@ -100,7 +100,8 @@ teditor_settings::teditor_settings(editor::editor_display* display
 	, display_(display)
 {
 	register_bool("use_mdi"
-			, false
+			, tunused_parameter()
+			, true
 			, &preferences::editor::use_mdi
 			, &preferences::editor::set_use_mdi);
 }

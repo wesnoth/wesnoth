@@ -177,7 +177,7 @@ protected:
 	 * in the child classes as access to a field.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
-	 * @param optional            Is the widget mandatory or optional.
+	 * @param mandatory            Is the widget mandatory or mandatory.
 	 * @param callback_load_value The callback function to set the initial value
 	 *                            of the widget.
 	 * @param callback_save_value The callback function to write the resulting
@@ -190,7 +190,8 @@ protected:
 	 * @returns                   Pointer to the created widget.
 	 */
 	tfield_bool* register_bool(const std::string& id
-			, const bool optional = false
+			, const tunused_parameter&
+			, const bool mandatory
 			, bool (*callback_load_value) () = NULL
 			, void (*callback_save_value) (const bool value) = NULL
 			, void (*callback_change) (twidget* widget) = NULL);
@@ -204,7 +205,7 @@ protected:
 	 * @deprecated use @ref register_bool2 instead.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
-	 * @param optional            Is the widget mandatory or optional.
+	 * @param mandatory            Is the widget mandatory or mandatory.
 	 * @param linked_variable     The variable the widget is linked to. See
 	 *                            @ref tfield::tfield for more information.
 	 * @param callback_change     When the value of the widget changes this
@@ -213,7 +214,8 @@ protected:
 	 * @returns                   Pointer to the created widget.
 	 */
 	tfield_bool* register_bool(const std::string& id
-			, const bool optional
+			, const tunused_parameter&
+			, const bool mandatory
 			, bool& linked_variable
 			, void (*callback_change) (twidget* widget) = NULL);
 

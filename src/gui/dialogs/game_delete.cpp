@@ -16,6 +16,7 @@
 #include "gui/dialogs/game_delete.hpp"
 
 #include "game_preferences.hpp"
+#include "gui/dialogs/field.hpp" // for tunused_parameter
 #include "gui/widgets/settings.hpp"
 
 namespace gui2 {
@@ -61,7 +62,8 @@ static void set_dont_ask_again(const bool ask_again)
 tgame_delete::tgame_delete()
 {
 	register_bool("dont_ask_again"
-			, false
+			, tunused_parameter()
+			, true
 			, &get_dont_ask_again
 			, &set_dont_ask_again);
 }

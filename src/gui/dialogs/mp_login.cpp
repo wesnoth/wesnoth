@@ -18,6 +18,7 @@
 #include "gui/dialogs/mp_login.hpp"
 
 #include "game_preferences.hpp"
+#include "gui/dialogs/field.hpp" // for tunused_parameter
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/password_box.hpp"
 #include "gui/widgets/settings.hpp"
@@ -77,7 +78,8 @@ tmp_login::tmp_login(const std::string& label, const bool focus_password)
 			, focus_password);
 
 	register_bool("remember_password"
-			, true
+			, tunused_parameter()
+			, false
 			, &preferences::remember_password
 			, &preferences::set_remember_password);
 }

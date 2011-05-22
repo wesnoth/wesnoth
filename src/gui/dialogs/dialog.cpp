@@ -73,7 +73,8 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 
 tfield_bool* tdialog::register_bool(
 		  const std::string& id
-		, const bool optional
+		, const tunused_parameter&
+		, const bool mandatory
 		, bool (*callback_load_value) ()
 		, void (*callback_save_value) (const bool value)
 		, void (*callback_change) (twidget* widget))
@@ -81,7 +82,7 @@ tfield_bool* tdialog::register_bool(
 	tfield_bool* field =  new tfield_bool(
 			  id
 			, tunused_parameter()
-			, !optional
+			, mandatory
 			, callback_load_value
 			, callback_save_value, callback_change);
 
@@ -90,14 +91,15 @@ tfield_bool* tdialog::register_bool(
 }
 
 tfield_bool* tdialog::register_bool(const std::string& id
-		, const bool optional
+		, const tunused_parameter&
+		, const bool mandatory
 		, bool& linked_variable
 		, void (*callback_change) (twidget* widget))
 {
 	tfield_bool* field =  new tfield_bool(
 			  id
 			, tunused_parameter()
-			, !optional
+			, mandatory
 			, linked_variable
 			, callback_change);
 
@@ -110,7 +112,7 @@ tfield_bool* tdialog::register_bool2(const std::string& id
 		, bool& linked_variable
 		, void (*callback_change) (twidget* widget))
 {
-	return register_bool(id, !mandatory, linked_variable, callback_change);
+	return register_bool(id, tunused_parameter(), mandatory, linked_variable, callback_change);
 }
 
 tfield_integer* tdialog::register_integer(
