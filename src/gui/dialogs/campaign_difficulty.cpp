@@ -66,7 +66,7 @@ tcampaign_difficulty::tcampaign_difficulty(const std::vector<std::string>& items
 	: index_(-1), items_()
 {
 	foreach(const std::string& it, items) {
-		items_.push_back(it);
+		items_.push_back(tlegacy_menu_item(it));
 	}
 }
 

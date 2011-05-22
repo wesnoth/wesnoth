@@ -41,7 +41,7 @@ class tlegacy_menu_item
 	 * with special meanings for certain characters.
 	 */
 public:
-	tlegacy_menu_item(const std::string& str = std::string());
+	explicit tlegacy_menu_item(const std::string& str = std::string());
 
 	const std::string& icon() const {
 		return icon_;
