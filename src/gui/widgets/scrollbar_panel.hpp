@@ -41,7 +41,7 @@ public:
 	 *
 	 * @param canvas_count        The canvas count for tcontrol.
 	 */
-	tscrollbar_panel(const unsigned canvas_count = 2) :
+	explicit tscrollbar_panel(const unsigned canvas_count = 2) :
 		tscrollbar_container(canvas_count)
 	{
 	}
