@@ -52,7 +52,8 @@ class tpassword_box : public ttext_box {
 public:
 	tpassword_box() : ttext_box(), real_value_() {}
 
-	void set_value(const std::string& text);
+	/** Inherited from ttext_. */
+	virtual void set_value(const std::string& text);
 	std::string get_real_value() const { return real_value_; }
 
 

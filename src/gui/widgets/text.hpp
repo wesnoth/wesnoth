@@ -58,7 +58,13 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_value(const std::string& text);
+	/**
+	 * The set_value is virtual for the @ref tpassword_box class.
+	 *
+	 * That class overrides the set_value function to replace it with asterisk.
+	 * There might be more generic way to do it when more classes are needed.
+	 */
+	virtual void set_value(const std::string& text);
 	std::string get_value() const { return text_.text(); }
 
 	const std::string& text() const { return text_.text(); }

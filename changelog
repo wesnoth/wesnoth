@@ -18,6 +18,8 @@ Version 1.9.6+svn:
  * User interface:
    * Fix starting location labels being initially invisible in the map editor
      (bug #17956).
+   * Fixed bug #18000, #18099: Show a wrongly entered MP password and crash
+     upon editing this text.
  * WML engine:
    * new attribute team_name= in SSFs
    * added [event][filter_side]<SSF keys> support
