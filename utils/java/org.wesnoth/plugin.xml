@@ -692,9 +692,6 @@
       </perspective>
    </extension>
    <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-   </extension>
-   <extension
          point="org.eclipse.ui.elementFactories">
       <factory
             class="org.wesnoth.navigator.WesnothProjectsExplorer"
@@ -741,6 +738,7 @@
             value="true">
       </persistent>
    </extension>
+   <!--
    <extension
          point="org.eclipse.ui.activities">
       <activity
@@ -778,7 +776,6 @@
       <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.mylyn.tasks.ui.bug.report.*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.actions.showKeyAssistHandler.*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.cheatsheets.actions.CheatSheetHelpMenuAction.*"> </activityPatternBinding>
-	<!-- This is for real now. I'm really pissed off. Disable the WHOLE plugin -->
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.mylyn.task.*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.jdt.*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.xtend.*"> </activityPatternBinding>
@@ -788,6 +785,7 @@
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.search.*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ant.*"> </activityPatternBinding>
    </extension>
+   -->
    <extension
          point="org.eclipse.ui.startup">
       <startup

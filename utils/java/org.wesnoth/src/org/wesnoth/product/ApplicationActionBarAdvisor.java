@@ -8,7 +8,11 @@
  *******************************************************************************/
 package org.wesnoth.product;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.jface.action.GroupMarker;
+import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.ui.IWorkbenchActionConstants;
@@ -26,9 +30,13 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor
 	private IWorkbenchAction	prefAction_;
 	private IWorkbenchAction	newWizardDropDownAction_;
 
+	private List<IWorkbenchAction> coolBarActions_;
+
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer)
 	{
 		super(configurer);
+
+		coolBarActions_ = new ArrayList<IWorkbenchAction>();
 	}
 
 	@Override
@@ -47,6 +55,42 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor
 		// help menu
 		aboutAction_ = ActionFactory.ABOUT.create(window);
 		register(aboutAction_);
+
+        coolBarActions_.add(register(ActionFactory.UNDO.create(window)));
+        coolBarActions_.add(register(ActionFactory.REDO.create(window)));
+
+        coolBarActions_.add(register(ActionFactory.SAVE.create(window)));
+        coolBarActions_.add(register(ActionFactory.SAVE_AS.create(window)));
+        coolBarActions_.add(register(ActionFactory.SAVE_ALL.create(window)));
+
+        coolBarActions_.add(register(ActionFactory.COPY.create(window)));
+        coolBarActions_.add(register(ActionFactory.CUT.create(window)));
+        coolBarActions_.add(register(ActionFactory.PASTE.create(window)));
+
+        coolBarActions_.add(register(ActionFactory.FIND.create(window)));
+
+        coolBarActions_.add(register(ActionFactory.BACK.create(window)));
+        coolBarActions_.add(register(ActionFactory.BACKWARD_HISTORY.create(window)));
+        coolBarActions_.add(register(ActionFactory.FORWARD.create(window)));
+        coolBarActions_.add(register(ActionFactory.FORWARD_HISTORY.create(window)));
+
+        coolBarActions_.add(register(ActionFactory.PRINT.create(window)));
+	}
+
+	private IWorkbenchAction register(IWorkbenchAction action)
+	{
+	    super.register(action);
+	    return action;
+	}
+
+	@Override
+	protected void fillCoolBar(ICoolBarManager coolBar)
+	{
+	    IActionBarConfigurer config  = getActionBarConfigurer();
+	    System.out.println(config.toString());
+	    for(IWorkbenchAction action : coolBarActions_){
+	        coolBar.add(action);
+	    }
 	}
 
 	@Override
