@@ -26,7 +26,7 @@ namespace gui2 {
 class tcampaign_difficulty : public tdialog
 {
 public:
-	tcampaign_difficulty(const std::vector<std::string>& items);
+	explicit tcampaign_difficulty(const std::vector<std::string>& items);
 
 	/**
 	 * Returns the selected item index after displaying.
