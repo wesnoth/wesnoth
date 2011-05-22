@@ -36,6 +36,14 @@
 namespace gui2 {
 
 /**
+ * Helper structure for changing some function signatures.
+ *
+ * The meaning of a boolean value gets inverted so make sure all callers are
+ * forced to update their code as well. This parameter will be removed later.
+ */
+struct tunused_parameter {};
+
+/**
  * Abstract base class for the fields.
  *
  * @note In this context a widget is a @ref gui2::tcontrol and not a @ref
@@ -51,11 +59,13 @@ public:
 	 *
 	 * @param id                  The id of the widget to connect to the window.
 	 *                            A widget can only be connected once.
-	 * @param optional            Is the widget optional?
+	 * @param mandatory           Is the widget mandatory
 	 */
-	tfield_(const std::string& id, const bool optional)
+	tfield_(const std::string& id
+			, const tunused_parameter&
+			, const bool mandatory)
 		: id_(id)
-		, mandatory_(!optional)
+		, mandatory_(mandatory)
 		, widget_(NULL)
 	{
 	}
@@ -275,7 +285,7 @@ public:
 			const bool optional,
 			T (*callback_load_value) (),
 			void (*callback_save_value) (CT value)) :
-		tfield_(id, optional),
+		tfield_(id, tunused_parameter(), !optional),
 		value_(T()),
 		link_(value_),
 		callback_load_value_(callback_load_value),
@@ -301,7 +311,7 @@ public:
 	tfield(const std::string& id
 			, const bool optional
 			, T& linked_variable)
-		: tfield_(id, optional)
+		: tfield_(id, tunused_parameter(), !optional)
 		, value_(T())
 		, link_(linked_variable)
 		, callback_load_value_(NULL)
@@ -330,7 +340,7 @@ public:
 	tfield(const std::string& id
 			, const bool optional
 			, const T& value)
-		: tfield_(id, optional)
+		: tfield_(id, tunused_parameter(), !optional)
 		, value_(value)
 		, link_(value_)
 		, callback_load_value_(NULL)
