@@ -49,7 +49,12 @@ tod_manager::tod_manager(const config& time_cfg, int num_turns, game_state* stat
 
 	time_of_day::parse_times(time_cfg,times_);
 
-	set_start_ToD(const_cast<config&>(time_cfg), turn_);
+	currentTime_ = get_start_ToD(time_cfg);
+	//TODO:
+	//Very bad, since we're pretending to not modify the cfg. Needed to transfer the result
+	//to the network clients in a mp game, otherwise we have OOS.
+	config& non_const_config = const_cast<config&>(time_cfg);
+	non_const_config["current_tod"] = currentTime_;
 }
 
 tod_manager& tod_manager::operator=(const tod_manager& manager)
@@ -191,45 +196,34 @@ void tod_manager::remove_time_area(const std::string& area_id)
 	}
 }
 
-void tod_manager::set_start_ToD(config &level, int current_turn)
+const int tod_manager::get_start_ToD(const config &level) const
 {
-	if (!level["current_tod"].empty())
+	const config::attribute_value& current_tod = level["current_tod"];
+	if (!current_tod.blank())
 	{
-		currentTime_ = calculate_current_time(times_.size(), current_turn, level["current_tod"], true);
-		return;
+		return calculate_current_time(times_.size(), turn_, current_tod.to_int(0), true);
 	}
-	std::string random_start_time = level["random_start_time"];
-	if (tod_manager::is_start_ToD(random_start_time))
-	{
-		std::vector<std::string> start_strings =
-			utils::split(random_start_time, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 
-		if (utils::string_bool(random_start_time,false))
-		{
-			// We had boolean value
-			currentTime_ = calculate_current_time(times_.size(), current_turn, rand(), true);
-		}
-		else
-		{
-			const int index = calculate_current_time(start_strings.size(),
-				current_turn, rand(), true);
-			currentTime_ = calculate_current_time(
-					times_.size(),
-					current_turn,
-					lexical_cast_default<int, std::string>(start_strings[index], 1) - 1,
-					true
-				);
-		}
+	const int default_result = calculate_current_time(times_.size(), turn_, currentTime_);
+
+	const config::attribute_value& cfg_random_start_time = level["random_start_time"];
+	if(!cfg_random_start_time.blank()) {
+		const std::string& random_start_time = cfg_random_start_time.str();
+		//TODO:
+		//Here there is danger of OOS (bug #15948)
+		//But this randomization is needed on the other hand to make the "random start time" option
+		//in the mp game selection screen work.
+
+		//process the random_start_time string, which can be boolean yes/no true/false or a
+		//comma-separated string of integers >= 1 referring to the times_ array indices
+		const std::vector<std::string>& random_start_time_strings = utils::split(random_start_time);
+		const int random_index = calculate_current_time(random_start_time_strings.size(), turn_, rand(), true);
+		const int given_current_time = lexical_cast_default<int, std::string>(random_start_time_strings[random_index], 0) - 1;
+		if(given_current_time >= 0) return calculate_current_time(times_.size(), turn_, given_current_time, true);
+		if(cfg_random_start_time.to_bool(false)) return calculate_current_time(times_.size(), turn_, rand(), true);
 	}
-	else
-	{
-		// We have to set right ToD for oldsaves
-		currentTime_ = calculate_current_time(times_.size(), current_turn, currentTime_);
-	}
-	// Setting ToD to level data
 
-	level["current_tod"] = currentTime_;
-
+	return default_result;
 }
 
 const time_of_day& tod_manager::get_time_of_day_turn(const std::vector<time_of_day>& times, int nturn, const int current_time) const

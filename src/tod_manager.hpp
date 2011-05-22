@@ -115,7 +115,7 @@ class tod_manager : public savegame::savegame_config
 		 */
 		bool is_time_left();
 	private:
-		void set_start_ToD(config&, int current_turn);
+		const int get_start_ToD(const config& level) const;
 
 		/**
 		 * Returns time of day object in the turn "nturn".
