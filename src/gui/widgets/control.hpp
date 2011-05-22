@@ -28,7 +28,7 @@ class tcontrol : public virtual twidget
 	friend class tdebug_layout_graph;
 public:
 
-	tcontrol(const unsigned canvas_count);
+	explicit tcontrol(const unsigned canvas_count);
 
 	virtual ~tcontrol() {}
 
