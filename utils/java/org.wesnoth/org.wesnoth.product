@@ -382,8 +382,11 @@ litigation.
    </plugins>
 
    <features>
-      <feature id="Wesnoth_Eclipse_Plugin" version="1.0.2"/>
       <feature id="org.eclipse.equinox.executable"/>
+      <feature id="org.wesnoth.feature" version="1.0.3"/>
+      <feature id="org.eclipse.rcp" version="3.6.2.r362_v20101104-9SAxFMKFkSAqi8axkv1ZjegmiBLY"/>
+      <feature id="org.eclipse.equinox.p2.discovery.feature" version="1.0.1.R36x_v20110210-4-09oB5865H6L02434"/>
+      <feature id="org.eclipse.equinox.p2.user.ui" version="2.0.1.r361_v20100903-897HFa-FX0z-z-ntoaavz0JPX628"/>
    </features>
 
    <configurations>

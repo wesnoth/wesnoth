@@ -28,6 +28,6 @@ public class EmptyProjectPage0 extends WizardNewProjectCreationPage
 		setMessage(Messages.EmptyProjectPage0_2);
 
 		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(getShell(),
-				"Wesnoth_Eclipse_Plugin.wizardHelp"); //$NON-NLS-1$
+				"org.wesnoth.wizardHelp"); //$NON-NLS-1$
 	}
 }

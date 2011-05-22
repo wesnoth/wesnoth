@@ -13,7 +13,7 @@ DEL keystore
 echo generating key...
 keytool.exe -genkey -dname "cn=Battle for Wesnoth, ou=Wesnoth, o=Wesnoth" -alias wesnoth -keypass %1 -keystore keystore -storepass %2 -validity 1095
 echo signing feature
-jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/features/Wesnoth_Eclipse_Plugin_%PLUGIN_VERSION%.jar wesnoth
+jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/features/org.wesnoth.feature_%PLUGIN_VERSION%.jar wesnoth
 echo signing org.wesnoth.wml_%PLUGIN_VERSION%.jar
 jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/plugins/org.wesnoth.wml_%PLUGIN_VERSION%.jar wesnoth
 echo signing org.wesnoth.wml.ui_%PLUGIN_VERSION%.jar

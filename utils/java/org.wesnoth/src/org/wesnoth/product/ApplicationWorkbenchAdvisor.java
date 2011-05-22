@@ -16,7 +16,7 @@ import org.wesnoth.utils.WorkspaceUtils;
 
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisorHack {
 
-	private static final String PERSPECTIVE_ID = "Wesnoth_Eclipse_Plugin.product.perspective"; //$NON-NLS-1$
+	private static final String PERSPECTIVE_ID = "org.wesnoth.product.WMLPerspective"; //$NON-NLS-1$
 
     @Override
 	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {

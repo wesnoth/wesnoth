@@ -289,7 +289,7 @@
                   pattern="org.eclipse.ui.navigator.resources.filters.*">
             </contentExtension>
             <contentExtension
-                  pattern="wesnoth_eclipse_plugin.navigator.filters.*">
+                  pattern="org.wesnoth.navigator.filters.*">
             </contentExtension>
          </includes>
       </viewerContentBinding>
@@ -482,7 +482,7 @@
          <visibility>
                <objectState
                      name="projectNature"
-                     value="Wesnoth_Eclipse_Plugin.wesnothNature">
+                     value="org.wesnoth.builder.WesnothProjectNature">
                </objectState>
          </visibility>
       </objectContribution>
@@ -527,49 +527,49 @@
    <extension
          point="org.eclipse.ui.commands">
       <category
-            id="Wesnoth_Eclipse_Plugin.commands.category"
+            id="org.wesnoth.commands.category"
             name="Wesnoth">
       </category>
       <command
             defaultHandler="org.wesnoth.handlers.OpenEditorHandler"
             description="Opens the wesnoth editor"
-            id="Wesnoth_Eclipse_Plugin.commands.openEditor"
+            id="org.wesnoth.commands.openEditor"
             name="openeditor">
       </command>
       <command
             defaultHandler="org.wesnoth.handlers.ImportMapHandler"
             description="Import an existing map into the current maps folder"
-            id="Wesnoth_Eclipse_Plugin.commands.importMap"
+            id="org.wesnoth.commands.importMap"
             name="importMap">
       </command>
       <command
             defaultHandler="org.wesnoth.handlers.OpenGameHandler"
             description="Opens the game"
-            id="Wesnoth_Eclipse_Plugin.commands.openGame"
+            id="org.wesnoth.commands.openGame"
             name="openGame">
       </command>
       <command
             defaultHandler="org.wesnoth.handlers.OpenMapInEditorHandler"
             description="Opens the selected map in the map editor"
-            id="Wesnoth_Eclipse_Plugin.commands.openMapInEditor"
+            id="org.wesnoth.commands.openMapInEditor"
             name="openMapInEditor">
       </command>
       <command
             defaultHandler="org.wesnoth.handlers.SetupWorkspaceHandler"
             description="Setups the workspace"
-            id="Wesnoth_Eclipse_Plugin.commands.setupWorkspace"
+            id="org.wesnoth.commands.setupWorkspace"
             name="setupWorkspace">
       </command>
       <command
             defaultHandler="org.wesnoth.handlers.ReloadFilesHandler"
             description="Reloads all plugin related files"
-            id="Wesnoth_Eclipse_Plugin.commands.reloadFiles"
+            id="org.wesnoth.commands.reloadFiles"
             name="reloadFiles">
       </command>
       <!--
       <command
             defaultHandler="org.wesnoth.handlers.TestHandler"
-            id="Wesnoth_Eclipse_Plugin.commands.test"
+            id="org.wesnoth.commands.test"
             name="test command">
       </command>
       -->
@@ -580,20 +580,20 @@
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
                icon="icons/wesnoth-icon_16.png"
-               id="Wesnoth_Eclipse_Plugin.menus.wesnothMenu"
+               id="org.wesnoth.menus.wesnothMenu"
                label="Wesnoth"
                mnemonic="s">
             <command
-                  commandId="Wesnoth_Eclipse_Plugin.commands.openEditor"
+                  commandId="org.wesnoth.commands.openEditor"
                   icon="icons/wesnoth_editor-icon_16.png"
-                  id="Wesnoth_Eclipse_Plugin.menus.openEditor"
+                  id="org.wesnoth.menus.openEditor"
                   label="Open editor"
                   mnemonic="e">
             </command>
             <command
-                  commandId="Wesnoth_Eclipse_Plugin.commands.openGame"
+                  commandId="org.wesnoth.commands.openGame"
                   icon="icons/wesnoth-icon_16.png"
-                  id="Wesnoth_Eclipse_Plugin.menus.openGame"
+                  id="org.wesnoth.menus.openGame"
                   label="Open game"
                   mnemonic="g">
             </command>
@@ -602,12 +602,12 @@
                   visible="true">
             </separator>
             <command
-                  commandId="Wesnoth_Eclipse_Plugin.commands.importMap"
+                  commandId="org.wesnoth.commands.importMap"
                   icon="icons/wesnoth_editor-icon_16.png"
                   label="Import Map">
             </command>
             <command
-                  commandId="Wesnoth_Eclipse_Plugin.commands.openMapInEditor"
+                  commandId="org.wesnoth.commands.openMapInEditor"
                   icon="icons/wesnoth_editor-icon_16.png"
                   label="Open map with editor"
                   style="push">
@@ -617,12 +617,12 @@
                   visible="true">
             </separator>
             <command
-                  commandId="Wesnoth_Eclipse_Plugin.commands.setupWorkspace"
+                  commandId="org.wesnoth.commands.setupWorkspace"
                   label="Setup Workspace"
                   style="push">
             </command>
             <command
-                  commandId="Wesnoth_Eclipse_Plugin.commands.reloadFiles"
+                  commandId="org.wesnoth.commands.reloadFiles"
                   label="Reload cache"
                   style="push">
             </command>
@@ -641,7 +641,7 @@
             </separator>
             <!--
             <command
-                  commandId="Wesnoth_Eclipse_Plugin.commands.test"
+                  commandId="org.wesnoth.commands.test"
                   label="Test (FOR DEBUG ONLY!!)"
                   style="push">
             </command>
@@ -676,12 +676,12 @@
       </page>
    </extension>
    <extension
-         id="Wesnoth_Eclipse_Plugin.perspectives"
+         id="org.wesnoth.perspectives"
          point="org.eclipse.ui.perspectives">
       <perspective
             class="org.wesnoth.product.WMLPerspective"
             icon="icons/wesnoth_editor-icon_16.png"
-            id="Wesnoth_Eclipse_Plugin.product.perspective"
+            id="org.wesnoth.product.WMLPerspective"
             name="Wesnoth">
       </perspective>
    </extension>
