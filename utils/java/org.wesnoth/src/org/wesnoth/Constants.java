@@ -71,7 +71,7 @@ public class Constants
 	public static final int		WIZ_MaxWizardPageHeight = 220;
 
 	/** Builder Constants **/
-	public static final String BUIILDER_WESNOTH     = "org.wesnoth.builder.WesnothProjectBuilder"; //$NON-NLS-1$
+	public static final String BUIILDER_WESNOTH     = "org.wesnoth.builders.wesnoth"; //$NON-NLS-1$
 	public static final String BUILDER_XTEXT        = XtextProjectHelper.BUILDER_ID;
 
 	/** Markers **/
@@ -79,7 +79,7 @@ public class Constants
 	public static final String MARKER_WMLLINT       = "org.wesnoth.marker.wmllint"; //$NON-NLS-1$
 
 	/** Nature Constants **/
-	public static final String NATURE_WESNOTH       = "org.wesnoth.builder.WesnothProjectNature"; //$NON-NLS-1$
+	public static final String NATURE_WESNOTH       = "org.wesnoth.natures.wesnoth"; //$NON-NLS-1$
 	public static final String NATURE_XTEXT         = XtextProjectHelper.NATURE_ID;
 
 	/** Templates related */

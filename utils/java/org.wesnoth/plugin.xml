@@ -632,7 +632,7 @@
                   style="push">
                <parameter
                      name="preferencePageId"
-                     value="wml_plugin_preferences">
+                     value="org.wesnoth.preferences.UMCPage">
                </parameter>
             </command>
             <separator
@@ -653,26 +653,32 @@
          point="org.eclipse.ui.preferencePages">
       <page
             class="org.wesnoth.preferences.WesnothPreferencesPage"
-            id="wml_plugin_preferences"
+            id="org.wesnoth.preferences.UMCPage"
             name="Wesnoth UMC">
       </page>
       <page
-            category="wml_plugin_preferences"
+            category="org.wesnoth.preferences.UMCPage"
             class="org.wesnoth.preferences.WMLToolsPreferencePage"
-            id="wml_plugin_preferences.wmltools"
+            id="org.wesnoth.preferences.WMLToolsPage"
             name="WML Tools">
       </page>
       <page
-            category="wml_plugin_preferences"
+            category="org.wesnoth.preferences.UMCPage"
             class="org.wesnoth.preferences.AddonUploadPreferencePage"
-            id="wml_plugin_preferences.addon_upload"
+            id="org.wesnoth.preferences.AddonPage"
             name="Addon Uploader">
       </page>
       <page
-            category="wml_plugin_preferences"
+            category="org.wesnoth.preferences.UMCPage"
             class="org.wesnoth.preferences.AdvancedPreferencePage"
-            id="wml_plugin_preferences.advanced"
+            id="org.wesnoth.preferences.AdvancedPage"
             name="Advanced Preferences">
+      </page>
+      <page
+            category="org.wesnoth.preferences.UMCPage"
+            class="org.wesnoth.preferences.WesnothInstallsPage"
+            id="org.wesnoth.preferences.InstallsPage"
+            name="Wesnoth Installs">
       </page>
    </extension>
    <extension

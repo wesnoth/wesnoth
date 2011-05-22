@@ -13,7 +13,6 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
 
-
 /**
  * Class used to initialize default preference values.
  */

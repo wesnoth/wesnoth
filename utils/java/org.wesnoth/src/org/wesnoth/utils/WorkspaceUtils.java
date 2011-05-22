@@ -335,7 +335,7 @@ public class WorkspaceUtils
         if (!checkConditions(false))
         {
             PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
-                    Activator.getShell(), "wml_plugin_preferences", null, null); //$NON-NLS-1$
+                    Activator.getShell(), "org.wesnoth.preferences.UMCPage", null, null); //$NON-NLS-1$
             if (pref.open() == Window.CANCEL || !checkConditions(true))
             {
                 GUIUtils.showErrorMessageBox(Messages.WorkspaceUtils_7 +
