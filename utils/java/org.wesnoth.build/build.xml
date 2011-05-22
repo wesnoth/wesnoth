@@ -5,7 +5,7 @@
         <fail unless="haveBaseLocation" message="Please set the base location for the eclipse installation." />
     	
     	<available property="haveBuildDirectory" file="${buildDirectory}"/>
-        <fail unless="haveBuildDirectory" message="Please set the base location for the eclipse installation." />
+        <fail unless="haveBuildDirectory" message="Please set the build location." />
     	
         <!-- Check that we have a deltapack -->
         <available property="haveDeltaPack" file="${deltapack}"/>

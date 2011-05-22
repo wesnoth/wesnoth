@@ -86,8 +86,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor
 	@Override
 	protected void fillCoolBar(ICoolBarManager coolBar)
 	{
-	    IActionBarConfigurer config  = getActionBarConfigurer();
-	    System.out.println(config.toString());
+	    //IActionBarConfigurer config  = getActionBarConfigurer();
+	    //System.out.println(config.toString());
 	    for(IWorkbenchAction action : coolBarActions_){
 	        coolBar.add(action);
 	    }
