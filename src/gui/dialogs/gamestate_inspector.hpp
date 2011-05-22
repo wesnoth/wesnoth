@@ -28,7 +28,7 @@ public:
 	class model;
 	class view;
 	class controller;
-	tgamestate_inspector(const vconfig &cfg);
+	explicit tgamestate_inspector(const vconfig &cfg);
 
 	boost::shared_ptr<view> get_view();
 
