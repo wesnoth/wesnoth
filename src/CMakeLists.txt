@@ -361,6 +361,7 @@ set(wesnoth-main_SRC
 	game_display.cpp
 	game_errors.cpp
 	game_events.cpp
+	game_instance.cpp
 	game_preferences.cpp
 	game_preferences_display.cpp
 	gamestatus.cpp

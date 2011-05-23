@@ -27,6 +27,7 @@
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
+#include "game_instance.hpp"
 #include "game_preferences.hpp"
 #include "builder.hpp"
 #include "filesystem.hpp"
@@ -224,6 +225,8 @@ private:
 
 	util::scoped_ptr<game_display> disp_;
 
+	/// Stateful class taking over scenario-switching capabilities from the current game_controller and playsingle_controller. Currently only available when --new-syntax command line option is enabled.
+	game_instance game_instance_;
 	game_state state_;
 
 	std::string multiplayer_server_;
@@ -260,6 +263,7 @@ game_controller::game_controller(int argc, char** argv) :
 	game_config_(),
 	old_defines_map_(),
 	disp_(NULL),
+	game_instance_(),
 	state_(),
 	multiplayer_server_(),
 	jump_to_multiplayer_(false),
@@ -1062,6 +1066,11 @@ void game_controller::mark_completed_campaigns(std::vector<config> &campaigns)
 
 bool game_controller::new_campaign()
 {
+	if (game_config::new_syntax)
+	{
+		game_instance_ = game_instance();
+		return false;
+	}
 	state_ = game_state();
 	state_.classification().campaign_type = "scenario";
 
@@ -1069,7 +1078,6 @@ bool game_controller::new_campaign()
 	std::vector<config> campaigns(ci.first, ci.second);
 	mark_completed_campaigns(campaigns);
 	std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
-
 
 	if(campaigns.begin() == campaigns.end()) {
 	  gui2::show_error_message(disp().video(),
@@ -2176,7 +2184,7 @@ static int do_gameloop(int argc, char** argv)
 	}
 
 	//ensure recorder has an actually random seed instead of what it got during
-	//static initialization (befire any srand() call)
+	//static initialization (before any srand() call)
 	recorder.set_seed(rand());
 
 	game_controller game(argc,argv);
@@ -2327,7 +2335,6 @@ static int do_gameloop(int argc, char** argv)
 				res = gui2::ttitle_screen::NOTHING;
 				continue;
 			}
-
 			should_reload = game_controller::NO_RELOAD_DATA;
 		} else if(res == gui2::ttitle_screen::TUTORIAL) {
 			game.set_tutorial();
