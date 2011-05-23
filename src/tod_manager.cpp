@@ -196,7 +196,7 @@ void tod_manager::remove_time_area(const std::string& area_id)
 	}
 }
 
-const int tod_manager::get_start_ToD(const config &level) const
+int tod_manager::get_start_ToD(const config &level) const
 {
 	const config::attribute_value& current_tod = level["current_tod"];
 	if (!current_tod.blank())
@@ -311,7 +311,7 @@ void tod_manager::set_new_current_times(const int new_current_turn_number)
 	}
 }
 
-const int tod_manager::calculate_current_time(
+int tod_manager::calculate_current_time(
 	const int number_of_times,
 	const int for_turn_number,
 	const int current_time,
