@@ -486,7 +486,11 @@ game_controller::game_controller(int argc, char** argv) :
         } else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
-        } else if(val == "--clock") {
+		}
+		else if (val == "--new-syntax") {
+			game_config::new_syntax = true;
+		}
+		else if(val == "--clock") {
 			gui2::show_debug_clock_button = true;
 		} else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
@@ -1820,6 +1824,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "    --side<number>=value       selects a faction of the current era for this\n"
 			<< "                               side by id.\n"
 			<< "    --turns=value              sets the number of turns. The default is \"50\".\n"
+			<< "  --new-syntax                 enables the new campaign syntax parsing.\n"
 			<< "  --no-delay                   runs the game without any delays.\n"
 			<< "  --nocache                    disables caching of game data.\n"
 			<< "  --nomusic                    runs the game without music.\n"
