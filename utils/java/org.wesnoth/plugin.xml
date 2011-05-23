@@ -658,6 +658,12 @@
       </page>
       <page
             category="org.wesnoth.preferences.UMCPage"
+            class="org.wesnoth.preferences.WesnothInstallsPage"
+            id="org.wesnoth.preferences.InstallsPage"
+            name="Wesnoth Installs">
+      </page>
+      <page
+            category="org.wesnoth.preferences.UMCPage"
             class="org.wesnoth.preferences.WMLToolsPreferencePage"
             id="org.wesnoth.preferences.WMLToolsPage"
             name="WML Tools">
@@ -673,12 +679,6 @@
             class="org.wesnoth.preferences.AdvancedPreferencePage"
             id="org.wesnoth.preferences.AdvancedPage"
             name="Advanced Preferences">
-      </page>
-      <page
-            category="org.wesnoth.preferences.UMCPage"
-            class="org.wesnoth.preferences.WesnothInstallsPage"
-            id="org.wesnoth.preferences.InstallsPage"
-            name="Wesnoth Installs">
       </page>
    </extension>
    <extension

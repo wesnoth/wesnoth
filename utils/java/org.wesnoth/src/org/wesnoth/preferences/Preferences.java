@@ -12,6 +12,7 @@ import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.wesnoth.Constants;
 import org.wesnoth.WesnothPlugin;
+import org.wesnoth.utils.StringUtils;
 
 /**
  * Class used to initialize default preference values.
@@ -50,7 +51,8 @@ public class Preferences extends AbstractPreferenceInitializer
 		store.setDefault(Constants.P_ADV_NO_TERRAIN_GFX, true);
 
 		// installs
-		store.setDefault(Constants.P_INST_DEFAULT_INSTALL, "none"); // $NON-NLS-1$
+		store.setDefault(Constants.P_INST_DEFAULT_INSTALL, ""); // $NON-NLS-1$
+		store.setDefault(Constants.P_INST_INSTALL_LIST, ""); // $NON-NLS-1$
 	}
 
 	/**
@@ -85,5 +87,28 @@ public class Preferences extends AbstractPreferenceInitializer
 	public static boolean getBool(String prefName)
 	{
 		return getPreferences().getBoolean(prefName);
+	}
+
+	/**
+     * Gets the install preference prefix for the default Installation
+     * found in the @see {@link Constants#P_INST_DEFAULT_INSTALL} <b
+     * @param installName The name of the install
+     */
+	public static String getInstallPrefix()
+	{
+	    return getInstallPrefix(getString(Constants.P_INST_DEFAULT_INSTALL));
+	}
+
+	/**
+	 * Gets the install preference prefix for the specified install name
+	 * @param installName The name of the install
+	 */
+	public static String getInstallPrefix(String installName)
+	{
+        if (StringUtils.isNullOrEmpty(installName) ||
+            installName.equalsIgnoreCase("default"))
+            return "";
+
+        return "inst_" + installName + "_";
 	}
 }

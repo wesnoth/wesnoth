@@ -66,6 +66,7 @@ public class Constants
 
 	/** Install preferences */
 	public static final String P_INST_DEFAULT_INSTALL   = "inst_default"; //$NON-NLS-1$
+	public static final String P_INST_INSTALL_LIST      = "inst_list"; //$NON-NLS-1$
 
 	/** Wizards Constants **/
 	public static final int		WIZ_TextBoxHeight       = 21;

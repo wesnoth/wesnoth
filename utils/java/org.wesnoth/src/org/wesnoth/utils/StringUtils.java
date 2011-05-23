@@ -232,4 +232,13 @@ public class StringUtils
 		}
 		return res.toString();
 	}
+
+	/**
+	 * Returns true if the specified string is null or empty
+	 * @param target The string to check
+	 */
+	public static boolean isNullOrEmpty(String target)
+	{
+	    return (target == null || target.isEmpty());
+	}
 }
