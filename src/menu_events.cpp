@@ -3349,12 +3349,13 @@ void console_handler::do_choose_level() {
 
 void console_handler::do_turn()
 {
-	if (!get_data().empty()) {
-		int turn = lexical_cast_default<int>(get_data(), 1);
-		resources::tod_manager->set_turn(turn);
-	} else {
-		resources::tod_manager->next_turn();
+	int turn = resources::tod_manager->turn() + 1;
+	const std::string& data = get_data();
+	if (!data.empty()) {
+		turn = lexical_cast_default<int>(data, 1);
 	}
+	resources::tod_manager->set_turn(turn);
+
 	menu_handler_.gui_->new_turn();
 	menu_handler_.gui_->redraw_everything();
 }

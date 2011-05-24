@@ -99,7 +99,7 @@ class tod_manager : public savegame::savegame_config
 		void set_number_of_turns(int num);
 
 		/** Dynamically change the current turn number. */
-		void set_turn(const int num);
+		void set_turn(const int num, const bool increase_limit_if_needed = true);
 
 		/**
 		 * Function to move to the next turn.

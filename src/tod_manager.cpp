@@ -287,14 +287,14 @@ void tod_manager::set_number_of_turns(int num)
 	num_turns_ = std::max<int>(num, -1);
 }
 
-void tod_manager::set_turn(const int num)
+void tod_manager::set_turn(const int num, const bool increase_limit_if_needed)
 {
 	const int new_turn = std::max<int>(num, 1);
 	LOG_NG << "changing current turn number from " << turn_ << " to " << new_turn << '\n';
 	// Correct ToD
 	set_new_current_times(new_turn);
 
-	if((new_turn > num_turns_) && num_turns_ != -1) {
+	if(increase_limit_if_needed && (new_turn > num_turns_) && num_turns_ != -1) {
 		set_number_of_turns(new_turn);
 	}
 	turn_ = new_turn;
@@ -327,7 +327,7 @@ int tod_manager::calculate_current_time(
 
 bool tod_manager::next_turn()
 {
-	set_turn(turn_ + 1);
+	set_turn(turn_ + 1, false);
 	return is_time_left();
 }
 
