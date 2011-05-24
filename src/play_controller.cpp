@@ -701,14 +701,13 @@ void play_controller::finish_side_turn(){
 
 void play_controller::finish_turn()
 {
-  	const std::string turn_num = str_cast(turn() - 1);
+	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
 	game_events::fire("turn end");
 	game_events::fire("turn " + turn_num + " end");
 
 	LOG_NG << "turn event..." << (recorder.is_skipping() ? "skipping" : "no skip") << '\n';
 	update_locker lock_display(gui_->video(),recorder.is_skipping());
-	gamestate_.get_variable("turn_number") = int(turn());
 }
 
 bool play_controller::enemies_visible() const

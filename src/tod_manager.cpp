@@ -298,6 +298,7 @@ void tod_manager::set_turn(const int num)
 		set_number_of_turns(new_turn);
 	}
 	turn_ = new_turn;
+	resources::state_of_game->get_variable("turn_number") = new_turn;
 }
 
 void tod_manager::set_new_current_times(const int new_current_turn_number)
@@ -326,8 +327,7 @@ int tod_manager::calculate_current_time(
 
 bool tod_manager::next_turn()
 {
-	set_new_current_times(turn_ + 1);
-	++turn_;
+	set_turn(turn_ + 1);
 	return is_time_left();
 }
 

@@ -598,10 +598,10 @@ void playsingle_controller::play_turn(bool save)
 		loading_game_ = false;
 	}
 
+	finish_turn();
+
 	// Time has run out
 	check_time_over();
-
-	finish_turn();
 }
 
 void playsingle_controller::play_side(const unsigned int team_index, bool save)
