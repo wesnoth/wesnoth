@@ -410,8 +410,8 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 		player_number_++;
 
 		if (static_cast<size_t>(player_number_) > teams_.size()) {
-			tod_manager_.next_turn();
 			finish_turn();
+			tod_manager_.next_turn();
 			player_number_ = 1;
 			current_turn_++;
 			gui_->new_turn();
