@@ -105,7 +105,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	is_host_(true),
 	skip_replay_(skip_replay),
 	linger_(false),
-	previous_turn_(0),
+	it_is_a_new_turn_(true),
 	savenames_(),
 	wml_commands_(),
 	victory_when_enemies_defeated_(true),
@@ -499,7 +499,7 @@ void play_controller::fire_start(bool execute){
 		start_turn_ = turn();
 		gamestate_.get_variable("turn_number") = int(start_turn_);
 	} else {
-		previous_turn_ = turn();
+		it_is_a_new_turn_ = false;
 	}
 	resources::state_of_game->set_phase(game_state::PLAY);
 }
@@ -555,11 +555,11 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 
 	// If this is right after loading a game we don't need to fire events and such. It was already done before saving.
 	if (!loading_game_) {
-		if (turn() != previous_turn_)
+		if(it_is_a_new_turn_)
 		{
 			game_events::fire("turn " + turn_num);
 			game_events::fire("new turn");
-			previous_turn_ = turn();
+			it_is_a_new_turn_ = false;
 		}
 
 		game_events::fire("side turn");

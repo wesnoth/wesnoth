@@ -218,7 +218,7 @@ protected:
 	bool is_host_;
 	bool skip_replay_;
 	bool linger_;
-	unsigned int previous_turn_;
+	bool it_is_a_new_turn_;
 
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;

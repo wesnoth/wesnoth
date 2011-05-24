@@ -231,7 +231,7 @@ void replay_controller::reset_replay(){
 	is_playing_ = false;
 	player_number_ = 1;
 	current_turn_ = 1;
-	previous_turn_ = 0;
+	it_is_a_new_turn_ = true;
 	skip_replay_ = false;
 	tod_manager_= tod_manager_start_;
 	recorder.start_replay();
@@ -412,6 +412,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 		if (static_cast<size_t>(player_number_) > teams_.size()) {
 			finish_turn();
 			tod_manager_.next_turn();
+			it_is_a_new_turn_ = true;
 			player_number_ = 1;
 			current_turn_++;
 			gui_->new_turn();
