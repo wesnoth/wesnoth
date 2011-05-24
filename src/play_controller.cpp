@@ -705,9 +705,6 @@ void play_controller::finish_turn()
 	const std::string side_num = str_cast(player_number_);
 	game_events::fire("turn end");
 	game_events::fire("turn " + turn_num + " end");
-
-	LOG_NG << "turn event..." << (recorder.is_skipping() ? "skipping" : "no skip") << '\n';
-	update_locker lock_display(gui_->video(),recorder.is_skipping());
 }
 
 bool play_controller::enemies_visible() const
