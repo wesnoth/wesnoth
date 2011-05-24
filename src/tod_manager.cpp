@@ -28,7 +28,7 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-tod_manager::tod_manager(const config& time_cfg, int num_turns, game_state* state):
+tod_manager::tod_manager(const config& scenario_cfg, const int num_turns):
 	savegame_config(),
 	currentTime_(0),
 	times_(),
@@ -36,24 +36,18 @@ tod_manager::tod_manager(const config& time_cfg, int num_turns, game_state* stat
 	turn_(1),
 	num_turns_(num_turns)
 {
-	std::string turn_at = time_cfg["turn_at"];
-	if (state)
-	{
-		turn_at = utils::interpolate_variables_into_string(turn_at, *state);
-
+	const config::attribute_value& turn_at = scenario_cfg["turn_at"];
+	if(!turn_at.blank()) {
+		turn_ = turn_at.to_int(1);
 	}
 
-	if(turn_at.empty() == false) {
-		turn_ = atoi(turn_at.c_str());
-	}
+	time_of_day::parse_times(scenario_cfg,times_);
 
-	time_of_day::parse_times(time_cfg,times_);
-
-	currentTime_ = get_start_ToD(time_cfg);
+	currentTime_ = get_start_ToD(scenario_cfg);
 	//TODO:
 	//Very bad, since we're pretending to not modify the cfg. Needed to transfer the result
 	//to the network clients in a mp game, otherwise we have OOS.
-	config& non_const_config = const_cast<config&>(time_cfg);
+	config& non_const_config = const_cast<config&>(scenario_cfg);
 	non_const_config["current_tod"] = currentTime_;
 }
 

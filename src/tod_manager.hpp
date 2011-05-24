@@ -26,7 +26,7 @@ class unit_map;
 class tod_manager : public savegame::savegame_config
 {
 	public:
-		tod_manager(const config& time_cfg, int num_turns, game_state* state=NULL);
+		tod_manager(const config& scenario_cfg, const int num_turns);
 		~tod_manager() {}
 		tod_manager& operator=(const tod_manager& manager);
 
