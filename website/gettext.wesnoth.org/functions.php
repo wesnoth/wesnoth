@@ -59,11 +59,14 @@ function getstats($file) {
   if ($ret==0) {
     // new version of msgfmt make life harder :-/
     if (preg_match("/^\s*(\d+)\s*translated[^\d]+(\d+)\s*fuzzy[^\d]+(\d+)\s*untranslated/",$output[0],$m)) {
+	$m[3]=0;
     } else if (preg_match("/^\s*(\d+)\s*translated[^\d]+(\d+)\s*fuzzy[^\d]/",$output[0],$m)) {
+	$m[3]=0;
     } else if (preg_match("/^\s*(\d+)\s*translated[^\d]+(\d+)\s*untranslated[^\d]/",$output[0],$m)) {
       $m[3]=$m[2];
       $m[2]=0;
     } else if (preg_match("/^\s*(\d+)\s*translated[^\d]+/",$output[0],$m)) {
+	$m[2]=$m[3]=0;
     } else {
       return array(1,0,0,0);
     }
