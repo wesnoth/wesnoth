@@ -199,7 +199,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --config-path                prints the path of the user config directory and\n"
 			<< "                               exits.\n"
 			<< "  --data-dir <directory>       overrides the data directory with the one specified.\n"
-			<< "  -d, --debug                  enables additional command mode options in-game->\n"
+			<< "  -d, --debug                  enables additional command mode options in-game.\n"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 			<< "  --debug-dot-level=<level1>,<level2>,...\n"
 			<< "                               sets the level of the debug dot files.\n"
@@ -248,7 +248,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               [filter] if used) and exits.\n"
 			<< "  --max-fps                    the maximum fps the game tries to run at. Values\n"
 			<< "                               should be between 1 and 1000, the default is 50.\n"
-			<< "  -m, --multiplayer            starts a multiplayer game-> There are additional\n"
+			<< "  -m, --multiplayer            starts a multiplayer game. There are additional\n"
 			<< "                               options that can be used as explained below:\n"
 			<< "    --ai_config<number>=value  selects a configuration file to load for this side.\n"
 			<< "    --algorithm<number>=value  selects a non-standard algorithm to be used by\n"
