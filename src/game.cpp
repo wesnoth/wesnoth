@@ -129,7 +129,6 @@ static bool less_campaigns_rank(const config &a, const config &b) {
 	return a["rank"].to_int(1000) < b["rank"].to_int(1000);
 }
 
-namespace {
 struct jump_to_campaign_info
 {
 public:
@@ -1196,8 +1195,6 @@ bool game_controller::new_campaign()
 	return true;
 }
 
-}
-
 std::string game_controller::jump_to_campaign_id() const
 {
 	return jump_to_campaign_.campaign_id_;
@@ -1244,8 +1241,6 @@ bool game_controller::goto_editor()
 	return true;
 }
 
-namespace
-{
 	void game_controller::reload_changed_game_config()
 	{
 		// rebuild addon version info cache
@@ -1632,8 +1627,6 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 		e.show(disp());
 	}
 }
-
-} //end anon namespace
 
 void game_controller::play_replay()
 {

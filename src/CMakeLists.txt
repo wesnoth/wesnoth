@@ -358,6 +358,7 @@ set(wesnoth-main_SRC
 	formula_function.cpp
 	formula_string_utils.cpp
 	formula_tokenizer.cpp
+	game_controller.cpp
 	game_display.cpp
 	game_errors.cpp
 	game_events.cpp
