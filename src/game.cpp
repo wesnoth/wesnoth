@@ -619,7 +619,7 @@ static int do_gameloop(int argc, char** argv)
 	//static initialization (before any srand() call)
 	recorder.set_seed(rand());
 
-	boost::shared_ptr<game_controller> game = boost::shared_ptr<game_controller>(new game_controller(argc,argv));
+	boost::shared_ptr<game_controller_abstract> game = boost::shared_ptr<game_controller_abstract>(new game_controller(argc,argv));
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
@@ -756,7 +756,7 @@ static int do_gameloop(int argc, char** argv)
 			res = static_cast<gui2::ttitle_screen::tresult>(dlg.get_retval());
 		}
 
-		game_controller::RELOAD_GAME_DATA should_reload = game_controller::RELOAD_DATA;
+		game_controller_abstract::RELOAD_GAME_DATA should_reload = game_controller_abstract::RELOAD_DATA;
 
 		if(res == gui2::ttitle_screen::QUIT_GAME) {
 			LOG_GENERAL << "quitting game->..\n";
@@ -767,7 +767,7 @@ static int do_gameloop(int argc, char** argv)
 				res = gui2::ttitle_screen::NOTHING;
 				continue;
 			}
-			should_reload = game_controller::NO_RELOAD_DATA;
+			should_reload = game_controller_abstract::NO_RELOAD_DATA;
 		} else if(res == gui2::ttitle_screen::TUTORIAL) {
 			game->set_tutorial();
 		} else if(res == gui2::ttitle_screen::NEW_CAMPAIGN) {

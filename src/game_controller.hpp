@@ -15,8 +15,9 @@
 #ifndef GAME_CONTROLLER_H_INCLUDED
 #define GAME_CONTROLLER_H_INCLUDED
 
+#include "game_controller_abstract.hpp"
+
 #include "config_cache.hpp"
-#include "editor/editor_main.hpp"
 #include "filesystem.hpp"
 #include "gamestatus.hpp"
 #include "game_config.hpp"
@@ -41,7 +42,7 @@ public:
 	std::string campaign_id_,scenario_id_;
 };
 
-class game_controller
+class game_controller : public game_controller_abstract
 {
 public:
 	game_controller(int argc, char** argv);
@@ -49,8 +50,8 @@ public:
 
 	game_display& disp();
 
+	bool init_config() { return init_config(false); }
 	bool init_video();
-	bool init_config(const bool force=false);
 	bool init_language();
 	bool play_test();
 	bool play_multiplayer_mode();
@@ -74,11 +75,10 @@ public:
 
 	void show_preferences();
 
-	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void launch_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
 
-	editor::EXIT_STATUS start_editor(const std::string& filename = "");
+	editor::EXIT_STATUS start_editor() { return start_editor(""); }
 
 	void start_wesnothd();
 	const config& game_config() const { return game_config_; }
@@ -87,10 +87,13 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
+	bool init_config(const bool force);
 	void load_game_cfg(const bool force=false);
 	void set_unit_data();
 
 	void mark_completed_campaigns(std::vector<config>& campaigns);
+	
+	editor::EXIT_STATUS start_editor(const std::string& filename);
 
 	const int argc_;
 	int arg_;
