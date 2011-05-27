@@ -21,7 +21,7 @@
 #undef snprintf
 #define snprintf _snprintf
 
-// Disable warnig about source encoding not in current code page.
+// Disable warning about source encoding not in current code page.
 #pragma warning(disable: 4819)
 
 // Disable warning about deprecated functions.
