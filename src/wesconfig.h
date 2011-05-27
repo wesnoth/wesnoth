@@ -33,6 +33,7 @@
  * this variable defines the minimum required version.
  * It is only to be updated upon changes that break *all* saves/replays
  * (break as in crash Wesnoth, not compatibility issues like stat changes)
+ * An example of such a change is changing the savegame format.
  */
 #define MIN_SAVEGAME_VERSION "1.3.10"
 
