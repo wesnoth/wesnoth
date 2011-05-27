@@ -47,7 +47,8 @@ public class WesnothProjectsExplorer extends CommonNavigator implements IAdaptab
 	@Override
 	public void saveState(IMemento aMemento)
 	{
-	    //super.saveState(aMemento);
+	    if (getCommonViewer() != null)
+	        super.saveState(aMemento);
 	}
 
 	public IAdaptable createElement(IMemento memento)
