@@ -62,7 +62,7 @@
 #include "playcampaign.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
-//#include "savegame.hpp"
+//#include "savegame->hpp"
 //#include "sound.hpp"
 #include "statistics.hpp"
 //#include "wml_exception.hpp"
@@ -199,7 +199,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --config-path                prints the path of the user config directory and\n"
 			<< "                               exits.\n"
 			<< "  --data-dir <directory>       overrides the data directory with the one specified.\n"
-			<< "  -d, --debug                  enables additional command mode options in-game.\n"
+			<< "  -d, --debug                  enables additional command mode options in-game->\n"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 			<< "  --debug-dot-level=<level1>,<level2>,...\n"
 			<< "                               sets the level of the debug dot files.\n"
@@ -248,7 +248,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               [filter] if used) and exits.\n"
 			<< "  --max-fps                    the maximum fps the game tries to run at. Values\n"
 			<< "                               should be between 1 and 1000, the default is 50.\n"
-			<< "  -m, --multiplayer            starts a multiplayer game. There are additional\n"
+			<< "  -m, --multiplayer            starts a multiplayer game-> There are additional\n"
 			<< "                               options that can be used as explained below:\n"
 			<< "    --ai_config<number>=value  selects a configuration file to load for this side.\n"
 			<< "    --algorithm<number>=value  selects a non-standard algorithm to be used by\n"
@@ -619,7 +619,7 @@ static int do_gameloop(int argc, char** argv)
 	//static initialization (before any srand() call)
 	recorder.set_seed(rand());
 
-	game_controller game(argc,argv);
+	boost::shared_ptr<game_controller> game = boost::shared_ptr<game_controller>(new game_controller(argc,argv));
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
@@ -635,13 +635,13 @@ static int do_gameloop(int argc, char** argv)
 		return 1;
 	}
 
-	res = game.init_language();
+	res = game->init_language();
 	if(res == false) {
 		std::cerr << "could not initialize the language\n";
 		return 1;
 	}
 
-	res = game.init_video();
+	res = game->init_video();
 	if(res == false) {
 		std::cerr << "could not initialize display\n";
 		return 1;
@@ -650,14 +650,14 @@ static int do_gameloop(int argc, char** argv)
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(game.disp().video());
+	loadscreen::global_loadscreen_manager loadscreen_manager(game->disp().video());
 
 	loadscreen::start_stage("init gui");
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
 
 	loadscreen::start_stage("load config");
-	res = game.init_config();
+	res = game->init_config();
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
 		return 1;
@@ -691,8 +691,8 @@ static int do_gameloop(int argc, char** argv)
 
 		statistics::fresh_stats();
 
-        if (!game.is_loading()) {
-			const config &cfg = game.game_config().child("titlescreen_music");
+        if (!game->is_loading()) {
+			const config &cfg = game->game_config().child("titlescreen_music");
 			if (cfg) {
 	            sound::play_music_repeatedly(game_config::title_music);
 				foreach (const config &i, cfg.child_range("music")) {
@@ -707,23 +707,23 @@ static int do_gameloop(int argc, char** argv)
 
 		loadscreen_manager.reset();
 
-		if(game.play_test() == false) {
+		if(game->play_test() == false) {
 			return 0;
 		}
 
-		if(game.play_multiplayer_mode() == false) {
+		if(game->play_multiplayer_mode() == false) {
 			return 0;
 		}
 
-		if(game.play_screenshot_mode() == false) {
+		if(game->play_screenshot_mode() == false) {
 			return 0;
 		}
 
 		recorder.clear();
 
 		//Start directly a campaign
-		if(game.goto_campaign() == false){
-			if (game.jump_to_campaign_id().empty())
+		if(game->goto_campaign() == false){
+			if (game->jump_to_campaign_id().empty())
 				continue; //Go to main menu
 			else
 				return 1; //we got an error starting the campaign from command line
@@ -731,27 +731,27 @@ static int do_gameloop(int argc, char** argv)
 
 		//Start directly a multiplayer
 		//Eventually with a specified server
-		if(game.goto_multiplayer() == false){
+		if(game->goto_multiplayer() == false){
 			continue; //Go to main menu
 		}
 
-		if (game.goto_editor() == false) {
+		if (game->goto_editor() == false) {
 			return 0;
 		}
 
-		gui2::ttitle_screen::tresult res = game.is_loading()
+		gui2::ttitle_screen::tresult res = game->is_loading()
 				? gui2::ttitle_screen::LOAD_GAME
 				: gui2::ttitle_screen::NOTHING;
 
-		const preferences::display_manager disp_manager(&game.disp());
+		const preferences::display_manager disp_manager(&game->disp());
 
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
 		if(res == gui2::ttitle_screen::NOTHING) {
-			const hotkey::basic_handler key_handler(&game.disp());
+			const hotkey::basic_handler key_handler(&game->disp());
 			gui2::ttitle_screen dlg;
-			dlg.show(game.disp().video());
+			dlg.show(game->disp().video());
 
 			res = static_cast<gui2::ttitle_screen::tresult>(dlg.get_retval());
 		}
@@ -759,68 +759,68 @@ static int do_gameloop(int argc, char** argv)
 		game_controller::RELOAD_GAME_DATA should_reload = game_controller::RELOAD_DATA;
 
 		if(res == gui2::ttitle_screen::QUIT_GAME) {
-			LOG_GENERAL << "quitting game...\n";
+			LOG_GENERAL << "quitting game->..\n";
 			return 0;
 		} else if(res == gui2::ttitle_screen::LOAD_GAME) {
-			if(game.load_game() == false) {
-				game.clear_loaded_game();
+			if(game->load_game() == false) {
+				game->clear_loaded_game();
 				res = gui2::ttitle_screen::NOTHING;
 				continue;
 			}
 			should_reload = game_controller::NO_RELOAD_DATA;
 		} else if(res == gui2::ttitle_screen::TUTORIAL) {
-			game.set_tutorial();
+			game->set_tutorial();
 		} else if(res == gui2::ttitle_screen::NEW_CAMPAIGN) {
-			if(game.new_campaign() == false) {
+			if(game->new_campaign() == false) {
 				continue;
 			}
 		} else if(res == gui2::ttitle_screen::MULTIPLAYER) {
 			game_config::debug = game_config::mp_debug;
-			if(game.play_multiplayer() == false) {
+			if(game->play_multiplayer() == false) {
 				continue;
 			}
 		} else if(res == gui2::ttitle_screen::CHANGE_LANGUAGE) {
-			if (game.change_language()) {
+			if (game->change_language()) {
 				tips_of_day.clear();
 				t_string::reset_translations();
 				image::flush_cache();
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::EDIT_PREFERENCES) {
-			game.show_preferences();
+			game->show_preferences();
 			continue;
 		} else if(res == gui2::ttitle_screen::SHOW_ABOUT) {
-			about::show_about(game.disp());
+			about::show_about(game->disp());
 			continue;
 		} else if(res == gui2::ttitle_screen::SHOW_HELP) {
-			help::help_manager help_manager(&game.game_config(), NULL);
-			help::show_help(game.disp());
+			help::help_manager help_manager(&game->game_config(), NULL);
+			help::show_help(game->disp());
 			continue;
 		} else if(res == gui2::ttitle_screen::GET_ADDONS) {
 			try {
-				manage_addons(game.disp());
+				manage_addons(game->disp());
 			} catch(config_changed_exception const&) {
-				game.reload_changed_game_config();
+				game->reload_changed_game_config();
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::RELOAD_GAME_DATA) {
-			loadscreen::global_loadscreen_manager loadscreen(game.disp().video());
-			game.reload_changed_game_config();
+			loadscreen::global_loadscreen_manager loadscreen(game->disp().video());
+			game->reload_changed_game_config();
 			image::flush_cache();
 			continue;
 		} else if(res == gui2::ttitle_screen::START_MAP_EDITOR) {
 			///@todo editor can ask the game to quit completely
-			if (game.start_editor() == editor::EXIT_QUIT_TO_DESKTOP) {
+			if (game->start_editor() == editor::EXIT_QUIT_TO_DESKTOP) {
 				return 0;
 			}
 			continue;
 		}
 
 		if (recorder.at_end()){
-			game.launch_game(should_reload);
+			game->launch_game(should_reload);
 		}
 		else{
-			game.play_replay();
+			game->play_replay();
 		}
 	}
 
