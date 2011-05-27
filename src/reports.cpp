@@ -594,17 +594,15 @@ REPORT_GENERATOR(time_of_day)
 	}
 
 	int b = tod.lawful_bonus;
-	int c = tod.liminal_bonus;
+
 	tooltip << tod.name << '\n'
 		<< _("Lawful units: ") << utils::signed_percent(b) << '\n'
 		<< _("Neutral units: ") << utils::signed_percent(0) << '\n'
-		<< _("Chaotic units: ") << utils::signed_percent(-b);
-	if (tod.liminal_present)
-		tooltip << '\n' << _("Liminal units: ") << utils::signed_percent(c);
+		<< _("Chaotic units: ") << utils::signed_percent(-b) << '\n';
 
 	std::string tod_image = tod.image;
-	if (tod.lawful_bonus_modified > 0) tod_image += "~BRIGHTEN()";
-	else if (tod.lawful_bonus_modified < 0) tod_image += "~DARKEN()";
+	if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
+	else if (tod.bonus_modified < 0) tod_image += "~DARKEN()";
 	if (preferences::flip_time()) tod_image += "~FL(horiz)";
 
 	return image_report(tod_image, tooltip.str(), "time_of_day");

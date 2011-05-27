@@ -467,8 +467,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		alignment_ = unit_type::NEUTRAL;
 	} else if(align == "chaotic") {
 		alignment_ = unit_type::CHAOTIC;
-	} else if(align == "liminal") {
-		alignment_ = unit_type::LIMINAL;
 	} else if(align.empty()==false){
 		alignment_ = unit_type::NEUTRAL;
 	}
@@ -1659,9 +1657,6 @@ void unit::write(config& cfg) const
 			break;
 		case unit_type::CHAOTIC:
 			cfg["alignment"] = "chaotic";
-			break;
-		case unit_type::LIMINAL:
-			cfg["alignment"] = "liminal";
 			break;
 		default:
 			cfg["alignment"] = "neutral";

@@ -2162,7 +2162,6 @@ int combat_modifier(const map_location &loc,
 
 	int bonus;
 	int lawful_bonus = tod.lawful_bonus;
-	int liminal_bonus = tod.liminal_bonus;
 
 	switch(alignment) {
 		case unit_type::LAWFUL:
@@ -2173,9 +2172,6 @@ int combat_modifier(const map_location &loc,
 			break;
 		case unit_type::CHAOTIC:
 			bonus = -lawful_bonus;
-			break;
-		case unit_type::LIMINAL:
-			bonus = liminal_bonus;
 			break;
 		default:
 			bonus = 0;
