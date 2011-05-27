@@ -3488,11 +3488,11 @@ void console_handler::do_unit() {
 	// But someday the code ought to be
 	// changed to allow general string
 	// alignments for UMC.
-	if (name == "alignment" && (value != "lawful" && value != "neutral" && value != "chaotic" && value != "liminal")) {
+	if (name == "alignment" && (value != "lawful" && value != "neutral" && value != "chaotic")) {
 		utils::string_map symbols;
 		symbols["alignment"] = get_arg(1);
 		command_failed(VGETTEXT("Invalid alignment: '$alignment',"
-			" needs to be one of lawful, neutral, chaotic or liminal.", symbols));
+			" needs to be one of lawful, neutral, or chaotic.", symbols));
 		return;
 	}
 	if (name == "advances" ){

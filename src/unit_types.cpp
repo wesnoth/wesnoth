@@ -963,8 +963,8 @@ int unit_type::experience_needed(bool with_acceleration) const
 
 const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
 {
-	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic"), N_("liminal") };
-	static const char* aligns_female[] = { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic"), N_("female^liminal") };
+	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic") };
+	static const char* aligns_female[] = { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic") };
 	const char** tlist = (gender == unit_race::MALE ? aligns : aligns_female);
 
 	return (sgettext(tlist[align]));
@@ -972,7 +972,7 @@ const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_ra
 
 const char* unit_type::alignment_id(unit_type::ALIGNMENT align)
 {
-	static const char* aligns[] = { "lawful", "neutral", "chaotic", "liminal" };
+	static const char* aligns[] = { "lawful", "neutral", "chaotic" };
 	return (aligns[align]);
 }
 
