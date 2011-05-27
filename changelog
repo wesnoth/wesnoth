@@ -24,11 +24,10 @@ Version 1.9.6+svn:
  * WML engine:
    * new attribute team_name= in SSFs
    * added [event][filter_side]<SSF keys> support
-   * added support for SSF to [chat]
-   * added support for SSF to [store_gold]
-   * added support for SSF to [store_side]
+   * added support for inline SSF to [chat]
+   * added support for inline SSF to [store_gold]
    * added support for inline SSF to [store_side], added attribute
-      "side" in the created array
+     "side" in the created array
    * introduced [has_unit]search_recall_list=yes|no (def no) parameter in SSFs
    * support for leader specific recruit lists
      * [unit] extra_recruit= -- defines a unit with a specific recruit list
