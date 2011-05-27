@@ -19,6 +19,8 @@ import org.eclipse.ui.navigator.CommonNavigator;
 public class WesnothProjectsExplorer extends CommonNavigator implements IAdaptable,
 	IPersistableElement, IElementFactory
 {
+    public static final String ID_PROJECTS_EXPLORER = "org.wesnoth.navigator.WesnothProjectsExplorer"; //$NON-NLS-1$
+
 	public WesnothProjectsExplorer()
 	{
 	}

@@ -50,7 +50,6 @@ import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.navigator.WesnothProjectsExplorer;
 import org.wesnoth.preferences.Preferences;
-import org.wesnoth.product.WMLPerspective;
 
 
 public class WorkspaceUtils
@@ -260,7 +259,7 @@ public class WorkspaceUtils
 	 */
 	public static WesnothProjectsExplorer getProjectsExplorer()
 	{
-	    return (WesnothProjectsExplorer)getView(WMLPerspective.WESNOTH_PROJ_EXPLORER_ID);
+	    return (WesnothProjectsExplorer)getView(WesnothProjectsExplorer.ID_PROJECTS_EXPLORER);
 	}
 
 	/**

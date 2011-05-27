@@ -12,11 +12,10 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.console.IConsoleConstants;
+import org.wesnoth.navigator.WesnothProjectsExplorer;
 
 public class WMLPerspective implements IPerspectiveFactory
 {
-	public static final String WESNOTH_PROJ_EXPLORER_ID = "org.wesnoth.views.projects"; //$NON-NLS-1$
-
 	@Override
 	public void createInitialLayout(IPageLayout layout)
 	{
@@ -35,7 +34,7 @@ public class WMLPerspective implements IPerspectiveFactory
 
         // Place navigator and outline to left of editor area.
         IFolderLayout left = layout.createFolder("left", IPageLayout.LEFT, (float) 0.26, editorArea); //$NON-NLS-1$
-        left.addView(WESNOTH_PROJ_EXPLORER_ID);
+        left.addView(WesnothProjectsExplorer.ID_PROJECTS_EXPLORER);
 
         IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, 0.76f, editorArea); //$NON-NLS-1$
         bottom.addView(IPageLayout.ID_PROBLEM_VIEW);

@@ -218,13 +218,11 @@
             id="org.wesnoth.views">
       </category>
       <view
-            allowMultiple="false"
             category="org.wesnoth.views"
             class="org.wesnoth.navigator.WesnothProjectsExplorer"
             icon="icons/wesnoth-icon_16.png"
-            id="org.wesnoth.views.projects"
-            name="Wesnoth Projects"
-            restorable="true">
+            id="org.wesnoth.navigator.WesnothProjectsExplorer"
+            name="Wesnoth Projects">
       </view>
    </extension>
    <extension
@@ -277,10 +275,10 @@
    <extension
          point="org.eclipse.ui.navigator.viewer">
       <viewer
-            viewerId="org.wesnoth.views.projects">
+            viewerId="org.wesnoth.navigator.WesnothProjectsExplorer">
       </viewer>
       <viewerContentBinding
-            viewerId="org.wesnoth.views.projects">
+            viewerId="org.wesnoth.navigator.WesnothProjectsExplorer">
          <includes>
             <contentExtension
                   pattern="org.eclipse.ui.navigator.resourceContent">
@@ -294,7 +292,7 @@
          </includes>
       </viewerContentBinding>
       <viewerActionBinding
-            viewerId="org.wesnoth.views.projects">
+            viewerId="org.wesnoth.navigator.WesnothProjectsExplorer">
          <includes>
             <actionExtension
                   pattern="org.eclipse.ui.navigator.resources.*">
