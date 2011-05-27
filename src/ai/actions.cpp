@@ -671,7 +671,7 @@ void recall_result::do_execute()
 
 	assert(rec != my_team.recall_list().end());
 
-	const std::string &err = find_recruit_location(get_side(), recall_location_);
+	const std::string &err = find_recall_location(get_side(), recall_location_, *rec);
 	if(!err.empty()) {
 		set_error(AI_ACTION_FAILURE);
 		return;
@@ -882,7 +882,7 @@ void recruit_result::do_execute()
 	replay_undo replay_guard(recorder);
 	const unit_type *u = unit_types.find(unit_name_);
 	const events::command_disabler disable_commands;
-	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_);
+	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_, u->type_name());
 	if(recruit_err.empty()) {
 		const unit new_unit(u, get_side(), true);
 		place_recruit(new_unit, recruit_location_, false, preferences::show_ai_moves());

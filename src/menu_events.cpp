@@ -75,20 +75,22 @@ namespace events{
 class delete_recall_unit : public gui::dialog_button_action
 {
 public:
-	delete_recall_unit(game_display& disp, gui::filter_textbox& filter, std::vector<unit>& units) : disp_(disp), filter_(filter), units_(units) {}
+	delete_recall_unit(game_display& disp, gui::filter_textbox& filter, const std::vector<const unit*>& units) : disp_(disp), filter_(filter), units_(units) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	game_display& disp_;
 	gui::filter_textbox& filter_;
-	std::vector<unit>& units_;
+	const std::vector<const unit*>& units_;
 };
 
 gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
 {
+	const std::vector<std::pair<int, int> >& param = std::vector<std::pair<int, int> >();
+	param.back();
 	const size_t index = size_t(filter_.get_index(menu_selection));
 	if(index < units_.size()) {
-		const unit& u = units_[index];
+		const unit &u = *(units_[index]);
 
 		//If the unit is of level > 1, or is close to advancing,
 		//we warn the player about it
@@ -117,10 +119,13 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		resources::undo_stack->push_back(undo_action(u, map_location(), undo_action::DISMISS));
 
 		//remove the unit from the recall list
-		std::vector<unit>::iterator dismissed_unit = std::find_if(units_.begin(), units_.end(), boost::bind(&unit::matches_id, _1, u.id()));
-		assert(dismissed_unit != units_.end());
+		std::vector<unit>& recall_list = (*resources::teams)[u.side() -1].recall_list();
+		assert(!recall_list.empty());
+		std::vector<unit>::iterator dismissed_unit =
+				std::find_if(recall_list.begin(), recall_list.end(), boost::bind(&unit::matches_id, _1, u.id()));
+		assert(dismissed_unit != recall_list.end());
+		recall_list.erase(dismissed_unit);
 		recorder.add_disband(dismissed_unit->id());
-		units_.erase(dismissed_unit);
 
 		//clear the redo stack to avoid duplication of dismissals
 		resources::redo_stack->clear();
@@ -174,6 +179,7 @@ std::string menu_handler::get_title_suffix(int side_num)
 	}
 	return msg.str();
 }
+
 void menu_handler::objectives(int side_num)
 {
 	config cfg;
@@ -680,9 +686,7 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 	std::vector<std::string> item_keys;
 	std::vector<std::string> items;
 
-	map_location recruit_loc = last_hex;
-	find_recruit_location(side_num, recruit_loc);
-	std::set<std::string> recruits = get_recruits_for_location(side_num, recruit_loc);
+	std::set<std::string> recruits = get_recruits_for_location(side_num, last_hex);
 
 	for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
 		const unit_type *type = unit_types.find(*it);
@@ -787,7 +791,7 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 	map_location loc = last_hex;
 	std::string msg;
 	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
-		msg = find_recruit_location(side_num, loc);
+		msg = find_recruit_location(side_num, loc, u_type->id());
 	} // end planned pathfind map scope
 	if (!msg.empty()) {
 		gui2::show_transient_message(gui_->video(), "", msg);
@@ -839,15 +843,15 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	std::vector<unit>& recall_list_team = current_team.recall_list();
+	std::vector<const unit*> recall_list_team = get_recalls_for_location(side_num, last_hex);
 
 	gui_->draw(); //clear the old menu
 
 	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
 		DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
-		foreach(const unit& unit, recall_list_team)
+		foreach(const unit* unit, recall_list_team)
 		{
-			DBG_WB << unit.name() << " [" << unit.id() <<"]\n";
+			DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
 		}
 
 		if(recall_list_team.empty()) {
@@ -875,23 +879,23 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	options_to_filter.push_back(options.back());
 
 	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
-		foreach (const unit &u, recall_list_team)
+		foreach (const unit* u, recall_list_team)
 		{
 			std::stringstream option, option_to_filter;
-			std::string name = u.name();
+			std::string name = u->name();
 			if (name.empty()) name = "-";
 
-			option << IMAGE_PREFIX << u.absolute_image();
+			option << IMAGE_PREFIX << u->absolute_image();
 		#ifndef LOW_MEM
-			option << "~RC("  << u.team_color() << '>'
+			option << "~RC("  << u->team_color() << '>'
 				<< team::get_side_color_index(side_num) << ')';
 		#endif
 			option << COLUMN_SEPARATOR
-				<< u.type_name() << COLUMN_SEPARATOR
+				<< u->type_name() << COLUMN_SEPARATOR
 				<< name << COLUMN_SEPARATOR;
 
 			// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
-			const int level = u.level();
+			const int level = u->level();
 			if(level < 1) {
 				option << "<150,150,150>";
 			} else if(level == 1) {
@@ -903,16 +907,16 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 			}
 			option << level << COLUMN_SEPARATOR;
 
-			option << font::color2markup(u.xp_color()) << u.experience() << "/";
-			if (u.can_advance())
-				option << u.max_experience();
+			option << font::color2markup(u->xp_color()) << u->experience() << "/";
+			if (u->can_advance())
+				option << u->max_experience();
 			else
 				option << "-";
 
-			option_to_filter << u.type_name() << " " << name << " " << u.level();
+			option_to_filter << u->type_name() << " " << name << " " << u->level();
 
 			option << COLUMN_SEPARATOR;
-			foreach (const t_string& trait, u.trait_names()) {
+			foreach (const t_string& trait, u->trait_names()) {
 				option << trait << '\n';
 				option_to_filter << " " << trait;
 			}
@@ -987,7 +991,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	map_location recall_location = last_hex;
 	std::string err;
 	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
-		err = find_recruit_location(side_num, recall_location);
+		err = find_recall_location(side_num, recall_location, *(recall_list_team[res]));
 	} // end planned pathfind map scope
 	if(!err.empty()) {
 		gui2::show_transient_message(gui_->video(), "", err);
@@ -995,7 +999,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 	unit* recalled_unit;
 	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
-		recalled_unit = new unit(recall_list_team[res]);
+		recalled_unit = new unit(*(recall_list_team[res]));
 	} // end planned pathfind map scope
 
 	if (!resources::whiteboard->save_recall(*recalled_unit, side_num, recall_location)) {
@@ -1191,7 +1195,7 @@ void menu_handler::redo(int side_num)
 			recorder.add_recall(action.affected_unit.id(), action.recall_loc);
 			map_location loc = action.recall_loc;
 			const events::command_disabler disable_commands;
-			const std::string &msg = find_recruit_location(side_num, loc);
+			const std::string &msg = find_recall_location(side_num, loc, action.affected_unit);
 			if(msg.empty()) {
 				unit un = action.affected_unit;
 				//remove the unit from the recall list
@@ -1235,7 +1239,7 @@ void menu_handler::redo(int side_num)
 		last_recruit_ = name;
 		recorder.add_recruit(recruit_num,loc);
 		const events::command_disabler disable_commands;
-		const std::string &msg = find_recruit_location(side_num, loc);
+		const std::string &msg = find_recruit_location(side_num, loc, action.affected_unit.type_id());
 		if(msg.empty()) {
 			const unit new_unit = action.affected_unit;
 			//unit new_unit(action.affected_unit.type(),team_num_,true);

@@ -265,7 +265,7 @@ public:
 
 	bool can_advance() const { return !advances_to_.empty(); }
 
-        bool not_living() const;
+    bool not_living() const;
 
 	bool has_zoc() const { return zoc_; }
 

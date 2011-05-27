@@ -131,6 +131,7 @@ public:
 	const std::vector<std::string>& recruits() const
 		{ return recruit_list_; }
 	void set_recruits(const std::vector<std::string>& recruits);
+	const config& recall_filter() const { return cfg_.child("recall_filter"); }
 
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
 	int total_movement() const { return max_movement_; }
@@ -236,7 +237,7 @@ public:
 	int resistance_against(const attack_type& damage_type,bool attacker,const map_location& loc) const
 		{return resistance_against(damage_type.type(), attacker, loc);};
 
-	//return resistances without any abililities applied
+	//return resistances without any abilities applied
 	utils::string_map get_base_resistances() const;
 //		std::map<terrain_type::TERRAIN,int> movement_type() const;
 

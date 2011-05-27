@@ -481,6 +481,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 
 	set_recruits(utils::split(cfg["extra_recruit"]));
+	cfg_.add_child("recall_filter", cfg.child_or_empty("recall_filter"));
 
 	/** @todo Are these modified by read? if not they can be removed. */
 	getsHit_=0;
@@ -678,7 +679,7 @@ void unit::generate_name(rand_rng::simple_rng* rng)
 }
 
 // Apply mandatory traits (e.g. undead, mechanical) to a unit and then
-// fill out with avaiable (leaders have a restircted set of available traits)
+// fill out with available (leaders have a restricted set of available traits)
 // traits until no more are available or the unit has its maximum number
 // of traits.
 // This routine does not apply the effects of added traits to a unit.
@@ -686,7 +687,7 @@ void unit::generate_name(rand_rng::simple_rng* rng)
 // Note that random numbers used in config files don't work in multiplayer,
 // so that leaders should be barred from all random traits until that
 // is fixed. Later the restrictions will be based on play balance.
-// musthavepnly is true when you don't want to generate random traits or
+// @musthaveonly is true when you don't want to generate random traits or
 // you don't want to give any optional traits to a unit.
 
 void unit::generate_traits(bool musthaveonly, game_state* state)
@@ -991,7 +992,7 @@ void unit::set_recruits(const std::vector<std::string>& recruits)
 {
 	unit_types.check_types(recruits);
 	recruit_list_ = recruits;
-	//TODO
+	//TODO crab
 	//info_.minimum_recruit_price = 0;
 	//ai::manager::raise_recruit_list_changed();
 }
@@ -1559,7 +1560,7 @@ void unit::write(config& cfg) const
 
 	cfg["type"] = type_id();
 
-	//support for unit formulas in [ai] and unit-specyfic variables in [ai] [vars]
+	//support for unit formulas in [ai] and unit-specific variables in [ai] [vars]
 
         if ( has_formula() || has_loop_formula() || (formula_vars_ && formula_vars_->empty() == false) ) {
 
@@ -2614,7 +2615,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 		description = mod_description + " ";
 	}
 
-	// Punctuation should be translatable: not all languages use latin punctuation.
+	// Punctuation should be translatable: not all languages use Latin punctuation.
 	// (However, there maybe is a better way to do it)
 	if(effects_description.empty() == false) {
 		for(std::vector<t_string>::const_iterator i = effects_description.begin();

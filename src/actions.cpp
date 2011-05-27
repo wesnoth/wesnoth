@@ -350,71 +350,220 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 
 const std::set<std::string> get_recruits_for_location(int side, const map_location &recruit_loc)
 {
-	LOG_NG << "getting recruit list for side " << side << "\n";
+	LOG_NG << "getting recruit list for side " << side << " at location " << recruit_loc << "\n";
 
-	std::set<std::string> recruit_list = (*resources::teams)[side -1].recruits();
+	const std::set<std::string>& recruit_list = (*resources::teams)[side -1].recruits();
+	std::set<std::string> local_result;
+	std::set<std::string> global_result;
 
 	unit_map::const_iterator u = resources::units->begin(),
-			u_end = resources::units->end(), leader = u_end, leader_keep = u_end;
+			u_end = resources::units->end();
 
 	for(; u != u_end; ++u) {
-		if (u->can_recruit() && u->side() == side) {
-			leader = u;
-			if (resources::game_map->is_keep(leader->get_location())) {
-				leader_keep = leader;
-				if (can_recruit_on(*resources::game_map, leader_keep->get_location(), recruit_loc))
-					recruit_list.insert(leader_keep->recruits().begin(), leader_keep->recruits().end());
+		if (!(u->can_recruit() && u->side() == side))
+			continue;
+
+		global_result.insert(u->recruits().begin(), u->recruits().end());
+
+		if (!(resources::game_map->is_keep(u->get_location())))
+			continue;
+
+		if (can_recruit_on(*resources::game_map, u->get_location(), recruit_loc))
+			local_result.insert(u->recruits().begin(), u->recruits().end());
+	}
+
+	if (local_result.empty())
+		global_result.insert(recruit_list.begin(),recruit_list.end());
+	else local_result.insert(recruit_list.begin(),recruit_list.end());
+
+	return (local_result.empty() ? global_result : local_result);
+}
+
+const std::vector<const unit*> get_recalls_for_location(int side, const map_location &recall_loc) {
+	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc << "\n";
+
+	const std::vector<unit>& recall_list = (*resources::teams)[side -1].recall_list();
+	std::set<size_t> valid_local_recalls;
+	std::vector<const unit*> local_result;
+
+	unit_map::const_iterator u = resources::units->begin(),
+	u_end = resources::units->end();
+
+	for(; u != u_end; ++u) {
+		if (!(u->can_recruit() && u->side() == side))
+			continue;
+
+		foreach (const unit& recall_unit, recall_list)
+		{
+			if (!(recall_unit.matches_filter(vconfig(u->recall_filter()), map_location::null_location)))
+				continue;
+
+			if (!(valid_local_recalls.find(recall_unit.underlying_id()) == valid_local_recalls.end()))
+				continue;
+
+			if (!(resources::game_map->is_keep(u->get_location())))
+				continue;
+
+			if (can_recruit_on(*resources::game_map, u->get_location(), recall_loc))
+			{
+				valid_local_recalls.insert(recall_unit.underlying_id());
+				local_result.push_back(&recall_unit);
 			}
 		}
 	}
 
-	return recruit_list;
+	if (local_result.empty()) {
+		foreach (const unit &recall, recall_list)
+		{
+			local_result.push_back(&recall);
+		}
+	}
+
+	return local_result;
 }
 
-std::string find_recruit_location(int side, map_location &recruit_loc)
+std::string find_recall_location(int side, map_location &recall_loc, const unit &recall_unit)
 {
-	LOG_NG << "finding recruit location for side " << side << "\n";
+	LOG_NG << "finding recall location for side " << side << "\n";
 
 	unit_map::const_iterator u = resources::units->begin(),
-		u_end = resources::units->end(), leader = u_end, leader_keep = u_end;
+		u_end = resources::units->end(), leader = u_end, leader_keep = u_end, leader_fit = u_end,
+			leader_able = u_end, leader_opt = u_end;
+
+	map_location alternate_location = map_location::null_location;
 
 	for(; u != u_end; ++u) {
-		if (u->can_recruit() && u->side() == side) {
-			leader = u;
-			if (resources::game_map->is_keep(leader->get_location())) {
-				leader_keep = leader;
-				if (can_recruit_on(*resources::game_map, leader_keep->get_location(), recruit_loc))
-					break;
-			}
+		//quit if it is not a leader on the @side
+		if (!(u->can_recruit() && u->side() == side))
+			continue;
+		leader = u;
+
+		//quit if the leader is not able to recall the @recall_unit
+		if (!(recall_unit.matches_filter(vconfig(leader->recall_filter()), map_location::null_location)))
+			continue;
+		leader_able = leader;
+
+		//quit if the leader is not on a keep
+		if (!(resources::game_map->is_keep(leader->get_location())))
+			continue;
+		leader_keep = leader_able;
+
+		//find a place to recall in the leader's keep
+		map_location tmp_location = find_vacant_tile(*resources::game_map, *resources::units, leader_keep->get_location(),
+				pathfind::VACANT_CASTLE);
+
+		//quit if their is no place to recruit on
+		if (tmp_location == map_location::null_location)
+			continue;
+		leader_fit = leader_keep;
+
+		if (can_recruit_on(*resources::game_map, leader_keep->get_location(), recall_loc)) {
+			leader_opt = leader_fit;
+			if (resources::units->count(recall_loc) == 1)
+				recall_loc = tmp_location;
+			break;
+		} else {
+			alternate_location = tmp_location;
 		}
 	}
 
 	if (leader == u_end) {
+		LOG_NG << "No Leader on side " << side << " when recalling " << recall_unit.id() << '\n';
+		return _("You don’t have a leader to recall with.");
+	}
+
+	if (leader_able == u_end) {
+		LOG_NG << "No Leader able to recall unit: " << recall_unit.id() << " on side " << side << '\n';
+		return _("None of your leaders is able to recall that unit.");
+	}
+
+	if (leader_keep == u_end) {
+		LOG_NG << "No Leader on a keep to recall the unit " << recall_unit.id() << " at " << recall_loc  << '\n';
+		return _("You must have a leader on a keep who is able to recall that unit.");
+	}
+
+	if (leader_fit == u_end) {
+		LOG_NG << "No vacant castle tiles on a keep available to recall the unit " << recall_unit.id() << " at " << recall_loc  << '\n';
+		return _("There are no vacant castle tiles in which to recall the unit.");
+	}
+
+	if (leader_opt == u_end)
+		recall_loc = alternate_location;
+
+	return std::string();
+}
+
+std::string find_recruit_location(int side, map_location &recruit_loc, const t_string recruit_unit)
+{
+	LOG_NG << "finding recruit location for side " << side << "\n";
+
+	unit_map::const_iterator u = resources::units->begin(), u_end = resources::units->end(),
+			leader = u_end, leader_keep = u_end, leader_fit = u_end,
+			leader_able = u_end, leader_opt = u_end;
+
+	map_location alternate_location = map_location::null_location;
+
+	const std::set<std::string>& recruit_list = (*resources::teams)[side -1].recruits();
+	std::set<std::string>::const_iterator recruit_it = recruit_list.find(recruit_unit);
+	bool is_on_team_list = (recruit_it != recruit_list.end());
+
+	for(; u != u_end; ++u) {
+		if (!(u->can_recruit() && u->side() == side))
+			continue;
+		leader = u;
+
+		bool can_recruit_unit = is_on_team_list;
+		if (!can_recruit_unit) {
+			foreach (const std::string &recruitable, leader->recruits()) {
+				if (recruitable == recruit_unit) {
+					can_recruit_unit = true;
+					break;
+				}
+			}
+		}
+
+		if (!can_recruit_unit)
+			continue;
+		leader_able = leader;
+
+		if (!(resources::game_map->is_keep(leader_able->get_location())))
+			continue;
+		leader_keep = leader_able;
+
+		map_location tmp_location = find_vacant_tile(*resources::game_map, *resources::units, leader_keep->get_location(),
+				pathfind::VACANT_CASTLE);
+
+		if (tmp_location == map_location::null_location)
+			continue;
+		leader_fit = leader_keep;
+
+		if (can_recruit_on(*resources::game_map, leader_fit->get_location(), recruit_loc)) {
+			leader_opt = leader_fit;
+			if (resources::units->count(recruit_loc) == 1)
+				recruit_loc = tmp_location;
+			break;
+		} else {
+			alternate_location = tmp_location;
+		}
+	}
+
+	if (leader == u_end) {
+		LOG_NG << "No Leader on side " << side << " when recruiting " << recruit_unit << '\n';
 		return _("You don’t have a leader to recruit with.");
 	}
 
 	if (leader_keep == u_end) {
 		LOG_NG << "Leader not on start: leader is on " << leader->get_location() << '\n';
-		return _("You must have your leader on a keep to recruit or recall units.");
+		return _("You must have a leader on a keep who is able to recruit the unit.");
 	}
 
-	if (resources::units->find(recruit_loc) != resources::units->end() ||
-	    !can_recruit_on(*resources::game_map, leader_keep->get_location(), recruit_loc))
-	{
-		recruit_loc = map_location();
+	if (leader_fit == u_end) {
+		LOG_NG << "No vacant castle tiles on a keep available to recruit the unit " << recruit_unit << " at " << recruit_loc  << '\n';
+		return _("There are no vacant castle tiles in which to recruit the unit.");
 	}
 
-	if (!resources::game_map->on_board(recruit_loc)) {
-		recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, leader_keep->get_location(),
-			pathfind::VACANT_CASTLE);
-	} else if (resources::units->count(recruit_loc) == 1) {
-		recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, recruit_loc,
-			pathfind::VACANT_ANY);
-	}
-
-	if (!resources::game_map->on_board(recruit_loc)) {
-		return _("There are no vacant castle tiles in which to recruit a unit.");
-	}
+	if (leader_opt == u_end)
+		recruit_loc = alternate_location;
 
 	return std::string();
 }
