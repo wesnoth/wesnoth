@@ -18,8 +18,8 @@
  * Arrows destined to be drawn on the map. Created for the whiteboard project.
  */
 
-#ifndef _ARROW_H
-#define _ARROW_H
+#ifndef ARROW_HPP_INCLUDED
+#define ARROW_HPP_INCLUDED
 
 #include "display.hpp"
 
