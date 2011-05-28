@@ -40,7 +40,7 @@ class tlogic_error
 	, public tlua_jailbreak_exception
 {
 public:
-	explicit tlogic_error(const std::string message)
+	explicit tlogic_error(const std::string& message)
 		: std::logic_error("GUI2 ITERATOR: " + message)
 		, tlua_jailbreak_exception()
 	{
@@ -61,7 +61,7 @@ class trange_error
 	, public tlua_jailbreak_exception
 {
 public:
-	explicit trange_error(const std::string message)
+	explicit trange_error(const std::string& message)
 		: std::range_error("GUI2 ITERATOR: " + message)
 		, tlua_jailbreak_exception()
 	{
