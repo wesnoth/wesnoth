@@ -493,7 +493,7 @@ std::string find_recall_location(int side, map_location &recall_loc, const unit 
 	return std::string();
 }
 
-std::string find_recruit_location(int side, map_location &recruit_loc, const t_string recruit_unit)
+std::string find_recruit_location(int side, map_location &recruit_loc, const t_string& recruit_unit)
 {
 	LOG_NG << "finding recruit location for side " << side << "\n";
 
