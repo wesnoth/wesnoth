@@ -62,7 +62,7 @@
 #include "playcampaign.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
-//#include "savegame->hpp"
+//#include "savegame.hpp"
 //#include "sound.hpp"
 #include "statistics.hpp"
 //#include "wml_exception.hpp"
@@ -759,7 +759,7 @@ static int do_gameloop(int argc, char** argv)
 		game_controller_abstract::RELOAD_GAME_DATA should_reload = game_controller_abstract::RELOAD_DATA;
 
 		if(res == gui2::ttitle_screen::QUIT_GAME) {
-			LOG_GENERAL << "quitting game->..\n";
+			LOG_GENERAL << "quitting game...\n";
 			return 0;
 		} else if(res == gui2::ttitle_screen::LOAD_GAME) {
 			if(game->load_game() == false) {
