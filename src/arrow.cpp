@@ -22,7 +22,6 @@
 
 #include "foreach.hpp"
 #include "log.hpp"
-#include "map_location.hpp"
 #include "resources.hpp"
 
 static lg::log_domain log_arrows("arrows");
