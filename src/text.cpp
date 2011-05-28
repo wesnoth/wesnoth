@@ -561,6 +561,8 @@ struct decode_table
 
 static decode_table decode_table;
 
+
+#ifndef _WIN32
 /**
  * Converts from premultiplied alpha to plain alpha.
  * @param p pointer to a 4-byte endian-dependent color.
@@ -593,6 +595,8 @@ static void decode_pixel(unsigned char *p)
 	DECODE(1);
 	DECODE(2);
 }
+#endif
+
 
 void ttext::rerender(const bool force) const
 {
