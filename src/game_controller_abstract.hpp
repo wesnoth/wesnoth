@@ -23,6 +23,8 @@ class game_display;
 class game_controller_abstract
 {
 public:
+	virtual ~game_controller_abstract() {}
+
 	virtual game_display& disp() = 0;
 
 	virtual bool init_video() = 0;
