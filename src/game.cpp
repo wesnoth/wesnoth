@@ -77,13 +77,14 @@
 //#include "wesconfig.h"
 
 #include <cerrno>
-//#include <clocale>
+#include <clocale>
 //#include <cmath>
 //#include <cstdlib>
 //#include <ctime>
 #include <fstream>
 //#include <iostream>
 //#include <iterator>
+#include <libintl.h>
 //#include <sstream>
 //#include <string>
 
