@@ -22,7 +22,6 @@
 
 #include "unit_types.hpp"
 
-#include "asserts.hpp"
 #include "foreach.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
