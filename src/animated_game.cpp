@@ -22,7 +22,6 @@
 // Force compilation of the following template instantiations
 
 #include "unit_frame.hpp"
-#include "image.hpp"
 
 template class animated< image::locator >;
 template class animated< std::string >;
