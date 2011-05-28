@@ -1176,7 +1176,7 @@ void connect::start_game()
 		std::vector<int> playable_sides;
 
 		// Find ids of playable sides
-		for (side_list::iterator itor = sides_.begin(); itor != sides_.end(); itor++)
+		for (side_list::iterator itor = sides_.begin(); itor != sides_.end(); ++itor)
 			if (itor->allow_player()) playable_sides.push_back(itor->get_index());
 
 		// Now do Fisher-Yates shuffle
