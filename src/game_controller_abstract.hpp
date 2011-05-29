@@ -15,6 +15,8 @@
 #ifndef GAME_CONTROLLER_ABSTRACT_H_INCLUDED
 #define GAME_CONTROLLER_ABSTRACT_H_INCLUDED
 #include "editor/editor_main.hpp"
+#include "scoped_resource.hpp"
+#include "video.hpp"
 #include <string>
 
 class config;
@@ -23,9 +25,10 @@ class game_display;
 class game_controller_abstract
 {
 public:
+	game_controller_abstract();
 	virtual ~game_controller_abstract() {}
 
-	virtual game_display& disp() = 0;
+	game_display& disp();
 
 	virtual bool init_video() = 0;
 	virtual bool init_config() = 0;
@@ -59,5 +62,9 @@ public:
 	virtual editor::EXIT_STATUS start_editor() = 0;
 
 	virtual const config& game_config() const = 0;
+protected:
+	util::scoped_ptr<game_display> disp_;
+
+	CVideo video_;
 };
 #endif

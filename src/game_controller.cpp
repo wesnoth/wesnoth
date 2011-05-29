@@ -71,7 +71,6 @@ game_controller::game_controller(int argc, char** argv) :
 	arg_(1),
 	argv_(argv),
 	thread_manager(),
-	video_(),
 	font_manager_(),
 	prefs_manager_(),
 	image_manager_(),
@@ -90,7 +89,6 @@ game_controller::game_controller(int argc, char** argv) :
 	force_bpp_(-1),
 	game_config_(),
 	old_defines_map_(),
-	disp_(NULL),
 	state_(),
 	multiplayer_server_(),
 	jump_to_multiplayer_(false),
@@ -318,9 +316,6 @@ game_controller::game_controller(int argc, char** argv) :
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
 		}
-		else if (val == "--new-syntax") {
-			game_config::new_syntax = true;
-		}
 		else if(val == "--clock") {
 			gui2::show_debug_clock_button = true;
 		} else if(val == "-e" || val == "--editor") {
@@ -374,17 +369,6 @@ game_controller::game_controller(int argc, char** argv) :
 	else if (no_music) { // else disable the music in nomusic mode
 		preferences::set_music(false);
 	}
-}
-
-game_display& game_controller::disp()
-{
-	if(disp_.get() == NULL) {
-		if(get_video_surface() == NULL) {
-			throw CVideo::error();
-		}
-		disp_.assign(game_display::create_dummy_display(video_));
-	}
-	return *disp_.get();
 }
 
 bool game_controller::init_video()

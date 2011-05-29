@@ -48,8 +48,6 @@ public:
 	game_controller(int argc, char** argv);
 	~game_controller();
 
-	game_display& disp();
-
 	bool init_config() { return init_config(false); }
 	bool init_video();
 	bool init_language();
@@ -103,8 +101,6 @@ private:
 	//to clean up threads after the display disappears.
 	const threading::manager thread_manager;
 
-	CVideo video_;
-
 	const font::manager font_manager_;
 	const preferences::manager prefs_manager_;
 	const image::manager image_manager_;
@@ -122,8 +118,6 @@ private:
 
 	config game_config_;
 	preproc_map old_defines_map_;
-
-	util::scoped_ptr<game_display> disp_;
 
 	/// Stateful class taking over scenario-switching capabilities from the current game_controller and playsingle_controller. Currently only available when --new-syntax command line option is enabled.
 	game_state state_;

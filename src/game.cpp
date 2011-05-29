@@ -318,6 +318,8 @@ static int process_command_args(int argc, char** argv) {
 			std::cout << "Battle for Wesnoth" << " " << game_config::version
 			          << "\n";
 			return 0;
+		} else if (val == "--new-syntax") {
+			game_config::new_syntax = true;
 		} else if (val == "--config-path") {
 			std::cout << get_user_data_dir() << '\n';
 			return 0;
@@ -620,8 +622,11 @@ static int do_gameloop(int argc, char** argv)
 	//ensure recorder has an actually random seed instead of what it got during
 	//static initialization (before any srand() call)
 	recorder.set_seed(rand());
-
-	boost::shared_ptr<game_controller_abstract> game = boost::shared_ptr<game_controller_abstract>(new game_controller(argc,argv));
+	boost::shared_ptr<game_controller_abstract> game;
+	if (game_config::new_syntax)
+		game = boost::shared_ptr<game_controller_abstract>(new game_controller_new());
+	else
+		game = boost::shared_ptr<game_controller_abstract>(new game_controller(argc,argv));
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
