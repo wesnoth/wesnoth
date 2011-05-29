@@ -131,7 +131,7 @@ public:
 	const std::vector<std::string>& recruits() const
 		{ return recruit_list_; }
 	void set_recruits(const std::vector<std::string>& recruits);
-	const config& recall_filter() const { return cfg_.child("recall_filter"); }
+	const config& recall_filter() const { return cfg_.child("filter_recall"); }
 
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
 	int total_movement() const { return max_movement_; }

@@ -479,7 +479,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 
 	set_recruits(utils::split(cfg["extra_recruit"]));
-	cfg_.add_child("recall_filter", cfg.child_or_empty("recall_filter"));
+	cfg_.add_child("filter_recall", cfg.child_or_empty("filter_recall"));
 
 	/** @todo Are these modified by read? if not they can be removed. */
 	getsHit_=0;
