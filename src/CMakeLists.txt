@@ -336,6 +336,7 @@ set(wesnoth-main_SRC
 	attack_prediction.cpp
 	attack_prediction_display.cpp
 	callable_objects.cpp
+	commandline_options.cpp
 	config_cache.cpp
 	controller_base.cpp
 	dialogs.cpp
