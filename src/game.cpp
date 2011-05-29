@@ -33,6 +33,7 @@
 //#include "formula.hpp"
 //#include "game_config.hpp"
 #include "game_controller.hpp"
+#include "game_controller_new.hpp"
 //#include "game_errors.hpp"
 //#include "game_preferences.hpp"
 //#include "gamestatus.hpp"
