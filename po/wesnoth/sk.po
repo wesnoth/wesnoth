@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-08 16:00+0200\n"
+"POT-Creation-Date: 2011-05-30 20:47+0200\n"
 "PO-Revision-Date: 2010-08-14 18:26+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -120,23 +120,154 @@ msgstr "RCA UI"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:306
-#: data/lua/wml-tags.lua:709 src/actions.cpp:1273
+#: data/lua/wml-tags.lua:749 src/actions.cpp:1443
 msgid "poisoned"
 msgstr "otrávený"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1352
-#: data/lua/wml-tags.lua:710 src/actions.cpp:1278
+#: data/lua/wml-tags.lua:750 src/actions.cpp:1448
 msgid "female^slowed"
 msgstr "spomalená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1355
-#: data/lua/wml-tags.lua:710 src/actions.cpp:1278
+#: data/lua/wml-tags.lua:750 src/actions.cpp:1448
 msgid "slowed"
 msgstr "spomalený"
+
+#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
+#: data/campaigns/test_campaign/_main.cfg:43
+msgid "TestCamp"
+msgstr ""
+
+#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
+#: data/campaigns/test_campaign/_main.cfg:45
+msgid "Test campaign used to check if new campaign syntax is working."
+msgstr ""
+
+#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
+#: data/campaigns/test_campaign/_main.cfg:46
+#, fuzzy
+#| msgid "Easy"
+msgid "(Easy)"
+msgstr "Ľahká"
+
+#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
+#: data/campaigns/test_campaign/_main.cfg:46
+msgid "Soldier"
+msgstr ""
+
+#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
+#: data/campaigns/test_campaign/_main.cfg:47
+#, fuzzy
+#| msgid "Normal"
+msgid "(Normal)"
+msgstr "Normálny"
+
+#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
+#: data/campaigns/test_campaign/_main.cfg:47
+msgid "Lord"
+msgstr ""
+
+#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
+#: data/campaigns/test_campaign/_main.cfg:48
+#, fuzzy
+#| msgid "Hard"
+msgid "(Hard)"
+msgstr "Ťažká"
+
+#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
+#: data/campaigns/test_campaign/_main.cfg:48
+msgid "High Lord"
+msgstr ""
+
+#. [about]
+#: data/campaigns/test_campaign/_main.cfg:52
+msgid "Test campaign test [about] entry"
+msgstr ""
+
+#. [scenario]: id=01_Grass
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:4
+msgid "Test campaign - first scenario (grass)"
+msgstr ""
+
+#. [side]: id=Alpha, type=Elvish Fighter
+#. [side]: id=Bravo, type=Elvish Archer
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:24
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:41
+#, fuzzy
+#| msgid "Players: "
+msgid "Players"
+msgstr "Hráči: "
+
+#. [side]: id=Charlie, type=Orcish Grunt
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:53
+#, fuzzy
+#| msgid "Enemy village"
+msgid "Enemies"
+msgstr "Nepriateľská dedina"
+
+#. [label]
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:73
+msgid "Passed test color"
+msgstr ""
+
+#. [label]
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:80
+msgid "Failed test color"
+msgstr ""
+
+#. [label]
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
+#, fuzzy
+#| msgid "Difficulty: "
+msgid "Difficulty: Easy"
+msgstr "Zložitosť: "
+
+#. [label]
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:90
+#, fuzzy
+#| msgid "Difficulty: "
+msgid "Difficulty: Normal"
+msgstr "Zložitosť: "
+
+#. [label]
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:93
+#, fuzzy
+#| msgid "Difficulty: "
+msgid "Difficulty: Hard"
+msgstr "Zložitosť: "
+
+#. [label]
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:100
+#, fuzzy
+#| msgid "Campaign: $campaign_name"
+msgid "Main campaign define"
+msgstr "Výprava: $campaign_name"
+
+#. [label]
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:111
+#, fuzzy
+#| msgid "Campaign Design"
+msgid "Extra campaign define"
+msgstr "Dizajnér výprav"
+
+#. [label]
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:122
+#, fuzzy
+#| msgid "Multiplayer"
+msgid "Multiplayer define"
+msgstr "Zápas"
+
+#. [objective]: condition=win
+#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
+#, fuzzy
+#| msgid "Defeat enemy leader(s)"
+msgid "Defeat enemy leader"
+msgstr "Porazíš ostatných veliteľov"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -154,304 +285,304 @@ msgid "Artwork and Graphics"
 msgstr "Umeleckí a grafickí dizajnéri"
 
 #. [about]
-#: data/core/about.cfg:634
+#: data/core/about.cfg:638
 msgid "Music"
 msgstr "Hudba"
 
 #. [about]
-#: data/core/about.cfg:671
+#: data/core/about.cfg:675
 msgid "Sound Effects"
 msgstr "Zvukové efekty"
 
 #. [about]
-#: data/core/about.cfg:687
+#: data/core/about.cfg:691
 msgid "Campaign Design"
 msgstr "Dizajnér výprav"
 
 #. [about]
-#: data/core/about.cfg:758
+#: data/core/about.cfg:762
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mapy na zápas a vyváženie"
 
 #. [about]
-#: data/core/about.cfg:799
+#: data/core/about.cfg:803
 msgid "Packagers"
 msgstr "Výrobcovia balíkov"
 
 #. [about]
-#: data/core/about.cfg:870
+#: data/core/about.cfg:874
 msgid "Miscellaneous Contributors"
 msgstr "Rôzni prispievatelia"
 
 #. [about]
-#: data/core/about.cfg:1170
+#: data/core/about.cfg:1174
 msgid "Internationalization Managers"
 msgstr "Správcovia prekladu"
 
 #. [about]
-#: data/core/about.cfg:1195
+#: data/core/about.cfg:1199
 msgid "English strings edition"
 msgstr "Anglické texty"
 
 #. [about]
-#: data/core/about.cfg:1202
+#: data/core/about.cfg:1206
 msgid "Afrikaans Translation"
 msgstr "Afrikánsky preklad"
 
 #. [about]
-#: data/core/about.cfg:1222
+#: data/core/about.cfg:1226
 msgid "Arabic Translation"
 msgstr "Arabský preklad"
 
 #. [about]
-#: data/core/about.cfg:1229
+#: data/core/about.cfg:1233
 msgid "Basque Translation"
 msgstr "Baskický preklad"
 
 #. [about]
-#: data/core/about.cfg:1242
+#: data/core/about.cfg:1246
 msgid "Bulgarian Translation"
 msgstr "Bulharský preklad"
 
 #. [about]
-#: data/core/about.cfg:1261
+#: data/core/about.cfg:1265
 msgid "Catalan Translation"
 msgstr "Katalánsky preklad"
 
 #. [about]
-#: data/core/about.cfg:1302
+#: data/core/about.cfg:1306
 msgid "Chinese Translation"
 msgstr "Čínsky preklad"
 
 #. [about]
-#: data/core/about.cfg:1364
+#: data/core/about.cfg:1368
 msgid "Chinese (Taiwan) Translation"
 msgstr "Čínsky (Taiwan) preklad"
 
 #. [about]
-#: data/core/about.cfg:1374
+#: data/core/about.cfg:1378
 msgid "Croatian Translation"
 msgstr "Chorvátsky preklad"
 
 #. [about]
-#: data/core/about.cfg:1381
+#: data/core/about.cfg:1385
 msgid "Czech Translation"
 msgstr "Český preklad"
 
 #. [about]
-#: data/core/about.cfg:1441
+#: data/core/about.cfg:1445
 msgid "Danish Translation"
 msgstr "Dánsky preklad"
 
 #. [about]
-#: data/core/about.cfg:1472
+#: data/core/about.cfg:1476
 msgid "Dutch Translation"
 msgstr "Holandský preklad"
 
 #. [about]
-#: data/core/about.cfg:1533
+#: data/core/about.cfg:1537
 msgid "English (GB) Translation"
 msgstr "Anglický (britský) preklad"
 
 #. [about]
-#: data/core/about.cfg:1555
+#: data/core/about.cfg:1559
 msgid "English (Shaw) Translation"
 msgstr "Anglický (Shaw) preklad"
 
 #. [about]
-#: data/core/about.cfg:1579
+#: data/core/about.cfg:1583
 msgid "Esperanto Translation"
 msgstr "Esperantský preklad"
 
 #. [about]
-#: data/core/about.cfg:1598
+#: data/core/about.cfg:1602
 msgid "Estonian Translation"
 msgstr "Estónsky preklad"
 
 #. [about]
-#: data/core/about.cfg:1608
+#: data/core/about.cfg:1612
 msgid "Filipino Translation"
 msgstr "Filipínsky preklad"
 
 #. [about]
-#: data/core/about.cfg:1618
+#: data/core/about.cfg:1622
 msgid "Finnish Translation"
 msgstr "Fínsky preklad"
 
 #. [about]
-#: data/core/about.cfg:1664
+#: data/core/about.cfg:1668
 msgid "French Translation"
 msgstr "Francúzsky preklad"
 
 #. [about]
-#: data/core/about.cfg:1820
+#: data/core/about.cfg:1824
 msgid "Friulian Translation"
 msgstr "Friulský (severné Taliansko) preklad"
 
 #. [about]
-#: data/core/about.cfg:1827
+#: data/core/about.cfg:1831
 msgid "Galician Translation"
 msgstr "Galícijský preklad"
 
 #. [about]
-#: data/core/about.cfg:1863
+#: data/core/about.cfg:1867
 msgid "German Translation"
 msgstr "Nemecký preklad"
 
 #. [about]
-#: data/core/about.cfg:1930
+#: data/core/about.cfg:1934
 msgid "Greek Translation"
 msgstr "Grécky preklad"
 
 #. [about]
-#: data/core/about.cfg:1967
+#: data/core/about.cfg:1971
 msgid "Hebrew Translation"
 msgstr "Hebrejský preklad"
 
 #. [about]
-#: data/core/about.cfg:1980
+#: data/core/about.cfg:1984
 msgid "Hungarian Translation"
 msgstr "Maďarský preklad"
 
 #. [about]
-#: data/core/about.cfg:2041
+#: data/core/about.cfg:2045
 msgid "Icelandic Translation"
 msgstr "Islandský preklad"
 
 #. [about]
-#: data/core/about.cfg:2051
+#: data/core/about.cfg:2055
 msgid "Indonesian Translation"
 msgstr "Indonézsky preklad"
 
 #. [about]
-#: data/core/about.cfg:2068
+#: data/core/about.cfg:2072
 #, fuzzy
 msgid "Irish Translation"
 msgstr "Turecký preklad"
 
 #. [about]
-#: data/core/about.cfg:2075
+#: data/core/about.cfg:2079
 msgid "Italian Translation"
 msgstr "Taliansky preklad"
 
 #. [about]
-#: data/core/about.cfg:2110
+#: data/core/about.cfg:2114
 msgid "Japanese Translation"
 msgstr "Japonský preklad"
 
 #. [about]
-#: data/core/about.cfg:2174
+#: data/core/about.cfg:2178
 msgid "Korean Translation"
 msgstr "Kórejský preklad"
 
 #. [about]
-#: data/core/about.cfg:2186
+#: data/core/about.cfg:2190
 msgid "Latin Translation"
 msgstr "Latinský preklad"
 
 #. [about]
-#: data/core/about.cfg:2213
+#: data/core/about.cfg:2217
 msgid "Latvian Translation"
 msgstr "Lotyšský preklad"
 
 #. [about]
-#: data/core/about.cfg:2224
+#: data/core/about.cfg:2228
 msgid "Lithuanian Translation"
 msgstr "Litovský preklad"
 
 #. [about]
-#: data/core/about.cfg:2247
+#: data/core/about.cfg:2251
 msgid "Macedonian Translation"
 msgstr "Macedónsky preklad"
 
 #. [about]
-#: data/core/about.cfg:2254
+#: data/core/about.cfg:2258
 msgid "Marathi Translation"
 msgstr "Marathi preklad"
 
 #. [about]
-#: data/core/about.cfg:2263
+#: data/core/about.cfg:2267
 msgid "Norwegian Translation"
 msgstr "Nórsky preklad"
 
 #. [about]
-#: data/core/about.cfg:2288
+#: data/core/about.cfg:2292
 #, fuzzy
 msgid "Old English Translation"
 msgstr "Anglický (britský) preklad"
 
 #. [about]
-#: data/core/about.cfg:2297
+#: data/core/about.cfg:2301
 msgid "Polish Translation"
 msgstr "Poľský preklad"
 
 #. [about]
-#: data/core/about.cfg:2337
+#: data/core/about.cfg:2341
 msgid "Portuguese Translation"
 msgstr "Portugalský preklad"
 
 #. [about]
-#: data/core/about.cfg:2344
+#: data/core/about.cfg:2348
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugalský preklad (Brazília)"
 
 #. [about]
-#: data/core/about.cfg:2386
+#: data/core/about.cfg:2390
 msgid "Romanian Translation"
 msgstr "Rumunský preklad"
 
 #. [about]
-#: data/core/about.cfg:2394
+#: data/core/about.cfg:2398
 msgid "Russian Translation"
 msgstr "Ruský preklad"
 
 #. [about]
-#: data/core/about.cfg:2464
+#: data/core/about.cfg:2468
 msgid "Serbian Translation"
 msgstr "Srbský preklad"
 
 #. [about]
-#: data/core/about.cfg:2483
+#: data/core/about.cfg:2487
 msgid "Slovak Translation"
 msgstr "Slovenský preklad"
 
 #. [about]
-#: data/core/about.cfg:2509
+#: data/core/about.cfg:2513
 msgid "Slovenian Translation"
 msgstr "Slovinský preklad"
 
 #. [about]
-#: data/core/about.cfg:2525
+#: data/core/about.cfg:2529
 msgid "Spanish Translation"
 msgstr "Španielsky preklad"
 
 #. [about]
-#: data/core/about.cfg:2595
+#: data/core/about.cfg:2599
 msgid "Swedish Translation"
 msgstr "Švédsky preklad"
 
 #. [about]
-#: data/core/about.cfg:2627
+#: data/core/about.cfg:2634
 msgid "Turkish Translation"
 msgstr "Turecký preklad"
 
 #. [about]
-#: data/core/about.cfg:2649
+#: data/core/about.cfg:2656
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencijský (Južné Katalánsko) preklad"
 
 #. [about]
-#: data/core/about.cfg:2662
+#: data/core/about.cfg:2669
 msgid "Vietnamese Translation"
 msgstr "Vietnamský preklad"
 
 #. [about]
-#: data/core/about.cfg:2681
+#: data/core/about.cfg:2688
 msgid "RACV’s Translation"
 msgstr "RACV preklad"
 
 #. [about]
-#: data/core/about.cfg:2688
+#: data/core/about.cfg:2695
 msgid "Bots"
 msgstr "Roboti"
 
@@ -1910,21 +2041,7 @@ msgid "Nightmare"
 msgstr "Nočná mora"
 
 #. [language]
-#: data/english.cfg:10
-#, fuzzy
-msgid ""
-"Liminal units fight better during twilight while fighting normally during "
-"day and night.\n"
-"\n"
-"Twilight: +25% Damage"
-msgstr ""
-"Jednotky poriadku bojujú lepšie cez deň a horšie v noci.\n"
-"\n"
-"Deň: +25% zranenie spôsobené pri útoku\n"
-"Noc: −25% zranenie spôsobené pri útoku"
-
-#. [language]
-#: data/english.cfg:15
+#: data/english.cfg:11
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -1937,7 +2054,7 @@ msgstr ""
 "Noc: −25% zranenie spôsobené pri útoku"
 
 #. [language]
-#: data/english.cfg:16
+#: data/english.cfg:12
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
@@ -1945,7 +2062,7 @@ msgstr ""
 "Neutrálne jednotky neovplyvňuje deň a noc, bojujú rovnako v každom čase."
 
 #. [language]
-#: data/english.cfg:20
+#: data/english.cfg:16
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -1959,56 +2076,56 @@ msgstr ""
 
 # Bridge
 #. [language]
-#: data/english.cfg:23
+#: data/english.cfg:19
 msgid "$name|’s Bridge,$name|’s Crossing"
 msgstr "Most $name"
 
 # Path
 #. [language]
-#: data/english.cfg:24
+#: data/english.cfg:20
 msgid "$name|’s Highway,$name|’s Pass,Path of $name"
 msgstr "$name|ova cesta,$name|ova púť,$name|ova trasa"
 
 #. [language]
-#: data/english.cfg:25
+#: data/english.cfg:21
 msgid "$name River,River $name"
 msgstr "Rieka $name"
 
 #. [language]
-#: data/english.cfg:26
+#: data/english.cfg:22
 msgid "$name Forest,$name|’s Forest"
 msgstr "Les $name"
 
 #. [language]
-#: data/english.cfg:27
+#: data/english.cfg:23
 msgid "$name Lake"
 msgstr "Jazero $name"
 
 #. [language]
-#: data/english.cfg:28
+#: data/english.cfg:24
 msgid "$name|’s Peak,Mount $name"
 msgstr "$name'ov štít,Vrch $name"
 
 # Village + Grassland
 #. [language]
-#: data/english.cfg:29
+#: data/english.cfg:25
 msgid "$name|’s Swamp,$name|marsh,$name|fen"
 msgstr "$name|ovce,$name|ovo pole,$name|ova roľa"
 
 # Village
 #. [language]
-#: data/english.cfg:30
+#: data/english.cfg:26
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
 msgstr "$name|ová,$name|ovka,$name|ovce,$name|ov"
 
 #. [language]
-#: data/english.cfg:31
+#: data/english.cfg:27
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
 msgstr "Prístav $name,$name|ský prístav,$lake|ský prístav,Prístav na $lake"
 
 # Village + River
 #. [language]
-#: data/english.cfg:32
+#: data/english.cfg:28
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
 msgstr ""
@@ -2016,7 +2133,7 @@ msgstr ""
 
 # Village + River + Bridge
 #. [language]
-#: data/english.cfg:33
+#: data/english.cfg:29
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
@@ -2026,13 +2143,13 @@ msgstr ""
 
 # Village + Grassland
 #. [language]
-#: data/english.cfg:34
+#: data/english.cfg:30
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|ová,$name|ovka,$name|ovce,$name|ovo pole,$name|ova roľa"
 
 # Village + Forest
 #. [language]
-#: data/english.cfg:35
+#: data/english.cfg:31
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
@@ -2042,24 +2159,24 @@ msgstr ""
 
 # Village + Hill
 #. [language]
-#: data/english.cfg:36
+#: data/english.cfg:32
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|ová,$name|ovka,$name|ovce,$name|ov kopec"
 
 #. [language]
-#: data/english.cfg:37
+#: data/english.cfg:33
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
 msgstr "$mountain|ský vrch,$mountain|ský útes,$mountain|ovo,$mountain|a hoľa"
 
 # Village + Mountain
 #. [language]
-#: data/english.cfg:38
+#: data/english.cfg:34
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr "$name|ová,$name|ovka,$name|ovce,$name|ovo bralo"
 
 #. [language]
-#: data/english.cfg:39
+#: data/english.cfg:35
 msgid ""
 "$road|’s Rest,$road|’s Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr ""
@@ -2067,47 +2184,47 @@ msgstr ""
 
 # Village
 #. [language]
-#: data/english.cfg:40
+#: data/english.cfg:36
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
 msgstr "$name|ová,$name|ovka,$name|ovce,$swamp|ová,$swamp|ovka,$swamp|ovce,"
 
 #. [language]
-#: data/english.cfg:43
+#: data/english.cfg:39
 msgid "melee"
 msgstr "zblízka"
 
 #. [language]
-#: data/english.cfg:44
+#: data/english.cfg:40
 msgid "ranged"
 msgstr "na diaľku"
 
 #. [language]
-#: data/english.cfg:47
+#: data/english.cfg:43
 msgid "blade"
 msgstr "sečný"
 
 #. [language]
-#: data/english.cfg:48
+#: data/english.cfg:44
 msgid "pierce"
 msgstr "bodný"
 
 #. [language]
-#: data/english.cfg:49
+#: data/english.cfg:45
 msgid "impact"
 msgstr "tupý"
 
 #. [language]
-#: data/english.cfg:50
+#: data/english.cfg:46
 msgid "fire"
 msgstr "oheň"
 
 #. [language]
-#: data/english.cfg:51
+#: data/english.cfg:47
 msgid "cold"
 msgstr "mráz"
 
 #. [language]
-#: data/english.cfg:52
+#: data/english.cfg:48
 msgid "arcane"
 msgstr "mystický"
 
@@ -2305,8 +2422,7 @@ msgstr "- komunita Wesnothu"
 #, fuzzy
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
-"rare <i>Liminal</i> unit type fights best during the twilight hours."
+"better at night. <i>Neutral</i> units are unaffected by the time of day."
 msgstr ""
 "Jednotky poriadku bojujú lepšie vo dne, jednotky chaosu zase v noci. Na "
 "neutrálne jednotky nemá noc a deň vplyv."
@@ -2879,29 +2995,29 @@ msgid ""
 "the village, although they will still be healed."
 msgstr ""
 
-#: data/lua/wml-tags.lua:709 src/actions.cpp:1273
+#: data/lua/wml-tags.lua:749 src/actions.cpp:1443
 msgid "female^poisoned"
 msgstr "otrávená"
 
-#: data/lua/wml-tags.lua:711 src/actions.cpp:1283
+#: data/lua/wml-tags.lua:751 src/actions.cpp:1453
 msgid "female^petrified"
 msgstr "skamenená"
 
-#: data/lua/wml-tags.lua:711 src/actions.cpp:1283
+#: data/lua/wml-tags.lua:751 src/actions.cpp:1453
 msgid "petrified"
 msgstr "skamenený"
 
-#: data/lua/wml-tags.lua:712
+#: data/lua/wml-tags.lua:752
 #, fuzzy
 msgid "female^unhealable"
 msgstr "nemŕtva"
 
-#: data/lua/wml-tags.lua:712
+#: data/lua/wml-tags.lua:752
 #, fuzzy
 msgid "unhealable"
 msgstr "Neschodné"
 
-#: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1609
+#: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1699
 msgid "Victory:"
 msgstr "Vyhráš, ak:"
 
@@ -2933,15 +3049,15 @@ msgstr "Žiadne zlato sa neprenáša do ďalšej scény."
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:390 src/dialogs.cpp:634
-#: src/multiplayer_create.cpp:93
+#: src/multiplayer_create.cpp:94
 msgid "OK"
 msgstr "OK"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:391 src/dialogs.cpp:635 src/dialogs.cpp:1073
-#: src/dialogs.cpp:1179 src/multiplayer_connect.cpp:981
-#: src/multiplayer_create.cpp:92 src/multiplayer_wait.cpp:179
+#: src/dialogs.cpp:1179 src/multiplayer_connect.cpp:1034
+#: src/multiplayer_create.cpp:93 src/multiplayer_wait.cpp:179
 msgid "Cancel"
 msgstr "Storno"
 
@@ -2981,16 +3097,16 @@ msgstr "Ukončiť scénu"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:237
-#: data/themes/experimental.cfg:187 src/menu_events.cpp:209 src/unit.cpp:2373
-#: src/unit.cpp:2540
+#: data/themes/experimental.cfg:187 src/menu_events.cpp:215 src/unit.cpp:2393
+#: src/unit.cpp:2560
 msgid "HP"
 msgstr "Životy"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-xp
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:247
-#: data/themes/experimental.cfg:196 src/menu_events.cpp:211
-#: src/menu_events.cpp:862
+#: data/themes/experimental.cfg:196 src/menu_events.cpp:217
+#: src/menu_events.cpp:871
 msgid "XP"
 msgstr "Skúsenosť"
 
@@ -3110,74 +3226,106 @@ msgstr "Pohľad"
 msgid "Skip animation"
 msgstr "Preskoč animáciu"
 
-#: src/about.cpp:196 src/menu_events.cpp:318 src/menu_events.cpp:345
+#: src/about.cpp:196 src/menu_events.cpp:324 src/menu_events.cpp:351
 #: src/statistics_dialog.cpp:114
 msgid "Close"
 msgstr "Zavri"
 
-#: src/actions.cpp:370
-msgid "You don’t have a leader to recruit with."
+#: src/actions.cpp:470
+#, fuzzy
+#| msgid "You don’t have a leader to recruit with."
+msgid "You don’t have a leader to recall with."
 msgstr "Nemáš veliteľa a tak nemôžeš verbovať."
 
-#: src/actions.cpp:375
-msgid "You must have your leader on a keep to recruit or recall units."
+#: src/actions.cpp:475
+#, fuzzy
+#| msgid "You must have your leader on a keep to recruit or recall units."
+msgid "None of your leaders is able to recall that unit."
 msgstr ""
 "Aby si mohol verbovať alebo privolávať jednotky, musíš mať v pevnosti "
 "veliteľa."
 
-#: src/actions.cpp:393
-msgid "There are no vacant castle tiles in which to recruit a unit."
+#: src/actions.cpp:480
+#, fuzzy
+#| msgid "You must have your leader on a keep to recruit or recall units."
+msgid "You must have a leader on a keep who is able to recall that unit."
+msgstr ""
+"Aby si mohol verbovať alebo privolávať jednotky, musíš mať v pevnosti "
+"veliteľa."
+
+#: src/actions.cpp:485
+#, fuzzy
+#| msgid "There are no vacant castle tiles in which to recruit a unit."
+msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "Nemáš v pevnosti miesto, kam by si naverboval jednotku."
 
-#: src/actions.cpp:533 src/actions.cpp:592 src/actions.cpp:1509
+#: src/actions.cpp:550
+msgid "You don’t have a leader to recruit with."
+msgstr "Nemáš veliteľa a tak nemôžeš verbovať."
+
+#: src/actions.cpp:555
+#, fuzzy
+#| msgid "You must have your leader on a keep to recruit or recall units."
+msgid "You must have a leader on a keep who is able to recruit the unit."
+msgstr ""
+"Aby si mohol verbovať alebo privolávať jednotky, musíš mať v pevnosti "
+"veliteľa."
+
+#: src/actions.cpp:560
+#, fuzzy
+#| msgid "There are no vacant castle tiles in which to recruit a unit."
+msgid "There are no vacant castle tiles in which to recruit the unit."
+msgstr "Nemáš v pevnosti miesto, kam by si naverboval jednotku."
+
+#: src/actions.cpp:703 src/actions.cpp:762 src/actions.cpp:1679
 msgid "An invalid attacker weapon got selected."
 msgstr "Vybraná neplatná útočná zbraň."
 
-#: src/actions.cpp:538
+#: src/actions.cpp:708
 msgid "An invalid defender weapon got selected."
 msgstr "Vybraná neplatná obranná zbraň."
 
-#: src/actions.cpp:2505
+#: src/actions.cpp:2671
 msgid "Ambushed!"
 msgstr "Prepad!"
 
-#: src/actions.cpp:2512
+#: src/actions.cpp:2678
 msgid "Failed teleport! Exit not empty"
 msgstr "Teleport zlyhal! Východ nie je prázdny"
 
-#: src/actions.cpp:2557
+#: src/actions.cpp:2723
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Vidím $friends priateľských jednotiek"
 msgstr[1] "Vidím priateľskú jednotku"
 msgstr[2] "Vidím $friends priateľské jednotky"
 
-#: src/actions.cpp:2560
+#: src/actions.cpp:2726
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vidím $enemies nepriateľských jednotiek!"
 msgstr[1] "Vidím nepriateľskú jednotku!"
 msgstr[2] "Vidím $enemies nepriateľské jednotky!"
 
-#: src/actions.cpp:2565
+#: src/actions.cpp:2731
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends priateľov"
 msgstr[1] "1 priateľa"
 msgstr[2] "$friends priateľov"
 
-#: src/actions.cpp:2566
+#: src/actions.cpp:2732
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies nepriateľov"
 msgstr[1] "1 nepriateľa"
 msgstr[2] "$enemies nepriateľov"
 
-#: src/actions.cpp:2567
+#: src/actions.cpp:2733
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Vidím jednotky! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2576
+#: src/actions.cpp:2742
 msgid "(press $hotkey to keep moving)"
 msgstr "(stlač $hotkey na dokončenie pohybu)"
 
@@ -3282,8 +3430,8 @@ msgid "Add-on Installed"
 msgstr "Doplnok nainštalovaný"
 
 #: src/addon/manager.cpp:750 src/addon/manager.cpp:936
-#: src/addon/manager.cpp:1148 src/dialogs.cpp:591 src/menu_events.cpp:206
-#: src/menu_events.cpp:860
+#: src/addon/manager.cpp:1148 src/dialogs.cpp:591 src/menu_events.cpp:212
+#: src/menu_events.cpp:869
 msgid "Name"
 msgstr "Meno"
 
@@ -3302,7 +3450,7 @@ msgid "Size"
 msgstr "Veľkosť"
 
 #: src/addon/manager.cpp:751 src/addon/manager.cpp:1149
-#: src/menu_events.cpp:205 src/menu_events.cpp:859 src/menu_events.cpp:1514
+#: src/menu_events.cpp:211 src/menu_events.cpp:868 src/menu_events.cpp:1523
 msgid "Type"
 msgstr "Typ"
 
@@ -3470,8 +3618,8 @@ msgstr "Stiahnutí"
 msgid "Done"
 msgstr ""
 
-#: src/addon/manager.cpp:1286 src/dialogs.cpp:616 src/menu_events.cpp:930
-#: src/menu_events.cpp:1550
+#: src/addon/manager.cpp:1286 src/dialogs.cpp:616 src/menu_events.cpp:939
+#: src/menu_events.cpp:1559
 msgid "Filter: "
 msgstr "Filter: "
 
@@ -3666,7 +3814,7 @@ msgstr ""
 msgid "Date"
 msgstr "Dátum"
 
-#: src/dialogs.cpp:608 src/multiplayer_create.cpp:114
+#: src/dialogs.cpp:608 src/multiplayer_create.cpp:115
 msgid "Load Game"
 msgstr "Načítaj hru"
 
@@ -3706,36 +3854,41 @@ msgstr "Skúsenosti: "
 msgid "Moves: "
 msgstr "Kroky: "
 
-#: src/game.cpp:654 src/game.cpp:1423
+#: src/game_config.cpp:302
+msgid "Invalid color range: "
+msgstr "Neplatný farebný rozsah: "
+
+#: src/game_controller.cpp:473 src/game_controller.cpp:1237
 msgid "The Battle for Wesnoth"
 msgstr "Bitka o Wesnoth"
 
-#: src/game.cpp:961 src/game.cpp:979
+#: src/game_controller.cpp:780 src/game_controller.cpp:798
 msgid "The file you have tried to load is corrupt"
 msgstr "Súbor, ktorý si chcel načítať, je poškodený"
 
-#: src/game.cpp:964 src/game.cpp:982 src/savegame.cpp:550
+#: src/game_controller.cpp:783 src/game_controller.cpp:801
+#: src/savegame.cpp:550
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Súbor, ktorý ste chceli načítať, je poškodený: '"
 
-#: src/game.cpp:972
+#: src/game_controller.cpp:791
 msgid "File I/O Error while reading the game"
 msgstr "Chyba pri čítaní súboru hry"
 
-#: src/game.cpp:974
+#: src/game_controller.cpp:793
 #, fuzzy
 msgid "File I/O Error while reading the game: '"
 msgstr "Chyba pri čítaní súboru hry"
 
-#: src/game.cpp:1072
+#: src/game_controller.cpp:890
 msgid "No campaigns are available.\n"
 msgstr "Žiadne výpravy nie sú dostupné.\n"
 
-#: src/game.cpp:1308
+#: src/game_controller.cpp:1122
 msgid "Do you really want to start the server?"
 msgstr "Chcete naozaj spustiť server?"
 
-#: src/game.cpp:1309
+#: src/game_controller.cpp:1123
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -3743,48 +3896,47 @@ msgstr ""
 "Server bude bežať ako proces na pozadí až kým sa neodpoja všetci "
 "používatelia."
 
-#: src/game.cpp:1313
+#: src/game_controller.cpp:1127
 msgid "Don’t show again"
 msgstr "Nepýtaj sa znova"
 
-#: src/game.cpp:1384
+#: src/game_controller.cpp:1198
 msgid "Error while starting server: "
 msgstr "Chyba spúšťaní servera: "
 
-#: src/game.cpp:1386 src/playcampaign.cpp:108 src/playcampaign.cpp:373
+#: src/game_controller.cpp:1200 src/playcampaign.cpp:108
+#: src/playcampaign.cpp:373
 msgid "The game could not be loaded: "
 msgstr "Nepodarilo sa načítať hru: "
 
-#: src/game.cpp:1388 src/playcampaign.cpp:110 src/playcampaign.cpp:376
+#: src/game_controller.cpp:1202 src/playcampaign.cpp:110
+#: src/playcampaign.cpp:376
 msgid "Error while playing the game: "
 msgstr "Chyba pri hraní hry: "
 
-#: src/game.cpp:1406 src/playcampaign.cpp:112 src/playcampaign.cpp:379
+#: src/game_controller.cpp:1220 src/playcampaign.cpp:112
+#: src/playcampaign.cpp:379
 msgid "The game map could not be loaded: "
 msgstr "Nepodarilo sa načítať mapu hry: "
 
-#: src/game.cpp:1536
+#: src/game_controller.cpp:1350
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Kvôli chybám sa nepodarilo načítať nasledujúce doplňujúce príbehy:"
 msgstr[1] "Kvôli chybám sa nepodarilo načítať nasledujúci doplňujúci príbeh:"
 msgstr[2] "Kvôli chybám sa nepodarilo načítať nasledujúce doplňujúce príbehy:"
 
-#: src/game.cpp:1543
+#: src/game_controller.cpp:1357
 msgid "ERROR DETAILS:"
 msgstr "DETAILY CHYBY:"
 
-#: src/game.cpp:1575
+#: src/game_controller.cpp:1389
 msgid "Error loading game configuration files: '"
 msgstr "Chyba pri načítavaní konfiguračných súborov hry: '"
 
-#: src/game.cpp:1576
+#: src/game_controller.cpp:1390
 msgid "' (The game will now exit)"
 msgstr "' (Hra teraz skončí)"
-
-#: src/game_config.cpp:302
-msgid "Invalid color range: "
-msgstr "Neplatný farebný rozsah: "
 
 #: src/game_events.cpp:179
 msgid "Error: "
@@ -3802,56 +3954,56 @@ msgstr "Ladenie: "
 msgid "Info: "
 msgstr "Informácia: "
 
-#: src/game_events.cpp:2234
+#: src/game_events.cpp:2188
 msgid "Invalid value in the result key for [end_level]"
 msgstr ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:205 src/multiplayer_lobby.cpp:435
+#: src/gui/dialogs/lobby/lobby_data.cpp:206 src/multiplayer_lobby.cpp:447
 msgid "Unknown era: $era_id"
 msgstr "Neznáma éra: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:210 src/multiplayer_lobby.cpp:439
+#: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:451
 msgid "Unknown era"
 msgstr "Neznáma éra"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:266 src/multiplayer_lobby.cpp:501
+#: src/gui/dialogs/lobby/lobby_data.cpp:267 src/multiplayer_lobby.cpp:513
 msgid "Remote scenario"
 msgstr "Scéna z iného počítača"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:274 src/multiplayer_lobby.cpp:508
+#: src/gui/dialogs/lobby/lobby_data.cpp:275 src/multiplayer_lobby.cpp:520
 msgid "Unknown scenario: $scenario_id"
 msgstr "Neznáma scéna: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:279 src/multiplayer_lobby.cpp:512
+#: src/gui/dialogs/lobby/lobby_data.cpp:280 src/multiplayer_lobby.cpp:524
 msgid "Unknown scenario"
 msgstr "Neznáma scéna"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:285 src/multiplayer_lobby.cpp:517
+#: src/gui/dialogs/lobby/lobby_data.cpp:286 src/multiplayer_lobby.cpp:529
 msgid "Reloaded game"
 msgstr "Znovunačítaná hra"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:533
+#: src/gui/dialogs/lobby/lobby_data.cpp:297 src/multiplayer_lobby.cpp:545
 msgid "Turn "
 msgstr "Kolo "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:537
+#: src/gui/dialogs/lobby/lobby_data.cpp:301 src/multiplayer_lobby.cpp:549
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Voľné miesta:"
 msgstr[1] "Voľné miesto:"
 msgstr[2] "Voľné miesta:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:306 src/multiplayer_lobby.cpp:548
+#: src/gui/dialogs/lobby/lobby_data.cpp:307 src/multiplayer_lobby.cpp:560
 msgid "Fog"
 msgstr "Hmla"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:309
-#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:90
-#: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:558
+#: src/gui/dialogs/lobby/lobby_data.cpp:310
+#: src/gui/dialogs/lobby/lobby_data.cpp:313 src/multiplayer_create.cpp:90
+#: src/multiplayer_lobby.cpp:564 src/multiplayer_lobby.cpp:570
 msgid "Shroud"
 msgstr "Odkrývanie mapy"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_lobby.cpp:562
+#: src/gui/dialogs/lobby/lobby_data.cpp:315 src/multiplayer_lobby.cpp:574
 msgid "none"
 msgstr "nič"
 
@@ -3887,7 +4039,7 @@ msgstr "Ani priateľ ani ignorovaný"
 msgid "You"
 msgstr "Ty"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:554
+#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:560
 msgid "Error"
 msgstr "Chyba"
 
@@ -3899,7 +4051,7 @@ msgstr "Koniec"
 msgid "System default language"
 msgstr "Štandardný jazyk systému"
 
-#: src/leader_list.cpp:138 src/menu_events.cpp:1540
+#: src/leader_list.cpp:138 src/menu_events.cpp:1549
 #: src/multiplayer_connect.cpp:224 src/multiplayer_connect.cpp:268
 msgid "gender^Random"
 msgstr "Náhodná"
@@ -4004,100 +4156,100 @@ msgid ""
 "check the 'max hill size' parameter)"
 msgstr ""
 
-#: src/menu_events.cpp:97 src/menu_events.cpp:100 src/menu_events.cpp:104
+#: src/menu_events.cpp:99 src/menu_events.cpp:102 src/menu_events.cpp:106
 msgid "Do you really want to dismiss him?"
 msgstr "Chcete ho naozaj rozpustiť?"
 
-#: src/menu_events.cpp:97
+#: src/menu_events.cpp:99
 msgid "My lord, this unit is loyal and requires no upkeep! "
 msgstr "Môj pane, táto jednotka je verná a nepotrebuje žold! "
 
-#: src/menu_events.cpp:98 src/menu_events.cpp:101 src/menu_events.cpp:105
+#: src/menu_events.cpp:100 src/menu_events.cpp:103 src/menu_events.cpp:107
 msgid "Do you really want to dismiss her?"
 msgstr "Chcete ju naozaj rozpustiť?"
 
-#: src/menu_events.cpp:100
+#: src/menu_events.cpp:102
 msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgstr "Môj pane, táto jednotka je skúsená a bola povýšená! "
 
-#: src/menu_events.cpp:104
+#: src/menu_events.cpp:106
 msgid "My lord, this unit is close to advancing a level! "
 msgstr "Môj pane, táto jednotka môže byť čoskoro povýšená! "
 
-#: src/menu_events.cpp:196
+#: src/menu_events.cpp:202
 msgid "Statistics"
 msgstr "Štatistika"
 
-#: src/menu_events.cpp:207
+#: src/menu_events.cpp:213
 msgid "Moves"
 msgstr "Ťahy"
 
-#: src/menu_events.cpp:208
+#: src/menu_events.cpp:214
 msgid "Status"
 msgstr "Stav"
 
-#: src/menu_events.cpp:210 src/menu_events.cpp:861
+#: src/menu_events.cpp:216 src/menu_events.cpp:870
 msgid "Level^Lvl."
 msgstr "Úr."
 
-#: src/menu_events.cpp:212
+#: src/menu_events.cpp:218
 msgid "unit list^Traits"
 msgstr "Vlastnosti"
 
-#: src/menu_events.cpp:310
+#: src/menu_events.cpp:316
 msgid "Unit List"
 msgstr "Zoznam jednotiek"
 
-#: src/menu_events.cpp:316 src/menu_events.cpp:338
+#: src/menu_events.cpp:322 src/menu_events.cpp:344
 msgid "Scroll To"
 msgstr "Posun na"
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:376
 msgid "Leader"
 msgstr "Veliteľ"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:966
+#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1019
 msgid "Team"
 msgstr "Tím"
 
-#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:977
+#: src/menu_events.cpp:378 src/multiplayer_connect.cpp:1030
 msgid "Gold"
 msgstr "Zlato"
 
-#: src/menu_events.cpp:373
+#: src/menu_events.cpp:379
 msgid "Villages"
 msgstr "Dediny"
 
-#: src/menu_events.cpp:374
+#: src/menu_events.cpp:380
 msgid "status^Units"
 msgstr "Jednotky"
 
-#: src/menu_events.cpp:375
+#: src/menu_events.cpp:381
 msgid "Upkeep"
 msgstr "Žold"
 
-#: src/menu_events.cpp:376 src/multiplayer_connect.cpp:978
+#: src/menu_events.cpp:382 src/multiplayer_connect.cpp:1031
 #: src/multiplayer_wait.cpp:523
 msgid "Income"
 msgstr "Príjem"
 
-#: src/menu_events.cpp:482
+#: src/menu_events.cpp:488
 msgid "Current Status"
 msgstr "Aktuálny stav"
 
-#: src/menu_events.cpp:483
+#: src/menu_events.cpp:489
 msgid "More >"
 msgstr "Viac >"
 
-#: src/menu_events.cpp:501
+#: src/menu_events.cpp:507
 msgid "scenario settings^Leader"
 msgstr "Veliteľ"
 
-#: src/menu_events.cpp:503
+#: src/menu_events.cpp:509
 msgid "scenario settings^Side"
 msgstr "Strana"
 
-#: src/menu_events.cpp:504
+#: src/menu_events.cpp:510
 msgid ""
 "scenario settings^Start\n"
 "Gold"
@@ -4105,7 +4257,7 @@ msgstr ""
 "Počiatočné\n"
 "zlato"
 
-#: src/menu_events.cpp:505
+#: src/menu_events.cpp:511
 msgid ""
 "scenario settings^Base\n"
 "Income"
@@ -4113,7 +4265,7 @@ msgstr ""
 "Základný\n"
 "príjem"
 
-#: src/menu_events.cpp:506
+#: src/menu_events.cpp:512
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
@@ -4121,90 +4273,90 @@ msgstr ""
 "Zlato za\n"
 "dedinu"
 
-#: src/menu_events.cpp:507
+#: src/menu_events.cpp:513
 msgid "scenario settings^Fog"
 msgstr "Hmla"
 
-#: src/menu_events.cpp:508
+#: src/menu_events.cpp:514
 msgid "scenario settings^Shroud"
 msgstr "Odkrývanie mapy"
 
-#: src/menu_events.cpp:557 src/menu_events.cpp:558
+#: src/menu_events.cpp:563 src/menu_events.cpp:564
 msgid "no"
 msgstr "nie"
 
-#: src/menu_events.cpp:557 src/menu_events.cpp:558
+#: src/menu_events.cpp:563 src/menu_events.cpp:564
 msgid "yes"
 msgstr "áno"
 
-#: src/menu_events.cpp:574
+#: src/menu_events.cpp:580
 msgid "Scenario Settings"
 msgstr "Nastavenia scény"
 
-#: src/menu_events.cpp:577
+#: src/menu_events.cpp:583
 msgid " < Back"
 msgstr " < Naspäť"
 
-#: src/menu_events.cpp:596
+#: src/menu_events.cpp:602
 msgid "Save the Map As"
 msgstr "Uložiť mapu ako"
 
-#: src/menu_events.cpp:600
+#: src/menu_events.cpp:606
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Uložená mapa s týmto názvom už existuje. Chceš ju prepísať?"
 
-#: src/menu_events.cpp:612
+#: src/menu_events.cpp:618
 msgid "Map saved."
 msgstr "Mapa bola uložená."
 
-#: src/menu_events.cpp:616
+#: src/menu_events.cpp:622
 msgid "Could not save the map: $msg"
 msgstr "Nepodarilo sa uložiť mapu: $msg"
 
-#: src/menu_events.cpp:631
+#: src/menu_events.cpp:637
 msgid "Chat Log"
 msgstr "Záznam rozhovoru"
 
-#: src/menu_events.cpp:641
+#: src/menu_events.cpp:647
 msgid "Message:"
 msgstr "Správa:"
 
-#: src/menu_events.cpp:642
+#: src/menu_events.cpp:648
 msgid "Send to allies only"
 msgstr "Pošli iba spojencom"
 
-#: src/menu_events.cpp:642
+#: src/menu_events.cpp:648
 msgid "Send to observers only"
 msgstr "Pošli iba divákom"
 
-#: src/menu_events.cpp:707
+#: src/menu_events.cpp:715
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Zlato"
 msgstr[1] "Zlato"
 msgstr[2] "Zlato"
 
-#: src/menu_events.cpp:714
+#: src/menu_events.cpp:722
 msgid "You have no units available to recruit."
 msgstr "Nemôžeš verbovať žiadne jednotky"
 
-#: src/menu_events.cpp:726
+#: src/menu_events.cpp:734
 msgid "Recruit"
 msgstr "Verbuj"
 
-#: src/menu_events.cpp:727 src/menu_events.cpp:925
+#: src/menu_events.cpp:735 src/menu_events.cpp:934
 msgid "Select unit:"
 msgstr "Vyber si jednotku:"
 
-#: src/menu_events.cpp:774
+#: src/menu_events.cpp:783
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "Nemáš dosť zlata, aby si naverboval túto jednotku"
 
-#: src/menu_events.cpp:826
+#: src/menu_events.cpp:835
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Si ďaleko od svojich vojakov a nemôžeš ich privolať"
 
-#: src/menu_events.cpp:850
+#: src/menu_events.cpp:859
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -4212,70 +4364,70 @@ msgstr ""
 "Nemáš koho privolať\n"
 "(Z predchádzajúcej mapy neprežil žiaden veterán)"
 
-#: src/menu_events.cpp:863
+#: src/menu_events.cpp:872
 msgid "Traits"
 msgstr "Vlastnosti"
 
-#: src/menu_events.cpp:924
+#: src/menu_events.cpp:933
 msgid "Recall"
 msgstr "Privolaj"
 
-#: src/menu_events.cpp:934
+#: src/menu_events.cpp:943
 msgid "Dismiss Unit"
 msgstr "Prepusti jednotku"
 
-#: src/menu_events.cpp:971
+#: src/menu_events.cpp:980
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Musíš mať aspoň $cost zlatiek, aby si privolal jednotku"
 msgstr[1] "Musíš mať aspoň $cost zlatku, aby si privolal jednotku"
 msgstr[2] "Musíš mať aspoň $cost zlatky, aby si privolal jednotku"
 
-#: src/menu_events.cpp:1353
+#: src/menu_events.cpp:1362
 #, fuzzy
 msgid "You cannot end your turn yet!"
 msgstr "pauza na konci kola"
 
-#: src/menu_events.cpp:1377
+#: src/menu_events.cpp:1386
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Ešte si nezačal ťahať. Chceš naozaj ukončiť ťah?"
 
-#: src/menu_events.cpp:1385
+#: src/menu_events.cpp:1394
 #, fuzzy
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
 msgstr "Niektoré jednotky ešte môžu ťahať. Chceš naozaj ukončiť ťah?"
 
-#: src/menu_events.cpp:1393 src/menu_events.cpp:1398
+#: src/menu_events.cpp:1402 src/menu_events.cpp:1407
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Niektoré jednotky ešte môžu ťahať. Chceš naozaj ukončiť ťah?"
 
-#: src/menu_events.cpp:1433
+#: src/menu_events.cpp:1442
 msgid "Rename Unit"
 msgstr "Premenuj jednotku"
 
-#: src/menu_events.cpp:1513
+#: src/menu_events.cpp:1522
 msgid "Race"
 msgstr "Rasa"
 
-#: src/menu_events.cpp:1537
+#: src/menu_events.cpp:1546
 msgid "Create Unit (Debug!)"
 msgstr "Vytvoriť jednotku (ladenie!)"
 
-#: src/menu_events.cpp:1540 src/multiplayer_wait.cpp:131
+#: src/menu_events.cpp:1549 src/multiplayer_wait.cpp:131
 msgid "Gender: "
 msgstr "Pohlavie: "
 
-#: src/menu_events.cpp:1831
+#: src/menu_events.cpp:1840
 msgid "Search"
 msgstr "Hľadaj"
 
-#: src/menu_events.cpp:2008
+#: src/menu_events.cpp:2017
 msgid "This command is currently unavailable."
 msgstr "Tento príkaz teraz nie je dostupný."
 
-#: src/menu_events.cpp:2014
+#: src/menu_events.cpp:2023
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
@@ -4283,7 +4435,7 @@ msgstr ""
 "Neznámy príkaz '$command', použite $help_command pre zoznam dostupných "
 "príkazov."
 
-#: src/menu_events.cpp:2032
+#: src/menu_events.cpp:2041
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -4291,19 +4443,19 @@ msgstr ""
 "Zoznam dostupných príkazov a popis príkazov. \"help all\" zobrazí aj práve "
 "dostupné príkazy."
 
-#: src/menu_events.cpp:2034
+#: src/menu_events.cpp:2043
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr "[all|<príkaz>]"
 
-#: src/menu_events.cpp:2078
+#: src/menu_events.cpp:2087
 msgid "Error:"
 msgstr "Chyba:"
 
-#: src/menu_events.cpp:2084
+#: src/menu_events.cpp:2093
 msgid "Missing argument $arg_id"
 msgstr "Chýbajúci parameter $arg_id"
 
-#: src/menu_events.cpp:2132
+#: src/menu_events.cpp:2141
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -4311,35 +4463,35 @@ msgstr ""
 "Dostupné príkazy $flags_description:\n"
 "$list_of_commands"
 
-#: src/menu_events.cpp:2132 src/menu_events.cpp:2133 src/menu_events.cpp:2156
+#: src/menu_events.cpp:2141 src/menu_events.cpp:2142 src/menu_events.cpp:2165
 msgid "help"
 msgstr "pomoc"
 
-#: src/menu_events.cpp:2133
+#: src/menu_events.cpp:2142
 msgid "Type $help_command <command> for more info."
 msgstr "Použite $help_command <príkaz> pre ďalšie informácie."
 
-#: src/menu_events.cpp:2144
+#: src/menu_events.cpp:2153
 msgid " No help available."
 msgstr " Žiadna pomoc nie je k dispozícii."
 
-#: src/menu_events.cpp:2149
+#: src/menu_events.cpp:2158
 msgid "Usage:"
 msgstr "Použitie:"
 
-#: src/menu_events.cpp:2154
+#: src/menu_events.cpp:2163
 msgid "aliases:"
 msgstr "aliasy:"
 
-#: src/menu_events.cpp:2275
+#: src/menu_events.cpp:2284
 msgid "(A) - admin command"
 msgstr "(A) - administračný príkaz"
 
-#: src/menu_events.cpp:2282 src/menu_events.cpp:2488
+#: src/menu_events.cpp:2291 src/menu_events.cpp:2497
 msgid "(admin only)"
 msgstr "(len pre administrátora)"
 
-#: src/menu_events.cpp:2302
+#: src/menu_events.cpp:2311
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -4347,7 +4499,7 @@ msgstr ""
 "Poslať dopyt na server. Bez parametrov by mal server poslať zoznam "
 "dostupných príkazov."
 
-#: src/menu_events.cpp:2306
+#: src/menu_events.cpp:2315
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -4355,47 +4507,47 @@ msgstr ""
 "Zakázať a vykopnúť hráča alebo diváka. Ak nie je v hre, ale len na serveri, "
 "bude len zakázaný."
 
-#: src/menu_events.cpp:2307 src/menu_events.cpp:2310 src/menu_events.cpp:2312
-#: src/menu_events.cpp:2314 src/menu_events.cpp:2316 src/menu_events.cpp:2343
-#: src/menu_events.cpp:2345 src/menu_events.cpp:2347 src/menu_events.cpp:2361
+#: src/menu_events.cpp:2316 src/menu_events.cpp:2319 src/menu_events.cpp:2321
+#: src/menu_events.cpp:2323 src/menu_events.cpp:2325 src/menu_events.cpp:2352
+#: src/menu_events.cpp:2354 src/menu_events.cpp:2356 src/menu_events.cpp:2370
 msgid "<nick>"
 msgstr "<prezývka>"
 
-#: src/menu_events.cpp:2309
+#: src/menu_events.cpp:2318
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr "Odblokuj hráča. Nemusí byť v hre, ale na serveri."
 
-#: src/menu_events.cpp:2312
+#: src/menu_events.cpp:2321
 msgid "Kick a player or observer."
 msgstr "Vykopnúť hráča alebo diváka."
 
-#: src/menu_events.cpp:2314
+#: src/menu_events.cpp:2323
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Umlčať diváka. Bez parametrov zobrazí stav umlčania."
 
-#: src/menu_events.cpp:2316
+#: src/menu_events.cpp:2325
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "Umožní hovoriť divákovi. Bez parametrov umožní všetkým."
 
-#: src/menu_events.cpp:2318
+#: src/menu_events.cpp:2327
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Umlčať/umožniť hovoriť všetkým divákom. (prepína)"
 
-#: src/menu_events.cpp:2328
+#: src/menu_events.cpp:2337
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicks, etc."
 msgstr ""
 
-#: src/menu_events.cpp:2332
+#: src/menu_events.cpp:2341
 msgid "<message>"
 msgstr "<správa>"
 
-#: src/menu_events.cpp:2332
+#: src/menu_events.cpp:2341
 msgid "Send an emotion or personal action in chat."
 msgstr "Pošle v diskusii emóciu alebo osobnú akciu."
 
-#: src/menu_events.cpp:2335
+#: src/menu_events.cpp:2344
 #, fuzzy
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
@@ -4404,455 +4556,455 @@ msgstr ""
 "Posiela súkromné správy. Nemôžeš posielať správy hráčom, ktorí v tejto hre "
 "nehrajú za niektorú stranu."
 
-#: src/menu_events.cpp:2337
+#: src/menu_events.cpp:2346
 msgid "<nick> <message>"
 msgstr "<prezývka> <správa>"
 
-#: src/menu_events.cpp:2341
+#: src/menu_events.cpp:2350
 msgid "<level> <domain>"
 msgstr "<úroveň> <doména>"
 
-#: src/menu_events.cpp:2341
+#: src/menu_events.cpp:2350
 msgid "Change the log level of a log domain."
 msgstr "Prepne zapisovaciu doménu na inú úroveň závažnosti."
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2352
 msgid "Add a nick to your ignores list."
 msgstr "Pridá hráča do svojho zoznamu ignorovaných."
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2354
 msgid "Add a nick to your friends list."
 msgstr "Pridá hráča do svojho zoznamu priateľov."
 
-#: src/menu_events.cpp:2347
+#: src/menu_events.cpp:2356
 msgid "Remove a nick from your ignores or friends list."
 msgstr "Odstráň hráča zo svojho zoznamu ignorovaných alebo priateľov."
 
-#: src/menu_events.cpp:2349
+#: src/menu_events.cpp:2358
 msgid "Show your ignores and friends list."
 msgstr "Zobrazí tvoj zoznam ignorovaných a priateľov."
 
-#: src/menu_events.cpp:2352
+#: src/menu_events.cpp:2361
 msgid "Display version information."
 msgstr "Zobrazí informácie o verzii."
 
-#: src/menu_events.cpp:2354
+#: src/menu_events.cpp:2363
 msgid "<password> <email (optional)>"
 msgstr "<heslo> <email (nepovinné)>"
 
 # bodka má byť, podľa kontextu
-#: src/menu_events.cpp:2354
+#: src/menu_events.cpp:2363
 msgid "Register your nick"
 msgstr "Zaregistruje tvoju prezývku."
 
-#: src/menu_events.cpp:2356
+#: src/menu_events.cpp:2365
 msgid "Drop your nick."
 msgstr "Vzdať sa prezývky."
 
-#: src/menu_events.cpp:2358
+#: src/menu_events.cpp:2367
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 "Aktualizovať údaje o tvojej prezývke. Pre zoznam možných údajov pozri '/"
 "details'."
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2368
 msgid "<detail> <value>"
 msgstr "<detail> <hodnota>"
 
-#: src/menu_events.cpp:2361
+#: src/menu_events.cpp:2370
 msgid "Request information about a nick."
 msgstr "Vyžiada informácie o prezývke."
 
-#: src/menu_events.cpp:2363
+#: src/menu_events.cpp:2372
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 "Vyžiada zoznam údajov, ktoré je možné nastaviť pre zaregistrovanú prezývku."
 
-#: src/menu_events.cpp:2365 src/menu_events.cpp:2368 src/menu_events.cpp:2370
+#: src/menu_events.cpp:2374 src/menu_events.cpp:2377 src/menu_events.cpp:2379
 msgid "<room>"
 msgstr "<miestnosť>"
 
-#: src/menu_events.cpp:2365
+#: src/menu_events.cpp:2374
 msgid "Join a room."
 msgstr "Vstúpiť do miestnosti."
 
-#: src/menu_events.cpp:2368
+#: src/menu_events.cpp:2377
 msgid "Part a room."
 msgstr "Opustiť miestnosť."
 
-#: src/menu_events.cpp:2370
+#: src/menu_events.cpp:2379
 msgid "List room members."
 msgstr "Zoznam členov v miestnosti."
 
-#: src/menu_events.cpp:2372
+#: src/menu_events.cpp:2381
 msgid "List available rooms."
 msgstr "Zobrazí dostupné miestnosti."
 
-#: src/menu_events.cpp:2374
+#: src/menu_events.cpp:2383
 msgid "<room> <msg>"
 msgstr "<miestnosť> <správa>"
 
-#: src/menu_events.cpp:2374
+#: src/menu_events.cpp:2383
 msgid "Room message."
 msgstr "Správa do miestnosti."
 
-#: src/menu_events.cpp:2376
+#: src/menu_events.cpp:2385
 msgid "<room> <type> [value]"
 msgstr "<miestnosť> <typ> [hodnota]"
 
-#: src/menu_events.cpp:2376
+#: src/menu_events.cpp:2385
 msgid "Room query."
 msgstr "Dotaz v miestnosti."
 
-#: src/menu_events.cpp:2480
+#: src/menu_events.cpp:2489
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 "(D) - len pre ladenie, (N) - len na sieti, (A) - len pre administrátora"
 
-#: src/menu_events.cpp:2486
+#: src/menu_events.cpp:2495
 msgid "(debug command)"
 msgstr "(príkaz ladenia)"
 
-#: src/menu_events.cpp:2487
+#: src/menu_events.cpp:2496
 msgid "(network only)"
 msgstr "(len na sieti)"
 
-#: src/menu_events.cpp:2512
+#: src/menu_events.cpp:2521
 msgid "Refresh gui."
 msgstr "Prekreslí grafické prostredie."
 
-#: src/menu_events.cpp:2514
+#: src/menu_events.cpp:2523
 msgid "Switch a side to/from AI control."
 msgstr "Vypne/zapne ovládanie strany počítačom."
 
-#: src/menu_events.cpp:2514
+#: src/menu_events.cpp:2523
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<strana> [on/off]]"
 
-#: src/menu_events.cpp:2517
+#: src/menu_events.cpp:2526
 msgid "<side> <nick>"
 msgstr "<strana> <prezývka>"
 
-#: src/menu_events.cpp:2517
+#: src/menu_events.cpp:2526
 msgid "Assign control of a side to a different player or observer."
 msgstr "Pridelí kontrolu nad stranou inému hráčovi alebo divákovi."
 
-#: src/menu_events.cpp:2519
+#: src/menu_events.cpp:2528
 msgid "Clear chat history."
 msgstr "Vymaže všetky správy."
 
-#: src/menu_events.cpp:2521
+#: src/menu_events.cpp:2530
 msgid "Visualize the screen refresh procedure."
 msgstr "Zviditeľní proces prekresľovania obrazovky."
 
-#: src/menu_events.cpp:2523
+#: src/menu_events.cpp:2532
 msgid "Debug foreground terrain."
 msgstr ""
 
-#: src/menu_events.cpp:2525
+#: src/menu_events.cpp:2534
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:2526
+#: src/menu_events.cpp:2535
 msgid "Show fps."
 msgstr "Zobrazí počet snímok za sekundu."
 
-#: src/menu_events.cpp:2528
+#: src/menu_events.cpp:2537
 msgid "Save game."
 msgstr "Uložiť hru."
 
-#: src/menu_events.cpp:2530
+#: src/menu_events.cpp:2539
 msgid "Quit game."
 msgstr "Vypnúť hru."
 
-#: src/menu_events.cpp:2534
+#: src/menu_events.cpp:2543
 msgid "Save and quit."
 msgstr "Uložiť a vypnúť."
 
-#: src/menu_events.cpp:2537
+#: src/menu_events.cpp:2546
 msgid "Ignore replay errors."
 msgstr "Ignorovať chyby záznamu."
 
-#: src/menu_events.cpp:2539
+#: src/menu_events.cpp:2548
 msgid "Disable autosaves."
 msgstr "Vypnúť automatické ukladanie."
 
-#: src/menu_events.cpp:2541
+#: src/menu_events.cpp:2550
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:2541
+#: src/menu_events.cpp:2550
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Postúpiť do ďalšej scény alebo scény s názvom 'id'"
 
-#: src/menu_events.cpp:2544
+#: src/menu_events.cpp:2553
 msgid "Choose next scenario"
 msgstr "Vyber ďalšiu scénu"
 
-#: src/menu_events.cpp:2547
+#: src/menu_events.cpp:2556
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:2547
+#: src/menu_events.cpp:2556
 msgid "[turn]"
 msgstr ""
 
-#: src/menu_events.cpp:2549
+#: src/menu_events.cpp:2558
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:2549
+#: src/menu_events.cpp:2558
 msgid "[limit]"
 msgstr ""
 
-#: src/menu_events.cpp:2551
+#: src/menu_events.cpp:2560
 msgid "Turn debug mode on."
 msgstr "Zapnúť režim ladenia."
 
-#: src/menu_events.cpp:2553
+#: src/menu_events.cpp:2562
 msgid "Turn debug mode off."
 msgstr "Vypnúť režim ladenia."
 
-#: src/menu_events.cpp:2555 src/menu_events.cpp:2559
+#: src/menu_events.cpp:2564 src/menu_events.cpp:2568
 msgid "<command>[;<command>...]"
 msgstr "<príkaz>[;<príkaz>...]"
 
-#: src/menu_events.cpp:2555
+#: src/menu_events.cpp:2564
 msgid "Execute a Lua statement."
 msgstr "Vykonať príkaz v jazyku Lua."
 
-#: src/menu_events.cpp:2557
+#: src/menu_events.cpp:2566
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Povoliť Lua skriptom vyššie oprávnenia."
 
 # bodka má byť, podľa kontextu
-#: src/menu_events.cpp:2559
+#: src/menu_events.cpp:2568
 msgid "Set the command used by the custom command hotkey"
 msgstr "Nastaví príkaz použitý voliteľnou príkazovou klávesou."
 
-#: src/menu_events.cpp:2562
+#: src/menu_events.cpp:2571
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 
-#: src/menu_events.cpp:2566
+#: src/menu_events.cpp:2575
 msgid "Launch the gamestate inspector"
 msgstr "Spustiť prieskumníka stavu hry"
 
-#: src/menu_events.cpp:2568
+#: src/menu_events.cpp:2577
 msgid "Manage persistence data"
 msgstr ""
 
-#: src/menu_events.cpp:2570
+#: src/menu_events.cpp:2579
 msgid "<name>[=<command>]"
 msgstr "<meno>[=<príkaz>]"
 
 # bodka má byť, podľa kontextu
-#: src/menu_events.cpp:2570
+#: src/menu_events.cpp:2579
 msgid "Set or show alias to a command"
 msgstr "Nastaviť alebo zobraziť alternatívny názov (alias) pre príkaz."
 
-#: src/menu_events.cpp:2572
+#: src/menu_events.cpp:2581
 msgid "<var>=<value>"
 msgstr "<premenná>=<hodnota>"
 
-#: src/menu_events.cpp:2572
+#: src/menu_events.cpp:2581
 msgid "Set a scenario variable."
 msgstr "Nastaví stavovú premennú scény."
 
-#: src/menu_events.cpp:2574
+#: src/menu_events.cpp:2583
 msgid "<var>"
 msgstr "<premenná>"
 
-#: src/menu_events.cpp:2574
+#: src/menu_events.cpp:2583
 msgid "Show a scenario variable."
 msgstr "Zobrazí stavovú premennú scény."
 
-#: src/menu_events.cpp:2576
+#: src/menu_events.cpp:2585
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Zmeniť premennú jednotky. (Podporované sú len klávesy najvyššej úrovne.)"
 
-#: src/menu_events.cpp:2583
+#: src/menu_events.cpp:2592
 msgid "Discover all units in help."
 msgstr "Zobrazí v návode všetky jednotky."
 
-#: src/menu_events.cpp:2585
+#: src/menu_events.cpp:2594
 #, fuzzy
 msgid "'Undiscover' all units in help."
 msgstr "Zobrazí v návode všetky jednotky."
 
-#: src/menu_events.cpp:2587
+#: src/menu_events.cpp:2596
 msgid "Create a unit."
 msgstr "Vytvorí jednotku."
 
-#: src/menu_events.cpp:2589
+#: src/menu_events.cpp:2598
 msgid "Toggle fog for the current player."
 msgstr "Prepne hmlu pre aktuálneho hráča."
 
-#: src/menu_events.cpp:2591
+#: src/menu_events.cpp:2600
 msgid "Toggle shroud for the current player."
 msgstr "Prepne odkrývanie mapy pre aktuálneho hráča."
 
-#: src/menu_events.cpp:2593
+#: src/menu_events.cpp:2602
 msgid "Give gold to the current player."
 msgstr "Odovzdať zlato aktívnemu hráčovi."
 
-#: src/menu_events.cpp:2595
+#: src/menu_events.cpp:2604
 msgid "Fire a game event."
 msgstr "Spustí udalosť hry."
 
-#: src/menu_events.cpp:2598
+#: src/menu_events.cpp:2607
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Prepnúť zobrazovanie súradníc x,y na políčkach mapy."
 
-#: src/menu_events.cpp:2601
+#: src/menu_events.cpp:2610
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Prepnúť zobrazovanie kódov terénu na políčkach mapy."
 
-#: src/menu_events.cpp:2604
+#: src/menu_events.cpp:2613
 msgid "Toggle planning mode."
 msgstr ""
 
-#: src/menu_events.cpp:2647
+#: src/menu_events.cpp:2656
 msgid "Unknown debug level: '$level'."
 msgstr "Neznáma ladiaca úroveň: '$level'."
 
-#: src/menu_events.cpp:2649 src/menu_events.cpp:2658
+#: src/menu_events.cpp:2658 src/menu_events.cpp:2667
 msgid "error"
 msgstr "chyba"
 
-#: src/menu_events.cpp:2656
+#: src/menu_events.cpp:2665
 msgid "Unknown debug domain: '$domain'."
 msgstr "Neznáma ladiaca doména: '$domain'."
 
-#: src/menu_events.cpp:2665
+#: src/menu_events.cpp:2674
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Doména: '$domain' prepnutá na úroveň: '$level'."
 
-#: src/menu_events.cpp:2736
+#: src/menu_events.cpp:2745
 msgid "whisper to $receiver"
 msgstr "šepkanie k $receiver"
 
-#: src/menu_events.cpp:2743 src/multiplayer_ui.cpp:542
+#: src/menu_events.cpp:2752 src/multiplayer_ui.cpp:542
 msgid "whisper: $sender"
 msgstr "šepkanie: $sender"
 
-#: src/menu_events.cpp:2839 src/menu_events.cpp:2858
+#: src/menu_events.cpp:2848 src/menu_events.cpp:2867
 #: src/multiplayer_connect.cpp:665
 msgid "(empty)"
 msgstr "(prázdne)"
 
-#: src/menu_events.cpp:2839 src/menu_events.cpp:2845 src/menu_events.cpp:2895
+#: src/menu_events.cpp:2848 src/menu_events.cpp:2854 src/menu_events.cpp:2904
 msgid "ignores list"
 msgstr "zoznam ignorovaných"
 
-#: src/menu_events.cpp:2845
+#: src/menu_events.cpp:2854
 msgid "Added to ignore list: $nick"
 msgstr "Pridaný do zoznamu ignorovaných: $nick"
 
-#: src/menu_events.cpp:2848 src/menu_events.cpp:2867
+#: src/menu_events.cpp:2857 src/menu_events.cpp:2876
 msgid "Invalid username: $nick"
 msgstr "Neplatné používateľské meno: $nick"
 
-#: src/menu_events.cpp:2858 src/menu_events.cpp:2865 src/menu_events.cpp:2891
+#: src/menu_events.cpp:2867 src/menu_events.cpp:2874 src/menu_events.cpp:2900
 msgid "friends list"
 msgstr "zoznam priateľov"
 
-#: src/menu_events.cpp:2865
+#: src/menu_events.cpp:2874
 msgid "Added to friends list: $nick"
 msgstr "Pridaný do zoznamu priateľov: $nick"
 
-#: src/menu_events.cpp:2881
+#: src/menu_events.cpp:2890
 msgid "Removed from list: $nick"
 msgstr "Vyradený zo zoznamu: $nick"
 
-#: src/menu_events.cpp:2881 src/menu_events.cpp:2899
+#: src/menu_events.cpp:2890 src/menu_events.cpp:2908
 msgid "friends and ignores list"
 msgstr "zoznam priateľov a ignorovaných"
 
-#: src/menu_events.cpp:2899
+#: src/menu_events.cpp:2908
 msgid "There are no players on your friends or ignore list."
 msgstr "V zozname priateľov alebo ignorovaných nie sú žiadni hráči"
 
-#: src/menu_events.cpp:2904
+#: src/menu_events.cpp:2913
 msgid "version"
 msgstr "verzia"
 
-#: src/menu_events.cpp:2920
+#: src/menu_events.cpp:2929
 msgid "registering with password *** and no email address"
 msgstr "registrovanie s heslom *** a žiadnou e-mailovou adresou"
 
-#: src/menu_events.cpp:2924
+#: src/menu_events.cpp:2933
 msgid "registering with password *** and email address $email"
 msgstr "registrovanie s heslom *** a e-mailovou adresou $email"
 
-#: src/menu_events.cpp:2927 src/menu_events.cpp:2938 src/menu_events.cpp:2956
-#: src/menu_events.cpp:2970
+#: src/menu_events.cpp:2936 src/menu_events.cpp:2947 src/menu_events.cpp:2965
+#: src/menu_events.cpp:2979
 msgid "nick registration"
 msgstr "registrovanie prezývky"
 
-#: src/menu_events.cpp:2938
+#: src/menu_events.cpp:2947
 msgid "dropping your username"
 msgstr "ruší sa tvoje používateľské meno"
 
-#: src/menu_events.cpp:2956
+#: src/menu_events.cpp:2965
 msgid "setting $var to $value"
 msgstr "nastavuje sa $var na $value"
 
-#: src/menu_events.cpp:2970
+#: src/menu_events.cpp:2979
 msgid "requesting information for user $nick"
 msgstr "zisťujú sa informácie o používateľovi $nick."
 
-#: src/menu_events.cpp:3083
+#: src/menu_events.cpp:3092
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Neviem nájsť značku ani jednotku, ktorá má v názve '$search'."
 
-#: src/menu_events.cpp:3117
+#: src/menu_events.cpp:3126
 msgid "Can't droid invalid side: '$side'."
 msgstr "Nie je možné zmeniť neplatnú stranu '$side' na riadenie počítačom."
 
-#: src/menu_events.cpp:3122
+#: src/menu_events.cpp:3131
 msgid "Can't droid networked side: '$side'."
 msgstr "Nie je možné zmeniť sieťovú stranu '$side' na riadenie počítačom."
 
-#: src/menu_events.cpp:3160
+#: src/menu_events.cpp:3169
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Nie je možné nastaviť kontrolu neplatnej strany: '$side'."
 
-#: src/menu_events.cpp:3166
+#: src/menu_events.cpp:3175
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Nie je možné nastaviť kontrolu strany mimo rozsahu: '$side'."
 
-#: src/menu_events.cpp:3250
+#: src/menu_events.cpp:3259
 #, fuzzy
 msgid "Layers"
 msgstr "Hráči: "
 
-#: src/menu_events.cpp:3323
+#: src/menu_events.cpp:3332
 msgid "Choose Scenario (Debug!)"
 msgstr "Vybrať scénu (ladenie!)"
 
-#: src/menu_events.cpp:3368
+#: src/menu_events.cpp:3378
 msgid "Debug mode activated!"
 msgstr "Režim ladenia aktivovaný!"
 
-#: src/menu_events.cpp:3371
+#: src/menu_events.cpp:3381
 msgid "Debug mode not available in network games"
 msgstr "Režim ladenia nie je dostupný pri sieťových hrách"
 
-#: src/menu_events.cpp:3376
+#: src/menu_events.cpp:3386
 msgid "Debug mode deactivated!"
 msgstr "Režim ladenia deaktivovaný!"
 
-#: src/menu_events.cpp:3387
+#: src/menu_events.cpp:3397
 msgid "Unsafe Lua scripts."
 msgstr "Nebezpečné skripty v jazyku Lua."
 
-#: src/menu_events.cpp:3388
+#: src/menu_events.cpp:3398
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
@@ -4862,50 +5014,50 @@ msgstr ""
 "pokračovať? Ak si stiahol nejaké doplnky, neklikaj na 'ok'! Mohli by "
 "ovládnuť počítať. Toto je posledné varovanie."
 
-#: src/menu_events.cpp:3391
+#: src/menu_events.cpp:3401
 msgid "Unsafe mode enabled!"
 msgstr "Nezabezpečený režim zapnutý!"
 
-#: src/menu_events.cpp:3434
+#: src/menu_events.cpp:3444
 msgid "Variable not found"
 msgstr "Premenná sa nenašla"
 
-#: src/menu_events.cpp:3484
+#: src/menu_events.cpp:3494
 #, fuzzy
 msgid ""
-"Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic "
-"or liminal."
+"Invalid alignment: '$alignment', needs to be one of lawful, neutral, or "
+"chaotic."
 msgstr ""
 "Neplatná príslušnosť: '$alignment', musí byť 'poriadok', 'neutrál' alebo "
 "'chaos'."
 
-#: src/menu_events.cpp:3534
+#: src/menu_events.cpp:3544
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:3545
+#: src/menu_events.cpp:3555
 msgid "Invalid unit type"
 msgstr "Neplatný typ jednotky"
 
-#: src/menu_events.cpp:3558
+#: src/menu_events.cpp:3568
 msgid "Invalid location"
 msgstr "Neplatná poloha"
 
-#: src/menu_events.cpp:3593
+#: src/menu_events.cpp:3603
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "Režim ladenia aktivovaný!"
 
-#: src/menu_events.cpp:3596
+#: src/menu_events.cpp:3606
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "Režim ladenia deaktivovaný!"
 
-#: src/menu_events.cpp:3604
+#: src/menu_events.cpp:3614
 msgid "ai"
 msgstr "UI"
 
-#: src/menu_events.cpp:3614 src/menu_events.cpp:3644
+#: src/menu_events.cpp:3624 src/menu_events.cpp:3654
 msgid "prompt^Command:"
 msgstr "Príkaz:"
 
@@ -5032,7 +5184,7 @@ msgstr "(Voľné miesto)"
 msgid "Anonymous local player"
 msgstr "Anonymný lokálny hráč"
 
-#: src/multiplayer_connect.cpp:646 src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:646 src/multiplayer_connect.cpp:1521
 msgid "Computer Player"
 msgstr "Počítač"
 
@@ -5056,89 +5208,89 @@ msgstr "Rezervované"
 msgid "--give--"
 msgstr "--dať--"
 
-#: src/multiplayer_connect.cpp:890
+#: src/multiplayer_connect.cpp:943
 msgid "Only random sides in the current era."
 msgstr "V tejto ére nie je definovaná žiadna strana okrem náhodnej."
 
-#: src/multiplayer_connect.cpp:914
+#: src/multiplayer_connect.cpp:967
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Neviem nájsť veliteľa pre frakciu $faction"
 
-#: src/multiplayer_connect.cpp:951
+#: src/multiplayer_connect.cpp:1004
 msgid "Game Lobby: "
 msgstr "Čakáreň: "
 
-#: src/multiplayer_connect.cpp:973
+#: src/multiplayer_connect.cpp:1026
 msgid "Player/Type"
 msgstr "Typ hráča"
 
-#: src/multiplayer_connect.cpp:974
+#: src/multiplayer_connect.cpp:1027
 msgid "Faction"
 msgstr "Frakcia"
 
-#: src/multiplayer_connect.cpp:975
+#: src/multiplayer_connect.cpp:1028
 msgid "Team/Gender"
 msgstr "Tím/Pohlavie"
 
-#: src/multiplayer_connect.cpp:976
+#: src/multiplayer_connect.cpp:1029
 msgid "Color"
 msgstr "Farba"
 
-#: src/multiplayer_connect.cpp:980
+#: src/multiplayer_connect.cpp:1033
 msgid "I’m Ready"
 msgstr "Som pripravený"
 
-#: src/multiplayer_connect.cpp:982
+#: src/multiplayer_connect.cpp:1035
 #, fuzzy
 msgid "Add named local player"
 msgstr "Anonymný lokálny hráč"
 
-#: src/multiplayer_connect.cpp:992
+#: src/multiplayer_connect.cpp:1045
 msgid "The scenario is invalid because it has no id."
 msgstr "Scéna je neplatná, pretože nemá žiadny identifikátor."
 
-#: src/multiplayer_connect.cpp:996
+#: src/multiplayer_connect.cpp:1049
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scéna neplatí, pretože nemá definované strany."
 
-#: src/multiplayer_connect.cpp:1063
+#: src/multiplayer_connect.cpp:1116
 msgid "Enter a name for the new player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1064 src/reports.cpp:135 src/savegame.cpp:707
+#: src/multiplayer_connect.cpp:1117 src/reports.cpp:135 src/savegame.cpp:707
 msgid "Name: "
 msgstr "Názov: "
 
-#: src/multiplayer_connect.cpp:1429
+#: src/multiplayer_connect.cpp:1518
 msgid "Network Player"
 msgstr "Sieťový hráč"
 
-#: src/multiplayer_connect.cpp:1431
+#: src/multiplayer_connect.cpp:1520
 msgid "Local Player"
 msgstr "Človek"
 
-#: src/multiplayer_connect.cpp:1433
+#: src/multiplayer_connect.cpp:1522
 msgid "Empty"
 msgstr "Nič"
 
-#: src/multiplayer_connect.cpp:1586
+#: src/multiplayer_connect.cpp:1675
 msgid "Cannot find era $era"
 msgstr "Neviem nájsť éru $era"
 
-#: src/multiplayer_connect.cpp:1611
+#: src/multiplayer_connect.cpp:1701
 msgid "Defeat enemy leader(s)"
 msgstr "Porazíš ostatných veliteľov"
 
-#: src/multiplayer_connect.cpp:1716
+#: src/multiplayer_connect.cpp:1806
 msgid "Waiting for players to join..."
 msgstr "Čakám, kým sa pripoja hráči..."
 
-#: src/multiplayer_connect.cpp:1717
+#: src/multiplayer_connect.cpp:1807
 #, fuzzy
 msgid "Waiting for players to choose factions..."
 msgstr "Čakám, kým sa pripoja hráči..."
 
-#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:731
+#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:744
 msgid "Create Game"
 msgstr "Vytvor hru"
 
@@ -5158,7 +5310,7 @@ msgstr "Éra:"
 msgid "Map to play:"
 msgstr "Hrá sa na mape:"
 
-#: src/multiplayer_create.cpp:87 src/multiplayer_lobby.cpp:276
+#: src/multiplayer_create.cpp:87 src/multiplayer_lobby.cpp:288
 msgid "Use map settings"
 msgstr "Použi nastavenia mapy"
 
@@ -5174,211 +5326,219 @@ msgstr "Hmla"
 msgid "Observers"
 msgstr "Diváci"
 
-#: src/multiplayer_create.cpp:94
+#: src/multiplayer_create.cpp:92
+msgid "Shuffle sides"
+msgstr ""
+
+#: src/multiplayer_create.cpp:95
 msgid "Regenerate"
 msgstr "Vytvor znovu"
 
-#: src/multiplayer_create.cpp:95
+#: src/multiplayer_create.cpp:96
 msgid "Settings..."
 msgstr "Nastavenia..."
 
-#: src/multiplayer_create.cpp:96
+#: src/multiplayer_create.cpp:97
 msgid "Set Password..."
 msgstr "Nastaviť heslo..."
 
-#: src/multiplayer_create.cpp:115
+#: src/multiplayer_create.cpp:116
 msgid "Load Game..."
 msgstr "Načítať hru..."
 
-#: src/multiplayer_create.cpp:151
+#: src/multiplayer_create.cpp:152
 msgid "The maximum number of turns the game can last"
 msgstr "Maximálny počet ťahov trvania hry"
 
-#: src/multiplayer_create.cpp:154
+#: src/multiplayer_create.cpp:155
 msgid "Enables user time limit"
 msgstr "Povoľ časový limit pre hráča"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:161
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Najdlhší povolený čas na prvý ťah (sekundy)"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:167
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Najdlhší povolený čas na hociktorý ťah (sekundy)"
 
-#: src/multiplayer_create.cpp:172
+#: src/multiplayer_create.cpp:173
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Čas na všeobecné úkony v každom ťahu (sekundy)"
 
-#: src/multiplayer_create.cpp:178
+#: src/multiplayer_create.cpp:179
 msgid "Time for each attack, recruit, and capture"
 msgstr "Čas na útok, verbovanie, dobýjanie"
 
-#: src/multiplayer_create.cpp:183
+#: src/multiplayer_create.cpp:184
 msgid "The amount of income each village yields per turn"
 msgstr "Príjem z každej dediny za jedno kolo"
 
-#: src/multiplayer_create.cpp:189
+#: src/multiplayer_create.cpp:190
 msgid "The amount of experience a unit needs to advance"
 msgstr "Množstvo skúseností, ktoré jednotka potrebuje na povýšenie"
 
-#: src/multiplayer_create.cpp:192
+#: src/multiplayer_create.cpp:193
 msgid "Use scenario specific settings"
 msgstr "Použi nastavenia konkrétnej scény"
 
-#: src/multiplayer_create.cpp:195
+#: src/multiplayer_create.cpp:196
 msgid "Randomize time of day in begin"
 msgstr "Hra začne v náhodnej fáze dňa"
 
-#: src/multiplayer_create.cpp:198
+#: src/multiplayer_create.cpp:199
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "Nepriateľské jednotky vidíš iba v dosahu svojich jednotiek"
 
-#: src/multiplayer_create.cpp:201
+#: src/multiplayer_create.cpp:202
 msgid "The map is unknown until your units explore it"
 msgstr "Mapa je zakrytá, dokiaľ ju tvoje jednotky nezmapujú"
 
-#: src/multiplayer_create.cpp:204
+#: src/multiplayer_create.cpp:205
 msgid "Allow users who are not playing to watch the game"
 msgstr "Umožni nehrajúcim divákom sledovať hru"
 
 #: src/multiplayer_create.cpp:208
+msgid "Assign sides to players at random"
+msgstr ""
+
+#: src/multiplayer_create.cpp:212
 msgid "Share View"
 msgstr "Spoločný pohľad"
 
-#: src/multiplayer_create.cpp:209
+#: src/multiplayer_create.cpp:213
 msgid "Share Maps"
 msgstr "Spoločná mapa"
 
-#: src/multiplayer_create.cpp:210
+#: src/multiplayer_create.cpp:214
 msgid "Share None"
 msgstr "Nič spoločné"
 
-#: src/multiplayer_create.cpp:220
+#: src/multiplayer_create.cpp:224
 msgid "No eras found."
 msgstr "Nenašli sa žiadne éry."
 
-#: src/multiplayer_create.cpp:221
+#: src/multiplayer_create.cpp:225
 msgid "No eras found"
 msgstr "Nenašli sa žiadne éry"
 
-#: src/multiplayer_create.cpp:234
+#: src/multiplayer_create.cpp:238
 msgid "$login|’s game"
 msgstr "$login-ova hra"
 
-#: src/multiplayer_create.cpp:299
+#: src/multiplayer_create.cpp:304
 msgid "Invalid era selected"
 msgstr "Vybraná neplatná éra"
 
-#: src/multiplayer_create.cpp:345
+#: src/multiplayer_create.cpp:351
 msgid "The map is invalid."
 msgstr "Mapa je neplatná."
 
-#: src/multiplayer_create.cpp:347
+#: src/multiplayer_create.cpp:353
 msgid "You must enter a name."
 msgstr "Musíte zadať meno."
 
-#: src/multiplayer_create.cpp:366
+#: src/multiplayer_create.cpp:372
 msgid "Turns: "
 msgstr "Kolá: "
 
-#: src/multiplayer_create.cpp:368
+#: src/multiplayer_create.cpp:374
 msgid "Unlimited Turns"
 msgstr "Neobmedzené kolá"
 
-#: src/multiplayer_create.cpp:396
+#: src/multiplayer_create.cpp:402
 msgid "Init. Limit: "
 msgstr "Štart. limit: "
 
-#: src/multiplayer_create.cpp:401
+#: src/multiplayer_create.cpp:407
 msgid "Turn Bonus: "
 msgstr "Bonus za kolá: "
 
-#: src/multiplayer_create.cpp:405
+#: src/multiplayer_create.cpp:411
 msgid "Reservoir: "
 msgstr "Zásoba: "
 
-#: src/multiplayer_create.cpp:410
+#: src/multiplayer_create.cpp:416
 msgid "Action Bonus: "
 msgstr "Bonus za akcie: "
 
-#: src/multiplayer_create.cpp:417
+#: src/multiplayer_create.cpp:423
 msgid "Village Gold: "
 msgstr "Zlato za dedinu: "
 
-#: src/multiplayer_create.cpp:423 src/reports.cpp:329
+#: src/multiplayer_create.cpp:429 src/reports.cpp:329
 msgid "Experience Modifier: "
 msgstr "Modifikátor skúseností: "
 
-#: src/multiplayer_create.cpp:551
+#: src/multiplayer_create.cpp:557
 msgid "Players: "
 msgstr "Hráči: "
 
-#: src/multiplayer_create.cpp:552
+#: src/multiplayer_create.cpp:558
 msgid "Size: "
 msgstr "Veľkosť: "
 
-#: src/multiplayer_lobby.cpp:124
+#: src/multiplayer_lobby.cpp:125
 msgid "--no games open--"
 msgstr "--nie je otvorená žiadna hra--"
 
-#: src/multiplayer_lobby.cpp:158
+#: src/multiplayer_lobby.cpp:159
 msgid " (Unknown Era)"
 msgstr "(Neznáma éra)"
 
-#: src/multiplayer_lobby.cpp:540 src/multiplayer_lobby.cpp:880
+#: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:893
 msgid "Password Required"
 msgstr "Vyžaduje sa heslo"
 
-#: src/multiplayer_lobby.cpp:724 src/multiplayer_wait.cpp:178
+#: src/multiplayer_lobby.cpp:737 src/multiplayer_wait.cpp:178
 msgid "Game Lobby"
 msgstr "Čakáreň"
 
-#: src/multiplayer_lobby.cpp:729
+#: src/multiplayer_lobby.cpp:742
 msgid "Observe Game"
 msgstr "Pozoruj hru"
 
-#: src/multiplayer_lobby.cpp:730
+#: src/multiplayer_lobby.cpp:743
 msgid "Join Game"
 msgstr "Pridaj sa k hre"
 
-#: src/multiplayer_lobby.cpp:732
+#: src/multiplayer_lobby.cpp:745
 msgid "Quick Replays"
 msgstr "Rýchle záznamy"
 
-#: src/multiplayer_lobby.cpp:733
+#: src/multiplayer_lobby.cpp:746
 msgid "Preferences"
 msgstr "Nastavenia"
 
-#: src/multiplayer_lobby.cpp:734
+#: src/multiplayer_lobby.cpp:747
 msgid "Quit"
 msgstr "Koniec"
 
-#: src/multiplayer_lobby.cpp:735
+#: src/multiplayer_lobby.cpp:748
 msgid "Apply Filter"
 msgstr "Použiť filter"
 
-#: src/multiplayer_lobby.cpp:736
+#: src/multiplayer_lobby.cpp:749
 msgid "Invert"
 msgstr "Invertovať"
 
-#: src/multiplayer_lobby.cpp:737
+#: src/multiplayer_lobby.cpp:750
 msgid "Vacant Slots"
 msgstr "Voľné miesta"
 
-#: src/multiplayer_lobby.cpp:738
+#: src/multiplayer_lobby.cpp:751
 msgid "Friends in Game"
 msgstr "Priatelia v hre"
 
-#: src/multiplayer_lobby.cpp:739
+#: src/multiplayer_lobby.cpp:752
 msgid "Search:"
 msgstr "Hľadaj:"
 
-#: src/multiplayer_lobby.cpp:747
+#: src/multiplayer_lobby.cpp:760
 msgid "Skip quickly to the active turn when observing"
 msgstr "Pri pozorovaní rýchlo preskoč na aktuálne kolo"
 
-#: src/multiplayer_lobby.cpp:750
+#: src/multiplayer_lobby.cpp:763
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
@@ -5386,7 +5546,7 @@ msgstr ""
 "Zapnúť filter hier. Ak nie je zvolené, zobrazia sa všetky hry, bez ohľadu na "
 "filter."
 
-#: src/multiplayer_lobby.cpp:753
+#: src/multiplayer_lobby.cpp:766
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
@@ -5394,24 +5554,24 @@ msgstr ""
 "Zobraziť všetky hry, ktoré nespĺňajú filter. Vhodné na skrytie hier, ktoré "
 "nie sú zaujímavé."
 
-#: src/multiplayer_lobby.cpp:757
+#: src/multiplayer_lobby.cpp:770
 msgid "Only show games that have at least one vacant slot"
 msgstr "Zobraziť len hry s aspoň jedným voľným miestom"
 
-#: src/multiplayer_lobby.cpp:761
+#: src/multiplayer_lobby.cpp:774
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr "Zobraziť len hry, kde hrá alebo pozoruje niektorý tvoj priateľ"
 
-#: src/multiplayer_lobby.cpp:767
+#: src/multiplayer_lobby.cpp:780
 msgid "Only show games whose title or description contain the entered text"
 msgstr "Zobraziť len hry, ktorých názov alebo popis obsahuje zadaný text"
 
-#: src/multiplayer_lobby.cpp:881
+#: src/multiplayer_lobby.cpp:894
 msgid "Joining this game requires a password."
 msgstr "Vstup do tejto hry vyžaduje heslo."
 
-#: src/multiplayer_lobby.cpp:882
+#: src/multiplayer_lobby.cpp:895
 msgid "Password: "
 msgstr "Heslo: "
 
@@ -5497,22 +5657,22 @@ msgstr "čas zostávajúci na kolo"
 msgid "current local time"
 msgstr "aktuálny lokálny čas"
 
-#: src/play_controller.cpp:1061 src/savegame.cpp:308 src/savegame.cpp:320
+#: src/play_controller.cpp:1057 src/savegame.cpp:308 src/savegame.cpp:320
 #: src/savegame.cpp:991 src/savegame.cpp:993
 msgid "Auto-Save"
 msgstr "Automatické uloženie"
 
-#: src/play_controller.cpp:1068
+#: src/play_controller.cpp:1064
 msgid "Back to turn "
 msgstr "Späť na ťah "
 
-#: src/play_controller.cpp:1316
+#: src/play_controller.cpp:1312
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 
-#: src/play_controller.cpp:1317 src/replay_controller.cpp:305
+#: src/play_controller.cpp:1313 src/replay_controller.cpp:305
 #, fuzzy
 msgid "Error details:"
 msgstr "Chyba:"
@@ -5561,7 +5721,7 @@ msgstr "Odvolávam ťahy, ktoré ešte neboli odoslané na server."
 msgid "Waiting for next scenario..."
 msgstr "Čakám na ďalšiu scénu..."
 
-#: src/playmp_controller.cpp:526
+#: src/playmp_controller.cpp:529
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -5673,15 +5833,15 @@ msgstr ""
 msgid "It is now $name|’s turn"
 msgstr "Na ťahu je $name"
 
-#: src/playsingle_controller.cpp:915
+#: src/playsingle_controller.cpp:916
 msgid "Scenario Report"
 msgstr "Správa o scéne"
 
-#: src/playsingle_controller.cpp:918
+#: src/playsingle_controller.cpp:919
 msgid "Victory"
 msgstr "Víťazstvo"
 
-#: src/playsingle_controller.cpp:919
+#: src/playsingle_controller.cpp:920
 msgid "You have emerged victorious!"
 msgstr "Zvíťazil si!"
 
@@ -5912,12 +6072,7 @@ msgstr "Neutrálne jednotky: "
 msgid "Chaotic units: "
 msgstr "Jednotky chaosu: "
 
-#: src/reports.cpp:603
-#, fuzzy
-msgid "Liminal units: "
-msgstr "Jednotky poriadku: "
-
-#: src/reports.cpp:801
+#: src/reports.cpp:799
 msgid "Observers:"
 msgstr "Diváci:"
 
@@ -6110,98 +6265,109 @@ msgstr "Naša dedina"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size musí byť medzi 0.0 a 0.5."
 
-#: src/tod_manager.cpp:143
+#: src/tod_manager.cpp:117
 msgid "No time of day has been defined."
 msgstr "Nezadaná žiadna denná doba."
 
-#: src/unit.cpp:691
+#: src/unit.cpp:697
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Neznámy typ jednotky '$type|' pri generovaní vlastností"
 
-#: src/unit.cpp:2332 src/unit.cpp:2529 src/unit.cpp:2600
+#: src/unit.cpp:2352 src/unit.cpp:2549 src/unit.cpp:2620
 msgid " and "
 msgstr " a "
 
-#: src/unit.cpp:2343
+#: src/unit.cpp:2363
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2404
+#: src/unit.cpp:2424
 msgid "moves"
 msgstr "ťahy"
 
-#: src/unit.cpp:2419 src/unit.cpp:2553
+#: src/unit.cpp:2439 src/unit.cpp:2573
 msgid "XP to advance"
 msgstr "skúseností na povýšenie"
 
-#: src/unit.cpp:2546
+#: src/unit.cpp:2566
 msgid " move"
 msgstr "ťah"
 
-#: src/unit.cpp:2561
+#: src/unit.cpp:2581
 msgid "$effect_description per level"
 msgstr "$effect_description za každú úroveň"
 
-#: src/unit_types.cpp:190 src/unit_types.cpp:260
+#: src/unit_types.cpp:189 src/unit_types.cpp:259
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "zranení"
 msgstr[1] "zranenie"
 msgstr[2] "zranenia"
 
-#: src/unit_types.cpp:201 src/unit_types.cpp:268
+#: src/unit_types.cpp:200 src/unit_types.cpp:267
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "údery"
 msgstr[1] "úder"
 msgstr[2] "údery"
 
-#: src/unit_types.cpp:213
+#: src/unit_types.cpp:212
 #, no-c-format
 msgid "% accuracy"
 msgstr "% presnosť"
 
-#: src/unit_types.cpp:224
+#: src/unit_types.cpp:223
 #, no-c-format
 msgid "% parry"
 msgstr "% odvrátenie"
 
-#: src/unit_types.cpp:912
+#: src/unit_types.cpp:909
 msgid "No description available."
 msgstr "Popis nie je k dispozícii."
 
-#: src/unit_types.cpp:968
+#: src/unit_types.cpp:965
 msgid "chaotic"
 msgstr "chaos"
 
-#: src/unit_types.cpp:968
+#: src/unit_types.cpp:965
 msgid "lawful"
 msgstr "poriadok"
 
-#: src/unit_types.cpp:968
-msgid "liminal"
-msgstr ""
-
-#: src/unit_types.cpp:968
+#: src/unit_types.cpp:965
 msgid "neutral"
 msgstr "neutrál"
 
-#: src/unit_types.cpp:969
+#: src/unit_types.cpp:966
 msgid "female^chaotic"
 msgstr "chaotická"
 
-#: src/unit_types.cpp:969
+#: src/unit_types.cpp:966
 msgid "female^lawful"
 msgstr "poriadok"
 
-#: src/unit_types.cpp:969
-#, fuzzy
-msgid "female^liminal"
-msgstr "verná"
-
-#: src/unit_types.cpp:969
+#: src/unit_types.cpp:966
 msgid "female^neutral"
 msgstr "neutrálna"
+
+#, fuzzy
+#~ msgid ""
+#~ "Liminal units fight better during twilight while fighting normally during "
+#~ "day and night.\n"
+#~ "\n"
+#~ "Twilight: +25% Damage"
+#~ msgstr ""
+#~ "Jednotky poriadku bojujú lepšie cez deň a horšie v noci.\n"
+#~ "\n"
+#~ "Deň: +25% zranenie spôsobené pri útoku\n"
+#~ "Noc: −25% zranenie spôsobené pri útoku"
+
+#, fuzzy
+#~ msgid "Liminal units: "
+#~ msgstr "Jednotky poriadku: "
+
+#, fuzzy
+#~ msgid "female^liminal"
+#~ msgstr "verná"
 
 #~ msgid "Send a message to the server admins currently online"
 #~ msgstr "Pošle správu práve pripojeným správcom servera"

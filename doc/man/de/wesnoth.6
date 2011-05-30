@@ -47,7 +47,10 @@ Bestimmt die Farbtiefe, in der das Spiel gestartet wird. Beispiel: \fB\-\-bpp
 goes directly to the campaign based on the parameters.  The difficulty is a
 number between 1 and current campaign's difficulties number.  The default
 difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.
+scenarios. The default scenario is campaign's first scenario.  \fBNote: When
+using this switch please ensure that you specify the data directory path as
+the final argument\fP aswell, otherwise the game will take the
+campaign/scenario id as the data dir.
 .TP 
 \fB\-\-config\-dir\fP\fI\ Name\fP
 sets the user configuration directory to \fIname\fP under $HOME or "My
@@ -113,6 +116,9 @@ Startet das Spiel im Mehrspieler\-Modus. Es gibt noch weitere Optionen, die,
 wie weiter unten beschrieben, gemeinsam mit \fB\-\-multiplayer\fP verwendet
 werden können. Nur diese zusätzlichen Optionen können \fB\-\-multiplayer\fP
 folgen.
+.TP 
+\fB\-\-new\-syntax\fP
+enables the new campaign syntax parsing.
 .TP 
 \fB\-\-no\-delay\fP
 Das Spiel wird ohne Verzögerungen ausgeführt. Wird zum Ausführen grafischer

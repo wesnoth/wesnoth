@@ -50,7 +50,10 @@ Asettaa värisyvyyden (bits per pixel). Esimerkki: \fB\-\-bpp 32\fP
 goes directly to the campaign based on the parameters.  The difficulty is a
 number between 1 and current campaign's difficulties number.  The default
 difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.
+scenarios. The default scenario is campaign's first scenario.  \fBNote: When
+using this switch please ensure that you specify the data directory path as
+the final argument\fP aswell, otherwise the game will take the
+campaign/scenario id as the data dir.
 .TP 
 \fB\-\-config\-dir\fP\fI\ nimi\fP
 sets the user configuration directory to \fIname\fP under $HOME or "My
@@ -111,6 +114,9 @@ väliltä 1–1000. Oletus on \fB50\fP.
 Käynnistää moninpelin. Joitakiin valitsimia voi yhdistää valitsimen
 \fB\-\-multiplayer\fP kanssa, kuten alla selitetään. Vain nämä valinnaiset
 valitsimet voivat olla tämän valitsimen jälkeen.
+.TP 
+\fB\-\-new\-syntax\fP
+enables the new campaign syntax parsing.
 .TP 
 \fB\-\-no\-delay\fP
 Käynnistää pelin ilman viiveitä graafisen suorituskyvyn mittausta

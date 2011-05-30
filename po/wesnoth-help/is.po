@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-08 17:06+0200\n"
+"POT-Creation-Date: 2011-05-30 20:47+0200\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -465,7 +465,7 @@ msgstr "svarmur"
 msgid ""
 " The <ref>dst='flight' text='flight'</ref> for a new drake <ref>dst='aerie' "
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
-"text='breeding cycle</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
+"text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
 
 #. [topic]: id=runners
@@ -875,7 +875,7 @@ msgstr "Leikspilun"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:22 data/core/help.cfg:348
+#: data/core/help.cfg:22 data/core/help.cfg:347
 msgid "Traits"
 msgstr "Einkenni"
 
@@ -906,13 +906,13 @@ msgstr "Klíka"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
-#: data/core/help.cfg:63 data/core/help.cfg:482
+#: data/core/help.cfg:63 data/core/help.cfg:481
 msgid "Terrains"
 msgstr "Jarðir"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:70 data/core/help.cfg:784
+#: data/core/help.cfg:70 data/core/help.cfg:783
 msgid "Commands"
 msgstr "Skipanir"
 
@@ -1620,13 +1620,12 @@ msgid "Time of Day"
 msgstr "Tími dags"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:269
+#: data/core/help.cfg:268
 #, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
 " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-" Liminal units get +25% damage during twilight.\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
 "Tími dagsins hefur áhrif á skaða sem sumar einingar valda svona:\n"
@@ -1638,7 +1637,7 @@ msgstr ""
 "veikari né sterkari. "
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:272
+#: data/core/help.cfg:271
 #, fuzzy
 msgid ""
 "\n"
@@ -1655,42 +1654,42 @@ msgstr ""
 
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:272 data/core/macros/schedules.cfg:6
+#: data/core/help.cfg:271 data/core/macros/schedules.cfg:6
 msgid "Dawn"
 msgstr "Dögun"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:273 data/core/macros/schedules.cfg:17
+#: data/core/help.cfg:272 data/core/macros/schedules.cfg:17
 msgid "Morning"
 msgstr "Morgunn"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:274 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:273 data/core/macros/schedules.cfg:26
 msgid "Afternoon"
 msgstr "Síðdegi"
 
 #. [time]: id=dusk
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:275 data/core/macros/schedules.cfg:35
+#: data/core/help.cfg:274 data/core/macros/schedules.cfg:35
 msgid "Dusk"
 msgstr "Rökkur"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:276 data/core/macros/schedules.cfg:46
+#: data/core/help.cfg:275 data/core/macros/schedules.cfg:46
 msgid "First Watch"
 msgstr "Fyrsta vakt"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:277 data/core/macros/schedules.cfg:58
+#: data/core/help.cfg:276 data/core/macros/schedules.cfg:58
 msgid "Second Watch"
 msgstr "Seinni vakt"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:279
+#: data/core/help.cfg:278
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1699,12 +1698,12 @@ msgstr ""
 "nótt!"
 
 #. [topic]: id=experience_and_advancement
-#: data/core/help.cfg:286
+#: data/core/help.cfg:285
 msgid "Experience and Advancement"
 msgstr "Reynsla og Efling"
 
 #. [topic]: id=experience_and_advancement
-#: data/core/help.cfg:287
+#: data/core/help.cfg:286
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1718,7 +1717,7 @@ msgstr ""
 "og svo framvegis."
 
 #. [topic]: id=experience_and_advancement
-#: data/core/help.cfg:289
+#: data/core/help.cfg:288
 msgid ""
 "\n"
 "\n"
@@ -1735,7 +1734,7 @@ msgstr ""
 "velja í hvað einingin breytist."
 
 #. [topic]: id=experience_and_advancement
-#: data/core/help.cfg:291
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -1752,12 +1751,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:298
+#: data/core/help.cfg:297
 msgid "Healing"
 msgstr "Lækning"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:299
+#: data/core/help.cfg:298
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
@@ -1767,7 +1766,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:301
+#: data/core/help.cfg:300
 #, fuzzy
 msgid ""
 "\n"
@@ -1781,7 +1780,7 @@ msgstr ""
 "sig um 2 lífspunkta í næstu umferð."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:302
+#: data/core/help.cfg:301
 #, fuzzy
 msgid ""
 "\n"
@@ -1792,7 +1791,7 @@ msgstr ""
 "Þorp: Einingar sem hefja umferð í þorpi læknast um 8 lífstig."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:303
+#: data/core/help.cfg:302
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
@@ -1800,7 +1799,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:304
+#: data/core/help.cfg:303
 msgid ""
 "\n"
 "<italic>text='Healing units'</italic>: Units with the "
@@ -1811,7 +1810,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:305
+#: data/core/help.cfg:304
 msgid ""
 "\n"
 "<italic>text='Curing units'</italic>: Units with the "
@@ -1821,7 +1820,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:307
+#: data/core/help.cfg:306
 msgid ""
 "\n"
 "\n"
@@ -1837,12 +1836,12 @@ msgstr ""
 "einingar til fulls á milli leikja(í herferð t.d.)"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:314
+#: data/core/help.cfg:313
 msgid "Income and Upkeep"
 msgstr "Tekjur og Viðhald"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:315
+#: data/core/help.cfg:314
 #, fuzzy
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
@@ -1856,7 +1855,7 @@ msgstr ""
 "skipta máli hérna; Gróði og Uppihald."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:317
+#: data/core/help.cfg:316
 #, fuzzy
 msgid ""
 "\n"
@@ -1876,7 +1875,7 @@ msgstr ""
 "Uppihaldið er dregið af þessum gróða, eins og útskýrt er fyrir neðan."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:319
+#: data/core/help.cfg:318
 msgid ""
 "\n"
 "\n"
@@ -1889,7 +1888,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:321
+#: data/core/help.cfg:320
 #, fuzzy
 msgid ""
 "\n"
@@ -1905,7 +1904,7 @@ msgstr ""
 "staðan 10 gull á lotu."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:323
+#: data/core/help.cfg:322
 #, fuzzy
 msgid ""
 "\n"
@@ -1926,12 +1925,12 @@ msgstr ""
 "(eins og Konráð) eru næstum alltaf leiðtoginn."
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:329
+#: data/core/help.cfg:328
 msgid "Wrap Up"
 msgstr "Samantekt"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:330
+#: data/core/help.cfg:329
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -1941,17 +1940,17 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=about
-#: data/core/help.cfg:335
+#: data/core/help.cfg:334
 msgid "ingame_help_item^Contributors"
 msgstr ""
 
 #. [topic]: id=license
-#: data/core/help.cfg:341
+#: data/core/help.cfg:340
 msgid "License"
 msgstr "Leyfi"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:350
+#: data/core/help.cfg:349
 #, fuzzy
 msgid ""
 "Most units have two traits. However, undead units are assigned the single "
@@ -1965,7 +1964,7 @@ msgstr ""
 "handahófi þegar eining er keypt."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:352
+#: data/core/help.cfg:351
 msgid ""
 "\n"
 "\n"
@@ -1976,7 +1975,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:356
+#: data/core/help.cfg:355
 msgid ""
 "\n"
 "\n"
@@ -1987,19 +1986,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_intelligent
-#: data/core/help.cfg:362
+#: data/core/help.cfg:361
 msgid "Intelligent"
 msgstr "Snerpa"
 
 #. [topic]: id=traits_intelligent
-#: data/core/help.cfg:363
+#: data/core/help.cfg:362
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Snarpar einingar þurfa 20% minni reynslu enn venjulega til að þjálfast í "
 "næsta styrkleikastig."
 
 #. [topic]: id=traits_intelligent
-#: data/core/help.cfg:365
+#: data/core/help.cfg:364
 #, fuzzy
 msgid ""
 "\n"
@@ -2022,12 +2021,12 @@ msgstr ""
 "eiginleika."
 
 #. [topic]: id=traits_quick
-#: data/core/help.cfg:370
+#: data/core/help.cfg:369
 msgid "Quick"
 msgstr "Hraði"
 
 #. [topic]: id=traits_quick
-#: data/core/help.cfg:371
+#: data/core/help.cfg:370
 #, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
@@ -2037,7 +2036,7 @@ msgstr ""
 "venjulega."
 
 #. [topic]: id=traits_quick
-#: data/core/help.cfg:373
+#: data/core/help.cfg:372
 #, fuzzy
 msgid ""
 "\n"
@@ -2059,12 +2058,12 @@ msgstr ""
 "halda mikilvægum reitum."
 
 #. [topic]: id=traits_resilient
-#: data/core/help.cfg:378
+#: data/core/help.cfg:377
 msgid "Resilient"
 msgstr "Stæling"
 
 #. [topic]: id=traits_resilient
-#: data/core/help.cfg:379
+#: data/core/help.cfg:378
 #, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
@@ -2074,7 +2073,7 @@ msgstr ""
 "eflingarstig hærra en venjulega."
 
 #. [topic]: id=traits_resilient
-#: data/core/help.cfg:381
+#: data/core/help.cfg:380
 msgid ""
 "\n"
 "\n"
@@ -2093,12 +2092,12 @@ msgstr ""
 "hernaðarmikilvægum stöðum frá óvininum."
 
 #. [topic]: id=traits_strong
-#: data/core/help.cfg:386
+#: data/core/help.cfg:385
 msgid "Strong"
 msgstr "Styrkur"
 
 #. [topic]: id=traits_strong
-#: data/core/help.cfg:387
+#: data/core/help.cfg:386
 #, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
@@ -2108,7 +2107,7 @@ msgstr ""
 "skylminga bardaga og hafa 1 auka lífspunkt."
 
 #. [topic]: id=traits_strong
-#: data/core/help.cfg:389
+#: data/core/help.cfg:388
 #, fuzzy
 msgid ""
 "\n"
@@ -2126,23 +2125,23 @@ msgstr ""
 "gera meiðandi högg í drepandi högg."
 
 #. [topic]: id=traits_fearless
-#: data/core/help.cfg:394
+#: data/core/help.cfg:393
 msgid "Fearless"
 msgstr "Óttaleysi"
 
 #. [topic]: id=traits_fearless
-#: data/core/help.cfg:395
+#: data/core/help.cfg:394
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr "Ljós eða myrkur hefur engin áhrif á þessa hugrökku einstaklinga."
 
 #. [topic]: id=traits_feral
-#: data/core/help.cfg:400
+#: data/core/help.cfg:399
 #, fuzzy
 msgid "Feral"
 msgstr "Yfir allt"
 
 #. [topic]: id=traits_feral
-#: data/core/help.cfg:401
+#: data/core/help.cfg:400
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
@@ -2151,12 +2150,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_loyal
-#: data/core/help.cfg:406
+#: data/core/help.cfg:405
 msgid "Loyal"
 msgstr "Dyggð"
 
 #. [topic]: id=traits_loyal
-#: data/core/help.cfg:407
+#: data/core/help.cfg:406
 #, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
@@ -2168,7 +2167,7 @@ msgstr ""
 "einingar þurfa það hins vegar ekki."
 
 #. [topic]: id=traits_loyal
-#: data/core/help.cfg:409
+#: data/core/help.cfg:408
 #, fuzzy
 msgid ""
 "\n"
@@ -2191,19 +2190,19 @@ msgstr ""
 "gagnlítin dauða."
 
 #. [topic]: id=traits_undead
-#: data/core/help.cfg:414
+#: data/core/help.cfg:413
 msgid "trait^Undead"
 msgstr "Ódauði"
 
 #. [topic]: id=traits_undead
-#: data/core/help.cfg:415
+#: data/core/help.cfg:414
 #, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr "Ódauðar einingar eru ónæmar eitri, tæmingu og plágun."
 
 #. [topic]: id=traits_undead
-#: data/core/help.cfg:417
+#: data/core/help.cfg:416
 #, fuzzy
 msgid ""
 "\n"
@@ -2221,12 +2220,12 @@ msgstr ""
 "óvinirnir nota mikið af eitri í árásum sínum."
 
 #. [topic]: id=traits_mechanical
-#: data/core/help.cfg:422
+#: data/core/help.cfg:421
 msgid "trait^Mechanical"
 msgstr "Vélgengi"
 
 #. [topic]: id=traits_mechanical
-#: data/core/help.cfg:423
+#: data/core/help.cfg:422
 #, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
@@ -2236,7 +2235,7 @@ msgstr ""
 "ekki á þær. "
 
 #. [topic]: id=traits_mechanical
-#: data/core/help.cfg:425
+#: data/core/help.cfg:424
 #, fuzzy
 msgid ""
 "\n"
@@ -2252,13 +2251,13 @@ msgstr ""
 "áhrif á þær. "
 
 #. [topic]: id=traits_elemental
-#: data/core/help.cfg:430
+#: data/core/help.cfg:429
 #, fuzzy
 msgid "trait^Elemental"
 msgstr "leynd"
 
 #. [topic]: id=traits_elemental
-#: data/core/help.cfg:431
+#: data/core/help.cfg:430
 #, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
@@ -2268,7 +2267,7 @@ msgstr ""
 "ekki á þær. "
 
 #. [topic]: id=traits_elemental
-#: data/core/help.cfg:433
+#: data/core/help.cfg:432
 #, fuzzy
 msgid ""
 "\n"
@@ -2284,12 +2283,12 @@ msgstr ""
 "áhrif á þær. "
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:438
+#: data/core/help.cfg:437
 msgid "Dextrous"
 msgstr "Fimi"
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:439
+#: data/core/help.cfg:438
 #, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
@@ -2299,7 +2298,7 @@ msgstr ""
 "bardaga."
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:441
+#: data/core/help.cfg:440
 #, fuzzy
 msgid ""
 "\n"
@@ -2316,12 +2315,12 @@ msgstr ""
 "hinum álfunum með bogann. Þeir álfar gera meiri skaða með hverri ör."
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:446
+#: data/core/help.cfg:445
 msgid "Healthy"
 msgstr "Heilbrygði"
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:447
+#: data/core/help.cfg:446
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
@@ -2330,7 +2329,7 @@ msgstr ""
 "hvílst jafnvel meðan þeir ferðast."
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:449
+#: data/core/help.cfg:448
 #, fuzzy
 msgid ""
 "\n"
@@ -2347,12 +2346,12 @@ msgstr ""
 "áhrif á þá."
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:454
+#: data/core/help.cfg:453
 msgid "Dim"
 msgstr "Tregð"
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:455
+#: data/core/help.cfg:454
 #, fuzzy
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
@@ -2361,7 +2360,7 @@ msgstr ""
 "Tregar einingar þurfa 20% meiri reynslu til að auka við sig styrkleikastigi."
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:457
+#: data/core/help.cfg:456
 msgid ""
 "\n"
 "\n"
@@ -2375,19 +2374,19 @@ msgstr ""
 "af þeim."
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:462
+#: data/core/help.cfg:461
 msgid "Slow"
 msgstr "Hægð"
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:463
+#: data/core/help.cfg:462
 #, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
 msgstr "Hægðar einingar hafa -1 í hreyfingu en 5% fleiri lífstig."
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:465
+#: data/core/help.cfg:464
 msgid ""
 "\n"
 "\n"
@@ -2401,12 +2400,12 @@ msgstr ""
 "hægar, enn fá það bætt með örlítið auknum lífspunktum"
 
 #. [topic]: id=traits_weak
-#: data/core/help.cfg:470
+#: data/core/help.cfg:469
 msgid "Weak"
 msgstr "Veikburði"
 
 #. [topic]: id=traits_weak
-#: data/core/help.cfg:471
+#: data/core/help.cfg:470
 #, fuzzy
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
@@ -2414,14 +2413,14 @@ msgid ""
 msgstr "Veikburða einingar fá -1 í lífspunktum og í skylmingaskaða."
 
 #. [topic]: id=traits_aged
-#: data/core/help.cfg:476
+#: data/core/help.cfg:475
 #, fuzzy
 #| msgid "trait^Undead"
 msgid "trait^Aged"
 msgstr "Ódauði"
 
 #. [topic]: id=traits_aged
-#: data/core/help.cfg:477
+#: data/core/help.cfg:476
 #, fuzzy
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
@@ -2429,7 +2428,7 @@ msgid ""
 msgstr "Veikburða einingar fá -1 í lífspunktum og í skylmingaskaða."
 
 #. [topic]: id=..terrains
-#: data/core/help.cfg:485
+#: data/core/help.cfg:484
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat.\n"
@@ -2440,12 +2439,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_flat
-#: data/core/help.cfg:492
+#: data/core/help.cfg:491
 msgid "Flat"
 msgstr "Flatlendi"
 
 #. [topic]: id=terrain_flat
-#: data/core/help.cfg:497
+#: data/core/help.cfg:496
 #, fuzzy
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
@@ -2464,12 +2463,12 @@ msgstr ""
 "Flestar einingar hafa vörnina 30 til 40% á grasi."
 
 #. [topic]: id=terrain_road
-#: data/core/help.cfg:506
+#: data/core/help.cfg:505
 msgid "Road"
 msgstr "Vegir"
 
 #. [topic]: id=terrain_road
-#: data/core/help.cfg:511
+#: data/core/help.cfg:510
 msgid ""
 "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
 "travelers passing over them. As far as gameplay is concerned, roads behave "
@@ -2478,12 +2477,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_forest
-#: data/core/help.cfg:518
+#: data/core/help.cfg:517
 msgid "Forest"
 msgstr "Skógar"
 
 #. [topic]: id=terrain_forest
-#: data/core/help.cfg:525
+#: data/core/help.cfg:524
 #, fuzzy
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
@@ -2518,12 +2517,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_hills
-#: data/core/help.cfg:533
+#: data/core/help.cfg:532
 msgid "Hills"
 msgstr "Hólar"
 
 #. [topic]: id=terrain_hills
-#: data/core/help.cfg:540
+#: data/core/help.cfg:539
 #, fuzzy
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
@@ -2547,12 +2546,12 @@ msgstr ""
 "Dvergar fá hins vegar 60% vörn í hæðum."
 
 #. [topic]: id=terrain_mountains
-#: data/core/help.cfg:547
+#: data/core/help.cfg:546
 msgid "Mountains"
 msgstr "Fjöll"
 
 #. [topic]: id=terrain_mountains
-#: data/core/help.cfg:552
+#: data/core/help.cfg:551
 #, fuzzy
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
@@ -2576,12 +2575,12 @@ msgstr ""
 "Flestar einingar fá í kringum 60% vörn í fjöllum, meðan Dvergar fá 70%."
 
 #. [topic]: id=terrain_swamp_water
-#: data/core/help.cfg:559
+#: data/core/help.cfg:558
 msgid "Swamp"
 msgstr "Mýri"
 
 #. [topic]: id=terrain_swamp_water
-#: data/core/help.cfg:564
+#: data/core/help.cfg:563
 #, fuzzy
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps slow "
@@ -2603,12 +2602,12 @@ msgstr ""
 "Sauriar hafa hins vegar oftast kringum 60%"
 
 #. [topic]: id=terrain_shallow_water
-#: data/core/help.cfg:571
+#: data/core/help.cfg:570
 msgid "Shallow Water"
 msgstr "Grunn vötn"
 
 #. [topic]: id=terrain_shallow_water
-#: data/core/help.cfg:576
+#: data/core/help.cfg:575
 #, fuzzy
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
@@ -2633,12 +2632,12 @@ msgstr ""
 "Hafmenn fá 60%."
 
 #. [topic]: id=terrain_deep_water
-#: data/core/help.cfg:583
+#: data/core/help.cfg:582
 msgid "Deep Water"
 msgstr "Djúp vötn"
 
 #. [topic]: id=terrain_deep_water
-#: data/core/help.cfg:588
+#: data/core/help.cfg:587
 #, fuzzy
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
@@ -2654,12 +2653,12 @@ msgstr ""
 "Hafmenn og Naga fá bæði 50% vörn í djúpu vatni og fulla hreyfigetu."
 
 #. [topic]: id=terrain_frozen
-#: data/core/help.cfg:595
+#: data/core/help.cfg:594
 msgid "Frozen"
 msgstr "Frost"
 
 #. [topic]: id=terrain_frozen
-#: data/core/help.cfg:600
+#: data/core/help.cfg:599
 #, fuzzy
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
@@ -2677,12 +2676,12 @@ msgstr ""
 "Flestar einingar fá 20 til 40% í frosnu svæði."
 
 #. [topic]: id=terrain_castle
-#: data/core/help.cfg:607
+#: data/core/help.cfg:606
 msgid "Castle"
 msgstr "Kastalar"
 
 #. [topic]: id=terrain_castle
-#: data/core/help.cfg:614
+#: data/core/help.cfg:613
 #, fuzzy
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
@@ -2705,12 +2704,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_sand
-#: data/core/help.cfg:623
+#: data/core/help.cfg:622
 msgid "Sand"
 msgstr "Sandur"
 
 #. [topic]: id=terrain_sand
-#: data/core/help.cfg:628
+#: data/core/help.cfg:627
 #, fuzzy
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
@@ -2727,12 +2726,12 @@ msgstr ""
 "Flestar einingar fá 20 til 40% vörn í sandi."
 
 #. [topic]: id=terrain_desert
-#: data/core/help.cfg:635
+#: data/core/help.cfg:634
 msgid "Desert"
 msgstr "Eyðimerkur"
 
 #. [topic]: id=terrain_desert
-#: data/core/help.cfg:638
+#: data/core/help.cfg:637
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -2740,12 +2739,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_cave
-#: data/core/help.cfg:645
+#: data/core/help.cfg:644
 msgid "Cave"
 msgstr "Hellir"
 
 #. [topic]: id=terrain_cave
-#: data/core/help.cfg:650
+#: data/core/help.cfg:649
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass. Most units are wholly unfamiliar with the "
@@ -2759,12 +2758,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_rockbound_cave
-#: data/core/help.cfg:657
+#: data/core/help.cfg:656
 msgid "Rockbound Cave"
 msgstr "Klettóttur hellir"
 
 #. [topic]: id=terrain_rockbound_cave
-#: data/core/help.cfg:662
+#: data/core/help.cfg:661
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -2780,12 +2779,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_illuminated_cave
-#: data/core/help.cfg:669
+#: data/core/help.cfg:668
 msgid "Illuminated Cave"
 msgstr "Upplýstir hellir"
 
 #. [topic]: id=terrain_illuminated_cave
-#: data/core/help.cfg:672
+#: data/core/help.cfg:671
 #, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2800,12 +2799,12 @@ msgstr ""
 "alveg eins og hver annar reitur í hellinum."
 
 #. [topic]: id=terrain_fungus
-#: data/core/help.cfg:679
+#: data/core/help.cfg:678
 msgid "Mushroom Grove"
 msgstr "Sveppalundur"
 
 #. [topic]: id=terrain_fungus
-#: data/core/help.cfg:684
+#: data/core/help.cfg:683
 #, fuzzy
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
@@ -2829,12 +2828,12 @@ msgstr ""
 "einungis 20%."
 
 #. [topic]: id=terrain_village
-#: data/core/help.cfg:691
+#: data/core/help.cfg:690
 msgid "Village"
 msgstr "Þorp"
 
 #. [topic]: id=terrain_village
-#: data/core/help.cfg:698
+#: data/core/help.cfg:697
 #, fuzzy
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
@@ -2858,12 +2857,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_water_village
-#: data/core/help.cfg:707
+#: data/core/help.cfg:706
 msgid "Submerged Village"
 msgstr "Sokkin þorp"
 
 #. [topic]: id=terrain_water_village
-#: data/core/help.cfg:712
+#: data/core/help.cfg:711
 #, fuzzy
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
@@ -2886,12 +2885,12 @@ msgstr ""
 "meðaltali litla vörn."
 
 #. [topic]: id=terrain_unwalkable
-#: data/core/help.cfg:719
+#: data/core/help.cfg:718
 msgid "Unwalkable"
 msgstr "Ógengilegt"
 
 #. [topic]: id=terrain_unwalkable
-#: data/core/help.cfg:722
+#: data/core/help.cfg:721
 #, fuzzy
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
@@ -2905,12 +2904,12 @@ msgstr ""
 "geta bara fljúgandi einingar farið yfir þetta svæði. "
 
 #. [topic]: id=terrain_lava
-#: data/core/help.cfg:729
+#: data/core/help.cfg:728
 msgid "Lava"
 msgstr "Hraun"
 
 #. [topic]: id=terrain_lava
-#: data/core/help.cfg:732
+#: data/core/help.cfg:731
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -2922,12 +2921,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=terrain_ford
-#: data/core/help.cfg:739
+#: data/core/help.cfg:738
 msgid "River Ford"
 msgstr "Væða"
 
 #. [topic]: id=terrain_ford
-#: data/core/help.cfg:742
+#: data/core/help.cfg:741
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2942,12 +2941,12 @@ msgstr ""
 "grunnsævi, veltandi á því hvað hentar einingunni sem er á reitnum best."
 
 #. [topic]: id=terrain_reef
-#: data/core/help.cfg:749
+#: data/core/help.cfg:748
 msgid "Coastal Reef"
 msgstr "Árif"
 
 #. [topic]: id=terrain_reef
-#: data/core/help.cfg:754
+#: data/core/help.cfg:753
 #, fuzzy
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
@@ -2964,12 +2963,12 @@ msgstr ""
 "Hafmenn og Naga fá bæði 70% vörn á árifum."
 
 #. [topic]: id=terrain_bridge
-#: data/core/help.cfg:761
+#: data/core/help.cfg:760
 msgid "Bridge"
 msgstr "Brýr"
 
 #. [topic]: id=terrain_bridge
-#: data/core/help.cfg:767
+#: data/core/help.cfg:766
 #, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a "
@@ -2995,12 +2994,12 @@ msgstr ""
 "sundvera og landvera geta ekki verið báðir á sama reit á brúnni á sama tíma."
 
 #. [topic]: id=terrain_impassable
-#: data/core/help.cfg:774
+#: data/core/help.cfg:773
 msgid "Impassable"
 msgstr "Ófærð"
 
 #. [topic]: id=terrain_impassable
-#: data/core/help.cfg:777
+#: data/core/help.cfg:776
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -3015,12 +3014,12 @@ msgstr ""
 "gegnum þykku steinveggina."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:790
+#: data/core/help.cfg:789
 msgid "General commands"
 msgstr "Almennar skipanir"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:795
+#: data/core/help.cfg:794
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3031,7 +3030,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:799
+#: data/core/help.cfg:798
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3041,7 +3040,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:802
+#: data/core/help.cfg:801
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3053,7 +3052,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:805
+#: data/core/help.cfg:804
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3064,7 +3063,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:808
+#: data/core/help.cfg:807
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3072,7 +3071,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:811
+#: data/core/help.cfg:810
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3083,7 +3082,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:814
+#: data/core/help.cfg:813
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3094,7 +3093,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:817
+#: data/core/help.cfg:816
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3105,7 +3104,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:820
+#: data/core/help.cfg:819
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3116,7 +3115,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:821
+#: data/core/help.cfg:820
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3125,12 +3124,12 @@ msgstr ""
 "Vistar leik og lokar svo (án aðspurnar)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:829
+#: data/core/help.cfg:828
 msgid "Multiplayer commands"
 msgstr "Fjölspilunarskipanir"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:835
+#: data/core/help.cfg:834
 #, fuzzy
 msgid ""
 "\n"
@@ -3145,7 +3144,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:838
+#: data/core/help.cfg:837
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3158,7 +3157,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:841
+#: data/core/help.cfg:840
 #, fuzzy
 msgid ""
 "\n"
@@ -3174,7 +3173,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:844
+#: data/core/help.cfg:843
 #, fuzzy
 msgid ""
 "\n"
@@ -3187,7 +3186,7 @@ msgstr ""
 "stjórna liði í leiknum sem þú ert í."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:847
+#: data/core/help.cfg:846
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3200,7 +3199,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:850
+#: data/core/help.cfg:849
 #, fuzzy
 msgid ""
 "\n"
@@ -3211,7 +3210,7 @@ msgstr ""
 "Þaggar niður í eða leyfir áhorfendum að tala. Fer á milli Á/Af."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:853
+#: data/core/help.cfg:852
 #, fuzzy
 msgid ""
 "\n"
@@ -3225,7 +3224,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:854
+#: data/core/help.cfg:853
 #, fuzzy
 msgid ""
 "\n"
@@ -3238,12 +3237,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:861
+#: data/core/help.cfg:860
 msgid "Debug mode commands"
 msgstr "Aflúsunarhamsskipanir"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:865
+#: data/core/help.cfg:864
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3252,7 +3251,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:868
+#: data/core/help.cfg:867
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3263,7 +3262,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:871
+#: data/core/help.cfg:870
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3271,7 +3270,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:874
+#: data/core/help.cfg:873
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3282,7 +3281,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:877
+#: data/core/help.cfg:876
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3293,7 +3292,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:880
+#: data/core/help.cfg:879
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3301,7 +3300,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:883
+#: data/core/help.cfg:882
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3309,7 +3308,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:886
+#: data/core/help.cfg:885
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3317,7 +3316,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:889
+#: data/core/help.cfg:888
 #, fuzzy
 msgid ""
 "\n"
@@ -3329,7 +3328,7 @@ msgstr ""
 "Breytir silgreindan eiginleika valda einingu. Til dæmis: :unit hitpoints=100"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:890
+#: data/core/help.cfg:889
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3861,18 +3860,24 @@ msgid " This unit is capable of basic healing."
 msgstr " Þessi eining getur læknað lítillega."
 
 #: data/core/macros/special-notes.cfg:17
+#, fuzzy
+#| msgid " This unit is capable of basic healing."
+msgid " This unit is capable of rapid healing."
+msgstr " Þessi eining getur læknað lítillega."
+
+#: data/core/macros/special-notes.cfg:20
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
 " Þessi eining getur læknað þá sem standa næst sér, og læknað þá af eitri."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:23
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr " Þessi eining getur læknað eituráhrif af einingum nærri sér."
 
-#: data/core/macros/special-notes.cfg:23
+#: data/core/macros/special-notes.cfg:26
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
@@ -3880,7 +3885,7 @@ msgstr ""
 " Þessi eining endurskapar sig, sem leyfir henni að lækna sig alltaf eins og "
 "hún væri í þorpi. "
 
-#: data/core/macros/special-notes.cfg:26
+#: data/core/macros/special-notes.cfg:29
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
@@ -3888,7 +3893,7 @@ msgstr ""
 " Staðfesta þessarar einingar dregur úr meiðslum frá sumum árásum, enn bara "
 "þegar hún verst."
 
-#: data/core/macros/special-notes.cfg:29
+#: data/core/macros/special-notes.cfg:32
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -3896,7 +3901,7 @@ msgstr ""
 " Leiðtogahæfileikar þessarar einingar leyfa öðrum samliggjandi einingum að "
 "gera meiri skaða í bardaga, séu þær á lægra styrkleikastigi."
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:35
 msgid ""
 " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
@@ -3904,11 +3909,11 @@ msgstr ""
 " Þessi eining er góð í að trufla óvini og getur hlaupið í gegnum stjórnsvæði "
 "óvinanna óhindrað."
 
-#: data/core/macros/special-notes.cfg:35
+#: data/core/macros/special-notes.cfg:38
 msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " Lýsing eykur ljósstyrk í nærliggjandi svæði."
 
-#: data/core/macros/special-notes.cfg:38
+#: data/core/macros/special-notes.cfg:41
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
@@ -3916,7 +3921,7 @@ msgstr ""
 " Þessi eining getur fjarflutt sig á milli hvaða tveggja þorpa sem er sem "
 "eigandi einingarinnar á, séu þorpin tóm."
 
-#: data/core/macros/special-notes.cfg:41
+#: data/core/macros/special-notes.cfg:44
 msgid ""
 " In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -3924,13 +3929,13 @@ msgstr ""
 " Í skóglendi, getur þessi eining verið ósýnileg fyrir óvinum sínum, nema "
 "þeir standi við hana eða hún sýnir sig með því að gera árás."
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:47
 msgid " This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 " Þessi eining getur falið sig að nóttu til, skiljandi engin ummerki eftir um "
 "nærveru sína."
 
-#: data/core/macros/special-notes.cfg:47
+#: data/core/macros/special-notes.cfg:50
 msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -3938,14 +3943,14 @@ msgstr ""
 " Þessi eining getur falið sig í þorpum (nema neðansjávar þorpum) og verið "
 "ósýnileg óvinum sínum, nema þeir standi við hana."
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:53
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 " Þessi eining getur ferðast óseð um djúpt vatn, þurfandi ekkert loft frá "
 "yfirborðinu."
 
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:56
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
@@ -3953,7 +3958,7 @@ msgstr ""
 " Þessi eining fær 1 auka lífspunkt ofan á hámark lífspunkta sína í hvert "
 "skipti sem hún drepur einingu."
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:59
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -3961,7 +3966,7 @@ msgstr ""
 " Hvert skipti sem notast er við berserk mun einingin þrýsta einvígið þar til "
 "annar hvor liggur dauður niðri."
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:62
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -3970,7 +3975,7 @@ msgstr ""
 " Ef óvinur skotmarksins er hinum megin við skotmarkið meðan ráðist er á það, "
 "má þessi eining bakstinga, sem gerir tvöfaldan skaða."
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:65
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
@@ -3978,7 +3983,7 @@ msgstr ""
 " Óvinir sem missa líf sitt til plágurnar, munu rísa aftur í Ódauða, nema "
 "þeir standi í þorpum."
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:68
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -3986,14 +3991,14 @@ msgstr ""
 " Þessi eining hægir á óvinum sínum, minkandi hreyfigetu þeirra og skaða um "
 "helming þar til skotmörkin enda lotu."
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:71
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 " Hæfileikinn til að geta breytt lifandi verum í stein gerir þessa einingu "
 "mjög hættulega."
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:74
 msgid ""
 " This unit’s marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
@@ -4001,7 +4006,7 @@ msgstr ""
 " Hittni þessarar einingar leyfir henni að hitta andstæðing sinn nokkuð oft "
 "og vel, enn bara á sókninni."
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:77
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -4009,7 +4014,7 @@ msgstr ""
 " Þessi eining hefur galdra árásir, sem hafa alltaf góðar líkur á að hitta "
 "óvinin."
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:80
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
@@ -4017,7 +4022,7 @@ msgstr ""
 " Svarmandi árásir þessarar einingar verða máttminni hvenær sem þessi eining "
 "er slösuð. "
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:83
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -4025,7 +4030,7 @@ msgstr ""
 " Beitandi áhlaupi, getur þessi eining gert tvöfaldan skaða enn fær á sig "
 "tvöfaldan skaða; hefur ekki áhrif þegar þessi eining er í vörn."
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:86
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
@@ -4033,7 +4038,7 @@ msgstr ""
 " Í bardaga, getur þessi eining tæmt líf úr óvinum sínum til að auka við sitt "
 "eigið."
 
-#: data/core/macros/special-notes.cfg:86
+#: data/core/macros/special-notes.cfg:89
 msgid ""
 " The length of this unit’s weapon allows it to strike first in melee, even "
 "in defense."
@@ -4041,7 +4046,7 @@ msgstr ""
 " Lengd vopn þessarar einingar, leyfir þeim að eiga alltaf fyrsta höggið, "
 "líka í vörn."
 
-#: data/core/macros/special-notes.cfg:89
+#: data/core/macros/special-notes.cfg:92
 msgid ""
 " The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."

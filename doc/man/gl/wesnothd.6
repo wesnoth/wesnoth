@@ -22,7 +22,7 @@
 .
 .SH NOME
 .
-wesnothd ─ Daemon de rede para partidas con varios xogadores de A batalla
+wesnothd — Daemon de rede para partidas con varios xogadores de A batalla
 por \fBWesnoth\fP.
 .
 .SH SINOPSE
@@ -36,7 +36,7 @@ por \fBWesnoth\fP.
 .
 Xestiona partidas de A batalla por Wesnoth con varios xogadores. Véxanse en
 «http://www.wesnoth.org/wiki/ServerAdministration» (en inglés) as ordes que
-acepta o servidor a través do cliente wesnoth (/query [...]) ou do fifo.
+acepta o servidor a través do cliente wesnoth (/query […]) ou do fifo.
 .
 .SH OPCIÓNS
 .
@@ -52,7 +52,7 @@ Executa wesnothd coma un daemon.
 \fB\-h, \-\-help\fP
 Indica as funcións das opcións de liña de ordes.
 .TP 
-\fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio_1\fP\fB,\fP\fIdominio_2\fP\fB,\fP\fI...\fP
+\fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio_1\fP\fB,\fP\fIdominio_2\fP\fB,\fP\fI…\fP
 Establece o nivel de severidade dos dominios do rexistro.  Pódese usar
 \fBall\fP para referirse a calquera dominio do rexistro. Os niveis dispoñíbeis
 son os seguintes: \fBerror\fP (erro),\ \fBwarning\fP (aviso),\ \fBinfo\fP
@@ -86,7 +86,7 @@ Activa o rexistro da depuración.
 .IP
 \fIclave\fP="\fIvalor\fP"
 .IP
-\fIclave\fP="\fIvalor\fP,\fIvalor\fP,..."
+\fIclave\fP="\fIvalor\fP,\fIvalor\fP,…"
 .P
 [/\fIetiqueta\fP]
 .
@@ -100,7 +100,7 @@ apagado e reinicio ignoraranse salvo que procedan do fifo.  Co valor \fByes\fP
 un administrador.
 .TP 
 \fBban_save_file\fP
-Ruta completa ou relativa a un ficheiro ─comprimido con gzip─ que o servidor
+Ruta completa ou relativa a un ficheiro —comprimido con gzip— que o servidor
 poida ler e escribir. As vedas hanse gardar neste ficheiro e leranse de novo
 cando se inicie o servidor.
 .TP 
@@ -119,8 +119,8 @@ valores predeterminados son:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-A ruta ao fifo polo que se poden enviar ordes ao servidor ─equivalente ao
-“/query ...” dende o wesnoth─. Se non se especifica outra cousa, toma a ruta
+A ruta ao fifo polo que se poden enviar ordes ao servidor —equivalente ao
+“/query …” dende o wesnoth—. Se non se especifica outra cousa, toma a ruta
 indicada como valor predeterminado durante a compilación (en principio
 \fB/var/run/socket/wesnothd/socket\fP).
 .TP 
@@ -142,8 +142,8 @@ son \fBeveryone\fP («todos»), \fBregistered\fP (só os usuarios «rexistrados�
 indique o contrario, poden todos.
 .TP 
 \fBpasswd\fP
-O contrasinal que se utiliza para obter privilexios de administrador ─por
-medio de \fB/query admin \fP\fIcontrasinal\fP─.
+O contrasinal que se utiliza para obter privilexios de administrador —por
+medio de \fB/query admin \fP\fIcontrasinal\fP—.
 .TP 
 \fBreplay_save_path\fP
 O directorio no que o servidor garda as repeticións das partidas (non
@@ -174,9 +174,9 @@ Por exemplo: \fBversions_accepted="*"\fP aceptará calquera versión.
 .TP  
 \fBuser_handler\fP
 O nome do xestor de usuarios a empregar. Os xestores de usuarios dispoñíbeis
-actualmente son \fBforum\fP ─para conectar wesnothd á base de datos dun foro
-phpbb─ e \fBsample\fP ─unha mostra de exemplo da interface do xestor de
-usuarios, hai que estar tolo para utilizala en algo de verdade─. O valor
+actualmente son \fBforum\fP —para conectar wesnothd á base de datos dun foro
+phpbb— e \fBsample\fP —unha mostra de exemplo da interface do xestor de
+usuarios, hai que estar tolo para utilizala en algo de verdade—. O valor
 predeterminado é \fBforum\fP. Tamén hai que engadir unha sección
 \fB[user_handler]\fP, véxase a continuación.
 .
@@ -206,9 +206,9 @@ duracións de vedas temporais.
 O nome a usar para referirse á veda.
 .TP 
 \fBtime\fP
-A duración. O formato é «%d[%s[%d%s[...]]]», onde %s será «s» (segundos),
-«m» (minutos), «h» (horas), «D» (días), «M» (meses) ou «Y» (anos), e %d será
-un número. Se non se fornece un modificador de tempo, interpretarase a
+A duración. O formato é «%d[%s[%d%s[…]]]», onde %s será «s» (segundos), «m»
+(minutos), «h» (horas), «D» (días), «M» (meses) ou «Y» (anos), e %d será un
+número. Se non se fornece un modificador de tempo, interpretarase a
 cantidade indicada como minutos. Por exemplo: time="1D12h30m" é unha veda de
 1 día, 12 horas e 30 minutos.
 .RE
@@ -240,7 +240,7 @@ O contrasinal de dito usuario (para «user_handler=forum»).
 .TP  
 \fBdb_users_table\fP
 O nome da táboa na que o foro phpbb almacena os datos do usuario (para
-«user_handler=forum»). O máis probable é que dita táboa sexa
+«user_handler=forum»). O máis probábel é que dita táboa sexa
 <prefixo\-da\-táboa>_users (por exemplo, «phpbb3_users»).
 .TP  
 \fBdb_extra_table\fP

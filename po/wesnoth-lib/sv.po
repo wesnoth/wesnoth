@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-05 10:12+0200\n"
+"POT-Creation-Date: 2011-05-30 20:47+0200\n"
 "PO-Revision-Date: 2011-05-12 20:12+0100\n"
 "Last-Translator: Niklas Bolmdahl <wesnoth@niklas.bolmdahl.se>\n"
 "Language-Team: Swedish\n"
@@ -235,579 +235,573 @@ msgstr "Blommande näckrosor"
 msgid "Great Tree"
 msgstr "Stort träd"
 
-#. [terrain_type]: id=tropical_forest
+#. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:422
+#, fuzzy
+#| msgid "Great Tree"
+msgid "Dead Great Tree"
+msgstr "Stort träd"
+
+#. [terrain_type]: id=tropical_forest
+#: data/core/terrain.cfg:432
 msgid "Tropical Forest"
 msgstr "Tropisk skog"
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:432
+#: data/core/terrain.cfg:442
 msgid "Forest"
 msgstr "Skog"
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:433
+#: data/core/terrain.cfg:443
 msgid "Pine Forest"
 msgstr "Tallskog"
 
 #. [terrain_type]: id=snow_forest
-#: data/core/terrain.cfg:442
+#: data/core/terrain.cfg:452
 msgid "Snowy Pine Forest"
 msgstr "Snötäckt tallskog"
 
 #. [terrain_type]: id=deciduous_forest_summer
-#: data/core/terrain.cfg:453
+#: data/core/terrain.cfg:463
 msgid "Summer Deciduous Forest"
 msgstr "Lövskog (sommar)"
 
 #. [terrain_type]: id=deciduous_forest_fall
-#: data/core/terrain.cfg:463
+#: data/core/terrain.cfg:473
 msgid "Fall Deciduous Forest"
 msgstr "Lövskog (höst)"
 
 #. [terrain_type]: id=deciduous_forest_winter
-#: data/core/terrain.cfg:473
+#: data/core/terrain.cfg:483
 msgid "Winter Deciduous Forest"
 msgstr "Lövskog (vinter)"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
-#: data/core/terrain.cfg:483
+#: data/core/terrain.cfg:493
 msgid "Snowy Deciduous Forest"
 msgstr "Snötäckt lövskog"
 
 #. [terrain_type]: id=mixed_forest_summer
-#: data/core/terrain.cfg:494
+#: data/core/terrain.cfg:504
 msgid "Summer Mixed Forest"
 msgstr "Blandskog (sommar)"
 
 #. [terrain_type]: id=mixed_forest_fall
-#: data/core/terrain.cfg:504
+#: data/core/terrain.cfg:514
 msgid "Fall Mixed Forest"
 msgstr "Blandskog (höst)"
 
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:514
+#: data/core/terrain.cfg:524
 msgid "Winter Mixed Forest"
 msgstr "Blandskog (vinter)"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:524
+#: data/core/terrain.cfg:534
 msgid "Snowy Mixed Forest"
 msgstr "Snötäckt blandskog"
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:539
+#: data/core/terrain.cfg:549
 msgid "Hills"
 msgstr "Kullar"
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:540
+#: data/core/terrain.cfg:550
 msgid "Regular Hills"
 msgstr "Vanliga kullar"
 
 #. [terrain_type]: id=hills_dry
-#: data/core/terrain.cfg:548
+#: data/core/terrain.cfg:558
 msgid "Dry Hills"
 msgstr "Torra kullar"
 
 #. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:557
+#: data/core/terrain.cfg:567
 msgid "Dunes"
 msgstr "Dyner"
 
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:567
+#: data/core/terrain.cfg:577
 msgid "Snow Hills"
 msgstr "Snötäckta kullar"
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:581
+#: data/core/terrain.cfg:591
 msgid "Mountains"
 msgstr "Berg"
 
 #. [terrain_type]: id=desert_mountains
-#: data/core/terrain.cfg:589
+#: data/core/terrain.cfg:599
 msgid "Dry Mountains"
 msgstr "Torra berg"
 
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:598
+#: data/core/terrain.cfg:608
 msgid "Snowy Mountains"
 msgstr "Snöiga berg"
 
 #. [terrain_type]: id=forested_hills
-#: data/core/terrain.cfg:612
-#: data/core/terrain.cfg:716
+#: data/core/terrain.cfg:622 data/core/terrain.cfg:726
 msgid "Forested Hills"
 msgstr "Skogsklädda kullar"
 
 #. [terrain_type]: id=forested_snow_hills
-#: data/core/terrain.cfg:622
+#: data/core/terrain.cfg:632
 msgid "Forested Snow Hills"
 msgstr "Snötäckta skogsklädda kullar"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #. [terrain_type]
-#: data/core/terrain.cfg:632
-#: data/core/terrain.cfg:724
+#: data/core/terrain.cfg:642 data/core/terrain.cfg:734
 msgid "Summer Deciduous Forested Hills"
 msgstr "Lövskogsklädda kullar (sommar)"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
 #. [terrain_type]
-#: data/core/terrain.cfg:642
-#: data/core/terrain.cfg:731
+#: data/core/terrain.cfg:652 data/core/terrain.cfg:741
 msgid "Fall Deciduous Forested Hills"
 msgstr "Lövskogsklädda kullar (höst)"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
 #. [terrain_type]
-#: data/core/terrain.cfg:652
-#: data/core/terrain.cfg:738
-#: data/core/terrain.cfg:745
+#: data/core/terrain.cfg:662 data/core/terrain.cfg:748
+#: data/core/terrain.cfg:755
 msgid "Winter Deciduous Forested Hills"
 msgstr "Lövskogsklädda kullar (vinter)"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #. [terrain_type]
-#: data/core/terrain.cfg:662
-#: data/core/terrain.cfg:752
-#: data/core/terrain.cfg:759
+#: data/core/terrain.cfg:672 data/core/terrain.cfg:762
+#: data/core/terrain.cfg:769
 msgid "Snowy Deciduous Forested Hills"
 msgstr "Snöiga lövskogsklädda kullar"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
 #. [terrain_type]
-#: data/core/terrain.cfg:672
-#: data/core/terrain.cfg:766
+#: data/core/terrain.cfg:682 data/core/terrain.cfg:776
 msgid "Summer Mixed Forested Hills"
 msgstr "Blandskogsklädda kullar (sommar)"
 
 #. [terrain_type]: id=mixed_forest_fall_hills
 #. [terrain_type]
-#: data/core/terrain.cfg:682
-#: data/core/terrain.cfg:773
+#: data/core/terrain.cfg:692 data/core/terrain.cfg:783
 msgid "Fall Mixed Forested Hills"
 msgstr "Blandskogsklädda kullar (höst)"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #. [terrain_type]
-#: data/core/terrain.cfg:692
-#: data/core/terrain.cfg:780
-#: data/core/terrain.cfg:787
+#: data/core/terrain.cfg:702 data/core/terrain.cfg:790
+#: data/core/terrain.cfg:797
 msgid "Winter Mixed Forested Hills"
 msgstr "Blandskogsklädda kullar (vinter)"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #. [terrain_type]
-#: data/core/terrain.cfg:702
-#: data/core/terrain.cfg:794
-#: data/core/terrain.cfg:801
+#: data/core/terrain.cfg:712 data/core/terrain.cfg:804
+#: data/core/terrain.cfg:811
 msgid "Snowy Mixed Forested Hills"
 msgstr "Snöiga blandskogsklädda kullar"
 
 #. [terrain_type]
-#: data/core/terrain.cfg:814
+#: data/core/terrain.cfg:824
 msgid "Basic Wooden Floor"
 msgstr "Enkelt trägolv"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:827
+#: data/core/terrain.cfg:837
 msgid "Lit"
 msgstr "Upplyst"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:828
+#: data/core/terrain.cfg:838
 msgid "Beam of Light"
 msgstr "Ljusstråle"
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:838
+#: data/core/terrain.cfg:848
 msgid "Cave"
 msgstr "Grotta"
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:839
+#: data/core/terrain.cfg:849
 msgid "Cave Floor"
 msgstr "Grottgolv"
 
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:847
+#: data/core/terrain.cfg:857
 msgid "Earthy Cave Floor"
 msgstr "Jordtäckt grottgolv"
 
 #. [terrain_type]: id=flagstones_dark
-#: data/core/terrain.cfg:856
+#: data/core/terrain.cfg:866
 msgid "Dark Flagstones"
 msgstr "Mörk gatsten"
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:865
+#: data/core/terrain.cfg:875
 msgid "Cave Path"
 msgstr "Grottgång"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:874
+#: data/core/terrain.cfg:884
 msgid "Mushroom Grove"
 msgstr "Svampdunge"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:883
+#: data/core/terrain.cfg:893
 msgid "Lit Mushroom Grove"
 msgstr "Upplyst svampdunge"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:894
+#: data/core/terrain.cfg:904
 msgid "Rockbound Cave"
 msgstr "Klippgrotta"
 
 #. [terrain_type]: id=rails
 #. [terrain_type]: id=railsdiag1
 #. [terrain_type]: id=railsdiag2
-#: data/core/terrain.cfg:906
-#: data/core/terrain.cfg:918
-#: data/core/terrain.cfg:930
+#: data/core/terrain.cfg:916 data/core/terrain.cfg:928
+#: data/core/terrain.cfg:940
 msgid "Mine Rail"
 msgstr "Gruvbana"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:947
+#: data/core/terrain.cfg:957
 msgid "Regular Chasm"
 msgstr "Kanjon"
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:957
+#: data/core/terrain.cfg:967
 msgid "Earthy Chasm"
 msgstr "Jordtäckt Kanjon"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:967
+#: data/core/terrain.cfg:977
 msgid "Ethereal Abyss"
 msgstr "Eterisk Avgrund"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:977
+#: data/core/terrain.cfg:987
 msgid "Lava Chasm"
 msgstr "Lavaklyfta"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:987
+#: data/core/terrain.cfg:997
 msgid "Lava"
 msgstr "Lava"
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:998
+#: data/core/terrain.cfg:1008
 msgid "Volcano"
 msgstr "Vulkan"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1012
+#: data/core/terrain.cfg:1022
 msgid "Regular Impassable Mountains"
 msgstr "OVanliga obestigbara berg"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:1021
+#: data/core/terrain.cfg:1031
 msgid "Desert Impassable Mountains"
 msgstr "Obestigbara ökenberg"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:1030
+#: data/core/terrain.cfg:1040
 msgid "Snowy Impassable Mountains"
 msgstr "Snötäckta, obestigbara berg"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1040
+#: data/core/terrain.cfg:1050
 msgid "Natural Cave Wall"
 msgstr "Naturlig grottvägg"
 
 #. [terrain_type]: id=cavewall_hewn
-#: data/core/terrain.cfg:1050
+#: data/core/terrain.cfg:1060
 msgid "Hewn Cave Wall"
 msgstr "Tillyxad grottvägg"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:1060
+#: data/core/terrain.cfg:1070
 msgid "Natural Earthy Cave Wall"
 msgstr "Naturlig grottvägg (jord)"
 
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1070
+#: data/core/terrain.cfg:1080
 msgid "Reinforced Earthy Cave Wall"
 msgstr "Förstärkt grottvägg (jord)"
 
 #. [terrain_type]: id=wall_stone
-#: data/core/terrain.cfg:1080
+#: data/core/terrain.cfg:1090
 msgid "Stone Wall"
 msgstr "Stenvägg"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1090
+#: data/core/terrain.cfg:1100
 msgid "Lit Stone Wall"
 msgstr "Upplyst stenvägg"
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:1100
+#: data/core/terrain.cfg:1110
 msgid "Impassable Overlay"
 msgstr "Oframkomlighetsmarkering"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:1111
+#: data/core/terrain.cfg:1121
 msgid "Void"
 msgstr "Tomhet"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1126
+#: data/core/terrain.cfg:1136
 msgid "Adobe Village"
 msgstr "Ökenby"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1138
+#: data/core/terrain.cfg:1148
 msgid "Desert Tent Village"
 msgstr "Tältby i öken"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1150
+#: data/core/terrain.cfg:1160
 msgid "Tent Village"
 msgstr "Tältby"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1164
+#: data/core/terrain.cfg:1174
 msgid "Orcish Village"
 msgstr "Orchby"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1176
+#: data/core/terrain.cfg:1186
 msgid "Snowy Orcish Village"
 msgstr "Snötäckt orchby"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1190
+#: data/core/terrain.cfg:1200
 msgid "Snowy Elven Village"
 msgstr "Snötäckt alvby"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1202
+#: data/core/terrain.cfg:1212
 msgid "Elven Village"
 msgstr "Alvby"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1216
+#: data/core/terrain.cfg:1226
 msgid "Cottage"
 msgstr "Stuga"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1228
+#: data/core/terrain.cfg:1238
 msgid "Snowy Cottage"
 msgstr "Snötäckt stuga"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1240
+#: data/core/terrain.cfg:1250
 msgid "Ruined Cottage"
 msgstr "Trasig Stuga"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1252
+#: data/core/terrain.cfg:1262
 msgid "Human City"
 msgstr "Människostad"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1264
+#: data/core/terrain.cfg:1274
 msgid "Snowy Human City"
 msgstr "Snötäckt människostad"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1276
+#: data/core/terrain.cfg:1286
 msgid "Ruined Human City"
 msgstr "Förstörd människostad"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1288
+#: data/core/terrain.cfg:1298
 msgid "Hill Stone Village"
 msgstr "Bergsby"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1300
+#: data/core/terrain.cfg:1310
 msgid "Snowy Hill Stone Village"
 msgstr "Snötcäkt bergsby"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1312
+#: data/core/terrain.cfg:1322
 msgid "Ruined Hill Stone Village"
 msgstr "Förstörd bergsby"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1324
+#: data/core/terrain.cfg:1334
 msgid "Tropical Village"
 msgstr "Tropisk by"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1336
+#: data/core/terrain.cfg:1346
 msgid "Drake Village"
 msgstr "Drakby"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1350
+#: data/core/terrain.cfg:1360
 msgid "Cave Village"
 msgstr "Grottby"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1362
+#: data/core/terrain.cfg:1372
 msgid "Dwarven Village"
 msgstr "Dvärgaby"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1374
+#: data/core/terrain.cfg:1384
 msgid "Hut"
 msgstr "Hydda"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1386
+#: data/core/terrain.cfg:1396
 msgid "Snowy Hut"
 msgstr "Snötäckt hydda"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:1398
+#: data/core/terrain.cfg:1408
 msgid "Log Cabin"
 msgstr "Timmerhus"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:1410
+#: data/core/terrain.cfg:1420
 msgid "Snowy Log Cabin"
 msgstr "Snöig Timmerstuga"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:1422
+#: data/core/terrain.cfg:1432
 msgid "Igloo"
 msgstr "Igloo"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:1436
+#: data/core/terrain.cfg:1446
 msgid "Swamp Village"
 msgstr "Träskby"
 
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:1448
-#: data/core/terrain.cfg:1461
+#: data/core/terrain.cfg:1458 data/core/terrain.cfg:1471
 msgid "Aquatic Village"
 msgstr "Vattenby"
 
 #. [terrain_type]: id=mermen_village
-#: data/core/terrain.cfg:1449
+#: data/core/terrain.cfg:1459
 msgid "Shallow Merfolk Village"
 msgstr "Sjöfolksby (grunt vatten)"
 
 #. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:1462
+#: data/core/terrain.cfg:1472
 msgid "Swamp Merfolk Village"
 msgstr "Sjöfolksby (träsk)"
 
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1474
-#: data/core/terrain.cfg:2057
+#: data/core/terrain.cfg:1484 data/core/terrain.cfg:2067
 msgid "Village"
 msgstr "By"
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:1475
+#: data/core/terrain.cfg:1485
 msgid "Village Overlay"
 msgstr "Bymarkering"
 
 #. [terrain_type]: id=encampment
-#: data/core/terrain.cfg:1490
+#: data/core/terrain.cfg:1500
 msgid "Encampment"
 msgstr "Läger"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1501
+#: data/core/terrain.cfg:1511
 msgid "Snowy Encampment"
 msgstr "Snötäckt läger"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1512
+#: data/core/terrain.cfg:1522
 msgid "Orcish Castle"
 msgstr "Orchborg"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1523
+#: data/core/terrain.cfg:1533
 msgid "Snowy Orcish Castle"
 msgstr "Snötäckt orchborg"
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1534
-#: data/core/terrain.cfg:1812
+#: data/core/terrain.cfg:1544 data/core/terrain.cfg:1822
 msgid "Castle"
 msgstr "Borg"
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:1535
+#: data/core/terrain.cfg:1545
 msgid "Human Castle"
 msgstr "Människoborg"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1545
+#: data/core/terrain.cfg:1555
 msgid "Snowy Human Castle"
 msgstr "Snötäckt människoborg"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:1555
+#: data/core/terrain.cfg:1565
 msgid "Elvish Castle"
 msgstr "Alvborg"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:1566
+#: data/core/terrain.cfg:1576
 msgid "Dwarven Castle"
 msgstr "Dvärgborg"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1577
+#: data/core/terrain.cfg:1587
 msgid "Ruined Human Castle"
 msgstr "Förstörd människoborg"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1588
+#: data/core/terrain.cfg:1598
 msgid "Sunken Human Ruin"
 msgstr "Översvämmad borgruin"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1600
+#: data/core/terrain.cfg:1610
 msgid "Swamp Human Ruin"
 msgstr "Träskruin"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1612
+#: data/core/terrain.cfg:1622
 msgid "Desert Castle"
 msgstr "Ökenslott"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:1623
+#: data/core/terrain.cfg:1633
 msgid "Ruined Desert Castle"
 msgstr "Ökenslottsruin"
 
 #. [terrain_type]: id=encampment_keep
-#: data/core/terrain.cfg:1638
+#: data/core/terrain.cfg:1648
 msgid "Encampment Keep"
 msgstr "Lägerkärntorn"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:1650
+#: data/core/terrain.cfg:1660
 msgid "Tall Encampment Keep"
 msgstr "Högt lägerkärntorn"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1662
+#: data/core/terrain.cfg:1672
 msgid "Snowy Encampment Keep"
 msgstr "Snötäckt lägerkärntorn"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1674
+#: data/core/terrain.cfg:1684
 msgid "Orcish Keep"
 msgstr "Orchkärntorn"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1686
+#: data/core/terrain.cfg:1696
 msgid "Snowy Orcish Keep"
 msgstr "Snötäckt orchkärntorn"
 
@@ -815,142 +809,136 @@ msgstr "Snötäckt orchkärntorn"
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=desert_keep_ruined
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1698
-#: data/core/terrain.cfg:1785
-#: data/core/terrain.cfg:1798
-#: data/core/terrain.cfg:1824
+#: data/core/terrain.cfg:1708 data/core/terrain.cfg:1795
+#: data/core/terrain.cfg:1808 data/core/terrain.cfg:1834
 msgid "Keep"
 msgstr "Kärntorn"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:1699
+#: data/core/terrain.cfg:1709
 msgid "Human Castle Keep"
 msgstr "Människokärntorn"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:1711
+#: data/core/terrain.cfg:1721
 msgid "Snowy Human Castle Keep"
 msgstr "Snötäckt människokärntorn"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1723
+#: data/core/terrain.cfg:1733
 msgid "Elven Castle Keep"
 msgstr "Alvkärntorn"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:1735
+#: data/core/terrain.cfg:1745
 msgid "Dwarven Castle Keep"
 msgstr "Dvärgkärntorn"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1747
+#: data/core/terrain.cfg:1757
 msgid "Ruined Human Castle Keep"
 msgstr "Människokärntornsruin"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1759
+#: data/core/terrain.cfg:1769
 msgid "Sunken Keep"
 msgstr "Översvämmat kärntorn"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1760
+#: data/core/terrain.cfg:1770
 msgid "Sunken Human Castle Keep"
 msgstr "Översvämmat kärntorn för människoborg"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1772
+#: data/core/terrain.cfg:1782
 msgid "Swamp Keep"
 msgstr "Träskkärntorn"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1773
+#: data/core/terrain.cfg:1783
 msgid "Swamp Human Castle Keep"
 msgstr "Träskkärntorn för människoborg"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1786
+#: data/core/terrain.cfg:1796
 msgid "Desert Keep"
 msgstr "Ökenkärntorn"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:1799
+#: data/core/terrain.cfg:1809
 msgid "Ruined Desert Keep"
 msgstr "Ökenkärntornsruin"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1813
+#: data/core/terrain.cfg:1823
 msgid "Castle Overlay"
 msgstr "Borgmarkering"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1825
+#: data/core/terrain.cfg:1835
 msgid "Keep Overlay"
 msgstr "Kärntorns-markering"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:1842
-#: data/core/terrain.cfg:1853
-#: data/core/terrain.cfg:1864
+#: data/core/terrain.cfg:1852 data/core/terrain.cfg:1863
+#: data/core/terrain.cfg:1874
 msgid "Wooden Bridge"
 msgstr "Träbro"
 
 #. [terrain_type]: id=stone_bridge
-#: data/core/terrain.cfg:1877
-#: data/core/terrain.cfg:1888
-#: data/core/terrain.cfg:1899
+#: data/core/terrain.cfg:1887 data/core/terrain.cfg:1898
+#: data/core/terrain.cfg:1909
 msgid "Basic Stone Bridge"
 msgstr "Enkel stenbro"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:1912
-#: data/core/terrain.cfg:1922
-#: data/core/terrain.cfg:1933
+#: data/core/terrain.cfg:1922 data/core/terrain.cfg:1932
+#: data/core/terrain.cfg:1943
 msgid "Cave Chasm Bridge"
 msgstr "Grottbro"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1949
+#: data/core/terrain.cfg:1959
 msgid "Off Map"
 msgstr "Utanför kartan"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:1958
+#: data/core/terrain.cfg:1968
 msgid "Experimental Fake Map Edge"
 msgstr "Falsk, experimentell kartgräns"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:1967
-#: data/gui/default/window/mp_create_game.cfg:479
+#: data/core/terrain.cfg:1977 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr "Slöja"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:1976
+#: data/core/terrain.cfg:1986
 msgid "Fog"
 msgstr "Dimma"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2043
+#: data/core/terrain.cfg:2053
 msgid "Flat"
 msgstr "Plan"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2050
+#: data/core/terrain.cfg:2060
 msgid "Frozen"
 msgstr "Frusen"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2064
+#: data/core/terrain.cfg:2074
 msgid "Impassable"
 msgstr "Oframkomlig"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2071
+#: data/core/terrain.cfg:2081
 msgid "Unwalkable"
 msgstr "Ofarbar"
 
@@ -1019,8 +1007,7 @@ msgstr "Anslut"
 #: data/gui/default/window/simple_item_selector.cfg:155
 #: data/gui/default/window/unit_attack.cfg:208
 #: data/gui/default/window/unit_create.cfg:209
-#: data/gui/default/window/unit_create.cfg:210
-#: src/construct_dialog.cpp:128
+#: data/gui/default/window/unit_create.cfg:210 src/construct_dialog.cpp:128
 #: src/construct_dialog.cpp:131
 msgid "Cancel"
 msgstr "Avbryt"
@@ -1085,10 +1072,8 @@ msgstr "Starta en kampanj"
 #: data/gui/default/window/unit_create.cfg:197
 #: data/gui/default/window/unit_create.cfg:198
 #: data/gui/default/window/wml_message.cfg:478
-#: data/gui/default/window/wml_message.cfg:707
-#: src/construct_dialog.cpp:120
-#: src/construct_dialog.cpp:127
-#: src/gui/dialogs/message.cpp:162
+#: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
+#: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
 msgstr "OK"
@@ -1191,22 +1176,19 @@ msgstr "Generera"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:35
-#: src/hotkeys.cpp:123
+#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:123
 msgid "New Map"
 msgstr "Ny karta"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:54
-#: src/mapgen_dialog.cpp:121
+#: data/gui/default/window/editor_new_map.cfg:54 src/mapgen_dialog.cpp:121
 msgid "Width:"
 msgstr "Bredd:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:81
-#: src/mapgen_dialog.cpp:122
+#: data/gui/default/window/editor_new_map.cfg:81 src/mapgen_dialog.cpp:122
 msgid "Height:"
 msgstr "Höjd:"
 
@@ -1218,8 +1200,7 @@ msgstr "Skapa ny karta"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35
-#: src/hotkeys.cpp:169
+#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:169
 msgid "Resize Map"
 msgstr "Ändra kartans storlek"
 
@@ -1261,8 +1242,7 @@ msgstr "Ändra kartans storlek"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:46
-#: src/hotkeys.cpp:121
+#: data/gui/default/window/editor_settings.cfg:46 src/hotkeys.cpp:121
 msgid "Editor Settings"
 msgstr "Editor-Snabbtangentsinställningar"
 
@@ -1372,9 +1352,8 @@ msgstr "Execution trace"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
-#: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:232
-#: src/hotkeys.cpp:727
+#: data/gui/default/window/lobby_main.cfg:661
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:727
 #: src/hotkeys.cpp:1032
 msgid "Quit"
 msgstr "Avsluta"
@@ -1404,8 +1383,7 @@ msgstr "Fråga mig inte igen!"
 #: data/gui/default/window/game_save_oos.cfg:196
 #: data/gui/default/window/game_save_overwrite.cfg:96
 #: data/gui/default/window/game_save_overwrite.cfg:97
-#: src/construct_dialog.cpp:123
-#: src/gui/dialogs/message.cpp:176
+#: src/construct_dialog.cpp:123 src/gui/dialogs/message.cpp:176
 msgid "Yes"
 msgstr "Ja"
 
@@ -1415,16 +1393,14 @@ msgstr "Ja"
 #: data/gui/default/window/game_save_message.cfg:162
 #: data/gui/default/window/game_save_oos.cfg:210
 #: data/gui/default/window/game_save_overwrite.cfg:111
-#: src/construct_dialog.cpp:124
-#: src/gui/dialogs/message.cpp:178
+#: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:178
 msgid "No"
 msgstr "Nej"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:50
-#: src/gui/dialogs/mp_create_game.cpp:88
-#: src/hotkeys.cpp:72
+#: src/gui/dialogs/mp_create_game.cpp:102 src/hotkeys.cpp:72
 msgid "Load Game"
 msgstr "Öppna spel"
 
@@ -1448,8 +1424,7 @@ msgstr "Ångra order"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:40
 #: data/gui/default/window/game_save_message.cfg:40
-#: data/gui/default/window/game_save_oos.cfg:40
-#: src/hotkeys.cpp:69
+#: data/gui/default/window/game_save_oos.cfg:40 src/hotkeys.cpp:69
 msgid "Save Game"
 msgstr "Spara spelet"
 
@@ -1477,8 +1452,7 @@ msgstr "Ignorera alla"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:168
-#: src/hotkeys.cpp:91
+#: data/gui/default/window/game_save_oos.cfg:168 src/hotkeys.cpp:91
 msgid "Quit Game"
 msgstr "Avsluta spelet"
 
@@ -1529,10 +1503,9 @@ msgstr "Variabel"
 #. [button]: id=cancel
 #. [button]: id=close_window
 #: data/gui/default/window/gamestate_inspector.cfg:339
-#: data/gui/default/window/lobby_main.cfg:619
+#: data/gui/default/window/lobby_main.cfg:620
 #: data/gui/default/window/lobby_player_info.cfg:200
-#: data/gui/default/window/message.cfg:133
-#: src/construct_dialog.cpp:134
+#: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
 msgid "Close"
 msgstr "Stäng"
 
@@ -1561,157 +1534,161 @@ msgstr "Spel"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:177
+msgid "Assign sides to players at random"
+msgstr ""
+
+#. [row]
+#: data/gui/default/window/lobby_main.cfg:178
 msgid "Requires a password to join"
 msgstr "Kräver lösenord"
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:178
+#: data/gui/default/window/lobby_main.cfg:179
 #: data/gui/default/window/mp_create_game.cfg:321
 msgid "Use map settings"
 msgstr "Använd kartinställningar"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:179
+#: data/gui/default/window/lobby_main.cfg:180
 msgid "Reloaded game"
 msgstr "Omstartat spel"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:180
+#: data/gui/default/window/lobby_main.cfg:181
 msgid "Unknown era"
 msgstr "Okänd era"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:182
+#: data/gui/default/window/lobby_main.cfg:183
 msgid "Gold per village"
 msgstr "Guld per by"
 
 #. [label]
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:184
+#: data/gui/default/window/lobby_main.cfg:185
 #: data/gui/default/window/mp_create_game.cfg:420
 msgid "Experience modifier"
 msgstr "Erfarenhetsmodifierare"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:186
+#: data/gui/default/window/lobby_main.cfg:187
 msgid "Time limit"
 msgstr "Tidsgräns"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:305
+#: data/gui/default/window/lobby_main.cfg:306
 msgid "Sort players:"
 msgstr "Sortera spelare:"
 
 #. [toggle_button]: id=player_list_sort_relation
-#: data/gui/default/window/lobby_main.cfg:313
+#: data/gui/default/window/lobby_main.cfg:314
 msgid "Friends first, ignored people last"
 msgstr "Vänner överst, ignorerade personer sist"
 
 #. [toggle_button]: id=player_list_sort_name
-#: data/gui/default/window/lobby_main.cfg:321
+#: data/gui/default/window/lobby_main.cfg:322
 msgid "Alphabetically"
 msgstr "Alfabetiskt"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:337
+#: data/gui/default/window/lobby_main.cfg:338
 msgid "Selected game"
 msgstr "Valt spel"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:338
+#: data/gui/default/window/lobby_main.cfg:339
 msgid "Current room"
 msgstr "Nuvarande rum"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:339
+#: data/gui/default/window/lobby_main.cfg:340
 msgid "Lobby"
 msgstr "Lobby"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:340
+#: data/gui/default/window/lobby_main.cfg:341
 msgid "Other games"
 msgstr "Andra spel"
 
 #. [label]: id=room
-#: data/gui/default/window/lobby_main.cfg:479
+#: data/gui/default/window/lobby_main.cfg:480
 msgid "Rooms"
 msgstr "Rum"
 
 #. [image]: id=pending_messages
-#: data/gui/default/window/lobby_main.cfg:497
+#: data/gui/default/window/lobby_main.cfg:498
 msgid "Messages waiting"
 msgstr "Meddelanden väntar"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:567
+#: data/gui/default/window/lobby_main.cfg:568
 msgid "Multiplayer Lobby"
 msgstr "Gruppspelslobby"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:575
+#: data/gui/default/window/lobby_main.cfg:576
 msgid "Filter:"
 msgstr "Filter:"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:586
+#: data/gui/default/window/lobby_main.cfg:587
 msgid "Friends"
 msgstr "Vänner"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:592
+#: data/gui/default/window/lobby_main.cfg:593
 msgid "No ignored"
 msgstr "Ej ignorerade"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:598
+#: data/gui/default/window/lobby_main.cfg:599
 msgid "Vacant slots"
 msgstr "Lediga platser"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:604
+#: data/gui/default/window/lobby_main.cfg:605
 msgid "Invert filter"
 msgstr "Invertera filter"
 
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:648
+#: data/gui/default/window/lobby_main.cfg:649
 msgid "Send"
 msgstr "Skicka"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:666
+#: data/gui/default/window/lobby_main.cfg:667
 #: data/gui/default/window/title_screen.cfg:230
-#: src/game_preferences_display.cpp:56
-#: src/hotkeys.cpp:85
+#: src/game_preferences_display.cpp:56 src/hotkeys.cpp:85
 msgid "Preferences"
 msgstr "Inställningar"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:672
+#: data/gui/default/window/lobby_main.cfg:673
 msgid "Refresh"
 msgstr "Uppdatera"
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:686
+#: data/gui/default/window/lobby_main.cfg:687
 #: data/gui/default/window/mp_create_game.cfg:41
 msgid "Create Game"
 msgstr "Skapa spel"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:692
+#: data/gui/default/window/lobby_main.cfg:693
 msgid "Join"
 msgstr "Gå med"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:698
+#: data/gui/default/window/lobby_main.cfg:699
 msgid "Observe"
 msgstr "Se på"
 
 #. [toggle_button]: id=skip_replay
-#: data/gui/default/window/lobby_main.cfg:704
+#: data/gui/default/window/lobby_main.cfg:705
 msgid "Quick replay"
 msgstr "Snabb repris"
 
@@ -1773,7 +1750,6 @@ msgstr "Sparka/bannlys"
 
 #. [label]: id=side_title
 #: data/gui/default/window/mp_change_control.cfg:21
-#| msgid "Next Side"
 msgid "Side"
 msgstr "Sida"
 
@@ -1784,7 +1760,6 @@ msgstr "Användarnamn"
 
 #. [label]
 #: data/gui/default/window/mp_change_control.cfg:194
-#| msgid "Change Hotkey"
 msgid "Change control"
 msgstr "Byt kontroll"
 
@@ -1941,7 +1916,8 @@ msgstr "Skapa spel"
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
-msgid "Set the password that people wanting to join your game as players must enter."
+msgid ""
+"Set the password that people wanting to join your game as players must enter."
 msgstr "Ange lösenordet som spelarna ska ange för att gå med i ditt spel."
 
 #. [label]
@@ -1990,13 +1966,18 @@ msgstr "Gruppspels"
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:90
 msgid ""
-"You may login to the official multiplayer server with your forum username and password.\n"
-"Note that registration is not required to join the server: you need to supply a password only if you wish to use a registered username.\n"
+"You may login to the official multiplayer server with your forum username "
+"and password.\n"
+"Note that registration is not required to join the server: you need to "
+"supply a password only if you wish to use a registered username.\n"
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
-"Du kan logga in till den officiella gruppspelsservern med ditt forumanvändarnamn och lösenord.\n"
-"Notera att registrering inte är ett krav för att ansluta till servern: du behöver bara ange ett lösenord om du vill använda ett registrerat användarnamn.\n"
+"Du kan logga in till den officiella gruppspelsservern med ditt "
+"forumanvändarnamn och lösenord.\n"
+"Notera att registrering inte är ett krav för att ansluta till servern: du "
+"behöver bara ange ett lösenord om du vill använda ett registrerat "
+"användarnamn.\n"
 "\n"
 "Kampen om Wesnoths forum kan hittas på http://www.wesnoth.org/forum/"
 
@@ -2023,7 +2004,8 @@ msgstr "Var värd för ett gruppspel"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:167
 msgid "Host a game using dedicated server ‘wesnothd’"
-msgstr "Var värd för ett spel genom att använda den dedikerade servern 'wesnothd'"
+msgstr ""
+"Var värd för ett spel genom att använda den dedikerade servern 'wesnothd'"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:176
@@ -2047,8 +2029,7 @@ msgstr "Välj"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:146
-#: src/hotkeys.cpp:199
+#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:199
 msgid "Help"
 msgstr "Hjälp"
 
@@ -2096,8 +2077,12 @@ msgstr "Påbörja en ny kampanj för en spelare"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:225
-msgid "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"
-msgstr "Starta ett gruppspel (lokalt, via nätverket eller över internet) eller ett enskilt scenario mot datorn"
+msgid ""
+"Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
+"the AI"
+msgstr ""
+"Starta ett gruppspel (lokalt, via nätverket eller över internet) eller ett "
+"enskilt scenario mot datorn"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
@@ -2131,8 +2116,7 @@ msgstr "Starta kartredigeraren"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:229
-#: src/hotkeys.cpp:201
+#: data/gui/default/window/title_screen.cfg:229 src/hotkeys.cpp:201
 msgid "Change the language"
 msgstr "Byt språk"
 
@@ -2168,8 +2152,7 @@ msgstr "Anfall fiende"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/unit_create.cfg:45
-#: src/hotkeys.cpp:83
+#: data/gui/default/window/unit_create.cfg:45 src/hotkeys.cpp:83
 msgid "Create Unit (Debug!)"
 msgstr "Skapa trupp (debuggning!)"
 
@@ -2201,8 +2184,7 @@ msgstr "Fil: "
 msgid "Delete File"
 msgstr "Radera fil"
 
-#: src/filechooser.cpp:81
-#: src/filechooser.cpp:206
+#: src/filechooser.cpp:81 src/filechooser.cpp:206
 msgid "New Folder"
 msgstr "Ny mapp"
 
@@ -2250,13 +2232,11 @@ msgstr "Pausa förflyttningen om en allierad siktas"
 msgid "Show Grid"
 msgstr "Visa rutnät"
 
-#: src/game_preferences_display.cpp:167
-#: src/game_preferences_display.cpp:348
+#: src/game_preferences_display.cpp:167 src/game_preferences_display.cpp:348
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Spara repris vid seger eller gruppspelsnederlag"
 
-#: src/game_preferences_display.cpp:168
-#: src/game_preferences_display.cpp:351
+#: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:351
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Radera autosparade spel vid seger eller gruppspelsnederlag"
 
@@ -2272,8 +2252,7 @@ msgstr "Visa när vänner ansluter till lobbyn"
 msgid "Show All Lobby Joins"
 msgstr "Visa alla lobbyanslutningar"
 
-#: src/game_preferences_display.cpp:172
-#: src/game_preferences_display.cpp:373
+#: src/game_preferences_display.cpp:172 src/game_preferences_display.cpp:373
 msgid "Use new lobby interface"
 msgstr "Använd den nya lobbyn"
 
@@ -2437,13 +2416,11 @@ msgstr "Byt samplingsfrekvens"
 msgid "User defined sample rate"
 msgstr "Egendefinierad samplingsfrekvens"
 
-#: src/game_preferences_display.cpp:277
-#: src/game_preferences_display.cpp:281
+#: src/game_preferences_display.cpp:277 src/game_preferences_display.cpp:281
 msgid "Change the buffer size"
 msgstr "Ändra buffertstorlek"
 
-#: src/game_preferences_display.cpp:279
-#: src/game_preferences_display.cpp:869
+#: src/game_preferences_display.cpp:279 src/game_preferences_display.cpp:869
 msgid "Buffer Size: "
 msgstr "Buffertstorlek: "
 
@@ -2451,8 +2428,7 @@ msgstr "Buffertstorlek: "
 msgid "Change the speed of scrolling around the map"
 msgstr "Ändra rullningshastigheten på kartan"
 
-#: src/game_preferences_display.cpp:291
-#: src/game_preferences_display.cpp:293
+#: src/game_preferences_display.cpp:291 src/game_preferences_display.cpp:293
 msgid "Set the amount of chat lines shown"
 msgstr "Ange antalet rader som skall visas i chatten"
 
@@ -2465,8 +2441,10 @@ msgid "Choose whether the game should run full screen or in a window"
 msgstr "Välj om spelet skall visas i helskärm eller i ett fönster"
 
 #: src/game_preferences_display.cpp:302
-msgid "Should the map view scroll to a unit when an action or move is animated."
-msgstr "Ska kartvyn rulla till en trupp när en handling eller en flytt är animerad."
+msgid ""
+"Should the map view scroll to a unit when an action or move is animated."
+msgstr ""
+"Ska kartvyn rulla till en trupp när en handling eller en flytt är animerad."
 
 #: src/game_preferences_display.cpp:305
 msgid "Make units move and fight faster"
@@ -2526,7 +2504,8 @@ msgstr "Underrätta vid samtliga anslutningar till gruppspelslobbyn"
 
 #: src/game_preferences_display.cpp:375
 msgid "Find and set path to MP server to host LAN games."
-msgstr "Hitta och ange sökväg till gruppspelsserver för att vara värd för LAN-spel."
+msgstr ""
+"Hitta och ange sökväg till gruppspelsserver för att vara värd för LAN-spel."
 
 #: src/game_preferences_display.cpp:376
 msgid "View and edit your friends and ignores list"
@@ -2554,7 +2533,9 @@ msgstr "Lägg till ett användarnamn"
 
 #: src/game_preferences_display.cpp:386
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr "Visa text över en trupp när den blir träffad för att visa hur mycket skada som vållats"
+msgstr ""
+"Visa text över en trupp när den blir träffad för att visa hur mycket skada "
+"som vållats"
 
 #: src/game_preferences_display.cpp:388
 msgid "Change the resolution the game runs at"
@@ -2577,12 +2558,17 @@ msgid "Play a bell sound at the beginning of your turn"
 msgstr "Ring en klocka när ditt drag börjar"
 
 #: src/game_preferences_display.cpp:401
-msgid "Show a colored circle around the base of each unit to show which side it is on"
-msgstr "Visa en färgcirkel runt varje trupps bas, för att visa vilken sida den tillhör"
+msgid ""
+"Show a colored circle around the base of each unit to show which side it is "
+"on"
+msgstr ""
+"Visa en färgcirkel runt varje trupps bas, för att visa vilken sida den "
+"tillhör"
 
 #: src/game_preferences_display.cpp:404
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr "Välj om solen rör sig från vänster till höger eller från höger till vänster"
+msgstr ""
+"Välj om solen rör sig från vänster till höger eller från höger till vänster"
 
 #: src/game_preferences_display.cpp:407
 msgid "Use colored mouse cursors (may be slower)"
@@ -2600,8 +2586,7 @@ msgstr "Se och konfigurera snabbtangenter"
 msgid "Speed: "
 msgstr "Fart: "
 
-#: src/game_preferences_display.cpp:738
-#: src/game_preferences_display.cpp:740
+#: src/game_preferences_display.cpp:738 src/game_preferences_display.cpp:740
 msgid "Maximum Auto-Saves: "
 msgstr "Maximalt antal sparade spel: "
 
@@ -2613,8 +2598,7 @@ msgstr "oändligt"
 msgid "Chat Lines: "
 msgstr "Chattrader: "
 
-#: src/game_preferences_display.cpp:945
-#: src/game_preferences_display.cpp:953
+#: src/game_preferences_display.cpp:945 src/game_preferences_display.cpp:953
 msgid "Invalid username"
 msgstr "Ogiltigt användarnamn"
 
@@ -2686,17 +2670,13 @@ msgstr "Linje ryms inte på canvas."
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Rektangel ryms inte på canvas."
 
-#: src/gui/auxiliary/canvas.cpp:835
-#: src/gui/auxiliary/canvas.cpp:840
-#: src/gui/auxiliary/canvas.cpp:845
-#: src/gui/auxiliary/canvas.cpp:851
+#: src/gui/auxiliary/canvas.cpp:835 src/gui/auxiliary/canvas.cpp:840
+#: src/gui/auxiliary/canvas.cpp:845 src/gui/auxiliary/canvas.cpp:851
 msgid "Circle doesn't fit on canvas."
 msgstr "Cirkel ryms inte på canvas."
 
-#: src/gui/auxiliary/canvas.cpp:1033
-#: src/gui/auxiliary/canvas.cpp:1040
-#: src/gui/auxiliary/canvas.cpp:1050
-#: src/gui/auxiliary/canvas.cpp:1057
+#: src/gui/auxiliary/canvas.cpp:1033 src/gui/auxiliary/canvas.cpp:1040
+#: src/gui/auxiliary/canvas.cpp:1050 src/gui/auxiliary/canvas.cpp:1057
 msgid "Image doesn't fit on canvas."
 msgstr "Bild ryms inte på canvas."
 
@@ -2731,7 +2711,8 @@ msgstr "Länkad '$id' grupp har flera definitioner."
 
 #: src/gui/auxiliary/window_builder.cpp:386
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
-msgstr "Länkad '$id' grupp behöver nyckeln 'fixed_width' och/eller 'fixed_height'."
+msgstr ""
+"Länkad '$id' grupp behöver nyckeln 'fixed_width' och/eller 'fixed_height'."
 
 #: src/gui/auxiliary/window_builder.cpp:500
 msgid "A row must have a column."
@@ -2755,7 +2736,8 @@ msgstr "En 'list_definition' måste innehålla en rad."
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:67
 #: src/gui/auxiliary/window_builder/listbox.cpp:81
 #: src/gui/auxiliary/window_builder/multi_page.cpp:61
-msgid "'list_data' must have the same number of columns as the 'list_definition'."
+msgid ""
+"'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' måste ha samma antal kolumner som 'list_definition'."
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:39
@@ -2826,44 +2808,47 @@ msgstr "Åskådare tillåtna"
 msgid "Observers not allowed"
 msgstr "Åskådare ej tillåtna"
 
-#: src/gui/dialogs/lobby_main.cpp:1106
-msgid "Whisper session with $name started. If you don’t want to receive messages from this user, type /ignore $name\n"
-msgstr "Privat samtal med $name påbörjat. Om du inte vill ta emot meddelanden från den här användaren, skriv /ignore $name\n"
+#: src/gui/dialogs/lobby_main.cpp:1107
+msgid ""
+"Whisper session with $name started. If you don’t want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+"Privat samtal med $name påbörjat. Om du inte vill ta emot meddelanden från "
+"den här användaren, skriv /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:1112
+#: src/gui/dialogs/lobby_main.cpp:1113
 msgid "Room $name joined"
 msgstr "Gått in i rum $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1418
+#: src/gui/dialogs/lobby_main.cpp:1419
 msgid "$player has entered the room"
 msgstr "$player har kommit in i rummet"
 
-#: src/gui/dialogs/lobby_main.cpp:1456
+#: src/gui/dialogs/lobby_main.cpp:1457
 msgid "$player has left the room"
 msgstr "$player har lämnat rummet"
 
-#: src/gui/dialogs/lobby_main.cpp:1569
+#: src/gui/dialogs/lobby_main.cpp:1570
 msgid "Password Required"
 msgstr "Lösenord krävs"
 
-#: src/gui/dialogs/lobby_main.cpp:1570
+#: src/gui/dialogs/lobby_main.cpp:1571
 msgid "Joining this game requires a password."
 msgstr "Det krävs ett lösenord för att gå med i det här spelet"
 
-#: src/gui/dialogs/lobby_main.cpp:1571
+#: src/gui/dialogs/lobby_main.cpp:1572
 msgid "Password: "
 msgstr "Lösenord:"
 
-#: src/gui/dialogs/message.cpp:190
-#: src/gui/dialogs/transient_message.cpp:62
+#: src/gui/dialogs/message.cpp:190 src/gui/dialogs/transient_message.cpp:62
 msgid "Error"
 msgstr "Fel"
 
-#: src/gui/dialogs/mp_change_control.cpp:237
+#: src/gui/dialogs/mp_change_control.cpp:244
 msgid "Side $side"
 msgstr "Sida $side"
 
-#: src/gui/dialogs/mp_create_game.cpp:89
+#: src/gui/dialogs/mp_create_game.cpp:103
 msgid "Load Game..."
 msgstr "Öppna spel..."
 
@@ -2880,8 +2865,11 @@ msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Obligatoriska gränssnittskomponenten '$id' har inte definierats."
 
 #: src/gui/widgets/settings.cpp:428
-msgid "Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr "Gränssnittskomponenten-definitionen '$definition' innehåller inte definitionen för '$id'"
+msgid ""
+"Widget definition '$definition' doesn't contain the definition for '$id'."
+msgstr ""
+"Gränssnittskomponenten-definitionen '$definition' innehåller inte "
+"definitionen för '$id'"
 
 #: src/gui/widgets/settings.cpp:489
 msgid "No default gui defined."
@@ -2899,11 +2887,11 @@ msgstr "Okänt bygg-id för trädvy-noden."
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Click dismiss needs a 'click_dismiss' or 'ok' button."
 
-#: src/gui/widgets/window.cpp:949
-#: src/gui/widgets/window.cpp:982
+#: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:982
 #: src/tests/gui/test_gui2.cpp:420
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr "Misslyckades med att visa en dialogruta som inte fick plats på skärmen."
+msgstr ""
+"Misslyckades med att visa en dialogruta som inte fick plats på skärmen."
 
 #: src/hotkeys.cpp:51
 msgid "Animate Map"
@@ -2957,8 +2945,7 @@ msgstr "Standardzoom"
 msgid "Toggle Full Screen"
 msgstr "Helskärm på/av"
 
-#: src/hotkeys.cpp:64
-#: src/hotkeys.cpp:984
+#: src/hotkeys.cpp:64 src/hotkeys.cpp:984
 msgid "Screenshot"
 msgstr "Skärmdump"
 
@@ -2982,8 +2969,7 @@ msgstr "Döp om truppen"
 msgid "Save Replay"
 msgstr "Spara repris"
 
-#: src/hotkeys.cpp:71
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:71 src/hotkeys.cpp:125
 msgid "Save Map"
 msgstr "Spara"
 
@@ -3043,13 +3029,11 @@ msgstr "Trupplista"
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/hotkeys.cpp:89
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:89 src/hotkeys.cpp:99
 msgid "Stop"
 msgstr "Stopp"
 
-#: src/hotkeys.cpp:90
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:90 src/hotkeys.cpp:97
 msgid "Play"
 msgstr "Spela"
 
@@ -3385,8 +3369,7 @@ msgstr "Visa listan över medverkande upphovsmän"
 msgid "Show the helptip"
 msgstr "Visa hjälptext"
 
-#: src/hotkeys.cpp:727
-#: src/hotkeys.cpp:1032
+#: src/hotkeys.cpp:727 src/hotkeys.cpp:1032
 msgid "Do you really want to quit?"
 msgstr "Vill du verkligen sluta?"
 
@@ -3394,8 +3377,7 @@ msgstr "Vill du verkligen sluta?"
 msgid "Map-Screenshot"
 msgstr "Kart-skärmdump"
 
-#: src/hotkeys.cpp:991
-#: src/hotkeys.cpp:993
+#: src/hotkeys.cpp:991 src/hotkeys.cpp:993
 msgid "Screenshot done"
 msgstr "Skärmdump klar"
 
@@ -3413,8 +3395,7 @@ msgstr "Skärmdump klar"
 msgid "language code for localized resources^en_US"
 msgstr "sv,da,no"
 
-#: src/mapgen_dialog.cpp:110
-#: src/preferences_display.cpp:281
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:281
 msgid "Close Window"
 msgstr "Stäng fönster"
 
@@ -3470,17 +3451,21 @@ msgstr "Ö"
 msgid "The maximum text width is less than 1."
 msgstr "Maximal textbredd är mindre än 1."
 
-#: src/preferences_display.cpp:126
-#: src/preferences_display.cpp:192
-msgid "The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."
-msgstr "Kunde inte ändra videoläge. Din fönsterhanterare måste vara inställd på 16 bitar per pixel för att kunna köra spelet i ett fönster. Din skärm måste stödja 1024x768x16 för att köra spelet i helskärm."
+#: src/preferences_display.cpp:126 src/preferences_display.cpp:192
+msgid ""
+"The video mode could not be changed. Your window manager must be set to 16 "
+"bits per pixel to run the game in windowed mode. Your display must support "
+"1024x768x16 to run the game full screen."
+msgstr ""
+"Kunde inte ändra videoläge. Din fönsterhanterare måste vara inställd på 16 "
+"bitar per pixel för att kunna köra spelet i ett fönster. Din skärm måste "
+"stödja 1024x768x16 för att köra spelet i helskärm."
 
 #: src/preferences_display.cpp:285
 msgid "Hotkey Settings"
 msgstr "Snabbtangentsinställningar"
 
-#: src/preferences_display.cpp:291
-#: src/preferences_display.cpp:360
+#: src/preferences_display.cpp:291 src/preferences_display.cpp:360
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Tryck på önskad snabbtangent (Esc avbryter)"
 
@@ -3505,8 +3490,11 @@ msgid "This Hotkey is already in use."
 msgstr "Den tangenten används redan till något annat."
 
 #: src/preferences_display.cpp:405
-msgid "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
-msgstr "Varning: snabbtangenten för skärmdump är inte kombinerad med Control-, Alt- eller Meta-knappar."
+msgid ""
+"Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
+msgstr ""
+"Varning: snabbtangenten för skärmdump är inte kombinerad med Control-, Alt- "
+"eller Meta-knappar."
 
 #: src/preferences_display.cpp:502
 msgid "There are no alternative video modes available"
@@ -3521,8 +3509,11 @@ msgid "Choose Resolution"
 msgstr "Välj upplösning"
 
 #: src/terrain_translation.cpp:703
-msgid "A terrain with a string with more than 4 characters has been found, the affected terrain is :"
-msgstr "En terräng med fler än 4 tecken har hittats, den aktuella terrängen är "
+msgid ""
+"A terrain with a string with more than 4 characters has been found, the "
+"affected terrain is :"
+msgstr ""
+"En terräng med fler än 4 tecken har hittats, den aktuella terrängen är "
 
 #: src/text.cpp:293
 msgid "The text contains invalid markup: "
@@ -3541,20 +3532,33 @@ msgid "When reporting the bug please include the following error message :"
 msgstr "När du rapporterar felet var god Inkludera följande felmeddelande :"
 
 #: src/wml_exception.cpp:92
-msgid "In section '[$section|]' where '$primary_key| = $primary_value' the mandatory key '$key|' isn't set."
-msgstr "I avsnitt '[$section|]' där '$primary_key| = $primary_value' är den the obligatoriska nyckeln '$key|' inte satt."
+msgid ""
+"In section '[$section|]' where '$primary_key| = $primary_value' the "
+"mandatory key '$key|' isn't set."
+msgstr ""
+"I avsnitt '[$section|]' där '$primary_key| = $primary_value' är den the "
+"obligatoriska nyckeln '$key|' inte satt."
 
 #: src/wml_exception.cpp:95
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr "I avsnittet '[$section|]' är den obligatoriska nyckeln '$key|' inte satt."
+msgstr ""
+"I avsnittet '[$section|]' är den obligatoriska nyckeln '$key|' inte satt."
 
 #: src/wml_exception.cpp:111
-msgid "The key '$key' is deprecated and support will be removed in version $removal_version."
-msgstr "Nyckeln '$key' is utfasad och stödet för den försvinner i och med version $removal_version."
+msgid ""
+"The key '$key' is deprecated and support will be removed in version "
+"$removal_version."
+msgstr ""
+"Nyckeln '$key' is utfasad och stödet för den försvinner i och med version "
+"$removal_version."
 
 #: src/wml_exception.cpp:130
-msgid "The key '$deprecated_key' has been renamed to '$key'. Support for '$deprecated_key' will be removed in version $removal_version."
-msgstr "Nyckeln '$deprecated_key' har döpts om till '$key'. Stödet för '$deprecated_key' försvinner i och med version $removal_version."
+msgid ""
+"The key '$deprecated_key' has been renamed to '$key'. Support for "
+"'$deprecated_key' will be removed in version $removal_version."
+msgstr ""
+"Nyckeln '$deprecated_key' har döpts om till '$key'. Stödet för "
+"'$deprecated_key' försvinner i och med version $removal_version."
 
 #, fuzzy
 #~ msgid "Select unit:"

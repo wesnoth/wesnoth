@@ -43,7 +43,10 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个奇幻回合制策略游
 goes directly to the campaign based on the parameters.  The difficulty is a
 number between 1 and current campaign's difficulties number.  The default
 difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.
+scenarios. The default scenario is campaign's first scenario.  \fBNote: When
+using this switch please ensure that you specify the data directory path as
+the final argument\fP aswell, otherwise the game will take the
+campaign/scenario id as the data dir.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
 sets the user configuration directory to \fIname\fP under $HOME or "My
@@ -94,6 +97,9 @@ exits
 .TP 
 \fB\-m, \-\-multiplayer\fP
 启动一个多人游戏。有更多选项可以与\fB\-\-multiplayer\fP一起使用，详见下述。只有这些选项可以跟在 \fB\-\-multiplayer\fP之后。
+.TP 
+\fB\-\-new\-syntax\fP
+enables the new campaign syntax parsing.
 .TP 
 \fB\-\-no\-delay\fP
 无任何延迟地运行游戏，以执行图形性能基准测试。使用 \fB\-\-nogui\fP 选项时会自动启用本选项。

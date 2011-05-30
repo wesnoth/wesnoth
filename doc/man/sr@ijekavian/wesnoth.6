@@ -51,7 +51,10 @@ wesnoth \-\- "Бој за Веснот", фантазијска стратеги
 goes directly to the campaign based on the parameters.  The difficulty is a
 number between 1 and current campaign's difficulties number.  The default
 difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.
+scenarios. The default scenario is campaign's first scenario.  \fBNote: When
+using this switch please ensure that you specify the data directory path as
+the final argument\fP aswell, otherwise the game will take the
+campaign/scenario id as the data dir.
 .TP 
 \fB\-\-config\-dir\fP\fI\ име\fP
 sets the user configuration directory to \fIname\fP under $HOME or "My
@@ -110,6 +113,9 @@ exits
 \fB\-m, \-\-multiplayer\fP
 покреће вишеиграчку партију. Уз ову опцију могу бити употријебљене још неке,
 наведене испод (само оне могу пратити \fB\-\-multiplayer\fP).
+.TP 
+\fB\-\-new\-syntax\fP
+enables the new campaign syntax parsing.
 .TP 
 \fB\-\-no\-delay\fP
 покреће игру без икаквих застоја, за пробу графичких перформанси. Ово је

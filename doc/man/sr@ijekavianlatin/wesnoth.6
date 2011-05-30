@@ -51,7 +51,10 @@ postavlja vrijednost BitsPerPixel. Primer: \fB\-\-bpp 32\fP
 goes directly to the campaign based on the parameters.  The difficulty is a
 number between 1 and current campaign's difficulties number.  The default
 difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.
+scenarios. The default scenario is campaign's first scenario.  \fBNote: When
+using this switch please ensure that you specify the data directory path as
+the final argument\fP aswell, otherwise the game will take the
+campaign/scenario id as the data dir.
 .TP 
 \fB\-\-config\-dir\fP\fI\ ime\fP
 sets the user configuration directory to \fIname\fP under $HOME or "My
@@ -110,6 +113,9 @@ broj kadrova po sekundi koje igra može da prikaže, trebalo bi da bude između
 \fB\-m, \-\-multiplayer\fP
 pokreće višeigračku partiju. Uz ovu opciju mogu biti upotrijebljene još
 neke, navedene ispod (samo one mogu pratiti \fB\-\-multiplayer\fP).
+.TP 
+\fB\-\-new\-syntax\fP
+enables the new campaign syntax parsing.
 .TP 
 \fB\-\-no\-delay\fP
 pokreće igru bez ikakvih zastoja, za probu grafičkih performansi. Ovo je

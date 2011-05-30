@@ -53,7 +53,10 @@ ustawia liczbę bitów na piksel. Przykład: \fB\-\-bpp 32\fP
 goes directly to the campaign based on the parameters.  The difficulty is a
 number between 1 and current campaign's difficulties number.  The default
 difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.
+scenarios. The default scenario is campaign's first scenario.  \fBNote: When
+using this switch please ensure that you specify the data directory path as
+the final argument\fP aswell, otherwise the game will take the
+campaign/scenario id as the data dir.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
 sets the user configuration directory to \fIname\fP under $HOME or "My
@@ -116,6 +119,9 @@ zawierać się między 1 a 1000, przy czym domyślna wartość to \fB50\fP.
 uruchamia grę wieloosobową. Wraz z przełącznikiem \fB\-\-multiplayer\fP można
 używać objaśnionych poniżej opcji dodatkowych. Są to jedyne opcje dozwolone
 w połączeniu z \fB\-\-multiplayer\fP.
+.TP 
+\fB\-\-new\-syntax\fP
+enables the new campaign syntax parsing.
 .TP 
 \fB\-\-no\-delay\fP
 uruchamia grę bez opóźnień na wykonanie testów wydajności grafiki. Ta opcja

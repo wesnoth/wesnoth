@@ -52,7 +52,10 @@ nustato bitų vienam pikseliui vertę. Pavyzdžiui: \fB\-\-bpp 32\fP
 goes directly to the campaign based on the parameters.  The difficulty is a
 number between 1 and current campaign's difficulties number.  The default
 difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.
+scenarios. The default scenario is campaign's first scenario.  \fBNote: When
+using this switch please ensure that you specify the data directory path as
+the final argument\fP aswell, otherwise the game will take the
+campaign/scenario id as the data dir.
 .TP 
 \fB\-\-config\-dir\fP\fI\ pavadinimas\fP
 sets the user configuration directory to \fIname\fP under $HOME or "My
@@ -115,6 +118,9 @@ tarp 1 ir 1000, numatyta \fB50\fP.
 runs a multiplayer game. There are additional options that can be used
 together with \fB\-\-multiplayer\fP as explained below. Only these additional
 options can follow \fB\-\-multiplayer\fP.
+.TP 
+\fB\-\-new\-syntax\fP
+enables the new campaign syntax parsing.
 .TP 
 \fB\-\-no\-delay\fP
 paleidžia žaidimą be jokių užlaikymų grafikos testavimui. Tai yra
