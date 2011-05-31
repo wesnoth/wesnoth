@@ -2201,6 +2201,9 @@ stringfixes = {
 ("You're a king?! Must", "You’re a king?! Must"),
 ("You're not my ally. You're more against me", "You’re not my ally. You’re more against me"),
 ("you, else we'll be overrun by", "you, else we’ll be overrun by"),
+
+# Convert apostrophe
+("Don't forget to recruit the miners.", "Don’t forget to recruit the miners."),
 ),
 
 "wesnoth-sotbe" :(
@@ -2428,6 +2431,15 @@ stringfixes = {
 ("\"Shan Taum The Smug\"", "\"Shan Taum the Smug\""),
 ("The Siege Of Barag Gór", "The Siege of Barag Gór"),
 ("End Of Peace", "End of Peace"),
+
+# Convert apostrophes
+("must know they can't break through", "must know they can’t break through"),
+("Great Horde. We can't", "Great Horde. We can’t"),
+("Defeat Earl Lanbec'h", "Defeat Earl Lanbec’h"),
+("the other tribes won't think", "the other tribes won’t think"),
+("What's this? This weakling", "What’s this? This weakling"),
+("Bah! I'm the only", "Bah! I’m the only"),
+("amongst themselves! Now's our", "amongst themselves! Now’s our"),
 ),
 
 "wesnoth-tb" : (
