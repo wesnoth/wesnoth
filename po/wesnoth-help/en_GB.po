@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-30 20:47+0200\n"
-"PO-Revision-Date: 2011-05-09 02:58-0500\n"
-"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
+"PO-Revision-Date: 2011-05-31 17:35+0100\n"
+"Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: English (British) <en@li.org>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -525,7 +525,6 @@ msgstr "Swarming"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
-#, fuzzy
 #| msgid ""
 #| " The <ref>dst='flight' text='flight'</ref> for a new drake "
 #| "<ref>dst='aerie' text='aerie'</ref> that recurs every "
@@ -536,9 +535,9 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
-" The <ref>dst='flight' text='flight'</ref> for a new drake <ref>dst='aerie' "
+" The <ref>dst='flight' text='flight'</ref> for a new drake <ref>dst='eyrie' "
 "text='eyrie'</ref> that recurs every <ref>dst='breeding_cycle' "
-"text='breeding cycle</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
+"text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
@@ -1948,7 +1947,6 @@ msgstr "Time of Day"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:268
-#, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
 #| " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1964,7 +1962,6 @@ msgstr ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
 " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-" Liminal units get +25% damage during twilight.\n"
 " Neutral units are unaffected by the time of day."
 
 #. [topic]: id=time_of_day
@@ -4292,10 +4289,9 @@ msgid " This unit is capable of basic healing."
 msgstr " This unit is capable of basic healing."
 
 #: data/core/macros/special-notes.cfg:17
-#, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid " This unit is capable of rapid healing."
-msgstr " This unit is capable of basic healing."
+msgstr " This unit is capable of rapid healing."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
