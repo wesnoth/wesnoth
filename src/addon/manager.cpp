@@ -80,12 +80,12 @@ bool remove_local_addon(const std::string& addon, std::string* log)
 
 	LOG_CFG << "removing local add-on: " << addon << '\n';
 
-	if(file_exists(addon_dir) && !delete_directory(addon_dir)) {
+	if(file_exists(addon_dir) && !delete_directory(addon_dir, true)) {
 		messages << "Failed to delete directory/file: " << addon_dir << '\n';
 		ret = false;
 	}
 
-	if(file_exists(addon_dir + ".cfg") && !delete_directory(addon_dir + ".cfg")) {
+	if(file_exists(addon_dir + ".cfg") && !delete_directory(addon_dir + ".cfg", true)) {
 		messages << "Failed to delete directory/file: " << addon_dir << ".cfg\n";
 		ret = false;
 	}
