@@ -1088,6 +1088,28 @@ namespace {
 		gui2::show_message(disp.video(), msg_title, msg_message);
 	}
 
+	bool check_whether_overwrite(game_display& disp,
+		const std::string& addon,
+		const std::vector<std::string>& own_addons)
+	{
+		foreach(const std::string& current_own_addon, own_addons) {
+			if(current_own_addon == addon) {
+				utils::string_map symbols;
+				symbols["addon"] = addon;
+				const std::string& confirm_message = utils::interpolate_variables_into_string(
+					_("It looks as if you are the author of '$addon|'. Downloading '$addon|' may overwrite any changes you have made since the last upload and may delete your pbl file. Do you really want to continue ?"),
+					&symbols);
+				const int res = gui2::show_message(disp.video(),
+					_("Confirm"),
+					confirm_message,
+					gui2::tmessage::yes_no_buttons);
+				if(res == gui2::twindow::OK) return true;
+				else return false;
+			}
+		}
+		return true;
+	}
+
 	void download_addons(game_display& disp, const std::string& remote_address,
 			bool update_mode, bool* do_refresh, int old_index = 0)
 	{
@@ -1316,15 +1338,18 @@ namespace {
 				return;
 			}
 
-			// Handle download
-			install_addon(disp, addons[index], titles[index], types[index],
-			              uploads[index], versions[index], net_manager, sock, do_refresh);
-			if (!addon_dependencies_met(disp, addons_tree, addons[index], net_manager, sock, do_refresh)) {
-				const std::string err_title = _("Installation of some dependency failed");
-				const std::string err_message =
-					_("While the add-on has been installed, some dependency is missing. Try to update the installed add-ons.");
+			if(check_whether_overwrite(disp, addons[index], publish_options))
+			{
+				// Handle download
+				install_addon(disp, addons[index], titles[index], types[index],
+							  uploads[index], versions[index], net_manager, sock, do_refresh);
+				if (!addon_dependencies_met(disp, addons_tree, addons[index], net_manager, sock, do_refresh)) {
+					const std::string err_title = _("Installation of some dependency failed");
+					const std::string err_message =
+						_("While the add-on has been installed, some dependency is missing. Try to update the installed add-ons.");
 
-				gui2::show_message(disp.video(), err_title, err_message);
+					gui2::show_message(disp.video(), err_title, err_message);
+				}
 			}
 
 			// Show the dialog again, and position it on the same item installed
