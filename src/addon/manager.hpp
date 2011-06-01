@@ -37,7 +37,7 @@ bool remove_local_addon(const std::string& addon, std::string* log = NULL);
  * @param cfg                     A config object to store the add-on's
  *                                properties.
  */
-void get_addon_info(const std::string& addon_name, class config& cfg);
+bool get_addon_info(const std::string& addon_name, class config& cfg);
 
 /**
  * Sets the publish information for an add-on
@@ -46,7 +46,7 @@ void get_addon_info(const std::string& addon_name, class config& cfg);
  * @param cfg                     A config object from which the add-on's
  *                                properties are copied.
  */
-void set_addon_info(const std::string& addon_name, const class config& cfg);
+void set_addon_info(const std::string& addon_name, const class config& cfg, const bool is_old_style);
 
 /** Returns a list of local add-ons that can be published. */
 std::vector<std::string> available_addons();
