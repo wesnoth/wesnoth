@@ -181,6 +181,9 @@ void get_files_in_dir(const std::string &directory,
 
 		if (::stat(fullname.c_str(), &st) != -1) {
 			if (S_ISREG(st.st_mode)) {
+				if(filter == SKIP_PBL_FILES && looks_like_pbl(basename)) {
+					continue;
+				}
 				if (files != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
 						files->push_back(fullname);
