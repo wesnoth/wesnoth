@@ -30,7 +30,7 @@ static lg::log_domain log_ai_aspect("ai/aspect");
 #define ERR_AI_ASPECT LOG_STREAM(err, log_ai_aspect)
 
 aspect::aspect(readonly_context &context, const config &cfg, const std::string &id):
-	valid_(false), valid_variant_(false), cfg_(cfg),
+	valid_(false), valid_variant_(false), valid_lua_(false), cfg_(cfg),
 	invalidate_on_turn_start_(cfg["invalidate_on_turn_start"].to_bool(true)),
 	invalidate_on_tod_change_(cfg["invalidate_on_tod_change"].to_bool(true)),
 	invalidate_on_gamestate_change_(cfg["invalidate_on_gamestate_change"].to_bool()),
@@ -89,6 +89,7 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 
 	valid_ = false;
 	valid_variant_ =false;
+	valid_lua_ = false;
 	cfg_ = cfg;
 	invalidate_on_turn_start_ = cfg["invalidate_on_turn_start"].to_bool(true);
 	invalidate_on_tod_change_ = cfg["invalidate_on_tod_change"].to_bool(true);
@@ -147,6 +148,5 @@ const std::string& known_aspect::get_name() const
 known_aspect::~known_aspect()
 {
 }
-
 
 } //end of namespace ai

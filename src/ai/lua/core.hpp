@@ -16,13 +16,19 @@
 #ifndef AI_LUA_CORE_HPP
 #define AI_LUA_CORE_HPP
 
+#include <boost/shared_ptr.hpp>
+
 struct lua_State;
 class LuaKernel;
 class config;
 
+
+
 namespace ai {
 
 class engine_lua;
+class lua_object_base;
+typedef boost::shared_ptr<lua_object_base> lua_object_ptr;
 
 /**
  * Proxy table for the AI context
@@ -39,6 +45,9 @@ private:
 	static lua_ai_context* create(lua_State *L, char const *code, engine_lua *engine);
 public:
 	~lua_ai_context();
+	lua_ai_context()
+	{
+	}
 	void load();
 	static void init(lua_State *L);
 	friend class ::LuaKernel;
@@ -60,7 +69,7 @@ private:
 	static lua_ai_action_handler* create(lua_State *L, char const *code, lua_ai_context &context);
 public:
 	~lua_ai_action_handler();
-	void handle(config &, bool configOut = false);
+	void handle(config &, bool configOut, lua_object_ptr);
 	friend class ::LuaKernel;
 };
 

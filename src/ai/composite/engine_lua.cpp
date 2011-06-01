@@ -22,12 +22,14 @@
 #include "engine_lua.hpp"
 #include "rca.hpp"
 #include "stage.hpp"
+#include "aspect.hpp"
 
 #include "../gamestate_observer.hpp"
 
 #include "../../log.hpp"
 #include "../../resources.hpp"
 #include "../lua/core.hpp"
+#include "../lua/lua_object.hpp"
 #include "../../scripting/lua.hpp"
 #include "../../util.hpp"
 
@@ -46,6 +48,8 @@ static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #pragma warning(disable:4250)
 #endif
 
+typedef boost::shared_ptr< lua_object<int> > lua_int_obj;
+
 class lua_candidate_action_wrapper : public candidate_action {
 public:
 	lua_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx)
@@ -61,20 +65,23 @@ public:
 	virtual double evaluate()
 	{
 		serialized_evaluation_state_ = config();
+		
+		lua_int_obj l_obj = lua_int_obj(new lua_object<int>());
+		
 		if (evaluation_action_handler_) {
-			evaluation_action_handler_->handle(serialized_evaluation_state_, true);
+			evaluation_action_handler_->handle(serialized_evaluation_state_, true, l_obj);
 		} else {
 			return BAD_SCORE;
-		}
+		}		
 
-		return lexical_cast_default<double>(serialized_evaluation_state_["score"],BAD_SCORE);
+		return *(l_obj->get());
 	}
 
 
-	virtual void execute()
-	{
+	virtual void execute()	{
+		lua_int_obj l_obj = lua_int_obj(new lua_object<int>());
 		if (execution_action_handler_) {
-			execution_action_handler_->handle(serialized_evaluation_state_);
+			execution_action_handler_->handle(serialized_evaluation_state_, false, l_obj);
 		}
 	}
 
@@ -111,8 +118,10 @@ public:
 	virtual bool do_play_stage()
 	{
 		gamestate_observer gs_o;
+		lua_int_obj l_obj = lua_int_obj(new lua_object<int>());
+		
 		if (action_handler_) {
-			action_handler_->handle(serialized_evaluation_state_);
+			action_handler_->handle(serialized_evaluation_state_, false, l_obj);
 		}
 
 		return gs_o.is_gamestate_changed();
@@ -183,6 +192,26 @@ void engine_lua::do_parse_stage_from_config( ai_context &context, const config &
 	}
 }
 
+void engine_lua::do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr > > b )
+{
+	const std::string aspect_factory_key = id+"*lua_aspect"; // @note: factory key for a lua_aspect
+	lua_aspect_factory::factory_map::iterator f = lua_aspect_factory::get_list().find(aspect_factory_key);
+	
+	if (f == lua_aspect_factory::get_list().end()){
+		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNKNOWN aspect["<<aspect_factory_key<<"]" << std::endl;
+		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg << std::endl;
+		return;
+	}	
+	aspect_ptr new_aspect = f->second->get_new_instance(ai_,cfg,id,lua_ai_context_);
+	if (!new_aspect) {
+		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNABLE TO CREATE aspect, key=["<<aspect_factory_key<<"]"<< std::endl;
+		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg << std::endl;
+		return;
+	}
+	*b = new_aspect;
+}
+
+
 std::string engine_lua::evaluate(const std::string &/*str*/)
 {
 	///@todo this is not mandatory, but if we want to allow lua to evaluate
@@ -195,7 +224,6 @@ void engine_lua::set_ai_context(ai_context * /*context*/)
 {
 	//this function is called when the ai is fully initialized
 }
-
 
 config engine_lua::to_config() const
 {

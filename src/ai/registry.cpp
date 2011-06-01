@@ -357,6 +357,11 @@ static register_aspect_factory< standard_aspect<double> >
 static register_aspect_factory< standard_aspect<int> >
 	villages_per_scout__standard_aspect_factory2("villages_per_scout*");
 
+
+//name = lua
+static register_lua_aspect_factory< lua_aspect<double> >
+	aggression__lua_aspect_factory("aggression*lua_aspect");
+
 void registry::init()
 {
 }

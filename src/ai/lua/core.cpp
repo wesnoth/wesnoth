@@ -28,6 +28,8 @@
 #include "core.hpp"
 #include "../../scripting/lua.hpp"
 #include "../../scripting/lua_api.hpp"
+#include "lua_object.hpp" // (Nephro)
+
 
 #include "../../actions.hpp"
 #include "../../attack_prediction.hpp"
@@ -52,7 +54,7 @@ static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 static char const aisKey     = 0;
 
 namespace ai {
-
+  
 void lua_ai_context::init(lua_State *L)
 {
 	// Create the ai elements table.
@@ -350,9 +352,9 @@ lua_ai_context::~lua_ai_context()
 	lua_pop(L, 1);
 }
 
-void lua_ai_action_handler::handle(config &cfg, bool configOut)
+void lua_ai_action_handler::handle(config &cfg, bool configOut, lua_object_ptr l_obj)
 {
-	int initial_top = lua_gettop(L);//get the old stack size
+	int initial_top = lua_gettop(L);//get the old stack size	
 
 	// Load the user function from the registry.
 	lua_pushlightuserdata(L, (void *)&aisKey);//stack size is now 1 [-1: ais_table key]
@@ -369,11 +371,7 @@ void lua_ai_action_handler::handle(config &cfg, bool configOut)
 	}
 	else if (luaW_pcall(L, 1, 2, true))
 	{
-		int score = lua_tointeger(L, initial_top + 1);
-		if (!luaW_toconfig(L, initial_top + 2, cfg)) {
-			ERR_LUA << "Failed to parsed WML object returned by AI function.\n";
-		}
-		cfg["score"] = score; // write score to the config
+		l_obj->store(L, initial_top + 1);
 	}
 
 	lua_settop(L, initial_top);//empty stack

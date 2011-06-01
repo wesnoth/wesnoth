@@ -22,6 +22,9 @@
 
 #include "property_handler.hpp"
 #include "value_translator.hpp"
+#include "../lua/lua_object.hpp"
+#include "../lua/core.hpp"
+#include "../../scripting/lua.hpp"
 
 #include "../../log.hpp"
 
@@ -47,6 +50,7 @@ public:
 	{
 		valid_ = false;
 		valid_variant_ = false;
+		valid_lua_ = false;
 	}
 
 
@@ -96,6 +100,7 @@ public:
 protected:
 	mutable bool valid_;
 	mutable bool valid_variant_;
+	mutable bool valid_lua_;
 
 	config cfg_;
 	bool invalidate_on_turn_start_;
@@ -144,6 +149,10 @@ public:
 			if (!valid_variant_ && valid_ ) {
 				value_variant_ = boost::shared_ptr<variant>(new variant(variant_value_translator<T>::value_to_variant(this->get())));
 				valid_variant_ = true;
+			} else if (!valid_variant_ && valid_lua_) {
+				value_ = value_lua_->get();
+				value_variant_ = boost::shared_ptr<variant>(new variant(variant_value_translator<T>::value_to_variant(this->get())));
+				valid_variant_ = true; // @note: temporary workaround
 			} else {
 				assert(valid_variant_);
 			}
@@ -157,15 +166,20 @@ public:
 	virtual boost::shared_ptr<T> get_ptr() const
 	{
 		if (!valid_) {
-			if (!valid_variant_) {
-				recalculate();
+			if (!(valid_variant_ || valid_lua_)) {				
+				recalculate();				
 			}
 
-			if (!valid_ && valid_variant_) {
-				value_ = boost::shared_ptr<T>(new T(variant_value_translator<T>::variant_to_value(get_variant())));
-				valid_ = true;
-			} else {
-				assert(valid_);
+			if (!valid_ ) {
+				if (valid_variant_) {
+					value_ = boost::shared_ptr<T>(new T(variant_value_translator<T>::variant_to_value(get_variant())));
+					valid_ = true;
+				} else if (valid_lua_){
+					value_ = value_lua_->get();
+					valid_ = true;
+				} else {
+					assert(valid_);
+				}
 			}
 		}
 		return value_;
@@ -174,6 +188,7 @@ public:
 protected:
 	mutable boost::shared_ptr<T> value_;
 	mutable boost::shared_ptr<variant> value_variant_;
+	mutable boost::shared_ptr< lua_object<T> > value_lua_;
 };
 
 
@@ -380,6 +395,45 @@ protected:
 
 };
 
+template<typename T>
+class lua_aspect : public typesafe_aspect<T> 
+{
+public:
+	lua_aspect(readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
+		: typesafe_aspect<T>(context, cfg, id)
+	{
+		std::string value;
+		if (cfg.has_attribute("value")) 
+		{
+			value = cfg["value"].str(); 
+			value = "return (" + value + ")";
+		} 
+		else if (cfg.has_attribute("code")) 
+		{	
+			value = cfg["code"].str();
+		}
+		else 
+		{
+			// error
+			return;
+		}
+		
+		handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(value.c_str(), *l_ctx));
+	}
+
+	void recalculate() const
+	{
+		this->valid_lua_ = true;
+		boost::shared_ptr< lua_object<T> > l_obj = boost::shared_ptr< lua_object<T> >(new lua_object<T>());
+		config c = config();
+		handler_->handle(c, true, l_obj);
+		this->value_lua_ = l_obj;
+	}
+
+private:
+	boost::shared_ptr<lua_ai_action_handler> handler_;
+};
+
 
 class aspect_factory{
 public:
@@ -415,8 +469,51 @@ public:
 	{
 	}
 
-	virtual aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id){
+	aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id)
+	{
 		boost::shared_ptr<ASPECT> _a(new ASPECT(context,cfg,id));
+		aspect_ptr a = _a;
+		a->on_create();
+		return a;
+	}
+};
+
+class lua_aspect_factory{
+public:
+	typedef boost::shared_ptr< lua_aspect_factory > factory_ptr;
+	typedef std::map<std::string, factory_ptr> factory_map;
+	typedef std::pair<const std::string, factory_ptr> factory_map_pair;
+
+	static factory_map& get_list() {
+		static factory_map *aspect_factories;
+		if (aspect_factories==NULL) {
+			aspect_factories = new factory_map;
+		}
+		return *aspect_factories;
+	}
+
+	virtual aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx) = 0;
+
+	lua_aspect_factory( const std::string &name )
+	{
+		factory_ptr ptr_to_this(this);
+		get_list().insert(make_pair(name,ptr_to_this));
+	}
+
+	virtual ~lua_aspect_factory() {}
+};
+
+template<class ASPECT>
+class register_lua_aspect_factory : public lua_aspect_factory {
+public:
+	register_lua_aspect_factory( const std::string &name )
+		: lua_aspect_factory( name )
+	{
+	}
+	
+	aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
+	{
+		boost::shared_ptr<ASPECT> _a(new ASPECT(context,cfg,id,l_ctx));
 		aspect_ptr a = _a;
 		a->on_create();
 		return a;
