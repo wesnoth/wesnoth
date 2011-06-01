@@ -62,6 +62,7 @@ BPath be_path;
 #include "log.hpp"
 #include "loadscreen.hpp"
 #include "scoped_resource.hpp"
+#include "serialization/string_utils.hpp"
 
 static lg::log_domain log_filesystem("filesystem");
 #define DBG_FS LOG_STREAM(debug, log_filesystem)
@@ -348,6 +349,11 @@ std::string get_dir(const std::string& dir_path)
 bool make_directory(const std::string& path)
 {
 	return (mkdir(path.c_str(),AccessMode) == 0);
+}
+
+bool looks_like_pbl(const std::string& file)
+{
+	return utils::wildcard_string_match(utils::lowercase(file), "*.pbl");
 }
 
 // This deletes a directory with no hidden files and subdirectories.

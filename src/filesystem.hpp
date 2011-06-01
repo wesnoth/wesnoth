@@ -86,6 +86,8 @@ std::string get_exe_dir();
 bool make_directory(const std::string& dirname);
 bool delete_directory(const std::string& dirname);
 
+bool looks_like_pbl(const std::string& file);
+
 // Basic disk I/O:
 
 /** Basic disk I/O - read file.

@@ -242,11 +242,6 @@ static void archive_file(const std::string& path, const std::string& fname, conf
 	cfg["contents"] = encode_binary(strip_cr(read_file(path + '/' + fname),is_cfg));
 }
 
-inline bool looks_like_pbl(const std::string& file)
-{
-	return utils::wildcard_string_match(utils::lowercase(file), "*.pbl");
-}
-
 static void archive_dir(const std::string& path, const std::string& dirname, config& cfg, std::pair<std::vector<std::string>, std::vector<std::string> >& ignore_patterns)
 {
 	cfg["name"] = dirname;
