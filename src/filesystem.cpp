@@ -361,13 +361,13 @@ bool looks_like_pbl(const std::string& file)
 
 // This deletes a directory with no hidden files and subdirectories.
 // Also deletes a single file.
-bool delete_directory(const std::string& path)
+bool delete_directory(const std::string& path, const bool keep_pbl)
 {
 	bool ret = true;
 	std::vector<std::string> files;
 	std::vector<std::string> dirs;
 
-	get_files_in_dir(path, &files, &dirs, ENTIRE_FILE_PATH);
+	get_files_in_dir(path, &files, &dirs, ENTIRE_FILE_PATH, keep_pbl ? SKIP_PBL_FILES : NO_FILTER);
 
 	if(!files.empty()) {
 		for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
