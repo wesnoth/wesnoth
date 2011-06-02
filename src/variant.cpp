@@ -72,8 +72,25 @@ variant_iterator::variant_iterator()
 {
 }
 
-variant_iterator::variant_iterator(const variant_iterator& iter) : type_(iter.type_), list_iterator_(iter.list_iterator_), map_iterator_(iter.map_iterator_)
-{}
+variant_iterator::variant_iterator(const variant_iterator& iter)
+	: type_(iter.type_)
+	, list_iterator_()
+	, map_iterator_()
+{
+	switch(type_) {
+		case TYPE_LIST :
+			list_iterator_ = iter.list_iterator_;
+			break;
+
+		case TYPE_MAP:
+			map_iterator_ = iter.map_iterator_;
+			break;
+
+		case TYPE_NULL:
+			/* DO NOTHING */
+			break;
+	}
+}
 
 variant_iterator::variant_iterator(
 		const std::vector<variant>::iterator& iter)
@@ -137,8 +154,20 @@ variant_iterator& variant_iterator::operator=(const variant_iterator& that)
 	if (this == &that)
 		return *this;
 	type_ = that.type_;
-	list_iterator_ = that.list_iterator_;
-	map_iterator_ = that.map_iterator_;
+	switch(type_) {
+		case TYPE_LIST :
+			list_iterator_ = that.list_iterator_;
+			break;
+
+		case TYPE_MAP:
+			map_iterator_ = that.map_iterator_;
+			break;
+
+		case TYPE_NULL:
+			/* DO NOTHING */
+			break;
+	}
+
 	return *this;
 }
 
@@ -391,22 +420,6 @@ variant variant::get_values() const
 			tmp.push_back(i->second);
 	}
 	return variant(&tmp);
-}
-
-variant_iterator variant::get_iterator() const
-{
-	if(type_ == TYPE_LIST)
-	{
-		std::vector<variant>::iterator i;
-		return variant_iterator( i );
-	}
-	if(type_ == TYPE_MAP)
-	{
-		std::map<variant,variant>::iterator i;
-		return variant_iterator( i );
-	}
-
-	return variant_iterator();
 }
 
 variant_iterator variant::begin() const

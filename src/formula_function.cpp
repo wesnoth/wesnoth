@@ -328,8 +328,7 @@ private:
 
 		std::vector<variant> tmp;
 
-		variant_iterator it = var.get_iterator();
-		for(it = var.begin(); it != var.end(); ++it) {
+		for(variant_iterator it = var.begin(); it != var.end(); ++it) {
 			tmp.push_back( *it );
 		}
 
@@ -358,8 +357,7 @@ private:
 				tmp[ var_1[i] ] = var_2[i];
 		} else
 		{
-			variant_iterator it = var_1.get_iterator();
-			for(it = var_1.begin(); it != var_1.end(); ++it) {
+			for(variant_iterator it = var_1.begin(); it != var_1.end(); ++it) {
 				std::map<variant, variant>::iterator map_it = tmp.find( *it );
 				if (map_it == tmp.end())
 					tmp[ *it ] = variant( 1 );
@@ -529,11 +527,10 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const variant items = args()[0]->evaluate(variables,fdb);
 		variant max_value;
-		variant_iterator it = items.get_iterator();
-		variant_iterator max = variant_iterator();
+		variant_iterator max;
 
 		if(args().size() == 2) {
-			for(it = items.begin(); it != items.end(); ++it) {
+			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				const variant val = args().back()->evaluate(formula_variant_callable_with_backup(*it, variables),fdb);
 				if(max == variant_iterator() || val > max_value) {
 					max = it;
@@ -544,7 +541,7 @@ private:
 			map_formula_callable self_callable;
 			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
-			for(it = items.begin(); it != items.end(); ++it) {
+			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
 				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)),fdb);
 				if(max == variant_iterator() || val > max_value) {
@@ -684,10 +681,8 @@ private:
 
 		const variant items = args()[0]->evaluate(variables,fdb);
 
-		variant_iterator it = items.get_iterator();
-
 		if(args().size() == 2) {
-			for(it = items.begin(); it != items.end(); ++it)  {
+			for(variant_iterator it = items.begin(); it != items.end(); ++it)  {
 				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(*it, variables),fdb);
 				if(val.as_bool()) {
 					if (items.is_map() )
@@ -700,7 +695,7 @@ private:
 			map_formula_callable self_callable;
 			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
-			for(it = items.begin(); it != items.end(); ++it) {
+			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
 				const variant val = args()[2]->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)),fdb);
 				if(val.as_bool()) {
@@ -727,9 +722,8 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const variant items = args()[0]->evaluate(variables,fdb);
 
-		variant_iterator it = items.get_iterator();
 		if(args().size() == 2) {
-			for(it = items.begin(); it != items.end(); ++it) {
+			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(*it, variables),fdb);
 				if(val.as_bool()) {
 					return *it;
@@ -739,7 +733,7 @@ private:
 			map_formula_callable self_callable;
 			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
-			for(it = items.begin(); it != items.end(); ++it){
+			for(variant_iterator it = items.begin(); it != items.end(); ++it){
 				self_callable.add(self, *it);
 				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)),fdb);
 				if(val.as_bool()) {
@@ -763,9 +757,8 @@ private:
 		std::map<variant,variant> map_vars;
 		const variant items = args()[0]->evaluate(variables,fdb);
 
-		variant_iterator it = items.get_iterator();
 		if(args().size() == 2) {
-			for(it = items.begin(); it != items.end(); ++it) {
+			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				const variant val = args().back()->evaluate(formula_variant_callable_with_backup(*it, variables),fdb);
 				if (items.is_map() )
 					map_vars[ (*it).get_member("key") ] = val;
@@ -776,7 +769,7 @@ private:
 			map_formula_callable self_callable;
 			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
-			for(it = items.begin(); it != items.end(); ++it) {
+			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
 				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)),fdb);
 				if (items.is_map() )
@@ -807,8 +800,7 @@ private:
 		else if(items.num_elements() == 1)
 			return items[0];
 
-		variant_iterator it = items.get_iterator();
-		it = items.begin();
+		variant_iterator it = items.begin();
 		variant res(*it);
 		map_formula_callable self_callable;
 		self_callable.add_ref();
@@ -874,8 +866,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const variant items = args()[0]->evaluate(variables,fdb);
-		variant_iterator it = items.get_iterator();
-		it = items.begin();
+		variant_iterator it = items.begin();
 		if(it == items.end()) {
 			return variant();
 		}

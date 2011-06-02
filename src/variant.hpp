@@ -126,7 +126,6 @@ public:
 	variant get_keys() const;
 	variant get_values() const;
 
-	variant_iterator get_iterator() const;
 	variant_iterator begin() const;
 	variant_iterator end() const;
 
@@ -156,12 +155,40 @@ private:
 	void release();
 };
 
+/**
+ * Iterator class for the variant.
+ *
+ * Depending on the @p type_ the @p list_iterator_ and the @p map_iterator_ are
+ * a valid iterator or singular. Since most actions on singular iterators
+ * result in Undefined Behaviour care should be taken when copying the
+ * @p list_iterator_ and @p map_iterator_.
+ */
 class variant_iterator {
 public:
+	/**
+	 * Constructor for a TYPE_NULL variant.
+	 */
 	variant_iterator();
+
+	/**
+	 * Constructor for a TYPE_LIST variant.
+	 *
+	 * @pre @p iter is not singular.
+	 *
+	 * @param iter                Iterator to initialize @p list_iterator_ with.
+	 */
+	variant_iterator(const std::vector<variant>::iterator& iter);
+
+	/**
+	 * Constructor for a TYPE_MAP variant.
+	 *
+	 * @pre @p iter is not singular.
+	 *
+	 * @param iter                Iterator to initialize @p map_iterator_ with.
+	 */
+	variant_iterator(const std::map<variant, variant>::iterator& iter);
+
 	variant_iterator(const variant_iterator&);
-	variant_iterator(const std::vector<variant>::iterator& );
-	variant_iterator(const std::map<variant, variant>::iterator& );
 
 	variant operator*() const;
 	variant_iterator operator++();
