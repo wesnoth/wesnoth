@@ -33,6 +33,8 @@ class lua_object_base {
 
 public:
 	lua_object_base();
+	virtual ~lua_object_base() {}
+
 	virtual void store(lua_State* L, int n) = 0;
 };
 
