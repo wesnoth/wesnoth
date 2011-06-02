@@ -312,8 +312,13 @@ private:
 
 		size_t index = 0;
 		for( std::vector< std::vector<int> >::iterator i = scores.begin() ; i != scores.end() ; ++i) {
-			for( std::vector<int>::iterator j = i->begin() ; j != i->end() ; ++j )
-				*j = *j / units_input[index].num_elements();
+			for( std::vector<int>::iterator j = i->begin() ; j != i->end() ; ++j ) {
+				if(units_input[index].num_elements() != 0) {
+					*j /= units_input[index].num_elements();
+				} else {
+					*j = 0;
+				}
+			}
 
 			++index;
 		}
