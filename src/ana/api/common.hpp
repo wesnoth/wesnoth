@@ -37,6 +37,8 @@
 #include <boost/cstdint.hpp>
 #include <boost/system/error_code.hpp>
 
+#include "../../global.hpp"
+
 namespace ana
 {
     /** @name Type and constant definitions
