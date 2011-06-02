@@ -16,6 +16,8 @@
 #ifndef LUA_JAILBREAK_EXCEPTION
 #define LUA_JAILBREAK_EXCEPTION
 
+#include "global.hpp"
+
 /**
  * Base class for exceptions that want to be thrown 'through' lua.
  *

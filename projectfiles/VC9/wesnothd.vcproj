@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="wesnothd"
 	ProjectGUID="{72F28A4A-A6A2-4C49-8141-7CD0DFA9ECCE}"
 	RootNamespace="wesnothd"
@@ -50,7 +50,6 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
-				DisableSpecificWarnings="4244;4099;4345;4250;4355;4800;4351"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -126,7 +125,6 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
-				DisableSpecificWarnings="4244;4099;4345;4250;4355;4800"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -390,6 +388,10 @@
 				</File>
 				<File
 					RelativePath="..\..\src\server\game.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\global.hpp"
 					>
 				</File>
 				<File

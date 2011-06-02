@@ -52,6 +52,7 @@ documentation and/or software.
 #include <string.h> // Edit: needed for strlen() (strings.h should
                     // include it but apparently does not for me)
 
+#include "global.hpp"
 
 
 
