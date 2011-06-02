@@ -177,7 +177,7 @@ public:
 	 *
 	 * @param iter                Iterator to initialize @p list_iterator_ with.
 	 */
-	variant_iterator(const std::vector<variant>::iterator& iter);
+	explicit variant_iterator(const std::vector<variant>::iterator& iter);
 
 	/**
 	 * Constructor for a TYPE_MAP variant.
@@ -186,7 +186,7 @@ public:
 	 *
 	 * @param iter                Iterator to initialize @p map_iterator_ with.
 	 */
-	variant_iterator(const std::map<variant, variant>::iterator& iter);
+	explicit variant_iterator(const std::map<variant, variant>::iterator& iter);
 
 	variant_iterator(const variant_iterator&);
 
