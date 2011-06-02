@@ -94,7 +94,7 @@ void asio_listener::handle_body( ana::read_buffer buf, const boost::system::erro
             listen_one_message();
         }
     }
-    catch(const std::exception& e)
+    catch(const std::exception&)
     {
         disconnect( ec);
     }
@@ -139,7 +139,7 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
             }
         }
     }
-    catch(const std::exception& e)
+    catch(const std::exception&)
     {
         disconnect(ec);
     }
@@ -181,7 +181,7 @@ void asio_listener::handle_partial_body( ana::read_buffer         buffer,
                                                      accumulated, _2 ));
         }
     }
-    catch(const std::exception& e)
+    catch(const std::exception&)
     {
         disconnect( ec);
     }
@@ -215,7 +215,7 @@ void asio_listener::handle_raw_buffer( ana::read_buffer buf,
             listen_one_message();
         }
     }
-    catch(const std::exception& e)
+    catch(const std::exception&)
     {
         disconnect( ec);
     }
@@ -267,7 +267,7 @@ void asio_listener::listen_one_message()
                                                 raw_buffer, boost::asio::placeholders::error, _2));
         }
     }
-    catch(const std::exception& e)
+    catch(const std::exception&)
     {
         disconnect( ana::generic_error );
     }
