@@ -79,7 +79,7 @@ void asio_sender::send(ana::detail::shared_buffer buffer ,
                                                  handler, running_timer, _2, op_id ));
         }
     }
-    catch(std::exception& e)
+    catch(const std::exception&)
     {
         disconnect();
         delete running_timer;
@@ -145,7 +145,7 @@ stats_collector().log_send( last_msg_size, accumulated == buffer->size() );
                                                      accumulated, _2, op_id ));
         }
     }
-    catch(const std::exception& e)
+    catch(const std::exception&)
     {
         disconnect( );
     }
