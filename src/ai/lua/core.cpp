@@ -255,6 +255,34 @@ static int cfun_ai_get_aggression(lua_State *L)
 	return 1;
 }
 
+static int cfun_ai_get_attack_depth(lua_State *L)
+{
+	int attack_depth = get_readonly_context(L).get_attack_depth();
+	lua_pushnumber(L, attack_depth);
+	return 1;
+}
+
+static int cfun_ai_get_caution(lua_State *L)
+{
+	double caution = get_readonly_context(L).get_caution();
+	lua_pushnumber(L, caution);
+	return 1;
+}
+
+static int cfun_ai_get_leader_aggression(lua_State *L)
+{
+	double leader_aggression = get_readonly_context(L).get_leader_aggression();
+	lua_pushnumber(L, leader_aggression);
+	return 1;
+}
+
+static int cfun_ai_get_leader_value(lua_State *L)
+{
+	double leader_value = get_readonly_context(L).get_leader_value();
+	lua_pushnumber(L, leader_value);
+	return 1;
+}
+
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
 	int res_ai = luaL_loadstring(L, code);//stack size is now 1 [ -1: ai_context]
@@ -273,16 +301,20 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 	lua_setfield(L, -2, "side");//stack size is 2 [- 1: new table; -2 ai as string]
 
 	static luaL_reg const callbacks[] = {
-		{ "attack",           &cfun_ai_execute_attack           },
-		{ "get_aggression",   &cfun_ai_get_aggression           },
-		{ "move",             &cfun_ai_execute_move_partial     },
-		{ "move_full",        &cfun_ai_execute_move_full        },
-		{ "recall",           &cfun_ai_execute_recall           },
-		{ "recruit",          &cfun_ai_execute_recruit          },
-		{ "stopunit_all",     &cfun_ai_execute_stopunit_all     },
-		{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
-		{ "stopunit_moves",   &cfun_ai_execute_stopunit_moves   },
-		{ "suitable_keep",    &cfun_ai_get_suitable_keep   },
+		{ "attack", 			&cfun_ai_execute_attack			},
+		{ "get_aggression", 		&cfun_ai_get_aggression           	},
+		{ "get_attack_depth",		&cfun_ai_get_attack_depth		}, // { "get_", &cfun_ai_get_}, little template # TODELETE
+		{ "get_caution", 		&cfun_ai_get_caution			},
+		{ "get_leader_aggression", 	&cfun_ai_get_leader_aggression		},
+		{ "get_leader_value", 		&cfun_ai_get_leader_value		},
+		{ "move",             		&cfun_ai_execute_move_partial		},
+		{ "move_full",        		&cfun_ai_execute_move_full        	},
+		{ "recall",          		&cfun_ai_execute_recall           	},
+		{ "recruit",          		&cfun_ai_execute_recruit         	},
+		{ "stopunit_all",     		&cfun_ai_execute_stopunit_all     	},
+		{ "stopunit_attacks",		&cfun_ai_execute_stopunit_attacks 	},
+		{ "stopunit_moves",   		&cfun_ai_execute_stopunit_moves 	},
+		{ "suitable_keep",   		&cfun_ai_get_suitable_keep		},
 		{ NULL, NULL }
 	};
 

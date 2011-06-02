@@ -362,6 +362,18 @@ static register_aspect_factory< standard_aspect<int> >
 static register_lua_aspect_factory< lua_aspect<double> >
 	aggression__lua_aspect_factory("aggression*lua_aspect");
 
+static register_lua_aspect_factory< lua_aspect<int> >
+	attack_depth__lua_aspect_factory("attack_depth*lua_aspect");
+	
+static register_lua_aspect_factory< lua_aspect<double> >
+	caution__lua_aspect_factory("caution*lua_aspect");
+	
+static register_lua_aspect_factory< lua_aspect<double> >
+	leader_aggression__lua_aspect_factory("leader_aggression*lua_aspect");
+	
+static register_lua_aspect_factory< lua_aspect<double> >
+	leader_value__lua_aspect_factory("leader_value*lua_aspect");
+
 void registry::init()
 {
 }
