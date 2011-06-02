@@ -126,7 +126,7 @@ void asio_server::async_accept( connection_handler* handler )
                                             last_client_proxy_,
                                             handler));
     }
-    catch( const std::exception& e )
+    catch( const std::exception&)
     {
         delete last_client_proxy_;
     }
