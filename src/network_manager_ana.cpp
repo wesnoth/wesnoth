@@ -684,7 +684,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
             }
         }
     }
-    catch( const std::exception& e )
+    catch( const std::exception& )
     {
         throw network::error(_("Could not connect to host"), new_client_id );
         return 0;
