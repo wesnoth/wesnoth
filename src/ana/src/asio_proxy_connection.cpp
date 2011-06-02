@@ -224,7 +224,7 @@ void proxy_connection::do_connect()
                               boost::bind(&proxy_connection::handle_connect, this,
                                           boost::asio::placeholders::error, ++endpoint_iterator));
     }
-    catch (const std::exception& e)
+    catch (const std::exception&)
     {
         manager_->handle_proxy_connection(ana::generic_error, conn_handler_, timer_ );
     }
