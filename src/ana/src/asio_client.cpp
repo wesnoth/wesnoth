@@ -196,7 +196,7 @@ void asio_client::connect( ana::connection_handler* handler )
                                           boost::asio::placeholders::error, ++endpoint_iterator,
                                           handler, running_timer));
     }
-    catch (const std::exception& e)
+    catch (const std::exception&)
     {
         inform_connection_result( handler, ana::generic_error );
     }
