@@ -231,7 +231,7 @@ static void draw_circle(
 	// Algorithm based on
 	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
 	// version of 2011.02.07.
-	int d = -radius;
+	int d = -static_cast<int>(radius);
 	int x = radius;
 	int y = 0;
 	while(!(y > x)) {
