@@ -593,7 +593,7 @@ static int process_command_args(int argc, char** argv) {
  */
 static void init_locale() {
 	#ifdef _WIN32
-	    std::setlocale(LC_ALL, "English");
+	    setlocale(LC_ALL, "English");
 	#else
 		std::setlocale(LC_ALL, "C");
 		std::setlocale(LC_MESSAGES, "");
