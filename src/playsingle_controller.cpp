@@ -393,6 +393,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			save = true;
 		} //end for loop
 
+#ifdef _MSC_VER
+//MSVC claims that const game::load_game_exception& lge would be unreferenced...
+#pragma warning (disable : 4101)
+#endif
 	} catch(const game::load_game_exception& lge) {
 		// Loading a new game is effectively a quit.
 		//
@@ -535,6 +539,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 	return QUIT;
 }
+#ifdef _MSC_VER
+#pragma warning (default: 4101)
+#endif
 
 void playsingle_controller::play_turn(bool save)
 {
@@ -755,6 +762,9 @@ void playsingle_controller::linger()
 			play_slice();
 			gui_->draw();
 		}
+#ifdef _MSC_VER
+#pragma warning (disable : 4101)
+#endif
 	} catch(const game::load_game_exception& lge) {
 		// Loading a new game is effectively a quit.
 		if (lge.game != "") {
@@ -771,6 +781,9 @@ void playsingle_controller::linger()
 
 	LOG_NG << "ending end-of-scenario linger\n";
 }
+#ifdef _MSC_VER
+#pragma warning (default : 4101)
+#endif
 
 void playsingle_controller::end_turn_record()
 {
