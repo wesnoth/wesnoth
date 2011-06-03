@@ -72,9 +72,9 @@ void input_stream::stop()
 #endif
 }
 
+#ifndef _WIN32
 bool input_stream::read_line(std::string& str)
 {
-#ifndef _WIN32
 	if(fd_ == -1) {
 		return false;
 	}
@@ -94,7 +94,10 @@ bool input_stream::read_line(std::string& str)
 	} else {
 		return false;
 	}
-#else
-	return false;
-#endif
 }
+#else
+bool input_stream::read_line(std::string&)
+{
+	return false;
+}
+#endif
