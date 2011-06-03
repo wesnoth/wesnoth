@@ -856,7 +856,6 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return true;
 		case HOTKEY_EDITOR_MAP_REVERT:
 			return !get_map_context().get_filename().empty();
-			return true;
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
@@ -1075,7 +1074,6 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		default:
 			return controller_base::execute_command(command, index);
 	}
-	return false;
 }
 
 void editor_controller::expand_open_maps_menu(std::vector<std::string>& items)
