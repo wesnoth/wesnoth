@@ -1158,8 +1158,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			verify(*resources::units, child);
 		}
 	}
-
-	return false; /* Never attained, but silent a gcc warning. --Zas */
 }
 
 replay_network_sender::replay_network_sender(replay& obj) : obj_(obj), upto_(obj_.ncommands())
