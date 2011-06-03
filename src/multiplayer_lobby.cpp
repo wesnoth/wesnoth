@@ -726,11 +726,9 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 		} else {
 			return turn1 < turn2;
 		}
-	} else {
-		return basic_sorter::less(column,row1,row2);
 	}
 
-	return false;
+	return basic_sorter::less(column,row1,row2);
 }
 
 lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
