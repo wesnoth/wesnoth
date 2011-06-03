@@ -13,8 +13,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef DISABLE_4786_HPP_INCLUDED
-#define DISABLE_4786_HPP_INCLUDED
+#ifndef GLOBAL_HPP_INCLUDED
+#define GLOBAL_HPP_INCLUDED
 
 #ifdef _MSC_VER
 
@@ -36,6 +36,6 @@
 #pragma warning(disable: 4800)
 #pragma warning(disable: 4351)
 
-#endif
+#endif //_MSC_VER
 
-#endif
+#endif //GLOBAL_HPP_INCLUDED
