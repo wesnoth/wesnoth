@@ -285,7 +285,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 							return false;
 						}
 					}
-				} while(retval == 0 || retval == -1 && errno == EINTR);
+				} while(retval == 0 || (retval == -1 && errno == EINTR));
 
 				if (retval < 1) {
 					return false;
