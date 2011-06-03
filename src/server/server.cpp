@@ -128,10 +128,12 @@ static lg::log_domain log_config("config");
 
 sig_atomic_t config_reload = 0;
 
+#ifndef _MSC_VER
 static void reload_config(int signal) {
 	assert(signal == SIGHUP);
 	config_reload = 1;
 }
+#endif
 
 static void exit_sigint(int signal) {
 	assert(signal == SIGINT);
