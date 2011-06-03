@@ -830,8 +830,6 @@ static int do_gameloop(int argc, char** argv)
 			game->play_replay();
 		}
 	}
-
-	return 0;
 }
 
 #ifndef DISABLE_POOL_ALLOC
