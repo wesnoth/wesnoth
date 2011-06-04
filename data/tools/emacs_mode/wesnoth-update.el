@@ -1,22 +1,8 @@
 ;;; wesnoth-update.el --- Update known WML data via existing valid WML.
-;; Copyright (C) 2008, 2009 Chris Mann
+
+;; Author: Chris Mann
 
 ;; This file is part of wesnoth-mode.
-
-;; This program is free software; you can redistribute it and/or
-;; modify it under the terms of the GNU General Public License as
-;; published by the Free Software Foundation; either version 2 of the
-;; License, or (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful, but
-;; WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-;; General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program; see the file COPYING.  If not, write to the
-;; Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
-;; MA 02139, USA.
 
 ;;; Commentary:
 ;; Update WML information using WML built-in to Wesnoth.
@@ -60,6 +46,11 @@
 ;; available to `wesnoth-mode'.
 
 ;;; History:
+;; 0.1.6
+;; * More verbose output
+;; * Fix bug which could cause `wesnoth-update' to hang.
+;; 0.1.5
+;; * `wesnoth-update' now finds more built-in macros.
 ;; 0.1.4
 ;; * Fixed inaccuracies when updating project information.
 ;; * WML data from the addition file can now read when as it is required.
@@ -77,7 +68,9 @@
 ;; * Initial version
 
 ;;; Code:
-(defvar wesnoth-update-version "0.1.4"
+(require 'pp)
+
+(defvar wesnoth-update-version "0.1.6"
   "Version of `wesnoth-update'.")
 
 (defcustom wesnoth-root-directory nil
@@ -95,10 +88,6 @@
 Ensure this directory is in your `load-path'."
   :type 'directory
   :group 'wesnoth-mode)
-
-(defconst wesnoth-macro-directory "data/core/macros"
-  "Directory which built-in macros are stored.
-This is relative to the wesnoth directory in `wesnoth-root-directory.'.")
 
 (defvar wesnoth-found-cfgs '()
   "Temporary list of all .cfg files found.")
@@ -153,7 +142,8 @@ Returns a list of sub-directories in DIR."
       (setq wesnoth-found-cfgs (append cfgs wesnoth-found-cfgs))))
   (let ((dirs '()))
     (dolist (file (directory-files dir t))
-      (unless (string-match "^\\..*" (file-name-nondirectory file))
+      (when (and (not (string-match "^\\..*" (file-name-nondirectory file)))
+                 (not (file-symlink-p file)))
 	(cond ((file-directory-p file)
 	       (add-to-list 'dirs file))
 	      ((wesnoth-file-cfg-p file)
@@ -180,6 +170,10 @@ DIR-OR-FILE can be a file, a directory, or a list of files."
 	(t
 	 (wesnoth-fetch-all-dirs dir-or-file)
 	 (while wesnoth-found-cfgs
+           (message "Updating WML semantics: %s..."
+                    (substring (car wesnoth-found-cfgs)
+                               (length (expand-file-name
+                                        wesnoth-root-directory))))
 	   (unless (string-match "^\\..+" (file-name-nondirectory
 					   (car wesnoth-found-cfgs)))
 	     (wesnoth-handle-file function (car wesnoth-found-cfgs))
@@ -196,6 +190,7 @@ DIR-OR-FILE can be a file, a directory, or a list of files."
   "Retrieve relevant tag and attribute information."
   (let ((unmatched-tag-list '()))
     (goto-char (point-min))
+    (wesnoth-determine-macro-information)
     (while (search-forward-regexp
 	    "^[\t ]*\\(\\[[+/]?\\(\\(\\w\\|_\\)+\\)\\]\\|\\(\\w\\|_\\)+=\\)"
 	    (point-max) t)
@@ -251,8 +246,7 @@ SUBTAG and ATTRIBUTE are a children of TAG to be added."
       (add-to-list 'wesnoth-tmp-tag-data match))))
 
 (defun wesnoth-determine-macro-information ()
-  "Process the buffer, retrieving macro definition information.
-MACRO-LIST is the variable to append macro information."
+  "Process the buffer, retrieving macro definition information."
   (save-excursion
     (goto-char (point-min))
     (while (search-forward-regexp
@@ -314,25 +308,23 @@ Path to WML information included in wesnoth is set by
     (load "wesnoth-wml-data")
     (error "%s: directory does not exist"
 	   wesnoth-root-directory))
-  (message "Updating WML information...")
+  (message "Updating WML semantics: Searching for .cfg's...")
   (wesnoth-determine-details wesnoth-root-directory
 			     'wesnoth-extract-tag-information)
-  (wesnoth-determine-details
-   (concat wesnoth-root-directory wesnoth-macro-directory)
-   (lambda ()
-     (wesnoth-determine-macro-information)))
   (setq wesnoth-tag-data wesnoth-tmp-tag-data
 	wesnoth-tmp-tag-data nil
 	wesnoth-macro-data wesnoth-tmp-macro-data
 	wesnoth-tmp-macro-data nil)
   (with-temp-buffer
-    (insert (format "(setq wesnoth-tag-data '%S)\n\n" wesnoth-tag-data))
-    (insert (format "(setq wesnoth-macro-data '%S)\n\n" wesnoth-macro-data))
-    (insert "(provide 'wesnoth-wml-data)\n")
-    (write-file (expand-file-name (format "wesnoth-wml-data.el")
+    (insert "(setq wesnoth-tag-data '"
+            (pp wesnoth-tag-data) ")\n\n"
+            "(setq wesnoth-macro-data '"
+            (pp wesnoth-macro-data) ")\n\n"
+            "(provide 'wesnoth-wml-data)\n")
+    (write-file (expand-file-name "wesnoth-wml-data.el"
 				  (wesnoth-output-path)))
     (load "wesnoth-wml-data"))
-  (message "Updating WML information...done"))
+  (message "Updating WML semantics: done"))
 
 (defun wesnoth-merge-macro-data (&rest macro-data)
   "Merge WML macro information and return the result.

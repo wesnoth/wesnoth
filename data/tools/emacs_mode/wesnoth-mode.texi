@@ -2,49 +2,20 @@
 @setfilename wesnoth-mode.info
 @settitle Wesnoth Mode Manual
 
-@set VERSION 1.3.5
-@set WMLVERSION 1.5.11
-@set DATE February 2009
+@set VERSION 1.3.5+git
+@set WMLVERSION 1.9.6+svn
+@set DATE May 2011
 
 @dircategory Emacs
 @direntry
 * Wesnoth Mode: (wesnoth-mode).         Major-mode for editing WML
 @end direntry
 
-@set MAINTAINERSITE @uref{http://www.wesnoth.org/forum/viewtopic.php?t=13798}
-@set AUTHOR Chris Mann
 @finalout
-
-@copying
-This manual is for Wesnoth Mode (version @value{VERSION}).
-
-Copyright @copyright{} 2008, 2009 Chris Mann
-
-@quotation
-This program is free software; you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation; either version 2 of the License, or (at your
-option) any later version.
-
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-@end quotation
-@end copying
 
 @titlepage
 @title Wesnoth Mode Manual
 @subtitle Version @value{VERSION}
-@author by @value{AUTHOR}
-@page
-
-@vskip 0pt plus 1filll
-@insertcopying
 @end titlepage
 
 @summarycontents
@@ -92,6 +63,7 @@ Customisation
 
 * Modifying Indentation::       Customising WML indentation
 * Wesnoth Update::              Using and configuring Wesnoth Update
+* Addition File::               Extending known WML
 * Macro Definitions::           Making project-local macros known
 
 @end detailmenu
@@ -112,7 +84,7 @@ Wesnoth Mode is a major mode for Emacs which assists in the editing of
 the markup language extensively used in Wesnoth, a turn-based fantasy
 strategy game.  From the Wesnoth Wiki: "The Wesnoth Markup Language
 (WML) is used to code almost everything in Wesnoth, including scenarios,
-units, savefiles, and the user interface layout."
+units, save files, and the user interface layout."
 @footnote{@uref{http://www.wesnoth.org/wiki/ReferenceWML}}
 
 Wesnoth Mode is supported under GNU Emacs 21 onwards and (with some
@@ -167,10 +139,10 @@ checkout the latest changes, the following command can be used:
 By default, Wesnoth Mode provides a style of indentation equivalent to
 that provided by @code{wmlindent} tool distributed with Wesnoth.
 @kbd{TAB} can be used to automatically indent the current line to the
-correct depth.  @kbd{TAB} can perform two actions depending on the
-context of point.  When there is an incomplete element immediately
-preceding point, completion will be attempted, otherwise @kbd{TAB} will
-perform indentation.  See @ref{Tab Completion}.
+correct depth.  Two actions can be performed depending on the context of
+point.  When there is an incomplete element immediately preceding point,
+completion will be attempted, otherwise indentation will be performed.
+See @ref{Tab Completion}.
 
 Wesnoth Mode will, by default, indent the current line appropriately
 before inserting a newline when @kbd{RET} or @kbd{C-j} is
@@ -208,9 +180,10 @@ at point and @kbd{C-M-u} moving to the corresponding parent element.
 
 Additional commands have been added to assist editing regions of WML.
 @kbd{C-M-k} can be used to kill the element at point up to the
-corresponding closing element, including all contents.  Also, when point
-is at an opening element, the mark can be placed at the end of the
-corresponding closing element using @kbd{C-M-SPC}.
+corresponding closing element, including all contents.  A prefix
+argument can be provided to kill the next @i{n} blocks of elements.
+Also, when point is at an opening element, the mark can be placed at the
+end of the corresponding closing element using @kbd{C-M-SPC}.
 
 @node Inserting Elements, Validating WML, Basic Usage, Top
 @chapter Inserting Elements
@@ -347,7 +320,7 @@ The following conditions can be tested in Wesnoth Mode:
 @item Known macro definitions @footnote{see @ref{Macro Definitions}}
 @item Availability of elements within the given context
 @item Arguments are given to preprocessor statements when required
-@item Attributes have a value assigned
+@item Attributes have a value
 @item Corresponding FOREACH..NEXT pairs
 @end itemize
 
@@ -360,7 +333,8 @@ See @ref{Wesnoth Update} for more information.
 @menu
 * Modifying Indentation::       Customising WML indentation
 * Wesnoth Update::              Using and configuring Wesnoth Update
-* Macro Definitions::           making project-local macros known
+* Addition File::               Extending known WML
+* Macro Definitions::           Making project-local macros known
 @end menu
 
 @node Modifying Indentation, Wesnoth Update, Customisation, Customisation
@@ -390,24 +364,24 @@ performed on the current line.
 
 The following can be used to change @kbd{RET} to automatically indent the
 newline:
-@example
+@lisp
 (add-hook 'wesnoth-mode-hook
   '(lambda ()
     (define-key wesnoth-mode-map (kbd ``C-m'')
     'wesnoth-newline-and-indent)))
-@end example
+@end lisp
 
 @code{wesnoth-base-indent} controls the depth of indentation for each
 level.  Its value should be an integer.  This is set to `4' by default,
 which is the convention used when indenting WML.
 
 By default, Wesnoth Mode will use spaces for indentation.  Tabs can instead be used with the following:
-@example
+@lisp
 (add-hook 'wesnoth-mode-hook
   '(lambda ()
     (setq indent-tabs-mode t
           tab-width wesnoth-base-indent)))
-@end example
+@end lisp
 
 @code{wesnoth-warning-face} is the face used to display the overlay for
 warnings detected when Validating WML (See @ref{Validating WML}).  By
@@ -433,10 +407,10 @@ WML data found.  This path should be within the @code{load-path}, and
 preferably, in the same directory as Wesnoth Mode.
 
 For example:
-@example
+@lisp
 (setq wesnoth-root-directory "/usr/local/share/wesnoth/"
       wesnoth-update-output-directory "~/.emacs.d/wesnoth-mode/")
-@end example
+@end lisp
 
 Once set, @kbd{M-x wesnoth-update} will generate and load a new cache of
 WML data ready for use for the current and future sessions.  @i{Note:
@@ -459,17 +433,17 @@ suitable addition file.  A sample addition file is included with Wesnoth
 Mode.
 
 For example, the following could be used to specify an addition file:
-@example
+@lisp
 (setq wesnoth-addition-file
       "~/.emacs.d/wesnoth-mode/wesnoth-wml-additions.cfg")
-@end example
+@end lisp
 
 The addition file is read and information regarding WML structure
 updated any time WML information is required.  Therefore, no further
 action is required to use the updated WML data once any changes to the
 addition file are saved to disk.
 
-@node Macro Definitions, , Wesnoth Update, Customisation
+@node Macro Definitions, , Addition File, Customisation
 @section Macro Definitions
 
 While built-in macros are always available, local macro definitions are
