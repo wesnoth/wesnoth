@@ -248,7 +248,7 @@ static void draw_circle(
 		d += 2 * y + 1;
 		++y;
 		if(d > 0) {
-			d -= 2 * x + 2;
+			d += -2 * x + 2;
 			--x;
 		}
 	}
