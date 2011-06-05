@@ -71,9 +71,16 @@ sha1_hash::sha1_hash(const std::string& str)
 			if (bytes_left < 60) { // enough space to store the length
 				// put the length at the end of the block
 				block[60] = ssz >> 24;
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable: 4244)
+#endif
 				block[61] = ssz >> 16;
 				block[62] = ssz >> 8;
 				block[63] = ssz;
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 			} else { // not enough space for the zeros => we need a new block
 				next(block);
 				// new block
@@ -85,9 +92,16 @@ sha1_hash::sha1_hash(const std::string& str)
 				}
 				// put the length at the end of the block
 				block[60] = ssz >> 24;
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable: 4244)
+#endif
 				block[61] = ssz >> 16;
 				block[62] = ssz >> 8;
 				block[63] = ssz;
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 			}
 		}
 		next(block);
