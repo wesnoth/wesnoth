@@ -181,7 +181,8 @@ private:
 	//is, and then the index into the child list within where the node is.
 	struct node_pos {
 		node_pos(int child_map_index, int child_list_index)
-		  : child_map_index(child_map_index), child_list_index(child_list_index)
+		  : child_map_index(static_cast<unsigned short>(child_map_index)),
+		  child_list_index(static_cast<unsigned short>(child_list_index))
 		{}
 		unsigned short child_map_index;
 		unsigned short child_list_index;
