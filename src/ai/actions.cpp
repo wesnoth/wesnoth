@@ -882,7 +882,7 @@ void recruit_result::do_execute()
 	replay_undo replay_guard(recorder);
 	const unit_type *u = unit_types.find(unit_name_);
 	const events::command_disabler disable_commands;
-	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_, u->type_name());
+	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_, u->id());
 	if(recruit_err.empty()) {
 		const unit new_unit(u, get_side(), true);
 		place_recruit(new_unit, recruit_location_, false, preferences::show_ai_moves());

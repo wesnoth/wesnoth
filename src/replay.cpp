@@ -911,7 +911,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			const std::string res = find_recruit_location(side_num, loc, u_type->type_name());
+			const std::string res = find_recruit_location(side_num, loc, u_type->id());
 			const unit new_unit(u_type, side_num, true);
 			if (res.empty()) {
 				place_recruit(new_unit, loc, false, !get_replay_source().is_skipping());

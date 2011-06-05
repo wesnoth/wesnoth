@@ -420,7 +420,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 	return local_result;
 }
 
-std::string find_recall_location(int side, map_location &recall_loc, const unit &recall_unit)
+std::string find_recall_location(const int side, map_location &recall_loc, const unit &recall_unit)
 {
 	LOG_NG << "finding recall location for side " << side << "\n";
 
@@ -491,7 +491,7 @@ std::string find_recall_location(int side, map_location &recall_loc, const unit 
 	return std::string();
 }
 
-std::string find_recruit_location(int side, map_location &recruit_loc, const t_string& recruit_unit)
+std::string find_recruit_location(const int side, map_location &recruit_location, const std::string& unit_type)
 {
 	LOG_NG << "finding recruit location for side " << side << "\n";
 
@@ -502,7 +502,7 @@ std::string find_recruit_location(int side, map_location &recruit_loc, const t_s
 	map_location alternate_location = map_location::null_location;
 
 	const std::set<std::string>& recruit_list = (*resources::teams)[side -1].recruits();
-	std::set<std::string>::const_iterator recruit_it = recruit_list.find(recruit_unit);
+	std::set<std::string>::const_iterator recruit_it = recruit_list.find(unit_type);
 	bool is_on_team_list = (recruit_it != recruit_list.end());
 
 	for(; u != u_end; ++u) {
@@ -513,7 +513,7 @@ std::string find_recruit_location(int side, map_location &recruit_loc, const t_s
 		bool can_recruit_unit = is_on_team_list;
 		if (!can_recruit_unit) {
 			foreach (const std::string &recruitable, leader->recruits()) {
-				if (recruitable == recruit_unit) {
+				if (recruitable == unit_type) {
 					can_recruit_unit = true;
 					break;
 				}
@@ -535,10 +535,10 @@ std::string find_recruit_location(int side, map_location &recruit_loc, const t_s
 			continue;
 		leader_fit = leader_keep;
 
-		if (can_recruit_on(*resources::game_map, leader_fit->get_location(), recruit_loc)) {
+		if (can_recruit_on(*resources::game_map, leader_fit->get_location(), recruit_location)) {
 			leader_opt = leader_fit;
-			if (resources::units->count(recruit_loc) == 1)
-				recruit_loc = tmp_location;
+			if (resources::units->count(recruit_location) == 1)
+				recruit_location = tmp_location;
 			break;
 		} else {
 			alternate_location = tmp_location;
@@ -546,7 +546,7 @@ std::string find_recruit_location(int side, map_location &recruit_loc, const t_s
 	}
 
 	if (leader == u_end) {
-		LOG_NG << "No Leader on side " << side << " when recruiting " << recruit_unit << '\n';
+		LOG_NG << "No Leader on side " << side << " when recruiting " << unit_type << '\n';
 		return _("You don’t have a leader to recruit with.");
 	}
 
@@ -556,12 +556,12 @@ std::string find_recruit_location(int side, map_location &recruit_loc, const t_s
 	}
 
 	if (leader_fit == u_end) {
-		LOG_NG << "No vacant castle tiles on a keep available to recruit the unit " << recruit_unit << " at " << recruit_loc  << '\n';
+		LOG_NG << "No vacant castle tiles on a keep available to recruit the unit " << unit_type << " at " << recruit_location  << '\n';
 		return _("There are no vacant castle tiles in which to recruit the unit.");
 	}
 
 	if (leader_opt == u_end)
-		recruit_loc = alternate_location;
+		recruit_location = alternate_location;
 
 	return std::string();
 }
