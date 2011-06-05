@@ -367,6 +367,10 @@ build_event_chain<tsignal_notification_function>(
 	return std::vector<std::pair<twidget*, tevent> >();
 }
 
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable: 4706)
+#endif
 /**
  * Build the event chain for tsignal_message_function.
  *
@@ -410,6 +414,9 @@ build_event_chain<tsignal_message_function>(
 
 	return result;
 }
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 
 /**
  * Helper function for fire_event.
