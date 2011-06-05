@@ -205,6 +205,10 @@ namespace {
 		return ret;
 	}
 
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable: 4706)
+#endif
 	bool version_numbers_comparison_internal(const version_info& l, const version_info& r, COMP_TYPE o)
 	{
 		if((!l.good()) || !r.good()) throw version_info::not_sane_exception();
@@ -233,6 +237,9 @@ namespace {
 					unsigned int const& rvalue = rc[i];
 					if(o == NOT_EQUAL) {
 						if((result = (lvalue != rvalue))) {
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 							return true;
 						}
 						continue;
