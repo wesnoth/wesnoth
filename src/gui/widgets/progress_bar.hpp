@@ -27,7 +27,7 @@ public:
 
 	tprogress_bar()
 		: tcontrol(COUNT)
-		, percentage_(-1)
+		, percentage_(static_cast<unsigned>(-1))
 	{
 		// Force canvas update
 		set_percentage(0);
