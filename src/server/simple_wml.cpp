@@ -184,6 +184,10 @@ node::node(document& doc, node* parent) :
 {
 }
 
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable: 4706)
+#endif
 node::node(document& doc, node* parent, const char** str, int depth) :
 	doc_(&doc),
 	attr_(),
@@ -267,13 +271,14 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 					throw error("found stray quotes in unquoted value");
 				goto read_attribute;
 			}
-
 			end = s;
-
 			for(;;)
 			{
 				// Read until the first single double quote.
 				while((end = strchr(end+1, '"')) && end[1] == '"') {
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 					++end;
 				}
 				if(end == NULL)
