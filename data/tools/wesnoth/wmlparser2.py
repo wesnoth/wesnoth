@@ -7,6 +7,14 @@ wesnoth executable must be available at runtime.
 """
 
 import os, glob, sys, re, subprocess, optparse, tempfile, shutil
+import atexit
+
+tempdirs_to_clean = []
+
+@atexit.register
+def cleaner():
+    for temp_dir in tempdirs_to_clean:
+        shutil.rmtree(temp_dir, ignore_errors = True)
 
 class WMLError(Exception):
     """
@@ -220,6 +228,8 @@ class Parser:
             output = self.keep_temp_dir
         else:
             output = tempfile.mkdtemp(prefix="wmlparser_")
+            tempdirs_to_clean.append(output)
+            
         self.temp_dir = output
         p_option = "-p=" + defines if defines else "-p "
         commandline = [self.wesnoth_exe]
