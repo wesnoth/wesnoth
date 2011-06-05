@@ -44,7 +44,7 @@ public:
 
 	variant();
 	explicit variant(int n);
-	explicit variant(int n, DECIMAL_VARIANT_TYPE /*type*/);
+	variant(int n, DECIMAL_VARIANT_TYPE /*type*/);
 	explicit variant(const game_logic::formula_callable* callable);
 	explicit variant(std::vector<variant>* array);
 	explicit variant(const std::string& str);
