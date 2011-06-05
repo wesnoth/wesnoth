@@ -519,7 +519,7 @@ class HTMLOutput:
                             s = []
                             specials = attack.get_all(tag = "specials")
                             if specials:
-                                for special in specials[0].get_all():
+                                for special in specials[0].get_all(tag = ""):
                                     sname = T(special, "name")
                                     if sname:
                                         s.append(sname)
@@ -709,7 +709,7 @@ class HTMLOutput:
             s = []
             specials = attack.get_all(tag = "specials")
             if specials:
-                for special in specials[0].get_all():
+                for special in specials[0].get_all(tag = ""):
                     sname = T(special, "name")
                     if sname:
                         s.append(sname)
@@ -970,6 +970,8 @@ def generate_report(stuff, isocode):
     * Each addon era's units sorted by faction
     * Each addon campaign's units sorted by race
     """
+    
+    if not isocode: return
 
     print "Generating report for %s." % (isocode)
     reset_errors()

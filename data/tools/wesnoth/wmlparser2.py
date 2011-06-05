@@ -122,6 +122,12 @@ class TagNode:
 
         unit.get_all()
         will return 4 nodes for all 4 sub-elements.
+        
+        unit.get_all(att = "")
+        Will return the two attribute nodes.
+        
+        unit.get_all(tag = "")
+        Will return the two tag nodes.
 
         If no elements are found an empty list is returned.
         """
@@ -134,10 +140,10 @@ class TagNode:
             for k, v in kw.items():
                 if k == "tag":
                    if not isinstance(sub, TagNode): ok = False
-                   elif not sub.name == v: ok = False
+                   elif v == "" or not sub.name == v: ok = False
                 elif k == "att":
                    if not isinstance(sub, AttributeNode): ok = False
-                   elif not sub.name == v: ok = False
+                   elif v == "" or not sub.name == v: ok = False
             if ok:
                 r.append(sub)
         return r

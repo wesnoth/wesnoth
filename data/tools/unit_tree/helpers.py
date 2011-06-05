@@ -234,6 +234,8 @@ class WesnothList:
     def add_campaign_units(self, cname, image_collector):
         campaign = self.campaign_lookup[cname]
         define = campaign.get_text_val("define")
+        if not define:
+            return 0
         self.parser.parse_text("{campaigns}", define + ",NORMAL")
 
         image_collector.add_binary_paths_from_WML(cname,
