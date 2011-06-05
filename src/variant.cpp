@@ -24,6 +24,7 @@
 #include "formatter.hpp"
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
+#include "util.hpp"
 
 namespace {
 std::string variant_type_to_string(variant::TYPE type) {
@@ -684,7 +685,7 @@ variant variant::operator^(const variant& v) const
 	}
 
 	return variant(static_cast<int>(
-			round(pow(static_cast<double>(as_int()), v.as_int()))));
+			round_portable(pow(static_cast<double>(as_int()), v.as_int()))));
 }
 
 variant variant::operator-() const
