@@ -416,6 +416,10 @@ static vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing = f
 	return result;
 }
 
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable: 4706)
+#endif
 /**
  * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
  * @param nRets LUA_MULTRET for unbounded return values.
@@ -451,6 +455,9 @@ bool luaW_pcall(lua_State *L
 				m += 5;
 				char const *e = NULL, *em = m;
 				while (em[0] && ((em = strstr(em + 1, "stack traceback"))))
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 					e = em;
 				chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
 			} else {
