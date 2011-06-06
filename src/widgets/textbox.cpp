@@ -522,7 +522,12 @@ void textbox::handle_event(const SDL_Event& event)
 		if(character != 0) {
 			DBG_G << "Char: " << character << ", c = " << c << "\n";
 		}
-		if(event.key.keysym.mod & copypaste_modifier) {
+		if((event.key.keysym.mod & copypaste_modifier)
+//on windows SDL fires for AltGr lctrl+ralt (needed to access @ etc on certain keyboards)
+#ifdef _WIN32
+			&& !(event.key.keysym.mod & KMOD_ALT)
+#endif
+		) {
 			switch(c) {
 			case SDLK_v: // paste
 				{
