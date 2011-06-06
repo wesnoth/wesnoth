@@ -265,6 +265,10 @@ private:
 };
 } // end anonymous namespace
 
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable:4701)
+#endif
 void show_hotkeys_dialog (display & disp, config *save_config)
 {
 	log_scope ("show_hotkeys_dialog");
@@ -433,6 +437,9 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 		disp.delay(10);
 	}
 }
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 
 bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs)
 {
