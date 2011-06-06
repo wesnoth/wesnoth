@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-30 20:47+0200\n"
-"PO-Revision-Date: 2005-12-05 10:25+0200\n"
-"Last-Translator: ott <ott@gaon.net>\n"
+"PO-Revision-Date: 2011-04-23 23:39-0000\n"
+"Last-Translator: Len vanDalsen <l.dog.96@gmail.com>\n"
 "Language-Team: afrikaans\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -12,98 +12,97 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Afrikaans\n"
+"X-Poedit-Bookmarks: -1,-1,-1,-1,-1,-1,-1,-1,-1,64\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Enkel Seshoek"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Radius 1 Seshoek"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Radius 2 Seshoeke"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Seshoek lyn NW-SE"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
 msgid "all"
-msgstr ""
+msgstr "almal"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:16
 msgid "water"
-msgstr ""
+msgstr "water"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr ""
+msgstr "laagte"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
 msgid "desert"
-msgstr ""
+msgstr "woestyn"
 
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
 msgid "embellishments"
-msgstr ""
+msgstr "versier"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:44
 msgid "forest"
-msgstr ""
+msgstr "woud"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:51
 msgid "frozen"
-msgstr ""
+msgstr "gevries"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:58
 msgid "rough"
-msgstr ""
+msgstr "rof"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:65
 msgid "cave"
-msgstr ""
+msgstr "grotte"
 
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "obstacle"
-msgstr ""
+msgstr "hindernis"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:79
-#, fuzzy
 msgid "village"
-msgstr "Dorpies"
+msgstr "dorpie"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:86
-#, fuzzy
 msgid "castle"
-msgstr "Kusstreek"
+msgstr "kasteel"
 
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:93
 msgid "bridge"
-msgstr ""
+msgstr "brug"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:100
 msgid "special"
-msgstr ""
+msgstr "spesiaal"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -153,19 +152,17 @@ msgstr "Wysig"
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Kaart"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Kanselleer aksie"
+msgstr "venster"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:270
-#, fuzzy
 msgid "villages"
-msgstr "Dorpies"
+msgstr "dorpies"
 
 #: src/editor/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -173,66 +170,67 @@ msgstr "Sluit Editor"
 
 #: src/editor/editor_controller.cpp:278
 msgid "Fatal error"
-msgstr ""
+msgstr "Fatale fout"
 
 #: src/editor/editor_controller.cpp:303 src/editor/editor_controller.cpp:1090
 msgid "(New Map)"
-msgstr ""
+msgstr "(Nuwe Kaart)"
 
 #: src/editor/editor_controller.cpp:309
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Wil jy regtig uitgaan?"
 
 #: src/editor/editor_controller.cpp:311
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Wil jy regtig uitgaan? Al die veranderinge na die kaart sal verlore raak."
 
 #: src/editor/editor_controller.cpp:313
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Wil jy regtig uitgaan? Die volgende kaarte was verander en al die "
+"veranderinge na hierdie kaarte sal verlore raak:"
 
 #: src/editor/editor_controller.cpp:318
 msgid "Quit"
-msgstr ""
+msgstr "Uitgaan"
 
 #: src/editor/editor_controller.cpp:383
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Niks verandering tyd-van-dag gekry nie."
 
 #: src/editor/editor_controller.cpp:404
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
+msgstr "wil jy al die veranderinge sedert jou laaste stoor vergeet?"
 
 #: src/editor/editor_controller.cpp:404
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Ongestoorde veranderinge"
 
 #: src/editor/editor_controller.cpp:426
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Kies 'n kaart om te laai"
+msgstr "Kies 'n kaart om oop te maak"
 
 #: src/editor/editor_controller.cpp:460
 msgid "Save the Map As"
 msgstr "Stoor die Kaart As"
 
 #: src/editor/editor_controller.cpp:463
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Kaart bestaan reeds. Wil jy dit vervang?"
+msgstr "Kaart bestaan alklaar. Wil jy dit vervang?"
 
 #: src/editor/editor_controller.cpp:480
 msgid "No random map generators found."
-msgstr ""
+msgstr "Geen lukraak kaart makers gekry nie"
 
 #: src/editor/editor_controller.cpp:493 src/editor/editor_controller.cpp:497
 msgid "Map creation failed."
-msgstr ""
+msgstr "Kaart skeping het misluk"
 
 #: src/editor/editor_controller.cpp:512
 #, fuzzy
@@ -249,11 +247,11 @@ msgstr ""
 
 #: src/editor/editor_controller.cpp:541 src/editor/editor_controller.cpp:731
 msgid "Error loading map"
-msgstr ""
+msgstr "Fout met Kaart laaiing"
 
 #: src/editor/editor_controller.cpp:645 src/editor/editor_controller.cpp:687
 msgid "This map is already open."
-msgstr ""
+msgstr "Hierdie kaart is al klaar oop"
 
 #: src/editor/editor_controller.cpp:666
 msgid "Map saved."
@@ -265,7 +263,7 @@ msgstr ""
 
 #: src/editor/editor_controller.cpp:711 src/editor/editor_controller.cpp:725
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Kaart gelaai van draaiboek af"
 
 #: src/editor/editor_controller.cpp:721
 msgid ""
@@ -279,7 +277,7 @@ msgstr "Kanselleer aksie"
 
 #: src/editor/editor_controller.cpp:1122
 msgid "Can’t Undo"
-msgstr ""
+msgstr "Kan nie aksie kanselleer nie"
 
 #: src/editor/editor_controller.cpp:1126
 msgid "Redo"
@@ -287,7 +285,7 @@ msgstr "Doen weer"
 
 #: src/editor/editor_controller.cpp:1128
 msgid "Can’t Redo"
-msgstr ""
+msgstr "Kan nie weer doen nie"
 
 #: src/editor/editor_controller.cpp:1133
 msgid "Auto-update Terrain Transitions: Yes"
@@ -315,19 +313,19 @@ msgstr ""
 
 #: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Sal nie werk sonder ekstra versorging nie."
 
 #: src/editor/editor_palettes.cpp:537
 msgid "FG: "
-msgstr ""
+msgstr "FG:"
 
 #: src/editor/editor_palettes.cpp:538
 msgid "BG: "
-msgstr ""
+msgstr "BG:"
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"
-msgstr ""
+msgstr "Kan nie leer kry nier"
 
 #: src/editor/map_context.cpp:85
 msgid ""
@@ -337,25 +335,23 @@ msgstr ""
 
 #: src/editor/map_context.cpp:100
 msgid "Empty map file"
-msgstr ""
+msgstr "Leeg kaart leer"
 
 #: src/editor/map_context.cpp:220
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Kon nie die kaart stoor nie: $msg"
+msgstr "Kon nie die draaiboek stoor nie: $msg"
 
 #: src/editor/map_context.cpp:227
 msgid "Could not save the map: $msg"
 msgstr "Kon nie die kaart stoor nie: $msg"
 
 #: src/editor/mouse_action.cpp:426
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Speler"
+msgstr "(Speler)^Geen"
 
 #: src/editor/mouse_action.cpp:433
 msgid "Choose player"
-msgstr ""
+msgstr "Kies speler"
 
 #: src/editor/mouse_action.cpp:434
 msgid ""
@@ -364,6 +360,10 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player’s "
 "starting position."
 msgstr ""
+"watter speler moet hier begin? Jy kan alt en 'n nomber op die sleutelbord "
+"gebruik om die begin posisie vir a speler op te stel, en del om die begin "
+"posisie onder die wyser weg te vat. As jy a nomber op sy eie druik sal dit "
+"na daardie speler se begin posisie tou beveeg."
 
 #: src/gui/dialogs/editor_settings.cpp:151
 msgid "Custom setting"
