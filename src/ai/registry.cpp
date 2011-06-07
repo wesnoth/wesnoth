@@ -368,6 +368,9 @@ static register_lua_aspect_factory< lua_aspect<int> >
 static register_lua_aspect_factory< lua_aspect<double> >
 	caution__lua_aspect_factory("caution*lua_aspect");
 
+static register_lua_aspect_factory< lua_aspect<std::string> >
+	grouping__lua_aspect_factory("grouping*lua_aspect");
+
 static register_lua_aspect_factory< lua_aspect<double> >
 	leader_aggression__lua_aspect_factory("leader_aggression*lua_aspect");
 
@@ -394,6 +397,15 @@ static register_lua_aspect_factory< lua_aspect<double> >
 
 static register_lua_aspect_factory< lua_aspect<bool> >
 	simple_targeting__lua_aspect_factory("simple_targeting*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<bool> >
+	support_villages__lua_aspect_factory("support_villages*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<double> >
+	village_value__lua_aspect_factory("village_value*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<int> >
+	villages_per_scout__lua_aspect_factory("villages_per_scout*lua_aspect");
 
 void registry::init()
 {

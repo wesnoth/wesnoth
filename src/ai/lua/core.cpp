@@ -262,10 +262,22 @@ static int cfun_ai_get_attack_depth(lua_State *L)
 	return 1;
 }
 
+//static int cfun_ai_get_avoid(lua_State *L)
+//{
+//	return 1;
+//}
+
 static int cfun_ai_get_caution(lua_State *L)
 {
 	double caution = get_readonly_context(L).get_caution();
 	lua_pushnumber(L, caution);
+	return 1;
+}
+
+static int cfun_ai_get_grouping(lua_State *L)
+{
+	std::string grouping = get_readonly_context(L).get_grouping();
+	lua_pushstring(L, grouping.c_str());
 	return 1;
 }
 
@@ -332,6 +344,26 @@ static int cfun_ai_get_simple_targeting(lua_State *L)
 	return 1;
 }
 
+static int cfun_ai_get_support_villages(lua_State *L) 
+{
+	bool support_villages = get_readonly_context(L).get_support_villages();
+	lua_pushboolean(L, support_villages);
+	return 1;
+}
+
+static int cfun_ai_get_village_value(lua_State *L)
+{
+	double village_value = get_readonly_context(L).get_village_value();
+	lua_pushnumber(L, village_value);
+	return 1;
+}
+
+static int cfun_ai_get_villages_per_scout(lua_State *L)
+{
+	int villages_per_scout = get_readonly_context(L).get_villages_per_scout();
+	lua_pushnumber(L, villages_per_scout);
+	return 1;
+}
 
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
@@ -355,15 +387,19 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ "get_aggression", 		&cfun_ai_get_aggression           	},
 		{ "get_attack_depth",		&cfun_ai_get_attack_depth		}, // { "get_", &cfun_ai_get_}, little template # TODELETE
 		{ "get_caution", 		&cfun_ai_get_caution			},
+		{ "get_grouping",		&cfun_ai_get_grouping			},
 		{ "get_leader_aggression", 	&cfun_ai_get_leader_aggression		},
 		{ "get_leader_value", 		&cfun_ai_get_leader_value		},
 		{ "get_number_of_possible_recruits_to_force_recruit", &cfun_ai_get_number_of_possible_recruits_to_force_recruit},
-		{ "get_passive_leader", 	&cfun_ai_get_passive_leader},
+		{ "get_passive_leader", 	&cfun_ai_get_passive_leader		},
 		{ "get_passive_leader_shares_keep", &cfun_ai_get_passive_leader_shares_keep},
 		{ "get_recruitment_ignore_bad_combat", &cfun_ai_get_recruitment_ignore_bad_combat},
 		{ "get_recruitment_ignore_bad_movement", &cfun_ai_get_recruitment_ignore_bad_movement},
-		{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting},
-		{ "get_simple_targeting", 	&cfun_ai_get_simple_targeting},
+		{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting	},
+		{ "get_simple_targeting", 	&cfun_ai_get_simple_targeting		},
+		{ "get_support_villages",	&cfun_ai_get_support_villages		},
+		{ "get_village_value",		&cfun_ai_get_village_value		},
+		{ "get_villages_per_scout",	&cfun_ai_get_villages_per_scout		},
 		{ "move",             		&cfun_ai_execute_move_partial		},
 		{ "move_full",        		&cfun_ai_execute_move_full        	},
 		{ "recall",          		&cfun_ai_execute_recall           	},
