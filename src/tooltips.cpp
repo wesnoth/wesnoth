@@ -15,11 +15,14 @@
 #include "global.hpp"
 
 #include "font.hpp"
+#include "log.hpp"
 #include "marked-up_text.hpp"
+#include "serialization/string_utils.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"
 
-
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
 
 namespace {
 
@@ -154,7 +157,11 @@ void process(int mousex, int mousey)
 		if(mousex > i->rect.x && mousey > i->rect.y &&
 		   mousex < i->rect.x + i->rect.w && mousey < i->rect.y + i->rect.h) {
 			if(current_tooltip != i) {
-				show_tooltip(*i);
+				try {
+					show_tooltip(*i);
+				} catch(const utils::invalid_utf8_exception&) {
+					ERR_DP << "tooltip contains invalid UTF-8\n";
+				}
 				current_tooltip = i;
 			}
 
