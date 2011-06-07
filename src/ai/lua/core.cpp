@@ -248,6 +248,7 @@ static int cfun_ai_execute_recall(lua_State *L)
 	return transform_ai_action(L,recall_result);
 }
 
+// Aspect section
 static int cfun_ai_get_aggression(lua_State *L)
 {
 	double aggression = get_readonly_context(L).get_aggression();
@@ -364,6 +365,7 @@ static int cfun_ai_get_villages_per_scout(lua_State *L)
 	lua_pushnumber(L, villages_per_scout);
 	return 1;
 }
+// End of aspect section
 
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
@@ -384,6 +386,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 
 	static luaL_reg const callbacks[] = {
 		{ "attack", 			&cfun_ai_execute_attack			},
+		// Aspects
 		{ "get_aggression", 		&cfun_ai_get_aggression           	},
 		{ "get_attack_depth",		&cfun_ai_get_attack_depth		}, // { "get_", &cfun_ai_get_}, little template # TODELETE
 		{ "get_caution", 		&cfun_ai_get_caution			},
@@ -400,6 +403,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ "get_support_villages",	&cfun_ai_get_support_villages		},
 		{ "get_village_value",		&cfun_ai_get_village_value		},
 		{ "get_villages_per_scout",	&cfun_ai_get_villages_per_scout		},
+		// End of aspects
 		{ "move",             		&cfun_ai_execute_move_partial		},
 		{ "move_full",        		&cfun_ai_execute_move_full        	},
 		{ "recall",          		&cfun_ai_execute_recall           	},
