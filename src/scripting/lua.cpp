@@ -1621,6 +1621,23 @@ static int intf_get_terrain_info(lua_State *L)
 }
 
 /**
+ * Gets time of day information.
+ * - Ret 1: table.
+ */
+static int intf_get_time_of_day(lua_State *L)
+{
+	const time_of_day& tod = resources::tod_manager->get_time_of_day();
+
+	lua_newtable(L);
+	lua_pushstring(L, tod.id.c_str());
+	lua_setfield(L, -2, "id");
+	lua_pushinteger(L, tod.lawful_bonus);
+	lua_setfield(L, -2, "lawful_bonus");
+
+	return 1;
+}
+
+/**
  * Gets the side of a village owner.
  * - Args 1,2: map location.
  * - Ret 1: integer.
@@ -3158,14 +3175,6 @@ static int impl_theme_items_set(lua_State *L)
 	return 0;
 }
 
-// A function that pushesh the current ToD on the stack
-static int intf_get_tod(lua_State *L)
-{
-	std::string tod = resources::tod_manager->get_time_of_day().id;
-	lua_pushstring(L, tod.c_str());
-	return 1;
-}
-
 LuaKernel::LuaKernel(const config &cfg)
 	: mState(luaL_newstate()), level_(cfg)
 {
@@ -3216,7 +3225,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_sides",                &intf_get_sides                },
 		{ "get_terrain",              &intf_get_terrain              },
 		{ "get_terrain_info",         &intf_get_terrain_info         },
-		{ "get_time_of_day", 	      &intf_get_tod	     	     },
+		{ "get_time_of_day",          &intf_get_time_of_day          },
 		{ "get_unit",                 &intf_get_unit                 },
 		{ "get_units",                &intf_get_units                },
 		{ "get_variable",             &intf_get_variable             },
