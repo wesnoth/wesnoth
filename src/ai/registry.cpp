@@ -364,15 +364,36 @@ static register_lua_aspect_factory< lua_aspect<double> >
 
 static register_lua_aspect_factory< lua_aspect<int> >
 	attack_depth__lua_aspect_factory("attack_depth*lua_aspect");
-	
+
 static register_lua_aspect_factory< lua_aspect<double> >
 	caution__lua_aspect_factory("caution*lua_aspect");
-	
+
 static register_lua_aspect_factory< lua_aspect<double> >
 	leader_aggression__lua_aspect_factory("leader_aggression*lua_aspect");
-	
+
 static register_lua_aspect_factory< lua_aspect<double> >
 	leader_value__lua_aspect_factory("leader_value*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<double> >
+	number_of_possible_recruits_to_force_recruit__lua_aspect_factory("number_of_possible_recruits_to_force_recruit*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<bool> >
+	passive_leader__lua_aspect_factory("passive_leader*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<bool> >
+	passive_leader_shares_keep__lua_aspect_factory("passive_leader_shares_keep*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<bool> >
+	recruitment_ignore_bad_combat__lua_aspect_factory("recruitment_ignore_bad_combat*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<bool> >
+	recruitment_ignore_bad_movement__lua_aspect_factory("recruitment_ignore_bad_movement*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<double> >
+	scout_village_targeting__lua_aspect_factory("scout_village_targeting*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<bool> >
+	simple_targeting__lua_aspect_factory("simple_targeting*lua_aspect");
 
 void registry::init()
 {

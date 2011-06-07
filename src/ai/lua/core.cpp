@@ -283,6 +283,56 @@ static int cfun_ai_get_leader_value(lua_State *L)
 	return 1;
 }
 
+static int cfun_ai_get_passive_leader(lua_State *L)
+{
+	bool passive_leader = get_readonly_context(L).get_passive_leader();
+	lua_pushboolean(L, passive_leader);
+	return 1;
+}
+
+static int cfun_ai_get_passive_leader_shares_keep(lua_State *L)
+{
+	bool passive_leader_shares_keep = get_readonly_context(L).get_passive_leader_shares_keep();
+	lua_pushboolean(L, passive_leader_shares_keep);
+	return 1;
+}
+
+static int cfun_ai_get_number_of_possible_recruits_to_force_recruit(lua_State *L)
+{
+	double noprtfr = get_readonly_context(L).get_number_of_possible_recruits_to_force_recruit(); // @note: abbreviation
+	lua_pushnumber(L, noprtfr);
+	return 1;
+}
+
+static int cfun_ai_get_recruitment_ignore_bad_combat(lua_State *L)
+{
+	bool recruitment_ignore_bad_combat = get_readonly_context(L).get_recruitment_ignore_bad_combat();
+	lua_pushboolean(L, recruitment_ignore_bad_combat);
+	return 1;
+}
+
+static int cfun_ai_get_recruitment_ignore_bad_movement(lua_State *L)
+{
+	bool recruitment_ignore_bad_movement = get_readonly_context(L).get_recruitment_ignore_bad_movement();
+	lua_pushboolean(L, recruitment_ignore_bad_movement);
+	return 1;
+}
+
+static int cfun_ai_get_scout_village_targeting(lua_State *L)
+{
+	double scout_village_targeting = get_readonly_context(L).get_scout_village_targeting();
+	lua_pushnumber(L, scout_village_targeting);
+	return 1;
+}
+
+static int cfun_ai_get_simple_targeting(lua_State *L)
+{
+	bool simple_targeting = get_readonly_context(L).get_simple_targeting();
+	lua_pushboolean(L, simple_targeting);
+	return 1;
+}
+
+
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
 	int res_ai = luaL_loadstring(L, code);//stack size is now 1 [ -1: ai_context]
@@ -307,6 +357,13 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ "get_caution", 		&cfun_ai_get_caution			},
 		{ "get_leader_aggression", 	&cfun_ai_get_leader_aggression		},
 		{ "get_leader_value", 		&cfun_ai_get_leader_value		},
+		{ "get_number_of_possible_recruits_to_force_recruit", &cfun_ai_get_number_of_possible_recruits_to_force_recruit},
+		{ "get_passive_leader", 	&cfun_ai_get_passive_leader},
+		{ "get_passive_leader_shares_keep", &cfun_ai_get_passive_leader_shares_keep},
+		{ "get_recruitment_ignore_bad_combat", &cfun_ai_get_recruitment_ignore_bad_combat},
+		{ "get_recruitment_ignore_bad_movement", &cfun_ai_get_recruitment_ignore_bad_movement},
+		{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting},
+		{ "get_simple_targeting", 	&cfun_ai_get_simple_targeting},
 		{ "move",             		&cfun_ai_execute_move_partial		},
 		{ "move_full",        		&cfun_ai_execute_move_full        	},
 		{ "recall",          		&cfun_ai_execute_recall           	},
