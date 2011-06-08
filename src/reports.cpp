@@ -590,7 +590,7 @@ REPORT_GENERATOR(time_of_day)
 		// Don't show illuminated time on fogged tiles.
 		tod = resources::tod_manager->get_time_of_day_with_areas(mouseover_hex);
 	} else {
-		tod = resources::tod_manager->time_of_day_at(mouseover_hex);
+		tod = resources::tod_manager->get_time_of_day(0, mouseover_hex, true);
 	}
 
 	int b = tod.lawful_bonus;

@@ -99,8 +99,7 @@ const time_of_day tod_manager::get_time_of_day(int for_turn, const map_location 
 {
 	if(for_turn == 0) for_turn = turn_;
 	if(consider_illuminates) {
-		assert(resources::game_map->on_board(loc));
-		return time_of_day_at(loc, for_turn);
+		return get_time_of_day_with_areas_and_units(loc, for_turn);
 	}
 	if(!resources::game_map->on_board(loc)) {
 		return get_time_of_day_turn(times_, for_turn, currentTime_);
@@ -218,7 +217,7 @@ const time_of_day& tod_manager::get_time_of_day_turn(const std::vector<time_of_d
 	return times[time];
 }
 
-time_of_day tod_manager::time_of_day_at(const map_location& loc, const int for_turn) const
+time_of_day tod_manager::get_time_of_day_with_areas_and_units(const map_location& loc, const int for_turn) const
 {
 	const gamemap& map = *resources::game_map;
 	const unit_map& units = *resources::units;

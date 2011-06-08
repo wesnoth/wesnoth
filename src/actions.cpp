@@ -2156,7 +2156,7 @@ void advance_unit(map_location loc, const std::string &advance_to, const bool &f
 int combat_modifier(const map_location &loc,
 	unit_type::ALIGNMENT alignment, bool is_fearless)
 {
-	const time_of_day &tod = resources::tod_manager->time_of_day_at(loc);
+	const time_of_day &tod = resources::tod_manager->get_time_of_day(0, loc, true);
 
 	int bonus;
 	int lawful_bonus = tod.lawful_bonus;
