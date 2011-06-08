@@ -46,7 +46,7 @@ class tod_manager : public savegame::savegame_config
 		 * Returns time of day object in the turn at a location.
 		 * If nturn = 0 use current turn
 		 */
-		const time_of_day& get_time_of_day(const map_location& loc, int n_turn = 0) const;
+		const time_of_day& get_time_of_day_with_areas(const map_location& loc, int n_turn = 0) const;
 
 		static bool is_start_ToD(const std::string&);
 

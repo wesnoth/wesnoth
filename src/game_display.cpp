@@ -418,7 +418,7 @@ void game_display::draw_hex(const map_location& loc)
 
 const time_of_day& game_display::get_time_of_day(const map_location& loc) const
 {
-	return tod_manager_.get_time_of_day(loc);
+	return tod_manager_.get_time_of_day_with_areas(loc);
 }
 
 bool game_display::has_time_area() const

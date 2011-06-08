@@ -588,7 +588,7 @@ REPORT_GENERATOR(time_of_day)
 		tod = resources::tod_manager->get_time_of_day();
 	} else if (viewing_team.fogged(mouseover_hex)) {
 		// Don't show illuminated time on fogged tiles.
-		tod = resources::tod_manager->get_time_of_day(mouseover_hex);
+		tod = resources::tod_manager->get_time_of_day_with_areas(mouseover_hex);
 	} else {
 		tod = resources::tod_manager->time_of_day_at(mouseover_hex);
 	}

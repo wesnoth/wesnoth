@@ -212,7 +212,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	time_of_day tod(dummy_cfg);
 	if(!tod_type.empty() || !tod_id.empty()) {
 		if(flat_) {
-			tod = resources::tod_manager->get_time_of_day(loc);
+			tod = resources::tod_manager->get_time_of_day_with_areas(loc);
 		} else {
 			tod = resources::tod_manager->time_of_day_at(loc);
 		}
