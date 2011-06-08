@@ -410,7 +410,7 @@ public:
 			{
 				value = "true";
 			}
-			value = "return (" + value + ")";
+			value = "return " + value;
 		} 
 		else if (cfg.has_attribute("code")) 
 		{	

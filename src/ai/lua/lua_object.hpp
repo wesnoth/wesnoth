@@ -23,6 +23,7 @@
 #define LUA_OBJECT_HPP_INCLUDED
 
 #include <string>
+#include <vector>
 #include <boost/shared_ptr.hpp>
 
 #include "lua/lualib.h"
@@ -92,6 +93,24 @@ template <>
 inline boost::shared_ptr<int> lua_object<int>::to_type(lua_State *L, int n) 
 {
 	return boost::shared_ptr<int>(new int(lua_tonumber(L, n)));
+}
+
+template <>
+inline boost::shared_ptr< std::vector<std::string> > lua_object< std::vector<std::string> >::to_type(lua_State *L, int n)
+{
+	boost::shared_ptr< std::vector<std::string> > v = boost::shared_ptr< std::vector<std::string> >(new std::vector<std::string>());
+	int top = lua_gettop(L);
+	
+	while (lua_isnil(L, top)) 
+	{
+		--top; // Don't take nils from the top of the stack
+	}
+	
+	for (int i = n; i <= top; ++i) 
+	{
+		v->push_back(lua_tostring(L, i));
+	}
+	return v;
 }
 
 } // end of namespace ai

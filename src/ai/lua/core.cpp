@@ -331,6 +331,20 @@ static int cfun_ai_get_recruitment_ignore_bad_movement(lua_State *L)
 	return 1;
 }
 
+static int cfun_ai_get_recruitment_pattern(lua_State *L)
+{
+	std::vector<std::string> recruiting = get_readonly_context(L).get_recruitment_pattern();
+	int size = recruiting.size();
+	lua_createtable(L, size, 0); // create an exmpty table with predefined size
+	for (int i = 0; i < size; ++i)
+	{
+		lua_pushinteger(L, i + 1); // Indexing in Lua starts from 1
+		lua_pushstring(L, recruiting[i].c_str());
+		lua_settable(L, -3);
+	}
+	return 1;
+}
+
 static int cfun_ai_get_scout_village_targeting(lua_State *L)
 {
 	double scout_village_targeting = get_readonly_context(L).get_scout_village_targeting();
@@ -398,6 +412,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ "get_passive_leader_shares_keep", &cfun_ai_get_passive_leader_shares_keep},
 		{ "get_recruitment_ignore_bad_combat", &cfun_ai_get_recruitment_ignore_bad_combat},
 		{ "get_recruitment_ignore_bad_movement", &cfun_ai_get_recruitment_ignore_bad_movement},
+		{ "get_recruitment_pattern", 	&cfun_ai_get_recruitment_pattern 	},
 		{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting	},
 		{ "get_simple_targeting", 	&cfun_ai_get_simple_targeting		},
 		{ "get_support_villages",	&cfun_ai_get_support_villages		},
@@ -498,9 +513,9 @@ void lua_ai_action_handler::handle(config &cfg, bool configOut, lua_object_ptr l
 		luaW_pushconfig(L, cfg);
 		luaW_pcall(L, 2, 0, true);
 	}
-	else if (luaW_pcall(L, 1, 2, true))
-	{
-		l_obj->store(L, initial_top + 1);
+	else if (luaW_pcall(L, 1, 5, true)) // @note for Crab: how much nrets should we actually have here
+	{				    // there were 2 initially, but aspects like recruitment pattern
+		l_obj->store(L, initial_top + 1); // return a lot of results
 	}
 
 	lua_settop(L, initial_top);//empty stack

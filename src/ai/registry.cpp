@@ -406,6 +406,9 @@ static register_lua_aspect_factory< lua_aspect<double> >
 
 static register_lua_aspect_factory< lua_aspect<int> >
 	villages_per_scout__lua_aspect_factory("villages_per_scout*lua_aspect");
+	
+static register_lua_aspect_factory< lua_aspect< std::vector<std::string> > >
+	recruitment_pattern__lua_aspect_factory("recruitment_pattern*lua_aspect");
 
 void registry::init()
 {
