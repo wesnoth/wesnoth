@@ -1622,17 +1622,59 @@ static int intf_get_terrain_info(lua_State *L)
 
 /**
  * Gets time of day information.
+ * - Arg 1: optional turn number
+ * - Arg 2: optional table
  * - Ret 1: table.
  */
 static int intf_get_time_of_day(lua_State *L)
 {
-	const time_of_day& tod = resources::tod_manager->get_time_of_day();
+	unsigned arg = 1;
+
+	int for_turn = resources::tod_manager->turn();
+	map_location loc = map_location();
+	bool consider_illuminates = false;
+
+	if(lua_isnumber(L, arg)) {
+		++arg;
+		for_turn = luaL_checkint(L, 1);
+		if(for_turn < 1 || for_turn > resources::tod_manager->number_of_turns()) {
+			return luaL_argerror(L, 1, "turn number out of range");
+		}
+	}
+	else if(lua_isnil(L, arg)) ++arg;
+
+	if(lua_istable(L, arg)) {
+		lua_rawgeti(L, arg, 1);
+		lua_rawgeti(L, arg, 2);
+		loc = map_location(luaL_checkinteger(L, -2) - 1, luaL_checkinteger(L, -1) - 1);
+		if(!resources::game_map->on_board(loc)) return luaL_argerror(L, arg, "coordinates are not on board");
+		lua_pop(L, 2);
+
+		lua_rawgeti(L, arg, 3);
+		consider_illuminates = lua_toboolean(L, -1);
+		lua_pop(L, 1);
+	}
+
+	const time_of_day& tod = resources::tod_manager->get_time_of_day(for_turn, loc, consider_illuminates);
 
 	lua_newtable(L);
 	lua_pushstring(L, tod.id.c_str());
 	lua_setfield(L, -2, "id");
 	lua_pushinteger(L, tod.lawful_bonus);
 	lua_setfield(L, -2, "lawful_bonus");
+	lua_pushinteger(L, tod.bonus_modified);
+	lua_setfield(L, -2, "bonus_modified");
+	lua_pushstring(L, tod.image.c_str());
+	lua_setfield(L, -2, "image");
+	luaW_pushtstring(L, tod.name);
+	lua_setfield(L, -2, "name");
+
+	lua_pushinteger(L, tod.red);
+	lua_setfield(L, -2, "red");
+	lua_pushinteger(L, tod.green);
+	lua_setfield(L, -2, "green");
+	lua_pushinteger(L, tod.blue);
+	lua_setfield(L, -2, "blue");
 
 	return 1;
 }
