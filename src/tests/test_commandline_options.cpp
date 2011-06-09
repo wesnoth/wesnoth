@@ -183,6 +183,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--data-dir=datadirfoo",
 		"--debug",
 		"--fps",
+		"--fullscreen",
 		"--gunzip=gunzipfoo.gz",
 		"--gzip=gzipfoo",
 		"--help",
@@ -207,8 +208,10 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--resolution=800x600",
 		"--rng-seed=1234",
 		"--screenshot", "mapfoo", "outssfoo",
+		"--smallgui",
 		"--validcache",
 		"--version",
+		"--windowed",
 		"--with-replay"
 	};
 	const int argc = sizeof(argv)/sizeof(const char *);
@@ -229,7 +232,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 #endif
 	BOOST_CHECK(!co.editor);
 	BOOST_CHECK(co.fps);
-	BOOST_CHECK(!co.fullscreen);
+	BOOST_CHECK(co.fullscreen);
 	BOOST_CHECK(co.gunzip && *co.gunzip == "gunzipfoo.gz");
 	BOOST_CHECK(co.gzip && *co.gzip == "gzipfoo");
 	BOOST_CHECK(co.help);
@@ -284,11 +287,11 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(!co.server);
 	BOOST_CHECK(co.screenshot && co.screenshot_map_file && co.screenshot_output_file);
 	BOOST_CHECK(*co.screenshot_map_file == "mapfoo" && *co.screenshot_output_file == "outssfoo");
-	BOOST_CHECK(!co.smallgui);
+	BOOST_CHECK(co.smallgui);
 	BOOST_CHECK(!co.test);
 	BOOST_CHECK(co.validcache);
 	BOOST_CHECK(co.version);
-	BOOST_CHECK(!co.windowed);
+	BOOST_CHECK(co.windowed);
 	BOOST_CHECK(co.with_replay);
 }
 

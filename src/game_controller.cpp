@@ -129,6 +129,8 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 	}
 	if (cmdline_opts_.fps)
 		preferences::set_show_fps(true);
+	if (cmdline_opts_.fullscreen)
+		preferences::set_fullscreen(true);
 	if (cmdline_opts_.load)
 		game::load_game_exception::game = *cmdline_opts_.load;
 	if (cmdline_opts_.max_fps) {
@@ -178,8 +180,12 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		preferences::disable_preferences_save();
 		force_bpp_ = 32;
 	}
+	if (cmdline_opts_.smallgui)
+		game_config::small_gui = true;
 	if (cmdline_opts_.validcache)
 		cache_.set_force_valid_cache(true);
+	if (cmdline_opts_.windowed)
+		preferences::set_fullscreen(false);
 	if (cmdline_opts_.with_replay)
 		game::load_game_exception::show_replay = true;
 
@@ -188,17 +194,7 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		if(val.empty()) {
 			continue;
 		}
-		else if(val == "--smallgui") {
-			game_config::small_gui = true;
-		} else if(val == "--config-dir" || val == "--data-dir") {
-			if (argc_ <= ++arg_)
-				break;
-		} else if(val == "--windowed" || val == "-w") {
-			preferences::set_fullscreen(false);
-		} else if(val == "--fullscreen" || val == "-f") {
-			preferences::set_fullscreen(true);
-
-		} else if(val.find("--campaign") == 0 || val.find("-c") == 0) {
+		else if(val.find("--campaign") == 0 || val.find("-c") == 0) {
 			// campaign starting template:
 			// -c[[<difficulty>] <id_campaign> [<id_scenario>]]
 			// --campaign[[<difficulty>] <id_campaign> [<id_scenario>]]

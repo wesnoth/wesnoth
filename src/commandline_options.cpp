@@ -130,8 +130,11 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	display_opts.add_options()
 		("bpp", po::value<int>(), "sets BitsPerPixel value. Example: --bpp 32")
 		("fps", "displays the number of frames per second the game is currently running at, in a corner of the screen.")
+		("fullscreen,f", "runs the game in full screen mode.")
 		("max-fps", po::value<int>(), "the maximum fps the game tries to run at. Values should be between 1 and 1000, the default is 50.")
+		("new-widgets", "there is a new WIP widget toolkit this switch enables the new toolkit (VERY EXPERIMENTAL don't file bug reports since most are known). Parts of the library are deemed stable and will work without this switch.")
 		("resolution,r", po::value<std::string>(), "sets the screen resolution. <arg> should have format XxY. Example: --resolution 800x600")
+		("windowed,w", "runs the game in windowed mode.")
 		;
 
 	po::options_description logging_opts("Logging options");
@@ -160,7 +163,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 
 	hidden_.add_options()
 		("new-storyscreens", "")
-		("new-widgets", "")
+		("smallgui", "")
 		;
 	visible_.add(general_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(preprocessor_opts);
 	
@@ -184,6 +187,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		debug = true;
 	if (vm.count("fps"))
 		fps = true;
+	if (vm.count("fullscreen"))
+		fullscreen = true;
 	if (vm.count("gunzip"))
 		gunzip = vm["gunzip"].as<std::string>();
 	if (vm.count("gzip"))
@@ -240,10 +245,14 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		screenshot_map_file = vm["screenshot"].as<two_strings>().get<0>();
 		screenshot_output_file = vm["screenshot"].as<two_strings>().get<1>();
 	}
+	if (vm.count("smallgui"))
+		smallgui = true;
 	if (vm.count("validcache"))
 		validcache = true;
 	if (vm.count("version"))
 		version = true;
+	if (vm.count("windowed"))
+		windowed = true;
 	if (vm.count("with-replay"))
 		with_replay = true;
 }
