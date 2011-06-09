@@ -94,7 +94,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	screenshot_map_file(),
 	screenshot_output_file(),
 	smallgui(false),
-	test(false),
+	test(),
 	validcache(false),
 	version(false),
 	windowed(false),
@@ -113,6 +113,10 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("config-path", "prints the path of the user config directory and exits.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
 		("debug,d", "enables additional command mode options in-game.")
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+		("debug-dot-level", po::value<std::string>(), "sets the level of the debug dot files. <arg> should be a comma separated list of levels. These files are used for debugging the widgets especially the for the layout engine. When enabled the engine will produce dot files which can be converted to images with the dot tool. Available levels: size (generate the size info of the widget), state (generate the state info of the widget).")
+		("debug-dot-domain", po::value<std::string>(), "sets the domain of the debug dot files. <arg> should be a comma separated list of domains. See --debug-dot-level for more info. Available domains: show (generate the data when the dialog is about to be shown), layout (generate the data during the layout phase - might result in multiple files). The data can also be generated when the F12 is pressed in a dialog.")
+#endif
 		("gunzip", po::value<std::string>(), "decompresses a file (<arg>.gz) in gzip format and stores it without the .gz suffix. <arg>.gz will be removed.")
 		("gzip", po::value<std::string>(), "compresses a file (<arg>) in gzip format, stores it as <arg>.gz and removes <arg>.")
 		("help,h", "prints this message and exits.")
@@ -122,6 +126,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("path", "prints the path to the data directory and exits.")
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work.")
+		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
+		("test,t", po::value<std::string>()->implicit_value(std::string()), "runs the game in a small test scenario. If specified, scenario <arg> will be used instead.")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
 		("with-replay", "replays the file loaded with the --load option.")
@@ -185,6 +191,12 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		data_dir = vm["data-dir"].as<std::string>();
 	if (vm.count("debug"))
 		debug = true;
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	if (vm.count("debug-dot-domain")
+		debug_dot_domain = vm["debug-dot-domain"].as<std::string>();
+	if (vm.count("debug-dot-level")
+		debug_dot_domain = vm["debug-dot-level"].as<std::string>();
+#endif
 	if (vm.count("fps"))
 		fps = true;
 	if (vm.count("fullscreen"))
@@ -245,6 +257,10 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		screenshot_map_file = vm["screenshot"].as<two_strings>().get<0>();
 		screenshot_output_file = vm["screenshot"].as<two_strings>().get<1>();
 	}
+	if (vm.count("server"))
+		server = vm["server"].as<std::string>();
+	if (vm.count("test"))
+		test = vm["test"].as<std::string>();
 	if (vm.count("smallgui"))
 		smallgui = true;
 	if (vm.count("validcache"))

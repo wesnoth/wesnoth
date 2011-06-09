@@ -50,10 +50,10 @@ public:
 	/// True if --debug was given on the command line. Enables debug mode.
 	bool debug;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	/// Non-empty if --debug-dot-level was given on the command line.
-	boost::optional<std::string> debug_dot_level;
 	/// Non-empty if --debug-dot-domain was given on the command line.
 	boost::optional<std::string> debug_dot_domain;
+	/// Non-empty if --debug-dot-level was given on the command line.
+	boost::optional<std::string> debug_dot_level;
 #endif
 	/// Non-empty if --editor was given on the command line. Goes directly into editor. If string is longer than 0, it contains path to the file to edit.
 	boost::optional<std::string> editor;
@@ -148,8 +148,8 @@ public:
 	boost::optional<std::string> screenshot_output_file;
 	/// True if --smallgui was given on the command line. Makes Wesnoth use small gui layout.
 	bool smallgui;
-	/// True if --test was given on the command line. Goes directly into test mode.
-	bool test;
+	/// Non-empty if --test was given on the command line. Goes directly into test mode, into a scenario, if specified.
+	boost::optional<std::string> test;
 	/// True if --validcache was given on the command line. Makes Wesnoth assume the cache is valid.
 	bool validcache;
 	/// True if --version was given on the command line. Prints version and exits.

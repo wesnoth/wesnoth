@@ -127,6 +127,12 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		int severity = 3;
 		lg::set_log_domain_severity(s, severity);
 	}
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	if (cmdline_opts_.debug_dot_domain)
+		gui2::tdebug_layout_graph::set_domain (*cmdline_opts_.debug_dot_domain);
+	if (cmdline_opts_.debug_dot_level)
+		gui2::tdebug_layout_graph::set_level (*cmdline_opts_.debug_dot_level);
+#endif
 	if (cmdline_opts_.fps)
 		preferences::set_show_fps(true);
 	if (cmdline_opts_.fullscreen)
@@ -180,8 +186,27 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		preferences::disable_preferences_save();
 		force_bpp_ = 32;
 	}
+	if (cmdline_opts_.server){
+		jump_to_multiplayer_ = true;
+		//Do we have any server specified ?
+		if (!cmdline_opts_.server->empty())
+			multiplayer_server_ = *cmdline_opts_.server;
+		else //Pick the first server in config
+		{
+			if (game_config::server_list.size() > 0)
+				multiplayer_server_ = preferences::network_host();
+			else
+				multiplayer_server_ = "";
+		}
+	}
 	if (cmdline_opts_.smallgui)
 		game_config::small_gui = true;
+	if (cmdline_opts_.test)
+	{
+		test_mode_ = true;
+		if (!cmdline_opts_.test->empty())
+			test_scenario_ = *cmdline_opts_.test;
+	}
 	if (cmdline_opts_.validcache)
 		cache_.set_force_valid_cache(true);
 	if (cmdline_opts_.windowed)
@@ -220,35 +245,6 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 				jump_to_campaign_.scenario_id_ = std::string(argv_[arg_]);
 				std::cerr<<"selected scenario id: ["<<jump_to_campaign_.scenario_id_<<"]\n";
 			}
-		} else if(val == "--server" || val == "-s"){
-			jump_to_multiplayer_ = true;
-			//Do we have any server specified ?
-			if(argc_ > arg_+1){
-				multiplayer_server_ = argv_[arg_+1];
-				++arg_;
-			//Pick the first server in config
-			}else{
-				if(game_config::server_list.size() > 0)
-					multiplayer_server_ = preferences::network_host();
-				else
-					multiplayer_server_ = "";
-			}
-
-		} else if(val == "--test" || val == "-t") {
-			test_mode_ = true;
-			// If we have -t foo it's ambiguous whether it foo is the parameter
-			// for Wesnoth or the start directory so we assume it's the starting
-			// directory.
-			if(arg_ + 2 < argc_ && argv_[arg_ + 1][0] != '-') {
-				++arg_;
-				test_scenario_ = argv_[arg_];
-			}
-#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-		 } else if (val.substr(0, 18) == "--debug-dot-level=") {
-			 gui2::tdebug_layout_graph::set_level(val.substr(18));
-		 } else if (val.substr(0, 19) == "--debug-dot-domain=") {
-			 gui2::tdebug_layout_graph::set_domain(val.substr(19));
-#endif
 		} else if(val == "--no-delay") {
 			game_config::no_delay = true;
 		} else if (val.substr(0, 6) == "--log-") {

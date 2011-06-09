@@ -36,8 +36,8 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.data_dir);
 	BOOST_CHECK(!co.debug);
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	BOOST_CHECK(!co.debug_dot_level);
 	BOOST_CHECK(!co.debug_dot_domain);
+	BOOST_CHECK(!co.debug_dot_level);
 #endif
 	BOOST_CHECK(!co.editor);
 	BOOST_CHECK(!co.fps);
@@ -99,7 +99,9 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	{
 		"wesnoth",
 		"--logdomains",
-		"--preprocess-output-macros"
+		"--preprocess-output-macros",
+		"--server",
+		"--test"
 	};
 	const int argc = sizeof(argv)/sizeof(const char *);
 	commandline_options co(argc,const_cast<char**>(argv));
@@ -114,8 +116,8 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.data_dir);
 	BOOST_CHECK(!co.debug);
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	BOOST_CHECK(!co.debug_dot_level);
 	BOOST_CHECK(!co.debug_dot_domain);
+	BOOST_CHECK(!co.debug_dot_level);
 #endif
 	BOOST_CHECK(!co.editor);
 	BOOST_CHECK(!co.fps);
@@ -158,12 +160,12 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.proxy_user);
 	BOOST_CHECK(!co.resolution);
 	BOOST_CHECK(!co.rng_seed);
-	BOOST_CHECK(!co.server);
+	BOOST_CHECK(co.server && co.server->empty());
 	BOOST_CHECK(!co.screenshot);
 	BOOST_CHECK(!co.screenshot_map_file);
 	BOOST_CHECK(!co.screenshot_output_file);
 	BOOST_CHECK(!co.smallgui);
-	BOOST_CHECK(!co.test);
+	BOOST_CHECK(co.test && co.test->empty());
 	BOOST_CHECK(!co.validcache);
 	BOOST_CHECK(!co.version);
 	BOOST_CHECK(!co.windowed);
@@ -182,6 +184,10 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--config-path",
 		"--data-dir=datadirfoo",
 		"--debug",
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+		"--debug-dot-domain=ddfoo",
+		"--debug-dot-level=dlfoo",
+#endif
 		"--fps",
 		"--fullscreen",
 		"--gunzip=gunzipfoo.gz",
@@ -208,7 +214,9 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--resolution=800x600",
 		"--rng-seed=1234",
 		"--screenshot", "mapfoo", "outssfoo",
+		"--server=servfoo",
 		"--smallgui",
+		"--test=testfoo",
 		"--validcache",
 		"--version",
 		"--windowed",
@@ -227,8 +235,8 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.data_dir && *co.data_dir == "datadirfoo");
 	BOOST_CHECK(co.debug);
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	BOOST_CHECK(!co.debug_dot_level);
-	BOOST_CHECK(!co.debug_dot_domain);
+	BOOST_CHECK(co.debug_dot_domain && *co.debug_dot_domain == "ddfoo");
+	BOOST_CHECK(co.debug_dot_level && *co.debug_dot_level == "dlfoo");
 #endif
 	BOOST_CHECK(!co.editor);
 	BOOST_CHECK(co.fps);
@@ -284,11 +292,11 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.resolution);
 	BOOST_CHECK(co.resolution->get<0>() == 800 && co.resolution->get<1>() == 600);
 	BOOST_CHECK(co.rng_seed && *co.rng_seed == 1234);
-	BOOST_CHECK(!co.server);
+	BOOST_CHECK(co.server && *co.server == "servfoo");
 	BOOST_CHECK(co.screenshot && co.screenshot_map_file && co.screenshot_output_file);
 	BOOST_CHECK(*co.screenshot_map_file == "mapfoo" && *co.screenshot_output_file == "outssfoo");
 	BOOST_CHECK(co.smallgui);
-	BOOST_CHECK(!co.test);
+	BOOST_CHECK(co.test && *co.test == "testfoo");
 	BOOST_CHECK(co.validcache);
 	BOOST_CHECK(co.version);
 	BOOST_CHECK(co.windowed);
