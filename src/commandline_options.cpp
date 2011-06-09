@@ -6,7 +6,7 @@
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
+   (at your option) any lfooater version.
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY.
 
@@ -111,7 +111,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	display_opts.add_options()
 		("bpp", po::value<int>(), "sets BitsPerPixel value. Example: --bpp 32")
 		("fps", "displays the number of frames per second the game is currently running at, in a corner of the screen.")
-		("max-fps", "the maximum fps the game tries to run at. Values should be between 1 and 1000, the default is 50.")
+		("max-fps", po::value<int>(), "the maximum fps the game tries to run at. Values should be between 1 and 1000, the default is 50.")
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");
@@ -121,7 +121,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		;
 
 	hidden_.add_options()
-		("new_storyscreens", "")
+		("new-storyscreens", "")
 		("new-widgets", "")
 		;
 	visible_.add(general_opts).add(display_opts).add(multiplayer_opts);
@@ -133,7 +133,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 
 	if (vm.count("ai-config"))
 		multiplayer_ai_config = parse_to_int_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
-
 	if (vm.count("bpp"))
 		bpp = vm["bpp"].as<int>();
 	if (vm.count("config-dir"))
