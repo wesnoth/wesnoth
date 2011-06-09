@@ -20,6 +20,19 @@
 
 namespace po = boost::program_options;
 
+class two_strings : public boost::tuple<std::string,std::string> {};
+
+void validate(boost::any& v, const std::vector<std::string>& values,
+              two_strings*, int)
+{
+    two_strings ret_val;
+	if (values.size() != 2)
+		throw po::validation_error(po::validation_error::invalid_option_value);
+    ret_val.get<0>() = values.at(0);
+    ret_val.get<1>() = values.at(1);
+    v = ret_val;
+}
+
 commandline_options::commandline_options ( int argc, char** argv ) :
 	bpp(),
 	campaign(),
@@ -107,6 +120,9 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("new-syntax", "enables the new campaign syntax parsing.")
 		("nocache", "disables caching of game data.")
 		("path", "prints the path to the data directory and exits.")
+		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file.")
+		("preprocess-defines", po::value<std::string>(), "comma separated list of defines to be used by '--preprocess' command. If 'SKIP_CORE' is in the define list the data/core won't be preprocessed. Example: --preprocess-defines=FOO,BAR")
+		("preprocess-input-macros", po::value<std::string>(), "used only by the '--preprocess' command. Specifies source file <arg> that contains [preproc_define]s to be included before preprocessing.")
 		("preprocess-output-macros", po::value<std::string>()->implicit_value(std::string()), "used only by the '--preprocess' command. Will output all preprocessed macros in the target file <arg>. If the file is not specified the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.")
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("validcache", "assumes that the cache is valid. (dangerous)")
@@ -135,7 +151,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	all_.add(visible_).add(hidden_);
 
 	po::variables_map vm;
-	po::store(po::parse_command_line(argc_,argv_,all_),vm);
+	const int parsing_style = po::command_line_style::default_style ^ po::command_line_style::allow_guessing;
+	po::store(po::parse_command_line(argc_,argv_,all_,parsing_style),vm);
 
 	if (vm.count("ai-config"))
 		multiplayer_ai_config = parse_to_int_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
@@ -175,6 +192,16 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		nocache = true;
 	if (vm.count("path"))
 		path = true;
+	if (vm.count("preprocess"))
+	{
+		preprocess = true;
+		preprocess_path = vm["preprocess"].as<two_strings>().get<0>();
+		preprocess_target = vm["preprocess"].as<two_strings>().get<1>();
+	}
+	if (vm.count("preprocess-defines"))
+		preprocess_defines = utils::split(vm["preprocess-defines"].as<std::string>(), ',');
+	if (vm.count("preprocess-input-macros"))
+		preprocess_input_macros = vm["preprocess-input-macros"].as<std::string>();
 	if (vm.count("preprocess-output-macros"))
 		preprocess_output_macros = vm["preprocess-output-macros"].as<std::string>();
 	if (vm.count("rng-seed"))

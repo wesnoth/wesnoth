@@ -167,6 +167,7 @@ static int process_command_args(int argc, char** argv, const commandline_options
 	game_config::wesnoth_program_dir = directory_name(program);
 	preprocess_options preproc;
 
+	// Options that don't change behaviour based on any others should be checked alphabetically below.
 	if(cmdline_opts.config_dir) {
 		set_preferences_dir(*cmdline_opts.config_dir);
 	}
@@ -224,7 +225,31 @@ static int process_command_args(int argc, char** argv, const commandline_options
 		std::cout <<  game_config::path << "\n";
 		return 0;
 	}
-	if (cmdline_opts.preprocess_output_macros) {
+	if(cmdline_opts.preprocess_input_macros) {
+		std::string file = *cmdline_opts.preprocess_input_macros;
+		if (file_exists(file) == false)
+		{
+			std::cerr << "please specify an existing file. File "<< file <<" doesn't exist.\n";
+			return 1;
+		}
+
+		std::cerr << SDL_GetTicks() << " Reading cached defines from: " << file << "\n";
+
+		config cfg;
+		std::string error_log;
+		scoped_istream stream = istream_file(file);
+		read(cfg, *stream);
+
+		int read = 0;
+		// use static preproc_define::read_pair(config) to make a object
+		foreach (const config::any_child &value, cfg.all_children_range()) {
+			const preproc_map::value_type def = preproc_define::read_pair(value.cfg);
+			preproc.input_macros_[def.first] = def.second;
+			++read;
+		}
+		std::cerr << SDL_GetTicks() << " Read " << read << " defines.\n";
+	}
+	if(cmdline_opts.preprocess_output_macros) {
 		if (cmdline_opts.preprocess_output_macros->empty())
 			preproc.output_macros_path_ = "true";
 		else
@@ -235,6 +260,100 @@ static int process_command_args(int argc, char** argv, const commandline_options
 	}
 	if(cmdline_opts.version) {
 		std::cout << "Battle for Wesnoth" << " " << game_config::version << "\n";
+		return 0;
+	}
+
+	// Options changing their behaviour dependant on some others should be checked below.
+
+	//TODO should be rewritten so that preprocess_input_macros and preprocess_output_macros are used inside, not before
+	if (cmdline_opts.preprocess) {
+		const std::string resourceToProcess(*cmdline_opts.preprocess_path);
+		const std::string targetDir(*cmdline_opts.preprocess_target);
+
+		Uint32 startTime = SDL_GetTicks();
+		// if the users add the SKIP_CORE define we won't preprocess data/core
+		bool skipCore = false;
+		bool skipTerrainGFX = false;
+		// the 'core_defines_map' is the one got from data/core macros
+		preproc_map defines_map(preproc.input_macros_);
+		std::string error_log;
+
+		if (cmdline_opts.preprocess_defines)
+		{
+			// add the specified defines
+			foreach (const std::string &define, *cmdline_opts.preprocess_defines)
+			{
+				if (define.empty()){
+					std::cerr << "empty define supplied\n";
+					continue;
+				}
+
+				LOG_PREPROC<<"adding define: "<< define<<'\n';
+				defines_map.insert(std::make_pair(define,
+					preproc_define(define)));
+				if (define == "SKIP_CORE")
+				{
+					std::cerr << "'SKIP_CORE' defined.\n";
+					skipCore = true;
+				}
+				else if (define == "NO_TERRAIN_GFX")
+				{
+					std::cerr << "'NO_TERRAIN_GFX' defined.\n";
+					skipTerrainGFX = true;
+				}
+			}
+		}
+
+		std::cerr << "added " << defines_map.size() << " defines.\n";
+
+		// preprocess core macros first if we don't skip the core
+		if (skipCore == false)
+		{
+			std::cerr << "preprocessing common macros from 'data/core' ...\n";
+
+			// process each folder explicitly to gain speed
+			preprocess_resource(game_config::path + "/data/core/macros",&defines_map);
+			if (skipTerrainGFX == false)
+				preprocess_resource(game_config::path + "/data/core/terrain-graphics",&defines_map);
+
+			std::cerr << "acquired " << (defines_map.size() - preproc.input_macros_.size())
+				<< " 'data/core' defines.\n";
+		}
+		else
+			std::cerr << "skipped 'data/core'\n";
+
+		// preprocess resource
+		std::cerr << "preprocessing specified resource: "
+					<< resourceToProcess << " ...\n";
+		preprocess_resource(resourceToProcess, &defines_map, true,true, targetDir);
+		std::cerr << "acquired " << (defines_map.size() - preproc.input_macros_.size())
+					<< " total defines.\n";
+
+		if (preproc.output_macros_path_ != "false")
+		{
+			std::string outputPath = targetDir + "/_MACROS_.cfg";
+			if (preproc.output_macros_path_ != "true")
+				outputPath = preproc.output_macros_path_;
+
+			std::cerr << "writing '" << outputPath << "' with "
+						<< defines_map.size() << " defines.\n";
+
+			scoped_ostream out = ostream_file(outputPath);
+			if (!out->fail())
+			{
+				config_writer writer(*out,false);
+
+				for(preproc_map::iterator itor = defines_map.begin();
+					itor != defines_map.end(); ++itor)
+				{
+					(*itor).second.write(writer, (*itor).first);
+				}
+			}
+			else
+				std::cerr << "couldn't open the file.\n";
+		}
+
+		std::cerr << "preprocessing finished. Took "<< SDL_GetTicks() - startTime << " ticks.\n";
 		return 0;
 	}
 
@@ -275,146 +394,6 @@ static int process_command_args(int argc, char** argv, const commandline_options
 					return 2;
 				}
 				p = q;
-			}
-		} else if (val == "--preprocess-input-macros") {
-			if (arg + 1 < argc)
-			{
-				++arg;
-				std::string file = argv[arg];
-				if (file_exists(file) == false)
-				{
-					std::cerr << "please specify an existing file. File "<< file <<" doesn't exist.\n";
-					return 1;
-				}
-
-				std::cerr << SDL_GetTicks() << " Reading cached defines from: " << file << "\n";
-
-				config cfg;
-				std::string error_log;
-				scoped_istream stream = istream_file(file);
-				read(cfg, *stream);
-
-				int read = 0;
-				// use static preproc_define::read_pair(config) to make a object
-				foreach (const config::any_child &value, cfg.all_children_range()) {
-					const preproc_map::value_type def = preproc_define::read_pair(value.cfg);
-					preproc.input_macros_[def.first] = def.second;
-					++read;
-				}
-				std::cerr << SDL_GetTicks() << " Read " << read << " defines.\n";
-			}
-			else {
-				std::cerr << "please specify input macros file.\n";
-				return 2;
-			}
-		} else if (val.find("--preprocess") == 0 || val.find("-p") == 0){
-			if (arg + 2 < argc){
-				++arg;
-				const std::string resourceToProcess(argv[arg]);
-				++arg;
-				const std::string targetDir(argv[arg]);
-
-				Uint32 startTime = SDL_GetTicks();
-				// if the users add the SKIP_CORE define we won't preprocess data/core
-				bool skipCore = false;
-				bool skipTerrainGFX = false;
-				// the 'core_defines_map' is the one got from data/core macros
-				preproc_map defines_map(preproc.input_macros_);
-				std::string error_log;
-
-				// add the specified defines
-				size_t pos=std::string::npos;
-				if (val.find("--preprocess=") == 0)
-					pos = val.find("=");
-				else if (val.find("-p=") == 0)
-					pos = val.find("=");
-
-				// we have some defines specified
-				if (pos != std::string::npos)
-				{
-					std::string tmp_val = val.substr(pos+1);
-					while (pos != std::string::npos)
-					{
-						size_t tmpPos = val.find(',', pos+1);
-						tmp_val = val.substr(pos + 1,
-							tmpPos == std::string::npos ? tmpPos : tmpPos - (pos+1));
-						pos = tmpPos;
-
-						if (tmp_val.empty()){
-							std::cerr << "empty define supplied\n";
-							continue;
-						}
-
-						LOG_PREPROC<<"adding define: "<< tmp_val<<'\n';
-						defines_map.insert(std::make_pair(tmp_val,
-							preproc_define(tmp_val)));
-						if (tmp_val == "SKIP_CORE")
-						{
-							std::cerr << "'SKIP_CORE' defined.\n";
-							skipCore = true;
-						}
-						else if (tmp_val == "NO_TERRAIN_GFX")
-						{
-							std::cerr << "'NO_TERRAIN_GFX' defined.\n";
-							skipTerrainGFX = true;
-						}
-					}
-					std::cerr << "added " << defines_map.size() << " defines.\n";
-				}
-
-				// preprocess core macros first if we don't skip the core
-				if (skipCore == false)
-				{
-					std::cerr << "preprocessing common macros from 'data/core' ...\n";
-
-					// process each folder explicitly to gain speed
-					preprocess_resource(game_config::path + "/data/core/macros",&defines_map);
-					if (skipTerrainGFX == false)
-						preprocess_resource(game_config::path + "/data/core/terrain-graphics",&defines_map);
-
-					std::cerr << "acquired " << (defines_map.size() - preproc.input_macros_.size())
-						<< " 'data/core' defines.\n";
-				}
-				else
-					std::cerr << "skipped 'data/core'\n";
-
-				// preprocess resource
-				std::cerr << "preprocessing specified resource: "
-						  << resourceToProcess << " ...\n";
-				preprocess_resource(resourceToProcess, &defines_map, true,true, targetDir);
-				std::cerr << "acquired " << (defines_map.size() - preproc.input_macros_.size())
-					      << " total defines.\n";
-
-				if (preproc.output_macros_path_ != "false")
-				{
-					std::string outputPath = targetDir + "/_MACROS_.cfg";
-					if (preproc.output_macros_path_ != "true")
-						outputPath = preproc.output_macros_path_;
-
-					std::cerr << "writing '" << outputPath << "' with "
-							  << defines_map.size() << " defines.\n";
-
-					scoped_ostream out = ostream_file(outputPath);
-					if (!out->fail())
-					{
-						config_writer writer(*out,false);
-
-						for(preproc_map::iterator itor = defines_map.begin();
-							itor != defines_map.end(); ++itor)
-						{
-							(*itor).second.write(writer, (*itor).first);
-						}
-					}
-					else
-						std::cerr << "couldn't open the file.\n";
-				}
-
-				std::cerr << "preprocessing finished. Took "<< SDL_GetTicks() - startTime << " ticks.\n";
-				return 0;
-			}
-			else{
-				std::cerr << "Please specify a source file/folder and a target folder\n";
-				return 2;
 			}
 		}
 	}

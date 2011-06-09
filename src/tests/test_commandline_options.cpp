@@ -195,6 +195,9 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--new-widgets",
 		"--nocache",
 		"--path",
+		"--preprocess", "preppathfoo", "preptargfoo",
+		"--preprocess-defines=DEFFOO,DEFBAR",
+		"--preprocess-input-macros=inmfoo",
 		"--preprocess-output-macros=outmfoo",
 		"--rng-seed=1234",
 		"--validcache",
@@ -228,9 +231,9 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.logdomains && *co.logdomains == "filterfoo");
 	BOOST_CHECK(co.multiplayer);
 	BOOST_CHECK(co.multiplayer_ai_config);
-	BOOST_CHECK((*co.multiplayer_ai_config).size() == 2);
-	BOOST_CHECK((*co.multiplayer_ai_config)[0].get<0>() == 1 && (*co.multiplayer_ai_config)[0].get<1>() == "aifoo");
-	BOOST_CHECK((*co.multiplayer_ai_config)[1].get<0>() == 2 && (*co.multiplayer_ai_config)[1].get<1>() == "aibar");
+	BOOST_CHECK(co.multiplayer_ai_config->size() == 2);
+	BOOST_CHECK(co.multiplayer_ai_config->at(0).get<0>() == 1 && co.multiplayer_ai_config->at(0).get<1>() == "aifoo");
+	BOOST_CHECK(co.multiplayer_ai_config->at(1).get<0>() == 2 && co.multiplayer_ai_config->at(1).get<1>() == "aibar");
 	BOOST_CHECK(!co.multiplayer_algorithm);
 	BOOST_CHECK(!co.multiplayer_controller);
 	BOOST_CHECK(!co.multiplayer_era);
@@ -248,12 +251,12 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.new_syntax);
 	BOOST_CHECK(co.new_widgets);
 	BOOST_CHECK(co.path);
-	BOOST_CHECK(!co.preprocess);
-	BOOST_CHECK(!co.preprocess_defines);
-	BOOST_CHECK(!co.preprocess_input_macros);
+	BOOST_CHECK(co.preprocess && co.preprocess_path && co.preprocess_target);
+	BOOST_CHECK(*co.preprocess_path == "preppathfoo" && *co.preprocess_target == "preptargfoo");
+	BOOST_CHECK(co.preprocess_defines && co.preprocess_defines->size() == 2);
+	BOOST_CHECK(co.preprocess_defines->at(0) == "DEFFOO" && co.preprocess_defines->at(1) == "DEFBAR");
+	BOOST_CHECK(co.preprocess_input_macros && *co.preprocess_input_macros == "inmfoo");
 	BOOST_CHECK(co.preprocess_output_macros && *co.preprocess_output_macros == "outmfoo");
-	BOOST_CHECK(!co.preprocess_path);
-	BOOST_CHECK(!co.preprocess_target);
 	BOOST_CHECK(!co.proxy);
 	BOOST_CHECK(!co.proxy_address);
 	BOOST_CHECK(!co.proxy_password);
