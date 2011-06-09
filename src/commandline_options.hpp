@@ -25,7 +25,9 @@
 
 class commandline_options
 {
+/// To be used for printing help to the commandline.
 friend std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_opts);
+
 public:
 	commandline_options(int argc, char **argv);
 

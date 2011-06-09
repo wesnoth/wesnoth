@@ -167,8 +167,44 @@ static int process_command_args(int argc, char** argv, const commandline_options
 	game_config::wesnoth_program_dir = directory_name(program);
 	preprocess_options preproc;
 
-	if (cmdline_opts.new_syntax)
+	if(cmdline_opts.config_dir) {
+		set_preferences_dir(*cmdline_opts.config_dir);
+	}
+	if(cmdline_opts.data_dir) {
+		const std::string datadir = *cmdline_opts.data_dir;
+		std::cerr << "Overriding data directory with " << datadir << std::endl;
+#ifdef _WIN32
+		// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
+		if(datadir.c_str()[1] == ':') {
+#else
+		if(datadir[0] == '/') {
+#endif
+			game_config::path = datadir;
+		} else {
+			game_config::path = get_cwd() + '/' + datadir;
+		}
+
+		if(!is_directory(game_config::path)) {
+			std::cerr << "Could not find directory '" << game_config::path << "'\n";
+			throw config::error("directory not found");
+		}
+	// don't update font as we already updating it in game ctor
+	}
+	if(cmdline_opts.help) {
+		std::cout << cmdline_opts;
+		return 0;
+	}
+	if(cmdline_opts.new_syntax) {
 		game_config::new_syntax = true;
+	}
+	if(cmdline_opts.path) {
+		std::cout <<  game_config::path << "\n";
+		return 0;
+	}
+	if(cmdline_opts.version) {
+		std::cout << "Battle for Wesnoth" << " " << game_config::version << "\n";
+		return 0;
+	}
 
 	//parse arguments that shouldn't require a display device
 	int arg;
@@ -176,158 +212,8 @@ static int process_command_args(int argc, char** argv, const commandline_options
 		const std::string val(argv[arg]);
 		if(val.empty()) {
 			continue;
-		}
-
-		if(cmdline_opts.help) {
-			// When adding items don't forget to update doc/man/wesnoth.6
-			// Options are sorted alphabetically by --long-option.
-			// Please keep the output to 80 chars per line.
-			std::cout << "usage: " << argv[0]
-			<< " [<options>] [<data-directory>]\n"
-			<< "Available options:\n"
-			<< "  --bpp <number>               sets BitsPerPixel value. Example: --bpp 32\n"
-			<< "  -c, --campaign[[<difficulty>] <id_c> [<id_s>]]\n"
-			<< "                               goes directly to the campaign.\n"
-			<< "                               - difficulty : the difficulty of the specified\n"
-			<< "                                          campaign (1 to max - Default is 1)\n"
-			<< "                               - id_c: the id of the campaign. A selection \n"
-			<< "                                       menu will appear if none specified\n"
-			<< "                               - id_s: the id of the scenario from the\n"
-			<< "                                       specified campaign\n"
-			<< "                               Note: When using this switch please ensure that\n"
-			<< "                               you specify the data directory path as the\n"
-			<< "                               final argument aswell, otherwise the game\n"
-			<< "                               will take the campaign/scenario id as the data dir.\n"
-			<< "  --config-dir <name>          sets the path of the user config directory to\n"
-			<< "                               $HOME/<name> or My Documents\\My Games\\<name> for windows.\n"
-			<< "                               You can specify also an absolute path outside the\n"
-			<< "                               $HOME or My Documents\\My Games directory.\n"
-			<< "  --config-path                prints the path of the user config directory and\n"
-			<< "                               exits.\n"
-			<< "  --data-dir <directory>       overrides the data directory with the one specified.\n"
-			<< "  -d, --debug                  enables additional command mode options in-game.\n"
-#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-			<< "  --debug-dot-level=<level1>,<level2>,...\n"
-			<< "                               sets the level of the debug dot files.\n"
-			<< "                               These files are used for debugging the widgets\n"
-			<< "                               especially the for the layout engine. When enabled\n"
-			<< "                               the engine will produce dot files which can be\n"
-			<< "                               converted to images with the dot tool.\n"
-			<< "                               Available levels:\n"
-			<< "                               - size  : generate the size info of the widget.\n"
-			<< "                               - state : generate the state info of the widget.\n"
-			<< "  --debug-dot-domain=<domain1>,<domain2>,...\n"
-			<< "                               sets the domain of the debug dot files.\n"
-			<< "                               see --debug-dot-level for more info.\n"
-			<< "                               Available domains:\n"
-			<< "                               show   : generate the data when the dialog is\n"
-			<< "                                        about to be shown.\n"
-			<< "                               layout : generate the data during the layout\n"
-			<< "                                        phase (might result in multiple files. \n"
-			<< "                               The data can also be generated when the F12 is\n"
-			<< "                               pressed in a dialog.\n"
-#endif
-			<< "  -e, --editor [<file>]        starts the in-game map editor directly. If <file>\n"
-			<< "                               is specified, equivalent to -e --load <file>.\n"
-			<< "  --fps                        displays the number of frames per second the\n"
-			<< "                               game is currently running at, in a corner of\n"
-			<< "                               the screen.\n"
-			<< "  -f, --fullscreen             runs the game in full screen mode.\n"
-			<< "  --gunzip <infile>.gz         decompresses a file (<infile>.gz) in gzip format\n"
-			<< "                               and stores it without the .gz suffix.\n"
-			<< "                               <infile>.gz will be removed.\n"
-			<< "  --gzip <infile>              compresses a file (<infile>) in gzip format,\n"
-			<< "                               stores it as <infile>.gz and removes <infile>.\n"
-			<< "  -h, --help                   prints this message and exits.\n"
-			<< "  -l, --load <file>            loads the save <file> from the standard save\n"
-			<< "                               game directory.\n"
-			<< "                               When launching the map editor via -e, the map\n"
-			<< "                               <file> is loaded, relative to the current\n"
-			<< "                               directory. If it is a directory, the editor\n"
-			<< "                               will start with a load map dialog opened there.\n"
-			<< "  --log-<level>=<domain1>,<domain2>,...\n"
-			<< "                               sets the severity level of the log domains.\n"
-			<< "                               'all' can be used to match any log domain.\n"
-			<< "                               Available levels: error, warning, info, debug.\n"
-			<< "                               By default the 'error' level is used.\n"
-			<< "  --logdomains [filter]        lists defined log domains (only the ones containing\n"
-			<< "                               [filter] if used) and exits.\n"
-			<< "  --max-fps                    the maximum fps the game tries to run at. Values\n"
-			<< "                               should be between 1 and 1000, the default is 50.\n"
-			<< "  -m, --multiplayer            starts a multiplayer game. There are additional\n"
-			<< "                               options that can be used as explained below:\n"
-			<< "    --ai_config<number>=value  selects a configuration file to load for this side.\n"
-			<< "    --algorithm<number>=value  selects a non-standard algorithm to be used by\n"
-			<< "                               the AI controller for this side.\n"
-			<< "    --controller<number>=value selects the controller for this side.\n"
-			<< "    --era=value                selects the era to be played in by its id.\n"
-			<< "    --exit-at-end              exit Wesnoth at the end of the scenario.\n"
-			<< "    --nogui                    runs the game without the GUI. Must appear before\n"
-			<< "                               --multiplayer to have the desired effect.\n"
-			<< "    --parm<number>=name:value  sets additional parameters for this side.\n"
-			<< "    --scenario=value           selects a multiplayer scenario. The default\n"
-			<< "                               scenario is \"multiplayer_The_Freelands\".\n"
-			<< "    --side<number>=value       selects a faction of the current era for this\n"
-			<< "                               side by id.\n"
-			<< "    --turns=value              sets the number of turns. The default is \"50\".\n"
-			<< "  --new-syntax                 enables the new campaign syntax parsing.\n"
-			<< "  --no-delay                   runs the game without any delays.\n"
-			<< "  --nocache                    disables caching of game data.\n"
-			<< "  --nomusic                    runs the game without music.\n"
-			<< "  --nosound                    runs the game without sounds and music.\n"
-			<< "  --path                       prints the path to the data directory and exits.\n"
-			<< "  --preprocess, -p[=<define1>,<define2>,...] <file/folder> <target directory>\n"
-			<< "                               preprocesses a specified file/folder. The preprocessed\n"
-			<< "                               file(s) will be written in the specified target\n"
-			<< "                               directory: a plain cfg file and a processed cfg file.\n"
-			<< "                               define1,define2,...  - the extra defines will\n"
-			<< "                               be added before processing the files. If you add\n"
-			<< "                               them you must add the '=' character before.\n"
-			<< "                               If 'SKIP_CORE' is in the define list the\n"
-			<< "                               data/core won't be preprocessed.\n"
-			<< " --preprocess-input-macros <source file>\n"
-			<< "                               used only by the '--preprocess' command.\n"
-			<< "                               Specifies a file that contains [preproc_define]s\n"
-			<< "                               to be included before preprocessing.\n"
-			<< " --preprocess-output-macros [<target file>]\n"
-			<< "                               used only by the '--preprocess' command.\n"
-			<< "                               Will output all preprocessed macros in the target file.\n"
-			<< "                               If the file is not specified the output will be\n"
-			<< "                               file '_MACROS_.cfg' in the target directory of\n"
-			<< "                               preprocess's command. This switch should be typed\n"
-			<< "                               before the --preprocess command.\n"
-			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
-			<< "  --rng-seed <number>          seeds the random number generator with number\n"
-			<< "                               Example: --rng-seed 0\n"
-			<< "  --screenshot <map> <output>  Saves a screenshot of <map> to <output> without\n"
-			<< "                               initializing a screen. Editor must be compiled\n"
-			<< "                               in for this to work.\n"
-			<< "  -s, --server [<host>]        connects to the host if specified\n"
-			<< "                               or to the first host in your preferences.\n"
-			<< "  -t, --test                   runs the game in a small test scenario.\n"
-			<< "  --validcache                 assumes that the cache is valid. (dangerous)\n"
-			<< "  -v, --version                prints the game's version number and exits.\n"
-			<< "  -w, --windowed               runs the game in windowed mode.\n"
-			<< "  --with-replay                replays the file loaded with the --load option.\n"
-			<< "  --new-widgets                there is a new WIP widget toolkit this switch\n"
-			<< "                               enables the new toolkit (VERY EXPERIMENTAL don't\n"
-			<< "                               file bug reports since most are known).\n"
-			<< "                               Parts of the library are deemed stable and will\n"
-			<< "                               work without this switch.\n"
-			<< "  --clock                      Adds the option to show a clock for testing the\n"
-			<< "                               drawing timer.\n"
-			;
-			return 0;
-		} else if(val == "--version" || val == "-v") {
-			std::cout << "Battle for Wesnoth" << " " << game_config::version
-			          << "\n";
-			return 0;
 		} else if (val == "--config-path") {
 			std::cout << get_user_data_dir() << '\n';
-			return 0;
-		} else if(val == "--path") {
-			std::cout <<  game_config::path
-			          << "\n";
 			return 0;
 		}
 		else if (val == "--screenshot" ) {
@@ -337,36 +223,6 @@ static int process_command_args(int argc, char** argv, const commandline_options
 			}
 			static char opt[] = "SDL_VIDEODRIVER=dummy";
 			SDL_putenv(opt);
-		}
-		else if(val == "--config-dir") {
-			if (argc <= ++arg)
-				break;
-			set_preferences_dir(argv[arg]);
-		} else if(val == "--data-dir") {
-			if(arg +1 != argc) {
-				++arg;
-				const std::string datadir(argv[arg]);
-				std::cerr << "Overriding data directory with " << datadir << std::endl;
-#ifdef _WIN32
-				// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
-				if(datadir.c_str()[1] == ':') {
-#else
-				if(datadir[0] == '/') {
-#endif
-					game_config::path = datadir;
-				} else {
-					game_config::path = get_cwd() + '/' + datadir;
-				}
-
-				if(!is_directory(game_config::path)) {
-					std::cerr << "Could not find directory '" << game_config::path << "'\n";
-					throw config::error("directory not found");
-				}
-
-				// don't update font as we already updating it in game ctor
-			}
-			else
-				std::cerr << "please specify a data directory\n";
 		} else if (val.substr(0, 6) == "--log-") {
 			size_t p = val.find('=');
 			if (p == std::string::npos) {
