@@ -96,8 +96,11 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	po::options_description general_opts("General options");
 	general_opts.add_options()
 		("config-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
+		("config-path", "prints the path of the user config directory and exits.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
 		("debug,d", "enables additional command mode options in-game.")
+		("gunzip", po::value<std::string>(), "decompresses a file (<arg>.gz) in gzip format and stores it without the .gz suffix. <arg>.gz will be removed.")
+		("gzip", po::value<std::string>(), "compresses a file (<arg>) in gzip format, stores it as <arg>.gz and removes <arg>.")
 		("help,h", "prints this message and exits.")
 		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory.\nWhen launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
 		("new-syntax", "enables the new campaign syntax parsing.")
@@ -137,12 +140,18 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		bpp = vm["bpp"].as<int>();
 	if (vm.count("config-dir"))
 		config_dir = vm["config-dir"].as<std::string>();
+	if (vm.count("config-path"))
+		config_path = true;
 	if (vm.count("data-dir"))
 		data_dir = vm["data-dir"].as<std::string>();
 	if (vm.count("debug"))
 		debug = true;
 	if (vm.count("fps"))
 		fps = true;
+	if (vm.count("gunzip"))
+		gunzip = vm["gunzip"].as<std::string>();
+	if (vm.count("gzip"))
+		gzip = vm["gzip"].as<std::string>();
 	if (vm.count("help"))
 		help = true;
 	if (vm.count("load"))

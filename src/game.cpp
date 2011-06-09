@@ -170,6 +170,10 @@ static int process_command_args(int argc, char** argv, const commandline_options
 	if(cmdline_opts.config_dir) {
 		set_preferences_dir(*cmdline_opts.config_dir);
 	}
+	if(cmdline_opts.config_path) {
+		std::cout << get_user_data_dir() << '\n';
+		return 0;
+	}
 	if(cmdline_opts.data_dir) {
 		const std::string datadir = *cmdline_opts.data_dir;
 		std::cerr << "Overriding data directory with " << datadir << std::endl;
@@ -189,6 +193,21 @@ static int process_command_args(int argc, char** argv, const commandline_options
 			throw config::error("directory not found");
 		}
 	// don't update font as we already updating it in game ctor
+	}
+	if(cmdline_opts.gunzip) {
+		const std::string input_file(*cmdline_opts.gunzip);
+		if(!is_gzip_file(input_file)) {
+			std::cerr << "file '" << input_file << "'isn't a .gz file\n";
+			return 2;
+		}
+		const std::string output_file(
+			input_file, 0, input_file.length() - 3);
+		gzip_decode(input_file, output_file);
+	}
+	if(cmdline_opts.gzip) {
+		const std::string input_file(*cmdline_opts.gzip);
+		const std::string output_file(*cmdline_opts.gzip + ".gz");
+		gzip_encode(input_file, output_file);
 	}
 	if(cmdline_opts.help) {
 		std::cout << cmdline_opts;
@@ -212,11 +231,7 @@ static int process_command_args(int argc, char** argv, const commandline_options
 		const std::string val(argv[arg]);
 		if(val.empty()) {
 			continue;
-		} else if (val == "--config-path") {
-			std::cout << get_user_data_dir() << '\n';
-			return 0;
-		}
-		else if (val == "--screenshot" ) {
+		} else if (val == "--screenshot" ) {
 			if(!(argc > arg + 2)) {
 				std::cerr << "format of " << val << " command: " << val << " <map file> <output file>\n";
 				return 2;
@@ -248,33 +263,6 @@ static int process_command_args(int argc, char** argv, const commandline_options
 				}
 				p = q;
 			}
-		} else if(val == "--gzip") {
-			if(argc != arg + 2) {
-				std::cerr << "format of " << val << " command: " << val << " <input file>\n";
-				return 2;
-			}
-
-			const std::string input_file(argv[arg + 1]);
-			const std::string output_file(input_file + ".gz");
-			gzip_encode(input_file, output_file);
-
-		} else if(val == "--gunzip") {
-			if(argc != arg + 2) {
-				std::cerr << "format of " << val << " command: " << val << " <input file>\n";
-				return 2;
-			}
-
-			const std::string input_file(argv[arg + 1]);
-			if(! is_gzip_file(input_file)) {
-
-				std::cerr << "file '" << input_file << "'isn't a .gz file\n";
-				return 2;
-			}
-			const std::string output_file(
-				input_file, 0, input_file.length() - 3);
-
-			gzip_decode(input_file, output_file);
-
 		} else if(val == "--logdomains") {
 			std::string filter;
 			if(arg + 1 != argc) {

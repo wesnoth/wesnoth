@@ -102,9 +102,12 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--ai-config=2:aibar",
 		"--bpp=32",
 		"--config-dir=configdirfoo",
+		"--config-path",
 		"--data-dir=datadirfoo",
 		"--debug",
 		"--fps",
+		"--gunzip=gunzipfoo.gz",
+		"--gzip=gzipfoo",
 		"--help",
 		"--load=loadfoo",
 		"--max-fps=100",
@@ -126,7 +129,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
 	BOOST_CHECK(!co.clock);
-	BOOST_CHECK(!co.config_path);
+	BOOST_CHECK(co.config_path);
 	BOOST_CHECK(co.config_dir && *co.config_dir == "configdirfoo");
 	BOOST_CHECK(co.data_dir && *co.data_dir == "datadirfoo");
 	BOOST_CHECK(co.debug);
@@ -137,8 +140,8 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(!co.editor);
 	BOOST_CHECK(co.fps);
 	BOOST_CHECK(!co.fullscreen);
-	BOOST_CHECK(!co.gunzip);
-	BOOST_CHECK(!co.gzip);
+	BOOST_CHECK(co.gunzip && *co.gunzip == "gunzipfoo.gz");
+	BOOST_CHECK(co.gzip && *co.gzip == "gzipfoo");
 	BOOST_CHECK(co.help);
 	BOOST_CHECK(!co.log);
 	BOOST_CHECK(co.load && *co.load == "loadfoo");
