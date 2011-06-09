@@ -110,6 +110,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	// Options are sorted alphabetically by --long-option.
 	po::options_description general_opts("General options");
 	general_opts.add_options()
+		("clock", "Adds the option to show a clock for testing the drawing timer.")
 		("config-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
 		("config-path", "prints the path of the user config directory and exits.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
@@ -124,6 +125,9 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory. When launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
 		("new-syntax", "enables the new campaign syntax parsing.")
 		("nocache", "disables caching of game data.")
+		("nodelay", "runs the game without any delays.")
+		("nomusic", "runs the game without music.")
+		("nosound", "runs the game without sounds and music.")
 		("path", "prints the path to the data directory and exits.")
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work.")
@@ -187,6 +191,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		multiplayer_ai_config = parse_to_int_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
 	if (vm.count("bpp"))
 		bpp = vm["bpp"].as<int>();
+	if (vm.count("clock"))
+		clock = true;
 	if (vm.count("config-dir"))
 		config_dir = vm["config-dir"].as<std::string>();
 	if (vm.count("config-path"))
@@ -235,6 +241,12 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		new_widgets = true;
 	if (vm.count("nocache"))
 		nocache = true;
+	if (vm.count("nodelay"))
+		nodelay = true;
+	if (vm.count("nomusic"))
+		nomusic = true;
+	if (vm.count("nosound"))
+		nosound = true;
 	if (vm.count("nogui"))
 		nogui = true;
 	if (vm.count("path"))

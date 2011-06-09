@@ -119,6 +119,8 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 
 	if (cmdline_opts_.bpp)
 		force_bpp_ = *cmdline_opts_.bpp;
+	if (cmdline_opts_.clock)
+		gui2::show_debug_clock_button = true;
 	if (cmdline_opts_.debug) {
 		game_config::debug = true;
 		game_config::mp_debug = true;
@@ -169,6 +171,12 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		gui2::new_widgets = true;
 	if (cmdline_opts_.nocache)
 		cache_.set_use_cache(false);
+	if (cmdline_opts_.nodelay)
+		game_config::no_delay = true;
+	if (cmdline_opts_.nomusic)
+		no_music = true;
+	if (cmdline_opts_.nosound)
+		no_sound = true;
 	if (cmdline_opts_.resolution) {
 		const int xres = cmdline_opts_.resolution->get<0>();
 		const int yres = cmdline_opts_.resolution->get<1>();
@@ -245,16 +253,7 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 				jump_to_campaign_.scenario_id_ = std::string(argv_[arg_]);
 				std::cerr<<"selected scenario id: ["<<jump_to_campaign_.scenario_id_<<"]\n";
 			}
-		} else if(val == "--no-delay") {
-			game_config::no_delay = true;
-		} else if (val.substr(0, 6) == "--log-") {
-		} else if (val == "--rng-seed") {
-			++arg_;
-		} else if(val == "--nosound") {
-			no_sound = true;
-		} else if(val == "--nomusic") {
-			no_music = true;
-		}   //These commented lines should be used to implement support of connection
+		} //These commented lines should be used to implement support of connection
             //through a proxy via command line options.
             //The ANA network module should implement these methods (while the SDL_net won't.)
         else if(val == "--proxy") {
@@ -292,10 +291,7 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
             }
             else
                 throw std::runtime_error("Proxy password option requires password");
-        }
-		else if(val == "--clock") {
-			gui2::show_debug_clock_button = true;
-		} else if(val == "-e" || val == "--editor") {
+        } else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
 			if(arg_+1 != argc_) {
 				if (argv_[arg_ + 1][0] != '-') {

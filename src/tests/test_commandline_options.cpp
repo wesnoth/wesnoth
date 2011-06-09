@@ -179,6 +179,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--ai-config=1:aifoo",
 		"--ai-config=2:aibar",
 		"--bpp=32",
+		"--clock",
 		"--config-dir=configdirfoo",
 		"--config-path",
 		"--data-dir=datadirfoo",
@@ -204,6 +205,9 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--new-syntax",
 		"--new-widgets",
 		"--nocache",
+		"--nodelay",
+		"--nomusic",
+		"--nosound",
 		"--nogui",
 		"--path",
 		"--preprocess", "preppathfoo", "preptargfoo",
@@ -228,7 +232,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(!co.campaign);
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
-	BOOST_CHECK(!co.clock);
+	BOOST_CHECK(co.clock);
 	BOOST_CHECK(co.config_path);
 	BOOST_CHECK(co.config_dir && *co.config_dir == "configdirfoo");
 	BOOST_CHECK(co.data_dir && *co.data_dir == "datadirfoo");
@@ -269,10 +273,10 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(!co.multiplayer_turns);
 	BOOST_CHECK(co.max_fps && *co.max_fps == 100);
 	BOOST_CHECK(co.nocache);
-	BOOST_CHECK(!co.nodelay);
+	BOOST_CHECK(co.nodelay);
 	BOOST_CHECK(co.nogui);
-	BOOST_CHECK(!co.nomusic);
-	BOOST_CHECK(!co.nosound);
+	BOOST_CHECK(co.nomusic);
+	BOOST_CHECK(co.nosound);
 	BOOST_CHECK(co.new_storyscreens);
 	BOOST_CHECK(co.new_syntax);
 	BOOST_CHECK(co.new_widgets);
