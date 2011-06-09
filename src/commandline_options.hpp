@@ -18,9 +18,9 @@
 
 #include <boost/optional.hpp>
 #include <boost/program_options.hpp>
+#include <boost/tuple/tuple.hpp>
 
 #include <string>
-#include <utility>
 #include <vector>
 
 class commandline_options
@@ -69,7 +69,7 @@ public:
 	bool help;
 	/// Contains parsed arguments of --log-* (e.g. --log-debug).
 	/// Vector of pairs (severity, log domain).
-	boost::optional<std::vector<std::pair<int, std::string> > > log;
+	boost::optional<std::vector<boost::tuple<int, std::string> > > log;
 	/// Non-empty if --load was given on the command line. Savegame specified to load after start.
 	boost::optional<std::string> load;
 	/// Non-empty if --logdomains was given on the command line. Prints possible logdomains filtered by given string and exits.
@@ -77,19 +77,19 @@ public:
 	/// True if --multiplayer was given on the command line. Goes directly into multiplayer mode.
 	bool multiplayer;
 	/// Non-empty if --ai-config was given on the command line. Vector of pairs (side number, value). Dependant on --multiplayer.
-	boost::optional<std::vector<std::pair<int, std::string> > > multiplayer_ai_config;
+	boost::optional<std::vector<boost::tuple<int, std::string> > > multiplayer_ai_config;
 	/// Non-empty if --algorithm was given on the command line. Vector of pairs (side number, value). Dependant on --multiplayer.
-	boost::optional<std::vector<std::pair<int, std::string> > > multiplayer_algorithm;
+	boost::optional<std::vector<boost::tuple<int, std::string> > > multiplayer_algorithm;
 	/// Non-empty if --controller was given on the command line. Vector of pairs (side number, controller). Dependant on --multiplayer.
-	boost::optional<std::vector<std::pair<int, std::string> > > multiplayer_controller;
+	boost::optional<std::vector<boost::tuple<int, std::string> > > multiplayer_controller;
 	/// Non-empty if --era was given on the command line. Dependant on --multiplayer.
 	boost::optional<std::string> multiplayer_era;
 	/// Non-empty if --label was given on the command line. Dependant on --multiplayer.
 	boost::optional<std::string> multiplayer_label;
-	/// Non-empty if --parm was given on the command line. Vector of pairs (side number, (parm name, parm value)). Dependant on --multiplayer.
-	boost::optional<std::vector<std::pair<int, std::pair<std::string, std::string> > > > multiplayer_parm;
+	/// Non-empty if --parm was given on the command line. Vector of pairs (side number, parm name, parm value). Dependant on --multiplayer.
+	boost::optional<std::vector<boost::tuple<int, std::string, std::string> > > multiplayer_parm;
 	/// Non-empty if --side was given on the command line. Vector of pairs (side number, faction id). Dependant on --multiplayer.
-	boost::optional<std::vector<std::pair<int, std::string> > > multiplayer_side;
+	boost::optional<std::vector<boost::tuple<int, std::string> > > multiplayer_side;
 	/// Non-empty if --turns was given on the command line. Dependant on --multiplayer.
 	boost::optional<std::string> multiplayer_turns;
 	/// Max FPS specified by --max-fps option.
@@ -135,7 +135,7 @@ public:
 	/// Non-empty if --proxy-user was given on the command line.
 	boost::optional<std::string> proxy_user;
 	/// Pair of AxB values specified after --resolution. Changes Wesnoth resolution.
-	boost::optional<std::pair<int,int> > resolution;
+	boost::optional<boost::tuple<int,int> > resolution;
 	/// RNG seed specified by --rng-seed option. Initializes RNG with given seed.
 	boost::optional<int> rng_seed;
 	/// Non-empty if --server was given on the command line.  Connects Wesnoth to specified server. If no server was specified afterwards, contains an empty string.
@@ -159,6 +159,7 @@ public:
 	/// True if --with-replay was given on the command line. Shows replay of the loaded file.
 	bool with_replay;
 private:
+	std::vector<boost::tuple<int,std::string> > parse_to_int_string_tuples_(const std::vector<std::string> &strings);
 	int argc_;
 	char **argv_;
 	boost::program_options::options_description all_;

@@ -14,6 +14,9 @@
 */
 
 #include "commandline_options.hpp"
+#include "foreach.hpp"
+#include "serialization/string_utils.hpp"
+#include "util.hpp"
 
 namespace po = boost::program_options;
 
@@ -110,10 +113,11 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("fps", "displays the number of frames per second the game is currently running at, in a corner of the screen.")
 		("max-fps", "the maximum fps the game tries to run at. Values should be between 1 and 1000, the default is 50.")
 		;
-	
+
 	po::options_description multiplayer_opts("Multiplayer options");
 	multiplayer_opts.add_options()
 		("multiplayer,m", "Starts a multiplayer game. There are additional options that can be used as explained below:")
+		("ai-config", po::value<std::vector<std::string> >()->composing(), "arg should have format side:value\nselects a configuration file to load for this side.")
 		;
 
 	hidden_.add_options()
@@ -126,6 +130,9 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 
 	po::variables_map vm;
 	po::store(po::parse_command_line(argc_,argv_,all_),vm);
+
+	if (vm.count("ai-config"))
+		multiplayer_ai_config = parse_to_int_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
 
 	if (vm.count("bpp"))
 		bpp = vm["bpp"].as<int>();
@@ -143,6 +150,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		load = vm["load"].as<std::string>();
 	if (vm.count("max-fps"))
 		max_fps = vm["max-fps"].as<int>();
+	if (vm.count("multiplayer"))
+		multiplayer = true;
 	if (vm.count("new-storyscreens"))
 		new_storyscreens = true;
 	if (vm.count("new-syntax"))
@@ -159,6 +168,25 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		version = true;
 	if (vm.count("with-replay"))
 		with_replay = true;
+}
+
+std::vector<boost::tuple<int,std::string> > commandline_options::parse_to_int_string_tuples_(const std::vector<std::string> &strings)
+{
+	std::vector<boost::tuple<int,std::string> > vec;
+	boost::tuple<int,std::string> elem;
+	foreach(const std::string &s, strings)
+	{
+		const std::vector<std::string> tokens = utils::split(s, ':');
+		if (tokens.size()!=2)
+		{
+			 //TODO throw meaningful exception
+		}
+		elem.get<0>() = lexical_cast<int>(tokens[0]);
+			//TODO catch exception and pack in meaningful something
+		elem.get<1>() = tokens[1];
+		vec.push_back(elem);
+	}
+	return vec;
 }
 
 std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_opts)
