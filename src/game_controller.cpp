@@ -306,25 +306,6 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			//throw config::error("unknown option"); TODO will be unnecessary here once commandline_options is completed
-		} else {
-			std::cerr << "Overriding data directory with " << val << std::endl;
-#ifdef _WIN32
-			// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
-			if(val.c_str()[1] == ':') {
-#else
-			if(val[0] == '/') {
-#endif
-				game_config::path = val;
-			} else {
-				game_config::path = get_cwd() + '/' + val;
-			}
-
-			if(!is_directory(game_config::path)) {
-				std::cerr << "Could not find directory '" << game_config::path << "'\n";
-				throw config::error("directory not found");
-			}
-
-			font_manager_.update_font_path();
 		}
 	}
 	std::cerr << '\n';

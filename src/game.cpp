@@ -192,6 +192,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 			throw config::error("directory not found");
 		}
 	// don't update font as we already updating it in game ctor
+	//font_manager_.update_font_path();
 	}
 	if(cmdline_opts.gunzip) {
 		const std::string input_file(*cmdline_opts.gunzip);

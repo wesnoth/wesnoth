@@ -21,6 +21,7 @@
 
 namespace po = boost::program_options;
 
+// this class is needed since boost has some templated operators>> declared internally for tuples and we don't want them to interfere. Existence of such operator>> apparently causes program_options to cause the custom class somehow specially... well, the boost::tuple default operator>>  format doesn't suit our needs anyway.
 class two_strings : public boost::tuple<std::string,std::string> {};
 
 void validate(boost::any& v, const std::vector<std::string>& values,
@@ -175,9 +176,12 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	
 	all_.add(visible_).add(hidden_);
 
+	po::positional_options_description positional;
+	positional.add("data-dir",1);
+
 	po::variables_map vm;
 	const int parsing_style = po::command_line_style::default_style ^ po::command_line_style::allow_guessing;
-	po::store(po::parse_command_line(argc_,argv_,all_,parsing_style),vm);
+	po::store(po::command_line_parser(argc_,argv_).options(all_).positional(positional).style(parsing_style).run(),vm);
 
 	if (vm.count("ai-config"))
 		multiplayer_ai_config = parse_to_int_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
