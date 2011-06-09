@@ -84,10 +84,11 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	// Options are sorted alphabetically by --long-option.
 	po::options_description general_opts("General options");
 	general_opts.add_options()
-		("config-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/arg or My Documents\\My Games\\arg for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
+		("config-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
 		("debug,d", "enables additional command mode options in-game.")
 		("help,h", "prints this message and exits.")
+		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory.\nWhen launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
 		("new-syntax", "enables the new campaign syntax parsing.")
 		("nocache", "disables caching of game data.")
 		("path", "prints the path to the data directory and exits.")

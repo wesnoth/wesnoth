@@ -116,25 +116,33 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 
 	const std::string app_basename = file_name(argv[0]);
 	jump_to_editor_ = app_basename.find("editor") != std::string::npos;
-	
-	if(cmdline_opts_.fps)
+
+	if (cmdline_opts_.bpp)
+		force_bpp_ = *cmdline_opts_.bpp;
+	if (cmdline_opts_.fps)
 		preferences::set_show_fps(true);
-	if(cmdline_opts_.new_storyscreens)
+	if (cmdline_opts_.load)
+		game::load_game_exception::game = *cmdline_opts_.load;
+	if (cmdline_opts_.new_storyscreens)
 		// This is a hidden option to help testing
 		// the work-in-progress new storyscreen code.
 		// Don't document.
 		set_new_storyscreen(true);
-	if(cmdline_opts_.new_widgets)
+	if (cmdline_opts_.new_widgets)
 		gui2::new_widgets = true;
+	if (cmdline_opts_.nocache)
+		cache_.set_use_cache(false);
+	if (cmdline_opts_.validcache)
+		cache_.set_force_valid_cache(true);
+	if (cmdline_opts_.with_replay)
+		game::load_game_exception::show_replay = true;
 
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
 		const std::string val(argv_[arg_]);
 		if(val.empty()) {
 			continue;
 		}
-		else if(val == "--nocache") {
-			cache_.set_use_cache(false);
-		} else if(val == "--max-fps") {
+		else if(val == "--max-fps") {
 			if(arg_+1 != argc_) {
 				++arg_;
 				int fps = lexical_cast_default<int>(argv_[arg_], 50);
@@ -147,8 +155,6 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 				}
 				preferences::set_draw_delay(fps);
 			}
-		} else if(val == "--validcache") {
-			cache_.set_force_valid_cache(true);
 		} else if(val == "--resolution" || val == "-r") {
 			if(arg_+1 != argc_) {
 				++arg_;
@@ -163,19 +169,6 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 					}
 				}
 			}
-		} else if(val == "--bpp") {
-			if(arg_+1 != argc_) {
-				++arg_;
-				force_bpp_ = lexical_cast_default<int>(argv_[arg_],-1);
-			}
-		} else if(val == "--load" || val == "-l") {
-			if(arg_+1 != argc_) {
-				++arg_;
-				game::load_game_exception::game = argv_[arg_];
-			}
-		} else if(val == "--with-replay") {
-			game::load_game_exception::show_replay = true;
-
 		} else if(val == "--nogui") {
 			no_gui_ = true;
 			no_sound = true;
