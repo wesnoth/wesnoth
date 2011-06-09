@@ -77,11 +77,11 @@ public:
 	/// True if --multiplayer was given on the command line. Goes directly into multiplayer mode.
 	bool multiplayer;
 	/// Non-empty if --ai-config was given on the command line. Vector of pairs (side number, value). Dependant on --multiplayer.
-	boost::optional<std::vector<boost::tuple<int, std::string> > > multiplayer_ai_config;
+	boost::optional<std::vector<boost::tuple<unsigned int, std::string> > > multiplayer_ai_config;
 	/// Non-empty if --algorithm was given on the command line. Vector of pairs (side number, value). Dependant on --multiplayer.
-	boost::optional<std::vector<boost::tuple<int, std::string> > > multiplayer_algorithm;
+	boost::optional<std::vector<boost::tuple<unsigned int, std::string> > > multiplayer_algorithm;
 	/// Non-empty if --controller was given on the command line. Vector of pairs (side number, controller). Dependant on --multiplayer.
-	boost::optional<std::vector<boost::tuple<int, std::string> > > multiplayer_controller;
+	boost::optional<std::vector<boost::tuple<unsigned int, std::string> > > multiplayer_controller;
 	/// Non-empty if --era was given on the command line. Dependant on --multiplayer.
 	boost::optional<std::string> multiplayer_era;
 	/// True if --exit-at-and was given on the command line. Dependant on --multiplayer.
@@ -89,11 +89,11 @@ public:
 	/// Non-empty if --label was given on the command line. Dependant on --multiplayer.
 	boost::optional<std::string> multiplayer_label;
 	/// Non-empty if --parm was given on the command line. Vector of pairs (side number, parm name, parm value). Dependant on --multiplayer.
-	boost::optional<std::vector<boost::tuple<int, std::string, std::string> > > multiplayer_parm;
+	boost::optional<std::vector<boost::tuple<unsigned int, std::string, std::string> > > multiplayer_parm;
 	/// Non-empty if --scenario was given on the command line. Dependant on --multiplayer.
 	boost::optional<std::string> multiplayer_scenario;
 	/// Non-empty if --side was given on the command line. Vector of pairs (side number, faction id). Dependant on --multiplayer.
-	boost::optional<std::vector<boost::tuple<int, std::string> > > multiplayer_side;
+	boost::optional<std::vector<boost::tuple<unsigned int, std::string> > > multiplayer_side;
 	/// Non-empty if --turns was given on the command line. Dependant on --multiplayer.
 	boost::optional<std::string> multiplayer_turns;
 	/// Max FPS specified by --max-fps option.
@@ -165,7 +165,10 @@ public:
 private:
 	void parse_log_domains_(const std::string &domains_string, const int severity);
 	void parse_resolution_ (const std::string &resolution_string);
-	std::vector<boost::tuple<int,std::string> > parse_to_int_string_tuples_(const std::vector<std::string> &strings);
+	/// A helper function splitting vector of strings of format unsigned int:string to vector of tuples (unsigned int,string)
+	std::vector<boost::tuple<unsigned int,std::string> > parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator = ':');
+	/// A helper function splitting vector of strings of format unsigned int:string:string to vector of tuples (unsigned int,string,string)
+	std::vector<boost::tuple<unsigned int,std::string,std::string> > parse_to_uint_string_string_tuples_(const std::vector<std::string> &strings, char separator = ':');
 	int argc_;
 	char **argv_;
 	boost::program_options::options_description all_;

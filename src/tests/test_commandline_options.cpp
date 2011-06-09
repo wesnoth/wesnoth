@@ -232,7 +232,10 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--proxy-user=userfoo",
 		"--resolution=800x600",
 		"--rng-seed=1234",
+		"--scenario=scenfoo",
 		"--screenshot", "mapfoo", "outssfoo",
+		"--side=1:sidefoo",
+		"--side=2:sidebar",
 		"--server=servfoo",
 		"--smallgui",
 		"--test=testfoo",
@@ -287,8 +290,11 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.multiplayer_exit_at_end);
 	BOOST_CHECK(!co.multiplayer_label);
 	BOOST_CHECK(!co.multiplayer_parm);
-	BOOST_CHECK(!co.multiplayer_scenario);
-	BOOST_CHECK(!co.multiplayer_side);
+	BOOST_CHECK(co.multiplayer_scenario && *co.multiplayer_scenario == "scenfoo");
+	BOOST_CHECK(co.multiplayer_side);
+	BOOST_CHECK(co.multiplayer_side->size() == 2);
+	BOOST_CHECK(co.multiplayer_side->at(0).get<0>() == 1 && co.multiplayer_side->at(0).get<1>() == "sidefoo");
+	BOOST_CHECK(co.multiplayer_side->at(1).get<0>() == 2 && co.multiplayer_side->at(1).get<1>() == "sidebar");
 	BOOST_CHECK(co.multiplayer_turns && *co.multiplayer_turns == "42");
 	BOOST_CHECK(co.max_fps && *co.max_fps == 100);
 	BOOST_CHECK(co.nocache);

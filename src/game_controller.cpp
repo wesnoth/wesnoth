@@ -464,8 +464,38 @@ bool game_controller::play_multiplayer_mode()
 
 	size_t sides_counted = 0;
 
+	if (cmdline_opts_.multiplayer_ai_config)
+	{
+		for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator it=cmdline_opts_.multiplayer_ai_config->begin(); it!=cmdline_opts_.multiplayer_ai_config->end(); ++it)
+		{
+			const unsigned int side = it->get<0>();
+			const std::string ai_cfg_name = it->get<1>();
+			if (side > sides_counted)
+			{
+				std::cerr << "counted sides: " << side << "\n";
+				sides_counted = side;
+			}
+			side_ai_configs[side] = ai_cfg_name;
+		}
+	}
 	if (cmdline_opts_.multiplayer_exit_at_end)
 		game_config::exit_at_end = true;
+	if (cmdline_opts_.multiplayer_scenario)
+		scenario = *cmdline_opts_.multiplayer_scenario;
+	if (cmdline_opts_.multiplayer_side)
+	{
+		for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator it=cmdline_opts_.multiplayer_side->begin(); it!=cmdline_opts_.multiplayer_side->end(); ++it)
+		{
+			const unsigned int side = it->get<0>();
+			const std::string faction_id = it->get<1>();
+			if (side > sides_counted)
+			{
+				std::cerr << "counted sides: " << side << "\n";
+				sides_counted = side;
+			}
+			side_types[side] = faction_id;
+		}
+	}
 	if (cmdline_opts_.multiplayer_turns)
 		turns = *cmdline_opts_.multiplayer_turns;
 
@@ -488,25 +518,14 @@ bool game_controller::play_multiplayer_mode()
 			const bool last_digit = isdigit(name_tail) ? true:false;
 			const size_t side = name_tail - '0';
 
-			if(last_digit && side > sides_counted) {
-				std::cerr << "counted sides: " << side << "\n";
-				sides_counted = side;
-			}
-
-			if(name == "--scenario") {
-				scenario = value;
-			} else if(name == "--era") {
+			if(name == "--era") {
 				era = value;
 			} else if(name == "--label") {
 				label = value;
 			} else if(last_digit && name_head == "--controller") {
 				side_controllers[side] = value;
-			} else if(last_digit && name_head == "--ai_config") {
-				side_ai_configs[side] = value;
 			} else if(last_digit && name_head == "--algorithm") {
 				side_algorithms[side] = value;
-			} else if(last_digit && name_head == "--side") {
-				side_types[side] = value;
 			} else if(last_digit && name_head == "--parm") {
 				const std::vector<std::string> name_value = utils::split(value, ':');
 				if(name_value.size() != 2) {

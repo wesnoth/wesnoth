@@ -174,6 +174,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("ai-config", po::value<std::vector<std::string> >()->composing(), "arg should have format side:value\nselects a configuration file to load for this side.")
 		("exit-at-end", "exit Wesnoth at the end of the scenario.")
 		("nogui", "runs the game without the GUI.")
+		("scenario", po::value<std::string>(), "selects a multiplayer scenario. The default scenario is \"multiplayer_The_Freelands\".")
+		("side", po::value<std::vector<std::string> >()->composing(), "<arg> should have format side:value. selects a faction of the current era for this side by id.")
 		("turns", po::value<std::string>(), "sets the number of turns. The default is \"50\".")
 		;
 
@@ -210,7 +212,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	po::store(po::command_line_parser(argc_,argv_).options(all_).positional(positional).style(parsing_style).run(),vm);
 
 	if (vm.count("ai-config"))
-		multiplayer_ai_config = parse_to_int_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
+		multiplayer_ai_config = parse_to_uint_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
 	if (vm.count("bpp"))
 		bpp = vm["bpp"].as<int>();
 	if (vm.count("campaign"))
@@ -309,6 +311,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		parse_resolution_(vm["resolution"].as<std::string>());
 	if (vm.count("rng-seed"))
 		rng_seed = vm["rng-seed"].as<unsigned int>();
+	if (vm.count("scenario"))
+		multiplayer_scenario = vm["scenario"].as<std::string>();
 	if (vm.count("screenshot"))
 	{
 		screenshot = true;
@@ -317,6 +321,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	}
 	if (vm.count("server"))
 		server = vm["server"].as<std::string>();
+	if (vm.count("side"))
+		multiplayer_side = parse_to_uint_string_tuples_(vm["side"].as<std::vector<std::string> >());
 	if (vm.count("test"))
 		test = vm["test"].as<std::string>();
 	if (vm.count("turns"))
@@ -354,20 +360,40 @@ void commandline_options::parse_resolution_ ( const std::string& resolution_stri
 	resolution = boost::tuple<int,int>(xres,yres);
 }
 
-std::vector<boost::tuple<int,std::string> > commandline_options::parse_to_int_string_tuples_(const std::vector<std::string> &strings)
+std::vector<boost::tuple<unsigned int,std::string> > commandline_options::parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator)
 {
-	std::vector<boost::tuple<int,std::string> > vec;
-	boost::tuple<int,std::string> elem;
+	std::vector<boost::tuple<unsigned int,std::string> > vec;
+	boost::tuple<unsigned int,std::string> elem;
 	foreach(const std::string &s, strings)
 	{
-		const std::vector<std::string> tokens = utils::split(s, ':');
+		const std::vector<std::string> tokens = utils::split(s, separator);
 		if (tokens.size()!=2)
 		{
 			 //TODO throw a meaningful exception
 		}
-		elem.get<0>() = lexical_cast<int>(tokens[0]);
+		elem.get<0>() = lexical_cast<unsigned int>(tokens[0]);
 			//TODO catch exception and pack in meaningful something
 		elem.get<1>() = tokens[1];
+		vec.push_back(elem);
+	}
+	return vec;
+}
+
+std::vector<boost::tuple<unsigned int,std::string,std::string> > commandline_options::parse_to_uint_string_string_tuples_(const std::vector<std::string> &strings, char separator)
+{
+	std::vector<boost::tuple<unsigned int,std::string,std::string> > vec;
+	boost::tuple<unsigned int,std::string,std::string> elem;
+	foreach(const std::string &s, strings)
+	{
+		const std::vector<std::string> tokens = utils::split(s, separator);
+		if (tokens.size()!=3)
+		{
+			 //TODO throw a meaningful exception
+		}
+		elem.get<0>() = lexical_cast<unsigned int>(tokens[0]);
+			//TODO catch exception and pack in meaningful something
+		elem.get<1>() = tokens[1];
+		elem.get<2>() = tokens[2];
 		vec.push_back(elem);
 	}
 	return vec;
