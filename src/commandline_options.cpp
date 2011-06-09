@@ -172,6 +172,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	multiplayer_opts.add_options()
 		("multiplayer,m", "Starts a multiplayer game. There are additional options that can be used as explained below:")
 		("ai-config", po::value<std::vector<std::string> >()->composing(), "selects a configuration file to load for this side. <arg> should have format side:value")
+		("algorithm", po::value<std::vector<std::string> >()->composing(), "selects a non-standard algorithm to be used by the AI controller for this side. <arg> should have format side:value")
 		("controller", po::value<std::vector<std::string> >()->composing(), "selects the controller for this side. <arg> should have format side:value")
 		("era", po::value<std::string>(), "selects the era to be played in by its id.")
 		("exit-at-end", "exit Wesnoth at the end of the scenario.")
@@ -216,6 +217,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 
 	if (vm.count("ai-config"))
 		multiplayer_ai_config = parse_to_uint_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
+	if (vm.count("algorithm"))
+		multiplayer_algorithm = parse_to_uint_string_tuples_(vm["algorithm"].as<std::vector<std::string> >());
 	if (vm.count("bpp"))
 		bpp = vm["bpp"].as<int>();
 	if (vm.count("campaign"))

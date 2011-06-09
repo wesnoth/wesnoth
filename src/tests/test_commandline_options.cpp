@@ -184,6 +184,8 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"wesnoth",
 		"--ai-config=1:aifoo",
 		"--ai-config=2:aibar",
+		"--algorithm=3:algfoo",
+		"--algorithm=4:algbar",
 		"--bpp=32",
 		"--campaign=campfoo",
 		"--campaign-difficulty=16",
@@ -191,8 +193,8 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--clock",
 		"--config-dir=configdirfoo",
 		"--config-path",
-		"--controller=1:confoo",
-		"--controller=2:conbar",
+		"--controller=5:confoo",
+		"--controller=6:conbar",
 		"--data-dir=datadirfoo",
 		"--debug",
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -288,10 +290,12 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.multiplayer_ai_config->size() == 2);
 	BOOST_CHECK(co.multiplayer_ai_config->at(0).get<0>() == 1 && co.multiplayer_ai_config->at(0).get<1>() == "aifoo");
 	BOOST_CHECK(co.multiplayer_ai_config->at(1).get<0>() == 2 && co.multiplayer_ai_config->at(1).get<1>() == "aibar");
-	BOOST_CHECK(!co.multiplayer_algorithm);
+	BOOST_CHECK(co.multiplayer_algorithm);
+	BOOST_CHECK(co.multiplayer_algorithm->at(0).get<0>() == 3 && co.multiplayer_algorithm->at(0).get<1>() == "algfoo");
+	BOOST_CHECK(co.multiplayer_algorithm->at(1).get<0>() == 4 && co.multiplayer_algorithm->at(1).get<1>() == "algbar");
 	BOOST_CHECK(co.multiplayer_controller);
-	BOOST_CHECK(co.multiplayer_controller->at(0).get<0>() == 1 && co.multiplayer_controller->at(0).get<1>() == "confoo");
-	BOOST_CHECK(co.multiplayer_controller->at(1).get<0>() == 2 && co.multiplayer_controller->at(1).get<1>() == "conbar");
+	BOOST_CHECK(co.multiplayer_controller->at(0).get<0>() == 5 && co.multiplayer_controller->at(0).get<1>() == "confoo");
+	BOOST_CHECK(co.multiplayer_controller->at(1).get<0>() == 6 && co.multiplayer_controller->at(1).get<1>() == "conbar");
 	BOOST_CHECK(co.multiplayer_era && *co.multiplayer_era == "erafoo");
 	BOOST_CHECK(co.multiplayer_exit_at_end);
 	BOOST_CHECK(co.multiplayer_label && *co.multiplayer_label == "labelfoo");

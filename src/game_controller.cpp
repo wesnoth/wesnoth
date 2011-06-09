@@ -478,6 +478,20 @@ bool game_controller::play_multiplayer_mode()
 			side_ai_configs[side] = ai_cfg_name;
 		}
 	}
+	if (cmdline_opts_.multiplayer_algorithm)
+	{
+		for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator it=cmdline_opts_.multiplayer_algorithm->begin(); it!=cmdline_opts_.multiplayer_algorithm->end(); ++it)
+		{
+			const unsigned int side = it->get<0>();
+			const std::string algorithm_id = it->get<1>();
+			if (side > sides_counted)
+			{
+				std::cerr << "counted sides: " << side << "\n";
+				sides_counted = side;
+			}
+			side_algorithms[side] = algorithm_id;
+		}
+	}
 	if (cmdline_opts_.multiplayer_controller)
 	{
 		for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator it=cmdline_opts_.multiplayer_controller->begin(); it!=cmdline_opts_.multiplayer_controller->end(); ++it)
@@ -536,9 +550,7 @@ bool game_controller::play_multiplayer_mode()
 			const bool last_digit = isdigit(name_tail) ? true:false;
 			const size_t side = name_tail - '0';
 
-			if(last_digit && name_head == "--algorithm") {
-				side_algorithms[side] = value;
-			} else if(last_digit && name_head == "--parm") {
+			if(last_digit && name_head == "--parm") {
 				const std::vector<std::string> name_value = utils::split(value, ':');
 				if(name_value.size() != 2) {
 					std::cerr << "argument to '" << name << "' must be in the format name:value\n";
