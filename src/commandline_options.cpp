@@ -17,6 +17,7 @@
 #include "foreach.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
+#include "lua/llimits.h"
 
 namespace po = boost::program_options;
 
@@ -115,12 +116,12 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("gunzip", po::value<std::string>(), "decompresses a file (<arg>.gz) in gzip format and stores it without the .gz suffix. <arg>.gz will be removed.")
 		("gzip", po::value<std::string>(), "compresses a file (<arg>) in gzip format, stores it as <arg>.gz and removes <arg>.")
 		("help,h", "prints this message and exits.")
-		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory.\nWhen launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
-		("logdomains", po::value<std::string>()->implicit_value(std::string()), "lists defined log domains (only the ones containing <arg> filter if provided) and exits.")
+		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory. When launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
 		("new-syntax", "enables the new campaign syntax parsing.")
 		("nocache", "disables caching of game data.")
 		("path", "prints the path to the data directory and exits.")
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
+		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work.")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
 		("with-replay", "replays the file loaded with the --load option.")
@@ -130,6 +131,15 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("bpp", po::value<int>(), "sets BitsPerPixel value. Example: --bpp 32")
 		("fps", "displays the number of frames per second the game is currently running at, in a corner of the screen.")
 		("max-fps", po::value<int>(), "the maximum fps the game tries to run at. Values should be between 1 and 1000, the default is 50.")
+		;
+
+	po::options_description logging_opts("Logging options");
+	logging_opts.add_options()
+		("logdomains", po::value<std::string>()->implicit_value(std::string()), "lists defined log domains (only the ones containing <arg> filter if such is provided) and exits.")
+		("log-error", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'error'. <arg> should be given as comma separated list of domains, wildcards are allowed. Example: --log-error=network,gui/*,engine/enemies")
+		("log-warning", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'warning'. Similar to --log-error.")
+		("log-info", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'info'. Similar to --log-error.")
+		("log-debug", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'debug'. Similar to --log-error.")
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");
@@ -150,7 +160,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("new-storyscreens", "")
 		("new-widgets", "")
 		;
-	visible_.add(general_opts).add(display_opts).add(multiplayer_opts).add(preprocessor_opts);
+	visible_.add(general_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(preprocessor_opts);
 	
 	all_.add(visible_).add(hidden_);
 
@@ -180,6 +190,14 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		help = true;
 	if (vm.count("load"))
 		load = vm["load"].as<std::string>();
+	if (vm.count("log-error"))
+		 parse_log_domains_(vm["log-error"].as<std::string>(),0);
+	if (vm.count("log-warning"))
+		 parse_log_domains_(vm["log-warning"].as<std::string>(),1);
+	if (vm.count("log-info"))
+		 parse_log_domains_(vm["log-info"].as<std::string>(),2);
+	if (vm.count("log-debug"))
+		 parse_log_domains_(vm["log-debug"].as<std::string>(),3);
 	if (vm.count("logdomains"))
 		logdomains = vm["logdomains"].as<std::string>();
 	if (vm.count("max-fps"))
@@ -210,6 +228,12 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		preprocess_output_macros = vm["preprocess-output-macros"].as<std::string>();
 	if (vm.count("rng-seed"))
 		rng_seed = vm["rng-seed"].as<unsigned int>();
+	if (vm.count("screenshot"))
+	{
+		screenshot = true;
+		screenshot_map_file = vm["screenshot"].as<two_strings>().get<0>();
+		screenshot_output_file = vm["screenshot"].as<two_strings>().get<1>();
+	}
 	if (vm.count("validcache"))
 		validcache = true;
 	if (vm.count("version"))
@@ -235,6 +259,17 @@ std::vector<boost::tuple<int,std::string> > commandline_options::parse_to_int_st
 		vec.push_back(elem);
 	}
 	return vec;
+}
+
+void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
+{
+	const std::vector<std::string> domains = utils::split(domains_string, ',');
+	foreach (const std::string& domain, domains)
+	{
+		if (!log)
+			log = std::vector<boost::tuple<int, std::string> >();
+		log->push_back(boost::tuple<int, std::string>(severity,domain));
+	}
 }
 
 std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_opts)

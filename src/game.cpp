@@ -162,9 +162,7 @@ public:
 };
 
 /** Process commandline-arguments */
-static int process_command_args(int argc, char** argv, const commandline_options& cmdline_opts) {
-	const std::string program = argv[0];
-	game_config::wesnoth_program_dir = directory_name(program);
+static int process_command_args(const commandline_options& cmdline_opts) {
 	preprocess_options preproc;
 
 	// Options that don't change behaviour based on any others should be checked alphabetically below.
@@ -214,6 +212,18 @@ static int process_command_args(int argc, char** argv, const commandline_options
 		std::cout << cmdline_opts;
 		return 0;
 	}
+	if(cmdline_opts.log) {
+		for(std::vector<boost::tuple<int, std::string> >::const_iterator it=cmdline_opts.log->begin(); it!=cmdline_opts.log->end(); ++it)
+		{
+			const std::string log_domain = it->get<1>();
+			const int severity = it->get<0>();
+			if (!lg::set_log_domain_severity(log_domain, severity))
+			{
+				std::cerr << "unknown log domain: " << log_domain << '\n';
+				return 2;
+			}
+		}
+	}
 	if(cmdline_opts.logdomains) {
 		std::cout << lg::list_logdomains(*cmdline_opts.logdomains);
 		return 0;
@@ -257,6 +267,10 @@ static int process_command_args(int argc, char** argv, const commandline_options
 	}
 	if(cmdline_opts.rng_seed) {
 		srand(*cmdline_opts.rng_seed);
+	}
+	if(cmdline_opts.screenshot) {
+		static char opt[] = "SDL_VIDEODRIVER=dummy";
+		SDL_putenv(opt);
 	}
 	if(cmdline_opts.version) {
 		std::cout << "Battle for Wesnoth" << " " << game_config::version << "\n";
@@ -357,47 +371,6 @@ static int process_command_args(int argc, char** argv, const commandline_options
 		return 0;
 	}
 
-	//parse arguments that shouldn't require a display device
-	int arg;
-	for(arg = 1; arg != argc; ++arg) {
-		const std::string val(argv[arg]);
-		if(val.empty()) {
-			continue;
-		} else if (val == "--screenshot" ) {
-			if(!(argc > arg + 2)) {
-				std::cerr << "format of " << val << " command: " << val << " <map file> <output file>\n";
-				return 2;
-			}
-			static char opt[] = "SDL_VIDEODRIVER=dummy";
-			SDL_putenv(opt);
-		} else if (val.substr(0, 6) == "--log-") {
-			size_t p = val.find('=');
-			if (p == std::string::npos) {
-				std::cerr << "unknown option: " << val << '\n';
-				return 2;
-			}
-			std::string s = val.substr(6, p - 6);
-			int severity;
-			if (s == "error") severity = 0;
-			else if (s == "warning") severity = 1;
-			else if (s == "info") severity = 2;
-			else if (s == "debug") severity = 3;
-			else {
-				std::cerr << "unknown debug level: " << s << '\n';
-				return 2;
-			}
-			while (p != std::string::npos) {
-				size_t q = val.find(',', p + 1);
-				s = val.substr(p + 1, q == std::string::npos ? q : q - (p + 1));
-				if (!lg::set_log_domain_severity(s, severity)) {
-					std::cerr << "unknown debug domain: " << s << '\n';
-					return 2;
-				}
-				p = q;
-			}
-		}
-	}
-
 	// Not the most intuitive solution, but I wanted to leave current semantics for now
 	return -1;
 }
@@ -432,7 +405,8 @@ static int do_gameloop(int argc, char** argv)
 	srand(time(NULL));
 
 	commandline_options cmdline_opts = commandline_options(argc,argv);
-	int finished = process_command_args(argc, argv,cmdline_opts);
+	game_config::wesnoth_program_dir = directory_name(argv[0]);
+	int finished = process_command_args(cmdline_opts);
 	if(finished != -1) {
 		return finished;
 	}

@@ -187,6 +187,10 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--gzip=gzipfoo",
 		"--help",
 		"--load=loadfoo",
+		"--log-error=errfoo,errbar/*",
+		"--log-warning=warnfoo,warnfoo/bar",
+		"--log-info=infofoo",
+		"--log-debug=dbgfoo,dbgbar,dbg/foo/bar/baz",
 		"--logdomains=filterfoo",
 		"--max-fps=100",
 		"--multiplayer",
@@ -200,6 +204,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--preprocess-input-macros=inmfoo",
 		"--preprocess-output-macros=outmfoo",
 		"--rng-seed=1234",
+		"--screenshot", "mapfoo", "outssfoo",
 		"--validcache",
 		"--version",
 		"--with-replay"
@@ -226,7 +231,16 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.gunzip && *co.gunzip == "gunzipfoo.gz");
 	BOOST_CHECK(co.gzip && *co.gzip == "gzipfoo");
 	BOOST_CHECK(co.help);
-	BOOST_CHECK(!co.log);
+	BOOST_CHECK(co.log);
+	BOOST_CHECK(co.log->size()==8);
+	BOOST_CHECK(co.log->at(0).get<0>() == 0 && co.log->at(1).get<0>() == 0);
+	BOOST_CHECK(co.log->at(0).get<1>() == "errfoo" && co.log->at(1).get<1>() == "errbar/*");
+	BOOST_CHECK(co.log->at(2).get<0>() == 1 && co.log->at(3).get<0>() == 1);
+	BOOST_CHECK(co.log->at(2).get<1>() == "warnfoo" && co.log->at(3).get<1>() == "warnfoo/bar");
+	BOOST_CHECK(co.log->at(4).get<0>() == 2);
+	BOOST_CHECK(co.log->at(4).get<1>() == "infofoo");
+	BOOST_CHECK(co.log->at(5).get<0>() == 3 && co.log->at(6).get<0>() == 3 && co.log->at(7).get<0>() == 3);
+	BOOST_CHECK(co.log->at(5).get<1>() == "dbgfoo" && co.log->at(6).get<1>() == "dbgbar" && co.log->at(7).get<1>() == "dbg/foo/bar/baz");
 	BOOST_CHECK(co.load && *co.load == "loadfoo");
 	BOOST_CHECK(co.logdomains && *co.logdomains == "filterfoo");
 	BOOST_CHECK(co.multiplayer);
@@ -265,9 +279,8 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(!co.resolution);
 	BOOST_CHECK(co.rng_seed && *co.rng_seed == 1234);
 	BOOST_CHECK(!co.server);
-	BOOST_CHECK(!co.screenshot);
-	BOOST_CHECK(!co.screenshot_map_file);
-	BOOST_CHECK(!co.screenshot_output_file);
+	BOOST_CHECK(co.screenshot && co.screenshot_map_file && co.screenshot_output_file);
+	BOOST_CHECK(*co.screenshot_map_file == "mapfoo" && *co.screenshot_output_file == "outssfoo");
 	BOOST_CHECK(!co.smallgui);
 	BOOST_CHECK(!co.test);
 	BOOST_CHECK(co.validcache);

@@ -156,6 +156,15 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		gui2::new_widgets = true;
 	if (cmdline_opts_.nocache)
 		cache_.set_use_cache(false);
+	if (cmdline_opts_.screenshot) {
+		//TODO it could be simplified to use cmdline_opts_ directly if there is no other way to enter screenshot mode
+		screenshot_map_ = *cmdline_opts_.screenshot_map_file;
+		screenshot_filename_ = *cmdline_opts_.screenshot_output_file;
+		no_sound = true;
+		screenshot_mode_ = true;
+		preferences::disable_preferences_save();
+		force_bpp_ = 32;
+	}
 	if (cmdline_opts_.validcache)
 		cache_.set_force_valid_cache(true);
 	if (cmdline_opts_.with_replay)
@@ -184,18 +193,6 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 			no_gui_ = true;
 			no_sound = true;
 			preferences::disable_preferences_save();
-		}
-		else if(val == "--screenshot") {
-			if(arg_+2 != argc_) {
-				++arg_;
-				screenshot_map_ = argv_[arg_];
-				++arg_;
-				screenshot_filename_ = argv_[arg_];
-				no_sound = true;
-				screenshot_mode_ = true;
-				preferences::disable_preferences_save();
-				force_bpp_ = 32;
-			}
 		}
 		else if(val == "--smallgui") {
 			game_config::small_gui = true;

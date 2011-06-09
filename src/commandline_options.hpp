@@ -159,6 +159,7 @@ public:
 	/// True if --with-replay was given on the command line. Shows replay of the loaded file.
 	bool with_replay;
 private:
+	void parse_log_domains_(const std::string &domains_string, const int severity);
 	std::vector<boost::tuple<int,std::string> > parse_to_int_string_tuples_(const std::vector<std::string> &strings);
 	int argc_;
 	char **argv_;
