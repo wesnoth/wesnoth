@@ -213,12 +213,25 @@ static int process_command_args(int argc, char** argv, const commandline_options
 		std::cout << cmdline_opts;
 		return 0;
 	}
+	if(cmdline_opts.logdomains) {
+		std::cout << lg::list_logdomains(*cmdline_opts.logdomains);
+		return 0;
+	}
 	if(cmdline_opts.new_syntax) {
 		game_config::new_syntax = true;
 	}
 	if(cmdline_opts.path) {
 		std::cout <<  game_config::path << "\n";
 		return 0;
+	}
+	if (cmdline_opts.preprocess_output_macros) {
+		if (cmdline_opts.preprocess_output_macros->empty())
+			preproc.output_macros_path_ = "true";
+		else
+			preproc.output_macros_path_ = *cmdline_opts.preprocess_output_macros;
+	}
+	if(cmdline_opts.rng_seed) {
+		srand(*cmdline_opts.rng_seed);
 	}
 	if(cmdline_opts.version) {
 		std::cout << "Battle for Wesnoth" << " " << game_config::version << "\n";
@@ -263,20 +276,6 @@ static int process_command_args(int argc, char** argv, const commandline_options
 				}
 				p = q;
 			}
-		} else if(val == "--logdomains") {
-			std::string filter;
-			if(arg + 1 != argc) {
-				++arg;
-				filter = argv[arg];
-			}
-			std::cout << lg::list_logdomains(filter);
-			return 0;
-		} else if(val == "--rng-seed") {
-			if (argc <= ++arg) {
-				std::cerr << "format of \" " << val << " " << argv[arg] << " \" is bad\n";
-				return 2;
-			}
-			srand(lexical_cast_default<unsigned int>(argv[arg]));
 		} else if (val == "--preprocess-input-macros") {
 			if (arg + 1 < argc)
 			{
@@ -307,13 +306,6 @@ static int process_command_args(int argc, char** argv, const commandline_options
 			else {
 				std::cerr << "please specify input macros file.\n";
 				return 2;
-			}
-		} else if (val == "--preprocess-output-macros") {
-			preproc.output_macros_path_ = "true";
-			if (arg + 1 < argc && argv[arg+1][0] != '-')
-			{
-				++arg;
-				preproc.output_macros_path_ = argv[arg];
 			}
 		} else if (val.find("--preprocess") == 0 || val.find("-p") == 0){
 			if (arg + 2 < argc){

@@ -103,9 +103,12 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("gzip", po::value<std::string>(), "compresses a file (<arg>) in gzip format, stores it as <arg>.gz and removes <arg>.")
 		("help,h", "prints this message and exits.")
 		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory.\nWhen launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
+		("logdomains", po::value<std::string>()->implicit_value(std::string()), "lists defined log domains (only the ones containing <arg> filter if provided) and exits.")
 		("new-syntax", "enables the new campaign syntax parsing.")
 		("nocache", "disables caching of game data.")
 		("path", "prints the path to the data directory and exits.")
+		("preprocess-output-macros", po::value<std::string>()->implicit_value(std::string()), "used only by the '--preprocess' command. Will output all preprocessed macros in the target file <arg>. If the file is not specified the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.")
+		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
 		("with-replay", "replays the file loaded with the --load option.")
@@ -156,6 +159,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		help = true;
 	if (vm.count("load"))
 		load = vm["load"].as<std::string>();
+	if (vm.count("logdomains"))
+		logdomains = vm["logdomains"].as<std::string>();
 	if (vm.count("max-fps"))
 		max_fps = vm["max-fps"].as<int>();
 	if (vm.count("multiplayer"))
@@ -170,6 +175,10 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		nocache = true;
 	if (vm.count("path"))
 		path = true;
+	if (vm.count("preprocess-output-macros"))
+		preprocess_output_macros = vm["preprocess-output-macros"].as<std::string>();
+	if (vm.count("rng-seed"))
+		rng_seed = vm["rng-seed"].as<unsigned int>();
 	if (vm.count("validcache"))
 		validcache = true;
 	if (vm.count("version"))
