@@ -171,11 +171,14 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	po::options_description multiplayer_opts("Multiplayer options");
 	multiplayer_opts.add_options()
 		("multiplayer,m", "Starts a multiplayer game. There are additional options that can be used as explained below:")
-		("ai-config", po::value<std::vector<std::string> >()->composing(), "arg should have format side:value\nselects a configuration file to load for this side.")
+		("ai-config", po::value<std::vector<std::string> >()->composing(), "selects a configuration file to load for this side. <arg> should have format side:value")
+		("controller", po::value<std::vector<std::string> >()->composing(), "selects the controller for this side. <arg> should have format side:value")
+		("era", po::value<std::string>(), "selects the era to be played in by its id.")
 		("exit-at-end", "exit Wesnoth at the end of the scenario.")
+		("label", po::value<std::string>(), "sets the label for AIs.") //TODO is the description precise? this option was undocumented before.
 		("nogui", "runs the game without the GUI.")
 		("scenario", po::value<std::string>(), "selects a multiplayer scenario. The default scenario is \"multiplayer_The_Freelands\".")
-		("side", po::value<std::vector<std::string> >()->composing(), "<arg> should have format side:value. selects a faction of the current era for this side by id.")
+		("side", po::value<std::vector<std::string> >()->composing(), "selects a faction of the current era for this side by id. <arg> should have format side:value.")
 		("turns", po::value<std::string>(), "sets the number of turns. The default is \"50\".")
 		;
 
@@ -227,6 +230,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		config_dir = vm["config-dir"].as<std::string>();
 	if (vm.count("config-path"))
 		config_path = true;
+	if (vm.count("controller"))
+		multiplayer_controller = parse_to_uint_string_tuples_(vm["controller"].as<std::vector<std::string> >());
 	if (vm.count("data-dir"))
 		data_dir = vm["data-dir"].as<std::string>();
 	if (vm.count("debug"))
@@ -239,6 +244,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 #endif
 	if (vm.count("editor"))
 		editor = vm["editor"].as<std::string>();
+	if (vm.count("era"))
+		multiplayer_era = vm["era"].as<std::string>();
 	if (vm.count("exit-at-end"))
 		multiplayer_exit_at_end = true;
 	if (vm.count("fps"))
@@ -251,6 +258,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		gzip = vm["gzip"].as<std::string>();
 	if (vm.count("help"))
 		help = true;
+	if (vm.count("label"))
+		multiplayer_label = vm["label"].as<std::string>();
 	if (vm.count("load"))
 		load = vm["load"].as<std::string>();
 	if (vm.count("log-error"))

@@ -191,6 +191,8 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--clock",
 		"--config-dir=configdirfoo",
 		"--config-path",
+		"--controller=1:confoo",
+		"--controller=2:conbar",
 		"--data-dir=datadirfoo",
 		"--debug",
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -198,12 +200,14 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--debug-dot-level=dlfoo",
 #endif
 		"--editor=editfoo",
+		"--era=erafoo",
 		"--exit-at-end",
 		"--fps",
 		"--fullscreen",
 		"--gunzip=gunzipfoo.gz",
 		"--gzip=gzipfoo",
 		"--help",
+		"--label=labelfoo",
 		"--load=loadfoo",
 		"--log-error=errfoo,errbar/*",
 		"--log-warning=warnfoo,warnfoo/bar",
@@ -285,10 +289,12 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.multiplayer_ai_config->at(0).get<0>() == 1 && co.multiplayer_ai_config->at(0).get<1>() == "aifoo");
 	BOOST_CHECK(co.multiplayer_ai_config->at(1).get<0>() == 2 && co.multiplayer_ai_config->at(1).get<1>() == "aibar");
 	BOOST_CHECK(!co.multiplayer_algorithm);
-	BOOST_CHECK(!co.multiplayer_controller);
-	BOOST_CHECK(!co.multiplayer_era);
+	BOOST_CHECK(co.multiplayer_controller);
+	BOOST_CHECK(co.multiplayer_controller->at(0).get<0>() == 1 && co.multiplayer_controller->at(0).get<1>() == "confoo");
+	BOOST_CHECK(co.multiplayer_controller->at(1).get<0>() == 2 && co.multiplayer_controller->at(1).get<1>() == "conbar");
+	BOOST_CHECK(co.multiplayer_era && *co.multiplayer_era == "erafoo");
 	BOOST_CHECK(co.multiplayer_exit_at_end);
-	BOOST_CHECK(!co.multiplayer_label);
+	BOOST_CHECK(co.multiplayer_label && *co.multiplayer_label == "labelfoo");
 	BOOST_CHECK(!co.multiplayer_parm);
 	BOOST_CHECK(co.multiplayer_scenario && *co.multiplayer_scenario == "scenfoo");
 	BOOST_CHECK(co.multiplayer_side);

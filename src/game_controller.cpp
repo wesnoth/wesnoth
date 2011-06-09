@@ -478,8 +478,26 @@ bool game_controller::play_multiplayer_mode()
 			side_ai_configs[side] = ai_cfg_name;
 		}
 	}
+	if (cmdline_opts_.multiplayer_controller)
+	{
+		for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator it=cmdline_opts_.multiplayer_controller->begin(); it!=cmdline_opts_.multiplayer_controller->end(); ++it)
+		{
+			const unsigned int side = it->get<0>();
+			const std::string controller_id = it->get<1>();
+			if (side > sides_counted)
+			{
+				std::cerr << "counted sides: " << side << "\n";
+				sides_counted = side;
+			}
+			side_controllers[side] = controller_id;
+		}
+	}
+	if (cmdline_opts_.multiplayer_era)
+		era = *cmdline_opts_.multiplayer_era;
 	if (cmdline_opts_.multiplayer_exit_at_end)
 		game_config::exit_at_end = true;
+	if (cmdline_opts_.multiplayer_label)
+		label = *cmdline_opts_.multiplayer_label;
 	if (cmdline_opts_.multiplayer_scenario)
 		scenario = *cmdline_opts_.multiplayer_scenario;
 	if (cmdline_opts_.multiplayer_side)
@@ -518,13 +536,7 @@ bool game_controller::play_multiplayer_mode()
 			const bool last_digit = isdigit(name_tail) ? true:false;
 			const size_t side = name_tail - '0';
 
-			if(name == "--era") {
-				era = value;
-			} else if(name == "--label") {
-				label = value;
-			} else if(last_digit && name_head == "--controller") {
-				side_controllers[side] = value;
-			} else if(last_digit && name_head == "--algorithm") {
+			if(last_digit && name_head == "--algorithm") {
 				side_algorithms[side] = value;
 			} else if(last_digit && name_head == "--parm") {
 				const std::vector<std::string> name_value = utils::split(value, ':');
@@ -655,7 +667,6 @@ bool game_controller::play_multiplayer_mode()
 
 	try {
 		recorder.add_log_data("ai_log","ai_label",label);
-
 		state_.snapshot = level;
 		play_game(disp(), state_, game_config());
 	} catch (game::load_game_exception &) {
