@@ -119,6 +119,14 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 
 	if (cmdline_opts_.bpp)
 		force_bpp_ = *cmdline_opts_.bpp;
+	if(cmdline_opts_.debug) {
+		game_config::debug = true;
+		game_config::mp_debug = true;
+		//set the wml log domain to level "debug"
+		std::string s = "wml";
+		int severity = 3;
+		lg::set_log_domain_severity(s, severity);
+	}
 	if (cmdline_opts_.fps)
 		preferences::set_show_fps(true);
 	if (cmdline_opts_.load)
@@ -249,13 +257,6 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 				++arg_;
 				test_scenario_ = argv_[arg_];
 			}
-		} else if(val == "--debug" || val == "-d") {
-			game_config::debug = true;
-			game_config::mp_debug = true;
-			//set the wml log domain to level "debug"
-			std::string s = "wml";
-			int severity = 3;
-			lg::set_log_domain_severity(s, severity);
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 		 } else if (val.substr(0, 18) == "--debug-dot-level=") {
 			 gui2::tdebug_layout_graph::set_level(val.substr(18));
