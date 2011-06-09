@@ -120,10 +120,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("new-syntax", "enables the new campaign syntax parsing.")
 		("nocache", "disables caching of game data.")
 		("path", "prints the path to the data directory and exits.")
-		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file.")
-		("preprocess-defines", po::value<std::string>(), "comma separated list of defines to be used by '--preprocess' command. If 'SKIP_CORE' is in the define list the data/core won't be preprocessed. Example: --preprocess-defines=FOO,BAR")
-		("preprocess-input-macros", po::value<std::string>(), "used only by the '--preprocess' command. Specifies source file <arg> that contains [preproc_define]s to be included before preprocessing.")
-		("preprocess-output-macros", po::value<std::string>()->implicit_value(std::string()), "used only by the '--preprocess' command. Will output all preprocessed macros in the target file <arg>. If the file is not specified the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.")
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
@@ -142,11 +138,19 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("ai-config", po::value<std::vector<std::string> >()->composing(), "arg should have format side:value\nselects a configuration file to load for this side.")
 		;
 
+	po::options_description preprocessor_opts("Preprocessor mode options");
+	preprocessor_opts.add_options()
+		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file.")
+		("preprocess-defines", po::value<std::string>(), "comma separated list of defines to be used by '--preprocess' command. If 'SKIP_CORE' is in the define list the data/core won't be preprocessed. Example: --preprocess-defines=FOO,BAR")
+		("preprocess-input-macros", po::value<std::string>(), "used only by the '--preprocess' command. Specifies source file <arg> that contains [preproc_define]s to be included before preprocessing.")
+		("preprocess-output-macros", po::value<std::string>()->implicit_value(std::string()), "used only by the '--preprocess' command. Will output all preprocessed macros in the target file <arg>. If the file is not specified the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.")
+		;
+
 	hidden_.add_options()
 		("new-storyscreens", "")
 		("new-widgets", "")
 		;
-	visible_.add(general_opts).add(display_opts).add(multiplayer_opts);
+	visible_.add(general_opts).add(display_opts).add(multiplayer_opts).add(preprocessor_opts);
 	
 	all_.add(visible_).add(hidden_);
 
