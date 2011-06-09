@@ -41,6 +41,14 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	load(),
 	logdomains(),
 	multiplayer(false),
+	multiplayer_ai_config(),
+	multiplayer_algorithm(),
+	multiplayer_controller(),
+	multiplayer_era(),
+	multiplayer_label(),
+	multiplayer_parm(),
+	multiplayer_side(),
+	multiplayer_turns(),
 	max_fps(),
 	nocache(false),
 	nodelay(false),
@@ -103,15 +111,19 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("max-fps", "the maximum fps the game tries to run at. Values should be between 1 and 1000, the default is 50.")
 		;
 	
+	po::options_description multiplayer_opts("Multiplayer options");
+	multiplayer_opts.add_options()
+		("multiplayer,m", "Starts a multiplayer game. There are additional options that can be used as explained below:")
+		;
+
 	hidden_.add_options()
 		("new_storyscreens", "")
 		("new-widgets", "")
 		;
-	
-	visible_.add(general_opts).add(display_opts);
+	visible_.add(general_opts).add(display_opts).add(multiplayer_opts);
 	
 	all_.add(visible_).add(hidden_);
-	
+
 	po::variables_map vm;
 	po::store(po::parse_command_line(argc_,argv_,all_),vm);
 

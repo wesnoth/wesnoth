@@ -119,7 +119,7 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 
 	if (cmdline_opts_.bpp)
 		force_bpp_ = *cmdline_opts_.bpp;
-	if(cmdline_opts_.debug) {
+	if (cmdline_opts_.debug) {
 		game_config::debug = true;
 		game_config::mp_debug = true;
 		//set the wml log domain to level "debug"
@@ -145,6 +145,8 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		}
 		preferences::set_draw_delay(fps);
 	} 
+	if (cmdline_opts_.multiplayer)
+		multiplayer_mode_ = true;
 	if (cmdline_opts_.new_storyscreens)
 		// This is a hidden option to help testing
 		// the work-in-progress new storyscreen code.
@@ -245,9 +247,6 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 					multiplayer_server_ = "";
 			}
 
-		} else if(val == "--multiplayer" || val == "-m") {
-			multiplayer_mode_ = true;
-			break; //parse the rest of the arguments when we set up the game
 		} else if(val == "--test" || val == "-t") {
 			test_mode_ = true;
 			// If we have -t foo it's ambiguous whether it foo is the parameter

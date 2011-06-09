@@ -76,6 +76,22 @@ public:
 	boost::optional<std::string> logdomains;
 	/// True if --multiplayer was given on the command line. Goes directly into multiplayer mode.
 	bool multiplayer;
+	/// Non-empty if --ai-config was given on the command line. Vector of pairs (side number, value). Dependant on --multiplayer.
+	boost::optional<std::vector<std::pair<int, std::string> > > multiplayer_ai_config;
+	/// Non-empty if --algorithm was given on the command line. Vector of pairs (side number, value). Dependant on --multiplayer.
+	boost::optional<std::vector<std::pair<int, std::string> > > multiplayer_algorithm;
+	/// Non-empty if --controller was given on the command line. Vector of pairs (side number, controller). Dependant on --multiplayer.
+	boost::optional<std::vector<std::pair<int, std::string> > > multiplayer_controller;
+	/// Non-empty if --era was given on the command line. Dependant on --multiplayer.
+	boost::optional<std::string> multiplayer_era;
+	/// Non-empty if --label was given on the command line. Dependant on --multiplayer.
+	boost::optional<std::string> multiplayer_label;
+	/// Non-empty if --parm was given on the command line. Vector of pairs (side number, (parm name, parm value)). Dependant on --multiplayer.
+	boost::optional<std::vector<std::pair<int, std::pair<std::string, std::string> > > > multiplayer_parm;
+	/// Non-empty if --side was given on the command line. Vector of pairs (side number, faction id). Dependant on --multiplayer.
+	boost::optional<std::vector<std::pair<int, std::string> > > multiplayer_side;
+	/// Non-empty if --turns was given on the command line. Dependant on --multiplayer.
+	boost::optional<std::string> multiplayer_turns;
 	/// Max FPS specified by --max-fps option.
 	boost::optional<int> max_fps;
 	/// True if --nocache was given on the command line. Disables cache usage.
