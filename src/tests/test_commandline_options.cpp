@@ -97,6 +97,7 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	const char *argv[] =
 	{
 		"wesnoth",
+		"--campaign",
 		"--editor",
 		"--logdomains",
 		"--preprocess-output-macros",
@@ -107,7 +108,7 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	commandline_options co(argc,const_cast<char**>(argv));
 
 	BOOST_CHECK(!co.bpp);
-	BOOST_CHECK(!co.campaign);
+	BOOST_CHECK(co.campaign && co.campaign->empty());
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
 	BOOST_CHECK(!co.clock);
@@ -180,6 +181,9 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--ai-config=1:aifoo",
 		"--ai-config=2:aibar",
 		"--bpp=32",
+		"--campaign=campfoo",
+		"--campaign-difficulty=16",
+		"--campaign-scenario=scenfoo",
 		"--clock",
 		"--config-dir=configdirfoo",
 		"--config-path",
@@ -236,9 +240,9 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	commandline_options co(argc,const_cast<char**>(argv));
 
 	BOOST_CHECK(co.bpp && *co.bpp == 32);
-	BOOST_CHECK(!co.campaign);
-	BOOST_CHECK(!co.campaign_difficulty);
-	BOOST_CHECK(!co.campaign_scenario);
+	BOOST_CHECK(co.campaign && *co.campaign == "campfoo");
+	BOOST_CHECK(co.campaign_difficulty && *co.campaign_difficulty == 16);
+	BOOST_CHECK(co.campaign_scenario && *co.campaign_scenario == "scenfoo");
 	BOOST_CHECK(co.clock);
 	BOOST_CHECK(co.config_path);
 	BOOST_CHECK(co.config_dir && *co.config_dir == "configdirfoo");

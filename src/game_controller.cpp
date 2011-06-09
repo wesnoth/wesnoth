@@ -119,6 +119,23 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 
 	if (cmdline_opts_.bpp)
 		force_bpp_ = *cmdline_opts_.bpp;
+	if (cmdline_opts_.campaign)
+	{
+		jump_to_campaign_.jump_ = true;
+		jump_to_campaign_.campaign_id_ = *cmdline_opts_.campaign;
+		std::cerr<<"selected campaign id: ["<<jump_to_campaign_.campaign_id_<<"]\n";
+		if (cmdline_opts_.campaign_difficulty)
+			jump_to_campaign_.difficulty_ = *cmdline_opts_.campaign_difficulty;
+		else
+			jump_to_campaign_.difficulty_ = 1; // it's the default
+		std::cerr<<"selected difficulty: ["<<jump_to_campaign_.difficulty_<<"]\n";
+
+		if (cmdline_opts_.campaign_scenario)
+		{
+			jump_to_campaign_.scenario_id_ = *cmdline_opts_.campaign_scenario;
+			std::cerr<<"selected scenario id: ["<<jump_to_campaign_.scenario_id_<<"]\n";
+		}
+	}
 	if (cmdline_opts_.clock)
 		gui2::show_debug_clock_button = true;
 	if (cmdline_opts_.debug) {
@@ -253,42 +270,6 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 	if (cmdline_opts_.with_replay)
 		game::load_game_exception::show_replay = true;
 
-	for(arg_ = 1; arg_ != argc_; ++arg_) {
-		const std::string val(argv_[arg_]);
-		if(val.empty()) {
-			continue;
-		}
-		else if(val.find("--campaign") == 0 || val.find("-c") == 0) {
-			// campaign starting template:
-			// -c[[<difficulty>] <id_campaign> [<id_scenario>]]
-			// --campaign[[<difficulty>] <id_campaign> [<id_scenario>]]
-			jump_to_campaign_.jump_ = true;
-
-			// we don't know if the next argument is from --campaign
-			// or for setting the data directory, so we assume is the latter
-			if (arg_ + 2 < argc_ && argv_[arg_+1][0] != '-')
-			{
-				// we parse difficulty only here, since a campaign is supplied from command line
-				if (isdigit(val[val.size()-1]))
-					jump_to_campaign_.difficulty_ = lexical_cast<int>(val[val.size()-1]);
-
-				++arg_;
-				jump_to_campaign_.campaign_id_ = std::string(argv_[arg_]);
-				std::cerr<<"selected campaign id: ["<<jump_to_campaign_.campaign_id_
-					<<"] | difficulty: ["<<jump_to_campaign_.difficulty_<<"]\n";
-			}
-
-			if (arg_ + 2 < argc_ && argv_[arg_+1][0] != '-')
-			{
-				++arg_;
-				jump_to_campaign_.scenario_id_ = std::string(argv_[arg_]);
-				std::cerr<<"selected scenario id: ["<<jump_to_campaign_.scenario_id_<<"]\n";
-			}
-		} else if(val[0] == '-') {
-			std::cerr << "unknown option: " << val << std::endl;
-			//throw config::error("unknown option"); TODO will be unnecessary here once commandline_options is completed
-		}
-	}
 	std::cerr << '\n';
 	std::cerr << "Data directory: " << game_config::path
 		<< "\nUser configuration directory: " << get_user_config_dir()

@@ -141,6 +141,9 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 
 	po::options_description campaign_opts("Campaign options");
 	campaign_opts.add_options()
+		("campaign,c", po::value<std::string>()->implicit_value(std::string()), "goes directly to the campaign with id <arg>. A selection menu will appear if no id was specified")
+		("campaign-difficulty", po::value<int>(), "the difficulty of the specified campaign (1 to max - default is 1)")
+		("campaign-scenario", po::value<std::string>(),"the id of the scenario from the specified campaign")
 		;
 
 	po::options_description display_opts("Display options");
@@ -206,6 +209,12 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		multiplayer_ai_config = parse_to_int_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
 	if (vm.count("bpp"))
 		bpp = vm["bpp"].as<int>();
+	if (vm.count("campaign"))
+		campaign = vm["campaign"].as<std::string>();
+	if (vm.count("campaign-difficulty"))
+		campaign_difficulty = vm["campaign-difficulty"].as<int>();
+	if (vm.count("campaign-scenario"))
+		campaign_scenario = vm["campaign-scenario"].as<std::string>();
 	if (vm.count("clock"))
 		clock = true;
 	if (vm.count("config-dir"))
