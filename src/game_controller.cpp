@@ -66,10 +66,7 @@ static bool less_campaigns_rank(const config &a, const config &b) {
 	return a["rank"].to_int(1000) < b["rank"].to_int(1000);
 }
 
-game_controller::game_controller(int argc, char** argv, const commandline_options& cmdline_opts) :
-	argc_(argc),
-	arg_(1),
-	argv_(argv),
+game_controller::game_controller(const char *appname, const commandline_options& cmdline_opts) :
 	cmdline_opts_(cmdline_opts),
 	thread_manager(),
 	font_manager_(),
@@ -114,7 +111,7 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		font_manager_.update_font_path();
 	}
 
-	const std::string app_basename = file_name(argv[0]);
+	const std::string app_basename = file_name(appname);
 	jump_to_editor_ = app_basename.find("editor") != std::string::npos;
 
 	if (cmdline_opts_.bpp)
@@ -167,7 +164,7 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 	if (cmdline_opts_.max_fps) {
 		int fps;
 		//FIXME: remove the next line once the weird util.cpp specialized template lexical_cast_default() linking issue is solved
-		fps = lexical_cast_default<int>(argv_[arg_], 50);
+		fps = lexical_cast_default<int>("", 50);
 		fps = *cmdline_opts_.max_fps;
 		fps = std::min<int>(fps, 1000);
 		fps = std::max<int>(fps, 1);

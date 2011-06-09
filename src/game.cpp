@@ -419,7 +419,7 @@ static int do_gameloop(int argc, char** argv)
 	if (game_config::new_syntax)
 		game = boost::shared_ptr<game_controller_abstract>(new game_controller_new());
 	else
-		game = boost::shared_ptr<game_controller_abstract>(new game_controller(argc,argv,cmdline_opts));
+		game = boost::shared_ptr<game_controller_abstract>(new game_controller(argv[0],cmdline_opts));
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
