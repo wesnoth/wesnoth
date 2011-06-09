@@ -123,6 +123,20 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		preferences::set_show_fps(true);
 	if (cmdline_opts_.load)
 		game::load_game_exception::game = *cmdline_opts_.load;
+	if (cmdline_opts_.max_fps) {
+		int fps;
+		//FIXME: remove the next line once the weird util.cpp specialized template lexical_cast_default() linking issue is solved
+		fps = lexical_cast_default<int>(argv_[arg_], 50);
+		fps = *cmdline_opts_.max_fps;
+		fps = std::min<int>(fps, 1000);
+		fps = std::max<int>(fps, 1);
+		fps = 1000 / fps;
+		// increase the delay to avoid going above the maximum
+		if(1000 % fps != 0) {
+			++fps;
+		}
+		preferences::set_draw_delay(fps);
+	} 
 	if (cmdline_opts_.new_storyscreens)
 		// This is a hidden option to help testing
 		// the work-in-progress new storyscreen code.
@@ -142,20 +156,7 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		if(val.empty()) {
 			continue;
 		}
-		else if(val == "--max-fps") {
-			if(arg_+1 != argc_) {
-				++arg_;
-				int fps = lexical_cast_default<int>(argv_[arg_], 50);
-				fps = std::min<int>(fps, 1000);
-				fps = std::max<int>(fps, 1);
-				fps = 1000 / fps;
-				// increase the delay to avoid going above the maximum
-				if(1000 % fps != 0) {
-					++fps;
-				}
-				preferences::set_draw_delay(fps);
-			}
-		} else if(val == "--resolution" || val == "-r") {
+		else if(val == "--resolution" || val == "-r") {
 			if(arg_+1 != argc_) {
 				++arg_;
 				const std::string val(argv_[arg_]);
