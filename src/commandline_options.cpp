@@ -172,11 +172,20 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("preprocess-output-macros", po::value<std::string>()->implicit_value(std::string()), "used only by the '--preprocess' command. Will output all preprocessed macros in the target file <arg>. If the file is not specified the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.")
 		;
 
+	po::options_description proxy_opts("Proxy options");
+	proxy_opts.add_options()
+		("proxy", "enables usage of proxy for network connections.")
+		("proxy-address", po::value<std::string>(), "specifies address of the proxy.")
+		("proxy-port", po::value<std::string>(), "specifies port of the proxy.")
+		("proxy-user", po::value<std::string>(), "specifies username to log in to the proxy.")
+		("proxy-password", po::value<std::string>(), "specifies password to log in to the proxy.")
+		;
+
 	hidden_.add_options()
 		("new-storyscreens", "")
 		("smallgui", "")
 		;
-	visible_.add(general_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(preprocessor_opts);
+	visible_.add(general_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(preprocessor_opts).add(proxy_opts);
 	
 	all_.add(visible_).add(hidden_);
 
@@ -263,6 +272,16 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		preprocess_input_macros = vm["preprocess-input-macros"].as<std::string>();
 	if (vm.count("preprocess-output-macros"))
 		preprocess_output_macros = vm["preprocess-output-macros"].as<std::string>();
+	if (vm.count("proxy"))
+		proxy = true;
+	if (vm.count("proxy-address"))
+		proxy_address = vm["proxy-address"].as<std::string>();
+	if (vm.count("proxy-password"))
+		proxy_password = vm["proxy-password"].as<std::string>();
+	if (vm.count("proxy-port"))
+		proxy_port = vm["proxy-port"].as<std::string>();
+	if (vm.count("proxy-user"))
+		proxy_user = vm["proxy-user"].as<std::string>();
 	if (vm.count("resolution"))
 		parse_resolution_(vm["resolution"].as<std::string>());
 	if (vm.count("rng-seed"))

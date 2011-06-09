@@ -177,6 +177,31 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		no_music = true;
 	if (cmdline_opts_.nosound)
 		no_sound = true;
+	//These commented lines should be used to implement support of connection
+	//through a proxy via command line options.
+	//The ANA network module should implement these methods (while the SDL_net won't.)
+	if (cmdline_opts_.proxy)
+		network::enable_connection_through_proxy();
+	if (cmdline_opts_.proxy_address)
+	{
+		network::enable_connection_through_proxy();
+		network::set_proxy_address(*cmdline_opts_.proxy_address);
+	}
+	if (cmdline_opts_.proxy_password)
+	{
+		network::enable_connection_through_proxy();
+		network::set_proxy_password(*cmdline_opts_.proxy_password);
+	}
+	if (cmdline_opts_.proxy_port)
+	{
+		network::enable_connection_through_proxy();
+		network::set_proxy_port(*cmdline_opts_.proxy_port);
+	}
+	if (cmdline_opts_.proxy_user)
+	{
+		network::enable_connection_through_proxy();
+		network::set_proxy_user(*cmdline_opts_.proxy_user);
+	}
 	if (cmdline_opts_.resolution) {
 		const int xres = cmdline_opts_.resolution->get<0>();
 		const int yres = cmdline_opts_.resolution->get<1>();
@@ -253,45 +278,7 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 				jump_to_campaign_.scenario_id_ = std::string(argv_[arg_]);
 				std::cerr<<"selected scenario id: ["<<jump_to_campaign_.scenario_id_<<"]\n";
 			}
-		} //These commented lines should be used to implement support of connection
-            //through a proxy via command line options.
-            //The ANA network module should implement these methods (while the SDL_net won't.)
-        else if(val == "--proxy") {
-            network::enable_connection_through_proxy();
-        } else if(val == "--proxy-address") {
-            if ( argv_[ arg_ + 1][0] != '-')
-            {
-                network::enable_connection_through_proxy();
-                network::set_proxy_address( argv_[ ++arg_ ] );
-            }
-            else
-                throw std::runtime_error("Proxy address option requires address");
-
-        } else if(val == "--proxy-port") {
-            if ( argv_[ arg_ + 1][0] != '-')
-            {
-                network::enable_connection_through_proxy();
-                network::set_proxy_port( argv_[ ++arg_ ] );
-            }
-            else
-                throw std::runtime_error("Proxy port option requires port");
-        } else if(val == "--proxy-user") {
-            if ( argv_[ arg_ + 1][0] != '-')
-            {
-                network::enable_connection_through_proxy();
-                network::set_proxy_user( argv_[ ++arg_ ] );
-            }
-            else
-                throw std::runtime_error("Proxy user option requires user name");
-        } else if(val == "--proxy-password") {
-            if ( argv_[ arg_ + 1][0] != '-')
-            {
-                network::enable_connection_through_proxy();
-                network::set_proxy_password( argv_[ ++arg_ ] );
-            }
-            else
-                throw std::runtime_error("Proxy password option requires password");
-        } else if(val == "-e" || val == "--editor") {
+		} else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
 			if(arg_+1 != argc_) {
 				if (argv_[arg_ + 1][0] != '-') {

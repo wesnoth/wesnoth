@@ -214,6 +214,11 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--preprocess-defines=DEFFOO,DEFBAR",
 		"--preprocess-input-macros=inmfoo",
 		"--preprocess-output-macros=outmfoo",
+		"--proxy",
+		"--proxy-address=addressfoo",
+		"--proxy-password=passfoo",
+		"--proxy-port=portfoo",
+		"--proxy-user=userfoo",
 		"--resolution=800x600",
 		"--rng-seed=1234",
 		"--screenshot", "mapfoo", "outssfoo",
@@ -287,11 +292,11 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.preprocess_defines->at(0) == "DEFFOO" && co.preprocess_defines->at(1) == "DEFBAR");
 	BOOST_CHECK(co.preprocess_input_macros && *co.preprocess_input_macros == "inmfoo");
 	BOOST_CHECK(co.preprocess_output_macros && *co.preprocess_output_macros == "outmfoo");
-	BOOST_CHECK(!co.proxy);
-	BOOST_CHECK(!co.proxy_address);
-	BOOST_CHECK(!co.proxy_password);
-	BOOST_CHECK(!co.proxy_port);
-	BOOST_CHECK(!co.proxy_user);
+	BOOST_CHECK(co.proxy);
+	BOOST_CHECK(co.proxy_address && *co.proxy_address == "addressfoo");
+	BOOST_CHECK(co.proxy_password && *co.proxy_password == "passfoo");
+	BOOST_CHECK(co.proxy_port && *co.proxy_port == "portfoo");
+	BOOST_CHECK(co.proxy_user && *co.proxy_user == "userfoo");
 	BOOST_CHECK(co.resolution);
 	BOOST_CHECK(co.resolution->get<0>() == 800 && co.resolution->get<1>() == 600);
 	BOOST_CHECK(co.rng_seed && *co.rng_seed == 1234);
