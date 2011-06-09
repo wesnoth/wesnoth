@@ -512,6 +512,16 @@ bool game_controller::play_multiplayer_mode()
 		game_config::exit_at_end = true;
 	if (cmdline_opts_.multiplayer_label)
 		label = *cmdline_opts_.multiplayer_label;
+	if (cmdline_opts_.multiplayer_parm)
+	{
+		for(std::vector<boost::tuple<unsigned int, std::string, std::string> >::const_iterator it=cmdline_opts_.multiplayer_parm->begin(); it!=cmdline_opts_.multiplayer_parm->end(); ++it)
+		{
+			const unsigned int side = it->get<0>();
+			const std::string param_name = it->get<1>();
+			const std::string param_value = it->get<2>();
+			side_parameters[side][param_name] = param_value;
+		}
+	}
 	if (cmdline_opts_.multiplayer_scenario)
 		scenario = *cmdline_opts_.multiplayer_scenario;
 	if (cmdline_opts_.multiplayer_side)
@@ -530,40 +540,6 @@ bool game_controller::play_multiplayer_mode()
 	}
 	if (cmdline_opts_.multiplayer_turns)
 		turns = *cmdline_opts_.multiplayer_turns;
-
-	for(++arg_; arg_ < argc_; ++arg_) {
-		const std::string val(argv_[arg_]);
-		if(val.empty()) {
-			continue;
-		}
-
-		std::vector<std::string> name_value = utils::split(val, '=');
-		if(name_value.size() > 2) {
-			std::cerr << "invalid argument '" << val << "'\n";
-			return false;
-		} else if(name_value.size() == 2) {
-			const std::string name = name_value.front();
-			const std::string value = name_value.back();
-
-			const std::string name_head = name.substr(0,name.size()-1);
-			const char name_tail = name[name.size()-1];
-			const bool last_digit = isdigit(name_tail) ? true:false;
-			const size_t side = name_tail - '0';
-
-			if(last_digit && name_head == "--parm") {
-				const std::vector<std::string> name_value = utils::split(value, ':');
-				if(name_value.size() != 2) {
-					std::cerr << "argument to '" << name << "' must be in the format name:value\n";
-					return false;
-				}
-
-				side_parameters[side][name_value.front()] = name_value.back();
-			} else {
-				std::cerr << "unrecognized option: '" << name << "'\n";
-				return false;
-			}
-		}
-	}
 
 	const config &lvl = game_config().find_child("multiplayer", "id", scenario);
 	if (!lvl) {

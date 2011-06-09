@@ -226,6 +226,8 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--nomusic",
 		"--nosound",
 		"--nogui",
+		"--parm=7:parmfoo:valfoo",
+		"--parm=8:parmbar:valbar",
 		"--path",
 		"--preprocess", "preppathfoo", "preptargfoo",
 		"--preprocess-defines=DEFFOO,DEFBAR",
@@ -240,8 +242,8 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--rng-seed=1234",
 		"--scenario=scenfoo",
 		"--screenshot", "mapfoo", "outssfoo",
-		"--side=1:sidefoo",
-		"--side=2:sidebar",
+		"--side=9:sidefoo",
+		"--side=10:sidebar",
 		"--server=servfoo",
 		"--smallgui",
 		"--test=testfoo",
@@ -299,12 +301,14 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.multiplayer_era && *co.multiplayer_era == "erafoo");
 	BOOST_CHECK(co.multiplayer_exit_at_end);
 	BOOST_CHECK(co.multiplayer_label && *co.multiplayer_label == "labelfoo");
-	BOOST_CHECK(!co.multiplayer_parm);
+	BOOST_CHECK(co.multiplayer_parm);
+	BOOST_CHECK(co.multiplayer_parm->at(0).get<0>() == 7 && co.multiplayer_parm->at(0).get<1>() == "parmfoo" && co.multiplayer_parm->at(0).get<2>() == "valfoo");
+	BOOST_CHECK(co.multiplayer_parm->at(1).get<0>() == 8 && co.multiplayer_parm->at(1).get<1>() == "parmbar" && co.multiplayer_parm->at(1).get<2>() == "valbar");
 	BOOST_CHECK(co.multiplayer_scenario && *co.multiplayer_scenario == "scenfoo");
 	BOOST_CHECK(co.multiplayer_side);
 	BOOST_CHECK(co.multiplayer_side->size() == 2);
-	BOOST_CHECK(co.multiplayer_side->at(0).get<0>() == 1 && co.multiplayer_side->at(0).get<1>() == "sidefoo");
-	BOOST_CHECK(co.multiplayer_side->at(1).get<0>() == 2 && co.multiplayer_side->at(1).get<1>() == "sidebar");
+	BOOST_CHECK(co.multiplayer_side->at(0).get<0>() == 9 && co.multiplayer_side->at(0).get<1>() == "sidefoo");
+	BOOST_CHECK(co.multiplayer_side->at(1).get<0>() == 10 && co.multiplayer_side->at(1).get<1>() == "sidebar");
 	BOOST_CHECK(co.multiplayer_turns && *co.multiplayer_turns == "42");
 	BOOST_CHECK(co.max_fps && *co.max_fps == 100);
 	BOOST_CHECK(co.nocache);
