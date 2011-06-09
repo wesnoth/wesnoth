@@ -464,6 +464,11 @@ bool game_controller::play_multiplayer_mode()
 
 	size_t sides_counted = 0;
 
+	if (cmdline_opts_.multiplayer_exit_at_end)
+		game_config::exit_at_end = true;
+	if (cmdline_opts_.multiplayer_turns)
+		turns = *cmdline_opts_.multiplayer_turns;
+
 	for(++arg_; arg_ < argc_; ++arg_) {
 		const std::string val(argv_[arg_]);
 		if(val.empty()) {
@@ -490,8 +495,6 @@ bool game_controller::play_multiplayer_mode()
 
 			if(name == "--scenario") {
 				scenario = value;
-			} else if(name == "--turns") {
-				turns = value;
 			} else if(name == "--era") {
 				era = value;
 			} else if(name == "--label") {
@@ -515,10 +518,6 @@ bool game_controller::play_multiplayer_mode()
 			} else {
 				std::cerr << "unrecognized option: '" << name << "'\n";
 				return false;
-			}
-		} else {
-			if (val == "--exit-at-end") {
-				game_config::exit_at_end = true;
 			}
 		}
 	}

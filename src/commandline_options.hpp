@@ -84,10 +84,14 @@ public:
 	boost::optional<std::vector<boost::tuple<int, std::string> > > multiplayer_controller;
 	/// Non-empty if --era was given on the command line. Dependant on --multiplayer.
 	boost::optional<std::string> multiplayer_era;
+	/// True if --exit-at-and was given on the command line. Dependant on --multiplayer.
+	bool multiplayer_exit_at_end;
 	/// Non-empty if --label was given on the command line. Dependant on --multiplayer.
 	boost::optional<std::string> multiplayer_label;
 	/// Non-empty if --parm was given on the command line. Vector of pairs (side number, parm name, parm value). Dependant on --multiplayer.
 	boost::optional<std::vector<boost::tuple<int, std::string, std::string> > > multiplayer_parm;
+	/// Non-empty if --scenario was given on the command line. Dependant on --multiplayer.
+	boost::optional<std::string> multiplayer_scenario;
 	/// Non-empty if --side was given on the command line. Vector of pairs (side number, faction id). Dependant on --multiplayer.
 	boost::optional<std::vector<boost::tuple<int, std::string> > > multiplayer_side;
 	/// Non-empty if --turns was given on the command line. Dependant on --multiplayer.

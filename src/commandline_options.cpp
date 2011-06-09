@@ -63,8 +63,10 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	multiplayer_algorithm(),
 	multiplayer_controller(),
 	multiplayer_era(),
+	multiplayer_exit_at_end(),
 	multiplayer_label(),
 	multiplayer_parm(),
+	multiplayer_scenario(),
 	multiplayer_side(),
 	multiplayer_turns(),
 	max_fps(),
@@ -170,7 +172,9 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	multiplayer_opts.add_options()
 		("multiplayer,m", "Starts a multiplayer game. There are additional options that can be used as explained below:")
 		("ai-config", po::value<std::vector<std::string> >()->composing(), "arg should have format side:value\nselects a configuration file to load for this side.")
+		("exit-at-end", "exit Wesnoth at the end of the scenario.")
 		("nogui", "runs the game without the GUI.")
+		("turns", po::value<std::string>(), "sets the number of turns. The default is \"50\".")
 		;
 
 	po::options_description preprocessor_opts("Preprocessor mode options");
@@ -233,6 +237,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 #endif
 	if (vm.count("editor"))
 		editor = vm["editor"].as<std::string>();
+	if (vm.count("exit-at-end"))
+		multiplayer_exit_at_end = true;
 	if (vm.count("fps"))
 		fps = true;
 	if (vm.count("fullscreen"))
@@ -313,6 +319,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		server = vm["server"].as<std::string>();
 	if (vm.count("test"))
 		test = vm["test"].as<std::string>();
+	if (vm.count("turns"))
+		multiplayer_turns = vm["turns"].as<std::string>();
 	if (vm.count("smallgui"))
 		smallgui = true;
 	if (vm.count("validcache"))

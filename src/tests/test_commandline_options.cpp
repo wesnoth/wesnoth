@@ -53,6 +53,7 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.multiplayer_algorithm);
 	BOOST_CHECK(!co.multiplayer_controller);
 	BOOST_CHECK(!co.multiplayer_era);
+	BOOST_CHECK(!co.multiplayer_exit_at_end);
 	BOOST_CHECK(!co.multiplayer_label);
 	BOOST_CHECK(!co.multiplayer_parm);
 	BOOST_CHECK(!co.multiplayer_side);
@@ -80,6 +81,7 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.proxy_user);
 	BOOST_CHECK(!co.resolution);
 	BOOST_CHECK(!co.rng_seed);
+	BOOST_CHECK(!co.multiplayer_scenario);
 	BOOST_CHECK(!co.server);
 	BOOST_CHECK(!co.screenshot);
 	BOOST_CHECK(!co.screenshot_map_file);
@@ -134,8 +136,10 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.multiplayer_algorithm);
 	BOOST_CHECK(!co.multiplayer_controller);
 	BOOST_CHECK(!co.multiplayer_era);
+	BOOST_CHECK(!co.multiplayer_exit_at_end);
 	BOOST_CHECK(!co.multiplayer_label);
 	BOOST_CHECK(!co.multiplayer_parm);
+	BOOST_CHECK(!co.multiplayer_scenario);
 	BOOST_CHECK(!co.multiplayer_side);
 	BOOST_CHECK(!co.multiplayer_turns);
 	BOOST_CHECK(!co.max_fps);
@@ -194,6 +198,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--debug-dot-level=dlfoo",
 #endif
 		"--editor=editfoo",
+		"--exit-at-end",
 		"--fps",
 		"--fullscreen",
 		"--gunzip=gunzipfoo.gz",
@@ -231,6 +236,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--server=servfoo",
 		"--smallgui",
 		"--test=testfoo",
+		"--turns=42",
 		"--validcache",
 		"--version",
 		"--windowed",
@@ -278,10 +284,12 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(!co.multiplayer_algorithm);
 	BOOST_CHECK(!co.multiplayer_controller);
 	BOOST_CHECK(!co.multiplayer_era);
+	BOOST_CHECK(co.multiplayer_exit_at_end);
 	BOOST_CHECK(!co.multiplayer_label);
 	BOOST_CHECK(!co.multiplayer_parm);
+	BOOST_CHECK(!co.multiplayer_scenario);
 	BOOST_CHECK(!co.multiplayer_side);
-	BOOST_CHECK(!co.multiplayer_turns);
+	BOOST_CHECK(co.multiplayer_turns && *co.multiplayer_turns == "42");
 	BOOST_CHECK(co.max_fps && *co.max_fps == 100);
 	BOOST_CHECK(co.nocache);
 	BOOST_CHECK(co.nodelay);
@@ -354,8 +362,10 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.multiplayer_algorithm);
 	BOOST_CHECK(!co.multiplayer_controller);
 	BOOST_CHECK(!co.multiplayer_era);
+	BOOST_CHECK(!co.multiplayer_exit_at_end);
 	BOOST_CHECK(!co.multiplayer_label);
 	BOOST_CHECK(!co.multiplayer_parm);
+	BOOST_CHECK(!co.multiplayer_scenario);
 	BOOST_CHECK(!co.multiplayer_side);
 	BOOST_CHECK(!co.multiplayer_turns);
 	BOOST_CHECK(!co.max_fps);
