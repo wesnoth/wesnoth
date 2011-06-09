@@ -13,6 +13,7 @@ You'll need to have these libraries and their development headers to build Wesno
  boost_regex >= 1.35.0
  boost_serialization >= 1.35.0
  boost_asio >= 1.35.0
+ boost_program_options >= 1.35.0
  boost_system >= 1.35.0
  boost_thread >= 1.35.0
  libfontconfig >= 2.4.1
@@ -255,6 +256,11 @@ To change build options, you can either pass the options on the commandline:
 or use the ccmake frontend which displays all options with their cached values.
 
  $ ccmake ..
+
+Another possibility is to use a question-based interface, which can be
+more convenient for some cases:
+
+ $ cmake -i ..
 
 Build options:
 
