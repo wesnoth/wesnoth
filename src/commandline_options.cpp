@@ -119,6 +119,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("debug-dot-level", po::value<std::string>(), "sets the level of the debug dot files. <arg> should be a comma separated list of levels. These files are used for debugging the widgets especially the for the layout engine. When enabled the engine will produce dot files which can be converted to images with the dot tool. Available levels: size (generate the size info of the widget), state (generate the state info of the widget).")
 		("debug-dot-domain", po::value<std::string>(), "sets the domain of the debug dot files. <arg> should be a comma separated list of domains. See --debug-dot-level for more info. Available domains: show (generate the data when the dialog is about to be shown), layout (generate the data during the layout phase - might result in multiple files). The data can also be generated when the F12 is pressed in a dialog.")
 #endif
+		("editor,e", po::value<std::string>()->implicit_value(std::string()), "starts the in-game map editor directly. If file <arg> is specified, equivalent to -e --load <arg>.")
 		("gunzip", po::value<std::string>(), "decompresses a file (<arg>.gz) in gzip format and stores it without the .gz suffix. <arg>.gz will be removed.")
 		("gzip", po::value<std::string>(), "compresses a file (<arg>) in gzip format, stores it as <arg>.gz and removes <arg>.")
 		("help,h", "prints this message and exits.")
@@ -137,6 +138,11 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("version,v", "prints the game's version number and exits.")
 		("with-replay", "replays the file loaded with the --load option.")
 		;
+
+	po::options_description campaign_opts("Campaign options");
+	campaign_opts.add_options()
+		;
+
 	po::options_description display_opts("Display options");
 	display_opts.add_options()
 		("bpp", po::value<int>(), "sets BitsPerPixel value. Example: --bpp 32")
@@ -185,7 +191,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("new-storyscreens", "")
 		("smallgui", "")
 		;
-	visible_.add(general_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(preprocessor_opts).add(proxy_opts);
+	visible_.add(general_opts).add(campaign_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(preprocessor_opts).add(proxy_opts);
 	
 	all_.add(visible_).add(hidden_);
 
@@ -216,6 +222,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	if (vm.count("debug-dot-level")
 		debug_dot_domain = vm["debug-dot-level"].as<std::string>();
 #endif
+	if (vm.count("editor"))
+		editor = vm["editor"].as<std::string>();
 	if (vm.count("fps"))
 		fps = true;
 	if (vm.count("fullscreen"))

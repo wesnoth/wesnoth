@@ -135,6 +135,12 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 	if (cmdline_opts_.debug_dot_level)
 		gui2::tdebug_layout_graph::set_level (*cmdline_opts_.debug_dot_level);
 #endif
+	if (cmdline_opts_.editor)
+	{
+		jump_to_editor_ = true;
+		if(!cmdline_opts_.editor->empty())
+			game::load_game_exception::game = *cmdline_opts_.editor;
+	}
 	if (cmdline_opts_.fps)
 		preferences::set_show_fps(true);
 	if (cmdline_opts_.fullscreen)
@@ -277,14 +283,6 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 				++arg_;
 				jump_to_campaign_.scenario_id_ = std::string(argv_[arg_]);
 				std::cerr<<"selected scenario id: ["<<jump_to_campaign_.scenario_id_<<"]\n";
-			}
-		} else if(val == "-e" || val == "--editor") {
-			jump_to_editor_ = true;
-			if(arg_+1 != argc_) {
-				if (argv_[arg_ + 1][0] != '-') {
-					++arg_;
-					game::load_game_exception::game = argv_[arg_];
-				}
 			}
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
