@@ -198,11 +198,13 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--new-syntax",
 		"--new-widgets",
 		"--nocache",
+		"--nogui",
 		"--path",
 		"--preprocess", "preppathfoo", "preptargfoo",
 		"--preprocess-defines=DEFFOO,DEFBAR",
 		"--preprocess-input-macros=inmfoo",
 		"--preprocess-output-macros=outmfoo",
+		"--resolution=800x600",
 		"--rng-seed=1234",
 		"--screenshot", "mapfoo", "outssfoo",
 		"--validcache",
@@ -258,7 +260,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.max_fps && *co.max_fps == 100);
 	BOOST_CHECK(co.nocache);
 	BOOST_CHECK(!co.nodelay);
-	BOOST_CHECK(!co.nogui);
+	BOOST_CHECK(co.nogui);
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
 	BOOST_CHECK(co.new_storyscreens);
@@ -276,7 +278,8 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(!co.proxy_password);
 	BOOST_CHECK(!co.proxy_port);
 	BOOST_CHECK(!co.proxy_user);
-	BOOST_CHECK(!co.resolution);
+	BOOST_CHECK(co.resolution);
+	BOOST_CHECK(co.resolution->get<0>() == 800 && co.resolution->get<1>() == 600);
 	BOOST_CHECK(co.rng_seed && *co.rng_seed == 1234);
 	BOOST_CHECK(!co.server);
 	BOOST_CHECK(co.screenshot && co.screenshot_map_file && co.screenshot_output_file);

@@ -144,7 +144,12 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 			++fps;
 		}
 		preferences::set_draw_delay(fps);
-	} 
+	}
+	if (cmdline_opts_.nogui) {
+		no_gui_ = true;
+		no_sound = true;
+		preferences::disable_preferences_save();
+	}
 	if (cmdline_opts_.multiplayer)
 		multiplayer_mode_ = true;
 	if (cmdline_opts_.new_storyscreens)
@@ -156,6 +161,14 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		gui2::new_widgets = true;
 	if (cmdline_opts_.nocache)
 		cache_.set_use_cache(false);
+	if (cmdline_opts_.resolution) {
+		const int xres = cmdline_opts_.resolution->get<0>();
+		const int yres = cmdline_opts_.resolution->get<1>();
+		if(xres > 0 && yres > 0) {
+			const std::pair<int,int> resolution(xres,yres);
+			preferences::set_resolution(resolution);
+		}
+	}
 	if (cmdline_opts_.screenshot) {
 		//TODO it could be simplified to use cmdline_opts_ directly if there is no other way to enter screenshot mode
 		screenshot_map_ = *cmdline_opts_.screenshot_map_file;
@@ -174,25 +187,6 @@ game_controller::game_controller(int argc, char** argv, const commandline_option
 		const std::string val(argv_[arg_]);
 		if(val.empty()) {
 			continue;
-		}
-		else if(val == "--resolution" || val == "-r") {
-			if(arg_+1 != argc_) {
-				++arg_;
-				const std::string val(argv_[arg_]);
-				const std::vector<std::string> res = utils::split(val, 'x');
-				if(res.size() == 2) {
-					const int xres = lexical_cast_default<int>(res.front());
-					const int yres = lexical_cast_default<int>(res.back());
-					if(xres > 0 && yres > 0) {
-						const std::pair<int,int> resolution(xres,yres);
-						preferences::set_resolution(resolution);
-					}
-				}
-			}
-		} else if(val == "--nogui") {
-			no_gui_ = true;
-			no_sound = true;
-			preferences::disable_preferences_save();
 		}
 		else if(val == "--smallgui") {
 			game_config::small_gui = true;

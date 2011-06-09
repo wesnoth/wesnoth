@@ -160,6 +160,7 @@ public:
 	bool with_replay;
 private:
 	void parse_log_domains_(const std::string &domains_string, const int severity);
+	void parse_resolution_ (const std::string &resolution_string);
 	std::vector<boost::tuple<int,std::string> > parse_to_int_string_tuples_(const std::vector<std::string> &strings);
 	int argc_;
 	char **argv_;

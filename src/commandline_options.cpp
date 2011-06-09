@@ -131,6 +131,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("bpp", po::value<int>(), "sets BitsPerPixel value. Example: --bpp 32")
 		("fps", "displays the number of frames per second the game is currently running at, in a corner of the screen.")
 		("max-fps", po::value<int>(), "the maximum fps the game tries to run at. Values should be between 1 and 1000, the default is 50.")
+		("resolution,r", po::value<std::string>(), "sets the screen resolution. <arg> should have format XxY. Example: --resolution 800x600")
 		;
 
 	po::options_description logging_opts("Logging options");
@@ -146,6 +147,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	multiplayer_opts.add_options()
 		("multiplayer,m", "Starts a multiplayer game. There are additional options that can be used as explained below:")
 		("ai-config", po::value<std::vector<std::string> >()->composing(), "arg should have format side:value\nselects a configuration file to load for this side.")
+		("nogui", "runs the game without the GUI.")
 		;
 
 	po::options_description preprocessor_opts("Preprocessor mode options");
@@ -212,6 +214,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		new_widgets = true;
 	if (vm.count("nocache"))
 		nocache = true;
+	if (vm.count("nogui"))
+		nogui = true;
 	if (vm.count("path"))
 		path = true;
 	if (vm.count("preprocess"))
@@ -226,6 +230,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		preprocess_input_macros = vm["preprocess-input-macros"].as<std::string>();
 	if (vm.count("preprocess-output-macros"))
 		preprocess_output_macros = vm["preprocess-output-macros"].as<std::string>();
+	if (vm.count("resolution"))
+		parse_resolution_(vm["resolution"].as<std::string>());
 	if (vm.count("rng-seed"))
 		rng_seed = vm["rng-seed"].as<unsigned int>();
 	if (vm.count("screenshot"))
@@ -242,25 +248,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		with_replay = true;
 }
 
-std::vector<boost::tuple<int,std::string> > commandline_options::parse_to_int_string_tuples_(const std::vector<std::string> &strings)
-{
-	std::vector<boost::tuple<int,std::string> > vec;
-	boost::tuple<int,std::string> elem;
-	foreach(const std::string &s, strings)
-	{
-		const std::vector<std::string> tokens = utils::split(s, ':');
-		if (tokens.size()!=2)
-		{
-			 //TODO throw meaningful exception
-		}
-		elem.get<0>() = lexical_cast<int>(tokens[0]);
-			//TODO catch exception and pack in meaningful something
-		elem.get<1>() = tokens[1];
-		vec.push_back(elem);
-	}
-	return vec;
-}
-
 void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
 {
 	const std::vector<std::string> domains = utils::split(domains_string, ',');
@@ -270,6 +257,35 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 			log = std::vector<boost::tuple<int, std::string> >();
 		log->push_back(boost::tuple<int, std::string>(severity,domain));
 	}
+}
+
+void commandline_options::parse_resolution_ ( const std::string& resolution_string )
+{
+	const std::vector<std::string> tokens = utils::split(resolution_string, 'x');
+	if (tokens.size() != 2)
+		{} // TODO throw a meaningful exception
+	int xres = lexical_cast<int>(tokens[0]);
+	int yres = lexical_cast<int>(tokens[1]);
+	resolution = boost::tuple<int,int>(xres,yres);
+}
+
+std::vector<boost::tuple<int,std::string> > commandline_options::parse_to_int_string_tuples_(const std::vector<std::string> &strings)
+{
+	std::vector<boost::tuple<int,std::string> > vec;
+	boost::tuple<int,std::string> elem;
+	foreach(const std::string &s, strings)
+	{
+		const std::vector<std::string> tokens = utils::split(s, ':');
+		if (tokens.size()!=2)
+		{
+			 //TODO throw a meaningful exception
+		}
+		elem.get<0>() = lexical_cast<int>(tokens[0]);
+			//TODO catch exception and pack in meaningful something
+		elem.get<1>() = tokens[1];
+		vec.push_back(elem);
+	}
+	return vec;
 }
 
 std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_opts)
