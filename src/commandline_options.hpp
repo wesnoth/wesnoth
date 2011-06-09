@@ -25,6 +25,7 @@
 
 class commandline_options
 {
+friend std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_opts);
 public:
 	commandline_options(int argc, char **argv);
 
@@ -62,6 +63,8 @@ public:
 	boost::optional<std::string> gunzip;
 	/// Non-empty if --gzip was given on the command line. Compresses a file to .gz and exits.
 	boost::optional<std::string> gzip;
+	/// True if --help was given on the command line. Prints help and exits.
+	bool help;
 	/// Contains parsed arguments of --log-* (e.g. --log-debug).
 	/// Vector of pairs (severity, log domain).
 	boost::optional<std::vector<std::pair<int, std::string> > > log;
@@ -138,6 +141,11 @@ public:
 	/// True if --with-replay was given on the command line. Shows replay of the loaded file.
 	bool with_replay;
 private:
+	int argc_;
+	char **argv_;
+	boost::program_options::options_description all_;
+	boost::program_options::options_description visible_;
+	boost::program_options::options_description hidden_;
 };
 
 #endif

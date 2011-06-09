@@ -20,6 +20,7 @@
 
 #include "about.hpp"
 #include "addon/manager.hpp"
+#include "commandline_options.hpp"
 //#include "ai/configuration.hpp"
 //#include "config.hpp"
 //#include "config_cache.hpp"
@@ -161,10 +162,13 @@ public:
 };
 
 /** Process commandline-arguments */
-static int process_command_args(int argc, char** argv) {
+static int process_command_args(int argc, char** argv, const commandline_options& cmdline_opts) {
 	const std::string program = argv[0];
 	game_config::wesnoth_program_dir = directory_name(program);
 	preprocess_options preproc;
+
+	if (cmdline_opts.new_syntax)
+		game_config::new_syntax = true;
 
 	//parse arguments that shouldn't require a display device
 	int arg;
@@ -174,7 +178,7 @@ static int process_command_args(int argc, char** argv) {
 			continue;
 		}
 
-		if(val == "--help" || val == "-h") {
+		if(cmdline_opts.help) {
 			// When adding items don't forget to update doc/man/wesnoth.6
 			// Options are sorted alphabetically by --long-option.
 			// Please keep the output to 80 chars per line.
@@ -318,8 +322,6 @@ static int process_command_args(int argc, char** argv) {
 			std::cout << "Battle for Wesnoth" << " " << game_config::version
 			          << "\n";
 			return 0;
-		} else if (val == "--new-syntax") {
-			game_config::new_syntax = true;
 		} else if (val == "--config-path") {
 			std::cout << get_user_data_dir() << '\n';
 			return 0;
@@ -614,7 +616,8 @@ static int do_gameloop(int argc, char** argv)
 {
 	srand(time(NULL));
 
-	int finished = process_command_args(argc, argv);
+	commandline_options cmdline_opts = commandline_options(argc,argv);
+	int finished = process_command_args(argc, argv,cmdline_opts);
 	if(finished != -1) {
 		return finished;
 	}
@@ -626,7 +629,7 @@ static int do_gameloop(int argc, char** argv)
 	if (game_config::new_syntax)
 		game = boost::shared_ptr<game_controller_abstract>(new game_controller_new());
 	else
-		game = boost::shared_ptr<game_controller_abstract>(new game_controller(argc,argv));
+		game = boost::shared_ptr<game_controller_abstract>(new game_controller(argc,argv,cmdline_opts));
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();

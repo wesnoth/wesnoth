@@ -70,6 +70,7 @@ else(MSVC)
 		${SDL_LIBRARY}
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
+		${Boost_PROGRAM_OPTIONS_LIBRARY}
 	)
 endif(MSVC)
 

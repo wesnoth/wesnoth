@@ -17,6 +17,7 @@
 
 #include "game_controller_abstract.hpp"
 
+#include "commandline_options.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "gamestatus.hpp"
@@ -45,7 +46,7 @@ public:
 class game_controller : public game_controller_abstract
 {
 public:
-	game_controller(int argc, char** argv);
+	game_controller(int argc, char** argv, const commandline_options& cmdline_opts);
 	~game_controller();
 
 	bool init_config() { return init_config(false); }
@@ -96,6 +97,7 @@ private:
 	const int argc_;
 	int arg_;
 	const char* const * const argv_;
+	const commandline_options& cmdline_opts_;
 
 	//this should get destroyed *after* the video, since we want
 	//to clean up threads after the display disappears.

@@ -66,10 +66,11 @@ static bool less_campaigns_rank(const config &a, const config &b) {
 	return a["rank"].to_int(1000) < b["rank"].to_int(1000);
 }
 
-game_controller::game_controller(int argc, char** argv) :
+game_controller::game_controller(int argc, char** argv, const commandline_options& cmdline_opts) :
 	argc_(argc),
 	arg_(1),
 	argv_(argv),
+	cmdline_opts_(cmdline_opts),
 	thread_manager(),
 	font_manager_(),
 	prefs_manager_(),
@@ -115,16 +116,23 @@ game_controller::game_controller(int argc, char** argv) :
 
 	const std::string app_basename = file_name(argv[0]);
 	jump_to_editor_ = app_basename.find("editor") != std::string::npos;
+	
+	if(cmdline_opts_.fps)
+		preferences::set_show_fps(true);
+	if(cmdline_opts_.new_storyscreens)
+		// This is a hidden option to help testing
+		// the work-in-progress new storyscreen code.
+		// Don't document.
+		set_new_storyscreen(true);
+	if(cmdline_opts_.new_widgets)
+		gui2::new_widgets = true;
 
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
 		const std::string val(argv_[arg_]);
 		if(val.empty()) {
 			continue;
 		}
-
-		if(val == "--fps") {
-			preferences::set_show_fps(true);
-		} else if(val == "--nocache") {
+		else if(val == "--nocache") {
 			cache_.set_use_cache(false);
 		} else if(val == "--max-fps") {
 			if(arg_+1 != argc_) {
@@ -269,15 +277,10 @@ game_controller::game_controller(int argc, char** argv) :
 			no_sound = true;
 		} else if(val == "--nomusic") {
 			no_music = true;
-		} else if(val == "--new-storyscreens") {
-			// This is a hidden option to help testing
-			// the work-in-progress new storyscreen code.
-			// Don't document.
-			set_new_storyscreen(true);
-        }  //These commented lines should be used to implement support of connection
-             //through a proxy via command line options.
-             //The ANA network module should implement these methods (while the SDL_net won't.)
-            else if(val == "--proxy") {
+		}   //These commented lines should be used to implement support of connection
+            //through a proxy via command line options.
+            //The ANA network module should implement these methods (while the SDL_net won't.)
+        else if(val == "--proxy") {
             network::enable_connection_through_proxy();
         } else if(val == "--proxy-address") {
             if ( argv_[ arg_ + 1][0] != '-')
@@ -312,10 +315,7 @@ game_controller::game_controller(int argc, char** argv) :
             }
             else
                 throw std::runtime_error("Proxy password option requires password");
-        } else if(val == "--new-widgets") {
-			// This is a hidden option to enable the new widget toolkit.
-			gui2::new_widgets = true;
-		}
+        }
 		else if(val == "--clock") {
 			gui2::show_debug_clock_button = true;
 		} else if(val == "-e" || val == "--editor") {
@@ -328,7 +328,7 @@ game_controller::game_controller(int argc, char** argv) :
 			}
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
-			throw config::error("unknown option");
+			//throw config::error("unknown option"); TODO will be unnecessary here once commandline_options is completed
 		} else {
 			std::cerr << "Overriding data directory with " << val << std::endl;
 #ifdef _WIN32

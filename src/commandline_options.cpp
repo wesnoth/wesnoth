@@ -15,7 +15,9 @@
 
 #include "commandline_options.hpp"
 
-commandline_options::commandline_options ( int /* argc*/, char** /*argv*/ ) :
+namespace po = boost::program_options;
+
+commandline_options::commandline_options ( int argc, char** argv ) :
 	bpp(),
 	campaign(),
 	campaign_difficulty(),
@@ -34,6 +36,7 @@ commandline_options::commandline_options ( int /* argc*/, char** /*argv*/ ) :
 	fullscreen(false),
 	gunzip(),
 	gzip(),
+	help(),
 	log(),
 	load(),
 	logdomains(),
@@ -70,7 +73,43 @@ commandline_options::commandline_options ( int /* argc*/, char** /*argv*/ ) :
 	validcache(false),
 	version(false),
 	windowed(false),
-	with_replay(false)
+	with_replay(false),
+	argc_(argc),
+	argv_(argv),
+	all_(),
+	visible_(),
+	hidden_()
 {
+	po::options_description general("General options");
+	general.add_options()
+		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
+		("new-syntax", "enables the new campaign syntax parsing.")
+		("help,h", "prints this message and exits.")
+		;
+	
+	hidden_.add_options()
+		("new-widgets", "")
+		("new_storyscreens", "")
+		;
+	
+	visible_.add(general);
+	
+	all_.add(visible_).add(hidden_);
+	
+	po::variables_map vm;
+	po::store(po::parse_command_line(argc_,argv_,all_),vm);
 
+	if (vm.count("help"))
+		help = true;
+	if (vm.count("new-widgets"))
+		new_widgets = true;
+	if (vm.count("new-storyscreens"))
+		new_storyscreens = true;
+}
+
+std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_opts)
+{
+	os << "Usage:\n";
+	os << cmdline_opts.visible_;
+	return os;
 }
