@@ -17,7 +17,8 @@
 
 #include "game_display.hpp"
 
-game_controller_abstract::game_controller_abstract() :
+game_controller_abstract::game_controller_abstract(const commandline_options &cmdline_opts) :
+	cmdline_opts_(cmdline_opts),
 	disp_(NULL),
 	video_()
 {

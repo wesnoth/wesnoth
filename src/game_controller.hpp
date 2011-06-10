@@ -46,7 +46,7 @@ public:
 class game_controller : public game_controller_abstract
 {
 public:
-	game_controller(const char* appname, const commandline_options& cmdline_opts);
+	game_controller(const commandline_options& cmdline_opts, const char* appname);
 	~game_controller();
 
 	bool init_config() { return init_config(false); }
@@ -93,8 +93,6 @@ private:
 	void mark_completed_campaigns(std::vector<config>& campaigns);
 	
 	editor::EXIT_STATUS start_editor(const std::string& filename);
-
-	const commandline_options& cmdline_opts_;
 
 	//this should get destroyed *after* the video, since we want
 	//to clean up threads after the display disappears.

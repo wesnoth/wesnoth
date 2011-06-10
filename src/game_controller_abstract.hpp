@@ -14,6 +14,7 @@
 */
 #ifndef GAME_CONTROLLER_ABSTRACT_H_INCLUDED
 #define GAME_CONTROLLER_ABSTRACT_H_INCLUDED
+#include "commandline_options.hpp"
 #include "editor/editor_main.hpp"
 #include "scoped_resource.hpp"
 #include "video.hpp"
@@ -25,7 +26,7 @@ class game_display;
 class game_controller_abstract
 {
 public:
-	game_controller_abstract();
+	game_controller_abstract(const commandline_options &cmdline_opts);
 	virtual ~game_controller_abstract() {}
 
 	game_display& disp();
@@ -63,6 +64,8 @@ public:
 
 	virtual const config& game_config() const = 0;
 protected:
+	const commandline_options& cmdline_opts_;
+
 	util::scoped_ptr<game_display> disp_;
 
 	CVideo video_;

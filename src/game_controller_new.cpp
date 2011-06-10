@@ -18,7 +18,8 @@
 
 #include <iostream>
 
-game_controller_new::game_controller_new() :
+game_controller_new::game_controller_new(const commandline_options& cmdline_opts) :
+	game_controller_abstract(cmdline_opts),
 	main_config_()
 {
 }

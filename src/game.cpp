@@ -417,9 +417,9 @@ static int do_gameloop(int argc, char** argv)
 	recorder.set_seed(rand());
 	boost::shared_ptr<game_controller_abstract> game;
 	if (game_config::new_syntax)
-		game = boost::shared_ptr<game_controller_abstract>(new game_controller_new());
+		game = boost::shared_ptr<game_controller_abstract>(new game_controller_new(cmdline_opts));
 	else
-		game = boost::shared_ptr<game_controller_abstract>(new game_controller(argv[0],cmdline_opts));
+		game = boost::shared_ptr<game_controller_abstract>(new game_controller(cmdline_opts,argv[0]));
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();

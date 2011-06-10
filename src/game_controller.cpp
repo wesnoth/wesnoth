@@ -66,8 +66,8 @@ static bool less_campaigns_rank(const config &a, const config &b) {
 	return a["rank"].to_int(1000) < b["rank"].to_int(1000);
 }
 
-game_controller::game_controller(const char *appname, const commandline_options& cmdline_opts) :
-	cmdline_opts_(cmdline_opts),
+game_controller::game_controller(const commandline_options& cmdline_opts, const char *appname) :
+	game_controller_abstract(cmdline_opts),
 	thread_manager(),
 	font_manager_(),
 	prefs_manager_(),

@@ -22,7 +22,7 @@
 class game_controller_new : public game_controller_abstract
 {
 public:
-	game_controller_new();
+	game_controller_new(const commandline_options& cmdline_opts);
 	~game_controller_new();
 
 	bool init_config();
