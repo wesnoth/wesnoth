@@ -26,7 +26,6 @@ public:
 	~game_controller_new();
 
 	bool init_config();
-	bool init_video();
 	bool init_language();
 	bool play_test();
 	bool play_multiplayer_mode();

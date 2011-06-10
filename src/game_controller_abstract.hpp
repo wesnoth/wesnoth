@@ -31,7 +31,7 @@ public:
 
 	game_display& disp();
 
-	virtual bool init_video() = 0;
+	bool init_video();
 	virtual bool init_config() = 0;
 	virtual bool init_language() = 0;
 	virtual bool play_test() = 0;

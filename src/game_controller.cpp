@@ -277,65 +277,6 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	}
 }
 
-bool game_controller::init_video()
-{
-	if(cmdline_opts_.nogui) {
-		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot) ) {
-			std::cerr << "--nogui flag is only valid with --multiplayer flag or --screenshot flag\n";
-			return false;
-		}
-		video_.make_fake();
-		game_config::no_delay = true;
-		return true;
-	}
-
-#if !(defined(__APPLE__))
-	surface icon(image::get_image("game-icon.png", image::UNSCALED));
-	if(icon != NULL) {
-		///must be called after SDL_Init() and before setting video mode
-		::SDL_WM_SetIcon(icon,NULL);
-	}
-#endif
-
-	std::pair<int,int> resolution;
-	int bpp = 0;
-	int video_flags = 0;
-
-	bool found_matching = preferences::detect_video_settings(video_, resolution, bpp, video_flags);
-
-	if (cmdline_opts_.bpp) {
-		bpp = *cmdline_opts_.bpp;
-	} else if (cmdline_opts_.screenshot) {
-		bpp = 32;
-	}
-
-	if(!found_matching) {
-		std::cerr << "Video mode " << resolution.first << 'x'
-			<< resolution.second << 'x' << bpp
-			<< " is not supported.\n";
-
-		if ((video_flags & FULL_SCREEN)) {
-			std::cerr << "Try running the program with the --windowed option "
-				<< "using a " << bpp << "bpp setting for your display adapter.\n";
-		} else {
-			std::cerr << "Try running the program with the --fullscreen option.\n";
-		}
-
-		return false;
-	}
-
-	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
-	const int res = video_.setMode(resolution.first,resolution.second,bpp,video_flags);
-	video_.setBpp(bpp);
-	if(res == 0) {
-		std::cerr << "required video mode, " << resolution.first << "x"
-		          << resolution.second << "x" << bpp << " is not supported\n";
-		return false;
-	}
-
-	return true;
-}
-
 bool game_controller::init_config(const bool force)
 {
 	cache_.clear_defines();

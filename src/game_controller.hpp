@@ -50,7 +50,6 @@ public:
 	~game_controller();
 
 	bool init_config() { return init_config(false); }
-	bool init_video();
 	bool init_language();
 	bool play_test();
 	bool play_multiplayer_mode();
