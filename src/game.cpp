@@ -15,83 +15,30 @@
 
 #include "global.hpp"
 
-//#include "SDL.h"
-//#include "SDL_mixer.h"
-
 #include "about.hpp"
 #include "addon/manager.hpp"
 #include "commandline_options.hpp"
-//#include "ai/configuration.hpp"
-//#include "config.hpp"
-//#include "config_cache.hpp"
-//#include "construct_dialog.hpp"
-//#include "cursor.hpp"
-//#include "dialogs.hpp"
-//#include "editor/editor_main.hpp"
-//#include "foreach.hpp"
-//#include "filesystem.hpp"
-//#include "font.hpp"
-//#include "formula.hpp"
-//#include "game_config.hpp"
 #include "game_controller.hpp"
 #include "game_controller_new.hpp"
-//#include "game_errors.hpp"
-//#include "game_preferences.hpp"
-//#include "gamestatus.hpp"
-//#include "gettext.hpp"
-//#include "gui/dialogs/addon_connect.hpp"
-//#include "gui/dialogs/campaign_selection.hpp"
-//#include "gui/dialogs/language_selection.hpp"
-//#include "gui/dialogs/message.hpp"
-//#include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/title_screen.hpp"
-//#include "gui/dialogs/transient_message.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-//#include "gui/widgets/debug.hpp"
+#include "gui/widgets/debug.hpp"
 #endif
-//#include "gui/auxiliary/event/handler.hpp"
-//#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
-//#include "hotkeys.hpp"
-//#include "intro.hpp"
-//#include "language.hpp"
 #include "loadscreen.hpp"
-//#include "log.hpp"
-//#include "widgets/menu.hpp"
-//#include "marked-up_text.hpp"
-//#include "network.hpp"
 #include "playcampaign.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
-//#include "savegame.hpp"
-//#include "sound.hpp"
 #include "statistics.hpp"
-//#include "wml_exception.hpp"
-//#include "wml_separators.hpp"
-//#include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
-//#include "serialization/preprocessor.hpp"
-//#include "serialization/string_utils.hpp"
-//#include "sha1.hpp"
-//#include "version.hpp"
-
-//#include "wesconfig.h"
 
 #include <cerrno>
 #include <clocale>
-//#include <cmath>
-//#include <cstdlib>
-//#include <ctime>
 #include <fstream>
-//#include <iostream>
-//#include <iterator>
 #include <libintl.h>
-//#include <sstream>
-//#include <string>
 
 #include <boost/iostreams/copy.hpp>
-//#include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 // Minimum stack cookie to prevent stack overflow on AmigaOS4
