@@ -27,6 +27,10 @@
 #include <boost/shared_ptr.hpp>
 
 #include "lua/lualib.h"
+#include "../../scripting/lua_api.hpp"
+#include "config.hpp"
+#include "terrain_filter.hpp"
+#include "resources.hpp"
 
 namespace ai {
 
@@ -99,18 +103,36 @@ template <>
 inline boost::shared_ptr< std::vector<std::string> > lua_object< std::vector<std::string> >::to_type(lua_State *L, int n)
 {
 	boost::shared_ptr< std::vector<std::string> > v = boost::shared_ptr< std::vector<std::string> >(new std::vector<std::string>());
-	int top = lua_gettop(L);
-	
-	while (lua_isnil(L, top)) 
+	int l = lua_objlen(L, n);
+	for (int i = 1; i < l + 1; ++i) 
 	{
-		--top; // Don't take nils from the top of the stack
+		lua_pushinteger(L, i);
+		lua_gettable(L, n);
+		std::string  s = lua_tostring(L, -1);
+		lua_settop(L, n);
+		v->push_back(s);
 	}
 	
-	for (int i = n; i <= top; ++i) 
-	{
-		v->push_back(lua_tostring(L, i));
-	}
 	return v;
+}
+
+template <>
+inline boost::shared_ptr<config> lua_object<config>::to_type(lua_State *L, int n)
+{
+	boost::shared_ptr<config> cfg = boost::shared_ptr<config>(new config());
+	luaW_toconfig(L, n, *cfg);
+	return cfg;
+}
+
+template <>
+inline boost::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua_State *L, int n)
+{
+	// To Crab_: Is this part ok? I tested it, works fine
+	boost::shared_ptr<config> cfg = boost::shared_ptr<config>(new config());
+	boost::shared_ptr<vconfig> vcfg = boost::shared_ptr<vconfig>(new vconfig(*cfg));
+	luaW_tovconfig(L, n, *vcfg);
+	boost::shared_ptr<terrain_filter> tf = boost::shared_ptr<terrain_filter>(new terrain_filter(*vcfg, *resources::units));
+	return tf;
 }
 
 } // end of namespace ai

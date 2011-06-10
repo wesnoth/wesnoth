@@ -377,7 +377,7 @@ static config luaW_checkconfig(lua_State *L, int index)
  * Gets an optional vconfig from either a table or a userdata.
  * @return false in case of failure.
  */
-static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
+bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 {
 	switch (lua_type(L, index))
 	{

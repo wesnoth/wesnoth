@@ -43,9 +43,11 @@
 #include "../../play_controller.hpp"
 #include "../../resources.hpp"
 #include "../../terrain_translation.hpp"
+#include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
 #include "../actions.hpp"
 #include "../composite/engine_lua.hpp"
+#include <lua/llimits.h>
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define LOG_LUA LOG_STREAM(info, log_ai_engine_lua)
@@ -263,10 +265,34 @@ static int cfun_ai_get_attack_depth(lua_State *L)
 	return 1;
 }
 
-//static int cfun_ai_get_avoid(lua_State *L)
-//{
-//	return 1;
-//}
+static int cfun_ai_get_avoid(lua_State *L)
+{
+	std::set<map_location> locs;
+	terrain_filter avoid = get_readonly_context(L).get_avoid();	
+	avoid.get_locations(locs, true); // is it true here?
+	
+	int sz = locs.size();
+	lua_createtable(L, sz, 0); // create a table that we'll use as an array	
+	
+	std::set<map_location>::iterator it = locs.begin();	
+	for (int i = 0; it != locs.end(); ++it, ++i)
+	{
+		lua_pushinteger(L, i + 1); // Index for the map location
+		lua_createtable(L, 2, 0); // Table for a single map location
+		
+		lua_pushstring(L, "x");		
+		lua_pushinteger(L, it->x);		
+		lua_settable(L, -3);
+		
+		lua_pushstring(L, "y");
+		lua_pushinteger(L, it->y);
+		lua_settable(L, -3);		
+		
+		lua_settable(L, -3);
+	}
+	
+	return 1;
+}
 
 static int cfun_ai_get_caution(lua_State *L)
 {
@@ -286,6 +312,13 @@ static int cfun_ai_get_leader_aggression(lua_State *L)
 {
 	double leader_aggression = get_readonly_context(L).get_leader_aggression();
 	lua_pushnumber(L, leader_aggression);
+	return 1;
+}
+
+static int cfun_ai_get_leader_goal(lua_State *L)
+{
+	config goal = get_readonly_context(L).get_leader_goal();
+	luaW_pushconfig(L, goal); 
 	return 1;
 }
 
@@ -402,10 +435,12 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ "attack", 			&cfun_ai_execute_attack			},
 		// Aspects
 		{ "get_aggression", 		&cfun_ai_get_aggression           	},
+		{ "get_avoid", 			&cfun_ai_get_avoid			},
 		{ "get_attack_depth",		&cfun_ai_get_attack_depth		}, // { "get_", &cfun_ai_get_}, little template # TODELETE
 		{ "get_caution", 		&cfun_ai_get_caution			},
 		{ "get_grouping",		&cfun_ai_get_grouping			},
 		{ "get_leader_aggression", 	&cfun_ai_get_leader_aggression		},
+		{ "get_leader_goal", 		&cfun_ai_get_leader_goal		},
 		{ "get_leader_value", 		&cfun_ai_get_leader_value		},
 		{ "get_number_of_possible_recruits_to_force_recruit", &cfun_ai_get_number_of_possible_recruits_to_force_recruit},
 		{ "get_passive_leader", 	&cfun_ai_get_passive_leader		},
