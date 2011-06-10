@@ -52,14 +52,15 @@ Version 1.9.6+svn:
      on windows systems
    * Started using Boost.Program_options for command line parsing (new
      dependency)
-   * --ai_config renamed to --ai-config
-   * --new_storyscreens renamed to --new-storyscreens
-   * --no-delay renamed to --nodelay
-   * --campaign option split into --campaign, --campaign-difficulty and
-     --campaign-scenario
-   * split optional comma-separated defines list from --preprocess= (or -p=)
-     to --preprocess-defines= option
-   * dropped --log alias for --log-error
+   * Commandline syntax changes:
+	 * --ai_config renamed to --ai-config
+     * --new_storyscreens renamed to --new-storyscreens
+     * --no-delay renamed to --nodelay
+     * --campaign option split into --campaign, --campaign-difficulty and
+       --campaign-scenario
+     * split optional comma-separated defines list from --preprocess= (or -p=)
+       to --preprocess-defines= option
+     * dropped --log alias for --log-error
 
 Version 1.9.6:
  * Campaigns:
