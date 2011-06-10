@@ -79,12 +79,8 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	paths_manager_(),
 	test_scenario_("test"),
 	test_mode_(false),
-	multiplayer_mode_(false),
-	no_gui_(false),
-	screenshot_mode_(false),
 	screenshot_map_(),
 	screenshot_filename_(),
-	force_bpp_(-1),
 	game_config_(),
 	old_defines_map_(),
 	state_(),
@@ -114,8 +110,6 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	const std::string app_basename = file_name(appname);
 	jump_to_editor_ = app_basename.find("editor") != std::string::npos;
 
-	if (cmdline_opts_.bpp)
-		force_bpp_ = *cmdline_opts_.bpp;
 	if (cmdline_opts_.campaign)
 	{
 		jump_to_campaign_.jump_ = true;
@@ -176,12 +170,9 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 		preferences::set_draw_delay(fps);
 	}
 	if (cmdline_opts_.nogui) {
-		no_gui_ = true;
 		no_sound = true;
 		preferences::disable_preferences_save();
 	}
-	if (cmdline_opts_.multiplayer)
-		multiplayer_mode_ = true;
 	if (cmdline_opts_.new_storyscreens)
 		// This is a hidden option to help testing
 		// the work-in-progress new storyscreen code.
@@ -235,9 +226,7 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 		screenshot_map_ = *cmdline_opts_.screenshot_map_file;
 		screenshot_filename_ = *cmdline_opts_.screenshot_output_file;
 		no_sound = true;
-		screenshot_mode_ = true;
 		preferences::disable_preferences_save();
-		force_bpp_ = 32;
 	}
 	if (cmdline_opts_.server){
 		jump_to_multiplayer_ = true;
@@ -290,8 +279,8 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 
 bool game_controller::init_video()
 {
-	if(no_gui_) {
-		if( !(multiplayer_mode_ || screenshot_mode_) ) {
+	if(cmdline_opts_.nogui) {
+		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot) ) {
 			std::cerr << "--nogui flag is only valid with --multiplayer flag or --screenshot flag\n";
 			return false;
 		}
@@ -314,8 +303,10 @@ bool game_controller::init_video()
 
 	bool found_matching = preferences::detect_video_settings(video_, resolution, bpp, video_flags);
 
-	if(force_bpp_ > 0) {
-		bpp = force_bpp_;
+	if (cmdline_opts_.bpp) {
+		bpp = *cmdline_opts_.bpp;
+	} else if (cmdline_opts_.screenshot) {
+		bpp = 32;
 	}
 
 	if(!found_matching) {
@@ -350,7 +341,7 @@ bool game_controller::init_config(const bool force)
 	cache_.clear_defines();
 
 	// make sure that multiplayer mode is set if command line parameter is selected
-	if (multiplayer_mode_)
+	if (cmdline_opts_.multiplayer)
 		cache_.add_define("MULTIPLAYER");
 
 	if (test_mode_)
@@ -359,7 +350,7 @@ bool game_controller::init_config(const bool force)
 	if (jump_to_editor_)
 		cache_.add_define("EDITOR");
 
-	if (!multiplayer_mode_ && !test_mode_ && !jump_to_editor_)
+	if (!cmdline_opts_.multiplayer && !test_mode_ && !jump_to_editor_)
 		cache_.add_define("TITLE_SCREEN");
 
 	load_game_cfg(force);
@@ -386,7 +377,7 @@ bool game_controller::init_language()
 
 	::set_language(get_locale());
 
-	if(!no_gui_) {
+	if(!cmdline_opts_.nogui) {
 		std::string wm_title_string = _("The Battle for Wesnoth");
 		wm_title_string += " - " + game_config::revision;
 		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
@@ -430,7 +421,7 @@ bool game_controller::play_test()
 
 bool game_controller::play_screenshot_mode()
 {
-	if(!screenshot_mode_) {
+	if(!cmdline_opts_.screenshot) {
 		return true;
 	}
 
@@ -448,7 +439,7 @@ bool game_controller::play_multiplayer_mode()
 {
 	state_ = game_state();
 
-	if(!multiplayer_mode_) {
+	if(!cmdline_opts_.multiplayer) {
 		return true;
 	}
 
@@ -1167,7 +1158,7 @@ bool game_controller::change_language()
 	dlg.show(disp().video());
 	if (dlg.get_retval() != gui2::twindow::OK) return false;
 
-	if (!no_gui_) {
+	if (!cmdline_opts_.nogui) {
 		std::string wm_title_string = _("The Battle for Wesnoth");
 		wm_title_string += " - " + game_config::revision;
 		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);

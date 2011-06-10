@@ -109,9 +109,8 @@ private:
 
 	std::string test_scenario_;
 
-	bool test_mode_, multiplayer_mode_, no_gui_, screenshot_mode_;
+	bool test_mode_;
 	std::string screenshot_map_, screenshot_filename_;
-	int force_bpp_;
 
 	config game_config_;
 	preproc_map old_defines_map_;
