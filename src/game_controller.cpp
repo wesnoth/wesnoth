@@ -311,24 +311,6 @@ bool game_controller::init_config(const bool force)
 	return true;
 }
 
-bool game_controller::init_language()
-{
-	if(!::load_language_list())
-		return false;
-
-	::set_language(get_locale());
-
-	if(!cmdline_opts_.nogui) {
-		std::string wm_title_string = _("The Battle for Wesnoth");
-		wm_title_string += " - " + game_config::revision;
-		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
-	}
-
-	hotkey::load_descriptions();
-
-	return true;
-}
-
 bool game_controller::play_test()
 {
 	static bool first_time = true;

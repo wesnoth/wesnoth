@@ -33,7 +33,7 @@ public:
 
 	bool init_video();
 	virtual bool init_config() = 0;
-	virtual bool init_language() = 0;
+	bool init_language();
 	virtual bool play_test() = 0;
 	virtual bool play_multiplayer_mode() = 0;
 	virtual bool play_screenshot_mode() = 0;

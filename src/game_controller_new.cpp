@@ -34,11 +34,6 @@ bool game_controller_new::init_config()
 	return true;
 }
 
-bool game_controller_new::init_language()
-{
-	return true;
-}
-
 bool game_controller_new::play_test()
 {
 	return true;

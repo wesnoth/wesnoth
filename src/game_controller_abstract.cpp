@@ -16,6 +16,9 @@
 #include "game_controller_abstract.hpp"
 
 #include "game_display.hpp"
+#include "gettext.hpp"
+#include "hotkeys.hpp"
+#include "language.hpp"
 #include "preferences_display.hpp"
 
 #include <iostream>
@@ -37,6 +40,24 @@ game_display& game_controller_abstract::disp()
 		disp_.assign(game_display::create_dummy_display(video_));
 	}
 	return *disp_.get();
+}
+
+bool game_controller_abstract::init_language()
+{
+	if(!::load_language_list())
+		return false;
+
+	::set_language(get_locale());
+
+	if(!cmdline_opts_.nogui) {
+		std::string wm_title_string = _("The Battle for Wesnoth");
+		wm_title_string += " - " + game_config::revision;
+		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+	}
+
+	hotkey::load_descriptions();
+
+	return true;
 }
 
 bool game_controller_abstract::init_video()
