@@ -29,9 +29,9 @@ public class WesnothProjectsExplorer extends CommonNavigator implements IAdaptab
 	@SuppressWarnings("rawtypes")
 	public Object getAdapter(Class adapter)
 	{
-		if (adapter == IPersistableElement.class) return this;
-		if (adapter == IWorkbenchAdapter.class)
-			return ResourcesPlugin.getWorkspace().getRoot().getAdapter(adapter);
+		if ( adapter.equals( IPersistableElement.class ) ) return this;
+		if ( adapter.equals( IWorkbenchAdapter.class ) )
+			return ResourcesPlugin.getWorkspace().getRoot().getAdapter( adapter );
 		return null;
 	}
 

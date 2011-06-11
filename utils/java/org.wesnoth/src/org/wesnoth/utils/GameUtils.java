@@ -91,10 +91,16 @@ public class GameUtils
 			}
 
 			List<String> args = new ArrayList<String>();
-			args.add("-c"); //$NON-NLS-1$
-			args.add(campaignId);
-			if (scenario == true)
-				args.add(scenarioId);
+
+			// --campaign
+			args.add( "-c" ); //$NON-NLS-1$
+			args.add( campaignId );
+
+			if ( scenario == true ) {
+			    args.add( "--campaign-scenario" ); //$NON-NLS-1$
+				args.add( scenarioId );
+			}
+
 			startGame(args);
 		} catch (Exception e)
 		{

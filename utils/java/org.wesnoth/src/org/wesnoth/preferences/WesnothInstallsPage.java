@@ -518,18 +518,20 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         saveInstall();
 
         // pack back the installs
-        String installs = "";
+        StringBuilder installs = new StringBuilder();
         for ( WesnothInstall install : installs_.values() ) {
             // don't save the default install
-            if ( install.Name.equals("Default") )
+            if ( install.Name.equals( "Default" ) )
                 continue;
 
-            if (installs.isEmpty() == false)
-                installs += ";";
+            if ( installs.length() > 0 )
+                installs.append( ";" );
 
-            installs += install.Name + ":" + install.Version;
+            installs.append( install.Name );
+            installs.append( ":" );
+            installs.append( install.Version );
         }
-        Preferences.getPreferences().setValue(Constants.P_INST_INSTALL_LIST, installs);
+        Preferences.getPreferences().setValue( Constants.P_INST_INSTALL_LIST, installs.toString() );
     }
 
     @Override
@@ -555,7 +557,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         }
     }
 
-    private class TableLabelProvider extends LabelProvider implements ITableLabelProvider {
+    private static class TableLabelProvider extends LabelProvider implements ITableLabelProvider {
         public Image getColumnImage(Object element, int columnIndex) {
             return null;
         }
