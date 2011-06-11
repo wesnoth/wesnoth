@@ -85,9 +85,9 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	state_(),
 	multiplayer_server_(),
 	jump_to_multiplayer_(false),
-	jump_to_campaign_(false,-1,"","")
-	 ,jump_to_editor_(false)
-	,cache_(game_config::config_cache::instance())
+	jump_to_campaign_(false, -1, "", ""),
+	jump_to_editor_(false),
+	cache_(game_config::config_cache::instance())
 {
 	bool no_music = false;
 	bool no_sound = false;
@@ -109,21 +109,21 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	const std::string app_basename = file_name(appname);
 	jump_to_editor_ = app_basename.find("editor") != std::string::npos;
 
-	if (cmdline_opts_.campaign)
-	{
+	if (cmdline_opts_.campaign)	{
 		jump_to_campaign_.jump_ = true;
 		jump_to_campaign_.campaign_id_ = *cmdline_opts_.campaign;
-		std::cerr<<"selected campaign id: ["<<jump_to_campaign_.campaign_id_<<"]\n";
-		if (cmdline_opts_.campaign_difficulty)
-			jump_to_campaign_.difficulty_ = *cmdline_opts_.campaign_difficulty;
-		else
-			jump_to_campaign_.difficulty_ = 1; // it's the default
-		std::cerr<<"selected difficulty: ["<<jump_to_campaign_.difficulty_<<"]\n";
+		std::cerr << "selected campaign id: [" << jump_to_campaign_.campaign_id_ << "]\n";
 
-		if (cmdline_opts_.campaign_scenario)
-		{
+		if (cmdline_opts_.campaign_difficulty) {
+			jump_to_campaign_.difficulty_ = *cmdline_opts_.campaign_difficulty;
+			std::cerr << "selected difficulty: [" << jump_to_campaign_.difficulty_ << "]\n";
+		}
+		else
+			jump_to_campaign_.difficulty_ = -1; // let the user choose the difficulty
+
+		if (cmdline_opts_.campaign_scenario) {
 			jump_to_campaign_.scenario_id_ = *cmdline_opts_.campaign_scenario;
-			std::cerr<<"selected scenario id: ["<<jump_to_campaign_.scenario_id_<<"]\n";
+			std::cerr << "selected scenario id: [" << jump_to_campaign_.scenario_id_ << "]\n";
 		}
 	}
 	if (cmdline_opts_.clock)

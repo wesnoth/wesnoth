@@ -149,9 +149,9 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 
 	po::options_description campaign_opts("Campaign options");
 	campaign_opts.add_options()
-		("campaign,c", po::value<std::string>()->implicit_value(std::string()), "goes directly to the campaign with id <arg>. A selection menu will appear if no id was specified")
-		("campaign-difficulty", po::value<int>(), "the difficulty of the specified campaign (1 to max - default is 1)")
-		("campaign-scenario", po::value<std::string>(),"the id of the scenario from the specified campaign")
+		("campaign,c", po::value<std::string>()->implicit_value(std::string()), "goes directly to the campaign with id <arg>. A selection menu will appear if no id was specified.")
+		("campaign-difficulty", po::value<int>(), "The difficulty of the specified campaign (1 to max). If none specified, the campaign difficulty selection widget will appear.")
+		("campaign-scenario", po::value<std::string>(),"The id of the scenario from the specified campaign. The default is the first scenario.")
 		;
 
 	po::options_description display_opts("Display options");
