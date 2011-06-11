@@ -12,6 +12,9 @@
 				<Option object_output=".objs-release" />
 				<Option type="0" />
 				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
+				</Compiler>
 			</Target>
 			<Target title="Debug">
 				<Option output="..\..\wesnoth-debug" prefix_auto="1" extension_auto="1" />
@@ -25,11 +28,13 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-O3" />
 			<Add option="-Wall" />
 			<Add option="-mthreads" />
 			<Add option="-march=native" />
 			<Add option="-fexceptions" />
+			<Add option="-fdiagnostics-show-option" />
+			<Add option="-Wno-strict-aliasing" />
+			<Add option="-fopenmp" />
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
 			<Add directory="..\..\src" />
@@ -39,6 +44,7 @@
 		</Compiler>
 		<Linker>
 			<Add option="-mthreads" />
+			<Add option="-fopenmp" />
 			<Add library="mingwthrd" />
 			<Add library="mingw32" />
 			<Add library="SDLmain" />
@@ -49,13 +55,8 @@
 			<Add library="SDL_ttf" />
 			<Add library="freetype" />
 			<Add library="intl" />
-			<Add library="python25" />
-			<Add library="png" />
-			<Add library="boost_iostreams_dw2" />
-			<Add library="boost_regex_dw2" />
 			<Add library="z" />
 			<Add library="ws2_32" />
-			<Add library="jpeg" />
 			<Add library="pango-1.0" />
 			<Add library="pangocairo-1.0" />
 			<Add library="cairo" />
@@ -63,6 +64,11 @@
 			<Add library="fontconfig" />
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
+			<Add library="libboost_iostreams" />
+			<Add library="libz" />
+			<Add library="libboost_regex" />
+			<Add library="libboost_program_options" />
+			<Add library="pthread" />
 			<Add directory=".\" />
 		</Linker>
 		<Unit filename="..\..\packaging\windows\wesnoth.rc">

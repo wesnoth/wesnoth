@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
 	<Workspace title="Wesnoth Workspace">
+		<Project filename="liblua.cbp" />
 		<Project filename="wesnoth.cbp" active="1">
 			<Depends filename="liblua.cbp" />
 		</Project>
 		<Project filename="wesnothd.cbp">
 			<Depends filename="liblua.cbp" />
 		</Project>
-		<Project filename="liblua.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>
