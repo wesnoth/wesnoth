@@ -19,6 +19,8 @@
 #include "util.hpp"
 #include "lua/llimits.h"
 
+#include <boost/version.hpp>
+
 namespace po = boost::program_options;
 
 // this class is needed since boost has some templated operators>> declared internally for tuples and we don't want them to interfere. Existence of such operator>> apparently causes program_options to cause the custom class somehow specially... well, the boost::tuple default operator>>  format doesn't suit our needs anyway.
@@ -29,7 +31,11 @@ void validate(boost::any& v, const std::vector<std::string>& values,
 {
     two_strings ret_val;
 	if (values.size() != 2)
+#if BOOST_VERSION >= 104200
 		throw po::validation_error(po::validation_error::invalid_option_value);
+#else
+		throw po::validation_error("Invalid number of strings provided to option requiring exactly two of them.");
+#endif
     ret_val.get<0>() = values.at(0);
     ret_val.get<1>() = values.at(1);
     v = ret_val;
