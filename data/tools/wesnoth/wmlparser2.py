@@ -237,14 +237,14 @@ class Parser:
             tempdirs_to_clean.append(output)
             
         self.temp_dir = output
-        p_option = "-p=" + defines if defines else "-p "
         commandline = [self.wesnoth_exe]
         if self.data_dir:
             commandline += ["--data-dir", self.data_dir]
         if self.config_dir:
             commandline += ["--config-dir", self.config_dir]
-        commandline += [p_option, self.path,
-            output]
+        commandline += ["--preprocess", self.path, output]
+        if defines:
+            commandline += ["--preprocess-defines", defines]
         if self.verbose:
             print(" ".join(commandline))
         p = subprocess.Popen(commandline,
