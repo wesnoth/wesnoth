@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -22,10 +23,10 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.DialogSettings;
-import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.preferences.Preferences;
 
 public class PreprocessorUtils
@@ -129,22 +130,27 @@ public class PreprocessorUtils
 				defines.add("NO_TERRAIN_GFX"); //$NON-NLS-1$
 			}
 
+			// --preprocess
+            arguments.add("-p"); //$NON-NLS-1$
+            arguments.add(filePath);
+            arguments.add(targetDirectory);
+
+            // --preprocess-defines
 			if (defines != null && !defines.isEmpty())
 			{
-				String argument = "-p="; //$NON-NLS-1$
-				for(int i=0;i< defines.size() - 1;i++)
+			    arguments.add( "--preprocess-defines" ); //$NON-NLS-1$
+
+				StringBuilder definesArg = new StringBuilder();
+				for( Iterator<String> itor = defines.iterator(); itor.hasNext(); )
 				{
-					argument += (defines.get(i) + ","); //$NON-NLS-1$
+				    if ( definesArg.length() > 0 )
+				        definesArg.append( "," ); //$NON-NLS-1$
+
+				    definesArg.append( itor.next() );
 				}
-				argument += defines.get(defines.size()-1);
-				arguments.add(argument);
+
+				arguments.add( definesArg.toString() );
 			}
-			else
-			{
-				arguments.add("-p"); //$NON-NLS-1$
-			}
-			arguments.add(filePath);
-			arguments.add(targetDirectory);
 
 			Logger.getInstance().log(Messages.PreprocessorUtils_10 + filePath);
 			ExternalToolInvoker wesnoth = new ExternalToolInvoker(
