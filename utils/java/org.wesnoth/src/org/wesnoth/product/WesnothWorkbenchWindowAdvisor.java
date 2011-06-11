@@ -21,7 +21,7 @@ public class WesnothWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
     @Override
 	public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
-        return new WesnothActionBarAdvisor(configurer);
+        return new WorkbenchActionBuilder(configurer);
     }
 
     @Override

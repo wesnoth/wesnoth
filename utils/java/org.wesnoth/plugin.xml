@@ -783,13 +783,13 @@
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.search.*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ant.*"> </activityPatternBinding>
    </extension>
-   -->
    <extension
          point="org.eclipse.ui.startup">
       <startup
             class="org.wesnoth.product.ActionWiper">
       </startup>
    </extension>
+   -->
    <extension
          point="org.eclipse.core.contenttype.contentTypes">
       <content-type
