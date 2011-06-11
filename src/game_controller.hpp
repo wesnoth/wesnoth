@@ -107,7 +107,6 @@ private:
 
 	std::string test_scenario_;
 
-	bool test_mode_;
 	std::string screenshot_map_, screenshot_filename_;
 
 	config game_config_;

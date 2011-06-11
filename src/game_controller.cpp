@@ -78,7 +78,6 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	resize_monitor_(),
 	paths_manager_(),
 	test_scenario_("test"),
-	test_mode_(false),
 	screenshot_map_(),
 	screenshot_filename_(),
 	game_config_(),
@@ -245,7 +244,6 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 		game_config::small_gui = true;
 	if (cmdline_opts_.test)
 	{
-		test_mode_ = true;
 		if (!cmdline_opts_.test->empty())
 			test_scenario_ = *cmdline_opts_.test;
 	}
@@ -285,13 +283,13 @@ bool game_controller::init_config(const bool force)
 	if (cmdline_opts_.multiplayer)
 		cache_.add_define("MULTIPLAYER");
 
-	if (test_mode_)
+	if (cmdline_opts_.test)
 		cache_.add_define("TEST");
 
 	if (jump_to_editor_)
 		cache_.add_define("EDITOR");
 
-	if (!cmdline_opts_.multiplayer && !test_mode_ && !jump_to_editor_)
+	if (!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_)
 		cache_.add_define("TITLE_SCREEN");
 
 	load_game_cfg(force);
@@ -315,7 +313,7 @@ bool game_controller::play_test()
 {
 	static bool first_time = true;
 
-	if(test_mode_ == false) {
+	if(!cmdline_opts_.test) {
 		return true;
 	}
 	if(!first_time)
@@ -335,7 +333,6 @@ bool game_controller::play_test()
 	try {
 		play_game(disp(),state_,game_config());
 	} catch (game::load_game_exception &) {
-		test_mode_ = false;
 		return true;
 	}
 
