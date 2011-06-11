@@ -23,7 +23,7 @@ import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 import org.wesnoth.Messages;
 
-public class ApplicationActionBarAdvisor extends ActionBarAdvisor
+public class WesnothActionBarAdvisor extends ActionBarAdvisor
 {
 	private IWorkbenchAction	aboutAction_;
 	private IWorkbenchAction	quitAction_;
@@ -32,7 +32,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor
 
 	private List<IWorkbenchAction> coolBarActions_;
 
-	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer)
+	public WesnothActionBarAdvisor(IActionBarConfigurer configurer)
 	{
 		super(configurer);
 

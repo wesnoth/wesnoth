@@ -14,13 +14,13 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.eclipse.ui.ide.IDE;
 import org.wesnoth.utils.WorkspaceUtils;
 
-public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisorHack {
+public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack {
 
 	private static final String PERSPECTIVE_ID = "org.wesnoth.product.WMLPerspective"; //$NON-NLS-1$
 
     @Override
 	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
-        return new ApplicationWorkbenchWindowAdvisor(configurer);
+        return new WesnothWorkbenchWindowAdvisor(configurer);
     }
 
 	@Override

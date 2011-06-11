@@ -15,7 +15,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.wesnoth.Logger;
 
-public class Application implements IApplication
+public class WesnothApplication implements IApplication
 {
 	@Override
 	public Object start(IApplicationContext context)
@@ -23,7 +23,7 @@ public class Application implements IApplication
 		Display display = PlatformUI.createDisplay();
         Logger.getInstance().startLogger();
 		try {
-			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
+			int returnCode = PlatformUI.createAndRunWorkbench(display, new WesnothWorkbenchAdvisor());
 			if (returnCode == PlatformUI.RETURN_RESTART)
 				return IApplication.EXIT_RESTART;
 			else
