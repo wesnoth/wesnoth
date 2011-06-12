@@ -54,7 +54,6 @@ class unit_animation
 		void start_animation(int start_time
 				, const map_location &src = map_location::null_location
 				, const map_location &dst = map_location::null_location
-				, bool cycles = false
 				, const std::string& text = ""
 				, const Uint32 text_color = 0
 				, const bool accelerate = true);
@@ -88,7 +87,8 @@ class unit_animation
 				accelerate(true),
 				parameters_(builder),
 				halo_id_(0),
-				last_frame_begin_time_(0)
+				last_frame_begin_time_(0),
+				cycles_(false)
 				{};
 			explicit particule(const config& cfg
 					, const std::string& frame_string ="frame");
@@ -106,7 +106,7 @@ class unit_animation
 					, const std::string& modifiers = "");
 			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst);
 			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst);
-			void start_animation(int start_time, bool cycles=false);
+			void start_animation(int start_time);
 			const frame_parameters parameters(const frame_parameters & default_val) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val); };
 			void clear_halo();
 			bool accelerate;
@@ -116,6 +116,7 @@ class unit_animation
 			frame_parsed_parameters parameters_;
 			int halo_id_;
 			int last_frame_begin_time_;
+			bool cycles_;
 
 	};
 		t_translation::t_list terrain_types_;
@@ -155,7 +156,6 @@ class unit_animator
 				, const unit_animation * animation
 				, const map_location &src = map_location::null_location
 				, bool with_bars = false
-				, bool cycles = false
 				, const std::string& text = ""
 				, const Uint32 text_color = 0);
 		void add_animation(unit* animated_unit
@@ -164,7 +164,6 @@ class unit_animator
 				, const map_location &dst = map_location::null_location
 				, const int value = 0
 				, bool with_bars = false
-				, bool cycles = false
 				, const std::string& text = ""
 				, const Uint32 text_color = 0
 				, const unit_animation::hit_type hit_type =
@@ -178,7 +177,6 @@ class unit_animator
 				, const map_location &dst = map_location::null_location
 				, const int value = 0
 				, bool with_bars = false
-				, bool cycles = false
 				, const std::string& text = ""
 				, const Uint32 text_color = 0
 				, const unit_animation::hit_type hit_type =
@@ -208,10 +206,8 @@ class unit_animator
 				text(),
 				text_color(0),
 				src(),
-				with_bars(false),
-				cycles(false)
-			{
-			}
+				with_bars(false)
+			{}
 
 			unit *my_unit;
 			const unit_animation * animation;
@@ -219,7 +215,6 @@ class unit_animator
 			Uint32 text_color;
 			map_location src;
 			bool with_bars;
-			bool cycles;
 		};
 
 		std::vector<anim_elem> animated_units_;

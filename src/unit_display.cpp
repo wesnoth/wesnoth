@@ -75,7 +75,7 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	temp_unit.set_facing(a.get_relative_dir(b));
 	unit_animator animator;
 	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b,step_num,
-			false,false,"",0,unit_animation::INVALID,NULL,NULL,step_left);
+			false,"",0,unit_animation::INVALID,NULL,NULL,step_left);
 	animator.start_animations();
         animator.pause_animation();
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
@@ -236,8 +236,8 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 		return;
 	}
 	unit_animator animator;
-	animator.add_animation(&attacker,"draw_weapon",loc,defender_loc,0,false,false,"",0,unit_animation::HIT,attack,secondary_attack,0);
-	animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,false,false,"",0,unit_animation::MISS,secondary_attack,attack,0);
+	animator.add_animation(&attacker,"draw_weapon",loc,defender_loc,0,false,"",0,unit_animation::HIT,attack,secondary_attack,0);
+	animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,false,"",0,unit_animation::MISS,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
 
@@ -253,10 +253,10 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 	}
 	unit_animator animator;
 	if(primary_unit) {
-		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,false,false,"",0,unit_animation::INVALID,primary_attack,secondary_attack,0);
+		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,false,"",0,unit_animation::INVALID,primary_attack,secondary_attack,0);
 	}
 	if(secondary_unit) {
-		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,false,false,"",0,unit_animation::INVALID,secondary_attack,primary_attack,0);
+		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,false,"",0,unit_animation::INVALID,secondary_attack,primary_attack,0);
 	}
 
 	if(primary_unit || secondary_unit) {
@@ -283,9 +283,9 @@ void unit_die(const map_location& loc, unit& loser,
 	}
 	unit_animator animator;
 	// hide the hp/xp bars of the loser (useless and prevent bars around an erased unit)
-	animator.add_animation(&loser,"death",loc,winner_loc,0,false,false,"",0,unit_animation::KILL,attack,secondary_attack,0);
+	animator.add_animation(&loser,"death",loc,winner_loc,0,false,"",0,unit_animation::KILL,attack,secondary_attack,0);
 	// but show the bars of the winner (avoid blinking and show its xp gain)
-	animator.add_animation(winner,"victory",winner_loc,loc,0,true,false,"",0,
+	animator.add_animation(winner,"victory",winner_loc,loc,0,true,"",0,
 			unit_animation::KILL,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
@@ -357,7 +357,7 @@ void unit_attack(
 		hit_type = unit_animation::MISS;
 	}
 	animator.add_animation(&attacker, "attack", att->get_location(),
-		def->get_location(), damage, true, false, text_2,
+		def->get_location(), damage, true,  text_2,
 		display::rgb(0, 255, 0), hit_type, &attack, secondary_attack,
 		swing);
 
@@ -366,7 +366,7 @@ void unit_attack(
 		def->get_location(), "defend", att->get_location(), damage,
 		hit_type, &attack, secondary_attack, swing);
 	animator.add_animation(&defender, defender_anim, def->get_location(),
-		true, false, text , display::rgb(255, 0, 0));
+		true,  text , display::rgb(255, 0, 0));
 
 	for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); ++itor) {
 		if(itor->second == a) continue;
@@ -375,7 +375,7 @@ void unit_attack(
 		assert(leader != units.end());
 		leader->set_facing(itor->second.get_relative_dir(a));
 		animator.add_animation(&*leader, "leading", itor->second,
-			att->get_location(), damage, true, false, "", 0,
+			att->get_location(), damage, true,  "", 0,
 			hit_type, &attack, secondary_attack, swing);
 	}
 	for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); ++itor) {
@@ -385,7 +385,7 @@ void unit_attack(
 		assert(helper != units.end());
 		helper->set_facing(itor->second.get_relative_dir(b));
 		animator.add_animation(&*helper, "resistance", itor->second,
-			def->get_location(), damage, true, false, "", 0,
+			def->get_location(), damage, true,  "", 0,
 			hit_type, &attack, secondary_attack, swing);
 	}
 
@@ -478,9 +478,9 @@ void unit_healing(unit &healed, const map_location &healed_loc,
 			healed_loc, healing);
 	}
 	if (healing < 0) {
-		animator.add_animation(&healed,"poisoned",healed_loc,map_location::null_location,-healing,false,false,lexical_cast<std::string>(-healing), display::rgb(255,0,0));
+		animator.add_animation(&healed,"poisoned",healed_loc,map_location::null_location,-healing,false,lexical_cast<std::string>(-healing), display::rgb(255,0,0));
 	} else {
-		animator.add_animation(&healed,"healed",healed_loc,map_location::null_location,healing,false,false,lexical_cast<std::string>(healing), display::rgb(0,255,0));
+		animator.add_animation(&healed,"healed",healed_loc,map_location::null_location,healing,false,lexical_cast<std::string>(healing), display::rgb(0,255,0));
 	}
 	animator.start_animations();
 	animator.wait_for_end();
@@ -573,7 +573,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 			}
 		}
 		animator.add_animation(&*u, cfg["flag"], u->get_location(),
-			secondary_loc, cfg["value"], cfg["with_bars"].to_bool(), false,
+			secondary_loc, cfg["value"], cfg["with_bars"].to_bool(), 
 			cfg["text"], text_color, hits, primary, secondary,
 			cfg["value_second"]);
 	}

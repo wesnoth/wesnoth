@@ -413,11 +413,9 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("levelout");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,1);
 		animations.back().event_ = utils::split("pre_movement");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,1);
 		animations.back().event_ = utils::split("post_movement");
 
 		animations.push_back(*itor);
@@ -425,13 +423,12 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("movement");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,225,"","0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
+		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),"","0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
 		animations.back().hits_.push_back(HIT);
 		animations.back().hits_.push_back(KILL);
 		animations.back().event_ = utils::split("defend");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,1);
 		animations.back().event_ = utils::split("defend");
 
 		animations.push_back(*itor);
@@ -454,7 +451,6 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,1);
 		animations.back().event_ = utils::split("victory");
 
 		animations.push_back(*itor);
@@ -508,19 +504,27 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(ab.merge()));
 	}
 
-	int default_layer = display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST;
-	int move_layer = display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST;
-	int missile_layer = display::LAYER_UNIT_MISSILE_DEFAULT - display::LAYER_UNIT_FIRST;
+	const int default_layer = display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST;
+	const int move_layer = display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST;
+	const int missile_layer = display::LAYER_UNIT_MISSILE_DEFAULT - display::LAYER_UNIT_FIRST;
 
 	add_simple_anim(animations, cfg, "resistance_anim", "resistance");
 	add_simple_anim(animations, cfg, "leading_anim", "leading");
 	add_simple_anim(animations, cfg, "recruit_anim", "recruited");
 	add_simple_anim(animations, cfg, "recruiting_anim", "recruiting");
-	add_simple_anim(animations, cfg, "standing_anim", "standing,default", display::LAYER_UNIT_DEFAULT, false);
 	add_simple_anim(animations, cfg, "idle_anim", "idling", display::LAYER_UNIT_DEFAULT, false);
 	add_simple_anim(animations, cfg, "levelin_anim", "levelin");
 	add_simple_anim(animations, cfg, "levelout_anim", "levelout");
 
+	foreach (const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
+	{
+		config anim = ab.merge();
+		anim["apply_to"] = "standing,default";
+		anim["cycles"] = "true";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		if (anim["offscreen"].empty()) anim["offscreen"] = false;
+		animations.push_back(unit_animation(anim));
+	}
 	foreach (const animation_branch &ab, prepare_animation(cfg, "healing_anim"))
 	{
 		config anim = ab.merge();
@@ -728,6 +732,7 @@ unit_animation::particule::particule(
 		unit_frame tmp_frame(frame);
 		add_frame(tmp_frame.duration(),tmp_frame,!tmp_frame.does_not_change());
 	}
+	cycles_  = cfg[frame_string+"cycles"].to_bool(false);
 	parameters_ = frame_parsed_parameters(frame_builder(cfg,frame_string),get_animation_duration());
 	if(!parameters_.does_not_change()  ) {
 			force_change();
@@ -810,7 +815,6 @@ int unit_animation::get_begin_time() const
 void unit_animation::start_animation(int start_time
 		, const map_location &src
 		, const map_location &dst
-		, bool cycles
 		, const std::string& text
 		, const Uint32 text_color
 		, const bool accelerate)
@@ -818,7 +822,7 @@ void unit_animation::start_animation(int start_time
 	unit_anim_.accelerate = accelerate;
 	src_ = src;
 	dst_ = dst;
-	unit_anim_.start_animation(start_time, cycles);
+	unit_anim_.start_animation(start_time);
 	if(!text.empty()) {
 		particule crude_build;
 		crude_build.add_frame(1,frame_builder());
@@ -828,7 +832,7 @@ void unit_animation::start_animation(int start_time
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		anim_itor->second.accelerate = accelerate;
-		anim_itor->second.start_animation(start_time,cycles);
+		anim_itor->second.start_animation(start_time);
 	}
 }
 
@@ -953,12 +957,12 @@ unit_animation::particule::~particule()
 	halo_id_ = halo::NO_HALO;
 }
 
-void unit_animation::particule::start_animation(int start_time, bool cycles)
+void unit_animation::particule::start_animation(int start_time)
 {
 	halo::remove(halo_id_);
 	halo_id_ = halo::NO_HALO;
 	parameters_.override(get_animation_duration());
-	animated<unit_frame>::start_animation(start_time,cycles);
+	animated<unit_frame>::start_animation(start_time,cycles_);
 	last_frame_begin_time_ = get_begin_time() -1;
 }
 
@@ -968,7 +972,6 @@ void unit_animator::add_animation(unit* animated_unit
 		, const map_location &dst
 		, const int value
 		, bool with_bars
-		, bool cycles
 		, const std::string& text
 		, const Uint32 text_color
 		, const unit_animation::hit_type hit_type
@@ -984,7 +987,6 @@ void unit_animator::add_animation(unit* animated_unit
 	tmp.text_color = text_color;
 	tmp.src = src;
 	tmp.with_bars= with_bars;
-	tmp.cycles = cycles;
 	tmp.animation = animated_unit->choose_animation(*disp,src,event,dst,value,hit_type,attack,second_attack,value2);
 	if(!tmp.animation) return;
 
@@ -997,7 +999,6 @@ void unit_animator::add_animation(unit* animated_unit
 		, const unit_animation* anim
 		, const map_location &src
 		, bool with_bars
-		, bool cycles
 		, const std::string& text
 		, const Uint32 text_color)
 {
@@ -1008,7 +1009,6 @@ void unit_animator::add_animation(unit* animated_unit
 	tmp.text_color = text_color;
 	tmp.src = src;
 	tmp.with_bars= with_bars;
-	tmp.cycles = cycles;
 	tmp.animation = anim;
 	if(!tmp.animation) return;
 
@@ -1023,7 +1023,6 @@ void unit_animator::replace_anim_if_invalid(unit* animated_unit
 		, const map_location & dst
 		, const int value
 		, bool with_bars
-		, bool cycles
 		, const std::string& text
 		, const Uint32 text_color
 		, const unit_animation::hit_type hit_type
@@ -1042,11 +1041,10 @@ void unit_animator::replace_anim_if_invalid(unit* animated_unit
 		tmp.text_color = text_color;
 		tmp.src = src;
 		tmp.with_bars= with_bars;
-		tmp.cycles = cycles;
 		tmp.animation = NULL;
 		animated_units_.push_back(tmp);
 	}else {
-		add_animation(animated_unit,event,src,dst,value,with_bars,cycles,text,text_color,hit_type,attack,second_attack,value2);
+		add_animation(animated_unit,event,src,dst,value,with_bars,text,text_color,hit_type,attack,second_attack,value2);
 	}
 }
 void unit_animator::start_animations()
@@ -1065,7 +1063,7 @@ void unit_animator::start_animations()
 	for(anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 		if(anim->animation) {
 			anim->my_unit->start_animation(begin_time, anim->animation,
-				anim->with_bars, anim->cycles, anim->text, anim->text_color);
+				anim->with_bars,  anim->text, anim->text_color);
 			anim->animation = NULL;
 		} else {
 			anim->my_unit->get_animation()->update_parameters(anim->src,anim->src.get_direction(anim->my_unit->facing()));

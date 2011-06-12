@@ -1707,10 +1707,10 @@ void unit::set_standing(bool with_bars)
 	game_display *disp = game_display::get_singleton();
 	if (preferences::show_standing_animations()&& !incapacitated()) {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, "standing"),
-			with_bars, true, "", 0, STATE_STANDING);
+			with_bars,  "", 0, STATE_STANDING);
 	} else {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, "_disabled_"),
-			with_bars, true, "", 0, STATE_STANDING);
+			with_bars,  "", 0, STATE_STANDING);
 	}
 }
 
@@ -1718,21 +1718,21 @@ void unit::set_ghosted(bool with_bars)
 {
 	game_display *disp = game_display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, "ghosted"),
-			with_bars, true);
+			with_bars);
 }
 
 void unit::set_disabled_ghosted(bool with_bars)
 {
 	game_display *disp = game_display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, "disabled_ghosted"),
-			with_bars, true);
+			with_bars);
 }
 
 void unit::set_idling()
 {
 	game_display *disp = game_display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, "idling"),
-		true, false, "", 0, STATE_FORGET);
+		true, "", 0, STATE_FORGET);
 }
 
 void unit::set_selecting()
@@ -1740,15 +1740,15 @@ void unit::set_selecting()
 	const game_display *disp =  game_display::get_singleton();
 	if (preferences::show_standing_animations() && !get_state(STATE_PETRIFIED)) {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, "selected"),
-			true, false, "", 0, STATE_FORGET);
+			true, "", 0, STATE_FORGET);
 	} else {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, "_disabled_selected_"),
-			true, false, "", 0, STATE_FORGET);
+			true, "", 0, STATE_FORGET);
 	}
 }
 
 void unit::start_animation(int start_time, const unit_animation *animation,
-	bool with_bars, bool cycles, const std::string &text, Uint32 text_color, STATE state)
+	bool with_bars,  const std::string &text, Uint32 text_color, STATE state)
 {
 	const game_display * disp =  game_display::get_singleton();
 	state_ = state;
@@ -1764,7 +1764,7 @@ void unit::start_animation(int start_time, const unit_animation *animation,
 	anim_ = new unit_animation(*animation);
 	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
 	anim_->start_animation(real_start_time, loc_, loc_.get_direction(facing_),
-		cycles, text, text_color, accelerate);
+		 text, text_color, accelerate);
 	frame_begin_time_ = anim_->get_begin_time() -1;
 	if (disp->idle_anim()) {
 		next_idling_ = get_current_animation_tick()
