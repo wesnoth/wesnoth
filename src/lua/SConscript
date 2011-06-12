@@ -32,5 +32,8 @@ lstrlib.c
 loadlib.c
 linit.c
 """)
-liblua = env.Library("lua", lua_sources, CCCOM = env["CXXCOM"], CPPPATH = ["$CPPPATH", Dir(".").srcnode()])
+liblua = env.Library("lua", lua_sources, 
+    CCCOM = env["CXXCOM"],
+    CPPPATH = ["$CPPPATH", Dir(".").srcnode()],
+    CPPDEFINES = ["$CPPDEFINES", "LUA_USE_MKSTEMP"])
 Return("liblua")
