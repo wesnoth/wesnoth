@@ -12,7 +12,11 @@ source is referred to as wesnoth_root/ in this README.
 2. Install CodeBlocks http://www.codeblocks.org/
 MinGw is not needed. CodeBlocks' installation folder is referred to as
 codeblocks_root/ in this README.
-3. Install tdm-gcc-4.5.2 from http://tdm-gcc.tdragon.net/download
+3. Install tdm-gcc-4.5.2 from http://tdm-gcc.tdragon.net/download.
+Note that the projectfiles in wesnoth_root/projectfiles/CodeBlocks/
+may contain the setting to compile with OpenMP so you should make sure
+that this option is enabled while installing the compiler, there is a checkbox
+for this in the installer. (Or simply make a "all packages" installation.)
 4. In CodeBlocks, open
 wesnoth_root/projectfiles/CodeBlocks/wesnoth.workspace
 5. In CodeBlocks, goto (menu bar)>settings>compiler and debugger
