@@ -3223,12 +3223,14 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_State *L = mState;
 
 	// Open safe libraries. (Debug is not, but it will be closed below.)
+	// os also isn't but most of its functions will be disabled below
 	static const luaL_Reg safe_libs[] = {
 		{ "",       luaopen_base   },
 		{ "table",  luaopen_table  },
 		{ "string", luaopen_string },
 		{ "math",   luaopen_math   },
 		{ "debug",  luaopen_debug  },
+		{ "os",     luaopen_os     },
 		{ NULL, NULL }
 	};
 	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)
@@ -3469,6 +3471,19 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 	lua_pushnil(L);
 	lua_setglobal(L, "debug");
+
+	// Disable functions from os which we don't want.
+	lua_getglobal(L, "os");
+	lua_pushnil(L);
+	while(lua_next(L, -2) != 0) {
+		lua_pop(L, 1);
+		char const* function = lua_tostring(L, -1);
+		if(strcmp(function, "clock") == 0 || strcmp(function, "date") == 0
+			|| strcmp(function, "difftime") == 0) continue;
+		lua_pushnil(L);
+		lua_setfield(L, -3, function);
+	}
+	lua_pop(L, 1);
 
 	lua_settop(L, 0);
 }
