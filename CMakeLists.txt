@@ -41,8 +41,8 @@ if(MSVC)
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif(MSVC)
 
-# Use the safer `mkstemp' instead of `tmpnam'.
-add_definitions(-DLUA_USE_MKSTEMP)
+# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
+add_definitions(-DLUA_USE_POSIX)
 
 #check for some compiler/arch specific things and export defines accordingly...
 include(SearchForStuff)
