@@ -91,6 +91,7 @@ bool pathfind::teleport_group::always_visible() const {
 
 config pathfind::teleport_group::to_config() const {
 	config retval = cfg_;
+	retval["saved"] = "yes";
 	retval["reversed"] = reversed_ ? "yes" : "no";
 	retval["id"] = id_;
 	return retval;
@@ -203,6 +204,10 @@ pathfind::manager::manager(const config &cfg) : tunnels_(), id_(lexical_cast_def
 	const int tunnel_count = cfg.child_count("tunnel");
 	for(int i = 0; i < tunnel_count; ++i) {
 		const config& t = cfg.child("tunnel", i);
+		if(!t["saved"].to_bool()) {
+			lg::wml_error << "Do not use [tunnel] directly in a [scenario]. Use it in an [event] or [abilities] tag.\n";
+			continue;
+		}
 		const pathfind::teleport_group tunnel(t);
 		this->add(tunnel);
 	}
