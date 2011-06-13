@@ -26,7 +26,7 @@ namespace po = boost::program_options;
 // this class is needed since boost has some templated operators>> declared internally for tuples and we don't want them to interfere. Existence of such operator>> apparently causes program_options to cause the custom class somehow specially... well, the boost::tuple default operator>>  format doesn't suit our needs anyway.
 class two_strings : public boost::tuple<std::string,std::string> {};
 
-void validate(boost::any& v, const std::vector<std::string>& values,
+static void validate(boost::any& v, const std::vector<std::string>& values,
               two_strings*, int)
 {
     two_strings ret_val;
