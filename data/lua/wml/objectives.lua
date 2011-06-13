@@ -58,6 +58,7 @@ local function generate_objectives(cfg)
 		local show_if = helper.get_child(obj, "show_if")
 		if not show_if or wesnoth.eval_conditional(show_if) then
 			local condition = obj.condition
+			local description = obj.description or ""
 			local turn_counter = ""
 
 			if obj.show_turn_counter then
@@ -80,7 +81,7 @@ local function generate_objectives(cfg)
 					win_objectives = win_objectives .. caption .. "\n"
 				end
 
-				win_objectives = win_objectives .. color_prefix(0, 255, 0) .. bullet .. obj.description .. turn_counter .. "</span>" .. "\n"
+				win_objectives = win_objectives .. color_prefix(0, 255, 0) .. bullet .. description .. turn_counter .. "</span>" .. "\n"
 			elseif condition == "lose" then
 				local caption = obj.caption
 
@@ -88,7 +89,7 @@ local function generate_objectives(cfg)
 					lose_objectives = lose_objectives .. caption .. "\n"
 				end
 
-				lose_objectives = lose_objectives .. color_prefix(255, 0, 0) .. bullet .. obj.description .. turn_counter .. "</span>" .. "\n"
+				lose_objectives = lose_objectives .. color_prefix(255, 0, 0) .. bullet .. description .. turn_counter .. "</span>" .. "\n"
 			else
 				wesnoth.message "Unknown condition, ignoring."
 			end
