@@ -35,5 +35,5 @@ linit.c
 liblua = env.Library("lua", lua_sources, 
     CCCOM = env["CXXCOM"],
     CPPPATH = ["$CPPPATH", Dir(".").srcnode()],
-    CPPDEFINES = ["$CPPDEFINES", "LUA_USE_MKSTEMP"])
+    CPPDEFINES = ["$CPPDEFINES", env["PLATFORM"] != "win32" and "LUA_USE_POSIX" or []])
 Return("liblua")
