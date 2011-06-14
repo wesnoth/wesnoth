@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-30 20:47+0200\n"
-"PO-Revision-Date: 2011-05-31 09:07+0700\n"
+"PO-Revision-Date: 2011-06-14 16:51+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
@@ -1223,16 +1223,14 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
-#, fuzzy
 msgid " green if it hasn’t moved this turn,"
 msgstr "xanh lá cây nếu đơn vị chưa di chuyển ở lượt này,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:181
-#, fuzzy
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-"vàng nếu nó đã di chuyển, nhưng vẫn có thể di chuyển tiếp hoặc tấn công, hoặc"
+"vàng nếu đã di chuyển, nhưng vẫn có thể di chuyển tiếp hoặc tấn công, hoặc"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:182
@@ -1242,14 +1240,11 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
-#, fuzzy
 msgid " blue if the unit is an ally you do not control."
-msgstr ""
-"Quả cầu có màu xanh lam nếu đơn vị là một đồng minh bạn không điều khiển."
+msgstr "xanh lam nếu đơn vị là một đồng minh bạn không điều khiển."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:184
-#, fuzzy
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr "Các đơn vị của kẻ thù không có quả cầu phía trên thanh máu."
 
@@ -1517,7 +1512,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:235
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1529,7 +1523,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1543,13 +1536,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mọi đơn vị đều có khả năng bị đánh trúng, dựa vào địa hình nó đang đứng. Hệ "
-"số này được hiển thị trong khung trạng thái, và cũng có thể được tìm thấy "
-"bằng cách nhấn chuột phải lên một đơn vị, chọn Mô tả đơn vị, sau đó xem "
-"<italic>text='Hệ số địa hình'</italic>. Lấy ví dụ, nhiều thần tiên có tỷ lệ "
-"phòng thủ 70% trong rừng, do đó một đơn vị tấn công chúng chỉ có cơ hội đánh "
-"trúng 30%. Ngược lại, cơ hội đánh trúng khi trả đũa của thần tiên tùy thuộc "
-"vào địa hình người tấn công đang đứng."
+"Mọi đơn vị đều có khả năng bị đánh trúng, dựa vào <italic>text='địa hình'</"
+"italic> nó đang đứng. Hệ số này được hiển thị trong khung trạng thái, và "
+"cũng có thể được tìm thấy bằng cách nhấn chuột phải lên một đơn vị, chọn "
+"<bold>text='Mô tả đơn vị'</bold>, sau đó xem <italic>text='Hệ số địa hình'</"
+"italic>. Lấy ví dụ, nhiều thần tiên có tỷ lệ phòng thủ 70% trong rừng, do đó "
+"một đơn vị tấn công chúng chỉ có cơ hội đánh trúng 30%. Ngược lại, cơ hội "
+"đánh trúng khi phản công của thần tiên tùy thuộc vào địa hình đơn vị tấn "
+"công đang đứng."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
@@ -2054,7 +2048,6 @@ msgstr "Tóm lược"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:329
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2063,10 +2056,11 @@ msgid ""
 "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
 msgstr ""
 "Trang này kết thúc những quy tắc cơ bản của Wesnoth. Bạn có thể nghiên cứu "
-"kỹ lưỡng Chiến thuật cơ bản, hoặc làm quen với các <ref>dst='.."
+"kỹ lưỡng chiến thuật cơ bản, hoặc làm quen với các <ref>dst='.."
 "traits_section' text='đặc điểm'</ref> và <ref>dst='..abilities_section' "
 "text='khả năng'</ref>, nhưng giờ bạn đã biết mọi thứ bạn cần để chơi chiến "
-"dịch Người thừa kế ngai vàng. Chúc vui vẻ, và chúc may mắn!"
+"dịch<italic>text='Người thừa kế ngai vàng'</italic>. Chúc vui vẻ, và chúc "
+"may mắn!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:334
@@ -2080,7 +2074,6 @@ msgstr "Giấy phép"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:349
-#, fuzzy
 msgid ""
 "Most units have two traits. However, undead units are assigned the single "
 "trait <italic>text='undead'</italic>, and woses do not receive any traits. "
@@ -2088,13 +2081,13 @@ msgid ""
 "usually randomly assigned to a unit when it is recruited."
 msgstr ""
 "Hầu hết các đơn vị có hai đặc điểm. Tuy nhiên, các đơn vị ma quái chỉ được "
-"cấp đặc điểm duy nhất 'ma quái', và thần rừng không nhận được đặc điểm nào. "
-"Đặc điểm là những biến đổi làm thay đổi một chút các thuộc tính của một đơn "
-"vị. Chúng thường được cấp ngẫu nhiên cho một đơn vị khi tuyển quân."
+"cấp đặc điểm duy nhất là <italic>text='ma quái'</italic>, và thần rừng không "
+"nhận được đặc điểm nào. Đặc điểm là những biến đổi làm thay đổi một chút các "
+"thuộc tính của một đơn vị. Chúng thường được cấp ngẫu nhiên cho một đơn vị "
+"khi tuyển quân."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:351
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2112,7 +2105,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:355
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2142,7 +2134,6 @@ msgstr ""
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:364
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2155,11 +2146,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị thông minh rất hữu ích ở đầu một chiến dịch vì chúng có thể nâng "
-"cấp lên cấp độ cao nhanh hơn. Về sau trong chiến dịch, thông minh không hữu "
-"ích lắm bởi vì Nâng cấp sau Cấp độ Tối đa (NCSCĐTĐ) không phải là một thay "
-"đổi có ý nghĩa bằng nâng cấp cấp độ. Nếu bạn có nhiều đơn vị ở 'cấp độ tối "
-"đa', bạn có thể gọi lại các đơn vị có những đặc điểm khác tốt hơn."
+"Các đơn vị <italic>text='thông minh'</italic>  rất hữu ích ở đầu một chiến "
+"dịch vì chúng có thể nâng cấp lên cấp độ cao nhanh hơn. Về sau trong chiến "
+"dịch, thông minh không hữu ích lắm bởi vì <italic>text='Nâng cấp sau cấp độ "
+"tối đa'</italic> (NCSCĐTĐ) không phải là một thay đổi có ý nghĩa bằng nâng "
+"cấp cấp độ. Nếu bạn có nhiều đơn vị ở  ‘cấp độ tối đal’, bạn có thể gọi lại "
+"các đơn vị có những đặc điểm khác tốt hơn."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:369
@@ -2168,17 +2160,15 @@ msgstr "Nhanh nhẹn"
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:370
-#, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "HP than usual."
 msgstr ""
-"Các đơn vị nhanh nhẹn có thêm 1 điểm di chuyển, nhưng ít đơn vị máu hơn bình "
-"thường 5%."
+"Các đơn vị <italic>text='nhanh nhẹn'</italic> có thêm 1 điểm di chuyển, "
+"nhưng ít đơn vị máu hơn bình thường 5%."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:372
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2205,13 +2195,12 @@ msgstr "Bền bỉ"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:378
-#, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
 "than usual."
 msgstr ""
-"Các đơn vị bền bỉ có nhiều hơn bình thường 4 đơn vị máu cộng thêm 1 đơn vị "
-"máu với mỗi cấp độ."
+"Các đơn vị <italic>text='bền bỉ'</italic> có nhiều hơn bình thường 4 đơn vị "
+"máu cộng thêm 1 đơn vị máu với mỗi cấp độ."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:380
@@ -2239,17 +2228,16 @@ msgstr "Mạnh mẽ"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:386
-#, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 more HP."
 msgstr ""
-"Các đơn vị mạnh mẽ gây nhiều hơn 1 điểm thiệt hại với mỗi đòn đánh trúng "
-"trong chiến đấu cận chiến, và có nhiều hơn 1 đơn vị máu."
+"Các đơn vị <italic>text='mạnh mẽ'</italic> gây nhiều hơn 1 điểm thiệt hại "
+"với mỗi đòn đánh trúng trong chiến đấu cận chiến, và có nhiều hơn 1 đơn vị "
+"máu."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:388
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2260,10 +2248,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-" Mặc dù hữu ích cho mọi đơn vị cận chiến, nhưng  đặc điểm mạnh mẽ hiệu quả "
-"nhất với các đơn vị có số lần đánh cao chẳng hạn như đấu sĩ thần tiên. Các "
-"đơn vị mạnh mẽ có thể rất hữu ích khi một chút xíu thiệt hại bổ sung là tất "
-"cả những gì cần để biến một đòn gây thiệt hại bình thường thành một cú đánh "
+"Mặc dù hữu ích cho mọi đơn vị cận chiến, nhưng đặc điểm mạnh mẽ hiệu quả "
+"nhất với các đơn vị có số lần đánh cao chẳng hạn như chiến binh thần tiên. "
+"Các đơn vị mạnh mẽ có thể rất hữu ích khi một chút thiệt hại bổ sung là tất "
+"cả những gì cần để biến một đòn gây thiệt hại bình thường thành một đòn đánh "
 "kết liễu."
 
 #. [topic]: id=traits_fearless
@@ -2280,9 +2268,8 @@ msgstr ""
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:399
-#, fuzzy
 msgid "Feral"
-msgstr "Toàn bộ"
+msgstr "Hoang dã"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:400
@@ -2300,19 +2287,17 @@ msgstr "Trung thành"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:406
-#, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
 "units do not incur this cost."
 msgstr ""
-"Các đơn vị trung thành không đòi phí bảo trì. Hầu hết các đơn vị đều đòi một "
-"chi phí bảo trì ở cuối mỗi lượt, bằng với cấp độ của chúng. Các đơn vị trung "
-"thành không đòi chi phí này."
+"Các đơn vị <italic>text='trung thành'</italic> không đòi phí bảo trì. Hầu "
+"hết các đơn vị đều đòi một chi phí bảo trì ở cuối mỗi lượt, bằng với cấp độ "
+"của chúng. Các đơn vị trung thành không đòi chi phí này."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:408
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2340,16 +2325,14 @@ msgstr "Ma quái"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:414
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
-"Các đơn vị ma quái miễn nhiễm với độc, cũng như bòn rút và bệnh dịch không "
-"có tác dụng với chúng."
+"Các đơn vị <italic>text='ma quái'</italic> miễn nhiễm với độc, bòn rút và "
+"bệnh dịch."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:416
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2360,10 +2343,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị ma quái nói chung có 'ma quái' là đặc điểm duy nhất. Do các đơn "
-"vị ma quái là thân xác của người chết, được gọi lên để chiến đấu, chất độc "
-"không có hiệu lực với chúng. Điều này có thể khiến chúng trở nên vô giá khi "
-"thanh toán những địch thủ sử dụng chất độc kết hợp với tấn công."
+"Các đơn vị ma quái nói chung có 'ma quái' là đặc điểm duy nhất. Bởi vì các "
+"đơn vị ma quái là thân xác của người chết, được gọi lên để chiến đấu, chất "
+"độc không có hiệu quả với chúng. Điều này có thể khiến chúng trở nên vô giá "
+"khi giao chiến những địch thủ sử dụng chất độc kết hợp với tấn công."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:421
@@ -2372,17 +2355,15 @@ msgstr "Cơ giới"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:422
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Các đơn vị máy móc miễn nhiễm với độc, cũng như bòn rút và bệnh dịch không "
-"có hiệu lực với chúng."
+"Các đơn vị <italic>text='máy móc'</italic> miễn nhiễm với độc,  bòn rút và "
+"bệnh dịch."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:424
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2392,29 +2373,26 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị máy móc nói chung có 'máy móc' là đặc điểm duy nhất. Do các đơn "
-"vị máy móc không có sự sống, nên bòn rút, độc và bệnh dịch không có hiệu lực "
-"với chúng."
+"Các đơn vị máy móc nói chung có đặc điểm máy móc là đặc điểm duy nhất. Do "
+"các đơn vị máy móc không có sự sống, nên bòn rút, độc và bệnh dịch không có "
+"hiệu quả với chúng."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:429
-#, fuzzy
 msgid "trait^Elemental"
-msgstr "ẩn nấp"
+msgstr "Nguyên tố"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Các đơn vị máy móc miễn nhiễm với độc, cũng như bòn rút và bệnh dịch không "
-"có hiệu lực với chúng."
+"Các đơn vị <italic>text='nguyên tố'</italic> miễn nhiễm với độc, bòn rút và "
+"bệnh dịch."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:432
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2424,9 +2402,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị máy móc nói chung có 'máy móc' là đặc điểm duy nhất. Do các đơn "
-"vị máy móc không có sự sống, nên bòn rút, độc và bệnh dịch không có hiệu lực "
-"với chúng."
+"Các đơn vị nguyên tố nói chung có đặc điểm máy móc là đặc điểm duy nhất. Do "
+"các đơn vị máy móc không có sự sống, nên bòn rút, độc và bệnh dịch không có "
+"hiệu quả với chúng."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:437
@@ -2435,17 +2413,15 @@ msgstr "Khéo léo"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
-#, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
 msgstr ""
-"Các đơn vị khéo léo gây nhiều hơn 1điểm thiệt hại với mỗi đòn đánh trúng "
-"trong chiến đấu từ xa."
+"Các đơn vị <italic>text='khéo léo'</italic> gây nhiều hơn 1điểm thiệt hại "
+"với mỗi đòn đánh trúng trong chiến đấu từ xa."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:440
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2477,7 +2453,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:448
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2487,10 +2462,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị khỏe mạnh có nhiều hơn bình thường 1 đơn vị máu cộng thêm 1 đơn "
-"vị máu với mỗi cấp độ và phục hồi 2 đơn vị máu khi nghỉ ngơi sau mỗi lượt "
-"chúng không chiến đấu. Chúng cũng chịu thiệt hại do độc tố ít hơn một phần "
-"tư."
+"Các đơn vị <italic>text='khỏe mạnh'</italic> có nhiều hơn bình thường 1 đơn "
+"vị máu cộng thêm 1 đơn vị máu với mỗi cấp độ và phục hồi 2 đơn vị máu khi "
+"nghỉ ngơi sau mỗi lượt nếu không chiến đấu. Chúng cũng chịu thiệt hại do độc "
+"tố ít hơn một phần tư."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:453
@@ -2499,13 +2474,12 @@ msgstr "Đần độn"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:454
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
-"Các đơn vị có đặc điểm đần độn phải chịu mức tăng 20% điểm kinh nghiệm cần "
-"để nâng cấp."
+"Các đơn vị có đặc điểm <italic>text='đần độn'</italic> phải chịu mức tăng "
+"20% điểm kinh nghiệm cần để nâng cấp."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:456
@@ -2528,10 +2502,11 @@ msgstr "Chậm chạp"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:462
-#, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
-msgstr "Các đơn vị chậm chạp có di chuyển -1 nhưng nhiều máu hơn 5%."
+msgstr ""
+"Các đơn vị <italic>text='chậm chạp'</italic> có ít hơn 1 điểm di chuyển "
+"nhưng nhiều máu hơn 5%."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:464
@@ -2555,28 +2530,26 @@ msgstr "Yếu ớt"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:470
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
 "hitpoints and melee damage."
 msgstr ""
-"Các đơn vị có đặc điểm yếu ớt giảm 1 lượng máu và lượng thiệt hại cận chiến."
+"Các đơn vị có đặc điểm <italic>text='yếu ớt'</italic> giảm 1 trong đơn vị "
+"máu và lượng thiệt hại gây ra khi cận chiến."
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:475
-#, fuzzy
-#| msgid "trait^Undead"
 msgid "trait^Aged"
-msgstr "Ma quái"
+msgstr "Già"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
 msgstr ""
-"Các đơn vị có đặc điểm yếu ớt giảm 1 lượng máu và lượng thiệt hại cận chiến."
+"Các đơn vị có đặc điểm <italic>text='già'</italic> giảm 8 trong đơn vị máu "
+"và 1 trong điểm di chuyển và lượng thiệt hại gây ra khi cận chiến."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:484
@@ -4102,10 +4075,8 @@ msgid " This unit is capable of basic healing."
 msgstr " Đơn vị này có khả năng hồi máu cơ bản."
 
 #: data/core/macros/special-notes.cfg:17
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid " This unit is capable of rapid healing."
-msgstr " Đơn vị này có khả năng hồi máu cơ bản."
+msgstr "Đơn vị này có khả năng hồi máu nhanh chóng."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
@@ -4597,6 +4568,68 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
+"Người rồng là những sinh vật lớn, có cánh và thở ra lửa, khiến người ta liên "
+"tưởng đến loài rồng thần thoại. Trung bình, một người rồng trưởng thành đứng "
+"cao khoảng ba mét và nặng hơn cả một người cộng với một con ngựa. Da của họ "
+"được tạo nên từ những chiếc vảy cứng, kháng cự với hầu hết các đòn tấn công "
+"vật lý trừ đâm và lạnh. Người rồng nói chung có khả năng bay thực sự và có "
+"thể băng qua nhanh chóng những khoảng cách lớn. Tuy nhiên, sức nặng và thân "
+"hình đồ sộ hơi làm hạn chế năng lực bay lượn, khiến họ trở nên lóng ngóng "
+"trong không trung. Khi có thể, họ sử dụng các đặc tính của địa hình như đồi, "
+"núi và cây làm bàn đạp để đạt được độ cao và tốc độ lớn hơn. May mắn cho kẻ "
+"thù, họ vẫn là những sinh vật khá vụng về và chậm chạp một cách đáng ngạc "
+"nhiên khi chiến đấu. Điều này, cùng với kích thước lớn, làm cho họ trở thành "
+"mục tiêu dễ dàng cho những ai dám tấn công.\n"
+"\n"
+"Người rồng vốn là những sinh vật có phép thuật, với một ngọn lửa bí ẩn nằm "
+"bên trong cung cấp năng lượng sống cho họ. Có thể dễ dàng chứng kiến điều "
+"này khi một người rồng bỏ mạng trong chiến trận, ngọn lửa bên trong cơ thể "
+"bùng lên, đốt toàn bộ thân xác ra tro. Ngọn lửa đó cũng là điểm yếu lớn nhất "
+"của chúng, khiến họ cực kỳ có yếu điểm trước các đòn tấn công lạnh. Dù bản "
+"chất có phép thuật, nhưng người rồng không thể kiểm soát được. Phép thuật "
+"ngập tràn bên trong cơ thể cho phép người rồng phun ra lửa, nhưng họ không "
+"có khả năng điều khiển chủ động sự vận hành của phép thuật này.\n"
+"\n"
+"<header>text='Xã hội'</header>\n"
+"Người rồng là một chungr toocj tương đối hiếu chiến và có thể mô tả đời sống "
+"xã hội của họ là xã hội có văn hóa quân sự. Nòng cốt của một bộ tộc người "
+"rồng là một nhóm nhỏ các chiến binh kỳ cựu, được dẫn đầu bởi một lãnh tụ mà "
+"mọi thành viên đều tôn trọng, hoặc chỉ đơn thuần là sợ, người cai quản xã "
+"hội bằng với một kỷ cương thép. Mỗi thành viên phải xứng đáng với vị trí của "
+"mình trong hệ thống thứ bậc nghiêm ngặt, tuân lệnh cấp trên và chỉ huy cấp "
+"dưới. Được xếp vào thành phần xã hội ưu tú chỉ có thể thông qua việc thách "
+"thức và đánh bại cấp trên trong trận đấu một đối một, đó cũng là cách để "
+"thiết lập trật tự trong thành phần ưu tú. Việc sử dụng mưu mẹo gian dối dưới "
+"bất kỳ hình thức nào với đồng loại luôn bị xem là hèn nhát và không thể chấp "
+"nhận được.\n"
+"\n"
+"Bản chất hiếu chiến và ý thức sở hữu lãnh thổ khiến họ kiên quyết bảo vệ "
+"lãnh thổ của mình, nhưng người rồng hiếm khi xâm chiếm hay xâm phạm vào "
+"những vùng các loài khác đã chiếm hữu. Trái lại, họ chỉ cư ngụ trong những "
+"khu vực không dân cư để thiết lập lãnh thổ riêng ở đó. Họ kiếm mồi chủ yếu "
+"bằng cách đi săn trong những vùng đất thấp xung quanh nơi ở, nhưng những cá "
+"thể non và những cá thể đẳng cấp thấp ăn rêu và nấm trồng sâu trong hang "
+"động. Kỹ thuật duy nhất người rồng tự hào là nghề rèn áo giáp và vũ khí, họ "
+"không biết cũng như không cần khoa học hay văn hóa khác ngoài nghề này. Tuy "
+"nhiên, một vài công cụ họ chế tạo gần như là vô địch về mặt chất lượng, chỉ "
+"những sản phẩm từ các lò xưởng tốt nhất của người lùn mới có thể sánh được.\n"
+"\n"
+"Người rồng nở ra từ trứng và thường sống tự nhiên giữa 20 đến 30 năm. Hy "
+"sinh khi chiến đấu là cách vinh dự nhất để một người rồng rời khỏi thế giới "
+"này. Không giống như những thành viên lớn tuổi của các loài khác, người rồng "
+"càng lớn càng trở nên hung hăng và liều lĩnh cho tới cuối đời, có lẽ để đảm "
+"bảo vị trí của mình trong những truyền thuyết anh hùng của đồng loại.\n"
+"\n"
+"<header>text='Địa lý'</header>\n"
+"Người rồng bắt nguồn từ một loạt đảo núi lửa gọi là <ref>dst='morogor' "
+"text='Morogor'</ref> ở <ref>dst='great_ocean' text='Đại dương'</ref>. Ảnh "
+"hưởng kết hợp của sức ép dân số và sự chìm ngập của nhiều hòn đảo đã khiến "
+"các đoàn người rồng tản ra đến <ref>dst='great_continent' text='Đại Lục "
+"địa'</ref>. Họ có xu hướng xây nhà trong các hang động trên núi, gần núi lửa "
+"để bảo vệ trứng, cá thể còn non và lò xưởng của mình. Họ vốn thích hơi ấm, "
+"nhưng ngọn lửa bên trong có thể giúp họ chống chọi kể cả trong điều kiện khí "
+"hậu tương đối lạnh, một đặc điểm đã cho phép họ cư trú trên một số ngọn núi "
+"ở phương bắc xa xôi của Đại Lục địa."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:89
@@ -4762,6 +4795,43 @@ msgid ""
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
 "having existed for over a millennium."
 msgstr ""
+"So với con người, thần tiên cao hơn một chút, nhanh nhẹn hơn nhưng kém cứng "
+"cáp hơn. Họ có đôi tai hơi nhọn, làn da nhạt và thường có mái tóc vàng hoe. "
+"Một vài điểm khác biệt giữa con người và thần tiên thường được nhận ra rõ "
+"rệt hơn việc thần tiên có cuộc đời dài khác thường - đa số, trừ khi do bệnh "
+"tật, tai nạn hoặc chiến tranh, sống đến tận hai thế kỷ rưỡi. Một số thần "
+"tiên sở hữu năng lực phép thuật cao, được biết có thể sống thêm một thế kỷ "
+"nữa, nhưng hầu hết các thần tiên bắt đầu trở nên già yếu ở khoảng giữa 250 "
+"đến 300 tuổi, sau đó ra đi nhanh chóng, thường là sau một hoặc hai năm.\n"
+"\n"
+"Thần tiên vốn sở hữu năng lực phép thuật ở mức độ nhỏ. Dù đa số không thể "
+"điều khiển phép thuật một cách trực tiếp, nhưng sự có mặt tiềm ẩn của nó cho "
+"họ cảm nhận sắc bén và cuộc sống lâu dài. Nhiều thần tiên có tài năng thiên "
+"hướng phép thuật như tài thiện xạ hoặc ẩn nấp, cho phép họ thực hiện những "
+"công việc mà hầu hết những người bình thường sẽ cảm thấy ngạc nhiên. Những "
+"thần tiên học cách sử dụng sức mạnh này có thể trở nên thực sự ghê gớm khi "
+"sử dụng nó. Nhiều thần tiên chọn sử dụng năng khiếu của mình để điều trị cho "
+"người khác.\n"
+"\n"
+"Một số ít thần tiên, mạo hiểm theo con đường phép thuật thần bí, trở nên "
+"nhạy cảm với sự hiện diện của thép lạnh và còn có thể bị thiêu đốt bởi nó. "
+"Truyền thuyết thần tiên kể rằng điều này đã từng rất phổ biến trong quá khứ "
+"xa xôi.\n"
+"\n"
+"Thần tiên dành nhiều thời gian để mài dũa tài năng. Những ai không giỏi phép "
+"thuật thường tập trung thời gian để rèn luyện kỹ năng thể chất. Nhờ đó, thần "
+"tiên vượt trội về cung thuật, có lẽ là phương pháp chiến đấu quan trọng nhất "
+"của họ. Hầu hết quân đội thần tiên đều mang cung và không một chủng tộc nào "
+"khác có thể sánh với các cung thủ ở tốc độ và độ chính xác. Tất cả các thần "
+"tiên cũng đều có chung một tình cảm mãnh liệt với thiên nhiên nguyên thủy. "
+"Họ thường cảm thấy không thoải mái khi ở trong những không gian trống trải "
+"không có cây cối. Họ sống chủ yếu trong những khu rừng của Đại Lục địa; như "
+"Aethenwood ở phía tây nam, Wesmere ở phía tây bắc và những khu rừng lớn phía "
+"bắc mà khu rừng Lintanir là rìa cực Nam.\n"
+"\n"
+"Thần tiên là chủng tộc lâu năm nhất của lục địa, với ngoại lệ có thể là quỷ "
+"núi. Nhiều nơi cư ngụ của họ không thể tính tuổi một cách đáng tin cậy, chắc "
+"chắn đã tồn tại trên một thiên niên kỷ."
 
 #. [race]: id=goblin
 #: data/core/units.cfg:130
