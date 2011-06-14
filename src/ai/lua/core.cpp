@@ -414,6 +414,53 @@ static int cfun_ai_get_villages_per_scout(lua_State *L)
 }
 // End of aspect section
 
+static void push_map_location(lua_State *L, const map_location& ml)
+{
+	lua_createtable(L, 2, 0);
+		
+	lua_pushstring(L, "x");
+	lua_pushinteger(L, ml.x);
+	lua_rawset(L, -3);
+
+	lua_pushstring(L, "y");
+	lua_pushinteger(L, ml.y);
+	lua_rawset(L, -3);	
+}
+
+static int cfun_ai_get_dstsrc(lua_State *L)
+{
+	move_map dst_src = get_readonly_context(L).get_dstsrc();
+	move_map::const_iterator it = dst_src.begin();
+	
+	int index = 1;	
+	
+	lua_createtable(L, 0, 0); // the main table
+	
+	do {
+		map_location key = it->first;
+		
+		push_map_location(L, key);
+		lua_createtable(L, 0, 0);
+		
+		while (key == it->first) {
+			
+			push_map_location(L, it->second);
+			lua_rawseti(L, -2, index);
+			
+			++index;
+			++it;
+			
+		}
+		
+		lua_settable(L, -3);
+		
+		index = 1;		
+		
+	} while (it != dst_src.end());
+	
+	return 1;
+}
+
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
 	int res_ai = luaL_loadstring(L, code);//stack size is now 1 [ -1: ai_context]
@@ -433,6 +480,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 
 	static luaL_reg const callbacks[] = {
 		{ "attack", 			&cfun_ai_execute_attack			},
+		{ "get_dstsrc", 		&cfun_ai_get_dstsrc			},
 		// Aspects
 		{ "get_aggression", 		&cfun_ai_get_aggression           	},
 		{ "get_avoid", 			&cfun_ai_get_avoid			},
