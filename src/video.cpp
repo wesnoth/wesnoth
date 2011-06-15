@@ -351,6 +351,18 @@ void CVideo::make_test_fake(const unsigned width,
 
 }
 
+int CVideo::bppForMode( int x, int y, int flags)
+{
+	int test_values[3] = {getBpp(), 32, 16};
+	foreach(int &bpp, test_values) {
+		if(modePossible(x, y, bpp, flags) > 0) {
+			return bpp;
+		}
+	}
+
+	return 0;
+}
+
 int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal )
 {
 

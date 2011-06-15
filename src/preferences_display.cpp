@@ -104,11 +104,8 @@ void set_fullscreen(CVideo& video, const bool ison)
 	const std::pair<int,int>& res = resolution();
 	if(video.isFullScreen() != ison) {
 		const int flags = ison ? FULL_SCREEN : 0;
-		int bpp = video.modePossible(res.first,res.second,32,flags);
-		if (bpp <= 0) {
-			bpp = video.modePossible(res.first,res.second,16,flags);
-		}
-
+		int bpp = video.bppForMode(res.first, res.second, flags);
+        
 		if(bpp > 0) {
 			video.setMode(res.first,res.second,bpp,flags);
 			if(disp) {
@@ -168,10 +165,8 @@ bool set_resolution(CVideo& video
 	}
 
 	const int flags = fullscreen() ? FULL_SCREEN : 0;
-	int bpp = video.modePossible(width, height, 32, flags);
-	if(bpp == 0) {
-		bpp = video.modePossible(width, height, 16, flags);
-	}
+	int bpp = video.bppForMode(width, height, flags);
+
 	if(bpp != 0) {
 		video.setMode(width, height, bpp, flags);
 
@@ -180,6 +175,7 @@ bool set_resolution(CVideo& video
 		}
 
 	} else {
+        // grzywacz: is this even true?
 		gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
 		return false;
 	}
@@ -455,7 +451,7 @@ bool show_video_mode_dialog(display& disp)
 		std::cerr << "Can support any video mode\n";
 		// SDL says that all modes are possible, so it's OK to use a
 		// hardcoded list here. Include tiny and small gui since they
-		// will be filter out later if not needed.
+		// will be filtered out later if not needed.
 		static const SDL_Rect scr_modes[] = {
 			{ 0, 0,  320, 240  },
 			{ 0, 0,  640, 480  },
