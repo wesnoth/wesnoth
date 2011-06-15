@@ -613,6 +613,8 @@ int main(int argc, char** argv)
 
 		const int res = do_gameloop(argc,argv);
 		safe_exit(res);
+	} catch(boost::program_options::error& e) {
+		std::cerr << "Error in command line: " << e.what() << '\n';
 	} catch(CVideo::error&) {
 		std::cerr << "Could not initialize video. Exiting.\n";
 		return 1;
