@@ -96,8 +96,10 @@ class unit_animation
 			virtual ~particule();
 			bool need_update() const;
 			bool need_minimal_update() const;
+			typedef enum { UNSET,CYCLE,NO_CYCLE} cycle_state;
 			void override(int start_time
 					, int duration
+					, const cycle_state cycles
 					, const std::string& highlight = ""
 					, const std::string& blend_ratio =""
 					, Uint32 blend_color = 0

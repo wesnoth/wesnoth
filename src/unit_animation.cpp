@@ -389,28 +389,28 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().play_offscreen_ = false;
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),"0.9","",0,"","","~GS()");
 		animations.back().event_ = utils::split("ghosted");
+		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::UNSET,"0.9","",0,"","","~GS()");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,1,"0.4","",0,"","","~GS()");
 		animations.back().event_ = utils::split("disabled_ghosted");
+		animations.back().unit_anim_.override(0,1,particule::UNSET,"0.4","",0,"","","~GS()");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,300,"","0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255));
 		animations.back().event_ = utils::split("selected");
+		animations.back().unit_anim_.override(0,300,particule::UNSET,"","0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255));
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,600,"0~1:600");
 		animations.back().event_ = utils::split("recruited");
+		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,"0~1:600");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,600,"","1~0:600",display::rgb(255,255,255));
 		animations.back().event_ = utils::split("levelin");
+		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,"","1~0:600",display::rgb(255,255,255));
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,600,"","0~1:600,1",display::rgb(255,255,255));
 		animations.back().event_ = utils::split("levelout");
+		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,"","0~1:600,1",display::rgb(255,255,255));
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("pre_movement");
@@ -419,33 +419,33 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("post_movement");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,6800,"","",0,"0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
 		animations.back().event_ = utils::split("movement");
+		animations.back().unit_anim_.override(0,6800,particule::NO_CYCLE,"","",0,"0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),"","0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
+		animations.back().event_ = utils::split("defend");
+		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::NO_CYCLE,"","0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
 		animations.back().hits_.push_back(HIT);
 		animations.back().hits_.push_back(KILL);
-		animations.back().event_ = utils::split("defend");
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("defend");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(-150,300,"","",0,"0~0.6:150,0.6~0:150",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
 		animations.back().event_ = utils::split("attack");
+		animations.back().unit_anim_.override(-150,300,particule::NO_CYCLE,"","",0,"0~0.6:150,0.6~0:150",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
 		animations.back().primary_attack_filter_.push_back(config());
 		animations.back().primary_attack_filter_.back()["range"] = "melee";
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(-150,150);
 		animations.back().event_ = utils::split("attack");
+		animations.back().unit_anim_.override(-150,150,particule::NO_CYCLE);
 		animations.back().primary_attack_filter_.push_back(config());
 		animations.back().primary_attack_filter_.back()["range"] = "ranged";
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,600,"1~0:600");
 		animations.back().event_ = utils::split("death");
+		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,"1~0:600");
 		animations.back().sub_anims_["_death_sound"] = particule();
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
@@ -454,23 +454,23 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("victory");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,150,"1~0:150");
+		animations.back().unit_anim_.override(0,150,particule::NO_CYCLE,"1~0:150");
 		animations.back().event_ = utils::split("pre_teleport");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,150,"0~1:150,1");
+		animations.back().unit_anim_.override(0,150,particule::NO_CYCLE,"0~1:150,1");
 		animations.back().event_ = utils::split("post_teleport");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,300,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
 		animations.back().event_ = utils::split("healed");
+		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
 		animations.back().sub_anims_["_healed_sound"] = particule();
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,300,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
 		animations.back().event_ = utils::split("poisoned");
+		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
 		animations.back().sub_anims_["_poison_sound"] = particule();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
@@ -674,6 +674,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 void unit_animation::particule::override(int start_time
 		, int duration
+		, const cycle_state cycles
 		, const std::string& highlight
 		, const std::string& blend_ratio
 		, Uint32 blend_color
@@ -684,6 +685,14 @@ void unit_animation::particule::override(int start_time
 	set_begin_time(start_time);
 	parameters_.override(duration,highlight,blend_ratio,blend_color,offset,layer,modifiers);
 
+	if(cycles == CYCLE) {
+		cycles_=true;
+
+	} else if(cycles==NO_CYCLE) {
+		cycles_=false;
+	}else {
+		//nothing
+	}
 	if(get_animation_duration() < duration) {
 		const unit_frame & last_frame = get_last_frame();
 		add_frame(duration -get_animation_duration(), last_frame);
