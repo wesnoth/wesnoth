@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-30 20:47+0200\n"
+"POT-Creation-Date: 2011-06-15 11:45+0200\n"
 "PO-Revision-Date: 2011-05-25 21:24-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: none\n"
@@ -783,16 +783,6 @@ msgid ""
 "currently_doing_special_description"
 msgstr ""
 
-#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
-#: data/core/macros/deprecated-utils.cfg:416
-msgid ", MAX XP +25%"
-msgstr ""
-
-#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
-#: data/core/macros/deprecated-utils.cfg:416
-msgid "Max HP bonus +"
-msgstr ""
-
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
 msgid "You have come across a wishing well. What would you like to wish for?"
@@ -1493,11 +1483,11 @@ msgstr ""
 msgid "Turns run out"
 msgstr ""
 
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:101
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:102
 msgid "Early finish bonus."
 msgstr ""
 
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:103
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:104
 msgid "No early finish bonus."
 msgstr ""
 
@@ -1509,7 +1499,7 @@ msgstr ""
 msgid "(early finish bonus)"
 msgstr ""
 
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:111
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:112
 msgid "No gold carried over to the next scenario."
 msgstr ""
 
@@ -2423,40 +2413,45 @@ msgstr ""
 msgid "Notes:"
 msgstr ""
 
-#: data/lua/wml/objectives.lua:69
+#: data/lua/wml/objectives.lua:70
 msgid "(%d turns left)"
 msgstr ""
 
-#: data/lua/wml/objectives.lua:71
+#: data/lua/wml/objectives.lua:72
 msgid "(this turn left)"
 msgstr ""
 
-#: data/lua/wml/objectives.lua:113
+#: data/lua/wml/objectives.lua:114
 msgid "%d%% of gold carried over to the next scenario."
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:390 src/dialogs.cpp:634
+#: data/scenario-test.cfg:404 src/dialogs.cpp:634
 #: src/multiplayer_create.cpp:94
 msgid "OK"
 msgstr "Geatan"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:391 src/dialogs.cpp:635 src/dialogs.cpp:1073
+#: data/scenario-test.cfg:405 src/dialogs.cpp:635 src/dialogs.cpp:1073
 #: src/dialogs.cpp:1179 src/multiplayer_connect.cpp:1034
 #: src/multiplayer_create.cpp:93 src/multiplayer_wait.cpp:179
 msgid "Cancel"
 msgstr ""
 
+#. [set_menu_item]: id=reload_and_execute_lua_code
+#: data/scenario-test.cfg:738
+msgid "Reload and execute lua code"
+msgstr ""
+
 #. [language]
-#: data/scenario-test.cfg:3048
+#: data/scenario-test.cfg:3080
 msgid "very long"
 msgstr ""
 
 #. [language]
-#: data/scenario-test.cfg:3049
+#: data/scenario-test.cfg:3081
 msgid "electrical"
 msgstr "gastfyr"
 
@@ -2695,139 +2690,139 @@ msgstr ""
 msgid "(press $hotkey to keep moving)"
 msgstr ""
 
-#: src/addon/manager.cpp:415
+#: src/addon/manager.cpp:412
 #, fuzzy
 msgid "B"
 msgstr "B"
 
-#: src/addon/manager.cpp:418 src/dialogs.cpp:1106
+#: src/addon/manager.cpp:415 src/dialogs.cpp:1106
 #, fuzzy
 msgid "KB"
 msgstr "KB"
 
-#: src/addon/manager.cpp:421
+#: src/addon/manager.cpp:418
 #, fuzzy
 msgid "MB"
 msgstr "MB"
 
-#: src/addon/manager.cpp:424
+#: src/addon/manager.cpp:421
 #, fuzzy
 msgid "GB"
 msgstr "GB"
 
-#: src/addon/manager.cpp:457
+#: src/addon/manager.cpp:454
 msgid "addon_type^Campaign"
 msgstr ""
 
-#: src/addon/manager.cpp:459
+#: src/addon/manager.cpp:456
 msgid "addon_type^Scenario"
 msgstr ""
 
-#: src/addon/manager.cpp:461
+#: src/addon/manager.cpp:458
 msgid "addon_type^MP era"
 msgstr ""
 
-#: src/addon/manager.cpp:463
+#: src/addon/manager.cpp:460
 msgid "addon_type^MP faction"
 msgstr ""
 
-#: src/addon/manager.cpp:465
+#: src/addon/manager.cpp:462
 msgid "addon_type^MP map-pack"
 msgstr ""
 
-#: src/addon/manager.cpp:467
+#: src/addon/manager.cpp:464
 msgid "addon_type^MP scenario"
 msgstr ""
 
-#: src/addon/manager.cpp:469
+#: src/addon/manager.cpp:466
 msgid "addon_type^MP campaign"
 msgstr ""
 
-#: src/addon/manager.cpp:471
+#: src/addon/manager.cpp:468
 msgid "addon_type^Resources"
 msgstr ""
 
-#: src/addon/manager.cpp:473
+#: src/addon/manager.cpp:470
 msgid "addon_type^Other"
 msgstr ""
 
-#: src/addon/manager.cpp:475
+#: src/addon/manager.cpp:472
 msgid "addon_type^(unknown)"
 msgstr ""
 
-#: src/addon/manager.cpp:487 src/addon/manager.cpp:560 src/multiplayer.cpp:226
+#: src/addon/manager.cpp:484 src/addon/manager.cpp:557 src/multiplayer.cpp:226
 #: src/multiplayer.cpp:286 src/multiplayer_ui.cpp:83
 msgid "Connection timed out"
 msgstr ""
 
-#: src/addon/manager.cpp:490
+#: src/addon/manager.cpp:487
 msgid "The server responded with an error: \"$error|\""
 msgstr ""
 
-#: src/addon/manager.cpp:499
+#: src/addon/manager.cpp:496
 msgid "Terms"
 msgstr ""
 
-#: src/addon/manager.cpp:533
+#: src/addon/manager.cpp:530
 msgid "Sending add-on"
 msgstr ""
 
-#: src/addon/manager.cpp:537 src/addon/manager.cpp:562
+#: src/addon/manager.cpp:534 src/addon/manager.cpp:559
 msgid "The server responded with an error: \""
 msgstr ""
 
-#: src/addon/manager.cpp:540 src/addon/manager.cpp:565
+#: src/addon/manager.cpp:537 src/addon/manager.cpp:562
 #: src/multiplayer_wait.cpp:409
 msgid "Response"
 msgstr ""
 
-#: src/addon/manager.cpp:585
+#: src/addon/manager.cpp:582
 msgid "Downloading add-on: $addon_title|..."
 msgstr ""
 
-#: src/addon/manager.cpp:600
+#: src/addon/manager.cpp:597
 msgid ""
 "The add-on has an invalid file or directory name and cannot be installed."
 msgstr ""
 
-#: src/addon/manager.cpp:649
+#: src/addon/manager.cpp:646
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr ""
 
-#: src/addon/manager.cpp:650
+#: src/addon/manager.cpp:647
 msgid "Add-on Installed"
 msgstr ""
 
-#: src/addon/manager.cpp:750 src/addon/manager.cpp:936
-#: src/addon/manager.cpp:1148 src/dialogs.cpp:591 src/menu_events.cpp:212
+#: src/addon/manager.cpp:747 src/addon/manager.cpp:933
+#: src/addon/manager.cpp:1167 src/dialogs.cpp:591 src/menu_events.cpp:212
 #: src/menu_events.cpp:869
 msgid "Name"
 msgstr "Nama"
 
-#: src/addon/manager.cpp:750 src/addon/manager.cpp:1148
+#: src/addon/manager.cpp:747 src/addon/manager.cpp:1167
 msgid "Version"
 msgstr ""
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:937
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:934
+#: src/addon/manager.cpp:1168
 msgid "Author"
 msgstr ""
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:937
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:934
+#: src/addon/manager.cpp:1168
 msgid "Size"
 msgstr ""
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:1168
 #: src/menu_events.cpp:211 src/menu_events.cpp:868 src/menu_events.cpp:1523
 msgid "Type"
 msgstr ""
 
-#: src/addon/manager.cpp:800
+#: src/addon/manager.cpp:797
 msgid "Install dependencies"
 msgstr ""
 
-#: src/addon/manager.cpp:801
+#: src/addon/manager.cpp:798
 msgid ""
 "The selected add-on has the following dependency. Do you want to install it?"
 msgid_plural ""
@@ -2836,32 +2831,32 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager.cpp:830
+#: src/addon/manager.cpp:827
 msgid "Installation of a dependency failed"
 msgstr ""
 
-#: src/addon/manager.cpp:832
+#: src/addon/manager.cpp:829
 msgid ""
 "While the add-on has been installed, a dependency is missing. Try to update "
 "the installed add-ons."
 msgstr ""
 
-#: src/addon/manager.cpp:846
+#: src/addon/manager.cpp:843
 msgid "Installation failed"
 msgstr ""
 
-#: src/addon/manager.cpp:848 src/addon/manager.cpp:1076
+#: src/addon/manager.cpp:845 src/addon/manager.cpp:1073
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager.cpp:909
+#: src/addon/manager.cpp:906
 msgid "Outdated add-ons"
 msgstr ""
 
-#: src/addon/manager.cpp:911
+#: src/addon/manager.cpp:908
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -2871,166 +2866,174 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager.cpp:923
+#: src/addon/manager.cpp:920
 msgid "No add-ons to update"
 msgstr ""
 
-#: src/addon/manager.cpp:924
+#: src/addon/manager.cpp:921
 msgid "Could not find any updated add-ons on this server."
 msgstr ""
 
-#: src/addon/manager.cpp:936
+#: src/addon/manager.cpp:933
 msgid "New version"
 msgstr ""
 
-#: src/addon/manager.cpp:936
+#: src/addon/manager.cpp:933
 msgid "Old version"
 msgstr ""
 
-#: src/addon/manager.cpp:988
+#: src/addon/manager.cpp:985
 msgid "Update add-ons"
 msgstr ""
 
-#: src/addon/manager.cpp:989
+#: src/addon/manager.cpp:986
 msgid "Select an add-on to update:"
 msgstr ""
 
-#: src/addon/manager.cpp:1003
+#: src/addon/manager.cpp:1000
 msgid "Update all"
 msgstr ""
 
-#: src/addon/manager.cpp:1041 src/addon/manager.cpp:1058
-#: src/addon/manager.cpp:1323
+#: src/addon/manager.cpp:1038 src/addon/manager.cpp:1055
+#: src/addon/manager.cpp:1344
 msgid "Installation of some dependency failed"
 msgstr ""
 
-#: src/addon/manager.cpp:1043 src/addon/manager.cpp:1060
-#: src/addon/manager.cpp:1325
+#: src/addon/manager.cpp:1040 src/addon/manager.cpp:1057
+#: src/addon/manager.cpp:1346
 msgid ""
 "While the add-on has been installed, some dependency is missing. Try to "
 "update the installed add-ons."
 msgstr ""
 
-#: src/addon/manager.cpp:1074
+#: src/addon/manager.cpp:1071
 msgid "Update failed"
 msgstr ""
 
-#: src/addon/manager.cpp:1084
+#: src/addon/manager.cpp:1081
 msgid "Update succeeded"
 msgstr ""
 
-#: src/addon/manager.cpp:1085
+#: src/addon/manager.cpp:1082
 msgid "Add-on updated successfully."
 msgstr ""
 
-#: src/addon/manager.cpp:1086
+#: src/addon/manager.cpp:1083
 msgid "All add-ons updated successfully."
 msgstr ""
 
-#: src/addon/manager.cpp:1109
+#: src/addon/manager.cpp:1097
+msgid ""
+"It looks as if you are the author of '$addon|'. Downloading '$addon|' may "
+"overwrite any changes you have made since the last upload and may delete "
+"your pbl file. Do you really want to continue ?"
+msgstr ""
+
+#: src/addon/manager.cpp:1100 src/addon/manager.cpp:1408
+#: src/multiplayer.cpp:238
+msgid "Confirm"
+msgstr "Geatan"
+
+#: src/addon/manager.cpp:1128
 msgid "Connecting to add-ons server..."
 msgstr ""
 
-#: src/addon/manager.cpp:1112 src/network.cpp:398 src/network.cpp:406
+#: src/addon/manager.cpp:1131 src/network.cpp:398 src/network.cpp:406
 msgid "Could not connect to host."
 msgstr ""
 
-#: src/addon/manager.cpp:1120
+#: src/addon/manager.cpp:1139
 msgid "Requesting list of add-ons"
 msgstr ""
 
-#: src/addon/manager.cpp:1132
+#: src/addon/manager.cpp:1151
 msgid "An error occurred while communicating with the server."
 msgstr ""
 
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:1168
 msgid "Downloads"
 msgstr ""
 
-#: src/addon/manager.cpp:1246
+#: src/addon/manager.cpp:1265
 msgid "Publish add-on: "
 msgstr ""
 
-#: src/addon/manager.cpp:1252
+#: src/addon/manager.cpp:1271
 msgid "Delete add-on: "
 msgstr ""
 
-#: src/addon/manager.cpp:1258
+#: src/addon/manager.cpp:1277
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/addon/manager.cpp:1271
+#: src/addon/manager.cpp:1290
 msgid "Get add-ons"
 msgstr ""
 
-#: src/addon/manager.cpp:1272
+#: src/addon/manager.cpp:1291
 msgid "Choose the add-on to download."
 msgstr ""
 
-#: src/addon/manager.cpp:1273
+#: src/addon/manager.cpp:1292
 msgid "Download"
 msgstr ""
 
-#: src/addon/manager.cpp:1274
+#: src/addon/manager.cpp:1293
 msgid "Done"
 msgstr ""
 
-#: src/addon/manager.cpp:1286 src/dialogs.cpp:616 src/menu_events.cpp:939
+#: src/addon/manager.cpp:1305 src/dialogs.cpp:616 src/menu_events.cpp:939
 #: src/menu_events.cpp:1559
 msgid "Filter: "
 msgstr ""
 
-#: src/addon/manager.cpp:1291
+#: src/addon/manager.cpp:1310
 msgid "Description"
 msgstr ""
 
-#: src/addon/manager.cpp:1335
+#: src/addon/manager.cpp:1357
 msgid "Network communication error."
 msgstr ""
 
-#: src/addon/manager.cpp:1338
+#: src/addon/manager.cpp:1360
 msgid "Remote host disconnected."
 msgstr ""
 
-#: src/addon/manager.cpp:1341
+#: src/addon/manager.cpp:1363
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr ""
 
-#: src/addon/manager.cpp:1359
+#: src/addon/manager.cpp:1381
 msgid "You have no add-ons installed."
 msgstr ""
 
-#: src/addon/manager.cpp:1371
+#: src/addon/manager.cpp:1393
 msgid "Choose the add-on to remove."
 msgstr ""
 
-#: src/addon/manager.cpp:1371
+#: src/addon/manager.cpp:1393
 msgid "Uninstall add-ons"
 msgstr ""
 
-#: src/addon/manager.cpp:1373
+#: src/addon/manager.cpp:1395
 msgid "Remove"
 msgstr ""
 
-#: src/addon/manager.cpp:1380
+#: src/addon/manager.cpp:1402
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/addon/manager.cpp:1386 src/multiplayer.cpp:238
-msgid "Confirm"
-msgstr "Geatan"
-
-#: src/addon/manager.cpp:1399
+#: src/addon/manager.cpp:1421
 msgid "Add-on '$addon|' deleted."
 msgstr ""
 
-#: src/addon/manager.cpp:1404
+#: src/addon/manager.cpp:1426
 msgid "Add-on deleted"
 msgstr ""
 
-#: src/addon/manager.cpp:1412
+#: src/addon/manager.cpp:1434
 msgid "Add-on could not be deleted properly:"
 msgstr ""
 
@@ -3210,79 +3213,79 @@ msgstr ""
 msgid "Invalid color range: "
 msgstr ""
 
-#: src/game_controller.cpp:473 src/game_controller.cpp:1237
-msgid "The Battle for Wesnoth"
-msgstr "Ðæt Ƿig for Ƿesnoþ"
-
-#: src/game_controller.cpp:780 src/game_controller.cpp:798
+#: src/game_controller.cpp:625 src/game_controller.cpp:643
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/game_controller.cpp:783 src/game_controller.cpp:801
+#: src/game_controller.cpp:628 src/game_controller.cpp:646
 #: src/savegame.cpp:550
 msgid "The file you have tried to load is corrupt: '"
 msgstr ""
 
-#: src/game_controller.cpp:791
+#: src/game_controller.cpp:636
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game_controller.cpp:793
+#: src/game_controller.cpp:638
 msgid "File I/O Error while reading the game: '"
 msgstr ""
 
-#: src/game_controller.cpp:890
+#: src/game_controller.cpp:735
 msgid "No campaigns are available.\n"
 msgstr ""
 
-#: src/game_controller.cpp:1122
+#: src/game_controller.cpp:967
 msgid "Do you really want to start the server?"
 msgstr ""
 
-#: src/game_controller.cpp:1123
+#: src/game_controller.cpp:968
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game_controller.cpp:1127
+#: src/game_controller.cpp:972
 msgid "Don’t show again"
 msgstr ""
 
-#: src/game_controller.cpp:1198
+#: src/game_controller.cpp:1043
 msgid "Error while starting server: "
 msgstr ""
 
-#: src/game_controller.cpp:1200 src/playcampaign.cpp:108
+#: src/game_controller.cpp:1045 src/playcampaign.cpp:108
 #: src/playcampaign.cpp:373
 msgid "The game could not be loaded: "
 msgstr ""
 
-#: src/game_controller.cpp:1202 src/playcampaign.cpp:110
+#: src/game_controller.cpp:1047 src/playcampaign.cpp:110
 #: src/playcampaign.cpp:376
 msgid "Error while playing the game: "
 msgstr ""
 
-#: src/game_controller.cpp:1220 src/playcampaign.cpp:112
+#: src/game_controller.cpp:1065 src/playcampaign.cpp:112
 #: src/playcampaign.cpp:379
 msgid "The game map could not be loaded: "
 msgstr ""
 
-#: src/game_controller.cpp:1350
+#: src/game_controller.cpp:1082 src/game_controller_abstract.cpp:53
+msgid "The Battle for Wesnoth"
+msgstr "Ðæt Ƿig for Ƿesnoþ"
+
+#: src/game_controller.cpp:1195
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_controller.cpp:1357
+#: src/game_controller.cpp:1202
 msgid "ERROR DETAILS:"
 msgstr ""
 
-#: src/game_controller.cpp:1389
+#: src/game_controller.cpp:1234
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game_controller.cpp:1390
+#: src/game_controller.cpp:1235
 msgid "' (The game will now exit)"
 msgstr ""
 
@@ -4575,7 +4578,7 @@ msgstr ""
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
-#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:744
+#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:742
 msgid "Create Game"
 msgstr "Macian Gamen"
 
@@ -4771,88 +4774,88 @@ msgstr ""
 msgid " (Unknown Era)"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:893
+#: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:891
 msgid "Password Required"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:737 src/multiplayer_wait.cpp:178
+#: src/multiplayer_lobby.cpp:735 src/multiplayer_wait.cpp:178
 msgid "Game Lobby"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:742
+#: src/multiplayer_lobby.cpp:740
 msgid "Observe Game"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:743
+#: src/multiplayer_lobby.cpp:741
 msgid "Join Game"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:745
+#: src/multiplayer_lobby.cpp:743
 msgid "Quick Replays"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:746
+#: src/multiplayer_lobby.cpp:744
 msgid "Preferences"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:747
+#: src/multiplayer_lobby.cpp:745
 msgid "Quit"
 msgstr "Læfan"
 
-#: src/multiplayer_lobby.cpp:748
+#: src/multiplayer_lobby.cpp:746
 msgid "Apply Filter"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:749
+#: src/multiplayer_lobby.cpp:747
 msgid "Invert"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:750
+#: src/multiplayer_lobby.cpp:748
 msgid "Vacant Slots"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:751
+#: src/multiplayer_lobby.cpp:749
 msgid "Friends in Game"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:752
+#: src/multiplayer_lobby.cpp:750
 msgid "Search:"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:760
+#: src/multiplayer_lobby.cpp:758
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:763
+#: src/multiplayer_lobby.cpp:761
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:766
+#: src/multiplayer_lobby.cpp:764
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:770
+#: src/multiplayer_lobby.cpp:768
 msgid "Only show games that have at least one vacant slot"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:774
+#: src/multiplayer_lobby.cpp:772
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:780
+#: src/multiplayer_lobby.cpp:778
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:894
+#: src/multiplayer_lobby.cpp:892
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:895
+#: src/multiplayer_lobby.cpp:893
 msgid "Password: "
 msgstr ""
 
@@ -4967,7 +4970,7 @@ msgstr ""
 msgid "Error while reading the WML: "
 msgstr ""
 
-#: src/playcampaign.cpp:418 src/playsingle_controller.cpp:447
+#: src/playcampaign.cpp:418 src/playsingle_controller.cpp:452
 msgid "Game Over"
 msgstr ""
 
@@ -5073,29 +5076,29 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:448
+#: src/playsingle_controller.cpp:453
 msgid "The game is over."
 msgstr ""
 
-#: src/playsingle_controller.cpp:528
+#: src/playsingle_controller.cpp:533
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:686
+#: src/playsingle_controller.cpp:694
 msgid "It is now $name|’s turn"
 msgstr ""
 
-#: src/playsingle_controller.cpp:916
+#: src/playsingle_controller.cpp:931
 msgid "Scenario Report"
 msgstr ""
 
-#: src/playsingle_controller.cpp:919
+#: src/playsingle_controller.cpp:934
 msgid "Victory"
 msgstr ""
 
-#: src/playsingle_controller.cpp:920
+#: src/playsingle_controller.cpp:935
 msgid "You have emerged victorious!"
 msgstr ""
 
@@ -5483,7 +5486,7 @@ msgstr ""
 msgid "border_size should be between 0.0 and 0.5."
 msgstr ""
 
-#: src/tod_manager.cpp:117
+#: src/tod_manager.cpp:124
 msgid "No time of day has been defined."
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-30 20:47+0200\n"
+"POT-Creation-Date: 2011-06-15 11:45+0200\n"
 "PO-Revision-Date: 2010-09-02 11:07+0700\n"
 "Last-Translator: yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -817,16 +817,6 @@ msgid ""
 msgstr ""
 "Spesial: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
-
-#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
-#: data/core/macros/deprecated-utils.cfg:416
-msgid ", MAX XP +25%"
-msgstr ", AP Maks +25"
-
-#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
-#: data/core/macros/deprecated-utils.cfg:416
-msgid "Max HP bonus +"
-msgstr "Bonus darah maks +"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
@@ -1897,11 +1887,11 @@ msgstr ""
 msgid "Turns run out"
 msgstr "Giliran:"
 
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:101
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:102
 msgid "Early finish bonus."
 msgstr "Bonus menyelesaikan lebih awal."
 
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:103
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:104
 msgid "No early finish bonus."
 msgstr "Tidak ada bonus menyelesaikan lebih awal."
 
@@ -1914,7 +1904,7 @@ msgstr "<small>(bonus menyelesaikan lebih awal)</small>"
 msgid "(early finish bonus)"
 msgstr "Bonus menyelesaikan lebih awal."
 
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:111
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:112
 msgid "No gold carried over to the next scenario."
 msgstr "Tidak ada emas yang dibawa ke skenario berikutnya."
 
@@ -3094,41 +3084,46 @@ msgstr ""
 msgid "Notes:"
 msgstr ""
 
-#: data/lua/wml/objectives.lua:69
+#: data/lua/wml/objectives.lua:70
 msgid "(%d turns left)"
 msgstr ""
 
-#: data/lua/wml/objectives.lua:71
+#: data/lua/wml/objectives.lua:72
 msgid "(this turn left)"
 msgstr ""
 
-#: data/lua/wml/objectives.lua:113
+#: data/lua/wml/objectives.lua:114
 #, fuzzy
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "Tidak ada emas yang dibawa ke skenario berikutnya."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:390 src/dialogs.cpp:634
+#: data/scenario-test.cfg:404 src/dialogs.cpp:634
 #: src/multiplayer_create.cpp:94
 msgid "OK"
 msgstr "OK"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:391 src/dialogs.cpp:635 src/dialogs.cpp:1073
+#: data/scenario-test.cfg:405 src/dialogs.cpp:635 src/dialogs.cpp:1073
 #: src/dialogs.cpp:1179 src/multiplayer_connect.cpp:1034
 #: src/multiplayer_create.cpp:93 src/multiplayer_wait.cpp:179
 msgid "Cancel"
 msgstr "Batalkan"
 
+#. [set_menu_item]: id=reload_and_execute_lua_code
+#: data/scenario-test.cfg:738
+msgid "Reload and execute lua code"
+msgstr ""
+
 #. [language]
-#: data/scenario-test.cfg:3048
+#: data/scenario-test.cfg:3080
 msgid "very long"
 msgstr ""
 
 #. [language]
-#: data/scenario-test.cfg:3049
+#: data/scenario-test.cfg:3081
 #, fuzzy
 msgid "electrical"
 msgstr "otomatis"
@@ -3382,138 +3377,138 @@ msgstr "Unit terlihat! ($friendphrase, $enemyphrase)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(tekan $hotkey untuk pindah terus)"
 
-#: src/addon/manager.cpp:415
+#: src/addon/manager.cpp:412
 msgid "B"
 msgstr "B"
 
-#: src/addon/manager.cpp:418 src/dialogs.cpp:1106
+#: src/addon/manager.cpp:415 src/dialogs.cpp:1106
 msgid "KB"
 msgstr "KB"
 
-#: src/addon/manager.cpp:421
+#: src/addon/manager.cpp:418
 msgid "MB"
 msgstr "MB"
 
-#: src/addon/manager.cpp:424
+#: src/addon/manager.cpp:421
 msgid "GB"
 msgstr "GB"
 
-#: src/addon/manager.cpp:457
+#: src/addon/manager.cpp:454
 msgid "addon_type^Campaign"
 msgstr "Kampanye"
 
-#: src/addon/manager.cpp:459
+#: src/addon/manager.cpp:456
 msgid "addon_type^Scenario"
 msgstr "Skenario"
 
-#: src/addon/manager.cpp:461
+#: src/addon/manager.cpp:458
 msgid "addon_type^MP era"
 msgstr "Era MP"
 
-#: src/addon/manager.cpp:463
+#: src/addon/manager.cpp:460
 msgid "addon_type^MP faction"
 msgstr "Faction MP"
 
-#: src/addon/manager.cpp:465
+#: src/addon/manager.cpp:462
 msgid "addon_type^MP map-pack"
 msgstr "bundel peta MP"
 
-#: src/addon/manager.cpp:467
+#: src/addon/manager.cpp:464
 msgid "addon_type^MP scenario"
 msgstr "skenario MP"
 
-#: src/addon/manager.cpp:469
+#: src/addon/manager.cpp:466
 msgid "addon_type^MP campaign"
 msgstr "Kampanye MP"
 
-#: src/addon/manager.cpp:471
+#: src/addon/manager.cpp:468
 msgid "addon_type^Resources"
 msgstr "Resource"
 
-#: src/addon/manager.cpp:473
+#: src/addon/manager.cpp:470
 msgid "addon_type^Other"
 msgstr "tipe addon"
 
-#: src/addon/manager.cpp:475
+#: src/addon/manager.cpp:472
 msgid "addon_type^(unknown)"
 msgstr "(tidak diketahui)"
 
-#: src/addon/manager.cpp:487 src/addon/manager.cpp:560 src/multiplayer.cpp:226
+#: src/addon/manager.cpp:484 src/addon/manager.cpp:557 src/multiplayer.cpp:226
 #: src/multiplayer.cpp:286 src/multiplayer_ui.cpp:83
 msgid "Connection timed out"
 msgstr "Koneksi timed out."
 
-#: src/addon/manager.cpp:490
+#: src/addon/manager.cpp:487
 msgid "The server responded with an error: \"$error|\""
 msgstr "Server menjawab dengan error: \"$error|\""
 
-#: src/addon/manager.cpp:499
+#: src/addon/manager.cpp:496
 msgid "Terms"
 msgstr "Istilah"
 
-#: src/addon/manager.cpp:533
+#: src/addon/manager.cpp:530
 msgid "Sending add-on"
 msgstr "Mengirim add-on"
 
-#: src/addon/manager.cpp:537 src/addon/manager.cpp:562
+#: src/addon/manager.cpp:534 src/addon/manager.cpp:559
 msgid "The server responded with an error: \""
 msgstr "Server menjawab dengan error: \""
 
-#: src/addon/manager.cpp:540 src/addon/manager.cpp:565
+#: src/addon/manager.cpp:537 src/addon/manager.cpp:562
 #: src/multiplayer_wait.cpp:409
 msgid "Response"
 msgstr "Jawaban"
 
-#: src/addon/manager.cpp:585
+#: src/addon/manager.cpp:582
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Sedang download add-on: $addon_title|..."
 
-#: src/addon/manager.cpp:600
+#: src/addon/manager.cpp:597
 msgid ""
 "The add-on has an invalid file or directory name and cannot be installed."
 msgstr ""
 "Add-on ini memiliki file atau nama direktori yang tidak berlaku dan tidak "
 "bisa diinstal."
 
-#: src/addon/manager.cpp:649
+#: src/addon/manager.cpp:646
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Add-on '$addon_title|' sudah diinstal."
 
-#: src/addon/manager.cpp:650
+#: src/addon/manager.cpp:647
 msgid "Add-on Installed"
 msgstr "Tambahan sudah diinstal"
 
-#: src/addon/manager.cpp:750 src/addon/manager.cpp:936
-#: src/addon/manager.cpp:1148 src/dialogs.cpp:591 src/menu_events.cpp:212
+#: src/addon/manager.cpp:747 src/addon/manager.cpp:933
+#: src/addon/manager.cpp:1167 src/dialogs.cpp:591 src/menu_events.cpp:212
 #: src/menu_events.cpp:869
 msgid "Name"
 msgstr "Nama"
 
-#: src/addon/manager.cpp:750 src/addon/manager.cpp:1148
+#: src/addon/manager.cpp:747 src/addon/manager.cpp:1167
 msgid "Version"
 msgstr "Versi"
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:937
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:934
+#: src/addon/manager.cpp:1168
 msgid "Author"
 msgstr "Pencipta"
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:937
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:934
+#: src/addon/manager.cpp:1168
 msgid "Size"
 msgstr "Size"
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:1168
 #: src/menu_events.cpp:211 src/menu_events.cpp:868 src/menu_events.cpp:1523
 msgid "Type"
 msgstr "Tipe"
 
-#: src/addon/manager.cpp:800
+#: src/addon/manager.cpp:797
 #, fuzzy
 msgid "Install dependencies"
 msgstr "Ketergantungan"
 
-#: src/addon/manager.cpp:801
+#: src/addon/manager.cpp:798
 msgid ""
 "The selected add-on has the following dependency. Do you want to install it?"
 msgid_plural ""
@@ -3521,21 +3516,21 @@ msgid_plural ""
 "them?"
 msgstr[0] ""
 
-#: src/addon/manager.cpp:830
+#: src/addon/manager.cpp:827
 msgid "Installation of a dependency failed"
 msgstr ""
 
-#: src/addon/manager.cpp:832
+#: src/addon/manager.cpp:829
 msgid ""
 "While the add-on has been installed, a dependency is missing. Try to update "
 "the installed add-ons."
 msgstr ""
 
-#: src/addon/manager.cpp:846
+#: src/addon/manager.cpp:843
 msgid "Installation failed"
 msgstr ""
 
-#: src/addon/manager.cpp:848 src/addon/manager.cpp:1076
+#: src/addon/manager.cpp:845 src/addon/manager.cpp:1073
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
@@ -3543,11 +3538,11 @@ msgstr[0] ""
 "1 Add-on berikut tidak bisa didownload atau diupdate dengan sukses: Semua "
 "add-on berikut tidak bisa didownload atau diupdate dengan sukses:"
 
-#: src/addon/manager.cpp:909
+#: src/addon/manager.cpp:906
 msgid "Outdated add-ons"
 msgstr "Tambahan kuno"
 
-#: src/addon/manager.cpp:911
+#: src/addon/manager.cpp:908
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -3559,130 +3554,142 @@ msgstr[0] ""
 "tidak akan ditawarkan untuk diupdate. Beberapa add-on lokal kuno memiliki "
 "informasi publikasi tercantum. Mereka tidak akan ditawarkan untuk diupdate."
 
-#: src/addon/manager.cpp:923
+#: src/addon/manager.cpp:920
 msgid "No add-ons to update"
 msgstr "Tidak ada add-on untuk diupdate."
 
-#: src/addon/manager.cpp:924
+#: src/addon/manager.cpp:921
 msgid "Could not find any updated add-ons on this server."
 msgstr "Tidak bisa menemukan tambahan apapun di server ini."
 
-#: src/addon/manager.cpp:936
+#: src/addon/manager.cpp:933
 msgid "New version"
 msgstr "Versi baru"
 
-#: src/addon/manager.cpp:936
+#: src/addon/manager.cpp:933
 msgid "Old version"
 msgstr "Versi lama"
 
-#: src/addon/manager.cpp:988
+#: src/addon/manager.cpp:985
 #, fuzzy
 msgid "Update add-ons"
 msgstr "Update tambahan"
 
-#: src/addon/manager.cpp:989
+#: src/addon/manager.cpp:986
 msgid "Select an add-on to update:"
 msgstr "Pilih tambahan untuk diupdate:"
 
-#: src/addon/manager.cpp:1003
+#: src/addon/manager.cpp:1000
 msgid "Update all"
 msgstr "Update semua"
 
-#: src/addon/manager.cpp:1041 src/addon/manager.cpp:1058
-#: src/addon/manager.cpp:1323
+#: src/addon/manager.cpp:1038 src/addon/manager.cpp:1055
+#: src/addon/manager.cpp:1344
 msgid "Installation of some dependency failed"
 msgstr ""
 
-#: src/addon/manager.cpp:1043 src/addon/manager.cpp:1060
-#: src/addon/manager.cpp:1325
+#: src/addon/manager.cpp:1040 src/addon/manager.cpp:1057
+#: src/addon/manager.cpp:1346
 msgid ""
 "While the add-on has been installed, some dependency is missing. Try to "
 "update the installed add-ons."
 msgstr ""
 
-#: src/addon/manager.cpp:1074
+#: src/addon/manager.cpp:1071
 msgid "Update failed"
 msgstr "Update gagal"
 
-#: src/addon/manager.cpp:1084
+#: src/addon/manager.cpp:1081
 msgid "Update succeeded"
 msgstr "Update sukses"
 
-#: src/addon/manager.cpp:1085
+#: src/addon/manager.cpp:1082
 msgid "Add-on updated successfully."
 msgstr "Tambahan sudah diupdate dengan sukses."
 
-#: src/addon/manager.cpp:1086
+#: src/addon/manager.cpp:1083
 msgid "All add-ons updated successfully."
 msgstr "Semua tambahan sudah diupdate dengan sukses."
 
-#: src/addon/manager.cpp:1109
+#: src/addon/manager.cpp:1097
+msgid ""
+"It looks as if you are the author of '$addon|'. Downloading '$addon|' may "
+"overwrite any changes you have made since the last upload and may delete "
+"your pbl file. Do you really want to continue ?"
+msgstr ""
+
+#: src/addon/manager.cpp:1100 src/addon/manager.cpp:1408
+#: src/multiplayer.cpp:238
+msgid "Confirm"
+msgstr "Tegaskan"
+
+#: src/addon/manager.cpp:1128
 msgid "Connecting to add-ons server..."
 msgstr "Menyambungkan ke server tambahan..."
 
-#: src/addon/manager.cpp:1112 src/network.cpp:398 src/network.cpp:406
+#: src/addon/manager.cpp:1131 src/network.cpp:398 src/network.cpp:406
 msgid "Could not connect to host."
 msgstr "Tidak bisa bersambung ke host."
 
-#: src/addon/manager.cpp:1120
+#: src/addon/manager.cpp:1139
 msgid "Requesting list of add-ons"
 msgstr "Meminta daftar tambahan"
 
-#: src/addon/manager.cpp:1132
+#: src/addon/manager.cpp:1151
 msgid "An error occurred while communicating with the server."
 msgstr "Sebuah error terjadi ketika berkomunikasi dengan server."
 
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:1168
 msgid "Downloads"
 msgstr "Jumlah Download"
 
-#: src/addon/manager.cpp:1246
+#: src/addon/manager.cpp:1265
 msgid "Publish add-on: "
 msgstr "Terbitkan tambahan:"
 
-#: src/addon/manager.cpp:1252
+#: src/addon/manager.cpp:1271
 msgid "Delete add-on: "
 msgstr "Hapus tambahan:"
 
-#: src/addon/manager.cpp:1258
+#: src/addon/manager.cpp:1277
 msgid "There are no add-ons available for download from this server."
 msgstr "Tidak ada tambahan tersedia untuk didownload dari server ini."
 
-#: src/addon/manager.cpp:1271
+#: src/addon/manager.cpp:1290
 msgid "Get add-ons"
 msgstr "Dapatkan tambahan."
 
-#: src/addon/manager.cpp:1272
+#: src/addon/manager.cpp:1291
 msgid "Choose the add-on to download."
 msgstr "Pilih tambahan untuk didownload."
 
-#: src/addon/manager.cpp:1273
+#: src/addon/manager.cpp:1292
 #, fuzzy
 msgid "Download"
 msgstr "Jumlah Download"
 
-#: src/addon/manager.cpp:1274
+#: src/addon/manager.cpp:1293
 msgid "Done"
 msgstr ""
 
-#: src/addon/manager.cpp:1286 src/dialogs.cpp:616 src/menu_events.cpp:939
+#: src/addon/manager.cpp:1305 src/dialogs.cpp:616 src/menu_events.cpp:939
 #: src/menu_events.cpp:1559
 msgid "Filter: "
 msgstr "Filter:"
 
-#: src/addon/manager.cpp:1291
+#: src/addon/manager.cpp:1310
 msgid "Description"
 msgstr "Penjelasan"
 
-#: src/addon/manager.cpp:1335
+#: src/addon/manager.cpp:1357
 msgid "Network communication error."
 msgstr "Error komunikasi jaringan."
 
-#: src/addon/manager.cpp:1338
+#: src/addon/manager.cpp:1360
 msgid "Remote host disconnected."
 msgstr "Remote host terputus hubungan."
 
-#: src/addon/manager.cpp:1341
+#: src/addon/manager.cpp:1363
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -3690,40 +3697,36 @@ msgstr ""
 "Sebuah masalah terjadi ketika mencoba menciptakan file yang diperlukan untuk "
 "menginstal tambahan ini."
 
-#: src/addon/manager.cpp:1359
+#: src/addon/manager.cpp:1381
 msgid "You have no add-ons installed."
 msgstr "Anda tidak memiliki tambahan terinstal."
 
-#: src/addon/manager.cpp:1371
+#: src/addon/manager.cpp:1393
 msgid "Choose the add-on to remove."
 msgstr "Pilih tambahan yang mau dirubah."
 
-#: src/addon/manager.cpp:1371
+#: src/addon/manager.cpp:1393
 msgid "Uninstall add-ons"
 msgstr "Ubah tambahan"
 
-#: src/addon/manager.cpp:1373
+#: src/addon/manager.cpp:1395
 #, fuzzy
 msgid "Remove"
 msgstr "gerakan"
 
-#: src/addon/manager.cpp:1380
+#: src/addon/manager.cpp:1402
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Apakah anda yakin anda mau menghapus add-on '$addon|'?"
 
-#: src/addon/manager.cpp:1386 src/multiplayer.cpp:238
-msgid "Confirm"
-msgstr "Tegaskan"
-
-#: src/addon/manager.cpp:1399
+#: src/addon/manager.cpp:1421
 msgid "Add-on '$addon|' deleted."
 msgstr "Add-on '$addon|' sudah dihapus."
 
-#: src/addon/manager.cpp:1404
+#: src/addon/manager.cpp:1426
 msgid "Add-on deleted"
 msgstr "Tambahan sudah dihapus"
 
-#: src/addon/manager.cpp:1412
+#: src/addon/manager.cpp:1434
 msgid "Add-on could not be deleted properly:"
 msgstr "Tambahan tidak bisa dihapus dengan benar:"
 
@@ -3907,37 +3910,33 @@ msgstr "Gerakan:"
 msgid "Invalid color range: "
 msgstr "Jarak warna yang tidak berlaku:"
 
-#: src/game_controller.cpp:473 src/game_controller.cpp:1237
-msgid "The Battle for Wesnoth"
-msgstr "Peperangan untuk Wesnoth"
-
-#: src/game_controller.cpp:780 src/game_controller.cpp:798
+#: src/game_controller.cpp:625 src/game_controller.cpp:643
 msgid "The file you have tried to load is corrupt"
 msgstr "File yang anda coba load rusak"
 
-#: src/game_controller.cpp:783 src/game_controller.cpp:801
+#: src/game_controller.cpp:628 src/game_controller.cpp:646
 #: src/savegame.cpp:550
 msgid "The file you have tried to load is corrupt: '"
 msgstr "File yang anda coba load rusak: '"
 
-#: src/game_controller.cpp:791
+#: src/game_controller.cpp:636
 msgid "File I/O Error while reading the game"
 msgstr "Error file I/O ketika membaca permainan"
 
-#: src/game_controller.cpp:793
+#: src/game_controller.cpp:638
 #, fuzzy
 msgid "File I/O Error while reading the game: '"
 msgstr "Error file I/O ketika membaca permainan"
 
-#: src/game_controller.cpp:890
+#: src/game_controller.cpp:735
 msgid "No campaigns are available.\n"
 msgstr "Tidak ada kampanye yang tersedia.\n"
 
-#: src/game_controller.cpp:1122
+#: src/game_controller.cpp:967
 msgid "Do you really want to start the server?"
 msgstr "Apakah anda benar-benar hendak memulai server?"
 
-#: src/game_controller.cpp:1123
+#: src/game_controller.cpp:968
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -3945,45 +3944,49 @@ msgstr ""
 "Server tersebut akan bekerja di proses latar belakang sampai semua pemain "
 "sudah diputuskan."
 
-#: src/game_controller.cpp:1127
+#: src/game_controller.cpp:972
 msgid "Don’t show again"
 msgstr "Jangan tunjukkan lagi"
 
-#: src/game_controller.cpp:1198
+#: src/game_controller.cpp:1043
 msgid "Error while starting server: "
 msgstr "Error ketika memulai server:"
 
-#: src/game_controller.cpp:1200 src/playcampaign.cpp:108
+#: src/game_controller.cpp:1045 src/playcampaign.cpp:108
 #: src/playcampaign.cpp:373
 msgid "The game could not be loaded: "
 msgstr "Permainan tidak bisa diload:"
 
-#: src/game_controller.cpp:1202 src/playcampaign.cpp:110
+#: src/game_controller.cpp:1047 src/playcampaign.cpp:110
 #: src/playcampaign.cpp:376
 msgid "Error while playing the game: "
 msgstr "Error ketika memainkan permainan:"
 
-#: src/game_controller.cpp:1220 src/playcampaign.cpp:112
+#: src/game_controller.cpp:1065 src/playcampaign.cpp:112
 #: src/playcampaign.cpp:379
 msgid "The game map could not be loaded: "
 msgstr "Peta permainan tidak bisa diload:"
 
-#: src/game_controller.cpp:1350
+#: src/game_controller.cpp:1082 src/game_controller_abstract.cpp:53
+msgid "The Battle for Wesnoth"
+msgstr "Peperangan untuk Wesnoth"
+
+#: src/game_controller.cpp:1195
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
 "1 Add-on berikut memiliki error dan tidak bisa diload: Semua add-on berikut "
 "memiliki error dan tidak bisa diload:"
 
-#: src/game_controller.cpp:1357
+#: src/game_controller.cpp:1202
 msgid "ERROR DETAILS:"
 msgstr "RINCI-RINCI ERROR:"
 
-#: src/game_controller.cpp:1389
+#: src/game_controller.cpp:1234
 msgid "Error loading game configuration files: '"
 msgstr "Error meload file konfigurasi permainan: '"
 
-#: src/game_controller.cpp:1390
+#: src/game_controller.cpp:1235
 msgid "' (The game will now exit)"
 msgstr "'(Permainan akan sekarang ditutup)"
 
@@ -5346,7 +5349,7 @@ msgstr "Menunggu pemain-pemain menggabungkan diri..."
 msgid "Waiting for players to choose factions..."
 msgstr "Menunggu pemain-pemain menggabungkan diri..."
 
-#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:744
+#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:742
 msgid "Create Game"
 msgstr "Membuat Permainan"
 
@@ -5544,59 +5547,59 @@ msgstr "--tidak ada permainan dibuka--"
 msgid " (Unknown Era)"
 msgstr "(Era Tidak Diketahui)"
 
-#: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:893
+#: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:891
 msgid "Password Required"
 msgstr "Kata Sandi Diperlukan"
 
-#: src/multiplayer_lobby.cpp:737 src/multiplayer_wait.cpp:178
+#: src/multiplayer_lobby.cpp:735 src/multiplayer_wait.cpp:178
 msgid "Game Lobby"
 msgstr "Lobi Permainan"
 
-#: src/multiplayer_lobby.cpp:742
+#: src/multiplayer_lobby.cpp:740
 msgid "Observe Game"
 msgstr "Tinjau Permainan"
 
-#: src/multiplayer_lobby.cpp:743
+#: src/multiplayer_lobby.cpp:741
 msgid "Join Game"
 msgstr "Bergabung Permainan "
 
-#: src/multiplayer_lobby.cpp:745
+#: src/multiplayer_lobby.cpp:743
 msgid "Quick Replays"
 msgstr "Replay Cepat"
 
-#: src/multiplayer_lobby.cpp:746
+#: src/multiplayer_lobby.cpp:744
 msgid "Preferences"
 msgstr "Pilihan"
 
-#: src/multiplayer_lobby.cpp:747
+#: src/multiplayer_lobby.cpp:745
 msgid "Quit"
 msgstr "Keluar"
 
-#: src/multiplayer_lobby.cpp:748
+#: src/multiplayer_lobby.cpp:746
 msgid "Apply Filter"
 msgstr "Filter:"
 
-#: src/multiplayer_lobby.cpp:749
+#: src/multiplayer_lobby.cpp:747
 msgid "Invert"
 msgstr "Balikkan"
 
-#: src/multiplayer_lobby.cpp:750
+#: src/multiplayer_lobby.cpp:748
 msgid "Vacant Slots"
 msgstr "Tempat kosong"
 
-#: src/multiplayer_lobby.cpp:751
+#: src/multiplayer_lobby.cpp:749
 msgid "Friends in Game"
 msgstr "Teman - teman di dalam permainan"
 
-#: src/multiplayer_lobby.cpp:752
+#: src/multiplayer_lobby.cpp:750
 msgid "Search:"
 msgstr "Cari"
 
-#: src/multiplayer_lobby.cpp:760
+#: src/multiplayer_lobby.cpp:758
 msgid "Skip quickly to the active turn when observing"
 msgstr "Lompati dengan cepat ke giliran aktif ketika meninjau"
 
-#: src/multiplayer_lobby.cpp:763
+#: src/multiplayer_lobby.cpp:761
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
@@ -5604,7 +5607,7 @@ msgstr ""
 "Mungkinkan game untuk menyaring. Jika tidak dikendalikan semua game "
 "ditunjukkan, dengan mengabaikan saringan manapun ."
 
-#: src/multiplayer_lobby.cpp:766
+#: src/multiplayer_lobby.cpp:764
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
@@ -5612,26 +5615,26 @@ msgstr ""
 "Menunjukkan semua game yang  * not* tidak dapat disaring. sangat bermanfaat "
 "untuk menyembunyikan game yang kamu tidak tertarik."
 
-#: src/multiplayer_lobby.cpp:770
+#: src/multiplayer_lobby.cpp:768
 msgid "Only show games that have at least one vacant slot"
 msgstr "Hanya menunjukkan game yang mempunyai sedikitnya satu slot lowong"
 
-#: src/multiplayer_lobby.cpp:774
+#: src/multiplayer_lobby.cpp:772
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 "Hanya menunjukkan game yang dimainkan atau diamati oleh sedikitnya salah "
 "satu dari para teman mu"
 
-#: src/multiplayer_lobby.cpp:780
+#: src/multiplayer_lobby.cpp:778
 msgid "Only show games whose title or description contain the entered text"
 msgstr "Hanya menunjukkan game yang judulnya atau uraiannya berisi teks"
 
-#: src/multiplayer_lobby.cpp:894
+#: src/multiplayer_lobby.cpp:892
 msgid "Joining this game requires a password."
 msgstr "Bergabung permainan ini memerlukan kata sandi."
 
-#: src/multiplayer_lobby.cpp:895
+#: src/multiplayer_lobby.cpp:893
 msgid "Password: "
 msgstr "Kata Sandi:"
 
@@ -5747,7 +5750,7 @@ msgstr "Anda sudah kalah!"
 msgid "Error while reading the WML: "
 msgstr "Error ketika membaca WML:"
 
-#: src/playcampaign.cpp:418 src/playsingle_controller.cpp:447
+#: src/playcampaign.cpp:418 src/playsingle_controller.cpp:452
 msgid "Game Over"
 msgstr "Permainan Selesai"
 
@@ -5863,11 +5866,11 @@ msgstr[0] ""
 "Anda akan memulai skenario berikutnya dengan $gold atau emas permulaan "
 "minimum terpasang, yang manapun yang lebih tinggi."
 
-#: src/playsingle_controller.cpp:448
+#: src/playsingle_controller.cpp:453
 msgid "The game is over."
 msgstr "Permainan selesai."
 
-#: src/playsingle_controller.cpp:528
+#: src/playsingle_controller.cpp:533
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -5876,19 +5879,19 @@ msgstr ""
 "Jaringan terputus, dan permainan ini tidak bisa diteruskan. Apakah anda "
 "ingin menyimpan permainan ini?"
 
-#: src/playsingle_controller.cpp:686
+#: src/playsingle_controller.cpp:694
 msgid "It is now $name|’s turn"
 msgstr "Sekarang giliran $name|"
 
-#: src/playsingle_controller.cpp:916
+#: src/playsingle_controller.cpp:931
 msgid "Scenario Report"
 msgstr "Laporan Skenario"
 
-#: src/playsingle_controller.cpp:919
+#: src/playsingle_controller.cpp:934
 msgid "Victory"
 msgstr "Menang"
 
-#: src/playsingle_controller.cpp:920
+#: src/playsingle_controller.cpp:935
 msgid "You have emerged victorious!"
 msgstr "Anda sudah menang!"
 
@@ -6319,7 +6322,7 @@ msgstr "Desa anda"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "ukuran_batas harus di antara 0.0 dan 0.5"
 
-#: src/tod_manager.cpp:117
+#: src/tod_manager.cpp:124
 msgid "No time of day has been defined."
 msgstr "Tidak ada jam hari yang sudah ditetapkan."
 
@@ -6398,6 +6401,12 @@ msgstr "baik"
 #: src/unit_types.cpp:966
 msgid "female^neutral"
 msgstr "netral"
+
+#~ msgid ", MAX XP +25%"
+#~ msgstr ", AP Maks +25"
+
+#~ msgid "Max HP bonus +"
+#~ msgstr "Bonus darah maks +"
 
 #, fuzzy
 #~ msgid ""

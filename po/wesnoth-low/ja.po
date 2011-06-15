@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-30 20:47+0200\n"
+"POT-Creation-Date: 2011-06-15 11:45+0200\n"
 "PO-Revision-Date: 2011-04-07 18:45+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -395,7 +395,7 @@ msgstr ""
 "これから始まるのは、Kalenz と Wesnoth が人間族の時代のエルフ達の物語でもあり"
 "ます。"
 
-#. [side]: type=Elvish Marshal, id=El'Isomithir
+#. [side]: type=Elvish Marshal, id=Eradion
 #. [side]
 #. [side]: id=Velon, type=Elvish Captain
 #. [side]: type=Elvish Ranger, id=Antaril
@@ -519,7 +519,7 @@ msgstr "T’baran"
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:327
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:133
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:166
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:109
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:106
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_Book.cfg:106
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_Book.cfg:146
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:238
@@ -584,7 +584,7 @@ msgstr "Velon を最後まで守りきること"
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:245
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:410
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:393
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:201
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:198
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_Book.cfg:221
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:418
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_Must_Die.cfg:242
@@ -606,7 +606,7 @@ msgstr "Kalenz の死"
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:249
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:414
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:397
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:205
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:202
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_Book.cfg:225
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:422
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_Must_Die.cfg:246
@@ -920,7 +920,7 @@ msgstr "Grugl を倒す"
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:253
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:619
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:405
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:213
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:210
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_Book.cfg:229
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:426
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_Siege.cfg:274
@@ -1073,8 +1073,10 @@ msgstr "Galtrid の死"
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:858
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:938
-msgid "Death of El'Isomithir"
-msgstr "El'Isomithir の死"
+#, fuzzy
+#| msgid "Death of Uradredia"
+msgid "Death of Eradion"
+msgstr "Uradredia の死"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian_under_Attack.cfg:873
@@ -1327,26 +1329,26 @@ msgstr "Trigr"
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:205
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_The_Saurian_Treasury.cfg:218
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_The_Saurian_Treasury.cfg:338
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:197
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:194
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_Siege.cfg:254
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:258
 msgid "Defeat all enemy leaders"
 msgstr "すべての敵リーダーを倒す"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:310
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:318
 msgid ""
 "It seems that we are too late. The Treasury has fallen to the Saurians..."
 msgstr ""
 "どうやら遅すぎたようだな。宝物庫は既にトカゲ族の手に落ちてしまったか……。"
 
 #. [message]: id=Huraldur
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:314
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:322
 msgid "And I see the remains of the garrison has been taken prisoner."
 msgstr "残っていた守備隊は捕虜となったようです。"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:324
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:332
 msgid ""
 "We must free them and make these saurians pay. Attack and leave no one alive!"
 msgstr ""
@@ -1355,7 +1357,7 @@ msgstr ""
 
 # %%check
 #. [message]: role=liberator
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:330
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:338
 msgid ""
 "I will do as you say, sneak in and free them. Wish me good fortune and no "
 "discovery!"
@@ -1364,12 +1366,12 @@ msgstr ""
 
 # %c
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:334
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:342
 msgid "Go swiftly and silently."
 msgstr "静かにかつ迅速に出撃してくれ。"
 
 #. [message]: id=Shurm
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:346
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:354
 msgid ""
 "More elves are coming! Too late, we’ve taken all your gold and we’ll get "
 "more gold from the orcs for helping them out!"
@@ -1378,27 +1380,27 @@ msgstr ""
 "恩を売ってもっと金を得てやろう！"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:350
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:358
 msgid "You will not live to enjoy it!"
 msgstr "宝を自由にさせるまでなど、お前達を生かしておくものか！"
 
 #. [unit]: id=Arkildur, type=Elvish Fighter
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:376
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:384
 msgid "Arkildur"
 msgstr "Arkildur"
 
 #. [unit]: id=Tameril-Isimeril, type=Elvish Archer
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:393
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:401
 msgid "Tameril-Isimeril"
 msgstr "Tameril-Isimeril"
 
 #. [unit]: id=Laril, type=Elvish Archer
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:412
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:420
 msgid "Laril"
 msgstr "Laril"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:431
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:439
 msgid ""
 "We are free! My lord Kalenz, from this day forward I and my men are your "
 "sworn followers. And there is that which you should know about the treasure "
@@ -1409,7 +1411,7 @@ msgstr ""
 "い……。"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:435
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:443
 msgid ""
 "I accept your service gratefully, for I will need every sword and bow and "
 "spell with which to defeat these invaders. There will be time for talk "
@@ -1419,18 +1421,18 @@ msgstr ""
 "と呪術の全てが必要だからです。お話は後です。今は戦わなくては！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:446
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:449
 msgid "From now on the elves will be able to recruit shamans."
 msgstr "これよりエルフ族は、呪術者を雇用できるようになります。"
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:466
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:469
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_The_Saurian_Treasury.cfg:228
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_The_Saurian_Treasury.cfg:348
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:257
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:418
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:401
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:209
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:206
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_Book.cfg:233
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:430
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_Siege.cfg:266
@@ -1442,7 +1444,7 @@ msgstr "Cleodil の死"
 
 # %check
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:485
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:488
 msgid ""
 "Without their leaders, the saurians flee in panic. Let us free the "
 "treasury’s garrison before they can find it in them to rally and return."
@@ -1451,7 +1453,7 @@ msgstr ""
 "し、戻ってきて見つけ出す前に宝物守備隊を解放しよう。"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:496
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:499
 msgid ""
 "We have defeated the saurians and freed the garrison, and that is no small "
 "thing... but our gold is gone."
@@ -1460,7 +1462,7 @@ msgstr ""
 "てしまった。"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:501
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:504
 msgid ""
 "The saurians happily carried away the treasury gold, but they had come here "
 "looking for something more specific... some individual object they called "
@@ -1473,7 +1475,7 @@ msgstr ""
 "く分かりませんでした。"
 
 #. [message]: race=elf
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:505
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:508
 msgid ""
 "The war with the Orcs goes poorly. The Ka’lian will need that gold back to "
 "buy arms and food, to hire artisans, to support its armies."
@@ -1482,7 +1484,7 @@ msgstr ""
 "装備を整える職人たちを雇うために資金を取り戻さなくてはならない。"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:509
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:512
 msgid ""
 "We will hunt down those saurians and retrieve our gold. More, we must teach "
 "them that it is lethal folly to raid us, else they will plague us like rats."
@@ -1492,12 +1494,12 @@ msgstr ""
 "う。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:520
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:523
 msgid "I am ashamed to die at the hands of tree-shaggers!"
 msgstr "木っ端共ごときの手にかかって死ぬとは何という屈辱だ！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:524
+#: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:527
 msgid ""
 "When you meet your kin in the dry hells, tell them you perished at the hands "
 "of Kalenz’s elves!"
@@ -1868,11 +1870,12 @@ msgstr ""
 "Wesmere に戻る間は驚くほど平穏でした、オーク族は敗北後再編成の為撤退したのは"
 "明らかでした。Kalenz とその一隊の帰還は、ぎりぎりの所で間に合いました……。"
 
-#. [side]: type=Elvish Marshal, id=El'Isomithir
+#. [side]: type=Elvish Marshal, id=Eradion
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:167
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:115
-msgid "El’Isomithir"
-msgstr "El’Isomithir"
+#, fuzzy
+#| msgid "Iradia"
+msgid "Eradion"
+msgstr "Iradia"
 
 #. [side]: type=Orcish Warlord, id=Mordrum
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:197
@@ -2347,19 +2350,19 @@ msgstr "評議会の厳しい選択"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_Hard_Choices.cfg:35
-#: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_Hard_Choices.cfg:65
-#: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_Ruling.cfg:51
-msgid "Iradia"
-msgstr "Iradia"
-
-#. [part]
-#: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_Hard_Choices.cfg:35
 msgid ""
 "Kalenz, you have won a great victory! Wesmere is safe. But... for what cause "
 "have you invited a dwarf to the elvish council? This is most unusual!"
 msgstr ""
 "Kalenz、貴殿は大きな戦果を上げた！ Wesmere は平穏になった。しかし……何ゆえエル"
 "フ評議会にドワーフを招いたのだ？ これは甚だ尋常ではないぞ！"
+
+#. [part]
+#: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_Hard_Choices.cfg:35
+#: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_Hard_Choices.cfg:65
+#: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_Ruling.cfg:51
+msgid "Lady Dionli"
+msgstr ""
 
 # 我々と共に戦い、この評議会のために足を運んで頂きました。
 #. [part]
@@ -2375,6 +2378,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_Hard_Choices.cfg:45
+#: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_Ruling.cfg:36
+#, fuzzy
+#| msgid "El’Isomithir"
+msgid "El'Isomithir"
+msgstr "El’Isomithir"
+
+#. [part]
+#: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_Hard_Choices.cfg:45
 msgid ""
 "Leave the Humans out of this. King Haldric has broken the treaty we signed "
 "with him eleven years ago, and has sent back all our emissaries. When he "
@@ -2384,12 +2395,6 @@ msgstr ""
 "その団結から人間族は外す。Haldric 王は 11 年前に締結した条約を破り、我々の使"
 "節を全員追い返したのだ。Haldric が大陸の海岸に着いた時は謙虚であったが、今や"
 "彼の傲慢さは限度がない。オーク族が戦争を仕掛けるなど思っても見ないようだ。"
-
-#. [part]
-#: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_Hard_Choices.cfg:45
-#: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_Ruling.cfg:36
-msgid "Uripur"
-msgstr "Uripur"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_Hard_Choices.cfg:50
@@ -2829,7 +2834,7 @@ msgstr ""
 #. [side]: type=Gryphon, id=Gryphon Leader
 #. [side]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:490
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:143
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:140
 msgid "Creatures"
 msgstr "Creatures"
 
@@ -2916,29 +2921,29 @@ msgstr ""
 "れました……。"
 
 #. [side]: type=Troll Warrior, id=Tafrul
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:103
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:100
 msgid "Tafrul"
 msgstr "Tafrul"
 
 # %% Gryphon Leader
 #. [side]: type=Gryphon, id=Gryphon Leader
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:137
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:134
 msgid "Gryphon Leader"
 msgstr "Gryphon のリーダー"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:193
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:190
 msgid "Reach the signpost with Kalenz"
 msgstr "Kalenz が道しるべに到達すること"
 
 # %LAN
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:231
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:228
 msgid "I can hardly see with all that mist around, but I can sense danger."
 msgstr "霧で周りは殆ど見えないが、危険は感じるぞ。"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:235
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:232
 msgid ""
 "Told ye it would be no picnic excursion, elf-boy. Are ye lily-livered to "
 "continue?"
@@ -2947,7 +2952,7 @@ msgstr ""
 
 # %%
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:239
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:236
 msgid ""
 "Gentlemen, don’t squabble. We cannot go back now. But be watchful; I don’t "
 "like the feel of this country one bit."
@@ -2957,13 +2962,13 @@ msgstr ""
 
 # %%
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:243
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:240
 msgid "I, too, feel we are in great danger."
 msgstr "私も同じく、私たちが重大な危険の中にいると感じてます。"
 
 # %%
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:247
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:244
 msgid ""
 "Cleodil, stay close to me. If there is anything real behind this aura of "
 "dread, likely your keen senses will find it first and I will want to know "
@@ -2974,17 +2979,17 @@ msgstr ""
 "かすぐに知りたいのです。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:276
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:273
 msgid "Onwards!"
 msgstr "行こう！"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:280
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:277
 msgid "Yer doing pretty well, elf-boy!"
 msgstr "よくやったわい、エルフの坊主！"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:292
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:289
 msgid ""
 "There is some greasy-looking smoke rising ahead of us! Kalenz... my lord... "
 "I feel something terribly wrong is happening!"
@@ -2993,30 +2998,30 @@ msgstr ""
 "恐ろしいことが起こっているようでなりません！"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:296
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:293
 msgid "Crelanu’s place should be close now, as I remember. Quickly, this way!"
 msgstr ""
 "わしの記憶によれば、Crelanu の居場所はこの近くのはずじゃい。急げ、こっちだ！"
 
 #. [unit]: type=Yeti, id=Krulg
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:317
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:314
 msgid "Krulg"
 msgstr "Krulg"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:329
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:326
 msgid "Watch out!"
 msgstr "気をつけろ！"
 
 # 視界の広いCleodilが発見しても違和感のないように変更
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:333
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:330
 msgid "It’s... it’s monstrous!"
 msgstr "ば……化け物っ！"
 
 # %% たぶんイエティ
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:337
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:334
 msgid ""
 "I sense no malice in it; we are the interlopers here. Spare it if you can."
 msgstr ""
@@ -3025,7 +3030,7 @@ msgstr ""
 
 # %%
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:341
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:338
 msgid ""
 "Do as Cleodil says. We have enemies sufficient without provoking new ones."
 msgstr ""
@@ -3033,12 +3038,12 @@ msgstr ""
 "だ。"
 
 #. [unit]: type=Yeti, id=Tralg
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:352
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:349
 msgid "Tralg"
 msgstr "Tralg"
 
 #. [unit]: type=Yeti, id=Drolg
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:365
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:362
 msgid "Drolg"
 msgstr "Drolg"
 
@@ -5781,6 +5786,10 @@ msgstr ""
 "す。これはターンの初めに Cleodil は Kalenz に付加ポイントを付けて回復させま"
 "す。"
 
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:115
+msgid "El’Isomithir"
+msgstr "El’Isomithir"
+
 # %%
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:153
@@ -5884,6 +5893,12 @@ msgstr "ダメだ！ 手遅れだ……。"
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:35
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "あなたは $amount_gold gold 奪回しました。"
+
+#~ msgid "Death of El'Isomithir"
+#~ msgstr "El'Isomithir の死"
+
+#~ msgid "Uripur"
+#~ msgstr "Uripur"
 
 #~ msgid ""
 #~ "Now that Olurf and his tribe joined you, you are able to recruit Dwarves."

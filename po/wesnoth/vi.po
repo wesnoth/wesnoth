@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-30 20:47+0200\n"
+"POT-Creation-Date: 2011-06-15 11:45+0200\n"
 "PO-Revision-Date: 2011-06-14 14:48+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -777,16 +777,6 @@ msgid ""
 msgstr ""
 "Đặc biệt: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
-
-#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
-#: data/core/macros/deprecated-utils.cfg:416
-msgid ", MAX XP +25%"
-msgstr ", KN tối đa +25%"
-
-#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
-#: data/core/macros/deprecated-utils.cfg:416
-msgid "Max HP bonus +"
-msgstr "Thưởng lượng máu tối đa +"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
@@ -1927,11 +1917,11 @@ msgstr ""
 msgid "Turns run out"
 msgstr "Hết lượt"
 
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:101
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:102
 msgid "Early finish bonus."
 msgstr "Thưởng kết thúc sớm."
 
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:103
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:104
 msgid "No early finish bonus."
 msgstr "Không có thưởng kết thúc sớm."
 
@@ -1943,7 +1933,7 @@ msgstr "<small>(thưởng kết thúc sớm)</small>"
 msgid "(early finish bonus)"
 msgstr "(thưởng kết thúc sớm)"
 
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:111
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:112
 msgid "No gold carried over to the next scenario."
 msgstr "Không có lượng vàng nào được mang sang màn chơi kế tiếp."
 
@@ -3072,40 +3062,45 @@ msgstr "Lượng vàng mang sang:"
 msgid "Notes:"
 msgstr "Lưu ý:"
 
-#: data/lua/wml/objectives.lua:69
+#: data/lua/wml/objectives.lua:70
 msgid "(%d turns left)"
 msgstr "(%d lượt còn lại)"
 
-#: data/lua/wml/objectives.lua:71
+#: data/lua/wml/objectives.lua:72
 msgid "(this turn left)"
 msgstr "(lượt còn lại)"
 
-#: data/lua/wml/objectives.lua:113
+#: data/lua/wml/objectives.lua:114
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% lượng vàng được mang sang màn kế tiếp."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:390 src/dialogs.cpp:634
+#: data/scenario-test.cfg:404 src/dialogs.cpp:634
 #: src/multiplayer_create.cpp:94
 msgid "OK"
 msgstr "Đồng ý"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:391 src/dialogs.cpp:635 src/dialogs.cpp:1073
+#: data/scenario-test.cfg:405 src/dialogs.cpp:635 src/dialogs.cpp:1073
 #: src/dialogs.cpp:1179 src/multiplayer_connect.cpp:1034
 #: src/multiplayer_create.cpp:93 src/multiplayer_wait.cpp:179
 msgid "Cancel"
 msgstr "Hủy bỏ"
 
+#. [set_menu_item]: id=reload_and_execute_lua_code
+#: data/scenario-test.cfg:738
+msgid "Reload and execute lua code"
+msgstr ""
+
 #. [language]
-#: data/scenario-test.cfg:3048
+#: data/scenario-test.cfg:3080
 msgid "very long"
 msgstr "rất dài"
 
 #. [language]
-#: data/scenario-test.cfg:3049
+#: data/scenario-test.cfg:3081
 msgid "electrical"
 msgstr "điện tử"
 
@@ -3340,137 +3335,137 @@ msgstr "Nhìn thấy đơn vị quân! ($friendphrase, $enemyphrase)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(nhấn $hotkey để tiếp tục di chuyển)"
 
-#: src/addon/manager.cpp:415
+#: src/addon/manager.cpp:412
 msgid "B"
 msgstr "B"
 
-#: src/addon/manager.cpp:418 src/dialogs.cpp:1106
+#: src/addon/manager.cpp:415 src/dialogs.cpp:1106
 msgid "KB"
 msgstr "KB"
 
-#: src/addon/manager.cpp:421
+#: src/addon/manager.cpp:418
 msgid "MB"
 msgstr "MB"
 
-#: src/addon/manager.cpp:424
+#: src/addon/manager.cpp:421
 msgid "GB"
 msgstr "GB"
 
-#: src/addon/manager.cpp:457
+#: src/addon/manager.cpp:454
 msgid "addon_type^Campaign"
 msgstr "Chiến dịch"
 
-#: src/addon/manager.cpp:459
+#: src/addon/manager.cpp:456
 msgid "addon_type^Scenario"
 msgstr "Màn chơi"
 
-#: src/addon/manager.cpp:461
+#: src/addon/manager.cpp:458
 msgid "addon_type^MP era"
 msgstr "Thời đại NNC"
 
-#: src/addon/manager.cpp:463
+#: src/addon/manager.cpp:460
 msgid "addon_type^MP faction"
 msgstr "Liên minh NNC"
 
-#: src/addon/manager.cpp:465
+#: src/addon/manager.cpp:462
 msgid "addon_type^MP map-pack"
 msgstr "Gói bản đồ NNC"
 
-#: src/addon/manager.cpp:467
+#: src/addon/manager.cpp:464
 msgid "addon_type^MP scenario"
 msgstr "Màn chơi NNC"
 
-#: src/addon/manager.cpp:469
+#: src/addon/manager.cpp:466
 msgid "addon_type^MP campaign"
 msgstr "Chiến dịch NNC"
 
-#: src/addon/manager.cpp:471
+#: src/addon/manager.cpp:468
 msgid "addon_type^Resources"
 msgstr "Tài nguyên"
 
-#: src/addon/manager.cpp:473
+#: src/addon/manager.cpp:470
 msgid "addon_type^Other"
 msgstr "Khác"
 
-#: src/addon/manager.cpp:475
+#: src/addon/manager.cpp:472
 msgid "addon_type^(unknown)"
 msgstr "(không xác định)"
 
-#: src/addon/manager.cpp:487 src/addon/manager.cpp:560 src/multiplayer.cpp:226
+#: src/addon/manager.cpp:484 src/addon/manager.cpp:557 src/multiplayer.cpp:226
 #: src/multiplayer.cpp:286 src/multiplayer_ui.cpp:83
 msgid "Connection timed out"
 msgstr "Hết thời gian kết nối"
 
-#: src/addon/manager.cpp:490
+#: src/addon/manager.cpp:487
 msgid "The server responded with an error: \"$error|\""
 msgstr "Máy chủ đã trả lời với thông báo lỗi: \"$error|\""
 
-#: src/addon/manager.cpp:499
+#: src/addon/manager.cpp:496
 msgid "Terms"
 msgstr "Điều khoản"
 
-#: src/addon/manager.cpp:533
+#: src/addon/manager.cpp:530
 msgid "Sending add-on"
 msgstr "Đang gửi phần bổ sung"
 
-#: src/addon/manager.cpp:537 src/addon/manager.cpp:562
+#: src/addon/manager.cpp:534 src/addon/manager.cpp:559
 msgid "The server responded with an error: \""
 msgstr "Máy chủ đã trả lời với thông báo lỗi: \""
 
-#: src/addon/manager.cpp:540 src/addon/manager.cpp:565
+#: src/addon/manager.cpp:537 src/addon/manager.cpp:562
 #: src/multiplayer_wait.cpp:409
 msgid "Response"
 msgstr "Trả lời"
 
-#: src/addon/manager.cpp:585
+#: src/addon/manager.cpp:582
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Đang tải về phần bổ sung: $addon_title|..."
 
-#: src/addon/manager.cpp:600
+#: src/addon/manager.cpp:597
 msgid ""
 "The add-on has an invalid file or directory name and cannot be installed."
 msgstr ""
 "Phần bổ sung có tên tập tin hoặc tên thư mục không hợp lệ và không thể cài "
 "đặt được."
 
-#: src/addon/manager.cpp:649
+#: src/addon/manager.cpp:646
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Phần bổ sung '$addon_title|' đã được cài đặt thành công."
 
-#: src/addon/manager.cpp:650
+#: src/addon/manager.cpp:647
 msgid "Add-on Installed"
 msgstr "Đã cài đặt phần bổ sung"
 
-#: src/addon/manager.cpp:750 src/addon/manager.cpp:936
-#: src/addon/manager.cpp:1148 src/dialogs.cpp:591 src/menu_events.cpp:212
+#: src/addon/manager.cpp:747 src/addon/manager.cpp:933
+#: src/addon/manager.cpp:1167 src/dialogs.cpp:591 src/menu_events.cpp:212
 #: src/menu_events.cpp:869
 msgid "Name"
 msgstr "Tên"
 
-#: src/addon/manager.cpp:750 src/addon/manager.cpp:1148
+#: src/addon/manager.cpp:747 src/addon/manager.cpp:1167
 msgid "Version"
 msgstr "Phiên bản"
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:937
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:934
+#: src/addon/manager.cpp:1168
 msgid "Author"
 msgstr "Tác giả"
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:937
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:934
+#: src/addon/manager.cpp:1168
 msgid "Size"
 msgstr "Kích thước"
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:1168
 #: src/menu_events.cpp:211 src/menu_events.cpp:868 src/menu_events.cpp:1523
 msgid "Type"
 msgstr "Kiểu"
 
-#: src/addon/manager.cpp:800
+#: src/addon/manager.cpp:797
 msgid "Install dependencies"
 msgstr "Cài đặt thành phần phụ thuộc"
 
-#: src/addon/manager.cpp:801
+#: src/addon/manager.cpp:798
 msgid ""
 "The selected add-on has the following dependency. Do you want to install it?"
 msgid_plural ""
@@ -3480,11 +3475,11 @@ msgstr[0] ""
 "Phần bổ sung được chọn cần có thành phần phụ thuộc. Bạn có muốn cài đặt "
 "không?"
 
-#: src/addon/manager.cpp:830
+#: src/addon/manager.cpp:827
 msgid "Installation of a dependency failed"
 msgstr "Cài đặt thành phần phụ thuộc thất bại"
 
-#: src/addon/manager.cpp:832
+#: src/addon/manager.cpp:829
 msgid ""
 "While the add-on has been installed, a dependency is missing. Try to update "
 "the installed add-ons."
@@ -3492,21 +3487,21 @@ msgstr ""
 "Phần bổ sung đã được cài đặt, nhưng một thành phần phụ thuộc vẫn còn thiếu. "
 "Hãy thử cập nhật các phần bổ sung đã cài. "
 
-#: src/addon/manager.cpp:846
+#: src/addon/manager.cpp:843
 msgid "Installation failed"
 msgstr "Cài đặt thất bại"
 
-#: src/addon/manager.cpp:848 src/addon/manager.cpp:1076
+#: src/addon/manager.cpp:845 src/addon/manager.cpp:1073
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
 msgstr[0] "Phần bổ sung sau đây không thể tải về hoặc cập nhật thành công:"
 
-#: src/addon/manager.cpp:909
+#: src/addon/manager.cpp:906
 msgid "Outdated add-ons"
 msgstr "Phần bổ sung lỗi thời"
 
-#: src/addon/manager.cpp:911
+#: src/addon/manager.cpp:908
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -3517,41 +3512,41 @@ msgstr[0] ""
 "Một số phần bổ sung cục bộ có thông tin phát hành kèm theo. Chúng sẽ không "
 "được khuyến nghị cập nhật."
 
-#: src/addon/manager.cpp:923
+#: src/addon/manager.cpp:920
 msgid "No add-ons to update"
 msgstr "Không có phần bổ sung để cập nhật"
 
-#: src/addon/manager.cpp:924
+#: src/addon/manager.cpp:921
 msgid "Could not find any updated add-ons on this server."
 msgstr "Không thể tìm thấy phần bổ sung nào đã cập nhật trên máy chủ này."
 
-#: src/addon/manager.cpp:936
+#: src/addon/manager.cpp:933
 msgid "New version"
 msgstr "Phiên bản mới"
 
-#: src/addon/manager.cpp:936
+#: src/addon/manager.cpp:933
 msgid "Old version"
 msgstr "Phiên bản cũ"
 
-#: src/addon/manager.cpp:988
+#: src/addon/manager.cpp:985
 msgid "Update add-ons"
 msgstr "Cập nhật phần bổ sung"
 
-#: src/addon/manager.cpp:989
+#: src/addon/manager.cpp:986
 msgid "Select an add-on to update:"
 msgstr "Chọn phần bổ sung cần cập nhật:"
 
-#: src/addon/manager.cpp:1003
+#: src/addon/manager.cpp:1000
 msgid "Update all"
 msgstr "Cập nhật toàn bộ"
 
-#: src/addon/manager.cpp:1041 src/addon/manager.cpp:1058
-#: src/addon/manager.cpp:1323
+#: src/addon/manager.cpp:1038 src/addon/manager.cpp:1055
+#: src/addon/manager.cpp:1344
 msgid "Installation of some dependency failed"
 msgstr "Cài đặt thành phần phụ thuộc thất bại"
 
-#: src/addon/manager.cpp:1043 src/addon/manager.cpp:1060
-#: src/addon/manager.cpp:1325
+#: src/addon/manager.cpp:1040 src/addon/manager.cpp:1057
+#: src/addon/manager.cpp:1346
 msgid ""
 "While the add-on has been installed, some dependency is missing. Try to "
 "update the installed add-ons."
@@ -3559,88 +3554,100 @@ msgstr ""
 "Phần bổ sung đã được cài đặt, nhưng một số thành phần phụ thuộc vẫn còn "
 "thiếu. Hãy thử cập nhật các phần bổ sung đã cài. "
 
-#: src/addon/manager.cpp:1074
+#: src/addon/manager.cpp:1071
 msgid "Update failed"
 msgstr "Cập nhật thất bại"
 
-#: src/addon/manager.cpp:1084
+#: src/addon/manager.cpp:1081
 msgid "Update succeeded"
 msgstr "Cập nhật thành công"
 
-#: src/addon/manager.cpp:1085
+#: src/addon/manager.cpp:1082
 msgid "Add-on updated successfully."
 msgstr "Đã cập nhật thành công phần bổ sung."
 
-#: src/addon/manager.cpp:1086
+#: src/addon/manager.cpp:1083
 msgid "All add-ons updated successfully."
 msgstr "Đã cập nhật thành công tất cả các phần bổ sung."
 
-#: src/addon/manager.cpp:1109
+#: src/addon/manager.cpp:1097
+msgid ""
+"It looks as if you are the author of '$addon|'. Downloading '$addon|' may "
+"overwrite any changes you have made since the last upload and may delete "
+"your pbl file. Do you really want to continue ?"
+msgstr ""
+
+#: src/addon/manager.cpp:1100 src/addon/manager.cpp:1408
+#: src/multiplayer.cpp:238
+msgid "Confirm"
+msgstr "Xác nhận"
+
+#: src/addon/manager.cpp:1128
 msgid "Connecting to add-ons server..."
 msgstr "Đang kết nối đến máy chủ phần bổ sung..."
 
-#: src/addon/manager.cpp:1112 src/network.cpp:398 src/network.cpp:406
+#: src/addon/manager.cpp:1131 src/network.cpp:398 src/network.cpp:406
 msgid "Could not connect to host."
 msgstr "Không thể kết nối đến máy chủ."
 
-#: src/addon/manager.cpp:1120
+#: src/addon/manager.cpp:1139
 msgid "Requesting list of add-ons"
 msgstr "Đang lấy danh sách phần bổ sung"
 
-#: src/addon/manager.cpp:1132
+#: src/addon/manager.cpp:1151
 msgid "An error occurred while communicating with the server."
 msgstr "Có lỗi xảy ra khi giao tiếp với máy chủ."
 
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:1168
 msgid "Downloads"
 msgstr "Lượt tải về"
 
-#: src/addon/manager.cpp:1246
+#: src/addon/manager.cpp:1265
 msgid "Publish add-on: "
 msgstr "Phát hành phần bổ sung: "
 
-#: src/addon/manager.cpp:1252
+#: src/addon/manager.cpp:1271
 msgid "Delete add-on: "
 msgstr "Xóa phần bổ sung: "
 
-#: src/addon/manager.cpp:1258
+#: src/addon/manager.cpp:1277
 msgid "There are no add-ons available for download from this server."
 msgstr "Không có phần bổ sung nào để tải về từ máy chủ này."
 
-#: src/addon/manager.cpp:1271
+#: src/addon/manager.cpp:1290
 msgid "Get add-ons"
 msgstr "Tải phần bổ sung"
 
-#: src/addon/manager.cpp:1272
+#: src/addon/manager.cpp:1291
 msgid "Choose the add-on to download."
 msgstr "Chọn phần bổ sung cần tải về."
 
-#: src/addon/manager.cpp:1273
+#: src/addon/manager.cpp:1292
 msgid "Download"
 msgstr "Tải về"
 
-#: src/addon/manager.cpp:1274
+#: src/addon/manager.cpp:1293
 msgid "Done"
 msgstr "Xong"
 
-#: src/addon/manager.cpp:1286 src/dialogs.cpp:616 src/menu_events.cpp:939
+#: src/addon/manager.cpp:1305 src/dialogs.cpp:616 src/menu_events.cpp:939
 #: src/menu_events.cpp:1559
 msgid "Filter: "
 msgstr "Bộ lọc: "
 
-#: src/addon/manager.cpp:1291
+#: src/addon/manager.cpp:1310
 msgid "Description"
 msgstr "Mô tả"
 
-#: src/addon/manager.cpp:1335
+#: src/addon/manager.cpp:1357
 msgid "Network communication error."
 msgstr "Lỗi giao tiếp mạng."
 
-#: src/addon/manager.cpp:1338
+#: src/addon/manager.cpp:1360
 msgid "Remote host disconnected."
 msgstr "Máy chủ từ xa đã ngắt kết nối."
 
-#: src/addon/manager.cpp:1341
+#: src/addon/manager.cpp:1363
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -3648,39 +3655,35 @@ msgstr ""
 "Có trục trặc xảy ra khi cố gắng tạo các tập tin cần thiết để cài đặt phần bổ "
 "sung này."
 
-#: src/addon/manager.cpp:1359
+#: src/addon/manager.cpp:1381
 msgid "You have no add-ons installed."
 msgstr "Bạn chưa cài đặt phần bổ sung nào."
 
-#: src/addon/manager.cpp:1371
+#: src/addon/manager.cpp:1393
 msgid "Choose the add-on to remove."
 msgstr "Chọn phần bổ sung cần gỡ bỏ."
 
-#: src/addon/manager.cpp:1371
+#: src/addon/manager.cpp:1393
 msgid "Uninstall add-ons"
 msgstr "Gỡ bỏ phần bổ sung"
 
-#: src/addon/manager.cpp:1373
+#: src/addon/manager.cpp:1395
 msgid "Remove"
 msgstr "Gỡ bỏ"
 
-#: src/addon/manager.cpp:1380
+#: src/addon/manager.cpp:1402
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Bạn có chắc bạn muốn xóa phần bổ sung '$addon|' không?"
 
-#: src/addon/manager.cpp:1386 src/multiplayer.cpp:238
-msgid "Confirm"
-msgstr "Xác nhận"
-
-#: src/addon/manager.cpp:1399
+#: src/addon/manager.cpp:1421
 msgid "Add-on '$addon|' deleted."
 msgstr "Đã xóa phần bổ sung '$addon|'."
 
-#: src/addon/manager.cpp:1404
+#: src/addon/manager.cpp:1426
 msgid "Add-on deleted"
 msgstr "Đã xóa phần bổ sung"
 
-#: src/addon/manager.cpp:1412
+#: src/addon/manager.cpp:1434
 msgid "Add-on could not be deleted properly:"
 msgstr "Không thể xóa phần bổ sung hoàn toàn:"
 
@@ -3863,36 +3866,32 @@ msgstr "Di chuyển: "
 msgid "Invalid color range: "
 msgstr "Phạm vi màu không hợp lệ: "
 
-#: src/game_controller.cpp:473 src/game_controller.cpp:1237
-msgid "The Battle for Wesnoth"
-msgstr "Trận chiến vì Wesnoth"
-
-#: src/game_controller.cpp:780 src/game_controller.cpp:798
+#: src/game_controller.cpp:625 src/game_controller.cpp:643
 msgid "The file you have tried to load is corrupt"
 msgstr "Tập tin bạn cố tải bị hỏng"
 
-#: src/game_controller.cpp:783 src/game_controller.cpp:801
+#: src/game_controller.cpp:628 src/game_controller.cpp:646
 #: src/savegame.cpp:550
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tập tin bạn cố tải bị hỏng: '"
 
-#: src/game_controller.cpp:791
+#: src/game_controller.cpp:636
 msgid "File I/O Error while reading the game"
 msgstr "Lỗi vào/ra tập tin khi đọc trò chơi"
 
-#: src/game_controller.cpp:793
+#: src/game_controller.cpp:638
 msgid "File I/O Error while reading the game: '"
 msgstr "Lỗi vào/ra tập tin khi đọc trò chơi: '"
 
-#: src/game_controller.cpp:890
+#: src/game_controller.cpp:735
 msgid "No campaigns are available.\n"
 msgstr "Không có chiến dịch nào.\n"
 
-#: src/game_controller.cpp:1122
+#: src/game_controller.cpp:967
 msgid "Do you really want to start the server?"
 msgstr "Bạn có thực sự muốn khởi động máy chủ không?"
 
-#: src/game_controller.cpp:1123
+#: src/game_controller.cpp:968
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -3900,43 +3899,47 @@ msgstr ""
 "Máy chủ sẽ chạy ở tiến trình ngầm đến khi tất cả các người chơi đã ngắt kết "
 "nối."
 
-#: src/game_controller.cpp:1127
+#: src/game_controller.cpp:972
 msgid "Don’t show again"
 msgstr "Không hiện lại nữa"
 
-#: src/game_controller.cpp:1198
+#: src/game_controller.cpp:1043
 msgid "Error while starting server: "
 msgstr "Lỗi khi khởi động máy chủ: "
 
-#: src/game_controller.cpp:1200 src/playcampaign.cpp:108
+#: src/game_controller.cpp:1045 src/playcampaign.cpp:108
 #: src/playcampaign.cpp:373
 msgid "The game could not be loaded: "
 msgstr "Không thể tải trò chơi: "
 
-#: src/game_controller.cpp:1202 src/playcampaign.cpp:110
+#: src/game_controller.cpp:1047 src/playcampaign.cpp:110
 #: src/playcampaign.cpp:376
 msgid "Error while playing the game: "
 msgstr "Lỗi khi chơi trò chơi: "
 
-#: src/game_controller.cpp:1220 src/playcampaign.cpp:112
+#: src/game_controller.cpp:1065 src/playcampaign.cpp:112
 #: src/playcampaign.cpp:379
 msgid "The game map could not be loaded: "
 msgstr "Không thể tải bản đồ trò chơi: "
 
-#: src/game_controller.cpp:1350
+#: src/game_controller.cpp:1082 src/game_controller_abstract.cpp:53
+msgid "The Battle for Wesnoth"
+msgstr "Trận chiến vì Wesnoth"
+
+#: src/game_controller.cpp:1195
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Không thể tải phần bổ sung sau:"
 
-#: src/game_controller.cpp:1357
+#: src/game_controller.cpp:1202
 msgid "ERROR DETAILS:"
 msgstr "CHI TIẾT LỖI:"
 
-#: src/game_controller.cpp:1389
+#: src/game_controller.cpp:1234
 msgid "Error loading game configuration files: '"
 msgstr "Lỗi khi tải các tập tin cấu hình trò chơi: '"
 
-#: src/game_controller.cpp:1390
+#: src/game_controller.cpp:1235
 msgid "' (The game will now exit)"
 msgstr "' (Trò chơi sẽ thoát ngay sau đây)"
 
@@ -5282,7 +5285,7 @@ msgstr "Đang chờ người chơi tham gia..."
 msgid "Waiting for players to choose factions..."
 msgstr "Đang chờ người chơi chọn liên minh..."
 
-#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:744
+#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:742
 msgid "Create Game"
 msgstr "Tạo trò chơi"
 
@@ -5480,59 +5483,59 @@ msgstr "--không có trò chơi nào mở--"
 msgid " (Unknown Era)"
 msgstr " (Thời đại không xác định)"
 
-#: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:893
+#: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:891
 msgid "Password Required"
 msgstr "Cần mật khẩu"
 
-#: src/multiplayer_lobby.cpp:737 src/multiplayer_wait.cpp:178
+#: src/multiplayer_lobby.cpp:735 src/multiplayer_wait.cpp:178
 msgid "Game Lobby"
 msgstr "Phòng gặp gỡ"
 
-#: src/multiplayer_lobby.cpp:742
+#: src/multiplayer_lobby.cpp:740
 msgid "Observe Game"
 msgstr "Quan sát trò chơi"
 
-#: src/multiplayer_lobby.cpp:743
+#: src/multiplayer_lobby.cpp:741
 msgid "Join Game"
 msgstr "Tham gia trò chơi"
 
-#: src/multiplayer_lobby.cpp:745
+#: src/multiplayer_lobby.cpp:743
 msgid "Quick Replays"
 msgstr "Phát lại nhanh"
 
-#: src/multiplayer_lobby.cpp:746
+#: src/multiplayer_lobby.cpp:744
 msgid "Preferences"
 msgstr "Tùy thích"
 
-#: src/multiplayer_lobby.cpp:747
+#: src/multiplayer_lobby.cpp:745
 msgid "Quit"
 msgstr "Thoát"
 
-#: src/multiplayer_lobby.cpp:748
+#: src/multiplayer_lobby.cpp:746
 msgid "Apply Filter"
 msgstr "Áp dụng bộ lọc"
 
-#: src/multiplayer_lobby.cpp:749
+#: src/multiplayer_lobby.cpp:747
 msgid "Invert"
 msgstr "Đảo ngược"
 
-#: src/multiplayer_lobby.cpp:750
+#: src/multiplayer_lobby.cpp:748
 msgid "Vacant Slots"
 msgstr "Còn trống"
 
-#: src/multiplayer_lobby.cpp:751
+#: src/multiplayer_lobby.cpp:749
 msgid "Friends in Game"
 msgstr "Bạn bè đang chơi"
 
-#: src/multiplayer_lobby.cpp:752
+#: src/multiplayer_lobby.cpp:750
 msgid "Search:"
 msgstr "Tìm kiếm:"
 
-#: src/multiplayer_lobby.cpp:760
+#: src/multiplayer_lobby.cpp:758
 msgid "Skip quickly to the active turn when observing"
 msgstr "Bỏ qua đến lượt hiện tại khi quan sát"
 
-#: src/multiplayer_lobby.cpp:763
+#: src/multiplayer_lobby.cpp:761
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
@@ -5540,7 +5543,7 @@ msgstr ""
 "Bật bộ lọc trò chơi. Nếu không đánh dấu, sẽ hiện mọi trò chơi, bất kể bộ lọc "
 "là gì."
 
-#: src/multiplayer_lobby.cpp:766
+#: src/multiplayer_lobby.cpp:764
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
@@ -5548,27 +5551,27 @@ msgstr ""
 "Hiện tất cả các trò chơi *không* khớp với bộ lọc của bạn. Hữu ích khi ẩn "
 "những trò chơi mà bạn không quan tâm."
 
-#: src/multiplayer_lobby.cpp:770
+#: src/multiplayer_lobby.cpp:768
 msgid "Only show games that have at least one vacant slot"
 msgstr "Chỉ hiện những trò chơi có ít nhất một chỗ trống"
 
-#: src/multiplayer_lobby.cpp:774
+#: src/multiplayer_lobby.cpp:772
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 "Chỉ hiện những trò chơi mà có ít nhất một trong số các bạn bè của bạn đang "
 "chơi hoặc quan sát"
 
-#: src/multiplayer_lobby.cpp:780
+#: src/multiplayer_lobby.cpp:778
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
 "Chỉ hiện những trò chơi có tiêu đề hoặc mô tả chứa văn bản được nhập vào"
 
-#: src/multiplayer_lobby.cpp:894
+#: src/multiplayer_lobby.cpp:892
 msgid "Joining this game requires a password."
 msgstr "Cần mật khẩu để tham gia trò chơi này."
 
-#: src/multiplayer_lobby.cpp:895
+#: src/multiplayer_lobby.cpp:893
 msgid "Password: "
 msgstr "Mật khẩu: "
 
@@ -5684,7 +5687,7 @@ msgstr "Bạn đã bị đánh bại!"
 msgid "Error while reading the WML: "
 msgstr "Lỗi trong khi đọc WML: "
 
-#: src/playcampaign.cpp:418 src/playsingle_controller.cpp:447
+#: src/playcampaign.cpp:418 src/playsingle_controller.cpp:452
 msgid "Game Over"
 msgstr "Trò chơi kết thúc"
 
@@ -5798,30 +5801,30 @@ msgstr[0] ""
 "Bạn sẽ bắt đầu màn chơi tiếp theo với $gold lượng vàng hoặc lượng vàng tối "
 "thiểu của màn chơi, tùy vào lượng vào nào nhiều hơn."
 
-#: src/playsingle_controller.cpp:448
+#: src/playsingle_controller.cpp:453
 msgid "The game is over."
 msgstr "Trò chơi kết thúc."
 
-#: src/playsingle_controller.cpp:528
+#: src/playsingle_controller.cpp:533
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Mạng bị ngắt, và trò chơi không thể tiếp tục. Bạn có muốn lưu trò chơi không?"
 
-#: src/playsingle_controller.cpp:686
+#: src/playsingle_controller.cpp:694
 msgid "It is now $name|’s turn"
 msgstr "Đến lượt của $name"
 
-#: src/playsingle_controller.cpp:916
+#: src/playsingle_controller.cpp:931
 msgid "Scenario Report"
 msgstr "Báo cáo màn chơi"
 
-#: src/playsingle_controller.cpp:919
+#: src/playsingle_controller.cpp:934
 msgid "Victory"
 msgstr "Chiến thắng"
 
-#: src/playsingle_controller.cpp:920
+#: src/playsingle_controller.cpp:935
 msgid "You have emerged victorious!"
 msgstr "Bạn đã giành chiến thắng!"
 
@@ -6221,7 +6224,7 @@ msgstr "Làng đã sở hữu"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size nên nằm giữa 0.0 và 0.5."
 
-#: src/tod_manager.cpp:117
+#: src/tod_manager.cpp:124
 msgid "No time of day has been defined."
 msgstr "Chưa xác định được thời điểm trong ngày."
 
@@ -6300,6 +6303,12 @@ msgstr "chính thống"
 #: src/unit_types.cpp:966
 msgid "female^neutral"
 msgstr "trung lập"
+
+#~ msgid ", MAX XP +25%"
+#~ msgstr ", KN tối đa +25%"
+
+#~ msgid "Max HP bonus +"
+#~ msgstr "Thưởng lượng máu tối đa +"
 
 #~ msgid ""
 #~ "Liminal units fight better during twilight while fighting normally during "

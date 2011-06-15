@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-30 20:47+0200\n"
+"POT-Creation-Date: 2011-06-15 11:45+0200\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -812,18 +812,6 @@ msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-
-#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
-#: data/core/macros/deprecated-utils.cfg:416
-#, fuzzy
-msgid ", MAX XP +25%"
-msgstr ", MAX XP +25%"
-
-#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
-#: data/core/macros/deprecated-utils.cfg:416
-#, fuzzy
-msgid "Max HP bonus +"
-msgstr "Največji HP bonus +"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
@@ -1916,12 +1904,12 @@ msgstr ""
 msgid "Turns run out"
 msgstr "Potez: "
 
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:101
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:102
 #, fuzzy
 msgid "Early finish bonus."
 msgstr "Bonus za zgodnji konec: "
 
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:103
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:104
 #, fuzzy
 msgid "No early finish bonus."
 msgstr "Bonus za zgodnji konec: "
@@ -1936,7 +1924,7 @@ msgstr "Bonus za zgodnji konec: "
 msgid "(early finish bonus)"
 msgstr "Bonus za zgodnji konec: "
 
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:111
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:112
 msgid "No gold carried over to the next scenario."
 msgstr ""
 
@@ -2995,15 +2983,15 @@ msgstr ""
 msgid "Notes:"
 msgstr ""
 
-#: data/lua/wml/objectives.lua:69
+#: data/lua/wml/objectives.lua:70
 msgid "(%d turns left)"
 msgstr ""
 
-#: data/lua/wml/objectives.lua:71
+#: data/lua/wml/objectives.lua:72
 msgid "(this turn left)"
 msgstr ""
 
-#: data/lua/wml/objectives.lua:113
+#: data/lua/wml/objectives.lua:114
 #, fuzzy
 msgid "%d%% of gold carried over to the next scenario."
 msgstr ""
@@ -3012,26 +3000,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:390 src/dialogs.cpp:634
+#: data/scenario-test.cfg:404 src/dialogs.cpp:634
 #: src/multiplayer_create.cpp:94
 msgid "OK"
 msgstr "V redu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:391 src/dialogs.cpp:635 src/dialogs.cpp:1073
+#: data/scenario-test.cfg:405 src/dialogs.cpp:635 src/dialogs.cpp:1073
 #: src/dialogs.cpp:1179 src/multiplayer_connect.cpp:1034
 #: src/multiplayer_create.cpp:93 src/multiplayer_wait.cpp:179
 msgid "Cancel"
 msgstr "Prekliči"
 
+#. [set_menu_item]: id=reload_and_execute_lua_code
+#: data/scenario-test.cfg:738
+msgid "Reload and execute lua code"
+msgstr ""
+
 #. [language]
-#: data/scenario-test.cfg:3048
+#: data/scenario-test.cfg:3080
 msgid "very long"
 msgstr ""
 
 #. [language]
-#: data/scenario-test.cfg:3049
+#: data/scenario-test.cfg:3081
 #, fuzzy
 msgid "electrical"
 msgstr "mehanski"
@@ -3313,147 +3306,147 @@ msgstr "Enote opažene! ($friends zavezniških, $enemies sovražnih)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(za nadaljevanje pritisnite $hotkey)"
 
-#: src/addon/manager.cpp:415
+#: src/addon/manager.cpp:412
 msgid "B"
 msgstr "B"
 
-#: src/addon/manager.cpp:418 src/dialogs.cpp:1106
+#: src/addon/manager.cpp:415 src/dialogs.cpp:1106
 msgid "KB"
 msgstr "KB"
 
-#: src/addon/manager.cpp:421
+#: src/addon/manager.cpp:418
 msgid "MB"
 msgstr "MB"
 
-#: src/addon/manager.cpp:424
+#: src/addon/manager.cpp:421
 msgid "GB"
 msgstr "GB"
 
-#: src/addon/manager.cpp:457
+#: src/addon/manager.cpp:454
 msgid "addon_type^Campaign"
 msgstr "Kampanja"
 
-#: src/addon/manager.cpp:459
+#: src/addon/manager.cpp:456
 msgid "addon_type^Scenario"
 msgstr "Scenarij"
 
-#: src/addon/manager.cpp:461
+#: src/addon/manager.cpp:458
 #, fuzzy
 msgid "addon_type^MP era"
 msgstr "Oddaljen scenarij"
 
-#: src/addon/manager.cpp:463
+#: src/addon/manager.cpp:460
 #, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Oddaljen scenarij"
 
-#: src/addon/manager.cpp:465
+#: src/addon/manager.cpp:462
 #, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Oddaljen scenarij"
 
-#: src/addon/manager.cpp:467
+#: src/addon/manager.cpp:464
 #, fuzzy
 msgid "addon_type^MP scenario"
 msgstr "Oddaljen scenarij"
 
-#: src/addon/manager.cpp:469
+#: src/addon/manager.cpp:466
 msgid "addon_type^MP campaign"
 msgstr "VI kampanja"
 
-#: src/addon/manager.cpp:471
+#: src/addon/manager.cpp:468
 msgid "addon_type^Resources"
 msgstr ""
 
-#: src/addon/manager.cpp:473
+#: src/addon/manager.cpp:470
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "Oddaljen scenarij"
 
-#: src/addon/manager.cpp:475
+#: src/addon/manager.cpp:472
 msgid "addon_type^(unknown)"
 msgstr "(neznano)"
 
-#: src/addon/manager.cpp:487 src/addon/manager.cpp:560 src/multiplayer.cpp:226
+#: src/addon/manager.cpp:484 src/addon/manager.cpp:557 src/multiplayer.cpp:226
 #: src/multiplayer.cpp:286 src/multiplayer_ui.cpp:83
 #, fuzzy
 msgid "Connection timed out"
 msgstr "Povezava je potekla"
 
-#: src/addon/manager.cpp:490
+#: src/addon/manager.cpp:487
 #, fuzzy
 msgid "The server responded with an error: \"$error|\""
 msgstr "Strežnik se je odzval z napako: \""
 
-#: src/addon/manager.cpp:499
+#: src/addon/manager.cpp:496
 #, fuzzy
 msgid "Terms"
 msgstr "Pogoji"
 
-#: src/addon/manager.cpp:533
+#: src/addon/manager.cpp:530
 msgid "Sending add-on"
 msgstr "Pošiljanje dodatka"
 
-#: src/addon/manager.cpp:537 src/addon/manager.cpp:562
+#: src/addon/manager.cpp:534 src/addon/manager.cpp:559
 #, fuzzy
 msgid "The server responded with an error: \""
 msgstr "Strežnik se je odzval z napako: \""
 
-#: src/addon/manager.cpp:540 src/addon/manager.cpp:565
+#: src/addon/manager.cpp:537 src/addon/manager.cpp:562
 #: src/multiplayer_wait.cpp:409
 #, fuzzy
 msgid "Response"
 msgstr "Odziv"
 
-#: src/addon/manager.cpp:585
+#: src/addon/manager.cpp:582
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Prenašanje dodatka: $addon_title ..."
 
-#: src/addon/manager.cpp:600
+#: src/addon/manager.cpp:597
 msgid ""
 "The add-on has an invalid file or directory name and cannot be installed."
 msgstr ""
 
-#: src/addon/manager.cpp:649
+#: src/addon/manager.cpp:646
 #, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Dodatek je bil nameščen."
 
-#: src/addon/manager.cpp:650
+#: src/addon/manager.cpp:647
 msgid "Add-on Installed"
 msgstr "Dodatek nameščen"
 
-#: src/addon/manager.cpp:750 src/addon/manager.cpp:936
-#: src/addon/manager.cpp:1148 src/dialogs.cpp:591 src/menu_events.cpp:212
+#: src/addon/manager.cpp:747 src/addon/manager.cpp:933
+#: src/addon/manager.cpp:1167 src/dialogs.cpp:591 src/menu_events.cpp:212
 #: src/menu_events.cpp:869
 msgid "Name"
 msgstr "Ime"
 
-#: src/addon/manager.cpp:750 src/addon/manager.cpp:1148
+#: src/addon/manager.cpp:747 src/addon/manager.cpp:1167
 msgid "Version"
 msgstr "Različica"
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:937
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:934
+#: src/addon/manager.cpp:1168
 msgid "Author"
 msgstr "Avtor"
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:937
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:934
+#: src/addon/manager.cpp:1168
 msgid "Size"
 msgstr "Velikost"
 
-#: src/addon/manager.cpp:751 src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:748 src/addon/manager.cpp:1168
 #: src/menu_events.cpp:211 src/menu_events.cpp:868 src/menu_events.cpp:1523
 msgid "Type"
 msgstr "Vrsta"
 
-#: src/addon/manager.cpp:800
+#: src/addon/manager.cpp:797
 #, fuzzy
 msgid "Install dependencies"
 msgstr "Odvisnosti"
 
-#: src/addon/manager.cpp:801
+#: src/addon/manager.cpp:798
 msgid ""
 "The selected add-on has the following dependency. Do you want to install it?"
 msgid_plural ""
@@ -3464,21 +3457,21 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/addon/manager.cpp:830
+#: src/addon/manager.cpp:827
 msgid "Installation of a dependency failed"
 msgstr ""
 
-#: src/addon/manager.cpp:832
+#: src/addon/manager.cpp:829
 msgid ""
 "While the add-on has been installed, a dependency is missing. Try to update "
 "the installed add-ons."
 msgstr ""
 
-#: src/addon/manager.cpp:846
+#: src/addon/manager.cpp:843
 msgid "Installation failed"
 msgstr ""
 
-#: src/addon/manager.cpp:848 src/addon/manager.cpp:1076
+#: src/addon/manager.cpp:845 src/addon/manager.cpp:1073
 #, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
@@ -3488,12 +3481,12 @@ msgstr[1] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 msgstr[2] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 msgstr[3] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 
-#: src/addon/manager.cpp:909
+#: src/addon/manager.cpp:906
 #, fuzzy
 msgid "Outdated add-ons"
 msgstr "Pošiljanje dodatka"
 
-#: src/addon/manager.cpp:911
+#: src/addon/manager.cpp:908
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -3505,182 +3498,190 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/addon/manager.cpp:923
+#: src/addon/manager.cpp:920
 msgid "No add-ons to update"
 msgstr "Ni dodatkov za posodobitev"
 
-#: src/addon/manager.cpp:924
+#: src/addon/manager.cpp:921
 msgid "Could not find any updated add-ons on this server."
 msgstr ""
 
-#: src/addon/manager.cpp:936
+#: src/addon/manager.cpp:933
 msgid "New version"
 msgstr "Nova različica"
 
-#: src/addon/manager.cpp:936
+#: src/addon/manager.cpp:933
 msgid "Old version"
 msgstr "Stara različica"
 
-#: src/addon/manager.cpp:988
+#: src/addon/manager.cpp:985
 #, fuzzy
 msgid "Update add-ons"
 msgstr "Posodobi dodatke"
 
-#: src/addon/manager.cpp:989
+#: src/addon/manager.cpp:986
 msgid "Select an add-on to update:"
 msgstr "Izberite dodatek, ki ga želite posodobiti:"
 
-#: src/addon/manager.cpp:1003
+#: src/addon/manager.cpp:1000
 msgid "Update all"
 msgstr "Posodobi vse"
 
-#: src/addon/manager.cpp:1041 src/addon/manager.cpp:1058
-#: src/addon/manager.cpp:1323
+#: src/addon/manager.cpp:1038 src/addon/manager.cpp:1055
+#: src/addon/manager.cpp:1344
 msgid "Installation of some dependency failed"
 msgstr ""
 
-#: src/addon/manager.cpp:1043 src/addon/manager.cpp:1060
-#: src/addon/manager.cpp:1325
+#: src/addon/manager.cpp:1040 src/addon/manager.cpp:1057
+#: src/addon/manager.cpp:1346
 msgid ""
 "While the add-on has been installed, some dependency is missing. Try to "
 "update the installed add-ons."
 msgstr ""
 
-#: src/addon/manager.cpp:1074
+#: src/addon/manager.cpp:1071
 #, fuzzy
 msgid "Update failed"
 msgstr "Jamska stena"
 
-#: src/addon/manager.cpp:1084
+#: src/addon/manager.cpp:1081
 #, fuzzy
 msgid "Update succeeded"
 msgstr "Dobi dodatke"
 
-#: src/addon/manager.cpp:1085
+#: src/addon/manager.cpp:1082
 msgid "Add-on updated successfully."
 msgstr "Dodatek uspešno posodobljen."
 
-#: src/addon/manager.cpp:1086
+#: src/addon/manager.cpp:1083
 msgid "All add-ons updated successfully."
 msgstr "Vsi dodatki uspešno posodobljeni."
 
-#: src/addon/manager.cpp:1109
+#: src/addon/manager.cpp:1097
+msgid ""
+"It looks as if you are the author of '$addon|'. Downloading '$addon|' may "
+"overwrite any changes you have made since the last upload and may delete "
+"your pbl file. Do you really want to continue ?"
+msgstr ""
+
+#: src/addon/manager.cpp:1100 src/addon/manager.cpp:1408
+#: src/multiplayer.cpp:238
+msgid "Confirm"
+msgstr "Potrdi"
+
+#: src/addon/manager.cpp:1128
 #, fuzzy
 msgid "Connecting to add-ons server..."
 msgstr "Povezovanje s strežnikom ..."
 
-#: src/addon/manager.cpp:1112 src/network.cpp:398 src/network.cpp:406
+#: src/addon/manager.cpp:1131 src/network.cpp:398 src/network.cpp:406
 #, fuzzy
 msgid "Could not connect to host."
 msgstr "Ni se možno povezati z gostiteljem."
 
-#: src/addon/manager.cpp:1120
+#: src/addon/manager.cpp:1139
 #, fuzzy
 msgid "Requesting list of add-ons"
 msgstr "Zahteva po seznamu dodatkov"
 
-#: src/addon/manager.cpp:1132
+#: src/addon/manager.cpp:1151
 #, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "Napaka pri komunikaciji s strežnikom."
 
-#: src/addon/manager.cpp:1149
+#: src/addon/manager.cpp:1168
 msgid "Downloads"
 msgstr "Prenosov"
 
-#: src/addon/manager.cpp:1246
+#: src/addon/manager.cpp:1265
 msgid "Publish add-on: "
 msgstr "Objavi dodatek:"
 
-#: src/addon/manager.cpp:1252
+#: src/addon/manager.cpp:1271
 msgid "Delete add-on: "
 msgstr "Izbriši dodatek:"
 
-#: src/addon/manager.cpp:1258
+#: src/addon/manager.cpp:1277
 #, fuzzy
 msgid "There are no add-ons available for download from this server."
 msgstr "Na tem strežniku ni na voljo nobenega dodatka."
 
-#: src/addon/manager.cpp:1271
+#: src/addon/manager.cpp:1290
 msgid "Get add-ons"
 msgstr "Dobi dodatke"
 
-#: src/addon/manager.cpp:1272
+#: src/addon/manager.cpp:1291
 msgid "Choose the add-on to download."
 msgstr "Izberite dodatek za prenos."
 
-#: src/addon/manager.cpp:1273
+#: src/addon/manager.cpp:1292
 #, fuzzy
 msgid "Download"
 msgstr "Prenosov"
 
-#: src/addon/manager.cpp:1274
+#: src/addon/manager.cpp:1293
 msgid "Done"
 msgstr ""
 
-#: src/addon/manager.cpp:1286 src/dialogs.cpp:616 src/menu_events.cpp:939
+#: src/addon/manager.cpp:1305 src/dialogs.cpp:616 src/menu_events.cpp:939
 #: src/menu_events.cpp:1559
 msgid "Filter: "
 msgstr "Filter:"
 
-#: src/addon/manager.cpp:1291
+#: src/addon/manager.cpp:1310
 msgid "Description"
 msgstr "Opis"
 
-#: src/addon/manager.cpp:1335
+#: src/addon/manager.cpp:1357
 #, fuzzy
 msgid "Network communication error."
 msgstr "Napaka v mrežni komunikaciji."
 
-#: src/addon/manager.cpp:1338
+#: src/addon/manager.cpp:1360
 #, fuzzy
 msgid "Remote host disconnected."
 msgstr "Oddaljeni gostitelj je prekinil povezavo."
 
-#: src/addon/manager.cpp:1341
+#: src/addon/manager.cpp:1363
 #, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "Namestitev kampanje ni uspela; nekaj datotek ni bilo mogoče ustvariti."
 
-#: src/addon/manager.cpp:1359
+#: src/addon/manager.cpp:1381
 #, fuzzy
 msgid "You have no add-ons installed."
 msgstr "Dodatek je bil nameščen."
 
-#: src/addon/manager.cpp:1371
+#: src/addon/manager.cpp:1393
 #, fuzzy
 msgid "Choose the add-on to remove."
 msgstr "Izberite dodatek za prenos"
 
-#: src/addon/manager.cpp:1371
+#: src/addon/manager.cpp:1393
 #, fuzzy
 msgid "Uninstall add-ons"
 msgstr "Pošiljanje dodatka"
 
-#: src/addon/manager.cpp:1373
+#: src/addon/manager.cpp:1395
 #, fuzzy
 msgid "Remove"
 msgstr "Premiki"
 
-#: src/addon/manager.cpp:1380
+#: src/addon/manager.cpp:1402
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Ali res želite odstraniti dodatek '$addon|'?"
 
-#: src/addon/manager.cpp:1386 src/multiplayer.cpp:238
-msgid "Confirm"
-msgstr "Potrdi"
-
-#: src/addon/manager.cpp:1399
+#: src/addon/manager.cpp:1421
 msgid "Add-on '$addon|' deleted."
 msgstr "Dodatek '$addon|' izbrisan."
 
-#: src/addon/manager.cpp:1404
+#: src/addon/manager.cpp:1426
 msgid "Add-on deleted"
 msgstr "Dodatek izbrisan"
 
-#: src/addon/manager.cpp:1412
+#: src/addon/manager.cpp:1434
 #, fuzzy
 msgid "Add-on could not be deleted properly:"
 msgstr "Dodatka ni mogoče pravilno izbrisati:"
@@ -3883,76 +3884,76 @@ msgstr "Premikov:"
 msgid "Invalid color range: "
 msgstr "Neveljavna barva"
 
-#: src/game_controller.cpp:473 src/game_controller.cpp:1237
-msgid "The Battle for Wesnoth"
-msgstr "Bitka za Wesnoth"
-
-#: src/game_controller.cpp:780 src/game_controller.cpp:798
+#: src/game_controller.cpp:625 src/game_controller.cpp:643
 #, fuzzy
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
 
-#: src/game_controller.cpp:783 src/game_controller.cpp:801
+#: src/game_controller.cpp:628 src/game_controller.cpp:646
 #: src/savegame.cpp:550
 #, fuzzy
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Datoteka, ki ste jo poskusili naložiti, je pokvarjena: '"
 
-#: src/game_controller.cpp:791
+#: src/game_controller.cpp:636
 #, fuzzy
 msgid "File I/O Error while reading the game"
 msgstr "I/O Napaka pri branju igre"
 
-#: src/game_controller.cpp:793
+#: src/game_controller.cpp:638
 #, fuzzy
 msgid "File I/O Error while reading the game: '"
 msgstr "I/O Napaka pri branju igre"
 
-#: src/game_controller.cpp:890
+#: src/game_controller.cpp:735
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Na voljo ni nobenih ciljev"
 
-#: src/game_controller.cpp:1122
+#: src/game_controller.cpp:967
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Ali zares želite izbrisati ta shranjeni položaj?"
 
-#: src/game_controller.cpp:1123
+#: src/game_controller.cpp:968
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game_controller.cpp:1127
+#: src/game_controller.cpp:972
 #, fuzzy
 msgid "Don’t show again"
 msgstr "Ne sprašuj me več!"
 
-#: src/game_controller.cpp:1198
+#: src/game_controller.cpp:1043
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Napaka med igranjem: "
 
-#: src/game_controller.cpp:1200 src/playcampaign.cpp:108
+#: src/game_controller.cpp:1045 src/playcampaign.cpp:108
 #: src/playcampaign.cpp:373
 #, fuzzy
 msgid "The game could not be loaded: "
 msgstr "Igre ni bilo možno naložiti: "
 
-#: src/game_controller.cpp:1202 src/playcampaign.cpp:110
+#: src/game_controller.cpp:1047 src/playcampaign.cpp:110
 #: src/playcampaign.cpp:376
 #, fuzzy
 msgid "Error while playing the game: "
 msgstr "Napaka med igranjem: "
 
-#: src/game_controller.cpp:1220 src/playcampaign.cpp:112
+#: src/game_controller.cpp:1065 src/playcampaign.cpp:112
 #: src/playcampaign.cpp:379
 #, fuzzy
 msgid "The game map could not be loaded: "
 msgstr "Karte ni bilo možno naložiti: "
 
-#: src/game_controller.cpp:1350
+#: src/game_controller.cpp:1082 src/game_controller_abstract.cpp:53
+msgid "The Battle for Wesnoth"
+msgstr "Bitka za Wesnoth"
+
+#: src/game_controller.cpp:1195
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
@@ -3961,16 +3962,16 @@ msgstr[1] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 msgstr[2] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 msgstr[3] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 
-#: src/game_controller.cpp:1357
+#: src/game_controller.cpp:1202
 msgid "ERROR DETAILS:"
 msgstr "PODROBNOSTI NAPAKE:"
 
-#: src/game_controller.cpp:1389
+#: src/game_controller.cpp:1234
 #, fuzzy
 msgid "Error loading game configuration files: '"
 msgstr "Napaka pri nalaganju nastavitvenih datotek: '"
 
-#: src/game_controller.cpp:1390
+#: src/game_controller.cpp:1235
 #, fuzzy
 msgid "' (The game will now exit)"
 msgstr "' (Igra se bo zaključila)"
@@ -5382,7 +5383,7 @@ msgstr "Čakanje na igralce..."
 msgid "Waiting for players to choose factions..."
 msgstr "Čakanje na igralce..."
 
-#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:744
+#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:742
 msgid "Create Game"
 msgstr "Ustvari igro"
 
@@ -5614,94 +5615,94 @@ msgstr "--nobena igra ne poteka--"
 msgid " (Unknown Era)"
 msgstr " (neznano obdobje)"
 
-#: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:893
+#: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:891
 msgid "Password Required"
 msgstr "Potrebno je geslo"
 
-#: src/multiplayer_lobby.cpp:737 src/multiplayer_wait.cpp:178
+#: src/multiplayer_lobby.cpp:735 src/multiplayer_wait.cpp:178
 #, fuzzy
 msgid "Game Lobby"
 msgstr "Čakalnica"
 
-#: src/multiplayer_lobby.cpp:742
+#: src/multiplayer_lobby.cpp:740
 msgid "Observe Game"
 msgstr "Opazuj igro"
 
-#: src/multiplayer_lobby.cpp:743
+#: src/multiplayer_lobby.cpp:741
 #, fuzzy
 msgid "Join Game"
 msgstr "Pridruži se igri"
 
-#: src/multiplayer_lobby.cpp:745
+#: src/multiplayer_lobby.cpp:743
 #, fuzzy
 msgid "Quick Replays"
 msgstr "Hitre ponovitve"
 
-#: src/multiplayer_lobby.cpp:746
+#: src/multiplayer_lobby.cpp:744
 msgid "Preferences"
 msgstr "Nastavitve"
 
-#: src/multiplayer_lobby.cpp:747
+#: src/multiplayer_lobby.cpp:745
 msgid "Quit"
 msgstr "Končaj"
 
-#: src/multiplayer_lobby.cpp:748
+#: src/multiplayer_lobby.cpp:746
 msgid "Apply Filter"
 msgstr "Uveljavi filter"
 
-#: src/multiplayer_lobby.cpp:749
+#: src/multiplayer_lobby.cpp:747
 msgid "Invert"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:750
+#: src/multiplayer_lobby.cpp:748
 #, fuzzy
 msgid "Vacant Slots"
 msgstr "Praznih mest:"
 
-#: src/multiplayer_lobby.cpp:751
+#: src/multiplayer_lobby.cpp:749
 msgid "Friends in Game"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:752
+#: src/multiplayer_lobby.cpp:750
 #, fuzzy
 msgid "Search:"
 msgstr "Iskanje"
 
-#: src/multiplayer_lobby.cpp:760
+#: src/multiplayer_lobby.cpp:758
 #, fuzzy
 msgid "Skip quickly to the active turn when observing"
 msgstr "Hitri preskok na trenutno potezo (pri opazovanju)"
 
-#: src/multiplayer_lobby.cpp:763
+#: src/multiplayer_lobby.cpp:761
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:766
+#: src/multiplayer_lobby.cpp:764
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:770
+#: src/multiplayer_lobby.cpp:768
 msgid "Only show games that have at least one vacant slot"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:774
+#: src/multiplayer_lobby.cpp:772
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:780
+#: src/multiplayer_lobby.cpp:778
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:894
+#: src/multiplayer_lobby.cpp:892
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:895
+#: src/multiplayer_lobby.cpp:893
 msgid "Password: "
 msgstr "Geslo:"
 
@@ -5836,7 +5837,7 @@ msgstr "Bili ste poraženi!"
 msgid "Error while reading the WML: "
 msgstr "Napaka med igranjem: "
 
-#: src/playcampaign.cpp:418 src/playsingle_controller.cpp:447
+#: src/playcampaign.cpp:418 src/playsingle_controller.cpp:452
 msgid "Game Over"
 msgstr "Konec igre"
 
@@ -5958,11 +5959,11 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/playsingle_controller.cpp:448
+#: src/playsingle_controller.cpp:453
 msgid "The game is over."
 msgstr "Igre je konec."
 
-#: src/playsingle_controller.cpp:528
+#: src/playsingle_controller.cpp:533
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -5971,21 +5972,21 @@ msgstr ""
 "Zgodila se je mrežna prkinitev in igra se ne more nadaljevati. Ali želite "
 "shraniti igro?"
 
-#: src/playsingle_controller.cpp:686
+#: src/playsingle_controller.cpp:694
 #, fuzzy
 msgid "It is now $name|’s turn"
 msgstr "Vaša poteza se je začela"
 
-#: src/playsingle_controller.cpp:916
+#: src/playsingle_controller.cpp:931
 #, fuzzy
 msgid "Scenario Report"
 msgstr "Scenarijsko poročilo"
 
-#: src/playsingle_controller.cpp:919
+#: src/playsingle_controller.cpp:934
 msgid "Victory"
 msgstr "Zmaga"
 
-#: src/playsingle_controller.cpp:920
+#: src/playsingle_controller.cpp:935
 #, fuzzy
 msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
@@ -6449,7 +6450,7 @@ msgstr "Naša vas"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size mora biti med 0.0 in 0.5."
 
-#: src/tod_manager.cpp:117
+#: src/tod_manager.cpp:124
 msgid "No time of day has been defined."
 msgstr ""
 
@@ -6538,6 +6539,14 @@ msgstr "zakonita"
 #: src/unit_types.cpp:966
 msgid "female^neutral"
 msgstr "nevtralna"
+
+#, fuzzy
+#~ msgid ", MAX XP +25%"
+#~ msgstr ", MAX XP +25%"
+
+#, fuzzy
+#~ msgid "Max HP bonus +"
+#~ msgstr "Največji HP bonus +"
 
 #, fuzzy
 #~ msgid ""
