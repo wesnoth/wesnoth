@@ -583,29 +583,21 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 				break;
 			case map_location::SOUTH_EAST:
 			case map_location::SOUTH:
-				if(current_data.auto_vflip) {
-					orientation = halo::VREVERSE;
-				} else {
+				if(!current_data.auto_vflip) {
 					orientation = halo::NORMAL;
+				} else {
+					orientation = halo::VREVERSE;
 				}
 				break;
 			case map_location::SOUTH_WEST:
-				if(current_data.auto_hflip && current_data.auto_hflip) {
-					orientation = halo::HVREVERSE;
-				} else if(current_data.auto_hflip){
+				if(!current_data.auto_hflip) {
 					orientation = halo::HREVERSE;
-				} else if(current_data.auto_vflip){
-					orientation = halo::VREVERSE;
 				} else {
-					orientation = halo::NORMAL;
+					orientation = halo::HVREVERSE;
 				}
 				break;
 			case map_location::NORTH_WEST:
-				if(current_data.auto_hflip) {
-					orientation = halo::HREVERSE;
-				} else {
-					orientation = halo::NORMAL;
-				}
+				orientation = halo::HREVERSE;
 				break;
 			case map_location::NDIRECTIONS:
 			default:
