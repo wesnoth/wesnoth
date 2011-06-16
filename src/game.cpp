@@ -615,6 +615,7 @@ int main(int argc, char** argv)
 		safe_exit(res);
 	} catch(boost::program_options::error& e) {
 		std::cerr << "Error in command line: " << e.what() << '\n';
+		return 1;
 	} catch(CVideo::error&) {
 		std::cerr << "Could not initialize video. Exiting.\n";
 		return 1;
