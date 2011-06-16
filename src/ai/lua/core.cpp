@@ -427,10 +427,9 @@ static void push_map_location(lua_State *L, const map_location& ml)
 	lua_rawset(L, -3);	
 }
 
-static int cfun_ai_get_dstsrc(lua_State *L)
+static void push_move_map(lua_State *L, const move_map& m)
 {
-	move_map dst_src = get_readonly_context(L).get_dstsrc();
-	move_map::const_iterator it = dst_src.begin();
+	move_map::const_iterator it = m.begin();
 	
 	int index = 1;	
 	
@@ -456,8 +455,34 @@ static int cfun_ai_get_dstsrc(lua_State *L)
 		
 		index = 1;		
 		
-	} while (it != dst_src.end());
-	
+	} while (it != m.end());
+}
+
+static int cfun_ai_get_dstsrc(lua_State *L)
+{
+	move_map dst_src = get_readonly_context(L).get_dstsrc();
+	push_move_map(L, dst_src);	
+	return 1;
+}
+
+static int cfun_ai_get_srcdst(lua_State *L)
+{
+	move_map src_dst = get_readonly_context(L).get_dstsrc();
+	push_move_map(L, src_dst);
+	return 1;
+}
+
+static int cfun_ai_get_enemy_dstsrc(lua_State *L)
+{	
+	move_map enemy_dst_src = get_readonly_context(L).get_enemy_dstsrc();
+	push_move_map(L, enemy_dst_src);
+	return 1;
+}
+
+static int cfun_ai_get_enemy_srcdst(lua_State *L)
+{	
+	move_map enemy_src_dst = get_readonly_context(L).get_enemy_dstsrc();
+	push_move_map(L, enemy_src_dst);
 	return 1;
 }
 
@@ -480,7 +505,12 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 
 	static luaL_reg const callbacks[] = {
 		{ "attack", 			&cfun_ai_execute_attack			},
+		// Move maps
 		{ "get_dstsrc", 		&cfun_ai_get_dstsrc			},
+		{ "get_srcdst", 		&cfun_ai_get_srcdst			},
+		{ "get_enemy_dstsrc", 		&cfun_ai_get_enemy_dstsrc		},
+		{ "get_enemy_srcdst", 		&cfun_ai_get_enemy_srcdst		},
+		// End of move maps
 		// Aspects
 		{ "get_aggression", 		&cfun_ai_get_aggression           	},
 		{ "get_avoid", 			&cfun_ai_get_avoid			},
