@@ -450,20 +450,28 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 }
 
 #ifdef HAVE_SENDFILE
-struct cork_setter {
-	cork_setter(int socket) : cork_(1), socket_(socket)
+
+#ifdef TCP_CORK
+	struct cork_setter {
+		cork_setter(int socket) : cork_(1), socket_(socket)
+		{
+			setsockopt(socket_, IPPROTO_TCP, TCP_CORK, &cork_, sizeof(cork_));;
+		}
+		~cork_setter()
+		{
+			cork_ = 0;
+			setsockopt(socket_, IPPROTO_TCP, TCP_CORK, &cork_, sizeof(cork_));
+		}
+		private:
+		int cork_;
+		int socket_;
+	};
+#else
+	struct cork_setter
 	{
-		setsockopt(socket_, IPPROTO_TCP, TCP_CORK, &cork_, sizeof(cork_));;
-	}
-	~cork_setter()
-	{
-		cork_ = 0;
-		setsockopt(socket_, IPPROTO_TCP, TCP_CORK, &cork_, sizeof(cork_));
-	}
-	private:
-	int cork_;
-	int socket_;
-};
+		cork_setter(int) {}
+	};
+#endif
 
 struct close_fd {
 	    void operator()(int fd) const { close(fd); }
