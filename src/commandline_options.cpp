@@ -52,8 +52,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	data_dir(),
 	debug(false),
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	debug_dot_level(),
 	debug_dot_domain(),
+	debug_dot_level(),
 #endif
 	editor(),
 	fps(false),
@@ -247,10 +247,12 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	if (vm.count("debug"))
 		debug = true;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	if (vm.count("debug-dot-domain")
+	if (vm.count("debug-dot-domain")) {
 		debug_dot_domain = vm["debug-dot-domain"].as<std::string>();
-	if (vm.count("debug-dot-level")
+	}
+	if (vm.count("debug-dot-level")) {
 		debug_dot_domain = vm["debug-dot-level"].as<std::string>();
+	}
 #endif
 	if (vm.count("editor"))
 		editor = vm["editor"].as<std::string>();
