@@ -3479,7 +3479,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		lua_pop(L, 1);
 		char const* function = lua_tostring(L, -1);
 		if(strcmp(function, "clock") == 0 || strcmp(function, "date") == 0
-			|| strcmp(function, "difftime") == 0) continue;
+			|| strcmp(function, "time") == 0 || strcmp(function, "difftime") == 0) continue;
 		lua_pushnil(L);
 		lua_setfield(L, -3, function);
 	}
