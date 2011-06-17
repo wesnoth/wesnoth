@@ -463,6 +463,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/mp_create_game_set_password.cpp
 	gui/dialogs/mp_login.cpp
 	gui/dialogs/mp_method_selection.cpp
+	gui/dialogs/network_transmission.cpp
 	gui/dialogs/popup.cpp
 	gui/dialogs/simple_item_selector.cpp
 	gui/dialogs/tip.cpp

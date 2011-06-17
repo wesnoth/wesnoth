@@ -28,6 +28,7 @@
 #include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/addon/description.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/network_transmission.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/settings.hpp"
@@ -1123,6 +1124,10 @@ namespace {
 		preferences::set_campaign_server(remote_address);
 
 		try {
+			if(gui2::new_widgets) {
+				gui2::tnetwork_transmission network_receive("WIP network transmission dialog");
+				network_receive.show(disp.video());
+			}
 			const network::manager net_manager;
 			const network::connection sock =
 				dialogs::network_connect_dialog(disp, _("Connecting to add-ons server..."),
