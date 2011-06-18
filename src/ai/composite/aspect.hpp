@@ -402,6 +402,7 @@ class lua_aspect : public typesafe_aspect<T>
 public:
 	lua_aspect(readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
 		: typesafe_aspect<T>(context, cfg, id)
+		, handler_()
 	{
 		std::string value;
 		if (cfg.has_attribute("value")) 
