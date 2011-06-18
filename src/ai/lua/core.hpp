@@ -46,6 +46,9 @@ private:
 public:
 	~lua_ai_context();
 	lua_ai_context()
+		: L(NULL)
+		, num_(0)
+		, side_(0)
 	{
 	}
 	void load();
