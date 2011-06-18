@@ -120,6 +120,7 @@ public:
 		: aspect(context,cfg,id)
 		, value_()
 		, value_variant_()
+		, value_lua_()
 	{
 	}
 
