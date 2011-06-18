@@ -212,7 +212,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("smallgui", "")
 		;
 	visible_.add(general_opts).add(campaign_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(preprocessor_opts).add(proxy_opts);
-	
+
 	all_.add(visible_).add(hidden_);
 
 	po::positional_options_description positional;

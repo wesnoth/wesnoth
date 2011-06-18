@@ -23,7 +23,7 @@
 
 namespace ai {
 
-	lua_object_base::lua_object_base()	
+	lua_object_base::lua_object_base()
 	{
 		// empty
 	}

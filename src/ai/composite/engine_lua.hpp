@@ -45,13 +45,13 @@ public:
 	 * and parse several (usually, 1) stages out of it
 	 */
 	virtual void do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b );
-	
+
 	/**
 	 * Taka a config (with engine=lua in it)
 	 * and parse several (usually, 1) aspects out of it
 	 */
 	void do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr > > b );
-	
+
 	virtual std::string evaluate(const std::string &str);
 
 	/**
@@ -65,7 +65,7 @@ public:
 	 * , like access to game state and movement/attack routines.
 	 */
 	virtual void set_ai_context(ai_context *context);
-	
+
 private:
 
 	/**

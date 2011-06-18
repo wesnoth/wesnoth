@@ -89,7 +89,7 @@ private:
 	void set_unit_data();
 
 	void mark_completed_campaigns(std::vector<config>& campaigns);
-	
+
 	editor::EXIT_STATUS start_editor(const std::string& filename);
 
 	//this should get destroyed *after* the video, since we want

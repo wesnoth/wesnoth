@@ -56,10 +56,10 @@ public:
 	}
 
 	boost::shared_ptr<T> get()
-	{ 
+	{
 		return value_;
 	}
-	
+
 	void store(lua_State* L, int n)
 	{
 		this->value_ = boost::shared_ptr<T>(to_type(L, n));
@@ -68,7 +68,7 @@ public:
 protected:
 
 	// A group of functions that deal with the translation of the results to C++
-	boost::shared_ptr<T> to_type(lua_State *, int) 
+	boost::shared_ptr<T> to_type(lua_State *, int)
 	{
 		return boost::shared_ptr<T>();
 	}
@@ -77,25 +77,25 @@ protected:
 };
 
 template <>
-inline boost::shared_ptr<double> lua_object<double>::to_type(lua_State *L, int n) 
+inline boost::shared_ptr<double> lua_object<double>::to_type(lua_State *L, int n)
 {
 	return boost::shared_ptr<double>(new double(lua_tonumber(L, n)));
 }
 
 template <>
-inline boost::shared_ptr<std::string> lua_object<std::string>::to_type(lua_State *L, int n) 
+inline boost::shared_ptr<std::string> lua_object<std::string>::to_type(lua_State *L, int n)
 {
 	return boost::shared_ptr<std::string>(new std::string(lua_tostring(L, n)));
 }
 
 template <>
-inline boost::shared_ptr<bool> lua_object<bool>::to_type(lua_State *L, int n) 
+inline boost::shared_ptr<bool> lua_object<bool>::to_type(lua_State *L, int n)
 {
 	return boost::shared_ptr<bool>(new bool(lua_toboolean(L, n)));
 }
-	
+
 template <>
-inline boost::shared_ptr<int> lua_object<int>::to_type(lua_State *L, int n) 
+inline boost::shared_ptr<int> lua_object<int>::to_type(lua_State *L, int n)
 {
 	return boost::shared_ptr<int>(new int(lua_tonumber(L, n)));
 }
@@ -105,7 +105,7 @@ inline boost::shared_ptr< std::vector<std::string> > lua_object< std::vector<std
 {
 	boost::shared_ptr< std::vector<std::string> > v = boost::shared_ptr< std::vector<std::string> >(new std::vector<std::string>());
 	int l = lua_objlen(L, n);
-	for (int i = 1; i < l + 1; ++i) 
+	for (int i = 1; i < l + 1; ++i)
 	{
 		lua_pushinteger(L, i);
 		lua_gettable(L, n);
@@ -113,7 +113,7 @@ inline boost::shared_ptr< std::vector<std::string> > lua_object< std::vector<std
 		lua_settop(L, n);
 		v->push_back(s);
 	}
-	
+
 	return v;
 }
 

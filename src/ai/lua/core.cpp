@@ -56,7 +56,7 @@ static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 static char const aisKey     = 0;
 
 namespace ai {
-  
+
 void lua_ai_context::init(lua_State *L)
 {
 	// Create the ai elements table.
@@ -268,29 +268,29 @@ static int cfun_ai_get_attack_depth(lua_State *L)
 static int cfun_ai_get_avoid(lua_State *L)
 {
 	std::set<map_location> locs;
-	terrain_filter avoid = get_readonly_context(L).get_avoid();	
+	terrain_filter avoid = get_readonly_context(L).get_avoid();
 	avoid.get_locations(locs, true); // is it true here?
-	
+
 	int sz = locs.size();
-	lua_createtable(L, sz, 0); // create a table that we'll use as an array	
-	
-	std::set<map_location>::iterator it = locs.begin();	
+	lua_createtable(L, sz, 0); // create a table that we'll use as an array
+
+	std::set<map_location>::iterator it = locs.begin();
 	for (int i = 0; it != locs.end(); ++it, ++i)
 	{
 		lua_pushinteger(L, i + 1); // Index for the map location
 		lua_createtable(L, 2, 0); // Table for a single map location
-		
-		lua_pushstring(L, "x");		
-		lua_pushinteger(L, it->x);		
+
+		lua_pushstring(L, "x");
+		lua_pushinteger(L, it->x);
 		lua_settable(L, -3);
-		
+
 		lua_pushstring(L, "y");
 		lua_pushinteger(L, it->y);
-		lua_settable(L, -3);		
-		
+		lua_settable(L, -3);
+
 		lua_settable(L, -3);
 	}
-	
+
 	return 1;
 }
 
@@ -318,7 +318,7 @@ static int cfun_ai_get_leader_aggression(lua_State *L)
 static int cfun_ai_get_leader_goal(lua_State *L)
 {
 	config goal = get_readonly_context(L).get_leader_goal();
-	luaW_pushconfig(L, goal); 
+	luaW_pushconfig(L, goal);
 	return 1;
 }
 
@@ -392,7 +392,7 @@ static int cfun_ai_get_simple_targeting(lua_State *L)
 	return 1;
 }
 
-static int cfun_ai_get_support_villages(lua_State *L) 
+static int cfun_ai_get_support_villages(lua_State *L)
 {
 	bool support_villages = get_readonly_context(L).get_support_villages();
 	lua_pushboolean(L, support_villages);
@@ -417,51 +417,51 @@ static int cfun_ai_get_villages_per_scout(lua_State *L)
 static void push_map_location(lua_State *L, const map_location& ml)
 {
 	lua_createtable(L, 2, 0);
-		
+
 	lua_pushstring(L, "x");
 	lua_pushinteger(L, ml.x);
 	lua_rawset(L, -3);
 
 	lua_pushstring(L, "y");
 	lua_pushinteger(L, ml.y);
-	lua_rawset(L, -3);	
+	lua_rawset(L, -3);
 }
 
 static void push_move_map(lua_State *L, const move_map& m)
 {
 	move_map::const_iterator it = m.begin();
-	
-	int index = 1;	
-	
+
+	int index = 1;
+
 	lua_createtable(L, 0, 0); // the main table
-	
+
 	do {
 		map_location key = it->first;
-		
+
 		push_map_location(L, key);
 		lua_createtable(L, 0, 0);
-		
+
 		while (key == it->first) {
-			
+
 			push_map_location(L, it->second);
 			lua_rawseti(L, -2, index);
-			
+
 			++index;
 			++it;
-			
+
 		}
-		
+
 		lua_settable(L, -3);
-		
-		index = 1;		
-		
+
+		index = 1;
+
 	} while (it != m.end());
 }
 
 static int cfun_ai_get_dstsrc(lua_State *L)
 {
 	move_map dst_src = get_readonly_context(L).get_dstsrc();
-	push_move_map(L, dst_src);	
+	push_move_map(L, dst_src);
 	return 1;
 }
 
@@ -473,14 +473,14 @@ static int cfun_ai_get_srcdst(lua_State *L)
 }
 
 static int cfun_ai_get_enemy_dstsrc(lua_State *L)
-{	
+{
 	move_map enemy_dst_src = get_readonly_context(L).get_enemy_dstsrc();
 	push_move_map(L, enemy_dst_src);
 	return 1;
 }
 
 static int cfun_ai_get_enemy_srcdst(lua_State *L)
-{	
+{
 	move_map enemy_src_dst = get_readonly_context(L).get_enemy_dstsrc();
 	push_move_map(L, enemy_src_dst);
 	return 1;
@@ -611,7 +611,7 @@ lua_ai_context::~lua_ai_context()
 
 void lua_ai_action_handler::handle(config &cfg, bool configOut, lua_object_ptr l_obj)
 {
-	int initial_top = lua_gettop(L);//get the old stack size	
+	int initial_top = lua_gettop(L);//get the old stack size
 
 	// Load the user function from the registry.
 	lua_pushlightuserdata(L, (void *)&aisKey);//stack size is now 1 [-1: ais_table key]

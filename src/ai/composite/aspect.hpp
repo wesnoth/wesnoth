@@ -167,8 +167,8 @@ public:
 	virtual boost::shared_ptr<T> get_ptr() const
 	{
 		if (!valid_) {
-			if (!(valid_variant_ || valid_lua_)) {				
-				recalculate();				
+			if (!(valid_variant_ || valid_lua_)) {
+				recalculate();
 			}
 
 			if (!valid_ ) {
@@ -397,7 +397,7 @@ protected:
 };
 
 template<typename T>
-class lua_aspect : public typesafe_aspect<T> 
+class lua_aspect : public typesafe_aspect<T>
 {
 public:
 	lua_aspect(readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
@@ -405,7 +405,7 @@ public:
 		, handler_()
 	{
 		std::string value;
-		if (cfg.has_attribute("value")) 
+		if (cfg.has_attribute("value"))
 		{
 			value = cfg["value"].str();
 			if (value == "yes") // @TODO for Nephro or Crab: get rid of this workaround
@@ -413,17 +413,17 @@ public:
 				value = "true";
 			}
 			value = "return " + value;
-		} 
-		else if (cfg.has_attribute("code")) 
-		{	
+		}
+		else if (cfg.has_attribute("code"))
+		{
 			value = cfg["code"].str();
 		}
-		else 
+		else
 		{
 			// error
 			return;
 		}
-		
+
 		handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(value.c_str(), *l_ctx));
 	}
 
@@ -516,7 +516,7 @@ public:
 		: lua_aspect_factory( name )
 	{
 	}
-	
+
 	aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
 	{
 		boost::shared_ptr<ASPECT> _a(new ASPECT(context,cfg,id,l_ctx));

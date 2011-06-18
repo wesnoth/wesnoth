@@ -65,14 +65,14 @@ public:
 	virtual double evaluate()
 	{
 		serialized_evaluation_state_ = config();
-		
+
 		lua_int_obj l_obj = lua_int_obj(new lua_object<int>());
-		
+
 		if (evaluation_action_handler_) {
 			evaluation_action_handler_->handle(serialized_evaluation_state_, true, l_obj);
 		} else {
 			return BAD_SCORE;
-		}		
+		}
 
 		return *(l_obj->get());
 	}
@@ -119,7 +119,7 @@ public:
 	{
 		gamestate_observer gs_o;
 		lua_int_obj l_obj = lua_int_obj(new lua_object<int>());
-		
+
 		if (action_handler_) {
 			action_handler_->handle(serialized_evaluation_state_, false, l_obj);
 		}
@@ -196,12 +196,12 @@ void engine_lua::do_parse_aspect_from_config( const config &cfg, const std::stri
 {
 	const std::string aspect_factory_key = id+"*lua_aspect"; // @note: factory key for a lua_aspect
 	lua_aspect_factory::factory_map::iterator f = lua_aspect_factory::get_list().find(aspect_factory_key);
-	
+
 	if (f == lua_aspect_factory::get_list().end()){
 		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNKNOWN aspect["<<aspect_factory_key<<"]" << std::endl;
 		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg << std::endl;
 		return;
-	}	
+	}
 	aspect_ptr new_aspect = f->second->get_new_instance(ai_,cfg,id,lua_ai_context_);
 	if (!new_aspect) {
 		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNABLE TO CREATE aspect, key=["<<aspect_factory_key<<"]"<< std::endl;

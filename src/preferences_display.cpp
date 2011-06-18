@@ -105,7 +105,7 @@ void set_fullscreen(CVideo& video, const bool ison)
 	if(video.isFullScreen() != ison) {
 		const int flags = ison ? FULL_SCREEN : 0;
 		int bpp = video.bppForMode(res.first, res.second, flags);
-        
+
 		if(bpp > 0) {
 			video.setMode(res.first,res.second,bpp,flags);
 			if(disp) {

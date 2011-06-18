@@ -573,7 +573,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 			}
 		}
 		animator.add_animation(&*u, cfg["flag"], u->get_location(),
-			secondary_loc, cfg["value"], cfg["with_bars"].to_bool(), 
+			secondary_loc, cfg["value"], cfg["with_bars"].to_bool(),
 			cfg["text"], text_color, hits, primary, secondary,
 			cfg["value_second"]);
 	}
