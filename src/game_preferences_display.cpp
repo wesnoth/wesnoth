@@ -209,7 +209,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  chat_lines_label_(disp.video(), ""),
 	  turbo_slider_label_(disp.video(), "", font::SIZE_SMALL ),
 	  sample_rate_label_(disp.video(), _("Sample Rate (Hz):")), buffer_size_label_(disp.video(), ""),
-	  idle_anim_slider_label_(disp.video(), _("Frequency:")),
+	  idle_anim_slider_label_(disp.video(), _("Frequency:"), font::SIZE_SMALL ),
 	  autosavemax_slider_label_(disp.video(), "", font::SIZE_SMALL),
 	  advanced_slider_label_(disp.video(), "", font::SIZE_SMALL),
 
@@ -530,10 +530,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += short_interline; interrupt_when_ally_sighted_button_.set_location(rect.x, ypos);
 	ypos += item_interline; save_replays_button_.set_location(rect.x, ypos);
 	ypos += short_interline; delete_saves_button_.set_location(rect.x, ypos);
-	ypos += short_interline; autosavemax_slider_label_.set_location(rect.x, ypos);
-	SDL_Rect autosavemax_rect = create_rect(rect.x
+	ypos += short_interline; autosavemax_slider_label_.set_location(rect.x + horizontal_padding, ypos);
+	SDL_Rect autosavemax_rect = create_rect(rect.x + horizontal_padding
 			, ypos + short_interline
-			, rect.w - right_border
+			, rect.w - horizontal_padding - right_border
 			, 0);
 
 	autosavemax_slider_.set_location(autosavemax_rect);
@@ -551,10 +551,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
 	ypos += item_interline; idle_anim_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
-	idle_anim_slider_label_.set_location(rect.x, ypos);
-	SDL_Rect idle_anim_rect = create_rect(rect.x + idle_anim_slider_label_.width()
+	idle_anim_slider_label_.set_location(rect.x + horizontal_padding, ypos);
+	SDL_Rect idle_anim_rect = create_rect(rect.x + horizontal_padding + idle_anim_slider_label_.width()
 			, ypos
-			, rect.w - idle_anim_slider_label_.width() - right_border
+			, rect.w - horizontal_padding - idle_anim_slider_label_.width() - right_border
 			, 0);
 
 	idle_anim_slider_.set_location(idle_anim_rect);
