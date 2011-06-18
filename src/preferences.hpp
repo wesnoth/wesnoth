@@ -144,6 +144,7 @@ namespace preferences {
 	void set_animate_map(bool value);
 
 	bool show_standing_animations();
+	void set_show_standing_animations(bool value);
 
 	bool show_fps();
 	void set_show_fps(bool value);

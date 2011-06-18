@@ -122,7 +122,8 @@ private:
 			advanced_sound_button_, normal_sound_button_,
 			UI_sound_button_, sample_rate_button1_,
 			sample_rate_button2_, sample_rate_button3_,
-			confirm_sound_button_, idle_anim_button_;
+			confirm_sound_button_, idle_anim_button_,
+			standing_anim_button_;
 	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_,
 	           scroll_label_, chat_lines_label_,
 	           turbo_slider_label_, sample_rate_label_, buffer_size_label_,
@@ -200,6 +201,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  sample_rate_button3_(disp.video(), _("Custom"), gui::button::TYPE_CHECK),
 	  confirm_sound_button_(disp.video(), _("Apply")),
 	  idle_anim_button_(disp.video(), _("Show Unit Idle Animations"), gui::button::TYPE_CHECK),
+	  standing_anim_button_(disp.video(), _("Show Unit Standing Animations"), gui::button::TYPE_CHECK),
 
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  UI_sound_label_(disp.video(), _("UI Sound Volume:")),
@@ -321,6 +323,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	idle_anim_button_.set_check(idle_anim());
 	idle_anim_button_.set_help_string(_("Play short random animations for idle units"));
 
+	standing_anim_button_.set_check(show_standing_animations());
+	standing_anim_button_.set_help_string(_("Continuously animate standing units in the battlefield"));
+
 	// exponential scale (2^(n/10))
 	idle_anim_slider_.set_min(-40);
 	idle_anim_slider_.set_max(30);
@@ -424,6 +429,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&fullscreen_button_);
 	h.push_back(&turbo_button_);
 	h.push_back(&idle_anim_button_);
+	h.push_back(&standing_anim_button_);
 	h.push_back(&show_ai_moves_button_);
 	h.push_back(&interrupt_when_ally_sighted_button_);
 	h.push_back(&save_replays_button_);
@@ -546,6 +552,8 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 			, 0);
 
 	idle_anim_slider_.set_location(idle_anim_rect);
+	ypos += item_interline; standing_anim_button_.set_location(rect.x, ypos);
+
 	video_mode_button_.set_location(rect.x, bottom_row_y - video_mode_button_.height());
 	theme_button_.set_location(rect.x + video_mode_button_.width() + 10,
 	                           bottom_row_y - theme_button_.height());
@@ -759,6 +767,8 @@ void preferences_dialog::process_event()
 			if (!enable_idle_anim)
 				idle_anim_slider_.set_value(0);
 		}
+		if (standing_anim_button_.pressed())
+			set_show_standing_animations(standing_anim_button_.checked());
 
 		set_idle_anim_rate(idle_anim_slider_.value());
 
@@ -1115,6 +1125,7 @@ void preferences_dialog::set_selection(int index)
 	idle_anim_slider_label_.enable(idle_anim());
 	idle_anim_slider_.hide(hide_display);
 	idle_anim_slider_.enable(idle_anim());
+	standing_anim_button_.hide(hide_display);
 	video_mode_button_.hide(hide_display);
 	theme_button_.hide(hide_display);
 	show_team_colors_button_.hide(hide_display);
