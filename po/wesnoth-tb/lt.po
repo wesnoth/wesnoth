@@ -1,6 +1,6 @@
-# Copyright (C) Wesnoth development team, 2007-2010.
+# Copyright (C) Wesnoth development team, 2007-2011.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2010.
+#  Andrius Štikonas <stikonas@gmail.com>, 2007-2011.
 #  Marius Tauba, 2009.
 msgid ""
 msgstr ""
@@ -55,11 +55,6 @@ msgstr "(Pradedantysis lygis, 4 scenarijai.)"
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
 #, fuzzy
-#| msgid ""
-#| "An evil mage is threatening the small village of Maghre and its "
-#| "inhabitants. The village’s mage Bjarn sends for his brother to help, but "
-#| "not all goes as planned. Can you help?\n"
-#| "\n"
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The village’s mage sends to his warrior brother for help, but not all goes "
@@ -141,14 +136,6 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:63
 #, fuzzy
-#| msgid ""
-#| "There was a man named Bjarn who had shown talent as a mage when he was "
-#| "young, gone to the great Academy on the Isle of Alduin, and returned to "
-#| "work his magic in the land where he was born. The people looked to him "
-#| "for help and leadership. He found weapons half-forgotten from the times "
-#| "of their sires and grandsires hanging in many houses, and bade the "
-#| "villagers to take them down and clean and oil them. He set the smiths of "
-#| "Maghre to making spearheads and ax-blades for the rest."
 msgid ""
 "There was a man named Baran who had shown talent as a mage when he was "
 "young, gone to the great Academy on the Isle of Alduin, and returned to work "
@@ -168,13 +155,6 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:67
 #, fuzzy
-#| msgid ""
-#| "Now Bjarn had a brother named Arne who had also left Maghre to seek his "
-#| "fortune, and had become the leader of a small band of horsemen who hired "
-#| "out as guards to merchant caravans. Fortunate it was for all that when "
-#| "Bjarn was but an apprentice mage, he had made a pair of amulets for "
-#| "himself and his brother, with which they might call to each other when in "
-#| "dire need. Bjarn sent out that call."
 msgid ""
 "Now Baran had a brother named Arvith who had also left Maghre to seek his "
 "fortune, and had become the leader of a small band of horsemen who hired out "
@@ -221,15 +201,12 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:80
 #, fuzzy
-#| msgid ""
-#| "Heeding the call of his amulet, Arne gathered such men as he could and "
-#| "hurried to Maghre to help Bjarn."
 msgid ""
 "Heeding the call of his amulet, Arvith gathered such men as he could and "
 "hurried to Maghre to help Baran."
 msgstr ""
-"Atsakydamas į amuleto šaukimą, Arne surinko tuos vyrus, kuriuos sugebėjo ir "
-"išskubėjo į Magrę padėti Bjarnui."
+"Atsakydamas į amuleto šaukimą, Arvitas surinko tuos vyrus, kuriuos sugebėjo "
+"ir išskubėjo į Magrę padėti Bjarnui."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:91
@@ -246,10 +223,8 @@ msgstr "Nužudykite Mordaką, piktąjį magą"
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:823
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:60
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:255
-#, fuzzy
-#| msgid "Death of Arne"
 msgid "Death of Arvith"
-msgstr "Arne mirtis"
+msgstr "Arvito mirtis"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:117
@@ -258,7 +233,7 @@ msgstr "Arne mirtis"
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:88
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:52
 msgid "Arvith"
-msgstr ""
+msgstr "Arvitas"
 
 #. [unit]: id=Baran, type=Red Mage
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:127
@@ -294,22 +269,22 @@ msgstr "Efranas"
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:152
 msgid "Faren"
-msgstr ""
+msgstr "Farenas"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:155
 msgid "Tarek"
-msgstr ""
+msgstr "Tarekas"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:156
 msgid "Hann"
-msgstr ""
+msgstr "Hanas"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:157
 msgid "Magrid"
-msgstr ""
+msgstr "Magridas"
 
 #. [side]: type=Knight, id=Arvith
 #. [side]: type=Longbowman, id=Reeve Hoban
@@ -349,10 +324,8 @@ msgstr "Labas."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:215
-#, fuzzy
-#| msgid "Is that all, Arne? I understand, but..."
 msgid "Is that all, Arvith? I understand, but..."
-msgstr "Ir tai viskas, Arne? Aš suprantu, bet..."
+msgstr "Ir tai viskas, Arvitai? Aš suprantu, bet..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:219
@@ -410,9 +383,6 @@ msgstr "... Gerai. Svarbiausia, būkit vietoje kai mums jūsų prireiks."
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:250
 #, fuzzy
-#| msgid ""
-#| "Bjarn should be in position by now. Press them, distract the adept so "
-#| "Bjarn can spring his trap!"
 msgid ""
 "Baran should be in position by now. Press them, distract the adept so Baran "
 "can spring his trap!"
@@ -423,7 +393,6 @@ msgstr ""
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:258
 #, fuzzy
-#| msgid "Bjarn has not made his attack!"
 msgid "Baran has not made his attack!"
 msgstr "Bjarnas neužpuolė!"
 
@@ -459,9 +428,6 @@ msgstr "Susirūpinęs dėl jo, ar ne? Ė-che-che... hergh... gaargh..."
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:293
 #, fuzzy
-#| msgid ""
-#| "There’s nothing more to be had from this one; we will have to search for "
-#| "Bjarn ourselves!"
 msgid ""
 "There’s nothing more to be had from this one; we will have to search for "
 "Baran ourselves!"
@@ -470,9 +436,6 @@ msgstr "Iš šito daugiau nieko nebeišgausime; turėsime patys surasti Bjarną!
 #. [message]: role=Reporter
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:301
 #, fuzzy
-#| msgid ""
-#| "Sir, our scouts report that Bjarn was seen captured and carried away "
-#| "further north!"
 msgid ""
 "Sir, our scouts report that Baran was seen captured and carried away further "
 "north!"
@@ -494,9 +457,6 @@ msgstr ""
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:323
 #, fuzzy
-#| msgid ""
-#| "My brother, kidnapped? I have failed you, Bjarn! And even now Mordak’s "
-#| "forces descend upon the village!"
 msgid ""
 "My brother, kidnapped? I have failed you, Baran! And even now Mordak’s "
 "forces descend upon the village!"
@@ -528,10 +488,8 @@ msgstr "Persekiojimas"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:30
-#, fuzzy
-#| msgid "Arne and his band rode north in search of his missing brother."
 msgid "Arvith and his band rode north in search of his missing brother."
-msgstr "Arne ir jo gauja nujojo į šiaurę ieškoti pradingusio brolio."
+msgstr "Arvitas ir jo gauja nujojo į šiaurę ieškoti pradingusio brolio."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:41
@@ -671,9 +629,6 @@ msgstr ""
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:256
 #, fuzzy
-#| msgid ""
-#| "So much for those ghost stories. Mere elves will not stop me from freeing "
-#| "Bjarn!"
 msgid ""
 "So much for those ghost stories. Mere elves will not stop me from freeing "
 "Baran!"
@@ -811,9 +766,6 @@ msgstr "Suriškit jį ir paimkit kartu su mumis. Jei jis mus apgavo — mirs."
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:397
 #, fuzzy
-#| msgid ""
-#| "Captain, what are we riding into? I thought you wanted nothing to do with "
-#| "Bjarn any more, not since Toen Caric."
 msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
@@ -1052,21 +1004,16 @@ msgstr "Pilies sargybinis"
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:210
 #, fuzzy
-#| msgid "Rescue Bjarn"
 msgid "Rescue Baran"
 msgstr "Išvaduokite Bjarną"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:309
-#, fuzzy
-#| msgid ""
-#| "Arne and his men halt outside of the castle, gazing for a moment at the "
-#| "hulking mass of stone looming in the fog. There is movement in the mist."
 msgid ""
 "Arvith and his men halt outside of the castle, gazing for a moment at the "
 "hulking mass of stone looming in the fog. There is movement in the mist."
 msgstr ""
-"Arne ir jo vyrai sustojo priešais pilį, kurį laiką spoksodami į rūke "
+"Arvitas ir jo vyrai sustojo priešais pilį, kurį laiką spoksodami į rūke "
 "stūksančią akmens masę. Pro rūką matėsi kažkoks judesys."
 
 #. [message]: speaker=Guard_leader
@@ -1238,9 +1185,6 @@ msgstr "Jo rūbuose yra raktas."
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:682
 #, fuzzy
-#| msgid ""
-#| "That may well be the key to the cell they’re holding Bjarn in! I will "
-#| "take it."
 msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
@@ -1250,10 +1194,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:688
-#, fuzzy
-#| msgid "Move Arne to the cell with his brother to free him"
 msgid "Move Arvith to the cell with his brother to free him"
-msgstr "Nuveskite Arne iki vienutės su jo broliu, kad išlaisvintumėte"
+msgstr "Nuveskite Arvitą iki vienutės su jo broliu, kad išlaisvintumėte"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:721
@@ -1268,16 +1210,13 @@ msgstr "Žiūrėkite ką čia radau! Priskaičiuoju penkiasdešimt auksinių."
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:782
 #, fuzzy
-#| msgid "I found Bjarn. He is in this cell."
 msgid "I found Baran. He is in this cell."
 msgstr "Radau Bjarną. Jis šioje vienutėje."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:792
-#, fuzzy
-#| msgid "It’s good to see you, Arne."
 msgid "It’s good to see you, Arvith."
-msgstr "Džiaugiuosi tave matydamas, Arne."
+msgstr "Džiaugiuosi tave matydamas, Arvitai."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:796
@@ -1287,8 +1226,6 @@ msgstr "Ir tave, broli."
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:802
 #, fuzzy
-#| msgid ""
-#| "You must be one of Arne’s men. Please help me get out of this dungeon."
 msgid ""
 "You must be one of Arvith’s men. Please help me get out of this dungeon."
 msgstr ""
@@ -1318,7 +1255,6 @@ msgstr "Ačiū, kad mane išgelbėjai. Aš... nebuvau tikras, kad ateisi."
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:864
 #, fuzzy
-#| msgid "Have you no faith in your brother, Bjarn?"
 msgid "Have you no faith in your brother, Baran?"
 msgstr "Ar jau visai nebetiki savo broliu, Bjarnai?"
 
@@ -1484,7 +1420,6 @@ msgstr "Išsiaiškinkite, kas vyksta kaime"
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:64
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:259
 #, fuzzy
-#| msgid "Death of Bjarn"
 msgid "Death of Baran"
 msgstr "Bjarno mirtis"
 
@@ -1603,9 +1538,6 @@ msgstr "Užmuškite orkų karžygį ir išlaisvinkite kaimą"
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:271
 #, fuzzy
-#| msgid ""
-#| "It is finished. We’ve defeated him at last. It was good to have you at my "
-#| "side, Bjarn."
 msgid ""
 "It is finished. We’ve defeated him at last. It was good to have you at my "
 "side, Baran."
@@ -1702,21 +1634,3 @@ msgid ""
 "\n"
 "In the meantime, though, it’s good to relax and enjoy the peace."
 msgstr ""
-
-#~ msgid "Arne"
-#~ msgstr "Arne"
-
-#~ msgid "Bjarn"
-#~ msgstr "Bjarnas"
-
-#~ msgid "Fargus"
-#~ msgstr "Fargusas"
-
-#~ msgid "Erik"
-#~ msgstr "Erikas"
-
-#~ msgid "Heine"
-#~ msgstr "Heine"
-
-#~ msgid "Magnus"
-#~ msgstr "Magnusas"

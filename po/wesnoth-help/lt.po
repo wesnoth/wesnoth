@@ -1,6 +1,6 @@
-# Copyright (C) Wesnoth development team, 2007-2010.
+# Copyright (C) Wesnoth development team, 2007-2011.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2010.
+#  Andrius Štikonas <stikonas@gmail.com>, 2007-2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
@@ -207,7 +207,6 @@ msgstr ""
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
 #, fuzzy
-#| msgid "Great Ocean"
 msgid "World Ocean"
 msgstr "Didysis vandenynas"
 
@@ -221,10 +220,8 @@ msgstr ""
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
-#, fuzzy
-#| msgid "Great Continent"
 msgid "New Continent"
-msgstr "Didysis žemynas"
+msgstr "Naujasis žemynas"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
@@ -516,7 +513,7 @@ msgstr ""
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
 msgid "Ceramics"
-msgstr ""
+msgstr "Keramika"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
@@ -787,7 +784,7 @@ msgstr ""
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr ""
+msgstr "Pietvakarinės elfų žemės"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
@@ -1689,12 +1686,6 @@ msgstr "Dienos laikas"
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:268
 #, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
-#| " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-#| " Liminal units get +25% damage during twilight.\n"
-#| " Neutral units are unaffected by the time of day."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -2529,17 +2520,12 @@ msgstr ""
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:475
-#, fuzzy
-#| msgid "trait^Undead"
 msgid "trait^Aged"
-msgstr "Nemirėlis"
+msgstr "Pagyvenęs"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
 #, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
-#| "hitpoints and melee damage."
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
@@ -3984,7 +3970,6 @@ msgstr " Šis dalinys truputį sugeba gydyti."
 
 #: data/core/macros/special-notes.cfg:17
 #, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid " This unit is capable of rapid healing."
 msgstr " Šis dalinys truputį sugeba gydyti."
 
@@ -4015,7 +4000,7 @@ msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
-"Šio dalinio atsparumas mažina kai kurių atakų žalą, tačiau tik besiginant."
+" Šio dalinio atsparumas mažina kai kurių atakų žalą, tačiau tik besiginant."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -4298,10 +4283,8 @@ msgstr "laukinė"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
-#, fuzzy
-#| msgid "Receive only 40% defense in land-based villages"
 msgid "Receive only 50% defense in land-based villages"
-msgstr "Gauna tik 40% gynybą sausumos kaimuose"
+msgstr "Gauna tik 50% gynybą sausumos kaimuose"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -4888,11 +4871,6 @@ msgstr "Mechanizmai"
 #. [race]: id=mechanical
 #: data/core/units.cfg:194
 #, fuzzy
-#| msgid ""
-#| "Animated neither by natural life nor by necromancy, the term ”mechanical” "
-#| "describes a created artifact of an intelligent being. Most mechanical "
-#| "things neither move nor think on their own, but some do so as a result of "
-#| "magical enchantment."
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -4947,10 +4925,8 @@ msgstr "Pabaisa"
 
 #. [race]: id=monster
 #: data/core/units.cfg:215
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
-msgstr "Pabaisa"
+msgstr "Monstrė"
 
 #. [race]: id=monster
 #: data/core/units.cfg:216
@@ -4975,8 +4951,6 @@ msgstr "Nágas"
 
 #. [race]: id=naga
 #: data/core/units.cfg:225
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
 msgstr "Nága"
 
@@ -5274,10 +5248,8 @@ msgstr "Vilkas"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:303
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
-msgstr "Elfė"
+msgstr "Vilkė"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:304
@@ -5296,24 +5268,18 @@ msgstr "Miškiniai"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:324
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Khalifate Human"
-msgstr "Žmogus"
+msgstr "Kalifato žmogus"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:325
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Khalifate Human"
-msgstr "Žmogus"
+msgstr "Kalifato žmogus"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:326
-#, fuzzy
-#| msgid "race+plural^Mechanical"
 msgid "race+plural^Khalifate"
-msgstr "Mechanizmai"
+msgstr "Kalifatas"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:327
@@ -5322,24 +5288,18 @@ msgstr ""
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:336
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Falcon"
-msgstr "Žmogus"
+msgstr "Sakalas"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:337
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Falcon"
-msgstr "Žmogus"
+msgstr "Sakalė"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:338
-#, fuzzy
-#| msgid "race^Humans"
 msgid "race^Falcons"
-msgstr "Žmonės"
+msgstr "Sakalai"
 
 #: src/help.cpp:51
 msgid "Help"
@@ -5505,13 +5465,3 @@ msgstr "Mūšio dėl Vesnoto pagalba"
 #: src/help.cpp:3216
 msgid "Parse error when parsing help text: "
 msgstr "Nagrinėjimo klaida nagrinėjant pagalbos tekstą: "
-
-#~ msgid " "
-#~ msgstr " "
-
-#, fuzzy
-#~ msgid "<header>text='Race specific topics'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Tikimybė pataikyti'</header>"

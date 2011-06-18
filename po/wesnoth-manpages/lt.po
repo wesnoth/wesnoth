@@ -1,6 +1,6 @@
-# Copyright (C) Wesnoth development team, 2007-2010.
+# Copyright (C) Wesnoth development team, 2007-2011.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2010.
+#  Andrius Štikonas <stikonas@gmail.com>, 2007-2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
@@ -1617,7 +1617,7 @@ msgid ""
 "NOT NULL DEFAULT 0);>"
 msgstr ""
 "(skirtas user_handler=forum) Lentelės pavadinimas, kurioje wesnothd saugos "
-"savo duomenis apie vartotojus. Lentelę turėsite sukurti patys. Pavyzdžiui, "
+"savo duomenis apie naudotojus. Lentelę turėsite sukurti patys. Pavyzdžiui, "
 "šitaip: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY "
 "KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator "
 "TINYINT(4) NOT NULL DEFAULT 0);>"
@@ -1636,7 +1636,7 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
-"(skirtas user_handler=sample) Laikas, per kiek pasensta vartotojo "
+"(skirtas user_handler=sample) Laikas, per kurį pasensta naudotojo "
 "registracija (dienomis)."
 
 # type: Plain text

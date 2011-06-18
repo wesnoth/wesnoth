@@ -1,6 +1,6 @@
-# Copyright (C) Wesnoth development team, 2007-2010.
+# Copyright (C) Wesnoth development team, 2007-2011.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2010.
+#  Andrius Štikonas <stikonas@gmail.com>, 2007-2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
@@ -151,7 +151,6 @@ msgstr ""
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:46
 #, fuzzy
-#| msgid "Easy"
 msgid "(Easy)"
 msgstr "Lengva"
 
@@ -163,7 +162,6 @@ msgstr ""
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:47
 #, fuzzy
-#| msgid "Normal"
 msgid "(Normal)"
 msgstr "Normalios"
 
@@ -175,7 +173,6 @@ msgstr ""
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:48
 #, fuzzy
-#| msgid "Hard"
 msgid "(Hard)"
 msgstr "Sunku"
 
@@ -199,14 +196,12 @@ msgstr ""
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:24
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:41
 #, fuzzy
-#| msgid "Players: "
 msgid "Players"
 msgstr "Žaidėjai: "
 
 #. [side]: id=Charlie, type=Orcish Grunt
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:53
 #, fuzzy
-#| msgid "Enemy village"
 msgid "Enemies"
 msgstr "Priešų kaimas"
 
@@ -223,49 +218,42 @@ msgstr ""
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
 #, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Easy"
 msgstr "Sunkumas: "
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:90
 #, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Normal"
 msgstr "Sunkumas: "
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:93
 #, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Hard"
 msgstr "Sunkumas: "
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:100
 #, fuzzy
-#| msgid "Campaign: $campaign_name"
 msgid "Main campaign define"
 msgstr "Kampanija: $campaign_name"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:111
 #, fuzzy
-#| msgid "Campaign Design"
 msgid "Extra campaign define"
 msgstr "Kampanijų kūrimas"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:122
 #, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer define"
 msgstr "Daug žaidėjų"
 
 #. [objective]: condition=win
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
 #, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat enemy leader"
 msgstr "Nugalėkite priešų vadus"
 
@@ -2281,7 +2269,7 @@ msgstr "Alternatyvus Vesnoto serveris"
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
 msgid "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
-msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
+msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
@@ -3007,7 +2995,7 @@ msgstr "(liko šis ėjimas)"
 
 #: data/lua/wml/objectives.lua:114
 msgid "%d%% of gold carried over to the next scenario."
-msgstr "%d%% aukso pernešta į kitą scenarijų."
+msgstr "%d%% aukso pernešama į kitą scenarijų."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
@@ -3200,27 +3188,23 @@ msgstr "Užverti"
 
 #: src/actions.cpp:470
 #, fuzzy
-#| msgid "You don’t have a leader to recruit with."
 msgid "You don’t have a leader to recall with."
 msgstr "Neturite vado, su kuriuo galite samdyti."
 
 #: src/actions.cpp:475
 #, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders is able to recall that unit."
 msgstr ""
 "Jūsų vadas turi būti bokšte, kad galėtumėte samdyti arba grąžinti dalinius."
 
 #: src/actions.cpp:480
 #, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr ""
 "Jūsų vadas turi būti bokšte, kad galėtumėte samdyti arba grąžinti dalinius."
 
 #: src/actions.cpp:485
 #, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "Nėra laisvų pilies laukelių, kuriuose galima samdyti dalinį."
 
@@ -3230,14 +3214,12 @@ msgstr "Neturite vado, su kuriuo galite samdyti."
 
 #: src/actions.cpp:555
 #, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr ""
 "Jūsų vadas turi būti bokšte, kad galėtumėte samdyti arba grąžinti dalinius."
 
 #: src/actions.cpp:560
 #, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Nėra laisvų pilies laukelių, kuriuose galima samdyti dalinį."
 
@@ -6319,24 +6301,3 @@ msgstr "neutrali"
 
 #~ msgid "Max HP bonus +"
 #~ msgstr "Didžiausias GT priedas +"
-
-#, fuzzy
-#~ msgid ""
-#~ "Liminal units fight better during twilight while fighting normally during "
-#~ "day and night.\n"
-#~ "\n"
-#~ "Twilight: +25% Damage"
-#~ msgstr ""
-#~ "Chaotiški daliniai geriau kaunasi naktį ir blogiau – dieną.\n"
-#~ "\n"
-#~ "Dieną: −25% žalos\n"
-#~ "Naktį: +25% žalos"
-
-#~ msgid "Liminal units: "
-#~ msgstr "Prieblandos daliniai: "
-
-#~ msgid "liminal"
-#~ msgstr "prieblandos"
-
-#~ msgid "female^liminal"
-#~ msgstr "prieblandos"
