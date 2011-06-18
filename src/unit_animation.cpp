@@ -724,7 +724,8 @@ unit_animation::particule::particule(
 		accelerate(true),
 		parameters_(),
 		halo_id_(0),
-		last_frame_begin_time_(0)
+		last_frame_begin_time_(0),
+		cycles_(false)
 {
 	config::const_child_itors range = cfg.child_range(frame_string+"frame");
 	starting_frame_time_=INT_MAX;
