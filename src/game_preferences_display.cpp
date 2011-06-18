@@ -117,7 +117,7 @@ private:
 			show_team_colors_button_, show_color_cursors_button_,
 			show_haloing_button_, video_mode_button_,
 			theme_button_, hotkeys_button_,
-			flip_time_button_, advanced_button_, sound_button_,
+			advanced_button_, sound_button_,
 			music_button_, chat_timestamp_button_,
 			advanced_sound_button_, normal_sound_button_,
 			UI_sound_button_, sample_rate_button1_,
@@ -189,7 +189,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  video_mode_button_(disp.video(), _("Change Resolution")),
 	  theme_button_(disp.video(), _("Theme")),
 	  hotkeys_button_(disp.video(), _("Hotkeys")),
-	  flip_time_button_(disp.video(), _("Reverse Time Graphics"), gui::button::TYPE_CHECK),
 	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
 	  sound_button_(disp.video(), _("Sound effects"), gui::button::TYPE_CHECK),
 	  music_button_(disp.video(), _("Music"), gui::button::TYPE_CHECK),
@@ -400,9 +399,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_team_colors_button_.set_check(show_side_colors());
 	show_team_colors_button_.set_help_string(_("Show a colored circle around the base of each unit to show which side it is on"));
 
-	flip_time_button_.set_check(flip_time());
-	flip_time_button_.set_help_string(_("Choose whether the sun moves left-to-right or right-to-left"));
-
 	show_color_cursors_button_.set_check(use_color_cursors());
 	show_color_cursors_button_.set_help_string(_("Use colored mouse cursors (may be slower)"));
 
@@ -463,7 +459,6 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&video_mode_button_);
 	h.push_back(&theme_button_);
 	h.push_back(&hotkeys_button_);
-	h.push_back(&flip_time_button_);
 	h.push_back(&advanced_button_);
 	h.push_back(&sound_button_);
 	h.push_back(&music_button_);
@@ -544,7 +539,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	fullscreen_button_.set_location(rect.x, ypos);
 	ypos += item_interline; scroll_to_action_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_color_cursors_button_.set_location(rect.x, ypos);
-	ypos += item_interline; flip_time_button_.set_location(rect.x,ypos);
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colors_button_.set_location(rect.x, ypos);
@@ -765,8 +759,6 @@ void preferences_dialog::process_event()
 			set_show_side_colors(show_team_colors_button_.checked());
 		if (show_grid_button_.pressed())
 			set_grid(show_grid_button_.checked());
-		if (flip_time_button_.pressed())
-			set_flip_time(flip_time_button_.checked());
 		if (idle_anim_button_.pressed()) {
 			const bool enable_idle_anim = idle_anim_button_.checked();
 			idle_anim_slider_label_.enable(enable_idle_anim);
@@ -1134,7 +1126,6 @@ void preferences_dialog::set_selection(int index)
 	idle_anim_slider_.enable(idle_anim());
 	video_mode_button_.hide(hide_display);
 	theme_button_.hide(hide_display);
-	flip_time_button_.hide(hide_display);
 	show_team_colors_button_.hide(hide_display);
 	show_grid_button_.hide(hide_display);
 
