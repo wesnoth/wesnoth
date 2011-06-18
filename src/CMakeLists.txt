@@ -155,6 +155,8 @@ if(SVNVERSION_EXECUTABLE)
 			revision.hpp
 			PROPERTIES GENERATED true)
 		add_definitions(-DHAVE_REVISION)
+
+		set(UPDATE_REVISION ON CACHE INTERNAL "")
 	endif(SVN_VERSION MATCHES [0-9]+.*)
 endif(SVNVERSION_EXECUTABLE)
 
@@ -230,9 +232,9 @@ endif(ENABLE_POOL_ALLOC AND NOT WIN32)
 # internal reference is the name given here
 add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
 
-if(SVNVERSION_EXECUTABLE)
+if(UPDATE_REVISION)
 	add_dependencies(wesnoth-core update_revision)
-endif(SVNVERSION_EXECUTABLE)
+endif(UPDATE_REVISION)
 
 ########### libwesnoth-lua ###############
 
