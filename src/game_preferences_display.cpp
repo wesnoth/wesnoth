@@ -319,7 +319,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	turbo_slider_.set_help_string(_("Units move and fight speed"));
 
 	idle_anim_button_.set_check(idle_anim());
-	idle_anim_button_.set_help_string(_("Show unit idle animations"));
+	idle_anim_button_.set_help_string(_("Play short random animations for idle units"));
 
 	// exponential scale (2^(n/10))
 	idle_anim_slider_.set_min(-40);
