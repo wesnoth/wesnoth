@@ -50,6 +50,7 @@ class lua_object : public lua_object_base
 public:
 
 	lua_object()
+		: value_()
 	{
 		// empty
 	}
