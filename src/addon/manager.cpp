@@ -1125,8 +1125,11 @@ namespace {
 
 		try {
 			if(gui2::new_widgets) {
-				gui2::tnetwork_transmission network_receive("WIP network transmission dialog");
-				network_receive.show(disp.video());
+				network_asio::connection connection(remote_host, lexical_cast<std::string>(remote_port));
+				gui2::tnetwork_transmission network_connect(connection, "WIP network transmission dialog");
+				bool result = network_connect.show(disp.video());
+				if(!result)
+					return;
 			}
 			const network::manager net_manager;
 			const network::connection sock =
@@ -1362,6 +1365,9 @@ namespace {
 			gui2::show_error_message(disp.video(), _("Network communication error."));
 		} catch(network::error& e) {
 			ERR_NET << "network::error thrown during transaction with add-on server; \""<< e.message << "\"\n";
+			gui2::show_error_message(disp.video(), _("Remote host disconnected."));
+		} catch(const network_asio::error& e) {
+			ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"\n";
 			gui2::show_error_message(disp.video(), _("Remote host disconnected."));
 		} catch(io_exception& e) {
 			ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"\n";

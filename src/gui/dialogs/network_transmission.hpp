@@ -18,6 +18,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/control.hpp"
+#include "network_asio.hpp"
+#include <boost/optional.hpp>
 
 namespace gui2 {
 
@@ -31,9 +33,20 @@ class tnetwork_transmission;
  */
 class tnetwork_transmission : public tdialog
 {
+	network_asio::connection& connection_;
+
+	class pump_monitor : public events::pump_monitor
+	{
+		network_asio::connection& connection_;
+		virtual void process(events::pump_info&);
+		public:
+		pump_monitor(network_asio::connection& connection) : connection_(connection) {}
+
+		boost::optional<twindow&> window_;
+	} pump_monitor;
 public:
-	tnetwork_transmission(const std::string& title)
-		: title_(title)
+	tnetwork_transmission(network_asio::connection& connection, const std::string& title)
+		: connection_(connection), pump_monitor(connection), title_(title)
 	{}
 
 protected:

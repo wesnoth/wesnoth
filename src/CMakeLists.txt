@@ -524,6 +524,7 @@ set(wesnoth-main_SRC
 	multiplayer_lobby.cpp
 	multiplayer_ui.cpp
 	multiplayer_wait.cpp
+	network_asio.cpp
 	pathfind/pathfind.cpp
 	pathfind/teleport.cpp
 	persist_context.cpp

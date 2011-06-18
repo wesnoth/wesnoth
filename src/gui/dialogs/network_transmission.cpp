@@ -30,6 +30,14 @@ namespace gui2 {
 
 REGISTER_DIALOG(network_transmission)
 
+void tnetwork_transmission::pump_monitor::process(events::pump_info&)
+{
+	connection_.poll();
+	if(connection_.connected() && window_) {
+		window_.get().set_retval(twindow::OK);
+	}
+}
+
 void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
@@ -37,10 +45,13 @@ void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
 		find_widget<tlabel>(&window, "title", false).set_label(title_);
 	}
 
+	pump_monitor.window_ = window;
+
 }
 
 void tnetwork_transmission::post_show(twindow& /*window*/)
 {
+	pump_monitor.window_.reset();
 }
 
 } // namespace gui2
