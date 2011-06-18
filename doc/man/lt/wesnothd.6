@@ -236,13 +236,13 @@ forumas saugo savo naudotojų duomenis. Labiausiai tikėtina, kad tai bus
 .TP  
 \fBdb_extra_table\fP
 (skirtas user_handler=forum) Lentelės pavadinimas, kurioje wesnothd saugos
-savo duomenis apie vartotojus. Lentelę turėsite sukurti patys. Pavyzdžiui,
+savo duomenis apie naudotojus. Lentelę turėsite sukurti patys. Pavyzdžiui,
 šitaip: \fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY
 KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator
 TINYINT(4) NOT NULL DEFAULT 0);\fP
 .TP  
 \fBuser_expiration\fP
-(skirtas user_handler=sample) Laikas, per kiek pasensta vartotojo
+(skirtas user_handler=sample) Laikas, per kurį pasensta naudotojo
 registracija (dienomis).
 .RE
 .P
