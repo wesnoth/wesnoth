@@ -99,7 +99,7 @@ teditor_resize_map::teditor_resize_map(
 	, old_height_(height)
 	, expand_direction_(expand_direction)
 {
-	register_bool("copy_edge_terrain", tunused_parameter(), false, copy_edge_terrain);
+	register_bool("copy_edge_terrain", false, copy_edge_terrain);
 
 	register_label2("old_width", false, str_cast(width));
 	register_label2("old_height", false, str_cast(height));
