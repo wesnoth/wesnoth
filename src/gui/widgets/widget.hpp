@@ -19,7 +19,6 @@
 #include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/widgets/event_executor.hpp"
 #include "gui/widgets/helper.hpp"
-#include "sdl_utils.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/noncopyable.hpp>
