@@ -190,7 +190,6 @@ protected:
 	 * @returns                   Pointer to the created widget.
 	 */
 	tfield_bool* register_bool(const std::string& id
-			, const tunused_parameter&
 			, const bool mandatory
 			, bool (*callback_load_value) () = NULL
 			, void (*callback_save_value) (const bool value) = NULL

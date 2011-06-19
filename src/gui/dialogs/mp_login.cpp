@@ -78,7 +78,6 @@ tmp_login::tmp_login(const std::string& label, const bool focus_password)
 			, focus_password);
 
 	register_bool("remember_password"
-			, tunused_parameter()
 			, false
 			, &preferences::remember_password
 			, &preferences::set_remember_password);

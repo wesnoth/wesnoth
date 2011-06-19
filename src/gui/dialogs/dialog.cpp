@@ -73,7 +73,6 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 
 tfield_bool* tdialog::register_bool(
 		  const std::string& id
-		, const tunused_parameter&
 		, const bool mandatory
 		, bool (*callback_load_value) ()
 		, void (*callback_save_value) (const bool value)

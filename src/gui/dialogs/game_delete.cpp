@@ -62,7 +62,6 @@ static void set_dont_ask_again(const bool ask_again)
 tgame_delete::tgame_delete()
 {
 	register_bool("dont_ask_again"
-			, tunused_parameter()
 			, true
 			, &get_dont_ask_again
 			, &set_dont_ask_again);
