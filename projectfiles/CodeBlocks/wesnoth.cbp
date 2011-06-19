@@ -33,10 +33,12 @@
 			<Add option="-march=native" />
 			<Add option="-fexceptions" />
 			<Add option="-fdiagnostics-show-option" />
-			<Add option="-Wno-strict-aliasing" />
 			<Add option="-fopenmp" />
+			<Add option="-Wno-strict-aliasing" />
+			<Add option="-Wno-missing-braces" />
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
+			<Add option="-D_WIN32_WINDOWS" />
 			<Add directory="..\..\src" />
 			<Add directory="..\..\src\sdl_ttf" />
 			<Add directory="..\..\src\serialization" />
@@ -69,6 +71,7 @@
 			<Add library="libboost_regex" />
 			<Add library="libboost_program_options" />
 			<Add library="pthread" />
+			<Add library="libboost_system" />
 			<Add directory=".\" />
 		</Linker>
 		<Unit filename="..\..\packaging\windows\wesnoth.rc">
@@ -667,6 +670,7 @@
 		<Unit filename="..\..\src\multiplayer_wait.hpp" />
 		<Unit filename="..\..\src\network.cpp" />
 		<Unit filename="..\..\src\network.hpp" />
+		<Unit filename="..\..\src\network_asio.cpp" />
 		<Unit filename="..\..\src\network_worker.cpp" />
 		<Unit filename="..\..\src\network_worker.hpp" />
 		<Unit filename="..\..\src\pathfind\astarsearch.cpp" />
