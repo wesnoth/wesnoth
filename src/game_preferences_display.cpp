@@ -205,9 +205,12 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  standing_anim_button_(disp.video(), _("Show Unit Standing Animations"), gui::button::TYPE_CHECK),
 	  animate_map_button_(disp.video(), _("Animate Map"), gui::button::TYPE_CHECK),
 
-	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
-	  UI_sound_label_(disp.video(), _("UI Sound Volume:")),
-	  bell_label_(disp.video(), _("Bell Volume:")), scroll_label_(disp.video(), _("Scroll Speed:")),
+	  music_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
+	  sound_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
+	  UI_sound_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
+	  bell_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
+
+	  scroll_label_(disp.video(), _("Scroll Speed:")),
 	  chat_lines_label_(disp.video(), ""),
 	  turbo_slider_label_(disp.video(), "", font::SIZE_SMALL ),
 	  sample_rate_label_(disp.video(), _("Sample Rate (Hz):")), buffer_size_label_(disp.video(), ""),
@@ -574,10 +577,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	sound_button_.set_location(rect.x, ypos);
 
 	ypos += short_interline;
-	sound_label_.set_location(rect.x, ypos);
-	const SDL_Rect sound_rect = create_rect(rect.x + slider_label_width_
+	sound_label_.set_location(rect.x + horizontal_padding, ypos);
+	const SDL_Rect sound_rect = create_rect(rect.x + horizontal_padding + slider_label_width_
 			, ypos
-			, rect.w - slider_label_width_ - right_border
+			, rect.w - slider_label_width_ - horizontal_padding - right_border
 			, 0);
 	sound_slider_.set_location(sound_rect);
 
@@ -585,30 +588,30 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	music_button_.set_location(rect.x, ypos);
 
 	ypos += short_interline;
-	music_label_.set_location(rect.x, ypos);
-	const SDL_Rect music_rect = create_rect(rect.x + slider_label_width_
+	music_label_.set_location(rect.x + horizontal_padding, ypos);
+	const SDL_Rect music_rect = create_rect(rect.x + horizontal_padding + slider_label_width_
 			, ypos
-			, rect.w - slider_label_width_ - right_border
+			, rect.w - slider_label_width_ - horizontal_padding - right_border
 			, 0);
 	music_slider_.set_location(music_rect);
 
 	ypos += item_interline; //Bell slider
 	turn_bell_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
-	bell_label_.set_location(rect.x, ypos);
-	const SDL_Rect bell_rect = create_rect(rect.x + slider_label_width_
+	bell_label_.set_location(rect.x + horizontal_padding, ypos);
+	const SDL_Rect bell_rect = create_rect(rect.x + horizontal_padding + slider_label_width_
 			, ypos
-			, rect.w - slider_label_width_ - right_border
+			, rect.w - slider_label_width_ - horizontal_padding - right_border
 			, 0);
 	bell_slider_.set_location(bell_rect);
 
 	ypos += item_interline; //UI sound slider
 	UI_sound_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
-	UI_sound_label_.set_location(rect.x, ypos);
-	const SDL_Rect UI_sound_rect = create_rect(rect.x + slider_label_width_
+	UI_sound_label_.set_location(rect.x + horizontal_padding, ypos);
+	const SDL_Rect UI_sound_rect = create_rect(rect.x + horizontal_padding + slider_label_width_
 			, ypos
-			, rect.w - slider_label_width_ - right_border
+			, rect.w - slider_label_width_ - horizontal_padding - right_border
 			, 0);
 	UI_sound_slider_.set_location(UI_sound_rect);
 	advanced_sound_button_.set_location(rect.x, bottom_row_y - advanced_sound_button_.height());
