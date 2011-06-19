@@ -18,6 +18,8 @@
 #include "gui/auxiliary/window_builder/control.hpp"
 
 #include "config.hpp"
+#include "formatter.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/control.hpp"
 
@@ -43,16 +45,11 @@ tbuilder_control::tbuilder_control(const config& cfg)
 		definition = "default";
 	}
 
-	if(!(help.empty() || !tooltip.empty())) {
-		/** @deprecated 1.9.7. */
-		lg::wml_error << "A widget with a helptip without a tooltip is "
-				<< "deprecated, support will be removed in 1.9.7.\n";
-	}
-//	VALIDATE(help.empty() || !tooltip.empty()
-//			, _("Found a widget with a helptip and without a tooltip.")
-//			, (formatter() << "id '" << id <<
-//				<< "' label '" << label <<
-//				<< "' helptip '" << help << "'.").str());
+	VALIDATE_WITH_DEV_MESSAGE(help.empty() || !tooltip.empty()
+			, _("Found a widget with a helptip and without a tooltip.")
+			, (formatter() << "id '" << id
+				<< "' label '" << label
+				<< "' helptip '" << help << "'.").str());
 
 
 	DBG_GUI_P << "Window builder: found control with id '"
