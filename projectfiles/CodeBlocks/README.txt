@@ -27,15 +27,15 @@ Into the fields "c compiler", "c++ compiler" and "linker for dynamic libs"
 enter "g++.exe".
 Into the field "linker for static libs", enter "ar.exe".
 6. Download WesnothCodeBlocksWinSDK.zip from
-http://www.mediafire.com/?7sc58qmmmeufhxo and extract
-this archive so that you have directories codeblocks_root/include and
-codeblocks_root/lib
+http://www.mediafire.com/?6falp2by3c5mxs4 and extract
+this archive so that you have directories codeblocks_root/include_tdm_gcc
+and codeblocks_root/lib_tdm_gcc
 7. In CodeBlocks, goto (menu bar)>settings>compiler and debugger
 >global compiler settings> (tab) search directories> (tab) compiler>Add.
-Enter codeblocks_root/include.
+Enter codeblocks_root/include_tdm_gcc.
 8. In CodeBlocks, goto (menu bar)>settings>compiler and debugger
 >global compiler settings> (tab) search directories> (tab) linker>Add.
-Enter codeblocks_root/lib.
+Enter codeblocks_root/lib_tdm_gcc.
 9. In CodeBlocks, choose (menu bar)>build>build workspace.
 wesnoth.exe and wesnothd.exe should appear in wesnoth_root/
 when finished building.
