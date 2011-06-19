@@ -412,22 +412,6 @@ public:
 		return value_;
 	}
 
-	/**
-	 * Gets the value of the field.
-	 *
-	 * This function returns the value internal cache, this function can be
-	 * used after the widget no longer exists. The cache is normally updated
-	 * when the window is closed with succes.
-	 *
-	 * @deprecated Use references to a variable instead.
-	 *
-	 * @returns                   The currently value of the internal cache.
-	 */
-	T get_cache_value()
-	{
-		return value_;
-	}
-
 private:
 
 	/**
