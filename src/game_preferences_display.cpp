@@ -544,22 +544,23 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	// Display tab
 	ypos = rect.y + top_border;
 	fullscreen_button_.set_location(rect.x, ypos);
+
 	ypos += item_interline; show_color_cursors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
+
 	ypos += item_interline; animate_map_button_.set_location(rect.x, ypos);
-	ypos += item_interline; idle_anim_button_.set_location(rect.x, ypos);
+	ypos += short_interline; standing_anim_button_.set_location(rect.x, ypos);
+	ypos += short_interline; idle_anim_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
 	idle_anim_slider_label_.set_location(rect.x + horizontal_padding, ypos);
 	SDL_Rect idle_anim_rect = create_rect(rect.x + horizontal_padding + idle_anim_slider_label_.width()
 			, ypos
 			, rect.w - horizontal_padding - idle_anim_slider_label_.width() - right_border
 			, 0);
-
 	idle_anim_slider_.set_location(idle_anim_rect);
-	ypos += item_interline; standing_anim_button_.set_location(rect.x, ypos);
 
 	video_mode_button_.set_location(rect.x, bottom_row_y - video_mode_button_.height());
 	theme_button_.set_location(rect.x + video_mode_button_.width() + 10,
@@ -662,7 +663,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	friends_list_button_.set_location(rect.x, bottom_row_y - friends_list_button_.height());
 
-	mp_server_search_button_.set_location(rect.x + horizontal_padding + friends_list_button_.width(), bottom_row_y - mp_server_search_button_.height());
+	mp_server_search_button_.set_location(rect.x + 10 + friends_list_button_.width(), bottom_row_y - mp_server_search_button_.height());
 
 	//Friends tab
 	ypos = rect.y + top_border;
