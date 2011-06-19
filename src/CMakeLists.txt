@@ -76,6 +76,7 @@ endif(MSVC)
 
 set(game-external-libs
 	${common-external-libs}
+	${Boost_SYSTEM_LIBRARIES}
 	${SDLIMAGE_LIBRARY}
 	${SDLMIXER_LIBRARY}
 	${ANA_LIBRARIES}
@@ -93,11 +94,6 @@ if(MSVC)
 		${PANGOCAIRO_LIBRARY}
 		${CAIRO_LIBRARY}
 		${GOBJECT_LIBRARY}
-	)
-else(MSVC)
-	set(game-external-libs
-		${game-external-libs}
-		${Boost_SYSTEM_LIBRARIES}
 	)
 endif(MSVC)
 
