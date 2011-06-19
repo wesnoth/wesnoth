@@ -123,7 +123,8 @@ private:
 			UI_sound_button_, sample_rate_button1_,
 			sample_rate_button2_, sample_rate_button3_,
 			confirm_sound_button_, idle_anim_button_,
-			standing_anim_button_;
+			standing_anim_button_,
+			animate_map_button_;
 	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_,
 	           scroll_label_, chat_lines_label_,
 	           turbo_slider_label_, sample_rate_label_, buffer_size_label_,
@@ -202,6 +203,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  confirm_sound_button_(disp.video(), _("Apply")),
 	  idle_anim_button_(disp.video(), _("Show Unit Idle Animations"), gui::button::TYPE_CHECK),
 	  standing_anim_button_(disp.video(), _("Show Unit Standing Animations"), gui::button::TYPE_CHECK),
+	  animate_map_button_(disp.video(), _("Animate Map"), gui::button::TYPE_CHECK),
 
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  UI_sound_label_(disp.video(), _("UI Sound Volume:")),
@@ -326,6 +328,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	standing_anim_button_.set_check(show_standing_animations());
 	standing_anim_button_.set_help_string(_("Continuously animate standing units in the battlefield"));
 
+	animate_map_button_.set_check(animate_map());
+	animate_map_button_.set_help_string(_("Display animated terrain graphics"));
+
 	// exponential scale (2^(n/10))
 	idle_anim_slider_.set_min(-40);
 	idle_anim_slider_.set_max(30);
@@ -430,6 +435,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&turbo_button_);
 	h.push_back(&idle_anim_button_);
 	h.push_back(&standing_anim_button_);
+	h.push_back(&animate_map_button_);
 	h.push_back(&show_ai_moves_button_);
 	h.push_back(&interrupt_when_ally_sighted_button_);
 	h.push_back(&save_replays_button_);
@@ -543,6 +549,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
+	ypos += item_interline; animate_map_button_.set_location(rect.x, ypos);
 	ypos += item_interline; idle_anim_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
 	idle_anim_slider_label_.set_location(rect.x + horizontal_padding, ypos);
@@ -759,6 +766,8 @@ void preferences_dialog::process_event()
 			set_show_side_colors(show_team_colors_button_.checked());
 		if (show_grid_button_.pressed())
 			set_grid(show_grid_button_.checked());
+		if (animate_map_button_.pressed())
+			set_animate_map(animate_map_button_.checked());
 		if (idle_anim_button_.pressed()) {
 			const bool enable_idle_anim = idle_anim_button_.checked();
 			idle_anim_slider_label_.enable(enable_idle_anim);
@@ -1126,6 +1135,7 @@ void preferences_dialog::set_selection(int index)
 	idle_anim_slider_.hide(hide_display);
 	idle_anim_slider_.enable(idle_anim());
 	standing_anim_button_.hide(hide_display);
+	animate_map_button_.hide(hide_display);
 	video_mode_button_.hide(hide_display);
 	theme_button_.hide(hide_display);
 	show_team_colors_button_.hide(hide_display);
