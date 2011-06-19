@@ -379,13 +379,8 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	has_helptip_message_ = settings["has_helptip_message"];
 
-	if(has_helptip_message_.empty()) {
-		/** @deprecated 1.9.7. */
-		lg::wml_error << "Empty 'has_helptip_message' is deprecated, "
-				<< "support will be removed in 1.9.7.\n";
-	}
-//	VALIDATE(!has_helptip_message_.empty(),
-//			missing_mandatory_wml_key("[settings]", "has_helptip_message"));
+	VALIDATE(!has_helptip_message_.empty(),
+			missing_mandatory_wml_key("[settings]", "has_helptip_message"));
 
 	tips_ = tips::load(cfg);
 
