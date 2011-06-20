@@ -1331,7 +1331,7 @@ void editor_controller::redo()
 	refresh_after_action();
 }
 
-void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool update)
+void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool update, map_location /*new_loc*/)
 {
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	map_location hex_clicked = gui().hex_clicked_on(x, y);

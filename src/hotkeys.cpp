@@ -48,6 +48,9 @@ const struct {
 	bool hidden;
 	hotkey::scope scope;
 } hotkey_list_[] = {
+
+	{ hotkey::HOTKEY_LEFT_MOUSE_CLICK, "leftmouseclick", N_("Left Mouse Click"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_RIGHT_MOUSE_CLICK, "rightmouseclick", N_("Right Mouse Click"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_ANIMATE_MAP, "animatemap", N_("Animate Map"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_CYCLE_UNITS, "cycle", N_("Next Unit"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_CYCLE_BACK_UNITS, "cycleback", N_("Previous Unit"), false, hotkey::SCOPE_GAME },
@@ -308,6 +311,7 @@ bool is_scope_active(scope s)
 }
 
 static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
+static void button_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor);
 
 const std::string CLEARED_TEXT = "__none__";
 
@@ -323,8 +327,10 @@ hotkey_item::hotkey_item(HOTKEY_COMMAND id,
 	ctrl_(false),
 	alt_(false),
 	cmd_(false),
-	keycode_(0),
 	shift_(false),
+	keycode_(0),
+	button_(0),
+	joystick_(0),
 	hidden_(hidden)
 {
 }
@@ -338,6 +344,13 @@ hotkey_item::hotkey_item(HOTKEY_COMMAND id,
 // produces a SPACE character.
 void hotkey_item::load_from_config(const config& cfg)
 {
+	const std::string& button = cfg["button"];
+	if (!button.empty()) {
+		button_ = cfg["button"].to_int();
+		joystick_ = cfg["joystick"].to_int();
+		type_ = hotkey_item::BUTTON;
+	}
+
 	const std::string& key = cfg["key"];
 
 	alt_ = cfg["alt"].to_bool();
@@ -409,6 +422,8 @@ std::string hotkey_item::get_name() const
 		if (cmd_)
 			str << "cmd+";
 		str << SDL_GetKeyName(SDLKey(keycode_));
+	} else if (type_ == BUTTON) {
+		str << "Joy" << joystick_ << "Btn" << button_;
 	}
 	return str.str();
 }
@@ -420,6 +435,13 @@ void hotkey_item::set_description(const t_string &description)
 void hotkey_item::clear_hotkey()
 {
 	type_ = CLEARED;
+}
+
+void hotkey_item::set_button(int button, int joystick)
+{
+	joystick_ = joystick;
+	button_ = button;
+	type_ = BUTTON;
 }
 
 void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
@@ -553,6 +575,12 @@ void save_hotkeys(config& cfg)
 			continue;
 		}
 
+		if (i->get_type() == hotkey_item::BUTTON)
+		{
+			item["button"] = i->get_button();
+			item["joystick"] = i->get_joystick();
+		}
+
 		if (i->get_type() == hotkey_item::BY_KEYCODE) {
 			item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
 			item["shift"] = i->get_shift();
@@ -589,6 +617,20 @@ hotkey_item& get_hotkey(const std::string& command)
 			break;
 	}
 
+	if (itor == hotkeys_.end())
+		return null_hotkey_;
+
+	return *itor;
+}
+
+hotkey_item& get_hotkey(int button_num, int joy_num)
+{
+	std::vector<hotkey_item>::iterator itor;
+
+	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
+		if (joy_num == itor->get_joystick() &&  button_num == itor->get_button() && (itor->get_type() == hotkey_item::BUTTON) )
+			break;
+	}
 	if (itor == hotkeys_.end())
 		return null_hotkey_;
 
@@ -660,6 +702,11 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 	return *itor;
 }
 
+hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
+{
+	return get_hotkey(event.button, event.which);
+}
+
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 {
 	return get_hotkey(event.keysym.unicode, event.keysym.sym,
@@ -717,8 +764,15 @@ void basic_handler::handle_event(const SDL_Event& event)
 			key_event_execute(*disp_,event.key,exec_);
 		}
 	}
+	if(event.type == SDL_JOYBUTTONDOWN && disp_ != NULL) {
+		button_event_execute(*disp_, event.jbutton, exec_);
+	}
 }
 
+void button_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
+{
+	button_event_execute(disp,event,executor);
+}
 
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
 {
@@ -733,6 +787,24 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 	}
 
 	key_event_execute(disp,event,executor);
+}
+
+void button_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
+{
+	const hotkey_item* hk = &get_hotkey(event);
+
+#if 0
+	// This is not generally possible without knowing keyboard layout.
+	if(hk->null()) {
+		//no matching hotkey was found, but try an in-exact match.
+		hk = &get_hotkey(event, true);
+	}
+#endif
+
+	if(hk->null())
+		return;
+
+	execute_command(disp,hk->get_id(),executor);
 }
 
 void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
@@ -947,6 +1019,12 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			 break;
 		 case HOTKEY_WB_SUPPOSE_DEAD:
 			 whiteboard_suppose_dead();
+			 break;
+		 case HOTKEY_LEFT_MOUSE_CLICK:
+			 left_mouse_click();
+			 break;
+		 case HOTKEY_RIGHT_MOUSE_CLICK:
+			 right_mouse_click();
 			 break;
 		 default:
 			 return false;

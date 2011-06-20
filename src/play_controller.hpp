@@ -78,6 +78,8 @@ public:
 	virtual void objectives();
 	virtual void show_statistics();
 	virtual void unit_list();
+	virtual void left_mouse_click();
+	virtual void right_mouse_click();
 	virtual void status_table();
 	virtual void save_game();
 	virtual void save_replay();

@@ -42,6 +42,30 @@ game_display& game_controller_abstract::disp()
 	return *disp_.get();
 }
 
+bool game_controller_abstract::init_joystick()
+{
+	if(SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
+		if(SDL_InitSubSystem(SDL_INIT_JOYSTICK) == -1)
+			return false;
+
+	int joysticks = SDL_NumJoysticks();
+	if (joysticks == 0) return false;
+
+	SDL_JoystickEventState(SDL_ENABLE);
+
+	SDL_Joystick* joystick;
+
+	bool joystick_found = false;
+	for (int i = 0; i<joysticks; i++)  {
+
+		joystick = SDL_JoystickOpen(i);
+
+		if (joystick)
+			joystick_found = true;
+	}
+	return joystick_found;
+}
+
 bool game_controller_abstract::init_language()
 {
 	if(!::load_language_list())

@@ -473,6 +473,56 @@ namespace {
 	double scroll = 0.2;
 }
 
+int scroll_joystick_xaxis()
+{
+	const int value = lexical_cast_in_range<int>(get("scroll_joystick_xaxis"), 0, 0, 3);
+	return value;
+}
+
+int scroll_joystick_yaxis()
+{
+	const int value = lexical_cast_in_range<int>(get("scroll_joystick_xaxis"), 0, 0, 3);
+	return value;
+}
+
+int scroll_xaxis()
+{
+	const int value = lexical_cast_in_range<int>(get("scroll_joystick_xaxis"), 0, 0, 8);
+	return value;
+}
+
+int scroll_yaxis()
+{
+	const int value = lexical_cast_in_range<int>(get("scroll_joystick_xaxis"), 1, 0, 8);
+	return value;
+}
+
+int cursor_joystick_xaxis()
+{
+	const int value = lexical_cast_in_range<int>(get("scroll_joystick_xaxis"), 0, 0, 3);
+	return value;
+}
+
+int cursor_joystick_yaxis()
+{
+	const int value = lexical_cast_in_range<int>(get("scroll_joystick_xaxis"), 0, 0, 3);
+	return value;
+}
+
+int cursor_xaxis()
+{
+	const int value = lexical_cast_in_range<int>(get("scroll_joystick_xaxis"), 3, 0, 8);
+	return value;
+}
+
+int cursor_yaxis()
+{
+	const int value = lexical_cast_in_range<int>(get("scroll_joystick_xaxis"), 4, 0, 8);
+	return value;
+}
+
+
+
 int scroll_speed()
 {
 	const int value = lexical_cast_in_range<int>(get("scroll"), 50, 1, 100);

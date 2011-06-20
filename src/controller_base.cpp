@@ -32,8 +32,10 @@ controller_base::controller_base(
 	ticks_(ticks),
 	key_(),
 	browse_(false),
-	scrolling_(false)
+	scrolling_(false),
+	joystick_manager_()
 {
+	joystick_manager_.init();
 }
 
 controller_base::~controller_base()
@@ -64,6 +66,10 @@ void controller_base::handle_event(const SDL_Event& event)
 		// intentionally fall-through
 	case SDL_KEYUP:
 		process_keyup_event(event);
+		break;
+	case SDL_JOYBUTTONDOWN:
+		process_keydown_event(event);
+		hotkey::button_event(get_display(), event.jbutton,this);
 		break;
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
@@ -126,7 +132,7 @@ void controller_base::post_mouse_press(const SDL_Event& /*event*/) {
 	//no action by default
 }
 
-bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse_flags)
+bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse_flags, double x_axis, double y_axis)
 {
 	bool mouse_in_window = (SDL_GetAppState() & SDL_APPMOUSEFOCUS) != 0
 		|| preferences::get("scroll_when_mouse_outside", true);
@@ -175,6 +181,10 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 			dy += round_double(ydisp * speed);
 		}
 	}
+
+	dx += round_double( x_axis * scroll_speed);
+	dy += round_double( y_axis * scroll_speed);
+
 	return get_display().scroll(dx, dy);
 }
 
@@ -193,10 +203,20 @@ void controller_base::play_slice(bool is_delay_enabled)
 		return;
 	}
 
+	map_location highlighted_hex = get_display().mouseover_hex();
+	if (joystick_manager_.next_highlighted_hex(highlighted_hex)
+			&& get_display().get_map().on_board(highlighted_hex)) {
+		get_mouse_handler_base().mouse_motion(0,0, true, true, highlighted_hex);
+		get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN, false, true);
+	}
+
+	double joystickx = joystick_manager_.get_scroll_xaxis();
+	double joysticky = joystick_manager_.get_scroll_yaxis();
+
 	int mousex, mousey;
 	Uint8 mouse_flags = SDL_GetMouseState(&mousex, &mousey);
 	bool was_scrolling = scrolling_;
-	scrolling_ = handle_scroll(key, mousex, mousey, mouse_flags);
+	scrolling_ = handle_scroll(key, mousex, mousey, mouse_flags, joystickx, joysticky);
 
 	get_display().draw();
 
@@ -208,7 +228,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	if (!scrolling_ && was_scrolling) {
 		// scrolling ended, update the cursor and the brightened hex
-		get_mouse_handler_base().mouse_update(browse_);
+		get_mouse_handler_base().mouse_update(browse_, highlighted_hex);
 	}
 	slice_end();
 }

@@ -600,6 +600,7 @@ set(libwesnoth-game_STAT_SRC
 	hotkeys.cpp
 	image.cpp
 	image_modifications.cpp
+	joystick.cpp
 	key.cpp
 	language.cpp
 	loadscreen.cpp

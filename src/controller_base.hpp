@@ -22,6 +22,10 @@
 #include "hotkeys.hpp"
 #include "key.hpp"
 
+#include "joystick.hpp"
+
+#include "map.hpp"
+
 class CVideo;
 
 namespace events {
@@ -68,12 +72,13 @@ protected:
 	 */
 	virtual bool have_keyboard_focus();
 
+
 	/**
-	 * Handle scrolling by keyboard and moving mouse near map edges
+	 * Handle scrolling by keyboard, joystick and moving mouse near map edges
 	 * @see is_keyboard_scroll_active
 	 * @return true when there was any scrolling, false otherwise
 	 */
-	bool handle_scroll(CKey& key, int mousex, int mousey, int mouse_flags);
+	bool handle_scroll(CKey& key, int mousex, int mousey, int mouse_flags, double joystickx, double joysticky);
 
 	/**
 	 * Process mouse- and keypress-events from SDL.
@@ -115,6 +120,8 @@ protected:
 	CKey key_;
 	bool browse_;
 	bool scrolling_;
+	joystick_manager joystick_manager_;
+
 };
 
 

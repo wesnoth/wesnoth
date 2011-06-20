@@ -59,6 +59,8 @@ enum HOTKEY_COMMAND {
 	HOTKEY_REPLAY_SHOW_EACH, HOTKEY_REPLAY_SHOW_TEAM1,
 	HOTKEY_REPLAY_SKIP_ANIMATION,
 	HOTKEY_ANIMATE_MAP,
+	HOTKEY_LEFT_MOUSE_CLICK,
+	HOTKEY_RIGHT_MOUSE_CLICK,
 
 	// Whiteboard commands
 	HOTKEY_WB_TOGGLE,
@@ -122,6 +124,7 @@ bool is_scope_active(scope s);
 
 class hotkey_item {
 public:
+
 	hotkey_item() :
 		id_(HOTKEY_NULL),
 		command_(),
@@ -132,8 +135,10 @@ public:
 		ctrl_(false),
 		alt_(false),
 		cmd_(false),
-		keycode_(0),
 		shift_(false),
+		keycode_(0),
+		button_(0),
+		joystick_(0),
 		hidden_(false)
 		{}
 
@@ -149,13 +154,17 @@ public:
 
 	void set_description(const t_string &description);
 	void clear_hotkey();
+
+	void set_button(int button, int joystick);
+
 	void set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
 
 	enum type {
 		UNBOUND,
 		BY_KEYCODE,
 		BY_CHARACTER,
-		CLEARED
+		CLEARED,
+		BUTTON
 	};
 
 	enum type get_type() const { return type_; }
@@ -168,6 +177,8 @@ public:
 
 	// Returns unicode value of keypress.
 	int get_character() const { return character_; }
+	int get_button() const { return button_; }
+	int get_joystick() const { return joystick_; }
 	bool get_alt() const { return alt_; }
 	bool get_cmd() const { return cmd_; }
 	bool get_ctrl() const { return ctrl_; }
@@ -188,6 +199,7 @@ private:
 	scope scope_;
 
 	// UNBOUND means unset, CHARACTER means see character_, KEY means keycode_.
+	// BUTTON means gamepad/joystick button_.
 	enum type type_;
 
 	// Actual unicode character
@@ -198,8 +210,12 @@ private:
 
 	// These used for function keys (which don't have a unicode value) or
 	// space (which doesn't have a distinct unicode value when shifted).
-	int keycode_;
 	bool shift_;
+	int keycode_;
+
+	// In case type=BUTTON
+	int button_;
+	int joystick_;
 
 	bool hidden_;
 
@@ -234,6 +250,7 @@ void save_hotkeys(config& cfg);
 hotkey_item& get_hotkey(HOTKEY_COMMAND id);
 hotkey_item& get_hotkey(const std::string& command);
 
+hotkey_item& get_hotkey(int button_num, int joy_num);
 hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 	bool alt, bool cmd);
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event);
@@ -313,6 +330,8 @@ public:
 	virtual void whiteboard_bump_up_action() {}
 	virtual void whiteboard_bump_down_action() {}
 	virtual void whiteboard_suppose_dead() {}
+	virtual void left_mouse_click() {}
+	virtual void right_mouse_click() {}
 
 	//Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ""; }
@@ -334,6 +353,7 @@ public:
 //not NULL. Also handles some events in the function itself, and so
 //is still meaningful to call with executor=NULL
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
+void button_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor);
 
 void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor, int index=-1);
 

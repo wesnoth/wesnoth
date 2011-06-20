@@ -72,11 +72,11 @@ void mouse_handler_base::mouse_motion_event(const SDL_MouseMotionEvent& event, c
 	mouse_motion(event.x,event.y, browse);
 }
 
-void mouse_handler_base::mouse_update(const bool browse)
+void mouse_handler_base::mouse_update(const bool browse, map_location loc)
 {
 	int x, y;
 	SDL_GetMouseState(&x,&y);
-	mouse_motion(x, y, browse, true);
+	mouse_motion(x, y, browse, true, loc);
 }
 
 bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
@@ -131,7 +131,8 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		simple_warp_ = true;
 	}
 	show_menu_ = false;
-	mouse_update(browse);
+	map_location loc = gui().hex_clicked_on(event.x,event.y);
+	mouse_update(browse, loc);
 	int scrollx = 0;
 	int scrolly = 0;
 
@@ -200,7 +201,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		dragging_started_ = false;
 		cursor::set_dragging(false);
 	}
-	mouse_update(browse);
+	mouse_update(browse, loc);
 }
 
 bool mouse_handler_base::is_left_click(

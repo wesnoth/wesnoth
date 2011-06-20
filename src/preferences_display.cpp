@@ -354,10 +354,10 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			SDL_Event event;
 			event.type = 0;
 			int character=0,keycode=0; // Just to avoid warning
-			int mod = 0;
+			int mod = 0,button=0,joystick = 0;
 			const int any_mod = KMOD_CTRL | KMOD_ALT | KMOD_LMETA;
 
-			while (event.type!=SDL_KEYDOWN) SDL_PollEvent(&event);
+			while (event.type!=SDL_KEYDOWN && event.type!=SDL_JOYBUTTONDOWN) SDL_PollEvent(&event);
 			do {
 				if (event.type==SDL_KEYDOWN)
 				{
@@ -365,10 +365,14 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 					character=event.key.keysym.unicode;
 					mod=event.key.keysym.mod;
 				};
+				if (event.type==SDL_JOYBUTTONDOWN) {
+					button = event.jbutton.button;
+					joystick = event.jbutton.which;
+				}
 				SDL_PollEvent(&event);
 				disp.flip();
 				disp.delay(10);
-			} while (event.type!=SDL_KEYUP);
+			} while (event.type!=SDL_KEYUP && event.type!=SDL_JOYBUTTONUP);
 			restorer.restore();
 			disp.update_display();
 			if (keycode == SDLK_ESCAPE && (mod & any_mod) == 0) {
@@ -384,16 +388,29 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 					msg << "   " << oldhk.get_description() << " : " << oldhk.get_name();
 					gui2::show_transient_message(disp.video(),_("This Hotkey is already in use."),msg.str());
 				} else {
+					if (event.type == SDL_JOYBUTTONUP) {
+						const hotkey::hotkey_item& oldhkbtn = hotkey::get_hotkey(button, joystick);
 
-					newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
-							(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
+						if(oldhkbtn.get_id() != newhk.get_id() && !oldhkbtn.null()) {
+							std::stringstream msg;
+							msg << "   " << oldhkbtn.get_description() << " : " << oldhkbtn.get_name();
+							gui2::show_transient_message(disp.video(),_("This Hotkey is already in use."),msg.str());
+						} else {
+							newhk.set_button(button, joystick);
+							menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
+						}
+					} else {
 
-					menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
+						newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
+								(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
-					if ((newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
-							|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
-							 && (mod & any_mod) == 0) {
-						gui2::show_transient_message(disp.video(),"", _("Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."));
+						menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
+
+						if ((newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
+								|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
+								&& (mod & any_mod) == 0) {
+							gui2::show_transient_message(disp.video(),"", _("Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."));
+						}
 					}
 				}
 			}

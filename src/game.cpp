@@ -387,6 +387,11 @@ static int do_gameloop(int argc, char** argv)
 		return 1;
 	}
 
+	res = game->init_joystick();
+	if(res == false) {
+		std::cout << "could not initialize joystick\n";
+	}
+
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 

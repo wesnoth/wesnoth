@@ -59,7 +59,7 @@ public:
 	void mouse_motion_event(const SDL_MouseMotionEvent& event, const bool browse);
 
 	/** update the mouse with a fake mouse motion */
-	void mouse_update(const bool browse);
+	void mouse_update(const bool browse, map_location loc);
 
 	bool get_show_menu() const { return show_menu_; }
 
@@ -74,7 +74,7 @@ public:
 	 * Called when a mouse motion event takes place. Derived classes mustprovide an
 	 * implementation, possibly using mouse_motion_default().
 	 */
-	virtual void mouse_motion(int x, int y, const bool browse, bool update=false) = 0;
+	virtual void mouse_motion(int x, int y, const bool browse, bool update=false, map_location new_loc = map_location::null_location) = 0;
 
 	virtual void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
 	bool is_left_click(const SDL_MouseButtonEvent& event) const;

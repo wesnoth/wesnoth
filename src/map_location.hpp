@@ -36,9 +36,10 @@ class variable_set;
  */
 /** Represents a location on the map. */
 struct map_location {
-	/** Valid directions which can be moved in our hexagonal world. */
+	/** Valid directions which can either be moved in our hexagonal world or
+	 *  (WEST and EAST) are used for joystick cursor movement. */
 	enum DIRECTION { NORTH, NORTH_EAST, SOUTH_EAST, SOUTH,
-					 SOUTH_WEST, NORTH_WEST, NDIRECTIONS };
+					 SOUTH_WEST, NORTH_WEST, NDIRECTIONS, WEST, EAST };
 
 	static DIRECTION parse_direction(const std::string& str);
 

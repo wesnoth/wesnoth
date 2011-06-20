@@ -95,7 +95,7 @@ int mouse_handler::drag_threshold() const
 	return 14;
 }
 
-void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
+void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, map_location new_hex)
 {
 	// we ignore the position coming from event handler
 	// because it's always a little obsolete and we don't need
@@ -106,7 +106,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 
-	const map_location new_hex = gui().hex_clicked_on(x,y);
+	if (new_hex == map_location::null_location)
+		new_hex = gui().hex_clicked_on(x,y);
 
 	if(new_hex != last_hex_) {
 		update = true;
@@ -1111,7 +1112,7 @@ void mouse_handler::cycle_units(const bool browse, const bool reverse)
 	if (unit_in_cycle(it)) {
 		gui().scroll_to_tile(it->get_location(), game_display::WARP);
 		select_hex(it->get_location(), browse);
-		mouse_update(browse);
+//		mouse_update(browse);
 	}
 }
 

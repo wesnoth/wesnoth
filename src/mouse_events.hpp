@@ -89,7 +89,7 @@ protected:
 	/**
 	 * Use update to force an update of the mouse state.
 	 */
-	void mouse_motion(int x, int y, const bool browse, bool update=false);
+	void mouse_motion(int x, int y, const bool browse, bool update=false, map_location loc = map_location::null_location);
 	bool right_click_show_menu(int x, int y, const bool browse);
 	bool left_click(int x, int y, const bool browse);
 	void select_hex(const map_location& hex, const bool browse);
