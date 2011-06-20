@@ -74,6 +74,9 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 		std::map<std::string, string_map> data;
 		string_map item;
 
+		item["label"] = c["icon"];
+		data.insert(std::make_pair("icon", item));
+
 		std::string tmp = c["name"];
 		utils::truncate_as_wstring(tmp, 20);
 		item["label"] = tmp;
