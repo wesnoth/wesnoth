@@ -15,7 +15,9 @@ import java.util.Map;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.jface.dialogs.IDialogSettings;
+import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preprocessor.Define;
 import org.wesnoth.wml.core.ConfigFile;
 import org.wesnoth.wml.core.Variable;
@@ -39,8 +41,12 @@ public class ProjectCache
 	private Map<String, ConfigFile> configFiles_;
 	private Map<String, Define> defines_;
 
+	private IProject project_;
+
 	public ProjectCache(IProject project)
 	{
+	    project_ = project;
+
 		configFiles_ = new HashMap<String, ConfigFile>();
 		defines_ = new HashMap<String, Define>(0);
 		propertiesTimetamp_ = 0;
@@ -226,5 +232,24 @@ public class ProjectCache
 	public Map<String, Define> getDefines()
 	{
 		return defines_;
+	}
+
+	/**
+     * The name of the install used in the project
+     */
+	public String getInstallName()
+	{
+	    return Preferences.getString( Constants.P_INST_NAME_PREFIX + project_.getName( ) );
+	}
+
+	/**
+	 * Sets the new install used in the project
+	 * @param newInstallName The new install name
+	 */
+	public void setInstallName( String newInstallName )
+	{
+	    Preferences.getPreferences( ).setValue(
+	            Constants.P_INST_NAME_PREFIX + project_.getName( ),
+	            newInstallName );
 	}
 }

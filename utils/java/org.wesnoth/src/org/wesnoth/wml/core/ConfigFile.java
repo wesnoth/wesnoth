@@ -16,7 +16,6 @@ import java.util.List;
  */
 public class ConfigFile
 {
-	private String filename_;
 
 	public String ScenarioId;
 	/**
@@ -28,13 +27,14 @@ public class ConfigFile
 
 	public String CampaignId;
 	/**
-     * True if there was a [campaign] tag present in the file.
-     *
-     * However The {@link ConfigFile#CampaignId} may be null
-     */
+	 * True if there was a [campaign] tag present in the file.
+	 *
+	 * However The {@link ConfigFile#CampaignId} may be null
+	 */
 	public boolean IsCampaign;
 
 	private List<Variable> variables_;
+	private String filename_;
 
 	public ConfigFile(String filename)
 	{
