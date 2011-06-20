@@ -1,4 +1,4 @@
-/* $Id: teleport.hpp $ */
+/* $Id$ */
 /*
    Copyright (C) 2010 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
