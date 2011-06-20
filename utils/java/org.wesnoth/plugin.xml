@@ -801,4 +801,13 @@
             priority="normal">
       </content-type>
    </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="org.wesnoth.propertypages.WesnothProjectPage"
+            id="org.wesnoth.propertyPages.wesnothProject"
+            name="Wesnoth Project"
+            objectClass="org.eclipse.core.resources.IProject">
+      </page>
+   </extension>
 </plugin>
