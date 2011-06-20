@@ -2,7 +2,9 @@
 #define NETWORK_ASIO_HPP_INCLUDED
 
 #include <boost/asio.hpp>
+#include <boost/optional.hpp>
 #include "exceptions.hpp"
+#include "config.hpp"
 
 namespace network_asio {
 
@@ -21,7 +23,10 @@ class connection
 	typedef boost::asio::ip::tcp::socket socket;
 	socket socket_;
 
-	bool connected_;
+	bool done_;
+
+	boost::asio::streambuf write_buf_;
+	boost::asio::streambuf read_buf_;
 
 	void handle_resolve(
 		const boost::system::error_code& ec,
@@ -33,7 +38,28 @@ class connection
 		const boost::system::error_code& ec,
 		resolver::iterator iterator
 		);
+	void handshake();
+	void handle_handshake(
+		const boost::system::error_code& ec
+		);
+	union {
+		char binary[4];
+		boost::uint32_t num;
+	} handshake_response_;
 
+	void handle_write(
+		const boost::system::error_code& ec,
+		std::size_t bytes_transferred
+		);
+	std::size_t is_read_complete(
+		const boost::system::error_code& error,
+		std::size_t bytes_transferred
+		); 
+	void handle_read(
+		const boost::system::error_code& ec,
+		std::size_t bytes_transferred
+		);
+	boost::optional<std::size_t> bytes_to_read_;
 
 	public:
 	/**
@@ -43,6 +69,8 @@ class connection
 	 * @param service Service identifier such as "80" or "http"
 	 */
 	connection(const std::string& host, const std::string& service);
+
+	void transfer(const config& request, config& response);
 
 	/** Handle all pending asynchonous events and return */
 	std::size_t poll()
@@ -60,7 +88,8 @@ class connection
 	 */
 	void run() { io_service_.run(); }
 
-	bool connected() const { return connected_; }
+	/** True if connected and no high-level operation is in progress */
+	bool done() const { return done_; }
 };
 
 }

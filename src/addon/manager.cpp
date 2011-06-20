@@ -1130,6 +1130,12 @@ namespace {
 				bool result = network_connect.show(disp.video());
 				if(!result)
 					return;
+				config cfg, response;
+				cfg.add_child("request_campaign_list");
+				connection.transfer(cfg, response);
+				result = network_connect.show(disp.video());
+				if(!result)
+					return;
 			}
 			const network::manager net_manager;
 			const network::connection sock =

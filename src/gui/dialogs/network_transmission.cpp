@@ -33,7 +33,7 @@ REGISTER_DIALOG(network_transmission)
 void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 {
 	connection_.poll();
-	if(connection_.connected() && window_) {
+	if(connection_.done() && window_) {
 		window_.get().set_retval(twindow::OK);
 	}
 }
