@@ -1,5 +1,6 @@
 #include <boost/bind.hpp>
 #include <boost/cstdint.hpp>
+#include <boost/version.hpp>
 #include <iostream>
 #include "network_asio.hpp"
 #include "serialization/parser.hpp"
@@ -116,7 +117,11 @@ std::size_t connection::is_read_complete(
 			is.read(data_size.binary, 4);
 			bytes_to_read_ = ntohl(data_size.num) + 4;
 		}
+#if BOOST_VERSION >= 103700
 		return bytes_to_read_.get() - bytes_transferred;
+#else
+		return bytes_to_read_.get() == bytes_transferred;
+#endif
 	}
 }
 
