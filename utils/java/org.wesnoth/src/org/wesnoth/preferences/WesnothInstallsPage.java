@@ -49,13 +49,14 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 import org.wesnoth.Constants;
-import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.StringUtils;
+import org.wesnoth.utils.WesnothInstallsUtils;
+import org.wesnoth.utils.WesnothInstallsUtils.WesnothInstall;
 
 public class WesnothInstallsPage extends AbstractPreferencePage
 {
@@ -91,19 +92,10 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         // add the default install first
         installs_.put( "Default", new WesnothInstall( "Default", "" ) ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
-        // unpack installs
-        String[] installs = Preferences.getString( Constants.P_INST_INSTALL_LIST ).split( ";" ); //$NON-NLS-1$
-        for ( String str : installs ){
-            if ( str.isEmpty() )
-                continue;
-
-            String[] tokens = str.split( ":" ); //$NON-NLS-1$
-
-            if ( tokens.length != 2 ) {
-                Logger.getInstance().logError( "invalid install [" + str + "] in installs list." ); //$NON-NLS-1$
-                continue;
-            }
-            installs_.put( tokens[0], new WesnothInstall( tokens[0], tokens[1] ) );
+        List<WesnothInstall> installs = WesnothInstallsUtils.getInstalls( );
+        for ( WesnothInstall wesnothInstall : installs )
+        {
+            installs_.put( wesnothInstall.Name, wesnothInstall );
         }
     }
 
@@ -520,22 +512,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             wmlToolsField_.setStringValue(""); //$NON-NLS-1$
 
         saveInstall();
-
-        // pack back the installs
-        StringBuilder installs = new StringBuilder();
-        for ( WesnothInstall install : installs_.values() ) {
-            // don't save the default install
-            if ( install.Name.equals( "Default" ) )
-                continue;
-
-            if ( installs.length() > 0 )
-                installs.append( ";" ); //$NON-NLS-1$
-
-            installs.append( install.Name );
-            installs.append( ":" ); //$NON-NLS-1$
-            installs.append( install.Version );
-        }
-        Preferences.getPreferences().setValue( Constants.P_INST_INSTALL_LIST, installs.toString() );
+        WesnothInstallsUtils.setInstalls( installs_.values( ) );
     }
 
     @Override
@@ -582,18 +559,6 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                 }
             }
             return ""; //$NON-NLS-1$
-        }
-    }
-
-    public static class WesnothInstall
-    {
-        public String Name;
-        public String Version;
-
-        public WesnothInstall(String name, String version)
-        {
-            Name = name;
-            Version = version;
         }
     }
 }
