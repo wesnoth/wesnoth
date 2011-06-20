@@ -19,24 +19,24 @@
 
 import sys, re, glob
 
-import wesnoth.wmldata as wmldata
+import wesnoth.wmlparser2 as wmldata
 
 def output(text):
     sys.stdout.write(text.encode("utf8"))
 
 if __name__ == "__main__":
     import optparse
-    try:
-        import psyco
-        psyco.full()
-    except ImportError:
-        pass
 
-    optionparser = optparse.OptionParser()
-    options, args = optionparser.parse_args()
+    option_parser = optparse.OptionParser()
+    option_parser.add_option("-w", "--wesnoth",
+        help = "Specify the wesnoth executable to use.")
+    options, args = option_parser.parse_args()
 
     files = ["data/core/about.cfg"]
     files.extend(glob.glob("data/campaigns/*/_main.cfg"))
+    
+    if not options.wesnoth:
+        options.wesnoth = "./wesnoth"
 
     # Parse WML.
     class Section: pass
@@ -44,16 +44,20 @@ if __name__ == "__main__":
     chapters = []
     for arg in files:
         sections = []
-        wml = wmldata.read_file(arg)
-        if not wml.get_first("about"):
-            wml = wml.get_first("campaign")
-        if not wml.get_first("about"):
-            sys.stderr.write("No about section found in %s\n" % arg)
-        for about in wml.get_all("about"):
+        wml_parser = wmldata.Parser(options.wesnoth, None, None, False)
+        wml_parser.parse_file(arg)
+        wml = wml_parser
+        if not wml.get_all(tag = "about"):
+            wml = wml.get_all(tag = "campaign")
+            if not wml or not wml[0].get_all(tag = "about"):
+                sys.stderr.write("No about section found in %s\n" % arg)
+                continue
+            wml = wml[0]
+        for about in wml.get_all(tag = "about"):
             section = Section()
             section.title = about.get_text_val("title")
             section.lines = []
-            for entry in about.get_all("entry"):
+            for entry in about.get_all(tag = "entry"):
                 name = entry.get_text_val("name")
                 comment = entry.get_text_val("comment", "")
                 wikiuser = entry.get_text_val("wikiuser", "")
