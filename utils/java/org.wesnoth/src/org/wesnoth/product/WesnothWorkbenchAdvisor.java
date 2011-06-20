@@ -44,7 +44,7 @@ public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack {
 	@Override
 	public void postStartup()
 	{
-	    if (WorkspaceUtils.checkConditions(false) == false)
+	    if (WorkspaceUtils.checkPathsAreSet(false) == false)
         {
             WorkspaceUtils.setupWorkspace(true);
         }

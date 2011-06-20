@@ -44,7 +44,6 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.IWorkingSetManager;
 import org.eclipse.ui.dialogs.PreferencesUtil;
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
@@ -306,9 +305,8 @@ public class WorkspaceUtils
 		if (resource == null)
 			return null;
 
-		String result = Preferences.getString(Constants.P_WESNOTH_USER_DIR) +
-							Path.SEPARATOR + "data/add-ons/"; //$NON-NLS-1$
-		result += (resource.getProject().getName() + Path.SEPARATOR);
+		String result = Preferences.Paths.getAddonsDir( );
+		result += resource.getProject().getName() + Path.SEPARATOR;
 		result += resource.getProjectRelativePath().toOSString();
 		return result;
 	}
@@ -331,11 +329,11 @@ public class WorkspaceUtils
             Messages.Activator_5);
         }
 
-        if (!checkConditions(false))
+        if (!checkPathsAreSet(false))
         {
             PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
                     WesnothPlugin.getShell(), "org.wesnoth.preferences.InstallsPage", null, null); //$NON-NLS-1$
-            if (pref.open() == Window.CANCEL || !checkConditions(true))
+            if (pref.open() == Window.CANCEL || !checkPathsAreSet(true))
             {
                 GUIUtils.showErrorMessageBox(Messages.WorkspaceUtils_7 +
                         Messages.WorkspaceUtils_8);
@@ -378,8 +376,8 @@ public class WorkspaceUtils
 
                     // automatically import 'special' folders as projects
                     List<File> files = new ArrayList<File>();
-                    String addonsDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR)+"/data/add-ons/"; //$NON-NLS-1$
-                    String campaignsDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) + "/data/campaigns/"; //$NON-NLS-1$
+                    String addonsDir = Preferences.Paths.getAddonsDir( );
+                    String campaignsDir = Preferences.Paths.getCampaignDir( );
 
                     File[] tmp = null;
                     if (GUIUtils.showMessageBox(Messages.WorkspaceUtils_18 +
@@ -490,20 +488,18 @@ public class WorkspaceUtils
 	 * @param displayWarning true to display a messagebox warning
 	 * 		  the user if conditions are not met
 	 */
-	public static boolean checkConditions(boolean displayWarning)
+	public static boolean checkPathsAreSet(boolean displayWarning)
 	{
-		String execDir = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
-		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
-		String wmltoolsDir = Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR);
-		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
-
-		if (!validPath(execDir) || !validPath(userDir) ||
-			!validPath(wmltoolsDir) || !validPath(workingDir))
+		if ( !validPath( Preferences.Paths.getWesnothExecutablePath( ) ) ||
+		     !validPath( Preferences.Paths.getUserDir( ) ) ||
+			 !validPath( Preferences.Paths.getWMLToolsDir( ) ) ||
+			 !validPath( Preferences.Paths.getWorkingDir( ) ))
 		{
 			if (displayWarning)
 				GUIUtils.showWarnMessageBox(Messages.WorkspaceUtils_33);
 			return false;
 		}
+
 		return true;
 	}
 

@@ -22,7 +22,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.console.MessageConsole;
@@ -50,8 +49,7 @@ public class WMLTools
 		if (!checkPrerequisites(null, "wmlindent")) // wmlindent only check first //$NON-NLS-1$
 			return null;
 
-		File wmllintFile = new File(Preferences.getString(
-				Constants.P_WESNOTH_WMLTOOLS_DIR) + "/wmlindent"); //$NON-NLS-1$
+		File wmllintFile = new File( Preferences.Paths.getWMLToolsDir( ) + "/wmlindent" ); //$NON-NLS-1$
 		List<String> arguments = new ArrayList<String>();
 		arguments.add(wmllintFile.getAbsolutePath());
 
@@ -83,8 +81,8 @@ public class WMLTools
 		if (!checkPrerequisites(resourcePath, "wesnoth/wmlparser2.py")) //$NON-NLS-1$
 			return null;
 
-		File wmlparserFile = new File(Preferences.getString(
-				Constants.P_WESNOTH_WMLTOOLS_DIR) +	"/wesnoth/wmlparser2.py"); //$NON-NLS-1$
+		File wmlparserFile = new File(Preferences.Paths.getWMLToolsDir( ) +
+		        "/wesnoth/wmlparser2.py" ); //$NON-NLS-1$
 
 		List<String> arguments = new ArrayList<String>();
 
@@ -97,16 +95,16 @@ public class WMLTools
 		arguments.add("-n"); //$NON-NLS-1$
 
 		// wesnoth executable's path
-		arguments.add("-w"); //$NON-NLS-1$
-		arguments.add(Preferences.getString(Constants.P_WESNOTH_EXEC_PATH));
+		arguments.add( "-w" ); //$NON-NLS-1$
+		arguments.add( Preferences.Paths.getWesnothExecutablePath( ) );
 
 		// add user data directory
-		arguments.add("-c"); //$NON-NLS-1$
-		arguments.add(Preferences.getString(Constants.P_WESNOTH_USER_DIR));
+		arguments.add( "-c"); //$NON-NLS-1$
+		arguments.add( Preferences.Paths.getUserDir( ) );
 
 		// add the working data directory
-		arguments.add("-a"); //$NON-NLS-1$
-		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR));
+		arguments.add( "-a" ); //$NON-NLS-1$
+		arguments.add( Preferences.Paths.getWorkingDir( ) );
 
 		// input file
 		arguments.add("-i"); //$NON-NLS-1$
@@ -141,8 +139,7 @@ public class WMLTools
 		if (!checkPrerequisites(resourcePath, "wmllint")) //$NON-NLS-1$
 			return null;
 
-		File wmllintFile = new File(Preferences.getString(
-				Constants.P_WESNOTH_WMLTOOLS_DIR) + "/wmllint"); //$NON-NLS-1$
+		File wmllintFile = new File( Preferences.Paths.getWMLToolsDir( ) + "/wmllint" ); //$NON-NLS-1$
 
 		List<String> arguments = new ArrayList<String>();
 
@@ -162,9 +159,8 @@ public class WMLTools
 			arguments.add("--nospellcheck"); //$NON-NLS-1$
 
 		// add default core directory
-		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
-				Path.SEPARATOR + "data/core"); //$NON-NLS-1$
-		arguments.add(resourcePath);
+		arguments.add( Preferences.Paths.getCoreDir( ) );
+		arguments.add( resourcePath );
 
 		return runPythonScript(arguments, null, true, true, stdout,stderr);
 	}
@@ -194,8 +190,7 @@ public class WMLTools
 		if (!checkPrerequisites(resourcePath, "wmlscope")) //$NON-NLS-1$
 			return null;
 
-		File wmlscopeFile = new File(Preferences.getString(
-				Constants.P_WESNOTH_WMLTOOLS_DIR) + "/wmlscope"); //$NON-NLS-1$
+		File wmlscopeFile = new File(Preferences.Paths.getWMLToolsDir( ) + "/wmlscope"); //$NON-NLS-1$
 
 		List<String> arguments = new ArrayList<String>();
 
@@ -217,9 +212,8 @@ public class WMLTools
 		arguments.add("--unresolved"); //$NON-NLS-1$
 
 		// add default core directory
-		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
-				Path.SEPARATOR + "data/core"); //$NON-NLS-1$
-		arguments.add(resourcePath);
+		arguments.add( Preferences.Paths.getCoreDir( ) );
+		arguments.add( resourcePath );
 
 		return runPythonScript(arguments, null, true, true, stdout, stderr);
 	}
@@ -392,7 +386,7 @@ public class WMLTools
 		if (!checkPrerequisites(containerPath, "wesnoth_addon_manager")) //$NON-NLS-1$
 			return null;
 
-		File wmllintFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR)
+		File wmllintFile = new File(Preferences.Paths.getWMLToolsDir( )
 				+ "/wesnoth_addon_manager"); //$NON-NLS-1$
 		List<String> arguments = new ArrayList<String>();
 		arguments.add(wmllintFile.getAbsolutePath());
@@ -469,14 +463,13 @@ public class WMLTools
 
 		if (wmlTool != null)
 		{
-			if (Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR).equals("")) //$NON-NLS-1$
+			if ( Preferences.Paths.getWMLToolsDir( ).equals( "" ) ) //$NON-NLS-1$
 			{
 				GUIUtils.showWarnMessageBox(Messages.WMLTools_45 +
 						Messages.WMLTools_46);
 				return false;
 			}
-			File wmlToolFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) +
-					Path.SEPARATOR + wmlTool);
+			File wmlToolFile = new File( Preferences.Paths.getWMLToolsDir( ) + wmlTool );
 
 			if (!wmlToolFile.exists())
 			{

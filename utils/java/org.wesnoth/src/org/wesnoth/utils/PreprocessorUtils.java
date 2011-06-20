@@ -104,11 +104,11 @@ public class PreprocessorUtils
 		try{
 			List<String> arguments = new ArrayList<String>();
 
-			arguments.add("--config-dir"); //$NON-NLS-1$
-			arguments.add(Preferences.getString(Constants.P_WESNOTH_USER_DIR));
+			arguments.add( "--config-dir" ); //$NON-NLS-1$
+			arguments.add( Preferences.Paths.getUserDir( ) );
 
-			arguments.add("--data-dir"); //$NON-NLS-1$
-			arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR));
+			arguments.add( "--data-dir" ); //$NON-NLS-1$
+			arguments.add( Preferences.Paths.getWorkingDir( ) );
 
 			if (macrosFile != null && macrosFile.isEmpty() == false)
 			{
@@ -154,7 +154,7 @@ public class PreprocessorUtils
 
 			Logger.getInstance().log(Messages.PreprocessorUtils_10 + filePath);
 			ExternalToolInvoker wesnoth = new ExternalToolInvoker(
-					Preferences.getString(Constants.P_WESNOTH_EXEC_PATH),
+					Preferences.Paths.getWesnothExecutablePath( ),
 					arguments);
 			wesnoth.runTool();
 			if (waitForIt)

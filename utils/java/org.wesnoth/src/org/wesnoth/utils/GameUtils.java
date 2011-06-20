@@ -15,7 +15,6 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.ui.console.MessageConsole;
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
@@ -123,8 +122,9 @@ public class GameUtils
 	public static void startGame(List<String> extraArgs)
 	{
 		List<String> args = new ArrayList<String>();
-		String wesnothExec = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
-		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
+		String wesnothExec = Preferences.Paths.getWesnothExecutablePath( );
+		String workingDir = Preferences.Paths.getWorkingDir( );
+
 		if (wesnothExec.isEmpty() || workingDir.isEmpty())
 		{
 			GUIUtils.showErrorMessageBox(Messages.GameUtils_7);
@@ -136,7 +136,7 @@ public class GameUtils
 
 		// add the user's data directory path
 		args.add("--config-dir"); //$NON-NLS-1$
-		args.add(Preferences.getString(Constants.P_WESNOTH_USER_DIR));
+		args.add(Preferences.Paths.getUserDir( ));
 
 		// we need to add the working dir (backward compatibility)
 		args.add(workingDir);

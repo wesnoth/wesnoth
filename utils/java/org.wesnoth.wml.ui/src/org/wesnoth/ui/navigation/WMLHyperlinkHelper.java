@@ -17,7 +17,6 @@ import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkAcceptor;
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preprocessor.Define;
@@ -96,11 +95,11 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
 		if (filePath.startsWith("~")) // user addon relative location //$NON-NLS-1$
 			filePath = filePath.replaceFirst("~", //$NON-NLS-1$
-					Preferences.getString(Constants.P_WESNOTH_USER_DIR).replace('\\', '/') +
+					Preferences.Paths.getUserDir( ).replace('\\', '/') +
 					"/data/"); //$NON-NLS-1$
 		else if (filePath.startsWith("core")) // data/core relative location //$NON-NLS-1$
 			filePath = filePath.replaceFirst("core", //$NON-NLS-1$
-					Preferences.getString(Constants.P_WESNOTH_WORKING_DIR).replace('\\', '/') +
+					Preferences.Paths.getWorkingDir( ).replace('\\', '/') +
 					"/data/core/"); //$NON-NLS-1$
 
 		FileLocationOpenerHyperlink macroTarget = new FileLocationOpenerHyperlink();
@@ -129,7 +128,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 			mapLocation = mapLocation.substring(1, value.getLength() - 1);
 
 		mapLocation = mapLocation.replaceFirst("~", //$NON-NLS-1$
-				Preferences.getString(Constants.P_WESNOTH_USER_DIR).replace('\\','/') +
+				Preferences.Paths.getUserDir( ).replace('\\','/') +
 				"/data/"); //$NON-NLS-1$
 
 		ObjectStorageAdapter adapter = (ObjectStorageAdapter)EcoreUtil.getAdapter(value.eAdapters(),

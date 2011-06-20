@@ -8,6 +8,7 @@
  *******************************************************************************/
 package org.wesnoth.preferences;
 
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.wesnoth.Constants;
@@ -107,8 +108,85 @@ public class Preferences extends AbstractPreferenceInitializer
 	{
         if (StringUtils.isNullOrEmpty(installName) ||
             installName.equalsIgnoreCase("default"))
-            return "";
+            return ""; //$NON-NLS-1$
 
-        return "inst_" + installName + "_";
+        return "inst_" + installName + "_"; //$NON-NLS-1$  //$NON-NLS-2$
+	}
+
+	/**
+	 * Helper for accessing the paths used in the plugin based
+	 * on the install
+	 */
+	public static class Paths
+	{
+	    /**
+	     * Returns the addons directory
+	     * @return Returns the addons directory
+	     */
+	    public static String getAddonsDir()
+	    {
+	        return getUserDir( ) + "/data/add-ons/"; //$NON-NLS-1$
+	    }
+
+        /**
+         * Returns the campaign directory
+         * @return Returns the campaign directory
+         */
+        public static String getCampaignDir()
+        {
+            return getWorkingDir( ) + "/data/campaigns/"; //$NON-NLS-1$
+        }
+
+        public static String getCoreDir()
+        {
+            return getWorkingDir( ) + "data/core/"; //$NON-NLS-1$
+        }
+
+        /**
+         * Returns the <b>schema.cfg</b> file path
+         * @return Returns the schema.cfg file path
+         */
+        public static String getSchemaPath()
+        {
+            return getWorkingDir( ) + "/data/schema.cfg"; //$NON-NLS-1$
+        }
+
+        /**
+         * Returns the user's directory
+         * @return Returns the user's directory
+         */
+        public static String getUserDir()
+        {
+            return getString( Constants.P_WESNOTH_USER_DIR ) + Path.SEPARATOR;
+        }
+
+        /**
+         * Returns the working directory that contains the
+         * <b>data</b> folder
+         * @return Returns the working directory
+         */
+        public static String getWorkingDir()
+        {
+            return getString( Constants.P_WESNOTH_WORKING_DIR ) + Path.SEPARATOR;
+        }
+
+        /**
+         * Returns the directory that contains the wml tools
+         * ( wmlscope, wmllint, wmlindent, wesnoth_addons_manager, etc)
+         * @return Returns the directory that contains the wml tools
+         */
+        public static String getWMLToolsDir()
+        {
+            return getString( Constants.P_WESNOTH_WMLTOOLS_DIR ) + Path.SEPARATOR;
+        }
+
+        /**
+         * Returns the path to the wesnoth executable
+         * @return Returns the path to the wesnoth executable
+         */
+        public static String getWesnothExecutablePath()
+        {
+            return getString( Constants.P_WESNOTH_EXEC_PATH );
+        }
 	}
 }

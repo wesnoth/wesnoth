@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
@@ -47,8 +46,7 @@ public class SchemaParser
 	 */
 	public void parseSchema(boolean force)
 	{
-		parseSchema(force, Preferences.getString(
-				Constants.P_WESNOTH_WORKING_DIR) + "/data/schema.cfg"); //$NON-NLS-1$
+		parseSchema( force, Preferences.Paths.getSchemaPath( ) );
 	}
 
 	/**

@@ -26,7 +26,6 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
@@ -74,7 +73,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
 
 		monitor.subTask(Messages.WesnothProjectBuilder_3);
-		if (Preferences.getString(Constants.P_WESNOTH_USER_DIR).isEmpty())
+		if ( Preferences.Paths.getUserDir( ).isEmpty( ) )
 		{
 			Logger.getInstance().log(Messages.WesnothProjectBuilder_4,
 					Messages.WesnothProjectBuilder_5);
@@ -95,7 +94,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			monitor.subTask(Messages.WesnothProjectBuilder_8);
 			Map<String, String> properties = new HashMap<String, String>();
 			properties.put("wesnoth.user.dir", //$NON-NLS-1$
-					Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
+					Preferences.Paths.getUserDir( ));
 			Logger.getInstance().log(Messages.WesnothProjectBuilder_10);
 
 			String result = AntUtils.runAnt(
