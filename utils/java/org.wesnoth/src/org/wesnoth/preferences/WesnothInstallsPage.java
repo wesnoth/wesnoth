@@ -305,6 +305,9 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         if (install != null && install.Name.equalsIgnoreCase( "default" ) == false){
             installs_.remove( install.Name );
             installsTableViewer_.refresh();
+
+            // clear the current info
+            newInstall( );
         }
     }
 
