@@ -212,12 +212,11 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				{
 					ConfigFile cfg = handler.getConfigFile();
 					projCache.getConfigs().put(file.getName(), cfg);
-					if (cfg.isScenario())
+					if (cfg.IsScenario)
 					{
-						if (cfg.getScenarioId() != null &&
-							cfg.getScenarioId().isEmpty() == false)
+						if ( StringUtils.isNullOrEmpty( cfg.ScenarioId ) )
 						{
-							Logger.getInstance().log("added scenarioId [" + cfg.getScenarioId() + //$NON-NLS-1$
+							Logger.getInstance().log("added scenarioId [" + cfg.ScenarioId + //$NON-NLS-1$
 									"] for file: " + file.getName()); //$NON-NLS-1$
 						}
 						else

@@ -66,6 +66,7 @@ public class ProjectCache
 		if (force == false &&
 			wesnothFile_.lastModified() <= propertiesTimetamp_)
 			return;
+
 		try
 		{
 			ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
@@ -91,8 +92,8 @@ public class ProjectCache
 						continue;
 
 					ConfigFile tmp = new ConfigFile(config.get("filename")); //$NON-NLS-1$
-					tmp.setScenarioId(config.get("scenario_id")); //$NON-NLS-1$
-					tmp.setCampaignId(config.get("campaign_id")); //$NON-NLS-1$
+					tmp.ScenarioId = config.get( "scenario_id" ); //$NON-NLS-1$
+					tmp.CampaignId = config.get( "campaign_id" ); //$NON-NLS-1$
 
 					for(IDialogSettings variable : config.getSection("variables").getSections()) //$NON-NLS-1$
 					{
@@ -169,8 +170,8 @@ public class ProjectCache
 			for(ConfigFile config : configFiles_.values())
 			{
 				IDialogSettings configSection = configsSection.addNewSection("config" + configCnt); //$NON-NLS-1$
-				configSection.put("scenario_id", config.getScenarioId()); //$NON-NLS-1$
-				configSection.put("campaign_id", config.getCampaignId()); //$NON-NLS-1$
+				configSection.put("scenario_id", config.ScenarioId); //$NON-NLS-1$
+				configSection.put("campaign_id", config.CampaignId); //$NON-NLS-1$
 				configSection.put("filename", config.getFilename()); //$NON-NLS-1$
 
 				IDialogSettings variablesSection = configSection.addNewSection("variables"); //$NON-NLS-1$

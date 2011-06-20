@@ -402,7 +402,7 @@ public class ResourceUtils
 						new WMLSaxHandler(resource.getLocation().toOSString()));
 		if (handler == null)
 			return null;
-		return handler.getConfigFile().getCampaignId();
+		return handler.getConfigFile().CampaignId;
 	}
 
 	/**
@@ -417,7 +417,7 @@ public class ResourceUtils
 				new WMLSaxHandler(file.getLocation().toOSString()));
 		if (handler == null)
 			return null;
-		return handler.getConfigFile().getScenarioId();
+		return handler.getConfigFile().ScenarioId;
 	}
 
 	/**

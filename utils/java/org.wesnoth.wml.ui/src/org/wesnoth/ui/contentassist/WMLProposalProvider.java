@@ -31,6 +31,7 @@ import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.utils.ProjectUtils;
+import org.wesnoth.utils.StringUtils;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.core.ConfigFile;
@@ -165,11 +166,10 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 				for(ConfigFile config : ProjectUtils.
 						getCacheForProject(file.getProject()).getConfigs().values())
 				{
-					if (config.getScenarioId() == null ||
-						config.getScenarioId().isEmpty())
+					if (StringUtils.isNullOrEmpty( config.ScenarioId ))
 						continue;
-					acceptor.accept(createCompletionProposal(config.getScenarioId(),
-							config.getScenarioId(), WMLLabelProvider.getImageByName("scenario.png"), //$NON-NLS-1$
+					acceptor.accept(createCompletionProposal(config.ScenarioId,
+							config.ScenarioId, WMLLabelProvider.getImageByName("scenario.png"), //$NON-NLS-1$
 							context, 1700));
 				}
 			}

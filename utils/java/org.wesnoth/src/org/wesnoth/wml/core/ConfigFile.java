@@ -17,10 +17,23 @@ import java.util.List;
 public class ConfigFile
 {
 	private String filename_;
-	private String scenarioId_;
-	private boolean isScenario_;
-	private String campaignId_;
-	private boolean isCampaign_;
+
+	public String ScenarioId;
+	/**
+	 * True if there was a [scenario] tag present in the file.
+	 *
+	 * However The {@link ConfigFile#ScenarioId} may be null
+	 */
+	public boolean IsScenario;
+
+	public String CampaignId;
+	/**
+     * True if there was a [campaign] tag present in the file.
+     *
+     * However The {@link ConfigFile#CampaignId} may be null
+     */
+	public boolean IsCampaign;
+
 	private List<Variable> variables_;
 
 	public ConfigFile(String filename)
@@ -37,53 +50,5 @@ public class ConfigFile
 	public List<Variable> getVariables()
 	{
 		return variables_;
-	}
-
-	public String getScenarioId()
-	{
-		return scenarioId_;
-	}
-	public void setScenarioId(String id)
-	{
-		scenarioId_ = id;
-	}
-
-	public String getCampaignId()
-	{
-		return campaignId_;
-	}
-
-	public void setCampaignId(String campaignId)
-	{
-		campaignId_ = campaignId;
-	}
-
-	public void setIsScenario(boolean isScenario)
-	{
-		isScenario_ = isScenario;
-	}
-	/**
-	 * Returns true if there was a [scenario] tag present in the file.
-	 *
-	 * However the {@link ConfigFile#getScenarioId()} may return nul
-	 */
-	public boolean isScenario()
-	{
-		return isScenario_;
-	}
-
-	public void setIsCampaign(boolean isCampaign)
-	{
-		isCampaign_ = isCampaign;
-	}
-
-	/**
-	 * Returns true if there was a [campaign] tag present in the file.
-	 * However the {@link ConfigFile#getCampaignId()} may return null
-	 * @return
-	 */
-	public boolean isCampaign()
-	{
-		return isCampaign_;
 	}
 }

@@ -60,11 +60,11 @@ public class WMLSaxHandler extends DefaultHandler
     	}
     	else if (rawName.equals("campaign")) //$NON-NLS-1$
     	{
-    		cfg_.setIsCampaign(true);
+    		cfg_.IsCampaign = true;
     	}
     	else if (rawName.equals("scenario")) //$NON-NLS-1$
     	{
-    		cfg_.setIsScenario(true);
+    		cfg_.IsScenario = true;
     	}
     }
 
@@ -78,9 +78,9 @@ public class WMLSaxHandler extends DefaultHandler
     		if (peek.equals("id")) //$NON-NLS-1$
     		{
     			if (stack_.get(stack_.size() - 2).equals("campaign")) //$NON-NLS-1$
-    				cfg_.setCampaignId(new String(ch, start, length));
+    				cfg_.CampaignId = new String( ch, start, length );
     			else if (stack_.get(stack_.size() - 2).equals("scenario")) //$NON-NLS-1$
-    				cfg_.setScenarioId(new String(ch, start, length));
+    				cfg_.ScenarioId = new String( ch, start, length );
     		}
 
 			if (STATUS == SET_VARIABLE ||
