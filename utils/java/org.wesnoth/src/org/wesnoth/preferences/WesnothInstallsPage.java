@@ -100,7 +100,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             String[] tokens = str.split( ":" ); //$NON-NLS-1$
 
             if ( tokens.length != 2 ) {
-                Logger.getInstance().logError( "invalid install [" + str + "] in installs list." );
+                Logger.getInstance().logError( "invalid install [" + str + "] in installs list." ); //$NON-NLS-1$
                 continue;
             }
             installs_.put( tokens[0], new WesnothInstall( tokens[0], tokens[1] ) );
@@ -191,8 +191,12 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         tblclmnName.setText("Install Name");
 
         TableColumn tblclmnWesnothVersion = new TableColumn(installsTable_, SWT.NONE);
-        tblclmnWesnothVersion.setWidth(100);
-        tblclmnWesnothVersion.setText("Wesnoth version");
+        tblclmnWesnothVersion.setWidth(70);
+        tblclmnWesnothVersion.setText("Version");
+
+        TableColumn tblclmnIsDefault = new TableColumn(installsTable_, SWT.NONE);
+        tblclmnIsDefault.setWidth(70);
+        tblclmnIsDefault.setText("Default?");
 
         installsTableViewer_.setContentProvider(new ContentProvider());
         installsTableViewer_.setLabelProvider(new TableLabelProvider());
@@ -204,7 +208,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         fl_composite.marginHeight = 10;
         composite.setLayout(fl_composite);
         GridData gd_composite = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-        gd_composite.widthHint = 23;
+        gd_composite.widthHint = 80;
         composite.setLayoutData(gd_composite);
 
         Button btnNew = new Button(composite, SWT.NONE);
@@ -299,7 +303,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         WesnothInstall install = getSelectedInstall();
         if (install != null) {
             Preferences.getPreferences().setValue(Constants.P_INST_DEFAULT_INSTALL, install.Name);
-            installs_.get("Default").Version = install.Version;
+            installsTableViewer_.refresh();
         }
     }
 
@@ -321,27 +325,27 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
     private void updateInterface(WesnothInstall install)
     {
-        txtInstallName_.setText( install == null ? "" : install.Name );
+        txtInstallName_.setText( install == null ? "" : install.Name );//$NON-NLS-1$
         txtInstallName_.setEditable( install == null ? true : false );
 
-        cmbVersion_.setText( install == null ? "" : install.Version );
+        cmbVersion_.setText( install == null ? "" : install.Version );//$NON-NLS-1$
 
         String installPrefix = Preferences.getInstallPrefix( install == null ? null : install.Name );
 
         wesnothExecutableField_.setPreferenceName(
-                install == null ? "" : installPrefix + Constants.P_WESNOTH_EXEC_PATH );
+                install == null ? "" : installPrefix + Constants.P_WESNOTH_EXEC_PATH );//$NON-NLS-1$
         wesnothExecutableField_.load();
 
         wesnothUserDirField_.setPreferenceName(
-                install == null ? "" : installPrefix + Constants.P_WESNOTH_USER_DIR );
+                install == null ? "" : installPrefix + Constants.P_WESNOTH_USER_DIR );//$NON-NLS-1$
         wesnothUserDirField_.load();
 
         wesnothWorkingDirField_.setPreferenceName(
-                install == null ? "" : installPrefix + Constants.P_WESNOTH_WORKING_DIR );
+                install == null ? "" : installPrefix + Constants.P_WESNOTH_WORKING_DIR );//$NON-NLS-1$
         wesnothWorkingDirField_.load();
 
         wmlToolsField_.setPreferenceName(
-                install == null ? "" : installPrefix + Constants.P_WESNOTH_WMLTOOLS_DIR );
+                install == null ? "" : installPrefix + Constants.P_WESNOTH_WMLTOOLS_DIR );//$NON-NLS-1$
         wmlToolsField_.load();
     }
 
@@ -525,10 +529,10 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                 continue;
 
             if ( installs.length() > 0 )
-                installs.append( ";" );
+                installs.append( ";" ); //$NON-NLS-1$
 
             installs.append( install.Name );
-            installs.append( ":" );
+            installs.append( ":" ); //$NON-NLS-1$
             installs.append( install.Version );
         }
         Preferences.getPreferences().setValue( Constants.P_INST_INSTALL_LIST, installs.toString() );
@@ -563,14 +567,21 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         }
         public String getColumnText(Object element, int columnIndex) {
             if (element instanceof WesnothInstall){
+                WesnothInstall install = ( WesnothInstall ) element;
 
                 if (columnIndex == 0) { // name
-                   return ((WesnothInstall)element).Name;
+                   return install.Name;
                 } else if (columnIndex == 1) { // version
-                    return ((WesnothInstall)element).Version;
+                    return install.Version;
+                } else if ( columnIndex == 2 ) { // is Default ?
+
+                    if ( install.Name.equals( Preferences.getString( Constants.P_INST_DEFAULT_INSTALL ) ) )
+                        return "Yes";
+
+                    return "";
                 }
             }
-            return "";
+            return ""; //$NON-NLS-1$
         }
     }
 
