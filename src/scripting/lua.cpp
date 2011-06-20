@@ -36,6 +36,7 @@
 #include "scripting/lua_api.hpp"
 
 #include "actions.hpp"
+#include "ai/manager.hpp"
 #include "attack_prediction.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
@@ -3217,6 +3218,19 @@ static int impl_theme_items_set(lua_State *L)
 	return 0;
 }
 
+/**
+ * Lua frontend to the modify_ai functionality
+ */
+static int intf_modify_ai(lua_State *L)
+{
+	config cfg;
+	luaW_toconfig(L, -1, cfg);
+	ERR_LUA << cfg.debug() << std::endl;
+	int side = cfg["side"];
+	ai::manager::modify_active_ai_for_side(side, cfg);
+	return 0;
+}
+
 LuaKernel::LuaKernel(const config &cfg)
 	: mState(luaL_newstate()), level_(cfg)
 {
@@ -3280,6 +3294,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "match_side",               &intf_match_side               },
 		{ "match_unit",               &intf_match_unit               },
 		{ "message",                  &intf_message                  },
+		{ "modify_ai",                &intf_modify_ai                },
 		{ "play_sound",               &intf_play_sound               },
 		{ "put_recall_unit",          &intf_put_recall_unit          },
 		{ "put_unit",                 &intf_put_unit                 },
