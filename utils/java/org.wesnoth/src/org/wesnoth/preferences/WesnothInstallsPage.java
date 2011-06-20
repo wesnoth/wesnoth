@@ -320,27 +320,23 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
     private void updateInterface(WesnothInstall install)
     {
-        txtInstallName_.setText( install == null ? "" : install.Name );//$NON-NLS-1$
+        txtInstallName_.setText( install == null ? "" : install.Name ); //$NON-NLS-1$
         txtInstallName_.setEditable( install == null ? true : false );
 
-        cmbVersion_.setText( install == null ? "" : install.Version );//$NON-NLS-1$
+        cmbVersion_.setText( install == null ? "" : install.Version ); //$NON-NLS-1$
 
         String installPrefix = Preferences.getInstallPrefix( install == null ? null : install.Name );
 
-        wesnothExecutableField_.setPreferenceName(
-                install == null ? "" : installPrefix + Constants.P_WESNOTH_EXEC_PATH );//$NON-NLS-1$
+        wesnothExecutableField_.setPreferenceName( installPrefix + Constants.P_WESNOTH_EXEC_PATH );
         wesnothExecutableField_.load();
 
-        wesnothUserDirField_.setPreferenceName(
-                install == null ? "" : installPrefix + Constants.P_WESNOTH_USER_DIR );//$NON-NLS-1$
+        wesnothUserDirField_.setPreferenceName( installPrefix + Constants.P_WESNOTH_USER_DIR );
         wesnothUserDirField_.load();
 
-        wesnothWorkingDirField_.setPreferenceName(
-                install == null ? "" : installPrefix + Constants.P_WESNOTH_WORKING_DIR );//$NON-NLS-1$
+        wesnothWorkingDirField_.setPreferenceName( installPrefix + Constants.P_WESNOTH_WORKING_DIR );
         wesnothWorkingDirField_.load();
 
-        wmlToolsField_.setPreferenceName(
-                install == null ? "" : installPrefix + Constants.P_WESNOTH_WMLTOOLS_DIR );//$NON-NLS-1$
+        wmlToolsField_.setPreferenceName( installPrefix + Constants.P_WESNOTH_WMLTOOLS_DIR );
         wmlToolsField_.load();
     }
 
