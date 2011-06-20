@@ -33,8 +33,16 @@ REGISTER_DIALOG(network_transmission)
 void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 {
 	connection_.poll();
-	if(connection_.done() && window_) {
+	if(!window_) return;
+	if(connection_.done()) {
 		window_.get().set_retval(twindow::OK);
+	} else {
+		if(connection_.bytes_to_read()) {
+			size_t total = connection_.bytes_to_read().get();
+			size_t completed = connection_.bytes_read();
+		find_widget<tprogress_bar>(&(window_.get()), "progress", false)
+			.set_percentage((completed*100)/total);
+		}
 	}
 }
 

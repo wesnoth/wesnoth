@@ -60,6 +60,7 @@ class connection
 		std::size_t bytes_transferred
 		);
 	boost::optional<std::size_t> bytes_to_read_;
+	std::size_t bytes_read_;
 
 	public:
 	/**
@@ -90,6 +91,15 @@ class connection
 
 	/** True if connected and no high-level operation is in progress */
 	bool done() const { return done_; }
+
+	const boost::optional<std::size_t>& bytes_to_read() const
+	{
+		return bytes_to_read_;
+	}
+	std::size_t bytes_read() const
+	{
+		return bytes_read_;
+	}
 };
 
 }

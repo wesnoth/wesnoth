@@ -8,7 +8,7 @@
 namespace network_asio {
 
 connection::connection(const std::string& host, const std::string& service) :
-	resolver_(io_service_), socket_(io_service_), done_(false)
+	resolver_(io_service_), socket_(io_service_), done_(false), bytes_read_(0)
 {
 	resolver_.async_resolve(
 		boost::asio::ip::tcp::resolver::query(host, service),
@@ -107,7 +107,7 @@ std::size_t connection::is_read_complete(
 {
 	if(ec)
 		throw error(ec);
-	std::cout << "Read: " << bytes_transferred << '\n';
+	bytes_read_ = bytes_transferred;
 	if(bytes_transferred < 4) {
 		return 4;
 	} else {
