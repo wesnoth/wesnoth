@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Others">
+      <UniqueIdentifier>{1c55931c-e7b3-48ad-8280-67a69fd31a8c}</UniqueIdentifier>
+      <Extensions>ii;i</Extensions>
+    </Filter>
+    <Filter Include="Server">
+      <UniqueIdentifier>{7f0fff45-a9a7-4aa8-b78e-ad113a2186d6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\filesystem_win32.ii">
+      <Filter>Others</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\server\ban.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\forum_user_handler.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\game.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\input_stream.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\metrics.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\player.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\player_network.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\proxy.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\room.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\room_manager.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\sample_user_handler.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\server.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\simple_wml.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\user_handler.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\loadscreen_empty.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\server\ban.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\forum_user_handler.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\game.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\global.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\input_stream.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\metrics.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\player.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\player_network.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\proxy.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\room.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\room_manager.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\sample_user_handler.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\server.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\simple_wml.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\user_handler.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
