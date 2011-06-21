@@ -578,7 +578,7 @@ void init_custom_malloc();
 
 int main(int argc, char** argv)
 {
-#if defined(_OPENMP) && !defined(_WIN32)
+#if defined(_OPENMP) && !defined(_WIN32) && !defined(__APPLE__)
 	// Wesnoth is a special case for OMP
 	// OMP wait strategy is to have threads busy-loop for 100ms
 	// if there is nothing to do, they then go to sleep.
