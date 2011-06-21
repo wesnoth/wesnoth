@@ -14,6 +14,7 @@
 */
 
 #include <boost/bind.hpp>
+#include <boost/ref.hpp>
 #include <boost/cstdint.hpp>
 #include <boost/version.hpp>
 #include <iostream>
@@ -89,7 +90,7 @@ void connection::handle_handshake(
 	done_ = true;
 }
 
-void connection::transfer(const config& request, config& /*response*/)
+void connection::transfer(const config& request, config& response)
 {
 	io_service_.reset();
 	done_ = false;
@@ -102,7 +103,7 @@ void connection::transfer(const config& request, config& /*response*/)
 	boost::asio::async_write(socket_, write_buf_, boost::bind(&connection::handle_write, this, _1, _2));
 	boost::asio::async_read(socket_, read_buf_,
 		boost::bind(&connection::is_read_complete, this, _1, _2),
-		boost::bind(&connection::handle_read, this, _1, _2));
+		boost::bind(&connection::handle_read, this, _1, _2, boost::ref(response)));
 }
 
 void connection::handle_write(
@@ -142,7 +143,8 @@ std::size_t connection::is_read_complete(
 
 void connection::handle_read(
 	const boost::system::error_code& ec,
-	std::size_t bytes_transferred
+	std::size_t bytes_transferred,
+	config& response
 	)
 {
 	std::cout << "Read " << bytes_transferred << " bytes.\n";
@@ -151,9 +153,7 @@ void connection::handle_read(
 	if(ec && ec != boost::asio::error::eof)
 		throw error(ec);
 	std::istream is(&read_buf_);
-	config cfg;
-	read_gz(cfg, is);
-	std::cout << cfg;
+	read_gz(response, is);
 }
 
 }

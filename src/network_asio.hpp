@@ -72,7 +72,8 @@ class connection
 		); 
 	void handle_read(
 		const boost::system::error_code& ec,
-		std::size_t bytes_transferred
+		std::size_t bytes_transferred,
+		config& response
 		);
 	boost::optional<std::size_t> bytes_to_read_;
 	std::size_t bytes_read_;
