@@ -141,8 +141,6 @@ bool joystick_manager::next_highlighted_hex(map_location& highlighted_hex) {
 
 	const bool greater_threshold2 = radius > threshold2;
 
-	const int radius = sqrt(pow(x_axis, 2.0f) + pow(y_axis, 2.0f));
-
 	if (!greater_threshold) {
 		counter_ = 0;
 		joystick_area_ = 0;
