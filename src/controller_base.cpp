@@ -210,8 +210,10 @@ void controller_base::play_slice(bool is_delay_enabled)
 		get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN, false, true);
 	}
 
-	double joystickx = joystick_manager_.get_scroll_xaxis();
-	double joysticky = joystick_manager_.get_scroll_yaxis();
+	const std::pair<double, double> values = joystick_manager_.get_scroll_axis_pair();
+
+	const double joystickx = values.first;
+	const double joysticky = values.second;
 
 	int mousex, mousey;
 	Uint8 mouse_flags = SDL_GetMouseState(&mousex, &mousey);

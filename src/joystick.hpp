@@ -30,20 +30,34 @@ public:
 
 	bool init();
 
+	/**
+	 * @param highlighted_hex will change if the cursor moved
+	 * @return true if the highlighted hex changed.
+	 */
 	bool next_highlighted_hex(map_location& highlighted_hex);
 
-	double get_scroll_xaxis();
 
-	double get_scroll_yaxis();
+	/**
+	 * @returns a value in range [-1,+1] representing the gauge of the scroll xaxis
+	 */
+	std::pair<double,double> get_scroll_axis_pair();
+
+	/**
+	 * @returns a value in range [-1,+1] representing the gauge of the scroll yaxis
+	 */
+//	double get_scroll_yaxis();
 
 private:
 
+	enum DIRECTION { NORTH, NORTH_EAST, SOUTH_EAST, SOUTH,
+		 SOUTH_WEST, NORTH_WEST, NDIRECTIONS, WEST, EAST };
+
+
+	std::pair<int, int> get_axis_pair(int joystick_xaxis, int xaxis, int joystick_yaxis, int yaxis);
+
 	const map_location get_next_hex(int x_axis, int y_axis, map_location old_hex);
 
-	/**
-	 * TODO fendrin
-	 */
-	bool handle_cursor(int x_offset, int y_offset);
+	const map_location get_direction(const map_location& loc, joystick_manager::DIRECTION direction);
 
 	std::vector<SDL_Joystick*> joysticks_;
 	int joystick_area_;

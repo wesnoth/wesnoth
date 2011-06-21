@@ -122,6 +122,7 @@ namespace preferences {
 	bool use_color_cursors();
 	void _set_color_cursors(bool value);
 
+	int scroll_threshold();
 	int scroll_joystick_xaxis();
 	int scroll_joystick_yaxis();
 	int scroll_xaxis();

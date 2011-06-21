@@ -199,8 +199,6 @@ map_location map_location::get_direction(
 		case SOUTH_WEST: return map_location(x - n, y + (n+is_odd(x))/2 );
 		case NORTH_EAST: return map_location(x + n, y - (n+is_even(x))/2 );
 		case NORTH_WEST: return map_location(x - n, y - (n+is_even(x))/2 );
-		case WEST:       return map_location(x - n, y);
-		case EAST:       return map_location(x + n, y);
 		default:
 			assert(false);
 			return map_location();
