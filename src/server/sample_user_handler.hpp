@@ -42,6 +42,7 @@ class suh : public user_handler {
 		void password_reminder(const std::string& name);
 
 		bool user_exists(const std::string& name);
+		bool user_is_active(const std::string& name);
 
 		bool user_is_moderator(const std::string& name);
 		void set_is_moderator(const std::string& name, const bool& is_moderator);

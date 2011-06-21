@@ -29,6 +29,11 @@ static lg::log_domain log_mp_user_handler("mp_user_handler");
 #define LOG_UH LOG_STREAM(info, log_mp_user_handler)
 #define DBG_UH LOG_STREAM(debug, log_mp_user_handler)
 
+namespace {
+	const int USER_INACTIVE = 1;
+	const int USER_IGNORE = 2;
+}
+
 fuh::fuh(const config& c) {
 	db_name_ = c["db_name"].str();
 	db_host_ = c["db_host"].str();
@@ -120,6 +125,16 @@ bool fuh::user_exists(const std::string& name) {
 	}
 }
 
+bool fuh::user_is_active(const std::string& name) {
+	try {
+		int user_type = atoi(get_detail_for_user(name, "user_type").c_str());
+		return user_type != USER_INACTIVE && user_type != USER_IGNORE;
+	} catch (error& e) {
+		ERR_UH << "Could not retrieve user type for user '" << name << "' :" << e.message << std::endl;
+		return false;
+	}
+}
+
 bool fuh::user_is_moderator(const std::string& name) {
 
 	if(!user_exists(name)) return false;
@@ -164,6 +179,9 @@ std::string fuh::user_info(const std::string& name) {
 	info << "Name: " << name << "\n"
 		 << "Registered: " << reg_string
 		 << "Last login: " << ll_string;
+	if(!user_is_active(name)) {
+		info << "This account is currently inactive.";
+	}
 
 	return info.str();
 }

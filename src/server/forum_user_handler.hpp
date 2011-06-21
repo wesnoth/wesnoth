@@ -64,6 +64,8 @@ class fuh : public user_handler {
 
 		bool user_exists(const std::string& name);
 
+		bool user_is_active(const std::string& name);
+
 		bool user_is_moderator(const std::string& name);
 		void set_is_moderator(const std::string& name, const bool& is_moderator);
 
@@ -86,6 +88,7 @@ class fuh : public user_handler {
 		std::vector<std::string> get_ignores(const std::string& user);*/
 		time_t get_lastlogin(const std::string& user);
 		time_t get_registrationdate(const std::string& user);
+		bool is_inactive(const std::string& user);
 
 		void set_lastlogin(const std::string& user, const time_t& lastlogin);
 

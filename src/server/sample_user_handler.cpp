@@ -61,6 +61,11 @@ bool suh::user_exists(const std::string& name) {
 	return (u != users_.end());
 }
 
+bool suh::user_is_active(const std::string& /*name*/) {
+	// FIXME: add support for inactive users maybe?
+	return true;
+}
+
 std::vector<std::string> suh::users() {
 	std::vector<std::string> users;
 	for(std::map<std::string,user>::const_iterator u = users_.begin(); u != users_.end(); ++u) {

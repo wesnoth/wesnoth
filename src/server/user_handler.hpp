@@ -110,6 +110,9 @@ class user_handler {
 		/** Returns true if a user with the given name exists. */
 		virtual bool user_exists(const std::string& name) =0;
 
+		/** Returns true if the specified user account is usable for logins. */
+		virtual bool user_is_active(const std::string& name) =0;
+
 		/** Returns true if this user is a moderator on this server */
 		virtual bool user_is_moderator(const std::string& name) =0;
 
