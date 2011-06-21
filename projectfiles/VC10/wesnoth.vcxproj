@@ -1085,6 +1085,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\joystick.cpp" />
+    <ClCompile Include="..\..\src\network.cpp" />
     <ClCompile Include="..\..\src\pathfind\astarsearch.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug (fast)|Win32'">$(IntDir)Pathfind\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Pathfind\</ObjectFileName>
