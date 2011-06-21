@@ -3018,6 +3018,7 @@ static int intf_match_side(lua_State *L)
  * Returns a proxy table array for all sides matching the given SSF.
  * - Arg 1: SSF (without a tag)
  * - Arg 2: hidden optional argument, SSF with outer [filter_side] tag, for backwards-compatibility
+ * - Arg 3: hidden optional boolean: whether only inline side= is allowed (as opposed to also [filter_side])
  * - Ret 1: proxy table array
  */
 static int intf_get_sides(lua_State* L)
