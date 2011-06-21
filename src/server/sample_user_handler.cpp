@@ -229,5 +229,8 @@ std::string suh::user_info(const std::string& name) {
 		 << "Real name: " << get_realname(name) << "\n"
 		 << "Registered: " << reg_string
 		 << "Last login: " << ll_string;
+	if(!user_is_active(name)) {
+		info << "This account is currently inactive.";
+	}
 	return info.str();
 }
