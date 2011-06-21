@@ -5,9 +5,10 @@ package org.wesnoth.ui.outline;
 
 import org.eclipse.xtext.ui.editor.outline.actions.DefaultContentOutlineNodeAdapterFactory;
 
+@SuppressWarnings( "deprecation" )
 public class WMLOutlineNodeAdapterFactory extends DefaultContentOutlineNodeAdapterFactory {
 
-	private static final Class<?>[] types = { 
+	private static final Class<?>[] types = {
 		// provide list of classes to adapt to, e.g.:
 		// Entity.class
 		// Service.class
