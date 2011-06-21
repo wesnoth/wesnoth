@@ -807,8 +807,11 @@
             class="org.wesnoth.propertypages.WesnothProjectPage"
             icon="icons/wesnoth-icon_16.png"
             id="org.wesnoth.propertyPages.wesnothProject"
-            name="Wesnoth Project"
-            objectClass="org.eclipse.core.resources.IProject">
+            name="Wesnoth Project">
+         <enabledWhen>
+            <instanceof
+                  value="org.eclipse.core.resources.IProject">
+            </instanceof></enabledWhen>
       </page>
    </extension>
 </plugin>
