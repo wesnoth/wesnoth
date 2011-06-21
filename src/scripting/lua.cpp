@@ -3159,6 +3159,19 @@ static int intf_get_image_size(lua_State *L)
 	return 2;
 }
 
+/**
+ * Lua frontend to the modify_ai functionality
+ * - Arg 1: config.
+ */
+static int intf_modify_ai(lua_State *L)
+{
+	config cfg;
+	luaW_toconfig(L, 1, cfg);
+	int side = cfg["side"];
+	ai::manager::modify_active_ai_for_side(side, cfg);
+	return 0;
+}
+
 struct lua_report_generator : reports::generator
 {
 	lua_State *mState;
@@ -3218,18 +3231,6 @@ static int impl_theme_items_set(lua_State *L)
 	return 0;
 }
 
-/**
- * Lua frontend to the modify_ai functionality
- */
-static int intf_modify_ai(lua_State *L)
-{
-	config cfg;
-	luaW_toconfig(L, -1, cfg);
-	ERR_LUA << cfg.debug() << std::endl;
-	int side = cfg["side"];
-	ai::manager::modify_active_ai_for_side(side, cfg);
-	return 0;
-}
 
 LuaKernel::LuaKernel(const config &cfg)
 	: mState(luaL_newstate()), level_(cfg)
