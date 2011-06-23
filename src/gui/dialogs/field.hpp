@@ -593,7 +593,6 @@ class tfield_text : public tfield<std::string, ttext_, const std::string& >
 {
 public:
 	tfield_text(const std::string& id,
-			const tunused_parameter&,
 			const bool mandatory,
 			std::string (*callback_load_value) (),
 			void (*callback_save_value) (const std::string& value)) :
@@ -603,7 +602,6 @@ public:
 		}
 
 	tfield_text(const std::string& id
-			, const tunused_parameter&
 			, const bool mandatory
 			, std::string& linked_variable)
 		: tfield<std::string, ttext_, const std::string&>(
