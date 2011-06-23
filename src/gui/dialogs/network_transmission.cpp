@@ -38,7 +38,7 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 		window_.get().set_retval(twindow::OK);
 	} else {
 		if(connection_.bytes_to_read()) {
-			size_t total = connection_.bytes_to_read().get();
+			size_t total = connection_.bytes_to_read();
 			size_t completed = connection_.bytes_read();
 			find_widget<tprogress_bar>(&(window_.get()), "progress", false)
 				.set_percentage((completed*100)/total);

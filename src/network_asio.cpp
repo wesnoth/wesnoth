@@ -31,7 +31,7 @@ connection::connection(const std::string& host, const std::string& service)
 	, write_buf_()
 	, read_buf_()
 	, handshake_response_()
-	, bytes_to_read_()
+	, bytes_to_read_(0)
 	, bytes_read_(0)
 {
 	resolver_.async_resolve(
@@ -142,9 +142,9 @@ std::size_t connection::is_read_complete(
 			bytes_to_read_ = ntohl(data_size.num) + 4;
 		}
 #if BOOST_VERSION >= 103700
-		return bytes_to_read_.get() - bytes_transferred;
+		return bytes_to_read_ - bytes_transferred;
 #else
-		return bytes_to_read_.get() == bytes_transferred;
+		return bytes_to_read_ == bytes_transferred;
 #endif
 	}
 }
@@ -156,7 +156,7 @@ void connection::handle_read(
 	)
 {
 	std::cout << "Read " << bytes_transferred << " bytes.\n";
-	bytes_to_read_.reset();
+	bytes_to_read_ = 0;
 	done_ = true;
 	if(ec && ec != boost::asio::error::eof)
 		throw error(ec);
