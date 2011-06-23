@@ -50,7 +50,7 @@ namespace gui2 {
 REGISTER_DIALOG(data_manage)
 
 tdata_manage::tdata_manage(const config& cache_config)
-	: txtFilter_(register_text("txtFilter", tunused_parameter(), true))
+	: txtFilter_(register_text("txtFilter", true))
 	, filename_()
 	, games_()
 	, cache_config_(cache_config)

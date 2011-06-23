@@ -146,7 +146,6 @@ tfield_integer* tdialog::register_integer(const std::string& id
 
 tfield_text* tdialog::register_text(
 		  const std::string& id
-		, const tunused_parameter&
 		, const bool mandatory
 		, std::string (*callback_load_value) ()
 		, void (*callback_save_value) (const std::string& value))
@@ -204,7 +203,6 @@ tfield_text* tdialog::register_text2(const std::string& id
 	}
 
 	return tdialog::register_text(id
-			, tunused_parameter()
 			, mandatory
 			, callback_load_value
 			, callback_save_value);
