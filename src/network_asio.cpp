@@ -31,7 +31,7 @@ connection::connection(const std::string& host, const std::string& service)
 	, write_buf_()
 	, read_buf_()
 	, handshake_response_()
-	, bytes_to_read_(0)
+	, bytes_to_read_()
 	, bytes_read_(0)
 {
 	resolver_.async_resolve(
