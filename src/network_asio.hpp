@@ -47,7 +47,7 @@ class connection
 		const boost::system::error_code& ec,
 		resolver::iterator iterator
 		);
-	
+
 	void connect(resolver::iterator iterator);
 	void handle_connect(
 		const boost::system::error_code& ec,
@@ -69,7 +69,7 @@ class connection
 	std::size_t is_read_complete(
 		const boost::system::error_code& error,
 		std::size_t bytes_transferred
-		); 
+		);
 	void handle_read(
 		const boost::system::error_code& ec,
 		std::size_t bytes_transferred,
