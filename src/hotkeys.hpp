@@ -59,8 +59,8 @@ enum HOTKEY_COMMAND {
 	HOTKEY_REPLAY_SHOW_EACH, HOTKEY_REPLAY_SHOW_TEAM1,
 	HOTKEY_REPLAY_SKIP_ANIMATION,
 	HOTKEY_ANIMATE_MAP,
-	HOTKEY_LEFT_MOUSE_CLICK,
-	HOTKEY_RIGHT_MOUSE_CLICK,
+	HOTKEY_LEFT_MOUSE_CLICK, HOTKEY_RIGHT_MOUSE_CLICK,
+	HOTKEY_CANCEL, HOTKEY_OKAY,
 
 	// Whiteboard commands
 	HOTKEY_WB_TOGGLE,
@@ -156,6 +156,7 @@ public:
 	void clear_hotkey();
 
 	void set_button(int button, int joystick);
+	void set_hat(int joystick, int hat, int value);
 
 	void set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
 
@@ -164,7 +165,8 @@ public:
 		BY_KEYCODE,
 		BY_CHARACTER,
 		CLEARED,
-		BUTTON
+		BUTTON,
+		HAT
 	};
 
 	enum type get_type() const { return type_; }
@@ -179,6 +181,8 @@ public:
 	int get_character() const { return character_; }
 	int get_button() const { return button_; }
 	int get_joystick() const { return joystick_; }
+	int get_hat() const { return hat_; }
+	int get_value() const { return value_; }
 	bool get_alt() const { return alt_; }
 	bool get_cmd() const { return cmd_; }
 	bool get_ctrl() const { return ctrl_; }
@@ -216,6 +220,8 @@ private:
 	// In case type=BUTTON
 	int button_;
 	int joystick_;
+	int hat_;
+	int value_;
 
 	bool hidden_;
 
@@ -250,10 +256,13 @@ void save_hotkeys(config& cfg);
 hotkey_item& get_hotkey(HOTKEY_COMMAND id);
 hotkey_item& get_hotkey(const std::string& command);
 
-hotkey_item& get_hotkey(int button_num, int joy_num);
+hotkey_item& get_hotkey(int joy_num, int button_num);
+hotkey_item& get_hotkey(int joy_num, int hat_num, int hat_value);
 hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 	bool alt, bool cmd);
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event);
+
+HOTKEY_COMMAND get_hotkey_command(const std::string& command);
 
 hotkey_item& get_visible_hotkey(int index);
 
@@ -354,6 +363,7 @@ public:
 //is still meaningful to call with executor=NULL
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
 void button_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor);
+void hat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* executor);
 
 void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor, int index=-1);
 

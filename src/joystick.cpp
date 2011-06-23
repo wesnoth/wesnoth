@@ -58,6 +58,7 @@ bool joystick_manager::init() {
 		    printf("Number of Axes: %d\n", SDL_JoystickNumAxes(joysticks_[i]));
 		    printf("Number of Buttons: %d\n", SDL_JoystickNumButtons(joysticks_[i]));
 		    printf("Number of Balls: %d\n", SDL_JoystickNumBalls(joysticks_[i]));
+		    printf("Number of Hats: %d\n", SDL_JoystickNumHats(joysticks_[i]));
 		} else {
 			printf("Couldn't open Joystick 0\n");
 		}
@@ -143,7 +144,6 @@ bool joystick_manager::next_highlighted_hex(map_location& highlighted_hex) {
 	const int max = 100000;
 
 	const bool greater_threshold = radius > threshold;
-
 	const bool greater_threshold2 = radius > threshold2;
 
 	if (!greater_threshold) {

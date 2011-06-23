@@ -58,7 +58,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		// in which case the key press events should go only to it.
 		if(have_keyboard_focus()) {
 			process_keydown_event(event);
-			hotkey::key_event(get_display(),event.key,this);
+			hotkey::key_event(get_display(), event.key,this);
 		} else {
 			process_focus_keydown_event(event);
 			break;
@@ -70,6 +70,10 @@ void controller_base::handle_event(const SDL_Event& event)
 	case SDL_JOYBUTTONDOWN:
 		process_keydown_event(event);
 		hotkey::button_event(get_display(), event.jbutton,this);
+		break;
+	case SDL_JOYHATMOTION:
+		process_keydown_event(event);
+		hotkey::hat_event(get_display(), event.jhat, this);
 		break;
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
@@ -207,7 +211,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 	if (joystick_manager_.next_highlighted_hex(highlighted_hex)
 			&& get_display().get_map().on_board(highlighted_hex)) {
 		get_mouse_handler_base().mouse_motion(0,0, true, true, highlighted_hex);
-		get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN, false, true);
+		get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN_WARP, false, true);
 	}
 
 	const std::pair<double, double> values = joystick_manager_.get_scroll_axis_pair();

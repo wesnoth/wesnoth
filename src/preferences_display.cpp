@@ -353,11 +353,11 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			disp.update_display();
 			SDL_Event event;
 			event.type = 0;
-			int character=0,keycode=0; // Just to avoid warning
-			int mod = 0,button=0,joystick = 0;
+			int character = 0, keycode = 0, mod = 0; // Just to avoid warning
+			int joystick = 0, button = 0, hat = 0, value = 0;
 			const int any_mod = KMOD_CTRL | KMOD_ALT | KMOD_LMETA;
 
-			while (event.type!=SDL_KEYDOWN && event.type!=SDL_JOYBUTTONDOWN) SDL_PollEvent(&event);
+			while (event.type!=SDL_KEYDOWN && event.type!=SDL_JOYBUTTONDOWN && event.type!= SDL_JOYHATMOTION) SDL_PollEvent(&event);
 			do {
 				if (event.type==SDL_KEYDOWN)
 				{
@@ -366,13 +366,18 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 					mod=event.key.keysym.mod;
 				};
 				if (event.type==SDL_JOYBUTTONDOWN) {
-					button = event.jbutton.button;
 					joystick = event.jbutton.which;
+					button = event.jbutton.button;
+				}
+				if (event.type==SDL_JOYHATMOTION) {
+					joystick = event.jhat.which;
+					hat = event.jhat.hat;
+					value = event.jhat.value;
 				}
 				SDL_PollEvent(&event);
 				disp.flip();
 				disp.delay(10);
-			} while (event.type!=SDL_KEYUP && event.type!=SDL_JOYBUTTONUP);
+			} while (event.type!=SDL_KEYUP && event.type!=SDL_JOYBUTTONUP && event.type!=SDL_JOYHATMOTION);
 			restorer.restore();
 			disp.update_display();
 			if (keycode == SDLK_ESCAPE && (mod & any_mod) == 0) {
@@ -388,6 +393,18 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 					msg << "   " << oldhk.get_description() << " : " << oldhk.get_name();
 					gui2::show_transient_message(disp.video(),_("This Hotkey is already in use."),msg.str());
 				} else {
+					if (event.type == SDL_JOYHATMOTION) {
+						const hotkey::hotkey_item& oldhkhat = hotkey::get_hotkey(joystick, hat, value);
+
+						if(oldhkhat.get_id() != newhk.get_id() && !oldhkhat.null()) {
+							std::stringstream msg;
+							msg << "   " << oldhkhat.get_description() << " : " << oldhkhat.get_name();
+							gui2::show_transient_message(disp.video(),_("This Hotkey is already in use."),msg.str());
+						} else {
+							newhk.set_hat(joystick, hat, value);
+							menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
+						}
+					} else
 					if (event.type == SDL_JOYBUTTONUP) {
 						const hotkey::hotkey_item& oldhkbtn = hotkey::get_hotkey(button, joystick);
 
