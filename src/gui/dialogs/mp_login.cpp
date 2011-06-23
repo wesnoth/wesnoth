@@ -18,7 +18,6 @@
 #include "gui/dialogs/mp_login.hpp"
 
 #include "game_preferences.hpp"
-#include "gui/dialogs/field.hpp" // for tunused_parameter
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/password_box.hpp"
 #include "gui/widgets/settings.hpp"

@@ -23,8 +23,6 @@
 
 namespace gui2 {
 
-struct tunused_parameter;
-
 class twidget;
 class twindow;
 

@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/editor_new_map.hpp"
 
-#include "gui/dialogs/field.hpp" // for tunused_parameter
 #include "gui/widgets/settings.hpp"
 
 namespace gui2 {
