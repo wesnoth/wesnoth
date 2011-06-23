@@ -241,7 +241,6 @@ protected:
 	 * See @ref register_bool for more info.
 	 */
 	tfield_integer* register_integer(const std::string& id
-			, const tunused_parameter&
 			, const bool mandatory
 			, int (*callback_load_value) () = NULL
 			, void (*callback_save_value) (const int value) = NULL);

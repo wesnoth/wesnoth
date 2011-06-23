@@ -61,17 +61,14 @@ tmp_create_game::tmp_create_game(const config& cfg) :
 			preferences::set_random_start_time)),
 
 	turns_(register_integer("turn_count",
-		tunused_parameter(),
 		true,
 		preferences::turns ,
 		preferences::set_turns)),
 	gold_(register_integer("village_gold",
-		tunused_parameter(),
 		true,
 		preferences::village_gold ,
 		preferences::set_village_gold)),
 	experience_(register_integer("experience_modifier",
-		tunused_parameter(),
 		true,
 		preferences::xp_modifier ,
 		preferences::set_xp_modifier))

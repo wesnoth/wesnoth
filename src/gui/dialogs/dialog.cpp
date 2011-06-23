@@ -115,7 +115,6 @@ tfield_bool* tdialog::register_bool2(const std::string& id
 
 tfield_integer* tdialog::register_integer(
 		  const std::string& id
-		, const tunused_parameter&
 		, const bool mandatory
 		, int (*callback_load_value) ()
 		, void (*callback_save_value) (const int value))
