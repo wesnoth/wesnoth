@@ -549,7 +549,6 @@ class tfield_bool : public tfield<bool, tselectable_>
 {
 public:
 	tfield_bool(const std::string& id,
-			const tunused_parameter&,
 			const bool mandatory,
 			bool (*callback_load_value) (),
 			void (*callback_save_value) (const bool value),
@@ -561,7 +560,6 @@ public:
 		}
 
 	tfield_bool(const std::string& id
-			, const tunused_parameter&
 			, const bool mandatory
 			, bool& linked_variable
 			, void (*callback_change) (twidget* widget))
