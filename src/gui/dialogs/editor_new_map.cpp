@@ -44,8 +44,8 @@ REGISTER_DIALOG(editor_new_map)
 
 teditor_new_map::teditor_new_map(int& width, int& height)
 {
-	register_integer("width", tunused_parameter(), true, width);
-	register_integer("height", tunused_parameter(), true, height);
+	register_integer("width", true, width);
+	register_integer("height", true, height);
 }
 
 } // namespace gui2

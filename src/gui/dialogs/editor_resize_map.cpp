@@ -93,8 +93,8 @@ teditor_resize_map::teditor_resize_map(
 			, int& height
 			, EXPAND_DIRECTION& expand_direction
 			, bool& copy_edge_terrain)
-	: width_(register_integer("width", tunused_parameter(), true, width))
-	, height_(register_integer("height", tunused_parameter(), true, height))
+	: width_(register_integer("width", true, width))
+	, height_(register_integer("height", true, height))
 	, old_width_(width)
 	, old_height_(height)
 	, expand_direction_(expand_direction)

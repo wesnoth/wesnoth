@@ -131,7 +131,6 @@ tfield_integer* tdialog::register_integer(
 }
 
 tfield_integer* tdialog::register_integer(const std::string& id
-		, const tunused_parameter&
 		, const bool mandatory
 		, int& linked_variable)
 {
