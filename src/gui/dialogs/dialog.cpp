@@ -162,7 +162,6 @@ tfield_text* tdialog::register_text(
 }
 
 tfield_text* tdialog::register_text(const std::string& id
-		, const tunused_parameter&
 		, const bool mandatory
 		, std::string& linked_variable)
 {
@@ -187,7 +186,7 @@ tfield_text* tdialog::register_text2(const std::string& id
 		focus_ = id;
 	}
 
-	return tdialog::register_text(id, tunused_parameter(), mandatory, linked_variable);
+	return tdialog::register_text(id, mandatory, linked_variable);
 }
 
 tfield_text* tdialog::register_text2(const std::string& id

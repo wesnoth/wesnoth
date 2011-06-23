@@ -267,11 +267,8 @@ protected:
 	 * Creates a new text field.
 	 *
 	 * See @ref register_bool for more info.
-	 *
-	 * @deprecated Use @ref register_text2 instead.
 	 */
 	tfield_text* register_text(const std::string& id
-			, const tunused_parameter&
 			, const bool mandatory
 			, std::string& linked_variable);
 
