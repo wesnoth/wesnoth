@@ -40,7 +40,11 @@ class tnetwork_transmission : public tdialog
 		network_asio::connection& connection_;
 		virtual void process(events::pump_info&);
 		public:
-		pump_monitor(network_asio::connection& connection) : connection_(connection) {}
+		pump_monitor(network_asio::connection& connection)
+			: connection_(connection)
+			, window_()
+		{
+		}
 
 		boost::optional<twindow&> window_;
 	} pump_monitor;
