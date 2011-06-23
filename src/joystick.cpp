@@ -18,7 +18,12 @@
 
 #define PI 3.14159265
 
-joystick_manager::joystick_manager() : joysticks_() {}
+joystick_manager::joystick_manager()
+	: joysticks_()
+	, joystick_area_(0)
+	, counter_(0)
+{
+}
 
 joystick_manager::~joystick_manager() {
 	  // Close if opened
