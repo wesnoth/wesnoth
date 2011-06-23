@@ -40,8 +40,13 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 		if(connection_.bytes_to_read()) {
 			size_t total = connection_.bytes_to_read().get();
 			size_t completed = connection_.bytes_read();
-		find_widget<tprogress_bar>(&(window_.get()), "progress", false)
-			.set_percentage((completed*100)/total);
+			find_widget<tprogress_bar>(&(window_.get()), "progress", false)
+				.set_percentage((completed*100)/total);
+			std::ostringstream os;
+			os << (completed/1024) << "KiB/" << (total/1024) << "KiB";
+			std::cout << os.str() << std::endl;
+			find_widget<tlabel>(&(window_.get()), "numeric_progress", false)
+				.set_label(os.str());
 		}
 	}
 }
