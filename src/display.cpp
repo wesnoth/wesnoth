@@ -1595,7 +1595,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 	int xmove = xpos - xpos_;
 	int ymove = ypos - ypos_;
 
-	if(scroll_type == WARP || turbo_speed() > 2.0 || preferences::scroll_speed() > 99) {
+	if(scroll_type == WARP || scroll_type == ONSCREEN_WARP || turbo_speed() > 2.0 || preferences::scroll_speed() > 99) {
 		scroll(xmove,ymove);
 		draw();
 		return;
@@ -1730,7 +1730,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	//if everything is fogged or the locs list is empty
 	if(!valid) return;
 
-	if (scroll_type == ONSCREEN) {
+	if (scroll_type == ONSCREEN || ONSCREEN_WARP) {
 		SDL_Rect r = map_area();
 		int spacing = round_double(add_spacing*hex_size());
 		r.x += spacing;
@@ -1753,7 +1753,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	int target_x = locs_bbox.x + locs_bbox.w/2;
 	int target_y = locs_bbox.y + locs_bbox.h/2;
 
-	if (scroll_type == ONSCREEN) {
+	if (scroll_type == ONSCREEN || ONSCREEN_WARP) {
 		// when doing an ONSCREEN scroll we do not center the target unless needed
 		SDL_Rect r = map_area();
 		int map_center_x = r.x + r.w/2;

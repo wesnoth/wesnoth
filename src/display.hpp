@@ -389,7 +389,7 @@ public:
 	/** Sets the zoom amount to the default. */
 	void set_default_zoom();
 
-	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN };
+	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN, ONSCREEN_WARP };
 
 	/**
 	 * Scroll such that location loc is on-screen.
