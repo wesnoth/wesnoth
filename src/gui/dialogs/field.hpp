@@ -282,7 +282,6 @@ public:
 	 *                            is closed with OK.
 	 */
 	tfield(const std::string& id,
-			const tunused_parameter&,
 			const bool mandatory,
 			T (*callback_load_value) (),
 			void (*callback_save_value) (CT value)) :
@@ -310,7 +309,6 @@ public:
 	 *                              * else, its value is undefined.
 	 */
 	tfield(const std::string& id
-			, const tunused_parameter&
 			, const bool mandatory
 			, T& linked_variable)
 		: tfield_(id, tunused_parameter(), mandatory)
@@ -340,7 +338,6 @@ public:
 	 * @param value               The value of the widget.
 	 */
 	tfield(const std::string& id
-			, const tunused_parameter&
 			, const bool mandatory
 			, const T& value)
 		: tfield_(id, tunused_parameter(), mandatory)
@@ -554,7 +551,7 @@ public:
 			void (*callback_save_value) (const bool value),
 			void (*callback_change) (twidget* widget)) :
 		tfield<bool, gui2::tselectable_>
-			(id, tunused_parameter(), mandatory, callback_load_value, callback_save_value),
+			(id, mandatory, callback_load_value, callback_save_value),
 		callback_change_(callback_change)
 		{
 		}
@@ -563,7 +560,7 @@ public:
 			, const bool mandatory
 			, bool& linked_variable
 			, void (*callback_change) (twidget* widget))
-		: tfield<bool, gui2::tselectable_>(id, tunused_parameter(), mandatory, linked_variable)
+		: tfield<bool, gui2::tselectable_>(id, mandatory, linked_variable)
 		, callback_change_(callback_change)
 	{
 	}
@@ -595,7 +592,7 @@ public:
 			std::string (*callback_load_value) (),
 			void (*callback_save_value) (const std::string& value)) :
 		tfield<std::string, ttext_, const std::string& >
-			(id, tunused_parameter(), mandatory, callback_load_value, callback_save_value)
+			(id, mandatory, callback_load_value, callback_save_value)
 		{
 		}
 
@@ -604,7 +601,6 @@ public:
 			, std::string& linked_variable)
 		: tfield<std::string, ttext_, const std::string&>(
 				id
-				, tunused_parameter()
 				, mandatory
 				, linked_variable)
 	{
@@ -632,7 +628,6 @@ public:
 			, const bool use_markup)
 		: tfield<std::string, tcontrol, const std::string&>(
 				id
-				, tunused_parameter()
 				, mandatory
 				, text)
 		, use_markup_(use_markup)
