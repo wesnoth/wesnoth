@@ -23,8 +23,16 @@
 
 namespace network_asio {
 
-connection::connection(const std::string& host, const std::string& service) :
-	resolver_(io_service_), socket_(io_service_), done_(false), bytes_read_(0)
+connection::connection(const std::string& host, const std::string& service)
+	: io_service_()
+	, resolver_(io_service_)
+	, socket_(io_service_)
+	, done_(false)
+	, write_buf_()
+	, read_buf_()
+	, handshake_response_()
+	, bytes_to_read_(0)
+	, bytes_read_(0)
 {
 	resolver_.async_resolve(
 		boost::asio::ip::tcp::resolver::query(host, service),
