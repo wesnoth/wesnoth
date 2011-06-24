@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.swt.SWT;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.preferences.Preferences;
@@ -100,5 +101,61 @@ public class WesnothInstallsUtils
             return ""; //$NON-NLS-1$
 
         return ProjectUtils.getCacheForProject( resource.getProject( ) ).getInstallName( );
+    }
+
+    /**
+     * Sets the install name for the specified resource
+     * @param resource The resource to set the install to
+     * @param newInstallName The new install name
+     */
+    public static void setInstallNameForResource( IResource resource, String newInstallName )
+    {
+        if ( resource == null )
+            return;
+
+        ProjectUtils.getCacheForProject( resource.getProject( ) ).setInstallName( newInstallName );
+    }
+
+    /**
+     * Checks whether the Wesnoth Installation is properly setup
+     * for the specified resource. If it is not, it will guide the user
+     * through selecting a proper install (if any).
+     *
+     * @param resource True if the installation is valid, false
+     * otherwise
+     * @return Boolean flag whether the setup was successfull or failed.
+     */
+    public static boolean setupInstallForResource( IResource resource )
+    {
+        String installName = getInstallNameForResource( resource );
+        // check if Paths are set for the install.
+        if ( ! WorkspaceUtils.checkPathsAreSet( installName, false ) ) {
+
+            // no defaut - nothing to do.
+            if ( Preferences.getDefaultInstallName( ).isEmpty( ) )
+                return false;
+
+            if ( GUIUtils.showMessageBox(
+                    "The existing set install for the project " +
+                    resource.getProject( ).getName( ) +
+                    " doesn't exist anymore or isn't fully configured. " +
+                    "Do you want to try fallback to the default?",
+                    SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO )
+                return false; // no hope :(
+
+            // fallback to default
+            installName = Preferences.getDefaultInstallName( );
+
+            if ( WorkspaceUtils.checkPathsAreSet( installName, true ) ) {
+                // replace current install with the default
+                setInstallNameForResource( resource, installName );
+                return true;
+            }
+
+            // sorry, no happy ending
+            return false;
+        }
+
+        return true;
     }
 }
