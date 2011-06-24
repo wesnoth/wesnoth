@@ -284,45 +284,6 @@ public class ResourceUtils
 		return true;
 	}
 
-	//TODO: create a simple java wmlparsers in order to get the right values
-	public static String getConfigKeyValue(String fileName, String propertyName)
-	{
-		if (fileName == null || propertyName.isEmpty())
-			return null;
-
-		StringBuilder value = new StringBuilder();
-		File file = new File(fileName);
-		if (!file.exists())
-			return null;
-
-		String fileContents = ResourceUtils.getFileContents(file);
-		if (fileContents == null)
-			return null;
-
-		int index = fileContents.indexOf(propertyName + "="); //$NON-NLS-1$
-		if (index == -1)
-		{
-			Logger.getInstance().log(String.format(Messages.ResourceUtils_12,
-					propertyName, fileName));
-			return null;
-		}
-		index += (propertyName.length() + 1); // jump over the property name characters
-
-		// skipp spaces between the property name and value (if any)
-		while(index < fileContents.length() && fileContents.charAt(index) == ' ')
-			++index;
-
-		while(index < fileContents.length() && fileContents.charAt(index) != '#' &&
-				fileContents.charAt(index) != ' ' &&
-				fileContents.charAt(index) != '\r' && fileContents.charAt(index) != '\n')
-		{
-			value.append(fileContents.charAt(index));
-			++index;
-		}
-
-		return value.toString();
-	}
-
 	/**
 	 * Returns "_main.cfg" file
 	 * from the specified resource or null if it isn't any
