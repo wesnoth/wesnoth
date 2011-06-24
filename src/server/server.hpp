@@ -26,6 +26,12 @@ private:
 		send_error(sock, msg.c_str(), error_code);
 	}
 
+	void send_warning(network::connection sock, const char* msg, const char* warning_code ="") const;
+	void send_warning(network::connection sock, const std::string &msg, const char* warning_code = "") const
+	{
+		send_warning(sock, msg.c_str(), warning_code);
+	}
+
 	// The same as send_error(), we just add an extra child to the response
 	// telling the client the chosen username requires a password.
 	void send_password_request(network::connection sock, const std::string& msg,

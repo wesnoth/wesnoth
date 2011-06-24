@@ -226,6 +226,20 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					throw network::error(_("Connection timed out"));
 				}
 
+				config *warning = &data.child("warning");
+
+				if(*warning) {
+					std::string warning_msg;
+					warning_msg = (*warning)["message"].str();
+
+					warning_msg += "\n\n";
+					warning_msg += _("Do you want to continue?");
+
+					if(gui2::show_message(disp.video(), _("Warning"), warning_msg, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {
+						return ABORT_SERVER;
+					}
+				}
+
 				config *error = &data.child("error");
 
 				// ... and get us out of here if the server did not complain

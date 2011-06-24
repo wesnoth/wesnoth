@@ -424,6 +424,17 @@ void server::send_error(network::connection sock, const char* msg, const char* e
 	send_doc(doc, sock, "error");
 }
 
+void server::send_warning(network::connection sock, const char* msg, const char* warning_code) const
+{
+	simple_wml::document doc;
+	doc.root().add_child("warning").set_attr("message", msg);
+	if(*warning_code != '\0') {
+		doc.child("warning")->set_attr("warning_code", warning_code);
+	}
+
+	send_doc(doc, sock, "warning");
+}
+
 void server::send_password_request(network::connection sock, const std::string& msg,
 	const std::string& user, const char* error_code, bool force_confirmation)
 {
