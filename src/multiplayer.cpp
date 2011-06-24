@@ -232,7 +232,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					std::string warning_msg;
 
 					utils::string_map i18n_symbols;
-					i18n_symbols["nick"] = "lala";
+					i18n_symbols["nick"] = login;
 
 					if((*warning)["warning_code"] == MP_NAME_INACTIVE_WARNING) {
 						warning_msg = vgettext("The nick '$nick' is inactive. "
