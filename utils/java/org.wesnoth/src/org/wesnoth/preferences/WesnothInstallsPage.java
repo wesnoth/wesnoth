@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.preference.DirectoryFieldEditor;
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FileFieldEditor;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -305,6 +306,14 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         if ( install != null ){
             installs_.remove( install.Name );
             installsTableViewer_.refresh();
+
+            // unset all settings.
+            IPreferenceStore prefs =  Preferences.getPreferences( );
+            String installPrefix = Preferences.getInstallPrefix( install.Name );
+            prefs.setToDefault( installPrefix + Constants.P_WESNOTH_EXEC_PATH );
+            prefs.setToDefault( installPrefix + Constants.P_WESNOTH_USER_DIR );
+            prefs.setToDefault( installPrefix + Constants.P_WESNOTH_WMLTOOLS_DIR );
+            prefs.setToDefault( installPrefix + Constants.P_WESNOTH_WORKING_DIR );
 
             if ( install.Name.equals( Preferences.getDefaultInstallName( ) ) ) {
                 Preferences.setDefaultInstallName( "" ); //$NON-NLS-1$
