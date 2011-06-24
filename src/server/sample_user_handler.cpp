@@ -230,7 +230,7 @@ std::string suh::user_info(const std::string& name) {
 		 << "Registered: " << reg_string
 		 << "Last login: " << ll_string;
 	if(!user_is_active(name)) {
-		info << "This account is currently inactive.";
+		info << "This account is currently inactive.\n";
 	}
 	return info.str();
 }
