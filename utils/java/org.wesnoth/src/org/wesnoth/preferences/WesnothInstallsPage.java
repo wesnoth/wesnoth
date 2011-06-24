@@ -427,32 +427,39 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         Text textControl = wesnothWorkingDirField_.getTextControl(
                 getFieldEditorParent());
 
-        String wesnothExec = wesnothExecutableField_.getStringValue();
-        if (wesnothWorkingDirField_.getStringValue().isEmpty() &&
-            !wesnothExec.isEmpty() &&
-            new File(wesnothExec.substring(0,
-                    wesnothExec.lastIndexOf(new File(wesnothExec).getName()))).exists())
+        String workingDirValue = wesnothWorkingDirField_.getStringValue();
+        String wesnothExecValue = wesnothExecutableField_.getStringValue();
+
+        if ( workingDirValue.isEmpty() &&
+            ! wesnothExecValue.isEmpty() &&
+            new File(wesnothExecValue.substring(0,
+                    wesnothExecValue.lastIndexOf(new File(wesnothExecValue).getName()))).exists())
         {
-            textControl.setText(wesnothExec.substring(0,
-                    wesnothExec.lastIndexOf(new File(wesnothExec).getName()))
+            textControl.setText(wesnothExecValue.substring(0,
+                    wesnothExecValue.lastIndexOf(new File(wesnothExecValue).getName()))
             );
         }
 
         // guess the wmltools path
-        if (wmlToolsField_.getStringValue().isEmpty() &&
-            !wesnothWorkingDirField_.getStringValue().isEmpty())
+        String wmlToolsValue = wmlToolsField_.getStringValue();
+
+        if ( wmlToolsValue.isEmpty() &&
+            ! workingDirValue.isEmpty() )
         {
-            String path = wesnothWorkingDirField_.getStringValue() + "/data/tools"; //$NON-NLS-1$
-            if (testWMLToolsPath(path))
-                wmlToolsField_.setStringValue(path);
+            String path = workingDirValue + "/data/tools"; //$NON-NLS-1$
+            if ( testWMLToolsPath( path ) ) {
+                wmlToolsField_.setStringValue( path );
+                wmlToolsValue = path;
+            }
         }
 
+        String userDirValue = wesnothUserDirField_.getStringValue();
         // guess the userdata path
-        if (wesnothUserDirField_.getStringValue().isEmpty() &&
-            !wesnothWorkingDirField_.getStringValue().isEmpty())
+        if ( userDirValue.isEmpty() &&
+            ! workingDirValue.isEmpty() )
         {
-            String path = wesnothWorkingDirField_.getStringValue() + "/userdata"; //$NON-NLS-1$
-            testPaths(new String[] { path },wesnothUserDirField_);
+            String path = workingDirValue + "/userdata"; //$NON-NLS-1$
+            testPaths( new String[] { path }, wesnothUserDirField_ );
         }
 
         checkState();
@@ -500,6 +507,22 @@ public class WesnothInstallsPage extends AbstractPreferencePage
     }
 
     /**
+     * Checks whether the fields are empty (contain no text)
+     * and the combobox/name don't have any values also
+     * (the user doesn't create a new install)
+     * @return
+     */
+    private boolean isFieldsEmpty()
+    {
+        return  wmlToolsField_.getStringValue( ).isEmpty( ) &&
+                wesnothExecutableField_.getStringValue( ).isEmpty( ) &&
+                wesnothUserDirField_.getStringValue( ).isEmpty( ) &&
+                wesnothWorkingDirField_.getStringValue( ).isEmpty( ) &&
+                cmbVersion_.getText( ).isEmpty( ) &&
+                txtInstallName_.getText( ).isEmpty( );
+    }
+
+    /**
      * Saves the current install
      * @return true if the save was successfully, false otherwise
      */
@@ -509,9 +532,17 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
         // if it's editable, it means we are creating a new install
         if ( txtInstallName_.getEditable() ) {
+            boolean isFieldsEmpty = isFieldsEmpty( );
+
             if ( installName.isEmpty() == true ) {
-                GUIUtils.showErrorMessageBox( "Please enter a name for the install" );
-                return false;
+                // if we haven't completed anything,
+                // we can skip the saving without alerting the user.
+                if ( !isFieldsEmpty )
+                    GUIUtils.showErrorMessageBox( "Please enter a name for the install" );
+
+                // we consider successfully save if the fields are all
+                // empty
+                return isFieldsEmpty;
             }
 
             if ( cmbVersion_.getText().isEmpty() == true ) {

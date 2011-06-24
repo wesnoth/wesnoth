@@ -18,7 +18,6 @@ import org.eclipse.ui.console.IConsoleManager;
 import org.eclipse.ui.console.MessageConsole;
 import org.wesnoth.Logger;
 
-
 public class GUIUtils
 {
 	/**
@@ -87,6 +86,7 @@ public class GUIUtils
 	{
 		if (window == null || window.getShell() == null || message == null)
 			return -1;
+
 		MyRunnable<Integer> runnable = new MyRunnable<Integer>() {
 			@Override
 			public void run()
