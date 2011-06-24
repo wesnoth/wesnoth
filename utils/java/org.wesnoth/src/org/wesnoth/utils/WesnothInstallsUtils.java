@@ -68,10 +68,6 @@ public class WesnothInstallsUtils
         // pack back the installs
         StringBuilder installs = new StringBuilder();
         for ( WesnothInstall install : installsList ) {
-            // don't save the default install
-            if ( install.Name.equals( "Default" ) )
-                continue;
-
             if ( installs.length() > 0 )
                 installs.append( ";" ); //$NON-NLS-1$
 

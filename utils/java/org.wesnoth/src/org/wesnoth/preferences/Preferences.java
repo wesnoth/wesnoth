@@ -94,12 +94,11 @@ public class Preferences extends AbstractPreferenceInitializer
 	 * Gets the install preference prefix for the specified install name.
 	 *
 	 * @param installName The name of the install. If the parameter is null,
-	 * the default install name is returned
+	 * the default install prefix is returned
 	 */
 	public static String getInstallPrefix(String installName)
 	{
-        if ( StringUtils.isNullOrEmpty( installName ) ||
-             installName.equalsIgnoreCase( "default" ) )
+        if ( StringUtils.isNullOrEmpty( installName ) )
             installName = getDefaultInstallName( );
 
         return "inst_" + installName + "_"; //$NON-NLS-1$  //$NON-NLS-2$
@@ -113,6 +112,16 @@ public class Preferences extends AbstractPreferenceInitializer
 	{
 	    return getString( Constants.P_INST_DEFAULT_INSTALL );
 	}
+
+	/**
+     * Sets the default install name
+     * @param newInstallName The new install name
+     */
+    public static void setDefaultInstallName( String newInstallName )
+    {
+        getPreferences( ).setValue( Constants.P_INST_DEFAULT_INSTALL, newInstallName );
+    }
+
 
 	/**
 	 * Returns a new Paths object based on the specified install name

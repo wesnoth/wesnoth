@@ -89,8 +89,6 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         wmlToolsList_.add("wesnoth_addon_manager"); //$NON-NLS-1$
 
         installs_ = new HashMap<String, WesnothInstall>();
-        // add the default install first
-        installs_.put( "Default", new WesnothInstall( "Default", "" ) ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
         List<WesnothInstall> installs = WesnothInstallsUtils.getInstalls( );
         for ( WesnothInstall wesnothInstall : installs )
@@ -112,7 +110,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             }
         };
 
-        wesnothExecutableField_ = new FileFieldEditor(Constants.P_WESNOTH_EXEC_PATH,
+        wesnothExecutableField_ = new FileFieldEditor( "",
                 Messages.WesnothPreferencesPage_5, getFieldEditorParent());
         wesnothExecutableField_.getTextControl(getFieldEditorParent()).
             addFocusListener(new FocusListener() {
@@ -137,23 +135,25 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             });
         addField(wesnothExecutableField_, Messages.WesnothPreferencesPage_6);
 
-        wesnothWorkingDirField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_WORKING_DIR,
+        wesnothWorkingDirField_ = new DirectoryFieldEditor( "",
                 Messages.WesnothPreferencesPage_7, getFieldEditorParent());
         wesnothWorkingDirField_.getTextControl(getFieldEditorParent()).
             addModifyListener(listener);
         addField(wesnothWorkingDirField_, Messages.WesnothPreferencesPage_8);
 
-        wesnothUserDirField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_USER_DIR,
+        wesnothUserDirField_ = new DirectoryFieldEditor( "",
                 Messages.WesnothPreferencesPage_9, getFieldEditorParent());
         addField(wesnothUserDirField_, Messages.WesnothPreferencesPage_10);
 
-        wmlToolsField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_WMLTOOLS_DIR,
+        wmlToolsField_ = new DirectoryFieldEditor( "",
                 Messages.WesnothPreferencesPage_11, getFieldEditorParent());
         addField(wmlToolsField_, Messages.WesnothPreferencesPage_12);
 
-        addField(new FileFieldEditor(Constants.P_PYTHON_PATH, Messages.WesnothPreferencesPage_13, getFieldEditorParent()));
+        addField(new FileFieldEditor(Constants.P_PYTHON_PATH,
+                Messages.WesnothPreferencesPage_13, getFieldEditorParent()));
 
-        addField(new LabelFieldEditor(Messages.WesnothPreferencesPage_14, getFieldEditorParent()));
+        addField(new LabelFieldEditor(Messages.WesnothPreferencesPage_14,
+                getFieldEditorParent()));
 
         // update the default
         updateInterface( installs_.get( Preferences.getDefaultInstallName( ) ) );
@@ -218,7 +218,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         btnRemove.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                removeInstall();
+                removeInstall( getSelectedInstall( ) );
             }
         });
         btnRemove.setText("Remove");
@@ -227,7 +227,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         btnSetAsDefault.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                setInstallAsDefault();
+                setInstallAsDefault( getSelectedInstall( ) );
             }
         });
         btnSetAsDefault.setText("Set as default");
@@ -292,21 +292,23 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         updateInterface(null);
     }
 
-    protected void setInstallAsDefault()
+    protected void setInstallAsDefault( WesnothInstall install )
     {
-        WesnothInstall install = getSelectedInstall();
         if (install != null) {
-            Preferences.getPreferences().setValue(Constants.P_INST_DEFAULT_INSTALL, install.Name);
+            Preferences.setDefaultInstallName( install.Name);
             installsTableViewer_.refresh();
         }
     }
 
-    protected void removeInstall()
+    protected void removeInstall( WesnothInstall install )
     {
-        WesnothInstall install = getSelectedInstall();
-        if (install != null && install.Name.equalsIgnoreCase( "default" ) == false){
+        if ( install != null ){
             installs_.remove( install.Name );
             installsTableViewer_.refresh();
+
+            if ( install.Name.equals( Preferences.getDefaultInstallName( ) ) ) {
+                Preferences.setDefaultInstallName( "" ); //$NON-NLS-1$
+            }
 
             // clear the current info
             newInstall( );
@@ -320,6 +322,10 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         return installs_.get(installsTable_.getSelection()[0].getText(0));
     }
 
+    /**
+     * Updates the interface with the specified install
+     * @param install The install
+     */
     private void updateInterface(WesnothInstall install)
     {
         txtInstallName_.setText( install == null ? "" : install.Name ); //$NON-NLS-1$
@@ -327,19 +333,37 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
         cmbVersion_.setText( install == null ? "" : install.Version ); //$NON-NLS-1$
 
-        String installPrefix = Preferences.getInstallPrefix( install == null ? null : install.Name );
+        setFieldsPreferenceName(
+                install == null ? "" : Preferences.getInstallPrefix( install.Name ),
+                true );
+    }
 
+    /**
+     * Sets the fields's internal preference name based on the installPrefix
+     * @param installPrefix The install prefix
+     * @param loadPreferences True to load the current stored preference
+     */
+    private void setFieldsPreferenceName( String installPrefix, boolean loadPreferences )
+    {
         wesnothExecutableField_.setPreferenceName( installPrefix + Constants.P_WESNOTH_EXEC_PATH );
-        wesnothExecutableField_.load();
 
         wesnothUserDirField_.setPreferenceName( installPrefix + Constants.P_WESNOTH_USER_DIR );
-        wesnothUserDirField_.load();
 
         wesnothWorkingDirField_.setPreferenceName( installPrefix + Constants.P_WESNOTH_WORKING_DIR );
-        wesnothWorkingDirField_.load();
 
         wmlToolsField_.setPreferenceName( installPrefix + Constants.P_WESNOTH_WMLTOOLS_DIR );
-        wmlToolsField_.load();
+
+        if ( loadPreferences ) {
+            wesnothUserDirField_.setStringValue( "" );
+            wesnothWorkingDirField_.setStringValue( "" );
+            wesnothExecutableField_.setStringValue( "" );
+            wmlToolsField_.setStringValue( "" );
+
+            wesnothUserDirField_.load();
+            wesnothWorkingDirField_.load();
+            wesnothExecutableField_.load();
+            wmlToolsField_.load();
+        }
     }
 
     @Override
@@ -466,26 +490,29 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         }
     }
 
-    private void saveInstall()
+    /**
+     * Saves the current install
+     * @return true if the save was successfully, false otherwise
+     */
+    private boolean saveInstall()
     {
         String installName = txtInstallName_.getText();
 
-        // we are creating a new install. Clear the editable
-        // flag after we save it, to prevent renaming.
-        if ( txtInstallName_.getEditable() &&
-             installName.isEmpty() == false ) {
-
-            // do some checks first
-            if ( installName.equalsIgnoreCase( "default" ) ){
-                GUIUtils.showInfoMessageBox( "Cannot create an install with the 'Default' name." );
-                return;
+        // if it's editable, it means we are creating a new install
+        if ( txtInstallName_.getEditable() ) {
+            if ( installName.isEmpty() == true ) {
+                GUIUtils.showErrorMessageBox( "Please enter a name for the install" );
+                return false;
             }
 
             if ( cmbVersion_.getText().isEmpty() == true ) {
-                GUIUtils.showInfoMessageBox(
+                GUIUtils.showErrorMessageBox(
                         "Please select a version before creating a new install." );
-               return;
+               return false;
             }
+
+            // update the fields preferences names
+            setFieldsPreferenceName( Preferences.getInstallPrefix( installName ), false );
 
             WesnothInstall newInstall = new WesnothInstall(installName,
                     cmbVersion_.getText());
@@ -493,15 +520,23 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             installs_.put( installName, newInstall );
             installsTableViewer_.refresh();
 
+            // if there is not any install set as default, set this one
+            if ( Preferences.getDefaultInstallName( ).isEmpty( ) )
+                setInstallAsDefault( newInstall );
+
+            // we are creating a new install. Clear the editable
+            // flag after we save it, to prevent renaming.
             txtInstallName_.setEditable( false );
         }
+
+        return true;
     }
 
     /**
      * This method will unset invalid properties's values,
      * and saving only valid ones.
      */
-    private void savePreferences()
+    private boolean savePreferences()
     {
         if (!wesnothExecutableField_.isValid())
             wesnothExecutableField_.setStringValue(""); //$NON-NLS-1$
@@ -512,15 +547,17 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         if (!wmlToolsField_.isValid())
             wmlToolsField_.setStringValue(""); //$NON-NLS-1$
 
-        saveInstall();
+        if ( saveInstall() == false )
+            return false;
+
         WesnothInstallsUtils.setInstalls( installs_.values( ) );
+        return true;
     }
 
     @Override
     public boolean performOk()
     {
-        savePreferences();
-        return super.performOk();
+        return savePreferences() && super.performOk();
     }
 
     @Override
