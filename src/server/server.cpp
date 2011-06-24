@@ -1090,7 +1090,7 @@ void server::process_login(const network::connection sock,
 		// This name is registered but the account is not active
 		if(exists && !user_handler_->user_is_active(username)) {
 			send_warning(sock, "The nick '" + username + "' is inactive. You cannot claim ownership of this "
-				"name until you activate your account via email or ask an administrator to do it for you.", MP_NAME_INACTIVE_WARNING);
+				"nick until you activate your account via email or ask an administrator to do it for you.", MP_NAME_INACTIVE_WARNING);
 			//registered = false;
 		}
 		else if(exists) {
