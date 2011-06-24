@@ -91,26 +91,27 @@ public class Preferences extends AbstractPreferenceInitializer
 	}
 
 	/**
-     * Gets the install preference prefix for the default Installation
-     * found in the @see {@link Constants#P_INST_DEFAULT_INSTALL} <b
-     * @param installName The name of the install
-     */
-	public static String getInstallPrefix()
-	{
-	    return getInstallPrefix(getString(Constants.P_INST_DEFAULT_INSTALL));
-	}
-
-	/**
-	 * Gets the install preference prefix for the specified install name
-	 * @param installName The name of the install
+	 * Gets the install preference prefix for the specified install name.
+	 *
+	 * @param installName The name of the install. If the parameter is null,
+	 * the default install name is returned
 	 */
 	public static String getInstallPrefix(String installName)
 	{
-        if (StringUtils.isNullOrEmpty(installName) ||
-            installName.equalsIgnoreCase("default"))
-            return ""; //$NON-NLS-1$
+        if ( StringUtils.isNullOrEmpty( installName ) ||
+             installName.equalsIgnoreCase( "default" ) )
+            installName = getDefaultInstallName( );
 
         return "inst_" + installName + "_"; //$NON-NLS-1$  //$NON-NLS-2$
+	}
+
+	/**
+	 * Returns the name of the default install
+	 * @return Returns the name of the default install
+	 */
+	public static String getDefaultInstallName()
+	{
+	    return getString( Constants.P_INST_DEFAULT_INSTALL );
 	}
 
 	/**
@@ -142,7 +143,7 @@ public class Preferences extends AbstractPreferenceInitializer
 	     */
 	    public String getAddonsDir()
 	    {
-	        return getUserDir( ) + "/data/add-ons/"; //$NON-NLS-1$
+	        return getUserDir( ) + "data/add-ons/"; //$NON-NLS-1$
 	    }
 
         /**
@@ -151,7 +152,7 @@ public class Preferences extends AbstractPreferenceInitializer
          */
         public String getCampaignDir()
         {
-            return getWorkingDir( ) + "/data/campaigns/"; //$NON-NLS-1$
+            return getWorkingDir( ) + "data/campaigns/"; //$NON-NLS-1$
         }
 
         public String getCoreDir()
@@ -165,7 +166,7 @@ public class Preferences extends AbstractPreferenceInitializer
          */
         public String getSchemaPath()
         {
-            return getWorkingDir( ) + "/data/schema.cfg"; //$NON-NLS-1$
+            return getWorkingDir( ) + "data/schema.cfg"; //$NON-NLS-1$
         }
 
         /**
