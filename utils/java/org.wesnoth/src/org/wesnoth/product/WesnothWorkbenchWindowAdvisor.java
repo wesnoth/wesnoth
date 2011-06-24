@@ -8,10 +8,14 @@
  *******************************************************************************/
 package org.wesnoth.product;
 
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
+import org.wesnoth.Logger;
 
 public class WesnothWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
@@ -39,7 +43,18 @@ public class WesnothWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
     @Override
     public void postWindowCreate()
     {
-    	super.postWindowCreate();
-    	this.getWindowConfigurer().getWindow().getActivePage().hideActionSet("org.eclipse.ui.run"); //$NON-NLS-1$
+    	getWindowConfigurer().getWindow().getActivePage().hideActionSet("org.eclipse.ui.run"); //$NON-NLS-1$
+    }
+
+    @Override
+    public boolean preWindowShellClose()
+    {
+        try {
+            ResourcesPlugin.getWorkspace( ).save( true , new NullProgressMonitor() );
+        }
+        catch ( CoreException e ) {
+            Logger.getInstance( ).logException( e );
+        }
+        return true;
     }
 }
