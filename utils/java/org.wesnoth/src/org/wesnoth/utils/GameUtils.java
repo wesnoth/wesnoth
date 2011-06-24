@@ -114,7 +114,11 @@ public class GameUtils
 	 */
 	public static void startGame()
 	{
-		startGame( null, null );
+	    IResource selectedRes =  WorkspaceUtils.getSelectedResource( );
+	    if ( selectedRes == null )
+	        startGame( null, null );
+	    else
+	        startGame( WesnothInstallsUtils.getInstallNameForResource( selectedRes ), null );
 	}
 
 	/**
