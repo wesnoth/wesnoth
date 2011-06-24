@@ -356,13 +356,12 @@ public class WorkspaceUtils
                     String addonsDir = Preferences.getPaths( null ).getAddonsDir( );
                     String campaignsDir = Preferences.getPaths( null ).getCampaignDir( );
 
-                    File[] tmp = null;
                     if (GUIUtils.showMessageBox(Messages.WorkspaceUtils_18 +
                             Messages.WorkspaceUtils_19,
                             SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
                     {
                         // useraddons/add-ons/data
-                        tmp = new File(addonsDir).listFiles();
+                        File[] tmp = new File(addonsDir).listFiles();
                         if (tmp != null)
                             files.addAll(Arrays.asList(tmp));
                     }
@@ -372,7 +371,7 @@ public class WorkspaceUtils
                             SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
                     {
                         // workingdir/data/campaigns
-                        tmp = new File(campaignsDir).listFiles();
+                        File[] tmp = new File(campaignsDir).listFiles();
                         if (tmp != null)
                             files.addAll(Arrays.asList(tmp));
                     }
@@ -404,7 +403,6 @@ public class WorkspaceUtils
                         {
                             ProjectUtils.createWesnothProject(project, description,
                                     true, false, monitor);
-                            container = project;
                         }
                     }
 

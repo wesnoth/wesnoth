@@ -65,6 +65,9 @@ public class ExternalToolInvoker
 
 	 	outputContent_ = new StringBuilder();
 	 	errorContent_ = new StringBuilder();
+
+	 	monitorOutputThread_ = null;
+	 	monitorErrorThread_ = null;
 	}
 
 	/**

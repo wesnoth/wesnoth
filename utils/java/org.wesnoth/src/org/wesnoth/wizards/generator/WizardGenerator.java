@@ -81,12 +81,6 @@ public class WizardGenerator extends NewWizardTemplate
 	}
 
 	@Override
-	public void addPages()
-	{
-		super.addPages();
-	}
-
-	@Override
 	public boolean performFinish()
 	{
 		// logic

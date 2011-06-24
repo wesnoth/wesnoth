@@ -29,18 +29,17 @@ import org.wesnoth.utils.WorkspaceUtils;
  */
 public class Logger {
 
-	private static Logger instance_;
+    private static class LoggerInstance{
+        private static Logger instance_ = new Logger();
+    }
+
 	private Logger() { }
 
 	private BufferedWriter logWriter_;
 
 	public static Logger getInstance()
 	{
-		if (instance_ == null)
-		{
-			instance_ = new Logger();
-		}
-		return instance_;
+		return LoggerInstance.instance_;
 	}
 
 	/**

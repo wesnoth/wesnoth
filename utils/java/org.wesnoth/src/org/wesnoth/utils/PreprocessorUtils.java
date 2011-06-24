@@ -32,7 +32,10 @@ import org.wesnoth.preferences.Preferences.Paths;
 
 public class PreprocessorUtils
 {
-	private static PreprocessorUtils instance_;
+    private static class PreprocessorUtilsInstance{
+        private static PreprocessorUtils instance_ = new PreprocessorUtils( );
+    }
+
 	private Map<String, Long> filesTimeStamps_ = new HashMap<String, Long>();
 
 	private PreprocessorUtils()
@@ -43,9 +46,7 @@ public class PreprocessorUtils
 
 	public static PreprocessorUtils getInstance()
 	{
-		if (instance_ == null)
-			instance_ = new PreprocessorUtils();
-		return instance_;
+		return PreprocessorUtilsInstance.instance_;
 	}
 
 	/**
@@ -253,7 +254,7 @@ public class PreprocessorUtils
 			{
 				timestamps.add(timestamp.toString());
 			}
-			settings.put("timestamps", timestamps.toArray(new String[0])); //$NON-NLS-1$
+			settings.put("timestamps", timestamps.toArray(new String[timestamps.size( )])); //$NON-NLS-1$
 			settings.save(filename);
 		}
 		catch (Exception e)

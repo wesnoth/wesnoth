@@ -10,8 +10,8 @@ package org.wesnoth.wizards.campaign;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Messages;
+import org.wesnoth.WesnothPlugin;
 
 
 public class CampaignPage0 extends WizardNewProjectCreationPage
@@ -29,11 +29,5 @@ public class CampaignPage0 extends WizardNewProjectCreationPage
 
 		WesnothPlugin.getDefault().getWorkbench().getHelpSystem().setHelp(getShell(),
 			"org.wesnoth.wizardHelp"); //$NON-NLS-1$
-	}
-
-	@Override
-	public boolean canFlipToNextPage()
-	{
-		return super.canFlipToNextPage();
 	}
 }

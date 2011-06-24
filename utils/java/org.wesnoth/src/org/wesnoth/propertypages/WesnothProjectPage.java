@@ -13,14 +13,13 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.ui.IWorkbenchPropertyPage;
 import org.eclipse.ui.dialogs.PropertyPage;
 import org.wesnoth.utils.ProjectCache;
 import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.utils.WesnothInstallsUtils;
 import org.wesnoth.utils.WesnothInstallsUtils.WesnothInstall;
 
-public class WesnothProjectPage extends PropertyPage implements IWorkbenchPropertyPage
+public class WesnothProjectPage extends PropertyPage
 {
     private Combo cmbInstall_;
     private ProjectCache currProjectCache_;
@@ -28,6 +27,7 @@ public class WesnothProjectPage extends PropertyPage implements IWorkbenchProper
     public WesnothProjectPage()
     {
         currProjectCache_ = null;
+        cmbInstall_ = null;
     }
 
     @Override

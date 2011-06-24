@@ -21,9 +21,6 @@ public abstract class ObjectActionDelegate implements IObjectActionDelegate
 	protected IAction action_;
 
 	@Override
-	public abstract void run(IAction action);
-
-	@Override
 	public void selectionChanged(IAction action, ISelection selection)
 	{
 		selection_ = selection;

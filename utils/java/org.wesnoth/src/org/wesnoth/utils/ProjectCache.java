@@ -218,6 +218,7 @@ public class ProjectCache
 		if (definesFile_.exists() == false)
 			return;
 		defines_ = Define.readDefines(definesFile_.getAbsolutePath());
+		definesTimetamp_ = definesFile_.lastModified( );
 	}
 
 	public void setDefines(Map<String, Define> defines)

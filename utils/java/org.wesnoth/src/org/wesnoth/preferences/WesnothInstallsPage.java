@@ -193,7 +193,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         tblclmnIsDefault.setWidth(70);
         tblclmnIsDefault.setText("Default?");
 
-        installsTableViewer_.setContentProvider(new ContentProvider());
+        installsTableViewer_.setContentProvider(new ArrayContentProvider());
         installsTableViewer_.setLabelProvider(new TableLabelProvider());
         installsTableViewer_.setInput(installs_.values());
 
@@ -603,14 +603,6 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         super.propertyChange(event);
         if (event.getProperty().equals(FieldEditor.VALUE))
             checkState();
-    }
-
-    private static class ContentProvider extends ArrayContentProvider {
-        @Override
-        public Object[] getElements(Object inputElement)
-        {
-            return super.getElements(inputElement);
-        }
     }
 
     private static class TableLabelProvider extends LabelProvider implements ITableLabelProvider {
