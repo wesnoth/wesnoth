@@ -155,6 +155,8 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
         addField(new LabelFieldEditor(Messages.WesnothPreferencesPage_14, getFieldEditorParent()));
 
+        // update the default
+        updateInterface( installs_.get( Preferences.getDefaultInstallName( ) ) );
         guessDefaultPaths();
     }
 
@@ -551,7 +553,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                     return install.Version;
                 } else if ( columnIndex == 2 ) { // is Default ?
 
-                    if ( install.Name.equals( Preferences.getString( Constants.P_INST_DEFAULT_INSTALL ) ) )
+                    if ( install.Name.equals( Preferences.getDefaultInstallName( ) ) )
                         return "Yes";
 
                     return "";

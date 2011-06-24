@@ -44,7 +44,7 @@ public class WesnothPlugin extends AbstractUIPlugin
 		Logger.getInstance().startLogger();
 
 		if (PlatformUI.isWorkbenchRunning()){
-		    if (WorkspaceUtils.checkPathsAreSet(false) == false)
+		    if (WorkspaceUtils.checkPathsAreSet( null, false) == false)
 	        {
 		        Display.getDefault().asyncExec(new Runnable() {
                     @Override

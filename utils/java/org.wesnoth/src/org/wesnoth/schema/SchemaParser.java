@@ -51,10 +51,8 @@ public class SchemaParser
 	public void parseSchema( boolean force )
 	{
         //TODO should parse schema for each install type
-        if (true)
-            throw new RuntimeException("fix this!");
-	    String installName = "";
-		parseSchemaFile( force, Preferences.getPaths( installName ).getSchemaPath( ) );
+	    // for now, use the default install
+		parseSchemaFile( force, Preferences.getPaths( null ).getSchemaPath( ) );
 	}
 
 	/**

@@ -15,22 +15,18 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import org.eclipse.core.resources.FileInfoMatcherDescription;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IResourceFilterDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.AssertionFailedException;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.preference.PreferenceDialog;
@@ -330,11 +326,12 @@ public class WorkspaceUtils
             Messages.Activator_5);
         }
 
-        if (!checkPathsAreSet(false))
+        if (!checkPathsAreSet( null, false ))
         {
             PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
                     WesnothPlugin.getShell(), "org.wesnoth.preferences.InstallsPage", null, null); //$NON-NLS-1$
-            if (pref.open() == Window.CANCEL || !checkPathsAreSet(true))
+            if ( pref.open() == Window.CANCEL ||
+                 !checkPathsAreSet ( null, true ) )
             {
                 GUIUtils.showErrorMessageBox(Messages.WorkspaceUtils_7 +
                         Messages.WorkspaceUtils_8);
@@ -457,29 +454,6 @@ public class WorkspaceUtils
             }
         };
         job.schedule();
-
-	}
-
-	/**
-	 * Creates and adds an ignore filter on the specified project
-	 * for folders matching the specified name. The specified folder won't appear
-	 * in any views of the current project's structure
-	 * @param project The project where to create the filter
-	 * @param folderName The foldername to ignore
-	 * @throws CoreException
-	 */
-	public static void createIgnoreFilter(IProject project, String folderName)
-		throws CoreException
-	{
-		// For details regarding the description see:
-		// 	FileInfoAttributesMatcher.encodeArguments()
-
-		// id = org.eclipse.ui.ide.multiFilter
-		// args = 1.0-name-matches-false-false-Love_to_death
-		project.createFilter(IResourceFilterDescription.EXCLUDE_ALL | IResourceFilterDescription.FOLDERS,
-				new FileInfoMatcherDescription("org.eclipse.ui.ide.multiFilter", //$NON-NLS-1$
-						"1.0-name-matches-false-false-" + folderName), //$NON-NLS-1$
-				IResource.BACKGROUND_REFRESH, new NullProgressMonitor());
 	}
 
 	/**
@@ -489,12 +463,12 @@ public class WorkspaceUtils
 	 * @param displayWarning true to display a messagebox warning
 	 * 		  the user if conditions are not met
 	 */
-	public static boolean checkPathsAreSet(boolean displayWarning)
+	public static boolean checkPathsAreSet( String installName, boolean displayWarning)
 	{
-		if ( !validPath( Preferences.getPaths( null ).getWesnothExecutablePath( ) ) ||
-		     !validPath( Preferences.getPaths( null ).getUserDir( ) ) ||
-			 !validPath( Preferences.getPaths( null ).getWMLToolsDir( ) ) ||
-			 !validPath( Preferences.getPaths( null ).getWorkingDir( ) ))
+		if ( !validPath( Preferences.getPaths( installName ).getWesnothExecutablePath( ) ) ||
+		     !validPath( Preferences.getPaths( installName ).getUserDir( ) ) ||
+			 !validPath( Preferences.getPaths( installName ).getWMLToolsDir( ) ) ||
+			 !validPath( Preferences.getPaths( installName ).getWorkingDir( ) ))
 		{
 			if (displayWarning)
 				GUIUtils.showWarnMessageBox(Messages.WorkspaceUtils_33);

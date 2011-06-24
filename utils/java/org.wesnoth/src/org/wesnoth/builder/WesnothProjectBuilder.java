@@ -71,10 +71,15 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	protected IProject[] build(int kind, Map args, IProgressMonitor monitor)
 			throws CoreException
 	{
+	    String installName = WesnothInstallsUtils.getInstallNameForResource( getProject() );
+	    // check if Paths are set
+	    if ( ! WorkspaceUtils.checkPathsAreSet( installName, true ) )
+	        return null;
+
 		Logger.getInstance().log(Messages.WesnothProjectBuilder_0);
 		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
 
-		Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( getProject() ) );
+		Paths paths = Preferences.getPaths( installName );
 
 		monitor.subTask(Messages.WesnothProjectBuilder_3);
 		if ( paths.getUserDir( ).isEmpty( ) )
