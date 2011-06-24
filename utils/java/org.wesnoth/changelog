@@ -1,5 +1,14 @@
 Eclipse plugin changelog
 
+1.0.4
+	* The plugin running as a standalone app now has all the proper
+	save/new/undo/redo buttons in the menus.
+	* Added support for multiple wesnoth installations. This 
+	allows the user to have UMC for different wesnoth version at the 
+	same time in the workspace.
+	* Added a new property page for Wesnoth projects, that allows
+	one to select what wesnoth install with that project use.
+
 1.0.3
 	* Fixed bug #18080
 	* Fixed bug #18076
