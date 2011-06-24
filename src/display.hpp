@@ -395,7 +395,7 @@ public:
 	 * Scroll such that location loc is on-screen.
 	 * WARP jumps to loc; SCROLL uses scroll speed;
 	 * ONSCREEN only scrolls if x,y is offscreen
-	 * force : scroll even if prefferences tell us not to
+	 * force : scroll even if preferences tell us not to
 	 */
 	void scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,bool force = true);
 
