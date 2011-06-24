@@ -441,15 +441,12 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         }
 
         // guess the wmltools path
-        String wmlToolsValue = wmlToolsField_.getStringValue();
-
-        if ( wmlToolsValue.isEmpty() &&
+        if ( wmlToolsField_.getStringValue().isEmpty() &&
             ! workingDirValue.isEmpty() )
         {
             String path = workingDirValue + "/data/tools"; //$NON-NLS-1$
             if ( testWMLToolsPath( path ) ) {
                 wmlToolsField_.setStringValue( path );
-                wmlToolsValue = path;
             }
         }
 
