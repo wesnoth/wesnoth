@@ -29,23 +29,36 @@ public:
 	~joystick_manager();
 
 	bool init();
+	bool close();
 
 	/**
-	 * @param highlighted_hex will change if the cursor moved
+	 * Used for absolute movement of the cursor.
+	 * @param highlighted_hex will change if the cursor moved.
 	 * @return true if the highlighted hex changed.
 	 */
-	bool next_highlighted_hex(map_location& highlighted_hex);
-
-
-	/**
-	 * @returns a value in range [-1,+1] representing the gauge of the scroll xaxis
-	 */
-	std::pair<double,double> get_scroll_axis_pair();
+	bool update_highlighted_hex(map_location& highlighted_hex);
 
 	/**
-	 * @returns a value in range [-1,+1] representing the gauge of the scroll yaxis
+	 * Used for relative movement of the cursor.
+	 * @param highlighted_hex will change if the cursor moved.
+	 * @return true if the highlighted hex changed.
 	 */
-//	double get_scroll_yaxis();
+	//bool update_highlighted_hex(map_location& highlighted_hex, const map_location& selected_hex);
+
+	/**
+	 * @return a value in range [-1,+1] representing the gauges of the scroll axes.
+	 */
+	std::pair<double, double> get_scroll_axis_pair();
+
+	/**
+	 * TODO fendrin
+	 */
+	std::pair<double, double> get_mouse_axis_pair();
+
+	/**
+	 * TODO fendrin
+	 */
+	double get_thrust_xaxis();
 
 private:
 
@@ -54,6 +67,7 @@ private:
 
 
 	std::pair<int, int> get_axis_pair(int joystick_xaxis, int xaxis, int joystick_yaxis, int yaxis);
+	int get_axis(int joystick_axis, int axis);
 
 	const map_location get_next_hex(int x_axis, int y_axis, map_location old_hex);
 

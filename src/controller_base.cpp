@@ -35,7 +35,6 @@ controller_base::controller_base(
 	scrolling_(false),
 	joystick_manager_()
 {
-	joystick_manager_.init();
 }
 
 controller_base::~controller_base()
@@ -204,25 +203,46 @@ void controller_base::play_slice(bool is_delay_enabled)
 	if(m != NULL) {
 		const SDL_Rect& menu_loc = m->location(get_display().screen_area());
 		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false);
+
 		return;
 	}
 
-	map_location highlighted_hex = get_display().mouseover_hex();
-	if (joystick_manager_.next_highlighted_hex(highlighted_hex)
-			&& get_display().get_map().on_board(highlighted_hex)) {
-		get_mouse_handler_base().mouse_motion(0,0, true, true, highlighted_hex);
-		get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN_WARP, false, true);
-	}
+	bool was_scrolling = scrolling_;
 
-	const std::pair<double, double> values = joystick_manager_.get_scroll_axis_pair();
-
+	std::pair<double, double> values = joystick_manager_.get_scroll_axis_pair();
 	const double joystickx = values.first;
 	const double joysticky = values.second;
 
 	int mousex, mousey;
 	Uint8 mouse_flags = SDL_GetMouseState(&mousex, &mousey);
-	bool was_scrolling = scrolling_;
+
+	/* TODO fendrin enable after an axis choosing mechanism is implemented
+	std::pair<double, double> values = joystick_manager_.get_mouse_axis_pair();
+	mousex += values.first * 10;
+	mousey += values.second * 10;
+	SDL_WarpMouse(mousex, mousey);
+	*/
 	scrolling_ = handle_scroll(key, mousex, mousey, mouse_flags, joystickx, joysticky);
+
+	map_location highlighted_hex = get_display().mouseover_hex();
+
+	/* TODO fendrin enable when the relative cursor movement is implemented well enough
+	const map_location& selected_hex = get_display().selected_hex();
+
+	if (selected_hex != map_location::null_location) {
+		if (joystick_manager_.next_highlighted_hex(highlighted_hex, selected_hex)) {
+			get_mouse_handler_base().mouse_motion(0,0, true, true, highlighted_hex);
+			get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN_WARP, false, true);
+			scrolling_ = true;
+		}
+	} else */
+
+	if (joystick_manager_.update_highlighted_hex(highlighted_hex)
+			&& get_display().get_map().on_board(highlighted_hex)) {
+		get_mouse_handler_base().mouse_motion(0,0, true, true, highlighted_hex);
+		get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN_WARP, false, true);
+		scrolling_ = true;
+		}
 
 	get_display().draw();
 
