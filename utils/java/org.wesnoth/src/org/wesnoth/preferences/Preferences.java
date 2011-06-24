@@ -114,16 +114,33 @@ public class Preferences extends AbstractPreferenceInitializer
 	}
 
 	/**
+	 * Returns a new Paths object based on the specified install name
+	 * @param installName The install name used for the paths
+	 * @return A new Paths object
+	 */
+	public static Paths getPaths( String installName )
+	{
+	    return new Paths( getInstallPrefix( installName ) );
+	}
+
+	/**
 	 * Helper for accessing the paths used in the plugin based
 	 * on the install
 	 */
 	public static class Paths
 	{
+	    private String installPrefix_;
+
+	    public Paths( String installPrefix )
+	    {
+	        installPrefix_ = installPrefix;
+	    }
+
 	    /**
 	     * Returns the addons directory
 	     * @return Returns the addons directory
 	     */
-	    public static String getAddonsDir()
+	    public String getAddonsDir()
 	    {
 	        return getUserDir( ) + "/data/add-ons/"; //$NON-NLS-1$
 	    }
@@ -132,12 +149,12 @@ public class Preferences extends AbstractPreferenceInitializer
          * Returns the campaign directory
          * @return Returns the campaign directory
          */
-        public static String getCampaignDir()
+        public String getCampaignDir()
         {
             return getWorkingDir( ) + "/data/campaigns/"; //$NON-NLS-1$
         }
 
-        public static String getCoreDir()
+        public String getCoreDir()
         {
             return getWorkingDir( ) + "data/core/"; //$NON-NLS-1$
         }
@@ -146,7 +163,7 @@ public class Preferences extends AbstractPreferenceInitializer
          * Returns the <b>schema.cfg</b> file path
          * @return Returns the schema.cfg file path
          */
-        public static String getSchemaPath()
+        public String getSchemaPath()
         {
             return getWorkingDir( ) + "/data/schema.cfg"; //$NON-NLS-1$
         }
@@ -155,9 +172,9 @@ public class Preferences extends AbstractPreferenceInitializer
          * Returns the user's directory
          * @return Returns the user's directory
          */
-        public static String getUserDir()
+        public String getUserDir()
         {
-            return getString( Constants.P_WESNOTH_USER_DIR ) + Path.SEPARATOR;
+            return getString( installPrefix_ + Constants.P_WESNOTH_USER_DIR ) + Path.SEPARATOR;
         }
 
         /**
@@ -165,9 +182,9 @@ public class Preferences extends AbstractPreferenceInitializer
          * <b>data</b> folder
          * @return Returns the working directory
          */
-        public static String getWorkingDir()
+        public String getWorkingDir()
         {
-            return getString( Constants.P_WESNOTH_WORKING_DIR ) + Path.SEPARATOR;
+            return getString( installPrefix_ + Constants.P_WESNOTH_WORKING_DIR ) + Path.SEPARATOR;
         }
 
         /**
@@ -175,18 +192,18 @@ public class Preferences extends AbstractPreferenceInitializer
          * ( wmlscope, wmllint, wmlindent, wesnoth_addons_manager, etc)
          * @return Returns the directory that contains the wml tools
          */
-        public static String getWMLToolsDir()
+        public String getWMLToolsDir()
         {
-            return getString( Constants.P_WESNOTH_WMLTOOLS_DIR ) + Path.SEPARATOR;
+            return getString( installPrefix_ + Constants.P_WESNOTH_WMLTOOLS_DIR ) + Path.SEPARATOR;
         }
 
         /**
          * Returns the path to the wesnoth executable
          * @return Returns the path to the wesnoth executable
          */
-        public static String getWesnothExecutablePath()
+        public String getWesnothExecutablePath()
         {
-            return getString( Constants.P_WESNOTH_EXEC_PATH );
+            return getString( installPrefix_ + Constants.P_WESNOTH_EXEC_PATH );
         }
 	}
 }
