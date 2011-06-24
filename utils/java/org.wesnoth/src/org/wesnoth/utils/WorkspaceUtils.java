@@ -23,8 +23,6 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
-import org.eclipse.core.runtime.AssertionFailedException;
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
@@ -37,7 +35,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.IWorkingSetManager;
 import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.wesnoth.Logger;
@@ -354,24 +351,6 @@ public class WorkspaceUtils
             {
                 try
                 {
-                    // create a default working set
-                    IWorkingSetManager manager = getWorkingSetManager();
-                    IWorkingSet defaultSet = manager.getWorkingSet("Default"); //$NON-NLS-1$
-                    if (defaultSet == null)
-                    {
-                        // we could get an assert exception if too many
-                        // 'setup workspace' are running at a time
-                        try
-                        {
-                            defaultSet = manager.createWorkingSet("Default", new IAdaptable[0]); //$NON-NLS-1$
-                            manager.addWorkingSet(defaultSet);
-                        }
-                        catch(AssertionFailedException e)
-                        {
-                            Logger.getInstance().logWarn(e.getMessage());
-                        }
-                    }
-
                     // automatically import 'special' folders as projects
                     List<File> files = new ArrayList<File>();
                     String addonsDir = Preferences.getPaths( null ).getAddonsDir( );
@@ -427,10 +406,8 @@ public class WorkspaceUtils
                                     true, false, monitor);
                             container = project;
                         }
-                        manager.addToWorkingSets(container, new IWorkingSet[] { defaultSet });
                     }
 
-                    //TODO select the default working set manager as the active one
                     if (guided)
                     {
                         GUIUtils.showInfoMessageBox(
