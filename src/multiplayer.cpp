@@ -230,7 +230,18 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 				if(*warning) {
 					std::string warning_msg;
-					warning_msg = (*warning)["message"].str();
+
+					utils::string_map i18n_symbols;
+					i18n_symbols["nick"] = "lala";
+
+					if((*warning)["warning_code"] == MP_NAME_INACTIVE_WARNING) {
+						warning_msg = vgettext("The nick '$nick' is inactive. "
+							"You cannot claim ownership of this nick until you "
+							"activate your account via email or ask an "
+							"administrator to do it for you.", i18n_symbols);
+					} else {
+						warning_msg = (*warning)["message"].str();
+					}
 
 					warning_msg += "\n\n";
 					warning_msg += _("Do you want to continue?");
