@@ -8,10 +8,11 @@
  *******************************************************************************/
 package org.wesnoth.product;
 
-import org.eclipse.ui.application.IWorkbenchConfigurer;
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.eclipse.ui.ide.IDE;
+import org.wesnoth.navigator.WesnothProjectsExplorer;
 import org.wesnoth.utils.WorkspaceUtils;
 
 public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack {
@@ -28,23 +29,22 @@ public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack {
 		return PERSPECTIVE_ID;
 	}
 
-	@Override
-	public void initialize(IWorkbenchConfigurer configurer)
-	{
-		super.initialize(configurer);
-		configurer.setSaveAndRestore(true);
-	}
+    @Override
+    public IAdaptable getDefaultPageInput()
+    {
+        return new WesnothProjectsExplorer();
+    }
 
-	@Override
-	public void preStartup()
-	{
-		IDE.registerAdapters();
-	}
+    @Override
+    public void preStartup()
+    {
+        IDE.registerAdapters();
+    }
 
-	@Override
+    @Override
 	public void postStartup()
 	{
-	    if (WorkspaceUtils.checkPathsAreSet(false) == false)
+	    if (WorkspaceUtils.checkPathsAreSet( null, false ) == false)
         {
             WorkspaceUtils.setupWorkspace(true);
         }

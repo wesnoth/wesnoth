@@ -3,7 +3,6 @@ package org.wesnoth.product;
 import java.net.URL;
 
 import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -13,7 +12,6 @@ import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.internal.ide.IDEInternalWorkbenchImages;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.osgi.framework.Bundle;
-import org.wesnoth.navigator.WesnothProjectsExplorer;
 
 /**
  * Methods copied from {@link org.eclipse.ui.internal.ide.IDEWorkbenchAdvisor}
@@ -184,17 +182,5 @@ public abstract class WorkbenchAdvisorHack extends WorkbenchAdvisor
 	{
 		configurer.setSaveAndRestore(true);
 		declareWorkbenchImages();
-	}
-
-	@Override
-	public IAdaptable getDefaultPageInput()
-	{
-		return new WesnothProjectsExplorer();
-	}
-
-	@Override
-	public void preStartup()
-	{
-		IDE.registerAdapters();
 	}
 }
