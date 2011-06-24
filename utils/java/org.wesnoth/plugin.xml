@@ -242,19 +242,6 @@
                </adapt>
             </or></filterExpression>
       </commonFilter>
-      <navigatorContent
-            activeByDefault="true"
-            id="org.wesnoth.navigator.wmlProjectDataCore"
-            name="Core"
-            priority="highest">
-         <triggerPoints>
-            <or>
-               <and>
-                  <instanceof
-                        value="org.eclipse.core.resources.IProject">
-                  </instanceof></and>
-            </or></triggerPoints>
-      </navigatorContent>
       <commonFilter
             activeByDefault="true"
             id="org.wesnoth.navigator.filters.buildxml"
@@ -693,7 +680,7 @@
          point="org.eclipse.ui.elementFactories">
       <factory
             class="org.wesnoth.navigator.WesnothProjectsExplorer"
-            id="org.wesnoth.factory">
+            id="org.wesnoth.navigator.WesnothProjectsExplorer">
       </factory>
    </extension>
    <extension
