@@ -28,6 +28,7 @@ import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.preferences.Preferences;
+import org.wesnoth.preferences.Preferences.Paths;
 
 public class PreprocessorUtils
 {
@@ -102,13 +103,17 @@ public class PreprocessorUtils
 		filesTimeStamps_.put(filePath, new File(filePath).lastModified());
 
 		try{
+
+		    Paths paths = Preferences.getPaths(
+		            ProjectUtils.getCacheForProject( file.getProject( ) ).getInstallName( ) );
+
 			List<String> arguments = new ArrayList<String>();
 
 			arguments.add( "--config-dir" ); //$NON-NLS-1$
-			arguments.add( Preferences.Paths.getUserDir( ) );
+			arguments.add( paths.getUserDir( ) );
 
 			arguments.add( "--data-dir" ); //$NON-NLS-1$
-			arguments.add( Preferences.Paths.getWorkingDir( ) );
+			arguments.add( paths.getWorkingDir( ) );
 
 			if (macrosFile != null && macrosFile.isEmpty() == false)
 			{
@@ -154,7 +159,7 @@ public class PreprocessorUtils
 
 			Logger.getInstance().log(Messages.PreprocessorUtils_10 + filePath);
 			ExternalToolInvoker wesnoth = new ExternalToolInvoker(
-					Preferences.Paths.getWesnothExecutablePath( ),
+					paths.getWesnothExecutablePath( ),
 					arguments);
 			wesnoth.runTool();
 			if (waitForIt)

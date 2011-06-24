@@ -29,6 +29,7 @@ import org.eclipse.core.runtime.Path;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
+import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.utils.AntUtils;
 import org.wesnoth.utils.PreprocessorUtils;
 import org.wesnoth.utils.ProjectCache;
@@ -36,6 +37,7 @@ import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLSaxHandler;
+import org.wesnoth.utils.WesnothInstallsUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.wml.core.ConfigFile;
 
@@ -72,8 +74,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		Logger.getInstance().log(Messages.WesnothProjectBuilder_0);
 		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
 
+		Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( getProject() ) );
+
 		monitor.subTask(Messages.WesnothProjectBuilder_3);
-		if ( Preferences.Paths.getUserDir( ).isEmpty( ) )
+		if ( paths.getUserDir( ).isEmpty( ) )
 		{
 			Logger.getInstance().log(Messages.WesnothProjectBuilder_4,
 					Messages.WesnothProjectBuilder_5);
@@ -93,8 +97,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			// in the user add-ons directory (incremental)
 			monitor.subTask(Messages.WesnothProjectBuilder_8);
 			Map<String, String> properties = new HashMap<String, String>();
-			properties.put("wesnoth.user.dir", //$NON-NLS-1$
-					Preferences.Paths.getUserDir( ));
+			properties.put("wesnoth.user.dir", paths.getUserDir( )); //$NON-NLS-1$
 			Logger.getInstance().log(Messages.WesnothProjectBuilder_10);
 
 			String result = AntUtils.runAnt(

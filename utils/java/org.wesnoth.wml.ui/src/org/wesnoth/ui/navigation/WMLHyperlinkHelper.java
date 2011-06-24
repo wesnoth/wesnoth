@@ -19,11 +19,13 @@ import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkAcceptor;
 import org.wesnoth.Logger;
 import org.wesnoth.preferences.Preferences;
+import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.preprocessor.Define;
 import org.wesnoth.ui.Messages;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.emf.ObjectStorageAdapter;
 import org.wesnoth.utils.ProjectUtils;
+import org.wesnoth.utils.WesnothInstallsUtils;
 import org.wesnoth.wml.WMLMacroCall;
 
 
@@ -42,13 +44,21 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 		if (node == null)
 			return;
 
-		createMacroHyperlink(node, acceptor, resource);
+        IFile file = WMLUtil.getActiveEditorFile();
+        if (file == null)
+        {
+            Logger.getInstance().logError(Messages.WMLHyperlinkHelper_0);
+            return;
+        }
+        Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( file ) );
+
+		createMacroHyperlink( file, paths, node, acceptor, resource );
 		LeafNode prevNode = (LeafNode)NodeUtil.findLeafNodeAtOffset(rootNode,
 									node.getOffset() - 1);
 		if(prevNode == null)
 			return;
 
-		createMapHyperlink(prevNode, node, acceptor, resource);
+		createMapHyperlink( paths, prevNode, node, acceptor, resource );
 	}
 
 	/**
@@ -58,7 +68,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 	 * @param acceptor
 	 * @param resource
 	  */
-	private void createMacroHyperlink(LeafNode node,
+	private void createMacroHyperlink( IFile file, Paths paths, LeafNode node,
 			IHyperlinkAcceptor acceptor, XtextResource resource)
 	{
 		if (node.eContainer() == null ||
@@ -70,14 +80,6 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 			return;
 
 		WMLMacroCall macro = (WMLMacroCall)container.getElement();
-
-
-		IFile file = WMLUtil.getActiveEditorFile();
-		if (file == null)
-		{
-			Logger.getInstance().logError(Messages.WMLHyperlinkHelper_0);
-			return;
-		}
 
 		// get the define for the macro
 		Define define = ProjectUtils.getCacheForProject(file.getProject()).getDefines().get(macro.getName());
@@ -93,14 +95,15 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
 		String filePath = define.getLocation().split(" ")[0]; //$NON-NLS-1$
 
-		if (filePath.startsWith("~")) // user addon relative location //$NON-NLS-1$
+		if (filePath.startsWith("~")) { // user addon relative location //$NON-NLS-1$
+
 			filePath = filePath.replaceFirst("~", //$NON-NLS-1$
-					Preferences.Paths.getUserDir( ).replace('\\', '/') +
-					"/data/"); //$NON-NLS-1$
-		else if (filePath.startsWith("core")) // data/core relative location //$NON-NLS-1$
+			        paths.getUserDir( ).replace('\\', '/') + "/data/"); //$NON-NLS-1$
+		}
+		else if (filePath.startsWith("core")) { // data/core relative location //$NON-NLS-1$
 			filePath = filePath.replaceFirst("core", //$NON-NLS-1$
-					Preferences.Paths.getWorkingDir( ).replace('\\', '/') +
-					"/data/core/"); //$NON-NLS-1$
+					paths.getWorkingDir( ).replace('\\', '/') + "/data/core/"); //$NON-NLS-1$
+		}
 
 		FileLocationOpenerHyperlink macroTarget = new FileLocationOpenerHyperlink();
 		macroTarget.setHyperlinkRegion(new Region(container.getOffset(), container.getLength()));
@@ -114,8 +117,8 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 	 * @param key The key (must me 'map_data' in this case)
 	 * @param value The value of key, that is, the location of the map
 	 */
-	private void createMapHyperlink(LeafNode key, LeafNode value,
-			IHyperlinkAcceptor acceptor, XtextResource resource)
+	private void createMapHyperlink( Paths paths, LeafNode key, LeafNode value,
+			IHyperlinkAcceptor acceptor, XtextResource resource )
 	{
 		if (!(key.getText().equals("map_data"))) //$NON-NLS-1$
 			return;
@@ -128,8 +131,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 			mapLocation = mapLocation.substring(1, value.getLength() - 1);
 
 		mapLocation = mapLocation.replaceFirst("~", //$NON-NLS-1$
-				Preferences.Paths.getUserDir( ).replace('\\','/') +
-				"/data/"); //$NON-NLS-1$
+				paths.getUserDir( ).replace('\\','/') + "/data/"); //$NON-NLS-1$
 
 		ObjectStorageAdapter adapter = (ObjectStorageAdapter)EcoreUtil.getAdapter(value.eAdapters(),
 				ObjectStorageAdapter.class);

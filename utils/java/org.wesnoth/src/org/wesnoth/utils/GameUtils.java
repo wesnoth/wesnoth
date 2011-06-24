@@ -18,6 +18,7 @@ import org.eclipse.ui.console.MessageConsole;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
+import org.wesnoth.preferences.Preferences.Paths;
 
 
 public class GameUtils
@@ -54,14 +55,14 @@ public class GameUtils
 
 	protected static void runCampaignScenario(boolean scenario)
 	{
-		if (WorkspaceUtils.getSelectedResource() == null)
+        IResource selectedResource = WorkspaceUtils.getSelectedResource();
+
+		if ( selectedResource == null )
 		{
 			GUIUtils.showWarnMessageBox(Messages.GameUtils_0 +
 					Messages.GameUtils_1);
 			return;
 		}
-
-		IResource selectedResource = WorkspaceUtils.getSelectedResource();
 
 		try
 		{
@@ -100,7 +101,8 @@ public class GameUtils
 				args.add( scenarioId );
 			}
 
-			startGame(args);
+			startGame( WesnothInstallsUtils.getInstallNameForResource( selectedResource ),
+			        args );
 		} catch (Exception e)
 		{
 			Logger.getInstance().logException(e);
@@ -112,18 +114,20 @@ public class GameUtils
 	 */
 	public static void startGame()
 	{
-		startGame(null);
+		startGame( null, null );
 	}
 
 	/**
 	 * Starts the wesnoth game with the specified extraArguments
 	 * @param extraArgs Extra arguments given to the game, or null.
 	 */
-	public static void startGame(List<String> extraArgs)
+	public static void startGame( String installName, List<String> extraArgs )
 	{
 		List<String> args = new ArrayList<String>();
-		String wesnothExec = Preferences.Paths.getWesnothExecutablePath( );
-		String workingDir = Preferences.Paths.getWorkingDir( );
+
+		Paths paths = Preferences.getPaths( installName );
+		String wesnothExec = paths.getWesnothExecutablePath( );
+		String workingDir = paths.getWorkingDir( );
 
 		if (wesnothExec.isEmpty() || workingDir.isEmpty())
 		{
@@ -135,8 +139,8 @@ public class GameUtils
 			args.addAll(extraArgs);
 
 		// add the user's data directory path
-		args.add("--config-dir"); //$NON-NLS-1$
-		args.add(Preferences.Paths.getUserDir( ));
+		args.add( "--config-dir" ); //$NON-NLS-1$
+		args.add( paths.getUserDir( ) );
 
 		// we need to add the working dir (backward compatibility)
 		args.add(workingDir);
@@ -177,7 +181,8 @@ public class GameUtils
 	 */
 	public static void startEditor(String mapName)
 	{
-		startGame(getEditorLaunchArguments(mapName));
+		startGame( WesnothInstallsUtils.getInstallNameForResource( mapName ),
+		        getEditorLaunchArguments(mapName) );
 	}
 
 	/**

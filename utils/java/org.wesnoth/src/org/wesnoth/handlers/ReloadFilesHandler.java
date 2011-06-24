@@ -27,6 +27,7 @@ public class ReloadFilesHandler extends AbstractHandler
 	public Object execute(ExecutionEvent event)
 	{
 		SchemaParser.getInstance().parseSchema(true);
+
 		TemplateProvider.getInstance().loadTemplates();
 
 		// reload the cache only for already loaded files

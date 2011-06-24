@@ -37,7 +37,6 @@ import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.core.ConfigFile;
 import org.wesnoth.wml.impl.WmlFactoryImpl;
 
-
 @SuppressWarnings("unused")
 public class WMLProposalProvider extends AbstractWMLProposalProvider
 {

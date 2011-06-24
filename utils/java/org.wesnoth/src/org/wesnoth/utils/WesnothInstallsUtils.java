@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.preferences.Preferences;
@@ -78,5 +80,29 @@ public class WesnothInstallsUtils
             installs.append( install.Version );
         }
         Preferences.getPreferences().setValue( Constants.P_INST_INSTALL_LIST, installs.toString() );
+    }
+
+    /**
+     * Returns the install name for the specified resource
+     * @param resourcePath The path to the resource
+     * @return The install name for the resource
+     */
+    public static String getInstallNameForResource( String resourcePath )
+    {
+        return getInstallNameForResource( ResourcesPlugin.getWorkspace( ).getRoot( ).
+                findMember( resourcePath ) );
+    }
+
+    /**
+     * Returns the install name for the specified resource
+     * @param resource The resource
+     * @return The install name for the resource
+     */
+    public static String getInstallNameForResource( IResource resource )
+    {
+        if ( resource == null )
+            return ""; //$NON-NLS-1$
+
+        return ProjectUtils.getCacheForProject( resource.getProject( ) ).getInstallName( );
     }
 }

@@ -305,7 +305,8 @@ public class WorkspaceUtils
 		if (resource == null)
 			return null;
 
-		String result = Preferences.Paths.getAddonsDir( );
+		String result = Preferences.getPaths(
+		        WesnothInstallsUtils.getInstallNameForResource( resource ) ).getAddonsDir( );
 		result += resource.getProject().getName() + Path.SEPARATOR;
 		result += resource.getProjectRelativePath().toOSString();
 		return result;
@@ -376,8 +377,8 @@ public class WorkspaceUtils
 
                     // automatically import 'special' folders as projects
                     List<File> files = new ArrayList<File>();
-                    String addonsDir = Preferences.Paths.getAddonsDir( );
-                    String campaignsDir = Preferences.Paths.getCampaignDir( );
+                    String addonsDir = Preferences.getPaths( null ).getAddonsDir( );
+                    String campaignsDir = Preferences.getPaths( null ).getCampaignDir( );
 
                     File[] tmp = null;
                     if (GUIUtils.showMessageBox(Messages.WorkspaceUtils_18 +
@@ -490,10 +491,10 @@ public class WorkspaceUtils
 	 */
 	public static boolean checkPathsAreSet(boolean displayWarning)
 	{
-		if ( !validPath( Preferences.Paths.getWesnothExecutablePath( ) ) ||
-		     !validPath( Preferences.Paths.getUserDir( ) ) ||
-			 !validPath( Preferences.Paths.getWMLToolsDir( ) ) ||
-			 !validPath( Preferences.Paths.getWorkingDir( ) ))
+		if ( !validPath( Preferences.getPaths( null ).getWesnothExecutablePath( ) ) ||
+		     !validPath( Preferences.getPaths( null ).getUserDir( ) ) ||
+			 !validPath( Preferences.getPaths( null ).getWMLToolsDir( ) ) ||
+			 !validPath( Preferences.getPaths( null ).getWorkingDir( ) ))
 		{
 			if (displayWarning)
 				GUIUtils.showWarnMessageBox(Messages.WorkspaceUtils_33);

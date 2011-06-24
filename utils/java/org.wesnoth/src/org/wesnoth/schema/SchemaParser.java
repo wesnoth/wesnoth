@@ -36,17 +36,25 @@ public class SchemaParser
 		return instance_;
 	}
 
-	private Map<String, String> primitives_	    = new HashMap<String, String>();
+	private Map<String, String> primitives_	   = new HashMap<String, String>();
 	private Map<String, Tag>    tags_          = new HashMap<String, Tag>();
-	private boolean                parsingDone_   = false;
+	private boolean             parsingDone_   = false;
 
 	/**
 	 * Parses the schema
+	 *
+	 * @param installName The install to use. It will get the default schema
+	 * path based on that
+	 *
 	 * @param force True to force parsing the schema, skipping the existing cache
 	 */
-	public void parseSchema(boolean force)
+	public void parseSchema( boolean force )
 	{
-		parseSchema( force, Preferences.Paths.getSchemaPath( ) );
+        //TODO should parse schema for each install type
+        if (true)
+            throw new RuntimeException("fix this!");
+	    String installName = "";
+		parseSchemaFile( force, Preferences.getPaths( installName ).getSchemaPath( ) );
 	}
 
 	/**
@@ -54,7 +62,7 @@ public class SchemaParser
 	 * @param force True to force parsing the schema, skipping the existing cache
 	 * @param schemaPath The path to the 'schema.cfg' file
 	 */
-	public void parseSchema(boolean force, String schemaPath)
+	public void parseSchemaFile( boolean force, String schemaPath )
 	{
 		if (parsingDone_ && !force)
 		{
