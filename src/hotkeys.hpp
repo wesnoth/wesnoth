@@ -258,8 +258,10 @@ hotkey_item& get_hotkey(const std::string& command);
 
 hotkey_item& get_hotkey(int joy_num, int button_num);
 hotkey_item& get_hotkey(int joy_num, int hat_num, int hat_value);
-hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
-	bool alt, bool cmd);
+hotkey_item& get_hotkey(int character, int keycode, bool shift,
+		bool ctrl, bool alt, bool cmd);
+hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event);
+hotkey_item& get_hotkey(const SDL_JoyHatEvent& event);
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event);
 
 HOTKEY_COMMAND get_hotkey_command(const std::string& command);

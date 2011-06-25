@@ -785,7 +785,7 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 	return *itor;
 }
 
-static hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
+hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
 {
 	return get_hotkey(event.which, event.button);
 }
