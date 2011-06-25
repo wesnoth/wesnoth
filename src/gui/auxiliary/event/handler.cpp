@@ -203,6 +203,22 @@ private:
 	tdispatcher* keyboard_dispatcher();
 
 	/**
+	 * Handles a hat motion event.
+	 *
+	 * @param event                  The SDL joystick hat event triggered.
+	 */
+	void hat_motion(const SDL_JoyHatEvent& event);
+
+
+	/**
+	 * Handles a joystick button down event.
+	 *
+	 * @param event                  The SDL joystick button event triggered.
+	 */
+	void button_down(const SDL_JoyButtonEvent& event);
+
+
+	/**
 	 * Fires a key down event.
 	 *
 	 * @param event                  The SDL keyboard event triggered.
@@ -329,6 +345,20 @@ void thandler::handle_event(const SDL_Event& event)
 						window->set_retval(twindow::AUTO_CLOSE);
 					}
 				}
+			break;
+
+		case SDL_JOYBUTTONDOWN:
+			button_down(event.jbutton);
+			break;
+
+		case SDL_JOYBUTTONUP:
+			break;
+
+		case SDL_JOYAXISMOTION:
+			break;
+
+		case SDL_JOYHATMOTION:
+			hat_motion(event.jhat);
 			break;
 
 		case SDL_KEYDOWN:
@@ -590,6 +620,30 @@ tdispatcher* thandler::keyboard_dispatcher()
 	}
 
 	return NULL;
+}
+
+void thandler::hat_motion(const SDL_JoyHatEvent& event)
+{
+	const hotkey::hotkey_item& hk = hotkey::get_hotkey(event);
+	bool done = false;
+	if(!hk.null()) {
+		done = hotkey_pressed(hk);
+	}
+	if(!done) {
+		//TODO fendrin think about handling hat motions that are not bound to a hotkey.
+	}
+}
+
+void thandler::button_down(const SDL_JoyButtonEvent& event)
+{
+	const hotkey::hotkey_item& hk = hotkey::get_hotkey(event);
+	bool done = false;
+	if(!hk.null()) {
+		done = hotkey_pressed(hk);
+	}
+	if(!done) {
+		//TODO fendrin think about handling button down events that are not bound to a hotkey.
+	}
 }
 
 void thandler::key_down(const SDL_KeyboardEvent& event)
