@@ -1,6 +1,7 @@
 \documentclass[10pt]{article}
 \usepackage[top=1cm, bottom=1cm, left=1cm, right=1cm]{geometry}
 \usepackage{graphicx}
+\usepackage{multicol}
 \usepackage[colorlinks=true]{hyperref}
 \usepackage{verbatim}
 \usepackage{enumerate}
@@ -19,62 +20,74 @@
 \newcounter{cnt}
 \newcommand{\icnt}{ \stepcounter{cnt} \thecnt }
 
-\section{Foreword} \hskip\parindent
+\section{Foreword}
+\begin{multicols}{2}
+  \begin{center}
+    \includegraphics[scale=0.6]{definitions.png}
+  \end{center}
 Through this readme the following terms with the specified meaning will be used:
 \begin{enumerate}
-\item Navigator - an Eclipse view that shows the projects in the workspace
+\item Navigator / Project Explorer / Package Explorer - an Eclipse view that shows the projects in the workspace
 \item Project - a directory on the harddrive that is represented as a top directory in the navigator.
 \item Container - this is a directory or a project. Basically it can contain any file or directory children.
 \end{enumerate}
 
 The following image will highlight the terms used: 1 - Navigator, 2 - Project, 3 - Containers, 4 - Map files, 5 - Config files that contain WML code
+\end{multicols}
 
-\includegraphics{definitions.png}
+\section{Prerequisites}
+A quick list before getting into details:
+\begin{enumerate}
+\item Java 6
+\item Python 2.x
+\item Eclipse 3.5 or newer
+\item Wesnoth 1.9.x, trunk or newer
+\end{enumerate}
 
-\section{Common prerequisites}
+Now for getting all those items:
 \begin{enumerate}
 \item The plugin runs on the following platforms: Windows 32/64 bit, Linux 32/64 bit and Mac OSX 64bit. Note that \textbf{Mac OSX 32 bit} is \textbf{not supported}. If you want to know why, please consult the Frequently Asked Questions section.
-\item Download and install Sun's Java Version 6 (Java SE6):
-\begin{enumerate}
-\item If you are going just to use the plugin (User): \href{https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=jre-6u21-oth-JPR@CDS-CDS_Developer}{Download JRE}
-\item If you are going to modify it or run it from source (Developer): \href{http://java.sun.com/javase/downloads/widget/jdk6.jsp}{Download JDK}
-\end{enumerate}
+\item Download and install Oracle/Sun's Java Version 6 (Java SE6): \href{http://java.sun.com/javase/downloads/widget/jdk6.jsp}{Download JDK}
+
 \textit{Note:} The plugin uses Java SE6, thus older versions (like 1.4 or 1.5) don't work with it.\\
-\textit{Note:} Please double check the java installed on your system. On some machines there is the OpenJDK or other Java versions. Use just Sun's so there will be no problems.
+\textit{Note:} Please double check the java installed on your system. On some machines there is the OpenJDK or other Java versions. Just use Oracle/Sun's so there will be no problems.
+
 \item Download and install Python 2.x:
-\begin{enumerate}
-\item \textbf{Windows:} Download and install from here: \href{http://python.org/download/}{Download Python} , selecting a 2.x version
-\item \textbf{Linux:} Use the regular package manager for installing it from the repositories.
-\item \textbf{Mac:} Download and install from here: \href{http://python.org/download/}{Download Python} , selecting a 2.x version
-\item Check the guide over here: \href{http://wiki.python.org/moin/BeginnersGuide/Download}{Python Download and install} 
-\end{enumerate}
-\textit{Note:} Please ensure you install the 2.x versions. Versions 3.x are \textbf{not} supported by the Wesnoth's WML Tools.
-\item Download ``Eclipse" (The download links are in the right. Please ensure you are downloading the \textbf{3.6} version, otherwise the plugin will not work.):
-\begin{enumerate}
-\item If you are going just to use the plugin (User): \href{http://eclipse.org/downloads/packages/eclipse-classic-360/heliosr}{Download Eclipse Classic}
-\item If you are going to modify it or run it from source (Developer):  \href{http://eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/heliosr}{Download Eclipse for RCP and RAP Developers}
-\end{enumerate}
-\item Extract the downloaded archive in a known location and launch the executable (eclipse / eclipse.exe)\\
-\textit{Note:} You will need to have a wesnoth version 1.9.x or newer, or a version compiled from trunk, in order for the plugin's features to correctly work.
+ \begin{enumerate}
+   \item \textbf{Windows:} Download and install from here: \href{http://python.org/download/}{Download Python} , selecting a 2.x version
+   \item \textbf{Linux:} Use the regular package manager for installing it from the repositories.
+   \item \textbf{Mac:} Download and install from here: \href{http://python.org/download/}{Download Python} , selecting a 2.x version
+   \item Check the guide over here: \href{http://wiki.python.org/moin/BeginnersGuide/Download}{Python Download and install} 
+  \end{enumerate}
+ \textit{Note:} Please ensure you install the 2.x versions. Versions 3.x are \textbf{not} yet supported by the Wesnoth's WML Tools.
+
+\item Download ``Eclipse" (The download links are in the right. Please ensure you are downloading at least the \textbf{3.5} version, otherwise the plugin will not work.):   \href{http://eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/heliosr}{Download Eclipse for RCP and RAP Developers}
+
+\item Extract the downloaded archive in a known location and launch the executable (eclipse / eclipse.exe)
+
+\item You will need to have a wesnoth version 1.9.x, trunk or newer, in order for the plugin's features to correctly work.
 \end{enumerate}
 
-\section{User}
-\subsection{Installing the plugin}
+\section{Installing the plugin}
 \begin{enumerate}
-\item After launching Eclipse, go to the ``Help'' menu - Install new Software.\\
-  Then, please check ``Group items by category" and ``Contact all update sites during install to find required software", in the bottom of the page.\\ \includegraphics[width=550px]{install_new_software.png}
+\item After launching Eclipse, go to the ``Help'' menu - Install new Software. Then, check the checkbox ``Contact all update sites during install to find required software" (it can be found in the bottom of the page).
+
+\begin{center}
+\includegraphics[scale=0.7]{install_new_software.png}
+\end{center}
+
 \item Insert the link \textbf{http://eclipse.wesnoth.org/} in the textbox in the top and press Enter. The list will be populated with some items.
-\item Select the entire ``Wesnoth UMC Plugin" category and press finish.
+\item Select the single item ``Wesnoth User Made Content Plugin" and press finish.
 
 \textit{Note:} If you are prompted for any license agreements or certificates press Yes on all (if you agree).\\
 \textit{Note:} After the plugin has installed, press ``Restart workbench now" when you are prompted.
 \item Now the plugin is ready to be used.
 \end{enumerate}
 
-\section{Using the plugin} \hskip\parindent
-After you have your plugin installed (user), you can use its features.
+\section{Using the plugin}
+After you have started the plugin, you can use its features.
 
-But before of all, you must ``Setup the workspace". For this, go in the ``Wesnoth" menu (it will have the wesnoth icon) and select ``Setup the workspace". You will be guided setting the workspace. The preferences page for the plugin will pop up, and you must fill them all, so the plugin will work as intended. After you completed the fields, press \textbf{Apply} and then \textbf{OK}. Then the plugin will create for convenience wesnoth projects for each of mainline campaigns and for each directory in your \textbf{useraddons/data/add-ons} directory. The working directory is the directory that contains the data, images, manual, sounds of wesnoth.
+But before of all, you must ``Setup the workspace". For this, go in the ``Wesnoth" menu (it will have the wesnoth icon) and select ``Setup the workspace". You will be guided setting the workspace. The preferences page for the plugin will pop up, and you must fill them all, so the plugin will work as intended. After you completed the fields, press \textbf{Apply} and then \textbf{OK}. Then the plugin will create for convenience (i.e. if you want) wesnoth projects for each of mainline campaigns and for each directory in your \textbf{useraddons/data/add-ons} directory. The working directory is the directory that contains the data, images, manual, sounds of wesnoth.
 
 If there were no errors a message window will open saying: \textbf{Workspace was setup successfully}.
 
@@ -91,12 +104,12 @@ There are some wizards available in the plugin, that will create either projects
 
 There are 3 wizards categories:
 \begin{enumerate}
-\item Project wizards - ``Empty project" and ``Campaign" wizards create new projects in the workspace. The former will create a basic addon directory structure. The latter will create a campaign and it's directory structure.
+\item Project wizards - ``Empty project" and ``Campaign" wizards create new projects in the workspace. The former will create a basic addon directory structure. The latter will create a campaign and its directory structure.
 \item File wizards - ``Wesnoth config file", ``Scenario", ``Era" and ``Faction" wizards create a new file in a selected container.
-\item Wizard launcher - This is a special wizard. It takes a wml tag as input, and generate subsequent needed tags and key inputs. This is generated on the wml schema, so if the schema is incomplete some tags won't be available. This wizard can create a new file or copy the resulted WML into the current edited file.
+\item Wizard launcher - This is a special wizard. It takes a wml tag as input, and generate subsequent needed tags and key inputs. This is generated based on the wml schema, so if the schema is incomplete some tags won't be available. This wizard can create a new file or copy the resulted WML into the current edited file.
 \end{enumerate}
 
-\subsubsection{Menus} \hskip\parindent
+\subsubsection{Menus}
 There are currently 2 types of menus: the context menus for different file/container types and the main menu. For a better distinction the menus have the wenoth icon near each item.
 
 \begin{description}
