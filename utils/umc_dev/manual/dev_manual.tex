@@ -5,7 +5,7 @@
 \usepackage{verbatim}
 \usepackage{enumerate}
 
-\title{Eclipse Wesnoth UMC Plugin Readme\\ Google Summer of Code 2010 - 2011 Project}
+\title{Wesnoth UMC Development \\ Developer's Manual}
 \author{Timotei Dolean - \href{mailto:timotei21@gmail.com}{timotei21@gmail.com}}
 
 \begin{document}
@@ -19,7 +19,7 @@
 \newcounter{cnt}
 \newcommand{\icnt}{ \stepcounter{cnt} \thecnt }
 
-\section{Foreword} \hskip\parindent
+\section{Foreword}
 Through this readme the following terms with the specified meaning will be used:
 \begin{enumerate}
 \item Navigator - an Eclipse view that shows the projects in the workspace
@@ -58,19 +58,6 @@ The following image will highlight the terms used: 1 - Navigator, 2 - Project, 3
 \textit{Note:} You will need to have a wesnoth version 1.9.x or newer, or a version compiled from trunk, in order for the plugin's features to correctly work.
 \end{enumerate}
 
-\section{User}
-\subsection{Installing the plugin}
-\begin{enumerate}
-\item After launching Eclipse, go to the ``Help'' menu - Install new Software.\\
-  Then, please check ``Group items by category" and ``Contact all update sites during install to find required software", in the bottom of the page.\\ \includegraphics[width=550px]{install_new_software.png}
-\item Insert the link \textbf{http://eclipse.wesnoth.org/} in the textbox in the top and press Enter. The list will be populated with some items.
-\item Select the entire ``Wesnoth UMC Plugin" category and press finish.
-
-\textit{Note:} If you are prompted for any license agreements or certificates press Yes on all (if you agree).\\
-\textit{Note:} After the plugin has installed, press ``Restart workbench now" when you are prompted.
-\item Now the plugin is ready to be used.
-\end{enumerate}
-
 \section{Developer}
 \subsection{Setup the environment}
 \begin{enumerate}
@@ -82,7 +69,7 @@ The following image will highlight the terms used: 1 - Navigator, 2 - Project, 3
 \item Build the projects.
 \end{enumerate}
 
-\subsection{Running the plugin} \hskip\parindent
+\subsection{Running the plugin}
 After you've setup the environment and built the plugin you can run it.
 \begin{enumerate}
 \item Press the dropdown arrow near the ``Run" button in Eclipse's toolbar.
@@ -93,104 +80,6 @@ After you've setup the environment and built the plugin you can run it.
 \end{enumerate}
 \includegraphics[width=550px]{launch_plugin.png}
 
-\section{Everybody}
-\subsection{Using the plugin} \hskip\parindent
-After you have your plugin installed (user) or running(developer), you can use its features.
-
-But before of all, you must ``Setup the workspace". For this, go in the ``Wesnoth" menu (it will have the wesnoth icon) and select ``Setup the workspace". You will be guided setting the workspace. The preferences page for the plugin will pop up, and you must fill them all, so the plugin will work as intended. After you completed the fields, press \textbf{Apply} and then \textbf{OK}. Then the plugin will create for convenience wesnoth projects for each of mainline campaigns and for each directory in your \textbf{useraddons/data/add-ons} directory. The working directory is the directory that contains the data, images, manual, sounds of wesnoth.
-
-If there were no errors a message window will open saying: \textbf{Workspace was setup successfully}.
-
-\textit{Note:} If you encounter any errors, the plugin logs them in the: \textbf{\textless your temporary directory\textgreater /wesnoth\_plugin/logs}.
-That is usually on linux:\\
-\indent \textbf{/tmp/wesnoth\_plugin/logs}\\
-or on windows:\\
-\indent \textbf{C:/Documents and settings/\textless your username\textgreater/Local Settings/Temp/wesnoth\_plugin/logs} \\
-or\\
-\indent \textbf{C:/Users/\textless your username\textgreater/Local Settings/Temp/wesnoth\_plugin/logs}
-
-\subsubsection{Wizards} \hskip\parindent
-There are some wizards available in the plugin, that will create either projects or config files, based on the specified input. This wizards are available by going to the ``File" menu - New - Other... , and from that list selecting the ``Wesnoth" category.
-
-There are 3 wizards categories:
-\begin{enumerate}
-\item Project wizards - ``Empty project" and ``Campaign" wizards create new projects in the workspace. The former will create a basic addon directory structure. The latter will create a campaign and it's directory structure.
-\item File wizards - ``Wesnoth config file", ``Scenario", ``Era" and ``Faction" wizards create a new file in a selected container.
-\item Wizard launcher - This is a special wizard. It takes a wml tag as input, and generate subsequent needed tags and key inputs. This is generated on the wml schema, so if the schema is incomplete some tags won't be available. This wizard can create a new file or copy the resulted WML into the current edited file.
-\end{enumerate}
-
-\subsubsection{Menus} \hskip\parindent
-There are currently 2 types of menus: the context menus for different file/container types and the main menu. For a better distinction the menus have the wenoth icon near each item.
-
-\begin{description}
-\item{\textbf{Project context menu}} - right click on the projects created with the plugin
-
-   \textit{Wesnoth project report} - will show a simple report with the numer of maps, scenarios and units.\\
-   \textit{Open campaign in game} - will start the current project's campaign (if any) in wesnoth. For this to work, you must have a ``\_main.cfg" file defined, and a campaign in it.\\
-   \textit{Upload addon} - will upload the specified directory on the wesnoth addon server. The status will be outputed to the console.\\
-   \textit{Regenerate build files} - recreates the ``build.xml" file. That is used if the current project is one relative to useraddons\\
-   \textit{Builders} - utilities for adding/removing the wesnoth/xtext builders. Don't use them until you know what you are doing.
-
-\item{\textbf{Container context menus}} - right click on any container
-
-    \textit{WML Tools} - provides some options for using the wmltools with the specified project.
-
-\item{\textbf{``maps" folder context menu}} - right click on the ``maps" directory
-
-   \textit{Import map} - Shows a file selection window that will ley you select a .map file that will be copied in your maps directory.
-
-\item{\textbf{.cfg files context menu}} - right click on any .cfg file
-
-   \textit{Open scenario in game} - opens the selected file's scenario (if it contains one) in wesnoth.\\
-   \textit{WML Tools} - provides some options for using the wmltools with the specified file. (e.g. run wmllint against the file and see the output in the console) \\
-   \textit{Preprocessor} - provides ways of preprocessing and showing the result in an editor inside eclipse.
-
-\item{\textbf{.map files context menu}} - right click on any .map file
-
-   \textit{Open map in editor} - will open the selected map in the wesnoth map editor.
-
-\item{\textbf{Editor context menu}} - right click in the editor
-   \textit{Validate} - will validate the entire file (this is an expensive action)
-
-\item{\textbf{Main menu}} - This is a menu near the ``Window" menu bar
-
-   \textit{Open editor} - Will open the game editor with a blank map.\\
-   \textit{Open game} - Will open the game.\\
-   \textit{Import map} - It will import a map in selected container.\\
-   \textit{Open editor} - Open the selected map in the game editor.\\
-   \textit{Setup workspace} - Will setup the workspace if it's not setup. This will open the preferences page if any preferences is missing, and then it will create the wesnoth project for mainline and user addons directories if you want.\\
-   \textit{Reload cache} - Reloads the internal cached files. Useful when the schema or other files have modified and you don't want to restart the plugin.\\
-   \textit{Open plugin's preferences} - Opens the plugin preferences page.\\
-\end{description}
-
-\subsection{Use cases} \hskip\parindent
-\subsubsection{Import an already existing wesnoth addon into the plugin}
-For this you need just 2 single steps:
-\begin{enumerate}
-\item Open eclipse. Click the ``New" main menu bar - Project. Select the ``Empty project" from ``Wesnoth" category.
-\item Enter the name of the project. Uncheck ``Use default location", and press ``Browse...". Navigate to the addon's directory and then continue the wizard as necessary.
-\end{enumerate}
-
-\section{Frequently Asked Questions} \hskip\parindent
-\subsection{What is this plugin all about?}
-The plugin is in fact something like a WML IDE ( \href{http://en.wikipedia.org/wiki/Integrated_development_environment}{Wikipedia - IDE}). Basically it offers you some features that greatly help anybody who makes User made Content in WML.
-\begin{description}
-\item- It has wizards for new campaign, scenario, faction, era and every other wml tag you can think of. You just complete the needed values and it generates the wml (with nice indentation).
-\item- It has frontends for launching wmltools( like wmllint, wmlscope, wmlindent on files/directories), the wesnoth game, map editor.
-\item- It has a specialized WML editor, that has syntax highlighting, tag folding and outline, autocompletion, macro "explorer" and so on.
-\item- It has a 'upload addon' feature that uploads the specified project to the addons server.
-\end{description}
-
-\subsection{What is this ``eclipse" thingy?}
-Eclipse is a Java framework. It is very extensible, so people can actually make plugins that use the already existing functionality. It is written in Java, so for some people it can be slow, but at it's latest version it's very stable and it has few resource consumption.
-
-\subsection{What if I don't want to install eclipse?}
-You're lucky. There will be a slimmed version of Eclipse, actually only the plugin itself. The size will be 3 or 4 times smaller than the current eclipse, and there will be no extra plugins. This version isn't released yet.
-
-\subsection{Where can I submit any bugs found?}
-Go over to Wesnoth's bug tracker: \href{https://gna.org/bugs/?func=additem&group=wesnoth&bug_group_id=116}{Add new bug}. Please be as specific as possible. Also, if you have any logs, please attach them.
-
-\subsection{Why Mac OSX 32 bit is not supported?}
-Apple decided to manage itself the versions that can run on each Mac version. Thus the modern Java SE6 version - which is used by the plugin - is not available on 32 bit Macs but on 64bit only. The 32bit Macs have just Java SE5 version available. Trying to port the plugin to the ``outdated'' java version is not likely to be done, so please consider upgrading your OS.
+\section{Frequently Asked Questions}
 
 \end{document}

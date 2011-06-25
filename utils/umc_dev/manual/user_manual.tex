@@ -5,7 +5,7 @@
 \usepackage{verbatim}
 \usepackage{enumerate}
 
-\title{Eclipse Wesnoth UMC Plugin Readme\\ Google Summer of Code 2010 - 2011 Project}
+\title{Wesnoth UMC Development \\ User's Manual}
 \author{Timotei Dolean - \href{mailto:timotei21@gmail.com}{timotei21@gmail.com}}
 
 \begin{document}
@@ -71,31 +71,8 @@ The following image will highlight the terms used: 1 - Navigator, 2 - Project, 3
 \item Now the plugin is ready to be used.
 \end{enumerate}
 
-\section{Developer}
-\subsection{Setup the environment}
-\begin{enumerate}
-\item Open up the ``Install new software" menu, and select from the list: ``Helios - http://download.eclipse.org/releases/helios"
-\item In the list populated with items, select from the ``Modelling" category: ``Xtext SDK", and install it. Restart eclipse after that.
-\item Checkout the following folders: ``org.wesnoth", ``org.wesnoth.wml'', ``org.wesnoth.wml.ui" from plugin's folder in the svn (http://svn.gna.org/svn/wesnoth/trunk/utils/java/)
-\item In Eclipse, right click in \textbf{Package Explorer/Navigator/Project Explorer} and then select \textbf{Import - General - Existing projects into Workspace}
-\item Select the path where you downloaded the java folder, and check all the 3 projects: ``eclipse\_plugin", ``org.wesnoth.wml'', ``org.wesnoth.wml.ui".
-\item Build the projects.
-\end{enumerate}
-
-\subsection{Running the plugin} \hskip\parindent
-After you've setup the environment and built the plugin you can run it.
-\begin{enumerate}
-\item Press the dropdown arrow near the ``Run" button in Eclipse's toolbar.
-\item Press ``Run Configurations...".
-\item Select ``Eclipse Application" from the category list in the left and then pres the left-most icon, to create a new run configuration.
-\item Specify a name for the configuration
-\item Press Run.
-\end{enumerate}
-\includegraphics[width=550px]{launch_plugin.png}
-
-\section{Everybody}
-\subsection{Using the plugin} \hskip\parindent
-After you have your plugin installed (user) or running(developer), you can use its features.
+\section{Using the plugin} \hskip\parindent
+After you have your plugin installed (user), you can use its features.
 
 But before of all, you must ``Setup the workspace". For this, go in the ``Wesnoth" menu (it will have the wesnoth icon) and select ``Setup the workspace". You will be guided setting the workspace. The preferences page for the plugin will pop up, and you must fill them all, so the plugin will work as intended. After you completed the fields, press \textbf{Apply} and then \textbf{OK}. Then the plugin will create for convenience wesnoth projects for each of mainline campaigns and for each directory in your \textbf{useraddons/data/add-ons} directory. The working directory is the directory that contains the data, images, manual, sounds of wesnoth.
 
@@ -163,15 +140,15 @@ There are currently 2 types of menus: the context menus for different file/conta
    \textit{Open plugin's preferences} - Opens the plugin preferences page.\\
 \end{description}
 
-\subsection{Use cases} \hskip\parindent
-\subsubsection{Import an already existing wesnoth addon into the plugin}
+\section{Use cases} 
+\subsection{Import an already existing wesnoth addon into the plugin}
 For this you need just 2 single steps:
 \begin{enumerate}
 \item Open eclipse. Click the ``New" main menu bar - Project. Select the ``Empty project" from ``Wesnoth" category.
 \item Enter the name of the project. Uncheck ``Use default location", and press ``Browse...". Navigate to the addon's directory and then continue the wizard as necessary.
 \end{enumerate}
 
-\section{Frequently Asked Questions} \hskip\parindent
+\section{Frequently Asked Questions}
 \subsection{What is this plugin all about?}
 The plugin is in fact something like a WML IDE ( \href{http://en.wikipedia.org/wiki/Integrated_development_environment}{Wikipedia - IDE}). Basically it offers you some features that greatly help anybody who makes User made Content in WML.
 \begin{description}
