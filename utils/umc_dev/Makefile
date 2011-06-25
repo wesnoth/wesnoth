@@ -2,12 +2,14 @@ JAVADOC_BINARY=javadoc
 JAVADOC_DIR=javadoc
 JAVADOC_FLAGS=-d $(JAVADOC_DIR) -sourcepath org.wesnoth/src -public -source 1.6 -use -version -author -splitindex -link http://java.sun.com/javase/6/docs/api/ -link http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/ -subpackages org.wesnoth
 
-.PHONY: readme, javadoc, build
-readme:
-	cd org.wesnoth/readme; pdflatex README.tex
+.PHONY: manual javadoc build
+manual:
+	# developer manual
+	cd manual; pdflatex dev_manual.tex; cp dev_manual.pdf ..;
+	# user manual
+	cd manual; pdflatex user_manual.tex; cp user_manual.pdf ..;
 	# cleanup non-needed files
-	cd org.wesnoth/readme; rm README.log; rm README.aux;
-	cd org.wesnoth/readme; cp README.pdf ..;
+	cd manual; rm dev_manual.log; rm dev_manual.aux; rm user_manual.log; rm user_manual.aux; rm dev_manual.out; rm dev_manual.toc; rm user_manual.out; rm user_manual.toc;
 
 javadoc:
 	$(JAVADOC_BINARY) $(JAVADOC_FLAGS)
