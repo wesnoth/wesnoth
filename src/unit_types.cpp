@@ -1373,7 +1373,13 @@ bool unit_type::has_random_traits() const
 {
 	if (num_traits() == 0) return false;
 	config::const_child_itors t = possible_traits();
-	return t.first != t.second && ++t.first != t.second;
+	while(t.first != t.second) {
+		const config::attribute_value& availability = (*t.first)["availability"];
+		if(availability.blank()) return true;
+		if(strcmp(availability.str().c_str(), "musthave") != 0) return true;
+		++t.first;
+	}
+	return false;
 }
 
 unit_type_data unit_types;
