@@ -11,6 +11,7 @@ package org.wesnoth.preferences;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -315,8 +316,16 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             prefs.setToDefault( installPrefix + Constants.P_WESNOTH_WMLTOOLS_DIR );
             prefs.setToDefault( installPrefix + Constants.P_WESNOTH_WORKING_DIR );
 
+            // unset the default install if this was that
+            // and select another one (the first) - if any - as default
             if ( install.Name.equals( Preferences.getDefaultInstallName( ) ) ) {
                 Preferences.setDefaultInstallName( "" ); //$NON-NLS-1$
+
+                if ( ! installs_.isEmpty( ) ){
+                    // get the first item from the iterator
+                    Iterator<WesnothInstall> itor = installs_.values( ).iterator( );
+                    setInstallAsDefault( itor.next( ) );
+                }
             }
 
             // clear the current info
