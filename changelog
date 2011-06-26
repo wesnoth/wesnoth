@@ -1,6 +1,9 @@
 Version 1.9.7+svn:
  * Language and i18n:
    * Updated translations: Irish, Vietnamese
+ * Lua API:
+   * added support for slider and progress_bar widgets to wesnoth.get_dialog_value
+   * added support for text_box, slider, and progress_bar widgets to wesnoth.set_dialog_value
  * Multiplayer server:
    * Treat inactive forum accounts as unregistered users to prevent abuse
      of unverified registrations

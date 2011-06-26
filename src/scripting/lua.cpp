@@ -68,6 +68,8 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/slider.hpp"
+#include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/window.hpp"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
@@ -2799,6 +2801,29 @@ static int intf_set_dialog_value(lua_State *L)
 	{
 		b->set_value(lua_toboolean(L, 1));
 	}
+	else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w))
+	{
+		const t_string& text = luaW_checktstring(L, 1);
+		t->set_value(text.str());
+	}
+	else if (gui2::tslider *s = dynamic_cast<gui2::tslider *>(w))
+	{
+		const int v = luaL_checkinteger(L, 1);
+		const int m = s->get_minimum_value();
+		const int n = s->get_maximum_value();
+		if (m <= v && v <= n)
+			s->set_value(v);
+		else
+			return luaL_argerror(L, 1, "out of bounds");
+	}
+	else if (gui2::tprogress_bar *p = dynamic_cast<gui2::tprogress_bar *>(w))
+	{
+		const int v = luaL_checkinteger(L, 1);
+		if (0 <= v && v <= 100)
+			p->set_percentage(v);
+		else
+			return luaL_argerror(L, 1, "out of bounds");
+	}
 	else
 	{
 		t_string v = luaW_checktstring(L, 1);
@@ -2832,6 +2857,10 @@ static int intf_get_dialog_value(lua_State *L)
 		lua_pushboolean(L, b->get_value());
 	} else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w)) {
 		lua_pushstring(L, t->get_value().c_str());
+	} else if (gui2::tslider *s = dynamic_cast<gui2::tslider *>(w)) {
+		lua_pushinteger(L, s->get_value());
+	} else if (gui2::tprogress_bar *p = dynamic_cast<gui2::tprogress_bar *>(w)) {
+		lua_pushinteger(L, p->get_percentage());
 	} else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
