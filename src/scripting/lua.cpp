@@ -822,6 +822,14 @@ static int impl_vconfig_collect(lua_State *L)
 		return 0; \
 	}
 
+#define modify_int_attrib_check_range(name, accessor, allowed_min, allowed_max) \
+	if (strcmp(m, name) == 0) { \
+		int value = luaL_checkinteger(L, 3); \
+		if (value < allowed_min || allowed_max < value) return luaL_argerror(L, 3, "out of bounds"); \
+		accessor; \
+		return 0; \
+	}
+
 #define modify_bool_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		bool value = lua_toboolean(L, 3); \
