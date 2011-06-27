@@ -721,25 +721,15 @@ REPORT_GENERATOR(terrain)
 		} else {
 			str << map.get_terrain_info(terrain).income_description_ally();
 		}
-		str << ' ';
+
+		const std::string& underlying_desc = map.get_underlying_terrain_string(terrain);
+		if(!underlying_desc.empty()) {
+			str << underlying_desc;
+		}
 	} else {
-		str << map.get_terrain_info(terrain).description();
+		str << map.get_terrain_string(terrain);
 	}
 
-	const t_translation::t_list &underlying = map.underlying_union_terrain(terrain);
-	if (underlying.size() != 1 || underlying.front() != terrain)
-	{
-		str << " (";
-		for (t_translation::t_list::const_iterator i = underlying.begin(),
-		     i_end = underlying.end(); i != i_end; ++i)
-		{
-			str << map.get_terrain_info(*i).name();
-			if (i + 1 != underlying.end()) {
-				str << ", ";
-			}
-		}
-		str << ')';
-	}
 	return text_report(str.str());
 }
 

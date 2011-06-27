@@ -295,24 +295,7 @@ void terrain_palette::swap()
 
 std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t)
 {
-	std::stringstream str;
-	const std::string& name = map().get_terrain_info(t).editor_name();
-
-	const t_translation::t_list& underlying = map().underlying_union_terrain(t);
-	str << name;
-	if(underlying.size() != 1 || underlying[0] != t) {
-		str << " (";
-		for(t_translation::t_list::const_iterator i = underlying.begin();
-			i != underlying.end(); ++i) {
-
-			str << map().get_terrain_info(*i).editor_name();
-			if(i+1 != underlying.end()) {
-				str << ",";
-			}
-		}
-		str << ")";
-	}
-	return str.str();
+	return map().get_terrain_editor_string(t);
 }
 
 void terrain_palette::left_mouse_click(const int mousex, const int mousey) {
