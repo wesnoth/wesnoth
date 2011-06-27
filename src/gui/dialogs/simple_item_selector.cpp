@@ -89,6 +89,10 @@ void tsimple_item_selector::pre_show(CVideo& /*video*/, twindow& window)
 	lmessage.set_label(msg_);
 	lmessage.set_use_markup(markup_msg_);
 
+	if(msg_.empty()) {
+		lmessage.set_visible(gui2::twidget::INVISIBLE);
+	}
+
 	foreach(const tsimple_item_selector::item_type& it, items_) {
 		std::map<std::string, string_map> data;
 		string_map column;
