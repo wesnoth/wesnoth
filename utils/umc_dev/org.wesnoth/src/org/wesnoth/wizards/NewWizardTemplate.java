@@ -13,8 +13,10 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.wesnoth.WesnothPlugin;
 
 public abstract class NewWizardTemplate extends Wizard implements INewWizard
 {
@@ -36,6 +38,16 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 		setHelpAvailable(true);
 		this.selection_ = selection;
 		initialize();
+	}
+
+	@Override
+	public void createPageControls( Composite pageContainer )
+	{
+	    setHelpAvailable( true );
+        WesnothPlugin.getDefault().getWorkbench().getHelpSystem().setHelp( pageContainer,
+            "org.wesnoth.wizardHelp"); //$NON-NLS-1$
+
+	    super.createPageControls( pageContainer );
 	}
 
 	/**

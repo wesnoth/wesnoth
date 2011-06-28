@@ -8,8 +8,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
-import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Messages;
+import org.wesnoth.WesnothPlugin;
 
 
 public class NewWizardPageTemplate extends WizardPage

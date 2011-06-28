@@ -47,7 +47,6 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 
 	public EmptyProjectNewWizard() {
 		setWindowTitle(Messages.EmptyProjectNewWizard_0);
-		setNeedsProgressMonitor(true);
 	}
 
 	@Override
