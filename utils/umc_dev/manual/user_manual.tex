@@ -103,6 +103,18 @@ The standalone version of the plugin, does not need any Eclipse ``thingy". Just 
   \item Extract the downloaded archive and launch eclipse executable (Eclipse.App / Eclipse.exe / Eclipse ).
 \end{enumerate}
 
+\section{Features}
+
+The plugin has the following list of abilities (not exhaustive):
+\begin{itemize}
+  \item Easily creation of UMC Addons
+  \item Quick ``Writing" of WML code by using WML Wizards, by focusing on the content
+  \item Integrated launch of the Game or Map Editor
+  \item Integrated launch of the WML tools on individual projects/files
+  \item Support for multiple Wesnoth versions
+  \item Integrated powerful WML Editor with autocomplete, go to macro definition, etc
+\end{itemize}
+
 \section{Using the plugin}
 After you have started the plugin, you can use its features.
 
@@ -117,7 +129,7 @@ The plugin supports working with multiple installations ( we'll call them ``inst
   \item It has set all paths and they point to existing objects (currently the following paths can be set: wesnoth working directory, wesnoth executable path, wesnoth user addons directory and wesnoth wml tools path)
 \end{itemize}
 
-The Installs Preferences Page will list all currently saved installs. You can view, edit, remove or set as default a specific installation.( \textit{Note:} You cannot modify the name of the install after creation. For that, you need to delete and add it again with another name.)
+The Installs Preferences Page will list all currently saved installs. You can view, edit, remove or set as default a specific installation.( \textit{Note:} You cannot modify the name of the install after creation. For that, you need to delete and add it again with another name.) The installs have also attached a Wesnoth version to them. This is for now, just for informational purposes. It is not used effectively in others area than the Preferences page.
 
 All installs have in common the same python path. That means, each installation points to the same, current Python path set.
 
@@ -184,6 +196,23 @@ There are currently 2 types of menus: the context menus for different file/conta
    \textit{Open plugin's preferences} - Opens the plugin preferences page.\\
 \end{description}
 
+\section{WML Editor}
+The plugin contains a full-fledged WML Editor. It recognizes the .cfg files and opens them in the WML Editor by default. The Editor supports UTF-8 files not just ASCII ones. The editor is one of the most important features of the plugin.
+
+\subsection{Content assist}
+At any time, when writing WML Code, one could activate the content assist by the \textbf{CTRL + SPACE} shortcut. A small inline popup will open showing suggestions on what to complete. Currently the plugin can auto complete:
+\begin{itemize}
+  \item Scenario ids
+  \item WML Tags
+  \item WML Keys
+  \item WML Macros
+\end{itemize}
+
+Each item has a little icon to help the user distinguish between suggestions types.
+
+\subsection{WML macros}
+One can view the definition of a WML macro, by hovering / going with the caret over the call, and pressing \textbf{F2}. A small popup will open showing the macros' definition. Alternatively, Pressing \textbf{F3}, will open the macro's definition file, so you can modify it or inspect related macros.
+
 \section{Use cases} 
 \subsection{Import an already existing wesnoth addon into the plugin}
 For this you need just 2 single steps:
@@ -191,6 +220,9 @@ For this you need just 2 single steps:
 \item Open eclipse. Click the ``New" main menu bar - Project. Select the ``Empty project" from ``Wesnoth" category.
 \item Enter the name of the project. Uncheck ``Use default location", and press ``Browse...". Navigate to the addon's directory and then continue the wizard as necessary.
 \end{enumerate}
+
+\subsection{Updating the plugin}
+The plugin, due to Eclipse's architecture, can be updated very simple. At any time, the user can check for new updates, by going to the menu: Help-$>$ Check for Updates. If there are any new versions released, they will get downloaded and applied. This way you'll need to download just the bits updated, not the whole eclipse or standalone version.
 
 \section{Frequently Asked Questions}
 \subsection{What is this plugin all about?}
