@@ -98,24 +98,24 @@
          id="org.wesnoth.help"
          point="org.eclipse.help.toc">
       <toc
-            file="toc.xml"
+            file="help/toc.xml"
             primary="true">
       </toc>
       <toc
-            file="tocfeatures.xml">
+            file="help/tocfeatures.xml">
       </toc>
       <toc
-            file="tocgettingstarted.xml">
+            file="help/tocgettingstarted.xml">
       </toc>
       <toc
-            file="tocreference.xml">
+            file="help/tocreference.xml">
       </toc>
    </extension>
    <extension
          id="org.wesnoth.contexts"
          point="org.eclipse.help.contexts">
       <contexts
-            file="contextHelp.xml"
+            file="help/contextHelp.xml"
             plugin="org.wesnoth">
       </contexts>
    </extension>
