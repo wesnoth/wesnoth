@@ -9,6 +9,7 @@
 package org.wesnoth.product;
 
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.application.IActionBarConfigurer;
 
 public class WesnothActionBarAdvisor extends WorkbenchActionBuilder
@@ -23,5 +24,9 @@ public class WesnothActionBarAdvisor extends WorkbenchActionBuilder
 	protected void makeActions(IWorkbenchWindow window)
 	{
 	    super.makeActions( window );
+
+        // add dynamic help hooks
+	    register( ActionFactory.HELP_SEARCH.create( window ) );
+	    register( ActionFactory.DYNAMIC_HELP.create( window ) );
 	}
 }
