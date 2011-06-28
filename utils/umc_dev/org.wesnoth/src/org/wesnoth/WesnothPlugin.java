@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -55,6 +56,8 @@ public class WesnothPlugin extends AbstractUIPlugin
                 });
 	        }
 		}
+
+		WizardDialog.setDialogHelpAvailable( true );
 	}
 
 	@Override

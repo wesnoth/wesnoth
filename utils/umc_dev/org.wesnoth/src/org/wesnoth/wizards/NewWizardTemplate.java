@@ -30,12 +30,12 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 	public NewWizardTemplate()
 	{
 		setNeedsProgressMonitor(true);
+        setHelpAvailable(true);
 	}
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection)
 	{
-		setHelpAvailable(true);
 		this.selection_ = selection;
 		initialize();
 	}
@@ -43,7 +43,6 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 	@Override
 	public void createPageControls( Composite pageContainer )
 	{
-	    setHelpAvailable( true );
         WesnothPlugin.getDefault().getWorkbench().getHelpSystem().setHelp( pageContainer,
             "org.wesnoth.wizardHelp"); //$NON-NLS-1$
 
