@@ -21,6 +21,8 @@
 #include "language.hpp"
 #include "preferences_display.hpp"
 
+#include "preferences.hpp"
+
 #include <iostream>
 
 game_controller_abstract::game_controller_abstract(const commandline_options &cmdline_opts) :
@@ -44,6 +46,9 @@ game_display& game_controller_abstract::disp()
 
 bool game_controller_abstract::init_joystick()
 {
+	if (!preferences::joystick_support_enabled())
+		return false;
+
 	if(SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
 		if(SDL_InitSubSystem(SDL_INIT_JOYSTICK) == -1)
 			return false;

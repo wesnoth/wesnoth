@@ -473,9 +473,14 @@ namespace {
 	double scroll = 0.2;
 }
 
+bool joystick_support_enabled()
+{
+	return get("joystick_support_enabled", false);
+}
+
 int joystick_mouse_deadzone()
 {
-	const int value = lexical_cast_in_range<int>(get("scroll_deathzone"), 1200, 0, 16000);
+	const int value = lexical_cast_in_range<int>(get("joystick_scroll_deadzone"), 1200, 0, 16000);
 	return value;
 }
 
@@ -505,13 +510,13 @@ int joystick_mouse_yaxis_num()
 
 int joystick_scroll_deadzone()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_scroll_deathzone"), 1200, 0, 16000);
+	const int value = lexical_cast_in_range<int>(get("joystick_scroll_deadzone"), 1200, 0, 16000);
 	return value;
 }
 
 int joystick_cursor_deadzone()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_cursor_deathzone"), 1200, 0, 16000);
+	const int value = lexical_cast_in_range<int>(get("joystick_cursor_deadzone"), 1200, 0, 16000);
 	return value;
 }
 

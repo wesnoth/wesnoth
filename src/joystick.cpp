@@ -57,6 +57,11 @@ bool joystick_manager::close() {
 }
 
 bool joystick_manager::init() {
+	if (!preferences::joystick_support_enabled()) {
+		LOG_JOY << "Joystick support is disabled.";
+		return false;
+	}
+
 	LOG_JOY << "Initializing joysticks...\n";
 	if(SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
 		if(SDL_InitSubSystem(SDL_INIT_JOYSTICK) == -1)
@@ -159,6 +164,9 @@ double joystick_manager::get_thrust_xaxis() {
 
 std::pair<int, int> joystick_manager::get_axis_pair(int joystick_xaxis, int xaxis, int joystick_yaxis, int yaxis) {
 
+	if(!SDL_WasInit(SDL_INIT_JOYSTICK))
+		return std::make_pair(0, 0);
+
 	int x_axis = 0, y_axis = 0;
 	bool get_xaxis = false, get_yaxis = false;
 
@@ -180,6 +188,8 @@ std::pair<int, int> joystick_manager::get_axis_pair(int joystick_xaxis, int xaxi
 }
 
 int joystick_manager::get_axis(int joystick_axis, int axis) {
+	if(!SDL_WasInit(SDL_INIT_JOYSTICK))
+		return 0;
 
 	if(SDL_JoystickOpened(joystick_axis))
 		if(SDL_JoystickNumAxes(joysticks_[joystick_axis]) > axis)

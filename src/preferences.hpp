@@ -122,6 +122,7 @@ namespace preferences {
 	bool use_color_cursors();
 	void _set_color_cursors(bool value);
 
+	bool joystick_support_enabled();
 	int joystick_mouse_deadzone();
 	int joystick_num_mouse_xaxis();
 	int joystick_num_mouse_yaxis();
