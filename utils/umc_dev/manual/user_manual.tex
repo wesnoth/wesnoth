@@ -5,6 +5,7 @@
 \usepackage[colorlinks=true]{hyperref}
 \usepackage{verbatim}
 \usepackage{enumerate}
+\usepackage{wrapfig} 
 
 \title{Wesnoth UMC Development \\ User's Manual}
 \author{Timotei Dolean - \href{mailto:timotei21@gmail.com}{timotei21@gmail.com}}
@@ -25,6 +26,8 @@
   \begin{center}
     \includegraphics[scale=0.6]{definitions.png}
   \end{center}
+The plugin has its homepage at: \href{http://eclipse.wesnoth.org/}{http://eclipse.wesnoth.org/} \\
+
 Through this readme the following terms with the specified meaning will be used:
 \begin{enumerate}
 \item Navigator / Project Explorer / Package Explorer - an Eclipse view that shows the projects in the workspace
@@ -40,8 +43,8 @@ A quick list before getting into details:
 \begin{enumerate}
 \item Java 6
 \item Python 2.x
-\item Eclipse 3.5 or newer
 \item Wesnoth 1.9.x, trunk or newer
+\item Eclipse 3.5 or newer (Only for the Eclipse Version)
 \end{enumerate}
 
 Now for getting all those items:
@@ -61,14 +64,21 @@ Now for getting all those items:
   \end{enumerate}
  \textit{Note:} Please ensure you install the 2.x versions. Versions 3.x are \textbf{not} yet supported by the Wesnoth's WML Tools.
 
+\item You will need to have a wesnoth version 1.9.x, trunk or newer, in order for the plugin's features to correctly work.
+
+\item \textit{Note:} The following 2 steps are only neccessary if you will use the Eclipse version of the plugin.
+
 \item Download ``Eclipse" (The download links are in the right. Please ensure you are downloading at least the \textbf{3.5} version, otherwise the plugin will not work.):   \href{http://eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/heliosr}{Download Eclipse for RCP and RAP Developers}
 
 \item Extract the downloaded archive in a known location and launch the executable (eclipse / eclipse.exe)
 
-\item You will need to have a wesnoth version 1.9.x, trunk or newer, in order for the plugin's features to correctly work.
 \end{enumerate}
 
 \section{Installing the plugin}
+
+\subsection{Eclipse version}
+The Eclipse version, like the name says, needs a working Eclipse environment.
+
 \begin{enumerate}
 \item After launching Eclipse, go to the ``Help'' menu - Install new Software. Then, check the checkbox ``Contact all update sites during install to find required software" (it can be found in the bottom of the page).
 
@@ -84,22 +94,43 @@ Now for getting all those items:
 \item Now the plugin is ready to be used.
 \end{enumerate}
 
+\subsection{Standalone version}
+The standalone version of the plugin, does not need any Eclipse ``thingy". Just fulfil the prerequisites and you're ready to go. The standalone version is currently available as zip archives for major OSes (Windows, Mac OSX and Linux) and Architectures (x86 and x64). To use the standalone version follow the following steps:
+
+\begin{enumerate}
+  \item Go to \href{http://eclipse.wesnoth.org/doc\_howto.html}{http://eclipse.wesnoth.org/doc\_howto.html}
+  \item Download the version appropiate to your OS and architecture.
+  \item Extract the downloaded archive and launch eclipse executable (Eclipse.App / Eclipse.exe / Eclipse ).
+\end{enumerate}
+
 \section{Using the plugin}
 After you have started the plugin, you can use its features.
 
-But before of all, you must ``Setup the workspace". For this, go in the ``Wesnoth" menu (it will have the wesnoth icon) and select ``Setup the workspace". You will be guided setting the workspace. The preferences page for the plugin will pop up, and you must fill them all, so the plugin will work as intended. After you completed the fields, press \textbf{Apply} and then \textbf{OK}. Then the plugin will create for convenience (i.e. if you want) wesnoth projects for each of mainline campaigns and for each directory in your \textbf{useraddons/data/add-ons} directory. The working directory is the directory that contains the data, images, manual, sounds of wesnoth.
+But before of all, you must setup your environment, so it knows where your wesnoth game is located. By default, after you have launched the plugin for the first time, you will be greeted with a small assistant that will help you ``setup the workspace". The preferences page for the plugin will pop up and you must fill all fields, so the plugin will work as intended. After you completed the fields, press \textbf{OK}. Then the plugin will create for convenience (i.e. if you want) wesnoth projects for each of mainline campaigns and for each directory in your \textbf{useraddons/data/add-ons} directory. The working directory is the directory that contains the data, images, manual, sounds directories of Wesnoth.
 
 If there were no errors a message window will open saying: \textbf{Workspace was setup successfully}.
 
-\textit{Note:} If you encounter any errors, the plugin logs them in the: \textbf{\textless your temporary directory\textgreater /wesnoth\_plugin/logs}.
-That is usually on linux:\\
-\indent \textbf{/tmp/wesnoth\_plugin/logs}\\
-or on windows:\\
-\indent \textbf{C:/Documents and settings/\textless your username\textgreater/Local Settings/Temp/wesnoth\_plugin/logs} \\
-or\\
-\indent \textbf{C:/Users/\textless your username\textgreater/Local Settings/Temp/wesnoth\_plugin/logs}
+\subsection{Wesnoth installations}
+The plugin supports working with multiple installations ( we'll call them ``installs" ). The installs can be setup from the Preferences panel. An installation is called valid if: 
+\begin{itemize}
+  \item It is defined in the Installs page
+  \item It has set all paths and they point to existing objects (currently the following paths can be set: wesnoth working directory, wesnoth executable path, wesnoth user addons directory and wesnoth wml tools path)
+\end{itemize}
 
-\subsubsection{Wizards} \hskip\parindent
+The Installs Preferences Page will list all currently saved installs. You can view, edit, remove or set as default a specific installation.( \textit{Note:} You cannot modify the name of the install after creation. For that, you need to delete and add it again with another name.)
+
+All installs have in common the same python path. That means, each installation points to the same, current Python path set.
+
+A default installation, is used at times like:
+\begin{itemize}
+  \item A new project is created
+  \item A project uses a previous existing install, which is no more valid
+\end{itemize}
+The first created install ever will become automatically default. If a default installation is deleted and there are another installs, one of them will be selected as the new default.
+
+After the user has configured the installs, he can use them on a per-project basis. Each project has a properties page ( Right click on project -$>$ Properties -$>$ Wesnoth Project ). There the user can configure project specific settings, including the install used in the context of that project.
+
+\subsection{Wizards}
 There are some wizards available in the plugin, that will create either projects or config files, based on the specified input. This wizards are available by going to the ``File" menu - New - Other... , and from that list selecting the ``Wesnoth" category.
 
 There are 3 wizards categories:
@@ -109,7 +140,7 @@ There are 3 wizards categories:
 \item Wizard launcher - This is a special wizard. It takes a wml tag as input, and generate subsequent needed tags and key inputs. This is generated based on the wml schema, so if the schema is incomplete some tags won't be available. This wizard can create a new file or copy the resulted WML into the current edited file.
 \end{enumerate}
 
-\subsubsection{Menus}
+\subsection{Menus}
 There are currently 2 types of menus: the context menus for different file/container types and the main menu. For a better distinction the menus have the wenoth icon near each item.
 
 \begin{description}
@@ -171,14 +202,17 @@ The plugin is in fact something like a WML IDE ( \href{http://en.wikipedia.org/w
 \item- It has a 'upload addon' feature that uploads the specified project to the addons server.
 \end{description}
 
-\subsection{What is this ``eclipse" thingy?}
-Eclipse is a Java framework. It is very extensible, so people can actually make plugins that use the already existing functionality. It is written in Java, so for some people it can be slow, but at it's latest version it's very stable and it has few resource consumption.
-
-\subsection{What if I don't want to install eclipse?}
-You're lucky. There will be a slimmed version of Eclipse, actually only the plugin itself. The size will be 3 or 4 times smaller than the current eclipse, and there will be no extra plugins. This version isn't released yet.
-
 \subsection{Where can I submit any bugs found?}
-Go over to Wesnoth's bug tracker: \href{https://gna.org/bugs/?func=additem&group=wesnoth&bug_group_id=116}{Add new bug}. Please be as specific as possible. Also, if you have any logs, please attach them.
+Go over to Wesnoth's bug tracker: \href{https://gna.org/bugs/?func=additem&group=wesnoth&bug_group_id=116}{Add new bug}. Please be as specific as possible. Also, if you have any logs, please attach them - refer to the next FAQ Entry for ways of getting the logs.
+
+\subsection{Where I can find the logs?}
+If you encounter any errors during the usage of the plugin, the plugin logs them in the: \textbf{\textless your temporary directory\textgreater /wesnoth\_plugin/logs}.
+That is usually on linux:\\
+\indent \textbf{/tmp/wesnoth\_plugin/logs}\\
+or on windows:\\
+\indent \textbf{C:/Documents and settings/$<$ your username$>$/Local Settings/Temp/wesnoth\_plugin/logs} \\
+or\\
+\indent \textbf{C:/Users/$<$ your username$>$/Local Settings/Temp/wesnoth\_plugin/logs}
 
 \subsection{Why Mac OSX 32 bit is not supported?}
 Apple decided to manage itself the versions that can run on each Mac version. Thus the modern Java SE6 version - which is used by the plugin - is not available on 32 bit Macs but on 64bit only. The 32bit Macs have just Java SE5 version available. Trying to port the plugin to the ``outdated'' java version is not likely to be done, so please consider upgrading your OS.
