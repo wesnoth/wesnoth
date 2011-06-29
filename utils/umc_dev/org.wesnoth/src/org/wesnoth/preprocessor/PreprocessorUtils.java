@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.wesnoth.utils;
+package org.wesnoth.preprocessor;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +30,10 @@ import org.wesnoth.WesnothPlugin;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.projects.ProjectUtils;
+import org.wesnoth.utils.EditorUtils;
+import org.wesnoth.utils.ExternalToolInvoker;
+import org.wesnoth.utils.ResourceUtils;
+import org.wesnoth.utils.WorkspaceUtils;
 
 public class PreprocessorUtils
 {

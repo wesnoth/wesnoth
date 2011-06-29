@@ -9,7 +9,7 @@
 package org.wesnoth.action;
 
 import org.eclipse.jface.action.IAction;
-import org.wesnoth.utils.PreprocessorUtils;
+import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
 

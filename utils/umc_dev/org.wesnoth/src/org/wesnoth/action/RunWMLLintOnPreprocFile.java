@@ -10,7 +10,7 @@ package org.wesnoth.action;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.action.IAction;
-import org.wesnoth.utils.PreprocessorUtils;
+import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.utils.WMLTools.Tools;

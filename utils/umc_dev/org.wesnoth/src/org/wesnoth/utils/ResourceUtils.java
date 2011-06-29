@@ -39,6 +39,7 @@ import org.eclipse.swt.SWT;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
+import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;

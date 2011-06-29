@@ -19,7 +19,7 @@ import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preprocessor.Define;
-import org.wesnoth.utils.PreprocessorUtils;
+import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.wml.core.ConfigFile;
 import org.wesnoth.wml.core.Variable;
