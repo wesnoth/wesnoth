@@ -24,7 +24,6 @@ import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.ResourceUtils;
 
-
 public class ProjectUtils
 {
 	/**

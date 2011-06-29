@@ -10,12 +10,20 @@ package org.wesnoth.installs;
 
 public class WesnothInstall
 {
-    public String Name;
-    public String Version;
+    public String name_;
+    public String version_;
 
     public WesnothInstall(String name, String version)
     {
-        Name = name;
-        Version = version;
+        name_ = name;
+        version_ = version;
+    }
+
+    public String getName( ){
+        return name_;
+    }
+
+    public String getVersion( ) {
+        return version_;
     }
 }

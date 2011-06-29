@@ -95,7 +95,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         List<WesnothInstall> installs = WesnothInstallsUtils.getInstalls( );
         for ( WesnothInstall wesnothInstall : installs )
         {
-            installs_.put( wesnothInstall.Name, wesnothInstall );
+            installs_.put( wesnothInstall.getName( ), wesnothInstall );
         }
     }
 
@@ -297,7 +297,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
     protected void setInstallAsDefault( WesnothInstall install )
     {
         if (install != null) {
-            Preferences.setDefaultInstallName( install.Name);
+            Preferences.setDefaultInstallName( install.getName( ) );
             installsTableViewer_.refresh();
         }
     }
@@ -305,12 +305,12 @@ public class WesnothInstallsPage extends AbstractPreferencePage
     protected void removeInstall( WesnothInstall install )
     {
         if ( install != null ){
-            installs_.remove( install.Name );
+            installs_.remove( install.getName( ) );
             installsTableViewer_.refresh();
 
             // unset all settings.
             IPreferenceStore prefs =  Preferences.getPreferences( );
-            String installPrefix = Preferences.getInstallPrefix( install.Name );
+            String installPrefix = Preferences.getInstallPrefix( install.getName( ) );
             prefs.setToDefault( installPrefix + Constants.P_WESNOTH_EXEC_PATH );
             prefs.setToDefault( installPrefix + Constants.P_WESNOTH_USER_DIR );
             prefs.setToDefault( installPrefix + Constants.P_WESNOTH_WMLTOOLS_DIR );
@@ -318,7 +318,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
             // unset the default install if this was that
             // and select another one (the first) - if any - as default
-            if ( install.Name.equals( Preferences.getDefaultInstallName( ) ) ) {
+            if ( install.getName( ).equals( Preferences.getDefaultInstallName( ) ) ) {
                 Preferences.setDefaultInstallName( "" ); //$NON-NLS-1$
 
                 if ( ! installs_.isEmpty( ) ){
@@ -346,13 +346,13 @@ public class WesnothInstallsPage extends AbstractPreferencePage
      */
     private void updateInterface(WesnothInstall install)
     {
-        txtInstallName_.setText( install == null ? "" : install.Name ); //$NON-NLS-1$
+        txtInstallName_.setText( install == null ? "" : install.getName( ) ); //$NON-NLS-1$
         txtInstallName_.setEditable( install == null ? true : false );
 
-        cmbVersion_.setText( install == null ? "" : install.Version ); //$NON-NLS-1$
+        cmbVersion_.setText( install == null ? "" : install.getVersion( ) ); //$NON-NLS-1$
 
         setFieldsPreferenceName(
-                install == null ? "" : Preferences.getInstallPrefix( install.Name ),
+                install == null ? "" : Preferences.getInstallPrefix( install.getName( ) ),
                 true );
     }
 
@@ -623,12 +623,12 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                 WesnothInstall install = ( WesnothInstall ) element;
 
                 if (columnIndex == 0) { // name
-                   return install.Name;
+                   return install.getName( );
                 } else if (columnIndex == 1) { // version
-                    return install.Version;
+                    return install.getVersion( );
                 } else if ( columnIndex == 2 ) { // is Default ?
 
-                    if ( install.Name.equals( Preferences.getDefaultInstallName( ) ) )
+                    if ( install.getName( ).equals( Preferences.getDefaultInstallName( ) ) )
                         return "Yes";
 
                     return "";

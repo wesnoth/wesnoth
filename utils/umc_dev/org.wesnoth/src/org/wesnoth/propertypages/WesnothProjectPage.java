@@ -64,10 +64,10 @@ public class WesnothProjectPage extends PropertyPage
 
         for ( WesnothInstall wesnothInstall : installs )
         {
-            cmbInstall_.add( wesnothInstall.Name );
+            cmbInstall_.add( wesnothInstall.getName( ) );
 
             // current install is default?
-            if ( wesnothInstall.Name.equalsIgnoreCase( installName ) )
+            if ( wesnothInstall.getName( ).equalsIgnoreCase( installName ) )
             {
                 cmbInstall_.select( cmbInstall_.getItemCount( ) - 1 );
                 foundInstallInList = true;
