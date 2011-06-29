@@ -352,6 +352,7 @@ set(wesnoth-main_SRC
 	editor/map_context.cpp
 	editor/map_fragment.cpp
 	editor/mouse_action.cpp
+	filechooser.cpp
 	floating_textbox.cpp
 	formula.cpp
 	formula_debugger.cpp
@@ -595,7 +596,6 @@ set(libwesnoth-game_STAT_SRC
 	cursor.cpp
 	display.cpp
 	events.cpp
-	filechooser.cpp
 	font.cpp
 	hotkeys.cpp
 	image.cpp
