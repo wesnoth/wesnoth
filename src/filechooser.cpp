@@ -19,6 +19,7 @@
 
 #include "display.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "filechooser.hpp"
 #include "widgets/file_menu.hpp"
@@ -203,12 +204,10 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 	//handle "create item" requests
 	else if(result() == gui::CREATE_ITEM)
 	{
-		gui::dialog d(get_display(), _("New Folder"), "", gui::OK_CANCEL);
-		d.set_textbox(_("Name: "));
-		d.show();
-		if(d.result() != gui::CLOSE_DIALOG && !d.textbox_text().empty())
+		std::string new_dir_name = "";
+		if(gui2::tfolder_create::execute(new_dir_name, get_display().video()))
 		{
-			if( !files_list_->make_directory(d.textbox_text()) ) {
+			if( !files_list_->make_directory(new_dir_name) ) {
 				gui2::show_transient_error_message(get_display().video()
 						, _("Creation of the directory failed."));
 			} else {
