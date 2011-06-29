@@ -8,6 +8,9 @@
  *******************************************************************************/
 package org.wesnoth.preferences;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -20,6 +23,12 @@ import org.wesnoth.utils.StringUtils;
  */
 public class Preferences extends AbstractPreferenceInitializer
 {
+    /**
+     * A map for storing the paths for the current session
+     */
+    protected static Map< String, Paths > paths_ =
+        new HashMap< String, Paths > ();
+
 	@Override
 	public void initializeDefaultPreferences()
 	{
@@ -130,7 +139,13 @@ public class Preferences extends AbstractPreferenceInitializer
 	 */
 	public static Paths getPaths( String installName )
 	{
-	    return new Paths( getInstallPrefix( installName ) );
+	    Paths paths = paths_.get( installName );
+	    if ( paths == null ) {
+	        paths = new Paths( getInstallPrefix( installName ) );
+	        paths_.put( installName, paths );
+	    }
+
+	    return paths;
 	}
 
 	/**
