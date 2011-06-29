@@ -26,4 +26,8 @@ public class WesnothInstall
     public String getVersion( ) {
         return version_;
     }
+
+    public void setVersion( String newVersion ){
+        version_ = newVersion;
+    }
 }

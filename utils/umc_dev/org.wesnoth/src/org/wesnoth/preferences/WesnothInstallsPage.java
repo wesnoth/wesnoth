@@ -279,9 +279,9 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         cmbVersion_ = new Combo(parent, SWT.READ_ONLY);
         cmbVersion_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
-        cmbVersion_.add( "" ); //$NON-NLS-1$ // for default install
         cmbVersion_.add( "1.9.x" ); //$NON-NLS-1$
         cmbVersion_.add( "trunk" ); //$NON-NLS-1$
+        cmbVersion_.select( 0 );
 
         // create fields
         parentComposite_ = (Composite) super.createContents(parent);
@@ -564,7 +564,6 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                     cmbVersion_.getText());
 
             installs_.put( installName, newInstall );
-            installsTableViewer_.refresh();
 
             // if there is not any install set as default, set this one
             if ( Preferences.getDefaultInstallName( ).isEmpty( ) )
@@ -573,7 +572,13 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             // we are creating a new install. Clear the editable
             // flag after we save it, to prevent renaming.
             txtInstallName_.setEditable( false );
+        } else { // just saving
+            // the fields are automatically saved by Eclipse.
+            // we just need to save the new version.
+            getSelectedInstall( ).setVersion( cmbVersion_.getText( ) );
         }
+
+        installsTableViewer_.refresh( );
 
         return true;
     }
