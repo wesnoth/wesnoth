@@ -10,9 +10,7 @@ package org.wesnoth.installs;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -26,12 +24,6 @@ import org.wesnoth.utils.WorkspaceUtils;
 
 public class WesnothInstallsUtils
 {
-    /**
-     * A map which stores the installs settings
-     */
-    private static Map< String, WesnothInstall > installs_ =
-        new HashMap< String, WesnothInstall >();
-
     /**
      * Returns a list of the current wesnoth installations available
      * in the preferences store

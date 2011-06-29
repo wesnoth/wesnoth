@@ -10,8 +10,8 @@ package org.wesnoth.installs;
 
 public class WesnothInstall
 {
-    public String name_;
-    public String version_;
+    private String name_;
+    private String version_;
 
     public WesnothInstall(String name, String version)
     {
