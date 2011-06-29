@@ -32,9 +32,6 @@ namespace gui2 {
  *
  * @begin{table}{dialog_widgets}
  *
- * title & & label & m &
- *         Dialog title label. $
- *
  * name & & text_box & m &
  *         Input field for the new folder name. $
  *
