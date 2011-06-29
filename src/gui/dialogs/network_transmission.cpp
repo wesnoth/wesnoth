@@ -47,6 +47,7 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 			std::cout << os.str() << std::endl;
 			find_widget<tlabel>(&(window_.get()), "numeric_progress", false)
 				.set_label(os.str());
+			window_->invalidate_layout();
 		}
 	}
 }
