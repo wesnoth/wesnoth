@@ -20,13 +20,12 @@ import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.GUIUtils;
 
-
 public class ReloadFilesHandler extends AbstractHandler
 {
 	@Override
 	public Object execute(ExecutionEvent event)
 	{
-		SchemaParser.getInstance().parseSchema(true);
+	    SchemaParser.reloadSchemas( true );
 
 		TemplateProvider.getInstance().loadTemplates();
 

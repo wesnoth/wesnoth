@@ -21,7 +21,6 @@ import org.wesnoth.wml.WMLRoot;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WmlPackage;
 
-
 /**
  * This represents the validator for config files
  *
@@ -56,10 +55,13 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 			{
 				searchName = "root"; //$NON-NLS-1$
 			}
-			if (SchemaParser.getInstance().getTags().get(searchName) != null)
+
+			//TODO: get the editor based on this validator??
+			Tag schemaTag = SchemaParser.getInstance( null ).getTags().get(searchName);
+
+			if ( schemaTag != null )
 			{
-				for(Tag childTag : SchemaParser.getInstance().getTags().get(searchName).
-						getTagChildren())
+				for(Tag childTag : schemaTag.getTagChildren())
 				{
 					if (childTag.getName().equals(tag.getName()))
 					{

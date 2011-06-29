@@ -139,6 +139,10 @@ public class Preferences extends AbstractPreferenceInitializer
 	 */
 	public static Paths getPaths( String installName )
 	{
+	    // no null allowed -> fallback to ""
+	    if ( installName == null )
+	        installName = "";
+
 	    Paths paths = paths_.get( installName );
 	    if ( paths == null ) {
 	        paths = new Paths( getInstallPrefix( installName ) );

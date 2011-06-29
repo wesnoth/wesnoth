@@ -11,34 +11,70 @@ package org.wesnoth.schema;
 import java.io.File;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
+import org.wesnoth.installs.WesnothInstall;
+import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
-
 
 /**
  * This is a 'schema.cfg' parser.
  */
 public class SchemaParser
 {
-	//TODO: add a faster search method for keys/tags by name
-	private static SchemaParser	instance_;
+    protected static Map< String, SchemaParser > parsers_ =
+        new HashMap<String, SchemaParser>();
 
-	public static SchemaParser getInstance()
+	/**
+	 * Returns a SchemaParser instance based on the specified install
+	 * @param installName The name of the install
+	 * @return A SchemaParser singleton instance
+	 */
+	public static SchemaParser getInstance( String installName )
 	{
-		if (instance_ == null)
-			instance_ = new SchemaParser();
-		return instance_;
+	    // null not allowed
+	    if ( installName == null )
+	        installName = "";
+
+	    SchemaParser parser = parsers_.get( installName );
+		if (parser == null) {
+			parser = new SchemaParser( installName );
+			parsers_.put( installName, parser );
+		}
+
+		return parser;
 	}
 
-	private Map<String, String> primitives_	   = new HashMap<String, String>();
-	private Map<String, Tag>    tags_          = new HashMap<String, Tag>();
-	private boolean             parsingDone_   = false;
+	/**
+	 * Reloads all currently stored schemas
+	 * @param force True to force reloading schemas
+	 */
+	public static void reloadSchemas( boolean force )
+	{
+        List< WesnothInstall > installs = WesnothInstallsUtils.getInstalls( );
+        for ( WesnothInstall install : installs ) {
+            getInstance( install.getName( ) ).parseSchema( force );
+        }
+	}
+
+	private Map<String, String> primitives_;
+	private Map<String, Tag>    tags_;
+	private boolean             parsingDone_;
+    private String              installName_;
+
+    private SchemaParser( String installName )
+    {
+        installName_ = installName;
+        primitives_ = new HashMap<String, String>();
+        tags_ = new HashMap<String, Tag>();
+        parsingDone_ = false;
+    }
 
 	/**
 	 * Parses the schema
@@ -50,9 +86,7 @@ public class SchemaParser
 	 */
 	public void parseSchema( boolean force )
 	{
-        //TODO should parse schema for each install type
-	    // for now, use the default install
-		parseSchemaFile( force, Preferences.getPaths( null ).getSchemaPath( ) );
+		parseSchemaFile( force, Preferences.getPaths( installName_ ).getSchemaPath( ) );
 	}
 
 	/**
@@ -254,27 +288,6 @@ public class SchemaParser
 
 		Logger.getInstance().log(Messages.SchemaParser_36);
 		parsingDone_ = true;
-
-//		try
-//		{
-//			BufferedWriter bw = new BufferedWriter(new PrintWriter(new File("E:/work/gw/data/schema-out.cfg")));
-//			// print primitives
-//			for (Entry<String, String> primitive : primitives_.entrySet())
-//			{
-//				bw.write(primitive.getKey() + ": " + primitive.getValue() + "\n");
-//			}
-//			// print tags
-//			Tag root = tags_.get("root");
-//			for (Tag tag : root.getTagChildren())
-//			{
-//				bw.write(getOutput(tag, 0));
-//			}
-//			bw.close();
-//		} catch (Exception e)
-//		{
-//			Logger.getInstance().logException(e);
-//		}
-//		System.out.println("End writing result");
 	}
 
 	/**

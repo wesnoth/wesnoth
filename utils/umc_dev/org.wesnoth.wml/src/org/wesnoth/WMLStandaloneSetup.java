@@ -18,7 +18,8 @@ public class WMLStandaloneSetup extends WMLStandaloneSetupGenerated
 {
 	public static void doSetup() {
 		new WMLStandaloneSetup().createInjectorAndDoEMFRegistration();
-		SchemaParser.getInstance().parseSchema(false);
+
+		SchemaParser.reloadSchemas( false );
 	}
 }
 

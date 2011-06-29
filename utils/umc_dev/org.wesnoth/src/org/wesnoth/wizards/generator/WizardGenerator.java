@@ -22,9 +22,11 @@ public class WizardGenerator extends NewWizardTemplate
 	private byte	indent_;
 
 	public WizardGenerator(String title, String tagName, byte indent) {
-		SchemaParser.getInstance().parseSchema(false);
+
+	    // TODO: wizards should ask the install
+		SchemaParser.getInstance( null ).parseSchema(false);
 		setWindowTitle(title);
-		Tag tagContent = SchemaParser.getInstance().getTags().get(tagName);
+		Tag tagContent = SchemaParser.getInstance( null ).getTags().get(tagName);
 
 		tagName_ = tagName;
 		indent_ = indent;

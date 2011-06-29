@@ -22,12 +22,12 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.wesnoth.Logger;
+import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preprocessor.Define;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLTag;
-
 
 /**
  * A handler that handles pressing F2 on a resource in the editor
@@ -39,6 +39,9 @@ public class WMLDocHandler extends AbstractHandler
 		try
 		{
 			final XtextEditor editor = EditorUtils.getActiveXtextEditor(event);
+			final String installName =
+			    WesnothInstallsUtils.getInstallNameForResource( WMLUtil.getActiveEditorFile( ) );
+
 			editor.getDocument().readOnly(new IUnitOfWork.Void<XtextResource>()
 			{
 				private WMLDocInformationPresenter presenter_;
@@ -81,7 +84,7 @@ public class WMLDocHandler extends AbstractHandler
                     	{
                     		presenter_ = new WMLDocInformationPresenter(
                     					editor.getSite().getShell(),
-                    					new WMLDocTag(((WMLTag)container.getElement()).getName()),
+                    					new WMLDocTag( installName, ((WMLTag)container.getElement()).getName()),
                     					positionAbsolute);
                     		presenter_.create();
                     	}

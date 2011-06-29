@@ -22,8 +22,9 @@ import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.wesnoth.Logger;
+import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preprocessor.Define;
+import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.schema.Tag;
@@ -40,20 +41,31 @@ import org.wesnoth.wml.impl.WmlFactoryImpl;
 @SuppressWarnings("unused")
 public class WMLProposalProvider extends AbstractWMLProposalProvider
 {
-	/**
-	 * We have the following priorities:
-	 *
-	 * 1700 - key values
-	 * 1500 - key names
-	 * 1000 - tags
-	 *  100 - macro calls
-	 */
+    protected SchemaParser schemaParser_;
+    protected ProjectCache projectCache_;
 
+    protected static final int KEY_VALUE_PRIORITY = 1700;
+    protected static final int KEY_NAME_PRIORITY = 1500;
+    protected static final int TAG_PRIORITY = 1000;
+    protected static final int MACRO_CALL_PRIORITY = 100;
+
+	/**
+	 * For priorities, see:
+	 * {@link #KEY_NAME_PRIORITY}
+	 * {@link #KEY_VALUE_PRIORITY}
+	 * {@link #TAG_PRIORITY}
+	 * {@link #MACRO_CALL_PRIORITY}
+	 */
 	public WMLProposalProvider()
 	{
 		super();
+
+        IFile file = WMLUtil.getActiveEditorFile();
+        projectCache_ = ProjectUtils.getCacheForProject( file.getProject( ) );
+
 		// load the schema so we know what to suggest for autocomplete
-		SchemaParser.getInstance().parseSchema(false);
+		SchemaParser.reloadSchemas( false );
+		schemaParser_ = SchemaParser.getInstance( WesnothInstallsUtils.getInstallNameForResource( file ) );
 	}
 
 	@Override
@@ -113,15 +125,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	private void addMacroCallProposals(EObject model, boolean ruleProposal,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
-		IFile file = WMLUtil.getActiveEditorFile();
-		if (file == null)
-		{
-			Logger.getInstance().logError("FATAL! file is null (and it shouldn't)"); //$NON-NLS-1$
-			return;
-		}
-
-		for(Entry<String, Define> define : ProjectUtils.getCacheForProject(
-								file.getProject()).getDefines().entrySet())
+		for(Entry<String, Define> define : projectCache_.getDefines().entrySet())
 		{
 			StringBuilder proposal = new StringBuilder(10);
 			if (ruleProposal == true)
@@ -133,7 +137,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			proposal.append("}"); //$NON-NLS-1$
 
 			acceptor.accept(createCompletionProposal(proposal.toString(), define.getKey(),
-					WMLLabelProvider.getImageByName("macrocall.png"), context, 100)); //$NON-NLS-1$
+					WMLLabelProvider.getImageByName("macrocall.png"), context, MACRO_CALL_PRIORITY)); //$NON-NLS-1$
 		}
 	}
 
@@ -155,21 +159,13 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			if (key.getName().equals("next_scenario") || //$NON-NLS-1$
 				key.getName().equals("first_scenario")) //$NON-NLS-1$
 			{
-				IFile file = WMLUtil.getActiveEditorFile();
-				if (file == null)
-				{
-					Logger.getInstance().logError("FATAL! file is null (and it shouldn't)"); //$NON-NLS-1$
-					return;
-				}
-
-				for(ConfigFile config : ProjectUtils.
-						getCacheForProject(file.getProject()).getConfigs().values())
+				for(ConfigFile config : projectCache_.getConfigs().values())
 				{
 					if (StringUtils.isNullOrEmpty( config.ScenarioId ))
 						continue;
 					acceptor.accept(createCompletionProposal(config.ScenarioId,
 							config.ScenarioId, WMLLabelProvider.getImageByName("scenario.png"), //$NON-NLS-1$
-							context, 1700));
+							context, KEY_VALUE_PRIORITY));
 				}
 			}
 			else
@@ -178,7 +174,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 					model.eContainer() instanceof WMLTag)
 				{
 					WMLTag parent = (WMLTag) model.eContainer();
-					Tag tag = SchemaParser.getInstance().getTags().get(parent.getName());
+					Tag tag = schemaParser_.getTags().get(parent.getName());
 					if (tag != null)
 					{
 						TagKey tagKey = tag.getChildKey(key.getName());
@@ -213,11 +209,11 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
 		if (tag != null)
 		{
-			if (SchemaParser.getInstance().	getTags().get(tag.getName()) != null)
+		    Tag schemaTag = schemaParser_.getTags().get(tag.getName());
+			if ( schemaTag != null)
 			{
 				boolean found = false;
-				for(TagKey key : SchemaParser.getInstance().
-						getTags().get(tag.getName()).getKeyChildren())
+				for(TagKey key : schemaTag.getKeyChildren())
 				{
 					// skip forbidden keys
 					if (key.isForbidden())
@@ -237,7 +233,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 						acceptor.accept(createCompletionProposal(key.getName() + "=", //$NON-NLS-1$
 							key.getName(),
 							getImage(WmlFactoryImpl.eINSTANCE.getWmlPackage().getWMLKey()),
-							context, 1500));
+							context, KEY_NAME_PRIORITY));
 				}
 			}
 		}
@@ -274,7 +270,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			// remove ugly new lines that break indentation
 			parentIndent =  parentIndent.replace("\r", "").replace("\n", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
-			Tag tagChildren = SchemaParser.getInstance().getTags().get(parentTag.getName());
+			Tag tagChildren = schemaParser_.getTags().get(parentTag.getName());
 			if (tagChildren != null)
 			{
 				boolean found = false;
@@ -307,7 +303,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		}
 		else // we are at the root
 		{
-			Tag rootTag = SchemaParser.getInstance().getTags().get("root"); //$NON-NLS-1$
+			Tag rootTag = schemaParser_.getTags().get("root"); //$NON-NLS-1$
 			dbg("root node. adding tags: "+ rootTag.getTagChildren().size()); //$NON-NLS-1$
 			for(Tag tag : rootTag.getTagChildren())
 			{
@@ -327,7 +323,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	private ICompletionProposal tagProposal(Tag tag, String indent, boolean ruleProposal,
 					ContentAssistContext context)
 	{
-//		dbg("indent:[" + indent +"]");
 		StringBuilder proposal = new StringBuilder();
 		if (ruleProposal)
 			proposal.append("["); //$NON-NLS-1$
@@ -342,7 +337,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		proposal.append(String.format("%s[/%s]",indent, tag.getName())); //$NON-NLS-1$
 		return createCompletionProposal(proposal.toString(), tag.getName(),
 					getImage(WmlFactoryImpl.eINSTANCE.getWmlPackage().getWMLTag()),
-					context, 100);
+					context, TAG_PRIORITY);
 	}
 
 	private ICompletionProposal createCompletionProposal(String proposal,

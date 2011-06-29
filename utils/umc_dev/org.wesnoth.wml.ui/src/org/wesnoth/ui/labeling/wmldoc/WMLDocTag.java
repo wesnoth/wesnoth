@@ -18,7 +18,6 @@ import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.schema.Tag;
 import org.wesnoth.ui.Messages;
 
-
 /**
  * Displays wml doc for a tag
  * [tag] or [/tag]
@@ -30,10 +29,11 @@ public class WMLDocTag implements IWMLDocProvider
 	private String contents_;
 	private List<StyleRange> styleRanges_;
 
-	public WMLDocTag(String name)
+	public WMLDocTag( String installName, String name )
 	{
-		tag_ = SchemaParser.getInstance().getTags().get(name);
+		tag_ = SchemaParser.getInstance( installName ).getTags().get(name);
 	}
+
 	/**
 	 * A method used for lazly generating the documentation
 	 */
