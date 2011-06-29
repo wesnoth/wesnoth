@@ -23,8 +23,8 @@ import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.wesnoth.Logger;
 import org.wesnoth.preprocessor.Define;
+import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.ui.WMLUtil;
-import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLTag;
 

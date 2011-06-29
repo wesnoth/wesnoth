@@ -18,7 +18,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
-import org.wesnoth.utils.ProjectUtils;
+import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.wizards.NewWizardPageTemplate;
 
 

@@ -18,9 +18,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.wesnoth.projects.ProjectCache;
+import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.PreprocessorUtils;
-import org.wesnoth.utils.ProjectCache;
-import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
 /**

@@ -14,11 +14,11 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IProject;
 import org.wesnoth.Messages;
+import org.wesnoth.projects.ProjectCache;
+import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.GUIUtils;
-import org.wesnoth.utils.ProjectCache;
-import org.wesnoth.utils.ProjectUtils;
 
 
 public class ReloadFilesHandler extends AbstractHandler

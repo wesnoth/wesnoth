@@ -18,8 +18,8 @@ import org.eclipse.swt.SWT;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.preferences.Preferences;
+import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.GUIUtils;
-import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
 public class WesnothInstallsUtils

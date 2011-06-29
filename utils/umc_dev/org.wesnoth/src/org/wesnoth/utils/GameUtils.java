@@ -20,6 +20,7 @@ import org.wesnoth.Messages;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
+import org.wesnoth.projects.ProjectUtils;
 
 
 public class GameUtils

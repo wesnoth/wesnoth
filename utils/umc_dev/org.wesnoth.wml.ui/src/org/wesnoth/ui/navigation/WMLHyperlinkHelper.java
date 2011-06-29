@@ -22,10 +22,10 @@ import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.preprocessor.Define;
+import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.ui.Messages;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.emf.ObjectStorageAdapter;
-import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.wml.WMLMacroCall;
 
 

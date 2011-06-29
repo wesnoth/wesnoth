@@ -16,8 +16,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.dialogs.PropertyPage;
 import org.wesnoth.installs.WesnothInstall;
 import org.wesnoth.installs.WesnothInstallsUtils;
-import org.wesnoth.utils.ProjectCache;
-import org.wesnoth.utils.ProjectUtils;
+import org.wesnoth.projects.ProjectCache;
+import org.wesnoth.projects.ProjectUtils;
 
 public class WesnothProjectPage extends PropertyPage
 {

@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.wesnoth.utils;
+package org.wesnoth.projects;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +22,7 @@ import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
+import org.wesnoth.utils.ResourceUtils;
 
 
 public class ProjectUtils

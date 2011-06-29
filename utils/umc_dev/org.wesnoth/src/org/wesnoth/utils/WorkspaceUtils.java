@@ -43,6 +43,7 @@ import org.wesnoth.WesnothPlugin;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.navigator.WesnothProjectsExplorer;
 import org.wesnoth.preferences.Preferences;
+import org.wesnoth.projects.ProjectUtils;
 
 
 public class WorkspaceUtils

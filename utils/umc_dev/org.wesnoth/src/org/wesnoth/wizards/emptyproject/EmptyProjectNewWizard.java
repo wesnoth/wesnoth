@@ -20,10 +20,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
+import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.Pair;
-import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.wizards.NewWizardTemplate;
 
