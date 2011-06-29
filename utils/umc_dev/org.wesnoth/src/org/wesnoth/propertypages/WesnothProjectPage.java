@@ -14,10 +14,10 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.dialogs.PropertyPage;
+import org.wesnoth.installs.WesnothInstall;
+import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.utils.ProjectCache;
 import org.wesnoth.utils.ProjectUtils;
-import org.wesnoth.utils.WesnothInstallsUtils;
-import org.wesnoth.utils.WesnothInstallsUtils.WesnothInstall;
 
 public class WesnothProjectPage extends PropertyPage
 {

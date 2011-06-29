@@ -40,6 +40,7 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
+import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.navigator.WesnothProjectsExplorer;
 import org.wesnoth.preferences.Preferences;
 

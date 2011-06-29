@@ -28,6 +28,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
+import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.utils.AntUtils;
@@ -37,7 +38,6 @@ import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLSaxHandler;
-import org.wesnoth.utils.WesnothInstallsUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.wml.core.ConfigFile;
 

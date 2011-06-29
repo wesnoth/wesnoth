@@ -53,12 +53,12 @@ import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 import org.wesnoth.Constants;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
+import org.wesnoth.installs.WesnothInstall;
+import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.utils.WesnothInstallsUtils;
-import org.wesnoth.utils.WesnothInstallsUtils.WesnothInstall;
 
 public class WesnothInstallsPage extends AbstractPreferencePage
 {

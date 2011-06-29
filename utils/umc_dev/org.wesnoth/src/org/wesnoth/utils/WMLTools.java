@@ -28,6 +28,7 @@ import org.eclipse.ui.console.MessageConsole;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
+import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 

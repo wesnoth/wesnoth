@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.wesnoth.utils;
+package org.wesnoth.installs;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,21 +18,12 @@ import org.eclipse.swt.SWT;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.preferences.Preferences;
+import org.wesnoth.utils.GUIUtils;
+import org.wesnoth.utils.ProjectUtils;
+import org.wesnoth.utils.WorkspaceUtils;
 
 public class WesnothInstallsUtils
 {
-    public static class WesnothInstall
-    {
-        public String Name;
-        public String Version;
-
-        public WesnothInstall(String name, String version)
-        {
-            Name = name;
-            Version = version;
-        }
-    }
-
     /**
      * Returns a list of the current wesnoth installations available
      * in the preferences store
