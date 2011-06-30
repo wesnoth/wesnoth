@@ -86,7 +86,7 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 std::string find_recruit_location(const int side, map_location &recruit_location, const std::string& unit_type);
 
 /**
- * Finds a location to recall @unit_recall.
+ * Finds a location to recall @a unit_recall.
  * A leader of the @a side must be on a keep
  * connected by castle to a legal recalling location. Otherwise, an error
  * message explaining this is returned.
@@ -113,7 +113,7 @@ const std::set<std::string> get_recruits_for_location(int side, const map_locati
  * If no leader is able to recruit on the given location the full recall list of the side is returned.
  * @param side of the leaders to search for their personal recruit lists.
  * @param recruit_location the hex field being part of the castle the player wants to recruit on.
- * @return a set of units that can be recruited by @side on @recall_loc or the full recall list of @side.
+ * @return a set of units that can be recruited by @a side on @a recall_loc or the full recall list of @a side.
  */
 const std::vector<const unit*> get_recalls_for_location(int side, const map_location &recruit_loc);
 
