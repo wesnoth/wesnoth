@@ -16,7 +16,6 @@ function patrol_gen(n, wp) 	-- n is the name of the unit, like Kiressh
 
 	return 
 		function()
-			wesnoth.message("HEREE!!")
 			x, y = unit.x, unit.y
 			if (x == wp[wpn].x and y == wp[wpn].y) then
 				wpn = wpn % wpcount + 1 -- advance by one waypoint(this construct loops in range [1, wpcount])
