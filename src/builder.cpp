@@ -75,7 +75,7 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 				continue;
 
 			//need to break parity pattern in RNG
-			///@TODO improve this
+			/** @todo improve this */
 			unsigned int rnd = ri.rand / 7919; //just the 1000th prime
 			img_list.push_back(variant.images[rnd % variant.images.size()]);
 			if(variant.random_start)
@@ -299,7 +299,7 @@ static bool image_exists(const std::string& name)
 
 static std::vector<std::string> get_variations(const std::string& base, const std::string& variations)
 {
-	///@TODO optimize this function
+	/** @todo optimize this function */
 	std::vector<std::string> res;
 	if(variations.empty()){
 		res.push_back(base);
@@ -341,7 +341,7 @@ bool terrain_builder::load_images(building_rule &rule)
 				std::vector<std::string> var_strings = get_variations(variant.image_string, variant.variations);
 				foreach(const std::string& var, var_strings)
 				{
-					///@TODO improve this, 99% of terrains are not animated.
+					/** @todo improve this, 99% of terrains are not animated. */
 					std::vector<std::string> frames = utils::parenthetical_split(var,',');
 					animated<image::locator> res;
 
