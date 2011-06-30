@@ -104,9 +104,9 @@ std::string find_recall_location(const int side, map_location &recall_location, 
  * Get's the recruitable units from a side's leaders' personal recruit lists who can recruit on a specific hex field.
  * @param side of the leaders to search for their personal recruit lists.
  * @param recruit_location the hex field being part of the castle the player wants to recruit on.
- * @return a set of units that can be recruited by leaders on a keep connected by castle tiles with recruit_loc.
+ * @return a set of units that can be recruited by leaders on a keep connected by castle tiles with @a recruit_location.
  */
-const std::set<std::string> get_recruits_for_location(int side, const map_location &recruit_loc);
+const std::set<std::string> get_recruits_for_location(int side, const map_location &recruit_location);
 
 /**
  * Get's the recruitable units from a side's leaders' personal recruit lists who can recruit on a specific hex field.
@@ -115,7 +115,7 @@ const std::set<std::string> get_recruits_for_location(int side, const map_locati
  * @param recruit_location the hex field being part of the castle the player wants to recruit on.
  * @return a set of units that can be recruited by @a side on @a recall_loc or the full recall list of @a side.
  */
-const std::vector<const unit*> get_recalls_for_location(int side, const map_location &recruit_loc);
+const std::vector<const unit*> get_recalls_for_location(int side, const map_location &recruit_location);
 
 /**
  * Place a unit into the game.
