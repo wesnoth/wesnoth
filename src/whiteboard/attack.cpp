@@ -69,7 +69,7 @@ attack::attack(config const& cfg)
 	, temp_movement_subtracted_(0)
 {
 	///@todo Move this line of code into init() itself ...
-	resources::screen->invalidate(target_hex_); 
+	resources::screen->invalidate(target_hex_);
 	this->init();
 }
 

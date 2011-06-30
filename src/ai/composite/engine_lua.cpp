@@ -105,21 +105,21 @@ private:
 
 class lua_sticky_candidate_action_wrapper : public lua_candidate_action_wrapper {
 public:
-	lua_sticky_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx) 
+	lua_sticky_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx)
 		: lua_candidate_action_wrapper(context, cfg, lua_ai_ctx)
 		, bound_unit_()
 	{
 		map_location loc(cfg["unit_x"], cfg["unit_y"]);
 		bound_unit_ = boost::shared_ptr<unit>(new unit(*resources::units->find(loc)));
 	}
-	
+
 	virtual void execute()	{
 		lua_candidate_action_wrapper::execute();
 		this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
 	}
 private:
 	boost::shared_ptr<unit> bound_unit_;
-	
+
 };
 
 class lua_stage_wrapper : public stage {
