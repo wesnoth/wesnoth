@@ -841,3 +841,49 @@ function wml_actions.store_side(cfg)
 	end
 end
 
+function wml_actions.add_ai_behavior(cfg)
+	wesnoth.message("Adding a behavior")
+	local unit = wesnoth.get_units(helper.get_child(cfg, "filter"))[1]
+	local side = cfg.side
+	local sticky = cfg.sticky or false
+	local loop_id = cfg.loop_id or "main_loop"
+	local eval = cfg.evaluation
+	local exec = cfg.execution
+	
+	if not side then
+		helper.wml_error("[add_ai_behavior]: no side attribute given")
+	end
+	
+	if not (eval and exec) then
+		helper.wml_error("[add_ai_behavior]: invalid execution/evaluation handler(s)")
+	end
+	
+	local id = "bca-" .. ca_counter
+	local path = "stage[" .. loop_id .. "].candidate_action[" .. id .. "]" -- bca: behavior candidate action
+	
+	ca_counter = ca_counter + 1
+	
+	local conf = {
+		["action"] = "add",
+		["engine"] = "lua",
+		["id"] = id,
+		["name"] = id,
+		{"candidate_action", {
+			["id"] = id,
+			["name"] = id,
+			["engine"] = "lua",
+			["side"] = side,
+			["sticky"] = sticky,
+			["path"] = path,
+			["evaluation"] = eval,
+			["execution"] = exec
+		}},
+		["side"] = side,
+		["sticky"] = sticky,
+		["path"] = path,
+		["evaluation"] = eval,
+		["execution"] = exec
+	}
+	wesnoth.wml_actions.modify_ai(conf)
+end
+

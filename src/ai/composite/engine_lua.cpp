@@ -32,6 +32,8 @@
 #include "../lua/lua_object.hpp"
 #include "../../scripting/lua.hpp"
 #include "../../util.hpp"
+#include "../../unit.hpp"
+#include <unit_map.hpp>
 
 
 namespace ai {
@@ -53,14 +55,10 @@ typedef boost::shared_ptr< lua_object<int> > lua_int_obj;
 class lua_candidate_action_wrapper : public candidate_action {
 public:
 	lua_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx)
-		: candidate_action(context,cfg),evaluation_(cfg["evaluation"]),evaluation_action_handler_(),execution_(cfg["execution"]),execution_action_handler_(),serialized_evaluation_state_(),sticky_(false)
+		: candidate_action(context,cfg),evaluation_(cfg["evaluation"]),evaluation_action_handler_(),execution_(cfg["execution"]),execution_action_handler_(),serialized_evaluation_state_()
 	{
 		evaluation_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(evaluation_.c_str(),lua_ai_ctx));
 		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(execution_.c_str(),lua_ai_ctx));
-		if (cfg.has_attribute("sticky"))
-		{
-			sticky_ = cfg["sticky"].to_bool();
-		}
 	}
 
 	virtual ~lua_candidate_action_wrapper() {}
@@ -87,11 +85,6 @@ public:
 		if (execution_action_handler_) {
 			execution_action_handler_->handle(serialized_evaluation_state_, false, l_obj);
 		}
-		
-		if (sticky_)
-		{
-			this->disable();
-		}
 	}
 
 	virtual config to_config() const
@@ -108,10 +101,25 @@ private:
 	std::string execution_;
 	boost::shared_ptr<lua_ai_action_handler> execution_action_handler_;
 	config serialized_evaluation_state_;
-	bool sticky_;
 };
 
-
+class lua_sticky_candidate_action_wrapper : public lua_candidate_action_wrapper {
+public:
+	lua_sticky_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx) 
+		: lua_candidate_action_wrapper(context, cfg, lua_ai_ctx)
+	{
+		map_location loc(cfg["unit_x"], cfg["unit_y"]);
+		bound_unit = boost::shared_ptr<unit>(new unit(*resources::units->find(loc)));
+	}
+	
+	virtual void execute()	{
+		lua_candidate_action_wrapper::execute();
+		this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
+	}
+private:
+	boost::shared_ptr<unit> bound_unit;
+	
+};
 
 class lua_stage_wrapper : public stage {
 public:
