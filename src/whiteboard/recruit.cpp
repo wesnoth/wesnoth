@@ -61,6 +61,24 @@ recruit::recruit(size_t team_index, const std::string& unit_name, const map_loca
 		fake_unit_(create_corresponding_unit(), wb::fake_unit_deleter()),
 		temp_cost_()
 {
+	this->init();
+}
+
+///@todo Verify that the config produces valid data
+recruit::recruit(config const& cfg)
+	: action(cfg)
+	, unit_name_(cfg["unit_name_"])
+	, recruit_hex_(cfg.child("recruit_hex_")["x"],cfg.child("recruit_hex_")["y"])
+	, temp_unit_(create_corresponding_unit())
+	, valid_(true)
+	, fake_unit_(create_corresponding_unit(), wb::fake_unit_deleter())
+	, temp_cost_()
+{
+	this->init();
+}
+
+void recruit::init()
+{
 	fake_unit_->set_location(recruit_hex_);
 	fake_unit_->set_movement(0);
 	fake_unit_->set_attacks(0);
@@ -145,6 +163,22 @@ unit* recruit::create_corresponding_unit()
 	//real_unit = false needed to avoid generating random traits and causing OOS
 	bool real_unit = false;
 	return new unit(type, side_num, real_unit);
+}
+
+config recruit::to_config() const
+{
+	config final_cfg = action::to_config();
+
+	final_cfg["type"] = "recruit";
+	final_cfg["unit_name_"] = unit_name_;
+//	final_cfg["temp_cost_"] = temp_cost_; //Unnecessary
+
+	config loc_cfg;
+	loc_cfg["x"]=recruit_hex_.x;
+	loc_cfg["y"]=recruit_hex_.y;
+	final_cfg.add_child("recruit_hex_",loc_cfg);
+
+	return final_cfg;
 }
 
 }

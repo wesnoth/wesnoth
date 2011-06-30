@@ -39,6 +39,7 @@ namespace wb {
 	public:
 		///Future unit map must be valid during construction, so that suppose_dead can find its unit
 		suppose_dead(size_t team_index, unit& curr_unit);
+		explicit suppose_dead(config const&); // For deserialization
 		virtual ~suppose_dead();
 
 		/** Return the unit targeted by this action. Null if unit doesn't exist. */
@@ -66,6 +67,8 @@ namespace wb {
 
 			virtual void set_valid(bool valid);
 			virtual bool is_valid() { return valid_; }
+
+			virtual config to_config() const;
 	//	}	End Inherits from action
 
 	protected:
@@ -74,6 +77,9 @@ namespace wb {
 		map_location loc_;
 
 		bool valid_;
+
+	private:
+		void init();
 	};
 
 	/** Dumps a suppose_dead on a stream, for debug purposes. */

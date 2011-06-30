@@ -38,6 +38,7 @@
 #include "rng.hpp"
 #include "statistics.hpp"
 #include "wesconfig.h"
+#include "whiteboard/manager.hpp"
 
 #include <boost/bind.hpp>
 
@@ -1172,6 +1173,8 @@ replay_network_sender::~replay_network_sender()
 void replay_network_sender::sync_non_undoable()
 {
 	if(network::nconnections() > 0) {
+		resources::whiteboard->send_network_data();
+
 		config cfg;
 		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands(),replay::NON_UNDO_DATA));
 		if(data.empty() == false) {
@@ -1183,6 +1186,8 @@ void replay_network_sender::sync_non_undoable()
 void replay_network_sender::commit_and_sync()
 {
 	if(network::nconnections() > 0) {
+		resources::whiteboard->send_network_data();
+
 		config cfg;
 		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands()));
 		if(data.empty() == false) {

@@ -20,6 +20,8 @@
 #ifndef WB_ACTION_HPP_
 #define WB_ACTION_HPP_
 
+#include "config.hpp"
+
 #include "typedefs.hpp"
 
 namespace wb {
@@ -33,6 +35,7 @@ class action
 {
 public:
 	action(size_t team_index);
+	explicit action(config const&); // For deserialization
 	virtual ~action();
 
 	virtual std::ostream& print(std::ostream& s) const = 0;
@@ -66,6 +69,11 @@ public:
 	 */
 	virtual void set_valid(bool valid) = 0;
 	virtual bool is_valid() = 0;
+
+	/** Constructs and returns a config object representing this object. */
+	virtual config to_config() const;
+	/** Constructs an object of a subclass of wb::action using a config. Current behavior is to return a null pointer for unrecognized config. */
+	static action_ptr from_config(config const&);
 
 private:
 	size_t team_index_;

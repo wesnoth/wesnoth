@@ -38,6 +38,7 @@ public:
 	///Future unit map must be valid during construction, so that move can find its unit
 	move(size_t team_index, const pathfind::marked_route& route, arrow_ptr arrow,
 			fake_unit_ptr fake_unit);
+	explicit move(config const&); // For deserialization
 	virtual ~move();
 
 	virtual std::ostream& print(std::ostream& s) const;
@@ -74,6 +75,8 @@ public:
 	virtual void set_valid(bool valid);
 	virtual bool is_valid() { return valid_; }
 
+	virtual config to_config() const;
+
 protected:
 
 	void calculate_move_cost();
@@ -87,6 +90,9 @@ protected:
 	fake_unit_ptr fake_unit_;
 
 	bool valid_;
+
+private:
+	void init();
 };
 
 /** Dumps an move on a stream, for debug purposes. */

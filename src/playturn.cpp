@@ -27,6 +27,7 @@
 #include "replay.hpp"
 #include "resources.hpp"
 #include "rng.hpp"
+#include "whiteboard/manager.hpp"
 #include "formula_string_utils.hpp"
 #include "play_controller.hpp"
 
@@ -137,6 +138,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			backlog.back().add_child("turn", t);
 		}
 	}
+
+	resources::whiteboard->process_network_data(cfg);
 
 	if (const config &change= cfg.child("change_controller"))
 	{

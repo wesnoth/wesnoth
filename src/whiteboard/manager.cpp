@@ -33,6 +33,7 @@
 #include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "key.hpp"
+#include "network.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
@@ -59,7 +60,8 @@ manager::manager():
 		move_arrow_(),
 		fake_unit_(),
 		key_poller_(new CKey),
-		hidden_unit_hex_()
+		hidden_unit_hex_(),
+		net_buffer_()
 {
 	LOG_WB << "Manager initialized.\n";
 }
@@ -130,6 +132,7 @@ void manager::set_active(bool active)
 
 		if (active_)
 		{
+			clear_undo(); //< Clear undo stack when activating whiteboard mode
 			validate_viewer_actions();
 			LOG_WB << "Whiteboard activated! " << *viewer_actions() << "\n";
 			create_temp_move();
@@ -314,7 +317,8 @@ void manager::draw_hex(const map_location& hex)
 {
 	if (!wait_for_side_init_)
 	{
-		viewer_actions()->draw_hex(hex);
+		foreach(team& t,*resources::teams)
+			t.get_side_actions()->draw_hex(hex);
 	}
 
 	//Little hack to make the TAB key work properly: check at every draw if it's pressed,
@@ -357,6 +361,40 @@ void manager::on_gamestate_change()
 	gamestate_mutated_ = true;
 	//Clear exclusive draws that might not get a chance to be cleared the normal way
 	resources::screen->clear_exclusive_draws();
+}
+
+void manager::send_network_data()
+{
+	if(net_buffer_.empty())
+		return;
+
+	config packet;
+	config& wb_cfg = packet.add_child("whiteboard",net_buffer_);
+	wb_cfg["side"] = viewer_side();
+	wb_cfg["team_name"] = resources::teams->at(viewer_team()).team_name();
+
+	net_buffer_ = config();
+
+	network::send_data(packet,0,"whiteboard");
+
+	print_to_chat("tommydebug","sent wb data");
+}
+
+void manager::process_network_data(config const& cfg)
+{
+	if(config const& wb_cfg = cfg.child("whiteboard"))
+	{
+		team& team_from = resources::teams->at(wb_cfg["side"]-1);
+		foreach(side_actions::net_cmd const& cmd, wb_cfg.child_range("net_cmd"))
+			team_from.get_side_actions()->execute_net_cmd(cmd);
+
+		print_to_chat("tommydebug","received wb data");
+	}
+}
+
+void manager::queue_net_cmd(side_actions::net_cmd const& cmd)
+{
+	net_buffer_.add_child("net_cmd",cmd);
 }
 
 void manager::create_temp_move()
@@ -423,8 +461,6 @@ void manager::create_temp_move()
 		move_arrow_->set_color(team::get_side_color_index(
 				viewer_side()));
 		move_arrow_->set_style(arrow::STYLE_HIGHLIGHTED);
-		resources::screen->add_arrow(*move_arrow_);
-
 	}
 	if (!fake_unit_)
 	{
@@ -706,6 +742,12 @@ void manager::validate_actions_if_needed()
 		LOG_WB << "'gamestate_mutated_' flag dirty, validating actions.\n";
 		validate_viewer_actions(); //sets gamestate_mutated_ to false
 	}
+}
+
+void manager::clear_undo()
+{
+	resources::undo_stack->clear();
+	resources::redo_stack->clear();
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map():

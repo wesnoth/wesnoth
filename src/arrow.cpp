@@ -21,6 +21,7 @@
 #include "arrow.hpp"
 
 #include "foreach.hpp"
+#include "game_display.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 
@@ -40,6 +41,7 @@ arrow::arrow()
 	, previous_path_()
 	, symbols_map_()
 {
+	resources::screen->add_arrow(*this);
 }
 
 arrow::~arrow()

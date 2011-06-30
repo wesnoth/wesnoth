@@ -20,9 +20,12 @@
 #ifndef WB_MANAGER_HPP_
 #define WB_MANAGER_HPP_
 
+#include "side_actions.hpp"
 #include "typedefs.hpp"
 
+#include "config.hpp"
 #include "map_location.hpp"
+#include "network.hpp"
 
 #include <boost/noncopyable.hpp>
 
@@ -71,6 +74,13 @@ public:
 	void on_mouseover_change(const map_location& hex);
 	void on_deselect_hex(){ erase_temp_move();}
 	void on_gamestate_change();
+
+	/// Called by replay_network_sender to add whiteboard data to the outgoing network packets
+	void send_network_data();
+	/// Called by turn_info::process_network_data() when network data needs to be processed
+	void process_network_data(config const&);
+	/// Adds a side_actions::net_cmd to net_buffer_, whereupon it will be sent to all allies
+	void queue_net_cmd(side_actions::net_cmd const&);
 
 	/// Whether the current side has actions in its planned actions queue
 	static bool current_side_has_actions();
@@ -144,6 +154,9 @@ public:
 	/// Is referenced by the top bar gold display
 	int get_spent_gold_for(int side);
 
+	/// Simply clears the undo_stack and redo_stack
+	void clear_undo();
+
 private:
 	void validate_actions_if_needed();
 
@@ -171,6 +184,8 @@ private:
 	boost::scoped_ptr<CKey> key_poller_;
 
 	map_location hidden_unit_hex_;
+
+	config net_buffer_;
 };
 
 /** Applies the planned unit map for the duration of the struct's life.

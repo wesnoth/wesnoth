@@ -31,6 +31,7 @@ class recall: public wb::action, public boost::enable_shared_from_this<recall>
 {
 public:
 	recall(size_t team_index, const unit& unit, const map_location& recall_hex);
+	explicit recall(config const&); // For deserialization
 	virtual ~recall();
 
 	friend class validate_visitor;
@@ -68,7 +69,11 @@ public:
 	virtual void set_valid(bool valid) { valid_ = valid; }
 	virtual bool is_valid() { return valid_; }
 
+	virtual config to_config() const;
+
 private:
+	void init();
+
 	unit* temp_unit_;
 	map_location recall_hex_;
 	bool valid_;

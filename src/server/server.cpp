@@ -2601,6 +2601,8 @@ void server::process_data_game(const network::connection sock,
 			update_game_in_lobby(g);
 		}
 		return;
+	} else if (data.child("whiteboard")) {
+		g->process_whiteboard(data,pl);
 	} else if (data.child("message")) {
 		g->process_message(data, pl);
 		return;

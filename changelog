@@ -8,6 +8,7 @@ Version 1.9.7+svn:
  * Multiplayer server:
    * Treat inactive forum accounts as unregistered users to prevent abuse
      of unverified registrations
+   * Handle incoming [whiteboard] data
  * User interface:
    * Moved Reverse Time Graphics display option to Advanced Preferences
    * Moved Scroll Tracking of Unit Actions display option to Advanced
@@ -17,6 +18,8 @@ Version 1.9.7+svn:
    * Moved Animate Map option from Advanced Preferences to Display 
    * Removed window decorations from GUI2 lobby
    * Converted New Folder dialog to GUI2
+   * Made whiteboard plans visible to allied network players
+   * Disabled undo while planning mode is active
  * Terrains:
    * Tweaked gameplay-visible names of terrain types, and restored many
      missing ones.

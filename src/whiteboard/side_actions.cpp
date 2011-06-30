@@ -195,14 +195,18 @@ bool side_actions::execute(side_actions::iterator position)
 	try	{
 		 finished = action->execute();
 	} catch (end_turn_exception&) {
+		resources::whiteboard->queue_net_cmd(make_net_cmd_remove(position));
 		actions_.erase(position);
 		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
 		validate_actions();
 		throw;
 	}
 
+	resources::whiteboard->clear_undo(); //< Disable undo for actions executed via the whiteboard
+
 	if (finished)
 	{
+		resources::whiteboard->queue_net_cmd(make_net_cmd_remove(position));
 		actions_.erase(position);
 		LOG_WB << "After execution and deletion, " << *this << "\n";
 		validate_actions();
@@ -264,6 +268,7 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
 	assert(position >= begin() && position < end());
+	resources::whiteboard->queue_net_cmd(make_net_cmd_insert(position, action));
 	iterator valid_position = actions_.insert(position, action);
 	LOG_WB << "Inserted at position #" << std::distance(begin(), valid_position) + 1
 		   << " : " << action <<"\n";
@@ -273,6 +278,7 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 
 side_actions::iterator side_actions::queue_action(action_ptr action)
 {
+	resources::whiteboard->queue_net_cmd(make_net_cmd_insert(end(),action));
 	actions_.push_back(action);
 	// Contrary to insert_action, no need to validate actions here since we're adding to the end of the queue
 	LOG_WB << "Queued: " << action <<"\n";
@@ -353,6 +359,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 			<< " to position #" << action_number - 1  << "/" << last_position << ".\n";
 
 	action_ptr action = *position;
+	resources::whiteboard->queue_net_cmd(make_net_cmd_bump_later(position-1));
 	action_queue::iterator after = actions_.erase(position);
 	//be careful, previous iterators have just been invalidated by erase()
 	action_queue::iterator destination = after - 1;
@@ -440,6 +447,7 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 			<< " to position #" << action_number + 1  << "/" << last_position << ".\n";
 
 	action_ptr action = *position;
+	resources::whiteboard->queue_net_cmd(make_net_cmd_bump_later(position));
 	action_queue::iterator after = actions_.erase(position);
 	//be careful, previous iterators have just been invalidated by erase()
 	DBG_WB << "Action temp. removed, position after is #" << after - begin() + 1  << "/" << actions_.size() << ".\n";
@@ -466,10 +474,8 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 	{
 		LOG_WB << "Erasing action at position #" << distance + 1 << "\n";
 
-		{//prevent erase() statement from destroying action object, potentially causing infinite recursion
-			action_ptr action = *position;
-			actions_.erase(position);
-		}//Now safely destruct action object (if zero references)
+		resources::whiteboard->queue_net_cmd(make_net_cmd_remove(position));
+		safe_erase(position);
 
 		if (validate_after_delete)
 		{
@@ -587,6 +593,73 @@ void side_actions::validate_actions()
 		validation_finished = validator.validate_actions();
 		++passes;
 	}
+}
+
+void side_actions::execute_net_cmd(net_cmd const& cmd)
+{
+	if(cmd["type"]=="insert")
+	{
+		int pos = cmd["pos"];
+		if((pos < 0) || (pos > static_cast<int>(actions_.size())))
+		{
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
+			return;
+		}
+		actions_.insert(begin()+pos,action::from_config(cmd.child("action")));
+	}
+	else if(cmd["type"]=="remove")
+	{
+		int pos = cmd["pos"];
+		if(pos<0 || pos>=static_cast<int>(actions_.size()))
+		{
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
+			return;
+		}
+		safe_erase(begin()+pos);
+	}
+	else if(cmd["type"]=="bump_later")
+	{
+		int pos = cmd["pos"];
+		if(pos<0 || pos>=static_cast<int>(actions_.size())-1)
+		{
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
+			return;
+		}
+		action_ptr act = actions_.at(pos);
+		actions_.erase(begin()+pos);
+		actions_.insert(begin()+pos+1,act);
+	}
+	else if(cmd["type"]=="clear")
+		actions_.clear();
+}
+
+side_actions::net_cmd side_actions::make_net_cmd_insert(const_iterator const& pos, action_ptr act) const
+{
+	net_cmd result;
+	result["type"] = "insert";
+	result["pos"] = static_cast<int>(std::distance(begin(),pos));
+	result.add_child("action",act->to_config());
+	return result;
+}
+side_actions::net_cmd side_actions::make_net_cmd_remove(const_iterator const& pos) const
+{
+	net_cmd result;
+	result["type"] = "remove";
+	result["pos"] = static_cast<int>(std::distance(begin(),pos));
+	return result;
+}
+side_actions::net_cmd side_actions::make_net_cmd_bump_later(const_iterator const& pos) const
+{
+	net_cmd result;
+	result["type"] = "bump_later";
+	result["pos"] = static_cast<int>(std::distance(begin(),pos));
+	return result;
+}
+side_actions::net_cmd side_actions::make_net_cmd_clear() const
+{
+	net_cmd result;
+	result["type"] = "clear";
+	return result;
 }
 
 } //end namespace wb

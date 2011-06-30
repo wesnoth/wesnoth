@@ -24,6 +24,7 @@
 #include "utility.hpp"
 #include "visitor.hpp"
 
+#include "foreach.hpp"
 #include "game_display.hpp"
 #include "menu_events.hpp"
 #include "play_controller.hpp"
@@ -58,6 +59,36 @@ recall::recall(size_t team_index, const unit& unit, const map_location& recall_h
 		valid_(true),
 		fake_unit_(new class unit(unit), wb::fake_unit_deleter()),
 		temp_cost_(0)
+{
+	this->init();
+}
+
+///@todo Verify that the config produces valid data
+recall::recall(config const& cfg)
+	: action(cfg)
+	, temp_unit_(NULL)
+	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"])
+	, valid_(true)
+	, fake_unit_()
+	, temp_cost_(0)
+{
+	size_t underlying_id = cfg["temp_unit_"];
+	foreach(unit const& recall_unit, resources::teams->at(team_index()).recall_list())
+	{
+		if(recall_unit.underlying_id()==underlying_id)
+		{
+			temp_unit_=new unit(recall_unit);
+			break;
+		}
+	}
+	assert(temp_unit_!=NULL); ///@todo work harder to make sure this assertion succeeds
+
+	fake_unit_.reset(new unit(*temp_unit_),wb::fake_unit_deleter());
+
+	this->init();
+}
+
+void recall::init()
 {
 	fake_unit_->set_location(recall_hex_);
 	fake_unit_->set_movement(0);
@@ -145,6 +176,22 @@ void recall::draw_hex(map_location const& hex)
 		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
+}
+
+config recall::to_config() const
+{
+	config final_cfg = action::to_config();
+
+	final_cfg["type"] = "recall";
+	final_cfg["temp_unit_"] = static_cast<int>(temp_unit_->underlying_id());
+//	final_cfg["temp_cost_"] = temp_cost_; //Unnecessary
+
+	config loc_cfg;
+	loc_cfg["x"]=recall_hex_.x;
+	loc_cfg["y"]=recall_hex_.y;
+	final_cfg.add_child("recall_hex_",loc_cfg);
+
+	return final_cfg;
 }
 
 } //end namespace wb

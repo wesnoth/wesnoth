@@ -890,6 +890,33 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	return turn_ended;
 }
 
+void game::process_whiteboard(simple_wml::document& data, const player_map::const_iterator user)
+{
+	if(!started_ || !is_player(user->first))
+		return;
+
+	simple_wml::node const& wb_node = *data.child("whiteboard");
+	simple_wml::string_span const& team_name = wb_node["team_name"];
+	size_t const side_num = wb_node["side"].to_int();
+
+	// Ensure "side" and "team_name" attributes match with user
+	if(!is_on_team(team_name,user->first)
+			|| side_num < 1
+			|| side_num > gamemap::MAX_PLAYERS
+			|| sides_[side_num-1] != user->first)
+	{
+		std::ostringstream msg;
+		msg << "Ignoring illegal whiteboard data, sent from user '" << user->second.name()
+				<< "' to team '" << std::string(team_name.begin(), team_name.end()) << "'." << std::endl;
+		const std::string& msg_str = msg.str();
+		LOG_GAME << msg_str << std::endl;
+		send_and_record_server_message(msg_str);
+		return;
+	}
+
+	send_data_team(data,team_name,user->first,"whiteboard");
+}
+
 bool game::end_turn() {
 	// It's a new turn every time each side in the game ends their turn.
 	++end_turn_;

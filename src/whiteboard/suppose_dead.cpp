@@ -67,6 +67,22 @@ namespace wb
 	, loc_(curr_unit.get_location())
 	, valid_(true)
 	{
+		this->init();
+	}
+
+	///@todo Verify that the config produces valid data
+	suppose_dead::suppose_dead(config const& cfg)
+	: action(cfg)
+	, unit_(&*resources::units->find(cfg["unit_"]))
+	, unit_id_(unit_->id())
+	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"])
+	, valid_(true)
+	{
+		this->init();
+	}
+
+	void suppose_dead::init()
+	{
 		resources::screen->invalidate(loc_);
 	}
 
@@ -129,6 +145,22 @@ namespace wb
 	void suppose_dead::set_valid(bool valid)
 	{
 		valid_ = valid;
+	}
+
+	config suppose_dead::to_config() const
+	{
+		config final_cfg = action::to_config();
+
+		final_cfg["type"]="suppose_dead";
+		final_cfg["unit_"]=static_cast<int>(unit_->underlying_id());
+		final_cfg["unit_id_"]=unit_id_;
+
+		config loc_cfg;
+		loc_cfg["x"]=loc_.x;
+		loc_cfg["y"]=loc_.y;
+		final_cfg.add_child("loc_",loc_cfg);
+
+		return final_cfg;
 	}
 
 } // end namespace wb

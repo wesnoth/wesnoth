@@ -35,6 +35,7 @@ class recruit: public wb::action, public boost::enable_shared_from_this<recruit>
 {
 public:
 	recruit(size_t team_index, const std::string& unit_name, const map_location& recruit_hex);
+	explicit recruit(config const&); // For deserialization
 	virtual ~recruit();
 
 	friend class validate_visitor;
@@ -72,6 +73,7 @@ public:
 	virtual void set_valid(bool valid) { valid_ = valid; }
 	virtual bool is_valid() { return valid_; }
 
+	virtual config to_config() const;
 
 protected:
 	virtual unit* create_corresponding_unit();
@@ -84,6 +86,9 @@ protected:
 	fake_unit_ptr fake_unit_;
 
 	int temp_cost_;
+
+private:
+	void init();
 };
 
 std::ostream& operator<<(std::ostream& s, recruit_ptr recruit);

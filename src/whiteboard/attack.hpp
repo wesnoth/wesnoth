@@ -34,6 +34,7 @@ public:
 	///Future unit map must be valid during construction, so that attack can find its units
 	attack(size_t team_index, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
+	explicit attack(config const&); // For deserialization
 	virtual ~attack();
 
 	virtual std::ostream& print(std::ostream& s) const;
@@ -52,7 +53,11 @@ public:
 
 	map_location const& get_target_hex() const {return target_hex_; }
 
+	virtual config to_config() const;
+
 private:
+		void init() {}
+
 		///the target of the attack
 		map_location target_hex_;
 

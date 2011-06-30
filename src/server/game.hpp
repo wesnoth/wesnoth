@@ -132,6 +132,9 @@ public:
 	 */
 	bool process_turn(simple_wml::document& data, const player_map::const_iterator user);
 
+	/** Handles incoming [whiteboard] data. */
+	void process_whiteboard(simple_wml::document& data, const player_map::const_iterator user);
+
 	/**
 	 * Set the description to the number of available slots.
 	 *

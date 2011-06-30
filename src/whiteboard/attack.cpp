@@ -57,6 +57,20 @@ attack::attack(size_t team_index, const map_location& target_hex, int weapon_cho
 	attack_movement_cost_(get_unit()->attacks()[weapon_choice_].movement_used()),
 	temp_movement_subtracted_(0)
 {
+	this->init();
+}
+
+///@todo Verify that the config produces valid data
+attack::attack(config const& cfg)
+	: move(cfg)
+	, target_hex_(cfg.child("target_hex_")["x"],cfg.child("target_hex_")["y"])
+	, weapon_choice_(cfg["weapon_choice_"])
+	, attack_movement_cost_(get_unit()->attacks()[weapon_choice_].movement_used())
+	, temp_movement_subtracted_(0)
+{
+	///@todo Move this line of code into init() itself ...
+	resources::screen->invalidate(target_hex_); 
+	this->init();
 }
 
 attack::~attack()
@@ -172,6 +186,23 @@ void attack::draw_hex(const map_location& hex)
 					image::get_image("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
 		}
 	}
+}
+
+config attack::to_config() const
+{
+	config final_cfg = move::to_config();
+
+	final_cfg["type"] = "attack";
+	final_cfg["weapon_choice_"] = weapon_choice_;
+//	final_cfg["attack_movement_cost_"] = attack_movement_cost_; //Unnecessary
+//	final_cfg["temp_movement_subtracted_"] = temp_movement_subtracted_; //Unnecessary
+
+	config target_hex_cfg;
+	target_hex_cfg["x"]=target_hex_.x;
+	target_hex_cfg["y"]=target_hex_.y;
+	final_cfg.add_child("target_hex_",target_hex_cfg);
+
+	return final_cfg;
 }
 
 } // end namespace wb

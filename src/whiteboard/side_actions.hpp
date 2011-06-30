@@ -82,6 +82,9 @@ public:
 	iterator begin() { return actions_.begin(); }
 	/// reverse version of the above
 	reverse_iterator rbegin() { return actions_.rbegin(); }
+	/// const versions of the above
+	const_iterator begin() const { return const_cast<action_queue const&>(actions_).begin(); }
+	const_reverse_iterator rbegin() const { return const_cast<action_queue const&>(actions_).rbegin(); }
 
 	/**
 	 * Returns the iterator for the position *after* the last executed action within the actions queue.
@@ -89,6 +92,9 @@ public:
 	iterator end() { return actions_.end(); }
 	/// reverse version of the above
 	reverse_iterator rend() { return actions_.rend(); }
+	/// const versions of the above
+	const_iterator end() const { return const_cast<action_queue const&>(actions_).end(); }
+	const_reverse_iterator rend() const { return const_cast<action_queue const&>(actions_).rend(); }
 
 	/**
 	 * Indicates whether the action queue is empty.
@@ -202,9 +208,23 @@ public:
 	///Used to track gold spending by recruits/recalls when building the future unit map
 	void change_gold_spent_by(int difference) { gold_spent_ += difference; assert(gold_spent_ >= 0);}
 
+	/**
+	 * Network code. A net_cmd object (a config in disguise) represents a modification
+	 * to a side_actions object. execute_net_cmd() translates one of these into
+	 * a real modification of *this. The make_net_cmd_***() family of functions is
+	 * convenient for building specific types of net_cmds.
+	 */
+	typedef config net_cmd;
+	void execute_net_cmd(net_cmd const&);
+	net_cmd make_net_cmd_insert(const_iterator const& pos, action_ptr) const;
+	net_cmd make_net_cmd_remove(const_iterator const& pos) const;
+	net_cmd make_net_cmd_bump_later(const_iterator const& pos) const;
+	net_cmd make_net_cmd_clear() const;
+
 private:
 
 	bool validate_iterator(iterator position) { return position >= begin() && position < end(); }
+	void safe_erase(iterator const& itor) { action_ptr action = *itor; actions_.erase(itor); }
 
 	action_queue actions_;
 	size_t team_index_;

@@ -27,7 +27,6 @@
 #include "arrow.hpp"
 #include "config.hpp"
 #include "foreach.hpp"
-#include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
@@ -73,6 +72,51 @@ move::move(size_t team_index, const pathfind::marked_route& route,
 	assert(!route_->steps.empty());
 
 	unit_ = wb::future_visible_unit(get_source_hex());
+
+	this->init();
+}
+
+///@todo Verify that the config produces valid data
+move::move(config const& cfg)
+	: action(cfg)
+	, unit_(&*resources::units->find(cfg["unit_"]))
+	, unit_id_()
+	, route_(new pathfind::marked_route())
+	, movement_cost_()
+	, arrow_(new arrow())
+	, fake_unit_(new unit(*unit_),wb::fake_unit_deleter())
+	, valid_(true)
+{
+	///@todo Verify that unit_!=NULL
+
+	//Finish creating route
+	config route_cfg = cfg.child("route_");
+	route_->move_cost = route_cfg["move_cost"];
+	foreach(config const& loc_cfg, route_cfg.child_range("step")) {
+		route_->steps.push_back(map_location(loc_cfg["x"],loc_cfg["y"]));
+	}
+	foreach(config const& mark_cfg, route_cfg.child_range("mark")) {
+		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"])]
+				= pathfind::marked_route::mark(mark_cfg["turns"],mark_cfg["pass_here"],mark_cfg["zoc"],mark_cfg["capture"],mark_cfg["invisible"]);
+	}
+	///@todo Verify that this is a valid route
+
+	// Finish creating arrow
+	arrow_->set_color(team::get_side_color_index(team_index()+1));
+	arrow_->set_style(arrow::STYLE_STANDARD);
+	arrow_->set_path(route_->steps);
+
+	// Finish creating fake unit
+	resources::screen->place_temporary_unit(fake_unit_.get());
+	fake_unit_->set_ghosted(false);
+	unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams, false); //get facing right
+	fake_unit_->set_location(route_->steps.back());
+
+	this->init();
+}
+
+void move::init()
+{
 	assert(unit_);
 	unit_id_ = unit_->id();
 
@@ -82,7 +126,7 @@ move::move(size_t team_index, const pathfind::marked_route& route,
 	{
 		fake_unit_->set_ghosted(true);
 	}
-	side_actions_ptr side_actions = resources::teams->at(team_index).get_side_actions();
+	side_actions_ptr side_actions = resources::teams->at(team_index()).get_side_actions();
 	side_actions::iterator action = side_actions->find_last_action_of(unit_);
 	if (action != side_actions->end())
 	{
@@ -327,6 +371,43 @@ void move::set_valid(bool valid)
 //	{
 //		arrow_->set_style(ARROW_STYLE_INVALID);
 //	}
+}
+
+config move::to_config() const
+{
+	config final_cfg = action::to_config();
+
+	final_cfg["type"]="move";
+	final_cfg["unit_"]=static_cast<int>(unit_->underlying_id());
+//	final_cfg["movement_cost_"]=movement_cost_; //Unnecessary
+//	final_cfg["unit_id_"]=unit_id_; //Unnecessary
+
+	//Serialize route_
+	config route_cfg;
+	route_cfg["move_cost"]=route_->move_cost;
+	foreach(map_location const& loc, route_->steps)
+	{
+		config loc_cfg;
+		loc_cfg["x"]=loc.x;
+		loc_cfg["y"]=loc.y;
+		route_cfg.add_child("step",loc_cfg);
+	}
+	typedef std::pair<map_location,pathfind::marked_route::mark> pair_loc_mark;
+	foreach(pair_loc_mark const& item, route_->marks)
+	{
+		config mark_cfg;
+		mark_cfg["x"]=item.first.x;
+		mark_cfg["y"]=item.first.y;
+		mark_cfg["turns"]=item.second.turns;
+		mark_cfg["pass_here"]=item.second.pass_here;
+		mark_cfg["zoc"]=item.second.zoc;
+		mark_cfg["capture"]=item.second.capture;
+		mark_cfg["invisible"]=item.second.invisible;
+		route_cfg.add_child("mark",mark_cfg);
+	}
+	final_cfg.add_child("route_",route_cfg);
+
+	return final_cfg;
 }
 
 void move::calculate_move_cost()
