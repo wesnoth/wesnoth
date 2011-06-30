@@ -59,7 +59,7 @@ namespace ana
         /**
          * Create a time lapse from a given amount of seconds.
          *
-         * @param ms : Seconds of elapsed time.
+         * @param s : Seconds of elapsed time.
          *
          * @returns : A time duration amount (in milliseconds) to be used with timers.
          */
@@ -68,7 +68,7 @@ namespace ana
         /**
          * Create a time lapse from a given amount of minutes.
          *
-         * @param ms : Minutes of elapsed time.
+         * @param m : Minutes of elapsed time.
          *
          * @returns : A time duration amount (in milliseconds) to be used with timers.
          */
@@ -77,7 +77,7 @@ namespace ana
         /**
          * Create a time lapse from a given amount of hours.
          *
-         * @param ms : Hours of elapsed time.
+         * @param h : Hours of elapsed time.
          *
          * @returns : A time duration amount (in milliseconds) to be used with timers.
          */
@@ -86,7 +86,7 @@ namespace ana
         /**
          * Create a time lapse from a given amount of days.
          *
-         * @param ms : Hours of elapsed time.
+         * @param d : Hours of elapsed time.
          *
          * @returns : A time duration amount (in milliseconds) to be used with timers.
          */
