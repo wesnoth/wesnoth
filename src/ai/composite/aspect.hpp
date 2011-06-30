@@ -408,7 +408,7 @@ public:
 		if (cfg.has_attribute("value"))
 		{
 			value = cfg["value"].str();
-			if (value == "yes") // @TODO for Nephro or Crab: get rid of this workaround
+			if (value == "yes") /** @todo for Nephro or Crab: get rid of this workaround */
 			{
 				value = "true";
 			}
