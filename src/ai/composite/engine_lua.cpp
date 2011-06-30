@@ -107,6 +107,7 @@ class lua_sticky_candidate_action_wrapper : public lua_candidate_action_wrapper 
 public:
 	lua_sticky_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx) 
 		: lua_candidate_action_wrapper(context, cfg, lua_ai_ctx)
+		, bound_unit()
 	{
 		map_location loc(cfg["unit_x"], cfg["unit_y"]);
 		bound_unit = boost::shared_ptr<unit>(new unit(*resources::units->find(loc)));
