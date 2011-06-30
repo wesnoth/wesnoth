@@ -468,7 +468,7 @@ namespace ana
          * @param port : The port to be used for the server incoming connections.
          *               The port shouldn't be currently occupied.
          */
-        virtual void run(port pt)                                  = 0;
+        virtual void run(port port)                                = 0;
 
         /**
          * Disconnect a connected client by force.
