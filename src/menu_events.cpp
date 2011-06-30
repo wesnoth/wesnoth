@@ -3222,10 +3222,10 @@ void console_handler::do_layers() {
 		const terrain_builder::tile::rule_image_rand& ri = *det.first;
 		const terrain_builder::rule_image_variant& variant = *det.second;
 
-		///@TODO also use random image variations (not just take 1st)
+		/** @todo also use random image variations (not just take 1st) */
 		const image::locator& img = variant.images.front().get_first_frame();
 		const std::string& name = img.get_filename();
-		///@TODO deal with (rarely used) ~modifications
+		/** @todo deal with (rarely used) ~modifications */
 		//const std::string& modif = img.get_modifications();
 		const map_location& loc_cut = img.get_loc();
 
