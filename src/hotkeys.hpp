@@ -139,6 +139,8 @@ public:
 		keycode_(0),
 		button_(0),
 		joystick_(0),
+		hat_(0),
+		value_(0),
 		hidden_(false)
 		{}
 
