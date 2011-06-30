@@ -337,7 +337,7 @@ namespace {
  * It should only be used within an anonymous namespace
  *
  * @param type The modification type to be registered (unquoted)
- * @args_var The name for the string argument provided
+ * @param args_var The name for the string argument provided
  */
 #define REGISTER_MOD_PARSER(type, args_var)     	               \
 	modification* parse_##type##_mod(const std::string&);          \
