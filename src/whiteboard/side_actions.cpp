@@ -597,7 +597,9 @@ void side_actions::validate_actions()
 
 void side_actions::execute_net_cmd(net_cmd const& cmd)
 {
-	if(cmd["type"]=="insert")
+	std::string type = cmd["type"];
+
+	if(type=="insert")
 	{
 		int pos = cmd["pos"];
 		if((pos < 0) || (pos > static_cast<int>(actions_.size())))
@@ -605,9 +607,23 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
 			return;
 		}
-		actions_.insert(begin()+pos,action::from_config(cmd.child("action")));
+
+		action_queue::iterator itor = actions_.begin()+pos;
+
+		try {
+			itor = actions_.insert(itor,action::from_config(cmd.child("action")));
+		} catch(action::ctor_err const&) {
+			ERR_WB << "side_actions::execute_network_command(): received invalid data!\n";
+			return;
+		}
+
+		//update numbering hexes as necessary
+		++itor;
+		action_queue::iterator end = actions_.end();
+		for( ; itor!=end; ++itor)
+			resources::screen->invalidate((*itor)->get_numbering_hex());
 	}
-	else if(cmd["type"]=="remove")
+	else if(type=="remove")
 	{
 		int pos = cmd["pos"];
 		if(pos<0 || pos>=static_cast<int>(actions_.size()))
@@ -615,9 +631,15 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
 			return;
 		}
-		safe_erase(begin()+pos);
+		action_queue::iterator itor = actions_.begin()+pos;
+		itor = safe_erase(begin()+pos);
+
+		//update numbering hexes as necessary
+		action_queue::iterator end = actions_.end();
+		for( ; itor!=end; ++itor)
+			resources::screen->invalidate((*itor)->get_numbering_hex());
 	}
-	else if(cmd["type"]=="bump_later")
+	else if(type=="bump_later")
 	{
 		int pos = cmd["pos"];
 		if(pos<0 || pos>=static_cast<int>(actions_.size())-1)
@@ -625,12 +647,25 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
 			return;
 		}
-		action_ptr act = actions_.at(pos);
-		actions_.erase(begin()+pos);
-		actions_.insert(begin()+pos+1,act);
+
+		action_queue::iterator itor = actions_.begin()+pos;
+		action_ptr first_action = *itor;
+		itor = actions_.erase(itor);
+		action_ptr second_action = *itor;
+		actions_.insert(++itor,first_action);
+
+		//update numbering hexes as necessary
+		resources::screen->invalidate(first_action->get_numbering_hex());
+		resources::screen->invalidate(second_action->get_numbering_hex());
 	}
-	else if(cmd["type"]=="clear")
+	else if(type=="clear")
+	{
 		actions_.clear();
+	}
+	else
+	{
+		ERR_WB << "side_actions::execute_network_command(): received invalid type!\n";
+	}
 }
 
 side_actions::net_cmd side_actions::make_net_cmd_insert(const_iterator const& pos, action_ptr act) const

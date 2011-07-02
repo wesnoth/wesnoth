@@ -76,21 +76,26 @@ move::move(size_t team_index, const pathfind::marked_route& route,
 	this->init();
 }
 
-///@todo Verify that the config produces valid data
 move::move(config const& cfg)
 	: action(cfg)
-	, unit_(&*resources::units->find(cfg["unit_"]))
+	, unit_()
 	, unit_id_()
 	, route_(new pathfind::marked_route())
 	, movement_cost_()
 	, arrow_(new arrow())
-	, fake_unit_(new unit(*unit_),wb::fake_unit_deleter())
+	, fake_unit_()
 	, valid_(true)
 {
-	///@todo Verify that unit_!=NULL
+	// Construct and validate unit_
+	unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
+	if(unit_itor == resources::units->end())
+		throw action::ctor_err("move: Invalid underlying_id");
+	unit_ = &*unit_itor;
 
-	//Finish creating route
-	config route_cfg = cfg.child("route_");
+	// Construct and validate route_
+	config const& route_cfg = cfg.child("route_");
+	if(!route_cfg)
+		throw action::ctor_err("move: Invalid route_");
 	route_->move_cost = route_cfg["move_cost"];
 	foreach(config const& loc_cfg, route_cfg.child_range("step")) {
 		route_->steps.push_back(map_location(loc_cfg["x"],loc_cfg["y"]));
@@ -99,14 +104,19 @@ move::move(config const& cfg)
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"])]
 				= pathfind::marked_route::mark(mark_cfg["turns"],mark_cfg["pass_here"],mark_cfg["zoc"],mark_cfg["capture"],mark_cfg["invisible"]);
 	}
-	///@todo Verify that this is a valid route
 
-	// Finish creating arrow
-	arrow_->set_color(team::get_side_color_index(team_index()+1));
+	// Validate route_ some more
+	std::vector<map_location> const& steps = route_->steps;
+	if(steps.empty() || steps.front() != unit_->get_location())
+		throw action::ctor_err("move: Invalid route_");
+
+	// Construct arrow_
+	arrow_->set_color(team::get_side_color_index(side_number()));
 	arrow_->set_style(arrow::STYLE_STANDARD);
 	arrow_->set_path(route_->steps);
 
-	// Finish creating fake unit
+	// Construct fake_unit_
+	fake_unit_.reset(new unit(*unit_),wb::fake_unit_deleter());
 	resources::screen->place_temporary_unit(fake_unit_.get());
 	fake_unit_->set_ghosted(false);
 	unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams, false); //get facing right
@@ -117,6 +127,7 @@ move::move(config const& cfg)
 
 void move::init()
 {
+	/// @todo Why do we even have the unit_id_ field?
 	assert(unit_);
 	unit_id_ = unit_->id();
 
@@ -352,9 +363,9 @@ void move::draw_hex(const map_location& hex)
 	(void) hex; //temporary to avoid unused param warning
 }
 
-bool move::is_numbering_hex(const map_location& hex) const
+map_location move::get_numbering_hex() const
 {
-	return hex == get_dest_hex();
+	return get_dest_hex();
 }
 
 void move::set_valid(bool valid)
@@ -373,6 +384,7 @@ void move::set_valid(bool valid)
 //	}
 }
 
+///@todo Find a better way to serialize unit_ because underlying_id isn't cutting it
 config move::to_config() const
 {
 	config final_cfg = action::to_config();

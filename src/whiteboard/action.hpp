@@ -21,6 +21,7 @@
 #define WB_ACTION_HPP_
 
 #include "config.hpp"
+#include "map_location.hpp"
 
 #include "typedefs.hpp"
 
@@ -54,7 +55,8 @@ public:
 	virtual void draw_hex(const map_location& hex) = 0;
 
 	/** Indicates whether this hex is the preferred hex to draw the numbering for this action. */
-	virtual bool is_numbering_hex(const map_location& hex) const = 0;
+	bool is_numbering_hex(const map_location& hex) const {return hex==get_numbering_hex();}
+	virtual map_location get_numbering_hex() const = 0;
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit* get_unit() const = 0;
@@ -74,6 +76,11 @@ public:
 	virtual config to_config() const;
 	/** Constructs an object of a subclass of wb::action using a config. Current behavior is to return a null pointer for unrecognized config. */
 	static action_ptr from_config(config const&);
+
+	struct ctor_err	: public game::error
+	{
+		ctor_err(const std::string& message) : game::error(message){}
+	};
 
 private:
 	size_t team_index_;

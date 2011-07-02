@@ -60,17 +60,30 @@ attack::attack(size_t team_index, const map_location& target_hex, int weapon_cho
 	this->init();
 }
 
-///@todo Verify that the config produces valid data
 attack::attack(config const& cfg)
 	: move(cfg)
 	, target_hex_(cfg.child("target_hex_")["x"],cfg.child("target_hex_")["y"])
-	, weapon_choice_(cfg["weapon_choice_"])
-	, attack_movement_cost_(get_unit()->attacks()[weapon_choice_].movement_used())
+	, weapon_choice_(cfg["weapon_choice_"].to_int(-1)) //default value: -1
+	, attack_movement_cost_()
 	, temp_movement_subtracted_(0)
 {
-	///@todo Move this line of code into init() itself ...
-	resources::screen->invalidate(target_hex_);
+	// Validate target_hex
+	if(!tiles_adjacent(target_hex_,get_dest_hex()))
+		throw action::ctor_err("attack: Invalid target_hex_");
+
+	// Validate weapon_choice_
+	if(weapon_choice_ < 0 || weapon_choice_ >= static_cast<int>(get_unit()->attacks().size()))
+		throw action::ctor_err("attack: Invalid weapon_choice_");
+
+	// Construct attack_movement_cost_
+	attack_movement_cost_ = get_unit()->attacks()[weapon_choice_].movement_used();
+
 	this->init();
+}
+
+void attack::init()
+{
+	resources::screen->invalidate(target_hex_); 
 }
 
 attack::~attack()

@@ -24,6 +24,9 @@
 #include "recall.hpp"
 #include "suppose_dead.hpp"
 
+#include "resources.hpp"
+#include "team.hpp"
+
 namespace wb {
 
 std::ostream& operator<<(std::ostream& s, action_ptr action)
@@ -54,18 +57,20 @@ config action::to_config() const
 /* static */
 action_ptr action::from_config(config const& cfg)
 {
-	if(cfg["type"]=="move")
+	std::string type = cfg["type"];
+
+	if(type=="move")
 		return action_ptr(new move(cfg));
-	else if(cfg["type"]=="attack")
+	else if(type=="attack")
 		return action_ptr(new attack(cfg));
-	else if(cfg["type"]=="recruit")
+	else if(type=="recruit")
 		return action_ptr(new recruit(cfg));
-	else if(cfg["type"]=="recall")
+	else if(type=="recall")
 		return action_ptr(new recall(cfg));
-	else if(cfg["type"]=="suppose_dead")
+	else if(type=="suppose_dead")
 		return action_ptr(new suppose_dead(cfg));
 
-	return action_ptr();
+	throw ctor_err("action: Invalid type");
 }
 
 action::action(size_t team_index)
@@ -74,8 +79,14 @@ action::action(size_t team_index)
 }
 
 action::action(config const& cfg)
-	: team_index_(cfg["team_index_"])
+	: team_index_()
 {
+	// Construct and validate team_index_
+	int team_index_temp = cfg["team_index_"].to_int(-1); //default value: -1
+	if(team_index_temp < 0
+			|| team_index_temp >= static_cast<int>(resources::teams->size()))
+		throw ctor_err("action: Invalid team_index_");
+	team_index_ = team_index_temp;
 }
 
 action::~action()

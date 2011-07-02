@@ -63,7 +63,7 @@ namespace wb {
 			/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 			virtual void draw_hex(const map_location& hex);
 
-			virtual bool is_numbering_hex(const map_location& hex) const;
+			virtual map_location get_numbering_hex() const { return loc_; }
 
 			virtual void set_valid(bool valid);
 			virtual bool is_valid() { return valid_; }

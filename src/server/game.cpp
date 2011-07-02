@@ -896,10 +896,10 @@ void game::process_whiteboard(simple_wml::document& data, const player_map::cons
 		return;
 
 	simple_wml::node const& wb_node = *data.child("whiteboard");
-	simple_wml::string_span const& team_name = wb_node["team_name"];
-	size_t const side_num = wb_node["side"].to_int();
 
 	// Ensure "side" and "team_name" attributes match with user
+	simple_wml::string_span const& team_name = wb_node["team_name"];
+	size_t const side_num = wb_node["side"].to_int();
 	if(!is_on_team(team_name,user->first)
 			|| side_num < 1
 			|| side_num > gamemap::MAX_PLAYERS

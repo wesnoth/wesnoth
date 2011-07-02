@@ -63,7 +63,6 @@ recall::recall(size_t team_index, const unit& unit, const map_location& recall_h
 	this->init();
 }
 
-///@todo Verify that the config produces valid data
 recall::recall(config const& cfg)
 	: action(cfg)
 	, temp_unit_(NULL)
@@ -72,6 +71,7 @@ recall::recall(config const& cfg)
 	, fake_unit_()
 	, temp_cost_(0)
 {
+	// Construct and validate temp_unit_
 	size_t underlying_id = cfg["temp_unit_"];
 	foreach(unit const& recall_unit, resources::teams->at(team_index()).recall_list())
 	{
@@ -81,7 +81,8 @@ recall::recall(config const& cfg)
 			break;
 		}
 	}
-	assert(temp_unit_!=NULL); ///@todo work harder to make sure this assertion succeeds
+	if(temp_unit_==NULL)
+		throw action::ctor_err("recall: Invalid underlying_id");
 
 	fake_unit_.reset(new unit(*temp_unit_),wb::fake_unit_deleter());
 
@@ -178,6 +179,7 @@ void recall::draw_hex(map_location const& hex)
 	}
 }
 
+///@todo Find a better way to serialize unit_ because underlying_id isn't cutting it
 config recall::to_config() const
 {
 	config final_cfg = action::to_config();

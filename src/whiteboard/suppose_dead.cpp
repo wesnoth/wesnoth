@@ -70,14 +70,23 @@ namespace wb
 		this->init();
 	}
 
-	///@todo Verify that the config produces valid data
 	suppose_dead::suppose_dead(config const& cfg)
 	: action(cfg)
-	, unit_(&*resources::units->find(cfg["unit_"]))
-	, unit_id_(unit_->id())
+	, unit_()
+	, unit_id_()
 	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"])
 	, valid_(true)
 	{
+		// Construct and validate unit_
+		unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
+		if(unit_itor == resources::units->end())
+			throw action::ctor_err("suppose_dead: Invalid underlying_id");
+		unit_ = &*unit_itor;
+
+		/// @todo Why do we even have the unit_id_ field?
+		// Construct unit_id_
+		unit_id_ = unit_->id();
+
 		this->init();
 	}
 
@@ -88,6 +97,9 @@ namespace wb
 
 	suppose_dead::~suppose_dead()
 	{
+		//invalidate hex so that skull indicator is properly cleared
+		if(resources::screen)
+			resources::screen->invalidate(loc_);
 	}
 
 	void suppose_dead::accept(visitor& v)
@@ -104,18 +116,18 @@ namespace wb
 	void suppose_dead::apply_temp_modifier(unit_map& unit_map)
 	{
 		// Remove the unit
-		unit const* removed_unit = unit_map.extract(get_source_hex());
+		unit const* removed_unit = unit_map.extract(loc_);
 		DBG_WB << "Suppose dead: Temporarily removing unit " << removed_unit->name() << " [" << removed_unit->id()
-				<< "] from (" << get_source_hex() << ")\n";
+				<< "] from (" << loc_ << ")\n";
 
 		// Just check to make sure we removed the unit we expected to remove
-		assert(get_unit() == removed_unit);
+		assert(unit_ == removed_unit);
 	}
 
 	void suppose_dead::remove_temp_modifier(unit_map& unit_map)
 	{
 		// Just check to make sure the hex is empty
-		unit_map::iterator unit_it = resources::units->find(get_source_hex());
+		unit_map::iterator unit_it = resources::units->find(loc_);
 		assert(unit_it == resources::units->end());
 
 		// Restore the unit
@@ -135,11 +147,6 @@ namespace wb
 			resources::screen->drawing_buffer_add(layer, loc_, xpos, ypos,
 					image::get_image("whiteboard/suppose_dead.png", image::SCALED_TO_HEX));
 		}
-	}
-
-	bool suppose_dead::is_numbering_hex(const map_location& hex) const
-	{
-		return hex == get_source_hex();
 	}
 
 	void suppose_dead::set_valid(bool valid)

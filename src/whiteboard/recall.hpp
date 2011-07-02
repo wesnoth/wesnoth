@@ -55,7 +55,7 @@ public:
 	/**
 	 * Indicates whether this hex is the preferred hex to draw the numbering for this action.
 	 */
-	virtual bool is_numbering_hex(const map_location& hex) const { return hex == recall_hex_; }
+	virtual map_location get_numbering_hex() const { return recall_hex_; }
 
 	/** For recall actions, always returns NULL. */
 	virtual unit* get_unit() const { return NULL; }

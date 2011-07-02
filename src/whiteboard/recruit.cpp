@@ -64,16 +64,23 @@ recruit::recruit(size_t team_index, const std::string& unit_name, const map_loca
 	this->init();
 }
 
-///@todo Verify that the config produces valid data
 recruit::recruit(config const& cfg)
 	: action(cfg)
 	, unit_name_(cfg["unit_name_"])
 	, recruit_hex_(cfg.child("recruit_hex_")["x"],cfg.child("recruit_hex_")["y"])
-	, temp_unit_(create_corresponding_unit())
+	, temp_unit_()
 	, valid_(true)
-	, fake_unit_(create_corresponding_unit(), wb::fake_unit_deleter())
+	, fake_unit_()
 	, temp_cost_()
 {
+	// Validate unit_name_
+	if(!unit_types.find(unit_name_))
+		throw action::ctor_err("recruit: Invalid recruit unit type");
+
+	// Construct temp_unit_ and fake_unit_
+	temp_unit_ = create_corresponding_unit();
+	fake_unit_.reset(create_corresponding_unit(), wb::fake_unit_deleter());
+
 	this->init();
 }
 
@@ -155,6 +162,7 @@ void recruit::draw_hex(map_location const& hex)
 	}
 }
 
+///@todo Don't give these units underlying_id #'s. They don't need 'em
 unit* recruit::create_corresponding_unit()
 {
 	unit_type const* type = unit_types.find(unit_name_);

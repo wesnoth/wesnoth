@@ -56,7 +56,7 @@ public:
 	virtual config to_config() const;
 
 private:
-		void init() {}
+		void init();
 
 		///the target of the attack
 		map_location target_hex_;
