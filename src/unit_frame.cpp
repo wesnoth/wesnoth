@@ -590,7 +590,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 				}
 				break;
 			case map_location::SOUTH_WEST:
-				if(!current_data.auto_hflip) {
+				if(!current_data.auto_vflip) {
 					orientation = halo::HREVERSE;
 				} else {
 					orientation = halo::HVREVERSE;
