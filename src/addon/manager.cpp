@@ -1126,13 +1126,14 @@ namespace {
 		try {
 			if(gui2::new_widgets) {
 				network_asio::connection connection(remote_host, lexical_cast<std::string>(remote_port));
-				gui2::tnetwork_transmission network_connect(connection, "WIP network transmission dialog");
+				gui2::tnetwork_transmission network_connect(connection, _("Requesting list of add-ons"), _("Connecting..."));
 				bool result = network_connect.show(disp.video());
 				if(!result)
 					return;
 				config cfg, response;
 				cfg.add_child("request_campaign_list");
 				connection.transfer(cfg, response);
+				network_connect.set_subtitle(_("Downloading..."));
 				result = network_connect.show(disp.video());
 				if(!result)
 					return;

@@ -52,11 +52,19 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 	}
 }
 
+void tnetwork_transmission::set_subtitle(const std::string& subtitle)
+{
+	subtitle_ = subtitle;
+}
+
 void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!title_.empty()) {
 		find_widget<tlabel>(&window, "title", false).set_label(title_);
+	}
+	if(!subtitle_.empty()) {
+		find_widget<tlabel>(&window, "subtitle", false).set_label(subtitle_);
 	}
 
 	pump_monitor.window_ = window;

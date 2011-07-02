@@ -49,9 +49,11 @@ class tnetwork_transmission : public tdialog
 		boost::optional<twindow&> window_;
 	} pump_monitor;
 public:
-	tnetwork_transmission(network_asio::connection& connection, const std::string& title)
-		: connection_(connection), pump_monitor(connection), title_(title)
+	tnetwork_transmission(network_asio::connection& connection, const std::string& title, const std::string& subtitle)
+		: connection_(connection), pump_monitor(connection), title_(title), subtitle_(subtitle)
 	{}
+
+	void set_subtitle(const std::string&);
 
 protected:
 	/** Inherited from tdialog. */
@@ -63,6 +65,7 @@ protected:
 private:
 	/** The title for the dialog. */
 	std::string title_;
+	std::string subtitle_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
