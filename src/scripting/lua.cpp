@@ -120,6 +120,7 @@ static char const executeKey = 0;
 static char const getsideKey = 0;
 static char const gettextKey = 0;
 static char const gettypeKey = 0;
+static char const getraceKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
 static char const unitvarKey = 0;
@@ -877,6 +878,30 @@ static int impl_unit_type_get(lua_State *L)
 	return_int_attrib("cost", ut.cost());
 	return_int_attrib("level", ut.level());
 	return_cfgref_attrib("__cfg", ut.get_cfg());
+	return 0;
+}
+
+/**
+ * Gets some data on a race (__index metamethod).
+ * - Arg 1: table containing an "id" field.
+ * - Arg 2: string containing the name of the property.
+ * - Ret 1: something containing the attribute.
+ */
+static int impl_race_get(lua_State* L)
+{
+	char const* m = luaL_checkstring(L, 2);
+	lua_pushstring(L, "id");
+	lua_rawget(L, 1);
+	const unit_race* raceptr = unit_types.find_race(lua_tostring(L, -1));
+	if(!raceptr) return luaL_argerror(L, 1, "unknown race");
+	unit_race const &race = *raceptr;
+
+	return_tstring_attrib("description", race.description());
+	return_tstring_attrib("name", race.name());
+	return_int_attrib("num_traits", race.num_traits());
+	return_tstring_attrib("plural_name", race.plural_name());
+	return_bool_attrib("ignore_global_traits", !race.uses_global_traits());
+
 	return 0;
 }
 
@@ -3393,6 +3418,15 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
+	//Create the getrace metatable
+	lua_pushlightuserdata(L, (void *)&getraceKey);
+	lua_createtable(L, 0, 2);
+	lua_pushcfunction(L, impl_race_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushstring(L, "race");
+	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
 	// Create the getunit metatable.
 	lua_pushlightuserdata(L, (void *)&getunitKey);
 	lua_createtable(L, 0, 4);
@@ -3584,6 +3618,25 @@ void LuaKernel::initialize()
 		lua_setfield(L, -2, ut.first.c_str());
 	}
 	lua_setfield(L, -3, "unit_types");
+	lua_pop(L, 2);
+
+	//Create the races table.
+	lua_getglobal(L, "wesnoth");
+	lua_pushlightuserdata(L, (void *)&getraceKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	const race_map& races = unit_types.races();
+	lua_createtable(L, 0, races.size());
+	foreach(const race_map::value_type &race, races)
+	{
+		lua_createtable(L, 0, 1);
+		char const* id = race.first.c_str();
+		lua_pushstring(L, id);
+		lua_setfield(L, -2, "id");
+		lua_pushvalue(L, -3);
+		lua_setmetatable(L, -2);
+		lua_setfield(L, -2, id);
+	}
+	lua_setfield(L, -3, "races");
 	lua_pop(L, 2);
 
 	// Execute the preload scripts.
