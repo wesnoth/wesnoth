@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-06-18 19:04+0200\n"
-"PO-Revision-Date: 2010-08-11 14:36+0700\n"
-"Last-Translator: Yuris <Yuris_Wicaksana@yahoo.com>\n"
+"PO-Revision-Date: 2011-06-30 16:19+0700\n"
+"Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,30 +19,33 @@ msgstr ""
 #. [terrain_type]: id=deep_water_gray
 #: data/core/terrain.cfg:18
 #, fuzzy
+#| msgid "Deep Water"
 msgid "Gray Deep Water"
 msgstr "Perairan Dalam"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:28
-#, fuzzy
 msgid "Deep Water"
 msgstr "Perairan Dalam"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:29
 #, fuzzy
+#| msgid "Deep Water"
 msgid "Medium Deep Water"
 msgstr "Perairan Dalam"
 
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:38
 #, fuzzy
+#| msgid "Deep Water"
 msgid "Tropical Deep Water"
-msgstr "Hutan Tropis"
+msgstr "Perairan Dalam"
 
 #. [terrain_type]: id=gray_tropical_water
 #: data/core/terrain.cfg:48
 #, fuzzy
+#| msgid "Shallow Water"
 msgid "Gray Shallow Water"
 msgstr "Perairan Dangkal"
 
@@ -54,12 +57,14 @@ msgstr "Perairan Dangkal"
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:59
 #, fuzzy
+#| msgid "Shallow Water"
 msgid "Medium Shallow Water"
 msgstr "Perairan Dangkal"
 
 #. [terrain_type]: id=tropical_water
 #: data/core/terrain.cfg:68
 #, fuzzy
+#| msgid "Shallow Water"
 msgid "Tropical Shallow Water"
 msgstr "Perairan Dangkal"
 
@@ -106,6 +111,7 @@ msgstr ""
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:165
 #, fuzzy
+#| msgid "Dirt"
 msgid "Dark Dirt"
 msgstr "Kotoran"
 
@@ -117,6 +123,7 @@ msgstr ""
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:183
 #, fuzzy
+#| msgid "Dirt"
 msgid "Dry Dirt"
 msgstr "Kotoran"
 
@@ -128,6 +135,7 @@ msgstr ""
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:201
 #, fuzzy
+#| msgid "Clear Labels"
 msgid "Clean Gray Cobbles"
 msgstr "Singkirkan Label"
 
@@ -149,6 +157,7 @@ msgstr "Salju"
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:245
 #, fuzzy
+#| msgid "Desert Mountains"
 msgid "Desert Sands"
 msgstr "Pegunungan Gurun Tak Terlalui"
 
@@ -180,6 +189,7 @@ msgstr "Kawah"
 #. [terrain_type]: id=flowers_mixed
 #: data/core/terrain.cfg:298
 #, fuzzy
+#| msgid "Fall Mixed Forest"
 msgid "Mixed Flowers"
 msgstr "Hutan Musim Gugur "
 
@@ -195,27 +205,27 @@ msgstr ""
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:325
-#, fuzzy
 msgid "Small Mushrooms"
-msgstr "Hutan Berjamur"
+msgstr ""
 
 #. [terrain_type]: id=mushrooms_farm
 #: data/core/terrain.cfg:334
 #, fuzzy
+#| msgid "Mushroom Grove"
 msgid "Mushroom Farm"
 msgstr "Hutan Berjamur"
 
 #. [terrain_type]: id=desert_plants
 #: data/core/terrain.cfg:343
 #, fuzzy
+#| msgid "Desert Mountains"
 msgid "Desert Plants"
 msgstr "Pegunungan Gurun Tak Terlalui"
 
 #. [terrain_type]: id=desert_plants_sans_bones
 #: data/core/terrain.cfg:352
-#, fuzzy
 msgid "Desert Plants without Bones"
-msgstr "Pegunungan Gurun Tak Terlalui"
+msgstr ""
 
 #. [terrain_type]: id=windmill
 #: data/core/terrain.cfg:361
@@ -301,9 +311,8 @@ msgstr "Hutan Musim Panas "
 
 #. [terrain_type]: id=mixed_forest_fall
 #: data/core/terrain.cfg:514
-#, fuzzy
 msgid "Fall Mixed Forest"
-msgstr "Hutan Salju"
+msgstr "Hutan Musim Gugur "
 
 #. [terrain_type]: id=mixed_forest_winter
 #: data/core/terrain.cfg:524
@@ -322,13 +331,13 @@ msgstr "Bukit"
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:550
-#, fuzzy
 msgid "Regular Hills"
-msgstr "Bukit"
+msgstr ""
 
 #. [terrain_type]: id=hills_dry
 #: data/core/terrain.cfg:558
 #, fuzzy
+#| msgid "Hills"
 msgid "Dry Hills"
 msgstr "Bukit"
 
@@ -350,8 +359,9 @@ msgstr "Gunung"
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:599
 #, fuzzy
+#| msgid "Desert Mountains"
 msgid "Dry Mountains"
-msgstr "Gunung"
+msgstr "Pegunungan Gurun Tak Terlalui"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:608
@@ -404,6 +414,7 @@ msgstr "Bukit Berhutan"
 #. [terrain_type]
 #: data/core/terrain.cfg:692 data/core/terrain.cfg:783
 #, fuzzy
+#| msgid "Snowy Mixed Forested Hills"
 msgid "Fall Mixed Forested Hills"
 msgstr "Bukit Berhutan"
 
@@ -444,6 +455,7 @@ msgstr "Gua"
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:849
 #, fuzzy
+#| msgid "Cave Wall"
 msgid "Cave Floor"
 msgstr "Dinding Gua"
 
@@ -460,6 +472,7 @@ msgstr ""
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:875
 #, fuzzy
+#| msgid "Cave path"
 msgid "Cave Path"
 msgstr "Jalan gua"
 
@@ -471,6 +484,7 @@ msgstr "Hutan Berjamur"
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:893
 #, fuzzy
+#| msgid "Mushroom Grove"
 msgid "Lit Mushroom Grove"
 msgstr "Hutan Berjamur"
 
@@ -489,13 +503,17 @@ msgstr ""
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:957
+#, fuzzy
+#| msgid "Lava Chasm"
 msgid "Regular Chasm"
-msgstr ""
+msgstr "Jurang lahar"
 
 #. [terrain_type]: id=chasm_earthy
 #: data/core/terrain.cfg:967
+#, fuzzy
+#| msgid "Lava Chasm"
 msgid "Earthy Chasm"
-msgstr ""
+msgstr "Jurang lahar"
 
 #. [terrain_type]: id=abyss
 #: data/core/terrain.cfg:977
@@ -520,30 +538,35 @@ msgstr ""
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1022
 #, fuzzy
+#| msgid "Impassable Mountains"
 msgid "Regular Impassable Mountains"
 msgstr "Gunung Tak Terlalui"
 
 #. [terrain_type]: id=clouddesert
 #: data/core/terrain.cfg:1031
 #, fuzzy
+#| msgid "Impassable Mountains"
 msgid "Desert Impassable Mountains"
 msgstr "Gunung Tak Terlalui"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1040
 #, fuzzy
+#| msgid "Impassable Mountains"
 msgid "Snowy Impassable Mountains"
 msgstr "Gunung Tak Terlalui"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1050
 #, fuzzy
+#| msgid "Cave Wall"
 msgid "Natural Cave Wall"
 msgstr "Dinding Gua"
 
 #. [terrain_type]: id=cavewall_hewn
 #: data/core/terrain.cfg:1060
 #, fuzzy
+#| msgid "Cave Wall"
 msgid "Hewn Cave Wall"
 msgstr "Dinding Gua"
 
@@ -560,6 +583,7 @@ msgstr ""
 #. [terrain_type]: id=wall_stone
 #: data/core/terrain.cfg:1090
 #, fuzzy
+#| msgid "Cave Wall"
 msgid "Stone Wall"
 msgstr "Dinding Gua"
 
@@ -571,6 +595,7 @@ msgstr ""
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1110
 #, fuzzy
+#| msgid "Impassable"
 msgid "Impassable Overlay"
 msgstr "Tak Terlalui"
 
@@ -582,6 +607,7 @@ msgstr "Kosong"
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1136
 #, fuzzy
+#| msgid "Village"
 msgid "Adobe Village"
 msgstr "Desa"
 
@@ -593,12 +619,14 @@ msgstr ""
 #. [terrain_type]: id=camp_village
 #: data/core/terrain.cfg:1160
 #, fuzzy
+#| msgid "Village"
 msgid "Tent Village"
 msgstr "Desa"
 
 #. [terrain_type]: id=orcish_village
 #: data/core/terrain.cfg:1174
 #, fuzzy
+#| msgid "Village"
 msgid "Orcish Village"
 msgstr "Desa"
 
@@ -615,6 +643,7 @@ msgstr ""
 #. [terrain_type]: id=elven_village
 #: data/core/terrain.cfg:1212
 #, fuzzy
+#| msgid "Village"
 msgid "Elven Village"
 msgstr "Desa"
 
@@ -626,32 +655,31 @@ msgstr ""
 #. [terrain_type]: id=snow_village
 #: data/core/terrain.cfg:1238
 #, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Cottage"
 msgstr "Gunung-Gunung tertutup salju"
 
 #. [terrain_type]: id=human_village_ruin
 #: data/core/terrain.cfg:1250
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Cottage"
-msgstr "Gunung-Gunung tertutup salju"
+msgstr "Benteng yang Rusak"
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1262
-#, fuzzy
 msgid "Human City"
-msgstr "Istana"
+msgstr ""
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1274
-#, fuzzy
 msgid "Snowy Human City"
-msgstr "Gunung-Gunung tertutup salju"
+msgstr ""
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1286
-#, fuzzy
 msgid "Ruined Human City"
-msgstr "Benteng yang Rusak"
+msgstr ""
 
 #. [terrain_type]: id=hill_village
 #: data/core/terrain.cfg:1298
@@ -665,43 +693,48 @@ msgstr ""
 
 #. [terrain_type]: id=hill_village_ruin
 #: data/core/terrain.cfg:1322
-#, fuzzy
 msgid "Ruined Hill Stone Village"
-msgstr "Desa"
+msgstr ""
 
 #. [terrain_type]: id=tropical_forest_village
 #: data/core/terrain.cfg:1334
 #, fuzzy
+#| msgid "Tropical Forest"
 msgid "Tropical Village"
 msgstr "Hutan Tropis"
 
 #. [terrain_type]: id=drake_village
 #: data/core/terrain.cfg:1346
 #, fuzzy
+#| msgid "Village"
 msgid "Drake Village"
 msgstr "Desa"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:1360
 #, fuzzy
+#| msgid "Village"
 msgid "Cave Village"
 msgstr "Desa"
 
 #. [terrain_type]: id=dwarven_village
 #: data/core/terrain.cfg:1372
 #, fuzzy
+#| msgid "Village"
 msgid "Dwarven Village"
 msgstr "Desa"
 
 #. [terrain_type]: id=hut_village
 #: data/core/terrain.cfg:1384
 #, fuzzy
+#| msgid "Cut"
 msgid "Hut"
 msgstr "Potong"
 
 #. [terrain_type]: id=hut_snow_village
 #: data/core/terrain.cfg:1396
 #, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Hut"
 msgstr "Gunung-Gunung tertutup salju"
 
@@ -713,6 +746,7 @@ msgstr ""
 #. [terrain_type]: id=logcabin_snow_village
 #: data/core/terrain.cfg:1420
 #, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Log Cabin"
 msgstr "Gunung-Gunung tertutup salju"
 
@@ -724,6 +758,7 @@ msgstr ""
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1446
 #, fuzzy
+#| msgid "Village"
 msgid "Swamp Village"
 msgstr "Desa"
 
@@ -731,6 +766,7 @@ msgstr "Desa"
 #. [terrain_type]: id=swamp_merfolk-village
 #: data/core/terrain.cfg:1458 data/core/terrain.cfg:1471
 #, fuzzy
+#| msgid "Village"
 msgid "Aquatic Village"
 msgstr "Desa"
 
@@ -753,8 +789,9 @@ msgstr "Desa"
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1485
 #, fuzzy
+#| msgid "Village gold"
 msgid "Village Overlay"
-msgstr "Istana"
+msgstr "Emas desa"
 
 #. [terrain_type]: id=encampment
 #: data/core/terrain.cfg:1500
@@ -764,12 +801,14 @@ msgstr "Perkemahan"
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1511
 #, fuzzy
+#| msgid "Encampment"
 msgid "Snowy Encampment"
 msgstr "Perkemahan"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:1522
 #, fuzzy
+#| msgid "Castle"
 msgid "Orcish Castle"
 msgstr "Istana"
 
@@ -787,56 +826,65 @@ msgstr "Istana"
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:1545
 #, fuzzy
+#| msgid "Castle"
 msgid "Human Castle"
 msgstr "Istana"
 
 #. [terrain_type]: id=snow_castle
 #: data/core/terrain.cfg:1555
 #, fuzzy
+#| msgid "Snowy Mountains"
 msgid "Snowy Human Castle"
 msgstr "Gunung-Gunung tertutup salju"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1565
 #, fuzzy
+#| msgid "Castle"
 msgid "Elvish Castle"
 msgstr "Istana"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1576
 #, fuzzy
+#| msgid "Castle"
 msgid "Dwarven Castle"
 msgstr "Istana"
 
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:1587
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Human Castle"
 msgstr "Benteng yang Rusak"
 
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:1598
 #, fuzzy
+#| msgid "Sunken Ruin"
 msgid "Sunken Human Ruin"
 msgstr "Reruntuhan yang Tenggelam"
 
 #. [terrain_type]: id=swampruin
 #: data/core/terrain.cfg:1610
 #, fuzzy
+#| msgid "Swamp Ruin"
 msgid "Swamp Human Ruin"
 msgstr "Reruntuhan Rawa"
 
 #. [terrain_type]: id=sand_castle
 #: data/core/terrain.cfg:1622
 #, fuzzy
+#| msgid "Castle"
 msgid "Desert Castle"
-msgstr "Pegunungan Gurun Tak Terlalui"
+msgstr "Istana"
 
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:1633
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Desert Castle"
-msgstr "Pegunungan Gurun Tak Terlalui"
+msgstr "Benteng yang Rusak"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:1648
@@ -846,18 +894,21 @@ msgstr "Perkemahan"
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:1660
 #, fuzzy
+#| msgid "Encampment Keep"
 msgid "Tall Encampment Keep"
 msgstr "Perkemahan"
 
 #. [terrain_type]: id=encampment_snow_keep
 #: data/core/terrain.cfg:1672
 #, fuzzy
+#| msgid "Encampment Keep"
 msgid "Snowy Encampment Keep"
 msgstr "Perkemahan"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:1684
 #, fuzzy
+#| msgid "Fort Keep"
 msgid "Orcish Keep"
 msgstr "Benteng"
 
@@ -878,72 +929,84 @@ msgstr "Benteng"
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:1709
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Human Castle Keep"
-msgstr "Istana"
+msgstr "Benteng yang Terendam"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:1721
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Snowy Human Castle Keep"
-msgstr "Gunung-Gunung tertutup salju"
+msgstr "Benteng yang Terendam"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:1733
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Elven Castle Keep"
-msgstr "Istana"
+msgstr "Benteng yang Terendam"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:1745
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Dwarven Castle Keep"
-msgstr "Istana"
+msgstr "Benteng yang Terendam"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1757
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Human Castle Keep"
 msgstr "Benteng yang Rusak"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1769
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Sunken Keep"
 msgstr "Benteng yang Terendam"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1770
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Sunken Human Castle Keep"
-msgstr "Benteng yang Rusak"
+msgstr "Benteng yang Terendam"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1782
 #, fuzzy
+#| msgid "Swamp"
 msgid "Swamp Keep"
 msgstr "Rawa"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1783
 #, fuzzy
+#| msgid "Sunken Castle Keep"
 msgid "Swamp Human Castle Keep"
-msgstr "Istana"
+msgstr "Benteng yang Terendam"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:1796
 #, fuzzy
+#| msgid "Desert"
 msgid "Desert Keep"
 msgstr "Gurun"
 
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1809
 #, fuzzy
+#| msgid "Ruined Castle Keep"
 msgid "Ruined Desert Keep"
-msgstr "Gurun"
+msgstr "Benteng yang Rusak"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:1823
 #, fuzzy
+#| msgid "Castle Keep"
 msgid "Castle Overlay"
 msgstr "Istana"
 
@@ -958,6 +1021,7 @@ msgstr ""
 #: data/core/terrain.cfg:1852 data/core/terrain.cfg:1863
 #: data/core/terrain.cfg:1874
 #, fuzzy
+#| msgid "Bridge"
 msgid "Wooden Bridge"
 msgstr "Jembatan"
 
@@ -972,9 +1036,8 @@ msgstr ""
 #. [terrain_type]: id=bridgechasmdiag2
 #: data/core/terrain.cfg:1922 data/core/terrain.cfg:1932
 #: data/core/terrain.cfg:1943
-#, fuzzy
 msgid "Cave Chasm Bridge"
-msgstr "Jembatan"
+msgstr ""
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:1959
@@ -1041,6 +1104,7 @@ msgstr "Server:"
 #: data/gui/default/window/addon_connect.cfg:145
 #: data/gui/default/window/addon_connect.cfg:146
 #, fuzzy
+#| msgid "Update add-ons"
 msgid "Update Add-ons"
 msgstr "Update add-on"
 
@@ -1096,6 +1160,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_description.cfg:118
 #, fuzzy
+#| msgid "Version: "
 msgid "Version:"
 msgstr "Versi:"
 
@@ -1107,6 +1172,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
 #, fuzzy
+#| msgid "Unit Description"
 msgid "Description:"
 msgstr "Deskripsi Unit"
 
@@ -1159,6 +1225,7 @@ msgstr "OK"
 #. [label]: id=title
 #: data/gui/default/window/campaign_difficulty.cfg:57
 #, fuzzy
+#| msgid "Difficulty: "
 msgid "Difficulty"
 msgstr "Kesulitan: "
 
@@ -1219,18 +1286,21 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/default/window/edit_label.cfg:42
 #, fuzzy
+#| msgid "Set Label"
 msgid "Place Label"
 msgstr "Pasang Label"
 
 #. [label]
 #: data/gui/default/window/edit_label.cfg:72
 #, fuzzy
+#| msgid "Set Label"
 msgid "Label:"
 msgstr "Pasang Label"
 
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/default/window/edit_label.cfg:110
 #, fuzzy
+#| msgid "Team 1"
 msgid "Team only"
 msgstr "Tim 1"
 
@@ -2176,6 +2246,7 @@ msgstr "Load"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
 #, fuzzy
+#| msgid "Reloaded game"
 msgid "Load a saved game"
 msgstr "Buka kembali permainan sebelumnya"
 
@@ -2192,6 +2263,7 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
 #, fuzzy
+#| msgid "Editor"
 msgid "Map Editor"
 msgstr "Redaktur"
 
@@ -2224,6 +2296,7 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:232
 #, fuzzy
+#| msgid "Quit Game"
 msgid "Quit the game"
 msgstr "Keluar dari Permainan"
 
@@ -2701,11 +2774,13 @@ msgstr "tidak"
 
 #: src/game_preferences_display.cpp:1081
 #, fuzzy
+#| msgid "Friends"
 msgid "friend"
 msgstr "Daftar Teman"
 
 #: src/game_preferences_display.cpp:1087
 #, fuzzy
+#| msgid "No ignored"
 msgid "ignored"
 msgstr "Tidak diabaikan"
 
@@ -2735,11 +2810,13 @@ msgstr "Terlaju"
 
 #: src/game_preferences_display.cpp:1254
 #, fuzzy
+#| msgid "Choose the game to load"
 msgid "Choose theme"
 msgstr "Pilihlah simpanan game yang ingin dilanjutkan"
 
 #: src/game_preferences_display.cpp:1254
 #, fuzzy
+#| msgid "Saved Theme Preference: "
 msgid "Saved preference:"
 msgstr "Pilihan Tema Tersimpan:"
 
@@ -2766,12 +2843,14 @@ msgstr "Bujur besar tidak sesuai di kanpas."
 #: src/gui/auxiliary/canvas.cpp:835 src/gui/auxiliary/canvas.cpp:840
 #: src/gui/auxiliary/canvas.cpp:845 src/gui/auxiliary/canvas.cpp:851
 #, fuzzy
+#| msgid "Line doesn't fit on canvas."
 msgid "Circle doesn't fit on canvas."
 msgstr "Garis tidak sesuai di kanpas"
 
 #: src/gui/auxiliary/canvas.cpp:1033 src/gui/auxiliary/canvas.cpp:1040
 #: src/gui/auxiliary/canvas.cpp:1050 src/gui/auxiliary/canvas.cpp:1057
 #, fuzzy
+#| msgid "Line doesn't fit on canvas."
 msgid "Image doesn't fit on canvas."
 msgstr "Garis tidak sesuai di kanpas"
 
@@ -2859,6 +2938,7 @@ msgstr ""
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
 #, fuzzy
+#| msgid "No page defined."
 msgid "No node defined."
 msgstr "Tidak ada kisi-kisi didefinisi."
 
@@ -2952,6 +3032,7 @@ msgstr "Sedang Load Permainan..."
 
 #: src/gui/dialogs/title_screen.cpp:296
 #, fuzzy
+#| msgid "Version: "
 msgid "Version "
 msgstr "Versi:"
 
@@ -2991,6 +3072,7 @@ msgstr "Gagal menunjukkan dialog, yang tidak pas di layar."
 
 #: src/hotkeys.cpp:51
 #, fuzzy
+#| msgid "Generate Map"
 msgid "Animate Map"
 msgstr "Buat Peta"
 
@@ -3236,6 +3318,7 @@ msgstr "Simpan Peta Sebagai"
 
 #: src/hotkeys.cpp:127
 #, fuzzy
+#| msgid "Save Map"
 msgid "Save All Maps"
 msgstr "Simpan Peta"
 
@@ -3429,6 +3512,7 @@ msgstr "Singkirkan pesan"
 
 #: src/hotkeys.cpp:210
 #, fuzzy
+#| msgid "Refresh"
 msgid "Refresh WML"
 msgstr "Menyegarkan"
 
@@ -3438,16 +3522,19 @@ msgstr ""
 
 #: src/hotkeys.cpp:224
 #, fuzzy
+#| msgid "Previous Unit"
 msgid "Previous tip of the day"
 msgstr "Unit Sebelumnya"
 
 #: src/hotkeys.cpp:231
 #, fuzzy
+#| msgid "Tutorial"
 msgid "Start tutorial"
 msgstr "Latihan"
 
 #: src/hotkeys.cpp:238
 #, fuzzy
+#| msgid "Play a campaign"
 msgid "Start a campaign"
 msgstr "Mainkan Kampanye"
 
@@ -3457,6 +3544,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:252
 #, fuzzy
+#| msgid "Update add-ons"
 msgid "Manage addons"
 msgstr "Update add-on"
 
@@ -3659,65 +3747,8 @@ msgid ""
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
 
-#, fuzzy
-#~ msgid "Select unit:"
-#~ msgstr "Tidak Pilih Apapun"
-
-#~ msgid "Generate name"
-#~ msgstr "Menghasilkan nama"
-
-#~ msgid "Screenshot failed"
-#~ msgstr "Gambar Layar Gagal Diambil"
-
-#~ msgid "Mushroom Grove Lit"
-#~ msgstr "Hutan Berjamur Tersinar"
-
-#, fuzzy
-#~ msgid "Impassable Regular Mountains"
-#~ msgstr "Pegunungan Gurun Tak Terlalui"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "Pegunungan Gurun Tak Terlalui"
-
-#, fuzzy
-#~ msgid "Castle Human Keep"
-#~ msgstr "Istana"
-
-#, fuzzy
-#~ msgid "Snowy Castle Keep"
-#~ msgstr "Istana"
-
-#, fuzzy
-#~ msgid "Deep Water Medium"
-#~ msgstr "Perairan Dalam"
-
-#, fuzzy
-#~ msgid "Deep Water Tropical"
-#~ msgstr "Perairan Dalam"
-
-#~ msgid "Snow Forest"
-#~ msgstr "Hutan Salju"
-
-#~ msgid "User-Command#2"
-#~ msgstr "Perintah-Pengguna#2"
-
-#~ msgid "User-Command#3"
-#~ msgstr "Perintah-Pengguna#3"
-
-#~ msgid "Chasm"
-#~ msgstr "Jurang"
-
-#~ msgid "Wall"
-#~ msgstr "Dinding"
-
 #~ msgid "None"
 #~ msgstr "Tidak ada apapun"
-
-#~ msgid "Could not get image for terrain: $terrain."
-#~ msgstr "Tidak bisa mendapatkan gambar untuk daerah: $terrain."
-
-#~ msgid "Error creating or aquiring an image."
-#~ msgstr "Error membuat atau mendapatkan gambar."
 
 #~ msgid "Fort"
 #~ msgstr "Benteng"
@@ -3728,17 +3759,47 @@ msgstr ""
 #~ msgid "Elven Keep"
 #~ msgstr "Benteng Elven"
 
+#~ msgid "Snow Forest"
+#~ msgstr "Hutan Salju"
+
 #~ msgid "Grassland"
 #~ msgstr "Padang Rumput"
 
 #~ msgid "Savanna"
 #~ msgstr "Sabana"
 
+#~ msgid "Chasm"
+#~ msgstr "Jurang"
+
 #~ msgid "Road"
 #~ msgstr "Jalan"
 
+#~ msgid "Mushroom Grove Lit"
+#~ msgstr "Hutan Berjamur Tersinar"
+
 #~ msgid "River Ford"
 #~ msgstr "Sungai Dangkal"
+
+#~ msgid "Impassable Desert Mountains"
+#~ msgstr "Pegunungan Gurun Tak Terlalui"
+
+#~ msgid "Wall"
+#~ msgstr "Dinding"
+
+#~ msgid "Chat log dialog."
+#~ msgstr "Log obrolan percakapan."
+
+#~ msgid "Chat log"
+#~ msgstr "Lihat log obrolan"
+
+#~ msgid "Page"
+#~ msgstr "halaman"
+
+#~ msgid "Last"
+#~ msgstr "terakhir"
+
+#~ msgid "Generate name"
+#~ msgstr "Menghasilkan nama"
 
 #~ msgid ""
 #~ "mouseover^Use new lobby interface (only works after a manual reconnect to "
@@ -3749,6 +3810,21 @@ msgstr ""
 
 #~ msgid "Window not defined."
 #~ msgstr "Jendela tidak didefinisi."
+
+#~ msgid "User-Command#2"
+#~ msgstr "Perintah-Pengguna#2"
+
+#~ msgid "User-Command#3"
+#~ msgstr "Perintah-Pengguna#3"
+
+#~ msgid "Screenshot failed"
+#~ msgstr "Gambar Layar Gagal Diambil"
+
+#~ msgid "Could not get image for terrain: $terrain."
+#~ msgstr "Tidak bisa mendapatkan gambar untuk daerah: $terrain."
+
+#~ msgid "Error creating or aquiring an image."
+#~ msgstr "Error membuat atau mendapatkan gambar."
 
 #~ msgid "Save The Map"
 #~ msgstr "Simpan Peta Tersebut"
