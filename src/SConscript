@@ -517,6 +517,14 @@ exploder_sources = Split("""
     """)
 client_env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
 
+schema_generator_sources = Split("""
+    tools/schema/schema_generator.cpp
+    tools/schema/sourceparser.cpp
+    tools/schema/error_container.cpp
+    tools/schema/tag.cpp
+    """)
+client_env.WesnothProgram("schema_generator", schema_generator_sources + [libwesnoth_core, libwesnothd], have_client_prereqs)
+
 test_utils_sources = Split("""
     tests/utils/game_config_manager.cpp
     tests/utils/fake_event_source.cpp
