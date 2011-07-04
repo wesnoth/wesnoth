@@ -480,13 +480,13 @@ bool joystick_support_enabled()
 
 int joystick_mouse_deadzone()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_scroll_deadzone"), 1200, 0, 16000);
+	const int value = lexical_cast_in_range<int>(get("joystick_scroll_deadzone"), 1500, 0, 16000);
 	return value;
 }
 
 int joystick_num_mouse_xaxis()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_num_scroll_xaxis"), 0, 0, 3);
+	const int value = lexical_cast_in_range<int>(get("joystick_num_scroll_xaxis"), 0, -1, 3);
 	return value;
 }
 
@@ -498,7 +498,7 @@ int joystick_mouse_xaxis_num()
 
 int joystick_num_mouse_yaxis()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_num_scroll_yaxis"), 0, 0, 3);
+	const int value = lexical_cast_in_range<int>(get("joystick_num_scroll_yaxis"), 0, -1, 3);
 	return value;
 }
 
@@ -510,13 +510,25 @@ int joystick_mouse_yaxis_num()
 
 int joystick_scroll_deadzone()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_scroll_deadzone"), 1200, 0, 16000);
+	const int value = lexical_cast_in_range<int>(get("joystick_scroll_deadzone"), 1500, 0, 16000);
 	return value;
 }
 
 int joystick_cursor_deadzone()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_cursor_deadzone"), 1200, 0, 16000);
+	const int value = lexical_cast_in_range<int>(get("joystick_cursor_deadzone"), 1500, 0, 16000);
+	return value;
+}
+
+int joystick_thrusta_deadzone()
+{
+	const int value = lexical_cast_in_range<int>(get("joystick_thrusta_deadzone"), 1500, 0, 16000);
+	return value;
+}
+
+int joystick_thrustb_deadzone()
+{
+	const int value = lexical_cast_in_range<int>(get("joystick_thrustb_deadzone"), 1500, 0, 16000);
 	return value;
 }
 
@@ -528,7 +540,7 @@ int joystick_cursor_threshold()
 
 int joystick_num_scroll_xaxis()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_num_scroll_xaxis"), 0, 0, 3);
+	const int value = lexical_cast_in_range<int>(get("joystick_num_scroll_xaxis"), 0, -1, 3);
 	return value;
 }
 
@@ -540,7 +552,7 @@ int joystick_scroll_xaxis_num()
 
 int joystick_num_scroll_yaxis()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_num_scroll_yaxis"), 0, 0, 3);
+	const int value = lexical_cast_in_range<int>(get("joystick_num_scroll_yaxis"), 0, -1, 3);
 	return value;
 }
 
@@ -552,7 +564,7 @@ int joystick_scroll_yaxis_num()
 
 int joystick_num_cursor_xaxis()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_num_cursor_xaxis"), 0, 0, 3);
+	const int value = lexical_cast_in_range<int>(get("joystick_num_cursor_xaxis"), 0, -1, 3);
 	return value;
 }
 
@@ -564,7 +576,7 @@ int joystick_cursor_xaxis_num()
 
 int joystick_num_cursor_yaxis()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_num_cursor_yaxis"), 0, 0, 3);
+	const int value = lexical_cast_in_range<int>(get("joystick_num_cursor_yaxis"), 0, -1, 3);
 	return value;
 }
 
@@ -574,17 +586,30 @@ int joystick_cursor_yaxis_num()
 	return value;
 }
 
-int joystick_num_thrust_xaxis()
+int joystick_num_thrusta_axis()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_num_thrust_xaxis"), 0, 0, 2);
+	const int value = lexical_cast_in_range<int>(get("joystick_num_thrusta_axis"), 0, -1, 3);
 	return value;
 }
 
-int joystick_thrust_xaxis_num()
+int joystick_thrusta_axis_num()
 {
-	const int value = lexical_cast_in_range<int>(get("joystick_thrust_xaxis_num"), 2, 0, 7);
+	const int value = lexical_cast_in_range<int>(get("joystick_thrusta_axis_num"), 2, 0, 7);
 	return value;
 }
+
+int joystick_num_thrustb_axis()
+{
+	const int value = lexical_cast_in_range<int>(get("joystick_num_thrustb_axis"), 0, -1, 3);
+	return value;
+}
+
+int joystick_thrustb_axis_num()
+{
+	const int value = lexical_cast_in_range<int>(get("joystick_thrustb_axis_num"), 2, 0, 7);
+	return value;
+}
+
 
 int scroll_speed()
 {

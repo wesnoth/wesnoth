@@ -142,10 +142,13 @@ namespace preferences {
 	int joystick_cursor_yaxis_num();
 	int joystick_cursor_threshold();
 
-	int joystick_thrustx_deadzone();
-	int joystick_num_thrust_xaxis();
-	int joystick_thrust_xaxis_num();
+	int joystick_thrusta_deadzone();
+	int joystick_num_thrusta_axis();
+	int joystick_thrusta_axis_num();
 
+	int joystick_thrustb_deadzone();
+	int joystick_num_thrustb_axis();
+	int joystick_thrustb_axis_num();
 
 	int scroll_speed();
 	void set_scroll_speed(const int scroll);
