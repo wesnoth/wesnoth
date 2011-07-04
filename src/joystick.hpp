@@ -43,7 +43,7 @@ public:
 	 * @param highlighted_hex will change if the cursor moved.
 	 * @return true if the highlighted hex changed.
 	 */
-	//bool update_highlighted_hex(map_location& highlighted_hex, const map_location& selected_hex);
+	bool update_highlighted_hex(map_location& highlighted_hex, const map_location& selected_hex);
 
 	/**
 	 * @return a value in range [-1,+1] representing the gauges of the scroll axes.
@@ -53,12 +53,32 @@ public:
 	/**
 	 * TODO fendrin
 	 */
+	std::pair<double, double> get_cursor_polar_coordinates();
+
+	/**
+	 * TODO fendrin
+	 */
 	std::pair<double, double> get_mouse_axis_pair();
 
 	/**
 	 * TODO fendrin
 	 */
-	double get_thrust_xaxis();
+	double get_thrusta_axis();
+
+	/**
+	 * TODO fendrin
+	 */
+	double get_thrustb_axis();
+
+	/**
+	 * TODO fendrin
+	 */
+	double get_angle();
+
+	/**
+	 * TODO fendrin
+	 */
+	std::pair<double, double> get_polar_coordinates(int joystick_xaxis, int xaxis, int joystick_yaxis, int yaxis);
 
 private:
 
