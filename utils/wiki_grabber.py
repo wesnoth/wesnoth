@@ -108,7 +108,9 @@ if __name__ == "__main__":
 
         # strip
         data = re.sub(" \*(?: |)", "", data)
-
+        
+        #annotation
+        data = re.sub(r'@(?:begin|end|allow)\{(?:parent|tag|link|global)\}(?:\{.*\})',"",data)
         return data
 
     def get_value(data, key):

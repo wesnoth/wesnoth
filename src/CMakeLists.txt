@@ -185,7 +185,7 @@ if(MSVC)
 	SOURCE_GROUP("src tests gui" REGULAR_EXPRESSION "tests/gui/.*")
 	SOURCE_GROUP("src tests utils" REGULAR_EXPRESSION "tests/utils/.*")
 	SOURCE_GROUP("src tools" REGULAR_EXPRESSION "tools/.*")
-	SOURCE_GROUP("src tools" REGULAR_EXPRESSION "tools/.*")
+	SOURCE_GROUP("src tools schema" REGULAR_EXPRESSION "tools/schema/.*")
 	SOURCE_GROUP("src whiteboard" REGULAR_EXPRESSION "whiteboard/.*")
 
 endif(MSVC)
@@ -794,8 +794,21 @@ set_target_properties(cutter PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}cutter${BINA
 
 install(TARGETS cutter DESTINATION ${BINDIR})
 
-endif(ENABLE_TOOLS)
+set(schema_generator_SRC
+	tools/schema/schema_generator.cpp
+	tools/schema/sourceparser.cpp
+	tools/schema/error_container.cpp
+	tools/schema/tag.cpp
+	filesystem.cpp
+	loadscreen_empty.cpp
+)
 
+add_executable(schema_generator ${schema_generator_SRC})
+target_link_libraries(schema_generator wesnoth-core ${tools-external-libs} ${Boost_REGEX_LIBRARY})
+set_target_properties(schema_generator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_generator${BINARY_SUFFIX})
+
+install(TARGETS schema_generator DESTINATION ${BINDIR})
+endif(ENABLE_TOOLS)
 ########### Unit tests ###############
 
 if(ENABLE_TESTS)
