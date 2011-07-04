@@ -76,7 +76,7 @@ struct map_location {
 	// Adds an absolute location to a "delta" location
 	// This is not the mathematically correct behaviour, it is neither
 	// commutative nor associative. Negative coordinates may give strange
-	// results. It is retained because terain builder code relies in this
+	// results. It is retained because terrain builder code relies in this
 	// broken behaviour. Best avoid.
 	map_location legacy_negation() const;
 	map_location legacy_sum(const map_location &a) const;
@@ -90,7 +90,7 @@ struct map_location {
 	map_location vector_negation() const;
 	map_location vector_sum(const map_location &a) const;
 	map_location& vector_sum_assign(const map_location &a);
-	map_location &vector_difference_assign(const map_location &a);
+	map_location& vector_difference_assign(const map_location &a);
 
 	// Do n step in the direction d
 	map_location get_direction(DIRECTION d, int n = 1) const;
