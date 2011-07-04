@@ -731,13 +731,17 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
+		gui::menu::basic_sorter sorter;
+		sorter.set_alpha_sort(1);
+
 		gui::dialog rmenu(*gui_, _("Recruit") + get_title_suffix(side_num),
 				  _("Select unit:") + std::string("\n"),
 				  gui::OK_CANCEL,
 				  gui::dialog::default_style);
 		rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
 			gui::dialog::BUTTON_HELP);
-		rmenu.set_menu(items);
+		rmenu.set_menu(items, &sorter);
+		rmenu.get_menu().sort_by(1); // otherwise it's unsorted by default
 		rmenu.set_panes(preview_panes);
 		recruit_res = rmenu.show();
 	}
