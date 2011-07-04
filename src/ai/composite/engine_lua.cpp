@@ -115,7 +115,7 @@ public:
 
 	virtual void execute()	{
 		lua_candidate_action_wrapper::execute();
-		this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
+		//this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
 	}
 private:
 	boost::shared_ptr<unit> bound_unit_;
@@ -187,8 +187,17 @@ void engine_lua::do_parse_candidate_action_from_config( rca_context &context, co
 	if (!lua_ai_context_) {
 		return;
 	}
-
-	candidate_action_ptr ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper(context,cfg,*lua_ai_context_));
+	
+	candidate_action_ptr ca_ptr;
+	if (!cfg["sticky"].to_bool())
+	{
+		ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper(context,cfg,*lua_ai_context_));
+	}
+	else
+	{
+		ca_ptr = candidate_action_ptr(new lua_sticky_candidate_action_wrapper(context,cfg,*lua_ai_context_));
+	}
+	
 	if (ca_ptr) {
 		*b = ca_ptr;
 	}
