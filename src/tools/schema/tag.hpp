@@ -1,4 +1,4 @@
-
+/* $Id$ */
 /*
    Copyright (C) 2011 - 2011 by Sytyi Nick <nsytyi@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
