@@ -45,8 +45,8 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 				.set_percentage((completed*100)/total);
 
 			string_map symbols;
-			symbols["total"] = str_cast(total);
-			symbols["completed"] = str_cast(completed);
+			symbols["total"] = str_cast(total/1024);
+			symbols["completed"] = str_cast(completed/1024);
 
 			find_widget<tlabel>(&(window_.get()), "numeric_progress", false)
 					.set_label(vgettext(
