@@ -12,11 +12,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
 /**
@@ -29,11 +25,7 @@ public class TestHandler extends AbstractHandler
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
 	    IFile file = WorkspaceUtils.getSelectedFile( );
-	    URI uri = URI.createPlatformResourceURI( file.getFullPath( ).toString( ), true );
-	    ResourceSet resSet = new ResourceSetImpl( );
-	    Resource res = resSet.getResource( uri, true );
-	    EObject obj = res.getContents( ).get( 0 );
-	    System.out.println( obj);
+	    System.out.println( ResourceUtils.getWMLRoot( file ));
 
 //		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path("E:\\work\\java\\runtime-EclipseApplication\\A_Simple_Campaign\\scenarios\\atemplate.cfg"));
 //		try

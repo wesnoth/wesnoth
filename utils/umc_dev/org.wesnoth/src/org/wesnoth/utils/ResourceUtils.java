@@ -34,6 +34,11 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.swt.SWT;
 import org.wesnoth.Constants;
@@ -43,6 +48,7 @@ import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
+import org.wesnoth.wml.WMLRoot;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -475,5 +481,27 @@ public class ResourceUtils
 			Logger.getInstance().logException(e);
 			return null;
 		}
+	}
+
+	/**
+	 * Gets the WML Grammar root of the specified file
+	 * @param file The file to get the WML model from
+	 * @return A WMLRoot instance or null if there is none
+	 */
+	public static WMLRoot getWMLRoot( IFile file )
+	{
+        URI uri = URI.createPlatformResourceURI( file.getFullPath( ).toString( ), true );
+        ResourceSet resourceSet = new ResourceSetImpl( );
+        Resource resource = resourceSet.getResource( uri, true );
+        if ( resource == null ||
+             resource.getContents( ).isEmpty( ) )
+            return null;
+
+        EObject result = resource.getContents( ).get( 0 );
+
+        if ( result instanceof WMLRoot == false )
+            return null;
+
+        return ( WMLRoot ) result;
 	}
 }

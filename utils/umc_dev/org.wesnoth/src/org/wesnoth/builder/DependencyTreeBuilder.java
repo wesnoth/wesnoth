@@ -24,6 +24,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.wesnoth.Logger;
 import org.wesnoth.builder.WesnothProjectBuilder.WMLFilesComparator;
 import org.wesnoth.projects.ProjectDependencyNode;
+import org.wesnoth.utils.ResourceUtils;
+import org.wesnoth.wml.WMLRoot;
 
 public class DependencyTreeBuilder
 {
@@ -53,9 +55,9 @@ public class DependencyTreeBuilder
             IResource main_cfg = container.findMember( "_main.cfg" );
             if ( main_cfg != null ) {
                 // add main.cfg to tree
+                WMLRoot root = ResourceUtils.getWMLRoot( ( IFile ) main_cfg );
 
-                //TODO process the other children depending on the contents
-                // of the file
+                // iterate to find macro calls that include other dirs
             }else {
                 List<IResource> members = null;
                 try {
