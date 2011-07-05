@@ -25,15 +25,15 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.wesnoth.Logger;
 import org.wesnoth.builder.WesnothProjectBuilder.WMLFilesComparator;
 import org.wesnoth.projects.ProjectDependencyNode;
 import org.wesnoth.utils.ListUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.wml.WMLMacroCall;
-import org.wesnoth.wml.WMLPreprocIF;
 import org.wesnoth.wml.WMLRoot;
-import org.wesnoth.wml.WMLTag;
 
 public class DependencyTreeBuilder
 {
@@ -68,7 +68,6 @@ public class DependencyTreeBuilder
                 addNode( (IFile) main_cfg );
 
                 WMLRoot root = ResourceUtils.getWMLRoot( ( IFile ) main_cfg );
-
                 // nothing to do
                 if ( root == null )
                     continue;
@@ -76,34 +75,12 @@ public class DependencyTreeBuilder
                 EList<WMLMacroCall> macroCalls = new BasicEList<WMLMacroCall>( );
 
                 // iterate to find macro calls
-                // - search in tags
-                // - search in ifdefs
+                TreeIterator<EObject> treeItor = root.eAllContents( );
 
-                Queue<WMLTag> tags = new LinkedBlockingDeque<WMLTag>( root.getTags( ) );
-                Queue<WMLPreprocIF> ifdefs = new LinkedBlockingDeque<WMLPreprocIF>( root.getIfDefs( ) );
-
-                // add first the root defines
-                macroCalls.addAll( root.getMacroCalls( ) );
-
-                while ( !tags.isEmpty( ) ||
-                        !ifdefs.isEmpty( ) ) {
-
-                    if ( !tags.isEmpty( ) ) {
-                        WMLTag tag = tags.poll( );
-
-                        tags.addAll( tag.getTags( ) );
-                        ifdefs.addAll( tag.getIfDefs( ) );
-
-                        // now add contained macro calls
-                        macroCalls.addAll( tag.getMacroCalls( ) );
-
-                    } else {
-                        WMLPreprocIF ifdef = ifdefs.poll( );
-
-                        tags.addAll( ifdef.getTags( ) );
-                        ifdefs.addAll( ifdef.getIfDefs( ) );
-
-                        macroCalls.addAll( ifdef.getMacroCalls( ) );
+                while ( treeItor.hasNext( ) ) {
+                    EObject object = treeItor.next( );
+                    if ( object instanceof WMLMacroCall ){
+                        macroCalls.add( (WMLMacroCall) object );
                     }
                 }
 
