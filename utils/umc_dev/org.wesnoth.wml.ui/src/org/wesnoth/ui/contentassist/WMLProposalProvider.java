@@ -59,13 +59,23 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	public WMLProposalProvider()
 	{
 		super();
+	}
+
+	/**
+	 * Refreshes the current project cache/schema based
+	 * on the file opened
+	 */
+	private void refresh()
+	{
+	    if ( projectCache_ != null )
+	        return;
 
         IFile file = WMLUtil.getActiveEditorFile();
         projectCache_ = ProjectUtils.getCacheForProject( file.getProject( ) );
 
-		// load the schema so we know what to suggest for autocomplete
-		SchemaParser.reloadSchemas( false );
-		schemaParser_ = SchemaParser.getInstance( WesnothInstallsUtils.getInstallNameForResource( file ) );
+        // load the schema so we know what to suggest for autocomplete
+        SchemaParser.reloadSchemas( false );
+        schemaParser_ = SchemaParser.getInstance( WesnothInstallsUtils.getInstallNameForResource( file ) );
 	}
 
 	@Override
@@ -73,6 +83,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.completeWMLKey_Name(model, assignment, context, acceptor);
+		refresh( );
 		dbg("completing wmlkeyname"); //$NON-NLS-1$
 		addKeyNameProposals(model, context, acceptor);
 	}
@@ -82,6 +93,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.complete_WMLKeyValue(model, ruleCall, context, acceptor);
+		refresh( );
 		dbg("completing wmlkeyvalue - rule"); //$NON-NLS-1$
 		addKeyValueProposals(model, context, acceptor);
 	}
@@ -91,6 +103,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.complete_WMLTag(model, ruleCall, context, acceptor);
+		refresh( );
 		dbg("completing wmltag - rule"); //$NON-NLS-1$
 		addTagProposals(model, true, context, acceptor);
 	}
@@ -100,6 +113,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.completeWMLTag_Name(model, assignment, context, acceptor);
+		refresh( );
 		dbg("completing wmltagname"); //$NON-NLS-1$
 		addTagProposals(model, false, context, acceptor);
 	}
@@ -109,6 +123,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.completeWMLMacroCall_Name(model, assignment, context, acceptor);
+		refresh( );
 		dbg("completing wmlmacrocallname"); //$NON-NLS-1$
 		addMacroCallProposals(model, false, context, acceptor);
 	}
@@ -118,6 +133,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.complete_WMLMacroCall(model, ruleCall, context, acceptor);
+		refresh( );
 		dbg("completing wmlmacrocall - rule"); //$NON-NLS-1$
 		addMacroCallProposals(model, true, context, acceptor);
 	}
@@ -294,7 +310,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 					}
 
 					if (found == false)
-						acceptor.accept(tagProposal(tag, parentIndent,
+						acceptor.accept(createTagProposal(tag, parentIndent,
 								ruleProposal, context));
 				}
 			}
@@ -307,7 +323,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			dbg("root node. adding tags: "+ rootTag.getTagChildren().size()); //$NON-NLS-1$
 			for(Tag tag : rootTag.getTagChildren())
 			{
-				acceptor.accept(tagProposal(tag, "", ruleProposal, context)); //$NON-NLS-1$
+				acceptor.accept(createTagProposal(tag, "", ruleProposal, context)); //$NON-NLS-1$
 			}
 		}
 	}
@@ -320,7 +336,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	 * @param context
 	 * @return
 	 */
-	private ICompletionProposal tagProposal(Tag tag, String indent, boolean ruleProposal,
+	private ICompletionProposal createTagProposal(Tag tag, String indent, boolean ruleProposal,
 					ContentAssistContext context)
 	{
 		StringBuilder proposal = new StringBuilder();
@@ -359,6 +375,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		return createCompletionProposal(proposal, new StyledString(displayString),
 					image, priority, contentAssistContext.getPrefix(), contentAssistContext);
 	}
+
 	/**
 	 * Method for debugging the auto completion
 	 * @param str
