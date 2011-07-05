@@ -45,6 +45,7 @@ public class SchemaParser
 	    SchemaParser parser = parsers_.get( installName );
 		if (parser == null) {
 			parser = new SchemaParser( installName );
+			parser.parseSchema( false );
 			parsers_.put( installName, parser );
 		}
 
