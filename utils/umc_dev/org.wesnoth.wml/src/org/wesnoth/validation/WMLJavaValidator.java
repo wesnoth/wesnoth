@@ -8,11 +8,16 @@
  *******************************************************************************/
 package org.wesnoth.validation;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.parsetree.CompositeNode;
 import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
+import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.schema.Tag;
 import org.wesnoth.wml.WMLKey;
@@ -56,8 +61,12 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 				searchName = "root"; //$NON-NLS-1$
 			}
 
-			//TODO: get the editor based on this validator??
-			Tag schemaTag = SchemaParser.getInstance( null ).getTags().get(searchName);
+	        Resource resource =  getCurrentObject( ).eResource( );
+	        IResource file = ResourcesPlugin.getWorkspace( ).getRoot( ).
+	            getFile( new Path( resource.getURI( ).toPlatformString( true ) ) );
+
+			Tag schemaTag = SchemaParser.getInstance(
+			        WesnothInstallsUtils.getInstallNameForResource( file ) ).getTags().get(searchName);
 
 			if ( schemaTag != null )
 			{
