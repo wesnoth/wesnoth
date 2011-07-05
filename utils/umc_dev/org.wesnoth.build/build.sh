@@ -52,11 +52,7 @@ if [[ -f "../org.wesnoth.feature/build.xml" ]]
 then
 	rm ../org.wesnoth.feature/build.xml
 fi
-if [[ -f "../org.wesnoth.wml/build.xml" ]] 
+if [[ -f "../org.wesnoth.ui/build.xml" ]] 
 then
-	rm ../org.wesnoth.wml/build.xml
-fi
-if [[ -f "../org.wesnoth.wml.ui/build.xml" ]] 
-then
-	rm ../org.wesnoth.wml.ui/build.xml
+	rm ../org.wesnoth.ui/build.xml
 fi

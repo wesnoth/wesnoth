@@ -31,8 +31,7 @@ java -cp %EQUINOXJAR% org.eclipse.core.launcher.Main -data workspace -applicatio
 
 IF EXIST ../org.wesnoth.feature/build.xml rm ../org.wesnoth.feature/build.xml
 IF EXIST ../org.wesnoth/build.xml rm ../org.wesnoth/build.xml
-IF EXIST ../org.wesnoth.wml/build.xml rm ../org.wesnoth.wml/build.xml
-IF EXIST ../org.wesnoth.wml.ui/build.xml rm ../org.wesnoth.wml.ui/build.xml
+IF EXIST ../org.wesnoth.ui/build.xml rm ../org.wesnoth.ui/build.xml
 
 :end
 echo Script finished.
