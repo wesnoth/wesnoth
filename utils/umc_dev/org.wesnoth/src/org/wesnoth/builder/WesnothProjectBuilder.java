@@ -8,17 +8,11 @@
  *******************************************************************************/
 package org.wesnoth.builder;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingDeque;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -33,14 +27,9 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
-import org.wesnoth.installs.WesnothInstallsUtils;
-import org.wesnoth.preferences.Preferences;
-import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.projects.ProjectCache;
-import org.wesnoth.projects.ProjectDependencyNode;
 import org.wesnoth.projects.ProjectUtils;
-import org.wesnoth.utils.AntUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLSaxHandler;
@@ -56,15 +45,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 	protected void fullBuild(final IProgressMonitor monitor) throws CoreException
 	{
-		try
-		{
-		    createDependencyTree( );
+	    DependencyTreeBuilder treeBuilder = new DependencyTreeBuilder( getProject( ) );
+	    treeBuilder.createDependencyTree( );
 
-			getProject().accept(new ResourceVisitor(monitor));
-		} catch (CoreException e)
-		{
-			Logger.getInstance().logException(e);
-		}
+	//	getProject().accept(new ResourceVisitor(monitor));
 	}
 
 	protected void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor)
@@ -74,185 +58,102 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		delta.accept(new ResourceDeltaVisitor(monitor));
 	}
 
-	private void createDependencyTree() throws CoreException
-	{
-        // start creating the PDT (project dependency tree)
-        Queue<IContainer> toProcess = new LinkedBlockingDeque<IContainer>( );
-
-        List<ProjectDependencyNode> tree = new ArrayList<ProjectDependencyNode>();
-        ProjectDependencyNode parent = null;
-        int currentIndex = 0;
-
-        toProcess.add( getProject() );
-
-        while( toProcess.isEmpty( ) == false ) {
-            IContainer container = toProcess.poll( );
-
-            IResource main_cfg = container.findMember( "_main.cfg" );
-            if ( main_cfg != null ) {
-                //TODO process the other children depending on the contents
-                // of the file
-            }else {
-                List<IResource> members = Arrays.asList( container.members( ) ) ;
-
-                Collections.sort( members, new WMLFilesComparator( ) );
-
-                if ( members.isEmpty( ) )
-                    continue;
-
-                ProjectDependencyNode previous = null;
-
-                for ( IResource resource : members ) {
-                    System.out.println( resource.toString( ) );
-                    if ( resource instanceof IContainer )
-                        toProcess.add( (IContainer)resource );
-                    else {
-                        String fileName = resource.getName( );
-
-                        // just config files.
-                        if ( ! fileName.endsWith( ".cfg" ) ||
-                             ! ( resource instanceof IFile ))
-                            continue;
-
-                       ProjectDependencyNode newNode =
-                           new ProjectDependencyNode( (IFile) resource, currentIndex );
-                       currentIndex += ProjectDependencyNode.INDEX_STEP;
-
-                       if ( previous != null ){
-                           previous.setNext( newNode );
-                           newNode.setPrevious( previous );
-                       } else {
-                           // first node in the current directory -> make it son of parent
-                           if ( parent != null ) {
-                               parent.setSon( newNode );
-                               newNode.setParent( parent );
-                           }
-
-                           parent = newNode;
-                       }
-
-                       tree.add( newNode );
-                       previous = newNode;
-                    }
-                }
-            }
-        }
-
-        System.out.println("tree:");
-        if ( !tree.isEmpty( ) ) {
-            ProjectDependencyNode node = tree.get( 0 );
-
-            do {
-                ProjectDependencyNode leaf = node;
-
-                do {
-                    System.out.print( leaf + "; " );
-                    leaf = leaf.getNext( );
-                } while ( leaf != null );
-
-                node = node.getSon( );
-                System.out.print("\n");
-            }while ( node != null );
-        }
-        else {
-            System.out.println("Empty");
-        }
-	}
 
 	@SuppressWarnings("rawtypes")
 	@Override
 	protected IProject[] build(int kind, Map args, IProgressMonitor monitor)
 			throws CoreException
 	{
-	    if ( WesnothInstallsUtils.setupInstallForResource( getProject() ) == false )
-	        return null;
-
-	    String installName = WesnothInstallsUtils.getInstallNameForResource( getProject() );
-
-	    Logger.getInstance().log(Messages.WesnothProjectBuilder_0);
-		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
-
-		Paths paths = Preferences.getPaths( installName );
-
-		monitor.subTask(Messages.WesnothProjectBuilder_3);
-		if ( paths.getUserDir( ).isEmpty( ) )
-		{
-			Logger.getInstance().log(Messages.WesnothProjectBuilder_4,
-					Messages.WesnothProjectBuilder_5);
-			return null;
-		}
-		monitor.worked(5);
-
-		// create the temporary directory used by the plugin if not created
-		monitor.subTask(Messages.WesnothProjectBuilder_6);
-		WorkspaceUtils.getTemporaryFolder();
-		monitor.worked(2);
-
-		// check for 'build.xml' existance
-		if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == true) //$NON-NLS-1$
-		{
-			// run the ant job to copy the whole project
-			// in the user add-ons directory (incremental)
-			monitor.subTask(Messages.WesnothProjectBuilder_8);
-			Map<String, String> properties = new HashMap<String, String>();
-			properties.put("wesnoth.user.dir", paths.getUserDir( )); //$NON-NLS-1$
-			Logger.getInstance().log(Messages.WesnothProjectBuilder_10);
-
-			String result = AntUtils.runAnt(
-					getProject().getLocation().toOSString() + "/build.xml", //$NON-NLS-1$
-					properties, true);
-			Logger.getInstance().log(result);
-			monitor.worked(10);
-
-			if (result == null)
-			{
-				Logger.getInstance().log(Messages.WesnothProjectBuilder_12,
-						Messages.WesnothProjectBuilder_13);
-				return null;
-			}
-		}
-		monitor.worked(2);
-
-		boolean readDefines = true;
-		if (kind == FULL_BUILD)
-		{
-			fullBuild(monitor);
-		}
-		else
-		{
-			IResourceDelta delta = getDelta(getProject());
-			if (delta == null)
-			{
-				fullBuild(monitor);
-			}
-			else
-			{
-				readDefines = false;
-				IResourceDelta[] affected = delta.getAffectedChildren();
-
-				for(IResourceDelta tmp : affected)
-				{
-					if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")) //$NON-NLS-1$
-					{
-						readDefines = true;
-						break;
-					}
-				}
-				incrementalBuild(delta, monitor);
-			}
-		}
-
-		if (readDefines)
-		{
-			// we read the defines at the end of the build
-			// to speed up things (and only if we had any .cfg files processed)
-		    ProjectCache cache = ProjectUtils.getCacheForProject( getProject() );
-		    cache.readDefines( true );
-			cache.saveCache( );
-
-			monitor.worked(10);
-		}
-		monitor.done();
+	    fullBuild( monitor );
+//	    if ( WesnothInstallsUtils.setupInstallForResource( getProject() ) == false )
+//	        return null;
+//
+//	    String installName = WesnothInstallsUtils.getInstallNameForResource( getProject() );
+//
+//	    Logger.getInstance().log(Messages.WesnothProjectBuilder_0);
+//		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
+//
+//		Paths paths = Preferences.getPaths( installName );
+//
+//		monitor.subTask(Messages.WesnothProjectBuilder_3);
+//		if ( paths.getUserDir( ).isEmpty( ) )
+//		{
+//			Logger.getInstance().log(Messages.WesnothProjectBuilder_4,
+//					Messages.WesnothProjectBuilder_5);
+//			return null;
+//		}
+//		monitor.worked(5);
+//
+//		// create the temporary directory used by the plugin if not created
+//		monitor.subTask(Messages.WesnothProjectBuilder_6);
+//		WorkspaceUtils.getTemporaryFolder();
+//		monitor.worked(2);
+//
+//		// check for 'build.xml' existance
+//		if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == true) //$NON-NLS-1$
+//		{
+//			// run the ant job to copy the whole project
+//			// in the user add-ons directory (incremental)
+//			monitor.subTask(Messages.WesnothProjectBuilder_8);
+//			Map<String, String> properties = new HashMap<String, String>();
+//			properties.put("wesnoth.user.dir", paths.getUserDir( )); //$NON-NLS-1$
+//			Logger.getInstance().log(Messages.WesnothProjectBuilder_10);
+//
+//			String result = AntUtils.runAnt(
+//					getProject().getLocation().toOSString() + "/build.xml", //$NON-NLS-1$
+//					properties, true);
+//			Logger.getInstance().log(result);
+//			monitor.worked(10);
+//
+//			if (result == null)
+//			{
+//				Logger.getInstance().log(Messages.WesnothProjectBuilder_12,
+//						Messages.WesnothProjectBuilder_13);
+//				return null;
+//			}
+//		}
+//		monitor.worked(2);
+//
+//		boolean readDefines = true;
+//		if (kind == FULL_BUILD)
+//		{
+//			fullBuild(monitor);
+//		}
+//		else
+//		{
+//			IResourceDelta delta = getDelta(getProject());
+//			if (delta == null)
+//			{
+//				fullBuild(monitor);
+//			}
+//			else
+//			{
+//				readDefines = false;
+//				IResourceDelta[] affected = delta.getAffectedChildren();
+//
+//				for(IResourceDelta tmp : affected)
+//				{
+//					if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")) //$NON-NLS-1$
+//					{
+//						readDefines = true;
+//						break;
+//					}
+//				}
+//				incrementalBuild(delta, monitor);
+//			}
+//		}
+//
+//		if (readDefines)
+//		{
+//			// we read the defines at the end of the build
+//			// to speed up things (and only if we had any .cfg files processed)
+//		    ProjectCache cache = ProjectUtils.getCacheForProject( getProject() );
+//		    cache.readDefines( true );
+//			cache.saveCache( );
+//
+//			monitor.worked(10);
+//		}
+//		monitor.done();
 		return null;
 	}
 
