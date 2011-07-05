@@ -229,7 +229,6 @@ litigation.
       <import plugin="org.eclipse.osgi.util" version="3.2.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.osgi" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.apache.log4j"/>
-      <import plugin="org.wesnoth.wml"/>
       <import plugin="org.eclipse.xtext.ui"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
@@ -251,29 +250,18 @@ litigation.
    </requires>
 
    <plugin
-         id="org.wesnoth.wml"
-         os="linux,macosx,win32"
-         arch="x86,x86_64"
-         download-size="0"
-         install-size="0"
-         version="1.0.3"
-         unpack="false"/>
-
-   <plugin
-         id="org.wesnoth.wml.ui"
-         os="linux,macosx,win32"
-         arch="x86,x86_64"
-         download-size="0"
-         install-size="0"
-         version="1.0.3"
-         unpack="false"/>
-
-   <plugin
          id="org.wesnoth"
          os="linux,macosx,win32"
          arch="x86,x86_64"
          download-size="0"
          install-size="0"
          version="1.0.3"/>
+
+   <plugin
+         id="org.wesnoth.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
