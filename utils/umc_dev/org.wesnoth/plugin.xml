@@ -748,16 +748,16 @@
       <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.externaltools.*"> </activityPatternBinding>
       <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.debug.*"> </activityPatternBinding>
       <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.mylyn.tasks.ui.bug.report.*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.actions.showKeyAssistHandler.*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.cheatsheets.actions.CheatSheetHelpMenuAction.*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.mylyn.task.*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.jdt.*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.xtend.*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.team.*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.wst.*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.team.internal.ccvs*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.search.*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ant.*"> </activityPatternBinding>
+    <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.actions.showKeyAssistHandler.*"> </activityPatternBinding>
+    <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.cheatsheets.actions.CheatSheetHelpMenuAction.*"> </activityPatternBinding>
+    <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.mylyn.task.*"> </activityPatternBinding>
+    <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.jdt.*"> </activityPatternBinding>
+    <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.xtend.*"> </activityPatternBinding>
+    <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.team.*"> </activityPatternBinding>
+    <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.wst.*"> </activityPatternBinding>
+    <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.team.internal.ccvs*"> </activityPatternBinding>
+    <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.search.*"> </activityPatternBinding>
+    <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ant.*"> </activityPatternBinding>
    </extension>
    <extension
          point="org.eclipse.ui.startup">
@@ -790,4 +790,13 @@
             </instanceof></enabledWhen>
       </page>
    </extension>
+   
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.wesnoth.org/WML" 
+       class = "org.wesnoth.wml.WmlPackage"
+       genModel = "org/wesnoth/WML.genmodel" /> 
+    
+  </extension>
+   
 </plugin>
