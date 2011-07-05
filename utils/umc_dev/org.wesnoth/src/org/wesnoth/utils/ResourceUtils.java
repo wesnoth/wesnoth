@@ -415,34 +415,6 @@ public class ResourceUtils
 	}
 
 	/**
-	 * @deprecated Use the {@link WMLSaxHandler#IsCampaign}
-	 * @param fileName
-	 * @return
-	 */
-	@Deprecated
-	public static boolean isCampaignFile(String fileName)
-	{
-		if (!fileName.endsWith(".cfg")) //$NON-NLS-1$
-			return false;
-		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
-		return (fileContentString.contains("[campaign]") && fileContentString.contains("[/campaign]")); //$NON-NLS-1$ //$NON-NLS-2$
-	}
-
-	/**
-	 * @deprecated Use the {@link WMLSaxHandler#IsScenario}
-	 * @param fileName
-	 * @return
-	 */
-	@Deprecated
-	public static boolean isScenarioFile(String fileName)
-	{
-		if (!fileName.endsWith(".cfg")) //$NON-NLS-1$
-			return false;
-		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
-		return (fileContentString.contains("[scenario]") && fileContentString.contains("[/scenario]")); //$NON-NLS-1$ //$NON-NLS-2$
-	}
-
-	/**
 	 * Deletes all markers of type specified from the resource
 	 * @param resource
 	 * @param type
