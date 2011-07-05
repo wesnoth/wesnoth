@@ -10,10 +10,15 @@ package org.wesnoth.builder;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -33,6 +38,7 @@ import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.projects.ProjectCache;
+import org.wesnoth.projects.ProjectDependencyNode;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.AntUtils;
 import org.wesnoth.utils.ResourceUtils;
@@ -52,6 +58,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	{
 		try
 		{
+		    createDependencyTree( );
+
 			getProject().accept(new ResourceVisitor(monitor));
 		} catch (CoreException e)
 		{
@@ -64,6 +72,91 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	{
 		// the visitor does the work.
 		delta.accept(new ResourceDeltaVisitor(monitor));
+	}
+
+	private void createDependencyTree() throws CoreException
+	{
+        // start creating the PDT (project dependency tree)
+        Queue<IContainer> toProcess = new LinkedBlockingDeque<IContainer>( );
+
+        List<ProjectDependencyNode> tree = new ArrayList<ProjectDependencyNode>();
+        ProjectDependencyNode parent = null;
+        int currentIndex = 0;
+
+        toProcess.add( getProject() );
+
+        while( toProcess.isEmpty( ) == false ) {
+            IContainer container = toProcess.poll( );
+
+            IResource main_cfg = container.findMember( "_main.cfg" );
+            if ( main_cfg != null ) {
+                //TODO process the other children depending on the contents
+                // of the file
+            }else {
+                List<IResource> members = Arrays.asList( container.members( ) ) ;
+
+                Collections.sort( members, new WMLFilesComparator( ) );
+
+                if ( members.isEmpty( ) )
+                    continue;
+
+                ProjectDependencyNode previous = null;
+
+                for ( IResource resource : members ) {
+                    System.out.println( resource.toString( ) );
+                    if ( resource instanceof IContainer )
+                        toProcess.add( (IContainer)resource );
+                    else {
+                        String fileName = resource.getName( );
+
+                        // just config files.
+                        if ( ! fileName.endsWith( ".cfg" ) ||
+                             ! ( resource instanceof IFile ))
+                            continue;
+
+                       ProjectDependencyNode newNode =
+                           new ProjectDependencyNode( (IFile) resource, currentIndex );
+                       currentIndex += ProjectDependencyNode.INDEX_STEP;
+
+                       if ( previous != null ){
+                           previous.setNext( newNode );
+                           newNode.setPrevious( previous );
+                       } else {
+                           // first node in the current directory -> make it son of parent
+                           if ( parent != null ) {
+                               parent.setSon( newNode );
+                               newNode.setParent( parent );
+                           }
+
+                           parent = newNode;
+                       }
+
+                       tree.add( newNode );
+                       previous = newNode;
+                    }
+                }
+            }
+        }
+
+        System.out.println("tree:");
+        if ( !tree.isEmpty( ) ) {
+            ProjectDependencyNode node = tree.get( 0 );
+
+            do {
+                ProjectDependencyNode leaf = node;
+
+                do {
+                    System.out.print( leaf + "; " );
+                    leaf = leaf.getNext( );
+                } while ( leaf != null );
+
+                node = node.getSon( );
+                System.out.print("\n");
+            }while ( node != null );
+        }
+        else {
+            System.out.println("Empty");
+        }
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -120,7 +213,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 		monitor.worked(2);
 
-
 		boolean readDefines = true;
 		if (kind == FULL_BUILD)
 		{
@@ -154,8 +246,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		{
 			// we read the defines at the end of the build
 			// to speed up things (and only if we had any .cfg files processed)
-			ProjectUtils.getCacheForProject(getProject()).readDefines(true);
-			ProjectUtils.saveCacheForProject(getProject());
+		    ProjectCache cache = ProjectUtils.getCacheForProject( getProject() );
+		    cache.readDefines( true );
+			cache.saveCache( );
+
 			monitor.worked(10);
 		}
 		monitor.done();
@@ -304,6 +398,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		return false;
 	}
 
+
 	class ResourceDeltaVisitor implements IResourceDeltaVisitor
 	{
 		private IProgressMonitor monitor_;
@@ -358,6 +453,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 	}
 
+
 	class ResourceVisitor implements IResourceVisitor
 	{
 		private IProgressMonitor monitor_;
@@ -378,4 +474,35 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			return checkResource(resource, monitor_, -1, false);
 		}
 	}
+
+	/**
+	 * This is a WML files comparator, based on the WML parsing rules.
+	 *
+	 * @see http://wiki.wesnoth.org/PreprocessorRef
+	 */
+	public static class WMLFilesComparator implements Comparator<IResource> {
+
+        @Override
+        public int compare( IResource o1, IResource o2 )
+        {
+            String name1 = o1.getName( );
+            String name2 = o2.getName( );
+
+            // _initial.cfg is always the "lowest"
+            if ( name1.equals( "_initial.cfg" ) && !( name2.equals( "_initial.cfg" ) ) )
+                return -1;
+
+            if ( name2.equals( "_initial.cfg" ) && !( name1.equals( "_initial.cfg" ) ) )
+                return 1;
+
+            // _final.cfg is always the "highest"
+            if ( name1.equals( "_final.cfg" ) && !( name2.equals( "_final.cfg" ) ) )
+                return 1;
+
+            if ( name2.equals( "_final.cfg" ) && !( name1.equals( "_final.cfg" ) ) )
+                return -1;
+
+            return name1.compareTo( o2.getName( ) );
+        }
+    }
 }

@@ -40,8 +40,10 @@ public class ProjectCache
 	private File wesnothFile_;
 	private File definesFile_;
 
-	private Map<String, ConfigFile> configFiles_;
-	private Map<String, Define> defines_;
+	private Map< String, ConfigFile > configFiles_;
+	private Map< String, Define > defines_;
+
+	private Map< String, ProjectDependencyNode > depedencyTree_;
 
 	private IProject project_;
 
@@ -51,6 +53,8 @@ public class ProjectCache
 
 		configFiles_ = new HashMap<String, ConfigFile>();
 		defines_ = new HashMap<String, Define>(0);
+		depedencyTree_ = new HashMap<String, ProjectDependencyNode>();
+
 		propertiesTimetamp_ = 0;
 		properties_ = new DialogSettings("project"); //$NON-NLS-1$
 
