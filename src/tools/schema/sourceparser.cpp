@@ -67,14 +67,14 @@ const std::string eol_=".*$";
 /** Private function to surround an argument with brackets.
  * This allows substitutions :-)
  */
-std::string sub (const std::string & s){
+static std::string sub (const std::string & s){
 	return "(" + s + ")";
 }
 
 /** Private function to surround argument with not mandatory quotes.
  * Is used when creating properties
  */
-std::string quote(const std::string & s){
+static std::string quote(const std::string & s){
 	return quote_ + s + quote_ ;
 }
 
@@ -85,7 +85,7 @@ std::string quote(const std::string & s){
  * If value is empty creates simple property like {table}
  * Else creates a named property like {name="[name_type_template]"}
  */
-std::string property(const std::string & name, const std::string & value = ""){
+static std::string property(const std::string & name, const std::string & value = ""){
 	if (value == ""){
 		return property_open_ + name + property_close_;
 	}
