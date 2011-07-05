@@ -11,9 +11,11 @@ package org.wesnoth.builder;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 import java.util.concurrent.LinkedBlockingDeque;
 
 import org.eclipse.core.resources.IContainer;
@@ -21,14 +23,24 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 import org.wesnoth.Logger;
 import org.wesnoth.builder.WesnothProjectBuilder.WMLFilesComparator;
 import org.wesnoth.projects.ProjectDependencyNode;
+import org.wesnoth.utils.ListUtils;
+import org.wesnoth.utils.ResourceUtils;
+import org.wesnoth.wml.WMLMacroCall;
+import org.wesnoth.wml.WMLPreprocIF;
+import org.wesnoth.wml.WMLRoot;
+import org.wesnoth.wml.WMLTag;
 
 public class DependencyTreeBuilder
 {
     protected IProject project_;
     protected int currentIndex_ = 0;
+    private ProjectDependencyNode parent_;
+    private ProjectDependencyNode previous_;
 
     protected Map< String, ProjectDependencyNode > tree_;
 
@@ -41,22 +53,102 @@ public class DependencyTreeBuilder
     public void createDependencyTree()
     {
         // start creating the PDT (project dependency tree)
-        Queue<IContainer> toProcess = new LinkedBlockingDeque<IContainer>( );
+        Queue<IContainer> containers = new LinkedBlockingDeque<IContainer>( );
 
-        ProjectDependencyNode parent = null;
+        parent_ = null;
 
-        toProcess.add( project_ );
+        containers.add( project_ );
 
-        while( toProcess.isEmpty( ) == false ) {
-            IContainer container = toProcess.poll( );
+        while( containers.isEmpty( ) == false ) {
+            IContainer container = containers.poll( );
 
             IResource main_cfg = container.findMember( "_main.cfg" );
             if ( main_cfg != null ) {
                 // add main.cfg to tree
-                //WMLRoot root = ResourceUtils.getWMLRoot( ( IFile ) main_cfg );
+                addNode( (IFile) main_cfg );
 
-                // iterate to find macro calls that include other dirs
+                WMLRoot root = ResourceUtils.getWMLRoot( ( IFile ) main_cfg );
+
+                // nothing to do
+                if ( root == null )
+                    continue;
+
+                EList<WMLMacroCall> macroCalls = new BasicEList<WMLMacroCall>( );
+
+                // iterate to find macro calls
+                // - search in tags
+                // - search in ifdefs
+
+                Queue<WMLTag> tags = new LinkedBlockingDeque<WMLTag>( root.getTags( ) );
+                Queue<WMLPreprocIF> ifdefs = new LinkedBlockingDeque<WMLPreprocIF>( root.getIfDefs( ) );
+
+                // add first the root defines
+                macroCalls.addAll( root.getMacroCalls( ) );
+
+                while ( !tags.isEmpty( ) ||
+                        !ifdefs.isEmpty( ) ) {
+
+                    if ( !tags.isEmpty( ) ) {
+                        WMLTag tag = tags.poll( );
+
+                        tags.addAll( tag.getTags( ) );
+                        ifdefs.addAll( tag.getIfDefs( ) );
+
+                        // now add contained macro calls
+                        macroCalls.addAll( tag.getMacroCalls( ) );
+
+                    } else {
+                        WMLPreprocIF ifdef = ifdefs.poll( );
+
+                        tags.addAll( ifdef.getTags( ) );
+                        ifdefs.addAll( ifdef.getIfDefs( ) );
+
+                        macroCalls.addAll( ifdef.getMacroCalls( ) );
+                    }
+                }
+
+                // now check what macros are really an inclusion macro
+                Set<String> containersToAdd = new HashSet<String>( );
+
+                for ( WMLMacroCall macro : macroCalls ) {
+                    String name = macro.getName( );
+
+                    /**
+                     * To include a folder the macro should be the following
+                     * forms:
+                     * - {campaigns/... }
+                     * - {~add-ons/... }
+                     *
+                     */
+                    //TODO: check for including a specific config file?
+
+                    if ( ( name.equals( "campaigns" ) ||
+                         name.equals( "add-ons" ) ) &&
+                         // the call should contain just string values
+                         macro.getExtraMacros( ).isEmpty( ) &&
+                         macro.getParams( ).size( ) > 1 &&
+                         macro.getParams( ).get( 0 ).equals( "/" ) )
+                    {
+                        // check if the macro includes directories local
+                        // to this project
+                        String projectPath = project_.getLocation( ).toOSString( );
+
+                        if ( projectPath.contains( macro.getParams( ).get( 1 ) ) ) {
+                            containersToAdd.add(
+                                ListUtils.concatenateList(
+                                   macro.getParams( ).subList( 2, macro.getParams( ).size( ) ), "" ) );
+                        }
+                    }
+                }
+
+                // push the containers in the queue
+                for ( String containerPath : containersToAdd ) {
+                    containers.offer( project_.getFolder( containerPath ) );
+                }
+
             }else {
+                // no main.cfg, just follow WML reading rules
+
                 List<IResource> members = null;
                 try {
                     members = Arrays.asList( container.members( ) );
@@ -72,12 +164,11 @@ public class DependencyTreeBuilder
                 if ( members.isEmpty( ) )
                     continue;
 
-                ProjectDependencyNode previous = null;
+                previous_ = null;
 
                 for ( IResource resource : members ) {
-                    System.out.println( resource.toString( ) );
                     if ( resource instanceof IContainer )
-                        toProcess.add( (IContainer)resource );
+                        containers.add( (IContainer)resource );
                     else {
                         String fileName = resource.getName( );
 
@@ -86,7 +177,7 @@ public class DependencyTreeBuilder
                              ! ( resource instanceof IFile ))
                             continue;
 
-                        addNode( ( IFile ) resource, previous, parent );
+                        addNode( ( IFile ) resource );
                     }
                 }
             }
@@ -97,6 +188,7 @@ public class DependencyTreeBuilder
             ProjectDependencyNode node = tree_.get( "_ROOT_" ); // $NON-NLS-1$
 
             do {
+                System.out.print( "> " );
                 ProjectDependencyNode leaf = node;
 
                 do {
@@ -113,31 +205,29 @@ public class DependencyTreeBuilder
         }
     }
 
-    private void addNode( IFile file, ProjectDependencyNode previous,
-            ProjectDependencyNode parent )
+    private void addNode( IFile file )
     {
-
         ProjectDependencyNode newNode = new ProjectDependencyNode( file, currentIndex_ );
         currentIndex_ += ProjectDependencyNode.INDEX_STEP;
 
-        if ( previous != null ){
-            previous.setNext( newNode );
-            newNode.setPrevious( previous );
+        if ( previous_ != null ){
+            previous_.setNext( newNode );
+            newNode.setPrevious( previous_ );
         } else {
             // first node in the current directory -> make it son of parent
-            if ( parent != null ) {
-                parent.setSon( newNode );
-                newNode.setParent( parent );
+            if ( parent_ != null ) {
+                parent_.setSon( newNode );
+                newNode.setParent( parent_ );
             } else {
                 // no parent yet (== null)
                 // so we're making this the root node for this tree
                 tree_.put( "_ROOT_", newNode );
             }
 
-            parent = newNode;
+            parent_ = newNode;
         }
 
         tree_.put( file.getProjectRelativePath( ).toString( ), newNode );
-        previous = newNode;
+        previous_ = newNode;
     }
 }
