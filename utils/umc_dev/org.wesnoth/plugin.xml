@@ -470,7 +470,6 @@
       <objectContribution
             adaptable="false"
             id="org.wesnoth.popupMenus.allProjectContributions"
-            nameFilter="*"
             objectClass="org.eclipse.core.resources.IProject">
          <action
                class="org.wesnoth.action.RegenerateBuildFiles"
@@ -480,12 +479,10 @@
                menubarPath="_wesnoth">
          </action>
          <menu
-               id="org.wesnoth.popupMenus.allProjBuilders"
+               id="buildersMenu"
                label="Builders"
                path="_wesnoth">
-            <groupMarker
-                  name="org.wesnoth.buildersMarker">
-            </groupMarker>
+            <separator name="buildersGroup" />
          </menu>
          <action
                class="org.wesnoth.builder.ToggleWesnothNatureAction"
@@ -493,7 +490,7 @@
                icon="icons/wesnoth-icon_16.png"
                id="org.wesnoth.popupMenus.addRemoveWesnothNature"
                label="Add/Remove wesnoth Builder"
-               menubarPath="org.wesnoth.allProjBuilders/org.wesnoth.buildersMarker">
+               menubarPath="buildersMenu/buildersGroup">
          </action>
          <action
                class="org.wesnoth.builder.ToggleXtextNatureAction"
@@ -501,7 +498,7 @@
                icon="icons/wesnoth-icon_16.png"
                id="org.wesnoth.popupMenusj.addRemovextextNature"
                label="Add/Remove xtext Builder"
-               menubarPath="org.wesnoth.allProjBuilders/org.wesnoth.buildersMarker">
+               menubarPath="buildersMenu/buildersGroup">
          </action>
       </objectContribution>
    </extension>
