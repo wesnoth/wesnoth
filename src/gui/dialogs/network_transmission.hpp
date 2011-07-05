@@ -49,9 +49,11 @@ class tnetwork_transmission : public tdialog
 		boost::optional<twindow&> window_;
 	} pump_monitor;
 public:
-	tnetwork_transmission(network_asio::connection& connection, const std::string& title, const std::string& subtitle)
-		: connection_(connection), pump_monitor(connection), title_(title), subtitle_(subtitle)
-	{}
+
+	tnetwork_transmission(
+		  network_asio::connection& connection
+		, const std::string& title
+		, const std::string& subtitle);
 
 	void set_subtitle(const std::string&);
 
@@ -63,8 +65,12 @@ protected:
 	void post_show(twindow& window);
 
 private:
-	/** The title for the dialog. */
-	std::string title_;
+	/**
+	 * The subtitle for the dialog.
+	 *
+	 * This field commenly shows the action in progress eg connecting,
+	 * uploading, downloading etc..
+	 */
 	std::string subtitle_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */

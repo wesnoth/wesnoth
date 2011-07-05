@@ -18,6 +18,7 @@
 #include "gui/dialogs/network_transmission.hpp"
 
 #include "foreach.hpp"
+#include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/progress_bar.hpp"
@@ -38,18 +39,33 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 		window_.get().set_retval(twindow::OK);
 	} else {
 		if(connection_.bytes_to_read()) {
-			size_t total = connection_.bytes_to_read();
 			size_t completed = connection_.bytes_read();
+			size_t total = connection_.bytes_to_read();
 			find_widget<tprogress_bar>(&(window_.get()), "progress", false)
 				.set_percentage((completed*100)/total);
-			std::ostringstream os;
-			os << (completed/1024) << "KiB/" << (total/1024) << "KiB";
-			std::cout << os.str() << std::endl;
+
+			string_map symbols;
+			symbols["total"] = str_cast(total);
+			symbols["completed"] = str_cast(completed);
+
 			find_widget<tlabel>(&(window_.get()), "numeric_progress", false)
-				.set_label(os.str());
+					.set_label(vgettext(
+						  "$completed KiB/$total KiB"
+						, symbols));
 			window_->invalidate_layout();
 		}
 	}
+}
+
+tnetwork_transmission::tnetwork_transmission(
+		  network_asio::connection& connection
+		, const std::string& title
+		, const std::string& subtitle)
+	: connection_(connection)
+	, pump_monitor(connection)
+	, subtitle_(subtitle)
+{
+	register_label2("title", true, title, false);
 }
 
 void tnetwork_transmission::set_subtitle(const std::string& subtitle)
@@ -60,9 +76,6 @@ void tnetwork_transmission::set_subtitle(const std::string& subtitle)
 void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
-	if(!title_.empty()) {
-		find_widget<tlabel>(&window, "title", false).set_label(title_);
-	}
 	if(!subtitle_.empty()) {
 		find_widget<tlabel>(&window, "subtitle", false).set_label(subtitle_);
 	}
