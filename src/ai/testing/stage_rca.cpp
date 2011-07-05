@@ -143,7 +143,19 @@ bool candidate_action_evaluation_loop::do_play_stage()
 		}
 	} while (executed);
 	LOG_AI_TESTING_RCA_DEFAULT << "Ended candidate action evaluation loop for side "<< get_side() << std::endl;
+	remove_completed_cas();
 	return gamestate_changed;
+}
+
+void candidate_action_evaluation_loop::remove_completed_cas() 
+{
+	for (std::vector<candidate_action_ptr>::iterator it = candidate_actions_.begin(); it != candidate_actions_.end(); it++)
+	{
+		if ((*it)->to_be_removed())
+		{
+			// code to remove a CA
+		}
+	}
 }
 
 rca_context& candidate_action_evaluation_loop::get_rca_context()

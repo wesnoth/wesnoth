@@ -38,7 +38,7 @@ candidate_action::candidate_action(rca_context &context, const config &cfg):
 	enabled_(cfg["enabled"].to_bool(true)), engine_(cfg["engine"]),
 	score_(cfg["score"].to_double(BAD_SCORE)),
 	max_score_(cfg["max_score"].to_double(HIGH_SCORE)),
-	id_(cfg["id"]), name_(cfg["name"]), type_(cfg["type"])
+	id_(cfg["id"]), name_(cfg["name"]), type_(cfg["type"]), to_be_removed_(false)
 {
 	init_rca_context_proxy(context);
 }
@@ -96,6 +96,16 @@ config candidate_action::to_config() const
 	cfg["max_score"] = max_score_;
 	cfg["type"] = type_;
 	return cfg;
+}
+
+void candidate_action::set_to_be_removed()
+{
+	to_be_removed_ = true;
+}
+
+bool candidate_action::to_be_removed()
+{
+	return to_be_removed_;
 }
 
 //============================================================================

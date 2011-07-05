@@ -55,7 +55,8 @@ typedef boost::shared_ptr< lua_object<int> > lua_int_obj;
 class lua_candidate_action_wrapper : public candidate_action {
 public:
 	lua_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx)
-		: candidate_action(context,cfg),evaluation_(cfg["evaluation"]),evaluation_action_handler_(),execution_(cfg["execution"]),execution_action_handler_(),serialized_evaluation_state_()
+		: candidate_action(context,cfg),evaluation_(cfg["evaluation"]),evaluation_action_handler_(),
+			execution_(cfg["execution"]),execution_action_handler_(),serialized_evaluation_state_()
 	{
 		evaluation_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(evaluation_.c_str(),lua_ai_ctx));
 		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(execution_.c_str(),lua_ai_ctx));
@@ -95,6 +96,7 @@ public:
 		cfg.add_child("state",serialized_evaluation_state_);
 		return cfg;
 	}
+	
 private:
 	std::string evaluation_;
 	boost::shared_ptr<lua_ai_action_handler> evaluation_action_handler_;
@@ -114,8 +116,15 @@ public:
 	}
 
 	virtual void execute()	{
-		lua_candidate_action_wrapper::execute();
-		//this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
+		if (resources::units->find(bound_unit_->underlying_id()).valid())
+		{
+			lua_candidate_action_wrapper::execute();
+			this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
+		}
+		else 
+		{
+			this->set_to_be_removed();
+		}
 	}
 private:
 	boost::shared_ptr<unit> bound_unit_;
