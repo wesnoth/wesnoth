@@ -1359,26 +1359,24 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleWMLKeyValue
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:659:1: ruleWMLKeyValue returns [EObject current=null] : (this_WMLValue_0= ruleWMLValue | this_WMLMacroCall_1= ruleWMLMacroCall | this_WMLLuaCode_2= ruleWMLLuaCode | this_WMLArrayCall_3= ruleWMLArrayCall ) ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:659:1: ruleWMLKeyValue returns [EObject current=null] : ( ( () ruleWMLValue ) | this_WMLMacroCall_2= ruleWMLMacroCall | this_WMLLuaCode_3= ruleWMLLuaCode | this_WMLArrayCall_4= ruleWMLArrayCall ) ;
     public final EObject ruleWMLKeyValue() throws RecognitionException {
         EObject current = null;
 
-        EObject this_WMLValue_0 = null;
+        EObject this_WMLMacroCall_2 = null;
 
-        EObject this_WMLMacroCall_1 = null;
+        EObject this_WMLLuaCode_3 = null;
 
-        EObject this_WMLLuaCode_2 = null;
-
-        EObject this_WMLArrayCall_3 = null;
+        EObject this_WMLArrayCall_4 = null;
 
 
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:664:6: ( (this_WMLValue_0= ruleWMLValue | this_WMLMacroCall_1= ruleWMLMacroCall | this_WMLLuaCode_2= ruleWMLLuaCode | this_WMLArrayCall_3= ruleWMLArrayCall ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:665:1: (this_WMLValue_0= ruleWMLValue | this_WMLMacroCall_1= ruleWMLMacroCall | this_WMLLuaCode_2= ruleWMLLuaCode | this_WMLArrayCall_3= ruleWMLArrayCall )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:664:6: ( ( ( () ruleWMLValue ) | this_WMLMacroCall_2= ruleWMLMacroCall | this_WMLLuaCode_3= ruleWMLLuaCode | this_WMLArrayCall_4= ruleWMLArrayCall ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:665:1: ( ( () ruleWMLValue ) | this_WMLMacroCall_2= ruleWMLMacroCall | this_WMLLuaCode_3= ruleWMLLuaCode | this_WMLArrayCall_4= ruleWMLArrayCall )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:665:1: (this_WMLValue_0= ruleWMLValue | this_WMLMacroCall_1= ruleWMLMacroCall | this_WMLLuaCode_2= ruleWMLLuaCode | this_WMLArrayCall_3= ruleWMLArrayCall )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:665:1: ( ( () ruleWMLValue ) | this_WMLMacroCall_2= ruleWMLMacroCall | this_WMLLuaCode_3= ruleWMLLuaCode | this_WMLArrayCall_4= ruleWMLArrayCall )
             int alt10=4;
             switch ( input.LA(1) ) {
             case RULE_ID:
@@ -1413,75 +1411,96 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("665:1: (this_WMLValue_0= ruleWMLValue | this_WMLMacroCall_1= ruleWMLMacroCall | this_WMLLuaCode_2= ruleWMLLuaCode | this_WMLArrayCall_3= ruleWMLArrayCall )", 10, 0, input);
+                    new NoViableAltException("665:1: ( ( () ruleWMLValue ) | this_WMLMacroCall_2= ruleWMLMacroCall | this_WMLLuaCode_3= ruleWMLLuaCode | this_WMLArrayCall_4= ruleWMLArrayCall )", 10, 0, input);
 
                 throw nvae;
             }
 
             switch (alt10) {
                 case 1 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:666:5: this_WMLValue_0= ruleWMLValue
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:665:2: ( () ruleWMLValue )
+                    {
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:665:2: ( () ruleWMLValue )
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:665:3: () ruleWMLValue
+                    {
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:665:3: ()
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:666:5: 
                     {
                      
-                            currentNode=createCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLValueParserRuleCall_0(), currentNode); 
+                            temp=factory.create(grammarAccess.getWMLKeyValueAccess().getWMLKeyValueAction_0_0().getType().getClassifier());
+                            current = temp; 
+                            temp = null;
+                            CompositeNode newNode = createCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLKeyValueAction_0_0(), currentNode.getParent());
+                        newNode.getChildren().add(currentNode);
+                        moveLookaheadInfo(currentNode, newNode);
+                        currentNode = newNode; 
+                            associateNodeWithAstElement(currentNode, current); 
                         
-                    pushFollow(FOLLOW_ruleWMLValue_in_ruleWMLKeyValue922);
-                    this_WMLValue_0=ruleWMLValue();
+
+                    }
+
+                     
+                            currentNode=createCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLValueParserRuleCall_0_1(), currentNode); 
+                        
+                    pushFollow(FOLLOW_ruleWMLValue_in_ruleWMLKeyValue926);
+                    ruleWMLValue();
                     _fsp--;
 
                      
-                            current = this_WMLValue_0; 
                             currentNode = currentNode.getParent();
                         
 
                     }
+
+
+                    }
                     break;
                 case 2 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:676:5: this_WMLMacroCall_1= ruleWMLMacroCall
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:686:5: this_WMLMacroCall_2= ruleWMLMacroCall
                     {
                      
                             currentNode=createCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLMacroCallParserRuleCall_1(), currentNode); 
                         
-                    pushFollow(FOLLOW_ruleWMLMacroCall_in_ruleWMLKeyValue949);
-                    this_WMLMacroCall_1=ruleWMLMacroCall();
+                    pushFollow(FOLLOW_ruleWMLMacroCall_in_ruleWMLKeyValue954);
+                    this_WMLMacroCall_2=ruleWMLMacroCall();
                     _fsp--;
 
                      
-                            current = this_WMLMacroCall_1; 
+                            current = this_WMLMacroCall_2; 
                             currentNode = currentNode.getParent();
                         
 
                     }
                     break;
                 case 3 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:686:5: this_WMLLuaCode_2= ruleWMLLuaCode
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:696:5: this_WMLLuaCode_3= ruleWMLLuaCode
                     {
                      
                             currentNode=createCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLLuaCodeParserRuleCall_2(), currentNode); 
                         
-                    pushFollow(FOLLOW_ruleWMLLuaCode_in_ruleWMLKeyValue976);
-                    this_WMLLuaCode_2=ruleWMLLuaCode();
+                    pushFollow(FOLLOW_ruleWMLLuaCode_in_ruleWMLKeyValue981);
+                    this_WMLLuaCode_3=ruleWMLLuaCode();
                     _fsp--;
 
                      
-                            current = this_WMLLuaCode_2; 
+                            current = this_WMLLuaCode_3; 
                             currentNode = currentNode.getParent();
                         
 
                     }
                     break;
                 case 4 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:696:5: this_WMLArrayCall_3= ruleWMLArrayCall
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:706:5: this_WMLArrayCall_4= ruleWMLArrayCall
                     {
                      
                             currentNode=createCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLArrayCallParserRuleCall_3(), currentNode); 
                         
-                    pushFollow(FOLLOW_ruleWMLArrayCall_in_ruleWMLKeyValue1003);
-                    this_WMLArrayCall_3=ruleWMLArrayCall();
+                    pushFollow(FOLLOW_ruleWMLArrayCall_in_ruleWMLKeyValue1008);
+                    this_WMLArrayCall_4=ruleWMLArrayCall();
                     _fsp--;
 
                      
-                            current = this_WMLArrayCall_3; 
+                            current = this_WMLArrayCall_4; 
                             currentNode = currentNode.getParent();
                         
 
@@ -1510,7 +1529,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleWMLMacroCall
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:712:1: entryRuleWMLMacroCall returns [EObject current=null] : iv_ruleWMLMacroCall= ruleWMLMacroCall EOF ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:722:1: entryRuleWMLMacroCall returns [EObject current=null] : iv_ruleWMLMacroCall= ruleWMLMacroCall EOF ;
     public final EObject entryRuleWMLMacroCall() throws RecognitionException {
         EObject current = null;
 
@@ -1518,16 +1537,16 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:713:2: (iv_ruleWMLMacroCall= ruleWMLMacroCall EOF )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:714:2: iv_ruleWMLMacroCall= ruleWMLMacroCall EOF
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:723:2: (iv_ruleWMLMacroCall= ruleWMLMacroCall EOF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:724:2: iv_ruleWMLMacroCall= ruleWMLMacroCall EOF
             {
              currentNode = createCompositeNode(grammarAccess.getWMLMacroCallRule(), currentNode); 
-            pushFollow(FOLLOW_ruleWMLMacroCall_in_entryRuleWMLMacroCall1038);
+            pushFollow(FOLLOW_ruleWMLMacroCall_in_entryRuleWMLMacroCall1043);
             iv_ruleWMLMacroCall=ruleWMLMacroCall();
             _fsp--;
 
              current =iv_ruleWMLMacroCall; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLMacroCall1048); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLMacroCall1053); 
 
             }
 
@@ -1545,16 +1564,14 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleWMLMacroCall
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:721:1: ruleWMLMacroCall returns [EObject current=null] : ( '{' ( (lv_point_1_0= './' ) )? ( (lv_relative_2_0= '~' ) )? ( (lv_name_3_0= RULE_ID ) ) ( ( ( (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens ) ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )* '}' ) ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:731:1: ruleWMLMacroCall returns [EObject current=null] : ( '{' ( (lv_point_1_0= './' ) )? ( (lv_relative_2_0= '~' ) )? ( (lv_name_3_0= RULE_ID ) ) ( ( (lv_params_4_0= ruleWMLMacroParameter ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )* '}' ) ;
     public final EObject ruleWMLMacroCall() throws RecognitionException {
         EObject current = null;
 
         Token lv_point_1_0=null;
         Token lv_relative_2_0=null;
         Token lv_name_3_0=null;
-        EObject lv_params_4_1 = null;
-
-        EObject lv_params_4_2 = null;
+        AntlrDatatypeRuleToken lv_params_4_0 = null;
 
         EObject lv_extraMacros_5_0 = null;
 
@@ -1562,17 +1579,17 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:726:6: ( ( '{' ( (lv_point_1_0= './' ) )? ( (lv_relative_2_0= '~' ) )? ( (lv_name_3_0= RULE_ID ) ) ( ( ( (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens ) ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )* '}' ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:727:1: ( '{' ( (lv_point_1_0= './' ) )? ( (lv_relative_2_0= '~' ) )? ( (lv_name_3_0= RULE_ID ) ) ( ( ( (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens ) ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )* '}' )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:736:6: ( ( '{' ( (lv_point_1_0= './' ) )? ( (lv_relative_2_0= '~' ) )? ( (lv_name_3_0= RULE_ID ) ) ( ( (lv_params_4_0= ruleWMLMacroParameter ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )* '}' ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:737:1: ( '{' ( (lv_point_1_0= './' ) )? ( (lv_relative_2_0= '~' ) )? ( (lv_name_3_0= RULE_ID ) ) ( ( (lv_params_4_0= ruleWMLMacroParameter ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )* '}' )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:727:1: ( '{' ( (lv_point_1_0= './' ) )? ( (lv_relative_2_0= '~' ) )? ( (lv_name_3_0= RULE_ID ) ) ( ( ( (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens ) ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )* '}' )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:727:3: '{' ( (lv_point_1_0= './' ) )? ( (lv_relative_2_0= '~' ) )? ( (lv_name_3_0= RULE_ID ) ) ( ( ( (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens ) ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )* '}'
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:737:1: ( '{' ( (lv_point_1_0= './' ) )? ( (lv_relative_2_0= '~' ) )? ( (lv_name_3_0= RULE_ID ) ) ( ( (lv_params_4_0= ruleWMLMacroParameter ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )* '}' )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:737:3: '{' ( (lv_point_1_0= './' ) )? ( (lv_relative_2_0= '~' ) )? ( (lv_name_3_0= RULE_ID ) ) ( ( (lv_params_4_0= ruleWMLMacroParameter ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )* '}'
             {
-            match(input,25,FOLLOW_25_in_ruleWMLMacroCall1083); 
+            match(input,25,FOLLOW_25_in_ruleWMLMacroCall1088); 
 
                     createLeafNode(grammarAccess.getWMLMacroCallAccess().getLeftCurlyBracketKeyword_0(), null); 
                 
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:731:1: ( (lv_point_1_0= './' ) )?
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:741:1: ( (lv_point_1_0= './' ) )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1581,13 +1598,13 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             }
             switch (alt11) {
                 case 1 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:732:1: (lv_point_1_0= './' )
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:742:1: (lv_point_1_0= './' )
                     {
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:732:1: (lv_point_1_0= './' )
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:733:3: lv_point_1_0= './'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:742:1: (lv_point_1_0= './' )
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:743:3: lv_point_1_0= './'
                     {
                     lv_point_1_0=(Token)input.LT(1);
-                    match(input,26,FOLLOW_26_in_ruleWMLMacroCall1101); 
+                    match(input,26,FOLLOW_26_in_ruleWMLMacroCall1106); 
 
                             createLeafNode(grammarAccess.getWMLMacroCallAccess().getPointFullStopSolidusKeyword_1_0(), "point"); 
                         
@@ -1612,7 +1629,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:752:3: ( (lv_relative_2_0= '~' ) )?
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:762:3: ( (lv_relative_2_0= '~' ) )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -1621,13 +1638,13 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             }
             switch (alt12) {
                 case 1 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:753:1: (lv_relative_2_0= '~' )
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:763:1: (lv_relative_2_0= '~' )
                     {
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:753:1: (lv_relative_2_0= '~' )
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:754:3: lv_relative_2_0= '~'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:763:1: (lv_relative_2_0= '~' )
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:764:3: lv_relative_2_0= '~'
                     {
                     lv_relative_2_0=(Token)input.LT(1);
-                    match(input,27,FOLLOW_27_in_ruleWMLMacroCall1133); 
+                    match(input,27,FOLLOW_27_in_ruleWMLMacroCall1138); 
 
                             createLeafNode(grammarAccess.getWMLMacroCallAccess().getRelativeTildeKeyword_2_0(), "relative"); 
                         
@@ -1652,14 +1669,14 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:773:3: ( (lv_name_3_0= RULE_ID ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:774:1: (lv_name_3_0= RULE_ID )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:783:3: ( (lv_name_3_0= RULE_ID ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:784:1: (lv_name_3_0= RULE_ID )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:774:1: (lv_name_3_0= RULE_ID )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:775:3: lv_name_3_0= RULE_ID
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:784:1: (lv_name_3_0= RULE_ID )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:785:3: lv_name_3_0= RULE_ID
             {
             lv_name_3_0=(Token)input.LT(1);
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleWMLMacroCall1164); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleWMLMacroCall1169); 
 
             			createLeafNode(grammarAccess.getWMLMacroCallAccess().getNameIDTerminalRuleCall_3_0(), "name"); 
             		
@@ -1685,110 +1702,54 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:797:2: ( ( ( (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens ) ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )*
-            loop14:
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:807:2: ( ( (lv_params_4_0= ruleWMLMacroParameter ) ) | ( (lv_extraMacros_5_0= ruleWMLMacroCall ) ) )*
+            loop13:
             do {
-                int alt14=3;
-                int LA14_0 = input.LA(1);
+                int alt13=3;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA14_0==RULE_ID||(LA14_0>=RULE_STRING && LA14_0<=RULE_ANY_OTHER)||(LA14_0>=20 && LA14_0<=24)||(LA14_0>=26 && LA14_0<=27)||(LA14_0>=29 && LA14_0<=34)) ) {
-                    alt14=1;
+                if ( (LA13_0==RULE_ID||(LA13_0>=RULE_STRING && LA13_0<=RULE_ANY_OTHER)||(LA13_0>=20 && LA13_0<=24)||(LA13_0>=26 && LA13_0<=27)||(LA13_0>=29 && LA13_0<=34)) ) {
+                    alt13=1;
                 }
-                else if ( (LA14_0==25) ) {
-                    alt14=2;
+                else if ( (LA13_0==25) ) {
+                    alt13=2;
                 }
 
 
-                switch (alt14) {
+                switch (alt13) {
             	case 1 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:797:3: ( ( (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens ) ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:807:3: ( (lv_params_4_0= ruleWMLMacroParameter ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:797:3: ( ( (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens ) ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:798:1: ( (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:807:3: ( (lv_params_4_0= ruleWMLMacroParameter ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:808:1: (lv_params_4_0= ruleWMLMacroParameter )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:798:1: ( (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:799:1: (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:808:1: (lv_params_4_0= ruleWMLMacroParameter )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:809:3: lv_params_4_0= ruleWMLMacroParameter
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:799:1: (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens )
-            	    int alt13=2;
-            	    int LA13_0 = input.LA(1);
-
-            	    if ( (LA13_0==RULE_ID||(LA13_0>=RULE_STRING && LA13_0<=RULE_ANY_OTHER)||(LA13_0>=26 && LA13_0<=27)||(LA13_0>=29 && LA13_0<=34)) ) {
-            	        alt13=1;
-            	    }
-            	    else if ( ((LA13_0>=20 && LA13_0<=24)) ) {
-            	        alt13=2;
-            	    }
-            	    else {
-            	        NoViableAltException nvae =
-            	            new NoViableAltException("799:1: (lv_params_4_1= ruleWMLValue | lv_params_4_2= ruleMacroTokens )", 13, 0, input);
-
-            	        throw nvae;
-            	    }
-            	    switch (alt13) {
-            	        case 1 :
-            	            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:800:3: lv_params_4_1= ruleWMLValue
-            	            {
-            	             
-            	            	        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallAccess().getParamsWMLValueParserRuleCall_4_0_0_0(), currentNode); 
-            	            	    
-            	            pushFollow(FOLLOW_ruleWMLValue_in_ruleWMLMacroCall1193);
-            	            lv_params_4_1=ruleWMLValue();
-            	            _fsp--;
+            	     
+            	    	        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallAccess().getParamsWMLMacroParameterParserRuleCall_4_0_0(), currentNode); 
+            	    	    
+            	    pushFollow(FOLLOW_ruleWMLMacroParameter_in_ruleWMLMacroCall1196);
+            	    lv_params_4_0=ruleWMLMacroParameter();
+            	    _fsp--;
 
 
-            	            	        if (current==null) {
-            	            	            current = factory.create(grammarAccess.getWMLMacroCallRule().getType().getClassifier());
-            	            	            associateNodeWithAstElement(currentNode.getParent(), current);
-            	            	        }
-            	            	        try {
-            	            	       		add(
-            	            	       			current, 
-            	            	       			"params",
-            	            	        		lv_params_4_1, 
-            	            	        		"WMLValue", 
-            	            	        		currentNode);
-            	            	        } catch (ValueConverterException vce) {
-            	            				handleValueConverterException(vce);
-            	            	        }
-            	            	        currentNode = currentNode.getParent();
-            	            	    
-
-            	            }
-            	            break;
-            	        case 2 :
-            	            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:821:8: lv_params_4_2= ruleMacroTokens
-            	            {
-            	             
-            	            	        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallAccess().getParamsMacroTokensParserRuleCall_4_0_0_1(), currentNode); 
-            	            	    
-            	            pushFollow(FOLLOW_ruleMacroTokens_in_ruleWMLMacroCall1212);
-            	            lv_params_4_2=ruleMacroTokens();
-            	            _fsp--;
-
-
-            	            	        if (current==null) {
-            	            	            current = factory.create(grammarAccess.getWMLMacroCallRule().getType().getClassifier());
-            	            	            associateNodeWithAstElement(currentNode.getParent(), current);
-            	            	        }
-            	            	        try {
-            	            	       		add(
-            	            	       			current, 
-            	            	       			"params",
-            	            	        		lv_params_4_2, 
-            	            	        		"MacroTokens", 
-            	            	        		currentNode);
-            	            	        } catch (ValueConverterException vce) {
-            	            				handleValueConverterException(vce);
-            	            	        }
-            	            	        currentNode = currentNode.getParent();
-            	            	    
-
-            	            }
-            	            break;
-
-            	    }
-
+            	    	        if (current==null) {
+            	    	            current = factory.create(grammarAccess.getWMLMacroCallRule().getType().getClassifier());
+            	    	            associateNodeWithAstElement(currentNode.getParent(), current);
+            	    	        }
+            	    	        try {
+            	    	       		add(
+            	    	       			current, 
+            	    	       			"params",
+            	    	        		lv_params_4_0, 
+            	    	        		"WMLMacroParameter", 
+            	    	        		currentNode);
+            	    	        } catch (ValueConverterException vce) {
+            	    				handleValueConverterException(vce);
+            	    	        }
+            	    	        currentNode = currentNode.getParent();
+            	    	    
 
             	    }
 
@@ -1799,18 +1760,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:846:6: ( (lv_extraMacros_5_0= ruleWMLMacroCall ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:832:6: ( (lv_extraMacros_5_0= ruleWMLMacroCall ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:846:6: ( (lv_extraMacros_5_0= ruleWMLMacroCall ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:847:1: (lv_extraMacros_5_0= ruleWMLMacroCall )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:832:6: ( (lv_extraMacros_5_0= ruleWMLMacroCall ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:833:1: (lv_extraMacros_5_0= ruleWMLMacroCall )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:847:1: (lv_extraMacros_5_0= ruleWMLMacroCall )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:848:3: lv_extraMacros_5_0= ruleWMLMacroCall
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:833:1: (lv_extraMacros_5_0= ruleWMLMacroCall )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:834:3: lv_extraMacros_5_0= ruleWMLMacroCall
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallAccess().getExtraMacrosWMLMacroCallParserRuleCall_4_1_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLMacroCall_in_ruleWMLMacroCall1242);
+            	    pushFollow(FOLLOW_ruleWMLMacroCall_in_ruleWMLMacroCall1223);
             	    lv_extraMacros_5_0=ruleWMLMacroCall();
             	    _fsp--;
 
@@ -1842,11 +1803,11 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop14;
+            	    break loop13;
                 }
             } while (true);
 
-            match(input,28,FOLLOW_28_in_ruleWMLMacroCall1254); 
+            match(input,28,FOLLOW_28_in_ruleWMLMacroCall1235); 
 
                     createLeafNode(grammarAccess.getWMLMacroCallAccess().getRightCurlyBracketKeyword_5(), null); 
                 
@@ -1873,7 +1834,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleWMLLuaCode
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:882:1: entryRuleWMLLuaCode returns [EObject current=null] : iv_ruleWMLLuaCode= ruleWMLLuaCode EOF ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:868:1: entryRuleWMLLuaCode returns [EObject current=null] : iv_ruleWMLLuaCode= ruleWMLLuaCode EOF ;
     public final EObject entryRuleWMLLuaCode() throws RecognitionException {
         EObject current = null;
 
@@ -1881,16 +1842,16 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:883:2: (iv_ruleWMLLuaCode= ruleWMLLuaCode EOF )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:884:2: iv_ruleWMLLuaCode= ruleWMLLuaCode EOF
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:869:2: (iv_ruleWMLLuaCode= ruleWMLLuaCode EOF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:870:2: iv_ruleWMLLuaCode= ruleWMLLuaCode EOF
             {
              currentNode = createCompositeNode(grammarAccess.getWMLLuaCodeRule(), currentNode); 
-            pushFollow(FOLLOW_ruleWMLLuaCode_in_entryRuleWMLLuaCode1290);
+            pushFollow(FOLLOW_ruleWMLLuaCode_in_entryRuleWMLLuaCode1271);
             iv_ruleWMLLuaCode=ruleWMLLuaCode();
             _fsp--;
 
              current =iv_ruleWMLLuaCode; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLLuaCode1300); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLLuaCode1281); 
 
             }
 
@@ -1908,7 +1869,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleWMLLuaCode
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:891:1: ruleWMLLuaCode returns [EObject current=null] : ( (lv_value_0_0= RULE_LUA_CODE ) ) ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:877:1: ruleWMLLuaCode returns [EObject current=null] : ( (lv_value_0_0= RULE_LUA_CODE ) ) ;
     public final EObject ruleWMLLuaCode() throws RecognitionException {
         EObject current = null;
 
@@ -1917,17 +1878,17 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:896:6: ( ( (lv_value_0_0= RULE_LUA_CODE ) ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:897:1: ( (lv_value_0_0= RULE_LUA_CODE ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:882:6: ( ( (lv_value_0_0= RULE_LUA_CODE ) ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:883:1: ( (lv_value_0_0= RULE_LUA_CODE ) )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:897:1: ( (lv_value_0_0= RULE_LUA_CODE ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:898:1: (lv_value_0_0= RULE_LUA_CODE )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:883:1: ( (lv_value_0_0= RULE_LUA_CODE ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:884:1: (lv_value_0_0= RULE_LUA_CODE )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:898:1: (lv_value_0_0= RULE_LUA_CODE )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:899:3: lv_value_0_0= RULE_LUA_CODE
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:884:1: (lv_value_0_0= RULE_LUA_CODE )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:885:3: lv_value_0_0= RULE_LUA_CODE
             {
             lv_value_0_0=(Token)input.LT(1);
-            match(input,RULE_LUA_CODE,FOLLOW_RULE_LUA_CODE_in_ruleWMLLuaCode1341); 
+            match(input,RULE_LUA_CODE,FOLLOW_RULE_LUA_CODE_in_ruleWMLLuaCode1322); 
 
             			createLeafNode(grammarAccess.getWMLLuaCodeAccess().getValueLUA_CODETerminalRuleCall_0(), "value"); 
             		
@@ -1973,7 +1934,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleWMLArrayCall
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:929:1: entryRuleWMLArrayCall returns [EObject current=null] : iv_ruleWMLArrayCall= ruleWMLArrayCall EOF ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:915:1: entryRuleWMLArrayCall returns [EObject current=null] : iv_ruleWMLArrayCall= ruleWMLArrayCall EOF ;
     public final EObject entryRuleWMLArrayCall() throws RecognitionException {
         EObject current = null;
 
@@ -1981,16 +1942,16 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:930:2: (iv_ruleWMLArrayCall= ruleWMLArrayCall EOF )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:931:2: iv_ruleWMLArrayCall= ruleWMLArrayCall EOF
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:916:2: (iv_ruleWMLArrayCall= ruleWMLArrayCall EOF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:917:2: iv_ruleWMLArrayCall= ruleWMLArrayCall EOF
             {
              currentNode = createCompositeNode(grammarAccess.getWMLArrayCallRule(), currentNode); 
-            pushFollow(FOLLOW_ruleWMLArrayCall_in_entryRuleWMLArrayCall1381);
+            pushFollow(FOLLOW_ruleWMLArrayCall_in_entryRuleWMLArrayCall1362);
             iv_ruleWMLArrayCall=ruleWMLArrayCall();
             _fsp--;
 
              current =iv_ruleWMLArrayCall; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLArrayCall1391); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLArrayCall1372); 
 
             }
 
@@ -2008,49 +1969,49 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleWMLArrayCall
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:938:1: ruleWMLArrayCall returns [EObject current=null] : ( '[' ( (lv_value_1_0= ruleWMLValue ) )+ ']' ) ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:924:1: ruleWMLArrayCall returns [EObject current=null] : ( '[' ( (lv_value_1_0= ruleWMLValue ) )+ ']' ) ;
     public final EObject ruleWMLArrayCall() throws RecognitionException {
         EObject current = null;
 
-        EObject lv_value_1_0 = null;
+        AntlrDatatypeRuleToken lv_value_1_0 = null;
 
 
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:943:6: ( ( '[' ( (lv_value_1_0= ruleWMLValue ) )+ ']' ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:944:1: ( '[' ( (lv_value_1_0= ruleWMLValue ) )+ ']' )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:929:6: ( ( '[' ( (lv_value_1_0= ruleWMLValue ) )+ ']' ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:930:1: ( '[' ( (lv_value_1_0= ruleWMLValue ) )+ ']' )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:944:1: ( '[' ( (lv_value_1_0= ruleWMLValue ) )+ ']' )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:944:3: '[' ( (lv_value_1_0= ruleWMLValue ) )+ ']'
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:930:1: ( '[' ( (lv_value_1_0= ruleWMLValue ) )+ ']' )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:930:3: '[' ( (lv_value_1_0= ruleWMLValue ) )+ ']'
             {
-            match(input,20,FOLLOW_20_in_ruleWMLArrayCall1426); 
+            match(input,20,FOLLOW_20_in_ruleWMLArrayCall1407); 
 
                     createLeafNode(grammarAccess.getWMLArrayCallAccess().getLeftSquareBracketKeyword_0(), null); 
                 
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:948:1: ( (lv_value_1_0= ruleWMLValue ) )+
-            int cnt15=0;
-            loop15:
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:934:1: ( (lv_value_1_0= ruleWMLValue ) )+
+            int cnt14=0;
+            loop14:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt14=2;
+                int LA14_0 = input.LA(1);
 
-                if ( (LA15_0==RULE_ID||(LA15_0>=RULE_STRING && LA15_0<=RULE_ANY_OTHER)||(LA15_0>=26 && LA15_0<=27)||(LA15_0>=29 && LA15_0<=34)) ) {
-                    alt15=1;
+                if ( (LA14_0==RULE_ID||(LA14_0>=RULE_STRING && LA14_0<=RULE_ANY_OTHER)||(LA14_0>=26 && LA14_0<=27)||(LA14_0>=29 && LA14_0<=34)) ) {
+                    alt14=1;
                 }
 
 
-                switch (alt15) {
+                switch (alt14) {
             	case 1 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:949:1: (lv_value_1_0= ruleWMLValue )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:935:1: (lv_value_1_0= ruleWMLValue )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:949:1: (lv_value_1_0= ruleWMLValue )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:950:3: lv_value_1_0= ruleWMLValue
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:935:1: (lv_value_1_0= ruleWMLValue )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:936:3: lv_value_1_0= ruleWMLValue
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLArrayCallAccess().getValueWMLValueParserRuleCall_1_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLValue_in_ruleWMLArrayCall1447);
+            	    pushFollow(FOLLOW_ruleWMLValue_in_ruleWMLArrayCall1428);
             	    lv_value_1_0=ruleWMLValue();
             	    _fsp--;
 
@@ -2079,15 +2040,15 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt15 >= 1 ) break loop15;
+            	    if ( cnt14 >= 1 ) break loop14;
                         EarlyExitException eee =
-                            new EarlyExitException(15, input);
+                            new EarlyExitException(14, input);
                         throw eee;
                 }
-                cnt15++;
+                cnt14++;
             } while (true);
 
-            match(input,22,FOLLOW_22_in_ruleWMLArrayCall1458); 
+            match(input,22,FOLLOW_22_in_ruleWMLArrayCall1439); 
 
                     createLeafNode(grammarAccess.getWMLArrayCallAccess().getRightSquareBracketKeyword_2(), null); 
                 
@@ -2114,7 +2075,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleWMLMacroDefine
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:984:1: entryRuleWMLMacroDefine returns [EObject current=null] : iv_ruleWMLMacroDefine= ruleWMLMacroDefine EOF ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:970:1: entryRuleWMLMacroDefine returns [EObject current=null] : iv_ruleWMLMacroDefine= ruleWMLMacroDefine EOF ;
     public final EObject entryRuleWMLMacroDefine() throws RecognitionException {
         EObject current = null;
 
@@ -2122,16 +2083,16 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:985:2: (iv_ruleWMLMacroDefine= ruleWMLMacroDefine EOF )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:986:2: iv_ruleWMLMacroDefine= ruleWMLMacroDefine EOF
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:971:2: (iv_ruleWMLMacroDefine= ruleWMLMacroDefine EOF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:972:2: iv_ruleWMLMacroDefine= ruleWMLMacroDefine EOF
             {
              currentNode = createCompositeNode(grammarAccess.getWMLMacroDefineRule(), currentNode); 
-            pushFollow(FOLLOW_ruleWMLMacroDefine_in_entryRuleWMLMacroDefine1494);
+            pushFollow(FOLLOW_ruleWMLMacroDefine_in_entryRuleWMLMacroDefine1475);
             iv_ruleWMLMacroDefine=ruleWMLMacroDefine();
             _fsp--;
 
              current =iv_ruleWMLMacroDefine; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLMacroDefine1504); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLMacroDefine1485); 
 
             }
 
@@ -2149,7 +2110,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleWMLMacroDefine
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:993:1: ruleWMLMacroDefine returns [EObject current=null] : ( ( (lv_name_0_0= RULE_DEFINE ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )* ( (lv_endName_8_0= RULE_ENDDEF ) ) ) ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:979:1: ruleWMLMacroDefine returns [EObject current=null] : ( ( (lv_name_0_0= RULE_DEFINE ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )* ( (lv_endName_8_0= RULE_ENDDEF ) ) ) ;
     public final EObject ruleWMLMacroDefine() throws RecognitionException {
         EObject current = null;
 
@@ -2165,7 +2126,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
         EObject lv_Textdomains_5_0 = null;
 
-        EObject lv_Values_6_0 = null;
+        AntlrDatatypeRuleToken lv_Values_6_0 = null;
 
         EObject lv_IfDefs_7_0 = null;
 
@@ -2173,20 +2134,20 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:998:6: ( ( ( (lv_name_0_0= RULE_DEFINE ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )* ( (lv_endName_8_0= RULE_ENDDEF ) ) ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:999:1: ( ( (lv_name_0_0= RULE_DEFINE ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )* ( (lv_endName_8_0= RULE_ENDDEF ) ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:984:6: ( ( ( (lv_name_0_0= RULE_DEFINE ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )* ( (lv_endName_8_0= RULE_ENDDEF ) ) ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:985:1: ( ( (lv_name_0_0= RULE_DEFINE ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )* ( (lv_endName_8_0= RULE_ENDDEF ) ) )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:999:1: ( ( (lv_name_0_0= RULE_DEFINE ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )* ( (lv_endName_8_0= RULE_ENDDEF ) ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:999:2: ( (lv_name_0_0= RULE_DEFINE ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )* ( (lv_endName_8_0= RULE_ENDDEF ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:985:1: ( ( (lv_name_0_0= RULE_DEFINE ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )* ( (lv_endName_8_0= RULE_ENDDEF ) ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:985:2: ( (lv_name_0_0= RULE_DEFINE ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )* ( (lv_endName_8_0= RULE_ENDDEF ) )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:999:2: ( (lv_name_0_0= RULE_DEFINE ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1000:1: (lv_name_0_0= RULE_DEFINE )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:985:2: ( (lv_name_0_0= RULE_DEFINE ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:986:1: (lv_name_0_0= RULE_DEFINE )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1000:1: (lv_name_0_0= RULE_DEFINE )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1001:3: lv_name_0_0= RULE_DEFINE
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:986:1: (lv_name_0_0= RULE_DEFINE )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:987:3: lv_name_0_0= RULE_DEFINE
             {
             lv_name_0_0=(Token)input.LT(1);
-            match(input,RULE_DEFINE,FOLLOW_RULE_DEFINE_in_ruleWMLMacroDefine1546); 
+            match(input,RULE_DEFINE,FOLLOW_RULE_DEFINE_in_ruleWMLMacroDefine1527); 
 
             			createLeafNode(grammarAccess.getWMLMacroDefineAccess().getNameDEFINETerminalRuleCall_0_0(), "name"); 
             		
@@ -2212,25 +2173,25 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1023:2: ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )*
-            loop16:
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1009:2: ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) )*
+            loop15:
             do {
-                int alt16=8;
+                int alt15=8;
                 switch ( input.LA(1) ) {
                 case 20:
                     {
-                    alt16=1;
+                    alt15=1;
                     }
                     break;
                 case RULE_ID:
                     {
-                    int LA16_3 = input.LA(2);
+                    int LA15_3 = input.LA(2);
 
-                    if ( (LA16_3==24) ) {
-                        alt16=2;
+                    if ( (LA15_3==24) ) {
+                        alt15=2;
                     }
-                    else if ( (LA16_3==RULE_ID||(LA16_3>=RULE_DEFINE && LA16_3<=RULE_IFNHAVE)||(LA16_3>=RULE_TEXTDOMAIN && LA16_3<=RULE_ANY_OTHER)||LA16_3==20||(LA16_3>=25 && LA16_3<=27)||(LA16_3>=29 && LA16_3<=34)) ) {
-                        alt16=6;
+                    else if ( (LA15_3==RULE_ID||(LA15_3>=RULE_DEFINE && LA15_3<=RULE_IFNHAVE)||(LA15_3>=RULE_TEXTDOMAIN && LA15_3<=RULE_ANY_OTHER)||LA15_3==20||(LA15_3>=25 && LA15_3<=27)||(LA15_3>=29 && LA15_3<=34)) ) {
+                        alt15=6;
                     }
 
 
@@ -2238,17 +2199,17 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                     break;
                 case 25:
                     {
-                    alt16=3;
+                    alt15=3;
                     }
                     break;
                 case RULE_DEFINE:
                     {
-                    alt16=4;
+                    alt15=4;
                     }
                     break;
                 case RULE_TEXTDOMAIN:
                     {
-                    alt16=5;
+                    alt15=5;
                     }
                     break;
                 case RULE_STRING:
@@ -2262,7 +2223,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                 case 33:
                 case 34:
                     {
-                    alt16=6;
+                    alt15=6;
                     }
                     break;
                 case RULE_IFDEF:
@@ -2270,26 +2231,26 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                 case RULE_IFHAVE:
                 case RULE_IFNHAVE:
                     {
-                    alt16=7;
+                    alt15=7;
                     }
                     break;
 
                 }
 
-                switch (alt16) {
+                switch (alt15) {
             	case 1 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1023:3: ( (lv_Tags_1_0= ruleWMLTag ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1009:3: ( (lv_Tags_1_0= ruleWMLTag ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1023:3: ( (lv_Tags_1_0= ruleWMLTag ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1024:1: (lv_Tags_1_0= ruleWMLTag )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1009:3: ( (lv_Tags_1_0= ruleWMLTag ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1010:1: (lv_Tags_1_0= ruleWMLTag )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1024:1: (lv_Tags_1_0= ruleWMLTag )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1025:3: lv_Tags_1_0= ruleWMLTag
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1010:1: (lv_Tags_1_0= ruleWMLTag )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1011:3: lv_Tags_1_0= ruleWMLTag
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getTagsWMLTagParserRuleCall_1_0_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLTag_in_ruleWMLMacroDefine1573);
+            	    pushFollow(FOLLOW_ruleWMLTag_in_ruleWMLMacroDefine1554);
             	    lv_Tags_1_0=ruleWMLTag();
             	    _fsp--;
 
@@ -2320,18 +2281,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1048:6: ( (lv_Keys_2_0= ruleWMLKey ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1034:6: ( (lv_Keys_2_0= ruleWMLKey ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1048:6: ( (lv_Keys_2_0= ruleWMLKey ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1049:1: (lv_Keys_2_0= ruleWMLKey )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1034:6: ( (lv_Keys_2_0= ruleWMLKey ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1035:1: (lv_Keys_2_0= ruleWMLKey )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1049:1: (lv_Keys_2_0= ruleWMLKey )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1050:3: lv_Keys_2_0= ruleWMLKey
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1035:1: (lv_Keys_2_0= ruleWMLKey )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1036:3: lv_Keys_2_0= ruleWMLKey
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getKeysWMLKeyParserRuleCall_1_1_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLKey_in_ruleWMLMacroDefine1600);
+            	    pushFollow(FOLLOW_ruleWMLKey_in_ruleWMLMacroDefine1581);
             	    lv_Keys_2_0=ruleWMLKey();
             	    _fsp--;
 
@@ -2362,18 +2323,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 3 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1073:6: ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1059:6: ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1073:6: ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1074:1: (lv_MacroCalls_3_0= ruleWMLMacroCall )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1059:6: ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1060:1: (lv_MacroCalls_3_0= ruleWMLMacroCall )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1074:1: (lv_MacroCalls_3_0= ruleWMLMacroCall )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1075:3: lv_MacroCalls_3_0= ruleWMLMacroCall
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1060:1: (lv_MacroCalls_3_0= ruleWMLMacroCall )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1061:3: lv_MacroCalls_3_0= ruleWMLMacroCall
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getMacroCallsWMLMacroCallParserRuleCall_1_2_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLMacroCall_in_ruleWMLMacroDefine1627);
+            	    pushFollow(FOLLOW_ruleWMLMacroCall_in_ruleWMLMacroDefine1608);
             	    lv_MacroCalls_3_0=ruleWMLMacroCall();
             	    _fsp--;
 
@@ -2404,18 +2365,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 4 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1098:6: ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1084:6: ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1098:6: ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1099:1: (lv_MacroDefines_4_0= ruleWMLMacroDefine )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1084:6: ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1085:1: (lv_MacroDefines_4_0= ruleWMLMacroDefine )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1099:1: (lv_MacroDefines_4_0= ruleWMLMacroDefine )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1100:3: lv_MacroDefines_4_0= ruleWMLMacroDefine
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1085:1: (lv_MacroDefines_4_0= ruleWMLMacroDefine )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1086:3: lv_MacroDefines_4_0= ruleWMLMacroDefine
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getMacroDefinesWMLMacroDefineParserRuleCall_1_3_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLMacroDefine_in_ruleWMLMacroDefine1654);
+            	    pushFollow(FOLLOW_ruleWMLMacroDefine_in_ruleWMLMacroDefine1635);
             	    lv_MacroDefines_4_0=ruleWMLMacroDefine();
             	    _fsp--;
 
@@ -2446,18 +2407,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 5 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1123:6: ( (lv_Textdomains_5_0= ruleWMLTextdomain ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1109:6: ( (lv_Textdomains_5_0= ruleWMLTextdomain ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1123:6: ( (lv_Textdomains_5_0= ruleWMLTextdomain ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1124:1: (lv_Textdomains_5_0= ruleWMLTextdomain )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1109:6: ( (lv_Textdomains_5_0= ruleWMLTextdomain ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1110:1: (lv_Textdomains_5_0= ruleWMLTextdomain )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1124:1: (lv_Textdomains_5_0= ruleWMLTextdomain )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1125:3: lv_Textdomains_5_0= ruleWMLTextdomain
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1110:1: (lv_Textdomains_5_0= ruleWMLTextdomain )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1111:3: lv_Textdomains_5_0= ruleWMLTextdomain
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getTextdomainsWMLTextdomainParserRuleCall_1_4_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLTextdomain_in_ruleWMLMacroDefine1681);
+            	    pushFollow(FOLLOW_ruleWMLTextdomain_in_ruleWMLMacroDefine1662);
             	    lv_Textdomains_5_0=ruleWMLTextdomain();
             	    _fsp--;
 
@@ -2488,18 +2449,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 6 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1148:6: ( (lv_Values_6_0= ruleWMLValue ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1134:6: ( (lv_Values_6_0= ruleWMLValue ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1148:6: ( (lv_Values_6_0= ruleWMLValue ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1149:1: (lv_Values_6_0= ruleWMLValue )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1134:6: ( (lv_Values_6_0= ruleWMLValue ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1135:1: (lv_Values_6_0= ruleWMLValue )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1149:1: (lv_Values_6_0= ruleWMLValue )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1150:3: lv_Values_6_0= ruleWMLValue
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1135:1: (lv_Values_6_0= ruleWMLValue )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1136:3: lv_Values_6_0= ruleWMLValue
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getValuesWMLValueParserRuleCall_1_5_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLValue_in_ruleWMLMacroDefine1708);
+            	    pushFollow(FOLLOW_ruleWMLValue_in_ruleWMLMacroDefine1689);
             	    lv_Values_6_0=ruleWMLValue();
             	    _fsp--;
 
@@ -2530,18 +2491,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 7 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1173:6: ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1159:6: ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1173:6: ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1174:1: (lv_IfDefs_7_0= ruleWMLPreprocIF )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1159:6: ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1160:1: (lv_IfDefs_7_0= ruleWMLPreprocIF )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1174:1: (lv_IfDefs_7_0= ruleWMLPreprocIF )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1175:3: lv_IfDefs_7_0= ruleWMLPreprocIF
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1160:1: (lv_IfDefs_7_0= ruleWMLPreprocIF )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1161:3: lv_IfDefs_7_0= ruleWMLPreprocIF
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getIfDefsWMLPreprocIFParserRuleCall_1_6_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLPreprocIF_in_ruleWMLMacroDefine1735);
+            	    pushFollow(FOLLOW_ruleWMLPreprocIF_in_ruleWMLMacroDefine1716);
             	    lv_IfDefs_7_0=ruleWMLPreprocIF();
             	    _fsp--;
 
@@ -2573,18 +2534,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop16;
+            	    break loop15;
                 }
             } while (true);
 
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1197:4: ( (lv_endName_8_0= RULE_ENDDEF ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1198:1: (lv_endName_8_0= RULE_ENDDEF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1183:4: ( (lv_endName_8_0= RULE_ENDDEF ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1184:1: (lv_endName_8_0= RULE_ENDDEF )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1198:1: (lv_endName_8_0= RULE_ENDDEF )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1199:3: lv_endName_8_0= RULE_ENDDEF
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1184:1: (lv_endName_8_0= RULE_ENDDEF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1185:3: lv_endName_8_0= RULE_ENDDEF
             {
             lv_endName_8_0=(Token)input.LT(1);
-            match(input,RULE_ENDDEF,FOLLOW_RULE_ENDDEF_in_ruleWMLMacroDefine1754); 
+            match(input,RULE_ENDDEF,FOLLOW_RULE_ENDDEF_in_ruleWMLMacroDefine1735); 
 
             			createLeafNode(grammarAccess.getWMLMacroDefineAccess().getEndNameENDDEFTerminalRuleCall_2_0(), "endName"); 
             		
@@ -2633,7 +2594,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleWMLPreprocIF
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1229:1: entryRuleWMLPreprocIF returns [EObject current=null] : iv_ruleWMLPreprocIF= ruleWMLPreprocIF EOF ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1215:1: entryRuleWMLPreprocIF returns [EObject current=null] : iv_ruleWMLPreprocIF= ruleWMLPreprocIF EOF ;
     public final EObject entryRuleWMLPreprocIF() throws RecognitionException {
         EObject current = null;
 
@@ -2641,16 +2602,16 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1230:2: (iv_ruleWMLPreprocIF= ruleWMLPreprocIF EOF )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1231:2: iv_ruleWMLPreprocIF= ruleWMLPreprocIF EOF
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1216:2: (iv_ruleWMLPreprocIF= ruleWMLPreprocIF EOF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1217:2: iv_ruleWMLPreprocIF= ruleWMLPreprocIF EOF
             {
              currentNode = createCompositeNode(grammarAccess.getWMLPreprocIFRule(), currentNode); 
-            pushFollow(FOLLOW_ruleWMLPreprocIF_in_entryRuleWMLPreprocIF1795);
+            pushFollow(FOLLOW_ruleWMLPreprocIF_in_entryRuleWMLPreprocIF1776);
             iv_ruleWMLPreprocIF=ruleWMLPreprocIF();
             _fsp--;
 
              current =iv_ruleWMLPreprocIF; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLPreprocIF1805); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLPreprocIF1786); 
 
             }
 
@@ -2668,7 +2629,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleWMLPreprocIF
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1238:1: ruleWMLPreprocIF returns [EObject current=null] : ( ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )* ( (lv_endName_9_0= RULE_ENDIF ) ) ) ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1224:1: ruleWMLPreprocIF returns [EObject current=null] : ( ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )* ( (lv_endName_9_0= RULE_ENDIF ) ) ) ;
     public final EObject ruleWMLPreprocIF() throws RecognitionException {
         EObject current = null;
 
@@ -2688,7 +2649,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
         EObject lv_Textdomains_5_0 = null;
 
-        EObject lv_Values_6_0 = null;
+        AntlrDatatypeRuleToken lv_Values_6_0 = null;
 
         EObject lv_IfDefs_7_0 = null;
 
@@ -2696,54 +2657,54 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1243:6: ( ( ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )* ( (lv_endName_9_0= RULE_ENDIF ) ) ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1244:1: ( ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )* ( (lv_endName_9_0= RULE_ENDIF ) ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1229:6: ( ( ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )* ( (lv_endName_9_0= RULE_ENDIF ) ) ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1230:1: ( ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )* ( (lv_endName_9_0= RULE_ENDIF ) ) )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1244:1: ( ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )* ( (lv_endName_9_0= RULE_ENDIF ) ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1244:2: ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )* ( (lv_endName_9_0= RULE_ENDIF ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1230:1: ( ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )* ( (lv_endName_9_0= RULE_ENDIF ) ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1230:2: ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) ) ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )* ( (lv_endName_9_0= RULE_ENDIF ) )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1244:2: ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1245:1: ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1230:2: ( ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1231:1: ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1245:1: ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1246:1: (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1231:1: ( (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1232:1: (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1246:1: (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE )
-            int alt17=4;
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1232:1: (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE )
+            int alt16=4;
             switch ( input.LA(1) ) {
             case RULE_IFDEF:
                 {
-                alt17=1;
+                alt16=1;
                 }
                 break;
             case RULE_IFNDEF:
                 {
-                alt17=2;
+                alt16=2;
                 }
                 break;
             case RULE_IFHAVE:
                 {
-                alt17=3;
+                alt16=3;
                 }
                 break;
             case RULE_IFNHAVE:
                 {
-                alt17=4;
+                alt16=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("1246:1: (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE )", 17, 0, input);
+                    new NoViableAltException("1232:1: (lv_name_0_1= RULE_IFDEF | lv_name_0_2= RULE_IFNDEF | lv_name_0_3= RULE_IFHAVE | lv_name_0_4= RULE_IFNHAVE )", 16, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt17) {
+            switch (alt16) {
                 case 1 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1247:3: lv_name_0_1= RULE_IFDEF
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1233:3: lv_name_0_1= RULE_IFDEF
                     {
                     lv_name_0_1=(Token)input.LT(1);
-                    match(input,RULE_IFDEF,FOLLOW_RULE_IFDEF_in_ruleWMLPreprocIF1849); 
+                    match(input,RULE_IFDEF,FOLLOW_RULE_IFDEF_in_ruleWMLPreprocIF1830); 
 
                     			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getNameIFDEFTerminalRuleCall_0_0_0(), "name"); 
                     		
@@ -2767,10 +2728,10 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1268:8: lv_name_0_2= RULE_IFNDEF
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1254:8: lv_name_0_2= RULE_IFNDEF
                     {
                     lv_name_0_2=(Token)input.LT(1);
-                    match(input,RULE_IFNDEF,FOLLOW_RULE_IFNDEF_in_ruleWMLPreprocIF1869); 
+                    match(input,RULE_IFNDEF,FOLLOW_RULE_IFNDEF_in_ruleWMLPreprocIF1850); 
 
                     			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getNameIFNDEFTerminalRuleCall_0_0_1(), "name"); 
                     		
@@ -2794,10 +2755,10 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1289:8: lv_name_0_3= RULE_IFHAVE
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1275:8: lv_name_0_3= RULE_IFHAVE
                     {
                     lv_name_0_3=(Token)input.LT(1);
-                    match(input,RULE_IFHAVE,FOLLOW_RULE_IFHAVE_in_ruleWMLPreprocIF1889); 
+                    match(input,RULE_IFHAVE,FOLLOW_RULE_IFHAVE_in_ruleWMLPreprocIF1870); 
 
                     			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getNameIFHAVETerminalRuleCall_0_0_2(), "name"); 
                     		
@@ -2821,10 +2782,10 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1310:8: lv_name_0_4= RULE_IFNHAVE
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1296:8: lv_name_0_4= RULE_IFNHAVE
                     {
                     lv_name_0_4=(Token)input.LT(1);
-                    match(input,RULE_IFNHAVE,FOLLOW_RULE_IFNHAVE_in_ruleWMLPreprocIF1909); 
+                    match(input,RULE_IFNHAVE,FOLLOW_RULE_IFNHAVE_in_ruleWMLPreprocIF1890); 
 
                     			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getNameIFNHAVETerminalRuleCall_0_0_3(), "name"); 
                     		
@@ -2856,25 +2817,25 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1334:2: ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )*
-            loop18:
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1320:2: ( ( (lv_Tags_1_0= ruleWMLTag ) ) | ( (lv_Keys_2_0= ruleWMLKey ) ) | ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) ) | ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) ) | ( (lv_Textdomains_5_0= ruleWMLTextdomain ) ) | ( (lv_Values_6_0= ruleWMLValue ) ) | ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) ) | ( (lv_Elses_8_0= RULE_ELSE ) ) )*
+            loop17:
             do {
-                int alt18=9;
+                int alt17=9;
                 switch ( input.LA(1) ) {
                 case 20:
                     {
-                    alt18=1;
+                    alt17=1;
                     }
                     break;
                 case RULE_ID:
                     {
-                    int LA18_3 = input.LA(2);
+                    int LA17_3 = input.LA(2);
 
-                    if ( (LA18_3==24) ) {
-                        alt18=2;
+                    if ( (LA17_3==24) ) {
+                        alt17=2;
                     }
-                    else if ( (LA18_3==RULE_ID||LA18_3==RULE_DEFINE||(LA18_3>=RULE_IFDEF && LA18_3<=RULE_ANY_OTHER)||LA18_3==20||(LA18_3>=25 && LA18_3<=27)||(LA18_3>=29 && LA18_3<=34)) ) {
-                        alt18=6;
+                    else if ( (LA17_3==RULE_ID||LA17_3==RULE_DEFINE||(LA17_3>=RULE_IFDEF && LA17_3<=RULE_ANY_OTHER)||LA17_3==20||(LA17_3>=25 && LA17_3<=27)||(LA17_3>=29 && LA17_3<=34)) ) {
+                        alt17=6;
                     }
 
 
@@ -2882,17 +2843,17 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                     break;
                 case 25:
                     {
-                    alt18=3;
+                    alt17=3;
                     }
                     break;
                 case RULE_DEFINE:
                     {
-                    alt18=4;
+                    alt17=4;
                     }
                     break;
                 case RULE_TEXTDOMAIN:
                     {
-                    alt18=5;
+                    alt17=5;
                     }
                     break;
                 case RULE_STRING:
@@ -2906,7 +2867,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                 case 33:
                 case 34:
                     {
-                    alt18=6;
+                    alt17=6;
                     }
                     break;
                 case RULE_IFDEF:
@@ -2914,31 +2875,31 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                 case RULE_IFHAVE:
                 case RULE_IFNHAVE:
                     {
-                    alt18=7;
+                    alt17=7;
                     }
                     break;
                 case RULE_ELSE:
                     {
-                    alt18=8;
+                    alt17=8;
                     }
                     break;
 
                 }
 
-                switch (alt18) {
+                switch (alt17) {
             	case 1 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1334:3: ( (lv_Tags_1_0= ruleWMLTag ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1320:3: ( (lv_Tags_1_0= ruleWMLTag ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1334:3: ( (lv_Tags_1_0= ruleWMLTag ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1335:1: (lv_Tags_1_0= ruleWMLTag )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1320:3: ( (lv_Tags_1_0= ruleWMLTag ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1321:1: (lv_Tags_1_0= ruleWMLTag )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1335:1: (lv_Tags_1_0= ruleWMLTag )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1336:3: lv_Tags_1_0= ruleWMLTag
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1321:1: (lv_Tags_1_0= ruleWMLTag )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1322:3: lv_Tags_1_0= ruleWMLTag
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getTagsWMLTagParserRuleCall_1_0_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLTag_in_ruleWMLPreprocIF1939);
+            	    pushFollow(FOLLOW_ruleWMLTag_in_ruleWMLPreprocIF1920);
             	    lv_Tags_1_0=ruleWMLTag();
             	    _fsp--;
 
@@ -2969,18 +2930,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1359:6: ( (lv_Keys_2_0= ruleWMLKey ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1345:6: ( (lv_Keys_2_0= ruleWMLKey ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1359:6: ( (lv_Keys_2_0= ruleWMLKey ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1360:1: (lv_Keys_2_0= ruleWMLKey )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1345:6: ( (lv_Keys_2_0= ruleWMLKey ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1346:1: (lv_Keys_2_0= ruleWMLKey )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1360:1: (lv_Keys_2_0= ruleWMLKey )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1361:3: lv_Keys_2_0= ruleWMLKey
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1346:1: (lv_Keys_2_0= ruleWMLKey )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1347:3: lv_Keys_2_0= ruleWMLKey
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getKeysWMLKeyParserRuleCall_1_1_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLKey_in_ruleWMLPreprocIF1966);
+            	    pushFollow(FOLLOW_ruleWMLKey_in_ruleWMLPreprocIF1947);
             	    lv_Keys_2_0=ruleWMLKey();
             	    _fsp--;
 
@@ -3011,18 +2972,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 3 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1384:6: ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1370:6: ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1384:6: ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1385:1: (lv_MacroCalls_3_0= ruleWMLMacroCall )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1370:6: ( (lv_MacroCalls_3_0= ruleWMLMacroCall ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1371:1: (lv_MacroCalls_3_0= ruleWMLMacroCall )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1385:1: (lv_MacroCalls_3_0= ruleWMLMacroCall )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1386:3: lv_MacroCalls_3_0= ruleWMLMacroCall
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1371:1: (lv_MacroCalls_3_0= ruleWMLMacroCall )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1372:3: lv_MacroCalls_3_0= ruleWMLMacroCall
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getMacroCallsWMLMacroCallParserRuleCall_1_2_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLMacroCall_in_ruleWMLPreprocIF1993);
+            	    pushFollow(FOLLOW_ruleWMLMacroCall_in_ruleWMLPreprocIF1974);
             	    lv_MacroCalls_3_0=ruleWMLMacroCall();
             	    _fsp--;
 
@@ -3053,18 +3014,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 4 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1409:6: ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1395:6: ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1409:6: ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1410:1: (lv_MacroDefines_4_0= ruleWMLMacroDefine )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1395:6: ( (lv_MacroDefines_4_0= ruleWMLMacroDefine ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1396:1: (lv_MacroDefines_4_0= ruleWMLMacroDefine )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1410:1: (lv_MacroDefines_4_0= ruleWMLMacroDefine )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1411:3: lv_MacroDefines_4_0= ruleWMLMacroDefine
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1396:1: (lv_MacroDefines_4_0= ruleWMLMacroDefine )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1397:3: lv_MacroDefines_4_0= ruleWMLMacroDefine
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getMacroDefinesWMLMacroDefineParserRuleCall_1_3_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLMacroDefine_in_ruleWMLPreprocIF2020);
+            	    pushFollow(FOLLOW_ruleWMLMacroDefine_in_ruleWMLPreprocIF2001);
             	    lv_MacroDefines_4_0=ruleWMLMacroDefine();
             	    _fsp--;
 
@@ -3095,18 +3056,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 5 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1434:6: ( (lv_Textdomains_5_0= ruleWMLTextdomain ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1420:6: ( (lv_Textdomains_5_0= ruleWMLTextdomain ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1434:6: ( (lv_Textdomains_5_0= ruleWMLTextdomain ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1435:1: (lv_Textdomains_5_0= ruleWMLTextdomain )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1420:6: ( (lv_Textdomains_5_0= ruleWMLTextdomain ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1421:1: (lv_Textdomains_5_0= ruleWMLTextdomain )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1435:1: (lv_Textdomains_5_0= ruleWMLTextdomain )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1436:3: lv_Textdomains_5_0= ruleWMLTextdomain
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1421:1: (lv_Textdomains_5_0= ruleWMLTextdomain )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1422:3: lv_Textdomains_5_0= ruleWMLTextdomain
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getTextdomainsWMLTextdomainParserRuleCall_1_4_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLTextdomain_in_ruleWMLPreprocIF2047);
+            	    pushFollow(FOLLOW_ruleWMLTextdomain_in_ruleWMLPreprocIF2028);
             	    lv_Textdomains_5_0=ruleWMLTextdomain();
             	    _fsp--;
 
@@ -3137,18 +3098,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 6 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1459:6: ( (lv_Values_6_0= ruleWMLValue ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1445:6: ( (lv_Values_6_0= ruleWMLValue ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1459:6: ( (lv_Values_6_0= ruleWMLValue ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1460:1: (lv_Values_6_0= ruleWMLValue )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1445:6: ( (lv_Values_6_0= ruleWMLValue ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1446:1: (lv_Values_6_0= ruleWMLValue )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1460:1: (lv_Values_6_0= ruleWMLValue )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1461:3: lv_Values_6_0= ruleWMLValue
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1446:1: (lv_Values_6_0= ruleWMLValue )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1447:3: lv_Values_6_0= ruleWMLValue
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getValuesWMLValueParserRuleCall_1_5_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLValue_in_ruleWMLPreprocIF2074);
+            	    pushFollow(FOLLOW_ruleWMLValue_in_ruleWMLPreprocIF2055);
             	    lv_Values_6_0=ruleWMLValue();
             	    _fsp--;
 
@@ -3179,18 +3140,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 7 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1484:6: ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1470:6: ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1484:6: ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1485:1: (lv_IfDefs_7_0= ruleWMLPreprocIF )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1470:6: ( (lv_IfDefs_7_0= ruleWMLPreprocIF ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1471:1: (lv_IfDefs_7_0= ruleWMLPreprocIF )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1485:1: (lv_IfDefs_7_0= ruleWMLPreprocIF )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1486:3: lv_IfDefs_7_0= ruleWMLPreprocIF
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1471:1: (lv_IfDefs_7_0= ruleWMLPreprocIF )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1472:3: lv_IfDefs_7_0= ruleWMLPreprocIF
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getIfDefsWMLPreprocIFParserRuleCall_1_6_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleWMLPreprocIF_in_ruleWMLPreprocIF2101);
+            	    pushFollow(FOLLOW_ruleWMLPreprocIF_in_ruleWMLPreprocIF2082);
             	    lv_IfDefs_7_0=ruleWMLPreprocIF();
             	    _fsp--;
 
@@ -3221,16 +3182,16 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 8 :
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1509:6: ( (lv_Elses_8_0= RULE_ELSE ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1495:6: ( (lv_Elses_8_0= RULE_ELSE ) )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1509:6: ( (lv_Elses_8_0= RULE_ELSE ) )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1510:1: (lv_Elses_8_0= RULE_ELSE )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1495:6: ( (lv_Elses_8_0= RULE_ELSE ) )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1496:1: (lv_Elses_8_0= RULE_ELSE )
             	    {
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1510:1: (lv_Elses_8_0= RULE_ELSE )
-            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1511:3: lv_Elses_8_0= RULE_ELSE
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1496:1: (lv_Elses_8_0= RULE_ELSE )
+            	    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1497:3: lv_Elses_8_0= RULE_ELSE
             	    {
             	    lv_Elses_8_0=(Token)input.LT(1);
-            	    match(input,RULE_ELSE,FOLLOW_RULE_ELSE_in_ruleWMLPreprocIF2124); 
+            	    match(input,RULE_ELSE,FOLLOW_RULE_ELSE_in_ruleWMLPreprocIF2105); 
 
             	    			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getElsesELSETerminalRuleCall_1_7_0(), "Elses"); 
             	    		
@@ -3261,18 +3222,18 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop18;
+            	    break loop17;
                 }
             } while (true);
 
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1533:4: ( (lv_endName_9_0= RULE_ENDIF ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1534:1: (lv_endName_9_0= RULE_ENDIF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1519:4: ( (lv_endName_9_0= RULE_ENDIF ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1520:1: (lv_endName_9_0= RULE_ENDIF )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1534:1: (lv_endName_9_0= RULE_ENDIF )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1535:3: lv_endName_9_0= RULE_ENDIF
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1520:1: (lv_endName_9_0= RULE_ENDIF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1521:3: lv_endName_9_0= RULE_ENDIF
             {
             lv_endName_9_0=(Token)input.LT(1);
-            match(input,RULE_ENDIF,FOLLOW_RULE_ENDIF_in_ruleWMLPreprocIF2148); 
+            match(input,RULE_ENDIF,FOLLOW_RULE_ENDIF_in_ruleWMLPreprocIF2129); 
 
             			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getEndNameENDIFTerminalRuleCall_2_0(), "endName"); 
             		
@@ -3321,7 +3282,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleWMLTextdomain
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1565:1: entryRuleWMLTextdomain returns [EObject current=null] : iv_ruleWMLTextdomain= ruleWMLTextdomain EOF ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1551:1: entryRuleWMLTextdomain returns [EObject current=null] : iv_ruleWMLTextdomain= ruleWMLTextdomain EOF ;
     public final EObject entryRuleWMLTextdomain() throws RecognitionException {
         EObject current = null;
 
@@ -3329,16 +3290,16 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1566:2: (iv_ruleWMLTextdomain= ruleWMLTextdomain EOF )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1567:2: iv_ruleWMLTextdomain= ruleWMLTextdomain EOF
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1552:2: (iv_ruleWMLTextdomain= ruleWMLTextdomain EOF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1553:2: iv_ruleWMLTextdomain= ruleWMLTextdomain EOF
             {
              currentNode = createCompositeNode(grammarAccess.getWMLTextdomainRule(), currentNode); 
-            pushFollow(FOLLOW_ruleWMLTextdomain_in_entryRuleWMLTextdomain2189);
+            pushFollow(FOLLOW_ruleWMLTextdomain_in_entryRuleWMLTextdomain2170);
             iv_ruleWMLTextdomain=ruleWMLTextdomain();
             _fsp--;
 
              current =iv_ruleWMLTextdomain; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLTextdomain2199); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLTextdomain2180); 
 
             }
 
@@ -3356,7 +3317,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleWMLTextdomain
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1574:1: ruleWMLTextdomain returns [EObject current=null] : ( (lv_name_0_0= RULE_TEXTDOMAIN ) ) ;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1560:1: ruleWMLTextdomain returns [EObject current=null] : ( (lv_name_0_0= RULE_TEXTDOMAIN ) ) ;
     public final EObject ruleWMLTextdomain() throws RecognitionException {
         EObject current = null;
 
@@ -3365,17 +3326,17 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1579:6: ( ( (lv_name_0_0= RULE_TEXTDOMAIN ) ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1580:1: ( (lv_name_0_0= RULE_TEXTDOMAIN ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1565:6: ( ( (lv_name_0_0= RULE_TEXTDOMAIN ) ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1566:1: ( (lv_name_0_0= RULE_TEXTDOMAIN ) )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1580:1: ( (lv_name_0_0= RULE_TEXTDOMAIN ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1581:1: (lv_name_0_0= RULE_TEXTDOMAIN )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1566:1: ( (lv_name_0_0= RULE_TEXTDOMAIN ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1567:1: (lv_name_0_0= RULE_TEXTDOMAIN )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1581:1: (lv_name_0_0= RULE_TEXTDOMAIN )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1582:3: lv_name_0_0= RULE_TEXTDOMAIN
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1567:1: (lv_name_0_0= RULE_TEXTDOMAIN )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1568:3: lv_name_0_0= RULE_TEXTDOMAIN
             {
             lv_name_0_0=(Token)input.LT(1);
-            match(input,RULE_TEXTDOMAIN,FOLLOW_RULE_TEXTDOMAIN_in_ruleWMLTextdomain2240); 
+            match(input,RULE_TEXTDOMAIN,FOLLOW_RULE_TEXTDOMAIN_in_ruleWMLTextdomain2221); 
 
             			createLeafNode(grammarAccess.getWMLTextdomainAccess().getNameTEXTDOMAINTerminalRuleCall_0(), "name"); 
             		
@@ -3420,25 +3381,153 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
     // $ANTLR end ruleWMLTextdomain
 
 
-    // $ANTLR start entryRuleWMLValue
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1612:1: entryRuleWMLValue returns [EObject current=null] : iv_ruleWMLValue= ruleWMLValue EOF ;
-    public final EObject entryRuleWMLValue() throws RecognitionException {
-        EObject current = null;
+    // $ANTLR start entryRuleWMLMacroParameter
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1598:1: entryRuleWMLMacroParameter returns [String current=null] : iv_ruleWMLMacroParameter= ruleWMLMacroParameter EOF ;
+    public final String entryRuleWMLMacroParameter() throws RecognitionException {
+        String current = null;
 
-        EObject iv_ruleWMLValue = null;
+        AntlrDatatypeRuleToken iv_ruleWMLMacroParameter = null;
 
 
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1613:2: (iv_ruleWMLValue= ruleWMLValue EOF )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1614:2: iv_ruleWMLValue= ruleWMLValue EOF
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1599:2: (iv_ruleWMLMacroParameter= ruleWMLMacroParameter EOF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1600:2: iv_ruleWMLMacroParameter= ruleWMLMacroParameter EOF
+            {
+             currentNode = createCompositeNode(grammarAccess.getWMLMacroParameterRule(), currentNode); 
+            pushFollow(FOLLOW_ruleWMLMacroParameter_in_entryRuleWMLMacroParameter2262);
+            iv_ruleWMLMacroParameter=ruleWMLMacroParameter();
+            _fsp--;
+
+             current =iv_ruleWMLMacroParameter.getText(); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLMacroParameter2273); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end entryRuleWMLMacroParameter
+
+
+    // $ANTLR start ruleWMLMacroParameter
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1607:1: ruleWMLMacroParameter returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_WMLValue_0= ruleWMLValue | this_MacroTokens_1= ruleMacroTokens ) ;
+    public final AntlrDatatypeRuleToken ruleWMLMacroParameter() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        AntlrDatatypeRuleToken this_WMLValue_0 = null;
+
+        AntlrDatatypeRuleToken this_MacroTokens_1 = null;
+
+
+         setCurrentLookahead(); resetLookahead(); 
+            
+        try {
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1612:6: ( (this_WMLValue_0= ruleWMLValue | this_MacroTokens_1= ruleMacroTokens ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1613:1: (this_WMLValue_0= ruleWMLValue | this_MacroTokens_1= ruleMacroTokens )
+            {
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1613:1: (this_WMLValue_0= ruleWMLValue | this_MacroTokens_1= ruleMacroTokens )
+            int alt18=2;
+            int LA18_0 = input.LA(1);
+
+            if ( (LA18_0==RULE_ID||(LA18_0>=RULE_STRING && LA18_0<=RULE_ANY_OTHER)||(LA18_0>=26 && LA18_0<=27)||(LA18_0>=29 && LA18_0<=34)) ) {
+                alt18=1;
+            }
+            else if ( ((LA18_0>=20 && LA18_0<=24)) ) {
+                alt18=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("1613:1: (this_WMLValue_0= ruleWMLValue | this_MacroTokens_1= ruleMacroTokens )", 18, 0, input);
+
+                throw nvae;
+            }
+            switch (alt18) {
+                case 1 :
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1614:5: this_WMLValue_0= ruleWMLValue
+                    {
+                     
+                            currentNode=createCompositeNode(grammarAccess.getWMLMacroParameterAccess().getWMLValueParserRuleCall_0(), currentNode); 
+                        
+                    pushFollow(FOLLOW_ruleWMLValue_in_ruleWMLMacroParameter2320);
+                    this_WMLValue_0=ruleWMLValue();
+                    _fsp--;
+
+
+                    		current.merge(this_WMLValue_0);
+                        
+                     
+                            currentNode = currentNode.getParent();
+                        
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1626:5: this_MacroTokens_1= ruleMacroTokens
+                    {
+                     
+                            currentNode=createCompositeNode(grammarAccess.getWMLMacroParameterAccess().getMacroTokensParserRuleCall_1(), currentNode); 
+                        
+                    pushFollow(FOLLOW_ruleMacroTokens_in_ruleWMLMacroParameter2353);
+                    this_MacroTokens_1=ruleMacroTokens();
+                    _fsp--;
+
+
+                    		current.merge(this_MacroTokens_1);
+                        
+                     
+                            currentNode = currentNode.getParent();
+                        
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+             resetLookahead(); 
+            	    lastConsumedNode = currentNode;
+                
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end ruleWMLMacroParameter
+
+
+    // $ANTLR start entryRuleWMLValue
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1644:1: entryRuleWMLValue returns [String current=null] : iv_ruleWMLValue= ruleWMLValue EOF ;
+    public final String entryRuleWMLValue() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleWMLValue = null;
+
+
+        try {
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1645:2: (iv_ruleWMLValue= ruleWMLValue EOF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1646:2: iv_ruleWMLValue= ruleWMLValue EOF
             {
              currentNode = createCompositeNode(grammarAccess.getWMLValueRule(), currentNode); 
-            pushFollow(FOLLOW_ruleWMLValue_in_entryRuleWMLValue2280);
+            pushFollow(FOLLOW_ruleWMLValue_in_entryRuleWMLValue2399);
             iv_ruleWMLValue=ruleWMLValue();
             _fsp--;
 
-             current =iv_ruleWMLValue; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLValue2290); 
+             current =iv_ruleWMLValue.getText(); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleWMLValue2410); 
 
             }
 
@@ -3456,35 +3545,22 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleWMLValue
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1621:1: ruleWMLValue returns [EObject current=null] : ( ( (lv_value_0_1= RULE_ID | lv_value_0_2= RULE_STRING | lv_value_0_3= '_' | lv_value_0_4= '~' | lv_value_0_5= '.' | lv_value_0_6= './' | lv_value_0_7= '$' | lv_value_0_8= '/' | lv_value_0_9= '(' | lv_value_0_10= ')' | lv_value_0_11= RULE_ANY_OTHER ) ) ) ;
-    public final EObject ruleWMLValue() throws RecognitionException {
-        EObject current = null;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1653:1: ruleWMLValue returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID | this_STRING_1= RULE_STRING | kw= '_' | kw= '~' | kw= '.' | kw= './' | kw= '$' | kw= '/' | kw= '(' | kw= ')' | this_ANY_OTHER_10= RULE_ANY_OTHER ) ;
+    public final AntlrDatatypeRuleToken ruleWMLValue() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
-        Token lv_value_0_1=null;
-        Token lv_value_0_2=null;
-        Token lv_value_0_3=null;
-        Token lv_value_0_4=null;
-        Token lv_value_0_5=null;
-        Token lv_value_0_6=null;
-        Token lv_value_0_7=null;
-        Token lv_value_0_8=null;
-        Token lv_value_0_9=null;
-        Token lv_value_0_10=null;
-        Token lv_value_0_11=null;
+        Token this_ID_0=null;
+        Token this_STRING_1=null;
+        Token kw=null;
+        Token this_ANY_OTHER_10=null;
 
-         EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+         setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1626:6: ( ( ( (lv_value_0_1= RULE_ID | lv_value_0_2= RULE_STRING | lv_value_0_3= '_' | lv_value_0_4= '~' | lv_value_0_5= '.' | lv_value_0_6= './' | lv_value_0_7= '$' | lv_value_0_8= '/' | lv_value_0_9= '(' | lv_value_0_10= ')' | lv_value_0_11= RULE_ANY_OTHER ) ) ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1627:1: ( ( (lv_value_0_1= RULE_ID | lv_value_0_2= RULE_STRING | lv_value_0_3= '_' | lv_value_0_4= '~' | lv_value_0_5= '.' | lv_value_0_6= './' | lv_value_0_7= '$' | lv_value_0_8= '/' | lv_value_0_9= '(' | lv_value_0_10= ')' | lv_value_0_11= RULE_ANY_OTHER ) ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1658:6: ( (this_ID_0= RULE_ID | this_STRING_1= RULE_STRING | kw= '_' | kw= '~' | kw= '.' | kw= './' | kw= '$' | kw= '/' | kw= '(' | kw= ')' | this_ANY_OTHER_10= RULE_ANY_OTHER ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1659:1: (this_ID_0= RULE_ID | this_STRING_1= RULE_STRING | kw= '_' | kw= '~' | kw= '.' | kw= './' | kw= '$' | kw= '/' | kw= '(' | kw= ')' | this_ANY_OTHER_10= RULE_ANY_OTHER )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1627:1: ( ( (lv_value_0_1= RULE_ID | lv_value_0_2= RULE_STRING | lv_value_0_3= '_' | lv_value_0_4= '~' | lv_value_0_5= '.' | lv_value_0_6= './' | lv_value_0_7= '$' | lv_value_0_8= '/' | lv_value_0_9= '(' | lv_value_0_10= ')' | lv_value_0_11= RULE_ANY_OTHER ) ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1628:1: ( (lv_value_0_1= RULE_ID | lv_value_0_2= RULE_STRING | lv_value_0_3= '_' | lv_value_0_4= '~' | lv_value_0_5= '.' | lv_value_0_6= './' | lv_value_0_7= '$' | lv_value_0_8= '/' | lv_value_0_9= '(' | lv_value_0_10= ')' | lv_value_0_11= RULE_ANY_OTHER ) )
-            {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1628:1: ( (lv_value_0_1= RULE_ID | lv_value_0_2= RULE_STRING | lv_value_0_3= '_' | lv_value_0_4= '~' | lv_value_0_5= '.' | lv_value_0_6= './' | lv_value_0_7= '$' | lv_value_0_8= '/' | lv_value_0_9= '(' | lv_value_0_10= ')' | lv_value_0_11= RULE_ANY_OTHER ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1629:1: (lv_value_0_1= RULE_ID | lv_value_0_2= RULE_STRING | lv_value_0_3= '_' | lv_value_0_4= '~' | lv_value_0_5= '.' | lv_value_0_6= './' | lv_value_0_7= '$' | lv_value_0_8= '/' | lv_value_0_9= '(' | lv_value_0_10= ')' | lv_value_0_11= RULE_ANY_OTHER )
-            {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1629:1: (lv_value_0_1= RULE_ID | lv_value_0_2= RULE_STRING | lv_value_0_3= '_' | lv_value_0_4= '~' | lv_value_0_5= '.' | lv_value_0_6= './' | lv_value_0_7= '$' | lv_value_0_8= '/' | lv_value_0_9= '(' | lv_value_0_10= ')' | lv_value_0_11= RULE_ANY_OTHER )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1659:1: (this_ID_0= RULE_ID | this_STRING_1= RULE_STRING | kw= '_' | kw= '~' | kw= '.' | kw= './' | kw= '$' | kw= '/' | kw= '(' | kw= ')' | this_ANY_OTHER_10= RULE_ANY_OTHER )
             int alt19=11;
             switch ( input.LA(1) ) {
             case RULE_ID:
@@ -3544,283 +3620,150 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("1629:1: (lv_value_0_1= RULE_ID | lv_value_0_2= RULE_STRING | lv_value_0_3= '_' | lv_value_0_4= '~' | lv_value_0_5= '.' | lv_value_0_6= './' | lv_value_0_7= '$' | lv_value_0_8= '/' | lv_value_0_9= '(' | lv_value_0_10= ')' | lv_value_0_11= RULE_ANY_OTHER )", 19, 0, input);
+                    new NoViableAltException("1659:1: (this_ID_0= RULE_ID | this_STRING_1= RULE_STRING | kw= '_' | kw= '~' | kw= '.' | kw= './' | kw= '$' | kw= '/' | kw= '(' | kw= ')' | this_ANY_OTHER_10= RULE_ANY_OTHER )", 19, 0, input);
 
                 throw nvae;
             }
 
             switch (alt19) {
                 case 1 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1630:3: lv_value_0_1= RULE_ID
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1659:6: this_ID_0= RULE_ID
                     {
-                    lv_value_0_1=(Token)input.LT(1);
-                    match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleWMLValue2333); 
+                    this_ID_0=(Token)input.LT(1);
+                    match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleWMLValue2450); 
 
-                    			createLeafNode(grammarAccess.getWMLValueAccess().getValueIDTerminalRuleCall_0_0(), "value"); 
-                    		
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        try {
-                    	       		set(
-                    	       			current, 
-                    	       			"value",
-                    	        		lv_value_0_1, 
-                    	        		"ID", 
-                    	        		lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
+                    		current.merge(this_ID_0);
+                        
+                     
+                        createLeafNode(grammarAccess.getWMLValueAccess().getIDTerminalRuleCall_0(), null); 
+                        
 
                     }
                     break;
                 case 2 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1651:8: lv_value_0_2= RULE_STRING
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1667:10: this_STRING_1= RULE_STRING
                     {
-                    lv_value_0_2=(Token)input.LT(1);
-                    match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleWMLValue2353); 
+                    this_STRING_1=(Token)input.LT(1);
+                    match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleWMLValue2476); 
 
-                    			createLeafNode(grammarAccess.getWMLValueAccess().getValueSTRINGTerminalRuleCall_0_1(), "value"); 
-                    		
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        try {
-                    	       		set(
-                    	       			current, 
-                    	       			"value",
-                    	        		lv_value_0_2, 
-                    	        		"STRING", 
-                    	        		lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
+                    		current.merge(this_STRING_1);
+                        
+                     
+                        createLeafNode(grammarAccess.getWMLValueAccess().getSTRINGTerminalRuleCall_1(), null); 
+                        
 
                     }
                     break;
                 case 3 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1672:8: lv_value_0_3= '_'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1676:2: kw= '_'
                     {
-                    lv_value_0_3=(Token)input.LT(1);
-                    match(input,29,FOLLOW_29_in_ruleWMLValue2374); 
+                    kw=(Token)input.LT(1);
+                    match(input,29,FOLLOW_29_in_ruleWMLValue2500); 
 
-                            createLeafNode(grammarAccess.getWMLValueAccess().getValue_Keyword_0_2(), "value"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getWMLValueAccess().get_Keyword_2(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "value", lv_value_0_3, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 4 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1690:8: lv_value_0_4= '~'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1683:2: kw= '~'
                     {
-                    lv_value_0_4=(Token)input.LT(1);
-                    match(input,27,FOLLOW_27_in_ruleWMLValue2403); 
+                    kw=(Token)input.LT(1);
+                    match(input,27,FOLLOW_27_in_ruleWMLValue2519); 
 
-                            createLeafNode(grammarAccess.getWMLValueAccess().getValueTildeKeyword_0_3(), "value"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getWMLValueAccess().getTildeKeyword_3(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "value", lv_value_0_4, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 5 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1708:8: lv_value_0_5= '.'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1690:2: kw= '.'
                     {
-                    lv_value_0_5=(Token)input.LT(1);
-                    match(input,30,FOLLOW_30_in_ruleWMLValue2432); 
+                    kw=(Token)input.LT(1);
+                    match(input,30,FOLLOW_30_in_ruleWMLValue2538); 
 
-                            createLeafNode(grammarAccess.getWMLValueAccess().getValueFullStopKeyword_0_4(), "value"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getWMLValueAccess().getFullStopKeyword_4(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "value", lv_value_0_5, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 6 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1726:8: lv_value_0_6= './'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1697:2: kw= './'
                     {
-                    lv_value_0_6=(Token)input.LT(1);
-                    match(input,26,FOLLOW_26_in_ruleWMLValue2461); 
+                    kw=(Token)input.LT(1);
+                    match(input,26,FOLLOW_26_in_ruleWMLValue2557); 
 
-                            createLeafNode(grammarAccess.getWMLValueAccess().getValueFullStopSolidusKeyword_0_5(), "value"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getWMLValueAccess().getFullStopSolidusKeyword_5(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "value", lv_value_0_6, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 7 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1744:8: lv_value_0_7= '$'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1704:2: kw= '$'
                     {
-                    lv_value_0_7=(Token)input.LT(1);
-                    match(input,31,FOLLOW_31_in_ruleWMLValue2490); 
+                    kw=(Token)input.LT(1);
+                    match(input,31,FOLLOW_31_in_ruleWMLValue2576); 
 
-                            createLeafNode(grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_6(), "value"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getWMLValueAccess().getDollarSignKeyword_6(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "value", lv_value_0_7, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 8 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1762:8: lv_value_0_8= '/'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1711:2: kw= '/'
                     {
-                    lv_value_0_8=(Token)input.LT(1);
-                    match(input,32,FOLLOW_32_in_ruleWMLValue2519); 
+                    kw=(Token)input.LT(1);
+                    match(input,32,FOLLOW_32_in_ruleWMLValue2595); 
 
-                            createLeafNode(grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_7(), "value"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getWMLValueAccess().getSolidusKeyword_7(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "value", lv_value_0_8, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 9 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1780:8: lv_value_0_9= '('
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1718:2: kw= '('
                     {
-                    lv_value_0_9=(Token)input.LT(1);
-                    match(input,33,FOLLOW_33_in_ruleWMLValue2548); 
+                    kw=(Token)input.LT(1);
+                    match(input,33,FOLLOW_33_in_ruleWMLValue2614); 
 
-                            createLeafNode(grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_8(), "value"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getWMLValueAccess().getLeftParenthesisKeyword_8(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "value", lv_value_0_9, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 10 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1798:8: lv_value_0_10= ')'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1725:2: kw= ')'
                     {
-                    lv_value_0_10=(Token)input.LT(1);
-                    match(input,34,FOLLOW_34_in_ruleWMLValue2577); 
+                    kw=(Token)input.LT(1);
+                    match(input,34,FOLLOW_34_in_ruleWMLValue2633); 
 
-                            createLeafNode(grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_9(), "value"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getWMLValueAccess().getRightParenthesisKeyword_9(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "value", lv_value_0_10, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 11 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1816:8: lv_value_0_11= RULE_ANY_OTHER
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1731:10: this_ANY_OTHER_10= RULE_ANY_OTHER
                     {
-                    lv_value_0_11=(Token)input.LT(1);
-                    match(input,RULE_ANY_OTHER,FOLLOW_RULE_ANY_OTHER_in_ruleWMLValue2605); 
+                    this_ANY_OTHER_10=(Token)input.LT(1);
+                    match(input,RULE_ANY_OTHER,FOLLOW_RULE_ANY_OTHER_in_ruleWMLValue2654); 
 
-                    			createLeafNode(grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_10(), "value"); 
-                    		
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        try {
-                    	       		set(
-                    	       			current, 
-                    	       			"value",
-                    	        		lv_value_0_11, 
-                    	        		"ANY_OTHER", 
-                    	        		lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
+                    		current.merge(this_ANY_OTHER_10);
+                        
+                     
+                        createLeafNode(grammarAccess.getWMLValueAccess().getANY_OTHERTerminalRuleCall_10(), null); 
+                        
 
                     }
                     break;
-
-            }
-
-
-            }
-
 
             }
 
@@ -3828,7 +3771,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             }
 
              resetLookahead(); 
-                	lastConsumedNode = currentNode;
+            	    lastConsumedNode = currentNode;
                 
         }
          
@@ -3844,24 +3787,24 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleMacroTokens
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1848:1: entryRuleMacroTokens returns [EObject current=null] : iv_ruleMacroTokens= ruleMacroTokens EOF ;
-    public final EObject entryRuleMacroTokens() throws RecognitionException {
-        EObject current = null;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1746:1: entryRuleMacroTokens returns [String current=null] : iv_ruleMacroTokens= ruleMacroTokens EOF ;
+    public final String entryRuleMacroTokens() throws RecognitionException {
+        String current = null;
 
-        EObject iv_ruleMacroTokens = null;
+        AntlrDatatypeRuleToken iv_ruleMacroTokens = null;
 
 
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1849:2: (iv_ruleMacroTokens= ruleMacroTokens EOF )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1850:2: iv_ruleMacroTokens= ruleMacroTokens EOF
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1747:2: (iv_ruleMacroTokens= ruleMacroTokens EOF )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1748:2: iv_ruleMacroTokens= ruleMacroTokens EOF
             {
              currentNode = createCompositeNode(grammarAccess.getMacroTokensRule(), currentNode); 
-            pushFollow(FOLLOW_ruleMacroTokens_in_entryRuleMacroTokens2648);
+            pushFollow(FOLLOW_ruleMacroTokens_in_entryRuleMacroTokens2700);
             iv_ruleMacroTokens=ruleMacroTokens();
             _fsp--;
 
-             current =iv_ruleMacroTokens; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleMacroTokens2658); 
+             current =iv_ruleMacroTokens.getText(); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleMacroTokens2711); 
 
             }
 
@@ -3879,29 +3822,19 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleMacroTokens
-    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1857:1: ruleMacroTokens returns [EObject current=null] : ( ( (lv_val_0_1= '=' | lv_val_0_2= '[' | lv_val_0_3= ']' | lv_val_0_4= '+' | lv_val_0_5= '[/' ) ) ) ;
-    public final EObject ruleMacroTokens() throws RecognitionException {
-        EObject current = null;
+    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1755:1: ruleMacroTokens returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '=' | kw= '[' | kw= ']' | kw= '+' | kw= '[/' ) ;
+    public final AntlrDatatypeRuleToken ruleMacroTokens() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
-        Token lv_val_0_1=null;
-        Token lv_val_0_2=null;
-        Token lv_val_0_3=null;
-        Token lv_val_0_4=null;
-        Token lv_val_0_5=null;
+        Token kw=null;
 
-         EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+         setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1862:6: ( ( ( (lv_val_0_1= '=' | lv_val_0_2= '[' | lv_val_0_3= ']' | lv_val_0_4= '+' | lv_val_0_5= '[/' ) ) ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1863:1: ( ( (lv_val_0_1= '=' | lv_val_0_2= '[' | lv_val_0_3= ']' | lv_val_0_4= '+' | lv_val_0_5= '[/' ) ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1760:6: ( (kw= '=' | kw= '[' | kw= ']' | kw= '+' | kw= '[/' ) )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1761:1: (kw= '=' | kw= '[' | kw= ']' | kw= '+' | kw= '[/' )
             {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1863:1: ( ( (lv_val_0_1= '=' | lv_val_0_2= '[' | lv_val_0_3= ']' | lv_val_0_4= '+' | lv_val_0_5= '[/' ) ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1864:1: ( (lv_val_0_1= '=' | lv_val_0_2= '[' | lv_val_0_3= ']' | lv_val_0_4= '+' | lv_val_0_5= '[/' ) )
-            {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1864:1: ( (lv_val_0_1= '=' | lv_val_0_2= '[' | lv_val_0_3= ']' | lv_val_0_4= '+' | lv_val_0_5= '[/' ) )
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1865:1: (lv_val_0_1= '=' | lv_val_0_2= '[' | lv_val_0_3= ']' | lv_val_0_4= '+' | lv_val_0_5= '[/' )
-            {
-            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1865:1: (lv_val_0_1= '=' | lv_val_0_2= '[' | lv_val_0_3= ']' | lv_val_0_4= '+' | lv_val_0_5= '[/' )
+            // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1761:1: (kw= '=' | kw= '[' | kw= ']' | kw= '+' | kw= '[/' )
             int alt20=5;
             switch ( input.LA(1) ) {
             case 24:
@@ -3931,133 +3864,72 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("1865:1: (lv_val_0_1= '=' | lv_val_0_2= '[' | lv_val_0_3= ']' | lv_val_0_4= '+' | lv_val_0_5= '[/' )", 20, 0, input);
+                    new NoViableAltException("1761:1: (kw= '=' | kw= '[' | kw= ']' | kw= '+' | kw= '[/' )", 20, 0, input);
 
                 throw nvae;
             }
 
             switch (alt20) {
                 case 1 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1866:3: lv_val_0_1= '='
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1762:2: kw= '='
                     {
-                    lv_val_0_1=(Token)input.LT(1);
-                    match(input,24,FOLLOW_24_in_ruleMacroTokens2702); 
+                    kw=(Token)input.LT(1);
+                    match(input,24,FOLLOW_24_in_ruleMacroTokens2749); 
 
-                            createLeafNode(grammarAccess.getMacroTokensAccess().getValEqualsSignKeyword_0_0(), "val"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getMacroTokensAccess().getEqualsSignKeyword_0(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getMacroTokensRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "val", lv_val_0_1, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 2 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1884:8: lv_val_0_2= '['
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1769:2: kw= '['
                     {
-                    lv_val_0_2=(Token)input.LT(1);
-                    match(input,20,FOLLOW_20_in_ruleMacroTokens2731); 
+                    kw=(Token)input.LT(1);
+                    match(input,20,FOLLOW_20_in_ruleMacroTokens2768); 
 
-                            createLeafNode(grammarAccess.getMacroTokensAccess().getValLeftSquareBracketKeyword_0_1(), "val"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getMacroTokensAccess().getLeftSquareBracketKeyword_1(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getMacroTokensRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "val", lv_val_0_2, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 3 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1902:8: lv_val_0_3= ']'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1776:2: kw= ']'
                     {
-                    lv_val_0_3=(Token)input.LT(1);
-                    match(input,22,FOLLOW_22_in_ruleMacroTokens2760); 
+                    kw=(Token)input.LT(1);
+                    match(input,22,FOLLOW_22_in_ruleMacroTokens2787); 
 
-                            createLeafNode(grammarAccess.getMacroTokensAccess().getValRightSquareBracketKeyword_0_2(), "val"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getMacroTokensAccess().getRightSquareBracketKeyword_2(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getMacroTokensRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "val", lv_val_0_3, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 4 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1920:8: lv_val_0_4= '+'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1783:2: kw= '+'
                     {
-                    lv_val_0_4=(Token)input.LT(1);
-                    match(input,21,FOLLOW_21_in_ruleMacroTokens2789); 
+                    kw=(Token)input.LT(1);
+                    match(input,21,FOLLOW_21_in_ruleMacroTokens2806); 
 
-                            createLeafNode(grammarAccess.getMacroTokensAccess().getValPlusSignKeyword_0_3(), "val"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getMacroTokensAccess().getPlusSignKeyword_3(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getMacroTokensRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "val", lv_val_0_4, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
                 case 5 :
-                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1938:8: lv_val_0_5= '[/'
+                    // ../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1790:2: kw= '[/'
                     {
-                    lv_val_0_5=(Token)input.LT(1);
-                    match(input,23,FOLLOW_23_in_ruleMacroTokens2818); 
+                    kw=(Token)input.LT(1);
+                    match(input,23,FOLLOW_23_in_ruleMacroTokens2825); 
 
-                            createLeafNode(grammarAccess.getMacroTokensAccess().getValLeftSquareBracketSolidusKeyword_0_4(), "val"); 
+                            current.merge(kw);
+                            createLeafNode(grammarAccess.getMacroTokensAccess().getLeftSquareBracketSolidusKeyword_4(), null); 
                         
-
-                    	        if (current==null) {
-                    	            current = factory.create(grammarAccess.getMacroTokensRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                    	        
-                    	        try {
-                    	       		set(current, "val", lv_val_0_5, null, lastConsumedNode);
-                    	        } catch (ValueConverterException vce) {
-                    				handleValueConverterException(vce);
-                    	        }
-                    	    
 
                     }
                     break;
-
-            }
-
-
-            }
-
 
             }
 
@@ -4065,7 +3937,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
             }
 
              resetLookahead(); 
-                	lastConsumedNode = currentNode;
+            	    lastConsumedNode = currentNode;
                 
         }
          
@@ -4117,76 +3989,79 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_RULE_SL_COMMENT_in_ruleWMLKey817 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleWMLKeyValue_in_entryRuleWMLKeyValue865 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleWMLKeyValue875 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLValue_in_ruleWMLKeyValue922 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLMacroCall_in_ruleWMLKeyValue949 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLLuaCode_in_ruleWMLKeyValue976 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLArrayCall_in_ruleWMLKeyValue1003 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLMacroCall_in_entryRuleWMLMacroCall1038 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleWMLMacroCall1048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_ruleWMLMacroCall1083 = new BitSet(new long[]{0x000000000C000010L});
-    public static final BitSet FOLLOW_26_in_ruleWMLMacroCall1101 = new BitSet(new long[]{0x0000000008000010L});
-    public static final BitSet FOLLOW_27_in_ruleWMLMacroCall1133 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleWMLMacroCall1164 = new BitSet(new long[]{0x00000007FFF60010L});
-    public static final BitSet FOLLOW_ruleWMLValue_in_ruleWMLMacroCall1193 = new BitSet(new long[]{0x00000007FFF60010L});
-    public static final BitSet FOLLOW_ruleMacroTokens_in_ruleWMLMacroCall1212 = new BitSet(new long[]{0x00000007FFF60010L});
-    public static final BitSet FOLLOW_ruleWMLMacroCall_in_ruleWMLMacroCall1242 = new BitSet(new long[]{0x00000007FFF60010L});
-    public static final BitSet FOLLOW_28_in_ruleWMLMacroCall1254 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLLuaCode_in_entryRuleWMLLuaCode1290 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleWMLLuaCode1300 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_LUA_CODE_in_ruleWMLLuaCode1341 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLArrayCall_in_entryRuleWMLArrayCall1381 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleWMLArrayCall1391 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_ruleWMLArrayCall1426 = new BitSet(new long[]{0x00000007EC060010L});
-    public static final BitSet FOLLOW_ruleWMLValue_in_ruleWMLArrayCall1447 = new BitSet(new long[]{0x00000007EC460010L});
-    public static final BitSet FOLLOW_22_in_ruleWMLArrayCall1458 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLMacroDefine_in_entryRuleWMLMacroDefine1494 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleWMLMacroDefine1504 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_DEFINE_in_ruleWMLMacroDefine1546 = new BitSet(new long[]{0x00000007EE173F10L});
-    public static final BitSet FOLLOW_ruleWMLTag_in_ruleWMLMacroDefine1573 = new BitSet(new long[]{0x00000007EE173F10L});
-    public static final BitSet FOLLOW_ruleWMLKey_in_ruleWMLMacroDefine1600 = new BitSet(new long[]{0x00000007EE173F10L});
-    public static final BitSet FOLLOW_ruleWMLMacroCall_in_ruleWMLMacroDefine1627 = new BitSet(new long[]{0x00000007EE173F10L});
-    public static final BitSet FOLLOW_ruleWMLMacroDefine_in_ruleWMLMacroDefine1654 = new BitSet(new long[]{0x00000007EE173F10L});
-    public static final BitSet FOLLOW_ruleWMLTextdomain_in_ruleWMLMacroDefine1681 = new BitSet(new long[]{0x00000007EE173F10L});
-    public static final BitSet FOLLOW_ruleWMLValue_in_ruleWMLMacroDefine1708 = new BitSet(new long[]{0x00000007EE173F10L});
-    public static final BitSet FOLLOW_ruleWMLPreprocIF_in_ruleWMLMacroDefine1735 = new BitSet(new long[]{0x00000007EE173F10L});
-    public static final BitSet FOLLOW_RULE_ENDDEF_in_ruleWMLMacroDefine1754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLPreprocIF_in_entryRuleWMLPreprocIF1795 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleWMLPreprocIF1805 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_IFDEF_in_ruleWMLPreprocIF1849 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_RULE_IFNDEF_in_ruleWMLPreprocIF1869 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_RULE_IFHAVE_in_ruleWMLPreprocIF1889 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_RULE_IFNHAVE_in_ruleWMLPreprocIF1909 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_ruleWMLTag_in_ruleWMLPreprocIF1939 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_ruleWMLKey_in_ruleWMLPreprocIF1966 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_ruleWMLMacroCall_in_ruleWMLPreprocIF1993 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_ruleWMLMacroDefine_in_ruleWMLPreprocIF2020 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_ruleWMLTextdomain_in_ruleWMLPreprocIF2047 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_ruleWMLValue_in_ruleWMLPreprocIF2074 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_ruleWMLPreprocIF_in_ruleWMLPreprocIF2101 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_RULE_ELSE_in_ruleWMLPreprocIF2124 = new BitSet(new long[]{0x00000007EE17FD10L});
-    public static final BitSet FOLLOW_RULE_ENDIF_in_ruleWMLPreprocIF2148 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLTextdomain_in_entryRuleWMLTextdomain2189 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleWMLTextdomain2199 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_TEXTDOMAIN_in_ruleWMLTextdomain2240 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLValue_in_entryRuleWMLValue2280 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleWMLValue2290 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleWMLValue2333 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleWMLValue2353 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_ruleWMLValue2374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ruleWMLValue2403 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_ruleWMLValue2432 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_ruleWMLValue2461 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_ruleWMLValue2490 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_ruleWMLValue2519 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_ruleWMLValue2548 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_ruleWMLValue2577 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ANY_OTHER_in_ruleWMLValue2605 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMacroTokens_in_entryRuleMacroTokens2648 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleMacroTokens2658 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_ruleMacroTokens2702 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_ruleMacroTokens2731 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_ruleMacroTokens2760 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_ruleMacroTokens2789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_ruleMacroTokens2818 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLValue_in_ruleWMLKeyValue926 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLMacroCall_in_ruleWMLKeyValue954 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLLuaCode_in_ruleWMLKeyValue981 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLArrayCall_in_ruleWMLKeyValue1008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLMacroCall_in_entryRuleWMLMacroCall1043 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleWMLMacroCall1053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_ruleWMLMacroCall1088 = new BitSet(new long[]{0x000000000C000010L});
+    public static final BitSet FOLLOW_26_in_ruleWMLMacroCall1106 = new BitSet(new long[]{0x0000000008000010L});
+    public static final BitSet FOLLOW_27_in_ruleWMLMacroCall1138 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleWMLMacroCall1169 = new BitSet(new long[]{0x00000007FFF60010L});
+    public static final BitSet FOLLOW_ruleWMLMacroParameter_in_ruleWMLMacroCall1196 = new BitSet(new long[]{0x00000007FFF60010L});
+    public static final BitSet FOLLOW_ruleWMLMacroCall_in_ruleWMLMacroCall1223 = new BitSet(new long[]{0x00000007FFF60010L});
+    public static final BitSet FOLLOW_28_in_ruleWMLMacroCall1235 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLLuaCode_in_entryRuleWMLLuaCode1271 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleWMLLuaCode1281 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_LUA_CODE_in_ruleWMLLuaCode1322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLArrayCall_in_entryRuleWMLArrayCall1362 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleWMLArrayCall1372 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_ruleWMLArrayCall1407 = new BitSet(new long[]{0x00000007EC060010L});
+    public static final BitSet FOLLOW_ruleWMLValue_in_ruleWMLArrayCall1428 = new BitSet(new long[]{0x00000007EC460010L});
+    public static final BitSet FOLLOW_22_in_ruleWMLArrayCall1439 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLMacroDefine_in_entryRuleWMLMacroDefine1475 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleWMLMacroDefine1485 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_DEFINE_in_ruleWMLMacroDefine1527 = new BitSet(new long[]{0x00000007EE173F10L});
+    public static final BitSet FOLLOW_ruleWMLTag_in_ruleWMLMacroDefine1554 = new BitSet(new long[]{0x00000007EE173F10L});
+    public static final BitSet FOLLOW_ruleWMLKey_in_ruleWMLMacroDefine1581 = new BitSet(new long[]{0x00000007EE173F10L});
+    public static final BitSet FOLLOW_ruleWMLMacroCall_in_ruleWMLMacroDefine1608 = new BitSet(new long[]{0x00000007EE173F10L});
+    public static final BitSet FOLLOW_ruleWMLMacroDefine_in_ruleWMLMacroDefine1635 = new BitSet(new long[]{0x00000007EE173F10L});
+    public static final BitSet FOLLOW_ruleWMLTextdomain_in_ruleWMLMacroDefine1662 = new BitSet(new long[]{0x00000007EE173F10L});
+    public static final BitSet FOLLOW_ruleWMLValue_in_ruleWMLMacroDefine1689 = new BitSet(new long[]{0x00000007EE173F10L});
+    public static final BitSet FOLLOW_ruleWMLPreprocIF_in_ruleWMLMacroDefine1716 = new BitSet(new long[]{0x00000007EE173F10L});
+    public static final BitSet FOLLOW_RULE_ENDDEF_in_ruleWMLMacroDefine1735 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLPreprocIF_in_entryRuleWMLPreprocIF1776 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleWMLPreprocIF1786 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_IFDEF_in_ruleWMLPreprocIF1830 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_RULE_IFNDEF_in_ruleWMLPreprocIF1850 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_RULE_IFHAVE_in_ruleWMLPreprocIF1870 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_RULE_IFNHAVE_in_ruleWMLPreprocIF1890 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_ruleWMLTag_in_ruleWMLPreprocIF1920 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_ruleWMLKey_in_ruleWMLPreprocIF1947 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_ruleWMLMacroCall_in_ruleWMLPreprocIF1974 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_ruleWMLMacroDefine_in_ruleWMLPreprocIF2001 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_ruleWMLTextdomain_in_ruleWMLPreprocIF2028 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_ruleWMLValue_in_ruleWMLPreprocIF2055 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_ruleWMLPreprocIF_in_ruleWMLPreprocIF2082 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_RULE_ELSE_in_ruleWMLPreprocIF2105 = new BitSet(new long[]{0x00000007EE17FD10L});
+    public static final BitSet FOLLOW_RULE_ENDIF_in_ruleWMLPreprocIF2129 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLTextdomain_in_entryRuleWMLTextdomain2170 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleWMLTextdomain2180 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_TEXTDOMAIN_in_ruleWMLTextdomain2221 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLMacroParameter_in_entryRuleWMLMacroParameter2262 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleWMLMacroParameter2273 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLValue_in_ruleWMLMacroParameter2320 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMacroTokens_in_ruleWMLMacroParameter2353 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLValue_in_entryRuleWMLValue2399 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleWMLValue2410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleWMLValue2450 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleWMLValue2476 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_ruleWMLValue2500 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_ruleWMLValue2519 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_ruleWMLValue2538 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_ruleWMLValue2557 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_ruleWMLValue2576 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_ruleWMLValue2595 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_ruleWMLValue2614 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleWMLValue2633 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ANY_OTHER_in_ruleWMLValue2654 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMacroTokens_in_entryRuleMacroTokens2700 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleMacroTokens2711 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_ruleMacroTokens2749 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_ruleMacroTokens2768 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_ruleMacroTokens2787 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_ruleMacroTokens2806 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_ruleMacroTokens2825 = new BitSet(new long[]{0x0000000000000002L});
 
 }

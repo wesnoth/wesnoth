@@ -5,6 +5,7 @@
 grammar org.wesnoth.WML hidden(EOL, WS, SL_COMMENT)
 generate wml "http://www.wesnoth.org/WML"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes 
 
 WMLRoot:
 	( Tags += WMLTag
@@ -30,12 +31,12 @@ WMLTag:
 WMLKey hidden(WS):
 	name = ID '=' value += WMLKeyValue* (EOL? '+' EOL? value+=WMLKeyValue+)* eol=(EOL|SL_COMMENT);
 
-WMLKeyValue:
+WMLKeyValue: {WMLKeyValue}
 	WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 	
 WMLMacroCall:
 	'{' (point?='./')? (relative?='~')? name=ID
-		( params += (WMLValue | MacroTokens)
+		( params += WMLMacroParameter
 		| extraMacros += WMLMacroCall
 		)*
 	'}';
@@ -72,12 +73,15 @@ WMLPreprocIF:
 WMLTextdomain:
 	name = TEXTDOMAIN;
 
-WMLValue:
-	value = (ID | STRING |'_'|'~' | '.' | './' |'$'|'/' |'(' | ')'| ANY_OTHER);
+WMLMacroParameter returns ecore::EString:
+    WMLValue | MacroTokens;
+
+WMLValue returns ecore::EString:
+	(ID | STRING |'_'|'~' | '.' | './' |'$'|'/' |'(' | ')'| ANY_OTHER);
 // we use this as a hack for any characters in the macro call
 // so we won't trigger things like: key=value or [tag]
-MacroTokens:
-	val=('='|'['|']'|'+'|'[/');
+MacroTokens returns ecore::EString:
+	('='|'['|']'|'+'|'[/');
 
 terminal LUA_CODE   : '<<' -> '>>';
 // Preprocessor terminals

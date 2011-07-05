@@ -29,7 +29,6 @@ import org.wesnoth.wml.WMLMacroDefine;
 import org.wesnoth.wml.WMLPreprocIF;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WMLTextdomain;
-import org.wesnoth.wml.WMLValue;
 import org.wesnoth.wml.WmlPackage;
 
 /**
@@ -127,14 +126,14 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
   protected EList<WMLTextdomain> textdomains;
 
   /**
-   * The cached value of the '{@link #getValues() <em>Values</em>}' containment reference list.
+   * The cached value of the '{@link #getValues() <em>Values</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getValues()
    * @generated
    * @ordered
    */
-  protected EList<WMLValue> values;
+  protected EList<String> values;
 
   /**
    * The cached value of the '{@link #getIfDefs() <em>If Defs</em>}' containment reference list.
@@ -295,11 +294,11 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLValue> getValues()
+  public EList<String> getValues()
   {
     if (values == null)
     {
-      values = new EObjectContainmentEList<WMLValue>(WMLValue.class, this, WmlPackage.WML_PREPROC_IF__VALUES);
+      values = new EDataTypeEList<String>(String.class, this, WmlPackage.WML_PREPROC_IF__VALUES);
     }
     return values;
   }
@@ -375,8 +374,6 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
         return ((InternalEList<?>)getMacroDefines()).basicRemove(otherEnd, msgs);
       case WmlPackage.WML_PREPROC_IF__TEXTDOMAINS:
         return ((InternalEList<?>)getTextdomains()).basicRemove(otherEnd, msgs);
-      case WmlPackage.WML_PREPROC_IF__VALUES:
-        return ((InternalEList<?>)getValues()).basicRemove(otherEnd, msgs);
       case WmlPackage.WML_PREPROC_IF__IF_DEFS:
         return ((InternalEList<?>)getIfDefs()).basicRemove(otherEnd, msgs);
     }
@@ -453,7 +450,7 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
         return;
       case WmlPackage.WML_PREPROC_IF__VALUES:
         getValues().clear();
-        getValues().addAll((Collection<? extends WMLValue>)newValue);
+        getValues().addAll((Collection<? extends String>)newValue);
         return;
       case WmlPackage.WML_PREPROC_IF__IF_DEFS:
         getIfDefs().clear();
@@ -561,6 +558,8 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", Values: ");
+    result.append(values);
     result.append(", Elses: ");
     result.append(elses);
     result.append(", endName: ");

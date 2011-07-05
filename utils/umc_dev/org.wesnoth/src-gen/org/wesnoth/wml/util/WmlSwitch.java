@@ -169,21 +169,6 @@ public class WmlSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WmlPackage.WML_VALUE:
-      {
-        WMLValue wmlValue = (WMLValue)theEObject;
-        T result = caseWMLValue(wmlValue);
-        if (result == null) result = caseWMLKeyValue(wmlValue);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WmlPackage.MACRO_TOKENS:
-      {
-        MacroTokens macroTokens = (MacroTokens)theEObject;
-        T result = caseMacroTokens(macroTokens);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       default: return defaultCase(theEObject);
     }
   }
@@ -344,38 +329,6 @@ public class WmlSwitch<T>
    * @generated
    */
   public T caseWMLTextdomain(WMLTextdomain object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>WML Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>WML Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWMLValue(WMLValue object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Macro Tokens</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Macro Tokens</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMacroTokens(MacroTokens object)
   {
     return null;
   }

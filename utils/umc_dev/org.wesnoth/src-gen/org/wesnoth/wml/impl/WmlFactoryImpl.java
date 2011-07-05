@@ -78,8 +78,6 @@ public class WmlFactoryImpl extends EFactoryImpl implements WmlFactory
       case WmlPackage.WML_MACRO_DEFINE: return createWMLMacroDefine();
       case WmlPackage.WML_PREPROC_IF: return createWMLPreprocIF();
       case WmlPackage.WML_TEXTDOMAIN: return createWMLTextdomain();
-      case WmlPackage.WML_VALUE: return createWMLValue();
-      case WmlPackage.MACRO_TOKENS: return createMacroTokens();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -193,28 +191,6 @@ public class WmlFactoryImpl extends EFactoryImpl implements WmlFactory
   {
     WMLTextdomainImpl wmlTextdomain = new WMLTextdomainImpl();
     return wmlTextdomain;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public WMLValue createWMLValue()
-  {
-    WMLValueImpl wmlValue = new WMLValueImpl();
-    return wmlValue;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public MacroTokens createMacroTokens()
-  {
-    MacroTokensImpl macroTokens = new MacroTokensImpl();
-    return macroTokens;
   }
 
   /**

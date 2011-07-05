@@ -42,15 +42,16 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLKeyAccess().getEolAlternatives_4_0(), "rule__WMLKey__EolAlternatives_4_0");
 					put(grammarAccess.getWMLKeyValueAccess().getAlternatives(), "rule__WMLKeyValue__Alternatives");
 					put(grammarAccess.getWMLMacroCallAccess().getAlternatives_4(), "rule__WMLMacroCall__Alternatives_4");
-					put(grammarAccess.getWMLMacroCallAccess().getParamsAlternatives_4_0_0(), "rule__WMLMacroCall__ParamsAlternatives_4_0_0");
 					put(grammarAccess.getWMLMacroDefineAccess().getAlternatives_1(), "rule__WMLMacroDefine__Alternatives_1");
 					put(grammarAccess.getWMLPreprocIFAccess().getNameAlternatives_0_0(), "rule__WMLPreprocIF__NameAlternatives_0_0");
 					put(grammarAccess.getWMLPreprocIFAccess().getAlternatives_1(), "rule__WMLPreprocIF__Alternatives_1");
-					put(grammarAccess.getWMLValueAccess().getValueAlternatives_0(), "rule__WMLValue__ValueAlternatives_0");
-					put(grammarAccess.getMacroTokensAccess().getValAlternatives_0(), "rule__MacroTokens__ValAlternatives_0");
+					put(grammarAccess.getWMLMacroParameterAccess().getAlternatives(), "rule__WMLMacroParameter__Alternatives");
+					put(grammarAccess.getWMLValueAccess().getAlternatives(), "rule__WMLValue__Alternatives");
+					put(grammarAccess.getMacroTokensAccess().getAlternatives(), "rule__MacroTokens__Alternatives");
 					put(grammarAccess.getWMLTagAccess().getGroup(), "rule__WMLTag__Group__0");
 					put(grammarAccess.getWMLKeyAccess().getGroup(), "rule__WMLKey__Group__0");
 					put(grammarAccess.getWMLKeyAccess().getGroup_3(), "rule__WMLKey__Group_3__0");
+					put(grammarAccess.getWMLKeyValueAccess().getGroup_0(), "rule__WMLKeyValue__Group_0__0");
 					put(grammarAccess.getWMLMacroCallAccess().getGroup(), "rule__WMLMacroCall__Group__0");
 					put(grammarAccess.getWMLArrayCallAccess().getGroup(), "rule__WMLArrayCall__Group__0");
 					put(grammarAccess.getWMLMacroDefineAccess().getGroup(), "rule__WMLMacroDefine__Group__0");
@@ -100,8 +101,6 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLPreprocIFAccess().getElsesAssignment_1_7(), "rule__WMLPreprocIF__ElsesAssignment_1_7");
 					put(grammarAccess.getWMLPreprocIFAccess().getEndNameAssignment_2(), "rule__WMLPreprocIF__EndNameAssignment_2");
 					put(grammarAccess.getWMLTextdomainAccess().getNameAssignment(), "rule__WMLTextdomain__NameAssignment");
-					put(grammarAccess.getWMLValueAccess().getValueAssignment(), "rule__WMLValue__ValueAssignment");
-					put(grammarAccess.getMacroTokensAccess().getValAssignment(), "rule__MacroTokens__ValAssignment");
 				}
 			};
 		}

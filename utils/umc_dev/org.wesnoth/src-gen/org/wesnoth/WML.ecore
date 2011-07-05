@@ -43,8 +43,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="point" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="relative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="params" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extraMacros" upperBound="-1"
         eType="#//WMLMacroCall" containment="true"/>
   </eClassifiers>
@@ -52,8 +52,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLArrayCall" eSuperTypes="#//WMLKeyValue">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
-        eType="#//WMLValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLMacroDefine">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -67,8 +67,8 @@
         eType="#//WMLMacroDefine" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Textdomains" upperBound="-1"
         eType="#//WMLTextdomain" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Values" upperBound="-1"
-        eType="#//WMLValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Values" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="IfDefs" upperBound="-1"
         eType="#//WMLPreprocIF" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="endName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -85,8 +85,8 @@
         eType="#//WMLMacroDefine" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Textdomains" upperBound="-1"
         eType="#//WMLTextdomain" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Values" upperBound="-1"
-        eType="#//WMLValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Values" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="IfDefs" upperBound="-1"
         eType="#//WMLPreprocIF" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Elses" unique="false" upperBound="-1"
@@ -95,11 +95,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLTextdomain">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLValue" eSuperTypes="#//WMLKeyValue">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MacroTokens">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

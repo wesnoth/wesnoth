@@ -117,24 +117,6 @@ public interface WmlFactory extends EFactory
   WMLTextdomain createWMLTextdomain();
 
   /**
-   * Returns a new object of class '<em>WML Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>WML Value</em>'.
-   * @generated
-   */
-  WMLValue createWMLValue();
-
-  /**
-   * Returns a new object of class '<em>Macro Tokens</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Macro Tokens</em>'.
-   * @generated
-   */
-  MacroTokens createMacroTokens();
-
-  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -129,16 +129,6 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
         return createWMLTextdomainAdapter();
       }
       @Override
-      public Adapter caseWMLValue(WMLValue object)
-      {
-        return createWMLValueAdapter();
-      }
-      @Override
-      public Adapter caseMacroTokens(MacroTokens object)
-      {
-        return createMacroTokensAdapter();
-      }
-      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -306,36 +296,6 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWMLTextdomainAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLValue <em>WML Value</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.wesnoth.wml.WMLValue
-   * @generated
-   */
-  public Adapter createWMLValueAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.MacroTokens <em>Macro Tokens</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.wesnoth.wml.MacroTokens
-   * @generated
-   */
-  public Adapter createMacroTokensAdapter()
   {
     return null;
   }

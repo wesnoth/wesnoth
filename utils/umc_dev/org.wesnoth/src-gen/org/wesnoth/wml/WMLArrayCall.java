@@ -27,19 +27,19 @@ import org.eclipse.emf.common.util.EList;
 public interface WMLArrayCall extends WMLKeyValue
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wml.WMLValue}.
+   * Returns the value of the '<em><b>Value</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Value</em>' attribute list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' containment reference list.
+   * @return the value of the '<em>Value</em>' attribute list.
    * @see org.wesnoth.wml.WmlPackage#getWMLArrayCall_Value()
-   * @model containment="true"
+   * @model unique="false"
    * @generated
    */
-  EList<WMLValue> getValue();
+  EList<String> getValue();
 
 } // WMLArrayCall

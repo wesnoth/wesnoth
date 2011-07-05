@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -28,7 +29,6 @@ import org.wesnoth.wml.WMLMacroDefine;
 import org.wesnoth.wml.WMLPreprocIF;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WMLTextdomain;
-import org.wesnoth.wml.WMLValue;
 import org.wesnoth.wml.WmlPackage;
 
 /**
@@ -125,14 +125,14 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
   protected EList<WMLTextdomain> textdomains;
 
   /**
-   * The cached value of the '{@link #getValues() <em>Values</em>}' containment reference list.
+   * The cached value of the '{@link #getValues() <em>Values</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getValues()
    * @generated
    * @ordered
    */
-  protected EList<WMLValue> values;
+  protected EList<String> values;
 
   /**
    * The cached value of the '{@link #getIfDefs() <em>If Defs</em>}' containment reference list.
@@ -283,11 +283,11 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLValue> getValues()
+  public EList<String> getValues()
   {
     if (values == null)
     {
-      values = new EObjectContainmentEList<WMLValue>(WMLValue.class, this, WmlPackage.WML_MACRO_DEFINE__VALUES);
+      values = new EDataTypeEList<String>(String.class, this, WmlPackage.WML_MACRO_DEFINE__VALUES);
     }
     return values;
   }
@@ -349,8 +349,6 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
         return ((InternalEList<?>)getMacroDefines()).basicRemove(otherEnd, msgs);
       case WmlPackage.WML_MACRO_DEFINE__TEXTDOMAINS:
         return ((InternalEList<?>)getTextdomains()).basicRemove(otherEnd, msgs);
-      case WmlPackage.WML_MACRO_DEFINE__VALUES:
-        return ((InternalEList<?>)getValues()).basicRemove(otherEnd, msgs);
       case WmlPackage.WML_MACRO_DEFINE__IF_DEFS:
         return ((InternalEList<?>)getIfDefs()).basicRemove(otherEnd, msgs);
     }
@@ -425,7 +423,7 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
         return;
       case WmlPackage.WML_MACRO_DEFINE__VALUES:
         getValues().clear();
-        getValues().addAll((Collection<? extends WMLValue>)newValue);
+        getValues().addAll((Collection<? extends String>)newValue);
         return;
       case WmlPackage.WML_MACRO_DEFINE__IF_DEFS:
         getIfDefs().clear();
@@ -524,6 +522,8 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", Values: ");
+    result.append(values);
     result.append(", endName: ");
     result.append(endName);
     result.append(')');

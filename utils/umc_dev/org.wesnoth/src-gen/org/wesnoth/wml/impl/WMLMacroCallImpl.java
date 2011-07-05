@@ -14,11 +14,11 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -105,14 +105,14 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
+   * The cached value of the '{@link #getParams() <em>Params</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getParams()
    * @generated
    * @ordered
    */
-  protected EList<EObject> params;
+  protected EList<String> params;
 
   /**
    * The cached value of the '{@link #getExtraMacros() <em>Extra Macros</em>}' containment reference list.
@@ -219,11 +219,11 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EObject> getParams()
+  public EList<String> getParams()
   {
     if (params == null)
     {
-      params = new EObjectContainmentEList<EObject>(EObject.class, this, WmlPackage.WML_MACRO_CALL__PARAMS);
+      params = new EDataTypeEList<String>(String.class, this, WmlPackage.WML_MACRO_CALL__PARAMS);
     }
     return params;
   }
@@ -252,8 +252,6 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   {
     switch (featureID)
     {
-      case WmlPackage.WML_MACRO_CALL__PARAMS:
-        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
       case WmlPackage.WML_MACRO_CALL__EXTRA_MACROS:
         return ((InternalEList<?>)getExtraMacros()).basicRemove(otherEnd, msgs);
     }
@@ -306,7 +304,7 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
         return;
       case WmlPackage.WML_MACRO_CALL__PARAMS:
         getParams().clear();
-        getParams().addAll((Collection<? extends EObject>)newValue);
+        getParams().addAll((Collection<? extends String>)newValue);
         return;
       case WmlPackage.WML_MACRO_CALL__EXTRA_MACROS:
         getExtraMacros().clear();
@@ -386,6 +384,8 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
     result.append(relative);
     result.append(", name: ");
     result.append(name);
+    result.append(", params: ");
+    result.append(params);
     result.append(')');
     return result.toString();
   }
