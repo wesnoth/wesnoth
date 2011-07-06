@@ -58,7 +58,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	    if ( projectCache_ == null )
 	        projectCache_ = ProjectUtils.getCacheForProject( getProject() );
 
-	    Logger.getInstance().log("building..."); //$NON-NLS-1$
+	    Logger.getInstance().log( "Building project " + getProject( ).getName( ) + " ..." ); //$NON-NLS-1$
 		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
 
         String installName = WesnothInstallsUtils.getInstallNameForResource( getProject() );
@@ -104,6 +104,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			monitor.worked(10);
 		}
 		monitor.done();
+
+		Logger.getInstance( ).log( "Done building project " + getProject( ).getName( ) );
 		return null;
 	}
 
@@ -133,7 +135,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                 // going right the current branch
                 do {
                     // process the leaf
-                    checkResource( node.getFile( ), monitor, false );
+                    checkResource( leaf.getFile( ), monitor, false );
 
                     leaf = leaf.getNext( );
                 }while ( leaf != null );
@@ -226,8 +228,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			try
 			{
 				IFile file = (IFile) resource;
+				String fileName = file.getName( );
 
-				monitor.subTask(String.format(Messages.WesnothProjectBuilder_19 ,file.getName()));
+				monitor.subTask( String.format( Messages.WesnothProjectBuilder_19 ,fileName ) );
 
 				List<String> defines = new ArrayList<String>();
 				// for non-main cfg file skip core as we already parsed
@@ -240,7 +243,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 						PreprocessorUtils.getInstance().getDefinesLocation(file), defines);
 				monitor.worked(5);
 
-				monitor.subTask(Messages.WesnothProjectBuilder_22);
+				monitor.subTask( String.format( Messages.WesnothProjectBuilder_22, fileName ) );
 
 				WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
 					getWMLSAXHandlerFromResource(
@@ -250,17 +253,17 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				if (handler != null)
 				{
 					ConfigFile cfg = handler.getConfigFile();
-					projectCache_.getConfigs().put(file.getName(), cfg);
+					projectCache_.getConfigs().put( fileName, cfg);
 					if (cfg.IsScenario)
 					{
 						if ( StringUtils.isNullOrEmpty( cfg.ScenarioId ) )
 						{
 							Logger.getInstance().log("added scenarioId [" + cfg.ScenarioId + //$NON-NLS-1$
-									"] for file: " + file.getName()); //$NON-NLS-1$
+									"] for file: " + fileName ); //$NON-NLS-1$
 						}
 						else
 						{
-						    projectCache_.getConfigs().remove(file.getName());
+						    projectCache_.getConfigs().remove( fileName );
 						}
 					}
 				}

@@ -80,12 +80,12 @@ public class DependencyTreeBuilder implements Serializable
         }
 
         isCreated_ = true;
+        currentIndex_ = 0;
+        parent_ = previous_ = null;
+        tree_.clear( );
 
         // start creating the PDT (project dependency tree)
         Queue<IContainer> containers = new LinkedBlockingDeque<IContainer>( );
-
-        parent_ = null;
-        tree_.clear( );
 
         containers.add( project_ );
 
