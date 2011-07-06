@@ -21,7 +21,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
-import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -108,22 +107,68 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		return null;
 	}
 
+	/**
+     * Does a full build on this project
+     * @param monitor The monitor used to signal progress
+     * @return True if there were config files processed
+     * @throws CoreException
+     */
     protected boolean fullBuild(final IProgressMonitor monitor) throws CoreException
     {
         projectCache_.getDependencyTree( ).createDependencyTree( true );
 
-    //  getProject().accept(new ResourceVisitor(monitor));
-        return false;
+        boolean foundCfg = false;
+
+        ProjectDependencyNode node = null, leaf = null;
+
+        node = projectCache_.getDependencyTree( ).getNode(
+                DependencyTreeBuilder.ROOT_NODE_KEY );
+
+        if ( node != null ) {
+
+            // going downwards the tree
+            do {
+                leaf = node;
+
+                // going right the current branch
+                do {
+                    // process the leaf
+                    checkResource( node.getFile( ), monitor, false );
+
+                    leaf = leaf.getNext( );
+                }while ( leaf != null );
+
+
+                node = node.getSon( );
+            } while ( node != null );
+        }
+
+        return foundCfg;
     }
 
+    /**
+     * Does an incremental build on this project
+     * @param delta The delta which contains the project modifications
+     * @param monitor The monitor used to signal progress
+     * @return True if there were config files processed
+     * @throws CoreException
+     */
     protected boolean incrementalBuild(IResourceDelta delta, IProgressMonitor monitor)
             throws CoreException
     {
         // the visitor does the work.
-        //delta.accept(new ResourceDeltaVisitor(monitor));
-        return false;
+        boolean foundCfg = false;
+
+        return foundCfg;
     }
 
+    /**
+     * Runs the ant job that copies the project in user add-ons directory
+     * @param paths The paths instance which contains the paths to wesnoth
+     * utilities
+     * @param monitor The monitor used to signal progress
+     * @return true or false whether the job completed successfully
+     */
 	private boolean runAntJob( Paths paths, IProgressMonitor monitor )
 	{
         // check for 'build.xml' existance
@@ -162,8 +207,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 	}
 
-	protected boolean checkResource(IResource resource, IProgressMonitor monitor,
-						int delta, boolean handleMainCfg)
+	protected boolean checkResource(IResource resource, IProgressMonitor monitor, boolean handleMainCfg)
 	{
 		monitor.worked(5);
 		if (resource.exists() == false ||
@@ -333,7 +377,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			{
 				case IResourceDelta.ADDED:
 					// handle added resource
-					visitChildren = checkResource(resource, monitor_, delta.getKind(), false);
+					visitChildren = checkResource(resource, monitor_, false);
 					break;
 				case IResourceDelta.REMOVED:
 					// handle removed resource
@@ -342,7 +386,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 					break;
 				case IResourceDelta.CHANGED:
 					// handle changed resource
-					visitChildren = checkResource(resource, monitor_, delta.getKind(), false);
+					visitChildren = checkResource(resource, monitor_, false);
 					break;
 			}
 
@@ -350,33 +394,11 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			{
 				// preprocess _main.cfg before all
 				checkResource(((IContainer) resource).getFile(new Path("_main.cfg")), //$NON-NLS-1$
-						monitor_, delta.getKind(), true);
+						monitor_, true);
 			}
 
 			// return true to continue visiting children.
 			return visitChildren;
-		}
-	}
-
-
-	class ResourceVisitor implements IResourceVisitor
-	{
-		private IProgressMonitor monitor_;
-
-		public ResourceVisitor(IProgressMonitor monitor) {
-			monitor_ = monitor;
-		}
-
-		@Override
-		public boolean visit(IResource resource)
-		{
-			// preprocess _main.cfg before all
-			if (resource instanceof IContainer)
-			{
-				checkResource(((IContainer) resource).getFile(new Path("_main.cfg")), //$NON-NLS-1$
-						monitor_, -1, true);
-			}
-			return checkResource(resource, monitor_, -1, false);
 		}
 	}
 
