@@ -16,7 +16,6 @@ import java.util.Map;
 import org.wesnoth.Logger;
 import org.wesnoth.utils.ResourceUtils;
 
-
 /**
  * This represents a WML preprocessor define:
  * [preproc_define]
@@ -81,6 +80,24 @@ public class Define
 		return args_;
 	}
 
+    /**
+     * Returns a string containing the current define, formatted
+     * @return The string value of the define
+     */
+    @Override
+    public String toString()
+    {
+        StringBuilder res = new StringBuilder();
+        res.append("[preproc_define]"); //$NON-NLS-1$
+        res.append("\tname=\"" + name_ +  "\"");
+        res.append("\tvalue=\"" + value_ +  "\"");
+        res.append("\ttextdomain=\"" + textdomain_ +  "\"");
+        res.append("\tlinenum=\"" + lineNum_ +  "\"");
+        res.append("\tlocation=\"" + location_ +  "\"");
+        res.append("[/preproc_define]"); //$NON-NLS-1$
+        return res.toString();
+    }
+
 	/**
 	 * Reads the defines from the specified file
 	 * @param file
@@ -98,19 +115,5 @@ public class Define
 
 	    Logger.getInstance().log("There was an error on creating the Defines SAX handler"); //$NON-NLS-1$
 		return new HashMap<String, Define>(0);
-	}
-
-	/**
-	 * Returns a string containing the current define, formatted
-	 * @return
-	 */
-	//TODO: finish this
-	public static String toStringFormatted()
-	{
-		StringBuilder res = new StringBuilder();
-		res.append("[preproc_define]"); //$NON-NLS-1$
-		//res.append("\tname=\"\"");
-		res.append("[/preproc_define]"); //$NON-NLS-1$
-		return res.toString();
 	}
 }
