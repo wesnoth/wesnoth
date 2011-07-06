@@ -46,10 +46,7 @@ import org.wesnoth.wml.core.ConfigFile;
 
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
-	public WesnothProjectBuilder()
-	{
-		super();
-	}
+    private ProjectCache projectCache_;
 
 	@SuppressWarnings("rawtypes")
 	@Override
@@ -58,6 +55,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	{
 	    if ( WesnothInstallsUtils.setupInstallForResource( getProject() ) == false )
 	        return null;
+
+	    if ( projectCache_ == null )
+	        projectCache_ = ProjectUtils.getCacheForProject( getProject() );
 
 	    Logger.getInstance().log("building..."); //$NON-NLS-1$
 		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
@@ -71,8 +71,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		monitor.worked(5);
 
 		monitor.subTask( "Creating the project tree ..." );
-        ProjectCache cache = ProjectUtils.getCacheForProject( getProject( ) );
-        cache.getDependencyTree( ).createDependencyTree( false );
+        projectCache_.getDependencyTree( ).createDependencyTree( false );
         monitor.worked( 10 );
 
 		// create the temporary directory used by the plugin if not created
@@ -100,8 +99,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		{
 			// we read the defines at the end of the build
 			// to speed up things (and only if we had any .cfg files processed)
-		    cache.readDefines( true );
-			cache.saveCache( );
+		    projectCache_.readDefines( true );
+			projectCache_.saveCache( );
 
 			monitor.worked(10);
 		}
@@ -111,8 +110,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
     protected boolean fullBuild(final IProgressMonitor monitor) throws CoreException
     {
-        ProjectCache cache = ProjectUtils.getCacheForProject( getProject( ) );
-        cache.getDependencyTree( ).createDependencyTree( true );
+        projectCache_.getDependencyTree( ).createDependencyTree( true );
 
     //  getProject().accept(new ResourceVisitor(monitor));
         return false;
@@ -160,8 +158,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	{
 		if ( ResourceUtils.isConfigFile( resource ) )
 		{
-			ProjectUtils.getCacheForProject(getProject()).
-					getConfigs().remove(resource.getName());
+			projectCache_.getConfigs().remove(resource.getName());
 		}
 	}
 
@@ -200,7 +197,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				monitor.worked(5);
 
 				monitor.subTask(Messages.WesnothProjectBuilder_22);
-				ProjectCache projCache = ProjectUtils.getCacheForProject(getProject());
 
 				WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
 					getWMLSAXHandlerFromResource(
@@ -210,7 +206,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				if (handler != null)
 				{
 					ConfigFile cfg = handler.getConfigFile();
-					projCache.getConfigs().put(file.getName(), cfg);
+					projectCache_.getConfigs().put(file.getName(), cfg);
 					if (cfg.IsScenario)
 					{
 						if ( StringUtils.isNullOrEmpty( cfg.ScenarioId ) )
@@ -220,7 +216,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 						}
 						else
 						{
-							projCache.getConfigs().remove(file.getName());
+						    projectCache_.getConfigs().remove(file.getName());
 						}
 					}
 				}
