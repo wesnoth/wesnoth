@@ -434,10 +434,10 @@ public class WorkspaceUtils
 	 */
 	public static boolean checkPathsAreSet( String installName, boolean displayWarning)
 	{
-		if ( !validPath( Preferences.getPaths( installName ).getWesnothExecutablePath( ) ) ||
-		     !validPath( Preferences.getPaths( installName ).getUserDir( ) ) ||
-			 !validPath( Preferences.getPaths( installName ).getWMLToolsDir( ) ) ||
-			 !validPath( Preferences.getPaths( installName ).getWorkingDir( ) ))
+		if ( !ResourceUtils.isValidFilePath( Preferences.getPaths( installName ).getWesnothExecutablePath( ) ) ||
+		     !ResourceUtils.isValidFilePath( Preferences.getPaths( installName ).getUserDir( ) ) ||
+			 !ResourceUtils.isValidFilePath( Preferences.getPaths( installName ).getWMLToolsDir( ) ) ||
+			 !ResourceUtils.isValidFilePath( Preferences.getPaths( installName ).getWorkingDir( ) ))
 		{
 			if (displayWarning)
 				GUIUtils.showWarnMessageBox(Messages.WorkspaceUtils_33);
@@ -445,15 +445,5 @@ public class WorkspaceUtils
 		}
 
 		return true;
-	}
-
-	/**
-	 * Checks if the path is valid and the specified path's resource exists
-	 * @param path the path to check
-	 * @return
-	 */
-	public static boolean validPath(String path)
-	{
-		return !path.isEmpty() && new File(path).exists();
 	}
 }
