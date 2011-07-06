@@ -23,7 +23,7 @@ public class ListUtils
 	{
 		if (list == null || list.isEmpty())
 			return ""; //$NON-NLS-1$
-		StringBuilder result = new StringBuilder(); //$NON-NLS-1$
+		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < list.size() - 1; i++)
 		{
 		    result.append(list.get(i) + separator);
@@ -45,7 +45,7 @@ public class ListUtils
 		if (array == null || array.length == 0)
 			return ""; //$NON-NLS-1$
 
-		StringBuilder result = new StringBuilder(); //$NON-NLS-1$
+		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < array.length - 1; i++)
 		{
 			result.append(array[i] + separator);

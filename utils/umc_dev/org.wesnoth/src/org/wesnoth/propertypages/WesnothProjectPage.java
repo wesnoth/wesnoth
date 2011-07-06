@@ -14,6 +14,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.dialogs.PropertyPage;
+import org.wesnoth.Messages;
 import org.wesnoth.installs.WesnothInstall;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.projects.ProjectCache;
@@ -46,12 +47,12 @@ public class WesnothProjectPage extends PropertyPage
         newComposite.setLayout(new FillLayout(SWT.VERTICAL));
 
         Group grpGeneral = new Group(newComposite, SWT.NONE);
-        grpGeneral.setText("General");
+        grpGeneral.setText(Messages.WesnothProjectPage_0);
         grpGeneral.setLayout(new GridLayout(2, false));
 
         Label lblNewLabel = new Label(grpGeneral, SWT.NONE);
         lblNewLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-        lblNewLabel.setText("Wesnoth install:");
+        lblNewLabel.setText(Messages.WesnothProjectPage_1);
 
         cmbInstall_ = new Combo(grpGeneral, SWT.READ_ONLY );
         cmbInstall_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -76,7 +77,7 @@ public class WesnothProjectPage extends PropertyPage
 
         // check if the current install name is existing
         if ( !foundInstallInList ) {
-            setErrorMessage( "The currently selected install does not exist. Please select another." );
+            setErrorMessage( Messages.WesnothProjectPage_2 );
         }
 
         return newComposite;

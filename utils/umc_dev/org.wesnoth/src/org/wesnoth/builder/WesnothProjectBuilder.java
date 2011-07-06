@@ -390,17 +390,17 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
             String name2 = o2.getName( );
 
             // _initial.cfg is always the "lowest"
-            if ( name1.equals( "_initial.cfg" ) && !( name2.equals( "_initial.cfg" ) ) )
+            if ( name1.equals( "_initial.cfg" ) && !( name2.equals( "_initial.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
                 return -1;
 
-            if ( name2.equals( "_initial.cfg" ) && !( name1.equals( "_initial.cfg" ) ) )
+            if ( name2.equals( "_initial.cfg" ) && !( name1.equals( "_initial.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
                 return 1;
 
             // _final.cfg is always the "highest"
-            if ( name1.equals( "_final.cfg" ) && !( name2.equals( "_final.cfg" ) ) )
+            if ( name1.equals( "_final.cfg" ) && !( name2.equals( "_final.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
                 return 1;
 
-            if ( name2.equals( "_final.cfg" ) && !( name1.equals( "_final.cfg" ) ) )
+            if ( name2.equals( "_final.cfg" ) && !( name1.equals( "_final.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
                 return -1;
 
             return name1.compareTo( o2.getName( ) );

@@ -61,8 +61,8 @@ public class Preferences extends AbstractPreferenceInitializer
 		store.setDefault(Constants.P_ADV_NO_TERRAIN_GFX, true);
 
 		// installs
-		store.setDefault(Constants.P_INST_DEFAULT_INSTALL, ""); // $NON-NLS-1$
-		store.setDefault(Constants.P_INST_INSTALL_LIST, ""); // $NON-NLS-1$
+		store.setDefault(Constants.P_INST_DEFAULT_INSTALL, ""); //$NON-NLS-1$
+		store.setDefault(Constants.P_INST_INSTALL_LIST, ""); //$NON-NLS-1$
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class Preferences extends AbstractPreferenceInitializer
 	{
 	    // no null allowed -> fallback to ""
 	    if ( installName == null )
-	        installName = "";
+	        installName = ""; //$NON-NLS-1$
 
 	    Paths paths = paths_.get( installName );
 	    if ( paths == null ) {

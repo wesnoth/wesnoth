@@ -40,7 +40,7 @@ public class SchemaParser
 	{
 	    // null not allowed
 	    if ( installName == null )
-	        installName = "";
+	        installName = ""; //$NON-NLS-1$
 
 	    SchemaParser parser = parsers_.get( installName );
 		if (parser == null) {
@@ -220,9 +220,13 @@ public class SchemaParser
 						value = new StringBuilder(value.substring(1, value.length() - 1));
 					}
 
-					currentTag.setDescription(new Tag(Messages.SchemaParser_25, '?'));
-					currentTag.getDescription().getKeyChildren().add(
-							new TagKey(tokens[0], '?', "", value.toString(), true)); //$NON-NLS-1$
+					if ( currentTag != null ) {
+    					currentTag.setDescription(new Tag(Messages.SchemaParser_25, '?'));
+    					currentTag.getDescription().getKeyChildren().add(
+    							new TagKey(tokens[0], '?', "", value.toString(), true)); //$NON-NLS-1$
+					}else {
+					    System.out.println( Messages.SchemaParser_0 );
+					}
 				}
 				else
 				{

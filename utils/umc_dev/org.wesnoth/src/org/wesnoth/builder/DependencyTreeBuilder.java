@@ -70,7 +70,7 @@ public class DependencyTreeBuilder implements Serializable
         while( containers.isEmpty( ) == false ) {
             IContainer container = containers.poll( );
 
-            IResource main_cfg = container.findMember( "_main.cfg" );
+            IResource main_cfg = container.findMember( "_main.cfg" ); //$NON-NLS-1$
             if ( main_cfg != null ) {
                 // add main.cfg to tree
                 addNode( (IFile) main_cfg );
@@ -107,12 +107,12 @@ public class DependencyTreeBuilder implements Serializable
                      */
                     //TODO: check for including a specific config file?
 
-                    if ( ( name.equals( "campaigns" ) ||
-                         name.equals( "add-ons" ) ) &&
+                    if ( ( name.equals( "campaigns" ) || //$NON-NLS-1$
+                         name.equals( "add-ons" ) ) && //$NON-NLS-1$
                          // the call should contain just string values
                          macro.getExtraMacros( ).isEmpty( ) &&
                          macro.getParams( ).size( ) > 1 &&
-                         macro.getParams( ).get( 0 ).equals( "/" ) )
+                         macro.getParams( ).get( 0 ).equals( "/" ) ) //$NON-NLS-1$
                     {
                         // check if the macro includes directories local
                         // to this project
@@ -121,7 +121,7 @@ public class DependencyTreeBuilder implements Serializable
                         if ( projectPath.contains( macro.getParams( ).get( 1 ) ) ) {
                             containersToAdd.add(
                                 ListUtils.concatenateList(
-                                   macro.getParams( ).subList( 2, macro.getParams( ).size( ) ), "" ) );
+                                   macro.getParams( ).subList( 2, macro.getParams( ).size( ) ), "" ) ); //$NON-NLS-1$
                         }
                     }
                 }
@@ -158,7 +158,7 @@ public class DependencyTreeBuilder implements Serializable
                         String fileName = resource.getName( );
 
                         // just config files.
-                        if ( ! fileName.endsWith( ".cfg" ) ||
+                        if ( ! fileName.endsWith( ".cfg" ) || //$NON-NLS-1$
                              ! ( resource instanceof IFile ))
                             continue;
 
@@ -168,25 +168,25 @@ public class DependencyTreeBuilder implements Serializable
             }
         }
 
-        System.out.println("tree:");
+        System.out.println("tree:"); //$NON-NLS-1$
         if ( !tree_.isEmpty( ) ) {
-            ProjectDependencyNode node = tree_.get( "_ROOT_" ); // $NON-NLS-1$
+            ProjectDependencyNode node = tree_.get( "_ROOT_" ); // $NON-NLS-1$ //$NON-NLS-1$
 
             do {
-                System.out.print( "> " );
+                System.out.print( "> " ); //$NON-NLS-1$
                 ProjectDependencyNode leaf = node;
 
                 do {
-                    System.out.print( leaf + "; " );
+                    System.out.print( leaf + "; " ); //$NON-NLS-1$
                     leaf = leaf.getNext( );
                 } while ( leaf != null );
 
                 node = node.getSon( );
-                System.out.print("\n");
+                System.out.print("\n"); //$NON-NLS-1$
             }while ( node != null );
         }
         else {
-            System.out.println("Empty");
+            System.out.println("Empty"); //$NON-NLS-1$
         }
     }
 
@@ -210,7 +210,7 @@ public class DependencyTreeBuilder implements Serializable
             } else {
                 // no parent yet (== null)
                 // so we're making this the root node for this tree
-                tree_.put( "_ROOT_", newNode );
+                tree_.put( "_ROOT_", newNode ); //$NON-NLS-1$
             }
 
             parent_ = newNode;

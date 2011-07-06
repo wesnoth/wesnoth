@@ -168,6 +168,6 @@ public class ProjectDependencyNode implements Serializable
     @Override
     public String toString()
     {
-        return ( file_ == null ? "" : fileName_ ) + "_" + index_;
+        return ( file_ == null ? "" : fileName_ ) + "_" + index_; //$NON-NLS-1$ //$NON-NLS-2$
     }
 }

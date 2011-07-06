@@ -70,7 +70,7 @@ public class ProjectCache
 							"/.wesnoth"); //$NON-NLS-1$
 
 		definesFile_ = new File (PreprocessorUtils.getInstance().getDefinesLocation( project ));
-		treeCacheFile_ = new File ( WorkspaceUtils.getProjectTemporaryFolder( project ) + "/_TREE_CACHE_.bin" );
+		treeCacheFile_ = new File ( WorkspaceUtils.getProjectTemporaryFolder( project ) + "/_TREE_CACHE_.bin" ); //$NON-NLS-1$
 
 		ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
 		readProperties(true);
@@ -95,7 +95,7 @@ public class ProjectCache
 			try
 			{
 				properties_.load( new InputStreamReader( new FileInputStream(
-				        wesnothFile_.getAbsolutePath() ), "UTF-16" ) );
+				        wesnothFile_.getAbsolutePath() ), "UTF-16" ) ); //$NON-NLS-1$
 			}
 			catch(ClassCastException ex)
 			{

@@ -17,6 +17,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.swt.SWT;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.GUIUtils;
@@ -41,7 +42,7 @@ public class WesnothInstallsUtils
             String[] tokens = str.split( ":" ); //$NON-NLS-1$
 
             if ( tokens.length != 2 ) {
-                Logger.getInstance().logError( "invalid install [" + str + "] in installs list." ); //$NON-NLS-1$
+                Logger.getInstance().logError( "invalid install [" + str + "] in installs list." ); //$NON-NLS-1$ //$NON-NLS-2$
                 continue;
             }
 
@@ -127,10 +128,10 @@ public class WesnothInstallsUtils
                 return false;
 
             if ( GUIUtils.showMessageBox(
-                    "The existing set install for the project " +
+                    Messages.WesnothInstallsUtils_1 +
                     resource.getProject( ).getName( ) +
-                    " doesn't exist anymore or isn't fully configured. " +
-                    "Do you want to try fallback to the default?",
+                    Messages.WesnothInstallsUtils_2 +
+                    Messages.WesnothInstallsUtils_3,
                     SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO )
                 return false; // no hope :(
 
