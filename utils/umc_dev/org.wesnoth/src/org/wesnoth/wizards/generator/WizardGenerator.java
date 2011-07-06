@@ -19,9 +19,9 @@ import org.wesnoth.wizards.NewWizardTemplate;
 public class WizardGenerator extends NewWizardTemplate
 {
 	private String	tagName_;
-	private byte	indent_;
+	private int    	indent_;
 
-	public WizardGenerator(String title, String tagName, byte indent) {
+	public WizardGenerator(String title, String tagName, int indent) {
 
 	    // TODO: wizards should ask the install
 		SchemaParser.getInstance( null ).parseSchema(false);
@@ -41,14 +41,14 @@ public class WizardGenerator extends NewWizardTemplate
 			for (int i = 0; i < pgsKey; i++)
 			{
 				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.getKeyChildren(), startKey,
-									startKey + Constants.WIZ_MaxTextBoxesOnPage, (byte) (indent_ + 1));
+									startKey + Constants.WIZ_MaxTextBoxesOnPage, indent_ + 1 );
 				startKey += Constants.WIZ_MaxTextBoxesOnPage;
 				addPage(tempPageKey);
 			}
 			if (keysNr - 1 > 0)
 			{
 				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.getKeyChildren(),
-												startKey, keysNr - 1, (byte) (indent_ + 1));
+												startKey, keysNr - 1, indent_ + 1 );
 				addPage(tempPageKey);
 			}
 
@@ -59,14 +59,14 @@ public class WizardGenerator extends NewWizardTemplate
 			for (int i = 0; i < pgsTag; i++)
 			{
 				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.getTagChildren(), startTag,
-										startTag + Constants.WIZ_MaxGroupsOnPage, (byte) (indent_ + 1));
+										startTag + Constants.WIZ_MaxGroupsOnPage, indent_ + 1);
 				startTag += Constants.WIZ_MaxTextBoxesOnPage;
 				addPage(tempPageTag);
 			}
 			if (tagsNr - 1 > 0)
 			{
 				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.getTagChildren(),
-											startTag, tagsNr - 1, (byte) (indent_ + 1));
+											startTag, tagsNr - 1, indent_ + 1 );
 				addPage(tempPageTag);
 			}
 
@@ -77,7 +77,7 @@ public class WizardGenerator extends NewWizardTemplate
 		}
 	}
 
-	public byte getIndent()
+	public int getIndent()
 	{
 		return indent_;
 	}

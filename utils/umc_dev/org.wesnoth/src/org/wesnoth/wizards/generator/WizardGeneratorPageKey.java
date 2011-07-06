@@ -31,10 +31,10 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 	private List<TagKey>	keys_;
 	private int				startIndex_, endIndex_;
 	private Composite		container_;
-	private byte			indent_;
+	private int    			indent_;
 
 	public WizardGeneratorPageKey(String tagName, List<TagKey> keys,
-			int startIndex, int endIndex, byte indent) {
+			int startIndex, int endIndex, int indent) {
 		super(Messages.WizardGeneratorPageKey_0 + startIndex);
 		setTitle(tagName + Messages.WizardGeneratorPageKey_1);
 		//setDescription(String.format("page %d to %d out of %d", startIndex, endIndex, keys.size()));

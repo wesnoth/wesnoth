@@ -38,10 +38,10 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 	private Map<String, java.util.List<String>>	content_;
 	private int									startIndex_, endIndex_;
 	private Composite								container_;
-	private byte									indent_;
+	private int    									indent_;
 
 	public WizardGeneratorPageTag(String tagName, java.util.List<Tag> tags,
-			int startIndex, int endIndex, byte indent) {
+			int startIndex, int endIndex, int indent) {
 		super("wizardPageTag" + startIndex); //$NON-NLS-1$
 		setTitle(tagName + Messages.WizardGeneratorPageTag_1);
 		//setDescription(String.format("page %d to %d out of %d", startIndex, endIndex, tags.size()));
