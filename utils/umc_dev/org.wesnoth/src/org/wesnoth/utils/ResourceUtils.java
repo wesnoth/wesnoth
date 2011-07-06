@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.Locale;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -302,6 +303,17 @@ public class ResourceUtils
 	    if ( valid == false )
 	        Logger.getInstance().logWarn("The file does not exist or is null: " + filePath); //$NON-NLS-1$
 	    return valid;
+	}
+
+	/**
+	 * Returns true if the resource is a WML config file
+	 * @param resource The resource to check
+	 * @return True or false
+	 */
+	public static boolean isConfigFile ( IResource resource )
+	{
+	    return resource instanceof IFile &&
+	           resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg"); //$NON-NLS-1$
 	}
 
 	/**

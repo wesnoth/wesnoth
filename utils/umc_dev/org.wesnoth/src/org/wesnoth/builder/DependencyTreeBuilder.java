@@ -40,9 +40,16 @@ import org.wesnoth.wml.WMLRoot;
 public class DependencyTreeBuilder implements Serializable
 {
     private static final long serialVersionUID = 6007509520015856611L;
+    /**
+     * The key by which the rood node of the tree is memorized
+     * in the tree.
+     */
+    public static final String ROOT_NODE_KEY = "_ROOT_";
 
     protected transient IProject project_;
-    protected int currentIndex_ = 0;
+
+    protected boolean isCreated_;
+    protected int currentIndex_;
     private ProjectDependencyNode parent_;
     private ProjectDependencyNode previous_;
 
@@ -51,14 +58,29 @@ public class DependencyTreeBuilder implements Serializable
     public DependencyTreeBuilder( IProject project )
     {
         tree_ = new HashMap<String, ProjectDependencyNode>();
+
+        parent_ = previous_ = null;
+
         project_ = project;
+        isCreated_ = false;
+        currentIndex_ = 0;
     }
 
     /**
-     * Create the whole dependency tree from scratch
+     * Create the whole dependency tree from scratch.
+     * @param force True for force re-creating the tree even if it
+     * was previously created
      */
-    public void createDependencyTree()
+    public void createDependencyTree( boolean force )
     {
+        if ( isCreated_ && !force ) {
+            Logger.getInstance( ).log( "Depedency tree for project " +
+                    project_.getName( ) + " already built. Skipping it." );
+            return;
+        }
+
+        isCreated_ = true;
+
         // start creating the PDT (project dependency tree)
         Queue<IContainer> containers = new LinkedBlockingDeque<IContainer>( );
 
@@ -155,11 +177,8 @@ public class DependencyTreeBuilder implements Serializable
                     if ( resource instanceof IContainer )
                         containers.add( (IContainer)resource );
                     else {
-                        String fileName = resource.getName( );
-
                         // just config files.
-                        if ( ! fileName.endsWith( ".cfg" ) || //$NON-NLS-1$
-                             ! ( resource instanceof IFile ))
+                        if ( !ResourceUtils.isConfigFile( resource ) )
                             continue;
 
                         addNode( ( IFile ) resource );
@@ -170,7 +189,7 @@ public class DependencyTreeBuilder implements Serializable
 
         System.out.println("tree:"); //$NON-NLS-1$
         if ( !tree_.isEmpty( ) ) {
-            ProjectDependencyNode node = tree_.get( "_ROOT_" ); // $NON-NLS-1$ //$NON-NLS-1$
+            ProjectDependencyNode node = tree_.get( ROOT_NODE_KEY );
 
             do {
                 System.out.print( "> " ); //$NON-NLS-1$
@@ -210,7 +229,7 @@ public class DependencyTreeBuilder implements Serializable
             } else {
                 // no parent yet (== null)
                 // so we're making this the root node for this tree
-                tree_.put( "_ROOT_", newNode ); //$NON-NLS-1$
+                tree_.put( ROOT_NODE_KEY, newNode ); //$NON-NLS-1$
             }
 
             parent_ = newNode;
@@ -241,6 +260,15 @@ public class DependencyTreeBuilder implements Serializable
     }
 
     /**
+     * Returns true if the tree was already created, false otherwise
+     * @return A boolean value
+     */
+    public boolean getIsCreated()
+    {
+        return isCreated_;
+    }
+
+    /**
      * Deserializes this object from the input
      * @param input The object input stream
      * @throws IOException
@@ -253,6 +281,7 @@ public class DependencyTreeBuilder implements Serializable
             return;
 
         this.currentIndex_ = tmp.currentIndex_;
+        this.isCreated_ = tmp.isCreated_;
         this.tree_ = tmp.tree_;
         this.previous_ = tmp.previous_;
         this.parent_ = tmp.parent_;

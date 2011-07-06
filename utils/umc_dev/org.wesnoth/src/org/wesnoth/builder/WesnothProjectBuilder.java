@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import org.eclipse.core.resources.IContainer;
@@ -49,21 +48,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		super();
 	}
 
-	protected void fullBuild(final IProgressMonitor monitor) throws CoreException
-	{
-	    ProjectCache cache = ProjectUtils.getCacheForProject( getProject( ) );
-	    cache.getDependencyTree( ).createDependencyTree( );
-
-	//	getProject().accept(new ResourceVisitor(monitor));
-	}
-
-	protected void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor)
-			throws CoreException
-	{
-		// the visitor does the work.
-		//delta.accept(new ResourceDeltaVisitor(monitor));
-	}
-
 	@SuppressWarnings("rawtypes")
 	@Override
 	protected IProject[] build(int kind, Map args, IProgressMonitor monitor)
@@ -72,51 +56,29 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	    if ( WesnothInstallsUtils.setupInstallForResource( getProject() ) == false )
 	        return null;
 
-	    String installName = WesnothInstallsUtils.getInstallNameForResource( getProject() );
-
 	    Logger.getInstance().log("building..."); //$NON-NLS-1$
 		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
 
+        String installName = WesnothInstallsUtils.getInstallNameForResource( getProject() );
 		Paths paths = Preferences.getPaths( installName );
 
 		monitor.subTask(Messages.WesnothProjectBuilder_3);
-		if ( paths.getUserDir( ).isEmpty( ) )
-		{
-			Logger.getInstance().log("no preferences set (project builder)", //$NON-NLS-1$
-					Messages.WesnothProjectBuilder_7); 
+		if ( WorkspaceUtils.checkPathsAreSet( installName, true ) == false )
 			return null;
-		}
 		monitor.worked(5);
+
+		monitor.subTask( "Creating the project tree ..." );
+        ProjectCache cache = ProjectUtils.getCacheForProject( getProject( ) );
+        cache.getDependencyTree( ).createDependencyTree( false );
+        monitor.worked( 10 );
 
 		// create the temporary directory used by the plugin if not created
 		monitor.subTask(Messages.WesnothProjectBuilder_6);
 		WorkspaceUtils.getTemporaryFolder();
 		monitor.worked(2);
 
-		// check for 'build.xml' existance
-		if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == true) //$NON-NLS-1$
-		{
-			// run the ant job to copy the whole project
-			// in the user add-ons directory (incremental)
-			monitor.subTask(Messages.WesnothProjectBuilder_8);
-			Map<String, String> properties = new HashMap<String, String>();
-			properties.put("wesnoth.user.dir", paths.getUserDir( )); //$NON-NLS-1$
-			Logger.getInstance().log("Ant result:"); //$NON-NLS-1$
-
-			String result = AntUtils.runAnt(
-					getProject().getLocation().toOSString() + "/build.xml", //$NON-NLS-1$
-					properties, true);
-			Logger.getInstance().log(result);
-			monitor.worked(10);
-
-			if (result == null)
-			{
-				Logger.getInstance().log("error running the ant job", //$NON-NLS-1$
-						Messages.WesnothProjectBuilder_13);
-				return null;
-			}
-		}
-		monitor.worked(2);
+		if ( runAntJob(paths, monitor ) == false )
+		    return null;
 
 		boolean readDefines = true;
 		if (kind == FULL_BUILD)
@@ -137,7 +99,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 				for(IResourceDelta tmp : affected)
 				{
-					if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")) //$NON-NLS-1$
+					if ( ResourceUtils.isConfigFile( tmp.getResource( ) ) )
 					{
 						readDefines = true;
 						break;
@@ -151,7 +113,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		{
 			// we read the defines at the end of the build
 			// to speed up things (and only if we had any .cfg files processed)
-		    ProjectCache cache = ProjectUtils.getCacheForProject( getProject() );
 		    cache.readDefines( true );
 			cache.saveCache( );
 
@@ -161,10 +122,54 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		return null;
 	}
 
+    protected void fullBuild(final IProgressMonitor monitor) throws CoreException
+    {
+        ProjectCache cache = ProjectUtils.getCacheForProject( getProject( ) );
+        cache.getDependencyTree( ).createDependencyTree( true );
+
+    //  getProject().accept(new ResourceVisitor(monitor));
+    }
+
+    protected void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor)
+            throws CoreException
+    {
+        // the visitor does the work.
+        //delta.accept(new ResourceDeltaVisitor(monitor));
+    }
+
+	private boolean runAntJob( Paths paths, IProgressMonitor monitor )
+	{
+        // check for 'build.xml' existance
+        if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == true) //$NON-NLS-1$
+        {
+            // run the ant job to copy the whole project
+            // in the user add-ons directory (incremental)
+            monitor.subTask(Messages.WesnothProjectBuilder_8);
+            Map<String, String> properties = new HashMap<String, String>();
+            properties.put("wesnoth.user.dir", paths.getUserDir( )); //$NON-NLS-1$
+            Logger.getInstance().log("Ant result:"); //$NON-NLS-1$
+
+            String result = AntUtils.runAnt(
+                    getProject().getLocation().toOSString() + "/build.xml", //$NON-NLS-1$
+                    properties, true);
+            Logger.getInstance().log(result);
+            monitor.worked(10);
+
+            if (result == null)
+            {
+                Logger.getInstance().log("error running the ant job", //$NON-NLS-1$
+                        Messages.WesnothProjectBuilder_13);
+                return false;
+            }
+        }
+
+        monitor.worked(2);
+        return true;
+	}
+
 	protected void handleRemovedResource(IResource resource)
 	{
-		if (resource instanceof IFile &&
-			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg"))) //$NON-NLS-1$
+		if ( ResourceUtils.isConfigFile( resource ) )
 		{
 			ProjectUtils.getCacheForProject(getProject()).
 					getConfigs().remove(resource.getName());
@@ -181,8 +186,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			return false;
 
 		// config files
-		if (resource instanceof IFile &&
-			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg"))) //$NON-NLS-1$
+		if ( ResourceUtils.isConfigFile( resource ) )
 		{
 			boolean isMainCfg = resource.getName().equals("_main.cfg"); //$NON-NLS-1$
 			if (handleMainCfg == false && isMainCfg == true)
@@ -321,7 +325,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 			for(IResourceDelta tmp : affected)
 			{
-				if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")) //$NON-NLS-1$
+				if ( ResourceUtils.isConfigFile( tmp.getResource( ) ) )
 				{
 					foundCfg = true;
 					break;
