@@ -110,7 +110,7 @@ public class TemplateProvider
 		if (tmpTemplate == null || parameters == null)
 			return null;
 
-		StringBuilder result = new StringBuilder(); //$NON-NLS-1$
+		StringBuilder result = new StringBuilder();
 		String[] template = StringUtils.getLines(tmpTemplate);
 		boolean skipLine;
 

@@ -215,7 +215,7 @@ public class PreprocessorUtils
 	}
 
 	/**
-	 * Gets the temporary location where that file should be preprcessed
+	 * Gets the temporary location where that file should be preprocessed
 	 * @param file
 	 * @return
 	 */
@@ -237,8 +237,7 @@ public class PreprocessorUtils
 	 */
 	public String getDefinesLocation(IResource resource)
 	{
-		return WorkspaceUtils.getTemporaryFolder() +
-				resource.getProject().getName() +
+		return WorkspaceUtils.getProjectTemporaryFolder( resource.getProject( ) ) +
 				"/_MACROS_.cfg"; //$NON-NLS-1$
 	}
 

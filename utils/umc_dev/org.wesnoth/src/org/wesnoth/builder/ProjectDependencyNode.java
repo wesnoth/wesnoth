@@ -6,7 +6,9 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.wesnoth.projects;
+package org.wesnoth.builder;
+
+import java.io.Serializable;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -22,8 +24,10 @@ import org.wesnoth.Logger;
  * Alternatively, a tree node is created
  * when a new resource is added.
  */
-public class ProjectDependencyNode
+public class ProjectDependencyNode implements Serializable
 {
+    private static final long serialVersionUID = -9140173740211465384L;
+
     /**
      * This integer represents the default step between 2 file indexes.
      * Since int it's on 4 bytes, it can hold values between
@@ -41,7 +45,8 @@ public class ProjectDependencyNode
     private ProjectDependencyNode parent_;
     private ProjectDependencyNode son_;
 
-    private IFile file_;
+    protected transient IFile file_;
+    protected String fileName_;
 
     private int index_;
 
@@ -50,6 +55,7 @@ public class ProjectDependencyNode
         previous_ = next_ = parent_ = son_ = null;
 
         file_ = file;
+        fileName_ = file.getProjectRelativePath( ).toString( );
         setIndex( index );
     }
 
@@ -162,6 +168,6 @@ public class ProjectDependencyNode
     @Override
     public String toString()
     {
-        return ( file_ == null ? "" : file_.getProjectRelativePath( ).toString( ) ) + "_" + index_;
+        return ( file_ == null ? "" : fileName_ ) + "_" + index_;
     }
 }

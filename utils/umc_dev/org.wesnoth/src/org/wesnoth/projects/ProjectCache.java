@@ -9,6 +9,11 @@
 package org.wesnoth.projects;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,10 +22,12 @@ import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.builder.DependencyTreeBuilder;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preprocessor.Define;
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.utils.ResourceUtils;
+import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.wml.core.ConfigFile;
 import org.wesnoth.wml.core.Variable;
 
@@ -39,9 +46,11 @@ public class ProjectCache
 
 	private File wesnothFile_;
 	private File definesFile_;
+	private File treeCacheFile_;
 
 	private Map< String, ConfigFile > configFiles_;
 	private Map< String, Define > defines_;
+	private DependencyTreeBuilder dependTree_;
 
 	private IProject project_;
 
@@ -52,13 +61,16 @@ public class ProjectCache
 		configFiles_ = new HashMap<String, ConfigFile>();
 		defines_ = new HashMap<String, Define>(0);
 
+		dependTree_ = new DependencyTreeBuilder( project_ );
+
 		propertiesTimetamp_ = 0;
 		properties_ = new DialogSettings("project"); //$NON-NLS-1$
 
 		wesnothFile_ = new File(project.getLocation().toOSString()  +
 							"/.wesnoth"); //$NON-NLS-1$
-		definesFile_ = new File (PreprocessorUtils.getInstance().getTemporaryLocation(
-				project.getFile("_main.cfg"))  + "/_MACROS_.cfg"); //$NON-NLS-1$ //$NON-NLS-2$
+
+		definesFile_ = new File (PreprocessorUtils.getInstance().getDefinesLocation( project ));
+		treeCacheFile_ = new File ( WorkspaceUtils.getProjectTemporaryFolder( project ) + "/_TREE_CACHE_.bin" );
 
 		ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
 		readProperties(true);
@@ -82,7 +94,8 @@ public class ProjectCache
 
 			try
 			{
-				properties_.load(wesnothFile_.getAbsolutePath());
+				properties_.load( new InputStreamReader( new FileInputStream(
+				        wesnothFile_.getAbsolutePath() ), "UTF-16" ) );
 			}
 			catch(ClassCastException ex)
 			{
@@ -90,7 +103,7 @@ public class ProjectCache
 				// we already have an xml format used by Properties.
 				// convert it to DialogSettings
 				ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), true);
-				properties_.load(wesnothFile_.getAbsolutePath());
+				properties_.load( wesnothFile_.getAbsolutePath() );
 			}
 
 			if (properties_.getSection("configs") != null) //$NON-NLS-1$
@@ -116,6 +129,14 @@ public class ProjectCache
 					configFiles_.put(config.get("filename"), tmp); //$NON-NLS-1$
 				}
 			}
+
+			// unserialize the tree builder
+			if ( treeCacheFile_.exists( ) ) {
+			    FileInputStream inStream = new FileInputStream( treeCacheFile_ );
+                ObjectInputStream deserializer = new ObjectInputStream( inStream );
+                dependTree_.deserialize( deserializer );
+			}
+
 			propertiesTimetamp_ = wesnothFile_.lastModified();
 		}
 		catch (Exception e)
@@ -198,8 +219,15 @@ public class ProjectCache
 			}
 
 			// store properties
-			properties_.save(wesnothFile_.getAbsolutePath());
+			properties_.save( wesnothFile_.getAbsolutePath() );
 			propertiesTimetamp_ = wesnothFile_.lastModified();
+
+            // save the PDT tree
+            FileOutputStream outStream = new FileOutputStream( treeCacheFile_ );
+            ObjectOutputStream serializer = new ObjectOutputStream( outStream );
+            serializer.writeObject( dependTree_ );
+            serializer.close( );
+
 			return true;
 		}
 		catch (Exception e)
@@ -256,4 +284,13 @@ public class ProjectCache
 	            Constants.P_INST_NAME_PREFIX + project_.getName( ),
 	            newInstallName );
 	}
+
+	/**
+	 * Returns the current dependency tree builder for this project
+	 * @return A dependency tree
+	 */
+	public DependencyTreeBuilder getDependencyTree()
+    {
+        return dependTree_;
+    }
 }

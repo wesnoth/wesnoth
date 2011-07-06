@@ -45,8 +45,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 	protected void fullBuild(final IProgressMonitor monitor) throws CoreException
 	{
-	    DependencyTreeBuilder treeBuilder = new DependencyTreeBuilder( getProject( ) );
-	    treeBuilder.createDependencyTree( );
+	    ProjectCache cache = ProjectUtils.getCacheForProject( getProject( ) );
+	    cache.getDependencyTree( ).createDependencyTree( );
 
 	//	getProject().accept(new ResourceVisitor(monitor));
 	}

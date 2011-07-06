@@ -192,7 +192,7 @@ public class SchemaParser
 				else if (tagStack.peek().equals("description")) //$NON-NLS-1$
 				{
 					String[] tokens = line.trim().split("="); //$NON-NLS-1$
-					StringBuilder value = new StringBuilder(); //$NON-NLS-1$
+					StringBuilder value = new StringBuilder();
 
 					// this *should* happen only in [description]
 					// multi-line string

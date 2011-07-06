@@ -8,6 +8,9 @@
  *******************************************************************************/
 package org.wesnoth.builder;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -29,15 +32,16 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.wesnoth.Logger;
 import org.wesnoth.builder.WesnothProjectBuilder.WMLFilesComparator;
-import org.wesnoth.projects.ProjectDependencyNode;
 import org.wesnoth.utils.ListUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
 
-public class DependencyTreeBuilder
+public class DependencyTreeBuilder implements Serializable
 {
-    protected IProject project_;
+    private static final long serialVersionUID = 6007509520015856611L;
+
+    protected transient IProject project_;
     protected int currentIndex_ = 0;
     private ProjectDependencyNode parent_;
     private ProjectDependencyNode previous_;
@@ -50,12 +54,16 @@ public class DependencyTreeBuilder
         project_ = project;
     }
 
+    /**
+     * Create the whole dependency tree from scratch
+     */
     public void createDependencyTree()
     {
         // start creating the PDT (project dependency tree)
         Queue<IContainer> containers = new LinkedBlockingDeque<IContainer>( );
 
         parent_ = null;
+        tree_.clear( );
 
         containers.add( project_ );
 
@@ -182,7 +190,11 @@ public class DependencyTreeBuilder
         }
     }
 
-    private void addNode( IFile file )
+    /**
+     * Adds a new node to this tree
+     * @param file The file to add
+     */
+    public void addNode( IFile file )
     {
         ProjectDependencyNode newNode = new ProjectDependencyNode( file, currentIndex_ );
         currentIndex_ += ProjectDependencyNode.INDEX_STEP;
@@ -206,5 +218,37 @@ public class DependencyTreeBuilder
 
         tree_.put( file.getProjectRelativePath( ).toString( ), newNode );
         previous_ = newNode;
+    }
+
+    /**
+     * Removes a node specified by the file
+     * @param file The file to remove from the tree
+     */
+    public void removeNode( IFile file )
+    {
+
+    }
+
+    /**
+     * Deserializes this object from the input
+     * @param input The object input stream
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public void deserialize( ObjectInputStream input ) throws IOException, ClassNotFoundException
+    {
+        DependencyTreeBuilder tmp = (DependencyTreeBuilder) input.readObject( );
+        if ( tmp == null )
+            return;
+
+        this.currentIndex_ = tmp.currentIndex_;
+        this.tree_ = tmp.tree_;
+        this.previous_ = tmp.previous_;
+        this.parent_ = tmp.parent_;
+
+        // now, refill the dependency nodes
+        for ( ProjectDependencyNode node : tree_.values( ) ) {
+            node.file_ = project_.getFile( node.fileName_ );
+        }
     }
 }

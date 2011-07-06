@@ -45,10 +45,9 @@ import org.wesnoth.navigator.WesnothProjectsExplorer;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.projects.ProjectUtils;
 
-
 public class WorkspaceUtils
 {
-	private static String	temporaryFolder_	= null; //$NON-NLS-1$
+	private static String	temporaryFolder_	= null;
 
 	/**
 	 * Gets the selected project or or null if none selected
@@ -275,6 +274,16 @@ public class WorkspaceUtils
 				temporaryFolder_ = null;
 		}
 		return temporaryFolder_;
+	}
+
+	/**
+	 * Gets the project's temporary folder
+	 * @param project The project for which to compute the temporary folder
+	 * @return
+	 */
+	public static String getProjectTemporaryFolder( IProject project )
+	{
+	    return getTemporaryFolder( ) + project.getName( );
 	}
 
 	/**
