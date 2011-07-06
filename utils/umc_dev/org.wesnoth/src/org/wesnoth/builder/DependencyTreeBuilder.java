@@ -14,7 +14,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
@@ -93,7 +93,7 @@ public class DependencyTreeBuilder implements Serializable
                 }
 
                 // now check what macros are really an inclusion macro
-                Set<String> containersToAdd = new HashSet<String>( );
+                Set<String> containersToAdd = new LinkedHashSet<String>( );
 
                 for ( WMLMacroCall macro : macroCalls ) {
                     String name = macro.getName( );
