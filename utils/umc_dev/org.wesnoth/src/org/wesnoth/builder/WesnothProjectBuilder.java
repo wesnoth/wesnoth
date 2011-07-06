@@ -8,8 +8,10 @@
  *******************************************************************************/
 package org.wesnoth.builder;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -27,9 +29,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
+import org.wesnoth.installs.WesnothInstallsUtils;
+import org.wesnoth.preferences.Preferences;
+import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.projects.ProjectUtils;
+import org.wesnoth.utils.AntUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLSaxHandler;
@@ -55,105 +61,103 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			throws CoreException
 	{
 		// the visitor does the work.
-		delta.accept(new ResourceDeltaVisitor(monitor));
+		//delta.accept(new ResourceDeltaVisitor(monitor));
 	}
-
 
 	@SuppressWarnings("rawtypes")
 	@Override
 	protected IProject[] build(int kind, Map args, IProgressMonitor monitor)
 			throws CoreException
 	{
-	    fullBuild( monitor );
-//	    if ( WesnothInstallsUtils.setupInstallForResource( getProject() ) == false )
-//	        return null;
-//
-//	    String installName = WesnothInstallsUtils.getInstallNameForResource( getProject() );
-//
-//	    Logger.getInstance().log(Messages.WesnothProjectBuilder_0);
-//		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
-//
-//		Paths paths = Preferences.getPaths( installName );
-//
-//		monitor.subTask(Messages.WesnothProjectBuilder_3);
-//		if ( paths.getUserDir( ).isEmpty( ) )
-//		{
-//			Logger.getInstance().log(Messages.WesnothProjectBuilder_4,
-//					Messages.WesnothProjectBuilder_5);
-//			return null;
-//		}
-//		monitor.worked(5);
-//
-//		// create the temporary directory used by the plugin if not created
-//		monitor.subTask(Messages.WesnothProjectBuilder_6);
-//		WorkspaceUtils.getTemporaryFolder();
-//		monitor.worked(2);
-//
-//		// check for 'build.xml' existance
-//		if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == true) //$NON-NLS-1$
-//		{
-//			// run the ant job to copy the whole project
-//			// in the user add-ons directory (incremental)
-//			monitor.subTask(Messages.WesnothProjectBuilder_8);
-//			Map<String, String> properties = new HashMap<String, String>();
-//			properties.put("wesnoth.user.dir", paths.getUserDir( )); //$NON-NLS-1$
-//			Logger.getInstance().log(Messages.WesnothProjectBuilder_10);
-//
-//			String result = AntUtils.runAnt(
-//					getProject().getLocation().toOSString() + "/build.xml", //$NON-NLS-1$
-//					properties, true);
-//			Logger.getInstance().log(result);
-//			monitor.worked(10);
-//
-//			if (result == null)
-//			{
-//				Logger.getInstance().log(Messages.WesnothProjectBuilder_12,
-//						Messages.WesnothProjectBuilder_13);
-//				return null;
-//			}
-//		}
-//		monitor.worked(2);
-//
-//		boolean readDefines = true;
-//		if (kind == FULL_BUILD)
-//		{
-//			fullBuild(monitor);
-//		}
-//		else
-//		{
-//			IResourceDelta delta = getDelta(getProject());
-//			if (delta == null)
-//			{
-//				fullBuild(monitor);
-//			}
-//			else
-//			{
-//				readDefines = false;
-//				IResourceDelta[] affected = delta.getAffectedChildren();
-//
-//				for(IResourceDelta tmp : affected)
-//				{
-//					if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")) //$NON-NLS-1$
-//					{
-//						readDefines = true;
-//						break;
-//					}
-//				}
-//				incrementalBuild(delta, monitor);
-//			}
-//		}
-//
-//		if (readDefines)
-//		{
-//			// we read the defines at the end of the build
-//			// to speed up things (and only if we had any .cfg files processed)
-//		    ProjectCache cache = ProjectUtils.getCacheForProject( getProject() );
-//		    cache.readDefines( true );
-//			cache.saveCache( );
-//
-//			monitor.worked(10);
-//		}
-//		monitor.done();
+	    if ( WesnothInstallsUtils.setupInstallForResource( getProject() ) == false )
+	        return null;
+
+	    String installName = WesnothInstallsUtils.getInstallNameForResource( getProject() );
+
+	    Logger.getInstance().log(Messages.WesnothProjectBuilder_0);
+		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
+
+		Paths paths = Preferences.getPaths( installName );
+
+		monitor.subTask(Messages.WesnothProjectBuilder_3);
+		if ( paths.getUserDir( ).isEmpty( ) )
+		{
+			Logger.getInstance().log(Messages.WesnothProjectBuilder_4,
+					Messages.WesnothProjectBuilder_5);
+			return null;
+		}
+		monitor.worked(5);
+
+		// create the temporary directory used by the plugin if not created
+		monitor.subTask(Messages.WesnothProjectBuilder_6);
+		WorkspaceUtils.getTemporaryFolder();
+		monitor.worked(2);
+
+		// check for 'build.xml' existance
+		if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == true) //$NON-NLS-1$
+		{
+			// run the ant job to copy the whole project
+			// in the user add-ons directory (incremental)
+			monitor.subTask(Messages.WesnothProjectBuilder_8);
+			Map<String, String> properties = new HashMap<String, String>();
+			properties.put("wesnoth.user.dir", paths.getUserDir( )); //$NON-NLS-1$
+			Logger.getInstance().log(Messages.WesnothProjectBuilder_10);
+
+			String result = AntUtils.runAnt(
+					getProject().getLocation().toOSString() + "/build.xml", //$NON-NLS-1$
+					properties, true);
+			Logger.getInstance().log(result);
+			monitor.worked(10);
+
+			if (result == null)
+			{
+				Logger.getInstance().log(Messages.WesnothProjectBuilder_12,
+						Messages.WesnothProjectBuilder_13);
+				return null;
+			}
+		}
+		monitor.worked(2);
+
+		boolean readDefines = true;
+		if (kind == FULL_BUILD)
+		{
+			fullBuild(monitor);
+		}
+		else
+		{
+			IResourceDelta delta = getDelta(getProject());
+			if (delta == null)
+			{
+				fullBuild(monitor);
+			}
+			else
+			{
+				readDefines = false;
+				IResourceDelta[] affected = delta.getAffectedChildren();
+
+				for(IResourceDelta tmp : affected)
+				{
+					if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")) //$NON-NLS-1$
+					{
+						readDefines = true;
+						break;
+					}
+				}
+				incrementalBuild(delta, monitor);
+			}
+		}
+
+		if (readDefines)
+		{
+			// we read the defines at the end of the build
+			// to speed up things (and only if we had any .cfg files processed)
+		    ProjectCache cache = ProjectUtils.getCacheForProject( getProject() );
+		    cache.readDefines( true );
+			cache.saveCache( );
+
+			monitor.worked(10);
+		}
+		monitor.done();
 		return null;
 	}
 
