@@ -47,10 +47,7 @@ public class WMLFormatter extends AbstractDeclarativeFormatter
 		c.setNoSpace().around(f.getWMLKeyAccess().getEqualsSignKeyword_1());
 
 		// one indentation after tag ...
-		c.setIndentationIncrement().before(f.getWMLTagAccess().getTagsAssignment_4_0());
-//		c.setIndentationIncrement().before(f.getWMLTagAccess().getTextdomainsAssignment_4_4());
-//		c.setIndentationIncrement().before(f.getWMLTagAccess().getMacroCallsAssignment_4_2());
-		c.setIndentationIncrement().before(f.getWMLTagAccess().getKeysAssignment_4_1());
+		c.setIndentationIncrement().before(f.getWMLTagAccess().getExpressionsAssignment_4( ));
 
 		// but get back the [/<tagname>]
 		c.setIndentationDecrement().before(f.getWMLTagAccess().getLeftSquareBracketSolidusKeyword_5());

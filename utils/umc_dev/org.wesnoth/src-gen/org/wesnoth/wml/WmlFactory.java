@@ -72,15 +72,6 @@ public interface WmlFactory extends EFactory
   WMLMacroCall createWMLMacroCall();
 
   /**
-   * Returns a new object of class '<em>WML Lua Code</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>WML Lua Code</em>'.
-   * @generated
-   */
-  WMLLuaCode createWMLLuaCode();
-
-  /**
    * Returns a new object of class '<em>WML Array Call</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -108,6 +99,33 @@ public interface WmlFactory extends EFactory
   WMLPreprocIF createWMLPreprocIF();
 
   /**
+   * Returns a new object of class '<em>WML Root Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>WML Root Expression</em>'.
+   * @generated
+   */
+  WMLRootExpression createWMLRootExpression();
+
+  /**
+   * Returns a new object of class '<em>WML Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>WML Expression</em>'.
+   * @generated
+   */
+  WMLExpression createWMLExpression();
+
+  /**
+   * Returns a new object of class '<em>WML Valued Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>WML Valued Expression</em>'.
+   * @generated
+   */
+  WMLValuedExpression createWMLValuedExpression();
+
+  /**
    * Returns a new object of class '<em>WML Textdomain</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -115,6 +133,15 @@ public interface WmlFactory extends EFactory
    * @generated
    */
   WMLTextdomain createWMLTextdomain();
+
+  /**
+   * Returns a new object of class '<em>WML Lua Code</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>WML Lua Code</em>'.
+   * @generated
+   */
+  WMLLuaCode createWMLLuaCode();
 
   /**
    * Returns the package supported by this factory.

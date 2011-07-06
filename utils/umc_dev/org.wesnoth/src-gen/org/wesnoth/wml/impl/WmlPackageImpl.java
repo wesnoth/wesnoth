@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.wesnoth.wml.WMLArrayCall;
+import org.wesnoth.wml.WMLExpression;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLKeyValue;
 import org.wesnoth.wml.WMLLuaCode;
@@ -21,8 +22,10 @@ import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLMacroDefine;
 import org.wesnoth.wml.WMLPreprocIF;
 import org.wesnoth.wml.WMLRoot;
+import org.wesnoth.wml.WMLRootExpression;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WMLTextdomain;
+import org.wesnoth.wml.WMLValuedExpression;
 import org.wesnoth.wml.WmlFactory;
 import org.wesnoth.wml.WmlPackage;
 
@@ -74,13 +77,6 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass wmlLuaCodeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass wmlArrayCallEClass = null;
 
   /**
@@ -102,7 +98,35 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass wmlRootExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass wmlExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass wmlValuedExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass wmlTextdomainEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass wmlLuaCodeEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -182,49 +206,9 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWMLRoot_Tags()
+  public EReference getWMLRoot_Expressions()
   {
     return (EReference)wmlRootEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLRoot_MacroCalls()
-  {
-    return (EReference)wmlRootEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLRoot_MacroDefines()
-  {
-    return (EReference)wmlRootEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLRoot_Textdomains()
-  {
-    return (EReference)wmlRootEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLRoot_IfDefs()
-  {
-    return (EReference)wmlRootEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -252,69 +236,9 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLTag_Name()
+  public EReference getWMLTag_Expressions()
   {
-    return (EAttribute)wmlTagEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLTag_Tags()
-  {
-    return (EReference)wmlTagEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLTag_Keys()
-  {
-    return (EReference)wmlTagEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLTag_MacroCalls()
-  {
-    return (EReference)wmlTagEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLTag_MacroDefines()
-  {
-    return (EReference)wmlTagEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLTag_Textdomains()
-  {
-    return (EReference)wmlTagEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLTag_IfDefs()
-  {
-    return (EReference)wmlTagEClass.getEStructuralFeatures().get(7);
+    return (EReference)wmlTagEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -324,7 +248,7 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    */
   public EAttribute getWMLTag_EndName()
   {
-    return (EAttribute)wmlTagEClass.getEStructuralFeatures().get(8);
+    return (EAttribute)wmlTagEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -342,19 +266,9 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLKey_Name()
-  {
-    return (EAttribute)wmlKeyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getWMLKey_Value()
   {
-    return (EReference)wmlKeyEClass.getEStructuralFeatures().get(1);
+    return (EReference)wmlKeyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -364,7 +278,7 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    */
   public EAttribute getWMLKey_Eol()
   {
-    return (EAttribute)wmlKeyEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)wmlKeyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -412,7 +326,7 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLMacroCall_Name()
+  public EAttribute getWMLMacroCall_Params()
   {
     return (EAttribute)wmlMacroCallEClass.getEStructuralFeatures().get(2);
   }
@@ -422,39 +336,9 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLMacroCall_Params()
-  {
-    return (EAttribute)wmlMacroCallEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getWMLMacroCall_ExtraMacros()
   {
-    return (EReference)wmlMacroCallEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getWMLLuaCode()
-  {
-    return wmlLuaCodeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getWMLLuaCode_Value()
-  {
-    return (EAttribute)wmlLuaCodeEClass.getEStructuralFeatures().get(0);
+    return (EReference)wmlMacroCallEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -492,79 +376,9 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLMacroDefine_Name()
+  public EReference getWMLMacroDefine_Expressions()
   {
-    return (EAttribute)wmlMacroDefineEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLMacroDefine_Tags()
-  {
-    return (EReference)wmlMacroDefineEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLMacroDefine_Keys()
-  {
-    return (EReference)wmlMacroDefineEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLMacroDefine_MacroCalls()
-  {
-    return (EReference)wmlMacroDefineEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLMacroDefine_MacroDefines()
-  {
-    return (EReference)wmlMacroDefineEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLMacroDefine_Textdomains()
-  {
-    return (EReference)wmlMacroDefineEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getWMLMacroDefine_Values()
-  {
-    return (EAttribute)wmlMacroDefineEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLMacroDefine_IfDefs()
-  {
-    return (EReference)wmlMacroDefineEClass.getEStructuralFeatures().get(7);
+    return (EReference)wmlMacroDefineEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -574,7 +388,7 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    */
   public EAttribute getWMLMacroDefine_EndName()
   {
-    return (EAttribute)wmlMacroDefineEClass.getEStructuralFeatures().get(8);
+    return (EAttribute)wmlMacroDefineEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -592,79 +406,9 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLPreprocIF_Name()
+  public EReference getWMLPreprocIF_Expressions()
   {
-    return (EAttribute)wmlPreprocIFEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLPreprocIF_Tags()
-  {
-    return (EReference)wmlPreprocIFEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLPreprocIF_Keys()
-  {
-    return (EReference)wmlPreprocIFEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLPreprocIF_MacroCalls()
-  {
-    return (EReference)wmlPreprocIFEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLPreprocIF_MacroDefines()
-  {
-    return (EReference)wmlPreprocIFEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLPreprocIF_Textdomains()
-  {
-    return (EReference)wmlPreprocIFEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getWMLPreprocIF_Values()
-  {
-    return (EAttribute)wmlPreprocIFEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWMLPreprocIF_IfDefs()
-  {
-    return (EReference)wmlPreprocIFEClass.getEStructuralFeatures().get(7);
+    return (EReference)wmlPreprocIFEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -674,7 +418,7 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    */
   public EAttribute getWMLPreprocIF_Elses()
   {
-    return (EAttribute)wmlPreprocIFEClass.getEStructuralFeatures().get(8);
+    return (EAttribute)wmlPreprocIFEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -684,7 +428,47 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    */
   public EAttribute getWMLPreprocIF_EndName()
   {
-    return (EAttribute)wmlPreprocIFEClass.getEStructuralFeatures().get(9);
+    return (EAttribute)wmlPreprocIFEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWMLRootExpression()
+  {
+    return wmlRootExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWMLExpression()
+  {
+    return wmlExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLExpression_Name()
+  {
+    return (EAttribute)wmlExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWMLValuedExpression()
+  {
+    return wmlValuedExpressionEClass;
   }
 
   /**
@@ -702,9 +486,19 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLTextdomain_Name()
+  public EClass getWMLLuaCode()
   {
-    return (EAttribute)wmlTextdomainEClass.getEStructuralFeatures().get(0);
+    return wmlLuaCodeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLLuaCode_Value()
+  {
+    return (EAttribute)wmlLuaCodeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -738,25 +532,14 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
 
     // Create classes and their features
     wmlRootEClass = createEClass(WML_ROOT);
-    createEReference(wmlRootEClass, WML_ROOT__TAGS);
-    createEReference(wmlRootEClass, WML_ROOT__MACRO_CALLS);
-    createEReference(wmlRootEClass, WML_ROOT__MACRO_DEFINES);
-    createEReference(wmlRootEClass, WML_ROOT__TEXTDOMAINS);
-    createEReference(wmlRootEClass, WML_ROOT__IF_DEFS);
+    createEReference(wmlRootEClass, WML_ROOT__EXPRESSIONS);
 
     wmlTagEClass = createEClass(WML_TAG);
     createEAttribute(wmlTagEClass, WML_TAG__PLUS);
-    createEAttribute(wmlTagEClass, WML_TAG__NAME);
-    createEReference(wmlTagEClass, WML_TAG__TAGS);
-    createEReference(wmlTagEClass, WML_TAG__KEYS);
-    createEReference(wmlTagEClass, WML_TAG__MACRO_CALLS);
-    createEReference(wmlTagEClass, WML_TAG__MACRO_DEFINES);
-    createEReference(wmlTagEClass, WML_TAG__TEXTDOMAINS);
-    createEReference(wmlTagEClass, WML_TAG__IF_DEFS);
+    createEReference(wmlTagEClass, WML_TAG__EXPRESSIONS);
     createEAttribute(wmlTagEClass, WML_TAG__END_NAME);
 
     wmlKeyEClass = createEClass(WML_KEY);
-    createEAttribute(wmlKeyEClass, WML_KEY__NAME);
     createEReference(wmlKeyEClass, WML_KEY__VALUE);
     createEAttribute(wmlKeyEClass, WML_KEY__EOL);
 
@@ -765,41 +548,32 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     wmlMacroCallEClass = createEClass(WML_MACRO_CALL);
     createEAttribute(wmlMacroCallEClass, WML_MACRO_CALL__POINT);
     createEAttribute(wmlMacroCallEClass, WML_MACRO_CALL__RELATIVE);
-    createEAttribute(wmlMacroCallEClass, WML_MACRO_CALL__NAME);
     createEAttribute(wmlMacroCallEClass, WML_MACRO_CALL__PARAMS);
     createEReference(wmlMacroCallEClass, WML_MACRO_CALL__EXTRA_MACROS);
-
-    wmlLuaCodeEClass = createEClass(WML_LUA_CODE);
-    createEAttribute(wmlLuaCodeEClass, WML_LUA_CODE__VALUE);
 
     wmlArrayCallEClass = createEClass(WML_ARRAY_CALL);
     createEAttribute(wmlArrayCallEClass, WML_ARRAY_CALL__VALUE);
 
     wmlMacroDefineEClass = createEClass(WML_MACRO_DEFINE);
-    createEAttribute(wmlMacroDefineEClass, WML_MACRO_DEFINE__NAME);
-    createEReference(wmlMacroDefineEClass, WML_MACRO_DEFINE__TAGS);
-    createEReference(wmlMacroDefineEClass, WML_MACRO_DEFINE__KEYS);
-    createEReference(wmlMacroDefineEClass, WML_MACRO_DEFINE__MACRO_CALLS);
-    createEReference(wmlMacroDefineEClass, WML_MACRO_DEFINE__MACRO_DEFINES);
-    createEReference(wmlMacroDefineEClass, WML_MACRO_DEFINE__TEXTDOMAINS);
-    createEAttribute(wmlMacroDefineEClass, WML_MACRO_DEFINE__VALUES);
-    createEReference(wmlMacroDefineEClass, WML_MACRO_DEFINE__IF_DEFS);
+    createEReference(wmlMacroDefineEClass, WML_MACRO_DEFINE__EXPRESSIONS);
     createEAttribute(wmlMacroDefineEClass, WML_MACRO_DEFINE__END_NAME);
 
     wmlPreprocIFEClass = createEClass(WML_PREPROC_IF);
-    createEAttribute(wmlPreprocIFEClass, WML_PREPROC_IF__NAME);
-    createEReference(wmlPreprocIFEClass, WML_PREPROC_IF__TAGS);
-    createEReference(wmlPreprocIFEClass, WML_PREPROC_IF__KEYS);
-    createEReference(wmlPreprocIFEClass, WML_PREPROC_IF__MACRO_CALLS);
-    createEReference(wmlPreprocIFEClass, WML_PREPROC_IF__MACRO_DEFINES);
-    createEReference(wmlPreprocIFEClass, WML_PREPROC_IF__TEXTDOMAINS);
-    createEAttribute(wmlPreprocIFEClass, WML_PREPROC_IF__VALUES);
-    createEReference(wmlPreprocIFEClass, WML_PREPROC_IF__IF_DEFS);
+    createEReference(wmlPreprocIFEClass, WML_PREPROC_IF__EXPRESSIONS);
     createEAttribute(wmlPreprocIFEClass, WML_PREPROC_IF__ELSES);
     createEAttribute(wmlPreprocIFEClass, WML_PREPROC_IF__END_NAME);
 
+    wmlRootExpressionEClass = createEClass(WML_ROOT_EXPRESSION);
+
+    wmlExpressionEClass = createEClass(WML_EXPRESSION);
+    createEAttribute(wmlExpressionEClass, WML_EXPRESSION__NAME);
+
+    wmlValuedExpressionEClass = createEClass(WML_VALUED_EXPRESSION);
+
     wmlTextdomainEClass = createEClass(WML_TEXTDOMAIN);
-    createEAttribute(wmlTextdomainEClass, WML_TEXTDOMAIN__NAME);
+
+    wmlLuaCodeEClass = createEClass(WML_LUA_CODE);
+    createEAttribute(wmlLuaCodeEClass, WML_LUA_CODE__VALUE);
   }
 
   /**
@@ -831,31 +605,28 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    wmlTagEClass.getESuperTypes().add(this.getWMLRootExpression());
+    wmlKeyEClass.getESuperTypes().add(this.getWMLExpression());
     wmlMacroCallEClass.getESuperTypes().add(this.getWMLKeyValue());
-    wmlLuaCodeEClass.getESuperTypes().add(this.getWMLKeyValue());
+    wmlMacroCallEClass.getESuperTypes().add(this.getWMLRootExpression());
     wmlArrayCallEClass.getESuperTypes().add(this.getWMLKeyValue());
+    wmlMacroDefineEClass.getESuperTypes().add(this.getWMLRootExpression());
+    wmlPreprocIFEClass.getESuperTypes().add(this.getWMLRootExpression());
+    wmlRootExpressionEClass.getESuperTypes().add(this.getWMLExpression());
+    wmlExpressionEClass.getESuperTypes().add(this.getWMLValuedExpression());
+    wmlTextdomainEClass.getESuperTypes().add(this.getWMLRootExpression());
+    wmlLuaCodeEClass.getESuperTypes().add(this.getWMLKeyValue());
 
     // Initialize classes and features; add operations and parameters
     initEClass(wmlRootEClass, WMLRoot.class, "WMLRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getWMLRoot_Tags(), this.getWMLTag(), null, "Tags", null, 0, -1, WMLRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLRoot_MacroCalls(), this.getWMLMacroCall(), null, "MacroCalls", null, 0, -1, WMLRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLRoot_MacroDefines(), this.getWMLMacroDefine(), null, "MacroDefines", null, 0, -1, WMLRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLRoot_Textdomains(), this.getWMLTextdomain(), null, "Textdomains", null, 0, -1, WMLRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLRoot_IfDefs(), this.getWMLPreprocIF(), null, "IfDefs", null, 0, -1, WMLRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWMLRoot_Expressions(), this.getWMLRootExpression(), null, "Expressions", null, 0, -1, WMLRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlTagEClass, WMLTag.class, "WMLTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLTag_Plus(), ecorePackage.getEBoolean(), "plus", null, 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getWMLTag_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLTag_Tags(), this.getWMLTag(), null, "Tags", null, 0, -1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLTag_Keys(), this.getWMLKey(), null, "Keys", null, 0, -1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLTag_MacroCalls(), this.getWMLMacroCall(), null, "MacroCalls", null, 0, -1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLTag_MacroDefines(), this.getWMLMacroDefine(), null, "MacroDefines", null, 0, -1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLTag_Textdomains(), this.getWMLTextdomain(), null, "Textdomains", null, 0, -1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLTag_IfDefs(), this.getWMLPreprocIF(), null, "IfDefs", null, 0, -1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWMLTag_Expressions(), this.getWMLExpression(), null, "Expressions", null, 0, -1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLTag_EndName(), ecorePackage.getEString(), "endName", null, 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlKeyEClass, WMLKey.class, "WMLKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getWMLKey_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getWMLKey_Value(), this.getWMLKeyValue(), null, "value", null, 0, -1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLKey_Eol(), ecorePackage.getEString(), "eol", null, 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -864,41 +635,32 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     initEClass(wmlMacroCallEClass, WMLMacroCall.class, "WMLMacroCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLMacroCall_Point(), ecorePackage.getEBoolean(), "point", null, 0, 1, WMLMacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLMacroCall_Relative(), ecorePackage.getEBoolean(), "relative", null, 0, 1, WMLMacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getWMLMacroCall_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLMacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLMacroCall_Params(), ecorePackage.getEString(), "params", null, 0, -1, WMLMacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getWMLMacroCall_ExtraMacros(), this.getWMLMacroCall(), null, "extraMacros", null, 0, -1, WMLMacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(wmlLuaCodeEClass, WMLLuaCode.class, "WMLLuaCode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getWMLLuaCode_Value(), ecorePackage.getEString(), "value", null, 0, 1, WMLLuaCode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlArrayCallEClass, WMLArrayCall.class, "WMLArrayCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLArrayCall_Value(), ecorePackage.getEString(), "value", null, 0, -1, WMLArrayCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlMacroDefineEClass, WMLMacroDefine.class, "WMLMacroDefine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getWMLMacroDefine_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLMacroDefine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLMacroDefine_Tags(), this.getWMLTag(), null, "Tags", null, 0, -1, WMLMacroDefine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLMacroDefine_Keys(), this.getWMLKey(), null, "Keys", null, 0, -1, WMLMacroDefine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLMacroDefine_MacroCalls(), this.getWMLMacroCall(), null, "MacroCalls", null, 0, -1, WMLMacroDefine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLMacroDefine_MacroDefines(), this.getWMLMacroDefine(), null, "MacroDefines", null, 0, -1, WMLMacroDefine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLMacroDefine_Textdomains(), this.getWMLTextdomain(), null, "Textdomains", null, 0, -1, WMLMacroDefine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getWMLMacroDefine_Values(), ecorePackage.getEString(), "Values", null, 0, -1, WMLMacroDefine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLMacroDefine_IfDefs(), this.getWMLPreprocIF(), null, "IfDefs", null, 0, -1, WMLMacroDefine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWMLMacroDefine_Expressions(), this.getWMLValuedExpression(), null, "Expressions", null, 0, -1, WMLMacroDefine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLMacroDefine_EndName(), ecorePackage.getEString(), "endName", null, 0, 1, WMLMacroDefine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlPreprocIFEClass, WMLPreprocIF.class, "WMLPreprocIF", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getWMLPreprocIF_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLPreprocIF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLPreprocIF_Tags(), this.getWMLTag(), null, "Tags", null, 0, -1, WMLPreprocIF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLPreprocIF_Keys(), this.getWMLKey(), null, "Keys", null, 0, -1, WMLPreprocIF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLPreprocIF_MacroCalls(), this.getWMLMacroCall(), null, "MacroCalls", null, 0, -1, WMLPreprocIF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLPreprocIF_MacroDefines(), this.getWMLMacroDefine(), null, "MacroDefines", null, 0, -1, WMLPreprocIF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLPreprocIF_Textdomains(), this.getWMLTextdomain(), null, "Textdomains", null, 0, -1, WMLPreprocIF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getWMLPreprocIF_Values(), ecorePackage.getEString(), "Values", null, 0, -1, WMLPreprocIF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLPreprocIF_IfDefs(), this.getWMLPreprocIF(), null, "IfDefs", null, 0, -1, WMLPreprocIF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWMLPreprocIF_Expressions(), this.getWMLValuedExpression(), null, "Expressions", null, 0, -1, WMLPreprocIF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLPreprocIF_Elses(), ecorePackage.getEString(), "Elses", null, 0, -1, WMLPreprocIF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLPreprocIF_EndName(), ecorePackage.getEString(), "endName", null, 0, 1, WMLPreprocIF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(wmlRootExpressionEClass, WMLRootExpression.class, "WMLRootExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(wmlExpressionEClass, WMLExpression.class, "WMLExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getWMLExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(wmlValuedExpressionEClass, WMLValuedExpression.class, "WMLValuedExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(wmlTextdomainEClass, WMLTextdomain.class, "WMLTextdomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getWMLTextdomain_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLTextdomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(wmlLuaCodeEClass, WMLLuaCode.class, "WMLLuaCode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getWMLLuaCode_Value(), ecorePackage.getEString(), "value", null, 0, 1, WMLLuaCode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

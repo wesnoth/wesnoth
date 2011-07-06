@@ -33,6 +33,7 @@ import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.utils.StringUtils;
+import org.wesnoth.utils.WMLGrammarUtils;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.core.ConfigFile;
@@ -240,7 +241,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 					if (key.isRepeatable() == false)
 					{
 						// don't suggest already completed keys
-						for(WMLKey eKey: tag.getKeys())
+						for( WMLKey eKey: WMLGrammarUtils.getTagKeys( tag ) )
 							if (eKey.getName().equals(key.getName()))
 								found = true;
 					}
@@ -301,7 +302,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 					// check only non-repeatable tags
 					if (tag.isRepeatable() == false)
 					{
-						for(WMLTag wmlTag : parentTag.getTags())
+						for( WMLTag wmlTag : WMLGrammarUtils.getTagTags( parentTag ) )
 							if (wmlTag.getName().equals(tag.getName()))
 							{
 								found = true;

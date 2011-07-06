@@ -8,31 +8,19 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes 
 
 WMLRoot:
-	( Tags += WMLTag
-	| MacroCalls += WMLMacroCall
-	| MacroDefines += WMLMacroDefine
-	| Textdomains += WMLTextdomain
-	| IfDefs += WMLPreprocIF
-	)*
-	;
+	( Expressions += WMLRootExpression )*;
 
 WMLTag:
 	'[' (plus?='+')? name=ID ']'
-		( Tags += WMLTag
-		| Keys += WMLKey
-		| MacroCalls += WMLMacroCall
-		| MacroDefines += WMLMacroDefine
-		| Textdomains += WMLTextdomain
-		| IfDefs += WMLPreprocIF
-		)*
+		( Expressions += WMLExpression )*
 	'[/' endName = ID ']'
 	;
-
+	
 WMLKey hidden(WS):
 	name = ID '=' value += WMLKeyValue* (EOL? '+' EOL? value+=WMLKeyValue+)* eol=(EOL|SL_COMMENT);
 
-WMLKeyValue: {WMLKeyValue}
-	WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
+WMLKeyValue:
+	 {WMLKeyValue} WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 	
 WMLMacroCall:
 	'{' (point?='./')? (relative?='~')? name=ID
@@ -41,37 +29,35 @@ WMLMacroCall:
 		)*
 	'}';
 
-WMLLuaCode:
-	value = LUA_CODE;
 WMLArrayCall:
 	'[' value += WMLValue+ ']' ;
+
 WMLMacroDefine:
 	name = DEFINE
-		( Tags += WMLTag
-		| Keys += WMLKey
-		| MacroCalls += WMLMacroCall
-		| MacroDefines += WMLMacroDefine
-		| Textdomains += WMLTextdomain
-		| Values += WMLValue
-		| IfDefs += WMLPreprocIF
-		)*
+		( Expressions += WMLValuedExpression )*
 	endName = ENDDEF;
 
 WMLPreprocIF:
 	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE)
-		( Tags += WMLTag
-		| Keys += WMLKey
-		| MacroCalls += WMLMacroCall
-		| MacroDefines += WMLMacroDefine
-		| Textdomains += WMLTextdomain
-		| Values += WMLValue
-		| IfDefs += WMLPreprocIF
+		( Expressions += WMLValuedExpression
 		| Elses += ELSE
 		)*
 	endName = ENDIF;
 
+WMLRootExpression:
+    WMLTag | WMLMacroCall | WMLMacroDefine | WMLTextdomain | WMLPreprocIF;
+
+WMLExpression:
+    WMLRootExpression | WMLKey ;
+    
+WMLValuedExpression: 
+    WMLExpression | {WMLValuedExpression} WMLValue;
+
 WMLTextdomain:
 	name = TEXTDOMAIN;
+
+WMLLuaCode:
+    value = LUA_CODE;
 
 WMLMacroParameter returns ecore::EString:
     WMLValue | MacroTokens;

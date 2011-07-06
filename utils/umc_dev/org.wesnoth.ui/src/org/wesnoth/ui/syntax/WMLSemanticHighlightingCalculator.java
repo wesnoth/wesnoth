@@ -52,7 +52,7 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 			String beginId = null, endId = null;
 			if (current instanceof WMLTag)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_TAG__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName( ));
 				beginId = WMLHighlightingConfiguration.RULE_WML_TAG;
 
 				end = getFirstFeatureNode(current, WmlPackage.Literals.WML_TAG__END_NAME.getName());
@@ -60,22 +60,22 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 			}
 			else if (current instanceof WMLKey)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_KEY__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName());
 				beginId = WMLHighlightingConfiguration.RULE_WML_KEY;
 			}
 			else if (current instanceof WMLMacroCall)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_MACRO_CALL__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName());
 				beginId = WMLHighlightingConfiguration.RULE_WML_MACRO_CALL;
 			}
 			else if (current instanceof WMLTextdomain)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_TEXTDOMAIN__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName());
 				beginId = WMLHighlightingConfiguration.RULE_WML_TEXTDOMAIN;
 			}
 			else if (current instanceof WMLPreprocIF)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_PREPROC_IF__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName());
 				beginId = WMLHighlightingConfiguration.RULE_WML_IF;
 
 				end = getFirstFeatureNode(current, WmlPackage.Literals.WML_PREPROC_IF__END_NAME.getName());
@@ -83,7 +83,7 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 			}
 			else if (current instanceof WMLMacroDefine)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.Literals.WML_MACRO_DEFINE__NAME.getName());
+				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName());
 				beginId = WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE;
 
 				end = getFirstFeatureNode(current, WmlPackage.Literals.WML_MACRO_DEFINE__END_NAME.getName());

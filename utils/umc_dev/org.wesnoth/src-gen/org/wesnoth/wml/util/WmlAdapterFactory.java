@@ -104,11 +104,6 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
         return createWMLMacroCallAdapter();
       }
       @Override
-      public Adapter caseWMLLuaCode(WMLLuaCode object)
-      {
-        return createWMLLuaCodeAdapter();
-      }
-      @Override
       public Adapter caseWMLArrayCall(WMLArrayCall object)
       {
         return createWMLArrayCallAdapter();
@@ -124,9 +119,29 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
         return createWMLPreprocIFAdapter();
       }
       @Override
+      public Adapter caseWMLRootExpression(WMLRootExpression object)
+      {
+        return createWMLRootExpressionAdapter();
+      }
+      @Override
+      public Adapter caseWMLExpression(WMLExpression object)
+      {
+        return createWMLExpressionAdapter();
+      }
+      @Override
+      public Adapter caseWMLValuedExpression(WMLValuedExpression object)
+      {
+        return createWMLValuedExpressionAdapter();
+      }
+      @Override
       public Adapter caseWMLTextdomain(WMLTextdomain object)
       {
         return createWMLTextdomainAdapter();
+      }
+      @Override
+      public Adapter caseWMLLuaCode(WMLLuaCode object)
+      {
+        return createWMLLuaCodeAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -226,21 +241,6 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLLuaCode <em>WML Lua Code</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.wesnoth.wml.WMLLuaCode
-   * @generated
-   */
-  public Adapter createWMLLuaCodeAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLArrayCall <em>WML Array Call</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -286,6 +286,51 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLRootExpression <em>WML Root Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wml.WMLRootExpression
+   * @generated
+   */
+  public Adapter createWMLRootExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLExpression <em>WML Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wml.WMLExpression
+   * @generated
+   */
+  public Adapter createWMLExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLValuedExpression <em>WML Valued Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wml.WMLValuedExpression
+   * @generated
+   */
+  public Adapter createWMLValuedExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLTextdomain <em>WML Textdomain</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -296,6 +341,21 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWMLTextdomainAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLLuaCode <em>WML Lua Code</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wml.WMLLuaCode
+   * @generated
+   */
+  public Adapter createWMLLuaCodeAdapter()
   {
     return null;
   }

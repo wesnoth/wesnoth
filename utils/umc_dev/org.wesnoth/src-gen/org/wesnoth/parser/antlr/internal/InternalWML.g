@@ -89,12 +89,12 @@ ruleWMLRoot returns [EObject current=null]
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
     }:
-((
+(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLRootAccess().getTagsWMLTagParserRuleCall_0_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLRootAccess().getExpressionsWMLRootExpressionParserRuleCall_0(), currentNode); 
 	    }
-		lv_Tags_0_0=ruleWMLTag		{
+		lv_Expressions_0_0=ruleWMLRootExpression		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLRootRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -102,9 +102,9 @@ ruleWMLRoot returns [EObject current=null]
 	        try {
 	       		add(
 	       			$current, 
-	       			"Tags",
-	        		lv_Tags_0_0, 
-	        		"WMLTag", 
+	       			"Expressions",
+	        		lv_Expressions_0_0, 
+	        		"WMLRootExpression", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
@@ -113,107 +113,7 @@ ruleWMLRoot returns [EObject current=null]
 	    }
 
 )
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLRootAccess().getMacroCallsWMLMacroCallParserRuleCall_1_0(), currentNode); 
-	    }
-		lv_MacroCalls_1_0=ruleWMLMacroCall		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLRootRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"MacroCalls",
-	        		lv_MacroCalls_1_0, 
-	        		"WMLMacroCall", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLRootAccess().getMacroDefinesWMLMacroDefineParserRuleCall_2_0(), currentNode); 
-	    }
-		lv_MacroDefines_2_0=ruleWMLMacroDefine		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLRootRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"MacroDefines",
-	        		lv_MacroDefines_2_0, 
-	        		"WMLMacroDefine", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLRootAccess().getTextdomainsWMLTextdomainParserRuleCall_3_0(), currentNode); 
-	    }
-		lv_Textdomains_3_0=ruleWMLTextdomain		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLRootRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"Textdomains",
-	        		lv_Textdomains_3_0, 
-	        		"WMLTextdomain", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLRootAccess().getIfDefsWMLPreprocIFParserRuleCall_4_0(), currentNode); 
-	    }
-		lv_IfDefs_4_0=ruleWMLPreprocIF		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLRootRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"IfDefs",
-	        		lv_IfDefs_4_0, 
-	        		"WMLPreprocIF", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-))*
+)*
 ;
 
 
@@ -289,12 +189,12 @@ ruleWMLTag returns [EObject current=null]
     {
         createLeafNode(grammarAccess.getWMLTagAccess().getRightSquareBracketKeyword_3(), null); 
     }
-((
+(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getTagsWMLTagParserRuleCall_4_0_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getExpressionsWMLExpressionParserRuleCall_4_0(), currentNode); 
 	    }
-		lv_Tags_4_0=ruleWMLTag		{
+		lv_Expressions_4_0=ruleWMLExpression		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -302,9 +202,9 @@ ruleWMLTag returns [EObject current=null]
 	        try {
 	       		add(
 	       			$current, 
-	       			"Tags",
-	        		lv_Tags_4_0, 
-	        		"WMLTag", 
+	       			"Expressions",
+	        		lv_Expressions_4_0, 
+	        		"WMLExpression", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
@@ -313,138 +213,13 @@ ruleWMLTag returns [EObject current=null]
 	    }
 
 )
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getKeysWMLKeyParserRuleCall_4_1_0(), currentNode); 
-	    }
-		lv_Keys_5_0=ruleWMLKey		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"Keys",
-	        		lv_Keys_5_0, 
-	        		"WMLKey", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getMacroCallsWMLMacroCallParserRuleCall_4_2_0(), currentNode); 
-	    }
-		lv_MacroCalls_6_0=ruleWMLMacroCall		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"MacroCalls",
-	        		lv_MacroCalls_6_0, 
-	        		"WMLMacroCall", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getMacroDefinesWMLMacroDefineParserRuleCall_4_3_0(), currentNode); 
-	    }
-		lv_MacroDefines_7_0=ruleWMLMacroDefine		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"MacroDefines",
-	        		lv_MacroDefines_7_0, 
-	        		"WMLMacroDefine", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getTextdomainsWMLTextdomainParserRuleCall_4_4_0(), currentNode); 
-	    }
-		lv_Textdomains_8_0=ruleWMLTextdomain		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"Textdomains",
-	        		lv_Textdomains_8_0, 
-	        		"WMLTextdomain", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getIfDefsWMLPreprocIFParserRuleCall_4_5_0(), currentNode); 
-	    }
-		lv_IfDefs_9_0=ruleWMLPreprocIF		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"IfDefs",
-	        		lv_IfDefs_9_0, 
-	        		"WMLPreprocIF", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-))*	'[/' 
+)*	'[/' 
     {
         createLeafNode(grammarAccess.getWMLTagAccess().getLeftSquareBracketSolidusKeyword_5(), null); 
     }
 (
 (
-		lv_endName_11_0=RULE_ID
+		lv_endName_6_0=RULE_ID
 		{
 			createLeafNode(grammarAccess.getWMLTagAccess().getEndNameIDTerminalRuleCall_6_0(), "endName"); 
 		}
@@ -457,7 +232,7 @@ ruleWMLTag returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"endName",
-	        		lv_endName_11_0, 
+	        		lv_endName_6_0, 
 	        		"ID", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -864,53 +639,6 @@ ruleWMLMacroCall returns [EObject current=null]
 
 
 
-// Entry rule entryRuleWMLLuaCode
-entryRuleWMLLuaCode returns [EObject current=null] 
-	:
-	{ currentNode = createCompositeNode(grammarAccess.getWMLLuaCodeRule(), currentNode); }
-	 iv_ruleWMLLuaCode=ruleWMLLuaCode 
-	 { $current=$iv_ruleWMLLuaCode.current; } 
-	 EOF 
-;
-
-// Rule WMLLuaCode
-ruleWMLLuaCode returns [EObject current=null] 
-    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
-    }
-    @after { resetLookahead(); 
-    	lastConsumedNode = currentNode;
-    }:
-(
-(
-		lv_value_0_0=RULE_LUA_CODE
-		{
-			createLeafNode(grammarAccess.getWMLLuaCodeAccess().getValueLUA_CODETerminalRuleCall_0(), "value"); 
-		}
-		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLLuaCodeRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        try {
-	       		set(
-	       			$current, 
-	       			"value",
-	        		lv_value_0_0, 
-	        		"LUA_CODE", 
-	        		lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-)
-)
-;
-
-
-
-
-
 // Entry rule entryRuleWMLArrayCall
 entryRuleWMLArrayCall returns [EObject current=null] 
 	:
@@ -1006,12 +734,12 @@ ruleWMLMacroDefine returns [EObject current=null]
 	    }
 
 )
-)((
+)(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getTagsWMLTagParserRuleCall_1_0_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getExpressionsWMLValuedExpressionParserRuleCall_1_0(), currentNode); 
 	    }
-		lv_Tags_1_0=ruleWMLTag		{
+		lv_Expressions_1_0=ruleWMLValuedExpression		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLMacroDefineRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -1019,9 +747,9 @@ ruleWMLMacroDefine returns [EObject current=null]
 	        try {
 	       		add(
 	       			$current, 
-	       			"Tags",
-	        		lv_Tags_1_0, 
-	        		"WMLTag", 
+	       			"Expressions",
+	        		lv_Expressions_1_0, 
+	        		"WMLValuedExpression", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
@@ -1030,159 +758,9 @@ ruleWMLMacroDefine returns [EObject current=null]
 	    }
 
 )
-)
-    |(
+)*(
 (
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getKeysWMLKeyParserRuleCall_1_1_0(), currentNode); 
-	    }
-		lv_Keys_2_0=ruleWMLKey		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroDefineRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"Keys",
-	        		lv_Keys_2_0, 
-	        		"WMLKey", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getMacroCallsWMLMacroCallParserRuleCall_1_2_0(), currentNode); 
-	    }
-		lv_MacroCalls_3_0=ruleWMLMacroCall		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroDefineRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"MacroCalls",
-	        		lv_MacroCalls_3_0, 
-	        		"WMLMacroCall", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getMacroDefinesWMLMacroDefineParserRuleCall_1_3_0(), currentNode); 
-	    }
-		lv_MacroDefines_4_0=ruleWMLMacroDefine		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroDefineRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"MacroDefines",
-	        		lv_MacroDefines_4_0, 
-	        		"WMLMacroDefine", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getTextdomainsWMLTextdomainParserRuleCall_1_4_0(), currentNode); 
-	    }
-		lv_Textdomains_5_0=ruleWMLTextdomain		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroDefineRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"Textdomains",
-	        		lv_Textdomains_5_0, 
-	        		"WMLTextdomain", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getValuesWMLValueParserRuleCall_1_5_0(), currentNode); 
-	    }
-		lv_Values_6_0=ruleWMLValue		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroDefineRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"Values",
-	        		lv_Values_6_0, 
-	        		"WMLValue", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroDefineAccess().getIfDefsWMLPreprocIFParserRuleCall_1_6_0(), currentNode); 
-	    }
-		lv_IfDefs_7_0=ruleWMLPreprocIF		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroDefineRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"IfDefs",
-	        		lv_IfDefs_7_0, 
-	        		"WMLPreprocIF", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-))*(
-(
-		lv_endName_8_0=RULE_ENDDEF
+		lv_endName_2_0=RULE_ENDDEF
 		{
 			createLeafNode(grammarAccess.getWMLMacroDefineAccess().getEndNameENDDEFTerminalRuleCall_2_0(), "endName"); 
 		}
@@ -1195,7 +773,7 @@ ruleWMLMacroDefine returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"endName",
-	        		lv_endName_8_0, 
+	        		lv_endName_2_0, 
 	        		"ENDDEF", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -1320,9 +898,9 @@ ruleWMLPreprocIF returns [EObject current=null]
 )((
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getTagsWMLTagParserRuleCall_1_0_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getExpressionsWMLValuedExpressionParserRuleCall_1_0_0(), currentNode); 
 	    }
-		lv_Tags_1_0=ruleWMLTag		{
+		lv_Expressions_1_0=ruleWMLValuedExpression		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLPreprocIFRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -1330,9 +908,9 @@ ruleWMLPreprocIF returns [EObject current=null]
 	        try {
 	       		add(
 	       			$current, 
-	       			"Tags",
-	        		lv_Tags_1_0, 
-	        		"WMLTag", 
+	       			"Expressions",
+	        		lv_Expressions_1_0, 
+	        		"WMLValuedExpression", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
@@ -1344,159 +922,9 @@ ruleWMLPreprocIF returns [EObject current=null]
 )
     |(
 (
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getKeysWMLKeyParserRuleCall_1_1_0(), currentNode); 
-	    }
-		lv_Keys_2_0=ruleWMLKey		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLPreprocIFRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"Keys",
-	        		lv_Keys_2_0, 
-	        		"WMLKey", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getMacroCallsWMLMacroCallParserRuleCall_1_2_0(), currentNode); 
-	    }
-		lv_MacroCalls_3_0=ruleWMLMacroCall		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLPreprocIFRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"MacroCalls",
-	        		lv_MacroCalls_3_0, 
-	        		"WMLMacroCall", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getMacroDefinesWMLMacroDefineParserRuleCall_1_3_0(), currentNode); 
-	    }
-		lv_MacroDefines_4_0=ruleWMLMacroDefine		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLPreprocIFRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"MacroDefines",
-	        		lv_MacroDefines_4_0, 
-	        		"WMLMacroDefine", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getTextdomainsWMLTextdomainParserRuleCall_1_4_0(), currentNode); 
-	    }
-		lv_Textdomains_5_0=ruleWMLTextdomain		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLPreprocIFRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"Textdomains",
-	        		lv_Textdomains_5_0, 
-	        		"WMLTextdomain", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getValuesWMLValueParserRuleCall_1_5_0(), currentNode); 
-	    }
-		lv_Values_6_0=ruleWMLValue		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLPreprocIFRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"Values",
-	        		lv_Values_6_0, 
-	        		"WMLValue", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getIfDefsWMLPreprocIFParserRuleCall_1_6_0(), currentNode); 
-	    }
-		lv_IfDefs_7_0=ruleWMLPreprocIF		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLPreprocIFRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"IfDefs",
-	        		lv_IfDefs_7_0, 
-	        		"WMLPreprocIF", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-)
-    |(
-(
-		lv_Elses_8_0=RULE_ELSE
+		lv_Elses_2_0=RULE_ELSE
 		{
-			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getElsesELSETerminalRuleCall_1_7_0(), "Elses"); 
+			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getElsesELSETerminalRuleCall_1_1_0(), "Elses"); 
 		}
 		{
 	        if ($current==null) {
@@ -1507,7 +935,7 @@ ruleWMLPreprocIF returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"Elses",
-	        		lv_Elses_8_0, 
+	        		lv_Elses_2_0, 
 	        		"ELSE", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -1518,7 +946,7 @@ ruleWMLPreprocIF returns [EObject current=null]
 )
 ))*(
 (
-		lv_endName_9_0=RULE_ENDIF
+		lv_endName_3_0=RULE_ENDIF
 		{
 			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getEndNameENDIFTerminalRuleCall_2_0(), "endName"); 
 		}
@@ -1531,7 +959,7 @@ ruleWMLPreprocIF returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"endName",
-	        		lv_endName_9_0, 
+	        		lv_endName_3_0, 
 	        		"ENDIF", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -1540,6 +968,172 @@ ruleWMLPreprocIF returns [EObject current=null]
 	    }
 
 )
+))
+;
+
+
+
+
+
+// Entry rule entryRuleWMLRootExpression
+entryRuleWMLRootExpression returns [EObject current=null] 
+	:
+	{ currentNode = createCompositeNode(grammarAccess.getWMLRootExpressionRule(), currentNode); }
+	 iv_ruleWMLRootExpression=ruleWMLRootExpression 
+	 { $current=$iv_ruleWMLRootExpression.current; } 
+	 EOF 
+;
+
+// Rule WMLRootExpression
+ruleWMLRootExpression returns [EObject current=null] 
+    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+    }
+    @after { resetLookahead(); 
+    	lastConsumedNode = currentNode;
+    }:
+(
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLRootExpressionAccess().getWMLTagParserRuleCall_0(), currentNode); 
+    }
+    this_WMLTag_0=ruleWMLTag
+    { 
+        $current = $this_WMLTag_0.current; 
+        currentNode = currentNode.getParent();
+    }
+
+    |
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLRootExpressionAccess().getWMLMacroCallParserRuleCall_1(), currentNode); 
+    }
+    this_WMLMacroCall_1=ruleWMLMacroCall
+    { 
+        $current = $this_WMLMacroCall_1.current; 
+        currentNode = currentNode.getParent();
+    }
+
+    |
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLRootExpressionAccess().getWMLMacroDefineParserRuleCall_2(), currentNode); 
+    }
+    this_WMLMacroDefine_2=ruleWMLMacroDefine
+    { 
+        $current = $this_WMLMacroDefine_2.current; 
+        currentNode = currentNode.getParent();
+    }
+
+    |
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLRootExpressionAccess().getWMLTextdomainParserRuleCall_3(), currentNode); 
+    }
+    this_WMLTextdomain_3=ruleWMLTextdomain
+    { 
+        $current = $this_WMLTextdomain_3.current; 
+        currentNode = currentNode.getParent();
+    }
+
+    |
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLRootExpressionAccess().getWMLPreprocIFParserRuleCall_4(), currentNode); 
+    }
+    this_WMLPreprocIF_4=ruleWMLPreprocIF
+    { 
+        $current = $this_WMLPreprocIF_4.current; 
+        currentNode = currentNode.getParent();
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleWMLExpression
+entryRuleWMLExpression returns [EObject current=null] 
+	:
+	{ currentNode = createCompositeNode(grammarAccess.getWMLExpressionRule(), currentNode); }
+	 iv_ruleWMLExpression=ruleWMLExpression 
+	 { $current=$iv_ruleWMLExpression.current; } 
+	 EOF 
+;
+
+// Rule WMLExpression
+ruleWMLExpression returns [EObject current=null] 
+    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+    }
+    @after { resetLookahead(); 
+    	lastConsumedNode = currentNode;
+    }:
+(
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLExpressionAccess().getWMLRootExpressionParserRuleCall_0(), currentNode); 
+    }
+    this_WMLRootExpression_0=ruleWMLRootExpression
+    { 
+        $current = $this_WMLRootExpression_0.current; 
+        currentNode = currentNode.getParent();
+    }
+
+    |
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLExpressionAccess().getWMLKeyParserRuleCall_1(), currentNode); 
+    }
+    this_WMLKey_1=ruleWMLKey
+    { 
+        $current = $this_WMLKey_1.current; 
+        currentNode = currentNode.getParent();
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleWMLValuedExpression
+entryRuleWMLValuedExpression returns [EObject current=null] 
+	:
+	{ currentNode = createCompositeNode(grammarAccess.getWMLValuedExpressionRule(), currentNode); }
+	 iv_ruleWMLValuedExpression=ruleWMLValuedExpression 
+	 { $current=$iv_ruleWMLValuedExpression.current; } 
+	 EOF 
+;
+
+// Rule WMLValuedExpression
+ruleWMLValuedExpression returns [EObject current=null] 
+    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+    }
+    @after { resetLookahead(); 
+    	lastConsumedNode = currentNode;
+    }:
+(
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLValuedExpressionAccess().getWMLExpressionParserRuleCall_0(), currentNode); 
+    }
+    this_WMLExpression_0=ruleWMLExpression
+    { 
+        $current = $this_WMLExpression_0.current; 
+        currentNode = currentNode.getParent();
+    }
+
+    |((
+    { 
+        temp=factory.create(grammarAccess.getWMLValuedExpressionAccess().getWMLValuedExpressionAction_1_0().getType().getClassifier());
+        $current = temp; 
+        temp = null;
+        CompositeNode newNode = createCompositeNode(grammarAccess.getWMLValuedExpressionAccess().getWMLValuedExpressionAction_1_0(), currentNode.getParent());
+    newNode.getChildren().add(currentNode);
+    moveLookaheadInfo(currentNode, newNode);
+    currentNode = newNode; 
+        associateNodeWithAstElement(currentNode, $current); 
+    }
+)
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLValuedExpressionAccess().getWMLValueParserRuleCall_1_1(), currentNode); 
+    }
+ruleWMLValue
+    { 
+        currentNode = currentNode.getParent();
+    }
 ))
 ;
 
@@ -1580,6 +1174,53 @@ ruleWMLTextdomain returns [EObject current=null]
 	       			"name",
 	        		lv_name_0_0, 
 	        		"TEXTDOMAIN", 
+	        		lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+
+)
+)
+;
+
+
+
+
+
+// Entry rule entryRuleWMLLuaCode
+entryRuleWMLLuaCode returns [EObject current=null] 
+	:
+	{ currentNode = createCompositeNode(grammarAccess.getWMLLuaCodeRule(), currentNode); }
+	 iv_ruleWMLLuaCode=ruleWMLLuaCode 
+	 { $current=$iv_ruleWMLLuaCode.current; } 
+	 EOF 
+;
+
+// Rule WMLLuaCode
+ruleWMLLuaCode returns [EObject current=null] 
+    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+    }
+    @after { resetLookahead(); 
+    	lastConsumedNode = currentNode;
+    }:
+(
+(
+		lv_value_0_0=RULE_LUA_CODE
+		{
+			createLeafNode(grammarAccess.getWMLLuaCodeAccess().getValueLUA_CODETerminalRuleCall_0(), "value"); 
+		}
+		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getWMLLuaCodeRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        try {
+	       		set(
+	       			$current, 
+	       			"value",
+	        		lv_value_0_0, 
+	        		"LUA_CODE", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);

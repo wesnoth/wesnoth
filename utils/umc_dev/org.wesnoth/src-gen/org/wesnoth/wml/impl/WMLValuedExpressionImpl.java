@@ -8,26 +8,28 @@ package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.wesnoth.wml.WMLTextdomain;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.wesnoth.wml.WMLValuedExpression;
 import org.wesnoth.wml.WmlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>WML Textdomain</b></em>'.
+ * An implementation of the model object '<em><b>WML Valued Expression</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class WMLTextdomainImpl extends WMLRootExpressionImpl implements WMLTextdomain
+public class WMLValuedExpressionImpl extends MinimalEObjectImpl.Container implements WMLValuedExpression
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLTextdomainImpl()
+  protected WMLValuedExpressionImpl()
   {
     super();
   }
@@ -40,7 +42,7 @@ public class WMLTextdomainImpl extends WMLRootExpressionImpl implements WMLTextd
   @Override
   protected EClass eStaticClass()
   {
-    return WmlPackage.Literals.WML_TEXTDOMAIN;
+    return WmlPackage.Literals.WML_VALUED_EXPRESSION;
   }
 
-} //WMLTextdomainImpl
+} //WMLValuedExpressionImpl

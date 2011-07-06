@@ -73,11 +73,14 @@ public class WmlFactoryImpl extends EFactoryImpl implements WmlFactory
       case WmlPackage.WML_KEY: return createWMLKey();
       case WmlPackage.WML_KEY_VALUE: return createWMLKeyValue();
       case WmlPackage.WML_MACRO_CALL: return createWMLMacroCall();
-      case WmlPackage.WML_LUA_CODE: return createWMLLuaCode();
       case WmlPackage.WML_ARRAY_CALL: return createWMLArrayCall();
       case WmlPackage.WML_MACRO_DEFINE: return createWMLMacroDefine();
       case WmlPackage.WML_PREPROC_IF: return createWMLPreprocIF();
+      case WmlPackage.WML_ROOT_EXPRESSION: return createWMLRootExpression();
+      case WmlPackage.WML_EXPRESSION: return createWMLExpression();
+      case WmlPackage.WML_VALUED_EXPRESSION: return createWMLValuedExpression();
       case WmlPackage.WML_TEXTDOMAIN: return createWMLTextdomain();
+      case WmlPackage.WML_LUA_CODE: return createWMLLuaCode();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -143,17 +146,6 @@ public class WmlFactoryImpl extends EFactoryImpl implements WmlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLLuaCode createWMLLuaCode()
-  {
-    WMLLuaCodeImpl wmlLuaCode = new WMLLuaCodeImpl();
-    return wmlLuaCode;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public WMLArrayCall createWMLArrayCall()
   {
     WMLArrayCallImpl wmlArrayCall = new WMLArrayCallImpl();
@@ -187,10 +179,54 @@ public class WmlFactoryImpl extends EFactoryImpl implements WmlFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public WMLRootExpression createWMLRootExpression()
+  {
+    WMLRootExpressionImpl wmlRootExpression = new WMLRootExpressionImpl();
+    return wmlRootExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLExpression createWMLExpression()
+  {
+    WMLExpressionImpl wmlExpression = new WMLExpressionImpl();
+    return wmlExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLValuedExpression createWMLValuedExpression()
+  {
+    WMLValuedExpressionImpl wmlValuedExpression = new WMLValuedExpressionImpl();
+    return wmlValuedExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public WMLTextdomain createWMLTextdomain()
   {
     WMLTextdomainImpl wmlTextdomain = new WMLTextdomainImpl();
     return wmlTextdomain;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLLuaCode createWMLLuaCode()
+  {
+    WMLLuaCodeImpl wmlLuaCode = new WMLLuaCodeImpl();
+    return wmlLuaCode;
   }
 
   /**

@@ -8,26 +8,26 @@ package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.wesnoth.wml.WMLTextdomain;
+import org.wesnoth.wml.WMLRootExpression;
 import org.wesnoth.wml.WmlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>WML Textdomain</b></em>'.
+ * An implementation of the model object '<em><b>WML Root Expression</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class WMLTextdomainImpl extends WMLRootExpressionImpl implements WMLTextdomain
+public class WMLRootExpressionImpl extends WMLExpressionImpl implements WMLRootExpression
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLTextdomainImpl()
+  protected WMLRootExpressionImpl()
   {
     super();
   }
@@ -40,7 +40,7 @@ public class WMLTextdomainImpl extends WMLRootExpressionImpl implements WMLTextd
   @Override
   protected EClass eStaticClass()
   {
-    return WmlPackage.Literals.WML_TEXTDOMAIN;
+    return WmlPackage.Literals.WML_ROOT_EXPRESSION;
   }
 
-} //WMLTextdomainImpl
+} //WMLRootExpressionImpl

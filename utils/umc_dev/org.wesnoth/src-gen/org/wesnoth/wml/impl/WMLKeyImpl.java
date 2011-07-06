@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -33,7 +32,6 @@ import org.wesnoth.wml.WmlPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wml.impl.WMLKeyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLKeyImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLKeyImpl#getEol <em>Eol</em>}</li>
  * </ul>
@@ -41,28 +39,8 @@ import org.wesnoth.wml.WmlPackage;
  *
  * @generated
  */
-public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
+public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -112,29 +90,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   protected EClass eStaticClass()
   {
     return WmlPackage.Literals.WML_KEY;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_KEY__NAME, oldName, name));
   }
 
   /**
@@ -200,8 +155,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WmlPackage.WML_KEY__NAME:
-        return getName();
       case WmlPackage.WML_KEY__VALUE:
         return getValue();
       case WmlPackage.WML_KEY__EOL:
@@ -221,9 +174,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WmlPackage.WML_KEY__NAME:
-        setName((String)newValue);
-        return;
       case WmlPackage.WML_KEY__VALUE:
         getValue().clear();
         getValue().addAll((Collection<? extends WMLKeyValue>)newValue);
@@ -245,9 +195,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WmlPackage.WML_KEY__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case WmlPackage.WML_KEY__VALUE:
         getValue().clear();
         return;
@@ -268,8 +215,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WmlPackage.WML_KEY__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case WmlPackage.WML_KEY__VALUE:
         return value != null && !value.isEmpty();
       case WmlPackage.WML_KEY__EOL:
@@ -289,9 +234,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", eol: ");
+    result.append(" (eol: ");
     result.append(eol);
     result.append(')');
     return result.toString();

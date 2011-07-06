@@ -18,7 +18,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.wesnoth.wml.WMLMacroCall#isPoint <em>Point</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLMacroCall#isRelative <em>Relative</em>}</li>
- *   <li>{@link org.wesnoth.wml.WMLMacroCall#getName <em>Name</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLMacroCall#getParams <em>Params</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLMacroCall#getExtraMacros <em>Extra Macros</em>}</li>
  * </ul>
@@ -28,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface WMLMacroCall extends WMLKeyValue
+public interface WMLMacroCall extends WMLKeyValue, WMLRootExpression
 {
   /**
    * Returns the value of the '<em><b>Point</b></em>' attribute.
@@ -81,32 +80,6 @@ public interface WMLMacroCall extends WMLKeyValue
    * @generated
    */
   void setRelative(boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link org.wesnoth.wml.WMLMacroCall#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Params</b></em>' attribute list.

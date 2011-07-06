@@ -107,6 +107,9 @@ public class WmlSwitch<T>
       {
         WMLTag wmlTag = (WMLTag)theEObject;
         T result = caseWMLTag(wmlTag);
+        if (result == null) result = caseWMLRootExpression(wmlTag);
+        if (result == null) result = caseWMLExpression(wmlTag);
+        if (result == null) result = caseWMLValuedExpression(wmlTag);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -114,6 +117,8 @@ public class WmlSwitch<T>
       {
         WMLKey wmlKey = (WMLKey)theEObject;
         T result = caseWMLKey(wmlKey);
+        if (result == null) result = caseWMLExpression(wmlKey);
+        if (result == null) result = caseWMLValuedExpression(wmlKey);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -129,14 +134,9 @@ public class WmlSwitch<T>
         WMLMacroCall wmlMacroCall = (WMLMacroCall)theEObject;
         T result = caseWMLMacroCall(wmlMacroCall);
         if (result == null) result = caseWMLKeyValue(wmlMacroCall);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WmlPackage.WML_LUA_CODE:
-      {
-        WMLLuaCode wmlLuaCode = (WMLLuaCode)theEObject;
-        T result = caseWMLLuaCode(wmlLuaCode);
-        if (result == null) result = caseWMLKeyValue(wmlLuaCode);
+        if (result == null) result = caseWMLRootExpression(wmlMacroCall);
+        if (result == null) result = caseWMLExpression(wmlMacroCall);
+        if (result == null) result = caseWMLValuedExpression(wmlMacroCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -152,6 +152,9 @@ public class WmlSwitch<T>
       {
         WMLMacroDefine wmlMacroDefine = (WMLMacroDefine)theEObject;
         T result = caseWMLMacroDefine(wmlMacroDefine);
+        if (result == null) result = caseWMLRootExpression(wmlMacroDefine);
+        if (result == null) result = caseWMLExpression(wmlMacroDefine);
+        if (result == null) result = caseWMLValuedExpression(wmlMacroDefine);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -159,6 +162,33 @@ public class WmlSwitch<T>
       {
         WMLPreprocIF wmlPreprocIF = (WMLPreprocIF)theEObject;
         T result = caseWMLPreprocIF(wmlPreprocIF);
+        if (result == null) result = caseWMLRootExpression(wmlPreprocIF);
+        if (result == null) result = caseWMLExpression(wmlPreprocIF);
+        if (result == null) result = caseWMLValuedExpression(wmlPreprocIF);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WmlPackage.WML_ROOT_EXPRESSION:
+      {
+        WMLRootExpression wmlRootExpression = (WMLRootExpression)theEObject;
+        T result = caseWMLRootExpression(wmlRootExpression);
+        if (result == null) result = caseWMLExpression(wmlRootExpression);
+        if (result == null) result = caseWMLValuedExpression(wmlRootExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WmlPackage.WML_EXPRESSION:
+      {
+        WMLExpression wmlExpression = (WMLExpression)theEObject;
+        T result = caseWMLExpression(wmlExpression);
+        if (result == null) result = caseWMLValuedExpression(wmlExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WmlPackage.WML_VALUED_EXPRESSION:
+      {
+        WMLValuedExpression wmlValuedExpression = (WMLValuedExpression)theEObject;
+        T result = caseWMLValuedExpression(wmlValuedExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -166,6 +196,17 @@ public class WmlSwitch<T>
       {
         WMLTextdomain wmlTextdomain = (WMLTextdomain)theEObject;
         T result = caseWMLTextdomain(wmlTextdomain);
+        if (result == null) result = caseWMLRootExpression(wmlTextdomain);
+        if (result == null) result = caseWMLExpression(wmlTextdomain);
+        if (result == null) result = caseWMLValuedExpression(wmlTextdomain);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WmlPackage.WML_LUA_CODE:
+      {
+        WMLLuaCode wmlLuaCode = (WMLLuaCode)theEObject;
+        T result = caseWMLLuaCode(wmlLuaCode);
+        if (result == null) result = caseWMLKeyValue(wmlLuaCode);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -254,22 +295,6 @@ public class WmlSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>WML Lua Code</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>WML Lua Code</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWMLLuaCode(WMLLuaCode object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>WML Array Call</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -318,6 +343,54 @@ public class WmlSwitch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>WML Root Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>WML Root Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLRootExpression(WMLRootExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>WML Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>WML Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLExpression(WMLExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>WML Valued Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>WML Valued Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLValuedExpression(WMLValuedExpression object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>WML Textdomain</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -329,6 +402,22 @@ public class WmlSwitch<T>
    * @generated
    */
   public T caseWMLTextdomain(WMLTextdomain object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>WML Lua Code</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>WML Lua Code</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLLuaCode(WMLLuaCode object)
   {
     return null;
   }
