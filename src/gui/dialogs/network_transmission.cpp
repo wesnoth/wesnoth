@@ -87,6 +87,7 @@ void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
 void tnetwork_transmission::post_show(twindow& /*window*/)
 {
 	pump_monitor.window_.reset();
+	connection_.cancel();
 }
 
 } // namespace gui2

@@ -129,6 +129,8 @@ std::size_t connection::is_read_complete(
 		std::size_t bytes_transferred
 		)
 {
+	if(ec == boost::asio::error::operation_aborted)
+		return 0;
 	if(ec)
 		throw error(ec);
 	bytes_read_ = bytes_transferred;
@@ -158,6 +160,8 @@ void connection::handle_read(
 	std::cout << "Read " << bytes_transferred << " bytes.\n";
 	bytes_to_read_ = 0;
 	done_ = true;
+	if(ec == boost::asio::error::operation_aborted)
+		return;
 	if(ec && ec != boost::asio::error::eof)
 		throw error(ec);
 	std::istream is(&read_buf_);

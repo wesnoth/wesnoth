@@ -474,24 +474,24 @@ namespace {
 		}
 	}
 
-	void upload_addon_to_server(game_display& disp, const std::string& addon, network::connection sock)
+	void upload_addon_to_server(game_display& disp, const std::string& addon, network_asio::connection& connection)
 	{
-		config request_terms;
-		request_terms.add_child("request_terms");
-		network::send_data(request_terms, sock);
-		config data;
-		sock = network::receive_data(data,sock,5000);
-		if(!sock) {
-			gui2::show_error_message(disp.video(), _("Connection timed out"));
-			return;
-		} else if (const config &c = data.child("error")) {
+		config request;
+		request.add_child("request_terms");
+		config response;
+		connection.transfer(request, response);
+		gui2::tnetwork_transmission request_terms_dialog(connection, _("Requesting terms"), "");
+		bool result = request_terms_dialog.show(disp.video());
+		if(!result) return;
+
+		if (const config &c = response.child("error")) {
 			std::string error_message = _("The server responded with an error: \"$error|\"");
 			utils::string_map symbols;
 			symbols["error"] = c["message"].str();
 			error_message = utils::interpolate_variables_into_string(error_message, &symbols);
 			gui2::show_error_message(disp.video(), error_message);
 			return;
-		} else if (const config &c = data.child("message")) {
+		} else if (const config &c = response.child("message")) {
 
 			if(gui2::show_message(disp.video()
 					,_("Terms")
@@ -522,24 +522,25 @@ namespace {
 		config addon_data;
 		archive_addon(addon,addon_data);
 
-		data.clear();
-		data.add_child("upload",cfg).add_child("data",addon_data);
+		request.clear();
+		response.clear();
+		request.add_child("upload",cfg).add_child("data",addon_data);
 
 		LOG_NET << "uploading add-on...\n";
-		network::send_data(data, sock);
+		connection.transfer(request, response);
+		gui2::tnetwork_transmission upload_dialog(connection, _("Sending add-on"), "");
+		result = upload_dialog.show(disp.video());
+		if(!result) return;
 
-		sock = dialogs::network_send_dialog(disp,_("Sending add-on"),data,sock);
-		if(!sock) {
-			return;
-		} else if (const config &c = data.child("error")) {
+		if (const config &c = response.child("error")) {
 			gui2::show_error_message(disp.video(), _("The server responded with an error: \"") +
 			                        c["message"].str() + '"');
-		} else if (const config &c = data.child("message")) {
+		} else if (const config &c = response.child("message")) {
 			gui2::show_transient_message(disp.video(), _("Response"), c["message"]);
 		}
 	}
 
-	void delete_remote_addon(game_display& disp, const std::string& addon, network::connection sock)
+	void delete_remote_addon(game_display& disp, const std::string& addon, network_asio::connection& connection)
 	{
 		config cfg;
 		get_addon_info(addon,cfg);
@@ -548,18 +549,18 @@ namespace {
 		msg["name"] = addon;
 		msg["passphrase"] = cfg["passphrase"];
 
-		config data;
-		data.add_child("delete",msg);
+		config request, response;
+		request.add_child("delete",msg);
 
-		network::send_data(data, sock);
+		connection.transfer(request, response);
+		gui2::tnetwork_transmission network_connect(connection, _("Requesting the addon to be deleted"), "");
+		bool result = network_connect.show(disp.video());
+		if(!result) return;
 
-		sock = network::receive_data(data,sock,5000);
-		if(!sock) {
-			gui2::show_error_message(disp.video(), _("Connection timed out"));
-		} else if (const config &c = data.child("error")) {
+		if (const config &c = response.child("error")) {
 			gui2::show_error_message(disp.video(), _("The server responded with an error: \"") +
 			                        c["message"].str() + '"');
-		} else if (const config &c = data.child("message")) {
+		} else if (const config &c = response.child("message")) {
 			gui2::show_transient_message(disp.video(), _("Response"), c["message"]);
 		}
 	}
@@ -568,14 +569,12 @@ namespace {
 	                   const std::string& addon_id, const std::string& addon_title,
 	                   const std::string& addon_type_str, const std::string& addon_uploads_str,
 	                   const std::string& addon_version_str,
-	                   const network::manager& /*net_manager*/,
-	                   const network::connection& sock, bool* do_refresh,
+	                   network_asio::connection& connection, bool* do_refresh,
 	                   bool show_result = true)
 	{
 		// Proceed to download and install
 		config request;
 		request.add_child("request_campaign")["name"] = addon_id;
-		network::send_data(request, sock);
 
 		utils::string_map syms;
 		syms["addon_title"] = addon_title;
@@ -584,8 +583,11 @@ namespace {
 
 		// WML structure where the add-on archive, or any error messages, are stored.
 		config cfg;
-		network::connection res = dialogs::network_receive_dialog(disp, download_dlg_title, cfg, sock);
-		if(!res) {
+
+		connection.transfer(request, cfg);
+		gui2::tnetwork_transmission network_connect(connection, download_dlg_title, _("Downloading..."));
+		bool result = network_connect.show(disp.video());
+		if(!result) {
 			return false;
 		}
 
@@ -688,8 +690,8 @@ namespace {
 	 */
 	bool addon_dependencies_met(game_display &disp, config const& addons_tree,
 		const std::string &addon_id,
-	        const network::manager& net_manager,
-	        const network::connection& sock, bool* do_refresh)
+		network_asio::connection& connection,
+	        bool* do_refresh)
 	{
 		const config &selected_campaign = addons_tree.find_child("campaign", "name", addon_id);
 		assert(selected_campaign);
@@ -819,12 +821,12 @@ namespace {
 				for(size_t i = 0; i < addons.size() && i < remote_matches_cfgs.size(); ++i)
 				{
 					if (!install_addon(disp, addons[i], titles[i],
-			       		            types[i], uploads[i], versions[i], net_manager, sock,
+			       		            types[i], uploads[i], versions[i], connection,
 			               		    do_refresh, false)) {
 						result=false;
 						failed_titles.push_back(titles[i]);
 					} else {
-						if (!addon_dependencies_met(disp, addons_tree, addons[i], net_manager, sock, do_refresh)) {
+						if (!addon_dependencies_met(disp, addons_tree, addons[i], connection, do_refresh)) {
 							const std::string err_title = _("Installation of a dependency failed");
 							const std::string err_message =
 								_("While the add-on has been installed, a dependency is missing. Try to update the installed add-ons.");
@@ -856,7 +858,7 @@ namespace {
 	}
 
 	void addons_update_dlg(game_display &disp, config const& addons_tree, const config::const_child_itors &remote_addons_list,
-	                       const network::manager& net_manager, const network::connection& sock,
+	                       network_asio::connection& connection,
 	                       bool* do_refresh)
 	{
 		std::vector<const config *> remote_matches_cfgs;
@@ -1030,12 +1032,12 @@ namespace {
 			for(size_t i = 0; i < addons.size() && i < remote_matches_cfgs.size(); ++i)
 			{
 				if (!install_addon(disp, addons[i], titles[i],
-				                   types[i], uploads[i], newversions[i], net_manager, sock,
+				                   types[i], uploads[i], newversions[i], connection,
 				                   do_refresh, false)) {
 					result=false;
 					failed_titles.push_back(titles[i]);
 				} else {
-					if (!addon_dependencies_met(disp, addons_tree, addons[i], net_manager, sock, do_refresh)) {
+					if (!addon_dependencies_met(disp, addons_tree, addons[i], connection, do_refresh)) {
 						const std::string err_title = _("Installation of some dependency failed");
 						const std::string err_message =
 							_("While the add-on has been installed, some dependency is missing. Try to update the installed add-ons.");
@@ -1047,12 +1049,12 @@ namespace {
 		} else {
 			const size_t i = static_cast<size_t>(index);
 			if (!install_addon(disp, addons[i], titles[i],
-				               types[i], uploads[i], newversions[i], net_manager, sock,
+				               types[i], uploads[i], newversions[i], connection,
 				               do_refresh, false)) {
 				result=false;
 				failed_titles.push_back(titles[i]);
 			} else {
-				if (!addon_dependencies_met(disp, addons_tree, addons[i], net_manager, sock, do_refresh)) {
+				if (!addon_dependencies_met(disp, addons_tree, addons[i], connection, do_refresh)) {
 					const std::string err_title = _("Installation of some dependency failed");
 					const std::string err_message =
 						_("While the add-on has been installed, some dependency is missing. Try to update the installed add-ons.");
@@ -1118,50 +1120,31 @@ namespace {
 		}
 
 		const std::string old_host = preferences::campaign_server();
-		const int remote_port = lexical_cast_default<int>(address_components.back(),
-		                                                  default_campaignd_port);
-		std::string remote_host = address_components.front();
+		const std::string remote_port = 
+			address_components.size() == 2 ? address_components[1] : lexical_cast<std::string>(default_campaignd_port);
+		std::string remote_host = address_components[0];
 		preferences::set_campaign_server(remote_address);
 
 		try {
-			if(gui2::new_widgets) {
-				network_asio::connection connection(remote_host, lexical_cast<std::string>(remote_port));
-				gui2::tnetwork_transmission network_connect(connection, _("Requesting list of add-ons"), _("Connecting..."));
-				bool result = network_connect.show(disp.video());
-				if(!result)
-					return;
-				config cfg, response;
-				cfg.add_child("request_campaign_list");
-				connection.transfer(cfg, response);
-				network_connect.set_subtitle(_("Downloading..."));
-				result = network_connect.show(disp.video());
-				if(!result)
-					return;
-			}
-			const network::manager net_manager;
-			const network::connection sock =
-				dialogs::network_connect_dialog(disp, _("Connecting to add-ons server..."),
-				                                remote_host, remote_port);
-			if(!sock) {
-				gui2::show_error_message(disp.video(), _("Could not connect to host."));
-				preferences::set_campaign_server(old_host);
+			network_asio::connection connection(remote_host, lexical_cast<std::string>(remote_port));
+			gui2::tnetwork_transmission network_connect(connection, _("Requesting list of add-ons"), _("Connecting..."));
+			bool result = network_connect.show(disp.video());
+			if(!result)
 				return;
-			}
-
-			config cfg;
-			cfg.add_child("request_campaign_list");
-			network::send_data(cfg, sock);
-			network::connection res = dialogs::network_receive_dialog(disp, _("Requesting list of add-ons"), cfg, sock);
-			if(!res) {
+			config request, response;
+			request.add_child("request_campaign_list");
+			connection.transfer(request, response);
+			network_connect.set_subtitle(_("Downloading..."));
+			result = network_connect.show(disp.video());
+			if(!result)
 				return;
-			}
 
-			if (config const &error = cfg.child("error")) {
+			if (config const &error = response.child("error")) {
 				gui2::show_error_message(disp.video(), error["message"]);
 				return;
 			}
 
-			config const &addons_tree = cfg.child("campaigns");
+			config const &addons_tree = response.child("campaigns");
 			if (!addons_tree) {
 				gui2::show_error_message(disp.video(), _("An error occurred while communicating with the server."));
 				return;
@@ -1169,7 +1152,7 @@ namespace {
 
 			const config::const_child_itors &addon_cfgs = addons_tree.child_range("campaign");
 			if(update_mode) {
-				addons_update_dlg(disp, addons_tree, addon_cfgs, net_manager, sock, do_refresh);
+				addons_update_dlg(disp, addons_tree, addon_cfgs, connection, do_refresh);
 				return;
 			}
 
@@ -1339,14 +1322,14 @@ namespace {
 			// Handle deletion option
 			if(index >= int(addons.size() + publish_options.size())) {
 				const std::string& addon = delete_options[index - int(addons.size() + publish_options.size())];
-				delete_remote_addon(disp, addon, sock);
+				delete_remote_addon(disp, addon, connection);
 				return;
 			}
 
 			// Handle publish option
 			if(index >= int(addons.size())) {
 				const std::string& addon = publish_options[index - int(addons.size())];
-				upload_addon_to_server(disp, addon, sock);
+				upload_addon_to_server(disp, addon, connection);
 				return;
 			}
 
@@ -1354,8 +1337,8 @@ namespace {
 			{
 				// Handle download
 				install_addon(disp, addons[index], titles[index], types[index],
-							  uploads[index], versions[index], net_manager, sock, do_refresh);
-				if (!addon_dependencies_met(disp, addons_tree, addons[index], net_manager, sock, do_refresh)) {
+							  uploads[index], versions[index], connection, do_refresh);
+				if (!addon_dependencies_met(disp, addons_tree, addons[index], connection, do_refresh)) {
 					const std::string err_title = _("Installation of some dependency failed");
 					const std::string err_message =
 						_("While the add-on has been installed, some dependency is missing. Try to update the installed add-ons.");
