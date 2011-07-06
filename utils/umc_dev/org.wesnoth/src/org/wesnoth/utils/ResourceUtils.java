@@ -293,6 +293,19 @@ public class ResourceUtils
 	}
 
 	/**
+	 * Checks if the specified path points to a valid (existing file)
+	 * @param filePath The path to check
+	 * @return True if the filePath points to an existing file, false otherwise
+	 */
+	public static boolean isValidFilePath( String filePath )
+	{
+	    boolean valid = filePath != null && !filePath.isEmpty() && new File(filePath).exists();
+	    if ( valid == false )
+	        Logger.getInstance().logWarn(Messages.WMLTools_48 + filePath);
+	    return valid;
+	}
+
+	/**
 	 * Returns "_main.cfg" file
 	 * from the specified resource or null if it isn't any
 	 * It will start searching upwards starting from curren

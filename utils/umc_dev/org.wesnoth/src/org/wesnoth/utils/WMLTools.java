@@ -15,6 +15,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.core.resources.IFile;
@@ -50,7 +51,7 @@ public class WMLTools
         Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( resourcePath ) );
 
         //wmlindent only check first
-		if ( !checkPrerequisites( paths, null, "wmlindent" ) ) //$NON-NLS-1$
+		if ( !checkWMLTool( paths, Tools.WMLINDENT.toString( ) ) ) //$NON-NLS-1$
 			return null;
 
 		File wmllintFile = new File( paths.getWMLToolsDir( ) + "/wmlindent" ); //$NON-NLS-1$
@@ -59,7 +60,7 @@ public class WMLTools
 
 		if (resourcePath != null)
 		{
-			if (!checkPrerequisites( paths, resourcePath, null))
+			if ( !ResourceUtils.isValidFilePath( resourcePath ) )
 				return null;
 
 			if (dryrun || Preferences.getBool(Constants.P_WMLINDENT_DRYRUN) == true)
@@ -84,7 +85,8 @@ public class WMLTools
 	{
         Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( resourcePath ) );
 
-		if ( !checkPrerequisites( paths, resourcePath, "wesnoth/wmlparser2.py" ) ) //$NON-NLS-1$
+		if ( !ResourceUtils.isValidFilePath( resourcePath ) ||
+	         !checkWMLTool( paths, "wesnoth/wmlparser2.py" ) ) //$NON-NLS-1$
 			return null;
 
 		File wmlparserFile = new File(paths.getWMLToolsDir( ) + "/wesnoth/wmlparser2.py" ); //$NON-NLS-1$
@@ -143,7 +145,8 @@ public class WMLTools
 	{
         Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( resourcePath ) );
 
-		if ( !checkPrerequisites( paths, resourcePath, "wmllint" ) ) //$NON-NLS-1$
+		if ( !ResourceUtils.isValidFilePath( resourcePath ) ||
+	         !checkWMLTool( paths, Tools.WMLLINT.toString( ) ) )
 			return null;
 
 		File wmllintFile = new File( paths.getWMLToolsDir( ) + "/wmllint" ); //$NON-NLS-1$
@@ -196,7 +199,8 @@ public class WMLTools
 	{
         Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( resourcePath ) );
 
-		if ( !checkPrerequisites( paths, resourcePath, "wmlscope" ) ) //$NON-NLS-1$
+		if ( !ResourceUtils.isValidFilePath( resourcePath ) ||
+		     !checkWMLTool( paths, Tools.WMLSCOPE.toString( ) ) )
 			return null;
 
 		File wmlscopeFile = new File( paths.getWMLToolsDir( ) + "/wmlscope" ); //$NON-NLS-1$
@@ -393,7 +397,8 @@ public class WMLTools
 			OutputStream[] stdout, OutputStream[] stderr)
 	{
         Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( containerPath ) );
-		if ( !checkPrerequisites( paths, containerPath, "wesnoth_addon_manager" ) ) //$NON-NLS-1$
+		if ( !ResourceUtils.isValidFilePath( containerPath ) ||
+		     !checkWMLTool( paths, Tools.WESNOTH_ADDON_MANAGER.toString( ) ) )
 			return null;
 
 		File wmllintFile = new File(paths.getWMLToolsDir( )	+ "/wesnoth_addon_manager"); //$NON-NLS-1$
@@ -447,49 +452,41 @@ public class WMLTools
 		}
 	}
 
-	//TODO: break this method in 2 simpler
 	/**
-	 * Checks if a wmlTool (that is in the wml tools directory) and
-	 * an additional file that is target of the tool exist / are valid.
-	 *
-	 * @param filePath the file to be processed by the wml tool
-	 * @param wmlTool the wml tool file
-	 * @return True if the prerequisites are valid or false otherwise
+	 * Checks if the specified wmlTool is existing an can
+	 * be runned (python path is valid aswell)
+	 * @param paths The paths for current install
+	 * @param wmlTool The wml tool to check
+	 * @return True if tool is ok to be used
 	 */
-	public static boolean checkPrerequisites( Paths paths, String filePath, String wmlTool )
+	public static boolean checkWMLTool( Paths paths, String wmlTool )
 	{
-        if (filePath == null || filePath.isEmpty() || !new File(filePath).exists())
+	    if ( !ResourceUtils.isValidFilePath( Preferences.getString(Constants.P_PYTHON_PATH) ) )
         {
-            Logger.getInstance().logWarn(Messages.WMLTools_48 + filePath);
+            GUIUtils.showWarnMessageBox(Messages.WMLTools_42 + Messages.WMLTools_43);
             return false;
         }
 
-		if (Preferences.getString(Constants.P_PYTHON_PATH).equals("")) //$NON-NLS-1$
-		{
-			GUIUtils.showWarnMessageBox(Messages.WMLTools_42 +
-				Messages.WMLTools_43);
-			return false;
-		}
+	    if ( wmlTool != null ) {
+	        if ( paths.getWMLToolsDir( ).equals( "" ) ) //$NON-NLS-1$
+            {
+                GUIUtils.showWarnMessageBox(Messages.WMLTools_45 +
+                        Messages.WMLTools_46);
+                return false;
+            }
+            File wmlToolFile = new File( paths.getWMLToolsDir( ) + wmlTool );
 
-		if (wmlTool != null)
-		{
-			if ( paths.getWMLToolsDir( ).equals( "" ) ) //$NON-NLS-1$
-			{
-				GUIUtils.showWarnMessageBox(Messages.WMLTools_45 +
-						Messages.WMLTools_46);
-				return false;
-			}
-			File wmlToolFile = new File( paths.getWMLToolsDir( ) + wmlTool );
+            if (!wmlToolFile.exists())
+            {
+                GUIUtils.showErrorMessageBox(String.format(Messages.WMLTools_47,
+                        wmlToolFile));
+                return false;
+            }
 
-			if (!wmlToolFile.exists())
-			{
-				GUIUtils.showErrorMessageBox(String.format(Messages.WMLTools_47,
-						wmlToolFile));
-				return false;
-			}
-		}
+            return true;
+	    }
 
-		return true;
+	    return false;
 	}
 
 	/**
@@ -541,5 +538,11 @@ public class WMLTools
 	public enum Tools
 	{
 		WMLLINT, WMLINDENT, WMLSCOPE, WESNOTH_ADDON_MANAGER;
+
+		@Override
+        public String toString()
+		{
+            return this.name( ).toLowerCase( Locale.ENGLISH );
+		}
 	}
 }
