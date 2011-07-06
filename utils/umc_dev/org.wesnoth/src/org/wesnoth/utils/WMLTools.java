@@ -463,7 +463,12 @@ public class WMLTools
 	 */
 	public static boolean checkWMLTool( Paths paths, String wmlTool )
 	{
-	    if ( !ResourceUtils.isValidFilePath( Preferences.getString(Constants.P_PYTHON_PATH) ) )
+	    String pythonPath = Preferences.getString( Constants.P_PYTHON_PATH );
+	    if (   pythonPath.isEmpty( ) ||
+	         ( pythonPath.matches( "^.*(/|\\\\).*$" ) &&
+	           !ResourceUtils.isValidFilePath( Preferences.getString(Constants.P_PYTHON_PATH) )
+	         )
+	       )
         {
             GUIUtils.showWarnMessageBox( Messages.WMLTools_42 );
             return false;
