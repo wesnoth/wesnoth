@@ -11,7 +11,6 @@ package org.wesnoth.projects;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
@@ -94,8 +93,7 @@ public class ProjectCache
 
 			try
 			{
-				properties_.load( new InputStreamReader( new FileInputStream(
-				        wesnothFile_.getAbsolutePath() ), "UTF-16" ) ); //$NON-NLS-1$
+				properties_.load( wesnothFile_.getAbsolutePath() );
 			}
 			catch(ClassCastException ex)
 			{
