@@ -14,10 +14,9 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
-import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
-
+import org.wesnoth.WesnothPlugin;
 
 public class MapUtils
 {
@@ -28,7 +27,7 @@ public class MapUtils
 	{
 		if (WorkspaceUtils.getSelectedFolder() == null)
 		{
-			Logger.getInstance().log(Messages.MapUtils_0,
+			Logger.getInstance().log("no directory selected (importMap)", //$NON-NLS-1$
 				Messages.MapUtils_1);
 			return;
 		}

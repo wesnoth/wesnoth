@@ -99,7 +99,7 @@ public class NewConfigFileWizard extends NewWizardTemplate {
 
 		if (!resource.exists() || !(resource instanceof IContainer))
 		{
-			throw new Exception(Messages.NewConfigFileWizard_1 + containerName + Messages.NewConfigFileWizard_2);
+			throw new Exception( "Container " + containerName + " does not exist." ); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 
 		IContainer container = (IContainer) resource;

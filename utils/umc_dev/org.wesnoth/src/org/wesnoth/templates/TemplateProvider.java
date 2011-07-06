@@ -21,7 +21,6 @@ import java.util.regex.Pattern;
 
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
-import org.wesnoth.Messages;
 import org.wesnoth.utils.Pair;
 import org.wesnoth.utils.StringUtils;
 
@@ -54,7 +53,7 @@ public class TemplateProvider
 	{
 		try
 		{
-			Logger.getInstance().log(Messages.TemplateProvider_0 +
+			Logger.getInstance().log("reading templates from: " + //$NON-NLS-1$
 					Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME);
 
 			BufferedReader reader = new BufferedReader(
@@ -189,7 +188,7 @@ public class TemplateProvider
 				if (tmpLine.length != 2)
 				{
 					Logger.getInstance().logError(
-							String.format(Messages.TemplateProvider_15,
+							String.format("error parsing 'structure template' (%s) on line %s", //$NON-NLS-1$
 									structureTemplate, line));
 					continue;
 				}

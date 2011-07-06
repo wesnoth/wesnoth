@@ -22,7 +22,6 @@ import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.projects.ProjectUtils;
 
-
 public class GameUtils
 {
 	/**
@@ -62,7 +61,7 @@ public class GameUtils
 		if ( selectedResource == null )
 		{
 			GUIUtils.showWarnMessageBox(Messages.GameUtils_0 +
-					Messages.GameUtils_1);
+					""); //$NON-NLS-1$
 			return;
 		}
 
@@ -81,14 +80,14 @@ public class GameUtils
 			if (campaignId == null)
 			{
 				GUIUtils.showErrorMessageBox(Messages.GameUtils_2 +
-						Messages.GameUtils_3);
+						""); //$NON-NLS-1$
 				return;
 			}
 
 			if (scenario == true && scenarioId == null)
 			{
 				GUIUtils.showErrorMessageBox(Messages.GameUtils_4 +
-						Messages.GameUtils_5);
+						""); //$NON-NLS-1$
 				return;
 			}
 
@@ -175,7 +174,7 @@ public class GameUtils
 	{
 		if (file == null || !file.exists())
 		{
-			Logger.getInstance().log(Messages.GameUtils_11,
+			Logger.getInstance().log("non-existing map file", //$NON-NLS-1$
 					Messages.GameUtils_12);
 			return;
 		}

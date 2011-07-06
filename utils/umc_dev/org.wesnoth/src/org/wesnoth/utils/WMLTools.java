@@ -463,15 +463,14 @@ public class WMLTools
 	{
 	    if ( !ResourceUtils.isValidFilePath( Preferences.getString(Constants.P_PYTHON_PATH) ) )
         {
-            GUIUtils.showWarnMessageBox(Messages.WMLTools_42 + Messages.WMLTools_43);
+            GUIUtils.showWarnMessageBox( Messages.WMLTools_42 );
             return false;
         }
 
 	    if ( wmlTool != null ) {
 	        if ( paths.getWMLToolsDir( ).equals( "" ) ) //$NON-NLS-1$
             {
-                GUIUtils.showWarnMessageBox(Messages.WMLTools_45 +
-                        Messages.WMLTools_46);
+                GUIUtils.showWarnMessageBox( Messages.WMLTools_45 );
                 return false;
             }
             File wmlToolFile = new File( paths.getWMLToolsDir( ) + wmlTool );

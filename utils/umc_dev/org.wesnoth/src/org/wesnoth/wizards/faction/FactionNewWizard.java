@@ -168,7 +168,7 @@ public class FactionNewWizard extends NewWizardTemplate
 
 		if (template == null)
 		{
-			Logger.getInstance().log(Messages.FactionNewWizard_13,
+			Logger.getInstance().log("'faction' template not found", //$NON-NLS-1$
 					Messages.FactionNewWizard_14);
 			return null;
 		}

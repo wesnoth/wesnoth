@@ -140,7 +140,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 
 		if (!resource.exists() || !(resource instanceof IContainer))
 		{
-			throw new Exception(Messages.ScenarioNewWizard_3 + containerName + Messages.ScenarioNewWizard_4);
+			throw new Exception( "Container " + containerName + " does not exist." ); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 
 		final IContainer container = (IContainer) resource;
@@ -227,7 +227,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 		{
 			startingGold = page1_.getStartingGoldByDifficulties();
 			if (startingGold == null)
-				throw new Exception(Messages.ScenarioNewWizard_15);
+				throw new Exception("incorrect arguments"); //$NON-NLS-1$
 		}
 		params.add(new ReplaceableParameter("$$starting_gold", startingGold)); //$NON-NLS-1$
 

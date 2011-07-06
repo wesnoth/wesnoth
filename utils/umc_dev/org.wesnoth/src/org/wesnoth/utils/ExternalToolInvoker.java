@@ -22,7 +22,6 @@ import java.util.Locale;
 
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
-import org.wesnoth.Messages;
 
 /**
  * A tool to invoke an external tool/executable
@@ -60,7 +59,7 @@ public class ExternalToolInvoker
 		arguments_ = commandline;
 
 		processBuilder_ = new ProcessBuilder(commandline);
-		Logger.getInstance().log(String.format(Messages.ExternalToolInvoker_0,
+		Logger.getInstance().log(String.format("Invoking tool %s with args: %s", //$NON-NLS-1$
 				fileName, arguments));
 
 	 	outputContent_ = new StringBuilder();

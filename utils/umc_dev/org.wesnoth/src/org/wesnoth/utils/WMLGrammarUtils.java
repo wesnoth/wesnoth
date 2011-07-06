@@ -17,6 +17,11 @@ import org.wesnoth.wml.WMLTag;
 
 public class WMLGrammarUtils
 {
+    /**
+     * Returns the list of child keys for this tag
+     * @param tag The tag to process
+     * @return A list of {@link WMLKey}
+     */
     public static List<WMLKey> getTagKeys( WMLTag tag )
     {
         List<WMLKey> result = new ArrayList<WMLKey>();
@@ -28,6 +33,11 @@ public class WMLGrammarUtils
         return result;
     }
 
+    /**
+     * Returns the list of child tags for this tag
+     * @param tag The tag to process
+     * @return A list of {@link WMLTag}
+     */
     public static List<WMLTag> getTagTags( WMLTag tag )
     {
         List<WMLTag> result = new ArrayList<WMLTag>();

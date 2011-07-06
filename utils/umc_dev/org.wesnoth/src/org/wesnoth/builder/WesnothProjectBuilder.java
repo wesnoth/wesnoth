@@ -74,7 +74,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 	    String installName = WesnothInstallsUtils.getInstallNameForResource( getProject() );
 
-	    Logger.getInstance().log(Messages.WesnothProjectBuilder_0);
+	    Logger.getInstance().log("building..."); //$NON-NLS-1$
 		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
 
 		Paths paths = Preferences.getPaths( installName );
@@ -82,8 +82,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		monitor.subTask(Messages.WesnothProjectBuilder_3);
 		if ( paths.getUserDir( ).isEmpty( ) )
 		{
-			Logger.getInstance().log(Messages.WesnothProjectBuilder_4,
-					Messages.WesnothProjectBuilder_5);
+			Logger.getInstance().log("no preferences set (project builder)", //$NON-NLS-1$
+					Messages.WesnothProjectBuilder_7); 
 			return null;
 		}
 		monitor.worked(5);
@@ -101,7 +101,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			monitor.subTask(Messages.WesnothProjectBuilder_8);
 			Map<String, String> properties = new HashMap<String, String>();
 			properties.put("wesnoth.user.dir", paths.getUserDir( )); //$NON-NLS-1$
-			Logger.getInstance().log(Messages.WesnothProjectBuilder_10);
+			Logger.getInstance().log("Ant result:"); //$NON-NLS-1$
 
 			String result = AntUtils.runAnt(
 					getProject().getLocation().toOSString() + "/build.xml", //$NON-NLS-1$
@@ -111,7 +111,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 			if (result == null)
 			{
-				Logger.getInstance().log(Messages.WesnothProjectBuilder_12,
+				Logger.getInstance().log("error running the ant job", //$NON-NLS-1$
 						Messages.WesnothProjectBuilder_13);
 				return null;
 			}

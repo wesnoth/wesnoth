@@ -144,8 +144,7 @@ public class CampaignPage1 extends NewWizardPageTemplate
 		GridData gd_lblRelativeToThe_1 = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_lblRelativeToThe_1.widthHint = 285;
 		lblRelativeToThe_1.setLayoutData(gd_lblRelativeToThe_1);
-		lblRelativeToThe_1
-				.setToolTipText(Messages.CampaignPage1_17);
+		lblRelativeToThe_1.setToolTipText(Messages.CampaignPage1_17);
 		lblRelativeToThe_1.setText(Messages.CampaignPage1_18);
 
 		updateIsPageComplete();

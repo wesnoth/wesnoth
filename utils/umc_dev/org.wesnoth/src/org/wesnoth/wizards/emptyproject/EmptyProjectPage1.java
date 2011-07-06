@@ -89,12 +89,7 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 		txtVersion_.addModifyListener(updatePageCompleteListener);
 
 		Label lblFormat = new Label(container, SWT.NONE);
-		lblFormat.setToolTipText(Messages.EmptyProjectPage1_8 +
-				Messages.EmptyProjectPage1_9 +
-				Messages.EmptyProjectPage1_10 +
-				Messages.EmptyProjectPage1_11 +
-				Messages.EmptyProjectPage1_12 +
-				Messages.EmptyProjectPage1_13);
+		lblFormat.setToolTipText( Messages.EmptyProjectPage1_8 );
 		lblFormat.setText(Messages.EmptyProjectPage1_14);
 
 		Label lblTranslationsDir = new Label(container, SWT.NONE);
@@ -154,15 +149,7 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 		GridData gd_lblRelativeToThe_1 = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_lblRelativeToThe_1.widthHint = 285;
 		lblRelativeToThe_1.setLayoutData(gd_lblRelativeToThe_1);
-		lblRelativeToThe_1.setToolTipText(Messages.EmptyProjectPage1_23 +
-				Messages.EmptyProjectPage1_24 +
-				Messages.EmptyProjectPage1_25 +
-				Messages.EmptyProjectPage1_26 +
-				Messages.EmptyProjectPage1_27 +
-				Messages.EmptyProjectPage1_28 +
-				Messages.EmptyProjectPage1_29 +
-				Messages.EmptyProjectPage1_30 +
-				Messages.EmptyProjectPage1_31);
+		lblRelativeToThe_1.setToolTipText( Messages.EmptyProjectPage1_23 );
 		lblRelativeToThe_1.setText(Messages.EmptyProjectPage1_32);
 
 		updateIsPageComplete();

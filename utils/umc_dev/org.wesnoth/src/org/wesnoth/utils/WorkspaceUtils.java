@@ -325,13 +325,7 @@ public class WorkspaceUtils
 	{
         if (guided)
         {
-            GUIUtils.showInfoMessageBox(
-                    Messages.Activator_0 +
-                    Messages.Activator_1 +
-                    Messages.Activator_2 +
-                    Messages.Activator_3 +
-                    Messages.Activator_4 +
-            Messages.Activator_5);
+            GUIUtils.showInfoMessageBox( Messages.WorkspaceUtils_0 );
         }
 
         if (!checkPathsAreSet( null, false ))
@@ -341,22 +335,17 @@ public class WorkspaceUtils
             if ( pref.open() == Window.CANCEL ||
                  !checkPathsAreSet ( null, true ) )
             {
-                GUIUtils.showErrorMessageBox(Messages.WorkspaceUtils_7 +
-                        Messages.WorkspaceUtils_8);
+                GUIUtils.showErrorMessageBox( Messages.WorkspaceUtils_7 );
                 return;
             }
 
             if (guided)
             {
-                GUIUtils.showInfoMessageBox(
-                        Messages.WorkspaceUtils_9 +
-                        Messages.WorkspaceUtils_10+
-                        Messages.WorkspaceUtils_11+
-                        Messages.WorkspaceUtils_12);
+                GUIUtils.showInfoMessageBox( Messages.WorkspaceUtils_9 );
             }
         }
 
-        WorkspaceJob job = new WorkspaceJob(Messages.WorkspaceUtils_13){
+        WorkspaceJob job = new WorkspaceJob( Messages.WorkspaceUtils_13 ){
             @Override
             public IStatus runInWorkspace(IProgressMonitor monitor)
             {
@@ -367,8 +356,7 @@ public class WorkspaceUtils
                     String addonsDir = Preferences.getPaths( null ).getAddonsDir( );
                     String campaignsDir = Preferences.getPaths( null ).getCampaignDir( );
 
-                    if (GUIUtils.showMessageBox(Messages.WorkspaceUtils_18 +
-                            Messages.WorkspaceUtils_19,
+                    if (GUIUtils.showMessageBox( Messages.WorkspaceUtils_18 ,
                             SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
                     {
                         // useraddons/add-ons/data
@@ -377,8 +365,7 @@ public class WorkspaceUtils
                             files.addAll(Arrays.asList(tmp));
                     }
 
-                    if (GUIUtils.showMessageBox(Messages.WorkspaceUtils_20 +
-                            Messages.WorkspaceUtils_21,
+                    if (GUIUtils.showMessageBox( Messages.WorkspaceUtils_20 ,
                             SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
                     {
                         // workingdir/data/campaigns
@@ -419,14 +406,11 @@ public class WorkspaceUtils
 
                     if (guided)
                     {
-                        GUIUtils.showInfoMessageBox(
-                                Messages.WorkspaceUtils_25 +
-                                Messages.WorkspaceUtils_26 +
-                                Messages.WorkspaceUtils_27);
+                        GUIUtils.showInfoMessageBox( Messages.WorkspaceUtils_25 );
                     }
                     else
                     {
-                        Logger.getInstance().log(Messages.WorkspaceUtils_28,
+                        Logger.getInstance().log("setupWorkspace was successful", //$NON-NLS-1$
                                 Messages.WorkspaceUtils_29);
                     }
                 } catch (Exception e)

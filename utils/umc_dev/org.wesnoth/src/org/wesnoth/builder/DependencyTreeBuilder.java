@@ -230,6 +230,17 @@ public class DependencyTreeBuilder implements Serializable
     }
 
     /**
+     * Returns the node specified by the file
+     * @param file The file to get the depedency node for
+     * @return An instance of {@link ProjectDependencyNode}
+     *
+     */
+    public ProjectDependencyNode getNode( IFile file )
+    {
+        return tree_.get( file.getProjectRelativePath( ).toString( ) );
+    }
+
+    /**
      * Deserializes this object from the input
      * @param input The object input stream
      * @throws IOException

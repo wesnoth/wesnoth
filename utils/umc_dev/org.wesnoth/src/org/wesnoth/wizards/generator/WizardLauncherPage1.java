@@ -40,7 +40,7 @@ public class WizardLauncherPage1 extends NewWizardPageTemplate
 
 		list_ = new HashMap<String, String>();
 
-		String[] templates = StringUtils.getLines(TemplateProvider.getInstance().getTemplate("wizards"));
+		String[] templates = StringUtils.getLines(TemplateProvider.getInstance().getTemplate("wizards")); //$NON-NLS-1$
 
 		for (String line : templates)
 		{
@@ -49,7 +49,7 @@ public class WizardLauncherPage1 extends NewWizardPageTemplate
 			String[] tokens = line.split(":"); //$NON-NLS-1$
 			if (tokens.length != 2)
 			{
-				Logger.getInstance().logError("Error in template 'wizards' on line:" + line);
+				Logger.getInstance().logError("Error in template 'wizards' on line:" + line); //$NON-NLS-1$
 				continue;
 			}
 			list_.put(tokens[0], tokens[1]);

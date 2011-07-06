@@ -17,6 +17,7 @@ import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
+import org.wesnoth.Messages;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.schema.Tag;

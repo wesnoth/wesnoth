@@ -149,7 +149,7 @@ public class EraNewWizard extends NewWizardTemplate
 
 		if (template == null)
 		{
-			Logger.getInstance().log(Messages.EraNewWizard_7,
+			Logger.getInstance().log("'era' template not found", //$NON-NLS-1$
 					Messages.EraNewWizard_8);
 			return null;
 		}

@@ -127,11 +127,8 @@ public class WesnothInstallsUtils
             if ( Preferences.getDefaultInstallName( ).isEmpty( ) )
                 return false;
 
-            if ( GUIUtils.showMessageBox(
-                    Messages.WesnothInstallsUtils_1 +
-                    resource.getProject( ).getName( ) +
-                    Messages.WesnothInstallsUtils_2 +
-                    Messages.WesnothInstallsUtils_3,
+            if ( GUIUtils.showMessageBox( String.format(
+                    Messages.WesnothInstallsUtils_1, resource.getProject( ).getName( ) ),
                     SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO )
                 return false; // no hope :(
 

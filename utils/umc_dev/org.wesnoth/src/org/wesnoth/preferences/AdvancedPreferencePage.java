@@ -9,9 +9,9 @@
 package org.wesnoth.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
-import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
 import org.wesnoth.Messages;
+import org.wesnoth.WesnothPlugin;
 
 public class AdvancedPreferencePage extends AbstractPreferencePage
 {
@@ -29,7 +29,6 @@ public class AdvancedPreferencePage extends AbstractPreferencePage
 		addField(new BooleanFieldEditor(
 				Constants.P_ADV_NO_TERRAIN_GFX, Messages.AdvancedPreferencePage_1, 1,
 				getFieldEditorParent()),
-				Messages.AdvancedPreferencePage_2 +
-				Messages.AdvancedPreferencePage_3);
+				Messages.AdvancedPreferencePage_2);
 	}
 }

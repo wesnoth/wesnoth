@@ -552,8 +552,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             }
 
             if ( cmbVersion_.getText().isEmpty() == true ) {
-                GUIUtils.showErrorMessageBox(
-                        Messages.WesnothInstallsPage_20 );
+                GUIUtils.showErrorMessageBox( Messages.WesnothInstallsPage_20 );
                return false;
             }
 

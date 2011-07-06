@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.Stack;
 
 import org.wesnoth.Logger;
-import org.wesnoth.Messages;
 import org.wesnoth.installs.WesnothInstall;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
@@ -99,7 +98,7 @@ public class SchemaParser
 	{
 		if (parsingDone_ && !force)
 		{
-			Logger.getInstance().log(Messages.SchemaParser_1);
+			Logger.getInstance().log("schema not parsed since there is already in cache."); //$NON-NLS-1$
 			return;
 		}
 
@@ -110,7 +109,7 @@ public class SchemaParser
 			tags_.clear();
 		}
 
-		Logger.getInstance().log(Messages.SchemaParser_2 + (force == true ? Messages.SchemaParser_3 : "")); //$NON-NLS-1$
+		Logger.getInstance().log("parsing schema " + (force == true ? "forced" : "")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		File schemaFile = new File(schemaPath);
 		String res = ResourceUtils.getFileContents(schemaFile);
 		String[] lines = StringUtils.getLines(res);
@@ -184,7 +183,7 @@ public class SchemaParser
 					if (tokens.length != 2)
 					{
 						Logger.getInstance().logError(
-								Messages.SchemaParser_18 + index);
+								"Error. invalid primitive on line :" + index); //$NON-NLS-1$
 						continue;
 					}
 					primitives_.put(tokens[0].trim(), tokens[1].trim());
@@ -221,11 +220,11 @@ public class SchemaParser
 					}
 
 					if ( currentTag != null ) {
-    					currentTag.setDescription(new Tag(Messages.SchemaParser_25, '?'));
+    					currentTag.setDescription(new Tag("description", '?')); //$NON-NLS-1$
     					currentTag.getDescription().getKeyChildren().add(
     							new TagKey(tokens[0], '?', "", value.toString(), true)); //$NON-NLS-1$
 					}else {
-					    System.out.println( Messages.SchemaParser_0 );
+					    System.out.println( "Tag shouldn't have been null!" ); //$NON-NLS-1$
 					}
 				}
 				else
@@ -238,7 +237,7 @@ public class SchemaParser
 					if (tokens.length != 2)
 					{
 						Logger.getInstance().logError(
-								Messages.SchemaParser_30 + index);
+								"Error. invalid attribute on line :" + index); //$NON-NLS-1$
 						continue;
 					}
 
@@ -246,7 +245,7 @@ public class SchemaParser
 					if (value.length != 2)
 					{
 						Logger.getInstance().logError(
-								Messages.SchemaParser_32 + index);
+								"Error. invalid attribute value on line:" + index); //$NON-NLS-1$
 						continue;
 					}
 
@@ -270,7 +269,7 @@ public class SchemaParser
 						{
 							if (primitives_.get(value[1]) == null)
 								Logger.getInstance().logError(
-								Messages.SchemaParser_34 + value[1]);
+								"Undefined primitive type in schema.cfg for: " + value[1]); //$NON-NLS-1$
 
 							currentTag.addKey(tokens[0], primitives_.get(value[1]),
 									getCardinality(value[0]), value[1].equals("tstring")); //$NON-NLS-1$
@@ -291,7 +290,7 @@ public class SchemaParser
 			expandTag(tag,0);
 		}
 
-		Logger.getInstance().log(Messages.SchemaParser_36);
+		Logger.getInstance().log("parsing done"); //$NON-NLS-1$
 		parsingDone_ = true;
 	}
 

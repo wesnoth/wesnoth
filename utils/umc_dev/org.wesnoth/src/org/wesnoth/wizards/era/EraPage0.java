@@ -114,8 +114,7 @@ public class EraPage0 extends NewWizardPageTemplate
 		txtEraName_.addModifyListener(modifyListener);
 
 		chkRequireEra_ = new Button(container, SWT.CHECK);
-		chkRequireEra_
-				.setToolTipText(Messages.EraPage0_8);
+		chkRequireEra_.setToolTipText(Messages.EraPage0_8);
 		chkRequireEra_.setText(Messages.EraPage0_9);
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);

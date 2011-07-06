@@ -25,14 +25,14 @@ public class OpenMapInEditorHandler extends AbstractHandler
 		IFile selectedFile = WorkspaceUtils.getSelectedFile();
 		if (selectedFile == null)
 		{
-			Logger.getInstance().log(Messages.OpenMapInEditorHandler_0,
+			Logger.getInstance().log("file null (open map handler)", //$NON-NLS-1$
 					Messages.OpenMapInEditorHandler_1);
 			return null;
 		}
 
 		if (!selectedFile.getName().endsWith(".map")) //$NON-NLS-1$
 		{
-			Logger.getInstance().log(Messages.OpenMapInEditorHandler_3+selectedFile.getName(),
+			Logger.getInstance().log("non-map file selected: "+selectedFile.getName(), //$NON-NLS-1$
 					Messages.OpenMapInEditorHandler_4);
 			return null;
 		}

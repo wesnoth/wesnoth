@@ -27,14 +27,13 @@ public class ImportMapHandler extends AbstractHandler
 		IFolder selectedFolder = WorkspaceUtils.getSelectedFolder();
 		if (selectedFolder == null)
 		{
-			Logger.getInstance().log(Messages.ImportMapHandler_0,
+			Logger.getInstance().log("no directory selected (importMapHandler)", //$NON-NLS-1$
 				Messages.ImportMapHandler_1);
 			return null;
 		}
 
 		if (!selectedFolder.getName().equals("maps") && //$NON-NLS-1$
-				GUIUtils.showMessageBox(Messages.ImportMapHandler_3 +
-						Messages.ImportMapHandler_4,
+				GUIUtils.showMessageBox(Messages.ImportMapHandler_3,
 						SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO)
 			return null;
 

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.wesnoth.Logger;
-import org.wesnoth.Messages;
 import org.wesnoth.utils.ResourceUtils;
 
 
@@ -93,11 +92,11 @@ public class Define
 				getWMLSAXHandlerFromResource(file, new DefinesSAXHandler());
 
 		if (handler != null){
-		    Logger.getInstance().log(Messages.Define_0 + handler.getDefines().size() + Messages.Define_1 + file);
+		    Logger.getInstance().log("loaded " + handler.getDefines().size() + " defines for file:" + file); //$NON-NLS-1$ //$NON-NLS-1$ //$NON-NLS-2$
 		    return handler.getDefines();
 		}
 
-	    Logger.getInstance().log(Messages.Define_2);
+	    Logger.getInstance().log("There was an error on creating the Defines SAX handler"); //$NON-NLS-1$
 		return new HashMap<String, Define>(0);
 	}
 

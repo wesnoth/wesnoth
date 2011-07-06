@@ -102,7 +102,7 @@ public class PreprocessorUtils
 		if (filesTimeStamps_.containsKey(filePath) &&
 			filesTimeStamps_.get(filePath) >= new File(filePath).lastModified())
 		{
-			Logger.getInstance().log(Messages.PreprocessorUtils_1 + filePath);
+			Logger.getInstance().log("skipped preprocessing a non-modified file: " + filePath); //$NON-NLS-1$
 			return -1;
 		}
 
@@ -163,7 +163,7 @@ public class PreprocessorUtils
 				arguments.add( definesArg.toString() );
 			}
 
-			Logger.getInstance().log(Messages.PreprocessorUtils_10 + filePath);
+			Logger.getInstance().log("preprocessing file: " + filePath); //$NON-NLS-1$
 			ExternalToolInvoker wesnoth = new ExternalToolInvoker(
 					paths.getWesnothExecutablePath( ),
 					arguments);
@@ -188,7 +188,7 @@ public class PreprocessorUtils
 	{
 		if (file == null || !file.exists())
 		{
-			Logger.getInstance().log(Messages.PreprocessorUtils_11,
+			Logger.getInstance().log("file null or non existent.", //$NON-NLS-1$
 					Messages.PreprocessorUtils_12);
 			return;
 		}

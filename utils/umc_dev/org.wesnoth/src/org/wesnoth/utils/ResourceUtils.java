@@ -31,7 +31,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
@@ -157,7 +156,7 @@ public class ResourceUtils
 
 		} catch (CoreException e)
 		{
-			Logger.getInstance().log(Messages.ResourceUtils_4 + resourceName, IStatus.ERROR);
+			Logger.getInstance().logError( "Error creating the resource" + resourceName ); //$NON-NLS-1$
 			GUIUtils.showMessageBox(Messages.ResourceUtils_5 + resourceName, SWT.ICON_ERROR);
 			Logger.getInstance().logException(e);
 		}
@@ -188,7 +187,7 @@ public class ResourceUtils
 		if (fileContentsString == null)
 		{
 			fileContentsString = ""; //$NON-NLS-1$
-			Logger.getInstance().log(Messages.ResourceUtils_7, IStatus.WARNING);
+			Logger.getInstance().logWarn( "file contents are null" ); //$NON-NLS-1$
 		}
 
 		if (file.exists() && overwrite)
@@ -301,7 +300,7 @@ public class ResourceUtils
 	{
 	    boolean valid = filePath != null && !filePath.isEmpty() && new File(filePath).exists();
 	    if ( valid == false )
-	        Logger.getInstance().logWarn(Messages.WMLTools_48 + filePath);
+	        Logger.getInstance().logWarn("The file does not exist or is null: " + filePath); //$NON-NLS-1$
 	    return valid;
 	}
 
@@ -423,7 +422,7 @@ public class ResourceUtils
 		}
 		catch (SAXException e) {
 			Logger.getInstance().logException(e);
-			Logger.getInstance().logError(Messages.ResourceUtils_21 + parser.getOutputContent());
+			Logger.getInstance().logError("Using output: " + parser.getOutputContent()); //$NON-NLS-1$
 			return null;
 		}
 		catch (Exception e)
