@@ -125,6 +125,7 @@ public class WMLTools
 	 *
 	 * @param resourcePath the full path of the target where "wmllint" will be runned on
 	 * @param dryrun true to run "wmllint" in dry mode - i.e. no changes in the config file.
+	 * @param showProgress true to show the progress of the tool
 	 * @return  null if there were errors or an ExternalToolInvoker instance
 	 */
 	public static ExternalToolInvoker runWMLLint(String resourcePath, boolean dryrun, boolean showProgress)
@@ -137,6 +138,7 @@ public class WMLTools
 	 *
 	 * @param resourcePath the full path of the target where "wmllint" will be runned on
 	 * @param dryrun true to run "wmllint" in dry mode - i.e. no changes in the config file.
+	 * @param showProgress true to show the progress of the tool
 	 * @param stdout The array of streams where to output the stdout content
 	 * @param stderr The array of streams where to output the stderr content
 	 */
@@ -426,7 +428,7 @@ public class WMLTools
 	}
 
 	/**
-	 * Parses the output and adds markers accordingly
+	 * Parses the output from the WMLTool and adds markers accordingly
 	 */
 	public static void parseAndAddMarkers(String output, String markerType)
 	{

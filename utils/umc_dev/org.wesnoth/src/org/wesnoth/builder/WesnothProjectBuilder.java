@@ -26,6 +26,7 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.installs.WesnothInstallsUtils;
@@ -35,9 +36,11 @@ import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.AntUtils;
+import org.wesnoth.utils.ExternalToolInvoker;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLSaxHandler;
+import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.wml.core.ConfigFile;
 
@@ -80,33 +83,17 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		if ( runAntJob(paths, monitor ) == false )
 		    return null;
 
-		boolean readDefines = true;
+		boolean readDefines = false;
+
 		if (kind == FULL_BUILD)
-		{
-			fullBuild(monitor);
-		}
+			readDefines = fullBuild(monitor);
 		else
 		{
 			IResourceDelta delta = getDelta(getProject());
 			if (delta == null)
-			{
-				fullBuild(monitor);
-			}
+				readDefines = fullBuild(monitor);
 			else
-			{
-				readDefines = false;
-				IResourceDelta[] affected = delta.getAffectedChildren();
-
-				for(IResourceDelta tmp : affected)
-				{
-					if ( ResourceUtils.isConfigFile( tmp.getResource( ) ) )
-					{
-						readDefines = true;
-						break;
-					}
-				}
-				incrementalBuild(delta, monitor);
-			}
+				readDefines = incrementalBuild(delta, monitor);
 		}
 
 		if (readDefines)
@@ -122,19 +109,21 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		return null;
 	}
 
-    protected void fullBuild(final IProgressMonitor monitor) throws CoreException
+    protected boolean fullBuild(final IProgressMonitor monitor) throws CoreException
     {
         ProjectCache cache = ProjectUtils.getCacheForProject( getProject( ) );
         cache.getDependencyTree( ).createDependencyTree( true );
 
     //  getProject().accept(new ResourceVisitor(monitor));
+        return false;
     }
 
-    protected void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor)
+    protected boolean incrementalBuild(IResourceDelta delta, IProgressMonitor monitor)
             throws CoreException
     {
         // the visitor does the work.
         //delta.accept(new ResourceDeltaVisitor(monitor));
+        return false;
     }
 
 	private boolean runAntJob( Paths paths, IProgressMonitor monitor )
@@ -237,48 +226,59 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				}
 				monitor.worked(10);
 
-				// we need to find the correct column start/end based on the current document
-				// (or get that from the tool)
-//				IDocumentProvider provider = new TextFileDocumentProvider();
-//				provider.connect(file);
-//				IDocument document = provider.getDocument(file);
-
-				// wmllint
-//				monitor.subTask("Running WMLLint...");
-//				ExternalToolInvoker tool = WMLTools.runWMLLint(file.getLocation().toOSString(), true);
-//				tool.waitForTool();
-//
-//				String[] output = StringUtils.getLines(tool.getErrorContent());
-//				MarkerToken token;
-//				for(String line : output)
-//				{
-//					token = MarkerToken.parseToken(line);
-//					if (token == null)
-//						continue;
-//					addMarker(file, token, document);
-//				}
-				monitor.worked(20);
-
-				// wmlscope
-//				monitor.subTask("Running WMLScope...");
-//				tool = WMLTools.runWMLScope(file.getLocation().toOSString());
-//				tool.waitForTool();
-//				output = StringUtils.getLines(tool.getErrorContent());
-//				for(String line : output)
-//				{
-//					token = MarkerToken.parseToken(line);
-//					if (token == null)
-//						continue;
-//					addMarker(file, token, document);
-//				}
-				monitor.worked(20);
-
 			} catch (Exception e)
 			{
 				Logger.getInstance().logException(e);
 			}
 		}
 		return true;
+	}
+
+	@SuppressWarnings( "unused" )
+    private void runWMLLint( IProgressMonitor monitor, IFile file )
+	{
+	    monitor.subTask( String.format( "Running WMLlint on file %s ...", file.getName( ) ) );
+	    ExternalToolInvoker tool = WMLTools.runWMLLint(file.getLocation().toOSString(), false, false);
+	    tool.waitForTool();
+
+	    try {
+            file.deleteMarkers(Constants.MARKER_WMLLINT, false, IResource.DEPTH_INFINITE);
+        }
+        catch ( CoreException e ) {
+            Logger.getInstance( ).logException( e );
+        }
+
+        String[] output = StringUtils.getLines(tool.getErrorContent());
+        for(String line : output)
+            WMLTools.parseAndAddMarkers( line, Constants.MARKER_WMLLINT );
+
+        monitor.worked(20);
+	}
+
+	/**
+	 * Run the wmlscope for the specified file
+	 * @param monitor
+	 * @param file
+	 * @throws CoreException
+	 */
+	@SuppressWarnings( "unused" )
+    private void runWMLScope( IProgressMonitor monitor, IFile file )
+	{
+        monitor.subTask( String.format( "Running WMLScope on file %s ...", file.getName( ) ) );
+        ExternalToolInvoker tool = WMLTools.runWMLScope( file.getLocation().toOSString(), false );
+        tool.waitForTool();
+
+        try {
+            file.deleteMarkers(Constants.MARKER_WMLSCOPE, false, IResource.DEPTH_INFINITE);
+        }
+        catch ( CoreException e ) {
+            Logger.getInstance( ).logException( e );
+        }
+
+        String[] output = StringUtils.getLines(tool.getErrorContent());
+        for(String line : output)
+            WMLTools.parseAndAddMarkers( line, Constants.MARKER_WMLSCOPE );
+        monitor.worked(20);
 	}
 
 	/**
