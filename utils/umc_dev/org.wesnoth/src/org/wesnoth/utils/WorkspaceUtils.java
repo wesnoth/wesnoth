@@ -29,7 +29,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewPart;
@@ -332,17 +331,17 @@ public class WorkspaceUtils
         {
             PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
                     WesnothPlugin.getShell(), "org.wesnoth.preferences.InstallsPage", null, null); //$NON-NLS-1$
-            if ( pref.open() == Window.CANCEL ||
-                 !checkPathsAreSet ( null, true ) )
+            pref.open();
+            if ( !checkPathsAreSet ( null, true ) )
             {
                 GUIUtils.showErrorMessageBox( Messages.WorkspaceUtils_7 );
                 return;
             }
+        }
 
-            if (guided)
-            {
-                GUIUtils.showInfoMessageBox( Messages.WorkspaceUtils_9 );
-            }
+        if (guided)
+        {
+            GUIUtils.showInfoMessageBox( Messages.WorkspaceUtils_9 );
         }
 
         WorkspaceJob job = new WorkspaceJob( Messages.WorkspaceUtils_13 ){

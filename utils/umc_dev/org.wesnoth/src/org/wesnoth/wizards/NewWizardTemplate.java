@@ -27,6 +27,9 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 	protected Object				data_				= null;
 	protected String				objectName_			= ""; //$NON-NLS-1$
 
+    // TODO: wizards should ask the install
+	// TODO: detect automatically whether a project is in data or add-ons/
+	// without the need for the user to specify
 	public NewWizardTemplate()
 	{
 		setNeedsProgressMonitor(true);

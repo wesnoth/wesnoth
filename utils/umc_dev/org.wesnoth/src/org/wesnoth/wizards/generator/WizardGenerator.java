@@ -22,8 +22,6 @@ public class WizardGenerator extends NewWizardTemplate
 	private int    	indent_;
 
 	public WizardGenerator(String title, String tagName, int indent) {
-
-	    // TODO: wizards should ask the install
 		SchemaParser.getInstance( null ).parseSchema(false);
 		setWindowTitle(title);
 		Tag tagContent = SchemaParser.getInstance( null ).getTags().get(tagName);
