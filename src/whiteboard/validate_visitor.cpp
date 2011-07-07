@@ -125,7 +125,7 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 			//new valid path differs from the previous one, replace
 			m.set_route(new_route);
 			m.calculate_move_cost();
-			
+
 			//send updated path to allies
 			resources::whiteboard->queue_net_cmd(side_actions_->make_net_cmd_replace(side_actions_->get_position_of(m_ptr),m_ptr));
 
