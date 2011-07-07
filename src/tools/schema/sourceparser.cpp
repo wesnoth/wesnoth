@@ -310,7 +310,7 @@ bool class_source_parser::parse_block(){
 		}
 		else{
 			// wiki-block is closed. checking stack of opened tags
-			if (current_.size() != 0 ){
+			if (!current_.empty()){
 				add_open_tag_error();
 				close_opened_tags();
 				// continue working
@@ -342,7 +342,7 @@ bool class_source_parser::parse_tag(){
 			if (check_allow_global(line)){
 			}
 		}else{
-			if (current_.size() != 0 ){
+			if (!current_.empty()){
 				// adding error messages for each unclosed entity
 				add_open_tag_error();
 				close_opened_tags();
