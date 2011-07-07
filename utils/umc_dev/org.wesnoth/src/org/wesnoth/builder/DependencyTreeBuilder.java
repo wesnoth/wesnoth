@@ -31,9 +31,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.wesnoth.Logger;
-import org.wesnoth.builder.WesnothProjectBuilder.WMLFilesComparator;
 import org.wesnoth.utils.ListUtils;
 import org.wesnoth.utils.ResourceUtils;
+import org.wesnoth.utils.ResourceUtils.WMLFilesComparator;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
 
@@ -95,7 +95,7 @@ public class DependencyTreeBuilder implements Serializable
             IResource main_cfg = container.findMember( "_main.cfg" ); //$NON-NLS-1$
             if ( main_cfg != null ) {
                 // add main.cfg to tree
-                addNode( (IFile) main_cfg );
+                internal_addNode( (IFile) main_cfg );
 
                 WMLRoot root = ResourceUtils.getWMLRoot( ( IFile ) main_cfg );
                 // nothing to do
@@ -166,7 +166,7 @@ public class DependencyTreeBuilder implements Serializable
                     continue;
                 }
 
-                Collections.sort( members, new WMLFilesComparator( ) );
+                Collections.sort( members, new WMLFilesComparator() );
 
                 if ( members.isEmpty( ) )
                     continue;
@@ -181,7 +181,7 @@ public class DependencyTreeBuilder implements Serializable
                         if ( !ResourceUtils.isConfigFile( resource ) )
                             continue;
 
-                        addNode( ( IFile ) resource );
+                        internal_addNode( ( IFile ) resource );
                     }
                 }
             }
@@ -190,11 +190,76 @@ public class DependencyTreeBuilder implements Serializable
         System.out.println( toString( ) );
     }
 
+    public ProjectDependencyNode addNode( IFile file )
+    {
+        // save current nodes
+        ProjectDependencyNode parentBak = parent_, previousBak = previous_, newNode = null ;
+
+        // find the correct previous and parent to place the new node
+        String parentPath = file.getParent( ).getProjectRelativePath( ).
+            removeTrailingSeparator( ).toString( );
+        String fileName = file.getName( );
+
+        ProjectDependencyNode root = getNode( ROOT_NODE_KEY );
+        parent_ = null;
+
+        while ( root != null ) {
+
+            if ( root.getFile( ).getParent( ).getProjectRelativePath( ).
+                    removeTrailingSeparator( ).toString( ).
+                    equals( parentPath.toString( ) ) ) {
+
+                // found the directory. Now find the place
+                ProjectDependencyNode leaf = root;
+                while ( leaf != null ) {
+
+                    // we found the place?
+                    if ( ResourceUtils.wmlFileNameCompare(
+                            fileName,
+                            leaf.getFile( ).getName( ) ) > 0 ) {
+
+                        previous_ = leaf.getPrevious( );
+
+                        newNode = internal_addNode( file );
+
+                        // update links
+                        newNode.setNext( leaf );
+                        leaf.setPrevious( newNode );
+
+                        break;
+                    }
+
+                    leaf = leaf.getNext( );
+                }
+
+                break;
+            }
+
+            parent_ = root;
+            root = root.getSon( );
+        }
+
+        // didn't found any place to put it. where shall we?
+        //TODO: the place should be dictated by other cfg,
+        // by getting the included directory
+        if ( newNode == null ) {
+
+        }
+
+        // restore nodes
+        parent_ = parentBak;
+        previous_ = previousBak;
+
+        // print the new tree
+        System.out.println( toString( ) );
+        return newNode;
+    }
+
     /**
      * Adds a new node to this tree
      * @param file The file to add
      */
-    private void addNode( IFile file )
+    private ProjectDependencyNode internal_addNode( IFile file )
     {
         ProjectDependencyNode newNode = new ProjectDependencyNode( file, currentIndex_ );
         currentIndex_ += ProjectDependencyNode.INDEX_STEP;
@@ -218,6 +283,7 @@ public class DependencyTreeBuilder implements Serializable
 
         tree_.put( file.getProjectRelativePath( ).toString( ), newNode );
         previous_ = newNode;
+        return newNode;
     }
 
     /**
