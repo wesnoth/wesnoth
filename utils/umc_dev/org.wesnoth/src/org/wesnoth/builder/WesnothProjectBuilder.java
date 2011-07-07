@@ -9,8 +9,10 @@
 package org.wesnoth.builder;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -162,25 +164,57 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
     {
         boolean foundCfg = false;
 
+        DependencyTreeBuilder tree = projectCache_.getDependencyTree( );
         Queue<IResourceDelta> deltasQueue = new LinkedBlockingDeque<IResourceDelta>();
-        List<IResourceDelta> deltaList = new ArrayList<IResourceDelta>();
+        List< ProjectDependencyNode > nodesToProcess = new ArrayList<ProjectDependencyNode>();
 
         // gather the list of configs modified
         deltasQueue.add( delta );
 
         while( !deltasQueue.isEmpty( ) ) {
-
             IResourceDelta deltaItem = deltasQueue.poll( );
+            IResource resource = deltaItem.getResource( );
 
-            // add just config files
-            if ( ResourceUtils.isConfigFile( deltaItem.getResource( ) ) ) {
-                deltaList.add( deltaItem );
+            // process just config files
+            if ( ResourceUtils.isConfigFile( resource ) ) {
+                IFile file = (IFile) resource;
+                int deltaKind = deltaItem.getKind( );
+
+                if ( deltaKind == IResourceDelta.REMOVED ) {
+                    projectCache_.getDependencyTree( ).removeNode( file );
+                    projectCache_.getConfigs().remove( file.getName() );
+                } else if ( deltaKind == IResourceDelta.ADDED  ){
+                    ProjectDependencyNode newNode = tree.addNode( file );
+                    nodesToProcess.add( newNode );
+                } else if ( deltaKind == IResourceDelta.CHANGED ) {
+                    nodesToProcess.add( tree.getNode( file ) );
+                } else {
+                    Logger.getInstance( ).log( "unknown delta kind: " + deltaKind );
+                }
             }
 
-            deltasQueue.addAll( Arrays.asList( delta.getAffectedChildren( ) ) );
+            deltasQueue.addAll( Arrays.asList( deltaItem.getAffectedChildren( ) ) );
         }
 
-        //
+        // sort the list by index (ascending)
+        Collections.sort( nodesToProcess, new Comparator<ProjectDependencyNode> () {
+
+            @Override
+            public int compare( ProjectDependencyNode o1, ProjectDependencyNode o2 )
+            {
+                if ( o1.getIndex( ) < o2.getIndex( ) )
+                    return -1;
+                else if ( o1.getIndex( ) == o2.getIndex( ) )
+                    return 0;
+
+                return 1;
+            }
+        });
+
+        // process nodes
+        for ( ProjectDependencyNode node : nodesToProcess ) {
+            checkResource( node.getFile( ), monitor );
+        }
 
         return foundCfg;
     }
@@ -219,14 +253,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
         monitor.worked(2);
         return true;
-	}
-
-	protected void handleRemovedResource(IResource resource)
-	{
-		if ( ResourceUtils.isConfigFile( resource ) )
-		{
-			projectCache_.getConfigs().remove(resource.getName());
-		}
 	}
 
 	protected boolean checkResource( IResource resource, IProgressMonitor monitor )
@@ -371,7 +397,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	 *
 	 * @see http://wiki.wesnoth.org/PreprocessorRef
 	 */
-	public static class WMLFilesComparator implements Comparator<IResource> {
+	public static class WMLFilesComparator implements Comparator<IResource>, Serializable {
+
+        private static final long serialVersionUID = 1045365969430128101L;
 
         @Override
         public int compare( IResource o1, IResource o2 )
