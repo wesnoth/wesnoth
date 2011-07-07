@@ -691,7 +691,9 @@ void manager::contextual_delete()
 		if (selected_unit &&
 				(it = viewer_actions()->find_first_action_of(selected_unit)) != viewer_actions()->end())
 		{
+			///@todo Shouldn't it be "find_last_action_of" instead of "find_first_action_of" above?
 			viewer_actions()->remove_action(it);
+			///@todo Shouldn't we probably deselect the unit at this point?
 		}
 		else if (highlighter_ && (action = highlighter_->get_delete_target()) &&
 				(it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())

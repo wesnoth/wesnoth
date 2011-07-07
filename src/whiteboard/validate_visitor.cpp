@@ -50,6 +50,7 @@ validate_visitor::~validate_visitor()
 bool validate_visitor::validate_actions()
 {
 	int action_number = 1;
+	///@todo We can optimize this by making the side_actions::iterator available to accept()
 	foreach(action_ptr action, *side_actions_)
 	{
 		DBG_WB << "Action #" << action_number << "\n";
