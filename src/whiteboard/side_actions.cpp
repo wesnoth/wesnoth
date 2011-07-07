@@ -662,7 +662,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 			return;
 		}
 		action_queue::iterator itor = actions_.begin()+pos;
-		itor = safe_erase(begin()+pos);
+		itor = safe_erase(itor);
 
 		//update numbering hexes as necessary
 		action_queue::iterator end = actions_.end();
