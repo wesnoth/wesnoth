@@ -9,7 +9,6 @@
 package org.wesnoth.builder;
 
 import java.io.File;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -187,6 +186,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                     ProjectDependencyNode newNode = tree.addNode( file );
                     nodesToProcess.add( newNode );
                 } else if ( deltaKind == IResourceDelta.CHANGED ) {
+                    //TODO: check if the included directories have changed their
+                    // order
                     nodesToProcess.add( tree.getNode( file ) );
                 } else {
                     Logger.getInstance( ).log( "unknown delta kind: " + deltaKind );
@@ -391,37 +392,4 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 		return false;
 	}
-
-	/**
-	 * This is a WML files comparator, based on the WML parsing rules.
-	 *
-	 * @see http://wiki.wesnoth.org/PreprocessorRef
-	 */
-	public static class WMLFilesComparator implements Comparator<IResource>, Serializable {
-
-        private static final long serialVersionUID = 1045365969430128101L;
-
-        @Override
-        public int compare( IResource o1, IResource o2 )
-        {
-            String name1 = o1.getName( );
-            String name2 = o2.getName( );
-
-            // _initial.cfg is always the "lowest"
-            if ( name1.equals( "_initial.cfg" ) && !( name2.equals( "_initial.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
-                return -1;
-
-            if ( name2.equals( "_initial.cfg" ) && !( name1.equals( "_initial.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
-                return 1;
-
-            // _final.cfg is always the "highest"
-            if ( name1.equals( "_final.cfg" ) && !( name2.equals( "_final.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
-                return 1;
-
-            if ( name2.equals( "_final.cfg" ) && !( name1.equals( "_final.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
-                return -1;
-
-            return name1.compareTo( o2.getName( ) );
-        }
-    }
 }

@@ -135,9 +135,9 @@ public class StringUtils
 	}
 
 	/**
-	 * Removes all path separators from the string
-	 * @param string
-	 * @return
+	 * Removes all trailing path separators from the string
+	 * @param string The string to trim
+	 * @return A new string that doesn't have any trailling separators
 	 */
 	public static String trimPathSeparators(String string)
 	{

@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.Serializable;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -527,5 +529,46 @@ public class ResourceUtils
             return null;
 
         return ( WMLRoot ) result;
+	}
+
+    /**
+     * This is a WML files comparator, based on the WML parsing rules.
+     *
+     * @see http://wiki.wesnoth.org/PreprocessorRef
+     */
+    public static class WMLFilesComparator implements Comparator<IResource>, Serializable {
+
+        private static final long serialVersionUID = 1045365969430128101L;
+
+        @Override
+        public int compare( IResource o1, IResource o2 )
+        {
+            return ResourceUtils.wmlFileNameCompare( o1.getName( ), o2.getName( ) );
+        }
+    }
+
+    /**
+     * Compares 2 filenames to get the wml file order
+     * @param fileName1 The first filename
+     * @param fileName2 The second filename
+     * @return -1, 0 or 1 if the fileName1 is lower, equal or greater than fileName2
+     */
+	public static int wmlFileNameCompare( String fileName1, String fileName2 )
+	{
+        // _initial.cfg is always the "lowest"
+        if ( fileName1.equals( "_initial.cfg" ) && !( fileName2.equals( "_initial.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
+            return -1;
+
+        if ( fileName2.equals( "_initial.cfg" ) && !( fileName1.equals( "_initial.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
+            return 1;
+
+        // _final.cfg is always the "highest"
+        if ( fileName1.equals( "_final.cfg" ) && !( fileName2.equals( "_final.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
+            return 1;
+
+        if ( fileName2.equals( "_final.cfg" ) && !( fileName1.equals( "_final.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
+            return -1;
+
+        return fileName1.compareTo( fileName2 );
 	}
 }
