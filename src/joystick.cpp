@@ -200,7 +200,7 @@ std::pair<double, double> joystick_manager::get_polar_coordinates(int joystick_x
 	const double radius = (sqrt(pow(values.first, 2.0f) + pow(values.second, 2.0f))) / 32768.0;
 	const double angle = (atan2((double)values.second, (double)values.first)) * 180.0 / PI;
 
-	return std::make_pair<double, double>(radius, angle);
+	return std::make_pair(radius, angle);
 }
 
 std::pair<int, int> joystick_manager::get_axis_pair(int joystick_xaxis, int xaxis, int joystick_yaxis, int yaxis) {
