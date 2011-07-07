@@ -68,9 +68,9 @@ public:
 	virtual void draw_hex(map_location const& hex);
 
 	/// Checks that the path is not of length 0 or 1
-	static bool valid_path(arrow_path_t path);
+	static bool valid_path(arrow_path_t const& path);
 	/// Invalidates every hex along the given path
-	static void invalidate_arrow_path(arrow_path_t path);
+	static void invalidate_arrow_path(arrow_path_t const& path);
 
 	virtual void notify_arrow_changed();
 

@@ -122,7 +122,7 @@ void arrow::draw_hex(map_location const& hex)
 	}
 }
 
-bool arrow::valid_path(arrow_path_t path)
+bool arrow::valid_path(arrow_path_t const& path)
 {
 	if (path.size() >= 2)
 		return true;
@@ -264,7 +264,7 @@ void arrow::update_symbols()
 	}
 }
 
-void arrow::invalidate_arrow_path(arrow_path_t path)
+void arrow::invalidate_arrow_path(arrow_path_t const& path)
 {
 	if(!SCREEN) return;
 
