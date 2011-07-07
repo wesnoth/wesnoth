@@ -37,7 +37,10 @@ namespace schema_generator{
  */
 class class_error_container{
 public:
-	class_error_container(){}
+	class_error_container()
+		: list_()
+	{
+	}
 
 	/**
 	 *Puts simple error message in container
