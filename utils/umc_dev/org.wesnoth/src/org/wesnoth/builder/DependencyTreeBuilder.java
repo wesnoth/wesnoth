@@ -213,7 +213,7 @@ public class DependencyTreeBuilder implements Serializable
      * Adds a new node to this tree
      * @param file The file to add
      */
-    public void addNode( IFile file )
+    private void addNode( IFile file )
     {
         ProjectDependencyNode newNode = new ProjectDependencyNode( file, currentIndex_ );
         currentIndex_ += ProjectDependencyNode.INDEX_STEP;

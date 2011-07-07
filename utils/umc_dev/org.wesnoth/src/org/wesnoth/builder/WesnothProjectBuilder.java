@@ -10,21 +10,21 @@ package org.wesnoth.builder;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingDeque;
 
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceDelta;
-import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
@@ -134,8 +134,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
                 // going right the current branch
                 do {
+                    foundCfg = true;
+
                     // process the leaf
-                    checkResource( leaf.getFile( ), monitor, false );
+                    checkResource( leaf.getFile( ), monitor );
 
                     leaf = leaf.getNext( );
                 }while ( leaf != null );
@@ -158,8 +160,27 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
     protected boolean incrementalBuild(IResourceDelta delta, IProgressMonitor monitor)
             throws CoreException
     {
-        // the visitor does the work.
         boolean foundCfg = false;
+
+        Queue<IResourceDelta> deltasQueue = new LinkedBlockingDeque<IResourceDelta>();
+        List<IResourceDelta> deltaList = new ArrayList<IResourceDelta>();
+
+        // gather the list of configs modified
+        deltasQueue.add( delta );
+
+        while( !deltasQueue.isEmpty( ) ) {
+
+            IResourceDelta deltaItem = deltasQueue.poll( );
+
+            // add just config files
+            if ( ResourceUtils.isConfigFile( deltaItem.getResource( ) ) ) {
+                deltaList.add( deltaItem );
+            }
+
+            deltasQueue.addAll( Arrays.asList( delta.getAffectedChildren( ) ) );
+        }
+
+        //
 
         return foundCfg;
     }
@@ -173,8 +194,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
      */
 	private boolean runAntJob( Paths paths, IProgressMonitor monitor )
 	{
+	    String buildXMLPath = getProject().getLocation().toOSString() + "/build.xml";
         // check for 'build.xml' existance
-        if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == true) //$NON-NLS-1$
+        if ( new File( buildXMLPath ).exists() == true )
         {
             // run the ant job to copy the whole project
             // in the user add-ons directory (incremental)
@@ -183,9 +205,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
             properties.put("wesnoth.user.dir", paths.getUserDir( )); //$NON-NLS-1$
             Logger.getInstance().log("Ant result:"); //$NON-NLS-1$
 
-            String result = AntUtils.runAnt(
-                    getProject().getLocation().toOSString() + "/build.xml", //$NON-NLS-1$
-                    properties, true);
+            String result = AntUtils.runAnt( buildXMLPath, properties, true);
             Logger.getInstance().log(result);
             monitor.worked(10);
 
@@ -209,38 +229,34 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 	}
 
-	protected boolean checkResource(IResource resource, IProgressMonitor monitor, boolean handleMainCfg)
+	protected boolean checkResource( IResource resource, IProgressMonitor monitor )
 	{
 		monitor.worked(5);
-		if (resource.exists() == false ||
-			monitor.isCanceled() ||
-			isResourceIgnored(resource))
+		if ( resource.exists() == false ||
+			 monitor.isCanceled() )
 			return false;
 
 		// config files
-		if ( ResourceUtils.isConfigFile( resource ) )
+		if ( ResourceUtils.isConfigFile( resource ) &&
+		     !isResourceIgnored( resource ) )
 		{
-			boolean isMainCfg = resource.getName().equals("_main.cfg"); //$NON-NLS-1$
-			if (handleMainCfg == false && isMainCfg == true)
-				return true;
+            IFile file = (IFile) resource;
+            String fileName = file.getName( );
+            String macrosFilePath = PreprocessorUtils.getInstance( ).getDefinesLocation( file );
 
-			Logger.getInstance().log(""); //$NON-NLS-1$
+			Logger.getInstance().log( "Resource: " + fileName ); //$NON-NLS-1$
+
 			try
 			{
-				IFile file = (IFile) resource;
-				String fileName = file.getName( );
-
 				monitor.subTask( String.format( Messages.WesnothProjectBuilder_19 ,fileName ) );
 
 				List<String> defines = new ArrayList<String>();
-				// for non-main cfg file skip core as we already parsed
-				// that when preprocessed main
-				if (isMainCfg == false)
+				// parse the core only if we don't have any macros file
+				if ( !new File( macrosFilePath ).exists( ) )
 					defines.add("SKIP_CORE"); //$NON-NLS-1$
 
 				// we use a single _MACROS_.cfg file for each project
-				PreprocessorUtils.getInstance().preprocessFile(file,
-						PreprocessorUtils.getInstance().getDefinesLocation(file), defines);
+				PreprocessorUtils.getInstance().preprocessFile(file, macrosFilePath, defines);
 				monitor.worked(5);
 
 				monitor.subTask( String.format( Messages.WesnothProjectBuilder_22, fileName ) );
@@ -348,61 +364,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				return true;
 		}
 		return false;
-	}
-
-
-	class ResourceDeltaVisitor implements IResourceDeltaVisitor
-	{
-		private IProgressMonitor monitor_;
-
-		public ResourceDeltaVisitor(IProgressMonitor monitor) {
-			monitor_ = monitor;
-		}
-
-		@Override
-		public boolean visit(IResourceDelta delta) throws CoreException
-		{
-			IResource resource = delta.getResource();
-			boolean foundCfg = false;
-			IResourceDelta[] affected = delta.getAffectedChildren();
-
-			for(IResourceDelta tmp : affected)
-			{
-				if ( ResourceUtils.isConfigFile( tmp.getResource( ) ) )
-				{
-					foundCfg = true;
-					break;
-				}
-			}
-
-			boolean visitChildren = false;
-			switch (delta.getKind())
-			{
-				case IResourceDelta.ADDED:
-					// handle added resource
-					visitChildren = checkResource(resource, monitor_, false);
-					break;
-				case IResourceDelta.REMOVED:
-					// handle removed resource
-					handleRemovedResource(resource);
-					visitChildren = true;
-					break;
-				case IResourceDelta.CHANGED:
-					// handle changed resource
-					visitChildren = checkResource(resource, monitor_, false);
-					break;
-			}
-
-			if (foundCfg && resource instanceof IContainer)
-			{
-				// preprocess _main.cfg before all
-				checkResource(((IContainer) resource).getFile(new Path("_main.cfg")), //$NON-NLS-1$
-						monitor_, true);
-			}
-
-			// return true to continue visiting children.
-			return visitChildren;
-		}
 	}
 
 	/**
