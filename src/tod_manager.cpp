@@ -95,7 +95,9 @@ config tod_manager::to_config() const
 	return cfg;
 }
 
-const time_of_day tod_manager::get_time_of_day(int for_turn, const map_location loc, const bool consider_illuminates) const
+const time_of_day tod_manager::get_time_of_day(int for_turn
+		, const map_location& loc
+		, const bool consider_illuminates) const
 {
 	if(for_turn == 0) for_turn = turn_;
 	if(consider_illuminates) {

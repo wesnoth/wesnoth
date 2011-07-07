@@ -38,7 +38,10 @@ class tod_manager : public savegame::savegame_config
 		 * if loc is on board then tod areas matter (else: scenario main time)
 		 * if consider_illuminates then tod modifying units matter in addition to time areas
 		 */
-		const time_of_day get_time_of_day(int for_turn = 0, const map_location loc = map_location(), const bool consider_illuminates = false) const;
+		const time_of_day get_time_of_day(int for_turn = 0
+				, const map_location& loc = map_location()
+				, const bool consider_illuminates = false) const;
+
 		const time_of_day& get_previous_time_of_day() const;
 
 		/**
