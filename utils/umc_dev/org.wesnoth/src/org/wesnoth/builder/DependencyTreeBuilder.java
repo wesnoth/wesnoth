@@ -187,26 +187,7 @@ public class DependencyTreeBuilder implements Serializable
             }
         }
 
-        System.out.println("tree:"); //$NON-NLS-1$
-        if ( !tree_.isEmpty( ) ) {
-            ProjectDependencyNode node = tree_.get( ROOT_NODE_KEY );
-
-            do {
-                System.out.print( "> " ); //$NON-NLS-1$
-                ProjectDependencyNode leaf = node;
-
-                do {
-                    System.out.print( leaf + "; " ); //$NON-NLS-1$
-                    leaf = leaf.getNext( );
-                } while ( leaf != null );
-
-                node = node.getSon( );
-                System.out.print("\n"); //$NON-NLS-1$
-            }while ( node != null );
-        }
-        else {
-            System.out.println("Empty"); //$NON-NLS-1$
-        }
+        System.out.println( toString( ) );
     }
 
     /**
@@ -245,7 +226,12 @@ public class DependencyTreeBuilder implements Serializable
      */
     public void removeNode( IFile file )
     {
+        ProjectDependencyNode node = getNode( file );
 
+        node.getPrevious( ).setNext( node.getNext( ) );
+        node.getNext( ).setPrevious( node.getPrevious( ) );
+
+        tree_.remove( file.getProjectRelativePath( ).toString( ) );
     }
 
     /**
@@ -301,5 +287,33 @@ public class DependencyTreeBuilder implements Serializable
         for ( ProjectDependencyNode node : tree_.values( ) ) {
             node.file_ = project_.getFile( node.fileName_ );
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder str = new StringBuilder( );
+        str.append( "tree: \n" ); //$NON-NLS-1$
+        if ( !tree_.isEmpty( ) ) {
+            ProjectDependencyNode node = tree_.get( ROOT_NODE_KEY );
+
+            do {
+                str.append( "> " ); //$NON-NLS-1$
+                ProjectDependencyNode leaf = node;
+
+                do {
+                    str.append( leaf + "; " ); //$NON-NLS-1$
+                    leaf = leaf.getNext( );
+                } while ( leaf != null );
+
+                node = node.getSon( );
+                str.append( "\n" ); //$NON-NLS-1$
+            }while ( node != null );
+        }
+        else {
+            str.append( "Empty\n" ); //$NON-NLS-1$
+        }
+
+        return str.toString( );
     }
 }
