@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-30 20:47+0200\n"
-"PO-Revision-Date: 2010-12-13 16:58+0200\n"
+"POT-Creation-Date: 2011-06-18 19:04+0200\n"
+"PO-Revision-Date: 2011-07-07 11:29+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
 "Language: \n"
@@ -660,6 +660,9 @@ msgstr ""
 "врагов.Сильнейшие из мастеров рун, Арканисты способны мгновенно уничтожить "
 "ослабевшего врага, и очень редко промахиваются. Их рунное мастерство никем "
 "не превзойдено, а нанесённые на оружие и доспех руны способны отражать удары "
+"врагов.Сильнейшие из мастеров рун, Арканисты способны мгновенно уничтожить "
+"ослабевшего врага, и очень редко промахиваются. Их рунное мастерство никем "
+"не превзойдено, а нанесённые на оружие и доспех руны способны отражать удары "
 "врагов."
 
 #. [attack]: type=impact
@@ -900,6 +903,10 @@ msgstr ""
 "сверхъестественным талантом — Рунный мастер. Его удары так же сильны, как "
 "удары лучших воинов, но страшнее всего — его мастерство, делающее его почти "
 "неуязвимым; ведь руны сдерживают значительную часть ударов его протвиника."
+"Высший ранг, которого может достичь творец рун, не обладающий "
+"сверхъестественным талантом — Рунный мастер. Его удары так же сильны, как "
+"удары лучших воинов, но страшнее всего — его мастерство, делающее его почти "
+"неуязвимым; ведь руны сдерживают значительную часть ударов его протвиника."
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:4
@@ -921,6 +928,10 @@ msgstr ""
 "своём ремесле, чеканят магические руны на своих доспехаха и оружии. Руны "
 "придают ударам рунного кузнеца силу и точность, и путают удары его врагов, "
 "заставляя тех бить слабо, медленно и попадать в защищённые места доспеха."
+"Рунные кузнецы гномов, искушённые в своём ремесле, чеканят магические руны "
+"на своих доспехаха и оружии. Руны придают ударам рунного кузнеца силу и "
+"точность, и путают удары его врагов, заставляя тех бить слабо, медленно и "
+"попадать в защищённые места доспеха."
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
@@ -3367,8 +3378,6 @@ msgstr ""
 #: data/core/units/khalifate/Mighwar.cfg:25
 #: data/core/units/khalifate/Monawish.cfg:25
 #: data/core/units/khalifate/Shuja.cfg:22
-#, fuzzy
-#| msgid "longsword"
 msgid "long sword"
 msgstr "длинный меч"
 
@@ -3418,14 +3427,12 @@ msgstr ""
 #: data/core/units/khalifate/Rami.cfg:32
 #: data/core/units/khalifate/Saree.cfg:32
 msgid "composite bow"
-msgstr ""
+msgstr "композитный лук"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/khalifate/Elder_Falcon.cfg:4
-#, fuzzy
-#| msgid "Elder Mage"
 msgid "Elder Falcon"
-msgstr "Старый маг"
+msgstr "Старший Сокол"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/khalifate/Elder_Falcon.cfg:20
@@ -3439,12 +3446,12 @@ msgstr ""
 #: data/core/units/khalifate/Elder_Falcon.cfg:34
 #: data/core/units/khalifate/Falcon.cfg:33
 msgid "beak"
-msgstr ""
+msgstr "клюв"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/khalifate/Falcon.cfg:4
 msgid "Falcon"
-msgstr ""
+msgstr "Сокол"
 
 #. [unit_type]: id=Faris, race=khalifate
 #: data/core/units/khalifate/Faris.cfg:4
@@ -3461,7 +3468,7 @@ msgstr ""
 #: data/core/units/khalifate/Khalid.cfg:34
 #: data/core/units/khalifate/Shuja.cfg:34
 msgid "shield bash"
-msgstr ""
+msgstr "удар щитом"
 
 #. [unit_type]: id=Hadaf, race=khalifate
 #: data/core/units/khalifate/Hadaf.cfg:4
@@ -3498,7 +3505,7 @@ msgstr ""
 #: data/core/units/khalifate/Rami.cfg:23
 #: data/core/units/khalifate/Saree.cfg:23
 msgid "cavalry sword"
-msgstr ""
+msgstr "палаш"
 
 #. [unit_type]: id=Jundi, race=khalifate
 #: data/core/units/khalifate/Jundi.cfg:4
@@ -3583,10 +3590,8 @@ msgstr ""
 #: data/core/units/khalifate/Naffat.cfg:31
 #: data/core/units/khalifate/Qatif-al-nar.cfg:31
 #: data/core/units/khalifate/Tineen.cfg:31
-#, fuzzy
-#| msgid "fire claws"
 msgid "fire arrow"
-msgstr "огненные когти"
+msgstr "огненная стрела"
 
 #. [unit_type]: id=Qanas, race=khalifate
 #: data/core/units/khalifate/Qanas.cfg:4
@@ -4031,7 +4036,11 @@ msgstr ""
 "духи дыма и пламени. Никто не знает точно, откуда они приходят, но время от "
 "времени могущественные маги призывают их для служения. Когда не скованы "
 "властью мага, они предпочитают резвиться в бассейнах лавы, и развлекаться, "
-"сжигая всё, до чего могут дотянуться."
+"сжигая всё, до чего могут дотянуться.Огненный Страж — это духи дыма и "
+"пламени. Никто не знает точно, откуда они приходят, но время от времени "
+"могущественные маги призывают их для служения. Когда не скованы властью "
+"мага, они предпочитают резвиться в бассейнах лавы, и развлекаться, сжигая "
+"всё, до чего могут дотянуться."
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Guardian.cfg:31
@@ -4084,7 +4093,9 @@ msgstr ""
 "Имея достаточно пищи, некоторые крысы могут вырасти до весьма впечатляющих "
 "размеров. Кроме этого, они становятся довольно агрессивными.Имея достаточно "
 "пищи, некоторые крысы могут вырасти до весьма впечатляющих размеров. Кроме "
-"этого, они становятся довольно агрессивными."
+"этого, они становятся довольно агрессивными.Имея достаточно пищи, некоторые "
+"крысы могут вырасти до весьма впечатляющих размеров. Кроме этого, они "
+"становятся довольно агрессивными."
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
@@ -4914,6 +4925,11 @@ msgid ""
 "flesh straight from their foes. Once their enemy is defeated, they eat the "
 "rest of the body, gaining strength in the process."
 msgstr ""
+"Ужас — это создание, пришедшее из худших кошмаров людей. В отличие от "
+"младших родственников, упырей и некрофагов, Ужасы не настолько терпеливы, "
+"чтобы ждать, пока жертва умрёт от яда, чтобы добраться до её мяса. Они "
+"хватают жертву своей невероятной пастью, стараюсь содрать плоть прямо с "
+"живых врагов. Убив врага, они пожирают остатки тела, набираясь при этом сил."
 "Ужас — это создание, пришедшее из худших кошмаров людей. В отличие от "
 "младших родственников, упырей и некрофагов, Ужасы не настолько терпеливы, "
 "чтобы ждать, пока жертва умрёт от яда, чтобы добраться до её мяса. Они "

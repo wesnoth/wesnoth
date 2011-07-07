@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-06-18 19:04+0200\n"
-"PO-Revision-Date: 2010-12-09 15:57+0300\n"
-"Last-Translator: O_o <mm-94@mail.ru>\n"
+"PO-Revision-Date: 2011-07-07 11:27+0200\n"
+"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: ZumZoom\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -227,17 +227,17 @@ msgstr "Забор"
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:379
 msgid "Stones with Sand Drifts"
-msgstr ""
+msgstr "Камни, занесённые песком"
 
 #. [terrain_type]: id=water-lilies
 #: data/core/terrain.cfg:388
 msgid "Water Lilies"
-msgstr ""
+msgstr "Водяные лилии"
 
 #. [terrain_type]: id=water-lilies-flower
 #: data/core/terrain.cfg:398
 msgid "Flowering Water Lilies"
-msgstr ""
+msgstr "Цветущие водяные лилии"
 
 #. [terrain_type]: id=great_tree
 #: data/core/terrain.cfg:412
@@ -246,10 +246,8 @@ msgstr "Большое дерево"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:422
-#, fuzzy
-#| msgid "Great Tree"
 msgid "Dead Great Tree"
-msgstr "Большое дерево"
+msgstr "Мёртвое большое дерево"
 
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:432
@@ -684,7 +682,7 @@ msgstr "Заснеженный деревянный домик"
 #. [terrain_type]: id=igloo
 #: data/core/terrain.cfg:1432
 msgid "Igloo"
-msgstr ""
+msgstr "Иглу"
 
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1446
@@ -715,9 +713,8 @@ msgstr "Деревня"
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1485
-#, fuzzy
 msgid "Village Overlay"
-msgstr "Оверлей: Замок"
+msgstr "Оверлей: Деревня"
 
 #. [terrain_type]: id=encampment
 #: data/core/terrain.cfg:1500
@@ -787,9 +784,8 @@ msgstr "Пустынный замок"
 
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:1633
-#, fuzzy
 msgid "Ruined Desert Castle"
-msgstr "Пустынный замок"
+msgstr "Разрушенный пустынный замок"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:1648
@@ -798,9 +794,8 @@ msgstr "Штаб лагеря"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:1660
-#, fuzzy
 msgid "Tall Encampment Keep"
-msgstr "Штаб лагеря"
+msgstr "Высокий штаб лагеря"
 
 #. [terrain_type]: id=encampment_snow_keep
 #: data/core/terrain.cfg:1672
@@ -878,9 +873,8 @@ msgstr "Пустынная цитадель"
 
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1809
-#, fuzzy
 msgid "Ruined Desert Keep"
-msgstr "Пустынная цитадель"
+msgstr "Разрушенная пустынная цитадель"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:1823
@@ -1028,39 +1022,37 @@ msgstr "Отмена"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
 msgid "Author:"
-msgstr ""
+msgstr "Автор:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:118
-#, fuzzy
 msgid "Version:"
 msgstr "Версия:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:149
 msgid "Size:"
-msgstr ""
+msgstr "Размер:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
-#, fuzzy
 msgid "Description:"
-msgstr "Описание бойца"
+msgstr "Описание:"
 
 #. [scroll_label]: id=description
 #: data/gui/default/window/addon_description.cfg:194
 msgid "No description available."
-msgstr ""
+msgstr "Нет описания."
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
 msgid "Translations:"
-msgstr ""
+msgstr "Переводы:"
 
 #. [scroll_label]: id=translations
 #: data/gui/default/window/addon_description.cfg:226
 msgid "translations^None"
-msgstr ""
+msgstr "Нет"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:56
@@ -1550,7 +1542,7 @@ msgstr "Игры"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:177
 msgid "Assign sides to players at random"
-msgstr ""
+msgstr "Назначить случайные стороны"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:178
@@ -1765,22 +1757,18 @@ msgstr "Кикнуть/забанить"
 
 #. [label]: id=side_title
 #: data/gui/default/window/mp_change_control.cfg:21
-#, fuzzy
-#| msgid "Next Side"
 msgid "Side"
-msgstr "Следующая сторона"
+msgstr "Сторона"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
 msgid "Nick"
-msgstr ""
+msgstr "Ник"
 
 #. [label]
 #: data/gui/default/window/mp_change_control.cfg:194
-#, fuzzy
-#| msgid "Change Hotkey"
 msgid "Change control"
-msgstr "Изменить"
+msgstr "Передать управление"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1938,6 +1926,7 @@ msgstr "Создать игру"
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
+"Устанавливает пароль, который должны ввести желающие присоединиться к игре."
 
 #. [label]
 #: data/gui/default/window/mp_create_game_set_password.cfg:90
@@ -2627,14 +2616,12 @@ msgid "no"
 msgstr "нет"
 
 #: src/game_preferences_display.cpp:1081
-#, fuzzy
 msgid "friend"
-msgstr "Друзья"
+msgstr "друг"
 
 #: src/game_preferences_display.cpp:1087
-#, fuzzy
 msgid "ignored"
-msgstr "Нет игнорируемых"
+msgstr "Игнор"
 
 #: src/game_preferences_display.cpp:1091
 msgid "(empty list)"
@@ -2691,15 +2678,13 @@ msgstr "Прямоугольник не помещается на подложк
 
 #: src/gui/auxiliary/canvas.cpp:835 src/gui/auxiliary/canvas.cpp:840
 #: src/gui/auxiliary/canvas.cpp:845 src/gui/auxiliary/canvas.cpp:851
-#, fuzzy
 msgid "Circle doesn't fit on canvas."
-msgstr "Линия не помещается на подложке."
+msgstr "Круг не помещается на подложке."
 
 #: src/gui/auxiliary/canvas.cpp:1033 src/gui/auxiliary/canvas.cpp:1040
 #: src/gui/auxiliary/canvas.cpp:1050 src/gui/auxiliary/canvas.cpp:1057
-#, fuzzy
 msgid "Image doesn't fit on canvas."
-msgstr "Линия не помещается на подложке."
+msgstr "Картинка не помещается на подложке."
 
 #: src/gui/auxiliary/canvas.cpp:1262
 msgid "Text has a font size of 0."
@@ -2869,7 +2854,7 @@ msgstr "Ошибка"
 
 #: src/gui/dialogs/mp_change_control.cpp:244
 msgid "Side $side"
-msgstr ""
+msgstr "Сторона $side"
 
 #: src/gui/dialogs/mp_create_game.cpp:103
 msgid "Load Game..."
@@ -3131,7 +3116,7 @@ msgstr "Сдвинуть действие назад"
 
 #: src/hotkeys.cpp:116
 msgid "Suppose dead"
-msgstr ""
+msgstr "Планирую убить"
 
 #: src/hotkeys.cpp:118
 msgid "Quit to Desktop"
@@ -3386,9 +3371,8 @@ msgid "Show the credits"
 msgstr "Показать титры"
 
 #: src/hotkeys.cpp:274
-#, fuzzy
 msgid "Show the helptip"
-msgstr "Показать титры"
+msgstr "Показать подсказку"
 
 #: src/hotkeys.cpp:727 src/hotkeys.cpp:1032
 msgid "Do you really want to quit?"
@@ -3568,13 +3552,15 @@ msgstr "В разделе '[$section|]' не задан обязательный
 msgid ""
 "The key '$key' is deprecated and support will be removed in version "
 "$removal_version."
-msgstr ""
+msgstr "Клавиша '$key' устарела и будет удалена в версии $removal_version."
 
 #: src/wml_exception.cpp:130
 msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+"Клавиша '$deprecated_key' переименована в '$key'. Она будет удалена в версии "
+"$removal_version."
 
 #, fuzzy
 #~ msgid "Select unit:"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-06-18 19:04+0200\n"
-"PO-Revision-Date: 2010-12-15 16:38+0200\n"
+"PO-Revision-Date: 2011-07-07 11:04+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: ZumZoom\n"
 "Language: ru\n"
@@ -156,39 +156,33 @@ msgstr ""
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:46
-#, fuzzy
-#| msgid "Easy"
 msgid "(Easy)"
-msgstr "Легкая"
+msgstr "Легко"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:46
 msgid "Soldier"
-msgstr ""
+msgstr "Солдат"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:47
-#, fuzzy
-#| msgid "Normal"
 msgid "(Normal)"
 msgstr "Нормально"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:47
 msgid "Lord"
-msgstr ""
+msgstr "Лорд"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:48
-#, fuzzy
-#| msgid "Hard"
 msgid "(Hard)"
-msgstr "Тяжёлая"
+msgstr "Тяжело"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:48
 msgid "High Lord"
-msgstr ""
+msgstr "Высший Лорд"
 
 #. [about]
 #: data/campaigns/test_campaign/_main.cfg:52
@@ -204,17 +198,13 @@ msgstr ""
 #. [side]: id=Bravo, type=Elvish Archer
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:24
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:41
-#, fuzzy
-#| msgid "Players: "
 msgid "Players"
-msgstr "Игроки: "
+msgstr "Игроки"
 
 #. [side]: id=Charlie, type=Orcish Grunt
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:53
-#, fuzzy
-#| msgid "Enemy village"
 msgid "Enemies"
-msgstr "Деревня врага"
+msgstr "Враги"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:73
@@ -228,52 +218,38 @@ msgstr ""
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Easy"
-msgstr "Сложность: "
+msgstr "Сложность: Легко"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:90
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Normal"
-msgstr "Сложность: "
+msgstr "Сложность: Нормально"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:93
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Hard"
-msgstr "Сложность: "
+msgstr "Сложность: Тяжело"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:100
-#, fuzzy
-#| msgid "Campaign Designer"
 msgid "Main campaign define"
-msgstr "Дизайнер кампаний"
+msgstr "Определение из главной кампании"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:111
-#, fuzzy
-#| msgid "Campaign Designer"
 msgid "Extra campaign define"
-msgstr "Дизайнер кампаний"
+msgstr "Определение из дополнительной кампании"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:122
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer define"
-msgstr "Сетевая игра"
+msgstr "Определение из мультиплеера"
 
 #. [objective]: condition=win
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
-#, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat enemy leader"
-msgstr "Убейте лидера(ов) противника"
+msgstr "Убейте лидера противника"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -462,9 +438,8 @@ msgstr "Индонезийский перевод"
 
 #. [about]
 #: data/core/about.cfg:2072
-#, fuzzy
 msgid "Irish Translation"
-msgstr "Турецкий перевод"
+msgstr "Ирландский перевод"
 
 #. [about]
 #: data/core/about.cfg:2079
@@ -513,9 +488,8 @@ msgstr "Норвежский перевод"
 
 #. [about]
 #: data/core/about.cfg:2292
-#, fuzzy
 msgid "Old English Translation"
-msgstr "Британский английский перевод"
+msgstr "Староанглийский перевод"
 
 #. [about]
 #: data/core/about.cfg:2301
@@ -600,13 +574,12 @@ msgstr ""
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
-#, fuzzy
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
 msgstr ""
 "В этом сценарии Вы можете давать команды союзникам через контекстное меню, "
-"вызываемое по правому клику."
+"вызываемое по правому клику на бойце союзника."
 
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
@@ -895,11 +868,11 @@ msgstr ""
 
 #: data/core/macros/items.cfg:267
 msgid "holy water^Take it"
-msgstr ""
+msgstr "Взять"
 
 #: data/core/macros/items.cfg:268
 msgid "holy water^Leave it"
-msgstr ""
+msgstr "Оставить"
 
 #: data/core/macros/items.cfg:269
 msgid "I am not suited to the use of this item! Let another take it."
@@ -984,14 +957,12 @@ msgid "Should $unit.name pick up the trident?"
 msgstr "Пусть $unit.name возьмёт трезубец?"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
 msgid "storm trident^Leave it"
-msgstr "штормовой трезубец"
+msgstr "Оставить"
 
 #: data/core/macros/items.cfg:513
-#, fuzzy
 msgid "storm trident^Take it"
-msgstr "штормовой трезубец"
+msgstr "Взять"
 
 #. [object]
 #: data/core/macros/items.cfg:515
@@ -2409,18 +2380,12 @@ msgstr "— Сообщество Веснота"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
-#| msgid ""
-#| "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-#| "better at night. <i>Neutral</i> units are unaffected by the time of day. "
-#| "The rare <i>Liminal</i> unit type fights best during the twilight hours."
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day."
 msgstr ""
-"<i>Порядочные</i> бойцы лучше сражаются днём, а <i>хаотичные</i> — ночью. "
-"<i>Нейтральные</i> бойцы одинаково сражаются и днём, и ночью. Редкие "
-"<i>теневые</i> бойцы сражаются лучше в сумерках и на рассвете."
+"<i>Порядочные</i> бойцы лучше сражаются днём, а <i>хаотичные</i> — ночью. На "
+"<i>Нейтральных</i> бойцов время суток не влияет."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
@@ -3022,14 +2987,12 @@ msgid "petrified"
 msgstr "окаменел"
 
 #: data/lua/wml-tags.lua:752
-#, fuzzy
 msgid "female^unhealable"
-msgstr "мертвец"
+msgstr "неизлечима"
 
 #: data/lua/wml-tags.lua:752
-#, fuzzy
 msgid "unhealable"
-msgstr "Пропасть"
+msgstr "неизлечимо"
 
 #: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1699
 msgid "Victory:"
@@ -3077,18 +3040,17 @@ msgstr "Отмена"
 #. [set_menu_item]: id=reload_and_execute_lua_code
 #: data/scenario-test.cfg:738
 msgid "Reload and execute lua code"
-msgstr ""
+msgstr "Перезагрузить и выполнить код Lua"
 
 #. [language]
 #: data/scenario-test.cfg:3080
 msgid "very long"
-msgstr ""
+msgstr "очень длинный"
 
 #. [language]
 #: data/scenario-test.cfg:3081
-#, fuzzy
 msgid "electrical"
-msgstr "механизм"
+msgstr "электрический"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:139
@@ -3250,48 +3212,30 @@ msgid "Close"
 msgstr "Закрыть"
 
 #: src/actions.cpp:470
-#, fuzzy
-#| msgid "You don’t have a leader to recruit with."
 msgid "You don’t have a leader to recall with."
-msgstr "У Вас нет лидера, который мог бы вербовать."
+msgstr "У Вас нет лидера, который мог бы призывать бойцов."
 
 #: src/actions.cpp:475
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders is able to recall that unit."
-msgstr ""
-"Вы можете вербовать или призывать бойцов, только если Ваш лидер находится в "
-"замке."
+msgstr "Ни один из Ваших лидеров не может призвать этого бойца."
 
 #: src/actions.cpp:480
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr ""
-"Вы можете вербовать или призывать бойцов, только если Ваш лидер находится в "
-"замке."
+msgstr "Вы можете призывать бойцов, только если Ваш лидер находится в замке."
 
 #: src/actions.cpp:485
-#, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recall the unit."
-msgstr "В замке нет свободных полей для нового бойца."
+msgstr "В замке нет свободных полей для этого бойца."
 
 #: src/actions.cpp:550
 msgid "You don’t have a leader to recruit with."
 msgstr "У Вас нет лидера, который мог бы вербовать."
 
 #: src/actions.cpp:555
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recruit the unit."
-msgstr ""
-"Вы можете вербовать или призывать бойцов, только если Ваш лидер находится в "
-"замке."
+msgstr "Вы можете вербовать бойцов, только если Ваш лидер находится в замке."
 
 #: src/actions.cpp:560
-#, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "В замке нет свободных полей для нового бойца."
 
@@ -4406,9 +4350,8 @@ msgstr[1] "У Вас должны быть хотя бы $cost золотые м
 msgstr[2] "У Вас должно быть хотя бы $cost золотых монет для призыва бойца"
 
 #: src/menu_events.cpp:1362
-#, fuzzy
 msgid "You cannot end your turn yet!"
-msgstr "пауза в конце хода"
+msgstr "Вам пока не можете закончить ход!"
 
 #: src/menu_events.cpp:1386
 msgid ""
@@ -4568,6 +4511,8 @@ msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicks, etc."
 msgstr ""
+"Сообщить о некорректном поведении, нарушении правил и т.п. модераторам "
+"сервера. Пожалуйста, правильно называйте ники и т.п."
 
 #: src/menu_events.cpp:2341
 msgid "<message>"
@@ -4578,13 +4523,12 @@ msgid "Send an emotion or personal action in chat."
 msgstr "Отправить эмоцию или действие в чате."
 
 #: src/menu_events.cpp:2344
-#, fuzzy
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
-"Отправить приватное сообщение. Вы не можете отправлять сообщения игрокам, не "
-"играющим в вашей партии."
+"Отправить приватное сообщение. Вы не можете отправлять сообщения игрокам, "
+"играющим в или наблюдающим за Вашей партией."
 
 #: src/menu_events.cpp:2346
 msgid "<nick> <message>"
@@ -4816,7 +4760,7 @@ msgstr "Сменить команду на горячей клавише."
 
 #: src/menu_events.cpp:2571
 msgid "Invoke a dialog allowing changing control of MP sides."
-msgstr ""
+msgstr "Вызвать диалог смены сторон в мультиплеере."
 
 #: src/menu_events.cpp:2575
 msgid "Launch the gamestate inspector"
@@ -5048,16 +4992,12 @@ msgid "Variable not found"
 msgstr "Переменная не найдена"
 
 #: src/menu_events.cpp:3494
-#, fuzzy
-#| msgid ""
-#| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
-#| "chaotic or liminal."
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, or "
 "chaotic."
 msgstr ""
-"Неизвестный тип: «$alignment», должно быть либо «порядочный», либо "
-"«хаотичный», либо «нейтральный», либо «теневой»."
+"Неизвестный тип: «$alignment», должен быть: «порядочный», либо «хаотичный», "
+"либо «нейтральный»."
 
 #: src/menu_events.cpp:3544
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -5349,7 +5289,7 @@ msgstr "Наблюдатели"
 
 #: src/multiplayer_create.cpp:92
 msgid "Shuffle sides"
-msgstr ""
+msgstr "Перетасовать стороны"
 
 #: src/multiplayer_create.cpp:95
 msgid "Regenerate"
@@ -5423,7 +5363,7 @@ msgstr "Разрешить наблюдать за игрой"
 
 #: src/multiplayer_create.cpp:208
 msgid "Assign sides to players at random"
-msgstr ""
+msgstr "Назначить стороны случайным образом"
 
 #: src/multiplayer_create.cpp:212
 msgid "Share View"
