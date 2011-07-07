@@ -83,7 +83,7 @@ attack::attack(config const& cfg)
 
 void attack::init()
 {
-	resources::screen->invalidate(target_hex_); 
+	resources::screen->invalidate(target_hex_);
 }
 
 attack::~attack()

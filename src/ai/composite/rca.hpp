@@ -118,9 +118,9 @@ public:
 	 * serialize
 	 */
 	virtual config to_config() const;
-	
+
 	virtual void set_to_be_removed();
-	
+
 	virtual bool to_be_removed();
 
 private:
@@ -146,8 +146,8 @@ private:
 
 
 	std::string type_;
-	
-	
+
+
 	bool to_be_removed_;
 
 };

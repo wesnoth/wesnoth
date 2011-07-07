@@ -1120,7 +1120,7 @@ namespace {
 		}
 
 		const std::string old_host = preferences::campaign_server();
-		const std::string remote_port = 
+		const std::string remote_port =
 			address_components.size() == 2 ? address_components[1] : lexical_cast<std::string>(default_campaignd_port);
 		std::string remote_host = address_components[0];
 		preferences::set_campaign_server(remote_address);

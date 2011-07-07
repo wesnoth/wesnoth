@@ -96,7 +96,7 @@ public:
 		cfg.add_child("state",serialized_evaluation_state_);
 		return cfg;
 	}
-	
+
 private:
 	std::string evaluation_;
 	boost::shared_ptr<lua_ai_action_handler> evaluation_action_handler_;
@@ -121,7 +121,7 @@ public:
 			lua_candidate_action_wrapper::execute();
 			this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
 		}
-		else 
+		else
 		{
 			this->set_to_be_removed();
 		}
@@ -196,7 +196,7 @@ void engine_lua::do_parse_candidate_action_from_config( rca_context &context, co
 	if (!lua_ai_context_) {
 		return;
 	}
-	
+
 	candidate_action_ptr ca_ptr;
 	if (!cfg["sticky"].to_bool())
 	{
@@ -206,7 +206,7 @@ void engine_lua::do_parse_candidate_action_from_config( rca_context &context, co
 	{
 		ca_ptr = candidate_action_ptr(new lua_sticky_candidate_action_wrapper(context,cfg,*lua_ai_context_));
 	}
-	
+
 	if (ca_ptr) {
 		*b = ca_ptr;
 	}
