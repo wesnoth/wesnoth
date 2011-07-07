@@ -117,28 +117,44 @@ private:
   */
 class class_tag{
 public:
-	class_tag():name_(""),min_(0),max_(0),super_("")
-	{ }
+	class_tag()
+		: name_("")
+		, min_(0)
+		, max_(0)
+		, super_("")
+		, tags_()
+		, keys_()
+		, links_()
+	{
+	}
 
 	class_tag(const std::string & name,
 			  int min,
 			  int max
 			  )
+		: name_(name)
+		, min_(min)
+		, max_(max)
+		, super_("")
+		, tags_()
+		, keys_()
+		, links_()
 	{
-		name_ = name;
-		min_ = min;
-		max_ = max;
 	}
+
 	class_tag(const std::string & name,
 			  int min,
 			  int max,
 			  const std::string & super
 			  )
+		: name_(name)
+		, min_(min)
+		, max_(max)
+		, super_(super)
+		, tags_()
+		, keys_()
+		, links_()
 	{
-		name_ = name;
-		min_ = min;
-		max_ = max;
-		super_ = super;
 	}
 	~class_tag(){  }
 
