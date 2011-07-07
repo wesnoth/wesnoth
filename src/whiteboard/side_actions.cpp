@@ -536,7 +536,7 @@ side_actions::iterator side_actions::find_last_action_of(unit const* unit, side_
 			if ((*position)->get_unit() == unit)
 			{
 				iterator found_position = position.base();
-				//need to decrement after changing from reverse to regular operator
+				//need to decrement after changing from reverse to regular iterator
 				return --found_position;
 			}
 		}
