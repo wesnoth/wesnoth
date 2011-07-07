@@ -116,6 +116,7 @@ void highlight_visitor::highlight()
 		exclusive_display_hexes_.insert(owner_unit_->get_location());
 
 		if (!secondary_highlights_.empty())
+		{
 			//Highlight secondary highlights
 			mode_ = HIGHLIGHT_SECONDARY;
 			foreach(weak_action_ptr weak, secondary_highlights_)
@@ -125,6 +126,7 @@ void highlight_visitor::highlight()
 					action->accept(*this);
 				}
 			}
+		}
 	}
 }
 
