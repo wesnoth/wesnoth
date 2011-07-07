@@ -655,11 +655,11 @@ void tlobby_main::update_gamelist_diff()
 
 void tlobby_main::update_gamelist_header()
 {
+#ifndef GUI2_EXPERIMENTAL_LISTBOX
 	utils::string_map symbols;
 	symbols["num_shown"] = lexical_cast<std::string>(lobby_info_.games_filtered().size());
 	symbols["num_total"] = lexical_cast<std::string>(lobby_info_.games().size());
 	std::string games_string = VGETTEXT("Games: showing $num_shown out of $num_total", symbols);
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
 	find_widget<tlabel>(gamelistbox_, "map", false).set_label(games_string);
 #endif
 }
