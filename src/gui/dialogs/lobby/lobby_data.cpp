@@ -189,7 +189,6 @@ game_info::game_info(const config& game, const config& game_config)
 , display_status(NEW)
 {
 	std::string turn = game["turn"];
-	std::string slots = game["slots"];
 	if (!game["mp_era"].empty())
 	{
 		const config &era_cfg = game_config.find_child("era", "id", game["mp_era"]);
