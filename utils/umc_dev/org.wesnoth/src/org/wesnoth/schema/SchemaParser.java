@@ -27,7 +27,7 @@ import org.wesnoth.utils.StringUtils;
  */
 public class SchemaParser
 {
-    protected static Map< String, SchemaParser > parsers_ =
+    protected final static Map< String, SchemaParser > parsers_ =
         new HashMap<String, SchemaParser>();
 
 	/**

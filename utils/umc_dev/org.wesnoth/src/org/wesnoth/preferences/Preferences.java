@@ -26,7 +26,7 @@ public class Preferences extends AbstractPreferenceInitializer
     /**
      * A map for storing the paths for the current session
      */
-    protected static Map< String, Paths > paths_ =
+    protected final static Map< String, Paths > paths_ =
         new HashMap< String, Paths > ();
 
 	@Override
