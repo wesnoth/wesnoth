@@ -110,7 +110,7 @@ class connection
 	 */
 	void run() { io_service_.run(); }
 
-	void cancel() { socket_.cancel(); }
+	void cancel() { if(socket_.is_open()) { socket_.cancel(); } }
 
 	/** True if connected and no high-level operation is in progress */
 	bool done() const { return done_; }
