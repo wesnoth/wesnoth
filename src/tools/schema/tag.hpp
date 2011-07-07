@@ -43,11 +43,11 @@ public:
 			  const std::string &type,
 			  const std::string &def,
 			  bool mandatory)
+		: name_(name)
+		, type_(type)
+		, default_(def)
+		, mandatory_(mandatory)
 	{
-		name_ = name;
-		type_ = type;
-		default_ = def;
-		mandatory_ = mandatory;
 	}
 
 	const std::string &  get_name() const{
