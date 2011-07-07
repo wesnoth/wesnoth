@@ -159,6 +159,8 @@ public:
 
 private:
 	void validate_actions_if_needed();
+	/// Called by all of the save_***() methods after they have added their action to the queue
+	void on_save_action() const;
 
 	///Tracks whether the whiteboard is active.
 	bool active_;

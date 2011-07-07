@@ -77,6 +77,12 @@ public:
 
 	virtual config to_config() const;
 
+	///@todo Make use of safe_enum idiom?
+	enum ARROW_BRIGHTNESS {ARROW_BRIGHTNESS_STANDARD, ARROW_BRIGHTNESS_HIGHLIGHTED, ARROW_BRIGHTNESS_FOCUS};
+	void set_arrow_brightness(ARROW_BRIGHTNESS x) {arrow_brightness_=x; update_arrow_style();}
+	enum ARROW_TEXTURE {ARROW_TEXTURE_VALID, ARROW_TEXTURE_INVALID};
+	void set_arrow_texture(ARROW_TEXTURE x) {arrow_texture_=x; update_arrow_style();}
+
 protected:
 
 	void calculate_move_cost();
@@ -91,8 +97,12 @@ protected:
 
 	bool valid_;
 
+	ARROW_BRIGHTNESS arrow_brightness_;
+	ARROW_TEXTURE arrow_texture_;
+
 private:
 	void init();
+	void update_arrow_style();
 };
 
 /** Dumps an move on a stream, for debug purposes. */

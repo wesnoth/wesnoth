@@ -77,6 +77,83 @@ bool validate_visitor::validate_actions()
 	}
 }
 
+/* private */
+validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_ptr)
+{
+	move& m = *m_ptr;
+
+	if (!(m.get_source_hex().valid() && m.get_dest_hex().valid()))
+		return WORTHLESS;
+
+	//Check that the unit still exists in the source hex
+	unit_map::const_iterator unit_it;
+	unit_it = resources::units->find(m.get_source_hex());
+	if (unit_it == resources::units->end())
+		return WORTHLESS;
+
+	//check if the unit in the source hex has the same unit id as before,
+	//i.e. that it's the same unit
+	if (m.unit_id_ != unit_it->id())
+		return WORTHLESS;
+
+	//Now that we've reliably identified the unit owning this planned move, update the
+	//pointer in case there has been some funny business in the unit map
+	m.unit_ = &*unit_it;
+
+	//check that the path is good
+	if (m.get_source_hex() != m.get_dest_hex()) //allow for zero-hex, move, in which case we skip pathfinding
+	{
+		//verify that the destination hex is free
+		if (resources::units->find(m.get_dest_hex()) != resources::units->end())
+			return OBSTRUCTED;
+
+		pathfind::marked_route new_route;
+		//@todo: use something else than empty vector for waypoints?
+		new_route = resources::controller->get_mouse_handler_base().get_route(m.get_unit(),m.get_dest_hex(),
+											std::vector<map_location>(), resources::teams->at(side_actions_->team_index()));
+
+		/**
+		 * @todo Is the comparison with getNoPathValue really necessary? An empty route (with cost = 0) is returned
+		 *       when no path exists.
+		 */
+		if(new_route.steps.empty() || new_route.move_cost >= pathfind::cost_calculator::getNoPathValue())
+			return OBSTRUCTED; //no path exists
+
+		if(new_route.steps!=m.get_route().steps || new_route.move_cost != m.get_route().move_cost)
+		{
+			//new valid path differs from the previous one, replace
+			m.set_route(new_route);
+			m.calculate_move_cost();
+			
+			//send updated path to allies
+			resources::whiteboard->queue_net_cmd(side_actions_->make_net_cmd_replace(side_actions_->get_position_of(m_ptr),m_ptr));
+
+			//@todo: Since this might lengthen the path, we probably need a special conflict state
+			// to warn the player that the initial path is no longer possible.
+		}
+
+		//Check that the unit still has enough movement to do this move
+		if (unit_it->movement_left() < m.movement_cost_)
+			return OBSTRUCTED;
+	}
+
+	return VALID;
+}
+
+// This helper function determines whether there are any invalid actions planned for m_ptr->get_unit()
+// that occur earlier in the side_actions_ than m_ptr.
+/* private */
+bool validate_visitor::no_previous_invalids(move_ptr m_ptr)
+{
+	side_actions::iterator move_itor = side_actions_->get_position_of(m_ptr);
+	if(move_itor == side_actions_->begin())
+		return true;
+	side_actions::iterator prev_action_of_unit = side_actions_->find_last_action_of(m_ptr->get_unit(),move_itor-1);
+	if(prev_action_of_unit == side_actions_->end())
+		return true;
+	return (*prev_action_of_unit)->is_valid();
+}
+
 void validate_visitor::visit_move(move_ptr move)
 {
 	DBG_WB <<"visiting move from " << move->get_source_hex()
@@ -85,82 +162,27 @@ void validate_visitor::visit_move(move_ptr move)
 	resources::screen->invalidate(move->get_source_hex());
 	resources::screen->invalidate(move->get_dest_hex());
 
-	if (!(move->get_source_hex().valid() && move->get_dest_hex().valid()))
-		move->set_valid(false);
-
-	unit_map::const_iterator unit_it;
-	//Check that the unit still exists in the source hex
-	if (move->valid_)
+	switch(evaluate_move_validity(move)) //< private helper fcn
 	{
-		unit_it = resources::units->find(move->get_source_hex());
-
-		if (unit_it == resources::units->end())
-		{
-			move->set_valid(false);
-			move->unit_ = NULL;
-		}
-	}
-
-	//check if the unit in the source hex has the same unit id as before,
-	//i.e. that it's the same unit
-	if (move->valid_ && move->unit_id_ != unit_it->id())
-	{
-		move->set_valid(false);
-		move->unit_ = NULL;
-	}
-
-	//Now that we've reliably identified the unit owning this planned move, update the
-	//pointer in case there has been some funny business in the unit map
-	if (move->valid_)
-		move->unit_ = &*unit_it;
-
-	if (move->valid_ && move->get_source_hex() != move->get_dest_hex()) //allow for zero-hex, move, in which case we skip pathfinding
-	{
-		//verify that the destination hex is free
-		if (move->valid_ && (resources::units->find(move->get_dest_hex()) != resources::units->end()))
-			move->set_valid(false);
-
-		pathfind::marked_route new_route;
-		if (move->valid_)
-		{
-			//@todo: use something else than empty vector for waypoints?
-			new_route = resources::controller->get_mouse_handler_base().get_route(move->get_unit(),move->get_dest_hex(),
-					std::vector<map_location>(), resources::teams->at(side_actions_->team_index()));
-
-			if (new_route.move_cost >= pathfind::cost_calculator::getNoPathValue())
-			{
-				move->set_valid(false);
-			}
-		}
-
-		if (move->valid_)
-		{
-			if(new_route.steps!=move->get_route().steps || new_route.move_cost != move->get_route().move_cost)
-			{
-				//new valid path differs from the previous one, replace
-				move->set_route(new_route);
-
-				//@todo: Since this might lengthen the path, we probably need a special conflict state
-				// to warn the player that the initial path is no longer possible.
-			}
-
-			//Check that the unit still has enough movement to do this move
-			if (move->valid_ && unit_it->movement_left() < move->movement_cost_)
-				move->set_valid(false);
-		}
-	}
-
-	if (move->valid_)
-	{
+	case VALID:
 		// Now call the superclass to apply the result of this move to the unit map,
 		// so that further pathfinding takes it into account.
+		move->set_valid(true);
 		mapbuilder_visitor::visit_move(move);
-	}
-	else
-		//FIXME: temporary until invalid arrow styles are in: delete invalid moves
-	{
-		LOG_WB << "Invalid move detected, adding to actions_to_erase_.\n";
-		actions_to_erase_.insert(move);
+		break;
+	case OBSTRUCTED:
+		move->set_valid(false);
+		break;
+	case WORTHLESS:
+		// Erase only if no previous invalid actions are planned for this unit -- otherwise, just mark it invalid.
+		// Otherwise, we wouldn't be able to keep invalid actions that depend on previous invalid actions.
+		if(no_previous_invalids(move)) //< private helper fcn
+		{
+			LOG_WB << "Worthless invalid move detected, adding to actions_to_erase_.\n";
+			actions_to_erase_.insert(move);
+		}
+		else move->set_valid(false);
+		break;
 	}
 }
 
@@ -171,31 +193,23 @@ void validate_visitor::visit_attack(attack_ptr attack)
 	//invalidate target hex to make sure attack indicators are updated
 	resources::screen->invalidate(attack->get_dest_hex());
 	resources::screen->invalidate(attack->target_hex_);
+
 	//Verify that the target hex is still valid
-	if (!attack->target_hex_.valid())
+	//and Verify that the target hex isn't empty
+	if (!attack->target_hex_.valid()
+			|| resources::units->find(attack->target_hex_) == resources::units->end())
 	{
-		attack->set_valid(false);
-	}
-	//Verify that the target hex isn't empty
-	if (attack->is_valid() && resources::units->find(attack->target_hex_) == resources::units->end())
-	{
-		attack->set_valid(false);
-	}
-
-	//@todo: verify that the target hex contains the same unit that before,
-	// comparing for example the unit ID
-
-	//@todo: Verify that the target unit is our enemy
-
-	//If all checks pass, then call the visitor on the superclass
-	if (attack->is_valid())
-	{
-		visit_move(boost::static_pointer_cast<move>(attack));
-	}
-	else
-	{
-		LOG_WB << "Invalid attack detected, adding to actions_to_erase_.\n";
+		LOG_WB << "Worthless invalid attack detected, adding to actions_to_erase_.\n";
 		actions_to_erase_.insert(attack);
+	}
+	else //All checks pass, so call the visitor on the superclass
+	{
+		//@todo: verify that the target hex contains the same unit that before,
+		// comparing for example the unit ID
+
+		//@todo: Verify that the target unit is our enemy
+
+		visit_move(boost::static_pointer_cast<move>(attack));
 	}
 }
 

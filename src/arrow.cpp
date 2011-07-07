@@ -87,6 +87,7 @@ void arrow::set_color(std::string const& color)
 std::string const arrow::STYLE_STANDARD = "standard";
 std::string const arrow::STYLE_HIGHLIGHTED = "highlighted";
 std::string const arrow::STYLE_FOCUS = "focus";
+std::string const arrow::STYLE_FOCUS_INVALID = "focus_invalid";
 
 void arrow::set_style(const std::string& style)
 {

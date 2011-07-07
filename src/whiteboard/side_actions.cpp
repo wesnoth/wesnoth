@@ -573,6 +573,17 @@ size_t side_actions::count_actions_of(unit const* unit)
 	return count;
 }
 
+void side_actions::remove_invalid_of(unit const* u)
+{
+	iterator i = begin();
+	while(i != end())
+	{
+		action& act = **i;
+		if(!act.is_valid() && u == act.get_unit())
+			i = remove_action(i,false);
+		else ++i;
+	}
+}
 
 void side_actions::validate_actions()
 {
@@ -623,6 +634,25 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 		for( ; itor!=end; ++itor)
 			resources::screen->invalidate((*itor)->get_numbering_hex());
 	}
+	else if(type=="replace")
+	{
+		int pos = cmd["pos"];
+		if(pos<0 || pos>=static_cast<int>(actions_.size()))
+		{
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
+			return;
+		}
+
+		action_queue::iterator itor = actions_.begin()+pos;
+		itor = safe_erase(itor);
+
+		try {
+			itor = actions_.insert(itor,action::from_config(cmd.child("action")));
+		} catch(action::ctor_err const&) {
+			ERR_WB << "side_actions::execute_network_command(): received invalid data!\n";
+			return;
+		}
+	}
 	else if(type=="remove")
 	{
 		int pos = cmd["pos"];
@@ -672,6 +702,14 @@ side_actions::net_cmd side_actions::make_net_cmd_insert(const_iterator const& po
 {
 	net_cmd result;
 	result["type"] = "insert";
+	result["pos"] = static_cast<int>(std::distance(begin(),pos));
+	result.add_child("action",act->to_config());
+	return result;
+}
+side_actions::net_cmd side_actions::make_net_cmd_replace(const_iterator const& pos, action_ptr act) const
+{
+	net_cmd result;
+	result["type"] = "replace";
 	result["pos"] = static_cast<int>(std::distance(begin(),pos));
 	result.add_child("action",act->to_config());
 	return result;

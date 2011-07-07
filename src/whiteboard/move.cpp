@@ -67,7 +67,9 @@ move::move(size_t team_index, const pathfind::marked_route& route,
   movement_cost_(0),
   arrow_(arrow),
   fake_unit_(fake_unit),
-  valid_(true)
+  valid_(true),
+  arrow_brightness_(),
+  arrow_texture_()
 {
 	assert(!route_->steps.empty());
 
@@ -85,6 +87,8 @@ move::move(config const& cfg)
 	, arrow_(new arrow())
 	, fake_unit_()
 	, valid_(true)
+	, arrow_brightness_()
+	, arrow_texture_()
 {
 	// Construct and validate unit_
 	unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
@@ -149,6 +153,29 @@ void move::init()
 	}
 
 	this->calculate_move_cost();
+
+	// Initialize arrow_brightness_ and arrow_texture_ using arrow_->style_
+	arrow::STYLE arrow_style = arrow_->get_style();
+	if(arrow_style == arrow::STYLE_STANDARD)
+	{
+		arrow_brightness_ = ARROW_BRIGHTNESS_STANDARD;
+		arrow_texture_ = ARROW_TEXTURE_VALID;
+	}
+	else if(arrow_style == arrow::STYLE_HIGHLIGHTED)
+	{
+		arrow_brightness_ = ARROW_BRIGHTNESS_HIGHLIGHTED;
+		arrow_texture_ = ARROW_TEXTURE_VALID;
+	}
+	else if(arrow_style == arrow::STYLE_FOCUS)
+	{
+		arrow_brightness_ = ARROW_BRIGHTNESS_FOCUS;
+		arrow_texture_ = ARROW_TEXTURE_VALID;
+	}
+	else if(arrow_style == arrow::STYLE_FOCUS_INVALID)
+	{
+		arrow_brightness_ = ARROW_BRIGHTNESS_STANDARD;
+		arrow_texture_ = ARROW_TEXTURE_INVALID;
+	}
 }
 
 move::~move()
@@ -370,18 +397,13 @@ map_location move::get_numbering_hex() const
 
 void move::set_valid(bool valid)
 {
-	valid_ = valid;
-
-	//@todo: restore this once we have artwork for invalid arrows,
-	// and if we decide not to delete them after all.
-//	if (valid_)
-//	{
-//		arrow_->set_style(ARROW_STYLE_VALID);
-//	}
-//	else
-//	{
-//		arrow_->set_style(ARROW_STYLE_INVALID);
-//	}
+	if(valid_ != valid)
+	{
+		valid_ = valid;
+		if(valid_)
+			set_arrow_texture(ARROW_TEXTURE_VALID);
+		else set_arrow_texture(ARROW_TEXTURE_INVALID);
+	}
 }
 
 ///@todo Find a better way to serialize unit_ because underlying_id isn't cutting it
@@ -444,6 +466,30 @@ void move::calculate_move_cost()
 		 {
 			 movement_cost_ = route_->move_cost;
 		 }
+	}
+}
+
+//If you add more arrow styles, this will need to change
+/* private */
+void move::update_arrow_style()
+{
+	if(arrow_texture_ == ARROW_TEXTURE_INVALID)
+	{
+		arrow_->set_style(arrow::STYLE_FOCUS_INVALID);
+		return;
+	}
+
+	switch(arrow_brightness_)
+	{
+	case ARROW_BRIGHTNESS_STANDARD:
+		arrow_->set_style(arrow::STYLE_STANDARD);
+		break;
+	case ARROW_BRIGHTNESS_HIGHLIGHTED:
+		arrow_->set_style(arrow::STYLE_HIGHLIGHTED);
+		break;
+	case ARROW_BRIGHTNESS_FOCUS:
+		arrow_->set_style(arrow::STYLE_FOCUS);
+		break;
 	}
 }
 

@@ -200,6 +200,9 @@ public:
 	bool unit_has_actions(unit const* unit);
 	size_t count_actions_of(unit const* unit);
 
+	///Removes all invalid actions "attached" to the unit
+	void remove_invalid_of(unit const*);
+
 	///Validates all planned actions in the queue
 	void validate_actions();
 
@@ -217,6 +220,7 @@ public:
 	typedef config net_cmd;
 	void execute_net_cmd(net_cmd const&);
 	net_cmd make_net_cmd_insert(const_iterator const& pos, action_ptr) const;
+	net_cmd make_net_cmd_replace(const_iterator const& pos, action_ptr) const; //< an optimized remove+insert
 	net_cmd make_net_cmd_remove(const_iterator const& pos) const;
 	net_cmd make_net_cmd_bump_later(const_iterator const& pos) const;
 	net_cmd make_net_cmd_clear() const;

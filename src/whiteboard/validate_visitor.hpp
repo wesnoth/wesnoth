@@ -48,6 +48,10 @@ public:
 	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
 
 private:
+	enum VALIDITY {VALID, OBSTRUCTED, WORTHLESS};
+	VALIDITY evaluate_move_validity(move_ptr);
+	bool no_previous_invalids(move_ptr);
+
 	std::set<action_ptr> actions_to_erase_;
 };
 

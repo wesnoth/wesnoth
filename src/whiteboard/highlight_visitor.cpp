@@ -217,7 +217,7 @@ void highlight_visitor::visit_move(move_ptr move)
 	case HIGHLIGHT_MAIN:
 		if (move->arrow_)
 		{
-			move->arrow_->set_style(arrow::STYLE_FOCUS);
+			move->set_arrow_brightness(move::ARROW_BRIGHTNESS_FOCUS);
 		}
 		if (move->fake_unit_)
 		{
@@ -231,7 +231,7 @@ void highlight_visitor::visit_move(move_ptr move)
 	case HIGHLIGHT_SECONDARY:
 		if (move->arrow_)
 		{
-			move->arrow_->set_style(arrow::STYLE_HIGHLIGHTED);
+			move->set_arrow_brightness(move::ARROW_BRIGHTNESS_HIGHLIGHTED);
 		}
 		if (move->fake_unit_)
 		{
@@ -245,7 +245,7 @@ void highlight_visitor::visit_move(move_ptr move)
 	case UNHIGHLIGHT_SECONDARY:
 		if (move->arrow_)
 		{
-			move->arrow_->set_style(arrow::STYLE_STANDARD);
+			move->set_arrow_brightness(move::ARROW_BRIGHTNESS_STANDARD);
 		}
 		if (move->fake_unit_)
 		{

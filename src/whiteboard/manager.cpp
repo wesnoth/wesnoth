@@ -511,6 +511,9 @@ void manager::save_temp_move()
 
 		viewer_actions()->queue_move(*route_, move_arrow, fake_unit);
 		erase_temp_move();
+
+		on_save_action();
+
 		LOG_WB << *viewer_actions() << "\n";
 
 		print_help_once();
@@ -554,6 +557,8 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 		{
 			viewer_actions()->queue_attack(target_hex, weapon_choice, *route_, move_arrow, fake_unit);
 
+			on_save_action();
+
 			print_help_once();
 		}
 
@@ -578,6 +583,8 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 			viewer_actions()->queue_recruit(name, recruit_hex);
 			created_planned_recruit = true;
 
+			on_save_action();
+
 			print_help_once();
 		}
 	}
@@ -599,6 +606,9 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 		{
 			viewer_actions()->queue_recall(unit, recall_hex);
 			created_planned_recall = true;
+
+			on_save_action();
+
 			print_help_once();
 		}
 	}
@@ -608,7 +618,17 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 void manager::save_suppose_dead(unit& curr_unit)
 {
 	if(active_ && !executing_actions_ && !resources::controller->is_linger_mode())
+	{
 		viewer_actions()->queue_suppose_dead(curr_unit);
+		on_save_action();
+	}
+}
+
+void manager::on_save_action() const
+{
+	side_actions& sa = *viewer_actions();
+	action& act = **(sa.end()-1);
+	sa.remove_invalid_of(act.get_unit());
 }
 
 void manager::contextual_execute()
@@ -677,12 +697,16 @@ void manager::contextual_delete()
 				(it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
 		{
 			viewer_actions()->remove_action(it);
+			viewer_actions()->remove_invalid_of(action->get_unit());
 			highlighter_->set_mouseover_hex(highlighter_->get_mouseover_hex());
 			highlighter_->highlight();
 		}
 		else //we already check above for viewer_actions()->empty()
 		{
-			viewer_actions()->remove_action(viewer_actions()->end() - 1);
+			it = (viewer_actions()->end() - 1);
+			action = *it;
+			viewer_actions()->remove_action(it);
+			viewer_actions()->remove_invalid_of(action->get_unit());
 		}
 	}
 }
