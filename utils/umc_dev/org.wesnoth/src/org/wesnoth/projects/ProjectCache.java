@@ -156,6 +156,7 @@ public class ProjectCache
 		return properties_;
 	}
 
+	//TODO: memorize the full project-relative path for the config file!
 	/**
 	 * Gets the map with the Configs
 	 * The key represent the filenames of the files
@@ -175,9 +176,13 @@ public class ProjectCache
 	 */
 	public ConfigFile getConfig(String name)
 	{
-		if (configFiles_.containsKey(name) == false)
-			configFiles_.put(name, new ConfigFile(name));
-		return configFiles_.get(name);
+	    ConfigFile config = configFiles_.get( name );
+	    if ( config == null ){
+	        config = new ConfigFile( name );
+	        configFiles_.put( name, config );
+	    }
+
+		return config;
 	}
 
 	/**
