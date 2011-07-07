@@ -158,7 +158,6 @@ void teditor_resize_map::set_direction_icon(int index, std::string icon)
 
 void teditor_resize_map::update_expand_direction(twindow& window)
 {
-	std::string name_prefix = "expand";
 	for (int i = 0; i < 9; ++i) {
 		if (direction_buttons_[i]->get_value()
 					&& static_cast<int>(expand_direction_) != i) {
