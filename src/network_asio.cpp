@@ -23,6 +23,8 @@
 
 namespace network_asio {
 
+using boost::system::system_error;
+
 connection::connection(const std::string& host, const std::string& service)
 	: io_service_()
 	, resolver_(io_service_)
@@ -46,7 +48,7 @@ void connection::handle_resolve(
 		)
 {
 	if(ec)
-		throw error(ec);
+		throw system_error(ec);
 
 	std::cout << iterator->endpoint().address() << '\n';
 	connect(iterator);
@@ -67,7 +69,7 @@ void connection::handle_connect(
 	if(ec) {
 		socket_.close();
 		if(++iterator == resolver::iterator())
-			throw error(ec);
+			throw system_error(ec);
 		else
 			connect(iterator);
 	} else {
@@ -94,7 +96,7 @@ void connection::handle_handshake(
 		)
 {
 	if(ec)
-		throw error(ec);
+		throw system_error(ec);
 	done_ = true;
 }
 
@@ -121,7 +123,7 @@ void connection::handle_write(
 {
 	std::cout << "Written " << bytes_transferred << " bytes.\n";
 	if(ec)
-		throw error(ec);
+		throw system_error(ec);
 }
 
 std::size_t connection::is_read_complete(
@@ -129,10 +131,8 @@ std::size_t connection::is_read_complete(
 		std::size_t bytes_transferred
 		)
 {
-	if(ec == boost::asio::error::operation_aborted)
-		return 0;
 	if(ec)
-		throw error(ec);
+		throw system_error(ec);
 	bytes_read_ = bytes_transferred;
 	if(bytes_transferred < 4) {
 		return 4;
@@ -160,10 +160,8 @@ void connection::handle_read(
 	std::cout << "Read " << bytes_transferred << " bytes.\n";
 	bytes_to_read_ = 0;
 	done_ = true;
-	if(ec == boost::asio::error::operation_aborted)
-		return;
 	if(ec && ec != boost::asio::error::eof)
-		throw error(ec);
+		throw system_error(ec);
 	std::istream is(&read_buf_);
 	read_gz(response, is);
 }

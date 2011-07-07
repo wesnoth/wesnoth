@@ -98,6 +98,8 @@ class connection
 		try {
 			return io_service_.poll();
 		} catch(const boost::system::system_error& err) {
+			if(err.code() == boost::asio::error::operation_aborted)
+				return 1;
 			throw error(err.code());
 		}
 	}
