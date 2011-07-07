@@ -72,8 +72,13 @@ public:
 	class_source_parser():
 			input_ (""),
 			output_(""),
+			f_(),
+			line_(0),
+			current_(),
 			root_(class_tag("root",1,1)),
-			parent_name_("")
+			parent_name_(""),
+			orphan_tags_(),
+			errors_()
 	{}
 
 	~class_source_parser(){
