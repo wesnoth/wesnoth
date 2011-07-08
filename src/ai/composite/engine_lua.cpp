@@ -111,20 +111,27 @@ public:
 		: lua_candidate_action_wrapper(context, cfg, lua_ai_ctx)
 		, bound_unit_()
 	{
-		map_location loc(cfg["unit_x"], cfg["unit_y"]);
+		map_location loc(cfg["unit_x"] - 1, cfg["unit_y"] - 1); // lua and c++ coords differ by one
 		bound_unit_ = boost::shared_ptr<unit>(new unit(*resources::units->find(loc)));
 	}
-
-	virtual void execute()	{
+	
+	virtual double evaluate() 
+	{
 		if (resources::units->find(bound_unit_->underlying_id()).valid())
 		{
-			lua_candidate_action_wrapper::execute();
-			this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
+			return lua_candidate_action_wrapper::evaluate();
 		}
 		else
 		{
 			this->set_to_be_removed();
+			return 0; // Is 0 what we return when we don't want the action to be executed?
 		}
+	}
+
+	virtual void execute()
+	{
+		lua_candidate_action_wrapper::execute();
+		this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
 	}
 private:
 	boost::shared_ptr<unit> bound_unit_;

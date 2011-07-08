@@ -854,8 +854,8 @@ function wml_actions.add_ai_behavior(cfg)
 	local eval = cfg.evaluation
 	local exec = cfg.execution
 	
-	local ux = unit.x - 1 -- @note: did I get it right that coordinates in C++ differ by 1 from thos in-game(and in Lua)?
-	local uy = unit.y - 1
+	local ux = unit.x -- @note: did I get it right that coordinates in C++ differ by 1 from thos in-game(and in Lua)?
+	local uy = unit.y
 	
 	if not side then
 		helper.wml_error("[add_ai_behavior]: no side attribute given")
