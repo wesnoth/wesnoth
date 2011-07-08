@@ -14,8 +14,10 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.DialogSettings;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
@@ -78,6 +80,28 @@ public class ProjectUtils
 	}
 
 	/**
+	 * Creates a new wesnoth project with the specified name
+	 * and on the specified location on disk
+	 * @param name The name of the new project
+	 * @param location The location of the new project
+	 * @return A project handle
+	 * @throws CoreException
+	 */
+	public static IProject createWesnothProject( String name, String location,
+	        boolean createBuildXML, IProgressMonitor monitor )
+	{
+	    IProject newProject = ResourcesPlugin.getWorkspace().getRoot().getProject( name );
+
+        IProjectDescription description =
+            ResourcesPlugin.getWorkspace().newProjectDescription( name );
+        description.setLocation( new Path( location ) );
+
+	    createWesnothProject( newProject, description, true, createBuildXML, monitor );
+
+	    return newProject;
+	}
+
+	/**
 	 * Creates a project that has associated the wesnoth nature using
 	 * the specified handle. If the project is created there will be
 	 * no modifications done by this method.
@@ -87,64 +111,66 @@ public class ProjectUtils
 	 * @throws CoreException
 	 */
 	public static int createWesnothProject(IProject handle, IProjectDescription description,
-				boolean open, boolean createBuildXML, IProgressMonitor monitor) throws CoreException
+				boolean open, boolean createBuildXML, IProgressMonitor monitor)
 	{
-		if (handle.exists())
+		if ( handle == null || handle.exists() )
 			return -1;
-		String projectPath = null;
 
-		if (handle.getLocation() == null && description != null)
-			projectPath = description.getLocationURI().toString();
-		else if (handle.getLocation() != null)
-			projectPath = handle.getLocation().toOSString();
-
-		monitor.subTask(Messages.ProjectUtils_0);
-		if (projectPath != null)
-		{
-			// cleanup existing files
-			ResourceUtils.removeFile(projectPath + "/.wesnoth"); //$NON-NLS-1$
-			ResourceUtils.removeFile(projectPath + "/.project"); //$NON-NLS-1$
-			ResourceUtils.removeFile(projectPath + "/.build.xml"); //$NON-NLS-1$
-		}
-		monitor.worked(5);
-
-		monitor.subTask(String.format(Messages.ProjectUtils_4, handle.getName()));
-		// create the project
 		try{
-			if (description == null)
-				handle.create(monitor);
-			else
-			{
-				handle.create(description, monitor);
-			}
-		}
-		catch (CoreException e) { // project already exists
-			Logger.getInstance().logException(e);
-		}
+		    String projectPath = null;
 
-		if (open)
-			handle.open(monitor);
-		monitor.worked(10);
+		    if (handle.getLocation() == null && description != null)
+		        projectPath = description.getLocationURI().toString();
+		    else if (handle.getLocation() != null)
+		        projectPath = handle.getLocation().toOSString();
 
-		monitor.subTask(Messages.ProjectUtils_6);
-		// add wesnoth nature
-		IProjectDescription tmpDescription = handle.getDescription();
-		tmpDescription.setNatureIds(new String[] { Constants.NATURE_WESNOTH /*,
-				Constants.NATURE_XTEXT */ });
-		handle.setDescription(tmpDescription, monitor);
-		monitor.worked(5);
+		    monitor.subTask(Messages.ProjectUtils_0);
+		    if (projectPath != null)
+		    {
+		        // cleanup existing files
+		        ResourceUtils.removeFile(projectPath + "/.wesnoth"); //$NON-NLS-1$
+		        ResourceUtils.removeFile(projectPath + "/.project"); //$NON-NLS-1$
+		        ResourceUtils.removeFile(projectPath + "/.build.xml"); //$NON-NLS-1$
+		    }
+		    monitor.worked(5);
 
-		// add the build.xml file
-		if (createBuildXML)
-		{
-			ArrayList<ReplaceableParameter> param = new ArrayList<ReplaceableParameter>();
-			param.add(new ReplaceableParameter("$$project_name", handle.getName())); //$NON-NLS-1$
-			param.add(new ReplaceableParameter("$$project_dir_name", handle.getName())); //$NON-NLS-1$
-			ResourceUtils.createFile(handle, "build.xml", //$NON-NLS-1$
-					TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true); //$NON-NLS-1$
-		}
-		monitor.worked(10);
+		    monitor.subTask(String.format(Messages.ProjectUtils_4, handle.getName()));
+		    // create the project
 
+		    if (description == null)
+		        handle.create(monitor);
+		    else
+		    {
+		        handle.create(description, monitor);
+		    }
+
+		    if (open)
+		        handle.open(monitor);
+		    monitor.worked(10);
+
+		    monitor.subTask(Messages.ProjectUtils_6);
+		    // add wesnoth nature
+		    IProjectDescription tmpDescription = handle.getDescription();
+		    tmpDescription.setNatureIds(new String[] { Constants.NATURE_WESNOTH /*,
+    				Constants.NATURE_XTEXT */ });
+		    handle.setDescription(tmpDescription, monitor);
+		    monitor.worked(5);
+
+		    // add the build.xml file
+		    if (createBuildXML)
+		    {
+		        ArrayList<ReplaceableParameter> param = new ArrayList<ReplaceableParameter>();
+		        param.add(new ReplaceableParameter("$$project_name", handle.getName())); //$NON-NLS-1$
+		        param.add(new ReplaceableParameter("$$project_dir_name", handle.getName())); //$NON-NLS-1$
+		        ResourceUtils.createFile(handle, "build.xml", //$NON-NLS-1$
+		                TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true); //$NON-NLS-1$
+		    }
+		    monitor.worked(10);
+        }
+        catch (CoreException e) {
+            Logger.getInstance().logException(e);
+            return 1;
+        }
 		return 0;
 	}
 }

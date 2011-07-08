@@ -19,7 +19,6 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
@@ -387,20 +386,8 @@ public class WorkspaceUtils
                             projectName = "_Mainline_" + file.getName(); //$NON-NLS-1$
                         }
 
-                        IProjectDescription description =
-                            ResourcesPlugin.getWorkspace().newProjectDescription(projectName);
-                        description.setLocation(new Path(file.getAbsolutePath()));
-
-                        IContainer container = ResourcesPlugin.getWorkspace().getRoot().
-                            getContainerForLocation(new Path(file.getAbsolutePath()));
-
-                        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-                        // don't create the project if it exists already
-                        if (container == null)
-                        {
-                            ProjectUtils.createWesnothProject(project, description,
-                                    true, false, monitor);
-                        }
+                        ProjectUtils.createWesnothProject( projectName,
+                                file.getAbsolutePath( ), false, monitor );
                     }
 
                     if (guided)
