@@ -13,6 +13,7 @@ import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.console.IConsoleConstants;
 import org.wesnoth.navigator.WesnothProjectsExplorer;
+import org.wesnoth.views.AddonsView;
 
 public class WMLPerspective implements IPerspectiveFactory
 {
@@ -27,6 +28,7 @@ public class WMLPerspective implements IPerspectiveFactory
         layout.addShowViewShortcut(IPageLayout.ID_PROJECT_EXPLORER);
         layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
         layout.addShowViewShortcut(IPageLayout.ID_PROBLEM_VIEW);
+        layout.addShowViewShortcut( AddonsView.ID_ADDONS_VIEW );
 
         // Editors are placed for free.
         String editorArea = layout.getEditorArea();
@@ -40,6 +42,7 @@ public class WMLPerspective implements IPerspectiveFactory
         bottom.addView(IPageLayout.ID_PROBLEM_VIEW);
         bottom.addView(IPageLayout.ID_PROGRESS_VIEW);
         bottom.addView(IConsoleConstants.ID_CONSOLE_VIEW);
+        bottom.addView( AddonsView.ID_ADDONS_VIEW );
         bottom.addView("org.eclipse.pde.runtime.LogView"); //$NON-NLS-1$
 
         IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.68f, editorArea); //$NON-NLS-1$

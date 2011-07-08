@@ -220,6 +220,15 @@
             id="org.wesnoth.navigator.WesnothProjectsExplorer"
             name="Wesnoth Projects">
       </view>
+      <view
+            allowMultiple="false"
+            category="org.wesnoth.views"
+            class="org.wesnoth.views.AddonsView"
+            icon="icons/icon-addon-publish.png"
+            id="org.wesnoth.addonsView"
+            name="Wesnoth Addons "
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
