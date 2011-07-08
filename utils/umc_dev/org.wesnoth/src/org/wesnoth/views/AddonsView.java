@@ -42,6 +42,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.wesnoth.preferences.AddonUploadPreferencePage;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
+import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.ExternalToolInvoker;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.StringUtils;
@@ -178,12 +179,12 @@ public class AddonsView extends ViewPart
         WorkspaceJob downloadJob = new  WorkspaceJob( "Download" ) {
 
             @Override
-            public IStatus runInWorkspace( IProgressMonitor monitor ) throws CoreException
+            public IStatus runInWorkspace( final IProgressMonitor monitor ) throws CoreException
             {
                 monitor.beginTask( "Downloading addon " + addonName, 100 );
 
                 String installName = "";
-                Paths paths = Preferences.getPaths( installName );
+                final Paths paths = Preferences.getPaths( installName );
 
                 OutputStream console = GUIUtils
                     .createConsole( "Wesnoth Addon Manager", null, false )
@@ -196,6 +197,25 @@ public class AddonsView extends ViewPart
                         new OutputStream[] { console });
 
                 tool.waitForTool( );
+
+                monitor.worked( 50 );
+
+                // ask user if he wants to create a project
+
+                if ( GUIUtils.showMessageBox(
+                        "Do you want to create a new project for the downloaded addon?",
+                        SWT.YES | SWT.NO ) == SWT.YES ) {
+
+                    Display.getDefault( ).syncExec( new Runnable( ) {
+
+                        @Override
+                        public void run()
+                        {
+                            ProjectUtils.createWesnothProject( addonName,
+                                    paths.getAddonsDir( ) + addonName, false, monitor );
+                        }
+                    });
+                }
 
                 monitor.done( );
 
