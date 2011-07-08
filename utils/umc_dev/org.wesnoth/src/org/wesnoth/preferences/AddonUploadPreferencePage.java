@@ -30,7 +30,7 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
      */
 	public final static Map<String, String> ADDON_SERVER_PORTS = new HashMap<String, String>( );
 
-	{
+	static {
 	    ADDON_SERVER_PORTS.put("15002", "1.9.x"); //$NON-NLS-1$ //$NON-NLS-2$
 	    ADDON_SERVER_PORTS.put("15001", "1.8.x"); //$NON-NLS-1$ //$NON-NLS-2$
         ADDON_SERVER_PORTS.put("15003", "1.6.x"); //$NON-NLS-1$ //$NON-NLS-2$
