@@ -194,7 +194,7 @@ public class ExternalToolInvoker
 					String line = ""; //$NON-NLS-1$
 					while((line = readErrorLine()) != null)
 					{
-						if (extraStreams != null)
+						if ( extraStreams != null && extraStreams.length > 0 )
 						{
 							for(OutputStream stream : extraStreams)
 								stream.write((line + "\n").getBytes()); //$NON-NLS-1$
@@ -236,7 +236,7 @@ public class ExternalToolInvoker
 					String line = ""; //$NON-NLS-1$
 					while((line = readOutputLine()) != null)
 					{
-						if (extraStreams != null)
+						if ( extraStreams != null && extraStreams.length > 0 )
 						{
 							for(OutputStream stream : extraStreams)
 								stream.write((line + "\n").getBytes()); //$NON-NLS-1$

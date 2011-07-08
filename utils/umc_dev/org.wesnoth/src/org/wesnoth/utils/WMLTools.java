@@ -544,9 +544,11 @@ public class WMLTools
 				Preferences.getString(Constants.P_PYTHON_PATH) , arguments);
 
 		pyscript.runTool();
-		if (stderrMonitoring == true || stderr != null)
+		if ( stderrMonitoring == true ||
+		     ( stderr != null && stderr.length > 0 ) )
 			pyscript.startErrorMonitor(stderr);
-		if (stdoutMonitoring == true || stdout != null)
+		if ( stdoutMonitoring == true ||
+		     ( stdout != null && stdout.length > 0 ) )
 			pyscript.startOutputMonitor(stdout);
 		if (stdin != null)
 		{
