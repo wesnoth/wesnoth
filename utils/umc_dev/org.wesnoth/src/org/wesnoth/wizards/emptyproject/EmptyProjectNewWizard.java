@@ -15,7 +15,6 @@ import java.util.List;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.wesnoth.Logger;
@@ -83,59 +82,53 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 	{
 		monitor.beginTask(Messages.EmptyProjectNewWizard_1, 15);
 
-		try
+		IProject currentProject = page0_.getProjectHandle();
+
+		// the project
+		if (page0_.getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
 		{
-			IProject currentProject = page0_.getProjectHandle();
-
-			// the project
-			if (page0_.getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
-			{
-				ProjectUtils.createWesnothProject(currentProject, null, true,
-						!page1_.isDataCampaignsProject(), monitor);
-			}
-			else
-			{
-				IProjectDescription newDescription = ResourcesPlugin.getWorkspace().
-				newProjectDescription(page0_.getProjectName());
-				newDescription.setLocation(page0_.getLocationPath());
-				ProjectUtils.createWesnothProject(currentProject, newDescription,
-						true, !page1_.isDataCampaignsProject(), monitor);
-			}
-
-			monitor.worked(2);
-
-			String emptyProjectStructure = prepareTemplate("empty_project"); //$NON-NLS-1$
-			if (emptyProjectStructure == null)
-				return;
-
-			List<Pair<String, String>> files;
-			List<String> dirs;
-			Pair<List<Pair<String, String>>, List<String>> tmp =
-					TemplateProvider.getInstance().getFilesDirectories(emptyProjectStructure);
-			files = tmp.First;
-			dirs = tmp.Second;
-
-			for (Pair<String, String> file : files)
-			{
-				if (file.Second.equals("pbl") && //$NON-NLS-1$
-					page1_.getGeneratePBLFile() == false)
-					continue;
-
-				if (file.Second.equals("build_xml") && //$NON-NLS-1$
-					page1_.isDataCampaignsProject())
-					continue;
-
-				ResourceUtils.createFile(currentProject, file.First, prepareTemplate(file.Second), true);
-				monitor.worked(1);
-			}
-			for (String dir : dirs)
-			{
-				ResourceUtils.createFolder(currentProject, dir);
-				monitor.worked(1);
-			}
-		} catch (CoreException e)
+			ProjectUtils.createWesnothProject(currentProject, null, true,
+					!page1_.isDataCampaignsProject(), monitor);
+		}
+		else
 		{
-			Logger.getInstance().logException(e);
+			IProjectDescription newDescription = ResourcesPlugin.getWorkspace().
+			newProjectDescription(page0_.getProjectName());
+			newDescription.setLocation(page0_.getLocationPath());
+			ProjectUtils.createWesnothProject(currentProject, newDescription,
+					true, !page1_.isDataCampaignsProject(), monitor);
+		}
+
+		monitor.worked(2);
+
+		String emptyProjectStructure = prepareTemplate("empty_project"); //$NON-NLS-1$
+		if (emptyProjectStructure == null)
+			return;
+
+		List<Pair<String, String>> files;
+		List<String> dirs;
+		Pair<List<Pair<String, String>>, List<String>> tmp =
+				TemplateProvider.getInstance().getFilesDirectories(emptyProjectStructure);
+		files = tmp.First;
+		dirs = tmp.Second;
+
+		for (Pair<String, String> file : files)
+		{
+			if (file.Second.equals("pbl") && //$NON-NLS-1$
+				page1_.getGeneratePBLFile() == false)
+				continue;
+
+			if (file.Second.equals("build_xml") && //$NON-NLS-1$
+				page1_.isDataCampaignsProject())
+				continue;
+
+			ResourceUtils.createFile(currentProject, file.First, prepareTemplate(file.Second), true);
+			monitor.worked(1);
+		}
+		for (String dir : dirs)
+		{
+			ResourceUtils.createFolder(currentProject, dir);
+			monitor.worked(1);
 		}
 
 		monitor.done();
