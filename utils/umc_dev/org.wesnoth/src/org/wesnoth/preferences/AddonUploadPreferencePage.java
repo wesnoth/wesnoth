@@ -15,24 +15,32 @@ import java.util.Map.Entry;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
-import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Constants;
 import org.wesnoth.Messages;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.jface.RegexStringFieldEditor;
 
 public class AddonUploadPreferencePage extends AbstractPreferencePage
 {
-	Map<String, String> ports_;
+    /**
+     * Holds the ports for each addon server as a (key, value) pair,
+     * where:
+     * - key = port
+     * - value = wesnoth server version
+     */
+	public final static Map<String, String> ADDON_SERVER_PORTS = new HashMap<String, String>( );
+
+	{
+	    ADDON_SERVER_PORTS.put("15002", "1.9.x"); //$NON-NLS-1$ //$NON-NLS-2$
+	    ADDON_SERVER_PORTS.put("15001", "1.8.x"); //$NON-NLS-1$ //$NON-NLS-2$
+        ADDON_SERVER_PORTS.put("15003", "1.6.x"); //$NON-NLS-1$ //$NON-NLS-2$
+        ADDON_SERVER_PORTS.put("15005", "1.4.x"); //$NON-NLS-1$ //$NON-NLS-2$
+        ADDON_SERVER_PORTS.put("15004", "trunk"); //$NON-NLS-1$ //$NON-NLS-2$
+	}
 
 	public AddonUploadPreferencePage()
 	{
 		super(GRID);
-		ports_ = new HashMap<String, String>();
-		ports_.put("15002", "1.9.x"); //$NON-NLS-1$ //$NON-NLS-2$
-		ports_.put("15001", "1.8.x"); //$NON-NLS-1$ //$NON-NLS-2$
-		ports_.put("15003", "1.6.x"); //$NON-NLS-1$ //$NON-NLS-2$
-		ports_.put("15005", "1.4.x"); //$NON-NLS-1$ //$NON-NLS-2$
-		ports_.put("15004", "trunk"); //$NON-NLS-1$ //$NON-NLS-2$
 
 		setPreferenceStore(WesnothPlugin.getDefault().getPreferenceStore());
 		setDescription(Messages.AddonUploadPreferencePage_10);
@@ -56,7 +64,7 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
 		StringBuilder ports = new StringBuilder();
 		StringBuilder portsRegex = new StringBuilder();
 		portsRegex.append("("); //$NON-NLS-1$
-		for (Entry<String, String> item : ports_.entrySet())
+		for (Entry<String, String> item : ADDON_SERVER_PORTS.entrySet())
 		{
 			portsRegex.append(item.getKey() + "|"); //$NON-NLS-1$
 			ports.append(String.format("\t%s - %s\n", item.getKey(), item.getValue())); //$NON-NLS-1$
