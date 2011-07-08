@@ -41,7 +41,7 @@ public class UploadAddon extends ObjectActionDelegate
 					monitor.worked(10);
 					OutputStream consoleStream = GUIUtils.
 						createConsole(Messages.UploadAddon_1, null, true).newOutputStream();
-					WMLTools.runWesnothAddonManager(fullPath,
+					WMLTools.uploadWesnothAddon(fullPath,
 							new OutputStream[] { consoleStream }, new OutputStream[] { consoleStream });
 					monitor.worked(40);
 					monitor.done();

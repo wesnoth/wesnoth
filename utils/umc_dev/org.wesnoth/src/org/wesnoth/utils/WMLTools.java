@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -395,37 +396,62 @@ public class WMLTools
 	 * @param stderr The array of streams where to output the stderr content
 	 * @return  null if there were errors or an ExternalToolInvoker instance
 	 */
-	public static ExternalToolInvoker runWesnothAddonManager(String containerPath,
+	public static ExternalToolInvoker uploadWesnothAddon(String containerPath,
 			OutputStream[] stdout, OutputStream[] stderr)
 	{
-        Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( containerPath ) );
-		if ( !ResourceUtils.isValidFilePath( containerPath ) ||
-		     !checkWMLTool( paths, Tools.WESNOTH_ADDON_MANAGER.toString( ) ) )
-			return null;
+	    if (  !ResourceUtils.isValidFilePath( containerPath ) )
+	        return null;
 
-		File wmllintFile = new File(paths.getWMLToolsDir( )	+ "/wesnoth_addon_manager"); //$NON-NLS-1$
-		List<String> arguments = new ArrayList<String>();
-		arguments.add(wmllintFile.getAbsolutePath());
-
-		if (!Preferences.getString(Constants.P_WAU_PASSWORD).isEmpty())
-		{
-			arguments.add("-P"); //$NON-NLS-1$
-			arguments.add(Preferences.getString(Constants.P_WAU_PASSWORD));
-		}
-
-		if (Preferences.getBool(Constants.P_WAU_VERBOSE) == true)
-			arguments.add("-V"); //$NON-NLS-1$
-
-		arguments.add("-a"); //$NON-NLS-1$
-		arguments.add(Preferences.getString(Constants.P_WAU_ADDRESS));
-
-		arguments.add("-p"); //$NON-NLS-1$
-		arguments.add(Preferences.getString(Constants.P_WAU_PORT));
-
-		arguments.add("-u"); //$NON-NLS-1$
-		arguments.add(containerPath);
-		return runPythonScript(arguments, null, true, true, stdout, stderr);
+		return runWesnothAddonManager(
+		        WesnothInstallsUtils.getInstallNameForResource( containerPath )
+		        , Preferences.getString(Constants.P_WAU_PASSWORD)
+		        , Preferences.getString(Constants.P_WAU_PORT)
+		        , Arrays.asList( "-u", containerPath ) // upload container
+		        , stdout
+		        , stderr );
 	}
+
+	/**
+     * Runs the wesnoth addon manager with the specified parameters
+     * @param installName The install of which to use the wesnoth addon manager from
+     * @param password The password to access the addons server
+     * @param port The port of the addons server
+     * @param extraArguments The extra arguments to the addons manager
+     * @param stdout The array of streams where to output the stdout content
+     * @param stderr The array of streams where to output the stderr content
+     * @return  null if there were errors or an ExternalToolInvoker instance
+     */
+    public static ExternalToolInvoker runWesnothAddonManager( String installName,
+            String password, String port,
+            List<String> extraArguments, OutputStream[] stdout, OutputStream[] stderr)
+    {
+        Paths paths = Preferences.getPaths( installName );
+        if ( !checkWMLTool( paths, Tools.WESNOTH_ADDON_MANAGER.toString( ) ) )
+            return null;
+
+        File wmllintFile = new File(paths.getWMLToolsDir( ) + "/wesnoth_addon_manager"); //$NON-NLS-1$
+        List<String> arguments = new ArrayList<String>();
+        arguments.add(wmllintFile.getAbsolutePath());
+
+        if ( ! StringUtils.isNullOrEmpty( password ) )
+        {
+            arguments.add("-P"); //$NON-NLS-1$
+            arguments.add(Preferences.getString(Constants.P_WAU_PASSWORD));
+        }
+
+        if (Preferences.getBool(Constants.P_WAU_VERBOSE) == true)
+            arguments.add("-V"); //$NON-NLS-1$
+
+        arguments.add("-a"); //$NON-NLS-1$
+        arguments.add(Preferences.getString(Constants.P_WAU_ADDRESS));
+
+        arguments.add("-p"); //$NON-NLS-1$
+        arguments.add( port );
+
+        arguments.addAll( extraArguments );
+
+        return runPythonScript(arguments, null, true, true, stdout, stderr);
+    }
 
 	/**
 	 * Parses the output from the WMLTool and adds markers accordingly
