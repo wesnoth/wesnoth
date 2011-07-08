@@ -29,6 +29,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -116,18 +117,19 @@ public class AddonsView extends ViewPart
         gd_cmbAddonServer.widthHint = 148;
         cmbAddonServer_.setLayoutData( gd_cmbAddonServer );
 
+        Button btnRefresh = new Button(grpOptions, SWT.NONE);
+        btnRefresh.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                refreshAddons( );
+            }
+        });
+        btnRefresh.setText("Refresh");
+        new Label(grpOptions, SWT.NONE);
+
         cmbAddonServer_.addSelectionListener( new SelectionAdapter( ) {
             @Override
-            public void widgetSelected( SelectionEvent e )
-            {
-                if ( e.getSource( ) instanceof Combo == false )
-                    return;
-
-                Combo combo = ( Combo ) e.getSource( );
-                if ( combo.getSelectionIndex( ) == -1 )
-                    return;
-
-                currentPort_ = ports_.get( combo.getSelectionIndex( ) );
+            public void widgetSelected( SelectionEvent e ) {
                 refreshAddons( );
             }
         } );
@@ -234,6 +236,13 @@ public class AddonsView extends ViewPart
             GUIUtils.showInfoMessageBox( "Please wait for the previous query to finish." );
             return;
         }
+
+        if ( cmbAddonServer_.getSelectionIndex( ) == -1 )
+            return;
+
+        currentPort_ = ports_.get( cmbAddonServer_.getSelectionIndex( ) );
+        if ( StringUtils.isNullOrEmpty( currentPort_ ) )
+            return;
 
         loading_ = true;
         tableAddons_.setItemCount( 0 );
