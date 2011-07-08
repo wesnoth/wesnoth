@@ -19,6 +19,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -30,11 +34,14 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.part.ViewPart;
 import org.wesnoth.preferences.AddonUploadPreferencePage;
+import org.wesnoth.preferences.Preferences;
+import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.utils.ExternalToolInvoker;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.StringUtils;
@@ -52,7 +59,7 @@ public class AddonsView extends ViewPart
      * Flag whether we area already loading some addons or not
      */
     private boolean loading_;
-    private Table table_;
+    private Table tableAddons_;
 
     public AddonsView()
     {
@@ -68,31 +75,31 @@ public class AddonsView extends ViewPart
         grpAddonsList.setText( "Addons list" );
         grpAddonsList.setLayout( new FillLayout( SWT.HORIZONTAL ) );
 
-        table_ = new Table( grpAddonsList, SWT.BORDER | SWT.FULL_SELECTION );
-        table_.setHeaderVisible( true );
-        table_.setLinesVisible( true );
+        tableAddons_ = new Table( grpAddonsList, SWT.BORDER | SWT.FULL_SELECTION );
+        tableAddons_.setHeaderVisible( true );
+        tableAddons_.setLinesVisible( true );
 
-        TableColumn tblclmnType = new TableColumn( table_, SWT.NONE );
+        TableColumn tblclmnType = new TableColumn( tableAddons_, SWT.NONE );
         tblclmnType.setWidth( 92 );
         tblclmnType.setText( "Type" );
 
-        TableColumn tblclmnAddonName = new TableColumn( table_, SWT.NONE );
+        TableColumn tblclmnAddonName = new TableColumn( tableAddons_, SWT.NONE );
         tblclmnAddonName.setWidth( 100 );
         tblclmnAddonName.setText( "Addon Name" );
 
-        TableColumn tblclmnAddonTitle = new TableColumn( table_, SWT.NONE );
+        TableColumn tblclmnAddonTitle = new TableColumn( tableAddons_, SWT.NONE );
         tblclmnAddonTitle.setWidth( 121 );
         tblclmnAddonTitle.setText( "Addon Title" );
 
-        TableColumn tblclmnAuthors = new TableColumn( table_, SWT.NONE );
+        TableColumn tblclmnAuthors = new TableColumn( tableAddons_, SWT.NONE );
         tblclmnAuthors.setWidth( 139 );
         tblclmnAuthors.setText( "Author(s)" );
 
-        TableColumn tblclmnVersion = new TableColumn( table_, SWT.NONE );
+        TableColumn tblclmnVersion = new TableColumn( tableAddons_, SWT.NONE );
         tblclmnVersion.setWidth( 100 );
         tblclmnVersion.setText( "Version" );
 
-        TableColumn tblclmnDownloads = new TableColumn( table_, SWT.NONE );
+        TableColumn tblclmnDownloads = new TableColumn( tableAddons_, SWT.NONE );
         tblclmnDownloads.setWidth( 100 );
         tblclmnDownloads.setText( "Downloads" );
 
@@ -133,6 +140,69 @@ public class AddonsView extends ViewPart
                     "%s ( port: %s )", server.getValue( ), server.getKey( ) ) );
             ports_.add( server.getKey( ) );
         }
+
+        MenuManager menuManager = new MenuManager( );
+        menuManager.setRemoveAllWhenShown( true );
+        menuManager.addMenuListener( new IMenuListener( ) {
+
+            @Override
+            public void menuAboutToShow( IMenuManager manager )
+            {
+                Action downloadAction = new Action( "Download" ) {
+                    @Override
+                    public void run() {
+                        downloadAddon( );
+                    };
+                };
+                manager.add( downloadAction );
+            }
+        });
+
+        Menu menu = menuManager.createContextMenu( tableAddons_ );
+        tableAddons_.setMenu( menu );
+    }
+
+    /**
+     * Downloads the currently selected addon
+     */
+    protected void downloadAddon()
+    {
+        if ( tableAddons_.getSelectionIndex( ) == -1 ) {
+            GUIUtils.showErrorMessageBox( "No addon selected" );
+            return;
+        }
+
+        TableItem[] selection = tableAddons_.getSelection( );
+        final String addonName = selection[0].getText( 1 );
+
+        WorkspaceJob downloadJob = new  WorkspaceJob( "Download" ) {
+
+            @Override
+            public IStatus runInWorkspace( IProgressMonitor monitor ) throws CoreException
+            {
+                monitor.beginTask( "Downloading addon " + addonName, 100 );
+
+                String installName = "";
+                Paths paths = Preferences.getPaths( installName );
+
+                OutputStream console = GUIUtils
+                    .createConsole( "Wesnoth Addon Manager", null, false )
+                    .newOutputStream( );
+
+                ExternalToolInvoker tool = WMLTools.runWesnothAddonManager(
+                        installName, null, currentPort_,
+                        Arrays.asList( "-d", addonName, "-c", paths.getAddonsDir( ) ),
+                        new OutputStream[] { console },
+                        new OutputStream[] { console });
+
+                tool.waitForTool( );
+
+                monitor.done( );
+
+                return Status.OK_STATUS;
+            }
+        };
+        downloadJob.schedule( );
     }
 
     /**
@@ -146,8 +216,8 @@ public class AddonsView extends ViewPart
         }
 
         loading_ = true;
-        table_.setItemCount( 0 );
-        table_.clearAll( );
+        tableAddons_.setItemCount( 0 );
+        tableAddons_.clearAll( );
 
         if ( !StringUtils.isNullOrEmpty( currentPort_ ) ) {
             WorkspaceJob loadAddons = new WorkspaceJob( "Retrieving list..." ) {
@@ -156,6 +226,8 @@ public class AddonsView extends ViewPart
                 public IStatus runInWorkspace( IProgressMonitor monitor ) throws CoreException
                 {
                     monitor.beginTask( "Retrieving list...", 100 );
+                    monitor.worked( 10 );
+
                     String installName = "";
 
                     OutputStream stderr = GUIUtils
@@ -215,7 +287,7 @@ public class AddonsView extends ViewPart
                             // skipp 1st line since it's just the header
                             for ( String[] addon : addons ) {
 
-                                TableItem tableItem = new TableItem( table_, SWT.NONE );
+                                TableItem tableItem = new TableItem( tableAddons_, SWT.NONE );
                                 tableItem.setText( new String[] {
                                         addon[0],
                                         addon[1],
