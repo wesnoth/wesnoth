@@ -90,6 +90,9 @@ public class DependencyTreeBuilder implements Serializable
         containers.add( project_ );
 
         while( containers.isEmpty( ) == false ) {
+
+            // each container should start a new "branch"
+            previous_ = null;
             IContainer container = containers.poll( );
 
             IResource main_cfg = container.findMember( "_main.cfg" ); //$NON-NLS-1$
@@ -216,7 +219,7 @@ public class DependencyTreeBuilder implements Serializable
                     // we found the place?
                     if ( ResourceUtils.wmlFileNameCompare(
                             fileName,
-                            leaf.getFile( ).getName( ) ) > 0 ) {
+                            leaf.getFile( ).getName( ) ) < 0 ) {
 
                         previous_ = leaf.getPrevious( );
 
@@ -225,6 +228,20 @@ public class DependencyTreeBuilder implements Serializable
                         // update links
                         newNode.setNext( leaf );
                         leaf.setPrevious( newNode );
+
+                        if ( leaf.getSon( ) != null ){
+                            newNode.setSon( leaf.getSon( ) );
+                            leaf.getSon( ).setParent( newNode );
+
+                            leaf.setSon( null );
+                        }
+
+                        if ( leaf.getParent( ) != null ) {
+                            newNode.setParent( leaf.getParent( ) );
+                            leaf.getParent( ).setSon( newNode );
+
+                            leaf.setParent(  null );
+                        }
 
                         break;
                     }
@@ -294,8 +311,14 @@ public class DependencyTreeBuilder implements Serializable
     {
         ProjectDependencyNode node = getNode( file );
 
-        node.getPrevious( ).setNext( node.getNext( ) );
-        node.getNext( ).setPrevious( node.getPrevious( ) );
+        // the node didn't even exist in the tree!?
+        if ( node == null )
+            return;
+
+        if ( node.getPrevious( ) != null )
+            node.getPrevious( ).setNext( node.getNext( ) );
+        if ( node.getNext( ) != null )
+            node.getNext( ).setPrevious( node.getPrevious( ) );
 
         tree_.remove( file.getProjectRelativePath( ).toString( ) );
     }

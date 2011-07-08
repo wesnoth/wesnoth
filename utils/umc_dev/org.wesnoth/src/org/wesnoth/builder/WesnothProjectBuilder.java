@@ -184,11 +184,20 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                     projectCache_.getConfigs().remove( file.getName() );
                 } else if ( deltaKind == IResourceDelta.ADDED  ){
                     ProjectDependencyNode newNode = tree.addNode( file );
-                    nodesToProcess.add( newNode );
+                    if ( newNode == null )
+                        Logger.getInstance( ).logError( "Couldn't create a new" +
+                        		"PDT node for file: " + file.getFullPath( ).toString( ) );
+                    else
+                        nodesToProcess.add( newNode );
                 } else if ( deltaKind == IResourceDelta.CHANGED ) {
                     //TODO: check if the included directories have changed their
                     // order
-                    nodesToProcess.add( tree.getNode( file ) );
+                    ProjectDependencyNode node = tree.getNode( file );
+                    if ( node == null )
+                        Logger.getInstance( ).logError( "Couldn't find file "
+                                + file.getFullPath( ).toString( ) + " in PDT!." );
+                    else
+                        nodesToProcess.add( node );
                 } else {
                     Logger.getInstance( ).log( "unknown delta kind: " + deltaKind );
                 }
@@ -212,6 +221,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
             }
         });
 
+        foundCfg = ( !nodesToProcess.isEmpty( ) );
         // process nodes
         for ( ProjectDependencyNode node : nodesToProcess ) {
             checkResource( node.getFile( ), monitor );
