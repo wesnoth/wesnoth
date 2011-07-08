@@ -67,7 +67,7 @@ struct ttest : public copy_policy<ttest<copy_policy> >
 #if TEST_POLICY_DEBUG
 		std::cerr << "Copy constructor " << __func__ << ".\n";
 #endif
-		copy(rhs);
+		this->copy(rhs);
 	}
 
 	ttest& operator=(ttest_rhs_type rhs)
@@ -80,7 +80,7 @@ struct ttest : public copy_policy<ttest<copy_policy> >
 		cloned_ = rhs.cloned_;
 		invalidated_ = rhs.invalidated_;
 
-		copy(rhs);
+		this->copy(rhs);
 
 		return *this;
 	}

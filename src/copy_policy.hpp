@@ -194,7 +194,7 @@ struct tcopy_policy : public base, public copy_policy<tcopy_policy<base, copy_po
 #if COPY_POLICY_DEBUG
 		std::cerr << "tcopy_policy: copy constructor.\n";
 #endif
-		copy(rhs);
+		this->copy(rhs);
 	}
 
 	tcopy_policy& operator=(tcopy_policy_rhs_type rhs)
@@ -205,7 +205,7 @@ struct tcopy_policy : public base, public copy_policy<tcopy_policy<base, copy_po
 		static_cast<base>(*this) = rhs;
 		static_cast<policy>(*this) = rhs;
 
-		copy(rhs);
+		this->copy(rhs);
 
 		return *this;
 	}
