@@ -11,6 +11,7 @@ package org.wesnoth.builder;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -54,10 +55,12 @@ public class DependencyTreeBuilder implements Serializable
     private ProjectDependencyNode previous_;
 
     protected Map< String, ProjectDependencyNode > tree_;
+    protected List< String > directories_;
 
     public DependencyTreeBuilder( IProject project )
     {
         tree_ = new HashMap<String, ProjectDependencyNode>();
+        directories_ = new ArrayList<String>();
 
         parent_ = previous_ = null;
 
@@ -74,8 +77,8 @@ public class DependencyTreeBuilder implements Serializable
     public void createDependencyTree( boolean force )
     {
         if ( isCreated_ && !force ) {
-            Logger.getInstance( ).log( "Depedency tree for project " +
-                    project_.getName( ) + " already built. Skipping it." );
+            Logger.getInstance( ).log( " Skipping depedency tree for project " +
+                    project_.getName( ) );
             return;
         }
 
@@ -100,57 +103,7 @@ public class DependencyTreeBuilder implements Serializable
                 // add main.cfg to tree
                 internal_addNode( (IFile) main_cfg );
 
-                WMLRoot root = ResourceUtils.getWMLRoot( ( IFile ) main_cfg );
-                // nothing to do
-                if ( root == null )
-                    continue;
-
-                EList<WMLMacroCall> macroCalls = new BasicEList<WMLMacroCall>( );
-
-                // iterate to find macro calls
-                TreeIterator<EObject> treeItor = root.eAllContents( );
-
-                while ( treeItor.hasNext( ) ) {
-                    EObject object = treeItor.next( );
-                    if ( object instanceof WMLMacroCall ){
-                        macroCalls.add( (WMLMacroCall) object );
-                    }
-                }
-
-                // now check what macros are really an inclusion macro
-                Set<String> containersToAdd = new LinkedHashSet<String>( );
-
-                for ( WMLMacroCall macro : macroCalls ) {
-                    String name = macro.getName( );
-
-                    /**
-                     * To include a folder the macro should be the following
-                     * forms:
-                     * - {campaigns/... }
-                     * - {~add-ons/... }
-                     *
-                     */
-                    //TODO: check for including a specific config file?
-
-                    if ( ( name.equals( "campaigns" ) || //$NON-NLS-1$
-                         name.equals( "add-ons" ) ) && //$NON-NLS-1$
-                         // the call should contain just string values
-                         macro.getExtraMacros( ).isEmpty( ) &&
-                         macro.getParams( ).size( ) > 1 &&
-                         macro.getParams( ).get( 0 ).equals( "/" ) ) //$NON-NLS-1$
-                    {
-                        // check if the macro includes directories local
-                        // to this project
-                        String projectPath = project_.getLocation( ).toOSString( );
-
-                        if ( projectPath.contains( macro.getParams( ).get( 1 ) ) ) {
-                            containersToAdd.add(
-                                ListUtils.concatenateList(
-                                   macro.getParams( ).subList( 2, macro.getParams( ).size( ) ), "" ) ); //$NON-NLS-1$
-                        }
-                    }
-                }
-
+                Set<String> containersToAdd = getContainers( (IFile) main_cfg );
                 // push the containers in the queue
                 for ( String containerPath : containersToAdd ) {
                     containers.offer( project_.getFolder( containerPath ) );
@@ -191,6 +144,63 @@ public class DependencyTreeBuilder implements Serializable
         }
 
         System.out.println( toString( ) );
+    }
+
+    public static Set<String> getContainers( IFile file )
+    {
+        IProject project = file.getProject( );
+        WMLRoot root = ResourceUtils.getWMLRoot( file );
+        // nothing to do
+        if ( root == null )
+            return new LinkedHashSet<String> ( 0 );
+
+        EList<WMLMacroCall> macroCalls = new BasicEList<WMLMacroCall>( );
+
+        // iterate to find macro calls
+        TreeIterator<EObject> treeItor = root.eAllContents( );
+
+        while ( treeItor.hasNext( ) ) {
+            EObject object = treeItor.next( );
+            if ( object instanceof WMLMacroCall ){
+                macroCalls.add( (WMLMacroCall) object );
+            }
+        }
+
+        // now check what macros are really an inclusion macro
+        Set<String> containersToAdd = new LinkedHashSet<String>( );
+
+        for ( WMLMacroCall macro : macroCalls ) {
+            String name = macro.getName( );
+
+            /**
+             * To include a folder the macro should be the following
+             * forms:
+             * - {campaigns/... }
+             * - {~add-ons/... }
+             *
+             */
+            //TODO: check for including a specific config file?
+
+            if ( ( name.equals( "campaigns" ) || //$NON-NLS-1$
+                 name.equals( "add-ons" ) ) && //$NON-NLS-1$
+                 // the call should contain just string values
+                 macro.getExtraMacros( ).isEmpty( ) &&
+                 macro.getParams( ).size( ) > 1 &&
+                 macro.getParams( ).get( 0 ).equals( "/" ) ) //$NON-NLS-1$
+            {
+                // check if the macro includes directories local
+                // to this project
+                String projectPath = project.getLocation( ).toOSString( );
+
+                if ( projectPath.contains( macro.getParams( ).get( 1 ) ) ) {
+                    containersToAdd.add(
+                        ListUtils.concatenateList(
+                           macro.getParams( ).subList( 2, macro.getParams( ).size( ) ), "" ) ); //$NON-NLS-1$
+                }
+            }
+        }
+
+        return containersToAdd;
     }
 
     public ProjectDependencyNode addNode( IFile file )

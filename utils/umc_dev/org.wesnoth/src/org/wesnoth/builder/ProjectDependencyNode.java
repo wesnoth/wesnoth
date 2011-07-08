@@ -9,6 +9,8 @@
 package org.wesnoth.builder;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -47,12 +49,15 @@ public class ProjectDependencyNode implements Serializable
 
     protected transient IFile file_;
     protected String fileName_;
+    protected List<String> includes_;
 
     private int index_;
 
     public ProjectDependencyNode( IFile file, int index )
     {
         previous_ = next_ = parent_ = son_ = null;
+
+        includes_ = new ArrayList<String>();
 
         file_ = file;
         fileName_ = file.getProjectRelativePath( ).toString( );

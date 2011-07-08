@@ -44,6 +44,16 @@ import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.wml.core.ConfigFile;
 
+/**
+ * The builder does the following steps in order to create and ensure
+ * a correct PDT (Project Dependency Tree)
+ *
+ * 1) remove REMOVED files from the PDT
+ * 2) parse ADDED or CHANGED files, to check if new directory/file includes
+ * happened
+ * 3) add new dependencies to the tree
+ */
+//TODO: what happens if a file changes the order of the includes?
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
     private ProjectCache projectCache_;
