@@ -98,6 +98,7 @@ src/gui/dialogs/lobby_player_info.cpp
 src/halo.cpp
 src/hash.cpp
 src/intro.cpp
+src/joystick.cpp
 src/key.cpp
 src/language.cpp
 src/leader_list.cpp
@@ -123,6 +124,7 @@ src/multiplayer_lobby.cpp
 src/multiplayer_ui.cpp
 src/multiplayer_wait.cpp
 src/network_ana.cpp
+src/network_asio.cpp
 src/network.cpp
 src/network_manager_ana.cpp
 src/network_worker.cpp
@@ -193,6 +195,10 @@ src/tools/exploder.cpp
 src/tools/exploder_cutter.cpp
 src/tools/exploder_utils.cpp
 src/tools/key_test.cpp
+src/tools/schema/error_container.cpp
+src/tools/schema/schema_generator.cpp
+src/tools/schema/sourceparser.cpp
+src/tools/schema/tag.cpp
 src/tooltips.cpp
 src/tstring.cpp
 src/unit_abilities.cpp
