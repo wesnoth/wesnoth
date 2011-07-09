@@ -361,7 +361,6 @@ void validate_visitor::visit_suppose_dead(suppose_dead_ptr sup_d)
 		mapbuilder_visitor::visit_suppose_dead(sup_d);
 	}
 	else
-		//FIXME: temporary until invalid arrow styles are in: delete invalid moves
 	{
 		if(viewer_team() == sup_d->team_index()) //< Don't mess with any other team's queue -- only our own
 		{
