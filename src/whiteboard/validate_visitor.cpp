@@ -40,6 +40,7 @@ namespace wb
 validate_visitor::validate_visitor(unit_map& unit_map)
 	: mapbuilder_visitor(unit_map, viewer_actions(), true)
 	, actions_to_erase_()
+	, arg_itor_()
 {
 	assert(!resources::whiteboard->has_planned_unit_map());
 }
@@ -62,10 +63,10 @@ bool validate_visitor::validate_actions()
 		size_t team_index = (current_team+iteration) % num_teams;
 
 		side_actions& actions = *resources::teams->at(team_index).get_side_actions();
-		side_actions::iterator itor = actions.begin();
+		arg_itor_ = actions.begin(); //< Parameter for the visit_***() fcns
 		side_actions::iterator end  = actions.end();
-		for(; itor!=end; ++itor)
-			(*itor)->accept(*this);
+		for(; arg_itor_!=end; ++arg_itor_)
+			(*arg_itor_)->accept(*this);
 	}
 
 	//FIXME: by reverse iterating this can be done in a more efficiant way
@@ -139,7 +140,7 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 				m.calculate_move_cost();
 
 				//send updated path to allies
-				resources::whiteboard->queue_net_cmd(side_actions_->make_net_cmd_replace(side_actions_->get_position_of(m_ptr),m_ptr));
+				resources::whiteboard->queue_net_cmd(side_actions_->make_net_cmd_replace(arg_itor_,m_ptr));
 
 				//@todo: Since this might lengthen the path, we probably need a special conflict state
 				// to warn the player that the initial path is no longer possible.
@@ -159,10 +160,10 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 /* private */
 bool validate_visitor::no_previous_invalids(move_ptr m_ptr)
 {
-	side_actions::iterator move_itor = side_actions_->get_position_of(m_ptr);
-	if(move_itor == side_actions_->begin())
+	//arg_itor_ is a protected member of mapbuilder_visitor
+	if(arg_itor_ == side_actions_->begin())
 		return true;
-	side_actions::iterator prev_action_of_unit = side_actions_->find_last_action_of(m_ptr->get_unit(),move_itor-1);
+	side_actions::iterator prev_action_of_unit = side_actions_->find_last_action_of(m_ptr->get_unit(),arg_itor_-1);
 	if(prev_action_of_unit == side_actions_->end())
 		return true;
 	return (*prev_action_of_unit)->is_valid();

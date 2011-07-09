@@ -21,6 +21,7 @@
 #define WB_VALIDATE_VISITOR_HPP_
 
 #include "mapbuilder_visitor.hpp"
+#include "side_actions.hpp"
 
 #include <set>
 
@@ -55,6 +56,9 @@ private:
 	bool no_previous_invalids(move_ptr);
 
 	std::set<action_ptr> actions_to_erase_;
+
+	//Parameter for the visit_***() fcns -- see validate_actions()
+	side_actions::iterator arg_itor_;
 };
 
 }
