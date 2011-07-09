@@ -28,13 +28,15 @@ namespace wb
 {
 
 /**
- * Visits all the actions in the given side_actions, building a future unit map as it goes,
- * and checking the validity of each action.
+ * Works like mapbuilder_visitor, but with these differences:
+ *   * Instead of stopping at viewer_team, it visits all actions of every team.
+ *   * actions are evaluated for validity along the way.
+ *   * Some invalid actions are deleted.
  */
 class validate_visitor: public mapbuilder_visitor
 {
 public:
-	validate_visitor(unit_map& unit_map, side_actions_ptr side_actions);
+	explicit validate_visitor(unit_map& unit_map);
 	virtual ~validate_visitor();
 
 	/// @return false some actions had to be deleted during validation,

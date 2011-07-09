@@ -24,6 +24,8 @@
 
 #include "action.hpp"
 
+struct unit_movement_resetter;
+
 namespace wb
 {
 
@@ -39,8 +41,9 @@ public:
 	virtual ~mapbuilder_visitor();
 
 	/**
-	 * Visits all the actions contained in the side_actions object passed to the constructor,
-	 * and calls the appropriate visit_* method on each of them.
+	 * Calls the appropriate visit_* method on each of the actions contained in the
+	 * side_actions objects of every team whose turn comes earlier in the turn order,
+	 * including (and stopping at) the viewer's team.
 	 */
 	virtual void build_map();
 
@@ -52,6 +55,10 @@ public:
 	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
 
 protected:
+
+	//Helper fcn: Temporarily resets all units' moves to max EXCEPT for
+	//the ones controlled by the player whose turn it is currently.
+	void reset_moves();
 
 	virtual void restore_normal_map();
 
@@ -67,6 +74,9 @@ protected:
 	};
 
 	mapbuilder_mode mode_;
+
+	//Used by reset_moves()
+	std::vector<boost::shared_ptr<unit_movement_resetter> > resetters_;
 };
 
 }

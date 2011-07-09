@@ -278,11 +278,9 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 
 side_actions::iterator side_actions::queue_action(action_ptr action)
 {
-	resources::whiteboard->queue_net_cmd(make_net_cmd_insert(end(),action));
-	actions_.push_back(action);
-	// Contrary to insert_action, no need to validate actions here since we're adding to the end of the queue
-	LOG_WB << "Queued: " << action <<"\n";
-	return end() - 1;
+	//This method can no longer be any more efficient than the above insert_action(), because
+	//inserting at the end of this queue may invalidate something in a different queue.
+	return insert_action(begin(),action);
 }
 
 //move action toward front of queue
@@ -592,15 +590,13 @@ void side_actions::validate_actions()
 		ERR_WB << "Validating action queue while temp modifiers are applied!!!\n";
 	}
 
-	if (empty()) return;
-
 	bool validation_finished = false;
 	int passes = 1;
 	while(!validation_finished){
 		log_scope2("whiteboard", "Validating actions for side "
 				+ lexical_cast<std::string>(team_index() + 1) + ", pass "
 				+ lexical_cast<std::string>(passes));
-		validate_visitor validator(*resources::units, shared_from_this());
+		validate_visitor validator(*resources::units);
 		validation_finished = validator.validate_actions();
 		++passes;
 	}
@@ -695,7 +691,10 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 	else
 	{
 		ERR_WB << "side_actions::execute_network_command(): received invalid type!\n";
+		return;
 	}
+
+	validate_actions();
 }
 
 side_actions::net_cmd side_actions::make_net_cmd_insert(const_iterator const& pos, action_ptr act) const

@@ -25,6 +25,7 @@
 #include "recruit.hpp"
 #include "side_actions.hpp"
 #include "suppose_dead.hpp"
+#include "utility.hpp"
 
 #include "arrow.hpp"
 #include "foreach.hpp"
@@ -36,8 +37,8 @@
 namespace wb
 {
 
-validate_visitor::validate_visitor(unit_map& unit_map, side_actions_ptr side_actions)
-	: mapbuilder_visitor(unit_map, side_actions, true)
+validate_visitor::validate_visitor(unit_map& unit_map)
+	: mapbuilder_visitor(unit_map, viewer_actions(), true)
 	, actions_to_erase_()
 {
 	assert(!resources::whiteboard->has_planned_unit_map());
@@ -45,17 +46,26 @@ validate_visitor::validate_visitor(unit_map& unit_map, side_actions_ptr side_act
 
 validate_visitor::~validate_visitor()
 {
+	//~mapbuilder_visitor() gets called here automatically
 }
 
 bool validate_visitor::validate_actions()
 {
-	int action_number = 1;
-	///@todo We can optimize this by making the side_actions::iterator available to accept()
-	foreach(action_ptr action, *side_actions_)
+	//Temporarily reset all units' moves to full EXCEPT for the ones on viewer_side().
+	reset_moves(); //< protected fcn inherited from mapbuilder_visitor
+
+	//Apply modifiers from every team's action_queue, beginning with the current_team.
+	size_t current_team = resources::controller->current_side() - 1;
+	size_t num_teams = resources::teams->size();
+	for(size_t iteration = 0; iteration < num_teams; ++iteration)
 	{
-		DBG_WB << "Action #" << action_number << "\n";
-		action->accept(*this);
-		++action_number;
+		size_t team_index = (current_team+iteration) % num_teams;
+
+		side_actions& actions = *resources::teams->at(team_index).get_side_actions();
+		side_actions::iterator itor = actions.begin();
+		side_actions::iterator end  = actions.end();
+		for(; itor!=end; ++itor)
+			(*itor)->accept(*this);
 	}
 
 	//FIXME: by reverse iterating this can be done in a more efficiant way
@@ -120,17 +130,20 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 		if(new_route.steps.empty() || new_route.move_cost >= pathfind::cost_calculator::getNoPathValue())
 			return OBSTRUCTED; //no path exists
 
-		if(new_route.steps!=m.get_route().steps || new_route.move_cost != m.get_route().move_cost)
+		if(m.team_index() == viewer_team()) //< Don't mess with any other team's queue -- only our own
 		{
-			//new valid path differs from the previous one, replace
-			m.set_route(new_route);
-			m.calculate_move_cost();
+			if(new_route.steps != m.get_route().steps || new_route.move_cost != m.get_route().move_cost)
+			{
+				//new valid path differs from the previous one, replace
+				m.set_route(new_route);
+				m.calculate_move_cost();
 
-			//send updated path to allies
-			resources::whiteboard->queue_net_cmd(side_actions_->make_net_cmd_replace(side_actions_->get_position_of(m_ptr),m_ptr));
+				//send updated path to allies
+				resources::whiteboard->queue_net_cmd(side_actions_->make_net_cmd_replace(side_actions_->get_position_of(m_ptr),m_ptr));
 
-			//@todo: Since this might lengthen the path, we probably need a special conflict state
-			// to warn the player that the initial path is no longer possible.
+				//@todo: Since this might lengthen the path, we probably need a special conflict state
+				// to warn the player that the initial path is no longer possible.
+			}
 		}
 
 		//Check that the unit still has enough movement to do this move
@@ -177,7 +190,8 @@ void validate_visitor::visit_move(move_ptr move)
 	case WORTHLESS:
 		// Erase only if no previous invalid actions are planned for this unit -- otherwise, just mark it invalid.
 		// Otherwise, we wouldn't be able to keep invalid actions that depend on previous invalid actions.
-		if(no_previous_invalids(move)) //< private helper fcn
+		if(viewer_team() == move->team_index() //< Don't mess with any other team's queue -- only our own
+				&& no_previous_invalids(move)) //< private helper fcn
 		{
 			LOG_WB << "Worthless invalid move detected, adding to actions_to_erase_.\n";
 			actions_to_erase_.insert(move);
@@ -200,8 +214,11 @@ void validate_visitor::visit_attack(attack_ptr attack)
 	if (!attack->target_hex_.valid()
 			|| resources::units->find(attack->target_hex_) == resources::units->end())
 	{
-		LOG_WB << "Worthless invalid attack detected, adding to actions_to_erase_.\n";
-		actions_to_erase_.insert(attack);
+		if(viewer_team() == attack->team_index()) //< Don't mess with any other team's queue -- only our own
+		{
+			LOG_WB << "Worthless invalid attack detected, adding to actions_to_erase_.\n";
+			actions_to_erase_.insert(attack);
+		}
 	}
 	else //All checks pass, so call the visitor on the superclass
 	{
@@ -251,8 +268,11 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 	}
 	else
 	{
-		LOG_WB << "Invalid recruit detected, adding to actions_to_erase_.\n";
-		actions_to_erase_.insert(recruit);
+		if(viewer_team() == recruit->team_index()) //< Don't mess with any other team's queue -- only our own
+		{
+			LOG_WB << "Invalid recruit detected, adding to actions_to_erase_.\n";
+			actions_to_erase_.insert(recruit);
+		}
 	}
 }
 
@@ -295,8 +315,11 @@ void validate_visitor::visit_recall(recall_ptr recall)
 	}
 	else
 	{
-		LOG_WB << "Invalid recall detected, adding to actions_to_erase_.\n";
-		actions_to_erase_.insert(recall);
+		if(viewer_team() == recall->team_index()) //< Don't mess with any other team's queue -- only our own
+		{
+			LOG_WB << "Invalid recall detected, adding to actions_to_erase_.\n";
+			actions_to_erase_.insert(recall);
+		}
 	}
 }
 
@@ -339,8 +362,11 @@ void validate_visitor::visit_suppose_dead(suppose_dead_ptr sup_d)
 	else
 		//FIXME: temporary until invalid arrow styles are in: delete invalid moves
 	{
-		LOG_WB << "Invalid suppose_dead detected, adding to actions_to_erase_.\n";
-		actions_to_erase_.insert(sup_d);
+		if(viewer_team() == sup_d->team_index()) //< Don't mess with any other team's queue -- only our own
+		{
+			LOG_WB << "Invalid suppose_dead detected, adding to actions_to_erase_.\n";
+			actions_to_erase_.insert(sup_d);
+		}
 	}
 }
 

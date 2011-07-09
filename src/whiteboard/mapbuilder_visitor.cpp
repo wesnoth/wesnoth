@@ -25,8 +25,11 @@
 #include "recruit.hpp"
 #include "side_actions.hpp"
 #include "suppose_dead.hpp"
+#include "utility.hpp"
 
 #include "foreach.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
 
@@ -45,17 +48,48 @@ mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side
 mapbuilder_visitor::~mapbuilder_visitor()
 {
 	restore_normal_map();
+	//Remember that the member variable resetters_ is destructed here
+}
+
+void mapbuilder_visitor::reset_moves()
+{
+	int current_side = resources::controller->current_side();
+	foreach(unit& u, *resources::units)
+	{
+		if(u.side() != current_side)
+		{
+			boost::shared_ptr<unit_movement_resetter> temp(new unit_movement_resetter(u));
+			resetters_.push_back(temp);
+		}
+	}
 }
 
 void mapbuilder_visitor::build_map()
 {
 	mode_ = BUILD_PLANNED_MAP;
-	foreach(action_ptr action, *side_actions_)
+
+	size_t current_team = resources::controller->current_side() - 1;
+
+	//Temporarily reset all units' moves to full EXCEPT for the ones on current_team.
+	reset_moves();
+
+	//Apply modifiers from every team's action_queue, ...
+	size_t viewing_team = viewer_team();
+	size_t num_teams = resources::teams->size();
+	for(size_t iteration = 0; iteration < num_teams; ++iteration)
 	{
-		if (action->is_valid())
+		//... beginning with the current_team, ...
+		size_t team_index = (current_team+iteration) % num_teams;
+
+		foreach(action_ptr act, *resources::teams->at(team_index).get_side_actions())
 		{
-			action->accept(*this);
+			if(act->is_valid())
+				act->accept(*this);
 		}
+
+		//... and ending with the viewer_team.
+		if(team_index == viewing_team)
+			break;
 	}
 }
 

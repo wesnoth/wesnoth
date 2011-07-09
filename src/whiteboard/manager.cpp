@@ -264,17 +264,14 @@ void manager::set_planned_unit_map(bool for_pathfinding)
 	{
 		if (!planned_unit_map_active_)
 		{
-			if (!viewer_actions()->empty())
-			{
-				validate_actions_if_needed();
-				std::string message;
-				for_pathfinding ? message = "Building planned unit map for pathfinding."
-						: message = "Building planned unit map";
-				log_scope2("whiteboard", message);
-				is_map_for_pathfinding_ = for_pathfinding;
-				mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions(), for_pathfinding));
-				mapbuilder_->build_map();
-			}
+			validate_actions_if_needed();
+			std::string message;
+			for_pathfinding ? message = "Building planned unit map for pathfinding."
+					: message = "Building planned unit map";
+			log_scope2("whiteboard", message);
+			is_map_for_pathfinding_ = for_pathfinding;
+			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions(), for_pathfinding));
+			mapbuilder_->build_map();
 			planned_unit_map_active_ = true;
 		}
 		else
