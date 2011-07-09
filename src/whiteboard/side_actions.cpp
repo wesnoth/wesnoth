@@ -267,7 +267,7 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 	{
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
-	assert(position >= begin() && position < end());
+	assert(position >= begin() && position <= end());
 	resources::whiteboard->queue_net_cmd(make_net_cmd_insert(position, action));
 	iterator valid_position = actions_.insert(position, action);
 	LOG_WB << "Inserted at position #" << std::distance(begin(), valid_position) + 1
@@ -280,7 +280,7 @@ side_actions::iterator side_actions::queue_action(action_ptr action)
 {
 	//This method can no longer be any more efficient than the above insert_action(), because
 	//inserting at the end of this queue may invalidate something in a different queue.
-	return insert_action(begin(),action);
+	return insert_action(end(),action);
 }
 
 //move action toward front of queue
