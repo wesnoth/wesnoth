@@ -177,10 +177,8 @@ void mapbuilder_visitor::restore_normal_map()
 	//applied_actions_ contain only the actions that we applied to the unit map
 	for (rit = applied_actions_.rbegin(); rit != end; ++rit)
 	{
-		if ((*rit)->is_valid())
-		{
-			(*rit)->accept(*this);
-		}
+		assert((*rit)->is_valid());
+		(*rit)->accept(*this);
 	}
 }
 
