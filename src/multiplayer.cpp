@@ -37,6 +37,7 @@
 #include "playcampaign.hpp"
 #include "formula_string_utils.hpp"
 #include "sound.hpp"
+#include "unit_id.hpp"
 
 #include <boost/bind.hpp>
 
@@ -421,6 +422,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config, mp::c
 
 	gamelist.clear();
 	statistics::fresh_stats();
+	n_unit::id_manager::instance().clear(); //< reset the unit underlying_id counter back to zero
 
 	{
 		mp::wait ui(disp, game_config, chat, gamelist);
