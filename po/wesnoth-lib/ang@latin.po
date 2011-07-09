@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-06-18 19:04+0200\n"
-"PO-Revision-Date: 2011-06-22 04:05-0500\n"
+"PO-Revision-Date: 2011-07-08 19:59-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ang@latin\n"
@@ -100,7 +100,7 @@ msgstr ""
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:165
 msgid "Dark Dirt"
-msgstr "Deorce Eorðe"
+msgstr "Deorcu Eorðe"
 
 #. [terrain_type]: id=dirt
 #: data/core/terrain.cfg:174
@@ -110,7 +110,7 @@ msgstr ""
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:183
 msgid "Dry Dirt"
-msgstr "Drygee Eorðe"
+msgstr "Drygeu Eorðe"
 
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:192
@@ -1024,7 +1024,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_description.cfg:149
 msgid "Size:"
-msgstr ""
+msgstr "Grytu:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
@@ -1594,7 +1594,7 @@ msgstr ""
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:338
 msgid "Selected game"
-msgstr ""
+msgstr "Gecoren gamen"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:339
@@ -1663,7 +1663,7 @@ msgstr "Sendan"
 #: data/gui/default/window/title_screen.cfg:230
 #: src/game_preferences_display.cpp:56 src/hotkeys.cpp:85
 msgid "Preferences"
-msgstr ""
+msgstr "Costas"
 
 #. [button]: id=refresh
 #: data/gui/default/window/lobby_main.cfg:673
@@ -1675,7 +1675,7 @@ msgstr ""
 #: data/gui/default/window/lobby_main.cfg:687
 #: data/gui/default/window/mp_create_game.cfg:41
 msgid "Create Game"
-msgstr "Macian Gamen"
+msgstr "Gamen Macian"
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:693
@@ -1850,7 +1850,7 @@ msgstr ""
 #: data/gui/default/window/mp_create_game.cfg:70
 #: data/gui/default/window/mp_create_game.cfg:85
 msgid "Name of game:"
-msgstr ""
+msgstr "Gamenes nama:"
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:148
@@ -1912,7 +1912,7 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:543
 msgid "Create game"
-msgstr ""
+msgstr "Gamen macian"
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
@@ -2017,7 +2017,7 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:223
 msgid "Select"
-msgstr ""
+msgstr "Ceosan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
@@ -2575,7 +2575,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:738
 msgid "infinite"
-msgstr ""
+msgstr "endeleas"
 
 #: src/game_preferences_display.cpp:923
 msgid "Chat Lines: "
@@ -3284,6 +3284,7 @@ msgid "Speak to Ally"
 msgstr ""
 
 #: src/hotkeys.cpp:198
+#, fuzzy
 msgid "Speak to All"
 msgstr "Sprecan to Eall"
 
@@ -3324,9 +3325,8 @@ msgid "Start tutorial"
 msgstr ""
 
 #: src/hotkeys.cpp:238
-#, fuzzy
 msgid "Start a campaign"
-msgstr "Anu fyrd styrtan"
+msgstr "Fyrd styrtan"
 
 #: src/hotkeys.cpp:245
 msgid "Start a multiplayer game"
