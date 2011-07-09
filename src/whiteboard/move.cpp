@@ -111,7 +111,7 @@ move::move(config const& cfg)
 
 	// Validate route_ some more
 	std::vector<map_location> const& steps = route_->steps;
-	if(steps.empty() || steps.front() != unit_->get_location())
+	if(steps.empty())
 		throw action::ctor_err("move: Invalid route_");
 
 	// Construct arrow_
