@@ -108,7 +108,7 @@ public class DependencyListBuilder implements Serializable
     public DependencyListNode addNode( IFile file )
     {
         DependencyListNode backupPrevious = previous_, newNode = null;
-        String fileProjectPath = file.getProjectRelativePath( ).toString( );
+        String fileProjectPath = file.getParent( ).getProjectRelativePath( ).toString( );
 
         // we add a file in an existing processed directory.
         if ( directories_.contains( fileProjectPath ) ) {
@@ -131,7 +131,7 @@ public class DependencyListBuilder implements Serializable
 
                     // we found the place?
                     if ( ResourceUtils.wmlFileNameCompare(
-                            fileName, tmpNode.getFile( ).getName( ) ) > 0 ) {
+                            tmpNode.getFile( ).getName( ), fileName  ) > 0 ) {
 
                         previous_ = tmpNode.getPrevious( );
 
