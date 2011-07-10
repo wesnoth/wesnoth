@@ -436,7 +436,7 @@ public class WMLTools
         if ( ! StringUtils.isNullOrEmpty( password ) )
         {
             arguments.add("-P"); //$NON-NLS-1$
-            arguments.add(Preferences.getString(Constants.P_WAU_PASSWORD));
+            arguments.add( password );
         }
 
         if (Preferences.getBool(Constants.P_WAU_VERBOSE) == true)
