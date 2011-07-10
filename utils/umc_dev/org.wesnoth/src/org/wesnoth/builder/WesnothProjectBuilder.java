@@ -190,8 +190,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                     else
                         nodesToProcess.add( newNode );
                 } else if ( deltaKind == IResourceDelta.CHANGED ) {
-                    //TODO: check if the included directories have changed their
-                    // order
                     DependencyListNode node = list.getNode( file );
                     if ( node == null )
                         Logger.getInstance( ).logError( "Couldn't find file "
@@ -268,6 +266,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 	protected boolean checkResource( IResource resource, IProgressMonitor monitor )
 	{
+	    if ( true )
+	        return true;
 		monitor.worked(5);
 		if ( resource.exists() == false ||
 			 monitor.isCanceled() )

@@ -13,14 +13,13 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.LinkedBlockingDeque;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -54,12 +53,20 @@ public class DependencyListBuilder implements Serializable
     private DependencyListNode previous_;
 
     protected Map< String, DependencyListNode > list_;
+
+    /**
+     * Holds a list of directories that are parsed in the WML order
+     * (that is, they don't have a _main.cfg in them) and
+     * the value is the first node in that directory existing in the list
+     */
     protected List< String > directories_;
+    protected List< DependencyListNode > directoriesEntries_;
 
     public DependencyListBuilder( IProject project )
     {
         list_ = new HashMap<String, DependencyListNode>();
         directories_ = new ArrayList<String>();
+        directoriesEntries_ = new ArrayList<DependencyListNode>();
 
         previous_ = null;
 
@@ -76,7 +83,7 @@ public class DependencyListBuilder implements Serializable
     public void createDependencyList( boolean force )
     {
         if ( isCreated_ && !force ) {
-            Logger.getInstance( ).log( " Skipping depedency list for project " +
+            Logger.getInstance( ).log( "Skipping depedency list for project " +
                     project_.getName( ) );
             return;
         }
@@ -85,175 +92,87 @@ public class DependencyListBuilder implements Serializable
         currentIndex_ = 0;
         previous_ = null;
         list_.clear( );
+        directories_.clear( );
+        directoriesEntries_.clear( );
 
-        // start creating the PDL (project dependency List)
-        Queue<IContainer> containers = new LinkedBlockingDeque<IContainer>( );
-
-        containers.add( project_ );
-
-        while( containers.isEmpty( ) == false ) {
-            IContainer container = containers.poll( );
-
-            IResource main_cfg = container.findMember( "_main.cfg" ); //$NON-NLS-1$
-            if ( main_cfg != null ) {
-                // add main.cfg to list
-                internal_addNode( (IFile) main_cfg );
-
-                Set<String> containersToAdd = getContainers( (IFile) main_cfg );
-                // push the containers in the queue
-                for ( String containerPath : containersToAdd ) {
-                    containers.offer( project_.getFolder( containerPath ) );
-                }
-
-            }else {
-                // no main.cfg, just follow WML reading rules
-
-                List<IResource> members = null;
-                try {
-                    members = Arrays.asList( container.members( ) );
-                }
-                catch ( CoreException e ) {
-                    Logger.getInstance( ).logException( e );
-
-                    continue;
-                }
-
-                Collections.sort( members, new WMLFilesComparator() );
-
-                if ( members.isEmpty( ) )
-                    continue;
-
-                previous_ = null;
-
-                for ( IResource resource : members ) {
-                    if ( resource instanceof IContainer )
-                        containers.add( (IContainer)resource );
-                    else {
-                        // just config files.
-                        if ( !ResourceUtils.isConfigFile( resource ) )
-                            continue;
-
-                        internal_addNode( ( IFile ) resource );
-                    }
-                }
-            }
-        }
+        internal_addContainer( null );
 
         System.out.println( toString( ) );
     }
 
-    public static Set<String> getContainers( IFile file )
-    {
-        IProject project = file.getProject( );
-        WMLRoot root = ResourceUtils.getWMLRoot( file );
-        // nothing to do
-        if ( root == null )
-            return new LinkedHashSet<String> ( 0 );
-
-        EList<WMLMacroCall> macroCalls = new BasicEList<WMLMacroCall>( );
-
-        // iterate to find macro calls
-        TreeIterator<EObject> treeItor = root.eAllContents( );
-
-        while ( treeItor.hasNext( ) ) {
-            EObject object = treeItor.next( );
-            if ( object instanceof WMLMacroCall ){
-                macroCalls.add( (WMLMacroCall) object );
-            }
-        }
-
-        // now check what macros are really an inclusion macro
-        Set<String> containersToAdd = new LinkedHashSet<String>( );
-
-        for ( WMLMacroCall macro : macroCalls ) {
-            String name = macro.getName( );
-
-            /**
-             * To include a folder the macro should be the following
-             * forms:
-             * - {campaigns/... }
-             * - {~add-ons/... }
-             *
-             */
-            //TODO: check for including a specific config file?
-
-            if ( ( name.equals( "campaigns" ) || //$NON-NLS-1$
-                 name.equals( "add-ons" ) ) && //$NON-NLS-1$
-                 // the call should contain just string values
-                 macro.getExtraMacros( ).isEmpty( ) &&
-                 macro.getParams( ).size( ) > 1 &&
-                 macro.getParams( ).get( 0 ).equals( "/" ) ) //$NON-NLS-1$
-            {
-                // check if the macro includes directories local
-                // to this project
-                String projectPath = project.getLocation( ).toOSString( );
-
-                if ( projectPath.contains( macro.getParams( ).get( 1 ) ) ) {
-                    containersToAdd.add(
-                        ListUtils.concatenateList(
-                           macro.getParams( ).subList( 2, macro.getParams( ).size( ) ), "" ) ); //$NON-NLS-1$
-                }
-            }
-        }
-
-        return containersToAdd;
-    }
-
+    /**
+     * Adds a new node in the PDL
+     * @param file The file to add
+     * @return The newly created node
+     */
     public DependencyListNode addNode( IFile file )
     {
-        // save current nodes
-        DependencyListNode previousBak = previous_, newNode = null ;
+        DependencyListNode backupPrevious = previous_, newNode = null;
+        String fileProjectPath = file.getProjectRelativePath( ).toString( );
 
-        // find the correct previous and parent to place the new node
-        String parentPath = file.getParent( ).getProjectRelativePath( ).
-            removeTrailingSeparator( ).toString( );
-        String fileName = file.getName( );
+        // we add a file in an existing processed directory.
+        if ( directories_.contains( fileProjectPath ) ) {
 
-        DependencyListNode root = getNode( ROOT_NODE_KEY );
+            int dirEntryIndex = directories_.indexOf( fileProjectPath );
 
-        while ( root != null ) {
+            /* TODO: check if the file is _main.cfg. If yes,
+             * all current nodes from this directory need to be erased
+             * and processed by the includes from other _main.cfg
+             */
+            DependencyListNode tmpNode = directoriesEntries_.get( dirEntryIndex );
 
-            if ( root.getFile( ).getParent( ).getProjectRelativePath( ).
-                    removeTrailingSeparator( ).toString( ).
-                    equals( parentPath.toString( ) ) ) {
+            // had any files in dir?
+            if ( tmpNode != null ) {
+                // search for the correct place in current dir
+                String fileName = file.getName( );
 
-                // found the directory. Now find the place
-                DependencyListNode leaf = root;
-                while ( leaf != null ) {
+                DependencyListNode prevTmpNode = null;
+                while ( tmpNode != null ) {
 
                     // we found the place?
                     if ( ResourceUtils.wmlFileNameCompare(
-                            fileName,
-                            leaf.getFile( ).getName( ) ) < 0 ) {
+                            fileName, tmpNode.getFile( ).getName( ) ) > 0 ) {
 
-                        previous_ = leaf.getPrevious( );
+                        previous_ = tmpNode.getPrevious( );
 
                         newNode = internal_addNode( file );
-
-                        // update links
-                        newNode.setNext( leaf );
-                        leaf.setPrevious( newNode );
                         break;
                     }
 
-                    leaf = leaf.getNext( );
+                    prevTmpNode = tmpNode;
+                    tmpNode = tmpNode.getNext( );
                 }
 
-                break;
+                // we arrived at the end
+                if ( newNode == null ) {
+                    previous_ = prevTmpNode;
+                    newNode = internal_addNode( file );
+                }
+            } else {
+
+                // previous_ should be the first non-null node in previous
+                // directories.
+
+                while ( dirEntryIndex > 0 && tmpNode == null ) {
+                    -- dirEntryIndex;
+                    tmpNode = directoriesEntries_.get( dirEntryIndex );
+                }
+
+                previous_ = tmpNode;
+                newNode = internal_addNode( file );
             }
 
-            root = root.getNext( );
+            // now, parse the file to check if we should include other dirs
+            internal_addContainers( getContainers( file ) );
+        } else {
+            // didn't found any place to put it. where shall we?
+
+            //TODO: the place should be dictated by other cfg,
+            // by getting the included directory
         }
 
-        // didn't found any place to put it. where shall we?
-        //TODO: the place should be dictated by other cfg,
-        // by getting the included directory
-        if ( newNode == null ) {
-
-        }
-
-        // restore nodes
-        previous_ = previousBak;
+        // restore old previous
+        previous_ = backupPrevious;
 
         // print the new list
         System.out.println( toString( ) );
@@ -261,8 +180,88 @@ public class DependencyListBuilder implements Serializable
     }
 
     /**
+     * Adds the containers and their contents to the list
+     * @param containerList The list of container paths
+     */
+    private void internal_addContainers( Collection<String> containerList )
+    {
+        for ( String container : containerList ) {
+            internal_addContainer( container );
+        }
+    }
+
+    /**
+     * Add the container and it's contents to the list
+     * @param containerPath The path of the container
+     */
+    private void internal_addContainer( String containerPath )
+    {
+        IContainer container = null ;
+        if ( containerPath == null )
+            container = project_;
+        else
+            container = project_.getFolder( containerPath );
+
+        IResource main_cfg = container.findMember( "_main.cfg" ); //$NON-NLS-1$
+        if ( main_cfg != null ) {
+            // add main.cfg to list
+            internal_addNode( (IFile) main_cfg );
+
+            // add any included containers
+            internal_addContainers( getContainers( (IFile) main_cfg ) );
+        }else {
+            List<IResource> members = null;
+            try {
+                members = Arrays.asList( container.members( ) );
+            }
+            catch ( CoreException e ) {
+                Logger.getInstance( ).logException( e );
+
+                return;
+            }
+
+            Collections.sort( members, new WMLFilesComparator() );
+
+            boolean toAddDirectoryEntry = false;
+            // no main.cfg, just follow WML reading rules
+            if ( ! directories_.contains( container.getProjectRelativePath( ).toString( ) ) ) {
+                directories_.add( container.getProjectRelativePath( ).toString( ) );
+                directoriesEntries_.add( null );
+
+                toAddDirectoryEntry = true;
+            }
+
+            if ( members.isEmpty( ) )
+                return;
+
+            DependencyListNode firstNewNode = null;
+
+            for ( IResource resource : members ) {
+                if ( resource instanceof IContainer )
+                    internal_addContainer( resource.getProjectRelativePath( ).toString( ) );
+                else {
+                    // just config files.
+                    if ( !ResourceUtils.isConfigFile( resource ) )
+                        continue;
+
+                    if ( firstNewNode != null )
+                        internal_addNode( ( IFile ) resource );
+                    else
+                        firstNewNode = internal_addNode( (IFile) resource );
+                }
+            }
+
+            if ( firstNewNode != null && toAddDirectoryEntry ) {
+                // update the first directory node
+                directoriesEntries_.set( directories_.size( ) - 1, firstNewNode );
+            }
+        }
+    }
+
+    /**
      * Adds a new node to this list
      * @param file The file to add
+     * @return The newly created node
      */
     private DependencyListNode internal_addNode( IFile file )
     {
@@ -327,6 +326,72 @@ public class DependencyListBuilder implements Serializable
             node.getNext( ).setPrevious( node.getPrevious( ) );
 
         list_.remove( file.getProjectRelativePath( ).toString( ) );
+
+        //debug
+        System.out.println( toString( ) );
+    }
+
+    /**
+     * Gets the set of included containers in this file
+     * as a macro call
+     * @param file The file to get the containers from
+     * @return A set of containers represented by their Path as string
+     */
+    public static Set<String> getContainers( IFile file )
+    {
+        IProject project = file.getProject( );
+        WMLRoot root = ResourceUtils.getWMLRoot( file );
+        // nothing to do
+        if ( root == null )
+            return new LinkedHashSet<String> ( 0 );
+
+        EList<WMLMacroCall> macroCalls = new BasicEList<WMLMacroCall>( );
+
+        // iterate to find macro calls
+        TreeIterator<EObject> treeItor = root.eAllContents( );
+
+        while ( treeItor.hasNext( ) ) {
+            EObject object = treeItor.next( );
+            if ( object instanceof WMLMacroCall ){
+                macroCalls.add( (WMLMacroCall) object );
+            }
+        }
+
+        // now check what macros are really an inclusion macro
+        Set<String> containersToAdd = new LinkedHashSet<String>( );
+
+        for ( WMLMacroCall macro : macroCalls ) {
+            String name = macro.getName( );
+
+            /**
+             * To include a folder the macro should be the following
+             * forms:
+             * - {campaigns/... }
+             * - {~add-ons/... }
+             *
+             */
+            //TODO: check for including a specific config file?
+
+            if ( ( name.equals( "campaigns" ) || //$NON-NLS-1$
+                 name.equals( "add-ons" ) ) && //$NON-NLS-1$
+                 // the call should contain just string values
+                 macro.getExtraMacros( ).isEmpty( ) &&
+                 macro.getParams( ).size( ) > 1 &&
+                 macro.getParams( ).get( 0 ).equals( "/" ) ) //$NON-NLS-1$
+            {
+                // check if the macro includes directories local
+                // to this project
+                String projectPath = project.getLocation( ).toOSString( );
+
+                if ( projectPath.contains( macro.getParams( ).get( 1 ) ) ) {
+                    containersToAdd.add(
+                        ListUtils.concatenateList(
+                           macro.getParams( ).subList( 2, macro.getParams( ).size( ) ), "" ) ); //$NON-NLS-1$
+                }
+            }
+        }
+
+        return containersToAdd;
     }
 
     /**
