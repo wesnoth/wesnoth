@@ -337,6 +337,8 @@ public class AddonsView extends ViewPart
                                         addon[5] } );
 
                             }
+
+                            tableAddons_.forceFocus( );
                         }
                     } );
                     loading_ = false;
