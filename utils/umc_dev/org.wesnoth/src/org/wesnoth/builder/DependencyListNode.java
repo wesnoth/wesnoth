@@ -82,7 +82,7 @@ public class DependencyListNode implements Serializable
      * Sets a new index for this node
      * @param index The index to set
      */
-    public void setIndex( int index )
+    protected void setIndex( int index )
     {
         index_ = index;
 

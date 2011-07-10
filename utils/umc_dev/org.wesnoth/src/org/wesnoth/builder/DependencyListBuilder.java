@@ -266,15 +266,41 @@ public class DependencyListBuilder implements Serializable
      */
     private DependencyListNode internal_addNode( IFile file )
     {
-        DependencyListNode newNode = new DependencyListNode( file, currentIndex_ );
-        currentIndex_ += DependencyListNode.INDEX_STEP;
+        DependencyListNode newNode = new DependencyListNode( file, -1 );
 
         if ( previous_ != null ){
+
+            // inserting is done between 2 nodes
+            if ( previous_.getNext( ) != null ){
+                newNode.setIndex(
+                        (previous_.getIndex( ) +
+                         previous_.getNext( ).getIndex( )) / 2 );
+
+                newNode.setNext( previous_.getNext( ) );
+                previous_.getNext( ).setPrevious( newNode );
+            } else {
+                newNode.setIndex( currentIndex_ );
+                currentIndex_ += DependencyListNode.INDEX_STEP;
+            }
+
             previous_.setNext( newNode );
             newNode.setPrevious( previous_ );
         } else {
             // no previous yet (== null)
             // so we're making this the root node for this list
+
+            // check if we had a previous root node
+            DependencyListNode root = list_.get( ROOT_NODE_KEY );
+            if ( root != null ) {
+                root.setPrevious( newNode );
+                newNode.setNext( root );
+
+                newNode.setIndex( root.getIndex( ) - DependencyListNode.INDEX_STEP );
+            } else {
+                newNode.setIndex( currentIndex_ );
+                currentIndex_ += DependencyListNode.INDEX_STEP;
+            }
+
             list_.put( ROOT_NODE_KEY, newNode ); //$NON-NLS-1$
         }
 
