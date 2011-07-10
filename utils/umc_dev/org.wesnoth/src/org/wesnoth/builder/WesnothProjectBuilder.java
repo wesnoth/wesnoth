@@ -163,6 +163,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
     {
         boolean foundCfg = false;
 
+        //TODO: unprocessed files should be reprocessed on each build
+        // until they get so.
+
         DependencyListBuilder list = projectCache_.getDependencyList( );
         Queue<IResourceDelta> deltasQueue = new LinkedBlockingDeque<IResourceDelta>();
         List< DependencyListNode > nodesToProcess = new ArrayList<DependencyListNode>();

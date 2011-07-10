@@ -60,13 +60,19 @@ public class DependencyListBuilder implements Serializable
      * the value is the first node in that directory existing in the list
      */
     protected List< String > directories_;
-    protected List< DependencyListNode > directoriesEntries_;
+    protected List< ListDirectoryEntry > directoriesEntries_;
+
+    protected List< String > removedDirectories_;
+    protected List< ListDirectoryEntry > removedDirectoriesEntries_;
 
     public DependencyListBuilder( IProject project )
     {
         list_ = new HashMap<String, DependencyListNode>();
         directories_ = new ArrayList<String>();
-        directoriesEntries_ = new ArrayList<DependencyListNode>();
+        removedDirectories_ = new ArrayList<String>();
+
+        directoriesEntries_ = new ArrayList<ListDirectoryEntry>();
+        removedDirectoriesEntries_ = new ArrayList<ListDirectoryEntry>();
 
         previous_ = null;
 
@@ -108,14 +114,15 @@ public class DependencyListBuilder implements Serializable
     public DependencyListNode addNode( IFile file )
     {
         DependencyListNode backupPrevious = previous_, newNode = null;
-        String fileProjectPath = file.getParent( ).getProjectRelativePath( ).toString( );
+        String fileParentProjectPath = file.getParent( ).getProjectRelativePath( ).toString( );
 
         // we add a file in an existing processed directory.
-        if ( directories_.contains( fileProjectPath ) ) {
+        if ( directories_.contains( fileParentProjectPath ) ) {
 
-            int dirEntryIndex = directories_.indexOf( fileProjectPath );
+            int dirEntryIndex = directories_.indexOf( fileParentProjectPath );
 
-            DependencyListNode tmpNode = directoriesEntries_.get( dirEntryIndex );
+            ListDirectoryEntry entry = directoriesEntries_.get( dirEntryIndex );
+            DependencyListNode tmpNode = entry.Node;
 
             // had any files in dir?
             if ( tmpNode != null ) {
@@ -130,15 +137,18 @@ public class DependencyListBuilder implements Serializable
                     // save the previous
                     previous_ = tmpNode.getPrevious( );
 
-                    // now delete all next nodes that are in the same folder
+                    // now delete all nodes that are in the same folder
                     while ( tmpNode != null &&
                             tmpNode.getFile( ).getParent().
-                            getProjectRelativePath( ).toString().equals( fileProjectPath ) ) {
+                            getProjectRelativePath( ).toString().equals( fileParentProjectPath ) ) {
                         removeNode( tmpNode );
                         tmpNode = tmpNode.getNext( );
                     }
 
                     // clear the directories entry since we can't use it anymore
+                    removedDirectories_.add( fileParentProjectPath );
+                    removedDirectoriesEntries_.add( directoriesEntries_.get( dirEntryIndex ) );
+
                     directories_.remove( dirEntryIndex );
                     directoriesEntries_.remove( dirEntryIndex );
 
@@ -176,7 +186,7 @@ public class DependencyListBuilder implements Serializable
 
                 while ( dirEntryIndex > 0 && tmpNode == null ) {
                     -- dirEntryIndex;
-                    tmpNode = directoriesEntries_.get( dirEntryIndex );
+                    tmpNode = directoriesEntries_.get( dirEntryIndex ).Node;
                 }
 
                 previous_ = tmpNode;
@@ -231,6 +241,7 @@ public class DependencyListBuilder implements Serializable
             // add any included containers
             internal_addContainers( getContainers( (IFile) main_cfg ) );
         }else {
+            // no main.cfg, just follow WML reading rules
             List<IResource> members = null;
             try {
                 members = Arrays.asList( container.members( ) );
@@ -244,12 +255,15 @@ public class DependencyListBuilder implements Serializable
             Collections.sort( members, new WMLFilesComparator() );
 
             boolean toAddDirectoryEntry = false;
-            // no main.cfg, just follow WML reading rules
-            if ( ! directories_.contains( container.getProjectRelativePath( ).toString( ) ) ) {
-                directories_.add( container.getProjectRelativePath( ).toString( ) );
-                directoriesEntries_.add( null );
+            if ( ! directories_.contains( containerPath ) ) {
+                directories_.add( containerPath );
+                directoriesEntries_.add( new ListDirectoryEntry( containerPath, null ) );
 
                 toAddDirectoryEntry = true;
+            } else {
+                // update the includes
+                directoriesEntries_.get( directoriesEntries_.indexOf( containerPath ) )
+                    .Includes ++ ;
             }
 
             if ( members.isEmpty( ) )
@@ -272,9 +286,23 @@ public class DependencyListBuilder implements Serializable
                 }
             }
 
-            if ( firstNewNode != null && toAddDirectoryEntry ) {
-                // update the first directory node
-                directoriesEntries_.set( directories_.size( ) - 1, firstNewNode );
+            if ( firstNewNode != null ) {
+                if ( toAddDirectoryEntry ) {
+                    // update the first directory node
+                    directoriesEntries_.set( directories_.size( ) - 1,
+                            new ListDirectoryEntry( containerPath, firstNewNode ));
+                } else {
+                    // maybe we need to update the first dir node, if that
+                    // should be before the current one, or it is null
+
+                    ListDirectoryEntry entry = directoriesEntries_.get(
+                            directories_.indexOf( containerPath ) );
+                    if ( entry.Node == null ||
+                         ( entry.Node != null &&
+                         firstNewNode.getIndex( ) < entry.Node.getIndex( ) ) ) {
+                        entry.Node = firstNewNode;
+                    }
+                }
             }
         }
     }
@@ -352,14 +380,30 @@ public class DependencyListBuilder implements Serializable
         if ( node == null )
             return;
 
-        //TODO: removing a _main.cfg, should allow adding other non _main.cfg
-        // to the list
         if ( node.getPrevious( ) != null )
             node.getPrevious( ).setNext( node.getNext( ) );
         if ( node.getNext( ) != null )
             node.getNext( ).setPrevious( node.getPrevious( ) );
 
+        String fileParentProjectPath = node.getFile( ).getParent( ).getProjectRelativePath( ).toString( );
+
         list_.remove( node.getFile( ).getProjectRelativePath( ).toString( ) );
+
+        // removing a _main.cfg. Check if we previously had a directories_
+        // entry, and restore it then, along with existing nodes.
+        if ( node.getFile( ).getName( ).equals( "_main.cfg" ) &&
+             removedDirectories_.contains( fileParentProjectPath ) ) {
+            DependencyListNode backNode = previous_;
+
+            previous_ = node.getPrevious( );
+            internal_addContainer( fileParentProjectPath );
+
+            int index = removedDirectories_.indexOf( fileParentProjectPath );
+            removedDirectories_.remove( index );
+            removedDirectoriesEntries_.remove( index );
+
+            previous_ = backNode;
+        }
 
         //debug
         System.out.println( "After removal: " + toString( ) );
@@ -410,7 +454,7 @@ public class DependencyListBuilder implements Serializable
                  name.equals( "add-ons" ) ) && //$NON-NLS-1$
                  // the call should contain just string values
                  macro.getExtraMacros( ).isEmpty( ) &&
-                 macro.getParams( ).size( ) > 1 &&
+                 macro.getParams( ).size( ) > 2 &&
                  macro.getParams( ).get( 0 ).equals( "/" ) ) //$NON-NLS-1$
             {
                 // check if the macro includes directories local
@@ -420,7 +464,7 @@ public class DependencyListBuilder implements Serializable
                 if ( projectPath.contains( macro.getParams( ).get( 1 ) ) ) {
                     containersToAdd.add(
                         ListUtils.concatenateList(
-                           macro.getParams( ).subList( 2, macro.getParams( ).size( ) ), "" ) ); //$NON-NLS-1$
+                           macro.getParams( ).subList( 3, macro.getParams( ).size( ) ), "" ) ); //$NON-NLS-1$
                 }
             }
         }
@@ -502,5 +546,36 @@ public class DependencyListBuilder implements Serializable
         }
 
         return str.toString( );
+    }
+
+    /**
+     * The class that represents the entry in the list of included directories
+     *
+     */
+    protected static class ListDirectoryEntry implements Serializable
+    {
+        private static final long serialVersionUID = 4721697818923147755L;
+
+        /**
+         * The project relative path of the directory
+         */
+        public String Name;
+
+        /**
+         * The first node in this directory existing in the list
+         */
+        public DependencyListNode Node;
+
+        /**
+         * Numbers of times this directory is included.
+         */
+        public int Includes;
+
+        public ListDirectoryEntry( String name, DependencyListNode node)
+        {
+            Name = name;
+            Node = node;
+            Includes = 1;
+        }
     }
 }
