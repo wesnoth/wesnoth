@@ -21,7 +21,7 @@ import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
-import org.wesnoth.builder.DependencyTreeBuilder;
+import org.wesnoth.builder.DependencyListBuilder;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preprocessor.Define;
 import org.wesnoth.preprocessor.PreprocessorUtils;
@@ -49,7 +49,7 @@ public class ProjectCache
 
 	private Map< String, ConfigFile > configFiles_;
 	private Map< String, Define > defines_;
-	private DependencyTreeBuilder dependTree_;
+	private DependencyListBuilder dependTree_;
 
 	private IProject project_;
 
@@ -60,7 +60,7 @@ public class ProjectCache
 		configFiles_ = new HashMap<String, ConfigFile>();
 		defines_ = new HashMap<String, Define>(0);
 
-		dependTree_ = new DependencyTreeBuilder( project_ );
+		dependTree_ = new DependencyListBuilder( project_ );
 
 		propertiesTimetamp_ = 0;
 		properties_ = new DialogSettings("project"); //$NON-NLS-1$
@@ -292,7 +292,7 @@ public class ProjectCache
 	 * Returns the current dependency tree builder for this project
 	 * @return A dependency tree
 	 */
-	public DependencyTreeBuilder getDependencyTree()
+	public DependencyListBuilder getDependencyList()
     {
         return dependTree_;
     }

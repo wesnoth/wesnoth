@@ -46,14 +46,15 @@ import org.wesnoth.wml.core.ConfigFile;
 
 /**
  * The builder does the following steps in order to create and ensure
- * a correct PDT (Project Dependency Tree)
+ * a correct PDL (Project Dependency Lits)
  *
- * 1) remove REMOVED files from the PDT
+ * 1) remove REMOVED files from the PDL
  * 2) parse ADDED or CHANGED files, to check if new directory/file includes
  * happened
- * 3) add new dependencies to the tree
- */
+ * 3) add new dependencies to the list
+ *
 //TODO: what happens if a file changes the order of the includes?
+ */
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
     private ProjectCache projectCache_;
@@ -80,8 +81,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			return null;
 		monitor.worked(5);
 
-		monitor.subTask( "Creating the project tree ..." );
-        projectCache_.getDependencyTree( ).createDependencyTree( false );
+		monitor.subTask( "Creating the project list ..." );
+        projectCache_.getDependencyList( ).createDependencyList( false );
         monitor.worked( 10 );
 
 		// create the temporary directory used by the plugin if not created
@@ -128,33 +129,22 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
      */
     protected boolean fullBuild(final IProgressMonitor monitor) throws CoreException
     {
-        projectCache_.getDependencyTree( ).createDependencyTree( true );
+        projectCache_.getDependencyList( ).createDependencyList( true );
 
         boolean foundCfg = false;
 
-        ProjectDependencyNode node = null, leaf = null;
+        DependencyListNode node = null;
 
-        node = projectCache_.getDependencyTree( ).getNode(
-                DependencyTreeBuilder.ROOT_NODE_KEY );
+        node = projectCache_.getDependencyList( ).getNode( DependencyListBuilder.ROOT_NODE_KEY );
 
         if ( node != null ) {
 
-            // going downwards the tree
             do {
-                leaf = node;
+                foundCfg = true;
 
-                // going right the current branch
-                do {
-                    foundCfg = true;
-
-                    // process the leaf
-                    checkResource( leaf.getFile( ), monitor );
-
-                    leaf = leaf.getNext( );
-                }while ( leaf != null );
-
-
-                node = node.getSon( );
+                // process the node
+                checkResource( node.getFile( ), monitor );
+                node = node.getNext( );
             } while ( node != null );
         }
 
@@ -173,9 +163,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
     {
         boolean foundCfg = false;
 
-        DependencyTreeBuilder tree = projectCache_.getDependencyTree( );
+        DependencyListBuilder list = projectCache_.getDependencyList( );
         Queue<IResourceDelta> deltasQueue = new LinkedBlockingDeque<IResourceDelta>();
-        List< ProjectDependencyNode > nodesToProcess = new ArrayList<ProjectDependencyNode>();
+        List< DependencyListNode > nodesToProcess = new ArrayList<DependencyListNode>();
 
         // gather the list of configs modified
         deltasQueue.add( delta );
@@ -190,22 +180,22 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                 int deltaKind = deltaItem.getKind( );
 
                 if ( deltaKind == IResourceDelta.REMOVED ) {
-                    projectCache_.getDependencyTree( ).removeNode( file );
+                    projectCache_.getDependencyList( ).removeNode( file );
                     projectCache_.getConfigs().remove( file.getName() );
                 } else if ( deltaKind == IResourceDelta.ADDED  ){
-                    ProjectDependencyNode newNode = tree.addNode( file );
+                    DependencyListNode newNode = list.addNode( file );
                     if ( newNode == null )
                         Logger.getInstance( ).logError( "Couldn't create a new" +
-                        		"PDT node for file: " + file.getFullPath( ).toString( ) );
+                        		"PDL node for file: " + file.getFullPath( ).toString( ) );
                     else
                         nodesToProcess.add( newNode );
                 } else if ( deltaKind == IResourceDelta.CHANGED ) {
                     //TODO: check if the included directories have changed their
                     // order
-                    ProjectDependencyNode node = tree.getNode( file );
+                    DependencyListNode node = list.getNode( file );
                     if ( node == null )
                         Logger.getInstance( ).logError( "Couldn't find file "
-                                + file.getFullPath( ).toString( ) + " in PDT!." );
+                                + file.getFullPath( ).toString( ) + " in PDL!." );
                     else
                         nodesToProcess.add( node );
                 } else {
@@ -217,10 +207,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         }
 
         // sort the list by index (ascending)
-        Collections.sort( nodesToProcess, new Comparator<ProjectDependencyNode> () {
+        Collections.sort( nodesToProcess, new Comparator<DependencyListNode> () {
 
             @Override
-            public int compare( ProjectDependencyNode o1, ProjectDependencyNode o2 )
+            public int compare( DependencyListNode o1, DependencyListNode o2 )
             {
                 if ( o1.getIndex( ) < o2.getIndex( ) )
                     return -1;
@@ -233,7 +223,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
         foundCfg = ( !nodesToProcess.isEmpty( ) );
         // process nodes
-        for ( ProjectDependencyNode node : nodesToProcess ) {
+        for ( DependencyListNode node : nodesToProcess ) {
             checkResource( node.getFile( ), monitor );
         }
 

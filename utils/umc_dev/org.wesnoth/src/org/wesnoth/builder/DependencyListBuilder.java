@@ -38,12 +38,12 @@ import org.wesnoth.utils.ResourceUtils.WMLFilesComparator;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
 
-public class DependencyTreeBuilder implements Serializable
+public class DependencyListBuilder implements Serializable
 {
     private static final long serialVersionUID = 6007509520015856611L;
     /**
-     * The key by which the rood node of the tree is memorized
-     * in the tree.
+     * The key by which the root node of the list is memorized
+     * in the list.
      */
     public static final String ROOT_NODE_KEY = "_ROOT_";
 
@@ -51,18 +51,17 @@ public class DependencyTreeBuilder implements Serializable
 
     protected boolean isCreated_;
     protected int currentIndex_;
-    private ProjectDependencyNode parent_;
-    private ProjectDependencyNode previous_;
+    private DependencyListNode previous_;
 
-    protected Map< String, ProjectDependencyNode > tree_;
+    protected Map< String, DependencyListNode > list_;
     protected List< String > directories_;
 
-    public DependencyTreeBuilder( IProject project )
+    public DependencyListBuilder( IProject project )
     {
-        tree_ = new HashMap<String, ProjectDependencyNode>();
+        list_ = new HashMap<String, DependencyListNode>();
         directories_ = new ArrayList<String>();
 
-        parent_ = previous_ = null;
+        previous_ = null;
 
         project_ = project;
         isCreated_ = false;
@@ -70,37 +69,34 @@ public class DependencyTreeBuilder implements Serializable
     }
 
     /**
-     * Create the whole dependency tree from scratch.
-     * @param force True for force re-creating the tree even if it
+     * Create the whole dependency list from scratch.
+     * @param force True for force re-creating the list even if it
      * was previously created
      */
-    public void createDependencyTree( boolean force )
+    public void createDependencyList( boolean force )
     {
         if ( isCreated_ && !force ) {
-            Logger.getInstance( ).log( " Skipping depedency tree for project " +
+            Logger.getInstance( ).log( " Skipping depedency list for project " +
                     project_.getName( ) );
             return;
         }
 
         isCreated_ = true;
         currentIndex_ = 0;
-        parent_ = previous_ = null;
-        tree_.clear( );
+        previous_ = null;
+        list_.clear( );
 
-        // start creating the PDT (project dependency tree)
+        // start creating the PDL (project dependency List)
         Queue<IContainer> containers = new LinkedBlockingDeque<IContainer>( );
 
         containers.add( project_ );
 
         while( containers.isEmpty( ) == false ) {
-
-            // each container should start a new "branch"
-            previous_ = null;
             IContainer container = containers.poll( );
 
             IResource main_cfg = container.findMember( "_main.cfg" ); //$NON-NLS-1$
             if ( main_cfg != null ) {
-                // add main.cfg to tree
+                // add main.cfg to list
                 internal_addNode( (IFile) main_cfg );
 
                 Set<String> containersToAdd = getContainers( (IFile) main_cfg );
@@ -203,18 +199,17 @@ public class DependencyTreeBuilder implements Serializable
         return containersToAdd;
     }
 
-    public ProjectDependencyNode addNode( IFile file )
+    public DependencyListNode addNode( IFile file )
     {
         // save current nodes
-        ProjectDependencyNode parentBak = parent_, previousBak = previous_, newNode = null ;
+        DependencyListNode previousBak = previous_, newNode = null ;
 
         // find the correct previous and parent to place the new node
         String parentPath = file.getParent( ).getProjectRelativePath( ).
             removeTrailingSeparator( ).toString( );
         String fileName = file.getName( );
 
-        ProjectDependencyNode root = getNode( ROOT_NODE_KEY );
-        parent_ = null;
+        DependencyListNode root = getNode( ROOT_NODE_KEY );
 
         while ( root != null ) {
 
@@ -223,7 +218,7 @@ public class DependencyTreeBuilder implements Serializable
                     equals( parentPath.toString( ) ) ) {
 
                 // found the directory. Now find the place
-                ProjectDependencyNode leaf = root;
+                DependencyListNode leaf = root;
                 while ( leaf != null ) {
 
                     // we found the place?
@@ -238,21 +233,6 @@ public class DependencyTreeBuilder implements Serializable
                         // update links
                         newNode.setNext( leaf );
                         leaf.setPrevious( newNode );
-
-                        if ( leaf.getSon( ) != null ){
-                            newNode.setSon( leaf.getSon( ) );
-                            leaf.getSon( ).setParent( newNode );
-
-                            leaf.setSon( null );
-                        }
-
-                        if ( leaf.getParent( ) != null ) {
-                            newNode.setParent( leaf.getParent( ) );
-                            leaf.getParent( ).setSon( newNode );
-
-                            leaf.setParent(  null );
-                        }
-
                         break;
                     }
 
@@ -262,8 +242,7 @@ public class DependencyTreeBuilder implements Serializable
                 break;
             }
 
-            parent_ = root;
-            root = root.getSon( );
+            root = root.getNext( );
         }
 
         // didn't found any place to put it. where shall we?
@@ -274,54 +253,45 @@ public class DependencyTreeBuilder implements Serializable
         }
 
         // restore nodes
-        parent_ = parentBak;
         previous_ = previousBak;
 
-        // print the new tree
+        // print the new list
         System.out.println( toString( ) );
         return newNode;
     }
 
     /**
-     * Adds a new node to this tree
+     * Adds a new node to this list
      * @param file The file to add
      */
-    private ProjectDependencyNode internal_addNode( IFile file )
+    private DependencyListNode internal_addNode( IFile file )
     {
-        ProjectDependencyNode newNode = new ProjectDependencyNode( file, currentIndex_ );
-        currentIndex_ += ProjectDependencyNode.INDEX_STEP;
+        DependencyListNode newNode = new DependencyListNode( file, currentIndex_ );
+        currentIndex_ += DependencyListNode.INDEX_STEP;
 
         if ( previous_ != null ){
             previous_.setNext( newNode );
             newNode.setPrevious( previous_ );
         } else {
-            // first node in the current directory -> make it son of parent
-            if ( parent_ != null ) {
-                parent_.setSon( newNode );
-                newNode.setParent( parent_ );
-            } else {
-                // no parent yet (== null)
-                // so we're making this the root node for this tree
-                tree_.put( ROOT_NODE_KEY, newNode ); //$NON-NLS-1$
-            }
-
-            parent_ = newNode;
+            // no previous yet (== null)
+            // so we're making this the root node for this list
+            list_.put( ROOT_NODE_KEY, newNode ); //$NON-NLS-1$
         }
 
-        tree_.put( file.getProjectRelativePath( ).toString( ), newNode );
+        list_.put( file.getProjectRelativePath( ).toString( ), newNode );
         previous_ = newNode;
         return newNode;
     }
 
     /**
      * Removes a node specified by the file
-     * @param file The file to remove from the tree
+     * @param file The file to remove from the list
      */
     public void removeNode( IFile file )
     {
-        ProjectDependencyNode node = getNode( file );
+        DependencyListNode node = getNode( file );
 
-        // the node didn't even exist in the tree!?
+        // the node didn't even exist in the list!?
         if ( node == null )
             return;
 
@@ -330,17 +300,17 @@ public class DependencyTreeBuilder implements Serializable
         if ( node.getNext( ) != null )
             node.getNext( ).setPrevious( node.getPrevious( ) );
 
-        tree_.remove( file.getProjectRelativePath( ).toString( ) );
+        list_.remove( file.getProjectRelativePath( ).toString( ) );
     }
 
     /**
      * Returns the node specified by the file
      * @param file The file to get the depedency node for
-     * @return An instance of {@link ProjectDependencyNode}
+     * @return An instance of {@link DependencyListNode}
      */
-    public ProjectDependencyNode getNode( IFile file )
+    public DependencyListNode getNode( IFile file )
     {
-        return tree_.get( file.getProjectRelativePath( ).toString( ) );
+        return list_.get( file.getProjectRelativePath( ).toString( ) );
     }
 
     /**
@@ -348,15 +318,15 @@ public class DependencyTreeBuilder implements Serializable
      * usually project-relative paths for project's files, or
      * the {@link #ROOT_NODE_KEY}
      * @param key The key to get the node by
-     * @return An instance of {@link ProjectDependencyNode}
+     * @return An instance of {@link DependencyListNode}
      */
-    public ProjectDependencyNode getNode ( String key )
+    public DependencyListNode getNode ( String key )
     {
-        return tree_.get( key );
+        return list_.get( key );
     }
 
     /**
-     * Returns true if the tree was already created, false otherwise
+     * Returns true if the list was already created, false otherwise
      * @return A boolean value
      */
     public boolean getIsCreated()
@@ -372,18 +342,17 @@ public class DependencyTreeBuilder implements Serializable
      */
     public void deserialize( ObjectInputStream input ) throws IOException, ClassNotFoundException
     {
-        DependencyTreeBuilder tmp = (DependencyTreeBuilder) input.readObject( );
+        DependencyListBuilder tmp = (DependencyListBuilder) input.readObject( );
         if ( tmp == null )
             return;
 
         this.currentIndex_ = tmp.currentIndex_;
         this.isCreated_ = tmp.isCreated_;
-        this.tree_ = tmp.tree_;
+        this.list_ = tmp.list_;
         this.previous_ = tmp.previous_;
-        this.parent_ = tmp.parent_;
 
         // now, refill the dependency nodes
-        for ( ProjectDependencyNode node : tree_.values( ) ) {
+        for ( DependencyListNode node : list_.values( ) ) {
             node.file_ = project_.getFile( node.fileName_ );
         }
     }
@@ -392,20 +361,14 @@ public class DependencyTreeBuilder implements Serializable
     public String toString()
     {
         StringBuilder str = new StringBuilder( );
-        str.append( "tree: \n" ); //$NON-NLS-1$
-        if ( !tree_.isEmpty( ) ) {
-            ProjectDependencyNode node = tree_.get( ROOT_NODE_KEY );
+        str.append( "list: \n" ); //$NON-NLS-1$
+        if ( !list_.isEmpty( ) ) {
+            DependencyListNode node = list_.get( ROOT_NODE_KEY );
 
             do {
-                str.append( "> " ); //$NON-NLS-1$
-                ProjectDependencyNode leaf = node;
+                str.append( node + "; " ); //$NON-NLS-1$
 
-                do {
-                    str.append( leaf + "; " ); //$NON-NLS-1$
-                    leaf = leaf.getNext( );
-                } while ( leaf != null );
-
-                node = node.getSon( );
+                node = node.getNext( );
                 str.append( "\n" ); //$NON-NLS-1$
             }while ( node != null );
         }

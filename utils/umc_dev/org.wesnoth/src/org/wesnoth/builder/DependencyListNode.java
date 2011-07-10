@@ -19,14 +19,13 @@ import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 
 /**
- * This class represents a node
- * in the Project's Depedency tree,
+ * This class represents a node in the Project's Depedency list,
  * which is constructed on a full build of the project.
  *
- * Alternatively, a tree node is created
+ * Alternatively, a list node is created
  * when a new resource is added.
  */
-public class ProjectDependencyNode implements Serializable
+public class DependencyListNode implements Serializable
 {
     private static final long serialVersionUID = -9140173740211465384L;
 
@@ -39,13 +38,10 @@ public class ProjectDependencyNode implements Serializable
      */
     public static final int INDEX_STEP = 10000;
 
-    protected static final QualifiedName PDT_INDEX = new QualifiedName( Constants.PLUGIN_ID, "pdt_index" ); //$NON-NLS-1$
+    protected static final QualifiedName PDL_INDEX = new QualifiedName( Constants.PLUGIN_ID, "pdl_index" ); //$NON-NLS-1$
 
-    private ProjectDependencyNode previous_;
-    private ProjectDependencyNode next_;
-
-    private ProjectDependencyNode parent_;
-    private ProjectDependencyNode son_;
+    private DependencyListNode previous_;
+    private DependencyListNode next_;
 
     protected transient IFile file_;
     protected String fileName_;
@@ -53,9 +49,9 @@ public class ProjectDependencyNode implements Serializable
 
     private int index_;
 
-    public ProjectDependencyNode( IFile file, int index )
+    public DependencyListNode( IFile file, int index )
     {
-        previous_ = next_ = parent_ = son_ = null;
+        previous_ = next_ = null;
 
         includes_ = new ArrayList<String>();
 
@@ -74,7 +70,7 @@ public class ProjectDependencyNode implements Serializable
     }
 
     /**
-     * Returns the index of this node in the whole dependency tree node
+     * Returns the index of this node in the whole dependency list
      * @return
      */
     public int getIndex()
@@ -91,7 +87,7 @@ public class ProjectDependencyNode implements Serializable
         index_ = index;
 
         try {
-            file_.setPersistentProperty( PDT_INDEX, Integer.toString( index ) );
+            file_.setPersistentProperty( PDL_INDEX, Integer.toString( index ) );
         }
         catch ( CoreException e ) {
             Logger.getInstance( ).logException( e );
@@ -99,46 +95,10 @@ public class ProjectDependencyNode implements Serializable
     }
 
     /**
-     * Gets the parent of this node
-     * @return A node or null if there is no parent
-     */
-    public ProjectDependencyNode getParent()
-    {
-        return parent_;
-    }
-
-    /**
-     * Sets a new parent for this node
-     * @param parent The parent to set
-     */
-    public void setParent( ProjectDependencyNode parent )
-    {
-        parent_ = parent;
-    }
-
-    /**
-     * Gets the son of this node
-     * @return A node or null if there is no parent
-     */
-    public ProjectDependencyNode getSon()
-    {
-        return son_;
-    }
-
-    /**
-     * Sets a new son node for this node
-     * @param son The new son node to set
-     */
-    public void setSon( ProjectDependencyNode son )
-    {
-        son_ = son;
-    }
-
-    /**
      * Gets the node before the current node
      * @return A node or null if there is no parent
      */
-    public ProjectDependencyNode getPrevious()
+    public DependencyListNode getPrevious()
     {
         return previous_;
     }
@@ -147,7 +107,7 @@ public class ProjectDependencyNode implements Serializable
      * Sets a new previous node for this node
      * @param previous The new previous node to set
      */
-    public void setPrevious( ProjectDependencyNode previous )
+    public void setPrevious( DependencyListNode previous )
     {
         previous_ = previous;
     }
@@ -156,7 +116,7 @@ public class ProjectDependencyNode implements Serializable
      * Gets the node after the current node
      * @return A node or null if there is no parent
      */
-    public ProjectDependencyNode getNext()
+    public DependencyListNode getNext()
     {
         return next_;
     }
@@ -165,7 +125,7 @@ public class ProjectDependencyNode implements Serializable
      * Sets a new next node for this node
      * @param next The new next node to set
      */
-    public void setNext( ProjectDependencyNode next )
+    public void setNext( DependencyListNode next )
     {
         next_ = next;
     }
