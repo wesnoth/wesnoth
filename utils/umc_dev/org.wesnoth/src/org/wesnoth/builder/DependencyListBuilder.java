@@ -115,38 +115,59 @@ public class DependencyListBuilder implements Serializable
 
             int dirEntryIndex = directories_.indexOf( fileProjectPath );
 
-            /* TODO: check if the file is _main.cfg. If yes,
-             * all current nodes from this directory need to be erased
-             * and processed by the includes from other _main.cfg
-             */
             DependencyListNode tmpNode = directoriesEntries_.get( dirEntryIndex );
 
             // had any files in dir?
             if ( tmpNode != null ) {
-                // search for the correct place in current dir
                 String fileName = file.getName( );
 
-                DependencyListNode prevTmpNode = null;
-                while ( tmpNode != null ) {
+                /* check if the file is _main.cfg. If yes,
+                 * all current nodes from this directory need to be erased
+                 * and processed by the includes from other _main.cfg
+                 */
+                if ( fileName.equals( "_main.cfg" ) ) {
 
-                    // we found the place?
-                    if ( ResourceUtils.wmlFileNameCompare(
-                            tmpNode.getFile( ).getName( ), fileName  ) > 0 ) {
+                    // save the previous
+                    previous_ = tmpNode.getPrevious( );
 
-                        previous_ = tmpNode.getPrevious( );
-
-                        newNode = internal_addNode( file );
-                        break;
+                    // now delete all next nodes that are in the same folder
+                    while ( tmpNode != null &&
+                            tmpNode.getFile( ).getParent().
+                            getProjectRelativePath( ).toString().equals( fileProjectPath ) ) {
+                        removeNode( tmpNode );
+                        tmpNode = tmpNode.getNext( );
                     }
 
-                    prevTmpNode = tmpNode;
-                    tmpNode = tmpNode.getNext( );
-                }
+                    // clear the directories entry since we can't use it anymore
+                    directories_.remove( dirEntryIndex );
+                    directoriesEntries_.remove( dirEntryIndex );
 
-                // we arrived at the end
-                if ( newNode == null ) {
-                    previous_ = prevTmpNode;
+                    // create the node
                     newNode = internal_addNode( file );
+                } else {
+                    // search for the correct place in current dir
+                    DependencyListNode prevTmpNode = null;
+                    while ( tmpNode != null ) {
+
+                        // we found the place?
+                        if ( ResourceUtils.wmlFileNameCompare(
+                                tmpNode.getFile( ).getName( ), fileName  ) > 0 ) {
+
+                            previous_ = tmpNode.getPrevious( );
+
+                            newNode = internal_addNode( file );
+                            break;
+                        }
+
+                        prevTmpNode = tmpNode;
+                        tmpNode = tmpNode.getNext( );
+                    }
+
+                    // we arrived at the end
+                    if ( newNode == null ) {
+                        previous_ = prevTmpNode;
+                        newNode = internal_addNode( file );
+                    }
                 }
             } else {
 
@@ -314,21 +335,30 @@ public class DependencyListBuilder implements Serializable
      */
     public void removeNode( IFile file )
     {
-        DependencyListNode node = getNode( file );
+        removeNode( getNode( file ) );
+    }
 
+    /**
+     * Removes the specified node from the list
+     * @param node The node to remove from the list
+     */
+    public void removeNode( DependencyListNode node )
+    {
         // the node didn't even exist in the list!?
         if ( node == null )
             return;
 
+        //TODO: removing a _main.cfg, should allow adding other non _main.cfg
+        // to the list
         if ( node.getPrevious( ) != null )
             node.getPrevious( ).setNext( node.getNext( ) );
         if ( node.getNext( ) != null )
             node.getNext( ).setPrevious( node.getPrevious( ) );
 
-        list_.remove( file.getProjectRelativePath( ).toString( ) );
+        list_.remove( node.getFile( ).getProjectRelativePath( ).toString( ) );
 
         //debug
-        System.out.println( toString( ) );
+        System.out.println( "After removal: " + toString( ) );
     }
 
     /**
