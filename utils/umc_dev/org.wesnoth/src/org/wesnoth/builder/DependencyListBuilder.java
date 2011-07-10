@@ -151,7 +151,7 @@ public class DependencyListBuilder implements Serializable
 
                         // we found the place?
                         if ( ResourceUtils.wmlFileNameCompare(
-                                tmpNode.getFile( ).getName( ), fileName  ) > 0 ) {
+                                tmpNode.getFile( ).getName( ), fileName ) > 0 ) {
 
                             previous_ = tmpNode.getPrevious( );
 
@@ -292,9 +292,13 @@ public class DependencyListBuilder implements Serializable
 
             // inserting is done between 2 nodes
             if ( previous_.getNext( ) != null ){
-                newNode.setIndex(
-                        (previous_.getIndex( ) +
-                         previous_.getNext( ).getIndex( )) / 2 );
+                int newIndex = (previous_.getIndex( ) +
+                                previous_.getNext( ).getIndex( )) / 2;
+
+                if ( newIndex > previous_.getIndex( ) + DependencyListNode.INDEX_STEP )
+                    newIndex = previous_.getIndex( ) + DependencyListNode.INDEX_STEP ;
+
+                newNode.setIndex( newIndex);
 
                 newNode.setNext( previous_.getNext( ) );
                 previous_.getNext( ).setPrevious( newNode );
