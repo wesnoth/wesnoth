@@ -22,6 +22,8 @@ import org.wesnoth.jface.RegexStringFieldEditor;
 
 public class AddonUploadPreferencePage extends AbstractPreferencePage
 {
+    public final static String ID_ADDON_PREFERENCE_PAGE = "org.wesnoth.preferences.AddonPage"; //$NON-NLS-1$
+
     /**
      * Holds the ports for each addon server as a (key, value) pair,
      * where:

@@ -39,6 +39,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.part.ViewPart;
 import org.wesnoth.preferences.AddonUploadPreferencePage;
 import org.wesnoth.preferences.Preferences;
@@ -125,7 +126,17 @@ public class AddonsView extends ViewPart
             }
         });
         btnRefresh.setText("Refresh");
-        new Label(grpOptions, SWT.NONE);
+
+        Button btnOpenAddonManager = new Button(grpOptions, SWT.NONE);
+        btnOpenAddonManager.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                PreferencesUtil.createPreferenceDialogOn( getViewSite( ).getShell( ),
+                        AddonUploadPreferencePage.ID_ADDON_PREFERENCE_PAGE,
+                        null, null ).open( );
+            }
+        });
+        btnOpenAddonManager.setText("Open Addon Manager preferences");
 
         cmbAddonServer_.addSelectionListener( new SelectionAdapter( ) {
             @Override
