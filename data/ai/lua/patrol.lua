@@ -14,13 +14,20 @@ function patrol_gen(n, wp) 	-- n is the name of the unit, like Kiressh
 	--local waypoints = {w1, w2}	  -- this form might be just received from the args
 	local wpcount = # wp 
 
-	return 
-		function()
-			x, y = unit.x, unit.y
-			if (x == wp[wpn].x and y == wp[wpn].y) then
-				wpn = wpn % wpcount + 1 -- advance by one waypoint(this construct loops in range [1, wpcount])
-			end
-			ai.move_full(unit, wp[wpn].x, wp[wpn].y) -- @note: should we change this to ai.move()?
+	
+	local patrol = {}
+		
+	patrol.exec = function()
+		x, y = unit.x, unit.y
+		if (x == wp[wpn].x and y == wp[wpn].y) then
+			wpn = wpn % wpcount + 1 -- advance by one waypoint(this construct loops in range [1, wpcount])
 		end
+		ai.move_full(unit, wp[wpn].x, wp[wpn].y) -- @note: should we change this to ai.move()?
+	end
+	
+	patrol.eval = function()
+		return 300000
+	end
 
+	return patrol
 end
