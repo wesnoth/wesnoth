@@ -1924,6 +1924,9 @@ stringfixes = {
 
 # Fix another screw up
 ("monolith was erected by me, ——", "monolith was erected by me, ―"),
+
+# Eliminated a Britishism
+("a fight in their favour", "a fight in their favor")
 ),
 
 "wesnoth-tsg" : (
