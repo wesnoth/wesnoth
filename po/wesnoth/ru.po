@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-07-09 09:00+0200\n"
-"PO-Revision-Date: 2011-07-07 11:04+0200\n"
-"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
+"PO-Revision-Date: 2011-07-07 21:34+0300\n"
+"Last-Translator: Ushkin N\n"
 "Language-Team: ZumZoom\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -254,12 +254,12 @@ msgstr "замедлен"
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:43
 msgid "TestCamp"
-msgstr ""
+msgstr "ТестоваяКампания"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:45
 msgid "Test campaign used to check if new campaign syntax is working."
-msgstr ""
+msgstr "Тестовая кампания нужна для проверки работоспособности."
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:46
@@ -294,12 +294,12 @@ msgstr "Высший Лорд"
 #. [about]
 #: data/campaigns/test_campaign/_main.cfg:52
 msgid "Test campaign test [about] entry"
-msgstr ""
+msgstr "Тестовый сценарий, тестовое описание [about]"
 
 #. [scenario]: id=01_Grass
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:4
 msgid "Test campaign - first scenario (grass)"
-msgstr ""
+msgstr "Тестовая кампания - первый сценарий (трава)"
 
 #. [side]: id=Alpha, type=Elvish Fighter
 #. [side]: id=Bravo, type=Elvish Archer
@@ -316,12 +316,12 @@ msgstr "Враги"
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:73
 msgid "Passed test color"
-msgstr ""
+msgstr "Цвет успешно пройденного теста"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:80
 msgid "Failed test color"
-msgstr ""
+msgstr "Цвет проваленного теста"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
@@ -3665,11 +3665,19 @@ msgid "All add-ons updated successfully."
 msgstr "Все аддоны обновлены успешно"
 
 #: src/addon/manager.cpp:1100
+#, fuzzy
+#| msgid ""
+#| "It looks as if you are the author of '$addon|'. Downloading '$addon|' may "
+#| "overwrite any changes you have made since the last upload and may delete "
+#| "your pbl file. Do you really want to continue ?"
 msgid ""
 "You seem to be the author of '$addon|'. Downloading '$addon|' may overwrite "
 "any changes you have made since the last upload and may delete your pbl "
 "file. Do you really wish to continue?"
 msgstr ""
+"Похоже, Вы автор '$addon|'. Если Вы скачаете '$addon|', он может стереть все "
+"изменения с момента последней загрузки на сервер, а также удалить pbl-файл. "
+"Вы действительно хотите продолжить?"
 
 #: src/addon/manager.cpp:1103 src/addon/manager.cpp:1409
 #: src/multiplayer.cpp:263
@@ -4053,7 +4061,7 @@ msgstr "Инфо: "
 
 #: src/game_events.cpp:2188
 msgid "Invalid value in the result key for [end_level]"
-msgstr ""
+msgstr "Неверное значение ключа [end_level]"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:205 src/multiplayer_lobby.cpp:447
 msgid "Unknown era: $era_id"
@@ -4130,7 +4138,7 @@ msgstr "В списке игнора"
 
 #: src/gui/dialogs/lobby_player_info.cpp:139
 msgid "Neither a friend nor ignored"
-msgstr "Не френд и не из игнора"
+msgstr "Не друг и не из игнора"
 
 #: src/gui/dialogs/lobby_player_info.cpp:144
 msgid "You"
