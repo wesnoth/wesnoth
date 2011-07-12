@@ -402,7 +402,8 @@ void move::set_valid(bool valid)
 		valid_ = valid;
 		if(valid_)
 			set_arrow_texture(ARROW_TEXTURE_VALID);
-		else set_arrow_texture(ARROW_TEXTURE_INVALID);
+		else
+			set_arrow_texture(ARROW_TEXTURE_INVALID);
 	}
 }
 
