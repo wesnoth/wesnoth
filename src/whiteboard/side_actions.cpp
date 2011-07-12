@@ -202,7 +202,7 @@ bool side_actions::execute(side_actions::iterator position)
 		throw;
 	}
 
-	resources::whiteboard->clear_undo(); //< Disable undo for actions executed via the whiteboard
+	resources::whiteboard->possibly_clear_undo();
 
 	if (finished)
 	{

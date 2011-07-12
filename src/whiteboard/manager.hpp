@@ -154,8 +154,12 @@ public:
 	/// Is referenced by the top bar gold display
 	int get_spent_gold_for(int side);
 
-	/// Simply clears the undo_stack and redo_stack
-	void clear_undo();
+	/**
+	 * Clears the undo_stack and redo_stack if the whiteboard is on.
+	 * @todo Add other conditions where it won't get cleared, such as preferences option
+	 * and when player has no network allies.
+	 */
+	void possibly_clear_undo();
 
 private:
 	void validate_actions_if_needed();

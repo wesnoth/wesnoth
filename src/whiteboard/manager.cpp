@@ -132,7 +132,7 @@ void manager::set_active(bool active)
 
 		if (active_)
 		{
-			clear_undo(); //< Clear undo stack when activating whiteboard mode
+			possibly_clear_undo();
 			validate_viewer_actions();
 			LOG_WB << "Whiteboard activated! " << *viewer_actions() << "\n";
 			create_temp_move();
@@ -767,10 +767,13 @@ void manager::validate_actions_if_needed()
 	}
 }
 
-void manager::clear_undo()
+void manager::possibly_clear_undo()
 {
-	resources::undo_stack->clear();
-	resources::redo_stack->clear();
+	if(is_active())
+	{
+		resources::undo_stack->clear();
+		resources::redo_stack->clear();
+	}
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map():
