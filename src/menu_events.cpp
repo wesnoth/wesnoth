@@ -1054,7 +1054,9 @@ void menu_handler::undo(int side_num)
 	const events::command_disabler disable_commands;
 	team &current_team = teams_[side_num - 1];
 
-	undo_action& action = resources::undo_stack->back();
+	resources::redo_stack->push_back(resources::undo_stack->back());
+	resources::undo_stack->pop_back();
+	undo_action& action = resources::redo_stack->back();
 	if (action.is_dismiss()) {
 		//undo a dismissal
 
@@ -1135,14 +1137,16 @@ void menu_handler::undo(int side_num)
 
 		action.starting_moves = u->movement_left();
 
-		unit_display::move_unit(route, *u, teams_, true, action.starting_dir);
+		undo_action action_copy(action);
+
+		unit_display::move_unit(route, *u, teams_, true, action_copy.starting_dir);
 
 		units_.move(u->get_location(), route.back());
 		unit::clear_status_caches();
 
 		u = units_.find(route.back());
 		u->set_goto(map_location());
-		std::swap(u->waypoints(), action.waypoints);
+		std::swap(u->waypoints(), action_copy.waypoints);
 		u->set_movement(starting_moves);
 		u->set_standing();
 
@@ -1153,9 +1157,6 @@ void menu_handler::undo(int side_num)
 
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
-
-	resources::redo_stack->push_back(action);
-	resources::undo_stack->pop_back();
 
 	recorder.undo();
 
@@ -1176,7 +1177,9 @@ void menu_handler::redo(int side_num)
 	const events::command_disabler disable_commands;
 	team &current_team = teams_[side_num - 1];
 
-	undo_action& action = resources::redo_stack->back();
+	resources::undo_stack->push_back(resources::redo_stack->back());
+	resources::redo_stack->pop_back();
+	undo_action& action = resources::undo_stack->back();
 	if (action.is_dismiss()) {
 		if(!current_team.persistent()) {
 			ERR_NG << "trying to redo a dismiss for side " << side_num
@@ -1275,21 +1278,23 @@ void menu_handler::redo(int side_num)
 
 		action.starting_moves = u->movement_left();
 
+		undo_action action_copy(action);
+
 		unit_display::move_unit(route, *u, teams_);
 
 		units_.move(u->get_location(), route.back());
 		u = units_.find(route.back());
 
 		unit::clear_status_caches();
-		u->set_goto(action.affected_unit.get_goto());
-		std::swap(u->waypoints(), action.waypoints);
+		u->set_goto(action_copy.affected_unit.get_goto());
+		std::swap(u->waypoints(), action_copy.waypoints);
 		u->set_movement(starting_moves);
 		u->set_standing();
 
 		if(map_.is_village(route.back())) {
 			get_village(route.back(), u->side());
 			//MP_COUNTDOWN restore capture bonus
-			if(action.countdown_time_bonus)
+			if(action_copy.countdown_time_bonus)
 			{
 				current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 			}
@@ -1299,13 +1304,10 @@ void menu_handler::redo(int side_num)
 		resources::whiteboard->on_gamestate_change();
 		gui_->draw();
 
-		recorder.add_movement(action.route);
+		recorder.add_movement(action_copy.route);
 	}
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
-
-	resources::undo_stack->push_back(action);
-	resources::redo_stack->pop_back();
 }
 
 bool menu_handler::clear_shroud(int side_num)
