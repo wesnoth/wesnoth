@@ -141,7 +141,7 @@ public:
 	 * Queues a suppose_dead to be executed last
 	 * @return The queued suppose_dead's position (an iterator to it)
 	 */
-	iterator queue_suppose_dead(unit& curr_unit);
+	iterator queue_suppose_dead(unit& curr_unit, map_location const& loc);
 
 	/**
 	 * Inserts an action at the specified position. The begin() and end() functions might prove useful here.

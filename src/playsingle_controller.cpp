@@ -245,8 +245,13 @@ void playsingle_controller::whiteboard_bump_down_action()
 
 void playsingle_controller::whiteboard_suppose_dead()
 {
-	wb::scoped_planned_unit_map spum;
-	whiteboard_manager_->save_suppose_dead(*menu_handler_.current_unit());
+	unit_map::iterator curr_unit;
+	map_location loc;
+	{ wb::scoped_planned_unit_map raii;
+		curr_unit = menu_handler_.current_unit();
+		loc = curr_unit->get_location();
+	}
+	whiteboard_manager_->save_suppose_dead(*curr_unit,loc);
 }
 
 void playsingle_controller::report_victory(

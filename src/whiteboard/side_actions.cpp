@@ -254,10 +254,10 @@ side_actions::iterator side_actions::queue_recall(const unit& unit, const map_lo
 	return queue_action(new_recall);
 }
 
-side_actions::iterator side_actions::queue_suppose_dead(unit& curr_unit)
+side_actions::iterator side_actions::queue_suppose_dead(unit& curr_unit, map_location const& loc)
 {
 	suppose_dead_ptr new_suppose_dead;
-	new_suppose_dead.reset(new suppose_dead(team_index(),curr_unit));
+	new_suppose_dead.reset(new suppose_dead(team_index(),curr_unit,loc));
 	return queue_action(new_suppose_dead);
 }
 

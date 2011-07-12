@@ -60,11 +60,11 @@ namespace wb
 		return s;
 	}
 
-	suppose_dead::suppose_dead(size_t team_index, unit& curr_unit)
+	suppose_dead::suppose_dead(size_t team_index, unit& curr_unit, map_location const& loc)
 	: action(team_index)
 	, unit_(&curr_unit)
 	, unit_id_(curr_unit.id())
-	, loc_(curr_unit.get_location())
+	, loc_(loc)
 	, valid_(true)
 	{
 		this->init();

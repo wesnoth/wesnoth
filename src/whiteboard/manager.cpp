@@ -612,11 +612,11 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 	return created_planned_recall;
 }
 
-void manager::save_suppose_dead(unit& curr_unit)
+void manager::save_suppose_dead(unit& curr_unit, map_location const& loc)
 {
 	if(active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
-		viewer_actions()->queue_suppose_dead(curr_unit);
+		viewer_actions()->queue_suppose_dead(curr_unit,loc);
 		on_save_action();
 	}
 }

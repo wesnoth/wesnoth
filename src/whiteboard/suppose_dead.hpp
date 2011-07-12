@@ -37,8 +37,7 @@ namespace wb {
 		friend class highlight_visitor;
 
 	public:
-		///Future unit map must be valid during construction, so that suppose_dead can find its unit
-		suppose_dead(size_t team_index, unit& curr_unit);
+		suppose_dead(size_t team_index, unit& curr_unit, map_location const& loc);
 		explicit suppose_dead(config const&); // For deserialization
 		virtual ~suppose_dead();
 
