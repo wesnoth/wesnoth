@@ -20,6 +20,8 @@
 #ifndef WB_MAPBUILDER_VISITOR_HPP_
 #define WB_MAPBUILDER_VISITOR_HPP_
 
+#include <boost/ptr_container/ptr_vector.hpp>
+
 #include "visitor.hpp"
 
 #include "action.hpp"
@@ -76,7 +78,7 @@ protected:
 	mapbuilder_mode mode_;
 
 	//Used by reset_moves()
-	std::vector<boost::shared_ptr<unit_movement_resetter> > resetters_;
+	boost::ptr_vector<unit_movement_resetter> resetters_;
 };
 
 }

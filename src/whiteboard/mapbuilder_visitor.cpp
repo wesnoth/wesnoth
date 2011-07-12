@@ -57,10 +57,7 @@ void mapbuilder_visitor::reset_moves()
 	foreach(unit& u, *resources::units)
 	{
 		if(u.side() != current_side)
-		{
-			boost::shared_ptr<unit_movement_resetter> temp(new unit_movement_resetter(u));
-			resetters_.push_back(temp);
-		}
+			resetters_.push_back(new unit_movement_resetter(u));
 	}
 }
 
