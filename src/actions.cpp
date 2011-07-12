@@ -2661,6 +2661,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 						starting_waypoints, starting_moves,
 						action_time_bonus, orig_village_owner, orig_dir));
 		}
+		resources::whiteboard->possibly_clear_undo();
 	}
 
 	bool redraw = false;
