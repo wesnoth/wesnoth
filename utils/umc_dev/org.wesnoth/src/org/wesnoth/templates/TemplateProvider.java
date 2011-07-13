@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,7 @@ import java.util.regex.Pattern;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.utils.Pair;
+import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 
 
@@ -37,11 +39,34 @@ public class TemplateProvider
 
 	private final Map<String, String>	templates_	= new HashMap<String, String>();
 
+	private final Map<String, List<String>> cacs_ = new HashMap<String, List<String>>();
+
 	private TemplateProvider(){
 	    loadTemplates();
+	    loadCACs();
 	}
 
-	public static  TemplateProvider getInstance()
+	/**
+     * Loads the Content Assist Config files from the file system
+     */
+    public void loadCACs()
+    {
+        cacs_.clear( );
+        try{
+            File varsFile = new File( Constants.PLUGIN_FULL_PATH + "/templates/cac/variables.txt" );
+            cacs_.put( "variable", Arrays.asList( StringUtils.getLines(
+                    ResourceUtils.getFileContents( varsFile, true, true ) ) ) );
+
+            File eventsFile = new File( Constants.PLUGIN_FULL_PATH + "/templates/cac/events.txt" );
+            cacs_.put( "events", Arrays.asList( StringUtils.getLines(
+                    ResourceUtils.getFileContents( eventsFile, true, true ) ) ) );
+        } catch (Exception e) {
+            Logger.getInstance( ).logException( e );
+        }
+
+    }
+
+    public static  TemplateProvider getInstance()
 	{
 		return TemplateProviderInstance.instance_;
 	}
@@ -51,6 +76,7 @@ public class TemplateProvider
 	 */
 	public void loadTemplates()
 	{
+	    templates_.clear( );
 		try
 		{
 			Logger.getInstance().log("reading templates from: " + //$NON-NLS-1$
@@ -66,14 +92,17 @@ public class TemplateProvider
 			while ((line = reader.readLine()) != null)
 			{
 				// comment
-				if (line.startsWith("#") || line.matches("^[\t ]*$")) //$NON-NLS-1$ //$NON-NLS-2$
+				if (line.startsWith("#") || line.isEmpty( )) //$NON-NLS-1$
 					continue;
 
 				// 0 - template name | 1 - template file
 				String[] tokensStrings = line.split(" "); //$NON-NLS-1$
 
-				if (tokensStrings.length != 2)
+				if (tokensStrings.length != 2) {
+				    Logger.getInstance( ).logWarn( "TemplateIndex line " + line
+				            + "is not properly formatted" );
 					continue;
+				}
 
 				content.setLength(0);
 
@@ -156,9 +185,25 @@ public class TemplateProvider
 	 */
 	public String getTemplate(String name)
 	{
-		if (templates_.get(name) == null)
+	    String result = templates_.get( name );
+		if ( result == null )
 			return ""; //$NON-NLS-1$
-		return templates_.get(name);
+		return result;
+	}
+
+	/**
+	 * Gets the Content Assist Config list for the specified type
+	 * @param type The type of the CAC
+	 * @return A list of String values
+	 */
+	public List<String> getCAC( String type )
+	{
+	    List<String> result = cacs_.get( type );
+
+	    if ( result == null )
+	        return new ArrayList<String>( 0 );
+
+	    return result;
 	}
 
 	/**

@@ -97,6 +97,45 @@ public class ResourceUtils
 		}
 	}
 
+	public static String getFileContents( File file, boolean skipEmptyLines,
+	        boolean skipCommentLines )
+	{
+        if (!file.exists() || !file.isFile())
+            return ""; //$NON-NLS-1$
+
+        StringBuilder contentsString = new StringBuilder();
+        BufferedReader reader = null;
+        try
+        {
+            String line = ""; //$NON-NLS-1$
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+            while ((line = reader.readLine()) != null)
+            {
+                if ( skipEmptyLines && line.isEmpty( ) )
+                    continue;
+
+                if ( skipCommentLines && StringUtils.startsWith( line, "#" ) )
+                    continue;
+
+                contentsString.append(line + "\n"); //$NON-NLS-1$
+            }
+        } catch (IOException e)
+        {
+            Logger.getInstance().logException(e);
+        } finally
+        {
+            try
+            {
+                if (reader!= null)
+                    reader.close();
+            } catch (Exception e)
+            {
+                Logger.getInstance().logException(e);
+            }
+        }
+        return contentsString.toString();
+	}
+
 	/**
 	 * Gets the contents as string of the specified file
 	 * @param file The file
@@ -104,34 +143,7 @@ public class ResourceUtils
 	 */
 	public static String getFileContents(File file)
 	{
-		if (!file.exists() || !file.isFile())
-			return ""; //$NON-NLS-1$
-
-		StringBuilder contentsString = new StringBuilder();
-		BufferedReader reader = null;
-		try
-		{
-			String line = ""; //$NON-NLS-1$
-			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-			while ((line = reader.readLine()) != null)
-			{
-				contentsString.append(line + "\n"); //$NON-NLS-1$
-			}
-		} catch (IOException e)
-		{
-			Logger.getInstance().logException(e);
-		} finally
-		{
-			try
-			{
-				if (reader!= null)
-					reader.close();
-			} catch (Exception e)
-			{
-				Logger.getInstance().logException(e);
-			}
-		}
-		return contentsString.toString();
+	    return getFileContents( file, false, false );
 	}
 
 	/**
