@@ -20,8 +20,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -36,6 +38,9 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -50,6 +55,7 @@ import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
+import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -530,6 +536,70 @@ public class ResourceUtils
 
         return ( WMLRoot ) result;
 	}
+
+    /**
+     * Gets the set of included containers in this file
+     * as a macro call
+     * @param file The file to get the containers from
+     * @return A set of containers represented by their Path as string
+     */
+    public static Set<String> getContainers( IFile file )
+    {
+        IProject project = file.getProject( );
+        WMLRoot root = ResourceUtils.getWMLRoot( file );
+        // nothing to do
+        if ( root == null )
+            return new LinkedHashSet<String> ( 0 );
+
+        EList<WMLMacroCall> macroCalls = new BasicEList<WMLMacroCall>( );
+
+        // iterate to find macro calls
+        TreeIterator<EObject> treeItor = root.eAllContents( );
+
+        while ( treeItor.hasNext( ) ) {
+            EObject object = treeItor.next( );
+            if ( object instanceof WMLMacroCall ){
+                macroCalls.add( (WMLMacroCall) object );
+            }
+        }
+
+        // now check what macros are really an inclusion macro
+        Set<String> containersToAdd = new LinkedHashSet<String>( );
+
+        for ( WMLMacroCall macro : macroCalls ) {
+            String name = macro.getName( );
+
+            /**
+             * To include a folder the macro should be the following
+             * forms:
+             * - {campaigns/... }
+             * - {~add-ons/... }
+             *
+             */
+            //TODO: check for including a specific config file?
+
+            if ( ( name.equals( "campaigns" ) || //$NON-NLS-1$
+                 name.equals( "add-ons" ) ) && //$NON-NLS-1$
+                 // the call should contain just string values
+                 macro.getExtraMacros( ).isEmpty( ) &&
+                 macro.getParams( ).size( ) > 2 &&
+                 macro.getParams( ).get( 0 ).equals( "/" ) ) //$NON-NLS-1$
+            {
+                // check if the macro includes directories local
+                // to this project
+                String projectPath = project.getLocation( ).toOSString( );
+
+                if ( projectPath.contains( macro.getParams( ).get( 1 ) ) ) {
+                    containersToAdd.add(
+                        ListUtils.concatenateList(
+                           macro.getParams( ).subList( 3, macro.getParams( ).size( ) ), "" ) ); //$NON-NLS-1$
+                }
+            }
+        }
+
+        return containersToAdd;
+    }
+
 
     /**
      * This is a WML files comparator, based on the WML parsing rules.

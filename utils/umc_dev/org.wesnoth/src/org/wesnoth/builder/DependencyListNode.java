@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.QualifiedName;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.utils.ResourceUtils;
 
 /**
  * This class represents a node in the Project's Depedency list,
@@ -34,9 +35,9 @@ public class DependencyListNode implements Serializable
      * Since int it's on 4 bytes, it can hold values between
      * -2,147,483,648 and 2,147,483,647.
      *
-     * With an increment of 10k, we could have 2*214,748 config files.
+     * With an increment of 100k, we could have 2 * 21,474 config files.
      */
-    public static final int INDEX_STEP = 10000;
+    public static final int INDEX_STEP = 100000;
 
     protected static final QualifiedName PDL_INDEX = new QualifiedName( Constants.PLUGIN_ID, "pdl_index" ); //$NON-NLS-1$
 
@@ -67,6 +68,21 @@ public class DependencyListNode implements Serializable
     public IFile getFile()
     {
         return file_;
+    }
+
+    /**
+     * Gets the includes from this node
+     * @param refresh True to force reloading the current file and return
+     * the newly parsed ones
+     * @return A set with string paths for included directories
+     */
+    public List<String> getIncludes ( boolean refresh )
+    {
+        if ( includes_ == null || refresh ) {
+            includes_ = new ArrayList<String>( ResourceUtils.getContainers( file_ ) );
+        }
+
+        return includes_;
     }
 
     /**

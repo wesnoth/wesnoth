@@ -52,8 +52,6 @@ import org.wesnoth.wml.core.ConfigFile;
  * 2) parse ADDED or CHANGED files, to check if new directory/file includes
  * happened
  * 3) add new dependencies to the list
- *
-//TODO: what happens if a file changes the order of the includes?
  */
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
@@ -90,10 +88,13 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		WorkspaceUtils.getTemporaryFolder();
 		monitor.worked(2);
 
+
 		if ( runAntJob(paths, monitor ) == false )
 		    return null;
 
 		boolean readDefines = false;
+
+		monitor.subTask( "Build started..." );
 
 		if (kind == FULL_BUILD)
 			readDefines = fullBuild(monitor);
@@ -185,20 +186,27 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                 if ( deltaKind == IResourceDelta.REMOVED ) {
                     projectCache_.getDependencyList( ).removeNode( file );
                     projectCache_.getConfigs().remove( file.getProjectRelativePath( ).toString( ) );
+
+                    //debug
+                    System.out.println( "After removal: " + list.toString( ) );
                 } else if ( deltaKind == IResourceDelta.ADDED  ){
                     DependencyListNode newNode = list.addNode( file );
                     if ( newNode == null )
                         Logger.getInstance( ).logError( "Couldn't create a new" +
                         		"PDL node for file: " + file.getFullPath( ).toString( ) );
-                    else
+                    else {
+                        System.out.println( list.toString( ) );
                         nodesToProcess.add( newNode );
+                    }
                 } else if ( deltaKind == IResourceDelta.CHANGED ) {
                     DependencyListNode node = list.getNode( file );
                     if ( node == null )
                         Logger.getInstance( ).logError( "Couldn't find file "
                                 + file.getFullPath( ).toString( ) + " in PDL!." );
-                    else
+                    else {
                         nodesToProcess.add( node );
+                        list.updateNode( node );
+                    }
                 } else {
                     Logger.getInstance( ).log( "unknown delta kind: " + deltaKind );
                 }
