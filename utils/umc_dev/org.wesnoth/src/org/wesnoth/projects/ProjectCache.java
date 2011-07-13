@@ -156,7 +156,6 @@ public class ProjectCache
 		return properties_;
 	}
 
-	//TODO: memorize the full project-relative path for the config file!
 	/**
 	 * Gets the map with the Configs
 	 * The key represent the filenames of the files

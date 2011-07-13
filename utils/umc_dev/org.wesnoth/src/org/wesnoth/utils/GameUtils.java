@@ -75,7 +75,7 @@ public class GameUtils
 
 			if (scenario == true && selectedResource instanceof IFile)
 				scenarioId = ProjectUtils.getCacheForProject(selectedResource.getProject()).
-				    getConfig(selectedResource.getName()).ScenarioId;
+				    getConfig(selectedResource.getProjectRelativePath( ).toString( )).ScenarioId;
 
 			if (campaignId == null)
 			{

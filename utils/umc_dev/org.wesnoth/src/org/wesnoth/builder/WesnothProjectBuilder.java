@@ -184,7 +184,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
                 if ( deltaKind == IResourceDelta.REMOVED ) {
                     projectCache_.getDependencyList( ).removeNode( file );
-                    projectCache_.getConfigs().remove( file.getName() );
+                    projectCache_.getConfigs().remove( file.getProjectRelativePath( ).toString( ) );
                 } else if ( deltaKind == IResourceDelta.ADDED  ){
                     DependencyListNode newNode = list.addNode( file );
                     if ( newNode == null )
@@ -281,14 +281,14 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		     !isResourceIgnored( resource ) )
 		{
             IFile file = (IFile) resource;
-            String fileName = file.getName( );
+            String filePath = file.getProjectRelativePath( ).toString( );
             String macrosFilePath = PreprocessorUtils.getInstance( ).getDefinesLocation( file );
 
-			Logger.getInstance().log( "Resource: " + fileName ); //$NON-NLS-1$
+			Logger.getInstance().log( "Resource: " + filePath ); //$NON-NLS-1$
 
 			try
 			{
-				monitor.subTask( String.format( Messages.WesnothProjectBuilder_19 ,fileName ) );
+				monitor.subTask( String.format( Messages.WesnothProjectBuilder_19 ,filePath ) );
 
 				List<String> defines = new ArrayList<String>();
 				// parse the core only if we don't have any macros file
@@ -299,7 +299,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				PreprocessorUtils.getInstance().preprocessFile(file, macrosFilePath, defines);
 				monitor.worked(5);
 
-				monitor.subTask( String.format( Messages.WesnothProjectBuilder_22, fileName ) );
+				monitor.subTask( String.format( Messages.WesnothProjectBuilder_22, filePath ) );
 
 				WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
 					getWMLSAXHandlerFromResource(
@@ -309,17 +309,17 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				if (handler != null)
 				{
 					ConfigFile cfg = handler.getConfigFile();
-					projectCache_.getConfigs().put( fileName, cfg);
+					projectCache_.getConfigs().put( file.getProjectRelativePath( ).toString( ), cfg);
 					if (cfg.IsScenario)
 					{
 						if ( StringUtils.isNullOrEmpty( cfg.ScenarioId ) )
 						{
 							Logger.getInstance().log("added scenarioId [" + cfg.ScenarioId + //$NON-NLS-1$
-									"] for file: " + fileName ); //$NON-NLS-1$
+									"] for file: " + filePath ); //$NON-NLS-1$
 						}
 						else
 						{
-						    projectCache_.getConfigs().remove( fileName );
+						    projectCache_.getConfigs().remove( filePath );
 						}
 					}
 				}
