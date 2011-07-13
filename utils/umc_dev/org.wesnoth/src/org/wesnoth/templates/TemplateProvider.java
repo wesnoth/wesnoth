@@ -46,15 +46,21 @@ public class TemplateProvider
 	    loadCACs();
 	}
 
-	/**
+    public static TemplateProvider getInstance()
+	{
+		return TemplateProviderInstance.instance_;
+	}
+
+    /**
      * Loads the Content Assist Config files from the file system
      */
     public void loadCACs()
     {
         cacs_.clear( );
+
         try{
             File varsFile = new File( Constants.PLUGIN_FULL_PATH + "/templates/cac/variables.txt" );
-            cacs_.put( "variable", Arrays.asList( StringUtils.getLines(
+            cacs_.put( "variables", Arrays.asList( StringUtils.getLines(
                     ResourceUtils.getFileContents( varsFile, true, true ) ) ) );
 
             File eventsFile = new File( Constants.PLUGIN_FULL_PATH + "/templates/cac/events.txt" );
@@ -63,13 +69,7 @@ public class TemplateProvider
         } catch (Exception e) {
             Logger.getInstance( ).logException( e );
         }
-
     }
-
-    public static  TemplateProvider getInstance()
-	{
-		return TemplateProviderInstance.instance_;
-	}
 
 	/**
 	 * Loads the templates from the file system
