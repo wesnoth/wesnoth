@@ -225,6 +225,7 @@ public class ProjectCache
 			propertiesTimetamp_ = wesnothFile_.lastModified();
 
             // save the PDT tree
+			ResourceUtils.createNewFile( treeCacheFile_.getAbsolutePath( ) );
             FileOutputStream outStream = new FileOutputStream( treeCacheFile_ );
             ObjectOutputStream serializer = new ObjectOutputStream( outStream );
             serializer.writeObject( dependTree_ );
