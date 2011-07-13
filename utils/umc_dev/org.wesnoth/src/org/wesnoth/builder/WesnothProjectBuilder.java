@@ -187,15 +187,12 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                     projectCache_.getDependencyList( ).removeNode( file );
                     projectCache_.getConfigs().remove( file.getProjectRelativePath( ).toString( ) );
 
-                    //debug
-                    System.out.println( "After removal: " + list.toString( ) );
                 } else if ( deltaKind == IResourceDelta.ADDED  ){
                     DependencyListNode newNode = list.addNode( file );
                     if ( newNode == null )
                         Logger.getInstance( ).logError( "Couldn't create a new" +
                         		"PDL node for file: " + file.getFullPath( ).toString( ) );
                     else {
-                        System.out.println( list.toString( ) );
                         nodesToProcess.add( newNode );
                     }
                 } else if ( deltaKind == IResourceDelta.CHANGED ) {

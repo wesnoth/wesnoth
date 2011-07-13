@@ -89,8 +89,6 @@ public class DependencyListBuilder implements Serializable
         directoriesEntries_.clear( );
 
         internal_addContainer( project_.getProjectRelativePath( ).toString( ) );
-
-        System.out.println( toString( ) );
     }
 
     /**
@@ -545,7 +543,6 @@ public class DependencyListBuilder implements Serializable
                 ++prevIndex;
             }
         }
-        System.out.println( toString( ) );
     }
 
     /**
