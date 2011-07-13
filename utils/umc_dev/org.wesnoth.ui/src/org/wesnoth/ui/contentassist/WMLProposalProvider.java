@@ -8,6 +8,7 @@
  *******************************************************************************/
 package org.wesnoth.ui.contentassist;
 
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IFile;
@@ -29,6 +30,7 @@ import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.schema.Tag;
 import org.wesnoth.schema.TagKey;
+import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
@@ -37,9 +39,7 @@ import org.wesnoth.utils.WMLGrammarUtils;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.core.ConfigFile;
-import org.wesnoth.wml.impl.WmlFactoryImpl;
 
-@SuppressWarnings("unused")
 public class WMLProposalProvider extends AbstractWMLProposalProvider
 {
     protected SchemaParser schemaParser_;
@@ -49,6 +49,11 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     protected static final int KEY_NAME_PRIORITY = 1500;
     protected static final int TAG_PRIORITY = 1000;
     protected static final int MACRO_CALL_PRIORITY = 100;
+
+    private static Image MACRO_CALL_IMAGE = null;
+    private static Image SCENARIO_VALUE_IMAGE = null;
+    private static Image WML_KEY_IMAGE = null;
+    private static Image WML_TAG_IMAGE = null;
 
 	/**
 	 * For priorities, see:
@@ -60,6 +65,11 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	public WMLProposalProvider()
 	{
 		super();
+
+		MACRO_CALL_IMAGE = WMLLabelProvider.getImageByName("macrocall.png");
+		SCENARIO_VALUE_IMAGE = WMLLabelProvider.getImageByName("scenario.png");
+		WML_KEY_IMAGE = WMLLabelProvider.getImageByName("wmlkey.png");
+		WML_TAG_IMAGE = WMLLabelProvider.getImageByName("wmltag.png");
 	}
 
 	/**
@@ -154,67 +164,69 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			proposal.append("}"); //$NON-NLS-1$
 
 			acceptor.accept(createCompletionProposal(proposal.toString(), define.getKey(),
-					WMLLabelProvider.getImageByName("macrocall.png"), context, MACRO_CALL_PRIORITY)); //$NON-NLS-1$
+					MACRO_CALL_IMAGE, context, MACRO_CALL_PRIORITY)); //$NON-NLS-1$
 		}
 	}
 
-	/**
-	 * Adss the wml key's names proposals
-	 * @param model
-	 * @param context
-	 * @param acceptor
-	 */
 	private void addKeyValueProposals(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
-		if (model != null && model instanceof WMLKey)
-		{
-			dbg(model);
-			WMLKey key = (WMLKey)model;
+		if ( model == null || !( model instanceof WMLKey ) )
+		    return;
+		dbg(model);
+		WMLKey key = (WMLKey)model;
+		String keyName = key.getName( );
 
-			// handle the next_scenario and first_scenario
-			if (key.getName().equals("next_scenario") || //$NON-NLS-1$
-				key.getName().equals("first_scenario")) //$NON-NLS-1$
+		// handle the next_scenario and first_scenario
+		if ( keyName.equals("next_scenario") || //$NON-NLS-1$
+			 keyName.equals("first_scenario")) //$NON-NLS-1$
+		{
+			for(ConfigFile config : projectCache_.getConfigs().values())
 			{
-				for(ConfigFile config : projectCache_.getConfigs().values())
-				{
-					if (StringUtils.isNullOrEmpty( config.ScenarioId ))
-						continue;
-					acceptor.accept(createCompletionProposal(config.ScenarioId,
-							config.ScenarioId, WMLLabelProvider.getImageByName("scenario.png"), //$NON-NLS-1$
-							context, KEY_VALUE_PRIORITY));
-				}
+				if (StringUtils.isNullOrEmpty( config.ScenarioId ))
+					continue;
+				acceptor.accept(createCompletionProposal(config.ScenarioId,
+						config.ScenarioId, SCENARIO_VALUE_IMAGE, //$NON-NLS-1$
+						context, KEY_VALUE_PRIORITY));
 			}
-			else
-			{
-				if (model.eContainer() != null &&
-					model.eContainer() instanceof WMLTag)
-				{
-					WMLTag parent = (WMLTag) model.eContainer();
-					Tag tag = schemaParser_.getTags().get(parent.getName());
-					if (tag != null)
-					{
-						TagKey tagKey = tag.getChildKey(key.getName());
-						if (tagKey.isEnum())
-						{
-							String[] values = tagKey.getValue().split(","); //$NON-NLS-1$
-							for(String val : values)
-							{
-								acceptor.accept(createCompletionProposal(val, context, 1700));
-							}
-						}
-					}
-				}
-			}
+		}
+		else if (model.eContainer() != null && model.eContainer() instanceof WMLTag)
+		{
+		    WMLTag parent = (WMLTag) model.eContainer();
+		    String tagName = parent.getName();
+		    Tag tag = schemaParser_.getTags().get( tagName );
+		    if (tag != null)
+		    {
+		        TagKey tagKey = tag.getChildKey( keyName );
+		        if (tagKey.isEnum())
+		        {
+		            String[] values = tagKey.getValue().split(","); //$NON-NLS-1$
+		            for(String val : values)
+		            {
+		                acceptor.accept(createCompletionProposal(val, context, KEY_VALUE_PRIORITY));
+		            }
+		        }
+		    }
+
+		    if ( ( tagName.equals( "event" ) || tagName.equals( "fire_event" ) )
+		            && keyName.equals( "name" ) ) {
+		        // add events
+		        List<String> events = TemplateProvider.getInstance( ).getCAC( "events" );
+
+		        for ( String event : events ) {
+		            acceptor.accept( createCompletionProposal( event, context ) );
+		        }
+		    } else {
+		        // add variables
+		        List<String> variables = TemplateProvider.getInstance( ).getCAC( "variables" );
+
+		        for ( String variable : variables ) {
+		            acceptor.accept( createCompletionProposal( "$" + variable, context ) );
+		        }
+		    }
 		}
 	}
 
-	/**
-	 * Adss the wml key's names proposals
-	 * @param model
-	 * @param context
-	 * @param acceptor
-	 */
 	private void addKeyNameProposals(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
@@ -242,27 +254,20 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 					{
 						// don't suggest already completed keys
 						for( WMLKey eKey: WMLGrammarUtils.getTagKeys( tag ) )
-							if (eKey.getName().equals(key.getName()))
+							if (eKey.getName().equals(key.getName())) {
 								found = true;
+								break;
+							}
 					}
 
 					if (found == false)
 						acceptor.accept(createCompletionProposal(key.getName() + "=", //$NON-NLS-1$
-							key.getName(),
-							getImage(WmlFactoryImpl.eINSTANCE.getWmlPackage().getWMLKey()),
-							context, KEY_NAME_PRIORITY));
+							key.getName(), WML_KEY_IMAGE, context, KEY_NAME_PRIORITY));
 				}
 			}
 		}
 	}
 
-	/**
-	 * Adds the tag proposals
-	 * @param model
-	 * @param ruleProposal
-	 * @param context
-	 * @param acceptor
-	 */
 	private void addTagProposals(EObject model, boolean ruleProposal,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
@@ -353,8 +358,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		}
 		proposal.append(String.format("%s[/%s]",indent, tag.getName())); //$NON-NLS-1$
 		return createCompletionProposal(proposal.toString(), tag.getName(),
-					getImage(WmlFactoryImpl.eINSTANCE.getWmlPackage().getWMLTag()),
-					context, TAG_PRIORITY);
+		        WML_TAG_IMAGE, context, TAG_PRIORITY);
 	}
 
 	private ICompletionProposal createCompletionProposal(String proposal,
@@ -362,12 +366,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	{
 		return createCompletionProposal(proposal, null, null, priority,
 				context.getPrefix(), context);
-	}
-
-	private ICompletionProposal createCompletionProposal(String proposal, String displayString,
-					ContentAssistContext context)
-	{
-		return createCompletionProposal(proposal, displayString, null, context);
 	}
 
 	public ICompletionProposal createCompletionProposal(String proposal, String displayString, Image image,
@@ -381,7 +379,8 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	 * Method for debugging the auto completion
 	 * @param str
 	 */
-	private void dbg(Object str)
+	@SuppressWarnings( "unused" )
+    private void dbg(Object str)
 	{
 		if (!(WMLUiModule.DEBUG))
 			return;
