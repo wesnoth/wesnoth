@@ -274,8 +274,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 	protected boolean checkResource( IResource resource, IProgressMonitor monitor )
 	{
-	    if ( true )
-	        return true;
 		monitor.worked(5);
 		if ( resource.exists() == false ||
 			 monitor.isCanceled() )
