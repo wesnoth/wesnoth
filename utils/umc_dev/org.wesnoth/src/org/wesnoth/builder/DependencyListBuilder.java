@@ -34,6 +34,7 @@ import org.wesnoth.Logger;
 import org.wesnoth.utils.ListUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.ResourceUtils.WMLFilesComparator;
+import org.wesnoth.utils.StringUtils;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
 
@@ -62,17 +63,12 @@ public class DependencyListBuilder implements Serializable
     protected List< String > directories_;
     protected List< ListDirectoryEntry > directoriesEntries_;
 
-    protected List< String > removedDirectories_;
-    protected List< ListDirectoryEntry > removedDirectoriesEntries_;
-
     public DependencyListBuilder( IProject project )
     {
         list_ = new HashMap<String, DependencyListNode>();
         directories_ = new ArrayList<String>();
-        removedDirectories_ = new ArrayList<String>();
 
         directoriesEntries_ = new ArrayList<ListDirectoryEntry>();
-        removedDirectoriesEntries_ = new ArrayList<ListDirectoryEntry>();
 
         previous_ = null;
 
@@ -101,7 +97,7 @@ public class DependencyListBuilder implements Serializable
         directories_.clear( );
         directoriesEntries_.clear( );
 
-        internal_addContainer( null );
+        internal_addContainer( project_.getProjectRelativePath( ).toString( ) );
 
         System.out.println( toString( ) );
     }
@@ -146,9 +142,6 @@ public class DependencyListBuilder implements Serializable
                     }
 
                     // clear the directories entry since we can't use it anymore
-                    removedDirectories_.add( fileParentProjectPath );
-                    removedDirectoriesEntries_.add( directoriesEntries_.get( dirEntryIndex ) );
-
                     directories_.remove( dirEntryIndex );
                     directoriesEntries_.remove( dirEntryIndex );
 
@@ -228,7 +221,7 @@ public class DependencyListBuilder implements Serializable
     private void internal_addContainer( String containerPath )
     {
         IContainer container = null ;
-        if ( containerPath == null )
+        if ( StringUtils.isNullOrEmpty( containerPath ) )
             container = project_;
         else
             container = project_.getFolder( containerPath );
@@ -389,18 +382,19 @@ public class DependencyListBuilder implements Serializable
 
         list_.remove( node.getFile( ).getProjectRelativePath( ).toString( ) );
 
-        // removing a _main.cfg. Check if we previously had a directories_
-        // entry, and restore it then, along with existing nodes.
-        if ( node.getFile( ).getName( ).equals( "_main.cfg" ) &&
-             removedDirectories_.contains( fileParentProjectPath ) ) {
+        // if we're at last node, decrease currentIndex_ to make economy on indexes
+        if ( node.getNext( ) == null ) {
+            if ( node.getPrevious( ) != null )
+                currentIndex_ = node.getPrevious( ).getIndex( ) + DependencyListNode.INDEX_STEP;
+        }
+
+        // removing a _main.cfg, add the parent container
+        // back to the list along with it's directories_ entry
+        if ( node.getFile( ).getName( ).equals( "_main.cfg" ) ) {
             DependencyListNode backNode = previous_;
 
             previous_ = node.getPrevious( );
             internal_addContainer( fileParentProjectPath );
-
-            int index = removedDirectories_.indexOf( fileParentProjectPath );
-            removedDirectories_.remove( index );
-            removedDirectoriesEntries_.remove( index );
 
             previous_ = backNode;
         }
