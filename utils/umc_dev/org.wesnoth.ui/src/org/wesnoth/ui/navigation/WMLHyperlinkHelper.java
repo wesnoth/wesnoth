@@ -128,7 +128,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 		if (mapLocation.startsWith("\"")) //$NON-NLS-1$
 			mapLocation = mapLocation.substring(1, value.getLength() - 1);
 		if (mapLocation.startsWith("{")) //$NON-NLS-1$
-			mapLocation = mapLocation.substring(1, value.getLength() - 1);
+			mapLocation = mapLocation.substring(1, mapLocation.length( ) - 1);
 
 		mapLocation = mapLocation.replaceFirst("~", //$NON-NLS-1$
 				paths.getUserDir( ).replace('\\','/') + "/data/"); //$NON-NLS-1$
