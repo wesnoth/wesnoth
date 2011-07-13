@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
@@ -300,5 +301,22 @@ public class PreprocessorUtils
 		{
 			Logger.getInstance().logException(e);
 		}
+	}
+
+	/**
+	 * Clears all timestamps cached for files that are located in that path
+	 * @param path The path to match the files to clear their timestamp
+	 */
+	public void clearTimestampsForPath( String path )
+	{
+	    Iterator<Entry<String, Long>> itor = filesTimeStamps_.entrySet( ).iterator( );
+
+	    while ( itor.hasNext( ) ) {
+	        Entry<String, Long> entry = itor.next( );
+	        if ( entry.getKey( ).startsWith( path ) )
+	            itor.remove( );
+	    }
+
+	    saveTimestamps( );
 	}
 }

@@ -56,22 +56,24 @@ import org.wesnoth.wml.core.ConfigFile;
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
     private ProjectCache projectCache_;
+    private IProject project_;
 
 	@SuppressWarnings("rawtypes")
 	@Override
 	protected IProject[] build(int kind, Map args, IProgressMonitor monitor)
 			throws CoreException
 	{
-	    if ( WesnothInstallsUtils.setupInstallForResource( getProject() ) == false )
+	    project_ = getProject( );
+	    if ( WesnothInstallsUtils.setupInstallForResource( project_ ) == false )
 	        return null;
 
 	    if ( projectCache_ == null )
-	        projectCache_ = ProjectUtils.getCacheForProject( getProject() );
+	        projectCache_ = ProjectUtils.getCacheForProject( project_ );
 
 	    Logger.getInstance().log( "Building project " + getProject( ).getName( ) + " ..." ); //$NON-NLS-1$
-		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, getProject().getName()), 100);
+		monitor.beginTask(String.format(Messages.WesnothProjectBuilder_1, project_.getName()), 100);
 
-        String installName = WesnothInstallsUtils.getInstallNameForResource( getProject() );
+        String installName = WesnothInstallsUtils.getInstallNameForResource( project_ );
 		Paths paths = Preferences.getPaths( installName );
 
 		monitor.subTask(Messages.WesnothProjectBuilder_3);
@@ -100,7 +102,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			readDefines = fullBuild(monitor);
 		else
 		{
-			IResourceDelta delta = getDelta(getProject());
+			IResourceDelta delta = getDelta(project_);
 			if (delta == null)
 				readDefines = fullBuild(monitor);
 			else
@@ -130,6 +132,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
      */
     protected boolean fullBuild(final IProgressMonitor monitor) throws CoreException
     {
+        // clean all project cache
+        projectCache_.clear( );
+        PreprocessorUtils.getInstance( ).clearTimestampsForPath( project_.getLocation( ).toOSString( ) );
+
         projectCache_.getDependencyList( ).createDependencyList( true );
 
         boolean foundCfg = false;
@@ -245,7 +251,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
      */
 	private boolean runAntJob( Paths paths, IProgressMonitor monitor )
 	{
-	    String buildXMLPath = getProject().getLocation().toOSString() + "/build.xml";
+	    String buildXMLPath = project_.getLocation().toOSString() + "/build.xml";
         // check for 'build.xml' existance
         if ( new File( buildXMLPath ).exists() == true )
         {
@@ -390,10 +396,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	 */
 	private boolean isResourceIgnored(IResource res)
 	{
-		if (ProjectUtils.getPropertiesForProject(getProject()) == null)
+		if (ProjectUtils.getPropertiesForProject(project_) == null)
 			return false;
 
-		String[] ignored = ProjectUtils.getPropertiesForProject(getProject()).getArray("ignored"); //$NON-NLS-1$
+		String[] ignored = ProjectUtils.getPropertiesForProject(project_).getArray("ignored"); //$NON-NLS-1$
 		if (ignored == null)
 			return false;
 
