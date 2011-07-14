@@ -221,11 +221,8 @@ bool manager::allow_leader_to_move(unit const& leader) const
 	return true;
 }
 
-void manager::on_init_side(bool is_replay)
+void manager::on_init_side()
 {
-	if (is_replay)
-		return;
-
 	validate_viewer_actions();
 	wait_for_side_init_ = false;
 	LOG_WB << "on_init_side()\n";

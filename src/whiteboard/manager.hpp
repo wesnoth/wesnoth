@@ -69,7 +69,7 @@ public:
 	/**
 	 * The on_* methods below inform the whiteboard of specific events
 	 */
-	void on_init_side(bool is_replay);
+	void on_init_side();
 	void on_finish_side_turn();
 	void on_mouseover_change(const map_location& hex);
 	void on_deselect_hex(){ erase_temp_move();}
