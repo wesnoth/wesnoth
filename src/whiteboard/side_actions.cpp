@@ -81,8 +81,7 @@ void side_actions::draw_hex(const map_location& hex)
 	std::vector<int> numbers_to_draw;
 	int main_number = -1;
 	std::set<int> secondary_numbers;
-	boost::shared_ptr<highlight_visitor> highlighter =
-						resources::whiteboard->get_highlighter().lock();
+	highlight_visitor& highlighter = resources::whiteboard->get_highlighter(team_index_);
 
 	const_iterator it;
 	for(it = begin(); it != end(); ++it)
@@ -95,18 +94,16 @@ void side_actions::draw_hex(const map_location& hex)
 			//store number corresponding to iterator's position + 1
 			size_t number = (it - begin()) + 1;
 			numbers_to_draw.push_back(number);
-			if (highlighter)
-			{
-				if (highlighter->get_main_highlight().lock() == *it) {
-					main_number = number;
-				}
 
-				foreach(weak_action_ptr action, highlighter->get_secondary_highlights())
+			if (highlighter.get_main_highlight().lock() == *it) {
+				main_number = number;
+			}
+
+			foreach(weak_action_ptr action, highlighter.get_secondary_highlights())
+			{
+				if (action.lock() == *it)
 				{
-					if (action.lock() == *it)
-					{
-						secondary_numbers.insert(number);
-					}
+					secondary_numbers.insert(number);
 				}
 			}
 		}

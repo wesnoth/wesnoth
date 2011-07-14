@@ -55,7 +55,7 @@ manager::manager():
 		executing_actions_(false),
 		gamestate_mutated_(false),
 		mapbuilder_(),
-		highlighter_(),
+		highlighters_(),
 		route_(),
 		move_arrow_(),
 		fake_unit_(),
@@ -63,6 +63,9 @@ manager::manager():
 		hidden_unit_hex_(),
 		net_buffer_()
 {
+	foreach(team& t, *resources::teams)
+		highlighters_.push_back(new highlight_visitor(*resources::units,t.get_side_actions()));
+
 	LOG_WB << "Manager initialized.\n";
 }
 
@@ -198,7 +201,7 @@ bool manager::can_execute_hotkey() const
 
 bool manager::can_reorder_action() const
 {
-	return can_execute_hotkey() && highlighter_ && highlighter_->get_bump_target();
+	return can_execute_hotkey() && const_cast<manager*>(this)->get_viewer_highlighter().get_bump_target();
 }
 
 bool manager::allow_leader_to_move(unit const& leader) const
@@ -237,7 +240,6 @@ void manager::on_init_side()
 void manager::on_finish_side_turn()
 {
 	wait_for_side_init_ = true;
-	highlighter_.reset();
 	erase_temp_move();
 	LOG_WB << "on_finish_side_turn()\n";
 }
@@ -340,12 +342,11 @@ void manager::on_mouseover_change(const map_location& hex)
 	if (!((selected_hex.valid() && it != resources::units->end())
 			|| has_temp_move() || wait_for_side_init_ || executing_actions_))
 	{
-		if (!highlighter_)
+		foreach(highlight_visitor& h, highlighters_)
 		{
-			highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
+			h.set_mouseover_hex(hex);
+			h.highlight();
 		}
-		highlighter_->set_mouseover_hex(hex);
-		highlighter_->highlight();
 	}
 }
 
@@ -643,7 +644,7 @@ void manager::contextual_execute()
 			viewer_actions()->execute(it);
 			executing_actions_ = false;
 		}
-		else if (highlighter_ && (action = highlighter_->get_execute_target()) &&
+		else if ((action = get_viewer_highlighter().get_execute_target()) &&
 				 (it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
 		{
 			executing_actions_ = true;
@@ -679,6 +680,7 @@ void manager::contextual_delete()
 		erase_temp_move();
 		validate_viewer_actions();
 
+		highlight_visitor& highlighter = get_viewer_highlighter();
 		action_ptr action;
 		side_actions::iterator it;
 		unit const* selected_unit = future_visible_unit(resources::screen->selected_hex(), viewer_side());
@@ -689,13 +691,13 @@ void manager::contextual_delete()
 			viewer_actions()->remove_action(it);
 			///@todo Shouldn't we probably deselect the unit at this point?
 		}
-		else if (highlighter_ && (action = highlighter_->get_delete_target()) &&
+		else if ((action = highlighter.get_delete_target()) &&
 				(it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
 		{
 			viewer_actions()->remove_action(it);
 			viewer_actions()->remove_invalid_of(action->get_unit());
-			highlighter_->set_mouseover_hex(highlighter_->get_mouseover_hex());
-			highlighter_->highlight();
+			highlighter.set_mouseover_hex(highlighter.get_mouseover_hex());
+			highlighter.highlight();
 		}
 		else //we already check above for viewer_actions()->empty()
 		{
@@ -709,11 +711,10 @@ void manager::contextual_delete()
 
 void manager::contextual_bump_up_action()
 {
-	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
-			&& highlighter_)
+	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode()))
 	{
 		validate_viewer_actions();
-		action_ptr action = highlighter_->get_bump_target();
+		action_ptr action = get_viewer_highlighter().get_bump_target();
 		if (action)
 		{
 			viewer_actions()->bump_earlier(viewer_actions()->get_position_of(action));
@@ -723,11 +724,10 @@ void manager::contextual_bump_up_action()
 
 void manager::contextual_bump_down_action()
 {
-	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
-			&& highlighter_)
+	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode()))
 	{
 		validate_viewer_actions();
-		action_ptr action = highlighter_->get_bump_target();
+		action_ptr action = get_viewer_highlighter().get_bump_target();
 		if (action)
 		{
 			viewer_actions()->bump_later(viewer_actions()->get_position_of(action));
@@ -743,6 +743,11 @@ void manager::erase_all_actions()
 	{
 		team.get_side_actions()->clear();
 	}
+}
+
+highlight_visitor& manager::get_viewer_highlighter()
+{
+	return highlighters_[resources::screen->viewing_team()];
 }
 
 bool manager::unit_has_actions(unit const* unit) const
