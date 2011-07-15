@@ -326,12 +326,12 @@ public class WorkspaceUtils
             GUIUtils.showInfoMessageBox( Messages.WorkspaceUtils_0 );
         }
 
-        if (!checkPathsAreSet( null, false ))
+        if (!checkPathsAreSet( Preferences.getDefaultInstallName( ), false ))
         {
             PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
                     WesnothPlugin.getShell(), "org.wesnoth.preferences.InstallsPage", null, null); //$NON-NLS-1$
             pref.open();
-            if ( !checkPathsAreSet ( null, true ) )
+            if ( !checkPathsAreSet ( Preferences.getDefaultInstallName( ), true ) )
             {
                 GUIUtils.showErrorMessageBox( Messages.WorkspaceUtils_7 );
                 return;
