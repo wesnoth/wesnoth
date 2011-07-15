@@ -84,7 +84,7 @@ public class WMLGrammarUtils
      */
     public static String toStringWMLKeyValue( WMLKeyValue keyValue )
     {
-        CompositeNode node = NodeUtil.getNode( keyValue );
+        ICompositeNode node = NodeUtil.getNode( keyValue );
         if ( node == null )
             return "";
 

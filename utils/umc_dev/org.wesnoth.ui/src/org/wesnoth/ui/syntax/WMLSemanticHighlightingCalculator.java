@@ -12,10 +12,9 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.impl.CompositeNode;
-import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
@@ -145,14 +144,14 @@ public class WMLSemanticHighlightingCalculator implements ISemanticHighlightingC
 		NodeAdapter adapter = NodeUtil.getNodeAdapter(semantic);
 		if (adapter != null)
 		{
-			CompositeNode node = adapter.getParserNode();
+			ICompositeNode node = adapter.getParserNode();
 			if (node != null)
 			{
 				for (INode child : node.getChildren())
 				{
-					if (child instanceof LeafNode)
+					if (child instanceof ILeafNode)
 					{
-						if (feature.equals(((LeafNode) child).getFeature()))
+						if (feature.equals(((ILeafNode) child).getFeature()))
 						{
 							return child;
 						}

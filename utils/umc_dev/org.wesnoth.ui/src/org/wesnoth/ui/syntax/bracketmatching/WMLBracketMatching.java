@@ -14,9 +14,9 @@ import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.Region;
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.Keyword;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.impl.CompositeNode;
-import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
@@ -49,7 +49,7 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 	{
 		if (state == null || state.getContents() == null || state.getContents().isEmpty())
 			return null;
-		CompositeNode rootNode = NodeUtil.getRootNode(state.getContents().get(0));
+		ICompositeNode rootNode = NodeUtil.getRootNode(state.getContents().get(0));
 		if (rootNode == null)
 			return null;
 		INode node = NodeUtil.findLeafNodeAtOffset(rootNode, offset);
@@ -86,25 +86,25 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 		// search for opened/closed tag
 
 		// find opened tag at this offset
-		LeafNode wmlNode = findWMLLeafNodeAtOffset(rootNode, offset, false);
+		ILeafNode wmlNode = findWMLLeafNodeAtOffset(rootNode, offset, false);
 		if (wmlNode == null)
 		{
 			wmlNode = findWMLLeafNodeAtOffset(rootNode, offset, true);
 		}
 		if (wmlNode != null)
 		{
-			LeafNode tmp = null;
-			LeafNode correspondingTag = null;
+		    ILeafNode tmp = null;
+		    ILeafNode correspondingTag = null;
 			boolean correspondingIsClosed = false;
 			for (int i = 0; i < wmlNode.getParent().getChildren().size(); i++)
 			{
-				if (!(wmlNode.getParent().getChildren().get(i) instanceof LeafNode))
+				if (!(wmlNode.getParent().getChildren().get(i) instanceof ILeafNode))
 					continue;
 
-				if (i > 0 && wmlNode.getParent().getChildren().get(i-1) instanceof LeafNode)
-					tmp = (LeafNode)wmlNode.getParent().getChildren().get(i-1);
+				if (i > 0 && wmlNode.getParent().getChildren().get(i-1) instanceof ILeafNode)
+					tmp = (ILeafNode)wmlNode.getParent().getChildren().get(i-1);
 
-				LeafNode tmpNode = (LeafNode)wmlNode.getParent().getChildren().get(i);
+				ILeafNode tmpNode = (ILeafNode)wmlNode.getParent().getChildren().get(i);
 
 				if ((tmpNode).getText().equals(wmlNode.getText()) &&
 						tmpNode != wmlNode && !tmpNode.isHidden())
@@ -140,24 +140,24 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 		return null;
 	}
 
-	public LeafNode findWMLLeafNodeAtOffset(CompositeNode parseTreeRootNode, int offset, boolean findClosed)
+	public ILeafNode findWMLLeafNodeAtOffset(ICompositeNode parseTreeRootNode, int offset, boolean findClosed)
 	{
 		boolean isClosed = false;
 		for (INode node : parseTreeRootNode.getChildren())
 		{
 			if (node.getTotalOffset() <= offset)
 			{
-				if (node instanceof LeafNode && ((LeafNode) node).getText().equals("[/")) //$NON-NLS-1$
+				if (node instanceof ILeafNode && ((ILeafNode) node).getText().equals("[/")) //$NON-NLS-1$
 				{
 					isClosed = true;
 				}
 				if (node.getTotalOffset() + node.getTotalLength() >= offset)
 				{
-					if (node instanceof LeafNode && isWMLTag(node) && (isClosed == findClosed))
-						return (LeafNode) node;
+					if (node instanceof ILeafNode && isWMLTag(node) && (isClosed == findClosed))
+						return (ILeafNode) node;
 
-					else if (node instanceof CompositeNode)
-						return findWMLLeafNodeAtOffset((CompositeNode) node, offset, findClosed);
+					else if (node instanceof ICompositeNode)
+						return findWMLLeafNodeAtOffset((ICompositeNode) node, offset, findClosed);
 				}
 			}
 		}
@@ -167,6 +167,6 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 	private boolean isWMLTag(INode node)
 	{
 		return (node.eContainer() != null &&
-				node.eContainer() instanceof CompositeNode && ((CompositeNode) node.eContainer()).getElement() instanceof WMLTag);
+				node.eContainer() instanceof ICompositeNode && ((ICompositeNode) node.eContainer()).getElement() instanceof WMLTag);
 	}
 }

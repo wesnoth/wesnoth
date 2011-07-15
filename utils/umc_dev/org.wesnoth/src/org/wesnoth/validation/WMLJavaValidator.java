@@ -13,7 +13,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.impl.LeafNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.wesnoth.Messages;
@@ -50,7 +50,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 	    ICompositeNode node = NodeUtil.getNodeAdapter(tag).getParserNode();
 		if (node != null)
 		{
-			LeafNode parentNode = (LeafNode)
+		    ILeafNode parentNode = (ILeafNode)
 						NodeUtil.findLeafNodeAtOffset(node.getParent(),
 								node.getParent().getOffset() + 2);
 

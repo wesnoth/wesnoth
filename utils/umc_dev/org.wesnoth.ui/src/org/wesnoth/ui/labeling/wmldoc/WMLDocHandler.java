@@ -13,8 +13,8 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.impl.CompositeNode;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -57,7 +57,7 @@ public class WMLDocHandler extends AbstractHandler
                 	if (abstractNode == null || abstractNode.eContainer() == null)
                 		return;
 
-                	CompositeNode container = (CompositeNode)abstractNode.eContainer();
+                	ICompositeNode container = (ICompositeNode)abstractNode.eContainer();
                     if (container.getElement() instanceof WMLMacroCall)
                     {
                     	WMLMacroCall macro = (WMLMacroCall)container.getElement();

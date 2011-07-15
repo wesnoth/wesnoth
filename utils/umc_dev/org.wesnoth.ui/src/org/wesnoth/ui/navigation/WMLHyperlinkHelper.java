@@ -12,7 +12,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.text.Region;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.impl.LeafNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkAcceptor;
@@ -39,7 +39,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 		if (rootNode == null)
 			return;
 
-		LeafNode node = (LeafNode)NodeUtil.findLeafNodeAtOffset(rootNode, offset);
+		ILeafNode node = (ILeafNode)NodeUtil.findLeafNodeAtOffset(rootNode, offset);
 		if (node == null)
 			return;
 
@@ -52,7 +52,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
         Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( file ) );
 
 		createMacroHyperlink( file, paths, node, acceptor, resource );
-		LeafNode prevNode = (LeafNode)NodeUtil.findLeafNodeAtOffset(rootNode,
+		ILeafNode prevNode = (ILeafNode)NodeUtil.findLeafNodeAtOffset(rootNode,
 									node.getOffset() - 1);
 		if(prevNode == null)
 			return;
@@ -67,7 +67,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 	 * @param acceptor
 	 * @param resource
 	  */
-	private void createMacroHyperlink( IFile file, Paths paths, LeafNode node,
+	private void createMacroHyperlink( IFile file, Paths paths, ILeafNode node,
 			IHyperlinkAcceptor acceptor, XtextResource resource)
 	{
 		if (node.eContainer() == null ||
@@ -116,7 +116,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 	 * @param key The key (must me 'map_data' in this case)
 	 * @param value The value of key, that is, the location of the map
 	 */
-	private void createMapHyperlink( Paths paths, LeafNode key, LeafNode value,
+	private void createMapHyperlink( Paths paths, ILeafNode key, ILeafNode value,
 			IHyperlinkAcceptor acceptor, XtextResource resource )
 	{
 		if (!(key.getText().equals("map_data"))) //$NON-NLS-1$

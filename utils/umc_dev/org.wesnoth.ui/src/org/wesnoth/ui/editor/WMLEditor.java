@@ -50,7 +50,6 @@ import org.eclipse.ui.ide.FileStoreEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.xtext.nodemodel.ILeafNode;
-import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
 import org.wesnoth.Logger;
@@ -112,7 +111,7 @@ public class WMLEditor extends XtextEditor
 		return currentHighlightedNode_;
 	}
 
-	public void setCurrentHighlightedNode(LeafNode leaf)
+	public void setCurrentHighlightedNode(ILeafNode leaf)
 	{
 		currentHighlightedNode_ = leaf;
 	}

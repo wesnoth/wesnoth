@@ -10,24 +10,24 @@ package org.wesnoth.ui;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.impl.CompositeNode;
-import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 
 public class WMLUtil
 {
 	public static String debug(EObject root)
 	{
-		CompositeNode node = NodeUtil.getNode(root);
+		ICompositeNode node = NodeUtil.getNode(root);
 		Iterable<INode> contents = NodeUtil.getAllContents(node);
 		StringBuffer text = new StringBuffer();
 		for (INode abstractNode : contents)
 		{
-			if (abstractNode instanceof LeafNode)
+			if (abstractNode instanceof ILeafNode)
 			{
-				System.out.println((((LeafNode) abstractNode).getText()));
-				text.append(((LeafNode) abstractNode).getText());
+				System.out.println((((ILeafNode) abstractNode).getText()));
+				text.append(((ILeafNode) abstractNode).getText());
 			}
 		}
 		return text.toString();

@@ -16,7 +16,6 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -46,32 +45,32 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 						if(parseResult == null)
 							return;
 						ICompositeNode rootNode = parseResult.getRootNode();
-						ILeafNode node = (LeafNode) NodeUtil.findLeafNodeAtOffset(rootNode, command.offset);
+						ILeafNode node = (ILeafNode) NodeUtil.findLeafNodeAtOffset(rootNode, command.offset);
 
 						String tagName = ""; //$NON-NLS-1$
 						EList<INode> children = node.getParent().getParent().getChildren();
 						for(int i = 0 ;i < children.size(); ++i)
 						{
-							if ((children.get(i) instanceof LeafNode) == false)
+							if ((children.get(i) instanceof ILeafNode) == false)
 								continue;
 							// we need one more child
 							if (i+1 >= children.size())
 								continue;
-							if (((LeafNode)children.get(i)).getText().equals("[")) //$NON-NLS-1$
+							if (((ILeafNode)children.get(i)).getText().equals("[")) //$NON-NLS-1$
 							{
-								if (children.get(i+1) instanceof LeafNode)
+								if (children.get(i+1) instanceof ILeafNode)
 								{
 									// in case we have [+
-									if (((LeafNode)children.get(i+1)).getText().equals("+")) //$NON-NLS-1$
+									if (((ILeafNode)children.get(i+1)).getText().equals("+")) //$NON-NLS-1$
 									{
 										if (i+2 >= children.size() ||
-											(children.get(i+2) instanceof LeafNode) == false)
+											(children.get(i+2) instanceof ILeafNode) == false)
 											continue;
-										tagName = ((LeafNode)children.get(i+2)).getText();
+										tagName = ((ILeafNode)children.get(i+2)).getText();
 									}
 									else
 									{
-										tagName = ((LeafNode)children.get(i+1)).getText();
+										tagName = ((ILeafNode)children.get(i+1)).getText();
 									}
 								}
 							}

@@ -19,7 +19,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.impl.LeafNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.wesnoth.installs.WesnothInstallsUtils;
@@ -282,7 +282,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
 			String parentIndent = ""; //$NON-NLS-1$
 			if (context.getCurrentNode().getOffset() > 0)
-				parentIndent = ((LeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
+				parentIndent = ((ILeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
 						context.getCurrentNode().getOffset() -
 						// if we have a non-rule proposal, subtract 1
 						(ruleProposal ? 0 : 1)
