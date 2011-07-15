@@ -41,7 +41,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 	public void checkFastTagName(WMLTag tag)
 	{
 		if (!tag.getName().equals(tag.getEndName()))
-			warning(Messages.WMLJavaValidator_0, WmlPackage.WML_TAG__END_NAME);
+			warning( Messages.WMLJavaValidator_0, WmlPackage.Literals.WML_TAG__END_NAME);
 	}
 
 //	@Check(CheckType.NORMAL)
@@ -79,7 +79,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 					}
 				}
 				if (found == false)
-					warning(Messages.WMLJavaValidator_1, WmlPackage.WML_TAG__NAME);
+					warning( Messages.WMLJavaValidator_1, WmlPackage.Literals.WML_EXPRESSION__NAME  );
 			}
 		}
 	}
