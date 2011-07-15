@@ -8,9 +8,10 @@
  *******************************************************************************/
 package org.wesnoth.ui.autoedit;
 
-import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategy;
+import org.eclipse.jface.text.IDocument;
+import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategyProvider;
 
-public class WMLAutoEditStrategy extends DefaultAutoEditStrategy
+public class WMLAutoEditStrategy extends DefaultAutoEditStrategyProvider
 {
 	public WMLAutoEditStrategy()
 	{
@@ -18,10 +19,11 @@ public class WMLAutoEditStrategy extends DefaultAutoEditStrategy
 	}
 
 	@Override
-	protected void configure(IEditStrategyAcceptor acceptor)
+	protected void configure( IEditStrategyAcceptor acceptor )
 	{
-		// don't super as we don't want autoeditor for [ or other stuff
+		super.configure( acceptor );
 		configureStringLiteral(acceptor);
-		acceptor.accept(new ClosingEndTagAutoEditStrategy());
+		acceptor.accept( new ClosingEndTagAutoEditStrategy(),
+		        IDocument.DEFAULT_CONTENT_TYPE );
 	}
 }

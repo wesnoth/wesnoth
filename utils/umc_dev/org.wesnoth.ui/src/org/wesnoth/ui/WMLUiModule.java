@@ -15,17 +15,16 @@ import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.containers.IAllContainersState;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.XtextEditor;
-import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategy;
-import org.eclipse.xtext.ui.editor.bracketmatching.IBracketMatcher;
+import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;
 import org.wesnoth.ui.autoedit.WMLAutoEditStrategy;
 import org.wesnoth.ui.contentassist.WMLContentAssistContext;
 import org.wesnoth.ui.contentassist.WMLProposalComparator;
@@ -125,9 +124,10 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 		return WMLProposalComparator.class;
 	}
 
-	public Class<? extends DefaultAutoEditStrategy> bindAutoEditStrategy()
+	@Override
+	public Class<? extends AbstractEditStrategyProvider> bindAbstractEditStrategyProvider()
 	{
-		return WMLAutoEditStrategy.class;
+	    return WMLAutoEditStrategy.class;
 	}
 
 	@Override
