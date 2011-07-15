@@ -38,7 +38,8 @@ namespace wb
 {
 
 validate_visitor::validate_visitor(unit_map& unit_map)
-	: mapbuilder_visitor(unit_map, viewer_actions(), true)
+	: mapbuilder_visitor(unit_map, true)
+	, viewer_actions_(*viewer_actions())
 	, actions_to_erase_()
 	, arg_itor_()
 {
@@ -73,13 +74,13 @@ bool validate_visitor::validate_actions()
 	// by using the iterator returned by remove_action it could even be done in the loop above
 	if (!actions_to_erase_.empty())
 	{
-		int side_actions_size_before = side_actions_->actions().size();
+		int side_actions_size_before = viewer_actions_.actions().size();
 		LOG_WB << "Erasing " << actions_to_erase_.size() << " invalid actions.\n";
 		foreach(action_ptr action, actions_to_erase_)
 		{
-			side_actions_->remove_action(side_actions_->get_position_of(action), false);
+			viewer_actions_.remove_action(viewer_actions_.get_position_of(action), false);
 		}
-		assert(side_actions_size_before - side_actions_->actions().size() == actions_to_erase_.size());
+		assert(side_actions_size_before - viewer_actions_.actions().size() == actions_to_erase_.size());
 		actions_to_erase_.clear();
 		return false;
 	}
@@ -122,7 +123,7 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 		pathfind::marked_route new_route;
 		//@todo: use something else than empty vector for waypoints?
 		new_route = resources::controller->get_mouse_handler_base().get_route(m.get_unit(),m.get_dest_hex(),
-											std::vector<map_location>(), resources::teams->at(side_actions_->team_index()));
+											std::vector<map_location>(), resources::teams->at(viewer_actions_.team_index()));
 
 		/**
 		 * @todo Is the comparison with getNoPathValue really necessary? An empty route (with cost = 0) is returned
@@ -139,7 +140,7 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 				m.set_route(new_route);
 
 				//send updated path to allies
-				resources::whiteboard->queue_net_cmd(side_actions_->make_net_cmd_replace(arg_itor_,m_ptr));
+				resources::whiteboard->queue_net_cmd(viewer_actions_.make_net_cmd_replace(arg_itor_,m_ptr));
 
 				//@todo: Since this might lengthen the path, we probably need a special conflict state
 				// to warn the player that the initial path is no longer possible.
@@ -155,15 +156,15 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 }
 
 // This helper function determines whether there are any invalid actions planned for m_ptr->get_unit()
-// that occur earlier in the side_actions_ than m_ptr.
+// that occur earlier in viewer_actions_ than m_ptr.
 /* private */
 bool validate_visitor::no_previous_invalids(move_ptr m_ptr)
 {
 	//arg_itor_ is a protected member of mapbuilder_visitor
-	if(arg_itor_ == side_actions_->begin())
+	if(arg_itor_ == viewer_actions_.begin())
 		return true;
-	side_actions::iterator prev_action_of_unit = side_actions_->find_last_action_of(m_ptr->get_unit(),arg_itor_-1);
-	if(prev_action_of_unit == side_actions_->end())
+	side_actions::iterator prev_action_of_unit = viewer_actions_.find_last_action_of(m_ptr->get_unit(),arg_itor_-1);
+	if(prev_action_of_unit == viewer_actions_.end())
 		return true;
 	return (*prev_action_of_unit)->is_valid();
 }
@@ -237,7 +238,7 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 	//invalidate recruit hex so number display is updated properly
 	resources::screen->invalidate(recruit->recruit_hex_);
 
-	int team_index = side_actions_->team_index();
+	int team_index = viewer_actions_.team_index();
 
 	//Check that destination hex is still free
 	if(resources::units->find(recruit->recruit_hex_) != resources::units->end())
@@ -282,7 +283,7 @@ void validate_visitor::visit_recall(recall_ptr recall)
 	//invalidate recall hex so number display is updated properly
 	resources::screen->invalidate(recall->recall_hex_);
 
-	int team_index = side_actions_->team_index();
+	int team_index = viewer_actions_.team_index();
 
 	//Check that destination hex is still free
 	if(resources::units->find(recall->recall_hex_) != resources::units->end())

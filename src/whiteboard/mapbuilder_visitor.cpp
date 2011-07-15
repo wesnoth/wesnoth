@@ -36,8 +36,8 @@
 namespace wb
 {
 
-mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side_actions, bool for_pathfinding)
-	: visitor(side_actions)
+mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, bool for_pathfinding)
+	: visitor()
 	, unit_map_(unit_map)
 	, for_pathfinding_(for_pathfinding)
 	, applied_actions_()

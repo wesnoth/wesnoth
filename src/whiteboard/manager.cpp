@@ -267,7 +267,7 @@ void manager::set_planned_unit_map(bool for_pathfinding)
 					: message = "Building planned unit map";
 			log_scope2("whiteboard", message);
 			is_map_for_pathfinding_ = for_pathfinding;
-			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions(), for_pathfinding));
+			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, for_pathfinding));
 			mapbuilder_->build_map();
 			planned_unit_map_active_ = true;
 		}

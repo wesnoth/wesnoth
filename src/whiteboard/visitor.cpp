@@ -17,29 +17,28 @@
  * @file
  */
 
-#include "validate_visitor.hpp"
+#include "visitor.hpp"
 
 #include "action.hpp"
 #include "foreach.hpp"
 #include "side_actions.hpp"
 
+#include "play_controller.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+
 namespace wb
 {
 
-visitor::visitor(side_actions_ptr side_actions):
-		side_actions_(side_actions)
-{
-}
-
-visitor::~visitor()
-{
-}
-
 void visitor::visit_all_actions()
 {
-	foreach(action_ptr action, *side_actions_)
+	size_t current_team = resources::controller->current_side() - 1;
+	size_t num_teams = resources::teams->size();
+	for(size_t iteration = 0; iteration < num_teams; ++iteration)
 	{
-		action->accept(*this);
+		size_t team_index = (current_team+iteration) % num_teams;
+		foreach(action_ptr act, *resources::teams->at(team_index).get_side_actions())
+			act->accept(*this);
 	}
 }
 

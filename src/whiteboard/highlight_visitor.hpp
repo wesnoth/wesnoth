@@ -41,7 +41,7 @@ class highlight_visitor: public wb::visitor
 {
 public:
 	highlight_visitor(const unit_map& unit_map, side_actions_ptr side_actions);
-	virtual ~highlight_visitor();
+	~highlight_visitor();
 
 	void set_mouseover_hex(const map_location& hex);
 	const map_location& get_mouseover_hex() const {return mouseover_hex_; }
@@ -60,14 +60,13 @@ public:
 	/// @return the collection of actions that are highlighted but don't have the focus
 	secondary_highlights_t get_secondary_highlights() { return secondary_highlights_; }
 
-
+private:
 	virtual void visit_move(move_ptr move);
 	virtual void visit_attack(attack_ptr attack);
 	virtual void visit_recruit(recruit_ptr recruit);
 	virtual void visit_recall(recall_ptr recall);
 	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
 
-private:
 	void unhighlight();
 
 	void find_main_highlight();
@@ -94,6 +93,8 @@ private:
 
 	weak_action_ptr main_highlight_;
 	secondary_highlights_t secondary_highlights_;
+
+	side_actions_ptr side_actions_;
 };
 
 } // end namespace wb

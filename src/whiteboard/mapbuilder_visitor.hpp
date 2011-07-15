@@ -39,30 +39,29 @@ class mapbuilder_visitor: public visitor
 {
 
 public:
-	mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side_actions, bool include_recruits = false);
-	virtual ~mapbuilder_visitor();
+	mapbuilder_visitor(unit_map& unit_map, bool include_recruits = false);
+	~mapbuilder_visitor();
 
 	/**
 	 * Calls the appropriate visit_* method on each of the actions contained in the
 	 * side_actions objects of every team whose turn comes earlier in the turn order,
 	 * including (and stopping at) the viewer's team.
 	 */
-	virtual void build_map();
+	void build_map();
 
-	/// Visitor pattern method, no need to call this directly
+protected:
 	virtual void visit_move(move_ptr move);
 	virtual void visit_attack(attack_ptr attack);
 	virtual void visit_recruit(recruit_ptr recruit);
 	virtual void visit_recall(recall_ptr recall);
 	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
 
-protected:
-
 	//Helper fcn: Temporarily resets all units' moves to max EXCEPT for
 	//the ones controlled by the player whose turn it is currently.
 	void reset_moves();
 
-	virtual void restore_normal_map();
+private:
+	void restore_normal_map();
 
 	unit_map& unit_map_;
 

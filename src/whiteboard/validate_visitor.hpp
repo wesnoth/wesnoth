@@ -34,26 +34,28 @@ namespace wb
  *   * actions are evaluated for validity along the way.
  *   * Some invalid actions are deleted.
  */
-class validate_visitor: public mapbuilder_visitor
+class validate_visitor: private mapbuilder_visitor
 {
 public:
 	explicit validate_visitor(unit_map& unit_map);
-	virtual ~validate_visitor();
+	~validate_visitor();
 
 	/// @return false some actions had to be deleted during validation,
 	/// which may warrant a second validation
 	bool validate_actions();
 
+private:
 	virtual void visit_move(move_ptr move);
 	virtual void visit_attack(attack_ptr attack);
 	virtual void visit_recruit(recruit_ptr recruit);
 	virtual void visit_recall(recall_ptr recall);
 	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
 
-private:
 	enum VALIDITY {VALID, OBSTRUCTED, WORTHLESS};
 	VALIDITY evaluate_move_validity(move_ptr);
 	bool no_previous_invalids(move_ptr);
+
+	side_actions& viewer_actions_;
 
 	std::set<action_ptr> actions_to_erase_;
 

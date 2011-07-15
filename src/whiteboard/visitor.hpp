@@ -33,19 +33,23 @@ namespace wb
  */
 class visitor : private boost::noncopyable
 {
-public:
-	visitor(side_actions_ptr side_actions);
-	virtual ~visitor();
+	friend class move;
+	friend class attack;
+	friend class recruit;
+	friend class recall;
+	friend class suppose_dead;
+
+protected:
+	visitor() {}
+	~visitor() {} //Not intended for polymorphic deletion
+
+	void visit_all_actions(); //< weird utility function for derived classes
 
 	virtual void visit_move(move_ptr move) = 0;
 	virtual void visit_attack(attack_ptr attack) = 0;
 	virtual void visit_recruit(recruit_ptr recruit) = 0;
 	virtual void visit_recall(recall_ptr recall) = 0;
 	virtual void visit_suppose_dead(suppose_dead_ptr sup_d) = 0;
-
-protected:
-	virtual void visit_all_actions();
-	side_actions_ptr side_actions_;
 };
 
 }

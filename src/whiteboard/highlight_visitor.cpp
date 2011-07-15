@@ -37,7 +37,7 @@ namespace wb
 {
 
 highlight_visitor::highlight_visitor(const unit_map& unit_map, side_actions_ptr side_actions)
-	: visitor (side_actions)
+	: visitor()
 	, mode_(NONE)
 	, unit_map_(unit_map)
 	, mouseover_hex_()
@@ -46,6 +46,7 @@ highlight_visitor::highlight_visitor(const unit_map& unit_map, side_actions_ptr 
 	, selection_candidate_(NULL)
 	, main_highlight_()
 	, secondary_highlights_()
+	, side_actions_(side_actions)
 {
 }
 
