@@ -47,6 +47,5 @@ public class WMLStandaloneSetupGenerated implements ISetup {
 
 
 
-
 	}
 }

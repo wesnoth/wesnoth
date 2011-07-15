@@ -7,47 +7,47 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" complianceLevel="5.0"
     copyrightFields="false" editPluginID="org.wesnoth.edit" editorPluginID="org.wesnoth.editor">
   <genPackages prefix="Wml" basePackage="org.wesnoth" disposableProviderFactory="true"
-      ecorePackage="WML.ecore#/">
-    <genClasses ecoreClass="WML.ecore#//WMLRoot">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLRoot/Expressions"/>
+      ecorePackage="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#/">
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRoot/Expressions"/>
     </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLTag">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTag/plus"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/Expressions"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTag/endName"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/plus"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/Expressions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/endName"/>
     </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLKey">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLKey/value"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLKey/eol"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/eol"/>
     </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLKeyValue"/>
-    <genClasses ecoreClass="WML.ecore#//WMLMacroCall">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroCall/point"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroCall/relative"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/Parameters"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCall/point"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCall/relative"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCall/Parameters"/>
     </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLMacroCallParameter"/>
-    <genClasses ecoreClass="WML.ecore#//WMLArrayCall">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLArrayCall/value"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCallParameter"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLArrayCall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLArrayCall/value"/>
     </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLMacroDefine">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/Expressions"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroDefine/endName"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroDefine">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroDefine/Expressions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroDefine/endName"/>
     </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLPreprocIF">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLPreprocIF/Expressions"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLPreprocIF/Elses"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLPreprocIF/ElseExpressions"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLPreprocIF/endName"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLPreprocIF">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLPreprocIF/Expressions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLPreprocIF/Elses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLPreprocIF/ElseExpressions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLPreprocIF/endName"/>
     </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLRootExpression"/>
-    <genClasses ecoreClass="WML.ecore#//WMLExpression">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLExpression/name"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/name"/>
     </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLValuedExpression"/>
-    <genClasses ecoreClass="WML.ecore#//WMLTextdomain"/>
-    <genClasses ecoreClass="WML.ecore#//WMLLuaCode">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLLuaCode/value"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValuedExpression"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTextdomain"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLLuaCode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLLuaCode/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
