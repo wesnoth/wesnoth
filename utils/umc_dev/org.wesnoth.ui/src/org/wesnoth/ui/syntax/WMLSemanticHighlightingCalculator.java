@@ -14,12 +14,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.impl.AbstractNode;
 import org.eclipse.xtext.nodemodel.impl.CompositeNode;
 import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
-import org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.SemanticHighlightingCalculator;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLMacroCall;
@@ -29,7 +28,7 @@ import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WMLTextdomain;
 import org.wesnoth.wml.WmlPackage;
 
-public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalculator
+public class WMLSemanticHighlightingCalculator implements ISemanticHighlightingCalculator
 {
 	@Override
 	public void provideHighlightingFor(XtextResource resource, IHighlightedPositionAcceptor acceptor)
@@ -119,7 +118,7 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 		return (tag.getName().equals(editor.getCurrentHighlightedNode().getText()));
 	}
 
-	private void highlightNode(AbstractNode node, String id, IHighlightedPositionAcceptor acceptor)
+	private void highlightNode(INode node, String id, IHighlightedPositionAcceptor acceptor)
 	{
 		if (node == null || id == null)
 			return;
