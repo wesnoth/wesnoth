@@ -134,9 +134,17 @@ public class WmlSwitch<T>
         WMLMacroCall wmlMacroCall = (WMLMacroCall)theEObject;
         T result = caseWMLMacroCall(wmlMacroCall);
         if (result == null) result = caseWMLKeyValue(wmlMacroCall);
+        if (result == null) result = caseWMLMacroCallParameter(wmlMacroCall);
         if (result == null) result = caseWMLRootExpression(wmlMacroCall);
         if (result == null) result = caseWMLExpression(wmlMacroCall);
         if (result == null) result = caseWMLValuedExpression(wmlMacroCall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WmlPackage.WML_MACRO_CALL_PARAMETER:
+      {
+        WMLMacroCallParameter wmlMacroCallParameter = (WMLMacroCallParameter)theEObject;
+        T result = caseWMLMacroCallParameter(wmlMacroCallParameter);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -290,6 +298,22 @@ public class WmlSwitch<T>
    * @generated
    */
   public T caseWMLMacroCall(WMLMacroCall object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>WML Macro Call Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>WML Macro Call Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLMacroCallParameter(WMLMacroCallParameter object)
   {
     return null;
   }

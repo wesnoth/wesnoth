@@ -24,9 +24,9 @@
     <genClasses ecoreClass="WML.ecore#//WMLMacroCall">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroCall/point"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroCall/relative"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroCall/params"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/extraMacros"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/Parameters"/>
     </genClasses>
+    <genClasses ecoreClass="WML.ecore#//WMLMacroCallParameter"/>
     <genClasses ecoreClass="WML.ecore#//WMLArrayCall">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLArrayCall/value"/>
     </genClasses>
@@ -37,6 +37,7 @@
     <genClasses ecoreClass="WML.ecore#//WMLPreprocIF">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLPreprocIF/Expressions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLPreprocIF/Elses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLPreprocIF/ElseExpressions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLPreprocIF/endName"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLRootExpression"/>

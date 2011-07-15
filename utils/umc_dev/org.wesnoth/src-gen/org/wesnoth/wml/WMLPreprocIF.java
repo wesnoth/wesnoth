@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.wesnoth.wml.WMLPreprocIF#getExpressions <em>Expressions</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLPreprocIF#getElses <em>Elses</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLPreprocIF#getElseExpressions <em>Else Expressions</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLPreprocIF#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
@@ -45,20 +46,46 @@ public interface WMLPreprocIF extends WMLRootExpression
   EList<WMLValuedExpression> getExpressions();
 
   /**
-   * Returns the value of the '<em><b>Elses</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Elses</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Elses</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Elses</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Elses</em>' attribute list.
+   * @return the value of the '<em>Elses</em>' attribute.
+   * @see #setElses(String)
    * @see org.wesnoth.wml.WmlPackage#getWMLPreprocIF_Elses()
-   * @model unique="false"
+   * @model
    * @generated
    */
-  EList<String> getElses();
+  String getElses();
+
+  /**
+   * Sets the value of the '{@link org.wesnoth.wml.WMLPreprocIF#getElses <em>Elses</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Elses</em>' attribute.
+   * @see #getElses()
+   * @generated
+   */
+  void setElses(String value);
+
+  /**
+   * Returns the value of the '<em><b>Else Expressions</b></em>' containment reference list.
+   * The list contents are of type {@link org.wesnoth.wml.WMLValuedExpression}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Else Expressions</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Else Expressions</em>' containment reference list.
+   * @see org.wesnoth.wml.WmlPackage#getWMLPreprocIF_ElseExpressions()
+   * @model containment="true"
+   * @generated
+   */
+  EList<WMLValuedExpression> getElseExpressions();
 
   /**
    * Returns the value of the '<em><b>End Name</b></em>' attribute.

@@ -23,52 +23,52 @@ T32 : '/' ;
 T33 : '(' ;
 T34 : ')' ;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1443
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1493
 RULE_LUA_CODE : '<<' ( options {greedy=false;} : . )*'>>';
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1445
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1495
 RULE_IFHAVE : '#ifhave' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1447
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1497
 RULE_IFNHAVE : '#ifnhave' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1449
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1499
 RULE_IFDEF : '#ifdef' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1451
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1501
 RULE_IFNDEF : '#ifndef' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1453
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1503
 RULE_ELSE : '#else' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1455
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1505
 RULE_ENDIF : '#endif' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1457
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1507
 RULE_DEFINE : '#define' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1459
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1509
 RULE_ENDDEF : '#enddef' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1461
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1511
 RULE_TEXTDOMAIN : '#textdomain' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1463
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1513
 RULE_STRING : '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1465
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1515
 RULE_ID : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'-'|',')+;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1467
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1517
 RULE_EOL : ('\r'|'\n');
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1469
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1519
 RULE_WS : (' '|'\t')+;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1471
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1521
 RULE_ANY_OTHER : .;
 
-// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1473
+// $ANTLR src "../org.wesnoth/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1523
 RULE_SL_COMMENT : '#' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 

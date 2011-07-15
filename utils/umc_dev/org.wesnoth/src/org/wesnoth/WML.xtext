@@ -1,47 +1,48 @@
 /**
  * @author Timotei Dolean
  */
- //grammar org.wesnoth.WML with org.eclipse.xtext.common.Terminals
 grammar org.wesnoth.WML hidden(EOL, WS, SL_COMMENT)
 generate wml "http://www.wesnoth.org/WML"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes 
 
 WMLRoot:
-	( Expressions += WMLRootExpression )*;
+	Expressions += WMLRootExpression*;
 
 WMLTag:
 	'[' (plus='+')? name=ID ']'
-		( Expressions += WMLExpression )*
+		Expressions += WMLExpression*
 	'[/' endName = ID ']'
 	;
 	
 WMLKey hidden(WS):
-	name = ID '=' value += WMLKeyValue* (EOL? '+' EOL? value+=WMLKeyValue+)* eol=(EOL|SL_COMMENT);
+	name = ID '=' value += WMLKeyValue* (EOL? '+' EOL? value += WMLKeyValue+)* eol=(EOL|SL_COMMENT);
 
 WMLKeyValue:
-	 {WMLKeyValue} WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
-	
+    {WMLKeyValue} WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
+
 WMLMacroCall:
 	'{' (point='./')? (relative='~')? name=ID
-		( params += WMLMacroParameter
-		| extraMacros += WMLMacroCall
-		)*
+        Parameters += WMLMacroCallParameter*
 	'}';
+
+WMLMacroCallParameter:
+    {WMLMacroCallParameter} WMLMacroParameter | WMLMacroCall;
 
 WMLArrayCall:
 	'[' value += WMLValue+ ']' ;
 
 WMLMacroDefine:
 	name = DEFINE
-		( Expressions += WMLValuedExpression )*
+        Expressions += WMLValuedExpression *
 	endName = ENDDEF;
 
 WMLPreprocIF:
 	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE)
-		( Expressions += WMLValuedExpression
-		| Elses += ELSE
-		)*
+		Expressions += WMLValuedExpression *
+		(
+		  Elses = ELSE 
+		  ElseExpressions += WMLValuedExpression +
+		)?
 	endName = ENDIF;
 
 WMLRootExpression:
@@ -49,7 +50,7 @@ WMLRootExpression:
 
 WMLExpression:
     WMLRootExpression | WMLKey ;
-    
+
 WMLValuedExpression: 
     WMLExpression | {WMLValuedExpression} WMLValue;
 

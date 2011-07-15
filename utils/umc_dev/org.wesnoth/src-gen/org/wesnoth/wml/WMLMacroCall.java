@@ -18,8 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.wesnoth.wml.WMLMacroCall#getPoint <em>Point</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLMacroCall#getRelative <em>Relative</em>}</li>
- *   <li>{@link org.wesnoth.wml.WMLMacroCall#getParams <em>Params</em>}</li>
- *   <li>{@link org.wesnoth.wml.WMLMacroCall#getExtraMacros <em>Extra Macros</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroCall#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface WMLMacroCall extends WMLKeyValue, WMLRootExpression
+public interface WMLMacroCall extends WMLKeyValue, WMLMacroCallParameter, WMLRootExpression
 {
   /**
    * Returns the value of the '<em><b>Point</b></em>' attribute.
@@ -84,35 +83,19 @@ public interface WMLMacroCall extends WMLKeyValue, WMLRootExpression
   void setRelative(String value);
 
   /**
-   * Returns the value of the '<em><b>Params</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+   * The list contents are of type {@link org.wesnoth.wml.WMLMacroCallParameter}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Params</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Params</em>' attribute list.
-   * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall_Params()
-   * @model unique="false"
-   * @generated
-   */
-  EList<String> getParams();
-
-  /**
-   * Returns the value of the '<em><b>Extra Macros</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wml.WMLMacroCall}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Extra Macros</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Extra Macros</em>' containment reference list.
-   * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall_ExtraMacros()
+   * @return the value of the '<em>Parameters</em>' containment reference list.
+   * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall_Parameters()
    * @model containment="true"
    * @generated
    */
-  EList<WMLMacroCall> getExtraMacros();
+  EList<WMLMacroCallParameter> getParameters();
 
 } // WMLMacroCall

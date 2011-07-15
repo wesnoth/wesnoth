@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xtext:Grammar xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xtext="http://www.eclipse.org/2008/Xtext" name="org.wesnoth.WML" definesHiddenTokens="true" hiddenTokens="//@rules.28 //@rules.29 //@rules.31">
+<xtext:Grammar xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xtext="http://www.eclipse.org/2008/Xtext" name="org.wesnoth.WML" definesHiddenTokens="true" hiddenTokens="//@rules.29 //@rules.30 //@rules.32">
   <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="wml">
     <ePackage href="http://www.wesnoth.org/WML#/"/>
   </metamodelDeclarations>
   <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
     <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
   </metamodelDeclarations>
-  <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="jvmTypes">
-    <ePackage href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
-  </metamodelDeclarations>
   <rules xsi:type="xtext:ParserRule" name="WMLRoot">
     <type metamodel="//@metamodelDeclarations.0">
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLRoot"/>
     </type>
     <alternatives xsi:type="xtext:Assignment" cardinality="*" feature="Expressions" operator="+=">
-      <terminal xsi:type="xtext:RuleCall" rule="//@rules.8"/>
+      <terminal xsi:type="xtext:RuleCall" rule="//@rules.9"/>
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLTag">
@@ -27,43 +24,43 @@
         <terminal xsi:type="xtext:Keyword" value="+"/>
       </elements>
       <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.27"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.28"/>
       </elements>
       <elements xsi:type="xtext:Keyword" value="]"/>
       <elements xsi:type="xtext:Assignment" cardinality="*" feature="Expressions" operator="+=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.9"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.10"/>
       </elements>
       <elements xsi:type="xtext:Keyword" value="[/"/>
       <elements xsi:type="xtext:Assignment" feature="endName" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.27"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.28"/>
       </elements>
       <elements xsi:type="xtext:Keyword" value="]"/>
     </alternatives>
   </rules>
-  <rules xsi:type="xtext:ParserRule" name="WMLKey" definesHiddenTokens="true" hiddenTokens="//@rules.29">
+  <rules xsi:type="xtext:ParserRule" name="WMLKey" definesHiddenTokens="true" hiddenTokens="//@rules.30">
     <type metamodel="//@metamodelDeclarations.0">
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLKey"/>
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.27"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.28"/>
       </elements>
       <elements xsi:type="xtext:Keyword" value="="/>
       <elements xsi:type="xtext:Assignment" cardinality="*" feature="value" operator="+=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.3"/>
       </elements>
       <elements xsi:type="xtext:Group" cardinality="*">
-        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="//@rules.28"/>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="//@rules.29"/>
         <elements xsi:type="xtext:Keyword" value="+"/>
-        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="//@rules.28"/>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="//@rules.29"/>
         <elements xsi:type="xtext:Assignment" cardinality="+" feature="value" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="//@rules.3"/>
         </elements>
       </elements>
       <elements xsi:type="xtext:Assignment" feature="eol" operator="=">
         <terminal xsi:type="xtext:Alternatives">
-          <elements xsi:type="xtext:RuleCall" rule="//@rules.28"/>
-          <elements xsi:type="xtext:RuleCall" rule="//@rules.31"/>
+          <elements xsi:type="xtext:RuleCall" rule="//@rules.29"/>
+          <elements xsi:type="xtext:RuleCall" rule="//@rules.32"/>
         </terminal>
       </elements>
     </alternatives>
@@ -79,11 +76,11 @@
             <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLKeyValue"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:RuleCall" rule="//@rules.14"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.15"/>
       </elements>
       <elements xsi:type="xtext:RuleCall" rule="//@rules.4"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.12"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.5"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.13"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.6"/>
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLMacroCall">
@@ -99,17 +96,28 @@
         <terminal xsi:type="xtext:Keyword" value="~"/>
       </elements>
       <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.27"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.28"/>
       </elements>
-      <elements xsi:type="xtext:Alternatives" cardinality="*">
-        <elements xsi:type="xtext:Assignment" feature="params" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="//@rules.13"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="extraMacros" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="//@rules.4"/>
-        </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="Parameters" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.5"/>
       </elements>
       <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="WMLMacroCallParameter">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLMacroCallParameter"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="//@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLMacroCallParameter"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.14"/>
+      </elements>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.4"/>
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLArrayCall">
@@ -119,7 +127,7 @@
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Keyword" value="["/>
       <elements xsi:type="xtext:Assignment" cardinality="+" feature="value" operator="+=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.14"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.15"/>
       </elements>
       <elements xsi:type="xtext:Keyword" value="]"/>
     </alternatives>
@@ -130,13 +138,13 @@
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.23"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.24"/>
       </elements>
       <elements xsi:type="xtext:Assignment" cardinality="*" feature="Expressions" operator="+=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.10"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.11"/>
       </elements>
       <elements xsi:type="xtext:Assignment" feature="endName" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.24"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.25"/>
       </elements>
     </alternatives>
   </rules>
@@ -147,22 +155,25 @@
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Assignment" feature="name" operator="=">
         <terminal xsi:type="xtext:Alternatives">
-          <elements xsi:type="xtext:RuleCall" rule="//@rules.19"/>
           <elements xsi:type="xtext:RuleCall" rule="//@rules.20"/>
-          <elements xsi:type="xtext:RuleCall" rule="//@rules.17"/>
+          <elements xsi:type="xtext:RuleCall" rule="//@rules.21"/>
           <elements xsi:type="xtext:RuleCall" rule="//@rules.18"/>
+          <elements xsi:type="xtext:RuleCall" rule="//@rules.19"/>
         </terminal>
       </elements>
-      <elements xsi:type="xtext:Alternatives" cardinality="*">
-        <elements xsi:type="xtext:Assignment" feature="Expressions" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="//@rules.10"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="Expressions" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.11"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Assignment" feature="Elses" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.22"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="Elses" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="//@rules.21"/>
+        <elements xsi:type="xtext:Assignment" cardinality="+" feature="ElseExpressions" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.11"/>
         </elements>
       </elements>
       <elements xsi:type="xtext:Assignment" feature="endName" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.22"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.23"/>
       </elements>
     </alternatives>
   </rules>
@@ -173,9 +184,9 @@
     <alternatives xsi:type="xtext:Alternatives">
       <elements xsi:type="xtext:RuleCall" rule="//@rules.1"/>
       <elements xsi:type="xtext:RuleCall" rule="//@rules.4"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.6"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.11"/>
       <elements xsi:type="xtext:RuleCall" rule="//@rules.7"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.12"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.8"/>
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLExpression">
@@ -183,7 +194,7 @@
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLExpression"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.8"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.9"/>
       <elements xsi:type="xtext:RuleCall" rule="//@rules.2"/>
     </alternatives>
   </rules>
@@ -192,14 +203,14 @@
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLValuedExpression"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.9"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.10"/>
       <elements xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="//@metamodelDeclarations.0">
             <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLValuedExpression"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:RuleCall" rule="//@rules.14"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.15"/>
       </elements>
     </alternatives>
   </rules>
@@ -208,7 +219,7 @@
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLTextdomain"/>
     </type>
     <alternatives xsi:type="xtext:Assignment" feature="name" operator="=">
-      <terminal xsi:type="xtext:RuleCall" rule="//@rules.25"/>
+      <terminal xsi:type="xtext:RuleCall" rule="//@rules.26"/>
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLLuaCode">
@@ -216,7 +227,7 @@
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLLuaCode"/>
     </type>
     <alternatives xsi:type="xtext:Assignment" feature="value" operator="=">
-      <terminal xsi:type="xtext:RuleCall" rule="//@rules.16"/>
+      <terminal xsi:type="xtext:RuleCall" rule="//@rules.17"/>
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLMacroParameter">
@@ -224,8 +235,8 @@
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.14"/>
       <elements xsi:type="xtext:RuleCall" rule="//@rules.15"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.16"/>
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLValue">
@@ -233,8 +244,8 @@
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.28"/>
       <elements xsi:type="xtext:RuleCall" rule="//@rules.27"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.26"/>
       <elements xsi:type="xtext:Keyword" value="_"/>
       <elements xsi:type="xtext:Keyword" value="~"/>
       <elements xsi:type="xtext:Keyword" value="."/>
@@ -243,7 +254,7 @@
       <elements xsi:type="xtext:Keyword" value="/"/>
       <elements xsi:type="xtext:Keyword" value="("/>
       <elements xsi:type="xtext:Keyword" value=")"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.30"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.31"/>
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="MacroTokens">

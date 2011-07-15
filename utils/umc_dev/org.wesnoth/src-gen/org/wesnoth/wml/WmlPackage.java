@@ -96,7 +96,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLValuedExpression()
    * @generated
    */
-  int WML_VALUED_EXPRESSION = 10;
+  int WML_VALUED_EXPRESSION = 11;
 
   /**
    * The number of structural features of the '<em>WML Valued Expression</em>' class.
@@ -115,7 +115,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLExpression()
    * @generated
    */
-  int WML_EXPRESSION = 9;
+  int WML_EXPRESSION = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -143,7 +143,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLRootExpression()
    * @generated
    */
-  int WML_ROOT_EXPRESSION = 8;
+  int WML_ROOT_EXPRESSION = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -321,22 +321,13 @@ public interface WmlPackage extends EPackage
   int WML_MACRO_CALL__RELATIVE = WML_KEY_VALUE_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Params</b></em>' attribute list.
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__PARAMS = WML_KEY_VALUE_FEATURE_COUNT + 3;
-
-  /**
-   * The feature id for the '<em><b>Extra Macros</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WML_MACRO_CALL__EXTRA_MACROS = WML_KEY_VALUE_FEATURE_COUNT + 4;
+  int WML_MACRO_CALL__PARAMETERS = WML_KEY_VALUE_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>WML Macro Call</em>' class.
@@ -345,7 +336,26 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 5;
+  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLMacroCallParameterImpl <em>WML Macro Call Parameter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.wesnoth.wml.impl.WMLMacroCallParameterImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroCallParameter()
+   * @generated
+   */
+  int WML_MACRO_CALL_PARAMETER = 5;
+
+  /**
+   * The number of structural features of the '<em>WML Macro Call Parameter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_CALL_PARAMETER_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wml.impl.WMLArrayCallImpl <em>WML Array Call</em>}' class.
@@ -355,7 +365,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLArrayCall()
    * @generated
    */
-  int WML_ARRAY_CALL = 5;
+  int WML_ARRAY_CALL = 6;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute list.
@@ -383,7 +393,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroDefine()
    * @generated
    */
-  int WML_MACRO_DEFINE = 6;
+  int WML_MACRO_DEFINE = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -429,7 +439,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLPreprocIF()
    * @generated
    */
-  int WML_PREPROC_IF = 7;
+  int WML_PREPROC_IF = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -450,7 +460,7 @@ public interface WmlPackage extends EPackage
   int WML_PREPROC_IF__EXPRESSIONS = WML_ROOT_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Elses</b></em>' attribute list.
+   * The feature id for the '<em><b>Elses</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -459,13 +469,22 @@ public interface WmlPackage extends EPackage
   int WML_PREPROC_IF__ELSES = WML_ROOT_EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Else Expressions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__ELSE_EXPRESSIONS = WML_ROOT_EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
    * The feature id for the '<em><b>End Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_PREPROC_IF__END_NAME = WML_ROOT_EXPRESSION_FEATURE_COUNT + 2;
+  int WML_PREPROC_IF__END_NAME = WML_ROOT_EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>WML Preproc IF</em>' class.
@@ -474,7 +493,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_PREPROC_IF_FEATURE_COUNT = WML_ROOT_EXPRESSION_FEATURE_COUNT + 3;
+  int WML_PREPROC_IF_FEATURE_COUNT = WML_ROOT_EXPRESSION_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wml.impl.WMLTextdomainImpl <em>WML Textdomain</em>}' class.
@@ -484,7 +503,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLTextdomain()
    * @generated
    */
-  int WML_TEXTDOMAIN = 11;
+  int WML_TEXTDOMAIN = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -512,7 +531,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLLuaCode()
    * @generated
    */
-  int WML_LUA_CODE = 12;
+  int WML_LUA_CODE = 13;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -672,26 +691,25 @@ public interface WmlPackage extends EPackage
   EAttribute getWMLMacroCall_Relative();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.wesnoth.wml.WMLMacroCall#getParams <em>Params</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLMacroCall#getParameters <em>Parameters</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Params</em>'.
-   * @see org.wesnoth.wml.WMLMacroCall#getParams()
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
+   * @see org.wesnoth.wml.WMLMacroCall#getParameters()
    * @see #getWMLMacroCall()
    * @generated
    */
-  EAttribute getWMLMacroCall_Params();
+  EReference getWMLMacroCall_Parameters();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLMacroCall#getExtraMacros <em>Extra Macros</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLMacroCallParameter <em>WML Macro Call Parameter</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Extra Macros</em>'.
-   * @see org.wesnoth.wml.WMLMacroCall#getExtraMacros()
-   * @see #getWMLMacroCall()
+   * @return the meta object for class '<em>WML Macro Call Parameter</em>'.
+   * @see org.wesnoth.wml.WMLMacroCallParameter
    * @generated
    */
-  EReference getWMLMacroCall_ExtraMacros();
+  EClass getWMLMacroCallParameter();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wml.WMLArrayCall <em>WML Array Call</em>}'.
@@ -768,15 +786,26 @@ public interface WmlPackage extends EPackage
   EReference getWMLPreprocIF_Expressions();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.wesnoth.wml.WMLPreprocIF#getElses <em>Elses</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLPreprocIF#getElses <em>Elses</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Elses</em>'.
+   * @return the meta object for the attribute '<em>Elses</em>'.
    * @see org.wesnoth.wml.WMLPreprocIF#getElses()
    * @see #getWMLPreprocIF()
    * @generated
    */
   EAttribute getWMLPreprocIF_Elses();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLPreprocIF#getElseExpressions <em>Else Expressions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Else Expressions</em>'.
+   * @see org.wesnoth.wml.WMLPreprocIF#getElseExpressions()
+   * @see #getWMLPreprocIF()
+   * @generated
+   */
+  EReference getWMLPreprocIF_ElseExpressions();
 
   /**
    * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLPreprocIF#getEndName <em>End Name</em>}'.
@@ -999,20 +1028,22 @@ public interface WmlPackage extends EPackage
     EAttribute WML_MACRO_CALL__RELATIVE = eINSTANCE.getWMLMacroCall_Relative();
 
     /**
-     * The meta object literal for the '<em><b>Params</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute WML_MACRO_CALL__PARAMS = eINSTANCE.getWMLMacroCall_Params();
+    EReference WML_MACRO_CALL__PARAMETERS = eINSTANCE.getWMLMacroCall_Parameters();
 
     /**
-     * The meta object literal for the '<em><b>Extra Macros</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLMacroCallParameterImpl <em>WML Macro Call Parameter</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.wesnoth.wml.impl.WMLMacroCallParameterImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroCallParameter()
      * @generated
      */
-    EReference WML_MACRO_CALL__EXTRA_MACROS = eINSTANCE.getWMLMacroCall_ExtraMacros();
+    EClass WML_MACRO_CALL_PARAMETER = eINSTANCE.getWMLMacroCallParameter();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLArrayCallImpl <em>WML Array Call</em>}' class.
@@ -1077,12 +1108,20 @@ public interface WmlPackage extends EPackage
     EReference WML_PREPROC_IF__EXPRESSIONS = eINSTANCE.getWMLPreprocIF_Expressions();
 
     /**
-     * The meta object literal for the '<em><b>Elses</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Elses</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute WML_PREPROC_IF__ELSES = eINSTANCE.getWMLPreprocIF_Elses();
+
+    /**
+     * The meta object literal for the '<em><b>Else Expressions</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_PREPROC_IF__ELSE_EXPRESSIONS = eINSTANCE.getWMLPreprocIF_ElseExpressions();
 
     /**
      * The meta object literal for the '<em><b>End Name</b></em>' attribute feature.

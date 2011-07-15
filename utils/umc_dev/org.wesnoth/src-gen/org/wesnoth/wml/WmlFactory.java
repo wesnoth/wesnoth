@@ -72,6 +72,15 @@ public interface WmlFactory extends EFactory
   WMLMacroCall createWMLMacroCall();
 
   /**
+   * Returns a new object of class '<em>WML Macro Call Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>WML Macro Call Parameter</em>'.
+   * @generated
+   */
+  WMLMacroCallParameter createWMLMacroCallParameter();
+
+  /**
    * Returns a new object of class '<em>WML Array Call</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

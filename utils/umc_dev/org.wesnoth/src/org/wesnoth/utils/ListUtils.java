@@ -8,21 +8,23 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ListUtils
 {
 	/**
-	 * Concatenates the list of strings using the provided separator
+	 * Concatenates the list of Objects using the provided separator
 	 *
 	 * @param list the list to concatenate
 	 * @param separator the separator used to concatenate the elements of the list
-	 * @return
+	 * @return A string with the string representation of that objects
 	 */
-	public static String concatenateList(List<String> list, String separator)
+	public static String concatenateList(List<? extends Object> list, String separator)
 	{
 		if (list == null || list.isEmpty())
 			return ""; //$NON-NLS-1$
+
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < list.size() - 1; i++)
 		{
@@ -42,16 +44,6 @@ public class ListUtils
 	 */
 	public static String concatenateArray(String[] array, String separator)
 	{
-		if (array == null || array.length == 0)
-			return ""; //$NON-NLS-1$
-
-		StringBuilder result = new StringBuilder();
-		for (int i = 0; i < array.length - 1; i++)
-		{
-			result.append(array[i] + separator);
-		}
-		result.append(array[array.length - 1]);
-
-		return result.toString();
+	    return concatenateList( Arrays.asList( array ), separator );
 	}
 }

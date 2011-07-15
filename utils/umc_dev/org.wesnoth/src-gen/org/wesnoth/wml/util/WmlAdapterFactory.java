@@ -104,6 +104,11 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
         return createWMLMacroCallAdapter();
       }
       @Override
+      public Adapter caseWMLMacroCallParameter(WMLMacroCallParameter object)
+      {
+        return createWMLMacroCallParameterAdapter();
+      }
+      @Override
       public Adapter caseWMLArrayCall(WMLArrayCall object)
       {
         return createWMLArrayCallAdapter();
@@ -236,6 +241,21 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWMLMacroCallAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLMacroCallParameter <em>WML Macro Call Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wml.WMLMacroCallParameter
+   * @generated
+   */
+  public Adapter createWMLMacroCallParameterAdapter()
   {
     return null;
   }

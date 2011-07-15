@@ -18,12 +18,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wesnoth.wml.WMLExpression;
 import org.wesnoth.wml.WMLMacroCall;
+import org.wesnoth.wml.WMLMacroCallParameter;
 import org.wesnoth.wml.WMLRootExpression;
 import org.wesnoth.wml.WMLValuedExpression;
 import org.wesnoth.wml.WmlPackage;
@@ -38,8 +38,7 @@ import org.wesnoth.wml.WmlPackage;
  *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#getPoint <em>Point</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#getRelative <em>Relative</em>}</li>
- *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#getParams <em>Params</em>}</li>
- *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#getExtraMacros <em>Extra Macros</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -108,24 +107,14 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   protected String relative = RELATIVE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getParams() <em>Params</em>}' attribute list.
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParams()
+   * @see #getParameters()
    * @generated
    * @ordered
    */
-  protected EList<String> params;
-
-  /**
-   * The cached value of the '{@link #getExtraMacros() <em>Extra Macros</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExtraMacros()
-   * @generated
-   * @ordered
-   */
-  protected EList<WMLMacroCall> extraMacros;
+  protected EList<WMLMacroCallParameter> parameters;
 
   /**
    * <!-- begin-user-doc -->
@@ -222,27 +211,13 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getParams()
+  public EList<WMLMacroCallParameter> getParameters()
   {
-    if (params == null)
+    if (parameters == null)
     {
-      params = new EDataTypeEList<String>(String.class, this, WmlPackage.WML_MACRO_CALL__PARAMS);
+      parameters = new EObjectContainmentEList<WMLMacroCallParameter>(WMLMacroCallParameter.class, this, WmlPackage.WML_MACRO_CALL__PARAMETERS);
     }
-    return params;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<WMLMacroCall> getExtraMacros()
-  {
-    if (extraMacros == null)
-    {
-      extraMacros = new EObjectContainmentEList<WMLMacroCall>(WMLMacroCall.class, this, WmlPackage.WML_MACRO_CALL__EXTRA_MACROS);
-    }
-    return extraMacros;
+    return parameters;
   }
 
   /**
@@ -255,8 +230,8 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   {
     switch (featureID)
     {
-      case WmlPackage.WML_MACRO_CALL__EXTRA_MACROS:
-        return ((InternalEList<?>)getExtraMacros()).basicRemove(otherEnd, msgs);
+      case WmlPackage.WML_MACRO_CALL__PARAMETERS:
+        return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -277,10 +252,8 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
         return getPoint();
       case WmlPackage.WML_MACRO_CALL__RELATIVE:
         return getRelative();
-      case WmlPackage.WML_MACRO_CALL__PARAMS:
-        return getParams();
-      case WmlPackage.WML_MACRO_CALL__EXTRA_MACROS:
-        return getExtraMacros();
+      case WmlPackage.WML_MACRO_CALL__PARAMETERS:
+        return getParameters();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -305,13 +278,9 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
       case WmlPackage.WML_MACRO_CALL__RELATIVE:
         setRelative((String)newValue);
         return;
-      case WmlPackage.WML_MACRO_CALL__PARAMS:
-        getParams().clear();
-        getParams().addAll((Collection<? extends String>)newValue);
-        return;
-      case WmlPackage.WML_MACRO_CALL__EXTRA_MACROS:
-        getExtraMacros().clear();
-        getExtraMacros().addAll((Collection<? extends WMLMacroCall>)newValue);
+      case WmlPackage.WML_MACRO_CALL__PARAMETERS:
+        getParameters().clear();
+        getParameters().addAll((Collection<? extends WMLMacroCallParameter>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -336,11 +305,8 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
       case WmlPackage.WML_MACRO_CALL__RELATIVE:
         setRelative(RELATIVE_EDEFAULT);
         return;
-      case WmlPackage.WML_MACRO_CALL__PARAMS:
-        getParams().clear();
-        return;
-      case WmlPackage.WML_MACRO_CALL__EXTRA_MACROS:
-        getExtraMacros().clear();
+      case WmlPackage.WML_MACRO_CALL__PARAMETERS:
+        getParameters().clear();
         return;
     }
     super.eUnset(featureID);
@@ -362,10 +328,8 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
         return POINT_EDEFAULT == null ? point != null : !POINT_EDEFAULT.equals(point);
       case WmlPackage.WML_MACRO_CALL__RELATIVE:
         return RELATIVE_EDEFAULT == null ? relative != null : !RELATIVE_EDEFAULT.equals(relative);
-      case WmlPackage.WML_MACRO_CALL__PARAMS:
-        return params != null && !params.isEmpty();
-      case WmlPackage.WML_MACRO_CALL__EXTRA_MACROS:
-        return extraMacros != null && !extraMacros.isEmpty();
+      case WmlPackage.WML_MACRO_CALL__PARAMETERS:
+        return parameters != null && !parameters.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -378,6 +342,13 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   @Override
   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
+    if (baseClass == WMLMacroCallParameter.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
     if (baseClass == WMLValuedExpression.class)
     {
       switch (derivedFeatureID)
@@ -411,6 +382,13 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   @Override
   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
+    if (baseClass == WMLMacroCallParameter.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
     if (baseClass == WMLValuedExpression.class)
     {
       switch (baseFeatureID)
@@ -453,8 +431,6 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
     result.append(point);
     result.append(", relative: ");
     result.append(relative);
-    result.append(", params: ");
-    result.append(params);
     result.append(')');
     return result.toString();
   }

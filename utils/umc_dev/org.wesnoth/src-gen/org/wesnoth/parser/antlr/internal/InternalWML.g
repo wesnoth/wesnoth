@@ -579,12 +579,12 @@ ruleWMLMacroCall returns [EObject current=null]
 	    }
 
 )
-)((
+)(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallAccess().getParamsWMLMacroParameterParserRuleCall_4_0_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallAccess().getParametersWMLMacroCallParameterParserRuleCall_4_0(), currentNode); 
 	    }
-		lv_params_4_0=ruleWMLMacroParameter		{
+		lv_Parameters_4_0=ruleWMLMacroCallParameter		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLMacroCallRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -592,9 +592,9 @@ ruleWMLMacroCall returns [EObject current=null]
 	        try {
 	       		add(
 	       			$current, 
-	       			"params",
-	        		lv_params_4_0, 
-	        		"WMLMacroParameter", 
+	       			"Parameters",
+	        		lv_Parameters_4_0, 
+	        		"WMLMacroCallParameter", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
@@ -603,34 +603,61 @@ ruleWMLMacroCall returns [EObject current=null]
 	    }
 
 )
-)
-    |(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallAccess().getExtraMacrosWMLMacroCallParserRuleCall_4_1_0(), currentNode); 
-	    }
-		lv_extraMacros_5_0=ruleWMLMacroCall		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroCallRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"extraMacros",
-	        		lv_extraMacros_5_0, 
-	        		"WMLMacroCall", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-))*	'}' 
+)*	'}' 
     {
         createLeafNode(grammarAccess.getWMLMacroCallAccess().getRightCurlyBracketKeyword_5(), null); 
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleWMLMacroCallParameter
+entryRuleWMLMacroCallParameter returns [EObject current=null] 
+	:
+	{ currentNode = createCompositeNode(grammarAccess.getWMLMacroCallParameterRule(), currentNode); }
+	 iv_ruleWMLMacroCallParameter=ruleWMLMacroCallParameter 
+	 { $current=$iv_ruleWMLMacroCallParameter.current; } 
+	 EOF 
+;
+
+// Rule WMLMacroCallParameter
+ruleWMLMacroCallParameter returns [EObject current=null] 
+    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+    }
+    @after { resetLookahead(); 
+    	lastConsumedNode = currentNode;
+    }:
+(((
+    { 
+        temp=factory.create(grammarAccess.getWMLMacroCallParameterAccess().getWMLMacroCallParameterAction_0_0().getType().getClassifier());
+        $current = temp; 
+        temp = null;
+        CompositeNode newNode = createCompositeNode(grammarAccess.getWMLMacroCallParameterAccess().getWMLMacroCallParameterAction_0_0(), currentNode.getParent());
+    newNode.getChildren().add(currentNode);
+    moveLookaheadInfo(currentNode, newNode);
+    currentNode = newNode; 
+        associateNodeWithAstElement(currentNode, $current); 
+    }
+)
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallParameterAccess().getWMLMacroParameterParserRuleCall_0_1(), currentNode); 
+    }
+ruleWMLMacroParameter
+    { 
+        currentNode = currentNode.getParent();
+    }
+)
+    |
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallParameterAccess().getWMLMacroCallParserRuleCall_1(), currentNode); 
+    }
+    this_WMLMacroCall_2=ruleWMLMacroCall
+    { 
+        $current = $this_WMLMacroCall_2.current; 
+        currentNode = currentNode.getParent();
     }
 )
 ;
@@ -895,10 +922,10 @@ ruleWMLPreprocIF returns [EObject current=null]
 )
 
 )
-)((
+)(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getExpressionsWMLValuedExpressionParserRuleCall_1_0_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getExpressionsWMLValuedExpressionParserRuleCall_1_0(), currentNode); 
 	    }
 		lv_Expressions_1_0=ruleWMLValuedExpression		{
 	        if ($current==null) {
@@ -919,12 +946,11 @@ ruleWMLPreprocIF returns [EObject current=null]
 	    }
 
 )
-)
-    |(
+)*((
 (
 		lv_Elses_2_0=RULE_ELSE
 		{
-			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getElsesELSETerminalRuleCall_1_1_0(), "Elses"); 
+			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getElsesELSETerminalRuleCall_2_0_0(), "Elses"); 
 		}
 		{
 	        if ($current==null) {
@@ -932,7 +958,7 @@ ruleWMLPreprocIF returns [EObject current=null]
 	            associateNodeWithAstElement(currentNode, $current);
 	        }
 	        try {
-	       		add(
+	       		set(
 	       			$current, 
 	       			"Elses",
 	        		lv_Elses_2_0, 
@@ -944,11 +970,35 @@ ruleWMLPreprocIF returns [EObject current=null]
 	    }
 
 )
-))*(
+)(
 (
-		lv_endName_3_0=RULE_ENDIF
+		{ 
+	        currentNode=createCompositeNode(grammarAccess.getWMLPreprocIFAccess().getElseExpressionsWMLValuedExpressionParserRuleCall_2_1_0(), currentNode); 
+	    }
+		lv_ElseExpressions_3_0=ruleWMLValuedExpression		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getWMLPreprocIFRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        try {
+	       		add(
+	       			$current, 
+	       			"ElseExpressions",
+	        		lv_ElseExpressions_3_0, 
+	        		"WMLValuedExpression", 
+	        		currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+
+)
+)+)?(
+(
+		lv_endName_4_0=RULE_ENDIF
 		{
-			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getEndNameENDIFTerminalRuleCall_2_0(), "endName"); 
+			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getEndNameENDIFTerminalRuleCall_3_0(), "endName"); 
 		}
 		{
 	        if ($current==null) {
@@ -959,7 +1009,7 @@ ruleWMLPreprocIF returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"endName",
-	        		lv_endName_3_0, 
+	        		lv_endName_4_0, 
 	        		"ENDIF", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {

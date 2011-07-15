@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -35,6 +34,7 @@ import org.wesnoth.wml.WmlPackage;
  * <ul>
  *   <li>{@link org.wesnoth.wml.impl.WMLPreprocIFImpl#getExpressions <em>Expressions</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLPreprocIFImpl#getElses <em>Elses</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLPreprocIFImpl#getElseExpressions <em>Else Expressions</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLPreprocIFImpl#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
@@ -54,14 +54,34 @@ public class WMLPreprocIFImpl extends WMLRootExpressionImpl implements WMLPrepro
   protected EList<WMLValuedExpression> expressions;
 
   /**
-   * The cached value of the '{@link #getElses() <em>Elses</em>}' attribute list.
+   * The default value of the '{@link #getElses() <em>Elses</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getElses()
    * @generated
    * @ordered
    */
-  protected EList<String> elses;
+  protected static final String ELSES_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getElses() <em>Elses</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getElses()
+   * @generated
+   * @ordered
+   */
+  protected String elses = ELSES_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getElseExpressions() <em>Else Expressions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getElseExpressions()
+   * @generated
+   * @ordered
+   */
+  protected EList<WMLValuedExpression> elseExpressions;
 
   /**
    * The default value of the '{@link #getEndName() <em>End Name</em>}' attribute.
@@ -123,13 +143,36 @@ public class WMLPreprocIFImpl extends WMLRootExpressionImpl implements WMLPrepro
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getElses()
+  public String getElses()
   {
-    if (elses == null)
-    {
-      elses = new EDataTypeEList<String>(String.class, this, WmlPackage.WML_PREPROC_IF__ELSES);
-    }
     return elses;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setElses(String newElses)
+  {
+    String oldElses = elses;
+    elses = newElses;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_PREPROC_IF__ELSES, oldElses, elses));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<WMLValuedExpression> getElseExpressions()
+  {
+    if (elseExpressions == null)
+    {
+      elseExpressions = new EObjectContainmentEList<WMLValuedExpression>(WMLValuedExpression.class, this, WmlPackage.WML_PREPROC_IF__ELSE_EXPRESSIONS);
+    }
+    return elseExpressions;
   }
 
   /**
@@ -167,6 +210,8 @@ public class WMLPreprocIFImpl extends WMLRootExpressionImpl implements WMLPrepro
     {
       case WmlPackage.WML_PREPROC_IF__EXPRESSIONS:
         return ((InternalEList<?>)getExpressions()).basicRemove(otherEnd, msgs);
+      case WmlPackage.WML_PREPROC_IF__ELSE_EXPRESSIONS:
+        return ((InternalEList<?>)getElseExpressions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -185,6 +230,8 @@ public class WMLPreprocIFImpl extends WMLRootExpressionImpl implements WMLPrepro
         return getExpressions();
       case WmlPackage.WML_PREPROC_IF__ELSES:
         return getElses();
+      case WmlPackage.WML_PREPROC_IF__ELSE_EXPRESSIONS:
+        return getElseExpressions();
       case WmlPackage.WML_PREPROC_IF__END_NAME:
         return getEndName();
     }
@@ -207,8 +254,11 @@ public class WMLPreprocIFImpl extends WMLRootExpressionImpl implements WMLPrepro
         getExpressions().addAll((Collection<? extends WMLValuedExpression>)newValue);
         return;
       case WmlPackage.WML_PREPROC_IF__ELSES:
-        getElses().clear();
-        getElses().addAll((Collection<? extends String>)newValue);
+        setElses((String)newValue);
+        return;
+      case WmlPackage.WML_PREPROC_IF__ELSE_EXPRESSIONS:
+        getElseExpressions().clear();
+        getElseExpressions().addAll((Collection<? extends WMLValuedExpression>)newValue);
         return;
       case WmlPackage.WML_PREPROC_IF__END_NAME:
         setEndName((String)newValue);
@@ -231,7 +281,10 @@ public class WMLPreprocIFImpl extends WMLRootExpressionImpl implements WMLPrepro
         getExpressions().clear();
         return;
       case WmlPackage.WML_PREPROC_IF__ELSES:
-        getElses().clear();
+        setElses(ELSES_EDEFAULT);
+        return;
+      case WmlPackage.WML_PREPROC_IF__ELSE_EXPRESSIONS:
+        getElseExpressions().clear();
         return;
       case WmlPackage.WML_PREPROC_IF__END_NAME:
         setEndName(END_NAME_EDEFAULT);
@@ -253,7 +306,9 @@ public class WMLPreprocIFImpl extends WMLRootExpressionImpl implements WMLPrepro
       case WmlPackage.WML_PREPROC_IF__EXPRESSIONS:
         return expressions != null && !expressions.isEmpty();
       case WmlPackage.WML_PREPROC_IF__ELSES:
-        return elses != null && !elses.isEmpty();
+        return ELSES_EDEFAULT == null ? elses != null : !ELSES_EDEFAULT.equals(elses);
+      case WmlPackage.WML_PREPROC_IF__ELSE_EXPRESSIONS:
+        return elseExpressions != null && !elseExpressions.isEmpty();
       case WmlPackage.WML_PREPROC_IF__END_NAME:
         return END_NAME_EDEFAULT == null ? endName != null : !END_NAME_EDEFAULT.equals(endName);
     }

@@ -593,18 +593,17 @@ public class ResourceUtils
             if ( ( name.equals( "campaigns" ) || //$NON-NLS-1$
                  name.equals( "add-ons" ) ) && //$NON-NLS-1$
                  // the call should contain just string values
-                 macro.getExtraMacros( ).isEmpty( ) &&
-                 macro.getParams( ).size( ) > 2 &&
-                 macro.getParams( ).get( 0 ).equals( "/" ) ) //$NON-NLS-1$
+                 macro.getParameters( ).size( ) > 2 &&
+                 macro.getParameters( ).get( 0 ).equals( "/" ) ) //$NON-NLS-1$
             {
                 // check if the macro includes directories local
                 // to this project
                 String projectPath = project.getLocation( ).toOSString( );
 
-                if ( projectPath.contains( macro.getParams( ).get( 1 ) ) ) {
+                if ( projectPath.contains( macro.getParameters( ).get( 1 ).toString( ) ) ) {
                     containersToAdd.add(
                         ListUtils.concatenateList(
-                           macro.getParams( ).subList( 3, macro.getParams( ).size( ) ), "" ) ); //$NON-NLS-1$
+                           macro.getParameters( ).subList( 3, macro.getParameters( ).size( ) ), "" ) ); //$NON-NLS-1$
                 }
             }
         }
