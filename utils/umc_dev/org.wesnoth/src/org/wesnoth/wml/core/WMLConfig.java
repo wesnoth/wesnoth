@@ -50,4 +50,13 @@ public class WMLConfig
 	{
 		return variables_;
 	}
+
+	@Override
+	public String toString()
+	{
+	    return filename_ + "; ScenarioId: " +
+	            ScenarioId == null ? "" : ScenarioId +
+	            "; CampaignId: " +
+	            CampaignId == null ? "" : CampaignId;
+	}
 }

@@ -26,6 +26,8 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
@@ -39,10 +41,13 @@ import org.wesnoth.utils.AntUtils;
 import org.wesnoth.utils.ExternalToolInvoker;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.utils.WMLSaxHandler;
+import org.wesnoth.utils.WMLGrammarUtils;
 import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WorkspaceUtils;
-import org.wesnoth.wml.core.ConfigFile;
+import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLRoot;
+import org.wesnoth.wml.WMLTag;
+import org.wesnoth.wml.core.WMLConfig;
 
 /**
  * The builder does the following steps in order to create and ensure
@@ -191,7 +196,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
                 if ( deltaKind == IResourceDelta.REMOVED ) {
                     projectCache_.getDependencyList( ).removeNode( file );
-                    projectCache_.getConfigs().remove( file.getProjectRelativePath( ).toString( ) );
+                    projectCache_.getWMLConfigs().remove( file.getProjectRelativePath( ).toString( ) );
 
                 } else if ( deltaKind == IResourceDelta.ADDED  ){
                     DependencyListNode newNode = list.addNode( file );
@@ -308,30 +313,66 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				PreprocessorUtils.getInstance().preprocessFile(file, macrosFilePath, defines);
 				monitor.worked(5);
 
+				// process the AST ( Abstract Syntax Tree ) to get info for the file
 				monitor.subTask( String.format( Messages.WesnothProjectBuilder_22, filePath ) );
 
-				WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
-					getWMLSAXHandlerFromResource(
-						PreprocessorUtils.getInstance().getPreprocessedFilePath(file, false, false).toString(),
-						new WMLSaxHandler(file.getLocation().toOSString()));
+				WMLConfig config = projectCache_.getWMLConfig( filePath );
+				WMLRoot root = ResourceUtils.getWMLRoot( file );
+				TreeIterator<EObject> itor = root.eAllContents( );
+				WMLTag currentTag = null;
+				String currentTagName = "";
 
-				if (handler != null)
-				{
-					ConfigFile cfg = handler.getConfigFile();
-					projectCache_.getConfigs().put( file.getProjectRelativePath( ).toString( ), cfg);
-					if (cfg.IsScenario)
-					{
-						if ( StringUtils.isNullOrEmpty( cfg.ScenarioId ) )
-						{
-							Logger.getInstance().log("added scenarioId [" + cfg.ScenarioId + //$NON-NLS-1$
-									"] for file: " + filePath ); //$NON-NLS-1$
-						}
-						else
-						{
-						    projectCache_.getConfigs().remove( filePath );
-						}
-					}
+				while ( itor.hasNext( ) ) {
+				    EObject object = itor.next( );
+
+				    if ( object instanceof WMLTag ) {
+				        currentTag = ( WMLTag ) object;
+				        currentTagName = currentTag.getName( );
+
+				        if ( currentTagName.equals( "scenario" ) )
+				            config.IsScenario = true;
+				        else if ( currentTagName.equals( "campaign" ) )
+				            config.IsCampaign = true;
+				    }
+				    else if ( object instanceof WMLKey ) {
+				        if ( currentTag != null ) {
+				            WMLKey key = ( WMLKey ) object;
+				            String keyName = key.getName( );
+
+				            if ( keyName.equals( "id" ) ) {
+				                if ( currentTagName.equals( "scenario" ) )
+				                    config.ScenarioId = WMLGrammarUtils.getKeyValue( key.getValue( ) );
+				                else if ( currentTagName.equals( "campaign" ) )
+				                    config.CampaignId = WMLGrammarUtils.getKeyValue( key.getValue( ) );
+				            }
+				        }
+				    }
 				}
+
+				System.out.println( "Config: " + config );
+
+//				WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
+//					getWMLSAXHandlerFromResource(
+//						PreprocessorUtils.getInstance().getPreprocessedFilePath(file, false, false).toString(),
+//						new WMLSaxHandler(file.getLocation().toOSString()));
+//
+//				if (handler != null)
+//				{
+//					WMLConfig cfg = handler.getConfigFile();
+//					projectCache_.getWMLConfigs().put( file.getProjectRelativePath( ).toString( ), cfg);
+//					if (cfg.IsScenario)
+//					{
+//						if ( StringUtils.isNullOrEmpty( cfg.ScenarioId ) )
+//						{
+//							Logger.getInstance().log("added scenarioId [" + cfg.ScenarioId + //$NON-NLS-1$
+//									"] for file: " + filePath ); //$NON-NLS-1$
+//						}
+//						else
+//						{
+//						    projectCache_.getWMLConfigs().remove( filePath );
+//						}
+//					}
+//				}
 				monitor.worked(10);
 
 			} catch (Exception e)
