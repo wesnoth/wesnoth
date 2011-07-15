@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.wesnoth.Messages;
@@ -47,12 +48,11 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 //	@Check(CheckType.NORMAL)
 	public void checkNormalTagName(WMLTag tag)
 	{
-	    ICompositeNode node = NodeUtil.getNodeAdapter(tag).getParserNode();
+	    ICompositeNode node = NodeModelUtils.getNode( tag );
 		if (node != null)
 		{
-		    ILeafNode parentNode = (ILeafNode)
-						NodeUtil.findLeafNodeAtOffset(node.getParent(),
-								node.getParent().getOffset() + 2);
+		    ILeafNode parentNode = NodeModelUtils.findLeafNodeAtOffset(node.getParent(),
+            		node.getParent().getOffset() + 2);
 
 			boolean found = false;
 			String searchName = parentNode.getText();

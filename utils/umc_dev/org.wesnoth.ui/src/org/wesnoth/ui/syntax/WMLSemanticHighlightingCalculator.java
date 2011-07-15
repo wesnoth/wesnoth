@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
@@ -141,20 +142,16 @@ public class WMLSemanticHighlightingCalculator implements ISemanticHighlightingC
 	@Override
 	public INode getFirstFeatureNode(EObject semantic, String feature)
 	{
-		NodeAdapter adapter = NodeUtil.getNodeAdapter(semantic);
-		if (adapter != null)
+		ICompositeNode node = NodeModelUtils.findActualNodeFor( semantic );
+		if (node != null)
 		{
-			ICompositeNode node = adapter.getParserNode();
-			if (node != null)
+			for (INode child : node.getChildren())
 			{
-				for (INode child : node.getChildren())
+				if (child instanceof ILeafNode)
 				{
-					if (child instanceof ILeafNode)
+					if (feature.equals(((ILeafNode) child).getFeature()))
 					{
-						if (feature.equals(((ILeafNode) child).getFeature()))
-						{
-							return child;
-						}
+						return child;
 					}
 				}
 			}

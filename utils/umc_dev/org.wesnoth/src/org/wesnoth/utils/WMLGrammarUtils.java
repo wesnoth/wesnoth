@@ -12,9 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.impl.CompositeNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.wesnoth.wml.WMLExpression;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLKeyValue;
@@ -84,7 +85,7 @@ public class WMLGrammarUtils
      */
     public static String toStringWMLKeyValue( WMLKeyValue keyValue )
     {
-        ICompositeNode node = NodeUtil.getNode( keyValue );
+        ICompositeNode node = NodeModelUtils.getNode( keyValue );
         if ( node == null )
             return "";
 

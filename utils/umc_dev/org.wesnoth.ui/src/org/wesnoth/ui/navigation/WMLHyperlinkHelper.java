@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.text.Region;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkAcceptor;
@@ -35,11 +36,12 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 			IHyperlinkAcceptor acceptor)
 	{
 		super.createHyperlinksByOffset(resource, offset, acceptor);
-		ICompositeNode rootNode = NodeUtil.getRootNode(resource.getContents().get(0));
+		//TODO: test this
+		ICompositeNode rootNode = resource.getParseResult( ).getRootNode( );
 		if (rootNode == null)
 			return;
 
-		ILeafNode node = (ILeafNode)NodeUtil.findLeafNodeAtOffset(rootNode, offset);
+		ILeafNode node = NodeModelUtils.findLeafNodeAtOffset(rootNode, offset);
 		if (node == null)
 			return;
 
@@ -52,7 +54,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
         Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( file ) );
 
 		createMacroHyperlink( file, paths, node, acceptor, resource );
-		ILeafNode prevNode = (ILeafNode)NodeUtil.findLeafNodeAtOffset(rootNode,
+		ILeafNode prevNode = NodeModelUtils.findLeafNodeAtOffset(rootNode,
 									node.getOffset() - 1);
 		if(prevNode == null)
 			return;

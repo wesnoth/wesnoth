@@ -17,6 +17,7 @@ import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
@@ -49,10 +50,10 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 	{
 		if (state == null || state.getContents() == null || state.getContents().isEmpty())
 			return null;
-		ICompositeNode rootNode = NodeUtil.getRootNode(state.getContents().get(0));
+		ICompositeNode rootNode = state.getParseResult( ).getRootNode( );
 		if (rootNode == null)
 			return null;
-		INode node = NodeUtil.findLeafNodeAtOffset(rootNode, offset);
+		ILeafNode node = NodeModelUtils.findLeafNodeAtOffset(rootNode, offset);
 		if (node == null)
 			return null;
 

@@ -15,7 +15,9 @@ import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
@@ -28,11 +30,16 @@ import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLTag;
 
+import com.google.inject.Inject;
+
 /**
  * A handler that handles pressing F2 on a resource in the editor
  */
 public class WMLDocHandler extends AbstractHandler
 {
+    @Inject
+    private EObjectAtOffsetHelper eObjectAtOffsetHelper;
+
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
 		try
@@ -53,7 +60,7 @@ public class WMLDocHandler extends AbstractHandler
                 	positionAbsolute.y +=20;
 
                 	IParseResult parseResult = resource.getParseResult();
-                	INode abstractNode = ParseTreeUtil.getCurrentOrPrecedingNodeByOffset(parseResult.getRootNode(), selection.getOffset());
+                	INode abstractNode = NodeModelUtils.getNode( eObjectAtOffsetHelper.resolveElementAt( resource, selection.getOffset( ) ) );
                 	if (abstractNode == null || abstractNode.eContainer() == null)
                 		return;
 

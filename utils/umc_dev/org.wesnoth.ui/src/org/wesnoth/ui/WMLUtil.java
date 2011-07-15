@@ -13,14 +13,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 
 public class WMLUtil
 {
 	public static String debug(EObject root)
 	{
-		ICompositeNode node = NodeUtil.getNode(root);
-		Iterable<INode> contents = NodeUtil.getAllContents(node);
+		ICompositeNode node = NodeModelUtils.getNode(root);
+		Iterable<INode> contents = node.getAsTreeIterable( );
 		StringBuffer text = new StringBuffer();
 		for (INode abstractNode : contents)
 		{

@@ -19,7 +19,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.wesnoth.installs.WesnothInstallsUtils;
@@ -278,15 +278,14 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
 		if (parentTag != null)
 		{
-		    ICompositeNode node = NodeUtil.getNode(model);
+		    ICompositeNode node = NodeModelUtils.getNode(model);
 
 			String parentIndent = ""; //$NON-NLS-1$
 			if (context.getCurrentNode().getOffset() > 0)
-				parentIndent = ((ILeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
+				parentIndent = NodeModelUtils.findLeafNodeAtOffset(node.getParent(),
 						context.getCurrentNode().getOffset() -
 						// if we have a non-rule proposal, subtract 1
-						(ruleProposal ? 0 : 1)
-						)).getText();
+						(ruleProposal ? 0 : 1) ).getText();
 
 			// remove ugly new lines that break indentation
 			parentIndent =  parentIndent.replace("\r", "").replace("\n", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$

@@ -16,6 +16,7 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -45,7 +46,7 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 						if(parseResult == null)
 							return;
 						ICompositeNode rootNode = parseResult.getRootNode();
-						ILeafNode node = (ILeafNode) NodeUtil.findLeafNodeAtOffset(rootNode, command.offset);
+						ILeafNode node = NodeModelUtils.findLeafNodeAtOffset(rootNode, command.offset);
 
 						String tagName = ""; //$NON-NLS-1$
 						EList<INode> children = node.getParent().getParent().getChildren();
