@@ -9,6 +9,7 @@
 package org.wesnoth.ui;
 
 import org.eclipse.jface.text.hyperlink.IHyperlinkDetector;
+import org.eclipse.jface.text.source.ICharacterPairMatcher;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
@@ -35,11 +36,11 @@ import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.ui.navigation.WMLHyperlinkHelper;
 import org.wesnoth.ui.resource.WMLLocationInFileProvider;
 import org.wesnoth.ui.syntax.WMLAntlrTokenToAttributeIdMapper;
+import org.wesnoth.ui.syntax.WMLCharacterPairMatcher;
 import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
 import org.wesnoth.ui.syntax.WMLHighlightingHelper;
 import org.wesnoth.ui.syntax.WMLHighlightingReconciler;
 import org.wesnoth.ui.syntax.WMLSemanticHighlightingCalculator;
-import org.wesnoth.ui.syntax.bracketmatching.WMLBracketMatching;
 
 import com.google.inject.Binder;
 import com.google.inject.Provider;
@@ -77,11 +78,11 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 		return WMLSemanticHighlightingCalculator.class;
 	}
 
-	public Class<? extends IBracketMatcher> bindIBracketMatcher()
-	{
-		// XtextGrammarBracketMatcher
-		return WMLBracketMatching.class;
-	}
+    @Override
+    public ICharacterPairMatcher bindICharacterPairMatcher()
+    {
+        return new WMLCharacterPairMatcher( new char[] { '(', ')', '{', '}', '[', ']' } );
+    }
 
 	public Class<? extends XtextEditor> bindEditor()
 	{

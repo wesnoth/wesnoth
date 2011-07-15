@@ -60,6 +60,7 @@ public class WMLDocHandler extends AbstractHandler
                 	positionAbsolute.y +=20;
 
                 	IParseResult parseResult = resource.getParseResult();
+                	//TODO: check this
                 	INode abstractNode = NodeModelUtils.getNode( eObjectAtOffsetHelper.resolveElementAt( resource, selection.getOffset( ) ) );
                 	if (abstractNode == null || abstractNode.eContainer() == null)
                 		return;
