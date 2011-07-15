@@ -76,67 +76,41 @@ void side_actions::set_team_index(size_t team_index)
 	team_index_defined_ = true;
 }
 
-void side_actions::draw_hex(const map_location& hex)
+void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 {
-	std::vector<int> numbers_to_draw;
-	int main_number = -1;
-	std::set<int> secondary_numbers;
+	std::vector<int>& numbers_to_draw = result.numbers_to_draw;
+	std::vector<size_t>& team_numbers = result.team_numbers;
+	int& main_number = result.main_number;
+	std::set<size_t>& secondary_numbers = result.secondary_numbers;
 	boost::shared_ptr<highlight_visitor> highlighter =
 						resources::whiteboard->get_highlighter().lock();
 
 	const_iterator it;
 	for(it = begin(); it != end(); ++it)
 	{
-		//call the action's own draw_hex method
-		(*it)->draw_hex(hex);
-
 		if((*it)->is_numbering_hex(hex))
 		{
 			//store number corresponding to iterator's position + 1
 			size_t number = (it - begin()) + 1;
+			size_t index = numbers_to_draw.size();
 			numbers_to_draw.push_back(number);
+			team_numbers.push_back(team_index());
+
 			if (highlighter)
 			{
 				if (highlighter->get_main_highlight().lock() == *it) {
-					main_number = number;
+					main_number = index;
 				}
 
 				foreach(weak_action_ptr action, highlighter->get_secondary_highlights())
 				{
 					if (action.lock() == *it)
 					{
-						secondary_numbers.insert(number);
+						secondary_numbers.insert(index);
 					}
 				}
 			}
 		}
-	}
-
-	const double x_offset_base = 0.0;
-	const double y_offset_base = 0.2;
-	//position 0,0 in the hex is the upper left corner
-	//0.8 = horizontal coord., close to the right side of the hex
-	const double x_origin = 0.8 - numbers_to_draw.size() * x_offset_base;
-	//0.5 = halfway in the hex vertically
-	const double y_origin = 0.5 - numbers_to_draw.size() * (y_offset_base / 2);
-	double x_offset = 0, y_offset = 0;
-	foreach(int number, numbers_to_draw)
-	{
-		std::stringstream number_text;
-		number_text << number;
-		size_t font_size = 15;
-		if (number == main_number) font_size = 19;
-		foreach(int secondary_number, secondary_numbers)
-		{
-			if (number == secondary_number) font_size = 17;
-		}
-		SDL_Color color; color.r = 255; color.g = 255; color.b = 0; //yellow
-		const double x_in_hex = x_origin + x_offset;
-		const double y_in_hex = y_origin + y_offset;
-		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
-				number_text.str(), font_size, color, x_in_hex, y_in_hex);
-		x_offset += x_offset_base;
-		y_offset += y_offset_base;
 	}
 }
 

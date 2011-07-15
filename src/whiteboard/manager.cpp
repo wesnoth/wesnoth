@@ -40,6 +40,7 @@
 #include "team.hpp"
 #include "unit_display.hpp"
 
+#include <boost/lexical_cast.hpp>
 #include <sstream>
 
 namespace wb {
@@ -307,12 +308,66 @@ void manager::set_real_unit_map()
 	}
 }
 
+/* private */
+void draw_numbers(map_location const& hex, side_actions::numbers_t numbers)
+{
+	std::vector<int>& numbers_to_draw = numbers.numbers_to_draw;
+	///@todo Use team_numbers to color the numbers appropriately.
+//	std::vector<size_t>& team_numbers = numbers.team_numbers;
+	int& main_number = numbers.main_number;
+	std::set<size_t>& secondary_numbers = numbers.secondary_numbers;
+
+	const double x_offset_base = 0.0;
+	const double y_offset_base = 0.2;
+	//position 0,0 in the hex is the upper left corner
+	//0.8 = horizontal coord., close to the right side of the hex
+	const double x_origin = 0.8 - numbers_to_draw.size() * x_offset_base;
+	//0.5 = halfway in the hex vertically
+	const double y_origin = 0.5 - numbers_to_draw.size() * (y_offset_base / 2);
+	double x_offset = 0, y_offset = 0;
+
+	size_t size = numbers_to_draw.size();
+	for(size_t i=0; i<size; ++i)
+	{
+		int number = numbers_to_draw[i];
+
+		std::string number_text = boost::lexical_cast<std::string>(number);
+		size_t font_size;
+		if (int(i) == main_number) font_size = 19;
+		else if (secondary_numbers.find(i)!=secondary_numbers.end()) font_size = 17;
+		else font_size = 15;
+
+		///@todo Use resources::teams->at(team_numbers[i]).color() to determine color
+		SDL_Color color; color.r = 255; color.g = 255; color.b = 0; //for now, always yellow
+		const double x_in_hex = x_origin + x_offset;
+		const double y_in_hex = y_origin + y_offset;
+		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+				number_text, font_size, color, x_in_hex, y_in_hex);
+		x_offset += x_offset_base;
+		y_offset += y_offset_base;
+	}
+}
+
 void manager::draw_hex(const map_location& hex)
 {
 	if (!wait_for_side_init_)
 	{
-		foreach(team& t,*resources::teams)
-			t.get_side_actions()->draw_hex(hex);
+		//Info about the action numbers to be displayed on screen.
+		side_actions::numbers_t numbers;
+
+		//Draw graphics from every team's actions, beginning with the current_team.
+		size_t current_team = resources::controller->current_side() - 1;
+		size_t num_teams = resources::teams->size();
+		for(size_t iteration = 0; iteration < num_teams; ++iteration)
+		{
+			size_t team_index = (current_team+iteration) % num_teams;
+			side_actions& sa = *resources::teams->at(team_index).get_side_actions();
+			foreach(action_ptr act, sa)
+				act->draw_hex(hex);
+			sa.get_numbers(hex,numbers);
+		}
+
+		draw_numbers(hex,numbers);
 	}
 
 	//Little hack to make the TAB key work properly: check at every draw if it's pressed,

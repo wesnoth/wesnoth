@@ -55,8 +55,9 @@ public:
 	/// Get the underlying action container
 	const action_queue& actions() const { return actions_; }
 
-	/** Gets called when display is drawing a hex, to allow drawing symbols to the screen */
-	void draw_hex(const map_location& hex);
+	struct numbers_t;
+	/** Gets called when display is drawing a hex to determine which numbers to draw on it */
+	void get_numbers(const map_location& hex, numbers_t& result);
 
 	/**
 	 * Executes the first action in the queue, and then deletes it.
@@ -240,6 +241,21 @@ private:
 
 /** Dumps side_actions on a stream, for debug purposes. */
 std::ostream &operator<<(std::ostream &s, wb::side_actions const& side_actions);
+
+struct side_actions::numbers_t
+{
+	std::vector<int> numbers_to_draw;
+	std::vector<size_t> team_numbers;
+	int main_number;
+	std::set<size_t> secondary_numbers;
+
+	numbers_t()
+			: numbers_to_draw()
+			, team_numbers()
+			, main_number(-1)
+			, secondary_numbers()
+		{}
+};
 
 }
 
