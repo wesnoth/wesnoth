@@ -68,7 +68,7 @@ public class ProjectCache
         wesnothFile_ = new File(project.getLocation().toOSString()  +
         "/.wesnoth"); //$NON-NLS-1$
 
-        definesFile_ = new File (PreprocessorUtils.getInstance().getDefinesLocation( project ));
+        definesFile_ = new File (PreprocessorUtils.getInstance().getMacrosLocation( project ));
         treeCacheFile_ = new File ( WorkspaceUtils.getProjectTemporaryFolder( project ) + "/_TREE_CACHE_.bin" ); //$NON-NLS-1$
 
         ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);

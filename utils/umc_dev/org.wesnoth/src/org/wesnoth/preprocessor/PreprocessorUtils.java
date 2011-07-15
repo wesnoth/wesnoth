@@ -233,10 +233,10 @@ public class PreprocessorUtils
 	 * specified resource.
 	 *
 	 * Currently we store just a defines file per project.
-	 * @param resource
-	 * @return
+	 * @param resource The resource to get the location for
+	 * @return A string that points to the macros file.
 	 */
-	public String getDefinesLocation(IResource resource)
+	public String getMacrosLocation(IResource resource)
 	{
 		return WorkspaceUtils.getProjectTemporaryFolder( resource.getProject( ) ) +
 				"/_MACROS_.cfg"; //$NON-NLS-1$

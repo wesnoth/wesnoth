@@ -291,7 +291,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		{
             IFile file = (IFile) resource;
             String filePath = file.getProjectRelativePath( ).toString( );
-            String macrosFilePath = PreprocessorUtils.getInstance( ).getDefinesLocation( file );
+            String macrosFilePath = PreprocessorUtils.getInstance( ).getMacrosLocation( file );
 
 			Logger.getInstance().log( "Resource: " + filePath ); //$NON-NLS-1$
 
