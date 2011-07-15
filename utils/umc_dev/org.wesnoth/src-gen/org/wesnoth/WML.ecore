@@ -20,7 +20,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
         eType="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKeyValue"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLMacroCall" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCallParameter platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression">

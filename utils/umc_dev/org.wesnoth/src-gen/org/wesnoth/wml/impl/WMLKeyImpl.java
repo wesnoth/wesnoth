@@ -59,7 +59,7 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
    * @generated
    * @ordered
    */
-  protected static final String EOL_EDEFAULT = null;
+  protected static final String EOL_EDEFAULT = "";
 
   /**
    * The cached value of the '{@link #getEol() <em>Eol</em>}' attribute.

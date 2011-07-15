@@ -17,4 +17,5 @@ process( ecore::EAttribute this ):
     if name == 'plus' then setDefaultValueLiteral( "" )
     else if name == 'point' then setDefaultValueLiteral( "" )
     else if name == 'relative' then setDefaultValueLiteral( "" )
-    else if name == 'name' then setDefaultValueLiteral( "" );
+    else if name == 'name' then setDefaultValueLiteral( "" )
+    else if name == 'eol' then setDefaultValueLiteral( "" );

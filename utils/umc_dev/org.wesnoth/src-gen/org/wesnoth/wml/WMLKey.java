@@ -45,6 +45,7 @@ public interface WMLKey extends WMLExpression
 
   /**
    * Returns the value of the '<em><b>Eol</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Eol</em>' attribute isn't clear,
@@ -54,7 +55,7 @@ public interface WMLKey extends WMLExpression
    * @return the value of the '<em>Eol</em>' attribute.
    * @see #setEol(String)
    * @see org.wesnoth.wml.WmlPackage#getWMLKey_Eol()
-   * @model
+   * @model default=""
    * @generated
    */
   String getEol();
