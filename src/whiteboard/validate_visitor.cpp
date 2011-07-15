@@ -238,7 +238,7 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 	//invalidate recruit hex so number display is updated properly
 	resources::screen->invalidate(recruit->recruit_hex_);
 
-	int team_index = viewer_actions_.team_index();
+	size_t team_index = recruit->team_index();
 
 	//Check that destination hex is still free
 	if(resources::units->find(recruit->recruit_hex_) != resources::units->end())
@@ -283,7 +283,7 @@ void validate_visitor::visit_recall(recall_ptr recall)
 	//invalidate recall hex so number display is updated properly
 	resources::screen->invalidate(recall->recall_hex_);
 
-	int team_index = viewer_actions_.team_index();
+	size_t team_index = recall->team_index();
 
 	//Check that destination hex is still free
 	if(resources::units->find(recall->recall_hex_) != resources::units->end())
