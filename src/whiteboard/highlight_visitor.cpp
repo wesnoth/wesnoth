@@ -67,12 +67,11 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	mouseover_hex_ = hex;
 	//if we're right over a unit, just highlight all of this unit's actions
 	unit_map::const_iterator it = unit_map_.find(hex);
-	if (it != unit_map_.end()
-			&& it->side() == resources::screen->viewing_side())
+	if (it != unit_map_.end())
 	{
 		selection_candidate_ = &(*it);
 
-		if(side_actions_->unit_has_actions(&*it))
+		if(resources::teams->at(it->side()-1).get_side_actions()->unit_has_actions(&*it))
 		{
 			owner_unit_ = &(*it);
 		}
@@ -377,15 +376,24 @@ void highlight_visitor::find_main_highlight()
 	//@todo re-enable the following assert once I find out what happends to
 	// viewing side assignments after victory
 	//assert(side_actions_->team_index() == resources::screen->viewing_team());
-	side_actions::reverse_iterator rend = side_actions_->rend();
-	side_actions::reverse_iterator action = side_actions_->rbegin();
-	for (; action != rend; ++action )
+
+	//Iterate backwards over all actions from all teams until the main highlight is found
+	size_t current_team = resources::controller->current_side() - 1;
+	size_t num_teams = resources::teams->size();
+	for(size_t iteration = 0; iteration < num_teams; ++iteration)
 	{
-		(*action)->accept(*this);
-		if (action_ptr main = main_highlight_.lock())
+		size_t team_index = (current_team+num_teams-1-iteration) % num_teams;
+		side_actions& sa = *resources::teams->at(team_index).get_side_actions();
+		side_actions::reverse_iterator rend = sa.rend();
+		side_actions::reverse_iterator action = sa.rbegin();
+		for (; action != rend; ++action )
 		{
-			owner_unit_ = main->get_unit();
-			break;
+			(*action)->accept(*this);
+			if (action_ptr main = main_highlight_.lock())
+			{
+				owner_unit_ = main->get_unit();
+				return;
+			}
 		}
 	}
 }
