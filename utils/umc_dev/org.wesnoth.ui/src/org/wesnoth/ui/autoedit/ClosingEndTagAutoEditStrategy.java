@@ -8,11 +8,11 @@
  *******************************************************************************/
 package org.wesnoth.ui.autoedit;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.DocumentCommand;
 import org.eclipse.jface.text.IAutoEditStrategy;
 import org.eclipse.jface.text.IDocument;
+import org.eclipse.xtext.nodemodel.BidiIterator;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
@@ -46,41 +46,57 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 						if(parseResult == null)
 							return;
 						ICompositeNode rootNode = parseResult.getRootNode();
-						ILeafNode node = NodeModelUtils.findLeafNodeAtOffset(rootNode, command.offset);
+						ILeafNode currentNode = NodeModelUtils.findLeafNodeAtOffset(rootNode, command.offset);
 
 						String tagName = ""; //$NON-NLS-1$
-						EList<INode> children = node.getParent().getParent().getChildren();
-						for(int i = 0 ;i < children.size(); ++i)
-						{
-							if ((children.get(i) instanceof ILeafNode) == false)
-								continue;
-							// we need one more child
-							if (i+1 >= children.size())
-								continue;
-							if (((ILeafNode)children.get(i)).getText().equals("[")) //$NON-NLS-1$
-							{
-								if (children.get(i+1) instanceof ILeafNode)
-								{
-									// in case we have [+
-									if (((ILeafNode)children.get(i+1)).getText().equals("+")) //$NON-NLS-1$
-									{
-										if (i+2 >= children.size() ||
-											(children.get(i+2) instanceof ILeafNode) == false)
-											continue;
-										tagName = ((ILeafNode)children.get(i+2)).getText();
-									}
-									else
-									{
-										tagName = ((ILeafNode)children.get(i+1)).getText();
-									}
-								}
-							}
+						BidiIterator<INode> itor = currentNode.getParent( ).getChildren( ).iterator( );
+
+						//TODO test the new closing tag strategy
+
+						INode prevNode = null;
+						while ( itor.hasNext( ) ) {
+						    INode node = itor.next( );
+
+						    if ( node instanceof ILeafNode == false)
+						        continue;
+
+						    if ( itor.hasNext( ) )
+
+						    prevNode = node;
 						}
-						if (tagName.isEmpty() == false)
-						{
-							command.shiftsCaret = true;
-							command.text = ("/" + tagName + "]"); //$NON-NLS-1$ //$NON-NLS-2$
-						}
+
+//						EList<INode> children = currentNode.getParent().getParent().getChildren();
+//						for(int i = 0 ;i < children.size(); ++i)
+//						{
+//							if ((children.get(i) instanceof ILeafNode) == false)
+//								continue;
+//							// we need one more child
+//							if (i+1 >= children.size())
+//								continue;
+//							if (((ILeafNode)children.get(i)).getText().equals("[")) //$NON-NLS-1$
+//							{
+//								if (children.get(i+1) instanceof ILeafNode)
+//								{
+//									// in case we have [+
+//									if (((ILeafNode)children.get(i+1)).getText().equals("+")) //$NON-NLS-1$
+//									{
+//										if (i+2 >= children.size() ||
+//											(children.get(i+2) instanceof ILeafNode) == false)
+//											continue;
+//										tagName = ((ILeafNode)children.get(i+2)).getText();
+//									}
+//									else
+//									{
+//										tagName = ((ILeafNode)children.get(i+1)).getText();
+//									}
+//								}
+//							}
+//						}
+//						if (tagName.isEmpty() == false)
+//						{
+//							command.shiftsCaret = true;
+//							command.text = ("/" + tagName + "]"); //$NON-NLS-1$ //$NON-NLS-2$
+//						}
 					}
 				});
 			}

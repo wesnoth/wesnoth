@@ -11,9 +11,9 @@ package org.wesnoth.ui.labeling.wmldoc;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
@@ -62,13 +62,13 @@ public class WMLDocHandler extends AbstractHandler
                 	IParseResult parseResult = resource.getParseResult();
                 	//TODO: check this
                 	INode abstractNode = NodeModelUtils.getNode( eObjectAtOffsetHelper.resolveElementAt( resource, selection.getOffset( ) ) );
-                	if (abstractNode == null || abstractNode.eContainer() == null)
+                	if (abstractNode == null )
                 		return;
 
-                	ICompositeNode container = (ICompositeNode)abstractNode.eContainer();
-                    if (container.getElement() instanceof WMLMacroCall)
+                	EObject grammarElement = abstractNode.getGrammarElement( );
+                    if ( grammarElement instanceof WMLMacroCall )
                     {
-                    	WMLMacroCall macro = (WMLMacroCall)container.getElement();
+                    	WMLMacroCall macro = (WMLMacroCall) grammarElement;
                     	Define define = ProjectUtils.getCacheForProject(
                     			WMLUtil.getActiveEditorFile().getProject())
                     			.getDefines().get(macro.getName());
@@ -85,13 +85,13 @@ public class WMLDocHandler extends AbstractHandler
                     		presenter_.open();
                     	}
                     }
-                    else if (container.getElement() instanceof WMLTag)
+                    else if ( grammarElement instanceof WMLTag)
                     {
                     	if (presenter_ == null)
                     	{
                     		presenter_ = new WMLDocInformationPresenter(
                     					editor.getSite().getShell(),
-                    					new WMLDocTag( installName, ((WMLTag)container.getElement()).getName()),
+                    					new WMLDocTag( installName, ( ( WMLTag ) grammarElement ).getName() ),
                     					positionAbsolute);
                     		presenter_.create();
                     	}

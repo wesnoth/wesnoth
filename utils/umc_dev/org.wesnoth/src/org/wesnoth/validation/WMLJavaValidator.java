@@ -56,7 +56,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 
 			boolean found = false;
 			String searchName = parentNode.getText();
-			if (node.getParent().eContainer() == null) // root node
+			if (node.getParent() == null) // root node
 			{
 				searchName = "root"; //$NON-NLS-1$
 			}

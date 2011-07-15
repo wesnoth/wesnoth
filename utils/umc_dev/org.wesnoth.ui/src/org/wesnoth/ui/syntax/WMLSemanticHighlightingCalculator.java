@@ -9,8 +9,10 @@
 package org.wesnoth.ui.syntax;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
@@ -51,41 +53,41 @@ public class WMLSemanticHighlightingCalculator implements ISemanticHighlightingC
 			String beginId = null, endId = null;
 			if (current instanceof WMLTag)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName( ));
+				begin = getFirstFeatureNode( current, WmlPackage.Literals.WML_EXPRESSION__NAME );
 				beginId = WMLHighlightingConfiguration.RULE_WML_TAG;
 
-				end = getFirstFeatureNode(current, WmlPackage.Literals.WML_TAG__END_NAME.getName());
+				end = getFirstFeatureNode( current, WmlPackage.Literals.WML_TAG__END_NAME );
 				endId = WMLHighlightingConfiguration.RULE_WML_TAG;
 			}
 			else if (current instanceof WMLKey)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName());
+				begin = getFirstFeatureNode( current, WmlPackage.Literals.WML_EXPRESSION__NAME );
 				beginId = WMLHighlightingConfiguration.RULE_WML_KEY;
 			}
 			else if (current instanceof WMLMacroCall)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName());
+				begin = getFirstFeatureNode( current, WmlPackage.Literals.WML_EXPRESSION__NAME );
 				beginId = WMLHighlightingConfiguration.RULE_WML_MACRO_CALL;
 			}
 			else if (current instanceof WMLTextdomain)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName());
+				begin = getFirstFeatureNode( current, WmlPackage.Literals.WML_EXPRESSION__NAME );
 				beginId = WMLHighlightingConfiguration.RULE_WML_TEXTDOMAIN;
 			}
 			else if (current instanceof WMLPreprocIF)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName());
+				begin = getFirstFeatureNode( current, WmlPackage.Literals.WML_EXPRESSION__NAME );
 				beginId = WMLHighlightingConfiguration.RULE_WML_IF;
 
-				end = getFirstFeatureNode(current, WmlPackage.Literals.WML_PREPROC_IF__END_NAME.getName());
+				end = getFirstFeatureNode( current, WmlPackage.Literals.WML_EXPRESSION__NAME );
 				endId = WMLHighlightingConfiguration.RULE_WML_IF;
 			}
 			else if (current instanceof WMLMacroDefine)
 			{
-				begin = getFirstFeatureNode(current, WmlPackage.eINSTANCE.getWMLExpression_Name( ).getName());
+				begin = getFirstFeatureNode( current, WmlPackage.Literals.WML_EXPRESSION__NAME );
 				beginId = WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE;
 
-				end = getFirstFeatureNode(current, WmlPackage.Literals.WML_MACRO_DEFINE__END_NAME.getName());
+				end = getFirstFeatureNode( current, WmlPackage.Literals.WML_MACRO_DEFINE__END_NAME );
 				endId = WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE;
 			}
 
@@ -139,24 +141,22 @@ public class WMLSemanticHighlightingCalculator implements ISemanticHighlightingC
 		}
 	}
 
-	@Override
-	public INode getFirstFeatureNode(EObject semantic, String feature)
+	public INode getFirstFeatureNode(EObject semantic, EStructuralFeature feature)
 	{
 		ICompositeNode node = NodeModelUtils.findActualNodeFor( semantic );
-		if (node != null)
+		if (node == null)
+		    return null;
+
+		for (INode child : node.getChildren())
 		{
-			for (INode child : node.getChildren())
-			{
-				if (child instanceof ILeafNode)
-				{
-					if (feature.equals(((ILeafNode) child).getFeature()))
-					{
-						return child;
-					}
-				}
-			}
+			if ( child instanceof ILeafNode == false)
+			    continue;
+
+		    List<INode> features = NodeModelUtils.findNodesForFeature(
+		            child.getGrammarElement( ), feature );
+		    if ( !features.isEmpty( ) )
+		        return features.get( 0 );
 		}
 		return null;
 	}
-
 }

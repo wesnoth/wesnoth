@@ -9,6 +9,7 @@
 package org.wesnoth.ui.navigation;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.Region;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
@@ -70,15 +71,16 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 	private void createMacroHyperlink( IFile file, Paths paths, ILeafNode node,
 			IHyperlinkAcceptor acceptor, XtextResource resource)
 	{
-		if (node.eContainer() == null ||
-			(node.eContainer() instanceof ICompositeNode) == false)
+		if ( node instanceof ICompositeNode == false)
 			return;
 
-		ICompositeNode container = (ICompositeNode)node.eContainer();
-		if ((container.getElement() instanceof WMLMacroCall) == false)
+		//TODO: test
+		ICompositeNode container = (ICompositeNode)node;
+		EObject grammarElement = container.getGrammarElement( );
+		if ( grammarElement instanceof WMLMacroCall == false)
 			return;
 
-		WMLMacroCall macro = (WMLMacroCall)container.getElement();
+		WMLMacroCall macro = (WMLMacroCall) grammarElement;
 
 		// get the define for the macro
 		Define define = ProjectUtils.getCacheForProject(file.getProject()).getDefines().get(macro.getName());

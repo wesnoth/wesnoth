@@ -176,7 +176,7 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
 
     private boolean isWMLTag(INode node)
     {
-        return (node.eContainer() != null &&
-                node.eContainer() instanceof ICompositeNode && ((ICompositeNode) node.eContainer()).getElement() instanceof WMLTag);
+        return ( node != null &&
+                 node.getGrammarElement( ) instanceof WMLTag );
     }
 }
