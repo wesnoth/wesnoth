@@ -12,10 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtext.parsetree.AbstractNode;
-import org.eclipse.xtext.parsetree.CompositeNode;
-import org.eclipse.xtext.parsetree.LeafNode;
-import org.eclipse.xtext.parsetree.NodeUtil;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.impl.CompositeNode;
 import org.wesnoth.wml.WMLExpression;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLKeyValue;
@@ -91,8 +90,8 @@ public class WMLGrammarUtils
 
         StringBuilder result = new StringBuilder( );
 
-        for ( AbstractNode tmpNode : node.getChildren( ) ) {
-            for ( LeafNode leafNode : tmpNode.getLeafNodes( ) ) {
+        for ( INode tmpNode : node.getChildren( ) ) {
+            for ( ILeafNode leafNode : tmpNode.getLeafNodes( ) ) {
                 if ( leafNode.getLength( ) == 0 )
                     continue;
 

@@ -18,9 +18,8 @@ import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.parsetree.CompositeNode;
-import org.eclipse.xtext.parsetree.LeafNode;
-import org.eclipse.xtext.parsetree.NodeUtil;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.wesnoth.installs.WesnothInstallsUtils;
@@ -279,7 +278,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
 		if (parentTag != null)
 		{
-			CompositeNode node = NodeUtil.getNode(model);
+		    ICompositeNode node = NodeUtil.getNode(model);
 
 			String parentIndent = ""; //$NON-NLS-1$
 			if (context.getCurrentNode().getOffset() > 0)

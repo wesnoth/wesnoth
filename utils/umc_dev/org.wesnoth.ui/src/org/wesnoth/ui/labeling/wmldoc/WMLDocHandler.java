@@ -13,10 +13,9 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.impl.CompositeNode;
 import org.eclipse.xtext.parser.IParseResult;
-import org.eclipse.xtext.parsetree.AbstractNode;
-import org.eclipse.xtext.parsetree.CompositeNode;
-import org.eclipse.xtext.parsetree.ParseTreeUtil;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
@@ -54,7 +53,7 @@ public class WMLDocHandler extends AbstractHandler
                 	positionAbsolute.y +=20;
 
                 	IParseResult parseResult = resource.getParseResult();
-                	AbstractNode abstractNode = ParseTreeUtil.getCurrentOrPrecedingNodeByOffset(parseResult.getRootNode(), selection.getOffset());
+                	INode abstractNode = ParseTreeUtil.getCurrentOrPrecedingNodeByOffset(parseResult.getRootNode(), selection.getOffset());
                 	if (abstractNode == null || abstractNode.eContainer() == null)
                 		return;
 

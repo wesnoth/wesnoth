@@ -12,9 +12,8 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.parsetree.CompositeNode;
-import org.eclipse.xtext.parsetree.LeafNode;
-import org.eclipse.xtext.parsetree.NodeUtil;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.wesnoth.Messages;
@@ -48,7 +47,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 //	@Check(CheckType.NORMAL)
 	public void checkNormalTagName(WMLTag tag)
 	{
-		CompositeNode node = NodeUtil.getNodeAdapter(tag).getParserNode();
+	    ICompositeNode node = NodeUtil.getNodeAdapter(tag).getParserNode();
 		if (node != null)
 		{
 			LeafNode parentNode = (LeafNode)

@@ -13,11 +13,11 @@ import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.DocumentCommand;
 import org.eclipse.jface.text.IAutoEditStrategy;
 import org.eclipse.jface.text.IDocument;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.parser.IParseResult;
-import org.eclipse.xtext.parsetree.AbstractNode;
-import org.eclipse.xtext.parsetree.CompositeNode;
-import org.eclipse.xtext.parsetree.LeafNode;
-import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
@@ -45,11 +45,11 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 						IParseResult parseResult = state.getParseResult();
 						if(parseResult == null)
 							return;
-						CompositeNode rootNode = parseResult.getRootNode();
-						LeafNode node = (LeafNode) NodeUtil.findLeafNodeAtOffset(rootNode, command.offset);
+						ICompositeNode rootNode = parseResult.getRootNode();
+						ILeafNode node = (LeafNode) NodeUtil.findLeafNodeAtOffset(rootNode, command.offset);
 
 						String tagName = ""; //$NON-NLS-1$
-						EList<AbstractNode> children = node.getParent().getParent().getChildren();
+						EList<INode> children = node.getParent().getParent().getChildren();
 						for(int i = 0 ;i < children.size(); ++i)
 						{
 							if ((children.get(i) instanceof LeafNode) == false)

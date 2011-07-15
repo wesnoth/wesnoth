@@ -11,9 +11,8 @@ package org.wesnoth.ui.navigation;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.text.Region;
-import org.eclipse.xtext.parsetree.CompositeNode;
-import org.eclipse.xtext.parsetree.LeafNode;
-import org.eclipse.xtext.parsetree.NodeUtil;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkAcceptor;
@@ -36,7 +35,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 			IHyperlinkAcceptor acceptor)
 	{
 		super.createHyperlinksByOffset(resource, offset, acceptor);
-		CompositeNode rootNode = NodeUtil.getRootNode(resource.getContents().get(0));
+		ICompositeNode rootNode = NodeUtil.getRootNode(resource.getContents().get(0));
 		if (rootNode == null)
 			return;
 
@@ -72,10 +71,10 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 			IHyperlinkAcceptor acceptor, XtextResource resource)
 	{
 		if (node.eContainer() == null ||
-			(node.eContainer() instanceof CompositeNode) == false)
+			(node.eContainer() instanceof ICompositeNode) == false)
 			return;
 
-		CompositeNode container = (CompositeNode)node.eContainer();
+		ICompositeNode container = (ICompositeNode)node.eContainer();
 		if ((container.getElement() instanceof WMLMacroCall) == false)
 			return;
 

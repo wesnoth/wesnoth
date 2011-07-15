@@ -13,9 +13,8 @@ import java.util.List;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.Position;
-import org.eclipse.xtext.parsetree.CompositeNode;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
-import org.eclipse.xtext.ui.editor.folding.IFoldingRegion;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTextdomain;
@@ -30,7 +29,7 @@ public class WMLFoldingRegionProvider extends DefaultFoldingRegionProvider
 	}
 	@Override
 	protected Position getPosition(IXtextDocument xtextDocument,
-			CompositeNode compositeNode)
+			ICompositeNode compositeNode)
 	{
 		Assert.isNotNull(compositeNode, "parameter 'compositeNode' must not be null"); //$NON-NLS-1$
 		if (compositeNode.getElement() instanceof WMLKey &&

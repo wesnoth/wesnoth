@@ -14,12 +14,10 @@ import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.Region;
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.Keyword;
-import org.eclipse.xtext.parsetree.AbstractNode;
-import org.eclipse.xtext.parsetree.CompositeNode;
-import org.eclipse.xtext.parsetree.LeafNode;
-import org.eclipse.xtext.parsetree.NodeUtil;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.impl.CompositeNode;
+import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.ui.editor.bracketmatching.DefaultBracketMatcher;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.Pair;
@@ -54,7 +52,7 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 		CompositeNode rootNode = NodeUtil.getRootNode(state.getContents().get(0));
 		if (rootNode == null)
 			return null;
-		AbstractNode node = NodeUtil.findLeafNodeAtOffset(rootNode, offset);
+		INode node = NodeUtil.findLeafNodeAtOffset(rootNode, offset);
 		if (node == null)
 			return null;
 
@@ -68,7 +66,7 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 		}
 		if (element != null)
 		{
-			AbstractNode correspondingNode = findMatchingNode(node, element, forwardSearch);
+		    INode correspondingNode = findMatchingNode(node, element, forwardSearch);
 			if (correspondingNode != null)
 			{
 				return new Region(correspondingNode.getOffset(), correspondingNode.getLength());
@@ -145,7 +143,7 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 	public LeafNode findWMLLeafNodeAtOffset(CompositeNode parseTreeRootNode, int offset, boolean findClosed)
 	{
 		boolean isClosed = false;
-		for (AbstractNode node : parseTreeRootNode.getChildren())
+		for (INode node : parseTreeRootNode.getChildren())
 		{
 			if (node.getTotalOffset() <= offset)
 			{
@@ -166,7 +164,7 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 		return null;
 	}
 
-	private boolean isWMLTag(AbstractNode node)
+	private boolean isWMLTag(INode node)
 	{
 		return (node.eContainer() != null &&
 				node.eContainer() instanceof CompositeNode && ((CompositeNode) node.eContainer()).getElement() instanceof WMLTag);

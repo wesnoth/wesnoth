@@ -12,11 +12,11 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xtext.parsetree.AbstractNode;
-import org.eclipse.xtext.parsetree.CompositeNode;
-import org.eclipse.xtext.parsetree.LeafNode;
-import org.eclipse.xtext.parsetree.NodeAdapter;
-import org.eclipse.xtext.parsetree.NodeUtil;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.impl.AbstractNode;
+import org.eclipse.xtext.nodemodel.impl.CompositeNode;
+import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.SemanticHighlightingCalculator;
@@ -48,7 +48,7 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 			if (skipNode(acceptor, current))
 				continue;
 
-			AbstractNode begin=null, end=null;
+			INode begin=null, end=null;
 			String beginId = null, endId = null;
 			if (current instanceof WMLTag)
 			{
@@ -124,13 +124,13 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 		if (node == null || id == null)
 			return;
 
-		if (node instanceof LeafNode)
+		if (node instanceof ILeafNode)
 		{
 			acceptor.addPosition(node.getOffset(), node.getLength(), id);
 		}
 		else
 		{
-			for (LeafNode leaf : node.getLeafNodes())
+			for (ILeafNode leaf : node.getLeafNodes())
 			{
 				if (!leaf.isHidden())
 				{
@@ -141,7 +141,7 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 	}
 
 	@Override
-	public AbstractNode getFirstFeatureNode(EObject semantic, String feature)
+	public INode getFirstFeatureNode(EObject semantic, String feature)
 	{
 		NodeAdapter adapter = NodeUtil.getNodeAdapter(semantic);
 		if (adapter != null)
@@ -149,7 +149,7 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 			CompositeNode node = adapter.getParserNode();
 			if (node != null)
 			{
-				for (AbstractNode child : node.getChildren())
+				for (INode child : node.getChildren())
 				{
 					if (child instanceof LeafNode)
 					{

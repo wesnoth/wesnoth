@@ -8,7 +8,7 @@
  *******************************************************************************/
 package org.wesnoth.ui.syntax;
 
-import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.DefaultAntlrTokenToAttributeIdMapper;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper;
 
 public class WMLAntlrTokenToAttributeIdMapper extends DefaultAntlrTokenToAttributeIdMapper
 {

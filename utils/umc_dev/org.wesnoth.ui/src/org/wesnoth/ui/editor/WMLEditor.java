@@ -49,15 +49,15 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.FileStoreEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.texteditor.IDocumentProvider;
-import org.eclipse.xtext.parsetree.LeafNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.impl.LeafNode;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
-import org.wesnoth.WesnothPlugin;
 import org.wesnoth.Logger;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.ui.Messages;
 import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.syntax.WMLHighlightingHelper;
-
 
 import com.google.inject.Inject;
 
@@ -67,7 +67,7 @@ public class WMLEditor extends XtextEditor
 	protected static final String ENCODING_UTF8 = "utf-8"; //$NON-NLS-1$
 
 	protected IHighlightingHelper highlightingHelper_;
-	protected LeafNode currentHighlightedNode_;
+	protected ILeafNode currentHighlightedNode_;
 
 	@Inject
 	private IExtXtextEditorCustomizer editorCustomizer;
@@ -107,7 +107,7 @@ public class WMLEditor extends XtextEditor
 		highlightingHelper_ = helper;
 	}
 
-	public LeafNode getCurrentHighlightedNode()
+	public ILeafNode getCurrentHighlightedNode()
 	{
 		return currentHighlightedNode_;
 	}
