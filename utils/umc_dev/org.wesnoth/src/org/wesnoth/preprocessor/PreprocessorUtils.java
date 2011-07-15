@@ -248,8 +248,7 @@ public class PreprocessorUtils
 	 */
 	public void saveTimestamps()
 	{
-		IPath path = WesnothPlugin.getDefault().getStateLocation();
-		String filename = path.append("preprocessed.txt").toOSString(); //$NON-NLS-1$
+		String filename = WorkspaceUtils.getTemporaryFolder( ) + "preprocessed.txt"; //$NON-NLS-1$
 		DialogSettings settings = new DialogSettings("preprocessed"); //$NON-NLS-1$
 		try
 		{
