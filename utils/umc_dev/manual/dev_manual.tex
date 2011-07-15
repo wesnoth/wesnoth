@@ -5,7 +5,7 @@
 \usepackage[colorlinks=true]{hyperref}
 \usepackage{verbatim}
 \usepackage{enumerate}
-\usepackage{wrapfig} 
+\usepackage{wrapfig}
 
 \title{Wesnoth UMC Development \\ Developer's Manual}
 \author{Timotei Dolean - \href{mailto:timotei21@gmail.com}{timotei21@gmail.com}}
@@ -62,7 +62,7 @@ Now for getting all those items:
    \item \textbf{Windows:} Download and install from here: \href{http://python.org/download/}{Download Python} , selecting a 2.x version
    \item \textbf{Linux:} Use the regular package manager for installing it from the repositories.
    \item \textbf{Mac:} Download and install from here: \href{http://python.org/download/}{Download Python} , selecting a 2.x version
-   \item Check the guide over here: \href{http://wiki.python.org/moin/BeginnersGuide/Download}{Python Download and install} 
+   \item Check the guide over here: \href{http://wiki.python.org/moin/BeginnersGuide/Download}{Python Download and install}
   \end{enumerate}
  \textit{Note:} Please ensure you install the 2.x versions. Versions 3.x are \textbf{not} yet supported by the Wesnoth's WML Tools.
 
@@ -108,11 +108,11 @@ The plugin can be built as a zip archive (usually) for different operating syste
 
 \begin{enumerate}
   \item Download the ``eclipse\_3.7.zip" archive, that contains an already existing eclipse installation and deltapack (used for building against other OSes than the native one). The link for the download is: \href{http://sourceforge.net/projects/wesnoth/files/wesnoth-umcplugin/build\_utils/eclipse\_3.7.zip/download}{Download}
-  
+
   \item Extract the archive in the favorite location
-  
+
   \item You now have 2 choices: Build the plugin from within Eclipse - this way you can build, say, just for your current OS/architecture - or you can use the already existing build scripts - those build the plugin for all currently supported architectures.
-  
+
   \item If you want to build the plugin from within Eclipse, you need to do the following steps:
   \begin{enumerate}
     \item Open Eclipse.
@@ -124,24 +124,24 @@ The plugin can be built as a zip archive (usually) for different operating syste
     \item Press Finish and Ok until you exist all windows.
     \item Now, go into the ``org.wesnoth" project, and open the file ``org.wesnoth.product".
     \item In the bottom right part of the opened file, in section ``Exporting" there is a link: ``Eclipse Product export wizard". Click that.
-    \item In the ``destination" group, select where you want the export/build to be done. 
+    \item In the ``destination" group, select where you want the export/build to be done.
     \item Check the ``Generate metadata repository". You can also check ``Export for multiple platforms" if you want to build the plugin for other OSes/Architectures aswell.
     \item Press Next if you have selected ``Export for multiple platforms" and select the desired OSes/Architectures.
     \item Finally press ``Finish" to do the building.
   \end{enumerate}
-  
+
   \item If you want to build the plugin using the scripts, do the following:
   \begin{enumerate}
     \item Go to the ``build" directory in the checked-out directory from the SVN.
     \item There are 2 files that are important: \textbf{build.sh} - For UNIX systems - and \textbf{build.cmd} - For Windows systems.
-    \item Both files need a one argument that specifies the path to a valid Eclipse + deltapack installation. The file you have previously downloaded contains this. 
+    \item Both files need a one argument that specifies the path to a valid Eclipse + deltapack installation. The file you have previously downloaded contains this.
     \item You can invoke the script with the 1st parameter as the path to the location where you have extracted the archive.
     \item The directory ``wesnoth\_umc\_dev" will contain now the built plugin as zip archives, while the ``update\_site" directory will contain the update site for the plugin.
   \end{enumerate}
 \end{enumerate}
 
 \section{Generating the WML Grammar}
-The WML Editor uses the Xtext (\href{http://www.eclipse.org/Xtext/}{http://www.eclipse.org/Xtext/}) framework for getting the functionality an editor should have. The editor is based on the WML grammar defined in the ``org.wesnoth/src/org.wesnoth/WML.xtext" file. 
+The WML Editor uses the Xtext (\href{http://www.eclipse.org/Xtext/}{http://www.eclipse.org/Xtext/}) framework for getting the functionality an editor should have. The editor is based on the WML grammar defined in the ``org.wesnoth/src/org.wesnoth/WML.xtext" file.
 The file is written in some EBNF variant (\href{http://www.eclipse.org/Xtext/documentation/2\_0\_0/020-grammar-language.php}{http://www.eclipse.org/Xtext/documentation/2\_0\_0/020-grammar-language.php} )
 
 To (re-)generate the wml grammar, right click the ``org.wesnoth/src/org.wesnoth/GenerateWML.mwe2", and select ``Run as" and after that ``MWE2 Workflow". If this is your first time running the MWE2 Workflow, you'll be prompted to download the ANTLR generator jar file. Press (y) and that will continue.

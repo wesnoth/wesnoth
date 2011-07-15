@@ -5,7 +5,7 @@
 \usepackage[colorlinks=true]{hyperref}
 \usepackage{verbatim}
 \usepackage{enumerate}
-\usepackage{wrapfig} 
+\usepackage{wrapfig}
 
 \title{Wesnoth UMC Development \\ User's Manual}
 \author{Timotei Dolean - \href{mailto:timotei21@gmail.com}{timotei21@gmail.com}}
@@ -44,7 +44,7 @@ A quick list before getting into details:
 \item Java 6
 \item Python 2.x
 \item Wesnoth 1.9.x, trunk or newer
-\item Eclipse 3.5 or newer (Only for the Eclipse Version)
+\item Eclipse 3.7 ( Indigo ) or newer (Only for the Eclipse Version)
 \end{enumerate}
 
 Now for getting all those items:
@@ -60,7 +60,7 @@ Now for getting all those items:
    \item \textbf{Windows:} Download and install from here: \href{http://python.org/download/}{Download Python} , selecting a 2.x version
    \item \textbf{Linux:} Use the regular package manager for installing it from the repositories.
    \item \textbf{Mac:} Download and install from here: \href{http://python.org/download/}{Download Python} , selecting a 2.x version
-   \item Check the guide over here: \href{http://wiki.python.org/moin/BeginnersGuide/Download}{Python Download and install} 
+   \item Check the guide over here: \href{http://wiki.python.org/moin/BeginnersGuide/Download}{Python Download and install}
   \end{enumerate}
  \textit{Note:} Please ensure you install the 2.x versions. Versions 3.x are \textbf{not} yet supported by the Wesnoth's WML Tools.
 
@@ -68,7 +68,7 @@ Now for getting all those items:
 
 \item \textit{Note:} The following 2 steps are only neccessary if you will use the Eclipse version of the plugin.
 
-\item Download ``Eclipse" (The download links are in the right. Please ensure you are downloading at least the \textbf{3.5} version, otherwise the plugin will not work.):   \href{http://eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/heliosr}{Download Eclipse for RCP and RAP Developers}
+\item Download ``Eclipse" (The download links are in the right. Please ensure you are downloading at least the \textbf{3.5} version, otherwise the plugin will not work. Also, \textbf{don't} download a \textbf{64 bit version} unless you are sure you have Java JDK on 64 bit. If you are unsure, select the 32 bit version):   \href{http://www.eclipse.org/downloads/packages/eclipse-classic-37/indigor}{Download Eclipse Classic}
 
 \item Extract the downloaded archive in a known location and launch the executable (eclipse / eclipse.exe)
 
@@ -123,7 +123,7 @@ But before of all, you must setup your environment, so it knows where your wesno
 If there were no errors a message window will open saying: \textbf{Workspace was setup successfully}.
 
 \subsection{Wesnoth installations}
-The plugin supports working with multiple installations ( we'll call them ``installs" ). The installs can be setup from the Preferences panel. An installation is called valid if: 
+The plugin supports working with multiple installations ( we'll call them ``installs" ). The installs can be setup from the Preferences panel. An installation is called valid if:
 \begin{itemize}
   \item It is defined in the Installs page
   \item It has set all paths and they point to existing objects (currently the following paths can be set: wesnoth working directory, wesnoth executable path, wesnoth user addons directory and wesnoth wml tools path)
@@ -213,7 +213,7 @@ Each item has a little icon to help the user distinguish between suggestions typ
 \subsection{WML macros}
 One can view the definition of a WML macro, by hovering / going with the caret over the call, and pressing \textbf{F2}. A small popup will open showing the macros' definition. Alternatively, Pressing \textbf{F3}, will open the macro's definition file, so you can modify it or inspect related macros.
 
-\section{Use cases} 
+\section{Use cases}
 \subsection{Import an already existing wesnoth addon into the plugin}
 For this you need just 2 single steps:
 \begin{enumerate}
