@@ -49,16 +49,16 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightSquareBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//WMLTag:
-		//	"[" plus?="+"? name=ID "]" Expressions+=WMLExpression* "[/" endName=ID "]";
+		//	"[" plus="+"? name=ID "]" Expressions+=WMLExpression* "[/" endName=ID "]";
 		public ParserRule getRule() { return rule; }
 
-		//"[" plus?="+"? name=ID "]" Expressions+=WMLExpression* "[/" endName=ID "]"
+		//"[" plus="+"? name=ID "]" Expressions+=WMLExpression* "[/" endName=ID "]"
 		public Group getGroup() { return cGroup; }
 
 		//"["
 		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
 
-		//plus?="+"?
+		//plus="+"?
 		public Assignment getPlusAssignment_1() { return cPlusAssignment_1; }
 
 		//"+"
@@ -218,22 +218,22 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//WMLMacroCall:
-		//	"{" point?="./"? relative?="~"? name=ID (params+=WMLMacroParameter | extraMacros+=WMLMacroCall)* "}";
+		//	"{" point="./"? relative="~"? name=ID (params+=WMLMacroParameter | extraMacros+=WMLMacroCall)* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"{" point?="./"? relative?="~"? name=ID (params+=WMLMacroParameter | extraMacros+=WMLMacroCall)* "}"
+		//"{" point="./"? relative="~"? name=ID (params+=WMLMacroParameter | extraMacros+=WMLMacroCall)* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
 
-		//point?="./"?
+		//point="./"?
 		public Assignment getPointAssignment_1() { return cPointAssignment_1; }
 
 		//"./"
 		public Keyword getPointFullStopSolidusKeyword_1_0() { return cPointFullStopSolidusKeyword_1_0; }
 
-		//relative?="~"?
+		//relative="~"?
 		public Assignment getRelativeAssignment_2() { return cRelativeAssignment_2; }
 
 		//"~"
@@ -672,7 +672,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLTag:
-	//	"[" plus?="+"? name=ID "]" Expressions+=WMLExpression* "[/" endName=ID "]";
+	//	"[" plus="+"? name=ID "]" Expressions+=WMLExpression* "[/" endName=ID "]";
 	public WMLTagElements getWMLTagAccess() {
 		return (pWMLTag != null) ? pWMLTag : (pWMLTag = new WMLTagElements());
 	}
@@ -702,7 +702,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLMacroCall:
-	//	"{" point?="./"? relative?="~"? name=ID (params+=WMLMacroParameter | extraMacros+=WMLMacroCall)* "}";
+	//	"{" point="./"? relative="~"? name=ID (params+=WMLMacroParameter | extraMacros+=WMLMacroCall)* "}";
 	public WMLMacroCallElements getWMLMacroCallAccess() {
 		return (pWMLMacroCall != null) ? pWMLMacroCall : (pWMLMacroCall = new WMLMacroCallElements());
 	}

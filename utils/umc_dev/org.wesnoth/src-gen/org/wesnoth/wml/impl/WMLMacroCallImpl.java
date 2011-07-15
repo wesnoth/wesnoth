@@ -36,8 +36,8 @@ import org.wesnoth.wml.WmlPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#isPoint <em>Point</em>}</li>
- *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#isRelative <em>Relative</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#getPoint <em>Point</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#getRelative <em>Relative</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#getParams <em>Params</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLMacroCallImpl#getExtraMacros <em>Extra Macros</em>}</li>
  * </ul>
@@ -55,7 +55,7 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = "";
 
   /**
    * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -68,44 +68,44 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isPoint() <em>Point</em>}' attribute.
+   * The default value of the '{@link #getPoint() <em>Point</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isPoint()
+   * @see #getPoint()
    * @generated
    * @ordered
    */
-  protected static final boolean POINT_EDEFAULT = false;
+  protected static final String POINT_EDEFAULT = "";
 
   /**
-   * The cached value of the '{@link #isPoint() <em>Point</em>}' attribute.
+   * The cached value of the '{@link #getPoint() <em>Point</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isPoint()
+   * @see #getPoint()
    * @generated
    * @ordered
    */
-  protected boolean point = POINT_EDEFAULT;
+  protected String point = POINT_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isRelative() <em>Relative</em>}' attribute.
+   * The default value of the '{@link #getRelative() <em>Relative</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isRelative()
+   * @see #getRelative()
    * @generated
    * @ordered
    */
-  protected static final boolean RELATIVE_EDEFAULT = false;
+  protected static final String RELATIVE_EDEFAULT = "";
 
   /**
-   * The cached value of the '{@link #isRelative() <em>Relative</em>}' attribute.
+   * The cached value of the '{@link #getRelative() <em>Relative</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isRelative()
+   * @see #getRelative()
    * @generated
    * @ordered
    */
-  protected boolean relative = RELATIVE_EDEFAULT;
+  protected String relative = RELATIVE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getParams() <em>Params</em>}' attribute list.
@@ -176,7 +176,7 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isPoint()
+  public String getPoint()
   {
     return point;
   }
@@ -186,9 +186,9 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPoint(boolean newPoint)
+  public void setPoint(String newPoint)
   {
-    boolean oldPoint = point;
+    String oldPoint = point;
     point = newPoint;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_MACRO_CALL__POINT, oldPoint, point));
@@ -199,7 +199,7 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isRelative()
+  public String getRelative()
   {
     return relative;
   }
@@ -209,9 +209,9 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRelative(boolean newRelative)
+  public void setRelative(String newRelative)
   {
-    boolean oldRelative = relative;
+    String oldRelative = relative;
     relative = newRelative;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_MACRO_CALL__RELATIVE, oldRelative, relative));
@@ -274,9 +274,9 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
       case WmlPackage.WML_MACRO_CALL__NAME:
         return getName();
       case WmlPackage.WML_MACRO_CALL__POINT:
-        return isPoint();
+        return getPoint();
       case WmlPackage.WML_MACRO_CALL__RELATIVE:
-        return isRelative();
+        return getRelative();
       case WmlPackage.WML_MACRO_CALL__PARAMS:
         return getParams();
       case WmlPackage.WML_MACRO_CALL__EXTRA_MACROS:
@@ -300,10 +300,10 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
         setName((String)newValue);
         return;
       case WmlPackage.WML_MACRO_CALL__POINT:
-        setPoint((Boolean)newValue);
+        setPoint((String)newValue);
         return;
       case WmlPackage.WML_MACRO_CALL__RELATIVE:
-        setRelative((Boolean)newValue);
+        setRelative((String)newValue);
         return;
       case WmlPackage.WML_MACRO_CALL__PARAMS:
         getParams().clear();
@@ -359,9 +359,9 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
       case WmlPackage.WML_MACRO_CALL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case WmlPackage.WML_MACRO_CALL__POINT:
-        return point != POINT_EDEFAULT;
+        return POINT_EDEFAULT == null ? point != null : !POINT_EDEFAULT.equals(point);
       case WmlPackage.WML_MACRO_CALL__RELATIVE:
-        return relative != RELATIVE_EDEFAULT;
+        return RELATIVE_EDEFAULT == null ? relative != null : !RELATIVE_EDEFAULT.equals(relative);
       case WmlPackage.WML_MACRO_CALL__PARAMS:
         return params != null && !params.isEmpty();
       case WmlPackage.WML_MACRO_CALL__EXTRA_MACROS:

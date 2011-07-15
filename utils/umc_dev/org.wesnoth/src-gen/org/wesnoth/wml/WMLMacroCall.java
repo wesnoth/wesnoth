@@ -16,8 +16,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wml.WMLMacroCall#isPoint <em>Point</em>}</li>
- *   <li>{@link org.wesnoth.wml.WMLMacroCall#isRelative <em>Relative</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroCall#getPoint <em>Point</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLMacroCall#getRelative <em>Relative</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLMacroCall#getParams <em>Params</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLMacroCall#getExtraMacros <em>Extra Macros</em>}</li>
  * </ul>
@@ -31,6 +31,7 @@ public interface WMLMacroCall extends WMLKeyValue, WMLRootExpression
 {
   /**
    * Returns the value of the '<em><b>Point</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Point</em>' attribute isn't clear,
@@ -38,25 +39,26 @@ public interface WMLMacroCall extends WMLKeyValue, WMLRootExpression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Point</em>' attribute.
-   * @see #setPoint(boolean)
+   * @see #setPoint(String)
    * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall_Point()
-   * @model
+   * @model default=""
    * @generated
    */
-  boolean isPoint();
+  String getPoint();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wml.WMLMacroCall#isPoint <em>Point</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wml.WMLMacroCall#getPoint <em>Point</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Point</em>' attribute.
-   * @see #isPoint()
+   * @see #getPoint()
    * @generated
    */
-  void setPoint(boolean value);
+  void setPoint(String value);
 
   /**
    * Returns the value of the '<em><b>Relative</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Relative</em>' attribute isn't clear,
@@ -64,22 +66,22 @@ public interface WMLMacroCall extends WMLKeyValue, WMLRootExpression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Relative</em>' attribute.
-   * @see #setRelative(boolean)
+   * @see #setRelative(String)
    * @see org.wesnoth.wml.WmlPackage#getWMLMacroCall_Relative()
-   * @model
+   * @model default=""
    * @generated
    */
-  boolean isRelative();
+  String getRelative();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wml.WMLMacroCall#isRelative <em>Relative</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wml.WMLMacroCall#getRelative <em>Relative</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Relative</em>' attribute.
-   * @see #isRelative()
+   * @see #getRelative()
    * @generated
    */
-  void setRelative(boolean value);
+  void setRelative(String value);
 
   /**
    * Returns the value of the '<em><b>Params</b></em>' attribute list.

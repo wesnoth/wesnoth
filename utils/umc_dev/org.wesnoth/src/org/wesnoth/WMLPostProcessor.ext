@@ -1,0 +1,20 @@
+process( xtext::GeneratedMetamodel this ):
+    process( ePackage );
+
+process( ecore::EPackage this ):
+    eClassifiers.process();
+
+process( ecore::EClassifier this ):
+    null;
+
+process( ecore::EClass this ):
+    eStructuralFeatures.process();
+
+process( ecore::EStructuralFeature this ):
+    null;
+
+process( ecore::EAttribute this ):
+    if name == 'plus' then setDefaultValueLiteral( "" )
+    else if name == 'point' then setDefaultValueLiteral( "" )
+    else if name == 'relative' then setDefaultValueLiteral( "" )
+    else if name == 'name' then setDefaultValueLiteral( "" );

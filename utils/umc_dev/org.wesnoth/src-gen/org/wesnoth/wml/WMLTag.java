@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wml.WMLTag#isPlus <em>Plus</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLTag#getPlus <em>Plus</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLTag#getExpressions <em>Expressions</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLTag#getEndName <em>End Name</em>}</li>
  * </ul>
@@ -30,6 +30,7 @@ public interface WMLTag extends WMLRootExpression
 {
   /**
    * Returns the value of the '<em><b>Plus</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Plus</em>' attribute isn't clear,
@@ -37,22 +38,22 @@ public interface WMLTag extends WMLRootExpression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Plus</em>' attribute.
-   * @see #setPlus(boolean)
+   * @see #setPlus(String)
    * @see org.wesnoth.wml.WmlPackage#getWMLTag_Plus()
-   * @model
+   * @model default=""
    * @generated
    */
-  boolean isPlus();
+  String getPlus();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wml.WMLTag#isPlus <em>Plus</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wml.WMLTag#getPlus <em>Plus</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Plus</em>' attribute.
-   * @see #isPlus()
+   * @see #getPlus()
    * @generated
    */
-  void setPlus(boolean value);
+  void setPlus(String value);
 
   /**
    * Returns the value of the '<em><b>Expressions</b></em>' containment reference list.

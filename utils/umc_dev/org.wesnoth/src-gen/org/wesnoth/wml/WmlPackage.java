@@ -565,11 +565,11 @@ public interface WmlPackage extends EPackage
   EClass getWMLTag();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTag#isPlus <em>Plus</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTag#getPlus <em>Plus</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Plus</em>'.
-   * @see org.wesnoth.wml.WMLTag#isPlus()
+   * @see org.wesnoth.wml.WMLTag#getPlus()
    * @see #getWMLTag()
    * @generated
    */
@@ -650,22 +650,22 @@ public interface WmlPackage extends EPackage
   EClass getWMLMacroCall();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLMacroCall#isPoint <em>Point</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLMacroCall#getPoint <em>Point</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Point</em>'.
-   * @see org.wesnoth.wml.WMLMacroCall#isPoint()
+   * @see org.wesnoth.wml.WMLMacroCall#getPoint()
    * @see #getWMLMacroCall()
    * @generated
    */
   EAttribute getWMLMacroCall_Point();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLMacroCall#isRelative <em>Relative</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLMacroCall#getRelative <em>Relative</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Relative</em>'.
-   * @see org.wesnoth.wml.WMLMacroCall#isRelative()
+   * @see org.wesnoth.wml.WMLMacroCall#getRelative()
    * @see #getWMLMacroCall()
    * @generated
    */

@@ -11,7 +11,7 @@ WMLRoot:
 	( Expressions += WMLRootExpression )*;
 
 WMLTag:
-	'[' (plus?='+')? name=ID ']'
+	'[' (plus='+')? name=ID ']'
 		( Expressions += WMLExpression )*
 	'[/' endName = ID ']'
 	;
@@ -23,7 +23,7 @@ WMLKeyValue:
 	 {WMLKeyValue} WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 	
 WMLMacroCall:
-	'{' (point?='./')? (relative?='~')? name=ID
+	'{' (point='./')? (relative='~')? name=ID
 		( params += WMLMacroParameter
 		| extraMacros += WMLMacroCall
 		)*

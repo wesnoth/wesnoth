@@ -38,7 +38,7 @@ public class WMLExpressionImpl extends WMLValuedExpressionImpl implements WMLExp
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = "";
 
   /**
    * The cached value of the '{@link #getName() <em>Name</em>}' attribute.

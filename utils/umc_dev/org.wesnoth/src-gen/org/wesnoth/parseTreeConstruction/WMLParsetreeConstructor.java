@@ -109,11 +109,11 @@ protected class WMLRoot_ExpressionsAssignment extends AssignmentToken  {
 /************ begin Rule WMLTag ****************
  *
  * WMLTag:
- * 	"[" plus?="+"? name=ID "]" Expressions+=WMLExpression* "[/" endName=ID "]";
+ * 	"[" plus="+"? name=ID "]" Expressions+=WMLExpression* "[/" endName=ID "]";
  *
  **/
 
-// "[" plus?="+"? name=ID "]" Expressions+=WMLExpression* "[/" endName=ID "]"
+// "[" plus="+"? name=ID "]" Expressions+=WMLExpression* "[/" endName=ID "]"
 protected class WMLTag_Group extends GroupToken {
 	
 	public WMLTag_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -163,7 +163,7 @@ protected class WMLTag_LeftSquareBracketKeyword_0 extends KeywordToken  {
 
 }
 
-// plus?="+"?
+// plus="+"?
 protected class WMLTag_PlusAssignment_1 extends AssignmentToken  {
 	
 	public WMLTag_PlusAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -187,7 +187,7 @@ protected class WMLTag_PlusAssignment_1 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("plus",false)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("plus");
-		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLTagAccess().getPlusPlusSignKeyword_1_0(), value, null)) {
 			type = AssignmentType.KEYWORD;
 			element = grammarAccess.getWMLTagAccess().getPlusPlusSignKeyword_1_0();
 			return obj;
@@ -895,11 +895,11 @@ protected class WMLKeyValue_WMLArrayCallParserRuleCall_3 extends RuleCallToken {
 /************ begin Rule WMLMacroCall ****************
  *
  * WMLMacroCall:
- * 	"{" point?="./"? relative?="~"? name=ID (params+=WMLMacroParameter | extraMacros+=WMLMacroCall)* "}";
+ * 	"{" point="./"? relative="~"? name=ID (params+=WMLMacroParameter | extraMacros+=WMLMacroCall)* "}";
  *
  **/
 
-// "{" point?="./"? relative?="~"? name=ID (params+=WMLMacroParameter | extraMacros+=WMLMacroCall)* "}"
+// "{" point="./"? relative="~"? name=ID (params+=WMLMacroParameter | extraMacros+=WMLMacroCall)* "}"
 protected class WMLMacroCall_Group extends GroupToken {
 	
 	public WMLMacroCall_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -949,7 +949,7 @@ protected class WMLMacroCall_LeftCurlyBracketKeyword_0 extends KeywordToken  {
 
 }
 
-// point?="./"?
+// point="./"?
 protected class WMLMacroCall_PointAssignment_1 extends AssignmentToken  {
 	
 	public WMLMacroCall_PointAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -973,7 +973,7 @@ protected class WMLMacroCall_PointAssignment_1 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("point",false)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("point");
-		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLMacroCallAccess().getPointFullStopSolidusKeyword_1_0(), value, null)) {
 			type = AssignmentType.KEYWORD;
 			element = grammarAccess.getWMLMacroCallAccess().getPointFullStopSolidusKeyword_1_0();
 			return obj;
@@ -983,7 +983,7 @@ protected class WMLMacroCall_PointAssignment_1 extends AssignmentToken  {
 
 }
 
-// relative?="~"?
+// relative="~"?
 protected class WMLMacroCall_RelativeAssignment_2 extends AssignmentToken  {
 	
 	public WMLMacroCall_RelativeAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1008,7 +1008,7 @@ protected class WMLMacroCall_RelativeAssignment_2 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("relative",false)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("relative");
-		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLMacroCallAccess().getRelativeTildeKeyword_2_0(), value, null)) {
 			type = AssignmentType.KEYWORD;
 			element = grammarAccess.getWMLMacroCallAccess().getRelativeTildeKeyword_2_0();
 			return obj;

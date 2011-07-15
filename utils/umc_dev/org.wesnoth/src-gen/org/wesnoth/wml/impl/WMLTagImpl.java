@@ -32,7 +32,7 @@ import org.wesnoth.wml.WmlPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#isPlus <em>Plus</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#getPlus <em>Plus</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#getExpressions <em>Expressions</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#getEndName <em>End Name</em>}</li>
  * </ul>
@@ -43,24 +43,24 @@ import org.wesnoth.wml.WmlPackage;
 public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
 {
   /**
-   * The default value of the '{@link #isPlus() <em>Plus</em>}' attribute.
+   * The default value of the '{@link #getPlus() <em>Plus</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isPlus()
+   * @see #getPlus()
    * @generated
    * @ordered
    */
-  protected static final boolean PLUS_EDEFAULT = false;
+  protected static final String PLUS_EDEFAULT = "";
 
   /**
-   * The cached value of the '{@link #isPlus() <em>Plus</em>}' attribute.
+   * The cached value of the '{@link #getPlus() <em>Plus</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isPlus()
+   * @see #getPlus()
    * @generated
    * @ordered
    */
-  protected boolean plus = PLUS_EDEFAULT;
+  protected String plus = PLUS_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
@@ -118,7 +118,7 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isPlus()
+  public String getPlus()
   {
     return plus;
   }
@@ -128,9 +128,9 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPlus(boolean newPlus)
+  public void setPlus(String newPlus)
   {
-    boolean oldPlus = plus;
+    String oldPlus = plus;
     plus = newPlus;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_TAG__PLUS, oldPlus, plus));
@@ -200,7 +200,7 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
     switch (featureID)
     {
       case WmlPackage.WML_TAG__PLUS:
-        return isPlus();
+        return getPlus();
       case WmlPackage.WML_TAG__EXPRESSIONS:
         return getExpressions();
       case WmlPackage.WML_TAG__END_NAME:
@@ -221,7 +221,7 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
     switch (featureID)
     {
       case WmlPackage.WML_TAG__PLUS:
-        setPlus((Boolean)newValue);
+        setPlus((String)newValue);
         return;
       case WmlPackage.WML_TAG__EXPRESSIONS:
         getExpressions().clear();
@@ -268,7 +268,7 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
     switch (featureID)
     {
       case WmlPackage.WML_TAG__PLUS:
-        return plus != PLUS_EDEFAULT;
+        return PLUS_EDEFAULT == null ? plus != null : !PLUS_EDEFAULT.equals(plus);
       case WmlPackage.WML_TAG__EXPRESSIONS:
         return expressions != null && !expressions.isEmpty();
       case WmlPackage.WML_TAG__END_NAME:

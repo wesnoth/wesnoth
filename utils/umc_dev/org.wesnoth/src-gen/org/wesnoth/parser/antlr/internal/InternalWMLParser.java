@@ -288,7 +288,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                     	        }
                     	        
                     	        try {
-                    	       		set(current, "plus", true, "+", lastConsumedNode);
+                    	       		set(current, "plus", lv_plus_1_0, "+", lastConsumedNode);
                     	        } catch (ValueConverterException vce) {
                     				handleValueConverterException(vce);
                     	        }
@@ -1152,7 +1152,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                     	        }
                     	        
                     	        try {
-                    	       		set(current, "point", true, "./", lastConsumedNode);
+                    	       		set(current, "point", lv_point_1_0, "./", lastConsumedNode);
                     	        } catch (ValueConverterException vce) {
                     				handleValueConverterException(vce);
                     	        }
@@ -1192,7 +1192,7 @@ public class InternalWMLParser extends AbstractInternalAntlrParser {
                     	        }
                     	        
                     	        try {
-                    	       		set(current, "relative", true, "~", lastConsumedNode);
+                    	       		set(current, "relative", lv_relative_2_0, "~", lastConsumedNode);
                     	        } catch (ValueConverterException vce) {
                     				handleValueConverterException(vce);
                     	        }
