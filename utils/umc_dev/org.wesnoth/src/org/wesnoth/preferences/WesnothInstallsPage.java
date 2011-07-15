@@ -571,7 +571,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             // we are creating a new install. Clear the editable
             // flag after we save it, to prevent renaming.
             txtInstallName_.setEditable( false );
-        } else { // just saving
+        } else if ( getSelectedInstall( ) != null ) { // just saving
             // the fields are automatically saved by Eclipse.
             // we just need to save the new version.
             getSelectedInstall( ).setVersion( cmbVersion_.getText( ) );
