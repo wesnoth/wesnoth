@@ -6,9 +6,9 @@ JAVADOC_FLAGS=-d $(JAVADOC_DIR) -sourcepath org.wesnoth/src -classpath '$(ECLIPS
 .PHONY: manual javadoc build
 manual:
 	# developer manual
-	cd manual; pdflatex dev_manual.tex; cp dev_manual.pdf ..;
+	cd manual; pdflatex dev_manual.tex; pdflatex dev_manual.tex cp dev_manual.pdf ..;
 	# user manual
-	cd manual; pdflatex user_manual.tex; cp user_manual.pdf ..;
+	cd manual; pdflatex user_manual.tex; pdflatex user_manual.tex; cp user_manual.pdf ..;
 	# cleanup non-needed files
 	cd manual; rm dev_manual.log; rm dev_manual.aux; rm user_manual.log; rm user_manual.aux; rm dev_manual.out; rm dev_manual.toc; rm user_manual.out; rm user_manual.toc;
 
