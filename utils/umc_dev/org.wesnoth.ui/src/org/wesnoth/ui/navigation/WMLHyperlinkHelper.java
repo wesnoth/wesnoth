@@ -9,7 +9,6 @@
 package org.wesnoth.ui.navigation;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.text.Region;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
@@ -25,7 +24,6 @@ import org.wesnoth.preprocessor.Define;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.ui.Messages;
 import org.wesnoth.ui.WMLUtil;
-import org.wesnoth.ui.emf.ObjectStorageAdapter;
 import org.wesnoth.wml.WMLMacroCall;
 
 
@@ -36,7 +34,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 			IHyperlinkAcceptor acceptor)
 	{
 		super.createHyperlinksByOffset(resource, offset, acceptor);
-		//TODO: test this
+		//TODO: test this ( the root node is get correct)
 		ICompositeNode rootNode = resource.getParseResult( ).getRootNode( );
 		if (rootNode == null)
 			return;
@@ -133,16 +131,6 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
 		mapLocation = mapLocation.replaceFirst("~", //$NON-NLS-1$
 				paths.getUserDir( ).replace('\\','/') + "/data/"); //$NON-NLS-1$
-
-		ObjectStorageAdapter adapter = (ObjectStorageAdapter)EcoreUtil.getAdapter(value.eAdapters(),
-				ObjectStorageAdapter.class);
-		if (adapter == null)
-		{
-			adapter = new ObjectStorageAdapter(mapLocation);
-			value.eAdapters().add(adapter);
-		}
-		else
-			adapter.setObject(mapLocation);
 
 		MapOpenerHyperlink hyperlink = new MapOpenerHyperlink();
 		hyperlink.setHyperlinkRegion(new Region(value.getOffset(), value.getLength()));
