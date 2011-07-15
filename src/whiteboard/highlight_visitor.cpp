@@ -67,7 +67,7 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	//if we're right over a unit, just highlight all of this unit's actions
 	unit_map::const_iterator it = unit_map_.find(hex);
 	if (it != unit_map_.end()
-			&& it->side() == int(side_actions_->team_index()+1))
+			&& it->side() == resources::screen->viewing_side())
 	{
 		selection_candidate_ = &(*it);
 
