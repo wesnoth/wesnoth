@@ -10,7 +10,7 @@ package org.wesnoth.utils;
 
 import java.util.Stack;
 
-import org.wesnoth.wml.core.ConfigFile;
+import org.wesnoth.wml.core.WMLConfig;
 import org.wesnoth.wml.core.Variable;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -25,7 +25,7 @@ public class WMLSaxHandler extends DefaultHandler
 	private Stack<String> stack_;
 	private Variable tmpVar_;
 	private String filePath_;
-	private ConfigFile cfg_;
+	private WMLConfig cfg_;
 
 	private int STATUS = 0;
 	/** states list */
@@ -39,7 +39,7 @@ public class WMLSaxHandler extends DefaultHandler
 	{
 		stack_ = new Stack<String>();
 		filePath_ = filePath;
-		cfg_ = new ConfigFile(filePath);
+		cfg_ = new WMLConfig(filePath);
 	}
 
     @Override
@@ -131,7 +131,7 @@ public class WMLSaxHandler extends DefaultHandler
      * Gets the Config resulted by parsing the file
      * @return
      */
-    public ConfigFile getConfigFile()
+    public WMLConfig getConfigFile()
 	{
 		return cfg_;
 	}

@@ -27,8 +27,8 @@ import org.wesnoth.preprocessor.Define;
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WorkspaceUtils;
-import org.wesnoth.wml.core.ConfigFile;
 import org.wesnoth.wml.core.Variable;
+import org.wesnoth.wml.core.WMLConfig;
 
 /**
  * A class that stores some project specific infos
@@ -47,7 +47,7 @@ public class ProjectCache
     private File definesFile_;
     private File treeCacheFile_;
 
-    private Map< String, ConfigFile > configFiles_;
+    private Map< String, WMLConfig > configFiles_;
     private Map< String, Define > defines_;
     private DependencyListBuilder dependTree_;
 
@@ -57,7 +57,7 @@ public class ProjectCache
     {
         project_ = project;
 
-        configFiles_ = new HashMap<String, ConfigFile>();
+        configFiles_ = new HashMap<String, WMLConfig>();
         defines_ = new HashMap<String, Define>(0);
 
         dependTree_ = new DependencyListBuilder( project_ );
@@ -111,7 +111,7 @@ public class ProjectCache
                     if (config.getName().startsWith("config") == false) //$NON-NLS-1$
                         continue;
 
-                    ConfigFile tmp = new ConfigFile(config.get("filename")); //$NON-NLS-1$
+                    WMLConfig tmp = new WMLConfig(config.get("filename")); //$NON-NLS-1$
                     tmp.ScenarioId = config.get( "scenario_id" ); //$NON-NLS-1$
                     tmp.CampaignId = config.get( "campaign_id" ); //$NON-NLS-1$
 
@@ -157,28 +157,28 @@ public class ProjectCache
     }
 
     /**
-     * Gets the map with the Configs
+     * Gets the map with the WMLConfigs
      * The key represent the filenames of the files
      * and the value the scenarioId from that file
-     * @return
+     * @return A map with key the file path and value the WMLConfig
      */
-    public Map<String, ConfigFile> getConfigs()
+    public Map<String, WMLConfig> getWMLConfigs()
     {
         return configFiles_;
     }
 
     /**
-     * Gets the Config by it's filename.
-     * If the Config doesn't exist it will be created
-     * @param name
+     * Gets the WMLConfig by the specified file project-relative path.
+     * If the WMLConfig doesn't exist it will be created
+     * @param path The project-relative path for the file.
      * @return
      */
-    public ConfigFile getConfig(String name)
+    public WMLConfig getWMLConfig( String path )
     {
-        ConfigFile config = configFiles_.get( name );
+        WMLConfig config = configFiles_.get( path );
         if ( config == null ){
-            config = new ConfigFile( name );
-            configFiles_.put( name, config );
+            config = new WMLConfig( path );
+            configFiles_.put( path, config );
         }
 
         return config;
@@ -199,7 +199,7 @@ public class ProjectCache
             // save config files info
             int configCnt = 0;
             IDialogSettings configsSection = properties_.addNewSection("configs"); //$NON-NLS-1$
-            for(ConfigFile config : configFiles_.values())
+            for(WMLConfig config : configFiles_.values())
             {
                 IDialogSettings configSection = configsSection.addNewSection("config" + configCnt); //$NON-NLS-1$
                 configSection.put("scenario_id", config.ScenarioId); //$NON-NLS-1$

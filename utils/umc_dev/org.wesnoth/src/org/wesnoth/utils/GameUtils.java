@@ -71,11 +71,11 @@ public class GameUtils
 			String scenarioId = null;
 
 			campaignId = ProjectUtils.getCacheForProject(selectedResource.getProject()).
-			        getConfig("_main.cfg").CampaignId; //$NON-NLS-1$
+			        getWMLConfig("_main.cfg").CampaignId; //$NON-NLS-1$
 
 			if (scenario == true && selectedResource instanceof IFile)
 				scenarioId = ProjectUtils.getCacheForProject(selectedResource.getProject()).
-				    getConfig(selectedResource.getProjectRelativePath( ).toString( )).ScenarioId;
+				    getWMLConfig(selectedResource.getProjectRelativePath( ).toString( )).ScenarioId;
 
 			if (campaignId == null)
 			{

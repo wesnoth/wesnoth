@@ -38,7 +38,7 @@ import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLGrammarUtils;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
-import org.wesnoth.wml.core.ConfigFile;
+import org.wesnoth.wml.core.WMLConfig;
 
 public class WMLProposalProvider extends AbstractWMLProposalProvider
 {
@@ -181,7 +181,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		if ( keyName.equals("next_scenario") || //$NON-NLS-1$
 			 keyName.equals("first_scenario")) //$NON-NLS-1$
 		{
-			for(ConfigFile config : projectCache_.getConfigs().values())
+			for(WMLConfig config : projectCache_.getWMLConfigs().values())
 			{
 				if (StringUtils.isNullOrEmpty( config.ScenarioId ))
 					continue;

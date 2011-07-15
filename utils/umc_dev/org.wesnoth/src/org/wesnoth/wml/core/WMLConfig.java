@@ -14,14 +14,13 @@ import java.util.List;
 /**
  * A class that stores WML config file specific information
  */
-public class ConfigFile
+public class WMLConfig
 {
-
 	public String ScenarioId;
 	/**
 	 * True if there was a [scenario] tag present in the file.
 	 *
-	 * However The {@link ConfigFile#ScenarioId} may be null
+	 * However The {@link WMLConfig#ScenarioId} may be null
 	 */
 	public boolean IsScenario;
 
@@ -29,14 +28,14 @@ public class ConfigFile
 	/**
 	 * True if there was a [campaign] tag present in the file.
 	 *
-	 * However The {@link ConfigFile#CampaignId} may be null
+	 * However The {@link WMLConfig#CampaignId} may be null
 	 */
 	public boolean IsCampaign;
 
 	private List<Variable> variables_;
 	private String filename_;
 
-	public ConfigFile(String filename)
+	public WMLConfig(String filename)
 	{
 		variables_ = new ArrayList<Variable>();
 		filename_ = filename;
