@@ -11,10 +11,10 @@ package org.wesnoth.ui.labeling.wmldoc;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
@@ -32,20 +32,13 @@ import org.wesnoth.wml.WMLTag;
  */
 public class WMLDocHandler extends AbstractHandler
 {
-    private EObjectAtOffsetHelper eObjectAtOffsetHelper;
-
-    public WMLDocHandler()
-    {
-        eObjectAtOffsetHelper = new EObjectAtOffsetHelper( );
-    }
-
     public Object execute(ExecutionEvent event) throws ExecutionException
     {
         try
         {
             final XtextEditor editor = EditorUtils.getActiveXtextEditor(event);
-            final String installName =
-                    WesnothInstallsUtils.getInstallNameForResource( WMLUtil.getActiveEditorFile( ) );
+            final IFile editedFile = WMLUtil.getEditorFile( editor );
+            final String installName = WesnothInstallsUtils.getInstallNameForResource( editedFile );
 
             editor.getDocument().readOnly(new IUnitOfWork.Void<XtextResource>()
             {
@@ -58,7 +51,7 @@ public class WMLDocHandler extends AbstractHandler
                     Point positionAbsolute = editor.getInternalSourceViewer().getTextWidget().toDisplay(positionRelative);
                     positionAbsolute.y += 20;
 
-                    EObject grammarElement = eObjectAtOffsetHelper.resolveElementAt( resource, selection.getOffset( ) );
+                    EObject grammarElement = WMLUtil.EObjectUtils( ).resolveElementAt( resource, selection.getOffset( ) );
                     if ( grammarElement == null )
                         return;
 
@@ -66,15 +59,13 @@ public class WMLDocHandler extends AbstractHandler
                     {
                         WMLMacroCall macro = (WMLMacroCall) grammarElement;
                         Define define = ProjectUtils.getCacheForProject(
-                                WMLUtil.getActiveEditorFile().getProject())
-                                .getDefines().get(macro.getName());
+                                editedFile.getProject()).getDefines().get(macro.getName());
                         if (define != null)
                         {
                             if (presenter_ == null)
                             {
                                 presenter_ = new WMLDocInformationPresenter(
-                                        editor.getSite().getShell(),
-                                        new WMLDocMacro(define),
+                                        editor.getSite().getShell(), new WMLDocMacro(define),
                                         positionAbsolute);
                                 presenter_.create();
                             }

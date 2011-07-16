@@ -14,10 +14,22 @@ import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
+import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 
 public class WMLUtil
 {
+    private static EObjectAtOffsetHelper eObjectAtOffsetHelper_;
+
+    public static EObjectAtOffsetHelper EObjectUtils(){
+        if ( eObjectAtOffsetHelper_ == null ) {
+            eObjectAtOffsetHelper_ = new EObjectAtOffsetHelper( );
+        }
+
+        return eObjectAtOffsetHelper_;
+    }
+
 	public static String debug(EObject root)
 	{
 		ICompositeNode node = NodeModelUtils.getNode(root);
@@ -40,9 +52,13 @@ public class WMLUtil
 	 */
 	public static IFile getActiveEditorFile()
 	{
-		if (EditorUtils.getActiveXtextEditor() == null)
-			return null;
-		return (IFile)EditorUtils.getActiveXtextEditor()
-					.getEditorInput().getAdapter(IFile.class);
+		return getEditorFile( EditorUtils.getActiveXtextEditor() );
+	}
+
+	public static IFile getEditorFile( XtextEditor editor )
+	{
+	    if ( editor == null )
+	        return null;
+	    return ( IFile ) editor.getEditorInput( ).getAdapter( IFile.class );
 	}
 }
