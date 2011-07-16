@@ -55,8 +55,8 @@ public class WMLConfig
 	public String toString()
 	{
 	    return filename_ + "; ScenarioId: " +
-	            ScenarioId == null ? "" : ScenarioId +
+	            ( ScenarioId == null ? "" : ScenarioId ) +
 	            "; CampaignId: " +
-	            CampaignId == null ? "" : CampaignId;
+	            ( CampaignId == null ? "" : CampaignId );
 	}
 }
