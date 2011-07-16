@@ -309,7 +309,7 @@ void manager::set_real_unit_map()
 }
 
 /* private */
-void draw_numbers(map_location const& hex, side_actions::numbers_t numbers)
+static void draw_numbers(map_location const& hex, side_actions::numbers_t numbers)
 {
 	std::vector<int>& numbers_to_draw = numbers.numbers_to_draw;
 	///@todo Use team_numbers to color the numbers appropriately.
