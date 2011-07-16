@@ -36,10 +36,8 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
         EObject object = WMLUtil.EObjectUtils( ).resolveElementAt( resource, offset );
 
-        if ( object == null || object instanceof WMLMacroCall == false )
+        if ( object == null )
             return;
-
-        WMLMacroCall macroCall = ( WMLMacroCall ) object;
 
         IFile file = WMLUtil.getActiveEditorFile();
         if ( file == null ){
@@ -49,23 +47,28 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
         Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( file ) );
 
-        ICompositeNode node = NodeModelUtils.getNode( macroCall );
+        ICompositeNode node = NodeModelUtils.getNode( object );
 
-        createMapHyperlink( paths, macroCall, acceptor, node );
-        createMacroHyperlink( paths, file, macroCall, acceptor, node );
+        createMapHyperlink( paths, object, acceptor, node );
+        createMacroHyperlink( paths, file, object, acceptor, node );
     }
 
     /**
      * Creates a hyperlink for opening the macro definition
      * @param paths The paths variable for the current install
      * @param file The current edited file
-     * @param macro The macro object
+     * @param object The current object
      * @param acceptor The hyperlink acceptor
      * @param node The node model representation of the macro
      */
-    private void createMacroHyperlink( Paths paths, IFile file, WMLMacroCall macro,
+    private void createMacroHyperlink( Paths paths, IFile file, EObject object,
             IHyperlinkAcceptor acceptor, ICompositeNode node )
     {
+        if ( object instanceof WMLMacroCall == false )
+            return;
+
+        WMLMacroCall macro = ( WMLMacroCall ) object;
+
         // get the define for the macro
         Define define = ProjectUtils.getCacheForProject(
                 file.getProject() ).getDefines().get( macro.getName() );
@@ -93,14 +96,20 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
     /**
      * Creates a hyperlink for opening the map ( if applying )
      * @param paths The paths variable for the current install
-     * @param macro The macro object
+     * @param object The current object
      * @param acceptor The hyperlink acceptor
      * @param node The node model representation of the macro
      */
-    private void createMapHyperlink( Paths paths, WMLMacroCall macro,
+    private void createMapHyperlink( Paths paths, EObject object,
             IHyperlinkAcceptor acceptor, ICompositeNode node )
     {
-        INode previousNode = node.getPreviousSibling( );
+        INode equalNode = node.getPreviousSibling( );
+
+        if ( equalNode == null ||
+             !( "=".equals( equalNode.getText( ) ) ) )
+            return;
+
+        INode previousNode = equalNode.getPreviousSibling( );
         if ( previousNode == null ||
             ! ( "map_data".equals( previousNode.getText( ) ) ) )
             return;
