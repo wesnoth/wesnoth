@@ -171,8 +171,17 @@ public class Preferences extends AbstractPreferenceInitializer
 	     */
 	    public String getAddonsDir()
 	    {
-	        return getUserDir( ) + "data/add-ons/"; //$NON-NLS-1$
+	        return getUserDataDir( ) + "add-ons/"; //$NON-NLS-1$
 	    }
+
+        /**
+         * Returns the data user directory
+         * @return Returns the data user directory
+         */
+        public String getUserDataDir()
+        {
+            return getUserDir( ) + "data/" ;
+        }
 
         /**
          * Returns the campaign directory
@@ -183,6 +192,10 @@ public class Preferences extends AbstractPreferenceInitializer
             return getWorkingDir( ) + "data/campaigns/"; //$NON-NLS-1$
         }
 
+        /**
+         * Returns the 'data/core' directory
+         * @return Returns the 'data/core' directory
+         */
         public String getCoreDir()
         {
             return getWorkingDir( ) + "data/core/"; //$NON-NLS-1$
