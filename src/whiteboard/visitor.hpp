@@ -41,7 +41,7 @@ class visitor : private boost::noncopyable
 
 protected:
 	visitor() {}
-	~visitor() {} //Not intended for polymorphic deletion
+	virtual ~visitor() {} //Not intended for polymorphic deletion
 
 	void visit_all_actions(); //< weird utility function for derived classes
 
