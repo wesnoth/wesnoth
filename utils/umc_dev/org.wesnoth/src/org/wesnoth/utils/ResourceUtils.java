@@ -579,8 +579,7 @@ public class ResourceUtils
         Set<String> containersToAdd = new LinkedHashSet<String>( );
 
         for ( WMLMacroCall macro : macroCalls ) {
-            String name = macro.getName( );
-
+            String text = WMLUtils.toString( macro );
             /**
              * To include a folder the macro should be the following
              * forms:
@@ -589,22 +588,21 @@ public class ResourceUtils
              *
              */
             //TODO: check for including a specific config file?
+            if ( !( text.startsWith( "{campaigns" ) ) && //$NON-NLS-1$
+                 !( text.equals( "{~add-ons" ) ) ) //$NON-NLS-2$
+                continue;
 
-            if ( ( name.equals( "campaigns" ) || //$NON-NLS-1$
-                 name.equals( "add-ons" ) ) && //$NON-NLS-1$
-                 // the call should contain just string values
-                 macro.getParameters( ).size( ) > 2 &&
-                 macro.getParameters( ).get( 0 ).equals( "/" ) ) //$NON-NLS-1$
-            {
-                // check if the macro includes directories local
-                // to this project
-                String projectPath = project.getLocation( ).toOSString( );
+            // check if the macro includes directories local
+            // to this project
+            String projectPath = project.getLocation( ).toOSString( );
 
-                if ( projectPath.contains( macro.getParameters( ).get( 1 ).toString( ) ) ) {
-                    containersToAdd.add(
-                        ListUtils.concatenateList(
-                           macro.getParameters( ).subList( 3, macro.getParameters( ).size( ) ), "" ) ); //$NON-NLS-1$
-                }
+
+            if ( projectPath.contains( WMLUtils.toString( macro.getParameters( ).get( 1 ) ) ) ) {
+                String subString = text
+                        .replace( "}", "" )
+                        .replaceFirst( "\\{campaigns/", "" )
+                        .replaceFirst( "\\{~add-ons/", "" );
+                containersToAdd.add( subString.substring( subString.indexOf( '/' ) ) );
             }
         }
 

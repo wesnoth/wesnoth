@@ -41,7 +41,7 @@ import org.wesnoth.utils.AntUtils;
 import org.wesnoth.utils.ExternalToolInvoker;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.utils.WMLGrammarUtils;
+import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.wml.WMLKey;
@@ -142,7 +142,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         PreprocessorUtils.getInstance( ).clearTimestampsForPath( project_.getLocation( ).toOSString( ) );
 
         projectCache_.getDependencyList( ).createDependencyList( true );
-
         boolean foundCfg = false;
 
         DependencyListNode node = null;
@@ -341,9 +340,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 				            if ( keyName.equals( "id" ) ) {
 				                if ( currentTagName.equals( "scenario" ) )
-				                    config.ScenarioId = WMLGrammarUtils.getKeyValue( key.getValue( ) );
+				                    config.ScenarioId = WMLUtils.getKeyValue( key.getValue( ) );
 				                else if ( currentTagName.equals( "campaign" ) )
-				                    config.CampaignId = WMLGrammarUtils.getKeyValue( key.getValue( ) );
+				                    config.CampaignId = WMLUtils.getKeyValue( key.getValue( ) );
 				            }
 				        }
 				    }
