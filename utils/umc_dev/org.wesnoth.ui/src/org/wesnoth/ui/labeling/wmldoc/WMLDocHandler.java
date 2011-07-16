@@ -14,9 +14,6 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -30,79 +27,78 @@ import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLTag;
 
-import com.google.inject.Inject;
-
 /**
  * A handler that handles pressing F2 on a resource in the editor
  */
 public class WMLDocHandler extends AbstractHandler
 {
-    @Inject
     private EObjectAtOffsetHelper eObjectAtOffsetHelper;
 
-	public Object execute(ExecutionEvent event) throws ExecutionException
-	{
-		try
-		{
-			final XtextEditor editor = EditorUtils.getActiveXtextEditor(event);
-			final String installName =
-			    WesnothInstallsUtils.getInstallNameForResource( WMLUtil.getActiveEditorFile( ) );
+    public WMLDocHandler()
+    {
+        eObjectAtOffsetHelper = new EObjectAtOffsetHelper( );
+    }
 
-			editor.getDocument().readOnly(new IUnitOfWork.Void<XtextResource>()
-			{
-				private WMLDocInformationPresenter presenter_;
-				@Override
-				public void process(XtextResource resource) throws Exception
-				{
-					ITextSelection selection = (ITextSelection) editor.getSelectionProvider().getSelection();
-                	Point positionRelative = editor.getInternalSourceViewer().getTextWidget().getLocationAtOffset(selection.getOffset());
-                	Point positionAbsolute = editor.getInternalSourceViewer().getTextWidget().toDisplay(positionRelative);
-                	positionAbsolute.y +=20;
+    public Object execute(ExecutionEvent event) throws ExecutionException
+    {
+        try
+        {
+            final XtextEditor editor = EditorUtils.getActiveXtextEditor(event);
+            final String installName =
+                    WesnothInstallsUtils.getInstallNameForResource( WMLUtil.getActiveEditorFile( ) );
 
-                	IParseResult parseResult = resource.getParseResult();
-                	//TODO: check this
-                	INode abstractNode = NodeModelUtils.getNode( eObjectAtOffsetHelper.resolveElementAt( resource, selection.getOffset( ) ) );
-                	if (abstractNode == null )
-                		return;
+            editor.getDocument().readOnly(new IUnitOfWork.Void<XtextResource>()
+            {
+                private WMLDocInformationPresenter presenter_;
+                @Override
+                public void process(XtextResource resource) throws Exception
+                {
+                    ITextSelection selection = (ITextSelection) editor.getSelectionProvider().getSelection();
+                    Point positionRelative = editor.getInternalSourceViewer().getTextWidget().getLocationAtOffset(selection.getOffset());
+                    Point positionAbsolute = editor.getInternalSourceViewer().getTextWidget().toDisplay(positionRelative);
+                    positionAbsolute.y += 20;
 
-                	EObject grammarElement = abstractNode.getGrammarElement( );
+                    EObject grammarElement = eObjectAtOffsetHelper.resolveElementAt( resource, selection.getOffset( ) );
+                    if ( grammarElement == null )
+                        return;
+
                     if ( grammarElement instanceof WMLMacroCall )
                     {
-                    	WMLMacroCall macro = (WMLMacroCall) grammarElement;
-                    	Define define = ProjectUtils.getCacheForProject(
-                    			WMLUtil.getActiveEditorFile().getProject())
-                    			.getDefines().get(macro.getName());
-                    	if (define != null)
-                    	{
-                    		if (presenter_ == null)
-                    		{
-                    			presenter_ = new WMLDocInformationPresenter(
-                    					editor.getSite().getShell(),
-                    					new WMLDocMacro(define),
-                    					positionAbsolute);
-                    			presenter_.create();
-                    		}
-                    		presenter_.open();
-                    	}
+                        WMLMacroCall macro = (WMLMacroCall) grammarElement;
+                        Define define = ProjectUtils.getCacheForProject(
+                                WMLUtil.getActiveEditorFile().getProject())
+                                .getDefines().get(macro.getName());
+                        if (define != null)
+                        {
+                            if (presenter_ == null)
+                            {
+                                presenter_ = new WMLDocInformationPresenter(
+                                        editor.getSite().getShell(),
+                                        new WMLDocMacro(define),
+                                        positionAbsolute);
+                                presenter_.create();
+                            }
+                            presenter_.open();
+                        }
                     }
                     else if ( grammarElement instanceof WMLTag)
                     {
-                    	if (presenter_ == null)
-                    	{
-                    		presenter_ = new WMLDocInformationPresenter(
-                    					editor.getSite().getShell(),
-                    					new WMLDocTag( installName, ( ( WMLTag ) grammarElement ).getName() ),
-                    					positionAbsolute);
-                    		presenter_.create();
-                    	}
-                    	presenter_.open();
+                        if (presenter_ == null)
+                        {
+                            presenter_ = new WMLDocInformationPresenter(
+                                    editor.getSite().getShell(),
+                                    new WMLDocTag( installName, ( ( WMLTag ) grammarElement ).getName() ),
+                                    positionAbsolute);
+                            presenter_.create();
+                        }
+                        presenter_.open();
                     }
                 }
-			});
-		}
-		catch (Exception e) {
-			Logger.getInstance().logException(e);
-		}
-		return null;
-	}
+            });
+        }
+        catch (Exception e) {
+            Logger.getInstance().logException(e);
+        }
+        return null;
+    }
 }
