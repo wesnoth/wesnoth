@@ -17,4 +17,14 @@ public class Pair<T, K>
 		First = first;
 		Second = second;
 	}
+
+	/**
+	 * Creates a new Pair
+	 * @param first The first item
+	 * @param second The second item
+	 * @return A new pair
+	 */
+	public static <U,V> Pair<U,V> create( U first, V second) {
+	    return new Pair<U, V> ( first, second );
+	}
 }

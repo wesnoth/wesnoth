@@ -22,9 +22,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.wesnoth.ui.autoedit.WMLAutoEditStrategy;
 import org.wesnoth.ui.contentassist.WMLContentAssistContext;
@@ -38,8 +36,6 @@ import org.wesnoth.ui.resource.WMLLocationInFileProvider;
 import org.wesnoth.ui.syntax.WMLAntlrTokenToAttributeIdMapper;
 import org.wesnoth.ui.syntax.WMLCharacterPairMatcher;
 import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
-import org.wesnoth.ui.syntax.WMLHighlightingHelper;
-import org.wesnoth.ui.syntax.WMLHighlightingReconciler;
 import org.wesnoth.ui.syntax.WMLSemanticHighlightingCalculator;
 
 import com.google.inject.Binder;
@@ -87,16 +83,6 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	public Class<? extends XtextEditor> bindEditor()
 	{
 		return WMLEditor.class;
-	}
-
-	public Class<? extends IHighlightingHelper> bindIHighlightingHelper()
-	{
-		return WMLHighlightingHelper.class;
-	}
-
-	public Class<? extends HighlightingReconciler> bindHighlightingReconciler()
-	{
-		return WMLHighlightingReconciler.class;
 	}
 
 	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider()

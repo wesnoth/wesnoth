@@ -8,45 +8,54 @@
  *******************************************************************************/
 package org.wesnoth.ui.syntax;
 
+import java.util.Iterator;
+
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.ILeafNode;
-import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.XtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
-import org.wesnoth.services.WMLGrammarAccess;
+import org.wesnoth.ui.WMLSyntaxColoringAdapter;
+import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.wml.WMLTag;
-
-import com.google.inject.Inject;
 
 public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
 {
-    @Inject
-    private WMLGrammarAccess grammarAccess;
+    private WMLSyntaxColoringAdapter currentAdapter_;
+    private WMLTag currentTag_;
+
+    private int matchCnt = 0;
 
     public WMLCharacterPairMatcher( char[] chars )
     {
         super( chars );
+        currentAdapter_ = null;
+        currentTag_ = null;
     }
 
     @Override
     public IRegion match( IDocument doc, final int offset )
     {
+        ++ matchCnt;
         IRegion region = super.match( doc, offset );
 
         if ( region == null && doc instanceof XtextDocument ) {
-            ( ( XtextDocument ) doc ).modify( new IUnitOfWork<IRegion, XtextResource>(){
+            if ( matchCnt == 2 ) {
+                matchCnt = 0;
+            } else {
+                ( ( XtextDocument ) doc ).modify( new IUnitOfWork<IRegion, XtextResource>(){
 
-                @Override
-                public IRegion exec( XtextResource state ) throws Exception
-                {
-                    return computeMatchingRegion( state, offset );
-                }
+                    @Override
+                    public IRegion exec( XtextResource state ) throws Exception
+                    {
+                        return computeMatchingRegion( state, offset );
+                    }
 
-            });
+                });
+            }
         }
 
         return region;
@@ -54,129 +63,36 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
 
     public IRegion computeMatchingRegion(XtextResource state, int offset)
     {
-        //TODO: rework this.
-        if ( true )
+        EObject object = WMLUtil.EObjectUtils( ).resolveElementAt( state, offset );
+
+        // do nothing if we clicked the same tag
+        if ( currentTag_ == object )
             return null;
-//        if (state == null || state.getContents() == null || state.getContents().isEmpty())
-//            return null;
-//        ICompositeNode rootNode = state.getParseResult( ).getRootNode( );
-//        if (rootNode == null)
-//            return null;
-//        ILeafNode node = NodeModelUtils.findLeafNodeAtOffset(rootNode, offset);
-//        if (node == null)
-//            return null;
-//
-//        /* -- AbstractBracketMatcher.class -- */
-//        AbstractElement element = findElement(node, getPairs());
-//        boolean forwardSearch = true;
-//        if (element == null)
-//        {
-//            forwardSearch = false;
-//            element = findElement(node, getPairs().inverse());
-//        }
-//        if (element != null)
-//        {
-//            INode correspondingNode = findMatchingNode(node, element, forwardSearch);
-//            if (correspondingNode != null)
-//            {
-//                return new Region(correspondingNode.getOffset(), correspondingNode.getLength());
-//            }
-//        }
-//
-//        WMLEditor editor = (WMLEditor) EditorUtils.getActiveXtextEditor();
-//        if (editor == null || editor.getHighlightingHelper() == null)
-//            return null;
-//        HighlightingReconciler reconcilier = editor.getHighlightingHelper().getReconciler();
-//        if (reconcilier == null)
-//            return null;
-//        editor.setCurrentHighlightedNode(null);
-//        // clear any highlighted nodes
-//        reconcilier.refresh();
-//        /* -- WML Related -- */
-//        // search for opened/closed tag
-//
-//        // find opened tag at this offset
-//        ILeafNode wmlNode = findWMLLeafNodeAtOffset(rootNode, offset, false);
-//        if (wmlNode == null)
-//        {
-//            wmlNode = findWMLLeafNodeAtOffset(rootNode, offset, true);
-//        }
-//        if (wmlNode != null)
-//        {
-//            ILeafNode tmp = null;
-//            ILeafNode correspondingTag = null;
-//            boolean correspondingIsClosed = false;
-//            for (int i = 0; i < wmlNode.getParent().getChildren().size(); i++)
-//            {
-//                if (!(wmlNode.getParent().getChildren().get(i) instanceof ILeafNode))
-//                    continue;
-//
-//                if (i > 0 && wmlNode.getParent().getChildren().get(i-1) instanceof ILeafNode)
-//                    tmp = (ILeafNode)wmlNode.getParent().getChildren().get(i-1);
-//
-//                ILeafNode tmpNode = (ILeafNode)wmlNode.getParent().getChildren().get(i);
-//
-//                if ((tmpNode).getText().equals(wmlNode.getText()) &&
-//                        tmpNode != wmlNode && !tmpNode.isHidden())
-//                {
-//                    correspondingTag = tmpNode;
-//                    if (tmp != null && tmp.getText().equals("[/")) //$NON-NLS-1$
-//                        correspondingIsClosed = true;
-//                    break;
-//                }
-//            }
-//
-//            if (correspondingTag != null)
-//            {
-//                int tagOffset = correspondingTag.getTotalOffset();
-//                int length = correspondingTag.getLength();
-//                tagOffset--; // we need to color the '['
-//                length += 2;
-//
-//                // we need to color the auxilliary '/'
-//                if (correspondingIsClosed)
-//                {
-//                    tagOffset--;
-//                    length++;
-//                }
-//
-//                editor.setCurrentHighlightedNode(correspondingTag);
-//                reconcilier.addPosition(tagOffset, length,
-//                        WMLHighlightingConfiguration.RULE_START_END_TAG);
-//                reconcilier.refresh();
-//            }
-//        }
 
-        return null;
-    }
+        // remove current colored tag ( if any )
+        if ( currentTag_ != null ) {
+            synchronized ( currentTag_ ) {
 
-    public ILeafNode findWMLLeafNodeAtOffset(ICompositeNode parseTreeRootNode, int offset, boolean findClosed)
-    {
-        boolean isClosed = false;
-        for (INode node : parseTreeRootNode.getChildren())
-        {
-            if (node.getTotalOffset() <= offset)
-            {
-                if (node instanceof ILeafNode && ((ILeafNode) node).getText().equals("[/")) //$NON-NLS-1$
-                {
-                    isClosed = true;
+                Iterator<Adapter> itor = currentTag_.eAdapters( ).iterator( );
+                while ( itor.hasNext( ) ) {
+                    if ( itor.next( ) instanceof WMLSyntaxColoringAdapter ) {
+                        itor.remove( );
+                    }
                 }
-                if (node.getTotalOffset() + node.getTotalLength() >= offset)
-                {
-                    if (node instanceof ILeafNode && isWMLTag(node) && (isClosed == findClosed))
-                        return (ILeafNode) node;
 
-                    else if (node instanceof ICompositeNode)
-                        return findWMLLeafNodeAtOffset((ICompositeNode) node, offset, findClosed);
-                }
+                currentAdapter_ = null;
+                currentTag_ = null;
             }
         }
-        return null;
-    }
 
-    private boolean isWMLTag(INode node)
-    {
-        return ( node != null &&
-                 node.getGrammarElement( ) instanceof WMLTag );
+        if ( object instanceof WMLTag ) {
+            WMLTag tag = ( WMLTag ) object;
+
+            currentAdapter_ = new WMLSyntaxColoringAdapter( WMLHighlightingConfiguration.RULE_MATCH_TAG, true );
+            currentTag_ = tag;
+            tag.eAdapters( ).add( currentAdapter_ );
+        }
+
+        return null;
     }
 }

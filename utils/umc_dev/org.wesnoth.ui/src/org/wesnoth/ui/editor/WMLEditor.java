@@ -49,14 +49,11 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.FileStoreEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.texteditor.IDocumentProvider;
-import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.ui.editor.XtextEditor;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
 import org.wesnoth.Logger;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.ui.Messages;
 import org.wesnoth.ui.WMLUiModule;
-import org.wesnoth.ui.syntax.WMLHighlightingHelper;
 
 import com.google.inject.Inject;
 
@@ -64,9 +61,6 @@ public class WMLEditor extends XtextEditor
 {
 	protected static final String AUTOLINK_PROJECT_NAME = "_AutoLinked_CFGExternalFiles_"; //$NON-NLS-1$
 	protected static final String ENCODING_UTF8 = "utf-8"; //$NON-NLS-1$
-
-	protected IHighlightingHelper highlightingHelper_;
-	protected ILeafNode currentHighlightedNode_;
 
 	@Inject
 	private IExtXtextEditorCustomizer editorCustomizer;
@@ -94,26 +88,6 @@ public class WMLEditor extends XtextEditor
 	public ISourceViewer getSourceViewer_()
 	{
 		return getSourceViewer();
-	}
-
-	public WMLHighlightingHelper getHighlightingHelper()
-	{
-		return (WMLHighlightingHelper) highlightingHelper_;
-	}
-
-	public void setHighlightHelper(IHighlightingHelper helper)
-	{
-		highlightingHelper_ = helper;
-	}
-
-	public ILeafNode getCurrentHighlightedNode()
-	{
-		return currentHighlightedNode_;
-	}
-
-	public void setCurrentHighlightedNode(ILeafNode leaf)
-	{
-		currentHighlightedNode_ = leaf;
 	}
 
 	@Override

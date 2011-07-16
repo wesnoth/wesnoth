@@ -25,7 +25,7 @@ public class WMLHighlightingConfiguration extends DefaultHighlightingConfigurati
 	public static final String RULE_WML_IF = "wmlIF"; //$NON-NLS-1$
 	public static final String RULE_WML_TEXTDOMAIN = "wmlTextdomain"; //$NON-NLS-1$
 
-	public static final String RULE_START_END_TAG = "wmlStartEnd"; //$NON-NLS-1$
+	public static final String RULE_MATCH_TAG = "wmlMatchTag"; //$NON-NLS-1$
 
 	@Override
 	public void configure(IHighlightingConfigurationAcceptor acceptor)
@@ -35,7 +35,7 @@ public class WMLHighlightingConfiguration extends DefaultHighlightingConfigurati
 		acceptor.acceptDefaultHighlighting(RULE_WML_KEY, Messages.WMLHighlightingConfiguration_8, keyTextStyle());
 		acceptor.acceptDefaultHighlighting(RULE_WML_MACRO_CALL, Messages.WMLHighlightingConfiguration_9, macroTextStyle());
 
-		acceptor.acceptDefaultHighlighting(RULE_START_END_TAG,
+		acceptor.acceptDefaultHighlighting(RULE_MATCH_TAG,
 				Messages.WMLHighlightingConfiguration_10, startEndTextStyle());
 
 		// preproc
