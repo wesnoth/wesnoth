@@ -23,7 +23,8 @@ import org.wesnoth.Logger;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preprocessor.Define;
 import org.wesnoth.projects.ProjectUtils;
-import org.wesnoth.ui.WMLUtil;
+import org.wesnoth.ui.editor.WMLEditor;
+import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLTag;
 
@@ -37,7 +38,7 @@ public class WMLDocHandler extends AbstractHandler
         try
         {
             final XtextEditor editor = EditorUtils.getActiveXtextEditor(event);
-            final IFile editedFile = WMLUtil.getEditorFile( editor );
+            final IFile editedFile = WMLEditor.getEditorFile( editor );
             final String installName = WesnothInstallsUtils.getInstallNameForResource( editedFile );
 
             editor.getDocument().readOnly(new IUnitOfWork.Void<XtextResource>()
@@ -51,7 +52,7 @@ public class WMLDocHandler extends AbstractHandler
                     Point positionAbsolute = editor.getInternalSourceViewer().getTextWidget().toDisplay(positionRelative);
                     positionAbsolute.y += 20;
 
-                    EObject grammarElement = WMLUtil.EObjectUtils( ).resolveElementAt( resource, selection.getOffset( ) );
+                    EObject grammarElement = WMLUtils.EObjectUtils( ).resolveElementAt( resource, selection.getOffset( ) );
                     if ( grammarElement == null )
                         return;
 

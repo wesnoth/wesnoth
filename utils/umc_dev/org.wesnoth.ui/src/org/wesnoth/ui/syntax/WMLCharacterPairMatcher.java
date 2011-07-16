@@ -19,7 +19,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.XtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.wesnoth.ui.WMLSyntaxColoringAdapter;
-import org.wesnoth.ui.WMLUtil;
+import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLTag;
 
 public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
@@ -63,7 +63,7 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
 
     public IRegion computeMatchingRegion(XtextResource state, int offset)
     {
-        EObject object = WMLUtil.EObjectUtils( ).resolveElementAt( state, offset );
+        EObject object = WMLUtils.EObjectUtils( ).resolveElementAt( state, offset );
 
         // do nothing if we clicked the same tag
         if ( currentTag_ == object )

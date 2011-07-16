@@ -23,7 +23,8 @@ import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.preprocessor.Define;
 import org.wesnoth.projects.ProjectUtils;
-import org.wesnoth.ui.WMLUtil;
+import org.wesnoth.ui.editor.WMLEditor;
+import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLMacroCall;
 
 public class WMLHyperlinkHelper extends HyperlinkHelper
@@ -34,12 +35,12 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
     {
         super.createHyperlinksByOffset(resource, offset, acceptor);
 
-        EObject object = WMLUtil.EObjectUtils( ).resolveElementAt( resource, offset );
+        EObject object = WMLUtils.EObjectUtils( ).resolveElementAt( resource, offset );
 
         if ( object == null )
             return;
 
-        IFile file = WMLUtil.getActiveEditorFile();
+        IFile file = WMLEditor.getActiveEditorFile();
         if ( file == null ){
             Logger.getInstance().logError( "FATAL! file is null (and it shouldn't) ");
             return;

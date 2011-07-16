@@ -12,20 +12,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.ILeafNode;
-import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.wesnoth.wml.WMLExpression;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLKeyValue;
-import org.wesnoth.wml.WMLMacroCall;
-import org.wesnoth.wml.WMLMacroCallParameter;
 import org.wesnoth.wml.WMLTag;
-import org.wesnoth.wml.impl.WMLKeyValueImpl;
 
-public class WMLGrammarUtils
+public class WMLUtils
 {
+    private static EObjectAtOffsetHelper eObjectAtOffsetHelper_;
+
+    public static EObjectAtOffsetHelper EObjectUtils(){
+        if ( eObjectAtOffsetHelper_ == null ) {
+            eObjectAtOffsetHelper_ = new EObjectAtOffsetHelper( );
+        }
+
+        return eObjectAtOffsetHelper_;
+    }
+
     /**
      * Returns the list of child keys for this tag
      * @param tag The tag to process
@@ -68,63 +74,26 @@ public class WMLGrammarUtils
         StringBuilder result = new StringBuilder( );
 
         for ( WMLKeyValue value : values ) {
-            if  ( value.getClass( ).equals( WMLKeyValueImpl.class ) ) {
-                result.append( toStringWMLKeyValue( value ) );
-            } else if ( value instanceof WMLMacroCall ) {
-                result.append( toStringWMLMacroCall( (WMLMacroCall) value ) );
-            }
+            result.append( toString( value ) );
         }
 
         return result.toString( );
     }
 
     /**
-     * Returns the string representation of the specified WMLKeyValue
-     * @param keyValue The key value instance
+     * Returns the string representation of the specified WML object
+     * with the preceeding space/new lines cleaned
+     * @param object A WML EObject
      * @return A string representation
      */
-    public static String toStringWMLKeyValue( WMLKeyValue keyValue )
+    public static String toString( EObject object )
     {
-        ICompositeNode node = NodeModelUtils.getNode( keyValue );
-        if ( node == null )
-            return "";
-
-        StringBuilder result = new StringBuilder( );
-
-        for ( INode tmpNode : node.getChildren( ) ) {
-            for ( ILeafNode leafNode : tmpNode.getLeafNodes( ) ) {
-                if ( leafNode.getLength( ) == 0 )
-                    continue;
-
-                result.append( leafNode.getText( ) );
-            }
-        }
-        return result.toString( );
+        return toCleanedUpText( object );
     }
 
-    /**
-     * Returns the string representation of the specified WMLMacroCall
-     * @param macro The macro call instance
-     * @return A string representation
-     */
-    public static String toStringWMLMacroCall( WMLMacroCall macro )
+    private static String toCleanedUpText( EObject obj )
     {
-        StringBuilder result = new StringBuilder( );
-        result.append( "{" );
-        result.append( macro.getPoint( ) );
-        result.append( macro.getRelative( ) );
-
-        result.append( macro.getName( ) );
-
-        for ( WMLMacroCallParameter param : macro.getParameters( ) ) {
-            if ( param instanceof WMLMacroCall )
-                result.append( toStringWMLMacroCall( ( WMLMacroCall ) param ) );
-            else {
-                //
-            }
-        }
-
-        result.append( "}" );
-        return result.toString( );
+        return NodeModelUtils.getNode( obj ).getText( )
+                .replaceFirst( "(\\n|\\r| )+", "" );
     }
 }

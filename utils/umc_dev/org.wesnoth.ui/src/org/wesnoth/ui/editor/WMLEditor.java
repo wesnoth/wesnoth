@@ -50,6 +50,7 @@ import org.eclipse.ui.ide.FileStoreEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.wesnoth.Logger;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.ui.Messages;
@@ -104,6 +105,28 @@ public class WMLEditor extends XtextEditor
 			return false;
 		return u1.toString().equals(u2.toString());
 	}
+
+
+    /**
+     * Gets current edited file.
+     * @return An IFile instance
+     */
+    public static IFile getActiveEditorFile()
+    {
+        return getEditorFile( EditorUtils.getActiveXtextEditor() );
+    }
+
+    /**
+     * Gets the edited file from the specified editor
+     * @param editor The editor to get the file from
+     * @return An IFile instance
+     */
+    public static IFile getEditorFile( XtextEditor editor )
+    {
+        if ( editor == null )
+            return null;
+        return ( IFile ) editor.getEditorInput( ).getAdapter( IFile.class );
+    }
 
 	/**
 	 * Here it comes the part that handles external files

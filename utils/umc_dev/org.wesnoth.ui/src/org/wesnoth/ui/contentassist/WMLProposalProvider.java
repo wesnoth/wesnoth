@@ -31,10 +31,10 @@ import org.wesnoth.schema.Tag;
 import org.wesnoth.schema.TagKey;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.ui.WMLUiModule;
-import org.wesnoth.ui.WMLUtil;
+import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.utils.WMLGrammarUtils;
+import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.core.WMLConfig;
@@ -80,7 +80,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	    if ( projectCache_ != null )
 	        return;
 
-        IFile file = WMLUtil.getActiveEditorFile();
+        IFile file = WMLEditor.getActiveEditorFile();
         projectCache_ = ProjectUtils.getCacheForProject( file.getProject( ) );
 
         // load the schema so we know what to suggest for autocomplete
@@ -252,7 +252,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 					if (key.isRepeatable() == false)
 					{
 						// don't suggest already completed keys
-						for( WMLKey eKey: WMLGrammarUtils.getTagKeys( tag ) )
+						for( WMLKey eKey: WMLUtils.getTagKeys( tag ) )
 							if (eKey.getName().equals(key.getName())) {
 								found = true;
 								break;
@@ -305,7 +305,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 					// check only non-repeatable tags
 					if (tag.isRepeatable() == false)
 					{
-						for( WMLTag wmlTag : WMLGrammarUtils.getTagTags( parentTag ) )
+						for( WMLTag wmlTag : WMLUtils.getTagTags( parentTag ) )
 							if (wmlTag.getName().equals(tag.getName()))
 							{
 								found = true;
