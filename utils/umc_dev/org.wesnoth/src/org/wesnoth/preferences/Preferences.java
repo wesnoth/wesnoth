@@ -216,7 +216,8 @@ public class Preferences extends AbstractPreferenceInitializer
          */
         public String getUserDir()
         {
-            return getString( installPrefix_ + Constants.P_WESNOTH_USER_DIR ) + Path.SEPARATOR;
+            return getString( installPrefix_ + Constants.P_WESNOTH_USER_DIR )
+                    .replace( '\\', '/' ) + Path.SEPARATOR;
         }
 
         /**
@@ -226,7 +227,8 @@ public class Preferences extends AbstractPreferenceInitializer
          */
         public String getWorkingDir()
         {
-            return getString( installPrefix_ + Constants.P_WESNOTH_WORKING_DIR ) + Path.SEPARATOR;
+            return getString( installPrefix_ + Constants.P_WESNOTH_WORKING_DIR )
+                    .replace( '\\', '/' ) + Path.SEPARATOR;
         }
 
         /**
@@ -236,7 +238,8 @@ public class Preferences extends AbstractPreferenceInitializer
          */
         public String getWMLToolsDir()
         {
-            return getString( installPrefix_ + Constants.P_WESNOTH_WMLTOOLS_DIR ) + Path.SEPARATOR;
+            return getString( installPrefix_ + Constants.P_WESNOTH_WMLTOOLS_DIR )
+                    .replace( '\\', '/' ) + Path.SEPARATOR;
         }
 
         /**
@@ -245,7 +248,8 @@ public class Preferences extends AbstractPreferenceInitializer
          */
         public String getWesnothExecutablePath()
         {
-            return getString( installPrefix_ + Constants.P_WESNOTH_EXEC_PATH );
+            return getString( installPrefix_ + Constants.P_WESNOTH_EXEC_PATH )
+                    .replace( '\\', '/' );
         }
 	}
 }
