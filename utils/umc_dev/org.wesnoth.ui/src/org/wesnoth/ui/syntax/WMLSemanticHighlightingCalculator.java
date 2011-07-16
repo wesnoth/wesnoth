@@ -92,7 +92,6 @@ public class WMLSemanticHighlightingCalculator implements ISemanticHighlightingC
             // check if we have any information specific information for highlighting
             for ( Adapter adapter : current.eAdapters( ) ) {
                 if ( adapter instanceof WMLSyntaxColoringAdapter ) {
-                    System.out.println( current );
                     WMLSyntaxColoringAdapter wmlAdapter = ( WMLSyntaxColoringAdapter ) adapter;
 
                     for ( Pair<INode, String> pair : toColor ) {
