@@ -9,12 +9,22 @@
 package org.wesnoth.ui.folding;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
+import org.eclipse.xtext.ui.editor.folding.IFoldingRegionAcceptor;
+import org.eclipse.xtext.util.ITextRegion;
 import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLMacroDefine;
+import org.wesnoth.wml.WMLPreprocIF;
 import org.wesnoth.wml.WMLTextdomain;
+
+import com.google.inject.Inject;
 
 public class WMLFoldingRegionProvider extends DefaultFoldingRegionProvider
 {
+    @Inject
+    private ILocationInFileProvider locationInFileProvider;
+
     @Override
     protected boolean isHandled( EObject eObject )
     {
@@ -27,5 +37,32 @@ public class WMLFoldingRegionProvider extends DefaultFoldingRegionProvider
         }
 
         return super.isHandled( eObject );
+    }
+
+    @Override
+    protected void computeObjectFolding( EObject eObject, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor )
+    {
+        // copied from "DefaultFoldingRegionProvider
+        ITextRegion region = locationInFileProvider.getFullTextRegion(eObject);
+        if (region != null) {
+            ITextRegion significant = locationInFileProvider.getSignificantTextRegion(eObject);
+            if (significant == null)
+                throw new NullPointerException("significant region may not be null");
+            int offset = region.getOffset();
+            int length = region.getLength( );
+
+            String endName = "";
+            if ( eObject instanceof WMLPreprocIF )
+                endName = ( ( WMLPreprocIF ) eObject ).getEndName( );
+            else if ( eObject instanceof WMLMacroDefine )
+                endName = ( ( WMLMacroDefine ) eObject ).getEndName( );
+
+            if ( endName.endsWith( "\r\n" ) )
+                length -= 2;
+            else if ( endName.endsWith( "\n" ) )
+                -- length;
+
+            foldingRegionAcceptor.accept(offset, length, significant);
+        }
     }
 }
