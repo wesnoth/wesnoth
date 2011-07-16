@@ -42,6 +42,7 @@ mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, bool for_pathfinding)
 	, for_pathfinding_(for_pathfinding)
 	, applied_actions_()
 	, mode_(BUILD_PLANNED_MAP)
+	, resetters_()
 {
 }
 
