@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-07-09 09:00+0200\n"
-"PO-Revision-Date: 2011-06-06 16:12-0800\n"
+"PO-Revision-Date: 2011-07-16 10:20-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -247,7 +247,7 @@ msgstr "Plandaí Fásaigh"
 #. [terrain_type]: id=desert_plants_sans_bones
 #: data/core/terrain.cfg:368
 msgid "Desert Plants without Bones"
-msgstr "Plandaí Fásaigh gan Cnámha"
+msgstr "Plandaí Fásaigh gan Chnámha"
 
 #. [terrain_type]: id=windmill
 #: data/core/terrain.cfg:377
@@ -283,10 +283,8 @@ msgstr "Crann Mór"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:440
-#, fuzzy
-#| msgid "Great Tree"
 msgid "Dead Great Tree"
-msgstr "Crann Mór"
+msgstr "Crann Mór Marbh"
 
 #. [terrain_type]: id=tropical_forest
 #. [terrain_type]: id=forest
@@ -1248,7 +1246,7 @@ msgstr "Cuntas:"
 #. [scroll_label]: id=description
 #: data/gui/default/window/addon_description.cfg:194
 msgid "No description available."
-msgstr "Ní infhaighte é tuarascáil."
+msgstr "Níl tuairisc ann."
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
@@ -1426,7 +1424,7 @@ msgstr "Leithead Nua:"
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:78
 msgid "Old width:"
-msgstr "Leithead nua:"
+msgstr "Seanleithead:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:102
@@ -1436,12 +1434,12 @@ msgstr "Airde Nua:"
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:126
 msgid "Old height:"
-msgstr "Airde sean:"
+msgstr "Seanairde:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:153
 msgid "Expand / shrink direction"
-msgstr "Treo forbair / crap"
+msgstr "Forbair / crap treo"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:248
@@ -1458,12 +1456,12 @@ msgstr "Athraigh méid an léarscáile"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46 src/hotkeys.cpp:125
 msgid "Editor Settings"
-msgstr "Socruithe Eagarthòir"
+msgstr "Socruithe Eagarthóra"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:54
 msgid "Time of day lighting preset"
-msgstr "Réamhshocrú solas tráth den lá"
+msgstr "Réamhshocrú soilsiú tráth an lae"
 
 #. [button]: id=next_tod
 #. [button]: id=next_tip
@@ -1476,7 +1474,7 @@ msgstr "Ar Aghaidh"
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:91
 msgid "Custom lighting setting"
-msgstr "Roghnach soilsiú saincheaptha"
+msgstr "Soilsiú saincheaptha roghnach"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:101
@@ -1542,7 +1540,7 @@ msgstr "staid"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:85
 msgid "Call stack"
-msgstr "Glao-staca"
+msgstr "Staca Glao"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:94
@@ -1563,17 +1561,17 @@ msgstr "Oibríocht Eile"
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:150
 msgid "Step out"
-msgstr "Imigh ón gcluiche"
+msgstr "Imigh ón chluiche"
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:161
 msgid "Continue"
-msgstr "Coinním ar bun"
+msgstr "Lean ar aghaidh"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:178
 msgid "Execution trace"
-msgstr "Lorg rite"
+msgstr "Lorg reatha"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1594,7 +1592,7 @@ msgstr "Scrios Sábháil"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:60
 msgid "Do you really want to delete this game?"
-msgstr "An dteastaíonn uait scrios an cluiche seo?"
+msgstr "An bhfuil tú cinnte gur mhaith leat an cluiche seo a scriosadh?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:80
@@ -1636,7 +1634,7 @@ msgstr "Lódáil Cluiche"
 #: data/gui/default/window/game_load.cfg:360
 #: data/gui/default/window/game_load.cfg:361
 msgid "Delete"
-msgstr "Scriosaim amach"
+msgstr "Scrios"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:379
@@ -1756,7 +1754,7 @@ msgstr "Cluichí"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:177
 msgid "Assign sides to players at random"
-msgstr ""
+msgstr "Sann foirne d'imreoirí go randamach"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:178
@@ -1840,12 +1838,12 @@ msgstr "Seomraí"
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:498
 msgid "Messages waiting"
-msgstr "Teachtaireachtaí ag feitheamh"
+msgstr "Teachtaireachtaí ag fanacht"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:568
 msgid "Multiplayer Lobby"
-msgstr "Forhalla Ilimreoir"
+msgstr "Forhalla Ilimreora"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:576
@@ -1919,7 +1917,7 @@ msgstr "athfhéachaint tapa"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:38
 msgid "Player Info — "
-msgstr "Eolas Imreoir — "
+msgstr "Eolas Imreora — "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:70
@@ -2066,7 +2064,7 @@ msgstr "Toirmeasc"
 #: data/gui/default/window/mp_connect.cfg:60
 #: data/gui/default/window/mp_server_list.cfg:69
 msgid "You will now connect to the multiplayer server."
-msgstr "Nascfaidh tú chuig an friothálaí ilimreoir anois."
+msgstr "Nascfaidh tú chuig an bhfriothálaí ilimreora anois."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:158
@@ -2110,7 +2108,7 @@ msgstr "Socraigh Pasfhocal"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:254
 msgid "Map to play:"
-msgstr "Léarscáil go imirt:"
+msgstr "Léarscáil le haghaidh imeartha"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:339
@@ -2125,7 +2123,7 @@ msgstr "Gan Teorainn"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:380
 msgid "Village gold"
-msgstr "Ór na bailte"
+msgstr "Ór baile"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:460
@@ -2152,13 +2150,12 @@ msgstr ""
 #: data/gui/default/window/mp_create_game_set_password.cfg:90
 #: data/gui/default/window/mp_login.cfg:144
 msgid "Password:"
-msgstr "Focal Faire:"
+msgstr "Pasfhocal:"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
-#, fuzzy
 msgid "Multiplayer server login dialog"
-msgstr "Nascfaidh tú chuig an friothálaí ilimreoir anois."
+msgstr "Dialóg logáil friothálaí ilimreora"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:41
@@ -2176,7 +2173,7 @@ msgstr "Logáil Isteach:"
 #: data/gui/default/window/mp_login.cfg:200
 #: src/game_preferences_display.cpp:176
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Sábháil pasfhocal do socruithe (glan téacs)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:258
@@ -2206,7 +2203,7 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:146
 msgid "Join Official Server"
-msgstr "Dul Isteach i Freastalaí Oifigiúil"
+msgstr "Dul Isteach i bhFreastalaí Oifigiúil"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:147
@@ -2216,7 +2213,7 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:157
 msgid "Join a different server"
-msgstr "Dul isteach i freastalaí eile"
+msgstr "Dul isteach i bhfreastalaí eile"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:166
@@ -2241,7 +2238,7 @@ msgstr ""
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:121
 msgid "Address"
-msgstr "Aclaíocht"
+msgstr "Seoladh"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:223
@@ -2322,7 +2319,7 @@ msgstr "Forlíontáin"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Íoslódáil feachtais úsáidcheaptha, aioseanna, nó pacaí léarscáile"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
@@ -2353,7 +2350,7 @@ msgstr "Teidil Chreidiúna"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:231
 msgid "View the credits"
-msgstr "Féach na chreidiúna"
+msgstr "Féach ar na creidiúna"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:232
@@ -2363,7 +2360,7 @@ msgstr "Scoir Cluiche"
 #. [button]: id=ok
 #: data/gui/default/window/unit_attack.cfg:195
 msgid "Attack"
-msgstr "Ionsaí"
+msgstr "Ionsaigh"
 
 #. [label]
 #: data/gui/default/window/unit_attack.cfg:263
@@ -2485,7 +2482,7 @@ msgstr "Liosta Cairde"
 
 #: src/game_preferences_display.cpp:179
 msgid "Multiplayer Options"
-msgstr "Roghanna Ilimreoir"
+msgstr "Roghanna Ilimreora"
 
 #: src/game_preferences_display.cpp:180
 msgid "Add As Friend"
@@ -2514,7 +2511,7 @@ msgstr "Cloigín Seala"
 
 #: src/game_preferences_display.cpp:187
 msgid "Show Team Colors"
-msgstr "Tiaspeáin Dathanna na Foirne"
+msgstr "Taispeáin Dathanna na Foirne"
 
 #: src/game_preferences_display.cpp:188
 msgid "Show Color Cursors"
@@ -2546,11 +2543,11 @@ msgstr "Ceol"
 
 #: src/game_preferences_display.cpp:196
 msgid "Chat Timestamping"
-msgstr "Stampáil Ama Comhra"
+msgstr "Stampáil-Ama Comhra"
 
 #: src/game_preferences_display.cpp:197
 msgid "sound^Advanced Options"
-msgstr "Ard-Rogha"
+msgstr "Ardroghanna"
 
 #: src/game_preferences_display.cpp:198
 msgid "sound^Standard Options"
@@ -2643,7 +2640,7 @@ msgstr "Méid Maolan: "
 
 #: src/game_preferences_display.cpp:291
 msgid "Change the speed of scrolling around the map"
-msgstr "Athraigh an luas scrollú timpeall an léarscáil"
+msgstr "Athraigh an luas scrollaithe timpeall an léarscáil"
 
 #: src/game_preferences_display.cpp:296 src/game_preferences_display.cpp:298
 msgid "Set the amount of chat lines shown"
@@ -2651,7 +2648,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:301
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Cuir stampa-ama ar teachtaireachtaí comhrá"
 
 #: src/game_preferences_display.cpp:304
 msgid "Choose whether the game should run full screen or in a window"
@@ -2662,6 +2659,7 @@ msgid "Make units move and fight faster"
 msgstr ""
 
 #: src/game_preferences_display.cpp:326
+#, fuzzy
 msgid "Units move and fight speed"
 msgstr "Luas aonaid"
 
@@ -2695,7 +2693,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:361
 msgid "Overlay a grid onto the map"
-msgstr ""
+msgstr "Forleag eangach ar an léarscáil"
 
 #: src/game_preferences_display.cpp:364
 msgid "Sort the player list in the lobby by player groups"
@@ -3389,7 +3387,7 @@ msgstr "Uirlis Roghnúchán"
 
 #: src/hotkeys.cpp:141
 msgid "Set Starting Positions Tool"
-msgstr ""
+msgstr "Uirlis \"Socraigh Suíomhanna Tosaithe\""
 
 #: src/hotkeys.cpp:142
 msgid "Next Brush"
@@ -3786,9 +3784,8 @@ msgstr ""
 #~ msgid "Name: "
 #~ msgstr "Ainm: "
 
-#, fuzzy
 #~ msgid "Reverse Time Graphics"
-#~ msgstr "Ealaín agus Grafacheach"
+#~ msgstr "Aisiompaigh Grafaicí Ama"
 
 #~ msgid "Music Volume:"
 #~ msgstr "Airde Ceol:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "POT-Creation-Date: 2011-05-30 20:46+0300\n"
-"PO-Revision-Date: 2011-05-19 14:18-0800\n"
+"PO-Revision-Date: 2011-07-16 13:06-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: none\n"
@@ -153,7 +153,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:66
 #, no-wrap
 msgid "B<--data-dir E<lt>directoryE<gt>>"
-msgstr ""
+msgstr "B<--data-dir E<lt>directoryE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:69
@@ -321,7 +321,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:139
 #, no-wrap
 msgid "B<--new-syntax>"
-msgstr ""
+msgstr "B<--new-syntax>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:142
@@ -531,7 +531,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:215
 #, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
-msgstr ""
+msgstr "B<--ai_config>I<number>B<=>I<value>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:218
@@ -543,7 +543,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:218
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
-msgstr ""
+msgstr "B<--algorithm>I<number>B<=>I<value>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:225
@@ -556,7 +556,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:225
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
-msgstr ""
+msgstr "B<--controller>I<number>B<=>I<value>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:231
@@ -566,9 +566,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:231
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--era=>I<value>"
-msgstr "<sonra> <fiúntas>"
+msgstr "B<--era=>I<value>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:238
@@ -609,7 +609,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:247
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
-msgstr ""
+msgstr "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:256
@@ -621,9 +621,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:256
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--scenario=>I<value>"
-msgstr "<sonra> <fiúntas>"
+msgstr "B<--scenario=>I<value>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:260
@@ -634,9 +634,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:260
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
-msgstr "Foireann"
+msgstr "B<--side>I<number>B<=>I<value>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:265
@@ -647,9 +647,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:265
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--turns=>I<value>"
-msgstr "<sonra> <fiúntas>"
+msgstr "B<--turns=>I<value>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:269
@@ -762,6 +762,8 @@ msgid ""
 "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
+"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
+"B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:39
@@ -778,9 +780,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:47
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c\\ >I<path>B<,\\ --config>I<\\ path>"
-msgstr "B<--config-path>"
+msgstr "B<-c\\ >I<path>B<,\\ --config>I<\\ path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:52
@@ -817,9 +819,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:72
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
-msgstr "B<port>"
+msgstr "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:77
@@ -830,9 +832,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:77
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"
-msgstr "B<--bpp>I<\\ uimhir>"
+msgstr "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:81
@@ -843,9 +845,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:81
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-T\\ >I<number>B<,\\ --max-threads>I<\\ number>"
-msgstr "Uasmhéid # focail in easnamh:"
+msgstr "B<-T\\ >I<number>B<,\\ --max-threads>I<\\ number>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:88
@@ -878,9 +880,9 @@ msgstr ""
 
 #. type: SH
 #: ../../doc/man/wesnothd.6:95
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "SERVER CONFIG"
-msgstr "B<--config-path>"
+msgstr "CUMRAÍOCHT FRIOTHÁLAÍ"
 
 #. type: SS
 #: ../../doc/man/wesnothd.6:97
@@ -934,9 +936,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:114
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<ban_save_file>"
-msgstr "B<room_save_file>"
+msgstr "B<ban_save_file>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:118
@@ -947,9 +949,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:118
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<compress_stored_rooms>"
-msgstr "Liostaigh seomraí ar fáil."
+msgstr "B<compress_stored_rooms>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:121
@@ -1033,9 +1035,8 @@ msgstr "B<motd>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:144
-#, fuzzy
 msgid "The message of the day."
-msgstr "Tráth den lá"
+msgstr "Teachtaireacht an lae"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:144
