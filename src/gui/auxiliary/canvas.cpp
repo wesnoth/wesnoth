@@ -50,8 +50,10 @@ namespace {
 
 /*WIKI
  * @page = GUICanvasWML
+ * @begin{parent}{name="generic/state/draw/"}
  *
  * == Pre commit ==
+ * @begin{tag}{name="precommit"}{min="0"}{max="1"}
  *
  * This section contains the pre commit functions. These functions will be
  * executed before the drawn canvas is applied on top of the normal
@@ -62,6 +64,7 @@ namespace {
  * The section can have one of the following subsections.
  *
  * === Blur ===
+ * @begin{tag}{name="blur"}{min="0"}{max="1"}
  *
  * Blurs the background before applying the canvas. This doesn't make sense
  * if the widget isn't semi-transparent.
@@ -70,6 +73,8 @@ namespace {
  * @begin{table}{config}
  *     depth & unsigned & 0 &            The depth to blur. $
  * @end{table}
+ * @end{tag}{name="blur"}
+ * @end{tag}{name="precommit"}
  */
 
 /***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
@@ -307,6 +312,7 @@ tline::tline(const config& cfg)
  * @page = GUICanvasWML
  *
  * == Line ==
+ * @begin{tag}{name="line"}{min="0"}{max="-1"}
  * Definition of a line. When drawing a line it doesn't get blended on the
  * surface but replaces the pixels instead. A blitting flag might be added later
  * if needed.
@@ -323,6 +329,7 @@ tline::tline(const config& cfg)
  *     debug & string & "" &           Debug message to show upon creation
  *                                     this message is not stored. $
  * @end{table}
+ * @end{tag}{name="line"}
  *
  * <span id="general_variables">Variables:</span>.
  * @begin{table}{formula}
@@ -517,7 +524,29 @@ tline::tline(const config& cfg)
  *                                     is filled. The last images are
  *                                     truncated. $
  * @end{table}
+ * @allow{type}{name="unsigned"}{value="^\d+$"}
+ * @allow{type}{name="f_unsigned"}{value="^\d+*$"}
+ * @allow{type}{name="int"}{value="^-?\d+$"}
+ * @allow{type}{name="f_int"}{value="^-?\d+$"}
+ * @allow{type}{name="bool"}{value="^true|false|yes|no$"}
+ * @allow{type}{name="f_bool"}{value="^true|false|yes|no$"}
+ * @allow{type}{name="string"}{value="^.+$"}
+ * @allow{type}{name="t_string"}{value="^_.+$"}
+ * @allow{type}{name="f_string"}{value="^_.+*$"} 
+ * @allow{type}{name="f_tstring"}{value="^_.+*$"}
  *
+ * @allow{type}{name="color"}{value="^(?:2[0-5][0-5]|[01]\d\d?)\.2[0-5][0-5]|[01]\d\d?)\.2[0-5][0-5]|[01]\d\d?)\.(?:(?:2[0-5][0-5]|[01]?\d\d?))$"}
+ * 
+ * @allow{type}{name="font_style"}{value="^normal|bold|italic|underline*$"}
+ * @allow{type}{name="v_align"}{value="^top|bottom|center$"}
+ * @allow{type}{name="h_align"}{value="^left|right|center$"}
+ * @allow{type}{name="f_h_align"}{value="^left|right|center$"}
+ * @allow{type}{name="border"}{value="^top|bottom|left|right|all*$"}
+ * @allow{type}{name="scrollbar_mode"}{value="^left|right|center$"}
+ * @allow{type}{name="resize_mode"}{value="^scale|strecth|tile$"}
+ * @allow{type}{name="section"}{value="^\w$"}
+ * @allow{type}{name="config"}{value="^\w$"}
+ * @allow{type}{name="grid"}{value="^\w$"}
  * == Section types ==
  *
  * For more complex parts, there are sections. Sections contain of several
@@ -643,6 +672,7 @@ trectangle::trectangle(const config& cfg)
  * @page = GUICanvasWML
  *
  * == Rectangle ==
+ * @begin{tag}{name="rectangle"}{min="0"}{max="-1"}
  *
  * Definition of a rectangle. When drawing a rectangle it doesn't get blended on
  * the surface but replaces the pixels instead. A blitting flag might be added
@@ -664,6 +694,7 @@ trectangle::trectangle(const config& cfg)
  *     debug & string & "" &           Debug message to show upon creation
  *                                     this message is not stored. $
  * @end{table}
+ * @end{tag}{name="rectangle"}
  * Variables:
  * See [[#general_variables|Line]].
  *
@@ -784,6 +815,7 @@ tcircle::tcircle(const config& cfg)
  * @page = GUICanvasWML
  *
  * == Circle ==
+ * @begin{tag}{name="circle"}{min="0"}{max="-1"}
  *
  * Definition of a circle. When drawing a circle it doesn't get blended on
  * the surface but replaces the pixels instead. A blitting flag might be
@@ -799,7 +831,7 @@ tcircle::tcircle(const config& cfg)
  * debug & string & "" &           Debug message to show upon creation this
  *                                 message is not stored. $
  * @end{table}
- *
+ * @end{tag}{name="circle"}
  * Variables:
  * See [[#general_variables|Line]].
  *
@@ -891,6 +923,8 @@ private:
 	/** The image is cached in this surface. */
 	surface image_;
 
+
+
 	/**
 	 * Name of the image.
 	 *
@@ -937,6 +971,7 @@ timage::timage(const config& cfg)
  * @page = GUICanvasWML
  *
  * == Image ==
+ * @begin{tag}{name="image"}{min="0"}{max="-1"}
  * Definition of an image.
  *
  * Keys:
@@ -959,6 +994,7 @@ timage::timage(const config& cfg)
  *                                     this message is not stored. $
  *
  * @end{table}
+ * @end{tag}{name="image"}
  * Variables:
  * @begin{table}{formula}
  *     image_width & unsigned &         The width of the image, either the
@@ -1222,6 +1258,7 @@ ttext::ttext(const config& cfg)
  * @page = GUICanvasWML
  *
  * == Text ==
+ * @begin{tag}{name="text"}{min="0"}{max="-1"}
  * Definition of text.
  *
  * Keys:
@@ -1246,6 +1283,7 @@ ttext::ttext(const config& cfg)
  *     debug & string & "" &           Debug message to show upon creation
  *                                     this message is not stored. $
  * @end{table}
+ * @end{tag}{name="text"}
  * NOTE alignment could only be done with the formulas, but now with the
  * text_alignment flag as well, older widgets might still use the formulas and
  * not all widgets may expose the text alignment yet and when exposed not use
@@ -1257,6 +1295,7 @@ ttext::ttext(const config& cfg)
  *     text_height & unsigned &           The height of the rendered text. $
  * @end{table}
  * Also the general variables are available, see [[#general_variables|Line]].
+ * @end{parent}{name="generic/state/draw/"}
  */
 
 	VALIDATE(font_size_, _("Text has a font size of 0."));
@@ -1472,5 +1511,4 @@ void tcanvas::parse_cfg(const config& cfg)
  *
  * [[Category: WML Reference]]
  * [[Category: GUI WML Reference]]
- *
  */

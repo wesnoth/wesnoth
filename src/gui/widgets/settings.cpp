@@ -181,6 +181,8 @@ const std::string& tgui_definition::read(const config& cfg)
  * default theme. That way it's possible to slowly create your own gui and
  * test it.
  *
+ * @begin{parent}{name="/"}
+ * @begin{tag}{name="gui"}{min="0"}{max="1"}
  * The gui has the following data:
  * @begin{table}{config}
  *     id & string & &                  Unique id for this gui (theme). $
@@ -260,7 +262,8 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Editor_resize_map &            Resizes a map in the editor. $
  *     Editor_settings &              The settings specific for the editor. $
  * @end{table}
- *
+ * @end{tag}{name=gui}
+ * @end{parent}{name="/"}
  */
 	id = cfg["id"].str();
 	description = cfg["description"];
@@ -309,8 +312,10 @@ const std::string& tgui_definition::read(const config& cfg)
 	/***** settings *****/
 /*WIKI
  * @page = GUIToolkitWML
- * @order = 1
- *
+ * @order = 1 
+ * 
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="settings"}{min="0"}{max="1"}
  * A setting section has the following variables:
  * @begin{table}{config}
  *     popup_show_delay & unsigned & 0 & The time it take before the popup shows
@@ -345,12 +350,14 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                     The sound played if a slider is
  *                                     adjusted. $
  *
- *     has_helptip_message & tstring & &
+ *     has_helptip_message & t_string & &
  *                                     The string used to append the tooltip
  *                                     if there is also a helptip. The WML
  *                                     variable @$hotkey can be used to get show
  *                                     the name of the hotkey for the help. $
  * @end{table}
+ * @end{tag}{name="settings"}
+ * @end{parent}{name="gui/"}
  */
 
 /**
@@ -495,13 +502,17 @@ tstate_definition::tstate_definition(const config &cfg) :
  * @order = 1_widget
  *
  * == State ==
- *
+ * 
+ * @begin{parent}{name="generic/"}
+ * @begin{tag}{name="state"}{min=0}{max=1}
  * Definition of a state. A state contains the info what to do in a state.
  * Atm this is rather focussed on the drawing part, might change later.
  * Keys:
  * @begin{table}{config}
  *     draw & section & &                 Section with drawing directions for a canvas. $
  * @end{table}
+ * @end{tag}{name="state"}
+ * @end{parent}{name="generic/"}
  *
  */
 

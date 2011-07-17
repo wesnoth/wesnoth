@@ -110,7 +110,7 @@ if __name__ == "__main__":
         data = re.sub(" \*(?: |)", "", data)
         
         #annotation
-        data = re.sub(r'@(?:begin|end|allow)\{(?:parent|tag|link|global)\}(?:\{.*\})',"",data)
+        data = re.sub(r'@(?:begin|end|allow)\{(?:parent|tag|link|global|type)\}(?:\{.*\})',"",data)
         return data
 
     def get_value(data, key):
