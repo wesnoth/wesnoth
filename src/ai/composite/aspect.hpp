@@ -402,7 +402,7 @@ class lua_aspect : public typesafe_aspect<T>
 public:
 	lua_aspect(readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
 		: typesafe_aspect<T>(context, cfg, id)
-		, handler_()
+		, handler_(), code_()
 	{
 		std::string value;
 		if (cfg.has_attribute("value"))
@@ -423,7 +423,7 @@ public:
 			// error
 			return;
 		}
-
+		code_ = value;
 		handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(value.c_str(), *l_ctx));
 	}
 
@@ -435,9 +435,17 @@ public:
 		handler_->handle(c, true, l_obj);
 		this->value_lua_ = l_obj;
 	}
+	
+	config to_config() const
+	{
+		config cfg = aspect::to_config();
+		cfg["code"] = code_;
+		return cfg;
+	}
 
 private:
 	boost::shared_ptr<lua_ai_action_handler> handler_;
+	std::string code_;
 };
 
 
