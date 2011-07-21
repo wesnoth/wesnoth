@@ -187,6 +187,9 @@ engine_lua::engine_lua( readonly_context &context, const config &cfg )
 		cfg["code"].str().c_str(), this))
 {
 	name_ = "lua";
+	
+	config data(cfg.child_or_empty("data"));
+	lua_ai_context_->set_persistent_data(data);
 }
 
 
@@ -272,8 +275,14 @@ void engine_lua::set_ai_context(ai_context * /*context*/)
 config engine_lua::to_config() const
 {
 	config cfg = engine::to_config();
+	
 	cfg["id"] = get_id();
 	cfg["code"] = this->code_;
+	
+	config data = config();
+	lua_ai_context_->get_persistent_data(data);
+	cfg.add_child("data") = data;
+	
 	return cfg;
 }
 

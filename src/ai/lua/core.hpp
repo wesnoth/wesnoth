@@ -52,6 +52,8 @@ public:
 	{
 	}
 	void load();
+	void get_persistent_data(config &) const;
+	void set_persistent_data(const config &);
 	static void init(lua_State *L);
 	friend class ::LuaKernel;
 };

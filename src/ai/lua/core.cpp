@@ -65,6 +65,27 @@ void lua_ai_context::init(lua_State *L)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 }
 
+void lua_ai_context::get_persistent_data(config &cfg) const
+{
+	int top = lua_gettop(L);
+	
+	lua_getglobal(L, "ai");
+	lua_getfield(L, -1, "data");
+	luaW_toconfig(L, -1, cfg);
+	
+	lua_settop(L, top);
+}
+
+void lua_ai_context::set_persistent_data(const config &cfg)
+{
+	int top = lua_gettop(L);
+	
+	lua_getglobal(L, "ai");
+	luaW_pushconfig(L, cfg);
+	lua_setfield(L, -2, "data");
+	
+	lua_settop(L, top);
+}
 static ai::engine_lua &get_engine(lua_State *L)
 {
 	return *((ai::engine_lua*)lua_touserdata(L, lua_upvalueindex(1)));
