@@ -115,12 +115,12 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			// we store the previous hexes used to propose attack direction
 			previous_hex_ = last_hex_;
 			// the hex of the selected unit is also "free"
-			{ // start planned pathfind map scope
-				wb::scoped_planned_pathfind_map planned_pathfind_map;
+			{ // start planned unit map scope
+				wb::scoped_planned_unit_map raii;
 				if (last_hex_ == selected_hex_ || find_unit(last_hex_) == units_.end()) {
 					previous_free_hex_ = last_hex_;
 				}
-			} // end planned pathfind map scope
+			} // end planned unit map scope
 		}
 		last_hex_ = new_hex;
 	}
@@ -217,8 +217,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		// used to attack it
 		map_location dest;
 		unit_map::const_iterator dest_un;
-		{ // start planned pathfind map scope
-			wb::scoped_planned_pathfind_map planned_pathfind_map;
+		{ // start planned unit map scope
+			wb::scoped_planned_unit_map raii;
 			if (attack_from.valid()) {
 				dest = attack_from;
 				dest_un = find_unit(dest);
@@ -226,7 +226,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 				dest = new_hex;
 				dest_un = find_unit(new_hex);
 			}
-		} // end planned pathfind map scope
+		} // end planned unit map scope
 
 		if(dest == selected_hex_ || dest_un != units_.end()) {
 			current_route_.steps.clear();
@@ -245,9 +245,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 				unit_movement_resetter move_reset(*selected_unit,
 						selected_unit->side() != side_num_);
 
-				{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+				{ wb::scoped_planned_unit_map future; //< start planned unit map scope
 					current_route_ = get_route(&*selected_unit, dest, waypoints_, viewing_team());
-				} // end planned pathfind map scope
+				} // end planned unit map scope
 
 				resources::whiteboard->create_temp_move();
 
@@ -278,7 +278,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 
 				{ // start planned unit map scope
-					wb::scoped_planned_pathfind_map planned_pathfind_map;
+					wb::scoped_planned_unit_map raii;
 					current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
 														false,true,viewing_team(),path_turns_);
 				} // end planned unit map scope
@@ -291,7 +291,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 				if(map_.on_board(go_to)) {
 					pathfind::marked_route route;
 					{ // start planned unit map scope
-						wb::scoped_planned_pathfind_map planned_pathfind_map;
+						wb::scoped_planned_unit_map raii;
 						route = get_route(un, go_to, un->waypoints(), current_team());
 					} // end planned unit map scope
 					gui().set_route(&route);

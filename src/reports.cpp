@@ -621,7 +621,7 @@ REPORT_GENERATOR(gold)
 {
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
-	// Suppose the full/"pathfind" unit map is applied.
+	// Suppose the full unit map is applied.
 	int fake_gold = (*resources::teams)[viewing_side - 1].gold() -
 		resources::whiteboard->get_spent_gold_for(viewing_side);
 	char const *end = naps;

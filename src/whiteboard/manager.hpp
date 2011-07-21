@@ -214,18 +214,6 @@ struct scoped_real_unit_map
 	bool is_map_for_pathfinding_;
 };
 
-/** A variant on the regular planned unit map, that includes units only useful for pathfinding,
- * such as those from planned recruits and recalls.
- * It replaces the regular planned unit map, and rebuilds it afterwards if needed.
- *  */
-struct scoped_planned_pathfind_map
-{
-	scoped_planned_pathfind_map();
-	~scoped_planned_pathfind_map();
-	bool has_planned_unit_map_;
-	bool is_map_for_pathfinding_;
-};
-
 /// Predicate that compares the id() of two units. Useful for searches in unit vectors with std::find_if()
 struct unit_comparator_predicate {
 	unit_comparator_predicate(unit const& unit) : unit_(unit) {}

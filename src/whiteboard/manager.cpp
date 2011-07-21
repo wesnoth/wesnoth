@@ -389,9 +389,9 @@ void manager::on_mouseover_change(const map_location& hex)
 
 	map_location selected_hex = resources::screen->selected_hex();
 	unit_map::iterator it;
-	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+	{ wb::scoped_planned_unit_map future; //< start planned unit map scope
 		it = resources::units->find(selected_hex);
-	} // end planned pathfind map scope
+	} // end planned unit map scope
 	if (!((selected_hex.valid() && it != resources::units->end())
 			|| has_temp_move() || wait_for_side_init_ || executing_actions_))
 	{
@@ -830,12 +830,12 @@ scoped_planned_unit_map::scoped_planned_unit_map():
 {
 	if (!has_planned_unit_map_)
 	{
-		resources::whiteboard->set_planned_unit_map();
+		resources::whiteboard->set_planned_unit_map(true);
 	}
-	else if (is_map_for_pathfinding_)
+	else if (!is_map_for_pathfinding_)
 	{
 		resources::whiteboard->set_real_unit_map();
-		resources::whiteboard->set_planned_unit_map();
+		resources::whiteboard->set_planned_unit_map(true);
 	}
 }
 
@@ -866,36 +866,6 @@ scoped_real_unit_map::~scoped_real_unit_map()
 			(!resources::whiteboard->has_planned_unit_map() ||
 			is_map_for_pathfinding_ != resources::whiteboard->is_map_for_pathfinding()))
 		resources::whiteboard->set_planned_unit_map(is_map_for_pathfinding_);
-}
-
-scoped_planned_pathfind_map::scoped_planned_pathfind_map():
-		has_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
-		is_map_for_pathfinding_(resources::whiteboard->is_map_for_pathfinding())
-{
-	if (!has_planned_unit_map_)
-	{
-		resources::whiteboard->set_planned_unit_map(true);
-	}
-	else if (!is_map_for_pathfinding_)
-	{
-		resources::whiteboard->set_real_unit_map();
-		resources::whiteboard->set_planned_unit_map(true);
-	}
-}
-
-scoped_planned_pathfind_map::~scoped_planned_pathfind_map()
-{
-	if (has_planned_unit_map_ && is_map_for_pathfinding_)
-	{
-	}
-	else
-	{
-		resources::whiteboard->set_real_unit_map();
-		if (has_planned_unit_map_)
-		{
-			resources::whiteboard->set_planned_unit_map(false);
-		}
-	}
 }
 
 bool unit_comparator_predicate::operator()(unit const& unit)
