@@ -369,11 +369,12 @@ void read_gz(config &cfg, std::istream &file)
 
 static std::string escaped_string(const std::string &value)
 {
-	std::string res = value;
-	std::string::size_type pos = 0;
-	while ((pos = res.find('"', pos)) != std::string::npos) {
-		res.insert(pos + 1, 1, '"');
-		pos += 2;
+	std::string res;
+	std::string::const_iterator iter = value.begin();
+	while (iter != value.end()) {
+		const char c = *iter;
+		res.append(c == '"' ? 2 : 1, c);
+		++iter;
 	}
 	return res;
 }
