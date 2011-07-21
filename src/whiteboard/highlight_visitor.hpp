@@ -41,7 +41,7 @@ class highlight_visitor: public wb::visitor
 {
 public:
 	highlight_visitor(const unit_map& unit_map, side_actions_ptr side_actions);
-	~highlight_visitor();
+	virtual ~highlight_visitor();
 
 	void set_mouseover_hex(const map_location& hex);
 	const map_location& get_mouseover_hex() const {return mouseover_hex_; }

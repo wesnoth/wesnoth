@@ -40,7 +40,7 @@ class mapbuilder_visitor: public visitor
 
 public:
 	mapbuilder_visitor(unit_map& unit_map);
-	~mapbuilder_visitor();
+	virtual ~mapbuilder_visitor();
 
 	/**
 	 * Calls the appropriate visit_* method on each of the actions contained in the

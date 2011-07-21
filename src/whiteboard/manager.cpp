@@ -302,7 +302,7 @@ void manager::set_real_unit_map()
 	}
 }
 
-/* private */
+//helper fcn
 static void draw_numbers(map_location const& hex, side_actions::numbers_t numbers)
 {
 	std::vector<int>& numbers_to_draw = numbers.numbers_to_draw;
@@ -361,7 +361,7 @@ void manager::draw_hex(const map_location& hex)
 			sa.get_numbers(hex,numbers);
 		}
 
-		draw_numbers(hex,numbers);
+		draw_numbers(hex,numbers); //< helper fcn
 	}
 
 	//Little hack to make the TAB key work properly: check at every draw if it's pressed,

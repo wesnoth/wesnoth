@@ -38,7 +38,7 @@ class validate_visitor: private mapbuilder_visitor
 {
 public:
 	explicit validate_visitor(unit_map& unit_map);
-	~validate_visitor();
+	virtual ~validate_visitor();
 
 	/// @return false some actions had to be deleted during validation,
 	/// which may warrant a second validation
