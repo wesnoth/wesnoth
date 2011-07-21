@@ -162,7 +162,6 @@ void recruit::draw_hex(map_location const& hex)
 	}
 }
 
-///@todo Don't give these units underlying_id #'s. They don't need 'em
 unit* recruit::create_corresponding_unit()
 {
 	unit_type const* type = unit_types.find(unit_name_);
