@@ -226,36 +226,29 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 				dest = new_hex;
 				dest_un = find_unit(new_hex);
 			}
-		} // end planned unit map scope
 
-		if(dest == selected_hex_ || dest_un != units_.end()) {
-			current_route_.steps.clear();
-			gui().set_route(NULL);
-			resources::whiteboard->erase_temp_move();
-		}
-		else if (!current_paths_.destinations.empty() &&
-				 map_.on_board(selected_hex_) && map_.on_board(new_hex))
-		{
-			if (selected_unit != units_.end() && !selected_unit->incapacitated()) {
-
-				// Show the route from selected unit to mouseover hex
-				// the movement_reset is active only if it's not the unit's turn
-				// Note: we should activate the whiteboard's planned unit map only after this is done,
-				// since the future state includes changes to the units' movement points
-				unit_movement_resetter move_reset(*selected_unit,
-						selected_unit->side() != side_num_);
-
-				{ wb::scoped_planned_unit_map future; //< start planned unit map scope
+			if(dest == selected_hex_ || dest_un != units_.end()) {
+				current_route_.steps.clear();
+				gui().set_route(NULL);
+				resources::whiteboard->erase_temp_move();
+			}
+			else if (!current_paths_.destinations.empty() &&
+					 map_.on_board(selected_hex_) && map_.on_board(new_hex))
+			{
+				if (selected_unit != units_.end() && !selected_unit->incapacitated()) {
+					// Show the route from selected unit to mouseover hex
 					current_route_ = get_route(&*selected_unit, dest, waypoints_, viewing_team());
-				} // end planned unit map scope
 
-				resources::whiteboard->create_temp_move();
+					{ wb::scoped_real_unit_map raii;
+						resources::whiteboard->create_temp_move();
+					}
 
-				if(!browse) {
-					gui().set_route(&current_route_);
+					if(!browse) {
+						gui().set_route(&current_route_);
+					}
 				}
 			}
-		}
+		} // end planned unit map scope
 
 		unit* un;
 		{ // start planned unit map scope
@@ -675,14 +668,6 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		next_unit_ = u->get_location();
 
 		{
-			// if it's not the unit's turn, we reset its moves
-			// and we restore them before the "select" event is raised
-			// Ensure the planned unit map is reapplied afterwards, otherwise it screws up the future state
-			{ // start enforced real unit map scope
-				wb::scoped_real_unit_map real_unit_map;
-				unit_movement_resetter move_reset(*u, u->side() != side_num_);
-			} // end enforced real unit map scope
-
 			current_paths_ = pathfind::paths(map_, units_, hex, teams_,
 				false, true, viewing_team(), path_turns_);
 		}

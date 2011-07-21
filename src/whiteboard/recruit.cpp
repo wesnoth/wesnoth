@@ -170,7 +170,10 @@ unit* recruit::create_corresponding_unit()
 	int side_num = team_index() + 1;
 	//real_unit = false needed to avoid generating random traits and causing OOS
 	bool real_unit = false;
-	return new unit(type, side_num, real_unit);
+	unit* result = new unit(type, side_num, real_unit);
+	result->set_movement(0);
+	result->set_attacks(0);
+	return result;
 }
 
 config recruit::to_config() const
