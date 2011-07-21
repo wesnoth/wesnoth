@@ -225,7 +225,7 @@ bool move::execute()
 
 	bool move_finished_completely = false;
 
-	arrow_->set_style(arrow::STYLE_HIGHLIGHTED);
+	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
 	fake_unit_->set_hidden(true);
 
 	map_location final_location;
@@ -236,7 +236,7 @@ bool move::execute()
 		try {
 			steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates());
 		} catch (end_turn_exception&) {
-			arrow_->set_style(arrow::STYLE_STANDARD);
+			set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 			throw; // we rely on the caller to delete this action
 		}
 		// final_location now contains the final unit location
@@ -299,7 +299,7 @@ bool move::execute()
 
 	if (!move_finished_completely)
 	{
-		arrow_->set_style(arrow::STYLE_STANDARD);
+		set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 		fake_unit_->set_hidden(false);
 	}
 	return move_finished_completely;
