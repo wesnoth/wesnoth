@@ -36,10 +36,9 @@
 namespace wb
 {
 
-mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, bool for_pathfinding)
+mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map)
 	: visitor()
 	, unit_map_(unit_map)
-	, for_pathfinding_(for_pathfinding)
 	, applied_actions_()
 	, mode_(BUILD_PLANNED_MAP)
 	, resetters_()
@@ -123,12 +122,9 @@ void mapbuilder_visitor::visit_recruit(recruit_ptr recruit)
 {
 	if(mode_ == BUILD_PLANNED_MAP)
 	{
-		if (for_pathfinding_)
-		{
-			recruit->apply_temp_modifier(unit_map_);
-			//remember which actions we applied, so we can unapply them later
-			applied_actions_.push_back(recruit);
-		}
+		recruit->apply_temp_modifier(unit_map_);
+		//remember which actions we applied, so we can unapply them later
+		applied_actions_.push_back(recruit);
 	}
 	else if (mode_ == RESTORE_NORMAL_MAP)
 	{
@@ -140,12 +136,9 @@ void mapbuilder_visitor::visit_recall(recall_ptr recall)
 {
 	if(mode_ == BUILD_PLANNED_MAP)
 	{
-		if (for_pathfinding_)
-		{
-			recall->apply_temp_modifier(unit_map_);
-			//remember which actions we applied, so we can unapply them later
-			applied_actions_.push_back(recall);
-		}
+		recall->apply_temp_modifier(unit_map_);
+		//remember which actions we applied, so we can unapply them later
+		applied_actions_.push_back(recall);
 	}
 	else if (mode_ == RESTORE_NORMAL_MAP)
 	{

@@ -39,7 +39,7 @@ class mapbuilder_visitor: public visitor
 {
 
 public:
-	mapbuilder_visitor(unit_map& unit_map, bool include_recruits = false);
+	mapbuilder_visitor(unit_map& unit_map);
 	~mapbuilder_visitor();
 
 	/**
@@ -64,8 +64,6 @@ private:
 	void restore_normal_map();
 
 	unit_map& unit_map_;
-
-	bool for_pathfinding_;
 
 	action_queue applied_actions_;
 

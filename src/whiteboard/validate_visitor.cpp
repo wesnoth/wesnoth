@@ -38,7 +38,7 @@ namespace wb
 {
 
 validate_visitor::validate_visitor(unit_map& unit_map)
-	: mapbuilder_visitor(unit_map, true)
+	: mapbuilder_visitor(unit_map)
 	, viewer_actions_(*viewer_actions())
 	, actions_to_erase_()
 	, arg_itor_()

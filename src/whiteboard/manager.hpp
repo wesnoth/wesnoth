@@ -90,15 +90,11 @@ public:
 
 	/// Transforms the unit map so that it now reflects the future state of things,
 	/// i.e. when all planned actions will have been executed
-	/// @param for_pathfinding Whether to include recruits and recalls when building the future map
-	void set_planned_unit_map(bool for_pathfinding = false);
+	void set_planned_unit_map();
 	/// Restore the regular unit map
 	void set_real_unit_map();
 	/// Whether the planned unit map is currently applied
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
-	/// Whether the planned unit map currently applied (if any) is
-	/// the "pathfinding" version, i.e. one that includes future recruits and recalls
-	bool is_map_for_pathfinding() const { return is_map_for_pathfinding_; }
 
 	/**
 	 * Callback from the display when drawing hexes, to allow the whiteboard to
@@ -173,7 +169,6 @@ private:
 	bool print_help_once_;
 	bool wait_for_side_init_;
 	bool planned_unit_map_active_;
-	bool is_map_for_pathfinding_;
 	/** Track whenever we're modifying actions, to avoid dual execution etc. */
 	bool executing_actions_;
 	/** Track whether the gamestate changed and we need to validate actions. */
@@ -201,7 +196,6 @@ struct scoped_planned_unit_map
 	scoped_planned_unit_map();
 	~scoped_planned_unit_map();
 	bool has_planned_unit_map_;
-	bool is_map_for_pathfinding_;
 };
 
 /** Ensures that the real unit map is active for the duration of the struct's life,
@@ -211,7 +205,6 @@ struct scoped_real_unit_map
 	scoped_real_unit_map();
 	~scoped_real_unit_map();
 	bool has_planned_unit_map_;
-	bool is_map_for_pathfinding_;
 };
 
 /// Predicate that compares the id() of two units. Useful for searches in unit vectors with std::find_if()
