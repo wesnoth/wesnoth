@@ -484,11 +484,11 @@ void write(std::ostream &out, config const &cfg, unsigned int level)
 	write_internal(cfg, out, textdomain, level);
 }
 
-void write_gz(std::ostream &out, config const &cfg, unsigned int level)
+void write_gz(std::ostream &out, config const &cfg)
 {
 	boost::iostreams::filtering_stream<boost::iostreams::output> filter;
 	filter.push(boost::iostreams::gzip_compressor());
 	filter.push(out);
 
-	write(filter, cfg, level);
+	write(filter, cfg);
 }
