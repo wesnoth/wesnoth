@@ -155,15 +155,14 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 	return VALID;
 }
 
-// This helper function determines whether there are any invalid actions planned for m_ptr->get_unit()
-// that occur earlier in viewer_actions_ than m_ptr.
+// This helper function determines whether there are any invalid actions planned for (*itor)->get_unit()
+// that occur earlier in viewer_actions_ than itor.
 /* private */
-bool validate_visitor::no_previous_invalids(move_ptr m_ptr)
+bool validate_visitor::no_previous_invalids(side_actions::iterator const& itor)
 {
-	//arg_itor_ is a protected member of mapbuilder_visitor
-	if(arg_itor_ == viewer_actions_.begin())
+	if(itor == viewer_actions_.begin())
 		return true;
-	side_actions::iterator prev_action_of_unit = viewer_actions_.find_last_action_of(m_ptr->get_unit(),arg_itor_-1);
+	side_actions::iterator prev_action_of_unit = viewer_actions_.find_last_action_of((*itor)->get_unit(),itor-1);
 	if(prev_action_of_unit == viewer_actions_.end())
 		return true;
 	return (*prev_action_of_unit)->is_valid();
@@ -192,7 +191,7 @@ void validate_visitor::visit_move(move_ptr move)
 		// Erase only if no previous invalid actions are planned for this unit -- otherwise, just mark it invalid.
 		// Otherwise, we wouldn't be able to keep invalid actions that depend on previous invalid actions.
 		if(viewer_team() == move->team_index() //< Don't mess with any other team's queue -- only our own
-				&& no_previous_invalids(move)) //< private helper fcn
+				&& no_previous_invalids(arg_itor_)) //< private helper fcn
 		{
 			LOG_WB << "Worthless invalid move detected, adding to actions_to_erase_.\n";
 			actions_to_erase_.insert(move);

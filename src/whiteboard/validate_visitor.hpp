@@ -53,7 +53,7 @@ private:
 
 	enum VALIDITY {VALID, OBSTRUCTED, WORTHLESS};
 	VALIDITY evaluate_move_validity(move_ptr);
-	bool no_previous_invalids(move_ptr);
+	bool no_previous_invalids(side_actions::iterator const&);
 
 	side_actions& viewer_actions_;
 
