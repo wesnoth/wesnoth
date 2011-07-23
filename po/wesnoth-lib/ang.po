@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ang\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-07-09 09:00+0200\n"
-"PO-Revision-Date: 2011-07-21 20:28-0500\n"
+"PO-Revision-Date: 2011-07-23 16:56-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -118,10 +118,9 @@ msgstr ""
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:174 data/core/terrain.cfg:184
 #: data/core/terrain.cfg:194
-#, fuzzy
 #| msgid "Dry Dirt"
 msgid "Dirt"
-msgstr "ᛞᚱᚣᚷᛖᚢ ᛇᚱᚦᛖ"
+msgstr "ᛇᚱᚦᛖ"
 
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:175
@@ -301,7 +300,7 @@ msgstr "ᚷᚱᛠᛏ ᛏᚱᛇᚹ"
 #: data/core/terrain.cfg:539 data/core/terrain.cfg:550
 #: data/core/terrain.cfg:561
 msgid "Forest"
-msgstr ""
+msgstr "ᚹᛠᛚᛞ"
 
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:451
@@ -505,12 +504,12 @@ msgstr ""
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:893
 msgid "Lit"
-msgstr ""
+msgstr "ᚷᛖᛚᛇᚻᛏᛖᛞ"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:894
 msgid "Beam of Light"
-msgstr ""
+msgstr "ᛚᛇᛗᚪ"
 
 #. [terrain_type]: id=cave
 #. [terrain_type]: id=cave_earthy
@@ -1075,7 +1074,7 @@ msgstr ""
 #: data/core/terrain.cfg:2046 data/core/terrain.cfg:2057
 #: data/core/terrain.cfg:2069
 msgid "Bridge"
-msgstr ""
+msgstr "ᛒᚱᚣᚳᚷ"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -1239,12 +1238,13 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
 msgid "Translations:"
-msgstr ""
+msgstr "ᚦᛇᛞᚾᛖᛋᛋᚪ:"
 
 #. [scroll_label]: id=translations
 #: data/gui/default/window/addon_description.cfg:226
+#, fuzzy
 msgid "translations^None"
-msgstr ""
+msgstr "ᚾᚪᚾ"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:56
@@ -1323,7 +1323,7 @@ msgstr ""
 #: data/gui/default/window/data_manage.cfg:266
 #: data/gui/default/window/data_manage.cfg:267
 msgid "Clear"
-msgstr ""
+msgstr "ᛒᛖᚱᛡᚾ"
 
 #. [button]: id=restore
 #: data/gui/default/window/data_manage.cfg:283
@@ -1646,7 +1646,7 @@ msgstr ""
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:60
 msgid "x"
-msgstr "ᛉ"
+msgstr "x"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:60
@@ -2808,7 +2808,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:1224
 msgid "Prefs section^Sound"
-msgstr ""
+msgstr "ᚻᛚᛖᛗ"
 
 #: src/game_preferences_display.cpp:1225
 msgid "Prefs section^Multiplayer"
@@ -3188,9 +3188,8 @@ msgid "Status Table"
 msgstr ""
 
 #: src/hotkeys.cpp:85
-#, fuzzy
 msgid "Mute"
-msgstr "ᛞᚢᛗᛒ"
+msgstr ""
 
 #: src/hotkeys.cpp:86
 msgid "Speak"
@@ -3577,7 +3576,7 @@ msgstr ""
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/image.cpp:406
 msgid "language code for localized resources^en_US"
-msgstr "ᚪᛝ@ᛚᚪᛏᛁᚾ"
+msgstr "ang"
 
 #: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
 msgid "Close Window"
