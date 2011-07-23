@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: ang\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-07-09 09:00+0200\n"
-"PO-Revision-Date: 2011-03-22 02:14-0500\n"
+"PO-Revision-Date: 2011-07-21 20:28-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: none\n"
-"Language: ang\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ang\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2\n"
 
 #. [terrain_type]: id=deep_water_gray
@@ -22,12 +22,12 @@ msgstr ""
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:18 data/core/terrain.cfg:29 data/core/terrain.cfg:39
 msgid "Deep Water"
-msgstr ""
+msgstr "ᛞᛇᛈ ᚹᚫᛏᛖᚱ"
 
 #. [terrain_type]: id=deep_water_gray
 #: data/core/terrain.cfg:19
 msgid "Gray Deep Water"
-msgstr ""
+msgstr "ᚷᚱᚫᚷ ᛞᛇᛈ ᚹᚫᛏᛖᚱ"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:30
@@ -44,12 +44,12 @@ msgstr ""
 #. [terrain_type]: id=tropical_water
 #: data/core/terrain.cfg:50 data/core/terrain.cfg:61 data/core/terrain.cfg:71
 msgid "Shallow Water"
-msgstr ""
+msgstr "ᛋᚳᛠᛚᛞ ᚹᚫᛏᛖᚱ"
 
 #. [terrain_type]: id=gray_tropical_water
 #: data/core/terrain.cfg:51
 msgid "Gray Shallow Water"
-msgstr ""
+msgstr "ᚷᚱᚫᚷ ᛋᚳᛠᛚᛞ ᚹᚫᛏᛖᚱ"
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:62
@@ -64,7 +64,7 @@ msgstr ""
 #. [terrain_type]: id=ford
 #: data/core/terrain.cfg:82
 msgid "Ford"
-msgstr ""
+msgstr "ᚠᚩᚱᛞ"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:92
@@ -88,13 +88,15 @@ msgstr ""
 #. [terrain_type]: id=leaf_litter
 #: data/core/terrain.cfg:130 data/core/terrain.cfg:141
 #: data/core/terrain.cfg:152 data/core/terrain.cfg:162
+#, fuzzy
+#| msgid "Island"
 msgid "Grassland"
-msgstr ""
+msgstr "ᛁᛖᚷᛚᚪᚾᛞ"
 
 #. [terrain_type]: id=grassland
 #: data/core/terrain.cfg:131
 msgid "Green Grass"
-msgstr ""
+msgstr "ᚷᚱᛖᚾᛖ ᚷᚱᚫᛋ"
 
 #. [terrain_type]: id=savanna
 #: data/core/terrain.cfg:142
@@ -104,7 +106,7 @@ msgstr ""
 #. [terrain_type]: id=grass_dry
 #: data/core/terrain.cfg:153
 msgid "Dry Grass"
-msgstr ""
+msgstr "ᛞᚱᚣᚷᛖ ᚷᚱᚫᛋ"
 
 #. [terrain_type]: id=leaf_litter
 #: data/core/terrain.cfg:163
@@ -116,13 +118,15 @@ msgstr ""
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:174 data/core/terrain.cfg:184
 #: data/core/terrain.cfg:194
+#, fuzzy
+#| msgid "Dry Dirt"
 msgid "Dirt"
-msgstr ""
+msgstr "ᛞᚱᚣᚷᛖᚢ ᛇᚱᚦᛖ"
 
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:175
 msgid "Dark Dirt"
-msgstr ""
+msgstr "ᛞᛇᚱᚳᚢ ᛇᚱᚦᛖ"
 
 #. [terrain_type]: id=dirt
 #: data/core/terrain.cfg:185
@@ -132,7 +136,7 @@ msgstr ""
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:195
 msgid "Dry Dirt"
-msgstr ""
+msgstr "ᛞᚱᚣᚷᛖᚢ ᛇᚱᚦᛖ"
 
 #. [terrain_type]: id=road
 #. [terrain_type]: id=road_clean
@@ -163,12 +167,12 @@ msgstr ""
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:238
 msgid "Ice"
-msgstr ""
+msgstr "ᛁᛋ"
 
 #. [terrain_type]: id=snow
 #: data/core/terrain.cfg:247
 msgid "Snow"
-msgstr ""
+msgstr "ᛋᚾᚪᚹ"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:260
@@ -183,7 +187,7 @@ msgstr ""
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:270
 msgid "Sand"
-msgstr ""
+msgstr "ᛋᚪᚾᛞ"
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:271
@@ -218,7 +222,7 @@ msgstr ""
 #. [terrain_type]: id=stones_small
 #: data/core/terrain.cfg:332
 msgid "Stones"
-msgstr ""
+msgstr "ᛥᚪᚾᚪᛋ"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:341
@@ -270,12 +274,14 @@ msgstr ""
 #: data/core/terrain.cfg:428 data/core/terrain.cfg:429
 #: data/core/terrain.cfg:439
 msgid "Great Tree"
-msgstr ""
+msgstr "ᚷᚱᛠᛏ ᛏᚱᛇᚹ"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:440
+#, fuzzy
+#| msgid "Great Tree"
 msgid "Dead Great Tree"
-msgstr ""
+msgstr "ᚷᚱᛠᛏ ᛏᚱᛇᚹ"
 
 #. [terrain_type]: id=tropical_forest
 #. [terrain_type]: id=forest
@@ -380,7 +386,7 @@ msgstr ""
 #: data/core/terrain.cfg:841 data/core/terrain.cfg:849
 #: data/core/terrain.cfg:857 data/core/terrain.cfg:865
 msgid "Hills"
-msgstr ""
+msgstr "ᚻᚣᛚᛚᚪᛋ"
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:578
@@ -390,7 +396,7 @@ msgstr ""
 #. [terrain_type]: id=hills_dry
 #: data/core/terrain.cfg:587
 msgid "Dry Hills"
-msgstr ""
+msgstr "ᛞᚱᚣᚷᛖᛖ ᚻᚣᛚᛚᚪᛋ"
 
 #. [terrain_type]: id=desert_hills
 #: data/core/terrain.cfg:596
@@ -412,17 +418,17 @@ msgstr ""
 #: data/core/terrain.cfg:639 data/core/terrain.cfg:1086
 #: data/core/terrain.cfg:1096 data/core/terrain.cfg:1106
 msgid "Mountains"
-msgstr ""
+msgstr "ᛒᛇᚱᚷᚪᛋ"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:630
 msgid "Dry Mountains"
-msgstr ""
+msgstr "ᛞᚱᚣᚷᛖᛖ ᛒᛇᚱᚷᚪᛋ"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:640
 msgid "Snowy Mountains"
-msgstr ""
+msgstr "ᛋᚾᚪᚹᛁᚷᛖ ᛒᛇᚱᚷᚪᛋ"
 
 #. [terrain_type]: id=forested_hills
 #: data/core/terrain.cfg:655 data/core/terrain.cfg:769
@@ -588,12 +594,12 @@ msgstr ""
 #. [terrain_type]: id=lava
 #: data/core/terrain.cfg:1061
 msgid "Lava"
-msgstr ""
+msgstr "ᚱᚪᚱᛖᚾᛞᛖᛥᚪᚾ"
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:1072
 msgid "Volcano"
-msgstr ""
+msgstr "ᚠᚣᚱᛒᛇᚱᚷ"
 
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1087
@@ -616,8 +622,10 @@ msgstr ""
 #. [terrain_type]: id=cavewall_earthy_hewn
 #: data/core/terrain.cfg:1117 data/core/terrain.cfg:1128
 #: data/core/terrain.cfg:1139 data/core/terrain.cfg:1150
+#, fuzzy
+#| msgid "Stone Wall"
 msgid "Cave Wall"
-msgstr ""
+msgstr "ᛥᚫᚾᛖᚾ ᚹᛠᛚᛚ"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1118
@@ -643,7 +651,7 @@ msgstr ""
 #. [terrain_type]: id=wall_stone_lit
 #: data/core/terrain.cfg:1161 data/core/terrain.cfg:1171
 msgid "Stone Wall"
-msgstr ""
+msgstr "ᛥᚫᚾᛖᚾ ᚹᛠᛚᛚ"
 
 #. [terrain_type]: id=wall_stone_lit
 #: data/core/terrain.cfg:1172
@@ -707,7 +715,7 @@ msgstr ""
 #: data/core/terrain.cfg:1556 data/core/terrain.cfg:1569
 #: data/core/terrain.cfg:1582 data/core/terrain.cfg:2198
 msgid "Village"
-msgstr ""
+msgstr "ᚦᚩᚱᛈ"
 
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1209
@@ -747,12 +755,12 @@ msgstr ""
 #. [terrain_type]: id=human_village
 #: data/core/terrain.cfg:1306
 msgid "Cottage"
-msgstr ""
+msgstr "ᚳᚩᛏ"
 
 #. [terrain_type]: id=snow_village
 #: data/core/terrain.cfg:1319
 msgid "Snowy Cottage"
-msgstr ""
+msgstr "ᛋᚾᚪᚹᛁᚷ ᚳᚩᛏ"
 
 #. [terrain_type]: id=human_village_ruin
 #: data/core/terrain.cfg:1332
@@ -761,13 +769,15 @@ msgstr ""
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1345
+#, fuzzy
 msgid "Human City"
-msgstr ""
+msgstr "ᛗᛖᚾᚾᛁᛋᚳᚢ ᛒᚢᚱᚷ"
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1358
+#, fuzzy
 msgid "Snowy Human City"
-msgstr ""
+msgstr "ᛋᚾᚪᚹᛁᚷᚢ ᛗᛖᚾᚾᛁᛋᚳᚢ ᛒᚢᚱᚷ"
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1371
@@ -832,7 +842,7 @@ msgstr ""
 #. [terrain_type]: id=igloo
 #: data/core/terrain.cfg:1529
 msgid "Igloo"
-msgstr ""
+msgstr "ᛋᚾᚪᚹᚻᚢᛋ"
 
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1544
@@ -1108,7 +1118,7 @@ msgstr ""
 #. [terrain_type]: id=fog
 #: data/core/terrain.cfg:2115
 msgid "Fog"
-msgstr ""
+msgstr "ᛗᛁᛥ"
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:2184
@@ -1118,7 +1128,7 @@ msgstr ""
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:2191
 msgid "Frozen"
-msgstr ""
+msgstr "ᚷᛖᚠᚱᚩᚱᛖᚾ"
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2205
@@ -1214,7 +1224,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_description.cfg:149
 msgid "Size:"
-msgstr ""
+msgstr "ᚷᚱᚣᛏᚢ:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
@@ -1266,7 +1276,7 @@ msgstr ""
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
-msgstr ""
+msgstr "ᚷᛠᛏᚪᚾ"
 
 #. [label]: id=title
 #: data/gui/default/window/campaign_difficulty.cfg:57
@@ -1301,7 +1311,7 @@ msgstr ""
 #: data/gui/default/window/game_load.cfg:263
 #: data/gui/default/window/mp_server_list.cfg:104
 msgid "Name"
-msgstr ""
+msgstr "ᚾᚪᛗᚪ"
 
 #. [label]: id=date
 #: data/gui/default/window/data_manage.cfg:177
@@ -1374,13 +1384,13 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:54 src/mapgen_dialog.cpp:121
 msgid "Width:"
-msgstr ""
+msgstr "ᚹᛁᛞᚢ:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:81 src/mapgen_dialog.cpp:122
 msgid "Height:"
-msgstr ""
+msgstr "ᚻᛁᛖᚻᚦᚢ:"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:108
@@ -1397,22 +1407,22 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:54
 msgid "New width:"
-msgstr ""
+msgstr "ᚾᛁᚹᛖᚢ ᚹᛁᛞᚢ:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:78
 msgid "Old width:"
-msgstr ""
+msgstr "ᛠᛚᛞᚢ ᚹᛁᛞᚢ:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:102
 msgid "New height:"
-msgstr ""
+msgstr "ᚾᛁᚹᛖᚢ ᚻᛁᛖᚻᚦᚢ:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:126
 msgid "Old height:"
-msgstr ""
+msgstr "ᛠᛚᛞᚢ ᚻᛁᛖᚻᚦᚢ:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:153
@@ -1446,8 +1456,9 @@ msgstr ""
 #: data/gui/default/window/editor_settings.cfg:83
 #: data/gui/default/window/editor_settings.cfg:84
 #: data/gui/default/window/title_screen.cfg:177
+#, fuzzy
 msgid "Next"
-msgstr ""
+msgstr "ᚾᛁᛖᚻᛥ"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:91
@@ -1462,17 +1473,17 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:128
 msgid "Red:"
-msgstr ""
+msgstr "ᚱᛠᛞ:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:154
 msgid "Green:"
-msgstr ""
+msgstr "ᚷᚱᛖᚾᛖ:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:180
 msgid "Blue:"
-msgstr ""
+msgstr "ᛒᛚᚪᚹ:"
 
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:216
@@ -1498,7 +1509,7 @@ msgstr ""
 #: data/gui/default/window/game_save_message.cfg:90
 #: data/gui/default/window/game_save_oos.cfg:91
 msgid "Name:"
-msgstr ""
+msgstr "ᚾᚪᛗᚪ:"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:36
@@ -1508,7 +1519,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:59
 msgid "Welcome"
-msgstr ""
+msgstr "ᚹᛁᛚᚳᚢᛗᚪ"
 
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:71
@@ -1560,7 +1571,7 @@ msgstr ""
 #: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:876
 #: src/hotkeys.cpp:1224
 msgid "Quit"
-msgstr ""
+msgstr "ᛚᚫᚠᚪᚾ"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:40
@@ -1589,7 +1600,7 @@ msgstr ""
 #: data/gui/default/window/game_save_overwrite.cfg:97
 #: src/construct_dialog.cpp:123 src/gui/dialogs/message.cpp:176
 msgid "Yes"
-msgstr ""
+msgstr "ᚷᛖᛋᛖ"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1599,7 +1610,7 @@ msgstr ""
 #: data/gui/default/window/game_save_overwrite.cfg:111
 #: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:178
 msgid "No"
-msgstr ""
+msgstr "ᚾᛖᛋᛖ"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -1635,7 +1646,7 @@ msgstr ""
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:60
 msgid "x"
-msgstr ""
+msgstr "ᛉ"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:60
@@ -1711,7 +1722,7 @@ msgstr ""
 #: data/gui/default/window/language_selection.cfg:39
 #: data/gui/default/window/title_screen.cfg:229
 msgid "Language"
-msgstr ""
+msgstr "ᛋᛈᚱᚫᚳ"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:58
@@ -1727,7 +1738,7 @@ msgstr ""
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:109
 msgid "Games"
-msgstr ""
+msgstr "ᚷᚪᛗᛖᚾ"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:177
@@ -1791,7 +1802,7 @@ msgstr ""
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:338
 msgid "Selected game"
-msgstr ""
+msgstr "ᚷᛖᚳᚩᚱᛖᚾ ᚷᚪᛗᛖᚾ"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:339
@@ -1811,7 +1822,7 @@ msgstr ""
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:480
 msgid "Rooms"
-msgstr ""
+msgstr "ᚱᚢᛗᚪᛋ"
 
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:498
@@ -1831,7 +1842,7 @@ msgstr ""
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/default/window/lobby_main.cfg:587
 msgid "Friends"
-msgstr ""
+msgstr "ᚠᚱᛁᛖᚾᛞ"
 
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:593
@@ -1853,7 +1864,7 @@ msgstr ""
 #: data/gui/default/window/lobby_main.cfg:649
 #: data/gui/default/window/mp_cmd_wrapper.cfg:101
 msgid "Send"
-msgstr ""
+msgstr "ᛋᛖᚾᛞᚪᚾ"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
@@ -1862,7 +1873,7 @@ msgstr ""
 #: data/gui/default/window/title_screen.cfg:230
 #: src/game_preferences_display.cpp:56 src/hotkeys.cpp:89
 msgid "Preferences"
-msgstr ""
+msgstr "ᚳᚩᛥᚪᛋ"
 
 #. [button]: id=refresh
 #: data/gui/default/window/lobby_main.cfg:673
@@ -1874,7 +1885,7 @@ msgstr ""
 #: data/gui/default/window/lobby_main.cfg:687
 #: data/gui/default/window/mp_create_game.cfg:41
 msgid "Create Game"
-msgstr ""
+msgstr "ᚷᚪᛗᛖᚾ ᛗᚪᚳᛡᚾ"
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:693
@@ -1903,8 +1914,10 @@ msgstr ""
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:99
+#, fuzzy
+#| msgid "Friends"
 msgid "Add to Friends"
-msgstr ""
+msgstr "ᚠᚱᛁᛖᚾᛞ"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:108
@@ -1955,7 +1968,7 @@ msgstr ""
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
 msgid "Nick"
-msgstr ""
+msgstr "ᛠᚳᚪᚾᚪᛗᚪ"
 
 #. [label]
 #: data/gui/default/window/mp_change_control.cfg:194
@@ -1984,8 +1997,10 @@ msgstr ""
 
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:170
+#, fuzzy
+#| msgid "Friends"
 msgid "Add as Friend"
-msgstr ""
+msgstr "ᚠᚱᛁᛖᚾᛞ"
 
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
@@ -2012,7 +2027,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:323
 msgid "Time:"
-msgstr ""
+msgstr "ᛏᛁᛗᚪ:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:374
@@ -2040,7 +2055,7 @@ msgstr ""
 #: data/gui/default/window/mp_create_game.cfg:70
 #: data/gui/default/window/mp_create_game.cfg:85
 msgid "Name of game:"
-msgstr ""
+msgstr "ᚷᚪᛗᛖᚾᛖᛋ ᚾᚪᛗᚪ:"
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:148
@@ -2092,7 +2107,7 @@ msgstr ""
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:460
 msgid "Fog of War"
-msgstr ""
+msgstr "ᚹᛁᚷᛖᛋ ᛗᛁᛥ"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:501
@@ -2102,7 +2117,7 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:543
 msgid "Create game"
-msgstr ""
+msgstr "ᚷᚪᛗᛖᚾ ᛗᚪᚳᛡᚾ"
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
@@ -2207,13 +2222,13 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:223
 msgid "Select"
-msgstr ""
+msgstr "ᚳᛇᛋᚪᚾ"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:203
 msgid "Help"
-msgstr ""
+msgstr "ᚻᛖᛚᛈ"
 
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:147
@@ -2250,7 +2265,7 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:224
 msgid "Campaign"
-msgstr ""
+msgstr "ᚠᚣᚱᛞ"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:224
@@ -2344,12 +2359,12 @@ msgstr ""
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:77
 msgid "Male"
-msgstr ""
+msgstr "ᚹᛖᚱᛚᛁᚳ"
 
 #. [toggle_button]: id=female_toggle
 #: data/gui/default/window/unit_create.cfg:87
 msgid "Female"
-msgstr ""
+msgstr "ᚹᛁᚠᛚᛁᚳ"
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:119
@@ -2535,7 +2550,7 @@ msgstr ""
 #: src/game_preferences_display.cpp:208 src/game_preferences_display.cpp:209
 #: src/game_preferences_display.cpp:210 src/game_preferences_display.cpp:211
 msgid "Volume:"
-msgstr ""
+msgstr "ᚻᛚᚢᛞᚾᛖᛋ:"
 
 #: src/game_preferences_display.cpp:213
 msgid "Scroll Speed:"
@@ -2745,7 +2760,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:740
 msgid "Speed: "
-msgstr ""
+msgstr "ᚩᚠᚩᛥ: "
 
 #: src/game_preferences_display.cpp:745 src/game_preferences_display.cpp:747
 msgid "Maximum Auto-Saves: "
@@ -2753,7 +2768,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:745
 msgid "infinite"
-msgstr ""
+msgstr "ᛖᚾᛞᛖᛚᛠᛋ"
 
 #: src/game_preferences_display.cpp:930
 msgid "Chat Lines: "
@@ -2765,15 +2780,15 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:1063
 msgid "yes"
-msgstr ""
+msgstr "ᚷᛖᛋᛖ"
 
 #: src/game_preferences_display.cpp:1065
 msgid "no"
-msgstr ""
+msgstr "ᚾᛖᛋᛖ"
 
 #: src/game_preferences_display.cpp:1088
 msgid "friend"
-msgstr ""
+msgstr "ᚠᚱᛇᚾᛞ"
 
 #: src/game_preferences_display.cpp:1094
 msgid "ignored"
@@ -2934,7 +2949,7 @@ msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:294
 msgid "Campaign: $campaign_name"
-msgstr ""
+msgstr "ᚠᚣᚱᛞ: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:311
 msgid "replay"
@@ -3173,12 +3188,13 @@ msgid "Status Table"
 msgstr ""
 
 #: src/hotkeys.cpp:85
+#, fuzzy
 msgid "Mute"
-msgstr ""
+msgstr "ᛞᚢᛗᛒ"
 
 #: src/hotkeys.cpp:86
 msgid "Speak"
-msgstr ""
+msgstr "ᛋᛈᚱᛖᚳᚪᚾ"
 
 #: src/hotkeys.cpp:88
 msgid "Change Side (Debug!)"
@@ -3198,7 +3214,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:93 src/hotkeys.cpp:103
 msgid "Stop"
-msgstr ""
+msgstr "ᛥᚩᛈᛈᛡᚾ"
 
 #: src/hotkeys.cpp:94 src/hotkeys.cpp:101
 msgid "Play"
@@ -3473,8 +3489,9 @@ msgid "Speak to Ally"
 msgstr ""
 
 #: src/hotkeys.cpp:202
+#, fuzzy
 msgid "Speak to All"
-msgstr ""
+msgstr "ᛋᛈᚱᛖᚳᚪᚾ ᛏᚩ ᛠᛚᛚ"
 
 #: src/hotkeys.cpp:204
 msgid "View Chat Log"
@@ -3514,7 +3531,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:242
 msgid "Start a campaign"
-msgstr ""
+msgstr "ᚠᚣᚱᛞ ᛥᚣᚱᛏᚪᚾ"
 
 #: src/hotkeys.cpp:249
 msgid "Start a multiplayer game"
@@ -3560,7 +3577,7 @@ msgstr ""
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/image.cpp:406
 msgid "language code for localized resources^en_US"
-msgstr "ang"
+msgstr "ᚪᛝ@ᛚᚪᛏᛁᚾ"
 
 #: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
 msgid "Close Window"
@@ -3584,7 +3601,7 @@ msgstr ""
 
 #: src/mapgen_dialog.cpp:125
 msgid "Villages:"
-msgstr ""
+msgstr "ᚦᚩᚱᛈᚪᛋ:"
 
 #: src/mapgen_dialog.cpp:126
 msgid "Castle Size:"
@@ -3600,7 +3617,7 @@ msgstr ""
 
 #: src/mapgen_dialog.cpp:306
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 ᛏᛁᚷᛖᛚᚪᚾ"
 
 #: src/mapgen_dialog.cpp:315
 msgid "Coastal"
@@ -3612,7 +3629,7 @@ msgstr ""
 
 #: src/mapgen_dialog.cpp:315
 msgid "Island"
-msgstr ""
+msgstr "ᛁᛖᚷᛚᚪᚾᛞ"
 
 #: src/marked-up_text.cpp:422
 msgid "The maximum text width is less than 1."
@@ -3712,3 +3729,6 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#~ msgid "Name: "
+#~ msgstr "ᚾᚪᛗᚪ: "

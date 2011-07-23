@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-07-09 09:00+0200\n"
-"PO-Revision-Date: 2011-07-21 20:28-0500\n"
+"PO-Revision-Date: 2011-07-23 15:39-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ang@latin\n"
@@ -118,10 +118,9 @@ msgstr ""
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:174 data/core/terrain.cfg:184
 #: data/core/terrain.cfg:194
-#, fuzzy
 #| msgid "Dry Dirt"
 msgid "Dirt"
-msgstr "Drygeu Eorðe"
+msgstr "Eorðe"
 
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:175
@@ -301,7 +300,7 @@ msgstr "Great Treoƿ"
 #: data/core/terrain.cfg:539 data/core/terrain.cfg:550
 #: data/core/terrain.cfg:561
 msgid "Forest"
-msgstr ""
+msgstr "Ƿeald"
 
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:451
@@ -505,12 +504,12 @@ msgstr ""
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:893
 msgid "Lit"
-msgstr ""
+msgstr "Geleohted"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:894
 msgid "Beam of Light"
-msgstr ""
+msgstr "Leoma"
 
 #. [terrain_type]: id=cave
 #. [terrain_type]: id=cave_earthy
@@ -1075,7 +1074,7 @@ msgstr ""
 #: data/core/terrain.cfg:2046 data/core/terrain.cfg:2057
 #: data/core/terrain.cfg:2069
 msgid "Bridge"
-msgstr ""
+msgstr "Brycg"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -1239,12 +1238,13 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
 msgid "Translations:"
-msgstr ""
+msgstr "Þeodnessa:"
 
 #. [scroll_label]: id=translations
 #: data/gui/default/window/addon_description.cfg:226
+#, fuzzy
 msgid "translations^None"
-msgstr ""
+msgstr "Nan"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:56
@@ -1323,7 +1323,7 @@ msgstr ""
 #: data/gui/default/window/data_manage.cfg:266
 #: data/gui/default/window/data_manage.cfg:267
 msgid "Clear"
-msgstr ""
+msgstr "Berian"
 
 #. [button]: id=restore
 #: data/gui/default/window/data_manage.cfg:283
@@ -2808,7 +2808,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:1224
 msgid "Prefs section^Sound"
-msgstr ""
+msgstr "Hlem"
 
 #: src/game_preferences_display.cpp:1225
 msgid "Prefs section^Multiplayer"
@@ -3188,9 +3188,8 @@ msgid "Status Table"
 msgstr ""
 
 #: src/hotkeys.cpp:85
-#, fuzzy
 msgid "Mute"
-msgstr "Dumb"
+msgstr ""
 
 #: src/hotkeys.cpp:86
 msgid "Speak"
