@@ -2668,6 +2668,7 @@ WML_HANDLER_FUNCTION(replace_schedule, /*event_info*/, cfg)
 		ERR_NG << "attempted to to replace ToD schedule with empty schedule\n";
 	} else {
 		resources::tod_manager->replace_schedule(cfg.get_parsed_config());
+		resources::screen->new_turn();
 		LOG_NG << "replaced ToD schedule\n";
 	}
 }
