@@ -245,11 +245,7 @@ action::EXEC_RESULT move::execute()
 
 	unit_map::const_iterator unit_it;
 
-	if (steps_finished && route_->steps.back() == final_location)
-	{
-		result = action::SUCCESS;
-	}
-	else if (final_location == route_->steps.front())
+	if (final_location == route_->steps.front())
 	{
 		WRN_WB << "Move execution resulted in zero movement.\n";
 	}
@@ -257,14 +253,14 @@ action::EXEC_RESULT move::execute()
 			(unit_it = resources::units->find(final_location)) != resources::units->end()
 			&& unit_it->id() == unit_id_)
 	{
-		if(unit_it->move_interrupted())
+		if (steps_finished && route_->steps.back() == final_location) //reached destination
 		{
-			// Move was interrupted, probably by enemy unit sighted: let the game take care of it
+			// Everything went smoothly
 			result = action::SUCCESS;
 		}
-		else // @todo: Verify this code path is possible...
+		else // Move was interrupted, probably by enemy unit sighted
 		{
-			WRN_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "), analyzing\n";
+			LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "), analyzing\n";
 			std::vector<map_location>::iterator start_new_path;
 			bool found = false;
 			for (start_new_path = route_->steps.begin(); ((start_new_path != route_->steps.end()) && !found); ++start_new_path)

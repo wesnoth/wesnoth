@@ -184,6 +184,8 @@ bool side_actions::execute(side_actions::iterator position)
 		resources::whiteboard->queue_net_cmd(make_net_cmd_remove(position));
 		actions_.erase(position);
 	}
+	else //action may have revised itself; let's tell our allies.
+		resources::whiteboard->queue_net_cmd(make_net_cmd_replace(position,*position));
 
 	switch(exec_result)
 	{
