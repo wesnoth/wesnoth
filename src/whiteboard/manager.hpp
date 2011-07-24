@@ -150,12 +150,12 @@ public:
 	/// Is referenced by the top bar gold display
 	int get_spent_gold_for(int side);
 
-	/**
-	 * Clears the undo_stack and redo_stack if the whiteboard is on.
-	 * @todo Add other conditions where it won't get cleared, such as preferences option
-	 * and when player has no network allies.
-	 */
-	void possibly_clear_undo();
+	/// Determines whether or not the undo_stack should be cleared.
+	///@todo Only when there are networked allies and we have set a preferences option
+	bool should_clear_undo() const {return true;}
+	bool active_and_should_clear_undo() const {return manager::active_ && should_clear_undo();}
+	/// Updates shroud and clears the undo_stack and redo_stack.
+	void clear_undo();
 
 private:
 	void validate_actions_if_needed();

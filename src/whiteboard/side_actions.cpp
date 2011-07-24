@@ -176,7 +176,8 @@ bool side_actions::execute(side_actions::iterator position)
 		throw;
 	}
 
-	resources::whiteboard->possibly_clear_undo();
+	if(resources::whiteboard->should_clear_undo())
+		resources::whiteboard->clear_undo();
 
 	if(exec_result!=action::FAIL)
 	{
