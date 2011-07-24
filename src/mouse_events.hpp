@@ -70,7 +70,8 @@ public:
 	// wrapper to catch bad_alloc so this should be called
 	void attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice);
 
-	bool move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit, bool check_shroud);
+	// output arg: sighted_result: if not NULL, indicates whether a "unit sighted" occurred
+	bool move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit, bool check_shroud, bool* sighted_result = NULL);
 
 protected:
 	/**

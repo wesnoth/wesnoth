@@ -230,11 +230,12 @@ action::EXEC_RESULT move::execute()
 
 	map_location final_location;
 	bool steps_finished;
+	bool enemy_sighted;
 	{
 		events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
 		team const& owner_team = resources::teams->at(team_index());
 		try {
-			steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates());
+			steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates(), &enemy_sighted);
 		} catch (end_turn_exception&) {
 			set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 			throw; // we rely on the caller to delete this action
@@ -255,8 +256,16 @@ action::EXEC_RESULT move::execute()
 	{
 		if (steps_finished && route_->steps.back() == final_location) //reached destination
 		{
-			// Everything went smoothly
-			result = action::SUCCESS;
+			if(enemy_sighted)
+			{
+				LOG_WB << "Move completed, but interrupted on final hex. Halting.\n";
+				//reset to a single-hex path, just in case *this is a wb::attack
+				arrow_.reset();
+				route_->steps = std::vector<map_location>(1,route_->steps.back());
+				result = action::PARTIAL;
+			}
+			else // Everything went smoothly
+				result = action::SUCCESS;
 		}
 		else // Move was interrupted, probably by enemy unit sighted
 		{

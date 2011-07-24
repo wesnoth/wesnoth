@@ -2344,7 +2344,8 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		 replay* move_recorder, undo_list* undo_stack,
 		 bool show_move,
 		 map_location *next_unit, bool continue_move,
-		 bool should_clear_shroud, bool is_replay)
+		 bool should_clear_shroud, bool is_replay,
+		 bool* units_sighted_result)
 {
 	assert(route.empty() == false);
 
@@ -2548,6 +2549,9 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	}
 
 	assert(steps.size() <= route.size());
+
+	if(units_sighted_result)
+		*units_sighted_result = !seen_units.empty();
 
 	// If we can't get all the way there and have to set a go-to.
 	if(steps.size() != route.size() && discovered_unit == false) {

@@ -401,13 +401,15 @@ typedef std::vector<undo_action> undo_list;
  * a goto order will be set.
  * If move_recorder is not NULL, the move will be recorded in it.
  * If undos is not NULL, undo information will be added.
+ * If units_sighted_result is not NULL, it will indicate whether a sighting occurred.
  */
 size_t move_unit(move_unit_spectator* move_spectator,
 	const std::vector<map_location> &steps,
 				replay* move_recorder, undo_list* undos,
 				bool show_move,
 				map_location *next_unit = NULL,
-				bool continue_move = false, bool should_clear_shroud=true, bool is_replay=false);
+				bool continue_move = false, bool should_clear_shroud=true, bool is_replay=false,
+				bool* units_sighted_result = NULL);
 
 /** Function which recalculates the fog. */
 void recalculate_fog(int side);

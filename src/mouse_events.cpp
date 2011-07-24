@@ -716,7 +716,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 	return finished_moves;
 }
 
-bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit, bool check_shroud)
+bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit, bool check_shroud, bool* sighted_result)
 {
 	const std::vector<map_location> steps = route.steps;
 	if(steps.empty()) {
@@ -725,7 +725,7 @@ bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, m
 
 	size_t moves = 0;
 	try {
-			moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, next_unit, false, check_shroud);
+		moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, next_unit, false, check_shroud, false, sighted_result);
 	} catch(end_turn_exception&) {
 		cursor::set(cursor::NORMAL);
 		gui().invalidate_game_status();
