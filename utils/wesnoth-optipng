@@ -37,9 +37,14 @@ total_savings_filecount=0
 new_file_list="new_file_list.tmp"
 old_file_list="old_file_list.tmp"
 broken_file_list="broken_file_list.tmp"
+stat_args="-c %s"
 
 if [ -e "/proc/cpuinfo" ] && [ `grep processor /proc/cpuinfo | wc -l` -gt 1 ]; then
         max_number_threads=`grep processor /proc/cpuinfo | wc -l`
+fi
+
+if [ `man stat | grep 'BSD' | wc -l` -gt 0 ]; then
+    stat_args="-f %z"
 fi
 
 ####### PROCEDURES #######
@@ -111,8 +116,8 @@ get_statistics_and_delete_temp_files()
 		rm -f ${1}.new
 	elif [ -e ${1} ] && [ -e ${1}.new ]; then
 		# Compare output size with original and print per-file statistics
-		local old_png_size=`stat -c %s ${1} 2> /dev/null`
-		local new_png_size=`stat -c %s ${1}.new 2> /dev/null`
+		local old_png_size=`stat ${stat_args} ${1} 2> /dev/null`
+		local new_png_size=`stat ${stat_args} ${1}.new 2> /dev/null`
 
 		if [ "$old_png_size" -gt "$new_png_size" ]; then
 			local png_savings_size=$((${old_png_size}-${new_png_size}))
