@@ -142,7 +142,7 @@ void attack::apply_temp_modifier(unit_map& unit_map)
 	move::apply_temp_modifier(unit_map);
 	assert(get_unit());
 	unit& unit = *get_unit();
-	LOG_WB << unit.name() << " [" << unit.id()
+	DBG_WB << unit.name() << " [" << unit.id()
 					<< "] has " << unit.attacks_left() << " attacks, decreasing by one" << "\n";
 	assert(unit.attacks_left() > 0);
 	unit.set_attacks(unit.attacks_left() - 1);
@@ -159,7 +159,7 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 {
 	assert(get_unit());
 	unit& unit = *get_unit();
-	LOG_WB << unit.name() << " [" << unit.id()
+	DBG_WB << unit.name() << " [" << unit.id()
 					<< "] has " << unit.attacks_left() << " attacks, increasing by one" << "\n";
 	unit.set_attacks(unit.attacks_left() + 1);
 	DBG_WB << "Attack: Changing movement points for unit " << unit.name() << " [" << unit.id()

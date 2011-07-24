@@ -274,7 +274,7 @@ void manager::set_planned_unit_map()
 	}
 	else if (executing_actions_)
 	{
-		LOG_WB << "Attempt to set planned_unit_map during action execution.\n";
+		DBG_WB << "Attempt to set planned_unit_map during action execution.\n";
 	}
 }
 
@@ -298,7 +298,7 @@ void manager::set_real_unit_map()
 	}
 	else //executing_actions_
 	{
-		LOG_WB << "Attempt to set planned_unit_map during action execution.\n";
+		DBG_WB << "Attempt to set planned_unit_map during action execution.\n";
 	}
 }
 
@@ -419,12 +419,18 @@ void manager::send_network_data()
 	net_buffer_ = config();
 
 	network::send_data(packet,0,"whiteboard");
+
+	size_t count = wb_cfg.child_count("net_cmd");
+	LOG_WB << "Sent wb data (" << count << ").\n";
 }
 
 void manager::process_network_data(config const& cfg)
 {
 	if(config const& wb_cfg = cfg.child("whiteboard"))
 	{
+		size_t count = wb_cfg.child_count("net_cmd");
+		LOG_WB << "Received wb data (" << count << ").\n";
+
 		team& team_from = resources::teams->at(wb_cfg["side"]-1);
 		foreach(side_actions::net_cmd const& cmd, wb_cfg.child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
