@@ -107,10 +107,9 @@ namespace wb
 		v.visit_suppose_dead(shared_from_this());
 	}
 
-	bool suppose_dead::execute()
+	action::EXEC_RESULT suppose_dead::execute()
 	{
-		valid_=false;
-		return false;
+		return action::PARTIAL; //< Delete this, but don't continue execution
 	}
 
 	void suppose_dead::apply_temp_modifier(unit_map& unit_map)

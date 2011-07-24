@@ -52,7 +52,7 @@ namespace wb {
 
 			virtual void accept(visitor& v);
 
-			virtual bool execute();
+			virtual action::EXEC_RESULT execute();
 
 			/** Applies temporarily the result of this action to the specified unit map. */
 			virtual void apply_temp_modifier(unit_map& unit_map);

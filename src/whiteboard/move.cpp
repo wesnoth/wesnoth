@@ -209,21 +209,21 @@ void move::accept(visitor& v)
 	v.visit_move(shared_from_this());
 }
 
-bool move::execute()
+action::EXEC_RESULT move::execute()
 {
 	if (!valid_)
-		return false;
+		return action::FAIL;
 
 	if (get_source_hex() == get_dest_hex())
-		return true; //zero-hex move, used by attack subclass
+		return action::SUCCESS; //zero-hex move, used by attack subclass
 
 	//Ensure destination hex is free
 	if (resources::units->find(get_dest_hex()) != resources::units->end())
-		return false;
+		return action::FAIL;
 
 	LOG_WB << "Executing: " << shared_from_this() << "\n";
 
-	bool move_finished_completely = false;
+	action::EXEC_RESULT result = action::FAIL;
 
 	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
 	fake_unit_->set_hidden(true);
@@ -247,7 +247,7 @@ bool move::execute()
 
 	if (steps_finished && route_->steps.back() == final_location)
 	{
-		move_finished_completely = true;
+		result = action::SUCCESS;
 	}
 	else if (final_location == route_->steps.front())
 	{
@@ -260,7 +260,7 @@ bool move::execute()
 		if(unit_it->move_interrupted())
 		{
 			// Move was interrupted, probably by enemy unit sighted: let the game take care of it
-			move_finished_completely = true;
+			result = action::SUCCESS;
 		}
 		else // @todo: Verify this code path is possible...
 		{
@@ -286,23 +286,23 @@ bool move::execute()
 			}
 			else //Unit ended up in location outside path, likely due to a WML event
 			{
-				move_finished_completely = true;
+				result = action::SUCCESS;
 				WRN_WB << "Unit ended up in location outside path during move execution.\n";
 			}
 		}
 	}
 	else //Unit disappeared from the map, likely due to a WML event
 	{
-		move_finished_completely = true;
+		result = action::SUCCESS;
 		WRN_WB << "Unit disappeared from map during move execution.\n";
 	}
 
-	if (!move_finished_completely)
+	if(result == action::FAIL)
 	{
 		set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 		fake_unit_->set_hidden(false);
 	}
-	return move_finished_completely;
+	return result;
 }
 
 map_location move::get_source_hex() const

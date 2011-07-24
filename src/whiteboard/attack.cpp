@@ -101,12 +101,13 @@ void attack::accept(visitor& v)
 	v.visit_attack(boost::static_pointer_cast<attack>(shared_from_this()));
 }
 
-bool attack::execute()
+action::EXEC_RESULT attack::execute()
 {
-	bool execute_successful = true;
-
 	if (!valid_)
-		execute_successful = false;
+		return action::FAIL;
+
+	//Never continue an execute-all after an attack
+	action::EXEC_RESULT result = action::PARTIAL;
 
 	LOG_WB << "Executing: " << shared_from_this() << "\n";
 
@@ -114,27 +115,26 @@ bool attack::execute()
 
 	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), side_number());
 
-	if (execute_successful && route_->steps.size() >= 2)
+	if (route_->steps.size() >= 2)
 	{
-		if (!move::execute())
+		if(move::execute() != action::SUCCESS)
 		{
-			//Move didn't complete for some reason, so we're not at
-			//the right hex to execute the attack.
-			execute_successful = false;
+			//Move failed for some reason, so don't attack.
+			result = action::FAIL;
 		}
 		//check if new enemies are now visible
 		else if(mouse_handler.get_adj_enemies(get_dest_hex(), side_number()) != adj_enemies)
 		{
-			execute_successful = false; //ambush, interrupt attack
+			result = action::FAIL; //ambush, interrupt attack
 		}
 	}
 
-	if (execute_successful)
+	if (result != action::FAIL)
 	{
 		resources::controller->get_mouse_handler_base().attack_enemy(get_dest_hex(), get_target_hex(), weapon_choice_);
-		//only path that returns execute_successful = true
+		//only path that doesn't return action::FAIL
 	}
-	return execute_successful;
+	return result;
 }
 
 void attack::apply_temp_modifier(unit_map& unit_map)

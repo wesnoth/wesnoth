@@ -102,13 +102,13 @@ void recruit::accept(visitor& v)
 	v.visit_recruit(shared_from_this());
 }
 
-bool recruit::execute()
+action::EXEC_RESULT recruit::execute()
 {
 	assert(valid_);
 	fake_unit_->set_hidden(true);
 	int side_num = team_index() + 1;
 	resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, recruit_hex_);
-	return true;
+	return action::SUCCESS;
 }
 
 void recruit::apply_temp_modifier(unit_map& unit_map)

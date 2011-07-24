@@ -149,7 +149,7 @@ void side_actions::execute_all()
 		bool is_attack = boost::dynamic_pointer_cast<attack>(*position);
 		bool finished = execute(position);
 
-		keep_executing = finished && !is_attack && !empty();
+		keep_executing = finished && !empty();
 	}
 }
 
@@ -165,9 +165,9 @@ bool side_actions::execute(side_actions::iterator position)
 
 	LOG_WB << "Before execution, " << *this << "\n";
 	action_ptr action = *position;
-	bool finished;
+	action::EXEC_RESULT exec_result;
 	try	{
-		 finished = action->execute();
+		 exec_result = action->execute();
 	} catch (end_turn_exception&) {
 		resources::whiteboard->queue_net_cmd(make_net_cmd_remove(position));
 		actions_.erase(position);
@@ -178,24 +178,31 @@ bool side_actions::execute(side_actions::iterator position)
 
 	resources::whiteboard->possibly_clear_undo();
 
-	if (finished)
+	if(exec_result!=action::FAIL)
 	{
 		resources::whiteboard->queue_net_cmd(make_net_cmd_remove(position));
 		actions_.erase(position);
-		LOG_WB << "After execution and deletion, " << *this << "\n";
-		validate_actions();
-		return true;
 	}
-	else
+
+	switch(exec_result)
 	{
+	case action::SUCCESS:
+		LOG_WB << "After execution and deletion, " << *this << "\n";
+		break;
+	case action::PARTIAL:
+		LOG_WB << "After failed execution *with* deletion, " << *this << "\n";
+		break;
+	case action::FAIL:
 		//Idea that needs refining: move action at the end of the queue if it failed executing:
 			//actions_.erase(position);
 			//actions_.insert(end(), action);
 
-		LOG_WB << "After execution *without* deletion, " << *this << "\n";
-		validate_actions();
-		return false;
+		LOG_WB << "After failed execution *without* deletion, " << *this << "\n";
+		break;
 	}
+
+	validate_actions();
+	return exec_result == action::SUCCESS;
 }
 
 side_actions::iterator side_actions::queue_move(const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
