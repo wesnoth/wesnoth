@@ -344,9 +344,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 		bool eligible = enemy != units_.end();
 		if (!eligible) return map_location();
 
-		bool show_for_whiteboard = wb_active &&
-				viewing_team.is_enemy(enemy->side());
-		eligible &= show_for_whiteboard || current_team().is_enemy(enemy->side());
+		eligible &= viewing_team.is_enemy(enemy->side());
 		eligible &= !enemy->incapacitated();
 		if (!eligible) return map_location();
 	}
