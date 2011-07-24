@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-05 10:12+0200\n"
+"POT-Creation-Date: 2011-07-24 14:56+0200\n"
 "PO-Revision-Date: 2010-05-04 12:09+0100\n"
 "Last-Translator: Kelemen Zoltán <kelemen_zoltan@freemail.hu>\n"
 "Language-Team: none\n"
@@ -612,7 +612,7 @@ msgstr ""
 
 #. [message]: speaker=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:414
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:800
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:802
 msgid "This is impossible!"
 msgstr "Ez képtelenség!"
 
@@ -813,6 +813,7 @@ msgstr "A viharszigony támadása 14-2, mágikus, távolsági, 'tűz' típusú."
 
 #. [option]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:299
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:914
 msgid "That sounds great! I’ll take it."
 msgstr "Ez jól hangzik! Majd én használom."
 
@@ -2741,42 +2742,42 @@ msgid "We searched up the coast for miles, and here they are!"
 msgstr "Mérföldeket bejártunk utánuk a partok mentén, és erre ők jönnek ide!"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:778
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:780
 msgid "I was wrong. You are no grandson of <i>mine</i>!"
 msgstr "Tévedtem. Te nem lehetsz az <i>én</i> unokám!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:789
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:791
 msgid "I have failed my people."
 msgstr "Cserbenhagytam a népemet."
 
 #. [message]: speaker=Dead Knight
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:812
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:814
 msgid "Gruh!"
 msgstr "Gruh!"
 
 #. [message]: speaker=Mel Daveth
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:824
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:826
 msgid "Save me Lord Rava...uhh!"
 msgstr "Ments meg Lord Rava... uhh!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:832
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:834
 msgid "We have retaken our home!"
 msgstr "Visszaszereztük az otthonunkat!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:843
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:845
 msgid "Cylanna! I will miss you."
 msgstr "Cylanna! Szükségem van rád!"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:854
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:856
 msgid "Tyegëa! No!"
 msgstr "Tyegëa! Ne!"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:893
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:895
 msgid ""
 "This man was wearing a necklace with a pendant on it. I’m sure the shape "
 "means something."
@@ -2785,14 +2786,14 @@ msgstr ""
 "jelent valamit."
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:900
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:902
 msgid ""
 "It does indeed. It is an ankh, and that pendant will strengthen your life "
 "force."
 msgstr "Igen, jelent. Ez egy ankh-kereszt, a medál az életerőt növeli."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:905
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:907
 #, fuzzy
 msgid "The ankh necklace provides 70% resistance to <i>arcane</i> damage."
 msgstr ""
@@ -2800,22 +2801,17 @@ msgstr ""
 "ellen."
 
 #. [option]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:912
-msgid "I think that could be useful. I’ll take it."
-msgstr "Még jól jöhet valamikor. Felveszem."
-
-#. [option]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:921
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:923
 msgid "It doesn’t seem to have helped its previous owner. I don’t want it."
 msgstr "Nem segített az előző viselőjének sem. Kell a fenének ilyen vacak."
 
 #. [option]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:958
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:960
 msgid "I would like my life force protected."
 msgstr "Szeretném az életemet biztonságban tudni."
 
 #. [option]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:967
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:969
 msgid "My life force feels fine as it is."
 msgstr "Az életem így is eléggé biztonságban van."
 
@@ -3247,6 +3243,9 @@ msgid ""
 msgstr ""
 "Ez a támadás olyan kemény, hogy a védőt összezavarja, s nem képes a védelmi "
 "zónáját ellenőrizni. A hatás a kör végéig tart."
+
+#~ msgid "I think that could be useful. I’ll take it."
+#~ msgstr "Még jól jöhet valamikor. Felveszem."
 
 #~ msgid ""
 #~ "Kai Maudin was your father Laudiss’s father, Krellis, but his wife, "

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-07-09 09:00+0200\n"
+"POT-Creation-Date: 2011-07-24 14:56+0200\n"
 "PO-Revision-Date: 2011-07-09 05:45-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -118,7 +118,6 @@ msgstr "Leaf Litter"
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:174 data/core/terrain.cfg:184
 #: data/core/terrain.cfg:194
-#| msgid "Dry Dirt"
 msgid "Dirt"
 msgstr "Dirt"
 
@@ -175,7 +174,6 @@ msgstr "Snow"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:260
-#| msgid "Desert Keep"
 msgid "Desert"
 msgstr "Desert"
 
@@ -492,7 +490,6 @@ msgstr "Snowy Mixed Forested Hills"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:878
-#| msgid "Basic Wooden Floor"
 msgid "Wooden Floor"
 msgstr "Wooden Floor"
 
@@ -621,7 +618,6 @@ msgstr "Snowy Impassable Mountains"
 #. [terrain_type]: id=cavewall_earthy_hewn
 #: data/core/terrain.cfg:1117 data/core/terrain.cfg:1128
 #: data/core/terrain.cfg:1139 data/core/terrain.cfg:1150
-#| msgid "Hewn Cave Wall"
 msgid "Cave Wall"
 msgstr "Cave Wall"
 
@@ -923,7 +919,6 @@ msgstr "Dwarven Castle"
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:1692 data/core/terrain.cfg:1704
 #: data/core/terrain.cfg:1717 data/core/terrain.cfg:1742
-#| msgid "Ruined Human Castle"
 msgid "Ruined Castle"
 msgstr "Ruined Castle"
 
@@ -1021,7 +1016,6 @@ msgstr "Dwarven Castle Keep"
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1874 data/core/terrain.cfg:1887
 #: data/core/terrain.cfg:1900 data/core/terrain.cfg:1926
-#| msgid "Ruined Desert Keep"
 msgid "Ruined Keep"
 msgstr "Ruined Keep"
 
@@ -1072,7 +1066,6 @@ msgstr "Keep Overlay"
 #: data/core/terrain.cfg:2020 data/core/terrain.cfg:2032
 #: data/core/terrain.cfg:2046 data/core/terrain.cfg:2057
 #: data/core/terrain.cfg:2069
-#| msgid "Wooden Bridge"
 msgid "Bridge"
 msgstr "Bridge"
 
@@ -1907,25 +1900,21 @@ msgstr "Player Info — "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:70
-#| msgid "Send private message"
 msgid "Send Private Message"
 msgstr "Send Private Message"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:99
-#| msgid "Add As Friend"
 msgid "Add to Friends"
 msgstr "Add to Friends"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:108
-#| msgid "Add As Ignore"
 msgid "Add to Ignores"
 msgstr "Add to Ignores"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:117
-#| msgid "Remove from list"
 msgid "Remove from List"
 msgstr "Remove from List"
 
@@ -1972,7 +1961,6 @@ msgstr "Nick"
 
 #. [label]
 #: data/gui/default/window/mp_change_control.cfg:194
-#| msgid "Change control"
 msgid "Change Control"
 msgstr "Change Control"
 
@@ -1998,13 +1986,11 @@ msgstr "Friends/Ignored List"
 
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:170
-#| msgid "Add As Friend"
 msgid "Add as Friend"
 msgstr "Add as Friend"
 
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
-#| msgid "Add As Ignore"
 msgid "Add as Ignore"
 msgstr "Add as Ignore"
 
@@ -2172,13 +2158,6 @@ msgstr "Multiplayer"
 
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:90
-#| msgid ""
-#| "You may login to the official multiplayer server with your forum username "
-#| "and password.\n"
-#| "Note that registration is not required to join the server: you need to "
-#| "supply a password only if you wish to use a registered username.\n"
-#| "\n"
-#| "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgid ""
 "You may login to the official multiplayer server with your forum username "
 "and password.\n"
@@ -2557,7 +2536,6 @@ msgid "Show Unit Idle Animations"
 msgstr "Show Unit Idle Animations"
 
 #: src/game_preferences_display.cpp:205
-#| msgid "Show Unit Idle Animations"
 msgid "Show Unit Standing Animations"
 msgstr "Show Unit Standing Animations"
 
@@ -2567,7 +2545,6 @@ msgstr "Animate Map"
 
 #: src/game_preferences_display.cpp:208 src/game_preferences_display.cpp:209
 #: src/game_preferences_display.cpp:210 src/game_preferences_display.cpp:211
-#| msgid "SFX Volume:"
 msgid "Volume:"
 msgstr "Volume:"
 
@@ -2859,29 +2836,29 @@ msgstr "No known themes. Try changing from within an existing game."
 msgid "Find $filename server binary to host networked games"
 msgstr "Find $filename server binary to host networked games"
 
-#: src/gui/auxiliary/canvas.cpp:566
+#: src/gui/auxiliary/canvas.cpp:595
 msgid "Line doesn't fit on canvas."
 msgstr "Line doesn't fit on canvas."
 
-#: src/gui/auxiliary/canvas.cpp:703
+#: src/gui/auxiliary/canvas.cpp:734
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Rectangle doesn't fit on canvas."
 
-#: src/gui/auxiliary/canvas.cpp:835 src/gui/auxiliary/canvas.cpp:840
-#: src/gui/auxiliary/canvas.cpp:845 src/gui/auxiliary/canvas.cpp:851
+#: src/gui/auxiliary/canvas.cpp:867 src/gui/auxiliary/canvas.cpp:872
+#: src/gui/auxiliary/canvas.cpp:877 src/gui/auxiliary/canvas.cpp:883
 msgid "Circle doesn't fit on canvas."
 msgstr "Circle doesn't fit on canvas."
 
-#: src/gui/auxiliary/canvas.cpp:1033 src/gui/auxiliary/canvas.cpp:1040
-#: src/gui/auxiliary/canvas.cpp:1050 src/gui/auxiliary/canvas.cpp:1057
+#: src/gui/auxiliary/canvas.cpp:1069 src/gui/auxiliary/canvas.cpp:1076
+#: src/gui/auxiliary/canvas.cpp:1086 src/gui/auxiliary/canvas.cpp:1093
 msgid "Image doesn't fit on canvas."
 msgstr "Image doesn't fit on canvas."
 
-#: src/gui/auxiliary/canvas.cpp:1262
+#: src/gui/auxiliary/canvas.cpp:1301
 msgid "Text has a font size of 0."
 msgstr "Text has a font size of 0."
 
-#: src/gui/auxiliary/canvas.cpp:1331
+#: src/gui/auxiliary/canvas.cpp:1370
 msgid "Text doesn't start on canvas."
 msgstr "Text doesn't start on canvas."
 
@@ -3069,17 +3046,17 @@ msgstr "Version"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Mandatory widget '$id' hasn't been defined."
 
-#: src/gui/widgets/settings.cpp:423
+#: src/gui/widgets/settings.cpp:430
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 
-#: src/gui/widgets/settings.cpp:484
+#: src/gui/widgets/settings.cpp:491
 msgid "No default gui defined."
 msgstr "No default gui defined."
 
-#: src/gui/widgets/settings.cpp:510
+#: src/gui/widgets/settings.cpp:521
 msgid "No state or draw section defined."
 msgstr "No state or draw section defined."
 

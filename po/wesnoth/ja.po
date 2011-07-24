@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-07-09 09:00+0200\n"
+"POT-Creation-Date: 2011-07-24 14:56+0200\n"
 "PO-Revision-Date: 2011-01-02 05:44+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -649,52 +649,52 @@ msgid "Russian Translation"
 msgstr "ロシア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2471
+#: data/core/about.cfg:2474
 msgid "Serbian Translation"
 msgstr "セルビア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2490
+#: data/core/about.cfg:2493
 msgid "Slovak Translation"
 msgstr "スロバキア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2516
+#: data/core/about.cfg:2519
 msgid "Slovenian Translation"
 msgstr "スロベニア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2532
+#: data/core/about.cfg:2535
 msgid "Spanish Translation"
 msgstr "スペイン語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2602
+#: data/core/about.cfg:2605
 msgid "Swedish Translation"
 msgstr "スウェーデン語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2637
+#: data/core/about.cfg:2640
 msgid "Turkish Translation"
 msgstr "トルコ語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2659
+#: data/core/about.cfg:2662
 msgid "Valencian (southern Catalan) Translation"
 msgstr "バレンシア語（カタロニア南部）翻訳"
 
 #. [about]
-#: data/core/about.cfg:2672
+#: data/core/about.cfg:2675
 msgid "Vietnamese Translation"
 msgstr "ベトナム語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2691
+#: data/core/about.cfg:2694
 msgid "RACV’s Translation"
 msgstr "RACV 翻訳"
 
 #. [about]
-#: data/core/about.cfg:2698
+#: data/core/about.cfg:2701
 msgid "Bots"
 msgstr "ボット"
 
@@ -3369,39 +3369,39 @@ msgstr "無効な攻撃側武器が選択されました"
 msgid "An invalid defender weapon got selected."
 msgstr "無効な防御側武器が選択されました"
 
-#: src/actions.cpp:2671
+#: src/actions.cpp:2672
 msgid "Ambushed!"
 msgstr "待ち伏せにあった！"
 
-#: src/actions.cpp:2678
+#: src/actions.cpp:2679
 msgid "Failed teleport! Exit not empty"
 msgstr "テレポートに失敗した！ 出口が空いていなかった"
 
-#: src/actions.cpp:2723
+#: src/actions.cpp:2724
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "味方ユニット発見 $friends"
 
-#: src/actions.cpp:2726
+#: src/actions.cpp:2727
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "敵ユニット発見！$enemies"
 
-#: src/actions.cpp:2731
+#: src/actions.cpp:2732
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "味方 $friends"
 
-#: src/actions.cpp:2732
+#: src/actions.cpp:2733
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "敵 $enemies"
 
-#: src/actions.cpp:2733
+#: src/actions.cpp:2734
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "ユニットを発見！ （ $friendphrase、$enemyphrase ）"
 
-#: src/actions.cpp:2742
+#: src/actions.cpp:2743
 msgid "(press $hotkey to keep moving)"
 msgstr "（移動し続けるには $hotkey を押して下さい）"
 
@@ -3540,7 +3540,7 @@ msgid "Size"
 msgstr "大きさ"
 
 #: src/addon/manager.cpp:751 src/addon/manager.cpp:1166
-#: src/menu_events.cpp:211 src/menu_events.cpp:872 src/menu_events.cpp:1527
+#: src/menu_events.cpp:211 src/menu_events.cpp:872 src/menu_events.cpp:1529
 msgid "Type"
 msgstr "型"
 
@@ -3656,7 +3656,7 @@ msgid ""
 msgstr ""
 
 #: src/addon/manager.cpp:1103 src/addon/manager.cpp:1409
-#: src/multiplayer.cpp:263
+#: src/multiplayer.cpp:264
 msgid "Confirm"
 msgstr "確認"
 
@@ -3707,7 +3707,7 @@ msgid "Done"
 msgstr "終了"
 
 #: src/addon/manager.cpp:1303 src/dialogs.cpp:616 src/menu_events.cpp:943
-#: src/menu_events.cpp:1563
+#: src/menu_events.cpp:1565
 msgid "Filter: "
 msgstr "フィルター: "
 
@@ -3798,7 +3798,7 @@ msgstr "遅くなった"
 msgid "Total damage"
 msgstr "総ダメージ"
 
-#: src/attack_prediction_display.cpp:263 src/mouse_events.cpp:836
+#: src/attack_prediction_display.cpp:263 src/mouse_events.cpp:821
 msgid "No usable weapon"
 msgstr "使用できる武器がありません"
 
@@ -3806,7 +3806,7 @@ msgstr "使用できる武器がありません"
 msgid "Chance of being unscathed"
 msgstr "無傷でいられる可能性"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:905
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:890
 msgid "Damage Calculations"
 msgstr "ダメージ計算"
 
@@ -4129,7 +4129,7 @@ msgstr "完"
 msgid "System default language"
 msgstr "システムデフォルト言語"
 
-#: src/leader_list.cpp:138 src/menu_events.cpp:1553
+#: src/leader_list.cpp:138 src/menu_events.cpp:1555
 #: src/multiplayer_connect.cpp:224 src/multiplayer_connect.cpp:268
 msgid "gender^Random"
 msgstr "ランダム"
@@ -4449,54 +4449,54 @@ msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "1 ユニット召還するのに 少なくとも $cost ゴールド必要です。"
 
-#: src/menu_events.cpp:1366
+#: src/menu_events.cpp:1368
 #, fuzzy
 msgid "You cannot end your turn yet!"
 msgstr "ターン終了時に一時停止"
 
-#: src/menu_events.cpp:1390
+#: src/menu_events.cpp:1392
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "このターンではまだ行動を開始していません。本当に自分のターンを終了しますか？"
 
-#: src/menu_events.cpp:1398
+#: src/menu_events.cpp:1400
 #, fuzzy
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
 msgstr ""
 "まだ移動可能なユニットが残っています。本当にターンを終了してよろしいですか？"
 
-#: src/menu_events.cpp:1406 src/menu_events.cpp:1411
+#: src/menu_events.cpp:1408 src/menu_events.cpp:1413
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "まだ移動可能なユニットが残っています。本当にターンを終了してよろしいですか？"
 
-#: src/menu_events.cpp:1446
+#: src/menu_events.cpp:1448
 msgid "Rename Unit"
 msgstr "ユニット名変更"
 
-#: src/menu_events.cpp:1526
+#: src/menu_events.cpp:1528
 msgid "Race"
 msgstr "種族"
 
-#: src/menu_events.cpp:1550
+#: src/menu_events.cpp:1552
 msgid "Create Unit (Debug!)"
 msgstr "ユニット作成（デバッグ！）"
 
-#: src/menu_events.cpp:1553 src/multiplayer_wait.cpp:131
+#: src/menu_events.cpp:1555 src/multiplayer_wait.cpp:131
 msgid "Gender: "
 msgstr "性別: "
 
-#: src/menu_events.cpp:1844
+#: src/menu_events.cpp:1846
 msgid "Search"
 msgstr "検索"
 
-#: src/menu_events.cpp:2021
+#: src/menu_events.cpp:2023
 msgid "This command is currently unavailable."
 msgstr "そのコマンドは現在使用できません。"
 
-#: src/menu_events.cpp:2027
+#: src/menu_events.cpp:2029
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
@@ -4504,7 +4504,7 @@ msgstr ""
 "未知のコマンド '$command' です。 利用可能なコマンドの一覧を調べるには "
 "$help_command を実行してください。"
 
-#: src/menu_events.cpp:2045
+#: src/menu_events.cpp:2047
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -4512,19 +4512,19 @@ msgstr ""
 "利用可能なコマンドの一覧と各コマンドのヘルプ。「 help all 」を使った場合は、"
 "現在利用不可能なコマンドも含まれます。"
 
-#: src/menu_events.cpp:2047
+#: src/menu_events.cpp:2049
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:2091
+#: src/menu_events.cpp:2093
 msgid "Error:"
 msgstr "エラー:"
 
-#: src/menu_events.cpp:2097
+#: src/menu_events.cpp:2099
 msgid "Missing argument $arg_id"
 msgstr "存在しない引数 $arg_id"
 
-#: src/menu_events.cpp:2145
+#: src/menu_events.cpp:2147
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -4532,35 +4532,35 @@ msgstr ""
 "利用可能なコマンド $flags_description:\n"
 "$list_of_commands"
 
-#: src/menu_events.cpp:2145 src/menu_events.cpp:2146 src/menu_events.cpp:2169
+#: src/menu_events.cpp:2147 src/menu_events.cpp:2148 src/menu_events.cpp:2171
 msgid "help"
 msgstr "ヘルプ"
 
-#: src/menu_events.cpp:2146
+#: src/menu_events.cpp:2148
 msgid "Type $help_command <command> for more info."
 msgstr "更なる情報のために $help_command <コマンド> を入力してください。"
 
-#: src/menu_events.cpp:2157
+#: src/menu_events.cpp:2159
 msgid " No help available."
 msgstr " ヘルプは利用できません。"
 
-#: src/menu_events.cpp:2162
+#: src/menu_events.cpp:2164
 msgid "Usage:"
 msgstr ""
 
-#: src/menu_events.cpp:2167
+#: src/menu_events.cpp:2169
 msgid "aliases:"
 msgstr "エイリアス:"
 
-#: src/menu_events.cpp:2288
+#: src/menu_events.cpp:2290
 msgid "(A) - admin command"
 msgstr "(A) - 管理者コマンド"
 
-#: src/menu_events.cpp:2295 src/menu_events.cpp:2501
+#: src/menu_events.cpp:2297 src/menu_events.cpp:2503
 msgid "(admin only)"
 msgstr "（管理者のみ）"
 
-#: src/menu_events.cpp:2315
+#: src/menu_events.cpp:2317
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -4568,7 +4568,7 @@ msgstr ""
 "サーバーに問い合わせを送信します。引数なしの場合は、サーバーが利用可能なコマ"
 "ンドを返します。"
 
-#: src/menu_events.cpp:2319
+#: src/menu_events.cpp:2321
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -4576,52 +4576,52 @@ msgstr ""
 "プレイヤーまたは観戦者を参加できないようにして追い出します。ゲームに参加して"
 "いなくてもサーバー上にいる場合は、参加できないようになります。"
 
-#: src/menu_events.cpp:2320 src/menu_events.cpp:2323 src/menu_events.cpp:2325
-#: src/menu_events.cpp:2327 src/menu_events.cpp:2329 src/menu_events.cpp:2356
-#: src/menu_events.cpp:2358 src/menu_events.cpp:2360 src/menu_events.cpp:2374
+#: src/menu_events.cpp:2322 src/menu_events.cpp:2325 src/menu_events.cpp:2327
+#: src/menu_events.cpp:2329 src/menu_events.cpp:2331 src/menu_events.cpp:2358
+#: src/menu_events.cpp:2360 src/menu_events.cpp:2362 src/menu_events.cpp:2376
 msgid "<nick>"
 msgstr ""
 
-#: src/menu_events.cpp:2322
+#: src/menu_events.cpp:2324
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "禁止したユーザーを元に戻します。ゲーム中にいる必要はありませんが、サーバー上"
 "に存在しなければなりません。"
 
-#: src/menu_events.cpp:2325
+#: src/menu_events.cpp:2327
 msgid "Kick a player or observer."
 msgstr "プレイヤーまたは観戦者を追い出します。"
 
-#: src/menu_events.cpp:2327
+#: src/menu_events.cpp:2329
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "観戦者を発言できないようにします。引数なしの場合は、発言禁止状況を表示しま"
 "す。"
 
-#: src/menu_events.cpp:2329
+#: src/menu_events.cpp:2331
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "観戦者の発言禁止を解除します。引数なしの場合は、全員の発言禁止を解除します。"
 
-#: src/menu_events.cpp:2331
+#: src/menu_events.cpp:2333
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "すべての観戦者の発言可または発言禁止を切り替えます。"
 
-#: src/menu_events.cpp:2341
+#: src/menu_events.cpp:2343
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicks, etc."
 msgstr ""
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2347
 msgid "<message>"
 msgstr "<メッセージ>"
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2347
 msgid "Send an emotion or personal action in chat."
 msgstr "チャットで、感情や個人的な行動を送ります。"
 
-#: src/menu_events.cpp:2348
+#: src/menu_events.cpp:2350
 #, fuzzy
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
@@ -4630,500 +4630,500 @@ msgstr ""
 "プライベートメッセージを送ります。ゲームでいずれかの陣営を操作していないプレ"
 "イヤーにはメッセージを送ることができません。"
 
-#: src/menu_events.cpp:2350
+#: src/menu_events.cpp:2352
 msgid "<nick> <message>"
 msgstr ""
 
-#: src/menu_events.cpp:2354
+#: src/menu_events.cpp:2356
 msgid "<level> <domain>"
 msgstr ""
 
-#: src/menu_events.cpp:2354
+#: src/menu_events.cpp:2356
 msgid "Change the log level of a log domain."
 msgstr "ログドメインのログレベルを変更します。"
 
-#: src/menu_events.cpp:2356
+#: src/menu_events.cpp:2358
 msgid "Add a nick to your ignores list."
 msgstr "無視リストにニックネームを追加します。"
 
-#: src/menu_events.cpp:2358
+#: src/menu_events.cpp:2360
 msgid "Add a nick to your friends list."
 msgstr "友人リストにニックネームを追加します。"
 
-#: src/menu_events.cpp:2360
+#: src/menu_events.cpp:2362
 msgid "Remove a nick from your ignores or friends list."
 msgstr "無視リスト、友人リストからニックネームを削除します。"
 
-#: src/menu_events.cpp:2362
+#: src/menu_events.cpp:2364
 msgid "Show your ignores and friends list."
 msgstr "無視リスト、友人リストを表示します。"
 
-#: src/menu_events.cpp:2365
+#: src/menu_events.cpp:2367
 msgid "Display version information."
 msgstr "バージョン情報を表示します。"
 
-#: src/menu_events.cpp:2367
+#: src/menu_events.cpp:2369
 msgid "<password> <email (optional)>"
 msgstr ""
 
-#: src/menu_events.cpp:2367
+#: src/menu_events.cpp:2369
 msgid "Register your nick"
 msgstr "あなたのニックネームを登録します。"
 
-#: src/menu_events.cpp:2369
+#: src/menu_events.cpp:2371
 msgid "Drop your nick."
 msgstr "ニックネームを消します。"
 
-#: src/menu_events.cpp:2371
+#: src/menu_events.cpp:2373
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr "あなたのニックネームの詳細を更新します。可能な詳細は「 /details 」。"
 
-#: src/menu_events.cpp:2372
+#: src/menu_events.cpp:2374
 msgid "<detail> <value>"
 msgstr ""
 
-#: src/menu_events.cpp:2374
+#: src/menu_events.cpp:2376
 msgid "Request information about a nick."
 msgstr "ニックネームについての情報を要求します。"
 
-#: src/menu_events.cpp:2376
+#: src/menu_events.cpp:2378
 msgid "Request a list of details you can set for your registered nick."
 msgstr "あなたの登録したニックネームを設定できる詳細の一覧を要求します。"
 
-#: src/menu_events.cpp:2378 src/menu_events.cpp:2381 src/menu_events.cpp:2383
+#: src/menu_events.cpp:2380 src/menu_events.cpp:2383 src/menu_events.cpp:2385
 msgid "<room>"
 msgstr "<部屋>"
 
-#: src/menu_events.cpp:2378
+#: src/menu_events.cpp:2380
 msgid "Join a room."
 msgstr "部屋に参加。"
 
-#: src/menu_events.cpp:2381
+#: src/menu_events.cpp:2383
 msgid "Part a room."
 msgstr "部屋の分割。"
 
-#: src/menu_events.cpp:2383
+#: src/menu_events.cpp:2385
 msgid "List room members."
 msgstr "部屋のメンバーの一覧。"
 
-#: src/menu_events.cpp:2385
+#: src/menu_events.cpp:2387
 msgid "List available rooms."
 msgstr "利用可能な部屋の一覧。"
 
-#: src/menu_events.cpp:2387
+#: src/menu_events.cpp:2389
 msgid "<room> <msg>"
 msgstr "<部屋> <メッセージ>"
 
-#: src/menu_events.cpp:2387
+#: src/menu_events.cpp:2389
 msgid "Room message."
 msgstr "部屋のメッセージ。"
 
-#: src/menu_events.cpp:2389
+#: src/menu_events.cpp:2391
 msgid "<room> <type> [value]"
 msgstr ""
 
-#: src/menu_events.cpp:2389
+#: src/menu_events.cpp:2391
 msgid "Room query."
 msgstr "部屋の問い合わせ。"
 
-#: src/menu_events.cpp:2493
+#: src/menu_events.cpp:2495
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr "(D) - デバッグのみ, (N) - ネットワークのみ, (A) - 管理者のみ"
 
-#: src/menu_events.cpp:2499
+#: src/menu_events.cpp:2501
 msgid "(debug command)"
 msgstr "（デバッグコマンド）"
 
-#: src/menu_events.cpp:2500
+#: src/menu_events.cpp:2502
 msgid "(network only)"
 msgstr "（ネットワークのみ）"
 
-#: src/menu_events.cpp:2525
+#: src/menu_events.cpp:2527
 msgid "Refresh gui."
 msgstr "GUI をリフレッシュします。"
 
-#: src/menu_events.cpp:2527
+#: src/menu_events.cpp:2529
 msgid "Switch a side to/from AI control."
 msgstr "陣営の AI 操作を切り替えます。"
 
-#: src/menu_events.cpp:2527
+#: src/menu_events.cpp:2529
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
-#: src/menu_events.cpp:2530
+#: src/menu_events.cpp:2532
 msgid "<side> <nick>"
 msgstr "<陣営> <ニックネーム>"
 
-#: src/menu_events.cpp:2530
+#: src/menu_events.cpp:2532
 msgid "Assign control of a side to a different player or observer."
 msgstr "陣営の操作権を他のプレイヤーまたは観戦者に割り当てます。"
 
-#: src/menu_events.cpp:2532
+#: src/menu_events.cpp:2534
 msgid "Clear chat history."
 msgstr "チャット履歴を消去します。"
 
-#: src/menu_events.cpp:2534
+#: src/menu_events.cpp:2536
 msgid "Visualize the screen refresh procedure."
 msgstr "画面更新手続きを可視化します。"
 
-#: src/menu_events.cpp:2536
+#: src/menu_events.cpp:2538
 msgid "Debug foreground terrain."
 msgstr ""
 
-#: src/menu_events.cpp:2538
+#: src/menu_events.cpp:2540
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:2539
+#: src/menu_events.cpp:2541
 msgid "Show fps."
 msgstr ""
 
-#: src/menu_events.cpp:2541
+#: src/menu_events.cpp:2543
 msgid "Save game."
 msgstr "ゲームを保存します。"
 
-#: src/menu_events.cpp:2543
+#: src/menu_events.cpp:2545
 msgid "Quit game."
 msgstr "ゲームを終了します。"
 
-#: src/menu_events.cpp:2547
+#: src/menu_events.cpp:2549
 msgid "Save and quit."
 msgstr "保存して終了します。"
 
-#: src/menu_events.cpp:2550
+#: src/menu_events.cpp:2552
 msgid "Ignore replay errors."
 msgstr "リプレイのエラーを無視する。"
 
-#: src/menu_events.cpp:2552
+#: src/menu_events.cpp:2554
 msgid "Disable autosaves."
 msgstr "自動保存を無効にする。"
 
-#: src/menu_events.cpp:2554
+#: src/menu_events.cpp:2556
 msgid "<id>"
 msgstr ""
 
-#: src/menu_events.cpp:2554
+#: src/menu_events.cpp:2556
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "次のシナリオ、または「 id 」で識別されるシナリオに進む。"
 
-#: src/menu_events.cpp:2557
+#: src/menu_events.cpp:2559
 msgid "Choose next scenario"
 msgstr "次のシナリオを選択"
 
-#: src/menu_events.cpp:2560
+#: src/menu_events.cpp:2562
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:2560
+#: src/menu_events.cpp:2562
 msgid "[turn]"
 msgstr ""
 
-#: src/menu_events.cpp:2562
+#: src/menu_events.cpp:2564
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:2562
+#: src/menu_events.cpp:2564
 msgid "[limit]"
 msgstr ""
 
-#: src/menu_events.cpp:2564
+#: src/menu_events.cpp:2566
 msgid "Turn debug mode on."
 msgstr "デバッグモードを有効にする。"
 
-#: src/menu_events.cpp:2566
+#: src/menu_events.cpp:2568
 msgid "Turn debug mode off."
 msgstr "デバッグモードをオフにする。"
 
-#: src/menu_events.cpp:2568 src/menu_events.cpp:2572
+#: src/menu_events.cpp:2570 src/menu_events.cpp:2574
 msgid "<command>[;<command>...]"
 msgstr "<コマンド>[;<コマンド>...]"
 
-#: src/menu_events.cpp:2568
+#: src/menu_events.cpp:2570
 msgid "Execute a Lua statement."
 msgstr "Lua の命令文を実行"
 
-#: src/menu_events.cpp:2570
+#: src/menu_events.cpp:2572
 msgid "Grant higher privileges to Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:2572
+#: src/menu_events.cpp:2574
 msgid "Set the command used by the custom command hotkey"
 msgstr "カスタムコマンドホットキーで使われるコマンドを設定"
 
-#: src/menu_events.cpp:2575
+#: src/menu_events.cpp:2577
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 
-#: src/menu_events.cpp:2579
+#: src/menu_events.cpp:2581
 msgid "Launch the gamestate inspector"
 msgstr "ゲーム状態インスペクタを起動"
 
-#: src/menu_events.cpp:2581
+#: src/menu_events.cpp:2583
 msgid "Manage persistence data"
 msgstr ""
 
-#: src/menu_events.cpp:2583
+#: src/menu_events.cpp:2585
 msgid "<name>[=<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:2583
+#: src/menu_events.cpp:2585
 msgid "Set or show alias to a command"
 msgstr "コマンドのエイリアスを設定または表示"
 
-#: src/menu_events.cpp:2585
+#: src/menu_events.cpp:2587
 msgid "<var>=<value>"
 msgstr ""
 
-#: src/menu_events.cpp:2585
+#: src/menu_events.cpp:2587
 msgid "Set a scenario variable."
 msgstr "シナリオ変数を設定する。"
 
-#: src/menu_events.cpp:2587
+#: src/menu_events.cpp:2589
 msgid "<var>"
 msgstr ""
 
-#: src/menu_events.cpp:2587
+#: src/menu_events.cpp:2589
 msgid "Show a scenario variable."
 msgstr "シナリオ変数を表示する。"
 
-#: src/menu_events.cpp:2589
+#: src/menu_events.cpp:2591
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "ユニット変数を変更する。（サポートされるのはトップレベルキーのみです。）"
 
-#: src/menu_events.cpp:2596
+#: src/menu_events.cpp:2598
 msgid "Discover all units in help."
 msgstr "ヘルプ中のすべてのユニットを発見する。"
 
-#: src/menu_events.cpp:2598
+#: src/menu_events.cpp:2600
 #, fuzzy
 msgid "'Undiscover' all units in help."
 msgstr "ヘルプ中のすべてのユニットを発見する。"
 
-#: src/menu_events.cpp:2600
+#: src/menu_events.cpp:2602
 msgid "Create a unit."
 msgstr "ユニットの作成"
 
-#: src/menu_events.cpp:2602
+#: src/menu_events.cpp:2604
 msgid "Toggle fog for the current player."
 msgstr "現在のプレイヤーの霧を切り換える。"
 
-#: src/menu_events.cpp:2604
+#: src/menu_events.cpp:2606
 msgid "Toggle shroud for the current player."
 msgstr "現在のプレイヤーの幕を切り換える。"
 
-#: src/menu_events.cpp:2606
+#: src/menu_events.cpp:2608
 msgid "Give gold to the current player."
 msgstr "現在のプレイヤーにゴールドを与える。"
 
-#: src/menu_events.cpp:2608
+#: src/menu_events.cpp:2610
 msgid "Fire a game event."
 msgstr "ゲームイベントを起こす。"
 
-#: src/menu_events.cpp:2611
+#: src/menu_events.cpp:2613
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "ヘクス上の x,y 座標表示を切り替える。"
 
-#: src/menu_events.cpp:2614
+#: src/menu_events.cpp:2616
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "ヘクス上の地形コード表示を切り替える。"
 
-#: src/menu_events.cpp:2617
+#: src/menu_events.cpp:2619
 msgid "Toggle planning mode."
 msgstr ""
 
-#: src/menu_events.cpp:2660
+#: src/menu_events.cpp:2662
 msgid "Unknown debug level: '$level'."
 msgstr "不明なデバッグレベル: 「 $level 」。"
 
-#: src/menu_events.cpp:2662 src/menu_events.cpp:2671
+#: src/menu_events.cpp:2664 src/menu_events.cpp:2673
 msgid "error"
 msgstr "エラー"
 
-#: src/menu_events.cpp:2669
+#: src/menu_events.cpp:2671
 msgid "Unknown debug domain: '$domain'."
 msgstr "不明なデバッグ範囲: 「 $domain 」。"
 
-#: src/menu_events.cpp:2678
+#: src/menu_events.cpp:2680
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "範囲切り替え: 「 $domain 」を以下のレベルに: 「 $level 」。"
 
-#: src/menu_events.cpp:2749
+#: src/menu_events.cpp:2751
 msgid "whisper to $receiver"
 msgstr "$receiver にささやく"
 
-#: src/menu_events.cpp:2756 src/multiplayer_ui.cpp:542
+#: src/menu_events.cpp:2758 src/multiplayer_ui.cpp:542
 msgid "whisper: $sender"
 msgstr "ささやき: $sender"
 
-#: src/menu_events.cpp:2852 src/menu_events.cpp:2871
+#: src/menu_events.cpp:2854 src/menu_events.cpp:2873
 #: src/multiplayer_connect.cpp:665
 msgid "(empty)"
 msgstr "（空）"
 
-#: src/menu_events.cpp:2852 src/menu_events.cpp:2858 src/menu_events.cpp:2908
+#: src/menu_events.cpp:2854 src/menu_events.cpp:2860 src/menu_events.cpp:2910
 msgid "ignores list"
 msgstr "無視リスト"
 
-#: src/menu_events.cpp:2858
+#: src/menu_events.cpp:2860
 msgid "Added to ignore list: $nick"
 msgstr "無視リストに追加されました: $nick"
 
-#: src/menu_events.cpp:2861 src/menu_events.cpp:2880
+#: src/menu_events.cpp:2863 src/menu_events.cpp:2882
 msgid "Invalid username: $nick"
 msgstr "無効なユーザー名: $nick"
 
-#: src/menu_events.cpp:2871 src/menu_events.cpp:2878 src/menu_events.cpp:2904
+#: src/menu_events.cpp:2873 src/menu_events.cpp:2880 src/menu_events.cpp:2906
 msgid "friends list"
 msgstr "友人リスト"
 
-#: src/menu_events.cpp:2878
+#: src/menu_events.cpp:2880
 msgid "Added to friends list: $nick"
 msgstr "友人リストに追加されました: $nick"
 
-#: src/menu_events.cpp:2894
+#: src/menu_events.cpp:2896
 msgid "Removed from list: $nick"
 msgstr "リストから削除されました: $nick"
 
-#: src/menu_events.cpp:2894 src/menu_events.cpp:2912
+#: src/menu_events.cpp:2896 src/menu_events.cpp:2914
 msgid "friends and ignores list"
 msgstr "友人/無視リスト"
 
-#: src/menu_events.cpp:2912
+#: src/menu_events.cpp:2914
 msgid "There are no players on your friends or ignore list."
 msgstr "友人リスト、無視リストにプレイヤーはいません。"
 
-#: src/menu_events.cpp:2917
+#: src/menu_events.cpp:2919
 msgid "version"
 msgstr "バージョン"
 
-#: src/menu_events.cpp:2933
+#: src/menu_events.cpp:2935
 msgid "registering with password *** and no email address"
 msgstr ""
 
-#: src/menu_events.cpp:2937
+#: src/menu_events.cpp:2939
 msgid "registering with password *** and email address $email"
 msgstr ""
 
-#: src/menu_events.cpp:2940 src/menu_events.cpp:2951 src/menu_events.cpp:2969
-#: src/menu_events.cpp:2983
+#: src/menu_events.cpp:2942 src/menu_events.cpp:2953 src/menu_events.cpp:2971
+#: src/menu_events.cpp:2985
 msgid "nick registration"
 msgstr ""
 
-#: src/menu_events.cpp:2951
+#: src/menu_events.cpp:2953
 msgid "dropping your username"
 msgstr ""
 
-#: src/menu_events.cpp:2969
+#: src/menu_events.cpp:2971
 msgid "setting $var to $value"
 msgstr ""
 
-#: src/menu_events.cpp:2983
+#: src/menu_events.cpp:2985
 msgid "requesting information for user $nick"
 msgstr "ユーザー $nick についての情報を要求します。"
 
-#: src/menu_events.cpp:3096
+#: src/menu_events.cpp:3098
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "文字「 $search 」を含むラベル名やユニットは見つかりませんでした。"
 
-#: src/menu_events.cpp:3130
+#: src/menu_events.cpp:3132
 msgid "Can't droid invalid side: '$side'."
 msgstr "無効な陣営をコンピュータに操作させることはできません: 「 $side 」。"
 
-#: src/menu_events.cpp:3135
+#: src/menu_events.cpp:3137
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 "ネットワークの陣営をコンピュータに操作させることはできません: 「 $side 」。"
 
-#: src/menu_events.cpp:3173
+#: src/menu_events.cpp:3175
 msgid "Can't change control of invalid side: '$side'."
 msgstr "無効な陣営の操作を変更することはできません: 「 $side 」。"
 
-#: src/menu_events.cpp:3179
+#: src/menu_events.cpp:3181
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "禁止されている陣営の操作を変更することはできません: 「 $side 」。"
 
-#: src/menu_events.cpp:3263
+#: src/menu_events.cpp:3265
 #, fuzzy
 msgid "Layers"
 msgstr "プレイヤー数: "
 
-#: src/menu_events.cpp:3336
+#: src/menu_events.cpp:3338
 msgid "Choose Scenario (Debug!)"
 msgstr "シナリオ選択（デバッグ！）"
 
-#: src/menu_events.cpp:3382
+#: src/menu_events.cpp:3384
 msgid "Debug mode activated!"
 msgstr "デバッグモードが有効になりました！"
 
-#: src/menu_events.cpp:3385
+#: src/menu_events.cpp:3387
 msgid "Debug mode not available in network games"
 msgstr "ネットワークゲームではデバッグモードは利用できません。"
 
-#: src/menu_events.cpp:3390
+#: src/menu_events.cpp:3392
 msgid "Debug mode deactivated!"
 msgstr "デバッグモードが無効になりました！"
 
-#: src/menu_events.cpp:3401
+#: src/menu_events.cpp:3403
 msgid "Unsafe Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:3402
+#: src/menu_events.cpp:3404
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
 
-#: src/menu_events.cpp:3405
+#: src/menu_events.cpp:3407
 msgid "Unsafe mode enabled!"
 msgstr ""
 
-#: src/menu_events.cpp:3448
+#: src/menu_events.cpp:3450
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:3498
+#: src/menu_events.cpp:3500
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, or "
 "chaotic."
 msgstr ""
 
-#: src/menu_events.cpp:3548
+#: src/menu_events.cpp:3550
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:3559
+#: src/menu_events.cpp:3561
 msgid "Invalid unit type"
 msgstr "無効なユニットタイプ"
 
-#: src/menu_events.cpp:3572
+#: src/menu_events.cpp:3574
 msgid "Invalid location"
 msgstr "無効な場所"
 
-#: src/menu_events.cpp:3607
+#: src/menu_events.cpp:3609
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "デバッグモードが有効になりました！"
 
-#: src/menu_events.cpp:3610
+#: src/menu_events.cpp:3612
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "デバッグモードが無効になりました！"
 
-#: src/menu_events.cpp:3618
+#: src/menu_events.cpp:3620
 msgid "ai"
 msgstr "AI"
 
-#: src/menu_events.cpp:3628 src/menu_events.cpp:3658
+#: src/menu_events.cpp:3630 src/menu_events.cpp:3660
 msgid "prompt^Command:"
 msgstr "コマンド:"
 
-#: src/mouse_events.cpp:636
+#: src/mouse_events.cpp:629
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits "
@@ -5132,23 +5132,23 @@ msgstr ""
 "ユニットを雇用したり召還したりするためには、リーダーが主塔にいなければなりま"
 "せん。"
 
-#: src/mouse_events.cpp:835 src/mouse_events.cpp:915
+#: src/mouse_events.cpp:820 src/mouse_events.cpp:900
 msgid "Attack Enemy"
 msgstr "敵を攻撃する"
 
-#: src/mouse_events.cpp:916
+#: src/mouse_events.cpp:901
 msgid "Choose weapon:"
 msgstr "武器の選択:"
 
-#: src/multiplayer.cpp:148 src/multiplayer.cpp:185
+#: src/multiplayer.cpp:149 src/multiplayer.cpp:186
 msgid "Connecting to Server..."
 msgstr "サーバーに接続中……"
 
-#: src/multiplayer.cpp:158
+#: src/multiplayer.cpp:159
 msgid "Reading from Server..."
 msgstr "サーバーから読み込み中……"
 
-#: src/multiplayer.cpp:168
+#: src/multiplayer.cpp:169
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -5156,45 +5156,45 @@ msgstr ""
 "サーバーではバージョン「 $version1 」を要求していますが、あなたのお使いのバー"
 "ジョンは「 $version2 」です。"
 
-#: src/multiplayer.cpp:179
+#: src/multiplayer.cpp:180
 msgid "Server-side redirect loop"
 msgstr "サーバー側のリダイレクトループ"
 
-#: src/multiplayer.cpp:226 src/multiplayer.cpp:311 src/multiplayer_ui.cpp:83
+#: src/multiplayer.cpp:227 src/multiplayer.cpp:312 src/multiplayer_ui.cpp:83
 msgid "Connection timed out"
 msgstr "接続時間切れ"
 
-#: src/multiplayer.cpp:238
+#: src/multiplayer.cpp:239
 msgid ""
 "The nick '$nick' is inactive. You cannot claim ownership of this nick until "
 "you activate your account via email or ask an administrator to do it for you."
 msgstr ""
 
-#: src/multiplayer.cpp:247
+#: src/multiplayer.cpp:248
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
 msgstr "このゲームを本当に保存しますか？"
 
-#: src/multiplayer.cpp:249
+#: src/multiplayer.cpp:250
 #, fuzzy
 #| msgid "Warning: "
 msgid "Warning"
 msgstr "警告: "
 
-#: src/multiplayer.cpp:293
+#: src/multiplayer.cpp:294
 msgid "Bad data received from server"
 msgstr ""
 
-#: src/multiplayer.cpp:334
+#: src/multiplayer.cpp:335
 msgid "You must login first."
 msgstr "あなたは最初にログインする必要があります"
 
-#: src/multiplayer.cpp:336
+#: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
 msgstr "ニックネーム「 $nick 」は既に使用されています。"
 
-#: src/multiplayer.cpp:338
+#: src/multiplayer.cpp:339
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -5202,30 +5202,30 @@ msgstr ""
 "ニックネーム「 $nick 」は使用できない文字を含んでいます。英数字とアンダースコ"
 "ア(_)、ハイフン(-)のみが使用できます。"
 
-#: src/multiplayer.cpp:342
+#: src/multiplayer.cpp:343
 #, fuzzy
 msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgstr ""
 "ニックネーム「 $nick 」は長すぎます。ニックネームは 18 文字以下でなければなり"
 "ません。"
 
-#: src/multiplayer.cpp:345
+#: src/multiplayer.cpp:346
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "ニックネーム「 $nick 」は予約済みです。プレイヤーには使用できません。"
 
-#: src/multiplayer.cpp:347
+#: src/multiplayer.cpp:348
 msgid "The nick '$nick' is not registered on this server."
 msgstr "ニックネーム「 $nick 」はこのサーバーに登録されていません。"
 
-#: src/multiplayer.cpp:348
+#: src/multiplayer.cpp:349
 msgid " This server disallows unregistered nicks."
 msgstr " このサーバーは登録されていないニックネームを許容しません。"
 
-#: src/multiplayer.cpp:350 src/multiplayer.cpp:352
+#: src/multiplayer.cpp:351 src/multiplayer.cpp:353
 msgid "The nick '$nick' is registered on this server."
 msgstr "ニックネーム「 $nick 」はこのサーバーに登録されています。"
 
-#: src/multiplayer.cpp:353
+#: src/multiplayer.cpp:354
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -5233,12 +5233,12 @@ msgstr ""
 "警告: このニックネームを使用している端末が既に存在しています。このままログイ"
 "ンすると、その端末は切断されます！"
 
-#: src/multiplayer.cpp:356
+#: src/multiplayer.cpp:357
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "ログイン処理中のエラー（サーバーに接続の種がありません）"
 
-#: src/multiplayer.cpp:359
+#: src/multiplayer.cpp:360
 msgid "The password you provided was incorrect."
 msgstr "入力したパスワードは間違っています。"
 
@@ -5715,11 +5715,11 @@ msgstr "端末と切断しました"
 msgid "Could not connect to host."
 msgstr "ホストに接続できませんでした。"
 
-#: src/network.cpp:557
+#: src/network.cpp:563
 msgid "Could not add socket to socket set"
 msgstr "ソケットセットにソケットを追加できませんでした"
 
-#: src/network.cpp:569
+#: src/network.cpp:575
 msgid "Could not send initial handshake"
 msgstr "初期応答確認を送れませんでした"
 
@@ -5773,7 +5773,7 @@ msgstr "あなたは敗れました！"
 msgid "Error while reading the WML: "
 msgstr "WML 読み込み中のエラー: "
 
-#: src/playcampaign.cpp:418 src/playsingle_controller.cpp:452
+#: src/playcampaign.cpp:418 src/playsingle_controller.cpp:457
 msgid "Game Over"
 msgstr "ゲームオーバー"
 
@@ -5822,43 +5822,43 @@ msgstr ""
 "\n"
 "ゲームのエラーログを保存しますか？"
 
-#: src/playsingle_controller.cpp:257
+#: src/playsingle_controller.cpp:262
 msgid "Remaining gold: "
 msgstr "残っているゴールド: "
 
-#: src/playsingle_controller.cpp:261
+#: src/playsingle_controller.cpp:266
 msgid "Early finish bonus: "
 msgstr "早期終了ボーナス: "
 
-#: src/playsingle_controller.cpp:263
+#: src/playsingle_controller.cpp:268
 msgid "per turn"
 msgstr "／ターン"
 
-#: src/playsingle_controller.cpp:264
+#: src/playsingle_controller.cpp:269
 msgid "Turns finished early: "
 msgstr "早期に終わったターン: "
 
-#: src/playsingle_controller.cpp:266
+#: src/playsingle_controller.cpp:271
 msgid "Bonus: "
 msgstr "ボーナス: "
 
-#: src/playsingle_controller.cpp:269
+#: src/playsingle_controller.cpp:274
 msgid "Gold: "
 msgstr "所持金額: "
 
-#: src/playsingle_controller.cpp:273
+#: src/playsingle_controller.cpp:278
 msgid "Carry over percentage: "
 msgstr "持ち越し率: "
 
-#: src/playsingle_controller.cpp:276
+#: src/playsingle_controller.cpp:281
 msgid "Bonus Gold: "
 msgstr "ボーナス金額: "
 
-#: src/playsingle_controller.cpp:278
+#: src/playsingle_controller.cpp:283
 msgid "Retained Gold: "
 msgstr "保持金額: "
 
-#: src/playsingle_controller.cpp:291
+#: src/playsingle_controller.cpp:296
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -5869,7 +5869,7 @@ msgstr[0] ""
 "次のシナリオの開始ゴールドは次のシナリオに設定されている最小ゴールドに $gold "
 "を加えたものになります。"
 
-#: src/playsingle_controller.cpp:299
+#: src/playsingle_controller.cpp:304
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -5878,7 +5878,7 @@ msgstr[0] ""
 "次のシナリオの開始ゴールドは次のシナリオに設定されている最小ゴールドになりま"
 "す。"
 
-#: src/playsingle_controller.cpp:307
+#: src/playsingle_controller.cpp:312
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -5889,11 +5889,11 @@ msgstr[0] ""
 "次のシナリオの開始ゴールドは $gold あるいは次のシナリオに設定されている最小の"
 "開始ゴールドのどちらか高い方になります。"
 
-#: src/playsingle_controller.cpp:453
+#: src/playsingle_controller.cpp:458
 msgid "The game is over."
 msgstr "ゲーム終了です。"
 
-#: src/playsingle_controller.cpp:533
+#: src/playsingle_controller.cpp:538
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -5902,19 +5902,19 @@ msgstr ""
 "ネットワークが切断されたため、ゲームを続けられません。\n"
 "このゲームを保存しますか？"
 
-#: src/playsingle_controller.cpp:694
+#: src/playsingle_controller.cpp:699
 msgid "It is now $name|’s turn"
 msgstr "$name| のターンです"
 
-#: src/playsingle_controller.cpp:931
+#: src/playsingle_controller.cpp:936
 msgid "Scenario Report"
 msgstr "シナリオレポート"
 
-#: src/playsingle_controller.cpp:934
+#: src/playsingle_controller.cpp:939
 msgid "Victory"
 msgstr "勝利"
 
-#: src/playsingle_controller.cpp:935
+#: src/playsingle_controller.cpp:940
 msgid "You have emerged victorious!"
 msgstr "あなたの勝利が明らかになりました！"
 
