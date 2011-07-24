@@ -2,7 +2,7 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
-Version 1.9.7+svn:
+Version 1.9.8:
  * Language and i18n:
    * Updated translations: British English, Estonian, Indonesian, Irish,
      Latin, Old English, Russian, Vietnamese.
@@ -15,16 +15,16 @@ Version 1.9.7+svn:
    * Moved Unit Standing Animations option from Advanced Preferences to
      Display.
    * Sort the Recruit menu by localized unit type names.
-   * Support for gamepads/joysticks
+   * Support for gamepads/joysticks.
    * Whiteboard planning system:
-     * Added a new planned action type: "Suppose dead"
-     * Changed behavior of invalid actions (no longer immediately discarded)
-     * Disabled undo while planning mode is active
-     * Made whiteboard plans visible to allied network players
+     * Added a new planned action type: "Suppose dead".
+     * Changed behavior of invalid actions (no longer immediately discarded).
+     * Disabled undo while planning mode is active.
+     * Made whiteboard plans visible to allied network players.
 
  * Miscellaneous and bugfixes:
-   * Fixed bug #18117, saved games with Qatif-al-nar became corrupted
-   * Fixed bug #18120, where Khalifate units were not getting the default AMLA
+   * Fixed bug #18117, saved games with Qatif-al-nar became corrupted.
+   * Fixed bug #18120, where Khalifate units were not getting the default AMLA.
 
 
 Version 1.9.7:
