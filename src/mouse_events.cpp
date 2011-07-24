@@ -338,7 +338,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 	}
 
 	{
-		team viewing_team = (*resources::teams)[resources::screen->viewing_team()];
+		team const& viewing_team = (*resources::teams)[resources::screen->viewing_team()];
 
 		const unit_map::const_iterator enemy = find_unit(loc);
 		bool eligible = enemy != units_.end();
