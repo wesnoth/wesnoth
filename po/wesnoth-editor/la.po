@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-07-09 09:00+0200\n"
-"PO-Revision-Date: 2011-04-14 04:31+0100\n"
+"PO-Revision-Date: 2011-07-16 19:25+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin\n"
 "Language: \n"
@@ -40,7 +40,7 @@ msgstr "Radius II Hexagonorum"
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr "Agmen hexagonorum OS-OM"
+msgstr "Agmen hexagonorum OS-OA"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
@@ -223,7 +223,7 @@ msgstr "Visne repudiare omnes commutationes nonservatas?"
 
 #: src/editor/editor_controller.cpp:404
 msgid "Unsaved Changes"
-msgstr "Mutationes non servatae"
+msgstr "Mutationes Non Servatae"
 
 #: src/editor/editor_controller.cpp:426
 msgid "Choose a Map to Open"
@@ -253,22 +253,20 @@ msgid "Choose a mask to apply"
 msgstr "|Chartam Restituendam Eligire"
 
 #: src/editor/editor_controller.cpp:519
-#, fuzzy
 msgid "Error loading mask"
-msgstr "|Error cum persona petivisse   eveniebat. ???"
+msgstr "Error dum velamen arcessitur"
 
 #: src/editor/editor_controller.cpp:534
 msgid "Choose target map"
 msgstr "Chartam deligere."
 
 #: src/editor/editor_controller.cpp:541 src/editor/editor_controller.cpp:731
-#, fuzzy
 msgid "Error loading map"
-msgstr "|Error cum tabulam geographicam ...???"
+msgstr "Error dum charta arcessitur"
 
 #: src/editor/editor_controller.cpp:645 src/editor/editor_controller.cpp:687
 msgid "This map is already open."
-msgstr "Chartam iam aperta est."
+msgstr "Charta iam aperta est."
 
 #: src/editor/editor_controller.cpp:666
 msgid "Map saved."
@@ -302,7 +300,7 @@ msgstr "Reponere"
 
 #: src/editor/editor_controller.cpp:1126
 msgid "Can’t Redo"
-msgstr "Nequit Reddere"
+msgstr "Nequit Reponere"
 
 #: src/editor/editor_controller.cpp:1131
 msgid "Auto-update Terrain Transitions: Yes"
@@ -335,12 +333,12 @@ msgstr ""
 # Eminentia
 #: src/editor/editor_palettes.cpp:520
 msgid "FG: "
-msgstr "EM:"
+msgstr "EM: "
 
 # Umbra
 #: src/editor/editor_palettes.cpp:521
 msgid "BG: "
-msgstr "UM:"
+msgstr "UM: "
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"

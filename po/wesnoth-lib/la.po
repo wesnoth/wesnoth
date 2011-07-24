@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-07-24 14:56+0200\n"
-"PO-Revision-Date: 2011-07-07 00:53+0100\n"
+"POT-Creation-Date: 2011-07-24 18:18+0200\n"
+"PO-Revision-Date: 2011-07-11 23:37+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin\n"
 "Language: \n"
@@ -121,10 +121,8 @@ msgstr "Herbae"
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:174 data/core/terrain.cfg:184
 #: data/core/terrain.cfg:194
-#, fuzzy
-#| msgid "Dry Dirt"
 msgid "Dirt"
-msgstr "Humus Aridus"
+msgstr "Humus"
 
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:175
@@ -179,10 +177,8 @@ msgstr "Nix"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:260
-#, fuzzy
-#| msgid "Desert Keep"
 msgid "Desert"
-msgstr "Arx Locorum Desertorum"
+msgstr "Locus Desertus"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:261
@@ -497,8 +493,6 @@ msgstr "Colles Silvestium Niveorum Diversorum"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:878
-#, fuzzy
-#| msgid "Basic Wooden Floor"
 msgid "Wooden Floor"
 msgstr "Solum Ligneum"
 
@@ -627,10 +621,8 @@ msgstr "Montes Impervii Nivei"
 #. [terrain_type]: id=cavewall_earthy_hewn
 #: data/core/terrain.cfg:1117 data/core/terrain.cfg:1128
 #: data/core/terrain.cfg:1139 data/core/terrain.cfg:1150
-#, fuzzy
-#| msgid "Hewn Cave Wall"
 msgid "Cave Wall"
-msgstr "Murus Cavernae Dolatus"
+msgstr "Murus Cavernae"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1118
@@ -930,10 +922,8 @@ msgstr "Castellum Nanorum"
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:1692 data/core/terrain.cfg:1704
 #: data/core/terrain.cfg:1717 data/core/terrain.cfg:1742
-#, fuzzy
-#| msgid "Ruined Human Castle"
 msgid "Ruined Castle"
-msgstr "Castellum Rutus Humanum"
+msgstr "Castellum Rutus"
 
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:1693
@@ -1029,10 +1019,8 @@ msgstr "Arx Castelli Nanorum"
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1874 data/core/terrain.cfg:1887
 #: data/core/terrain.cfg:1900 data/core/terrain.cfg:1926
-#, fuzzy
-#| msgid "Ruined Desert Keep"
 msgid "Ruined Keep"
-msgstr "Arx Rutum Locorum Desertorum"
+msgstr "Arx Rutum"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1875
@@ -1081,10 +1069,8 @@ msgstr "Velamen Arcis"
 #: data/core/terrain.cfg:2020 data/core/terrain.cfg:2032
 #: data/core/terrain.cfg:2046 data/core/terrain.cfg:2057
 #: data/core/terrain.cfg:2069
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Bridge"
-msgstr "Pons Ligneus"
+msgstr "Pons"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -1780,7 +1766,7 @@ msgstr "Aetas ignota"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:183
 msgid "Gold per village"
-msgstr "Aura per viculos"
+msgstr "Aura per viculum"
 
 #. [label]
 #. [row]
@@ -1808,7 +1794,7 @@ msgstr ""
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:322
 msgid "Alphabetically"
-msgstr "Series Abecedaria"
+msgstr "Litteris Elementorum"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:338
@@ -1920,10 +1906,8 @@ msgstr "De Amicis — "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:70
-#, fuzzy
-#| msgid "Send private message"
 msgid "Send Private Message"
-msgstr "Nuntium privatum mittere"
+msgstr "Nuntium Privatum Mittere"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:99
@@ -1941,10 +1925,8 @@ msgstr "Ut Negelctus Addere"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:117
-#, fuzzy
-#| msgid "Remove from list"
 msgid "Remove from List"
-msgstr "Ex tabulam movere"
+msgstr "Ex Tabulam Movere"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:141
@@ -1989,10 +1971,8 @@ msgstr "Nomen"
 
 #. [label]
 #: data/gui/default/window/mp_change_control.cfg:194
-#, fuzzy
-#| msgid "Change control"
 msgid "Change Control"
-msgstr "Imperium mutare"
+msgstr "Imperium Dare"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -2016,17 +1996,13 @@ msgstr "Tabulam Amicorum/Neglectorum"
 
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:170
-#, fuzzy
-#| msgid "Add As Friend"
 msgid "Add as Friend"
-msgstr "Ut Amicus Addere"
+msgstr "Ut Amicum Addere"
 
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
-#, fuzzy
-#| msgid "Add As Ignore"
 msgid "Add as Ignore"
-msgstr "Ut Negelctus Addere"
+msgstr "Ut Negelctum Addere"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
@@ -2574,10 +2550,8 @@ msgid "Show Unit Idle Animations"
 msgstr "Animationes Actorum Otiosorum Monstrare"
 
 #: src/game_preferences_display.cpp:205
-#, fuzzy
-#| msgid "Show Unit Idle Animations"
 msgid "Show Unit Standing Animations"
-msgstr "Animationes Actorum Otiosorum Monstrare"
+msgstr "Animationes Actorum Stantium Monstrare"
 
 #: src/game_preferences_display.cpp:206 src/hotkeys.cpp:55
 msgid "Animate Map"
@@ -2585,10 +2559,8 @@ msgstr "Chartam Animare"
 
 #: src/game_preferences_display.cpp:208 src/game_preferences_display.cpp:209
 #: src/game_preferences_display.cpp:210 src/game_preferences_display.cpp:211
-#, fuzzy
-#| msgid "SFX Volume:"
 msgid "Volume:"
-msgstr "Magnitudo Effectus Soni:"
+msgstr "Magnitudo:"
 
 #: src/game_preferences_display.cpp:213
 msgid "Scroll Speed:"
@@ -3216,7 +3188,7 @@ msgstr "Descriptio Actoris"
 
 #: src/hotkeys.cpp:72
 msgid "Rename Unit"
-msgstr "Actorem Transnominare"
+msgstr "Nomen Actoris Mutare"
 
 #: src/hotkeys.cpp:74
 msgid "Save Replay"

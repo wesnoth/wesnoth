@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-07-24 18:18+0200\n"
-"PO-Revision-Date: 2011-07-04 02:59+0100\n"
+"PO-Revision-Date: 2011-07-18 13:17+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin\n"
 "Language: \n"
@@ -44,6 +44,7 @@ msgstr "Gyrum Muris"
 msgid "Middle-click Scrolling"
 msgstr "Gyrum Muris"
 
+# this pointless comment means I can test things!
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
 msgid "Keep scrolling when mouse leaves window"
@@ -119,7 +120,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
 msgid "Follow Unit Actions"
-msgstr ""
+msgstr "Acta Actorum Sequi"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:116
@@ -1091,7 +1092,7 @@ msgstr "tridens tempestatum"
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:545
 msgid "sceptre of fire"
-msgstr ""
+msgstr "sceptrum ignis"
 
 #: data/core/macros/names.cfg:18
 msgid ""
@@ -3475,20 +3476,16 @@ msgid "Response"
 msgstr "Responsum"
 
 #: src/addon/manager.cpp:556
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting the addon to be deleted"
-msgstr "Petens tabulam appendicum"
+msgstr "Petens appendicem delendam"
 
 #: src/addon/manager.cpp:582
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Arcessens appendicem: $addon_title|..."
 
 #: src/addon/manager.cpp:588 src/addon/manager.cpp:1137
-#, fuzzy
-#| msgid "Download"
 msgid "Downloading..."
-msgstr "Arcessitum"
+msgstr "Arcessens..."
 
 #: src/addon/manager.cpp:600
 msgid ""
@@ -3648,10 +3645,8 @@ msgid "Confirm"
 msgstr "Confirmare"
 
 #: src/addon/manager.cpp:1130
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting..."
-msgstr "Ad Servatrum Applicans..."
+msgstr "Applicans..."
 
 #: src/addon/manager.cpp:1130
 msgid "Requesting list of add-ons"
@@ -5196,15 +5191,12 @@ msgid ""
 msgstr ""
 
 #: src/multiplayer.cpp:248
-#, fuzzy
 msgid "Do you want to continue?"
-msgstr "Visne lusum servare?"
+msgstr "Visne pergere?"
 
 #: src/multiplayer.cpp:250
-#, fuzzy
-#| msgid "Warning: "
 msgid "Warning"
-msgstr "Monitus: "
+msgstr "Monitus"
 
 #: src/multiplayer.cpp:294
 msgid "Bad data received from server"
