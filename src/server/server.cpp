@@ -2603,6 +2603,7 @@ void server::process_data_game(const network::connection sock,
 		return;
 	} else if (data.child("whiteboard")) {
 		g->process_whiteboard(data,pl);
+		return;
 	} else if (data.child("message")) {
 		g->process_message(data, pl);
 		return;
