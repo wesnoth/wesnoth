@@ -459,6 +459,7 @@ void connect_operation::run()
 	union
 	{
 	char data[4] ALIGN_4;
+	Uint32 num;
 	} buf;
 	SDLNet_Write32(0, &buf);
 	const int nbytes = SDLNet_TCP_Send(sock,&buf,4);
@@ -536,6 +537,7 @@ connection accept_connection_pending(std::vector<TCPsocket>& pending_sockets,
 	union
 	{
 	char data[4] ALIGN_4;
+	Uint32 num;
 	} buf;
 
 	const TCPsocket psock = *i;
