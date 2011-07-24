@@ -456,9 +456,12 @@ void connect_operation::run()
 	}
 
 	// Send data telling the remote host that this is a new connection
-	char buf[4] ALIGN_4;
-	SDLNet_Write32(0, reinterpret_cast<void*>(buf));
-	const int nbytes = SDLNet_TCP_Send(sock,buf,4);
+	union
+	{
+	char data[4] ALIGN_4;
+	} buf;
+	SDLNet_Write32(0, &buf);
+	const int nbytes = SDLNet_TCP_Send(sock,&buf,4);
 	if(nbytes != 4) {
 		SDLNet_TCP_Close(sock);
 		error_ = "Could not send initial handshake";
@@ -530,7 +533,10 @@ connection accept_connection_pending(std::vector<TCPsocket>& pending_sockets,
 
 	// Receive the 4 bytes telling us if they're a new connection
 	// or trying to recover a connection
-	char buf[4] ALIGN_4;
+	union
+	{
+	char data[4] ALIGN_4;
+	} buf;
 
 	const TCPsocket psock = *i;
 	SDLNet_TCP_DelSocket(pending_socket_set,psock);
@@ -538,14 +544,14 @@ connection accept_connection_pending(std::vector<TCPsocket>& pending_sockets,
 
 	DBG_NW << "receiving data from pending socket...\n";
 
-	const int len = SDLNet_TCP_Recv(psock,buf,4);
+	const int len = SDLNet_TCP_Recv(psock,&buf,4);
 	if(len != 4) {
 		WRN_NW << "pending socket disconnected\n";
 		SDLNet_TCP_Close(psock);
 		return 0;
 	}
 
-	const int handle = SDLNet_Read32(reinterpret_cast<void*>(buf));
+	const int handle = SDLNet_Read32(&buf);
 
 	DBG_NW << "received handshake from client: '" << handle << "'\n";
 
@@ -560,8 +566,8 @@ connection accept_connection_pending(std::vector<TCPsocket>& pending_sockets,
 	const connection connect = create_connection(psock,"",0);
 
 	// Send back their connection number
-	SDLNet_Write32(connect, reinterpret_cast<void*>(buf));
-	const int nbytes = SDLNet_TCP_Send(psock,buf,4);
+	SDLNet_Write32(connect, &buf);
+	const int nbytes = SDLNet_TCP_Send(psock,&buf,4);
 	if(nbytes != 4) {
 		SDLNet_TCP_DelSocket(socket_set,psock);
 		SDLNet_TCP_Close(psock);
@@ -740,13 +746,15 @@ connection receive_data(config& cfg, connection connection_num, bandwidth_in_ptr
 			// See if this socket is still waiting for it to be assigned its remote handle.
 			// If it is, then the first 4 bytes must be the remote handle.
 			if(is_pending_remote_handle(*i)) {
-				char buf[4] ALIGN_4;
-				int len = SDLNet_TCP_Recv(sock,buf,4);
+				union {
+				char data[4] ALIGN_4;
+				} buf;
+				int len = SDLNet_TCP_Recv(sock,&buf,4);
 				if(len != 4) {
 					throw error("Remote host disconnected",*i);
 				}
 
-				const int remote_handle = SDLNet_Read32(reinterpret_cast<void*>(buf));
+				const int remote_handle = SDLNet_Read32(&buf);
 				set_remote_handle(*i,remote_handle);
 
 				continue;
@@ -849,13 +857,15 @@ connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* bandwidth_in)
 			// See if this socket is still waiting for it to be assigned its remote handle.
 			// If it is, then the first 4 bytes must be the remote handle.
 			if(is_pending_remote_handle(*i)) {
-				char buf[4] ALIGN_4;
-				int len = SDLNet_TCP_Recv(sock,buf,4);
+				union {
+				char data[4] ALIGN_4;
+				} buf;
+				int len = SDLNet_TCP_Recv(sock,&buf,4);
 				if(len != 4) {
 					throw error("Remote host disconnected",*i);
 				}
 
-				const int remote_handle = SDLNet_Read32(reinterpret_cast<void*>(buf));
+				const int remote_handle = SDLNet_Read32(&buf);
 				set_remote_handle(*i,remote_handle);
 
 				continue;
