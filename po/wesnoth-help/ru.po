@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-06-18 19:04+0200\n"
-"PO-Revision-Date: 2011-07-07 18:58+0200\n"
-"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
+"POT-Creation-Date: 2011-07-24 18:18+0200\n"
+"PO-Revision-Date: 2011-07-21 21:09+0300\n"
+"Last-Translator: Ushkin N\n"
 "Language-Team: ZumZoom\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -173,11 +173,14 @@ msgid ""
 "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
 "Fighter'</ref>."
 msgstr ""
+"Один из вариантов форм дрейков: может быть как <ref>dst='unit_Drake Clasher' "
+"text='Боец дрейков'</ref> или <ref>dst='unit_Drake Fighter' text='Солдат "
+"дрейков'</ref>."
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
 msgid "Aerie"
-msgstr ""
+msgstr "Орлиное гнездо"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
@@ -228,7 +231,7 @@ msgstr ""
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
 msgid "New Continent"
-msgstr ""
+msgstr "Новый континент"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
@@ -237,11 +240,14 @@ msgid ""
 "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
 "flight of Galun."
 msgstr ""
+"Новый континент— великий континент к востоку от <ref>dst='morogor' "
+"text='Морогора'</ref>. О его существовании не знали дрейки вплоть до битвы "
+"за Галун."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
 msgid "Abyss"
-msgstr ""
+msgstr "Бездна"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:44
@@ -249,11 +255,13 @@ msgid ""
 "In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
 "falls off the world-disc."
 msgstr ""
+"В учении о Дрейках описывался как огромный и смертельный водопад стекающий с "
+"земного диска."
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
 msgid "Spiral Path"
-msgstr ""
+msgstr "Спиральный путь"
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:50
@@ -262,11 +270,14 @@ msgid ""
 "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
 "Path'</ref>"
 msgstr ""
+"Квази-секретная организация среди дрейков посвятивщих себя предотвращению "
+"последней войны за Малтусиан. См. также <ref>dst='straight_path' "
+"text='Прямой путь'</ref>"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:55
 msgid "Straight Path"
-msgstr ""
+msgstr "Прямой путь"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:56
@@ -275,6 +286,8 @@ msgid ""
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
+"Вечная традиция дрейков расширения и захвата. Так обычно говорят члены "
+"<ref>dst='spiral_path' text='Спирального пути'</ref>."
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
@@ -585,7 +598,7 @@ msgstr ""
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:37
 msgid "Morogor"
-msgstr ""
+msgstr "Морогор"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:40
@@ -1238,6 +1251,8 @@ msgstr ""
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
+" красный, если отряд не может передвигатся или атаковать. Или игрок завершил "
+"ход для отряда."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
@@ -2347,7 +2362,6 @@ msgstr "Стихийный"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
@@ -2357,7 +2371,6 @@ msgstr ""
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:432
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2368,7 +2381,7 @@ msgstr ""
 "\n"
 "\n"
 "Стихийные бойцы, как правило, имеют только одну особенность — «Стихийный». "
-"Стихийные бойцы основаны на энергии, а потому высасывание, яд и чума на них "
+"Стихийные бойцы произошли из энергии, а потому высасывание, яд и чума на них "
 "не действуют."
 
 #. [topic]: id=traits_dextrous
@@ -2532,7 +2545,6 @@ msgstr "Равнина"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:496
-#, fuzzy
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild. Being open ground, grassland is "
@@ -4005,10 +4017,8 @@ msgid " This unit is capable of basic healing."
 msgstr " Этот боец обучен основам лечения."
 
 #: data/core/macros/special-notes.cfg:17
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid " This unit is capable of rapid healing."
-msgstr " Этот боец обучен основам лечения."
+msgstr " Этот боец может быстро лечится."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
