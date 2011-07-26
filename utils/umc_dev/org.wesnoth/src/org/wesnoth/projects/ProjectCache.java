@@ -27,8 +27,8 @@ import org.wesnoth.preprocessor.Define;
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WorkspaceUtils;
-import org.wesnoth.wml.core.Variable;
 import org.wesnoth.wml.core.WMLConfig;
+import org.wesnoth.wml.core.WMLVariable;
 
 /**
  * A class that stores some project specific infos
@@ -119,8 +119,9 @@ public class ProjectCache
                     {
                         if (variable.getName().startsWith("var") == false) //$NON-NLS-1$
                             continue;
-                        tmp.getVariables().add(
-                                new Variable(variable.get("name"), //$NON-NLS-1$
+                        tmp.getVariables().put(
+                                variable.get( "name" ),
+                                new WMLVariable(variable.get("name"), //$NON-NLS-1$
                                         variable.get("location"), //$NON-NLS-1$
                                         variable.getInt("offset"))); //$NON-NLS-1$
                     }
@@ -208,7 +209,7 @@ public class ProjectCache
 
                 IDialogSettings variablesSection = configSection.addNewSection("variables"); //$NON-NLS-1$
                 int varCnt = 0;
-                for(Variable var : config.getVariables())
+                for(WMLVariable var : config.getVariables().values( ))
                 {
                     IDialogSettings varSection = variablesSection.addNewSection("var" + varCnt); //$NON-NLS-1$
                     varSection.put("name", var.getName()); //$NON-NLS-1$

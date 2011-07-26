@@ -11,7 +11,7 @@ package org.wesnoth.utils;
 import java.util.Stack;
 
 import org.wesnoth.wml.core.WMLConfig;
-import org.wesnoth.wml.core.Variable;
+import org.wesnoth.wml.core.WMLVariable;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -23,7 +23,7 @@ import org.xml.sax.helpers.DefaultHandler;
 public class WMLSaxHandler extends DefaultHandler
 {
 	private Stack<String> stack_;
-	private Variable tmpVar_;
+	private WMLVariable tmpVar_;
 	private String filePath_;
 	private WMLConfig cfg_;
 
@@ -50,12 +50,12 @@ public class WMLSaxHandler extends DefaultHandler
     	if (rawName.equals("set_variable")) //$NON-NLS-1$
     	{
     		STATUS = SET_VARIABLE;
-    		tmpVar_ = new Variable();
+    		tmpVar_ = new WMLVariable();
     	}
     	else if (rawName.equals("set_variables")) //$NON-NLS-1$
     	{
     		STATUS = SET_VARIABLE_ARRAY;
-    		tmpVar_ = new Variable();
+    		tmpVar_ = new WMLVariable();
     		tmpVar_.setIsArray(true);
     	}
     	else if (rawName.equals("campaign")) //$NON-NLS-1$
@@ -101,7 +101,7 @@ public class WMLSaxHandler extends DefaultHandler
 					tmpVar_.setOffset(start);
 					tmpVar_.setLocation(filePath_);
 
-					cfg_.getVariables().add(tmpVar_);
+					cfg_.getVariables().put(name, tmpVar_);
 				}
     		}
     	}

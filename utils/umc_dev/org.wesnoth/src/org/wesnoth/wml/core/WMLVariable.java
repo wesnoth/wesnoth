@@ -11,19 +11,19 @@ package org.wesnoth.wml.core;
 /**
  * Represents a WML Variable
  */
-public class Variable
+public class WMLVariable
 {
 	private String name_;
 	private String location_;
 	private int offset_;
 	private boolean isArray_;
 
-	public Variable()
+	public WMLVariable()
 	{
 		this("", "", 0); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
-	public Variable(String name, String location, int offset)
+	public WMLVariable(String name, String location, int offset)
 	{
 		name_ = name;
 		location_ = location;

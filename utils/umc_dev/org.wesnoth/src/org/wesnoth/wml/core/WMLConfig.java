@@ -8,8 +8,8 @@
  *******************************************************************************/
 package org.wesnoth.wml.core;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 
 /**
  * A class that stores WML config file specific information
@@ -32,12 +32,12 @@ public class WMLConfig
 	 */
 	public boolean IsCampaign;
 
-	private List<Variable> variables_;
+	private Multimap<String, WMLVariable> variables_;
 	private String filename_;
 
 	public WMLConfig(String filename)
 	{
-		variables_ = new ArrayList<Variable>();
+		variables_ = ArrayListMultimap.create( );
 		filename_ = filename;
 	}
 
@@ -46,7 +46,7 @@ public class WMLConfig
 		return filename_;
 	}
 
-	public List<Variable> getVariables()
+	public Multimap<String, WMLVariable> getVariables()
 	{
 		return variables_;
 	}

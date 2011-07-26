@@ -14,8 +14,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
 import org.wesnoth.wml.WMLTag;
+
+import com.google.common.base.Preconditions;
 
 /**
  * A simple WML Parser that parses a xtext WML Config file resource
@@ -39,10 +42,7 @@ public class SimpleWMLParser
      */
     public SimpleWMLParser( IFile file, WMLConfig config )
     {
-        if ( config == null )
-            throw new IllegalArgumentException( "The config must not be null." );
-
-        config_ = config;
+        config_ = Preconditions.checkNotNull( config );
         file_ = file;
     }
 
@@ -58,6 +58,7 @@ public class SimpleWMLParser
 
         while ( itor.hasNext( ) ) {
             EObject object = itor.next( );
+            System.out.println( object );
 
             if ( object instanceof WMLTag ) {
                 currentTag = ( WMLTag ) object;
@@ -78,15 +79,35 @@ public class SimpleWMLParser
                             config_.ScenarioId = WMLUtils.getKeyValue( key.getValue( ) );
                         else if ( currentTagName.equals( "campaign" ) )
                             config_.CampaignId = WMLUtils.getKeyValue( key.getValue( ) );
+                    } else if ( keyName.equals( "name" ) ) {
+                        if ( currentTagName.equals( "set_variable" ) ||
+                             currentTagName.equals( "set_variables" ) ) {
+                            handleSetVariable( object );
+                        }
                     }
+                }
+            }
+            else if ( object instanceof WMLMacroCall ) {
+                WMLMacroCall macroCall = ( WMLMacroCall ) object;
+                String macroCallName = macroCall.getName( );
+                if ( macroCallName.equals( "VARIABLE" ) ) {
+                    handleSetVariable( object );
                 }
             }
         }
 
         System.out.println( "parsed config: " + config_ );
+    }
+
+    protected void handleSetVariable( EObject context )
+    {
 
     }
 
+    protected void handleUnsetVariable( EObject context )
+    {
+
+    }
 
     public WMLConfig getParsedConfig()
     {
