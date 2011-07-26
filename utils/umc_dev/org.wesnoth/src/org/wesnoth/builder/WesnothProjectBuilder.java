@@ -285,8 +285,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			return false;
 
 		// config files
-		if ( ResourceUtils.isConfigFile( resource ) &&
-		     !isResourceIgnored( resource ) )
+		if ( ResourceUtils.isConfigFile( resource ) )
 		{
             IFile file = (IFile) resource;
             String filePath = file.getProjectRelativePath( ).toString( );
@@ -369,31 +368,5 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         for(String line : output)
             WMLTools.parseAndAddMarkers( line, Constants.MARKER_WMLSCOPE );
         monitor.worked(20);
-	}
-
-	/**
-	 * Returns true if the specified resource should be skipped by the builder
-	 * @param res
-	 * @return
-	 */
-	private boolean isResourceIgnored(IResource res)
-	{
-		if (ProjectUtils.getPropertiesForProject(project_) == null)
-			return false;
-
-		String[] ignored = ProjectUtils.getPropertiesForProject(project_).getArray("ignored"); //$NON-NLS-1$
-		if (ignored == null)
-			return false;
-
-		for (String path : ignored)
-		{
-			if (path.isEmpty())
-				continue;
-
-			if (StringUtils.normalizePath(WorkspaceUtils.getPathRelativeToUserDir(res))
-					.contains(StringUtils.normalizePath(path)))
-				return true;
-		}
-		return false;
 	}
 }
