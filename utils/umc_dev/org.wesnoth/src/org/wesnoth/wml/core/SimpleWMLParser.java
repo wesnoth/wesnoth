@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.wesnoth.Logger;
 import org.wesnoth.projects.ProjectCache;
-import org.wesnoth.schema.Tag;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLKey;
@@ -38,7 +37,7 @@ public class SimpleWMLParser
     protected IFile file_;
     protected ProjectCache projectCache_;
     protected int dependencyIndex_;
-    protected List<Tag> tags_;
+    protected List<WMLTag> tags_;
 
     /**
      * Creates a new parser for the specified file
@@ -64,7 +63,7 @@ public class SimpleWMLParser
         file_ = file;
         projectCache_ = projCache;
 
-        tags_ = new ArrayList<Tag>();
+        tags_ = new ArrayList<WMLTag>();
 
         dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
     }
@@ -214,7 +213,7 @@ public class SimpleWMLParser
      * Returns the parsed tags
      * @return A list of tags
      */
-    public List<Tag> getParsedTags()
+    public List<WMLTag> getParsedTags()
     {
         return tags_;
     }

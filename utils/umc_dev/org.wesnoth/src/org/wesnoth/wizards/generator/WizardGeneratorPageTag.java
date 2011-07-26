@@ -24,23 +24,23 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.List;
 import org.wesnoth.Messages;
-import org.wesnoth.schema.Tag;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.ListUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WizardUtils;
 import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wml.WMLTag;
 
 
 public class WizardGeneratorPageTag extends NewWizardPageTemplate
 {
-	private java.util.List<Tag>						tags_;
+	private java.util.List<WMLTag>						tags_;
 	private Map<String, java.util.List<String>>	content_;
 	private int									startIndex_, endIndex_;
 	private Composite								container_;
 	private int    									indent_;
 
-	public WizardGeneratorPageTag(String tagName, java.util.List<Tag> tags,
+	public WizardGeneratorPageTag(String tagName, java.util.List<WMLTag> tags,
 			int startIndex, int endIndex, int indent) {
 		super("wizardPageTag" + startIndex); //$NON-NLS-1$
 		setTitle(tagName + Messages.WizardGeneratorPageTag_1);
@@ -64,8 +64,8 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 
 		for (int i = startIndex_; i <= endIndex_; i++)
 		{
-			final Tag tag = tags_.get(i);
-			if (tag.isForbidden())
+			final WMLTag tag = tags_.get(i);
+			if (tag.is_Forbidden())
 				continue;
 
 			Group tagGroup = new Group(container_, SWT.NONE);
@@ -116,9 +116,9 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 		updatePageIsComplete();
 	}
 
-	private void addNewItem(List targetList, Tag tag)
+	private void addNewItem(List targetList, WMLTag tag)
 	{
-		if ((tag.isOptional() || tag.isRequired()) &&
+		if ((tag.is_Optional() || tag.is_Required()) &&
 			targetList.getItemCount() == 1)
 		{
 			GUIUtils.showWarnMessageBox(Messages.WizardGeneratorPageTag_12);
@@ -159,8 +159,8 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 				continue;
 
 			int cnt = ((List)control.getData("list")).getItemCount(); //$NON-NLS-1$
-			Tag tag = (Tag)control.getData("tag"); //$NON-NLS-1$
-			if (cnt == 0 && tag.isRequired())
+			WMLTag tag = (WMLTag)control.getData("tag"); //$NON-NLS-1$
+			if (cnt == 0 && tag.is_Required())
 			{
 				setErrorMessage(String.format(Messages.WizardGeneratorPageTag_0, tag.getName()));
 				return;

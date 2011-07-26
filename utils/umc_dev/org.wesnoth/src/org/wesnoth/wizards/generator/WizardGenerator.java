@@ -8,12 +8,16 @@
  *******************************************************************************/
 package org.wesnoth.wizards.generator;
 
+import java.util.List;
+
 import org.eclipse.jface.wizard.IWizardPage;
 import org.wesnoth.Constants;
 import org.wesnoth.schema.SchemaParser;
-import org.wesnoth.schema.Tag;
 import org.wesnoth.utils.StringUtils;
+import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wizards.NewWizardTemplate;
+import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLTag;
 
 
 public class WizardGenerator extends NewWizardTemplate
@@ -24,7 +28,7 @@ public class WizardGenerator extends NewWizardTemplate
 	public WizardGenerator(String title, String tagName, int indent) {
 		SchemaParser.getInstance( null ).parseSchema(false);
 		setWindowTitle(title);
-		Tag tagContent = SchemaParser.getInstance( null ).getTags().get(tagName);
+		WMLTag tagContent = SchemaParser.getInstance( null ).getTags().get(tagName);
 
 		tagName_ = tagName;
 		indent_ = indent;
@@ -33,37 +37,40 @@ public class WizardGenerator extends NewWizardTemplate
 		else
 		{
 			// keys section
-			int keysNr = tagContent.getKeyChildren().size();
+		    List<WMLKey> keys = WMLUtils.getTagKeys( tagContent );
+			int keysNr = keys.size();
 			int startKey = 0, pgsKey = (keysNr / Constants.WIZ_MaxTextBoxesOnPage);
 			WizardGeneratorPageKey tempPageKey;
 			for (int i = 0; i < pgsKey; i++)
 			{
-				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.getKeyChildren(), startKey,
-									startKey + Constants.WIZ_MaxTextBoxesOnPage, indent_ + 1 );
+				tempPageKey = new WizardGeneratorPageKey(tagName, keys,
+				        startKey, startKey + Constants.WIZ_MaxTextBoxesOnPage, indent_ + 1 );
 				startKey += Constants.WIZ_MaxTextBoxesOnPage;
 				addPage(tempPageKey);
 			}
+
 			if (keysNr - 1 > 0)
 			{
-				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.getKeyChildren(),
+				tempPageKey = new WizardGeneratorPageKey(tagName, keys,
 												startKey, keysNr - 1, indent_ + 1 );
 				addPage(tempPageKey);
 			}
 
 			// tags section
-			int tagsNr = tagContent.getTagChildren().size();
+			List<WMLTag> tags = WMLUtils.getTagTags( tagContent );
+			int tagsNr = tags.size();
 			int startTag = 0, pgsTag = (tagsNr / Constants.WIZ_MaxGroupsOnPage);
 			WizardGeneratorPageTag tempPageTag;
 			for (int i = 0; i < pgsTag; i++)
 			{
-				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.getTagChildren(), startTag,
+				tempPageTag = new WizardGeneratorPageTag(tagName, tags, startTag,
 										startTag + Constants.WIZ_MaxGroupsOnPage, indent_ + 1);
 				startTag += Constants.WIZ_MaxTextBoxesOnPage;
 				addPage(tempPageTag);
 			}
 			if (tagsNr - 1 > 0)
 			{
-				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.getTagChildren(),
+				tempPageTag = new WizardGeneratorPageTag(tagName, tags,
 											startTag, tagsNr - 1, indent_ + 1 );
 				addPage(tempPageTag);
 			}

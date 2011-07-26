@@ -29,8 +29,6 @@ import org.wesnoth.preprocessor.Define;
 import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.schema.SchemaParser;
-import org.wesnoth.schema.Tag;
-import org.wesnoth.schema.TagKey;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.editor.WMLEditor;
@@ -39,6 +37,7 @@ import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLKeyValue;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.core.WMLConfig;
 import org.wesnoth.wml.core.WMLVariable;
@@ -205,16 +204,16 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		{
 		    WMLTag parent = (WMLTag) model.eContainer();
 		    String tagName = parent.getName();
-		    Tag tag = schemaParser_.getTags().get( tagName );
+		    WMLTag tag = schemaParser_.getTags().get( tagName );
 		    if (tag != null)
 		    {
-		        TagKey tagKey = tag.getChildKey( keyName );
-		        if (tagKey.isEnum())
+		        WMLKey tagKey = WMLUtils.getKeyByName( tag, keyName );
+		        if ( tagKey != null && tagKey.is_Enum() )
 		        {
-		            String[] values = tagKey.getValue().split(","); //$NON-NLS-1$
-		            for(String val : values)
+		            for(WMLKeyValue val : tagKey.getValue( ) )
 		            {
-		                acceptor.accept(createCompletionProposal(val, context, KEY_VALUE_PRIORITY));
+		                acceptor.accept(createCompletionProposal(
+		                        val.toString( ), context, KEY_VALUE_PRIORITY ) );
 		            }
 		        }
 		    }
@@ -274,29 +273,23 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
 		if (tag != null)
 		{
-		    Tag schemaTag = schemaParser_.getTags().get(tag.getName());
+		    WMLTag schemaTag = schemaParser_.getTags().get(tag.getName());
 			if ( schemaTag != null)
 			{
-				boolean found = false;
-				for(TagKey key : schemaTag.getKeyChildren())
+				for( WMLKey key : WMLUtils.getTagKeys( schemaTag ) )
 				{
 					// skip forbidden keys
-					if (key.isForbidden())
+					if ( key.is_Forbidden( ) )
 						continue;
 
-					found = false;
+	                boolean toAdd = true;
 					// check only non-repeatable keys
-					if (key.isRepeatable() == false)
-					{
+					if ( ! key.is_Repeatable() ) {
 						// don't suggest already completed keys
-						for( WMLKey eKey: WMLUtils.getTagKeys( tag ) )
-							if (eKey.getName().equals(key.getName())) {
-								found = true;
-								break;
-							}
+					    toAdd = ( WMLUtils.getKeyByName( tag, key.getName( ) ) != null );
 					}
 
-					if (found == false)
+					if ( toAdd )
 						acceptor.accept(createCompletionProposal(key.getName() + "=", //$NON-NLS-1$
 							key.getName(), WML_KEY_IMAGE, context, KEY_NAME_PRIORITY));
 				}
@@ -327,31 +320,26 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			// remove ugly new lines that break indentation
 			parentIndent =  parentIndent.replace("\r", "").replace("\n", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
-			Tag tagChildren = schemaParser_.getTags().get(parentTag.getName());
+			WMLTag tagChildren = schemaParser_.getTags().get(parentTag.getName());
 			if (tagChildren != null)
 			{
-				boolean found = false;
-				for(Tag tag : tagChildren.getTagChildren())
+				boolean toAdd = true;
+				for( WMLTag tag : WMLUtils.getTagTags( tagChildren ) )
 				{
 					// skip forbidden tags
-					if (tag.isForbidden())
+					if ( tag.is_Forbidden( ) )
 						continue;
 
-					found = false;
+					toAdd = true;
 
 					// check only non-repeatable tags
-					if (tag.isRepeatable() == false)
+					if ( ! tag.is_Repeatable() )
 					{
-						for( WMLTag wmlTag : WMLUtils.getTagTags( parentTag ) )
-							if (wmlTag.getName().equals(tag.getName()))
-							{
-								found = true;
-								break;
-							}
+					    toAdd = ( WMLUtils.getTagByName( parentTag, tag.getName( ) ) == null );
 					}
 
-					if (found == false)
-						acceptor.accept(createTagProposal(tag, parentIndent,
+					if ( toAdd )
+						acceptor.accept(createTagProposal( tag.asWMLTag( ), parentIndent,
 								ruleProposal, context));
 				}
 			}
@@ -360,11 +348,11 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		}
 		else // we are at the root
 		{
-			Tag rootTag = schemaParser_.getTags().get("root"); //$NON-NLS-1$
-			dbg("root node. adding tags: "+ rootTag.getTagChildren().size()); //$NON-NLS-1$
-			for(Tag tag : rootTag.getTagChildren())
+			WMLTag rootTag = schemaParser_.getTags().get("root"); //$NON-NLS-1$
+			dbg( "root node. adding tags: "+ rootTag.getExpressions( ).size() ); //$NON-NLS-1$
+			for( WMLTag tag : WMLUtils.getTagTags( rootTag ) )
 			{
-				acceptor.accept(createTagProposal(tag, "", ruleProposal, context)); //$NON-NLS-1$
+				acceptor.accept( createTagProposal( tag, "", ruleProposal, context ) ); //$NON-NLS-1$
 			}
 		}
 	}
@@ -377,17 +365,17 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	 * @param context
 	 * @return
 	 */
-	private ICompletionProposal createTagProposal(Tag tag, String indent, boolean ruleProposal,
-					ContentAssistContext context)
+	private ICompletionProposal createTagProposal( WMLTag tag, String indent,
+	        boolean ruleProposal, ContentAssistContext context)
 	{
 		StringBuilder proposal = new StringBuilder();
 		if (ruleProposal)
 			proposal.append("["); //$NON-NLS-1$
 		proposal.append(tag.getName());
 		proposal.append("]\n"); //$NON-NLS-1$
-		for(TagKey key : tag.getKeyChildren())
+		for( WMLKey key : WMLUtils.getTagKeys( tag ) )
 		{
-			if (key.isRequired())
+			if ( key.is_Required() )
 				proposal.append(String.format("\t%s%s=\n", //$NON-NLS-1$
 						indent, key.getName()));
 		}

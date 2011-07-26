@@ -9,7 +9,9 @@
 package org.wesnoth.schema;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +23,10 @@ import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
+import org.wesnoth.utils.WMLUtils;
+import org.wesnoth.wml.WMLExpression;
+import org.wesnoth.wml.WMLTag;
+import org.wesnoth.wml.WmlFactory2;
 
 /**
  * This is a 'schema.cfg' parser.
@@ -64,7 +70,7 @@ public class SchemaParser
 	}
 
 	private Map<String, String> primitives_;
-	private Map<String, Tag>    tags_;
+	private Map<String, WMLTag>    tags_;
 	private boolean             parsingDone_;
     private String              installName_;
 
@@ -72,7 +78,7 @@ public class SchemaParser
     {
         installName_ = installName;
         primitives_ = new HashMap<String, String>();
-        tags_ = new HashMap<String, Tag>();
+        tags_ = new HashMap<String, WMLTag>();
         parsingDone_ = false;
     }
 
@@ -115,7 +121,7 @@ public class SchemaParser
 		String[] lines = StringUtils.getLines(res);
 		Stack<String> tagStack = new Stack<String>();
 
-		Tag currentTag = null;
+		WMLTag currentTag = null;
 		for (int index = 0; index < lines.length; index++)
 		{
 			String line = lines[index];
@@ -132,14 +138,14 @@ public class SchemaParser
 					boolean expand = false;
 					if (!tagStack.isEmpty() &&
 						tags_.containsKey(tagStack.peek()))
-						expand = tags_.get(tagStack.peek()).getNeedsExpanding();
+						expand = tags_.get(tagStack.peek()).is_NeedingExpansion();
 
 					tagStack.pop();
 
 					if (!tagStack.isEmpty() &&
 						tags_.containsKey(tagStack.peek()) &&
 						expand == true)
-						tags_.get(tagStack.peek()).setNeedsExpanding(expand);
+						tags_.get(tagStack.peek()).set_NeedingExpansion(expand);
 				}
 				// opening tag
 				else
@@ -161,14 +167,14 @@ public class SchemaParser
 							// this tags was already refered in the schema
 							// before they were declared
 							currentTag = tags_.get(simpleTagName);
-							currentTag.setExtendedTagName(extendedTagName);
-							currentTag.setNeedsExpanding(!extendedTagName.isEmpty());
+							currentTag.set_InhertedTagName(extendedTagName);
+							currentTag.set_NeedingExpansion(!extendedTagName.isEmpty());
 						}
 						else
 						{
-							Tag tag = new Tag(simpleTagName, extendedTagName, '_');
+							WMLTag tag = WmlFactory2.eINSTANCE.createWMLTag( simpleTagName, extendedTagName );
+							tag.set_NeedingExpansion( ! extendedTagName.isEmpty( ) );
 							currentTag = tag;
-							currentTag.setNeedsExpanding(!extendedTagName.isEmpty());
 							tags_.put(simpleTagName, tag);
 						}
 					}
@@ -220,9 +226,7 @@ public class SchemaParser
 					}
 
 					if ( currentTag != null ) {
-    					currentTag.setDescription(new Tag("description", '?')); //$NON-NLS-1$
-    					currentTag.getDescription().getKeyChildren().add(
-    							new TagKey(tokens[0], '?', "", value.toString(), true)); //$NON-NLS-1$
+					    currentTag.set_Description( value.toString( ) );
 					}else {
 					    System.out.println( "Tag shouldn't have been null!" ); //$NON-NLS-1$
 					}
@@ -253,17 +257,17 @@ public class SchemaParser
 					{
 						if (tokens[0].startsWith("_")) // reference to another tag //$NON-NLS-1$
 						{
-							Tag targetTag = null;
-							if (tags_.containsKey(value[1]))
-								targetTag = tags_.get(value[1]);
-							else
-							// tag wasn't created yet
+							WMLTag targetTag = null;
+							targetTag = tags_.get(value[1]);
+
+                            // tag wasn't created yet
+							if ( targetTag == null )
 							{
-								targetTag = new Tag(value[1], getCardinality(value[0]));
+								targetTag = WmlFactory2.eINSTANCE.createWMLTag( value[1], "", getCardinality( value[0] ) );
 								tags_.put(value[1], targetTag);
 							}
 
-							currentTag.addTag(targetTag);
+							currentTag.getExpressions( ).add( targetTag );
 						}
 						else
 						{
@@ -271,8 +275,12 @@ public class SchemaParser
 								Logger.getInstance().logError(
 								"Undefined primitive type in schema.cfg for: " + value[1]); //$NON-NLS-1$
 
-							currentTag.addKey(tokens[0], primitives_.get(value[1]),
-									getCardinality(value[0]), value[1].equals("tstring")); //$NON-NLS-1$
+							currentTag.getExpressions( ).add(
+							        WmlFactory2.eINSTANCE.createWMLKey(
+							                tokens[0],
+							                primitives_.get( value[1] ),
+							                getCardinality( value[0] ),
+							                value[1].equals( "tstring" ) ) );
 						}
 					}
 					else
@@ -283,12 +291,13 @@ public class SchemaParser
 			}
 		}
 
-		sortTags();
+		for( WMLTag tag : tags_.values() ) {
+            sortChildren(tag);
+        }
 
-		for (Tag tag : tags_.values())
-		{
-			expandTag(tag,0);
-		}
+		for ( WMLTag tag : tags_.values( ) ) {
+            expandTag( tag );
+        }
 
 		Logger.getInstance().log("parsing done"); //$NON-NLS-1$
 		parsingDone_ = true;
@@ -297,64 +306,42 @@ public class SchemaParser
 	/**
 	 * Expands the tags that need to (the ones based on inheritance)
 	 */
-	private void expandTag(Tag tag, int ind)
+	private void expandTag( WMLTag tag )
 	{
-		if (tag.getNeedsExpanding())
+		if (tag.is_NeedingExpansion())
 		{
-			tag.setNeedsExpanding(false);
-			for (Tag child : tag.getTagChildren())
-			{
-				expandTag(child,ind+1);
-			}
+			tag.set_NeedingExpansion(false);
 
-			if (tags_.containsKey(tag.getExtendedTagName()))
-			{
-				tag.getKeyChildren().addAll(tags_.get(tag.getExtendedTagName()).getKeyChildren());
-				tag.getTagChildren().addAll(tags_.get(tag.getExtendedTagName()).getTagChildren());
-			}
-		}
-	}
+			for ( WMLTag subTag : WMLUtils.getTagTags( tag ) ) {
+                expandTag( subTag );
+            }
 
-	/**
-	 * Sorts the tags in the hashmap
-	 */
-	private void sortTags()
-	{
-		for(Tag tag : tags_.values())
-		{
-			sortChildren(tag);
+			WMLTag inhertedTag = tags_.get( tag.get_InhertedTagName( ) );
+			if ( inhertedTag != null ) {
+			    tag.getExpressions( ).addAll( inhertedTag.getExpressions( ) );
+			}
 		}
 	}
 
 	/**
 	 * Sorts all tag's children by using the cardinality comparator
-	 * @param tag
+	 * @param tag The tag to whom to sort the children
 	 */
-	private void sortChildren(Tag tag)
+	private void sortChildren( WMLTag tag)
 	{
-		Collections.sort(tag.getTagChildren(), new Tag.CardinalityComparator());
-		Collections.sort(tag.getKeyChildren(), new TagKey.CardinalityComparator());
+	    Collections.sort( tag.getExpressions( ), new CardinalityComparator( ) );
 
-		for (Tag childTag : tag.getTagChildren())
-		{
-			sortChildren(childTag);
-		}
+	    for (  WMLTag subTag : WMLUtils.getTagTags( tag ) ) {
+	        sortChildren( subTag );
+        }
 	}
 
 	/**
 	 * Gets the hasmap with parsed tags
 	 */
-	public Map<String, Tag> getTags()
+	public Map< String, WMLTag> getTags()
 	{
 		return tags_;
-	}
-
-	/**
-	 * Gets the hasmap with the parsed primitives
-	 */
-	public Map<String, String> getPrimitives()
-	{
-		return primitives_;
 	}
 
 	/**
@@ -363,7 +350,7 @@ public class SchemaParser
 	 * optional = ?
 	 * repeated = *
 	 * forbidden = -
-	 * @param value The value
+	 * @param value The value the parse
 	 */
 	public char getCardinality(String value)
 	{
@@ -377,4 +364,27 @@ public class SchemaParser
 			return '-';
 		return 'a';
 	}
+
+    /**
+     * A WML Expression comparator that sorts just after required cardinality.
+     * That is, after the sort the required wmlexpressions will be first
+     */
+    public static class CardinalityComparator implements Comparator< WMLExpression >, Serializable
+    {
+        private static final long serialVersionUID = 6103884038547449868L;
+
+        @Override
+        public int compare( WMLExpression o1, WMLExpression o2)
+        {
+            char o1_card = o1.get_Cardinality( );
+            char o2_card = o2.get_Cardinality( );
+
+            if ( o1_card == '1' && o2_card != '1' )
+                return -1;
+            else if ( o2_card == '1' && o1_card != '1' )
+                return 1;
+
+            return 0;
+        }
+    }
 }

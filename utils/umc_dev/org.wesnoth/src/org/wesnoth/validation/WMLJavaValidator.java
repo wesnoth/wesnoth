@@ -20,7 +20,7 @@ import org.eclipse.xtext.validation.CheckType;
 import org.wesnoth.Messages;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.schema.SchemaParser;
-import org.wesnoth.schema.Tag;
+import org.wesnoth.wml.WMLExpression;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
@@ -65,14 +65,14 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 	        IResource file = ResourcesPlugin.getWorkspace( ).getRoot( ).
 	            getFile( new Path( resource.getURI( ).toPlatformString( true ) ) );
 
-			Tag schemaTag = SchemaParser.getInstance(
+			WMLTag schemaTag = SchemaParser.getInstance(
 			        WesnothInstallsUtils.getInstallNameForResource( file ) ).getTags().get(searchName);
 
 			if ( schemaTag != null )
 			{
-				for(Tag childTag : schemaTag.getTagChildren())
+				for( WMLExpression expression : schemaTag.getExpressions( ) )
 				{
-					if (childTag.getName().equals(tag.getName()))
+					if (expression.getName().equals(tag.getName()))
 					{
 						found = true;
 						break;

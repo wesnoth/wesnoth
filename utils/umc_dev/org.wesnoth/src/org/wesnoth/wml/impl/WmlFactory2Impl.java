@@ -43,13 +43,7 @@ public class WmlFactory2Impl extends WmlFactoryImpl implements WmlFactory2
     @Override
     public WMLKey createWMLKey( String name, String dataType )
     {
-        return createWMLKey( name, dataType, '*' );
-    }
-
-    @Override
-    public WMLKey createWMLKey( String name, String dataType, char cardinality )
-    {
-        return createWMLKey( name, dataType, cardinality, false );
+        return createWMLKey( name, dataType, '*', false );
     }
 
     @Override
@@ -60,6 +54,14 @@ public class WmlFactory2Impl extends WmlFactoryImpl implements WmlFactory2
         key.setName( name );
 
         key.set_DataType( dataType );
+
+        if ( dataType.startsWith( "enum" ) ) {
+            // add the enums values
+            //TODO: fix
+
+            key.set_Enum( true );
+        }
+
         key.set_Cardinality( cardinality );
         key.set_Translatable( translatable );
 

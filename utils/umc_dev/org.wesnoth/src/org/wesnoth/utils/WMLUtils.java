@@ -41,11 +41,27 @@ public class WMLUtils
     {
         List<WMLKey> result = new ArrayList<WMLKey>();
         for ( WMLExpression expression : tag.getExpressions( ) ) {
-            if ( expression instanceof WMLKey )
-                result.add( ( WMLKey ) expression );
+            if ( expression.isWMLKey( ) )
+                result.add( expression.asWMLKey( ) );
         }
 
         return result;
+    }
+
+    /**
+     * Returns the child key of the specified tag by its name.
+     * @param tag The tag to search into
+     * @param name The name of the key to search for
+     * @return Returns the found key or null if non existing
+     */
+    public static WMLKey getKeyByName( WMLTag tag, String name )
+    {
+        for ( WMLKey key: getTagKeys( tag ) ) {
+            if ( key.getName( ).equals( name ) )
+                return key;
+        }
+
+        return null;
     }
 
     /**
@@ -57,11 +73,27 @@ public class WMLUtils
     {
         List<WMLTag> result = new ArrayList<WMLTag>();
         for ( WMLExpression expression : tag.getExpressions( ) ) {
-            if ( expression instanceof WMLTag )
-                result.add( ( WMLTag ) expression );
+            if ( expression.isWMLTag( ) )
+                result.add( expression.asWMLTag( ) );
         }
 
         return result;
+    }
+
+    /**
+     * Returns the child tag of the specified tag by its name.
+     * @param tag The tag to search into
+     * @param name The name of the tag to search for
+     * @return Returns the found tag or null if non existing
+     */
+    public static WMLTag getTagByName( WMLTag tag, String name )
+    {
+        for ( WMLTag subTag : getTagTags( tag ) ) {
+            if ( subTag.asWMLTag( ).getName( ).equals( name ) )
+                return subTag;
+        }
+
+        return null;
     }
 
     /**
@@ -95,15 +127,15 @@ public class WMLUtils
         StringBuilder res = new StringBuilder( );
 
         res.append( indent + "[" + tag.getName( )  );
-        if ( ! tag.get_extendedTagName( ).isEmpty( ) )
-            res.append( ":" + tag.get_extendedTagName( ) );
+        if ( ! tag.get_InhertedTagName( ).isEmpty( ) )
+            res.append( ":" + tag.get_InhertedTagName( ) );
         res.append( "]\n"); //$NON-NLS-1$ //$NON-NLS-2$
 
         for ( WMLExpression expression : tag.getExpressions( ) ) {
-            if ( expression instanceof WMLKey )
-                res.append( indent + "\t" + toWMLString( ( WMLKey ) expression ) );
-            else if ( expression instanceof WMLTag )
-                res.append( indent + "\t" + toWMLString( ( WMLTag ) expression ) );
+            if ( expression.isWMLKey( ) )
+                res.append( indent + "\t" + toWMLString( expression.asWMLKey( ) ) );
+            else if ( expression.isWMLTag( ) )
+                res.append( indent + "\t" + toWMLString( expression.asWMLTag( ) ) );
         }
 
         res.append( indent + "[/" + tag.getEndName( )  + "]\n" );

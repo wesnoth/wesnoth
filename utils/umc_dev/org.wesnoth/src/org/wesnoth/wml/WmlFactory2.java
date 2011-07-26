@@ -19,6 +19,5 @@ public interface WmlFactory2 extends WmlFactory
     WMLTag createWMLTag( String name, String extendedName, char cardinality );
 
     WMLKey createWMLKey( String name, String dataType );
-    WMLKey createWMLKey( String name, String dataType, char cardinality );
     WMLKey createWMLKey( String name, String dataType, char cardinality, boolean translatable );
 }

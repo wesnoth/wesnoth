@@ -16,8 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.wesnoth.Logger;
-import org.wesnoth.schema.Tag;
 import org.wesnoth.utils.StringUtils;
+import org.wesnoth.wml.WMLTag;
+import org.wesnoth.wml.WmlFactory2;
 
 /**
  * This is a simple Lua parser that returns the found interesting tokens
@@ -25,7 +26,7 @@ import org.wesnoth.utils.StringUtils;
  */
 public class SimpleLuaParser
 {
-    private List<Tag> tags_;
+    private List<WMLTag> tags_;
     private Reader reader_;
 
     private final static String TAG_REGEX = "wml_actions\\..+\\( *cfg *\\)";
@@ -34,7 +35,7 @@ public class SimpleLuaParser
 
     public SimpleLuaParser( String contents )
     {
-        tags_ = new ArrayList<Tag> ( );
+        tags_ = new ArrayList<WMLTag> ( );
         reader_ = new StringReader( contents == null ? "" : contents );
     }
 
@@ -46,7 +47,7 @@ public class SimpleLuaParser
         BufferedReader reader = new BufferedReader( reader_ );
         String line = null;
 
-        Tag currentTag = null;
+        WMLTag currentTag = null;
 
         try
         {
@@ -61,7 +62,7 @@ public class SimpleLuaParser
                             token.indexOf( '.' ) + 1,
                             token.lastIndexOf( '(' ) );
 
-                    currentTag = new Tag( tagName, '*' );
+                    currentTag = WmlFactory2.eINSTANCE.createWMLTag( tagName );
                     tags_.add( currentTag );
                 }
 
@@ -72,7 +73,8 @@ public class SimpleLuaParser
                         String attributeName = token.substring(
                                 token.indexOf( '.' ) + 1 );
 
-                        currentTag.addKey( attributeName, "string", '*', true );
+                        currentTag.getExpressions( ).add(
+                                WmlFactory2.eINSTANCE.createWMLKey( attributeName, "string" ) );
                     }
 
                     List<String> childTokens = StringUtils.getGroups( ATTRIBUTE_CHILD_REGEX, line );
@@ -81,7 +83,8 @@ public class SimpleLuaParser
                                 token.indexOf( '"' ) + 1,
                                 token.lastIndexOf( '"' ) );
 
-                        currentTag.addKey( childName, "string", '*', true );
+                        currentTag.getExpressions( ).add(
+                                WmlFactory2.eINSTANCE.createWMLKey( childName, "string" ) );
                     }
                 }
             }
@@ -95,7 +98,7 @@ public class SimpleLuaParser
      * Returns the parsed tags from the lua code
      * @return A list with Tags
      */
-    public List<Tag> getTags()
+    public List< WMLTag > getTags()
     {
         return tags_;
     }

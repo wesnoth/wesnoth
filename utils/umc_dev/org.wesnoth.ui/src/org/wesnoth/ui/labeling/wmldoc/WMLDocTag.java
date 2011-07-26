@@ -15,8 +15,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.widgets.Display;
 import org.wesnoth.schema.SchemaParser;
-import org.wesnoth.schema.Tag;
 import org.wesnoth.ui.Messages;
+import org.wesnoth.wml.WMLTag;
 
 /**
  * Displays wml doc for a tag
@@ -24,7 +24,7 @@ import org.wesnoth.ui.Messages;
  */
 public class WMLDocTag implements IWMLDocProvider
 {
-	private Tag tag_;
+	private WMLTag tag_;
 	private String title_;
 	private String contents_;
 	private List<StyleRange> styleRanges_;
@@ -50,11 +50,11 @@ public class WMLDocTag implements IWMLDocProvider
 		title_ = Messages.WMLDocTag_0 + tag_.getName() + "':"; //$NON-NLS-1$
 
 		StringBuilder content = new StringBuilder();
-		if (tag_.getDescription() != null)
+		if ( !tag_.get_Description().isEmpty( ) )
 		{
 			content.append(Messages.WMLDocTag_1);
 			addStyleRange(0, content.length() - 1, SWT.BOLD);
-			content.append(tag_.getDescription().getChildKey("text").getValue()); //$NON-NLS-1$
+			content.append( tag_.get_Description() ); //$NON-NLS-1$
 		}
 		contents_ = content.toString();
 	}
