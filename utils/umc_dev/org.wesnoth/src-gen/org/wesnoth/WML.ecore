@@ -3,11 +3,12 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="wml"
     nsURI="http://www.wesnoth.org/WML" nsPrefix="wml">
-  <eClassifiers xsi:type="ecore:EClass" name="WMLRoot">
+  <eClassifiers xsi:type="ecore:EClass" name="WMLRoot" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLGrammarElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="Expressions" upperBound="-1"
         eType="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLGrammarElement" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//ESerializable"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLTag" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression">
     <eOperations name="getWMLTags">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -52,7 +53,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="_DataType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLKeyValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLKeyValue" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLGrammarElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLMacroCall" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCallParameter platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="point" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
@@ -62,7 +63,7 @@
         eType="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCallParameter"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLMacroCallParameter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLMacroCallParameter" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLGrammarElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLArrayCall" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
         eType="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValue"
@@ -134,7 +135,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="_Cardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"
         defaultValueLiteral=" "/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLValuedExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLValuedExpression" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLGrammarElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLTextdomain" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLLuaCode" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -146,4 +147,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLValue" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValuedExpression platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroParameter"/>
   <eClassifiers xsi:type="ecore:EClass" name="MacroTokens" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroParameter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ESerializable" instanceClassName="java.io.Serializable"
+      abstract="true" interface="true"/>
 </ecore:EPackage>

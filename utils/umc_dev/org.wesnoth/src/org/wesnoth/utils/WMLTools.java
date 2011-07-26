@@ -506,6 +506,7 @@ public class WMLTools
                 GUIUtils.showWarnMessageBox( Messages.WMLTools_45 );
                 return false;
             }
+
             File wmlToolFile = new File( paths.getWMLToolsDir( ) + wmlTool );
 
             if (!wmlToolFile.exists())

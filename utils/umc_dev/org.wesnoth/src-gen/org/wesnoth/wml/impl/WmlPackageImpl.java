@@ -6,6 +6,8 @@
  */
 package org.wesnoth.wml.impl;
 
+import java.io.Serializable;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;
@@ -18,6 +20,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.wesnoth.wml.MacroTokens;
 import org.wesnoth.wml.WMLArrayCall;
 import org.wesnoth.wml.WMLExpression;
+import org.wesnoth.wml.WMLGrammarElement;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLKeyValue;
 import org.wesnoth.wml.WMLLuaCode;
@@ -49,6 +52,13 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * @generated
    */
   private EClass wmlRootEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass wmlGrammarElementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -163,6 +173,13 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
   private EClass macroTokensEClass = null;
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass eSerializableEClass = null;
+
+  /**
    * Creates an instance of the model <b>Package</b>, registered with
    * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
    * package URI value.
@@ -243,6 +260,16 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
   public EReference getWMLRoot_Expressions()
   {
     return (EReference)wmlRootEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWMLGrammarElement()
+  {
+    return wmlGrammarElementEClass;
   }
 
   /**
@@ -660,6 +687,16 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getESerializable()
+  {
+    return eSerializableEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public WmlFactory getWmlFactory()
   {
     return (WmlFactory)getEFactoryInstance();
@@ -687,6 +724,8 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     // Create classes and their features
     wmlRootEClass = createEClass(WML_ROOT);
     createEReference(wmlRootEClass, WML_ROOT__EXPRESSIONS);
+
+    wmlGrammarElementEClass = createEClass(WML_GRAMMAR_ELEMENT);
 
     wmlTagEClass = createEClass(WML_TAG);
     createEAttribute(wmlTagEClass, WML_TAG__PLUS);
@@ -744,6 +783,8 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     wmlValueEClass = createEClass(WML_VALUE);
 
     macroTokensEClass = createEClass(MACRO_TOKENS);
+
+    eSerializableEClass = createEClass(ESERIALIZABLE);
   }
 
   /**
@@ -775,16 +816,21 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    wmlRootEClass.getESuperTypes().add(this.getWMLGrammarElement());
+    wmlGrammarElementEClass.getESuperTypes().add(this.getESerializable());
     wmlTagEClass.getESuperTypes().add(this.getWMLRootExpression());
     wmlKeyEClass.getESuperTypes().add(this.getWMLExpression());
+    wmlKeyValueEClass.getESuperTypes().add(this.getWMLGrammarElement());
     wmlMacroCallEClass.getESuperTypes().add(this.getWMLKeyValue());
     wmlMacroCallEClass.getESuperTypes().add(this.getWMLMacroCallParameter());
     wmlMacroCallEClass.getESuperTypes().add(this.getWMLRootExpression());
+    wmlMacroCallParameterEClass.getESuperTypes().add(this.getWMLGrammarElement());
     wmlArrayCallEClass.getESuperTypes().add(this.getWMLKeyValue());
     wmlMacroDefineEClass.getESuperTypes().add(this.getWMLRootExpression());
     wmlPreprocIFEClass.getESuperTypes().add(this.getWMLRootExpression());
     wmlRootExpressionEClass.getESuperTypes().add(this.getWMLExpression());
     wmlExpressionEClass.getESuperTypes().add(this.getWMLValuedExpression());
+    wmlValuedExpressionEClass.getESuperTypes().add(this.getWMLGrammarElement());
     wmlTextdomainEClass.getESuperTypes().add(this.getWMLRootExpression());
     wmlLuaCodeEClass.getESuperTypes().add(this.getWMLKeyValue());
     wmlMacroParameterEClass.getESuperTypes().add(this.getWMLMacroCallParameter());
@@ -796,6 +842,8 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     // Initialize classes and features; add operations and parameters
     initEClass(wmlRootEClass, WMLRoot.class, "WMLRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWMLRoot_Expressions(), this.getWMLRootExpression(), null, "Expressions", null, 0, -1, WMLRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(wmlGrammarElementEClass, WMLGrammarElement.class, "WMLGrammarElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(wmlTagEClass, WMLTag.class, "WMLTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLTag_Plus(), ecorePackage.getEString(), "plus", "", 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -881,6 +929,8 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     initEClass(wmlValueEClass, WMLValue.class, "WMLValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(macroTokensEClass, MacroTokens.class, "MacroTokens", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(eSerializableEClass, Serializable.class, "ESerializable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);

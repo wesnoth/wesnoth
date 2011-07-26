@@ -36,6 +36,15 @@ public interface WmlFactory extends EFactory
   WMLRoot createWMLRoot();
 
   /**
+   * Returns a new object of class '<em>WML Grammar Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>WML Grammar Element</em>'.
+   * @generated
+   */
+  WMLGrammarElement createWMLGrammarElement();
+
+  /**
    * Returns a new object of class '<em>WML Tag</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

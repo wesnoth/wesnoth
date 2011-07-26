@@ -5,6 +5,7 @@ process( GeneratedMetamodel this ):
     process( ePackage );
 
 process( EPackage this ):
+    eClassifiers.add( ESerializable() ) ->
     eClassifiers.process();
 
 process( EClassifier this ):
@@ -12,7 +13,6 @@ process( EClassifier this ):
 
 process( EClass this ):
     eStructuralFeatures.process() ->
-     
     // enrich the grammar elements with schema-specific attributes
     if name == "WMLExpression" then {
         createAttribute( "_Cardinality", echar() , " " ) ->
@@ -34,6 +34,7 @@ process( EClass this ):
             wmlType( "WMLKey" ) )
             
     } else if name == "WMLTag" then {
+    //eSuperTypes.add( ESerializable() )->
         createAttribute( "_InhertedTagName", estring() , "" ) ->
         createAttribute( "_NeedingExpansion", eboolean() , "false" ) ->
         createAttribute( "_Description", estring(), "" ) ->
@@ -48,18 +49,21 @@ process( EClass this ):
         return result;", ecoreType( "EEList" ),
             wmlType( "WMLTag" ) ) ->
         createGenericOperation( "getWMLKeys", 
-	        "EList<WMLKey> result = new org.eclipse.emf.common.util.BasicEList<WMLKey>();
+            "EList<WMLKey> result = new org.eclipse.emf.common.util.BasicEList<WMLKey>();
         for ( WMLExpression expression : getExpressions( ) ) {
             if ( expression.isWMLKey( ) )
                 result.add( expression.asWMLKey( ) );
         }
 
         return result;", ecoreType( "EEList" ),
-	        wmlType( "WMLKey" ) )
+            wmlType( "WMLKey" ) )
     } else if name == "WMLKey" then {
         createAttribute( "_Enum", eboolean(), "false" ) ->
         createAttribute( "_Translatable", eboolean(), "false" ) ->
         createAttribute( "_DataType", estring(), "" ) 
+    } else if name == "WMLGrammarElement" then {
+	    // make all WML Grammar inherit from Serializable
+	    eSuperTypes.add( ESerializable() )
     };
 
 process( EStructuralFeature this ):
@@ -109,11 +113,20 @@ create EAttribute this createAttribute( EClass owner, String name, EDataType typ
     setDefaultValueLiteral( defValue ) ->
     // add attribute to class
     owner.eStructuralFeatures.add( this );
-     
+
+create EClass ESerializable() :
+    setName( "ESerializable" ) ->
+    setInterface( true ) ->
+    setAbstract( true ) ->
+    setInstanceClassName( "java.io.Serializable" ) ->
+    this;
 
 EDataType estring(): ecoreType( "EString" );
 EDataType echar(): ecoreType( "EChar" );
 EDataType eboolean(): ecoreType( "EBoolean" );
+
+EClass wmlClass( String name ):
+    wmlPackage().getEClassifier( name );
 
 EClassifier wmlType( String name ):
     wmlPackage().getEClassifier( name );

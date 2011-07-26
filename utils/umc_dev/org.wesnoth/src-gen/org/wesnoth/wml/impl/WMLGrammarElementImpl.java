@@ -8,19 +8,21 @@ package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.wesnoth.wml.WMLKeyValue;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.wesnoth.wml.WMLGrammarElement;
 import org.wesnoth.wml.WmlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>WML Key Value</b></em>'.
+ * An implementation of the model object '<em><b>WML Grammar Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class WMLKeyValueImpl extends WMLGrammarElementImpl implements WMLKeyValue
+public class WMLGrammarElementImpl extends MinimalEObjectImpl.Container implements WMLGrammarElement
 {
   /**
    * <!-- begin-user-doc -->
@@ -34,7 +36,7 @@ public class WMLKeyValueImpl extends WMLGrammarElementImpl implements WMLKeyValu
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLKeyValueImpl()
+  protected WMLGrammarElementImpl()
   {
     super();
   }
@@ -47,7 +49,7 @@ public class WMLKeyValueImpl extends WMLGrammarElementImpl implements WMLKeyValu
   @Override
   protected EClass eStaticClass()
   {
-    return WmlPackage.Literals.WML_KEY_VALUE;
+    return WmlPackage.Literals.WML_GRAMMAR_ELEMENT;
   }
 
-} //WMLKeyValueImpl
+} //WMLGrammarElementImpl

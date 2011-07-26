@@ -8,8 +8,6 @@ package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.wesnoth.wml.WMLValuedExpression;
 import org.wesnoth.wml.WmlPackage;
 
@@ -22,8 +20,15 @@ import org.wesnoth.wml.WmlPackage;
  *
  * @generated
  */
-public class WMLValuedExpressionImpl extends MinimalEObjectImpl.Container implements WMLValuedExpression
+public class WMLValuedExpressionImpl extends WMLGrammarElementImpl implements WMLValuedExpression
 {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

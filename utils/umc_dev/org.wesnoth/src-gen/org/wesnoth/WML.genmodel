@@ -11,6 +11,7 @@
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRoot">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRoot/Expressions"/>
     </genClasses>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLGrammarElement"/>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/plus"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/Expressions"/>
@@ -71,5 +72,6 @@
     </genClasses>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValue"/>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//MacroTokens"/>
+    <genClasses image="false" ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//ESerializable"/>
   </genPackages>
 </genmodel:GenModel>

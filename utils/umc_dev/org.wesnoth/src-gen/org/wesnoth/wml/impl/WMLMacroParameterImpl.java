@@ -31,6 +31,13 @@ import org.wesnoth.wml.WmlPackage;
 public class WMLMacroParameterImpl extends WMLMacroCallParameterImpl implements WMLMacroParameter
 {
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

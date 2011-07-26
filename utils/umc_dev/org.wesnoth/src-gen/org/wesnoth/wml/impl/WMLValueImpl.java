@@ -34,6 +34,13 @@ import org.wesnoth.wml.WmlPackage;
 public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
 {
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

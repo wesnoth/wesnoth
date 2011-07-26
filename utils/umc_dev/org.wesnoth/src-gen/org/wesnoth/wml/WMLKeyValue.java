@@ -6,7 +6,6 @@
  */
 package org.wesnoth.wml;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,6 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface WMLKeyValue extends EObject
+public interface WMLKeyValue extends WMLGrammarElement
 {
 } // WMLKeyValue

@@ -69,6 +69,7 @@ public class WmlFactoryImpl extends EFactoryImpl implements WmlFactory
     switch (eClass.getClassifierID())
     {
       case WmlPackage.WML_ROOT: return createWMLRoot();
+      case WmlPackage.WML_GRAMMAR_ELEMENT: return createWMLGrammarElement();
       case WmlPackage.WML_TAG: return createWMLTag();
       case WmlPackage.WML_KEY: return createWMLKey();
       case WmlPackage.WML_KEY_VALUE: return createWMLKeyValue();
@@ -99,6 +100,17 @@ public class WmlFactoryImpl extends EFactoryImpl implements WmlFactory
   {
     WMLRootImpl wmlRoot = new WMLRootImpl();
     return wmlRoot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLGrammarElement createWMLGrammarElement()
+  {
+    WMLGrammarElementImpl wmlGrammarElement = new WMLGrammarElementImpl();
+    return wmlGrammarElement;
   }
 
   /**

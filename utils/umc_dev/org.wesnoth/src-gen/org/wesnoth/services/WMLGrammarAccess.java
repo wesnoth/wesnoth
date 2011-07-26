@@ -32,6 +32,35 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getExpressionsWMLRootExpressionParserRuleCall_0() { return cExpressionsWMLRootExpressionParserRuleCall_0; }
 	}
 
+	public class WMLGrammarElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLGrammarElement");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cWMLRootParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cWMLValuedExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cWMLKeyValueParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cWMLMacroCallParameterParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		
+		//// Dummy grammar element to act as the super of all WML grammar elements
+		//WMLGrammarElement:
+		//	WMLRoot | WMLValuedExpression | WMLKeyValue | WMLMacroCallParameter;
+		public ParserRule getRule() { return rule; }
+
+		//WMLRoot | WMLValuedExpression | WMLKeyValue | WMLMacroCallParameter
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//WMLRoot
+		public RuleCall getWMLRootParserRuleCall_0() { return cWMLRootParserRuleCall_0; }
+
+		//WMLValuedExpression
+		public RuleCall getWMLValuedExpressionParserRuleCall_1() { return cWMLValuedExpressionParserRuleCall_1; }
+
+		//WMLKeyValue
+		public RuleCall getWMLKeyValueParserRuleCall_2() { return cWMLKeyValueParserRuleCall_2; }
+
+		//WMLMacroCallParameter
+		public RuleCall getWMLMacroCallParameterParserRuleCall_3() { return cWMLMacroCallParameterParserRuleCall_3; }
+	}
+
 	public class WMLTagElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLTag");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -626,6 +655,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	private WMLRootElements pWMLRoot;
+	private WMLGrammarElementElements pWMLGrammarElement;
 	private WMLTagElements pWMLTag;
 	private WMLKeyElements pWMLKey;
 	private WMLKeyValueElements pWMLKeyValue;
@@ -680,6 +710,17 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getWMLRootRule() {
 		return getWMLRootAccess().getRule();
+	}
+
+	//// Dummy grammar element to act as the super of all WML grammar elements
+	//WMLGrammarElement:
+	//	WMLRoot | WMLValuedExpression | WMLKeyValue | WMLMacroCallParameter;
+	public WMLGrammarElementElements getWMLGrammarElementAccess() {
+		return (pWMLGrammarElement != null) ? pWMLGrammarElement : (pWMLGrammarElement = new WMLGrammarElementElements());
+	}
+	
+	public ParserRule getWMLGrammarElementRule() {
+		return getWMLGrammarElementAccess().getRule();
 	}
 
 	//WMLTag:

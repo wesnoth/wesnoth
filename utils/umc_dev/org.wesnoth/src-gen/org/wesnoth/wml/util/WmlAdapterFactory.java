@@ -6,6 +6,8 @@
  */
 package org.wesnoth.wml.util;
 
+import java.io.Serializable;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -82,6 +84,11 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
       public Adapter caseWMLRoot(WMLRoot object)
       {
         return createWMLRootAdapter();
+      }
+      @Override
+      public Adapter caseWMLGrammarElement(WMLGrammarElement object)
+      {
+        return createWMLGrammarElementAdapter();
       }
       @Override
       public Adapter caseWMLTag(WMLTag object)
@@ -164,6 +171,11 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
         return createMacroTokensAdapter();
       }
       @Override
+      public Adapter caseESerializable(Serializable object)
+      {
+        return createESerializableAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -196,6 +208,21 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWMLRootAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wml.WMLGrammarElement <em>WML Grammar Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wml.WMLGrammarElement
+   * @generated
+   */
+  public Adapter createWMLGrammarElementAdapter()
   {
     return null;
   }
@@ -436,6 +463,21 @@ public class WmlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMacroTokensAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link java.io.Serializable <em>ESerializable</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see java.io.Serializable
+   * @generated
+   */
+  public Adapter createESerializableAdapter()
   {
     return null;
   }

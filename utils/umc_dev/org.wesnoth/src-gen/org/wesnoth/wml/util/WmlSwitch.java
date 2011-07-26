@@ -6,6 +6,8 @@
  */
 package org.wesnoth.wml.util;
 
+import java.io.Serializable;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -80,6 +82,16 @@ public class WmlSwitch<T> extends Switch<T>
       {
         WMLRoot wmlRoot = (WMLRoot)theEObject;
         T result = caseWMLRoot(wmlRoot);
+        if (result == null) result = caseWMLGrammarElement(wmlRoot);
+        if (result == null) result = caseESerializable(wmlRoot);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WmlPackage.WML_GRAMMAR_ELEMENT:
+      {
+        WMLGrammarElement wmlGrammarElement = (WMLGrammarElement)theEObject;
+        T result = caseWMLGrammarElement(wmlGrammarElement);
+        if (result == null) result = caseESerializable(wmlGrammarElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -90,6 +102,8 @@ public class WmlSwitch<T> extends Switch<T>
         if (result == null) result = caseWMLRootExpression(wmlTag);
         if (result == null) result = caseWMLExpression(wmlTag);
         if (result == null) result = caseWMLValuedExpression(wmlTag);
+        if (result == null) result = caseWMLGrammarElement(wmlTag);
+        if (result == null) result = caseESerializable(wmlTag);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -99,6 +113,8 @@ public class WmlSwitch<T> extends Switch<T>
         T result = caseWMLKey(wmlKey);
         if (result == null) result = caseWMLExpression(wmlKey);
         if (result == null) result = caseWMLValuedExpression(wmlKey);
+        if (result == null) result = caseWMLGrammarElement(wmlKey);
+        if (result == null) result = caseESerializable(wmlKey);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -106,6 +122,8 @@ public class WmlSwitch<T> extends Switch<T>
       {
         WMLKeyValue wmlKeyValue = (WMLKeyValue)theEObject;
         T result = caseWMLKeyValue(wmlKeyValue);
+        if (result == null) result = caseWMLGrammarElement(wmlKeyValue);
+        if (result == null) result = caseESerializable(wmlKeyValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -117,7 +135,9 @@ public class WmlSwitch<T> extends Switch<T>
         if (result == null) result = caseWMLMacroCallParameter(wmlMacroCall);
         if (result == null) result = caseWMLRootExpression(wmlMacroCall);
         if (result == null) result = caseWMLExpression(wmlMacroCall);
+        if (result == null) result = caseESerializable(wmlMacroCall);
         if (result == null) result = caseWMLValuedExpression(wmlMacroCall);
+        if (result == null) result = caseWMLGrammarElement(wmlMacroCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -125,6 +145,8 @@ public class WmlSwitch<T> extends Switch<T>
       {
         WMLMacroCallParameter wmlMacroCallParameter = (WMLMacroCallParameter)theEObject;
         T result = caseWMLMacroCallParameter(wmlMacroCallParameter);
+        if (result == null) result = caseWMLGrammarElement(wmlMacroCallParameter);
+        if (result == null) result = caseESerializable(wmlMacroCallParameter);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -133,6 +155,8 @@ public class WmlSwitch<T> extends Switch<T>
         WMLArrayCall wmlArrayCall = (WMLArrayCall)theEObject;
         T result = caseWMLArrayCall(wmlArrayCall);
         if (result == null) result = caseWMLKeyValue(wmlArrayCall);
+        if (result == null) result = caseWMLGrammarElement(wmlArrayCall);
+        if (result == null) result = caseESerializable(wmlArrayCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -143,6 +167,8 @@ public class WmlSwitch<T> extends Switch<T>
         if (result == null) result = caseWMLRootExpression(wmlMacroDefine);
         if (result == null) result = caseWMLExpression(wmlMacroDefine);
         if (result == null) result = caseWMLValuedExpression(wmlMacroDefine);
+        if (result == null) result = caseWMLGrammarElement(wmlMacroDefine);
+        if (result == null) result = caseESerializable(wmlMacroDefine);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -153,6 +179,8 @@ public class WmlSwitch<T> extends Switch<T>
         if (result == null) result = caseWMLRootExpression(wmlPreprocIF);
         if (result == null) result = caseWMLExpression(wmlPreprocIF);
         if (result == null) result = caseWMLValuedExpression(wmlPreprocIF);
+        if (result == null) result = caseWMLGrammarElement(wmlPreprocIF);
+        if (result == null) result = caseESerializable(wmlPreprocIF);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -162,6 +190,8 @@ public class WmlSwitch<T> extends Switch<T>
         T result = caseWMLRootExpression(wmlRootExpression);
         if (result == null) result = caseWMLExpression(wmlRootExpression);
         if (result == null) result = caseWMLValuedExpression(wmlRootExpression);
+        if (result == null) result = caseWMLGrammarElement(wmlRootExpression);
+        if (result == null) result = caseESerializable(wmlRootExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -170,6 +200,8 @@ public class WmlSwitch<T> extends Switch<T>
         WMLExpression wmlExpression = (WMLExpression)theEObject;
         T result = caseWMLExpression(wmlExpression);
         if (result == null) result = caseWMLValuedExpression(wmlExpression);
+        if (result == null) result = caseWMLGrammarElement(wmlExpression);
+        if (result == null) result = caseESerializable(wmlExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -177,6 +209,8 @@ public class WmlSwitch<T> extends Switch<T>
       {
         WMLValuedExpression wmlValuedExpression = (WMLValuedExpression)theEObject;
         T result = caseWMLValuedExpression(wmlValuedExpression);
+        if (result == null) result = caseWMLGrammarElement(wmlValuedExpression);
+        if (result == null) result = caseESerializable(wmlValuedExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -187,6 +221,8 @@ public class WmlSwitch<T> extends Switch<T>
         if (result == null) result = caseWMLRootExpression(wmlTextdomain);
         if (result == null) result = caseWMLExpression(wmlTextdomain);
         if (result == null) result = caseWMLValuedExpression(wmlTextdomain);
+        if (result == null) result = caseWMLGrammarElement(wmlTextdomain);
+        if (result == null) result = caseESerializable(wmlTextdomain);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -195,6 +231,8 @@ public class WmlSwitch<T> extends Switch<T>
         WMLLuaCode wmlLuaCode = (WMLLuaCode)theEObject;
         T result = caseWMLLuaCode(wmlLuaCode);
         if (result == null) result = caseWMLKeyValue(wmlLuaCode);
+        if (result == null) result = caseWMLGrammarElement(wmlLuaCode);
+        if (result == null) result = caseESerializable(wmlLuaCode);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -203,6 +241,8 @@ public class WmlSwitch<T> extends Switch<T>
         WMLMacroParameter wmlMacroParameter = (WMLMacroParameter)theEObject;
         T result = caseWMLMacroParameter(wmlMacroParameter);
         if (result == null) result = caseWMLMacroCallParameter(wmlMacroParameter);
+        if (result == null) result = caseWMLGrammarElement(wmlMacroParameter);
+        if (result == null) result = caseESerializable(wmlMacroParameter);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -214,6 +254,8 @@ public class WmlSwitch<T> extends Switch<T>
         if (result == null) result = caseWMLValuedExpression(wmlValue);
         if (result == null) result = caseWMLMacroParameter(wmlValue);
         if (result == null) result = caseWMLMacroCallParameter(wmlValue);
+        if (result == null) result = caseWMLGrammarElement(wmlValue);
+        if (result == null) result = caseESerializable(wmlValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -223,6 +265,8 @@ public class WmlSwitch<T> extends Switch<T>
         T result = caseMacroTokens(macroTokens);
         if (result == null) result = caseWMLMacroParameter(macroTokens);
         if (result == null) result = caseWMLMacroCallParameter(macroTokens);
+        if (result == null) result = caseWMLGrammarElement(macroTokens);
+        if (result == null) result = caseESerializable(macroTokens);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -242,6 +286,22 @@ public class WmlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseWMLRoot(WMLRoot object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>WML Grammar Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>WML Grammar Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLGrammarElement(WMLGrammarElement object)
   {
     return null;
   }
@@ -498,6 +558,22 @@ public class WmlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMacroTokens(MacroTokens object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>ESerializable</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>ESerializable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseESerializable(Serializable object)
   {
     return null;
   }

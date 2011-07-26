@@ -61,6 +61,44 @@ public interface WmlPackage extends EPackage
   WmlPackage eINSTANCE = org.wesnoth.wml.impl.WmlPackageImpl.init();
 
   /**
+   * The meta object id for the '{@link java.io.Serializable <em>ESerializable</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see java.io.Serializable
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getESerializable()
+   * @generated
+   */
+  int ESERIALIZABLE = 18;
+
+  /**
+   * The number of structural features of the '<em>ESerializable</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ESERIALIZABLE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLGrammarElementImpl <em>WML Grammar Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.wesnoth.wml.impl.WMLGrammarElementImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLGrammarElement()
+   * @generated
+   */
+  int WML_GRAMMAR_ELEMENT = 1;
+
+  /**
+   * The number of structural features of the '<em>WML Grammar Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_GRAMMAR_ELEMENT_FEATURE_COUNT = ESERIALIZABLE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.wesnoth.wml.impl.WMLRootImpl <em>WML Root</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -77,7 +115,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_ROOT__EXPRESSIONS = 0;
+  int WML_ROOT__EXPRESSIONS = WML_GRAMMAR_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>WML Root</em>' class.
@@ -86,7 +124,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_ROOT_FEATURE_COUNT = 1;
+  int WML_ROOT_FEATURE_COUNT = WML_GRAMMAR_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wml.impl.WMLValuedExpressionImpl <em>WML Valued Expression</em>}' class.
@@ -96,7 +134,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLValuedExpression()
    * @generated
    */
-  int WML_VALUED_EXPRESSION = 11;
+  int WML_VALUED_EXPRESSION = 12;
 
   /**
    * The number of structural features of the '<em>WML Valued Expression</em>' class.
@@ -105,7 +143,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_VALUED_EXPRESSION_FEATURE_COUNT = 0;
+  int WML_VALUED_EXPRESSION_FEATURE_COUNT = WML_GRAMMAR_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wml.impl.WMLExpressionImpl <em>WML Expression</em>}' class.
@@ -115,7 +153,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLExpression()
    * @generated
    */
-  int WML_EXPRESSION = 10;
+  int WML_EXPRESSION = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -152,7 +190,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLRootExpression()
    * @generated
    */
-  int WML_ROOT_EXPRESSION = 9;
+  int WML_ROOT_EXPRESSION = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -189,7 +227,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLTag()
    * @generated
    */
-  int WML_TAG = 1;
+  int WML_TAG = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -280,7 +318,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLKey()
    * @generated
    */
-  int WML_KEY = 2;
+  int WML_KEY = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -362,7 +400,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLKeyValue()
    * @generated
    */
-  int WML_KEY_VALUE = 3;
+  int WML_KEY_VALUE = 4;
 
   /**
    * The number of structural features of the '<em>WML Key Value</em>' class.
@@ -371,7 +409,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_KEY_VALUE_FEATURE_COUNT = 0;
+  int WML_KEY_VALUE_FEATURE_COUNT = WML_GRAMMAR_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wml.impl.WMLMacroCallImpl <em>WML Macro Call</em>}' class.
@@ -381,7 +419,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroCall()
    * @generated
    */
-  int WML_MACRO_CALL = 4;
+  int WML_MACRO_CALL = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -445,7 +483,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroCallParameter()
    * @generated
    */
-  int WML_MACRO_CALL_PARAMETER = 5;
+  int WML_MACRO_CALL_PARAMETER = 6;
 
   /**
    * The number of structural features of the '<em>WML Macro Call Parameter</em>' class.
@@ -454,7 +492,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL_PARAMETER_FEATURE_COUNT = 0;
+  int WML_MACRO_CALL_PARAMETER_FEATURE_COUNT = WML_GRAMMAR_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wml.impl.WMLArrayCallImpl <em>WML Array Call</em>}' class.
@@ -464,7 +502,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLArrayCall()
    * @generated
    */
-  int WML_ARRAY_CALL = 6;
+  int WML_ARRAY_CALL = 7;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference list.
@@ -492,7 +530,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroDefine()
    * @generated
    */
-  int WML_MACRO_DEFINE = 7;
+  int WML_MACRO_DEFINE = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -547,7 +585,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLPreprocIF()
    * @generated
    */
-  int WML_PREPROC_IF = 8;
+  int WML_PREPROC_IF = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -620,7 +658,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLTextdomain()
    * @generated
    */
-  int WML_TEXTDOMAIN = 12;
+  int WML_TEXTDOMAIN = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -657,7 +695,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLLuaCode()
    * @generated
    */
-  int WML_LUA_CODE = 13;
+  int WML_LUA_CODE = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -685,7 +723,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroParameter()
    * @generated
    */
-  int WML_MACRO_PARAMETER = 14;
+  int WML_MACRO_PARAMETER = 15;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -713,7 +751,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLValue()
    * @generated
    */
-  int WML_VALUE = 15;
+  int WML_VALUE = 16;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -741,7 +779,7 @@ public interface WmlPackage extends EPackage
    * @see org.wesnoth.wml.impl.WmlPackageImpl#getMacroTokens()
    * @generated
    */
-  int MACRO_TOKENS = 16;
+  int MACRO_TOKENS = 17;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -782,6 +820,16 @@ public interface WmlPackage extends EPackage
    * @generated
    */
   EReference getWMLRoot_Expressions();
+
+  /**
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLGrammarElement <em>WML Grammar Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>WML Grammar Element</em>'.
+   * @see org.wesnoth.wml.WMLGrammarElement
+   * @generated
+   */
+  EClass getWMLGrammarElement();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wml.WMLTag <em>WML Tag</em>}'.
@@ -1219,6 +1267,17 @@ public interface WmlPackage extends EPackage
   EClass getMacroTokens();
 
   /**
+   * Returns the meta object for class '{@link java.io.Serializable <em>ESerializable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>ESerializable</em>'.
+   * @see java.io.Serializable
+   * @model instanceClass="java.io.Serializable"
+   * @generated
+   */
+  EClass getESerializable();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1258,6 +1317,16 @@ public interface WmlPackage extends EPackage
      * @generated
      */
     EReference WML_ROOT__EXPRESSIONS = eINSTANCE.getWMLRoot_Expressions();
+
+    /**
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLGrammarElementImpl <em>WML Grammar Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.wesnoth.wml.impl.WMLGrammarElementImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLGrammarElement()
+     * @generated
+     */
+    EClass WML_GRAMMAR_ELEMENT = eINSTANCE.getWMLGrammarElement();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLTagImpl <em>WML Tag</em>}' class.
@@ -1618,6 +1687,16 @@ public interface WmlPackage extends EPackage
      * @generated
      */
     EClass MACRO_TOKENS = eINSTANCE.getMacroTokens();
+
+    /**
+     * The meta object literal for the '{@link java.io.Serializable <em>ESerializable</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see java.io.Serializable
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getESerializable()
+     * @generated
+     */
+    EClass ESERIALIZABLE = eINSTANCE.getESerializable();
 
   }
 

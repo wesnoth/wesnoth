@@ -8,8 +8,6 @@ package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.wesnoth.wml.WMLMacroCallParameter;
 import org.wesnoth.wml.WmlPackage;
 
@@ -22,8 +20,15 @@ import org.wesnoth.wml.WmlPackage;
  *
  * @generated
  */
-public class WMLMacroCallParameterImpl extends MinimalEObjectImpl.Container implements WMLMacroCallParameter
+public class WMLMacroCallParameterImpl extends WMLGrammarElementImpl implements WMLMacroCallParameter
 {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

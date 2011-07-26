@@ -42,6 +42,13 @@ import org.wesnoth.wml.WmlPackage;
 public class WMLMacroDefineImpl extends WMLRootExpressionImpl implements WMLMacroDefine
 {
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

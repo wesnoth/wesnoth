@@ -38,6 +38,13 @@ import org.wesnoth.wml.WmlPackage;
 public class WMLArrayCallImpl extends WMLKeyValueImpl implements WMLArrayCall
 {
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

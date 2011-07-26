@@ -27,6 +27,13 @@ public class WMLTextdomainImpl extends WMLRootExpressionImpl implements WMLTextd
    * <!-- end-user-doc -->
    * @generated
    */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   protected WMLTextdomainImpl()
   {
     super();

@@ -37,6 +37,7 @@ public class WMLParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getWMLGrammarElementAccess().getAlternatives(), "rule__WMLGrammarElement__Alternatives");
 					put(grammarAccess.getWMLKeyAccess().getEolAlternatives_4_0(), "rule__WMLKey__EolAlternatives_4_0");
 					put(grammarAccess.getWMLKeyValueAccess().getAlternatives(), "rule__WMLKeyValue__Alternatives");
 					put(grammarAccess.getWMLMacroCallParameterAccess().getAlternatives(), "rule__WMLMacroCallParameter__Alternatives");

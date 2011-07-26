@@ -44,6 +44,13 @@ import org.wesnoth.wml.WmlPackage;
 public class WMLPreprocIFImpl extends WMLRootExpressionImpl implements WMLPreprocIF
 {
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
