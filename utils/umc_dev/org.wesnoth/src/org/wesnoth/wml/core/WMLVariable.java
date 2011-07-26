@@ -27,7 +27,7 @@ public class WMLVariable
 
 	public WMLVariable( String name, String location, int offset )
 	{
-	    this( name, location, offset, Integer.MAX_VALUE, Integer.MAX_VALUE );
+	    this( name, location, offset, Integer.MIN_VALUE, Integer.MAX_VALUE );
 	}
 
 	public WMLVariable( String name, String location, int offset,
@@ -90,4 +90,13 @@ public class WMLVariable
     {
         scopeStartIndex_ = scopeStartIndex;
     }
+
+	@Override
+	public String toString()
+	{
+	    return "Variable - Name: " + name_ +
+	            "; Location:" + location_ +
+	            "; Offset:" + offset_ +
+	            "; Scope: " + scopeStartIndex_ + " -> " + scopeEndIndex_;
+	}
 }

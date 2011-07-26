@@ -8,6 +8,8 @@
  *******************************************************************************/
 package org.wesnoth.ui.contentassist;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -33,16 +35,23 @@ import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
+import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.core.WMLConfig;
+import org.wesnoth.wml.core.WMLVariable;
+
+import com.google.common.base.Function;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Collections2;
 
 public class WMLProposalProvider extends AbstractWMLProposalProvider
 {
     protected SchemaParser schemaParser_;
     protected ProjectCache projectCache_;
+    protected int dependencyIndex_;
 
     protected static final int KEY_VALUE_PRIORITY = 1700;
     protected static final int KEY_NAME_PRIORITY = 1500;
@@ -86,6 +95,8 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         // load the schema so we know what to suggest for autocomplete
         SchemaParser.reloadSchemas( false );
         schemaParser_ = SchemaParser.getInstance( WesnothInstallsUtils.getInstallNameForResource( file ) );
+
+        dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
 	}
 
 	@Override
@@ -217,7 +228,26 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		        }
 		    } else {
 		        // add variables
-		        List<String> variables = TemplateProvider.getInstance( ).getCAC( "variables" );
+		        List<String> variables = new ArrayList<String>();
+                variables.addAll( TemplateProvider.getInstance( ).getCAC( "variables" ) );
+
+		        // filter variables by index
+		        Collection<String> projectVariables = Collections2.transform(
+		                projectCache_.getVariables( ).values( ),
+                        new Function<WMLVariable, String> () {
+
+                    @Override
+                    public String apply( WMLVariable from )
+                    {
+                        if ( from.getScopeStartIndex( ) <= dependencyIndex_ &&
+                             dependencyIndex_ <= from.getScopeEndIndex( ) )
+                            return from.getName( );
+                        return null;
+                    }
+                } );
+
+		        variables.addAll( Collections2.filter( projectVariables,
+	                Predicates.notNull( ) ) );
 
 		        for ( String variable : variables ) {
 		            acceptor.accept( createCompletionProposal( "$" + variable, context ) );
@@ -282,7 +312,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
 			String parentIndent = ""; //$NON-NLS-1$
 			if (context.getCurrentNode().getOffset() > 0)
-				parentIndent = NodeModelUtils.findLeafNodeAtOffset(node.getParent(),
+				parentIndent = NodeModelUtils.findLeafNodeAtOffset(node,
 						context.getCurrentNode().getOffset() -
 						// if we have a non-rule proposal, subtract 1
 						(ruleProposal ? 0 : 1) ).getText();
@@ -347,14 +377,14 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		if (ruleProposal)
 			proposal.append("["); //$NON-NLS-1$
 		proposal.append(tag.getName());
-		proposal.append("]\n"); //$NON-NLS-1$
+		proposal.append("\n"); //$NON-NLS-1$
 		for(TagKey key : tag.getKeyChildren())
 		{
 			if (key.isRequired())
 				proposal.append(String.format("\t%s%s=\n", //$NON-NLS-1$
 						indent, key.getName()));
 		}
-		proposal.append(String.format("%s[/%s]",indent, tag.getName())); //$NON-NLS-1$
+		proposal.append(String.format("%s[/%s",indent, tag.getName())); //$NON-NLS-1$
 		return createCompletionProposal(proposal.toString(), tag.getName(),
 		        WML_TAG_IMAGE, context, TAG_PRIORITY);
 	}

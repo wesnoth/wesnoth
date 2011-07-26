@@ -194,14 +194,14 @@ public class TemplateProvider
 	/**
 	 * Gets the Content Assist Config list for the specified type
 	 * @param type The type of the CAC
-	 * @return A list of String values
+	 * @return A list of String values. The returned list is read-only
 	 */
 	public List<String> getCAC( String type )
 	{
 	    List<String> result = cacs_.get( type );
 
 	    if ( result == null )
-	        return new ArrayList<String>( 0 );
+	        return new ArrayList<String>( );
 
 	    return result;
 	}

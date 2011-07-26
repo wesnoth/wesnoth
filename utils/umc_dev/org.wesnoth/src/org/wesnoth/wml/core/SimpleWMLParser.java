@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.wesnoth.projects.ProjectCache;
+import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLKey;
@@ -37,8 +38,7 @@ public class SimpleWMLParser
      */
     public SimpleWMLParser( IFile file )
     {
-        file_ = file;
-        config_ = new WMLConfig( file.getProjectRelativePath( ).toString( ) );
+        this( file, new WMLConfig( file.getProjectRelativePath( ).toString( ) ) );
     }
 
     /**
@@ -48,6 +48,7 @@ public class SimpleWMLParser
     {
         config_ = Preconditions.checkNotNull( config );
         file_ = file;
+        projectCache_ = ProjectUtils.getCacheForProject( file.getProject( ) );
     }
 
     /**
@@ -64,7 +65,6 @@ public class SimpleWMLParser
 
         while ( itor.hasNext( ) ) {
             EObject object = itor.next( );
-            System.out.println( object );
 
             if ( object instanceof WMLTag ) {
                 currentTag = ( WMLTag ) object;
@@ -95,8 +95,7 @@ public class SimpleWMLParser
             }
             else if ( object instanceof WMLMacroCall ) {
                 WMLMacroCall macroCall = ( WMLMacroCall ) object;
-                String macroCallName = macroCall.getName( );
-                if ( macroCallName.equals( "VARIABLE" ) ) {
+                if ( macroCall.getName( ).equals( "VARIABLE" ) ) {
                     handleSetVariable( object );
                 }
             }
@@ -125,6 +124,7 @@ public class SimpleWMLParser
 
         if ( ! variable.getName( ).isEmpty( ) ) {
             projectCache_.getVariables( ).put( variable.getName( ), variable );
+            System.out.println( "added variable: " + variable );
         }
     }
 
