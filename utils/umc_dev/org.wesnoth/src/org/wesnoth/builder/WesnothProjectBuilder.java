@@ -26,8 +26,6 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
@@ -41,12 +39,9 @@ import org.wesnoth.utils.AntUtils;
 import org.wesnoth.utils.ExternalToolInvoker;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WorkspaceUtils;
-import org.wesnoth.wml.WMLKey;
-import org.wesnoth.wml.WMLRoot;
-import org.wesnoth.wml.WMLTag;
+import org.wesnoth.wml.core.SimpleWMLParser;
 import org.wesnoth.wml.core.WMLConfig;
 
 /**
@@ -316,62 +311,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				monitor.subTask( String.format( Messages.WesnothProjectBuilder_22, filePath ) );
 
 				WMLConfig config = projectCache_.getWMLConfig( filePath );
-				WMLRoot root = ResourceUtils.getWMLRoot( file );
-				TreeIterator<EObject> itor = root.eAllContents( );
-				WMLTag currentTag = null;
-				String currentTagName = "";
+				SimpleWMLParser parser = new SimpleWMLParser( file, config );
+				parser.parse( );
 
-				while ( itor.hasNext( ) ) {
-				    EObject object = itor.next( );
-
-				    if ( object instanceof WMLTag ) {
-				        currentTag = ( WMLTag ) object;
-				        currentTagName = currentTag.getName( );
-
-				        if ( currentTagName.equals( "scenario" ) )
-				            config.IsScenario = true;
-				        else if ( currentTagName.equals( "campaign" ) )
-				            config.IsCampaign = true;
-				    }
-				    else if ( object instanceof WMLKey ) {
-				        if ( currentTag != null ) {
-				            WMLKey key = ( WMLKey ) object;
-				            String keyName = key.getName( );
-
-				            if ( keyName.equals( "id" ) ) {
-				                if ( currentTagName.equals( "scenario" ) )
-				                    config.ScenarioId = WMLUtils.getKeyValue( key.getValue( ) );
-				                else if ( currentTagName.equals( "campaign" ) )
-				                    config.CampaignId = WMLUtils.getKeyValue( key.getValue( ) );
-				            }
-				        }
-				    }
-				}
-
-				System.out.println( "Config: " + config );
-
-//				WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
-//					getWMLSAXHandlerFromResource(
-//						PreprocessorUtils.getInstance().getPreprocessedFilePath(file, false, false).toString(),
-//						new WMLSaxHandler(file.getLocation().toOSString()));
-//
-//				if (handler != null)
-//				{
-//					WMLConfig cfg = handler.getConfigFile();
-//					projectCache_.getWMLConfigs().put( file.getProjectRelativePath( ).toString( ), cfg);
-//					if (cfg.IsScenario)
-//					{
-//						if ( StringUtils.isNullOrEmpty( cfg.ScenarioId ) )
-//						{
-//							Logger.getInstance().log("added scenarioId [" + cfg.ScenarioId + //$NON-NLS-1$
-//									"] for file: " + filePath ); //$NON-NLS-1$
-//						}
-//						else
-//						{
-//						    projectCache_.getWMLConfigs().remove( filePath );
-//						}
-//					}
-//				}
 				monitor.worked(10);
 
 			} catch (Exception e)
