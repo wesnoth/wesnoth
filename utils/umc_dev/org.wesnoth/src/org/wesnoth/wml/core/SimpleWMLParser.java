@@ -52,8 +52,10 @@ public class SimpleWMLParser
 
     /**
      * Parses the config. The results will be available in {@link #getParsedConfig()}
+     * @param configOnly If true, the parsing won't modify anything external
+     * to the config object (like adding the variables to the project cache)
      */
-    public void parse()
+    public void parse( boolean configOnly )
     {
         WMLRoot root = ResourceUtils.getWMLRoot( file_ );
         TreeIterator<EObject> itor = root.eAllContents( );

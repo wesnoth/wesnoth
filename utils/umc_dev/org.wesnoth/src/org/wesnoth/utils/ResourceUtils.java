@@ -52,12 +52,12 @@ import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.builder.DependencyListNode;
-import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
+import org.wesnoth.wml.core.SimpleWMLParser;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -410,13 +410,9 @@ public class ResourceUtils
 	 */
 	public static String getCampaignID(IResource resource)
 	{
-		WMLSaxHandler handler = (WMLSaxHandler) getWMLSAXHandlerFromResource(
-				PreprocessorUtils.getInstance().getPreprocessedFilePath(
-						getMainConfigLocation(resource), false, true).toString(),
-						new WMLSaxHandler(resource.getLocation().toOSString()));
-		if (handler == null)
-			return null;
-		return handler.getConfigFile().CampaignId;
+	    SimpleWMLParser parser = new SimpleWMLParser( getMainConfigLocation( resource ) );
+	    parser.parse( true );
+	    return parser.getParsedConfig( ).CampaignId;
 	}
 
 	/**
@@ -426,12 +422,9 @@ public class ResourceUtils
 	 */
 	public static String getScenarioID(IFile file)
 	{
-		WMLSaxHandler handler = (WMLSaxHandler) getWMLSAXHandlerFromResource(
-				PreprocessorUtils.getInstance().getPreprocessedFilePath(file, false, true).toString(),
-				new WMLSaxHandler(file.getLocation().toOSString()));
-		if (handler == null)
-			return null;
-		return handler.getConfigFile().ScenarioId;
+	    SimpleWMLParser parser = new SimpleWMLParser( file );
+	    parser.parse( true );
+	    return parser.getParsedConfig( ).ScenarioId;
 	}
 
 	/**
