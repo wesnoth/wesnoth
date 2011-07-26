@@ -384,7 +384,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		if (ruleProposal)
 			proposal.append("["); //$NON-NLS-1$
 		proposal.append(tag.getName());
-		proposal.append("\n"); //$NON-NLS-1$
+		proposal.append("]\n"); //$NON-NLS-1$
 		for(TagKey key : tag.getKeyChildren())
 		{
 			if (key.isRequired())

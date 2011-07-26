@@ -8,12 +8,16 @@
  *******************************************************************************/
 package org.wesnoth.wml.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.wesnoth.Logger;
 import org.wesnoth.projects.ProjectCache;
+import org.wesnoth.schema.Tag;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLKey;
@@ -34,6 +38,7 @@ public class SimpleWMLParser
     protected IFile file_;
     protected ProjectCache projectCache_;
     protected int dependencyIndex_;
+    protected List<Tag> tags_;
 
     /**
      * Creates a new parser for the specified file
@@ -58,6 +63,8 @@ public class SimpleWMLParser
         config_ = Preconditions.checkNotNull( config );
         file_ = file;
         projectCache_ = projCache;
+
+        tags_ = new ArrayList<Tag>();
 
         dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
     }
@@ -115,7 +122,10 @@ public class SimpleWMLParser
                 }
             }
             else if ( object instanceof WMLLuaCode ) {
-
+                SimpleLuaParser luaParser = new SimpleLuaParser(
+                        ( ( WMLLuaCode ) object ).getValue( ) );
+                luaParser.parse( );
+                tags_.addAll( luaParser.getTags( ) );
             }
         }
         //TODO: parse custom events
@@ -198,6 +208,15 @@ public class SimpleWMLParser
                 return;
             }
         }
+    }
+
+    /**
+     * Returns the parsed tags
+     * @return A list of tags
+     */
+    public List<Tag> getParsedTags()
+    {
+        return tags_;
     }
 
     /**

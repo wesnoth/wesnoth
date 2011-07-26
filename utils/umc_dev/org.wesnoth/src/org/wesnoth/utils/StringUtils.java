@@ -8,8 +8,13 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+
+import org.wesnoth.Logger;
 
 public class StringUtils
 {
@@ -241,4 +246,27 @@ public class StringUtils
 	{
 	    return (target == null || target.isEmpty());
 	}
+
+	/**
+     * Returns the list of groups found by the specified regex
+     * in the specified string.
+     * The regex is applied case insensitive
+     * @param regexStr The regex used to extract the groups
+     * @param targetString The string on which to apply the regex
+     * @return The list of strings which matched the regex
+     */
+    public static List<String> getGroups( String regexStr, String targetString )
+    {
+        List<String> groupList = new ArrayList<String>();
+        try {
+            Pattern regex = Pattern.compile(regexStr, Pattern.CASE_INSENSITIVE);
+            Matcher regexMatcher = regex.matcher(targetString);
+            while (regexMatcher.find()) {
+                    groupList.add(regexMatcher.group());
+            }
+        } catch (PatternSyntaxException ex) {
+            Logger.getInstance( ).logException( ex );
+        }
+        return groupList;
+    }
 }
