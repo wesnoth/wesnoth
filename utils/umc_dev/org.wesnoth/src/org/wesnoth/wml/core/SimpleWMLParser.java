@@ -97,9 +97,9 @@ public class SimpleWMLParser
 
                     if ( keyName.equals( "id" ) ) {
                         if ( currentTagName.equals( "scenario" ) )
-                            config_.ScenarioId = WMLUtils.getKeyValue( key.getValue( ) );
+                            config_.ScenarioId = WMLUtils.getKeyValue( key.getValues( ) );
                         else if ( currentTagName.equals( "campaign" ) )
-                            config_.CampaignId = WMLUtils.getKeyValue( key.getValue( ) );
+                            config_.CampaignId = WMLUtils.getKeyValue( key.getValues( ) );
                     } else if ( keyName.equals( "name" ) ) {
                         if ( currentTagName.equals( "set_variable" ) ||
                              currentTagName.equals( "set_variables" ) ) {
@@ -137,7 +137,7 @@ public class SimpleWMLParser
         String variableName = null;
 
         if ( context instanceof WMLKey ) {
-            variableName =  WMLUtils.getKeyValue( ( ( WMLKey ) context ).getValue( ) ) ;
+            variableName =  WMLUtils.getKeyValue( ( ( WMLKey ) context ).getValues( ) ) ;
         } else if ( context instanceof WMLMacroCall ) {
             WMLMacroCall macro = ( WMLMacroCall ) context;
             if ( macro.getParameters( ).size( ) > 0 ) {

@@ -15,10 +15,10 @@ WMLTag:
 	;
 	
 WMLKey hidden(WS):
-	name = ID '=' value += WMLKeyValue* (EOL? '+' EOL? value += WMLKeyValue+)* eol=(EOL|SL_COMMENT);
+	name = ID '=' values += WMLKeyValue* (EOL? '+' EOL? values += WMLKeyValue+)* eol=(EOL|SL_COMMENT);
 
 WMLKeyValue:
-    {WMLKeyValue} WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
+    WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 
 WMLMacroCall:
 	'{' (point='./')? (relative='~')? name=ID
@@ -26,7 +26,7 @@ WMLMacroCall:
 	'}';
 
 WMLMacroCallParameter:
-    {WMLMacroCallParameter} WMLMacroParameter | WMLMacroCall;
+    WMLMacroParameter | WMLMacroCall;
 
 WMLArrayCall:
 	'[' value += WMLValue+ ']' ;
@@ -52,7 +52,7 @@ WMLExpression:
     WMLRootExpression | WMLKey ;
 
 WMLValuedExpression: 
-    WMLExpression | {WMLValuedExpression} WMLValue;
+    WMLExpression | WMLValue;
 
 WMLTextdomain:
 	name = TEXTDOMAIN;
@@ -60,15 +60,15 @@ WMLTextdomain:
 WMLLuaCode:
     value = LUA_CODE;
 
-WMLMacroParameter returns ecore::EString:
+WMLMacroParameter:
     WMLValue | MacroTokens;
 
-WMLValue returns ecore::EString:
-	(ID | STRING |'_'|'~' | '.' | './' |'$'|'/' |'(' | ')'| ANY_OTHER);
+WMLValue:
+	value = (ID | STRING |'_'|'~' | '.' | './' |'$'|'/' |'(' | ')'| ANY_OTHER);
 // we use this as a hack for any characters in the macro call
 // so we won't trigger things like: key=value or [tag]
-MacroTokens returns ecore::EString:
-	('='|'['|']'|'+'|'[/');
+MacroTokens:
+	value = ('='|'['|']'|'+'|'[/');
 
 terminal LUA_CODE   : '<<' -> '>>';
 // Preprocessor terminals

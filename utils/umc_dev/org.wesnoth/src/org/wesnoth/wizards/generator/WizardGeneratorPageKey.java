@@ -74,7 +74,7 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 				combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 				combo.setData("name", key.getName()); //$NON-NLS-1$
 
-				for ( WMLKeyValue value : key.getValue( ) ) {
+				for ( WMLKeyValue value : key.getValues( ) ) {
 				    combo.add( value.toString( ) );
                 }
 
@@ -86,7 +86,7 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 				textBox.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 				textBox.setData("name", key.getName()); //$NON-NLS-1$
-				textBox.setData("valType", key.getValue()); //$NON-NLS-1$
+				textBox.setData("valType", key.getValues()); //$NON-NLS-1$
 				textBox.setData("card", key.get_Cardinality()); //$NON-NLS-1$
 				textBox.setData("trans", key.is_Translatable()); //$NON-NLS-1$
 				if ( key.is_Required( ) )

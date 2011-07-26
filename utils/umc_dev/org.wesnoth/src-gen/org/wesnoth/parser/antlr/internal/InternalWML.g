@@ -254,16 +254,16 @@ ruleWMLKey returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getWMLKeyAccess().getValueWMLKeyValueParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getWMLKeyAccess().getValuesWMLKeyValueParserRuleCall_2_0()); 
 	    }
-		lv_value_2_0=ruleWMLKeyValue		{
+		lv_values_2_0=ruleWMLKeyValue		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getWMLKeyRule());
 	        }
        		add(
        			$current, 
-       			"value",
-        		lv_value_2_0, 
+       			"values",
+        		lv_values_2_0, 
         		"WMLKeyValue");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -284,16 +284,16 @@ ruleWMLKey returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getWMLKeyAccess().getValueWMLKeyValueParserRuleCall_3_3_0()); 
+	        newCompositeNode(grammarAccess.getWMLKeyAccess().getValuesWMLKeyValueParserRuleCall_3_3_0()); 
 	    }
-		lv_value_6_0=ruleWMLKeyValue		{
+		lv_values_6_0=ruleWMLKeyValue		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getWMLKeyRule());
 	        }
        		add(
        			$current, 
-       			"value",
-        		lv_value_6_0, 
+       			"values",
+        		lv_values_6_0, 
         		"WMLKeyValue");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -359,28 +359,23 @@ ruleWMLKeyValue returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getWMLKeyValueAccess().getWMLKeyValueAction_0_0(),
-            $current);
-    }
-)
+(
     { 
-        newCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLValueParserRuleCall_0_1()); 
+        newCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLValueParserRuleCall_0()); 
     }
-ruleWMLValue
+    this_WMLValue_0=ruleWMLValue
     { 
+        $current = $this_WMLValue_0.current; 
         afterParserOrEnumRuleCall();
     }
-)
+
     |
     { 
         newCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLMacroCallParserRuleCall_1()); 
     }
-    this_WMLMacroCall_2=ruleWMLMacroCall
+    this_WMLMacroCall_1=ruleWMLMacroCall
     { 
-        $current = $this_WMLMacroCall_2.current; 
+        $current = $this_WMLMacroCall_1.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -388,9 +383,9 @@ ruleWMLValue
     { 
         newCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLLuaCodeParserRuleCall_2()); 
     }
-    this_WMLLuaCode_3=ruleWMLLuaCode
+    this_WMLLuaCode_2=ruleWMLLuaCode
     { 
-        $current = $this_WMLLuaCode_3.current; 
+        $current = $this_WMLLuaCode_2.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -398,9 +393,9 @@ ruleWMLValue
     { 
         newCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLArrayCallParserRuleCall_3()); 
     }
-    this_WMLArrayCall_4=ruleWMLArrayCall
+    this_WMLArrayCall_3=ruleWMLArrayCall
     { 
-        $current = $this_WMLArrayCall_4.current; 
+        $current = $this_WMLArrayCall_3.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -519,28 +514,23 @@ ruleWMLMacroCallParameter returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getWMLMacroCallParameterAccess().getWMLMacroCallParameterAction_0_0(),
-            $current);
-    }
-)
+(
     { 
-        newCompositeNode(grammarAccess.getWMLMacroCallParameterAccess().getWMLMacroParameterParserRuleCall_0_1()); 
+        newCompositeNode(grammarAccess.getWMLMacroCallParameterAccess().getWMLMacroParameterParserRuleCall_0()); 
     }
-ruleWMLMacroParameter
+    this_WMLMacroParameter_0=ruleWMLMacroParameter
     { 
+        $current = $this_WMLMacroParameter_0.current; 
         afterParserOrEnumRuleCall();
     }
-)
+
     |
     { 
         newCompositeNode(grammarAccess.getWMLMacroCallParameterAccess().getWMLMacroCallParserRuleCall_1()); 
     }
-    this_WMLMacroCall_2=ruleWMLMacroCall
+    this_WMLMacroCall_1=ruleWMLMacroCall
     { 
-        $current = $this_WMLMacroCall_2.current; 
+        $current = $this_WMLMacroCall_1.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -965,21 +955,16 @@ ruleWMLValuedExpression returns [EObject current=null]
         afterParserOrEnumRuleCall();
     }
 
-    |((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getWMLValuedExpressionAccess().getWMLValuedExpressionAction_1_0(),
-            $current);
-    }
-)
+    |
     { 
-        newCompositeNode(grammarAccess.getWMLValuedExpressionAccess().getWMLValueParserRuleCall_1_1()); 
+        newCompositeNode(grammarAccess.getWMLValuedExpressionAccess().getWMLValueParserRuleCall_1()); 
     }
-ruleWMLValue
+    this_WMLValue_1=ruleWMLValue
     { 
+        $current = $this_WMLValue_1.current; 
         afterParserOrEnumRuleCall();
     }
-))
+)
 ;
 
 
@@ -1065,16 +1050,16 @@ ruleWMLLuaCode returns [EObject current=null]
 
 
 // Entry rule entryRuleWMLMacroParameter
-entryRuleWMLMacroParameter returns [String current=null] 
+entryRuleWMLMacroParameter returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getWMLMacroParameterRule()); } 
+	{ newCompositeNode(grammarAccess.getWMLMacroParameterRule()); }
 	 iv_ruleWMLMacroParameter=ruleWMLMacroParameter 
-	 { $current=$iv_ruleWMLMacroParameter.current.getText(); }  
+	 { $current=$iv_ruleWMLMacroParameter.current; } 
 	 EOF 
 ;
 
 // Rule WMLMacroParameter
-ruleWMLMacroParameter returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+ruleWMLMacroParameter returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
@@ -1082,11 +1067,9 @@ ruleWMLMacroParameter returns [AntlrDatatypeRuleToken current=new AntlrDatatypeR
     { 
         newCompositeNode(grammarAccess.getWMLMacroParameterAccess().getWMLValueParserRuleCall_0()); 
     }
-    this_WMLValue_0=ruleWMLValue    {
-		$current.merge(this_WMLValue_0);
-    }
-
+    this_WMLValue_0=ruleWMLValue
     { 
+        $current = $this_WMLValue_0.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -1094,170 +1077,268 @@ ruleWMLMacroParameter returns [AntlrDatatypeRuleToken current=new AntlrDatatypeR
     { 
         newCompositeNode(grammarAccess.getWMLMacroParameterAccess().getMacroTokensParserRuleCall_1()); 
     }
-    this_MacroTokens_1=ruleMacroTokens    {
-		$current.merge(this_MacroTokens_1);
-    }
-
+    this_MacroTokens_1=ruleMacroTokens
     { 
+        $current = $this_MacroTokens_1.current; 
         afterParserOrEnumRuleCall();
     }
 )
-    ;
+;
 
 
 
 
 
 // Entry rule entryRuleWMLValue
-entryRuleWMLValue returns [String current=null] 
+entryRuleWMLValue returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getWMLValueRule()); } 
+	{ newCompositeNode(grammarAccess.getWMLValueRule()); }
 	 iv_ruleWMLValue=ruleWMLValue 
-	 { $current=$iv_ruleWMLValue.current.getText(); }  
+	 { $current=$iv_ruleWMLValue.current; } 
 	 EOF 
 ;
 
 // Rule WMLValue
-ruleWMLValue returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+ruleWMLValue returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(    this_ID_0=RULE_ID    {
-		$current.merge(this_ID_0);
-    }
+(
+(
+(
+		lv_value_0_1=RULE_ID
+		{
+			newLeafNode(lv_value_0_1, grammarAccess.getWMLValueAccess().getValueIDTerminalRuleCall_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLValueRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_0_1, 
+        		"ID");
+	    }
 
-    { 
-    newLeafNode(this_ID_0, grammarAccess.getWMLValueAccess().getIDTerminalRuleCall_0()); 
-    }
+    |		lv_value_0_2=RULE_STRING
+		{
+			newLeafNode(lv_value_0_2, grammarAccess.getWMLValueAccess().getValueSTRINGTerminalRuleCall_0_1()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLValueRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_0_2, 
+        		"STRING");
+	    }
 
-    |    this_STRING_1=RULE_STRING    {
-		$current.merge(this_STRING_1);
-    }
-
-    { 
-    newLeafNode(this_STRING_1, grammarAccess.getWMLValueAccess().getSTRINGTerminalRuleCall_1()); 
-    }
-
-    |
-	kw='_' 
+    |		lv_value_0_3=	'_' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getWMLValueAccess().get_Keyword_2()); 
+        newLeafNode(lv_value_0_3, grammarAccess.getWMLValueAccess().getValue_Keyword_0_2());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLValueRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_3, null);
+	    }
 
-    |
-	kw='~' 
+    |		lv_value_0_4=	'~' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getWMLValueAccess().getTildeKeyword_3()); 
+        newLeafNode(lv_value_0_4, grammarAccess.getWMLValueAccess().getValueTildeKeyword_0_3());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLValueRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_4, null);
+	    }
 
-    |
-	kw='.' 
+    |		lv_value_0_5=	'.' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getWMLValueAccess().getFullStopKeyword_4()); 
+        newLeafNode(lv_value_0_5, grammarAccess.getWMLValueAccess().getValueFullStopKeyword_0_4());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLValueRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_5, null);
+	    }
 
-    |
-	kw='./' 
+    |		lv_value_0_6=	'./' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getWMLValueAccess().getFullStopSolidusKeyword_5()); 
+        newLeafNode(lv_value_0_6, grammarAccess.getWMLValueAccess().getValueFullStopSolidusKeyword_0_5());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLValueRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_6, null);
+	    }
 
-    |
-	kw='$' 
+    |		lv_value_0_7=	'$' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getWMLValueAccess().getDollarSignKeyword_6()); 
+        newLeafNode(lv_value_0_7, grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_6());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLValueRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_7, null);
+	    }
 
-    |
-	kw='/' 
+    |		lv_value_0_8=	'/' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getWMLValueAccess().getSolidusKeyword_7()); 
+        newLeafNode(lv_value_0_8, grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_7());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLValueRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_8, null);
+	    }
 
-    |
-	kw='(' 
+    |		lv_value_0_9=	'(' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getWMLValueAccess().getLeftParenthesisKeyword_8()); 
+        newLeafNode(lv_value_0_9, grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_8());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLValueRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_9, null);
+	    }
 
-    |
-	kw=')' 
+    |		lv_value_0_10=	')' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getWMLValueAccess().getRightParenthesisKeyword_9()); 
+        newLeafNode(lv_value_0_10, grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_9());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLValueRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_10, null);
+	    }
 
-    |    this_ANY_OTHER_10=RULE_ANY_OTHER    {
-		$current.merge(this_ANY_OTHER_10);
-    }
+    |		lv_value_0_11=RULE_ANY_OTHER
+		{
+			newLeafNode(lv_value_0_11, grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_10()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLValueRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_0_11, 
+        		"ANY_OTHER");
+	    }
 
-    { 
-    newLeafNode(this_ANY_OTHER_10, grammarAccess.getWMLValueAccess().getANY_OTHERTerminalRuleCall_10()); 
-    }
 )
-    ;
+
+)
+)
+;
 
 
 
 
 
 // Entry rule entryRuleMacroTokens
-entryRuleMacroTokens returns [String current=null] 
+entryRuleMacroTokens returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getMacroTokensRule()); } 
+	{ newCompositeNode(grammarAccess.getMacroTokensRule()); }
 	 iv_ruleMacroTokens=ruleMacroTokens 
-	 { $current=$iv_ruleMacroTokens.current.getText(); }  
+	 { $current=$iv_ruleMacroTokens.current; } 
 	 EOF 
 ;
 
 // Rule MacroTokens
-ruleMacroTokens returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+ruleMacroTokens returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 (
-	kw='=' 
+(
+(
+		lv_value_0_1=	'=' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getMacroTokensAccess().getEqualsSignKeyword_0()); 
+        newLeafNode(lv_value_0_1, grammarAccess.getMacroTokensAccess().getValueEqualsSignKeyword_0_0());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMacroTokensRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_1, null);
+	    }
 
-    |
-	kw='[' 
+    |		lv_value_0_2=	'[' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getMacroTokensAccess().getLeftSquareBracketKeyword_1()); 
+        newLeafNode(lv_value_0_2, grammarAccess.getMacroTokensAccess().getValueLeftSquareBracketKeyword_0_1());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMacroTokensRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_2, null);
+	    }
 
-    |
-	kw=']' 
+    |		lv_value_0_3=	']' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getMacroTokensAccess().getRightSquareBracketKeyword_2()); 
+        newLeafNode(lv_value_0_3, grammarAccess.getMacroTokensAccess().getValueRightSquareBracketKeyword_0_2());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMacroTokensRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_3, null);
+	    }
 
-    |
-	kw='+' 
+    |		lv_value_0_4=	'+' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getMacroTokensAccess().getPlusSignKeyword_3()); 
+        newLeafNode(lv_value_0_4, grammarAccess.getMacroTokensAccess().getValuePlusSignKeyword_0_3());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMacroTokensRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_4, null);
+	    }
 
-    |
-	kw='[/' 
+    |		lv_value_0_5=	'[/' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getMacroTokensAccess().getLeftSquareBracketSolidusKeyword_4()); 
+        newLeafNode(lv_value_0_5, grammarAccess.getMacroTokensAccess().getValueLeftSquareBracketSolidusKeyword_0_4());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMacroTokensRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_0_5, null);
+	    }
+
 )
-    ;
+
+)
+)
+;
 
 
 

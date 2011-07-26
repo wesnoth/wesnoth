@@ -24,7 +24,7 @@
         defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKey" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
         eType="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="eol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -48,8 +48,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLMacroCallParameter"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLArrayCall" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValue"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLMacroDefine" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="Expressions" upperBound="-1"
@@ -123,4 +124,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLMacroParameter" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCallParameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLValue" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValuedExpression platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroParameter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MacroTokens" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroParameter"/>
 </ecore:EPackage>

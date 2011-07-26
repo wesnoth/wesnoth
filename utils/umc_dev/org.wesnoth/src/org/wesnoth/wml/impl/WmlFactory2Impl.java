@@ -10,6 +10,7 @@ package org.wesnoth.wml.impl;
 
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
+import org.wesnoth.wml.WMLValue;
 import org.wesnoth.wml.WmlFactory2;
 
 public class WmlFactory2Impl extends WmlFactoryImpl implements WmlFactory2
@@ -57,8 +58,15 @@ public class WmlFactory2Impl extends WmlFactoryImpl implements WmlFactory2
 
         if ( dataType.startsWith( "enum" ) ) {
             // add the enums values
-            //TODO: fix
+            String[] res = dataType.substring( 4 ).split( "," );
+            for ( String string : res ) {
+                if ( string.length( ) == 0 )
+                    continue;
 
+                WMLValue value = createWMLValue( );
+                value.setValue( string );
+                key.getValues( ).add( value );
+            }
             key.set_Enum( true );
         }
 

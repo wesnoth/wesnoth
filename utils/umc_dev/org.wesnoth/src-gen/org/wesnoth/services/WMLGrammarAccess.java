@@ -98,24 +98,24 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cValueWMLKeyValueParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		private final Assignment cValuesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValuesWMLKeyValueParserRuleCall_2_0 = (RuleCall)cValuesAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final RuleCall cEOLTerminalRuleCall_3_0 = (RuleCall)cGroup_3.eContents().get(0);
 		private final Keyword cPlusSignKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		private final RuleCall cEOLTerminalRuleCall_3_2 = (RuleCall)cGroup_3.eContents().get(2);
-		private final Assignment cValueAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
-		private final RuleCall cValueWMLKeyValueParserRuleCall_3_3_0 = (RuleCall)cValueAssignment_3_3.eContents().get(0);
+		private final Assignment cValuesAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
+		private final RuleCall cValuesWMLKeyValueParserRuleCall_3_3_0 = (RuleCall)cValuesAssignment_3_3.eContents().get(0);
 		private final Assignment cEolAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final Alternatives cEolAlternatives_4_0 = (Alternatives)cEolAssignment_4.eContents().get(0);
 		private final RuleCall cEolEOLTerminalRuleCall_4_0_0 = (RuleCall)cEolAlternatives_4_0.eContents().get(0);
 		private final RuleCall cEolSL_COMMENTTerminalRuleCall_4_0_1 = (RuleCall)cEolAlternatives_4_0.eContents().get(1);
 		
 		//WMLKey hidden(WS):
-		//	name=ID "=" value+=WMLKeyValue* (EOL? "+" EOL? value+=WMLKeyValue+)* eol=(EOL | SL_COMMENT);
+		//	name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol=(EOL | SL_COMMENT);
 		public ParserRule getRule() { return rule; }
 
-		//name=ID "=" value+=WMLKeyValue* (EOL? "+" EOL? value+=WMLKeyValue+)* eol=(EOL | SL_COMMENT)
+		//name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol=(EOL | SL_COMMENT)
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -127,13 +127,13 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
 
-		//value+=WMLKeyValue*
-		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		//values+=WMLKeyValue*
+		public Assignment getValuesAssignment_2() { return cValuesAssignment_2; }
 
 		//WMLKeyValue
-		public RuleCall getValueWMLKeyValueParserRuleCall_2_0() { return cValueWMLKeyValueParserRuleCall_2_0; }
+		public RuleCall getValuesWMLKeyValueParserRuleCall_2_0() { return cValuesWMLKeyValueParserRuleCall_2_0; }
 
-		//(EOL? "+" EOL? value+=WMLKeyValue+)*
+		//(EOL? "+" EOL? values+=WMLKeyValue+)*
 		public Group getGroup_3() { return cGroup_3; }
 
 		//EOL?
@@ -145,11 +145,11 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		//EOL?
 		public RuleCall getEOLTerminalRuleCall_3_2() { return cEOLTerminalRuleCall_3_2; }
 
-		//value+=WMLKeyValue+
-		public Assignment getValueAssignment_3_3() { return cValueAssignment_3_3; }
+		//values+=WMLKeyValue+
+		public Assignment getValuesAssignment_3_3() { return cValuesAssignment_3_3; }
 
 		//WMLKeyValue
-		public RuleCall getValueWMLKeyValueParserRuleCall_3_3_0() { return cValueWMLKeyValueParserRuleCall_3_3_0; }
+		public RuleCall getValuesWMLKeyValueParserRuleCall_3_3_0() { return cValuesWMLKeyValueParserRuleCall_3_3_0; }
 
 		//eol=(EOL | SL_COMMENT)
 		public Assignment getEolAssignment_4() { return cEolAssignment_4; }
@@ -167,28 +167,20 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	public class WMLKeyValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLKeyValue");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cWMLKeyValueAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final RuleCall cWMLValueParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final RuleCall cWMLValueParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cWMLMacroCallParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cWMLLuaCodeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cWMLArrayCallParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//WMLKeyValue:
-		//	{WMLKeyValue} WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
+		//	WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 		public ParserRule getRule() { return rule; }
 
-		//{WMLKeyValue} WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall
+		//WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{WMLKeyValue} WMLValue
-		public Group getGroup_0() { return cGroup_0; }
-
-		//{WMLKeyValue}
-		public Action getWMLKeyValueAction_0_0() { return cWMLKeyValueAction_0_0; }
-
 		//WMLValue
-		public RuleCall getWMLValueParserRuleCall_0_1() { return cWMLValueParserRuleCall_0_1; }
+		public RuleCall getWMLValueParserRuleCall_0() { return cWMLValueParserRuleCall_0; }
 
 		//WMLMacroCall
 		public RuleCall getWMLMacroCallParserRuleCall_1() { return cWMLMacroCallParserRuleCall_1; }
@@ -255,26 +247,18 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	public class WMLMacroCallParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLMacroCallParameter");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cWMLMacroCallParameterAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final RuleCall cWMLMacroParameterParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final RuleCall cWMLMacroParameterParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cWMLMacroCallParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//WMLMacroCallParameter:
-		//	{WMLMacroCallParameter} WMLMacroParameter | WMLMacroCall;
+		//	WMLMacroParameter | WMLMacroCall;
 		public ParserRule getRule() { return rule; }
 
-		//{WMLMacroCallParameter} WMLMacroParameter | WMLMacroCall
+		//WMLMacroParameter | WMLMacroCall
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{WMLMacroCallParameter} WMLMacroParameter
-		public Group getGroup_0() { return cGroup_0; }
-
-		//{WMLMacroCallParameter}
-		public Action getWMLMacroCallParameterAction_0_0() { return cWMLMacroCallParameterAction_0_0; }
-
 		//WMLMacroParameter
-		public RuleCall getWMLMacroParameterParserRuleCall_0_1() { return cWMLMacroParameterParserRuleCall_0_1; }
+		public RuleCall getWMLMacroParameterParserRuleCall_0() { return cWMLMacroParameterParserRuleCall_0; }
 
 		//WMLMacroCall
 		public RuleCall getWMLMacroCallParserRuleCall_1() { return cWMLMacroCallParserRuleCall_1; }
@@ -474,28 +458,20 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLValuedExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cWMLExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cWMLValuedExpressionAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final RuleCall cWMLValueParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final RuleCall cWMLValueParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//WMLValuedExpression:
-		//	WMLExpression | {WMLValuedExpression} WMLValue;
+		//	WMLExpression | WMLValue;
 		public ParserRule getRule() { return rule; }
 
-		//WMLExpression | {WMLValuedExpression} WMLValue
+		//WMLExpression | WMLValue
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//WMLExpression
 		public RuleCall getWMLExpressionParserRuleCall_0() { return cWMLExpressionParserRuleCall_0; }
 
-		//{WMLValuedExpression} WMLValue
-		public Group getGroup_1() { return cGroup_1; }
-
-		//{WMLValuedExpression}
-		public Action getWMLValuedExpressionAction_1_0() { return cWMLValuedExpressionAction_1_0; }
-
 		//WMLValue
-		public RuleCall getWMLValueParserRuleCall_1_1() { return cWMLValueParserRuleCall_1_1; }
+		public RuleCall getWMLValueParserRuleCall_1() { return cWMLValueParserRuleCall_1; }
 	}
 
 	public class WMLTextdomainElements extends AbstractParserRuleElementFinder {
@@ -536,7 +512,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWMLValueParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMacroTokensParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//WMLMacroParameter returns ecore::EString:
+		//WMLMacroParameter:
 		//	WMLValue | MacroTokens;
 		public ParserRule getRule() { return rule; }
 
@@ -552,92 +528,100 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class WMLValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLValue");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cSTRINGTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final Keyword c_Keyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cTildeKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cFullStopKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
-		private final Keyword cFullStopSolidusKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
-		private final Keyword cDollarSignKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
-		private final Keyword cSolidusKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
-		private final Keyword cLeftParenthesisKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
-		private final Keyword cRightParenthesisKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
-		private final RuleCall cANY_OTHERTerminalRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final Alternatives cValueAlternatives_0 = (Alternatives)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueIDTerminalRuleCall_0_0 = (RuleCall)cValueAlternatives_0.eContents().get(0);
+		private final RuleCall cValueSTRINGTerminalRuleCall_0_1 = (RuleCall)cValueAlternatives_0.eContents().get(1);
+		private final Keyword cValue_Keyword_0_2 = (Keyword)cValueAlternatives_0.eContents().get(2);
+		private final Keyword cValueTildeKeyword_0_3 = (Keyword)cValueAlternatives_0.eContents().get(3);
+		private final Keyword cValueFullStopKeyword_0_4 = (Keyword)cValueAlternatives_0.eContents().get(4);
+		private final Keyword cValueFullStopSolidusKeyword_0_5 = (Keyword)cValueAlternatives_0.eContents().get(5);
+		private final Keyword cValueDollarSignKeyword_0_6 = (Keyword)cValueAlternatives_0.eContents().get(6);
+		private final Keyword cValueSolidusKeyword_0_7 = (Keyword)cValueAlternatives_0.eContents().get(7);
+		private final Keyword cValueLeftParenthesisKeyword_0_8 = (Keyword)cValueAlternatives_0.eContents().get(8);
+		private final Keyword cValueRightParenthesisKeyword_0_9 = (Keyword)cValueAlternatives_0.eContents().get(9);
+		private final RuleCall cValueANY_OTHERTerminalRuleCall_0_10 = (RuleCall)cValueAlternatives_0.eContents().get(10);
 		
-		//WMLValue returns ecore::EString:
-		//	ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER;
+		//WMLValue:
+		//	value=(ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER);
 		public ParserRule getRule() { return rule; }
 
+		//value=(ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER)
+		public Assignment getValueAssignment() { return cValueAssignment; }
+
 		//ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER
-		public Alternatives getAlternatives() { return cAlternatives; }
+		public Alternatives getValueAlternatives_0() { return cValueAlternatives_0; }
 
 		//ID
-		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+		public RuleCall getValueIDTerminalRuleCall_0_0() { return cValueIDTerminalRuleCall_0_0; }
 
 		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_1() { return cSTRINGTerminalRuleCall_1; }
+		public RuleCall getValueSTRINGTerminalRuleCall_0_1() { return cValueSTRINGTerminalRuleCall_0_1; }
 
 		//"_"
-		public Keyword get_Keyword_2() { return c_Keyword_2; }
+		public Keyword getValue_Keyword_0_2() { return cValue_Keyword_0_2; }
 
 		//"~"
-		public Keyword getTildeKeyword_3() { return cTildeKeyword_3; }
+		public Keyword getValueTildeKeyword_0_3() { return cValueTildeKeyword_0_3; }
 
 		//"."
-		public Keyword getFullStopKeyword_4() { return cFullStopKeyword_4; }
+		public Keyword getValueFullStopKeyword_0_4() { return cValueFullStopKeyword_0_4; }
 
 		//"./"
-		public Keyword getFullStopSolidusKeyword_5() { return cFullStopSolidusKeyword_5; }
+		public Keyword getValueFullStopSolidusKeyword_0_5() { return cValueFullStopSolidusKeyword_0_5; }
 
 		//"$"
-		public Keyword getDollarSignKeyword_6() { return cDollarSignKeyword_6; }
+		public Keyword getValueDollarSignKeyword_0_6() { return cValueDollarSignKeyword_0_6; }
 
 		//"/"
-		public Keyword getSolidusKeyword_7() { return cSolidusKeyword_7; }
+		public Keyword getValueSolidusKeyword_0_7() { return cValueSolidusKeyword_0_7; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_8() { return cLeftParenthesisKeyword_8; }
+		public Keyword getValueLeftParenthesisKeyword_0_8() { return cValueLeftParenthesisKeyword_0_8; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_9() { return cRightParenthesisKeyword_9; }
+		public Keyword getValueRightParenthesisKeyword_0_9() { return cValueRightParenthesisKeyword_0_9; }
 
 		//ANY_OTHER
-		public RuleCall getANY_OTHERTerminalRuleCall_10() { return cANY_OTHERTerminalRuleCall_10; }
+		public RuleCall getValueANY_OTHERTerminalRuleCall_0_10() { return cValueANY_OTHERTerminalRuleCall_0_10; }
 	}
 
 	public class MacroTokensElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MacroTokens");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cEqualsSignKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cPlusSignKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cLeftSquareBracketSolidusKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final Alternatives cValueAlternatives_0 = (Alternatives)cValueAssignment.eContents().get(0);
+		private final Keyword cValueEqualsSignKeyword_0_0 = (Keyword)cValueAlternatives_0.eContents().get(0);
+		private final Keyword cValueLeftSquareBracketKeyword_0_1 = (Keyword)cValueAlternatives_0.eContents().get(1);
+		private final Keyword cValueRightSquareBracketKeyword_0_2 = (Keyword)cValueAlternatives_0.eContents().get(2);
+		private final Keyword cValuePlusSignKeyword_0_3 = (Keyword)cValueAlternatives_0.eContents().get(3);
+		private final Keyword cValueLeftSquareBracketSolidusKeyword_0_4 = (Keyword)cValueAlternatives_0.eContents().get(4);
 		
 		//// we use this as a hack for any characters in the macro call
 		//// so we won't trigger things like: key=value or [tag]
-		//MacroTokens returns ecore::EString:
-		//	"=" | "[" | "]" | "+" | "[/";
+		//MacroTokens:
+		//	value=("=" | "[" | "]" | "+" | "[/");
 		public ParserRule getRule() { return rule; }
 
+		//value=("=" | "[" | "]" | "+" | "[/")
+		public Assignment getValueAssignment() { return cValueAssignment; }
+
 		//"=" | "[" | "]" | "+" | "[/"
-		public Alternatives getAlternatives() { return cAlternatives; }
+		public Alternatives getValueAlternatives_0() { return cValueAlternatives_0; }
 
 		//"="
-		public Keyword getEqualsSignKeyword_0() { return cEqualsSignKeyword_0; }
+		public Keyword getValueEqualsSignKeyword_0_0() { return cValueEqualsSignKeyword_0_0; }
 
 		//"["
-		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
+		public Keyword getValueLeftSquareBracketKeyword_0_1() { return cValueLeftSquareBracketKeyword_0_1; }
 
 		//"]"
-		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
+		public Keyword getValueRightSquareBracketKeyword_0_2() { return cValueRightSquareBracketKeyword_0_2; }
 
 		//"+"
-		public Keyword getPlusSignKeyword_3() { return cPlusSignKeyword_3; }
+		public Keyword getValuePlusSignKeyword_0_3() { return cValuePlusSignKeyword_0_3; }
 
 		//"[/"
-		public Keyword getLeftSquareBracketSolidusKeyword_4() { return cLeftSquareBracketSolidusKeyword_4; }
+		public Keyword getValueLeftSquareBracketSolidusKeyword_0_4() { return cValueLeftSquareBracketSolidusKeyword_0_4; }
 	}
 	
 	
@@ -709,7 +693,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLKey hidden(WS):
-	//	name=ID "=" value+=WMLKeyValue* (EOL? "+" EOL? value+=WMLKeyValue+)* eol=(EOL | SL_COMMENT);
+	//	name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol=(EOL | SL_COMMENT);
 	public WMLKeyElements getWMLKeyAccess() {
 		return (pWMLKey != null) ? pWMLKey : (pWMLKey = new WMLKeyElements());
 	}
@@ -719,7 +703,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLKeyValue:
-	//	{WMLKeyValue} WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
+	//	WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 	public WMLKeyValueElements getWMLKeyValueAccess() {
 		return (pWMLKeyValue != null) ? pWMLKeyValue : (pWMLKeyValue = new WMLKeyValueElements());
 	}
@@ -739,7 +723,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLMacroCallParameter:
-	//	{WMLMacroCallParameter} WMLMacroParameter | WMLMacroCall;
+	//	WMLMacroParameter | WMLMacroCall;
 	public WMLMacroCallParameterElements getWMLMacroCallParameterAccess() {
 		return (pWMLMacroCallParameter != null) ? pWMLMacroCallParameter : (pWMLMacroCallParameter = new WMLMacroCallParameterElements());
 	}
@@ -800,7 +784,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLValuedExpression:
-	//	WMLExpression | {WMLValuedExpression} WMLValue;
+	//	WMLExpression | WMLValue;
 	public WMLValuedExpressionElements getWMLValuedExpressionAccess() {
 		return (pWMLValuedExpression != null) ? pWMLValuedExpression : (pWMLValuedExpression = new WMLValuedExpressionElements());
 	}
@@ -829,7 +813,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getWMLLuaCodeAccess().getRule();
 	}
 
-	//WMLMacroParameter returns ecore::EString:
+	//WMLMacroParameter:
 	//	WMLValue | MacroTokens;
 	public WMLMacroParameterElements getWMLMacroParameterAccess() {
 		return (pWMLMacroParameter != null) ? pWMLMacroParameter : (pWMLMacroParameter = new WMLMacroParameterElements());
@@ -839,8 +823,8 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getWMLMacroParameterAccess().getRule();
 	}
 
-	//WMLValue returns ecore::EString:
-	//	ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER;
+	//WMLValue:
+	//	value=(ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER);
 	public WMLValueElements getWMLValueAccess() {
 		return (pWMLValue != null) ? pWMLValue : (pWMLValue = new WMLValueElements());
 	}
@@ -851,8 +835,8 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// we use this as a hack for any characters in the macro call
 	//// so we won't trigger things like: key=value or [tag]
-	//MacroTokens returns ecore::EString:
-	//	"=" | "[" | "]" | "+" | "[/";
+	//MacroTokens:
+	//	value=("=" | "[" | "]" | "+" | "[/");
 	public MacroTokensElements getMacroTokensAccess() {
 		return (pMacroTokens != null) ? pMacroTokens : (pMacroTokens = new MacroTokensElements());
 	}

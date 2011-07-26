@@ -32,7 +32,7 @@ import org.wesnoth.wml.WmlPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wml.impl.WMLKeyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLKeyImpl#getValues <em>Values</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLKeyImpl#getEol <em>Eol</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLKeyImpl#is_Enum <em>Enum</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLKeyImpl#is_Translatable <em>Translatable</em>}</li>
@@ -45,14 +45,14 @@ import org.wesnoth.wml.WmlPackage;
 public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
 {
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference list.
+   * The cached value of the '{@link #getValues() <em>Values</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getValues()
    * @generated
    * @ordered
    */
-  protected EList<WMLKeyValue> value;
+  protected EList<WMLKeyValue> values;
 
   /**
    * The default value of the '{@link #getEol() <em>Eol</em>}' attribute.
@@ -160,13 +160,13 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLKeyValue> getValue()
+  public EList<WMLKeyValue> getValues()
   {
-    if (value == null)
+    if (values == null)
     {
-      value = new EObjectContainmentEList<WMLKeyValue>(WMLKeyValue.class, this, WmlPackage.WML_KEY__VALUE);
+      values = new EObjectContainmentEList<WMLKeyValue>(WMLKeyValue.class, this, WmlPackage.WML_KEY__VALUES);
     }
-    return value;
+    return values;
   }
 
   /**
@@ -271,8 +271,8 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
   {
     switch (featureID)
     {
-      case WmlPackage.WML_KEY__VALUE:
-        return ((InternalEList<?>)getValue()).basicRemove(otherEnd, msgs);
+      case WmlPackage.WML_KEY__VALUES:
+        return ((InternalEList<?>)getValues()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -287,8 +287,8 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
   {
     switch (featureID)
     {
-      case WmlPackage.WML_KEY__VALUE:
-        return getValue();
+      case WmlPackage.WML_KEY__VALUES:
+        return getValues();
       case WmlPackage.WML_KEY__EOL:
         return getEol();
       case WmlPackage.WML_KEY__ENUM:
@@ -312,9 +312,9 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
   {
     switch (featureID)
     {
-      case WmlPackage.WML_KEY__VALUE:
-        getValue().clear();
-        getValue().addAll((Collection<? extends WMLKeyValue>)newValue);
+      case WmlPackage.WML_KEY__VALUES:
+        getValues().clear();
+        getValues().addAll((Collection<? extends WMLKeyValue>)newValue);
         return;
       case WmlPackage.WML_KEY__EOL:
         setEol((String)newValue);
@@ -342,8 +342,8 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
   {
     switch (featureID)
     {
-      case WmlPackage.WML_KEY__VALUE:
-        getValue().clear();
+      case WmlPackage.WML_KEY__VALUES:
+        getValues().clear();
         return;
       case WmlPackage.WML_KEY__EOL:
         setEol(EOL_EDEFAULT);
@@ -371,8 +371,8 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
   {
     switch (featureID)
     {
-      case WmlPackage.WML_KEY__VALUE:
-        return value != null && !value.isEmpty();
+      case WmlPackage.WML_KEY__VALUES:
+        return values != null && !values.isEmpty();
       case WmlPackage.WML_KEY__EOL:
         return EOL_EDEFAULT == null ? eol != null : !EOL_EDEFAULT.equals(eol);
       case WmlPackage.WML_KEY__ENUM:

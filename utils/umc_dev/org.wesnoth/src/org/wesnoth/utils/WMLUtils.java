@@ -149,7 +149,7 @@ public class WMLUtils
      */
     public static String toWMLString( WMLKey key )
     {
-        return key.getName( ) + "=" + getKeyValue( key.getValue( ) );
+        return key.getName( ) + "=" + getKeyValue( key.getValues( ) );
     }
 
     /**

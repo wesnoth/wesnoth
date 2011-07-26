@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wml.WMLKey#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLKey#getValues <em>Values</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLKey#getEol <em>Eol</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLKey#is_Enum <em>Enum</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLKey#is_Translatable <em>Translatable</em>}</li>
@@ -31,20 +31,20 @@ import org.eclipse.emf.common.util.EList;
 public interface WMLKey extends WMLExpression
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Values</b></em>' containment reference list.
    * The list contents are of type {@link org.wesnoth.wml.WMLKeyValue}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Values</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' containment reference list.
-   * @see org.wesnoth.wml.WmlPackage#getWMLKey_Value()
+   * @return the value of the '<em>Values</em>' containment reference list.
+   * @see org.wesnoth.wml.WmlPackage#getWMLKey_Values()
    * @model containment="true"
    * @generated
    */
-  EList<WMLKeyValue> getValue();
+  EList<WMLKeyValue> getValues();
 
   /**
    * Returns the value of the '<em><b>Eol</b></em>' attribute.

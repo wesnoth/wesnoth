@@ -20,7 +20,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/_Description"/>
     </genClasses>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/values"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/eol"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/_Enum"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/_Translatable"/>
@@ -34,7 +34,7 @@
     </genClasses>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCallParameter"/>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLArrayCall">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLArrayCall/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLArrayCall/value"/>
     </genClasses>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroDefine">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroDefine/Expressions"/>
@@ -64,5 +64,10 @@
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLLuaCode">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLLuaCode/value"/>
     </genClasses>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroParameter/value"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValue"/>
+    <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//MacroTokens"/>
   </genPackages>
 </genmodel:GenModel>

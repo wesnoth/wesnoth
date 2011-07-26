@@ -301,13 +301,13 @@ public interface WmlPackage extends EPackage
   int WML_KEY__CARDINALITY = WML_EXPRESSION__CARDINALITY;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' containment reference list.
+   * The feature id for the '<em><b>Values</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_KEY__VALUE = WML_EXPRESSION_FEATURE_COUNT + 0;
+  int WML_KEY__VALUES = WML_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Eol</b></em>' attribute.
@@ -467,7 +467,7 @@ public interface WmlPackage extends EPackage
   int WML_ARRAY_CALL = 6;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute list.
+   * The feature id for the '<em><b>Value</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -677,6 +677,90 @@ public interface WmlPackage extends EPackage
    */
   int WML_LUA_CODE_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 1;
 
+  /**
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLMacroParameterImpl <em>WML Macro Parameter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.wesnoth.wml.impl.WMLMacroParameterImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroParameter()
+   * @generated
+   */
+  int WML_MACRO_PARAMETER = 14;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_PARAMETER__VALUE = WML_MACRO_CALL_PARAMETER_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>WML Macro Parameter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_PARAMETER_FEATURE_COUNT = WML_MACRO_CALL_PARAMETER_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.wesnoth.wml.impl.WMLValueImpl <em>WML Value</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.wesnoth.wml.impl.WMLValueImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLValue()
+   * @generated
+   */
+  int WML_VALUE = 15;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_VALUE__VALUE = WML_KEY_VALUE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>WML Value</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_VALUE_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.wesnoth.wml.impl.MacroTokensImpl <em>Macro Tokens</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.wesnoth.wml.impl.MacroTokensImpl
+   * @see org.wesnoth.wml.impl.WmlPackageImpl#getMacroTokens()
+   * @generated
+   */
+  int MACRO_TOKENS = 16;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MACRO_TOKENS__VALUE = WML_MACRO_PARAMETER__VALUE;
+
+  /**
+   * The number of structural features of the '<em>Macro Tokens</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MACRO_TOKENS_FEATURE_COUNT = WML_MACRO_PARAMETER_FEATURE_COUNT + 0;
+
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wml.WMLRoot <em>WML Root</em>}'.
@@ -786,15 +870,15 @@ public interface WmlPackage extends EPackage
   EClass getWMLKey();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLKey#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLKey#getValues <em>Values</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Value</em>'.
-   * @see org.wesnoth.wml.WMLKey#getValue()
+   * @return the meta object for the containment reference list '<em>Values</em>'.
+   * @see org.wesnoth.wml.WMLKey#getValues()
    * @see #getWMLKey()
    * @generated
    */
-  EReference getWMLKey_Value();
+  EReference getWMLKey_Values();
 
   /**
    * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLKey#getEol <em>Eol</em>}'.
@@ -914,15 +998,15 @@ public interface WmlPackage extends EPackage
   EClass getWMLArrayCall();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.wesnoth.wml.WMLArrayCall#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wml.WMLArrayCall#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Value</em>'.
+   * @return the meta object for the containment reference list '<em>Value</em>'.
    * @see org.wesnoth.wml.WMLArrayCall#getValue()
    * @see #getWMLArrayCall()
    * @generated
    */
-  EAttribute getWMLArrayCall_Value();
+  EReference getWMLArrayCall_Value();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wml.WMLMacroDefine <em>WML Macro Define</em>}'.
@@ -1094,6 +1178,47 @@ public interface WmlPackage extends EPackage
   EAttribute getWMLLuaCode_Value();
 
   /**
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLMacroParameter <em>WML Macro Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>WML Macro Parameter</em>'.
+   * @see org.wesnoth.wml.WMLMacroParameter
+   * @generated
+   */
+  EClass getWMLMacroParameter();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLMacroParameter#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.wesnoth.wml.WMLMacroParameter#getValue()
+   * @see #getWMLMacroParameter()
+   * @generated
+   */
+  EAttribute getWMLMacroParameter_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.wesnoth.wml.WMLValue <em>WML Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>WML Value</em>'.
+   * @see org.wesnoth.wml.WMLValue
+   * @generated
+   */
+  EClass getWMLValue();
+
+  /**
+   * Returns the meta object for class '{@link org.wesnoth.wml.MacroTokens <em>Macro Tokens</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Macro Tokens</em>'.
+   * @see org.wesnoth.wml.MacroTokens
+   * @generated
+   */
+  EClass getMacroTokens();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1203,12 +1328,12 @@ public interface WmlPackage extends EPackage
     EClass WML_KEY = eINSTANCE.getWMLKey();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Values</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference WML_KEY__VALUE = eINSTANCE.getWMLKey_Value();
+    EReference WML_KEY__VALUES = eINSTANCE.getWMLKey_Values();
 
     /**
      * The meta object literal for the '<em><b>Eol</b></em>' attribute feature.
@@ -1307,12 +1432,12 @@ public interface WmlPackage extends EPackage
     EClass WML_ARRAY_CALL = eINSTANCE.getWMLArrayCall();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute WML_ARRAY_CALL__VALUE = eINSTANCE.getWMLArrayCall_Value();
+    EReference WML_ARRAY_CALL__VALUE = eINSTANCE.getWMLArrayCall_Value();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLMacroDefineImpl <em>WML Macro Define</em>}' class.
@@ -1455,6 +1580,44 @@ public interface WmlPackage extends EPackage
      * @generated
      */
     EAttribute WML_LUA_CODE__VALUE = eINSTANCE.getWMLLuaCode_Value();
+
+    /**
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLMacroParameterImpl <em>WML Macro Parameter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.wesnoth.wml.impl.WMLMacroParameterImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLMacroParameter()
+     * @generated
+     */
+    EClass WML_MACRO_PARAMETER = eINSTANCE.getWMLMacroParameter();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_MACRO_PARAMETER__VALUE = eINSTANCE.getWMLMacroParameter_Value();
+
+    /**
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLValueImpl <em>WML Value</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.wesnoth.wml.impl.WMLValueImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getWMLValue()
+     * @generated
+     */
+    EClass WML_VALUE = eINSTANCE.getWMLValue();
+
+    /**
+     * The meta object literal for the '{@link org.wesnoth.wml.impl.MacroTokensImpl <em>Macro Tokens</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.wesnoth.wml.impl.MacroTokensImpl
+     * @see org.wesnoth.wml.impl.WmlPackageImpl#getMacroTokens()
+     * @generated
+     */
+    EClass MACRO_TOKENS = eINSTANCE.getMacroTokens();
 
   }
 

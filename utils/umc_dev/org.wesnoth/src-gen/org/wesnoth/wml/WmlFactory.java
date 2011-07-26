@@ -153,6 +153,33 @@ public interface WmlFactory extends EFactory
   WMLLuaCode createWMLLuaCode();
 
   /**
+   * Returns a new object of class '<em>WML Macro Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>WML Macro Parameter</em>'.
+   * @generated
+   */
+  WMLMacroParameter createWMLMacroParameter();
+
+  /**
+   * Returns a new object of class '<em>WML Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>WML Value</em>'.
+   * @generated
+   */
+  WMLValue createWMLValue();
+
+  /**
+   * Returns a new object of class '<em>Macro Tokens</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Macro Tokens</em>'.
+   * @generated
+   */
+  MacroTokens createMacroTokens();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

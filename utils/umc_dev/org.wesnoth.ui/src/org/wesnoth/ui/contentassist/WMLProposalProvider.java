@@ -210,7 +210,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		        WMLKey tagKey = WMLUtils.getKeyByName( tag, keyName );
 		        if ( tagKey != null && tagKey.is_Enum() )
 		        {
-		            for(WMLKeyValue val : tagKey.getValue( ) )
+		            for(WMLKeyValue val : tagKey.getValues( ) )
 		            {
 		                acceptor.accept(createCompletionProposal(
 		                        val.toString( ), context, KEY_VALUE_PRIORITY ) );
