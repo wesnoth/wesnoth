@@ -69,7 +69,8 @@ move::move(size_t team_index, const pathfind::marked_route& route,
   fake_unit_(fake_unit),
   valid_(true),
   arrow_brightness_(),
-  arrow_texture_()
+  arrow_texture_(),
+  mover_()
 {
 	assert(!route_->steps.empty());
 
@@ -89,6 +90,7 @@ move::move(config const& cfg)
 	, valid_(true)
 	, arrow_brightness_()
 	, arrow_texture_()
+	, mover_()
 {
 	// Construct and validate unit_
 	unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
@@ -218,7 +220,7 @@ action::EXEC_RESULT move::execute()
 		return action::SUCCESS; //zero-hex move, used by attack subclass
 
 	//Ensure destination hex is free
-	if (resources::units->find(get_dest_hex()) != resources::units->end())
+	if (get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != NULL)
 		return action::FAIL;
 
 	LOG_WB << "Executing: " << shared_from_this() << "\n";
@@ -293,6 +295,7 @@ action::EXEC_RESULT move::execute()
 						<< ") to (" << new_path.back() << ").\n";
 				//FIXME: probably better to use the new calculate_new_route instead of doing this
 				route_->steps = new_path;
+				arrow_->set_path(new_path);
 			}
 			else //Unit ended up in location outside path, likely due to a WML event
 			{
@@ -371,11 +374,10 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	// Move the unit
 	DBG_WB << "Move: Temporarily moving unit " << unit.name() << " [" << unit.id()
 			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")\n";
-	unit_map.move(get_source_hex(), get_dest_hex());
-
+	mover_.reset(new temporary_unit_mover(unit_map,get_source_hex(), get_dest_hex()));
 }
 
-void move::remove_temp_modifier(unit_map& unit_map)
+void move::remove_temp_modifier(unit_map&)
 {
 	if (get_source_hex() == get_dest_hex())
 		return; //zero-hex move, probably used by attack subclass
@@ -391,8 +393,7 @@ void move::remove_temp_modifier(unit_map& unit_map)
 	unit.set_movement(unit.movement_left() + movement_cost_);
 
 	// Restore the unit to its original position
-	unit_map.move(get_dest_hex(), get_source_hex());
-
+	mover_.reset();
 }
 
 void move::draw_hex(const map_location& hex)

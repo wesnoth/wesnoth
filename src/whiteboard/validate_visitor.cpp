@@ -117,7 +117,7 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 	if (m.get_source_hex() != m.get_dest_hex()) //allow for zero-hex, move, in which case we skip pathfinding
 	{
 		//verify that the destination hex is free
-		if (resources::units->find(m.get_dest_hex()) != resources::units->end())
+		if (get_visible_unit(m.get_dest_hex(),resources::teams->at(viewer_team())) != NULL)
 			return OBSTRUCTED;
 
 		pathfind::marked_route new_route;

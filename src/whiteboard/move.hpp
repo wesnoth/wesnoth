@@ -23,6 +23,8 @@
 #include "action.hpp"
 #include "map_location.hpp"
 
+struct temporary_unit_mover;
+
 namespace wb {
 
 /**
@@ -103,6 +105,7 @@ protected:
 private:
 	void init();
 	void update_arrow_style();
+	boost::scoped_ptr<temporary_unit_mover> mover_;
 };
 
 /** Dumps an move on a stream, for debug purposes. */
