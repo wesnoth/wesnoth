@@ -11,6 +11,10 @@ package org.wesnoth.ui.editor;
 import org.eclipse.xtext.ui.editor.AbstractDirtyStateAwareEditorCallback;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 
+/**
+ * We use this class to suppress the default one which asks for adding
+ * a xtext nature on non-xtext project. We don't want that (yet)
+ */
 public class WMLAbstractDirtyEditorCallback extends AbstractDirtyStateAwareEditorCallback
 {
 	@Override
