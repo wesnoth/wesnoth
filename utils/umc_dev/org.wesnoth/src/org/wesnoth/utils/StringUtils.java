@@ -144,15 +144,37 @@ public class StringUtils
 	 * @param string The string to trim
 	 * @return A new string that doesn't have any trailling separators
 	 */
-	public static String trimPathSeparators(String string)
+	public static String trimEndPathSeparators(String string)
 	{
-		if (string == null || string.isEmpty())
+		if ( isNullOrEmpty( string ) )
 			return ""; //$NON-NLS-1$
 
 		while (string.charAt(string.length() - 1) == '/' ||
 				string.charAt(string.length() - 1) == '\\')
 			string = string.substring(0, string.length() - 1);
 		return string;
+	}
+
+	/**
+	 * Trims any quotes " of the specified string
+	 * @param string The string to trim
+	 * @return A new string with the quotes trimmed
+	 */
+	public static String trimQuotes( String string )
+	{
+	    if ( isNullOrEmpty( string ) )
+	        return "";
+
+	    while ( string.charAt( 0 ) == '"' )
+	        string = string.substring( 1 );
+
+	    int strSize = string.length( ) - 1;
+	    while ( strSize >= 0 && string.charAt( strSize ) == '"' ){
+	        string = string.substring( 0, strSize );
+	        -- strSize;
+	    }
+
+	    return string;
 	}
 
 	/**
@@ -167,7 +189,7 @@ public class StringUtils
 		if (path == null)
 			return ""; //$NON-NLS-1$
 
-		String str = StringUtils.trimPathSeparators(path);
+		String str = StringUtils.trimEndPathSeparators(path);
 		StringBuilder sb = new StringBuilder(str.length());
 
 		// normalize strings - remove repeating separators and replace them by |

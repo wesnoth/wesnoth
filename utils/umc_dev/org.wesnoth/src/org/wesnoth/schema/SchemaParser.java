@@ -192,7 +192,9 @@ public class SchemaParser
 								"Error. invalid primitive on line :" + index); //$NON-NLS-1$
 						continue;
 					}
-					primitives_.put(tokens[0].trim(), tokens[1].trim());
+
+					primitives_.put(tokens[0].trim(),
+					        StringUtils.trimQuotes( tokens[1].trim( ) ) );
 				}
 				else if (tagStack.peek().equals("description")) //$NON-NLS-1$
 				{
