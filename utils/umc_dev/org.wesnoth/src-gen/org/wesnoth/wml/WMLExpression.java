@@ -83,6 +83,38 @@ public interface WMLExpression extends WMLValuedExpression
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _Cardinality == \'1\';'"
+   * @generated
+   */
+  boolean is_Required();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _Cardinality == \'-\';'"
+   * @generated
+   */
+  boolean is_Forbidden();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _Cardinality == \'?\';'"
+   * @generated
+   */
+  boolean is_Optional();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _Cardinality == \'*\';'"
+   * @generated
+   */
+  boolean is_Repeatable();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @model kind="operation"
    *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return ( this instanceof WMLTag );'"
    * @generated

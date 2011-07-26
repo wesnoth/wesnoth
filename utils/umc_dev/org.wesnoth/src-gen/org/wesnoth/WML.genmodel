@@ -25,10 +25,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/_Enum"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/_Translatable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/_DataType"/>
-      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/is_Required"/>
-      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/is_Forbidden"/>
-      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/is_Optional"/>
-      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/is_Repeatable"/>
     </genClasses>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue"/>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCall">
@@ -54,6 +50,10 @@
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/_Cardinality"/>
+      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/is_Required"/>
+      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/is_Forbidden"/>
+      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/is_Optional"/>
+      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/is_Repeatable"/>
       <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/isWMLTag"/>
       <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/asWMLTag"/>
       <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/isWMLKey"/>

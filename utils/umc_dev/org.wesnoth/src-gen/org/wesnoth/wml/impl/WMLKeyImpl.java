@@ -266,46 +266,6 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean is_Required()
-  {
-    return _Cardinality == '1';
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public boolean is_Forbidden()
-  {
-    return _Cardinality == '-';
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public boolean is_Optional()
-  {
-    return _Cardinality == '?';
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public boolean is_Repeatable()
-  {
-    return _Cardinality == '*';
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {

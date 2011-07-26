@@ -734,14 +734,6 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     initEAttribute(getWMLKey__Translatable(), ecorePackage.getEBoolean(), "_Translatable", "false", 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLKey__DataType(), ecorePackage.getEString(), "_DataType", "", 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    addEOperation(wmlKeyEClass, ecorePackage.getEBoolean(), "is_Required", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-    addEOperation(wmlKeyEClass, ecorePackage.getEBoolean(), "is_Forbidden", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-    addEOperation(wmlKeyEClass, ecorePackage.getEBoolean(), "is_Optional", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-    addEOperation(wmlKeyEClass, ecorePackage.getEBoolean(), "is_Repeatable", 0, 1, IS_UNIQUE, IS_ORDERED);
-
     initEClass(wmlKeyValueEClass, WMLKeyValue.class, "WMLKeyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(wmlMacroCallEClass, WMLMacroCall.class, "WMLMacroCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -769,6 +761,14 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     initEClass(wmlExpressionEClass, WMLExpression.class, "WMLExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLExpression_Name(), ecorePackage.getEString(), "name", "", 0, 1, WMLExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLExpression__Cardinality(), ecorePackage.getEChar(), "_Cardinality", " ", 0, 1, WMLExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    addEOperation(wmlExpressionEClass, ecorePackage.getEBoolean(), "is_Required", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+    addEOperation(wmlExpressionEClass, ecorePackage.getEBoolean(), "is_Forbidden", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+    addEOperation(wmlExpressionEClass, ecorePackage.getEBoolean(), "is_Optional", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+    addEOperation(wmlExpressionEClass, ecorePackage.getEBoolean(), "is_Repeatable", 0, 1, IS_UNIQUE, IS_ORDERED);
 
     addEOperation(wmlExpressionEClass, ecorePackage.getEBoolean(), "isWMLTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 

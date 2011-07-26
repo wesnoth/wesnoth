@@ -16,6 +16,12 @@ process( EClass this ):
     // enrich the grammar elements with schema-specific attributes
     if name == "WMLExpression" then {
         createAttribute( "_Cardinality", "EChar", " " ) ->
+        
+        createCardinalityOperation( "is_Required", '1' ) ->
+        createCardinalityOperation( "is_Forbidden", '-' ) ->
+        createCardinalityOperation( "is_Optional", '?' ) ->
+        createCardinalityOperation( "is_Repeatable", '*' ) ->
+        
         createOperation( "isWMLTag", "return ( this instanceof WMLTag );", "EBoolean" ) ->
         createOperation( "asWMLTag", "if ( !( this instanceof WMLTag ) ) return null; return ( WMLTag ) this;", "WMLTag" ) ->
         createOperation( "isWMLKey", "return ( this instanceof WMLKey );", "EBoolean" ) ->
@@ -27,12 +33,7 @@ process( EClass this ):
     } else if name == "WMLKey" then {
         createAttribute( "_Enum", "EBoolean", "false" ) ->
         createAttribute( "_Translatable", "EBoolean", "false" ) ->
-        createAttribute( "_DataType", "EString", "" ) ->
-        
-        createCardinalityOperation( "is_Required", '1' ) ->
-        createCardinalityOperation( "is_Forbidden", '-' ) ->
-        createCardinalityOperation( "is_Optional", '?' ) ->
-        createCardinalityOperation( "is_Repeatable", '*' )
+        createAttribute( "_DataType", "EString", "" ) 
     };
 
 process( EStructuralFeature this ):

@@ -24,26 +24,6 @@
         defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKey" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression">
-    <eOperations name="is_Required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return _Cardinality == '1';"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="is_Forbidden" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return _Cardinality == '-';"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="is_Optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return _Cardinality == '?';"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="is_Repeatable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return _Cardinality == '*';"/>
-      </eAnnotations>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
         eType="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue"
         containment="true"/>
@@ -92,6 +72,26 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLRootExpression" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLExpression" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValuedExpression">
+    <eOperations name="is_Required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return _Cardinality == '1';"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="is_Forbidden" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return _Cardinality == '-';"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="is_Optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return _Cardinality == '?';"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="is_Repeatable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return _Cardinality == '*';"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="isWMLTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="body" value="return ( this instanceof WMLTag );"/>
