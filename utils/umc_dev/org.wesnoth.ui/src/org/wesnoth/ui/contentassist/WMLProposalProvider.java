@@ -222,7 +222,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		    if ( ( tagName.equals( "event" ) || tagName.equals( "fire_event" ) )
 		            && keyName.equals( "name" ) ) {
 		        // add events
-		        List<String> events = TemplateProvider.getInstance( ).getCAC( "events" );
+		        List<String> events = new ArrayList<String>( );
+		        events.addAll( TemplateProvider.getInstance( ).getCAC( "events" ) );
+		        events.addAll( projectCache_.getEvents( ) );
 
 		        for ( String event : events ) {
 		            acceptor.accept( createCompletionProposal( event, context ) );

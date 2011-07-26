@@ -17,7 +17,9 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.io.StreamCorruptedException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.resources.IProject;
 import org.wesnoth.Constants;
@@ -51,6 +53,7 @@ public class ProjectCache implements Serializable
     private Map< String, WMLConfig > configFiles_;
     private DependencyListBuilder dependTree_;
     private Map<String, WMLVariable> variables_;
+    private Set<String> events_;
 
     public ProjectCache(IProject project)
     {
@@ -60,6 +63,7 @@ public class ProjectCache implements Serializable
         defines_ = new HashMap<String, Define>( );
         variables_ = new HashMap<String, WMLVariable>( );
         properties_ = new HashMap<String, String>( );
+        events_ = new HashSet<String>( );
 
         dependTree_ = new DependencyListBuilder( project_ );
 
@@ -208,6 +212,15 @@ public class ProjectCache implements Serializable
     public Map<String, Define> getDefines()
     {
         return defines_;
+    }
+
+    /**
+     * Returns the list of events available in the project
+     * @return A set with events as strings
+     */
+    public Set<String> getEvents()
+    {
+        return events_;
     }
 
     /**

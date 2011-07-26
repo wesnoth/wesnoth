@@ -118,6 +118,7 @@ public class SimpleWMLParser
                 }
             }
         }
+        //TODO: parse custom events
 
         System.out.println( "parsed config: " + config_ );
     }
