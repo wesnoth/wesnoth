@@ -182,4 +182,22 @@ public interface WMLTag extends WMLRootExpression
    */
   void set_Description(String value);
 
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation" many="false"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='\n        EList<WMLTag> result = new org.eclipse.emf.common.util.BasicEList<WMLTag>();\n        for ( WMLExpression expression : getExpressions( ) ) {\n            if ( expression.isWMLTag( ) )\n                result.add( expression.asWMLTag( ) );\n        }\n\n        return result;'"
+   * @generated
+   */
+  EList<WMLTag> getWMLTags();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation" many="false"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='EList<WMLKey> result = new org.eclipse.emf.common.util.BasicEList<WMLKey>();\n        for ( WMLExpression expression : getExpressions( ) ) {\n            if ( expression.isWMLKey( ) )\n                result.add( expression.asWMLKey( ) );\n        }\n\n        return result;'"
+   * @generated
+   */
+  EList<WMLKey> getWMLKeys();
+
 } // WMLTag

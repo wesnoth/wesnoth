@@ -276,7 +276,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		    WMLTag schemaTag = schemaParser_.getTags().get(tag.getName());
 			if ( schemaTag != null)
 			{
-				for( WMLKey key : WMLUtils.getTagKeys( schemaTag ) )
+				for( WMLKey key : schemaTag.getWMLKeys( ) )
 				{
 					// skip forbidden keys
 					if ( key.is_Forbidden( ) )
@@ -324,7 +324,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			if (tagChildren != null)
 			{
 				boolean toAdd = true;
-				for( WMLTag tag : WMLUtils.getTagTags( tagChildren ) )
+				for( WMLTag tag : tagChildren.getWMLTags( ) )
 				{
 					// skip forbidden tags
 					if ( tag.is_Forbidden( ) )
@@ -350,7 +350,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		{
 			WMLTag rootTag = schemaParser_.getTags().get("root"); //$NON-NLS-1$
 			dbg( "root node. adding tags: "+ rootTag.getExpressions( ).size() ); //$NON-NLS-1$
-			for( WMLTag tag : WMLUtils.getTagTags( rootTag ) )
+			for( WMLTag tag : rootTag.getWMLTags( ) )
 			{
 				acceptor.accept( createTagProposal( tag, "", ruleProposal, context ) ); //$NON-NLS-1$
 			}
@@ -373,7 +373,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			proposal.append("["); //$NON-NLS-1$
 		proposal.append(tag.getName());
 		proposal.append("]\n"); //$NON-NLS-1$
-		for( WMLKey key : WMLUtils.getTagKeys( tag ) )
+		for( WMLKey key : tag.getWMLKeys( ) )
 		{
 			if ( key.is_Required() )
 				proposal.append(String.format("\t%s%s=\n", //$NON-NLS-1$

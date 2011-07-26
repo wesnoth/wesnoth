@@ -23,7 +23,6 @@ import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLExpression;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WmlFactory2;
@@ -314,7 +313,7 @@ public class SchemaParser
 		{
 			tag.set_NeedingExpansion(false);
 
-			for ( WMLTag subTag : WMLUtils.getTagTags( tag ) ) {
+			for ( WMLTag subTag : tag.getWMLTags( ) ) {
                 expandTag( subTag );
             }
 
@@ -333,7 +332,7 @@ public class SchemaParser
 	{
 	    Collections.sort( tag.getExpressions( ), new CardinalityComparator( ) );
 
-	    for (  WMLTag subTag : WMLUtils.getTagTags( tag ) ) {
+	    for (  WMLTag subTag : tag.getWMLTags( ) ) {
 	        sortChildren( subTag );
         }
 	}

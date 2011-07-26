@@ -9,6 +9,22 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLTag" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression">
+    <eOperations name="getWMLTags">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&#xA;        EList&lt;WMLTag> result = new org.eclipse.emf.common.util.BasicEList&lt;WMLTag>();&#xA;        for ( WMLExpression expression : getExpressions( ) ) {&#xA;            if ( expression.isWMLTag( ) )&#xA;                result.add( expression.asWMLTag( ) );&#xA;        }&#xA;&#xA;        return result;"/>
+      </eAnnotations>
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments eClassifier="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag"/>
+      </eGenericType>
+    </eOperations>
+    <eOperations name="getWMLKeys">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="EList&lt;WMLKey> result = new org.eclipse.emf.common.util.BasicEList&lt;WMLKey>();&#xA;        for ( WMLExpression expression : getExpressions( ) ) {&#xA;            if ( expression.isWMLKey( ) )&#xA;                result.add( expression.asWMLKey( ) );&#xA;        }&#xA;&#xA;        return result;"/>
+      </eAnnotations>
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments eClassifier="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey"/>
+      </eGenericType>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="plus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Expressions" upperBound="-1"

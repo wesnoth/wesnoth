@@ -8,6 +8,8 @@ package org.wesnoth.wml.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -802,6 +804,18 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     initEAttribute(getWMLTag__InhertedTagName(), ecorePackage.getEString(), "_InhertedTagName", "", 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLTag__NeedingExpansion(), ecorePackage.getEBoolean(), "_NeedingExpansion", "false", 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLTag__Description(), ecorePackage.getEString(), "_Description", "", 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    EOperation op = addEOperation(wmlTagEClass, null, "getWMLTags", 0, 1, IS_UNIQUE, IS_ORDERED);
+    EGenericType g1 = createEGenericType(ecorePackage.getEEList());
+    EGenericType g2 = createEGenericType(this.getWMLTag());
+    g1.getETypeArguments().add(g2);
+    initEOperation(op, g1);
+
+    op = addEOperation(wmlTagEClass, null, "getWMLKeys", 0, 1, IS_UNIQUE, IS_ORDERED);
+    g1 = createEGenericType(ecorePackage.getEEList());
+    g2 = createEGenericType(this.getWMLKey());
+    g1.getETypeArguments().add(g2);
+    initEOperation(op, g1);
 
     initEClass(wmlKeyEClass, WMLKey.class, "WMLKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWMLKey_Values(), this.getWMLKeyValue(), null, "values", null, 0, -1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wesnoth.wml.WMLExpression;
+import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WmlPackage;
 
@@ -303,6 +304,39 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
     _Description = new_Description;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_TAG__DESCRIPTION, old_Description, _Description));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<WMLTag> getWMLTags()
+  {
+    
+            EList<WMLTag> result = new org.eclipse.emf.common.util.BasicEList<WMLTag>();
+            for ( WMLExpression expression : getExpressions( ) ) {
+                if ( expression.isWMLTag( ) )
+                    result.add( expression.asWMLTag( ) );
+            }
+    
+            return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<WMLKey> getWMLKeys()
+  {
+    EList<WMLKey> result = new org.eclipse.emf.common.util.BasicEList<WMLKey>();
+            for ( WMLExpression expression : getExpressions( ) ) {
+                if ( expression.isWMLKey( ) )
+                    result.add( expression.asWMLKey( ) );
+            }
+    
+            return result;
   }
 
   /**

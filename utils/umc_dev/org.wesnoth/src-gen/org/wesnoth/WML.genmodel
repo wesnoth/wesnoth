@@ -18,6 +18,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/_InhertedTagName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/_NeedingExpansion"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/_Description"/>
+      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/getWMLTags"/>
+      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/getWMLKeys"/>
     </genClasses>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/values"/>

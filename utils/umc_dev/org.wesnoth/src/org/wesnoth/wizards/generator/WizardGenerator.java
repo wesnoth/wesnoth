@@ -14,7 +14,6 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.wesnoth.Constants;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wizards.NewWizardTemplate;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
@@ -37,7 +36,7 @@ public class WizardGenerator extends NewWizardTemplate
 		else
 		{
 			// keys section
-		    List<WMLKey> keys = WMLUtils.getTagKeys( tagContent );
+		    List<WMLKey> keys = tagContent.getWMLKeys( );
 			int keysNr = keys.size();
 			int startKey = 0, pgsKey = (keysNr / Constants.WIZ_MaxTextBoxesOnPage);
 			WizardGeneratorPageKey tempPageKey;
@@ -57,7 +56,7 @@ public class WizardGenerator extends NewWizardTemplate
 			}
 
 			// tags section
-			List<WMLTag> tags = WMLUtils.getTagTags( tagContent );
+			List<WMLTag> tags = tagContent.getWMLTags( );
 			int tagsNr = tags.size();
 			int startTag = 0, pgsTag = (tagsNr / Constants.WIZ_MaxGroupsOnPage);
 			WizardGeneratorPageTag tempPageTag;

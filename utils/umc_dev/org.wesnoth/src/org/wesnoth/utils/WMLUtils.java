@@ -8,9 +8,6 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -33,22 +30,6 @@ public class WMLUtils
     }
 
     /**
-     * Returns the list of child keys for this tag
-     * @param tag The tag to process
-     * @return A list of {@link WMLKey}
-     */
-    public static List<WMLKey> getTagKeys( WMLTag tag )
-    {
-        List<WMLKey> result = new ArrayList<WMLKey>();
-        for ( WMLExpression expression : tag.getExpressions( ) ) {
-            if ( expression.isWMLKey( ) )
-                result.add( expression.asWMLKey( ) );
-        }
-
-        return result;
-    }
-
-    /**
      * Returns the child key of the specified tag by its name.
      * @param tag The tag to search into
      * @param name The name of the key to search for
@@ -56,28 +37,12 @@ public class WMLUtils
      */
     public static WMLKey getKeyByName( WMLTag tag, String name )
     {
-        for ( WMLKey key: getTagKeys( tag ) ) {
+        for ( WMLKey key: tag.getWMLKeys( ) ) {
             if ( key.getName( ).equals( name ) )
                 return key;
         }
 
         return null;
-    }
-
-    /**
-     * Returns the list of child tags for this tag
-     * @param tag The tag to process
-     * @return A list of {@link WMLTag}
-     */
-    public static List<WMLTag> getTagTags( WMLTag tag )
-    {
-        List<WMLTag> result = new ArrayList<WMLTag>();
-        for ( WMLExpression expression : tag.getExpressions( ) ) {
-            if ( expression.isWMLTag( ) )
-                result.add( expression.asWMLTag( ) );
-        }
-
-        return result;
     }
 
     /**
@@ -88,7 +53,7 @@ public class WMLUtils
      */
     public static WMLTag getTagByName( WMLTag tag, String name )
     {
-        for ( WMLTag subTag : getTagTags( tag ) ) {
+        for ( WMLTag subTag : tag.getWMLTags( ) ) {
             if ( subTag.asWMLTag( ).getName( ).equals( name ) )
                 return subTag;
         }
