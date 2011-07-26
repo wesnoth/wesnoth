@@ -145,10 +145,7 @@ void side_actions::execute_all()
 	while (keep_executing)
 	{
 		iterator position = begin();
-
-		// Unused: bool is_attack = boost::dynamic_pointer_cast<attack>(*position);
 		bool finished = execute(position);
-
 		keep_executing = finished && !empty();
 	}
 }
