@@ -44,8 +44,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
         eType="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eol" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="_Enum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="_Translatable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"

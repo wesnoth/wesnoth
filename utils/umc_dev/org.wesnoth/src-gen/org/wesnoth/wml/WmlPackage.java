@@ -348,7 +348,7 @@ public interface WmlPackage extends EPackage
   int WML_KEY__VALUES = WML_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Eol</b></em>' attribute.
+   * The feature id for the '<em><b>Eol</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -929,10 +929,10 @@ public interface WmlPackage extends EPackage
   EReference getWMLKey_Values();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLKey#getEol <em>Eol</em>}'.
+   * Returns the meta object for the attribute list '{@link org.wesnoth.wml.WMLKey#getEol <em>Eol</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Eol</em>'.
+   * @return the meta object for the attribute list '<em>Eol</em>'.
    * @see org.wesnoth.wml.WMLKey#getEol()
    * @see #getWMLKey()
    * @generated
@@ -1405,7 +1405,7 @@ public interface WmlPackage extends EPackage
     EReference WML_KEY__VALUES = eINSTANCE.getWMLKey_Values();
 
     /**
-     * The meta object literal for the '<em><b>Eol</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Eol</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

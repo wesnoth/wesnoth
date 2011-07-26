@@ -18,9 +18,9 @@ WMLTag:
 		Expressions += WMLExpression*
 	'[/' endName = ID ']'
 	;
-    
+     
 WMLKey hidden(WS):
-	name = ID '=' values += WMLKeyValue* (EOL? '+' EOL? values += WMLKeyValue+)* eol=(EOL|SL_COMMENT);
+	name = ID '=' values += WMLKeyValue* (EOL? '+' EOL? values += WMLKeyValue+)* eol+=(EOL|SL_COMMENT)+;
 
 WMLKeyValue:
     WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
@@ -89,7 +89,7 @@ terminal TEXTDOMAIN : '#textdomain' !('\n'|'\r')* ('\r'? '\n')?;
 // end preprocessor terminals
 terminal STRING     : '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"';
 terminal ID         : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'-'|',')+;
-terminal EOL		 : ('\r'|'\n');
+terminal EOL		 : ('\r'? '\n');
 terminal WS         : (' '|'\t')+;
 terminal ANY_OTHER  : .;
 terminal SL_COMMENT : '#' !('\n'|'\r')* ('\r'? '\n')?;

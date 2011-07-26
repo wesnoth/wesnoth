@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -62,24 +63,14 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
   protected EList<WMLKeyValue> values;
 
   /**
-   * The default value of the '{@link #getEol() <em>Eol</em>}' attribute.
+   * The cached value of the '{@link #getEol() <em>Eol</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getEol()
    * @generated
    * @ordered
    */
-  protected static final String EOL_EDEFAULT = "";
-
-  /**
-   * The cached value of the '{@link #getEol() <em>Eol</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getEol()
-   * @generated
-   * @ordered
-   */
-  protected String eol = EOL_EDEFAULT;
+  protected EList<String> eol;
 
   /**
    * The default value of the '{@link #is_Enum() <em>Enum</em>}' attribute.
@@ -181,22 +172,13 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getEol()
+  public EList<String> getEol()
   {
+    if (eol == null)
+    {
+      eol = new EDataTypeEList<String>(String.class, this, WmlPackage.WML_KEY__EOL);
+    }
     return eol;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setEol(String newEol)
-  {
-    String oldEol = eol;
-    eol = newEol;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_KEY__EOL, oldEol, eol));
   }
 
   /**
@@ -324,7 +306,8 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
         getValues().addAll((Collection<? extends WMLKeyValue>)newValue);
         return;
       case WmlPackage.WML_KEY__EOL:
-        setEol((String)newValue);
+        getEol().clear();
+        getEol().addAll((Collection<? extends String>)newValue);
         return;
       case WmlPackage.WML_KEY__ENUM:
         set_Enum((Boolean)newValue);
@@ -353,7 +336,7 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
         getValues().clear();
         return;
       case WmlPackage.WML_KEY__EOL:
-        setEol(EOL_EDEFAULT);
+        getEol().clear();
         return;
       case WmlPackage.WML_KEY__ENUM:
         set_Enum(_ENUM_EDEFAULT);
@@ -381,7 +364,7 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
       case WmlPackage.WML_KEY__VALUES:
         return values != null && !values.isEmpty();
       case WmlPackage.WML_KEY__EOL:
-        return EOL_EDEFAULT == null ? eol != null : !EOL_EDEFAULT.equals(eol);
+        return eol != null && !eol.isEmpty();
       case WmlPackage.WML_KEY__ENUM:
         return _Enum != _ENUM_EDEFAULT;
       case WmlPackage.WML_KEY__TRANSLATABLE:

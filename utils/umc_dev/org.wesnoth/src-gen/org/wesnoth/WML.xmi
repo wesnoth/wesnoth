@@ -68,7 +68,7 @@
           <terminal xsi:type="xtext:RuleCall" rule="//@rules.4"/>
         </elements>
       </elements>
-      <elements xsi:type="xtext:Assignment" feature="eol" operator="=">
+      <elements xsi:type="xtext:Assignment" cardinality="+" feature="eol" operator="+=">
         <terminal xsi:type="xtext:Alternatives">
           <elements xsi:type="xtext:RuleCall" rule="//@rules.30"/>
           <elements xsi:type="xtext:RuleCall" rule="//@rules.33"/>
@@ -492,8 +492,8 @@
     <type metamodel="//@metamodelDeclarations.1">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
-    <alternatives xsi:type="xtext:Alternatives">
-      <elements xsi:type="xtext:Keyword" value="&#xD;"/>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" cardinality="?" value="&#xD;"/>
       <elements xsi:type="xtext:Keyword" value="&#xA;"/>
     </alternatives>
   </rules>

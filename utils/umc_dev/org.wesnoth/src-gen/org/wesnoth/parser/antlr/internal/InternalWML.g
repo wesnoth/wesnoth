@@ -312,7 +312,7 @@ ruleWMLKey returns [EObject current=null]
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getWMLKeyRule());
 	        }
-       		setWithLastConsumed(
+       		addWithLastConsumed(
        			$current, 
        			"eol",
         		lv_eol_7_1, 
@@ -327,7 +327,7 @@ ruleWMLKey returns [EObject current=null]
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getWMLKeyRule());
 	        }
-       		setWithLastConsumed(
+       		addWithLastConsumed(
        			$current, 
        			"eol",
         		lv_eol_7_2, 
@@ -337,7 +337,7 @@ ruleWMLKey returns [EObject current=null]
 )
 
 )
-))
+)+)
 ;
 finally {
 	myHiddenTokenState.restore();
@@ -1370,7 +1370,7 @@ RULE_STRING : '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
 
 RULE_ID : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'-'|',')+;
 
-RULE_EOL : ('\r'|'\n');
+RULE_EOL : '\r'? '\n';
 
 RULE_WS : (' '|'\t')+;
 

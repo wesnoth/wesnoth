@@ -1297,9 +1297,16 @@ rule__WMLKey__Group__4__Impl
     }
 :
 (
+(
 { before(grammarAccess.getWMLKeyAccess().getEolAssignment_4()); }
 (rule__WMLKey__EolAssignment_4)
 { after(grammarAccess.getWMLKeyAccess().getEolAssignment_4()); }
+)
+(
+{ before(grammarAccess.getWMLKeyAccess().getEolAssignment_4()); }
+(rule__WMLKey__EolAssignment_4)*
+{ after(grammarAccess.getWMLKeyAccess().getEolAssignment_4()); }
+)
 )
 
 ;
@@ -2469,7 +2476,7 @@ RULE_STRING : '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
 
 RULE_ID : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'-'|',')+;
 
-RULE_EOL : ('\r'|'\n');
+RULE_EOL : '\r'? '\n';
 
 RULE_WS : (' '|'\t')+;
 

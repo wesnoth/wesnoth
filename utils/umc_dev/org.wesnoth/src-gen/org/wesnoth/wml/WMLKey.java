@@ -47,31 +47,20 @@ public interface WMLKey extends WMLExpression
   EList<WMLKeyValue> getValues();
 
   /**
-   * Returns the value of the '<em><b>Eol</b></em>' attribute.
-   * The default value is <code>""</code>.
+   * Returns the value of the '<em><b>Eol</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Eol</em>' attribute isn't clear,
+   * If the meaning of the '<em>Eol</em>' attribute list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Eol</em>' attribute.
-   * @see #setEol(String)
+   * @return the value of the '<em>Eol</em>' attribute list.
    * @see org.wesnoth.wml.WmlPackage#getWMLKey_Eol()
-   * @model default=""
+   * @model default="" unique="false"
    * @generated
    */
-  String getEol();
-
-  /**
-   * Sets the value of the '{@link org.wesnoth.wml.WMLKey#getEol <em>Eol</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Eol</em>' attribute.
-   * @see #getEol()
-   * @generated
-   */
-  void setEol(String value);
+  EList<String> getEol();
 
   /**
    * Returns the value of the '<em><b>Enum</b></em>' attribute.
