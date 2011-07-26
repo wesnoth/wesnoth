@@ -111,21 +111,12 @@ action::EXEC_RESULT attack::execute()
 
 	LOG_WB << "Executing: " << shared_from_this() << "\n";
 
-	events::mouse_handler const& mouse_handler = resources::controller->get_mouse_handler_base();
-
-	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), side_number());
-
 	if (route_->steps.size() >= 2)
 	{
 		if(move::execute() != action::SUCCESS)
 		{
 			//Move failed for some reason, so don't attack.
 			result = action::FAIL;
-		}
-		//check if new enemies are now visible
-		else if(mouse_handler.get_adj_enemies(get_dest_hex(), side_number()) != adj_enemies)
-		{
-			result = action::FAIL; //ambush, interrupt attack
 		}
 	}
 

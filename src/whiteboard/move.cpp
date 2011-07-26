@@ -228,6 +228,9 @@ action::EXEC_RESULT move::execute()
 	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
 	fake_unit_->set_hidden(true);
 
+	events::mouse_handler const& mouse_handler = resources::controller->get_mouse_handler_base();
+	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), side_number());
+
 	map_location final_location;
 	bool steps_finished;
 	bool enemy_sighted;
@@ -256,7 +259,9 @@ action::EXEC_RESULT move::execute()
 	{
 		if (steps_finished && route_->steps.back() == final_location) //reached destination
 		{
-			if(enemy_sighted)
+			//check if new enemies are now visible
+			if(enemy_sighted
+					|| mouse_handler.get_adj_enemies(final_location,side_number()) != adj_enemies)
 			{
 				LOG_WB << "Move completed, but interrupted on final hex. Halting.\n";
 				//reset to a single-hex path, just in case *this is a wb::attack
