@@ -18,9 +18,9 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.wesnoth.wml.WMLKey#getValue <em>Value</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLKey#getEol <em>Eol</em>}</li>
- *   <li>{@link org.wesnoth.wml.WMLKey#get_cardinality <em>cardinality</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLKey#is_Enum <em>Enum</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLKey#is_Translatable <em>Translatable</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLKey#get_DataType <em>Data Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,33 +72,6 @@ public interface WMLKey extends WMLExpression
    * @generated
    */
   void setEol(String value);
-
-  /**
-   * Returns the value of the '<em><b>cardinality</b></em>' attribute.
-   * The default value is <code>" "</code>.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>cardinality</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>cardinality</em>' attribute.
-   * @see #set_cardinality(char)
-   * @see org.wesnoth.wml.WmlPackage#getWMLKey__cardinality()
-   * @model default=" "
-   * @generated
-   */
-  char get_cardinality();
-
-  /**
-   * Sets the value of the '{@link org.wesnoth.wml.WMLKey#get_cardinality <em>cardinality</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>cardinality</em>' attribute.
-   * @see #get_cardinality()
-   * @generated
-   */
-  void set_cardinality(char value);
 
   /**
    * Returns the value of the '<em><b>Enum</b></em>' attribute.
@@ -155,9 +128,36 @@ public interface WMLKey extends WMLExpression
   void set_Translatable(boolean value);
 
   /**
+   * Returns the value of the '<em><b>Data Type</b></em>' attribute.
+   * The default value is <code>""</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Data Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Data Type</em>' attribute.
+   * @see #set_DataType(String)
+   * @see org.wesnoth.wml.WmlPackage#getWMLKey__DataType()
+   * @model default=""
+   * @generated
+   */
+  String get_DataType();
+
+  /**
+   * Sets the value of the '{@link org.wesnoth.wml.WMLKey#get_DataType <em>Data Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _cardinality == \'1\';'"
+   * @param value the new value of the '<em>Data Type</em>' attribute.
+   * @see #get_DataType()
+   * @generated
+   */
+  void set_DataType(String value);
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _Cardinality == \'1\';'"
    * @generated
    */
   boolean is_Required();
@@ -165,7 +165,7 @@ public interface WMLKey extends WMLExpression
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _cardinality == \'-\';'"
+   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _Cardinality == \'-\';'"
    * @generated
    */
   boolean is_Forbidden();
@@ -173,7 +173,7 @@ public interface WMLKey extends WMLExpression
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _cardinality == \'?\';'"
+   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _Cardinality == \'?\';'"
    * @generated
    */
   boolean is_Optional();
@@ -181,7 +181,7 @@ public interface WMLKey extends WMLExpression
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _cardinality == \'*\';'"
+   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='return _Cardinality == \'*\';'"
    * @generated
    */
   boolean is_Repeatable();

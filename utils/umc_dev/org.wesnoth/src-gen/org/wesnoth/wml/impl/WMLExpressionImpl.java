@@ -23,6 +23,7 @@ import org.wesnoth.wml.WmlPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.wesnoth.wml.impl.WMLExpressionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLExpressionImpl#get_Cardinality <em>Cardinality</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,6 +50,26 @@ public class WMLExpressionImpl extends WMLValuedExpressionImpl implements WMLExp
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #get_Cardinality() <em>Cardinality</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #get_Cardinality()
+   * @generated
+   * @ordered
+   */
+  protected static final char _CARDINALITY_EDEFAULT = ' ';
+
+  /**
+   * The cached value of the '{@link #get_Cardinality() <em>Cardinality</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #get_Cardinality()
+   * @generated
+   * @ordered
+   */
+  protected char _Cardinality = _CARDINALITY_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -99,6 +120,29 @@ public class WMLExpressionImpl extends WMLValuedExpressionImpl implements WMLExp
    * <!-- end-user-doc -->
    * @generated
    */
+  public char get_Cardinality()
+  {
+    return _Cardinality;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void set_Cardinality(char new_Cardinality)
+  {
+    char old_Cardinality = _Cardinality;
+    _Cardinality = new_Cardinality;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_EXPRESSION__CARDINALITY, old_Cardinality, _Cardinality));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -106,6 +150,8 @@ public class WMLExpressionImpl extends WMLValuedExpressionImpl implements WMLExp
     {
       case WmlPackage.WML_EXPRESSION__NAME:
         return getName();
+      case WmlPackage.WML_EXPRESSION__CARDINALITY:
+        return get_Cardinality();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -122,6 +168,9 @@ public class WMLExpressionImpl extends WMLValuedExpressionImpl implements WMLExp
     {
       case WmlPackage.WML_EXPRESSION__NAME:
         setName((String)newValue);
+        return;
+      case WmlPackage.WML_EXPRESSION__CARDINALITY:
+        set_Cardinality((Character)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -140,6 +189,9 @@ public class WMLExpressionImpl extends WMLValuedExpressionImpl implements WMLExp
       case WmlPackage.WML_EXPRESSION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case WmlPackage.WML_EXPRESSION__CARDINALITY:
+        set_Cardinality(_CARDINALITY_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -156,6 +208,8 @@ public class WMLExpressionImpl extends WMLValuedExpressionImpl implements WMLExp
     {
       case WmlPackage.WML_EXPRESSION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case WmlPackage.WML_EXPRESSION__CARDINALITY:
+        return _Cardinality != _CARDINALITY_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -173,6 +227,8 @@ public class WMLExpressionImpl extends WMLValuedExpressionImpl implements WMLExp
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", _Cardinality: ");
+    result.append(_Cardinality);
     result.append(')');
     return result.toString();
   }

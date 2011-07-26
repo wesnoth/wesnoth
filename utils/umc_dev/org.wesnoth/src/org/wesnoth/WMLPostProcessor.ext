@@ -14,14 +14,17 @@ process( EClass this ):
     eStructuralFeatures.process() ->
      
     // enrich the grammar elements with schema-specific attributes
-    if name == "WMLTag" then {
-        createAttribute( "_extendedTagName", "EString", "" ) ->
-        createAttribute( "_cardinality", "EChar", " " ) ->
-        createAttribute( "_needsExpanding", "EBoolean", "false" )
+    if name == "WMLExpression" then
+        createAttribute( "_Cardinality", "EChar", " " )
+    else if name == "WMLTag" then {
+        createAttribute( "_InhertedTagName", "EString", "" ) ->
+        createAttribute( "_NeedingExpansion", "EBoolean", "false" ) ->
+        createAttribute( "_Description", "EString", "" )
     } else if name == "WMLKey" then {
-        createAttribute( "_cardinality", "EChar", " " ) ->
         createAttribute( "_Enum", "EBoolean", "false" ) ->
         createAttribute( "_Translatable", "EBoolean", "false" ) ->
+        createAttribute( "_DataType", "EString", "" ) ->
+        
         createCardinalityOperation( "is_Required", '1' ) ->
         createCardinalityOperation( "is_Forbidden", '-' ) ->
         createCardinalityOperation( "is_Optional", '?' ) ->
@@ -47,7 +50,7 @@ create EAnnotation this newCardinalityAnnotation( EOperation op, char chr ):
     let an = new EStringToStringMapEntry :
         setSource( "http://www.eclipse.org/emf/2002/GenModel" ) ->
         an.setKey( "body" ) ->
-        an.setValue( "return _cardinality == '" + chr + "';" ) ->
+        an.setValue( "return _Cardinality == '" + chr + "';" ) ->
         details.add( an ) ->
         op.eAnnotations.add( this );
 

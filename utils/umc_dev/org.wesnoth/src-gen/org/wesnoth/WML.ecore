@@ -16,32 +16,32 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="endName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="_extendedTagName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="_InhertedTagName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="_cardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"
-        defaultValueLiteral=" "/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="_needsExpanding" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="_NeedingExpansion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="_Description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKey" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression">
     <eOperations name="is_Required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return _cardinality == '1';"/>
+        <details key="body" value="return _Cardinality == '1';"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="is_Forbidden" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return _cardinality == '-';"/>
+        <details key="body" value="return _Cardinality == '-';"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="is_Optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return _cardinality == '?';"/>
+        <details key="body" value="return _Cardinality == '?';"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="is_Repeatable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return _cardinality == '*';"/>
+        <details key="body" value="return _Cardinality == '*';"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
@@ -49,12 +49,12 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="eol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="_cardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"
-        defaultValueLiteral=" "/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="_Enum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="_Translatable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="_DataType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKeyValue"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLMacroCall" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKeyValue platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLMacroCallParameter platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression">
@@ -94,6 +94,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="WMLExpression" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValuedExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="_Cardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"
+        defaultValueLiteral=" "/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLValuedExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLTextdomain" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression"/>

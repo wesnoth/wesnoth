@@ -127,13 +127,22 @@ public interface WmlPackage extends EPackage
   int WML_EXPRESSION__NAME = WML_VALUED_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Cardinality</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_EXPRESSION__CARDINALITY = WML_VALUED_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>WML Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_EXPRESSION_FEATURE_COUNT = WML_VALUED_EXPRESSION_FEATURE_COUNT + 1;
+  int WML_EXPRESSION_FEATURE_COUNT = WML_VALUED_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wml.impl.WMLRootExpressionImpl <em>WML Root Expression</em>}' class.
@@ -153,6 +162,15 @@ public interface WmlPackage extends EPackage
    * @ordered
    */
   int WML_ROOT_EXPRESSION__NAME = WML_EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Cardinality</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_ROOT_EXPRESSION__CARDINALITY = WML_EXPRESSION__CARDINALITY;
 
   /**
    * The number of structural features of the '<em>WML Root Expression</em>' class.
@@ -183,6 +201,15 @@ public interface WmlPackage extends EPackage
   int WML_TAG__NAME = WML_ROOT_EXPRESSION__NAME;
 
   /**
+   * The feature id for the '<em><b>Cardinality</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_TAG__CARDINALITY = WML_ROOT_EXPRESSION__CARDINALITY;
+
+  /**
    * The feature id for the '<em><b>Plus</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -210,31 +237,31 @@ public interface WmlPackage extends EPackage
   int WML_TAG__END_NAME = WML_ROOT_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>extended Tag Name</b></em>' attribute.
+   * The feature id for the '<em><b>Inherted Tag Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_TAG__EXTENDED_TAG_NAME = WML_ROOT_EXPRESSION_FEATURE_COUNT + 3;
+  int WML_TAG__INHERTED_TAG_NAME = WML_ROOT_EXPRESSION_FEATURE_COUNT + 3;
 
   /**
-   * The feature id for the '<em><b>cardinality</b></em>' attribute.
+   * The feature id for the '<em><b>Needing Expansion</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_TAG__CARDINALITY = WML_ROOT_EXPRESSION_FEATURE_COUNT + 4;
+  int WML_TAG__NEEDING_EXPANSION = WML_ROOT_EXPRESSION_FEATURE_COUNT + 4;
 
   /**
-   * The feature id for the '<em><b>needs Expanding</b></em>' attribute.
+   * The feature id for the '<em><b>Description</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_TAG__NEEDS_EXPANDING = WML_ROOT_EXPRESSION_FEATURE_COUNT + 5;
+  int WML_TAG__DESCRIPTION = WML_ROOT_EXPRESSION_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>WML Tag</em>' class.
@@ -265,6 +292,15 @@ public interface WmlPackage extends EPackage
   int WML_KEY__NAME = WML_EXPRESSION__NAME;
 
   /**
+   * The feature id for the '<em><b>Cardinality</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_KEY__CARDINALITY = WML_EXPRESSION__CARDINALITY;
+
+  /**
    * The feature id for the '<em><b>Value</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -283,22 +319,13 @@ public interface WmlPackage extends EPackage
   int WML_KEY__EOL = WML_EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>cardinality</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WML_KEY__CARDINALITY = WML_EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
    * The feature id for the '<em><b>Enum</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_KEY__ENUM = WML_EXPRESSION_FEATURE_COUNT + 3;
+  int WML_KEY__ENUM = WML_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Translatable</b></em>' attribute.
@@ -307,7 +334,16 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_KEY__TRANSLATABLE = WML_EXPRESSION_FEATURE_COUNT + 4;
+  int WML_KEY__TRANSLATABLE = WML_EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Data Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_KEY__DATA_TYPE = WML_EXPRESSION_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>WML Key</em>' class.
@@ -357,13 +393,22 @@ public interface WmlPackage extends EPackage
   int WML_MACRO_CALL__NAME = WML_KEY_VALUE_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Cardinality</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_CALL__CARDINALITY = WML_KEY_VALUE_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Point</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__POINT = WML_KEY_VALUE_FEATURE_COUNT + 1;
+  int WML_MACRO_CALL__POINT = WML_KEY_VALUE_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Relative</b></em>' attribute.
@@ -372,7 +417,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__RELATIVE = WML_KEY_VALUE_FEATURE_COUNT + 2;
+  int WML_MACRO_CALL__RELATIVE = WML_KEY_VALUE_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -381,7 +426,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__PARAMETERS = WML_KEY_VALUE_FEATURE_COUNT + 3;
+  int WML_MACRO_CALL__PARAMETERS = WML_KEY_VALUE_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>WML Macro Call</em>' class.
@@ -390,7 +435,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 4;
+  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wml.impl.WMLMacroCallParameterImpl <em>WML Macro Call Parameter</em>}' class.
@@ -459,6 +504,15 @@ public interface WmlPackage extends EPackage
   int WML_MACRO_DEFINE__NAME = WML_ROOT_EXPRESSION__NAME;
 
   /**
+   * The feature id for the '<em><b>Cardinality</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_DEFINE__CARDINALITY = WML_ROOT_EXPRESSION__CARDINALITY;
+
+  /**
    * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -503,6 +557,15 @@ public interface WmlPackage extends EPackage
    * @ordered
    */
   int WML_PREPROC_IF__NAME = WML_ROOT_EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Cardinality</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__CARDINALITY = WML_ROOT_EXPRESSION__CARDINALITY;
 
   /**
    * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -567,6 +630,15 @@ public interface WmlPackage extends EPackage
    * @ordered
    */
   int WML_TEXTDOMAIN__NAME = WML_ROOT_EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Cardinality</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_TEXTDOMAIN__CARDINALITY = WML_ROOT_EXPRESSION__CARDINALITY;
 
   /**
    * The number of structural features of the '<em>WML Textdomain</em>' class.
@@ -671,37 +743,37 @@ public interface WmlPackage extends EPackage
   EAttribute getWMLTag_EndName();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTag#get_extendedTagName <em>extended Tag Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTag#get_InhertedTagName <em>Inherted Tag Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>extended Tag Name</em>'.
-   * @see org.wesnoth.wml.WMLTag#get_extendedTagName()
+   * @return the meta object for the attribute '<em>Inherted Tag Name</em>'.
+   * @see org.wesnoth.wml.WMLTag#get_InhertedTagName()
    * @see #getWMLTag()
    * @generated
    */
-  EAttribute getWMLTag__extendedTagName();
+  EAttribute getWMLTag__InhertedTagName();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTag#get_cardinality <em>cardinality</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTag#is_NeedingExpansion <em>Needing Expansion</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>cardinality</em>'.
-   * @see org.wesnoth.wml.WMLTag#get_cardinality()
+   * @return the meta object for the attribute '<em>Needing Expansion</em>'.
+   * @see org.wesnoth.wml.WMLTag#is_NeedingExpansion()
    * @see #getWMLTag()
    * @generated
    */
-  EAttribute getWMLTag__cardinality();
+  EAttribute getWMLTag__NeedingExpansion();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTag#is_needsExpanding <em>needs Expanding</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLTag#get_Description <em>Description</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>needs Expanding</em>'.
-   * @see org.wesnoth.wml.WMLTag#is_needsExpanding()
+   * @return the meta object for the attribute '<em>Description</em>'.
+   * @see org.wesnoth.wml.WMLTag#get_Description()
    * @see #getWMLTag()
    * @generated
    */
-  EAttribute getWMLTag__needsExpanding();
+  EAttribute getWMLTag__Description();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wml.WMLKey <em>WML Key</em>}'.
@@ -736,17 +808,6 @@ public interface WmlPackage extends EPackage
   EAttribute getWMLKey_Eol();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLKey#get_cardinality <em>cardinality</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>cardinality</em>'.
-   * @see org.wesnoth.wml.WMLKey#get_cardinality()
-   * @see #getWMLKey()
-   * @generated
-   */
-  EAttribute getWMLKey__cardinality();
-
-  /**
    * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLKey#is_Enum <em>Enum</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -767,6 +828,17 @@ public interface WmlPackage extends EPackage
    * @generated
    */
   EAttribute getWMLKey__Translatable();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLKey#get_DataType <em>Data Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Data Type</em>'.
+   * @see org.wesnoth.wml.WMLKey#get_DataType()
+   * @see #getWMLKey()
+   * @generated
+   */
+  EAttribute getWMLKey__DataType();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wml.WMLKeyValue <em>WML Key Value</em>}'.
@@ -970,6 +1042,17 @@ public interface WmlPackage extends EPackage
   EAttribute getWMLExpression_Name();
 
   /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLExpression#get_Cardinality <em>Cardinality</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Cardinality</em>'.
+   * @see org.wesnoth.wml.WMLExpression#get_Cardinality()
+   * @see #getWMLExpression()
+   * @generated
+   */
+  EAttribute getWMLExpression__Cardinality();
+
+  /**
    * Returns the meta object for class '{@link org.wesnoth.wml.WMLValuedExpression <em>WML Valued Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1086,28 +1169,28 @@ public interface WmlPackage extends EPackage
     EAttribute WML_TAG__END_NAME = eINSTANCE.getWMLTag_EndName();
 
     /**
-     * The meta object literal for the '<em><b>extended Tag Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Inherted Tag Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute WML_TAG__EXTENDED_TAG_NAME = eINSTANCE.getWMLTag__extendedTagName();
+    EAttribute WML_TAG__INHERTED_TAG_NAME = eINSTANCE.getWMLTag__InhertedTagName();
 
     /**
-     * The meta object literal for the '<em><b>cardinality</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Needing Expansion</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute WML_TAG__CARDINALITY = eINSTANCE.getWMLTag__cardinality();
+    EAttribute WML_TAG__NEEDING_EXPANSION = eINSTANCE.getWMLTag__NeedingExpansion();
 
     /**
-     * The meta object literal for the '<em><b>needs Expanding</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute WML_TAG__NEEDS_EXPANDING = eINSTANCE.getWMLTag__needsExpanding();
+    EAttribute WML_TAG__DESCRIPTION = eINSTANCE.getWMLTag__Description();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLKeyImpl <em>WML Key</em>}' class.
@@ -1136,14 +1219,6 @@ public interface WmlPackage extends EPackage
     EAttribute WML_KEY__EOL = eINSTANCE.getWMLKey_Eol();
 
     /**
-     * The meta object literal for the '<em><b>cardinality</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute WML_KEY__CARDINALITY = eINSTANCE.getWMLKey__cardinality();
-
-    /**
      * The meta object literal for the '<em><b>Enum</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1158,6 +1233,14 @@ public interface WmlPackage extends EPackage
      * @generated
      */
     EAttribute WML_KEY__TRANSLATABLE = eINSTANCE.getWMLKey__Translatable();
+
+    /**
+     * The meta object literal for the '<em><b>Data Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_KEY__DATA_TYPE = eINSTANCE.getWMLKey__DataType();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLKeyValueImpl <em>WML Key Value</em>}' class.
@@ -1326,6 +1409,14 @@ public interface WmlPackage extends EPackage
      * @generated
      */
     EAttribute WML_EXPRESSION__NAME = eINSTANCE.getWMLExpression_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Cardinality</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_EXPRESSION__CARDINALITY = eINSTANCE.getWMLExpression__Cardinality();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wml.impl.WMLValuedExpressionImpl <em>WML Valued Expression</em>}' class.

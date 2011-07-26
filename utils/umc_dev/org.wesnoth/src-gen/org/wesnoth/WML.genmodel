@@ -15,16 +15,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/plus"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/Expressions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/endName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/_extendedTagName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/_cardinality"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/_needsExpanding"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/_InhertedTagName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/_NeedingExpansion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag/_Description"/>
     </genClasses>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/eol"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/_cardinality"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/_Enum"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/_Translatable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/_DataType"/>
       <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/is_Required"/>
       <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/is_Forbidden"/>
       <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey/is_Optional"/>
@@ -53,6 +53,7 @@
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression"/>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/_Cardinality"/>
     </genClasses>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValuedExpression"/>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTextdomain"/>

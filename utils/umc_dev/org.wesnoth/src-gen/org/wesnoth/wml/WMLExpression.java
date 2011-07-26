@@ -16,6 +16,7 @@ package org.wesnoth.wml;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.wesnoth.wml.WMLExpression#getName <em>Name</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLExpression#get_Cardinality <em>Cardinality</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,5 +52,32 @@ public interface WMLExpression extends WMLValuedExpression
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Cardinality</b></em>' attribute.
+   * The default value is <code>" "</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Cardinality</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Cardinality</em>' attribute.
+   * @see #set_Cardinality(char)
+   * @see org.wesnoth.wml.WmlPackage#getWMLExpression__Cardinality()
+   * @model default=" "
+   * @generated
+   */
+  char get_Cardinality();
+
+  /**
+   * Sets the value of the '{@link org.wesnoth.wml.WMLExpression#get_Cardinality <em>Cardinality</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Cardinality</em>' attribute.
+   * @see #get_Cardinality()
+   * @generated
+   */
+  void set_Cardinality(char value);
 
 } // WMLExpression

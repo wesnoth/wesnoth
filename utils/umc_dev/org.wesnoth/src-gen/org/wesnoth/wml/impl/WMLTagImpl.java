@@ -35,9 +35,9 @@ import org.wesnoth.wml.WmlPackage;
  *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#getPlus <em>Plus</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#getExpressions <em>Expressions</em>}</li>
  *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#getEndName <em>End Name</em>}</li>
- *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#get_extendedTagName <em>extended Tag Name</em>}</li>
- *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#get_cardinality <em>cardinality</em>}</li>
- *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#is_needsExpanding <em>needs Expanding</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#get_InhertedTagName <em>Inherted Tag Name</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#is_NeedingExpansion <em>Needing Expansion</em>}</li>
+ *   <li>{@link org.wesnoth.wml.impl.WMLTagImpl#get_Description <em>Description</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,64 +96,64 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
   protected String endName = END_NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #get_extendedTagName() <em>extended Tag Name</em>}' attribute.
+   * The default value of the '{@link #get_InhertedTagName() <em>Inherted Tag Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #get_extendedTagName()
+   * @see #get_InhertedTagName()
    * @generated
    * @ordered
    */
-  protected static final String _EXTENDED_TAG_NAME_EDEFAULT = "";
+  protected static final String _INHERTED_TAG_NAME_EDEFAULT = "";
 
   /**
-   * The cached value of the '{@link #get_extendedTagName() <em>extended Tag Name</em>}' attribute.
+   * The cached value of the '{@link #get_InhertedTagName() <em>Inherted Tag Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #get_extendedTagName()
+   * @see #get_InhertedTagName()
    * @generated
    * @ordered
    */
-  protected String _extendedTagName = _EXTENDED_TAG_NAME_EDEFAULT;
+  protected String _InhertedTagName = _INHERTED_TAG_NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #get_cardinality() <em>cardinality</em>}' attribute.
+   * The default value of the '{@link #is_NeedingExpansion() <em>Needing Expansion</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #get_cardinality()
+   * @see #is_NeedingExpansion()
    * @generated
    * @ordered
    */
-  protected static final char _CARDINALITY_EDEFAULT = ' ';
+  protected static final boolean _NEEDING_EXPANSION_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #get_cardinality() <em>cardinality</em>}' attribute.
+   * The cached value of the '{@link #is_NeedingExpansion() <em>Needing Expansion</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #get_cardinality()
+   * @see #is_NeedingExpansion()
    * @generated
    * @ordered
    */
-  protected char _cardinality = _CARDINALITY_EDEFAULT;
+  protected boolean _NeedingExpansion = _NEEDING_EXPANSION_EDEFAULT;
 
   /**
-   * The default value of the '{@link #is_needsExpanding() <em>needs Expanding</em>}' attribute.
+   * The default value of the '{@link #get_Description() <em>Description</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #is_needsExpanding()
+   * @see #get_Description()
    * @generated
    * @ordered
    */
-  protected static final boolean _NEEDS_EXPANDING_EDEFAULT = false;
+  protected static final String _DESCRIPTION_EDEFAULT = "";
 
   /**
-   * The cached value of the '{@link #is_needsExpanding() <em>needs Expanding</em>}' attribute.
+   * The cached value of the '{@link #get_Description() <em>Description</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #is_needsExpanding()
+   * @see #get_Description()
    * @generated
    * @ordered
    */
-  protected boolean _needsExpanding = _NEEDS_EXPANDING_EDEFAULT;
+  protected String _Description = _DESCRIPTION_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -241,9 +241,9 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public String get_extendedTagName()
+  public String get_InhertedTagName()
   {
-    return _extendedTagName;
+    return _InhertedTagName;
   }
 
   /**
@@ -251,12 +251,12 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public void set_extendedTagName(String new_extendedTagName)
+  public void set_InhertedTagName(String new_InhertedTagName)
   {
-    String old_extendedTagName = _extendedTagName;
-    _extendedTagName = new_extendedTagName;
+    String old_InhertedTagName = _InhertedTagName;
+    _InhertedTagName = new_InhertedTagName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_TAG__EXTENDED_TAG_NAME, old_extendedTagName, _extendedTagName));
+      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_TAG__INHERTED_TAG_NAME, old_InhertedTagName, _InhertedTagName));
   }
 
   /**
@@ -264,9 +264,9 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public char get_cardinality()
+  public boolean is_NeedingExpansion()
   {
-    return _cardinality;
+    return _NeedingExpansion;
   }
 
   /**
@@ -274,12 +274,12 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public void set_cardinality(char new_cardinality)
+  public void set_NeedingExpansion(boolean new_NeedingExpansion)
   {
-    char old_cardinality = _cardinality;
-    _cardinality = new_cardinality;
+    boolean old_NeedingExpansion = _NeedingExpansion;
+    _NeedingExpansion = new_NeedingExpansion;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_TAG__CARDINALITY, old_cardinality, _cardinality));
+      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_TAG__NEEDING_EXPANSION, old_NeedingExpansion, _NeedingExpansion));
   }
 
   /**
@@ -287,9 +287,9 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean is_needsExpanding()
+  public String get_Description()
   {
-    return _needsExpanding;
+    return _Description;
   }
 
   /**
@@ -297,12 +297,12 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public void set_needsExpanding(boolean new_needsExpanding)
+  public void set_Description(String new_Description)
   {
-    boolean old_needsExpanding = _needsExpanding;
-    _needsExpanding = new_needsExpanding;
+    String old_Description = _Description;
+    _Description = new_Description;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_TAG__NEEDS_EXPANDING, old_needsExpanding, _needsExpanding));
+      eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_TAG__DESCRIPTION, old_Description, _Description));
   }
 
   /**
@@ -337,12 +337,12 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
         return getExpressions();
       case WmlPackage.WML_TAG__END_NAME:
         return getEndName();
-      case WmlPackage.WML_TAG__EXTENDED_TAG_NAME:
-        return get_extendedTagName();
-      case WmlPackage.WML_TAG__CARDINALITY:
-        return get_cardinality();
-      case WmlPackage.WML_TAG__NEEDS_EXPANDING:
-        return is_needsExpanding();
+      case WmlPackage.WML_TAG__INHERTED_TAG_NAME:
+        return get_InhertedTagName();
+      case WmlPackage.WML_TAG__NEEDING_EXPANSION:
+        return is_NeedingExpansion();
+      case WmlPackage.WML_TAG__DESCRIPTION:
+        return get_Description();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -368,14 +368,14 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
       case WmlPackage.WML_TAG__END_NAME:
         setEndName((String)newValue);
         return;
-      case WmlPackage.WML_TAG__EXTENDED_TAG_NAME:
-        set_extendedTagName((String)newValue);
+      case WmlPackage.WML_TAG__INHERTED_TAG_NAME:
+        set_InhertedTagName((String)newValue);
         return;
-      case WmlPackage.WML_TAG__CARDINALITY:
-        set_cardinality((Character)newValue);
+      case WmlPackage.WML_TAG__NEEDING_EXPANSION:
+        set_NeedingExpansion((Boolean)newValue);
         return;
-      case WmlPackage.WML_TAG__NEEDS_EXPANDING:
-        set_needsExpanding((Boolean)newValue);
+      case WmlPackage.WML_TAG__DESCRIPTION:
+        set_Description((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -400,14 +400,14 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
       case WmlPackage.WML_TAG__END_NAME:
         setEndName(END_NAME_EDEFAULT);
         return;
-      case WmlPackage.WML_TAG__EXTENDED_TAG_NAME:
-        set_extendedTagName(_EXTENDED_TAG_NAME_EDEFAULT);
+      case WmlPackage.WML_TAG__INHERTED_TAG_NAME:
+        set_InhertedTagName(_INHERTED_TAG_NAME_EDEFAULT);
         return;
-      case WmlPackage.WML_TAG__CARDINALITY:
-        set_cardinality(_CARDINALITY_EDEFAULT);
+      case WmlPackage.WML_TAG__NEEDING_EXPANSION:
+        set_NeedingExpansion(_NEEDING_EXPANSION_EDEFAULT);
         return;
-      case WmlPackage.WML_TAG__NEEDS_EXPANDING:
-        set_needsExpanding(_NEEDS_EXPANDING_EDEFAULT);
+      case WmlPackage.WML_TAG__DESCRIPTION:
+        set_Description(_DESCRIPTION_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -429,12 +429,12 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
         return expressions != null && !expressions.isEmpty();
       case WmlPackage.WML_TAG__END_NAME:
         return END_NAME_EDEFAULT == null ? endName != null : !END_NAME_EDEFAULT.equals(endName);
-      case WmlPackage.WML_TAG__EXTENDED_TAG_NAME:
-        return _EXTENDED_TAG_NAME_EDEFAULT == null ? _extendedTagName != null : !_EXTENDED_TAG_NAME_EDEFAULT.equals(_extendedTagName);
-      case WmlPackage.WML_TAG__CARDINALITY:
-        return _cardinality != _CARDINALITY_EDEFAULT;
-      case WmlPackage.WML_TAG__NEEDS_EXPANDING:
-        return _needsExpanding != _NEEDS_EXPANDING_EDEFAULT;
+      case WmlPackage.WML_TAG__INHERTED_TAG_NAME:
+        return _INHERTED_TAG_NAME_EDEFAULT == null ? _InhertedTagName != null : !_INHERTED_TAG_NAME_EDEFAULT.equals(_InhertedTagName);
+      case WmlPackage.WML_TAG__NEEDING_EXPANSION:
+        return _NeedingExpansion != _NEEDING_EXPANSION_EDEFAULT;
+      case WmlPackage.WML_TAG__DESCRIPTION:
+        return _DESCRIPTION_EDEFAULT == null ? _Description != null : !_DESCRIPTION_EDEFAULT.equals(_Description);
     }
     return super.eIsSet(featureID);
   }
@@ -454,12 +454,12 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
     result.append(plus);
     result.append(", endName: ");
     result.append(endName);
-    result.append(", _extendedTagName: ");
-    result.append(_extendedTagName);
-    result.append(", _cardinality: ");
-    result.append(_cardinality);
-    result.append(", _needsExpanding: ");
-    result.append(_needsExpanding);
+    result.append(", _InhertedTagName: ");
+    result.append(_InhertedTagName);
+    result.append(", _NeedingExpansion: ");
+    result.append(_NeedingExpansion);
+    result.append(", _Description: ");
+    result.append(_Description);
     result.append(')');
     return result.toString();
   }
