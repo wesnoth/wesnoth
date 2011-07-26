@@ -285,15 +285,12 @@ public class WorkspaceUtils
 	}
 
 	/**
-	 * Returns a random fileName generated from current time
-	 * @return
+	 * Returns the current date and time with a granularity of seconds
+	 * @return A string with the current date and time
 	 */
-	public static String getRandomFileName()
+	public static String getCurrentDateTime()
 	{
-		String result = ""; //$NON-NLS-1$
-		SimpleDateFormat date = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss"); //$NON-NLS-1$
-		result += date.format(new Date());
-		return result;
+		return new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
 	}
 
 	/**

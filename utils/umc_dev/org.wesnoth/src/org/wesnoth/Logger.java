@@ -23,7 +23,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
-
 /**
  * A class that logs activities in a file
  */
@@ -36,6 +35,7 @@ public class Logger {
 	private Logger() { }
 
 	private BufferedWriter logWriter_;
+	private BufferedWriter toolLaunchLogWriter_;
 
 	public static Logger getInstance()
 	{
@@ -51,17 +51,24 @@ public class Logger {
 			return;
 		try
 		{
-			String logFilePath = String.format("%s/logs/log%s.txt",  //$NON-NLS-1$
-				WorkspaceUtils.getTemporaryFolder(), WorkspaceUtils.getRandomFileName());
-
 			if (WorkspaceUtils.getTemporaryFolder() == null)
 			    throw new IOException("Could not create the temporary folder."); //$NON-NLS-1$
+
+			String logFilePath = String.format("%s/logs/log%s.txt",  //$NON-NLS-1$
+				WorkspaceUtils.getTemporaryFolder(), WorkspaceUtils.getCurrentDateTime());
+			String toolsLogFilePath = String.format("%s/logs/tools_log%s.txt",  //$NON-NLS-1$
+	                WorkspaceUtils.getTemporaryFolder(), WorkspaceUtils.getCurrentDateTime());
 
 			new File(WorkspaceUtils.getTemporaryFolder() + "/logs/").mkdirs();  //$NON-NLS-1$
 
 			logWriter_ = new BufferedWriter(new FileWriter(logFilePath));
 			log("Logging started."); //$NON-NLS-1$
 			log("Error codes: 1 - INFO, 2 - WARNING, 4 - ERROR"); //$NON-NLS-1$
+
+			toolLaunchLogWriter_ = new BufferedWriter( new FileWriter( toolsLogFilePath ) );
+			logTool("Logging started."); //$NON-NLS-1$
+            logTool("Error codes: 1 - INFO, 2 - WARNING, 4 - ERROR"); //$NON-NLS-1$
+
 		} catch (IOException e)
 		{
 		    JOptionPane.showMessageDialog(null, "There was an error trying to open the log." + e.getMessage()); //$NON-NLS-1$
@@ -79,7 +86,9 @@ public class Logger {
 		try
 		{
 			log("Logging ended."); //$NON-NLS-1$
+			logTool( "Logging Ended" );
 			logWriter_.close();
+			toolLaunchLogWriter_.close( );
 		} catch (IOException e)
 		{
 			e.printStackTrace();
@@ -88,7 +97,7 @@ public class Logger {
 
 	/**
 	 * Prints a message to the error log (severity: info)
-	 * @param message the message to print
+	 * @param message The message to log
 	 */
 	public void log(String message)
 	{
@@ -97,7 +106,7 @@ public class Logger {
 
 	/**
 	 * Logs a warning message
-	 * @param message
+	 * @param message The message to log
 	 */
 	public void logWarn(String message)
 	{
@@ -105,7 +114,7 @@ public class Logger {
 	}
 	/**
 	 * Logs an error message
-	 * @param message
+	 * @param message The message to log
 	 */
 	public void logError(String message)
 	{
@@ -114,54 +123,84 @@ public class Logger {
 
 	/**
 	 * Logs the specified exception, providing the stacktrace to the console
-	 * @param e
+	 * @param e The exception to log
 	 */
 	public void logException(Exception e)
 	{
-		if (e == null)
-			return;
-		e.printStackTrace();
-
-		// put the stack trace in a string
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw);
-		e.printStackTrace(pw);
-
-		log(e.getLocalizedMessage(), IStatus.ERROR);
-		log(sw.toString(), IStatus.ERROR);
+		logExceptionToWriter( logWriter_, e );
 	}
+
+    /**
+     * Logs the specified exception, providing the stacktrace to the console
+     * @param e The exception to log
+     */
+    public void logToolException( Exception e )
+    {
+        logExceptionToWriter( toolLaunchLogWriter_, e );
+    }
+
+    private void logExceptionToWriter( BufferedWriter writer, Exception e )
+    {
+        if (e == null)
+            return;
+
+        // put the stack trace in a string
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);
+
+        logToWriter( writer, e.getLocalizedMessage(), IStatus.ERROR );
+        logToWriter( writer, sw.toString(), IStatus.ERROR );
+    }
+
+    /**
+     * Logs the message (severity: info) showing also a messagebox to the user
+     * @param message The message to log
+     * @param guiMessage The message to show to the user
+     */
+    public void log(String message, String guiMessage)
+    {
+        log(message,IStatus.INFO);
+        GUIUtils.showInfoMessageBox(guiMessage);
+    }
 
 	/**
 	 * Prints a message to the error log with the specified severity
-	 * @param message the message to print
+	 * @param message the message to log
 	 * @param severity the severity level from IStatus enum
 	 */
 	public void log(String message, int severity)
 	{
-		if (logWriter_ != null)
-		{
-			try
-			{
-				logWriter_.write(String.format("%s | %d | %s\n",  //$NON-NLS-1$
-						new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()),  //$NON-NLS-1$
-						severity,  message));
-				logWriter_.flush();
-			} catch (IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-		System.out.println(message);
+	    logToWriter( logWriter_, message, severity );
 	}
 
 	/**
-	 * Logs the message (severity: info) showing also a messagebox to the user
-	 * @param message
-	 * @param guiMessage
+	 * Prints a message to the tool launch log (severity: info)
+	 * @param message The message to log
 	 */
-	public void log(String message, String guiMessage)
+	public void logTool( String message )
 	{
-		log(message,IStatus.INFO);
-		GUIUtils.showInfoMessageBox(guiMessage);
+	    logToWriter( toolLaunchLogWriter_, message, IStatus.INFO );
+	}
+
+	private void logToWriter( BufferedWriter writer, String message, int severity )
+	{
+        if (writer != null)
+        {
+            try
+            {
+                writer.write(String.format("%s | %d | %s\n",  //$NON-NLS-1$
+                        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()),  //$NON-NLS-1$
+                        severity,  message));
+                writer.flush();
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        // don't print to console the tools exceptions
+        if ( writer != toolLaunchLogWriter_ )
+            System.out.println(message);
 	}
 }

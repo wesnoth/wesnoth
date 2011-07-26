@@ -59,8 +59,9 @@ public class ExternalToolInvoker
 		arguments_ = commandline;
 
 		processBuilder_ = new ProcessBuilder(commandline);
-		Logger.getInstance().log(String.format("Invoking tool %s with args: %s", //$NON-NLS-1$
-				fileName, arguments));
+		Logger.getInstance().logTool(
+		        String.format( "Invoking tool %s with args: %s", //$NON-NLS-1$
+				fileName, arguments ) );
 
 	 	outputContent_ = new StringBuilder();
 	 	errorContent_ = new StringBuilder();
@@ -102,7 +103,7 @@ public class ExternalToolInvoker
 				bufferedReaderError_ = new BufferedReader(stderrReader);
 		} catch (IOException e)
 		{
-			Logger.getInstance().logException(e);
+			Logger.getInstance().logToolException( e );
 		}
 	}
 
@@ -143,7 +144,7 @@ public class ExternalToolInvoker
 			return bufferedReaderOutput_.readLine();
 		} catch (IOException e)
 		{
-			Logger.getInstance().logException(e);
+			Logger.getInstance().logToolException( e );
 			return null;
 		}
 	}
@@ -164,7 +165,7 @@ public class ExternalToolInvoker
 			return bufferedReaderError_.readLine();
 		} catch (IOException e)
 		{
-			Logger.getInstance().logException(e);
+			Logger.getInstance().logToolException( e );
 			return null;
 		}
 	}
@@ -386,7 +387,7 @@ public class ExternalToolInvoker
 					}
 				} catch (IOException e)
 				{
-					Logger.getInstance().logException(e);
+					Logger.getInstance().logToolException( e );
 				}
 			}
 		});
@@ -406,7 +407,7 @@ public class ExternalToolInvoker
 					}
 				} catch (IOException e)
 				{
-					Logger.getInstance().logException(e);
+					Logger.getInstance().logToolException( e );
 				}
 			}
 		});
