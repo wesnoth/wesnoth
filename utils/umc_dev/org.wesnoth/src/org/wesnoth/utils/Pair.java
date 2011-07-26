@@ -27,4 +27,10 @@ public class Pair<T, K>
 	public static <U,V> Pair<U,V> create( U first, V second) {
 	    return new Pair<U, V> ( first, second );
 	}
+
+	@Override
+	public String toString()
+	{
+	    return "( " + First.toString( ) + "; " + Second.toString( ) + " )";
+	}
 }

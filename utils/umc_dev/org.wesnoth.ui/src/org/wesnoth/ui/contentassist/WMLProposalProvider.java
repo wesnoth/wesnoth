@@ -239,9 +239,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                     @Override
                     public String apply( WMLVariable from )
                     {
-                        if ( from.getScopeStartIndex( ) <= dependencyIndex_ &&
-                             dependencyIndex_ <= from.getScopeEndIndex( ) )
-                            return from.getName( );
+//                        if ( from.getScopeStartIndex( ) <= dependencyIndex_ &&
+//                             dependencyIndex_ <= from.getScopeEndIndex( ) )
+//                            return from.getName( );
                         return null;
                     }
                 } );

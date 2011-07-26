@@ -8,17 +8,18 @@
  *******************************************************************************/
 package org.wesnoth.projects;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.io.StreamCorruptedException;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.jface.dialogs.DialogSettings;
-import org.eclipse.jface.dialogs.IDialogSettings;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.builder.DependencyListBuilder;
@@ -26,12 +27,8 @@ import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preprocessor.Define;
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.utils.ResourceUtils;
-import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.wml.core.WMLConfig;
 import org.wesnoth.wml.core.WMLVariable;
-
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
 
 /**
  * A class that stores some project specific infos
@@ -39,23 +36,21 @@ import com.google.common.collect.Multimap;
  * Some of the fields of this cache can be saved to disk
  *  @see ProjectCache#saveCache()
  */
-public class ProjectCache
+public class ProjectCache implements Serializable
 {
-    private long propertiesTimestamp_;
+    private static final long serialVersionUID = -3173930983967880699L;
+
     private long definesTimestamp_;
 
-    private DialogSettings properties_;
+    private transient File wesnothFile_;
+    private transient File definesFile_;
+    private transient IProject project_;
 
-    private File wesnothFile_;
-    private File definesFile_;
-    private File treeCacheFile_;
-
+    private transient Map< String, Define > defines_;
+    private Map<String, String>  properties_;
     private Map< String, WMLConfig > configFiles_;
-    private Map< String, Define > defines_;
     private DependencyListBuilder dependTree_;
-    private Multimap<String, WMLVariable> variables_;
-
-    private IProject project_;
+    private Map<String, WMLVariable> variables_;
 
     public ProjectCache(IProject project)
     {
@@ -63,108 +58,23 @@ public class ProjectCache
 
         configFiles_ = new HashMap<String, WMLConfig>( );
         defines_ = new HashMap<String, Define>( );
-        variables_ = ArrayListMultimap.create( );
+        variables_ = new HashMap<String, WMLVariable>( );
+        properties_ = new HashMap<String, String>( );
 
         dependTree_ = new DependencyListBuilder( project_ );
 
-        propertiesTimestamp_ = 0;
-        properties_ = new DialogSettings("project"); //$NON-NLS-1$
+        definesTimestamp_ = -1;
 
-        wesnothFile_ = new File(project.getLocation().toOSString()  +
-        "/.wesnoth"); //$NON-NLS-1$
-
-        definesFile_ = new File (PreprocessorUtils.getInstance().getMacrosLocation( project ));
-        treeCacheFile_ = new File ( WorkspaceUtils.getProjectTemporaryFolder( project ) + "/_TREE_CACHE_.bin" ); //$NON-NLS-1$
-
-        ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
-        readProperties(true);
-        readDefines(true);
+        wesnothFile_ = new File ( project.getLocation().toOSString()  + "/.wesnoth" ); //$NON-NLS-1$
+        definesFile_ = new File ( PreprocessorUtils.getInstance().getMacrosLocation( project ));
     }
 
     /**
-     * Reads the properties from the file only if the
-     * file changed.
-     * @param force True to skip checking for modifications
+     * Gets the properties map for this project.
+     * @return A map with properties of the project
      */
-    private void readProperties(boolean force)
+    public Map<String, String> getProperties()
     {
-        if (force == false &&
-                wesnothFile_.lastModified() <= propertiesTimestamp_)
-            return;
-
-        try
-        {
-            ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
-
-            try
-            {
-                properties_.load( wesnothFile_.getAbsolutePath() );
-            }
-            catch(ClassCastException ex)
-            {
-                // backward compatiblity
-                // we already have an xml format used by Properties.
-                // convert it to DialogSettings
-                ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), true);
-                properties_.load( wesnothFile_.getAbsolutePath() );
-            }
-
-            if (properties_.getSection("configs") != null) //$NON-NLS-1$
-            {
-                for(IDialogSettings config : properties_.getSection("configs").getSections()) //$NON-NLS-1$
-                {
-                    if (config.getName().startsWith("config") == false) //$NON-NLS-1$
-                        continue;
-
-                    WMLConfig tmp = new WMLConfig(config.get("filename")); //$NON-NLS-1$
-                    tmp.ScenarioId = config.get( "scenario_id" ); //$NON-NLS-1$
-                    tmp.CampaignId = config.get( "campaign_id" ); //$NON-NLS-1$
-
-                    configFiles_.put(config.get("filename"), tmp); //$NON-NLS-1$
-                }
-            }
-
-            if ( properties_.getSection( "variables" ) != null ){
-
-                for(IDialogSettings variable : properties_.getSection("variables").getSections()) //$NON-NLS-1$
-                {
-                    if (variable.getName().startsWith("var") == false) //$NON-NLS-1$
-                        continue;
-
-                    variables_.put( variable.get( "name" ),
-                            new WMLVariable(variable.get("name"), //$NON-NLS-1$
-                                    variable.get("location"), //$NON-NLS-1$
-                                    variable.getInt("offset"),
-                                    variable.getInt( "startIndex" ),
-                                    variable.getInt( "endIndex" ))); //$NON-NLS-1$
-                }
-            }
-
-            // unserialize the tree builder
-            if ( treeCacheFile_.exists( ) ) {
-                FileInputStream inStream = new FileInputStream( treeCacheFile_ );
-                ObjectInputStream deserializer = new ObjectInputStream( inStream );
-                dependTree_.deserialize( deserializer );
-            }
-
-            propertiesTimestamp_ = wesnothFile_.lastModified();
-        }
-        catch (Exception e)
-        {
-            Logger.getInstance().logException(e);
-            propertiesTimestamp_ = 0; // force to re-read the file
-        }
-    }
-
-    /**
-     * Gets the properties store for the associated Project.
-     * If the store doesn't exist it will be created.
-     * This method ensures it will get the latest up-to-date '.wesnoth' file
-     * @return
-     */
-    public DialogSettings getProperties()
-    {
-        readProperties(false);
         return properties_;
     }
 
@@ -200,9 +110,47 @@ public class ProjectCache
      * Returns the variables found in this project
      * @return A multimap containing all the variables
      */
-    public Multimap<String, WMLVariable> getVariables()
+    public Map<String, WMLVariable> getVariables()
     {
         return variables_;
+    }
+
+    /**
+     * Loads this class from the {@code .wesnoth} file and
+     * loads the other cached files
+     */
+    public void loadCache( )
+    {
+        ResourceUtils.createWesnothFile( wesnothFile_.getAbsolutePath(), false );
+
+        try
+        {
+            try
+            {
+                FileInputStream inputStream = new FileInputStream( wesnothFile_ );
+                ObjectInputStream deserializer = new ObjectInputStream( inputStream );
+                ProjectCache cache = ( ProjectCache ) deserializer.readObject( );
+
+                configFiles_ = cache.configFiles_;
+                dependTree_ = cache.dependTree_;
+            }
+            // invalid file contents. just save this instance to it.
+            catch ( EOFException e) {
+                saveCache( );
+            }
+            catch (StreamCorruptedException e) {
+                saveCache( );
+            }
+            catch(ClassCastException ex) {
+                saveCache( );
+            }
+        }
+        catch (Exception e)
+        {
+            Logger.getInstance().logException(e);
+        }
+
+        readDefines(true);
     }
 
     /**
@@ -215,45 +163,12 @@ public class ProjectCache
     public boolean saveCache()
     {
         ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
+
         try
         {
-            // save config files info
-            int configCnt = 0;
-            IDialogSettings configsSection = properties_.addNewSection("configs"); //$NON-NLS-1$
-            for(WMLConfig config : configFiles_.values())
-            {
-                IDialogSettings configSection = configsSection.addNewSection("config" + configCnt); //$NON-NLS-1$
-                configSection.put("scenario_id", config.ScenarioId); //$NON-NLS-1$
-                configSection.put("campaign_id", config.CampaignId); //$NON-NLS-1$
-                configSection.put("filename", config.getFilename()); //$NON-NLS-1$
-
-                ++configCnt;
-            }
-
-            IDialogSettings variablesSection = properties_.addNewSection("variables"); //$NON-NLS-1$
-            int varCnt = 0;
-            for(WMLVariable var : variables_.values( ))
-            {
-                IDialogSettings varSection = variablesSection.addNewSection("var" + varCnt); //$NON-NLS-1$
-                varSection.put("name", var.getName()); //$NON-NLS-1$
-                varSection.put("location", var.getLocation()); //$NON-NLS-1$
-                varSection.put("offset", var.getOffset()); //$NON-NLS-1$
-                varSection.put( "startIndex", var.getScopeStartIndex( ) );
-                varSection.put( "endIndex", var.getScopeEndIndex( ) );
-
-                ++varCnt;
-            }
-
-            // store properties
-            properties_.save( wesnothFile_.getAbsolutePath() );
-            propertiesTimestamp_ = wesnothFile_.lastModified();
-
-            // save the PDT tree
-            ResourceUtils.createNewFile( treeCacheFile_.getAbsolutePath( ) );
-            FileOutputStream outStream = new FileOutputStream( treeCacheFile_ );
-            ObjectOutputStream serializer = new ObjectOutputStream( outStream );
-            serializer.writeObject( dependTree_ );
-            serializer.close( );
+            FileOutputStream outputStream = new FileOutputStream( wesnothFile_ );
+            ObjectOutputStream serializer = new ObjectOutputStream( outputStream );
+            serializer.writeObject( this );
 
             return true;
         }
@@ -266,22 +181,20 @@ public class ProjectCache
 
     /**
      * Reads the defines files for this project
-     * @param force skip checking for last modified timestamp
+     * @param force Read the defines even if the defines file's contents
+     * haven't changed since last time read.
      */
     public void readDefines(boolean force)
     {
         if (force == false &&
-                definesFile_.lastModified() <= definesTimestamp_)
+            definesFile_.lastModified() <= definesTimestamp_)
             return;
+
         if (definesFile_.exists() == false)
             return;
+
         defines_ = Define.readDefines(definesFile_.getAbsolutePath());
         definesTimestamp_ = definesFile_.lastModified( );
-    }
-
-    public void setDefines(Map<String, Define> defines)
-    {
-        defines_ = defines;
     }
 
     /**
@@ -326,13 +239,12 @@ public class ProjectCache
      */
     public void clear()
     {
-        properties_ = new DialogSettings("project"); //$NON-NLS-1$
+        properties_ = new HashMap<String, String>();
 
         configFiles_.clear( );
         defines_.clear( );
         dependTree_ = new DependencyListBuilder( project_ );
 
-        propertiesTimestamp_ = -1;
         definesTimestamp_ = -1;
 
         saveCache( );

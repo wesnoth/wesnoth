@@ -124,7 +124,7 @@ public class SimpleWMLParser
         ICompositeNode node = NodeModelUtils.getNode( context ) ;
 
         variable.setLocation( file_.getLocation( ).toOSString( ) );
-        variable.setScopeStartIndex( ResourceUtils.getDependencyIndex( file_ ) );
+//        variable.setScopeStartIndex( ResourceUtils.getDependencyIndex( file_ ) );
         variable.setOffset( node.getTotalOffset( ) );
 
         if ( context instanceof WMLKey ) {

@@ -46,7 +46,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.swt.SWT;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
@@ -242,7 +241,6 @@ public class ResourceUtils
 				(force == false && wesnothFile.exists() == false))
 			{
 				createNewFile(wesnothFile.getAbsolutePath());
-				new DialogSettings("project").save(path); //$NON-NLS-1$
 			}
 		}
 		catch (Exception e) {

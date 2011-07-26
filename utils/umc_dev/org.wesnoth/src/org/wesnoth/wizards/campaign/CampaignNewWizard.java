@@ -127,7 +127,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 
 		// store some campaign-related info
 		ProjectUtils.getPropertiesForProject(currentProject).put("difficulties", page2_.getDifficulties()); //$NON-NLS-1$
-		ProjectUtils.saveCacheForProject(currentProject);
+		ProjectUtils.getCacheForProject( currentProject ).saveCache( );
 
 		monitor.done();
 	}

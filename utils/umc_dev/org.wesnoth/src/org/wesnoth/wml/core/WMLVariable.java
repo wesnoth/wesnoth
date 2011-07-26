@@ -8,17 +8,24 @@
  *******************************************************************************/
 package org.wesnoth.wml.core;
 
+import java.io.Serializable;
+import java.util.List;
+
+import org.wesnoth.utils.Pair;
+
 /**
  * Represents a WML Variable
  */
-public class WMLVariable
+public class WMLVariable implements Serializable
 {
-	private String name_;
+    private static final long serialVersionUID = 5293113569770337870L;
+
+    private String name_;
 	private String location_;
 	private int offset_;
 	private boolean isArray_;
-	private int scopeStartIndex_;
-	private int scopeEndIndex_;
+
+	private List< Pair<Integer, Integer> > scopes_;
 
 	public WMLVariable()
 	{
@@ -26,19 +33,10 @@ public class WMLVariable
 	}
 
 	public WMLVariable( String name, String location, int offset )
-	{
-	    this( name, location, offset, Integer.MIN_VALUE, Integer.MAX_VALUE );
-	}
-
-	public WMLVariable( String name, String location, int offset,
-	        int startIndex, int endIndex )
     {
         name_ = name;
         location_ = location;
         offset_ = offset;
-
-        scopeStartIndex_ = startIndex;
-        scopeEndIndex_ = endIndex;
     }
 
 	public String getName()
@@ -74,29 +72,27 @@ public class WMLVariable
 		isArray_ = isArray;
 	}
 
-	public int getScopeEndIndex()
+	public List<Pair<Integer, Integer>> getScopes()
     {
-        return scopeEndIndex_;
-    }
-	public int getScopeStartIndex()
-    {
-        return scopeStartIndex_;
-    }
-	public void setScopeEndIndex( int scopeEndIndex )
-    {
-        scopeEndIndex_ = scopeEndIndex;
-    }
-	public void setScopeStartIndex( int scopeStartIndex )
-    {
-        scopeStartIndex_ = scopeStartIndex;
+        return scopes_;
     }
 
 	@Override
 	public String toString()
 	{
-	    return "Variable - Name: " + name_ +
-	            "; Location:" + location_ +
-	            "; Offset:" + offset_ +
-	            "; Scope: " + scopeStartIndex_ + " -> " + scopeEndIndex_;
+	    StringBuilder res = new StringBuilder( );
+
+	    res.append( "Variable - Name: " + name_ );
+	    res.append( "; Location:" + location_ );
+        res.append( "; Offset:" + offset_ );
+        if ( ! scopes_.isEmpty( ) ) {
+            res.append( "; Scopes: " );
+
+            for ( Pair<Integer,Integer> scope : scopes_ ) {
+                res.append( scope );
+            }
+        }
+
+        return res.toString( );
 	}
 }

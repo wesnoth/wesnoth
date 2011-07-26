@@ -18,7 +18,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.dialogs.DialogSettings;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
@@ -41,13 +40,10 @@ public class ProjectUtils
 	}
 
 	/**
-	 * Gets the properties store for specified project.
-	 * If the store doesn't exist it will be created.
-	 * This will return null if it has been an exception
-	 * This method ensures it will get the latest up-to-date '.wesnoth' file
-	 * @param project the project
+	 * Gets the properties map for this project.
+     * @return A map with properties of the project
 	 */
-	public static DialogSettings getPropertiesForProject(IProject project)
+	public static Map<String, String> getPropertiesForProject(IProject project)
 	{
 		return getCacheForProject(project).getProperties();
 	}
@@ -64,19 +60,10 @@ public class ProjectUtils
 		if (cache == null)
 		{
 			cache = new ProjectCache(project);
+			cache.loadCache( );
 			projectCache_.put(project,cache);
 		}
 		return cache;
-	}
-
-	/**
-	 * Saves the current properties of the specified project on the filesystem.
-	 * If the file/properties don't exist they will be created
-	 * @param project
-	 */
-	public static void saveCacheForProject(IProject project)
-	{
-		getCacheForProject(project).saveCache();
 	}
 
 	/**

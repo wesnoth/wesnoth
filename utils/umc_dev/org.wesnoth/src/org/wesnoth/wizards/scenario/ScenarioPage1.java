@@ -8,8 +8,9 @@
  *******************************************************************************/
 package org.wesnoth.wizards.scenario;
 
+import java.util.Map;
+
 import org.eclipse.core.resources.IContainer;
-import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -48,8 +49,9 @@ public class ScenarioPage1 extends NewWizardPageTemplate
 		IContainer selContainer = getWizard().getSelectionContainer();
 		if (selContainer != null)
 		{
-			DialogSettings prefs =
+			Map<String, String> prefs =
 				ProjectUtils.getPropertiesForProject(selContainer.getProject());
+
 			if (prefs.get("difficulties") != null) //$NON-NLS-1$
 			{
 				String[] difficulties = prefs.get("difficulties").split(","); //$NON-NLS-1$ //$NON-NLS-2$

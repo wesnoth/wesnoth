@@ -8,13 +8,17 @@
  *******************************************************************************/
 package org.wesnoth.wml.core;
 
+import java.io.Serializable;
+
 
 /**
  * A class that stores WML config file specific information
  */
-public class WMLConfig
+public class WMLConfig implements Serializable
 {
-	public String ScenarioId;
+	private static final long serialVersionUID = -4722231494864404935L;
+
+    public String ScenarioId;
 	/**
 	 * True if there was a [scenario] tag present in the file.
 	 *
