@@ -131,8 +131,12 @@ public class ProjectCache implements Serializable
                 ObjectInputStream deserializer = new ObjectInputStream( inputStream );
                 ProjectCache cache = ( ProjectCache ) deserializer.readObject( );
 
+                properties_ = cache.properties_;
                 configFiles_ = cache.configFiles_;
                 dependTree_ = cache.dependTree_;
+                variables_ = cache.variables_;
+
+                dependTree_.deserialize( project_ );
             }
             // invalid file contents. just save this instance to it.
             catch ( EOFException e) {

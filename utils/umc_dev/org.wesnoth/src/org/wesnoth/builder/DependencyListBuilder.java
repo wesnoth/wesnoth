@@ -8,8 +8,6 @@
  *******************************************************************************/
 package org.wesnoth.builder;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -577,21 +575,11 @@ public class DependencyListBuilder implements Serializable
     }
 
     /**
-     * Deserializes this object from the input
-     * @param input The object input stream
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * Deserializes this object with the specified project
      */
-    public void deserialize( ObjectInputStream input ) throws IOException, ClassNotFoundException
+    public void deserialize( IProject project )
     {
-        DependencyListBuilder tmp = (DependencyListBuilder) input.readObject( );
-        if ( tmp == null )
-            return;
-
-        this.currentIndex_ = tmp.currentIndex_;
-        this.isCreated_ = tmp.isCreated_;
-        this.list_ = tmp.list_;
-        this.previous_ = tmp.previous_;
+        project_ = project;
 
         // now, refill the dependency nodes
         for ( DependencyListNode node : list_.values( ) ) {
