@@ -73,6 +73,9 @@ public class SimpleWMLParser
         WMLTag currentTag = null;
         String currentTagName = "";
 
+        // clear tags
+        config_.getWMLTags( ).clear( );
+
         while ( itor.hasNext( ) ) {
             EObject object = itor.next( );
 
@@ -119,7 +122,8 @@ public class SimpleWMLParser
                 SimpleLuaParser luaParser = new SimpleLuaParser(
                         ( ( WMLLuaCode ) object ).getValue( ) );
                 luaParser.parse( );
-                tags_.addAll( luaParser.getTags( ) );
+
+                config_.getWMLTags( ).putAll( luaParser.getTags( ) );
             }
         }
         //TODO: parse custom events

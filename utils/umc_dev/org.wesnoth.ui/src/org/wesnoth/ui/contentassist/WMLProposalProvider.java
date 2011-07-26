@@ -30,7 +30,6 @@ import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.templates.TemplateProvider;
-import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.utils.ResourceUtils;
@@ -93,7 +92,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         projectCache_ = ProjectUtils.getCacheForProject( file.getProject( ) );
 
         // load the schema so we know what to suggest for autocomplete
-        SchemaParser.reloadSchemas( false );
         schemaParser_ = SchemaParser.getInstance( WesnothInstallsUtils.getInstallNameForResource( file ) );
 
         dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
@@ -105,7 +103,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	{
 		super.completeWMLKey_Name(model, assignment, context, acceptor);
 		refresh( );
-		dbg("completing wmlkeyname"); //$NON-NLS-1$
+
 		addKeyNameProposals(model, context, acceptor);
 	}
 
@@ -115,7 +113,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	{
 		super.complete_WMLKeyValue(model, ruleCall, context, acceptor);
 		refresh( );
-		dbg("completing wmlkeyvalue - rule"); //$NON-NLS-1$
+
 		addKeyValueProposals(model, context, acceptor);
 	}
 
@@ -125,7 +123,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	{
 		super.complete_WMLTag(model, ruleCall, context, acceptor);
 		refresh( );
-		dbg("completing wmltag - rule"); //$NON-NLS-1$
+
 		addTagProposals(model, true, context, acceptor);
 	}
 
@@ -135,7 +133,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	{
 		super.completeWMLTag_Name(model, assignment, context, acceptor);
 		refresh( );
-		dbg("completing wmltagname"); //$NON-NLS-1$
+
 		addTagProposals(model, false, context, acceptor);
 	}
 
@@ -145,7 +143,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	{
 		super.completeWMLMacroCall_Name(model, assignment, context, acceptor);
 		refresh( );
-		dbg("completing wmlmacrocallname"); //$NON-NLS-1$
+
 		addMacroCallProposals(model, false, context, acceptor);
 	}
 
@@ -155,7 +153,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	{
 		super.complete_WMLMacroCall(model, ruleCall, context, acceptor);
 		refresh( );
-		dbg("completing wmlmacrocall - rule"); //$NON-NLS-1$
+
 		addMacroCallProposals(model, true, context, acceptor);
 	}
 
@@ -183,7 +181,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	{
 		if ( model == null || !( model instanceof WMLKey ) )
 		    return;
-		dbg(model);
 		WMLKey key = (WMLKey)model;
 		String keyName = key.getName( );
 
@@ -273,7 +270,12 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
 		if (tag != null)
 		{
-		    WMLTag schemaTag = schemaParser_.getTags().get(tag.getName());
+		    WMLTag schemaTag = schemaParser_.getTags().get( tag.getName() );
+		    // try getting the custom ones
+		    if ( schemaTag == null ) {
+		        schemaTag = projectCache_.getWMLTags( ).get( tag.getName( ) );
+		    }
+
 			if ( schemaTag != null)
 			{
 				for( WMLKey key : schemaTag.getWMLKeys( ) )
@@ -343,18 +345,21 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 								ruleProposal, context));
 				}
 			}
-			else
-				dbg("!!! no tag found with that name:" + parentTag.getName()); //$NON-NLS-1$
 		}
 		else // we are at the root
 		{
 			WMLTag rootTag = schemaParser_.getTags().get("root"); //$NON-NLS-1$
-			dbg( "root node. adding tags: "+ rootTag.getExpressions( ).size() ); //$NON-NLS-1$
 			for( WMLTag tag : rootTag.getWMLTags( ) )
 			{
 				acceptor.accept( createTagProposal( tag, "", ruleProposal, context ) ); //$NON-NLS-1$
 			}
 		}
+
+        // parsed custom tags
+        for( WMLTag tag : projectCache_.getWMLTags( ).values( ) )
+        {
+            acceptor.accept( createTagProposal( tag, "", ruleProposal, context ) ); //$NON-NLS-1$
+        }
 	}
 
 	/**
@@ -396,17 +401,5 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	{
 		return createCompletionProposal(proposal, new StyledString(displayString),
 					image, priority, contentAssistContext.getPrefix(), contentAssistContext);
-	}
-
-	/**
-	 * Method for debugging the auto completion
-	 * @param str
-	 */
-	@SuppressWarnings( "unused" )
-    private void dbg(Object str)
-	{
-		if (!(WMLUiModule.DEBUG))
-			return;
-		System.out.println(str.toString());
 	}
 }

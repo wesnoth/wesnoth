@@ -313,8 +313,7 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
    */
   public EList<WMLTag> getWMLTags()
   {
-    
-            EList<WMLTag> result = new org.eclipse.emf.common.util.BasicEList<WMLTag>();
+    EList<WMLTag> result = new org.eclipse.emf.common.util.BasicEList<WMLTag>();
             for ( WMLExpression expression : getExpressions( ) ) {
                 if ( expression.isWMLTag( ) )
                     result.add( expression.asWMLTag( ) );

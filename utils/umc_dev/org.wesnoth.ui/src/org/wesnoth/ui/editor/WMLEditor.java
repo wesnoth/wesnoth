@@ -53,12 +53,13 @@ import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.wesnoth.Logger;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.ui.Messages;
-import org.wesnoth.ui.WMLUiModule;
 
 import com.google.inject.Inject;
 
 public class WMLEditor extends XtextEditor
 {
+    private final static boolean DEBUG = false;
+
 	protected static final String AUTOLINK_PROJECT_NAME = "_AutoLinked_CFGExternalFiles_"; //$NON-NLS-1$
 	protected static final String ENCODING_UTF8 = "utf-8"; //$NON-NLS-1$
 
@@ -70,7 +71,7 @@ public class WMLEditor extends XtextEditor
 	public WMLEditor()
 	{
 		super();
-		if (WMLUiModule.DEBUG)
+		if ( DEBUG )
 			org.apache.log4j.Logger.getLogger(XtextEditor.class).setLevel(Level.DEBUG);
 		// activate the wesnoth plugin
 		WesnothPlugin.getDefault();

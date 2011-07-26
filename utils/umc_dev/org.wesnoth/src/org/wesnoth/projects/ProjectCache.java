@@ -30,6 +30,7 @@ import org.wesnoth.preprocessor.Define;
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.wml.WMLConfig;
+import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WMLVariable;
 
 /**
@@ -265,5 +266,19 @@ public class ProjectCache implements Serializable
         definesTimestamp_ = -1;
 
         saveCache( );
+    }
+
+    /**
+     * Returns the parsed WML Tags from all configs of this project
+     * @return A list of Tags
+     */
+    public Map<String, WMLTag> getWMLTags()
+    {
+        Map<String, WMLTag> res = new HashMap<String, WMLTag>();
+        for ( WMLConfig config : configFiles_.values( ) ) {
+            res.putAll( config.getWMLTags( ) );
+        }
+
+        return res;
     }
 }

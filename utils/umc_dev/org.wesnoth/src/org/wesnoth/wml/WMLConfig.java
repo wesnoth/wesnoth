@@ -9,6 +9,8 @@
 package org.wesnoth.wml;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -35,16 +37,27 @@ public class WMLConfig implements Serializable
 	public boolean IsCampaign;
 
 	private String filename_;
+	private Map<String, WMLTag> tags_;
 
 	public WMLConfig(String filename)
 	{
 		filename_ = filename;
+		tags_ = new HashMap<String, WMLTag>( );
 	}
 
 	public String getFilename()
 	{
 		return filename_;
 	}
+
+    /**
+     * Returns the parsed WML Tags from this config file
+     * @return A list of Tags
+     */
+    public Map<String, WMLTag> getWMLTags()
+    {
+        return tags_;
+    }
 
 	@Override
 	public String toString()

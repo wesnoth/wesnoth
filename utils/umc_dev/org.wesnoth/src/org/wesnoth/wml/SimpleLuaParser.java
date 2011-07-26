@@ -12,8 +12,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.wesnoth.Logger;
 import org.wesnoth.utils.StringUtils;
@@ -24,7 +25,7 @@ import org.wesnoth.utils.StringUtils;
  */
 public class SimpleLuaParser
 {
-    private List<WMLTag> tags_;
+    private Map<String, WMLTag> tags_;
     private Reader reader_;
 
     private final static String TAG_REGEX = "wml_actions\\..+\\( *cfg *\\)";
@@ -33,7 +34,7 @@ public class SimpleLuaParser
 
     public SimpleLuaParser( String contents )
     {
-        tags_ = new ArrayList<WMLTag> ( );
+        tags_ = new HashMap<String, WMLTag>( );
         reader_ = new StringReader( contents == null ? "" : contents );
     }
 
@@ -61,7 +62,7 @@ public class SimpleLuaParser
                             token.lastIndexOf( '(' ) );
 
                     currentTag = WmlFactory2.eINSTANCE.createWMLTag( tagName );
-                    tags_.add( currentTag );
+                    tags_.put( tagName, currentTag );
                 }
 
                 // parse the attributes
@@ -94,9 +95,9 @@ public class SimpleLuaParser
 
     /**
      * Returns the parsed tags from the lua code
-     * @return A list with Tags
+     * @return A map with Tags
      */
-    public List< WMLTag > getTags()
+    public Map<String, WMLTag > getTags()
     {
         return tags_;
     }

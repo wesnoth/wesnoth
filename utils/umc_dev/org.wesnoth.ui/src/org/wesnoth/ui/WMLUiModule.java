@@ -49,8 +49,6 @@ import com.google.inject.Provider;
 @SuppressWarnings("all")
 public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 {
-	public final static boolean DEBUG = false;
-
 	public WMLUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}

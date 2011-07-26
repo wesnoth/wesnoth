@@ -10,7 +10,7 @@ package org.wesnoth.schema;
 
 import java.io.File;
 import java.io.Serializable;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -330,7 +330,13 @@ public class SchemaParser
 	 */
 	private void sortChildren( WMLTag tag)
 	{
-	    Collections.sort( tag.getExpressions( ), new CardinalityComparator( ) );
+	    WMLExpression[] expressions = ( WMLExpression[] ) tag.getExpressions( ).toArray( );
+	    Arrays.sort( expressions, new CardinalityComparator( ) );
+	    tag.getExpressions( ).clear( );
+
+	    for ( WMLExpression expression : expressions ) {
+            tag.getExpressions( ).add( expression );
+        }
 
 	    for (  WMLTag subTag : tag.getWMLTags( ) ) {
 	        sortChildren( subTag );
