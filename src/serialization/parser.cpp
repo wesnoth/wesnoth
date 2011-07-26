@@ -31,6 +31,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/tokenizer.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/validator.hpp"
 #include "foreach.hpp"
 
 #include <stack>
@@ -48,14 +49,14 @@ static lg::log_domain log_config("config");
 static const size_t max_recursion_levels = 1000;
 
 namespace {
-
 class parser
 {
 	parser();
 	parser(const parser&);
 	parser& operator=(const parser&);
 public:
-	parser(config& cfg, std::istream& in);
+	parser(config& cfg, std::istream& in,
+		   abstract_validator * validator = NULL);
 	~parser();
 	void operator()();
 
@@ -68,6 +69,7 @@ private:
 
 	config& cfg_;
 	tokenizer *tok_;
+	abstract_validator *validator_;
 
 	struct element {
 		element(config *cfg, std::string const &name,
@@ -84,10 +86,11 @@ private:
 	std::stack<element> elements;
 };
 
-parser::parser(config &cfg, std::istream &in) :
-		cfg_(cfg),
-		tok_(new tokenizer(in)),
-		elements()
+parser::parser(config &cfg, std::istream &in, abstract_validator * validator)
+			   :cfg_(cfg),
+			   tok_(new tokenizer(in)),
+			   validator_(validator),
+			   elements()
 {
 }
 
@@ -148,13 +151,15 @@ void parser::parse_element()
 	tok_->next_token();
 	std::string elname;
 	config* current_element = NULL;
-
 	switch(tok_->current_token().type) {
 	case token::STRING: // [element]
 		elname = tok_->current_token().value;
 		if (tok_->next_token().type != ']')
 			error(_("Unterminated [element] tag"));
-
+		if (validator_){
+			validator_->open_tag(elname,tok_->get_start_line(),
+								  tok_->get_file());
+		}
 		// Add the element
 		current_element = &(elements.top().cfg->add_child(elname));
 		elements.push(element(current_element, elname, tok_->get_start_line(), tok_->get_file()));
@@ -173,6 +178,10 @@ void parser::parse_element()
 			current_element = &c;
 		} else {
 			current_element = &elements.top().cfg->add_child(elname);
+		}
+		if (validator_){
+			validator_->open_tag(elname,tok_->get_start_line(),
+								  tok_->get_file());
 		}
 		elements.push(element(current_element, elname, tok_->get_start_line(), tok_->get_file()));
 		break;
@@ -194,7 +203,11 @@ void parser::parse_element()
 			error(lineno_string(i18n_symbols, ss.str(),
 					N_("Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)")));
 		}
-
+		if(validator_){
+			element & el= elements.top();
+			validator_->validate(*el.cfg,el.name,el.start_line,el.file);
+			validator_->close_tag();
+		}
 		elements.pop();
 		break;
 	default:
@@ -342,18 +355,18 @@ void parser::error(const std::string& error_type)
 
 } // end anon namespace
 
-void read(config &cfg, std::istream &in)
+void read(config &cfg, std::istream &in, abstract_validator * validator)
 {
-	parser(cfg, in)();
+	parser(cfg, in, validator)();
 }
 
-void read(config &cfg, std::string &in)
+void read(config &cfg, std::string &in, abstract_validator * validator)
 {
 	std::istringstream ss(in);
-	parser(cfg, ss)();
+	parser(cfg, ss, validator)();
 }
 
-void read_gz(config &cfg, std::istream &file)
+void read_gz(config &cfg, std::istream &file, abstract_validator * validator)
 {
 	//an empty gzip file seems to confuse boost on msvc
 	//so return early if this is the case
@@ -364,7 +377,7 @@ void read_gz(config &cfg, std::istream &file)
 	filter.push(boost::iostreams::gzip_decompressor());
 	filter.push(file);
 
-	parser(cfg, filter)();
+	parser(cfg, filter,validator)();
 }
 
 static std::string escaped_string(const std::string &value)
