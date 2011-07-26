@@ -56,6 +56,17 @@ public abstract class WMLTests extends AbstractXtextTests
         grammar = ( WMLGrammarAccess ) getGrammarAccess( );
     }
 
+    @Override
+    protected void tearDown() throws Exception
+    {
+        super.tearDown( );
+
+        lexer = null;
+        tokenDefProvider = null;
+        parser = null;
+        grammar = null;
+    }
+
     /**
      * return the list of tokens created by the lexer from the given input
      */

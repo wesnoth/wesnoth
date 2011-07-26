@@ -5,7 +5,7 @@ import org.wesnoth.tests.WMLTests;
 /**
  * Tests parts of the grammar
  */
-public class WMLGrammarTokens extends WMLTests
+public class WMLGrammarTokensTests extends WMLTests
 {
     // for convenience, define constants for the
     // rule names in your grammar
