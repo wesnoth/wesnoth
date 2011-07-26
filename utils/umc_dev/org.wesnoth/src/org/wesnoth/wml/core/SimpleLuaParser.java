@@ -28,7 +28,9 @@ public class SimpleLuaParser
     private List<Tag> tags_;
     private Reader reader_;
 
-    private String TAG_REGEX = "wml_actions\\..+\\( *cfg *\\)";
+    private final static String TAG_REGEX = "wml_actions\\..+\\( *cfg *\\)";
+    private final static String ATTRIBUTE_REGEX = "cfg\\.[a-zA-Z0-9_]*";
+    private final static String ATTRIBUTE_CHILD_REGEX = "get_child\\(cfg, *\"[^\"]+\"\\)";
 
     public SimpleLuaParser( String contents )
     {
@@ -44,18 +46,43 @@ public class SimpleLuaParser
         BufferedReader reader = new BufferedReader( reader_ );
         String line = null;
 
+        Tag currentTag = null;
+
         try
         {
             while( ( line = reader.readLine( ) ) != null ) {
-                List<String> tokens = StringUtils.getGroups( TAG_REGEX, line );
+                List<String> tagTokens = StringUtils.getGroups( TAG_REGEX, line );
 
-                for ( String token : tokens ) {
+                // we handle just on tag per line
+                if ( !tagTokens.isEmpty( ) ) {
+                    String token = tagTokens.get( 0 );
                     // parse the tag name
                     String tagName = token.substring(
                             token.indexOf( '.' ) + 1,
-                            token.length( ) - 1 );
+                            token.lastIndexOf( '(' ) );
 
-                    tags_.add( new Tag( tagName, '*' ) );
+                    currentTag = new Tag( tagName, '*' );
+                    tags_.add( currentTag );
+                }
+
+                // parse the attributes
+                if ( currentTag != null ) {
+                    List<String> attributeTokens = StringUtils.getGroups( ATTRIBUTE_REGEX, line );
+                    for ( String token : attributeTokens ) {
+                        String attributeName = token.substring(
+                                token.indexOf( '.' ) + 1 );
+
+                        currentTag.addKey( attributeName, "string", '*', true );
+                    }
+
+                    List<String> childTokens = StringUtils.getGroups( ATTRIBUTE_CHILD_REGEX, line );
+                    for ( String token : childTokens ) {
+                        String childName = token.substring(
+                                token.indexOf( '"' ) + 1,
+                                token.lastIndexOf( '"' ) );
+
+                        currentTag.addKey( childName, "string", '*', true );
+                    }
                 }
             }
         }
