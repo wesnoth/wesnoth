@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.wesnoth.wml.core;
+package org.wesnoth.wml;
 
 import java.io.Serializable;
 

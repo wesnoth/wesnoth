@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.wesnoth.wml.core;
+package org.wesnoth.wml;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,7 +18,6 @@ import java.util.List;
 import org.wesnoth.Logger;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.wml.WMLTag;
-import org.wesnoth.wml.WmlFactory2;
 
 /**
  * This is a simple Lua parser that returns the found interesting tokens

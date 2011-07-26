@@ -41,8 +41,8 @@ import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WorkspaceUtils;
-import org.wesnoth.wml.core.SimpleWMLParser;
-import org.wesnoth.wml.core.WMLConfig;
+import org.wesnoth.wml.SimpleWMLParser;
+import org.wesnoth.wml.WMLConfig;
 
 /**
  * The builder does the following steps in order to create and ensure

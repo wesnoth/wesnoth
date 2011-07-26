@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.wesnoth.wml.core;
+package org.wesnoth.wml;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +19,7 @@ import org.wesnoth.Logger;
 import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WMLUtils;
-import org.wesnoth.wml.WMLKey;
-import org.wesnoth.wml.WMLLuaCode;
-import org.wesnoth.wml.WMLMacroCall;
-import org.wesnoth.wml.WMLRoot;
-import org.wesnoth.wml.WMLTag;
-import org.wesnoth.wml.core.WMLVariable.Scope;
+import org.wesnoth.wml.WMLVariable.Scope;
 
 import com.google.common.base.Preconditions;
 
@@ -128,8 +123,6 @@ public class SimpleWMLParser
             }
         }
         //TODO: parse custom events
-
-        System.out.println( "parsed config: " + config_ );
     }
 
     protected String getVariableNameByContext( EObject context )
@@ -175,7 +168,6 @@ public class SimpleWMLParser
 
         // couldn't find any scope. Add a new one then.
         variable.getScopes( ).add( new Scope( dependencyIndex_, nodeOffset ) );
-        System.out.println( "new scope for variable:" + variable );
     }
 
     protected void handleUnsetVariable( EObject context )
@@ -203,7 +195,6 @@ public class SimpleWMLParser
                 scope.EndIndex = dependencyIndex_;
                 scope.EndOffset = nodeOffset;
 
-                System.out.println( "new end for variable:" + variable );
                 return;
             }
         }

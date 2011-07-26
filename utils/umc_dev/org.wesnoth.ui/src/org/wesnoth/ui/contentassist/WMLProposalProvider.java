@@ -36,12 +36,12 @@ import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLUtils;
+import org.wesnoth.wml.WMLConfig;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLKeyValue;
 import org.wesnoth.wml.WMLTag;
-import org.wesnoth.wml.core.WMLConfig;
-import org.wesnoth.wml.core.WMLVariable;
-import org.wesnoth.wml.core.WMLVariable.Scope;
+import org.wesnoth.wml.WMLVariable;
+import org.wesnoth.wml.WMLVariable.Scope;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicates;

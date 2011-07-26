@@ -29,8 +29,8 @@ import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preprocessor.Define;
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.utils.ResourceUtils;
-import org.wesnoth.wml.core.WMLConfig;
-import org.wesnoth.wml.core.WMLVariable;
+import org.wesnoth.wml.WMLConfig;
+import org.wesnoth.wml.WMLVariable;
 
 /**
  * A class that stores some project specific infos
