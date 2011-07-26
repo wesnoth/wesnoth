@@ -9,6 +9,7 @@
 package org.wesnoth.wml.core;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.wesnoth.utils.Pair;
@@ -37,6 +38,7 @@ public class WMLVariable implements Serializable
         name_ = name;
         location_ = location;
         offset_ = offset;
+        scopes_ = new ArrayList<Pair<Integer,Integer>>();
     }
 
 	public String getName()
