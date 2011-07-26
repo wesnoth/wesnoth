@@ -85,18 +85,32 @@ public class SimpleWMLParser
                             config_.ScenarioId = WMLUtils.getKeyValue( key.getValue( ) );
                         else if ( currentTagName.equals( "campaign" ) )
                             config_.CampaignId = WMLUtils.getKeyValue( key.getValue( ) );
-                    } else if ( keyName.equals( "name" ) ) {
-                        if ( currentTagName.equals( "set_variable" ) ||
-                             currentTagName.equals( "set_variables" ) ) {
-                            handleSetVariable( object );
+                    }
+
+                    // now follows just things that modify project/file's related info
+                    if ( configOnly == false ) {
+                        if ( keyName.equals( "name" ) ) {
+                            if ( currentTagName.equals( "set_variable" ) ||
+                                 currentTagName.equals( "set_variables" ) ) {
+                                handleSetVariable( object );
+                            } else if ( currentTagName.equals( "clear_variable" ) ||
+                                        currentTagName.equals( "clear_variables" ) ) {
+                                handleUnsetVariable( object );
+                            }
                         }
                     }
                 }
             }
             else if ( object instanceof WMLMacroCall ) {
-                WMLMacroCall macroCall = ( WMLMacroCall ) object;
-                if ( macroCall.getName( ).equals( "VARIABLE" ) ) {
-                    handleSetVariable( object );
+
+                if ( configOnly == false ) {
+                    WMLMacroCall macroCall = ( WMLMacroCall ) object;
+                    String macroCallName = macroCall.getName( );
+                    if ( macroCallName.equals( "VARIABLE" ) ) {
+                        handleSetVariable( object );
+                    } else if ( macroCallName.equals( "CLEAR_VARIABLE" ) ) {
+                        handleUnsetVariable( object );
+                    }
                 }
             }
         }
