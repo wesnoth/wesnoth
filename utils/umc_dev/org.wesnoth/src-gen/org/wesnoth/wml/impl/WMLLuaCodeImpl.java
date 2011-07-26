@@ -38,7 +38,7 @@ public class WMLLuaCodeImpl extends WMLKeyValueImpl implements WMLLuaCode
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
+  protected static final String VALUE_EDEFAULT = "";
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.

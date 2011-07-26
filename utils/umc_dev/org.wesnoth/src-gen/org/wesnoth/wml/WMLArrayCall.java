@@ -37,7 +37,7 @@ public interface WMLArrayCall extends WMLKeyValue
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute list.
    * @see org.wesnoth.wml.WmlPackage#getWMLArrayCall_Value()
-   * @model unique="false"
+   * @model default="" unique="false"
    * @generated
    */
   EList<String> getValue();

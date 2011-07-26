@@ -27,6 +27,7 @@ public interface WMLLuaCode extends WMLKeyValue
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Value</em>' attribute isn't clear,
@@ -36,7 +37,7 @@ public interface WMLLuaCode extends WMLKeyValue
    * @return the value of the '<em>Value</em>' attribute.
    * @see #setValue(String)
    * @see org.wesnoth.wml.WmlPackage#getWMLLuaCode_Value()
-   * @model
+   * @model default=""
    * @generated
    */
   String getValue();

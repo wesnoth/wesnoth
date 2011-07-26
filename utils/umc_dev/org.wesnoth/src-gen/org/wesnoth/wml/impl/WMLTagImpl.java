@@ -83,7 +83,7 @@ public class WMLTagImpl extends WMLRootExpressionImpl implements WMLTag
    * @generated
    * @ordered
    */
-  protected static final String END_NAME_EDEFAULT = null;
+  protected static final String END_NAME_EDEFAULT = "";
 
   /**
    * The cached value of the '{@link #getEndName() <em>End Name</em>}' attribute.

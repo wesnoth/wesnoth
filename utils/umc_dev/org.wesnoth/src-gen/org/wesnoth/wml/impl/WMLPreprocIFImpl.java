@@ -61,7 +61,7 @@ public class WMLPreprocIFImpl extends WMLRootExpressionImpl implements WMLPrepro
    * @generated
    * @ordered
    */
-  protected static final String ELSES_EDEFAULT = null;
+  protected static final String ELSES_EDEFAULT = "";
 
   /**
    * The cached value of the '{@link #getElses() <em>Elses</em>}' attribute.
@@ -91,7 +91,7 @@ public class WMLPreprocIFImpl extends WMLRootExpressionImpl implements WMLPrepro
    * @generated
    * @ordered
    */
-  protected static final String END_NAME_EDEFAULT = null;
+  protected static final String END_NAME_EDEFAULT = "";
 
   /**
    * The cached value of the '{@link #getEndName() <em>End Name</em>}' attribute.

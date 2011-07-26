@@ -47,6 +47,7 @@ public interface WMLPreprocIF extends WMLRootExpression
 
   /**
    * Returns the value of the '<em><b>Elses</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Elses</em>' attribute isn't clear,
@@ -56,7 +57,7 @@ public interface WMLPreprocIF extends WMLRootExpression
    * @return the value of the '<em>Elses</em>' attribute.
    * @see #setElses(String)
    * @see org.wesnoth.wml.WmlPackage#getWMLPreprocIF_Elses()
-   * @model
+   * @model default=""
    * @generated
    */
   String getElses();
@@ -89,6 +90,7 @@ public interface WMLPreprocIF extends WMLRootExpression
 
   /**
    * Returns the value of the '<em><b>End Name</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>End Name</em>' attribute isn't clear,
@@ -98,7 +100,7 @@ public interface WMLPreprocIF extends WMLRootExpression
    * @return the value of the '<em>End Name</em>' attribute.
    * @see #setEndName(String)
    * @see org.wesnoth.wml.WmlPackage#getWMLPreprocIF_EndName()
-   * @model
+   * @model default=""
    * @generated
    */
   String getEndName();

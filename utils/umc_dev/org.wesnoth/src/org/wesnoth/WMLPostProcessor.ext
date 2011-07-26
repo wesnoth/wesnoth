@@ -31,10 +31,9 @@ process( EClass this ):
 process( EStructuralFeature this ):
     null;
 
+// make the all strings to default to the empty string
 process( EAttribute this ):
-    if  name == 'plus' || name == 'point' || name == 'relative' || 
-        name == 'name' || name == 'eol'
-    then 
+    if  eAttributeType.name == "EString" then 
         setDefaultValueLiteral( "" );
 
 createCardinalityOperation( EClass this, String name, char chr ) :
