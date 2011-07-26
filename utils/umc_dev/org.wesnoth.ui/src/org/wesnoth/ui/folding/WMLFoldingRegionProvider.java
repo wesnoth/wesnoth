@@ -57,10 +57,12 @@ public class WMLFoldingRegionProvider extends DefaultFoldingRegionProvider
             else if ( eObject instanceof WMLMacroDefine )
                 endName = ( ( WMLMacroDefine ) eObject ).getEndName( );
 
-            if ( endName.endsWith( "\r\n" ) )
-                length -= 2;
-            else if ( endName.endsWith( "\n" ) )
-                -- length;
+            if ( endName != null ) {
+                if ( endName.endsWith( "\r\n" ) )
+                    length -= 2;
+                else if ( endName.endsWith( "\n" ) )
+                    -- length;
+            }
 
             foldingRegionAcceptor.accept(offset, length, significant);
         }
