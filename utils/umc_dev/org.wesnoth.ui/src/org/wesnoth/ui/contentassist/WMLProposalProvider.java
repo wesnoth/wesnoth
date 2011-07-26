@@ -42,6 +42,7 @@ import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.core.WMLConfig;
 import org.wesnoth.wml.core.WMLVariable;
+import org.wesnoth.wml.core.WMLVariable.Scope;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicates;
@@ -227,8 +228,10 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		            acceptor.accept( createCompletionProposal( event, context ) );
 		        }
 		    } else {
-		        // add variables
+		        final int nodeOffset = NodeModelUtils.getNode( model ).getTotalOffset( );
 		        List<String> variables = new ArrayList<String>();
+
+                // add CAC variables
                 variables.addAll( TemplateProvider.getInstance( ).getCAC( "variables" ) );
 
 		        // filter variables by index
@@ -239,9 +242,11 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                     @Override
                     public String apply( WMLVariable from )
                     {
-//                        if ( from.getScopeStartIndex( ) <= dependencyIndex_ &&
-//                             dependencyIndex_ <= from.getScopeEndIndex( ) )
-//                            return from.getName( );
+                        for ( Scope scope : from.getScopes( ) ) {
+                            if ( scope.contains( dependencyIndex_, nodeOffset ) )
+                                return from.getName( );
+                        }
+
                         return null;
                     }
                 } );

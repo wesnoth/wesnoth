@@ -11,8 +11,8 @@ package org.wesnoth.wml.core;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.wesnoth.Logger;
 import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.ResourceUtils;
@@ -21,6 +21,7 @@ import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
 import org.wesnoth.wml.WMLTag;
+import org.wesnoth.wml.core.WMLVariable.Scope;
 
 import com.google.common.base.Preconditions;
 
@@ -32,6 +33,7 @@ public class SimpleWMLParser
     protected WMLConfig config_;
     protected IFile file_;
     protected ProjectCache projectCache_;
+    protected int dependencyIndex_;
 
     /**
      * Creates a new parser for the specified file
@@ -49,6 +51,8 @@ public class SimpleWMLParser
         config_ = Preconditions.checkNotNull( config );
         file_ = file;
         projectCache_ = ProjectUtils.getCacheForProject( file.getProject( ) );
+
+        dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
     }
 
     /**
@@ -118,35 +122,81 @@ public class SimpleWMLParser
         System.out.println( "parsed config: " + config_ );
     }
 
-    protected void handleSetVariable( EObject context )
+    protected String getVariableNameByContext( EObject context )
     {
-        WMLVariable variable = new WMLVariable( );
-        ICompositeNode node = NodeModelUtils.getNode( context ) ;
-
-        variable.setLocation( file_.getLocation( ).toOSString( ) );
-//        variable.setScopeStartIndex( ResourceUtils.getDependencyIndex( file_ ) );
-        variable.setOffset( node.getTotalOffset( ) );
+        String variableName = null;
 
         if ( context instanceof WMLKey ) {
-            variable.setName( WMLUtils.getKeyValue( ( ( WMLKey ) context ).getValue( ) ) );
+            variableName =  WMLUtils.getKeyValue( ( ( WMLKey ) context ).getValue( ) ) ;
         } else if ( context instanceof WMLMacroCall ) {
             WMLMacroCall macro = ( WMLMacroCall ) context;
             if ( macro.getParameters( ).size( ) > 0 ) {
-                variable.setName( WMLUtils.toString( macro.getParameters( ).get( 0 ) ) );
+                variableName = WMLUtils.toString( macro.getParameters( ).get( 0 ) ) ;
             }
         }
 
-        if ( ! variable.getName( ).isEmpty( ) ) {
-            projectCache_.getVariables( ).put( variable.getName( ), variable );
-            System.out.println( "added variable: " + variable );
+        return variableName;
+    }
+
+
+    protected void handleSetVariable( EObject context )
+    {
+        String variableName = getVariableNameByContext( context );
+
+        if ( variableName == null ) {
+            Logger.getInstance( ).logWarn(
+                    "setVariable: couldn't get variable name from context: " + context );
         }
+
+        WMLVariable variable = projectCache_.getVariables( ).get( variableName );
+        if ( variable == null ) {
+            variable = new WMLVariable( variableName );
+            projectCache_.getVariables( ).put( variableName, variable );
+        }
+
+        int nodeOffset = NodeModelUtils.getNode( context ).getTotalOffset( );
+        for ( Scope scope : variable.getScopes( ) ) {
+            if ( scope.contains( dependencyIndex_, nodeOffset ) )
+                return; // nothing to do
+        }
+
+        // couldn't find any scope. Add a new one then.
+        variable.getScopes( ).add( new Scope( dependencyIndex_, nodeOffset ) );
+        System.out.println( "new scope for variable:" + variable );
     }
 
     protected void handleUnsetVariable( EObject context )
     {
+        String variableName = getVariableNameByContext( context );
+        if ( variableName == null ) {
+            Logger.getInstance( ).logWarn(
+                    "unsetVariable: couldn't get variable name from context: " + context );
+        }
 
+        WMLVariable variable = projectCache_.getVariables( ).get( variableName );
+        if ( variable == null )
+            return;
+
+        int nodeOffset = NodeModelUtils.getNode( context ).getTotalOffset( );
+
+        // get the first containing scope, and modify its end index/offset
+
+        for ( Scope scope : variable.getScopes( ) ) {
+            if ( scope.contains( dependencyIndex_, nodeOffset ) ) {
+
+                scope.EndIndex = dependencyIndex_;
+                scope.EndOffset = nodeOffset;
+
+                System.out.println( "new end for variable:" + variable );
+                return;
+            }
+        }
     }
 
+    /**
+     * Returns the parsed WMLConfig
+     * @return Returns the parsed WMLConfig
+     */
     public WMLConfig getParsedConfig()
     {
         return config_;
