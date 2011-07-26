@@ -264,6 +264,36 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getWMLTag__extendedTagName()
+  {
+    return (EAttribute)wmlTagEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLTag__cardinality()
+  {
+    return (EAttribute)wmlTagEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLTag__needsExpanding()
+  {
+    return (EAttribute)wmlTagEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getWMLKey()
   {
     return wmlKeyEClass;
@@ -287,6 +317,36 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
   public EAttribute getWMLKey_Eol()
   {
     return (EAttribute)wmlKeyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLKey__cardinality()
+  {
+    return (EAttribute)wmlKeyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLKey__Enum()
+  {
+    return (EAttribute)wmlKeyEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLKey__Translatable()
+  {
+    return (EAttribute)wmlKeyEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -556,10 +616,16 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     createEAttribute(wmlTagEClass, WML_TAG__PLUS);
     createEReference(wmlTagEClass, WML_TAG__EXPRESSIONS);
     createEAttribute(wmlTagEClass, WML_TAG__END_NAME);
+    createEAttribute(wmlTagEClass, WML_TAG__EXTENDED_TAG_NAME);
+    createEAttribute(wmlTagEClass, WML_TAG__CARDINALITY);
+    createEAttribute(wmlTagEClass, WML_TAG__NEEDS_EXPANDING);
 
     wmlKeyEClass = createEClass(WML_KEY);
     createEReference(wmlKeyEClass, WML_KEY__VALUE);
     createEAttribute(wmlKeyEClass, WML_KEY__EOL);
+    createEAttribute(wmlKeyEClass, WML_KEY__CARDINALITY);
+    createEAttribute(wmlKeyEClass, WML_KEY__ENUM);
+    createEAttribute(wmlKeyEClass, WML_KEY__TRANSLATABLE);
 
     wmlKeyValueEClass = createEClass(WML_KEY_VALUE);
 
@@ -646,10 +712,24 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     initEAttribute(getWMLTag_Plus(), ecorePackage.getEString(), "plus", "", 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getWMLTag_Expressions(), this.getWMLExpression(), null, "Expressions", null, 0, -1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLTag_EndName(), ecorePackage.getEString(), "endName", null, 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLTag__extendedTagName(), ecorePackage.getEString(), "_extendedTagName", "", 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLTag__cardinality(), ecorePackage.getEChar(), "_cardinality", " ", 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLTag__needsExpanding(), ecorePackage.getEBoolean(), "_needsExpanding", "false", 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlKeyEClass, WMLKey.class, "WMLKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWMLKey_Value(), this.getWMLKeyValue(), null, "value", null, 0, -1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLKey_Eol(), ecorePackage.getEString(), "eol", "", 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLKey__cardinality(), ecorePackage.getEChar(), "_cardinality", " ", 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLKey__Enum(), ecorePackage.getEBoolean(), "_Enum", "false", 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLKey__Translatable(), ecorePackage.getEBoolean(), "_Translatable", "false", 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    addEOperation(wmlKeyEClass, ecorePackage.getEBoolean(), "is_Required", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+    addEOperation(wmlKeyEClass, ecorePackage.getEBoolean(), "is_Forbidden", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+    addEOperation(wmlKeyEClass, ecorePackage.getEBoolean(), "is_Optional", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+    addEOperation(wmlKeyEClass, ecorePackage.getEBoolean(), "is_Repeatable", 0, 1, IS_UNIQUE, IS_ORDERED);
 
     initEClass(wmlKeyValueEClass, WMLKeyValue.class, "WMLKeyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

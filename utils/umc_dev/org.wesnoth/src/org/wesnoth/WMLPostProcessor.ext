@@ -1,21 +1,65 @@
-process( xtext::GeneratedMetamodel this ):
+import ecore;
+import xtext;
+
+process( GeneratedMetamodel this ):
     process( ePackage );
 
-process( ecore::EPackage this ):
+process( EPackage this ):
     eClassifiers.process();
 
-process( ecore::EClassifier this ):
+process( EClassifier this ):
     null;
 
-process( ecore::EClass this ):
-    eStructuralFeatures.process();
+process( EClass this ):
+    eStructuralFeatures.process() ->
+     
+    // enrich the grammar elements with schema-specific attributes
+    if name == "WMLTag" then {
+        createAttribute( "_extendedTagName", "EString", "" ) ->
+        createAttribute( "_cardinality", "EChar", " " ) ->
+        createAttribute( "_needsExpanding", "EBoolean", "false" )
+    } else if name == "WMLKey" then {
+        createAttribute( "_cardinality", "EChar", " " ) ->
+        createAttribute( "_Enum", "EBoolean", "false" ) ->
+        createAttribute( "_Translatable", "EBoolean", "false" ) ->
+        createCardinalityOperation( "is_Required", '1' ) ->
+        createCardinalityOperation( "is_Forbidden", '-' ) ->
+        createCardinalityOperation( "is_Optional", '?' ) ->
+        createCardinalityOperation( "is_Repeatable", '*' )
+    };
 
-process( ecore::EStructuralFeature this ):
+process( EStructuralFeature this ):
     null;
 
-process( ecore::EAttribute this ):
-    if name == 'plus' then setDefaultValueLiteral( "" )
-    else if name == 'point' then setDefaultValueLiteral( "" )
-    else if name == 'relative' then setDefaultValueLiteral( "" )
-    else if name == 'name' then setDefaultValueLiteral( "" )
-    else if name == 'eol' then setDefaultValueLiteral( "" );
+process( EAttribute this ):
+    if  name == 'plus' || name == 'point' || name == 'relative' || 
+        name == 'name' || name == 'eol'
+    then 
+        setDefaultValueLiteral( "" );
+
+createCardinalityOperation( EClass this, String name, char chr ) :
+    let op = newCardinalityOperation( name ) : newCardinalityAnnotation( op, chr ) ;
+
+create EOperation this newCardinalityOperation( EClass owner, String name ) :
+    setName( name ) -> setEType( getEcoreDataType( "EBoolean" ) ) ->
+    owner.eOperations.add( this );
+
+create EAnnotation this newCardinalityAnnotation( EOperation op, char chr ):
+    let an = new EStringToStringMapEntry :
+        setSource( "http://www.eclipse.org/emf/2002/GenModel" ) ->
+        an.setKey( "body" ) ->
+        an.setValue( "return _cardinality == '" + chr + "';" ) ->
+        details.add( an ) ->
+        op.eAnnotations.add( this );
+
+create EAttribute this createAttribute( EClass owner, String name, String type, String defValue ) :
+    setName( name ) -> 
+    setEType( getEcoreDataType( type ) ) ->
+    setDefaultValueLiteral( defValue ) ->
+    
+    // add attribute
+    owner.eStructuralFeatures.add( this );
+     
+EDataType getEcoreDataType(String name) :
+    org::eclipse::emf::ecore::EcorePackage::eINSTANCE.getEClassifier(name)
+;

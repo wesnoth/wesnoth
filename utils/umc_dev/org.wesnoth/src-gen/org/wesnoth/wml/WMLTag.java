@@ -19,6 +19,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wesnoth.wml.WMLTag#getPlus <em>Plus</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLTag#getExpressions <em>Expressions</em>}</li>
  *   <li>{@link org.wesnoth.wml.WMLTag#getEndName <em>End Name</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLTag#get_extendedTagName <em>extended Tag Name</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLTag#get_cardinality <em>cardinality</em>}</li>
+ *   <li>{@link org.wesnoth.wml.WMLTag#is_needsExpanding <em>needs Expanding</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,5 +99,86 @@ public interface WMLTag extends WMLRootExpression
    * @generated
    */
   void setEndName(String value);
+
+  /**
+   * Returns the value of the '<em><b>extended Tag Name</b></em>' attribute.
+   * The default value is <code>""</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>extended Tag Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>extended Tag Name</em>' attribute.
+   * @see #set_extendedTagName(String)
+   * @see org.wesnoth.wml.WmlPackage#getWMLTag__extendedTagName()
+   * @model default=""
+   * @generated
+   */
+  String get_extendedTagName();
+
+  /**
+   * Sets the value of the '{@link org.wesnoth.wml.WMLTag#get_extendedTagName <em>extended Tag Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>extended Tag Name</em>' attribute.
+   * @see #get_extendedTagName()
+   * @generated
+   */
+  void set_extendedTagName(String value);
+
+  /**
+   * Returns the value of the '<em><b>cardinality</b></em>' attribute.
+   * The default value is <code>" "</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>cardinality</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>cardinality</em>' attribute.
+   * @see #set_cardinality(char)
+   * @see org.wesnoth.wml.WmlPackage#getWMLTag__cardinality()
+   * @model default=" "
+   * @generated
+   */
+  char get_cardinality();
+
+  /**
+   * Sets the value of the '{@link org.wesnoth.wml.WMLTag#get_cardinality <em>cardinality</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>cardinality</em>' attribute.
+   * @see #get_cardinality()
+   * @generated
+   */
+  void set_cardinality(char value);
+
+  /**
+   * Returns the value of the '<em><b>needs Expanding</b></em>' attribute.
+   * The default value is <code>"false"</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>needs Expanding</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>needs Expanding</em>' attribute.
+   * @see #set_needsExpanding(boolean)
+   * @see org.wesnoth.wml.WmlPackage#getWMLTag__needsExpanding()
+   * @model default="false"
+   * @generated
+   */
+  boolean is_needsExpanding();
+
+  /**
+   * Sets the value of the '{@link org.wesnoth.wml.WMLTag#is_needsExpanding <em>needs Expanding</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>needs Expanding</em>' attribute.
+   * @see #is_needsExpanding()
+   * @generated
+   */
+  void set_needsExpanding(boolean value);
 
 } // WMLTag
