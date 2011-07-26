@@ -17,7 +17,6 @@ import java.util.List;
 
 import org.wesnoth.Logger;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.wml.WMLTag;
 
 /**
  * This is a simple Lua parser that returns the found interesting tokens
@@ -73,7 +72,7 @@ public class SimpleLuaParser
                                 token.indexOf( '.' ) + 1 );
 
                         currentTag.getExpressions( ).add(
-                                WmlFactory2.eINSTANCE.createWMLKey( attributeName, "string" ) );
+                                WmlFactory2.eINSTANCE.createWMLKey( attributeName, "string", '1', false ) );
                     }
 
                     List<String> childTokens = StringUtils.getGroups( ATTRIBUTE_CHILD_REGEX, line );
@@ -83,7 +82,7 @@ public class SimpleLuaParser
                                 token.lastIndexOf( '"' ) );
 
                         currentTag.getExpressions( ).add(
-                                WmlFactory2.eINSTANCE.createWMLKey( childName, "string" ) );
+                                WmlFactory2.eINSTANCE.createWMLKey( childName, "string", '1', false ) );
                     }
                 }
             }
