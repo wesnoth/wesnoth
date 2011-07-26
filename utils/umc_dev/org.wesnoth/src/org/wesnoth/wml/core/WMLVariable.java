@@ -17,6 +17,8 @@ public class WMLVariable
 	private String location_;
 	private int offset_;
 	private boolean isArray_;
+	private int scopeStartIndex_;
+	private int scopeEndIndex_;
 
 	public WMLVariable()
 	{
@@ -28,6 +30,9 @@ public class WMLVariable
 		name_ = name;
 		location_ = location;
 		offset_ = offset;
+
+		scopeStartIndex_ = Integer.MAX_VALUE;
+		scopeEndIndex_ = Integer.MAX_VALUE;
 	}
 
 	public String getName()
@@ -62,4 +67,21 @@ public class WMLVariable
 	{
 		isArray_ = isArray;
 	}
+
+	public int getScopeEndIndex()
+    {
+        return scopeEndIndex_;
+    }
+	public int getScopeStartIndex()
+    {
+        return scopeStartIndex_;
+    }
+	public void setScopeEndIndex( int scopeEndIndex )
+    {
+        scopeEndIndex_ = scopeEndIndex;
+    }
+	public void setScopeStartIndex( int scopeStartIndex )
+    {
+        scopeStartIndex_ = scopeStartIndex;
+    }
 }

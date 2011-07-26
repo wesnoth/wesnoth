@@ -39,7 +39,7 @@ public class DependencyListNode implements Serializable
      */
     public static final int INDEX_STEP = 100000;
 
-    protected static final QualifiedName PDL_INDEX = new QualifiedName( Constants.PLUGIN_ID, "pdl_index" ); //$NON-NLS-1$
+    public static final QualifiedName PDL_INDEX = new QualifiedName( Constants.PLUGIN_ID, "pdl_index" ); //$NON-NLS-1$
 
     private DependencyListNode previous_;
     private DependencyListNode next_;

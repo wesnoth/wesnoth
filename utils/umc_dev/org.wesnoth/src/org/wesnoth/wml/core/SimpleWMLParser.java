@@ -11,6 +11,8 @@ package org.wesnoth.wml.core;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLKey;
@@ -51,6 +53,9 @@ public class SimpleWMLParser
      */
     public void parse()
     {
+        // clear all variables before parsing them
+        config_.getVariables( ).clear( );
+
         WMLRoot root = ResourceUtils.getWMLRoot( file_ );
         TreeIterator<EObject> itor = root.eAllContents( );
         WMLTag currentTag = null;
@@ -101,7 +106,25 @@ public class SimpleWMLParser
 
     protected void handleSetVariable( EObject context )
     {
+        WMLVariable variable = new WMLVariable( );
+        ICompositeNode node = NodeModelUtils.getNode( context ) ;
 
+        variable.setLocation( file_.getLocation( ).toOSString( ) );
+        variable.setScopeStartIndex( ResourceUtils.getDependencyIndex( file_ ) );
+        variable.setOffset( node.getTotalOffset( ) );
+
+        if ( context instanceof WMLKey ) {
+            variable.setName( WMLUtils.getKeyValue( ( ( WMLKey ) context ).getValue( ) ) );
+        } else if ( context instanceof WMLMacroCall ) {
+            WMLMacroCall macro = ( WMLMacroCall ) context;
+            if ( macro.getParameters( ).size( ) > 0 ) {
+                variable.setName( WMLUtils.toString( macro.getParameters( ).get( 0 ) ) );
+            }
+        }
+
+        if ( ! variable.getName( ).isEmpty( ) ) {
+            config_.getVariables( ).put( variable.getName( ), variable );
+        }
     }
 
     protected void handleUnsetVariable( EObject context )

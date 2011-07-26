@@ -51,6 +51,7 @@ import org.eclipse.swt.SWT;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
+import org.wesnoth.builder.DependencyListNode;
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.templates.ReplaceableParameter;
@@ -609,6 +610,26 @@ public class ResourceUtils
         return containersToAdd;
     }
 
+    /**
+     * Gets the associated dependency index for the specified file
+     * @param file The file to get the index for
+     * @return An index or {@link Integer.MAX_VALUE}
+     */
+    public static int getDependencyIndex( IFile file )
+    {
+        int index = Integer.MAX_VALUE;
+        try {
+            index  = Integer.parseInt( file.getPersistentProperty( DependencyListNode.PDL_INDEX ) );
+        }
+        catch ( CoreException e ) {
+            // not interested
+        }
+        catch (NumberFormatException e) {
+            // not interested
+        }
+
+        return index;
+    }
 
     /**
      * This is a WML files comparator, based on the WML parsing rules.
