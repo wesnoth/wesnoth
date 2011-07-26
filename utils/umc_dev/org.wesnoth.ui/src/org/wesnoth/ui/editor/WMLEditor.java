@@ -33,10 +33,8 @@ import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
@@ -50,6 +48,7 @@ import org.eclipse.ui.ide.FileStoreEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingHelper;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.wesnoth.Logger;
 import org.wesnoth.WesnothPlugin;
@@ -66,6 +65,8 @@ public class WMLEditor extends XtextEditor
 	@Inject
 	private IExtXtextEditorCustomizer editorCustomizer;
 
+	protected HighlightingHelper highlightingHelper_;
+
 	public WMLEditor()
 	{
 		super();
@@ -81,15 +82,10 @@ public class WMLEditor extends XtextEditor
 		super.createPartControl(parent);
 	}
 
-	public StyledText getTextWidget()
-	{
-		return getSourceViewer().getTextWidget();
-	}
-
-	public ISourceViewer getSourceViewer_()
-	{
-		return getSourceViewer();
-	}
+	public HighlightingHelper getHighlightingHelper()
+    {
+        return highlightingHelper_;
+    }
 
 	@Override
 	public boolean equals(Object obj)

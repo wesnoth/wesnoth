@@ -17,14 +17,15 @@ import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.XtextDocument;
+import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.wesnoth.ui.WMLSyntaxColoringAdapter;
+import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLTag;
 
 public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
 {
-    private WMLSyntaxColoringAdapter currentAdapter_;
     private WMLTag currentTag_;
 
     private int matchCnt = 0;
@@ -32,7 +33,6 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
     public WMLCharacterPairMatcher( char[] chars )
     {
         super( chars );
-        currentAdapter_ = null;
         currentTag_ = null;
     }
 
@@ -42,57 +42,66 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
         ++ matchCnt;
         IRegion region = super.match( doc, offset );
 
-        if ( region == null && doc instanceof XtextDocument ) {
+        if ( region == null && doc instanceof XtextDocument &&
+             doc.getLength( ) > 0 ) {
             if ( matchCnt == 2 ) {
                 matchCnt = 0;
             } else {
-                ( ( XtextDocument ) doc ).modify( new IUnitOfWork<IRegion, XtextResource>(){
+                ( ( XtextDocument ) doc ).readOnly( new IUnitOfWork<Boolean, XtextResource>(){
 
                     @Override
-                    public IRegion exec( XtextResource state ) throws Exception
+                    public Boolean exec( XtextResource state ) throws Exception
                     {
-                        return computeMatchingRegion( state, offset );
+                        computeMatchingRegion( state, offset );
+                        return true;
                     }
-
                 });
+
+                // refresh the highlighting
+                WMLEditor currentEditor = ( WMLEditor ) EditorUtils.getActiveXtextEditor( );
+                if ( currentEditor != null &&
+                     currentEditor.getHighlightingHelper( ) != null &&
+                     currentEditor.getHighlightingHelper( ).getReconciler( ) != null )
+                currentEditor.getHighlightingHelper( ).getReconciler( ).refresh( );
             }
         }
 
         return region;
     }
 
-    public IRegion computeMatchingRegion(XtextResource state, int offset)
+    public synchronized void computeMatchingRegion(XtextResource state, int offset)
     {
         EObject object = WMLUtils.EObjectUtils( ).resolveElementAt( state, offset );
 
         // do nothing if we clicked the same tag
         if ( currentTag_ == object )
-            return null;
-
-        // remove current colored tag ( if any )
-        if ( currentTag_ != null ) {
-            synchronized ( currentTag_ ) {
-
-                Iterator<Adapter> itor = currentTag_.eAdapters( ).iterator( );
-                while ( itor.hasNext( ) ) {
-                    if ( itor.next( ) instanceof WMLSyntaxColoringAdapter ) {
-                        itor.remove( );
-                    }
-                }
-
-                currentAdapter_ = null;
-                currentTag_ = null;
-            }
-        }
+            return;
 
         if ( object instanceof WMLTag ) {
             WMLTag tag = ( WMLTag ) object;
 
-            currentAdapter_ = new WMLSyntaxColoringAdapter( WMLHighlightingConfiguration.RULE_MATCH_TAG, true );
             currentTag_ = tag;
-            tag.eAdapters( ).add( currentAdapter_ );
-        }
+            for ( Adapter adapter : state.eAdapters( ) ) {
+                if ( adapter instanceof WMLSyntaxColoringAdapter ){
 
-        return null;
+                    ( ( WMLSyntaxColoringAdapter ) adapter ).TargetEObject = object;
+                    return; // done here
+                }
+            }
+
+            state.eAdapters( ).add( new WMLSyntaxColoringAdapter(
+                    WMLHighlightingConfiguration.RULE_MATCH_TAG, object ) );
+        } else {
+            // nothing new selected, just remove current adapter
+            Iterator<Adapter> itor = state.eAdapters( ).iterator( );
+            while ( itor.hasNext( ) ) {
+                if ( itor.next( ) instanceof WMLSyntaxColoringAdapter ) {
+                    itor.remove( );
+                    break;
+                }
+            }
+
+            currentTag_ = null;
+        }
     }
 }

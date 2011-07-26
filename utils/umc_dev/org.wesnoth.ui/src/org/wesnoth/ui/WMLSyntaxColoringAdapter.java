@@ -9,10 +9,11 @@
 package org.wesnoth.ui;
 
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.emf.ecore.EObject;
 import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
 
 /**
- * A simple WML adapter that holds a coloring id
+ * A simple WML adapter that holds a coloring id on the specified resource
  */
 public class WMLSyntaxColoringAdapter extends AdapterImpl
 {
@@ -22,14 +23,13 @@ public class WMLSyntaxColoringAdapter extends AdapterImpl
     public String ColorId;
 
     /**
-     * True whether this coloring applies to the start
-     * of the tag or to the end tag
+     * The object to color
      */
-    public boolean PaintStart;
+    public EObject TargetEObject;
 
-    public WMLSyntaxColoringAdapter( String id, boolean paintStart)
+    public WMLSyntaxColoringAdapter( String id, EObject target)
     {
         ColorId = id;
-        PaintStart = paintStart;
+        TargetEObject = target;
     }
 }

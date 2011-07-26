@@ -23,12 +23,14 @@ import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.wesnoth.ui.autoedit.WMLAutoEditStrategy;
 import org.wesnoth.ui.contentassist.WMLContentAssistContext;
 import org.wesnoth.ui.contentassist.WMLProposalComparator;
 import org.wesnoth.ui.editor.WMLAbstractDirtyEditorCallback;
 import org.wesnoth.ui.editor.WMLEditor;
+import org.wesnoth.ui.editor.WMLHighlightingHelper;
 import org.wesnoth.ui.folding.WMLFoldingRegionProvider;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.ui.navigation.WMLHyperlinkHelper;
@@ -57,6 +59,12 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	public void configure(Binder binder)
 	{
 		super.configure(binder);
+	}
+
+	@Override
+	public Class<? extends IHighlightingHelper> bindIHighlightingHelper()
+	{
+	    return WMLHighlightingHelper.class;
 	}
 
 	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration()

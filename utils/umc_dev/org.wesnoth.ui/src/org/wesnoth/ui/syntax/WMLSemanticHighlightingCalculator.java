@@ -90,12 +90,16 @@ public class WMLSemanticHighlightingCalculator implements ISemanticHighlightingC
             }
 
             // check if we have any information specific information for highlighting
-            for ( Adapter adapter : current.eAdapters( ) ) {
+            for ( Adapter adapter : resource.eAdapters( ) ) {
                 if ( adapter instanceof WMLSyntaxColoringAdapter ) {
                     WMLSyntaxColoringAdapter wmlAdapter = ( WMLSyntaxColoringAdapter ) adapter;
 
-                    for ( Pair<INode, String> pair : toColor ) {
-                        pair.Second = wmlAdapter.ColorId;
+                    if ( wmlAdapter.TargetEObject == current ) {
+
+                        for ( Pair<INode, String> pair : toColor ) {
+                            pair.Second = wmlAdapter.ColorId;
+                        }
+
                     }
 
                     break;
