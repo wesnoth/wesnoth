@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.wesnoth.Logger;
 import org.wesnoth.projects.ProjectCache;
-import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLLuaCode;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
 import org.wesnoth.wml.WMLTag;
@@ -37,30 +37,35 @@ public class SimpleWMLParser
 
     /**
      * Creates a new parser for the specified file
+     *
+     * @param file The file which to parse
      */
     public SimpleWMLParser( IFile file )
     {
-        this( file, new WMLConfig( file.getProjectRelativePath( ).toString( ) ) );
+        this( file, new WMLConfig( file.getProjectRelativePath( ).toString( ) ), null );
     }
 
     /**
      * Creates a new parser and fills the specified config file
+     *
+     * @param file The file which to parse
+     * @param config The config to fill
+     * @param projCache The project cache (can be null) on which to reflect
+     * the parsed data
      */
-    public SimpleWMLParser( IFile file, WMLConfig config )
+    public SimpleWMLParser( IFile file, WMLConfig config, ProjectCache projCache )
     {
         config_ = Preconditions.checkNotNull( config );
         file_ = file;
-        projectCache_ = ProjectUtils.getCacheForProject( file.getProject( ) );
+        projectCache_ = projCache;
 
         dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
     }
 
     /**
-     * Parses the config. The results will be available in {@link #getParsedConfig()}
-     * @param configOnly If true, the parsing won't modify anything external
-     * to the config object (like adding the variables to the project cache)
+     * Parses the config. The resulted config will be available in {@link #getParsedConfig()}
      */
-    public void parse( boolean configOnly )
+    public void parse( )
     {
         WMLRoot root = ResourceUtils.getWMLRoot( file_ );
         TreeIterator<EObject> itor = root.eAllContents( );
@@ -89,33 +94,28 @@ public class SimpleWMLParser
                             config_.ScenarioId = WMLUtils.getKeyValue( key.getValue( ) );
                         else if ( currentTagName.equals( "campaign" ) )
                             config_.CampaignId = WMLUtils.getKeyValue( key.getValue( ) );
-                    }
-
-                    // now follows just things that modify project/file's related info
-                    if ( configOnly == false ) {
-                        if ( keyName.equals( "name" ) ) {
-                            if ( currentTagName.equals( "set_variable" ) ||
-                                 currentTagName.equals( "set_variables" ) ) {
-                                handleSetVariable( object );
-                            } else if ( currentTagName.equals( "clear_variable" ) ||
-                                        currentTagName.equals( "clear_variables" ) ) {
-                                handleUnsetVariable( object );
-                            }
+                    } else if ( keyName.equals( "name" ) ) {
+                        if ( currentTagName.equals( "set_variable" ) ||
+                             currentTagName.equals( "set_variables" ) ) {
+                            handleSetVariable( object );
+                        } else if ( currentTagName.equals( "clear_variable" ) ||
+                                    currentTagName.equals( "clear_variables" ) ) {
+                            handleUnsetVariable( object );
                         }
                     }
                 }
             }
             else if ( object instanceof WMLMacroCall ) {
-
-                if ( configOnly == false ) {
-                    WMLMacroCall macroCall = ( WMLMacroCall ) object;
-                    String macroCallName = macroCall.getName( );
-                    if ( macroCallName.equals( "VARIABLE" ) ) {
-                        handleSetVariable( object );
-                    } else if ( macroCallName.equals( "CLEAR_VARIABLE" ) ) {
-                        handleUnsetVariable( object );
-                    }
+                WMLMacroCall macroCall = ( WMLMacroCall ) object;
+                String macroCallName = macroCall.getName( );
+                if ( macroCallName.equals( "VARIABLE" ) ) {
+                    handleSetVariable( object );
+                } else if ( macroCallName.equals( "CLEAR_VARIABLE" ) ) {
+                    handleUnsetVariable( object );
                 }
+            }
+            else if ( object instanceof WMLLuaCode ) {
+
             }
         }
         //TODO: parse custom events
@@ -142,6 +142,9 @@ public class SimpleWMLParser
 
     protected void handleSetVariable( EObject context )
     {
+        if ( projectCache_ == null )
+            return;
+
         String variableName = getVariableNameByContext( context );
 
         if ( variableName == null ) {
@@ -168,6 +171,9 @@ public class SimpleWMLParser
 
     protected void handleUnsetVariable( EObject context )
     {
+        if ( projectCache_ == null )
+            return;
+
         String variableName = getVariableNameByContext( context );
         if ( variableName == null ) {
             Logger.getInstance( ).logWarn(

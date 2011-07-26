@@ -409,7 +409,7 @@ public class ResourceUtils
 	public static String getCampaignID(IResource resource)
 	{
 	    SimpleWMLParser parser = new SimpleWMLParser( getMainConfigLocation( resource ) );
-	    parser.parse( true );
+	    parser.parse( );
 	    return parser.getParsedConfig( ).CampaignId;
 	}
 
@@ -421,7 +421,7 @@ public class ResourceUtils
 	public static String getScenarioID(IFile file)
 	{
 	    SimpleWMLParser parser = new SimpleWMLParser( file );
-	    parser.parse( true );
+	    parser.parse( );
 	    return parser.getParsedConfig( ).ScenarioId;
 	}
 

@@ -310,8 +310,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				monitor.subTask( String.format( Messages.WesnothProjectBuilder_22, filePath ) );
 
 				WMLConfig config = projectCache_.getWMLConfig( filePath );
-				SimpleWMLParser parser = new SimpleWMLParser( file, config );
-				parser.parse( false );
+				SimpleWMLParser parser = new SimpleWMLParser( file, config, projectCache_ );
+				parser.parse( );
 
 				monitor.worked(10);
 
