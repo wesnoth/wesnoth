@@ -30,6 +30,9 @@ import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.wml.core.WMLConfig;
 import org.wesnoth.wml.core.WMLVariable;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+
 /**
  * A class that stores some project specific infos
  * for current session.
@@ -50,6 +53,7 @@ public class ProjectCache
     private Map< String, WMLConfig > configFiles_;
     private Map< String, Define > defines_;
     private DependencyListBuilder dependTree_;
+    private Multimap<String, WMLVariable> variables_;
 
     private IProject project_;
 
@@ -57,8 +61,9 @@ public class ProjectCache
     {
         project_ = project;
 
-        configFiles_ = new HashMap<String, WMLConfig>();
-        defines_ = new HashMap<String, Define>(0);
+        configFiles_ = new HashMap<String, WMLConfig>( );
+        defines_ = new HashMap<String, Define>( );
+        variables_ = ArrayListMultimap.create( );
 
         dependTree_ = new DependencyListBuilder( project_ );
 
@@ -115,17 +120,23 @@ public class ProjectCache
                     tmp.ScenarioId = config.get( "scenario_id" ); //$NON-NLS-1$
                     tmp.CampaignId = config.get( "campaign_id" ); //$NON-NLS-1$
 
-                    for(IDialogSettings variable : config.getSection("variables").getSections()) //$NON-NLS-1$
-                    {
-                        if (variable.getName().startsWith("var") == false) //$NON-NLS-1$
-                            continue;
-                        tmp.getVariables().put(
-                                variable.get( "name" ),
-                                new WMLVariable(variable.get("name"), //$NON-NLS-1$
-                                        variable.get("location"), //$NON-NLS-1$
-                                        variable.getInt("offset"))); //$NON-NLS-1$
-                    }
                     configFiles_.put(config.get("filename"), tmp); //$NON-NLS-1$
+                }
+            }
+
+            if ( properties_.getSection( "variables" ) != null ){
+
+                for(IDialogSettings variable : properties_.getSection("variables").getSections()) //$NON-NLS-1$
+                {
+                    if (variable.getName().startsWith("var") == false) //$NON-NLS-1$
+                        continue;
+
+                    variables_.put( variable.get( "name" ),
+                            new WMLVariable(variable.get("name"), //$NON-NLS-1$
+                                    variable.get("location"), //$NON-NLS-1$
+                                    variable.getInt("offset"),
+                                    variable.getInt( "startIndex" ),
+                                    variable.getInt( "endIndex" ))); //$NON-NLS-1$
                 }
             }
 
@@ -186,6 +197,15 @@ public class ProjectCache
     }
 
     /**
+     * Returns the variables found in this project
+     * @return A multimap containing all the variables
+     */
+    public Multimap<String, WMLVariable> getVariables()
+    {
+        return variables_;
+    }
+
+    /**
      * Saves the cache to disk.
      * Saves:
      * - properties
@@ -207,18 +227,21 @@ public class ProjectCache
                 configSection.put("campaign_id", config.CampaignId); //$NON-NLS-1$
                 configSection.put("filename", config.getFilename()); //$NON-NLS-1$
 
-                IDialogSettings variablesSection = configSection.addNewSection("variables"); //$NON-NLS-1$
-                int varCnt = 0;
-                for(WMLVariable var : config.getVariables().values( ))
-                {
-                    IDialogSettings varSection = variablesSection.addNewSection("var" + varCnt); //$NON-NLS-1$
-                    varSection.put("name", var.getName()); //$NON-NLS-1$
-                    varSection.put("location", var.getLocation()); //$NON-NLS-1$
-                    varSection.put("offset", var.getOffset()); //$NON-NLS-1$
-
-                    ++varCnt;
-                }
                 ++configCnt;
+            }
+
+            IDialogSettings variablesSection = properties_.addNewSection("variables"); //$NON-NLS-1$
+            int varCnt = 0;
+            for(WMLVariable var : variables_.values( ))
+            {
+                IDialogSettings varSection = variablesSection.addNewSection("var" + varCnt); //$NON-NLS-1$
+                varSection.put("name", var.getName()); //$NON-NLS-1$
+                varSection.put("location", var.getLocation()); //$NON-NLS-1$
+                varSection.put("offset", var.getOffset()); //$NON-NLS-1$
+                varSection.put( "startIndex", var.getScopeStartIndex( ) );
+                varSection.put( "endIndex", var.getScopeEndIndex( ) );
+
+                ++varCnt;
             }
 
             // store properties

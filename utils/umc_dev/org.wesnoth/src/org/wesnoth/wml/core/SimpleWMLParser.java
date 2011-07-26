@@ -13,6 +13,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLKey;
@@ -29,6 +30,7 @@ public class SimpleWMLParser
 {
     protected WMLConfig config_;
     protected IFile file_;
+    protected ProjectCache projectCache_;
 
     /**
      * Creates a new parser for the specified file
@@ -53,9 +55,6 @@ public class SimpleWMLParser
      */
     public void parse()
     {
-        // clear all variables before parsing them
-        config_.getVariables( ).clear( );
-
         WMLRoot root = ResourceUtils.getWMLRoot( file_ );
         TreeIterator<EObject> itor = root.eAllContents( );
         WMLTag currentTag = null;
@@ -123,7 +122,7 @@ public class SimpleWMLParser
         }
 
         if ( ! variable.getName( ).isEmpty( ) ) {
-            config_.getVariables( ).put( variable.getName( ), variable );
+            projectCache_.getVariables( ).put( variable.getName( ), variable );
         }
     }
 

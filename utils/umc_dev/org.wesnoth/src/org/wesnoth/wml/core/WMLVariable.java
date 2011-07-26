@@ -25,15 +25,21 @@ public class WMLVariable
 		this("", "", 0); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
-	public WMLVariable(String name, String location, int offset)
+	public WMLVariable( String name, String location, int offset )
 	{
-		name_ = name;
-		location_ = location;
-		offset_ = offset;
-
-		scopeStartIndex_ = Integer.MAX_VALUE;
-		scopeEndIndex_ = Integer.MAX_VALUE;
+	    this( name, location, offset, Integer.MAX_VALUE, Integer.MAX_VALUE );
 	}
+
+	public WMLVariable( String name, String location, int offset,
+	        int startIndex, int endIndex )
+    {
+        name_ = name;
+        location_ = location;
+        offset_ = offset;
+
+        scopeStartIndex_ = startIndex;
+        scopeEndIndex_ = endIndex;
+    }
 
 	public String getName()
 	{
