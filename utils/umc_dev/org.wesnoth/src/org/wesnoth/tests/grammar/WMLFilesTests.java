@@ -8,40 +8,18 @@
  *******************************************************************************/
 package org.wesnoth.tests.grammar;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 import org.eclipse.xtext.parser.IParseResult;
 import org.junit.Ignore;
 import org.wesnoth.tests.WMLTests;
-import org.wesnoth.utils.StringUtils;
 
 /**
  * This tests test the data/core directory and each campaign
  */
 public class WMLFilesTests extends WMLTests
 {
-    protected String dataPath_ = "";
-
-    @Override
-    protected void setUp() throws Exception
-    {
-        super.setUp( );
-
-        // get the wesnoth data path from the user
-        dataPath_ = System.getProperty( "wesnothDataDir" );
-        if ( StringUtils.isNullOrEmpty( dataPath_ ) || ! new File( dataPath_ ).exists( ) )
-            throw new Exception( "Please set the wesnoth data dir before testing!." );
-    }
-
-    @Override
-    protected void tearDown() throws Exception
-    {
-        super.tearDown( );
-        dataPath_ = null;
-    }
-
     public void testCoreFiles() throws FileNotFoundException
     {
         testPath( dataPath_  + "/core/" );
@@ -137,25 +115,7 @@ public class WMLFilesTests extends WMLTests
         testPath( dataPath_ + "/campaigns/Under_the_Burning_Suns/" );
     }
 
-    @Ignore
-    public void testPath( String path )
-    {
-        File theFile = new File( path );
-
-        if ( ! theFile.exists( ) ) {
-            System.out.println( "Skipping non-existent path:" + path );
-            return;
-        }
-
-        if ( theFile.isFile( ) )
-            testFile( path );
-        else {
-            for ( File file : theFile.listFiles( ) ) {
-                testPath( file.getAbsolutePath( ) );
-            }
-        }
-    }
-
+    @Override
     @Ignore
     public void testFile( String path )
     {
@@ -174,7 +134,7 @@ public class WMLFilesTests extends WMLTests
         catch ( FileNotFoundException e ) {
             e.printStackTrace();
             //should not reach here.
-            assertEquals( true, false );
+            assertTrue( false );
         }
     }
 }

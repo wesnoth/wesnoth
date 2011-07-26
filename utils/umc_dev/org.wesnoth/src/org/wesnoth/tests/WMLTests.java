@@ -1,5 +1,6 @@
 package org.wesnoth.tests;
 
+import java.io.File;
 import java.io.StringReader;
 import java.util.List;
 
@@ -14,13 +15,17 @@ import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.parser.antlr.ITokenDefProvider;
 import org.eclipse.xtext.parser.antlr.Lexer;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
+import org.junit.Ignore;
 import org.wesnoth.WMLStandaloneSetup;
 import org.wesnoth.services.WMLGrammarAccess;
+import org.wesnoth.utils.StringUtils;
 
 @SuppressWarnings( "all" )
 public abstract class WMLTests extends AbstractXtextTests
 {
-    protected WMLGrammarAccess grammar;
+    protected WMLGrammarAccess grammar_;
+    protected String dataPath_ = "";
+
     private Lexer lexer;
     private ITokenDefProvider tokenDefProvider;
     private IParser parser;
@@ -53,7 +58,14 @@ public abstract class WMLTests extends AbstractXtextTests
         lexer = get( Lexer.class );
         tokenDefProvider = get( ITokenDefProvider.class );
         parser = get( IParser.class );
-        grammar = ( WMLGrammarAccess ) getGrammarAccess( );
+        grammar_ = ( WMLGrammarAccess ) getGrammarAccess( );
+
+        // get the wesnoth data path from the user
+        dataPath_ = System.getProperty( "wesnothDataDir" );
+        if ( StringUtils.isNullOrEmpty( dataPath_ ) || ! new File( dataPath_ ).exists( ) ) {
+            System.out.println(  "Please set the wesnoth data dir before testing!." );
+            assertTrue( false );
+        }
     }
 
     @Override
@@ -64,7 +76,8 @@ public abstract class WMLTests extends AbstractXtextTests
         lexer = null;
         tokenDefProvider = null;
         parser = null;
-        grammar = null;
+        grammar_ = null;
+        dataPath_ = null;
     }
 
     /**
@@ -173,5 +186,29 @@ public abstract class WMLTests extends AbstractXtextTests
         assertEquals( keyword, 1, tokens.size( ) );
         String type = getTokenType( tokens.get( 0 ) );
         assertFalse( keyword, type.charAt( 0 ) == '\'' );
+    }
+
+    @Ignore
+    public void testPath( String path )
+    {
+        File theFile = new File( path );
+
+        if ( ! theFile.exists( ) ) {
+            System.out.println( "Skipping non-existent path:" + path );
+            return;
+        }
+
+        if ( theFile.isFile( ) )
+            testFile( path );
+        else {
+            for ( File file : theFile.listFiles( ) ) {
+                testPath( file.getAbsolutePath( ) );
+            }
+        }
+    }
+
+    @Ignore
+    public void testFile( String path ) {
+
     }
 }

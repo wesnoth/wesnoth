@@ -8,23 +8,19 @@
  *******************************************************************************/
 package org.wesnoth.tests;
 
-import junit.framework.TestSuite;
-
-import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 import org.wesnoth.tests.grammar.WMLFilesTests;
 import org.wesnoth.tests.grammar.WMLGrammarTokensTests;
+import org.wesnoth.tests.plugin.WMLParsingCampaignsConfigs;
 
+@RunWith( Suite.class )
+@Suite.SuiteClasses(
+        {
+            WMLGrammarTokensTests.class,
+            WMLFilesTests.class,
+            WMLParsingCampaignsConfigs.class,
+        } )
 public class WMLTestsSuite
 {
-    @Test
-    public static TestSuite suite( )
-    {
-        TestSuite suite = new TestSuite( );
-
-        // grammar
-        suite.addTestSuite( WMLFilesTests.class );
-        suite.addTestSuite( WMLGrammarTokensTests.class );
-
-        return suite;
-    }
 }

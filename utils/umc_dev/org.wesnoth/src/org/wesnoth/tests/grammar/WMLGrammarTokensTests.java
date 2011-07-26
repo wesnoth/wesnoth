@@ -33,7 +33,7 @@ public class WMLGrammarTokensTests extends WMLTests
 
     public void testTokenSequences()
     {
-        checkParsing( "amount=+$random\r\n", grammar.getWMLKeyRule( ) );
+        checkParsing( "amount=+$random\r\n", grammar_.getWMLKeyRule( ) );
 
         checkTokenisation( "123 abc", ID, WS, ID );
         checkTokenisation( "123 \t#comment\n abc", ID, WS, SL_COMMENT, WS, ID );

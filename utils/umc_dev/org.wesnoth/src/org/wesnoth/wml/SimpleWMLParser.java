@@ -8,6 +8,9 @@
  *******************************************************************************/
 package org.wesnoth.wml;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +18,8 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.xtext.parser.IParser;
 import org.wesnoth.Logger;
 import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.utils.ResourceUtils;
@@ -29,7 +34,7 @@ import com.google.common.base.Preconditions;
 public class SimpleWMLParser
 {
     protected WMLConfig config_;
-    protected IFile file_;
+    protected WMLRoot root_;
     protected ProjectCache projectCache_;
     protected int dependencyIndex_;
     protected List<WMLTag> tags_;
@@ -55,7 +60,7 @@ public class SimpleWMLParser
     public SimpleWMLParser( IFile file, WMLConfig config, ProjectCache projCache )
     {
         config_ = Preconditions.checkNotNull( config );
-        file_ = file;
+        root_ = ResourceUtils.getWMLRoot( file );
         projectCache_ = projCache;
 
         tags_ = new ArrayList<WMLTag>();
@@ -64,12 +69,24 @@ public class SimpleWMLParser
     }
 
     /**
+     * Creates a new parser that can be called on files outside the workspace
+     */
+    public SimpleWMLParser( File file, IParser parser ) throws FileNotFoundException
+    {
+        projectCache_ = null;
+
+        IParseResult result = parser.parse( new FileReader( file ) );
+        root_ = ( WMLRoot ) result.getRootASTElement( );
+
+        config_ = new WMLConfig( file.getAbsolutePath( ) );
+    }
+
+    /**
      * Parses the config. The resulted config will be available in {@link #getParsedConfig()}
      */
     public void parse( )
     {
-        WMLRoot root = ResourceUtils.getWMLRoot( file_ );
-        TreeIterator<EObject> itor = root.eAllContents( );
+        TreeIterator<EObject> itor = root_.eAllContents( );
         WMLTag currentTag = null;
         String currentTagName = "";
 
