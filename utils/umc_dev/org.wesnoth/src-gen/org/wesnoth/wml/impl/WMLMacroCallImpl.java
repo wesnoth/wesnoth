@@ -22,9 +22,11 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wesnoth.wml.WMLExpression;
+import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLMacroCallParameter;
 import org.wesnoth.wml.WMLRootExpression;
+import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WMLValuedExpression;
 import org.wesnoth.wml.WmlPackage;
 
@@ -262,6 +264,46 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
       parameters = new EObjectContainmentEList<WMLMacroCallParameter>(WMLMacroCallParameter.class, this, WmlPackage.WML_MACRO_CALL__PARAMETERS);
     }
     return parameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isWMLTag()
+  {
+    return ( this instanceof WMLTag );
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLTag asWMLTag()
+  {
+    if ( !( this instanceof WMLTag ) ) return null; return ( WMLTag ) this;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isWMLKey()
+  {
+    return ( this instanceof WMLKey );
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLKey asWMLKey()
+  {
+    if ( !( this instanceof WMLKey ) ) return null; return ( WMLKey ) this;
   }
 
   /**

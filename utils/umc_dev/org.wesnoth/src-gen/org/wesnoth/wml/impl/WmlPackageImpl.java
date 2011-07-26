@@ -770,6 +770,14 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
     initEAttribute(getWMLExpression_Name(), ecorePackage.getEString(), "name", "", 0, 1, WMLExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLExpression__Cardinality(), ecorePackage.getEChar(), "_Cardinality", " ", 0, 1, WMLExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    addEOperation(wmlExpressionEClass, ecorePackage.getEBoolean(), "isWMLTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+    addEOperation(wmlExpressionEClass, this.getWMLTag(), "asWMLTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+    addEOperation(wmlExpressionEClass, ecorePackage.getEBoolean(), "isWMLKey", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+    addEOperation(wmlExpressionEClass, this.getWMLKey(), "asWMLKey", 0, 1, IS_UNIQUE, IS_ORDERED);
+
     initEClass(wmlValuedExpressionEClass, WMLValuedExpression.class, "WMLValuedExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(wmlTextdomainEClass, WMLTextdomain.class, "WMLTextdomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

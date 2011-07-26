@@ -92,6 +92,26 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLRootExpression" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLExpression" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValuedExpression">
+    <eOperations name="isWMLTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return ( this instanceof WMLTag );"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="asWMLTag" eType="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTag">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( !( this instanceof WMLTag ) ) return null; return ( WMLTag ) this;"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isWMLKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return ( this instanceof WMLKey );"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="asWMLKey" eType="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLKey">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( !( this instanceof WMLKey ) ) return null; return ( WMLKey ) this;"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="_Cardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"

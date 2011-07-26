@@ -13,6 +13,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.wesnoth.wml.WMLExpression;
+import org.wesnoth.wml.WMLKey;
+import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WmlPackage;
 
 /**
@@ -136,6 +138,46 @@ public class WMLExpressionImpl extends WMLValuedExpressionImpl implements WMLExp
     _Cardinality = new_Cardinality;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, WmlPackage.WML_EXPRESSION__CARDINALITY, old_Cardinality, _Cardinality));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isWMLTag()
+  {
+    return ( this instanceof WMLTag );
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLTag asWMLTag()
+  {
+    if ( !( this instanceof WMLTag ) ) return null; return ( WMLTag ) this;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isWMLKey()
+  {
+    return ( this instanceof WMLKey );
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLKey asWMLKey()
+  {
+    if ( !( this instanceof WMLKey ) ) return null; return ( WMLKey ) this;
   }
 
   /**

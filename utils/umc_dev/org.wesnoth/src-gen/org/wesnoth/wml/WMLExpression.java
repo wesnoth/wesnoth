@@ -80,4 +80,38 @@ public interface WMLExpression extends WMLValuedExpression
    */
   void set_Cardinality(char value);
 
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return ( this instanceof WMLTag );'"
+   * @generated
+   */
+  boolean isWMLTag();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if ( !( this instanceof WMLTag ) ) return null; return ( WMLTag ) this;'"
+   * @generated
+   */
+  WMLTag asWMLTag();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return ( this instanceof WMLKey );'"
+   * @generated
+   */
+  boolean isWMLKey();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if ( !( this instanceof WMLKey ) ) return null; return ( WMLKey ) this;'"
+   * @generated
+   */
+  WMLKey asWMLKey();
+
 } // WMLExpression

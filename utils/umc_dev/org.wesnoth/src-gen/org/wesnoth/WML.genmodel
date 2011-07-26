@@ -54,6 +54,10 @@
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/_Cardinality"/>
+      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/isWMLTag"/>
+      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/asWMLTag"/>
+      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/isWMLKey"/>
+      <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/asWMLKey"/>
     </genClasses>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLValuedExpression"/>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLTextdomain"/>

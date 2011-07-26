@@ -14,9 +14,13 @@ process( EClass this ):
     eStructuralFeatures.process() ->
      
     // enrich the grammar elements with schema-specific attributes
-    if name == "WMLExpression" then
-        createAttribute( "_Cardinality", "EChar", " " )
-    else if name == "WMLTag" then {
+    if name == "WMLExpression" then {
+        createAttribute( "_Cardinality", "EChar", " " ) ->
+        createOperation( "isWMLTag", "return ( this instanceof WMLTag );", "EBoolean" ) ->
+        createOperation( "asWMLTag", "if ( !( this instanceof WMLTag ) ) return null; return ( WMLTag ) this;", "WMLTag" ) ->
+        createOperation( "isWMLKey", "return ( this instanceof WMLKey );", "EBoolean" ) ->
+        createOperation( "asWMLKey", "if ( !( this instanceof WMLKey ) ) return null; return ( WMLKey ) this;", "WMLKey" )
+    } else if name == "WMLTag" then {
         createAttribute( "_InhertedTagName", "EString", "" ) ->
         createAttribute( "_NeedingExpansion", "EBoolean", "false" ) ->
         createAttribute( "_Description", "EString", "" )
@@ -40,28 +44,39 @@ process( EAttribute this ):
         setDefaultValueLiteral( "" );
 
 createCardinalityOperation( EClass this, String name, char chr ) :
-    let op = newCardinalityOperation( name ) : newCardinalityAnnotation( op, chr ) ;
+    let op = newOperation( name, "EBoolean" ) : 
+        newAnnotation( op, "return _Cardinality == '" + chr + "';" );
 
-create EOperation this newCardinalityOperation( EClass owner, String name ) :
-    setName( name ) -> setEType( getEcoreDataType( "EBoolean" ) ) ->
+createOperation( EClass this, String name, String body, String returnType):
+    let op = newOperation( name, returnType) : newAnnotation( op, body ); 
+
+create EOperation this newOperation( EClass owner, String name, String returnType ) :
+    setName( name ) -> setEType( getDataType( returnType ) ) ->
     owner.eOperations.add( this );
 
-create EAnnotation this newCardinalityAnnotation( EOperation op, char chr ):
+create EAnnotation this newAnnotation( EOperation op, String value ):
     let an = new EStringToStringMapEntry :
         setSource( "http://www.eclipse.org/emf/2002/GenModel" ) ->
         an.setKey( "body" ) ->
-        an.setValue( "return _Cardinality == '" + chr + "';" ) ->
+        an.setValue( value ) ->
         details.add( an ) ->
         op.eAnnotations.add( this );
 
 create EAttribute this createAttribute( EClass owner, String name, String type, String defValue ) :
     setName( name ) -> 
-    setEType( getEcoreDataType( type ) ) ->
+    setEType( getDataType( type ) ) ->
     setDefaultValueLiteral( defValue ) ->
-    
-    // add attribute
+    // add attribute to class
     owner.eStructuralFeatures.add( this );
      
-EDataType getEcoreDataType(String name) :
-    org::eclipse::emf::ecore::EcorePackage::eINSTANCE.getEClassifier(name)
-;
+EDataType getDataType( String name ): 
+    if name.startsWith( "E" ) then
+        ecorePackage().getEClassifier( name )
+    else
+        wmlPackage().getEClassifier( name );
+
+EPackage wmlPackage():
+    JAVA org.wesnoth.wml.impl.WmlPackageImpl.init();
+
+EPackage ecorePackage(): 
+    JAVA org.eclipse.emf.ecore.impl.EcorePackageImpl.init();
