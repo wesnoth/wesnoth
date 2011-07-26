@@ -14,15 +14,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-07-24 14:56+0200\n"
-"PO-Revision-Date: 2011-05-09 23:14+0200\n"
-"Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
+"POT-Creation-Date: 2011-07-24 18:18+0200\n"
+"PO-Revision-Date: 2011-07-25 03:29+0200\n"
+"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.2\n"
 
@@ -125,10 +126,8 @@ msgstr "Restos de follaxe"
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:174 data/core/terrain.cfg:184
 #: data/core/terrain.cfg:194
-#, fuzzy
-#| msgid "Dry Dirt"
 msgid "Dirt"
-msgstr "Terra seca"
+msgstr "Terra"
 
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:175
@@ -183,10 +182,8 @@ msgstr "Neve"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:260
-#, fuzzy
-#| msgid "Desert Keep"
 msgid "Desert"
-msgstr "Torre do deserto"
+msgstr "Deserto"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:261
@@ -287,10 +284,8 @@ msgstr "Árbore grande"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:440
-#, fuzzy
-#| msgid "Great Tree"
 msgid "Dead Great Tree"
-msgstr "Árbore grande"
+msgstr "Árbore grande morta"
 
 #. [terrain_type]: id=tropical_forest
 #. [terrain_type]: id=forest
@@ -503,8 +498,6 @@ msgstr "Bosque frondoso elevado nevado"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:878
-#, fuzzy
-#| msgid "Basic Wooden Floor"
 msgid "Wooden Floor"
 msgstr "Pavimento de mareira"
 
@@ -633,10 +626,8 @@ msgstr "Montañas infranqueábeis nevadas"
 #. [terrain_type]: id=cavewall_earthy_hewn
 #: data/core/terrain.cfg:1117 data/core/terrain.cfg:1128
 #: data/core/terrain.cfg:1139 data/core/terrain.cfg:1150
-#, fuzzy
-#| msgid "Hewn Cave Wall"
 msgid "Cave Wall"
-msgstr "Parede de cova cavada"
+msgstr "Parede de cova"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1118
@@ -937,10 +928,8 @@ msgstr "Castelo dos ananos"
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:1692 data/core/terrain.cfg:1704
 #: data/core/terrain.cfg:1717 data/core/terrain.cfg:1742
-#, fuzzy
-#| msgid "Ruined Human Castle"
 msgid "Ruined Castle"
-msgstr "Castelo dos humanos en ruínas"
+msgstr "Castelo en ruínas"
 
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:1693
@@ -1036,10 +1025,8 @@ msgstr "Torre de castelo dos ananos"
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1874 data/core/terrain.cfg:1887
 #: data/core/terrain.cfg:1900 data/core/terrain.cfg:1926
-#, fuzzy
-#| msgid "Ruined Desert Keep"
 msgid "Ruined Keep"
-msgstr "Torre do deserto en ruínas"
+msgstr "Torre en ruínas"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1875
@@ -1088,10 +1075,8 @@ msgstr "Revestimento de torre"
 #: data/core/terrain.cfg:2020 data/core/terrain.cfg:2032
 #: data/core/terrain.cfg:2046 data/core/terrain.cfg:2057
 #: data/core/terrain.cfg:2069
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Bridge"
-msgstr "Ponte de madeira"
+msgstr "Ponte"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -1767,7 +1752,7 @@ msgstr "Partidas"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:177
 msgid "Assign sides to players at random"
-msgstr ""
+msgstr "Escoller os bandos dos xogadores de xeito aleatorio."
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:178
@@ -1939,29 +1924,21 @@ msgstr "Información do xogador — "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:70
-#, fuzzy
-#| msgid "Send private message"
 msgid "Send Private Message"
 msgstr "Enviar unha mensaxe privada"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:99
-#, fuzzy
-#| msgid "Add As Friend"
 msgid "Add to Friends"
 msgstr "Engadir como amigo"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:108
-#, fuzzy
-#| msgid "Add As Ignore"
 msgid "Add to Ignores"
 msgstr "Engadir como ignorado"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:117
-#, fuzzy
-#| msgid "Remove from list"
 msgid "Remove from List"
 msgstr "Quitar da lista"
 
@@ -2010,8 +1987,6 @@ msgstr "Alcume"
 
 #. [label]
 #: data/gui/default/window/mp_change_control.cfg:194
-#, fuzzy
-#| msgid "Change control"
 msgid "Change Control"
 msgstr "Cambiar o control"
 
@@ -2038,15 +2013,11 @@ msgstr "Lista de amigos ou ignorados"
 
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:170
-#, fuzzy
-#| msgid "Add As Friend"
 msgid "Add as Friend"
 msgstr "Engadir como amigo"
 
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
-#, fuzzy
-#| msgid "Add As Ignore"
 msgid "Add as Ignore"
 msgstr "Engadir como ignorado"
 
@@ -2214,14 +2185,6 @@ msgstr "Varios xogadores"
 
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:90
-#, fuzzy
-#| msgid ""
-#| "You may login to the official multiplayer server with your forum username "
-#| "and password.\n"
-#| "Note that registration is not required to join the server: you need to "
-#| "supply a password only if you wish to use a registered username.\n"
-#| "\n"
-#| "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgid ""
 "You may login to the official multiplayer server with your forum username "
 "and password.\n"
@@ -2236,8 +2199,7 @@ msgstr ""
 "necesita fornecer un contrasinal en caso de que queira utilizar un nome de "
 "usuario rexistrado.\n"
 "\n"
-"Pode acceder aos foros de A batalla por Wesnoth en http://www.wesnoth.org/"
-"forum/"
+"Pode acceder aos foros de A batalla por Wesnoth en http://forums.wesnoth.org/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:146
@@ -2615,24 +2577,22 @@ msgstr "Personalizada"
 
 #: src/game_preferences_display.cpp:204
 msgid "Show Unit Idle Animations"
-msgstr "Amosar as animacións das unidades que non estean facendo nada."
+msgstr "Amosar as animacións das unidades que non estean a facer nada."
 
 #: src/game_preferences_display.cpp:205
-#, fuzzy
-#| msgid "Show Unit Idle Animations"
 msgid "Show Unit Standing Animations"
-msgstr "Amosar as animacións das unidades que non estean facendo nada."
+msgstr "Amosar as animacións das unidades quedas."
 
+# Accesible dende:
+# «Configuración → Visualización».
 #: src/game_preferences_display.cpp:206 src/hotkeys.cpp:55
 msgid "Animate Map"
-msgstr "Activar as animacións do mapa"
+msgstr "Amosar as animacións do mapa."
 
 #: src/game_preferences_display.cpp:208 src/game_preferences_display.cpp:209
 #: src/game_preferences_display.cpp:210 src/game_preferences_display.cpp:211
-#, fuzzy
-#| msgid "SFX Volume:"
 msgid "Volume:"
-msgstr "Volume dos efectos:"
+msgstr "Volume:"
 
 # Configuración → Xeral.
 #: src/game_preferences_display.cpp:213
@@ -2720,19 +2680,20 @@ msgstr "Velocidade de movemento e loita das unidades."
 #: src/game_preferences_display.cpp:329
 msgid "Play short random animations for idle units"
 msgstr ""
+"Amosar pequenas animacións ao chou nas unidades que non estean a facer nada."
 
 #: src/game_preferences_display.cpp:332
 msgid "Continuously animate standing units in the battlefield"
-msgstr ""
+msgstr "Animar continuamente as unidades quedas do campo de batalla."
 
 #: src/game_preferences_display.cpp:335
 msgid "Display animated terrain graphics"
-msgstr ""
+msgstr "Amosar imaxes animadas para o terreo."
 
 #: src/game_preferences_display.cpp:341
 msgid "Set the frequency of unit idle animations"
 msgstr ""
-"Definir a frecuencia das animacións das unidades que non estean facendo nada."
+"Definir a frecuencia das animacións das unidades que non estean a facer nada."
 
 #: src/game_preferences_display.cpp:346
 msgid "Set maximum number of automatic saves to be retained"
@@ -3000,7 +2961,7 @@ msgstr "O número de columnas difire."
 
 #: src/gui/auxiliary/window_builder/control.cpp:49
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr ""
+msgstr "Atopouse un trebello con axuda pero sen explicación."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:47
 #: src/gui/auxiliary/window_builder/listbox.cpp:58
@@ -3142,7 +3103,7 @@ msgstr "Cargar unha partida…"
 
 #: src/gui/dialogs/network_transmission.cpp:53
 msgid "$completed KiB/$total KiB"
-msgstr ""
+msgstr "$completed KiB/$total KiB"
 
 #: src/gui/dialogs/title_screen.cpp:296
 msgid "Version "
@@ -3186,11 +3147,11 @@ msgstr "Non se puido amosar un dos diálogos, non collía na pantalla."
 
 #: src/hotkeys.cpp:53
 msgid "Left Mouse Click"
-msgstr ""
+msgstr "Botón esquerdo do rato"
 
 #: src/hotkeys.cpp:54
 msgid "Right Mouse Click"
-msgstr ""
+msgstr "Botón dereito do rato"
 
 #: src/hotkeys.cpp:56
 msgid "Next Unit"
@@ -3770,7 +3731,7 @@ msgstr "Configuración dos atallos"
 
 #: src/preferences_display.cpp:282 src/preferences_display.cpp:351
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Prema a tecla desexada («Esc» para cancelar)."
+msgstr "Prema a tecla que queira empregar («Esc» para cancelar)."
 
 #: src/preferences_display.cpp:301
 msgid "Action"
