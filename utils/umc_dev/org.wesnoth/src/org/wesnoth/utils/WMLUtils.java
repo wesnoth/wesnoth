@@ -81,6 +81,46 @@ public class WMLUtils
     }
 
     /**
+     * Returns a WML string representation of the specified tag
+     * @param tag The tag to get the WML String representation for
+     * @return The string representation
+     */
+    public static String toWMLString( WMLTag tag )
+    {
+        return toWMLString( tag, "" );
+    }
+
+    private static String toWMLString( WMLTag tag, String indent )
+    {
+        StringBuilder res = new StringBuilder( );
+
+        res.append( indent + "[" + tag.getName( )  );
+        if ( ! tag.get_extendedTagName( ).isEmpty( ) )
+            res.append( ":" + tag.get_extendedTagName( ) );
+        res.append( "]\n"); //$NON-NLS-1$ //$NON-NLS-2$
+
+        for ( WMLExpression expression : tag.getExpressions( ) ) {
+            if ( expression instanceof WMLKey )
+                res.append( indent + "\t" + toWMLString( ( WMLKey ) expression ) );
+            else if ( expression instanceof WMLTag )
+                res.append( indent + "\t" + toWMLString( ( WMLTag ) expression ) );
+        }
+
+        res.append( indent + "[/" + tag.getEndName( )  + "]\n" );
+        return res.toString( );
+    }
+
+    /**
+     * Returns a WML string representation of the specified key
+     * @param tag The key to get the WML String representation for
+     * @return The string representation
+     */
+    public static String toWMLString( WMLKey key )
+    {
+        return key.getName( ) + "=" + getKeyValue( key.getValue( ) );
+    }
+
+    /**
      * Returns the string representation of the specified WML object
      * with the preceeding space/new lines cleaned
      * @param object A WML EObject

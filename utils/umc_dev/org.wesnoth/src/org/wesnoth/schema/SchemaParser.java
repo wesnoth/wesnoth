@@ -358,40 +358,6 @@ public class SchemaParser
 	}
 
 	/**
-	 * Returns the 'wmlwise' output of a specified tag using the specified indent
-	 * @param tag The tag which contents to output
-	 * @param indent The indentation space
-	 */
-	public String getOutput(Tag tag, int indent)
-	{
-		if (tag == null)
-			return ""; //$NON-NLS-1$
-		StringBuilder res = new StringBuilder();
-		// tag name
-		res.append(StringUtils.multiples("\t", indent) + "[" + tag.getName() + "]\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		// tag description (if any)
-		res.append(getOutput(tag.getDescription(), indent + 1));
-
-		for (TagKey key : tag.getKeyChildren())
-		{
-			res.append(StringUtils.multiples("\t", indent) + //$NON-NLS-1$
-					"\t" + key.getName() + "=" + key.getValue() + "\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		}
-		for (Tag tmpTag : tag.getTagChildren())
-		{
-			// skip recursive calls
-			if (tmpTag.getTagChildren().contains(tag))
-				continue;
-			res.append(getOutput(tmpTag, indent + 1));
-		}
-
-		// closing tag
-		res.append(StringUtils.multiples("\t", indent) + //$NON-NLS-1$
-				"[/" + tag.getName() + "]\n"); //$NON-NLS-1$ //$NON-NLS-2$
-		return res.toString();
-	}
-
-	/**
 	 * Returns the cardinality as a character of the specified value
 	 * required = 1
 	 * optional = ?
