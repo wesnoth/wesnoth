@@ -43,9 +43,10 @@ using namespace schema_generator;
  * @retval 4 Output file for regex list cannot be created.
  */
 int main(int argc, char *argv[]){
-	std::string input_dir = "./src/gui/";
+	std::string input_dir = "";
 	std::string output_file = "./data/gui/schema.cfg";
 	std::string regex_file = "./utils/regex_list.txt";
+	bool expand = false;
 	for (int arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
 		if (val.empty()) {
@@ -72,25 +73,33 @@ int main(int argc, char *argv[]){
 		}
 		else if (val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
-					<< " [-rhV] [-i input_dir] [-o output_file]\n"
+					<< " [-erhV] [-s <input_dir>] [-o <output_file>]\n"
 					<< " -r, --regex <regex_file>\t"
 					<< "List of used regexes.\n"
+					<< " -e, --expand \t"
+					<< "Expands all tags due to their super-tags."
+					<< "Useful to debug schema markup.\n"
 					<< " -h, --help\t\t\t"
 					<< "Shows this usage message.\n"
 					<< " -s, --src-dir <input_dir>\t"
 					<<"Select the input directory.\n"
 					<< " -o, --output <output_dir>\t"
 					<<"Select the input directory.\n"
-					<< " -V, --version\t"
-					<< "Returns the version of schema generator tool\n";
+					<< " -V, --version\t\t\t"
+					<< "Version of tool\n";
 			return 0;
 		} else if (val == "--version" || val == "-V") {
 			std::cout << "Battle for Wesnoth schema generator tool, version "
 					<< version << "\n";
 			return 0;
+		} else if (val == "--expand" || val == "-e") {
+			expand = true;
 		}
 	}
-
+	if(input_dir.empty()){
+		std::cout << "No input was selected. Processing \"./src\"\n";
+		input_dir = "./src";
+	}
 
 	if (! file_exists(input_dir)){
 		return 2;
@@ -120,22 +129,28 @@ int main(int argc, char *argv[]){
 	class_source_parser parser;
 	parser.set_output(output_file);
 	std::vector<std::string>::iterator i = files.begin();
-
+	unsigned int counter = 0;
 
 	for (;i != files.end(); ++i){
-
+		bool ok = false;
 		if (file_name((*i)).find(".cpp")!=std::string::npos){
-			parser.set_input((*i));
-			parser.parse_source();
-			continue;
+			ok = true;
+		} else
+				if (file_name((*i)).find(".hpp")!=std::string::npos){
+			ok = true;
+		} else
+			if (file_name((*i)).find(".schema")!=std::string::npos){
+			ok = true;
 		}
-		if (file_name((*i)).find(".hpp")!=std::string::npos){
+		if (ok){
+			++counter;
 			parser.set_input((*i));
 			parser.parse_source();
 		}
 	}
-
+	std::cout << "Processed " << counter << " files in " << input_dir << "\n";
 	// check errors
+
 	if (! parser.see_errors().is_empty()) {
 		/**
 	 * Let the user decide whether error are great or just misprints.
@@ -163,9 +178,13 @@ int main(int argc, char *argv[]){
 			}
 		}
 	}
+	if (expand) {
+		parser.expand();
+	}
 	// save schema information
 	if ( ! parser.save_schema()){
 		return 4;
 	}
+	std::cout << "Schema written to "<< output_file << "\n";
 	return 0;
 }

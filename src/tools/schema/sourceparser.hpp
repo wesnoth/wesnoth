@@ -23,8 +23,8 @@
 #ifndef TOOLS_SCHEMA_SOURCEPARSER_HPP_INCLUDED
 #define TOOLS_SCHEMA_SOURCEPARSER_HPP_INCLUDED
 
-#include "./tools/schema/error_container.hpp"
-#include "./tools/schema/tag.hpp"
+#include "tools/schema/error_container.hpp"
+#include "tools/schema/tag.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -78,8 +78,14 @@ public:
 			root_(class_tag("root",1,1)),
 			parent_name_(""),
 			orphan_tags_(),
-			errors_()
-	{}
+			errors_(),
+			types_()
+	{
+	/**
+	 * @todo put all simple types in types_
+	 * to avoid warnings while using them.
+	 */
+	}
 
 	~class_source_parser(){
 	}
@@ -102,12 +108,23 @@ public:
 	 * Saves tag tree to schema file.
 	 */
 	bool save_schema();
+
+	/**
+	 * Expands all tags.
+	 * While expanding tag copies list of keys and links from super-tag
+	 * And adds links to super-tag children to links list.
+	 * Useful when debugging the schema_markup
+	 */
+	void expand(){
+		root_.expand_all(root_);
+	}
+
+
 	const std::vector<class_tag> & see_orphans() const{
 		return orphan_tags_;
 	}
 	/** Grants access to error container*/
-	const class_error_container & see_errors() {
-		errors_.sort();
+	const class_error_container & see_errors() const{
 		return errors_;
 	}
 private:
@@ -130,7 +147,8 @@ private:
 	std::vector<class_tag> orphan_tags_;
 	/** used to store errors*/
 	class_error_container  errors_;
-
+	/** Allowed types*/
+	std::map<std::string,std::string> types_;
 	/**
 	 * Parses WIKI block line-by-line, checking every line
 	 * to open annotation block
@@ -193,6 +211,8 @@ private:
 	bool check_allow_link(const std::string & s);
 	/** Checks allowed global tags*/
 	bool check_allow_global(const std::string &s);
+	/** Checks allowed types*/
+	bool check_allow_type(const std::string &s);
 
 };
 } // namespace SchemaGenerator

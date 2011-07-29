@@ -23,11 +23,11 @@
 #ifndef TOOLS_ERROR_CONTAINER_HPP_INCLUDED
 #define TOOLS_ERROR_CONTAINER_HPP_INCLUDED
 
-#include <algorithm>
 #include <iostream>
-#include <queue>
+#include <map>
 #include <sstream>
 #include <string>
+#include <vector>
 
 namespace schema_generator{
 /**
@@ -38,7 +38,7 @@ namespace schema_generator{
 class class_error_container{
 public:
 	class_error_container()
-		: list_()
+		: list_(),types_(),links_()
 	{
 	}
 
@@ -97,19 +97,76 @@ public:
 						  const std::string & name);
 
 	/**
+	 * Generate and put GCC-style error message about unknown type to type cache
+	 * @param file Filename
+	 * @param line Number with error
+	 * @param name Name of type
+	 */
+	void add_type_error(const std::string & file,int line,
+						  const std::string & type);
+	/**
+	 * Clears type cache
+	 * @param name Name of type
+	 */
+	void remove_type_errors(const std::string & type);
+	/**
+	 * Generate and put GCC-style error message about overriding type
+	 * Overriding means that that type was defined somewhere else,
+	 * and it's old value is lost.
+	 * @param file Filename
+	 * @param line Number of line with error
+	 * @param name Name of type
+	 */
+	void overriding_type_error(const std::string & file,int line,
+							   const std::string & type);
+
+	/**
+	 * Generate and put GCC-style error message about failed link to link cache
+	 * @param file Filename
+	 * @param line Number of line with error
+	 * @param name Name of link
+	 */
+	void add_link_error(const std::string & file,int line,
+						  const std::string & link);
+	/**
+	 * Clears link cache
+	 * @param name Name of link
+	 */
+	void remove_link_errors(const std::string & link);
+
+	/**
 	 * Prints errors to output stream
 	 * @param s Output
 	 */
 	void print_errors(std::ostream & s) const;
-	void sort();
 
 	/** Checks, if container is empty.*/
 	bool is_empty() const {
-		return list_.empty();
+		return list_.empty() && types_.empty() && links_.empty();
 	}
 private:
 	/** Container to store error messages.*/
 	std::vector<std::string> list_;
+	/**
+	 * Container to cache type errors.
+	 * Types are checked while keys are read.
+	 * There is a possibility to have unknown type error just because file with
+	 * it desription haven't been parsed yet.
+	 * So every type warning adds to cache.
+	 * When sourseparser finds new type, it clears that warning list
+	 */
+	struct error_cache_element{
+		std::string file;
+		int line;
+		std::string name;
+		error_cache_element(const std::string &f,int l,const std::string &n):
+		file(f),line(l),name(n){}
+	};
+
+	typedef std::map<std::string,
+	std::vector<error_cache_element> > error_cache_map;
+	error_cache_map types_;
+	error_cache_map links_;
 };
 
 

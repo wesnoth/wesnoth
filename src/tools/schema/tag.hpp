@@ -24,11 +24,9 @@
 
 #include <algorithm>
 #include <iostream>
+#include <map>
 #include <sstream>
 #include <string>
-#include <vector>
-
-
 
 namespace schema_generator{
 /**
@@ -37,16 +35,15 @@ namespace schema_generator{
   */
 class class_key{
 public:
-	class_key():name_(""),type_(""),default_(""),mandatory_(false)
+	class_key():name_(""),type_(""),default_("\"\""),mandatory_(false)
 	{ }
 	class_key(const std::string & name,
 			  const std::string &type,
-			  const std::string &def,
-			  bool mandatory)
+			  const std::string &def="\"\"")
 		: name_(name)
 		, type_(type)
 		, default_(def)
-		, mandatory_(mandatory)
+		, mandatory_(def.empty())
 	{
 	}
 
@@ -79,16 +76,15 @@ public:
 		mandatory_ = mandatory;
 	}
 	/** is used to print key info
- * the format is next
- *  [key]
- *      name="name"
- *      type="type"
- *      default="default"
- *      mandatory="true/false"
- *  [/key]
-*/
+	 * the format is next
+	 *  [key]
+	 *      name="name"
+	 *      type="type"
+	 *      default="default"
+	 *      mandatory="true/false"
+	 *  [/key]
+	*/
 	void  print(std::ostream& os,int level) const;
-
 
 	/**
 	 *Compares keys by name. Used in std::sort, i.e.
@@ -117,6 +113,36 @@ private:
   */
 class class_tag{
 public:
+	typedef std::map<std::string,class_tag> tag_map;
+	typedef std::pair<std::string,class_tag> tag_map_value;
+
+	typedef std::map<std::string,class_key> key_map;
+	typedef std::pair<std::string,class_key> key_map_value;
+
+	typedef std::map<std::string,std::string> link_map;
+	typedef std::pair<std::string,std::string> link_map_value;
+
+	typedef key_map::iterator key_iterator;
+	typedef std::pair<key_iterator,key_iterator> all_key_iterators;
+
+	typedef key_map::const_iterator const_key_iterator;
+	typedef std::pair<const_key_iterator,const_key_iterator>
+			all_const_key_iterators;
+
+	typedef tag_map::iterator tag_iterator;
+	typedef std::pair<tag_iterator,tag_iterator> all_tag_iterators;
+
+	typedef tag_map::const_iterator const_tag_iterator;
+	typedef std::pair<const_tag_iterator,const_tag_iterator>
+			all_const_tag_iterators;
+
+	typedef link_map::iterator link_iterator;
+	typedef std::pair<link_iterator,link_iterator> all_link_iterators;
+
+	typedef link_map::const_iterator const_link_iterator;
+	typedef std::pair<const_link_iterator,const_link_iterator>
+			all_const_link_iterators;
+
 	class_tag()
 		: name_("")
 		, min_(0)
@@ -127,25 +153,10 @@ public:
 		, links_()
 	{
 	}
-
-	class_tag(const std::string & name,
-			  int min,
-			  int max
-			  )
-		: name_(name)
-		, min_(min)
-		, max_(max)
-		, super_("")
-		, tags_()
-		, keys_()
-		, links_()
-	{
-	}
-
 	class_tag(const std::string & name,
 			  int min,
 			  int max,
-			  const std::string & super
+			  const std::string & super=""
 			  )
 		: name_(name)
 		, min_(min)
@@ -212,39 +223,59 @@ public:
 		super_= s;
 	}
 	void add_key(const class_key& new_key){
-		keys_.push_back(new_key);
+		keys_.insert(key_map_value(new_key.get_name(),new_key));
 	}
 	void add_tag(const class_tag& new_tag){
-		tags_.push_back(new_tag);
+		tags_.insert(tag_map_value(new_tag.name_,new_tag));
 	}
-	void add_link(const std::string & link){
-		links_.push_back(link);
-	}
+	void add_link(const std::string & link);
 
 	/**
 	 * Tags are usually organized in tree.
 	 * This fuction helps to add tag to his exact place in tree
 	 * @param path - path in subtree to exact place of tag
 	 * @param tag  - tag to add
-	 * @todo make support of adding to link. Probably by returning exact path,
-	 * i.e we wan add to foo/bar/example, but /foo/bar is a link to bar.
-	 * Probably fuction schould return right path , i.this.e. bar/example
-	 * and caller schould call one's more
+	 * @param root - root of schema tree - use to support of adding to link.
 	 * Path is getting shotter and shoter with each call.
 	 * Path schould look like tag1/tag2/parent/ Slash at end is mandatory.
-	 * @return Pointer to name of the full path.
-	 * @retval NULL  add successful.
-	 * @retval Not NULL  you try add a child to a link,
-	 *                   here is a right path, please, use it.
 	 */
-	const std::string  add_tag (const std::string & path,
-								const class_tag & tag);
+	void add_tag (const std::string & path,const class_tag & tag,
+				  class_tag &root);
 
 	bool operator < ( const class_tag& t) const{
 		return name_ < t.name_;
 	}
 	bool operator == (const class_tag & other){
 		return name_ == other.name_;
+	}
+	/**
+	 * Returns pointer to child key
+	 */
+	const class_key * find_key(const std::string & name) const;
+	/**
+	 * Returns pointer to child link
+	 */
+	const std::string * find_link(const std::string & name) const;
+
+	/**
+	 * Returns pointer to tag using full path to it.
+	 * Also work with links
+	 */
+	const class_tag * find_tag(const std::string & fullpath,
+							   const class_tag & root) const;
+	/**
+	 * Calls the expansion on each child
+	 */
+	void expand_all(class_tag &root);
+
+	all_const_tag_iterators tags() const{
+		return all_const_tag_iterators(tags_.begin(),tags_.end());
+	}
+	all_const_key_iterators keys() const{
+		return all_const_key_iterators(keys_.begin(),keys_.end());
+	}
+	all_const_link_iterators links() const{
+		return all_const_link_iterators(links_.begin(),links_.end());
 	}
 
 private:
@@ -263,13 +294,11 @@ private:
 	 */
 	std::string super_;
 	/** children tags*/
-	std::vector<class_tag> tags_;
+	tag_map tags_;
 	/** keys*/
-	std::vector<class_key> keys_;
-	/** links to possible children.
-	 * @todo make support of key section. which takes mandatory links usually.
-	 */
-	std::vector<std::string> links_;
+	key_map keys_;
+	/** links to possible children. */
+	link_map links_;
 	/**
 	 * the same as class_tag::print(std::ostream&)
 	 * but indents different levels with step space.
@@ -279,12 +308,26 @@ private:
 	 */
 	void printl(std::ostream &os,int level, int step);
 
-	void add_tags (const std::vector<class_tag> & list){
-		tags_.insert(tags_.end(),list.begin(),list.end());
+	class_tag * find_tag(const std::string & fullpath,
+								class_tag & root) ;
+
+	void add_tags (const tag_map & list){
+		tags_.insert(list.begin(),list.end());
 	}
-	void add_keys (const std::vector<class_key> & list){
-		keys_.insert(keys_.end(),list.begin(),list.end());
+	void add_keys (const key_map & list){
+		keys_.insert(list.begin(),list.end());
 	}
+	void add_links (const link_map & list){
+		links_.insert(list.begin(),list.end());
+	}
+	/**
+	 * Copies tags, keys and links of tag to this
+	 */
+	void append_super(const class_tag & tag,const std::string & super);
+	/**
+	 * Expands all "super" copying their data to this.
+	 */
+	void expand(class_tag & root);
 };
 
 }

@@ -17,7 +17,7 @@
  * This file contains implementation of sourceparser.cpp.
  */
 
-#include "./tools/schema/sourceparser.hpp"
+#include "tools/schema/sourceparser.hpp"
 
 #include "boost/regex.hpp"
 
@@ -26,35 +26,35 @@ namespace schema_generator{
  *For details, look http://wiki.wesnoth.org/WML_Annotation_Format , please
  */
 /** line is valid*/
-const std::string valid_ = "^\\s*\\*\\s*";
+const std::string valid = "^\\s*\\*\\s*";
 /** begining of wiki block*/
-const std::string wiki_ ="^\\s*/\\*(?:WIKI|SCHEMA)";
+const std::string wiki_begin ="^\\s*/\\*(?:WIKI|SCHEMA)";
 /** whitespace is possible*/
-const std::string space_ ="\\s*";
+const std::string space ="\\s*";
 /** sigh "="*/
-const std::string equals_ ="=";
+const std::string equals ="=";
 /** non-mandatory sign "*/
-const std::string quote_ ="\"?";
+const std::string quote_symbol ="\"?";
 /** begining of the block.*/
-const std::string block_begin_="@begin" ;
+const std::string block_begin="@begin" ;
 /** end of block*/
-const std::string block_end_ ="@end";
+const std::string block_end ="@end";
 /** allow directive*/
-const std::string allow_="@allow";
+const std::string allow="@allow";
 /** sign "{" - curly bracket*/
-const std::string property_open_="\\{";
+const std::string property_open="\\{";
 /** sign "}" - another curly bracket*/
-const std::string property_close_= "\\}";
+const std::string property_close= "\\}";
 /** type of possible name identificator*/
-const std::string name_type_= "[a-z][a-zA-Z0-9_-]*" ;
+const std::string name_type= "[a-z][a-zA-Z0-9_-]*" ;
 /** type of possible parent indentificator*/
-const std::string parent_type_= "/|(?:[a-z][a-zA-Z0-9_-]*/)+";
+const std::string parent_type= "/|(?:[a-z][a-zA-Z0-9_-]*/)+";
 /** type of possible link indentificator*/
-const std::string link_type_="(?:[a-z][a-zA-Z0-9_-]*/)*(?:[a-z][a-zA-Z0-9_-]*)";
+const std::string link_type="(?:[a-z][a-zA-Z0-9_-]*/)*(?:[a-z][a-zA-Z0-9_-]*)";
 /** template to number regex*/
-const std::string number_="\\d*";
+const std::string number="\\d*";
 /** sign "-" - hyphen-minus used to set sign of signed integer*/
-const std::string sign_="-?";
+const std::string sign="-?";
 
 /**
  * end of line + possible various character before.
@@ -62,7 +62,7 @@ const std::string sign_="-?";
  * every misprint whitespace
  * after annotation element
  */
-const std::string eol_=".*$";
+const std::string eol=".*$";
 
 /** Private function to surround an argument with brackets.
  * This allows substitutions :-)
@@ -75,7 +75,7 @@ static std::string sub (const std::string & s){
  * Is used when creating properties
  */
 static std::string quote(const std::string & s){
-	return quote_ + s + quote_ ;
+	return quote_symbol + s + quote_symbol ;
 }
 
 /**
@@ -85,44 +85,45 @@ static std::string quote(const std::string & s){
  * If value is empty creates simple property like {table}
  * Else creates a named property like {name="[name_type_template]"}
  */
-static std::string property(const std::string & name, const std::string & value = ""){
-	if (value == ""){
-		return property_open_ + name + property_close_;
+static std::string property(const std::string & name,
+							const std::string & value = ""){
+	if (value.empty()){
+		return property_open + name + property_close;
 	}
-	return property_open_ + name + equals_ + quote(value) + property_close_;
+	return property_open + name + equals + quote(value) + property_close;
 }
 
 
 const std::string & get_valid() {
-	return valid_;
+	return valid;
 }
 
 const std::string & get_wiki() {
-	static std::string wiki = wiki_ + eol_;
+	static std::string wiki = wiki_begin + eol;
 	return wiki;
 }
 
 const std::string & get_parent_begin() {
-	static std::string parent_begin = valid_ + block_begin_
+	static std::string parent_begin = valid + block_begin
 									  + property("parent")
-									  + property("name",sub(parent_type_))
-									  + eol_;
+									  + property("name",sub(parent_type))
+									  + eol;
 	return parent_begin;
 }
 
 const std::string & get_parent_end() {
-	static std::string parent_end = valid_ + block_end_ + property("parent")
-									+ property("name",sub(parent_type_))+ eol_;
+	static std::string parent_end = valid + block_end + property("parent")
+									+ property("name",sub(parent_type))+ eol;
 	return parent_end;
 }
 
 const std::string & get_tag_begin() {
-	static std::string tag_begin = valid_ + block_begin_ + property("tag")
-								   + property("name",sub(name_type_))
-								   + property("min",sub(number_))
-								   + property("max",sub(sign_ + number_))
-								   + sub(property("super",sub(link_type_)))
-								   +"?" + eol_;
+	static std::string tag_begin = valid + block_begin + property("tag")
+								   + property("name",sub(name_type))
+								   + property("min",sub(number))
+								   + property("max",sub(sign + number))
+								   + sub(property("super",sub(link_type)))
+								   +"?" + eol;
 	/* sub(property("super"),sub(link_type))+"?"
 	 * property super is not mandatory
 	 */
@@ -131,43 +132,51 @@ const std::string & get_tag_begin() {
 
 
 const std::string & get_tag_end() {
-	static std::string tag_end = valid_ + block_end_ + property("tag")
-								 + property("name",sub(name_type_)) + eol_;
+	static std::string tag_end = valid + block_end + property("tag")
+								 + property("name",sub(name_type)) + eol;
 	return tag_end;
 }
 
 
 const std::string & get_allow_link(){
-	static std::string allow_link = valid_ + allow_ + property("link")
-									+property("name",sub(link_type_)) + eol_;
+	static std::string allow_link = valid + allow + property("link")
+									+property("name",sub(link_type)) + eol;
 	return allow_link;
 }
 
 const std::string & get_allow_global(){
-	static std::string global_link = valid_ + allow_ + property("global")
-									 +property("name",sub(name_type_)) + eol_;
+	static std::string global_link = valid + allow + property("global")
+									 +property("name",sub(name_type)) + eol;
 	return global_link;
 }
 
+const std::string & get_allow_type(){
+	static std::string allow_type = valid + allow + property("type")
+									+property("name",sub(name_type))
+									+property("value",sub("\\^.+\\$"))
+									+ eol;
+	//
+	return allow_type;
+}
 
 const std::string & get_table_key_begin() {
-	static std::string keys_begin = valid_ + block_begin_ + property("table")
-									+ property("config")+ eol_;
+	static std::string keys_begin = valid + block_begin + property("table")
+									+ property("config")+ eol;
 	return keys_begin;
 }
 
 const std::string & get_table_end() {
-	static std::string table_end = valid_ + block_end_ + property("table")
-								   + eol_;
+	static std::string table_end = valid + block_end + property("table")
+								   + eol;
 	return table_end;
 }
 
 
 const std::string & get_key_value(){
-	static std::string key_value = valid_ + sub("[a-zA-z][a-zA-Z\\d_+-]*")
-								   + "\\s*&\\s*"+sub("[a-z][a-z_]*")
+	static std::string key_value = valid + sub("[a-zA-z][a-zA-Z\\d_+-]*")
+								   + "\\s*&\\s*"+sub(name_type)
 								   +"\\s*&\\s?"+ sub(quote("[a-zA-Z._0-9+-]*"))
-								   +"\\s&"+ eol_;
+								   +"\\s&"+ eol;
 	return key_value;
 }
 
@@ -182,7 +191,9 @@ void test_regex( std::ostream & f ){
 			<< get_allow_global() << "\n"
 			<< get_table_key_begin() << "\n"
 			<< get_table_end() << "\n"
-			<< get_key_value() << std::endl;
+			<< get_key_value() << "\n"
+			<< get_allow_type() << "\n"
+			<< std::endl;
 }
 
 bool class_source_parser::save_schema(){
@@ -197,6 +208,13 @@ bool class_source_parser::save_schema(){
 		return false;
 	}
 	out << "[wml_schema]\n";
+	for (std::map<std::string,std::string>::iterator i=types_.begin();
+	i!= types_.end();++i){
+		out << "    [type]\n"
+			<< "        name=" << i->first << "\n"
+			<< "        value=\""<< i->second << "\"\n"
+			<<"    [/type]\n";
+	}
 	root_.print(out);
 	out << "[/wml_schema]\n";
 	out.close();
@@ -249,11 +267,7 @@ void class_source_parser::close_opened_tags(int i = INT_MAX){
 		orphan_tags_.push_back(current_.back());
 		errors_.add_orphan_error(input_,line_,current_.back().get_name());
 	}else{
-		std::string path = parent_name_;
-		do {
-			path = root_.add_tag(path,current_.back());
-			//std::cout << path;
-		}while (! path.empty());
+		root_.add_tag(parent_name_,current_.back(),root_);
 	}
 	current_.pop_back();
 }
@@ -300,6 +314,7 @@ bool class_source_parser::parse_block(){
 		std::string line;
 		if (! getline(line) ) { return false; }
 		if ( check_valid(line)) {
+			if (check_allow_type(line)) continue;
 			if (check_parent_begin(line)) continue;
 
 			if (check_tag_begin(line)){
@@ -368,11 +383,12 @@ bool class_source_parser::parse_keys(){
 		boost::smatch sub;
 		bool res = boost::regex_match(line,sub,value);
 		if (res){
-			class_key key;
-			key.set_name(sub[1]);
-			key.set_type(sub[2]);
-			key.set_default(sub[3]);
+			std::string type = sub[2];
+			class_key key (sub[1],type,sub[3]);
 			current_.back().add_key(key);
+			if (types_.find(type) == types_.end()){
+				errors_.add_type_error(input_,line_,type);
+			}
 		}
 	}while (! check_keys_end(line));
 	return true;
@@ -396,12 +412,17 @@ bool class_source_parser::check_tag_begin(const std::string &s){
 	boost::smatch sub;
 	bool res = boost::regex_match(s,sub,tag);
 	if (res){
+		std::string link = sub[5];
 		class_tag new_tag;
 		new_tag.set_name(sub[1]);
 		new_tag.set_min(sub[2]);
 		new_tag.set_max(sub[3]);
-		new_tag.set_super(sub[5]);
+		new_tag.set_super(link);
 		current_.push_back(new_tag);
+		if (! link.empty() &&
+				! static_cast<const class_tag>(root_).find_tag(link,root_)){
+			errors_.add_link_error(input_,line_,link);
+		}
 		return true;
 	}
 	return false;
@@ -424,6 +445,7 @@ bool class_source_parser::check_tag_end(const std::string &s){
 			if (ii->get_name() == name){
 				add_open_tag_error(count_opened);
 				close_opened_tags(++count_opened);
+				errors_.remove_link_errors(parent_name_+name);
 				return true;
 			}else{
 				count_opened ++;
@@ -439,7 +461,11 @@ bool class_source_parser::check_allow_link(const std::string &s){
 	bool res = boost::regex_match(s,sub,allow_link);
 	if (res){
 		if (!current_.empty()){
-			current_.back().add_link(sub[1]);
+			std::string link = sub[1];
+			current_.back().add_link(link);
+			if (static_cast<const class_tag>(root_).find_tag(link,root_) == NULL){
+				errors_.add_link_error(input_,line_,link);
+			}
 		}
 	}
 	return res;
@@ -498,5 +524,18 @@ bool class_source_parser::check_keys_end(const std::string &s){
 	return res;
 }
 
-
+bool class_source_parser::check_allow_type(const std::string &s){
+	static const boost::regex allow_type (get_allow_type());
+	boost::smatch sub;
+	bool res = boost::regex_match(s,sub,allow_type);
+	if (res){
+		std::string name = sub[1];
+		if(types_.find(name)!=types_.end()){
+			errors_.overriding_type_error(input_,line_,name);
+		}
+		types_[name]=sub[2];
+		errors_.remove_type_errors(name);
+	}
+	return res;
+}
 } // namespace schema_generator
