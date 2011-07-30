@@ -39,10 +39,10 @@ import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.installs.WesnothInstallsUtils;
-import org.wesnoth.navigator.WesnothProjectsExplorer;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.projects.ProjectUtils;
+import org.wesnoth.views.WesnothProjectsExplorer;
 
 public class WorkspaceUtils
 {

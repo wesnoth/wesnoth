@@ -218,9 +218,9 @@
       </category>
       <view
             category="org.wesnoth.views"
-            class="org.wesnoth.navigator.WesnothProjectsExplorer"
+            class="org.wesnoth.views.WesnothProjectsExplorer"
             icon="icons/wesnoth-icon_16.png"
-            id="org.wesnoth.navigator.WesnothProjectsExplorer"
+            id="org.wesnoth.views.WesnothProjectsExplorer"
             name="Wesnoth Projects">
       </view>
       <view
@@ -270,10 +270,10 @@
    <extension
          point="org.eclipse.ui.navigator.viewer">
       <viewer
-            viewerId="org.wesnoth.navigator.WesnothProjectsExplorer">
+            viewerId="org.wesnoth.views.WesnothProjectsExplorer">
       </viewer>
       <viewerContentBinding
-            viewerId="org.wesnoth.navigator.WesnothProjectsExplorer">
+            viewerId="org.wesnoth.views.WesnothProjectsExplorer">
          <includes>
             <contentExtension
                   pattern="org.eclipse.ui.navigator.resourceContent">
@@ -287,7 +287,7 @@
          </includes>
       </viewerContentBinding>
       <viewerActionBinding
-            viewerId="org.wesnoth.navigator.WesnothProjectsExplorer">
+            viewerId="org.wesnoth.views.WesnothProjectsExplorer">
          <includes>
             <actionExtension
                   pattern="org.eclipse.ui.navigator.resources.*">
@@ -680,8 +680,8 @@
    <extension
          point="org.eclipse.ui.elementFactories">
       <factory
-            class="org.wesnoth.navigator.WesnothProjectsExplorer"
-            id="org.wesnoth.navigator.WesnothProjectsExplorer">
+            class="org.wesnoth.views.WesnothProjectsExplorer"
+            id="org.wesnoth.views.WesnothProjectsExplorer">
       </factory>
    </extension>
    <extension

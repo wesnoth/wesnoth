@@ -12,8 +12,8 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.eclipse.ui.ide.IDE;
-import org.wesnoth.navigator.WesnothProjectsExplorer;
 import org.wesnoth.utils.WorkspaceUtils;
+import org.wesnoth.views.WesnothProjectsExplorer;
 
 public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack {
 

@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.wesnoth.navigator;
+package org.wesnoth.views;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IAdaptable;
@@ -19,7 +19,7 @@ import org.eclipse.ui.navigator.CommonNavigator;
 public class WesnothProjectsExplorer extends CommonNavigator implements
         IPersistableElement, IElementFactory
 {
-    public static final String ID_PROJECTS_EXPLORER = "org.wesnoth.navigator.WesnothProjectsExplorer"; //$NON-NLS-1$
+    public static final String ID_PROJECTS_EXPLORER = "org.wesnoth.views.WesnothProjectsExplorer"; //$NON-NLS-1$
 
 	public WesnothProjectsExplorer()
 	{

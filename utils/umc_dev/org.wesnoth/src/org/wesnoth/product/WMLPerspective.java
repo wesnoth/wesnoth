@@ -12,8 +12,8 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.console.IConsoleConstants;
-import org.wesnoth.navigator.WesnothProjectsExplorer;
 import org.wesnoth.views.AddonsView;
+import org.wesnoth.views.WesnothProjectsExplorer;
 
 public class WMLPerspective implements IPerspectiveFactory
 {
