@@ -31,10 +31,10 @@ import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
-import org.wesnoth.wizards.NewWizardTemplate;
+import org.wesnoth.wizards.WizardTemplate;
 
 
-public class FactionNewWizard extends NewWizardTemplate
+public class FactionNewWizard extends WizardTemplate
 {
 	FactionPage0	page0_;
 	FactionPage1	page1_;

@@ -24,10 +24,10 @@ import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.utils.EditorUtils;
 import org.wesnoth.utils.WizardUtils;
-import org.wesnoth.wizards.NewWizardTemplate;
+import org.wesnoth.wizards.WizardTemplate;
 
 
-public class WizardLauncher extends NewWizardTemplate
+public class WizardLauncher extends WizardTemplate
 {
 	WizardLauncherPage0	page0_;
 	WizardLauncherPage1	page1_;

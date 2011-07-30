@@ -18,7 +18,7 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.wesnoth.WesnothPlugin;
 
-public abstract class NewWizardTemplate extends Wizard implements INewWizard
+public abstract class WizardTemplate extends Wizard implements INewWizard
 {
 	protected IStructuredSelection	selection_;
 	protected IContainer			selectionContainer_;
@@ -30,7 +30,7 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
     // TODO: wizards should ask the install
 	// TODO: detect automatically whether a project is in data or add-ons/
 	// without the need for the user to specify
-	public NewWizardTemplate()
+	public WizardTemplate()
 	{
 		setNeedsProgressMonitor(true);
         setHelpAvailable(true);

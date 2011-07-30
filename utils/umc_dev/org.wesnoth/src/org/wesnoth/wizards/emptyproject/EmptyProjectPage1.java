@@ -19,10 +19,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 
-
-public class EmptyProjectPage1 extends NewWizardPageTemplate
+public class EmptyProjectPage1 extends WizardPageTemplate
 {
 	private Text txtTitle_;
 	private Text txtVersion_;
@@ -34,7 +33,6 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 	private Text txtIcon_;
 	private Text txtType_;
 	private Button chkGeneratePBL_;
-	private Button chkDataCampaignsProject_;
 
 
 	public EmptyProjectPage1() {
@@ -59,11 +57,6 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 			}
 		};
 		container.setLayout(new GridLayout(3, false));
-
-		chkDataCampaignsProject_ = new Button(container, SWT.CHECK);
-		chkDataCampaignsProject_.setText(Messages.EmptyProjectPage1_3);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
 
 		chkGeneratePBL_ = new Button(container, SWT.CHECK);
 		chkGeneratePBL_.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
@@ -169,7 +162,7 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 
 		// match the pattern x.y.z
 		if (txtVersion_.getText().isEmpty() ||
-				!(txtVersion_.getText().matches("[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*"))) //$NON-NLS-1$
+			!(txtVersion_.getText().matches("[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*"))) //$NON-NLS-1$
 		{
 			setMessage(Messages.EmptyProjectPage1_35, DialogPage.WARNING);
 			return;
@@ -251,10 +244,5 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 	public boolean getGeneratePBLFile()
 	{
 		return  chkGeneratePBL_.getSelection();
-	}
-
-	public boolean isDataCampaignsProject()
-	{
-		return chkDataCampaignsProject_.getSelection();
 	}
 }

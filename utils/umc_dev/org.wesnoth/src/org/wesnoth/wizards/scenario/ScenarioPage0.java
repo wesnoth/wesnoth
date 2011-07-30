@@ -28,7 +28,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 
 
 /**
@@ -36,7 +36,7 @@ import org.wesnoth.wizards.NewWizardPageTemplate;
  * as the file name. The page will only accept file name without the extension
  * OR with the extension that matches the expected one (cfg).
  */
-public class ScenarioPage0 extends NewWizardPageTemplate
+public class ScenarioPage0 extends WizardPageTemplate
 {
 	private Text		txtProject_;
 

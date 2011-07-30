@@ -22,12 +22,12 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLKeyValue;
 
 
-public class WizardGeneratorPageKey extends NewWizardPageTemplate
+public class WizardGeneratorPageKey extends WizardPageTemplate
 {
 	private List<WMLKey>	keys_;
 	private int				startIndex_, endIndex_;

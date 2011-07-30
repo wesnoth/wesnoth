@@ -18,10 +18,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 
 
-public class CampaignPage1 extends NewWizardPageTemplate
+public class CampaignPage1 extends WizardPageTemplate
 {
 	private Text	txtCampaignName_;
 	private Text	txtVersion_;
@@ -33,7 +33,6 @@ public class CampaignPage1 extends NewWizardPageTemplate
 	private Text	txtIcon_;
 	private Button	chkMultiCampaign_;
 	private Button chkGeneratePBL_;
-	private Button chkDataCampaignProject_;
 
 	public CampaignPage1() {
 		super("campaignPage1"); //$NON-NLS-1$
@@ -85,13 +84,6 @@ public class CampaignPage1 extends NewWizardPageTemplate
 
 		txtTranslationDir_ = new Text(container, SWT.BORDER);
 		txtTranslationDir_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-
-		Label lblRelativeToThe = new Label(container, SWT.NONE);
-		lblRelativeToThe.setText(Messages.CampaignPage1_8);
-
-		chkDataCampaignProject_ = new Button(container, SWT.CHECK);
-		chkDataCampaignProject_.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
-		chkDataCampaignProject_.setText(Messages.CampaignPage1_9);
 
 		chkMultiCampaign_ = new Button(container, SWT.CHECK);
 		GridData gd_chkMultiCampaign_ = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
@@ -245,13 +237,8 @@ public class CampaignPage1 extends NewWizardPageTemplate
 		return chkMultiCampaign_.getSelection();
 	}
 
-	public boolean getGeneratePBLFile()
+	public boolean needsPBLFile()
 	{
 		return chkGeneratePBL_.getSelection();
-	}
-
-	public boolean isDataCampaignsProject()
-	{
-		return chkDataCampaignProject_.getSelection();
 	}
 }

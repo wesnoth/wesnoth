@@ -24,10 +24,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 
 
-public class FactionPage0 extends NewWizardPageTemplate
+public class FactionPage0 extends WizardPageTemplate
 {
 	private Text		txtFileName_;
 	private Text		txtDirectory_;

@@ -23,10 +23,10 @@ import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 
 
-public class WizardLauncherPage1 extends NewWizardPageTemplate
+public class WizardLauncherPage1 extends WizardPageTemplate
 {
 	private Map<String, String>	list_;
 	private Text					txtOtherTag_;

@@ -25,10 +25,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
 import org.wesnoth.utils.EditorUtils;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 
 
-public class WizardLauncherPage0 extends NewWizardPageTemplate
+public class WizardLauncherPage0 extends WizardPageTemplate
 {
 	private Text					txtDirectory_;
 	private Text					txtFileName_;

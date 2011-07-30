@@ -11,10 +11,9 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 
-
-public class NewWizardPageTemplate extends WizardPage
+public class WizardPageTemplate extends WizardPage
 {
-	protected NewWizardPageTemplate(String pageName)
+	protected WizardPageTemplate(String pageName)
 	{
 		super(pageName);
 	}
@@ -27,9 +26,9 @@ public class NewWizardPageTemplate extends WizardPage
 	}
 
 	@Override
-	public NewWizardTemplate getWizard()
+	public WizardTemplate getWizard()
 	{
-		return (NewWizardTemplate)super.getWizard();
+		return (WizardTemplate)super.getWizard();
 	}
 
 	/**

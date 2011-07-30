@@ -16,10 +16,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.wesnoth.Messages;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 
 
-public class ScenarioPage2 extends NewWizardPageTemplate
+public class ScenarioPage2 extends WizardPageTemplate
 {
 	Button	chkIsMultiplayerScenario_;
 	Button	chkAllowNewGame_;

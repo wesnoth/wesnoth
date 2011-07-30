@@ -14,10 +14,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.wesnoth.Messages;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 
 
-public class WizardGeneratorPage404 extends NewWizardPageTemplate
+public class WizardGeneratorPage404 extends WizardPageTemplate
 {
 	public WizardGeneratorPage404(String tag) {
 		super("wizardGeneratorPage404"); //$NON-NLS-1$

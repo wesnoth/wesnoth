@@ -24,10 +24,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 
-
-public class EraPage0 extends NewWizardPageTemplate
+public class EraPage0 extends WizardPageTemplate
 {
 	private Text		txtDirectory_;
 	private Text		txtFileName_;

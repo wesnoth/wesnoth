@@ -27,10 +27,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
-import org.wesnoth.wizards.NewWizardTemplate;
+import org.wesnoth.wizards.WizardTemplate;
 
 
-public class NewConfigFileWizard extends NewWizardTemplate {
+public class NewConfigFileWizard extends WizardTemplate {
 	private NewConfigFilePage0 page_;
 
 	/**

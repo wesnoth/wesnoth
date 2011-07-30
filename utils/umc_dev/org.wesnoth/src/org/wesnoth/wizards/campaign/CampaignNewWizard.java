@@ -24,19 +24,21 @@ import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.Pair;
 import org.wesnoth.utils.ResourceUtils;
-import org.wesnoth.wizards.NewWizardTemplate;
+import org.wesnoth.wizards.WizardProjectPageTemplate;
+import org.wesnoth.wizards.WizardTemplate;
 
 
-public class CampaignNewWizard extends NewWizardTemplate
+public class CampaignNewWizard extends WizardTemplate
 {
-	protected CampaignPage0 page0_;
+	protected WizardProjectPageTemplate page0_;
 	protected CampaignPage1 page1_;
 	protected CampaignPage2 page2_;
 
 	@Override
 	public void addPages()
 	{
-		page0_ = new CampaignPage0();
+		page0_ = new WizardProjectPageTemplate( "campaignPage0",
+		        Messages.CampaignPage0_1, Messages.CampaignPage0_2 );
 		addPage(page0_);
 
 		page1_ = new CampaignPage1();
@@ -85,7 +87,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 		if (page0_.getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
 		{
 			ProjectUtils.createWesnothProject(currentProject, null,
-					true, !page1_.isDataCampaignsProject(), monitor);
+					page0_.getSelectedInstallName( ), true, monitor);
 		}
 		else
 		{
@@ -93,7 +95,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 			newProjectDescription(page0_.getProjectName());
 			newDescription.setLocation(page0_.getLocationPath());
 			ProjectUtils.createWesnothProject(currentProject, newDescription,
-					true, !page1_.isDataCampaignsProject(), monitor);
+					page0_.getSelectedInstallName( ), true, monitor);
 		}
 		monitor.worked(2);
 
@@ -110,10 +112,11 @@ public class CampaignNewWizard extends NewWizardTemplate
 		for (Pair<String, String> file : files)
 		{
 			if (file.Second.equals("pbl") && //$NON-NLS-1$
-				page1_.getGeneratePBLFile() == false)
+				page1_.needsPBLFile( ) == false)
 				continue;
-			if (file.Second.equals("build_xml") && //$NON-NLS-1$
-				page1_.isDataCampaignsProject())
+
+			if ( file.Second.equals("build_xml") && //$NON-NLS-1$
+				 ! page0_.needsBuildXML( ) )
 				continue;
 
 			ResourceUtils.createFile(currentProject, file.First, prepareTemplate(file.Second), true);

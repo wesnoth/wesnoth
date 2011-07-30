@@ -37,7 +37,7 @@ import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WorkspaceUtils;
-import org.wesnoth.wizards.NewWizardTemplate;
+import org.wesnoth.wizards.WizardTemplate;
 
 /**
  * This is a sample new wizard. Its role is to create a new file resource in the
@@ -47,7 +47,7 @@ import org.wesnoth.wizards.NewWizardTemplate;
  * sample multi-page editor (also available as a template) is registered for the
  * same extension, it will be able to open it.
  */
-public class ScenarioNewWizard extends NewWizardTemplate
+public class ScenarioNewWizard extends WizardTemplate
 {
 	private ScenarioPage0	page0_;
 	private ScenarioPage1 	page1_;

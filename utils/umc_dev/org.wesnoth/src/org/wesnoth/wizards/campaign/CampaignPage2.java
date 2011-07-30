@@ -21,10 +21,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 
 
-public class CampaignPage2 extends NewWizardPageTemplate
+public class CampaignPage2 extends WizardPageTemplate
 {
 	private Text	txtAbbrev_;
 	private Text	txtDefine_;

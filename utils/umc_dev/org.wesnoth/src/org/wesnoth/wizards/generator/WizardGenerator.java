@@ -14,12 +14,11 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.wesnoth.Constants;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.utils.StringUtils;
-import org.wesnoth.wizards.NewWizardTemplate;
+import org.wesnoth.wizards.WizardTemplate;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
 
-
-public class WizardGenerator extends NewWizardTemplate
+public class WizardGenerator extends WizardTemplate
 {
 	private String	tagName_;
 	private int    	indent_;

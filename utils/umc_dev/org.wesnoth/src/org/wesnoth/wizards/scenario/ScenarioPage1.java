@@ -20,10 +20,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
 import org.wesnoth.projects.ProjectUtils;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 
 
-public class ScenarioPage1 extends NewWizardPageTemplate
+public class ScenarioPage1 extends WizardPageTemplate
 {
 	private Composite container_;
 

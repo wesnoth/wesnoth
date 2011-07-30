@@ -28,11 +28,11 @@ import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.ListUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WizardUtils;
-import org.wesnoth.wizards.NewWizardPageTemplate;
+import org.wesnoth.wizards.WizardPageTemplate;
 import org.wesnoth.wml.WMLTag;
 
 
-public class WizardGeneratorPageTag extends NewWizardPageTemplate
+public class WizardGeneratorPageTag extends WizardPageTemplate
 {
 	private java.util.List<WMLTag>						tags_;
 	private Map<String, java.util.List<String>>	content_;

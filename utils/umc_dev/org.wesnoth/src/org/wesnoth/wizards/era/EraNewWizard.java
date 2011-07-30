@@ -31,10 +31,10 @@ import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
-import org.wesnoth.wizards.NewWizardTemplate;
+import org.wesnoth.wizards.WizardTemplate;
 
 
-public class EraNewWizard extends NewWizardTemplate
+public class EraNewWizard extends WizardTemplate
 {
 	EraPage0	page0_;
 
