@@ -11,7 +11,6 @@ package org.wesnoth.action;
 import org.eclipse.jface.action.IAction;
 import org.wesnoth.utils.MapUtils;
 
-
 public class ImportMap extends ObjectActionDelegate
 {
 	/**

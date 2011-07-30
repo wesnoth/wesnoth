@@ -810,5 +810,22 @@
        genModel = "org/wesnoth/WML.genmodel" /> 
     
   </extension>
+  <extension
+        point="org.eclipse.ui.importWizards">
+     <category
+           id="org.wesnoth.importWizards"
+           name="Wesnoth">
+     </category>
+     <wizard
+           category="org.wesnoth.importWizards"
+           class="org.wesnoth.importWizards.ImportProjectWizard"
+           icon="icons/wesnoth-icon_16.png"
+           id="org.wesnoth.projectImportWizard"
+           name="Import Wesnoth Project">
+        <description>
+           Import a directory as a wesnoth project
+        </description>
+     </wizard>
+  </extension>
    
 </plugin>
