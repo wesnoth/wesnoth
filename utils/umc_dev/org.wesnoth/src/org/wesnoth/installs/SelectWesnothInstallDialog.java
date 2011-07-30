@@ -46,7 +46,7 @@ public class SelectWesnothInstallDialog extends Dialog
         lblWesnothInstall.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
         lblWesnothInstall.setText("Wesnoth Install:");
 
-        cmbInstall_ = new Combo(composite, SWT.NONE);
+        cmbInstall_ = new Combo( composite, SWT.READ_ONLY );
         GridData gd_cmbInstall_ = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
         gd_cmbInstall_.widthHint = 163;
         cmbInstall_.setLayoutData(gd_cmbInstall_);
