@@ -3003,6 +3003,22 @@ static int intf_set_dialog_canvas(lua_State *L)
 }
 
 /**
+ * Sets a widget's state to active or inactive
+ * - Arg 1: boolean.
+ * - Args 2..n: path of strings and integers.
+ */
+static int intf_set_dialog_active(lua_State *L)
+{
+	const bool b = lua_toboolean(L, 1);
+	gui2::twidget *w = find_widget(L, 2, true);
+	gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
+	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+
+	c->set_active(b);
+	return 0;
+}
+
+/**
  * Gets all the locations matching a given filter.
  * - Arg 1: WML table.
  * - Ret 1: array of integer pairs.
@@ -3368,6 +3384,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "require",                  &intf_require                  },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
 		{ "select_hex",               &intf_select_hex               },
+		{ "set_dialog_active",        &intf_set_dialog_active        },
 		{ "set_dialog_callback",      &intf_set_dialog_callback      },
 		{ "set_dialog_canvas",        &intf_set_dialog_canvas        },
 		{ "set_dialog_value",         &intf_set_dialog_value         },
