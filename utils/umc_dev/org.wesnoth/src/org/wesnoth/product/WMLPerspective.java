@@ -21,8 +21,15 @@ public class WMLPerspective implements IPerspectiveFactory
 	public void createInitialLayout(IPageLayout layout)
 	{
 		 // Add "new wizards".
-        layout.addNewWizardShortcut("org.eclipse.ui.wizards.new.folder"); //$NON-NLS-1$
-        layout.addNewWizardShortcut("org.eclipse.ui.wizards.new.file"); //$NON-NLS-1$
+        layout.addNewWizardShortcut( "org.eclipse.ui.wizards.new.folder" ); //$NON-NLS-1$
+        layout.addNewWizardShortcut( "org.eclipse.ui.wizards.new.file" ); //$NON-NLS-1$
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.NewConfigFileWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.emptyProjectWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.CampaignNewWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.ScenarioNewWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.eraNewWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.factionNewWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.wizardLauncher" );
 
         // Add "show views".
         layout.addShowViewShortcut(IPageLayout.ID_PROJECT_EXPLORER);
