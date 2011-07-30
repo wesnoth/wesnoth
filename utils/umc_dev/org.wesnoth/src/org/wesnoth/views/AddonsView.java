@@ -41,12 +41,14 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.part.ViewPart;
+import org.wesnoth.installs.SelectWesnothInstallDialog;
 import org.wesnoth.preferences.AddonUploadPreferencePage;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.ExternalToolInvoker;
 import org.wesnoth.utils.GUIUtils;
+import org.wesnoth.utils.RunnableWithResult;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLTools;
 
@@ -196,7 +198,27 @@ public class AddonsView extends ViewPart
             {
                 monitor.beginTask( "Downloading addon " + addonName, 100 );
 
-                String installName = "";
+                String installName = Preferences.getDefaultInstallName( );
+
+                RunnableWithResult<String> runnable =
+                        new RunnableWithResult<String>() {
+                    @Override
+                    public void run()
+                    {
+                        // ask the user to select the install for the project
+                        SelectWesnothInstallDialog dialog =
+                                new SelectWesnothInstallDialog( null );
+                        if ( dialog.open( ) == SWT.OK ) {
+                            setResult( dialog.getSelectedInstallName( ) );
+                        }
+                    }
+                };
+
+                Display.getDefault( ).syncExec( runnable );
+                if ( ! StringUtils.isNullOrEmpty( runnable.getResult( ) ) ) {
+                    installName = runnable.getResult( );
+                }
+
                 final Paths paths = Preferences.getPaths( installName );
 
                 OutputStream console = GUIUtils
@@ -214,22 +236,13 @@ public class AddonsView extends ViewPart
                 monitor.worked( 50 );
 
                 // ask user if he wants to create a project
-
                 if ( GUIUtils.showMessageBox(
                         "Do you want to create a new project for the downloaded addon?",
                         SWT.YES | SWT.NO ) == SWT.YES ) {
 
-                    Display.getDefault( ).syncExec( new Runnable( ) {
-
-                        @Override
-                        public void run()
-                        {
-                            ProjectUtils.createWesnothProject( addonName,
-                                    paths.getAddonsDir( ) + addonName, false, monitor );
-                        }
-                    });
+                        ProjectUtils.createWesnothProject( addonName,
+                                paths.getAddonsDir( ) + addonName, installName, monitor );
                 }
-
                 monitor.done( );
 
                 return Status.OK_STATUS;
@@ -268,7 +281,7 @@ public class AddonsView extends ViewPart
                     monitor.beginTask( "Retrieving list...", 100 );
                     monitor.worked( 10 );
 
-                    String installName = "";
+                    String installName = Preferences.getDefaultInstallName( );
 
                     OutputStream stderr = GUIUtils
                         .createConsole( "Wesnoth Addon Manager", null, false )

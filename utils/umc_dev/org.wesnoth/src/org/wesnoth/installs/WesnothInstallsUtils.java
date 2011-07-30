@@ -15,6 +15,7 @@ import java.util.List;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Combo;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
@@ -106,6 +107,32 @@ public class WesnothInstallsUtils
             return;
 
         ProjectUtils.getCacheForProject( resource.getProject( ) ).setInstallName( newInstallName );
+    }
+
+    /**
+     * Fills the specified combo box with all the current installs
+     * and selects the default or the first ( if no default exists )
+     * @param comboBox The combobox to fill
+     */
+    public static void fillComboWithInstalls( Combo comboBox )
+    {
+        comboBox.removeAll( );
+        comboBox.clearSelection( );
+
+        // fill the installs
+        String defaultInstallName = Preferences.getDefaultInstallName( );
+        for ( WesnothInstall install : WesnothInstallsUtils.getInstalls( ) ) {
+            comboBox.add( install.getName( ) );
+
+            // select the default
+            if ( install.getName( ).equals( defaultInstallName ) )
+                comboBox.select( comboBox.getItemCount( ) - 1 );
+        }
+
+        // select the first if there is no other selected
+        if ( comboBox.getSelectionIndex( ) == -1 &&
+                comboBox.getItemCount( ) > 0 )
+            comboBox.select( 0 );
     }
 
     /**
