@@ -809,6 +809,8 @@ def find_languages():
     for locale in parser.get_all(tag = "locale"):
         isocode = locale.get_text_val("locale")
         name = locale.get_text_val("name")
+        if isocode == "ang_GB@latin":
+            continue
         languages_found[isocode] = name
     return languages_found
 
