@@ -261,8 +261,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
             properties.put("wesnoth.user.dir", paths.getUserDir( )); //$NON-NLS-1$
             Logger.getInstance().log("Ant result:"); //$NON-NLS-1$
 
-            String result = AntUtils.runAnt( buildXMLPath, properties, true);
-            Logger.getInstance().log(result);
+            String result = AntUtils.runAnt( buildXMLPath, properties, true );
+            Logger.getInstance().logTool( result );
             monitor.worked(10);
 
             if (result == null)
