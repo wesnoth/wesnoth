@@ -17,20 +17,11 @@ import org.wesnoth.views.AddonsView;
 
 public class WMLPerspective implements IPerspectiveFactory
 {
-	@Override
-	public void createInitialLayout(IPageLayout layout)
-	{
-		 // Add "new wizards".
-        layout.addNewWizardShortcut( "org.eclipse.ui.wizards.new.folder" ); //$NON-NLS-1$
-        layout.addNewWizardShortcut( "org.eclipse.ui.wizards.new.file" ); //$NON-NLS-1$
-        layout.addNewWizardShortcut( "org.wesnoth.wizards.NewConfigFileWizard" );
-        layout.addNewWizardShortcut( "org.wesnoth.wizards.emptyProjectWizard" );
-        layout.addNewWizardShortcut( "org.wesnoth.wizards.CampaignNewWizard" );
-        layout.addNewWizardShortcut( "org.wesnoth.wizards.ScenarioNewWizard" );
-        layout.addNewWizardShortcut( "org.wesnoth.wizards.eraNewWizard" );
-        layout.addNewWizardShortcut( "org.wesnoth.wizards.factionNewWizard" );
-        layout.addNewWizardShortcut( "org.wesnoth.wizards.wizardLauncher" );
+    public static final String WMLPERSPECTIVE_ID = "org.wesnoth.product.WMLPerspective";
 
+    @Override
+    public void createInitialLayout(IPageLayout layout)
+    {
         // Add "show views".
         layout.addShowViewShortcut(IPageLayout.ID_PROJECT_EXPLORER);
         layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
@@ -54,5 +45,18 @@ public class WMLPerspective implements IPerspectiveFactory
 
         IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.68f, editorArea); //$NON-NLS-1$
         right.addView(IPageLayout.ID_OUTLINE);
-	}
+
+        layout.addPerspectiveShortcut( WMLPERSPECTIVE_ID );
+
+        // Add "new wizards".
+        layout.addNewWizardShortcut( "org.eclipse.ui.wizards.new.folder" ); //$NON-NLS-1$
+        layout.addNewWizardShortcut( "org.eclipse.ui.wizards.new.file" ); //$NON-NLS-1$
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.NewConfigFileWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.emptyProjectWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.CampaignNewWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.ScenarioNewWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.eraNewWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.factionNewWizard" );
+        layout.addNewWizardShortcut( "org.wesnoth.wizards.wizardLauncher" );
+    }
 }
