@@ -57,9 +57,9 @@ tslider_definition::tresolution::tresolution(const config& cfg)
  *                                     the same value the positioner is fixed
  *                                     size. If the maximum is 0 (and the
  *                                     minimum not) there's no maximum. $
- *     left_offset & unsigned & 0 &      The number of pixels at the left side
+ *     left_offset & unsigned & 0 &    The number of pixels at the left side
  *                                     which can't be used by the positioner. $
- *     right_offset & unsigned & 0 &     The number of pixels at the right side
+ *     right_offset & unsigned & 0 &   The number of pixels at the right side
  *                                     which can't be used by the positioner. $
  * @end{table}
  *
