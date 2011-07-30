@@ -65,33 +65,19 @@ REGISTER_DIALOG(simple_item_selector)
 
 tsimple_item_selector::tsimple_item_selector(const std::string& title, const std::string& message, list_type const& items, bool title_uses_markup, bool message_uses_markup)
 	: index_(-1)
-	, title_(title)
-	, msg_(message)
-	, markup_title_(title_uses_markup)
-	, markup_msg_(message_uses_markup)
 	, single_button_(false)
 	, items_(items)
 	, ok_label_()
 	, cancel_label_()
 {
+	register_label2("title", true, title, title_uses_markup);
+	register_label2("message", true, message, message_uses_markup);
 }
 
 void tsimple_item_selector::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlabel& ltitle = find_widget<tlabel>(&window, "title", false);
-	tcontrol& lmessage = find_widget<tcontrol>(&window, "message", false);
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
-
-	ltitle.set_label(title_);
-	ltitle.set_use_markup(markup_title_);
-
-	lmessage.set_label(msg_);
-	lmessage.set_use_markup(markup_msg_);
-
-	if(msg_.empty()) {
-		lmessage.set_visible(gui2::twidget::INVISIBLE);
-	}
 
 	foreach(const tsimple_item_selector::item_type& it, items_) {
 		std::map<std::string, string_map> data;

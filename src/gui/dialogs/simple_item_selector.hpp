@@ -59,8 +59,7 @@ public:
 private:
 	int index_;
 
-	std::string title_, msg_;
-	bool markup_title_, markup_msg_, single_button_;
+	bool single_button_;
 	list_type items_;
 
 	std::string ok_label_, cancel_label_;
