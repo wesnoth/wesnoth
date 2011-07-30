@@ -435,7 +435,7 @@ public:
 		handler_->handle(c, true, l_obj);
 		this->value_lua_ = l_obj;
 	}
-	
+
 	config to_config() const
 	{
 		config cfg = aspect::to_config();

@@ -312,8 +312,8 @@ const std::string& tgui_definition::read(const config& cfg)
 	/***** settings *****/
 /*WIKI
  * @page = GUIToolkitWML
- * @order = 1 
- * 
+ * @order = 1
+ *
  * @begin{parent}{name="gui/"}
  * @begin{tag}{name="settings"}{min="0"}{max="1"}
  * A setting section has the following variables:
@@ -502,7 +502,7 @@ tstate_definition::tstate_definition(const config &cfg) :
  * @order = 1_widget
  *
  * == State ==
- * 
+ *
  * @begin{parent}{name="generic/"}
  * @begin{tag}{name="state"}{min=0}{max=1}
  * Definition of a state. A state contains the info what to do in a state.

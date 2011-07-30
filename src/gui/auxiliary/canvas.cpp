@@ -532,11 +532,11 @@ tline::tline(const config& cfg)
  * @allow{type}{name="f_bool"}{value="^true|false|yes|no$"}
  * @allow{type}{name="string"}{value="^.+$"}
  * @allow{type}{name="t_string"}{value="^_.+$"}
- * @allow{type}{name="f_string"}{value="^_.+*$"} 
+ * @allow{type}{name="f_string"}{value="^_.+*$"}
  * @allow{type}{name="f_tstring"}{value="^_.+*$"}
  *
  * @allow{type}{name="color"}{value="^(?:2[0-5][0-5]|[01]\d\d?)\.2[0-5][0-5]|[01]\d\d?)\.2[0-5][0-5]|[01]\d\d?)\.(?:(?:2[0-5][0-5]|[01]?\d\d?))$"}
- * 
+ *
  * @allow{type}{name="font_style"}{value="^normal|bold|italic|underline*$"}
  * @allow{type}{name="v_align"}{value="^top|bottom|center$"}
  * @allow{type}{name="h_align"}{value="^left|right|center$"}

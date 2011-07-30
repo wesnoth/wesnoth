@@ -20,7 +20,7 @@
 
 #include "tools/schema/tag.hpp"
 
-namespace schema_generator{	
+namespace schema_generator{
 /*WIKI
  * @begin{parent}{name="wml_schema/tag/"}
  * @begin{tag}{name="key"}{min=0}{max=-1}
