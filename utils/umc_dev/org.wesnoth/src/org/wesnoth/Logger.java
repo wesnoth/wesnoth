@@ -199,8 +199,9 @@ public class Logger {
             }
         }
 
-        // don't print to console the tools exceptions
-        if ( writer != toolLaunchLogWriter_ )
+        // don't print to console the tools if there was no error/warning
+        if ( writer != toolLaunchLogWriter_ ||
+             ( writer == toolLaunchLogWriter_ && severity != IStatus.INFO ) )
             System.out.println(message);
 	}
 }
