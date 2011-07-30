@@ -58,6 +58,7 @@ import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.wml.SimpleWMLParser;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
+import org.wesnoth.wml.WmlFactory2;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -559,8 +560,9 @@ public class ResourceUtils
         ResourceSet resourceSet = new ResourceSetImpl( );
         Resource resource = resourceSet.getResource( uri, true );
         if ( resource == null ||
-             resource.getContents( ).isEmpty( ) )
-            return null;
+             resource.getContents( ).isEmpty( ) ) {
+            return WmlFactory2.eINSTANCE.createWMLRoot( );
+        }
 
         EObject result = resource.getContents( ).get( 0 );
 
