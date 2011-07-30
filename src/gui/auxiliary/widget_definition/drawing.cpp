@@ -41,10 +41,11 @@ tdrawing_definition::tresolution::tresolution(const config& cfg)
  * @macro = drawing_description
  *
  * The definition of a drawing. The widget normally has no event interaction
- * so only one state is defined. This
+ * so only one state is defined.
  *
  * The following states exist:
- * * state_enabled, the drawing is enabled. The state is a dummy since the
+ * * state_enabled
+ *     the drawing is enabled. The state is a dummy since the
  *     things really drawn are placed in the window instance.
  */
 	/*
