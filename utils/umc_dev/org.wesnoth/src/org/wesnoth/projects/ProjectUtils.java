@@ -118,15 +118,13 @@ public class ProjectUtils
 		    String projectPath = null;
 
 		    if (handle.getLocation() == null && description != null)
-		        projectPath = description.getLocationURI().toString( ).substring( 1 );
+		        projectPath = description.getLocationURI().getPath( ).toString( ).substring( 1 );
 		    else if ( handle.getLocation( ) != null )
 		        projectPath = handle.getLocation().toOSString();
 		    else // project is in workspace
 		        projectPath =
 		            ResourcesPlugin.getWorkspace( ).getRoot( ).getLocation( ).toOSString( )
 		            + "/" + handle.getProject( ).getName( );
-
-		    System.out.println( projectPath );
 
 		    monitor.subTask(Messages.ProjectUtils_0);
 
