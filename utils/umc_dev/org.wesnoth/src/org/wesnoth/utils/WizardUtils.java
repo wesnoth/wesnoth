@@ -13,7 +13,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.wesnoth.WesnothPlugin;
-import org.wesnoth.wizards.NewWizardTemplate;
+import org.wesnoth.wizards.WizardTemplate;
 
 
 public class WizardUtils
@@ -25,7 +25,7 @@ public class WizardUtils
 	 * @param selection The current selection
 	 * @return
 	 */
-	public static int launchWizard(NewWizardTemplate wizard, Shell shell,
+	public static int launchWizard(WizardTemplate wizard, Shell shell,
 					IStructuredSelection selection)
 	{
 		if (wizard == null)

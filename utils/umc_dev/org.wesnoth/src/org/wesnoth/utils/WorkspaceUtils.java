@@ -41,6 +41,7 @@ import org.wesnoth.WesnothPlugin;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.navigator.WesnothProjectsExplorer;
 import org.wesnoth.preferences.Preferences;
+import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.projects.ProjectUtils;
 
 public class WorkspaceUtils
@@ -347,44 +348,37 @@ public class WorkspaceUtils
                 try
                 {
                     // automatically import 'special' folders as projects
-                    List<File> files = new ArrayList<File>();
-                    String addonsDir = Preferences.getPaths( null ).getAddonsDir( );
-                    String campaignsDir = Preferences.getPaths( null ).getCampaignDir( );
+                    List<File> userAddonsFiles = new ArrayList<File>();
+                    Paths paths = Preferences.getPaths( Preferences.getDefaultInstallName( ) );
 
                     if (GUIUtils.showMessageBox( Messages.WorkspaceUtils_18 ,
                             SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
                     {
                         // useraddons/add-ons/data
-                        File[] tmp = new File(addonsDir).listFiles();
+                        File[] tmp = new File( paths.getAddonsDir( ) ).listFiles();
                         if (tmp != null)
-                            files.addAll(Arrays.asList(tmp));
+                            userAddonsFiles.addAll(Arrays.asList(tmp));
                     }
 
-                    if (GUIUtils.showMessageBox( Messages.WorkspaceUtils_20 ,
-                            SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
-                    {
-                        // workingdir/data/campaigns
-                        File[] tmp = new File(campaignsDir).listFiles();
-                        if (tmp != null)
-                            files.addAll(Arrays.asList(tmp));
-                    }
+                    monitor.beginTask( Messages.WorkspaceUtils_22,
+                            userAddonsFiles.size() * 10 );
 
-                    monitor.beginTask(Messages.WorkspaceUtils_22, files.size() * 35);
-                    for(File file: files)
+                    for( File file: userAddonsFiles )
                     {
                         if (file.isDirectory() == false ||
                             file.getName().startsWith(".")) //$NON-NLS-1$
                             continue;
 
                         String projectName = file.getName();
-                        if (StringUtils.normalizePath(file.getAbsolutePath()).contains(
-                            StringUtils.normalizePath(campaignsDir)))
+                        if ( ResourceUtils.isCampaignDirPath( paths,
+                                file.getAbsolutePath( ) ) )
                         {
                             projectName = "_Mainline_" + file.getName(); //$NON-NLS-1$
                         }
 
                         ProjectUtils.createWesnothProject( projectName,
-                                file.getAbsolutePath( ), false, monitor );
+                                file.getAbsolutePath( ), paths.getInstallName( ),
+                                monitor );
                     }
 
                     if (guided)

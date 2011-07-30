@@ -178,7 +178,7 @@ public class StringUtils
 	}
 
 	/**
-	 * Normalizez the path given by the string, removing repeated separators
+	 * Normalizes the path given by the string, removing repeated separators
 	 * and replacing them by '|'
 	 *
 	 * @param path the string that represents the path to be normalized

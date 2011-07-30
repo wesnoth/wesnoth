@@ -51,6 +51,7 @@ import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.builder.DependencyListNode;
+import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
@@ -323,6 +324,34 @@ public class ResourceUtils
 	        Logger.getInstance().logWarn("The file does not exist or is null: " + filePath); //$NON-NLS-1$
 	    return valid;
 	}
+
+	/**
+	 * Checks if the specified path is in the user's addons directory
+	 * @param paths The paths to use when doing the check
+	 * @param path The path to check
+	 * @return True if the path is in user's addons
+	 */
+	public static boolean isUserAddonsDirPath( Paths paths, String path ) {
+        if ( StringUtils.isNullOrEmpty( path ) )
+            return false;
+
+	    return  StringUtils.normalizePath( path ).contains(
+	                StringUtils.normalizePath( paths.getAddonsDir( ) ) );
+	}
+
+    /**
+     * Checks if the specified path is in the campaigns directory
+     * @param paths The paths to use when doing the check
+     * @param path The path to check
+     * @return True if the path is in data/campaigns directory
+     */
+    public static boolean isCampaignDirPath( Paths paths, String path ) {
+        if ( StringUtils.isNullOrEmpty( path ) )
+            return false;
+
+        return  StringUtils.normalizePath( path ).contains(
+                    StringUtils.normalizePath( paths.getCampaignDir( ) ) );
+    }
 
 	/**
 	 * Returns true if the resource is a WML config file

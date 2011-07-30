@@ -144,7 +144,7 @@ public class Preferences extends AbstractPreferenceInitializer
 
 	    Paths paths = paths_.get( installName );
 	    if ( paths == null ) {
-	        paths = new Paths( getInstallPrefix( installName ) );
+	        paths = new Paths( installName, getInstallPrefix( installName ) );
 	        paths_.put( installName, paths );
 	    }
 
@@ -158,10 +158,21 @@ public class Preferences extends AbstractPreferenceInitializer
 	public static class Paths
 	{
 	    private String installPrefix_;
+	    private String installName_;
 
-	    public Paths( String installPrefix )
+	    public Paths( String installName, String installPrefix )
 	    {
 	        installPrefix_ = installPrefix;
+	        installName_ = installName;
+	    }
+
+	    /**
+	     * Returns the install name associated with this instance
+	     * @return A string representing the install name
+	     */
+	    public String getInstallName()
+	    {
+	        return installName_;
 	    }
 
 	    /**
