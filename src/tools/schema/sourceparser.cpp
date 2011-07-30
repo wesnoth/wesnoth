@@ -150,7 +150,7 @@ const std::string & get_allow_global(){
 	return global_link;
 }
 
-const std::string & get_allow_type(){
+static const std::string & get_allow_type(){
 	static std::string allow_type = valid + allow + property("type")
 									+property("name",sub(name_type))
 									+property("value",sub("\\^.+\\$"))
