@@ -15,6 +15,8 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
+import org.wesnoth.installs.WesnothInstall;
+import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.utils.ResourceUtils;
@@ -50,10 +52,25 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
         lblWesnothInstall.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
         lblWesnothInstall.setText("Wesnoth Install:");
 
-        cmbInstalls_ = new Combo(composite, SWT.NONE);
+        cmbInstalls_ = new Combo( composite, SWT.READ_ONLY );
         GridData gd_cmbInstalls = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
         gd_cmbInstalls.widthHint = 154;
         cmbInstalls_.setLayoutData(gd_cmbInstalls);
+
+        // fill the installs
+        String defaultInstallName = Preferences.getDefaultInstallName( );
+        for ( WesnothInstall install : WesnothInstallsUtils.getInstalls( ) ) {
+            cmbInstalls_.add( install.getName( ) );
+
+            // select the default
+            if ( install.getName( ).equals( defaultInstallName ) )
+                cmbInstalls_.select( cmbInstalls_.getItemCount( ) - 1 );
+        }
+
+        // select the first if there is no other selected
+        if ( cmbInstalls_.getSelectionIndex( ) == -1 &&
+             cmbInstalls_.getItemCount( ) > 0 )
+            cmbInstalls_.select( 0 );
     }
 
     /**
