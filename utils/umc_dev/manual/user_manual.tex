@@ -118,7 +118,7 @@ The plugin has the following list of abilities (not exhaustive):
 \section{Using the plugin}
 After you have started the plugin, you can use its features.
 
-But before of all, you must setup your environment, so it knows where your wesnoth game is located. By default, after you have launched the plugin for the first time, you will be greeted with a small assistant that will help you ``setup the workspace". The preferences page for the plugin will pop up and you must fill all fields, so the plugin will work as intended. After you completed the fields, press \textbf{OK}. Then the plugin will create for convenience (i.e. if you want) wesnoth projects for each of mainline campaigns and for each directory in your \textbf{useraddons/data/add-ons} directory. The working directory is the directory that contains the data, images, manual, sounds directories of Wesnoth.
+But before of all, you must setup your environment, so it knows where your wesnoth game is located. By default, after you have launched the plugin for the first time, you will be greeted with a small assistant that will help you ``setup the workspace". The preferences page for the plugin will pop up and you must fill all fields, so the plugin will work as intended. After you completed the fields, press \textbf{OK}. Then the plugin will create for convenience (i.e. if you want) wesnoth projects for each directory in your \textbf{useraddons/data/add-ons} directory. The working directory is the directory that contains the data, images, manual, sounds directories of Wesnoth.
 
 If there were no errors a message window will open saying: \textbf{Workspace was setup successfully}.
 
@@ -143,7 +143,7 @@ The first created install ever will become automatically default. If a default i
 After the user has configured the installs, he can use them on a per-project basis. Each project has a properties page ( Right click on project -$>$ Properties -$>$ Wesnoth Project ). There the user can configure project specific settings, including the install used in the context of that project.
 
 \subsection{Wizards}
-There are some wizards available in the plugin, that will create either projects or config files, based on the specified input. This wizards are available by going to the ``File" menu - New - Other... , and from that list selecting the ``Wesnoth" category.
+There are some wizards available in the plugin, that will create either projects or config files, based on the specified input. This wizards are available by going to the ``File" menu - New, and from that list selecting one of the Wesnoth wizards.
 
 There are 3 wizards categories:
 \begin{enumerate}
@@ -238,13 +238,13 @@ The plugin is in fact something like a WML IDE ( \href{http://en.wikipedia.org/w
 Go over to Wesnoth's bug tracker: \href{https://gna.org/bugs/?func=additem&group=wesnoth&bug_group_id=116}{Add new bug}. Please be as specific as possible. Also, if you have any logs, please attach them - refer to the next FAQ Entry for ways of getting the logs.
 
 \subsection{Where I can find the logs?}
-If you encounter any errors during the usage of the plugin, the plugin logs them in the: \textbf{\textless your temporary directory\textgreater /wesnoth\_plugin/logs}.
+If you encounter any errors during the usage of the plugin, the plugin logs them in the: \textbf{$<$your temporary directory$>$/wesnoth\_plugin/logs}.
 That is usually on linux:\\
 \indent \textbf{/tmp/wesnoth\_plugin/logs}\\
 or on windows:\\
-\indent \textbf{C:/Documents and settings/$<$ your username$>$/Local Settings/Temp/wesnoth\_plugin/logs} \\
+\indent \textbf{C:/Documents and settings/$<$your username$>$/Local Settings/Temp/wesnoth\_plugin/logs} \\
 or\\
-\indent \textbf{C:/Users/$<$ your username$>$/Local Settings/Temp/wesnoth\_plugin/logs}
+\indent \textbf{C:/Users/$<$your username$>$/Local Settings/Temp/wesnoth\_plugin/logs}
 
 \subsection{Why Mac OSX 32 bit is not supported?}
 Apple decided to manage itself the versions that can run on each Mac version. Thus the modern Java SE6 version - which is used by the plugin - is not available on 32 bit Macs but on 64bit only. The 32bit Macs have just Java SE5 version available. Trying to port the plugin to the ``outdated'' java version is not likely to be done, so please consider upgrading your OS.
