@@ -14,6 +14,7 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -81,13 +82,18 @@ public class ProjectUtils
 	public static IProject createWesnothProject( String name, String location,
 	        String installName, IProgressMonitor monitor )
 	{
-	    IProject newProject = ResourcesPlugin.getWorkspace().getRoot().getProject( name );
+	    IWorkspaceRoot root = ResourcesPlugin.getWorkspace( ).getRoot( );
+	    IProject newProject = root.getProject( name );
+	    IProjectDescription description = null;
 
-        IProjectDescription description =
-            ResourcesPlugin.getWorkspace().newProjectDescription( name );
-        description.setLocation( new Path( location ) );
+        // set the path only if the project's location is outside the workspace root
+        if ( ! location.equals( root.getLocation( ).toOSString( ) ) )
+        {
+            description = ResourcesPlugin.getWorkspace().newProjectDescription( name );
+            description.setLocation( new Path( location ) );
+        }
 
-	    createWesnothProject( newProject, description, installName, true, monitor );
+	    createWesnothProject( newProject, description, installName, monitor );
 
 	    return newProject;
 	}
@@ -99,12 +105,11 @@ public class ProjectUtils
 	 * @param handle the handle to the project
 	 * @param description the default description used when the project is created
      * @param installName The name of the install this project belongs to
-     * @param open True to open the project after it was created
 	 * @param monitor the monitor will do a 30 worked amount in the method
 	 * @throws CoreException
 	 */
-	public static int createWesnothProject( IProject handle, IProjectDescription description,
-				String installName, boolean open, IProgressMonitor monitor)
+    public static int createWesnothProject( IProject handle, IProjectDescription description,
+				String installName, IProgressMonitor monitor)
 	{
 		if ( handle == null || handle.exists() )
 			return -1;
@@ -113,9 +118,15 @@ public class ProjectUtils
 		    String projectPath = null;
 
 		    if (handle.getLocation() == null && description != null)
-		        projectPath = description.getLocationURI().toString();
-		    else
+		        projectPath = description.getLocationURI().toString( ).substring( 1 );
+		    else if ( handle.getLocation( ) != null )
 		        projectPath = handle.getLocation().toOSString();
+		    else // project is in workspace
+		        projectPath =
+		            ResourcesPlugin.getWorkspace( ).getRoot( ).getLocation( ).toOSString( )
+		            + "/" + handle.getProject( ).getName( );
+
+		    System.out.println( projectPath );
 
 		    monitor.subTask(Messages.ProjectUtils_0);
 
@@ -126,15 +137,14 @@ public class ProjectUtils
 		    monitor.worked(5);
 
 		    monitor.subTask(String.format(Messages.ProjectUtils_4, handle.getName()));
-		    // create the project
 
+		    // create the project
 		    if (description == null)
 		        handle.create(monitor);
 		    else
 		        handle.create(description, monitor);
 
-		    if (open)
-		        handle.open(monitor);
+	        handle.open(monitor);
 		    monitor.worked(10);
 
 		    monitor.subTask(Messages.ProjectUtils_6);

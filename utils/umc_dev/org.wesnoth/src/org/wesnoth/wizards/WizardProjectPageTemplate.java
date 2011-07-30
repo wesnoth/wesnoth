@@ -11,8 +11,6 @@ package org.wesnoth.wizards;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -100,23 +98,9 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
     {
         monitor.subTask( "Creating the project structure");
 
-        IProject currentProject = getProjectHandle();
-
-        // the project
-        if ( getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
-        {
-            ProjectUtils.createWesnothProject(currentProject, null,
-                    getSelectedInstallName( ), true, monitor);
-        }
-        else
-        {
-            IProjectDescription newDescription = ResourcesPlugin.getWorkspace().
-            newProjectDescription(getProjectName());
-            newDescription.setLocation(getLocationPath());
-            ProjectUtils.createWesnothProject(currentProject, newDescription,
-                    getSelectedInstallName( ), true, monitor);
-        }
-
+        IProject currentProject = ProjectUtils.createWesnothProject(
+                getProjectName( ), getLocationPath( ).toOSString( ),
+                getSelectedInstallName( ), monitor );
         monitor.worked(2);
 
         String projectTemplate =
