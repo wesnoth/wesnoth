@@ -87,19 +87,19 @@ public class GUIUtils
 		if (window == null || window.getShell() == null || message == null)
 			return -1;
 
-		MyRunnable<Integer> runnable = new MyRunnable<Integer>() {
+		RunnableWithResult<Integer> runnable = new RunnableWithResult<Integer>() {
 			@Override
 			public void run()
 			{
 				MessageBox box = new MessageBox(window.getShell(), style);
 				box.setMessage(message);
-				runnableObject_ =  box.open();
+				setResult( box.open() );
 			}
 		} ;
 		try
 		{
 			window.getShell().getDisplay().syncExec(runnable);
-			return runnable.runnableObject_;
+			return runnable.getResult( );
 		} catch (Exception e)
 		{
 			Logger.getInstance().logException(e);

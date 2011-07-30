@@ -146,15 +146,21 @@ public class WorkspaceUtils
 	{
 		if (window == null)
 			return null;
-		MyRunnable<IStructuredSelection> runnable = new MyRunnable<IStructuredSelection>(){
+
+		RunnableWithResult<IStructuredSelection> runnable =
+		        new RunnableWithResult<IStructuredSelection>(){
 			@Override
 			public void run()
 			{
 				try{
-					runnableObject_ = null;
-					if (!(window.getSelectionService().getSelection() instanceof IStructuredSelection))
+					setResult( null );
+
+					if ( !( window.getSelectionService().getSelection()
+					        instanceof IStructuredSelection ) )
 						return;
-					runnableObject_ = (IStructuredSelection) window.getSelectionService().getSelection();
+
+					setResult( ( IStructuredSelection)
+					        window.getSelectionService().getSelection( ) );
 				}
 				catch (Exception e) {
 					e.printStackTrace();
@@ -162,7 +168,7 @@ public class WorkspaceUtils
 			}
 		};
 		Display.getDefault().syncExec(runnable);
-		return runnable.runnableObject_;
+		return runnable.getResult( );
 	}
 
 	/**

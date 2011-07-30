@@ -8,19 +8,17 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
-public class MyRunnable<T> implements Runnable
+public abstract class RunnableWithResult<T> implements Runnable
 {
-	protected T	runnableObject_;
+	private T result_;
 
-	public MyRunnable(T t) {
-		this.runnableObject_ = t;
-	}
-
-	public MyRunnable(){
-
-	}
-	@Override
-	public void run()
+	public void setResult( T result )
 	{
+	    result_ = result;
+	}
+
+	public T getResult( )
+	{
+	    return result_;
 	}
 }
