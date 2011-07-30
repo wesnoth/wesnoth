@@ -118,14 +118,6 @@ public abstract class WorkbenchAdvisorHack extends WorkbenchAdvisor
 		declareWorkbenchImage(ideBundle, IDEInternalWorkbenchImages.IMG_DLCL_QUICK_FIX_DISABLED,
 				PATH_DLOCALTOOL + "smartmode_co.gif", true); //$NON-NLS-1$
 
-		// task objects
-		// declareRegistryImage(IDEInternalWorkbenchImages.IMG_OBJS_HPRIO_TSK,
-		// PATH_OBJECT+"hprio_tsk.gif");
-		// declareRegistryImage(IDEInternalWorkbenchImages.IMG_OBJS_MPRIO_TSK,
-		// PATH_OBJECT+"mprio_tsk.gif");
-		// declareRegistryImage(IDEInternalWorkbenchImages.IMG_OBJS_LPRIO_TSK,
-		// PATH_OBJECT+"lprio_tsk.gif");
-
 		declareWorkbenchImage(ideBundle, IDE.SharedImages.IMG_OBJS_TASK_TSK, PATH_OBJECT
 				+ "taskmrk_tsk.gif", true); //$NON-NLS-1$
 		declareWorkbenchImage(ideBundle, IDE.SharedImages.IMG_OBJS_BKMRK_TSK, PATH_OBJECT
@@ -151,9 +143,7 @@ public abstract class WorkbenchAdvisorHack extends WorkbenchAdvisor
 		declareWorkbenchImage(ideBundle, IDEInternalWorkbenchImages.IMG_LCL_HIERARCHICAL_LAYOUT,
 				PATH_ELOCALTOOL + "hierarchicalLayout.gif", true); //$NON-NLS-1$
 		declareWorkbenchImage(ideBundle, IDEInternalWorkbenchImages.IMG_ETOOL_PROBLEM_CATEGORY,
-				PATH_ETOOL + "problem_category.gif", true); //$NON-NLS-1$
-//		declareWorkbenchImage(ideBundle, IDEInternalWorkbenchImages.IMG_LCL_LINKTO_HELP,
-//				PATH_ELOCALTOOL + "linkto_help.gif", false); //$NON-NLS-1$
+				PATH_ETOOL + "problems_view.gif", true); //$NON-NLS-1$
 	}
 
 	/**
