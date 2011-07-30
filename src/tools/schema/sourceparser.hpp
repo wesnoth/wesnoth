@@ -33,7 +33,7 @@
 #include <string>
 #include <vector>
 
-namespace schema_generator{
+namespace schema_validation{
 /** A few regex templates. Please notice, that adding any regex template,
  * schould be called in test_regexes()
  */

@@ -28,7 +28,9 @@
 #include <sstream>
 #include <string>
 
-namespace schema_generator{
+class config;
+
+namespace schema_validation{
 /**
   * class_key is used to save the information about one key.
   * Key has next info: name, type, default value or key is mandatory.
@@ -46,6 +48,7 @@ public:
 		, mandatory_(def.empty())
 	{
 	}
+	class_key(const config&);
 
 	const std::string &  get_name() const{
 		return name_ ;
@@ -167,6 +170,7 @@ public:
 		, links_()
 	{
 	}
+	class_tag(const config&);
 	~class_tag(){  }
 
 	/** Prints information about tag to outputstream, recursively
@@ -306,7 +310,7 @@ private:
 	 * @param level  current level of indentation
 	 * @param step   step to next indent
 	 */
-	void printl(std::ostream &os,int level, int step);
+	void printl(std::ostream &os,int level, int step = 4);
 
 	class_tag * find_tag(const std::string & fullpath,
 								class_tag & root) ;

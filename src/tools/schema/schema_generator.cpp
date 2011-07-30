@@ -33,7 +33,7 @@
 
 std::string version = "0.6.0";
 
-using namespace schema_generator;
+using namespace schema_validation;
 /**
  * Parses the command line.
  * @retval 0 Everything's OK!

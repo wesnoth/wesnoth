@@ -20,7 +20,10 @@
 
 #include "tools/schema/tag.hpp"
 
-namespace schema_generator{
+#include "config.hpp"
+#include "foreach.hpp"
+namespace schema_validation{
+
 /*WIKI
  * @begin{parent}{name="wml_schema/tag/"}
  * @begin{tag}{name="key"}{min=0}{max=-1}
@@ -34,6 +37,17 @@ namespace schema_generator{
  * @end{parent}{name="wml_schema/tag/"}
  */
 
+ class_key::class_key(const config & cfg){
+	 name_ = cfg["name"].str();
+	 type_ = cfg["type"].str();
+	 if (cfg.has_attribute("mandatory")){
+		 mandatory_ = cfg["mandatory"].to_bool();
+	 }else{
+		 if (cfg.has_attribute("default")){
+			 default_= cfg["default"].str();
+		 }
+	 }
+ }
 void class_key::print(std::ostream& os,int level) const {
 	std::string s;
 	for (int j=0;j<level;j++){
@@ -49,6 +63,26 @@ void class_key::print(std::ostream& os,int level) const {
 	}
 	os << s << "[/key]\n";
 }
+class_tag::class_tag(const config & cfg){
+		name_ = cfg["name"].str();
+		min_ = cfg["min"].to_int();
+		max_ = cfg["max"].to_int();
+		if (cfg.has_attribute("super")){
+			super_ = cfg["super"].str();
+		}
+		foreach (const config &child, cfg.child_range("tag")) {
+			class_tag child_tag (child);
+			add_tag(child_tag);
+		}
+		foreach (const config &child, cfg.child_range("key")) {
+			class_key child_key (child);
+			add_key(child_key);
+		}
+		foreach (const config &link, cfg.child_range("link")) {
+			std::string link_name = link["name"].str();
+			add_link(link_name);
+		}
+}
 
 void class_tag::print(std::ostream& os){
 	printl(os,4,4);
@@ -57,7 +91,7 @@ void class_tag::print(std::ostream& os){
 void class_tag::add_link(const std::string &link){
 	std::string::size_type pos_last = link.rfind('/');
 	//if (pos_last == std::string::npos) return;
-	std::string name_link = link.substr(++pos_last,link.length());
+	std::string name_link = link.substr(pos_last+1,link.length());
 	links_.insert(std::pair<std::string,std::string>(name_link,link));
 }
 
@@ -85,7 +119,7 @@ const class_tag * class_tag::find_tag(const std::string &fullpath,
 	 std::string next_path;
 	 if (pos != std::string::npos) {
 		 name = fullpath.substr(0,pos);
-		 next_path = fullpath.substr(++pos,fullpath.length());
+		 next_path = fullpath.substr(pos+1,fullpath.length());
 	 }else{
 		 name = fullpath;
 	 }
@@ -137,6 +171,7 @@ void class_tag::expand_all(class_tag &root){
  * @end{parent}{name="wml_schema/"}
  */
 void class_tag::printl(std::ostream &os,int level, int step){
+
 	std::string s;
 	for (int j=0;j<level;j++){
 		s.append(" ");
@@ -173,7 +208,7 @@ void class_tag::printl(std::ostream &os,int level, int step){
 	 std::string next_path;
 	 if (pos != std::string::npos) {
 		 name = fullpath.substr(0,pos);
-		 next_path = fullpath.substr(++pos,fullpath.length());
+		 next_path = fullpath.substr(pos+1,fullpath.length());
 	 }else{
 		 name = fullpath;
 	 }
@@ -212,7 +247,7 @@ void class_tag::add_tag(const std::string &path, const class_tag &tag,
 	}
 	std::string::size_type pos = path.find('/');
 	std::string name = path.substr(0,pos);
-	std::string next_path = path.substr(++pos,path.length());
+	std::string next_path = path.substr(pos+1,path.length());
 
 	link_map::const_iterator it_links= links_.find(name);
 	if (it_links != links_.end()){

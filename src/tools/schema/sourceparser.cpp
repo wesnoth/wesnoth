@@ -21,7 +21,7 @@
 
 #include "boost/regex.hpp"
 
-namespace schema_generator{
+namespace schema_validation{
 /** Little parts of regex templates used to parse Wml annoations.
  *For details, look http://wiki.wesnoth.org/WML_Annotation_Format , please
  */

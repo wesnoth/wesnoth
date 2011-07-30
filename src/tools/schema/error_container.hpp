@@ -29,7 +29,7 @@
 #include <string>
 #include <vector>
 
-namespace schema_generator{
+namespace schema_validation{
 /**
  * Container of errors, which are generated while schema generator tool
  * is parsing source files.

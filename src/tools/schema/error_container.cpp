@@ -20,7 +20,7 @@
 
 #include "tools/schema/error_container.hpp"
 
-namespace schema_generator{
+namespace schema_validation{
 
 void class_error_container::add_simple_error(const std::string & message){
 	list_.push_back(message);
