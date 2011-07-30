@@ -131,7 +131,6 @@ public class Preferences extends AbstractPreferenceInitializer
         getPreferences( ).setValue( Constants.P_INST_DEFAULT_INSTALL, newInstallName );
     }
 
-
 	/**
 	 * Returns a new Paths object based on the specified install name
 	 * @param installName The install name used for the paths

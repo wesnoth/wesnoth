@@ -319,7 +319,7 @@ public class ResourceUtils
 	public static boolean isValidFilePath( String filePath )
 	{
 	    boolean valid = filePath != null && !filePath.isEmpty() && new File(filePath).exists();
-	    if ( valid == false )
+	    if ( valid == false && ! StringUtils.isNullOrEmpty( filePath ) )
 	        Logger.getInstance().logWarn("The file does not exist or is null: " + filePath); //$NON-NLS-1$
 	    return valid;
 	}
