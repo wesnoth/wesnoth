@@ -21,6 +21,8 @@
 
 #include "boost/regex.hpp"
 
+#include <stack>
+
 namespace schema_validation{
 /** Little parts of regex templates used to parse Wml annoations.
  *For details, look http://wiki.wesnoth.org/WML_Annotation_Format , please
@@ -250,26 +252,40 @@ void class_source_parser::close_opened_tags(int i = INT_MAX){
 	if (current_.empty()){
 		return;
 	}
+	std::stack<std::string> error_cache ;
 	while (current_.size() > 1){
 		if (i==0){
-			return;
+			break;
 		}
 		class_tag tag (current_.back());
 		current_.pop_back();
 		current_.back().add_tag(tag);
+		error_cache.push(tag.get_name());
 		i--;
 	}
-	if (i==0){
-		return;
+	if (i!=0){
+		//adding to parent
+		if (parent_name_.empty()) {
+			orphan_tags_.push_back(current_.back());
+			errors_.add_orphan_error(input_,line_,current_.back().get_name());
+		}else{
+			error_cache.push(current_.back().get_name());
+			root_.add_tag(parent_name_,current_.back(),root_);
+		}
+		current_.pop_back();
 	}
-	//adding to parent
-	if (parent_name_.empty()) {
-		orphan_tags_.push_back(current_.back());
-		errors_.add_orphan_error(input_,line_,current_.back().get_name());
-	}else{
-		root_.add_tag(parent_name_,current_.back(),root_);
+	std::string name_to_remove_from_cache = parent_name_;
+	for (std::vector<class_tag>::const_iterator ii = current_.begin();
+	ii!= current_.end();++ii){
+		name_to_remove_from_cache +=  ii->get_name() + "/";
 	}
-	current_.pop_back();
+	while (! error_cache.empty()){
+		name_to_remove_from_cache +=  error_cache.top();
+		errors_.remove_link_errors(name_to_remove_from_cache);
+		error_cache.pop();
+	name_to_remove_from_cache += "/";
+	}
+
 }
 
 
@@ -445,7 +461,6 @@ bool class_source_parser::check_tag_end(const std::string &s){
 			if (ii->get_name() == name){
 				add_open_tag_error(count_opened);
 				close_opened_tags(++count_opened);
-				errors_.remove_link_errors(parent_name_+name);
 				return true;
 			}else{
 				count_opened ++;
