@@ -11,6 +11,7 @@ package org.wesnoth.wizards.era;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -82,7 +83,7 @@ public class EraPage0 extends WizardPageTemplate
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
-				Path path = handleBrowseContainer();
+				IPath path = handleBrowseContainer();
 				if (path != null)
 					txtDirectory_.setText(path.toString());
 			}

@@ -4,6 +4,7 @@
 package org.wesnoth.wizards;
 
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
@@ -35,7 +36,7 @@ public class WizardPageTemplate extends WizardPage
 	 * Uses the standard container selection dialog to choose the new value for
 	 * the project field.
 	 */
-	public Path handleBrowseContainer()
+	public IPath handleBrowseContainer()
 	{
 		ContainerSelectionDialog dialog = new ContainerSelectionDialog(getShell(),
 				ResourcesPlugin.getWorkspace().getRoot(), false, Messages.NewWizardPageTemplate_1);
