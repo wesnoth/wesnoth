@@ -22,14 +22,11 @@ public abstract class WizardTemplate extends Wizard implements INewWizard
 {
 	protected IStructuredSelection	selection_;
 	protected IContainer			selectionContainer_;
-	protected int					lastPageHashCode_	= 0;
+	protected IWizardPage           lastPage_;
 	protected boolean				isFinished_			= false;
 	protected Object				data_				= null;
 	protected String				objectName_			= ""; //$NON-NLS-1$
 
-    // TODO: wizards should ask the install
-	// TODO: detect automatically whether a project is in data or add-ons/
-	// without the need for the user to specify
 	public WizardTemplate()
 	{
 		setNeedsProgressMonitor(true);
@@ -85,15 +82,15 @@ public abstract class WizardTemplate extends Wizard implements INewWizard
 	public boolean canFinish()
 	{
 		IWizardPage page = getContainer().getCurrentPage();
-		return super.canFinish() && page.hashCode() == lastPageHashCode_ && page.isPageComplete();
+		return super.canFinish() && page == lastPage_ && page.isPageComplete();
 	}
 
 	@Override
-	public void addPages()
+	public void addPage( IWizardPage page )
 	{
-		if (getPageCount() == 0)
-			return;
-		lastPageHashCode_ = getPages()[getPageCount() - 1].hashCode();
+	    super.addPage( page );
+
+	    lastPage_ = page;
 	}
 
 	public boolean isFinished()

@@ -8,6 +8,12 @@
  *******************************************************************************/
 package org.wesnoth.wizards;
 
+import java.util.List;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -15,10 +21,13 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-import org.wesnoth.installs.WesnothInstall;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
+import org.wesnoth.projects.ProjectUtils;
+import org.wesnoth.templates.ReplaceableParameter;
+import org.wesnoth.templates.TemplateProvider;
+import org.wesnoth.utils.Pair;
 import org.wesnoth.utils.ResourceUtils;
 
 /**
@@ -57,20 +66,7 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
         gd_cmbInstalls.widthHint = 154;
         cmbInstalls_.setLayoutData(gd_cmbInstalls);
 
-        // fill the installs
-        String defaultInstallName = Preferences.getDefaultInstallName( );
-        for ( WesnothInstall install : WesnothInstallsUtils.getInstalls( ) ) {
-            cmbInstalls_.add( install.getName( ) );
-
-            // select the default
-            if ( install.getName( ).equals( defaultInstallName ) )
-                cmbInstalls_.select( cmbInstalls_.getItemCount( ) - 1 );
-        }
-
-        // select the first if there is no other selected
-        if ( cmbInstalls_.getSelectionIndex( ) == -1 &&
-             cmbInstalls_.getItemCount( ) > 0 )
-            cmbInstalls_.select( 0 );
+        WesnothInstallsUtils.fillComboWithInstalls( cmbInstalls_ );
     }
 
     /**
@@ -92,5 +88,70 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
     public String getSelectedInstallName( )
     {
         return cmbInstalls_.getText( );
+    }
+
+    /**
+     * Creates the project this page was setup with
+     * @return The newly created project's handle
+     */
+    public IProject createProject( IProgressMonitor monitor,
+            String templateName, List<ReplaceableParameter> params,
+            boolean generatePBL )
+    {
+        monitor.subTask( "Creating the project structure");
+
+        IProject currentProject = getProjectHandle();
+
+        // the project
+        if ( getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
+        {
+            ProjectUtils.createWesnothProject(currentProject, null,
+                    getSelectedInstallName( ), true, monitor);
+        }
+        else
+        {
+            IProjectDescription newDescription = ResourcesPlugin.getWorkspace().
+            newProjectDescription(getProjectName());
+            newDescription.setLocation(getLocationPath());
+            ProjectUtils.createWesnothProject(currentProject, newDescription,
+                    getSelectedInstallName( ), true, monitor);
+        }
+
+        monitor.worked(2);
+
+        String projectTemplate =
+                TemplateProvider.getInstance().getProcessedTemplate(templateName, params);
+
+        List<Pair<String, String>> files;
+        List<String> dirs;
+        Pair<List<Pair<String, String>>, List<String>> tmp =
+                TemplateProvider.getInstance().getFilesDirectories( projectTemplate );
+        files = tmp.First;
+        dirs = tmp.Second;
+
+        for (Pair<String, String> file : files)
+        {
+            if ( file.Second.equals("pbl") && //$NON-NLS-1$
+                 ! generatePBL )
+                continue;
+
+            if ( file.Second.equals("build_xml") && //$NON-NLS-1$
+                 ! needsBuildXML( ) )
+                continue;
+
+            ResourceUtils.createFile( currentProject, file.First,
+                    TemplateProvider.getInstance().getProcessedTemplate( file.Second, params ),
+                    true );
+            monitor.worked(1);
+        }
+
+        for (String dir : dirs)
+        {
+            ResourceUtils.createFolder(currentProject, dir);
+            monitor.worked(1);
+        }
+
+        monitor.done();
+        return currentProject;
     }
 }

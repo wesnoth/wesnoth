@@ -13,26 +13,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.templates.ReplaceableParameter;
-import org.wesnoth.templates.TemplateProvider;
-import org.wesnoth.utils.Pair;
-import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.wizards.WizardProjectPageTemplate;
 import org.wesnoth.wizards.WizardTemplate;
 
-
 public class CampaignNewWizard extends WizardTemplate
 {
-	protected WizardProjectPageTemplate page0_;
+    protected WizardProjectPageTemplate page0_;
 	protected CampaignPage1 page1_;
 	protected CampaignPage2 page2_;
+
+	public CampaignNewWizard() {
+		setWindowTitle(Messages.CampaignNewWizard_0);
+		setNeedsProgressMonitor(true);
+	}
 
 	@Override
 	public void addPages()
@@ -46,13 +45,6 @@ public class CampaignNewWizard extends WizardTemplate
 
 		page2_ = new CampaignPage2();
 		addPage(page2_);
-
-		super.addPages();
-	}
-
-	public CampaignNewWizard() {
-		setWindowTitle(Messages.CampaignNewWizard_0);
-		setNeedsProgressMonitor(true);
 	}
 
 	@Override
@@ -65,7 +57,15 @@ public class CampaignNewWizard extends WizardTemplate
 				@Override
 				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException
 				{
-					createProject(monitor);
+				    IProject currentProject =
+				            page0_.createProject( monitor, "campaign_structure",
+				            getParameters( ), page1_.needsPBLFile( ) );
+
+			        // store some campaign-related info
+			        ProjectUtils.getPropertiesForProject( currentProject ).
+			            put("difficulties", page2_.getDifficulties()); //$NON-NLS-1$
+			        ProjectUtils.getCacheForProject( currentProject ).saveCache( );
+
 					monitor.done();
 				}
 			});
@@ -77,67 +77,9 @@ public class CampaignNewWizard extends WizardTemplate
 		return true;
 	}
 
-	public void createProject(IProgressMonitor monitor)
+	private List<ReplaceableParameter> getParameters( )
 	{
-		monitor.beginTask(Messages.CampaignNewWizard_1, 15);
-
-		IProject currentProject = page0_.getProjectHandle();
-
-		// the project
-		if (page0_.getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
-		{
-			ProjectUtils.createWesnothProject(currentProject, null,
-					page0_.getSelectedInstallName( ), true, monitor);
-		}
-		else
-		{
-			IProjectDescription newDescription = ResourcesPlugin.getWorkspace().
-			newProjectDescription(page0_.getProjectName());
-			newDescription.setLocation(page0_.getLocationPath());
-			ProjectUtils.createWesnothProject(currentProject, newDescription,
-					page0_.getSelectedInstallName( ), true, monitor);
-		}
-		monitor.worked(2);
-
-		String campaignStructure = prepareTemplate("campaign_structure"); //$NON-NLS-1$
-		if (campaignStructure == null)
-			return;
-
-		List<Pair<String, String>> files;
-		List<String> dirs;
-		Pair<List<Pair<String, String>>, List<String>> tmp = TemplateProvider.getInstance().getFilesDirectories(campaignStructure);
-		files = tmp.First;
-		dirs = tmp.Second;
-
-		for (Pair<String, String> file : files)
-		{
-			if (file.Second.equals("pbl") && //$NON-NLS-1$
-				page1_.needsPBLFile( ) == false)
-				continue;
-
-			if ( file.Second.equals("build_xml") && //$NON-NLS-1$
-				 ! page0_.needsBuildXML( ) )
-				continue;
-
-			ResourceUtils.createFile(currentProject, file.First, prepareTemplate(file.Second), true);
-			monitor.worked(1);
-		}
-		for (String dir : dirs)
-		{
-			ResourceUtils.createFolder(currentProject, dir);
-			monitor.worked(1);
-		}
-
-		// store some campaign-related info
-		ProjectUtils.getPropertiesForProject(currentProject).put("difficulties", page2_.getDifficulties()); //$NON-NLS-1$
-		ProjectUtils.getCacheForProject( currentProject ).saveCache( );
-
-		monitor.done();
-	}
-
-	private String prepareTemplate(String templateName)
-	{
-		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
+		List<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
 		params.add(new ReplaceableParameter("$$campaign_name", page1_.getCampaignName())); //$NON-NLS-1$
 		params.add(new ReplaceableParameter("$$author", page1_.getAuthor())); //$NON-NLS-1$
@@ -158,6 +100,6 @@ public class CampaignNewWizard extends WizardTemplate
 		params.add(new ReplaceableParameter("$$project_dir_name", page0_.getProjectName())); //$NON-NLS-1$
 		params.add(new ReplaceableParameter("$$type", page1_.isMultiplayer() ? "campaign_mp" : "campaign")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
-		return TemplateProvider.getInstance().getProcessedTemplate(templateName, params);
+		return params;
 	}
 }

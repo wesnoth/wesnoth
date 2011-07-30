@@ -12,26 +12,22 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
-import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.templates.ReplaceableParameter;
-import org.wesnoth.templates.TemplateProvider;
-import org.wesnoth.utils.Pair;
-import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.wizards.WizardProjectPageTemplate;
 import org.wesnoth.wizards.WizardTemplate;
-
 
 public class EmptyProjectNewWizard extends WizardTemplate
 {
     protected WizardProjectPageTemplate page0_;
 	protected EmptyProjectPage1 page1_;
+
+	public EmptyProjectNewWizard() {
+		setWindowTitle(Messages.EmptyProjectNewWizard_0);
+	}
 
 	@Override
 	public void addPages()
@@ -42,12 +38,6 @@ public class EmptyProjectNewWizard extends WizardTemplate
 
 		page1_ = new EmptyProjectPage1();
 		addPage(page1_);
-
-		super.addPages();
-	}
-
-	public EmptyProjectNewWizard() {
-		setWindowTitle(Messages.EmptyProjectNewWizard_0);
 	}
 
 	@Override
@@ -68,7 +58,8 @@ public class EmptyProjectNewWizard extends WizardTemplate
 				public void run(IProgressMonitor monitor)
 						throws InvocationTargetException, InterruptedException
 				{
-					createProject(monitor);
+					page0_.createProject( monitor, "empty_project",
+					        getParameters( ), page1_.getGeneratePBLFile( ) );
 					monitor.done();
 				}
 			});
@@ -80,65 +71,9 @@ public class EmptyProjectNewWizard extends WizardTemplate
 		return true;
 	}
 
-	public void createProject(IProgressMonitor monitor)
+	private List<ReplaceableParameter> getParameters( )
 	{
-		monitor.beginTask(Messages.EmptyProjectNewWizard_1, 15);
-
-		IProject currentProject = page0_.getProjectHandle();
-
-		// the project
-		if (page0_.getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
-		{
-			ProjectUtils.createWesnothProject(currentProject, null,
-					page0_.getSelectedInstallName( ), true, monitor);
-		}
-		else
-		{
-			IProjectDescription newDescription = ResourcesPlugin.getWorkspace().
-			newProjectDescription(page0_.getProjectName());
-			newDescription.setLocation(page0_.getLocationPath());
-			ProjectUtils.createWesnothProject(currentProject, newDescription,
-			        page0_.getSelectedInstallName( ), true, monitor);
-		}
-
-		monitor.worked(2);
-
-		String emptyProjectStructure = prepareTemplate("empty_project"); //$NON-NLS-1$
-		if (emptyProjectStructure == null)
-			return;
-
-		List<Pair<String, String>> files;
-		List<String> dirs;
-		Pair<List<Pair<String, String>>, List<String>> tmp =
-				TemplateProvider.getInstance().getFilesDirectories(emptyProjectStructure);
-		files = tmp.First;
-		dirs = tmp.Second;
-
-		for (Pair<String, String> file : files)
-		{
-			if (file.Second.equals("pbl") && //$NON-NLS-1$
-				page1_.getGeneratePBLFile() == false)
-				continue;
-
-			if ( file.Second.equals("build_xml") && //$NON-NLS-1$
-				 ! page0_.needsBuildXML( ) )
-				continue;
-
-			ResourceUtils.createFile(currentProject, file.First, prepareTemplate(file.Second), true);
-			monitor.worked(1);
-		}
-		for (String dir : dirs)
-		{
-			ResourceUtils.createFolder(currentProject, dir);
-			monitor.worked(1);
-		}
-
-		monitor.done();
-	}
-
-	private String prepareTemplate(String templateName)
-	{
-		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
+		List<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
 		params.add(new ReplaceableParameter("$$campaign_name", page1_.getCampaignName())); //$NON-NLS-1$
 		params.add(new ReplaceableParameter("$$author", page1_.getAuthor())); //$NON-NLS-1$
@@ -153,6 +88,6 @@ public class EmptyProjectNewWizard extends WizardTemplate
 		params.add(new ReplaceableParameter("$$project_dir_name", page0_.getProjectName())); //$NON-NLS-1$
 		params.add(new ReplaceableParameter("$$type", page1_.getType())); //$NON-NLS-1$
 
-		return TemplateProvider.getInstance().getProcessedTemplate(templateName, params);
+		return params;
 	}
 }
