@@ -81,7 +81,8 @@ if __name__ == "__main__":
     # The solution is to make the whitespace optional and assert the
     # character before the ampersand is whitespace.
     re_field_separator = '\s*(?:(?<=\s))&\s+'
-    re_record_end = '\s+\$$'
+    # Same issue as with the re_field_separator but then with '...foo & $'
+    re_record_end = '\s*(?:(?<=\s))\$$'
 
     re_variable = '([a-zA-Z]\w*)'
     re_string = '(.+?)'
