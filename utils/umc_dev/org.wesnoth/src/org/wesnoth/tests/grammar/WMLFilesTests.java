@@ -11,7 +11,6 @@ package org.wesnoth.tests.grammar;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-import org.eclipse.xtext.parser.IParseResult;
 import org.junit.Ignore;
 import org.wesnoth.tests.WMLTests;
 
@@ -125,10 +124,8 @@ public class WMLFilesTests extends WMLTests
 
         System.out.print( "\nTesting file: " + path + "..." );
 
-        IParseResult res;
         try {
-            res = getParser( ).parse( new FileReader( path ) );
-            assertEquals( false, res.hasSyntaxErrors( ) );
+            checkParsing( new FileReader( path ) );
             System.out.print( " OK" );
         }
         catch ( FileNotFoundException e ) {

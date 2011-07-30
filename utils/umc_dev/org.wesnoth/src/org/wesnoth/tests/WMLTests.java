@@ -1,6 +1,7 @@
 package org.wesnoth.tests;
 
 import java.io.File;
+import java.io.Reader;
 import java.io.StringReader;
 import java.util.List;
 
@@ -139,7 +140,29 @@ public abstract class WMLTests extends AbstractXtextTests
      */
     protected IParseResult getParseResult( String input, ParserRule entryRule )
     {
-        return getParser( ).parse( entryRule, new StringReader( input ) );
+        return getParseResult( new StringReader( input ), entryRule );
+    }
+
+    /**
+     * return the parse result for an input given a specific entry rule of the
+     * grammar
+     */
+    protected IParseResult getParseResult( Reader reader, ParserRule entryRule )
+    {
+        return getParser( ).parse( entryRule, reader );
+    }
+
+    /**
+     * check that the input can be successfully parsed given a specific entry
+     * rule of the grammar
+     */
+    protected void checkParsing( Reader reader )
+    {
+        IParseResult la = getParser( ).parse( reader );;
+        for ( INode node : la.getSyntaxErrors( ) ) {
+            System.out.println( node.getSyntaxErrorMessage( ).getMessage( ) );
+        }
+        assertEquals( false, la.hasSyntaxErrors( ) );
     }
 
     /**
@@ -150,7 +173,7 @@ public abstract class WMLTests extends AbstractXtextTests
     {
         IParseResult la = getParseResult( input, entryRule );
         for ( INode node : la.getSyntaxErrors( ) ) {
-            System.out.println( node.getSyntaxErrorMessage( ) );
+            System.out.println( node.getSyntaxErrorMessage( ).getMessage( ) );
         }
         assertEquals( input, false, la.hasSyntaxErrors( ) );
     }
