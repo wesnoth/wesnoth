@@ -152,7 +152,7 @@ protected:
 			else return *this;
 		}
 		void init () {
-			for (config::all_children_iterator i = cfg_.ordered_begin(); i != cfg_.ordered_end(); i++) {
+			for (config::all_children_iterator i = cfg_.ordered_begin(); i != cfg_.ordered_end(); ++i) {
 				if (i->key != "variables") {
 					child(i->key).init();
 				}
