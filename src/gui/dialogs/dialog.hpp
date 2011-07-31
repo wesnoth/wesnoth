@@ -241,7 +241,8 @@ protected:
 	tfield_text* register_text(const std::string& id
 			, const bool mandatory
 			, std::string (*callback_load_value) () = NULL
-			, void (*callback_save_value) (const std::string& value) = NULL);
+			, void (*callback_save_value) (const std::string& value) = NULL
+			, const bool capture_focus = false);
 
 	/**
 	 * Creates a new text field.
@@ -250,7 +251,8 @@ protected:
 	 */
 	tfield_text* register_text(const std::string& id
 			, const bool mandatory
-			, std::string& linked_variable);
+			, std::string& linked_variable
+			, const bool capture_focus = false);
 
 	/**
 	 * Creates a new text field.
@@ -264,6 +266,8 @@ protected:
 	 *
 	 * @todo Convert more functions to this new style once done drop the 2 from
 	 * the function name.
+	 *
+	 * @deprecated Use @ref register_text instead.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
 	 * @param mandatory           Is the widget mandatory or optional.

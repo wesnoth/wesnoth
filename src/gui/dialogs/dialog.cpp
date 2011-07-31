@@ -136,7 +136,8 @@ tfield_text* tdialog::register_text(
 		  const std::string& id
 		, const bool mandatory
 		, std::string (*callback_load_value) ()
-		, void (*callback_save_value) (const std::string& value))
+		, void (*callback_save_value) (const std::string& value)
+		, const bool capture_focus)
 {
 	tfield_text* field =  new tfield_text(
 			  id
@@ -144,18 +145,27 @@ tfield_text* tdialog::register_text(
 			, callback_load_value
 			, callback_save_value);
 
+	if(capture_focus) {
+		focus_ = id;
+	}
+
 	fields_.push_back(field);
 	return field;
 }
 
 tfield_text* tdialog::register_text(const std::string& id
 		, const bool mandatory
-		, std::string& linked_variable)
+		, std::string& linked_variable
+		, const bool capture_focus)
 {
 	tfield_text* field =  new tfield_text(
 			  id
 			, mandatory
 			, linked_variable);
+
+	if(capture_focus) {
+		focus_ = id;
+	}
 
 	fields_.push_back(field);
 	return field;
