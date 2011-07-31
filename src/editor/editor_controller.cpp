@@ -127,7 +127,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	theme& theme = gui().get_theme();
 	const theme::menu* default_tool_menu = NULL;
 	foreach (const theme::menu& m, theme.menus()) {
-		std::string s = m.get_id();
 		if (m.get_id() == "draw_button_editor") {
 			default_tool_menu = &m;
 			break;
