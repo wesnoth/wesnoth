@@ -556,7 +556,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		if(scenario != NULL) {
 			// Update the label
-			std::string oldlabel = gamestate.classification().label;
 			if (gamestate.classification().abbrev.empty())
 				gamestate.classification().label = (*scenario)["name"].str();
 			else {
