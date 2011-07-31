@@ -49,7 +49,7 @@ REGISTER_DIALOG(edit_label)
 tedit_label::tedit_label(std::string& label, bool& team_only)
 {
 	register_text2("label", true, label, true);
-	register_bool2("team_only_toggle", true, team_only);
+	register_bool("team_only_toggle", true, team_only);
 }
 
 }

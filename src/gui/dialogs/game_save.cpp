@@ -76,7 +76,7 @@ tgame_save_oos::tgame_save_oos(
 	register_label2("lblTitle", true, title);
 	register_label2("txtFilename", false, filename);
 	register_label2("lblMessage", true, message);
-	register_bool2("ignore_all", true, ignore_all);
+	register_bool("ignore_all", true, ignore_all);
 }
 
 } // namespace gui2
