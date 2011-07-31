@@ -36,6 +36,7 @@
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/dialogs/editor_resize_map.hpp"
 #include "gui/dialogs/editor_settings.hpp"
+#include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/dialogs/game_load.hpp"
@@ -362,6 +363,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::teditor_new_map>();
 	test<gui2::teditor_resize_map>();
 	test<gui2::teditor_settings>();
+	test<gui2::tfolder_create>();
 	test<gui2::tformula_debugger>();
 	test<gui2::tgame_delete>();
 	test<gui2::tgame_load>();
@@ -686,6 +688,16 @@ struct twrapper<gui2::teditor_settings>
 			tods.push_back(time_of_day(i));
 		}
 		return new gui2::teditor_settings(NULL, tods);
+	}
+};
+
+template<>
+struct twrapper<gui2::tfolder_create>
+{
+	static gui2::tfolder_create* create()
+	{
+		static std::string folder_name;
+		return new gui2::tfolder_create(folder_name);
 	}
 };
 
