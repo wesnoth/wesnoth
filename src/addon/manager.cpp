@@ -1256,8 +1256,6 @@ namespace {
 				infos.push_back(inf);
 			}
 
-			std::string pub_option_text, del_option_text;
-
 			foreach(const std::string& pub, publish_options) {
 				static const std::string publish_icon = "icons/icon-addon-publish.png";
 				const std::string text = _("Publish add-on: ") + pub;
