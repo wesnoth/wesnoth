@@ -525,7 +525,6 @@ bool game_controller::play_multiplayer_mode()
 					side = &faction;
 			}
 			if ((*side)["random_faction"].to_bool()) {
-				std::string side_name = (type == side_types.end() ? "default" : type->second);
 				std::cerr << "Could not find any non-random faction for side " << side_num << "\n";
 				return false;
 			}
