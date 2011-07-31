@@ -309,7 +309,7 @@ protected:
 			, const bool use_markup = false);
 
 	/** Registers a new control as image. */
-	tfield_label* register_image2(const std::string& id
+	tfield_label* register_image(const std::string& id
 			, const bool mandatory
 			, const std::string& filename)
 	{

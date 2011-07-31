@@ -33,7 +33,7 @@ ttransient_message::ttransient_message(const std::string& title
 {
 	register_label("title", true, title, title_use_markup);
 	register_label("message", true, message, message_use_markup);
-	register_image2("image", true, image);
+	register_image("image", true, image);
 }
 
 void show_transient_message(CVideo& video
