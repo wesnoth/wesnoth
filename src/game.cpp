@@ -203,7 +203,6 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 			std::cerr << SDL_GetTicks() << " Reading cached defines from: " << file << "\n";
 
 			config cfg;
-			std::string error_log;
 			scoped_istream stream = istream_file( file );
 			read( cfg, *stream );
 
@@ -233,7 +232,6 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		bool skipTerrainGFX = false;
 		// the 'core_defines_map' is the one got from data/core macros
 		preproc_map defines_map( input_macros );
-		std::string error_log;
 
 		if ( cmdline_opts.preprocess_defines ) {
 
