@@ -70,8 +70,8 @@ tsimple_item_selector::tsimple_item_selector(const std::string& title, const std
 	, ok_label_()
 	, cancel_label_()
 {
-	register_label2("title", true, title, title_uses_markup);
-	register_label2("message", true, message, message_uses_markup);
+	register_label("title", true, title, title_uses_markup);
+	register_label("message", true, message, message_uses_markup);
 }
 
 void tsimple_item_selector::pre_show(CVideo& /*video*/, twindow& window)

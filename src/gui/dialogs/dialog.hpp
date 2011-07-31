@@ -303,7 +303,7 @@ protected:
 	 * @param text                The text for the label.
 	 * @param use_markup          Whether or not use markup for the label.
 	 */
-	tfield_label* register_label2(const std::string& id
+	tfield_label* register_label(const std::string& id
 			, const bool mandatory
 			, const std::string& text
 			, const bool use_markup = false);
@@ -313,7 +313,7 @@ protected:
 			, const bool mandatory
 			, const std::string& filename)
 	{
-		return register_label2(id, mandatory, filename);
+		return register_label(id, mandatory, filename);
 	}
 
 private:

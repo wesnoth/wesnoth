@@ -101,8 +101,8 @@ teditor_resize_map::teditor_resize_map(
 {
 	register_bool("copy_edge_terrain", false, copy_edge_terrain);
 
-	register_label2("old_width", false, str_cast(width));
-	register_label2("old_height", false, str_cast(height));
+	register_label("old_width", false, str_cast(width));
+	register_label("old_height", false, str_cast(height));
 }
 
 void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)

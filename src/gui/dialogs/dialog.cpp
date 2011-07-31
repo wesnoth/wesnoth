@@ -193,7 +193,7 @@ tfield_text* tdialog::register_text2(const std::string& id
 			, callback_save_value);
 }
 
-tfield_label* tdialog::register_label2(const std::string& id
+tfield_label* tdialog::register_label(const std::string& id
 		, const bool mandatory
 		, const std::string& text
 		, const bool use_markup)

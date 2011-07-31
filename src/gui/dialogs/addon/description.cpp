@@ -79,13 +79,13 @@ REGISTER_DIALOG(addon_description)
 
 taddon_description::taddon_description(const addon_info& addon)
 {
-	register_label2("image", true, addon.icon);
-	register_label2("title", true, addon.name);
-	register_label2("version", true, addon.version);
-	register_label2("author", true, addon.author);
-	register_label2("size", true, addon.sizestr);
+	register_label("image", true, addon.icon);
+	register_label("title", true, addon.name);
+	register_label("version", true, addon.version);
+	register_label("author", true, addon.author);
+	register_label("size", true, addon.sizestr);
 	if(!addon.description.empty()) {
-		register_label2("description", true, addon.description);
+		register_label("description", true, addon.description);
 	}
 
 	std::string languages;
@@ -101,7 +101,7 @@ taddon_description::taddon_description(const addon_info& addon)
 	}
 
 	if(!languages.empty()) {
-		register_label2("translations", true, languages);
+		register_label("translations", true, languages);
 	}
 }
 

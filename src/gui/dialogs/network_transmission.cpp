@@ -65,7 +65,7 @@ tnetwork_transmission::tnetwork_transmission(
 	, pump_monitor(connection)
 	, subtitle_(subtitle)
 {
-	register_label2("title", true, title, false);
+	register_label("title", true, title, false);
 }
 
 void tnetwork_transmission::set_subtitle(const std::string& subtitle)
