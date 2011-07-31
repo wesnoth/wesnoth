@@ -91,7 +91,7 @@ void class_error_container::remove_link_errors(const std::string &link){
 
 void class_error_container::print_errors(std::ostream & s)  const{
 	for (std::vector<std::string>::const_iterator i = list_.begin();
-	i!= list_.end(); i++){
+	i!= list_.end(); ++i){
 		s << *(i);
 	}
 	error_cache_map::const_iterator i = types_.begin() ;
