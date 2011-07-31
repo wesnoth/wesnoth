@@ -68,19 +68,26 @@ void lua_ai_context::init(lua_State *L)
 void lua_ai_context::get_persistent_data(config &cfg) const
 {
 	int top = lua_gettop(L);
-
-	lua_getglobal(L, "ai");
+	
+	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_rawgeti(L, -1, num_);
+	
 	lua_getfield(L, -1, "data");
 	luaW_toconfig(L, -1, cfg);
-
+	ERR_LUA << cfg << std::endl;
+	
 	lua_settop(L, top);
 }
 
 void lua_ai_context::set_persistent_data(const config &cfg)
 {
 	int top = lua_gettop(L);
+	
+	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_rawgeti(L, -1, num_);
 
-	lua_getglobal(L, "ai");
 	luaW_pushconfig(L, cfg);
 	lua_setfield(L, -2, "data");
 
@@ -535,7 +542,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		// Aspects
 		{ "get_aggression", 		&cfun_ai_get_aggression           	},
 		{ "get_avoid", 			&cfun_ai_get_avoid			},
-		{ "get_attack_depth",		&cfun_ai_get_attack_depth		}, // { "get_", &cfun_ai_get_}, little template # TODELETE
+		{ "get_attack_depth",		&cfun_ai_get_attack_depth		},
 		{ "get_caution", 		&cfun_ai_get_caution			},
 		{ "get_grouping",		&cfun_ai_get_grouping			},
 		{ "get_leader_aggression", 	&cfun_ai_get_leader_aggression		},
