@@ -59,7 +59,7 @@ controller::controller(display& disp, const vconfig& data, const std::string& sc
 
 void controller::resolve_wml(const vconfig& cfg)
 {
-	for(vconfig::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); i++)
+	for(vconfig::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i)
 	{
 		// i->first and i->second are goddamn temporaries; do not make references
 		const std::string key = i->first;
