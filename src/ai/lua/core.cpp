@@ -75,7 +75,6 @@ void lua_ai_context::get_persistent_data(config &cfg) const
 	
 	lua_getfield(L, -1, "data");
 	luaW_toconfig(L, -1, cfg);
-	ERR_LUA << cfg << std::endl;
 	
 	lua_settop(L, top);
 }
