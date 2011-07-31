@@ -787,7 +787,6 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 {
 	std::vector<team> &teams = *resources::teams;
 
-	std::string name = cfg["name"];
 	std::string team_name = cfg["team_name"];
 	std::string user_team_name = cfg["user_team_name"];
 	std::string controller = cfg["controller"];
