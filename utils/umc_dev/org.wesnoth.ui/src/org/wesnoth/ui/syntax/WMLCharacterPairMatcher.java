@@ -71,7 +71,12 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
 
     public synchronized void computeMatchingRegion(XtextResource state, int offset)
     {
-        EObject object = WMLUtils.EObjectUtils( ).resolveElementAt( state, offset );
+        EObject object = null;
+        try {
+            WMLUtils.EObjectUtils( ).resolveElementAt( state, offset );
+        } catch ( NullPointerException e ) {
+            // fix a bug in xtext when the document has syntax errors
+        }
 
         // do nothing if we clicked the same tag
         if ( currentTag_ == object )
