@@ -197,6 +197,36 @@ public class ResourceUtils
 	}
 
 	/**
+	 * Rercursively deletes a directory
+	 * @param path The directory's path
+	 * @return True if the delete was ok, false otherwise
+	 */
+	public static boolean deleteDirectory( File path )
+	{
+	    if ( path == null || ! path.exists( ) )
+	        return false;
+
+	    if ( ! path.isDirectory( ) )
+	        return path.delete( );
+
+	    boolean res = true;
+	    for ( File file : path.listFiles( ) ) {
+            res = res && deleteDirectory( file );
+        }
+	    return res && path.delete( );
+	}
+
+	/**
+     * Rercursively deletes a directory
+     * @param path The directory's path
+     * @return True if the delete was ok, false otherwise
+     */
+    public static boolean deleteDirectory( String path )
+    {
+        return deleteDirectory(  new File( path ) );
+    }
+
+	/**
 	 * Creates a file in the specified project with the specified details
 	 * @param project the project in which the file will be created
 	 * @param fileName the filename of the file

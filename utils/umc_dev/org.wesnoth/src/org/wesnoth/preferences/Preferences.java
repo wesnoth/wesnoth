@@ -29,40 +29,45 @@ public class Preferences extends AbstractPreferenceInitializer
     protected final static Map< String, Paths > paths_ =
         new HashMap< String, Paths > ();
 
+    public static void initializeToDefault()
+    {
+        IPreferenceStore store = WesnothPlugin.getDefault().getPreferenceStore();
+        // general settings
+        store.setDefault(Constants.P_WESNOTH_EXEC_PATH, ""); //$NON-NLS-1$
+        store.setDefault(Constants.P_WESNOTH_WORKING_DIR, ""); //$NON-NLS-1$
+        store.setDefault(Constants.P_WESNOTH_USER_DIR, ""); //$NON-NLS-1$
+        store.setDefault(Constants.P_WESNOTH_WMLTOOLS_DIR, ""); //$NON-NLS-1$
+        store.setDefault(Constants.P_PYTHON_PATH, ""); //$NON-NLS-1$
+
+        // wml tools
+        store.setDefault(Constants.P_WMLINDENT_VERBOSE, true);
+        store.setDefault(Constants.P_WMLINDENT_DRYRUN, true);
+
+        store.setDefault(Constants.P_WMLLINT_DRYRUN, true);
+        store.setDefault(Constants.P_WMLLINT_SPELL_CHECK, false);
+        store.setDefault(Constants.P_WMLLINT_VERBOSE_LEVEL, 0);
+
+        store.setDefault(Constants.P_WMLSCOPE_VERBOSE_LEVEL, 0);
+        store.setDefault(Constants.P_WMLSCOPE_COLLISIONS, false);
+
+        // upload manager
+        store.setDefault(Constants.P_WAU_PASSWORD, ""); //$NON-NLS-1$
+        store.setDefault(Constants.P_WAU_VERBOSE, false);
+        store.setDefault(Constants.P_WAU_ADDRESS, "add-ons.wesnoth.org"); //$NON-NLS-1$
+        store.setDefault(Constants.P_WAU_PORT, 15002);
+
+        // advanced
+        store.setDefault(Constants.P_ADV_NO_TERRAIN_GFX, true);
+
+        // installs
+        store.setDefault(Constants.P_INST_DEFAULT_INSTALL, ""); //$NON-NLS-1$
+        store.setDefault(Constants.P_INST_INSTALL_LIST, ""); //$NON-NLS-1$
+    }
+
 	@Override
 	public void initializeDefaultPreferences()
 	{
-		IPreferenceStore store = WesnothPlugin.getDefault().getPreferenceStore();
-		// general settings
-		store.setDefault(Constants.P_WESNOTH_EXEC_PATH, ""); //$NON-NLS-1$
-		store.setDefault(Constants.P_WESNOTH_WORKING_DIR, ""); //$NON-NLS-1$
-		store.setDefault(Constants.P_WESNOTH_USER_DIR, ""); //$NON-NLS-1$
-		store.setDefault(Constants.P_WESNOTH_WMLTOOLS_DIR, ""); //$NON-NLS-1$
-		store.setDefault(Constants.P_PYTHON_PATH, ""); //$NON-NLS-1$
-
-		// wml tools
-		store.setDefault(Constants.P_WMLINDENT_VERBOSE, true);
-		store.setDefault(Constants.P_WMLINDENT_DRYRUN, true);
-
-		store.setDefault(Constants.P_WMLLINT_DRYRUN, true);
-		store.setDefault(Constants.P_WMLLINT_SPELL_CHECK, false);
-		store.setDefault(Constants.P_WMLLINT_VERBOSE_LEVEL, 0);
-
-		store.setDefault(Constants.P_WMLSCOPE_VERBOSE_LEVEL, 0);
-		store.setDefault(Constants.P_WMLSCOPE_COLLISIONS, false);
-
-		// upload manager
-		store.setDefault(Constants.P_WAU_PASSWORD, ""); //$NON-NLS-1$
-		store.setDefault(Constants.P_WAU_VERBOSE, false);
-		store.setDefault(Constants.P_WAU_ADDRESS, "add-ons.wesnoth.org"); //$NON-NLS-1$
-		store.setDefault(Constants.P_WAU_PORT, 15002);
-
-		// advanced
-		store.setDefault(Constants.P_ADV_NO_TERRAIN_GFX, true);
-
-		// installs
-		store.setDefault(Constants.P_INST_DEFAULT_INSTALL, ""); //$NON-NLS-1$
-		store.setDefault(Constants.P_INST_INSTALL_LIST, ""); //$NON-NLS-1$
+		initializeToDefault( );
 	}
 
 	/**
