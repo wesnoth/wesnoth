@@ -472,22 +472,6 @@ surface locator::load_image_sub_file() const
 	if(surf == NULL)
 		return NULL;
 
-	if(val_.loc_.valid()) {
-		SDL_Rect srcrect = create_rect(
-				((tile_size*3) / 4) * val_.loc_.x
-				, tile_size * val_.loc_.y + (tile_size / 2) * (val_.loc_.x % 2)
-				, tile_size
-				, tile_size);
-
-		if(val_.center_x_ >= 0 && val_.center_y_>= 0){
-			srcrect.x += surf->w/2 - val_.center_x_;
-			srcrect.y += surf->h/2 - val_.center_y_;
-		}
-
-		surface cut(cut_surface(surf, srcrect));
-		surf = mask_surface(cut, get_hexmask());
-	}
-
 	modification_queue mods = modification::decode(val_.modifications_);
 
 	while(!mods.empty()) {
@@ -496,6 +480,22 @@ surface locator::load_image_sub_file() const
 
 		surf = (*mod)(surf);
 		delete mod;
+	}
+	
+	if(val_.loc_.valid()) {
+		SDL_Rect srcrect = create_rect(
+									   ((tile_size*3) / 4) * val_.loc_.x
+									   , tile_size * val_.loc_.y + (tile_size / 2) * (val_.loc_.x % 2)
+									   , tile_size
+									   , tile_size);
+		
+		if(val_.center_x_ >= 0 && val_.center_y_>= 0){
+			srcrect.x += surf->w/2 - val_.center_x_;
+			srcrect.y += surf->h/2 - val_.center_y_;
+		}
+		
+		surface cut(cut_surface(surf, srcrect));
+		surf = mask_surface(cut, get_hexmask());
 	}
 
 	return surf;
