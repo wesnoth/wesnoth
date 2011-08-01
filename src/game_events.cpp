@@ -1820,57 +1820,60 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		}
 	}
 
-	// Use (x,y) iteration, because firing events ruins unit_map iteration
-	for (map_location loc(0,0); loc.x < resources::game_map->w(); ++loc.x)
-	{
-		for (loc.y = 0; loc.y < resources::game_map->h(); ++loc.y)
-		{
-			unit_map::iterator un = resources::units->find(loc);
-			if (un != resources::units->end() && game_events::unit_matches_filter(*un, cfg))
-			{
-				bool fire_event = false;
-				game_events::entity_location death_loc(*un);
-				if(!secondary_unit) {
-					killer_loc = game_events::entity_location(*un);
-				}
-				if (cfg["fire_event"].to_bool())
-				{
-					// Prevent infinite recursion of 'die' events
-					fire_event = true;
-					recursion_preventer_ptr recursion_prevent;
+	//Find all the dead units first, because firing events ruins unit_map iteration
+	std::vector<unit *> dead_men_walking;
+	// unit_map::iterator uit(resources::units->begin()), uend(resources::units->end());
+	// for(;uit!=uend; ++uit){
+	foreach(unit & u, *resources::units){
+		if(game_events::unit_matches_filter(u, cfg)){
+			dead_men_walking.push_back(&u);
+		}
+	}
 
-					if (event_info.loc1 == death_loc && (event_info.name == "die" || event_info.name == "last breath"))
+	foreach(unit * un, dead_men_walking) {
+		map_location loc(un->get_location());
+		bool fire_event = false;
+		game_events::entity_location death_loc(*un);
+		if(!secondary_unit) {
+			killer_loc = game_events::entity_location(*un);
+		}
+		if (cfg["fire_event"].to_bool())
+			{
+				// Prevent infinite recursion of 'die' events
+				fire_event = true;
+				recursion_preventer_ptr recursion_prevent;
+
+				if (event_info.loc1 == death_loc && (event_info.name == "die" || event_info.name == "last breath"))
 					{
 						recursion_prevent.reset(new recursion_preventer(death_loc));
 
 						if(recursion_prevent->too_many_recursions())
-						{
-							fire_event = false;
+							{
+								fire_event = false;
 
-							ERR_NG << "tried to fire 'die' or 'last breath' event on primary_unit inside its own 'die' or 'last breath' event with 'first_time_only' set to false!\n";
-						}
+								ERR_NG << "tried to fire 'die' or 'last breath' event on primary_unit inside its own 'die' or 'last breath' event with 'first_time_only' set to false!\n";
+							}
 					}
-				}
-				if (fire_event) {
-					game_events::fire("last breath", death_loc, killer_loc);
-				}
-				if (cfg["animate"].to_bool()) {
-					resources::screen->scroll_to_tile(loc);
-					if (un.valid()) {
-						unit_display::unit_die(loc, *un);
-					}
-				}
-				if (fire_event)
-				{
-					game_events::fire("die", death_loc, killer_loc);
-					un = resources::units->find(death_loc);
-					if (un != resources::units->end() && death_loc.matches_unit(*un)) {
-						resources::units->erase(un);
-					}
-				}
-				else resources::units->erase(un);
+			}
+		if (fire_event) {
+			game_events::fire("last breath", death_loc, killer_loc);
+		}
+		if (cfg["animate"].to_bool()) {
+			resources::screen->scroll_to_tile(loc);
+			unit_map::iterator iun = resources::units->find(loc);
+			if (iun != resources::units->end() && iun.valid()) {
+				unit_display::unit_die(loc, *iun);
 			}
 		}
+		if (fire_event) {
+			game_events::fire("die", death_loc, killer_loc);
+			unit_map::iterator iun = resources::units->find(death_loc);
+			if (iun != resources::units->end() && death_loc.matches_unit(*iun)) {
+				resources::units->erase(iun);
+			}
+		}
+		else resources::units->erase(loc);
+
 	}
 
 	// If the filter doesn't contain positional information,
