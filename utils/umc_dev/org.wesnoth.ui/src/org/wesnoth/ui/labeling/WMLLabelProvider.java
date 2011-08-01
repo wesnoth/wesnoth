@@ -13,6 +13,7 @@ import java.util.Locale;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtext.ui.editor.model.XtextDocument;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
 import com.google.inject.Inject;
@@ -25,6 +26,7 @@ import com.google.inject.Inject;
 public class WMLLabelProvider extends DefaultEObjectLabelProvider
 {
 	private static WMLLabelProvider instance_;
+
 	@Inject
 	public WMLLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
@@ -50,5 +52,15 @@ public class WMLLabelProvider extends DefaultEObjectLabelProvider
 		if (instance_ == null)
 			return null;
 		return instance_.getImage(fileName);
+	}
+
+	@Override
+	public String getText( Object element )
+	{
+	    if ( element instanceof XtextDocument ) {
+	        return "Document";
+	    }
+
+        return super.getText( element );
 	}
 }

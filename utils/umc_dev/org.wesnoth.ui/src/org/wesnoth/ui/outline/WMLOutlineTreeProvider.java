@@ -3,12 +3,21 @@
 */
 package org.wesnoth.ui.outline;
 
+import org.wesnoth.wml.WMLRoot;
+
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 
 /**
  * customization of the default outline structure
- * 
+ *
  */
 public class WMLOutlineTreeProvider extends DefaultOutlineTreeProvider {
-	
+	@Override
+	protected Object _text( Object modelElement )
+	{
+	    if ( modelElement instanceof WMLRoot ) {
+	        return "Root";
+	    }
+	    return super._text( modelElement );
+	}
 }
