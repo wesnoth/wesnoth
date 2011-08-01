@@ -266,6 +266,41 @@
             </or>
          </filterExpression>
       </commonFilter>
+      <commonWizard
+            type="new"
+            wizardId="org.wesnoth.wizards.NewConfigFileWizard">
+         <enablement></enablement>
+      </commonWizard>
+      <commonWizard
+            type="new"
+            wizardId="org.wesnoth.wizards.emptyProjectWizard">
+         <enablement></enablement>
+      </commonWizard>
+      <commonWizard
+            type="new"
+            wizardId="org.wesnoth.wizards.CampaignNewWizard">
+         <enablement></enablement>
+      </commonWizard>
+      <commonWizard
+            type="new"
+            wizardId="org.wesnoth.wizards.ScenarioNewWizard">
+         <enablement></enablement>
+      </commonWizard>
+      <commonWizard
+            type="new"
+            wizardId="org.wesnoth.wizards.eraNewWizard">
+         <enablement></enablement>
+      </commonWizard>
+      <commonWizard
+            type="new"
+            wizardId="org.wesnoth.wizards.factionNewWizard">
+         <enablement></enablement>
+      </commonWizard>
+      <commonWizard
+            type="new"
+            wizardId="org.wesnoth.wizards.wizardLauncher">
+         <enablement></enablement>
+      </commonWizard>
    </extension>
    <extension
          point="org.eclipse.ui.navigator.viewer">
