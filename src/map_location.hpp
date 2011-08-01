@@ -24,6 +24,7 @@ class variable_set;
 #include <string>
 #include <vector>
 #include <set>
+#include <boost/unordered_map.hpp>
 
 #define MAX_MAP_AREA	65536
 
@@ -98,6 +99,8 @@ struct map_location {
 	static DIRECTION get_opposite_dir(DIRECTION d);
 
 	static const map_location null_location;
+
+	friend std::size_t hash_value(map_location const &a);
 };
 
 /** Function which tells if two locations are adjacent. */
@@ -137,5 +140,11 @@ void write_locations(const std::vector<map_location>& locs, config& cfg);
 std::ostream &operator<<(std::ostream &s, map_location const &l);
 /** Dumps a vector of positions on a stream, for debug purposes. */
 std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v);
+
+/** Inlined bodies **/
+inline std::size_t hash_value(map_location  const & a){ 
+	boost::hash<size_t> h;
+	return h( (a.x << 16) ^ a.y );
+}
 
 #endif

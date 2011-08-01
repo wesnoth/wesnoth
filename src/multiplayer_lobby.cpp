@@ -582,7 +582,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		} else {
 			games_.back().time_limit = "";
 		}
-		games_.back().xp = game["experience_modifier"] + "%";
+		games_.back().xp = game["experience_modifier"].str() + "%";
 		games_.back().observers = game["observer"].to_bool(true);
 		games_.back().shuffle_sides = game["shuffle_sides"].to_bool(true);
 		games_.back().verified = verified;
