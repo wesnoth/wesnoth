@@ -22,18 +22,18 @@ public class Constants
 		Constants.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/"; //$NON-NLS-1$
 	public static final String PLUGIN_ID  = "org.wesnoth"; //$NON-NLS-1$
 
+    public static final String MACHINE_OS =
+        System.getProperty("os.name").toLowerCase(Locale.ENGLISH); //$NON-NLS-1$
 	/**
 	 * The boolean value whether this machine is running windows or not
 	 */
 	public static final boolean IS_WINDOWS_MACHINE =
-		System.getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("windows"); //$NON-NLS-1$ //$NON-NLS-2$
+	        MACHINE_OS.contains("windows"); //$NON-NLS-1$ //$NON-NLS-2$
 	/**
 	 * The boolean value whether this machine is running Machintosh or not
 	 */
 	public static final boolean IS_MAC_MACHINE =
-		System.getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("mac"); //$NON-NLS-1$ //$NON-NLS-2$
-	public static final String MACHINE_OS =
-		System.getProperty("os.name").toLowerCase(Locale.ENGLISH); //$NON-NLS-1$
+	        MACHINE_OS.contains("mac"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/** Preferences Constants **/
 	public static final String	P_WESNOTH_EXEC_PATH     = "wesnoth_exec_path"; //$NON-NLS-1$

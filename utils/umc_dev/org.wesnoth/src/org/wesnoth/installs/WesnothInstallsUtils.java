@@ -22,6 +22,7 @@ import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.GUIUtils;
+import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
 public class WesnothInstallsUtils
@@ -79,6 +80,9 @@ public class WesnothInstallsUtils
      */
     public static String getInstallNameForResource( String resourcePath )
     {
+        if ( StringUtils.isNullOrEmpty( resourcePath ) )
+            return "";
+
         return getInstallNameForResource( ResourcesPlugin.getWorkspace( ).getRoot( ).
                 findMember( resourcePath ) );
     }
@@ -90,7 +94,7 @@ public class WesnothInstallsUtils
      */
     public static String getInstallNameForResource( IResource resource )
     {
-        if ( resource == null )
+        if ( resource == null || ! resource.exists( ) )
             return ""; //$NON-NLS-1$
 
         return ProjectUtils.getCacheForProject( resource.getProject( ) ).getInstallName( );
