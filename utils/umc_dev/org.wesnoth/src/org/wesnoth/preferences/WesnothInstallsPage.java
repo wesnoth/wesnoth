@@ -524,7 +524,6 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                 wesnothExecutableField_.getStringValue( ).isEmpty( ) &&
                 wesnothUserDirField_.getStringValue( ).isEmpty( ) &&
                 wesnothWorkingDirField_.getStringValue( ).isEmpty( ) &&
-                cmbVersion_.getText( ).isEmpty( ) &&
                 txtInstallName_.getText( ).isEmpty( );
     }
 
