@@ -669,6 +669,12 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 	{
 		safe_clear();
 	}
+	else if(type=="refresh")
+	{
+		safe_clear();
+		foreach(net_cmd const& sub_cmd, cmd.child_range("net_cmd"))
+			execute_net_cmd(sub_cmd);
+	}
 	else
 	{
 		ERR_WB << "side_actions::execute_network_command(): received invalid type!\n";
@@ -712,6 +718,17 @@ side_actions::net_cmd side_actions::make_net_cmd_clear() const
 {
 	net_cmd result;
 	result["type"] = "clear";
+	return result;
+}
+side_actions::net_cmd side_actions::make_net_cmd_refresh() const
+{
+	net_cmd result;
+	result["type"] = "refresh";
+
+	const_iterator end = this->end();
+	for(const_iterator itor=begin(); itor!=end; ++itor)
+		result.add_child("net_cmd",make_net_cmd_insert(itor,*itor));
+
 	return result;
 }
 

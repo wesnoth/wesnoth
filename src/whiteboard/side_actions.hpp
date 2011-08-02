@@ -225,6 +225,7 @@ public:
 	net_cmd make_net_cmd_remove(const_iterator const& pos) const;
 	net_cmd make_net_cmd_bump_later(const_iterator const& pos) const;
 	net_cmd make_net_cmd_clear() const;
+	net_cmd make_net_cmd_refresh() const;
 
 private:
 
