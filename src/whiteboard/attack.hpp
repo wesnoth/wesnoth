@@ -56,20 +56,20 @@ public:
 	virtual config to_config() const;
 
 private:
-		void init();
+	void init();
 
-		virtual void do_hide() {invalidate();}
-		virtual void do_show() {invalidate();}
+	virtual void do_hide() {invalidate();}
+	virtual void do_show() {invalidate();}
 
-		///invalidates the move-destination and attack-target hexes
-		void invalidate();
+	///invalidates the move-destination and attack-target hexes
+	void invalidate();
 
-		///the target of the attack
-		map_location target_hex_;
+	///the target of the attack
+	map_location target_hex_;
 
-		int weapon_choice_;
-		int attack_movement_cost_;
-		int temp_movement_subtracted_;
+	int weapon_choice_;
+	int attack_movement_cost_;
+	int temp_movement_subtracted_;
 };
 
 /** Dumps an attack on a stream, for debug purposes. */
