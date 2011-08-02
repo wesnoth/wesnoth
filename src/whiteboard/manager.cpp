@@ -413,10 +413,10 @@ namespace
 
 	private:
 		//"Inherited" from visitor_base
-		bool visit(size_t team_index, team&, side_actions&, side_actions::iterator itor)
+		bool visit(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
 			{ (*itor)->draw_hex(hex_);   return true; }
 		//using default pre_visit_team()
-		bool post_visit_team(size_t team_index, team&, side_actions& sa)
+		bool post_visit_team(size_t /*team_index*/, team&, side_actions& sa)
 			{ sa.get_numbers(hex_,numbers_);   return true; }
 
 		map_location const& hex_;
