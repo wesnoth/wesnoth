@@ -12,13 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
@@ -28,6 +21,14 @@ import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 
 public class ProjectUtils
 {
@@ -167,6 +168,9 @@ public class ProjectUtils
 		                TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true); //$NON-NLS-1$
 		    }
 		    monitor.worked(10);
+
+		    // save the install name
+		    getCacheForProject( handle ).setInstallName( installName );
         }
         catch (CoreException e) {
             Logger.getInstance().logException(e);
