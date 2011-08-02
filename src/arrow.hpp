@@ -28,7 +28,7 @@ typedef std::vector<map_location> arrow_path_t;
 /**
  * Arrows destined to be drawn on the map. Created for the whiteboard system.
  */
-class arrow {
+class arrow : private boost::noncopyable {
 
 public:
 
