@@ -8,15 +8,6 @@
  *******************************************************************************/
 package org.wesnoth.ui.navigation;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.text.Region;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
-import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkAcceptor;
 import org.wesnoth.Logger;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
@@ -25,7 +16,17 @@ import org.wesnoth.preprocessor.Define;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.utils.WMLUtils;
+import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLMacroCall;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.text.Region;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
+import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkAcceptor;
 
 public class WMLHyperlinkHelper extends HyperlinkHelper
 {
@@ -104,15 +105,10 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
     private void createMapHyperlink( Paths paths, EObject object,
             IHyperlinkAcceptor acceptor, ICompositeNode node )
     {
-        INode equalNode = node.getPreviousSibling( );
+        EObject container = object.eContainer( );
 
-        if ( equalNode == null ||
-             !( "=".equals( equalNode.getText( ) ) ) )
-            return;
-
-        INode previousNode = equalNode.getPreviousSibling( );
-        if ( previousNode == null ||
-            ! ( "map_data".equals( previousNode.getText( ) ) ) )
+        if ( !( container instanceof WMLKey ) ||
+             !( ( WMLKey ) container ).getName( ).equals( "map_data" ) )
             return;
 
         String mapLocation = node.getText();
