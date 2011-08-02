@@ -110,7 +110,7 @@ public:
 	/**
 	 * Empties the action queue.
 	 */
-	void clear() { actions_.clear(); }
+	void clear() { safe_clear(); }
 
 	/**
 	 * Queues a move to be executed last
@@ -230,6 +230,7 @@ private:
 
 	bool validate_iterator(iterator position) { return position >= begin() && position < end(); }
 	action_queue::iterator safe_erase(action_queue::iterator const& itor) { action_ptr action = *itor; return actions_.erase(itor); }
+	void safe_clear() { action_queue temp = actions_; return actions_.clear(); }
 
 	action_queue actions_;
 	size_t team_index_;

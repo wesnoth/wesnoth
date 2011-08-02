@@ -667,7 +667,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 	}
 	else if(type=="clear")
 	{
-		actions_.clear();
+		safe_clear();
 	}
 	else
 	{
