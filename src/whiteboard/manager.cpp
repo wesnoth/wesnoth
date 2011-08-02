@@ -343,6 +343,35 @@ static void draw_numbers(map_location const& hex, side_actions::numbers_t number
 	}
 }
 
+namespace
+{
+	//Only used by manager::draw_hex()
+	struct draw_visitor
+		: private visitor_base<draw_visitor>
+	{
+		friend class visitor_base<draw_visitor>;
+
+	public:
+		draw_visitor(map_location const& hex, side_actions::numbers_t& numbers)
+				: hex_(hex)
+				, numbers_(numbers)
+			{}
+
+		void operator()() {visit_all();}
+
+	private:
+		//"Inherited" from visitor_base
+		bool visit(size_t team_index, team&, side_actions&, side_actions::iterator itor)
+			{ (*itor)->draw_hex(hex_);   return true; }
+		//using default pre_visit_team()
+		bool post_visit_team(size_t team_index, team&, side_actions& sa)
+			{ sa.get_numbers(hex_,numbers_);   return true; }
+
+		map_location const& hex_;
+		side_actions::numbers_t& numbers_;
+	};
+}
+
 void manager::draw_hex(const map_location& hex)
 {
 	if (!wait_for_side_init_)
@@ -350,17 +379,7 @@ void manager::draw_hex(const map_location& hex)
 		//Info about the action numbers to be displayed on screen.
 		side_actions::numbers_t numbers;
 
-		//Draw graphics from every team's actions, beginning with the current_team.
-		size_t current_team = resources::controller->current_side() - 1;
-		size_t num_teams = resources::teams->size();
-		for(size_t iteration = 0; iteration < num_teams; ++iteration)
-		{
-			size_t team_index = (current_team+iteration) % num_teams;
-			side_actions& sa = *resources::teams->at(team_index).get_side_actions();
-			foreach(action_ptr act, sa)
-				act->draw_hex(hex);
-			sa.get_numbers(hex,numbers);
-		}
+		draw_visitor(hex,numbers)();
 
 		draw_numbers(hex,numbers); //< helper fcn
 	}

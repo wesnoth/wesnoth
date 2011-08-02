@@ -63,31 +63,18 @@ void mapbuilder_visitor::reset_moves()
 
 void mapbuilder_visitor::build_map()
 {
-	mode_ = BUILD_PLANNED_MAP;
-
-	size_t current_team = resources::controller->current_side() - 1;
-
 	//Temporarily reset all units' moves to full EXCEPT for the ones on current_team.
 	reset_moves();
 
-	//Apply modifiers from every team's action_queue, ...
-	size_t viewing_team = viewer_team();
-	size_t num_teams = resources::teams->size();
-	for(size_t iteration = 0; iteration < num_teams; ++iteration)
-	{
-		//... beginning with the current_team, ...
-		size_t team_index = (current_team+iteration) % num_teams;
+	mode_ = BUILD_PLANNED_MAP;
+	visit_all(); //< Inherited from visitor_base
+}
 
-		foreach(action_ptr act, *resources::teams->at(team_index).get_side_actions())
-		{
-			if(act->is_valid())
-				act->accept(*this);
-		}
-
-		//... and ending with the viewer_team.
-		if(team_index == viewing_team)
-			break;
-	}
+bool mapbuilder_visitor::visit(size_t, team&, side_actions&, side_actions::iterator itor)
+{
+	if((*itor)->is_valid())
+		(*itor)->accept(*this);
+	return true;
 }
 
 void mapbuilder_visitor::visit_move(move_ptr move)

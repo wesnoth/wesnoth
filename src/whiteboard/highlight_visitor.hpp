@@ -37,8 +37,12 @@ namespace wb
  * Visitor that handles highlighting planned actions as you hover over them,
  * and determine the right target for contextual execution.
  */
-class highlight_visitor: public wb::visitor
+class highlight_visitor
+	: private visitor
+	, private visitor_base<highlight_visitor>
 {
+	friend class visitor_base<highlight_visitor>;
+
 public:
 	highlight_visitor(const unit_map& unit_map, side_actions_ptr side_actions);
 	virtual ~highlight_visitor();
@@ -66,6 +70,11 @@ private:
 	virtual void visit_recruit(recruit_ptr recruit);
 	virtual void visit_recall(recall_ptr recall);
 	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
+
+	//"Inherited" from visitor_base
+	bool visit(size_t team_index, team&, side_actions&, side_actions::iterator);
+	using visitor::pre_visit_team;
+	using visitor::post_visit_team;
 
 	void unhighlight();
 

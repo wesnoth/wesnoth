@@ -577,7 +577,6 @@ set(wesnoth-main_SRC
 	whiteboard/suppose_dead.cpp
 	whiteboard/utility.cpp
 	whiteboard/validate_visitor.cpp
-	whiteboard/visitor.cpp
 	widgets/combo.cpp
 	widgets/combo_drag.cpp
 	widgets/drop_target.cpp

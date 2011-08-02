@@ -42,6 +42,7 @@ namespace wb
  * Derived classes should declare visitor_base<Derived> as a friend, or
  *   else make the overridden functions public.
  * I recommend making the inheritance private or protected.
+ * See class visitor for an example.
  */
 template<typename Derived>
 class visitor_base
@@ -108,19 +109,31 @@ private:
  * Abstract base class for all the visitors (cf GoF Visitor Design Pattern)
  * the whiteboard uses.
  */
-class visitor : private boost::noncopyable
+class visitor
+	: private boost::noncopyable
+	, private visitor_base<visitor>
 {
+	friend class visitor_base<visitor>;
+
 	friend class move;
 	friend class attack;
 	friend class recruit;
 	friend class recall;
 	friend class suppose_dead;
 
+public:
+	using visitor_base<visitor>::visit_all;
+	using visitor_base<visitor>::reverse_visit_all;
+
 protected:
 	visitor() {}
 	virtual ~visitor() {} //Not intended for polymorphic deletion
 
-	void visit_all_actions(); //< weird utility function for derived classes
+	//"Inherited" from visitor_base
+	bool visit(size_t, team&, side_actions&, side_actions::iterator itor)
+		{ (*itor)->accept(*this);   return true; }
+	using visitor_base<visitor>::pre_visit_team;
+	using visitor_base<visitor>::post_visit_team;
 
 	virtual void visit_move(move_ptr move) = 0;
 	virtual void visit_attack(attack_ptr attack) = 0;

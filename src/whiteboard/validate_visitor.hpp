@@ -34,8 +34,12 @@ namespace wb
  *   * actions are evaluated for validity along the way.
  *   * Some invalid actions are deleted.
  */
-class validate_visitor: private mapbuilder_visitor
+class validate_visitor
+	: private mapbuilder_visitor
+	, private visitor_base<validate_visitor>
 {
+	friend class visitor_base<validate_visitor>;
+
 public:
 	explicit validate_visitor(unit_map& unit_map);
 	virtual ~validate_visitor();
@@ -54,6 +58,13 @@ private:
 	enum VALIDITY {VALID, OBSTRUCTED, WORTHLESS};
 	VALIDITY evaluate_move_validity(move_ptr);
 	bool no_previous_invalids(side_actions::iterator const&);
+
+	//"Inherited" from visitor_base
+	bool visit(size_t team_index, team& t, side_actions& sa, side_actions::iterator itor)
+		{ arg_itor_=itor;   return visitor::visit(team_index,t,sa,itor); }
+	using mapbuilder_visitor::pre_visit_team;
+	using visitor_base<validate_visitor>::post_visit_team;
+	using visitor_base<validate_visitor>::visit_all;
 
 	side_actions& viewer_actions_;
 

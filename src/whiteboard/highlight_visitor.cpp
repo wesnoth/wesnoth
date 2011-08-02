@@ -378,25 +378,20 @@ void highlight_visitor::find_main_highlight()
 	// viewing side assignments after victory
 	//assert(side_actions_->team_index() == resources::screen->viewing_team());
 
-	//Iterate backwards over all actions from all teams until the main highlight is found
-	size_t current_team = resources::controller->current_side() - 1;
-	size_t num_teams = resources::teams->size();
-	for(size_t iteration = 0; iteration < num_teams; ++iteration)
+	//Find the main highlight -- see visit(), below.
+	visitor_base<highlight_visitor>::reverse_visit_all();
+}
+
+//Used only by find_main_highlight()
+bool highlight_visitor::visit(size_t, team&, side_actions&, side_actions::iterator itor)
+{
+	(*itor)->accept(*this);
+	if (action_ptr main = main_highlight_.lock())
 	{
-		size_t team_index = (current_team+num_teams-1-iteration) % num_teams;
-		side_actions& sa = *resources::teams->at(team_index).get_side_actions();
-		side_actions::reverse_iterator rend = sa.rend();
-		side_actions::reverse_iterator action = sa.rbegin();
-		for (; action != rend; ++action )
-		{
-			(*action)->accept(*this);
-			if (action_ptr main = main_highlight_.lock())
-			{
-				owner_unit_ = main->get_unit();
-				return;
-			}
-		}
+		owner_unit_ = main->get_unit();
+		return false;
 	}
+	return true;
 }
 
 void highlight_visitor::find_secondary_highlights()
@@ -404,7 +399,7 @@ void highlight_visitor::find_secondary_highlights()
 	assert(owner_unit_);
 	assert(secondary_highlights_.empty());
 	mode_ = FIND_SECONDARY_HIGHLIGHTS;
-	visit_all_actions();
+	visitor::visit_all(); //< Standard visitation procedure.
 }
 
 } // end namespace wb

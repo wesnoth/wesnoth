@@ -22,9 +22,9 @@
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
-#include "visitor.hpp"
-
 #include "action.hpp"
+#include "utility.hpp"
+#include "visitor.hpp"
 
 struct unit_movement_resetter;
 
@@ -35,8 +35,11 @@ namespace wb
  * Visitor that collects and applies unit_map modifications from the actions it visits
  * and reverts all changes on destruction.
  */
-class mapbuilder_visitor: public visitor
+class mapbuilder_visitor
+	: protected visitor
+	, private visitor_base<mapbuilder_visitor>
 {
+	friend class visitor_base<mapbuilder_visitor>;
 
 public:
 	mapbuilder_visitor(unit_map& unit_map);
@@ -56,11 +59,19 @@ protected:
 	virtual void visit_recall(recall_ptr recall);
 	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
 
+	//"Inherited" from visitor_base
+	bool visit(size_t team_index, team&, side_actions&, side_actions::iterator);
+	using visitor::pre_visit_team;
+	bool post_visit_team(size_t team_index, team&, side_actions&)
+		{return team_index != viewer_team();} //< Stop after visiting viewer_team
+
 	//Helper fcn: Temporarily resets all units' moves to max EXCEPT for
 	//the ones controlled by the player whose turn it is currently.
 	void reset_moves();
 
 private:
+	void visit_all() {visitor_base<mapbuilder_visitor>::visit_all();}
+
 	void restore_normal_map();
 
 	unit_map& unit_map_;

@@ -56,22 +56,10 @@ bool validate_visitor::validate_actions()
 	//Temporarily reset all units' moves to full EXCEPT for the ones on viewer_side().
 	reset_moves(); //< protected fcn inherited from mapbuilder_visitor
 
-	//Apply modifiers from every team's action_queue, beginning with the current_team.
-	size_t current_team = resources::controller->current_side() - 1;
-	size_t num_teams = resources::teams->size();
-	for(size_t iteration = 0; iteration < num_teams; ++iteration)
-	{
-		size_t team_index = (current_team+iteration) % num_teams;
-
-		side_actions& actions = *resources::teams->at(team_index).get_side_actions();
-		arg_itor_ = actions.begin(); //< Parameter for the visit_***() fcns
-		side_actions::iterator end  = actions.end();
-		for(; arg_itor_!=end; ++arg_itor_)
-			(*arg_itor_)->accept(*this);
-	}
+	visit_all();
 
 	//FIXME: by reverse iterating this can be done in a more efficiant way
-	// by using the iterator returned by remove_action it could even be done in the loop above
+	// by using the iterator returned by remove_action it could even be done in visit_all above
 	if (!actions_to_erase_.empty())
 	{
 		int side_actions_size_before = viewer_actions_.actions().size();
