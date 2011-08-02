@@ -153,7 +153,6 @@ public:
 	/// Determines whether or not the undo_stack should be cleared.
 	///@todo Only when there are networked allies and we have set a preferences option
 	bool should_clear_undo() const {return true;}
-	bool active_and_should_clear_undo() const {return manager::active_ && should_clear_undo();}
 	/// Updates shroud and clears the undo_stack and redo_stack.
 	void clear_undo();
 

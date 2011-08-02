@@ -2656,7 +2656,9 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 	if(undo_stack != NULL) {
 		if(event_mutated || should_clear_stack || maybe_ui == units.end()
-				|| resources::whiteboard->active_and_should_clear_undo()) {
+				|| (resources::whiteboard->is_active()
+					&& resources::whiteboard->should_clear_undo()))
+		{
 			apply_shroud_changes(*undo_stack, team_num + 1);
 			undo_stack->clear();
 		} else {
