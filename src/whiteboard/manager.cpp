@@ -79,6 +79,7 @@ static void print_to_chat(const std::string& title, const std::string& message)
 
 void manager::print_help_once()
 {
+#if 0
 	if (!print_help_once_)
 		return;
 	else
@@ -113,6 +114,7 @@ void manager::print_help_once()
 		hotkeys << "Move later: " << hk_bump_down.get_name() << ", ";
 	}
 	print_to_chat("HOTKEYS:", hotkeys.str() + "\n");
+#endif
 }
 
 void manager::set_active(bool active)
