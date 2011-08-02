@@ -245,6 +245,58 @@ void manager::on_finish_side_turn()
 	LOG_WB << "on_finish_side_turn()\n";
 }
 
+static void hide_all_plans()
+{
+	foreach(team& t, *resources::teams)
+		t.get_side_actions()->hide();
+}
+
+void manager::on_viewer_change(size_t team_index)
+{
+	//We don't control the "viewing" side ... we're probably an observer
+	if(!resources::teams->at(team_index).is_human())
+		hide_all_plans();
+	else //< normal circumstance
+	{
+		foreach(team& t, *resources::teams)
+		{
+			if(t.is_enemy(team_index+1))
+				t.get_side_actions()->hide();
+			else
+				t.get_side_actions()->show();
+		}
+	}
+}
+
+void manager::on_change_controller(int side, team& t)
+{
+	wb::side_actions& sa = *t.get_side_actions();
+	if(t.is_human()) //< we own this side now
+	{
+		//tell everyone to clear this side's actions -- we're starting anew
+		resources::whiteboard->queue_net_cmd(sa.team_index(),sa.make_net_cmd_clear());
+		sa.clear();
+		//refresh the hidden_ attribute of every team's side_actions
+		on_viewer_change(viewer_team());
+	}
+	else if(t.is_ai() || t.is_network_ai()) //< no one owns this side anymore
+		sa.clear(); //< clear its plans away -- the ai doesn't plan ... yet
+	else if(t.is_network()) //< Another client is taking control of the side
+	{
+		if(side==viewer_side()) //< They're taking OUR side away!
+			hide_all_plans(); //< give up knowledge of everyone's plans, in case we became an observer
+
+		//tell them our plans -- they may not have received them up to this point
+		size_t num_teams = resources::teams->size();
+		for(size_t i=0; i<num_teams; ++i)
+		{
+			team& local_team = resources::teams->at(i);
+			if(local_team.is_human() && !local_team.is_enemy(side))
+				resources::whiteboard->queue_net_cmd(i,local_team.get_side_actions()->make_net_cmd_refresh());
+		}
+	}
+}
+
 bool manager::current_side_has_actions()
 {
 	return !current_side_actions()->empty();

@@ -30,6 +30,7 @@
 #include <boost/noncopyable.hpp>
 
 class CKey;
+class team;
 
 namespace pathfind {
 	struct marked_route;
@@ -74,6 +75,8 @@ public:
 	void on_mouseover_change(const map_location& hex);
 	void on_deselect_hex(){ erase_temp_move();}
 	void on_gamestate_change();
+	void on_viewer_change(size_t team_index);
+	void on_change_controller(int side, team& t);
 
 	/// Called by replay_network_sender to add whiteboard data to the outgoing network packets
 	void send_network_data();

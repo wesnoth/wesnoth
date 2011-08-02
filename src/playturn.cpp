@@ -179,6 +179,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				restart = false;
 			}
 
+			resources::whiteboard->on_change_controller(side,tm);
+
 			resources::screen->labels().recalculate_labels();
 
 			return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
