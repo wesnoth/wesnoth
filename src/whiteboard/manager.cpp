@@ -309,8 +309,7 @@ void manager::set_real_unit_map()
 static void draw_numbers(map_location const& hex, side_actions::numbers_t numbers)
 {
 	std::vector<int>& numbers_to_draw = numbers.numbers_to_draw;
-	///@todo Use team_numbers to color the numbers appropriately.
-//	std::vector<size_t>& team_numbers = numbers.team_numbers;
+	std::vector<size_t>& team_numbers = numbers.team_numbers;
 	int& main_number = numbers.main_number;
 	std::set<size_t>& secondary_numbers = numbers.secondary_numbers;
 
@@ -334,8 +333,7 @@ static void draw_numbers(map_location const& hex, side_actions::numbers_t number
 		else if (secondary_numbers.find(i)!=secondary_numbers.end()) font_size = 17;
 		else font_size = 15;
 
-		///@todo Use resources::teams->at(team_numbers[i]).color() to determine color
-		SDL_Color color; color.r = 255; color.g = 255; color.b = 0; //for now, always yellow
+		SDL_Color color = team::get_side_color(static_cast<int>(team_numbers[i]+1));
 		const double x_in_hex = x_origin + x_offset;
 		const double y_in_hex = y_origin + y_offset;
 		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
