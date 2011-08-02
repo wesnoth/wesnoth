@@ -32,8 +32,12 @@ class arrow {
 
 public:
 
-	arrow();
+	arrow(bool hidden = false);
 	virtual ~arrow();
+
+	///Sets the arrow's visibility
+	void hide();
+	void show();
 
 	virtual void set_path(arrow_path_t const& path);
 
@@ -97,5 +101,7 @@ protected:
 
 	typedef std::map<map_location, image::locator> arrow_symbols_map_t;
 	arrow_symbols_map_t symbols_map_;
+
+	bool hidden_;
 };
 #endif

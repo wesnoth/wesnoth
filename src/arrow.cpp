@@ -33,24 +33,45 @@ static lg::log_domain log_arrows("arrows");
 
 #define SCREEN ((display*)resources::screen)
 
-arrow::arrow()
+arrow::arrow(bool hidden)
 	: layer_(display::LAYER_ARROWS)
 	, color_("red")
 	, style_(STYLE_STANDARD)
 	, path_()
 	, previous_path_()
 	, symbols_map_()
+	, hidden_(true)
 {
-	resources::screen->add_arrow(*this);
+	if(!hidden)
+		show();
 }
 
 arrow::~arrow()
 {
+	hide();
+}
+
+void arrow::hide()
+{
+	if(hidden_)
+		return;
+	hidden_ = true;
+
 	if (SCREEN)
 	{
 		invalidate_arrow_path(path_);
 		SCREEN->remove_arrow(*this);
 	}
+}
+
+void arrow::show()
+{
+	if(!hidden_)
+		return;
+	hidden_ = false;
+
+	if(SCREEN)
+		SCREEN->add_arrow(*this);
 }
 
 void arrow::set_path(arrow_path_t const& path)
@@ -59,9 +80,12 @@ void arrow::set_path(arrow_path_t const& path)
 	{
 		previous_path_ = path_;
 		path_ = path;
-		invalidate_arrow_path(previous_path_);
 		update_symbols();
-		notify_arrow_changed();
+		if(!hidden_)
+		{
+			invalidate_arrow_path(previous_path_);
+			notify_arrow_changed();
+		}
 	}
 }
 
