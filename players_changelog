@@ -12,59 +12,59 @@ Version 1.9.8+svn:
        (bug #16477)
    * Khalifate faction:
      * Units with khalifatelightfoot movetype (Naffat, Hakim lines) converted to khalifatefoot movetype (used by Jundi line) resulting in:
-	   * increased the fire resist from -10% to 0% (Hakim only)
-	   * increased the impact resist from -20% to -10%
-	   * increased the village defense from 50% to 60%
-	   * removed the khalifatelightfoot movetype
-	 * Changes to khalifatefoot (Naffat, Hakim, Jundi lines) movetype:
-	   * increased the frozen defense from 20% to 30%
-	 * Changes to khalifatearmoredfoot movetype (Arif line):
-	   * increased the shallow water and swamp mp from 2 to 3
-	   * decreased the mushroom grove defense from 50% to 40%
-	 * Changes to the khalifatehorse (Rami and some level up paths) movetype:
-	   * increased the shallow water, swamp, cave, and mushroom grove mp cost to 4 in all cases
-	   * increased the forest mp cost from 2 to 3
-	   * decreased the frozen mp cost from 4 to 2
-	   * decreased the swamp defense from 30% to 20%
-	   * decreased the cave defense from 40% to 20%
-	   * decreased the mushroom grove defense from 40% to 20%
-	   * increased the frozen defense from 10% to 30%
-	   * increased the impact resist from -10% to 0%		
-	 * Changes to the khalifatearmoredhorse (Khaiyal and some level up paths) movetype:		
-	   * increased the shallow water, swamp, cave, and mushroom grove mp cost to 4 in all cases
+       * increased the fire resist from -10% to 0% (Hakim only)
+       * increased the impact resist from -20% to -10%
+       * increased the village defense from 50% to 60%
+       * removed the khalifatelightfoot movetype
+     * Changes to khalifatefoot (Naffat, Hakim, Jundi lines) movetype:
+       * increased the frozen defense from 20% to 30%
+     * Changes to khalifatearmoredfoot movetype (Arif line):
+       * increased the shallow water and swamp mp from 2 to 3
+       * decreased the mushroom grove defense from 50% to 40%
+     * Changes to the khalifatehorse (Rami and some level up paths) movetype:
+       * increased the shallow water, swamp, cave, and mushroom grove mp cost to 4 in all cases
+       * increased the forest mp cost from 2 to 3
+       * decreased the frozen mp cost from 4 to 2
+       * decreased the swamp defense from 30% to 20%
+       * decreased the cave defense from 40% to 20%
+       * decreased the mushroom grove defense from 40% to 20%
+       * increased the frozen defense from 10% to 30%
+       * increased the impact resist from -10% to 0%
+     * Changes to the khalifatearmoredhorse (Khaiyal and some level up paths) movetype:
+       * increased the shallow water, swamp, cave, and mushroom grove mp cost to 4 in all cases
        * increased the reef mp cost from 2 to 3
-	   * decreased the frozen mp cost from 4 to 2
-	   * decreased the cave defense from 40% to 20%
-	   * decreased the mushroom grove defense from 40% to 20%
-	   * increased the frozen defense from 10% to 30%
-	   * increased the swamp defense from 10% to 20%
-	   * decreased the hill defense from 60% to 50%
-	 * Changes to units:
-	   * increased the XP requirements of the Arif from 40 to 47
-	   * increased the cost of the Falcon from 10 to 12
-	   * dereased the beak and claw attack of the Falcon by one each to 2-3 and 5-1
-	   * decreased the HP of the Falcon from 19 to 18
-	   * increased the XP requirements of the Falcon from 20 to 24
-	   * increased the XP requirements of the Hakim from 33 to 39
-	   * decreased the HP of the Jundi from 36 to 32
-	   * increased the XP requirements of the Jundi from 35 to 44
-	   * increased the cost of the Khaiyal from 20 to 21
-	   * decreased the blade resist of the Khaiyal from 30% to 20%
-	   * decreased the pierce resist of the Khaiyal from 0% to -10%
-	   * decreased the impact resist of the Khaiyal from 10% to 0%
-	   * increased the melee attack of the Mighwar from 7-5 to 8-5
-	   * decreased the HP of the Mighwar from 57 to 53
-	   * increased the melee attack of the Monawish from 6-4 to 7-4
-	   * decreased the HP of the Monawish from 45 to 41
-	   * decreased the HP of the Naffat from 32 to 28
-	   * increased the XP requirements of the Naffat from 38 to 44
-	   * increased the cost of the Naffat from 17 to 19
-	   * decreased the melee attack of the Qatif-al-nar to 10-2
-	   * decreased the ranged attack of the Qatif-al-nar to 8-3
-	   * decreased the melee attack of the Tineen to 10-3	
-	   * the Falcon line (Falcon, Elder Falcon) now get 2 traits, one normal trait and the feral trait
-	   * decreased the impact resist of the Falcon line from 0% to -10%
-	   * The Naffat line (Naffat, Qatif-al-nar, Tineen) is no longer able to get the strong trait
+       * decreased the frozen mp cost from 4 to 2
+       * decreased the cave defense from 40% to 20%
+       * decreased the mushroom grove defense from 40% to 20%
+       * increased the frozen defense from 10% to 30%
+       * increased the swamp defense from 10% to 20%
+       * decreased the hill defense from 60% to 50%
+     * Changes to units:
+       * increased the XP requirements of the Arif from 40 to 47
+       * increased the cost of the Falcon from 10 to 12
+       * dereased the beak and claw attack of the Falcon by one each to 2-3 and 5-1
+       * decreased the HP of the Falcon from 19 to 18
+       * increased the XP requirements of the Falcon from 20 to 24
+       * increased the XP requirements of the Hakim from 33 to 39
+       * decreased the HP of the Jundi from 36 to 32
+       * increased the XP requirements of the Jundi from 35 to 44
+       * increased the cost of the Khaiyal from 20 to 21
+       * decreased the blade resist of the Khaiyal from 30% to 20%
+       * decreased the pierce resist of the Khaiyal from 0% to -10%
+       * decreased the impact resist of the Khaiyal from 10% to 0%
+       * increased the melee attack of the Mighwar from 7-5 to 8-5
+       * decreased the HP of the Mighwar from 57 to 53
+       * increased the melee attack of the Monawish from 6-4 to 7-4
+       * decreased the HP of the Monawish from 45 to 41
+       * decreased the HP of the Naffat from 32 to 28
+       * increased the XP requirements of the Naffat from 38 to 44
+       * increased the cost of the Naffat from 17 to 19
+       * decreased the melee attack of the Qatif-al-nar to 10-2
+       * decreased the ranged attack of the Qatif-al-nar to 8-3
+       * decreased the melee attack of the Tineen to 10-3
+       * the Falcon line (Falcon, Elder Falcon) now get 2 traits, one normal trait and the feral trait
+       * decreased the impact resist of the Falcon line from 0% to -10%
+       * The Naffat line (Naffat, Qatif-al-nar, Tineen) is no longer able to get the strong trait
 
 
 Version 1.9.8:
