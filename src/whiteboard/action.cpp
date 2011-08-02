@@ -55,31 +55,49 @@ config action::to_config() const
 }
 
 /* static */
-action_ptr action::from_config(config const& cfg)
+action_ptr action::from_config(config const& cfg, bool hidden)
 {
 	std::string type = cfg["type"];
 
 	if(type=="move")
-		return action_ptr(new move(cfg));
+		return action_ptr(new move(cfg,hidden));
 	else if(type=="attack")
-		return action_ptr(new attack(cfg));
+		return action_ptr(new attack(cfg,hidden));
 	else if(type=="recruit")
-		return action_ptr(new recruit(cfg));
+		return action_ptr(new recruit(cfg,hidden));
 	else if(type=="recall")
-		return action_ptr(new recall(cfg));
+		return action_ptr(new recall(cfg,hidden));
 	else if(type=="suppose_dead")
-		return action_ptr(new suppose_dead(cfg));
+		return action_ptr(new suppose_dead(cfg,hidden));
 
 	throw ctor_err("action: Invalid type");
 }
 
-action::action(size_t team_index)
+void action::hide()
+{
+	if(hidden_)
+		return;
+	hidden_ = true;
+	do_hide();
+}
+
+void action::show()
+{
+	if(!hidden_)
+		return;
+	hidden_ = false;
+	do_show();
+}
+
+action::action(size_t team_index, bool hidden)
 	: team_index_(team_index)
+	, hidden_(hidden)
 {
 }
 
-action::action(config const& cfg)
+action::action(config const& cfg, bool hidden)
 	: team_index_()
+	, hidden_(hidden)
 {
 	// Construct and validate team_index_
 	int team_index_temp = cfg["team_index_"].to_int(-1); //default value: -1

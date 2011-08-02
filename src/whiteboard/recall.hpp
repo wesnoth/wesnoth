@@ -30,8 +30,8 @@ namespace wb
 class recall: public wb::action, public boost::enable_shared_from_this<recall>
 {
 public:
-	recall(size_t team_index, const unit& unit, const map_location& recall_hex);
-	explicit recall(config const&); // For deserialization
+	recall(size_t team_index, bool hidden, const unit& unit, const map_location& recall_hex);
+	recall(config const&, bool hidden); // For deserialization
 	virtual ~recall();
 
 	friend class validate_visitor;
@@ -72,6 +72,9 @@ public:
 
 private:
 	void init();
+
+	virtual void do_hide();
+	virtual void do_show();
 
 	unit* temp_unit_;
 	map_location recall_hex_;

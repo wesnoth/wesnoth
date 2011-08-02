@@ -34,8 +34,8 @@ namespace wb
 class recruit: public wb::action, public boost::enable_shared_from_this<recruit>
 {
 public:
-	recruit(size_t team_index, const std::string& unit_name, const map_location& recruit_hex);
-	explicit recruit(config const&); // For deserialization
+	recruit(size_t team_index, bool hidden, const std::string& unit_name, const map_location& recruit_hex);
+	recruit(config const&, bool hidden); // For deserialization
 	virtual ~recruit();
 
 	friend class validate_visitor;
@@ -88,6 +88,9 @@ protected:
 
 private:
 	void init();
+
+	virtual void do_hide();
+	virtual void do_show();
 };
 
 std::ostream& operator<<(std::ostream& s, recruit_ptr recruit);

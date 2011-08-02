@@ -35,8 +35,8 @@ class visitor;
 class action
 {
 public:
-	action(size_t team_index);
-	explicit action(config const&); // For deserialization
+	action(size_t team_index, bool hidden);
+	action(config const&, bool hidden); // For deserialization
 	virtual ~action();
 
 	virtual std::ostream& print(std::ostream& s) const = 0;
@@ -57,6 +57,11 @@ public:
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 	virtual void draw_hex(const map_location& hex) = 0;
+
+	/** Sets whether or not the action should be drawn on the screen. */
+	void hide();
+	void show();
+	bool hidden() const {return hidden_;}
 
 	/** Indicates whether this hex is the preferred hex to draw the numbering for this action. */
 	bool is_numbering_hex(const map_location& hex) const {return hex==get_numbering_hex();}
@@ -79,7 +84,7 @@ public:
 	/** Constructs and returns a config object representing this object. */
 	virtual config to_config() const;
 	/** Constructs an object of a subclass of wb::action using a config. Current behavior is to return a null pointer for unrecognized config. */
-	static action_ptr from_config(config const&);
+	static action_ptr from_config(config const&, bool hidden);
 
 	struct ctor_err	: public game::error
 	{
@@ -87,7 +92,12 @@ public:
 	};
 
 private:
+	/** Called by the non-virtual hide() and show(), respectively. */
+	virtual void do_hide() {}
+	virtual void do_show() {}
+
 	size_t team_index_;
+	bool hidden_;
 };
 
 std::ostream& operator<<(std::ostream& s, action_ptr action);

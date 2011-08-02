@@ -52,8 +52,8 @@ std::ostream& recruit::print(std::ostream &s) const
 	return s;
 }
 
-recruit::recruit(size_t team_index, const std::string& unit_name, const map_location& recruit_hex):
-		action(team_index),
+recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, const map_location& recruit_hex):
+		action(team_index,hidden),
 		unit_name_(unit_name),
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()),
@@ -64,8 +64,8 @@ recruit::recruit(size_t team_index, const std::string& unit_name, const map_loca
 	this->init();
 }
 
-recruit::recruit(config const& cfg)
-	: action(cfg)
+recruit::recruit(config const& cfg, bool hidden)
+	: action(cfg,hidden)
 	, unit_name_(cfg["unit_name_"])
 	, recruit_hex_(cfg.child("recruit_hex_")["x"],cfg.child("recruit_hex_")["y"])
 	, temp_unit_()
@@ -105,7 +105,7 @@ void recruit::accept(visitor& v)
 action::EXEC_RESULT recruit::execute()
 {
 	assert(valid_);
-	fake_unit_->set_hidden(true);
+	fake_unit_.reset();
 	int side_num = team_index() + 1;
 	resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, recruit_hex_);
 	return action::SUCCESS;
@@ -190,5 +190,8 @@ config recruit::to_config() const
 
 	return final_cfg;
 }
+
+void recruit::do_hide() {fake_unit_->set_hidden(true);}
+void recruit::do_show() {fake_unit_->set_hidden(false);}
 
 }

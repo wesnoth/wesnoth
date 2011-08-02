@@ -32,9 +32,9 @@ public:
 	friend class highlight_visitor;
 
 	///Future unit map must be valid during construction, so that attack can find its units
-	attack(size_t team_index, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+	attack(size_t team_index, bool hidden, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
-	explicit attack(config const&); // For deserialization
+	attack(config const&, bool hidden); // For deserialization
 	virtual ~attack();
 
 	virtual std::ostream& print(std::ostream& s) const;
@@ -57,6 +57,12 @@ public:
 
 private:
 		void init();
+
+		virtual void do_hide() {invalidate();}
+		virtual void do_show() {invalidate();}
+
+		///invalidates the move-destination and attack-target hexes
+		void invalidate();
 
 		///the target of the attack
 		map_location target_hex_;

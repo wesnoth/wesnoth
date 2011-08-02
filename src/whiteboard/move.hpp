@@ -38,9 +38,9 @@ public:
 	friend class highlight_visitor;
 
 	///Future unit map must be valid during construction, so that move can find its unit
-	move(size_t team_index, const pathfind::marked_route& route, arrow_ptr arrow,
+	move(size_t team_index, bool hidden, const pathfind::marked_route& route, arrow_ptr arrow,
 			fake_unit_ptr fake_unit);
-	explicit move(config const&); // For deserialization
+	move(config const&, bool hidden); // For deserialization
 	virtual ~move();
 
 	virtual std::ostream& print(std::ostream& s) const;
@@ -103,9 +103,16 @@ protected:
 	ARROW_TEXTURE arrow_texture_;
 
 private:
+	virtual void do_hide();
+	virtual void do_show();
+
+	void hide_fake_unit();
+	void show_fake_unit();
+
 	void init();
 	void update_arrow_style();
 	boost::scoped_ptr<temporary_unit_mover> mover_;
+	bool fake_unit_hidden_;
 };
 
 /** Dumps an move on a stream, for debug purposes. */

@@ -52,8 +52,8 @@ std::ostream& recall::print(std::ostream &s) const
 	return s;
 }
 
-recall::recall(size_t team_index, const unit& unit, const map_location& recall_hex):
-		action(team_index),
+recall::recall(size_t team_index, bool hidden, const unit& unit, const map_location& recall_hex):
+		action(team_index,hidden),
 		temp_unit_(new class unit(unit)),
 		recall_hex_(recall_hex),
 		valid_(true),
@@ -63,8 +63,8 @@ recall::recall(size_t team_index, const unit& unit, const map_location& recall_h
 	this->init();
 }
 
-recall::recall(config const& cfg)
-	: action(cfg)
+recall::recall(config const& cfg, bool hidden)
+	: action(cfg,hidden)
 	, temp_unit_(NULL)
 	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"])
 	, valid_(true)
@@ -115,7 +115,7 @@ action::EXEC_RESULT recall::execute()
 {
 	assert(valid_);
 	assert(temp_unit_);
-	fake_unit_->set_hidden(true);
+	fake_unit_.reset();
 	resources::controller->get_menu_handler().do_recall(*temp_unit_, team_index() + 1, recall_hex_);
 	delete temp_unit_;
 	temp_unit_ = NULL;
@@ -198,5 +198,8 @@ config recall::to_config() const
 
 	return final_cfg;
 }
+
+void recall::do_hide() {fake_unit_->set_hidden(true);}
+void recall::do_show() {fake_unit_->set_hidden(false);}
 
 } //end namespace wb

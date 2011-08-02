@@ -37,8 +37,8 @@ namespace wb {
 		friend class highlight_visitor;
 
 	public:
-		suppose_dead(size_t team_index, unit& curr_unit, map_location const& loc);
-		explicit suppose_dead(config const&); // For deserialization
+		suppose_dead(size_t team_index, bool hidden, unit& curr_unit, map_location const& loc);
+		suppose_dead(config const&, bool hidden); // For deserialization
 		virtual ~suppose_dead();
 
 		/** Return the unit targeted by this action. Null if unit doesn't exist. */

@@ -58,9 +58,9 @@ std::ostream& move::print(std::ostream &s) const
 	return s;
 }
 
-move::move(size_t team_index, const pathfind::marked_route& route,
+move::move(size_t team_index, bool hidden, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-: action(team_index),
+: action(team_index,hidden),
   unit_(NULL),
   unit_id_(),
   route_(new pathfind::marked_route(route)),
@@ -70,27 +70,32 @@ move::move(size_t team_index, const pathfind::marked_route& route,
   valid_(true),
   arrow_brightness_(),
   arrow_texture_(),
-  mover_()
+  mover_(),
+  fake_unit_hidden_(false)
 {
 	assert(!route_->steps.empty());
+
+	if(hidden)
+		fake_unit_->set_hidden(true);
 
 	unit_ = wb::future_visible_unit(get_source_hex());
 
 	this->init();
 }
 
-move::move(config const& cfg)
-	: action(cfg)
+move::move(config const& cfg, bool hidden)
+	: action(cfg,hidden)
 	, unit_()
 	, unit_id_()
 	, route_(new pathfind::marked_route())
 	, movement_cost_()
-	, arrow_(new arrow())
+	, arrow_(new arrow(hidden))
 	, fake_unit_()
 	, valid_(true)
 	, arrow_brightness_()
 	, arrow_texture_()
 	, mover_()
+	, fake_unit_hidden_(false)
 {
 	// Construct and validate unit_
 	unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
@@ -123,6 +128,8 @@ move::move(config const& cfg)
 
 	// Construct fake_unit_
 	fake_unit_.reset(new unit(*unit_),wb::fake_unit_deleter());
+	if(hidden)
+		fake_unit_->set_hidden(true);
 	resources::screen->place_temporary_unit(fake_unit_.get());
 	fake_unit_->set_ghosted(false);
 	unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams, false); //get facing right
@@ -228,7 +235,7 @@ action::EXEC_RESULT move::execute()
 	action::EXEC_RESULT result = action::FAIL;
 
 	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
-	fake_unit_->set_hidden(true);
+	hide_fake_unit();
 
 	events::mouse_handler const& mouse_handler = resources::controller->get_mouse_handler_base();
 	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), side_number());
@@ -313,7 +320,7 @@ action::EXEC_RESULT move::execute()
 	if(result == action::FAIL)
 	{
 		set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
-		fake_unit_->set_hidden(false);
+		show_fake_unit();
 	}
 	return result;
 }
@@ -399,6 +406,34 @@ void move::remove_temp_modifier(unit_map&)
 void move::draw_hex(const map_location& hex)
 {
 	(void) hex; //temporary to avoid unused param warning
+}
+
+void move::do_hide()
+{
+	arrow_->hide();
+	if(!fake_unit_hidden_)
+		fake_unit_->set_hidden(true);
+}
+
+void move::do_show()
+{
+	arrow_->show();
+	if(!fake_unit_hidden_)
+		fake_unit_->set_hidden(false);
+}
+
+void move::hide_fake_unit()
+{
+	fake_unit_hidden_ = true;
+	if(!hidden())
+		fake_unit_->set_hidden(true);
+}
+
+void move::show_fake_unit()
+{
+	fake_unit_hidden_ = false;
+	if(!hidden())
+		fake_unit_->set_hidden(false);
 }
 
 map_location move::get_numbering_hex() const

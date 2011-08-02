@@ -60,8 +60,8 @@ namespace wb
 		return s;
 	}
 
-	suppose_dead::suppose_dead(size_t team_index, unit& curr_unit, map_location const& loc)
-	: action(team_index)
+	suppose_dead::suppose_dead(size_t team_index, bool hidden, unit& curr_unit, map_location const& loc)
+	: action(team_index,hidden)
 	, unit_(&curr_unit)
 	, unit_id_(curr_unit.id())
 	, loc_(loc)
@@ -70,8 +70,8 @@ namespace wb
 		this->init();
 	}
 
-	suppose_dead::suppose_dead(config const& cfg)
-	: action(cfg)
+	suppose_dead::suppose_dead(config const& cfg, bool hidden)
+	: action(cfg,hidden)
 	, unit_()
 	, unit_id_()
 	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"])

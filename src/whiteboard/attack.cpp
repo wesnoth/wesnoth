@@ -49,9 +49,9 @@ std::ostream& attack::print(std::ostream& s) const
 	return s;
 }
 
-attack::attack(size_t team_index, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+attack::attack(size_t team_index, bool hidden, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-	: move(team_index, route, arrow, fake_unit),
+	: move(team_index, hidden, route, arrow, fake_unit),
 	target_hex_(target_hex),
 	weapon_choice_(weapon_choice),
 	attack_movement_cost_(get_unit()->attacks()[weapon_choice_].movement_used()),
@@ -60,8 +60,8 @@ attack::attack(size_t team_index, const map_location& target_hex, int weapon_cho
 	this->init();
 }
 
-attack::attack(config const& cfg)
-	: move(cfg)
+attack::attack(config const& cfg, bool hidden)
+	: move(cfg,hidden)
 	, target_hex_(cfg.child("target_hex_")["x"],cfg.child("target_hex_")["y"])
 	, weapon_choice_(cfg["weapon_choice_"].to_int(-1)) //default value: -1
 	, attack_movement_cost_()
@@ -87,6 +87,12 @@ void attack::init()
 }
 
 attack::~attack()
+{
+	invalidate();
+}
+
+/* private */
+void attack::invalidate()
 {
 	if(resources::screen)
 	{
