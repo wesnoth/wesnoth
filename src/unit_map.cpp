@@ -21,6 +21,7 @@
 #include "log.hpp"
 
 #include <functional>
+#include "unit_map.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -54,28 +55,8 @@ void unit_map::swap(unit_map &o)
 	std::swap(num_invalid_, o.num_invalid_);
 }
 
-unit_map::~unit_map()
-{
+unit_map::~unit_map() {
 	clear();
-}
-
-unit_map::unit_iterator unit_map::find(const map_location &loc) {
-	lmap::const_iterator i = lmap_.find(loc);
-	if (i == lmap_.end()) {
-		return unit_iterator(map_.end(), this);
-	}
-
-	umap::iterator iter = map_.find(i->second);
-
-	assert(is_valid(iter));
-	return unit_iterator(iter, this);
-}
-
-unit_map::unit_iterator unit_map::find(size_t id)
-{
-	umap::iterator iter = map_.find(id);
-	if (!is_valid(iter)) iter = map_.end();
-	return unit_iterator(iter, this);
 }
 
 unit_map::unit_iterator unit_map::begin() {
@@ -151,8 +132,9 @@ void unit_map::insert(unit *p)
 	DBG_NG << "Adding unit " << p->underlying_id() << " - " << p->id()
 		<< " to location: (" << loc << ")\n";
 
-	std::pair<lmap::iterator,bool> res = lmap_.insert(std::make_pair(loc, unit_id));
+	std::pair<lmap::iterator,bool> res = lmap_.insert(std::make_pair(loc, biter.first)); 
 	assert(res.second);
+	
 }
 
 void unit_map::replace(const map_location &l, const unit &u)
@@ -184,17 +166,17 @@ void unit_map::clear()
 unit *unit_map::extract(const map_location &loc)
 {
 	lmap::iterator i = lmap_.find(loc);
-	if (i == lmap_.end())
-		return NULL;
+	if (i == lmap_.end()) {
+		return NULL; }
 
-	umap::iterator iter = map_.find(i->second);
+	umap::iterator iter = i->second;
 	unit *res = iter->second;
 
 	DBG_NG << "Extract unit " << res->underlying_id() << " - " << res->id()
 			<< " from location: (" << loc << ")\n";
 	iter->second = NULL;
 	++num_invalid_;
-	lmap_.erase(i);
+	lmap_.erase_return_void(i); 
 
 	return res;
 }

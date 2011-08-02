@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <map>
+#include <boost/unordered_map.hpp>
 
 class unit;
 
@@ -41,11 +42,10 @@ class unit;
  * @note Iterators prevent ghost units from being collected. So they should
  *       never be stored into data structures, as it will cause slowdowns!
  */
-class unit_map
-{
+class unit_map {
 public:
-	typedef std::map<size_t, unit *> umap;
-	typedef std::map<map_location, size_t> lmap;
+	typedef boost::unordered_map<size_t, unit *> umap; 
+	typedef boost::unordered_map<map_location, umap::iterator> lmap;
 
 	unit_map() : map_(), lmap_(), num_iters_(0), num_invalid_(0) { };
 	unit_map(const unit_map &that);
@@ -129,8 +129,9 @@ public:
 		iterator_base& operator--()
 		{
 			assert(map_ && i_ != map_->map_.begin());
-			do --i_;
-			while (i_ != map_->map_.begin() && !i_->second);
+			iterator_type next(map_->map_.begin()), oldi(i_);
+			do { i_ = ++next;
+			}while(next != oldi );
 			return *this;
 		}
 
@@ -183,8 +184,20 @@ public:
 	typedef unit_iterator iterator;
 	typedef const_unit_iterator const_iterator;
 
-	unit_iterator find(const map_location& loc) ;
-	unit_iterator find(size_t id);
+	unit_iterator find(size_t id) {
+		umap::iterator iter = map_.find(id);
+		if (!is_valid(iter)) iter = map_.end();
+		return unit_iterator(iter, this);
+	}
+
+	unit_iterator find(const map_location &loc) {
+		lmap::const_iterator i = lmap_.find(loc);
+		if (i == lmap_.end()) {
+			return unit_iterator(map_.end(), this);
+		}
+		assert(is_valid(i->second));
+		return unit_iterator(i->second, this);
+	}
 
 	const_unit_iterator find(const map_location &loc) const
 	{ return const_cast<unit_map *>(this)->find(loc); }
@@ -199,7 +212,7 @@ public:
 	std::vector<unit_iterator> find_leaders(int side);
 	std::vector<const_unit_iterator> find_leaders(int side) const;
 
-	size_t count(const map_location& loc) const { return lmap_.count(loc); }
+	size_t count(const map_location& loc) const { return static_cast<size_t>(lmap_.count(loc)); }
 
 	unit_iterator begin();
 	const_unit_iterator begin() const;
@@ -290,5 +303,7 @@ void unit_map::erase(const T& iter) {
 	if (erase(iter->get_location()) != 1)
 		assert(0);
 }
+
+
 
 #endif	// UNIT_MAP_H_INCLUDED
