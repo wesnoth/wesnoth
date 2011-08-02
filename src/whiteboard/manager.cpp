@@ -409,20 +409,20 @@ void manager::on_gamestate_change()
 
 void manager::send_network_data()
 {
-	if(net_buffer_.empty())
-		return;
+		if(net_buffer_.empty())
+			return;
 
-	config packet;
-	config& wb_cfg = packet.add_child("whiteboard",net_buffer_);
-	wb_cfg["side"] = viewer_side();
-	wb_cfg["team_name"] = resources::teams->at(viewer_team()).team_name();
+		config packet;
+		config& wb_cfg = packet.add_child("whiteboard",net_buffer_);
+		wb_cfg["side"] = viewer_side();
+		wb_cfg["team_name"] = resources::teams->at(viewer_team()).team_name();
 
-	net_buffer_ = config();
+		net_buffer_ = config();
 
-	network::send_data(packet,0,"whiteboard");
+		network::send_data(packet,0,"whiteboard");
 
-	size_t count = wb_cfg.child_count("net_cmd");
-	LOG_WB << "Sent wb data (" << count << ").\n";
+		size_t count = wb_cfg.child_count("net_cmd");
+		LOG_WB << "Sent wb data (" << count << ").\n";
 }
 
 void manager::process_network_data(config const& cfg)
