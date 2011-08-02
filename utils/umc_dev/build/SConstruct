@@ -1,0 +1,85 @@
+# vi: syntax=python:et:ts=4
+#
+# SCons build description for the Wesnoth UMC Development IDE
+#
+# Prerequisites are:
+# 1. Sun/Oracle Java JDK
+# 2. Eclipse 3.7 environment with all required plugins
+# (Can be found at: http://sourceforge.net/projects/wesnoth/files/wesnoth-umcplugin/build_utils/ )
+
+import os, shutil, re, subprocess
+
+# Warn user of current set of build options.
+if os.path.exists('.scons-option-cache'):
+    optfile = file('.scons-option-cache')
+    print "Saved options:", optfile.read().replace("\n", ", ")[:-2]
+    optfile.close()
+
+# variables
+opts = Variables( ".scons-option-cache" )
+opts.AddVariables(
+    PathVariable( "eclipsedir", "The directory that contains the eclipse binary and all the needed plugins",
+                    "", PathVariable.PathIsDir )
+)
+env = Environment( options = opts )
+opts.Save( '.scons-option-cache', env )
+
+eclipse_dir = env[ "eclipsedir" ]
+temp_build_dir = os.environ[ "TMP" ] + "/umcdev_build"
+
+print "Clearing temporary build dir ( " + temp_build_dir + " ) ..."
+if os.path.exists( temp_build_dir ):
+    shutil.rmtree( temp_build_dir )
+
+os.makedirs( temp_build_dir )
+
+# now, we need to find 2 things:
+# 1) file: org.eclipse.equinox.launcher_*.jar
+# 2) dir: org.eclipse.pde.build_*
+
+equinox_launcher_path = ""
+pde_build_dir = ""
+
+for file in os.listdir( eclipse_dir + "/plugins" ):
+    if re.match( "org.eclipse.equinox.launcher_.*.jar", file ):
+        equinox_launcher_path = eclipse_dir + "/plugins/" + file
+    elif re.match( "org.eclipse.pde.build_.*", file ):
+        pde_build_dir = eclipse_dir + "/plugins/" + file
+
+if equinox_launcher_path:
+    print "Found equinox launcher: " + equinox_launcher_path
+else:
+    print "Couldn't find equinox launcher. Aborting..."
+    Return( )
+
+if pde_build_dir:
+    print "Found PDE Build dir: " + pde_build_dir
+else:
+    print "Couldn't find PDE Build dir. Aborting..."
+    Return( )
+
+print "Building..."
+subprocess.call( [
+    "java",
+    "-cp", equinox_launcher_path, "org.eclipse.core.launcher.Main",
+    "-data", "workspace",
+    "-application", "org.eclipse.ant.core.antRunner",
+    "-DbuildDirectory=" + temp_build_dir,
+    "-Dbase=" + eclipse_dir,
+    "-DbaseLocation=" + eclipse_dir,
+    "-Ddeltapack=" + eclipse_dir,
+    "-Declipse.pdebuild.scripts=" + pde_build_dir + "/scripts",
+    "-Declipse.pdebuild.templates=" + pde_build_dir + "/templates",
+    "-buildfile", "build.xml" ] )
+
+# Some cleanup
+if os.path.exists( "../org.wesnoth.feature/build.xml" ):
+    os.remove( "../org.wesnoth.feature/build.xml" )
+if os.path.exists( "../org.wesnoth/build.xml" ):
+    os.remove( "../org.wesnoth/build.xml" )
+if os.path.exists( "../org.wesnoth.ui/build.xml" ):
+    os.remove( "../org.wesnoth.ui/build.xml" )
+
+# Local variables:
+# mode: python
+# end:
