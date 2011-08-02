@@ -20,11 +20,15 @@
 
 #include "foreach.hpp"
 #include "gamestatus.hpp"
+#include "log.hpp"
 #include "resources.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"
 #include "team.hpp"
 #include "unit_abilities.hpp"
+
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 
 
@@ -805,6 +809,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	bool value_is_set = false;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
+	std::map<std::string,individual_effect> values_div;
 
 	individual_effect set_effect;
 
@@ -841,11 +846,29 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 				values_add[effect_id].set(ADD,add,i->first,i->second);
 			}
 		}
+		if (const config::attribute_value *v = cfg.get("sub")) {
+			int sub = - *v;
+			std::map<std::string,individual_effect>::iterator sub_effect = values_add.find(effect_id);
+			if(sub_effect == values_add.end() || sub > sub_effect->second.value) {
+				values_add[effect_id].set(ADD,sub,i->first,i->second);
+			}
+		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
 			int multiply = int(v->to_double() * 100);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
 				values_mul[effect_id].set(MUL,multiply,i->first,i->second);
+			}
+		}
+		if (const config::attribute_value *v = cfg.get("divide")) {
+			if (*v == 0) {
+				ERR_NG << "division by zero with division= in weapon special " << effect_id << "\n";
+				return;
+			}
+			int divide = int(v->to_double() * 100);
+			std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
+			if(div_effect == values_div.end() || divide > div_effect->second.value) {
+				values_div[effect_id].set(DIV,divide,i->first,i->second);
 			}
 		}
 	}
@@ -860,6 +883,11 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	for (e = values_mul.begin(), e_end = values_mul.end(); e != e_end; ++e) {
 		multiplier *= e->second.value;
 		divisor *= 100;
+		effect_list_.push_back(e->second);
+	}
+	for (e = values_div.begin(), e_end = values_div.end(); e != e_end; ++e) {
+		multiplier *= 100;
+		divisor *= e->second.value;
 		effect_list_.push_back(e->second);
 	}
 	int addition = 0;
