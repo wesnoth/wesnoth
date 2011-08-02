@@ -18,9 +18,10 @@
  */
 
 #include "highlight_visitor.hpp"
-#include "manager.hpp"
+
 #include "action.hpp"
 #include "attack.hpp"
+#include "manager.hpp"
 #include "move.hpp"
 #include "recall.hpp"
 #include "recruit.hpp"
@@ -30,8 +31,8 @@
 #include "arrow.hpp"
 #include "foreach.hpp"
 #include "play_controller.hpp"
-#include "unit_map.hpp"
 #include "resources.hpp"
+#include "unit_map.hpp"
 
 namespace wb
 {
