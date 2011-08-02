@@ -60,9 +60,9 @@ protected:
 	//bool visit(size_t team_index, team&, side_actions&, side_actions::iterator);
 
 	///@return Whether or not to visit any of the contents of sa.
-	bool pre_visit_team(size_t /*team_index*/, team& /*t*/, side_actions& sa) {return !sa.hidden();}
+	bool pre_visit_team(size_t /*team_index*/, team&, side_actions& sa) {return !sa.hidden();}
 	///@return Whether or not to visit any more teams after this one.
-	bool post_visit_team(size_t /*team_index*/, team& /*t*/, side_actions& /*sa*/) {return true;}
+	bool post_visit_team(size_t /*team_index*/, team&, side_actions&) {return true;}
 
 private:
 	template<bool reverse>
@@ -130,7 +130,7 @@ protected:
 	virtual ~visitor() {} //Not intended for polymorphic deletion
 
 	//"Inherited" from visitor_base
-	bool visit(size_t, team&, side_actions&, side_actions::iterator itor)
+	bool visit(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
 		{ (*itor)->accept(*this);   return true; }
 	using visitor_base<visitor>::pre_visit_team;
 	using visitor_base<visitor>::post_visit_team;

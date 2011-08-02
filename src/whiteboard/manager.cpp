@@ -71,11 +71,14 @@ manager::~manager()
 	LOG_WB << "Manager destroyed.\n";
 }
 
+//Used for chat-spamming debug info
+#if 0
 static void print_to_chat(const std::string& title, const std::string& message)
 {
 	resources::screen->add_chat_message(time(NULL), title, 0, message,
 			events::chat_handler::MESSAGE_PRIVATE, false);
 }
+#endif
 
 void manager::print_help_once()
 {
