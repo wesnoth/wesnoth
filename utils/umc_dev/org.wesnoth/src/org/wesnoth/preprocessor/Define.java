@@ -103,10 +103,11 @@ public class Define
 	 * @param file
 	 * @return Returns a map of defines
 	 */
-	public static Map<String, Define> readDefines(String file)
+	public static Map<String, Define> readDefines( String installName, String file )
 	{
 		DefinesSAXHandler handler = (DefinesSAXHandler) ResourceUtils.
-				getWMLSAXHandlerFromResource(file, new DefinesSAXHandler());
+				getWMLSAXHandlerFromResource( installName, file,
+				        new DefinesSAXHandler( ) );
 
 		if (handler != null){
 		    Logger.getInstance().log("loaded " + handler.getDefines().size() + " defines for file:" + file); //$NON-NLS-1$ //$NON-NLS-1$ //$NON-NLS-2$

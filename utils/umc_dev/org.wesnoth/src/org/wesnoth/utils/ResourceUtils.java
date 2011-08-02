@@ -28,6 +28,19 @@ import java.util.Set;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.wesnoth.Constants;
+import org.wesnoth.Logger;
+import org.wesnoth.Messages;
+import org.wesnoth.builder.DependencyListNode;
+import org.wesnoth.preferences.Preferences.Paths;
+import org.wesnoth.projects.ProjectUtils;
+import org.wesnoth.templates.ReplaceableParameter;
+import org.wesnoth.templates.TemplateProvider;
+import org.wesnoth.wml.SimpleWMLParser;
+import org.wesnoth.wml.WMLMacroCall;
+import org.wesnoth.wml.WMLRoot;
+import org.wesnoth.wml.WmlFactory2;
+
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -47,18 +60,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.swt.SWT;
-import org.wesnoth.Constants;
-import org.wesnoth.Logger;
-import org.wesnoth.Messages;
-import org.wesnoth.builder.DependencyListNode;
-import org.wesnoth.preferences.Preferences.Paths;
-import org.wesnoth.projects.ProjectUtils;
-import org.wesnoth.templates.ReplaceableParameter;
-import org.wesnoth.templates.TemplateProvider;
-import org.wesnoth.wml.SimpleWMLParser;
-import org.wesnoth.wml.WMLMacroCall;
-import org.wesnoth.wml.WMLRoot;
-import org.wesnoth.wml.WmlFactory2;
+
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -491,10 +493,10 @@ public class ResourceUtils
 	 * @param saxHandler The SAX Handler used to handle the parsed wml
 	 * @return
 	 */
-	public static DefaultHandler getWMLSAXHandlerFromResource(String resourcePath,
-					DefaultHandler saxHandler)
+	public static DefaultHandler getWMLSAXHandlerFromResource( String installName,
+	        String resourcePath, DefaultHandler saxHandler)
 	{
-		ExternalToolInvoker parser = WMLTools.runWMLParser2(resourcePath);
+		ExternalToolInvoker parser = WMLTools.runWMLParser2( installName, resourcePath);
 		if (parser == null)
 			return null;
 		try{

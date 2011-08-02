@@ -21,7 +21,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.resources.IProject;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.builder.DependencyListBuilder;
@@ -32,6 +31,8 @@ import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.wml.WMLConfig;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WMLVariable;
+
+import org.eclipse.core.resources.IProject;
 
 /**
  * A class that stores some project specific infos
@@ -202,7 +203,7 @@ public class ProjectCache implements Serializable
         if (definesFile_.exists() == false)
             return;
 
-        defines_ = Define.readDefines(definesFile_.getAbsolutePath());
+        defines_ = Define.readDefines( getInstallName( ), definesFile_.getAbsolutePath( ) );
         definesTimestamp_ = definesFile_.lastModified( );
     }
 

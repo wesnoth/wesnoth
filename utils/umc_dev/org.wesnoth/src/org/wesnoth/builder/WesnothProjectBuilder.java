@@ -19,13 +19,6 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IResourceDelta;
-import org.eclipse.core.resources.IncrementalProjectBuilder;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
@@ -43,6 +36,14 @@ import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.wml.SimpleWMLParser;
 import org.wesnoth.wml.WMLConfig;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IncrementalProjectBuilder;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 
 /**
  * The builder does the following steps in order to create and ensure
@@ -324,10 +325,11 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	}
 
 	@SuppressWarnings( "unused" )
-    private void runWMLLint( IProgressMonitor monitor, IFile file )
+    private void runWMLLint( String installName, IProgressMonitor monitor, IFile file )
 	{
 	    monitor.subTask( String.format( "Running WMLlint on file %s ...", file.getName( ) ) );
-	    ExternalToolInvoker tool = WMLTools.runWMLLint(file.getLocation().toOSString(), false, false);
+	    ExternalToolInvoker tool = WMLTools.runWMLLint( installName,
+	            file.getLocation().toOSString(), false, false );
 	    tool.waitForTool();
 
 	    try {
@@ -351,10 +353,11 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	 * @throws CoreException
 	 */
 	@SuppressWarnings( "unused" )
-    private void runWMLScope( IProgressMonitor monitor, IFile file )
+    private void runWMLScope( String installName, IProgressMonitor monitor, IFile file )
 	{
         monitor.subTask( String.format( "Running WMLScope on file %s ...", file.getName( ) ) );
-        ExternalToolInvoker tool = WMLTools.runWMLScope( file.getLocation().toOSString(), false );
+        ExternalToolInvoker tool = WMLTools.runWMLScope( installName,
+                file.getLocation().toOSString(), false );
         tool.waitForTool();
 
         try {

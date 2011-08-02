@@ -19,6 +19,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.wesnoth.Constants;
+import org.wesnoth.Logger;
+import org.wesnoth.Messages;
+import org.wesnoth.installs.WesnothInstallsUtils;
+import org.wesnoth.preferences.Preferences;
+import org.wesnoth.preferences.Preferences.Paths;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.WorkspaceJob;
@@ -27,12 +34,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.console.MessageConsole;
-import org.wesnoth.Constants;
-import org.wesnoth.Logger;
-import org.wesnoth.Messages;
-import org.wesnoth.installs.WesnothInstallsUtils;
-import org.wesnoth.preferences.Preferences;
-import org.wesnoth.preferences.Preferences.Paths;
 
 public class WMLTools
 {
@@ -46,10 +47,11 @@ public class WMLTools
 	 * @param stderr The array of streams where to output the stderr content
 	 * @return  null if there were errors or an ExternalToolInvoker instance
 	 */
-	public static ExternalToolInvoker runWMLIndent(String resourcePath, String stdin,
-			boolean dryrun, OutputStream[] stdout, OutputStream[] stderr)
+	public static ExternalToolInvoker runWMLIndent( String installName,
+	        String resourcePath, String stdin, boolean dryrun,
+	        OutputStream[] stdout, OutputStream[] stderr )
 	{
-        Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( resourcePath ) );
+        Paths paths = Preferences.getPaths( installName );
 
         //wmlindent only check first
 		if ( !checkWMLTool( paths, Tools.WMLINDENT.toString( ) ) ) //$NON-NLS-1$
@@ -82,9 +84,10 @@ public class WMLTools
 	 * @param resourcePath
 	 * @return null if there were errors or an ExternalToolInvoker instance
 	 */
-	public static ExternalToolInvoker runWMLParser2(String resourcePath)
+	public static ExternalToolInvoker runWMLParser2( String installName,
+	        String resourcePath )
 	{
-        Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( resourcePath ) );
+        Paths paths = Preferences.getPaths( installName );
 
 		if ( !ResourceUtils.isValidFilePath( resourcePath ) ||
 	         !checkWMLTool( paths, "wesnoth/wmlparser2.py" ) ) //$NON-NLS-1$
@@ -129,9 +132,11 @@ public class WMLTools
 	 * @param showProgress true to show the progress of the tool
 	 * @return  null if there were errors or an ExternalToolInvoker instance
 	 */
-	public static ExternalToolInvoker runWMLLint(String resourcePath, boolean dryrun, boolean showProgress)
+	public static ExternalToolInvoker runWMLLint( String installName,
+	        String resourcePath, boolean dryrun, boolean showProgress )
 	{
-		return runWMLLint(resourcePath, dryrun, showProgress, new OutputStream[0], new OutputStream[0]);
+		return runWMLLint( installName, resourcePath, dryrun, showProgress,
+		        new OutputStream[0], new OutputStream[0]);
 	}
 
 	/**
@@ -143,10 +148,11 @@ public class WMLTools
 	 * @param stdout The array of streams where to output the stdout content
 	 * @param stderr The array of streams where to output the stderr content
 	 */
-	public static ExternalToolInvoker runWMLLint(String resourcePath, boolean dryrun,
-				boolean showProgress, OutputStream[] stdout, OutputStream[] stderr)
+	public static ExternalToolInvoker runWMLLint( String installName,
+	        String resourcePath, boolean dryrun, boolean showProgress,
+	        OutputStream[] stdout, OutputStream[] stderr )
 	{
-        Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( resourcePath ) );
+        Paths paths = Preferences.getPaths( installName );
 
 		if ( !ResourceUtils.isValidFilePath( resourcePath ) ||
 	         !checkWMLTool( paths, Tools.WMLLINT.toString( ) ) )
@@ -184,9 +190,11 @@ public class WMLTools
 	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
 	 * @return  null if there were errors or an ExternalToolInvoker instance
 	 */
-	public static ExternalToolInvoker runWMLScope(String resourcePath, boolean showProgress)
+	public static ExternalToolInvoker runWMLScope( String installName,
+	        String resourcePath, boolean showProgress )
 	{
-		return runWMLScope(resourcePath, showProgress, new OutputStream[0], new OutputStream[0]);
+		return runWMLScope( installName, resourcePath, showProgress,
+		        new OutputStream[0], new OutputStream[0] );
 	}
 
 	/**
@@ -197,10 +205,11 @@ public class WMLTools
 	 * @param stderr The array of streams where to output the stderr content
 	 * @return  null if there were errors or an ExternalToolInvoker instance
 	 */
-	public static ExternalToolInvoker runWMLScope(String resourcePath, boolean showProgress,
-			OutputStream[] stdout, OutputStream[] stderr)
+	public static ExternalToolInvoker runWMLScope( String installName,
+	        String resourcePath, boolean showProgress,
+			OutputStream[] stdout, OutputStream[] stderr )
 	{
-        Paths paths = Preferences.getPaths( WesnothInstallsUtils.getInstallNameForResource( resourcePath ) );
+        Paths paths = Preferences.getPaths( installName );
 
 		if ( !ResourceUtils.isValidFilePath( resourcePath ) ||
 		     !checkWMLTool( paths, Tools.WMLSCOPE.toString( ) ) )
@@ -241,8 +250,9 @@ public class WMLTools
 	 * @param targetPath If this is not null if will use the targetpath as the
 	 * argument for launching the tool
 	 */
-	public static void runWMLToolAsWorkspaceJob(final Tools tool, final String targetPath)
+	public static void runWMLToolAsWorkspaceJob( final Tools tool, final String targetPath )
 	{
+	    //TODO: remove/rework this hackish method.
 		if (tool == Tools.WESNOTH_ADDON_MANAGER)
 			return;
 
@@ -280,6 +290,7 @@ public class WMLTools
 
 					String location;
 					IResource resource = null;
+					String installName = Preferences.getDefaultInstallName( );
 
 					IFile selFile = WorkspaceUtils.getSelectedFile();
 					if (targetPath != null)
@@ -296,6 +307,8 @@ public class WMLTools
 							resource = WorkspaceUtils.getSelectedContainer();
 							location = resource.getLocation().toOSString();
 						}
+
+						installName = WesnothInstallsUtils.getInstallNameForResource( resource );
 					}
 
 					switch(tool)
@@ -305,18 +318,20 @@ public class WMLTools
 							{
 								String stdin = EditorUtils.getEditorDocument().get();
 								// don't output to stdout as we will put that in the editor
-								toolInvoker = WMLTools.runWMLIndent(null, stdin, false,
-										null, stdout);
+								toolInvoker = WMLTools.runWMLIndent( installName,
+								        null, stdin, false, null, stdout );
 							}
 							else
-								toolInvoker = WMLTools.runWMLIndent(location, null, false,
-										stdout, stderr);
+								toolInvoker = WMLTools.runWMLIndent( installName,
+								        location, null, false, stdout, stderr );
 							break;
 						case WMLLINT:
-							toolInvoker = WMLTools.runWMLLint(location, true, false, stdout, stderr);
+							toolInvoker = WMLTools.runWMLLint( installName,
+							        location, true, false, stdout, stderr );
 							break;
 						case WMLSCOPE:
-							toolInvoker = WMLTools.runWMLScope(location, false, stdout, stderr);
+							toolInvoker = WMLTools.runWMLScope( installName,
+							        location, false, stdout, stderr );
 							break;
 					}
 					monitor.worked(50);
