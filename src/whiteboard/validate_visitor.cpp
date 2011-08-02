@@ -132,7 +132,8 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 		if(new_route.steps.empty() || new_route.move_cost >= pathfind::cost_calculator::getNoPathValue())
 			return OBSTRUCTED; //no path exists
 
-		if(m.team_index() == viewer_team()) //< Don't mess with any other team's queue -- only our own
+		size_t viewing_team = viewer_team();
+		if(m.team_index() == viewing_team) //< Don't mess with any other team's queue -- only our own
 		{
 			if(new_route.steps != m.get_route().steps || new_route.move_cost != m.get_route().move_cost)
 			{
@@ -140,7 +141,7 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 				m.set_route(new_route);
 
 				//send updated path to allies
-				resources::whiteboard->queue_net_cmd(viewer_actions_.make_net_cmd_replace(arg_itor_,m_ptr));
+				resources::whiteboard->queue_net_cmd(viewing_team,viewer_actions_.make_net_cmd_replace(arg_itor_,m_ptr));
 
 				//@todo: Since this might lengthen the path, we probably need a special conflict state
 				// to warn the player that the initial path is no longer possible.

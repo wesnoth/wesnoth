@@ -166,7 +166,7 @@ bool side_actions::execute(side_actions::iterator position)
 	try	{
 		 exec_result = action->execute();
 	} catch (end_turn_exception&) {
-		resources::whiteboard->queue_net_cmd(make_net_cmd_remove(position));
+		resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_remove(position));
 		actions_.erase(position);
 		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
 		validate_actions();
@@ -178,11 +178,11 @@ bool side_actions::execute(side_actions::iterator position)
 
 	if(exec_result!=action::FAIL)
 	{
-		resources::whiteboard->queue_net_cmd(make_net_cmd_remove(position));
+		resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_remove(position));
 		actions_.erase(position);
 	}
 	else //action may have revised itself; let's tell our allies.
-		resources::whiteboard->queue_net_cmd(make_net_cmd_replace(position,*position));
+		resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_replace(position,*position));
 
 	switch(exec_result)
 	{
@@ -270,7 +270,7 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
 	assert(position >= begin() && position <= end());
-	resources::whiteboard->queue_net_cmd(make_net_cmd_insert(position, action));
+	resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_insert(position, action));
 	iterator valid_position = actions_.insert(position, action);
 	LOG_WB << "Inserted at position #" << std::distance(begin(), valid_position) + 1
 		   << " : " << action <<"\n";
@@ -359,7 +359,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 			<< " to position #" << action_number - 1  << "/" << last_position << ".\n";
 
 	action_ptr action = *position;
-	resources::whiteboard->queue_net_cmd(make_net_cmd_bump_later(position-1));
+	resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_bump_later(position-1));
 	action_queue::iterator after = actions_.erase(position);
 	//be careful, previous iterators have just been invalidated by erase()
 	action_queue::iterator destination = after - 1;
@@ -447,7 +447,7 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 			<< " to position #" << action_number + 1  << "/" << last_position << ".\n";
 
 	action_ptr action = *position;
-	resources::whiteboard->queue_net_cmd(make_net_cmd_bump_later(position));
+	resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_bump_later(position));
 	action_queue::iterator after = actions_.erase(position);
 	//be careful, previous iterators have just been invalidated by erase()
 	DBG_WB << "Action temp. removed, position after is #" << after - begin() + 1  << "/" << actions_.size() << ".\n";
@@ -474,7 +474,7 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 	{
 		LOG_WB << "Erasing action at position #" << distance + 1 << "\n";
 
-		resources::whiteboard->queue_net_cmd(make_net_cmd_remove(position));
+		resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_remove(position));
 		safe_erase(position);
 
 		if (validate_after_delete)

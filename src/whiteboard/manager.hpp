@@ -79,8 +79,8 @@ public:
 	void send_network_data();
 	/// Called by turn_info::process_network_data() when network data needs to be processed
 	void process_network_data(config const&);
-	/// Adds a side_actions::net_cmd to net_buffer_, whereupon it will be sent to all allies
-	void queue_net_cmd(side_actions::net_cmd const&);
+	/// Adds a side_actions::net_cmd to net_buffer_[team_index], whereupon it will (later) be sent to all allies
+	void queue_net_cmd(size_t team_index, side_actions::net_cmd const&);
 
 	/// Whether the current side has actions in its planned actions queue
 	static bool current_side_has_actions();
@@ -185,7 +185,8 @@ private:
 
 	map_location hidden_unit_hex_;
 
-	config net_buffer_;
+	///net_buffer_[i] = whiteboard network data to be sent "from" teams[i].
+	std::vector<config> net_buffer_;
 };
 
 /** Applies the planned unit map for the duration of the struct's life.

@@ -61,7 +61,7 @@ manager::manager():
 		fake_unit_(),
 		key_poller_(new CKey),
 		hidden_unit_hex_(),
-		net_buffer_()
+		net_buffer_(resources::teams->size())
 {
 	LOG_WB << "Manager initialized.\n";
 }
@@ -409,20 +409,26 @@ void manager::on_gamestate_change()
 
 void manager::send_network_data()
 {
-		if(net_buffer_.empty())
-			return;
+	size_t size = net_buffer_.size();
+	for(size_t team_index=0; team_index<size; ++team_index)
+	{
+		config& buf_cfg = net_buffer_[team_index];
+
+		if(buf_cfg.empty())
+			continue;
 
 		config packet;
-		config& wb_cfg = packet.add_child("whiteboard",net_buffer_);
-		wb_cfg["side"] = viewer_side();
-		wb_cfg["team_name"] = resources::teams->at(viewer_team()).team_name();
+		config& wb_cfg = packet.add_child("whiteboard",buf_cfg);
+		wb_cfg["side"] = static_cast<int>(team_index+1);
+		wb_cfg["team_name"] = resources::teams->at(team_index).team_name();
 
-		net_buffer_ = config();
+		buf_cfg = config();
 
 		network::send_data(packet,0,"whiteboard");
 
 		size_t count = wb_cfg.child_count("net_cmd");
-		LOG_WB << "Sent wb data (" << count << ").\n";
+		LOG_WB << "Side " << (team_index+1) << " sent wb data (" << count << " cmds).\n";
+	}
 }
 
 void manager::process_network_data(config const& cfg)
@@ -438,9 +444,9 @@ void manager::process_network_data(config const& cfg)
 	}
 }
 
-void manager::queue_net_cmd(side_actions::net_cmd const& cmd)
+void manager::queue_net_cmd(size_t team_index, side_actions::net_cmd const& cmd)
 {
-	net_buffer_.add_child("net_cmd",cmd);
+	net_buffer_[team_index].add_child("net_cmd",cmd);
 }
 
 void manager::create_temp_move()
