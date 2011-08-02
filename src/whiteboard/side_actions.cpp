@@ -205,10 +205,31 @@ bool side_actions::execute(side_actions::iterator position)
 	return exec_result == action::SUCCESS;
 }
 
+void side_actions::hide()
+{
+	if(hidden_)
+		return;
+
+	hidden_ = true;
+
+	foreach(action_ptr act, *this)
+		act->hide();
+}
+void side_actions::show()
+{
+	if(!hidden_)
+		return;
+
+	hidden_ = false;
+
+	foreach(action_ptr act, *this)
+		act->show();
+}
+
 side_actions::iterator side_actions::queue_move(const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	move_ptr new_move;
-	new_move.reset(new move(team_index(), false, route, arrow, fake_unit));
+	new_move.reset(new move(team_index(), hidden_, route, arrow, fake_unit));
 	return queue_action(new_move);
 }
 
@@ -217,28 +238,28 @@ side_actions::iterator side_actions::queue_attack(const map_location& target_hex
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	attack_ptr new_attack;
-	new_attack.reset(new attack(team_index(), false, target_hex, weapon_choice, route, arrow, fake_unit));
+	new_attack.reset(new attack(team_index(), hidden_, target_hex, weapon_choice, route, arrow, fake_unit));
 	return queue_action(new_attack);
 }
 
 side_actions::iterator side_actions::queue_recruit(const std::string& unit_name, const map_location& recruit_hex)
 {
 	recruit_ptr new_recruit;
-	new_recruit.reset(new recruit(team_index(), false, unit_name, recruit_hex));
+	new_recruit.reset(new recruit(team_index(), hidden_, unit_name, recruit_hex));
 	return queue_action(new_recruit);
 }
 
 side_actions::iterator side_actions::queue_recall(const unit& unit, const map_location& recall_hex)
 {
 	recall_ptr new_recall;
-	new_recall.reset(new recall(team_index(), false, unit, recall_hex));
+	new_recall.reset(new recall(team_index(), hidden_, unit, recall_hex));
 	return queue_action(new_recall);
 }
 
 side_actions::iterator side_actions::queue_suppose_dead(unit& curr_unit, map_location const& loc)
 {
 	suppose_dead_ptr new_suppose_dead;
-	new_suppose_dead.reset(new suppose_dead(team_index(),false,curr_unit,loc));
+	new_suppose_dead.reset(new suppose_dead(team_index(),hidden_,curr_unit,loc));
 	return queue_action(new_suppose_dead);
 }
 
@@ -599,7 +620,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 		action_queue::iterator itor = actions_.begin()+pos;
 
 		try {
-			itor = actions_.insert(itor,action::from_config(cmd.child("action"),false));
+			itor = actions_.insert(itor,action::from_config(cmd.child("action"),hidden_));
 		} catch(action::ctor_err const&) {
 			ERR_WB << "side_actions::execute_network_command(): received invalid data!\n";
 			return;
@@ -624,7 +645,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 		itor = safe_erase(itor);
 
 		try {
-			itor = actions_.insert(itor,action::from_config(cmd.child("action"),false));
+			itor = actions_.insert(itor,action::from_config(cmd.child("action"),hidden_));
 		} catch(action::ctor_err const&) {
 			ERR_WB << "side_actions::execute_network_command(): received invalid data!\n";
 			return;

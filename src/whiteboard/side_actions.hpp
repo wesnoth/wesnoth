@@ -112,6 +112,11 @@ public:
 	 */
 	void clear() { safe_clear(); }
 
+	/** Sets whether or not the contents should be drawn on the screen. */
+	void hide();
+	void show();
+	bool hidden() const {return hidden_;}
+
 	/**
 	 * Queues a move to be executed last
 	 * @return The queued move's position
@@ -239,6 +244,8 @@ private:
 
 	/// Used to store gold "spent" in planned recruits/recalls when the future unit map is applied
 	int gold_spent_;
+
+	bool hidden_;
 };
 
 /** Dumps side_actions on a stream, for debug purposes. */
