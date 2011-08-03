@@ -35,7 +35,7 @@ namespace wb
  *   * Some invalid actions are deleted.
  */
 class validate_visitor
-	: private mapbuilder_visitor
+	: private visitor
 	, private enable_visit_all<validate_visitor>
 {
 	friend class enable_visit_all<validate_visitor>;
@@ -62,9 +62,8 @@ private:
 	//"Inherited" from enable_visit_all
 	bool visit(size_t team_index, team& t, side_actions& sa, side_actions::iterator itor)
 		{ arg_itor_=itor;   return visitor::visit(team_index,t,sa,itor); }
-	using mapbuilder_visitor::pre_visit_team;
-	using enable_visit_all<validate_visitor>::post_visit_team;
-	using enable_visit_all<validate_visitor>::visit_all;
+
+	mapbuilder_visitor builder_;
 
 	side_actions& viewer_actions_;
 

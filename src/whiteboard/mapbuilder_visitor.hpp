@@ -36,10 +36,12 @@ namespace wb
  * and reverts all changes on destruction.
  */
 class mapbuilder_visitor
-	: protected visitor
+	: private visitor
 	, private enable_visit_all<mapbuilder_visitor>
 {
 	friend class enable_visit_all<mapbuilder_visitor>;
+
+	friend class validate_visitor;
 
 public:
 	mapbuilder_visitor(unit_map& unit_map);
@@ -52,7 +54,7 @@ public:
 	 */
 	void build_map();
 
-protected:
+private:
 	virtual void visit_move(move_ptr move);
 	virtual void visit_attack(attack_ptr attack);
 	virtual void visit_recruit(recruit_ptr recruit);
@@ -69,9 +71,6 @@ protected:
 	//Helper fcn: Temporarily resets all units' moves to max EXCEPT for
 	//the ones controlled by the player whose turn it is currently.
 	void reset_moves();
-
-private:
-	void visit_all() {enable_visit_all<mapbuilder_visitor>::visit_all();}
 
 	void restore_normal_map();
 

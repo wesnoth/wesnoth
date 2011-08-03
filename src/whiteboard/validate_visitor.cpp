@@ -38,7 +38,7 @@ namespace wb
 {
 
 validate_visitor::validate_visitor(unit_map& unit_map)
-	: mapbuilder_visitor(unit_map)
+	: builder_(unit_map)
 	, viewer_actions_(*viewer_actions())
 	, actions_to_erase_()
 	, arg_itor_()
@@ -48,13 +48,12 @@ validate_visitor::validate_visitor(unit_map& unit_map)
 
 validate_visitor::~validate_visitor()
 {
-	//~mapbuilder_visitor() gets called here automatically
 }
 
 bool validate_visitor::validate_actions()
 {
 	//Temporarily reset all units' moves to full EXCEPT for the ones on viewer_side().
-	reset_moves(); //< protected fcn inherited from mapbuilder_visitor
+	builder_.reset_moves();
 
 	visit_all();
 
@@ -171,7 +170,7 @@ void validate_visitor::visit_move(move_ptr move)
 		// Now call the superclass to apply the result of this move to the unit map,
 		// so that further pathfinding takes it into account.
 		move->set_valid(true);
-		mapbuilder_visitor::visit_move(move);
+		builder_.visit_move(move);
 		break;
 	case OBSTRUCTED:
 		move->set_valid(false);
@@ -253,7 +252,7 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 
 	if (recruit->is_valid())
 	{
-		mapbuilder_visitor::visit_recruit(recruit);
+		builder_.visit_recruit(recruit);
 	}
 	else
 	{
@@ -300,7 +299,7 @@ void validate_visitor::visit_recall(recall_ptr recall)
 
 	if (recall->is_valid())
 	{
-		mapbuilder_visitor::visit_recall(recall);
+		builder_.visit_recall(recall);
 	}
 	else
 	{
@@ -346,7 +345,7 @@ void validate_visitor::visit_suppose_dead(suppose_dead_ptr sup_d)
 	{
 		// Now call the superclass to apply the result of this move to the unit map,
 		// so that further pathfinding takes it into account.
-		mapbuilder_visitor::visit_suppose_dead(sup_d);
+		builder_.visit_suppose_dead(sup_d);
 	}
 	else
 	{
