@@ -15,6 +15,16 @@
 
 /**
  * @file
+ * Two classes are presented in this file: enable_visit_all and visitor.
+ * enable_visit_all is a class template that provides the all-too-common iteration
+ *   code that iterates over every planned action from every team, starting with the
+ *   current-turn team. Using "static polymorphism," derived classes can customize
+ *   the iteration by overriding some functions.
+ * visitor is an abstract interface that simply provides derived classes with the
+ *   mechanism for the double dispatch used in the Visitor Pattern:
+ *       action.accept(visitor)   calls    visitor.visit_***(action)
+ * Derived classes will usually derive from both of these.
+ * Example usage is seen is highlight_visitor, mapbuilder_visitor, validate_visitor.
  */
 
 #ifndef WB_VISITOR_HPP_
@@ -34,18 +44,17 @@ namespace wb
 {
 
 /**
- * visitor_base: A base class template, using the so-called CRTP
+ * enable_visit_all: A base class template, using the so-called CRTP. This is the
+ *   "static polymorphism" part.
  * If you want visit_all() and reverse_visit_all() in your class,
- *   you should derive from this class.
+ *   you should derive from this class template.
  * Derived classes can "override" the following:
- *   visit, pre_visit_team, post_visit_team
- * Derived classes should declare visitor_base<Derived> as a friend, or
+ *   visit (required), pre_visit_team, post_visit_team
+ * Derived classes should declare enable_visit_all<Derived> as a friend, or
  *   else make the overridden functions public.
- * I recommend making the inheritance private or protected.
- * See class visitor for an example.
  */
 template<typename Derived>
-class visitor_base
+class enable_visit_all
 {
 public:
 	void visit_all() {visit_all_helper<false>();}
@@ -106,40 +115,58 @@ private:
 };
 
 /**
+ * visitor: This is the "dynamic polymorphism" part.
  * Abstract base class for all the visitors (cf GoF Visitor Design Pattern)
- * the whiteboard uses.
+ *   the whiteboard uses.
+ * visitor does not inherit from enable_visit_all because it tends to make it more
+ *   "difficult" for derived classes to inherit from both visitor and enable_visit_all.
  */
 class visitor
 	: private boost::noncopyable
-	, private visitor_base<visitor>
 {
-	friend class visitor_base<visitor>;
-
 	friend class move;
 	friend class attack;
 	friend class recruit;
 	friend class recall;
 	friend class suppose_dead;
 
-public:
-	using visitor_base<visitor>::visit_all;
-	using visitor_base<visitor>::reverse_visit_all;
-
 protected:
 	visitor() {}
 	virtual ~visitor() {} //Not intended for polymorphic deletion
 
-	//"Inherited" from visitor_base
+	/**
+	 * This function is available for derived classes so they can inherit from enable_visit_all
+	 * without having to override visit(); i.e., the below implementation can be used as a
+	 * default.
+	 */
 	bool visit(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
 		{ (*itor)->accept(*this);   return true; }
-	using visitor_base<visitor>::pre_visit_team;
-	using visitor_base<visitor>::post_visit_team;
+
+	//Utility fcn for derived classes that don't need to customize the iteration.
+	void visit_all_actions() {visitor_helper::visit_all_actions_helper(this);}
 
 	virtual void visit_move(move_ptr move) = 0;
 	virtual void visit_attack(attack_ptr attack) = 0;
 	virtual void visit_recruit(recruit_ptr recruit) = 0;
 	virtual void visit_recall(recall_ptr recall) = 0;
 	virtual void visit_suppose_dead(suppose_dead_ptr sup_d) = 0;
+
+private:
+	struct visitor_helper
+		: enable_visit_all<visitor_helper>
+	{
+		bool visit(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
+			{ (*itor)->accept(*v_);   return true; }
+
+		static void visit_all_actions_helper(visitor* v)
+		{
+			static visitor_helper vh;
+			vh.v_ = v;
+			vh.visit_all();
+		}
+
+		visitor* v_;
+	};
 };
 
 }

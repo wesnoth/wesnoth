@@ -379,7 +379,7 @@ void highlight_visitor::find_main_highlight()
 	//assert(side_actions_->team_index() == resources::screen->viewing_team());
 
 	//Find the main highlight -- see visit(), below.
-	visitor_base<highlight_visitor>::reverse_visit_all();
+	reverse_visit_all();
 }
 
 //Used only by find_main_highlight()
@@ -399,7 +399,7 @@ void highlight_visitor::find_secondary_highlights()
 	assert(owner_unit_);
 	assert(secondary_highlights_.empty());
 	mode_ = FIND_SECONDARY_HIGHLIGHTS;
-	visitor::visit_all(); //< Standard visitation procedure.
+	visit_all_actions(); //< protected fcn from visitor
 }
 
 } // end namespace wb

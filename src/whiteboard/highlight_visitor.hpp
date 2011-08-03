@@ -39,9 +39,9 @@ namespace wb
  */
 class highlight_visitor
 	: private visitor
-	, private visitor_base<highlight_visitor>
+	, private enable_visit_all<highlight_visitor>
 {
-	friend class visitor_base<highlight_visitor>;
+	friend class enable_visit_all<highlight_visitor>;
 
 public:
 	highlight_visitor(const unit_map& unit_map, side_actions_ptr side_actions);
@@ -71,10 +71,8 @@ private:
 	virtual void visit_recall(recall_ptr recall);
 	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
 
-	//"Inherited" from visitor_base
+	//"Inherited" from enable_visit_all
 	bool visit(size_t team_index, team&, side_actions&, side_actions::iterator);
-	using visitor::pre_visit_team;
-	using visitor::post_visit_team;
 
 	void unhighlight();
 

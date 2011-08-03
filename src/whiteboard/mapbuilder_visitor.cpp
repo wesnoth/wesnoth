@@ -67,7 +67,7 @@ void mapbuilder_visitor::build_map()
 	reset_moves();
 
 	mode_ = BUILD_PLANNED_MAP;
-	visit_all(); //< Inherited from visitor_base
+	visit_all();
 }
 
 bool mapbuilder_visitor::visit(size_t, team&, side_actions&, side_actions::iterator itor)

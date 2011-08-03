@@ -402,9 +402,9 @@ namespace
 {
 	//Only used by manager::draw_hex()
 	struct draw_visitor
-		: private visitor_base<draw_visitor>
+		: private enable_visit_all<draw_visitor>
 	{
-		friend class visitor_base<draw_visitor>;
+		friend class enable_visit_all<draw_visitor>;
 
 	public:
 		draw_visitor(map_location const& hex, side_actions::numbers_t& numbers)
@@ -415,7 +415,7 @@ namespace
 		void operator()() {visit_all();}
 
 	private:
-		//"Inherited" from visitor_base
+		//"Inherited" from enable_visit_all
 		bool visit(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
 			{ (*itor)->draw_hex(hex_);   return true; }
 		//using default pre_visit_team()

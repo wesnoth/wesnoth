@@ -37,9 +37,9 @@ namespace wb
  */
 class mapbuilder_visitor
 	: protected visitor
-	, private visitor_base<mapbuilder_visitor>
+	, private enable_visit_all<mapbuilder_visitor>
 {
-	friend class visitor_base<mapbuilder_visitor>;
+	friend class enable_visit_all<mapbuilder_visitor>;
 
 public:
 	mapbuilder_visitor(unit_map& unit_map);
@@ -59,9 +59,10 @@ protected:
 	virtual void visit_recall(recall_ptr recall);
 	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
 
-	//"Inherited" from visitor_base
+	//"Inherited" from enable_visit_all
 	bool visit(size_t team_index, team&, side_actions&, side_actions::iterator);
-	using visitor::pre_visit_team;
+	bool pre_visit_team(size_t team_index, team& t, side_actions& sa)
+		{return enable_visit_all<mapbuilder_visitor>::pre_visit_team(team_index,t,sa);}
 	bool post_visit_team(size_t team_index, team&, side_actions&)
 		{return team_index != viewer_team();} //< Stop after visiting viewer_team
 
@@ -70,7 +71,7 @@ protected:
 	void reset_moves();
 
 private:
-	void visit_all() {visitor_base<mapbuilder_visitor>::visit_all();}
+	void visit_all() {enable_visit_all<mapbuilder_visitor>::visit_all();}
 
 	void restore_normal_map();
 
