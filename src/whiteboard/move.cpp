@@ -73,6 +73,9 @@ move::move(size_t team_index, bool hidden, const pathfind::marked_route& route,
   mover_(),
   fake_unit_hidden_(false)
 {
+	//Future unit map must be valid during construction, so that move can find its unit
+	scoped_planned_unit_map raii;
+
 	assert(!route_->steps.empty());
 
 	if(hidden)

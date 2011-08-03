@@ -37,7 +37,6 @@ public:
 	friend class validate_visitor;
 	friend class highlight_visitor;
 
-	///Future unit map must be valid during construction, so that move can find its unit
 	move(size_t team_index, bool hidden, const pathfind::marked_route& route, arrow_ptr arrow,
 			fake_unit_ptr fake_unit);
 	move(config const&, bool hidden); // For deserialization
