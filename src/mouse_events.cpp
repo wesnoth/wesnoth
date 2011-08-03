@@ -617,17 +617,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				return false;
 			}
 
-			//If this is a leader on a keep, ask permission to the whiteboard to move it
-			//since otherwise it may cause planned recruits to be erased.
-			if (u->can_recruit() &&	u->side() == gui().viewing_side() &&
-				resources::game_map->is_keep(u->get_location()) &&
-				!resources::whiteboard->allow_leader_to_move(*u))
-			{
-				gui2::show_transient_message(gui_->video(), "",
-						_("You cannot move your leader away from the keep with some planned recruits left."));
-				return false;
-			}
-
 			//register the mouse-UI waypoints into the unit's waypoints
 			u->waypoints() = waypoints_;
 
@@ -721,6 +710,26 @@ bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, m
 	const std::vector<map_location> steps = route.steps;
 	if(steps.empty()) {
 		return false;
+	}
+
+	//If this is a leader on a keep, ask permission to the whiteboard to move it
+	//since otherwise it may cause planned recruits to be erased.
+	{
+		unit_map::const_iterator const u = units_.find(steps.front());
+
+		if (u != units_.end()
+				&& u->can_recruit()
+				&& u->side() == gui().viewing_side()
+				&& resources::game_map->is_keep(u->get_location())
+				&& !resources::whiteboard->allow_leader_to_move(*u))
+		{
+			gui2::show_transient_message(gui_->video(), "",
+					_("You cannot move your leader away from the keep with some planned recruits left."));
+
+			if(next_unit)
+				*next_unit = steps.front();
+			return false;
+		}
 	}
 
 	size_t moves = 0;

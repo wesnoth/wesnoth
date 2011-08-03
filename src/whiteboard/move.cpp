@@ -263,7 +263,8 @@ action::EXEC_RESULT move::execute()
 
 	if (final_location == route_->steps.front())
 	{
-		WRN_WB << "Move execution resulted in zero movement.\n";
+		LOG_WB << "Move execution resulted in zero movement.\n";
+		result = action::FAIL;
 	}
 	else if (final_location.valid() &&
 			(unit_it = resources::units->find(final_location)) != resources::units->end()
