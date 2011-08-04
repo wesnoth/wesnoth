@@ -85,6 +85,24 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 //			main_highlight_ = *action_it;
 //		}
 	}
+
+	//Set the execution/deletion/bump targets.
+	side_actions::iterator itor = side_actions_->find_first_action_of(owner_unit_);
+	if(itor != side_actions_->end())
+		selected_action_ = *itor;
+	//Overwrite the above selected_action_ if we find a better one
+	BOOST_REVERSE_FOREACH(action_ptr act, *side_actions_)
+	{
+		/**@todo "is_numbering_hex" is not the "correct" criterion by which to
+		 * select the hightlighted/selected action. It's just convenient for me
+		 * to use at the moment since it happens to coincide with the "correct"
+		 * criterion, which is to use FIND_MAIN_HIGHLIGHT mode.*/
+		if(act->is_numbering_hex(hex))
+		{
+			selected_action_ = act;
+			break;
+		}
+	}
 }
 
 void highlight_visitor::clear()
@@ -160,36 +178,22 @@ void highlight_visitor::unhighlight()
 
 action_ptr highlight_visitor::get_execute_target()
 {
-	action_ptr action;
-
-	if (owner_unit_ && side_actions_->unit_has_actions(owner_unit_))
-	{
-		action = *side_actions_->find_first_action_of(owner_unit_);
-	}
+	if(action_ptr locked = selected_action_.lock())
+		return *side_actions_->find_first_action_of(locked->get_unit());
 	else
-	{
-		action = main_highlight_.lock();
-	}
-
-	return action;
+		return action_ptr();
 }
 action_ptr highlight_visitor::get_delete_target()
 {
-	action_ptr action;
-	if (owner_unit_ && side_actions_->unit_has_actions(owner_unit_))
-	{
-		action = *side_actions_->find_last_action_of(owner_unit_);
-	}
+	if(action_ptr locked = selected_action_.lock())
+		return *side_actions_->find_last_action_of(locked->get_unit());
 	else
-	{
-		action = main_highlight_.lock();
-	}
-	return action;
+		return action_ptr();
 }
 
 action_ptr highlight_visitor::get_bump_target()
 {
-	return main_highlight_.lock();
+	return selected_action_.lock();
 }
 
 unit* highlight_visitor::get_selection_target()

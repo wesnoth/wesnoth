@@ -98,6 +98,7 @@ private:
 	unit* owner_unit_;
 	unit* selection_candidate_;
 
+	weak_action_ptr selected_action_;
 	weak_action_ptr main_highlight_;
 	secondary_highlights_t secondary_highlights_;
 
