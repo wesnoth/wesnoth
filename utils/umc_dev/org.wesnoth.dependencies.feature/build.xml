@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="org.wesnoth.dependencies" default="build.update.jar" basedir=".">
+
+	<target name="init">
+		<property name="feature.temp.folder" value="${basedir}/feature.temp.folder"/>
+		<property name="feature.destination" value="${basedir}"/>
+		<property name="p2.build.repo" value="file:${buildDirectory}/buildRepo"/>
+		<condition property="p2.publish.parts" value="true"		>
+			<istrue value="${p2.gathering}"/>
+		</condition>
+	</target>
+
+	<target name="all.plugins" depends="init">
+	</target>
+	<target name="all.features" depends="init">
+	</target>
+	<target name="update.feature" depends="init">
+	</target>
+
+	<target name="all.children" depends="init,all.features,all.plugins,update.feature">
+	</target>
+
+	<target name="children" if="include.children">
+		<antcall target="all.children"/>
+	</target>
+
+	<target name="build.jars" depends="init" description="Build all the jars for the feature: org.wesnoth.dependencies.">
+		<antcall target="all.children">
+			<param name="target" value="build.jars"/>
+		</antcall>
+	</target>
+
+	<target name="build.sources" depends="init">
+		<antcall target="all.children">
+			<param name="target" value="build.sources"/>
+		</antcall>
+	</target>
+
+	<target name="build.zips" depends="init">
+		<antcall target="all.children">
+			<param name="target" value="build.zips"/>
+		</antcall>
+	</target>
+
+	<target name="build.update.jar" depends="init" description="Build the feature jar of: org.wesnoth.dependencies for an update site.">
+		<antcall target="all.children">
+			<param name="target" value="build.update.jar"/>
+		</antcall>
+		<property name="feature.base" value="${feature.temp.folder}"/>
+		<delete dir="${feature.temp.folder}"/>
+		<mkdir dir="${feature.temp.folder}"/>
+		<mkdir dir="${feature.temp.folder}/features/org.wesnoth.dependencies_2.0.0.201108041427"/>
+		<antcall target="gather.bin.parts" inheritAll="false">
+			<param name="os" value="linux,macosx,win32"/>
+			<param name="feature.base" value="${feature.temp.folder}"/>
+			<param name="updateJar.omitRootfiles" value="true"/>
+			<param name="ws" value="*"/>
+			<param name="arch" value="x86,x86_64"/>
+			<param name="nl" value="*"/>
+		</antcall>
+		<jar destfile="${feature.destination}/org.wesnoth.dependencies_2.0.0.201108041427.jar" basedir="${feature.temp.folder}/features/org.wesnoth.dependencies_2.0.0.201108041427"/>
+		<delete dir="${feature.temp.folder}"/>
+	</target>
+
+	<target name="publish.bin.parts" depends="init" if="p2.publish.parts">
+		<mkdir dir="${feature.temp.folder}/features/org.wesnoth.dependencies_2.0.0.201108041427"/>
+		<copy todir="${feature.temp.folder}/features/org.wesnoth.dependencies_2.0.0.201108041427" failonerror="true" overwrite="true">
+			<fileset dir="${basedir}">
+				<include name="feature.xml"/>
+			</fileset>
+		</copy>
+		<eclipse.idReplacer featureFilePath="${feature.temp.folder}/features/org.wesnoth.dependencies_2.0.0.201108041427/feature.xml"  selfVersion="2.0.0.201108041427" featureIds="" pluginIds="org.apache.commons.cli:0.0.0,1.2.0.v201105210650,org.apache.commons.lang:0.0.0,2.4.0.v201005080502,org.eclipse.emf.codegen:0.0.0,2.6.0.v20110606-0949,org.eclipse.emf.codegen.ecore:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.common:0.0.0,2.7.0.v20110605-0747,org.eclipse.emf.common.ui:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.converter:0.0.0,2.5.0.v20110606-0949,org.eclipse.emf.ecore:0.0.0,2.7.0.v20110605-0747,org.eclipse.emf.ecore.edit:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.ecore.editor:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.ecore.xmi:0.0.0,2.7.0.v20110520-1406,org.eclipse.emf.edit:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.edit.ui:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.mwe.core:0.0.0,1.1.0.v201106070424,org.eclipse.emf.mwe.ui:0.0.0,1.1.0.v201106070424,org.eclipse.emf.mwe.utils:0.0.0,1.1.0.v201106070424,org.eclipse.emf.mwe2.runtime:0.0.0,2.0.0.v201106070424,org.eclipse.jdt.core:0.0.0,3.7.0.v_B61,org.eclipse.jdt.core.manipulation:0.0.0,1.4.0.v20110505-0800,org.eclipse.jdt.debug:0.0.0,3.7.0.v20110509,org.eclipse.jdt.debug.ui:0.0.0,3.6.0.v20110512,org.eclipse.jdt.launching:0.0.0,3.6.0.v20110509,org.eclipse.jdt.ui:0.0.0,3.7.0.v20110531-1200,org.eclipse.ui.views.log:0.0.0,1.0.200.v20110404,"/>
+		<eclipse.licenseReplacer featureFilePath="${feature.temp.folder}/features/org.wesnoth.dependencies_2.0.0.201108041427" licenseFilePath="${basedir}/../org.wesnoth.feature/"/>
+		<eclipse.gatherFeature 
+		   metadataRepository="${p2.build.repo}"
+		   artifactRepository="${p2.build.repo}"
+		   buildResultFolder="${feature.temp.folder}/features/org.wesnoth.dependencies_2.0.0.201108041427"
+		   baseDirectory="${basedir}"
+		   licenseDirectory="${basedir}/../org.wesnoth.feature/"
+		/>
+	</target>
+
+	<target name="gather.bin.parts" depends="init" if="feature.base">
+		<mkdir dir="${feature.base}/features/org.wesnoth.dependencies_2.0.0.201108041427"/>
+		<antcall target="children">
+			<param name="target" value="gather.bin.parts"/>
+			<param name="destination.temp.folder" value="${feature.base}/plugins"/>
+		</antcall>
+		<copy todir="${feature.base}/features/org.wesnoth.dependencies_2.0.0.201108041427" failonerror="true" overwrite="false">
+			<fileset dir="${basedir}">
+				<include name="feature.xml"/>
+			</fileset>
+		</copy>
+		<eclipse.idReplacer featureFilePath="${feature.base}/features/org.wesnoth.dependencies_2.0.0.201108041427/feature.xml"  selfVersion="2.0.0.201108041427" featureIds="" pluginIds="org.apache.commons.cli:0.0.0,1.2.0.v201105210650,org.apache.commons.lang:0.0.0,2.4.0.v201005080502,org.eclipse.emf.codegen:0.0.0,2.6.0.v20110606-0949,org.eclipse.emf.codegen.ecore:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.common:0.0.0,2.7.0.v20110605-0747,org.eclipse.emf.common.ui:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.converter:0.0.0,2.5.0.v20110606-0949,org.eclipse.emf.ecore:0.0.0,2.7.0.v20110605-0747,org.eclipse.emf.ecore.edit:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.ecore.editor:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.ecore.xmi:0.0.0,2.7.0.v20110520-1406,org.eclipse.emf.edit:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.edit.ui:0.0.0,2.7.0.v20110606-0949,org.eclipse.emf.mwe.core:0.0.0,1.1.0.v201106070424,org.eclipse.emf.mwe.ui:0.0.0,1.1.0.v201106070424,org.eclipse.emf.mwe.utils:0.0.0,1.1.0.v201106070424,org.eclipse.emf.mwe2.runtime:0.0.0,2.0.0.v201106070424,org.eclipse.jdt.core:0.0.0,3.7.0.v_B61,org.eclipse.jdt.core.manipulation:0.0.0,1.4.0.v20110505-0800,org.eclipse.jdt.debug:0.0.0,3.7.0.v20110509,org.eclipse.jdt.debug.ui:0.0.0,3.6.0.v20110512,org.eclipse.jdt.launching:0.0.0,3.6.0.v20110509,org.eclipse.jdt.ui:0.0.0,3.7.0.v20110531-1200,org.eclipse.ui.views.log:0.0.0,1.0.200.v20110404,"/>
+		<copy todir="${feature.base}/features/org.wesnoth.dependencies_2.0.0.201108041427" failonerror="true" overwrite="true">
+			<fileset dir="${basedir}/../org.wesnoth.feature/">
+				<include name="feature.xml"/>
+				<exclude name=".project"/>
+				<exclude name="build.properties"/>
+				<exclude name="feature.xml"/>
+				<exclude name="feature.properties"/>
+				<exclude name="feature_*.properties"/>
+			</fileset>
+		</copy>
+		<eclipse.licenseReplacer featureFilePath="${feature.base}/features/org.wesnoth.dependencies_2.0.0.201108041427" licenseFilePath="${basedir}/../org.wesnoth.feature/"/>
+		<antcall target="rootFiles">
+			<param name="rootTarget" value="rootFiles${os}_${ws}_${arch}"/>
+		</antcall>
+	</target>
+	<target name="rootFiles" unless="updateJar.omitRootfiles">
+		<antcall target="${rootTarget}"/>
+	</target>
+
+	<target name="rootFileswin32_win32_x86">
+	</target>
+	<target name="rootFilesgroup_group_group">
+		<antcall target="rootFileswin32_win32_x86"/>
+	</target>
+
+	<target name="zip.distribution" depends="init" description="Create a zip containing all the plug-ins and features for the feature: org.wesnoth.dependencies.">
+		<delete dir="${feature.temp.folder}"/>
+		<mkdir dir="${feature.temp.folder}"/>
+		<antcall target="gather.bin.parts">
+			<param name="feature.base" value="${feature.temp.folder}"/>
+			<param name="os" value="linux,macosx,win32"/>
+			<param name="arch" value="x86,x86_64"/>
+			<param name="ws" value="*"/>
+			<param name="nl" value="*"/>
+			<param name="include.children" value="true"/>
+		</antcall>
+		<zip destfile="${feature.destination}/org.wesnoth.dependencies_2.0.0.201108041427.bin.dist.zip" basedir="${feature.temp.folder}" filesonly="false" whenempty="skip" update="false"/>
+		<delete dir="${feature.temp.folder}"/>
+	</target>
+
+	<target name="zip.sources" depends="init">
+		<delete dir="${feature.temp.folder}"/>
+		<mkdir dir="${feature.temp.folder}"/>
+		<antcall target="all.children">
+			<param name="target" value="gather.sources"/>
+			<param name="destination.temp.folder" value="${feature.temp.folder}/plugins/org.wesnoth.dependencies.source_2.0.0.201108041427/src"/>
+			<param name="include.children" value="true"/>
+		</antcall>
+		<zip destfile="${feature.destination}/org.wesnoth.dependencies_2.0.0.201108041427.src.zip" basedir="${feature.temp.folder}" filesonly="true" whenempty="skip" update="false"/>
+		<delete dir="${feature.temp.folder}"/>
+	</target>
+
+	<target name="zip.logs" depends="init">
+		<delete dir="${feature.temp.folder}"/>
+		<mkdir dir="${feature.temp.folder}"/>
+		<condition property="logExtension.param" value="logExtension" else="logExtension.param"		>
+			<isset property="logExtension"/>
+		</condition>
+		<antcall target="all.children" inheritAll="false">
+			<param name="target" value="gather.logs"/>
+			<param name="destination.temp.folder" value="${feature.temp.folder}/plugins"/>
+			<param name="include.children" value="true"/>
+			<param name="${logExtension.param}" value="${logExtension}"/>
+		</antcall>
+		<zip destfile="${feature.destination}/org.wesnoth.dependencies_2.0.0.201108041427.log.zip" basedir="${feature.temp.folder}" filesonly="true" whenempty="skip" update="false"/>
+		<delete dir="${feature.temp.folder}"/>
+	</target>
+
+	<target name="clean" depends="init" description="Clean the feature: org.wesnoth.dependencies of all the zips, jars and logs created.">
+		<delete file="${feature.destination}/org.wesnoth.dependencies_2.0.0.201108041427.jar"/>
+		<delete file="${feature.destination}/org.wesnoth.dependencies_2.0.0.201108041427.bin.dist.zip"/>
+		<delete file="${feature.destination}/org.wesnoth.dependencies_2.0.0.201108041427.log.zip"/>
+		<delete file="${feature.destination}/org.wesnoth.dependencies_2.0.0.201108041427.src.zip"/>
+		<delete dir="${feature.temp.folder}"/>
+		<antcall target="all.children">
+			<param name="target" value="clean"/>
+		</antcall>
+	</target>
+
+	<target name="refresh" depends="init" if="eclipse.running" description="Refresh this folder.">
+		<eclipse.convertPath fileSystemPath="d:/work/gw/utils/umc_dev/org.wesnoth.dependencies.feature/" property="resourcePath"/>
+		<eclipse.refreshLocal resource="${resourcePath}" depth="infinite"/>
+		<antcall target="all.children">
+			<param name="target" value="refresh"/>
+		</antcall>
+	</target>
+	<target name="gather.sources">
+		<antcall target="children">
+			<param name="target" value="gather.sources"/>
+			<param name="destination.temp.folder" value="${feature.temp.folder}/plugins/org.wesnoth.dependencies.source_2.0.0.201108041427/src"/>
+		</antcall>
+	</target>
+
+	<target name="gather.logs" depends="init">
+		<mkdir dir="${feature.temp.folder}/plugins"/>
+		<property name="destination.temp.folder" value="${feature.temp.folder}/plugins"/>
+		<condition property="logExtension.param" value="logExtension" else="logExtension.param"		>
+			<isset property="logExtension"/>
+		</condition>
+		<antcall target="all.children" inheritAll="false">
+			<param name="target" value="gather.logs"/>
+			<param name="${logExtension.param}" value="${logExtension}"/>
+			<param name="destination.temp.folder" value="${feature.temp.folder}/plugins"/>
+		</antcall>
+	</target>
+
+</project>
