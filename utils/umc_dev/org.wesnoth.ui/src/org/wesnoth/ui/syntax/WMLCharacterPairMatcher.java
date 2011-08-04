@@ -19,7 +19,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.XtextDocument;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
-import org.wesnoth.ui.WMLSyntaxColoringAdapter;
 import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLTag;

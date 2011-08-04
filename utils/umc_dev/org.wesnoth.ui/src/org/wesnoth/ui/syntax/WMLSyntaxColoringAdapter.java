@@ -6,11 +6,10 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.wesnoth.ui;
+package org.wesnoth.ui.syntax;
 
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
 
 /**
  * A simple WML adapter that holds a coloring id on the specified resource
@@ -18,7 +17,7 @@ import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
 public class WMLSyntaxColoringAdapter extends AdapterImpl
 {
     /**
-     * A color id from the {@link WMLHighlightingConfiguration}
+     * A color id from the {@link org.wesnoth.ui.syntax.WMLHighlightingConfiguration}
      */
     public String ColorId;
 

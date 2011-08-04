@@ -22,7 +22,6 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
-import org.wesnoth.ui.WMLSyntaxColoringAdapter;
 import org.wesnoth.utils.Pair;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLMacroCall;

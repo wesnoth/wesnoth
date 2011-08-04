@@ -33,7 +33,6 @@ import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.builder.DependencyListNode;
 import org.wesnoth.preferences.Preferences.Paths;
-import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.wml.SimpleWMLParser;
@@ -464,7 +463,7 @@ public class ResourceUtils
 	/**
 	 * Gets the campaign id from the specified resource, or null
 	 * If the resource is not a '_main.cfg' it will search for it
-	 * with {@link ProjectUtils#getMainConfigLocation(IResource)}
+	 * with {@link org.wesnoth.projects.ProjectUtils#getMainConfigLocation(IResource)}
 	 * @param resource The resource where to search the id
 	 * @return
 	 */
