@@ -9,24 +9,32 @@
     	
         <!-- Check that we have a deltapack -->
         <available property="haveDeltaPack" file="${deltapack}"/>
-        <fail unless="haveDeltaPack" message="The deltapack is required to build this product.  Please edit buildProduct.xml or set the &quot;deltapack&quot; property." />
-            
+        <fail unless="haveDeltaPack" message="The deltapack is required to build this product.  Please set the &quot;deltapack&quot; property." />
+
         <property name="builder" value="${basedir}" />
         <property name="buildDirectory" value="${basedir}/buildDirectory"/>
         <property name="pluginPath" value="${basedir}/..${path.separator}${deltapack}" />
         <property name="buildTempFolder" value="${buildDirectory}" />
-            
+
+        <!-- clear previous builds -->
+        <delete>
+			<fileset dir="${basedir}/update_site"/>
+        </delete>
+        <delete>
+			<fileset dir="${basedir}/${buildLabel}"/>
+        </delete>
+
         <ant antfile="${eclipse.pdebuild.scripts}/productBuild/productBuild.xml" />
 
         <move todir="${basedir}/${buildLabel}">
             <fileset dir="${buildDirectory}/${buildLabel}" includes="*.zip"/>
         </move>
+
     	<move todir="${basedir}/update_site">
     	     <fileset dir="${buildDirectory}/repository"/>
         </move>
-        <delete>
-            <fileset dir="${basedir}/update_site/binary" />
-        </delete>
+
+        <!-- remove non-wesnoth plugins -->
         <delete>
             <fileset dir="${basedir}/update_site/plugins">
             	<exclude name="org.wesnoth*"/>
@@ -34,4 +42,3 @@
         </delete>
     </target>
 </project>
-        

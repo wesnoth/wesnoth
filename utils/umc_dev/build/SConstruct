@@ -73,15 +73,22 @@ subprocess.call( [
     "-buildfile", "build.xml" ] )
 
 # Some cleanup
-if os.path.exists( "../org.wesnoth.feature/build.xml" ):
-    os.remove( "../org.wesnoth.feature/build.xml" )
-if os.path.exists( "../org.wesnoth.feature/feature.temp.folder" ):
-    os.remove( "../org.wesnoth.feature/feature.temp.folder" )
-if os.path.exists( "../org.wesnoth/build.xml" ):
-    os.remove( "../org.wesnoth/build.xml" )
-if os.path.exists( "../org.wesnoth.ui/build.xml" ):
-    os.remove( "../org.wesnoth.ui/build.xml" )
+print "Cleaning up..."
+# Some cleanup
+to_cleanup = [ 
+	"../org.wesnoth.feature/build.xml",  
+	"../org.wesnoth/build.xml",
+	"../org.wesnoth.ui/build.xml",
+	"../org.wesnoth/javaCompiler...args",
+	"../org.wesnoth.ui/javaCompiler...args" ]
 
+for cleanup_file in to_cleanup:
+	try: os.remove( cleanup_file )
+	except: pass
+
+try: shutil.rmtree( "../org.wesnoth.feature/feature.temp.folder" )
+except: pass
+    
 # Local variables:
 # mode: python
 # end:
