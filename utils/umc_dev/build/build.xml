@@ -17,10 +17,10 @@
         <property name="buildTempFolder" value="${buildDirectory}" />
 
         <!-- clear previous builds -->
-        <delete>
+        <delete quiet="true">
 			<fileset dir="${basedir}/update_site"/>
         </delete>
-        <delete>
+        <delete quiet="true">
 			<fileset dir="${basedir}/${buildLabel}"/>
         </delete>
 
