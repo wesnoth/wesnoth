@@ -11,12 +11,13 @@ package org.wesnoth.preferences;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.wesnoth.Constants;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.utils.StringUtils;
+
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
+import org.eclipse.jface.preference.IPreferenceStore;
 
 /**
  * Class used to initialize default preference values.
@@ -57,7 +58,8 @@ public class Preferences extends AbstractPreferenceInitializer
         store.setDefault(Constants.P_WAU_PORT, 15002);
 
         // advanced
-        store.setDefault(Constants.P_ADV_NO_TERRAIN_GFX, true);
+        store.setDefault(Constants.P_NO_TERRAIN_GFX, true);
+        store.setDefault( Constants.P_WML_VALIDATION, false );
 
         // installs
         store.setDefault(Constants.P_INST_DEFAULT_INSTALL, ""); //$NON-NLS-1$

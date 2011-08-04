@@ -8,10 +8,11 @@
  *******************************************************************************/
 package org.wesnoth.preferences;
 
-import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.wesnoth.Constants;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
+
+import org.eclipse.jface.preference.BooleanFieldEditor;
 
 public class AdvancedPreferencePage extends AbstractPreferencePage
 {
@@ -26,9 +27,17 @@ public class AdvancedPreferencePage extends AbstractPreferencePage
 	@Override
 	protected void createFieldEditors()
 	{
-		addField(new BooleanFieldEditor(
-				Constants.P_ADV_NO_TERRAIN_GFX, Messages.AdvancedPreferencePage_1, 1,
-				getFieldEditorParent()),
-				Messages.AdvancedPreferencePage_2);
+		addField( new BooleanFieldEditor(
+				Constants.P_NO_TERRAIN_GFX, Messages.AdvancedPreferencePage_1,
+				BooleanFieldEditor.SEPARATE_LABEL,
+				getFieldEditorParent( ) ),
+				Messages.AdvancedPreferencePage_2 );
+
+		addField( new BooleanFieldEditor(
+		        Constants.P_WML_VALIDATION, "WML Validation, parent",
+		        BooleanFieldEditor.SEPARATE_LABEL,
+		        getFieldEditorParent( ) ),
+		        "If checked, the WML Editor will validate some of the " +
+		        "written WML to check for semantic errors." );
 	}
 }

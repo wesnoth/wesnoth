@@ -62,7 +62,8 @@ public class Constants
 	public static final String 	P_WAU_PORT              = "wau_port"; //$NON-NLS-1$
 
 	/** Advanced preferences */
-	public static final String	P_ADV_NO_TERRAIN_GFX	= "adv_no_terrain_gfx"; //$NON-NLS-1$
+	public static final String	P_NO_TERRAIN_GFX	    = "adv_no_terrain_gfx"; //$NON-NLS-1$
+	public static final String  P_WML_VALIDATION        = "adv_wml_validation"; //$NON-NLS-1$
 
 	/** Install preferences */
 	public static final String P_INST_DEFAULT_INSTALL   = "inst_default"; //$NON-NLS-1$

@@ -581,6 +581,18 @@ public class ResourceUtils
 	}
 
 	/**
+	 * Returns the corresponding {@link IResource} from the specified
+	 * EMF Resource
+	 * @param emfResource The EMF Resource
+	 * @return An {@link IResource} instance
+	 */
+	public static IResource getWorkspaceResource( Resource emfResource )
+	{
+        return ResourcesPlugin.getWorkspace( ).getRoot( ).
+            getFile( new Path( emfResource.getURI( ).toPlatformString( true ) ) );
+    }
+
+	/**
 	 * Gets the WML Grammar root of the specified file
 	 * @param file The file to get the WML model from
 	 * @return A WMLRoot instance or null if there is none

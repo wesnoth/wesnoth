@@ -135,7 +135,7 @@ public class PreprocessorUtils
 				arguments.add(macrosFile);
 			}
 
-			if (Preferences.getBool(Constants.P_ADV_NO_TERRAIN_GFX))
+			if (Preferences.getBool(Constants.P_NO_TERRAIN_GFX))
 			{
 				if (defines == null)
 					defines = new ArrayList<String>();
