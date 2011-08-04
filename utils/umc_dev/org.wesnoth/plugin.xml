@@ -590,12 +590,12 @@
             description="Reloads all plugin related files"
             id="org.wesnoth.commands.reloadFiles"
             name="reloadFiles">
-      </command>
+      </command><!--
       <command
             defaultHandler="org.wesnoth.handlers.TestHandler"
             id="org.wesnoth.commands.test"
             name="test command">
-      </command>
+      </command>-->
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -657,7 +657,7 @@
                      name="preferencePageId"
                      value="org.wesnoth.preferences.UMCPage">
                </parameter>
-            </command>
+            </command><!--
             <separator
                   name="separator3"
                   visible="true">
@@ -666,7 +666,7 @@
                   commandId="org.wesnoth.commands.test"
                   label="Test (FOR DEBUG ONLY!!)"
                   style="push">
-            </command>
+            </command> -->
          </menu>
       </menuContribution>
    </extension>

@@ -405,13 +405,22 @@ litigation.
       <feature id="org.eclipse.xtext.runtime" version="2.0.0.v201106070531"/>
       <feature id="org.eclipse.platform" version="3.7.0.v20110530-9gF7UHNFFt4cwE-pkZDJ7oz-mj4OSEIlu9SEv0f"/>
       <feature id="org.eclipse.xtext.ui" version="2.0.0.v201106070531"/>
+      <feature id="org.eclipse.equinox.p2.user.ui" version="2.1.1.v20110526-6-Bg9JXOePwKUTU7X0teV1RtDu-e"/>
+      <feature id="org.eclipse.emf.mwe.ui" version="1.1.0.v201106070424"/>
+      <feature id="org.eclipse.xpand" version="1.1.0.v201106070515"/>
+      <feature id="org.eclipse.xpand.ui" version="1.1.0.v201106070515"/>
+      <feature id="org.eclipse.xtend" version="1.1.0.v201106070515"/>
+      <feature id="org.eclipse.xtend.dependencies" version="1.1.0.v201106070515"/>
+      <feature id="org.eclipse.xtend.typesystem.emf" version="1.1.0.v201106070515"/>
+      <feature id="org.eclipse.xtend.ui" version="1.1.0.v201106070515"/>
    </features>
 
    <configurations>
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+      <plugin id="org.wesnoth" autoStart="false" startLevel="5" />
    </configurations>
 
 </product>
