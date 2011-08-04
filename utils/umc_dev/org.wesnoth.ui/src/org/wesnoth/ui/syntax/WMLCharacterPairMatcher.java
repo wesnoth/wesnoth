@@ -10,6 +10,10 @@ package org.wesnoth.ui.syntax;
 
 import java.util.Iterator;
 
+import org.wesnoth.ui.editor.WMLEditor;
+import org.wesnoth.utils.WMLUtils;
+import org.wesnoth.wml.WMLTag;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IDocument;
@@ -19,9 +23,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.XtextDocument;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
-import org.wesnoth.ui.editor.WMLEditor;
-import org.wesnoth.utils.WMLUtils;
-import org.wesnoth.wml.WMLTag;
 
 public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
 {
@@ -70,12 +71,7 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
 
     public synchronized void computeMatchingRegion(XtextResource state, int offset)
     {
-        EObject object = null;
-        try {
-            WMLUtils.EObjectUtils( ).resolveElementAt( state, offset );
-        } catch ( NullPointerException e ) {
-            // fix a bug in xtext when the document has syntax errors
-        }
+        EObject object = WMLUtils.resolveElementAt( state, offset );
 
         // do nothing if we clicked the same tag
         if ( currentTag_ == object )

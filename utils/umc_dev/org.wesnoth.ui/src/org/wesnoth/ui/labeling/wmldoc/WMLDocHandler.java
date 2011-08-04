@@ -8,6 +8,15 @@
  *******************************************************************************/
 package org.wesnoth.ui.labeling.wmldoc;
 
+import org.wesnoth.Logger;
+import org.wesnoth.installs.WesnothInstallsUtils;
+import org.wesnoth.preprocessor.Define;
+import org.wesnoth.projects.ProjectUtils;
+import org.wesnoth.ui.editor.WMLEditor;
+import org.wesnoth.utils.WMLUtils;
+import org.wesnoth.wml.WMLMacroCall;
+import org.wesnoth.wml.WMLTag;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -19,14 +28,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
-import org.wesnoth.Logger;
-import org.wesnoth.installs.WesnothInstallsUtils;
-import org.wesnoth.preprocessor.Define;
-import org.wesnoth.projects.ProjectUtils;
-import org.wesnoth.ui.editor.WMLEditor;
-import org.wesnoth.utils.WMLUtils;
-import org.wesnoth.wml.WMLMacroCall;
-import org.wesnoth.wml.WMLTag;
 
 /**
  * A handler that handles pressing F2 on a resource in the editor
@@ -52,7 +53,7 @@ public class WMLDocHandler extends AbstractHandler
                     Point positionAbsolute = editor.getInternalSourceViewer().getTextWidget().toDisplay(positionRelative);
                     positionAbsolute.y += 20;
 
-                    EObject grammarElement = WMLUtils.EObjectUtils( ).resolveElementAt( resource, selection.getOffset( ) );
+                    EObject grammarElement = WMLUtils.resolveElementAt( resource, selection.getOffset( ) );
                     if ( grammarElement == null )
                         return;
 

@@ -8,14 +8,16 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.wesnoth.wml.WMLExpression;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLKeyValue;
 import org.wesnoth.wml.WMLTag;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
+import org.eclipse.xtext.resource.XtextResource;
 
 public class WMLUtils
 {
@@ -27,6 +29,17 @@ public class WMLUtils
         }
 
         return eObjectAtOffsetHelper_;
+    }
+
+    public static EObject resolveElementAt( XtextResource resource, int offset ) {
+        try{
+            return EObjectUtils( ).resolveElementAt( resource, offset );
+        }
+        catch( NullPointerException e ) {
+            // in xtext 2.0, there is a bug, that if the file
+            // contains errors, this method may throw a null pointer exception
+            return null;
+        }
     }
 
     /**

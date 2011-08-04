@@ -36,7 +36,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
     {
         super.createHyperlinksByOffset(resource, offset, acceptor);
 
-        EObject object = WMLUtils.EObjectUtils( ).resolveElementAt( resource, offset );
+        EObject object = WMLUtils.resolveElementAt( resource, offset );
 
         if ( object == null )
             return;
