@@ -2,13 +2,12 @@
 <feature
       id="org.wesnoth"
       label="Wesnoth User Made Content Plugin"
-      version="1.0.3"
+      version="2.0.0"
       provider-name="www.wesnoth.org"
       os="linux,macosx,win32">
 
    <description>
-      This is the Wesnoth Eclipse UMC Plugin developed as part of Google
-Summer of Code 2010 - 2011.
+      This is the Wesnoth Eclipse UMC Plugin developed as part of Google Summer of Code 2010 - 2011.
    </description>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">
@@ -249,14 +248,15 @@ litigation.
          arch="x86,x86_64"
          download-size="0"
          install-size="0"
-         version="1.0.3"/>
+         version="2.0.0"/>
 
    <plugin
          id="org.wesnoth.ui"
+         os="linux,macosx,win32"
+         arch="x86,x86_64"
          download-size="0"
          install-size="0"
-         version="1.0.3"
-         unpack="false"/>
+         version="2.0.0"/>
 
    <plugin
          id="org.apache.commons.lang"

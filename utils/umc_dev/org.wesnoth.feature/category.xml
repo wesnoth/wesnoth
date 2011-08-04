@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.wesnoth_1.0.3.jar" id="org.wesnoth" version="1.0.3" os="linux,macosx,win32">
+   <feature url="features/org.wesnoth_2.0.0.jar" id="org.wesnoth" version="2.0.0" os="linux,macosx,win32">
       <category name="org.wesnoth.plugins"/>
    </feature>
-   <category-def name="org.wesnoth.plugins" label="Wesnoth Plugins"/>
+   <category-def name="org.wesnoth.plugins" label="Wesnoth Eclipse Plugins">
+      <description>
+         This category contains the Wesnoth Eclipse Plugins
+      </description>
+   </category-def>
 </site>
