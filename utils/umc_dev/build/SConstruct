@@ -75,6 +75,8 @@ subprocess.call( [
 # Some cleanup
 if os.path.exists( "../org.wesnoth.feature/build.xml" ):
     os.remove( "../org.wesnoth.feature/build.xml" )
+if os.path.exists( "../org.wesnoth.feature/feature.temp.folder" ):
+    os.remove( "../org.wesnoth.feature/feature.temp.folder" )
 if os.path.exists( "../org.wesnoth/build.xml" ):
     os.remove( "../org.wesnoth/build.xml" )
 if os.path.exists( "../org.wesnoth.ui/build.xml" ):
