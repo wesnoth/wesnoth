@@ -129,7 +129,7 @@ The plugin can be built as a zip archive (usually) for different operating syste
 
   \item Extract the archive in the favorite location
 
-  \item You now have 2 choices: Build the plugin from within Eclipse - this way you can build, say, just for your current OS/architecture - or you can use the already existing build scripts - those build the plugin for all currently supported architectures.
+  \item You now have 2 choices: Build the plugin from within Eclipse - this way you can build, say, just for your current OS/architecture - or you can use the already existing build script - that builds the plugin for all currently supported architectures.
 
   \item If you want to build the plugin from within Eclipse, you need to do the following steps:
   \begin{enumerate}
@@ -151,9 +151,9 @@ The plugin can be built as a zip archive (usually) for different operating syste
   \item If you want to build the plugin using the scripts, do the following:
   \begin{enumerate}
     \item Go to the ``build" directory in the checked-out directory from the SVN.
-    \item There are 2 files that are important: \textbf{build.sh} - For UNIX systems - and \textbf{build.cmd} - For Windows systems.
-    \item Both files need a one argument that specifies the path to a valid Eclipse + deltapack installation. The file you have previously downloaded contains this.
-    \item You can invoke the script with the 1st parameter as the path to the location where you have extracted the archive.
+    \item The build is done via Scons.
+    \item When launching the build first time you need to specify the ``eclipsedir" argument that specifies the path to a valid Eclipse + deltapack installation. The file you have previously downloaded contains this.
+    \item You can invoke the build like: \textit{scons  eclipsedir=/path/to/eclipsedir}. After the first run, the path is cached and you won't need to specify it anymore.
     \item The directory ``wesnoth\_umc\_dev" will contain now the built plugin as zip archives, while the ``update\_site" directory will contain the update site for the plugin.
   \end{enumerate}
 \end{enumerate}
