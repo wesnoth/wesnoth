@@ -18,25 +18,25 @@
 
         <!-- clear previous builds -->
         <delete quiet="true">
-			<fileset dir="${basedir}/update_site"/>
+			<fileset dir="${updatesDir}"/>
         </delete>
         <delete quiet="true">
-			<fileset dir="${basedir}/${buildLabel}"/>
+			<fileset dir="${binariesDir}/${buildLabel}"/>
         </delete>
 
         <ant antfile="${eclipse.pdebuild.scripts}/productBuild/productBuild.xml" />
 
-        <move todir="${basedir}/${buildLabel}">
+        <move todir="${binariesDir}/${buildLabel}">
             <fileset dir="${buildDirectory}/${buildLabel}" includes="*.zip"/>
         </move>
 
-    	<move todir="${basedir}/update_site">
+    	<move todir="${updatesDir}">
     	     <fileset dir="${buildDirectory}/repository"/>
         </move>
 
         <!-- remove non-wesnoth plugins -->
         <delete>
-            <fileset dir="${basedir}/update_site/plugins">
+            <fileset dir="${updatesDir}/plugins">
             	<exclude name="org.wesnoth*"/>
         	</fileset>
         </delete>

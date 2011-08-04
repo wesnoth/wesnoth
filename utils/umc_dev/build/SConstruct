@@ -19,12 +19,19 @@ if os.path.exists('.scons-option-cache'):
 opts = Variables( ".scons-option-cache" )
 opts.AddVariables(
     PathVariable( "eclipsedir", "The directory that contains the eclipse binary and all the needed plugins",
-                    "", PathVariable.PathIsDir )
+                "", PathVariable.PathIsDir ),
+    PathVariable( "updatesdir", "The directory that should contain the updates for the plugin",
+                os.getcwd() , PathVariable.PathAccept ),
+    PathVariable( "binariesdir", "The directory that should contain the binaries for the plugin",
+                os.getcwd() , PathVariable.PathAccept )
 )
 env = Environment( options = opts )
 opts.Save( '.scons-option-cache', env )
 
 eclipse_dir = env[ "eclipsedir" ]
+updates_dir = env[ "updatesdir" ]
+binaries_dir = env[ "binariesdir" ]
+
 temp_build_dir = os.environ[ "TMP" ] + "/umcdev_build"
 
 print "Clearing temporary build dir ( " + temp_build_dir + " ) ..."
@@ -67,6 +74,8 @@ subprocess.call( [
     "-DbuildDirectory=" + temp_build_dir,
     "-Dbase=" + eclipse_dir,
     "-DbaseLocation=" + eclipse_dir,
+    "-DupdatesDir=" + updates_dir,
+    "-DbinariesDir=" + binaries_dir,
     "-Ddeltapack=" + eclipse_dir,
     "-Declipse.pdebuild.scripts=" + pde_build_dir + "/scripts",
     "-Declipse.pdebuild.templates=" + pde_build_dir + "/templates",
