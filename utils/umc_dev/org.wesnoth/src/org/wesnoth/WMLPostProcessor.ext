@@ -22,6 +22,14 @@ process( EClass this ):
         createCardinalityOperation( "is_Optional", '?' ) ->
         createCardinalityOperation( "is_Repeatable", '*' ) ->
         
+        createOperation( "getAllowedCount",
+            "switch( _Cardinality ) {
+                case '-': return 0;
+                case '?': case '1':  return 1;
+            }
+            // by default let it be infinite times
+            return Integer.MAX_VALUE;", eint() ) ->
+        
         createOperation( "isWMLTag", 
             "return ( this instanceof WMLTag );", eboolean() ) ->
         createOperation( "asWMLTag", 
@@ -124,6 +132,7 @@ create EClass ESerializable() :
 EDataType estring(): ecoreType( "EString" );
 EDataType echar(): ecoreType( "EChar" );
 EDataType eboolean(): ecoreType( "EBoolean" );
+EDataType eint(): ecoreType( "EInt" );
 
 EClass wmlClass( String name ):
     wmlPackage().getEClassifier( name );

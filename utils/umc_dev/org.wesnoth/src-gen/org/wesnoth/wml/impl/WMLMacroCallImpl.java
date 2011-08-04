@@ -318,6 +318,21 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
    * <!-- end-user-doc -->
    * @generated
    */
+  public int getAllowedCount()
+  {
+    switch( _Cardinality ) {
+                    case '-': return 0;
+                    case '?': case '1':  return 1;
+                }
+                // by default let it be infinite times
+                return Integer.MAX_VALUE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public boolean isWMLTag()
   {
     return ( this instanceof WMLTag );

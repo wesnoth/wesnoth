@@ -908,6 +908,8 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
 
     addEOperation(wmlExpressionEClass, ecorePackage.getEBoolean(), "is_Repeatable", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+    addEOperation(wmlExpressionEClass, ecorePackage.getEInt(), "getAllowedCount", 0, 1, IS_UNIQUE, IS_ORDERED);
+
     addEOperation(wmlExpressionEClass, ecorePackage.getEBoolean(), "isWMLTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 
     addEOperation(wmlExpressionEClass, this.getWMLTag(), "asWMLTag", 0, 1, IS_UNIQUE, IS_ORDERED);

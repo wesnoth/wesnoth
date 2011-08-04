@@ -116,6 +116,15 @@ public interface WMLExpression extends WMLValuedExpression
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @model kind="operation"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='switch( _Cardinality ) {\n                case \'-\': return 0;\n                case \'?\': case \'1\':  return 1;\n            }\n            // by default let it be infinite times\n            return Integer.MAX_VALUE;'"
+   * @generated
+   */
+  int getAllowedCount();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation"
    *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return ( this instanceof WMLTag );'"
    * @generated
    */

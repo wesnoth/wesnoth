@@ -110,6 +110,11 @@
         <details key="body" value="return _Cardinality == '*';"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="getAllowedCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="switch( _Cardinality ) {&#xA;                case '-': return 0;&#xA;                case '?': case '1':  return 1;&#xA;            }&#xA;            // by default let it be infinite times&#xA;            return Integer.MAX_VALUE;"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="isWMLTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="body" value="return ( this instanceof WMLTag );"/>
