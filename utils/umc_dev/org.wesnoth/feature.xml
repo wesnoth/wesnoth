@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.wesnoth.feature"
+      id="org.wesnoth"
       label="Wesnoth User Made Content Plugin"
       version="1.0.3"
       provider-name="www.wesnoth.org"
@@ -215,10 +215,6 @@ litigation.
       <discovery label="Update site" url="http://eclipse.wesnoth.org/"/>
    </url>
 
-   <includes
-         id="org.eclipse.equinox.p2.user.ui"
-         version="0.0.0"/>
-
    <requires>
       <import plugin="org.eclipse.xtext"/>
       <import plugin="org.eclipse.xtext.util"/>
@@ -259,6 +255,62 @@ litigation.
 
    <plugin
          id="org.wesnoth.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.commons.lang"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ui.views.log"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtend.shared.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe.utils"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.commons.cli"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe2.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

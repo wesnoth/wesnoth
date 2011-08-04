@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Wesnoth UMC Dev" uid="org.wesnoth.product" id="org.wesnoth.product" application="org.wesnoth.application" version="1.0.3" useFeatures="false" includeLaunchers="true">
+<product name="Wesnoth UMC Dev" uid="org.wesnoth.product" id="org.wesnoth.product" application="org.wesnoth.application" version="1.0.3" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.wesnoth/icons/wesnoth-about.png"/>
@@ -401,11 +401,19 @@ litigation.
    </plugins>
 
    <features>
-      <feature id="org.eclipse.equinox.executable"/>
-      <feature id="org.wesnoth.feature" version="1.0.3"/>
-      <feature id="org.eclipse.rcp" version="3.6.2.r362_v20101104-9SAxFMKFkSAqi8axkv1ZjegmiBLY"/>
-      <feature id="org.eclipse.equinox.p2.discovery.feature" version="1.0.1.R36x_v20110210-4-09oB5865H6L02434"/>
-      <feature id="org.eclipse.equinox.p2.user.ui" version="2.0.1.r361_v20100903-897HFa-FX0z-z-ntoaavz0JPX628"/>
+      <feature id="org.eclipse.platform" version="3.7.0.v20110530-9gF7UHNFFt4cwE-pkZDJ7oz-mj4OSEIlu9SEv0f"/>
+      <feature id="org.eclipse.rcp" version="3.7.0.v20110216-9DB5Fm1FpBGy_AaVz-mFamgY"/>
+      <feature id="org.eclipse.xpand" version="1.1.0.v201106070515"/>
+      <feature id="org.eclipse.xtend" version="1.1.0.v201106070515"/>
+      <feature id="org.eclipse.jdt" version="3.7.0.v20110520-0800-7z8gFchFMTdFYKuLqBLqRja9B15B"/>
+      <feature id="org.eclipse.emf.codegen" version="2.7.0.v20110606-0949"/>
+      <feature id="org.eclipse.emf.codegen.ecore" version="2.7.0.v20110606-0949"/>
+      <feature id="org.eclipse.emf.common" version="2.7.0.v20110605-0747"/>
+      <feature id="org.eclipse.emf.ecore" version="2.7.0.v20110605-0747"/>
+      <feature id="org.eclipse.emf" version="2.7.0.v20110606-0949"/>
+      <feature id="org.eclipse.xtext.ui" version="2.0.0.v201106070531"/>
+      <feature id="org.eclipse.xtext.runtime" version="2.0.0.v201106070531"/>
+      <feature id="org.wesnoth" version="1.0.3"/>
    </features>
 
    <configurations>
