@@ -412,7 +412,7 @@ namespace
 				, numbers_(numbers)
 			{}
 
-		void operator()() {visit_all();}
+		using enable_visit_all<draw_visitor>::visit_all;
 
 	private:
 		//"Inherited" from enable_visit_all
@@ -434,7 +434,7 @@ void manager::draw_hex(const map_location& hex)
 		//Info about the action numbers to be displayed on screen.
 		side_actions::numbers_t numbers;
 
-		draw_visitor(hex,numbers)();
+		draw_visitor(hex,numbers).visit_all();
 
 		draw_numbers(hex,numbers); //< helper fcn
 	}
