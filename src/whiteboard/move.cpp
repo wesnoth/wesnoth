@@ -221,21 +221,26 @@ void move::accept(visitor& v)
 	v.visit_move(shared_from_this());
 }
 
-action::EXEC_RESULT move::execute()
+void move::execute(bool& success, bool& complete)
 {
-	if (!valid_)
-		return action::FAIL;
+	if (!valid_) {
+		success = complete = false;
+		return;
+	}
 
-	if (get_source_hex() == get_dest_hex())
-		return action::SUCCESS; //zero-hex move, used by attack subclass
+	if (get_source_hex() == get_dest_hex()) {
+		//zero-hex move, used by attack subclass
+		success = complete = true;
+		return;
+	}
 
 	//Ensure destination hex is free
-	if (get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != NULL)
-		return action::FAIL;
+	if (get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != NULL) {
+		success = complete = false;
+		return;
+	}
 
 	LOG_WB << "Executing: " << shared_from_this() << "\n";
-
-	action::EXEC_RESULT result = action::FAIL;
 
 	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
 	hide_fake_unit();
@@ -264,7 +269,7 @@ action::EXEC_RESULT move::execute()
 	if (final_location == route_->steps.front())
 	{
 		LOG_WB << "Move execution resulted in zero movement.\n";
-		result = action::FAIL;
+		success = complete = false;
 	}
 	else if (final_location.valid() &&
 			(unit_it = resources::units->find(final_location)) != resources::units->end()
@@ -272,6 +277,8 @@ action::EXEC_RESULT move::execute()
 	{
 		if (steps_finished && route_->steps.back() == final_location) //reached destination
 		{
+			complete = true;
+
 			//check if new enemies are now visible
 			if(enemy_sighted
 					|| mouse_handler.get_adj_enemies(final_location,side_number()) != adj_enemies)
@@ -280,10 +287,10 @@ action::EXEC_RESULT move::execute()
 				//reset to a single-hex path, just in case *this is a wb::attack
 				arrow_.reset();
 				route_->steps = std::vector<map_location>(1,route_->steps.back());
-				result = action::PARTIAL;
+				success = false;
 			}
 			else // Everything went smoothly
-				result = action::SUCCESS;
+				success = true;
 		}
 		else // Move was interrupted, probably by enemy unit sighted
 		{
@@ -307,26 +314,26 @@ action::EXEC_RESULT move::execute()
 				//FIXME: probably better to use the new calculate_new_route instead of doing this
 				route_->steps = new_path;
 				arrow_->set_path(new_path);
+				success = complete = false;
 			}
 			else //Unit ended up in location outside path, likely due to a WML event
 			{
-				result = action::SUCCESS;
 				WRN_WB << "Unit ended up in location outside path during move execution.\n";
+				success = complete = true;
 			}
 		}
 	}
 	else //Unit disappeared from the map, likely due to a WML event
 	{
-		result = action::SUCCESS;
 		WRN_WB << "Unit disappeared from map during move execution.\n";
+		success = complete = true;
 	}
 
-	if(result == action::FAIL)
+	if(!complete)
 	{
 		set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 		show_fake_unit();
 	}
-	return result;
 }
 
 map_location move::get_source_hex() const

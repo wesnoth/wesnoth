@@ -107,31 +107,31 @@ void attack::accept(visitor& v)
 	v.visit_attack(boost::static_pointer_cast<attack>(shared_from_this()));
 }
 
-action::EXEC_RESULT attack::execute()
+void attack::execute(bool& success, bool& complete)
 {
-	if (!valid_)
-		return action::FAIL;
-
 	//Never continue an execute-all after an attack
-	action::EXEC_RESULT result = action::PARTIAL;
+	success = false;
+
+	if (!valid_) {
+		complete = false;
+		return;
+	}
 
 	LOG_WB << "Executing: " << shared_from_this() << "\n";
 
 	if (route_->steps.size() >= 2)
 	{
-		if(move::execute() != action::SUCCESS)
-		{
+		bool m_success, m_complete;
+		move::execute(m_success,m_complete);
+		if(!m_success) {
 			//Move failed for some reason, so don't attack.
-			result = action::FAIL;
+			complete = false;
+			return;
 		}
 	}
 
-	if (result != action::FAIL)
-	{
-		resources::controller->get_mouse_handler_base().attack_enemy(get_dest_hex(), get_target_hex(), weapon_choice_);
-		//only path that doesn't return action::FAIL
-	}
-	return result;
+	resources::controller->get_mouse_handler_base().attack_enemy(get_dest_hex(), get_target_hex(), weapon_choice_);
+	complete = true;
 }
 
 void attack::apply_temp_modifier(unit_map& unit_map)

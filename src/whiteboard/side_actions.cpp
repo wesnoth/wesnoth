@@ -162,9 +162,10 @@ bool side_actions::execute(side_actions::iterator position)
 
 	LOG_WB << "Before execution, " << *this << "\n";
 	action_ptr action = *position;
-	action::EXEC_RESULT exec_result;
+	bool result;
+	bool should_erase;
 	try	{
-		 exec_result = action->execute();
+		 action->execute(result,should_erase);
 	} catch (end_turn_exception&) {
 		resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_remove(position));
 		actions_.erase(position);
@@ -176,33 +177,26 @@ bool side_actions::execute(side_actions::iterator position)
 	if(resources::whiteboard->should_clear_undo())
 		resources::whiteboard->clear_undo();
 
-	if(exec_result!=action::FAIL)
+	LOG_WB << "After " << (result? "successful": "failed") << " execution ";
+	if(should_erase)
 	{
+		LOG_WB << "with deletion, ";
 		resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_remove(position));
 		actions_.erase(position);
 	}
 	else //action may have revised itself; let's tell our allies.
+	{
+		LOG_WB << "without deletion, ";
 		resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_replace(position,*position));
 
-	switch(exec_result)
-	{
-	case action::SUCCESS:
-		LOG_WB << "After execution and deletion, " << *this << "\n";
-		break;
-	case action::PARTIAL:
-		LOG_WB << "After failed execution *with* deletion, " << *this << "\n";
-		break;
-	case action::FAIL:
 		//Idea that needs refining: move action at the end of the queue if it failed executing:
 			//actions_.erase(position);
 			//actions_.insert(end(), action);
-
-		LOG_WB << "After failed execution *without* deletion, " << *this << "\n";
-		break;
 	}
+	LOG_WB << *this << "\n";
 
 	validate_actions();
-	return exec_result == action::SUCCESS;
+	return result;
 }
 
 void side_actions::hide()

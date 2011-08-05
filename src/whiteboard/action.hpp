@@ -43,12 +43,12 @@ public:
 
 	virtual void accept(visitor& v) = 0;
 
-	enum EXEC_RESULT {
-		FAIL //< Don't delete this, and don't continue execution
-		, PARTIAL //< Delete this, but don't continue execution
-		, SUCCESS //< Delete this, and continue execution
-	};
-	virtual EXEC_RESULT execute() = 0;
+	/**
+	 * Output parameters:
+	 *   success:  Whether or not to continue an execute-all after this execution
+	 *   complete: Whether or not to delete this action after execution
+	 */
+	virtual void execute(bool& success, bool& complete) = 0;
 
 	/** Applies temporarily the result of this action to the specified unit map. */
 	virtual void apply_temp_modifier(unit_map& unit_map) = 0;

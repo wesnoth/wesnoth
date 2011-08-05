@@ -46,7 +46,7 @@ public:
 
 	virtual void accept(visitor& v);
 
-	virtual action::EXEC_RESULT execute();
+	virtual void execute(bool& success, bool& complete);
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit* get_unit() const { return unit_; }

@@ -111,7 +111,7 @@ void recall::accept(visitor& v)
 	v.visit_recall(shared_from_this());
 }
 
-action::EXEC_RESULT recall::execute()
+void recall::execute(bool& success, bool& complete)
 {
 	assert(valid_);
 	assert(temp_unit_);
@@ -119,7 +119,7 @@ action::EXEC_RESULT recall::execute()
 	resources::controller->get_menu_handler().do_recall(*temp_unit_, team_index() + 1, recall_hex_);
 	delete temp_unit_;
 	temp_unit_ = NULL;
-	return action::SUCCESS;
+	success = complete = true;
 }
 
 void recall::apply_temp_modifier(unit_map& unit_map)

@@ -41,7 +41,7 @@ public:
 
 	virtual void accept(visitor& v);
 
-	virtual action::EXEC_RESULT execute();
+	virtual void execute(bool& success, bool& complete);
 
 	/** Applies temporarily the result of this action to the specified unit map. */
 	virtual void apply_temp_modifier(unit_map& unit_map);
