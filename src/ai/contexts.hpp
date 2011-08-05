@@ -50,6 +50,9 @@ namespace ai {
 class interface;
 class ai_context;
 
+typedef ai_context* ai_context_ptr;
+
+
 // recursion counter
 class recursion_counter {
 public:

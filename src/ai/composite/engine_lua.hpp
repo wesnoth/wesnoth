@@ -59,12 +59,12 @@ public:
 	 */
 	virtual config to_config() const;
 
-	/**
-	 * Method to inject AI context into the engine.
-	 * The context includes all that in necessary for the AI -
-	 * , like access to game state and movement/attack routines.
-	 */
-	virtual void set_ai_context(ai_context *context);
+// 	/**
+// 	 * Method to inject AI context into the engine.
+// 	 * The context includes all that in necessary for the AI -
+// 	 * , like access to game state and movement/attack routines.
+// 	 */
+// 	virtual void set_ai_context(ai_context *context);
 
 private:
 
@@ -72,7 +72,7 @@ private:
 	 * The underlying lua code
 	 */
 	std::string code_;
-
+	
 	//There is one lua engine per AI. So, it can hold state
 	boost::shared_ptr<lua_ai_context> lua_ai_context_;
 

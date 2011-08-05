@@ -266,12 +266,6 @@ std::string engine_lua::evaluate(const std::string &/*str*/)
 	return "";
 }
 
-
-void engine_lua::set_ai_context(ai_context * /*context*/)
-{
-	//this function is called when the ai is fully initialized
-}
-
 config engine_lua::to_config() const
 {
 	config cfg = engine::to_config();

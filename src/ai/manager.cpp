@@ -37,6 +37,7 @@
 #include <map>
 #include <stack>
 #include <vector>
+#include "composite/engine.hpp"
 
 namespace ai {
 
@@ -95,7 +96,13 @@ void holder::init( side_number side )
 			modify_ai(mod_ai);
 		}
 		cfg_.clear_children("modify_ai");
-
+		
+		std::vector<engine_ptr> engines = ai_->get_engines();
+		for (std::vector<engine_ptr>::iterator it = engines.begin(); it != engines.end(); ++it)
+		{
+			(*it)->set_ai_context(&(ai_->get_ai_context()));
+		}
+		
 	} else {
 		ERR_AI_MANAGER << describe_ai()<<"AI lazy initialization error!" << std::endl;
 	}

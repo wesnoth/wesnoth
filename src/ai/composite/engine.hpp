@@ -84,9 +84,9 @@ public:
 	/**
 	 * set ai context (which is not available during early initialization)
 	 */
-	virtual void set_ai_context(ai_context *context);
+	virtual void set_ai_context(ai_context_ptr context);
 
-
+	virtual ai_context_ptr get_ai_context();
 	/**
 	 * serialize
 	 */
@@ -104,6 +104,7 @@ public:
 
 protected:
 	readonly_context &ai_;
+	ai_context_ptr ai_context_;
 
 	/** name of the engine which has created this engine*/
 	std::string engine_;

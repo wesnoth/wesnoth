@@ -119,9 +119,14 @@ std::string engine::evaluate(const std::string& /*str*/)
 	return "evaluate command is not implemented by this engine";
 }
 
-void engine::set_ai_context(ai_context * /*context*/)
+void engine::set_ai_context(ai_context_ptr ai_context)
 {
-	//do nothing
+	ai_context_ = ai_context;
+}
+
+ai_context_ptr engine::get_ai_context()
+{
+	return ai_context_;
 }
 
 config engine::to_config() const

@@ -47,6 +47,7 @@
 #include "../../unit.hpp"
 #include "../actions.hpp"
 #include "../composite/engine_lua.hpp"
+#include "../composite/contexts.hpp"
 #include <lua/llimits.h>
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
@@ -57,6 +58,8 @@ static char const aisKey     = 0;
 
 namespace ai {
 
+static void push_map_location(lua_State *L, const map_location& ml);
+	
 void lua_ai_context::init(lua_State *L)
 {
 	// Create the ai elements table.
@@ -277,6 +280,42 @@ static int cfun_ai_execute_recall(lua_State *L)
 	return transform_ai_action(L,recall_result);
 }
 
+// Goals and targets
+
+
+static int cfun_ai_get_targets(lua_State *L)
+{
+	move_map enemy_dst_src = get_readonly_context(L).get_enemy_dstsrc();
+	std::vector<target> targets = get_engine(L).get_ai_context()->find_targets(enemy_dst_src);
+	int i = 1;
+	
+	lua_createtable(L, 0, 0);
+	for (std::vector<target>::iterator it = targets.begin(); it != targets.end(); it++)
+	{
+		lua_pushinteger(L, i);
+		
+		//to factor out
+		lua_createtable(L, 3, 0);
+		
+		
+		lua_pushstring(L, "type");
+		lua_pushnumber(L, it->type);
+		lua_rawset(L, -3);
+		
+		lua_pushstring(L, "loc");
+		push_map_location(L, it->loc);
+		lua_rawset(L, -3);
+		
+		lua_pushstring(L, "value");
+		lua_pushnumber(L, it->value);
+		lua_rawset(L, -3);
+		
+		lua_rawset(L, -3);
+		++i;
+	}
+	return 1;
+}
+
 // Aspect section
 static int cfun_ai_get_aggression(lua_State *L)
 {
@@ -446,11 +485,11 @@ static void push_map_location(lua_State *L, const map_location& ml)
 	lua_createtable(L, 2, 0);
 
 	lua_pushstring(L, "x");
-	lua_pushinteger(L, ml.x);
+	lua_pushinteger(L, ml.x + 1);
 	lua_rawset(L, -3);
 
 	lua_pushstring(L, "y");
-	lua_pushinteger(L, ml.y);
+	lua_pushinteger(L, ml.y + 1);
 	lua_rawset(L, -3);
 }
 
@@ -538,6 +577,9 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ "get_enemy_dstsrc", 		&cfun_ai_get_enemy_dstsrc		},
 		{ "get_enemy_srcdst", 		&cfun_ai_get_enemy_srcdst		},
 		// End of move maps
+		// Goals and targets
+		{ "get_targets",		&cfun_ai_get_targets			},
+		// End of G & T
 		// Aspects
 		{ "get_aggression", 		&cfun_ai_get_aggression           	},
 		{ "get_avoid", 			&cfun_ai_get_avoid			},
