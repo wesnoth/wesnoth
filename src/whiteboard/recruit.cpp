@@ -105,10 +105,10 @@ void recruit::accept(visitor& v)
 void recruit::execute(bool& success, bool& complete)
 {
 	assert(valid_);
-	fake_unit_.reset();
-	int side_num = team_index() + 1;
-	resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, recruit_hex_);
-	success = complete = true;
+	temporary_unit_hider const raii(*fake_unit_);
+	int const side_num = team_index() + 1;
+	bool const result = resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, recruit_hex_);
+	success = complete = result;
 }
 
 void recruit::apply_temp_modifier(unit_map& unit_map)

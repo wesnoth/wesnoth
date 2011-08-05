@@ -58,6 +58,12 @@ unit* future_visible_unit(map_location hex, int viewer_side = wb::viewer_side())
 /// @param on_side Only search for units of this side.
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side = wb::viewer_side());
 
+struct temporary_unit_hider {
+	temporary_unit_hider(unit& u);
+	~temporary_unit_hider();
+	unit* const unit_;
+};
+
 } //end namespace wb
 
 #endif /* WB_UTILITY_HPP_ */

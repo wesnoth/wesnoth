@@ -115,11 +115,9 @@ void recall::execute(bool& success, bool& complete)
 {
 	assert(valid_);
 	assert(temp_unit_);
-	fake_unit_.reset();
-	resources::controller->get_menu_handler().do_recall(*temp_unit_, team_index() + 1, recall_hex_);
-	delete temp_unit_;
-	temp_unit_ = NULL;
-	success = complete = true;
+	temporary_unit_hider const raii(*fake_unit_);
+	bool const result = resources::controller->get_menu_handler().do_recall(*temp_unit_, team_index() + 1, recall_hex_);
+	success = complete = result;
 }
 
 void recall::apply_temp_modifier(unit_map& unit_map)

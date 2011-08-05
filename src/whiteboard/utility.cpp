@@ -105,5 +105,11 @@ unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
 		return NULL;
 }
 
+temporary_unit_hider::temporary_unit_hider(unit& u)
+		: unit_(&u)
+	{unit_->set_hidden(true);}
+temporary_unit_hider::~temporary_unit_hider()
+	{unit_->set_hidden(false);}
+
 } //end namespace wb
 
