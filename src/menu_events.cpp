@@ -758,7 +758,7 @@ void menu_handler::repeat_recruit(int side_num, const map_location &last_hex)
 		do_recruit(last_recruit_, side_num, last_hex);
 }
 
-void menu_handler::do_recruit(const std::string &name, int side_num,
+bool menu_handler::do_recruit(const std::string &name, int side_num,
 	const map_location &last_hex)
 {
 	team &current_team = teams_[side_num - 1];
@@ -769,7 +769,7 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 
 	for(std::set<std::string>::const_iterator r = recruits.begin(); ; ++r) {
 		if (r == recruits.end()) {
-			return;
+			return false;
 		}
 
 		if (name == *r) {
@@ -785,7 +785,7 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 		if (u_type->cost() > current_team.gold() - resources::whiteboard->get_spent_gold_for(side_num)) {
 			gui2::show_transient_message(gui_->video(), "",
 				_("You don’t have enough gold to recruit that unit"));
-			return;
+			return false;
 		}
 	} // end planned unit map scope
 
@@ -799,7 +799,7 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 	} // end planned unit map scope
 	if (!msg.empty()) {
 		gui2::show_transient_message(gui_->video(), "", msg);
-		return;
+		return false;
 	}
 
 	if (!resources::whiteboard->save_recruit(name, side_num, loc)) {
@@ -830,7 +830,9 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 		gui_->invalidate_game_status();
 		gui_->invalidate_all();
 		recorder.add_checksum_check(loc);
+		return true;
 	}
+	return false;
 }
 
 void menu_handler::recall(int side_num, const map_location &last_hex)
@@ -1011,7 +1013,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 }
 
-void menu_handler::do_recall(const unit& un, int side_num, const map_location& recall_location)
+bool menu_handler::do_recall(const unit& un, int side_num, const map_location& recall_location)
 {
 	team &current_team = teams_[side_num - 1];
 	std::vector<unit>& recall_list_team = current_team.recall_list();
@@ -1023,7 +1025,7 @@ void menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 	if (it == recall_list_team.end())
 	{
 		ERR_NG << "menu_handler::do_recall(): Unit doesn't exist in recall list.\n";
-		return;
+		return false;
 	}
 
 	recall_list_team.erase(it);
@@ -1044,6 +1046,7 @@ void menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
 	recorder.add_checksum_check(recall_location);
+	return true;
 }
 
 void menu_handler::undo(int side_num)
