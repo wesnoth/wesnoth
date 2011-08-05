@@ -793,6 +793,9 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 		}
 	}
 
+	//copy ínformation what this unit is able to recall
+	new_cfg.add_child("filter_recall", old_cfg.child_or_empty("filter_recall"));
+
 	if(t->movement_type().get_parent()) {
 		new_cfg.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
