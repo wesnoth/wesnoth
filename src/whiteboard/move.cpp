@@ -245,14 +245,13 @@ void move::execute(bool& success, bool& complete)
 	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
 	hide_fake_unit();
 
-	events::mouse_handler const& mouse_handler = resources::controller->get_mouse_handler_base();
+	events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
 	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), side_number());
 
 	map_location final_location;
 	bool steps_finished;
 	bool enemy_sighted;
 	{
-		events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
 		team const& owner_team = resources::teams->at(team_index());
 		try {
 			steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates(), &enemy_sighted);
@@ -262,7 +261,10 @@ void move::execute(bool& success, bool& complete)
 		}
 		// final_location now contains the final unit location
 		// if that isn't needed, pass NULL rather than &final_location
+		// Also, enemy_sighted now tells whether a unit was sighted during the move
 	}
+	if(mouse_handler.get_adj_enemies(final_location,side_number()) != adj_enemies)
+		enemy_sighted = true; //< "ambushed" on last hex
 
 	unit_map::const_iterator unit_it;
 
@@ -280,8 +282,7 @@ void move::execute(bool& success, bool& complete)
 			complete = true;
 
 			//check if new enemies are now visible
-			if(enemy_sighted
-					|| mouse_handler.get_adj_enemies(final_location,side_number()) != adj_enemies)
+			if(enemy_sighted)
 			{
 				LOG_WB << "Move completed, but interrupted on final hex. Halting.\n";
 				//reset to a single-hex path, just in case *this is a wb::attack
@@ -306,7 +307,6 @@ void move::execute(bool& success, bool& complete)
 			}
 			if (found)
 			{
-				get_source_hex() = final_location;
 				--start_new_path; //since the for loop incremented the iterator once after we found the right one.
 				std::vector<map_location> new_path(start_new_path, route_->steps.end());
 				LOG_WB << "Setting new path for this move from (" << new_path.front()
