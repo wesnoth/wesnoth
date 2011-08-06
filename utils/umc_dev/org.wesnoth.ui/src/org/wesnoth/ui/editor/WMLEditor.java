@@ -10,7 +10,10 @@ package org.wesnoth.ui.editor;
 
 import java.io.File;
 
-import org.apache.log4j.Level;
+import org.wesnoth.Logger;
+import org.wesnoth.WesnothPlugin;
+import org.wesnoth.ui.Messages;
+
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.filesystem.URIUtil;
@@ -50,9 +53,8 @@ import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingHelper;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
-import org.wesnoth.Logger;
-import org.wesnoth.WesnothPlugin;
-import org.wesnoth.ui.Messages;
+
+import org.apache.log4j.Level;
 
 import com.google.inject.Inject;
 
@@ -262,7 +264,6 @@ public class WMLEditor extends XtextEditor
 
 			// path in project that is the same as the external file's path
 			IFile linkFile = project.getFile(uri.getPath());
-			System.out.println(linkFile);
 			if(linkFile.exists())
 				linkFile.refreshLocal(1, null); // don't know if needed (or should be avoided...)
 			else {
