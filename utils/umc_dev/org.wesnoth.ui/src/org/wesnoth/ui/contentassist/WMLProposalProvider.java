@@ -165,14 +165,12 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         for( Entry< String, Define > define: projectCache_.getDefines( )
                 .entrySet( ) ) {
             StringBuilder proposal = new StringBuilder( 10 );
-            if( ruleProposal == true )
-             {
+            if( ruleProposal == true ) {
                 proposal.append( "{" ); //$NON-NLS-1$
             }
             proposal.append( define.getKey( ) );
 
-            for( String arg: define.getValue( ).getArguments( ) )
-             {
+            for( String arg: define.getValue( ).getArguments( ) ) {
                 proposal.append( " " + arg ); //$NON-NLS-1$
             }
             proposal.append( "}" ); //$NON-NLS-1$
@@ -193,7 +191,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         String keyName = key.getName( );
 
         // handle the next_scenario and first_scenario
-        if( keyName.equals( "next_scenario" ) || //$NON-NLS-1$
+        if( keyName.equals( "next_scenario" ) || //$NON-NLS-1$ 
                 keyName.equals( "first_scenario" ) ) //$NON-NLS-1$
         {
             for( WMLConfig config: projectCache_.getWMLConfigs( ).values( ) ) {
@@ -201,8 +199,8 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                     continue;
                 }
                 acceptor.accept( createCompletionProposal( config.ScenarioId,
-                        config.ScenarioId, SCENARIO_VALUE_IMAGE,
-                        context, KEY_VALUE_PRIORITY ) );
+                        config.ScenarioId, SCENARIO_VALUE_IMAGE, context,
+                        KEY_VALUE_PRIORITY ) );
             }
         }
         else if( model.eContainer( ) != null
@@ -381,7 +379,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
     /**
      * Returns the proposal for the specified tag, usign the specified indent
-     *
+     * 
      * @param tag
      *            The tag from which to construct the proposal
      * @param indent
@@ -395,8 +393,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             boolean ruleProposal, ContentAssistContext context )
     {
         StringBuilder proposal = new StringBuilder( );
-        if( ruleProposal )
-         {
+        if( ruleProposal ) {
             proposal.append( "[" ); //$NON-NLS-1$
         }
         proposal.append( tag.getName( ) );

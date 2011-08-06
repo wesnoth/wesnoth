@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,7 @@ import org.wesnoth.wml.WMLVariable;
  * A class that stores some project specific infos
  * for current session.
  * Some of the fields of this cache can be saved to disk
- *
+ * 
  * @see ProjectCache#saveCache()
  */
 public class ProjectCache implements Serializable
@@ -56,7 +56,6 @@ public class ProjectCache implements Serializable
     private Map< String, WMLConfig >        configFiles_;
     private DependencyListBuilder           dependTree_;
     private Map< String, WMLVariable >      variables_;
-    private Set< String >                   events_;
 
     public ProjectCache( IProject project )
     {
@@ -66,7 +65,6 @@ public class ProjectCache implements Serializable
         defines_ = new HashMap< String, Define >( );
         variables_ = new HashMap< String, WMLVariable >( );
         properties_ = new HashMap< String, String >( );
-        events_ = new HashSet< String >( );
 
         dependTree_ = new DependencyListBuilder( project_ );
 
@@ -80,7 +78,7 @@ public class ProjectCache implements Serializable
 
     /**
      * Gets the properties map for this project.
-     *
+     * 
      * @return A map with properties of the project
      */
     public Map< String, String > getProperties( )
@@ -92,7 +90,7 @@ public class ProjectCache implements Serializable
      * Gets the map with the WMLConfigs
      * The key represent the filenames of the files
      * and the value the scenarioId from that file
-     *
+     * 
      * @return A map with key the file path and value the WMLConfig
      */
     public Map< String, WMLConfig > getWMLConfigs( )
@@ -103,9 +101,9 @@ public class ProjectCache implements Serializable
     /**
      * Gets the WMLConfig by the specified file project-relative path.
      * If the WMLConfig doesn't exist it will be created
-     *
+     * 
      * @param path
-     *            The project-relative path for the file.
+     *        The project-relative path for the file.
      * @return
      */
     public WMLConfig getWMLConfig( String path )
@@ -121,7 +119,7 @@ public class ProjectCache implements Serializable
 
     /**
      * Returns the variables found in this project
-     *
+     * 
      * @return A multimap containing all the variables
      */
     public Map< String, WMLVariable > getVariables( )
@@ -172,7 +170,7 @@ public class ProjectCache implements Serializable
      * Saves:
      * - properties
      * - existing scenarios
-     *
+     * 
      * @return
      */
     public boolean saveCache( )
@@ -195,10 +193,10 @@ public class ProjectCache implements Serializable
 
     /**
      * Reads the defines files for this project
-     *
+     * 
      * @param force
-     *            Read the defines even if the defines file's contents
-     *            haven't changed since last time read.
+     *        Read the defines even if the defines file's contents
+     *        haven't changed since last time read.
      */
     public void readDefines( boolean force )
     {
@@ -217,22 +215,12 @@ public class ProjectCache implements Serializable
 
     /**
      * Returns the defines associated with this project
-     *
+     * 
      * @return
      */
     public Map< String, Define > getDefines( )
     {
         return defines_;
-    }
-
-    /**
-     * Returns the list of events available in the project
-     *
-     * @return A set with events as strings
-     */
-    public Set< String > getEvents( )
-    {
-        return events_;
     }
 
     /**
@@ -246,9 +234,9 @@ public class ProjectCache implements Serializable
 
     /**
      * Sets the new install used in the project
-     *
+     * 
      * @param newInstallName
-     *            The new install name
+     *        The new install name
      */
     public void setInstallName( String newInstallName )
     {
@@ -259,7 +247,7 @@ public class ProjectCache implements Serializable
 
     /**
      * Returns the current dependency tree builder for this project
-     *
+     * 
      * @return A dependency tree
      */
     public DependencyListBuilder getDependencyList( )
@@ -272,10 +260,10 @@ public class ProjectCache implements Serializable
      */
     public void clear( )
     {
-        properties_ = new HashMap< String, String >( );
-
+        properties_.clear( );
         configFiles_.clear( );
         defines_.clear( );
+        variables_.clear( );
         dependTree_ = new DependencyListBuilder( project_ );
 
         definesTimestamp_ = - 1;
@@ -284,8 +272,24 @@ public class ProjectCache implements Serializable
     }
 
     /**
+     * Returns the parsed Event names from the config files
+     * 
+     * @return A set with event names
+     */
+    public Set< String > getEvents( )
+    {
+        Set< String > result = new HashSet< String >( );
+
+        for( WMLConfig config: configFiles_.values( ) ) {
+            result.addAll( config.getEvents( ) );
+        }
+
+        return result;
+    }
+
+    /**
      * Returns the parsed WML Tags from all configs of this project
-     *
+     * 
      * @return A list of Tags
      */
     public Map< String, WMLTag > getWMLTags( )

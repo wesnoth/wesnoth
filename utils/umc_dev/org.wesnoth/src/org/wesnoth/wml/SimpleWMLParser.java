@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,6 @@ import com.google.common.base.Preconditions;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -34,17 +32,16 @@ import org.wesnoth.wml.WMLVariable.Scope;
  */
 public class SimpleWMLParser
 {
-    protected WMLConfig      config_;
-    protected WMLRoot        root_;
-    protected ProjectCache   projectCache_;
-    protected int            dependencyIndex_;
-    protected List< WMLTag > tags_;
+    protected WMLConfig    config_;
+    protected WMLRoot      root_;
+    protected ProjectCache projectCache_;
+    protected int          dependencyIndex_;
 
     /**
      * Creates a new parser for the specified file
-     *
+     * 
      * @param file
-     *            The file which to parse
+     *        The file which to parse
      */
     public SimpleWMLParser( IFile file )
     {
@@ -55,22 +52,20 @@ public class SimpleWMLParser
 
     /**
      * Creates a new parser and fills the specified config file
-     *
+     * 
      * @param file
-     *            The file which to parse
+     *        The file which to parse
      * @param config
-     *            The config to fill
+     *        The config to fill
      * @param projCache
-     *            The project cache (can be null) on which to reflect
-     *            the parsed data
+     *        The project cache (can be null) on which to reflect
+     *        the parsed data
      */
     public SimpleWMLParser( IFile file, WMLConfig config, ProjectCache projCache )
     {
         config_ = Preconditions.checkNotNull( config );
         root_ = ResourceUtils.getWMLRoot( file );
         projectCache_ = projCache;
-
-        tags_ = new ArrayList< WMLTag >( );
 
         dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
     }
@@ -101,6 +96,8 @@ public class SimpleWMLParser
 
         // clear tags
         config_.getWMLTags( ).clear( );
+        config_.getEvents( ).clear( );
+
         String currentFileLocation = root_.eResource( ).getURI( )
                 .toFileString( );
         if( currentFileLocation == null ) {
@@ -146,6 +143,20 @@ public class SimpleWMLParser
                                 || currentTagName.equals( "clear_variables" ) ) {
                             handleUnsetVariable( object );
                         }
+                        else if( currentTagName.equals( "event" ) ) {
+                            String eventName = key.getValue( );
+
+                            if( eventName.charAt( 0 ) == '"' ) {
+                                eventName = eventName.substring( 1 );
+                            }
+
+                            if( eventName.charAt( eventName.length( ) - 1 ) == '"' ) {
+                                eventName = eventName.substring( 0,
+                                        eventName.length( ) - 1 );
+                            }
+
+                            config_.getEvents( ).add( eventName );
+                        }
                     }
                 }
             }
@@ -168,7 +179,6 @@ public class SimpleWMLParser
                 config_.getWMLTags( ).putAll( luaParser.getTags( ) );
             }
         }
-        // TODO: parse custom events
     }
 
     protected String getVariableNameByContext( EObject context )
@@ -189,7 +199,6 @@ public class SimpleWMLParser
 
         return variableName;
     }
-
 
     protected void handleSetVariable( EObject context )
     {
@@ -213,8 +222,7 @@ public class SimpleWMLParser
 
         int nodeOffset = NodeModelUtils.getNode( context ).getTotalOffset( );
         for( Scope scope: variable.getScopes( ) ) {
-            if( scope.contains( dependencyIndex_, nodeOffset ) )
-             {
+            if( scope.contains( dependencyIndex_, nodeOffset ) ) {
                 return; // nothing to do
             }
         }
@@ -257,18 +265,8 @@ public class SimpleWMLParser
     }
 
     /**
-     * Returns the parsed tags
-     *
-     * @return A list of tags
-     */
-    public List< WMLTag > getParsedTags( )
-    {
-        return tags_;
-    }
-
-    /**
      * Returns the parsed WMLConfig
-     *
+     * 
      * @return Returns the parsed WMLConfig
      */
     public WMLConfig getParsedConfig( )
