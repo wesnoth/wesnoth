@@ -13,32 +13,35 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+
 import org.wesnoth.Messages;
 import org.wesnoth.wizards.WizardPageTemplate;
 
 
 public class WizardGeneratorPage404 extends WizardPageTemplate
 {
-	public WizardGeneratorPage404(String tag) {
-		super("wizardGeneratorPage404"); //$NON-NLS-1$
-		setErrorMessage(String.format(Messages.WizardGeneratorPage404_1,tag));
-		setTitle(Messages.WizardGeneratorPage404_3);
-		setDescription(Messages.WizardGeneratorPage404_4);
-	}
+    public WizardGeneratorPage404( String tag )
+    {
+        super( "wizardGeneratorPage404" ); //$NON-NLS-1$
+        setErrorMessage( String.format( Messages.WizardGeneratorPage404_1, tag ) );
+        setTitle( Messages.WizardGeneratorPage404_3 );
+        setDescription( Messages.WizardGeneratorPage404_4 );
+    }
 
-	@Override
-	public void createControl(Composite parent)
-	{
-		super.createControl(parent);
-		Composite container = new Composite(parent, SWT.NULL);
+    @Override
+    public void createControl( Composite parent )
+    {
+        super.createControl( parent );
+        Composite container = new Composite( parent, SWT.NULL );
 
-		setControl(container);
+        setControl( container );
 
-		Font font = new Font(Display.getDefault().getSystemFont().getDevice(),
-				Display.getDefault().getSystemFont().getFontData()[0].getName(), 20, SWT.NORMAL);
-		Label lblThisIsSooo = new Label(container, SWT.WRAP);
-		lblThisIsSooo.setFont(font);
-		lblThisIsSooo.setBounds(10, 89, 554, 137);
-		lblThisIsSooo.setText(Messages.WizardGeneratorPage404_5);
-	}
+        Font font = new Font( Display.getDefault( ).getSystemFont( )
+                .getDevice( ), Display.getDefault( ).getSystemFont( )
+                .getFontData( )[0].getName( ), 20, SWT.NORMAL );
+        Label lblThisIsSooo = new Label( container, SWT.WRAP );
+        lblThisIsSooo.setFont( font );
+        lblThisIsSooo.setBounds( 10, 89, 554, 137 );
+        lblThisIsSooo.setText( Messages.WizardGeneratorPage404_5 );
+    }
 }

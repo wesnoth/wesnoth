@@ -9,14 +9,15 @@
 package org.wesnoth.action;
 
 import org.eclipse.jface.action.IAction;
+
 import org.wesnoth.utils.GameUtils;
 
 
 public class OpenCampaignInGame extends ObjectActionDelegate
 {
-	@Override
-	public void run(IAction action)
-	{
-		GameUtils.runCampaign();
-	}
+    @Override
+    public void run( IAction action )
+    {
+        GameUtils.runCampaign( );
+    }
 }

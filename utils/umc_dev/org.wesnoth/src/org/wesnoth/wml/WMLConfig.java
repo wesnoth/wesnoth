@@ -18,53 +18,53 @@ import java.util.Map;
  */
 public class WMLConfig implements Serializable
 {
-	private static final long serialVersionUID = -4722231494864404935L;
+    private static final long     serialVersionUID = - 4722231494864404935L;
 
-    public String ScenarioId;
-	/**
-	 * True if there was a [scenario] tag present in the file.
-	 *
-	 * However The {@link WMLConfig#ScenarioId} may be null
-	 */
-	public boolean IsScenario;
+    public String                 ScenarioId;
+    /**
+     * True if there was a [scenario] tag present in the file.
+     * 
+     * However The {@link WMLConfig#ScenarioId} may be null
+     */
+    public boolean                IsScenario;
 
-	public String CampaignId;
-	/**
-	 * True if there was a [campaign] tag present in the file.
-	 *
-	 * However The {@link WMLConfig#CampaignId} may be null
-	 */
-	public boolean IsCampaign;
+    public String                 CampaignId;
+    /**
+     * True if there was a [campaign] tag present in the file.
+     * 
+     * However The {@link WMLConfig#CampaignId} may be null
+     */
+    public boolean                IsCampaign;
 
-	private String filename_;
-	private Map<String, WMLTag> tags_;
+    private String                filename_;
+    private Map< String, WMLTag > tags_;
 
-	public WMLConfig(String filename)
-	{
-		filename_ = filename;
-		tags_ = new HashMap<String, WMLTag>( );
-	}
+    public WMLConfig( String filename )
+    {
+        filename_ = filename;
+        tags_ = new HashMap< String, WMLTag >( );
+    }
 
-	public String getFilename()
-	{
-		return filename_;
-	}
+    public String getFilename( )
+    {
+        return filename_;
+    }
 
     /**
      * Returns the parsed WML Tags from this config file
+     * 
      * @return A list of Tags
      */
-    public Map<String, WMLTag> getWMLTags()
+    public Map< String, WMLTag > getWMLTags( )
     {
         return tags_;
     }
 
-	@Override
-	public String toString()
-	{
-	    return filename_ + "; ScenarioId: " +
-	            ( ScenarioId == null ? "" : ScenarioId ) +
-	            "; CampaignId: " +
-	            ( CampaignId == null ? "" : CampaignId );
-	}
+    @Override
+    public String toString( )
+    {
+        return filename_ + "; ScenarioId: "
+                + ( ScenarioId == null ? "": ScenarioId ) + "; CampaignId: "
+                + ( CampaignId == null ? "": CampaignId );
+    }
 }

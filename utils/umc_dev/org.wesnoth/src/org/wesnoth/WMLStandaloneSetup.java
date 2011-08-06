@@ -16,10 +16,10 @@ import org.wesnoth.schema.SchemaParser;
  */
 public class WMLStandaloneSetup extends WMLStandaloneSetupGenerated
 {
-	public static void doSetup() {
-		new WMLStandaloneSetup().createInjectorAndDoEMFRegistration();
+    public static void doSetup( )
+    {
+        new WMLStandaloneSetup( ).createInjectorAndDoEMFRegistration( );
 
-		SchemaParser.reloadSchemas( false );
-	}
+        SchemaParser.reloadSchemas( false );
+    }
 }
-

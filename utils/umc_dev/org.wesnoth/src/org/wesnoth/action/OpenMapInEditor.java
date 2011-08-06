@@ -9,15 +9,16 @@
 package org.wesnoth.action;
 
 import org.eclipse.jface.action.IAction;
+
 import org.wesnoth.utils.GameUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
 
 public class OpenMapInEditor extends ObjectActionDelegate
 {
-	@Override
-	public void run(IAction action)
-	{
-		GameUtils.startEditor(WorkspaceUtils.getSelectedFile());
-	}
+    @Override
+    public void run( IAction action )
+    {
+        GameUtils.startEditor( WorkspaceUtils.getSelectedFile( ) );
+    }
 }

@@ -13,31 +13,34 @@ import org.eclipse.swt.widgets.Composite;
 
 public class RegexStringFieldEditor extends StringFieldEditor
 {
-	protected String regex_;
-	protected String errorMessage_;
+    protected String regex_;
+    protected String errorMessage_;
 
-	/**
-	 * An regex matcher string field editor.
-	 * @param regex The regex to match this textbox's string
-	 * @param errorMessage The message to show as error when field's text
-	 * doesn't match the regex
-	 */
-	public RegexStringFieldEditor(String name, String labelText,
-			String regex, String errorMessage, Composite parent)
-	{
-		super(name,labelText,parent);
-		regex_ = regex;
-		errorMessage_ = errorMessage;
-	}
+    /**
+     * An regex matcher string field editor.
+     * 
+     * @param regex
+     *            The regex to match this textbox's string
+     * @param errorMessage
+     *            The message to show as error when field's text
+     *            doesn't match the regex
+     */
+    public RegexStringFieldEditor( String name, String labelText, String regex,
+            String errorMessage, Composite parent )
+    {
+        super( name, labelText, parent );
+        regex_ = regex;
+        errorMessage_ = errorMessage;
+    }
 
-	@Override
-	protected boolean checkState()
-	{
-		if (regex_ == null)
-			return true;
-		boolean matches = getTextControl().getText().matches(regex_);
-		setErrorMessage(matches == false ? errorMessage_ : null);
-		showErrorMessage();
-		return matches;
-	}
+    @Override
+    protected boolean checkState( )
+    {
+        if( regex_ == null )
+            return true;
+        boolean matches = getTextControl( ).getText( ).matches( regex_ );
+        setErrorMessage( matches == false ? errorMessage_: null );
+        showErrorMessage( );
+        return matches;
+    }
 }

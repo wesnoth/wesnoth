@@ -9,15 +9,16 @@
 package org.wesnoth.action;
 
 import org.eclipse.jface.action.IAction;
+
 import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WMLTools.Tools;
 
 
 public class RunWMLLintOnSelection extends ObjectActionDelegate
 {
-	@Override
-	public void run(IAction action)
-	{
-		WMLTools.runWMLToolAsWorkspaceJob(Tools.WMLLINT, null);
-	}
+    @Override
+    public void run( IAction action )
+    {
+        WMLTools.runWMLToolAsWorkspaceJob( Tools.WMLLINT, null );
+    }
 }

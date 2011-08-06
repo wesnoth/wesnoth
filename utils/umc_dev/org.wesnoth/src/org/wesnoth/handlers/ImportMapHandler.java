@@ -12,6 +12,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.swt.SWT;
+
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.utils.GUIUtils;
@@ -21,23 +22,23 @@ import org.wesnoth.utils.WorkspaceUtils;
 
 public class ImportMapHandler extends AbstractHandler
 {
-	@Override
-	public Object execute(ExecutionEvent event)
-	{
-		IFolder selectedFolder = WorkspaceUtils.getSelectedFolder();
-		if (selectedFolder == null)
-		{
-			Logger.getInstance().log("no directory selected (importMapHandler)", //$NON-NLS-1$
-				Messages.ImportMapHandler_1);
-			return null;
-		}
+    @Override
+    public Object execute( ExecutionEvent event )
+    {
+        IFolder selectedFolder = WorkspaceUtils.getSelectedFolder( );
+        if( selectedFolder == null ) {
+            Logger.getInstance( ).log(
+                    "no directory selected (importMapHandler)", //$NON-NLS-1$
+                    Messages.ImportMapHandler_1 );
+            return null;
+        }
 
-		if (!selectedFolder.getName().equals("maps") && //$NON-NLS-1$
-				GUIUtils.showMessageBox(Messages.ImportMapHandler_3,
-						SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO)
-			return null;
+        if( ! selectedFolder.getName( ).equals( "maps" ) && //$NON-NLS-1$
+                GUIUtils.showMessageBox( Messages.ImportMapHandler_3,
+                        SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO )
+            return null;
 
-		MapUtils.importMap();
-		return null;
-	}
+        MapUtils.importMap( );
+        return null;
+    }
 }

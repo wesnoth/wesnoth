@@ -8,9 +8,19 @@
  *******************************************************************************/
 package org.wesnoth.validation;
 
+import com.google.common.collect.Iterables;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import org.eclipse.core.resources.IResource;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.CheckType;
 
 import org.wesnoth.Constants;
 import org.wesnoth.Messages;
@@ -28,37 +38,30 @@ import org.wesnoth.wml.WMLRoot;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WmlPackage;
 
-import org.eclipse.core.resources.IResource;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.ILeafNode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.validation.Check;
-import org.eclipse.xtext.validation.CheckType;
-
-import com.google.common.collect.Iterables;
-
 /**
  * This represents the validator for config files
- *
- * http://wiki.eclipse.org/Xtext/Documentation/Xtext_New_and_Noteworthy#Different_validation_hooks
+ * 
+ * http://wiki.eclipse.org/Xtext/Documentation/Xtext_New_and_Noteworthy#
+ * Different_validation_hooks
  * CheckType:
  * 1. during editing with a delay of 500ms, only FAST is passed
  * 2. on save NORMAL is passed
- * 3. an action, which can be optionally generated for you DSL, explicitely evaluates EXPENSIVE constraints
+ * 3. an action, which can be optionally generated for you DSL, explicitely
+ * evaluates EXPENSIVE constraints
  */
 public class WMLJavaValidator extends AbstractWMLJavaValidator
 {
     /**
      * Returns the {@link SchemaParser} from the specified {@link EObject}
+     * 
      * @param object
      * @return
      */
     private SchemaParser getSchema( EObject object )
     {
-        return SchemaParser.getInstance(
-                WesnothInstallsUtils.getInstallNameForResource(
-                        ResourceUtils.getWorkspaceResource( object.eResource( ) ) ) );
+        return SchemaParser.getInstance( WesnothInstallsUtils
+                .getInstallNameForResource( ResourceUtils
+                        .getWorkspaceResource( object.eResource( ) ) ) );
     }
 
     private boolean isValidationEnabled( )
@@ -66,141 +69,143 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
         return Preferences.getBool( Constants.P_WML_VALIDATION );
     }
 
-	@Check(CheckType.FAST)
-	public void checkFastTagName(WMLTag tag)
-	{
-	    if ( !isValidationEnabled( ) )
-	        return;
-
-		if (!tag.getName().equals(tag.getEndName()))
-			warning( Messages.WMLJavaValidator_0, WmlPackage.Literals.WML_TAG__END_NAME);
-	}
-
-	@Check(CheckType.NORMAL)
-	public void checkNormalTagName(WMLTag tag)
-	{
-	    if ( !isValidationEnabled( ) )
+    @Check( CheckType.FAST )
+    public void checkFastTagName( WMLTag tag )
+    {
+        if( ! isValidationEnabled( ) )
             return;
 
-	    ICompositeNode node = NodeModelUtils.getNode( tag );
-		if (node != null)
-		{
-		    ILeafNode parentNode = NodeModelUtils.findLeafNodeAtOffset(node.getParent(),
-            		node.getParent().getOffset() + 2);
+        if( ! tag.getName( ).equals( tag.getEndName( ) ) )
+            warning( Messages.WMLJavaValidator_0,
+                    WmlPackage.Literals.WML_TAG__END_NAME );
+    }
 
-			boolean found = false;
-			String searchName = parentNode.getText();
-			if (node.getParent() == null) // root node
-			{
-				searchName = "root"; //$NON-NLS-1$
-			}
+    @Check( CheckType.NORMAL )
+    public void checkNormalTagName( WMLTag tag )
+    {
+        if( ! isValidationEnabled( ) )
+            return;
 
-			WMLTag schemaTag = getSchema( tag ).getTags( ).get( searchName );
+        ICompositeNode node = NodeModelUtils.getNode( tag );
+        if( node != null ) {
+            ILeafNode parentNode = NodeModelUtils.findLeafNodeAtOffset(
+                    node.getParent( ), node.getParent( ).getOffset( ) + 2 );
 
-			if ( schemaTag != null )
-			{
-				for( WMLExpression expression : schemaTag.getExpressions( ) )
-				{
-					if (expression.getName().equals(tag.getName()))
-					{
-						found = true;
-						break;
-					}
-				}
-				if (found == false)
-					warning( Messages.WMLJavaValidator_1,
-					        WmlPackage.Literals.WML_EXPRESSION__NAME  );
-			}
-		}
-	}
+            boolean found = false;
+            String searchName = parentNode.getText( );
+            if( node.getParent( ) == null ) // root node
+            {
+                searchName = "root"; //$NON-NLS-1$
+            }
 
-	private void checkTagsCardinalities( SchemaParser schema,
-	        Iterable< WMLTag > tags )
-	{
-        Map< String, Integer > ocurrences = new HashMap<String, Integer>( );
+            WMLTag schemaTag = getSchema( tag ).getTags( ).get( searchName );
 
-        for ( WMLTag tag : tags ) {
+            if( schemaTag != null ) {
+                for( WMLExpression expression: schemaTag.getExpressions( ) ) {
+                    if( expression.getName( ).equals( tag.getName( ) ) ) {
+                        found = true;
+                        break;
+                    }
+                }
+                if( found == false )
+                    warning( Messages.WMLJavaValidator_1,
+                            WmlPackage.Literals.WML_EXPRESSION__NAME );
+            }
+        }
+    }
+
+    private void checkTagsCardinalities( SchemaParser schema,
+            Iterable< WMLTag > tags )
+    {
+        Map< String, Integer > ocurrences = new HashMap< String, Integer >( );
+
+        for( WMLTag tag: tags ) {
             Integer currentValue = ocurrences.get( tag.getName( ) );
-            if ( currentValue == null )
+            if( currentValue == null )
                 currentValue = 0;
 
             ocurrences.put( tag.getName( ), currentValue + 1 );
         }
 
-        for ( Entry<String, Integer> entry : ocurrences.entrySet( ) ) {
+        for( Entry< String, Integer > entry: ocurrences.entrySet( ) ) {
             WMLTag schemaTag = schema.getTags( ).get( entry.getKey( ) );
 
-            if ( schemaTag == null )
+            if( schemaTag == null )
                 continue;
 
-            if ( schemaTag.getAllowedCount( ) < entry.getValue( ) )
-                warning( "Tag " + entry.getKey( ) + " cannot appear more" +
-                        "than " + schemaTag.getAllowedCount( ) + " times. ",
+            if( schemaTag.getAllowedCount( ) < entry.getValue( ) )
+                warning( "Tag " + entry.getKey( ) + " cannot appear more"
+                        + "than " + schemaTag.getAllowedCount( ) + " times. ",
                         WmlPackage.Literals.WML_EXPRESSION__NAME );
         }
-	}
+    }
 
-	private void checkKeysCardinalities( WMLTag parentTag,
+    private void checkKeysCardinalities( WMLTag parentTag,
             Iterable< WMLKey > keys )
     {
-        Map< String, Integer > ocurrences = new HashMap<String, Integer>( );
+        Map< String, Integer > ocurrences = new HashMap< String, Integer >( );
 
-        for ( WMLKey key : keys ) {
+        for( WMLKey key: keys ) {
             Integer currentValue = ocurrences.get( key.getName( ) );
-            if ( currentValue == null )
+            if( currentValue == null )
                 currentValue = 0;
 
             ocurrences.put( key.getName( ), currentValue + 1 );
         }
 
-        for ( Entry<String, Integer> entry : ocurrences.entrySet( ) ) {
-            WMLKey schemaKey = WMLUtils.getKeyByName( parentTag, entry.getKey( ) );
+        for( Entry< String, Integer > entry: ocurrences.entrySet( ) ) {
+            WMLKey schemaKey = WMLUtils
+                    .getKeyByName( parentTag, entry.getKey( ) );
 
-            if ( schemaKey == null )
+            if( schemaKey == null )
                 continue;
 
-            if ( schemaKey.getAllowedCount( ) < entry.getValue( ) )
-                warning( "Key " + entry.getKey( ) + ", in tag " + parentTag.getName( )
-                        + "cannot appear more than " +
-                        schemaKey.getAllowedCount( ) + " times. ",
+            if( schemaKey.getAllowedCount( ) < entry.getValue( ) )
+                warning(
+                        "Key " + entry.getKey( ) + ", in tag "
+                                + parentTag.getName( )
+                                + "cannot appear more than "
+                                + schemaKey.getAllowedCount( ) + " times. ",
                         WmlPackage.Literals.WML_EXPRESSION__NAME );
         }
     }
 
-	@Check(CheckType.NORMAL)
-	public void checkNormalWMLRootCardinality(WMLRoot root)
-	{
-	    if ( !isValidationEnabled( ) )
+    @Check( CheckType.NORMAL )
+    public void checkNormalWMLRootCardinality( WMLRoot root )
+    {
+        if( ! isValidationEnabled( ) )
             return;
 
-	    checkTagsCardinalities( getSchema( root ),
-	            Iterables.filter( root.getExpressions( ), WMLTag.class ) );
-	}
+        checkTagsCardinalities( getSchema( root ),
+                Iterables.filter( root.getExpressions( ), WMLTag.class ) );
+    }
 
-	@Check(CheckType.NORMAL)
-	public void checkNormalWMLTagCardinality(WMLTag tag)
-	{
-	    if ( !isValidationEnabled( ) )
+    @Check( CheckType.NORMAL )
+    public void checkNormalWMLTagCardinality( WMLTag tag )
+    {
+        if( ! isValidationEnabled( ) )
             return;
 
-	    SchemaParser schema = getSchema( tag );
-	    checkTagsCardinalities( schema,
-	            Iterables.filter( tag.getExpressions( ), WMLTag.class ) );
+        SchemaParser schema = getSchema( tag );
+        checkTagsCardinalities( schema,
+                Iterables.filter( tag.getExpressions( ), WMLTag.class ) );
 
-	    checkKeysCardinalities( tag,
-	            Iterables.filter( tag.getExpressions( ), WMLKey.class ) );
-	}
+        checkKeysCardinalities( tag,
+                Iterables.filter( tag.getExpressions( ), WMLKey.class ) );
+    }
 
-	@Check(CheckType.NORMAL)
-	public void checkNormalWMLMacroExistance( WMLMacroCall call )
-	{
-	    if ( !isValidationEnabled( ) )
+    @Check( CheckType.NORMAL )
+    public void checkNormalWMLMacroExistance( WMLMacroCall call )
+    {
+        if( ! isValidationEnabled( ) )
             return;
 
-	    IResource resource = ResourceUtils.getWorkspaceResource( call.eResource( ) );
-	    ProjectCache cache = ProjectUtils.getCacheForProject( resource.getProject( ) );
-	    if ( ! cache.getDefines( ).containsKey( call.getName( ) ) )
-	        warning( "Undefined macro: " + call.getName( ),
-	                WmlPackage.Literals.WML_EXPRESSION__NAME );
-	}
+        IResource resource = ResourceUtils.getWorkspaceResource( call
+                .eResource( ) );
+        ProjectCache cache = ProjectUtils.getCacheForProject( resource
+                .getProject( ) );
+        if( ! cache.getDefines( ).containsKey( call.getName( ) ) )
+            warning( "Undefined macro: " + call.getName( ),
+                    WmlPackage.Literals.WML_EXPRESSION__NAME );
+    }
 }

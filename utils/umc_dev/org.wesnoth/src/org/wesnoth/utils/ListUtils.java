@@ -13,37 +13,41 @@ import java.util.List;
 
 public class ListUtils
 {
-	/**
-	 * Concatenates the list of Objects using the provided separator
-	 *
-	 * @param list the list to concatenate
-	 * @param separator the separator used to concatenate the elements of the list
-	 * @return A string with the string representation of that objects
-	 */
-	public static String concatenateList(List<? extends Object> list, String separator)
-	{
-		if (list == null || list.isEmpty())
-			return ""; //$NON-NLS-1$
+    /**
+     * Concatenates the list of Objects using the provided separator
+     * 
+     * @param list
+     *            the list to concatenate
+     * @param separator
+     *            the separator used to concatenate the elements of the list
+     * @return A string with the string representation of that objects
+     */
+    public static String concatenateList( List< ? extends Object > list,
+            String separator )
+    {
+        if( list == null || list.isEmpty( ) )
+            return ""; //$NON-NLS-1$
 
-		StringBuilder result = new StringBuilder();
-		for (int i = 0; i < list.size() - 1; i++)
-		{
-		    result.append(list.get(i) + separator);
-		}
-		result.append(list.get(list.size() - 1));
+        StringBuilder result = new StringBuilder( );
+        for( int i = 0; i < list.size( ) - 1; i++ ) {
+            result.append( list.get( i ) + separator );
+        }
+        result.append( list.get( list.size( ) - 1 ) );
 
-		return result.toString();
-	}
+        return result.toString( );
+    }
 
-	/**
-	 * Concatenates the array of strings using the provided separator
-	 *
-	 * @param array the array to concatenate
-	 * @param separator the separator used to concatenate the elements of the list
-	 * @return
-	 */
-	public static String concatenateArray(String[] array, String separator)
-	{
-	    return concatenateList( Arrays.asList( array ), separator );
-	}
+    /**
+     * Concatenates the array of strings using the provided separator
+     * 
+     * @param array
+     *            the array to concatenate
+     * @param separator
+     *            the separator used to concatenate the elements of the list
+     * @return
+     */
+    public static String concatenateArray( String[] array, String separator )
+    {
+        return concatenateList( Arrays.asList( array ), separator );
+    }
 }

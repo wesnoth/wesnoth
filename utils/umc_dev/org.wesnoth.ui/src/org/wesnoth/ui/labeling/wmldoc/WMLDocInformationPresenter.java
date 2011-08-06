@@ -20,58 +20,60 @@ import org.eclipse.swt.widgets.Shell;
 
 public class WMLDocInformationPresenter extends PopupDialog
 {
-	private Point bounds_;
-	private IWMLDocProvider currentDocProvider_;
-	private Composite panel_;
+    private Point           bounds_;
+    private IWMLDocProvider currentDocProvider_;
+    private Composite       panel_;
 
-	/**
-	 * Creates a new WMLDocumentation information presenter
-	 */
-	public WMLDocInformationPresenter(Shell parent, IWMLDocProvider docProvider,
-				Point bounds)
-	{
-		super(parent, PopupDialog.INFOPOPUPRESIZE_SHELLSTYLE, true, true, true,
-				false, false, docProvider.getTitle( ),
-				docProvider.getInfoText( ) );
+    /**
+     * Creates a new WMLDocumentation information presenter
+     */
+    public WMLDocInformationPresenter( Shell parent,
+            IWMLDocProvider docProvider, Point bounds )
+    {
+        super( parent, PopupDialog.INFOPOPUPRESIZE_SHELLSTYLE, true, true,
+                true, false, false, docProvider.getTitle( ), docProvider
+                        .getInfoText( ) );
 
-		bounds_ = bounds;
-		currentDocProvider_ = docProvider;
-	}
+        bounds_ = bounds;
+        currentDocProvider_ = docProvider;
+    }
 
-	@Override
-	protected Control createDialogArea(Composite parent)
-	{
-		panel_ = new Composite(parent, SWT.None);
-		panel_.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_INFO_BACKGROUND));
-		panel_.setForeground(parent.getDisplay().getSystemColor(SWT.COLOR_INFO_FOREGROUND));
+    @Override
+    protected Control createDialogArea( Composite parent )
+    {
+        panel_ = new Composite( parent, SWT.None );
+        panel_.setBackground( parent.getDisplay( ).getSystemColor(
+                SWT.COLOR_INFO_BACKGROUND ) );
+        panel_.setForeground( parent.getDisplay( ).getSystemColor(
+                SWT.COLOR_INFO_FOREGROUND ) );
 
-		GridLayout grid = new GridLayout();
-		grid.numColumns = 5;
-		panel_.setLayout(grid);
+        GridLayout grid = new GridLayout( );
+        grid.numColumns = 5;
+        panel_.setLayout( grid );
 
-		StyledText text = new StyledText(panel_, SWT.NONE);
+        StyledText text = new StyledText( panel_, SWT.NONE );
 
-		text.setText(currentDocProvider_.getContents());
-		text.setEditable(false);
-		text.setStyleRanges(currentDocProvider_.getStyleRanges());
+        text.setText( currentDocProvider_.getContents( ) );
+        text.setEditable( false );
+        text.setStyleRanges( currentDocProvider_.getStyleRanges( ) );
 
-		text.setLayoutData(createDefaultGridData(4));
-		return panel_;
-	}
+        text.setLayoutData( createDefaultGridData( 4 ) );
+        return panel_;
+    }
 
-	private GridData createDefaultGridData(int columnspan) {
-		GridData gd = new GridData();
-		gd.horizontalSpan = columnspan;
-		gd.verticalAlignment = SWT.BEGINNING;
-		gd.verticalIndent = 0;
-		gd.horizontalIndent = 5;
-		return gd;
-	}
+    private GridData createDefaultGridData( int columnspan )
+    {
+        GridData gd = new GridData( );
+        gd.horizontalSpan = columnspan;
+        gd.verticalAlignment = SWT.BEGINNING;
+        gd.verticalIndent = 0;
+        gd.horizontalIndent = 5;
+        return gd;
+    }
 
-	@Override
-	protected Point getInitialLocation(Point initialSize)
-	{
-		return bounds_;
-	}
+    @Override
+    protected Point getInitialLocation( Point initialSize )
+    {
+        return bounds_;
+    }
 }
-

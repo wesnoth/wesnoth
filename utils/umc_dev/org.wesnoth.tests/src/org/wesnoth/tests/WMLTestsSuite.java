@@ -10,17 +10,14 @@ package org.wesnoth.tests;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+
 import org.wesnoth.tests.grammar.WMLFilesTests;
 import org.wesnoth.tests.grammar.WMLGrammarTokensTests;
 import org.wesnoth.tests.plugin.WMLParsingCampaignsConfigs;
 
 @RunWith( Suite.class )
-@Suite.SuiteClasses(
-        {
-            WMLGrammarTokensTests.class,
-            WMLFilesTests.class,
-            WMLParsingCampaignsConfigs.class,
-        } )
+@Suite.SuiteClasses( { WMLGrammarTokensTests.class, WMLFilesTests.class,
+        WMLParsingCampaignsConfigs.class, } )
 public class WMLTestsSuite
 {
 }

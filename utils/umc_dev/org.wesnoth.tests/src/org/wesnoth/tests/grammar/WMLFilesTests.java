@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 import org.junit.Ignore;
+
 import org.wesnoth.tests.WMLTests;
 
 /**
@@ -19,9 +20,9 @@ import org.wesnoth.tests.WMLTests;
  */
 public class WMLFilesTests extends WMLTests
 {
-    public void testCoreFiles() throws FileNotFoundException
+    public void testCoreFiles( ) throws FileNotFoundException
     {
-        testPath( dataPath_  + "/core/" );
+        testPath( dataPath_ + "/core/" );
     }
 
     public void testCampaignAOI( ) throws FileNotFoundException
@@ -119,7 +120,7 @@ public class WMLFilesTests extends WMLTests
     public void testFile( String path )
     {
         // just config files
-        if ( ! path.endsWith( ".cfg" ) )
+        if( ! path.endsWith( ".cfg" ) )
             return;
 
         System.out.print( "\nTesting file: " + path + "..." );
@@ -127,10 +128,9 @@ public class WMLFilesTests extends WMLTests
         try {
             checkParsing( new FileReader( path ) );
             System.out.print( " OK" );
-        }
-        catch ( FileNotFoundException e ) {
-            e.printStackTrace();
-            //should not reach here.
+        } catch( FileNotFoundException e ) {
+            e.printStackTrace( );
+            // should not reach here.
             assertTrue( false );
         }
     }

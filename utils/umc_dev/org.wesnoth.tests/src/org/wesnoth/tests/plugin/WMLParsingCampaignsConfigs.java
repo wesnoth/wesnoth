@@ -20,6 +20,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+
 import org.wesnoth.tests.WMLTests;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.wml.SimpleWMLParser;
@@ -31,35 +32,34 @@ import org.wesnoth.wml.WMLConfig;
 @RunWith( value = Parameterized.class )
 public class WMLParsingCampaignsConfigs extends WMLTests
 {
-    private String campaignDir_;
-    private String campaignId;
-    private List<String> scenarioIds_;
+    private String         campaignDir_;
+    private String         campaignId;
+    private List< String > scenarioIds_;
 
-    private List<String> parsedCampaignIds_;
-    private List<String> parsedScenarioIds_;
+    private List< String > parsedCampaignIds_;
+    private List< String > parsedScenarioIds_;
 
     public WMLParsingCampaignsConfigs( String[] data )
     {
         try {
             setUp( );
-        }
-        catch ( Exception e ) {
-            e.printStackTrace();
-            assertTrue ( false );
+        } catch( Exception e ) {
+            e.printStackTrace( );
+            assertTrue( false );
         }
 
         campaignDir_ = data[0];
         campaignId = data[1];
-        scenarioIds_ = new ArrayList<String>();
+        scenarioIds_ = new ArrayList< String >( );
 
-        parsedCampaignIds_ = new ArrayList<String>();
-        parsedScenarioIds_ = new ArrayList<String>();
+        parsedCampaignIds_ = new ArrayList< String >( );
+        parsedScenarioIds_ = new ArrayList< String >( );
 
-        for( int i = data.length - 1 ; i > 1; --i )
+        for( int i = data.length - 1; i > 1; --i )
             scenarioIds_.add( data[i] );
 
         // gather all info
-        testPath( dataPath_ + "/campaigns/" + campaignDir_ + "/"  );
+        testPath( dataPath_ + "/campaigns/" + campaignDir_ + "/" );
     }
 
     @Override
@@ -67,36 +67,36 @@ public class WMLParsingCampaignsConfigs extends WMLTests
     public void testFile( String path )
     {
         // just config files
-        if ( ! path.endsWith( ".cfg" ) )
+        if( ! path.endsWith( ".cfg" ) )
             return;
 
         try {
-            SimpleWMLParser wmlParser = new SimpleWMLParser( new File( path ), getParser( ) );
+            SimpleWMLParser wmlParser = new SimpleWMLParser( new File( path ),
+                    getParser( ) );
             wmlParser.parse( );
             WMLConfig config = wmlParser.getParsedConfig( );
 
-            if ( !StringUtils.isNullOrEmpty( config.ScenarioId ) )
+            if( ! StringUtils.isNullOrEmpty( config.ScenarioId ) )
                 parsedScenarioIds_.add( config.ScenarioId );
 
-            if ( !StringUtils.isNullOrEmpty( config.CampaignId ) )
+            if( ! StringUtils.isNullOrEmpty( config.CampaignId ) )
                 parsedCampaignIds_.add( config.CampaignId );
 
-        }
-        catch ( FileNotFoundException e ) {
-            e.printStackTrace();
+        } catch( FileNotFoundException e ) {
+            e.printStackTrace( );
             assertTrue( false );
         }
     }
 
     @Test
-    public void testCampaignId()
+    public void testCampaignId( )
     {
         assertTrue( parsedCampaignIds_.size( ) == 1 );
         assertEquals( campaignId, parsedCampaignIds_.get( 0 ) );
     }
 
     @Test
-    public void testScenarioIds()
+    public void testScenarioIds( )
     {
         assertEquals( scenarioIds_.size( ), parsedScenarioIds_.size( ) );
 
@@ -107,11 +107,18 @@ public class WMLParsingCampaignsConfigs extends WMLTests
     }
 
     @Parameters
-    public static Collection< Object[] > data()
+    public static Collection< Object[] > data( )
     {
         return Arrays.asList( new Object[][] {
-          { new String[]{ "An_Orcish_Incursion", "An_Orcish_Incursion", "01_Defend_the_Forest", "02_Assassins", "03_Wasteland", "04_Valley_of_Trolls", "05_Linaera_the_Quick", "06_A_Detour_through_the_Swamp", "07_Showdown"  } },
-          { new String[]{ "Dead_Water", "Dead_Water", "01_Invasion", "02_Flight", "03_Wolf_Coast", "04_Slavers", "05_Tirigaz", "06_Uncharted_Islands", "07_Bilheld", "08_Talking_to_Tyegea", "09_The_Mage", "10_The_Flaming_Sword", "11_Getting_Help", "12_Revenge", "13_Epilogue" } }
-        } );
+                { new String[] { "An_Orcish_Incursion", "An_Orcish_Incursion",
+                        "01_Defend_the_Forest", "02_Assassins", "03_Wasteland",
+                        "04_Valley_of_Trolls", "05_Linaera_the_Quick",
+                        "06_A_Detour_through_the_Swamp", "07_Showdown" } },
+                { new String[] { "Dead_Water", "Dead_Water", "01_Invasion",
+                        "02_Flight", "03_Wolf_Coast", "04_Slavers",
+                        "05_Tirigaz", "06_Uncharted_Islands", "07_Bilheld",
+                        "08_Talking_to_Tyegea", "09_The_Mage",
+                        "10_The_Flaming_Sword", "11_Getting_Help",
+                        "12_Revenge", "13_Epilogue" } } } );
     }
 }

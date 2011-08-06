@@ -9,17 +9,18 @@
 package org.wesnoth.action;
 
 import org.eclipse.jface.action.IAction;
+
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
 
 public class ShowPlainPreprocessedConfig extends ObjectActionDelegate
 {
-	@Override
-	public void run(IAction action)
-	{
-		PreprocessorUtils.getInstance().openPreprocessedFileInEditor(
-				WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow()),
-				true);
-	}
+    @Override
+    public void run( IAction action )
+    {
+        PreprocessorUtils.getInstance( ).openPreprocessedFileInEditor(
+                WorkspaceUtils.getSelectedFile( WorkspaceUtils
+                        .getWorkbenchWindow( ) ), true );
+    }
 }

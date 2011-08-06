@@ -13,21 +13,24 @@ public class WesnothInstall
     private String name_;
     private String version_;
 
-    public WesnothInstall(String name, String version)
+    public WesnothInstall( String name, String version )
     {
         name_ = name;
         version_ = version;
     }
 
-    public String getName( ){
+    public String getName( )
+    {
         return name_;
     }
 
-    public String getVersion( ) {
+    public String getVersion( )
+    {
         return version_;
     }
 
-    public void setVersion( String newVersion ){
+    public void setVersion( String newVersion )
+    {
         version_ = newVersion;
     }
 }

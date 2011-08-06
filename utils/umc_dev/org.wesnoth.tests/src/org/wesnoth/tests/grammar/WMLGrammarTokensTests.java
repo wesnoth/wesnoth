@@ -11,10 +11,10 @@ public class WMLGrammarTokensTests extends WMLTests
     // rule names in your grammar
     // the names of terminal rules will be capitalised
     // and "RULE_" will be appended to the front
-    private static final String ID = "RULE_ID";
+    private static final String ID         = "RULE_ID";
     private static final String SL_COMMENT = "RULE_SL_COMMENT";
 
-    public void testID()
+    public void testID( )
     {
         checkTokenisation( "1", ID );
         checkTokenisation( "a", ID );
@@ -23,14 +23,14 @@ public class WMLGrammarTokensTests extends WMLTests
         checkTokenisation( "abc_123", ID );
     }
 
-    public void testSLCOMMENT()
+    public void testSLCOMMENT( )
     {
         checkTokenisation( "#comment", SL_COMMENT );
         checkTokenisation( "#comment\n", SL_COMMENT );
         checkTokenisation( "# comment \t\t comment\r\n", SL_COMMENT );
     }
 
-    public void testTokenParsing()
+    public void testTokenParsing( )
     {
         checkParsing( "amount=+$random\r\n", grammar_.getWMLKeyRule( ) );
         checkParsing( "name={VALUE}\n", grammar_.getWMLKeyRule( ) );

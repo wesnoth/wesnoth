@@ -12,33 +12,32 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS
 {
-	private static final String BUNDLE_NAME = "org.wesnoth.ui.messages"; //$NON-NLS-1$
-	public static String WMLDocMacro_0;
-	public static String WMLDocMacro_1;
-	public static String WMLDocMacro_2;
-	public static String WMLDocTag_0;
-	public static String WMLDocTag_1;
-	public static String WMLEditor_0;
-	public static String WMLEditor_1;
-	public static String WMLEditor_2;
-	public static String WMLEditor_3;
-	public static String WMLEditor_4;
-	public static String WMLEditor_5;
-	public static String WMLHighlightingConfiguration_10;
-	public static String WMLHighlightingConfiguration_11;
-	public static String WMLHighlightingConfiguration_12;
-	public static String WMLHighlightingConfiguration_13;
-	public static String WMLHighlightingConfiguration_7;
-	public static String WMLHighlightingConfiguration_8;
-	public static String WMLHighlightingConfiguration_9;
-	public static String WMLHyperlinkHelper_0;
-	static
-	{
-		// initialize resource bundle
-		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
-	}
+    private static final String BUNDLE_NAME = "org.wesnoth.ui.messages"; //$NON-NLS-1$
+    public static String        WMLDocMacro_0;
+    public static String        WMLDocMacro_1;
+    public static String        WMLDocMacro_2;
+    public static String        WMLDocTag_0;
+    public static String        WMLDocTag_1;
+    public static String        WMLEditor_0;
+    public static String        WMLEditor_1;
+    public static String        WMLEditor_2;
+    public static String        WMLEditor_3;
+    public static String        WMLEditor_4;
+    public static String        WMLEditor_5;
+    public static String        WMLHighlightingConfiguration_10;
+    public static String        WMLHighlightingConfiguration_11;
+    public static String        WMLHighlightingConfiguration_12;
+    public static String        WMLHighlightingConfiguration_13;
+    public static String        WMLHighlightingConfiguration_7;
+    public static String        WMLHighlightingConfiguration_8;
+    public static String        WMLHighlightingConfiguration_9;
+    public static String        WMLHyperlinkHelper_0;
+    static {
+        // initialize resource bundle
+        NLS.initializeMessages( BUNDLE_NAME, Messages.class );
+    }
 
-	private Messages()
-	{
-	}
+    private Messages( )
+    {
+    }
 }

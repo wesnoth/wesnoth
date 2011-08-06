@@ -8,12 +8,14 @@
  *******************************************************************************/
 package org.wesnoth.templates;
 
-public class ReplaceableParameter{
-	public String paramName;
-	public String paramValue;
-	public ReplaceableParameter(String name, String value)
-	{
-		paramName = name;
-		paramValue = value;
-	}
+public class ReplaceableParameter
+{
+    public String paramName;
+    public String paramValue;
+
+    public ReplaceableParameter( String name, String value )
+    {
+        paramName = name;
+        paramValue = value;
+    }
 }

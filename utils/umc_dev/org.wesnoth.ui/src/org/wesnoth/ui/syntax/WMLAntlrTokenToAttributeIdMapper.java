@@ -10,24 +10,22 @@ package org.wesnoth.ui.syntax;
 
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper;
 
-public class WMLAntlrTokenToAttributeIdMapper extends DefaultAntlrTokenToAttributeIdMapper
+public class WMLAntlrTokenToAttributeIdMapper extends
+        DefaultAntlrTokenToAttributeIdMapper
 {
     @Override
-    protected String calculateId(String tokenName, int tokenType)
+    protected String calculateId( String tokenName, int tokenType )
     {
-        if ( tokenName.equals( "'+'" ) ||
-             tokenName.equals("'['") ||
-             tokenName.equals("'[/'") ||
-             tokenName.equals("']'")) //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        if( tokenName.equals( "'+'" ) || tokenName.equals( "'['" )
+                || tokenName.equals( "'[/'" ) || tokenName.equals( "']'" ) ) //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         {
             return WMLHighlightingConfiguration.RULE_WML_TAG;
         }
-        if ( tokenName.equals( "'~'" ) ||
-             tokenName.equals("'{'") ||
-             tokenName.equals("'}'") ) //$NON-NLS-1$ //$NON-NLS-2$
+        if( tokenName.equals( "'~'" ) || tokenName.equals( "'{'" )
+                || tokenName.equals( "'}'" ) ) //$NON-NLS-1$ //$NON-NLS-2$
         {
             return WMLHighlightingConfiguration.RULE_WML_MACRO_CALL;
         }
-        return super.calculateId(tokenName, tokenType);
+        return super.calculateId( tokenName, tokenType );
     }
 }

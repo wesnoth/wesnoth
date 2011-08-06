@@ -12,41 +12,45 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.eclipse.ui.ide.IDE;
+
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.views.WesnothProjectsExplorer;
 
-public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack {
+public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack
+{
 
-	private static final String PERSPECTIVE_ID = "org.wesnoth.product.WMLPerspective"; //$NON-NLS-1$
-
-    @Override
-	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
-        return new WesnothWorkbenchWindowAdvisor(configurer);
-    }
-
-	@Override
-	public String getInitialWindowPerspectiveId() {
-		return PERSPECTIVE_ID;
-	}
+    private static final String PERSPECTIVE_ID = "org.wesnoth.product.WMLPerspective"; //$NON-NLS-1$
 
     @Override
-    public IAdaptable getDefaultPageInput()
+    public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(
+            IWorkbenchWindowConfigurer configurer )
     {
-        return new WesnothProjectsExplorer();
+        return new WesnothWorkbenchWindowAdvisor( configurer );
     }
 
     @Override
-    public void preStartup()
+    public String getInitialWindowPerspectiveId( )
     {
-        IDE.registerAdapters();
+        return PERSPECTIVE_ID;
     }
 
     @Override
-	public void postStartup()
-	{
-	    if (WorkspaceUtils.checkPathsAreSet( null, false ) == false)
-        {
-            WorkspaceUtils.setupWorkspace(true);
+    public IAdaptable getDefaultPageInput( )
+    {
+        return new WesnothProjectsExplorer( );
+    }
+
+    @Override
+    public void preStartup( )
+    {
+        IDE.registerAdapters( );
+    }
+
+    @Override
+    public void postStartup( )
+    {
+        if( WorkspaceUtils.checkPathsAreSet( null, false ) == false ) {
+            WorkspaceUtils.setupWorkspace( true );
         }
-	}
+    }
 }

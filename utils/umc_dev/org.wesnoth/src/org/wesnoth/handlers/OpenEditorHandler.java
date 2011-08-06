@@ -10,15 +10,16 @@ package org.wesnoth.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
+
 import org.wesnoth.utils.GameUtils;
 
 
 public class OpenEditorHandler extends AbstractHandler
 {
-	@Override
-	public Object execute(ExecutionEvent event)
-	{
-		GameUtils.startEditor();
-		return null;
-	}
+    @Override
+    public Object execute( ExecutionEvent event )
+    {
+        GameUtils.startEditor( );
+        return null;
+    }
 }

@@ -27,6 +27,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
@@ -36,124 +37,116 @@ import org.wesnoth.wizards.WizardTemplate;
 
 public class EraNewWizard extends WizardTemplate
 {
-	EraPage0	page0_;
+    EraPage0 page0_;
 
-	public EraNewWizard() {
-		setWindowTitle(Messages.EraNewWizard_0);
-		setNeedsProgressMonitor(true);
-	}
+    public EraNewWizard( )
+    {
+        setWindowTitle( Messages.EraNewWizard_0 );
+        setNeedsProgressMonitor( true );
+    }
 
-	@Override
-	public void addPages()
-	{
-		page0_ = new EraPage0();
-		addPage(page0_);
+    @Override
+    public void addPages( )
+    {
+        page0_ = new EraPage0( );
+        addPage( page0_ );
 
-		super.addPages();
-	}
+        super.addPages( );
+    }
 
-	@Override
-	public boolean performFinish()
-	{
-		final String containerName = page0_.getDirectoryName();
-		final String fileName = page0_.getFileName();
-		IRunnableWithProgress op = new IRunnableWithProgress() {
-			@Override
-			public void run(IProgressMonitor monitor)
-			{
-				try
-				{
-					doFinish(containerName, fileName, monitor);
-				} catch (CoreException e)
-				{
-					Logger.getInstance().logException(e);
-				} finally
-				{
-					monitor.done();
-				}
-			}
-		};
-		try
-		{
-			getContainer().run(false, false, op);
-		} catch (InterruptedException e)
-		{
-			return false;
-		} catch (InvocationTargetException e)
-		{
-			Logger.getInstance().logException(e);
-		}
-		return true;
-	}
+    @Override
+    public boolean performFinish( )
+    {
+        final String containerName = page0_.getDirectoryName( );
+        final String fileName = page0_.getFileName( );
+        IRunnableWithProgress op = new IRunnableWithProgress( ) {
+            @Override
+            public void run( IProgressMonitor monitor )
+            {
+                try {
+                    doFinish( containerName, fileName, monitor );
+                } catch( CoreException e ) {
+                    Logger.getInstance( ).logException( e );
+                } finally {
+                    monitor.done( );
+                }
+            }
+        };
+        try {
+            getContainer( ).run( false, false, op );
+        } catch( InterruptedException e ) {
+            return false;
+        } catch( InvocationTargetException e ) {
+            Logger.getInstance( ).logException( e );
+        }
+        return true;
+    }
 
-	private void doFinish(String containerName, String fileName, IProgressMonitor monitor) throws CoreException
-	{
-		// create a sample file
-		monitor.beginTask(Messages.EraNewWizard_1 + fileName, 10);
-		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		IResource resource = root.findMember(new Path(containerName));
+    private void doFinish( String containerName, String fileName,
+            IProgressMonitor monitor ) throws CoreException
+    {
+        // create a sample file
+        monitor.beginTask( Messages.EraNewWizard_1 + fileName, 10 );
+        IWorkspaceRoot root = ResourcesPlugin.getWorkspace( ).getRoot( );
+        IResource resource = root.findMember( new Path( containerName ) );
 
-		IContainer container = (IContainer) resource;
-		final IFile file = container.getFile(new Path(fileName));
+        IContainer container = ( IContainer ) resource;
+        final IFile file = container.getFile( new Path( fileName ) );
 
-		try
-		{
-			InputStream stream = getEraStream();
+        try {
+            InputStream stream = getEraStream( );
 
-			if (stream == null)
-				return;
+            if( stream == null )
+                return;
 
-			if (file.exists())
-			{
-				file.setContents(stream, true, true, monitor);
-			}
-			else
-			{
-				file.create(stream, true, monitor);
-			}
+            if( file.exists( ) ) {
+                file.setContents( stream, true, true, monitor );
+            }
+            else {
+                file.create( stream, true, monitor );
+            }
 
-			stream.close();
-		} catch (IOException e)
-		{
-			Logger.getInstance().logException(e);
-		}
+            stream.close( );
+        } catch( IOException e ) {
+            Logger.getInstance( ).logException( e );
+        }
 
-		monitor.worked(5);
-		monitor.setTaskName(Messages.EraNewWizard_2);
-		getShell().getDisplay().asyncExec(new Runnable() {
-			@Override
-			public void run()
-			{
-				IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-				try
-				{
-					IDE.openEditor(page, file, true);
-				} catch (PartInitException e)
-				{
-				}
-			}
-		});
-		monitor.worked(5);
-		monitor.done();
-	}
+        monitor.worked( 5 );
+        monitor.setTaskName( Messages.EraNewWizard_2 );
+        getShell( ).getDisplay( ).asyncExec( new Runnable( ) {
+            @Override
+            public void run( )
+            {
+                IWorkbenchPage page = PlatformUI.getWorkbench( )
+                        .getActiveWorkbenchWindow( ).getActivePage( );
+                try {
+                    IDE.openEditor( page, file, true );
+                } catch( PartInitException e ) {
+                }
+            }
+        } );
+        monitor.worked( 5 );
+        monitor.done( );
+    }
 
-	private InputStream getEraStream()
-	{
-		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
+    private InputStream getEraStream( )
+    {
+        ArrayList< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
 
-		params.add(new ReplaceableParameter("$$era_id", page0_.getEraID())); //$NON-NLS-1$
-		params.add(new ReplaceableParameter("$$era_name", page0_.getEraName())); //$NON-NLS-1$
-		params.add(new ReplaceableParameter("$$require_era", String.valueOf(page0_.getRequiresEra()))); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$era_id", page0_.getEraID( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$era_name", page0_.getEraName( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter(
+                "$$require_era", String.valueOf( page0_.getRequiresEra( ) ) ) ); //$NON-NLS-1$
 
-		String template = TemplateProvider.getInstance().getProcessedTemplate("era", params); //$NON-NLS-1$
+        String template = TemplateProvider.getInstance( ).getProcessedTemplate(
+                "era", params ); //$NON-NLS-1$
 
-		if (template == null)
-		{
-			Logger.getInstance().log("'era' template not found", //$NON-NLS-1$
-					Messages.EraNewWizard_8);
-			return null;
-		}
+        if( template == null ) {
+            Logger.getInstance( ).log( "'era' template not found", //$NON-NLS-1$
+                    Messages.EraNewWizard_8 );
+            return null;
+        }
 
-		return new ByteArrayInputStream(template.getBytes());
-	}
+        return new ByteArrayInputStream( template.getBytes( ) );
+    }
 }

@@ -8,15 +8,16 @@
 
 package org.wesnoth.ui.editor;
 
-import org.eclipse.jface.action.IMenuManager;
-
 import com.google.inject.ImplementedBy;
+
+import org.eclipse.jface.action.IMenuManager;
 
 /**
  * 
  *
  */
-@ImplementedBy(DefaultExtXtextEditorCustomizer.class)
-public interface IExtXtextEditorCustomizer {
-	public void customizeEditorContextMenu(IMenuManager menuManager);
+@ImplementedBy( DefaultExtXtextEditorCustomizer.class )
+public interface IExtXtextEditorCustomizer
+{
+    public void customizeEditorContextMenu( IMenuManager menuManager );
 }

@@ -8,6 +8,8 @@ import java.util.List;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.Token;
+import org.junit.Ignore;
+
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.junit.AbstractXtextTests;
 import org.eclipse.xtext.nodemodel.INode;
@@ -16,7 +18,7 @@ import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.parser.antlr.ITokenDefProvider;
 import org.eclipse.xtext.parser.antlr.Lexer;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
-import org.junit.Ignore;
+
 import org.wesnoth.WMLStandaloneSetup;
 import org.wesnoth.services.WMLGrammarAccess;
 import org.wesnoth.utils.StringUtils;
@@ -25,34 +27,35 @@ import org.wesnoth.utils.StringUtils;
 public abstract class WMLTests extends AbstractXtextTests
 {
     protected WMLGrammarAccess grammar_;
-    protected String dataPath_ = "";
+    protected String           dataPath_ = "";
 
-    private Lexer lexer;
-    private ITokenDefProvider tokenDefProvider;
-    private IParser parser;
+    private Lexer              lexer;
+    private ITokenDefProvider  tokenDefProvider;
+    private IParser            parser;
 
-    protected Lexer getLexer()
+    protected Lexer getLexer( )
     {
         return lexer;
     }
 
-    protected ITokenDefProvider getTokenDefProvider()
+    protected ITokenDefProvider getTokenDefProvider( )
     {
         return tokenDefProvider;
     }
 
     @Override
-    protected IParser getParser()
+    protected IParser getParser( )
     {
         return parser;
     }
 
-    Class getStandaloneSetupClass() {
+    Class getStandaloneSetupClass( )
+    {
         return WMLStandaloneSetup.class;
     }
 
     @Override
-    protected void setUp() throws Exception
+    protected void setUp( ) throws Exception
     {
         super.setUp( );
         with( getStandaloneSetupClass( ) );
@@ -63,14 +66,16 @@ public abstract class WMLTests extends AbstractXtextTests
 
         // get the wesnoth data path from the user
         dataPath_ = System.getProperty( "wesnothDataDir" );
-        if ( StringUtils.isNullOrEmpty( dataPath_ ) || ! new File( dataPath_ ).exists( ) ) {
-            System.out.println(  "Please set the wesnoth data dir before testing!." );
+        if( StringUtils.isNullOrEmpty( dataPath_ )
+                || ! new File( dataPath_ ).exists( ) ) {
+            System.out
+                    .println( "Please set the wesnoth data dir before testing!." );
             assertTrue( false );
         }
     }
 
     @Override
-    protected void tearDown() throws Exception
+    protected void tearDown( ) throws Exception
     {
         super.tearDown( );
 
@@ -84,12 +89,13 @@ public abstract class WMLTests extends AbstractXtextTests
     /**
      * return the list of tokens created by the lexer from the given input
      */
-    protected List<Token> getTokens( String input )
+    protected List< Token > getTokens( String input )
     {
         CharStream stream = new ANTLRStringStream( input );
         getLexer( ).setCharStream( stream );
-        XtextTokenStream tokenStream = new XtextTokenStream( getLexer( ), getTokenDefProvider( ) );
-        List<Token> tokens = tokenStream.getTokens( );
+        XtextTokenStream tokenStream = new XtextTokenStream( getLexer( ),
+                getTokenDefProvider( ) );
+        List< Token > tokens = tokenStream.getTokens( );
         return tokens;
     }
 
@@ -104,11 +110,12 @@ public abstract class WMLTests extends AbstractXtextTests
     /**
      * check whether an input is chopped into a list of expected token types
      */
-    protected void checkTokenisation( String input, String... expectedTokenTypes )
+    protected void checkTokenisation( String input,
+            String... expectedTokenTypes )
     {
-        List<Token> tokens = getTokens( input );
+        List< Token > tokens = getTokens( input );
         assertEquals( input, expectedTokenTypes.length, tokens.size( ) );
-        for ( int i = 0; i < tokens.size( ); i++ ) {
+        for( int i = 0; i < tokens.size( ); i++ ) {
             Token token = tokens.get( i );
             assertEquals( input, expectedTokenTypes[i], getTokenType( token ) );
         }
@@ -116,8 +123,8 @@ public abstract class WMLTests extends AbstractXtextTests
 
     protected void showTokenisation( String input )
     {
-        List<Token> tokens = getTokens( input );
-        for ( int i = 0; i < tokens.size( ); i++ ) {
+        List< Token > tokens = getTokens( input );
+        for( int i = 0; i < tokens.size( ); i++ ) {
             Token token = tokens.get( i );
             System.out.println( getTokenType( token ) );
         }
@@ -128,7 +135,7 @@ public abstract class WMLTests extends AbstractXtextTests
      */
     protected void failTokenisation( String input, String unExpectedTokenType )
     {
-        List<Token> tokens = getTokens( input );
+        List< Token > tokens = getTokens( input );
         assertEquals( input, 1, tokens.size( ) );
         Token token = tokens.get( 0 );
         assertNotSame( input, unExpectedTokenType, getTokenType( token ) );
@@ -158,8 +165,9 @@ public abstract class WMLTests extends AbstractXtextTests
      */
     protected void checkParsing( Reader reader )
     {
-        IParseResult la = getParser( ).parse( reader );;
-        for ( INode node : la.getSyntaxErrors( ) ) {
+        IParseResult la = getParser( ).parse( reader );
+        ;
+        for( INode node: la.getSyntaxErrors( ) ) {
             System.out.println( node.getSyntaxErrorMessage( ).getMessage( ) );
         }
         assertEquals( false, la.hasSyntaxErrors( ) );
@@ -172,7 +180,7 @@ public abstract class WMLTests extends AbstractXtextTests
     protected void checkParsing( String input, ParserRule entryRule )
     {
         IParseResult la = getParseResult( input, entryRule );
-        for ( INode node : la.getSyntaxErrors( ) ) {
+        for( INode node: la.getSyntaxErrors( ) ) {
             System.out.println( node.getSyntaxErrorMessage( ).getMessage( ) );
         }
         assertEquals( input, false, la.hasSyntaxErrors( ) );
@@ -196,7 +204,7 @@ public abstract class WMLTests extends AbstractXtextTests
         // the rule name for a keyword is usually
         // the keyword enclosed in single quotes
         String rule = new StringBuilder( "'" ).append( input ).append( "'" ) //$NON-NLS-1$ //$NON-NLS-2$
-        .toString( );
+                .toString( );
         checkTokenisation( input, rule );
     }
 
@@ -205,7 +213,7 @@ public abstract class WMLTests extends AbstractXtextTests
      */
     protected void failKeyword( String keyword )
     {
-        List<Token> tokens = getTokens( keyword );
+        List< Token > tokens = getTokens( keyword );
         assertEquals( keyword, 1, tokens.size( ) );
         String type = getTokenType( tokens.get( 0 ) );
         assertFalse( keyword, type.charAt( 0 ) == '\'' );
@@ -216,22 +224,23 @@ public abstract class WMLTests extends AbstractXtextTests
     {
         File theFile = new File( path );
 
-        if ( ! theFile.exists( ) ) {
+        if( ! theFile.exists( ) ) {
             System.out.println( "Skipping non-existent path:" + path );
             return;
         }
 
-        if ( theFile.isFile( ) )
+        if( theFile.isFile( ) )
             testFile( path );
         else {
-            for ( File file : theFile.listFiles( ) ) {
+            for( File file: theFile.listFiles( ) ) {
                 testPath( file.getAbsolutePath( ) );
             }
         }
     }
 
     @Ignore
-    public void testFile( String path ) {
+    public void testFile( String path )
+    {
 
     }
 }

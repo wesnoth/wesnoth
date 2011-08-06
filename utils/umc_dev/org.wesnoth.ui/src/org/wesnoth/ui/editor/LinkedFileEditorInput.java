@@ -20,34 +20,32 @@ import org.eclipse.ui.part.FileEditorInput;
  */
 public class LinkedFileEditorInput extends FileEditorInput
 {
-	public LinkedFileEditorInput(IFile file)
-	{
-		super(file);
-	}
+    public LinkedFileEditorInput( IFile file )
+    {
+        super( file );
+    }
 
-	@Override
-	public boolean equals(Object obj)
-	{
-		if (this == obj) {
-			return true;
-		}
-		String targetUri = ""; //$NON-NLS-1$
-		if (!(obj instanceof IFileEditorInput))
-		{
-			if (obj instanceof FileStoreEditorInput)
-			{
-				FileStoreEditorInput other = (FileStoreEditorInput)obj;
-				targetUri = other.getURI().toString();
-			}
-		}
-		else
-		{
-			IFileEditorInput other = (IFileEditorInput) obj;
-			targetUri = other.getFile().getLocationURI().toString();
-		}
-		if (targetUri.isEmpty())
-			return false;
-		return getFile().getLocationURI().toString().toLowerCase(Locale.ENGLISH).
-				equals(targetUri.toLowerCase(Locale.ENGLISH));
-	}
+    @Override
+    public boolean equals( Object obj )
+    {
+        if( this == obj ) {
+            return true;
+        }
+        String targetUri = ""; //$NON-NLS-1$
+        if( ! ( obj instanceof IFileEditorInput ) ) {
+            if( obj instanceof FileStoreEditorInput ) {
+                FileStoreEditorInput other = ( FileStoreEditorInput ) obj;
+                targetUri = other.getURI( ).toString( );
+            }
+        }
+        else {
+            IFileEditorInput other = ( IFileEditorInput ) obj;
+            targetUri = other.getFile( ).getLocationURI( ).toString( );
+        }
+        if( targetUri.isEmpty( ) )
+            return false;
+        return getFile( ).getLocationURI( ).toString( )
+                .toLowerCase( Locale.ENGLISH )
+                .equals( targetUri.toLowerCase( Locale.ENGLISH ) );
+    }
 }

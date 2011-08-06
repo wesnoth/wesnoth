@@ -12,6 +12,7 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.console.IConsoleConstants;
+
 import org.wesnoth.views.AddonsView;
 import org.wesnoth.views.WesnothProjectsExplorer;
 
@@ -20,31 +21,34 @@ public class WMLPerspective implements IPerspectiveFactory
     public static final String WMLPERSPECTIVE_ID = "org.wesnoth.product.WMLPerspective";
 
     @Override
-    public void createInitialLayout(IPageLayout layout)
+    public void createInitialLayout( IPageLayout layout )
     {
         // Add "show views".
-        layout.addShowViewShortcut(IPageLayout.ID_PROJECT_EXPLORER);
-        layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
-        layout.addShowViewShortcut(IPageLayout.ID_PROBLEM_VIEW);
+        layout.addShowViewShortcut( IPageLayout.ID_PROJECT_EXPLORER );
+        layout.addShowViewShortcut( IPageLayout.ID_OUTLINE );
+        layout.addShowViewShortcut( IPageLayout.ID_PROBLEM_VIEW );
         layout.addShowViewShortcut( AddonsView.ID_ADDONS_VIEW );
 
         // Editors are placed for free.
-        String editorArea = layout.getEditorArea();
-        layout.setEditorAreaVisible(true);
+        String editorArea = layout.getEditorArea( );
+        layout.setEditorAreaVisible( true );
 
         // Place navigator and outline to left of editor area.
-        IFolderLayout left = layout.createFolder("left", IPageLayout.LEFT, (float) 0.26, editorArea); //$NON-NLS-1$
-        left.addView(WesnothProjectsExplorer.ID_PROJECTS_EXPLORER);
+        IFolderLayout left = layout.createFolder(
+                "left", IPageLayout.LEFT, ( float ) 0.26, editorArea ); //$NON-NLS-1$
+        left.addView( WesnothProjectsExplorer.ID_PROJECTS_EXPLORER );
 
-        IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, 0.76f, editorArea); //$NON-NLS-1$
-        bottom.addView(IPageLayout.ID_PROBLEM_VIEW);
-        bottom.addView(IPageLayout.ID_PROGRESS_VIEW);
-        bottom.addView(IConsoleConstants.ID_CONSOLE_VIEW);
+        IFolderLayout bottom = layout.createFolder(
+                "bottom", IPageLayout.BOTTOM, 0.76f, editorArea ); //$NON-NLS-1$
+        bottom.addView( IPageLayout.ID_PROBLEM_VIEW );
+        bottom.addView( IPageLayout.ID_PROGRESS_VIEW );
+        bottom.addView( IConsoleConstants.ID_CONSOLE_VIEW );
         bottom.addView( AddonsView.ID_ADDONS_VIEW );
-        bottom.addView("org.eclipse.pde.runtime.LogView"); //$NON-NLS-1$
+        bottom.addView( "org.eclipse.pde.runtime.LogView" ); //$NON-NLS-1$
 
-        IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.68f, editorArea); //$NON-NLS-1$
-        right.addView(IPageLayout.ID_OUTLINE);
+        IFolderLayout right = layout.createFolder(
+                "right", IPageLayout.RIGHT, 0.68f, editorArea ); //$NON-NLS-1$
+        right.addView( IPageLayout.ID_OUTLINE );
 
         layout.addPerspectiveShortcut( WMLPERSPECTIVE_ID );
 

@@ -24,238 +24,256 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
 import org.wesnoth.Messages;
 import org.wesnoth.wizards.WizardPageTemplate;
 
 
 public class FactionPage0 extends WizardPageTemplate
 {
-	private Text		txtFileName_;
-	private Text		txtDirectory_;
-	private Text		txtFactionId_;
-	private Text		txtFactionName_;
-	private Text		txtType_;
-	private Text		txtLeader_;
-	private Text		txtRandomLeader_;
-	private Text		txtTerrainLiked_;
-	private Text		text;
+    private Text txtFileName_;
+    private Text txtDirectory_;
+    private Text txtFactionId_;
+    private Text txtFactionName_;
+    private Text txtType_;
+    private Text txtLeader_;
+    private Text txtRandomLeader_;
+    private Text txtTerrainLiked_;
+    private Text text;
 
-	/**
-	 * Create the wizard.
-	 */
-	public FactionPage0() {
-		super("factionPage0"); //$NON-NLS-1$
-		setTitle(Messages.FactionPage0_1);
-		setDescription(Messages.FactionPage0_2);
-	}
+    /**
+     * Create the wizard.
+     */
+    public FactionPage0( )
+    {
+        super( "factionPage0" ); //$NON-NLS-1$
+        setTitle( Messages.FactionPage0_1 );
+        setDescription( Messages.FactionPage0_2 );
+    }
 
-	/**
-	 * Create contents of the wizard.
-	 *
-	 * @param parent
-	 */
-	@Override
-	public void createControl(Composite parent)
-	{
-		super.createControl(parent);
-		Composite container = new Composite(parent, SWT.NULL);
+    /**
+     * Create contents of the wizard.
+     * 
+     * @param parent
+     */
+    @Override
+    public void createControl( Composite parent )
+    {
+        super.createControl( parent );
+        Composite container = new Composite( parent, SWT.NULL );
 
-		ModifyListener modifyListener = new ModifyListener() {
-			@Override
-			public void modifyText(ModifyEvent e)
-			{
-				updatePageIsComplete();
-			}
-		};
+        ModifyListener modifyListener = new ModifyListener( ) {
+            @Override
+            public void modifyText( ModifyEvent e )
+            {
+                updatePageIsComplete( );
+            }
+        };
 
-		setControl(container);
-		container.setLayout(new GridLayout(3, false));
+        setControl( container );
+        container.setLayout( new GridLayout( 3, false ) );
 
-		Label label = new Label(container, SWT.NONE);
-		GridData gd_label = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
-		gd_label.widthHint = 95;
-		label.setLayoutData(gd_label);
-		label.setText(Messages.FactionPage0_3);
+        Label label = new Label( container, SWT.NONE );
+        GridData gd_label = new GridData( SWT.FILL, SWT.CENTER, false, false,
+                1, 1 );
+        gd_label.widthHint = 95;
+        label.setLayoutData( gd_label );
+        label.setText( Messages.FactionPage0_3 );
 
-		txtDirectory_ = new Text(container, SWT.BORDER);
-		txtDirectory_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		txtDirectory_.addModifyListener(modifyListener);
-		txtDirectory_.setEditable(false);
+        txtDirectory_ = new Text( container, SWT.BORDER );
+        txtDirectory_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
+                false, 1, 1 ) );
+        txtDirectory_.addModifyListener( modifyListener );
+        txtDirectory_.setEditable( false );
 
-		Button button = new Button(container, SWT.NONE);
-		button.setText(Messages.FactionPage0_4);
-		button.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e)
-			{
-				IPath path = handleBrowseContainer();
-				if (path != null)
-					txtDirectory_.setText(path.toString());
-			}
-		});
+        Button button = new Button( container, SWT.NONE );
+        button.setText( Messages.FactionPage0_4 );
+        button.addSelectionListener( new SelectionAdapter( ) {
+            @Override
+            public void widgetSelected( SelectionEvent e )
+            {
+                IPath path = handleBrowseContainer( );
+                if( path != null )
+                    txtDirectory_.setText( path.toString( ) );
+            }
+        } );
 
-		Label label_4 = new Label(container, SWT.NONE);
-		label_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		label_4.setText(Messages.FactionPage0_5);
+        Label label_4 = new Label( container, SWT.NONE );
+        label_4.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
+                false, 1, 1 ) );
+        label_4.setText( Messages.FactionPage0_5 );
 
-		txtFileName_ = new Text(container, SWT.BORDER);
-		txtFileName_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		new Label(container, SWT.NONE);
-		txtFileName_.addModifyListener(modifyListener);
+        txtFileName_ = new Text( container, SWT.BORDER );
+        txtFileName_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
+                false, 1, 1 ) );
+        new Label( container, SWT.NONE );
+        txtFileName_.addModifyListener( modifyListener );
 
-		Label lblFactionId = new Label(container, SWT.NONE);
-		lblFactionId.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblFactionId.setText(Messages.FactionPage0_6);
+        Label lblFactionId = new Label( container, SWT.NONE );
+        lblFactionId.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
+                false, 1, 1 ) );
+        lblFactionId.setText( Messages.FactionPage0_6 );
 
-		txtFactionId_ = new Text(container, SWT.BORDER);
-		txtFactionId_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		new Label(container, SWT.NONE);
-		txtFactionId_.addModifyListener(modifyListener);
+        txtFactionId_ = new Text( container, SWT.BORDER );
+        txtFactionId_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
+                false, 1, 1 ) );
+        new Label( container, SWT.NONE );
+        txtFactionId_.addModifyListener( modifyListener );
 
-		Label lblName = new Label(container, SWT.NONE);
-		lblName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblName.setText(Messages.FactionPage0_7);
+        Label lblName = new Label( container, SWT.NONE );
+        lblName.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
+                false, 1, 1 ) );
+        lblName.setText( Messages.FactionPage0_7 );
 
-		txtFactionName_ = new Text(container, SWT.BORDER);
-		txtFactionName_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		new Label(container, SWT.NONE);
-		txtFactionName_.addModifyListener(modifyListener);
+        txtFactionName_ = new Text( container, SWT.BORDER );
+        txtFactionName_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
+                true, false, 1, 1 ) );
+        new Label( container, SWT.NONE );
+        txtFactionName_.addModifyListener( modifyListener );
 
-		Label lblType = new Label(container, SWT.NONE);
-		lblType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblType.setText(Messages.FactionPage0_8);
+        Label lblType = new Label( container, SWT.NONE );
+        lblType.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
+                false, 1, 1 ) );
+        lblType.setText( Messages.FactionPage0_8 );
 
-		txtType_ = new Text(container, SWT.BORDER);
-		txtType_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		new Label(container, SWT.NONE);
+        txtType_ = new Text( container, SWT.BORDER );
+        txtType_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
+                false, 1, 1 ) );
+        new Label( container, SWT.NONE );
 
-		Label lblLeader = new Label(container, SWT.NONE);
-		lblLeader.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblLeader.setText(Messages.FactionPage0_9);
+        Label lblLeader = new Label( container, SWT.NONE );
+        lblLeader.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
+                false, 1, 1 ) );
+        lblLeader.setText( Messages.FactionPage0_9 );
 
-		txtLeader_ = new Text(container, SWT.BORDER);
-		txtLeader_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		new Label(container, SWT.NONE);
+        txtLeader_ = new Text( container, SWT.BORDER );
+        txtLeader_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
+                false, 1, 1 ) );
+        new Label( container, SWT.NONE );
 
-		Label lblRandomLeaders = new Label(container, SWT.NONE);
-		lblRandomLeaders.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblRandomLeaders.setText(Messages.FactionPage0_10);
+        Label lblRandomLeaders = new Label( container, SWT.NONE );
+        lblRandomLeaders.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
+                false, false, 1, 1 ) );
+        lblRandomLeaders.setText( Messages.FactionPage0_10 );
 
-		txtRandomLeader_ = new Text(container, SWT.BORDER);
-		txtRandomLeader_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		new Label(container, SWT.NONE);
+        txtRandomLeader_ = new Text( container, SWT.BORDER );
+        txtRandomLeader_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
+                true, false, 1, 1 ) );
+        new Label( container, SWT.NONE );
 
-		Label lblTerrainLiked = new Label(container, SWT.NONE);
-		lblTerrainLiked.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblTerrainLiked.setText(Messages.FactionPage0_11);
+        Label lblTerrainLiked = new Label( container, SWT.NONE );
+        lblTerrainLiked.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
+                false, false, 1, 1 ) );
+        lblTerrainLiked.setText( Messages.FactionPage0_11 );
 
-		txtTerrainLiked_ = new Text(container, SWT.BORDER);
-		txtTerrainLiked_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		new Label(container, SWT.NONE);
+        txtTerrainLiked_ = new Text( container, SWT.BORDER );
+        txtTerrainLiked_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
+                true, false, 1, 1 ) );
+        new Label( container, SWT.NONE );
 
-		Label lblRecruit = new Label(container, SWT.NONE);
-		lblRecruit.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblRecruit.setText(Messages.FactionPage0_12);
+        Label lblRecruit = new Label( container, SWT.NONE );
+        lblRecruit.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
+                false, 1, 1 ) );
+        lblRecruit.setText( Messages.FactionPage0_12 );
 
-		text = new Text(container, SWT.BORDER);
-		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		new Label(container, SWT.NONE);
+        text = new Text( container, SWT.BORDER );
+        text.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false, 1,
+                1 ) );
+        new Label( container, SWT.NONE );
 
-		if (getWizard().getSelectionContainer() != null)
-			txtDirectory_.setText(getWizard().getSelectionContainer().getFullPath().toString());
-		updatePageIsComplete();
-	}
+        if( getWizard( ).getSelectionContainer( ) != null )
+            txtDirectory_.setText( getWizard( ).getSelectionContainer( )
+                    .getFullPath( ).toString( ) );
+        updatePageIsComplete( );
+    }
 
-	private void updatePageIsComplete()
-	{
-		IResource container = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(getDirectoryName()));
-		setPageComplete(false);
-		String fileName = getFileName();
+    private void updatePageIsComplete( )
+    {
+        IResource container = ResourcesPlugin.getWorkspace( ).getRoot( )
+                .findMember( new Path( getDirectoryName( ) ) );
+        setPageComplete( false );
+        String fileName = getFileName( );
 
-		if (getDirectoryName().isEmpty())
-		{
-			setErrorMessage(Messages.FactionPage0_13);
-			return;
-		}
+        if( getDirectoryName( ).isEmpty( ) ) {
+            setErrorMessage( Messages.FactionPage0_13 );
+            return;
+        }
 
-		if (container == null || !container.exists() || !(container instanceof IContainer))
-		{
-			setErrorMessage(Messages.FactionPage0_14);
-			return;
-		}
+        if( container == null || ! container.exists( )
+                || ! ( container instanceof IContainer ) ) {
+            setErrorMessage( Messages.FactionPage0_14 );
+            return;
+        }
 
-		if (fileName.isEmpty())
-		{
-			setErrorMessage(Messages.FactionPage0_15);
-			return;
-		}
+        if( fileName.isEmpty( ) ) {
+            setErrorMessage( Messages.FactionPage0_15 );
+            return;
+        }
 
-		if (fileName.replace('\\', '/').indexOf('/', 1) > 0)
-		{
-			setErrorMessage(Messages.FactionPage0_16);
-			return;
-		}
+        if( fileName.replace( '\\', '/' ).indexOf( '/', 1 ) > 0 ) {
+            setErrorMessage( Messages.FactionPage0_16 );
+            return;
+        }
 
-		int dotLoc = fileName.lastIndexOf('.');
-		if (dotLoc == -1 || fileName.substring(dotLoc + 1).equalsIgnoreCase("cfg") == false) //$NON-NLS-1$
-		{
-			setErrorMessage(Messages.FactionPage0_18);
-			return;
-		}
+        int dotLoc = fileName.lastIndexOf( '.' );
+        if( dotLoc == - 1
+                || fileName.substring( dotLoc + 1 ).equalsIgnoreCase( "cfg" ) == false ) //$NON-NLS-1$
+        {
+            setErrorMessage( Messages.FactionPage0_18 );
+            return;
+        }
 
-		if (getFactionId().isEmpty())
-		{
-			setErrorMessage(Messages.FactionPage0_19);
-			return;
-		}
+        if( getFactionId( ).isEmpty( ) ) {
+            setErrorMessage( Messages.FactionPage0_19 );
+            return;
+        }
 
-		if (getFactionName().isEmpty())
-		{
-			setErrorMessage(Messages.FactionPage0_20);
-			return;
-		}
+        if( getFactionName( ).isEmpty( ) ) {
+            setErrorMessage( Messages.FactionPage0_20 );
+            return;
+        }
 
-		setErrorMessage(null);
-		setPageComplete(true);
-	}
+        setErrorMessage( null );
+        setPageComplete( true );
+    }
 
-	public String getDirectoryName()
-	{
-		return txtDirectory_.getText();
-	}
+    public String getDirectoryName( )
+    {
+        return txtDirectory_.getText( );
+    }
 
-	public String getFactionId()
-	{
-		return txtFactionId_.getText();
-	}
+    public String getFactionId( )
+    {
+        return txtFactionId_.getText( );
+    }
 
-	public String getFactionName()
-	{
-		return txtFactionName_.getText();
-	}
+    public String getFactionName( )
+    {
+        return txtFactionName_.getText( );
+    }
 
-	public String getFileName()
-	{
-		return txtFileName_.getText();
-	}
+    public String getFileName( )
+    {
+        return txtFileName_.getText( );
+    }
 
-	public String getLeader()
-	{
-		return txtLeader_.getText();
-	}
+    public String getLeader( )
+    {
+        return txtLeader_.getText( );
+    }
 
-	public String getTerrainLiked()
-	{
-		return txtTerrainLiked_.getText();
-	}
+    public String getTerrainLiked( )
+    {
+        return txtTerrainLiked_.getText( );
+    }
 
-	public String getRandomLeader()
-	{
-		return txtRandomLeader_.getText();
-	}
+    public String getRandomLeader( )
+    {
+        return txtRandomLeader_.getText( );
+    }
 
-	public String getType()
-	{
-		return txtType_.getText();
-	}
+    public String getType( )
+    {
+        return txtType_.getText( );
+    }
 }

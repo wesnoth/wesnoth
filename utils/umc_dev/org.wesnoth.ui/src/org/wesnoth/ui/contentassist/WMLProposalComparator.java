@@ -14,15 +14,14 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 
 public class WMLProposalComparator implements ICompletionProposalComparator
 {
-	public int compare(ICompletionProposal arg0, ICompletionProposal arg1)
-	{
-		if (arg0 instanceof ConfigurableCompletionProposal &&
-			arg1 instanceof ConfigurableCompletionProposal)
-		{
-			ConfigurableCompletionProposal tmp0 = (ConfigurableCompletionProposal)arg0;
-			ConfigurableCompletionProposal tmp1 = (ConfigurableCompletionProposal)arg1;
-			return tmp0.compareTo(tmp1);
-		}
-		return 0;
-	}
+    public int compare( ICompletionProposal arg0, ICompletionProposal arg1 )
+    {
+        if( arg0 instanceof ConfigurableCompletionProposal
+                && arg1 instanceof ConfigurableCompletionProposal ) {
+            ConfigurableCompletionProposal tmp0 = ( ConfigurableCompletionProposal ) arg0;
+            ConfigurableCompletionProposal tmp1 = ( ConfigurableCompletionProposal ) arg1;
+            return tmp0.compareTo( tmp1 );
+        }
+        return 0;
+    }
 }

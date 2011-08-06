@@ -15,69 +15,74 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+
 import org.wesnoth.Messages;
 import org.wesnoth.wizards.WizardPageTemplate;
 
 
 public class ScenarioPage2 extends WizardPageTemplate
 {
-	Button	chkIsMultiplayerScenario_;
-	Button	chkAllowNewGame_;
+    Button chkIsMultiplayerScenario_;
+    Button chkAllowNewGame_;
 
-	/**
-	 * Create the wizard.
-	 */
-	public ScenarioPage2() {
-		super("scenarioPage2"); //$NON-NLS-1$
-		setTitle(Messages.ScenarioPage2_1);
-		setDescription(Messages.ScenarioPage2_2);
-	}
+    /**
+     * Create the wizard.
+     */
+    public ScenarioPage2( )
+    {
+        super( "scenarioPage2" ); //$NON-NLS-1$
+        setTitle( Messages.ScenarioPage2_1 );
+        setDescription( Messages.ScenarioPage2_2 );
+    }
 
-	/**
-	 * Create contents of the wizard.
-	 *
-	 * @param parent
-	 */
-	@Override
-	public void createControl(Composite parent)
-	{
-		super.createControl(parent);
-		Composite container = new Composite(parent, SWT.NULL);
+    /**
+     * Create contents of the wizard.
+     * 
+     * @param parent
+     */
+    @Override
+    public void createControl( Composite parent )
+    {
+        super.createControl( parent );
+        Composite container = new Composite( parent, SWT.NULL );
 
-		setControl(container);
-		container.setLayout(new GridLayout(1, false));
+        setControl( container );
+        container.setLayout( new GridLayout( 1, false ) );
 
-		chkIsMultiplayerScenario_ = new Button(container, SWT.CHECK);
-		chkIsMultiplayerScenario_.setText(Messages.ScenarioPage2_3);
-		new Label(container, SWT.NONE);
-		chkIsMultiplayerScenario_.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e)
-			{
-				if (!(e.getSource() instanceof Button))
-					return;
-				setMPSettings(((Button) e.getSource()).getSelection());
-			}
-		});
+        chkIsMultiplayerScenario_ = new Button( container, SWT.CHECK );
+        chkIsMultiplayerScenario_.setText( Messages.ScenarioPage2_3 );
+        new Label( container, SWT.NONE );
+        chkIsMultiplayerScenario_
+                .addSelectionListener( new SelectionAdapter( ) {
+                    @Override
+                    public void widgetSelected( SelectionEvent e )
+                    {
+                        if( ! ( e.getSource( ) instanceof Button ) )
+                            return;
+                        setMPSettings( ( ( Button ) e.getSource( ) )
+                                .getSelection( ) );
+                    }
+                } );
 
-		chkAllowNewGame_ = new Button(container, SWT.CHECK);
-		chkAllowNewGame_.setSelection(true);
-		chkAllowNewGame_.setEnabled(false);
-		chkAllowNewGame_.setText(Messages.ScenarioPage2_4);
-	}
+        chkAllowNewGame_ = new Button( container, SWT.CHECK );
+        chkAllowNewGame_.setSelection( true );
+        chkAllowNewGame_.setEnabled( false );
+        chkAllowNewGame_.setText( Messages.ScenarioPage2_4 );
+    }
 
-	private void setMPSettings(boolean status)
-	{
-		chkAllowNewGame_.setEnabled(status);
-	}
+    private void setMPSettings( boolean status )
+    {
+        chkAllowNewGame_.setEnabled( status );
+    }
 
-	public String getAllowNewGame()
-	{
-		return isMultiplayerScenario() ? String.valueOf(chkAllowNewGame_.getSelection()) : ""; //$NON-NLS-1$
-	}
+    public String getAllowNewGame( )
+    {
+        return isMultiplayerScenario( ) ? String.valueOf( chkAllowNewGame_
+                .getSelection( ) ): ""; //$NON-NLS-1$
+    }
 
-	public boolean isMultiplayerScenario()
-	{
-		return chkIsMultiplayerScenario_.getSelection();
-	}
+    public boolean isMultiplayerScenario( )
+    {
+        return chkIsMultiplayerScenario_.getSelection( );
+    }
 }

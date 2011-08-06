@@ -15,15 +15,15 @@ import org.eclipse.xtext.resource.DefaultLocationInFileProvider;
 
 public class WMLLocationInFileProvider extends DefaultLocationInFileProvider
 {
-	@Override
-	protected boolean useKeyword(Keyword keyword, EObject context)
-	{
-		return super.useKeyword(keyword, context);
-	}
+    @Override
+    protected boolean useKeyword( Keyword keyword, EObject context )
+    {
+        return super.useKeyword( keyword, context );
+    }
 
-	@Override
-	protected EStructuralFeature getIdentifierFeature(EObject obj)
-	{
-		return super.getIdentifierFeature(obj);
-	}
+    @Override
+    protected EStructuralFeature getIdentifierFeature( EObject obj )
+    {
+        return super.getIdentifierFeature( obj );
+    }
 }

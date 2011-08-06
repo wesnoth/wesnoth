@@ -9,23 +9,24 @@
 package org.wesnoth;
 
 import org.antlr.runtime.CharStream;
+
 import org.wesnoth.parser.antlr.internal.InternalWMLLexer;
 
 public class WMLLexer extends InternalWMLLexer
 {
-	public WMLLexer()
-	{
-		super();
-	}
-
-	public WMLLexer(CharStream input)
-	{
-        super(input);
+    public WMLLexer( )
+    {
+        super( );
     }
 
-	@Override
-	public void setCharStream(CharStream arg0)
-	{
-		super.setCharStream(arg0);
-	}
+    public WMLLexer( CharStream input )
+    {
+        super( input );
+    }
+
+    @Override
+    public void setCharStream( CharStream arg0 )
+    {
+        super.setCharStream( arg0 );
+    }
 }

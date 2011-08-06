@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.xtext.ui.editor.hyperlinking.XtextHyperlink;
+
 import org.wesnoth.Logger;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.GUIUtils;
@@ -22,40 +23,40 @@ import org.wesnoth.utils.GameUtils;
 
 public class MapOpenerHyperlink extends XtextHyperlink
 {
-	private String location_;
+    private String location_;
 
-	public void setLocation(String location)
-	{
-		location_ = location;
-	}
+    public void setLocation( String location )
+    {
+        location_ = location;
+    }
 
-	public String getLocation()
-	{
-		return location_;
-	}
+    public String getLocation( )
+    {
+        return location_;
+    }
 
-	@Override
-	public void open()
-	{
-		if ( !new File(location_).exists() )
-		{
-		    if ( GUIUtils.showMessageBox(
-		            "The map doesn't exist. Do you want to create a default one and open that?",
-		            SWT.YES | SWT.NO ) == SWT.NO )
-		        return;
+    @Override
+    public void open( )
+    {
+        if( ! new File( location_ ).exists( ) ) {
+            if( GUIUtils
+                    .showMessageBox(
+                            "The map doesn't exist. Do you want to create a default one and open that?",
+                            SWT.YES | SWT.NO ) == SWT.NO )
+                return;
 
-		    // go ahead, create the map
-		    FileWriter writer;
+            // go ahead, create the map
+            FileWriter writer;
             try {
                 writer = new FileWriter( location_ );
-                writer.write( TemplateProvider.getInstance( ).getTemplate( "map" ) );
+                writer.write( TemplateProvider.getInstance( ).getTemplate(
+                        "map" ) );
                 writer.close( );
-            }
-            catch ( IOException e ) {
+            } catch( IOException e ) {
                 Logger.getInstance( ).logException( e );
             }
-		}
+        }
 
-        GameUtils.startEditor(location_);
-	}
+        GameUtils.startEditor( location_ );
+    }
 }

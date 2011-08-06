@@ -22,7 +22,7 @@ public class WMLHighlightingHelper extends HighlightingHelper
         // set the highlighting helper in our editor
         // so we can access the highlightingReconcilier in order
         // to be able to refresh the semantic highlighting
-        if ( editor instanceof WMLEditor ) {
+        if( editor instanceof WMLEditor ) {
             ( ( WMLEditor ) editor ).highlightingHelper_ = this;
         }
     }

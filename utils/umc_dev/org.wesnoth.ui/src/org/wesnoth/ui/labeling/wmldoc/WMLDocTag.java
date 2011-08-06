@@ -11,41 +11,41 @@ package org.wesnoth.ui.labeling.wmldoc;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyleRange;
+import org.eclipse.swt.widgets.Display;
+
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.ui.Messages;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WmlFactory2;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyleRange;
-import org.eclipse.swt.widgets.Display;
-
 /**
  * Displays wml doc for a tag [tag] or [/tag]
  */
 public class WMLDocTag implements IWMLDocProvider
 {
-    private WMLTag tag_;
-    private String title_;
-    private String contents_;
-    private List<StyleRange> styleRanges_;
+    private WMLTag             tag_;
+    private String             title_;
+    private String             contents_;
+    private List< StyleRange > styleRanges_;
 
-    private boolean docGenerated_;
+    private boolean            docGenerated_;
 
     public WMLDocTag( IFile currentFile, String installName, String name )
     {
         tag_ = SchemaParser.getInstance( installName ).getTags( ).get( name );
 
         // try to get it from the Project Cache ( lua parsed ones )
-        if ( tag_ == null ) {
-            tag_ = ProjectUtils.getCacheForProject( currentFile.getProject( ) ).
-                    getWMLTags( ).get( name );
+        if( tag_ == null ) {
+            tag_ = ProjectUtils.getCacheForProject( currentFile.getProject( ) )
+                    .getWMLTags( ).get( name );
         }
 
         // Create a default one
-        if ( tag_ == null ) {
+        if( tag_ == null ) {
             tag_ = WmlFactory2.eINSTANCE.createWMLTag( name );
         }
 
@@ -55,18 +55,18 @@ public class WMLDocTag implements IWMLDocProvider
     /**
      * A method used for lazly generating the documentation
      */
-    private void generateDoc()
+    private void generateDoc( )
     {
-        if ( docGenerated_ )
+        if( docGenerated_ )
             return;
 
-        styleRanges_ = new ArrayList<StyleRange>( );
+        styleRanges_ = new ArrayList< StyleRange >( );
 
         title_ = Messages.WMLDocTag_0 + tag_.getName( ) + "':"; //$NON-NLS-1$
 
         contents_ = null;
 
-        if ( !tag_.get_Description( ).isEmpty( ) ) {
+        if( ! tag_.get_Description( ).isEmpty( ) ) {
             StringBuilder content = new StringBuilder( );
             content.append( Messages.WMLDocTag_1 );
             addStyleRange( 0, content.length( ) - 1, SWT.BOLD );
@@ -79,42 +79,45 @@ public class WMLDocTag implements IWMLDocProvider
 
     /**
      * Adds a style range to current list
-     *
+     * 
      * @param offset
      * @param length
      * @param style
      */
     private void addStyleRange( int offset, int length, int style )
     {
-        styleRanges_.add( new StyleRange( offset, length, Display.getDefault( ).getSystemColor( SWT.COLOR_INFO_FOREGROUND ), Display.getDefault( ).getSystemColor( SWT.COLOR_INFO_BACKGROUND ), style ) );
+        styleRanges_.add( new StyleRange( offset, length, Display.getDefault( )
+                .getSystemColor( SWT.COLOR_INFO_FOREGROUND ), Display
+                .getDefault( ).getSystemColor( SWT.COLOR_INFO_BACKGROUND ),
+                style ) );
     }
 
-    public String getTitle()
+    public String getTitle( )
     {
         generateDoc( );
         return title_;
     }
 
-    public String getInfoText()
-	{
+    public String getInfoText( )
+    {
         String infoText = "";
-	    if ( tag_.is_LuaBased( ) )
-	        infoText += "[Lua tag] ";
+        if( tag_.is_LuaBased( ) )
+            infoText += "[Lua tag] ";
 
-	    if ( ! tag_.get_DefinitionLocation( ).isEmpty( ) ) {
-	        infoText += "Defined in: " + tag_.get_DefinitionLocation( );
-	        infoText += " : " + tag_.get_DefinitionOffset( );
-	    }
-		return infoText.isEmpty( ) ? null : infoText;
-	}
+        if( ! tag_.get_DefinitionLocation( ).isEmpty( ) ) {
+            infoText += "Defined in: " + tag_.get_DefinitionLocation( );
+            infoText += " : " + tag_.get_DefinitionOffset( );
+        }
+        return infoText.isEmpty( ) ? null: infoText;
+    }
 
-    public String getContents()
+    public String getContents( )
     {
         generateDoc( );
         return contents_;
     }
 
-    public StyleRange[] getStyleRanges()
+    public StyleRange[] getStyleRanges( )
     {
         generateDoc( );
         return styleRanges_.toArray( new StyleRange[styleRanges_.size( )] );

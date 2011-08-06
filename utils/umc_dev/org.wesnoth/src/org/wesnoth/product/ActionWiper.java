@@ -17,70 +17,67 @@ import org.eclipse.ui.IStartup;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+
 import org.wesnoth.Messages;
 
 public class ActionWiper implements IStartup, IPerspectiveListener
 {
-	private static final String[]	ACTIONS_2_WIPE	= new String[] {
-			"org.eclipse.search.searchActionSet", //$NON-NLS-1$
-			"org.eclipse.debug.ui.breakpointActionSet", //$NON-NLS-1$
-			"org.eclipse.debug.ui.debugActionSet", //$NON-NLS-1$
-			"org.eclipse.debug.ui.launchActionSet", //$NON-NLS-1$
-			"org.eclipse.debug.ui.profileActionSet", //$NON-NLS-1$
-			"org.eclipse.ui.externaltools.ExternalToolsSet" //$NON-NLS-1$
-													// "org.eclipse.ui.edit.text.actionSet.presentation",
-													// "org.eclipse.ui.edit.text.actionSet.openExternalFile",
-													// "org.eclipse.ui.edit.text.actionSet.annotationNavigation",
-													// "org.eclipse.ui.edit.text.actionSet.navigation",
-													// "org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo",
-													// "org.eclipse.update.ui.softwareUpdates"
-													};
+    private static final String[] ACTIONS_2_WIPE = new String[] {
+            "org.eclipse.search.searchActionSet", //$NON-NLS-1$
+            "org.eclipse.debug.ui.breakpointActionSet", //$NON-NLS-1$
+            "org.eclipse.debug.ui.debugActionSet", //$NON-NLS-1$
+            "org.eclipse.debug.ui.launchActionSet", //$NON-NLS-1$
+            "org.eclipse.debug.ui.profileActionSet", //$NON-NLS-1$
+            "org.eclipse.ui.externaltools.ExternalToolsSet" //$NON-NLS-1$
+                                                 // "org.eclipse.ui.edit.text.actionSet.presentation",
+                                                 // "org.eclipse.ui.edit.text.actionSet.openExternalFile",
+                                                 // "org.eclipse.ui.edit.text.actionSet.annotationNavigation",
+                                                 // "org.eclipse.ui.edit.text.actionSet.navigation",
+                                                 // "org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo",
+                                                 // "org.eclipse.update.ui.softwareUpdates"
+                                                 };
 
-	public void earlyStartup()
-	{
-		IWorkbenchWindow[] windows = PlatformUI.getWorkbench().getWorkbenchWindows();
-		for (int i = 0; i < windows.length; i++)
-		{
-			IWorkbenchPage page = windows[i].getActivePage();
-			if (page != null)
-			{
-				wipeActions(page);
-			}
-			windows[i].addPerspectiveListener(this);
-		}
-	}
+    public void earlyStartup( )
+    {
+        IWorkbenchWindow[] windows = PlatformUI.getWorkbench( )
+                .getWorkbenchWindows( );
+        for( int i = 0; i < windows.length; i++ ) {
+            IWorkbenchPage page = windows[i].getActivePage( );
+            if( page != null ) {
+                wipeActions( page );
+            }
+            windows[i].addPerspectiveListener( this );
+        }
+    }
 
-	private void wipeActions(final IWorkbenchPage page)
-	{
-		Display.getDefault().syncExec(new Runnable() {
-			public void run()
-			{
-				// remove the run menu
-				Menu menu = page.getWorkbenchWindow().getShell().getMenuBar();
-				for (MenuItem item : menu.getItems())
-				{
-					if (item.getText().equals(Messages.ActionWiper_6))
-					{
-						item.dispose();
-					}
-				}
+    private void wipeActions( final IWorkbenchPage page )
+    {
+        Display.getDefault( ).syncExec( new Runnable( ) {
+            public void run( )
+            {
+                // remove the run menu
+                Menu menu = page.getWorkbenchWindow( ).getShell( ).getMenuBar( );
+                for( MenuItem item: menu.getItems( ) ) {
+                    if( item.getText( ).equals( Messages.ActionWiper_6 ) ) {
+                        item.dispose( );
+                    }
+                }
 
-				for (int i = 0; i < ACTIONS_2_WIPE.length; i++)
-				{
-					page.hideActionSet(ACTIONS_2_WIPE[i]);
-				}
-			}
-		});
-	}
+                for( int i = 0; i < ACTIONS_2_WIPE.length; i++ ) {
+                    page.hideActionSet( ACTIONS_2_WIPE[i] );
+                }
+            }
+        } );
+    }
 
-	public void perspectiveActivated(IWorkbenchPage page,
-			IPerspectiveDescriptor perspective)
-	{
-		wipeActions(page);
-	}
+    public void perspectiveActivated( IWorkbenchPage page,
+            IPerspectiveDescriptor perspective )
+    {
+        wipeActions( page );
+    }
 
-	public void perspectiveChanged(IWorkbenchPage page,
-			IPerspectiveDescriptor perspective, String changeId)
-	{
-	}
+    public void perspectiveChanged( IWorkbenchPage page,
+            IPerspectiveDescriptor perspective, String changeId )
+    {
+    }
 }

@@ -15,18 +15,18 @@ import org.eclipse.ui.application.IActionBarConfigurer;
 public class WesnothActionBarAdvisor extends WorkbenchActionBuilder
 {
 
-	public WesnothActionBarAdvisor(IActionBarConfigurer configurer)
-	{
-		super(configurer);
-	}
+    public WesnothActionBarAdvisor( IActionBarConfigurer configurer )
+    {
+        super( configurer );
+    }
 
-	@Override
-	protected void makeActions(IWorkbenchWindow window)
-	{
-	    super.makeActions( window );
+    @Override
+    protected void makeActions( IWorkbenchWindow window )
+    {
+        super.makeActions( window );
 
         // add dynamic help hooks
-	    register( ActionFactory.HELP_SEARCH.create( window ) );
-	    register( ActionFactory.DYNAMIC_HELP.create( window ) );
-	}
+        register( ActionFactory.HELP_SEARCH.create( window ) );
+        register( ActionFactory.DYNAMIC_HELP.create( window ) );
+    }
 }

@@ -16,21 +16,21 @@ import org.eclipse.ui.IWorkbenchPart;
 
 public abstract class ObjectActionDelegate implements IObjectActionDelegate
 {
-	protected ISelection selection_;
-	protected IStructuredSelection structuredSelection_;
-	protected IAction action_;
+    protected ISelection           selection_;
+    protected IStructuredSelection structuredSelection_;
+    protected IAction              action_;
 
-	@Override
-	public void selectionChanged(IAction action, ISelection selection)
-	{
-		selection_ = selection;
-		action_ = action;
-		if (selection instanceof IStructuredSelection)
-			structuredSelection_ = (IStructuredSelection)selection;
-	}
+    @Override
+    public void selectionChanged( IAction action, ISelection selection )
+    {
+        selection_ = selection;
+        action_ = action;
+        if( selection instanceof IStructuredSelection )
+            structuredSelection_ = ( IStructuredSelection ) selection;
+    }
 
-	@Override
-	public void setActivePart(IAction action, IWorkbenchPart targetPart)
-	{
-	}
+    @Override
+    public void setActivePart( IAction action, IWorkbenchPart targetPart )
+    {
+    }
 }

@@ -8,17 +8,17 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
-public abstract class RunnableWithResult<T> implements Runnable
+public abstract class RunnableWithResult< T > implements Runnable
 {
-	private T result_;
+    private T result_;
 
-	public void setResult( T result )
-	{
-	    result_ = result;
-	}
+    public void setResult( T result )
+    {
+        result_ = result;
+    }
 
-	public T getResult( )
-	{
-	    return result_;
-	}
+    public T getResult( )
+    {
+        return result_;
+    }
 }

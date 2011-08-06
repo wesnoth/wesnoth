@@ -13,31 +13,34 @@ import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-public abstract class AbstractPreferencePage extends FieldEditorPreferencePage implements
-			IWorkbenchPreferencePage
+public abstract class AbstractPreferencePage extends FieldEditorPreferencePage
+        implements IWorkbenchPreferencePage
 {
-	public AbstractPreferencePage(int style)
-	{
-		super(style);
-	}
-	public AbstractPreferencePage()
-	{
-		super();
-	}
+    public AbstractPreferencePage( int style )
+    {
+        super( style );
+    }
 
-	/**
-	 * Adds the specified field editor with the specified tooltip
-	 * @param editor
-	 * @param tooltip
-	 */
-	protected void addField(FieldEditor editor, String tooltip)
-	{
-		editor.getLabelControl(getFieldEditorParent()).setToolTipText(tooltip);
-		super.addField(editor);
-	}
+    public AbstractPreferencePage( )
+    {
+        super( );
+    }
 
-	@Override
-	public void init(IWorkbench workbench)
-	{
-	}
+    /**
+     * Adds the specified field editor with the specified tooltip
+     * 
+     * @param editor
+     * @param tooltip
+     */
+    protected void addField( FieldEditor editor, String tooltip )
+    {
+        editor.getLabelControl( getFieldEditorParent( ) ).setToolTipText(
+                tooltip );
+        super.addField( editor );
+    }
+
+    @Override
+    public void init( IWorkbench workbench )
+    {
+    }
 }

@@ -13,17 +13,17 @@ import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategyProvider;
 
 public class WMLAutoEditStrategy extends DefaultAutoEditStrategyProvider
 {
-	public WMLAutoEditStrategy()
-	{
-		super();
-	}
+    public WMLAutoEditStrategy( )
+    {
+        super( );
+    }
 
-	@Override
-	protected void configure( IEditStrategyAcceptor acceptor )
-	{
-		super.configure( acceptor );
-		configureStringLiteral(acceptor);
-		acceptor.accept( new ClosingEndTagAutoEditStrategy(),
-		        IDocument.DEFAULT_CONTENT_TYPE );
-	}
+    @Override
+    protected void configure( IEditStrategyAcceptor acceptor )
+    {
+        super.configure( acceptor );
+        configureStringLiteral( acceptor );
+        acceptor.accept( new ClosingEndTagAutoEditStrategy( ),
+                IDocument.DEFAULT_CONTENT_TYPE );
+    }
 }

@@ -13,6 +13,7 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.xtext.ui.editor.hyperlinking.XtextHyperlink;
+
 import org.wesnoth.utils.EditorUtils;
 
 
@@ -22,46 +23,46 @@ import org.wesnoth.utils.EditorUtils;
  */
 public class FileLocationOpenerHyperlink extends XtextHyperlink
 {
-	private String filePath_;
-	private int linenum_;
+    private String filePath_;
+    private int    linenum_;
 
-	@Override
-	public void open()
-	{
-		IEditorPart part = EditorUtils.openEditor(filePath_);
-		if (part != null)
-		{
+    @Override
+    public void open( )
+    {
+        IEditorPart part = EditorUtils.openEditor( filePath_ );
+        if( part != null ) {
 
-			ITextEditor editor = EditorUtils.getTextEditor(part);
-			IDocument doc = editor.getDocumentProvider().
-								getDocument(editor.getEditorInput());
-			int offset = 0;
-			try
-			{
-				// compute offset based on linenum_
-				offset = doc.getLineOffset(linenum_);
-			}
-			catch (BadLocationException e) {
-				//ignore
-			}
-			EditorUtils.getTextEditor(part).selectAndReveal(offset, 0);
-		}
-	}
+            ITextEditor editor = EditorUtils.getTextEditor( part );
+            IDocument doc = editor.getDocumentProvider( ).getDocument(
+                    editor.getEditorInput( ) );
+            int offset = 0;
+            try {
+                // compute offset based on linenum_
+                offset = doc.getLineOffset( linenum_ );
+            } catch( BadLocationException e ) {
+                // ignore
+            }
+            EditorUtils.getTextEditor( part ).selectAndReveal( offset, 0 );
+        }
+    }
 
-	public void setLinenumber(int linenum)
-	{
-		linenum_ = linenum;
-	}
-	public int getLinenumber()
-	{
-		return linenum_;
-	}
-	public void setFilePath(String filePath)
-	{
-		filePath_ = filePath;
-	}
-	public String getFilePath()
-	{
-		return filePath_;
-	}
+    public void setLinenumber( int linenum )
+    {
+        linenum_ = linenum;
+    }
+
+    public int getLinenumber( )
+    {
+        return linenum_;
+    }
+
+    public void setFilePath( String filePath )
+    {
+        filePath_ = filePath;
+    }
+
+    public String getFilePath( )
+    {
+        return filePath_;
+    }
 }

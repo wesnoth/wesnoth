@@ -41,6 +41,7 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.part.ViewPart;
+
 import org.wesnoth.installs.SelectWesnothInstallDialog;
 import org.wesnoth.preferences.AddonUploadPreferencePage;
 import org.wesnoth.preferences.Preferences;
@@ -56,31 +57,32 @@ public class AddonsView extends ViewPart
 {
     public final static String ID_ADDONS_VIEW = "org.wesnoth.addonsView";
 
-    private Combo cmbAddonServer_;
-    private List<String> ports_;
+    private Combo              cmbAddonServer_;
+    private List< String >     ports_;
 
-    private String currentPort_;
+    private String             currentPort_;
     /**
      * Flag whether we area already loading some addons or not
      */
-    private boolean loading_;
-    private Table tableAddons_;
+    private boolean            loading_;
+    private Table              tableAddons_;
 
-    public AddonsView()
+    public AddonsView( )
     {
-        ports_ = new ArrayList<String>( );
+        ports_ = new ArrayList< String >( );
     }
 
     @Override
     public void createPartControl( Composite parent )
     {
-        parent.setLayout(new FillLayout(SWT.HORIZONTAL));
+        parent.setLayout( new FillLayout( SWT.HORIZONTAL ) );
 
         Group grpAddonsList = new Group( parent, SWT.NONE );
         grpAddonsList.setText( "Addons list" );
         grpAddonsList.setLayout( new FillLayout( SWT.HORIZONTAL ) );
 
-        tableAddons_ = new Table( grpAddonsList, SWT.BORDER | SWT.FULL_SELECTION );
+        tableAddons_ = new Table( grpAddonsList, SWT.BORDER
+                | SWT.FULL_SELECTION );
         tableAddons_.setHeaderVisible( true );
         tableAddons_.setLinesVisible( true );
 
@@ -116,44 +118,49 @@ public class AddonsView extends ViewPart
         lblSelectAddonServer.setText( "Select addon server: " );
 
         cmbAddonServer_ = new Combo( grpOptions, SWT.NONE );
-        GridData gd_cmbAddonServer = new GridData( SWT.FILL, SWT.FILL, false, false, 1, 1 );
+        GridData gd_cmbAddonServer = new GridData( SWT.FILL, SWT.FILL, false,
+                false, 1, 1 );
         gd_cmbAddonServer.widthHint = 148;
         cmbAddonServer_.setLayoutData( gd_cmbAddonServer );
 
-        Button btnRefresh = new Button(grpOptions, SWT.NONE);
-        btnRefresh.addSelectionListener(new SelectionAdapter() {
+        Button btnRefresh = new Button( grpOptions, SWT.NONE );
+        btnRefresh.addSelectionListener( new SelectionAdapter( ) {
             @Override
-            public void widgetSelected(SelectionEvent e) {
+            public void widgetSelected( SelectionEvent e )
+            {
                 refreshAddons( );
             }
-        });
-        btnRefresh.setText("Refresh");
+        } );
+        btnRefresh.setText( "Refresh" );
 
-        Button btnOpenAddonManager = new Button(grpOptions, SWT.NONE);
-        btnOpenAddonManager.addSelectionListener(new SelectionAdapter() {
+        Button btnOpenAddonManager = new Button( grpOptions, SWT.NONE );
+        btnOpenAddonManager.addSelectionListener( new SelectionAdapter( ) {
             @Override
-            public void widgetSelected(SelectionEvent e) {
-                PreferencesUtil.createPreferenceDialogOn( getViewSite( ).getShell( ),
+            public void widgetSelected( SelectionEvent e )
+            {
+                PreferencesUtil.createPreferenceDialogOn(
+                        getViewSite( ).getShell( ),
                         AddonUploadPreferencePage.ID_ADDON_PREFERENCE_PAGE,
                         null, null ).open( );
             }
-        });
-        btnOpenAddonManager.setText("Open Addon Manager preferences");
+        } );
+        btnOpenAddonManager.setText( "Open Addon Manager preferences" );
 
         cmbAddonServer_.addSelectionListener( new SelectionAdapter( ) {
             @Override
-            public void widgetSelected( SelectionEvent e ) {
+            public void widgetSelected( SelectionEvent e )
+            {
                 refreshAddons( );
             }
         } );
 
         ports_.clear( );
         // fill the addons
-        for ( Entry<String, String> server :
-                AddonUploadPreferencePage.ADDON_SERVER_PORTS.entrySet( ) ) {
+        for( Entry< String, String > server: AddonUploadPreferencePage.ADDON_SERVER_PORTS
+                .entrySet( ) ) {
 
-            cmbAddonServer_.add( String.format(
-                    "%s ( port: %s )", server.getValue( ), server.getKey( ) ) );
+            cmbAddonServer_.add( String.format( "%s ( port: %s )",
+                    server.getValue( ), server.getKey( ) ) );
             ports_.add( server.getKey( ) );
         }
 
@@ -166,13 +173,14 @@ public class AddonsView extends ViewPart
             {
                 Action downloadAction = new Action( "Download" ) {
                     @Override
-                    public void run() {
+                    public void run( )
+                    {
                         downloadAddon( );
                     };
                 };
                 manager.add( downloadAction );
             }
-        });
+        } );
 
         Menu menu = menuManager.createContextMenu( tableAddons_ );
         tableAddons_.setMenu( menu );
@@ -181,9 +189,9 @@ public class AddonsView extends ViewPart
     /**
      * Downloads the currently selected addon
      */
-    protected void downloadAddon()
+    protected void downloadAddon( )
     {
-        if ( tableAddons_.getSelectionIndex( ) == -1 ) {
+        if( tableAddons_.getSelectionIndex( ) == - 1 ) {
             GUIUtils.showErrorMessageBox( "No addon selected" );
             return;
         }
@@ -191,57 +199,62 @@ public class AddonsView extends ViewPart
         TableItem[] selection = tableAddons_.getSelection( );
         final String addonName = selection[0].getText( 1 );
 
-        WorkspaceJob downloadJob = new  WorkspaceJob( "Download" ) {
+        WorkspaceJob downloadJob = new WorkspaceJob( "Download" ) {
 
             @Override
-            public IStatus runInWorkspace( final IProgressMonitor monitor ) throws CoreException
+            public IStatus runInWorkspace( final IProgressMonitor monitor )
+                    throws CoreException
             {
                 monitor.beginTask( "Downloading addon " + addonName, 100 );
 
                 String installName = Preferences.getDefaultInstallName( );
 
-                RunnableWithResult<String> runnable =
-                        new RunnableWithResult<String>() {
+                RunnableWithResult< String > runnable = new RunnableWithResult< String >( ) {
                     @Override
-                    public void run()
+                    public void run( )
                     {
                         // ask the user to select the install for the project
-                        SelectWesnothInstallDialog dialog =
-                                new SelectWesnothInstallDialog( null );
-                        if ( dialog.open( ) == SWT.OK ) {
+                        SelectWesnothInstallDialog dialog = new SelectWesnothInstallDialog(
+                                null );
+                        if( dialog.open( ) == SWT.OK ) {
                             setResult( dialog.getSelectedInstallName( ) );
                         }
                     }
                 };
 
                 Display.getDefault( ).syncExec( runnable );
-                if ( ! StringUtils.isNullOrEmpty( runnable.getResult( ) ) ) {
+                if( ! StringUtils.isNullOrEmpty( runnable.getResult( ) ) ) {
                     installName = runnable.getResult( );
                 }
 
                 final Paths paths = Preferences.getPaths( installName );
 
-                OutputStream console = GUIUtils
-                    .createConsole( "Wesnoth Addon Manager", null, false )
-                    .newOutputStream( );
+                OutputStream console = GUIUtils.createConsole(
+                        "Wesnoth Addon Manager", null, false )
+                        .newOutputStream( );
 
                 ExternalToolInvoker tool = WMLTools.runWesnothAddonManager(
-                        installName, null, currentPort_,
-                        Arrays.asList( "-d", addonName, "-c", paths.getAddonsDir( ) ),
+                        installName,
+                        null,
+                        currentPort_,
+                        Arrays.asList( "-d", addonName, "-c",
+                                paths.getAddonsDir( ) ),
                         new OutputStream[] { console },
-                        new OutputStream[] { console });
+                        new OutputStream[] { console } );
 
                 tool.waitForTool( );
 
                 monitor.worked( 50 );
 
                 // ask user if he wants to create a project
-                if ( GUIUtils.showMessageBox(
-                        "Do you want to create a new project for the downloaded addon?",
-                        SWT.YES | SWT.NO ) == SWT.YES ) {
+                if( GUIUtils
+                        .showMessageBox(
+                                "Do you want to create a new project for the downloaded addon?",
+                                SWT.YES | SWT.NO ) == SWT.YES ) {
 
-                        ProjectUtils.createWesnothProject( addonName,
-                                paths.getAddonsDir( ) + addonName, installName, monitor );
+                    ProjectUtils.createWesnothProject( addonName,
+                            paths.getAddonsDir( ) + addonName, installName,
+                            monitor );
                 }
                 monitor.done( );
 
@@ -254,42 +267,44 @@ public class AddonsView extends ViewPart
     /**
      * Refreshes the list of addons
      */
-    protected void refreshAddons()
+    protected void refreshAddons( )
     {
-        if ( loading_ ) {
+        if( loading_ ) {
             GUIUtils.showInfoMessageBox( "Please wait for the previous query to finish." );
             return;
         }
 
-        if ( cmbAddonServer_.getSelectionIndex( ) == -1 )
+        if( cmbAddonServer_.getSelectionIndex( ) == - 1 )
             return;
 
         currentPort_ = ports_.get( cmbAddonServer_.getSelectionIndex( ) );
-        if ( StringUtils.isNullOrEmpty( currentPort_ ) )
+        if( StringUtils.isNullOrEmpty( currentPort_ ) )
             return;
 
         loading_ = true;
         tableAddons_.setItemCount( 0 );
         tableAddons_.clearAll( );
 
-        if ( !StringUtils.isNullOrEmpty( currentPort_ ) ) {
+        if( ! StringUtils.isNullOrEmpty( currentPort_ ) ) {
             WorkspaceJob loadAddons = new WorkspaceJob( "Retrieving list..." ) {
 
                 @Override
-                public IStatus runInWorkspace( IProgressMonitor monitor ) throws CoreException
+                public IStatus runInWorkspace( IProgressMonitor monitor )
+                        throws CoreException
                 {
                     monitor.beginTask( "Retrieving list...", 100 );
                     monitor.worked( 10 );
 
                     String installName = Preferences.getDefaultInstallName( );
 
-                    OutputStream stderr = GUIUtils
-                        .createConsole( "Wesnoth Addon Manager", null, false )
-                        .newOutputStream( );
+                    OutputStream stderr = GUIUtils.createConsole(
+                            "Wesnoth Addon Manager", null, false )
+                            .newOutputStream( );
 
                     ExternalToolInvoker tool = WMLTools.runWesnothAddonManager(
                             installName, null, currentPort_,
-                            Arrays.asList( "-w", "-l" ), // list addons in raw mode
+                            Arrays.asList( "-w", "-l" ), // list addons in raw
+                                                         // mode
                             null, new OutputStream[] { stderr } );
                     tool.waitForTool( );
 
@@ -298,34 +313,36 @@ public class AddonsView extends ViewPart
                      * "2 - title", "3 - author", "4 - version", "uploads",
                      * "5 - downloads", "size", "timestamp", "translate"]]
                      */
-                    final String[] lines = StringUtils.getLines( tool.getOutputContent( ) );
-                    final List<String[]> addons = new ArrayList<String[]>( );
+                    final String[] lines = StringUtils.getLines( tool
+                            .getOutputContent( ) );
+                    final List< String[] > addons = new ArrayList< String[] >( );
 
                     String[] tmpColumns = null;
-                    int index = -1;
+                    int index = - 1;
 
-                    for ( String line : lines ) {
-                        index = -1;
+                    for( String line: lines ) {
+                        index = - 1;
 
-                        if ( line.startsWith( "\\ campaign" ) ) {
-                            if ( tmpColumns != null )
+                        if( line.startsWith( "\\ campaign" ) ) {
+                            if( tmpColumns != null )
                                 addons.add( tmpColumns );
                             tmpColumns = new String[6];
-                        } else if ( line.startsWith( "  \\ type" ) )
+                        }
+                        else if( line.startsWith( "  \\ type" ) )
                             index = 0;
-                        else if ( line.startsWith( "  \\ name" ) )
+                        else if( line.startsWith( "  \\ name" ) )
                             index = 1;
-                        else if ( line.startsWith( "  \\ title" ) )
+                        else if( line.startsWith( "  \\ title" ) )
                             index = 2;
-                        else if ( line.startsWith( "  \\ author" ) )
+                        else if( line.startsWith( "  \\ author" ) )
                             index = 3;
-                        else if ( line.startsWith( "  \\ version" ) )
+                        else if( line.startsWith( "  \\ version" ) )
                             index = 4;
-                        else if ( line.startsWith( "  \\ downloads" ) )
+                        else if( line.startsWith( "  \\ downloads" ) )
                             index = 5;
 
                         // got something interesting? parse it
-                        if ( tmpColumns != null && index != -1 ) {
+                        if( tmpColumns != null && index != - 1 ) {
                             tmpColumns[index] = line.substring(
                                     line.indexOf( '\'' ) + 1,
                                     line.lastIndexOf( '\'' ) ).trim( );
@@ -335,18 +352,15 @@ public class AddonsView extends ViewPart
                     // need GUI Thread access
                     Display.getDefault( ).syncExec( new Runnable( ) {
                         @Override
-                        public void run()
+                        public void run( )
                         {
                             // skipp 1st line since it's just the header
-                            for ( String[] addon : addons ) {
+                            for( String[] addon: addons ) {
 
-                                TableItem tableItem = new TableItem( tableAddons_, SWT.NONE );
-                                tableItem.setText( new String[] {
-                                        addon[0],
-                                        addon[1],
-                                        addon[2],
-                                        addon[3],
-                                        addon[4],
+                                TableItem tableItem = new TableItem(
+                                        tableAddons_, SWT.NONE );
+                                tableItem.setText( new String[] { addon[0],
+                                        addon[1], addon[2], addon[3], addon[4],
                                         addon[5] } );
 
                             }
@@ -366,7 +380,7 @@ public class AddonsView extends ViewPart
     }
 
     @Override
-    public void setFocus()
+    public void setFocus( )
     {
     }
 }

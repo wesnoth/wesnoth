@@ -33,219 +33,229 @@ public class TemplateProvider
      * Holds the instance of the TemplateProvider.
      * This is based on the Initialization on demand holder idiom
      */
-    private static class TemplateProviderInstance{
-        private static final TemplateProvider instance_ = new TemplateProvider();
+    private static class TemplateProviderInstance
+    {
+        private static final TemplateProvider instance_ = new TemplateProvider( );
     }
 
-	private final Map<String, String>	templates_	= new HashMap<String, String>();
+    private final Map< String, String >        templates_ = new HashMap< String, String >( );
 
-	private final Map<String, List<String>> cacs_ = new HashMap<String, List<String>>();
+    private final Map< String, List< String >> cacs_      = new HashMap< String, List< String >>( );
 
-	private TemplateProvider(){
-	    loadTemplates();
-	    loadCACs();
-	}
+    private TemplateProvider( )
+    {
+        loadTemplates( );
+        loadCACs( );
+    }
 
-    public static TemplateProvider getInstance()
-	{
-		return TemplateProviderInstance.instance_;
-	}
+    public static TemplateProvider getInstance( )
+    {
+        return TemplateProviderInstance.instance_;
+    }
 
     /**
      * Loads the Content Assist Config files from the file system
      */
-    public void loadCACs()
+    public void loadCACs( )
     {
         cacs_.clear( );
 
-        try{
-            File varsFile = new File( Constants.PLUGIN_FULL_PATH + "/templates/cac/variables.txt" );
-            cacs_.put( "variables", Arrays.asList( StringUtils.getLines(
-                    ResourceUtils.getFileContents( varsFile, true, true ) ) ) );
+        try {
+            File varsFile = new File( Constants.PLUGIN_FULL_PATH
+                    + "/templates/cac/variables.txt" );
+            cacs_.put( "variables", Arrays.asList( StringUtils
+                    .getLines( ResourceUtils.getFileContents( varsFile, true,
+                            true ) ) ) );
 
-            File eventsFile = new File( Constants.PLUGIN_FULL_PATH + "/templates/cac/events.txt" );
-            cacs_.put( "events", Arrays.asList( StringUtils.getLines(
-                    ResourceUtils.getFileContents( eventsFile, true, true ) ) ) );
-        } catch (Exception e) {
+            File eventsFile = new File( Constants.PLUGIN_FULL_PATH
+                    + "/templates/cac/events.txt" );
+            cacs_.put( "events", Arrays.asList( StringUtils
+                    .getLines( ResourceUtils.getFileContents( eventsFile, true,
+                            true ) ) ) );
+        } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
         }
     }
 
-	/**
-	 * Loads the templates from the file system
-	 */
-	public void loadTemplates()
-	{
-	    templates_.clear( );
-		try
-		{
-			Logger.getInstance().log("reading templates from: " + //$NON-NLS-1$
-					Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME);
+    /**
+     * Loads the templates from the file system
+     */
+    public void loadTemplates( )
+    {
+        templates_.clear( );
+        try {
+            Logger.getInstance( ).log( "reading templates from: " + //$NON-NLS-1$
+                    Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME );
 
-			BufferedReader reader = new BufferedReader(
-					new FileReader(Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME));
-			BufferedReader tmpReader;
-			String line, tmpLine;
-			StringBuilder content = new StringBuilder();
+            BufferedReader reader = new BufferedReader( new FileReader(
+                    Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME ) );
+            BufferedReader tmpReader;
+            String line, tmpLine;
+            StringBuilder content = new StringBuilder( );
 
-			// read the main "templatesIndex.txt" file
-			while ((line = reader.readLine()) != null)
-			{
-				// comment
-				if (line.startsWith("#") || line.isEmpty( )) //$NON-NLS-1$
-					continue;
+            // read the main "templatesIndex.txt" file
+            while( ( line = reader.readLine( ) ) != null ) {
+                // comment
+                if( line.startsWith( "#" ) || line.isEmpty( ) ) //$NON-NLS-1$
+                    continue;
 
-				// 0 - template name | 1 - template file
-				String[] tokensStrings = line.split(" "); //$NON-NLS-1$
+                // 0 - template name | 1 - template file
+                String[] tokensStrings = line.split( " " ); //$NON-NLS-1$
 
-				if (tokensStrings.length != 2) {
-				    Logger.getInstance( ).logWarn( "TemplateIndex line " + line
-				            + "is not properly formatted" );
-					continue;
-				}
+                if( tokensStrings.length != 2 ) {
+                    Logger.getInstance( ).logWarn(
+                            "TemplateIndex line " + line
+                                    + "is not properly formatted" );
+                    continue;
+                }
 
-				content.setLength(0);
+                content.setLength( 0 );
 
-				if (new File(Constants.PLUGIN_FULL_PATH + tokensStrings[1]).exists())
-				{
-					tmpReader = new BufferedReader(
-							new FileReader(Constants.PLUGIN_FULL_PATH + tokensStrings[1]));
-					while ((tmpLine = tmpReader.readLine()) != null)
-					{
-						content.append(tmpLine + '\n');
-					}
-					templates_.put(tokensStrings[0], content.toString());
-					tmpReader.close();
-				}
-			}
-			reader.close();
-		} catch (IOException e)
-		{
-			Logger.getInstance().logException(e);
-		}
-	}
+                if( new File( Constants.PLUGIN_FULL_PATH + tokensStrings[1] )
+                        .exists( ) ) {
+                    tmpReader = new BufferedReader( new FileReader(
+                            Constants.PLUGIN_FULL_PATH + tokensStrings[1] ) );
+                    while( ( tmpLine = tmpReader.readLine( ) ) != null ) {
+                        content.append( tmpLine + '\n' );
+                    }
+                    templates_.put( tokensStrings[0], content.toString( ) );
+                    tmpReader.close( );
+                }
+            }
+            reader.close( );
+        } catch( IOException e ) {
+            Logger.getInstance( ).logException( e );
+        }
+    }
 
-	/**
-	 * Gets a string of the processed specified template
-	 * @param templateName The name of the template to process
-	 * @param parameters The parameters to replace into the template
-	 * @return
-	 */
-	public String getProcessedTemplate(String templateName,
-			List<ReplaceableParameter> parameters)
-	{
-		String tmpTemplate = TemplateProvider.getInstance().getTemplate(templateName);
-		if (tmpTemplate == null || parameters == null)
-			return null;
+    /**
+     * Gets a string of the processed specified template
+     * 
+     * @param templateName
+     *            The name of the template to process
+     * @param parameters
+     *            The parameters to replace into the template
+     * @return
+     */
+    public String getProcessedTemplate( String templateName,
+            List< ReplaceableParameter > parameters )
+    {
+        String tmpTemplate = TemplateProvider.getInstance( ).getTemplate(
+                templateName );
+        if( tmpTemplate == null || parameters == null )
+            return null;
 
-		StringBuilder result = new StringBuilder();
-		String[] template = StringUtils.getLines(tmpTemplate);
-		boolean skipLine;
+        StringBuilder result = new StringBuilder( );
+        String[] template = StringUtils.getLines( tmpTemplate );
+        boolean skipLine;
 
-		for (int i = 0; i < template.length; ++i)
-		{
-			skipLine = false;
-			for (ReplaceableParameter param : parameters)
-			{
-				if (template[i].contains(param.paramName))
-				{
-					template[i] = StringUtils.replaceWithIndent(template[i],
-									param.paramName, param.paramValue);
+        for( int i = 0; i < template.length; ++i ) {
+            skipLine = false;
+            for( ReplaceableParameter param: parameters ) {
+                if( template[i].contains( param.paramName ) ) {
+                    template[i] = StringUtils.replaceWithIndent( template[i],
+                            param.paramName, param.paramValue );
 
-					if (!templateName.equals("build_xml") && //$NON-NLS-1$
-						(param.paramValue == null || param.paramValue.isEmpty()))
-					{
-						// we don't have any value supplied -
-						// let's comment that line (if it's not already commented)
-						// or remove it if it's empty
-						if (!(StringUtils.startsWith(template[i], "#"))) //$NON-NLS-1$
-						{
-							template[i] = "#" + template[i]; //$NON-NLS-1$
-							Pattern pattern = Pattern.compile("#[\t ]*"); //$NON-NLS-1$
-							Matcher matcher = pattern.matcher(template[i]);
-							if (matcher.matches())
-							{
-								skipLine = true;
-							}
-						}
-					}
-				}
-			}
+                    if( ! templateName.equals( "build_xml" ) && //$NON-NLS-1$
+                            ( param.paramValue == null || param.paramValue
+                                    .isEmpty( ) ) ) {
+                        // we don't have any value supplied -
+                        // let's comment that line (if it's not already
+                        // commented)
+                        // or remove it if it's empty
+                        if( ! ( StringUtils.startsWith( template[i], "#" ) ) ) //$NON-NLS-1$
+                        {
+                            template[i] = "#" + template[i]; //$NON-NLS-1$
+                            Pattern pattern = Pattern.compile( "#[\t ]*" ); //$NON-NLS-1$
+                            Matcher matcher = pattern.matcher( template[i] );
+                            if( matcher.matches( ) ) {
+                                skipLine = true;
+                            }
+                        }
+                    }
+                }
+            }
 
-			if (skipLine == false)
-				result.append(template[i] + "\n"); //$NON-NLS-1$
-		}
-		return result.toString();
-	}
+            if( skipLine == false )
+                result.append( template[i] + "\n" ); //$NON-NLS-1$
+        }
+        return result.toString( );
+    }
 
-	/**
-	 * Returns the template with the specified name or empty string if none
-	 * @param name
-	 * @return
-	 */
-	public String getTemplate(String name)
-	{
-	    String result = templates_.get( name );
-		if ( result == null )
-			return ""; //$NON-NLS-1$
-		return result;
-	}
+    /**
+     * Returns the template with the specified name or empty string if none
+     * 
+     * @param name
+     * @return
+     */
+    public String getTemplate( String name )
+    {
+        String result = templates_.get( name );
+        if( result == null )
+            return ""; //$NON-NLS-1$
+        return result;
+    }
 
-	/**
-	 * Gets the Content Assist Config list for the specified type
-	 * @param type The type of the CAC
-	 * @return A list of String values. The returned list is read-only
-	 */
-	public List<String> getCAC( String type )
-	{
-	    List<String> result = cacs_.get( type );
+    /**
+     * Gets the Content Assist Config list for the specified type
+     * 
+     * @param type
+     *            The type of the CAC
+     * @return A list of String values. The returned list is read-only
+     */
+    public List< String > getCAC( String type )
+    {
+        List< String > result = cacs_.get( type );
 
-	    if ( result == null )
-	        return new ArrayList<String>( );
+        if( result == null )
+            return new ArrayList< String >( );
 
-	    return result;
-	}
+        return result;
+    }
 
-	/**
-	 * Gets the lists of the specified structure template. The first return
-	 * value is a list of <String, String> that consist of <Filename, Template
-	 * used for file contents> and the second return value is a list of String
-	 * with directories names
-	 *
-	 * @param structureTemplate the template
-	 * @return
-	 */
-	public Pair<List<Pair<String, String>>, List<String>> getFilesDirectories(String structureTemplate)
-	{
-		List<Pair<String, String>> files = new ArrayList<Pair<String, String>>();
-		List<String> dirs = new ArrayList<String>();
+    /**
+     * Gets the lists of the specified structure template. The first return
+     * value is a list of <String, String> that consist of <Filename, Template
+     * used for file contents> and the second return value is a list of String
+     * with directories names
+     * 
+     * @param structureTemplate
+     *            the template
+     * @return
+     */
+    public Pair< List< Pair< String, String >>, List< String >> getFilesDirectories(
+            String structureTemplate )
+    {
+        List< Pair< String, String >> files = new ArrayList< Pair< String, String >>( );
+        List< String > dirs = new ArrayList< String >( );
 
-		for (String line : StringUtils.getLines(structureTemplate))
-		{
-			if (StringUtils.startsWith(line, "#")) //$NON-NLS-1$
-				continue;
+        for( String line: StringUtils.getLines( structureTemplate ) ) {
+            if( StringUtils.startsWith( line, "#" ) ) //$NON-NLS-1$
+                continue;
 
-			if (line.contains(":")) // file with template //$NON-NLS-1$
-			{
-				String[] tmpLine = line.split(":"); //$NON-NLS-1$
+            if( line.contains( ":" ) ) // file with template //$NON-NLS-1$
+            {
+                String[] tmpLine = line.split( ":" ); //$NON-NLS-1$
 
-				// oops. error
-				if (tmpLine.length != 2)
-				{
-					Logger.getInstance().logError(
-							String.format("error parsing 'structure template' (%s) on line %s", //$NON-NLS-1$
-									structureTemplate, line));
-					continue;
-				}
+                // oops. error
+                if( tmpLine.length != 2 ) {
+                    Logger.getInstance( )
+                            .logError(
+                                    String.format(
+                                            "error parsing 'structure template' (%s) on line %s", //$NON-NLS-1$
+                                            structureTemplate, line ) );
+                    continue;
+                }
 
-				files.add(new Pair<String, String>(tmpLine[0].trim(), tmpLine[1].trim()));
-			}
-			else
-			{
-				dirs.add(line.trim());
-			}
-		}
+                files.add( new Pair< String, String >( tmpLine[0].trim( ),
+                        tmpLine[1].trim( ) ) );
+            }
+            else {
+                dirs.add( line.trim( ) );
+            }
+        }
 
-		return new Pair<List<Pair<String, String>>, List<String>>(files, dirs);
-	}
+        return new Pair< List< Pair< String, String >>, List< String >>( files,
+                dirs );
+    }
 }

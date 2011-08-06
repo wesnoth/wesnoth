@@ -8,15 +8,15 @@
  *******************************************************************************/
 package org.wesnoth.ui.contentassist;
 
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
-
 import com.google.inject.Inject;
+
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 
 public class WMLContentAssistContext extends ContentAssistContext
 {
-	@Inject
-	public WMLContentAssistContext()
-	{
-		super();
-	}
+    @Inject
+    public WMLContentAssistContext( )
+    {
+        super( );
+    }
 }

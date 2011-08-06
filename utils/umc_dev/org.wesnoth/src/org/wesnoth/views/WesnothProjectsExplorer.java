@@ -21,41 +21,43 @@ public class WesnothProjectsExplorer extends CommonNavigator implements
 {
     public static final String ID_PROJECTS_EXPLORER = "org.wesnoth.views.WesnothProjectsExplorer"; //$NON-NLS-1$
 
-	public WesnothProjectsExplorer()
-	{
-	}
+    public WesnothProjectsExplorer( )
+    {
+    }
 
-	@Override
-	@SuppressWarnings("rawtypes")
-	public Object getAdapter(Class adapter)
-	{
-		if ( adapter.equals( IPersistableElement.class ) ) return this;
-		if ( adapter.equals( IWorkbenchAdapter.class ) )
-			return ResourcesPlugin.getWorkspace().getRoot().getAdapter( adapter );
-		return null;
-	}
+    @Override
+    @SuppressWarnings( "rawtypes" )
+    public Object getAdapter( Class adapter )
+    {
+        if( adapter.equals( IPersistableElement.class ) )
+            return this;
+        if( adapter.equals( IWorkbenchAdapter.class ) )
+            return ResourcesPlugin.getWorkspace( ).getRoot( )
+                    .getAdapter( adapter );
+        return null;
+    }
 
-	public String getFactoryId()
-	{
-		return this.getClass().getCanonicalName();
-	}
+    public String getFactoryId( )
+    {
+        return this.getClass( ).getCanonicalName( );
+    }
 
-	@Override
-	protected Object getInitialInput()
-	{
-	    return ResourcesPlugin.getWorkspace().getRoot();
-	}
+    @Override
+    protected Object getInitialInput( )
+    {
+        return ResourcesPlugin.getWorkspace( ).getRoot( );
+    }
 
-	@Override
-	public void saveState(IMemento aMemento)
-	{
-	    if (getCommonViewer() != null)
-	        super.saveState(aMemento);
-	}
+    @Override
+    public void saveState( IMemento aMemento )
+    {
+        if( getCommonViewer( ) != null )
+            super.saveState( aMemento );
+    }
 
-	public IAdaptable createElement(IMemento memento)
-	{
-		return ResourcesPlugin.getWorkspace().getRoot();
-	}
+    public IAdaptable createElement( IMemento memento )
+    {
+        return ResourcesPlugin.getWorkspace( ).getRoot( );
+    }
 
 }

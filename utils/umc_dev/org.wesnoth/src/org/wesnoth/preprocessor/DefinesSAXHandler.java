@@ -23,107 +23,107 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class DefinesSAXHandler extends DefaultHandler
 {
-	private Stack<String> stack_;
-	private Map<String, Define> defines_;
+    private Stack< String >       stack_;
+    private Map< String, Define > defines_;
 
-	// indexes for different define properties
-	private String name_;
-	private String value_;
-	private String textdomain_;
-	private int linenum_;
-	private String location_;
-	private List<String> arguments_;
+    // indexes for different define properties
+    private String                name_;
+    private String                value_;
+    private String                textdomain_;
+    private int                   linenum_;
+    private String                location_;
+    private List< String >        arguments_;
 
-	public DefinesSAXHandler()
-	{
-		stack_ = new Stack<String>();
-		defines_ = new HashMap<String, Define>();
-		arguments_ = new ArrayList<String>();
-	}
+    public DefinesSAXHandler( )
+    {
+        stack_ = new Stack< String >( );
+        defines_ = new HashMap< String, Define >( );
+        arguments_ = new ArrayList< String >( );
+    }
 
-	@Override
-	public void startElement(String uri, String localName, String qName,
-			Attributes attributes) throws SAXException
-	{
-		super.startElement(uri, localName, qName, attributes);
-		stack_.push(qName);
-	}
+    @Override
+    public void startElement( String uri, String localName, String qName,
+            Attributes attributes ) throws SAXException
+    {
+        super.startElement( uri, localName, qName, attributes );
+        stack_.push( qName );
+    }
 
-	@Override
-	public void endElement(String uri, String localName, String qName)
-			throws SAXException
-	{
-		super.endElement(uri, localName, qName);
-		stack_.pop();
+    @Override
+    public void endElement( String uri, String localName, String qName )
+            throws SAXException
+    {
+        super.endElement( uri, localName, qName );
+        stack_.pop( );
 
-		if (qName.equals("preproc_define")) //$NON-NLS-1$
-		{
-			// create the define
-			defines_.put(name_, new Define(name_, value_, textdomain_,
-					linenum_, location_, arguments_));
-			// reset values
-			resetValues();
-		}
-	}
+        if( qName.equals( "preproc_define" ) ) //$NON-NLS-1$
+        {
+            // create the define
+            defines_.put( name_, new Define( name_, value_, textdomain_,
+                    linenum_, location_, arguments_ ) );
+            // reset values
+            resetValues( );
+        }
+    }
 
-	@Override
-	public void characters(char[] ch, int start, int length)
-			throws SAXException
-	{
-		super.characters(ch, start, length);
-		if (stack_.isEmpty())
-			return;
-		String element = stack_.peek();
+    @Override
+    public void characters( char[] ch, int start, int length )
+            throws SAXException
+    {
+        super.characters( ch, start, length );
+        if( stack_.isEmpty( ) )
+            return;
+        String element = stack_.peek( );
 
-		if (element.equals("name")) //$NON-NLS-1$
-		{
-			// we have name at: 1 - preproc_define, 2 - argument
-			if (stack_.get(stack_.size() - 2).equals("argument")) //$NON-NLS-1$
-			{
-				arguments_.add(new String(ch, start, length));
-			}
-			else
-			{
-				name_ = new String(ch, start, length);
-			}
-		}
-		else if (element.equals("value")) //$NON-NLS-1$
-		{
-			value_ = new String(ch, start, length);
-		}
-		else if (element.equals("textdomain")) //$NON-NLS-1$
-		{
-			textdomain_ = new String(ch, start, length);
-		}
-		else if (element.equals("linenum")) //$NON-NLS-1$
-		{
-			linenum_ = Integer.valueOf(new String(ch, start, length));
-		}
-		else if (element.equals("location")) //$NON-NLS-1$
-		{
-			location_ = new String(ch, start, length);
-		}
-	}
+        if( element.equals( "name" ) ) //$NON-NLS-1$
+        {
+            // we have name at: 1 - preproc_define, 2 - argument
+            if( stack_.get( stack_.size( ) - 2 ).equals( "argument" ) ) //$NON-NLS-1$
+            {
+                arguments_.add( new String( ch, start, length ) );
+            }
+            else {
+                name_ = new String( ch, start, length );
+            }
+        }
+        else if( element.equals( "value" ) ) //$NON-NLS-1$
+        {
+            value_ = new String( ch, start, length );
+        }
+        else if( element.equals( "textdomain" ) ) //$NON-NLS-1$
+        {
+            textdomain_ = new String( ch, start, length );
+        }
+        else if( element.equals( "linenum" ) ) //$NON-NLS-1$
+        {
+            linenum_ = Integer.valueOf( new String( ch, start, length ) );
+        }
+        else if( element.equals( "location" ) ) //$NON-NLS-1$
+        {
+            location_ = new String( ch, start, length );
+        }
+    }
 
-	/**
-	 * resets indexes for to be used by the next define
-	 */
-	private void resetValues()
-	{
-		name_ = ""; //$NON-NLS-1$
-		value_ = ""; //$NON-NLS-1$
-		linenum_ = 0;
-		location_ = ""; //$NON-NLS-1$
-		textdomain_ = ""; //$NON-NLS-1$
-		arguments_ = new ArrayList<String>();
-	}
+    /**
+     * resets indexes for to be used by the next define
+     */
+    private void resetValues( )
+    {
+        name_ = ""; //$NON-NLS-1$
+        value_ = ""; //$NON-NLS-1$
+        linenum_ = 0;
+        location_ = ""; //$NON-NLS-1$
+        textdomain_ = ""; //$NON-NLS-1$
+        arguments_ = new ArrayList< String >( );
+    }
 
-	/**
-	 * Gets the map of defines parsed
-	 * @return
-	 */
-	public Map<String, Define> getDefines()
-	{
-		return defines_;
-	}
+    /**
+     * Gets the map of defines parsed
+     * 
+     * @return
+     */
+    public Map< String, Define > getDefines( )
+    {
+        return defines_;
+    }
 }

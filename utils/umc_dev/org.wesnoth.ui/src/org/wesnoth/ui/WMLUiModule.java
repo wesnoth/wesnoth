@@ -8,6 +8,9 @@
  *******************************************************************************/
 package org.wesnoth.ui;
 
+import com.google.inject.Binder;
+import com.google.inject.Provider;
+
 import org.eclipse.jface.text.hyperlink.IHyperlinkDetector;
 import org.eclipse.jface.text.source.ICharacterPairMatcher;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -25,6 +28,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeI
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+
 import org.wesnoth.ui.autoedit.WMLAutoEditStrategy;
 import org.wesnoth.ui.contentassist.WMLContentAssistContext;
 import org.wesnoth.ui.contentassist.WMLProposalComparator;
@@ -40,109 +44,108 @@ import org.wesnoth.ui.syntax.WMLCharacterPairMatcher;
 import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
 import org.wesnoth.ui.syntax.WMLSemanticHighlightingCalculator;
 
-import com.google.inject.Binder;
-import com.google.inject.Provider;
-
 /**
  * Use this class to register components to be used within the IDE.
  */
-@SuppressWarnings("all")
+@SuppressWarnings( "all" )
 public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 {
-	public WMLUiModule(AbstractUIPlugin plugin) {
-		super(plugin);
-	}
-
-	@Override
-	public void configure(Binder binder)
-	{
-		super.configure(binder);
-	}
-
-	@Override
-	public Class<? extends IHighlightingHelper> bindIHighlightingHelper()
-	{
-	    return WMLHighlightingHelper.class;
-	}
-
-	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration()
-	{
-		return WMLHighlightingConfiguration.class;
-	}
-
-	public Class<? extends AbstractAntlrTokenToAttributeIdMapper> bindTokenToAttributeIdMapper()
-	{
-		return WMLAntlrTokenToAttributeIdMapper.class;
-	}
-
-	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator()
-	{
-		return WMLSemanticHighlightingCalculator.class;
-	}
-
-    @Override
-    public ICharacterPairMatcher bindICharacterPairMatcher()
+    public WMLUiModule( AbstractUIPlugin plugin )
     {
-        return new WMLCharacterPairMatcher( new char[] { '(', ')', '{', '}', '[', ']' } );
+        super( plugin );
     }
 
-	public Class<? extends XtextEditor> bindEditor()
-	{
-		return WMLEditor.class;
-	}
+    @Override
+    public void configure( Binder binder )
+    {
+        super.configure( binder );
+    }
 
-	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider()
-	{
-		return WMLLocationInFileProvider.class;
-	}
+    @Override
+    public Class< ? extends IHighlightingHelper > bindIHighlightingHelper( )
+    {
+        return WMLHighlightingHelper.class;
+    }
 
-	@Override
-	public Class<? extends IHyperlinkDetector> bindIHyperlinkDetector()
-	{
-		return super.bindIHyperlinkDetector();
-	}
+    public Class< ? extends IHighlightingConfiguration > bindIHighlightingConfiguration( )
+    {
+        return WMLHighlightingConfiguration.class;
+    }
 
-	public Class<? extends HyperlinkHelper> bindHyperlinkHelper()
-	{
-		return WMLHyperlinkHelper.class;
-	}
+    public Class< ? extends AbstractAntlrTokenToAttributeIdMapper > bindTokenToAttributeIdMapper( )
+    {
+        return WMLAntlrTokenToAttributeIdMapper.class;
+    }
 
-	public Class<? extends ContentAssistContext> bindContentAssistContext()
-	{
-		return WMLContentAssistContext.class;
-	}
+    public Class< ? extends ISemanticHighlightingCalculator > bindISemanticHighlightingCalculator( )
+    {
+        return WMLSemanticHighlightingCalculator.class;
+    }
 
-	public Class<? extends ICompletionProposalComparator> bindICompletionProposalComparator()
-	{
-		return WMLProposalComparator.class;
-	}
+    @Override
+    public ICharacterPairMatcher bindICharacterPairMatcher( )
+    {
+        return new WMLCharacterPairMatcher( new char[] { '(', ')', '{', '}',
+                '[', ']' } );
+    }
 
-	@Override
-	public Class<? extends AbstractEditStrategyProvider> bindAbstractEditStrategyProvider()
-	{
-	    return WMLAutoEditStrategy.class;
-	}
+    public Class< ? extends XtextEditor > bindEditor( )
+    {
+        return WMLEditor.class;
+    }
 
-	@Override
-	public Class<? extends ILabelProvider> bindILabelProvider()
-	{
-		return WMLLabelProvider.class;
-	}
+    public Class< ? extends ILocationInFileProvider > bindILocationInFileProvider( )
+    {
+        return WMLLocationInFileProvider.class;
+    }
 
-	@Override
-	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback()
-	{
-		return WMLAbstractDirtyEditorCallback.class;
-	}
+    @Override
+    public Class< ? extends IHyperlinkDetector > bindIHyperlinkDetector( )
+    {
+        return super.bindIHyperlinkDetector( );
+    }
 
-	public Class<? extends DefaultFoldingRegionProvider> bindDefaultFoldingRegionProvider()
-	{
-		return WMLFoldingRegionProvider.class;
-	}
+    public Class< ? extends HyperlinkHelper > bindHyperlinkHelper( )
+    {
+        return WMLHyperlinkHelper.class;
+    }
 
-	@Override
-	public Provider<IAllContainersState> provideIAllContainersState()
-	{
-	    return org.eclipse.xtext.ui.shared.Access.getWorkspaceProjectsState();
-	}
+    public Class< ? extends ContentAssistContext > bindContentAssistContext( )
+    {
+        return WMLContentAssistContext.class;
+    }
+
+    public Class< ? extends ICompletionProposalComparator > bindICompletionProposalComparator( )
+    {
+        return WMLProposalComparator.class;
+    }
+
+    @Override
+    public Class< ? extends AbstractEditStrategyProvider > bindAbstractEditStrategyProvider( )
+    {
+        return WMLAutoEditStrategy.class;
+    }
+
+    @Override
+    public Class< ? extends ILabelProvider > bindILabelProvider( )
+    {
+        return WMLLabelProvider.class;
+    }
+
+    @Override
+    public Class< ? extends IXtextEditorCallback > bindIXtextEditorCallback( )
+    {
+        return WMLAbstractDirtyEditorCallback.class;
+    }
+
+    public Class< ? extends DefaultFoldingRegionProvider > bindDefaultFoldingRegionProvider( )
+    {
+        return WMLFoldingRegionProvider.class;
+    }
+
+    @Override
+    public Provider< IAllContainersState > provideIAllContainersState( )
+    {
+        return org.eclipse.xtext.ui.shared.Access.getWorkspaceProjectsState( );
+    }
 }

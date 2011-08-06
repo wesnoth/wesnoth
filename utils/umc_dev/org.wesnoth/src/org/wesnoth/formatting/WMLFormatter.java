@@ -13,45 +13,52 @@ import org.eclipse.xtext.formatting.impl.FormattingConfig;
 
 /**
  * This class contains custom formatting description.
- *
+ * 
  * see : http://www.eclipse.org/Xtext/documentation/latest/xtext.html#formatting
  * on how and when to use it
- *
- * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an example
+ * 
+ * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an
+ * example
  */
 public class WMLFormatter extends AbstractDeclarativeFormatter
 {
 
-	public WMLFormatter()
-	{
-		super();
-	}
+    public WMLFormatter( )
+    {
+        super( );
+    }
 
-	@Override
-	protected void configureFormatting(FormattingConfig c)
-	{
-		org.wesnoth.services.WMLGrammarAccess f = (org.wesnoth.services.WMLGrammarAccess) getGrammarAccess();
+    @Override
+    protected void configureFormatting( FormattingConfig c )
+    {
+        org.wesnoth.services.WMLGrammarAccess f = ( org.wesnoth.services.WMLGrammarAccess ) getGrammarAccess( );
 
-		// disable autoline-wrap for now
-		c.setAutoLinewrap(500);
+        // disable autoline-wrap for now
+        c.setAutoLinewrap( 500 );
 
-		// no space after '[' and '[/'
-		c.setNoSpace().after(f.getWMLTagAccess().getLeftSquareBracketKeyword_0());
-		c.setNoSpace().after(f.getWMLTagAccess().getLeftSquareBracketSolidusKeyword_5());
+        // no space after '[' and '[/'
+        c.setNoSpace( ).after(
+                f.getWMLTagAccess( ).getLeftSquareBracketKeyword_0( ) );
+        c.setNoSpace( ).after(
+                f.getWMLTagAccess( ).getLeftSquareBracketSolidusKeyword_5( ) );
 
-		// no space before and after ']'
-		c.setNoSpace().around(f.getWMLTagAccess().getRightSquareBracketKeyword_3());
-		c.setNoSpace().around(f.getWMLTagAccess().getRightSquareBracketKeyword_7());
+        // no space before and after ']'
+        c.setNoSpace( ).around(
+                f.getWMLTagAccess( ).getRightSquareBracketKeyword_3( ) );
+        c.setNoSpace( ).around(
+                f.getWMLTagAccess( ).getRightSquareBracketKeyword_7( ) );
 
-		// no space before and after the '=' in 'key=value'
-		c.setNoSpace().around(f.getWMLKeyAccess().getEqualsSignKeyword_1());
+        // no space before and after the '=' in 'key=value'
+        c.setNoSpace( ).around( f.getWMLKeyAccess( ).getEqualsSignKeyword_1( ) );
 
-		// one indentation after tag ...
-		c.setIndentationIncrement().before(f.getWMLTagAccess().getExpressionsAssignment_4( ));
+        // one indentation after tag ...
+        c.setIndentationIncrement( ).before(
+                f.getWMLTagAccess( ).getExpressionsAssignment_4( ) );
 
-		// but get back the [/<tagname>]
-		c.setIndentationDecrement().before(f.getWMLTagAccess().getLeftSquareBracketSolidusKeyword_5());
+        // but get back the [/<tagname>]
+        c.setIndentationDecrement( ).before(
+                f.getWMLTagAccess( ).getLeftSquareBracketSolidusKeyword_5( ) );
 
-		c.setLinewrap(0, 1, 2).before(f.getSL_COMMENTRule());
-	}
+        c.setLinewrap( 0, 1, 2 ).before( f.getSL_COMMENTRule( ) );
+    }
 }

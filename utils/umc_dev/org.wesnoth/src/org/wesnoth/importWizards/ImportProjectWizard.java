@@ -5,21 +5,23 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.ui.IImportWizard;
+
 import org.wesnoth.Logger;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.wizards.WizardTemplate;
 
-public class ImportProjectWizard extends WizardTemplate implements IImportWizard
+public class ImportProjectWizard extends WizardTemplate implements
+        IImportWizard
 {
     private ImportProjectPage page0_;
 
-    public ImportProjectWizard()
+    public ImportProjectWizard( )
     {
 
     }
 
     @Override
-    public void addPages()
+    public void addPages( )
     {
         super.addPages( );
 
@@ -28,27 +30,24 @@ public class ImportProjectWizard extends WizardTemplate implements IImportWizard
     }
 
     @Override
-    public boolean performFinish()
+    public boolean performFinish( )
     {
-        IRunnableWithProgress op = new IRunnableWithProgress() {
+        IRunnableWithProgress op = new IRunnableWithProgress( ) {
             @Override
-            public void run(IProgressMonitor monitor)
+            public void run( IProgressMonitor monitor )
             {
                 ProjectUtils.createWesnothProject( page0_.getProjectName( ),
-                        page0_.getProjectPath( ), page0_.getSelectedInstallName(),
-                        monitor );
-                monitor.done();
+                        page0_.getProjectPath( ),
+                        page0_.getSelectedInstallName( ), monitor );
+                monitor.done( );
             }
         };
-        try
-        {
-            getContainer().run(false, false, op);
-        } catch (InterruptedException e)
-        {
+        try {
+            getContainer( ).run( false, false, op );
+        } catch( InterruptedException e ) {
             return false;
-        } catch (InvocationTargetException e)
-        {
-            Logger.getInstance().logException(e);
+        } catch( InvocationTargetException e ) {
+            Logger.getInstance( ).logException( e );
         }
         return true;
     }

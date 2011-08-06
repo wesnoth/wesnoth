@@ -8,17 +8,13 @@
  *******************************************************************************/
 package org.wesnoth.wml;
 
+import com.google.common.base.Preconditions;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.wesnoth.Logger;
-import org.wesnoth.projects.ProjectCache;
-import org.wesnoth.utils.ResourceUtils;
-import org.wesnoth.utils.WMLUtils;
-import org.wesnoth.wml.WMLVariable.Scope;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -27,36 +23,46 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
 
-import com.google.common.base.Preconditions;
+import org.wesnoth.Logger;
+import org.wesnoth.projects.ProjectCache;
+import org.wesnoth.utils.ResourceUtils;
+import org.wesnoth.utils.WMLUtils;
+import org.wesnoth.wml.WMLVariable.Scope;
 
 /**
  * A simple WML Parser that parses a xtext WML Config file resource
  */
 public class SimpleWMLParser
 {
-    protected WMLConfig config_;
-    protected WMLRoot root_;
-    protected ProjectCache projectCache_;
-    protected int dependencyIndex_;
-    protected List<WMLTag> tags_;
+    protected WMLConfig      config_;
+    protected WMLRoot        root_;
+    protected ProjectCache   projectCache_;
+    protected int            dependencyIndex_;
+    protected List< WMLTag > tags_;
 
     /**
      * Creates a new parser for the specified file
-     *
-     * @param file The file which to parse
+     * 
+     * @param file
+     *            The file which to parse
      */
     public SimpleWMLParser( IFile file )
     {
-        this( file, new WMLConfig( file.getProjectRelativePath( ).toString( ) ), null );
+        this( file,
+                new WMLConfig( file.getProjectRelativePath( ).toString( ) ),
+                null );
     }
 
     /**
      * Creates a new parser and fills the specified config file
-     *
-     * @param file The file which to parse
-     * @param config The config to fill
-     * @param projCache The project cache (can be null) on which to reflect
-     * the parsed data
+     * 
+     * @param file
+     *            The file which to parse
+     * @param config
+     *            The config to fill
+     * @param projCache
+     *            The project cache (can be null) on which to reflect
+     *            the parsed data
      */
     public SimpleWMLParser( IFile file, WMLConfig config, ProjectCache projCache )
     {
@@ -64,7 +70,7 @@ public class SimpleWMLParser
         root_ = ResourceUtils.getWMLRoot( file );
         projectCache_ = projCache;
 
-        tags_ = new ArrayList<WMLTag>();
+        tags_ = new ArrayList< WMLTag >( );
 
         dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
     }
@@ -72,7 +78,8 @@ public class SimpleWMLParser
     /**
      * Creates a new parser that can be called on files outside the workspace
      */
-    public SimpleWMLParser( File file, IParser parser ) throws FileNotFoundException
+    public SimpleWMLParser( File file, IParser parser )
+            throws FileNotFoundException
     {
         projectCache_ = null;
 
@@ -83,64 +90,72 @@ public class SimpleWMLParser
     }
 
     /**
-     * Parses the config. The resulted config will be available in {@link #getParsedConfig()}
+     * Parses the config. The resulted config will be available in
+     * {@link #getParsedConfig()}
      */
     public void parse( )
     {
-        TreeIterator<EObject> itor = root_.eAllContents( );
+        TreeIterator< EObject > itor = root_.eAllContents( );
         WMLTag currentTag = null;
         String currentTagName = "";
 
         // clear tags
         config_.getWMLTags( ).clear( );
-        String currentFileLocation = root_.eResource( ).getURI( ).toFileString( );
-        if ( currentFileLocation == null ) {
-            currentFileLocation = root_.eResource( ).getURI( ).toPlatformString( true );
+        String currentFileLocation = root_.eResource( ).getURI( )
+                .toFileString( );
+        if( currentFileLocation == null ) {
+            currentFileLocation = root_.eResource( ).getURI( )
+                    .toPlatformString( true );
         }
 
-        while ( itor.hasNext( ) ) {
+        while( itor.hasNext( ) ) {
             EObject object = itor.next( );
 
-            if ( object instanceof WMLTag ) {
+            if( object instanceof WMLTag ) {
                 currentTag = ( WMLTag ) object;
                 currentTagName = currentTag.getName( );
 
-                if ( currentTagName.equals( "scenario" ) )
+                if( currentTagName.equals( "scenario" ) )
                     config_.IsScenario = true;
-                else if ( currentTagName.equals( "campaign" ) )
+                else if( currentTagName.equals( "campaign" ) )
                     config_.IsCampaign = true;
             }
-            else if ( object instanceof WMLKey ) {
-                if ( currentTag != null ) {
+            else if( object instanceof WMLKey ) {
+                if( currentTag != null ) {
                     WMLKey key = ( WMLKey ) object;
                     String keyName = key.getName( );
 
-                    if ( keyName.equals( "id" ) ) {
-                        if ( currentTagName.equals( "scenario" ) )
-                            config_.ScenarioId = WMLUtils.getKeyValue( key.getValues( ) );
-                        else if ( currentTagName.equals( "campaign" ) )
-                            config_.CampaignId = WMLUtils.getKeyValue( key.getValues( ) );
-                    } else if ( keyName.equals( "name" ) ) {
-                        if ( currentTagName.equals( "set_variable" ) ||
-                             currentTagName.equals( "set_variables" ) ) {
+                    if( keyName.equals( "id" ) ) {
+                        if( currentTagName.equals( "scenario" ) )
+                            config_.ScenarioId = WMLUtils.getKeyValue( key
+                                    .getValues( ) );
+                        else if( currentTagName.equals( "campaign" ) )
+                            config_.CampaignId = WMLUtils.getKeyValue( key
+                                    .getValues( ) );
+                    }
+                    else if( keyName.equals( "name" ) ) {
+                        if( currentTagName.equals( "set_variable" )
+                                || currentTagName.equals( "set_variables" ) ) {
                             handleSetVariable( object );
-                        } else if ( currentTagName.equals( "clear_variable" ) ||
-                                    currentTagName.equals( "clear_variables" ) ) {
+                        }
+                        else if( currentTagName.equals( "clear_variable" )
+                                || currentTagName.equals( "clear_variables" ) ) {
                             handleUnsetVariable( object );
                         }
                     }
                 }
             }
-            else if ( object instanceof WMLMacroCall ) {
+            else if( object instanceof WMLMacroCall ) {
                 WMLMacroCall macroCall = ( WMLMacroCall ) object;
                 String macroCallName = macroCall.getName( );
-                if ( macroCallName.equals( "VARIABLE" ) ) {
+                if( macroCallName.equals( "VARIABLE" ) ) {
                     handleSetVariable( object );
-                } else if ( macroCallName.equals( "CLEAR_VARIABLE" ) ) {
+                }
+                else if( macroCallName.equals( "CLEAR_VARIABLE" ) ) {
                     handleUnsetVariable( object );
                 }
             }
-            else if ( object instanceof WMLLuaCode ) {
+            else if( object instanceof WMLLuaCode ) {
                 SimpleLuaParser luaParser = new SimpleLuaParser(
                         currentFileLocation,
                         ( ( WMLLuaCode ) object ).getValue( ) );
@@ -149,19 +164,22 @@ public class SimpleWMLParser
                 config_.getWMLTags( ).putAll( luaParser.getTags( ) );
             }
         }
-        //TODO: parse custom events
+        // TODO: parse custom events
     }
 
     protected String getVariableNameByContext( EObject context )
     {
         String variableName = null;
 
-        if ( context instanceof WMLKey ) {
-            variableName =  WMLUtils.getKeyValue( ( ( WMLKey ) context ).getValues( ) ) ;
-        } else if ( context instanceof WMLMacroCall ) {
+        if( context instanceof WMLKey ) {
+            variableName = WMLUtils.getKeyValue( ( ( WMLKey ) context )
+                    .getValues( ) );
+        }
+        else if( context instanceof WMLMacroCall ) {
             WMLMacroCall macro = ( WMLMacroCall ) context;
-            if ( macro.getParameters( ).size( ) > 0 ) {
-                variableName = WMLUtils.toString( macro.getParameters( ).get( 0 ) ) ;
+            if( macro.getParameters( ).size( ) > 0 ) {
+                variableName = WMLUtils.toString( macro.getParameters( )
+                        .get( 0 ) );
             }
         }
 
@@ -171,25 +189,26 @@ public class SimpleWMLParser
 
     protected void handleSetVariable( EObject context )
     {
-        if ( projectCache_ == null )
+        if( projectCache_ == null )
             return;
 
         String variableName = getVariableNameByContext( context );
 
-        if ( variableName == null ) {
+        if( variableName == null ) {
             Logger.getInstance( ).logWarn(
-                    "setVariable: couldn't get variable name from context: " + context );
+                    "setVariable: couldn't get variable name from context: "
+                            + context );
         }
 
         WMLVariable variable = projectCache_.getVariables( ).get( variableName );
-        if ( variable == null ) {
+        if( variable == null ) {
             variable = new WMLVariable( variableName );
             projectCache_.getVariables( ).put( variableName, variable );
         }
 
         int nodeOffset = NodeModelUtils.getNode( context ).getTotalOffset( );
-        for ( Scope scope : variable.getScopes( ) ) {
-            if ( scope.contains( dependencyIndex_, nodeOffset ) )
+        for( Scope scope: variable.getScopes( ) ) {
+            if( scope.contains( dependencyIndex_, nodeOffset ) )
                 return; // nothing to do
         }
 
@@ -199,25 +218,26 @@ public class SimpleWMLParser
 
     protected void handleUnsetVariable( EObject context )
     {
-        if ( projectCache_ == null )
+        if( projectCache_ == null )
             return;
 
         String variableName = getVariableNameByContext( context );
-        if ( variableName == null ) {
+        if( variableName == null ) {
             Logger.getInstance( ).logWarn(
-                    "unsetVariable: couldn't get variable name from context: " + context );
+                    "unsetVariable: couldn't get variable name from context: "
+                            + context );
         }
 
         WMLVariable variable = projectCache_.getVariables( ).get( variableName );
-        if ( variable == null )
+        if( variable == null )
             return;
 
         int nodeOffset = NodeModelUtils.getNode( context ).getTotalOffset( );
 
         // get the first containing scope, and modify its end index/offset
 
-        for ( Scope scope : variable.getScopes( ) ) {
-            if ( scope.contains( dependencyIndex_, nodeOffset ) ) {
+        for( Scope scope: variable.getScopes( ) ) {
+            if( scope.contains( dependencyIndex_, nodeOffset ) ) {
 
                 scope.EndIndex = dependencyIndex_;
                 scope.EndOffset = nodeOffset;
@@ -229,18 +249,20 @@ public class SimpleWMLParser
 
     /**
      * Returns the parsed tags
+     * 
      * @return A list of tags
      */
-    public List<WMLTag> getParsedTags()
+    public List< WMLTag > getParsedTags( )
     {
         return tags_;
     }
 
     /**
      * Returns the parsed WMLConfig
+     * 
      * @return Returns the parsed WMLConfig
      */
-    public WMLConfig getParsedConfig()
+    public WMLConfig getParsedConfig( )
     {
         return config_;
     }

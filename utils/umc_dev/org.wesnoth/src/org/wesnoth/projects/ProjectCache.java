@@ -21,6 +21,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.resources.IProject;
+
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.builder.DependencyListBuilder;
@@ -32,54 +34,56 @@ import org.wesnoth.wml.WMLConfig;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WMLVariable;
 
-import org.eclipse.core.resources.IProject;
-
 /**
  * A class that stores some project specific infos
  * for current session.
  * Some of the fields of this cache can be saved to disk
- *  @see ProjectCache#saveCache()
+ * 
+ * @see ProjectCache#saveCache()
  */
 public class ProjectCache implements Serializable
 {
-    private static final long serialVersionUID = -3173930983967880699L;
+    private static final long               serialVersionUID = - 3173930983967880699L;
 
-    private long definesTimestamp_;
+    private long                            definesTimestamp_;
 
-    private transient File wesnothFile_;
-    private transient File definesFile_;
-    private transient IProject project_;
+    private transient File                  wesnothFile_;
+    private transient File                  definesFile_;
+    private transient IProject              project_;
 
     private transient Map< String, Define > defines_;
-    private Map<String, String>  properties_;
-    private Map< String, WMLConfig > configFiles_;
-    private DependencyListBuilder dependTree_;
-    private Map<String, WMLVariable> variables_;
-    private Set<String> events_;
+    private Map< String, String >           properties_;
+    private Map< String, WMLConfig >        configFiles_;
+    private DependencyListBuilder           dependTree_;
+    private Map< String, WMLVariable >      variables_;
+    private Set< String >                   events_;
 
-    public ProjectCache(IProject project)
+    public ProjectCache( IProject project )
     {
         project_ = project;
 
-        configFiles_ = new HashMap<String, WMLConfig>( );
-        defines_ = new HashMap<String, Define>( );
-        variables_ = new HashMap<String, WMLVariable>( );
-        properties_ = new HashMap<String, String>( );
-        events_ = new HashSet<String>( );
+        configFiles_ = new HashMap< String, WMLConfig >( );
+        defines_ = new HashMap< String, Define >( );
+        variables_ = new HashMap< String, WMLVariable >( );
+        properties_ = new HashMap< String, String >( );
+        events_ = new HashSet< String >( );
 
         dependTree_ = new DependencyListBuilder( project_ );
 
-        definesTimestamp_ = -1;
+        definesTimestamp_ = - 1;
 
-        wesnothFile_ = new File ( project.getLocation().toOSString()  + "/.wesnoth" ); //$NON-NLS-1$
-        definesFile_ = new File ( PreprocessorUtils.getInstance().getMacrosLocation( project ));
+        wesnothFile_ = new File( project.getLocation( ).toOSString( )
+                + "/.wesnoth" ); //$NON-NLS-1$
+        definesFile_ = new File( PreprocessorUtils.getInstance( )
+                .getMacrosLocation( project ) );
     }
 
     /**
      * Gets the properties map for this project.
+     * 
      * @return A map with properties of the project
      */
-    public Map<String, String> getProperties()
+    public Map< String, String > getProperties( )
     {
         return properties_;
     }
@@ -88,9 +92,10 @@ public class ProjectCache implements Serializable
      * Gets the map with the WMLConfigs
      * The key represent the filenames of the files
      * and the value the scenarioId from that file
+     * 
      * @return A map with key the file path and value the WMLConfig
      */
-    public Map<String, WMLConfig> getWMLConfigs()
+    public Map< String, WMLConfig > getWMLConfigs( )
     {
         return configFiles_;
     }
@@ -98,13 +103,15 @@ public class ProjectCache implements Serializable
     /**
      * Gets the WMLConfig by the specified file project-relative path.
      * If the WMLConfig doesn't exist it will be created
-     * @param path The project-relative path for the file.
+     * 
+     * @param path
+     *            The project-relative path for the file.
      * @return
      */
     public WMLConfig getWMLConfig( String path )
     {
         WMLConfig config = configFiles_.get( path );
-        if ( config == null ){
+        if( config == null ) {
             config = new WMLConfig( path );
             configFiles_.put( path, config );
         }
@@ -114,9 +121,10 @@ public class ProjectCache implements Serializable
 
     /**
      * Returns the variables found in this project
+     * 
      * @return A multimap containing all the variables
      */
-    public Map<String, WMLVariable> getVariables()
+    public Map< String, WMLVariable > getVariables( )
     {
         return variables_;
     }
@@ -127,14 +135,14 @@ public class ProjectCache implements Serializable
      */
     public void loadCache( )
     {
-        ResourceUtils.createWesnothFile( wesnothFile_.getAbsolutePath(), false );
+        ResourceUtils
+                .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
 
-        try
-        {
-            try
-            {
+        try {
+            try {
                 FileInputStream inputStream = new FileInputStream( wesnothFile_ );
-                ObjectInputStream deserializer = new ObjectInputStream( inputStream );
+                ObjectInputStream deserializer = new ObjectInputStream(
+                        inputStream );
                 ProjectCache cache = ( ProjectCache ) deserializer.readObject( );
 
                 properties_ = cache.properties_;
@@ -145,22 +153,18 @@ public class ProjectCache implements Serializable
                 dependTree_.deserialize( project_ );
             }
             // invalid file contents. just save this instance to it.
-            catch ( EOFException e) {
+            catch( EOFException e ) {
+                saveCache( );
+            } catch( StreamCorruptedException e ) {
+                saveCache( );
+            } catch( ClassCastException ex ) {
                 saveCache( );
             }
-            catch (StreamCorruptedException e) {
-                saveCache( );
-            }
-            catch(ClassCastException ex) {
-                saveCache( );
-            }
-        }
-        catch (Exception e)
-        {
-            Logger.getInstance().logException(e);
+        } catch( Exception e ) {
+            Logger.getInstance( ).logException( e );
         }
 
-        readDefines(true);
+        readDefines( true );
     }
 
     /**
@@ -168,59 +172,63 @@ public class ProjectCache implements Serializable
      * Saves:
      * - properties
      * - existing scenarios
+     * 
      * @return
      */
-    public boolean saveCache()
+    public boolean saveCache( )
     {
-        ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
+        ResourceUtils
+                .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
 
-        try
-        {
+        try {
             FileOutputStream outputStream = new FileOutputStream( wesnothFile_ );
-            ObjectOutputStream serializer = new ObjectOutputStream( outputStream );
+            ObjectOutputStream serializer = new ObjectOutputStream(
+                    outputStream );
             serializer.writeObject( this );
 
             return true;
-        }
-        catch (Exception e)
-        {
-            Logger.getInstance().logException(e);
+        } catch( Exception e ) {
+            Logger.getInstance( ).logException( e );
             return false;
         }
     }
 
     /**
      * Reads the defines files for this project
-     * @param force Read the defines even if the defines file's contents
-     * haven't changed since last time read.
+     * 
+     * @param force
+     *            Read the defines even if the defines file's contents
+     *            haven't changed since last time read.
      */
-    public void readDefines(boolean force)
+    public void readDefines( boolean force )
     {
-        if (force == false &&
-            definesFile_.lastModified() <= definesTimestamp_)
+        if( force == false && definesFile_.lastModified( ) <= definesTimestamp_ )
             return;
 
-        if (definesFile_.exists() == false)
+        if( definesFile_.exists( ) == false )
             return;
 
-        defines_ = Define.readDefines( getInstallName( ), definesFile_.getAbsolutePath( ) );
+        defines_ = Define.readDefines( getInstallName( ),
+                definesFile_.getAbsolutePath( ) );
         definesTimestamp_ = definesFile_.lastModified( );
     }
 
     /**
      * Returns the defines associated with this project
+     * 
      * @return
      */
-    public Map<String, Define> getDefines()
+    public Map< String, Define > getDefines( )
     {
         return defines_;
     }
 
     /**
      * Returns the list of events available in the project
+     * 
      * @return A set with events as strings
      */
-    public Set<String> getEvents()
+    public Set< String > getEvents( )
     {
         return events_;
     }
@@ -228,14 +236,17 @@ public class ProjectCache implements Serializable
     /**
      * The name of the install used in the project
      */
-    public String getInstallName()
+    public String getInstallName( )
     {
-        return Preferences.getString( Constants.P_INST_NAME_PREFIX + project_.getName( ) );
+        return Preferences.getString( Constants.P_INST_NAME_PREFIX
+                + project_.getName( ) );
     }
 
     /**
      * Sets the new install used in the project
-     * @param newInstallName The new install name
+     * 
+     * @param newInstallName
+     *            The new install name
      */
     public void setInstallName( String newInstallName )
     {
@@ -246,9 +257,10 @@ public class ProjectCache implements Serializable
 
     /**
      * Returns the current dependency tree builder for this project
+     * 
      * @return A dependency tree
      */
-    public DependencyListBuilder getDependencyList()
+    public DependencyListBuilder getDependencyList( )
     {
         return dependTree_;
     }
@@ -256,27 +268,28 @@ public class ProjectCache implements Serializable
     /**
      * Clears all the project cache
      */
-    public void clear()
+    public void clear( )
     {
-        properties_ = new HashMap<String, String>();
+        properties_ = new HashMap< String, String >( );
 
         configFiles_.clear( );
         defines_.clear( );
         dependTree_ = new DependencyListBuilder( project_ );
 
-        definesTimestamp_ = -1;
+        definesTimestamp_ = - 1;
 
         saveCache( );
     }
 
     /**
      * Returns the parsed WML Tags from all configs of this project
+     * 
      * @return A list of Tags
      */
-    public Map<String, WMLTag> getWMLTags()
+    public Map< String, WMLTag > getWMLTags( )
     {
-        Map<String, WMLTag> res = new HashMap<String, WMLTag>();
-        for ( WMLConfig config : configFiles_.values( ) ) {
+        Map< String, WMLTag > res = new HashMap< String, WMLTag >( );
+        for( WMLConfig config: configFiles_.values( ) ) {
             res.putAll( config.getWMLTags( ) );
         }
 

@@ -25,51 +25,50 @@ import org.wesnoth.utils.StringUtils;
  */
 public class SimpleLuaParser
 {
-    private Map<String, WMLTag> tags_;
-    private Reader reader_;
-    private String location_;
+    private Map< String, WMLTag > tags_;
+    private Reader                reader_;
+    private String                location_;
 
-    private final static String TAG_REGEX = "wml_actions\\..+\\( *cfg *\\)";
-    private final static String ATTRIBUTE_REGEX = "cfg\\.[a-zA-Z0-9_]*";
-    private final static String ATTRIBUTE_CHILD_REGEX = "get_child\\(cfg, *\"[^\"]+\"\\)";
+    private final static String   TAG_REGEX             = "wml_actions\\..+\\( *cfg *\\)";
+    private final static String   ATTRIBUTE_REGEX       = "cfg\\.[a-zA-Z0-9_]*";
+    private final static String   ATTRIBUTE_CHILD_REGEX = "get_child\\(cfg, *\"[^\"]+\"\\)";
 
     public SimpleLuaParser( String location, String contents )
     {
-        tags_ = new HashMap<String, WMLTag>( );
-        reader_ = new StringReader( contents == null ? "" : contents );
+        tags_ = new HashMap< String, WMLTag >( );
+        reader_ = new StringReader( contents == null ? "": contents );
         location_ = location;
     }
 
     /**
      * Parses the lua code and gathers the list of tags
      */
-    public void parse()
+    public void parse( )
     {
         BufferedReader reader = new BufferedReader( reader_ );
         String line = null;
 
-        //TODO: the lineCount should start from the location's offset
+        // TODO: the lineCount should start from the location's offset
         int lineCount = 0;
 
         WMLTag currentTag = null;
 
-        try
-        {
+        try {
             while( ( line = reader.readLine( ) ) != null ) {
-                List<String> tagTokens = StringUtils.getGroups( TAG_REGEX, line );
+                List< String > tagTokens = StringUtils.getGroups( TAG_REGEX,
+                        line );
 
                 // we handle just on tag per line
-                if ( !tagTokens.isEmpty( ) ) {
+                if( ! tagTokens.isEmpty( ) ) {
                     String token = tagTokens.get( 0 );
                     // parse the tag name
-                    String tagName = token.substring(
-                            token.indexOf( '.' ) + 1,
+                    String tagName = token.substring( token.indexOf( '.' ) + 1,
                             token.lastIndexOf( '(' ) );
 
                     currentTag = WmlFactory2.eINSTANCE.createWMLTag( tagName );
                     currentTag.set_LuaBased( true );
 
-                    if ( location_ != null ) {
+                    if( location_ != null ) {
                         currentTag.set_DefinitionLocation( location_ );
                         currentTag.set_DefinitionOffset( lineCount );
                     }
@@ -78,40 +77,44 @@ public class SimpleLuaParser
                 }
 
                 // parse the attributes
-                if ( currentTag != null ) {
-                    List<String> attributeTokens = StringUtils.getGroups( ATTRIBUTE_REGEX, line );
-                    for ( String token : attributeTokens ) {
-                        String attributeName = token.substring(
-                                token.indexOf( '.' ) + 1 );
+                if( currentTag != null ) {
+                    List< String > attributeTokens = StringUtils.getGroups(
+                            ATTRIBUTE_REGEX, line );
+                    for( String token: attributeTokens ) {
+                        String attributeName = token.substring( token
+                                .indexOf( '.' ) + 1 );
 
                         currentTag.getExpressions( ).add(
-                                WmlFactory2.eINSTANCE.createWMLKey( attributeName, "string", '1', false ) );
+                                WmlFactory2.eINSTANCE.createWMLKey(
+                                        attributeName, "string", '1', false ) );
                     }
 
-                    List<String> childTokens = StringUtils.getGroups( ATTRIBUTE_CHILD_REGEX, line );
-                    for ( String token : childTokens ) {
+                    List< String > childTokens = StringUtils.getGroups(
+                            ATTRIBUTE_CHILD_REGEX, line );
+                    for( String token: childTokens ) {
                         String childName = token.substring(
                                 token.indexOf( '"' ) + 1,
                                 token.lastIndexOf( '"' ) );
 
                         currentTag.getExpressions( ).add(
-                                WmlFactory2.eINSTANCE.createWMLKey( childName, "string", '1', false ) );
+                                WmlFactory2.eINSTANCE.createWMLKey( childName,
+                                        "string", '1', false ) );
                     }
                 }
 
-                ++ lineCount;
+                ++lineCount;
             }
-        }
-        catch ( IOException e ) {
+        } catch( IOException e ) {
             Logger.getInstance( ).logException( e );
         }
     }
 
     /**
      * Returns the parsed tags from the lua code
+     * 
      * @return A map with Tags
      */
-    public Map<String, WMLTag > getTags()
+    public Map< String, WMLTag > getTags( )
     {
         return tags_;
     }

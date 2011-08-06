@@ -40,16 +40,18 @@ public class SelectWesnothInstallDialog extends Dialog
     protected Control createDialogArea( Composite parent )
     {
         Composite composite = new Composite( parent, SWT.NONE );
-        composite.setLayout(new GridLayout(2, false));
+        composite.setLayout( new GridLayout( 2, false ) );
 
-        Label lblWesnothInstall = new Label(composite, SWT.NONE);
-        lblWesnothInstall.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-        lblWesnothInstall.setText("Wesnoth Install:");
+        Label lblWesnothInstall = new Label( composite, SWT.NONE );
+        lblWesnothInstall.setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER,
+                false, false, 1, 1 ) );
+        lblWesnothInstall.setText( "Wesnoth Install:" );
 
         cmbInstall_ = new Combo( composite, SWT.READ_ONLY );
-        GridData gd_cmbInstall_ = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        GridData gd_cmbInstall_ = new GridData( SWT.FILL, SWT.CENTER, true,
+                false, 1, 1 );
         gd_cmbInstall_.widthHint = 163;
-        cmbInstall_.setLayoutData(gd_cmbInstall_);
+        cmbInstall_.setLayoutData( gd_cmbInstall_ );
 
         WesnothInstallsUtils.fillComboWithInstalls( cmbInstall_ );
 
@@ -57,15 +59,18 @@ public class SelectWesnothInstallDialog extends Dialog
     }
 
     @Override
-    protected Point getInitialSize() {
-        return new Point(291, 123);
+    protected Point getInitialSize( )
+    {
+        return new Point( 291, 123 );
     }
 
     /**
      * Gets the install selected by the user
+     * 
      * @return A string with the name of the install selected
      */
-    public String getSelectedInstallName( ){
+    public String getSelectedInstallName( )
+    {
         return cmbInstall_.getText( );
     }
 }

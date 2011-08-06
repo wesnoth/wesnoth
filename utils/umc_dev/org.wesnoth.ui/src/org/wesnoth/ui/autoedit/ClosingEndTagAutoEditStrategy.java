@@ -19,6 +19,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
+
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.wml.WMLTag;
 
@@ -27,46 +28,51 @@ import org.wesnoth.wml.WMLTag;
  */
 public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 {
-    public void customizeDocumentCommand(final IDocument document,
-            final DocumentCommand command)
+    public void customizeDocumentCommand( final IDocument document,
+            final DocumentCommand command )
     {
-        try
-        {
-            if (command.text.equals("/") && document.get(command.offset-1, 1).equals("[")) //$NON-NLS-1$ //$NON-NLS-2$
+        try {
+            if( command.text.equals( "/" ) && document.get( command.offset - 1, 1 ).equals( "[" ) ) //$NON-NLS-1$ //$NON-NLS-2$
             {
-                XtextEditor editor = EditorUtils.getActiveXtextEditor();
-                if (editor == null)
+                XtextEditor editor = EditorUtils.getActiveXtextEditor( );
+                if( editor == null )
                     return;
 
-                editor.getDocument().readOnly(new IUnitOfWork.Void<XtextResource>(){
-                    @Override
-                    public void process(XtextResource state) throws Exception
-                    {
-                        ILeafNode currentNode = NodeModelUtils.findLeafNodeAtOffset(
-                                state.getParseResult( ).getRootNode( ), command.offset);
+                editor.getDocument( ).readOnly(
+                        new IUnitOfWork.Void< XtextResource >( ) {
+                            @Override
+                            public void process( XtextResource state )
+                                    throws Exception
+                            {
+                                ILeafNode currentNode = NodeModelUtils
+                                        .findLeafNodeAtOffset( state
+                                                .getParseResult( )
+                                                .getRootNode( ), command.offset );
 
-                        if ( currentNode == null )
-                            return;
+                                if( currentNode == null )
+                                    return;
 
-                        EObject semanticElement = currentNode.getSemanticElement( );
-                        if ( semanticElement == null )
-                            return;
+                                EObject semanticElement = currentNode
+                                        .getSemanticElement( );
+                                if( semanticElement == null )
+                                    return;
 
-                        String tagName = ""; //$NON-NLS-1$
-                        EObject container = semanticElement.eContainer( );
-                        if ( container instanceof WMLTag ){
-                            tagName = ( ( WMLTag ) container ).getName( );
-                        }
+                                String tagName = ""; //$NON-NLS-1$
+                                EObject container = semanticElement
+                                        .eContainer( );
+                                if( container instanceof WMLTag ) {
+                                    tagName = ( ( WMLTag ) container )
+                                            .getName( );
+                                }
 
-                        if ( !StringUtils.isNullOrEmpty( tagName ) )
-                        {
-                            command.shiftsCaret = true;
-                            command.text = ( "/" + tagName ); //$NON-NLS-1$ //$NON-NLS-2$
-                        }
-                    }
-                });
+                                if( ! StringUtils.isNullOrEmpty( tagName ) ) {
+                                    command.shiftsCaret = true;
+                                    command.text = ( "/" + tagName ); //$NON-NLS-1$ //$NON-NLS-2$
+                                }
+                            }
+                        } );
             }
-        } catch (BadLocationException e) {
+        } catch( BadLocationException e ) {
         }
     }
 }

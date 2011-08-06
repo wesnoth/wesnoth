@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
+
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
@@ -36,10 +37,11 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
 {
     private Combo cmbInstalls_;
 
-    /** {@inheritDoc}
+    /**
+     * {@inheritDoc}
      */
-    public WizardProjectPageTemplate( String pageName,
-            String title, String message)
+    public WizardProjectPageTemplate( String pageName, String title,
+            String message )
     {
         super( pageName );
 
@@ -48,39 +50,45 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
     }
 
     @Override
-    public void createControl(Composite parent)
+    public void createControl( Composite parent )
     {
         super.createControl( parent );
-        Composite composite = new Composite( ( Composite ) getControl( ), SWT.NULL );
-        composite.setLayout(new GridLayout(2, false));
+        Composite composite = new Composite( ( Composite ) getControl( ),
+                SWT.NULL );
+        composite.setLayout( new GridLayout( 2, false ) );
 
-        Label lblWesnothInstall = new Label(composite, SWT.NONE);
-        lblWesnothInstall.setToolTipText("Select the wesnoth install this project corresponds to.");
-        lblWesnothInstall.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-        lblWesnothInstall.setText("Wesnoth Install:");
+        Label lblWesnothInstall = new Label( composite, SWT.NONE );
+        lblWesnothInstall
+                .setToolTipText( "Select the wesnoth install this project corresponds to." );
+        lblWesnothInstall.setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER,
+                false, false, 1, 1 ) );
+        lblWesnothInstall.setText( "Wesnoth Install:" );
 
         cmbInstalls_ = new Combo( composite, SWT.READ_ONLY );
-        GridData gd_cmbInstalls = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        GridData gd_cmbInstalls = new GridData( SWT.FILL, SWT.CENTER, true,
+                false, 1, 1 );
         gd_cmbInstalls.widthHint = 154;
-        cmbInstalls_.setLayoutData(gd_cmbInstalls);
+        cmbInstalls_.setLayoutData( gd_cmbInstalls );
 
         WesnothInstallsUtils.fillComboWithInstalls( cmbInstalls_ );
     }
 
     /**
      * Returns true if the project needs a {@code build.xml} file.
+     * 
      * @return Returns true if the project needs a {@code build.xml} file.
      */
-    public boolean needsBuildXML()
+    public boolean needsBuildXML( )
     {
-        Paths paths = Preferences.getPaths( getSelectedInstallName() );
+        Paths paths = Preferences.getPaths( getSelectedInstallName( ) );
         String projectPath = getProjectHandle( ).getLocation( ).toOSString( );
-        return ( ! ResourceUtils.isCampaignDirPath( paths, projectPath ) &&
-                 ! ResourceUtils.isUserAddonsDirPath( paths, projectPath ) );
+        return( ! ResourceUtils.isCampaignDirPath( paths, projectPath ) && ! ResourceUtils
+                .isUserAddonsDirPath( paths, projectPath ) );
     }
 
     /**
      * Returns the selected install
+     * 
      * @return
      */
     public String getSelectedInstallName( )
@@ -90,52 +98,53 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
 
     /**
      * Creates the project this page was setup with
+     * 
      * @return The newly created project's handle
      */
     public IProject createProject( IProgressMonitor monitor,
-            String templateName, List<ReplaceableParameter> params,
+            String templateName, List< ReplaceableParameter > params,
             boolean generatePBL )
     {
-        monitor.subTask( "Creating the project structure");
+        monitor.subTask( "Creating the project structure" );
 
         IProject currentProject = ProjectUtils.createWesnothProject(
                 getProjectName( ), getLocationPath( ).toOSString( ),
                 getSelectedInstallName( ), monitor );
-        monitor.worked(2);
+        monitor.worked( 2 );
 
-        String projectTemplate =
-                TemplateProvider.getInstance().getProcessedTemplate(templateName, params);
+        String projectTemplate = TemplateProvider.getInstance( )
+                .getProcessedTemplate( templateName, params );
 
-        List<Pair<String, String>> files;
-        List<String> dirs;
-        Pair<List<Pair<String, String>>, List<String>> tmp =
-                TemplateProvider.getInstance().getFilesDirectories( projectTemplate );
+        List< Pair< String, String >> files;
+        List< String > dirs;
+        Pair< List< Pair< String, String >>, List< String >> tmp = TemplateProvider
+                .getInstance( ).getFilesDirectories( projectTemplate );
         files = tmp.First;
         dirs = tmp.Second;
 
-        for (Pair<String, String> file : files)
-        {
-            if ( file.Second.equals("pbl") && //$NON-NLS-1$
-                 ! generatePBL )
+        for( Pair< String, String > file: files ) {
+            if( file.Second.equals( "pbl" ) && //$NON-NLS-1$
+                    ! generatePBL )
                 continue;
 
-            if ( file.Second.equals("build_xml") && //$NON-NLS-1$
-                 ! needsBuildXML( ) )
+            if( file.Second.equals( "build_xml" ) && //$NON-NLS-1$
+                    ! needsBuildXML( ) )
                 continue;
 
-            ResourceUtils.createFile( currentProject, file.First,
-                    TemplateProvider.getInstance().getProcessedTemplate( file.Second, params ),
-                    true );
-            monitor.worked(1);
+            ResourceUtils.createFile(
+                    currentProject,
+                    file.First,
+                    TemplateProvider.getInstance( ).getProcessedTemplate(
+                            file.Second, params ), true );
+            monitor.worked( 1 );
         }
 
-        for (String dir : dirs)
-        {
-            ResourceUtils.createFolder(currentProject, dir);
-            monitor.worked(1);
+        for( String dir: dirs ) {
+            ResourceUtils.createFolder( currentProject, dir );
+            monitor.worked( 1 );
         }
 
-        monitor.done();
+        monitor.done( );
         return currentProject;
     }
 }

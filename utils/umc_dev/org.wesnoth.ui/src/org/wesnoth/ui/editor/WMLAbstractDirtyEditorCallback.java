@@ -15,11 +15,12 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
  * We use this class to suppress the default one which asks for adding
  * a xtext nature on non-xtext project. We don't want that (yet)
  */
-public class WMLAbstractDirtyEditorCallback extends AbstractDirtyStateAwareEditorCallback
+public class WMLAbstractDirtyEditorCallback extends
+        AbstractDirtyStateAwareEditorCallback
 {
-	@Override
-	public void afterCreatePartControl(XtextEditor editor)
-	{
-		super.afterCreatePartControl(editor);
-	}
+    @Override
+    public void afterCreatePartControl( XtextEditor editor )
+    {
+        super.afterCreatePartControl( editor );
+    }
 }

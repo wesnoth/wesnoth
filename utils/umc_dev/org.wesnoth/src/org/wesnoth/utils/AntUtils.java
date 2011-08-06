@@ -19,6 +19,7 @@ import org.apache.tools.ant.BuildLogger;
 import org.apache.tools.ant.DefaultLogger;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.ProjectHelper;
+
 import org.wesnoth.Logger;
 
 
@@ -27,58 +28,59 @@ import org.wesnoth.Logger;
  */
 public class AntUtils
 {
-	/**
-	 * Runs the specified ant file, and returns the output of the runned file
-	 *
-	 * @param antFile
-	 * @param properties the hasmap with userproperties to be added to the ant file
-	 * @param recordOutput true if the output of the runned file should be recorded and returned
-	 * @return null if the build didn't success
-	 */
-	public static String runAnt(String antFile, Map<String, String> properties,
-			boolean recordOutput)
-	{
-		Project project = new Project();
-		ByteArrayOutputStream out = null;
+    /**
+     * Runs the specified ant file, and returns the output of the runned file
+     * 
+     * @param antFile
+     * @param properties
+     *            the hasmap with userproperties to be added to the ant file
+     * @param recordOutput
+     *            true if the output of the runned file should be recorded and
+     *            returned
+     * @return null if the build didn't success
+     */
+    public static String runAnt( String antFile,
+            Map< String, String > properties, boolean recordOutput )
+    {
+        Project project = new Project( );
+        ByteArrayOutputStream out = null;
 
-		try
-		{
-			out = new ByteArrayOutputStream();
-			if (recordOutput)
-				project.addBuildListener(AntUtils.createLogger(out));
+        try {
+            out = new ByteArrayOutputStream( );
+            if( recordOutput )
+                project.addBuildListener( AntUtils.createLogger( out ) );
 
-			project.init();
-			File buildFile = new File(antFile);
-			ProjectHelper.configureProject(project, buildFile);
+            project.init( );
+            File buildFile = new File( antFile );
+            ProjectHelper.configureProject( project, buildFile );
 
-			Iterator<Entry<String, String>> iterator = properties.entrySet().iterator();
-			while (iterator.hasNext())
-			{
-				Entry<String, String> key = iterator.next();
-				project.setUserProperty(key.getKey(), key.getValue());
-			}
-			project.executeTarget(project.getDefaultTarget());
+            Iterator< Entry< String, String >> iterator = properties.entrySet( )
+                    .iterator( );
+            while( iterator.hasNext( ) ) {
+                Entry< String, String > key = iterator.next( );
+                project.setUserProperty( key.getKey( ), key.getValue( ) );
+            }
+            project.executeTarget( project.getDefaultTarget( ) );
 
-			return out.toString();
-		} catch (Exception e)
-		{
-			Logger.getInstance().logException(e);
-			return null;
-		}
-	}
+            return out.toString( );
+        } catch( Exception e ) {
+            Logger.getInstance( ).logException( e );
+            return null;
+        }
+    }
 
-	/**
-	 * Creates the default build logger for sending build events to the ant log.
-	 */
-	private static BuildLogger createLogger(ByteArrayOutputStream out)
-	{
-		DefaultLogger logger = new DefaultLogger();
+    /**
+     * Creates the default build logger for sending build events to the ant log.
+     */
+    private static BuildLogger createLogger( ByteArrayOutputStream out )
+    {
+        DefaultLogger logger = new DefaultLogger( );
 
-		logger.setMessageOutputLevel(Project.MSG_INFO);
-		logger.setOutputPrintStream(new PrintStream(out));
-		logger.setErrorPrintStream(new PrintStream(out));
-		logger.setEmacsMode(false);
+        logger.setMessageOutputLevel( Project.MSG_INFO );
+        logger.setOutputPrintStream( new PrintStream( out ) );
+        logger.setErrorPrintStream( new PrintStream( out ) );
+        logger.setEmacsMode( false );
 
-		return logger;
-	}
+        return logger;
+    }
 }

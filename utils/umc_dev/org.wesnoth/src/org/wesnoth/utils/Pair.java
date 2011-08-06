@@ -8,29 +8,34 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
-public class Pair<T, K>
+public class Pair< T, K >
 {
-	public T	First;
-	public K	Second;
+    public T First;
+    public K Second;
 
-	public Pair(T first, K second) {
-		First = first;
-		Second = second;
-	}
+    public Pair( T first, K second )
+    {
+        First = first;
+        Second = second;
+    }
 
-	/**
-	 * Creates a new Pair
-	 * @param first The first item
-	 * @param second The second item
-	 * @return A new pair
-	 */
-	public static <U,V> Pair<U,V> create( U first, V second) {
-	    return new Pair<U, V> ( first, second );
-	}
+    /**
+     * Creates a new Pair
+     * 
+     * @param first
+     *            The first item
+     * @param second
+     *            The second item
+     * @return A new pair
+     */
+    public static < U, V > Pair< U, V > create( U first, V second )
+    {
+        return new Pair< U, V >( first, second );
+    }
 
-	@Override
-	public String toString()
-	{
-	    return "( " + First.toString( ) + "; " + Second.toString( ) + " )";
-	}
+    @Override
+    public String toString( )
+    {
+        return "( " + First.toString( ) + "; " + Second.toString( ) + " )";
+    }
 }

@@ -11,6 +11,7 @@ package org.wesnoth.handlers;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFile;
+
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.utils.GameUtils;
@@ -19,25 +20,25 @@ import org.wesnoth.utils.WorkspaceUtils;
 
 public class OpenMapInEditorHandler extends AbstractHandler
 {
-	@Override
-	public Object execute(ExecutionEvent event)
-	{
-		IFile selectedFile = WorkspaceUtils.getSelectedFile();
-		if (selectedFile == null)
-		{
-			Logger.getInstance().log("file null (open map handler)", //$NON-NLS-1$
-					Messages.OpenMapInEditorHandler_1);
-			return null;
-		}
+    @Override
+    public Object execute( ExecutionEvent event )
+    {
+        IFile selectedFile = WorkspaceUtils.getSelectedFile( );
+        if( selectedFile == null ) {
+            Logger.getInstance( ).log( "file null (open map handler)", //$NON-NLS-1$
+                    Messages.OpenMapInEditorHandler_1 );
+            return null;
+        }
 
-		if (!selectedFile.getName().endsWith(".map")) //$NON-NLS-1$
-		{
-			Logger.getInstance().log("non-map file selected: "+selectedFile.getName(), //$NON-NLS-1$
-					Messages.OpenMapInEditorHandler_4);
-			return null;
-		}
+        if( ! selectedFile.getName( ).endsWith( ".map" ) ) //$NON-NLS-1$
+        {
+            Logger.getInstance( ).log(
+                    "non-map file selected: " + selectedFile.getName( ), //$NON-NLS-1$
+                    Messages.OpenMapInEditorHandler_4 );
+            return null;
+        }
 
-		GameUtils.startEditor(selectedFile.getLocation().toOSString());
-		return null;
-	}
+        GameUtils.startEditor( selectedFile.getLocation( ).toOSString( ) );
+        return null;
+    }
 }

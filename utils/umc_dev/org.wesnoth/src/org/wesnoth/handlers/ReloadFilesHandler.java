@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IProject;
+
 import org.wesnoth.Messages;
 import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.projects.ProjectUtils;
@@ -22,21 +23,20 @@ import org.wesnoth.utils.GUIUtils;
 
 public class ReloadFilesHandler extends AbstractHandler
 {
-	@Override
-	public Object execute(ExecutionEvent event)
-	{
-	    SchemaParser.reloadSchemas( true );
+    @Override
+    public Object execute( ExecutionEvent event )
+    {
+        SchemaParser.reloadSchemas( true );
 
-		TemplateProvider.getInstance().loadTemplates();
+        TemplateProvider.getInstance( ).loadTemplates( );
 
-		// reload the cache only for already loaded files
-		for(Entry<IProject, ProjectCache> cache :
-				ProjectUtils.getProjectCaches().entrySet())
-		{
-			cache.getValue().readDefines(true);
-		}
+        // reload the cache only for already loaded files
+        for( Entry< IProject, ProjectCache > cache: ProjectUtils
+                .getProjectCaches( ).entrySet( ) ) {
+            cache.getValue( ).readDefines( true );
+        }
 
-		GUIUtils.showInfoMessageBox(Messages.ReloadFilesHandler_0);
-		return null;
-	}
+        GUIUtils.showInfoMessageBox( Messages.ReloadFilesHandler_0 );
+        return null;
+    }
 }

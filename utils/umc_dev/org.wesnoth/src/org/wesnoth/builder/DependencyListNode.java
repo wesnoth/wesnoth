@@ -15,6 +15,7 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.QualifiedName;
+
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.utils.ResourceUtils;
@@ -22,39 +23,41 @@ import org.wesnoth.utils.ResourceUtils;
 /**
  * This class represents a node in the Project's Depedency list,
  * which is constructed on a full build of the project.
- *
+ * 
  * Alternatively, a list node is created
  * when a new resource is added.
  */
 public class DependencyListNode implements Serializable
 {
-    private static final long serialVersionUID = -9140173740211465384L;
+    private static final long         serialVersionUID = - 9140173740211465384L;
 
     /**
      * This integer represents the default step between 2 file indexes.
      * Since int it's on 4 bytes, it can hold values between
      * -2,147,483,648 and 2,147,483,647.
-     *
+     * 
      * With an increment of 100k, we could have 2 * 21,474 config files.
      */
-    public static final int INDEX_STEP = 100000;
+    public static final int           INDEX_STEP       = 100000;
 
-    public static final QualifiedName PDL_INDEX = new QualifiedName( Constants.PLUGIN_ID, "pdl_index" ); //$NON-NLS-1$
+    public static final QualifiedName PDL_INDEX        = new QualifiedName(
+                                                               Constants.PLUGIN_ID,
+                                                               "pdl_index" );   //$NON-NLS-1$
 
-    private DependencyListNode previous_;
-    private DependencyListNode next_;
+    private DependencyListNode        previous_;
+    private DependencyListNode        next_;
 
-    protected transient IFile file_;
-    protected String fileName_;
-    protected List<String> includes_;
+    protected transient IFile         file_;
+    protected String                  fileName_;
+    protected List< String >          includes_;
 
-    private int index_;
+    private int                       index_;
 
     public DependencyListNode( IFile file, int index )
     {
         previous_ = next_ = null;
 
-        includes_ = new ArrayList<String>();
+        includes_ = new ArrayList< String >( );
 
         file_ = file;
         fileName_ = file.getProjectRelativePath( ).toString( );
@@ -63,23 +66,27 @@ public class DependencyListNode implements Serializable
 
     /**
      * Gets this node's file
+     * 
      * @return A IFile resource
      */
-    public IFile getFile()
+    public IFile getFile( )
     {
         return file_;
     }
 
     /**
      * Gets the includes from this node
-     * @param refresh True to force reloading the current file and return
-     * the newly parsed ones
+     * 
+     * @param refresh
+     *            True to force reloading the current file and return
+     *            the newly parsed ones
      * @return A set with string paths for included directories
      */
-    public List<String> getIncludes ( boolean refresh )
+    public List< String > getIncludes( boolean refresh )
     {
-        if ( includes_ == null || refresh ) {
-            includes_ = new ArrayList<String>( ResourceUtils.getContainers( file_ ) );
+        if( includes_ == null || refresh ) {
+            includes_ = new ArrayList< String >(
+                    ResourceUtils.getContainers( file_ ) );
         }
 
         return includes_;
@@ -87,16 +94,19 @@ public class DependencyListNode implements Serializable
 
     /**
      * Returns the index of this node in the whole dependency list
+     * 
      * @return
      */
-    public int getIndex()
+    public int getIndex( )
     {
         return index_;
     }
 
     /**
      * Sets a new index for this node
-     * @param index The index to set
+     * 
+     * @param index
+     *            The index to set
      */
     protected void setIndex( int index )
     {
@@ -104,24 +114,26 @@ public class DependencyListNode implements Serializable
 
         try {
             file_.setPersistentProperty( PDL_INDEX, Integer.toString( index ) );
-        }
-        catch ( CoreException e ) {
+        } catch( CoreException e ) {
             Logger.getInstance( ).logException( e );
         }
     }
 
     /**
      * Gets the node before the current node
+     * 
      * @return A node or null if there is no parent
      */
-    public DependencyListNode getPrevious()
+    public DependencyListNode getPrevious( )
     {
         return previous_;
     }
 
     /**
      * Sets a new previous node for this node
-     * @param previous The new previous node to set
+     * 
+     * @param previous
+     *            The new previous node to set
      */
     public void setPrevious( DependencyListNode previous )
     {
@@ -130,16 +142,19 @@ public class DependencyListNode implements Serializable
 
     /**
      * Gets the node after the current node
+     * 
      * @return A node or null if there is no parent
      */
-    public DependencyListNode getNext()
+    public DependencyListNode getNext( )
     {
         return next_;
     }
 
     /**
      * Sets a new next node for this node
-     * @param next The new next node to set
+     * 
+     * @param next
+     *            The new next node to set
      */
     public void setNext( DependencyListNode next )
     {
@@ -147,8 +162,8 @@ public class DependencyListNode implements Serializable
     }
 
     @Override
-    public String toString()
+    public String toString( )
     {
-        return ( file_ == null ? "" : fileName_ ) + "_" + index_; //$NON-NLS-1$ //$NON-NLS-2$
+        return ( file_ == null ? "": fileName_ ) + "_" + index_; //$NON-NLS-1$ //$NON-NLS-2$
     }
 }

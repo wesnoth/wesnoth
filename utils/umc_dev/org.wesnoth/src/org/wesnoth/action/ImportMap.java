@@ -9,16 +9,17 @@
 package org.wesnoth.action;
 
 import org.eclipse.jface.action.IAction;
+
 import org.wesnoth.utils.MapUtils;
 
 public class ImportMap extends ObjectActionDelegate
 {
-	/**
-	 * This method is runned *ONLY* if the user selected a "maps" folder
-	 */
-	@Override
-	public void run(IAction action)
-	{
-		MapUtils.importMap();
-	}
+    /**
+     * This method is runned *ONLY* if the user selected a "maps" folder
+     */
+    @Override
+    public void run( IAction action )
+    {
+        MapUtils.importMap( );
+    }
 }

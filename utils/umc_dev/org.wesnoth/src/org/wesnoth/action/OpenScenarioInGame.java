@@ -9,14 +9,15 @@
 package org.wesnoth.action;
 
 import org.eclipse.jface.action.IAction;
+
 import org.wesnoth.utils.GameUtils;
 
 
 public class OpenScenarioInGame extends ObjectActionDelegate
 {
-	@Override
-	public void run(IAction action)
-	{
-		GameUtils.runScenario();
-	}
+    @Override
+    public void run( IAction action )
+    {
+        GameUtils.runScenario( );
+    }
 }

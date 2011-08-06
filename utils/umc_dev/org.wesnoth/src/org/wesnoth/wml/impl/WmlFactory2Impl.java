@@ -28,12 +28,13 @@ public class WmlFactory2Impl extends WmlFactoryImpl implements WmlFactory2
     }
 
     @Override
-    public WMLTag createWMLTag( String name, String inhertedName, char cardinality )
+    public WMLTag createWMLTag( String name, String inhertedName,
+            char cardinality )
     {
         WMLTag tag = createWMLTag( );
 
         tag.setName( name );
-        tag.setEndName(  name  );
+        tag.setEndName( name );
 
         tag.set_Cardinality( cardinality );
         tag.set_InhertedTagName( inhertedName );
@@ -48,7 +49,8 @@ public class WmlFactory2Impl extends WmlFactoryImpl implements WmlFactory2
     }
 
     @Override
-    public WMLKey createWMLKey( String name, String dataType, char cardinality, boolean translatable )
+    public WMLKey createWMLKey( String name, String dataType, char cardinality,
+            boolean translatable )
     {
         WMLKey key = createWMLKey( );
 
@@ -56,11 +58,11 @@ public class WmlFactory2Impl extends WmlFactoryImpl implements WmlFactory2
 
         key.set_DataType( dataType );
 
-        if ( dataType.startsWith( "enum" ) ) {
+        if( dataType.startsWith( "enum" ) ) {
             // add the enums values
             String[] res = dataType.substring( 4 ).split( "," );
-            for ( String string : res ) {
-                if ( string.length( ) == 0 )
+            for( String string: res ) {
+                if( string.length( ) == 0 )
                     continue;
 
                 WMLValue value = createWMLValue( );

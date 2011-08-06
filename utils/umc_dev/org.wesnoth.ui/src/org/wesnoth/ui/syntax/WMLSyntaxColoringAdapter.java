@@ -17,16 +17,17 @@ import org.eclipse.emf.ecore.EObject;
 public class WMLSyntaxColoringAdapter extends AdapterImpl
 {
     /**
-     * A color id from the {@link org.wesnoth.ui.syntax.WMLHighlightingConfiguration}
+     * A color id from the
+     * {@link org.wesnoth.ui.syntax.WMLHighlightingConfiguration}
      */
-    public String ColorId;
+    public String  ColorId;
 
     /**
      * The object to color
      */
     public EObject TargetEObject;
 
-    public WMLSyntaxColoringAdapter( String id, EObject target)
+    public WMLSyntaxColoringAdapter( String id, EObject target )
     {
         ColorId = id;
         TargetEObject = target;
