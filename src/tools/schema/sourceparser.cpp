@@ -545,10 +545,17 @@ bool class_source_parser::check_allow_type(const std::string &s){
 	bool res = boost::regex_match(s,sub,allow_type);
 	if (res){
 		std::string name = sub[1];
+		std::string value = sub[2];
+		try{
+			boost::regex tmp (value);
+		}catch(std::exception ){
+			errors_.wrong_type_error(input_,line_,name,value);
+			return true;
+		}
 		if(types_.find(name)!=types_.end()){
 			errors_.overriding_type_error(input_,line_,name);
 		}
-		types_[name]=sub[2];
+		types_[name]=value;
 		errors_.remove_type_errors(name);
 	}
 	return res;

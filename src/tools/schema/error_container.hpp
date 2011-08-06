@@ -95,7 +95,15 @@ public:
 	 */
 	void add_orphan_error(const std::string & file,int line,
 						  const std::string & name);
-
+	/**
+	 * Generate and put GCC-style error message about wrong type value
+	 * @param file  Filename
+	 * @param line  Number with error
+	 * @param name  Name of type
+	 * @param value Name of value
+	 */
+	void wrong_type_error(const std::string & file,int line,
+						  const std::string & name,const std::string & value);
 	/**
 	 * Generate and put GCC-style error message about unknown type to type cache
 	 * @param file Filename

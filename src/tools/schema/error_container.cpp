@@ -63,6 +63,14 @@ void class_error_container::add_orphan_error(const std::string & file,int line,
 	s << file << ":" << line <<": Tag "<< name <<" has no parent \n";
 	list_.push_back(s.str());
 }
+void class_error_container::wrong_type_error(const std::string & file,int line,
+											 const std::string & name,
+											 const std::string & value){
+	std::ostringstream s;
+	s << file << ":" << line <<": Type "<< name <<" has wrong value:"<<
+			value <<". Cannot create a regex\n";
+	list_.push_back(s.str());
+}
 
 void class_error_container::add_type_error(const std::string &file,int line,
 										   const std::string &type){
