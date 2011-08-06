@@ -27,15 +27,17 @@ public class SimpleLuaParser
 {
     private Map<String, WMLTag> tags_;
     private Reader reader_;
+    private String location_;
 
     private final static String TAG_REGEX = "wml_actions\\..+\\( *cfg *\\)";
     private final static String ATTRIBUTE_REGEX = "cfg\\.[a-zA-Z0-9_]*";
     private final static String ATTRIBUTE_CHILD_REGEX = "get_child\\(cfg, *\"[^\"]+\"\\)";
 
-    public SimpleLuaParser( String contents )
+    public SimpleLuaParser( String location, String contents )
     {
         tags_ = new HashMap<String, WMLTag>( );
         reader_ = new StringReader( contents == null ? "" : contents );
+        location_ = location;
     }
 
     /**
@@ -45,6 +47,9 @@ public class SimpleLuaParser
     {
         BufferedReader reader = new BufferedReader( reader_ );
         String line = null;
+
+        //TODO: the lineCount should start from the location's offset
+        int lineCount = 0;
 
         WMLTag currentTag = null;
 
@@ -62,6 +67,13 @@ public class SimpleLuaParser
                             token.lastIndexOf( '(' ) );
 
                     currentTag = WmlFactory2.eINSTANCE.createWMLTag( tagName );
+                    currentTag.set_LuaBased( true );
+
+                    if ( location_ != null ) {
+                        currentTag.set_DefinitionLocation( location_ );
+                        currentTag.set_DefinitionOffset( lineCount );
+                    }
+
                     tags_.put( tagName, currentTag );
                 }
 
@@ -86,6 +98,8 @@ public class SimpleLuaParser
                                 WmlFactory2.eINSTANCE.createWMLKey( childName, "string", '1', false ) );
                     }
                 }
+
+                ++ lineCount;
             }
         }
         catch ( IOException e ) {

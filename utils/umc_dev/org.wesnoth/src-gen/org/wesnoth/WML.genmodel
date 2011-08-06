@@ -52,6 +52,9 @@
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression"/>
     <genClasses ecoreClass="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/_LuaBased"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/_DefinitionLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/_DefinitionOffset"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/_Cardinality"/>
       <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/is_Required"/>
       <genOperations ecoreOperation="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLExpression/is_Forbidden"/>

@@ -165,13 +165,40 @@ public interface WmlPackage extends EPackage
   int WML_EXPRESSION__NAME = WML_VALUED_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Lua Based</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_EXPRESSION__LUA_BASED = WML_VALUED_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Definition Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_EXPRESSION__DEFINITION_LOCATION = WML_VALUED_EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Definition Offset</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_EXPRESSION__DEFINITION_OFFSET = WML_VALUED_EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
    * The feature id for the '<em><b>Cardinality</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_EXPRESSION__CARDINALITY = WML_VALUED_EXPRESSION_FEATURE_COUNT + 1;
+  int WML_EXPRESSION__CARDINALITY = WML_VALUED_EXPRESSION_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>WML Expression</em>' class.
@@ -180,7 +207,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_EXPRESSION_FEATURE_COUNT = WML_VALUED_EXPRESSION_FEATURE_COUNT + 2;
+  int WML_EXPRESSION_FEATURE_COUNT = WML_VALUED_EXPRESSION_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wml.impl.WMLRootExpressionImpl <em>WML Root Expression</em>}' class.
@@ -200,6 +227,33 @@ public interface WmlPackage extends EPackage
    * @ordered
    */
   int WML_ROOT_EXPRESSION__NAME = WML_EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Lua Based</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_ROOT_EXPRESSION__LUA_BASED = WML_EXPRESSION__LUA_BASED;
+
+  /**
+   * The feature id for the '<em><b>Definition Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_ROOT_EXPRESSION__DEFINITION_LOCATION = WML_EXPRESSION__DEFINITION_LOCATION;
+
+  /**
+   * The feature id for the '<em><b>Definition Offset</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_ROOT_EXPRESSION__DEFINITION_OFFSET = WML_EXPRESSION__DEFINITION_OFFSET;
 
   /**
    * The feature id for the '<em><b>Cardinality</b></em>' attribute.
@@ -237,6 +291,33 @@ public interface WmlPackage extends EPackage
    * @ordered
    */
   int WML_TAG__NAME = WML_ROOT_EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Lua Based</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_TAG__LUA_BASED = WML_ROOT_EXPRESSION__LUA_BASED;
+
+  /**
+   * The feature id for the '<em><b>Definition Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_TAG__DEFINITION_LOCATION = WML_ROOT_EXPRESSION__DEFINITION_LOCATION;
+
+  /**
+   * The feature id for the '<em><b>Definition Offset</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_TAG__DEFINITION_OFFSET = WML_ROOT_EXPRESSION__DEFINITION_OFFSET;
 
   /**
    * The feature id for the '<em><b>Cardinality</b></em>' attribute.
@@ -328,6 +409,33 @@ public interface WmlPackage extends EPackage
    * @ordered
    */
   int WML_KEY__NAME = WML_EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Lua Based</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_KEY__LUA_BASED = WML_EXPRESSION__LUA_BASED;
+
+  /**
+   * The feature id for the '<em><b>Definition Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_KEY__DEFINITION_LOCATION = WML_EXPRESSION__DEFINITION_LOCATION;
+
+  /**
+   * The feature id for the '<em><b>Definition Offset</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_KEY__DEFINITION_OFFSET = WML_EXPRESSION__DEFINITION_OFFSET;
 
   /**
    * The feature id for the '<em><b>Cardinality</b></em>' attribute.
@@ -431,13 +539,40 @@ public interface WmlPackage extends EPackage
   int WML_MACRO_CALL__NAME = WML_KEY_VALUE_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Lua Based</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_CALL__LUA_BASED = WML_KEY_VALUE_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Definition Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_CALL__DEFINITION_LOCATION = WML_KEY_VALUE_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Definition Offset</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_CALL__DEFINITION_OFFSET = WML_KEY_VALUE_FEATURE_COUNT + 3;
+
+  /**
    * The feature id for the '<em><b>Cardinality</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__CARDINALITY = WML_KEY_VALUE_FEATURE_COUNT + 1;
+  int WML_MACRO_CALL__CARDINALITY = WML_KEY_VALUE_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Point</b></em>' attribute.
@@ -446,7 +581,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__POINT = WML_KEY_VALUE_FEATURE_COUNT + 2;
+  int WML_MACRO_CALL__POINT = WML_KEY_VALUE_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Relative</b></em>' attribute.
@@ -455,7 +590,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__RELATIVE = WML_KEY_VALUE_FEATURE_COUNT + 3;
+  int WML_MACRO_CALL__RELATIVE = WML_KEY_VALUE_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -464,7 +599,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__PARAMETERS = WML_KEY_VALUE_FEATURE_COUNT + 4;
+  int WML_MACRO_CALL__PARAMETERS = WML_KEY_VALUE_FEATURE_COUNT + 7;
 
   /**
    * The number of structural features of the '<em>WML Macro Call</em>' class.
@@ -473,7 +608,7 @@ public interface WmlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 5;
+  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 8;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wml.impl.WMLMacroCallParameterImpl <em>WML Macro Call Parameter</em>}' class.
@@ -542,6 +677,33 @@ public interface WmlPackage extends EPackage
   int WML_MACRO_DEFINE__NAME = WML_ROOT_EXPRESSION__NAME;
 
   /**
+   * The feature id for the '<em><b>Lua Based</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_DEFINE__LUA_BASED = WML_ROOT_EXPRESSION__LUA_BASED;
+
+  /**
+   * The feature id for the '<em><b>Definition Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_DEFINE__DEFINITION_LOCATION = WML_ROOT_EXPRESSION__DEFINITION_LOCATION;
+
+  /**
+   * The feature id for the '<em><b>Definition Offset</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_DEFINE__DEFINITION_OFFSET = WML_ROOT_EXPRESSION__DEFINITION_OFFSET;
+
+  /**
    * The feature id for the '<em><b>Cardinality</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -595,6 +757,33 @@ public interface WmlPackage extends EPackage
    * @ordered
    */
   int WML_PREPROC_IF__NAME = WML_ROOT_EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Lua Based</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__LUA_BASED = WML_ROOT_EXPRESSION__LUA_BASED;
+
+  /**
+   * The feature id for the '<em><b>Definition Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__DEFINITION_LOCATION = WML_ROOT_EXPRESSION__DEFINITION_LOCATION;
+
+  /**
+   * The feature id for the '<em><b>Definition Offset</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__DEFINITION_OFFSET = WML_ROOT_EXPRESSION__DEFINITION_OFFSET;
 
   /**
    * The feature id for the '<em><b>Cardinality</b></em>' attribute.
@@ -668,6 +857,33 @@ public interface WmlPackage extends EPackage
    * @ordered
    */
   int WML_TEXTDOMAIN__NAME = WML_ROOT_EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Lua Based</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_TEXTDOMAIN__LUA_BASED = WML_ROOT_EXPRESSION__LUA_BASED;
+
+  /**
+   * The feature id for the '<em><b>Definition Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_TEXTDOMAIN__DEFINITION_LOCATION = WML_ROOT_EXPRESSION__DEFINITION_LOCATION;
+
+  /**
+   * The feature id for the '<em><b>Definition Offset</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_TEXTDOMAIN__DEFINITION_OFFSET = WML_ROOT_EXPRESSION__DEFINITION_OFFSET;
 
   /**
    * The feature id for the '<em><b>Cardinality</b></em>' attribute.
@@ -1174,6 +1390,39 @@ public interface WmlPackage extends EPackage
   EAttribute getWMLExpression_Name();
 
   /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLExpression#is_LuaBased <em>Lua Based</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Lua Based</em>'.
+   * @see org.wesnoth.wml.WMLExpression#is_LuaBased()
+   * @see #getWMLExpression()
+   * @generated
+   */
+  EAttribute getWMLExpression__LuaBased();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLExpression#get_DefinitionLocation <em>Definition Location</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Definition Location</em>'.
+   * @see org.wesnoth.wml.WMLExpression#get_DefinitionLocation()
+   * @see #getWMLExpression()
+   * @generated
+   */
+  EAttribute getWMLExpression__DefinitionLocation();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLExpression#get_DefinitionOffset <em>Definition Offset</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Definition Offset</em>'.
+   * @see org.wesnoth.wml.WMLExpression#get_DefinitionOffset()
+   * @see #getWMLExpression()
+   * @generated
+   */
+  EAttribute getWMLExpression__DefinitionOffset();
+
+  /**
    * Returns the meta object for the attribute '{@link org.wesnoth.wml.WMLExpression#get_Cardinality <em>Cardinality</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1603,6 +1852,30 @@ public interface WmlPackage extends EPackage
      * @generated
      */
     EAttribute WML_EXPRESSION__NAME = eINSTANCE.getWMLExpression_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Lua Based</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_EXPRESSION__LUA_BASED = eINSTANCE.getWMLExpression__LuaBased();
+
+    /**
+     * The meta object literal for the '<em><b>Definition Location</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_EXPRESSION__DEFINITION_LOCATION = eINSTANCE.getWMLExpression__DefinitionLocation();
+
+    /**
+     * The meta object literal for the '<em><b>Definition Offset</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_EXPRESSION__DEFINITION_OFFSET = eINSTANCE.getWMLExpression__DefinitionOffset();
 
     /**
      * The meta object literal for the '<em><b>Cardinality</b></em>' attribute feature.

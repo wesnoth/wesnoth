@@ -14,17 +14,18 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.wesnoth.Logger;
+import org.wesnoth.projects.ProjectCache;
+import org.wesnoth.utils.ResourceUtils;
+import org.wesnoth.utils.WMLUtils;
+import org.wesnoth.wml.WMLVariable.Scope;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
-import org.wesnoth.Logger;
-import org.wesnoth.projects.ProjectCache;
-import org.wesnoth.utils.ResourceUtils;
-import org.wesnoth.utils.WMLUtils;
-import org.wesnoth.wml.WMLVariable.Scope;
 
 import com.google.common.base.Preconditions;
 
@@ -92,6 +93,10 @@ public class SimpleWMLParser
 
         // clear tags
         config_.getWMLTags( ).clear( );
+        String currentFileLocation = root_.eResource( ).getURI( ).toFileString( );
+        if ( currentFileLocation == null ) {
+            currentFileLocation = root_.eResource( ).getURI( ).toPlatformString( true );
+        }
 
         while ( itor.hasNext( ) ) {
             EObject object = itor.next( );
@@ -137,6 +142,7 @@ public class SimpleWMLParser
             }
             else if ( object instanceof WMLLuaCode ) {
                 SimpleLuaParser luaParser = new SimpleLuaParser(
+                        currentFileLocation,
                         ( ( WMLLuaCode ) object ).getValue( ) );
                 luaParser.parse( );
 

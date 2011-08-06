@@ -15,6 +15,9 @@ process( EClass this ):
     eStructuralFeatures.process() ->
     // enrich the grammar elements with schema-specific attributes
     if name == "WMLExpression" then {
+        createAttribute( "_LuaBased", eboolean(), "false" ) ->
+        createAttribute( "_DefinitionLocation", estring(), "" ) ->
+        createAttribute( "_DefinitionOffset", eint(), "0" ) ->
         createAttribute( "_Cardinality", echar() , " " ) ->
         
         createCardinalityOperation( "is_Required", '1' ) ->
@@ -42,7 +45,6 @@ process( EClass this ):
             wmlType( "WMLKey" ) )
             
     } else if name == "WMLTag" then {
-    //eSuperTypes.add( ESerializable() )->
         createAttribute( "_InhertedTagName", estring() , "" ) ->
         createAttribute( "_NeedingExpansion", eboolean() , "false" ) ->
         createAttribute( "_Description", estring(), "" ) ->

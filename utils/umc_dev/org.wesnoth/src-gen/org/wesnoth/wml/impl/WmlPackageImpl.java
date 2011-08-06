@@ -597,9 +597,39 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLExpression__Cardinality()
+  public EAttribute getWMLExpression__LuaBased()
   {
     return (EAttribute)wmlExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLExpression__DefinitionLocation()
+  {
+    return (EAttribute)wmlExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLExpression__DefinitionOffset()
+  {
+    return (EAttribute)wmlExpressionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLExpression__Cardinality()
+  {
+    return (EAttribute)wmlExpressionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -768,6 +798,9 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
 
     wmlExpressionEClass = createEClass(WML_EXPRESSION);
     createEAttribute(wmlExpressionEClass, WML_EXPRESSION__NAME);
+    createEAttribute(wmlExpressionEClass, WML_EXPRESSION__LUA_BASED);
+    createEAttribute(wmlExpressionEClass, WML_EXPRESSION__DEFINITION_LOCATION);
+    createEAttribute(wmlExpressionEClass, WML_EXPRESSION__DEFINITION_OFFSET);
     createEAttribute(wmlExpressionEClass, WML_EXPRESSION__CARDINALITY);
 
     wmlValuedExpressionEClass = createEClass(WML_VALUED_EXPRESSION);
@@ -898,6 +931,9 @@ public class WmlPackageImpl extends EPackageImpl implements WmlPackage
 
     initEClass(wmlExpressionEClass, WMLExpression.class, "WMLExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLExpression_Name(), ecorePackage.getEString(), "name", "", 0, 1, WMLExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLExpression__LuaBased(), ecorePackage.getEBoolean(), "_LuaBased", "false", 0, 1, WMLExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLExpression__DefinitionLocation(), ecorePackage.getEString(), "_DefinitionLocation", "", 0, 1, WMLExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLExpression__DefinitionOffset(), ecorePackage.getEInt(), "_DefinitionOffset", "0", 0, 1, WMLExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLExpression__Cardinality(), ecorePackage.getEChar(), "_Cardinality", " ", 0, 1, WMLExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     addEOperation(wmlExpressionEClass, ecorePackage.getEBoolean(), "is_Required", 0, 1, IS_UNIQUE, IS_ORDERED);
