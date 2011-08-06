@@ -176,7 +176,7 @@ unit *unit_map::extract(const map_location &loc)
 			<< " from location: (" << loc << ")\n";
 	iter->second = NULL;
 	++num_invalid_;
-	lmap_.erase_return_void(i); 
+	lmap_.erase(i); 
 
 	return res;
 }
