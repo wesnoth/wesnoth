@@ -80,6 +80,16 @@ public:
 	static Uint32 max_rgb(Uint32 first,Uint32 second)
 		{ return rgb(std::max(red(first),red(second)),std::max(green(first),green(second)),std::max(blue(first),blue(second))) ; }
 
+	/**
+	 * Add r,g,b to the colors for all images displayed on the map.
+	 *
+	 * Used for special effects like flashes.
+	 */
+
+	void adjust_colors(int r, int g, int b);
+
+
+
 	/** Gets the underlying screen object. */
 	CVideo& video() { return screen_; }
 
@@ -454,7 +464,7 @@ public:
 	 */
 	void redraw_minimap() { redrawMinimap_ = true; }
 
-	virtual const time_of_day& get_time_of_day(const map_location& /*loc*/) const;
+	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location) const;
 
 	virtual bool has_time_area() const {return false;};
 
@@ -558,6 +568,10 @@ protected:
 	bool turbo_;
 	bool invalidateGameStatus_;
 	boost::scoped_ptr<map_labels> map_labels_;
+	int color_adjust_red_;
+	int color_adjust_green_;
+	int color_adjust_blue_;
+
 
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;

@@ -15,6 +15,7 @@
 #define TOD_MANAGER_HPP_INCLUDED
 
 #include "map_location.hpp"
+#include "config.hpp"
 #include "time_of_day.hpp"
 #include "savegame_config.hpp"
 
@@ -26,7 +27,7 @@ class unit_map;
 class tod_manager : public savegame::savegame_config
 {
 	public:
-		tod_manager(const config& scenario_cfg, const int num_turns);
+	explicit tod_manager(const config& scenario_cfg = config(), const int num_turns = -1);
 		~tod_manager() {}
 		tod_manager& operator=(const tod_manager& manager);
 

@@ -57,13 +57,6 @@ public:
 	void new_turn();
 
 	/**
-	 * Add r,g,b to the colors for all images displayed on the map.
-	 *
-	 * Used for special effects like flashes.
-	 */
-	void adjust_colors(int r, int g, int b);
-
-	/**
 	 * Scrolls to the leader of a certain side.
 	 *
 	 * This will normally be the playing team.

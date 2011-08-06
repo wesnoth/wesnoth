@@ -36,6 +36,8 @@
 #include "time_of_day.hpp"
 #include "tooltips.hpp"
 #include "arrow.hpp"
+#include "tod_manager.hpp"
+#include "resources.hpp"
 
 #include "SDL_image.h"
 
@@ -92,6 +94,9 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	turbo_(false),
 	invalidateGameStatus_(true),
 	map_labels_(new map_labels(*this, 0)),
+	color_adjust_red_(0),
+	color_adjust_green_(0),
+	color_adjust_blue_(0),
 	scroll_event_("scrolled"),
 	complete_redraw_event_("completely_redrawn"),
 	nextDraw_(0),
@@ -159,11 +164,23 @@ display::~display()
 {
 }
 
-const time_of_day& display::get_time_of_day(const map_location& /*loc*/) const
+const time_of_day & display::get_time_of_day(const map_location& loc) const
 {
-	static const time_of_day tod;
+	static time_of_day tod;
+	if(resources::tod_manager != NULL){ tod = resources::tod_manager->get_time_of_day(0, loc); }
 	return tod;
 }
+
+void display::adjust_colors(int r, int g, int b)
+{
+	const time_of_day& tod = get_time_of_day();
+	image::set_color_adjustment(r + tod.red, g + tod.green, b + tod.blue);
+	color_adjust_red_ = r ;
+	color_adjust_green_ = g ;
+	color_adjust_blue_ = b ;
+}
+
+
 
 void display::fill_images_list(const std::string& prefix, std::vector<std::string>& images)
 {
@@ -646,17 +663,16 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		std::ostringstream light_trans;
 		for(int d=0; d<6; ++d){
 			const time_of_day& atod = get_time_of_day(adjs[d]);
-			if(atod.red == tod.red && atod.green == tod.green && atod.blue == tod.blue)
-				continue;
+			if(atod.red == tod.red  &&  atod.green  == tod.green  &&  atod.blue == tod.blue) { continue; }
 
 			light_trans
 				<< "~BLIT("
-					<< "terrain/light-" << dir[d] << ".png"
-					<< "~CS("
-						<< atod.red << ","
-						<< atod.green << ","
-						<< atod.blue
-					<< ")" // CS
+				<< "terrain/light-" << dir[d] << ".png"
+				<< "~CS("
+				<< (atod.red + color_adjust_red_) << ","
+				<< (atod.green + color_adjust_green_) << ","
+				<< (atod.blue + color_adjust_blue_)
+				<< ")" // CS
 				<< ")"; //BLIT
 			use_lightmap = true;
 		}
@@ -666,27 +682,29 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			//generate the base of the lightmap
 			//and add light transitions on it
 			mod	<< "~L("
-					<< "terrain/light.png"
-					<< "~CS("
-						<< tod.red << ","
-						<< tod.green << ","
-						<< tod.blue
-					<< ")" // CS
-					<< light_trans.str()
+				<< "terrain/light.png"
+				<< "~CS("
+				<< (tod.red  + color_adjust_red_) << ","
+				<< (tod.green  + color_adjust_green_)<< ","
+				<< (tod.blue  + color_adjust_blue_)
+				<< ")" // CS
+				<< light_trans.str()
 				<< ")"; // L
 		} else {
 			// no light map needed, but still need to color the hex
-			const time_of_day& global_tod =
-				get_time_of_day(map_location::null_location);
-			if(tod.red == global_tod.red && tod.green == global_tod.green && tod.blue == global_tod.blue) {
+			const time_of_day& global_tod = get_time_of_day(map_location::null_location);
+			bool is_same_as_global(tod.red == global_tod.red && tod.green == global_tod.green && tod.blue == global_tod.blue);
+			if(is_same_as_global ) {
 				// It's the same as global ToD, don't use local light
 				use_local_light = false;
-			} else if (tod.red != 0 || tod.green != 0 || tod.blue != 0) {
+			} else if ((tod.red + color_adjust_red_) != 0 
+					   || (tod.green + color_adjust_green_) != 0 
+					   || (tod.blue + color_adjust_blue_) != 0) {
 				// simply color it if needed
 				mod << "~CS("
-						<< tod.red << ","
-						<< tod.green << ","
-						<< tod.blue
+					<< (tod.red   + color_adjust_red_) << ","
+					<< (tod.green   + color_adjust_green_)<< ","
+					<< (tod.blue  + color_adjust_blue_)
 					<< ")"; // CS
 			}
 		}

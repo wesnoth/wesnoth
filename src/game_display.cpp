@@ -197,16 +197,8 @@ void game_display::new_turn()
 
 	first_turn_ = false;
 
-	image::set_color_adjustment(tod.red,tod.green,tod.blue);
-
 	invalidate_all();
 	draw();
-}
-
-void game_display::adjust_colors(int r, int g, int b)
-{
-	const time_of_day& tod = tod_manager_.get_time_of_day();
-	image::set_color_adjustment(tod.red+r,tod.green+g,tod.blue+b);
 }
 
 void game_display::select_hex(map_location hex)
