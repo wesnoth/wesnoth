@@ -49,8 +49,6 @@ public class WMLDocHandler extends AbstractHandler
                         public void process( XtextResource resource )
                                 throws Exception
                         {
-                            WMLDocInformationPresenter presenter_ = null;
-
                             ITextSelection selection = ( ITextSelection ) editor
                                     .getSelectionProvider( ).getSelection( );
                             Point positionRelative = editor
@@ -75,29 +73,23 @@ public class WMLDocHandler extends AbstractHandler
                                                 editedFile.getProject( ) )
                                         .getDefines( ).get( macro.getName( ) );
                                 if( define != null ) {
-                                    if( presenter_ == null ) {
-                                        presenter_ = new WMLDocInformationPresenter(
-                                                editor.getSite( ).getShell( ),
-                                                new WMLDocMacro( define ),
-                                                positionAbsolute );
-                                        presenter_.create( );
-                                    }
-                                    presenter_.open( );
+                                    WMLDocInformationPresenter presenter = new WMLDocInformationPresenter(
+                                            editor.getSite( ).getShell( ),
+                                            new WMLDocMacro( define ),
+                                            positionAbsolute );
+                                    presenter.create( );
+                                    presenter.open( );
                                 }
                             }
                             else if( grammarElement instanceof WMLTag ) {
-                                if( presenter_ == null ) {
-                                    presenter_ = new WMLDocInformationPresenter(
-                                            editor.getSite( ).getShell( ),
-                                            new WMLDocTag(
-                                                    editedFile,
-                                                    installName,
-                                                    ( ( WMLTag ) grammarElement )
-                                                            .getName( ) ),
-                                            positionAbsolute );
-                                    presenter_.create( );
-                                }
-                                presenter_.open( );
+                                WMLDocInformationPresenter presenter = new WMLDocInformationPresenter(
+                                        editor.getSite( ).getShell( ),
+                                        new WMLDocTag( editedFile, installName,
+                                                ( ( WMLTag ) grammarElement )
+                                                        .getName( ) ),
+                                        positionAbsolute );
+                                presenter.create( );
+                                presenter.open( );
                             }
                         }
                     } );

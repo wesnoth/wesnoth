@@ -176,7 +176,7 @@ public class AddonsView extends ViewPart
                     public void run( )
                     {
                         downloadAddon( );
-                    };
+                    }
                 };
                 manager.add( downloadAction );
             }

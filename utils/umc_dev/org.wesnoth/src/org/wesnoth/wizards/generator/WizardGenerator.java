@@ -100,7 +100,7 @@ public class WizardGenerator extends WizardTemplate
                 tags.append( ( ( WizardGeneratorPageTag ) page ).getContent( ) );
             }
             else {
-                ; // skip 404 pages
+                // skip 404 pages
             }
         }
         result += ( keys.toString( ) + tags.toString( ) );
