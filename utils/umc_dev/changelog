@@ -1,23 +1,26 @@
 Eclipse plugin changelog
 
 2.0.0
-	* The plugin running as a standalone app now has all the proper
-	save/new/undo/redo buttons in the menus.
+	* The standalone version now has all the proper save/new/undo/redo 
+    buttons in the menus.
 	* Added support for multiple wesnoth installations. This 
 	allows the user to have UMC for different wesnoth version at the 
 	same time in the workspace.
 	* Added a new property page for Wesnoth projects, that allows
-	one to select what wesnoth install with that project use.
+	one to select what wesnoth install that project use.
 	* Added the "Wesnoth Addons" view, which allows users to browse
 	through the existing addons on any wesnoth addon server and
-	download them (as projects in workspace).
-	* The required Xtext version has been raised to 2.0
+	download them ( and optionally create them as projects in the workspace).
+	* The required Xtext version has been raised to 2.0.0
+    * The required Eclipse version has been raised to 3.7 ( Indigo )
 	* Improved the content assist for:
 		- variables
 		- events
 		- tags & keys - now the lua defined tags and keys are recognized
 		and suggested to the user
-	* The wesnoth wizards are now available directly from the File -> New menu.
+	* The wesnoth wizards are now available directly from the ``File" -> ``New" menu.
+    * The standalone version can be updated via the ``Help" -> ``Check for Updates".
+    * Eclipse update site has moved to ``http://eclipse.wesnoth.org/updates"
 
 1.0.3
 	* Fixed bug #18080
@@ -110,7 +113,6 @@ Eclipse plugin changelog
 	* Fix collision between files with the same name by preprocessing them in separate directories
 
 0.2.0
-	26 June 2010
 	* updated the editor to xtext 1.0.0
 	** Wizards **
 		- era
