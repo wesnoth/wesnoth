@@ -19,11 +19,14 @@
  */
 
 #include "goal.hpp"
+#include "../lua/core.hpp"
 #include "../manager.hpp"
 #include "../../log.hpp"
+#include "../lua/lua_object.hpp"
 #include "../../gamestatus.hpp"
 #include "../../foreach.hpp"
 #include "../../resources.hpp"
+#include "../../scripting/lua.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
 #include "../../unit_map.hpp"
@@ -48,6 +51,10 @@ goal::goal(readonly_context &context, const config &cfg)
 
 
 void goal::on_create()
+{
+}
+
+void goal::on_create(boost::shared_ptr<ai::lua_ai_context>)
 {
 }
 
@@ -290,6 +297,39 @@ protect_goal::protect_goal(readonly_context &context, const config &cfg, bool pr
 	, value_(1.0) //this default value taken from old code
 {
 }
+
+lua_goal::lua_goal(readonly_context &context, const config &cfg)
+: goal(context, cfg) 
+{
+	if (cfg.has_attribute("code")) {
+		code_ = cfg["code"].str();
+	}
+	else 
+	{
+		// report failure
+	}
+}
+
+void lua_goal::on_create(boost::shared_ptr<ai::lua_ai_context> l_ctx)
+{
+	handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
+}
+
+void lua_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
+{
+	boost::shared_ptr< lua_object< std::vector < target > > > l_obj 
+		= boost::shared_ptr< lua_object< std::vector < target > > >(new lua_object< std::vector < target > >());
+	config c = config();
+	handler_->handle(c, true, l_obj);
+	std::vector < target > targets = *(l_obj->get());
+	
+ 	foreach (target tg, targets)
+ 	{
+ 		*target_list = tg;
+ 	}
+	
+}
+
 
 
 } //end of namespace ai

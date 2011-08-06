@@ -38,6 +38,9 @@
 class terrain_filter;
 
 namespace ai {
+	
+class lua_ai_context;
+class lua_ai_action_handler;
 
 class goal : public readonly_context_proxy, public component {
 public:
@@ -54,6 +57,7 @@ public:
 
 
 	virtual void on_create();
+	virtual void on_create(boost::shared_ptr<ai::lua_ai_context>);
 
 
 	bool active() const;
@@ -160,6 +164,17 @@ public:
 	: protect_goal(context,cfg,true,true)
 	{
 	}
+};
+
+class lua_goal : public goal {
+public:
+	lua_goal(readonly_context& context, const config& cfg);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+	void on_create(boost::shared_ptr<ai::lua_ai_context>);
+	
+private:
+	std::string code_;
+	boost::shared_ptr<lua_ai_action_handler> handler_;
 };
 
 

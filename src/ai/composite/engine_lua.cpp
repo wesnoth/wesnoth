@@ -20,6 +20,7 @@
 
 #include "ai.hpp"
 #include "engine_lua.hpp"
+#include "goal.hpp"
 #include "rca.hpp"
 #include "stage.hpp"
 #include "aspect.hpp"
@@ -256,6 +257,24 @@ void engine_lua::do_parse_aspect_from_config( const config &cfg, const std::stri
 		return;
 	}
 	*b = new_aspect;
+}
+
+void engine_lua::do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b )
+{
+	goal_factory::factory_map::iterator f = goal_factory::get_list().find(cfg["name"]);
+	if (f == goal_factory::get_list().end()){
+		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNKNOWN goal["<<cfg["name"]<<"]"<< std::endl;
+		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg << std::endl;
+		return;
+	}
+	goal_ptr new_goal = f->second->get_new_instance(ai_,cfg);
+	new_goal->on_create(lua_ai_context_);
+	if (!new_goal) {
+		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNABLE TO CREATE goal["<<cfg["name"]<<"]"<< std::endl;
+		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg << std::endl;
+		return;
+	}
+	*b = new_goal;
 }
 
 
