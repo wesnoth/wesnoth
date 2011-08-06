@@ -29,12 +29,14 @@ public class WMLFoldingRegionProvider extends DefaultFoldingRegionProvider
     @Override
     protected boolean isHandled( EObject eObject )
     {
-        if( eObject instanceof WMLTextdomain )
+        if( eObject instanceof WMLTextdomain ) {
             return false;
+        }
         else if( eObject instanceof WMLKey ) {
             WMLKey key = ( WMLKey ) eObject;
-            if( ! key.getEol( ).isEmpty( ) )
+            if( ! key.getEol( ).isEmpty( ) ) {
                 return false;
+            }
         }
 
         return super.isHandled( eObject );
@@ -49,22 +51,27 @@ public class WMLFoldingRegionProvider extends DefaultFoldingRegionProvider
         if( region != null ) {
             ITextRegion significant = locationInFileProvider
                     .getSignificantTextRegion( eObject );
-            if( significant == null )
+            if( significant == null ) {
                 throw new NullPointerException(
                         "significant region may not be null" );
+            }
             int offset = region.getOffset( );
             int length = region.getLength( );
 
             String endName = "";
-            if( eObject instanceof WMLPreprocIF )
+            if( eObject instanceof WMLPreprocIF ) {
                 endName = ( ( WMLPreprocIF ) eObject ).getEndName( );
-            else if( eObject instanceof WMLMacroDefine )
+            }
+            else if( eObject instanceof WMLMacroDefine ) {
                 endName = ( ( WMLMacroDefine ) eObject ).getEndName( );
+            }
 
-            if( endName.endsWith( "\r\n" ) )
+            if( endName.endsWith( "\r\n" ) ) {
                 length -= 2;
-            else if( endName.endsWith( "\n" ) )
+            }
+            else if( endName.endsWith( "\n" ) ) {
                 --length;
+            }
 
             foldingRegionAcceptor.accept( offset, length, significant );
         }

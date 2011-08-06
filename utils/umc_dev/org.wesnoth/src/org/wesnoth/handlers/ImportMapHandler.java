@@ -35,8 +35,9 @@ public class ImportMapHandler extends AbstractHandler
 
         if( ! selectedFolder.getName( ).equals( "maps" ) && //$NON-NLS-1$
                 GUIUtils.showMessageBox( Messages.ImportMapHandler_3,
-                        SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO )
+                        SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO ) {
             return null;
+        }
 
         MapUtils.importMap( );
         return null;

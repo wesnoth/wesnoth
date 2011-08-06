@@ -39,8 +39,9 @@ public class WMLSemanticHighlightingCalculator implements
     public void provideHighlightingFor( XtextResource resource,
             IHighlightedPositionAcceptor acceptor )
     {
-        if( resource == null )
+        if( resource == null ) {
             return;
+        }
 
         Iterator< EObject > iter = EcoreUtil.getAllContents( resource, true );
         while( iter.hasNext( ) ) {
@@ -129,7 +130,7 @@ public class WMLSemanticHighlightingCalculator implements
     /**
      * Copied from org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.
      * SemanticHighlightingCalculator
-     * 
+     *
      * @param node
      *            The node to highlight
      * @param id
@@ -140,8 +141,9 @@ public class WMLSemanticHighlightingCalculator implements
     private void highlightNode( INode node, String id,
             IHighlightedPositionAcceptor acceptor )
     {
-        if( node == null )
+        if( node == null ) {
             return;
+        }
         if( node instanceof ILeafNode ) {
             acceptor.addPosition( node.getOffset( ), node.getLength( ), id );
         }
@@ -158,7 +160,7 @@ public class WMLSemanticHighlightingCalculator implements
     /**
      * Copied from org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.
      * SemanticHighlightingCalculator
-     * 
+     *
      * @param semantic
      *            The object to search in
      * @param feature
@@ -168,12 +170,14 @@ public class WMLSemanticHighlightingCalculator implements
     public INode getFirstFeatureNode( EObject semantic,
             EStructuralFeature feature )
     {
-        if( feature == null )
+        if( feature == null ) {
             return NodeModelUtils.findActualNodeFor( semantic );
+        }
         List< INode > nodes = NodeModelUtils.findNodesForFeature( semantic,
                 feature );
-        if( ! nodes.isEmpty( ) )
+        if( ! nodes.isEmpty( ) ) {
             return nodes.get( 0 );
+        }
         return null;
     }
 }

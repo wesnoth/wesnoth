@@ -57,8 +57,9 @@ public class WMLDocTag implements IWMLDocProvider
      */
     private void generateDoc( )
     {
-        if( docGenerated_ )
+        if( docGenerated_ ) {
             return;
+        }
 
         styleRanges_ = new ArrayList< StyleRange >( );
 
@@ -70,7 +71,7 @@ public class WMLDocTag implements IWMLDocProvider
             StringBuilder content = new StringBuilder( );
             content.append( Messages.WMLDocTag_1 );
             addStyleRange( 0, content.length( ) - 1, SWT.BOLD );
-            content.append( tag_.get_Description( ) ); //$NON-NLS-1$
+            content.append( tag_.get_Description( ) );
             contents_ = content.toString( );
         }
 
@@ -79,7 +80,7 @@ public class WMLDocTag implements IWMLDocProvider
 
     /**
      * Adds a style range to current list
-     * 
+     *
      * @param offset
      * @param length
      * @param style
@@ -92,17 +93,20 @@ public class WMLDocTag implements IWMLDocProvider
                 style ) );
     }
 
+    @Override
     public String getTitle( )
     {
         generateDoc( );
         return title_;
     }
 
+    @Override
     public String getInfoText( )
     {
         String infoText = "";
-        if( tag_.is_LuaBased( ) )
+        if( tag_.is_LuaBased( ) ) {
             infoText += "[Lua tag] ";
+        }
 
         if( ! tag_.get_DefinitionLocation( ).isEmpty( ) ) {
             infoText += "Defined in: " + tag_.get_DefinitionLocation( );
@@ -111,12 +115,14 @@ public class WMLDocTag implements IWMLDocProvider
         return infoText.isEmpty( ) ? null: infoText;
     }
 
+    @Override
     public String getContents( )
     {
         generateDoc( );
         return contents_;
     }
 
+    @Override
     public StyleRange[] getStyleRanges( )
     {
         generateDoc( );

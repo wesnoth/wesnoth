@@ -53,7 +53,7 @@ public class FactionPage0 extends WizardPageTemplate
 
     /**
      * Create contents of the wizard.
-     * 
+     *
      * @param parent
      */
     @Override
@@ -93,8 +93,9 @@ public class FactionPage0 extends WizardPageTemplate
             public void widgetSelected( SelectionEvent e )
             {
                 IPath path = handleBrowseContainer( );
-                if( path != null )
+                if( path != null ) {
                     txtDirectory_.setText( path.toString( ) );
+                }
             }
         } );
 
@@ -181,9 +182,10 @@ public class FactionPage0 extends WizardPageTemplate
                 1 ) );
         new Label( container, SWT.NONE );
 
-        if( getWizard( ).getSelectionContainer( ) != null )
+        if( getWizard( ).getSelectionContainer( ) != null ) {
             txtDirectory_.setText( getWizard( ).getSelectionContainer( )
                     .getFullPath( ).toString( ) );
+        }
         updatePageIsComplete( );
     }
 

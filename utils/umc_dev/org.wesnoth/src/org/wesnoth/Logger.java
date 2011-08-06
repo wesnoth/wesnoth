@@ -52,11 +52,14 @@ public class Logger
      */
     public void startLogger( )
     {
-        if( logWriter_ != null )
+        if( logWriter_ != null ) {
             return;
+        }
         try {
             if( WorkspaceUtils.getTemporaryFolder( ) == null )
+             {
                 throw new IOException( "Could not create the temporary folder." ); //$NON-NLS-1$
+            }
 
             String logFilePath = String.format(
                     "%s/logs/log%s.txt", //$NON-NLS-1$
@@ -92,8 +95,9 @@ public class Logger
      */
     public void stopLogger( )
     {
-        if( logWriter_ == null )
+        if( logWriter_ == null ) {
             return;
+        }
         try {
             log( "Logging ended." ); //$NON-NLS-1$
             logTool( "Logging Ended" );
@@ -106,7 +110,7 @@ public class Logger
 
     /**
      * Prints a message to the error log (severity: info)
-     * 
+     *
      * @param message
      *            The message to log
      */
@@ -117,7 +121,7 @@ public class Logger
 
     /**
      * Logs a warning message
-     * 
+     *
      * @param message
      *            The message to log
      */
@@ -128,7 +132,7 @@ public class Logger
 
     /**
      * Logs an error message
-     * 
+     *
      * @param message
      *            The message to log
      */
@@ -139,7 +143,7 @@ public class Logger
 
     /**
      * Logs the specified exception, providing the stacktrace to the console
-     * 
+     *
      * @param e
      *            The exception to log
      */
@@ -150,7 +154,7 @@ public class Logger
 
     /**
      * Logs the specified exception, providing the stacktrace to the console
-     * 
+     *
      * @param e
      *            The exception to log
      */
@@ -161,8 +165,9 @@ public class Logger
 
     private void logExceptionToWriter( BufferedWriter writer, Exception e )
     {
-        if( e == null )
+        if( e == null ) {
             return;
+        }
 
         // put the stack trace in a string
         StringWriter sw = new StringWriter( );
@@ -175,7 +180,7 @@ public class Logger
 
     /**
      * Logs the message (severity: info) showing also a messagebox to the user
-     * 
+     *
      * @param message
      *            The message to log
      * @param guiMessage
@@ -189,7 +194,7 @@ public class Logger
 
     /**
      * Prints a message to the error log with the specified severity
-     * 
+     *
      * @param message
      *            the message to log
      * @param severity
@@ -202,7 +207,7 @@ public class Logger
 
     /**
      * Prints a message to the tool launch log (severity: info)
-     * 
+     *
      * @param message
      *            The message to log
      */
@@ -229,7 +234,8 @@ public class Logger
 
         // don't print to console the tools if there was no error/warning
         if( writer != toolLaunchLogWriter_
-                || ( writer == toolLaunchLogWriter_ && severity != IStatus.INFO ) )
+                || ( writer == toolLaunchLogWriter_ && severity != IStatus.INFO ) ) {
             System.out.println( message );
+        }
     }
 }

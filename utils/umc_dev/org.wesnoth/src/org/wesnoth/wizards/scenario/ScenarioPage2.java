@@ -37,7 +37,7 @@ public class ScenarioPage2 extends WizardPageTemplate
 
     /**
      * Create contents of the wizard.
-     * 
+     *
      * @param parent
      */
     @Override
@@ -57,8 +57,9 @@ public class ScenarioPage2 extends WizardPageTemplate
                     @Override
                     public void widgetSelected( SelectionEvent e )
                     {
-                        if( ! ( e.getSource( ) instanceof Button ) )
+                        if( ! ( e.getSource( ) instanceof Button ) ) {
                             return;
+                        }
                         setMPSettings( ( ( Button ) e.getSource( ) )
                                 .getSelection( ) );
                     }

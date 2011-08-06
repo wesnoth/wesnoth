@@ -64,8 +64,9 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
                 if( GUIUtils
                         .showMessageBox(
                                 "Are you sure you want to clear the plugin preferences?",
-                                SWT.YES | SWT.NO ) == SWT.NO )
+                                SWT.YES | SWT.NO ) == SWT.NO ) {
                     return;
+                }
 
                 // clear the preferences
                 IEclipsePreferences root = Platform.getPreferencesService( )
@@ -112,8 +113,9 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 
                 for( File file: files ) {
                     // don't remove the logs
-                    if( file.isDirectory( ) && file.getName( ).equals( "logs" ) )
+                    if( file.isDirectory( ) && file.getName( ).equals( "logs" ) ) {
                         continue;
+                    }
 
                     ResourceUtils.deleteDirectory( file );
                 }

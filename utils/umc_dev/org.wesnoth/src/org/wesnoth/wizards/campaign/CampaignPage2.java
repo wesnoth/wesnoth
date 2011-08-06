@@ -45,7 +45,7 @@ public class CampaignPage2 extends WizardPageTemplate
 
     /**
      * Create contents of the wizard.
-     * 
+     *
      * @param parent
      */
     @Override
@@ -67,8 +67,9 @@ public class CampaignPage2 extends WizardPageTemplate
             @Override
             public void widgetSelected( SelectionEvent e )
             {
-                if( ! ( e.getSource( ) instanceof Button ) )
+                if( ! ( e.getSource( ) instanceof Button ) ) {
                     return;
+                }
                 String dif = ( ( Button ) e.getSource( ) ).getText( );
 
                 if( ! txtDifficulties_.getText( ).contains( dif ) ) {

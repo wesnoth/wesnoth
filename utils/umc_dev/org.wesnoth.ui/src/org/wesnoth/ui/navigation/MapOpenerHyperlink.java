@@ -42,8 +42,9 @@ public class MapOpenerHyperlink extends XtextHyperlink
             if( GUIUtils
                     .showMessageBox(
                             "The map doesn't exist. Do you want to create a default one and open that?",
-                            SWT.YES | SWT.NO ) == SWT.NO )
+                            SWT.YES | SWT.NO ) == SWT.NO ) {
                 return;
+            }
 
             // go ahead, create the map
             FileWriter writer;

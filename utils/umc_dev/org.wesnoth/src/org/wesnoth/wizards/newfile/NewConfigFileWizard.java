@@ -67,6 +67,7 @@ public class NewConfigFileWizard extends WizardTemplate
         final String containerName = page_.getContainerName( );
         final String fileName = page_.getFileName( );
         IRunnableWithProgress op = new IRunnableWithProgress( ) {
+            @Override
             public void run( IProgressMonitor monitor )
             {
                 try {
@@ -123,6 +124,7 @@ public class NewConfigFileWizard extends WizardTemplate
         monitor.worked( 1 );
         monitor.setTaskName( Messages.NewConfigFileWizard_4 );
         getShell( ).getDisplay( ).asyncExec( new Runnable( ) {
+            @Override
             public void run( )
             {
                 IWorkbenchPage page = PlatformUI.getWorkbench( )

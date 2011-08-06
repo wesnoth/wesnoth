@@ -114,7 +114,7 @@ public class WMLVariable implements Serializable
         /**
          * Returns true if the specified index and offset lie withing
          * this scope
-         * 
+         *
          * @param index
          *            The index of the file
          * @param offset

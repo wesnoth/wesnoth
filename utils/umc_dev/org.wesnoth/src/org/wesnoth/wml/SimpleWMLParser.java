@@ -42,7 +42,7 @@ public class SimpleWMLParser
 
     /**
      * Creates a new parser for the specified file
-     * 
+     *
      * @param file
      *            The file which to parse
      */
@@ -55,7 +55,7 @@ public class SimpleWMLParser
 
     /**
      * Creates a new parser and fills the specified config file
-     * 
+     *
      * @param file
      *            The file which to parse
      * @param config
@@ -115,10 +115,12 @@ public class SimpleWMLParser
                 currentTag = ( WMLTag ) object;
                 currentTagName = currentTag.getName( );
 
-                if( currentTagName.equals( "scenario" ) )
+                if( currentTagName.equals( "scenario" ) ) {
                     config_.IsScenario = true;
-                else if( currentTagName.equals( "campaign" ) )
+                }
+                else if( currentTagName.equals( "campaign" ) ) {
                     config_.IsCampaign = true;
+                }
             }
             else if( object instanceof WMLKey ) {
                 if( currentTag != null ) {
@@ -126,12 +128,14 @@ public class SimpleWMLParser
                     String keyName = key.getName( );
 
                     if( keyName.equals( "id" ) ) {
-                        if( currentTagName.equals( "scenario" ) )
+                        if( currentTagName.equals( "scenario" ) ) {
                             config_.ScenarioId = WMLUtils.getKeyValue( key
                                     .getValues( ) );
-                        else if( currentTagName.equals( "campaign" ) )
+                        }
+                        else if( currentTagName.equals( "campaign" ) ) {
                             config_.CampaignId = WMLUtils.getKeyValue( key
                                     .getValues( ) );
+                        }
                     }
                     else if( keyName.equals( "name" ) ) {
                         if( currentTagName.equals( "set_variable" )
@@ -189,8 +193,9 @@ public class SimpleWMLParser
 
     protected void handleSetVariable( EObject context )
     {
-        if( projectCache_ == null )
+        if( projectCache_ == null ) {
             return;
+        }
 
         String variableName = getVariableNameByContext( context );
 
@@ -209,7 +214,9 @@ public class SimpleWMLParser
         int nodeOffset = NodeModelUtils.getNode( context ).getTotalOffset( );
         for( Scope scope: variable.getScopes( ) ) {
             if( scope.contains( dependencyIndex_, nodeOffset ) )
+             {
                 return; // nothing to do
+            }
         }
 
         // couldn't find any scope. Add a new one then.
@@ -218,8 +225,9 @@ public class SimpleWMLParser
 
     protected void handleUnsetVariable( EObject context )
     {
-        if( projectCache_ == null )
+        if( projectCache_ == null ) {
             return;
+        }
 
         String variableName = getVariableNameByContext( context );
         if( variableName == null ) {
@@ -229,8 +237,9 @@ public class SimpleWMLParser
         }
 
         WMLVariable variable = projectCache_.getVariables( ).get( variableName );
-        if( variable == null )
+        if( variable == null ) {
             return;
+        }
 
         int nodeOffset = NodeModelUtils.getNode( context ).getTotalOffset( );
 
@@ -249,7 +258,7 @@ public class SimpleWMLParser
 
     /**
      * Returns the parsed tags
-     * 
+     *
      * @return A list of tags
      */
     public List< WMLTag > getParsedTags( )
@@ -259,7 +268,7 @@ public class SimpleWMLParser
 
     /**
      * Returns the parsed WMLConfig
-     * 
+     *
      * @return Returns the parsed WMLConfig
      */
     public WMLConfig getParsedConfig( )

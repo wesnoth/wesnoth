@@ -14,6 +14,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 
 public class WMLProposalComparator implements ICompletionProposalComparator
 {
+    @Override
     public int compare( ICompletionProposal arg0, ICompletionProposal arg1 )
     {
         if( arg0 instanceof ConfigurableCompletionProposal

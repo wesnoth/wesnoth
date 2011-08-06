@@ -8,7 +8,7 @@
  *******************************************************************************/
 package org.wesnoth.wizards.emptyproject;
 
-import org.eclipse.jface.dialogs.DialogPage;
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -169,7 +169,7 @@ public class EmptyProjectPage1 extends WizardPageTemplate
     {
         setPageComplete( false );
         if( txtTitle_.getText( ).isEmpty( ) ) {
-            setMessage( Messages.EmptyProjectPage1_33, DialogPage.WARNING );
+            setMessage( Messages.EmptyProjectPage1_33, IMessageProvider.WARNING );
             return;
         }
 
@@ -178,7 +178,7 @@ public class EmptyProjectPage1 extends WizardPageTemplate
                 || ! ( txtVersion_.getText( )
                         .matches( "[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*" ) ) ) //$NON-NLS-1$
         {
-            setMessage( Messages.EmptyProjectPage1_35, DialogPage.WARNING );
+            setMessage( Messages.EmptyProjectPage1_35, IMessageProvider.WARNING );
             return;
         }
 

@@ -23,7 +23,7 @@ public class GUIUtils
 {
     /**
      * Shows an information message box with the specified message (thread-safe)
-     * 
+     *
      * @param window
      *            the window where to show the message box
      * @param message
@@ -37,7 +37,7 @@ public class GUIUtils
 
     /**
      * Shows an information message box with the specified message (thread-safe)
-     * 
+     *
      * @param window
      *            the window where to show the message box
      * @param message
@@ -51,7 +51,7 @@ public class GUIUtils
 
     /**
      * Shows an error message box with the specified message (thread-safe)
-     * 
+     *
      * @param window
      *            the window where to show the message box
      * @param message
@@ -65,7 +65,7 @@ public class GUIUtils
 
     /**
      * Shows a message box with the specified message and style(thread-safe)
-     * 
+     *
      * @param window
      *            the window where to show the message box
      * @param style
@@ -79,7 +79,7 @@ public class GUIUtils
 
     /**
      * Shows a message box with the specified message (thread-safe)
-     * 
+     *
      * @param window
      *            the window where to show the message box
      * @param message
@@ -93,7 +93,7 @@ public class GUIUtils
 
     /**
      * Shows a message box with the specified message (thread-safe)
-     * 
+     *
      * @param window
      *            the window where to show the message box
      * @param message
@@ -102,8 +102,9 @@ public class GUIUtils
     public static int showMessageBox( final IWorkbenchWindow window,
             final String message, final int style )
     {
-        if( window == null || window.getShell( ) == null || message == null )
+        if( window == null || window.getShell( ) == null || message == null ) {
             return - 1;
+        }
 
         RunnableWithResult< Integer > runnable = new RunnableWithResult< Integer >( ) {
             @Override
@@ -125,7 +126,7 @@ public class GUIUtils
 
     /**
      * Creates and returns a console with the specified parameters
-     * 
+     *
      * @param consoleTitle
      *            The title of the console
      * @param imageDescriptor
@@ -141,20 +142,22 @@ public class GUIUtils
         IConsoleManager conMan = ConsolePlugin.getDefault( )
                 .getConsoleManager( );
         IConsole[] existing = conMan.getConsoles( );
-        for( int i = 0; i < existing.length; i++ )
+        for( int i = 0; i < existing.length; i++ ) {
             if( consoleTitle.equals( existing[i].getName( ) ) ) {
                 console = ( MessageConsole ) existing[i];
                 console.clearConsole( );
                 break;
             }
+        }
 
         if( console == null ) // console not found
         {
             console = new MessageConsole( consoleTitle, imageDescriptor );
             conMan.addConsoles( new IConsole[] { console } );
         }
-        if( activate )
+        if( activate ) {
             console.activate( );
+        }
         return console;
     }
 }

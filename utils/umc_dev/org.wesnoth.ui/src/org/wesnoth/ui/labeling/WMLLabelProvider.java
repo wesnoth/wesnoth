@@ -20,7 +20,7 @@ import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
 /**
  * Provides labels for a EObjects.
- * 
+ *
  * see
  * http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
@@ -51,8 +51,9 @@ public class WMLLabelProvider extends DefaultEObjectLabelProvider
 
     public static Image getImageByName( String fileName )
     {
-        if( instance_ == null )
+        if( instance_ == null ) {
             return null;
+        }
         return instance_.getImage( fileName );
     }
 

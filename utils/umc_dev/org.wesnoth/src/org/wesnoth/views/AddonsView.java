@@ -274,12 +274,14 @@ public class AddonsView extends ViewPart
             return;
         }
 
-        if( cmbAddonServer_.getSelectionIndex( ) == - 1 )
+        if( cmbAddonServer_.getSelectionIndex( ) == - 1 ) {
             return;
+        }
 
         currentPort_ = ports_.get( cmbAddonServer_.getSelectionIndex( ) );
-        if( StringUtils.isNullOrEmpty( currentPort_ ) )
+        if( StringUtils.isNullOrEmpty( currentPort_ ) ) {
             return;
+        }
 
         loading_ = true;
         tableAddons_.setItemCount( 0 );
@@ -324,22 +326,29 @@ public class AddonsView extends ViewPart
                         index = - 1;
 
                         if( line.startsWith( "\\ campaign" ) ) {
-                            if( tmpColumns != null )
+                            if( tmpColumns != null ) {
                                 addons.add( tmpColumns );
+                            }
                             tmpColumns = new String[6];
                         }
-                        else if( line.startsWith( "  \\ type" ) )
+                        else if( line.startsWith( "  \\ type" ) ) {
                             index = 0;
-                        else if( line.startsWith( "  \\ name" ) )
+                        }
+                        else if( line.startsWith( "  \\ name" ) ) {
                             index = 1;
-                        else if( line.startsWith( "  \\ title" ) )
+                        }
+                        else if( line.startsWith( "  \\ title" ) ) {
                             index = 2;
-                        else if( line.startsWith( "  \\ author" ) )
+                        }
+                        else if( line.startsWith( "  \\ author" ) ) {
                             index = 3;
-                        else if( line.startsWith( "  \\ version" ) )
+                        }
+                        else if( line.startsWith( "  \\ version" ) ) {
                             index = 4;
-                        else if( line.startsWith( "  \\ downloads" ) )
+                        }
+                        else if( line.startsWith( "  \\ downloads" ) ) {
                             index = 5;
+                        }
 
                         // got something interesting? parse it
                         if( tmpColumns != null && index != - 1 ) {

@@ -13,6 +13,7 @@ import org.eclipse.jface.action.IMenuManager;
 public class DefaultExtXtextEditorCustomizer implements
         IExtXtextEditorCustomizer
 {
+    @Override
     public void customizeEditorContextMenu( IMenuManager menuManager )
     {
         // do nothing

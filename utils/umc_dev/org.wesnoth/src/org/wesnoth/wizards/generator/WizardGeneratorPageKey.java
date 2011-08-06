@@ -61,8 +61,9 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
         for( int i = startIndex_; i <= endIndex_; i++ ) {
             WMLKey key = keys_.get( i );
 
-            if( key.is_Forbidden( ) )
+            if( key.is_Forbidden( ) ) {
                 continue;
+            }
 
             Label label = new Label( container_, SWT.NONE );
             label.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
@@ -93,27 +94,33 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
                 textBox.setData( "card", key.get_Cardinality( ) ); //$NON-NLS-1$
                 textBox.setData( "trans", key.is_Translatable( ) ); //$NON-NLS-1$
                 if( key.is_Required( ) )
+                 {
                     textBox.setData( "comp", false ); // is textbox complete //$NON-NLS-1$
+                }
 
                 textBox.addModifyListener( new ModifyListener( ) {
                     @Override
                     public void modifyText( ModifyEvent e )
                     {
-                        if( ! ( e.getSource( ) instanceof Text ) )
+                        if( ! ( e.getSource( ) instanceof Text ) ) {
                             return;
+                        }
 
                         Text txt = ( ( Text ) e.getSource( ) );
-                        if( txt.getData( "comp" ) == null ) //$NON-NLS-1$
+                        if( txt.getData( "comp" ) == null ) {
                             return;
+                        }
 
                         if( ( txt.getText( ).isEmpty( ) && ( txt.getData(
                                 "card" ).toString( ).equals( "1" ) ) ) || // cardinality //$NON-NLS-1$ //$NON-NLS-2$
                                 ! txt.getText( ).matches(
                                         txt.getData( "valType" ).toString( ) ) // regex //$NON-NLS-1$
-                        )
+                        ) {
                             txt.setData( "comp", false ); //$NON-NLS-1$
-                        else
+                        }
+                        else {
                             txt.setData( "comp", true ); //$NON-NLS-1$
+                        }
                         updatePageIsComplete( );
                     }
                 } );
@@ -127,11 +134,13 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
         setPageComplete( false );
 
         for( Control child: container_.getChildren( ) ) {
-            if( ! ( child instanceof Text ) ) // don't check comboboxes
+            if( ! ( child instanceof Text ) ) {
                 continue;
+            }
 
-            if( child.getData( "comp" ) == null ) //$NON-NLS-1$
+            if( child.getData( "comp" ) == null ) {
                 continue;
+            }
 
             if( child.getData( "comp" ).toString( ).equals( "false" ) ) //$NON-NLS-1$ //$NON-NLS-2$
             {
@@ -150,14 +159,17 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
     {
         StringBuilder result = new StringBuilder( );
         for( Control child: container_.getChildren( ) ) {
-            if( ! ( child instanceof Text || child instanceof Combo ) )
+            if( ! ( child instanceof Text || child instanceof Combo ) ) {
                 continue;
+            }
             String text = ""; //$NON-NLS-1$
-            if( child instanceof Text )
+            if( child instanceof Text ) {
                 text = ( child.getData( "trans" ).toString( ).equals( "true" ) == true ? "_": "" ) + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
                         "\"" + ( ( Text ) child ).getText( ) + "\""; //$NON-NLS-1$ //$NON-NLS-2$
-            else
+            }
+            else {
                 text = ( ( Combo ) child ).getText( );
+            }
             result.append( StringUtils.multiples( "\t", indent_ ) + //$NON-NLS-1$
                     child.getData( "name" ) + "=" + text + "\n" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }

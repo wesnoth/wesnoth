@@ -15,7 +15,7 @@ public class ListUtils
 {
     /**
      * Concatenates the list of Objects using the provided separator
-     * 
+     *
      * @param list
      *            the list to concatenate
      * @param separator
@@ -26,7 +26,9 @@ public class ListUtils
             String separator )
     {
         if( list == null || list.isEmpty( ) )
+         {
             return ""; //$NON-NLS-1$
+        }
 
         StringBuilder result = new StringBuilder( );
         for( int i = 0; i < list.size( ) - 1; i++ ) {
@@ -39,7 +41,7 @@ public class ListUtils
 
     /**
      * Concatenates the array of strings using the provided separator
-     * 
+     *
      * @param array
      *            the array to concatenate
      * @param separator

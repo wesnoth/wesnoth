@@ -120,8 +120,9 @@ public class WMLFilesTests extends WMLTests
     public void testFile( String path )
     {
         // just config files
-        if( ! path.endsWith( ".cfg" ) )
+        if( ! path.endsWith( ".cfg" ) ) {
             return;
+        }
 
         System.out.print( "\nTesting file: " + path + "..." );
 

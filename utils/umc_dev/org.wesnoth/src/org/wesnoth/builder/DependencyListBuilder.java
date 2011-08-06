@@ -69,7 +69,7 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Create the whole dependency list from scratch.
-     * 
+     *
      * @param force
      *            True for force re-creating the list even if it
      *            was previously created
@@ -95,7 +95,7 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Adds a new node in the PDL
-     * 
+     *
      * @param file
      *            The file to add
      * @return The newly created node
@@ -192,7 +192,7 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Adds the containers and their contents to the list
-     * 
+     *
      * @param containerList
      *            The list of container paths
      */
@@ -205,17 +205,19 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Add the container and it's contents to the list
-     * 
+     *
      * @param containerPath
      *            The path of the container
      */
     private void internal_addContainer( String containerPath )
     {
         IContainer container = null;
-        if( StringUtils.isNullOrEmpty( containerPath ) )
+        if( StringUtils.isNullOrEmpty( containerPath ) ) {
             container = project_;
-        else
+        }
+        else {
             container = project_.getFolder( containerPath );
+        }
 
         IResource main_cfg = container.findMember( "_main.cfg" ); //$NON-NLS-1$
         if( main_cfg != null ) {
@@ -251,24 +253,28 @@ public class DependencyListBuilder implements Serializable
                         .indexOf( containerPath ) ).Includes++;
             }
 
-            if( members.isEmpty( ) )
+            if( members.isEmpty( ) ) {
                 return;
+            }
 
             DependencyListNode firstNewNode = null;
             DependencyListNode lastNode = null;
 
             for( IResource resource: members ) {
-                if( resource instanceof IContainer )
+                if( resource instanceof IContainer ) {
                     internal_addContainer( resource.getProjectRelativePath( )
                             .toString( ) );
+                }
                 else {
                     // just config files.
-                    if( ! ResourceUtils.isConfigFile( resource ) )
+                    if( ! ResourceUtils.isConfigFile( resource ) ) {
                         continue;
+                    }
 
                     lastNode = internal_addNode( ( IFile ) resource );
-                    if( firstNewNode == null )
+                    if( firstNewNode == null ) {
                         firstNewNode = lastNode;
+                    }
                 }
             }
 
@@ -305,7 +311,7 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Adds a new node to this list
-     * 
+     *
      * @param file
      *            The file to add
      * @return The newly created node
@@ -322,9 +328,10 @@ public class DependencyListBuilder implements Serializable
                         .getIndex( ) ) / 2;
 
                 if( newIndex > previous_.getIndex( )
-                        + DependencyListNode.INDEX_STEP )
+                        + DependencyListNode.INDEX_STEP ) {
                     newIndex = previous_.getIndex( )
                             + DependencyListNode.INDEX_STEP;
+                }
 
                 newNode.setIndex( newIndex );
 
@@ -357,7 +364,7 @@ public class DependencyListBuilder implements Serializable
                 currentIndex_ += DependencyListNode.INDEX_STEP;
             }
 
-            list_.put( ROOT_NODE_KEY, newNode ); //$NON-NLS-1$
+            list_.put( ROOT_NODE_KEY, newNode );
         }
 
         list_.put( file.getProjectRelativePath( ).toString( ), newNode );
@@ -367,7 +374,7 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Removes a node specified by the file
-     * 
+     *
      * @param file
      *            The file to remove from the list
      */
@@ -378,20 +385,23 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Removes the specified node from the list
-     * 
+     *
      * @param node
      *            The node to remove from the list
      */
     public void removeNode( DependencyListNode node )
     {
         // the node didn't even exist in the list!?
-        if( node == null )
+        if( node == null ) {
             return;
+        }
 
-        if( node.getPrevious( ) != null )
+        if( node.getPrevious( ) != null ) {
             node.getPrevious( ).setNext( node.getNext( ) );
-        if( node.getNext( ) != null )
+        }
+        if( node.getNext( ) != null ) {
             node.getNext( ).setPrevious( node.getPrevious( ) );
+        }
 
         String fileParentProjectPath = node.getFile( ).getParent( )
                 .getProjectRelativePath( ).toString( );
@@ -401,9 +411,10 @@ public class DependencyListBuilder implements Serializable
         // if we're at last node, decrease currentIndex_ to make economy on
         // indexes
         if( node.getNext( ) == null ) {
-            if( node.getPrevious( ) != null )
+            if( node.getPrevious( ) != null ) {
                 currentIndex_ = node.getPrevious( ).getIndex( )
                         + DependencyListNode.INDEX_STEP;
+            }
         }
 
         // removing a _main.cfg, add the parent container
@@ -420,26 +431,29 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Removes the container and all it's contents from the list
-     * 
+     *
      * @param path
      *            The container's path
      */
     private void internal_removeContainer( String path )
     {
         int dirEntryIndex = directories_.indexOf( path );
-        if( dirEntryIndex == - 1 )
+        if( dirEntryIndex == - 1 ) {
             return;
+        }
 
         ListDirectoryEntry entry = directoriesEntries_.get( dirEntryIndex );
 
-        if( entry == null )
+        if( entry == null ) {
             return;
+        }
 
         --entry.Includes;
 
         // we shouldn't delete entries that are used more than 1 time
-        if( entry.Includes > 0 )
+        if( entry.Includes > 0 ) {
             return;
+        }
 
         DependencyListNode firstNode = entry.FirstNode;
         DependencyListNode lastNode = entry.LastNode.getNext( );
@@ -457,7 +471,7 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Updates the current node in the list
-     * 
+     *
      * @param node
      *            The node to update
      */
@@ -501,8 +515,9 @@ public class DependencyListBuilder implements Serializable
                             .get( directories_.indexOf( newIncludes
                                     .get( newIndex - 1 ) ) );
 
-                    if( entry != null )
+                    if( entry != null ) {
                         previous_ = entry.FirstNode;
+                    }
                 }
 
                 internal_addContainer( newIncl );
@@ -566,11 +581,13 @@ public class DependencyListBuilder implements Serializable
                                 DependencyListNode fst = nodes.get( i );
                                 DependencyListNode lst = nodes.get( i + 1 );
 
-                                if( fst != null )
+                                if( fst != null ) {
                                     fst.setNext( lst );
+                                }
 
-                                if( lst != null )
+                                if( lst != null ) {
                                     lst.setPrevious( fst );
+                                }
                             }
 
                             processedIncludes.add( prevIncl );
@@ -592,7 +609,7 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Returns the node specified by the file
-     * 
+     *
      * @param file
      *            The file to get the depedency node for
      * @return An instance of {@link DependencyListNode}
@@ -606,7 +623,7 @@ public class DependencyListBuilder implements Serializable
      * Returns the node specified by the key. The keys are
      * usually project-relative paths for project's files, or
      * the {@link #ROOT_NODE_KEY}
-     * 
+     *
      * @param key
      *            The key to get the node by
      * @return An instance of {@link DependencyListNode}
@@ -618,7 +635,7 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Returns true if the list was already created, false otherwise
-     * 
+     *
      * @return A boolean value
      */
     public boolean getIsCreated( )
@@ -663,7 +680,7 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * The class that represents the entry in the list of included directories
-     * 
+     *
      */
     protected static class ListDirectoryEntry implements Serializable
     {

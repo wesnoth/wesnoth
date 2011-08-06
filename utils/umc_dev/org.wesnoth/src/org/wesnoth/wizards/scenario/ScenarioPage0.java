@@ -68,7 +68,7 @@ public class ScenarioPage0 extends WizardPageTemplate
 
     /**
      * Constructor for SampleNewWizardPage.
-     * 
+     *
      * @param pageName
      */
     public ScenarioPage0( IContainer container )
@@ -120,8 +120,9 @@ public class ScenarioPage0 extends WizardPageTemplate
             public void widgetSelected( SelectionEvent e )
             {
                 IPath path = handleBrowseContainer( );
-                if( path != null )
+                if( path != null ) {
                     txtProject_.setText( path.toString( ) );
+                }
             }
         } );
 
@@ -193,9 +194,10 @@ public class ScenarioPage0 extends WizardPageTemplate
         chkEmbeddedMap_.setText( Messages.ScenarioPage0_12 );
         new Label( container, SWT.NONE );
 
-        if( getWizard( ).getSelectionContainer( ) != null )
+        if( getWizard( ).getSelectionContainer( ) != null ) {
             txtProject_.setText( getWizard( ).getSelectionContainer( )
                     .getFullPath( ).toString( ) );
+        }
         updatePageIsComplete( );
     }
 
@@ -261,8 +263,9 @@ public class ScenarioPage0 extends WizardPageTemplate
 
     private void updateMapPath( )
     {
-        if( txtMapData_ == null )
+        if( txtMapData_ == null ) {
             return;
+        }
 
         if( rawMapPath_ == null ) {
             txtMapData_.setText( "" ); //$NON-NLS-1$
@@ -272,8 +275,9 @@ public class ScenarioPage0 extends WizardPageTemplate
         // make the map path to be relative to the ~addons directory
 
         String homePath = txtProject_.getText( );
-        if( ! homePath.isEmpty( ) && homePath.charAt( 0 ) == '/' )
+        if( ! homePath.isEmpty( ) && homePath.charAt( 0 ) == '/' ) {
             homePath = homePath.substring( 1 );
+        }
 
         txtMapData_.setText( String.format( "{~add-ons/%s/maps/%s}", //$NON-NLS-1$
                 homePath, new File( rawMapPath_ ).getName( ) ) );
@@ -283,8 +287,9 @@ public class ScenarioPage0 extends WizardPageTemplate
     {
         FileDialog dialog = new FileDialog( getShell( ) );
         dialog.setText( Messages.ScenarioPage0_26 );
-        if( container_ != null )
+        if( container_ != null ) {
             dialog.setFilterPath( container_.getLocation( ).toOSString( ) );
+        }
         dialog.setFilterExtensions( new String[] { "*.map" } ); //$NON-NLS-1$
         rawMapPath_ = dialog.open( );
         updateMapPath( );

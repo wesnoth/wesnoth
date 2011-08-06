@@ -39,7 +39,7 @@ public class WMLTools
 {
     /**
      * Runs "wmlindent" on the specified resource (directory/file)
-     * 
+     *
      * @param resourcePath
      *            the full path of the target where "wmlindent" will be runned
      *            on
@@ -61,20 +61,24 @@ public class WMLTools
         Paths paths = Preferences.getPaths( installName );
 
         // wmlindent only check first
-        if( ! checkWMLTool( paths, Tools.WMLINDENT.toString( ) ) ) //$NON-NLS-1$
+        if( ! checkWMLTool( paths, Tools.WMLINDENT.toString( ) ) ) {
             return null;
+        }
 
         File wmllintFile = new File( paths.getWMLToolsDir( ) + "/wmlindent" ); //$NON-NLS-1$
         List< String > arguments = new ArrayList< String >( );
         arguments.add( wmllintFile.getAbsolutePath( ) );
 
         if( resourcePath != null ) {
-            if( ! ResourceUtils.isValidFilePath( resourcePath ) )
+            if( ! ResourceUtils.isValidFilePath( resourcePath ) ) {
                 return null;
+            }
 
             if( dryrun
                     || Preferences.getBool( Constants.P_WMLINDENT_DRYRUN ) == true )
+             {
                 arguments.add( "--dryrun" ); //$NON-NLS-1$
+            }
 
             if( Preferences.getBool( Constants.P_WMLINDENT_VERBOSE ) ) {
                 arguments.add( "-v" ); //$NON-NLS-1$
@@ -87,7 +91,7 @@ public class WMLTools
 
     /**
      * Runs a wmlparser on the target resource
-     * 
+     *
      * @param resourcePath
      * @return null if there were errors or an ExternalToolInvoker instance
      */
@@ -97,8 +101,9 @@ public class WMLTools
         Paths paths = Preferences.getPaths( installName );
 
         if( ! ResourceUtils.isValidFilePath( resourcePath )
-                || ! checkWMLTool( paths, "wesnoth/wmlparser2.py" ) ) //$NON-NLS-1$
+                || ! checkWMLTool( paths, "wesnoth/wmlparser2.py" ) ) {
             return null;
+        }
 
         File wmlparserFile = new File( paths.getWMLToolsDir( )
                 + "/wesnoth/wmlparser2.py" ); //$NON-NLS-1$
@@ -134,7 +139,7 @@ public class WMLTools
 
     /**
      * Runs "wmllint" on the specified resource (directory/file)
-     * 
+     *
      * @param resourcePath
      *            the full path of the target where "wmllint" will be runned on
      * @param dryrun
@@ -153,7 +158,7 @@ public class WMLTools
 
     /**
      * Runs "wmllint" on the specified resource (directory/file)
-     * 
+     *
      * @param resourcePath
      *            the full path of the target where "wmllint" will be runned on
      * @param dryrun
@@ -173,8 +178,9 @@ public class WMLTools
         Paths paths = Preferences.getPaths( installName );
 
         if( ! ResourceUtils.isValidFilePath( resourcePath )
-                || ! checkWMLTool( paths, Tools.WMLLINT.toString( ) ) )
+                || ! checkWMLTool( paths, Tools.WMLLINT.toString( ) ) ) {
             return null;
+        }
 
         File wmllintFile = new File( paths.getWMLToolsDir( ) + "/wmllint" ); //$NON-NLS-1$
 
@@ -185,16 +191,24 @@ public class WMLTools
         int verboseLevel = Preferences
                 .getInt( Constants.P_WMLLINT_VERBOSE_LEVEL );
         for( int i = 1; i <= verboseLevel; i++ )
+         {
             arguments.add( "-v" ); //$NON-NLS-1$
+        }
 
         if( verboseLevel <= 0 && showProgress )
+         {
             arguments.add( "--progress" ); //$NON-NLS-1$
+        }
 
         if( dryrun || Preferences.getBool( Constants.P_WMLLINT_DRYRUN ) == true )
+         {
             arguments.add( "--dryrun" ); //$NON-NLS-1$
+        }
 
         if( Preferences.getBool( Constants.P_WMLLINT_SPELL_CHECK ) == false )
+         {
             arguments.add( "--nospellcheck" ); //$NON-NLS-1$
+        }
 
         // add default core directory
         arguments.add( paths.getCoreDir( ) );
@@ -205,7 +219,7 @@ public class WMLTools
 
     /**
      * Runs "wmlscope" on the specified resource (directory/file)
-     * 
+     *
      * @param resourcePath
      *            the full path of the target where "wmlindent" will be runned
      *            on
@@ -220,7 +234,7 @@ public class WMLTools
 
     /**
      * Runs "wmlscope" on the specified resource (directory/file)
-     * 
+     *
      * @param resourcePath
      *            the full path of the target where "wmlindent" will be runned
      *            on
@@ -237,8 +251,9 @@ public class WMLTools
         Paths paths = Preferences.getPaths( installName );
 
         if( ! ResourceUtils.isValidFilePath( resourcePath )
-                || ! checkWMLTool( paths, Tools.WMLSCOPE.toString( ) ) )
+                || ! checkWMLTool( paths, Tools.WMLSCOPE.toString( ) ) ) {
             return null;
+        }
 
         File wmlscopeFile = new File( paths.getWMLToolsDir( ) + "/wmlscope" ); //$NON-NLS-1$
 
@@ -253,10 +268,14 @@ public class WMLTools
             arguments.add( String.valueOf( verboseLevel ) );
         }
         else if( showProgress )
+         {
             arguments.add( "--progress" ); //$NON-NLS-1$
+        }
 
         if( Preferences.getBool( Constants.P_WMLSCOPE_COLLISIONS ) == true )
+         {
             arguments.add( "--collisions" ); //$NON-NLS-1$
+        }
 
         arguments.add( "--unchecked" ); //$NON-NLS-1$
         arguments.add( "--unresolved" ); //$NON-NLS-1$
@@ -270,7 +289,7 @@ public class WMLTools
 
     /**
      * Runs the specified WMLTools as a workspace job
-     * 
+     *
      * @param tool
      *            The tool to run.
      *            Currently only the following tools are supported: WMLLINT,
@@ -283,19 +302,22 @@ public class WMLTools
             final String targetPath )
     {
         // TODO: remove/rework this hackish method.
-        if( tool == Tools.WESNOTH_ADDON_MANAGER )
+        if( tool == Tools.WESNOTH_ADDON_MANAGER ) {
             return;
+        }
 
         IEditorReference[] editors = WorkspaceUtils.getWorkbenchWindow( )
                 .getPages( )[0].getEditorReferences( );
 
         for( IEditorReference editor: editors ) {
-            if( editor.isDirty( ) )
+            if( editor.isDirty( ) ) {
                 editor.getEditor( false ).doSave( null );
+            }
         }
 
-        if( targetPath == null && WorkspaceUtils.getSelectedFile( ) != null )
+        if( targetPath == null && WorkspaceUtils.getSelectedFile( ) != null ) {
             EditorUtils.openEditor( WorkspaceUtils.getSelectedFile( ), false );
+        }
         final String toolName = tool.toString( );
 
         WorkspaceJob job = new WorkspaceJob( Messages.WMLTools_28 + toolName ) {
@@ -326,8 +348,9 @@ public class WMLTools
                     String installName = Preferences.getDefaultInstallName( );
 
                     IFile selFile = WorkspaceUtils.getSelectedFile( );
-                    if( targetPath != null )
+                    if( targetPath != null ) {
                         location = targetPath;
+                    }
                     else {
                         if( selFile != null ) {
                             location = selFile.getLocation( ).toOSString( );
@@ -353,10 +376,11 @@ public class WMLTools
                                         installName, null, stdin, false, null,
                                         stdout );
                             }
-                            else
+                            else {
                                 toolInvoker = WMLTools.runWMLIndent(
                                         installName, location, null, false,
                                         stdout, stderr );
+                            }
                             break;
                         case WMLLINT:
                             toolInvoker = WMLTools.runWMLLint( installName,
@@ -377,10 +401,11 @@ public class WMLTools
                             int nr;
                             while( toolInvoker.readOutputLine( ) != null ) {
                                 nr = workReporter.incrementAndGet( );
-                                if( nr % 2 == 0 )
+                                if( nr % 2 == 0 ) {
                                     synchronized( monitor ) {
                                         monitor.worked( 1 );
                                     }
+                                }
                             }
                         }
                     } );
@@ -391,10 +416,11 @@ public class WMLTools
                             int nr;
                             while( toolInvoker.readErrorLine( ) != null ) {
                                 nr = workReporter.incrementAndGet( );
-                                if( nr % 2 == 0 )
+                                if( nr % 2 == 0 ) {
                                     synchronized( monitor ) {
                                         monitor.worked( 1 );
                                     }
+                                }
                             }
                         }
                     } );
@@ -408,16 +434,18 @@ public class WMLTools
                     }
 
                     if( tool == Tools.WMLSCOPE ) {
-                        if( resource != null )
+                        if( resource != null ) {
                             resource.deleteMarkers( Constants.MARKER_WMLSCOPE,
                                     false, IResource.DEPTH_INFINITE );
+                        }
                         parseAndAddMarkers( toolInvoker.getOutputContent( ),
                                 Constants.MARKER_WMLSCOPE );
                     }
                     else if( tool == Tools.WMLLINT ) {
-                        if( resource != null )
+                        if( resource != null ) {
                             resource.deleteMarkers( Constants.MARKER_WMLLINT,
                                     false, IResource.DEPTH_INFINITE );
+                        }
                         parseAndAddMarkers( toolInvoker.getOutputContent( ),
                                 Constants.MARKER_WMLLINT );
                     }
@@ -435,7 +463,7 @@ public class WMLTools
 
     /**
      * Runs the wesnoth addon manager for uploading the specified container
-     * 
+     *
      * @param containerPath
      *            The container to upload
      * @param stdout
@@ -447,8 +475,9 @@ public class WMLTools
     public static ExternalToolInvoker uploadWesnothAddon( String containerPath,
             OutputStream[] stdout, OutputStream[] stderr )
     {
-        if( ! ResourceUtils.isValidFilePath( containerPath ) )
+        if( ! ResourceUtils.isValidFilePath( containerPath ) ) {
             return null;
+        }
 
         return runWesnothAddonManager(
                 WesnothInstallsUtils.getInstallNameForResource( containerPath ),
@@ -460,7 +489,7 @@ public class WMLTools
 
     /**
      * Runs the wesnoth addon manager with the specified parameters
-     * 
+     *
      * @param installName
      *            The install of which to use the wesnoth addon manager from
      * @param password
@@ -481,8 +510,9 @@ public class WMLTools
             OutputStream[] stderr )
     {
         Paths paths = Preferences.getPaths( installName );
-        if( ! checkWMLTool( paths, Tools.WESNOTH_ADDON_MANAGER.toString( ) ) )
+        if( ! checkWMLTool( paths, Tools.WESNOTH_ADDON_MANAGER.toString( ) ) ) {
             return null;
+        }
 
         File wmllintFile = new File( paths.getWMLToolsDir( )
                 + "/wesnoth_addon_manager" ); //$NON-NLS-1$
@@ -495,7 +525,9 @@ public class WMLTools
         }
 
         if( Preferences.getBool( Constants.P_WAU_VERBOSE ) == true )
+         {
             arguments.add( "-V" ); //$NON-NLS-1$
+        }
 
         arguments.add( "-a" ); //$NON-NLS-1$
         arguments.add( Preferences.getString( Constants.P_WAU_ADDRESS ) );
@@ -519,16 +551,18 @@ public class WMLTools
         for( String line: lines ) {
             if( line.startsWith( "#" ) || //$NON-NLS-1$
                     line.matches( "^[\\t ]*$" ) || //$NON-NLS-1$
-                    line.startsWith( "wmllint:" ) ) //$NON-NLS-1$
+                    line.startsWith( "wmllint:" ) ) {
                 continue;
+            }
             if( line.startsWith( "%%" ) ) //$NON-NLS-1$
             {
                 startMD5 = ! startMD5;
                 continue;
             }
             // skip parsing collisions
-            if( startMD5 )
+            if( startMD5 ) {
                 continue;
+            }
 
             ResourceUtils.addMarkerForLine( line, markerType );
         }
@@ -537,7 +571,7 @@ public class WMLTools
     /**
      * Checks if the specified wmlTool is existing an can
      * be runned (python path is valid aswell)
-     * 
+     *
      * @param paths
      *            The paths for current install
      * @param wmlTool
@@ -579,7 +613,7 @@ public class WMLTools
     /**
      * Runs a specified python script with the specified arguments
      * (the call returns immediately)
-     * 
+     *
      * @param arguments
      *            the arguments of the "python" executable.
      *            The first argument should be the script file name
@@ -606,10 +640,12 @@ public class WMLTools
                 Preferences.getString( Constants.P_PYTHON_PATH ), arguments );
 
         pyscript.runTool( );
-        if( stderrMonitoring == true || ( stderr != null && stderr.length > 0 ) )
+        if( stderrMonitoring == true || ( stderr != null && stderr.length > 0 ) ) {
             pyscript.startErrorMonitor( stderr );
-        if( stdoutMonitoring == true || ( stdout != null && stdout.length > 0 ) )
+        }
+        if( stdoutMonitoring == true || ( stdout != null && stdout.length > 0 ) ) {
             pyscript.startOutputMonitor( stdout );
+        }
         if( stdin != null ) {
             try {
                 BufferedWriter stdinStream = new BufferedWriter(

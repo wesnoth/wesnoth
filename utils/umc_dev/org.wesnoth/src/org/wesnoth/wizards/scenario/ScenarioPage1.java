@@ -58,8 +58,9 @@ public class ScenarioPage1 extends WizardPageTemplate
             {
                 String[] difficulties = prefs.get( "difficulties" ).split( "," ); //$NON-NLS-1$ //$NON-NLS-2$
                 for( String diff: difficulties ) {
-                    if( diff.isEmpty( ) )
+                    if( diff.isEmpty( ) ) {
                         continue;
+                    }
 
                     Label label = new Label( container_, SWT.NONE );
                     label.setText( "    " ); //$NON-NLS-1$
@@ -88,8 +89,9 @@ public class ScenarioPage1 extends WizardPageTemplate
     {
         StringBuilder result = new StringBuilder( );
         for( Control control: container_.getChildren( ) ) {
-            if( ! ( control instanceof Text ) )
+            if( ! ( control instanceof Text ) ) {
                 continue;
+            }
             Text textBox = ( Text ) control;
             result.append( String.format( "#ifdef %s\n\tgold=%s\n#endif\n", //$NON-NLS-1$
                     textBox.getData( "diff" ).toString( ), textBox.getText( ) ) ); //$NON-NLS-1$

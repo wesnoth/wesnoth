@@ -75,7 +75,7 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
 
     /**
      * Returns true if the project needs a {@code build.xml} file.
-     * 
+     *
      * @return Returns true if the project needs a {@code build.xml} file.
      */
     public boolean needsBuildXML( )
@@ -88,7 +88,7 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
 
     /**
      * Returns the selected install
-     * 
+     *
      * @return
      */
     public String getSelectedInstallName( )
@@ -98,7 +98,7 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
 
     /**
      * Creates the project this page was setup with
-     * 
+     *
      * @return The newly created project's handle
      */
     public IProject createProject( IProgressMonitor monitor,
@@ -124,12 +124,14 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
 
         for( Pair< String, String > file: files ) {
             if( file.Second.equals( "pbl" ) && //$NON-NLS-1$
-                    ! generatePBL )
+                    ! generatePBL ) {
                 continue;
+            }
 
             if( file.Second.equals( "build_xml" ) && //$NON-NLS-1$
-                    ! needsBuildXML( ) )
+                    ! needsBuildXML( ) ) {
                 continue;
+            }
 
             ResourceUtils.createFile(
                     currentProject,

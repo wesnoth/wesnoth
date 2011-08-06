@@ -24,7 +24,7 @@ public abstract class WorkbenchAdvisorHack extends WorkbenchAdvisor
      * Declares all IDE-specific workbench images. This includes both "shared"
      * images (named in {@link IDE.SharedImages}) and internal images (named in
      * {@link org.eclipse.ui.internal.ide.IDEInternalWorkbenchImages}).
-     * 
+     *
      * @see org.eclipse.ui.internal.ide.IDEWorkbenchAdvisor#declareImage
      */
     protected void declareWorkbenchImages( )
@@ -208,7 +208,7 @@ public abstract class WorkbenchAdvisorHack extends WorkbenchAdvisor
 
     /**
      * Declares an IDE-specific workbench image.
-     * 
+     *
      * @param symbolicName
      *            the symbolic name of the image
      * @param path

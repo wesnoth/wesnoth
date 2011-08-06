@@ -33,8 +33,9 @@ public class WizardGenerator extends WizardTemplate
 
         tagName_ = tagName;
         indent_ = indent;
-        if( tagContent == null )
+        if( tagContent == null ) {
             addPage( new WizardGeneratorPage404( tagName ) );
+        }
         else {
             // keys section
             List< WMLKey > keys = tagContent.getWMLKeys( );
@@ -92,12 +93,15 @@ public class WizardGenerator extends WizardTemplate
         StringBuilder keys = new StringBuilder( );
         StringBuilder tags = new StringBuilder( );
         for( IWizardPage page: getPages( ) ) {
-            if( page instanceof WizardGeneratorPageKey )
+            if( page instanceof WizardGeneratorPageKey ) {
                 keys.append( ( ( WizardGeneratorPageKey ) page ).getContent( ) );
-            else if( page instanceof WizardGeneratorPageTag )
+            }
+            else if( page instanceof WizardGeneratorPageTag ) {
                 tags.append( ( ( WizardGeneratorPageTag ) page ).getContent( ) );
-            else
+            }
+            else {
                 ; // skip 404 pages
+            }
         }
         result += ( keys.toString( ) + tags.toString( ) );
         result += ( StringUtils.multiples( "\t", indent_ ) + "[/" + tagName_ + "]\n" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

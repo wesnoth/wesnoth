@@ -96,8 +96,9 @@ public class TemplateProvider
             // read the main "templatesIndex.txt" file
             while( ( line = reader.readLine( ) ) != null ) {
                 // comment
-                if( line.startsWith( "#" ) || line.isEmpty( ) ) //$NON-NLS-1$
+                if( line.startsWith( "#" ) || line.isEmpty( ) ) {
                     continue;
+                }
 
                 // 0 - template name | 1 - template file
                 String[] tokensStrings = line.split( " " ); //$NON-NLS-1$
@@ -130,7 +131,7 @@ public class TemplateProvider
 
     /**
      * Gets a string of the processed specified template
-     * 
+     *
      * @param templateName
      *            The name of the template to process
      * @param parameters
@@ -142,8 +143,9 @@ public class TemplateProvider
     {
         String tmpTemplate = TemplateProvider.getInstance( ).getTemplate(
                 templateName );
-        if( tmpTemplate == null || parameters == null )
+        if( tmpTemplate == null || parameters == null ) {
             return null;
+        }
 
         StringBuilder result = new StringBuilder( );
         String[] template = StringUtils.getLines( tmpTemplate );
@@ -177,14 +179,16 @@ public class TemplateProvider
             }
 
             if( skipLine == false )
+             {
                 result.append( template[i] + "\n" ); //$NON-NLS-1$
+            }
         }
         return result.toString( );
     }
 
     /**
      * Returns the template with the specified name or empty string if none
-     * 
+     *
      * @param name
      * @return
      */
@@ -192,13 +196,15 @@ public class TemplateProvider
     {
         String result = templates_.get( name );
         if( result == null )
+         {
             return ""; //$NON-NLS-1$
+        }
         return result;
     }
 
     /**
      * Gets the Content Assist Config list for the specified type
-     * 
+     *
      * @param type
      *            The type of the CAC
      * @return A list of String values. The returned list is read-only
@@ -207,8 +213,9 @@ public class TemplateProvider
     {
         List< String > result = cacs_.get( type );
 
-        if( result == null )
+        if( result == null ) {
             return new ArrayList< String >( );
+        }
 
         return result;
     }
@@ -218,7 +225,7 @@ public class TemplateProvider
      * value is a list of <String, String> that consist of <Filename, Template
      * used for file contents> and the second return value is a list of String
      * with directories names
-     * 
+     *
      * @param structureTemplate
      *            the template
      * @return
@@ -230,8 +237,9 @@ public class TemplateProvider
         List< String > dirs = new ArrayList< String >( );
 
         for( String line: StringUtils.getLines( structureTemplate ) ) {
-            if( StringUtils.startsWith( line, "#" ) ) //$NON-NLS-1$
+            if( StringUtils.startsWith( line, "#" ) ) {
                 continue;
+            }
 
             if( line.contains( ":" ) ) // file with template //$NON-NLS-1$
             {

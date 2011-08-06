@@ -36,7 +36,7 @@ public class SchemaParser
 
     /**
      * Returns a SchemaParser instance based on the specified install
-     * 
+     *
      * @param installName
      *            The name of the install
      * @return A SchemaParser singleton instance
@@ -45,7 +45,9 @@ public class SchemaParser
     {
         // null not allowed
         if( installName == null )
+         {
             installName = ""; //$NON-NLS-1$
+        }
 
         SchemaParser parser = parsers_.get( installName );
         if( parser == null ) {
@@ -59,7 +61,7 @@ public class SchemaParser
 
     /**
      * Reloads all currently stored schemas
-     * 
+     *
      * @param force
      *            True to force reloading schemas
      */
@@ -86,11 +88,11 @@ public class SchemaParser
 
     /**
      * Parses the schema
-     * 
+     *
      * @param installName
      *            The install to use. It will get the default schema
      *            path based on that
-     * 
+     *
      * @param force
      *            True to force parsing the schema, skipping the existing cache
      */
@@ -102,7 +104,7 @@ public class SchemaParser
 
     /**
      * Parses the schema
-     * 
+     *
      * @param force
      *            True to force parsing the schema, skipping the existing cache
      * @param schemaPath
@@ -133,8 +135,9 @@ public class SchemaParser
         for( int index = 0; index < lines.length; index++ ) {
             String line = lines[index];
             // skip comments and empty lines
-            if( StringUtils.startsWith( line, "#" ) || line.matches( "^[\t ]*$" ) ) //$NON-NLS-1$ //$NON-NLS-2$
+            if( StringUtils.startsWith( line, "#" ) || line.matches( "^[\t ]*$" ) ) {
                 continue;
+            }
 
             if( StringUtils.startsWith( line, "[" ) ) //$NON-NLS-1$
             {
@@ -144,17 +147,19 @@ public class SchemaParser
                     // propagate the 'needsexpanding' property to upper levels
                     boolean expand = false;
                     if( ! tagStack.isEmpty( )
-                            && tags_.containsKey( tagStack.peek( ) ) )
+                            && tags_.containsKey( tagStack.peek( ) ) ) {
                         expand = tags_.get( tagStack.peek( ) )
                                 .is_NeedingExpansion( );
+                    }
 
                     tagStack.pop( );
 
                     if( ! tagStack.isEmpty( )
                             && tags_.containsKey( tagStack.peek( ) )
-                            && expand == true )
+                            && expand == true ) {
                         tags_.get( tagStack.peek( ) ).set_NeedingExpansion(
                                 expand );
+                    }
                 }
                 // opening tag
                 else {
@@ -241,9 +246,11 @@ public class SchemaParser
                 }
                 else {
                     String tmpLine = line.trim( );
-                    if( line.contains( "#" ) ) //$NON-NLS-1$
+                    if( line.contains( "#" ) )
+                     {
                         tmpLine = line
                                 .substring( 0, line.lastIndexOf( "#" ) ).trim( ); //$NON-NLS-1$
+                    }
                     String[] tokens = tmpLine.split( "=" ); //$NON-NLS-1$
 
                     if( tokens.length != 2 ) {
@@ -279,9 +286,11 @@ public class SchemaParser
                         }
                         else {
                             if( primitives_.get( value[1] ) == null )
+                             {
                                 Logger.getInstance( )
                                         .logError(
                                                 "Undefined primitive type in schema.cfg for: " + value[1] ); //$NON-NLS-1$
+                            }
 
                             currentTag.getExpressions( ).add(
                                     WmlFactory2.eINSTANCE.createWMLKey(
@@ -332,7 +341,7 @@ public class SchemaParser
 
     /**
      * Sorts all tag's children by using the cardinality comparator
-     * 
+     *
      * @param tag
      *            The tag to whom to sort the children
      */
@@ -366,20 +375,24 @@ public class SchemaParser
      * optional = ?
      * repeated = *
      * forbidden = -
-     * 
+     *
      * @param value
      *            The value the parse
      */
     public char getCardinality( String value )
     {
-        if( value.equals( "required" ) ) //$NON-NLS-1$
+        if( value.equals( "required" ) ) {
             return '1';
-        else if( value.equals( "optional" ) ) //$NON-NLS-1$
+        }
+        else if( value.equals( "optional" ) ) {
             return '?';
-        else if( value.equals( "repeated" ) ) //$NON-NLS-1$
+        }
+        else if( value.equals( "repeated" ) ) {
             return '*';
-        else if( value.equals( "forbidden" ) ) //$NON-NLS-1$
+        }
+        else if( value.equals( "forbidden" ) ) {
             return '-';
+        }
         return 'a';
     }
 
@@ -398,10 +411,12 @@ public class SchemaParser
             char o1_card = o1.get_Cardinality( );
             char o2_card = o2.get_Cardinality( );
 
-            if( o1_card == '1' && o2_card != '1' )
+            if( o1_card == '1' && o2_card != '1' ) {
                 return - 1;
-            else if( o2_card == '1' && o1_card != '1' )
+            }
+            else if( o2_card == '1' && o1_card != '1' ) {
                 return 1;
+            }
 
             return 0;
         }

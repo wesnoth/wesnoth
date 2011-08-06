@@ -146,8 +146,9 @@ public class ScenarioNewWizard extends WizardTemplate
         InputStream stream = getScenarioStream( container );
 
         try {
-            if( stream == null )
+            if( stream == null ) {
                 return;
+            }
 
             if( file.exists( ) ) {
                 file.setContents( stream, true, true, monitor );
@@ -157,7 +158,7 @@ public class ScenarioNewWizard extends WizardTemplate
             }
 
             stream.close( );
-            container.refreshLocal( IContainer.DEPTH_INFINITE,
+            container.refreshLocal( IResource.DEPTH_INFINITE,
                     new NullProgressMonitor( ) );
         } catch( IOException e ) {
             Logger.getInstance( ).logException( e );
@@ -183,7 +184,7 @@ public class ScenarioNewWizard extends WizardTemplate
 
     /**
      * Returns the scenario file contents as an InputStream
-     * 
+     *
      * @throws Exception
      */
     private InputStream getScenarioStream( IContainer container )
@@ -224,7 +225,9 @@ public class ScenarioNewWizard extends WizardTemplate
         if( page1_ != null ) {
             startingGold = page1_.getStartingGoldByDifficulties( );
             if( startingGold == null )
+             {
                 throw new Exception( "incorrect arguments" ); //$NON-NLS-1$
+            }
         }
         params.add( new ReplaceableParameter( "$$starting_gold", startingGold ) ); //$NON-NLS-1$
 

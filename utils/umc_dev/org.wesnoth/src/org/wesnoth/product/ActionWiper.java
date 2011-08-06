@@ -37,6 +37,7 @@ public class ActionWiper implements IStartup, IPerspectiveListener
                                                  // "org.eclipse.update.ui.softwareUpdates"
                                                  };
 
+    @Override
     public void earlyStartup( )
     {
         IWorkbenchWindow[] windows = PlatformUI.getWorkbench( )
@@ -53,6 +54,7 @@ public class ActionWiper implements IStartup, IPerspectiveListener
     private void wipeActions( final IWorkbenchPage page )
     {
         Display.getDefault( ).syncExec( new Runnable( ) {
+            @Override
             public void run( )
             {
                 // remove the run menu
@@ -70,12 +72,14 @@ public class ActionWiper implements IStartup, IPerspectiveListener
         } );
     }
 
+    @Override
     public void perspectiveActivated( IWorkbenchPage page,
             IPerspectiveDescriptor perspective )
     {
         wipeActions( page );
     }
 
+    @Override
     public void perspectiveChanged( IWorkbenchPage page,
             IPerspectiveDescriptor perspective, String changeId )
     {

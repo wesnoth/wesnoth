@@ -11,7 +11,7 @@ package org.wesnoth.preferences;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 
@@ -109,22 +109,23 @@ public class Preferences extends AbstractPreferenceInitializer
 
     /**
      * Gets the install preference prefix for the specified install name.
-     * 
+     *
      * @param installName
      *            The name of the install. If the parameter is null,
      *            the default install prefix is returned
      */
     public static String getInstallPrefix( String installName )
     {
-        if( StringUtils.isNullOrEmpty( installName ) )
+        if( StringUtils.isNullOrEmpty( installName ) ) {
             installName = getDefaultInstallName( );
+        }
 
         return "inst_" + installName + "_"; //$NON-NLS-1$  //$NON-NLS-2$
     }
 
     /**
      * Returns the name of the default install
-     * 
+     *
      * @return Returns the name of the default install
      */
     public static String getDefaultInstallName( )
@@ -134,7 +135,7 @@ public class Preferences extends AbstractPreferenceInitializer
 
     /**
      * Sets the default install name
-     * 
+     *
      * @param newInstallName
      *            The new install name
      */
@@ -146,7 +147,7 @@ public class Preferences extends AbstractPreferenceInitializer
 
     /**
      * Returns a new Paths object based on the specified install name
-     * 
+     *
      * @param installName
      *            The install name used for the paths
      * @return A new Paths object
@@ -155,7 +156,9 @@ public class Preferences extends AbstractPreferenceInitializer
     {
         // no null allowed -> fallback to ""
         if( installName == null )
+         {
             installName = ""; //$NON-NLS-1$
+        }
 
         Paths paths = paths_.get( installName );
         if( paths == null ) {
@@ -183,7 +186,7 @@ public class Preferences extends AbstractPreferenceInitializer
 
         /**
          * Returns the install name associated with this instance
-         * 
+         *
          * @return A string representing the install name
          */
         public String getInstallName( )
@@ -193,7 +196,7 @@ public class Preferences extends AbstractPreferenceInitializer
 
         /**
          * Returns the addons directory
-         * 
+         *
          * @return Returns the addons directory
          */
         public String getAddonsDir( )
@@ -203,7 +206,7 @@ public class Preferences extends AbstractPreferenceInitializer
 
         /**
          * Returns the data user directory
-         * 
+         *
          * @return Returns the data user directory
          */
         public String getUserDataDir( )
@@ -213,7 +216,7 @@ public class Preferences extends AbstractPreferenceInitializer
 
         /**
          * Returns the campaign directory
-         * 
+         *
          * @return Returns the campaign directory
          */
         public String getCampaignDir( )
@@ -223,7 +226,7 @@ public class Preferences extends AbstractPreferenceInitializer
 
         /**
          * Returns the 'data/core' directory
-         * 
+         *
          * @return Returns the 'data/core' directory
          */
         public String getCoreDir( )
@@ -233,7 +236,7 @@ public class Preferences extends AbstractPreferenceInitializer
 
         /**
          * Returns the <b>schema.cfg</b> file path
-         * 
+         *
          * @return Returns the schema.cfg file path
          */
         public String getSchemaPath( )
@@ -243,42 +246,42 @@ public class Preferences extends AbstractPreferenceInitializer
 
         /**
          * Returns the user's directory
-         * 
+         *
          * @return Returns the user's directory
          */
         public String getUserDir( )
         {
             return getString( installPrefix_ + Constants.P_WESNOTH_USER_DIR )
-                    .replace( '\\', '/' ) + Path.SEPARATOR;
+                    .replace( '\\', '/' ) + IPath.SEPARATOR;
         }
 
         /**
          * Returns the working directory that contains the
          * <b>data</b> folder
-         * 
+         *
          * @return Returns the working directory
          */
         public String getWorkingDir( )
         {
             return getString( installPrefix_ + Constants.P_WESNOTH_WORKING_DIR )
-                    .replace( '\\', '/' ) + Path.SEPARATOR;
+                    .replace( '\\', '/' ) + IPath.SEPARATOR;
         }
 
         /**
          * Returns the directory that contains the wml tools
          * ( wmlscope, wmllint, wmlindent, wesnoth_addons_manager, etc)
-         * 
+         *
          * @return Returns the directory that contains the wml tools
          */
         public String getWMLToolsDir( )
         {
             return getString( installPrefix_ + Constants.P_WESNOTH_WMLTOOLS_DIR )
-                    .replace( '\\', '/' ) + Path.SEPARATOR;
+                    .replace( '\\', '/' ) + IPath.SEPARATOR;
         }
 
         /**
          * Returns the path to the wesnoth executable
-         * 
+         *
          * @return Returns the path to the wesnoth executable
          */
         public String getWesnothExecutablePath( )

@@ -33,7 +33,7 @@ public class EditorUtils
 {
     /**
      * Writes the specified content in current opened editor
-     * 
+     *
      * @param content
      *            the string content to write
      */
@@ -44,7 +44,7 @@ public class EditorUtils
 
     /**
      * Writes the specified content in the specified editor
-     * 
+     *
      * @param content
      *            the string content to write
      */
@@ -60,7 +60,7 @@ public class EditorUtils
 
     /**
      * Replaces the text in current opened editor with the specified one
-     * 
+     *
      * @param content
      *            the string to replace the current content
      */
@@ -71,15 +71,16 @@ public class EditorUtils
 
     /**
      * Replaces the text in the specified editor with the specified one
-     * 
+     *
      * @param content
      *            the string to replace the current content
      */
     public static void replaceEditorText( IEditorPart targetEditor,
             String content )
     {
-        if( targetEditor == null )
+        if( targetEditor == null ) {
             return;
+        }
         try {
             getEditorDocument( targetEditor ).replace( 0,
                     getEditorDocument( targetEditor ).getLength( ), content );
@@ -89,7 +90,7 @@ public class EditorUtils
 
     /**
      * Gets the current opened editor's document
-     * 
+     *
      * @return
      */
     public static IDocument getEditorDocument( )
@@ -99,13 +100,14 @@ public class EditorUtils
 
     /**
      * Gets the specified editor's document
-     * 
+     *
      * @return
      */
     public static IDocument getEditorDocument( IEditorPart targetEditor )
     {
-        if( targetEditor == null )
+        if( targetEditor == null ) {
             return null;
+        }
 
         IDocumentProvider dp = getTextEditor( targetEditor )
                 .getDocumentProvider( );
@@ -114,7 +116,7 @@ public class EditorUtils
 
     /**
      * Gets the text editor of the current opened editor
-     * 
+     *
      * @return
      */
     public static ITextEditor getTextEditor( )
@@ -124,23 +126,25 @@ public class EditorUtils
 
     /**
      * Gets the text editor of the specified editor
-     * 
+     *
      * @return
      */
     public static ITextEditor getTextEditor( IEditorPart targetEditor )
     {
-        if( targetEditor == null )
+        if( targetEditor == null ) {
             return null;
+        }
 
         IEditorPart part = targetEditor;
-        if( ! ( part instanceof AbstractTextEditor ) )
+        if( ! ( part instanceof AbstractTextEditor ) ) {
             return null;
+        }
         return ( ITextEditor ) part;
     }
 
     /**
      * Gets the editor part of the current edited file
-     * 
+     *
      * @return
      */
     public static IEditorPart getEditedFile( )
@@ -151,7 +155,7 @@ public class EditorUtils
 
     /**
      * Opens the editor on the specified file
-     * 
+     *
      * @param file
      *            The file to open
      * @param activatePage
@@ -171,7 +175,7 @@ public class EditorUtils
 
     /**
      * Opens the editor on the specified file (will use IFileStore)
-     * 
+     *
      * @param file
      *            The file to open
      */
@@ -183,7 +187,7 @@ public class EditorUtils
 
     /**
      * Opens the editor on the specified file (will use IFileStore)
-     * 
+     *
      * @param file
      *            The file to open
      */

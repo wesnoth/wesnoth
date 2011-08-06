@@ -29,14 +29,17 @@ public class WesnothProjectsExplorer extends CommonNavigator implements
     @SuppressWarnings( "rawtypes" )
     public Object getAdapter( Class adapter )
     {
-        if( adapter.equals( IPersistableElement.class ) )
+        if( adapter.equals( IPersistableElement.class ) ) {
             return this;
-        if( adapter.equals( IWorkbenchAdapter.class ) )
+        }
+        if( adapter.equals( IWorkbenchAdapter.class ) ) {
             return ResourcesPlugin.getWorkspace( ).getRoot( )
                     .getAdapter( adapter );
+        }
         return null;
     }
 
+    @Override
     public String getFactoryId( )
     {
         return this.getClass( ).getCanonicalName( );
@@ -51,10 +54,12 @@ public class WesnothProjectsExplorer extends CommonNavigator implements
     @Override
     public void saveState( IMemento aMemento )
     {
-        if( getCommonViewer( ) != null )
+        if( getCommonViewer( ) != null ) {
             super.saveState( aMemento );
+        }
     }
 
+    @Override
     public IAdaptable createElement( IMemento memento )
     {
         return ResourcesPlugin.getWorkspace( ).getRoot( );

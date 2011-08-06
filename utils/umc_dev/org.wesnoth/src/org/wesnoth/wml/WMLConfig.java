@@ -23,7 +23,7 @@ public class WMLConfig implements Serializable
     public String                 ScenarioId;
     /**
      * True if there was a [scenario] tag present in the file.
-     * 
+     *
      * However The {@link WMLConfig#ScenarioId} may be null
      */
     public boolean                IsScenario;
@@ -31,7 +31,7 @@ public class WMLConfig implements Serializable
     public String                 CampaignId;
     /**
      * True if there was a [campaign] tag present in the file.
-     * 
+     *
      * However The {@link WMLConfig#CampaignId} may be null
      */
     public boolean                IsCampaign;
@@ -52,7 +52,7 @@ public class WMLConfig implements Serializable
 
     /**
      * Returns the parsed WML Tags from this config file
-     * 
+     *
      * @return A list of Tags
      */
     public Map< String, WMLTag > getWMLTags( )

@@ -62,8 +62,9 @@ public class WmlFactory2Impl extends WmlFactoryImpl implements WmlFactory2
             // add the enums values
             String[] res = dataType.substring( 4 ).split( "," );
             for( String string: res ) {
-                if( string.length( ) == 0 )
+                if( string.length( ) == 0 ) {
                     continue;
+                }
 
                 WMLValue value = createWMLValue( );
                 value.setValue( string );

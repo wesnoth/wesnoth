@@ -71,8 +71,9 @@ public class DefinesSAXHandler extends DefaultHandler
             throws SAXException
     {
         super.characters( ch, start, length );
-        if( stack_.isEmpty( ) )
+        if( stack_.isEmpty( ) ) {
             return;
+        }
         String element = stack_.peek( );
 
         if( element.equals( "name" ) ) //$NON-NLS-1$
@@ -119,7 +120,7 @@ public class DefinesSAXHandler extends DefaultHandler
 
     /**
      * Gets the map of defines parsed
-     * 
+     *
      * @return
      */
     public Map< String, Define > getDefines( )

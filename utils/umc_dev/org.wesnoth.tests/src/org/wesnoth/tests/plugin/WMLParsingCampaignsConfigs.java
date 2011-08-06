@@ -55,8 +55,9 @@ public class WMLParsingCampaignsConfigs extends WMLTests
         parsedCampaignIds_ = new ArrayList< String >( );
         parsedScenarioIds_ = new ArrayList< String >( );
 
-        for( int i = data.length - 1; i > 1; --i )
+        for( int i = data.length - 1; i > 1; --i ) {
             scenarioIds_.add( data[i] );
+        }
 
         // gather all info
         testPath( dataPath_ + "/campaigns/" + campaignDir_ + "/" );
@@ -67,8 +68,9 @@ public class WMLParsingCampaignsConfigs extends WMLTests
     public void testFile( String path )
     {
         // just config files
-        if( ! path.endsWith( ".cfg" ) )
+        if( ! path.endsWith( ".cfg" ) ) {
             return;
+        }
 
         try {
             SimpleWMLParser wmlParser = new SimpleWMLParser( new File( path ),
@@ -76,11 +78,13 @@ public class WMLParsingCampaignsConfigs extends WMLTests
             wmlParser.parse( );
             WMLConfig config = wmlParser.getParsedConfig( );
 
-            if( ! StringUtils.isNullOrEmpty( config.ScenarioId ) )
+            if( ! StringUtils.isNullOrEmpty( config.ScenarioId ) ) {
                 parsedScenarioIds_.add( config.ScenarioId );
+            }
 
-            if( ! StringUtils.isNullOrEmpty( config.CampaignId ) )
+            if( ! StringUtils.isNullOrEmpty( config.CampaignId ) ) {
                 parsedCampaignIds_.add( config.CampaignId );
+            }
 
         } catch( FileNotFoundException e ) {
             e.printStackTrace( );

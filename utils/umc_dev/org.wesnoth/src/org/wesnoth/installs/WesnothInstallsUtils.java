@@ -31,7 +31,7 @@ public class WesnothInstallsUtils
     /**
      * Returns a list of the current wesnoth installations available
      * in the preferences store
-     * 
+     *
      * @return A list with Wesnoth Installs
      */
     public static List< WesnothInstall > getInstalls( )
@@ -41,8 +41,9 @@ public class WesnothInstallsUtils
         String[] installs = Preferences.getString(
                 Constants.P_INST_INSTALL_LIST ).split( ";" ); //$NON-NLS-1$
         for( String str: installs ) {
-            if( str.isEmpty( ) )
+            if( str.isEmpty( ) ) {
                 continue;
+            }
 
             String[] tokens = str.split( ":" ); //$NON-NLS-1$
 
@@ -60,7 +61,7 @@ public class WesnothInstallsUtils
 
     /**
      * Sets the specified Installs list in the preferences store
-     * 
+     *
      * @param installsList
      *            The list to replace / set the installs list
      */
@@ -70,7 +71,9 @@ public class WesnothInstallsUtils
         StringBuilder installs = new StringBuilder( );
         for( WesnothInstall install: installsList ) {
             if( installs.length( ) > 0 )
+             {
                 installs.append( ";" ); //$NON-NLS-1$
+            }
 
             installs.append( install.getName( ) );
             installs.append( ":" ); //$NON-NLS-1$
@@ -82,15 +85,16 @@ public class WesnothInstallsUtils
 
     /**
      * Returns the install name for the specified resource
-     * 
+     *
      * @param resourcePath
      *            The path to the resource
      * @return The install name for the resource
      */
     public static String getInstallNameForResource( String resourcePath )
     {
-        if( StringUtils.isNullOrEmpty( resourcePath ) )
+        if( StringUtils.isNullOrEmpty( resourcePath ) ) {
             return "";
+        }
 
         return getInstallNameForResource( ResourcesPlugin.getWorkspace( )
                 .getRoot( ).findMember( resourcePath ) );
@@ -98,7 +102,7 @@ public class WesnothInstallsUtils
 
     /**
      * Returns the install name for the specified resource
-     * 
+     *
      * @param resource
      *            The resource
      * @return The install name for the resource
@@ -106,7 +110,9 @@ public class WesnothInstallsUtils
     public static String getInstallNameForResource( IResource resource )
     {
         if( resource == null || ! resource.exists( ) )
+         {
             return ""; //$NON-NLS-1$
+        }
 
         return ProjectUtils.getCacheForProject( resource.getProject( ) )
                 .getInstallName( );
@@ -114,7 +120,7 @@ public class WesnothInstallsUtils
 
     /**
      * Sets the install name for the specified resource
-     * 
+     *
      * @param resource
      *            The resource to set the install to
      * @param newInstallName
@@ -123,8 +129,9 @@ public class WesnothInstallsUtils
     public static void setInstallNameForResource( IResource resource,
             String newInstallName )
     {
-        if( resource == null )
+        if( resource == null ) {
             return;
+        }
 
         ProjectUtils.getCacheForProject( resource.getProject( ) )
                 .setInstallName( newInstallName );
@@ -133,7 +140,7 @@ public class WesnothInstallsUtils
     /**
      * Fills the specified combo box with all the current installs
      * and selects the default or the first ( if no default exists )
-     * 
+     *
      * @param comboBox
      *            The combobox to fill
      */
@@ -148,21 +155,23 @@ public class WesnothInstallsUtils
             comboBox.add( install.getName( ) );
 
             // select the default
-            if( install.getName( ).equals( defaultInstallName ) )
+            if( install.getName( ).equals( defaultInstallName ) ) {
                 comboBox.select( comboBox.getItemCount( ) - 1 );
+            }
         }
 
         // select the first if there is no other selected
         if( comboBox.getSelectionIndex( ) == - 1
-                && comboBox.getItemCount( ) > 0 )
+                && comboBox.getItemCount( ) > 0 ) {
             comboBox.select( 0 );
+        }
     }
 
     /**
      * Checks whether the Wesnoth Installation is properly setup
      * for the specified resource. If it is not, it will guide the user
      * through selecting a proper install (if any).
-     * 
+     *
      * @param resource
      *            True if the installation is valid, false
      *            otherwise
@@ -175,15 +184,18 @@ public class WesnothInstallsUtils
         if( ! WorkspaceUtils.checkPathsAreSet( installName, false ) ) {
 
             // no defaut - nothing to do.
-            if( Preferences.getDefaultInstallName( ).isEmpty( ) )
+            if( Preferences.getDefaultInstallName( ).isEmpty( ) ) {
                 return false;
+            }
 
             if( GUIUtils
                     .showMessageBox( String.format(
                             Messages.WesnothInstallsUtils_1, resource
                                     .getProject( ).getName( ) ),
                             SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO )
+             {
                 return false; // no hope :(
+            }
 
             // fallback to default
             installName = Preferences.getDefaultInstallName( );

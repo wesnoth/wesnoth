@@ -18,7 +18,7 @@ public class RegexStringFieldEditor extends StringFieldEditor
 
     /**
      * An regex matcher string field editor.
-     * 
+     *
      * @param regex
      *            The regex to match this textbox's string
      * @param errorMessage
@@ -36,8 +36,9 @@ public class RegexStringFieldEditor extends StringFieldEditor
     @Override
     protected boolean checkState( )
     {
-        if( regex_ == null )
+        if( regex_ == null ) {
             return true;
+        }
         boolean matches = getTextControl( ).getText( ).matches( regex_ );
         setErrorMessage( matches == false ? errorMessage_: null );
         showErrorMessage( );

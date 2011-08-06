@@ -62,7 +62,7 @@ public class PreprocessorUtils
      * if the file was modified since last time checked.
      * The target directory is the temporary directory + files's path relative
      * to project
-     * 
+     *
      * @param file
      *            the file to process
      * @param defines
@@ -81,7 +81,7 @@ public class PreprocessorUtils
      * if the file was modified since last time checked.
      * The target directory is the temporary directory + files's path relative
      * to project
-     * 
+     *
      * @param file
      *            the file to process
      * @param macrosFile
@@ -101,7 +101,7 @@ public class PreprocessorUtils
     /**
      * preprocesses a file using the wesnoth's executable, only
      * if the file was modified since last time checked.
-     * 
+     *
      * @param file
      *            the file to process
      * @param targetDirectory
@@ -159,8 +159,9 @@ public class PreprocessorUtils
             }
 
             if( Preferences.getBool( Constants.P_NO_TERRAIN_GFX ) ) {
-                if( defines == null )
+                if( defines == null ) {
                     defines = new ArrayList< String >( );
+                }
                 defines.add( "NO_TERRAIN_GFX" ); //$NON-NLS-1$
             }
 
@@ -177,7 +178,9 @@ public class PreprocessorUtils
                 for( Iterator< String > itor = defines.iterator( ); itor
                         .hasNext( ); ) {
                     if( definesArg.length( ) > 0 )
+                     {
                         definesArg.append( "," ); //$NON-NLS-1$
+                    }
 
                     definesArg.append( itor.next( ) );
                 }
@@ -189,8 +192,9 @@ public class PreprocessorUtils
             ExternalToolInvoker wesnoth = new ExternalToolInvoker(
                     paths.getWesnothExecutablePath( ), arguments );
             wesnoth.runTool( );
-            if( waitForIt )
+            if( waitForIt ) {
                 return wesnoth.waitForTool( );
+            }
             return 0;
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
@@ -200,7 +204,7 @@ public class PreprocessorUtils
 
     /**
      * Opens the preprocessed version of the specified file
-     * 
+     *
      * @param file
      *            the file to show preprocessed output
      * @param openPlain
@@ -220,7 +224,7 @@ public class PreprocessorUtils
 
     /**
      * Returns the path of the preprocessed file of the specified file
-     * 
+     *
      * @param file
      *            The file whom preprocessed file to get
      * @param plain
@@ -237,14 +241,15 @@ public class PreprocessorUtils
                 new Path( getTemporaryLocation( file ) ) );
         preprocFile = preprocFile.getChild( file.getName( )
                 + ( plain == true ? ".plain": "" ) ); //$NON-NLS-1$ //$NON-NLS-2$
-        if( create && ! preprocFile.fetchInfo( ).exists( ) )
+        if( create && ! preprocFile.fetchInfo( ).exists( ) ) {
             preprocessFile( file, null );
+        }
         return preprocFile;
     }
 
     /**
      * Gets the temporary location where that file should be preprocessed
-     * 
+     *
      * @param file
      * @return
      */
@@ -261,9 +266,9 @@ public class PreprocessorUtils
     /**
      * Gets the location where the '_MACROS_.cfg' file is for the
      * specified resource.
-     * 
+     *
      * Currently we store just a defines file per project.
-     * 
+     *
      * @param resource
      *            The resource to get the location for
      * @return A string that points to the macros file.
@@ -312,8 +317,9 @@ public class PreprocessorUtils
 
         try {
             // ensure the creation of a valid file if it doesn't exist
-            if( new File( filename ).exists( ) == false )
+            if( new File( filename ).exists( ) == false ) {
                 settings.save( filename );
+            }
 
             settings.load( filename );
             String[] timestamps = settings.getArray( "timestamps" ); //$NON-NLS-1$
@@ -332,7 +338,7 @@ public class PreprocessorUtils
 
     /**
      * Clears all timestamps cached for files that are located in that path
-     * 
+     *
      * @param path
      *            The path to match the files to clear their timestamp
      */
@@ -343,8 +349,9 @@ public class PreprocessorUtils
 
         while( itor.hasNext( ) ) {
             Entry< String, Long > entry = itor.next( );
-            if( entry.getKey( ).startsWith( path ) )
+            if( entry.getKey( ).startsWith( path ) ) {
                 itor.remove( );
+            }
         }
 
         saveTimestamps( );

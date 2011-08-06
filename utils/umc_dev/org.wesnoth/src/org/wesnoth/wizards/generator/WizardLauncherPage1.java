@@ -46,8 +46,9 @@ public class WizardLauncherPage1 extends WizardPageTemplate
                 .getInstance( ).getTemplate( "wizards" ) ); //$NON-NLS-1$
 
         for( String line: templates ) {
-            if( StringUtils.startsWith( line, "#" ) ) //$NON-NLS-1$
+            if( StringUtils.startsWith( line, "#" ) ) {
                 continue;
+            }
             String[] tokens = line.split( ":" ); //$NON-NLS-1$
             if( tokens.length != 2 ) {
                 Logger.getInstance( ).logError(
@@ -86,14 +87,16 @@ public class WizardLauncherPage1 extends WizardPageTemplate
         cmbWizardName_.setBounds( 142, 83, 267, 23 );
         String[] items = new String[0];
         cmbWizardName_.setItems( list_.keySet( ).toArray( items ) );
-        if( cmbWizardName_.getItemCount( ) > 1 )
+        if( cmbWizardName_.getItemCount( ) > 1 ) {
             cmbWizardName_.select( 1 );
+        }
         cmbWizardName_.addSelectionListener( new SelectionAdapter( ) {
             @Override
             public void widgetSelected( SelectionEvent e )
             {
-                if( ! ( e.getSource( ) instanceof Combo ) )
+                if( ! ( e.getSource( ) instanceof Combo ) ) {
                     return;
+                }
                 grpCustomTag_.setVisible( ( ( Combo ) e.getSource( ) )
                         .getText( ).equals( Messages.WizardLauncherPage1_12 ) );
             }

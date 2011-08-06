@@ -13,8 +13,8 @@ import java.util.Map.Entry;
 import org.osgi.framework.BundleContext;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.jface.dialogs.TrayDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -59,7 +59,7 @@ public class WesnothPlugin extends AbstractUIPlugin
             }
         }
 
-        WizardDialog.setDialogHelpAvailable( true );
+        TrayDialog.setDialogHelpAvailable( true );
     }
 
     @Override
@@ -80,7 +80,7 @@ public class WesnothPlugin extends AbstractUIPlugin
 
     /**
      * Returns the shared instance
-     * 
+     *
      * @return the shared instance
      */
     public static WesnothPlugin getDefault( )
@@ -91,7 +91,7 @@ public class WesnothPlugin extends AbstractUIPlugin
     /**
      * Returns an image descriptor for the image file at the given plug-in
      * relative path
-     * 
+     *
      * @param path
      *            the path
      * @return the image descriptor
@@ -103,7 +103,7 @@ public class WesnothPlugin extends AbstractUIPlugin
 
     /**
      * Returns the plugin's shell
-     * 
+     *
      * @return
      */
     public static Shell getShell( )

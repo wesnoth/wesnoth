@@ -41,8 +41,9 @@ public class WesnothProjectNature implements IProjectNature
                 configured++;
             }
         }
-        if( configured == 2 )
+        if( configured == 2 ) {
             return;
+        }
 
         ICommand[] newCommands = new ICommand[commands.length
                 + ( 2 - configured )];

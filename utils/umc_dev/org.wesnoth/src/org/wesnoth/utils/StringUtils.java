@@ -21,15 +21,16 @@ public class StringUtils
     /**
      * Returns true if the 'target' starts with 'sequence'.
      * The tabs or spaces in front are skipped when checking for the 'sequence'
-     * 
+     *
      * @param target
      * @param sequence
      * @return
      */
     public static boolean startsWith( String target, String sequence )
     {
-        if( target == null || sequence == null )
+        if( target == null || sequence == null ) {
             return false;
+        }
 
         Pattern pattern = Pattern
                 .compile( "[\t ]*" + Pattern.quote( sequence ) ); //$NON-NLS-1$
@@ -39,18 +40,20 @@ public class StringUtils
 
     /**
      * Returns the number of 'character' characters in the target string
-     * 
+     *
      * @param target
      * @param character
      * @return
      */
     public static int countOf( String target, char character )
     {
-        if( target == null )
+        if( target == null ) {
             return 0;
+        }
 
-        if( target.indexOf( character ) == - 1 )
+        if( target.indexOf( character ) == - 1 ) {
             return 0;
+        }
 
         int cnt = 0;
         String tmpString = target;
@@ -64,7 +67,7 @@ public class StringUtils
 
     /**
      * Returns the n-th occurrence index of the specified character
-     * 
+     *
      * @param target
      * @param character
      * @param n
@@ -72,11 +75,13 @@ public class StringUtils
      */
     public static int indexOfNth( String target, char character, int n )
     {
-        if( target == null )
+        if( target == null ) {
             return - 1;
+        }
 
-        if( countOf( target, character ) < n )
+        if( countOf( target, character ) < n ) {
             return - 1;
+        }
 
         int index = - 1, cnt = 0;
         for( int i = 0; i < target.length( ) && cnt <= n; ++i ) {
@@ -92,7 +97,7 @@ public class StringUtils
      * Removes all consecutive aparitions of a character in the specified string
      * so that only one appearance remains in each past duplications of that
      * string
-     * 
+     *
      * @param target
      *            the string to process
      * @param character
@@ -107,7 +112,9 @@ public class StringUtils
             char character, boolean removeTrailing, boolean removePreceding )
     {
         if( target == null )
+         {
             return ""; //$NON-NLS-1$
+        }
 
         StringBuilder resString = new StringBuilder( );
 
@@ -131,21 +138,22 @@ public class StringUtils
     /**
      * Gets an array of the lines (without line breakes) which compund the
      * string
-     * 
+     *
      * @param string
      *            The string
      * @return
      */
     public static String[] getLines( String string )
     {
-        if( string == null )
+        if( string == null ) {
             return new String[0];
+        }
         return string.split( "\\r?\\n" ); //$NON-NLS-1$
     }
 
     /**
      * Removes all trailing path separators from the string
-     * 
+     *
      * @param string
      *            The string to trim
      * @return A new string that doesn't have any trailling separators
@@ -153,28 +161,33 @@ public class StringUtils
     public static String trimEndPathSeparators( String string )
     {
         if( isNullOrEmpty( string ) )
+         {
             return ""; //$NON-NLS-1$
+        }
 
         while( string.charAt( string.length( ) - 1 ) == '/'
-                || string.charAt( string.length( ) - 1 ) == '\\' )
+                || string.charAt( string.length( ) - 1 ) == '\\' ) {
             string = string.substring( 0, string.length( ) - 1 );
+        }
         return string;
     }
 
     /**
      * Trims any quotes " of the specified string
-     * 
+     *
      * @param string
      *            The string to trim
      * @return A new string with the quotes trimmed
      */
     public static String trimQuotes( String string )
     {
-        if( isNullOrEmpty( string ) )
+        if( isNullOrEmpty( string ) ) {
             return "";
+        }
 
-        while( string.charAt( 0 ) == '"' )
+        while( string.charAt( 0 ) == '"' ) {
             string = string.substring( 1 );
+        }
 
         int strSize = string.length( ) - 1;
         while( strSize >= 0 && string.charAt( strSize ) == '"' ) {
@@ -188,7 +201,7 @@ public class StringUtils
     /**
      * Normalizes the path given by the string, removing repeated separators
      * and replacing them by '|'
-     * 
+     *
      * @param path
      *            the string that represents the path to be normalized
      * @return
@@ -196,7 +209,9 @@ public class StringUtils
     public static String normalizePath( String path )
     {
         if( path == null )
+         {
             return ""; //$NON-NLS-1$
+        }
 
         String str = StringUtils.trimEndPathSeparators( path );
         StringBuilder sb = new StringBuilder( str.length( ) );
@@ -221,7 +236,7 @@ public class StringUtils
      * Replaces the source with the target in the specified string,
      * adding the existing indentation (if any) to all lines (if any) in the
      * target
-     * 
+     *
      * @param string
      *            The string where to replace the source
      * @param source
@@ -234,7 +249,9 @@ public class StringUtils
             String target )
     {
         if( string == null )
+         {
             return ""; //$NON-NLS-1$
+        }
 
         // get the current indentation
         Pattern pattern = Pattern.compile( "[\t ]*" ); //$NON-NLS-1$
@@ -246,8 +263,9 @@ public class StringUtils
         }
 
         String[] tmpTarget = getLines( target );
-        for( int i = 1; i < tmpTarget.length; i++ )
+        for( int i = 1; i < tmpTarget.length; i++ ) {
             tmpTarget[i] = indent + tmpTarget[i];
+        }
 
         return string.replace( source,
                 ListUtils.concatenateArray( tmpTarget, "\n" ) ); //$NON-NLS-1$
@@ -255,7 +273,7 @@ public class StringUtils
 
     /**
      * Returns a sequence multiplied by the specified number of times
-     * 
+     *
      * @param sequence
      *            The sequence to multiply
      * @param times
@@ -265,7 +283,9 @@ public class StringUtils
     public static String multiples( String sequence, int times )
     {
         if( sequence == null )
+         {
             return ""; //$NON-NLS-1$
+        }
 
         StringBuilder res = new StringBuilder( sequence.length( ) * times );
         for( int i = 0; i < times; i++ ) {
@@ -276,7 +296,7 @@ public class StringUtils
 
     /**
      * Returns true if the specified string is null or empty
-     * 
+     *
      * @param target
      *            The string to check
      */
@@ -289,7 +309,7 @@ public class StringUtils
      * Returns the list of groups found by the specified regex
      * in the specified string.
      * The regex is applied case insensitive
-     * 
+     *
      * @param regexStr
      *            The regex used to extract the groups
      * @param targetString

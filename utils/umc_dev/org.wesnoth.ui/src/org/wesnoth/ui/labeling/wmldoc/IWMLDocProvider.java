@@ -17,14 +17,14 @@ public interface IWMLDocProvider
 {
     /**
      * Gets the title of the wmldoc dialog
-     * 
+     *
      * @return
      */
     public String getTitle( );
 
     /**
      * Gets the text to be written in the info statusbar
-     * 
+     *
      * @return
      */
     public String getInfoText( );
@@ -32,14 +32,14 @@ public interface IWMLDocProvider
     /**
      * Gets the contents to be written into the
      * styledtext control of the wmldoc dialog
-     * 
+     *
      * @return
      */
     public String getContents( );
 
     /**
      * Gets an array of StyleRange used to style the contents
-     * 
+     *
      * @return
      */
     public StyleRange[] getStyleRanges( );

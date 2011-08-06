@@ -96,8 +96,9 @@ public class EraNewWizard extends WizardTemplate
         try {
             InputStream stream = getEraStream( );
 
-            if( stream == null )
+            if( stream == null ) {
                 return;
+            }
 
             if( file.exists( ) ) {
                 file.setContents( stream, true, true, monitor );

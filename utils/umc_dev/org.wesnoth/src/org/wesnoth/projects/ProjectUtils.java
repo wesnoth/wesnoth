@@ -45,7 +45,7 @@ public class ProjectUtils
 
     /**
      * Gets the properties map for this project.
-     * 
+     *
      * @return A map with properties of the project
      */
     public static Map< String, String > getPropertiesForProject(
@@ -56,7 +56,7 @@ public class ProjectUtils
 
     /**
      * Gets the cache for the specified project
-     * 
+     *
      * @param project
      * @return
      */
@@ -75,7 +75,7 @@ public class ProjectUtils
     /**
      * Creates a new wesnoth project with the specified name
      * and on the specified location on disk
-     * 
+     *
      * @param name
      *            The name of the new project
      * @param location
@@ -109,7 +109,7 @@ public class ProjectUtils
      * Creates a project that has associated the wesnoth nature using
      * the specified handle. If the project is created there will be
      * no modifications done by this method.
-     * 
+     *
      * @param handle
      *            the handle to the project
      * @param description
@@ -124,22 +124,26 @@ public class ProjectUtils
             IProjectDescription description, String installName,
             IProgressMonitor monitor )
     {
-        if( handle == null || handle.exists( ) )
+        if( handle == null || handle.exists( ) ) {
             return - 1;
+        }
 
         try {
             String projectPath = null;
 
-            if( handle.getLocation( ) == null && description != null )
+            if( handle.getLocation( ) == null && description != null ) {
                 projectPath = description.getLocationURI( ).getPath( )
                         .toString( ).substring( 1 );
-            else if( handle.getLocation( ) != null )
+            }
+            else if( handle.getLocation( ) != null ) {
                 projectPath = handle.getLocation( ).toOSString( );
-            else
+            }
+            else {
                 // project is in workspace
                 projectPath = ResourcesPlugin.getWorkspace( ).getRoot( )
                         .getLocation( ).toOSString( )
                         + "/" + handle.getProject( ).getName( );
+            }
 
             monitor.subTask( Messages.ProjectUtils_0 );
 
@@ -153,10 +157,12 @@ public class ProjectUtils
                     handle.getName( ) ) );
 
             // create the project
-            if( description == null )
+            if( description == null ) {
                 handle.create( monitor );
-            else
+            }
+            else {
                 handle.create( description, monitor );
+            }
 
             handle.open( monitor );
             monitor.worked( 10 );

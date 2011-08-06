@@ -73,9 +73,10 @@ public class WMLEditor extends XtextEditor
     public WMLEditor( )
     {
         super( );
-        if( DEBUG )
+        if( DEBUG ) {
             org.apache.log4j.Logger.getLogger( XtextEditor.class ).setLevel(
                     Level.DEBUG );
+        }
         // activate the wesnoth plugin
         WesnothPlugin.getDefault( );
     }
@@ -94,23 +95,26 @@ public class WMLEditor extends XtextEditor
     @Override
     public boolean equals( Object obj )
     {
-        if( ( obj instanceof XtextEditor ) == false )
+        if( ( obj instanceof XtextEditor ) == false ) {
             return false;
+        }
         if( getEditorInput( ) == null
-                || ( ( XtextEditor ) obj ).getEditorInput( ) == null )
+                || ( ( XtextEditor ) obj ).getEditorInput( ) == null ) {
             return false;
+        }
         java.net.URI u1 = ( ( IURIEditorInput ) getEditorInput( ) ).getURI( );
         java.net.URI u2 = ( ( IURIEditorInput ) ( ( XtextEditor ) obj )
                 .getEditorInput( ) ).getURI( );
-        if( u1 == null || u2 == null )
+        if( u1 == null || u2 == null ) {
             return false;
+        }
         return u1.toString( ).equals( u2.toString( ) );
     }
 
 
     /**
      * Gets current edited file.
-     * 
+     *
      * @return An IFile instance
      */
     public static IFile getActiveEditorFile( )
@@ -120,22 +124,23 @@ public class WMLEditor extends XtextEditor
 
     /**
      * Gets the edited file from the specified editor
-     * 
+     *
      * @param editor
      *            The editor to get the file from
      * @return An IFile instance
      */
     public static IFile getEditorFile( XtextEditor editor )
     {
-        if( editor == null )
+        if( editor == null ) {
             return null;
+        }
         return ( IFile ) editor.getEditorInput( ).getAdapter( IFile.class );
     }
 
     /**
      * Here it comes the part that handles external files
      * (from outside the workspace)
-     * 
+     *
      */
     /**
      * Copyright (c) 2010, Cloudsmith Inc.
@@ -157,8 +162,9 @@ public class WMLEditor extends XtextEditor
             checkPath = checkPath.addTrailingSeparator( ).append(
                     folders.segment( i ) );
             IFolder folder = project.getFolder( checkPath );
-            if( ! folder.exists( ) )
+            if( ! folder.exists( ) ) {
                 folder.create( true, true, null );
+            }
         }
         linkFile.createLink( uri, IResource.ALLOW_MISSING_LOCAL, null );
     }
@@ -177,8 +183,9 @@ public class WMLEditor extends XtextEditor
                     // down, it is NOT a good
                     // idea to delete the link
                     if( PlatformUI.isWorkbenchRunning( )
-                            && ! PlatformUI.getWorkbench( ).isClosing( ) )
+                            && ! PlatformUI.getWorkbench( ).isClosing( ) ) {
                         file.delete( true, null );
+                    }
                 } catch( CoreException e ) {
                     // Nothing to do really, it will be recreated/refreshed
                     // later if ever used - some garbage may stay behind...
@@ -192,7 +199,7 @@ public class WMLEditor extends XtextEditor
     /**
      * Overridden to allow customization of editor context menu via injected
      * handler
-     * 
+     *
      * @see org.eclipse.ui.editors.text.TextEditor#editorContextMenuAboutToShow(org.eclipse.jface.action.IMenuManager)
      */
     @Override
@@ -208,8 +215,9 @@ public class WMLEditor extends XtextEditor
                 .getRoot( );
         IFile[] files = workspaceRoot.findFilesForLocationURI( fileStore
                 .toURI( ) );
-        if( files != null && files.length == 1 )
+        if( files != null && files.length == 1 ) {
             return files[0];
+        }
         return null;
     }
 
@@ -269,7 +277,7 @@ public class WMLEditor extends XtextEditor
 
     /**
      * Throws WrappedException - the URI must refer to an existing file!
-     * 
+     *
      * @param uri
      * @return
      */
@@ -289,15 +297,16 @@ public class WMLEditor extends XtextEditor
                 project.setHidden( true );
             }
 
-            if( newProject )
+            if( newProject ) {
                 project.setDefaultCharset( ENCODING_UTF8,
                         new NullProgressMonitor( ) );
+            }
 
             // path in project that is the same as the external file's path
             IFile linkFile = project.getFile( uri.getPath( ) );
-            if( linkFile.exists( ) )
+            if( linkFile.exists( ) ) {
                 linkFile.refreshLocal( 1, null ); // don't know if needed (or
-                                                  // should be avoided...)
+            }
             else {
                 // create the link
                 createLink( project, linkFile, uri );
@@ -345,8 +354,9 @@ public class WMLEditor extends XtextEditor
             dialog.setFilterExtensions( new String[] { "*.b3", "*.*" } ); //$NON-NLS-1$ //$NON-NLS-2$
             String path = dialog.open( );
             if( path == null ) {
-                if( progressMonitor != null )
+                if( progressMonitor != null ) {
                     progressMonitor.setCanceled( true );
+                }
                 return;
             }
 
@@ -379,8 +389,9 @@ public class WMLEditor extends XtextEditor
             }
 
             IFile file = getWorkspaceFile( fileStore );
-            if( file != null )
+            if( file != null ) {
                 newInput = new FileEditorInput( file );
+            }
             else {
                 IURIEditorInput uriInput = new FileStoreEditorInput( fileStore );
                 java.net.URI uri = uriInput.getURI( );
@@ -413,12 +424,14 @@ public class WMLEditor extends XtextEditor
                 }
             } finally {
                 provider.changed( newInput );
-                if( success )
+                if( success ) {
                     setInput( newInput );
+                }
             }
 
-            if( progressMonitor != null )
+            if( progressMonitor != null ) {
                 progressMonitor.setCanceled( ! success );
+            }
 
             return;
         }

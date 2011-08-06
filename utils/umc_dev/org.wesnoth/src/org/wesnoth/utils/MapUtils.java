@@ -11,7 +11,7 @@ package org.wesnoth.utils;
 import java.io.File;
 
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 
@@ -38,19 +38,21 @@ public class MapUtils
         mapDialog.setFilterExtensions( new String[] { "*.map" } ); //$NON-NLS-1$
         String file = mapDialog.open( );
 
-        if( file == null )
+        if( file == null ) {
             return;
+        }
 
         try {
             File source = new File( file );
             File target = new File( WorkspaceUtils.getSelectedFolder( )
                     .getLocation( ).toOSString( )
-                    + Path.SEPARATOR + source.getName( ) );
+                    + IPath.SEPARATOR + source.getName( ) );
 
             if( target.exists( ) ) {
                 if( GUIUtils.showMessageBox( Messages.MapUtils_4,
-                        SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO )
+                        SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO ) {
                     return;
+                }
             }
 
             ResourceUtils.copyTo( source, target );

@@ -13,7 +13,7 @@ import com.google.inject.ImplementedBy;
 import org.eclipse.jface.action.IMenuManager;
 
 /**
- * 
+ *
  *
  */
 @ImplementedBy( DefaultExtXtextEditorCustomizer.class )

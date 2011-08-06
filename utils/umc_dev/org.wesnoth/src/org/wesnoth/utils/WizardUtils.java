@@ -21,7 +21,7 @@ public class WizardUtils
 {
     /**
      * Launches a new wizard
-     * 
+     *
      * @param wizard
      *            The wizard to launch
      * @param shell
@@ -33,8 +33,9 @@ public class WizardUtils
     public static int launchWizard( WizardTemplate wizard, Shell shell,
             IStructuredSelection selection )
     {
-        if( wizard == null )
+        if( wizard == null ) {
             return Window.CANCEL;
+        }
 
         wizard.init( WesnothPlugin.getDefault( ).getWorkbench( ), selection );
         wizard.setForcePreviousAndNextButtons( true );

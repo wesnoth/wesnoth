@@ -34,6 +34,7 @@ import org.wesnoth.wml.WMLTag;
  */
 public class WMLDocHandler extends AbstractHandler
 {
+    @Override
     public Object execute( ExecutionEvent event ) throws ExecutionException
     {
         try {
@@ -63,8 +64,9 @@ public class WMLDocHandler extends AbstractHandler
 
                             EObject grammarElement = WMLUtils.resolveElementAt(
                                     resource, selection.getOffset( ) );
-                            if( grammarElement == null )
+                            if( grammarElement == null ) {
                                 return;
+                            }
 
                             if( grammarElement instanceof WMLMacroCall ) {
                                 WMLMacroCall macro = ( WMLMacroCall ) grammarElement;

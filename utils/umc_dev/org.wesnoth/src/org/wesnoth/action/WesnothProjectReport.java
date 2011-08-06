@@ -35,7 +35,7 @@ public class WesnothProjectReport extends ObjectActionDelegate
 
     /**
      * Gets the report for specified container (sceanarios, maps, units)
-     * 
+     *
      * @param container
      * @return
      */
@@ -45,18 +45,21 @@ public class WesnothProjectReport extends ObjectActionDelegate
 
         File scenariosFolder = new File( container.getLocation( ).toOSString( )
                 + "/scenarios" ); //$NON-NLS-1$
-        if( scenariosFolder.exists( ) )
+        if( scenariosFolder.exists( ) ) {
             statistics[0] = scenariosFolder.listFiles( ).length;
+        }
 
         File mapsFolder = new File( container.getLocation( ).toOSString( )
                 + "/maps" ); //$NON-NLS-1$
-        if( mapsFolder.exists( ) )
+        if( mapsFolder.exists( ) ) {
             statistics[1] = mapsFolder.listFiles( ).length;
+        }
 
         File unitsFolder = new File( container.getLocation( ).toOSString( )
                 + "/units" ); //$NON-NLS-1$
-        if( unitsFolder.exists( ) )
+        if( unitsFolder.exists( ) ) {
             statistics[2] = unitsFolder.listFiles( ).length;
+        }
 
         return String.format( Messages.WesnothProjectReport_4, statistics[0],
                 statistics[1], statistics[2] );

@@ -112,7 +112,7 @@ public abstract class WizardTemplate extends Wizard implements INewWizard
 
     /**
      * Gets the name of the object created by the wizard
-     * 
+     *
      * @return
      */
     public String getObjectName( )

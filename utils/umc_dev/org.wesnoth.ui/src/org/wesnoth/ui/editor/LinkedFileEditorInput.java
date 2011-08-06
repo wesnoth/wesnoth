@@ -42,8 +42,9 @@ public class LinkedFileEditorInput extends FileEditorInput
             IFileEditorInput other = ( IFileEditorInput ) obj;
             targetUri = other.getFile( ).getLocationURI( ).toString( );
         }
-        if( targetUri.isEmpty( ) )
+        if( targetUri.isEmpty( ) ) {
             return false;
+        }
         return getFile( ).getLocationURI( ).toString( )
                 .toLowerCase( Locale.ENGLISH )
                 .equals( targetUri.toLowerCase( Locale.ENGLISH ) );

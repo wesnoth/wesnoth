@@ -111,7 +111,7 @@ public class SimpleLuaParser
 
     /**
      * Returns the parsed tags from the lua code
-     * 
+     *
      * @return A map with Tags
      */
     public Map< String, WMLTag > getTags( )

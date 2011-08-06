@@ -107,8 +107,9 @@ public class FactionNewWizard extends WizardTemplate
         try {
             InputStream stream = getFactionStream( );
 
-            if( stream == null )
+            if( stream == null ) {
                 return;
+            }
 
             if( file.exists( ) ) {
                 file.setContents( stream, true, true, monitor );

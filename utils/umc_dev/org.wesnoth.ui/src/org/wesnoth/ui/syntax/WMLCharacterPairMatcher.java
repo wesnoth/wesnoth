@@ -66,9 +66,10 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
                 if( currentEditor != null
                         && currentEditor.getHighlightingHelper( ) != null
                         && currentEditor.getHighlightingHelper( )
-                                .getReconciler( ) != null )
+                                .getReconciler( ) != null ) {
                     currentEditor.getHighlightingHelper( ).getReconciler( )
                             .refresh( );
+                }
             }
         }
 
@@ -81,8 +82,9 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
         EObject object = WMLUtils.resolveElementAt( state, offset );
 
         // do nothing if we clicked the same tag
-        if( currentTag_ == object )
+        if( currentTag_ == object ) {
             return;
+        }
 
         if( object instanceof WMLTag ) {
             WMLTag tag = ( WMLTag ) object;

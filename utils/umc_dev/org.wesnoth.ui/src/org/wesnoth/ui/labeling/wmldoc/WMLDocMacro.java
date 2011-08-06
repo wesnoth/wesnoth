@@ -41,8 +41,9 @@ public class WMLDocMacro implements IWMLDocProvider
      */
     private void generateDoc( )
     {
-        if( docGenerated_ )
+        if( docGenerated_ ) {
             return;
+        }
 
         styleRanges_ = new ArrayList< StyleRange >( );
         title_ = Messages.WMLDocMacro_0 + macro_.getName( );
@@ -73,7 +74,7 @@ public class WMLDocMacro implements IWMLDocProvider
 
     /**
      * Adds a style range to current list
-     * 
+     *
      * @param offset
      * @param length
      * @param style
@@ -86,18 +87,21 @@ public class WMLDocMacro implements IWMLDocProvider
                 style ) );
     }
 
+    @Override
     public String getTitle( )
     {
         generateDoc( );
         return title_;
     }
 
+    @Override
     public String getContents( )
     {
         generateDoc( );
         return contents_;
     }
 
+    @Override
     public StyleRange[] getStyleRanges( )
     {
         generateDoc( );
@@ -106,7 +110,7 @@ public class WMLDocMacro implements IWMLDocProvider
 
     /**
      * Gets the associated macro
-     * 
+     *
      * @return
      */
     public Define getMacro( )
@@ -114,10 +118,12 @@ public class WMLDocMacro implements IWMLDocProvider
         return macro_;
     }
 
+    @Override
     public String getInfoText( )
     {
-        if( macro_.getLocation( ) == null )
+        if( macro_.getLocation( ) == null ) {
             return null;
+        }
         return "Defined in: " + macro_.getLocation( ) + " : "
                 + macro_.getLineNum( );
     }

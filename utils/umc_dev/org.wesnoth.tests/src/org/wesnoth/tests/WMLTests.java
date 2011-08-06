@@ -229,8 +229,9 @@ public abstract class WMLTests extends AbstractXtextTests
             return;
         }
 
-        if( theFile.isFile( ) )
+        if( theFile.isFile( ) ) {
             testFile( path );
+        }
         else {
             for( File file: theFile.listFiles( ) ) {
                 testPath( file.getAbsolutePath( ) );

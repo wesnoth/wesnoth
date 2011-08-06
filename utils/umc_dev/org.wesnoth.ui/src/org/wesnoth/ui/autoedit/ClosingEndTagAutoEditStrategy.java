@@ -28,6 +28,7 @@ import org.wesnoth.wml.WMLTag;
  */
 public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 {
+    @Override
     public void customizeDocumentCommand( final IDocument document,
             final DocumentCommand command )
     {
@@ -35,8 +36,9 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
             if( command.text.equals( "/" ) && document.get( command.offset - 1, 1 ).equals( "[" ) ) //$NON-NLS-1$ //$NON-NLS-2$
             {
                 XtextEditor editor = EditorUtils.getActiveXtextEditor( );
-                if( editor == null )
+                if( editor == null ) {
                     return;
+                }
 
                 editor.getDocument( ).readOnly(
                         new IUnitOfWork.Void< XtextResource >( ) {
@@ -49,13 +51,15 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
                                                 .getParseResult( )
                                                 .getRootNode( ), command.offset );
 
-                                if( currentNode == null )
+                                if( currentNode == null ) {
                                     return;
+                                }
 
                                 EObject semanticElement = currentNode
                                         .getSemanticElement( );
-                                if( semanticElement == null )
+                                if( semanticElement == null ) {
                                     return;
+                                }
 
                                 String tagName = ""; //$NON-NLS-1$
                                 EObject container = semanticElement
@@ -67,7 +71,7 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 
                                 if( ! StringUtils.isNullOrEmpty( tagName ) ) {
                                     command.shiftsCaret = true;
-                                    command.text = ( "/" + tagName ); //$NON-NLS-1$ //$NON-NLS-2$
+                                    command.text = ( "/" + tagName ); //$NON-NLS-1$
                                 }
                             }
                         } );

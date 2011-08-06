@@ -22,9 +22,9 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -51,7 +51,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected project or or null if none selected
-     * 
+     *
      * @return
      */
     public static IProject getSelectedProject( )
@@ -61,7 +61,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected project or null if none selected
-     * 
+     *
      * @param window
      *            The workbench windows from where to get the current selection
      * @return
@@ -70,8 +70,9 @@ public class WorkspaceUtils
     {
         IStructuredSelection selection = getSelectedStructuredSelection( window );
         if( selection == null
-                || ! ( selection.getFirstElement( ) instanceof IProject ) )
+                || ! ( selection.getFirstElement( ) instanceof IProject ) ) {
             return null;
+        }
 
         return ( IProject ) selection.getFirstElement( );
     }
@@ -79,21 +80,22 @@ public class WorkspaceUtils
     /**
      * Gets the project from the workspace that has the specified name,
      * or null if none existing
-     * 
+     *
      * @return
      */
     public static IProject getProject( String name )
     {
         IProject proj = ResourcesPlugin.getWorkspace( ).getRoot( )
                 .getProject( name );
-        if( proj.exists( ) )
+        if( proj.exists( ) ) {
             return proj;
+        }
         return null;
     }
 
     /**
      * Gets the selected folder or null if none selected
-     * 
+     *
      * @return
      */
     public static IFolder getSelectedFolder( )
@@ -103,7 +105,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected project or null if none selected
-     * 
+     *
      * @param window
      *            The workbench window from where to get the current selection
      * @return
@@ -112,15 +114,16 @@ public class WorkspaceUtils
     {
         IStructuredSelection selection = getSelectedStructuredSelection( window );
         if( selection == null
-                || ! ( selection.getFirstElement( ) instanceof IFolder ) )
+                || ! ( selection.getFirstElement( ) instanceof IFolder ) ) {
             return null;
+        }
 
         return ( IFolder ) selection.getFirstElement( );
     }
 
     /**
      * Gets the selected file or null if none selected
-     * 
+     *
      * @return
      */
     public static IFile getSelectedFile( )
@@ -130,7 +133,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the file selected or null if none selected
-     * 
+     *
      * @param window
      *            The workbench window from where to get the current selection
      * @return
@@ -139,14 +142,15 @@ public class WorkspaceUtils
     {
         IStructuredSelection selection = getSelectedStructuredSelection( window );
         if( selection == null
-                || ! ( selection.getFirstElement( ) instanceof IFile ) )
+                || ! ( selection.getFirstElement( ) instanceof IFile ) ) {
             return null;
+        }
         return ( IFile ) selection.getFirstElement( );
     }
 
     /**
      * Gets the selected StructuredSelection or null if none selected
-     * 
+     *
      * @return
      */
     public static IStructuredSelection getSelectedStructuredSelection( )
@@ -157,7 +161,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected StructuredSelection or null if none selected
-     * 
+     *
      * @param window
      *            The workbench windows from where to get the current selection
      * @return
@@ -165,8 +169,9 @@ public class WorkspaceUtils
     public static IStructuredSelection getSelectedStructuredSelection(
             final IWorkbenchWindow window )
     {
-        if( window == null )
+        if( window == null ) {
             return null;
+        }
 
         RunnableWithResult< IStructuredSelection > runnable = new RunnableWithResult< IStructuredSelection >( ) {
             @Override
@@ -175,8 +180,9 @@ public class WorkspaceUtils
                 try {
                     setResult( null );
 
-                    if( ! ( window.getSelectionService( ).getSelection( ) instanceof IStructuredSelection ) )
+                    if( ! ( window.getSelectionService( ).getSelection( ) instanceof IStructuredSelection ) ) {
                         return;
+                    }
 
                     setResult( ( IStructuredSelection ) window
                             .getSelectionService( ).getSelection( ) );
@@ -191,7 +197,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected container (folder/project) or null if none selected
-     * 
+     *
      * @return
      */
     public static IContainer getSelectedContainer( )
@@ -199,36 +205,40 @@ public class WorkspaceUtils
         IStructuredSelection selection = getSelectedStructuredSelection( );
         if( selection == null
                 || ! ( selection.getFirstElement( ) instanceof IFolder || selection
-                        .getFirstElement( ) instanceof IProject ) )
+                        .getFirstElement( ) instanceof IProject ) ) {
             return null;
+        }
 
         return ( IContainer ) selection.getFirstElement( );
     }
 
     /**
      * Gets the selected resource(file/folder/project) or null if none selected
-     * 
+     *
      * @return
      */
     public static IResource getSelectedResource( )
     {
         IResource res = getSelectedFile( );
-        if( res != null )
+        if( res != null ) {
             return res;
+        }
 
         res = getSelectedFolder( );
-        if( res != null )
+        if( res != null ) {
             return res;
+        }
 
         res = getSelectedProject( );
-        if( res != null )
+        if( res != null ) {
             return res;
+        }
         return null;
     }
 
     /**
      * Returns the current workbench
-     * 
+     *
      * @return
      */
     public static IWorkbench getWorkbench( )
@@ -239,23 +249,25 @@ public class WorkspaceUtils
     /**
      * Returns the first WorkbenchWindow available. This is not always the same
      * with ActiveWorkbecnWindow
-     * 
+     *
      * @return
      */
     public static IWorkbenchWindow getWorkbenchWindow( )
     {
-        if( getWorkbench( ).getActiveWorkbenchWindow( ) != null )
+        if( getWorkbench( ).getActiveWorkbenchWindow( ) != null ) {
             return getWorkbench( ).getActiveWorkbenchWindow( );
+        }
 
-        if( getWorkbench( ).getWorkbenchWindowCount( ) == 0 )
+        if( getWorkbench( ).getWorkbenchWindowCount( ) == 0 ) {
             return null;
+        }
 
         return getWorkbench( ).getWorkbenchWindows( )[0];
     }
 
     /**
      * Returns the current working set manager
-     * 
+     *
      * @return
      */
     public static IWorkingSetManager getWorkingSetManager( )
@@ -265,7 +277,7 @@ public class WorkspaceUtils
 
     /**
      * Returns the view with the specified id or null if none found
-     * 
+     *
      * @param id
      *            The id of the searched View
      * @return
@@ -277,7 +289,7 @@ public class WorkspaceUtils
 
     /**
      * Returns the Wesnoth Projects Explorer view
-     * 
+     *
      * @return
      */
     public static WesnothProjectsExplorer getProjectsExplorer( )
@@ -287,27 +299,28 @@ public class WorkspaceUtils
 
     /**
      * Returns the temporary folder where the plugin can write resources
-     * 
+     *
      * @return
      */
     public static String getTemporaryFolder( )
     {
         if( temporaryFolder_ == null || temporaryFolder_.isEmpty( ) ) {
             temporaryFolder_ = System.getProperty( "java.io.tmpdir" ) + //$NON-NLS-1$
-                    Path.SEPARATOR + "wesnoth_plugin" + Path.SEPARATOR; //$NON-NLS-1$
+                    IPath.SEPARATOR + "wesnoth_plugin" + IPath.SEPARATOR; //$NON-NLS-1$
 
             File tmpFile = new File( temporaryFolder_ );
 
             tmpFile.mkdirs( );
-            if( ! tmpFile.exists( ) )
+            if( ! tmpFile.exists( ) ) {
                 temporaryFolder_ = null;
+            }
         }
         return temporaryFolder_;
     }
 
     /**
      * Gets the project's temporary folder
-     * 
+     *
      * @param project
      *            The project for which to compute the temporary folder
      * @return
@@ -319,7 +332,7 @@ public class WorkspaceUtils
 
     /**
      * Returns the current date and time with a granularity of seconds
-     * 
+     *
      * @return A string with the current date and time
      */
     public static String getCurrentDateTime( )
@@ -330,20 +343,21 @@ public class WorkspaceUtils
 
     /**
      * Returns the resource path relative to the user directory
-     * 
+     *
      * @param resource
      *            the resource to be computed
      * @return
      */
     public static String getPathRelativeToUserDir( IResource resource )
     {
-        if( resource == null )
+        if( resource == null ) {
             return null;
+        }
 
         String result = Preferences.getPaths(
                 WesnothInstallsUtils.getInstallNameForResource( resource ) )
                 .getAddonsDir( );
-        result += resource.getProject( ).getName( ) + Path.SEPARATOR;
+        result += resource.getProject( ).getName( ) + IPath.SEPARATOR;
         result += resource.getProjectRelativePath( ).toOSString( );
         return result;
     }
@@ -389,8 +403,9 @@ public class WorkspaceUtils
                         // useraddons/add-ons/data
                         File[] tmp = new File( paths.getAddonsDir( ) )
                                 .listFiles( );
-                        if( tmp != null )
+                        if( tmp != null ) {
                             userAddonsFiles.addAll( Arrays.asList( tmp ) );
+                        }
                     }
 
                     monitor.beginTask( Messages.WorkspaceUtils_22,
@@ -398,8 +413,9 @@ public class WorkspaceUtils
 
                     for( File file: userAddonsFiles ) {
                         if( file.isDirectory( ) == false
-                                || file.getName( ).startsWith( "." ) ) //$NON-NLS-1$
+                                || file.getName( ).startsWith( "." ) ) {
                             continue;
+                        }
 
                         String projectName = file.getName( );
                         if( ResourceUtils.isCampaignDirPath( paths,
@@ -435,7 +451,7 @@ public class WorkspaceUtils
     /**
      * Checks if the user has set some needed preferences and if the workspace
      * is setup
-     * 
+     *
      * @param displayWarning
      *            true to display a messagebox warning
      *            the user if conditions are not met
@@ -451,8 +467,9 @@ public class WorkspaceUtils
                         installName ).getWMLToolsDir( ) )
                 || ! ResourceUtils.isValidFilePath( Preferences.getPaths(
                         installName ).getWorkingDir( ) ) ) {
-            if( displayWarning )
+            if( displayWarning ) {
                 GUIUtils.showWarnMessageBox( Messages.WorkspaceUtils_33 );
+            }
             return false;
         }
 

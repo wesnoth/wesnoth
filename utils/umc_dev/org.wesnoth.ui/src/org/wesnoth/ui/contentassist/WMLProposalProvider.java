@@ -84,8 +84,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
      */
     private void refresh( )
     {
-        if( projectCache_ != null )
+        if( projectCache_ != null ) {
             return;
+        }
 
         IFile file = WMLEditor.getActiveEditorFile( );
         projectCache_ = ProjectUtils.getCacheForProject( file.getProject( ) );
@@ -165,24 +166,29 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                 .entrySet( ) ) {
             StringBuilder proposal = new StringBuilder( 10 );
             if( ruleProposal == true )
+             {
                 proposal.append( "{" ); //$NON-NLS-1$
+            }
             proposal.append( define.getKey( ) );
 
             for( String arg: define.getValue( ).getArguments( ) )
+             {
                 proposal.append( " " + arg ); //$NON-NLS-1$
+            }
             proposal.append( "}" ); //$NON-NLS-1$
 
             acceptor.accept( createCompletionProposal( proposal.toString( ),
                     define.getKey( ), MACRO_CALL_IMAGE, context,
-                    MACRO_CALL_PRIORITY ) ); //$NON-NLS-1$
+                    MACRO_CALL_PRIORITY ) );
         }
     }
 
     private void addKeyValueProposals( EObject model,
             ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
-        if( model == null || ! ( model instanceof WMLKey ) )
+        if( model == null || ! ( model instanceof WMLKey ) ) {
             return;
+        }
         WMLKey key = ( WMLKey ) model;
         String keyName = key.getName( );
 
@@ -191,10 +197,11 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                 keyName.equals( "first_scenario" ) ) //$NON-NLS-1$
         {
             for( WMLConfig config: projectCache_.getWMLConfigs( ).values( ) ) {
-                if( StringUtils.isNullOrEmpty( config.ScenarioId ) )
+                if( StringUtils.isNullOrEmpty( config.ScenarioId ) ) {
                     continue;
+                }
                 acceptor.accept( createCompletionProposal( config.ScenarioId,
-                        config.ScenarioId, SCENARIO_VALUE_IMAGE, //$NON-NLS-1$
+                        config.ScenarioId, SCENARIO_VALUE_IMAGE,
                         context, KEY_VALUE_PRIORITY ) );
             }
         }
@@ -244,8 +251,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                             {
                                 for( Scope scope: from.getScopes( ) ) {
                                     if( scope.contains( dependencyIndex_,
-                                            nodeOffset ) )
+                                            nodeOffset ) ) {
                                         return from.getName( );
+                                    }
                                 }
 
                                 return null;
@@ -267,10 +275,12 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         WMLTag tag = null;
-        if( model instanceof WMLTag )
+        if( model instanceof WMLTag ) {
             tag = ( WMLTag ) model;
-        else if( model.eContainer( ) instanceof WMLTag )
+        }
+        else if( model.eContainer( ) instanceof WMLTag ) {
             tag = ( WMLTag ) model.eContainer( );
+        }
 
         if( tag != null ) {
             WMLTag schemaTag = schemaParser_.getTags( ).get( tag.getName( ) );
@@ -282,8 +292,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             if( schemaTag != null ) {
                 for( WMLKey key: schemaTag.getWMLKeys( ) ) {
                     // skip forbidden keys
-                    if( key.is_Forbidden( ) )
+                    if( key.is_Forbidden( ) ) {
                         continue;
+                    }
 
                     boolean toAdd = true;
                     // check only non-repeatable keys
@@ -292,11 +303,12 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                         toAdd = ( WMLUtils.getKeyByName( tag, key.getName( ) ) != null );
                     }
 
-                    if( toAdd )
+                    if( toAdd ) {
                         acceptor.accept( createCompletionProposal(
                                 key.getName( ) + "=", //$NON-NLS-1$
                                 key.getName( ), WML_KEY_IMAGE, context,
                                 KEY_NAME_PRIORITY ) );
+                    }
                 }
             }
         }
@@ -306,20 +318,23 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         WMLTag parentTag = null;
-        if( model instanceof WMLTag )
+        if( model instanceof WMLTag ) {
             parentTag = ( WMLTag ) model;
-        else if( model.eContainer( ) instanceof WMLTag )
+        }
+        else if( model.eContainer( ) instanceof WMLTag ) {
             parentTag = ( WMLTag ) model.eContainer( );
+        }
 
         if( parentTag != null ) {
             ICompositeNode node = NodeModelUtils.getNode( model );
 
             String parentIndent = ""; //$NON-NLS-1$
-            if( context.getCurrentNode( ).getOffset( ) > 0 )
+            if( context.getCurrentNode( ).getOffset( ) > 0 ) {
                 parentIndent = NodeModelUtils.findLeafNodeAtOffset( node,
                         context.getCurrentNode( ).getOffset( ) -
                         // if we have a non-rule proposal, subtract 1
                                 ( ruleProposal ? 0: 1 ) ).getText( );
+            }
 
             // remove ugly new lines that break indentation
             parentIndent = parentIndent.replace( "\r", "" ).replace( "\n", "" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
@@ -330,8 +345,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                 boolean toAdd = true;
                 for( WMLTag tag: tagChildren.getWMLTags( ) ) {
                     // skip forbidden tags
-                    if( tag.is_Forbidden( ) )
+                    if( tag.is_Forbidden( ) ) {
                         continue;
+                    }
 
                     toAdd = true;
 
@@ -341,9 +357,10 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                                 tag.getName( ) ) == null );
                     }
 
-                    if( toAdd )
+                    if( toAdd ) {
                         acceptor.accept( createTagProposal( tag.asWMLTag( ),
                                 parentIndent, ruleProposal, context ) );
+                    }
                 }
             }
         }
@@ -364,7 +381,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
     /**
      * Returns the proposal for the specified tag, usign the specified indent
-     * 
+     *
      * @param tag
      *            The tag from which to construct the proposal
      * @param indent
@@ -379,13 +396,16 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     {
         StringBuilder proposal = new StringBuilder( );
         if( ruleProposal )
+         {
             proposal.append( "[" ); //$NON-NLS-1$
+        }
         proposal.append( tag.getName( ) );
         proposal.append( "]\n" ); //$NON-NLS-1$
         for( WMLKey key: tag.getWMLKeys( ) ) {
-            if( key.is_Required( ) )
+            if( key.is_Required( ) ) {
                 proposal.append( String.format( "\t%s%s=\n", //$NON-NLS-1$
                         indent, key.getName( ) ) );
+            }
         }
         proposal.append( String.format( "%s[/%s", indent, tag.getName( ) ) ); //$NON-NLS-1$
         return createCompletionProposal( proposal.toString( ), tag.getName( ),

@@ -25,8 +25,9 @@ public abstract class ObjectActionDelegate implements IObjectActionDelegate
     {
         selection_ = selection;
         action_ = action;
-        if( selection instanceof IStructuredSelection )
+        if( selection instanceof IStructuredSelection ) {
             structuredSelection_ = ( IStructuredSelection ) selection;
+        }
     }
 
     @Override

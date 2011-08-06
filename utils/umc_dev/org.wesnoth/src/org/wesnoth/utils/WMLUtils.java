@@ -45,7 +45,7 @@ public class WMLUtils
 
     /**
      * Returns the child key of the specified tag by its name.
-     * 
+     *
      * @param tag
      *            The tag to search into
      * @param name
@@ -55,8 +55,9 @@ public class WMLUtils
     public static WMLKey getKeyByName( WMLTag tag, String name )
     {
         for( WMLKey key: tag.getWMLKeys( ) ) {
-            if( key.getName( ).equals( name ) )
+            if( key.getName( ).equals( name ) ) {
                 return key;
+            }
         }
 
         return null;
@@ -64,7 +65,7 @@ public class WMLUtils
 
     /**
      * Returns the child tag of the specified tag by its name.
-     * 
+     *
      * @param tag
      *            The tag to search into
      * @param name
@@ -74,8 +75,9 @@ public class WMLUtils
     public static WMLTag getTagByName( WMLTag tag, String name )
     {
         for( WMLTag subTag: tag.getWMLTags( ) ) {
-            if( subTag.asWMLTag( ).getName( ).equals( name ) )
+            if( subTag.asWMLTag( ).getName( ).equals( name ) ) {
                 return subTag;
+            }
         }
 
         return null;
@@ -83,7 +85,7 @@ public class WMLUtils
 
     /**
      * Returns the key value from the list as a string value
-     * 
+     *
      * @param values
      *            The list of values of the key
      * @return A string representation of the key's value
@@ -101,7 +103,7 @@ public class WMLUtils
 
     /**
      * Returns a WML string representation of the specified tag
-     * 
+     *
      * @param tag
      *            The tag to get the WML String representation for
      * @return The string representation
@@ -116,17 +118,20 @@ public class WMLUtils
         StringBuilder res = new StringBuilder( );
 
         res.append( indent + "[" + tag.getName( ) );
-        if( ! tag.get_InhertedTagName( ).isEmpty( ) )
+        if( ! tag.get_InhertedTagName( ).isEmpty( ) ) {
             res.append( ":" + tag.get_InhertedTagName( ) );
-        res.append( "]\n" ); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        res.append( "]\n" ); //$NON-NLS-1$
 
         for( WMLExpression expression: tag.getExpressions( ) ) {
-            if( expression.isWMLKey( ) )
+            if( expression.isWMLKey( ) ) {
                 res.append( indent + "\t"
                         + toWMLString( expression.asWMLKey( ) ) );
-            else if( expression.isWMLTag( ) )
+            }
+            else if( expression.isWMLTag( ) ) {
                 res.append( indent + "\t"
                         + toWMLString( expression.asWMLTag( ) ) );
+            }
         }
 
         res.append( indent + "[/" + tag.getEndName( ) + "]\n" );
@@ -135,7 +140,7 @@ public class WMLUtils
 
     /**
      * Returns a WML string representation of the specified key
-     * 
+     *
      * @param tag
      *            The key to get the WML String representation for
      * @return The string representation
@@ -148,7 +153,7 @@ public class WMLUtils
     /**
      * Returns the string representation of the specified WML object
      * with the preceeding space/new lines cleaned
-     * 
+     *
      * @param object
      *            A WML EObject
      * @return A string representation

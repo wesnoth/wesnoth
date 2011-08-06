@@ -21,7 +21,7 @@ public class Pair< T, K >
 
     /**
      * Creates a new Pair
-     * 
+     *
      * @param first
      *            The first item
      * @param second

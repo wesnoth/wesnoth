@@ -66,7 +66,7 @@ public class SelectWesnothInstallDialog extends Dialog
 
     /**
      * Gets the install selected by the user
-     * 
+     *
      * @return A string with the name of the install selected
      */
     public String getSelectedInstallName( )

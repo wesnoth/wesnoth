@@ -95,8 +95,9 @@ public class WizardLauncherPage0 extends WizardPageTemplate
             public void widgetSelected( SelectionEvent e )
             {
                 IPath path = handleBrowseContainer( );
-                if( path != null )
+                if( path != null ) {
                     txtDirectory_.setText( path.toString( ) );
+                }
             }
         } );
 
@@ -168,9 +169,10 @@ public class WizardLauncherPage0 extends WizardPageTemplate
         new Label( container, SWT.NONE );
         new Label( container, SWT.NONE );
 
-        if( getWizard( ).getSelectionContainer( ) != null )
+        if( getWizard( ).getSelectionContainer( ) != null ) {
             txtDirectory_.setText( getWizard( ).getSelectionContainer( )
                     .getFullPath( ).toString( ) );
+        }
         updatePageIsComplete( );
     }
 
@@ -241,9 +243,10 @@ public class WizardLauncherPage0 extends WizardPageTemplate
         // opened file
         lblCurrentFileOpened.setEnabled( ! radioNewFile.getSelection( ) );
 
-        if( getWizard( ).getSelectionContainer( ) != null )
+        if( getWizard( ).getSelectionContainer( ) != null ) {
             txtDirectory_.setText( getWizard( ).getSelectionContainer( )
                     .getFullPath( ).toString( ) );
+        }
         updatePageIsComplete( );
     }
 

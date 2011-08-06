@@ -28,7 +28,7 @@ public abstract class AbstractPreferencePage extends FieldEditorPreferencePage
 
     /**
      * Adds the specified field editor with the specified tooltip
-     * 
+     *
      * @param editor
      * @param tooltip
      */

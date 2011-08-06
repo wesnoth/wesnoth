@@ -71,10 +71,11 @@ public class GameUtils
             campaignId = ProjectUtils.getCacheForProject(
                     selectedResource.getProject( ) ).getWMLConfig( "_main.cfg" ).CampaignId; //$NON-NLS-1$
 
-            if( scenario == true && selectedResource instanceof IFile )
+            if( scenario == true && selectedResource instanceof IFile ) {
                 scenarioId = ProjectUtils.getCacheForProject(
                         selectedResource.getProject( ) ).getWMLConfig(
                         selectedResource.getProjectRelativePath( ).toString( ) ).ScenarioId;
+            }
 
             if( campaignId == null ) {
                 GUIUtils.showErrorMessageBox( Messages.GameUtils_2 + "" ); //$NON-NLS-1$
@@ -112,8 +113,9 @@ public class GameUtils
     public static void startGame( )
     {
         IResource selectedRes = WorkspaceUtils.getSelectedResource( );
-        if( selectedRes == null )
+        if( selectedRes == null ) {
             startGame( null, null );
+        }
         else {
             WesnothInstallsUtils.setupInstallForResource( selectedRes );
             startGame(
@@ -125,7 +127,7 @@ public class GameUtils
 
     /**
      * Starts the wesnoth game with the specified extraArguments
-     * 
+     *
      * @param extraArgs
      *            Extra arguments given to the game, or null.
      */
@@ -142,8 +144,9 @@ public class GameUtils
             return;
         }
 
-        if( extraArgs != null )
+        if( extraArgs != null ) {
             args.addAll( extraArgs );
+        }
 
         // add the user's data directory path
         args.add( "--config-dir" ); //$NON-NLS-1$
@@ -169,7 +172,7 @@ public class GameUtils
 
     /**
      * Starts the game editor on the specified file
-     * 
+     *
      * @param file
      *            The file to be edited
      */
@@ -186,7 +189,7 @@ public class GameUtils
 
     /**
      * Starts the editor
-     * 
+     *
      * @param mapName
      */
     public static void startEditor( String mapName )
@@ -197,7 +200,7 @@ public class GameUtils
 
     /**
      * Gets a list of parameters for the game editor
-     * 
+     *
      * @param mapName
      *            the map to launch
      * @return
@@ -208,8 +211,9 @@ public class GameUtils
         List< String > args = new ArrayList< String >( 3 );
 
         args.add( "-e" ); //$NON-NLS-1$
-        if( mapName != null && ! ( mapName.isEmpty( ) ) )
+        if( mapName != null && ! ( mapName.isEmpty( ) ) ) {
             args.add( mapName );
+        }
 
         return args;
     }

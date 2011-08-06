@@ -38,8 +38,9 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
         EObject object = WMLUtils.resolveElementAt( resource, offset );
 
-        if( object == null )
+        if( object == null ) {
             return;
+        }
 
         IFile file = WMLEditor.getActiveEditorFile( );
         if( file == null ) {
@@ -59,7 +60,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
     /**
      * Creates a hyperlink for opening the macro definition
-     * 
+     *
      * @param paths
      *            The paths variable for the current install
      * @param file
@@ -74,16 +75,18 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
     private void createMacroHyperlink( Paths paths, IFile file, EObject object,
             IHyperlinkAcceptor acceptor, ICompositeNode node )
     {
-        if( object instanceof WMLMacroCall == false )
+        if( object instanceof WMLMacroCall == false ) {
             return;
+        }
 
         WMLMacroCall macro = ( WMLMacroCall ) object;
 
         // get the define for the macro
         Define define = ProjectUtils.getCacheForProject( file.getProject( ) )
                 .getDefines( ).get( macro.getName( ) );
-        if( define == null || define.getLocation( ).length( ) <= 2 )
+        if( define == null || define.getLocation( ).length( ) <= 2 ) {
             return;
+        }
 
         String filePath = define.getLocation( );
 
@@ -106,7 +109,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
     /**
      * Creates a hyperlink for opening the map ( if applying )
-     * 
+     *
      * @param paths
      *            The paths variable for the current install
      * @param object
@@ -122,14 +125,16 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
         EObject container = object.eContainer( );
 
         if( ! ( container instanceof WMLKey )
-                || ! ( ( WMLKey ) container ).getName( ).equals( "map_data" ) )
+                || ! ( ( WMLKey ) container ).getName( ).equals( "map_data" ) ) {
             return;
+        }
 
         String mapLocation = node.getText( );
 
         // too few characters
-        if( mapLocation.length( ) <= 2 )
+        if( mapLocation.length( ) <= 2 ) {
             return;
+        }
 
         // trim the " and the { (if any exist)
         int indexStart = 0;

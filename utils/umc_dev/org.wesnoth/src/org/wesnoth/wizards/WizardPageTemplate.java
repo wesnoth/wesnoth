@@ -6,6 +6,7 @@ package org.wesnoth.wizards;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
@@ -42,7 +43,7 @@ public class WizardPageTemplate extends WizardPage
         ContainerSelectionDialog dialog = new ContainerSelectionDialog(
                 getShell( ), ResourcesPlugin.getWorkspace( ).getRoot( ), false,
                 Messages.NewWizardPageTemplate_1 );
-        if( dialog.open( ) == ContainerSelectionDialog.OK ) {
+        if( dialog.open( ) == Window.OK ) {
             Object[] result = dialog.getResult( );
             if( result.length == 1 ) {
                 try {

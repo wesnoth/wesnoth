@@ -68,15 +68,16 @@ public class ResourceUtils
 {
     /**
      * Copies a file from source to target
-     * 
+     *
      * @param source
      * @param target
      * @throws IOException
      */
     public static boolean copyTo( File source, File target )
     {
-        if( source == null || target == null )
+        if( source == null || target == null ) {
             return false;
+        }
 
         try {
             InputStream in = new FileInputStream( source );
@@ -102,7 +103,9 @@ public class ResourceUtils
             boolean skipCommentLines )
     {
         if( ! file.exists( ) || ! file.isFile( ) )
+         {
             return ""; //$NON-NLS-1$
+        }
 
         StringBuilder contentsString = new StringBuilder( );
         BufferedReader reader = null;
@@ -111,11 +114,13 @@ public class ResourceUtils
             reader = new BufferedReader( new InputStreamReader(
                     new FileInputStream( file ) ) );
             while( ( line = reader.readLine( ) ) != null ) {
-                if( skipEmptyLines && line.isEmpty( ) )
+                if( skipEmptyLines && line.isEmpty( ) ) {
                     continue;
+                }
 
-                if( skipCommentLines && StringUtils.startsWith( line, "#" ) )
+                if( skipCommentLines && StringUtils.startsWith( line, "#" ) ) {
                     continue;
+                }
 
                 contentsString.append( line + "\n" ); //$NON-NLS-1$
             }
@@ -123,8 +128,9 @@ public class ResourceUtils
             Logger.getInstance( ).logException( e );
         } finally {
             try {
-                if( reader != null )
+                if( reader != null ) {
                     reader.close( );
+                }
             } catch( Exception e ) {
                 Logger.getInstance( ).logException( e );
             }
@@ -134,7 +140,7 @@ public class ResourceUtils
 
     /**
      * Gets the contents as string of the specified file
-     * 
+     *
      * @param file
      *            The file
      * @return
@@ -146,7 +152,7 @@ public class ResourceUtils
 
     /**
      * Creates the desired resource
-     * 
+     *
      * @param resource
      *            the resource to be created (IFile/IFolder)
      * @param project
@@ -164,8 +170,9 @@ public class ResourceUtils
                 project.open( new NullProgressMonitor( ) );
             }
 
-            if( resource.exists( ) )
+            if( resource.exists( ) ) {
                 return;
+            }
 
             if( resource instanceof IFile ) {
                 ( ( IFile ) resource ).create( input, true,
@@ -187,7 +194,7 @@ public class ResourceUtils
 
     /**
      * Creates a folder in the specified project with the specified details
-     * 
+     *
      * @param project
      *            the project in which the folder will be created
      * @param folderName
@@ -201,18 +208,20 @@ public class ResourceUtils
 
     /**
      * Rercursively deletes a directory
-     * 
+     *
      * @param path
      *            The directory's path
      * @return True if the delete was ok, false otherwise
      */
     public static boolean deleteDirectory( File path )
     {
-        if( path == null || ! path.exists( ) )
+        if( path == null || ! path.exists( ) ) {
             return false;
+        }
 
-        if( ! path.isDirectory( ) )
+        if( ! path.isDirectory( ) ) {
             return path.delete( );
+        }
 
         boolean res = true;
         for( File file: path.listFiles( ) ) {
@@ -223,7 +232,7 @@ public class ResourceUtils
 
     /**
      * Rercursively deletes a directory
-     * 
+     *
      * @param path
      *            The directory's path
      * @return True if the delete was ok, false otherwise
@@ -235,7 +244,7 @@ public class ResourceUtils
 
     /**
      * Creates a file in the specified project with the specified details
-     * 
+     *
      * @param project
      *            the project in which the file will be created
      * @param fileName
@@ -270,7 +279,7 @@ public class ResourceUtils
     /**
      * Creates the '.wesnoth' file with the specified path
      * only if it doesn't exist already
-     * 
+     *
      * @param path
      *            The path of '.wesnoth' file
      * @param force
@@ -291,7 +300,7 @@ public class ResourceUtils
 
     /**
      * Creates the 'build.xml' with the specified path
-     * 
+     *
      * @param path
      *            The full path to the 'build.xml' file
      * @param params
@@ -315,7 +324,7 @@ public class ResourceUtils
     /**
      * Creates a new empty file in the target.
      * Subsequent non-existent directories in the path will be created
-     * 
+     *
      * @param target
      * @return
      */
@@ -332,7 +341,7 @@ public class ResourceUtils
     /**
      * Creates the specified directory.
      * Subsequent non-existent directories will be created
-     * 
+     *
      * @param target
      * @return
      */
@@ -343,20 +352,21 @@ public class ResourceUtils
 
     /**
      * Removes the specified file
-     * 
+     *
      * @param target
      * @return
      */
     public static boolean removeFile( String target )
     {
-        if( new File( target ).exists( ) )
+        if( new File( target ).exists( ) ) {
             return new File( target ).delete( );
+        }
         return true;
     }
 
     /**
      * Checks if the specified path points to a valid (existing file)
-     * 
+     *
      * @param filePath
      *            The path to check
      * @return True if the filePath points to an existing file, false otherwise
@@ -366,14 +376,16 @@ public class ResourceUtils
         boolean valid = filePath != null && ! filePath.isEmpty( )
                 && new File( filePath ).exists( );
         if( valid == false && ! StringUtils.isNullOrEmpty( filePath ) )
+         {
             Logger.getInstance( ).logWarn(
                     "The file does not exist or is null: " + filePath ); //$NON-NLS-1$
+        }
         return valid;
     }
 
     /**
      * Checks if the specified path is in the user's addons directory
-     * 
+     *
      * @param paths
      *            The paths to use when doing the check
      * @param path
@@ -382,8 +394,9 @@ public class ResourceUtils
      */
     public static boolean isUserAddonsDirPath( Paths paths, String path )
     {
-        if( StringUtils.isNullOrEmpty( path ) )
+        if( StringUtils.isNullOrEmpty( path ) ) {
             return false;
+        }
 
         return StringUtils.normalizePath( path ).contains(
                 StringUtils.normalizePath( paths.getAddonsDir( ) ) );
@@ -391,7 +404,7 @@ public class ResourceUtils
 
     /**
      * Checks if the specified path is in the campaigns directory
-     * 
+     *
      * @param paths
      *            The paths to use when doing the check
      * @param path
@@ -400,8 +413,9 @@ public class ResourceUtils
      */
     public static boolean isCampaignDirPath( Paths paths, String path )
     {
-        if( StringUtils.isNullOrEmpty( path ) )
+        if( StringUtils.isNullOrEmpty( path ) ) {
             return false;
+        }
 
         return StringUtils.normalizePath( path ).contains(
                 StringUtils.normalizePath( paths.getCampaignDir( ) ) );
@@ -409,7 +423,7 @@ public class ResourceUtils
 
     /**
      * Returns true if the resource is a WML config file
-     * 
+     *
      * @param resource
      *            The resource to check
      * @return True or false
@@ -427,36 +441,43 @@ public class ResourceUtils
      * It will start searching upwards starting from curren
      * resource's directory, until it finds a '_main.cfg' but it will
      * stop when encounters a project
-     * 
+     *
      * @param resource
      *            The resource where to search for '_main.cfg'
      * @return
      */
     public static IFile getMainConfigLocation( IResource resource )
     {
-        if( resource == null )
+        if( resource == null ) {
             return null;
+        }
 
         IFile targetResource = null;
         if( resource instanceof IProject ) {
             IProject project = ( IProject ) resource;
-            if( project.getFile( "_main.cfg" ).exists( ) ) //$NON-NLS-1$
+            if( project.getFile( "_main.cfg" ).exists( ) )
+             {
                 targetResource = project.getFile( "_main.cfg" ); //$NON-NLS-1$
+            }
         }
 
         if( targetResource == null && resource instanceof IFolder ) {
             IFolder folder = ( IFolder ) resource;
-            if( folder.getFile( new Path( "_main.cfg" ) ).exists( ) ) //$NON-NLS-1$
+            if( folder.getFile( new Path( "_main.cfg" ) ).exists( ) )
+             {
                 targetResource = folder.getFile( new Path( "_main.cfg" ) ); //$NON-NLS-1$
+            }
         }
 
         if( targetResource == null && resource instanceof IFile ) {
-            if( resource.getName( ).equals( "_main.cfg" ) ) //$NON-NLS-1$
+            if( resource.getName( ).equals( "_main.cfg" ) ) {
                 targetResource = ( IFile ) resource;
+            }
             else {
                 IProject project = resource.getProject( );
-                if( project.getFile( "_main.cfg" ).exists( ) ) //$NON-NLS-1$
+                if( project.getFile( "_main.cfg" ).exists( ) ) {
                     targetResource = project.getFile( "_main.cfg" ); //$NON-NLS-1$
+                }
                 else {
                     // this might be the case of "user addon's" project
                     // we're going to the first subdirectory under the project
@@ -470,14 +491,16 @@ public class ResourceUtils
                         IFile file = project.getFile( container
                                 .getProjectRelativePath( ).toOSString( )
                                 + "/_main.cfg" ); //$NON-NLS-1$
-                        if( file.exists( ) )
+                        if( file.exists( ) ) {
                             targetResource = file;
+                        }
                     }
                 }
             }
         }
-        if( targetResource == null )
+        if( targetResource == null ) {
             return null;
+        }
         return targetResource;
     }
 
@@ -486,7 +509,7 @@ public class ResourceUtils
      * If the resource is not a '_main.cfg' it will search for it
      * with
      * {@link org.wesnoth.projects.ProjectUtils#getMainConfigLocation(IResource)}
-     * 
+     *
      * @param resource
      *            The resource where to search the id
      * @return
@@ -501,7 +524,7 @@ public class ResourceUtils
 
     /**
      * Gets the campaign id
-     * 
+     *
      * @param fileName
      * @return
      */
@@ -514,7 +537,7 @@ public class ResourceUtils
 
     /**
      * Returns the SaxHandler for the parsed specified wml resource
-     * 
+     *
      * @param resourcePath
      *            The resourcepath to parse
      * @param saxHandler
@@ -526,8 +549,9 @@ public class ResourceUtils
     {
         ExternalToolInvoker parser = WMLTools.runWMLParser2( installName,
                 resourcePath );
-        if( parser == null )
+        if( parser == null ) {
             return null;
+        }
         try {
             SAXParser saxparser;
             saxparser = SAXParserFactory.newInstance( ).newSAXParser( );
@@ -548,7 +572,7 @@ public class ResourceUtils
 
     /**
      * Deletes all markers of type specified from the resource
-     * 
+     *
      * @param resource
      * @param type
      */
@@ -565,7 +589,7 @@ public class ResourceUtils
      * Parses the current line of the file and add the marker (if any) on the
      * file.
      * Current used format: "sourcefile", line x: error message
-     * 
+     *
      * @param line
      *            the line to parse
      * @param type
@@ -590,8 +614,9 @@ public class ResourceUtils
             // Get the file
             IFile file = ResourcesPlugin.getWorkspace( ).getRoot( )
                     .getFileForLocation( new Path( sourceFile ) );
-            if( file.exists( ) == false )
+            if( file.exists( ) == false ) {
                 return null;
+            }
 
             IMarker marker = file.createMarker( type );
             marker.setAttribute( IMarker.SOURCE_ID, sourceFile );
@@ -599,10 +624,12 @@ public class ResourceUtils
             marker.setAttribute( IMarker.LINE_NUMBER, lineNumber );
 
             // wmllint should be info or warning
-            if( type.equals( Constants.MARKER_WMLLINT ) )
+            if( type.equals( Constants.MARKER_WMLLINT ) ) {
                 marker.setAttribute( IMarker.SEVERITY, IMarker.SEVERITY_INFO );
-            else
+            }
+            else {
                 marker.setAttribute( IMarker.SEVERITY, IMarker.SEVERITY_ERROR );
+            }
             return marker;
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
@@ -613,7 +640,7 @@ public class ResourceUtils
     /**
      * Returns the corresponding {@link IResource} from the specified
      * EMF Resource
-     * 
+     *
      * @param emfResource
      *            The EMF Resource
      * @return An {@link IResource} instance
@@ -629,7 +656,7 @@ public class ResourceUtils
 
     /**
      * Gets the WML Grammar root of the specified file
-     * 
+     *
      * @param file
      *            The file to get the WML model from
      * @return A WMLRoot instance or null if there is none
@@ -646,8 +673,9 @@ public class ResourceUtils
 
         EObject result = resource.getContents( ).get( 0 );
 
-        if( result instanceof WMLRoot == false )
+        if( result instanceof WMLRoot == false ) {
             return null;
+        }
 
         return ( WMLRoot ) result;
     }
@@ -655,7 +683,7 @@ public class ResourceUtils
     /**
      * Gets the set of included containers in this file
      * as a macro call
-     * 
+     *
      * @param file
      *            The file to get the containers from
      * @return A set of containers represented by their Path as string
@@ -665,8 +693,9 @@ public class ResourceUtils
         IProject project = file.getProject( );
         WMLRoot root = ResourceUtils.getWMLRoot( file );
         // nothing to do
-        if( root == null )
+        if( root == null ) {
             return new LinkedHashSet< String >( 0 );
+        }
 
         EList< WMLMacroCall > macroCalls = new BasicEList< WMLMacroCall >( );
 
@@ -690,12 +719,13 @@ public class ResourceUtils
              * forms:
              * - {campaigns/... }
              * - {~add-ons/... }
-             * 
+             *
              */
             // TODO: check for including a specific config file?
             if( ! ( text.startsWith( "{campaigns" ) ) && //$NON-NLS-1$
-                    ! ( text.equals( "{~add-ons" ) ) ) //$NON-NLS-2$
+                    ! ( text.equals( "{~add-ons" ) ) ) {
                 continue;
+            }
 
             // check if the macro includes directories local
             // to this project
@@ -717,7 +747,7 @@ public class ResourceUtils
 
     /**
      * Gets the associated dependency index for the specified file
-     * 
+     *
      * @param file
      *            The file to get the index for
      * @return An index or {@link Integer.MAX_VALUE}
@@ -739,7 +769,7 @@ public class ResourceUtils
 
     /**
      * This is a WML files comparator, based on the WML parsing rules.
-     * 
+     *
      * @see http://wiki.wesnoth.org/PreprocessorRef
      */
     public static class WMLFilesComparator implements Comparator< IResource >,
@@ -758,7 +788,7 @@ public class ResourceUtils
 
     /**
      * Compares 2 filenames to get the wml file order
-     * 
+     *
      * @param fileName1
      *            The first filename
      * @param fileName2
@@ -769,18 +799,22 @@ public class ResourceUtils
     public static int wmlFileNameCompare( String fileName1, String fileName2 )
     {
         // _initial.cfg is always the "lowest"
-        if( fileName1.equals( "_initial.cfg" ) && ! ( fileName2.equals( "_initial.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
+        if( fileName1.equals( "_initial.cfg" ) && ! ( fileName2.equals( "_initial.cfg" ) ) ) {
             return - 1;
+        }
 
-        if( fileName2.equals( "_initial.cfg" ) && ! ( fileName1.equals( "_initial.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
+        if( fileName2.equals( "_initial.cfg" ) && ! ( fileName1.equals( "_initial.cfg" ) ) ) {
             return 1;
+        }
 
         // _final.cfg is always the "highest"
-        if( fileName1.equals( "_final.cfg" ) && ! ( fileName2.equals( "_final.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
+        if( fileName1.equals( "_final.cfg" ) && ! ( fileName2.equals( "_final.cfg" ) ) ) {
             return 1;
+        }
 
-        if( fileName2.equals( "_final.cfg" ) && ! ( fileName1.equals( "_final.cfg" ) ) ) //$NON-NLS-1$ //$NON-NLS-2$
+        if( fileName2.equals( "_final.cfg" ) && ! ( fileName1.equals( "_final.cfg" ) ) ) {
             return - 1;
+        }
 
         return fileName1.compareTo( fileName2 );
     }

@@ -46,8 +46,9 @@ public class Define
         args_ = args;
 
         // ensure no NullPointerException exists
-        if( args_ == null )
+        if( args_ == null ) {
             args_ = new ArrayList< String >( );
+        }
     }
 
     public int getLineNum( )
@@ -77,7 +78,7 @@ public class Define
 
     /**
      * Gets the arguments of this macro
-     * 
+     *
      * @return
      */
     public List< String > getArguments( )
@@ -87,7 +88,7 @@ public class Define
 
     /**
      * Returns a string containing the current define, formatted
-     * 
+     *
      * @return The string value of the define
      */
     @Override
@@ -106,7 +107,7 @@ public class Define
 
     /**
      * Reads the defines from the specified file
-     * 
+     *
      * @param file
      * @return Returns a map of defines
      */
@@ -119,7 +120,7 @@ public class Define
 
         if( handler != null ) {
             Logger.getInstance( )
-                    .log( "loaded " + handler.getDefines( ).size( ) + " defines for file:" + file ); //$NON-NLS-1$ //$NON-NLS-1$ //$NON-NLS-2$
+                    .log( "loaded " + handler.getDefines( ).size( ) + " defines for file:" + file ); //$NON-NLS-1$ //$NON-NLS-2$
             return handler.getDefines( );
         }
 

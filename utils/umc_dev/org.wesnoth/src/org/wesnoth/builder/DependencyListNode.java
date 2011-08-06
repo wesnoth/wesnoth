@@ -23,7 +23,7 @@ import org.wesnoth.utils.ResourceUtils;
 /**
  * This class represents a node in the Project's Depedency list,
  * which is constructed on a full build of the project.
- * 
+ *
  * Alternatively, a list node is created
  * when a new resource is added.
  */
@@ -35,7 +35,7 @@ public class DependencyListNode implements Serializable
      * This integer represents the default step between 2 file indexes.
      * Since int it's on 4 bytes, it can hold values between
      * -2,147,483,648 and 2,147,483,647.
-     * 
+     *
      * With an increment of 100k, we could have 2 * 21,474 config files.
      */
     public static final int           INDEX_STEP       = 100000;
@@ -66,7 +66,7 @@ public class DependencyListNode implements Serializable
 
     /**
      * Gets this node's file
-     * 
+     *
      * @return A IFile resource
      */
     public IFile getFile( )
@@ -76,7 +76,7 @@ public class DependencyListNode implements Serializable
 
     /**
      * Gets the includes from this node
-     * 
+     *
      * @param refresh
      *            True to force reloading the current file and return
      *            the newly parsed ones
@@ -94,7 +94,7 @@ public class DependencyListNode implements Serializable
 
     /**
      * Returns the index of this node in the whole dependency list
-     * 
+     *
      * @return
      */
     public int getIndex( )
@@ -104,7 +104,7 @@ public class DependencyListNode implements Serializable
 
     /**
      * Sets a new index for this node
-     * 
+     *
      * @param index
      *            The index to set
      */
@@ -121,7 +121,7 @@ public class DependencyListNode implements Serializable
 
     /**
      * Gets the node before the current node
-     * 
+     *
      * @return A node or null if there is no parent
      */
     public DependencyListNode getPrevious( )
@@ -131,7 +131,7 @@ public class DependencyListNode implements Serializable
 
     /**
      * Sets a new previous node for this node
-     * 
+     *
      * @param previous
      *            The new previous node to set
      */
@@ -142,7 +142,7 @@ public class DependencyListNode implements Serializable
 
     /**
      * Gets the node after the current node
-     * 
+     *
      * @return A node or null if there is no parent
      */
     public DependencyListNode getNext( )
@@ -152,7 +152,7 @@ public class DependencyListNode implements Serializable
 
     /**
      * Sets a new next node for this node
-     * 
+     *
      * @param next
      *            The new next node to set
      */

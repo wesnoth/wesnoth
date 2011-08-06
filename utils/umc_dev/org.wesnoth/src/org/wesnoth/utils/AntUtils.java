@@ -30,7 +30,7 @@ public class AntUtils
 {
     /**
      * Runs the specified ant file, and returns the output of the runned file
-     * 
+     *
      * @param antFile
      * @param properties
      *            the hasmap with userproperties to be added to the ant file
@@ -47,8 +47,9 @@ public class AntUtils
 
         try {
             out = new ByteArrayOutputStream( );
-            if( recordOutput )
+            if( recordOutput ) {
                 project.addBuildListener( AntUtils.createLogger( out ) );
+            }
 
             project.init( );
             File buildFile = new File( antFile );

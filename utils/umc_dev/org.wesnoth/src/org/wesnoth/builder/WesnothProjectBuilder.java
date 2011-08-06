@@ -48,7 +48,7 @@ import org.wesnoth.wml.WMLConfig;
 /**
  * The builder does the following steps in order to create and ensure
  * a correct PDL (Project Dependency Lits)
- * 
+ *
  * 1) remove REMOVED files from the PDL
  * 2) parse ADDED or CHANGED files, to check if new directory/file includes
  * happened
@@ -65,11 +65,13 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
             throws CoreException
     {
         project_ = getProject( );
-        if( WesnothInstallsUtils.setupInstallForResource( project_ ) == false )
+        if( WesnothInstallsUtils.setupInstallForResource( project_ ) == false ) {
             return null;
+        }
 
-        if( projectCache_ == null )
+        if( projectCache_ == null ) {
             projectCache_ = ProjectUtils.getCacheForProject( project_ );
+        }
 
         Logger.getInstance( ).log(
                 "Building project " + getProject( ).getName( ) + " ..." ); //$NON-NLS-1$
@@ -82,8 +84,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         Paths paths = Preferences.getPaths( installName );
 
         monitor.subTask( Messages.WesnothProjectBuilder_3 );
-        if( WorkspaceUtils.checkPathsAreSet( installName, true ) == false )
+        if( WorkspaceUtils.checkPathsAreSet( installName, true ) == false ) {
             return null;
+        }
         monitor.worked( 5 );
 
         monitor.subTask( "Creating the project list ..." );
@@ -96,21 +99,25 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         monitor.worked( 2 );
 
 
-        if( runAntJob( paths, monitor ) == false )
+        if( runAntJob( paths, monitor ) == false ) {
             return null;
+        }
 
         boolean readDefines = false;
 
         monitor.subTask( "Build started..." );
 
-        if( kind == FULL_BUILD )
+        if( kind == FULL_BUILD ) {
             readDefines = fullBuild( monitor );
+        }
         else {
             IResourceDelta delta = getDelta( project_ );
-            if( delta == null )
+            if( delta == null ) {
                 readDefines = fullBuild( monitor );
-            else
+            }
+            else {
                 readDefines = incrementalBuild( delta, monitor );
+            }
         }
 
         if( readDefines ) {
@@ -130,7 +137,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
     /**
      * Does a full build on this project
-     * 
+     *
      * @param monitor
      *            The monitor used to signal progress
      * @return True if there were config files processed
@@ -168,7 +175,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
     /**
      * Does an incremental build on this project
-     * 
+     *
      * @param delta
      *            The delta which contains the project modifications
      * @param monitor
@@ -208,21 +215,23 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                 }
                 else if( deltaKind == IResourceDelta.ADDED ) {
                     DependencyListNode newNode = list.addNode( file );
-                    if( newNode == null )
+                    if( newNode == null ) {
                         Logger.getInstance( ).logError(
                                 "Couldn't create a new" + "PDL node for file: "
                                         + file.getFullPath( ).toString( ) );
+                    }
                     else {
                         nodesToProcess.add( newNode );
                     }
                 }
                 else if( deltaKind == IResourceDelta.CHANGED ) {
                     DependencyListNode node = list.getNode( file );
-                    if( node == null )
+                    if( node == null ) {
                         Logger.getInstance( ).logError(
                                 "Couldn't find file "
                                         + file.getFullPath( ).toString( )
                                         + " in PDL!." );
+                    }
                     else {
                         nodesToProcess.add( node );
                         list.updateNode( node );
@@ -246,10 +255,12 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                     public int compare( DependencyListNode o1,
                             DependencyListNode o2 )
                     {
-                        if( o1.getIndex( ) < o2.getIndex( ) )
+                        if( o1.getIndex( ) < o2.getIndex( ) ) {
                             return - 1;
-                        else if( o1.getIndex( ) == o2.getIndex( ) )
+                        }
+                        else if( o1.getIndex( ) == o2.getIndex( ) ) {
                             return 0;
+                        }
 
                         return 1;
                     }
@@ -266,7 +277,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
     /**
      * Runs the ant job that copies the project in user add-ons directory
-     * 
+     *
      * @param paths
      *            The paths instance which contains the paths to wesnoth
      *            utilities
@@ -306,8 +317,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
             IProgressMonitor monitor )
     {
         monitor.worked( 5 );
-        if( resource.exists( ) == false || monitor.isCanceled( ) )
+        if( resource.exists( ) == false || monitor.isCanceled( ) ) {
             return false;
+        }
 
         // config files
         if( ResourceUtils.isConfigFile( resource ) ) {
@@ -325,7 +337,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                 List< String > defines = new ArrayList< String >( );
                 // parse the core only if we don't have any macros file
                 if( ! new File( macrosFilePath ).exists( ) )
+                 {
                     defines.add( "SKIP_CORE" ); //$NON-NLS-1$
+                }
 
                 // we use a single _MACROS_.cfg file for each project
                 PreprocessorUtils.getInstance( ).preprocessFile( file,
@@ -369,15 +383,16 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         }
 
         String[] output = StringUtils.getLines( tool.getErrorContent( ) );
-        for( String line: output )
+        for( String line: output ) {
             WMLTools.parseAndAddMarkers( line, Constants.MARKER_WMLLINT );
+        }
 
         monitor.worked( 20 );
     }
 
     /**
      * Run the wmlscope for the specified file
-     * 
+     *
      * @param monitor
      * @param file
      * @throws CoreException
@@ -400,8 +415,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         }
 
         String[] output = StringUtils.getLines( tool.getErrorContent( ) );
-        for( String line: output )
+        for( String line: output ) {
             WMLTools.parseAndAddMarkers( line, Constants.MARKER_WMLSCOPE );
+        }
         monitor.worked( 20 );
     }
 }

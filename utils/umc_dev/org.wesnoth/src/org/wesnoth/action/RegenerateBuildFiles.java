@@ -25,8 +25,9 @@ public class RegenerateBuildFiles extends ObjectActionDelegate
     @Override
     public void run( IAction action )
     {
-        if( structuredSelection_ == null )
+        if( structuredSelection_ == null ) {
             return;
+        }
 
         for( Iterator it = structuredSelection_.iterator( ); it.hasNext( ); ) {
             Object element = it.next( );

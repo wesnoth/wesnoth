@@ -88,7 +88,7 @@ public class ImportProjectPage extends WizardPageTemplate
 
     /**
      * Returns the imported project's path
-     * 
+     *
      * @return A string with the project path
      */
     public String getProjectPath( )
@@ -98,7 +98,7 @@ public class ImportProjectPage extends WizardPageTemplate
 
     /**
      * Returns the imported project's name
-     * 
+     *
      * @return A string with the imported project's name
      */
     public String getProjectName( )
@@ -108,7 +108,7 @@ public class ImportProjectPage extends WizardPageTemplate
 
     /**
      * Returns the selected install name
-     * 
+     *
      * @return A string with the selected install name
      */
     public String getSelectedInstallName( )

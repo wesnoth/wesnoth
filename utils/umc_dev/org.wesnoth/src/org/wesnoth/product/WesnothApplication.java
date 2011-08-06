@@ -26,10 +26,12 @@ public class WesnothApplication implements IApplication
         try {
             int returnCode = PlatformUI.createAndRunWorkbench( display,
                     new WesnothWorkbenchAdvisor( ) );
-            if( returnCode == PlatformUI.RETURN_RESTART )
+            if( returnCode == PlatformUI.RETURN_RESTART ) {
                 return IApplication.EXIT_RESTART;
-            else
+            }
+            else {
                 return IApplication.EXIT_OK;
+            }
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
             return IApplication.EXIT_OK;
@@ -41,16 +43,19 @@ public class WesnothApplication implements IApplication
     @Override
     public void stop( )
     {
-        if( ! PlatformUI.isWorkbenchRunning( ) )
+        if( ! PlatformUI.isWorkbenchRunning( ) ) {
             return;
+        }
 
         final IWorkbench workbench = PlatformUI.getWorkbench( );
         final Display display = workbench.getDisplay( );
         display.syncExec( new Runnable( ) {
+            @Override
             public void run( )
             {
-                if( ! display.isDisposed( ) )
+                if( ! display.isDisposed( ) ) {
                     workbench.close( );
+                }
             }
         } );
     }

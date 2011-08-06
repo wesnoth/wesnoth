@@ -32,12 +32,12 @@ public class Constants
      * The boolean value whether this machine is running windows or not
      */
     public static final boolean IS_WINDOWS_MACHINE       = MACHINE_OS
-                                                                 .contains( "windows" );                   //$NON-NLS-1$ //$NON-NLS-2$
+                                                                 .contains( "windows" );                   //$NON-NLS-1$
     /**
      * The boolean value whether this machine is running Machintosh or not
      */
     public static final boolean IS_MAC_MACHINE           = MACHINE_OS
-                                                                 .contains( "mac" );                       //$NON-NLS-1$ //$NON-NLS-2$
+                                                                 .contains( "mac" );                       //$NON-NLS-1$
 
     /** Preferences Constants **/
     public static final String  P_WESNOTH_EXEC_PATH      = "wesnoth_exec_path";                            //$NON-NLS-1$

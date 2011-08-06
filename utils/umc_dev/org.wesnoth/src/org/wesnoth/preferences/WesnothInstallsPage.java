@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.preference.DirectoryFieldEditor;
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FileFieldEditor;
@@ -350,14 +350,15 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
     private WesnothInstall getSelectedInstall( )
     {
-        if( installsTable_.getSelectionIndex( ) == - 1 )
+        if( installsTable_.getSelectionIndex( ) == - 1 ) {
             return null;
+        }
         return installs_.get( installsTable_.getSelection( )[0].getText( 0 ) );
     }
 
     /**
      * Updates the interface with the specified install
-     * 
+     *
      * @param install
      *            The install
      */
@@ -375,7 +376,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
     /**
      * Sets the fields's internal preference name based on the installPrefix
-     * 
+     *
      * @param installPrefix
      *            The install prefix
      * @param loadPreferences
@@ -439,10 +440,13 @@ public class WesnothInstallsPage extends AbstractPreferencePage
     private void guessDefaultPaths( )
     {
         String os = "linux"; //$NON-NLS-1$
-        if( Constants.IS_MAC_MACHINE )
+        if( Constants.IS_MAC_MACHINE ) {
             os = "mac"; //$NON-NLS-1$
+        }
         else if( Constants.IS_WINDOWS_MACHINE )
+         {
             os = "windows"; //$NON-NLS-1$
+        }
 
         List< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
         params.add( new ReplaceableParameter(
@@ -497,14 +501,14 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
     /**
      * Tests for wmltools in the specified path
-     * 
+     *
      * @param path
      * @return
      */
     private boolean testWMLToolsPath( String path )
     {
         for( String tool: wmlToolsList_ ) {
-            if( ! ( new File( path + Path.SEPARATOR + tool ).exists( ) ) ) {
+            if( ! ( new File( path + IPath.SEPARATOR + tool ).exists( ) ) ) {
                 setErrorMessage( String.format(
                         Messages.WesnothPreferencesPage_24, tool ) );
                 return false;
@@ -517,7 +521,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
      * Tests the list of paths and if any path exists it will
      * set it as the string value to the field editor
      * if the field editor value is empty
-     * 
+     *
      * @param list
      *            The list to search in
      * @param field
@@ -525,8 +529,9 @@ public class WesnothInstallsPage extends AbstractPreferencePage
      */
     private void testPaths( String[] list, StringFieldEditor field )
     {
-        if( ! ( field.getStringValue( ).isEmpty( ) ) )
+        if( ! ( field.getStringValue( ).isEmpty( ) ) ) {
             return;
+        }
 
         for( String path: list ) {
             if( new File( path ).exists( ) ) {
@@ -540,7 +545,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
      * Checks whether the fields are empty (contain no text)
      * and the combobox/name don't have any values also
      * (the user doesn't create a new install)
-     * 
+     *
      * @return
      */
     private boolean isFieldsEmpty( )
@@ -554,7 +559,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
     /**
      * Saves the current install
-     * 
+     *
      * @return true if the save was successfully, false otherwise
      */
     private boolean saveInstall( )
@@ -568,8 +573,9 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             if( installName.isEmpty( ) == true ) {
                 // if we haven't completed anything,
                 // we can skip the saving without alerting the user.
-                if( ! isFieldsEmpty )
+                if( ! isFieldsEmpty ) {
                     GUIUtils.showErrorMessageBox( Messages.WesnothInstallsPage_19 );
+                }
 
                 // we consider successfully save if the fields are all
                 // empty
@@ -591,8 +597,9 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             installs_.put( installName, newInstall );
 
             // if there is not any install set as default, set this one
-            if( Preferences.getDefaultInstallName( ).isEmpty( ) )
+            if( Preferences.getDefaultInstallName( ).isEmpty( ) ) {
                 setInstallAsDefault( newInstall );
+            }
 
             // we are creating a new install. Clear the editable
             // flag after we save it, to prevent renaming.
@@ -616,16 +623,25 @@ public class WesnothInstallsPage extends AbstractPreferencePage
     private boolean savePreferences( )
     {
         if( ! wesnothExecutableField_.isValid( ) )
+         {
             wesnothExecutableField_.setStringValue( "" ); //$NON-NLS-1$
+        }
         if( ! wesnothUserDirField_.isValid( ) )
+         {
             wesnothUserDirField_.setStringValue( "" ); //$NON-NLS-1$
+        }
         if( ! wesnothWorkingDirField_.isValid( ) )
+         {
             wesnothWorkingDirField_.setStringValue( "" ); //$NON-NLS-1$
+        }
         if( ! wmlToolsField_.isValid( ) )
+         {
             wmlToolsField_.setStringValue( "" ); //$NON-NLS-1$
+        }
 
-        if( saveInstall( ) == false )
+        if( saveInstall( ) == false ) {
             return false;
+        }
 
         WesnothInstallsUtils.setInstalls( installs_.values( ) );
         return true;
@@ -641,18 +657,21 @@ public class WesnothInstallsPage extends AbstractPreferencePage
     public void propertyChange( PropertyChangeEvent event )
     {
         super.propertyChange( event );
-        if( event.getProperty( ).equals( FieldEditor.VALUE ) )
+        if( event.getProperty( ).equals( FieldEditor.VALUE ) ) {
             checkState( );
+        }
     }
 
     private static class TableLabelProvider extends LabelProvider implements
             ITableLabelProvider
     {
+        @Override
         public Image getColumnImage( Object element, int columnIndex )
         {
             return null;
         }
 
+        @Override
         public String getColumnText( Object element, int columnIndex )
         {
             if( element instanceof WesnothInstall ) {
@@ -667,8 +686,9 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                 else if( columnIndex == 2 ) { // is Default ?
 
                     if( install.getName( ).equals(
-                            Preferences.getDefaultInstallName( ) ) )
+                            Preferences.getDefaultInstallName( ) ) ) {
                         return Messages.WesnothInstallsPage_21;
+                    }
 
                     return ""; //$NON-NLS-1$
                 }

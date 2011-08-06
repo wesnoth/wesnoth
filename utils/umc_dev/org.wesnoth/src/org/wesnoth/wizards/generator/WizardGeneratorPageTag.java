@@ -68,8 +68,9 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
 
         for( int i = startIndex_; i <= endIndex_; i++ ) {
             final WMLTag tag = tags_.get( i );
-            if( tag.is_Forbidden( ) )
+            if( tag.is_Forbidden( ) ) {
                 continue;
+            }
 
             Group tagGroup = new Group( container_, SWT.NONE );
             tagGroup.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
@@ -95,8 +96,9 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
                 @Override
                 public void widgetSelected( SelectionEvent e )
                 {
-                    if( ! ( e.getSource( ) instanceof Button ) )
+                    if( ! ( e.getSource( ) instanceof Button ) ) {
                         return;
+                    }
                     addNewItem( ( List ) ( ( Button ) e.getSource( ) )
                             .getData( "list" ), tag ); //$NON-NLS-1$
                 }
@@ -111,8 +113,9 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
                 @Override
                 public void widgetSelected( SelectionEvent e )
                 {
-                    if( ! ( e.getSource( ) instanceof Button ) )
+                    if( ! ( e.getSource( ) instanceof Button ) ) {
                         return;
+                    }
                     removeItem( ( List ) ( ( Button ) e.getSource( ) )
                             .getData( "list" ), tag.getName( ) ); //$NON-NLS-1$
                 }
@@ -162,8 +165,9 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
     {
         setPageComplete( false );
         for( Control control: container_.getChildren( ) ) {
-            if( ! ( control instanceof Group ) )
+            if( ! ( control instanceof Group ) ) {
                 continue;
+            }
 
             int cnt = ( ( List ) control.getData( "list" ) ).getItemCount( ); //$NON-NLS-1$
             WMLTag tag = ( WMLTag ) control.getData( "tag" ); //$NON-NLS-1$
