@@ -255,6 +255,16 @@ public class WMLKeyImpl extends WMLExpressionImpl implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getValue()
+  {
+     return org.wesnoth.utils.WMLUtils.getKeyValue( getValues( ) );
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {

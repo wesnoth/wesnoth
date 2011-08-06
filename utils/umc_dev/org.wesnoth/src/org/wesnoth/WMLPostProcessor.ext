@@ -48,7 +48,7 @@ process( EClass this ):
         createAttribute( "_InhertedTagName", estring() , "" ) ->
         createAttribute( "_NeedingExpansion", eboolean() , "false" ) ->
         createAttribute( "_Description", estring(), "" ) ->
-        
+
         createGenericOperation( "getWMLTags", 
             "EList<WMLTag> result = new org.eclipse.emf.common.util.BasicEList<WMLTag>();
         for ( WMLExpression expression : getExpressions( ) ) {
@@ -70,7 +70,11 @@ process( EClass this ):
     } else if name == "WMLKey" then {
         createAttribute( "_Enum", eboolean(), "false" ) ->
         createAttribute( "_Translatable", eboolean(), "false" ) ->
-        createAttribute( "_DataType", estring(), "" ) 
+        createAttribute( "_DataType", estring(), "" ) ->
+
+        createOperation( "getValue",
+            " return org.wesnoth.utils.WMLUtils.getKeyValue( getValues( ) );",
+            estring( ) )
     } else if name == "WMLGrammarElement" then {
 	    // make all WML Grammar inherit from Serializable
 	    eSuperTypes.add( ESerializable() )

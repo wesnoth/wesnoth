@@ -143,4 +143,13 @@ public interface WMLKey extends WMLExpression
    */
   void set_DataType(String value);
 
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body=' return org.wesnoth.utils.WMLUtils.getKeyValue( getValues( ) );'"
+   * @generated
+   */
+  String getValue();
+
 } // WMLKey
