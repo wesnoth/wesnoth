@@ -11,11 +11,12 @@ package org.wesnoth.ui.labeling.wmldoc;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.wesnoth.preprocessor.Define;
+import org.wesnoth.ui.Messages;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.widgets.Display;
-import org.wesnoth.preprocessor.Define;
-import org.wesnoth.ui.Messages;
 
 
 /**
@@ -27,10 +28,12 @@ public class WMLDocMacro implements IWMLDocProvider
 	private String title_;
 	private String contents_;
 	private List<StyleRange> styleRanges_;
+	private boolean docGenerated_;
 
 	public WMLDocMacro(Define macro)
 	{
 		macro_ = macro;
+		docGenerated_ = false;
 	}
 
 	/**
@@ -38,7 +41,7 @@ public class WMLDocMacro implements IWMLDocProvider
 	 */
 	private void generateDoc()
 	{
-		if (title_ != null && contents_ != null && styleRanges_ != null)
+		if ( docGenerated_ )
 			return;
 
 		styleRanges_ = new ArrayList<StyleRange>();
@@ -66,6 +69,8 @@ public class WMLDocMacro implements IWMLDocProvider
 		}
 
 		contents_ = content.toString();
+
+		docGenerated_ = true;
 	}
 
 	/**
@@ -111,6 +116,8 @@ public class WMLDocMacro implements IWMLDocProvider
 
 	public String getInfoText()
 	{
-		return ""; //$NON-NLS-1$
+	    if ( macro_.getLocation( ) == null )
+	        return null;
+		return "Defined in: " + macro_.getLocation( ) + " : " + macro_.getLineNum( );
 	}
 }

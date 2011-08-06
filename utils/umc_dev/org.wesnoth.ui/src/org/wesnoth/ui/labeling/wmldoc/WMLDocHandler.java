@@ -44,10 +44,11 @@ public class WMLDocHandler extends AbstractHandler
 
             editor.getDocument().readOnly(new IUnitOfWork.Void<XtextResource>()
             {
-                private WMLDocInformationPresenter presenter_;
                 @Override
                 public void process(XtextResource resource) throws Exception
                 {
+                    WMLDocInformationPresenter presenter_ = null;
+
                     ITextSelection selection = (ITextSelection) editor.getSelectionProvider().getSelection();
                     Point positionRelative = editor.getInternalSourceViewer().getTextWidget().getLocationAtOffset(selection.getOffset());
                     Point positionAbsolute = editor.getInternalSourceViewer().getTextWidget().toDisplay(positionRelative);
@@ -80,7 +81,8 @@ public class WMLDocHandler extends AbstractHandler
                         {
                             presenter_ = new WMLDocInformationPresenter(
                                     editor.getSite().getShell(),
-                                    new WMLDocTag( installName, ( ( WMLTag ) grammarElement ).getName() ),
+                                    new WMLDocTag( editedFile, installName,
+                                            ( ( WMLTag ) grammarElement ).getName() ),
                                     positionAbsolute);
                             presenter_.create();
                         }
