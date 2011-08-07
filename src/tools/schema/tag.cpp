@@ -45,6 +45,7 @@ namespace schema_validation{
 	 }else{
 		 if (cfg.has_attribute("default")){
 			 default_= cfg["default"].str();
+			 mandatory_ = false;
 		 }
 	 }
  }
