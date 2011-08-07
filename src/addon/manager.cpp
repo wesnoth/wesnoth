@@ -528,7 +528,7 @@ namespace {
 
 		LOG_NET << "uploading add-on...\n";
 		connection.transfer(request, response);
-		gui2::tnetwork_transmission upload_dialog(connection, _("Sending add-on"), "");
+		gui2::tnetwork_transmission upload_dialog(connection, _("Sending add-on"), "", true);
 		result = upload_dialog.show(disp.video());
 		if(!result) return;
 

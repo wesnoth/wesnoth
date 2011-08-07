@@ -65,6 +65,10 @@ class connection
 		boost::uint32_t num;
 	} handshake_response_;
 
+	std::size_t is_write_complete(
+		const boost::system::error_code& error,
+		std::size_t bytes_transferred
+		);
 	void handle_write(
 		const boost::system::error_code& ec,
 		std::size_t bytes_transferred
@@ -78,6 +82,8 @@ class connection
 		std::size_t bytes_transferred,
 		config& response
 		);
+	std::size_t bytes_to_write_;
+	std::size_t bytes_written_;
 	std::size_t bytes_to_read_;
 	std::size_t bytes_read_;
 
@@ -115,6 +121,14 @@ class connection
 	/** True if connected and no high-level operation is in progress */
 	bool done() const { return done_; }
 
+	std::size_t bytes_to_write() const
+	{
+		return bytes_to_write_;
+	}
+	std::size_t bytes_written() const
+	{
+		return bytes_written_;
+	}
 	std::size_t bytes_to_read() const
 	{
 		return bytes_to_read_;

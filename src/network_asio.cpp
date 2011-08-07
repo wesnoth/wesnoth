@@ -33,6 +33,8 @@ connection::connection(const std::string& host, const std::string& service)
 	, write_buf_()
 	, read_buf_()
 	, handshake_response_()
+	, bytes_to_write_(0)
+	, bytes_written_(0)
 	, bytes_to_read_(0)
 	, bytes_read_(0)
 {
@@ -107,13 +109,33 @@ void connection::transfer(const config& request, config& response)
 
 	std::ostream os(&write_buf_);
 	write_gz(os, request);
-	std::size_t size = write_buf_.size();
-	size = htonl(size);
+	bytes_to_write_ = write_buf_.size();
+	bytes_written_ = 0;
+	std::size_t size = htonl(bytes_to_write_);
 	boost::asio::write(socket_, boost::asio::buffer(reinterpret_cast<const char*>(&size), 4));
-	boost::asio::async_write(socket_, write_buf_, boost::bind(&connection::handle_write, this, _1, _2));
+	boost::asio::async_write(socket_, write_buf_,
+		boost::bind(&connection::is_write_complete, this, _1, _2),
+		boost::bind(&connection::handle_write, this, _1, _2)
+		);
 	boost::asio::async_read(socket_, read_buf_,
 		boost::bind(&connection::is_read_complete, this, _1, _2),
-		boost::bind(&connection::handle_read, this, _1, _2, boost::ref(response)));
+		boost::bind(&connection::handle_read, this, _1, _2, boost::ref(response))
+		);
+}
+
+std::size_t connection::is_write_complete(
+		const boost::system::error_code& ec,
+		std::size_t bytes_transferred
+		)
+{
+	if(ec)
+		throw system_error(ec);
+	bytes_written_ = bytes_transferred;
+#if BOOST_VERSION >= 103700
+	return bytes_to_write_ - bytes_transferred;
+#else
+	return bytes_to_write_ == bytes_transferred;
+#endif
 }
 
 void connection::handle_write(
@@ -159,6 +181,7 @@ void connection::handle_read(
 {
 	std::cout << "Read " << bytes_transferred << " bytes.\n";
 	bytes_to_read_ = 0;
+	bytes_to_write_ = 0;
 	done_ = true;
 	if(ec && ec != boost::asio::error::eof)
 		throw system_error(ec);

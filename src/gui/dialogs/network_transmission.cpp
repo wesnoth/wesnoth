@@ -38,9 +38,15 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 	if(connection_.done()) {
 		window_.get().set_retval(twindow::OK);
 	} else {
-		if(connection_.bytes_to_read()) {
-			size_t completed = connection_.bytes_read();
-			size_t total = connection_.bytes_to_read();
+		size_t completed, total;
+		if(track_upload_) {
+			completed = connection_.bytes_written();
+			total = connection_.bytes_to_write();
+		} else {
+			completed = connection_.bytes_read();
+			total = connection_.bytes_to_read();
+		}
+		if(total) {
 			find_widget<tprogress_bar>(&(window_.get()), "progress", false)
 				.set_percentage((completed*100)/total);
 
@@ -60,9 +66,10 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 tnetwork_transmission::tnetwork_transmission(
 		  network_asio::connection& connection
 		, const std::string& title
-		, const std::string& subtitle)
+		, const std::string& subtitle
+		, bool track_upload)
 	: connection_(connection)
-	, pump_monitor(connection)
+	, pump_monitor(connection, track_upload)
 	, subtitle_(subtitle)
 {
 	register_label("title", true, title, false);
