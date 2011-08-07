@@ -108,7 +108,7 @@ inline boost::shared_ptr<bool> lua_object<bool>::to_type(lua_State *L, int n)
 template <>
 inline boost::shared_ptr<int> lua_object<int>::to_type(lua_State *L, int n)
 {
-	return boost::shared_ptr<int>(new int(lua_tonumber(L, n)));
+	return boost::shared_ptr<int>(new int(lua_tointeger(L, n)));
 }
 
 template <>
