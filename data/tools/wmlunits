@@ -65,6 +65,7 @@ class Translation:
             try:
                 self.catalog[textdomain] = gettext.translation(
                     textdomain, self.localedir, [self.langcode])
+                self.catalog[textdomain].add_fallback(self.dummy)
             except IOError:
                 self.catalog[textdomain] = self.dummy
             except IndexError:
@@ -352,6 +353,13 @@ class HTMLOutput:
 
     def pic(self, u, x):
         image = self.wesnoth.get_unit_value(x, "image")
+        portrait = x.get_all(tag = "portrait")
+        if not portrait:
+            bu = self.wesnoth.get_base_unit(u)
+            if bu:
+                portrait = bu.get_all(tag = "portrait")
+        if portrait:
+            portrait = portrait[0].get_text_val("image")
         if not image:
             if x.name == "female":
                 baseunit = self.wesnoth.get_base_unit(u)
@@ -363,10 +371,13 @@ class HTMLOutput:
             error_message(
                 "Warning: Missing image for unit %s(%s).\n" % (
                 u.get_text_val("id"), x.name))
-            return None
+            return None, None
         picname = image_collector.add_image(u.campaign, image)
         image = os.path.join("../pics", picname)
-        return image
+        if portrait:
+            picname = image_collector.add_image(u.campaign, portrait)
+            portrait = os.path.join("../pics", picname)
+        return image, portrait
 
     def get_abilities(self, u):
         anames = []
@@ -480,7 +491,7 @@ class HTMLOutput:
                         write("<a href=\"%s\">%s</a><br/>" % (link, name))
 
                         write('<div class="pic">')
-                        image = self.pic(u, u)
+                        image, portrait = self.pic(u, u)
 
                         write('<a href=\"%s\">' % link)
 
@@ -592,16 +603,20 @@ class HTMLOutput:
                 display_name += "<br/>" + fname
 
         write("<h1>%s</h1>\n" % display_name)
+        
+        write('<div style="width: 60em; float: left">')
+        write('<div style="width: 40em; float: left">')
 
         write('<div class="pic">')
         if female:
-            mimage = self.pic(unit, unit)
-            fimage = self.pic(unit, female[0])
+            mimage, portrait = self.pic(unit, unit)
+            fimage, fportrait = self.pic(unit, female[0])
             if not fimage: fimage = mimage
+            if not fportrait: fportrait = portrait
             write('<img src="%s" alt="(image)" />\n' % mimage)
             write('<img src="%s" alt="(image)" />\n' % fimage)
         else:
-            image = self.pic(unit, unit)
+            image, portrait = self.pic(unit, unit)
             write('<img src="%s" alt="(image)" />\n' % image)
         write('</div>\n')
 
@@ -755,6 +770,9 @@ class HTMLOutput:
             write("<th>%s</th><td>%s</td>\n" % (_(rid), r))
             write("</tr>\n")
         write("</table>\n")
+        
+        write('</div>')
+        write('<div style="width: 20em; float:right">')
 
         # Write info about movement costs and terrain defense.
         write("<table class=\"unitinfo\">\n")
@@ -792,6 +810,19 @@ class HTMLOutput:
                 tname, ccell, c, dcell, d))
             write("</tr>\n")
         write("</table>\n")
+        
+        write('</div>')
+        
+        if portrait:
+            write('<div class="pic">')
+            if female:
+                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
+                write('<img width="200" src="%s" alt="(portrait)" />\n' % fportrait)
+            else:
+                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
+            write('</div>\n')
+        
+        write('</div>')
 
         write(html_footer)
 
