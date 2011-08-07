@@ -180,7 +180,7 @@ inline boost::shared_ptr<std::vector<target> > lua_object< std::vector<target> >
 		
 		lua_pushstring(L, "value");
 		lua_rawget(L, -2);
-		int value = lua_tonumber(L, -1);
+		int value = lua_tointeger(L, -1);
 		
 		map_location ml(x - 1, y - 1);
 		
