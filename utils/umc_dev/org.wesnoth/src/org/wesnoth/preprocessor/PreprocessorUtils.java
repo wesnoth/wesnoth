@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,14 +21,12 @@ import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.DialogSettings;
 
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
-import org.wesnoth.WesnothPlugin;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.projects.ProjectUtils;
@@ -44,7 +42,11 @@ public class PreprocessorUtils
         private static PreprocessorUtils instance_ = new PreprocessorUtils( );
     }
 
-    private Map< String, Long > filesTimeStamps_ = new HashMap< String, Long >( );
+    private Map< String, Long > filesTimeStamps_       = new HashMap< String, Long >( );
+
+    private static final String PREPROCESSED_FILE_PATH = WorkspaceUtils
+                                                               .getTemporaryFolder( )
+                                                               + "preprocessed.txt";
 
     private PreprocessorUtils( )
     {
@@ -62,18 +64,18 @@ public class PreprocessorUtils
      * if the file was modified since last time checked.
      * The target directory is the temporary directory + files's path relative
      * to project
-     *
+     * 
      * @param file
-     *            the file to process
+     *        the file to process
      * @param defines
-     *            the list of additional defines to be added when preprocessing
-     *            the file
+     *        the list of additional defines to be added when preprocessing
+     *        the file
      * @return
      */
     public int preprocessFile( IFile file, List< String > defines )
     {
-        return preprocessFile( file, getTemporaryLocation( file ),
-                getTemporaryLocation( file ) + "/_MACROS_.cfg", defines, true ); //$NON-NLS-1$
+        return preprocessFile( file, getPreprocessedFileLocation( file ),
+                getMacrosLocation( file ), defines, true );
     }
 
     /**
@@ -81,38 +83,38 @@ public class PreprocessorUtils
      * if the file was modified since last time checked.
      * The target directory is the temporary directory + files's path relative
      * to project
-     *
+     * 
      * @param file
-     *            the file to process
+     *        the file to process
      * @param macrosFile
-     *            The file where macros are stored
+     *        The file where macros are stored
      * @param defines
-     *            the list of additional defines to be added when preprocessing
-     *            the file
+     *        the list of additional defines to be added when preprocessing
+     *        the file
      * @return
      */
     public int preprocessFile( IFile file, String macrosFile,
             List< String > defines )
     {
-        return preprocessFile( file, getTemporaryLocation( file ), macrosFile,
-                defines, true );
+        return preprocessFile( file, getPreprocessedFileLocation( file ),
+                macrosFile, defines, true );
     }
 
     /**
      * preprocesses a file using the wesnoth's executable, only
      * if the file was modified since last time checked.
-     *
+     * 
      * @param file
-     *            the file to process
+     *        the file to process
      * @param targetDirectory
-     *            target directory where should be put the results
+     *        target directory where should be put the results
      * @param macrosFile
-     *            The file where macros are stored
+     *        The file where macros are stored
      * @param defines
-     *            the list of additional defines to be added when preprocessing
-     *            the file
+     *        the list of additional defines to be added when preprocessing
+     *        the file
      * @param waitForIt
-     *            true to wait for the preprocessing to finish
+     *        true to wait for the preprocessing to finish
      * @return
      *         -1 - we skipped preprocessing - file was already preprocessed
      *         0 - preprocessed succesfully
@@ -177,8 +179,7 @@ public class PreprocessorUtils
                 StringBuilder definesArg = new StringBuilder( );
                 for( Iterator< String > itor = defines.iterator( ); itor
                         .hasNext( ); ) {
-                    if( definesArg.length( ) > 0 )
-                     {
+                    if( definesArg.length( ) > 0 ) {
                         definesArg.append( "," ); //$NON-NLS-1$
                     }
 
@@ -204,12 +205,12 @@ public class PreprocessorUtils
 
     /**
      * Opens the preprocessed version of the specified file
-     *
+     * 
      * @param file
-     *            the file to show preprocessed output
+     *        the file to show preprocessed output
      * @param openPlain
-     *            true if it should open the plain preprocessed version
-     *            or false for the normal one
+     *        true if it should open the plain preprocessed version
+     *        or false for the normal one
      */
     public void openPreprocessedFileInEditor( IFile file, boolean openPlain )
     {
@@ -224,21 +225,21 @@ public class PreprocessorUtils
 
     /**
      * Returns the path of the preprocessed file of the specified file
-     *
+     * 
      * @param file
-     *            The file whom preprocessed file to get
+     *        The file whom preprocessed file to get
      * @param plain
-     *            True to return the plain version file's file
+     *        True to return the plain version file's file
      * @param create
-     *            if this is true, if the target preprocessed file
-     *            doesn't exist it will be created.
+     *        if this is true, if the target preprocessed file
+     *        doesn't exist it will be created.
      * @return
      */
     public IFileStore getPreprocessedFilePath( IFile file, boolean plain,
             boolean create )
     {
         IFileStore preprocFile = EFS.getLocalFileSystem( ).getStore(
-                new Path( getTemporaryLocation( file ) ) );
+                new Path( getPreprocessedFileLocation( file ) ) );
         preprocFile = preprocFile.getChild( file.getName( )
                 + ( plain == true ? ".plain": "" ) ); //$NON-NLS-1$ //$NON-NLS-2$
         if( create && ! preprocFile.fetchInfo( ).exists( ) ) {
@@ -249,11 +250,11 @@ public class PreprocessorUtils
 
     /**
      * Gets the temporary location where that file should be preprocessed
-     *
+     * 
      * @param file
      * @return
      */
-    public String getTemporaryLocation( IFile file )
+    public String getPreprocessedFileLocation( IFile file )
     {
         String targetDirectory = WorkspaceUtils.getTemporaryFolder( );
         targetDirectory += file.getProject( ).getName( ) + "/"; //$NON-NLS-1$
@@ -266,11 +267,11 @@ public class PreprocessorUtils
     /**
      * Gets the location where the '_MACROS_.cfg' file is for the
      * specified resource.
-     *
+     * 
      * Currently we store just a defines file per project.
-     *
+     * 
      * @param resource
-     *            The resource to get the location for
+     *        The resource to get the location for
      * @return A string that points to the macros file.
      */
     public String getMacrosLocation( IResource resource )
@@ -286,8 +287,6 @@ public class PreprocessorUtils
      */
     public void saveTimestamps( )
     {
-        String filename = WorkspaceUtils.getTemporaryFolder( )
-                + "preprocessed.txt"; //$NON-NLS-1$
         DialogSettings settings = new DialogSettings( "preprocessed" ); //$NON-NLS-1$
         try {
             settings.put(
@@ -298,7 +297,7 @@ public class PreprocessorUtils
             }
             settings.put(
                     "timestamps", timestamps.toArray( new String[timestamps.size( )] ) ); //$NON-NLS-1$
-            settings.save( filename );
+            settings.save( PREPROCESSED_FILE_PATH );
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
         }
@@ -310,18 +309,16 @@ public class PreprocessorUtils
      */
     public void restoreTimestamps( )
     {
-        IPath path = WesnothPlugin.getDefault( ).getStateLocation( );
-        String filename = path.append( "preprocessed.txt" ).toOSString( ); //$NON-NLS-1$
         DialogSettings settings = new DialogSettings( "preprocessed" ); //$NON-NLS-1$
         filesTimeStamps_.clear( );
 
         try {
             // ensure the creation of a valid file if it doesn't exist
-            if( new File( filename ).exists( ) == false ) {
-                settings.save( filename );
+            if( ! new File( PREPROCESSED_FILE_PATH ).exists( ) ) {
+                settings.save( PREPROCESSED_FILE_PATH );
             }
 
-            settings.load( filename );
+            settings.load( PREPROCESSED_FILE_PATH );
             String[] timestamps = settings.getArray( "timestamps" ); //$NON-NLS-1$
             String[] files = settings.getArray( "files" ); //$NON-NLS-1$
             if( timestamps != null && files != null
@@ -338,9 +335,9 @@ public class PreprocessorUtils
 
     /**
      * Clears all timestamps cached for files that are located in that path
-     *
+     * 
      * @param path
-     *            The path to match the files to clear their timestamp
+     *        The path to match the files to clear their timestamp
      */
     public void clearTimestampsForPath( String path )
     {
