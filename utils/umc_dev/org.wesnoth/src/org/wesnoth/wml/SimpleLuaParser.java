@@ -56,14 +56,14 @@ public class SimpleLuaParser
         try {
             while( ( line = reader.readLine( ) ) != null ) {
                 List< String > tagTokens = StringUtils.getGroups( TAG_REGEX,
-                        line );
+                    line );
 
                 // we handle just on tag per line
                 if( ! tagTokens.isEmpty( ) ) {
                     String token = tagTokens.get( 0 );
                     // parse the tag name
                     String tagName = token.substring( token.indexOf( '.' ) + 1,
-                            token.lastIndexOf( '(' ) );
+                        token.lastIndexOf( '(' ) );
 
                     currentTag = WmlFactory2.eINSTANCE.createWMLTag( tagName );
                     currentTag.set_LuaBased( true );
@@ -79,26 +79,26 @@ public class SimpleLuaParser
                 // parse the attributes
                 if( currentTag != null ) {
                     List< String > attributeTokens = StringUtils.getGroups(
-                            ATTRIBUTE_REGEX, line );
+                        ATTRIBUTE_REGEX, line );
                     for( String token: attributeTokens ) {
                         String attributeName = token.substring( token
-                                .indexOf( '.' ) + 1 );
+                            .indexOf( '.' ) + 1 );
 
                         currentTag.getExpressions( ).add(
-                                WmlFactory2.eINSTANCE.createWMLKey(
-                                        attributeName, "string", '1', false ) );
+                            WmlFactory2.eINSTANCE.createWMLKey(
+                                attributeName, "string", '1', false ) );
                     }
 
                     List< String > childTokens = StringUtils.getGroups(
-                            ATTRIBUTE_CHILD_REGEX, line );
+                        ATTRIBUTE_CHILD_REGEX, line );
                     for( String token: childTokens ) {
                         String childName = token.substring(
-                                token.indexOf( '"' ) + 1,
-                                token.lastIndexOf( '"' ) );
+                            token.indexOf( '"' ) + 1,
+                            token.lastIndexOf( '"' ) );
 
                         currentTag.getExpressions( ).add(
-                                WmlFactory2.eINSTANCE.createWMLKey( childName,
-                                        "string", '1', false ) );
+                            WmlFactory2.eINSTANCE.createWMLKey( childName,
+                                "string", '1', false ) );
                     }
                 }
 

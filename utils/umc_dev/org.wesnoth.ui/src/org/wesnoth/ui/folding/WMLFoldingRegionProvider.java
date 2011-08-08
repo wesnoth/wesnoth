@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,16 +44,16 @@ public class WMLFoldingRegionProvider extends DefaultFoldingRegionProvider
 
     @Override
     protected void computeObjectFolding( EObject eObject,
-            IFoldingRegionAcceptor< ITextRegion > foldingRegionAcceptor )
+        IFoldingRegionAcceptor< ITextRegion > foldingRegionAcceptor )
     {
         // copied from "DefaultFoldingRegionProvider
         ITextRegion region = locationInFileProvider.getFullTextRegion( eObject );
         if( region != null ) {
             ITextRegion significant = locationInFileProvider
-                    .getSignificantTextRegion( eObject );
+                .getSignificantTextRegion( eObject );
             if( significant == null ) {
                 throw new NullPointerException(
-                        "significant region may not be null" );
+                    "significant region may not be null" );
             }
             int offset = region.getOffset( );
             int length = region.getLength( );

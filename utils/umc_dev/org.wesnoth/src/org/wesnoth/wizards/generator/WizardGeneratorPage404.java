@@ -37,8 +37,8 @@ public class WizardGeneratorPage404 extends WizardPageTemplate
         setControl( container );
 
         Font font = new Font( Display.getDefault( ).getSystemFont( )
-                .getDevice( ), Display.getDefault( ).getSystemFont( )
-                .getFontData( )[0].getName( ), 20, SWT.NORMAL );
+            .getDevice( ), Display.getDefault( ).getSystemFont( )
+            .getFontData( )[0].getName( ), 20, SWT.NORMAL );
         Label lblThisIsSooo = new Label( container, SWT.WRAP );
         lblThisIsSooo.setFont( font );
         lblThisIsSooo.setBounds( 10, 89, 554, 137 );

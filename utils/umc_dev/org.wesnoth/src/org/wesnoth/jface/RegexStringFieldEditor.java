@@ -26,7 +26,7 @@ public class RegexStringFieldEditor extends StringFieldEditor
      *        doesn't match the regex
      */
     public RegexStringFieldEditor( String name, String labelText, String regex,
-            String errorMessage, Composite parent )
+        String errorMessage, Composite parent )
     {
         super( name, labelText, parent );
         regex_ = regex;

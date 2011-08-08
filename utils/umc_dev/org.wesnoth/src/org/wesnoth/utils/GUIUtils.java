@@ -32,7 +32,7 @@ public class GUIUtils
     public static int showInfoMessageBox( final String message )
     {
         return showMessageBox( WorkspaceUtils.getWorkbenchWindow( ), message,
-                SWT.ICON_INFORMATION );
+            SWT.ICON_INFORMATION );
     }
 
     /**
@@ -46,7 +46,7 @@ public class GUIUtils
     public static int showWarnMessageBox( final String message )
     {
         return showMessageBox( WorkspaceUtils.getWorkbenchWindow( ), message,
-                SWT.ICON_WARNING );
+            SWT.ICON_WARNING );
     }
 
     /**
@@ -60,7 +60,7 @@ public class GUIUtils
     public static int showErrorMessageBox( final String message )
     {
         return showMessageBox( WorkspaceUtils.getWorkbenchWindow( ), message,
-                SWT.ICON_ERROR );
+            SWT.ICON_ERROR );
     }
 
     /**
@@ -74,7 +74,7 @@ public class GUIUtils
     public static int showMessageBox( final String message, final int style )
     {
         return showMessageBox( WorkspaceUtils.getWorkbenchWindow( ), message,
-                style );
+            style );
     }
 
     /**
@@ -86,7 +86,7 @@ public class GUIUtils
      *        the message to print
      */
     public static int showMessageBox( final IWorkbenchWindow window,
-            final String message )
+        final String message )
     {
         return showMessageBox( window, message, SWT.ICON_INFORMATION );
     }
@@ -100,7 +100,7 @@ public class GUIUtils
      *        the message to print
      */
     public static int showMessageBox( final IWorkbenchWindow window,
-            final String message, final int style )
+        final String message, final int style )
     {
         if( window == null || window.getShell( ) == null || message == null ) {
             return - 1;
@@ -136,11 +136,11 @@ public class GUIUtils
      * @return
      */
     public static MessageConsole createConsole( String consoleTitle,
-            ImageDescriptor imageDescriptor, boolean activate )
+        ImageDescriptor imageDescriptor, boolean activate )
     {
         MessageConsole console = null;
         IConsoleManager conMan = ConsolePlugin.getDefault( )
-                .getConsoleManager( );
+            .getConsoleManager( );
         IConsole[] existing = conMan.getConsoles( );
         for( int i = 0; i < existing.length; i++ ) {
             if( consoleTitle.equals( existing[i].getName( ) ) ) {

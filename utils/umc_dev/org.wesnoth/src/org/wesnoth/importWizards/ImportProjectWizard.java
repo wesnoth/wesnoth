@@ -11,7 +11,7 @@ import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.wizards.WizardTemplate;
 
 public class ImportProjectWizard extends WizardTemplate implements
-        IImportWizard
+    IImportWizard
 {
     private ImportProjectPage page0_;
 
@@ -37,8 +37,8 @@ public class ImportProjectWizard extends WizardTemplate implements
             public void run( IProgressMonitor monitor )
             {
                 ProjectUtils.createWesnothProject( page0_.getProjectName( ),
-                        page0_.getProjectPath( ),
-                        page0_.getSelectedInstallName( ), monitor );
+                    page0_.getProjectPath( ),
+                    page0_.getSelectedInstallName( ), monitor );
                 monitor.done( );
             }
         };

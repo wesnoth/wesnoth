@@ -64,8 +64,8 @@ public class ExternalToolInvoker
 
         processBuilder_ = new ProcessBuilder( commandline );
         Logger.getInstance( ).logTool(
-                String.format( "Invoking tool %s with args: %s", //$NON-NLS-1$
-                        fileName, arguments ) );
+            String.format( "Invoking tool %s with args: %s", //$NON-NLS-1$
+                fileName, arguments ) );
 
         outputContent_ = new StringBuilder( );
         errorContent_ = new StringBuilder( );
@@ -85,10 +85,10 @@ public class ExternalToolInvoker
             Reader stderrReader = null;
 
             if( arguments_.get( 0 ).toLowerCase( Locale.ENGLISH )
-                    .contains( "wesnoth.exe" ) && //$NON-NLS-1$
-                    Constants.IS_WINDOWS_MACHINE ) {
+                .contains( "wesnoth.exe" ) && //$NON-NLS-1$
+                Constants.IS_WINDOWS_MACHINE ) {
                 String wesnothParent = new File( arguments_.get( 0 ) )
-                        .getParent( ) + "/"; //$NON-NLS-1$
+                    .getParent( ) + "/"; //$NON-NLS-1$
                 if( new File( wesnothParent + "stdout.txt" ).exists( ) ) {
                     stdoutReader = new FileReader( wesnothParent + "stdout.txt" ); //$NON-NLS-1$
                 }
@@ -385,11 +385,11 @@ public class ExternalToolInvoker
      * @return
      */
     public static ExternalToolInvoker launchTool( final String fileName,
-            final List< String > args, final OutputStream[] stdout,
-            final OutputStream[] stderr )
+        final List< String > args, final OutputStream[] stdout,
+        final OutputStream[] stderr )
     {
         final ExternalToolInvoker toolInvoker = new ExternalToolInvoker(
-                fileName, args );
+            fileName, args );
         toolInvoker.runTool( );
         Thread outputStreamThread = new Thread( new Runnable( ) {
             @Override

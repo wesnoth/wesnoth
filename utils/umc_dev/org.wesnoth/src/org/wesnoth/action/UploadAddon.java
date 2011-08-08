@@ -30,23 +30,23 @@ public class UploadAddon extends ObjectActionDelegate
     public void run( IAction action )
     {
         final String fullPath = WorkspaceUtils.getSelectedResource( )
-                .getLocation( ).toOSString( );
+            .getLocation( ).toOSString( );
         ProgressMonitorDialog dialog = new ProgressMonitorDialog(
-                WesnothPlugin.getShell( ) );
+            WesnothPlugin.getShell( ) );
         try {
             dialog.run( false, false, new IRunnableWithProgress( ) {
                 @Override
                 public void run( IProgressMonitor monitor )
-                        throws InvocationTargetException, InterruptedException
+                    throws InvocationTargetException, InterruptedException
                 {
                     monitor.beginTask( Messages.UploadAddon_0, 50 );
                     monitor.worked( 10 );
                     OutputStream consoleStream = GUIUtils.createConsole(
-                            Messages.UploadAddon_1, null, true )
-                            .newOutputStream( );
+                        Messages.UploadAddon_1, null, true )
+                        .newOutputStream( );
                     WMLTools.uploadWesnothAddon( fullPath,
-                            new OutputStream[] { consoleStream },
-                            new OutputStream[] { consoleStream } );
+                        new OutputStream[] { consoleStream },
+                        new OutputStream[] { consoleStream } );
                     monitor.worked( 40 );
                     monitor.done( );
                 }

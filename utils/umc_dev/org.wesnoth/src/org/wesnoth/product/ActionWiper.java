@@ -23,25 +23,25 @@ import org.wesnoth.Messages;
 public class ActionWiper implements IStartup, IPerspectiveListener
 {
     private static final String[] ACTIONS_2_WIPE = new String[] {
-            "org.eclipse.search.searchActionSet", //$NON-NLS-1$
-            "org.eclipse.debug.ui.breakpointActionSet", //$NON-NLS-1$
-            "org.eclipse.debug.ui.debugActionSet", //$NON-NLS-1$
-            "org.eclipse.debug.ui.launchActionSet", //$NON-NLS-1$
-            "org.eclipse.debug.ui.profileActionSet", //$NON-NLS-1$
-            "org.eclipse.ui.externaltools.ExternalToolsSet" //$NON-NLS-1$
+        "org.eclipse.search.searchActionSet", //$NON-NLS-1$
+        "org.eclipse.debug.ui.breakpointActionSet", //$NON-NLS-1$
+        "org.eclipse.debug.ui.debugActionSet", //$NON-NLS-1$
+        "org.eclipse.debug.ui.launchActionSet", //$NON-NLS-1$
+        "org.eclipse.debug.ui.profileActionSet", //$NON-NLS-1$
+        "org.eclipse.ui.externaltools.ExternalToolsSet" //$NON-NLS-1$
                                                  // "org.eclipse.ui.edit.text.actionSet.presentation",
-                                                 // "org.eclipse.ui.edit.text.actionSet.openExternalFile",
-                                                 // "org.eclipse.ui.edit.text.actionSet.annotationNavigation",
-                                                 // "org.eclipse.ui.edit.text.actionSet.navigation",
-                                                 // "org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo",
-                                                 // "org.eclipse.update.ui.softwareUpdates"
+                                                     // "org.eclipse.ui.edit.text.actionSet.openExternalFile",
+                                                     // "org.eclipse.ui.edit.text.actionSet.annotationNavigation",
+                                                     // "org.eclipse.ui.edit.text.actionSet.navigation",
+                                                     // "org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo",
+                                                     // "org.eclipse.update.ui.softwareUpdates"
                                                  };
 
     @Override
     public void earlyStartup( )
     {
         IWorkbenchWindow[] windows = PlatformUI.getWorkbench( )
-                .getWorkbenchWindows( );
+            .getWorkbenchWindows( );
         for( int i = 0; i < windows.length; i++ ) {
             IWorkbenchPage page = windows[i].getActivePage( );
             if( page != null ) {
@@ -74,14 +74,14 @@ public class ActionWiper implements IStartup, IPerspectiveListener
 
     @Override
     public void perspectiveActivated( IWorkbenchPage page,
-            IPerspectiveDescriptor perspective )
+        IPerspectiveDescriptor perspective )
     {
         wipeActions( page );
     }
 
     @Override
     public void perspectiveChanged( IWorkbenchPage page,
-            IPerspectiveDescriptor perspective, String changeId )
+        IPerspectiveDescriptor perspective, String changeId )
     {
     }
 }

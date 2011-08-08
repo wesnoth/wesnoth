@@ -75,7 +75,7 @@ public class ScenarioNewWizard extends WizardTemplate
 
         if( selectionContainer_ != null ) {
             Map< String, String > props = ProjectUtils
-                    .getPropertiesForProject( selectionContainer_.getProject( ) );
+                .getPropertiesForProject( selectionContainer_.getProject( ) );
             if( props.get( "difficulties" ) != null ) //$NON-NLS-1$
             {
                 page1_ = new ScenarioPage1( );
@@ -101,7 +101,7 @@ public class ScenarioNewWizard extends WizardTemplate
         IRunnableWithProgress op = new IRunnableWithProgress( ) {
             @Override
             public void run( IProgressMonitor monitor )
-                    throws InvocationTargetException
+                throws InvocationTargetException
             {
                 try {
                     doFinish( containerName, fileName, monitor );
@@ -129,7 +129,7 @@ public class ScenarioNewWizard extends WizardTemplate
      * file.
      */
     private void doFinish( String containerName, String fileName,
-            IProgressMonitor monitor ) throws Exception
+        IProgressMonitor monitor ) throws Exception
     {
         monitor.beginTask( Messages.ScenarioNewWizard_2 + fileName, 2 );
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace( ).getRoot( );
@@ -137,7 +137,7 @@ public class ScenarioNewWizard extends WizardTemplate
 
         if( ! resource.exists( ) || ! ( resource instanceof IContainer ) ) {
             throw new Exception(
-                    "Container " + containerName + " does not exist." ); //$NON-NLS-1$ //$NON-NLS-2$
+                "Container " + containerName + " does not exist." ); //$NON-NLS-1$ //$NON-NLS-2$
         }
 
         final IContainer container = ( IContainer ) resource;
@@ -159,7 +159,7 @@ public class ScenarioNewWizard extends WizardTemplate
 
             stream.close( );
             container.refreshLocal( IResource.DEPTH_INFINITE,
-                    new NullProgressMonitor( ) );
+                new NullProgressMonitor( ) );
         } catch( IOException e ) {
             Logger.getInstance( ).logException( e );
         }
@@ -171,7 +171,7 @@ public class ScenarioNewWizard extends WizardTemplate
             public void run( )
             {
                 IWorkbenchPage page = PlatformUI.getWorkbench( )
-                        .getActiveWorkbenchWindow( ).getActivePage( );
+                    .getActiveWorkbenchWindow( ).getActivePage( );
                 try {
                     IDE.openEditor( page, file, true );
                 } catch( PartInitException e ) {
@@ -188,38 +188,38 @@ public class ScenarioNewWizard extends WizardTemplate
      * @throws Exception
      */
     private InputStream getScenarioStream( IContainer container )
-            throws Exception
+        throws Exception
     {
         ArrayList< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
 
         // common variables (sp + mp)
         params.add( new ReplaceableParameter(
-                "$$scenario_id", page0_.getScenarioId( ) ) ); //$NON-NLS-1$
+            "$$scenario_id", page0_.getScenarioId( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter(
-                "$$next_scenario_id", page0_.getNextScenarioId( ) ) ); //$NON-NLS-1$
+            "$$next_scenario_id", page0_.getNextScenarioId( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter(
-                "$$scenario_name", page0_.getScenarioName( ) ) ); //$NON-NLS-1$
+            "$$scenario_name", page0_.getScenarioName( ) ) ); //$NON-NLS-1$
 
         String mapData = ""; //$NON-NLS-1$
         if( ! page0_.getMapData( ).isEmpty( ) ) {
             String userMapPath = page0_.getMapData( ).replace( "~add-ons", //$NON-NLS-1$
-                    container.getParent( ).getLocation( ).toOSString( ) + "/" ); //$NON-NLS-1$
+                container.getParent( ).getLocation( ).toOSString( ) + "/" ); //$NON-NLS-1$
             // trim the '{' and '}'
             userMapPath = userMapPath.substring( 1, userMapPath.length( ) - 1 );
 
             if( ! page0_.getIsMapEmbedded( ) ) {
                 mapData = page0_.getMapData( );
                 ResourceUtils.copyTo( new File( page0_.getRawMapPath( ) ),
-                        new File( userMapPath ) );
+                    new File( userMapPath ) );
             }
             else {
                 mapData = ResourceUtils
-                        .getFileContents( new File( userMapPath ) );
+                    .getFileContents( new File( userMapPath ) );
             }
         }
         params.add( new ReplaceableParameter( "$$map_data", mapData ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter(
-                "$$turns_number", String.valueOf( page0_.getTurnsNumber( ) ) ) ); //$NON-NLS-1$
+            "$$turns_number", String.valueOf( page0_.getTurnsNumber( ) ) ) ); //$NON-NLS-1$
 
         String startingGold = ""; //$NON-NLS-1$
         if( page1_ != null ) {
@@ -228,20 +228,21 @@ public class ScenarioNewWizard extends WizardTemplate
                 throw new Exception( "incorrect arguments" ); //$NON-NLS-1$
             }
         }
-        params.add( new ReplaceableParameter( "$$starting_gold", startingGold ) ); //$NON-NLS-1$
+        params
+            .add( new ReplaceableParameter( "$$starting_gold", startingGold ) ); //$NON-NLS-1$
 
         // multiplayer only variables
         params.add( new ReplaceableParameter(
-                "$$allow_new_game", page2_.getAllowNewGame( ) ) ); //$NON-NLS-1$
+            "$$allow_new_game", page2_.getAllowNewGame( ) ) ); //$NON-NLS-1$
 
         String template = TemplateProvider
-                .getInstance( )
-                .getProcessedTemplate(
-                        page2_.isMultiplayerScenario( ) ? "multiplayer": "scenario", params ); //$NON-NLS-1$ //$NON-NLS-2$
+            .getInstance( )
+            .getProcessedTemplate(
+                page2_.isMultiplayerScenario( ) ? "multiplayer": "scenario", params ); //$NON-NLS-1$ //$NON-NLS-2$
 
         if( template == null ) {
             GUIUtils.showMessageBox( WorkspaceUtils.getWorkbenchWindow( ),
-                    Messages.ScenarioNewWizard_20 );
+                Messages.ScenarioNewWizard_20 );
             return null;
         }
 

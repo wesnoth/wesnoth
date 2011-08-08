@@ -29,7 +29,7 @@ public class WizardGenerator extends WizardTemplate
         SchemaParser.getInstance( null ).parseSchema( false );
         setWindowTitle( title );
         WMLTag tagContent = SchemaParser.getInstance( null ).getTags( )
-                .get( tagName );
+            .get( tagName );
 
         tagName_ = tagName;
         indent_ = indent;
@@ -44,15 +44,15 @@ public class WizardGenerator extends WizardTemplate
             WizardGeneratorPageKey tempPageKey;
             for( int i = 0; i < pgsKey; i++ ) {
                 tempPageKey = new WizardGeneratorPageKey( tagName, keys,
-                        startKey, startKey + Constants.WIZ_MaxTextBoxesOnPage,
-                        indent_ + 1 );
+                    startKey, startKey + Constants.WIZ_MaxTextBoxesOnPage,
+                    indent_ + 1 );
                 startKey += Constants.WIZ_MaxTextBoxesOnPage;
                 addPage( tempPageKey );
             }
 
             if( keysNr - 1 > 0 ) {
                 tempPageKey = new WizardGeneratorPageKey( tagName, keys,
-                        startKey, keysNr - 1, indent_ + 1 );
+                    startKey, keysNr - 1, indent_ + 1 );
                 addPage( tempPageKey );
             }
 
@@ -63,14 +63,14 @@ public class WizardGenerator extends WizardTemplate
             WizardGeneratorPageTag tempPageTag;
             for( int i = 0; i < pgsTag; i++ ) {
                 tempPageTag = new WizardGeneratorPageTag( tagName, tags,
-                        startTag, startTag + Constants.WIZ_MaxGroupsOnPage,
-                        indent_ + 1 );
+                    startTag, startTag + Constants.WIZ_MaxGroupsOnPage,
+                    indent_ + 1 );
                 startTag += Constants.WIZ_MaxTextBoxesOnPage;
                 addPage( tempPageTag );
             }
             if( tagsNr - 1 > 0 ) {
                 tempPageTag = new WizardGeneratorPageTag( tagName, tags,
-                        startTag, tagsNr - 1, indent_ + 1 );
+                    startTag, tagsNr - 1, indent_ + 1 );
                 addPage( tempPageTag );
             }
 

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,9 +40,9 @@ public class MapOpenerHyperlink extends XtextHyperlink
     {
         if( ! new File( location_ ).exists( ) ) {
             if( GUIUtils
-                    .showMessageBox(
-                            "The map doesn't exist. Do you want to create a default one and open that?",
-                            SWT.YES | SWT.NO ) == SWT.NO ) {
+                .showMessageBox(
+                    "The map doesn't exist. Do you want to create a default one and open that?",
+                    SWT.YES | SWT.NO ) == SWT.NO ) {
                 return;
             }
 
@@ -51,7 +51,7 @@ public class MapOpenerHyperlink extends XtextHyperlink
             try {
                 writer = new FileWriter( location_ );
                 writer.write( TemplateProvider.getInstance( ).getTemplate(
-                        "map" ) );
+                    "map" ) );
                 writer.close( );
             } catch( IOException e ) {
                 Logger.getInstance( ).logException( e );

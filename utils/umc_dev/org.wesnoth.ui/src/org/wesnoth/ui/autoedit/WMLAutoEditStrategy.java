@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,6 @@ public class WMLAutoEditStrategy extends DefaultAutoEditStrategyProvider
         super.configure( acceptor );
         configureStringLiteral( acceptor );
         acceptor.accept( new ClosingEndTagAutoEditStrategy( ),
-                IDocument.DEFAULT_CONTENT_TYPE );
+            IDocument.DEFAULT_CONTENT_TYPE );
     }
 }

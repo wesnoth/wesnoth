@@ -25,7 +25,7 @@ public class WesnothApplication implements IApplication
         Logger.getInstance( ).startLogger( );
         try {
             int returnCode = PlatformUI.createAndRunWorkbench( display,
-                    new WesnothWorkbenchAdvisor( ) );
+                new WesnothWorkbenchAdvisor( ) );
             if( returnCode == PlatformUI.RETURN_RESTART ) {
                 return IApplication.EXIT_RESTART;
             }

@@ -43,7 +43,7 @@ public class DefinesSAXHandler extends DefaultHandler
 
     @Override
     public void startElement( String uri, String localName, String qName,
-            Attributes attributes ) throws SAXException
+        Attributes attributes ) throws SAXException
     {
         super.startElement( uri, localName, qName, attributes );
         stack_.push( qName );
@@ -51,7 +51,7 @@ public class DefinesSAXHandler extends DefaultHandler
 
     @Override
     public void endElement( String uri, String localName, String qName )
-            throws SAXException
+        throws SAXException
     {
         super.endElement( uri, localName, qName );
         stack_.pop( );
@@ -60,7 +60,7 @@ public class DefinesSAXHandler extends DefaultHandler
         {
             // create the define
             defines_.put( name_, new Define( name_, value_, textdomain_,
-                    linenum_, location_, arguments_ ) );
+                linenum_, location_, arguments_ ) );
             // reset values
             resetValues( );
         }
@@ -68,7 +68,7 @@ public class DefinesSAXHandler extends DefaultHandler
 
     @Override
     public void characters( char[] ch, int start, int length )
-            throws SAXException
+        throws SAXException
     {
         super.characters( ch, start, length );
         if( stack_.isEmpty( ) ) {

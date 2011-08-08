@@ -64,7 +64,7 @@ public class CampaignPage1 extends WizardPageTemplate
 
         txtCampaignName_ = new Text( container, SWT.BORDER );
         GridData gd_txtCampaignName_ = new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 );
+            false, false, 1, 1 );
         gd_txtCampaignName_.heightHint = 15;
         txtCampaignName_.setLayoutData( gd_txtCampaignName_ );
         txtCampaignName_.addModifyListener( updatePageCompleteListener );
@@ -75,7 +75,7 @@ public class CampaignPage1 extends WizardPageTemplate
 
         txtVersion_ = new Text( container, SWT.BORDER );
         txtVersion_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         txtVersion_.addModifyListener( updatePageCompleteListener );
 
         Label lblFormat = new Label( container, SWT.NONE );
@@ -87,11 +87,11 @@ public class CampaignPage1 extends WizardPageTemplate
 
         txtTranslationDir_ = new Text( container, SWT.BORDER );
         txtTranslationDir_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 ) );
+            false, false, 1, 1 ) );
 
         chkMultiCampaign_ = new Button( container, SWT.CHECK );
         GridData gd_chkMultiCampaign_ = new GridData( SWT.LEFT, SWT.CENTER,
-                false, false, 2, 1 );
+            false, false, 2, 1 );
         gd_chkMultiCampaign_.widthHint = 236;
         chkMultiCampaign_.setLayoutData( gd_chkMultiCampaign_ );
         chkMultiCampaign_.setText( Messages.CampaignPage1_10 );
@@ -99,7 +99,7 @@ public class CampaignPage1 extends WizardPageTemplate
 
         chkGeneratePBL_ = new Button( container, SWT.CHECK );
         chkGeneratePBL_.setLayoutData( new GridData( SWT.LEFT, SWT.CENTER,
-                false, false, 3, 1 ) );
+            false, false, 3, 1 ) );
         chkGeneratePBL_.setText( Messages.CampaignPage1_11 );
 
         Label lblAuthor = new Label( container, SWT.NONE );
@@ -107,7 +107,7 @@ public class CampaignPage1 extends WizardPageTemplate
 
         txtAuthor_ = new Text( container, SWT.BORDER );
         txtAuthor_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblDescription = new Label( container, SWT.NONE );
@@ -115,7 +115,7 @@ public class CampaignPage1 extends WizardPageTemplate
 
         txtEmail_ = new Text( container, SWT.BORDER );
         txtEmail_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblDescription_1 = new Label( container, SWT.NONE );
@@ -123,7 +123,7 @@ public class CampaignPage1 extends WizardPageTemplate
 
         txtDescription_ = new Text( container, SWT.BORDER );
         txtDescription_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 ) );
+            false, false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblIcon = new Label( container, SWT.NONE );
@@ -131,7 +131,7 @@ public class CampaignPage1 extends WizardPageTemplate
 
         txtPassphrase_ = new Text( container, SWT.BORDER );
         txtPassphrase_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 ) );
+            false, false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblIcon_1 = new Label( container, SWT.NONE );
@@ -139,13 +139,13 @@ public class CampaignPage1 extends WizardPageTemplate
 
         txtIcon_ = new Text( container, SWT.BORDER );
         GridData gd_txtIcon_ = new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 );
+            false, 1, 1 );
         gd_txtIcon_.widthHint = 163;
         txtIcon_.setLayoutData( gd_txtIcon_ );
 
         Label lblRelativeToThe_1 = new Label( container, SWT.NONE );
         GridData gd_lblRelativeToThe_1 = new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 );
+            false, false, 1, 1 );
         gd_lblRelativeToThe_1.widthHint = 285;
         lblRelativeToThe_1.setLayoutData( gd_lblRelativeToThe_1 );
         lblRelativeToThe_1.setToolTipText( Messages.CampaignPage1_17 );
@@ -167,8 +167,8 @@ public class CampaignPage1 extends WizardPageTemplate
 
         // match the pattern x.y.z
         if( txtVersion_.getText( ).isEmpty( )
-                || ! ( txtVersion_.getText( )
-                        .matches( "[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*" ) ) ) //$NON-NLS-1$
+            || ! ( txtVersion_.getText( )
+                .matches( "[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*" ) ) ) //$NON-NLS-1$
         {
             setErrorMessage( Messages.CampaignPage1_21 );
             return;

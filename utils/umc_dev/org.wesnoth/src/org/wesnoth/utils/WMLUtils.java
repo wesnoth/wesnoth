@@ -60,7 +60,7 @@ public class WMLUtils
     public static WMLRoot getWMLRoot( IFile file )
     {
         URI uri = URI.createPlatformResourceURI(
-                file.getFullPath( ).toString( ), true );
+            file.getFullPath( ).toString( ), true );
         ResourceSet resourceSet = new ResourceSetImpl( );
         Resource resource = resourceSet.getResource( uri, true );
         if( resource == null || resource.getContents( ).isEmpty( ) ) {
@@ -159,11 +159,11 @@ public class WMLUtils
         for( WMLExpression expression: tag.getExpressions( ) ) {
             if( expression.isWMLKey( ) ) {
                 res.append( indent + "\t"
-                        + toWMLString( expression.asWMLKey( ) ) );
+                    + toWMLString( expression.asWMLKey( ) ) );
             }
             else if( expression.isWMLTag( ) ) {
                 res.append( indent + "\t"
-                        + toWMLString( expression.asWMLTag( ) ) );
+                    + toWMLString( expression.asWMLTag( ) ) );
             }
         }
 
@@ -199,6 +199,6 @@ public class WMLUtils
     private static String toCleanedUpText( EObject obj )
     {
         return NodeModelUtils.getNode( obj ).getText( )
-                .replaceFirst( "(\\n|\\r| )+", "" );
+            .replaceFirst( "(\\n|\\r| )+", "" );
     }
 }

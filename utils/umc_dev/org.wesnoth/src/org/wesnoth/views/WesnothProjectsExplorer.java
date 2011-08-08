@@ -17,7 +17,7 @@ import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.eclipse.ui.navigator.CommonNavigator;
 
 public class WesnothProjectsExplorer extends CommonNavigator implements
-        IPersistableElement, IElementFactory
+    IPersistableElement, IElementFactory
 {
     public static final String ID_PROJECTS_EXPLORER = "org.wesnoth.views.WesnothProjectsExplorer"; //$NON-NLS-1$
 
@@ -36,7 +36,7 @@ public class WesnothProjectsExplorer extends CommonNavigator implements
         }
         if( adapter.equals( IWorkbenchAdapter.class ) ) {
             return ResourcesPlugin.getWorkspace( ).getRoot( )
-                    .getAdapter( adapter );
+                .getAdapter( adapter );
         }
         return null;
     }

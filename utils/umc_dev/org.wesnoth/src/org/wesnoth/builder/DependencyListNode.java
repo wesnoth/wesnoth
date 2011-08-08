@@ -41,8 +41,8 @@ public class DependencyListNode implements Serializable
     public static final int           INDEX_STEP       = 100000;
 
     public static final QualifiedName PDL_INDEX        = new QualifiedName(
-                                                               Constants.PLUGIN_ID,
-                                                               "pdl_index" );   //$NON-NLS-1$
+                                                           Constants.PLUGIN_ID,
+                                                           "pdl_index" );       //$NON-NLS-1$
 
     private DependencyListNode        previous_;
     private DependencyListNode        next_;
@@ -86,7 +86,7 @@ public class DependencyListNode implements Serializable
     {
         if( includes_ == null || refresh ) {
             includes_ = new ArrayList< String >(
-                    ResourceUtils.getContainers( file_ ) );
+                ResourceUtils.getContainers( file_ ) );
         }
 
         return includes_;

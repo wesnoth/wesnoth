@@ -34,7 +34,7 @@ public class DoubleInputDialog extends Dialog
     private String val1String = "", val2String = ""; //$NON-NLS-1$ //$NON-NLS-2$
 
     public DoubleInputDialog( Shell parentShell, String value1String,
-            String value2String )
+        String value2String )
     {
         super( parentShell );
         setShellStyle( SWT.DIALOG_TRIM );
@@ -53,21 +53,21 @@ public class DoubleInputDialog extends Dialog
         lblValue1.setText( val1String );
         Label label = new Label( container, SWT.NONE );
         label.setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER, false, false,
-                1, 1 ) );
+            1, 1 ) );
 
         txtValue1_ = new Text( container, SWT.BORDER );
         txtValue1_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
 
         lblValue2 = new Label( container, SWT.NONE );
         lblValue2.setText( val2String );
         Label label_3 = new Label( container, SWT.NONE );
         label_3.setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
 
         txtValue2_ = new Text( container, SWT.BORDER );
         txtValue2_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
 
         return container;
     }
@@ -76,9 +76,9 @@ public class DoubleInputDialog extends Dialog
     protected void createButtonsForButtonBar( Composite parent )
     {
         createButton( parent, IDialogConstants.OK_ID,
-                IDialogConstants.OK_LABEL, true );
+            IDialogConstants.OK_LABEL, true );
         createButton( parent, IDialogConstants.CANCEL_ID,
-                IDialogConstants.CANCEL_LABEL, false );
+            IDialogConstants.CANCEL_LABEL, false );
     }
 
     @Override

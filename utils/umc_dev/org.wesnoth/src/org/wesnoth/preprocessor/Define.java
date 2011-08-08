@@ -36,7 +36,7 @@ public class Define
     private List< String > args_;
 
     public Define( String name, String value, String textdomain, int linenum,
-            String location, List< String > args )
+        String location, List< String > args )
     {
         name_ = name;
         value_ = value;
@@ -112,18 +112,18 @@ public class Define
      * @return Returns a map of defines
      */
     public static Map< String, Define > readDefines( String installName,
-            String file )
+        String file )
     {
         DefinesSAXHandler handler = ( DefinesSAXHandler ) ResourceUtils
-                .getWMLSAXHandlerFromResource( installName, file,
-                        new DefinesSAXHandler( ) );
+            .getWMLSAXHandlerFromResource( installName, file,
+                new DefinesSAXHandler( ) );
 
         if( handler != null ) {
             return handler.getDefines( );
         }
 
         Logger.getInstance( ).log(
-                "There was an error on creating the Defines SAX handler" ); //$NON-NLS-1$
+            "There was an error on creating the Defines SAX handler" ); //$NON-NLS-1$
         return new HashMap< String, Define >( 0 );
     }
 }

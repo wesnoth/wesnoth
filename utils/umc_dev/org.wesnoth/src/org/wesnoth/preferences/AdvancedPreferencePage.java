@@ -28,14 +28,14 @@ public class AdvancedPreferencePage extends AbstractPreferencePage
     protected void createFieldEditors( )
     {
         addField( new BooleanFieldEditor( Constants.P_NO_TERRAIN_GFX,
-                Messages.AdvancedPreferencePage_1,
-                BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent( ) ),
-                Messages.AdvancedPreferencePage_2 );
+            Messages.AdvancedPreferencePage_1,
+            BooleanFieldEditor.SEPARATE_LABEL, getFieldEditorParent( ) ),
+            Messages.AdvancedPreferencePage_2 );
 
         addField( new BooleanFieldEditor( Constants.P_WML_VALIDATION,
-                "WML Validation, parent", BooleanFieldEditor.SEPARATE_LABEL,
-                getFieldEditorParent( ) ),
-                "If checked, the WML Editor will validate some of the "
-                        + "written WML to check for semantic errors." );
+            "WML Validation, parent", BooleanFieldEditor.SEPARATE_LABEL,
+            getFieldEditorParent( ) ),
+            "If checked, the WML Editor will validate some of the "
+                + "written WML to check for semantic errors." );
     }
 }

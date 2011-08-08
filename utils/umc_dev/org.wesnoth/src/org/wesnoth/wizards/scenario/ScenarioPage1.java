@@ -46,13 +46,13 @@ public class ScenarioPage1 extends WizardPageTemplate
 
         Label lblSpecifyTheGold = new Label( container_, SWT.NONE );
         lblSpecifyTheGold.setLayoutData( new GridData( SWT.LEFT, SWT.CENTER,
-                false, false, 4, 1 ) );
+            false, false, 4, 1 ) );
         lblSpecifyTheGold.setText( Messages.ScenarioPage1_3 );
 
         IContainer selContainer = getWizard( ).getSelectionContainer( );
         if( selContainer != null ) {
             Map< String, String > prefs = ProjectUtils
-                    .getPropertiesForProject( selContainer.getProject( ) );
+                .getPropertiesForProject( selContainer.getProject( ) );
 
             if( prefs.get( "difficulties" ) != null ) //$NON-NLS-1$
             {
@@ -67,12 +67,12 @@ public class ScenarioPage1 extends WizardPageTemplate
 
                     Label lblDiff = new Label( container_, SWT.NONE );
                     lblDiff.setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER,
-                            false, false, 1, 1 ) );
+                        false, false, 1, 1 ) );
                     lblDiff.setText( diff + ":" ); //$NON-NLS-1$
 
                     Text textBox = new Text( container_, SWT.BORDER );
                     GridData gd_text = new GridData( SWT.LEFT, SWT.CENTER,
-                            true, false, 1, 1 );
+                        true, false, 1, 1 );
                     gd_text.widthHint = 77;
                     textBox.setData( "diff", diff ); //$NON-NLS-1$
                     textBox.setLayoutData( gd_text );
@@ -94,7 +94,7 @@ public class ScenarioPage1 extends WizardPageTemplate
             }
             Text textBox = ( Text ) control;
             result.append( String.format( "#ifdef %s\n\tgold=%s\n#endif\n", //$NON-NLS-1$
-                    textBox.getData( "diff" ).toString( ), textBox.getText( ) ) ); //$NON-NLS-1$
+                textBox.getData( "diff" ).toString( ), textBox.getText( ) ) ); //$NON-NLS-1$
         }
         return result.toString( );
     }

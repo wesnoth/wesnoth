@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,7 @@ public class WMLDocTag implements IWMLDocProvider
         // try to get it from the Project Cache ( lua parsed ones )
         if( tag_ == null ) {
             tag_ = ProjectUtils.getCacheForProject( currentFile.getProject( ) )
-                    .getWMLTags( ).get( name );
+                .getWMLTags( ).get( name );
         }
 
         // Create a default one
@@ -80,7 +80,7 @@ public class WMLDocTag implements IWMLDocProvider
 
     /**
      * Adds a style range to current list
-     * 
+     *
      * @param offset
      * @param length
      * @param style
@@ -88,9 +88,9 @@ public class WMLDocTag implements IWMLDocProvider
     private void addStyleRange( int offset, int length, int style )
     {
         styleRanges_.add( new StyleRange( offset, length, Display.getDefault( )
-                .getSystemColor( SWT.COLOR_INFO_FOREGROUND ), Display
-                .getDefault( ).getSystemColor( SWT.COLOR_INFO_BACKGROUND ),
-                style ) );
+            .getSystemColor( SWT.COLOR_INFO_FOREGROUND ), Display
+            .getDefault( ).getSystemColor( SWT.COLOR_INFO_BACKGROUND ),
+            style ) );
     }
 
     @Override

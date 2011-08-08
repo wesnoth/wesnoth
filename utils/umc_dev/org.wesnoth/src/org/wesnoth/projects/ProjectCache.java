@@ -71,9 +71,9 @@ public class ProjectCache implements Serializable
         definesTimestamp_ = - 1;
 
         wesnothFile_ = new File( project.getLocation( ).toOSString( )
-                + "/.wesnoth" ); //$NON-NLS-1$
+            + "/.wesnoth" ); //$NON-NLS-1$
         definesFile_ = new File( PreprocessorUtils.getInstance( )
-                .getMacrosLocation( project ) );
+            .getMacrosLocation( project ) );
     }
 
     /**
@@ -134,13 +134,13 @@ public class ProjectCache implements Serializable
     public void loadCache( )
     {
         ResourceUtils
-                .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
+            .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
 
         try {
             try {
                 FileInputStream inputStream = new FileInputStream( wesnothFile_ );
                 ObjectInputStream deserializer = new ObjectInputStream(
-                        inputStream );
+                    inputStream );
                 ProjectCache cache = ( ProjectCache ) deserializer.readObject( );
 
                 properties_ = cache.properties_;
@@ -176,12 +176,12 @@ public class ProjectCache implements Serializable
     public boolean saveCache( )
     {
         ResourceUtils
-                .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
+            .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
 
         try {
             FileOutputStream outputStream = new FileOutputStream( wesnothFile_ );
             ObjectOutputStream serializer = new ObjectOutputStream(
-                    outputStream );
+                outputStream );
             serializer.writeObject( this );
 
             return true;
@@ -209,7 +209,7 @@ public class ProjectCache implements Serializable
         }
 
         defines_ = Define.readDefines( getInstallName( ),
-                definesFile_.getAbsolutePath( ) );
+            definesFile_.getAbsolutePath( ) );
         definesTimestamp_ = definesFile_.lastModified( );
     }
 
@@ -229,7 +229,7 @@ public class ProjectCache implements Serializable
     public String getInstallName( )
     {
         return Preferences.getString( Constants.P_INST_NAME_PREFIX
-                + project_.getName( ) );
+            + project_.getName( ) );
     }
 
     /**
@@ -241,8 +241,8 @@ public class ProjectCache implements Serializable
     public void setInstallName( String newInstallName )
     {
         Preferences.getPreferences( ).setValue(
-                Constants.P_INST_NAME_PREFIX + project_.getName( ),
-                newInstallName );
+            Constants.P_INST_NAME_PREFIX + project_.getName( ),
+            newInstallName );
     }
 
     /**

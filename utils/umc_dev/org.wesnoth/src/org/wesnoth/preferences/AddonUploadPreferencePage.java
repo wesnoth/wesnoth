@@ -53,21 +53,21 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
     protected void createFieldEditors( )
     {
         addField(
-                new StringFieldEditor( Constants.P_WAU_PASSWORD,
-                        Messages.AddonUploadPreferencePage_11,
-                        getFieldEditorParent( ) ),
-                Messages.AddonUploadPreferencePage_12 );
+            new StringFieldEditor( Constants.P_WAU_PASSWORD,
+                Messages.AddonUploadPreferencePage_11,
+                getFieldEditorParent( ) ),
+            Messages.AddonUploadPreferencePage_12 );
         addField( new BooleanFieldEditor( Constants.P_WAU_VERBOSE,
-                Messages.AddonUploadPreferencePage_13, 1,
-                getFieldEditorParent( ) ) );
+            Messages.AddonUploadPreferencePage_13, 1,
+            getFieldEditorParent( ) ) );
 
         addField(
-                new RegexStringFieldEditor( Constants.P_WAU_ADDRESS,
-                        Messages.AddonUploadPreferencePage_14,
-                        Messages.AddonUploadPreferencePage_15,
-                        Messages.AddonUploadPreferencePage_16,
-                        getFieldEditorParent( ) ),
-                Messages.AddonUploadPreferencePage_17 );
+            new RegexStringFieldEditor( Constants.P_WAU_ADDRESS,
+                Messages.AddonUploadPreferencePage_14,
+                Messages.AddonUploadPreferencePage_15,
+                Messages.AddonUploadPreferencePage_16,
+                getFieldEditorParent( ) ),
+            Messages.AddonUploadPreferencePage_17 );
 
         StringBuilder ports = new StringBuilder( );
         StringBuilder portsRegex = new StringBuilder( );
@@ -75,20 +75,20 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
         for( Entry< String, String > item: ADDON_SERVER_PORTS.entrySet( ) ) {
             portsRegex.append( item.getKey( ) + "|" ); //$NON-NLS-1$
             ports.append( String.format(
-                    "\t%s - %s\n", item.getKey( ), item.getValue( ) ) ); //$NON-NLS-1$
+                "\t%s - %s\n", item.getKey( ), item.getValue( ) ) ); //$NON-NLS-1$
         }
         portsRegex.deleteCharAt( portsRegex.length( ) - 1 );
         portsRegex.append( ")*" ); //$NON-NLS-1$
 
         // System.out.println(portsRegex.toString());
         addField(
-                new RegexStringFieldEditor( Constants.P_WAU_PORT,
-                        Messages.AddonUploadPreferencePage_22,
-                        portsRegex.toString( ),
-                        Messages.AddonUploadPreferencePage_23,
-                        getFieldEditorParent( ) ),
-                Messages.AddonUploadPreferencePage_24 );
+            new RegexStringFieldEditor( Constants.P_WAU_PORT,
+                Messages.AddonUploadPreferencePage_22,
+                portsRegex.toString( ),
+                Messages.AddonUploadPreferencePage_23,
+                getFieldEditorParent( ) ),
+            Messages.AddonUploadPreferencePage_24 );
         addField( new LabelFieldEditor( Messages.AddonUploadPreferencePage_25
-                + ports.toString( ), getFieldEditorParent( ) ) );
+            + ports.toString( ), getFieldEditorParent( ) ) );
     }
 }

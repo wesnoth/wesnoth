@@ -60,14 +60,12 @@ public class Logger
                 throw new IOException( "Could not create the temporary folder." ); //$NON-NLS-1$
             }
 
-            String logFilePath = String.format(
-                    "%s/logs/log%s.txt", //$NON-NLS-1$
-                    WorkspaceUtils.getTemporaryFolder( ),
-                    WorkspaceUtils.getCurrentDateTime( ) );
-            String toolsLogFilePath = String.format(
-                    "%s/logs/tools_log%s.txt", //$NON-NLS-1$
-                    WorkspaceUtils.getTemporaryFolder( ),
-                    WorkspaceUtils.getCurrentDateTime( ) );
+            String logFilePath = String.format( "%s/logs/log%s.txt", //$NON-NLS-1$
+                WorkspaceUtils.getTemporaryFolder( ),
+                WorkspaceUtils.getCurrentDateTime( ) );
+            String toolsLogFilePath = String.format( "%s/logs/tools_log%s.txt", //$NON-NLS-1$
+                WorkspaceUtils.getTemporaryFolder( ),
+                WorkspaceUtils.getCurrentDateTime( ) );
 
             new File( WorkspaceUtils.getTemporaryFolder( ) + "/logs/" ).mkdirs( ); //$NON-NLS-1$
 
@@ -76,15 +74,15 @@ public class Logger
             log( "Error codes: 1 - INFO, 2 - WARNING, 4 - ERROR" ); //$NON-NLS-1$
 
             toolLaunchLogWriter_ = new BufferedWriter( new FileWriter(
-                    toolsLogFilePath ) );
+                toolsLogFilePath ) );
             logTool( "Logging started." ); //$NON-NLS-1$
             logTool( "Error codes: 1 - INFO, 2 - WARNING, 4 - ERROR" ); //$NON-NLS-1$
 
         } catch( IOException e ) {
             JOptionPane
-                    .showMessageDialog(
-                            null,
-                            "There was an error trying to open the log." + e.getMessage( ) ); //$NON-NLS-1$
+                .showMessageDialog(
+                    null,
+                    "There was an error trying to open the log." + e.getMessage( ) ); //$NON-NLS-1$
             e.printStackTrace( );
         }
     }
@@ -216,15 +214,16 @@ public class Logger
     }
 
     private void logToWriter( BufferedWriter writer, String message,
-            int severity )
+        int severity )
     {
         if( writer != null ) {
             try {
-                writer.write( String
+                writer
+                    .write( String
                         .format(
-                                "%s | %d | %s\n", //$NON-NLS-1$
-                                new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" ).format( new Date( ) ), //$NON-NLS-1$
-                                severity, message ) );
+                            "%s | %d | %s\n", //$NON-NLS-1$
+                            new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" ).format( new Date( ) ), //$NON-NLS-1$
+                            severity, message ) );
                 writer.flush( );
             } catch( IOException e ) {
                 e.printStackTrace( );
@@ -233,7 +232,7 @@ public class Logger
 
         // don't print to console the tools if there was no error/warning
         if( writer != toolLaunchLogWriter_
-                || ( writer == toolLaunchLogWriter_ && severity != IStatus.INFO ) ) {
+            || ( writer == toolLaunchLogWriter_ && severity != IStatus.INFO ) ) {
             System.out.println( message );
         }
     }

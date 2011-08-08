@@ -109,7 +109,7 @@ public class NewConfigFilePage0 extends WizardPage
     private void initialize( )
     {
         if( selection != null && selection.isEmpty( ) == false
-                && selection instanceof IStructuredSelection ) {
+            && selection instanceof IStructuredSelection ) {
             IStructuredSelection ssel = ( IStructuredSelection ) selection;
             if( ssel.size( ) > 1 ) {
                 return;
@@ -137,8 +137,8 @@ public class NewConfigFilePage0 extends WizardPage
     private void handleBrowse( )
     {
         ContainerSelectionDialog dialog = new ContainerSelectionDialog(
-                getShell( ), ResourcesPlugin.getWorkspace( ).getRoot( ), false,
-                Messages.NewConfigFilePage0_7 );
+            getShell( ), ResourcesPlugin.getWorkspace( ).getRoot( ), false,
+            Messages.NewConfigFilePage0_7 );
         if( dialog.open( ) == Window.OK ) {
             Object[] result = dialog.getResult( );
             if( result.length == 1 ) {
@@ -154,7 +154,7 @@ public class NewConfigFilePage0 extends WizardPage
     private void dialogChanged( )
     {
         IResource container = ResourcesPlugin.getWorkspace( ).getRoot( )
-                .findMember( new Path( getContainerName( ) ) );
+            .findMember( new Path( getContainerName( ) ) );
         String fileName = getFileName( );
 
         if( getContainerName( ).length( ) == 0 ) {
@@ -162,7 +162,7 @@ public class NewConfigFilePage0 extends WizardPage
             return;
         }
         if( container == null
-                || ( container.getType( ) & ( IResource.PROJECT | IResource.FOLDER ) ) == 0 ) {
+            || ( container.getType( ) & ( IResource.PROJECT | IResource.FOLDER ) ) == 0 ) {
             updateStatus( Messages.NewConfigFilePage0_9 );
             return;
         }

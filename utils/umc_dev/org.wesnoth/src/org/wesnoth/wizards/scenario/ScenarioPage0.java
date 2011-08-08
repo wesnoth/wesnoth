@@ -157,7 +157,7 @@ public class ScenarioPage0 extends WizardPageTemplate
 
         txtNextScenarioId_ = new Text( container, SWT.BORDER );
         txtNextScenarioId_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                true, false, 1, 1 ) );
+            true, false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         lblNumberOfTurns = new Label( container, SWT.NONE );
@@ -167,7 +167,7 @@ public class ScenarioPage0 extends WizardPageTemplate
         txtTurns_.setMinimum( - 1 );
         txtTurns_.setSelection( - 1 );
         GridData gd_txtTurns_ = new GridData( SWT.LEFT, SWT.CENTER, false,
-                false, 1, 1 );
+            false, 1, 1 );
         gd_txtTurns_.widthHint = 60;
         txtTurns_.setLayoutData( gd_txtTurns_ );
         new Label( container, SWT.NONE );
@@ -177,7 +177,7 @@ public class ScenarioPage0 extends WizardPageTemplate
 
         txtMapData_ = new Text( container, SWT.BORDER );
         txtMapData_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
 
         btnBrowseMap = new Button( container, SWT.NONE );
         btnBrowseMap.addSelectionListener( new SelectionAdapter( ) {
@@ -196,7 +196,7 @@ public class ScenarioPage0 extends WizardPageTemplate
 
         if( getWizard( ).getSelectionContainer( ) != null ) {
             txtProject_.setText( getWizard( ).getSelectionContainer( )
-                    .getFullPath( ).toString( ) );
+                .getFullPath( ).toString( ) );
         }
         updatePageIsComplete( );
     }
@@ -209,7 +209,7 @@ public class ScenarioPage0 extends WizardPageTemplate
         setPageComplete( false );
 
         IResource container = ResourcesPlugin.getWorkspace( ).getRoot( )
-                .findMember( new Path( getProjectName( ) ) );
+            .findMember( new Path( getProjectName( ) ) );
         String fileName = getFileName( );
         String warningMessage = ""; //$NON-NLS-1$
 
@@ -218,7 +218,7 @@ public class ScenarioPage0 extends WizardPageTemplate
             return;
         }
         if( container == null
-                || ( container.getType( ) & ( IResource.PROJECT | IResource.FOLDER ) ) == 0 ) {
+            || ( container.getType( ) & ( IResource.PROJECT | IResource.FOLDER ) ) == 0 ) {
             setErrorMessage( Messages.ScenarioPage0_15 );
             return;
         }
@@ -244,8 +244,8 @@ public class ScenarioPage0 extends WizardPageTemplate
 
         int dotLoc = fileName.lastIndexOf( '.' );
         if( dotLoc == - 1
-                || ! ( fileName.substring( dotLoc + 1 )
-                        .equalsIgnoreCase( "cfg" ) ) ) //$NON-NLS-1$
+            || ! ( fileName.substring( dotLoc + 1 )
+                .equalsIgnoreCase( "cfg" ) ) ) //$NON-NLS-1$
         {
             setErrorMessage( Messages.ScenarioPage0_22 );
             return;
@@ -280,7 +280,7 @@ public class ScenarioPage0 extends WizardPageTemplate
         }
 
         txtMapData_.setText( String.format( "{~add-ons/%s/maps/%s}", //$NON-NLS-1$
-                homePath, new File( rawMapPath_ ).getName( ) ) );
+            homePath, new File( rawMapPath_ ).getName( ) ) );
     }
 
     private void handleBrowseMap( )

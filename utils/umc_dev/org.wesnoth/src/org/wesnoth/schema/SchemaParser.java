@@ -98,7 +98,7 @@ public class SchemaParser
     public void parseSchema( boolean force )
     {
         parseSchemaFile( force, Preferences.getPaths( installName_ )
-                .getSchemaPath( ) );
+            .getSchemaPath( ) );
     }
 
     /**
@@ -113,7 +113,7 @@ public class SchemaParser
     {
         if( parsingDone_ && ! force ) {
             Logger.getInstance( ).log(
-                    "schema not parsed since there is already in cache." ); //$NON-NLS-1$
+                "schema not parsed since there is already in cache." ); //$NON-NLS-1$
             return;
         }
 
@@ -124,7 +124,7 @@ public class SchemaParser
         }
 
         Logger.getInstance( ).log(
-                "parsing schema " + ( force == true ? "forced": "" ) ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            "parsing schema " + ( force == true ? "forced": "" ) ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         File schemaFile = new File( schemaPath );
         String res = ResourceUtils.getFileContents( schemaFile );
         String[] lines = StringUtils.getLines( res );
@@ -135,7 +135,7 @@ public class SchemaParser
             String line = lines[index];
             // skip comments and empty lines
             if( StringUtils.startsWith( line, "#" )
-                    || line.matches( "^[\t ]*$" ) ) {
+                || line.matches( "^[\t ]*$" ) ) {
                 continue;
             }
 
@@ -147,24 +147,24 @@ public class SchemaParser
                     // propagate the 'needsexpanding' property to upper levels
                     boolean expand = false;
                     if( ! tagStack.isEmpty( )
-                            && tags_.containsKey( tagStack.peek( ) ) ) {
+                        && tags_.containsKey( tagStack.peek( ) ) ) {
                         expand = tags_.get( tagStack.peek( ) )
-                                .is_NeedingExpansion( );
+                            .is_NeedingExpansion( );
                     }
 
                     tagStack.pop( );
 
                     if( ! tagStack.isEmpty( )
-                            && tags_.containsKey( tagStack.peek( ) )
-                            && expand == true ) {
+                        && tags_.containsKey( tagStack.peek( ) )
+                        && expand == true ) {
                         tags_.get( tagStack.peek( ) ).set_NeedingExpansion(
-                                expand );
+                            expand );
                     }
                 }
                 // opening tag
                 else {
                     String tagName = line.substring(
-                            line.indexOf( "[" ) + 1, line.indexOf( "]" ) ); //$NON-NLS-1$ //$NON-NLS-2$
+                        line.indexOf( "[" ) + 1, line.indexOf( "]" ) ); //$NON-NLS-1$ //$NON-NLS-2$
                     String simpleTagName = tagName;
                     String extendedTagName = ""; //$NON-NLS-1$
                     if( tagName.split( ":" ).length > 1 ) //$NON-NLS-1$
@@ -182,13 +182,13 @@ public class SchemaParser
                             currentTag = tags_.get( simpleTagName );
                             currentTag.set_InhertedTagName( extendedTagName );
                             currentTag.set_NeedingExpansion( ! extendedTagName
-                                    .isEmpty( ) );
+                                .isEmpty( ) );
                         }
                         else {
                             WMLTag tag = WmlFactory2.eINSTANCE.createWMLTag(
-                                    simpleTagName, extendedTagName );
+                                simpleTagName, extendedTagName );
                             tag.set_NeedingExpansion( ! extendedTagName
-                                    .isEmpty( ) );
+                                .isEmpty( ) );
                             currentTag = tag;
                             tags_.put( simpleTagName, tag );
                         }
@@ -202,12 +202,12 @@ public class SchemaParser
                     String[] tokens = line.split( "=" ); //$NON-NLS-1$
                     if( tokens.length != 2 ) {
                         Logger.getInstance( ).logError(
-                                "Error. invalid primitive on line :" + index ); //$NON-NLS-1$
+                            "Error. invalid primitive on line :" + index ); //$NON-NLS-1$
                         continue;
                     }
 
                     primitives_.put( tokens[0].trim( ),
-                            StringUtils.trimQuotes( tokens[1].trim( ) ) );
+                        StringUtils.trimQuotes( tokens[1].trim( ) ) );
                 }
                 else if( tagStack.peek( ).equals( "description" ) ) //$NON-NLS-1$
                 {
@@ -220,8 +220,8 @@ public class SchemaParser
                         value.append( tokens[1] + "\n" ); //$NON-NLS-1$
                         ++index;
                         while( StringUtils.countOf( lines[index], '"' ) % 2 == 0
-                                && ! StringUtils.startsWith( lines[index], "#" ) && //$NON-NLS-1$
-                                index < lines.length ) {
+                            && ! StringUtils.startsWith( lines[index], "#" ) && //$NON-NLS-1$
+                            index < lines.length ) {
                             value.append( lines[index] + "\n" ); //$NON-NLS-1$
                             ++index;
                         }
@@ -234,7 +234,7 @@ public class SchemaParser
                     // get rid of the quotes
                     if( value.length( ) >= 2 ) {
                         value = new StringBuilder( value.substring( 1,
-                                value.length( ) - 1 ) );
+                            value.length( ) - 1 ) );
                     }
 
                     if( currentTag != null ) {
@@ -248,22 +248,23 @@ public class SchemaParser
                     String tmpLine = line.trim( );
                     if( line.contains( "#" ) ) {
                         tmpLine = line
-                                .substring( 0, line.lastIndexOf( "#" ) ).trim( ); //$NON-NLS-1$
+                            .substring( 0, line.lastIndexOf( "#" ) ).trim( ); //$NON-NLS-1$
                     }
                     String[] tokens = tmpLine.split( "=" ); //$NON-NLS-1$
 
                     if( tokens.length != 2 ) {
                         Logger.getInstance( ).logError(
-                                "Error. invalid attribute on line :" + index ); //$NON-NLS-1$
+                            "Error. invalid attribute on line :" + index ); //$NON-NLS-1$
                         continue;
                     }
 
                     String[] value = tokens[1].substring( 1,
-                            tokens[1].length( ) - 1 ).split( " " ); //$NON-NLS-1$
+                        tokens[1].length( ) - 1 ).split( " " ); //$NON-NLS-1$
                     if( value.length != 2 ) {
-                        Logger.getInstance( )
-                                .logError(
-                                        "Error. invalid attribute value on line:" + index ); //$NON-NLS-1$
+                        Logger
+                            .getInstance( )
+                            .logError(
+                                "Error. invalid attribute value on line:" + index ); //$NON-NLS-1$
                         continue;
                     }
 
@@ -276,8 +277,8 @@ public class SchemaParser
                             // tag wasn't created yet
                             if( targetTag == null ) {
                                 targetTag = WmlFactory2.eINSTANCE
-                                        .createWMLTag( value[1], "",
-                                                getCardinality( value[0] ) );
+                                    .createWMLTag( value[1], "",
+                                        getCardinality( value[0] ) );
                                 tags_.put( value[1], targetTag );
                             }
 
@@ -285,17 +286,18 @@ public class SchemaParser
                         }
                         else {
                             if( primitives_.get( value[1] ) == null ) {
-                                Logger.getInstance( )
-                                        .logError(
-                                                "Undefined primitive type in schema.cfg for: " + value[1] ); //$NON-NLS-1$
+                                Logger
+                                    .getInstance( )
+                                    .logError(
+                                        "Undefined primitive type in schema.cfg for: " + value[1] ); //$NON-NLS-1$
                             }
 
                             currentTag.getExpressions( ).add(
-                                    WmlFactory2.eINSTANCE.createWMLKey(
-                                            tokens[0],
-                                            primitives_.get( value[1] ),
-                                            getCardinality( value[0] ),
-                                            value[1].equals( "tstring" ) ) );
+                                WmlFactory2.eINSTANCE.createWMLKey(
+                                    tokens[0],
+                                    primitives_.get( value[1] ),
+                                    getCardinality( value[0] ),
+                                    value[1].equals( "tstring" ) ) );
                         }
                     }
                     else {
@@ -346,7 +348,7 @@ public class SchemaParser
     private void sortChildren( WMLTag tag )
     {
         WMLExpression[] expressions = ( WMLExpression[] ) tag.getExpressions( )
-                .toArray( );
+            .toArray( );
         Arrays.sort( expressions, new CardinalityComparator( ) );
         tag.getExpressions( ).clear( );
 
@@ -399,7 +401,7 @@ public class SchemaParser
      * That is, after the sort the required wmlexpressions will be first
      */
     public static class CardinalityComparator implements
-            Comparator< WMLExpression >, Serializable
+        Comparator< WMLExpression >, Serializable
     {
         private static final long serialVersionUID = 6103884038547449868L;
 

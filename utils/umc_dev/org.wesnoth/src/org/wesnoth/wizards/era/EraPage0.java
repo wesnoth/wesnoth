@@ -70,14 +70,14 @@ public class EraPage0 extends WizardPageTemplate
 
         Label lblProject = new Label( container, SWT.NONE );
         GridData gd_lblProject = new GridData( SWT.LEFT, SWT.CENTER, false,
-                false, 1, 1 );
+            false, 1, 1 );
         gd_lblProject.widthHint = 99;
         lblProject.setLayoutData( gd_lblProject );
         lblProject.setText( Messages.EraPage0_3 );
 
         txtDirectory_ = new Text( container, SWT.BORDER );
         txtDirectory_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         txtDirectory_.addModifyListener( modifyListener );
         txtDirectory_.setEditable( false );
 
@@ -99,7 +99,7 @@ public class EraPage0 extends WizardPageTemplate
 
         txtFileName_ = new Text( container, SWT.BORDER );
         txtFileName_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
         txtFileName_.addModifyListener( modifyListener );
 
@@ -108,7 +108,7 @@ public class EraPage0 extends WizardPageTemplate
 
         txtEraID_ = new Text( container, SWT.BORDER );
         txtEraID_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
         txtEraID_.addModifyListener( modifyListener );
 
@@ -117,7 +117,7 @@ public class EraPage0 extends WizardPageTemplate
 
         txtEraName_ = new Text( container, SWT.BORDER );
         txtEraName_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
         txtEraName_.addModifyListener( modifyListener );
 
@@ -129,7 +129,7 @@ public class EraPage0 extends WizardPageTemplate
 
         if( getWizard( ).getSelectionContainer( ) != null ) {
             txtDirectory_.setText( getWizard( ).getSelectionContainer( )
-                    .getFullPath( ).toString( ) );
+                .getFullPath( ).toString( ) );
         }
         updatePageIsComplete( );
     }
@@ -137,7 +137,7 @@ public class EraPage0 extends WizardPageTemplate
     private void updatePageIsComplete( )
     {
         IResource container = ResourcesPlugin.getWorkspace( ).getRoot( )
-                .findMember( new Path( getDirectoryName( ) ) );
+            .findMember( new Path( getDirectoryName( ) ) );
         setPageComplete( false );
         String fileName = getFileName( );
 
@@ -147,7 +147,7 @@ public class EraPage0 extends WizardPageTemplate
         }
 
         if( container == null || ! container.exists( )
-                || ! ( container instanceof IContainer ) ) {
+            || ! ( container instanceof IContainer ) ) {
             setErrorMessage( Messages.EraPage0_11 );
             return;
         }
@@ -164,7 +164,7 @@ public class EraPage0 extends WizardPageTemplate
 
         int dotLoc = fileName.lastIndexOf( '.' );
         if( dotLoc == - 1
-                || fileName.substring( dotLoc + 1 ).equalsIgnoreCase( "cfg" ) == false ) //$NON-NLS-1$
+            || fileName.substring( dotLoc + 1 ).equalsIgnoreCase( "cfg" ) == false ) //$NON-NLS-1$
         {
             setErrorMessage( Messages.EraPage0_15 );
             return;

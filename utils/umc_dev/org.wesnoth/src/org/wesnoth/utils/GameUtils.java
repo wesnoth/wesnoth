@@ -69,12 +69,12 @@ public class GameUtils
             String scenarioId = null;
 
             campaignId = ProjectUtils.getCacheForProject(
-                    selectedResource.getProject( ) ).getWMLConfig( "_main.cfg" ).CampaignId; //$NON-NLS-1$
+                selectedResource.getProject( ) ).getWMLConfig( "_main.cfg" ).CampaignId; //$NON-NLS-1$
 
             if( scenario == true && selectedResource instanceof IFile ) {
                 scenarioId = ProjectUtils.getCacheForProject(
-                        selectedResource.getProject( ) ).getWMLConfig(
-                        selectedResource.getProjectRelativePath( ).toString( ) ).ScenarioId;
+                    selectedResource.getProject( ) ).getWMLConfig(
+                    selectedResource.getProjectRelativePath( ).toString( ) ).ScenarioId;
             }
 
             if( campaignId == null ) {
@@ -99,9 +99,9 @@ public class GameUtils
             }
 
             startGame(
-                    WesnothInstallsUtils
-                            .getInstallNameForResource( selectedResource ),
-                    args );
+                WesnothInstallsUtils
+                    .getInstallNameForResource( selectedResource ),
+                args );
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
         }
@@ -119,9 +119,9 @@ public class GameUtils
         else {
             WesnothInstallsUtils.setupInstallForResource( selectedRes );
             startGame(
-                    WesnothInstallsUtils
-                            .getInstallNameForResource( selectedRes ),
-                    null );
+                WesnothInstallsUtils
+                    .getInstallNameForResource( selectedRes ),
+                null );
         }
     }
 
@@ -156,10 +156,10 @@ public class GameUtils
         args.add( workingDir );
 
         MessageConsole console = GUIUtils.createConsole( Messages.GameUtils_9,
-                null, true );
+            null, true );
         ExternalToolInvoker.launchTool( wesnothExec, args,
-                new OutputStream[] { console.newMessageStream( ) },
-                new OutputStream[] { console.newMessageStream( ) } );
+            new OutputStream[] { console.newMessageStream( ) },
+            new OutputStream[] { console.newMessageStream( ) } );
     }
 
     /**
@@ -180,7 +180,7 @@ public class GameUtils
     {
         if( file == null || ! file.exists( ) ) {
             Logger.getInstance( ).log( "non-existing map file", //$NON-NLS-1$
-                    Messages.GameUtils_12 );
+                Messages.GameUtils_12 );
             return;
         }
 
@@ -195,7 +195,7 @@ public class GameUtils
     public static void startEditor( String mapName )
     {
         startGame( WesnothInstallsUtils.getInstallNameForResource( mapName ),
-                getEditorLaunchArguments( mapName ) );
+            getEditorLaunchArguments( mapName ) );
     }
 
     /**

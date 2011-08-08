@@ -67,9 +67,9 @@ public abstract class WMLTests extends AbstractXtextTests
         // get the wesnoth data path from the user
         dataPath_ = System.getProperty( "wesnothDataDir" );
         if( StringUtils.isNullOrEmpty( dataPath_ )
-                || ! new File( dataPath_ ).exists( ) ) {
+            || ! new File( dataPath_ ).exists( ) ) {
             System.out
-                    .println( "Please set the wesnoth data dir before testing!." );
+                .println( "Please set the wesnoth data dir before testing!." );
             assertTrue( false );
         }
     }
@@ -94,7 +94,7 @@ public abstract class WMLTests extends AbstractXtextTests
         CharStream stream = new ANTLRStringStream( input );
         getLexer( ).setCharStream( stream );
         XtextTokenStream tokenStream = new XtextTokenStream( getLexer( ),
-                getTokenDefProvider( ) );
+            getTokenDefProvider( ) );
         List< Token > tokens = tokenStream.getTokens( );
         return tokens;
     }
@@ -111,7 +111,7 @@ public abstract class WMLTests extends AbstractXtextTests
      * check whether an input is chopped into a list of expected token types
      */
     protected void checkTokenisation( String input,
-            String... expectedTokenTypes )
+        String... expectedTokenTypes )
     {
         List< Token > tokens = getTokens( input );
         assertEquals( input, expectedTokenTypes.length, tokens.size( ) );
@@ -204,7 +204,7 @@ public abstract class WMLTests extends AbstractXtextTests
         // the rule name for a keyword is usually
         // the keyword enclosed in single quotes
         String rule = new StringBuilder( "'" ).append( input ).append( "'" ) //$NON-NLS-1$ //$NON-NLS-2$
-                .toString( );
+            .toString( );
         checkTokenisation( input, rule );
     }
 

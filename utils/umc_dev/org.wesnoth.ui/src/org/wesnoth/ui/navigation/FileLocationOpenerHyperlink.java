@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ public class FileLocationOpenerHyperlink extends XtextHyperlink
 
             ITextEditor editor = EditorUtils.getTextEditor( part );
             IDocument doc = editor.getDocumentProvider( ).getDocument(
-                    editor.getEditorInput( ) );
+                editor.getEditorInput( ) );
             int offset = 0;
             try {
                 // compute offset based on linenum_

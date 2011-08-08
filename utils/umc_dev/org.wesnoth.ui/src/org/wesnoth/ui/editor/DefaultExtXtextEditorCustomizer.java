@@ -11,7 +11,7 @@ package org.wesnoth.ui.editor;
 import org.eclipse.jface.action.IMenuManager;
 
 public class DefaultExtXtextEditorCustomizer implements
-        IExtXtextEditorCustomizer
+    IExtXtextEditorCustomizer
 {
     @Override
     public void customizeEditorContextMenu( IMenuManager menuManager )

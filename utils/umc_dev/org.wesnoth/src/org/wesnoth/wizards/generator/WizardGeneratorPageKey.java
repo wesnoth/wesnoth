@@ -36,7 +36,7 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
     private int            indent_;
 
     public WizardGeneratorPageKey( String tagName, List< WMLKey > keys,
-            int startIndex, int endIndex, int indent )
+        int startIndex, int endIndex, int indent )
     {
         super( Messages.WizardGeneratorPageKey_0 + startIndex );
         setTitle( tagName + Messages.WizardGeneratorPageKey_1 );
@@ -67,7 +67,7 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
 
             Label label = new Label( container_, SWT.NONE );
             label.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                    false, 1, 1 ) );
+                false, 1, 1 ) );
             // add star to required items
             label.setText( key.getName( ) + ( key.is_Enum( ) ? "*": "" ) + ":" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
@@ -75,7 +75,7 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
             if( key.is_Enum( ) ) {
                 Combo combo = new Combo( container_, SWT.READ_ONLY );
                 combo.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                        false, 1, 1 ) );
+                    false, 1, 1 ) );
                 combo.setData( "name", key.getName( ) ); //$NON-NLS-1$
 
                 for( WMLKeyValue value: key.getValues( ) ) {
@@ -87,7 +87,7 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
             else {
                 Text textBox = new Text( container_, SWT.BORDER );
                 textBox.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                        true, false, 1, 1 ) );
+                    true, false, 1, 1 ) );
 
                 textBox.setData( "name", key.getName( ) ); //$NON-NLS-1$
                 textBox.setData( "valType", key.getValues( ) ); //$NON-NLS-1$
@@ -111,9 +111,9 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
                         }
 
                         if( ( txt.getText( ).isEmpty( ) && ( txt.getData(
-                                "card" ).toString( ).equals( "1" ) ) ) || // cardinality //$NON-NLS-1$ //$NON-NLS-2$
-                                ! txt.getText( ).matches(
-                                        txt.getData( "valType" ).toString( ) ) // regex //$NON-NLS-1$
+                            "card" ).toString( ).equals( "1" ) ) ) || // cardinality //$NON-NLS-1$ //$NON-NLS-2$
+                            ! txt.getText( ).matches(
+                                txt.getData( "valType" ).toString( ) ) // regex //$NON-NLS-1$
                         ) {
                             txt.setData( "comp", false ); //$NON-NLS-1$
                         }
@@ -144,8 +144,8 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
             if( child.getData( "comp" ).toString( ).equals( "false" ) ) //$NON-NLS-1$ //$NON-NLS-2$
             {
                 setErrorMessage( child.getData( "name" ) + //$NON-NLS-1$
-                        Messages.WizardGeneratorPageKey_22
-                        + child.getData( "valType" ) ); //$NON-NLS-1$
+                    Messages.WizardGeneratorPageKey_22
+                    + child.getData( "valType" ) ); //$NON-NLS-1$
                 return;
             }
         }
@@ -164,13 +164,13 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
             String text = ""; //$NON-NLS-1$
             if( child instanceof Text ) {
                 text = ( child.getData( "trans" ).toString( ).equals( "true" ) == true ? "_": "" ) + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-                        "\"" + ( ( Text ) child ).getText( ) + "\""; //$NON-NLS-1$ //$NON-NLS-2$
+                    "\"" + ( ( Text ) child ).getText( ) + "\""; //$NON-NLS-1$ //$NON-NLS-2$
             }
             else {
                 text = ( ( Combo ) child ).getText( );
             }
             result.append( StringUtils.multiples( "\t", indent_ ) + //$NON-NLS-1$
-                    child.getData( "name" ) + "=" + text + "\n" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                child.getData( "name" ) + "=" + text + "\n" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result.toString( );
     }

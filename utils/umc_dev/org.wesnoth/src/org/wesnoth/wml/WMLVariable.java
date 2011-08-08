@@ -108,7 +108,7 @@ public class WMLVariable implements Serializable
         public String toString( )
         {
             return "( " + StartIndex + ":" + StartOffset + " -> " + EndIndex
-                    + ":" + EndOffset + " )";
+                + ":" + EndOffset + " )";
         }
 
         /**
@@ -124,9 +124,9 @@ public class WMLVariable implements Serializable
         public boolean contains( int index, int offset )
         {
             return( ( StartIndex == index && EndIndex == index
-                    && StartOffset <= index && index <= EndOffset )
-                    || ( StartIndex == index && EndIndex != index && offset > StartOffset )
-                    || ( EndIndex == index && StartIndex != index && offset < EndOffset ) || ( StartIndex < index && index < EndIndex ) );
+                && StartOffset <= index && index <= EndOffset )
+                || ( StartIndex == index && EndIndex != index && offset > StartOffset )
+                || ( EndIndex == index && StartIndex != index && offset < EndOffset ) || ( StartIndex < index && index < EndIndex ) );
         }
     }
 }

@@ -28,7 +28,7 @@ public class WesnothWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor
 
     @Override
     public ActionBarAdvisor createActionBarAdvisor(
-            IActionBarConfigurer configurer )
+        IActionBarConfigurer configurer )
     {
         return new WesnothActionBarAdvisor( configurer );
     }
@@ -50,7 +50,7 @@ public class WesnothWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor
     public void postWindowCreate( )
     {
         getWindowConfigurer( ).getWindow( ).getActivePage( )
-                .hideActionSet( "org.eclipse.ui.run" ); //$NON-NLS-1$
+            .hideActionSet( "org.eclipse.ui.run" ); //$NON-NLS-1$
     }
 
     @Override
@@ -58,7 +58,7 @@ public class WesnothWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor
     {
         try {
             ResourcesPlugin.getWorkspace( ).save( true,
-                    new NullProgressMonitor( ) );
+                new NullProgressMonitor( ) );
         } catch( CoreException e ) {
             Logger.getInstance( ).logException( e );
         }

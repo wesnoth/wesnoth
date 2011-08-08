@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
 /**
  * Provides labels for a EObjects.
- * 
+ *
  * see
  * http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
@@ -40,8 +40,8 @@ public class WMLLabelProvider extends DefaultEObjectLabelProvider
     {
         if( element instanceof EClass ) {
             return ( ( EClass ) element ).getName( ).toLowerCase(
-                    Locale.ENGLISH )
-                    + ".png"; //$NON-NLS-1$
+                Locale.ENGLISH )
+                + ".png"; //$NON-NLS-1$
         }
         else if( element instanceof String ) {
             return element;

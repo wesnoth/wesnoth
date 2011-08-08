@@ -39,7 +39,7 @@ public class CampaignNewWizard extends WizardTemplate
     public void addPages( )
     {
         page0_ = new WizardProjectPageTemplate( "campaignPage0",
-                Messages.CampaignPage0_1, Messages.CampaignPage0_2 );
+            Messages.CampaignPage0_1, Messages.CampaignPage0_2 );
         addPage( page0_ );
 
         page1_ = new CampaignPage1( );
@@ -57,17 +57,17 @@ public class CampaignNewWizard extends WizardTemplate
             getContainer( ).run( false, false, new IRunnableWithProgress( ) {
                 @Override
                 public void run( IProgressMonitor monitor )
-                        throws InvocationTargetException, InterruptedException
+                    throws InvocationTargetException, InterruptedException
                 {
                     IProject currentProject = page0_.createProject( monitor,
-                            "campaign_structure", getParameters( ),
-                            page1_.needsPBLFile( ) );
+                        "campaign_structure", getParameters( ),
+                        page1_.needsPBLFile( ) );
 
                     // store some campaign-related info
                     ProjectUtils.getPropertiesForProject( currentProject ).put(
-                            "difficulties", page2_.getDifficulties( ) ); //$NON-NLS-1$
+                        "difficulties", page2_.getDifficulties( ) ); //$NON-NLS-1$
                     ProjectUtils.getCacheForProject( currentProject )
-                            .saveCache( );
+                        .saveCache( );
 
                     monitor.done( );
                 }
@@ -84,33 +84,37 @@ public class CampaignNewWizard extends WizardTemplate
         List< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
 
         params.add( new ReplaceableParameter(
-                "$$campaign_name", page1_.getCampaignName( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter( "$$author", page1_.getAuthor( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter( "$$version", page1_.getVersion( ) ) ); //$NON-NLS-1$
+            "$$campaign_name", page1_.getCampaignName( ) ) ); //$NON-NLS-1$
+        params
+            .add( new ReplaceableParameter( "$$author", page1_.getAuthor( ) ) ); //$NON-NLS-1$
+        params
+            .add( new ReplaceableParameter( "$$version", page1_.getVersion( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter(
-                "$$description", page1_.getCampaignDescription( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter( "$$icon", page1_.getIconPath( ) ) ); //$NON-NLS-1$
+            "$$description", page1_.getCampaignDescription( ) ) ); //$NON-NLS-1$
+        params
+            .add( new ReplaceableParameter( "$$icon", page1_.getIconPath( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter( "$$email", page1_.getEmail( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter(
-                "$$passphrase", page1_.getPassphrase( ) ) ); //$NON-NLS-1$
+            "$$passphrase", page1_.getPassphrase( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter(
-                "$$translations_dir", page1_.getTranslationDir( ) ) ); //$NON-NLS-1$
+            "$$translations_dir", page1_.getTranslationDir( ) ) ); //$NON-NLS-1$
 
         params.add( new ReplaceableParameter(
-                "$$campaign_id", page2_.getCampaignId( ) ) ); //$NON-NLS-1$
+            "$$campaign_id", page2_.getCampaignId( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter( "$$abrev", page2_.getAbbrev( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter( "$$define", page2_.getDefine( ) ) ); //$NON-NLS-1$
+        params
+            .add( new ReplaceableParameter( "$$define", page2_.getDefine( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter(
-                "$$difficulties", page2_.getDifficulties( ) ) ); //$NON-NLS-1$
+            "$$difficulties", page2_.getDifficulties( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter(
-                "$$first_scenario", page2_.getFirstScenario( ) ) ); //$NON-NLS-1$
+            "$$first_scenario", page2_.getFirstScenario( ) ) ); //$NON-NLS-1$
 
         params.add( new ReplaceableParameter(
-                "$$project_name", page0_.getProjectName( ) ) ); //$NON-NLS-1$
+            "$$project_name", page0_.getProjectName( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter(
-                "$$project_dir_name", page0_.getProjectName( ) ) ); //$NON-NLS-1$
+            "$$project_dir_name", page0_.getProjectName( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter(
-                "$$type", page1_.isMultiplayer( ) ? "campaign_mp": "campaign" ) ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            "$$type", page1_.isMultiplayer( ) ? "campaign_mp": "campaign" ) ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
         return params;
     }

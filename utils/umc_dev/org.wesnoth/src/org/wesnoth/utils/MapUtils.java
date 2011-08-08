@@ -28,12 +28,12 @@ public class MapUtils
     {
         if( WorkspaceUtils.getSelectedFolder( ) == null ) {
             Logger.getInstance( ).log( "no directory selected (importMap)", //$NON-NLS-1$
-                    Messages.MapUtils_1 );
+                Messages.MapUtils_1 );
             return;
         }
 
         FileDialog mapDialog = new FileDialog( WesnothPlugin.getShell( ),
-                SWT.OPEN );
+            SWT.OPEN );
         mapDialog.setText( Messages.MapUtils_2 );
         mapDialog.setFilterExtensions( new String[] { "*.map" } ); //$NON-NLS-1$
         String file = mapDialog.open( );
@@ -45,19 +45,19 @@ public class MapUtils
         try {
             File source = new File( file );
             File target = new File( WorkspaceUtils.getSelectedFolder( )
-                    .getLocation( ).toOSString( )
-                    + IPath.SEPARATOR + source.getName( ) );
+                .getLocation( ).toOSString( )
+                + IPath.SEPARATOR + source.getName( ) );
 
             if( target.exists( ) ) {
                 if( GUIUtils.showMessageBox( Messages.MapUtils_4,
-                        SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO ) {
+                    SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO ) {
                     return;
                 }
             }
 
             ResourceUtils.copyTo( source, target );
             WorkspaceUtils.getSelectedFolder( ).refreshLocal(
-                    IResource.DEPTH_INFINITE, null );
+                IResource.DEPTH_INFINITE, null );
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
         }

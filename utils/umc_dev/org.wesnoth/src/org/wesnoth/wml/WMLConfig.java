@@ -69,8 +69,8 @@ public class WMLConfig implements Serializable
     public String toString( )
     {
         return filename_ + "; ScenarioId: "
-                + ( ScenarioId == null ? "": ScenarioId ) + "; CampaignId: "
-                + ( CampaignId == null ? "": CampaignId );
+            + ( ScenarioId == null ? "": ScenarioId ) + "; CampaignId: "
+            + ( CampaignId == null ? "": CampaignId );
     }
 
     /**

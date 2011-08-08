@@ -82,7 +82,7 @@ public class AddonsView extends ViewPart
         grpAddonsList.setLayout( new FillLayout( SWT.HORIZONTAL ) );
 
         tableAddons_ = new Table( grpAddonsList, SWT.BORDER
-                | SWT.FULL_SELECTION );
+            | SWT.FULL_SELECTION );
         tableAddons_.setHeaderVisible( true );
         tableAddons_.setLinesVisible( true );
 
@@ -119,7 +119,7 @@ public class AddonsView extends ViewPart
 
         cmbAddonServer_ = new Combo( grpOptions, SWT.NONE );
         GridData gd_cmbAddonServer = new GridData( SWT.FILL, SWT.FILL, false,
-                false, 1, 1 );
+            false, 1, 1 );
         gd_cmbAddonServer.widthHint = 148;
         cmbAddonServer_.setLayoutData( gd_cmbAddonServer );
 
@@ -139,9 +139,9 @@ public class AddonsView extends ViewPart
             public void widgetSelected( SelectionEvent e )
             {
                 PreferencesUtil.createPreferenceDialogOn(
-                        getViewSite( ).getShell( ),
-                        AddonUploadPreferencePage.ID_ADDON_PREFERENCE_PAGE,
-                        null, null ).open( );
+                    getViewSite( ).getShell( ),
+                    AddonUploadPreferencePage.ID_ADDON_PREFERENCE_PAGE,
+                    null, null ).open( );
             }
         } );
         btnOpenAddonManager.setText( "Open Addon Manager preferences" );
@@ -157,10 +157,10 @@ public class AddonsView extends ViewPart
         ports_.clear( );
         // fill the addons
         for( Entry< String, String > server: AddonUploadPreferencePage.ADDON_SERVER_PORTS
-                .entrySet( ) ) {
+            .entrySet( ) ) {
 
             cmbAddonServer_.add( String.format( "%s ( port: %s )",
-                    server.getValue( ), server.getKey( ) ) );
+                server.getValue( ), server.getKey( ) ) );
             ports_.add( server.getKey( ) );
         }
 
@@ -203,7 +203,7 @@ public class AddonsView extends ViewPart
 
             @Override
             public IStatus runInWorkspace( final IProgressMonitor monitor )
-                    throws CoreException
+                throws CoreException
             {
                 monitor.beginTask( "Downloading addon " + addonName, 100 );
 
@@ -215,7 +215,7 @@ public class AddonsView extends ViewPart
                     {
                         // ask the user to select the install for the project
                         SelectWesnothInstallDialog dialog = new SelectWesnothInstallDialog(
-                                null );
+                            null );
                         if( dialog.open( ) == SWT.OK ) {
                             setResult( dialog.getSelectedInstallName( ) );
                         }
@@ -230,17 +230,17 @@ public class AddonsView extends ViewPart
                 final Paths paths = Preferences.getPaths( installName );
 
                 OutputStream console = GUIUtils.createConsole(
-                        "Wesnoth Addon Manager", null, false )
-                        .newOutputStream( );
+                    "Wesnoth Addon Manager", null, false )
+                    .newOutputStream( );
 
                 ExternalToolInvoker tool = WMLTools.runWesnothAddonManager(
-                        installName,
-                        null,
-                        currentPort_,
-                        Arrays.asList( "-d", addonName, "-c",
-                                paths.getAddonsDir( ) ),
-                        new OutputStream[] { console },
-                        new OutputStream[] { console } );
+                    installName,
+                    null,
+                    currentPort_,
+                    Arrays.asList( "-d", addonName, "-c",
+                        paths.getAddonsDir( ) ),
+                    new OutputStream[] { console },
+                    new OutputStream[] { console } );
 
                 tool.waitForTool( );
 
@@ -248,13 +248,13 @@ public class AddonsView extends ViewPart
 
                 // ask user if he wants to create a project
                 if( GUIUtils
-                        .showMessageBox(
-                                "Do you want to create a new project for the downloaded addon?",
-                                SWT.YES | SWT.NO ) == SWT.YES ) {
+                    .showMessageBox(
+                        "Do you want to create a new project for the downloaded addon?",
+                        SWT.YES | SWT.NO ) == SWT.YES ) {
 
                     ProjectUtils.createWesnothProject( addonName,
-                            paths.getAddonsDir( ) + addonName, installName,
-                            monitor );
+                        paths.getAddonsDir( ) + addonName, installName,
+                        monitor );
                 }
                 monitor.done( );
 
@@ -270,7 +270,8 @@ public class AddonsView extends ViewPart
     protected void refreshAddons( )
     {
         if( loading_ ) {
-            GUIUtils.showInfoMessageBox( "Please wait for the previous query to finish." );
+            GUIUtils
+                .showInfoMessageBox( "Please wait for the previous query to finish." );
             return;
         }
 
@@ -292,7 +293,7 @@ public class AddonsView extends ViewPart
 
                 @Override
                 public IStatus runInWorkspace( IProgressMonitor monitor )
-                        throws CoreException
+                    throws CoreException
                 {
                     monitor.beginTask( "Retrieving list...", 100 );
                     monitor.worked( 10 );
@@ -300,14 +301,14 @@ public class AddonsView extends ViewPart
                     String installName = Preferences.getDefaultInstallName( );
 
                     OutputStream stderr = GUIUtils.createConsole(
-                            "Wesnoth Addon Manager", null, false )
-                            .newOutputStream( );
+                        "Wesnoth Addon Manager", null, false )
+                        .newOutputStream( );
 
                     ExternalToolInvoker tool = WMLTools.runWesnothAddonManager(
-                            installName, null, currentPort_,
-                            Arrays.asList( "-w", "-l" ), // list addons in raw
-                                                         // mode
-                            null, new OutputStream[] { stderr } );
+                        installName, null, currentPort_,
+                        Arrays.asList( "-w", "-l" ), // list addons in raw
+                                                     // mode
+                        null, new OutputStream[] { stderr } );
                     tool.waitForTool( );
 
                     /**
@@ -316,7 +317,7 @@ public class AddonsView extends ViewPart
                      * "5 - downloads", "size", "timestamp", "translate"]]
                      */
                     final String[] lines = StringUtils.getLines( tool
-                            .getOutputContent( ) );
+                        .getOutputContent( ) );
                     final List< String[] > addons = new ArrayList< String[] >( );
 
                     String[] tmpColumns = null;
@@ -353,8 +354,8 @@ public class AddonsView extends ViewPart
                         // got something interesting? parse it
                         if( tmpColumns != null && index != - 1 ) {
                             tmpColumns[index] = line.substring(
-                                    line.indexOf( '\'' ) + 1,
-                                    line.lastIndexOf( '\'' ) ).trim( );
+                                line.indexOf( '\'' ) + 1,
+                                line.lastIndexOf( '\'' ) ).trim( );
                         }
                     }
 
@@ -367,10 +368,10 @@ public class AddonsView extends ViewPart
                             for( String[] addon: addons ) {
 
                                 TableItem tableItem = new TableItem(
-                                        tableAddons_, SWT.NONE );
+                                    tableAddons_, SWT.NONE );
                                 tableItem.setText( new String[] { addon[0],
-                                        addon[1], addon[2], addon[3], addon[4],
-                                        addon[5] } );
+                                    addon[1], addon[2], addon[3], addon[4],
+                                    addon[5] } );
 
                             }
 

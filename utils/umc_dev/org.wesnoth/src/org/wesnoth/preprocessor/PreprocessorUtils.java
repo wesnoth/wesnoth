@@ -45,8 +45,8 @@ public class PreprocessorUtils
     private Map< String, Long > filesTimeStamps_       = new HashMap< String, Long >( );
 
     private static final String PREPROCESSED_FILE_PATH = WorkspaceUtils
-                                                               .getTemporaryFolder( )
-                                                               + "preprocessed.txt";
+                                                           .getTemporaryFolder( )
+                                                           + "preprocessed.txt";
 
     private PreprocessorUtils( )
     {
@@ -75,7 +75,7 @@ public class PreprocessorUtils
     public int preprocessFile( IFile file, List< String > defines )
     {
         return preprocessFile( file, getPreprocessedFileLocation( file ),
-                getMacrosLocation( file ), defines, true );
+            getMacrosLocation( file ), defines, true );
     }
 
     /**
@@ -94,10 +94,10 @@ public class PreprocessorUtils
      * @return
      */
     public int preprocessFile( IFile file, String macrosFile,
-            List< String > defines )
+        List< String > defines )
     {
         return preprocessFile( file, getPreprocessedFileLocation( file ),
-                macrosFile, defines, true );
+            macrosFile, defines, true );
     }
 
     /**
@@ -121,14 +121,14 @@ public class PreprocessorUtils
      *         1 - there was an error
      */
     public int preprocessFile( IFile file, String targetDirectory,
-            String macrosFile, List< String > defines, boolean waitForIt )
+        String macrosFile, List< String > defines, boolean waitForIt )
     {
         String filePath = file.getLocation( ).toOSString( );
         if( filesTimeStamps_.containsKey( filePath )
-                && filesTimeStamps_.get( filePath ) >= new File( filePath )
-                        .lastModified( ) ) {
+            && filesTimeStamps_.get( filePath ) >= new File( filePath )
+                .lastModified( ) ) {
             Logger.getInstance( ).logTool(
-                    "skipped preprocessing a non-modified file: " + filePath ); //$NON-NLS-1$
+                "skipped preprocessing a non-modified file: " + filePath ); //$NON-NLS-1$
             return - 1;
         }
 
@@ -137,8 +137,8 @@ public class PreprocessorUtils
         try {
 
             Paths paths = Preferences
-                    .getPaths( ProjectUtils.getCacheForProject(
-                            file.getProject( ) ).getInstallName( ) );
+                .getPaths( ProjectUtils.getCacheForProject(
+                    file.getProject( ) ).getInstallName( ) );
 
             List< String > arguments = new ArrayList< String >( );
 
@@ -178,7 +178,7 @@ public class PreprocessorUtils
 
                 StringBuilder definesArg = new StringBuilder( );
                 for( Iterator< String > itor = defines.iterator( ); itor
-                        .hasNext( ); ) {
+                    .hasNext( ); ) {
                     if( definesArg.length( ) > 0 ) {
                         definesArg.append( "," ); //$NON-NLS-1$
                     }
@@ -191,7 +191,7 @@ public class PreprocessorUtils
 
             Logger.getInstance( ).logTool( "preprocessing file: " + filePath ); //$NON-NLS-1$
             ExternalToolInvoker wesnoth = new ExternalToolInvoker(
-                    paths.getWesnothExecutablePath( ), arguments );
+                paths.getWesnothExecutablePath( ), arguments );
             wesnoth.runTool( );
             if( waitForIt ) {
                 return wesnoth.waitForTool( );
@@ -216,11 +216,11 @@ public class PreprocessorUtils
     {
         if( file == null || ! file.exists( ) ) {
             Logger.getInstance( ).log( "file null or non existent.", //$NON-NLS-1$
-                    Messages.PreprocessorUtils_12 );
+                Messages.PreprocessorUtils_12 );
             return;
         }
         EditorUtils
-                .openEditor( getPreprocessedFilePath( file, openPlain, true ) );
+            .openEditor( getPreprocessedFilePath( file, openPlain, true ) );
     }
 
     /**
@@ -236,12 +236,12 @@ public class PreprocessorUtils
      * @return
      */
     public IFileStore getPreprocessedFilePath( IFile file, boolean plain,
-            boolean create )
+        boolean create )
     {
         IFileStore preprocFile = EFS.getLocalFileSystem( ).getStore(
-                new Path( getPreprocessedFileLocation( file ) ) );
+            new Path( getPreprocessedFileLocation( file ) ) );
         preprocFile = preprocFile.getChild( file.getName( )
-                + ( plain == true ? ".plain": "" ) ); //$NON-NLS-1$ //$NON-NLS-2$
+            + ( plain == true ? ".plain": "" ) ); //$NON-NLS-1$ //$NON-NLS-2$
         if( create && ! preprocFile.fetchInfo( ).exists( ) ) {
             preprocessFile( file, null );
         }
@@ -259,8 +259,8 @@ public class PreprocessorUtils
         String targetDirectory = WorkspaceUtils.getTemporaryFolder( );
         targetDirectory += file.getProject( ).getName( ) + "/"; //$NON-NLS-1$
         targetDirectory += file.getParent( ).getProjectRelativePath( )
-                .toOSString( )
-                + "/"; //$NON-NLS-1$
+            .toOSString( )
+            + "/"; //$NON-NLS-1$
         return targetDirectory;
     }
 
@@ -277,8 +277,8 @@ public class PreprocessorUtils
     public String getMacrosLocation( IResource resource )
     {
         return WorkspaceUtils
-                .getProjectTemporaryFolder( resource.getProject( ) )
-                + "/_MACROS_.cfg"; //$NON-NLS-1$
+            .getProjectTemporaryFolder( resource.getProject( ) )
+            + "/_MACROS_.cfg"; //$NON-NLS-1$
     }
 
     /**
@@ -290,12 +290,13 @@ public class PreprocessorUtils
         DialogSettings settings = new DialogSettings( "preprocessed" ); //$NON-NLS-1$
         try {
             settings.put(
-                    "files", filesTimeStamps_.keySet( ).toArray( new String[0] ) ); //$NON-NLS-1$
+                "files", filesTimeStamps_.keySet( ).toArray( new String[0] ) ); //$NON-NLS-1$
             List< String > timestamps = new ArrayList< String >( );
             for( Long timestamp: filesTimeStamps_.values( ) ) {
                 timestamps.add( timestamp.toString( ) );
             }
-            settings.put(
+            settings
+                .put(
                     "timestamps", timestamps.toArray( new String[timestamps.size( )] ) ); //$NON-NLS-1$
             settings.save( PREPROCESSED_FILE_PATH );
         } catch( Exception e ) {
@@ -322,10 +323,10 @@ public class PreprocessorUtils
             String[] timestamps = settings.getArray( "timestamps" ); //$NON-NLS-1$
             String[] files = settings.getArray( "files" ); //$NON-NLS-1$
             if( timestamps != null && files != null
-                    && timestamps.length == files.length ) {
+                && timestamps.length == files.length ) {
                 for( int index = 0; index < files.length; ++index ) {
                     filesTimeStamps_.put( files[index],
-                            Long.valueOf( timestamps[index] ) );
+                        Long.valueOf( timestamps[index] ) );
                 }
             }
         } catch( IOException e ) {
@@ -342,7 +343,7 @@ public class PreprocessorUtils
     public void clearTimestampsForPath( String path )
     {
         Iterator< Entry< String, Long >> itor = filesTimeStamps_.entrySet( )
-                .iterator( );
+            .iterator( );
 
         while( itor.hasNext( ) ) {
             Entry< String, Long > entry = itor.next( );

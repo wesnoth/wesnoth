@@ -83,7 +83,7 @@ public class EraNewWizard extends WizardTemplate
     }
 
     private void doFinish( String containerName, String fileName,
-            IProgressMonitor monitor ) throws CoreException
+        IProgressMonitor monitor ) throws CoreException
     {
         // create a sample file
         monitor.beginTask( Messages.EraNewWizard_1 + fileName, 10 );
@@ -119,7 +119,7 @@ public class EraNewWizard extends WizardTemplate
             public void run( )
             {
                 IWorkbenchPage page = PlatformUI.getWorkbench( )
-                        .getActiveWorkbenchWindow( ).getActivePage( );
+                    .getActiveWorkbenchWindow( ).getActivePage( );
                 try {
                     IDE.openEditor( page, file, true );
                 } catch( PartInitException e ) {
@@ -135,16 +135,17 @@ public class EraNewWizard extends WizardTemplate
         ArrayList< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
 
         params.add( new ReplaceableParameter( "$$era_id", page0_.getEraID( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter( "$$era_name", page0_.getEraName( ) ) ); //$NON-NLS-1$
+        params
+            .add( new ReplaceableParameter( "$$era_name", page0_.getEraName( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter(
-                "$$require_era", String.valueOf( page0_.getRequiresEra( ) ) ) ); //$NON-NLS-1$
+            "$$require_era", String.valueOf( page0_.getRequiresEra( ) ) ) ); //$NON-NLS-1$
 
         String template = TemplateProvider.getInstance( ).getProcessedTemplate(
-                "era", params ); //$NON-NLS-1$
+            "era", params ); //$NON-NLS-1$
 
         if( template == null ) {
             Logger.getInstance( ).log( "'era' template not found", //$NON-NLS-1$
-                    Messages.EraNewWizard_8 );
+                Messages.EraNewWizard_8 );
             return null;
         }
 

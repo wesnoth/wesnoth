@@ -95,7 +95,7 @@ public class NewConfigFileWizard extends WizardTemplate
      * the editor on the newly created file.
      */
     private void doFinish( String containerName, String fileName,
-            IProgressMonitor monitor ) throws Exception
+        IProgressMonitor monitor ) throws Exception
     {
         // create the file
         monitor.beginTask( Messages.NewConfigFileWizard_0 + fileName, 2 );
@@ -104,7 +104,7 @@ public class NewConfigFileWizard extends WizardTemplate
 
         if( ! resource.exists( ) || ! ( resource instanceof IContainer ) ) {
             throw new Exception(
-                    "Container " + containerName + " does not exist." ); //$NON-NLS-1$ //$NON-NLS-2$
+                "Container " + containerName + " does not exist." ); //$NON-NLS-1$ //$NON-NLS-2$
         }
 
         IContainer container = ( IContainer ) resource;
@@ -128,7 +128,7 @@ public class NewConfigFileWizard extends WizardTemplate
             public void run( )
             {
                 IWorkbenchPage page = PlatformUI.getWorkbench( )
-                        .getActiveWorkbenchWindow( ).getActivePage( );
+                    .getActiveWorkbenchWindow( ).getActivePage( );
                 try {
                     IDE.openEditor( page, file, true );
                 } catch( PartInitException e ) {

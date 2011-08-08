@@ -41,7 +41,7 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
      * {@inheritDoc}
      */
     public WizardProjectPageTemplate( String pageName, String title,
-            String message )
+        String message )
     {
         super( pageName );
 
@@ -54,19 +54,19 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
     {
         super.createControl( parent );
         Composite composite = new Composite( ( Composite ) getControl( ),
-                SWT.NULL );
+            SWT.NULL );
         composite.setLayout( new GridLayout( 2, false ) );
 
         Label lblWesnothInstall = new Label( composite, SWT.NONE );
         lblWesnothInstall
-                .setToolTipText( "Select the wesnoth install this project corresponds to." );
+            .setToolTipText( "Select the wesnoth install this project corresponds to." );
         lblWesnothInstall.setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER,
-                false, false, 1, 1 ) );
+            false, false, 1, 1 ) );
         lblWesnothInstall.setText( "Wesnoth Install:" );
 
         cmbInstalls_ = new Combo( composite, SWT.READ_ONLY );
         GridData gd_cmbInstalls = new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 );
+            false, 1, 1 );
         gd_cmbInstalls.widthHint = 154;
         cmbInstalls_.setLayoutData( gd_cmbInstalls );
 
@@ -83,7 +83,7 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
         Paths paths = Preferences.getPaths( getSelectedInstallName( ) );
         String projectPath = getProjectHandle( ).getLocation( ).toOSString( );
         return( ! ResourceUtils.isCampaignDirPath( paths, projectPath ) && ! ResourceUtils
-                .isUserAddonsDirPath( paths, projectPath ) );
+            .isUserAddonsDirPath( paths, projectPath ) );
     }
 
     /**
@@ -102,42 +102,42 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
      * @return The newly created project's handle
      */
     public IProject createProject( IProgressMonitor monitor,
-            String templateName, List< ReplaceableParameter > params,
-            boolean generatePBL )
+        String templateName, List< ReplaceableParameter > params,
+        boolean generatePBL )
     {
         monitor.subTask( "Creating the project structure" );
 
         IProject currentProject = ProjectUtils.createWesnothProject(
-                getProjectName( ), getLocationPath( ).toOSString( ),
-                getSelectedInstallName( ), monitor );
+            getProjectName( ), getLocationPath( ).toOSString( ),
+            getSelectedInstallName( ), monitor );
         monitor.worked( 2 );
 
         String projectTemplate = TemplateProvider.getInstance( )
-                .getProcessedTemplate( templateName, params );
+            .getProcessedTemplate( templateName, params );
 
         List< Pair< String, String >> files;
         List< String > dirs;
         Pair< List< Pair< String, String >>, List< String >> tmp = TemplateProvider
-                .getInstance( ).getFilesDirectories( projectTemplate );
+            .getInstance( ).getFilesDirectories( projectTemplate );
         files = tmp.First;
         dirs = tmp.Second;
 
         for( Pair< String, String > file: files ) {
             if( file.Second.equals( "pbl" ) && //$NON-NLS-1$
-                    ! generatePBL ) {
+                ! generatePBL ) {
                 continue;
             }
 
             if( file.Second.equals( "build_xml" ) && //$NON-NLS-1$
-                    ! needsBuildXML( ) ) {
+                ! needsBuildXML( ) ) {
                 continue;
             }
 
             ResourceUtils.createFile(
-                    currentProject,
-                    file.First,
-                    TemplateProvider.getInstance( ).getProcessedTemplate(
-                            file.Second, params ), true );
+                currentProject,
+                file.First,
+                TemplateProvider.getInstance( ).getProcessedTemplate(
+                    file.Second, params ), true );
             monitor.worked( 1 );
         }
 

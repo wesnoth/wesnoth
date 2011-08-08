@@ -62,7 +62,7 @@ public class EmptyProjectPage1 extends WizardPageTemplate
 
         chkGeneratePBL_ = new Button( container, SWT.CHECK );
         chkGeneratePBL_.setLayoutData( new GridData( SWT.LEFT, SWT.CENTER,
-                false, false, 3, 1 ) );
+            false, false, 3, 1 ) );
         chkGeneratePBL_.setText( Messages.EmptyProjectPage1_4 );
 
         Label _lblTitle = new Label( container, SWT.NONE );
@@ -70,7 +70,7 @@ public class EmptyProjectPage1 extends WizardPageTemplate
 
         txtTitle_ = new Text( container, SWT.BORDER );
         GridData gd_txtTitle_ = new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 );
+            false, 1, 1 );
         gd_txtTitle_.heightHint = 15;
         txtTitle_.setLayoutData( gd_txtTitle_ );
         txtTitle_.addModifyListener( updatePageCompleteListener );
@@ -83,7 +83,7 @@ public class EmptyProjectPage1 extends WizardPageTemplate
 
         txtVersion_ = new Text( container, SWT.BORDER );
         txtVersion_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         txtVersion_.addModifyListener( updatePageCompleteListener );
 
         Label lblFormat = new Label( container, SWT.NONE );
@@ -95,7 +95,7 @@ public class EmptyProjectPage1 extends WizardPageTemplate
 
         txtTranslationDir_ = new Text( container, SWT.BORDER );
         txtTranslationDir_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 ) );
+            false, false, 1, 1 ) );
 
         Label lblRelativeToThe = new Label( container, SWT.NONE );
         lblRelativeToThe.setText( Messages.EmptyProjectPage1_16 );
@@ -105,7 +105,7 @@ public class EmptyProjectPage1 extends WizardPageTemplate
 
         txtAuthor_ = new Text( container, SWT.BORDER );
         txtAuthor_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblDescription = new Label( container, SWT.NONE );
@@ -113,7 +113,7 @@ public class EmptyProjectPage1 extends WizardPageTemplate
 
         txtEmail_ = new Text( container, SWT.BORDER );
         txtEmail_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblDescription_1 = new Label( container, SWT.NONE );
@@ -121,17 +121,17 @@ public class EmptyProjectPage1 extends WizardPageTemplate
 
         txtDescription_ = new Text( container, SWT.BORDER );
         txtDescription_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 ) );
+            false, false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblType = new Label( container, SWT.NONE );
         lblType.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         lblType.setText( Messages.EmptyProjectPage1_20 );
 
         txtType_ = new Text( container, SWT.BORDER );
         txtType_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblIcon = new Label( container, SWT.NONE );
@@ -139,7 +139,7 @@ public class EmptyProjectPage1 extends WizardPageTemplate
 
         txtPassphrase_ = new Text( container, SWT.BORDER );
         txtPassphrase_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 ) );
+            false, false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblIcon_1 = new Label( container, SWT.NONE );
@@ -147,13 +147,13 @@ public class EmptyProjectPage1 extends WizardPageTemplate
 
         txtIcon_ = new Text( container, SWT.BORDER );
         GridData gd_txtIcon_ = new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 );
+            false, 1, 1 );
         gd_txtIcon_.widthHint = 163;
         txtIcon_.setLayoutData( gd_txtIcon_ );
 
         Label lblRelativeToThe_1 = new Label( container, SWT.NONE );
         GridData gd_lblRelativeToThe_1 = new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 );
+            false, false, 1, 1 );
         gd_lblRelativeToThe_1.widthHint = 285;
         lblRelativeToThe_1.setLayoutData( gd_lblRelativeToThe_1 );
         lblRelativeToThe_1.setToolTipText( Messages.EmptyProjectPage1_23 );
@@ -175,8 +175,8 @@ public class EmptyProjectPage1 extends WizardPageTemplate
 
         // match the pattern x.y.z
         if( txtVersion_.getText( ).isEmpty( )
-                || ! ( txtVersion_.getText( )
-                        .matches( "[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*" ) ) ) //$NON-NLS-1$
+            || ! ( txtVersion_.getText( )
+                .matches( "[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*" ) ) ) //$NON-NLS-1$
         {
             setMessage( Messages.EmptyProjectPage1_35, IMessageProvider.WARNING );
             return;

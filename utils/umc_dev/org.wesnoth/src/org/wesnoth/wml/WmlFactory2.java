@@ -23,5 +23,5 @@ public interface WmlFactory2 extends WmlFactory
     WMLKey createWMLKey( String name, String dataType );
 
     WMLKey createWMLKey( String name, String dataType, char cardinality,
-            boolean translatable );
+        boolean translatable );
 }

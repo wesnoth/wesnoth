@@ -17,7 +17,7 @@ import org.wesnoth.tests.plugin.WMLParsingCampaignsConfigs;
 
 @RunWith( Suite.class )
 @Suite.SuiteClasses( { WMLGrammarTokensTests.class, WMLFilesTests.class,
-        WMLParsingCampaignsConfigs.class, } )
+    WMLParsingCampaignsConfigs.class, } )
 public class WMLTestsSuite
 {
 }

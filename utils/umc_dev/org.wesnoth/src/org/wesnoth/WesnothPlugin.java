@@ -67,7 +67,7 @@ public class WesnothPlugin extends AbstractUIPlugin
     {
         // save the caches of the projects on disk
         for( Entry< IProject, ProjectCache > cache: ProjectUtils
-                .getProjectCaches( ).entrySet( ) ) {
+            .getProjectCaches( ).entrySet( ) ) {
             cache.getValue( ).saveCache( );
         }
         PreprocessorUtils.getInstance( ).saveTimestamps( );

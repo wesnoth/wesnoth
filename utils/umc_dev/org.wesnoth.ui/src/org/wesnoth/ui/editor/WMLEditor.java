@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,7 +75,7 @@ public class WMLEditor extends XtextEditor
         super( );
         if( DEBUG ) {
             org.apache.log4j.Logger.getLogger( XtextEditor.class ).setLevel(
-                    Level.DEBUG );
+                Level.DEBUG );
         }
         // activate the wesnoth plugin
         WesnothPlugin.getDefault( );
@@ -99,12 +99,12 @@ public class WMLEditor extends XtextEditor
             return false;
         }
         if( getEditorInput( ) == null
-                || ( ( XtextEditor ) obj ).getEditorInput( ) == null ) {
+            || ( ( XtextEditor ) obj ).getEditorInput( ) == null ) {
             return false;
         }
         java.net.URI u1 = ( ( IURIEditorInput ) getEditorInput( ) ).getURI( );
         java.net.URI u2 = ( ( IURIEditorInput ) ( ( XtextEditor ) obj )
-                .getEditorInput( ) ).getURI( );
+            .getEditorInput( ) ).getURI( );
         if( u1 == null || u2 == null ) {
             return false;
         }
@@ -114,7 +114,7 @@ public class WMLEditor extends XtextEditor
 
     /**
      * Gets current edited file.
-     * 
+     *
      * @return An IFile instance
      */
     public static IFile getActiveEditorFile( )
@@ -124,7 +124,7 @@ public class WMLEditor extends XtextEditor
 
     /**
      * Gets the edited file from the specified editor
-     * 
+     *
      * @param editor
      *        The editor to get the file from
      * @return An IFile instance
@@ -140,7 +140,7 @@ public class WMLEditor extends XtextEditor
     /**
      * Here it comes the part that handles external files
      * (from outside the workspace)
-     * 
+     *
      */
     /**
      * Copyright (c) 2010, Cloudsmith Inc.
@@ -151,7 +151,7 @@ public class WMLEditor extends XtextEditor
      */
 
     private void createLink( IProject project, IFile linkFile, java.net.URI uri )
-            throws CoreException
+        throws CoreException
     {
         IPath path = linkFile.getFullPath( );
 
@@ -160,7 +160,7 @@ public class WMLEditor extends XtextEditor
         int segmentCount = folders.segmentCount( );
         for( int i = 0; i < segmentCount; i++ ) {
             checkPath = checkPath.addTrailingSeparator( ).append(
-                    folders.segment( i ) );
+                folders.segment( i ) );
             IFolder folder = project.getFolder( checkPath );
             if( ! folder.exists( ) ) {
                 folder.create( true, true, null );
@@ -183,7 +183,7 @@ public class WMLEditor extends XtextEditor
                     // down, it is NOT a good
                     // idea to delete the link
                     if( PlatformUI.isWorkbenchRunning( )
-                            && ! PlatformUI.getWorkbench( ).isClosing( ) ) {
+                        && ! PlatformUI.getWorkbench( ).isClosing( ) ) {
                         file.delete( true, null );
                     }
                 } catch( CoreException e ) {
@@ -199,7 +199,7 @@ public class WMLEditor extends XtextEditor
     /**
      * Overridden to allow customization of editor context menu via injected
      * handler
-     * 
+     *
      * @see org.eclipse.ui.editors.text.TextEditor#editorContextMenuAboutToShow(org.eclipse.jface.action.IMenuManager)
      */
     @Override
@@ -212,9 +212,9 @@ public class WMLEditor extends XtextEditor
     private IFile getWorkspaceFile( IFileStore fileStore )
     {
         IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace( )
-                .getRoot( );
+            .getRoot( );
         IFile[] files = workspaceRoot.findFilesForLocationURI( fileStore
-                .toURI( ) );
+            .toURI( ) );
         if( files != null && files.length == 1 ) {
             return files[0];
         }
@@ -233,7 +233,7 @@ public class WMLEditor extends XtextEditor
      */
     @Override
     public void init( IEditorSite site, IEditorInput input )
-            throws PartInitException
+        throws PartInitException
     {
         // THE ISSUE HERE:
         // In the IDE, the File Open Dialog (and elsewhere) uses a
@@ -247,14 +247,14 @@ public class WMLEditor extends XtextEditor
         //
         // Remedy:
         if( input instanceof IURIEditorInput
-                && ! ( input instanceof IFileEditorInput ) ) {
+            && ! ( input instanceof IFileEditorInput ) ) {
             java.net.URI uri = ( ( IURIEditorInput ) input ).getURI( );
             String name = ( ( IURIEditorInput ) input ).getName( );
             // Check if this is linkable input
             if( uri.getScheme( ).equals( "file" ) ) { //$NON-NLS-1$
                 IFile linkedFile = obtainLink( uri );
                 IFileEditorInput linkedInput = new LinkedFileEditorInput(
-                        linkedFile );
+                    linkedFile );
                 super.init( site, linkedInput );
 
             }
@@ -266,7 +266,7 @@ public class WMLEditor extends XtextEditor
                 // or stored in tmp, and processed as the other linked
                 // resources..
                 URIEditorInput uriInput = new URIEditorInput(
-                        URI.createURI( uri.toString( ) ), name );
+                    URI.createURI( uri.toString( ) ), name );
                 super.init( site, uriInput );
                 return;
             }
@@ -277,7 +277,7 @@ public class WMLEditor extends XtextEditor
 
     /**
      * Throws WrappedException - the URI must refer to an existing file!
-     * 
+     *
      * @param uri
      * @return
      */
@@ -299,7 +299,7 @@ public class WMLEditor extends XtextEditor
 
             if( newProject ) {
                 project.setDefaultCharset( ENCODING_UTF8,
-                        new NullProgressMonitor( ) );
+                    new NullProgressMonitor( ) );
             }
 
             // path in project that is the same as the external file's path
@@ -337,15 +337,15 @@ public class WMLEditor extends XtextEditor
         // external link project
         //
         if( input instanceof IFileEditorInput
-                && ( ( IFileEditorInput ) input ).getFile( ).isLinked( )
-                && ( ( IFileEditorInput ) input ).getFile( ).getProject( )
-                        .getName( ).equals( AUTOLINK_PROJECT_NAME ) ) {
+            && ( ( IFileEditorInput ) input ).getFile( ).isLinked( )
+            && ( ( IFileEditorInput ) input ).getFile( ).getProject( )
+                .getName( ).equals( AUTOLINK_PROJECT_NAME ) ) {
             final IEditorInput newInput;
             IDocumentProvider provider = getDocumentProvider( );
 
             FileDialog dialog = new FileDialog( shell, SWT.SAVE );
             IPath oldPath = URIUtil.toPath( ( ( IURIEditorInput ) input )
-                    .getURI( ) );
+                .getURI( ) );
             if( oldPath != null ) {
                 dialog.setFileName( oldPath.lastSegment( ) );
                 dialog.setFilterPath( oldPath.toOSString( ) );
@@ -364,11 +364,11 @@ public class WMLEditor extends XtextEditor
             final File localFile = new File( path );
             if( localFile.exists( ) ) {
                 MessageDialog overwriteDialog = new MessageDialog( shell,
-                        Messages.WMLEditor_0, null,
-                        path + Messages.WMLEditor_1, MessageDialog.WARNING,
-                        new String[] { IDialogConstants.YES_LABEL,
-                                IDialogConstants.NO_LABEL }, 1 ); // 'No' is the
-                                                                  // default
+                    Messages.WMLEditor_0, null,
+                    path + Messages.WMLEditor_1, MessageDialog.WARNING,
+                    new String[] { IDialogConstants.YES_LABEL,
+                        IDialogConstants.NO_LABEL }, 1 ); // 'No' is the
+                                                          // default
                 if( overwriteDialog.open( ) != Window.OK ) {
                     if( progressMonitor != null ) {
                         progressMonitor.setCanceled( true );
@@ -411,7 +411,7 @@ public class WMLEditor extends XtextEditor
 
                 provider.aboutToChange( newInput );
                 provider.saveDocument( progressMonitor, newInput,
-                        provider.getDocument( input ), true );
+                    provider.getDocument( input ), true );
                 success = true;
 
             } catch( CoreException x ) {

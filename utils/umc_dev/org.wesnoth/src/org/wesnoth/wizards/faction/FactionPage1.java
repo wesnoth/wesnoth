@@ -66,13 +66,13 @@ public class FactionPage1 extends WizardPageTemplate
                     return;
                 }
                 setExtraFactionEnableness( ( ( Button ) e.getSource( ) )
-                        .getSelection( ) );
+                    .getSelection( ) );
             }
         } );
 
         Label lblR = new Label( container, SWT.NONE );
         GridData gd_lblR = new GridData( SWT.FILL, SWT.CENTER, false, false, 1,
-                1 );
+            1 );
         gd_lblR.widthHint = 77;
         lblR.setLayoutData( gd_lblR );
         lblR.setText( Messages.FactionPage1_4 );
@@ -80,17 +80,17 @@ public class FactionPage1 extends WizardPageTemplate
         txtChoices_ = new Text( container, SWT.BORDER );
         txtChoices_.setEnabled( false );
         txtChoices_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
 
         Label lblExcept = new Label( container, SWT.NONE );
         lblExcept.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         lblExcept.setText( Messages.FactionPage1_5 );
 
         txtExcept_ = new Text( container, SWT.BORDER );
         txtExcept_.setEnabled( false );
         txtExcept_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
     }
 
     private void setExtraFactionEnableness( boolean state )

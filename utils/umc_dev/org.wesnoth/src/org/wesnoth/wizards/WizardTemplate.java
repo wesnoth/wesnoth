@@ -45,7 +45,7 @@ public abstract class WizardTemplate extends Wizard implements INewWizard
     public void createPageControls( Composite pageContainer )
     {
         WesnothPlugin.getDefault( ).getWorkbench( ).getHelpSystem( )
-                .setHelp( pageContainer, "org.wesnoth.wizardHelp" ); //$NON-NLS-1$
+            .setHelp( pageContainer, "org.wesnoth.wizardHelp" ); //$NON-NLS-1$
 
         super.createPageControls( pageContainer );
     }

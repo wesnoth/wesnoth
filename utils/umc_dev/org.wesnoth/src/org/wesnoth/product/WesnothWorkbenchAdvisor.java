@@ -23,7 +23,7 @@ public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack
 
     @Override
     public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(
-            IWorkbenchWindowConfigurer configurer )
+        IWorkbenchWindowConfigurer configurer )
     {
         return new WesnothWorkbenchWindowAdvisor( configurer );
     }

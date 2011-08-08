@@ -31,7 +31,7 @@ public class WizardUtils
      * @return
      */
     public static int launchWizard( WizardTemplate wizard, Shell shell,
-            IStructuredSelection selection )
+        IStructuredSelection selection )
     {
         if( wizard == null ) {
             return Window.CANCEL;
@@ -44,18 +44,17 @@ public class WizardUtils
         wizardDialog.create( );
         int x = shell.getBounds( ).x, y = shell.getBounds( ).y;
         x += ( ( shell.getBounds( ).width - wizardDialog.getShell( )
-                .getBounds( ).width ) / 2 );
+            .getBounds( ).width ) / 2 );
         y += ( ( shell.getBounds( ).height - wizardDialog.getShell( )
-                .getBounds( ).height ) / 2 );
+            .getBounds( ).height ) / 2 );
         wizardDialog.getShell( ).setLocation( x, y );
 
         wizardDialog.setHelpAvailable( true );
         WesnothPlugin
-                .getDefault( )
-                .getWorkbench( )
-                .getHelpSystem( )
-                .setHelp( wizardDialog.getShell( ),
-                        "org.wesnoth.help.wizardHelp" ); //$NON-NLS-1$
+            .getDefault( )
+            .getWorkbench( )
+            .getHelpSystem( )
+            .setHelp( wizardDialog.getShell( ), "org.wesnoth.help.wizardHelp" ); //$NON-NLS-1$
 
         return wizardDialog.open( );
     }

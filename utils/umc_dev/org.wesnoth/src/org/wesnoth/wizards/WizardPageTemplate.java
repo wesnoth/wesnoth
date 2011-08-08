@@ -25,7 +25,7 @@ public class WizardPageTemplate extends WizardPage
     public void createControl( Composite parent )
     {
         WesnothPlugin.getDefault( ).getWorkbench( ).getHelpSystem( )
-                .setHelp( getShell( ), "org.wesnoth.wizardHelp" ); //$NON-NLS-1$
+            .setHelp( getShell( ), "org.wesnoth.wizardHelp" ); //$NON-NLS-1$
     }
 
     @Override
@@ -41,20 +41,20 @@ public class WizardPageTemplate extends WizardPage
     public IPath handleBrowseContainer( )
     {
         ContainerSelectionDialog dialog = new ContainerSelectionDialog(
-                getShell( ), ResourcesPlugin.getWorkspace( ).getRoot( ), false,
-                Messages.NewWizardPageTemplate_1 );
+            getShell( ), ResourcesPlugin.getWorkspace( ).getRoot( ), false,
+            Messages.NewWizardPageTemplate_1 );
         if( dialog.open( ) == Window.OK ) {
             Object[] result = dialog.getResult( );
             if( result.length == 1 ) {
                 try {
                     getWizard( ).selectionContainer_ = ResourcesPlugin
-                            .getWorkspace( ).getRoot( )
-                            .getFolder( ( Path ) result[0] );
+                        .getWorkspace( ).getRoot( )
+                        .getFolder( ( Path ) result[0] );
                 } catch( IllegalArgumentException e ) {
                     // the path is a project
                     getWizard( ).selectionContainer_ = ResourcesPlugin
-                            .getWorkspace( ).getRoot( )
-                            .getProject( result[0].toString( ) );
+                        .getWorkspace( ).getRoot( )
+                        .getProject( result[0].toString( ) );
                 }
                 return ( Path ) result[0];
             }

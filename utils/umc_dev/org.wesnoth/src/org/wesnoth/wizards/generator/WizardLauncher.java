@@ -56,7 +56,7 @@ public class WizardLauncher extends WizardTemplate
     public boolean performFinish( )
     {
         wizard_ = new WizardGenerator( page1_.getTagDescription( )
-                + Messages.WizardLauncher_1, page1_.getTagName( ), ( byte ) 0 );
+            + Messages.WizardLauncher_1, page1_.getTagName( ), ( byte ) 0 );
         WizardUtils.launchWizard( wizard_, getShell( ), selection_ );
         if( ! wizard_.isFinished( ) ) {
             return false;
@@ -65,7 +65,7 @@ public class WizardLauncher extends WizardTemplate
         IRunnableWithProgress op = new IRunnableWithProgress( ) {
             @Override
             public void run( IProgressMonitor monitor )
-                    throws InvocationTargetException
+                throws InvocationTargetException
             {
                 doFinish( monitor );
                 monitor.done( );
@@ -88,7 +88,7 @@ public class WizardLauncher extends WizardTemplate
             // The file is opened in the editor -> just copy-paste the text
             if( ! ( page0_.getIsTargetNewFile( ) ) ) {
                 EditorUtils.writeInEditor( EditorUtils.getEditedFile( ),
-                        wizard_.getData( ).toString( ) );
+                    wizard_.getData( ).toString( ) );
                 return;
             }
 
@@ -104,7 +104,7 @@ public class WizardLauncher extends WizardTemplate
             final IFile file = container.getFile( new Path( fileName ) );
 
             InputStream stream = new ByteArrayInputStream( wizard_.getData( )
-                    .toString( ).getBytes( ) );
+                .toString( ).getBytes( ) );
 
             if( file.exists( ) ) {
                 file.setContents( stream, true, true, monitor );

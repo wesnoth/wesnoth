@@ -32,7 +32,7 @@ public class WesnothProjectNature implements IProjectNature
         int configured = 0;
         for( int i = 0; i < commands.length; ++i ) {
             if( commands[i].getBuilderName( ).equals(
-                    Constants.BUIILDER_WESNOTH ) ) {
+                Constants.BUIILDER_WESNOTH ) ) {
                 wesnothConfigured = true;
                 configured++;
             }
@@ -46,7 +46,7 @@ public class WesnothProjectNature implements IProjectNature
         }
 
         ICommand[] newCommands = new ICommand[commands.length
-                + ( 2 - configured )];
+            + ( 2 - configured )];
         System.arraycopy( commands, 0, newCommands, 0, commands.length );
         if( wesnothConfigured == false ) {
             ICommand command = desc.newCommand( );
@@ -69,13 +69,13 @@ public class WesnothProjectNature implements IProjectNature
         ICommand[] commands = description.getBuildSpec( );
         for( int i = 0; i < commands.length; ++i ) {
             if( commands[i].getBuilderName( ).equals(
-                    Constants.BUIILDER_WESNOTH )
-                    || commands[i].getBuilderName( ).equals(
-                            Constants.BUILDER_XTEXT ) ) {
+                Constants.BUIILDER_WESNOTH )
+                || commands[i].getBuilderName( ).equals(
+                    Constants.BUILDER_XTEXT ) ) {
                 ICommand[] newCommands = new ICommand[commands.length - 1];
                 System.arraycopy( commands, 0, newCommands, 0, i );
                 System.arraycopy( commands, i + 1, newCommands, i,
-                        commands.length - i - 1 );
+                    commands.length - i - 1 );
                 description.setBuildSpec( newCommands );
                 project.setDescription( description, null );
             }

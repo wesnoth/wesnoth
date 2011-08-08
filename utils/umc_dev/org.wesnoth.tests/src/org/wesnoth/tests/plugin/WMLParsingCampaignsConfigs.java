@@ -74,7 +74,7 @@ public class WMLParsingCampaignsConfigs extends WMLTests
 
         try {
             SimpleWMLParser wmlParser = new SimpleWMLParser( new File( path ),
-                    getParser( ) );
+                getParser( ) );
             wmlParser.parse( );
             WMLConfig config = wmlParser.getParsedConfig( );
 
@@ -114,15 +114,15 @@ public class WMLParsingCampaignsConfigs extends WMLTests
     public static Collection< Object[] > data( )
     {
         return Arrays.asList( new Object[][] {
-                { new String[] { "An_Orcish_Incursion", "An_Orcish_Incursion",
-                        "01_Defend_the_Forest", "02_Assassins", "03_Wasteland",
-                        "04_Valley_of_Trolls", "05_Linaera_the_Quick",
-                        "06_A_Detour_through_the_Swamp", "07_Showdown" } },
-                { new String[] { "Dead_Water", "Dead_Water", "01_Invasion",
-                        "02_Flight", "03_Wolf_Coast", "04_Slavers",
-                        "05_Tirigaz", "06_Uncharted_Islands", "07_Bilheld",
-                        "08_Talking_to_Tyegea", "09_The_Mage",
-                        "10_The_Flaming_Sword", "11_Getting_Help",
-                        "12_Revenge", "13_Epilogue" } } } );
+            { new String[] { "An_Orcish_Incursion", "An_Orcish_Incursion",
+                "01_Defend_the_Forest", "02_Assassins", "03_Wasteland",
+                "04_Valley_of_Trolls", "05_Linaera_the_Quick",
+                "06_A_Detour_through_the_Swamp", "07_Showdown" } },
+            { new String[] { "Dead_Water", "Dead_Water", "01_Invasion",
+                "02_Flight", "03_Wolf_Coast", "04_Slavers",
+                "05_Tirigaz", "06_Uncharted_Islands", "07_Bilheld",
+                "08_Talking_to_Tyegea", "09_The_Mage",
+                "10_The_Flaming_Sword", "11_Getting_Help",
+                "12_Revenge", "13_Epilogue" } } } );
     }
 }

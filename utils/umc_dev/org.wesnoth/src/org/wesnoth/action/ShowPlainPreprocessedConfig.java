@@ -20,7 +20,7 @@ public class ShowPlainPreprocessedConfig extends ObjectActionDelegate
     public void run( IAction action )
     {
         PreprocessorUtils.getInstance( ).openPreprocessedFileInEditor(
-                WorkspaceUtils.getSelectedFile( WorkspaceUtils
-                        .getWorkbenchWindow( ) ), true );
+            WorkspaceUtils.getSelectedFile( WorkspaceUtils
+                .getWorkbenchWindow( ) ), true );
     }
 }

@@ -29,7 +29,7 @@ public class WmlFactory2Impl extends WmlFactoryImpl implements WmlFactory2
 
     @Override
     public WMLTag createWMLTag( String name, String inhertedName,
-            char cardinality )
+        char cardinality )
     {
         WMLTag tag = createWMLTag( );
 
@@ -50,7 +50,7 @@ public class WmlFactory2Impl extends WmlFactoryImpl implements WmlFactory2
 
     @Override
     public WMLKey createWMLKey( String name, String dataType, char cardinality,
-            boolean translatable )
+        boolean translatable )
     {
         WMLKey key = createWMLKey( );
 

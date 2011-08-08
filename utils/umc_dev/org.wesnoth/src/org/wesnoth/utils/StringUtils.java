@@ -33,7 +33,7 @@ public class StringUtils
         }
 
         Pattern pattern = Pattern
-                .compile( "[\t ]*" + Pattern.quote( sequence ) ); //$NON-NLS-1$
+            .compile( "[\t ]*" + Pattern.quote( sequence ) ); //$NON-NLS-1$
         Matcher matcher = pattern.matcher( target );
         return( matcher.find( ) && matcher.start( ) == 0 );
     }
@@ -60,7 +60,7 @@ public class StringUtils
         while( tmpString.contains( new String( new char[] { character } ) ) ) {
             ++cnt;
             tmpString = tmpString
-                    .substring( tmpString.indexOf( character ) + 1 );
+                .substring( tmpString.indexOf( character ) + 1 );
         }
         return cnt;
     }
@@ -109,7 +109,7 @@ public class StringUtils
      * @return
      */
     public static String removeIncorrectCharacters( String target,
-            char character, boolean removeTrailing, boolean removePreceding )
+        char character, boolean removeTrailing, boolean removePreceding )
     {
         if( target == null ) {
             return ""; //$NON-NLS-1$
@@ -125,7 +125,7 @@ public class StringUtils
             }
 
             if( target.charAt( i ) == character
-                    && ( ( removeTrailing && i == target.length( ) ) || ( removePreceding && i == 0 ) ) ) {
+                && ( ( removeTrailing && i == target.length( ) ) || ( removePreceding && i == 0 ) ) ) {
                 continue;
             }
 
@@ -164,7 +164,7 @@ public class StringUtils
         }
 
         while( string.charAt( string.length( ) - 1 ) == '/'
-                || string.charAt( string.length( ) - 1 ) == '\\' ) {
+            || string.charAt( string.length( ) - 1 ) == '\\' ) {
             string = string.substring( 0, string.length( ) - 1 );
         }
         return string;
@@ -243,7 +243,7 @@ public class StringUtils
      * @return
      */
     public static String replaceWithIndent( String string, String source,
-            String target )
+        String target )
     {
         if( string == null ) {
             return ""; //$NON-NLS-1$
@@ -264,7 +264,7 @@ public class StringUtils
         }
 
         return string.replace( source,
-                ListUtils.concatenateArray( tmpTarget, "\n" ) ); //$NON-NLS-1$
+            ListUtils.concatenateArray( tmpTarget, "\n" ) ); //$NON-NLS-1$
     }
 
     /**
@@ -316,7 +316,7 @@ public class StringUtils
         List< String > groupList = new ArrayList< String >( );
         try {
             Pattern regex = Pattern
-                    .compile( regexStr, Pattern.CASE_INSENSITIVE );
+                .compile( regexStr, Pattern.CASE_INSENSITIVE );
             Matcher regexMatcher = regex.matcher( targetString );
             while( regexMatcher.find( ) ) {
                 groupList.add( regexMatcher.group( ) );

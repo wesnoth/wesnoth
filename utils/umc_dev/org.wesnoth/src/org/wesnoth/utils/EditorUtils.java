@@ -51,7 +51,7 @@ public class EditorUtils
     public static void writeInEditor( IEditorPart targetEditor, String content )
     {
         int offset = ( ( ITextSelection ) getTextEditor( targetEditor )
-                .getSelectionProvider( ).getSelection( ) ).getOffset( );
+            .getSelectionProvider( ).getSelection( ) ).getOffset( );
         try {
             getEditorDocument( targetEditor ).replace( offset, 0, content );
         } catch( BadLocationException e ) {
@@ -76,14 +76,14 @@ public class EditorUtils
      *        the string to replace the current content
      */
     public static void replaceEditorText( IEditorPart targetEditor,
-            String content )
+        String content )
     {
         if( targetEditor == null ) {
             return;
         }
         try {
             getEditorDocument( targetEditor ).replace( 0,
-                    getEditorDocument( targetEditor ).getLength( ), content );
+                getEditorDocument( targetEditor ).getLength( ), content );
         } catch( BadLocationException e ) {
         }
     }
@@ -110,7 +110,7 @@ public class EditorUtils
         }
 
         IDocumentProvider dp = getTextEditor( targetEditor )
-                .getDocumentProvider( );
+            .getDocumentProvider( );
         return dp.getDocument( targetEditor.getEditorInput( ) );
     }
 
@@ -150,7 +150,7 @@ public class EditorUtils
     public static IEditorPart getEditedFile( )
     {
         return WorkspaceUtils.getWorkbenchWindow( ).getPages( )[0]
-                .getActiveEditor( );
+            .getActiveEditor( );
     }
 
     /**
@@ -164,7 +164,7 @@ public class EditorUtils
     public static IEditorPart openEditor( IFile file, boolean activatePage )
     {
         IWorkbenchPage page = WorkspaceUtils.getWorkbenchWindow( )
-                .getActivePage( );
+            .getActivePage( );
         try {
             return IDE.openEditor( page, file, activatePage );
         } catch( PartInitException e ) {
@@ -182,7 +182,7 @@ public class EditorUtils
     public static IEditorPart openEditor( String file )
     {
         return openEditor( EFS.getLocalFileSystem( )
-                .getStore( new Path( file ) ) );
+            .getStore( new Path( file ) ) );
     }
 
     /**
@@ -195,7 +195,7 @@ public class EditorUtils
     {
         try {
             return IDE.openEditorOnFileStore( WorkspaceUtils
-                    .getWorkbenchWindow( ).getActivePage( ), file );
+                .getWorkbenchWindow( ).getActivePage( ), file );
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
             return null;

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.xtext.ui.editor.utils.TextStyle;
 import org.wesnoth.ui.Messages;
 
 public class WMLHighlightingConfiguration extends
-        DefaultHighlightingConfiguration
+    DefaultHighlightingConfiguration
 {
     public static final String RULE_WML_TAG          = "wmlTag";        //$NON-NLS-1$
     public static final String RULE_WML_KEY          = "wmlKey";        //$NON-NLS-1$
@@ -34,22 +34,22 @@ public class WMLHighlightingConfiguration extends
     {
         super.configure( acceptor );
         acceptor.acceptDefaultHighlighting( RULE_WML_TAG,
-                Messages.WMLHighlightingConfiguration_7, tagTextStyle( ) );
+            Messages.WMLHighlightingConfiguration_7, tagTextStyle( ) );
         acceptor.acceptDefaultHighlighting( RULE_WML_KEY,
-                Messages.WMLHighlightingConfiguration_8, keyTextStyle( ) );
+            Messages.WMLHighlightingConfiguration_8, keyTextStyle( ) );
         acceptor.acceptDefaultHighlighting( RULE_WML_MACRO_CALL,
-                Messages.WMLHighlightingConfiguration_9, macroTextStyle( ) );
+            Messages.WMLHighlightingConfiguration_9, macroTextStyle( ) );
 
         acceptor.acceptDefaultHighlighting( RULE_MATCH_TAG,
-                Messages.WMLHighlightingConfiguration_10, startEndTextStyle( ) );
+            Messages.WMLHighlightingConfiguration_10, startEndTextStyle( ) );
 
         // preproc
         acceptor.acceptDefaultHighlighting( RULE_WML_MACRO_DEFINE,
-                Messages.WMLHighlightingConfiguration_11, preprocTextStyle( ) );
+            Messages.WMLHighlightingConfiguration_11, preprocTextStyle( ) );
         acceptor.acceptDefaultHighlighting( RULE_WML_IF,
-                Messages.WMLHighlightingConfiguration_12, preprocTextStyle( ) );
+            Messages.WMLHighlightingConfiguration_12, preprocTextStyle( ) );
         acceptor.acceptDefaultHighlighting( RULE_WML_TEXTDOMAIN,
-                Messages.WMLHighlightingConfiguration_13, preprocTextStyle( ) );
+            Messages.WMLHighlightingConfiguration_13, preprocTextStyle( ) );
     }
 
     public TextStyle preprocTextStyle( )

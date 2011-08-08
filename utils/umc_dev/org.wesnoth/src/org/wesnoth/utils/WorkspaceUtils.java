@@ -70,7 +70,7 @@ public class WorkspaceUtils
     {
         IStructuredSelection selection = getSelectedStructuredSelection( window );
         if( selection == null
-                || ! ( selection.getFirstElement( ) instanceof IProject ) ) {
+            || ! ( selection.getFirstElement( ) instanceof IProject ) ) {
             return null;
         }
 
@@ -86,7 +86,7 @@ public class WorkspaceUtils
     public static IProject getProject( String name )
     {
         IProject proj = ResourcesPlugin.getWorkspace( ).getRoot( )
-                .getProject( name );
+            .getProject( name );
         if( proj.exists( ) ) {
             return proj;
         }
@@ -114,7 +114,7 @@ public class WorkspaceUtils
     {
         IStructuredSelection selection = getSelectedStructuredSelection( window );
         if( selection == null
-                || ! ( selection.getFirstElement( ) instanceof IFolder ) ) {
+            || ! ( selection.getFirstElement( ) instanceof IFolder ) ) {
             return null;
         }
 
@@ -142,7 +142,7 @@ public class WorkspaceUtils
     {
         IStructuredSelection selection = getSelectedStructuredSelection( window );
         if( selection == null
-                || ! ( selection.getFirstElement( ) instanceof IFile ) ) {
+            || ! ( selection.getFirstElement( ) instanceof IFile ) ) {
             return null;
         }
         return ( IFile ) selection.getFirstElement( );
@@ -156,7 +156,7 @@ public class WorkspaceUtils
     public static IStructuredSelection getSelectedStructuredSelection( )
     {
         return getSelectedStructuredSelection( WorkspaceUtils
-                .getWorkbenchWindow( ) );
+            .getWorkbenchWindow( ) );
     }
 
     /**
@@ -167,7 +167,7 @@ public class WorkspaceUtils
      * @return
      */
     public static IStructuredSelection getSelectedStructuredSelection(
-            final IWorkbenchWindow window )
+        final IWorkbenchWindow window )
     {
         if( window == null ) {
             return null;
@@ -185,7 +185,7 @@ public class WorkspaceUtils
                     }
 
                     setResult( ( IStructuredSelection ) window
-                            .getSelectionService( ).getSelection( ) );
+                        .getSelectionService( ).getSelection( ) );
                 } catch( Exception e ) {
                     e.printStackTrace( );
                 }
@@ -204,8 +204,8 @@ public class WorkspaceUtils
     {
         IStructuredSelection selection = getSelectedStructuredSelection( );
         if( selection == null
-                || ! ( selection.getFirstElement( ) instanceof IFolder || selection
-                        .getFirstElement( ) instanceof IProject ) ) {
+            || ! ( selection.getFirstElement( ) instanceof IFolder || selection
+                .getFirstElement( ) instanceof IProject ) ) {
             return null;
         }
 
@@ -306,7 +306,7 @@ public class WorkspaceUtils
     {
         if( temporaryFolder_ == null || temporaryFolder_.isEmpty( ) ) {
             temporaryFolder_ = System.getProperty( "java.io.tmpdir" ) + //$NON-NLS-1$
-                    IPath.SEPARATOR + "wesnoth_plugin" + IPath.SEPARATOR; //$NON-NLS-1$
+                IPath.SEPARATOR + "wesnoth_plugin" + IPath.SEPARATOR; //$NON-NLS-1$
 
             File tmpFile = new File( temporaryFolder_ );
 
@@ -338,7 +338,7 @@ public class WorkspaceUtils
     public static String getCurrentDateTime( )
     {
         return new SimpleDateFormat( "yyyy_MM_dd_HH_mm_ss" )
-                .format( new Date( ) );
+            .format( new Date( ) );
     }
 
     /**
@@ -355,8 +355,8 @@ public class WorkspaceUtils
         }
 
         String result = Preferences.getPaths(
-                WesnothInstallsUtils.getInstallNameForResource( resource ) )
-                .getAddonsDir( );
+            WesnothInstallsUtils.getInstallNameForResource( resource ) )
+            .getAddonsDir( );
         result += resource.getProject( ).getName( ) + IPath.SEPARATOR;
         result += resource.getProjectRelativePath( ).toOSString( );
         return result;
@@ -375,8 +375,8 @@ public class WorkspaceUtils
 
         if( ! checkPathsAreSet( Preferences.getDefaultInstallName( ), false ) ) {
             PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
-                    WesnothPlugin.getShell( ),
-                    "org.wesnoth.preferences.InstallsPage", null, null ); //$NON-NLS-1$
+                WesnothPlugin.getShell( ),
+                "org.wesnoth.preferences.InstallsPage", null, null ); //$NON-NLS-1$
             pref.open( );
             if( ! checkPathsAreSet( Preferences.getDefaultInstallName( ), true ) ) {
                 GUIUtils.showErrorMessageBox( Messages.WorkspaceUtils_7 );
@@ -396,47 +396,48 @@ public class WorkspaceUtils
                     // automatically import 'special' folders as projects
                     List< File > userAddonsFiles = new ArrayList< File >( );
                     Paths paths = Preferences.getPaths( Preferences
-                            .getDefaultInstallName( ) );
+                        .getDefaultInstallName( ) );
 
                     if( GUIUtils.showMessageBox( Messages.WorkspaceUtils_18,
-                            SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.YES ) {
+                        SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.YES ) {
                         // useraddons/add-ons/data
                         File[] tmp = new File( paths.getAddonsDir( ) )
-                                .listFiles( );
+                            .listFiles( );
                         if( tmp != null ) {
                             userAddonsFiles.addAll( Arrays.asList( tmp ) );
                         }
                     }
 
                     monitor.beginTask( Messages.WorkspaceUtils_22,
-                            userAddonsFiles.size( ) * 10 );
+                        userAddonsFiles.size( ) * 10 );
 
                     for( File file: userAddonsFiles ) {
                         if( file.isDirectory( ) == false
-                                || file.getName( ).startsWith( "." ) ) {
+                            || file.getName( ).startsWith( "." ) ) {
                             continue;
                         }
 
                         String projectName = file.getName( );
                         if( ResourceUtils.isCampaignDirPath( paths,
-                                file.getAbsolutePath( ) ) ) {
+                            file.getAbsolutePath( ) ) ) {
                             projectName = "_Mainline_" + file.getName( ); //$NON-NLS-1$
                         }
 
                         ProjectUtils.createWesnothProject( projectName,
-                                file.getAbsolutePath( ),
-                                paths.getInstallName( ), monitor );
+                            file.getAbsolutePath( ),
+                            paths.getInstallName( ), monitor );
 
                         monitor.worked( 10 );
                     }
 
                     if( guided ) {
-                        GUIUtils.showInfoMessageBox( Messages.WorkspaceUtils_25 );
+                        GUIUtils
+                            .showInfoMessageBox( Messages.WorkspaceUtils_25 );
                     }
                     else {
                         Logger.getInstance( ).log(
-                                "setupWorkspace was successful", //$NON-NLS-1$
-                                Messages.WorkspaceUtils_29 );
+                            "setupWorkspace was successful", //$NON-NLS-1$
+                            Messages.WorkspaceUtils_29 );
                     }
                 } catch( Exception e ) {
                     Logger.getInstance( ).logException( e );
@@ -459,16 +460,16 @@ public class WorkspaceUtils
      *        the user if conditions are not met
      */
     public static boolean checkPathsAreSet( String installName,
-            boolean displayWarning )
+        boolean displayWarning )
     {
         if( ! ResourceUtils.isValidFilePath( Preferences.getPaths( installName )
-                .getWesnothExecutablePath( ) )
-                || ! ResourceUtils.isValidFilePath( Preferences.getPaths(
-                        installName ).getUserDir( ) )
-                || ! ResourceUtils.isValidFilePath( Preferences.getPaths(
-                        installName ).getWMLToolsDir( ) )
-                || ! ResourceUtils.isValidFilePath( Preferences.getPaths(
-                        installName ).getWorkingDir( ) ) ) {
+            .getWesnothExecutablePath( ) )
+            || ! ResourceUtils.isValidFilePath( Preferences.getPaths(
+                installName ).getUserDir( ) )
+            || ! ResourceUtils.isValidFilePath( Preferences.getPaths(
+                installName ).getWMLToolsDir( ) )
+            || ! ResourceUtils.isValidFilePath( Preferences.getPaths(
+                installName ).getWorkingDir( ) ) ) {
             if( displayWarning ) {
                 GUIUtils.showWarnMessageBox( Messages.WorkspaceUtils_33 );
             }

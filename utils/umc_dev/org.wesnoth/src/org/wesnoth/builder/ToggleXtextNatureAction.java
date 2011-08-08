@@ -39,7 +39,7 @@ public class ToggleXtextNatureAction extends ObjectActionDelegate
             }
             else if( element instanceof IAdaptable ) {
                 project = ( IProject ) ( ( IAdaptable ) element )
-                        .getAdapter( IProject.class );
+                    .getAdapter( IProject.class );
             }
             if( project != null ) {
                 toggleNature( project );
@@ -65,12 +65,12 @@ public class ToggleXtextNatureAction extends ObjectActionDelegate
                     String[] newNatures = new String[natures.length - 1];
                     System.arraycopy( natures, 0, newNatures, 0, i );
                     System.arraycopy( natures, i + 1, newNatures, i,
-                            natures.length - i - 1 );
+                        natures.length - i - 1 );
                     description.setNatureIds( newNatures );
                     project.setDescription( description,
-                            new NullProgressMonitor( ) );
+                        new NullProgressMonitor( ) );
                     project.refreshLocal( IResource.DEPTH_INFINITE,
-                            new NullProgressMonitor( ) );
+                        new NullProgressMonitor( ) );
                     return;
                 }
             }
@@ -82,7 +82,7 @@ public class ToggleXtextNatureAction extends ObjectActionDelegate
             description.setNatureIds( newNatures );
             project.setDescription( description, new NullProgressMonitor( ) );
             project.refreshLocal( IResource.DEPTH_INFINITE,
-                    new NullProgressMonitor( ) );
+                new NullProgressMonitor( ) );
         } catch( CoreException e ) {
             Logger.getInstance( ).logException( e );
         }

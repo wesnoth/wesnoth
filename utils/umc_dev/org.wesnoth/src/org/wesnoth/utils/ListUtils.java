@@ -23,7 +23,7 @@ public class ListUtils
      * @return A string with the string representation of that objects
      */
     public static String concatenateList( List< ? extends Object > list,
-            String separator )
+        String separator )
     {
         if( list == null || list.isEmpty( ) ) {
             return ""; //$NON-NLS-1$

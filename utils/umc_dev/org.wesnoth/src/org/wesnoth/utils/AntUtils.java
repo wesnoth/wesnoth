@@ -40,7 +40,7 @@ public class AntUtils
      * @return null if the build didn't success
      */
     public static String runAnt( String antFile,
-            Map< String, String > properties, boolean recordOutput )
+        Map< String, String > properties, boolean recordOutput )
     {
         Project project = new Project( );
         ByteArrayOutputStream out = null;
@@ -56,7 +56,7 @@ public class AntUtils
             ProjectHelper.configureProject( project, buildFile );
 
             Iterator< Entry< String, String >> iterator = properties.entrySet( )
-                    .iterator( );
+                .iterator( );
             while( iterator.hasNext( ) ) {
                 Entry< String, String > key = iterator.next( );
                 project.setUserProperty( key.getKey( ), key.getValue( ) );

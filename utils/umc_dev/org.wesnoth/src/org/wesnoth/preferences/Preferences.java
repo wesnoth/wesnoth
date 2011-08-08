@@ -32,7 +32,7 @@ public class Preferences extends AbstractPreferenceInitializer
     public static void initializeToDefault( )
     {
         IPreferenceStore store = WesnothPlugin.getDefault( )
-                .getPreferenceStore( );
+            .getPreferenceStore( );
         // general settings
         store.setDefault( Constants.P_WESNOTH_EXEC_PATH, "" ); //$NON-NLS-1$
         store.setDefault( Constants.P_WESNOTH_WORKING_DIR, "" ); //$NON-NLS-1$
@@ -142,7 +142,7 @@ public class Preferences extends AbstractPreferenceInitializer
     public static void setDefaultInstallName( String newInstallName )
     {
         getPreferences( ).setValue( Constants.P_INST_DEFAULT_INSTALL,
-                newInstallName );
+            newInstallName );
     }
 
     /**
@@ -251,7 +251,7 @@ public class Preferences extends AbstractPreferenceInitializer
         public String getUserDir( )
         {
             return getString( installPrefix_ + Constants.P_WESNOTH_USER_DIR )
-                    .replace( '\\', '/' ) + IPath.SEPARATOR;
+                .replace( '\\', '/' ) + IPath.SEPARATOR;
         }
 
         /**
@@ -263,7 +263,7 @@ public class Preferences extends AbstractPreferenceInitializer
         public String getWorkingDir( )
         {
             return getString( installPrefix_ + Constants.P_WESNOTH_WORKING_DIR )
-                    .replace( '\\', '/' ) + IPath.SEPARATOR;
+                .replace( '\\', '/' ) + IPath.SEPARATOR;
         }
 
         /**
@@ -275,7 +275,8 @@ public class Preferences extends AbstractPreferenceInitializer
         public String getWMLToolsDir( )
         {
             return getString( installPrefix_ + Constants.P_WESNOTH_WMLTOOLS_DIR )
-                    .replace( '\\', '/' ) + IPath.SEPARATOR;
+                .replace( '\\', '/' )
+                + IPath.SEPARATOR;
         }
 
         /**
@@ -286,7 +287,7 @@ public class Preferences extends AbstractPreferenceInitializer
         public String getWesnothExecutablePath( )
         {
             return getString( installPrefix_ + Constants.P_WESNOTH_EXEC_PATH )
-                    .replace( '\\', '/' );
+                .replace( '\\', '/' );
         }
     }
 }

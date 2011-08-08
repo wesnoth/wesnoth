@@ -53,12 +53,12 @@ public class WesnothProjectPage extends PropertyPage
 
         Label lblNewLabel = new Label( grpGeneral, SWT.NONE );
         lblNewLabel.setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         lblNewLabel.setText( Messages.WesnothProjectPage_1 );
 
         cmbInstall_ = new Combo( grpGeneral, SWT.READ_ONLY );
         cmbInstall_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
 
         // fill the installs
         List< WesnothInstall > installs = WesnothInstallsUtils.getInstalls( );

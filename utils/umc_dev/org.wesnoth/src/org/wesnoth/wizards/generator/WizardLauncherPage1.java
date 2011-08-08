@@ -43,7 +43,7 @@ public class WizardLauncherPage1 extends WizardPageTemplate
         list_ = new HashMap< String, String >( );
 
         String[] templates = StringUtils.getLines( TemplateProvider
-                .getInstance( ).getTemplate( "wizards" ) ); //$NON-NLS-1$
+            .getInstance( ).getTemplate( "wizards" ) ); //$NON-NLS-1$
 
         for( String line: templates ) {
             if( StringUtils.startsWith( line, "#" ) ) {
@@ -52,7 +52,7 @@ public class WizardLauncherPage1 extends WizardPageTemplate
             String[] tokens = line.split( ":" ); //$NON-NLS-1$
             if( tokens.length != 2 ) {
                 Logger.getInstance( ).logError(
-                        "Error in template 'wizards' on line:" + line ); //$NON-NLS-1$
+                    "Error in template 'wizards' on line:" + line ); //$NON-NLS-1$
                 continue;
             }
             list_.put( tokens[0], tokens[1] );
@@ -98,7 +98,7 @@ public class WizardLauncherPage1 extends WizardPageTemplate
                     return;
                 }
                 grpCustomTag_.setVisible( ( ( Combo ) e.getSource( ) )
-                        .getText( ).equals( Messages.WizardLauncherPage1_12 ) );
+                    .getText( ).equals( Messages.WizardLauncherPage1_12 ) );
             }
         } );
 
@@ -114,8 +114,8 @@ public class WizardLauncherPage1 extends WizardPageTemplate
     public String getTagName( )
     {
         return cmbWizardName_.getText( ).equals(
-                Messages.WizardLauncherPage1_14 ) == true ? txtOtherTag_
-                .getText( ): list_.get( cmbWizardName_.getText( ) );
+            Messages.WizardLauncherPage1_14 ) == true ? txtOtherTag_
+            .getText( ): list_.get( cmbWizardName_.getText( ) );
     }
 
     public String getTagDescription( )

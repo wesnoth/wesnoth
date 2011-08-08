@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,11 +28,11 @@ public class WMLDocInformationPresenter extends PopupDialog
      * Creates a new WMLDocumentation information presenter
      */
     public WMLDocInformationPresenter( Shell parent,
-            IWMLDocProvider docProvider, Point bounds )
+        IWMLDocProvider docProvider, Point bounds )
     {
         super( parent, PopupDialog.INFOPOPUPRESIZE_SHELLSTYLE, true, true,
-                true, false, false, docProvider.getTitle( ), docProvider
-                        .getInfoText( ) );
+            true, false, false, docProvider.getTitle( ), docProvider
+                .getInfoText( ) );
 
         bounds_ = bounds;
         currentDocProvider_ = docProvider;
@@ -43,9 +43,9 @@ public class WMLDocInformationPresenter extends PopupDialog
     {
         panel_ = new Composite( parent, SWT.None );
         panel_.setBackground( parent.getDisplay( ).getSystemColor(
-                SWT.COLOR_INFO_BACKGROUND ) );
+            SWT.COLOR_INFO_BACKGROUND ) );
         panel_.setForeground( parent.getDisplay( ).getSystemColor(
-                SWT.COLOR_INFO_FOREGROUND ) );
+            SWT.COLOR_INFO_FOREGROUND ) );
 
         GridLayout grid = new GridLayout( );
         grid.numColumns = 5;

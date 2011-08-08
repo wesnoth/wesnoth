@@ -79,8 +79,8 @@ public class DependencyListBuilder implements Serializable
     {
         if( isCreated_ && ! force ) {
             Logger.getInstance( )
-                    .log( "Skipping depedency list for project "
-                            + project_.getName( ) );
+                .log( "Skipping depedency list for project "
+                    + project_.getName( ) );
             return;
         }
 
@@ -107,7 +107,7 @@ public class DependencyListBuilder implements Serializable
         // in case we need to add multiple subsequent files...
         DependencyListNode backupPrevious = previous_, newNode = null;
         String fileParentProjectPath = file.getParent( )
-                .getProjectRelativePath( ).toString( );
+            .getProjectRelativePath( ).toString( );
 
         // we add a file in an existing processed directory.
         if( directories_.contains( fileParentProjectPath ) ) {
@@ -143,7 +143,7 @@ public class DependencyListBuilder implements Serializable
 
                         // we found the place?
                         if( ResourceUtils.wmlFileNameCompare( tmpNode.getFile( )
-                                .getName( ), fileName ) > 0 ) {
+                            .getName( ), fileName ) > 0 ) {
 
                             previous_ = tmpNode.getPrevious( );
 
@@ -222,7 +222,7 @@ public class DependencyListBuilder implements Serializable
 
         // skip core library
         if( container.getName( ).equals(
-                WesnothProjectsExplorer.CORE_LIBRARY_NAME ) ) {
+            WesnothProjectsExplorer.CORE_LIBRARY_NAME ) ) {
             return;
         }
 
@@ -250,14 +250,14 @@ public class DependencyListBuilder implements Serializable
             if( ! directories_.contains( containerPath ) ) {
                 directories_.add( containerPath );
                 directoriesEntries_.add( new ListDirectoryEntry( containerPath,
-                        null, null ) );
+                    null, null ) );
 
                 toAddDirectoryEntry = true;
             }
             else {
                 // update the includes
                 directoriesEntries_.get( directoriesEntries_
-                        .indexOf( containerPath ) ).Includes++;
+                    .indexOf( containerPath ) ).Includes++;
             }
 
             if( members.isEmpty( ) ) {
@@ -270,7 +270,7 @@ public class DependencyListBuilder implements Serializable
             for( IResource resource: members ) {
                 if( resource instanceof IContainer ) {
                     internal_addContainer( resource.getProjectRelativePath( )
-                            .toString( ) );
+                        .toString( ) );
                 }
                 else {
                     // just config files.
@@ -289,8 +289,8 @@ public class DependencyListBuilder implements Serializable
                 if( toAddDirectoryEntry ) {
                     // update the first directory node
                     directoriesEntries_.set( directories_.size( ) - 1,
-                            new ListDirectoryEntry( containerPath,
-                                    firstNewNode, lastNode ) );
+                        new ListDirectoryEntry( containerPath,
+                            firstNewNode, lastNode ) );
                 }
                 else {
                     // if the current entry has null nodes
@@ -298,17 +298,17 @@ public class DependencyListBuilder implements Serializable
                     // we need to update the references nodes
 
                     ListDirectoryEntry entry = directoriesEntries_
-                            .get( directories_.indexOf( containerPath ) );
+                        .get( directories_.indexOf( containerPath ) );
 
                     if( entry.FirstNode == null
-                            || ( entry.FirstNode != null && firstNewNode
-                                    .getIndex( ) < entry.FirstNode.getIndex( ) ) ) {
+                        || ( entry.FirstNode != null && firstNewNode
+                            .getIndex( ) < entry.FirstNode.getIndex( ) ) ) {
                         entry.FirstNode = firstNewNode;
                     }
 
                     if( entry.LastNode == null
-                            || ( entry.LastNode != null && lastNode.getIndex( ) > entry.LastNode
-                                    .getIndex( ) ) ) {
+                        || ( entry.LastNode != null && lastNode.getIndex( ) > entry.LastNode
+                            .getIndex( ) ) ) {
                         entry.LastNode = lastNode;
                     }
                 }
@@ -332,12 +332,12 @@ public class DependencyListBuilder implements Serializable
             // inserting is done between 2 nodes
             if( previous_.getNext( ) != null ) {
                 int newIndex = ( previous_.getIndex( ) + previous_.getNext( )
-                        .getIndex( ) ) / 2;
+                    .getIndex( ) ) / 2;
 
                 if( newIndex > previous_.getIndex( )
-                        + DependencyListNode.INDEX_STEP ) {
+                    + DependencyListNode.INDEX_STEP ) {
                     newIndex = previous_.getIndex( )
-                            + DependencyListNode.INDEX_STEP;
+                        + DependencyListNode.INDEX_STEP;
                 }
 
                 newNode.setIndex( newIndex );
@@ -364,7 +364,7 @@ public class DependencyListBuilder implements Serializable
                 newNode.setNext( root );
 
                 newNode.setIndex( root.getIndex( )
-                        - DependencyListNode.INDEX_STEP );
+                    - DependencyListNode.INDEX_STEP );
             }
             else {
                 newNode.setIndex( currentIndex_ );
@@ -411,7 +411,7 @@ public class DependencyListBuilder implements Serializable
         }
 
         String fileParentProjectPath = node.getFile( ).getParent( )
-                .getProjectRelativePath( ).toString( );
+            .getProjectRelativePath( ).toString( );
 
         list_.remove( node.getFile( ).getProjectRelativePath( ).toString( ) );
 
@@ -420,7 +420,7 @@ public class DependencyListBuilder implements Serializable
         if( node.getNext( ) == null ) {
             if( node.getPrevious( ) != null ) {
                 currentIndex_ = node.getPrevious( ).getIndex( )
-                        + DependencyListNode.INDEX_STEP;
+                    + DependencyListNode.INDEX_STEP;
             }
         }
 
@@ -494,7 +494,7 @@ public class DependencyListBuilder implements Serializable
         List< String > processedIncludes = new ArrayList< String >( );
 
         for( int prevIndex = 0, newIndex = 0; prevIndex < prevLength
-                && newIndex < newLength; ) {
+            && newIndex < newLength; ) {
             String prevIncl = previousIncludes.get( prevIndex );
             String newIncl = newIncludes.get( prevIndex );
 
@@ -519,8 +519,8 @@ public class DependencyListBuilder implements Serializable
                 // get the directory entry for the previous include
                 if( newIndex > 0 ) {
                     ListDirectoryEntry entry = directoriesEntries_
-                            .get( directories_.indexOf( newIncludes
-                                    .get( newIndex - 1 ) ) );
+                        .get( directories_.indexOf( newIncludes
+                            .get( newIndex - 1 ) ) );
 
                     if( entry != null ) {
                         previous_ = entry.FirstNode;
@@ -546,13 +546,13 @@ public class DependencyListBuilder implements Serializable
                     if( ! processedIncludes.contains( prevIncl ) ) {
 
                         ListDirectoryEntry prevEntry = directoriesEntries_
-                                .get( directories_.indexOf( prevIncl ) );
+                            .get( directories_.indexOf( prevIncl ) );
                         ListDirectoryEntry newEntry = directoriesEntries_
-                                .get( directories_.indexOf( newIncl ) );
+                            .get( directories_.indexOf( newIncl ) );
 
                         if( prevEntry != null && newEntry != null
-                                && prevEntry.FirstNode != null
-                                && newEntry.FirstNode != null ) {
+                            && prevEntry.FirstNode != null
+                            && newEntry.FirstNode != null ) {
 
                             // create a list for easier swap
                             List< DependencyListNode > nodes = new ArrayList< DependencyListNode >( );
@@ -602,8 +602,8 @@ public class DependencyListBuilder implements Serializable
                         }
                         else {
                             Logger.getInstance( ).log(
-                                    "Null directory entry for" + "includes: "
-                                            + prevIncl + " and " + newIncl );
+                                "Null directory entry for" + "includes: "
+                                    + prevIncl + " and " + newIncl );
                         }
                     }
                 }
@@ -714,7 +714,7 @@ public class DependencyListBuilder implements Serializable
         public int                Includes;
 
         public ListDirectoryEntry( String name, DependencyListNode firstNode,
-                DependencyListNode lastNode )
+            DependencyListNode lastNode )
         {
             Name = name;
             FirstNode = firstNode;

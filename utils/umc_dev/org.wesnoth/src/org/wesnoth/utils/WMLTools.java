@@ -55,8 +55,8 @@ public class WMLTools
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLIndent( String installName,
-            String resourcePath, String stdin, boolean dryrun,
-            OutputStream[] stdout, OutputStream[] stderr )
+        String resourcePath, String stdin, boolean dryrun,
+        OutputStream[] stdout, OutputStream[] stderr )
     {
         Paths paths = Preferences.getPaths( installName );
 
@@ -75,7 +75,7 @@ public class WMLTools
             }
 
             if( dryrun
-                    || Preferences.getBool( Constants.P_WMLINDENT_DRYRUN ) == true ) {
+                || Preferences.getBool( Constants.P_WMLINDENT_DRYRUN ) == true ) {
                 arguments.add( "--dryrun" ); //$NON-NLS-1$
             }
 
@@ -95,17 +95,17 @@ public class WMLTools
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLParser2( String installName,
-            String resourcePath )
+        String resourcePath )
     {
         Paths paths = Preferences.getPaths( installName );
 
         if( ! ResourceUtils.isValidFilePath( resourcePath )
-                || ! checkWMLTool( paths, "wesnoth/wmlparser2.py" ) ) {
+            || ! checkWMLTool( paths, "wesnoth/wmlparser2.py" ) ) {
             return null;
         }
 
         File wmlparserFile = new File( paths.getWMLToolsDir( )
-                + "/wesnoth/wmlparser2.py" ); //$NON-NLS-1$
+            + "/wesnoth/wmlparser2.py" ); //$NON-NLS-1$
 
         List< String > arguments = new ArrayList< String >( );
 
@@ -149,10 +149,10 @@ public class WMLTools
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLLint( String installName,
-            String resourcePath, boolean dryrun, boolean showProgress )
+        String resourcePath, boolean dryrun, boolean showProgress )
     {
         return runWMLLint( installName, resourcePath, dryrun, showProgress,
-                new OutputStream[0], new OutputStream[0] );
+            new OutputStream[0], new OutputStream[0] );
     }
 
     /**
@@ -171,13 +171,13 @@ public class WMLTools
      *        The array of streams where to output the stderr content
      */
     public static ExternalToolInvoker runWMLLint( String installName,
-            String resourcePath, boolean dryrun, boolean showProgress,
-            OutputStream[] stdout, OutputStream[] stderr )
+        String resourcePath, boolean dryrun, boolean showProgress,
+        OutputStream[] stdout, OutputStream[] stderr )
     {
         Paths paths = Preferences.getPaths( installName );
 
         if( ! ResourceUtils.isValidFilePath( resourcePath )
-                || ! checkWMLTool( paths, Tools.WMLLINT.toString( ) ) ) {
+            || ! checkWMLTool( paths, Tools.WMLLINT.toString( ) ) ) {
             return null;
         }
 
@@ -188,7 +188,7 @@ public class WMLTools
         arguments.add( wmllintFile.getAbsolutePath( ) );
 
         int verboseLevel = Preferences
-                .getInt( Constants.P_WMLLINT_VERBOSE_LEVEL );
+            .getInt( Constants.P_WMLLINT_VERBOSE_LEVEL );
         for( int i = 1; i <= verboseLevel; i++ ) {
             arguments.add( "-v" ); //$NON-NLS-1$
         }
@@ -221,10 +221,10 @@ public class WMLTools
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLScope( String installName,
-            String resourcePath, boolean showProgress )
+        String resourcePath, boolean showProgress )
     {
         return runWMLScope( installName, resourcePath, showProgress,
-                new OutputStream[0], new OutputStream[0] );
+            new OutputStream[0], new OutputStream[0] );
     }
 
     /**
@@ -240,13 +240,13 @@ public class WMLTools
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLScope( String installName,
-            String resourcePath, boolean showProgress, OutputStream[] stdout,
-            OutputStream[] stderr )
+        String resourcePath, boolean showProgress, OutputStream[] stdout,
+        OutputStream[] stderr )
     {
         Paths paths = Preferences.getPaths( installName );
 
         if( ! ResourceUtils.isValidFilePath( resourcePath )
-                || ! checkWMLTool( paths, Tools.WMLSCOPE.toString( ) ) ) {
+            || ! checkWMLTool( paths, Tools.WMLSCOPE.toString( ) ) ) {
             return null;
         }
 
@@ -256,7 +256,7 @@ public class WMLTools
 
         arguments.add( wmlscopeFile.getAbsolutePath( ) );
         int verboseLevel = Preferences
-                .getInt( Constants.P_WMLSCOPE_VERBOSE_LEVEL );
+            .getInt( Constants.P_WMLSCOPE_VERBOSE_LEVEL );
 
         if( verboseLevel > 0 ) {
             arguments.add( "-w" ); //$NON-NLS-1$
@@ -292,7 +292,7 @@ public class WMLTools
      *        argument for launching the tool
      */
     public static void runWMLToolAsWorkspaceJob( final Tools tool,
-            final String targetPath )
+        final String targetPath )
     {
         // TODO: remove/rework this hackish method.
         if( tool == Tools.WESNOTH_ADDON_MANAGER ) {
@@ -300,7 +300,7 @@ public class WMLTools
         }
 
         IEditorReference[] editors = WorkspaceUtils.getWorkbenchWindow( )
-                .getPages( )[0].getEditorReferences( );
+            .getPages( )[0].getEditorReferences( );
 
         for( IEditorReference editor: editors ) {
             if( editor.isDirty( ) ) {
@@ -330,11 +330,11 @@ public class WMLTools
                 try {
                     monitor.beginTask( toolName, 1050 );
                     MessageConsole console = GUIUtils.createConsole( toolName
-                            + Messages.WMLTools_29, null, true );
+                        + Messages.WMLTools_29, null, true );
                     OutputStream[] stdout = new OutputStream[] { console
-                            .newMessageStream( ) };
+                        .newMessageStream( ) };
                     OutputStream[] stderr = new OutputStream[] { console
-                            .newMessageStream( ) };
+                        .newMessageStream( ) };
 
                     String location;
                     IResource resource = null;
@@ -355,33 +355,33 @@ public class WMLTools
                         }
 
                         installName = WesnothInstallsUtils
-                                .getInstallNameForResource( resource );
+                            .getInstallNameForResource( resource );
                     }
 
                     switch( tool ) {
                         case WMLINDENT:
                             if( selFile != null && targetPath == null ) {
                                 String stdin = EditorUtils.getEditorDocument( )
-                                        .get( );
+                                    .get( );
                                 // don't output to stdout as we will put that in
                                 // the editor
                                 toolInvoker = WMLTools.runWMLIndent(
-                                        installName, null, stdin, false, null,
-                                        stdout );
+                                    installName, null, stdin, false, null,
+                                    stdout );
                             }
                             else {
                                 toolInvoker = WMLTools.runWMLIndent(
-                                        installName, location, null, false,
-                                        stdout, stderr );
+                                    installName, location, null, false,
+                                    stdout, stderr );
                             }
                             break;
                         case WMLLINT:
                             toolInvoker = WMLTools.runWMLLint( installName,
-                                    location, true, false, stdout, stderr );
+                                location, true, false, stdout, stderr );
                             break;
                         case WMLSCOPE:
                             toolInvoker = WMLTools.runWMLScope( installName,
-                                    location, false, stdout, stderr );
+                                location, false, stdout, stderr );
                             break;
                     }
                     monitor.worked( 50 );
@@ -421,26 +421,26 @@ public class WMLTools
                     stdoutWatcher.start( );
                     toolInvoker.waitForTool( );
                     if( tool == Tools.WMLINDENT && selFile != null
-                            && targetPath == null ) {
+                        && targetPath == null ) {
                         EditorUtils.replaceEditorText( toolInvoker
-                                .getOutputContent( ) );
+                            .getOutputContent( ) );
                     }
 
                     if( tool == Tools.WMLSCOPE ) {
                         if( resource != null ) {
                             resource.deleteMarkers( Constants.MARKER_WMLSCOPE,
-                                    false, IResource.DEPTH_INFINITE );
+                                false, IResource.DEPTH_INFINITE );
                         }
                         parseAndAddMarkers( toolInvoker.getOutputContent( ),
-                                Constants.MARKER_WMLSCOPE );
+                            Constants.MARKER_WMLSCOPE );
                     }
                     else if( tool == Tools.WMLLINT ) {
                         if( resource != null ) {
                             resource.deleteMarkers( Constants.MARKER_WMLLINT,
-                                    false, IResource.DEPTH_INFINITE );
+                                false, IResource.DEPTH_INFINITE );
                         }
                         parseAndAddMarkers( toolInvoker.getOutputContent( ),
-                                Constants.MARKER_WMLLINT );
+                            Constants.MARKER_WMLLINT );
                     }
 
                     monitor.worked( 50 );
@@ -466,18 +466,18 @@ public class WMLTools
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker uploadWesnothAddon( String containerPath,
-            OutputStream[] stdout, OutputStream[] stderr )
+        OutputStream[] stdout, OutputStream[] stderr )
     {
         if( ! ResourceUtils.isValidFilePath( containerPath ) ) {
             return null;
         }
 
         return runWesnothAddonManager(
-                WesnothInstallsUtils.getInstallNameForResource( containerPath ),
-                Preferences.getString( Constants.P_WAU_PASSWORD ),
-                Preferences.getString( Constants.P_WAU_PORT ),
-                Arrays.asList( "-u", containerPath ) // upload container
-                , stdout, stderr );
+            WesnothInstallsUtils.getInstallNameForResource( containerPath ),
+            Preferences.getString( Constants.P_WAU_PASSWORD ),
+            Preferences.getString( Constants.P_WAU_PORT ),
+            Arrays.asList( "-u", containerPath ) // upload container
+            , stdout, stderr );
     }
 
     /**
@@ -498,9 +498,9 @@ public class WMLTools
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWesnothAddonManager(
-            String installName, String password, String port,
-            List< String > extraArguments, OutputStream[] stdout,
-            OutputStream[] stderr )
+        String installName, String password, String port,
+        List< String > extraArguments, OutputStream[] stdout,
+        OutputStream[] stderr )
     {
         Paths paths = Preferences.getPaths( installName );
         if( ! checkWMLTool( paths, Tools.WESNOTH_ADDON_MANAGER.toString( ) ) ) {
@@ -508,7 +508,7 @@ public class WMLTools
         }
 
         File wmllintFile = new File( paths.getWMLToolsDir( )
-                + "/wesnoth_addon_manager" ); //$NON-NLS-1$
+            + "/wesnoth_addon_manager" ); //$NON-NLS-1$
         List< String > arguments = new ArrayList< String >( );
         arguments.add( wmllintFile.getAbsolutePath( ) );
 
@@ -542,8 +542,8 @@ public class WMLTools
 
         for( String line: lines ) {
             if( line.startsWith( "#" ) || //$NON-NLS-1$
-                    line.matches( "^[\\t ]*$" ) || //$NON-NLS-1$
-                    line.startsWith( "wmllint:" ) ) {
+                line.matches( "^[\\t ]*$" ) || //$NON-NLS-1$
+                line.startsWith( "wmllint:" ) ) {
                 continue;
             }
             if( line.startsWith( "%%" ) ) //$NON-NLS-1$
@@ -574,9 +574,9 @@ public class WMLTools
     {
         String pythonPath = Preferences.getString( Constants.P_PYTHON_PATH );
         if( pythonPath.isEmpty( )
-                || ( pythonPath.matches( "^.*(/|\\\\).*$" ) && ! ResourceUtils
-                        .isValidFilePath( Preferences
-                                .getString( Constants.P_PYTHON_PATH ) ) ) ) {
+            || ( pythonPath.matches( "^.*(/|\\\\).*$" ) && ! ResourceUtils
+                .isValidFilePath( Preferences
+                    .getString( Constants.P_PYTHON_PATH ) ) ) ) {
             GUIUtils.showWarnMessageBox( Messages.WMLTools_42 );
             return false;
         }
@@ -592,7 +592,7 @@ public class WMLTools
 
             if( ! wmlToolFile.exists( ) ) {
                 GUIUtils.showErrorMessageBox( String.format(
-                        Messages.WMLTools_47, wmlToolFile ) );
+                    Messages.WMLTools_47, wmlToolFile ) );
                 return false;
             }
 
@@ -624,12 +624,12 @@ public class WMLTools
      * @return
      */
     public static ExternalToolInvoker runPythonScript(
-            List< String > arguments, String stdin, boolean stderrMonitoring,
-            boolean stdoutMonitoring, final OutputStream[] stdout,
-            final OutputStream[] stderr )
+        List< String > arguments, String stdin, boolean stderrMonitoring,
+        boolean stdoutMonitoring, final OutputStream[] stdout,
+        final OutputStream[] stderr )
     {
         final ExternalToolInvoker pyscript = new ExternalToolInvoker(
-                Preferences.getString( Constants.P_PYTHON_PATH ), arguments );
+            Preferences.getString( Constants.P_PYTHON_PATH ), arguments );
 
         pyscript.runTool( );
         if( stderrMonitoring == true || ( stderr != null && stderr.length > 0 ) ) {
@@ -641,7 +641,7 @@ public class WMLTools
         if( stdin != null ) {
             try {
                 BufferedWriter stdinStream = new BufferedWriter(
-                        new OutputStreamWriter( pyscript.getStdin( ) ) );
+                    new OutputStreamWriter( pyscript.getStdin( ) ) );
                 stdinStream.write( stdin );
                 stdinStream.close( );
             } catch( IOException e ) {

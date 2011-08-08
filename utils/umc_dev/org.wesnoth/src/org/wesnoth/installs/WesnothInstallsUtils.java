@@ -39,7 +39,7 @@ public class WesnothInstallsUtils
         List< WesnothInstall > installsList = new ArrayList< WesnothInstall >( );
         // unpack installs
         String[] installs = Preferences.getString(
-                Constants.P_INST_INSTALL_LIST ).split( ";" ); //$NON-NLS-1$
+            Constants.P_INST_INSTALL_LIST ).split( ";" ); //$NON-NLS-1$
         for( String str: installs ) {
             if( str.isEmpty( ) ) {
                 continue;
@@ -49,7 +49,7 @@ public class WesnothInstallsUtils
 
             if( tokens.length != 2 ) {
                 Logger.getInstance( ).logError(
-                        "invalid install [" + str + "] in installs list." ); //$NON-NLS-1$ //$NON-NLS-2$
+                    "invalid install [" + str + "] in installs list." ); //$NON-NLS-1$ //$NON-NLS-2$
                 continue;
             }
 
@@ -79,7 +79,7 @@ public class WesnothInstallsUtils
             installs.append( install.getVersion( ) );
         }
         Preferences.getPreferences( ).setValue( Constants.P_INST_INSTALL_LIST,
-                installs.toString( ) );
+            installs.toString( ) );
     }
 
     /**
@@ -96,7 +96,7 @@ public class WesnothInstallsUtils
         }
 
         return getInstallNameForResource( ResourcesPlugin.getWorkspace( )
-                .getRoot( ).findMember( resourcePath ) );
+            .getRoot( ).findMember( resourcePath ) );
     }
 
     /**
@@ -113,7 +113,7 @@ public class WesnothInstallsUtils
         }
 
         return ProjectUtils.getCacheForProject( resource.getProject( ) )
-                .getInstallName( );
+            .getInstallName( );
     }
 
     /**
@@ -125,14 +125,14 @@ public class WesnothInstallsUtils
      *        The new install name
      */
     public static void setInstallNameForResource( IResource resource,
-            String newInstallName )
+        String newInstallName )
     {
         if( resource == null ) {
             return;
         }
 
         ProjectUtils.getCacheForProject( resource.getProject( ) )
-                .setInstallName( newInstallName );
+            .setInstallName( newInstallName );
     }
 
     /**
@@ -160,7 +160,7 @@ public class WesnothInstallsUtils
 
         // select the first if there is no other selected
         if( comboBox.getSelectionIndex( ) == - 1
-                && comboBox.getItemCount( ) > 0 ) {
+            && comboBox.getItemCount( ) > 0 ) {
             comboBox.select( 0 );
         }
     }
@@ -187,10 +187,10 @@ public class WesnothInstallsUtils
             }
 
             if( GUIUtils
-                    .showMessageBox( String.format(
-                            Messages.WesnothInstallsUtils_1, resource
-                                    .getProject( ).getName( ) ),
-                            SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO ) {
+                .showMessageBox( String.format(
+                    Messages.WesnothInstallsUtils_1, resource
+                        .getProject( ).getName( ) ),
+                    SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO ) {
                 return false; // no hope :(
             }
 

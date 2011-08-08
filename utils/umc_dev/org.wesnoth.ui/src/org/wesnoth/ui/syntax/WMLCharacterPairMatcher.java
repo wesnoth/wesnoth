@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,32 +43,32 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
         IRegion region = super.match( doc, offset );
 
         if( region == null && doc instanceof XtextDocument
-                && doc.getLength( ) > 0 ) {
+            && doc.getLength( ) > 0 ) {
             if( matchCnt == 2 ) {
                 matchCnt = 0;
             }
             else {
                 ( ( XtextDocument ) doc )
-                        .readOnly( new IUnitOfWork< Boolean, XtextResource >( ) {
+                    .readOnly( new IUnitOfWork< Boolean, XtextResource >( ) {
 
-                            @Override
-                            public Boolean exec( XtextResource state )
-                                    throws Exception
-                            {
-                                computeMatchingRegion( state, offset );
-                                return true;
-                            }
-                        } );
+                        @Override
+                        public Boolean exec( XtextResource state )
+                            throws Exception
+                        {
+                            computeMatchingRegion( state, offset );
+                            return true;
+                        }
+                    } );
 
                 // refresh the highlighting
                 WMLEditor currentEditor = ( WMLEditor ) EditorUtils
-                        .getActiveXtextEditor( );
+                    .getActiveXtextEditor( );
                 if( currentEditor != null
-                        && currentEditor.getHighlightingHelper( ) != null
-                        && currentEditor.getHighlightingHelper( )
-                                .getReconciler( ) != null ) {
+                    && currentEditor.getHighlightingHelper( ) != null
+                    && currentEditor.getHighlightingHelper( )
+                        .getReconciler( ) != null ) {
                     currentEditor.getHighlightingHelper( ).getReconciler( )
-                            .refresh( );
+                        .refresh( );
                 }
             }
         }
@@ -77,7 +77,7 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
     }
 
     public synchronized void computeMatchingRegion( XtextResource state,
-            int offset )
+        int offset )
     {
         EObject object = WMLUtils.resolveElementAt( state, offset );
 
@@ -99,8 +99,8 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
             }
 
             state.eAdapters( )
-                    .add( new WMLSyntaxColoringAdapter(
-                            WMLHighlightingConfiguration.RULE_MATCH_TAG, object ) );
+                .add( new WMLSyntaxColoringAdapter(
+                    WMLHighlightingConfiguration.RULE_MATCH_TAG, object ) );
         }
         else {
             // nothing new selected, just remove current adapter

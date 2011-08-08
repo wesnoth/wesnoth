@@ -49,7 +49,7 @@ public class ProjectUtils
      * @return A map with properties of the project
      */
     public static Map< String, String > getPropertiesForProject(
-            IProject project )
+        IProject project )
     {
         return getCacheForProject( project ).getProperties( );
     }
@@ -86,7 +86,7 @@ public class ProjectUtils
      * @throws CoreException
      */
     public static IProject createWesnothProject( String name, String location,
-            String installName, IProgressMonitor monitor )
+        String installName, IProgressMonitor monitor )
     {
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace( ).getRoot( );
         IProject newProject = root.getProject( name );
@@ -96,7 +96,7 @@ public class ProjectUtils
         // root
         if( ! location.equals( root.getLocation( ).toOSString( ) ) ) {
             description = ResourcesPlugin.getWorkspace( )
-                    .newProjectDescription( name );
+                .newProjectDescription( name );
             description.setLocation( new Path( location ) );
         }
 
@@ -121,8 +121,8 @@ public class ProjectUtils
      * @throws CoreException
      */
     public static int createWesnothProject( IProject handle,
-            IProjectDescription description, String installName,
-            IProgressMonitor monitor )
+        IProjectDescription description, String installName,
+        IProgressMonitor monitor )
     {
         if( handle == null || handle.exists( ) ) {
             return - 1;
@@ -133,7 +133,7 @@ public class ProjectUtils
 
             if( handle.getLocation( ) == null && description != null ) {
                 projectPath = description.getLocationURI( ).getPath( )
-                        .toString( ).substring( 1 );
+                    .toString( ).substring( 1 );
             }
             else if( handle.getLocation( ) != null ) {
                 projectPath = handle.getLocation( ).toOSString( );
@@ -141,8 +141,8 @@ public class ProjectUtils
             else {
                 // project is in workspace
                 projectPath = ResourcesPlugin.getWorkspace( ).getRoot( )
-                        .getLocation( ).toOSString( )
-                        + "/" + handle.getProject( ).getName( );
+                    .getLocation( ).toOSString( )
+                    + "/" + handle.getProject( ).getName( );
             }
 
             monitor.subTask( Messages.ProjectUtils_0 );
@@ -154,7 +154,7 @@ public class ProjectUtils
             monitor.worked( 5 );
 
             monitor.subTask( String.format( Messages.ProjectUtils_4,
-                    handle.getName( ) ) );
+                handle.getName( ) ) );
 
             // create the project
             if( description == null ) {
@@ -171,12 +171,12 @@ public class ProjectUtils
             // add wesnoth nature
             IProjectDescription tmpDescription = handle.getDescription( );
             tmpDescription
-                    .setNatureIds( new String[] { Constants.NATURE_WESNOTH /*
-                                                                            * ,
-                                                                            * Constants
-                                                                            * .
-                                                                            * NATURE_XTEXT
-                                                                            */} );
+                .setNatureIds( new String[] { Constants.NATURE_WESNOTH /*
+                                                                        * ,
+                                                                        * Constants
+                                                                        * .
+                                                                        * NATURE_XTEXT
+                                                                        */} );
             handle.setDescription( tmpDescription, monitor );
             monitor.worked( 5 );
 
@@ -185,18 +185,18 @@ public class ProjectUtils
             Paths paths = Preferences.getPaths( installName );
             String normalizedPath = StringUtils.normalizePath( projectPath );
             if( ! normalizedPath.contains( StringUtils.normalizePath( paths
-                    .getCampaignDir( ) ) )
-                    && ! normalizedPath.contains( StringUtils
-                            .normalizePath( paths.getAddonsDir( ) ) ) ) {
+                .getCampaignDir( ) ) )
+                && ! normalizedPath.contains( StringUtils
+                    .normalizePath( paths.getAddonsDir( ) ) ) ) {
                 ArrayList< ReplaceableParameter > param = new ArrayList< ReplaceableParameter >( );
                 param.add( new ReplaceableParameter(
-                        "$$project_name", handle.getName( ) ) ); //$NON-NLS-1$
+                    "$$project_name", handle.getName( ) ) ); //$NON-NLS-1$
                 param.add( new ReplaceableParameter(
-                        "$$project_dir_name", handle.getName( ) ) ); //$NON-NLS-1$
+                    "$$project_dir_name", handle.getName( ) ) ); //$NON-NLS-1$
                 ResourceUtils.createFile( handle,
-                        "build.xml", //$NON-NLS-1$
-                        TemplateProvider.getInstance( ).getProcessedTemplate(
-                                "build_xml", param ), true ); //$NON-NLS-1$
+                    "build.xml", //$NON-NLS-1$
+                    TemplateProvider.getInstance( ).getProcessedTemplate(
+                        "build_xml", param ), true ); //$NON-NLS-1$
             }
             monitor.worked( 10 );
 

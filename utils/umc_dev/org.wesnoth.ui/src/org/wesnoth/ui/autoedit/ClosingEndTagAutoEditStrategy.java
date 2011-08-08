@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 {
     @Override
     public void customizeDocumentCommand( final IDocument document,
-            final DocumentCommand command )
+        final DocumentCommand command )
     {
         try {
             if( command.text.equals( "/" ) && document.get( command.offset - 1, 1 ).equals( "[" ) ) //$NON-NLS-1$ //$NON-NLS-2$
@@ -41,40 +41,40 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
                 }
 
                 editor.getDocument( ).readOnly(
-                        new IUnitOfWork.Void< XtextResource >( ) {
-                            @Override
-                            public void process( XtextResource state )
-                                    throws Exception
-                            {
-                                ILeafNode currentNode = NodeModelUtils
-                                        .findLeafNodeAtOffset( state
-                                                .getParseResult( )
-                                                .getRootNode( ), command.offset );
+                    new IUnitOfWork.Void< XtextResource >( ) {
+                        @Override
+                        public void process( XtextResource state )
+                            throws Exception
+                        {
+                            ILeafNode currentNode = NodeModelUtils
+                                .findLeafNodeAtOffset( state
+                                    .getParseResult( )
+                                    .getRootNode( ), command.offset );
 
-                                if( currentNode == null ) {
-                                    return;
-                                }
-
-                                EObject semanticElement = currentNode
-                                        .getSemanticElement( );
-                                if( semanticElement == null ) {
-                                    return;
-                                }
-
-                                String tagName = ""; //$NON-NLS-1$
-                                EObject container = semanticElement
-                                        .eContainer( );
-                                if( container instanceof WMLTag ) {
-                                    tagName = ( ( WMLTag ) container )
-                                            .getName( );
-                                }
-
-                                if( ! StringUtils.isNullOrEmpty( tagName ) ) {
-                                    command.shiftsCaret = true;
-                                    command.text = ( "/" + tagName ); //$NON-NLS-1$
-                                }
+                            if( currentNode == null ) {
+                                return;
                             }
-                        } );
+
+                            EObject semanticElement = currentNode
+                                .getSemanticElement( );
+                            if( semanticElement == null ) {
+                                return;
+                            }
+
+                            String tagName = ""; //$NON-NLS-1$
+                            EObject container = semanticElement
+                                .eContainer( );
+                            if( container instanceof WMLTag ) {
+                                tagName = ( ( WMLTag ) container )
+                                    .getName( );
+                            }
+
+                            if( ! StringUtils.isNullOrEmpty( tagName ) ) {
+                                command.shiftsCaret = true;
+                                command.text = ( "/" + tagName ); //$NON-NLS-1$
+                            }
+                        }
+                    } );
             }
         } catch( BadLocationException e ) {
         }

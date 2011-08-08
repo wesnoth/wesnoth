@@ -62,16 +62,16 @@ public class TemplateProvider
 
         try {
             File varsFile = new File( Constants.PLUGIN_FULL_PATH
-                    + "/templates/cac/variables.txt" );
+                + "/templates/cac/variables.txt" );
             cacs_.put( "variables", Arrays.asList( StringUtils
-                    .getLines( ResourceUtils.getFileContents( varsFile, true,
-                            true ) ) ) );
+                .getLines( ResourceUtils.getFileContents( varsFile, true,
+                    true ) ) ) );
 
             File eventsFile = new File( Constants.PLUGIN_FULL_PATH
-                    + "/templates/cac/events.txt" );
+                + "/templates/cac/events.txt" );
             cacs_.put( "events", Arrays.asList( StringUtils
-                    .getLines( ResourceUtils.getFileContents( eventsFile, true,
-                            true ) ) ) );
+                .getLines( ResourceUtils.getFileContents( eventsFile, true,
+                    true ) ) ) );
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
         }
@@ -85,10 +85,10 @@ public class TemplateProvider
         templates_.clear( );
         try {
             Logger.getInstance( ).log( "reading templates from: " + //$NON-NLS-1$
-                    Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME );
+                Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME );
 
             BufferedReader reader = new BufferedReader( new FileReader(
-                    Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME ) );
+                Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME ) );
             BufferedReader tmpReader;
             String line, tmpLine;
             StringBuilder content = new StringBuilder( );
@@ -105,17 +105,17 @@ public class TemplateProvider
 
                 if( tokensStrings.length != 2 ) {
                     Logger.getInstance( ).logWarn(
-                            "TemplateIndex line " + line
-                                    + "is not properly formatted" );
+                        "TemplateIndex line " + line
+                            + "is not properly formatted" );
                     continue;
                 }
 
                 content.setLength( 0 );
 
                 if( new File( Constants.PLUGIN_FULL_PATH + tokensStrings[1] )
-                        .exists( ) ) {
+                    .exists( ) ) {
                     tmpReader = new BufferedReader( new FileReader(
-                            Constants.PLUGIN_FULL_PATH + tokensStrings[1] ) );
+                        Constants.PLUGIN_FULL_PATH + tokensStrings[1] ) );
                     while( ( tmpLine = tmpReader.readLine( ) ) != null ) {
                         content.append( tmpLine + '\n' );
                     }
@@ -139,10 +139,10 @@ public class TemplateProvider
      * @return
      */
     public String getProcessedTemplate( String templateName,
-            List< ReplaceableParameter > parameters )
+        List< ReplaceableParameter > parameters )
     {
         String tmpTemplate = TemplateProvider.getInstance( ).getTemplate(
-                templateName );
+            templateName );
         if( tmpTemplate == null || parameters == null ) {
             return null;
         }
@@ -156,11 +156,11 @@ public class TemplateProvider
             for( ReplaceableParameter param: parameters ) {
                 if( template[i].contains( param.paramName ) ) {
                     template[i] = StringUtils.replaceWithIndent( template[i],
-                            param.paramName, param.paramValue );
+                        param.paramName, param.paramValue );
 
                     if( ! templateName.equals( "build_xml" ) && //$NON-NLS-1$
-                            ( param.paramValue == null || param.paramValue
-                                    .isEmpty( ) ) ) {
+                        ( param.paramValue == null || param.paramValue
+                            .isEmpty( ) ) ) {
                         // we don't have any value supplied -
                         // let's comment that line (if it's not already
                         // commented)
@@ -229,7 +229,7 @@ public class TemplateProvider
      * @return
      */
     public Pair< List< Pair< String, String >>, List< String >> getFilesDirectories(
-            String structureTemplate )
+        String structureTemplate )
     {
         List< Pair< String, String >> files = new ArrayList< Pair< String, String >>( );
         List< String > dirs = new ArrayList< String >( );
@@ -245,16 +245,18 @@ public class TemplateProvider
 
                 // oops. error
                 if( tmpLine.length != 2 ) {
-                    Logger.getInstance( )
-                            .logError(
-                                    String.format(
-                                            "error parsing 'structure template' (%s) on line %s", //$NON-NLS-1$
-                                            structureTemplate, line ) );
+                    Logger
+                        .getInstance( )
+                        .logError(
+                            String
+                                .format(
+                                    "error parsing 'structure template' (%s) on line %s", //$NON-NLS-1$
+                                    structureTemplate, line ) );
                     continue;
                 }
 
                 files.add( new Pair< String, String >( tmpLine[0].trim( ),
-                        tmpLine[1].trim( ) ) );
+                    tmpLine[1].trim( ) ) );
             }
             else {
                 dirs.add( line.trim( ) );
@@ -262,6 +264,6 @@ public class TemplateProvider
         }
 
         return new Pair< List< Pair< String, String >>, List< String >>( files,
-                dirs );
+            dirs );
     }
 }

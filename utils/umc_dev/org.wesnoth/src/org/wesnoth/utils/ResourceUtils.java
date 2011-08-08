@@ -96,7 +96,7 @@ public class ResourceUtils
     }
 
     public static String getFileContents( File file, boolean skipEmptyLines,
-            boolean skipCommentLines )
+        boolean skipCommentLines )
     {
         if( ! file.exists( ) || ! file.isFile( ) ) {
             return ""; //$NON-NLS-1$
@@ -107,7 +107,7 @@ public class ResourceUtils
         try {
             String line = ""; //$NON-NLS-1$
             reader = new BufferedReader( new InputStreamReader(
-                    new FileInputStream( file ) ) );
+                new FileInputStream( file ) ) );
             while( ( line = reader.readLine( ) ) != null ) {
                 if( skipEmptyLines && line.isEmpty( ) ) {
                     continue;
@@ -158,7 +158,7 @@ public class ResourceUtils
      *        the contents of the resource or null if no contents needed
      */
     public static void createResource( IResource resource, IProject project,
-            String resourceName, InputStream input )
+        String resourceName, InputStream input )
     {
         try {
             if( ! project.isOpen( ) ) {
@@ -171,18 +171,18 @@ public class ResourceUtils
 
             if( resource instanceof IFile ) {
                 ( ( IFile ) resource ).create( input, true,
-                        new NullProgressMonitor( ) );
+                    new NullProgressMonitor( ) );
             }
             else if( resource instanceof IFolder ) {
                 ( ( IFolder ) resource ).create( true, true,
-                        new NullProgressMonitor( ) );
+                    new NullProgressMonitor( ) );
             }
 
         } catch( CoreException e ) {
             Logger.getInstance( ).logError(
-                    "Error creating the resource" + resourceName ); //$NON-NLS-1$
+                "Error creating the resource" + resourceName ); //$NON-NLS-1$
             GUIUtils.showMessageBox( Messages.ResourceUtils_5 + resourceName,
-                    SWT.ICON_ERROR );
+                SWT.ICON_ERROR );
             Logger.getInstance( ).logException( e );
         }
     }
@@ -250,7 +250,7 @@ public class ResourceUtils
      *        true to overwrite the file if it already exists
      */
     public static void createFile( IProject project, String fileName,
-            String fileContentsString, boolean overwrite )
+        String fileContentsString, boolean overwrite )
     {
         IFile file = project.getFile( fileName );
         if( fileContentsString == null ) {
@@ -267,7 +267,7 @@ public class ResourceUtils
         }
 
         ByteArrayInputStream inputStream = new ByteArrayInputStream(
-                fileContentsString.getBytes( ) );
+            fileContentsString.getBytes( ) );
         createResource( file, project, fileName, inputStream );
     }
 
@@ -285,7 +285,7 @@ public class ResourceUtils
         File wesnothFile = new File( path );
         try {
             if( force == true
-                    || ( force == false && wesnothFile.exists( ) == false ) ) {
+                || ( force == false && wesnothFile.exists( ) == false ) ) {
                 createNewFile( wesnothFile.getAbsolutePath( ) );
             }
         } catch( Exception e ) {
@@ -302,14 +302,14 @@ public class ResourceUtils
      *        The parameters list to replace in the template of 'build.xml'
      */
     public static void createBuildXMLFile( String path,
-            List< ReplaceableParameter > params )
+        List< ReplaceableParameter > params )
     {
         try {
             File antFile = new File( path );
             createNewFile( antFile.getAbsolutePath( ) );
             FileWriter writer = new FileWriter( antFile );
             writer.write( TemplateProvider.getInstance( ).getProcessedTemplate(
-                    "build_xml", params ) ); //$NON-NLS-1$
+                "build_xml", params ) ); //$NON-NLS-1$
             writer.close( );
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
@@ -369,10 +369,10 @@ public class ResourceUtils
     public static boolean isValidFilePath( String filePath )
     {
         boolean valid = filePath != null && ! filePath.isEmpty( )
-                && new File( filePath ).exists( );
+            && new File( filePath ).exists( );
         if( valid == false && ! StringUtils.isNullOrEmpty( filePath ) ) {
             Logger.getInstance( ).logWarn(
-                    "The file does not exist or is null: " + filePath ); //$NON-NLS-1$
+                "The file does not exist or is null: " + filePath ); //$NON-NLS-1$
         }
         return valid;
     }
@@ -393,7 +393,7 @@ public class ResourceUtils
         }
 
         return StringUtils.normalizePath( path ).contains(
-                StringUtils.normalizePath( paths.getAddonsDir( ) ) );
+            StringUtils.normalizePath( paths.getAddonsDir( ) ) );
     }
 
     /**
@@ -412,7 +412,7 @@ public class ResourceUtils
         }
 
         return StringUtils.normalizePath( path ).contains(
-                StringUtils.normalizePath( paths.getCampaignDir( ) ) );
+            StringUtils.normalizePath( paths.getCampaignDir( ) ) );
     }
 
     /**
@@ -425,8 +425,8 @@ public class ResourceUtils
     public static boolean isConfigFile( IResource resource )
     {
         return resource instanceof IFile
-                && resource.getName( ).toLowerCase( Locale.ENGLISH )
-                        .endsWith( ".cfg" ); //$NON-NLS-1$
+            && resource.getName( ).toLowerCase( Locale.ENGLISH )
+                .endsWith( ".cfg" ); //$NON-NLS-1$
     }
 
     /**
@@ -476,13 +476,13 @@ public class ResourceUtils
                     IContainer container = resource.getParent( );
                     if( container != null ) {
                         while( container.getParent( ) != null
-                                && container.getParent( ) != resource
-                                        .getProject( ) ) {
+                            && container.getParent( ) != resource
+                                .getProject( ) ) {
                             container = container.getParent( );
                         }
                         IFile file = project.getFile( container
-                                .getProjectRelativePath( ).toOSString( )
-                                + "/_main.cfg" ); //$NON-NLS-1$
+                            .getProjectRelativePath( ).toOSString( )
+                            + "/_main.cfg" ); //$NON-NLS-1$
                         if( file.exists( ) ) {
                             targetResource = file;
                         }
@@ -509,7 +509,7 @@ public class ResourceUtils
     public static String getCampaignID( IResource resource )
     {
         SimpleWMLParser parser = new SimpleWMLParser(
-                getMainConfigLocation( resource ) );
+            getMainConfigLocation( resource ) );
         parser.parse( );
         return parser.getParsedConfig( ).CampaignId;
     }
@@ -537,10 +537,10 @@ public class ResourceUtils
      * @return
      */
     public static DefaultHandler getWMLSAXHandlerFromResource(
-            String installName, String resourcePath, DefaultHandler saxHandler )
+        String installName, String resourcePath, DefaultHandler saxHandler )
     {
         ExternalToolInvoker parser = WMLTools.runWMLParser2( installName,
-                resourcePath );
+            resourcePath );
         if( parser == null ) {
             return null;
         }
@@ -549,12 +549,12 @@ public class ResourceUtils
             saxparser = SAXParserFactory.newInstance( ).newSAXParser( );
 
             saxparser
-                    .parse( new InputSource( parser.getStdout( ) ), saxHandler );
+                .parse( new InputSource( parser.getStdout( ) ), saxHandler );
             return saxHandler;
         } catch( SAXException e ) {
             Logger.getInstance( ).logException( e );
             Logger.getInstance( ).logError(
-                    "Using output: " + parser.getOutputContent( ) ); //$NON-NLS-1$
+                "Using output: " + parser.getOutputContent( ) ); //$NON-NLS-1$
             return null;
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
@@ -598,14 +598,14 @@ public class ResourceUtils
 
             String sourceFile = line.substring( 1, pivotIndex - 1 );
             int lineNumber = Integer.parseInt( line.substring( pivotIndex
-                    + pivot.length( ),
-                    line.indexOf( ":", pivotIndex + pivot.length( ) + 1 ) ) ); //$NON-NLS-1$
+                + pivot.length( ),
+                line.indexOf( ":", pivotIndex + pivot.length( ) + 1 ) ) ); //$NON-NLS-1$
             String message = line.substring( line.indexOf(
-                    " ", pivotIndex + pivot.length( ) + 1 ) ); //$NON-NLS-1$
+                " ", pivotIndex + pivot.length( ) + 1 ) ); //$NON-NLS-1$
 
             // Get the file
             IFile file = ResourcesPlugin.getWorkspace( ).getRoot( )
-                    .getFileForLocation( new Path( sourceFile ) );
+                .getFileForLocation( new Path( sourceFile ) );
             if( file.exists( ) == false ) {
                 return null;
             }
@@ -640,10 +640,10 @@ public class ResourceUtils
     public static IResource getWorkspaceResource( Resource emfResource )
     {
         return ResourcesPlugin
-                .getWorkspace( )
-                .getRoot( )
-                .getFile(
-                        new Path( emfResource.getURI( ).toPlatformString( true ) ) );
+            .getWorkspace( )
+            .getRoot( )
+            .getFile(
+                new Path( emfResource.getURI( ).toPlatformString( true ) ) );
     }
 
     /**
@@ -689,7 +689,7 @@ public class ResourceUtils
              */
             // TODO: check for including a specific config file?
             if( ! ( text.startsWith( "{campaigns" ) ) && //$NON-NLS-1$
-                    ! ( text.equals( "{~add-ons" ) ) ) {
+                ! ( text.equals( "{~add-ons" ) ) ) {
                 continue;
             }
 
@@ -699,12 +699,12 @@ public class ResourceUtils
 
 
             if( projectPath.contains( WMLUtils.toString( macro.getParameters( )
-                    .get( 1 ) ) ) ) {
+                .get( 1 ) ) ) ) {
                 String subString = text.replace( "}", "" )
-                        .replaceFirst( "\\{campaigns/", "" )
-                        .replaceFirst( "\\{~add-ons/", "" );
+                    .replaceFirst( "\\{campaigns/", "" )
+                    .replaceFirst( "\\{~add-ons/", "" );
                 containersToAdd.add( subString.substring( subString
-                        .indexOf( '/' ) ) );
+                    .indexOf( '/' ) ) );
             }
         }
 
@@ -723,7 +723,7 @@ public class ResourceUtils
         int index = Integer.MAX_VALUE;
         try {
             index = Integer.parseInt( file
-                    .getPersistentProperty( DependencyListNode.PDL_INDEX ) );
+                .getPersistentProperty( DependencyListNode.PDL_INDEX ) );
         } catch( CoreException e ) {
             // not interested
         } catch( NumberFormatException e ) {
@@ -739,7 +739,7 @@ public class ResourceUtils
      * @see http://wiki.wesnoth.org/PreprocessorRef
      */
     public static class WMLFilesComparator implements Comparator< IResource >,
-            Serializable
+        Serializable
     {
 
         private static final long serialVersionUID = 1045365969430128101L;
@@ -748,7 +748,7 @@ public class ResourceUtils
         public int compare( IResource o1, IResource o2 )
         {
             return ResourceUtils.wmlFileNameCompare( o1.getName( ),
-                    o2.getName( ) );
+                o2.getName( ) );
         }
     }
 
@@ -766,23 +766,23 @@ public class ResourceUtils
     {
         // _initial.cfg is always the "lowest"
         if( fileName1.equals( "_initial.cfg" )
-                && ! ( fileName2.equals( "_initial.cfg" ) ) ) {
+            && ! ( fileName2.equals( "_initial.cfg" ) ) ) {
             return - 1;
         }
 
         if( fileName2.equals( "_initial.cfg" )
-                && ! ( fileName1.equals( "_initial.cfg" ) ) ) {
+            && ! ( fileName1.equals( "_initial.cfg" ) ) ) {
             return 1;
         }
 
         // _final.cfg is always the "highest"
         if( fileName1.equals( "_final.cfg" )
-                && ! ( fileName2.equals( "_final.cfg" ) ) ) {
+            && ! ( fileName2.equals( "_final.cfg" ) ) ) {
             return 1;
         }
 
         if( fileName2.equals( "_final.cfg" )
-                && ! ( fileName1.equals( "_final.cfg" ) ) ) {
+            && ! ( fileName1.equals( "_final.cfg" ) ) ) {
             return - 1;
         }
 

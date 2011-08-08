@@ -14,7 +14,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
 public abstract class AbstractPreferencePage extends FieldEditorPreferencePage
-        implements IWorkbenchPreferencePage
+    implements IWorkbenchPreferencePage
 {
     public AbstractPreferencePage( int style )
     {
@@ -35,7 +35,7 @@ public abstract class AbstractPreferencePage extends FieldEditorPreferencePage
     protected void addField( FieldEditor editor, String tooltip )
     {
         editor.getLabelControl( getFieldEditorParent( ) ).setToolTipText(
-                tooltip );
+            tooltip );
         super.addField( editor );
     }
 

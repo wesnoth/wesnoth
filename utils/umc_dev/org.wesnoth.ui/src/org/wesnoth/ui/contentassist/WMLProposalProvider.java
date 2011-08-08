@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,14 +93,14 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
         // load the schema so we know what to suggest for autocomplete
         schemaParser_ = SchemaParser.getInstance( WesnothInstallsUtils
-                .getInstallNameForResource( file ) );
+            .getInstallNameForResource( file ) );
 
         dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
     }
 
     @Override
     public void completeWMLKey_Name( EObject model, Assignment assignment,
-            ContentAssistContext context, ICompletionProposalAcceptor acceptor )
+        ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         super.completeWMLKey_Name( model, assignment, context, acceptor );
         refresh( );
@@ -110,7 +110,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
     @Override
     public void complete_WMLKeyValue( EObject model, RuleCall ruleCall,
-            ContentAssistContext context, ICompletionProposalAcceptor acceptor )
+        ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         super.complete_WMLKeyValue( model, ruleCall, context, acceptor );
         refresh( );
@@ -120,7 +120,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
     @Override
     public void complete_WMLTag( EObject model, RuleCall ruleCall,
-            ContentAssistContext context, ICompletionProposalAcceptor acceptor )
+        ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         super.complete_WMLTag( model, ruleCall, context, acceptor );
         refresh( );
@@ -130,7 +130,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
     @Override
     public void completeWMLTag_Name( EObject model, Assignment assignment,
-            ContentAssistContext context, ICompletionProposalAcceptor acceptor )
+        ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         super.completeWMLTag_Name( model, assignment, context, acceptor );
         refresh( );
@@ -140,8 +140,8 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
     @Override
     public void completeWMLMacroCall_Name( EObject model,
-            Assignment assignment, ContentAssistContext context,
-            ICompletionProposalAcceptor acceptor )
+        Assignment assignment, ContentAssistContext context,
+        ICompletionProposalAcceptor acceptor )
     {
         super.completeWMLMacroCall_Name( model, assignment, context, acceptor );
         refresh( );
@@ -151,7 +151,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
     @Override
     public void complete_WMLMacroCall( EObject model, RuleCall ruleCall,
-            ContentAssistContext context, ICompletionProposalAcceptor acceptor )
+        ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         super.complete_WMLMacroCall( model, ruleCall, context, acceptor );
         refresh( );
@@ -160,10 +160,10 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     }
 
     private void addMacroCallProposals( EObject model, boolean ruleProposal,
-            ContentAssistContext context, ICompletionProposalAcceptor acceptor )
+        ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         for( Entry< String, Define > define: projectCache_.getDefines( )
-                .entrySet( ) ) {
+            .entrySet( ) ) {
             StringBuilder proposal = new StringBuilder( 10 );
             if( ruleProposal == true ) {
                 proposal.append( "{" ); //$NON-NLS-1$
@@ -176,13 +176,13 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             proposal.append( "}" ); //$NON-NLS-1$
 
             acceptor.accept( createCompletionProposal( proposal.toString( ),
-                    define.getKey( ), MACRO_CALL_IMAGE, context,
-                    MACRO_CALL_PRIORITY ) );
+                define.getKey( ), MACRO_CALL_IMAGE, context,
+                MACRO_CALL_PRIORITY ) );
         }
     }
 
     private void addKeyValueProposals( EObject model,
-            ContentAssistContext context, ICompletionProposalAcceptor acceptor )
+        ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         if( model == null || ! ( model instanceof WMLKey ) ) {
             return;
@@ -192,19 +192,19 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
         // handle the next_scenario and first_scenario
         if( keyName.equals( "next_scenario" ) || //$NON-NLS-1$
-                keyName.equals( "first_scenario" ) ) //$NON-NLS-1$
+            keyName.equals( "first_scenario" ) ) //$NON-NLS-1$
         {
             for( WMLConfig config: projectCache_.getWMLConfigs( ).values( ) ) {
                 if( StringUtils.isNullOrEmpty( config.ScenarioId ) ) {
                     continue;
                 }
                 acceptor.accept( createCompletionProposal( config.ScenarioId,
-                        config.ScenarioId, SCENARIO_VALUE_IMAGE, context,
-                        KEY_VALUE_PRIORITY ) );
+                    config.ScenarioId, SCENARIO_VALUE_IMAGE, context,
+                    KEY_VALUE_PRIORITY ) );
             }
         }
         else if( model.eContainer( ) != null
-                && model.eContainer( ) instanceof WMLTag ) {
+            && model.eContainer( ) instanceof WMLTag ) {
             WMLTag parent = ( WMLTag ) model.eContainer( );
             String tagName = parent.getName( );
             WMLTag tag = schemaParser_.getTags( ).get( tagName );
@@ -213,64 +213,65 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                 if( tagKey != null && tagKey.is_Enum( ) ) {
                     for( WMLKeyValue val: tagKey.getValues( ) ) {
                         acceptor.accept( createCompletionProposal(
-                                val.toString( ), context, KEY_VALUE_PRIORITY ) );
+                            val.toString( ), context, KEY_VALUE_PRIORITY ) );
                     }
                 }
             }
 
             if( ( tagName.equals( "event" ) || tagName.equals( "fire_event" ) )
-                    && keyName.equals( "name" ) ) {
+                && keyName.equals( "name" ) ) {
                 // add events
                 List< String > events = new ArrayList< String >( );
                 events.addAll( TemplateProvider.getInstance( )
-                        .getCAC( "events" ) );
+                    .getCAC( "events" ) );
                 events.addAll( projectCache_.getEvents( ) );
 
                 for( String event: events ) {
-                    acceptor.accept( createCompletionProposal( event, context ) );
+                    acceptor
+                        .accept( createCompletionProposal( event, context ) );
                 }
             }
             else {
                 final int nodeOffset = NodeModelUtils.getNode( model )
-                        .getTotalOffset( );
+                    .getTotalOffset( );
                 List< String > variables = new ArrayList< String >( );
 
                 // add CAC variables
                 variables.addAll( TemplateProvider.getInstance( ).getCAC(
-                        "variables" ) );
+                    "variables" ) );
 
                 // filter variables by index
                 Collection< String > projectVariables = Collections2.transform(
-                        projectCache_.getVariables( ).values( ),
-                        new Function< WMLVariable, String >( ) {
+                    projectCache_.getVariables( ).values( ),
+                    new Function< WMLVariable, String >( ) {
 
-                            @Override
-                            public String apply( WMLVariable from )
-                            {
-                                for( Scope scope: from.getScopes( ) ) {
-                                    if( scope.contains( dependencyIndex_,
-                                            nodeOffset ) ) {
-                                        return from.getName( );
-                                    }
+                        @Override
+                        public String apply( WMLVariable from )
+                        {
+                            for( Scope scope: from.getScopes( ) ) {
+                                if( scope.contains( dependencyIndex_,
+                                    nodeOffset ) ) {
+                                    return from.getName( );
                                 }
-
-                                return null;
                             }
-                        } );
+
+                            return null;
+                        }
+                    } );
 
                 variables.addAll( Collections2.filter( projectVariables,
-                        Predicates.notNull( ) ) );
+                    Predicates.notNull( ) ) );
 
                 for( String variable: variables ) {
                     acceptor.accept( createCompletionProposal( "$" + variable,
-                            context ) );
+                        context ) );
                 }
             }
         }
     }
 
     private void addKeyNameProposals( EObject model,
-            ContentAssistContext context, ICompletionProposalAcceptor acceptor )
+        ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         WMLTag tag = null;
         if( model instanceof WMLTag ) {
@@ -303,9 +304,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
                     if( toAdd ) {
                         acceptor.accept( createCompletionProposal(
-                                key.getName( ) + "=", //$NON-NLS-1$
-                                key.getName( ), WML_KEY_IMAGE, context,
-                                KEY_NAME_PRIORITY ) );
+                            key.getName( ) + "=", //$NON-NLS-1$
+                            key.getName( ), WML_KEY_IMAGE, context,
+                            KEY_NAME_PRIORITY ) );
                     }
                 }
             }
@@ -313,7 +314,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     }
 
     private void addTagProposals( EObject model, boolean ruleProposal,
-            ContentAssistContext context, ICompletionProposalAcceptor acceptor )
+        ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         WMLTag parentTag = null;
         if( model instanceof WMLTag ) {
@@ -329,16 +330,16 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             String parentIndent = ""; //$NON-NLS-1$
             if( context.getCurrentNode( ).getOffset( ) > 0 ) {
                 parentIndent = NodeModelUtils.findLeafNodeAtOffset( node,
-                        context.getCurrentNode( ).getOffset( ) -
+                    context.getCurrentNode( ).getOffset( ) -
                         // if we have a non-rule proposal, subtract 1
-                                ( ruleProposal ? 0: 1 ) ).getText( );
+                        ( ruleProposal ? 0: 1 ) ).getText( );
             }
 
             // remove ugly new lines that break indentation
             parentIndent = parentIndent.replace( "\r", "" ).replace( "\n", "" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
             WMLTag tagChildren = schemaParser_.getTags( ).get(
-                    parentTag.getName( ) );
+                parentTag.getName( ) );
             if( tagChildren != null ) {
                 boolean toAdd = true;
                 for( WMLTag tag: tagChildren.getWMLTags( ) ) {
@@ -352,12 +353,12 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                     // check only non-repeatable tags
                     if( ! tag.is_Repeatable( ) ) {
                         toAdd = ( WMLUtils.getTagByName( parentTag,
-                                tag.getName( ) ) == null );
+                            tag.getName( ) ) == null );
                     }
 
                     if( toAdd ) {
                         acceptor.accept( createTagProposal( tag.asWMLTag( ),
-                                parentIndent, ruleProposal, context ) );
+                            parentIndent, ruleProposal, context ) );
                     }
                 }
             }
@@ -367,19 +368,20 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             WMLTag rootTag = schemaParser_.getTags( ).get( "root" ); //$NON-NLS-1$
             for( WMLTag tag: rootTag.getWMLTags( ) ) {
                 acceptor.accept( createTagProposal( tag,
-                        "", ruleProposal, context ) ); //$NON-NLS-1$
+                    "", ruleProposal, context ) ); //$NON-NLS-1$
             }
         }
 
         // parsed custom tags
         for( WMLTag tag: projectCache_.getWMLTags( ).values( ) ) {
-            acceptor.accept( createTagProposal( tag, "", ruleProposal, context ) ); //$NON-NLS-1$
+            acceptor
+                .accept( createTagProposal( tag, "", ruleProposal, context ) ); //$NON-NLS-1$
         }
     }
 
     /**
      * Returns the proposal for the specified tag, usign the specified indent
-     * 
+     *
      * @param tag
      *        The tag from which to construct the proposal
      * @param indent
@@ -390,7 +392,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
      * @return
      */
     private ICompletionProposal createTagProposal( WMLTag tag, String indent,
-            boolean ruleProposal, ContentAssistContext context )
+        boolean ruleProposal, ContentAssistContext context )
     {
         StringBuilder proposal = new StringBuilder( );
         if( ruleProposal ) {
@@ -401,27 +403,27 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         for( WMLKey key: tag.getWMLKeys( ) ) {
             if( key.is_Required( ) ) {
                 proposal.append( String.format( "\t%s%s=\n", //$NON-NLS-1$
-                        indent, key.getName( ) ) );
+                    indent, key.getName( ) ) );
             }
         }
         proposal.append( String.format( "%s[/%s", indent, tag.getName( ) ) ); //$NON-NLS-1$
         return createCompletionProposal( proposal.toString( ), tag.getName( ),
-                WML_TAG_IMAGE, context, TAG_PRIORITY );
+            WML_TAG_IMAGE, context, TAG_PRIORITY );
     }
 
     private ICompletionProposal createCompletionProposal( String proposal,
-            ContentAssistContext context, int priority )
+        ContentAssistContext context, int priority )
     {
         return createCompletionProposal( proposal, null, null, priority,
-                context.getPrefix( ), context );
+            context.getPrefix( ), context );
     }
 
     public ICompletionProposal createCompletionProposal( String proposal,
-            String displayString, Image image,
-            ContentAssistContext contentAssistContext, int priority )
+        String displayString, Image image,
+        ContentAssistContext contentAssistContext, int priority )
     {
         return createCompletionProposal( proposal, new StyledString(
-                displayString ), image, priority,
-                contentAssistContext.getPrefix( ), contentAssistContext );
+            displayString ), image, priority,
+            contentAssistContext.getPrefix( ), contentAssistContext );
     }
 }

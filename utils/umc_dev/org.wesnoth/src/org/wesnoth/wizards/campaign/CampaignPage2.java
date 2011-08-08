@@ -77,12 +77,12 @@ public class CampaignPage2 extends WizardPageTemplate
                 }
                 else {
                     txtDifficulties_.setText( txtDifficulties_.getText( )
-                            .replace( dif, "" ) ); //$NON-NLS-1$
+                        .replace( dif, "" ) ); //$NON-NLS-1$
                 }
 
                 txtDifficulties_.setText( StringUtils
-                        .removeIncorrectCharacters(
-                                txtDifficulties_.getText( ), ',', true, true ) );
+                    .removeIncorrectCharacters(
+                        txtDifficulties_.getText( ), ',', true, true ) );
             }
 
             @Override
@@ -98,7 +98,7 @@ public class CampaignPage2 extends WizardPageTemplate
 
         txtID_ = new Text( container, SWT.BORDER );
         txtID_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false,
-                1, 1 ) );
+            1, 1 ) );
         txtID_.addModifyListener( modifyListener );
         new Label( container, SWT.NONE );
         new Label( container, SWT.NONE );
@@ -109,7 +109,7 @@ public class CampaignPage2 extends WizardPageTemplate
 
         txtAbbrev_ = new Text( container, SWT.BORDER );
         GridData gd_txtAbbrev_ = new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 );
+            false, 1, 1 );
         gd_txtAbbrev_.widthHint = 278;
         txtAbbrev_.setLayoutData( gd_txtAbbrev_ );
         txtAbbrev_.addModifyListener( modifyListener );
@@ -122,7 +122,7 @@ public class CampaignPage2 extends WizardPageTemplate
 
         txtDefine_ = new Text( container, SWT.BORDER );
         GridData gd_txtDefine_ = new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 );
+            false, 1, 1 );
         gd_txtDefine_.widthHint = 207;
         txtDefine_.setLayoutData( gd_txtDefine_ );
         txtDefine_.addModifyListener( modifyListener );
@@ -135,7 +135,7 @@ public class CampaignPage2 extends WizardPageTemplate
 
         txtDifficulties_ = new Text( container, SWT.BORDER );
         GridData gd_txtDifficulties_ = new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 );
+            false, false, 1, 1 );
         gd_txtDifficulties_.widthHint = 208;
         txtDifficulties_.setLayoutData( gd_txtDifficulties_ );
 
@@ -156,7 +156,7 @@ public class CampaignPage2 extends WizardPageTemplate
 
         txtFirstScenario_ = new Text( container, SWT.BORDER );
         GridData gd_txtFirstScenario_ = new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 );
+            false, false, 1, 1 );
         gd_txtFirstScenario_.widthHint = 206;
         txtFirstScenario_.setLayoutData( gd_txtFirstScenario_ );
         new Label( container, SWT.NONE );

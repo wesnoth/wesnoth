@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 {
     @Override
     public void createHyperlinksByOffset( XtextResource resource, int offset,
-            IHyperlinkAcceptor acceptor )
+        IHyperlinkAcceptor acceptor )
     {
         super.createHyperlinksByOffset( resource, offset, acceptor );
 
@@ -45,12 +45,12 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
         IFile file = WMLEditor.getActiveEditorFile( );
         if( file == null ) {
             Logger.getInstance( ).logError(
-                    "FATAL! file is null (and it shouldn't) " );
+                "FATAL! file is null (and it shouldn't) " );
             return;
         }
 
         Paths paths = Preferences.getPaths( WesnothInstallsUtils
-                .getInstallNameForResource( file ) );
+            .getInstallNameForResource( file ) );
 
         ICompositeNode node = NodeModelUtils.getNode( object );
 
@@ -60,7 +60,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
     /**
      * Creates a hyperlink for opening the macro definition
-     * 
+     *
      * @param paths
      *        The paths variable for the current install
      * @param file
@@ -73,7 +73,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
      *        The node model representation of the macro
      */
     private void createMacroHyperlink( Paths paths, IFile file, EObject object,
-            IHyperlinkAcceptor acceptor, ICompositeNode node )
+        IHyperlinkAcceptor acceptor, ICompositeNode node )
     {
         if( object instanceof WMLMacroCall == false ) {
             return;
@@ -83,7 +83,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
         // get the define for the macro
         Define define = ProjectUtils.getCacheForProject( file.getProject( ) )
-                .getDefines( ).get( macro.getName( ) );
+            .getDefines( ).get( macro.getName( ) );
         if( define == null || define.getLocation( ).length( ) <= 2 ) {
             return;
         }
@@ -101,7 +101,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
         FileLocationOpenerHyperlink macroTarget = new FileLocationOpenerHyperlink( );
         macroTarget.setHyperlinkRegion( new Region( node.getOffset( ), node
-                .getLength( ) ) );
+            .getLength( ) ) );
         macroTarget.setFilePath( filePath );
         macroTarget.setLinenumber( define.getLineNum( ) );
         acceptor.accept( macroTarget );
@@ -109,7 +109,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
     /**
      * Creates a hyperlink for opening the map ( if applying )
-     * 
+     *
      * @param paths
      *        The paths variable for the current install
      * @param object
@@ -120,12 +120,12 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
      *        The node model representation of the macro
      */
     private void createMapHyperlink( Paths paths, EObject object,
-            IHyperlinkAcceptor acceptor, ICompositeNode node )
+        IHyperlinkAcceptor acceptor, ICompositeNode node )
     {
         EObject container = object.eContainer( );
 
         if( ! ( container instanceof WMLKey )
-                || ! ( ( WMLKey ) container ).getName( ).equals( "map_data" ) ) {
+            || ! ( ( WMLKey ) container ).getName( ).equals( "map_data" ) ) {
             return;
         }
 
@@ -161,17 +161,17 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
         if( mapLocation.charAt( 0 ) == '~' ) {
             // expand the '~' character to user data dir
             mapLocation = mapLocation
-                    .replaceFirst( "~", paths.getUserDataDir( ) );
+                .replaceFirst( "~", paths.getUserDataDir( ) );
         }
         else if( mapLocation.startsWith( "campaigns/" ) ) {
             // expand the campaigns path
             mapLocation = mapLocation.replaceFirst( "campaigns/",
-                    paths.getCampaignDir( ) );
+                paths.getCampaignDir( ) );
         }
 
         MapOpenerHyperlink hyperlink = new MapOpenerHyperlink( );
         hyperlink.setHyperlinkRegion( new Region( node.getOffset( ), node
-                .getLength( ) ) );
+            .getLength( ) ) );
         hyperlink.setLocation( mapLocation );
         acceptor.accept( hyperlink );
     }

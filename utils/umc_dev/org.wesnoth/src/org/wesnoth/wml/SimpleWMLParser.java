@@ -46,8 +46,8 @@ public class SimpleWMLParser
     public SimpleWMLParser( IFile file )
     {
         this( file,
-                new WMLConfig( file.getProjectRelativePath( ).toString( ) ),
-                null );
+            new WMLConfig( file.getProjectRelativePath( ).toString( ) ),
+            null );
     }
 
     /**
@@ -74,7 +74,7 @@ public class SimpleWMLParser
      * Creates a new parser that can be called on files outside the workspace
      */
     public SimpleWMLParser( File file, IParser parser )
-            throws FileNotFoundException
+        throws FileNotFoundException
     {
         projectCache_ = null;
 
@@ -104,10 +104,10 @@ public class SimpleWMLParser
         }
 
         String currentFileLocation = root_.eResource( ).getURI( )
-                .toFileString( );
+            .toFileString( );
         if( currentFileLocation == null ) {
             currentFileLocation = root_.eResource( ).getURI( )
-                    .toPlatformString( true );
+                .toPlatformString( true );
         }
 
         while( itor.hasNext( ) ) {
@@ -132,20 +132,20 @@ public class SimpleWMLParser
                     if( keyName.equals( "id" ) ) {
                         if( currentTagName.equals( "scenario" ) ) {
                             config_.ScenarioId = WMLUtils.getKeyValue( key
-                                    .getValues( ) );
+                                .getValues( ) );
                         }
                         else if( currentTagName.equals( "campaign" ) ) {
                             config_.CampaignId = WMLUtils.getKeyValue( key
-                                    .getValues( ) );
+                                .getValues( ) );
                         }
                     }
                     else if( keyName.equals( "name" ) ) {
                         if( currentTagName.equals( "set_variable" )
-                                || currentTagName.equals( "set_variables" ) ) {
+                            || currentTagName.equals( "set_variables" ) ) {
                             handleSetVariable( object );
                         }
                         else if( currentTagName.equals( "clear_variable" )
-                                || currentTagName.equals( "clear_variables" ) ) {
+                            || currentTagName.equals( "clear_variables" ) ) {
                             handleUnsetVariable( object );
                         }
                         else if( currentTagName.equals( "event" ) ) {
@@ -157,7 +157,7 @@ public class SimpleWMLParser
 
                             if( eventName.charAt( eventName.length( ) - 1 ) == '"' ) {
                                 eventName = eventName.substring( 0,
-                                        eventName.length( ) - 1 );
+                                    eventName.length( ) - 1 );
                             }
 
                             config_.getEvents( ).add( eventName );
@@ -177,8 +177,8 @@ public class SimpleWMLParser
             }
             else if( object instanceof WMLLuaCode ) {
                 SimpleLuaParser luaParser = new SimpleLuaParser(
-                        currentFileLocation,
-                        ( ( WMLLuaCode ) object ).getValue( ) );
+                    currentFileLocation,
+                    ( ( WMLLuaCode ) object ).getValue( ) );
                 luaParser.parse( );
 
                 config_.getWMLTags( ).putAll( luaParser.getTags( ) );
@@ -192,13 +192,13 @@ public class SimpleWMLParser
 
         if( context instanceof WMLKey ) {
             variableName = WMLUtils.getKeyValue( ( ( WMLKey ) context )
-                    .getValues( ) );
+                .getValues( ) );
         }
         else if( context instanceof WMLMacroCall ) {
             WMLMacroCall macro = ( WMLMacroCall ) context;
             if( macro.getParameters( ).size( ) > 0 ) {
                 variableName = WMLUtils.toString( macro.getParameters( )
-                        .get( 0 ) );
+                    .get( 0 ) );
             }
         }
 
@@ -215,8 +215,8 @@ public class SimpleWMLParser
 
         if( variableName == null ) {
             Logger.getInstance( ).logWarn(
-                    "setVariable: couldn't get variable name from context: "
-                            + context );
+                "setVariable: couldn't get variable name from context: "
+                    + context );
         }
 
         WMLVariable variable = projectCache_.getVariables( ).get( variableName );
@@ -245,8 +245,8 @@ public class SimpleWMLParser
         String variableName = getVariableNameByContext( context );
         if( variableName == null ) {
             Logger.getInstance( ).logWarn(
-                    "unsetVariable: couldn't get variable name from context: "
-                            + context );
+                "unsetVariable: couldn't get variable name from context: "
+                    + context );
         }
 
         WMLVariable variable = projectCache_.getVariables( ).get( variableName );

@@ -113,50 +113,50 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         };
 
         wesnothExecutableField_ = new FileFieldEditor( "", //$NON-NLS-1$
-                Messages.WesnothPreferencesPage_5, getFieldEditorParent( ) );
+            Messages.WesnothPreferencesPage_5, getFieldEditorParent( ) );
         wesnothExecutableField_.getTextControl( getFieldEditorParent( ) )
-                .addFocusListener( new FocusListener( ) {
-                    @Override
-                    public void focusLost( FocusEvent e )
-                    {
-                        checkState( );
-                    }
+            .addFocusListener( new FocusListener( ) {
+                @Override
+                public void focusLost( FocusEvent e )
+                {
+                    checkState( );
+                }
 
-                    @Override
-                    public void focusGained( FocusEvent e )
-                    {
-                    }
-                } );
+                @Override
+                public void focusGained( FocusEvent e )
+                {
+                }
+            } );
         wesnothExecutableField_.getTextControl( getFieldEditorParent( ) )
-                .addModifyListener( new ModifyListener( ) {
+            .addModifyListener( new ModifyListener( ) {
 
-                    @Override
-                    public void modifyText( ModifyEvent e )
-                    {
-                        checkState( );
-                    }
-                } );
+                @Override
+                public void modifyText( ModifyEvent e )
+                {
+                    checkState( );
+                }
+            } );
         addField( wesnothExecutableField_, Messages.WesnothPreferencesPage_6 );
 
         wesnothWorkingDirField_ = new DirectoryFieldEditor( "", //$NON-NLS-1$
-                Messages.WesnothPreferencesPage_7, getFieldEditorParent( ) );
+            Messages.WesnothPreferencesPage_7, getFieldEditorParent( ) );
         wesnothWorkingDirField_.getTextControl( getFieldEditorParent( ) )
-                .addModifyListener( listener );
+            .addModifyListener( listener );
         addField( wesnothWorkingDirField_, Messages.WesnothPreferencesPage_8 );
 
         wesnothUserDirField_ = new DirectoryFieldEditor( "", //$NON-NLS-1$
-                Messages.WesnothPreferencesPage_9, getFieldEditorParent( ) );
+            Messages.WesnothPreferencesPage_9, getFieldEditorParent( ) );
         addField( wesnothUserDirField_, Messages.WesnothPreferencesPage_10 );
 
         wmlToolsField_ = new DirectoryFieldEditor( "", //$NON-NLS-1$
-                Messages.WesnothPreferencesPage_11, getFieldEditorParent( ) );
+            Messages.WesnothPreferencesPage_11, getFieldEditorParent( ) );
         addField( wmlToolsField_, Messages.WesnothPreferencesPage_12 );
 
         addField( new FileFieldEditor( Constants.P_PYTHON_PATH,
-                Messages.WesnothPreferencesPage_13, getFieldEditorParent( ) ) );
+            Messages.WesnothPreferencesPage_13, getFieldEditorParent( ) ) );
 
         addField( new LabelFieldEditor( Messages.WesnothPreferencesPage_14,
-                getFieldEditorParent( ) ) );
+            getFieldEditorParent( ) ) );
 
         // update the default
         updateInterface( installs_.get( Preferences.getDefaultInstallName( ) ) );
@@ -169,11 +169,11 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         Composite installComposite = new Composite( parent, 0 );
         installComposite.setLayout( new GridLayout( 2, false ) );
         installComposite.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true,
-                true, 1, 1 ) );
+            true, 1, 1 ) );
 
         // create install manager
         installsTableViewer_ = new TableViewer( installComposite, SWT.BORDER
-                | SWT.FULL_SELECTION );
+            | SWT.FULL_SELECTION );
         installsTable_ = installsTableViewer_.getTable( );
         installsTable_.addMouseListener( new MouseAdapter( ) {
             @Override
@@ -184,19 +184,19 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         } );
         installsTable_.setHeaderVisible( true );
         installsTable_.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true,
-                true, 1, 1 ) );
+            true, 1, 1 ) );
 
         TableColumn tblclmnName = new TableColumn( installsTable_, SWT.NONE );
         tblclmnName.setWidth( 150 );
         tblclmnName.setText( Messages.WesnothInstallsPage_5 );
 
         TableColumn tblclmnWesnothVersion = new TableColumn( installsTable_,
-                SWT.NONE );
+            SWT.NONE );
         tblclmnWesnothVersion.setWidth( 70 );
         tblclmnWesnothVersion.setText( Messages.WesnothInstallsPage_6 );
 
         TableColumn tblclmnIsDefault = new TableColumn( installsTable_,
-                SWT.NONE );
+            SWT.NONE );
         tblclmnIsDefault.setWidth( 70 );
         tblclmnIsDefault.setText( Messages.WesnothInstallsPage_7 );
 
@@ -210,7 +210,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         fl_composite.marginHeight = 10;
         composite.setLayout( fl_composite );
         GridData gd_composite = new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 );
+            false, 1, 1 );
         gd_composite.widthHint = 80;
         composite.setLayoutData( gd_composite );
 
@@ -251,14 +251,14 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         txtInstallName_.setText( Messages.WesnothInstallsPage_12 );
         txtInstallName_.setEditable( false );
         txtInstallName_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 ) );
+            false, false, 1, 1 ) );
         txtInstallName_.addVerifyListener( new VerifyListener( ) {
 
             private boolean isCharOk( char character )
             {
                 return ( character >= 'a' && character <= 'z' )
-                        || ( character >= 'A' && character <= 'Z' )
-                        || ( character >= '0' && character <= '9' );
+                    || ( character >= 'A' && character <= 'Z' )
+                    || ( character >= '0' && character <= '9' );
             }
 
             @Override
@@ -276,9 +276,9 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                 }
                 else {
                     e.doit = isCharOk( e.character ) || e.keyCode == SWT.BS
-                            || e.keyCode == SWT.ARROW_LEFT
-                            || e.keyCode == SWT.ARROW_RIGHT
-                            || e.keyCode == SWT.DEL;
+                        || e.keyCode == SWT.ARROW_LEFT
+                        || e.keyCode == SWT.ARROW_RIGHT
+                        || e.keyCode == SWT.DEL;
                 }
             }
         } );
@@ -288,7 +288,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
         cmbVersion_ = new Combo( parent, SWT.READ_ONLY );
         cmbVersion_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
 
         cmbVersion_.add( "1.9.x" ); //$NON-NLS-1$
         cmbVersion_.add( "trunk" ); //$NON-NLS-1$
@@ -322,23 +322,24 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             // unset all settings.
             IPreferenceStore prefs = Preferences.getPreferences( );
             String installPrefix = Preferences.getInstallPrefix( install
-                    .getName( ) );
+                .getName( ) );
             prefs.setToDefault( installPrefix + Constants.P_WESNOTH_EXEC_PATH );
             prefs.setToDefault( installPrefix + Constants.P_WESNOTH_USER_DIR );
             prefs.setToDefault( installPrefix
-                    + Constants.P_WESNOTH_WMLTOOLS_DIR );
-            prefs.setToDefault( installPrefix + Constants.P_WESNOTH_WORKING_DIR );
+                + Constants.P_WESNOTH_WMLTOOLS_DIR );
+            prefs
+                .setToDefault( installPrefix + Constants.P_WESNOTH_WORKING_DIR );
 
             // unset the default install if this was that
             // and select another one (the first) - if any - as default
             if( install.getName( )
-                    .equals( Preferences.getDefaultInstallName( ) ) ) {
+                .equals( Preferences.getDefaultInstallName( ) ) ) {
                 Preferences.setDefaultInstallName( "" ); //$NON-NLS-1$
 
                 if( ! installs_.isEmpty( ) ) {
                     // get the first item from the iterator
                     Iterator< WesnothInstall > itor = installs_.values( )
-                            .iterator( );
+                        .iterator( );
                     setInstallAsDefault( itor.next( ) );
                 }
             }
@@ -370,8 +371,8 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         cmbVersion_.setText( install == null ? "": install.getVersion( ) ); //$NON-NLS-1$
 
         setFieldsPreferenceName(
-                install == null ? "": Preferences.getInstallPrefix( install.getName( ) ), //$NON-NLS-1$
-                true );
+            install == null ? "": Preferences.getInstallPrefix( install.getName( ) ), //$NON-NLS-1$
+            true );
     }
 
     /**
@@ -383,19 +384,19 @@ public class WesnothInstallsPage extends AbstractPreferencePage
      *        True to load the current stored preference
      */
     private void setFieldsPreferenceName( String installPrefix,
-            boolean loadPreferences )
+        boolean loadPreferences )
     {
         wesnothExecutableField_.setPreferenceName( installPrefix
-                + Constants.P_WESNOTH_EXEC_PATH );
+            + Constants.P_WESNOTH_EXEC_PATH );
 
         wesnothUserDirField_.setPreferenceName( installPrefix
-                + Constants.P_WESNOTH_USER_DIR );
+            + Constants.P_WESNOTH_USER_DIR );
 
         wesnothWorkingDirField_.setPreferenceName( installPrefix
-                + Constants.P_WESNOTH_WORKING_DIR );
+            + Constants.P_WESNOTH_WORKING_DIR );
 
         wmlToolsField_.setPreferenceName( installPrefix
-                + Constants.P_WESNOTH_WMLTOOLS_DIR );
+            + Constants.P_WESNOTH_WMLTOOLS_DIR );
 
         if( loadPreferences ) {
             wesnothUserDirField_.setStringValue( "" ); //$NON-NLS-1$
@@ -421,12 +422,12 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             String wesnothExecName = new File( wesnothExec ).getName( );
 
             if( wesnothWorkingDirField_.getStringValue( ).isEmpty( )
-                    && ! wesnothExec.isEmpty( )
-                    && new File( wesnothExec.substring( 0,
-                            wesnothExec.lastIndexOf( wesnothExecName ) ) )
-                            .exists( ) ) {
+                && ! wesnothExec.isEmpty( )
+                && new File( wesnothExec.substring( 0,
+                    wesnothExec.lastIndexOf( wesnothExecName ) ) )
+                    .exists( ) ) {
                 wesnothWorkingDirField_.setStringValue( wesnothExec.substring(
-                        0, wesnothExec.lastIndexOf( wesnothExecName ) ) );
+                    0, wesnothExec.lastIndexOf( wesnothExecName ) ) );
             }
         }
 
@@ -449,39 +450,39 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
         List< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
         params.add( new ReplaceableParameter(
-                "$$home_path", System.getProperty( "user.home" ) ) ); //$NON-NLS-1$ //$NON-NLS-2$
+            "$$home_path", System.getProperty( "user.home" ) ) ); //$NON-NLS-1$ //$NON-NLS-2$
 
         testPaths( StringUtils.getLines( TemplateProvider.getInstance( )
-                .getProcessedTemplate( os + "_exec", params ) ), //$NON-NLS-1$
-                wesnothExecutableField_ );
+            .getProcessedTemplate( os + "_exec", params ) ), //$NON-NLS-1$
+            wesnothExecutableField_ );
         testPaths( StringUtils.getLines( TemplateProvider.getInstance( )
-                .getProcessedTemplate( os + "_data", params ) ), //$NON-NLS-1$
-                wesnothWorkingDirField_ );
+            .getProcessedTemplate( os + "_data", params ) ), //$NON-NLS-1$
+            wesnothWorkingDirField_ );
         testPaths( StringUtils.getLines( TemplateProvider.getInstance( )
-                .getProcessedTemplate( os + "_user", params ) ), //$NON-NLS-1$
-                wesnothUserDirField_ );
+            .getProcessedTemplate( os + "_user", params ) ), //$NON-NLS-1$
+            wesnothUserDirField_ );
 
         // guess the working dir based on executable's path
         Text textControl = wesnothWorkingDirField_
-                .getTextControl( getFieldEditorParent( ) );
+            .getTextControl( getFieldEditorParent( ) );
 
         String workingDirValue = wesnothWorkingDirField_.getStringValue( );
         String wesnothExecValue = wesnothExecutableField_.getStringValue( );
 
         if( workingDirValue.isEmpty( )
-                && ! wesnothExecValue.isEmpty( )
-                && new File(
-                        wesnothExecValue.substring( 0, wesnothExecValue
-                                .lastIndexOf( new File( wesnothExecValue )
-                                        .getName( ) ) ) ).exists( ) ) {
+            && ! wesnothExecValue.isEmpty( )
+            && new File(
+                wesnothExecValue.substring( 0, wesnothExecValue
+                    .lastIndexOf( new File( wesnothExecValue )
+                        .getName( ) ) ) ).exists( ) ) {
             textControl.setText( wesnothExecValue.substring( 0,
-                    wesnothExecValue.lastIndexOf( new File( wesnothExecValue )
-                            .getName( ) ) ) );
+                wesnothExecValue.lastIndexOf( new File( wesnothExecValue )
+                    .getName( ) ) ) );
         }
 
         // guess the wmltools path
         if( wmlToolsField_.getStringValue( ).isEmpty( )
-                && ! workingDirValue.isEmpty( ) ) {
+            && ! workingDirValue.isEmpty( ) ) {
             String path = workingDirValue + "/data/tools"; //$NON-NLS-1$
             if( testWMLToolsPath( path ) ) {
                 wmlToolsField_.setStringValue( path );
@@ -509,7 +510,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         for( String tool: wmlToolsList_ ) {
             if( ! ( new File( path + IPath.SEPARATOR + tool ).exists( ) ) ) {
                 setErrorMessage( String.format(
-                        Messages.WesnothPreferencesPage_24, tool ) );
+                    Messages.WesnothPreferencesPage_24, tool ) );
                 return false;
             }
         }
@@ -550,10 +551,10 @@ public class WesnothInstallsPage extends AbstractPreferencePage
     private boolean isFieldsEmpty( )
     {
         return wmlToolsField_.getStringValue( ).isEmpty( )
-                && wesnothExecutableField_.getStringValue( ).isEmpty( )
-                && wesnothUserDirField_.getStringValue( ).isEmpty( )
-                && wesnothWorkingDirField_.getStringValue( ).isEmpty( )
-                && txtInstallName_.getText( ).isEmpty( );
+            && wesnothExecutableField_.getStringValue( ).isEmpty( )
+            && wesnothUserDirField_.getStringValue( ).isEmpty( )
+            && wesnothWorkingDirField_.getStringValue( ).isEmpty( )
+            && txtInstallName_.getText( ).isEmpty( );
     }
 
     /**
@@ -573,7 +574,8 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                 // if we haven't completed anything,
                 // we can skip the saving without alerting the user.
                 if( ! isFieldsEmpty ) {
-                    GUIUtils.showErrorMessageBox( Messages.WesnothInstallsPage_19 );
+                    GUIUtils
+                        .showErrorMessageBox( Messages.WesnothInstallsPage_19 );
                 }
 
                 // we consider successfully save if the fields are all
@@ -588,10 +590,10 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
             // update the fields preferences names
             setFieldsPreferenceName(
-                    Preferences.getInstallPrefix( installName ), false );
+                Preferences.getInstallPrefix( installName ), false );
 
             WesnothInstall newInstall = new WesnothInstall( installName,
-                    cmbVersion_.getText( ) );
+                cmbVersion_.getText( ) );
 
             installs_.put( installName, newInstall );
 
@@ -658,7 +660,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
     }
 
     private static class TableLabelProvider extends LabelProvider implements
-            ITableLabelProvider
+        ITableLabelProvider
     {
         @Override
         public Image getColumnImage( Object element, int columnIndex )
@@ -681,7 +683,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                 else if( columnIndex == 2 ) { // is Default ?
 
                     if( install.getName( ).equals(
-                            Preferences.getDefaultInstallName( ) ) ) {
+                        Preferences.getDefaultInstallName( ) ) ) {
                         return Messages.WesnothInstallsPage_21;
                     }
 

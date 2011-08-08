@@ -55,35 +55,35 @@ public class ImportProjectPage extends WizardPageTemplate
         };
 
         projectPathField_ = new DirectoryFieldEditor( "project_path",
-                "Directory to import:", container );
+            "Directory to import:", container );
         projectPathField_.getTextControl( container ).addModifyListener(
-                listener );
+            listener );
 
         Label lblNewLabel = new Label( container, SWT.NONE );
         lblNewLabel.setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         lblNewLabel.setText( "Project Name:" );
 
         txtProjectName_ = new Text( container, SWT.BORDER );
         txtProjectName_.setLayoutData( new GridData( SWT.FILL, SWT.TOP, true,
-                false, 2, 1 ) );
+            false, 2, 1 ) );
         txtProjectName_.addModifyListener( listener );
 
         Label lblWesnothInstall = new Label( container, SWT.NONE );
         lblWesnothInstall.setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER,
-                false, false, 1, 1 ) );
+            false, false, 1, 1 ) );
         lblWesnothInstall.setText( "Wesnoth install:" );
 
         cmbInstalls_ = new Combo( container, SWT.READ_ONLY );
         cmbInstalls_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 2, 1 ) );
+            false, 2, 1 ) );
         WesnothInstallsUtils.fillComboWithInstalls( cmbInstalls_ );
     }
 
     protected void updatePageIsComplete( )
     {
         setPageComplete( ! txtProjectName_.getText( ).isEmpty( )
-                && new File( projectPathField_.getStringValue( ) ).exists( ) );
+            && new File( projectPathField_.getStringValue( ) ).exists( ) );
     }
 
     /**

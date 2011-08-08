@@ -62,24 +62,24 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
             public void widgetSelected( SelectionEvent e )
             {
                 if( GUIUtils
-                        .showMessageBox(
-                                "Are you sure you want to clear the plugin preferences?",
-                                SWT.YES | SWT.NO ) == SWT.NO ) {
+                    .showMessageBox(
+                        "Are you sure you want to clear the plugin preferences?",
+                        SWT.YES | SWT.NO ) == SWT.NO ) {
                     return;
                 }
 
                 // clear the preferences
                 IEclipsePreferences root = Platform.getPreferencesService( )
-                        .getRootNode( );
+                    .getRootNode( );
                 try {
                     for( String rootName: root.childrenNames( ) ) {
 
                         org.osgi.service.prefs.Preferences childNode = root
-                                .node( rootName );
+                            .node( rootName );
                         for( String childName: childNode.childrenNames( ) ) {
 
                             org.osgi.service.prefs.Preferences node = childNode
-                                    .node( childName );
+                                .node( childName );
 
                             if( childName.startsWith( "org.wesnoth" ) ) {
                                 try {
@@ -101,15 +101,15 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 
                 // clear the plugin's dirs
                 File pluginDir = WesnothPlugin.getDefault( ).getStateLocation( )
-                        .toFile( ).getParentFile( );
+                    .toFile( ).getParentFile( );
                 ResourceUtils.deleteDirectory( pluginDir.getAbsolutePath( )
-                        + "/org.wesnoth" );
+                    + "/org.wesnoth" );
                 ResourceUtils.deleteDirectory( pluginDir.getAbsolutePath( )
-                        + "/org.wesnoth.ui" );
+                    + "/org.wesnoth.ui" );
 
                 // clear the temporary files
                 File[] files = new File( WorkspaceUtils.getTemporaryFolder( ) )
-                        .listFiles( );
+                    .listFiles( );
 
                 for( File file: files ) {
                     // don't remove the logs

@@ -75,14 +75,14 @@ public class FactionPage0 extends WizardPageTemplate
 
         Label label = new Label( container, SWT.NONE );
         GridData gd_label = new GridData( SWT.FILL, SWT.CENTER, false, false,
-                1, 1 );
+            1, 1 );
         gd_label.widthHint = 95;
         label.setLayoutData( gd_label );
         label.setText( Messages.FactionPage0_3 );
 
         txtDirectory_ = new Text( container, SWT.BORDER );
         txtDirectory_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         txtDirectory_.addModifyListener( modifyListener );
         txtDirectory_.setEditable( false );
 
@@ -101,90 +101,90 @@ public class FactionPage0 extends WizardPageTemplate
 
         Label label_4 = new Label( container, SWT.NONE );
         label_4.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         label_4.setText( Messages.FactionPage0_5 );
 
         txtFileName_ = new Text( container, SWT.BORDER );
         txtFileName_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
         txtFileName_.addModifyListener( modifyListener );
 
         Label lblFactionId = new Label( container, SWT.NONE );
         lblFactionId.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         lblFactionId.setText( Messages.FactionPage0_6 );
 
         txtFactionId_ = new Text( container, SWT.BORDER );
         txtFactionId_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
         txtFactionId_.addModifyListener( modifyListener );
 
         Label lblName = new Label( container, SWT.NONE );
         lblName.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         lblName.setText( Messages.FactionPage0_7 );
 
         txtFactionName_ = new Text( container, SWT.BORDER );
         txtFactionName_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                true, false, 1, 1 ) );
+            true, false, 1, 1 ) );
         new Label( container, SWT.NONE );
         txtFactionName_.addModifyListener( modifyListener );
 
         Label lblType = new Label( container, SWT.NONE );
         lblType.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         lblType.setText( Messages.FactionPage0_8 );
 
         txtType_ = new Text( container, SWT.BORDER );
         txtType_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblLeader = new Label( container, SWT.NONE );
         lblLeader.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         lblLeader.setText( Messages.FactionPage0_9 );
 
         txtLeader_ = new Text( container, SWT.BORDER );
         txtLeader_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblRandomLeaders = new Label( container, SWT.NONE );
         lblRandomLeaders.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 ) );
+            false, false, 1, 1 ) );
         lblRandomLeaders.setText( Messages.FactionPage0_10 );
 
         txtRandomLeader_ = new Text( container, SWT.BORDER );
         txtRandomLeader_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                true, false, 1, 1 ) );
+            true, false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblTerrainLiked = new Label( container, SWT.NONE );
         lblTerrainLiked.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                false, false, 1, 1 ) );
+            false, false, 1, 1 ) );
         lblTerrainLiked.setText( Messages.FactionPage0_11 );
 
         txtTerrainLiked_ = new Text( container, SWT.BORDER );
         txtTerrainLiked_.setLayoutData( new GridData( SWT.FILL, SWT.CENTER,
-                true, false, 1, 1 ) );
+            true, false, 1, 1 ) );
         new Label( container, SWT.NONE );
 
         Label lblRecruit = new Label( container, SWT.NONE );
         lblRecruit.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                false, 1, 1 ) );
+            false, 1, 1 ) );
         lblRecruit.setText( Messages.FactionPage0_12 );
 
         text = new Text( container, SWT.BORDER );
         text.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false, 1,
-                1 ) );
+            1 ) );
         new Label( container, SWT.NONE );
 
         if( getWizard( ).getSelectionContainer( ) != null ) {
             txtDirectory_.setText( getWizard( ).getSelectionContainer( )
-                    .getFullPath( ).toString( ) );
+                .getFullPath( ).toString( ) );
         }
         updatePageIsComplete( );
     }
@@ -192,7 +192,7 @@ public class FactionPage0 extends WizardPageTemplate
     private void updatePageIsComplete( )
     {
         IResource container = ResourcesPlugin.getWorkspace( ).getRoot( )
-                .findMember( new Path( getDirectoryName( ) ) );
+            .findMember( new Path( getDirectoryName( ) ) );
         setPageComplete( false );
         String fileName = getFileName( );
 
@@ -202,7 +202,7 @@ public class FactionPage0 extends WizardPageTemplate
         }
 
         if( container == null || ! container.exists( )
-                || ! ( container instanceof IContainer ) ) {
+            || ! ( container instanceof IContainer ) ) {
             setErrorMessage( Messages.FactionPage0_14 );
             return;
         }
@@ -219,7 +219,7 @@ public class FactionPage0 extends WizardPageTemplate
 
         int dotLoc = fileName.lastIndexOf( '.' );
         if( dotLoc == - 1
-                || fileName.substring( dotLoc + 1 ).equalsIgnoreCase( "cfg" ) == false ) //$NON-NLS-1$
+            || fileName.substring( dotLoc + 1 ).equalsIgnoreCase( "cfg" ) == false ) //$NON-NLS-1$
         {
             setErrorMessage( Messages.FactionPage0_18 );
             return;

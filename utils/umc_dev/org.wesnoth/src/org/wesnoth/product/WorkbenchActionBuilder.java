@@ -284,10 +284,10 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
                 // set default build handler -- can't be done until the shell is
                 // available
                 IAction buildHandler = new BuildAction(
-                        page.getWorkbenchWindow( ),
-                        IncrementalProjectBuilder.INCREMENTAL_BUILD );
+                    page.getWorkbenchWindow( ),
+                    IncrementalProjectBuilder.INCREMENTAL_BUILD );
                 ( ( RetargetActionWithDefault ) buildProjectAction )
-                        .setDefaultHandler( buildHandler );
+                    .setDefaultHandler( buildHandler );
             }
         };
         getWindow( ).addPageListener( pageListener );
@@ -296,13 +296,13 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
             public void propertyChange( Preferences.PropertyChangeEvent event )
             {
                 if( event.getProperty( ).equals(
-                        ResourcesPlugin.PREF_AUTO_BUILDING ) ) {
+                    ResourcesPlugin.PREF_AUTO_BUILDING ) ) {
                     updateBuildActions( false );
                 }
             }
         };
         ResourcesPlugin.getPlugin( ).getPluginPreferences( )
-                .addPropertyChangeListener( prefListener );
+            .addPropertyChangeListener( prefListener );
 
         // listener for the "close editors automatically"
         // preference change
@@ -310,18 +310,18 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
             public void propertyChange( PropertyChangeEvent event )
             {
                 if( event.getProperty( ).equals(
-                        IPreferenceConstants.REUSE_EDITORS_BOOLEAN ) ) {
+                    IPreferenceConstants.REUSE_EDITORS_BOOLEAN ) ) {
                     if( window.getShell( ) != null
-                            && ! window.getShell( ).isDisposed( ) ) {
+                        && ! window.getShell( ).isDisposed( ) ) {
                         // this property change notification could be from a
                         // non-ui thread
                         window.getShell( ).getDisplay( )
-                                .syncExec( new Runnable( ) {
-                                    public void run( )
-                                    {
-                                        updatePinActionToolbar( );
-                                    }
-                                } );
+                            .syncExec( new Runnable( ) {
+                                public void run( )
+                                {
+                                    updatePinActionToolbar( );
+                                }
+                            } );
                     }
                 }
             }
@@ -336,7 +336,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
          * WorkbenchActionBuilder.
          */
         WorkbenchPlugin.getDefault( ).getPreferenceStore( )
-                .addPropertyChangeListener( propPrefListener );
+            .addPropertyChangeListener( propPrefListener );
         // listen for project description changes, which can affect enablement
         // of build actions
         resourceListener = new IResourceChangeListener( ) {
@@ -360,7 +360,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
             }
         };
         ResourcesPlugin.getWorkspace( ).addResourceChangeListener(
-                resourceListener, IResourceChangeEvent.POST_CHANGE );
+            resourceListener, IResourceChangeEvent.POST_CHANGE );
     }
 
     @Override
@@ -384,44 +384,44 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         { // Set up the context Menu
             coolbarPopupMenuManager = new MenuManager( );
             coolbarPopupMenuManager.add( new ActionContributionItem(
-                    lockToolBarAction ) );
+                lockToolBarAction ) );
             coolbarPopupMenuManager.add( new ActionContributionItem(
-                    editActionSetAction ) );
+                editActionSetAction ) );
             coolBar.setContextMenuManager( coolbarPopupMenuManager );
             IMenuService menuService = ( IMenuService ) window
-                    .getService( IMenuService.class );
+                .getService( IMenuService.class );
             menuService.populateContributionManager( coolbarPopupMenuManager,
-                    "popup:windowCoolbarContextMenu" ); //$NON-NLS-1$
+                "popup:windowCoolbarContextMenu" ); //$NON-NLS-1$
         }
         coolBar.add( new GroupMarker( IIDEActionConstants.GROUP_FILE ) );
         { // File Group
             IToolBarManager fileToolBar = actionBarConfigurer
-                    .createToolBarManager( );
+                .createToolBarManager( );
             fileToolBar
-                    .add( new Separator( IWorkbenchActionConstants.NEW_GROUP ) );
+                .add( new Separator( IWorkbenchActionConstants.NEW_GROUP ) );
             fileToolBar.add( newWizardDropDownAction );
             fileToolBar
-                    .add( new GroupMarker( IWorkbenchActionConstants.NEW_EXT ) );
+                .add( new GroupMarker( IWorkbenchActionConstants.NEW_EXT ) );
             fileToolBar.add( new GroupMarker(
-                    IWorkbenchActionConstants.SAVE_GROUP ) );
+                IWorkbenchActionConstants.SAVE_GROUP ) );
             fileToolBar.add( saveAction );
             fileToolBar.add( saveAllAction );
             fileToolBar.add( new GroupMarker(
-                    IWorkbenchActionConstants.SAVE_EXT ) );
+                IWorkbenchActionConstants.SAVE_EXT ) );
             fileToolBar.add( getPrintItem( ) );
             fileToolBar.add( new GroupMarker(
-                    IWorkbenchActionConstants.PRINT_EXT ) );
+                IWorkbenchActionConstants.PRINT_EXT ) );
 
             fileToolBar.add( new Separator(
-                    IWorkbenchActionConstants.BUILD_GROUP ) );
+                IWorkbenchActionConstants.BUILD_GROUP ) );
             fileToolBar.add( new GroupMarker(
-                    IWorkbenchActionConstants.BUILD_EXT ) );
+                IWorkbenchActionConstants.BUILD_EXT ) );
             fileToolBar.add( new Separator(
-                    IWorkbenchActionConstants.MB_ADDITIONS ) );
+                IWorkbenchActionConstants.MB_ADDITIONS ) );
 
             // Add to the cool bar manager
             coolBar.add( actionBarConfigurer.createToolBarContributionItem(
-                    fileToolBar, IWorkbenchActionConstants.TOOLBAR_FILE ) );
+                fileToolBar, IWorkbenchActionConstants.TOOLBAR_FILE ) );
         }
 
         coolBar.add( new GroupMarker( IWorkbenchActionConstants.MB_ADDITIONS ) );
@@ -429,20 +429,20 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         coolBar.add( new GroupMarker( IIDEActionConstants.GROUP_NAV ) );
         { // Navigate group
             IToolBarManager navToolBar = actionBarConfigurer
-                    .createToolBarManager( );
+                .createToolBarManager( );
             navToolBar.add( new Separator(
-                    IWorkbenchActionConstants.HISTORY_GROUP ) );
+                IWorkbenchActionConstants.HISTORY_GROUP ) );
             navToolBar.add( new GroupMarker(
-                    IWorkbenchActionConstants.GROUP_APP ) );
+                IWorkbenchActionConstants.GROUP_APP ) );
             navToolBar.add( backwardHistoryAction );
             navToolBar.add( forwardHistoryAction );
             navToolBar
-                    .add( new Separator( IWorkbenchActionConstants.PIN_GROUP ) );
+                .add( new Separator( IWorkbenchActionConstants.PIN_GROUP ) );
             navToolBar.add( getPinEditorItem( ) );
 
             // Add to the cool bar manager
             coolBar.add( actionBarConfigurer.createToolBarContributionItem(
-                    navToolBar, IWorkbenchActionConstants.TOOLBAR_NAVIGATE ) );
+                navToolBar, IWorkbenchActionConstants.TOOLBAR_NAVIGATE ) );
         }
 
         coolBar.add( new GroupMarker( IWorkbenchActionConstants.GROUP_EDITOR ) );
@@ -451,16 +451,16 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
 
         { // Help group
             IToolBarManager helpToolBar = actionBarConfigurer
-                    .createToolBarManager( );
+                .createToolBarManager( );
             helpToolBar.add( new Separator(
-                    IWorkbenchActionConstants.GROUP_HELP ) );
+                IWorkbenchActionConstants.GROUP_HELP ) );
             // helpToolBar.add(searchComboItem);
             // Add the group for applications to contribute
             helpToolBar.add( new GroupMarker(
-                    IWorkbenchActionConstants.GROUP_APP ) );
+                IWorkbenchActionConstants.GROUP_APP ) );
             // Add to the cool bar manager
             coolBar.add( actionBarConfigurer.createToolBarContributionItem(
-                    helpToolBar, IWorkbenchActionConstants.TOOLBAR_HELP ) );
+                helpToolBar, IWorkbenchActionConstants.TOOLBAR_HELP ) );
         }
 
     }
@@ -486,8 +486,8 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     private MenuManager createFileMenu( )
     {
         MenuManager menu = new MenuManager(
-                IDEWorkbenchMessages.Workbench_file,
-                IWorkbenchActionConstants.M_FILE );
+            IDEWorkbenchMessages.Workbench_file,
+            IWorkbenchActionConstants.M_FILE );
         menu.add( new GroupMarker( IWorkbenchActionConstants.FILE_START ) );
         {
             // create the New submenu, using the same id for it as the New
@@ -499,7 +499,8 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
             newMenu.add( new Separator( newId ) );
             this.newWizardMenu = new NewWizardMenu( getWindow( ) );
             newMenu.add( this.newWizardMenu );
-            newMenu.add( new Separator( IWorkbenchActionConstants.MB_ADDITIONS ) );
+            newMenu
+                .add( new Separator( IWorkbenchActionConstants.MB_ADDITIONS ) );
             menu.add( newMenu );
         }
 
@@ -546,7 +547,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         // looking for it when Cmd-Q is invoked (or Quit is chosen from the
         // application menu.
         ActionContributionItem quitItem = new ActionContributionItem(
-                quitAction );
+            quitAction );
         quitItem.setVisible( ! Util.isMac( ) );
         menu.add( quitItem );
         menu.add( new GroupMarker( IWorkbenchActionConstants.FILE_END ) );
@@ -559,8 +560,8 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     private MenuManager createEditMenu( )
     {
         MenuManager menu = new MenuManager(
-                IDEWorkbenchMessages.Workbench_edit,
-                IWorkbenchActionConstants.M_EDIT );
+            IDEWorkbenchMessages.Workbench_edit,
+            IWorkbenchActionConstants.M_EDIT );
         menu.add( new GroupMarker( IWorkbenchActionConstants.EDIT_START ) );
 
         menu.add( undoAction );
@@ -597,20 +598,20 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     private MenuManager createNavigateMenu( )
     {
         MenuManager menu = new MenuManager(
-                IDEWorkbenchMessages.Workbench_navigate,
-                IWorkbenchActionConstants.M_NAVIGATE );
+            IDEWorkbenchMessages.Workbench_navigate,
+            IWorkbenchActionConstants.M_NAVIGATE );
         menu.add( new GroupMarker( IWorkbenchActionConstants.NAV_START ) );
         menu.add( goIntoAction );
 
         MenuManager goToSubMenu = new MenuManager(
-                IDEWorkbenchMessages.Workbench_goTo,
-                IWorkbenchActionConstants.GO_TO );
+            IDEWorkbenchMessages.Workbench_goTo,
+            IWorkbenchActionConstants.GO_TO );
         menu.add( goToSubMenu );
         goToSubMenu.add( backAction );
         goToSubMenu.add( forwardAction );
         goToSubMenu.add( upAction );
         goToSubMenu
-                .add( new Separator( IWorkbenchActionConstants.MB_ADDITIONS ) );
+            .add( new Separator( IWorkbenchActionConstants.MB_ADDITIONS ) );
 
         menu.add( new Separator( IWorkbenchActionConstants.OPEN_EXT ) );
         for( int i = 2; i < 5; ++i ) {
@@ -619,11 +620,11 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         menu.add( new Separator( IWorkbenchActionConstants.SHOW_EXT ) );
         {
             MenuManager showInSubMenu = new MenuManager(
-                    IDEWorkbenchMessages.Workbench_showIn, "showIn" ); //$NON-NLS-1$
+                IDEWorkbenchMessages.Workbench_showIn, "showIn" ); //$NON-NLS-1$
             showInSubMenu.setActionDefinitionId( showInQuickMenu
-                    .getActionDefinitionId( ) );
+                .getActionDefinitionId( ) );
             showInSubMenu.add( ContributionItemFactory.VIEWS_SHOW_IN
-                    .create( getWindow( ) ) );
+                .create( getWindow( ) ) );
             menu.add( showInSubMenu );
         }
         for( int i = 2; i < 5; ++i ) {
@@ -648,8 +649,8 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     private MenuManager createProjectMenu( )
     {
         MenuManager menu = new MenuManager(
-                IDEWorkbenchMessages.Workbench_project,
-                IWorkbenchActionConstants.M_PROJECT );
+            IDEWorkbenchMessages.Workbench_project,
+            IWorkbenchActionConstants.M_PROJECT );
         menu.add( new Separator( IWorkbenchActionConstants.PROJ_START ) );
 
         menu.add( getOpenProjectItem( ) );
@@ -677,8 +678,8 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     private MenuManager createWindowMenu( )
     {
         MenuManager menu = new MenuManager(
-                IDEWorkbenchMessages.Workbench_window,
-                IWorkbenchActionConstants.M_WINDOW );
+            IDEWorkbenchMessages.Workbench_window,
+            IWorkbenchActionConstants.M_WINDOW );
 
         menu.add( newWindowAction );
         menu.add( newEditorAction );
@@ -693,7 +694,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
 
         // See the comment for quit in createFileMenu
         ActionContributionItem openPreferencesItem = new ActionContributionItem(
-                openPreferencesAction );
+            openPreferencesAction );
         openPreferencesItem.setVisible( ! Util.isMac( ) );
         menu.add( openPreferencesItem );
 
@@ -709,17 +710,17 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         {
             String openText = IDEWorkbenchMessages.Workbench_openPerspective;
             MenuManager changePerspMenuMgr = new MenuManager( openText,
-                    "openPerspective" ); //$NON-NLS-1$
+                "openPerspective" ); //$NON-NLS-1$
             IContributionItem changePerspMenuItem = ContributionItemFactory.PERSPECTIVES_SHORTLIST
-                    .create( getWindow( ) );
+                .create( getWindow( ) );
             changePerspMenuMgr.add( changePerspMenuItem );
             menu.add( changePerspMenuMgr );
         }
         {
             MenuManager showViewMenuMgr = new MenuManager(
-                    IDEWorkbenchMessages.Workbench_showView, "showView" ); //$NON-NLS-1$
+                IDEWorkbenchMessages.Workbench_showView, "showView" ); //$NON-NLS-1$
             IContributionItem showViewMenu = ContributionItemFactory.VIEWS_SHORTLIST
-                    .create( getWindow( ) );
+                .create( getWindow( ) );
             showViewMenuMgr.add( showViewMenu );
             menu.add( showViewMenuMgr );
         }
@@ -737,9 +738,9 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     private void addWorkingSetBuildActions( MenuManager menu )
     {
         buildWorkingSetMenu = new MenuManager(
-                IDEWorkbenchMessages.Workbench_buildSet );
+            IDEWorkbenchMessages.Workbench_buildSet );
         IContributionItem workingSetBuilds = new BuildSetMenu( window,
-                getActionBarConfigurer( ) );
+            getActionBarConfigurer( ) );
         buildWorkingSetMenu.add( workingSetBuilds );
         menu.add( buildWorkingSetMenu );
     }
@@ -750,7 +751,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     private void addKeyboardShortcuts( MenuManager menu )
     {
         MenuManager subMenu = new MenuManager(
-                IDEWorkbenchMessages.Workbench_shortcuts, "shortcuts" ); //$NON-NLS-1$
+            IDEWorkbenchMessages.Workbench_shortcuts, "shortcuts" ); //$NON-NLS-1$
         menu.add( subMenu );
         subMenu.add( showPartPaneMenuAction );
         subMenu.add( showViewMenuAction );
@@ -777,8 +778,8 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     private MenuManager createHelpMenu( )
     {
         MenuManager menu = new MenuManager(
-                IDEWorkbenchMessages.Workbench_help,
-                IWorkbenchActionConstants.M_HELP );
+            IDEWorkbenchMessages.Workbench_help,
+            IWorkbenchActionConstants.M_HELP );
         addSeparatorOrGroupMarker( menu, "group.intro" ); //$NON-NLS-1$
         // See if a welcome or intro page is specified
         if( introAction != null ) {
@@ -810,7 +811,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         menu.add( new Separator( "group.about" ) ); //$NON-NLS-1$
 
         ActionContributionItem aboutItem = new ActionContributionItem(
-                aboutAction );
+            aboutAction );
         aboutItem.setVisible( ! Util.isMac( ) );
         menu.add( aboutItem );
         menu.add( new GroupMarker( "group.about.ext" ) ); //$NON-NLS-1$
@@ -832,7 +833,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     {
         String prefId = "useSeparator." + menu.getId( ) + "." + groupId; //$NON-NLS-1$ //$NON-NLS-2$
         boolean addExtraSeparators = IDEWorkbenchPlugin.getDefault( )
-                .getPreferenceStore( ).getBoolean( prefId );
+            .getPreferenceStore( ).getBoolean( prefId );
         if( addExtraSeparators ) {
             menu.add( new Separator( groupId ) );
         }
@@ -854,29 +855,29 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         }
         isDisposed = true;
         IMenuService menuService = ( IMenuService ) window
-                .getService( IMenuService.class );
+            .getService( IMenuService.class );
         menuService.releaseContributions( coolbarPopupMenuManager );
         coolbarPopupMenuManager.dispose( );
 
         getActionBarConfigurer( ).getStatusLineManager( ).remove(
-                statusLineItem );
+            statusLineItem );
         if( pageListener != null ) {
             window.removePageListener( pageListener );
             pageListener = null;
         }
         if( prefListener != null ) {
             ResourcesPlugin.getPlugin( ).getPluginPreferences( )
-                    .removePropertyChangeListener( prefListener );
+                .removePropertyChangeListener( prefListener );
             prefListener = null;
         }
         if( propPrefListener != null ) {
             WorkbenchPlugin.getDefault( ).getPreferenceStore( )
-                    .removePropertyChangeListener( propPrefListener );
+                .removePropertyChangeListener( propPrefListener );
             propPrefListener = null;
         }
         if( resourceListener != null ) {
             ResourcesPlugin.getWorkspace( ).removeResourceChangeListener(
-                    resourceListener );
+                resourceListener );
             resourceListener = null;
         }
 
@@ -1014,7 +1015,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         register( newWizardAction );
 
         newWizardDropDownAction = IDEActionFactory.NEW_WIZARD_DROP_DOWN
-                .create( window );
+            .create( window );
         register( newWizardDropDownAction );
 
         importResourcesAction = ActionFactory.IMPORT.create( window );
@@ -1030,7 +1031,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         register( cleanAction );
 
         toggleAutoBuildAction = IDEActionFactory.BUILD_AUTOMATICALLY
-                .create( window );
+            .create( window );
         register( toggleAutoBuildAction );
 
         saveAction = ActionFactory.SAVE.create( window );
@@ -1083,8 +1084,8 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
 
         aboutAction = ActionFactory.ABOUT.create( window );
         aboutAction
-                .setImageDescriptor( IDEInternalWorkbenchImages
-                        .getImageDescriptor( IDEInternalWorkbenchImages.IMG_OBJS_DEFAULT_PROD ) );
+            .setImageDescriptor( IDEInternalWorkbenchImages
+                .getImageDescriptor( IDEInternalWorkbenchImages.IMG_OBJS_DEFAULT_PROD ) );
         register( aboutAction );
 
         openPreferencesAction = ActionFactory.PREFERENCES.create( window );
@@ -1101,7 +1102,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         register( showViewMenuAction );
 
         showPartPaneMenuAction = ActionFactory.SHOW_PART_PANE_MENU
-                .create( window );
+            .create( window );
         register( showPartPaneMenuAction );
 
         nextEditorAction = ActionFactory.NEXT_EDITOR.create( window );
@@ -1119,10 +1120,10 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         nextPerspectiveAction = ActionFactory.NEXT_PERSPECTIVE.create( window );
         register( nextPerspectiveAction );
         prevPerspectiveAction = ActionFactory.PREVIOUS_PERSPECTIVE
-                .create( window );
+            .create( window );
         register( prevPerspectiveAction );
         ActionFactory.linkCycleActionPair( nextPerspectiveAction,
-                prevPerspectiveAction );
+            prevPerspectiveAction );
 
         activateEditorAction = ActionFactory.ACTIVATE_EDITOR.create( window );
         register( activateEditorAction );
@@ -1137,7 +1138,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         register( switchToEditorAction );
 
         workbookEditorsAction = ActionFactory.SHOW_WORKBOOK_EDITORS
-                .create( window );
+            .create( window );
         register( workbookEditorsAction );
 
         quickAccessAction = ActionFactory.SHOW_QUICK_ACCESS.create( window );
@@ -1151,12 +1152,12 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         lockToolBarAction = ActionFactory.LOCK_TOOL_BAR.create( window );
         register( lockToolBarAction );
         resetPerspectiveAction = ActionFactory.RESET_PERSPECTIVE
-                .create( window );
+            .create( window );
         register( resetPerspectiveAction );
         closePerspAction = ActionFactory.CLOSE_PERSPECTIVE.create( window );
         register( closePerspAction );
         closeAllPerspsAction = ActionFactory.CLOSE_ALL_PERSPECTIVES
-                .create( window );
+            .create( window );
         register( closeAllPerspsAction );
 
         forwardHistoryAction = ActionFactory.FORWARD_HISTORY.create( window );
@@ -1187,14 +1188,14 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
 
         nextAction = ActionFactory.NEXT.create( window );
         nextAction
-                .setImageDescriptor( IDEInternalWorkbenchImages
-                        .getImageDescriptor( IDEInternalWorkbenchImages.IMG_ETOOL_NEXT_NAV ) );
+            .setImageDescriptor( IDEInternalWorkbenchImages
+                .getImageDescriptor( IDEInternalWorkbenchImages.IMG_ETOOL_NEXT_NAV ) );
         register( nextAction );
 
         previousAction = ActionFactory.PREVIOUS.create( window );
         previousAction
-                .setImageDescriptor( IDEInternalWorkbenchImages
-                        .getImageDescriptor( IDEInternalWorkbenchImages.IMG_ETOOL_PREVIOUS_NAV ) );
+            .setImageDescriptor( IDEInternalWorkbenchImages
+                .getImageDescriptor( IDEInternalWorkbenchImages.IMG_ETOOL_PREVIOUS_NAV ) );
         register( previousAction );
 
         buildProjectAction = IDEActionFactory.BUILD_PROJECT.create( window );
@@ -1204,7 +1205,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         register( openWorkspaceAction );
 
         projectPropertyDialogAction = IDEActionFactory.OPEN_PROJECT_PROPERTIES
-                .create( window );
+            .create( window );
         register( projectPropertyDialogAction );
 
         if( window.getWorkbench( ).getIntroManager( ).hasIntro( ) ) {
@@ -1242,7 +1243,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         AboutInfo[] infos = null;
 
         IPreferenceStore prefs = IDEWorkbenchPlugin.getDefault( )
-                .getPreferenceStore( );
+            .getPreferenceStore( );
 
         // Optimization: avoid obtaining the about infos if the platform state
         // is
@@ -1285,7 +1286,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
         String showTipsAndTricks = prefs.getString( tipsAndTricksKey );
         if( sameState && "true".equals( showTipsAndTricks ) ) { //$NON-NLS-1$
             tipsAndTricksAction = IDEActionFactory.TIPS_AND_TRICKS
-                    .create( window );
+                .create( window );
             register( tipsAndTricksAction );
         }
         else if( sameState && "false".equals( showTipsAndTricks ) ) { //$NON-NLS-1$
@@ -1300,7 +1301,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
             prefs.setValue( tipsAndTricksKey, String.valueOf( found ) );
             if( found ) {
                 tipsAndTricksAction = IDEActionFactory.TIPS_AND_TRICKS
-                        .create( window );
+                    .create( window );
                 register( tipsAndTricksAction );
             }
         }
@@ -1363,28 +1364,28 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
                 IWorkspace workspace = ResourcesPlugin.getWorkspace( );
                 IProject[] projects = workspace.getRoot( ).getProjects( );
                 boolean enabled = BuildUtilities.isEnabled( projects,
-                        IncrementalProjectBuilder.INCREMENTAL_BUILD );
+                    IncrementalProjectBuilder.INCREMENTAL_BUILD );
                 // update menu bar actions in project menu
                 updateCommandEnablement( buildAllAction.getActionDefinitionId( ) );
                 buildProjectAction.setEnabled( enabled );
                 toggleAutoBuildAction.setChecked( workspace.isAutoBuilding( ) );
                 cleanAction.setEnabled( BuildUtilities.isEnabled( projects,
-                        IncrementalProjectBuilder.CLEAN_BUILD ) );
+                    IncrementalProjectBuilder.CLEAN_BUILD ) );
 
                 // update the cool bar build button
                 ICoolBarManager coolBarManager = getActionBarConfigurer( )
-                        .getCoolBarManager( );
+                    .getCoolBarManager( );
                 IContributionItem cbItem = coolBarManager
-                        .find( IWorkbenchActionConstants.TOOLBAR_FILE );
+                    .find( IWorkbenchActionConstants.TOOLBAR_FILE );
                 if( ! ( cbItem instanceof IToolBarContributionItem ) ) {
                     // This should not happen
                     IDEWorkbenchPlugin
-                            .log( "File toolbar contribution item is missing" ); //$NON-NLS-1$
+                        .log( "File toolbar contribution item is missing" ); //$NON-NLS-1$
                     return;
                 }
                 IToolBarContributionItem toolBarItem = ( IToolBarContributionItem ) cbItem;
                 IToolBarManager toolBarManager = toolBarItem
-                        .getToolBarManager( );
+                    .getToolBarManager( );
                 if( toolBarManager == null ) {
                     // error if this happens, file toolbar assumed to always
                     // exist
@@ -1396,8 +1397,8 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
                 boolean found = toolBarManager.find( buildAllAction.getId( ) ) != null;
                 if( enabled && ! found ) {
                     toolBarManager.appendToGroup(
-                            IWorkbenchActionConstants.BUILD_GROUP,
-                            buildAllAction );
+                        IWorkbenchActionConstants.BUILD_GROUP,
+                        buildAllAction );
                     toolBarManager.update( false );
                     toolBarItem.update( ICoolBarManager.SIZE );
                 }
@@ -1411,9 +1412,9 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
             private void updateCommandEnablement( String commandId )
             {
                 IHandlerService handlerService = ( IHandlerService ) window
-                        .getService( IHandlerService.class );
+                    .getService( IHandlerService.class );
                 ICommandService commandService = ( ICommandService ) window
-                        .getService( ICommandService.class );
+                    .getService( ICommandService.class );
                 if( handlerService != null && commandService != null ) {
                     Command buildAllCmd = commandService.getCommand( commandId );
                     buildAllCmd.setEnabled( handlerService.getCurrentState( ) );
@@ -1441,13 +1442,13 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     {
 
         ICoolBarManager coolBarManager = getActionBarConfigurer( )
-                .getCoolBarManager( );
+            .getCoolBarManager( );
         IContributionItem cbItem = coolBarManager
-                .find( IWorkbenchActionConstants.TOOLBAR_NAVIGATE );
+            .find( IWorkbenchActionConstants.TOOLBAR_NAVIGATE );
         if( ! ( cbItem instanceof IToolBarContributionItem ) ) {
             // This should not happen
             IDEWorkbenchPlugin
-                    .log( "Navigation toolbar contribution item is missing" ); //$NON-NLS-1$
+                .log( "Navigation toolbar contribution item is missing" ); //$NON-NLS-1$
             return;
         }
         IToolBarContributionItem toolBarItem = ( IToolBarContributionItem ) cbItem;
@@ -1470,157 +1471,157 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     private IContributionItem getCutItem( )
     {
         return getItem( ActionFactory.CUT.getId( ),
-                ActionFactory.CUT.getCommandId( ), ISharedImages.IMG_TOOL_CUT,
-                ISharedImages.IMG_TOOL_CUT_DISABLED,
-                WorkbenchMessages.Workbench_cut,
-                WorkbenchMessages.Workbench_cutToolTip, null );
+            ActionFactory.CUT.getCommandId( ), ISharedImages.IMG_TOOL_CUT,
+            ISharedImages.IMG_TOOL_CUT_DISABLED,
+            WorkbenchMessages.Workbench_cut,
+            WorkbenchMessages.Workbench_cutToolTip, null );
     }
 
     private IContributionItem getCopyItem( )
     {
         return getItem( ActionFactory.COPY.getId( ),
-                ActionFactory.COPY.getCommandId( ),
-                ISharedImages.IMG_TOOL_COPY,
-                ISharedImages.IMG_TOOL_COPY_DISABLED,
-                WorkbenchMessages.Workbench_copy,
-                WorkbenchMessages.Workbench_copyToolTip, null );
+            ActionFactory.COPY.getCommandId( ),
+            ISharedImages.IMG_TOOL_COPY,
+            ISharedImages.IMG_TOOL_COPY_DISABLED,
+            WorkbenchMessages.Workbench_copy,
+            WorkbenchMessages.Workbench_copyToolTip, null );
     }
 
     private IContributionItem getPasteItem( )
     {
         return getItem( ActionFactory.PASTE.getId( ),
-                ActionFactory.PASTE.getCommandId( ),
-                ISharedImages.IMG_TOOL_PASTE,
-                ISharedImages.IMG_TOOL_PASTE_DISABLED,
-                WorkbenchMessages.Workbench_paste,
-                WorkbenchMessages.Workbench_pasteToolTip, null );
+            ActionFactory.PASTE.getCommandId( ),
+            ISharedImages.IMG_TOOL_PASTE,
+            ISharedImages.IMG_TOOL_PASTE_DISABLED,
+            WorkbenchMessages.Workbench_paste,
+            WorkbenchMessages.Workbench_pasteToolTip, null );
     }
 
     private IContributionItem getPrintItem( )
     {
         return getItem( ActionFactory.PRINT.getId( ),
-                ActionFactory.PRINT.getCommandId( ),
-                ISharedImages.IMG_ETOOL_PRINT_EDIT,
-                ISharedImages.IMG_ETOOL_PRINT_EDIT_DISABLED,
-                WorkbenchMessages.Workbench_print,
-                WorkbenchMessages.Workbench_printToolTip, null );
+            ActionFactory.PRINT.getCommandId( ),
+            ISharedImages.IMG_ETOOL_PRINT_EDIT,
+            ISharedImages.IMG_ETOOL_PRINT_EDIT_DISABLED,
+            WorkbenchMessages.Workbench_print,
+            WorkbenchMessages.Workbench_printToolTip, null );
     }
 
     private IContributionItem getSelectAllItem( )
     {
         return getItem( ActionFactory.SELECT_ALL.getId( ),
-                ActionFactory.SELECT_ALL.getCommandId( ), null, null,
-                WorkbenchMessages.Workbench_selectAll,
-                WorkbenchMessages.Workbench_selectAllToolTip, null );
+            ActionFactory.SELECT_ALL.getCommandId( ), null, null,
+            WorkbenchMessages.Workbench_selectAll,
+            WorkbenchMessages.Workbench_selectAllToolTip, null );
     }
 
     private IContributionItem getFindItem( )
     {
         return getItem( ActionFactory.FIND.getId( ),
-                ActionFactory.FIND.getCommandId( ), null, null,
-                WorkbenchMessages.Workbench_findReplace,
-                WorkbenchMessages.Workbench_findReplaceToolTip, null );
+            ActionFactory.FIND.getCommandId( ), null, null,
+            WorkbenchMessages.Workbench_findReplace,
+            WorkbenchMessages.Workbench_findReplaceToolTip, null );
     }
 
     private IContributionItem getBookmarkItem( )
     {
         return getItem( IDEActionFactory.BOOKMARK.getId( ),
-                IDEActionFactory.BOOKMARK.getCommandId( ), null, null,
-                IDEWorkbenchMessages.Workbench_addBookmark,
-                IDEWorkbenchMessages.Workbench_addBookmarkToolTip, null );
+            IDEActionFactory.BOOKMARK.getCommandId( ), null, null,
+            IDEWorkbenchMessages.Workbench_addBookmark,
+            IDEWorkbenchMessages.Workbench_addBookmarkToolTip, null );
     }
 
     private IContributionItem getTaskItem( )
     {
         return getItem( IDEActionFactory.ADD_TASK.getId( ),
-                IDEActionFactory.ADD_TASK.getCommandId( ), null, null,
-                IDEWorkbenchMessages.Workbench_addTask,
-                IDEWorkbenchMessages.Workbench_addTaskToolTip, null );
+            IDEActionFactory.ADD_TASK.getCommandId( ), null, null,
+            IDEWorkbenchMessages.Workbench_addTask,
+            IDEWorkbenchMessages.Workbench_addTaskToolTip, null );
     }
 
     private IContributionItem getDeleteItem( )
     {
         return getItem( ActionFactory.DELETE.getId( ),
-                ActionFactory.DELETE.getCommandId( ),
-                ISharedImages.IMG_TOOL_DELETE,
-                ISharedImages.IMG_TOOL_DELETE_DISABLED,
-                WorkbenchMessages.Workbench_delete,
-                WorkbenchMessages.Workbench_deleteToolTip,
-                IWorkbenchHelpContextIds.DELETE_RETARGET_ACTION );
+            ActionFactory.DELETE.getCommandId( ),
+            ISharedImages.IMG_TOOL_DELETE,
+            ISharedImages.IMG_TOOL_DELETE_DISABLED,
+            WorkbenchMessages.Workbench_delete,
+            WorkbenchMessages.Workbench_deleteToolTip,
+            IWorkbenchHelpContextIds.DELETE_RETARGET_ACTION );
     }
 
     private IContributionItem getRevertItem( )
     {
         return getItem( ActionFactory.REVERT.getId( ),
-                ActionFactory.REVERT.getCommandId( ), null, null,
-                WorkbenchMessages.Workbench_revert,
-                WorkbenchMessages.Workbench_revertToolTip, null );
+            ActionFactory.REVERT.getCommandId( ), null, null,
+            WorkbenchMessages.Workbench_revert,
+            WorkbenchMessages.Workbench_revertToolTip, null );
     }
 
     private IContributionItem getRefreshItem( )
     {
         return getItem( ActionFactory.REFRESH.getId( ),
-                ActionFactory.REFRESH.getCommandId( ), null, null,
-                WorkbenchMessages.Workbench_refresh,
-                WorkbenchMessages.Workbench_refreshToolTip, null );
+            ActionFactory.REFRESH.getCommandId( ), null, null,
+            WorkbenchMessages.Workbench_refresh,
+            WorkbenchMessages.Workbench_refreshToolTip, null );
     }
 
     private IContributionItem getPropertiesItem( )
     {
         return getItem( ActionFactory.PROPERTIES.getId( ),
-                ActionFactory.PROPERTIES.getCommandId( ), null, null,
-                WorkbenchMessages.Workbench_properties,
-                WorkbenchMessages.Workbench_propertiesToolTip, null );
+            ActionFactory.PROPERTIES.getCommandId( ), null, null,
+            WorkbenchMessages.Workbench_properties,
+            WorkbenchMessages.Workbench_propertiesToolTip, null );
     }
 
     private IContributionItem getMoveItem( )
     {
         return getItem( ActionFactory.MOVE.getId( ),
-                ActionFactory.MOVE.getCommandId( ), null, null,
-                WorkbenchMessages.Workbench_move,
-                WorkbenchMessages.Workbench_moveToolTip, null );
+            ActionFactory.MOVE.getCommandId( ), null, null,
+            WorkbenchMessages.Workbench_move,
+            WorkbenchMessages.Workbench_moveToolTip, null );
     }
 
     private IContributionItem getRenameItem( )
     {
         return getItem( ActionFactory.RENAME.getId( ),
-                ActionFactory.RENAME.getCommandId( ), null, null,
-                WorkbenchMessages.Workbench_rename,
-                WorkbenchMessages.Workbench_renameToolTip, null );
+            ActionFactory.RENAME.getCommandId( ), null, null,
+            WorkbenchMessages.Workbench_rename,
+            WorkbenchMessages.Workbench_renameToolTip, null );
     }
 
     private IContributionItem getOpenProjectItem( )
     {
         return getItem( IDEActionFactory.OPEN_PROJECT.getId( ),
-                IDEActionFactory.OPEN_PROJECT.getCommandId( ), null, null,
-                IDEWorkbenchMessages.OpenResourceAction_text,
-                IDEWorkbenchMessages.OpenResourceAction_toolTip, null );
+            IDEActionFactory.OPEN_PROJECT.getCommandId( ), null, null,
+            IDEWorkbenchMessages.OpenResourceAction_text,
+            IDEWorkbenchMessages.OpenResourceAction_toolTip, null );
     }
 
     private IContributionItem getCloseProjectItem( )
     {
         return getItem( IDEActionFactory.CLOSE_PROJECT.getId( ),
-                IDEActionFactory.CLOSE_PROJECT.getCommandId( ), null, null,
-                IDEWorkbenchMessages.CloseResourceAction_text,
-                IDEWorkbenchMessages.CloseResourceAction_text, null );
+            IDEActionFactory.CLOSE_PROJECT.getCommandId( ), null, null,
+            IDEWorkbenchMessages.CloseResourceAction_text,
+            IDEWorkbenchMessages.CloseResourceAction_text, null );
     }
 
     private IContributionItem getItem( String actionId, String commandId,
-            String image, String disabledImage, String label, String tooltip,
-            String helpContextId )
+        String image, String disabledImage, String label, String tooltip,
+        String helpContextId )
     {
         ISharedImages sharedImages = getWindow( ).getWorkbench( )
-                .getSharedImages( );
+            .getSharedImages( );
 
         IActionCommandMappingService acms = ( IActionCommandMappingService ) getWindow( )
-                .getService( IActionCommandMappingService.class );
+            .getService( IActionCommandMappingService.class );
         acms.map( actionId, commandId );
 
         CommandContributionItemParameter commandParm = new CommandContributionItemParameter(
-                getWindow( ), actionId, commandId, null,
-                sharedImages.getImageDescriptor( image ),
-                sharedImages.getImageDescriptor( disabledImage ), null, label,
-                null, tooltip, CommandContributionItem.STYLE_PUSH, null, false );
+            getWindow( ), actionId, commandId, null,
+            sharedImages.getImageDescriptor( image ),
+            sharedImages.getImageDescriptor( disabledImage ), null, label,
+            null, tooltip, CommandContributionItem.STYLE_PUSH, null, false );
         return new CommandContributionItem( commandParm );
     }
 }

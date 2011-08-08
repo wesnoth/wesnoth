@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ public class WMLProposalComparator implements ICompletionProposalComparator
     public int compare( ICompletionProposal arg0, ICompletionProposal arg1 )
     {
         if( arg0 instanceof ConfigurableCompletionProposal
-                && arg1 instanceof ConfigurableCompletionProposal ) {
+            && arg1 instanceof ConfigurableCompletionProposal ) {
             ConfigurableCompletionProposal tmp0 = ( ConfigurableCompletionProposal ) arg0;
             ConfigurableCompletionProposal tmp1 = ( ConfigurableCompletionProposal ) arg1;
             return tmp0.compareTo( tmp1 );

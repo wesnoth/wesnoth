@@ -60,8 +60,8 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
     private SchemaParser getSchema( EObject object )
     {
         return SchemaParser.getInstance( WesnothInstallsUtils
-                .getInstallNameForResource( ResourceUtils
-                        .getWorkspaceResource( object.eResource( ) ) ) );
+            .getInstallNameForResource( ResourceUtils
+                .getWorkspaceResource( object.eResource( ) ) ) );
     }
 
     private boolean isValidationEnabled( )
@@ -78,7 +78,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 
         if( ! tag.getName( ).equals( tag.getEndName( ) ) ) {
             warning( Messages.WMLJavaValidator_0,
-                    WmlPackage.Literals.WML_TAG__END_NAME );
+                WmlPackage.Literals.WML_TAG__END_NAME );
         }
     }
 
@@ -92,7 +92,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
         ICompositeNode node = NodeModelUtils.getNode( tag );
         if( node != null ) {
             ILeafNode parentNode = NodeModelUtils.findLeafNodeAtOffset(
-                    node.getParent( ), node.getParent( ).getOffset( ) + 2 );
+                node.getParent( ), node.getParent( ).getOffset( ) + 2 );
 
             boolean found = false;
             String searchName = parentNode.getText( );
@@ -112,14 +112,14 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
                 }
                 if( found == false ) {
                     warning( Messages.WMLJavaValidator_1,
-                            WmlPackage.Literals.WML_EXPRESSION__NAME );
+                        WmlPackage.Literals.WML_EXPRESSION__NAME );
                 }
             }
         }
     }
 
     private void checkTagsCardinalities( SchemaParser schema,
-            Iterable< WMLTag > tags )
+        Iterable< WMLTag > tags )
     {
         Map< String, Integer > ocurrences = new HashMap< String, Integer >( );
 
@@ -141,14 +141,14 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 
             if( schemaTag.getAllowedCount( ) < entry.getValue( ) ) {
                 warning( "Tag " + entry.getKey( ) + " cannot appear more"
-                        + "than " + schemaTag.getAllowedCount( ) + " times. ",
-                        WmlPackage.Literals.WML_EXPRESSION__NAME );
+                    + "than " + schemaTag.getAllowedCount( ) + " times. ",
+                    WmlPackage.Literals.WML_EXPRESSION__NAME );
             }
         }
     }
 
     private void checkKeysCardinalities( WMLTag parentTag,
-            Iterable< WMLKey > keys )
+        Iterable< WMLKey > keys )
     {
         Map< String, Integer > ocurrences = new HashMap< String, Integer >( );
 
@@ -163,7 +163,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 
         for( Entry< String, Integer > entry: ocurrences.entrySet( ) ) {
             WMLKey schemaKey = WMLUtils
-                    .getKeyByName( parentTag, entry.getKey( ) );
+                .getKeyByName( parentTag, entry.getKey( ) );
 
             if( schemaKey == null ) {
                 continue;
@@ -171,11 +171,11 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 
             if( schemaKey.getAllowedCount( ) < entry.getValue( ) ) {
                 warning(
-                        "Key " + entry.getKey( ) + ", in tag "
-                                + parentTag.getName( )
-                                + "cannot appear more than "
-                                + schemaKey.getAllowedCount( ) + " times. ",
-                        WmlPackage.Literals.WML_EXPRESSION__NAME );
+                    "Key " + entry.getKey( ) + ", in tag "
+                        + parentTag.getName( )
+                        + "cannot appear more than "
+                        + schemaKey.getAllowedCount( ) + " times. ",
+                    WmlPackage.Literals.WML_EXPRESSION__NAME );
             }
         }
     }
@@ -188,7 +188,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
         }
 
         checkTagsCardinalities( getSchema( root ),
-                Iterables.filter( root.getExpressions( ), WMLTag.class ) );
+            Iterables.filter( root.getExpressions( ), WMLTag.class ) );
     }
 
     @Check( CheckType.NORMAL )
@@ -200,10 +200,10 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 
         SchemaParser schema = getSchema( tag );
         checkTagsCardinalities( schema,
-                Iterables.filter( tag.getExpressions( ), WMLTag.class ) );
+            Iterables.filter( tag.getExpressions( ), WMLTag.class ) );
 
         checkKeysCardinalities( tag,
-                Iterables.filter( tag.getExpressions( ), WMLKey.class ) );
+            Iterables.filter( tag.getExpressions( ), WMLKey.class ) );
     }
 
     @Check( CheckType.NORMAL )
@@ -214,12 +214,12 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
         }
 
         IResource resource = ResourceUtils.getWorkspaceResource( call
-                .eResource( ) );
+            .eResource( ) );
         ProjectCache cache = ProjectUtils.getCacheForProject( resource
-                .getProject( ) );
+            .getProject( ) );
         if( ! cache.getDefines( ).containsKey( call.getName( ) ) ) {
             warning( "Undefined macro: " + call.getName( ),
-                    WmlPackage.Literals.WML_EXPRESSION__NAME );
+                WmlPackage.Literals.WML_EXPRESSION__NAME );
         }
     }
 }

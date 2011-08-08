@@ -42,8 +42,8 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
     private int                                    indent_;
 
     public WizardGeneratorPageTag( String tagName,
-            java.util.List< WMLTag > tags, int startIndex, int endIndex,
-            int indent )
+        java.util.List< WMLTag > tags, int startIndex, int endIndex,
+        int indent )
     {
         super( "wizardPageTag" + startIndex ); //$NON-NLS-1$
         setTitle( tagName + Messages.WizardGeneratorPageTag_1 );
@@ -74,20 +74,20 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
 
             Group tagGroup = new Group( container_, SWT.NONE );
             tagGroup.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false,
-                    false, 1, 1 ) );
+                false, 1, 1 ) );
             tagGroup.setText( "[" + tag.getName( ) + "]" ); //$NON-NLS-1$ //$NON-NLS-2$
             tagGroup.setLayout( new GridLayout( 2, false ) );
 
             List list = new List( tagGroup, SWT.BORDER );
             GridData gd_list = new GridData( SWT.FILL, SWT.CENTER, false,
-                    false, 1, 2 );
+                false, 1, 2 );
             gd_list.heightHint = 81;
             gd_list.widthHint = 150;
             list.setLayoutData( gd_list );
 
             Button btnAdd = new Button( tagGroup, SWT.NONE );
             GridData gd_btnAdd = new GridData( SWT.FILL, SWT.FILL, false,
-                    false, 1, 1 );
+                false, 1, 1 );
             gd_btnAdd.heightHint = 40;
             btnAdd.setLayoutData( gd_btnAdd );
             btnAdd.setText( Messages.WizardGeneratorPageTag_4 );
@@ -100,13 +100,13 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
                         return;
                     }
                     addNewItem( ( List ) ( ( Button ) e.getSource( ) )
-                            .getData( "list" ), tag ); //$NON-NLS-1$
+                        .getData( "list" ), tag ); //$NON-NLS-1$
                 }
             } );
 
             Button btnRemove = new Button( tagGroup, SWT.NONE );
             btnRemove.setLayoutData( new GridData( SWT.FILL, SWT.FILL, false,
-                    false, 1, 1 ) );
+                false, 1, 1 ) );
             btnRemove.setText( Messages.WizardGeneratorPageTag_7 );
             btnRemove.setData( "list", list ); //$NON-NLS-1$
             btnRemove.addSelectionListener( new SelectionAdapter( ) {
@@ -117,7 +117,7 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
                         return;
                     }
                     removeItem( ( List ) ( ( Button ) e.getSource( ) )
-                            .getData( "list" ), tag.getName( ) ); //$NON-NLS-1$
+                        .getData( "list" ), tag.getName( ) ); //$NON-NLS-1$
                 }
             } );
 
@@ -131,18 +131,18 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
     private void addNewItem( List targetList, WMLTag tag )
     {
         if( ( tag.is_Optional( ) || tag.is_Required( ) )
-                && targetList.getItemCount( ) == 1 ) {
+            && targetList.getItemCount( ) == 1 ) {
             GUIUtils.showWarnMessageBox( Messages.WizardGeneratorPageTag_12 );
             return;
         }
 
         WizardGenerator wizard = new WizardGenerator(
-                Messages.WizardGeneratorPageTag_13 + tag.getName( ),
-                tag.getName( ), ( byte ) ( indent_ + 1 ) );
+            Messages.WizardGeneratorPageTag_13 + tag.getName( ),
+            tag.getName( ), ( byte ) ( indent_ + 1 ) );
         WizardUtils.launchWizard( wizard, getShell( ), null );
         if( wizard.isFinished( ) ) {
             targetList
-                    .add( wizard.getObjectName( ) + targetList.getItemCount( ) );
+                .add( wizard.getObjectName( ) + targetList.getItemCount( ) );
             content_.get( tag.getName( ) ).add( wizard.getData( ).toString( ) );
         }
         updatePageIsComplete( );
@@ -151,7 +151,7 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
     private void removeItem( List targetList, String tagName )
     {
         if( targetList.getSelectionCount( ) == 0
-                || targetList.getItemCount( ) == 0 ) {
+            || targetList.getItemCount( ) == 0 ) {
             GUIUtils.showWarnMessageBox( Messages.WizardGeneratorPageTag_14 );
             return;
         }
@@ -173,7 +173,7 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
             WMLTag tag = ( WMLTag ) control.getData( "tag" ); //$NON-NLS-1$
             if( cnt == 0 && tag.is_Required( ) ) {
                 setErrorMessage( String.format(
-                        Messages.WizardGeneratorPageTag_0, tag.getName( ) ) );
+                    Messages.WizardGeneratorPageTag_0, tag.getName( ) ) );
                 return;
             }
         }
@@ -186,9 +186,12 @@ public class WizardGeneratorPageTag extends WizardPageTemplate
     {
         StringBuilder result = new StringBuilder( );
         for( Entry< String, java.util.List< String >> tag: content_.entrySet( ) ) {
-            result.append( StringUtils.multiples( "\t", indent_ ) + "[" + tag.getKey( ) + "]\n" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            result.append( ListUtils.concatenateList( tag.getValue( ), "\n\t" ) ); //$NON-NLS-1$
-            result.append( StringUtils.multiples( "\t", indent_ ) + "[/" + tag.getKey( ) + "]\n" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            result
+                .append( StringUtils.multiples( "\t", indent_ ) + "[" + tag.getKey( ) + "]\n" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            result
+                .append( ListUtils.concatenateList( tag.getValue( ), "\n\t" ) ); //$NON-NLS-1$
+            result
+                .append( StringUtils.multiples( "\t", indent_ ) + "[/" + tag.getKey( ) + "]\n" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result.toString( );
     }

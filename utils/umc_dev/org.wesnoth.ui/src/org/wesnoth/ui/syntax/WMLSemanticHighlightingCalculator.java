@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,11 +33,11 @@ import org.wesnoth.wml.WMLTextdomain;
 import org.wesnoth.wml.WmlPackage;
 
 public class WMLSemanticHighlightingCalculator implements
-        ISemanticHighlightingCalculator
+    ISemanticHighlightingCalculator
 {
     @Override
     public void provideHighlightingFor( XtextResource resource,
-            IHighlightedPositionAcceptor acceptor )
+        IHighlightedPositionAcceptor acceptor )
     {
         if( resource == null ) {
             return;
@@ -51,56 +51,56 @@ public class WMLSemanticHighlightingCalculator implements
 
             if( current instanceof WMLTag ) {
                 toColor.add( Pair.create(
-                        getFirstFeatureNode( current,
-                                WmlPackage.Literals.WML_EXPRESSION__NAME ),
-                        WMLHighlightingConfiguration.RULE_WML_TAG ) );
+                    getFirstFeatureNode( current,
+                        WmlPackage.Literals.WML_EXPRESSION__NAME ),
+                    WMLHighlightingConfiguration.RULE_WML_TAG ) );
 
                 toColor.add( Pair.create(
-                        getFirstFeatureNode( current,
-                                WmlPackage.Literals.WML_TAG__END_NAME ),
-                        WMLHighlightingConfiguration.RULE_WML_TAG ) );
+                    getFirstFeatureNode( current,
+                        WmlPackage.Literals.WML_TAG__END_NAME ),
+                    WMLHighlightingConfiguration.RULE_WML_TAG ) );
             }
             else if( current instanceof WMLKey ) {
                 toColor.add( Pair.create(
-                        getFirstFeatureNode( current,
-                                WmlPackage.Literals.WML_EXPRESSION__NAME ),
-                        WMLHighlightingConfiguration.RULE_WML_KEY ) );
+                    getFirstFeatureNode( current,
+                        WmlPackage.Literals.WML_EXPRESSION__NAME ),
+                    WMLHighlightingConfiguration.RULE_WML_KEY ) );
             }
             else if( current instanceof WMLMacroCall ) {
                 toColor.add( Pair.create(
-                        getFirstFeatureNode( current,
-                                WmlPackage.Literals.WML_EXPRESSION__NAME ),
-                        WMLHighlightingConfiguration.RULE_WML_MACRO_CALL ) );
+                    getFirstFeatureNode( current,
+                        WmlPackage.Literals.WML_EXPRESSION__NAME ),
+                    WMLHighlightingConfiguration.RULE_WML_MACRO_CALL ) );
             }
             else if( current instanceof WMLTextdomain ) {
                 toColor.add( Pair.create(
-                        getFirstFeatureNode( current,
-                                WmlPackage.Literals.WML_EXPRESSION__NAME ),
-                        WMLHighlightingConfiguration.RULE_WML_TEXTDOMAIN ) );
+                    getFirstFeatureNode( current,
+                        WmlPackage.Literals.WML_EXPRESSION__NAME ),
+                    WMLHighlightingConfiguration.RULE_WML_TEXTDOMAIN ) );
             }
             else if( current instanceof WMLPreprocIF ) {
                 toColor.add( Pair.create(
-                        getFirstFeatureNode( current,
-                                WmlPackage.Literals.WML_EXPRESSION__NAME ),
-                        WMLHighlightingConfiguration.RULE_WML_IF ) );
+                    getFirstFeatureNode( current,
+                        WmlPackage.Literals.WML_EXPRESSION__NAME ),
+                    WMLHighlightingConfiguration.RULE_WML_IF ) );
 
                 toColor.add( Pair.create(
-                        getFirstFeatureNode( current,
-                                WmlPackage.Literals.WML_EXPRESSION__NAME ),
-                        WMLHighlightingConfiguration.RULE_WML_IF ) );
+                    getFirstFeatureNode( current,
+                        WmlPackage.Literals.WML_EXPRESSION__NAME ),
+                    WMLHighlightingConfiguration.RULE_WML_IF ) );
             }
             else if( current instanceof WMLMacroDefine ) {
                 toColor.add( Pair.create(
-                        getFirstFeatureNode( current,
-                                WmlPackage.Literals.WML_EXPRESSION__NAME ),
-                        WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE ) );
+                    getFirstFeatureNode( current,
+                        WmlPackage.Literals.WML_EXPRESSION__NAME ),
+                    WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE ) );
 
                 toColor.add( Pair
-                        .create(
-                                getFirstFeatureNode(
-                                        current,
-                                        WmlPackage.Literals.WML_MACRO_DEFINE__END_NAME ),
-                                WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE ) );
+                    .create(
+                        getFirstFeatureNode(
+                            current,
+                            WmlPackage.Literals.WML_MACRO_DEFINE__END_NAME ),
+                        WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE ) );
             }
 
             // check if we have any information specific information for
@@ -130,7 +130,7 @@ public class WMLSemanticHighlightingCalculator implements
     /**
      * Copied from org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.
      * SemanticHighlightingCalculator
-     * 
+     *
      * @param node
      *        The node to highlight
      * @param id
@@ -139,7 +139,7 @@ public class WMLSemanticHighlightingCalculator implements
      *        The acceptor to add the node to
      */
     private void highlightNode( INode node, String id,
-            IHighlightedPositionAcceptor acceptor )
+        IHighlightedPositionAcceptor acceptor )
     {
         if( node == null ) {
             return;
@@ -151,7 +151,7 @@ public class WMLSemanticHighlightingCalculator implements
             for( ILeafNode leaf: node.getLeafNodes( ) ) {
                 if( ! leaf.isHidden( ) ) {
                     acceptor.addPosition( leaf.getOffset( ), leaf.getLength( ),
-                            id );
+                        id );
                 }
             }
         }
@@ -160,7 +160,7 @@ public class WMLSemanticHighlightingCalculator implements
     /**
      * Copied from org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.
      * SemanticHighlightingCalculator
-     * 
+     *
      * @param semantic
      *        The object to search in
      * @param feature
@@ -168,13 +168,13 @@ public class WMLSemanticHighlightingCalculator implements
      * @return Null if there is no feature, or an {@link INode} node
      */
     public INode getFirstFeatureNode( EObject semantic,
-            EStructuralFeature feature )
+        EStructuralFeature feature )
     {
         if( feature == null ) {
             return NodeModelUtils.findActualNodeFor( semantic );
         }
         List< INode > nodes = NodeModelUtils.findNodesForFeature( semantic,
-                feature );
+            feature );
         if( ! nodes.isEmpty( ) ) {
             return nodes.get( 0 );
         }

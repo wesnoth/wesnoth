@@ -19,25 +19,26 @@ public class Constants
 {
     /** Plugin related */
     public static final String  PLUGIN_FULL_PATH         = Constants.class
-                                                                 .getProtectionDomain( )
-                                                                 .getCodeSource( )
-                                                                 .getLocation( )
-                                                                 .getPath( )
-                                                                 + "/";                                    //$NON-NLS-1$
+                                                             .getProtectionDomain( )
+                                                             .getCodeSource( )
+                                                             .getLocation( )
+                                                             .getPath( )
+                                                             + "/";                                        //$NON-NLS-1$
     public static final String  PLUGIN_ID                = "org.wesnoth";                                  //$NON-NLS-1$
 
-    public static final String  MACHINE_OS               = System.getProperty(
+    public static final String  MACHINE_OS               = System
+                                                             .getProperty(
                                                                  "os.name" ).toLowerCase( Locale.ENGLISH ); //$NON-NLS-1$
     /**
      * The boolean value whether this machine is running windows or not
      */
     public static final boolean IS_WINDOWS_MACHINE       = MACHINE_OS
-                                                                 .contains( "windows" );                   //$NON-NLS-1$
+                                                             .contains( "windows" );                       //$NON-NLS-1$
     /**
      * The boolean value whether this machine is running Machintosh or not
      */
     public static final boolean IS_MAC_MACHINE           = MACHINE_OS
-                                                                 .contains( "mac" );                       //$NON-NLS-1$
+                                                             .contains( "mac" );                           //$NON-NLS-1$
 
     /** Preferences Constants **/
     public static final String  P_WESNOTH_EXEC_PATH      = "wesnoth_exec_path";                            //$NON-NLS-1$

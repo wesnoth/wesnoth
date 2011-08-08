@@ -64,7 +64,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
     @SuppressWarnings( "rawtypes" )
     @Override
     protected IProject[] build( int kind, Map args, IProgressMonitor monitor )
-            throws CoreException
+        throws CoreException
     {
         project_ = getProject( );
         if( WesnothInstallsUtils.setupInstallForResource( project_ ) == false ) {
@@ -76,13 +76,13 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         }
 
         Logger.getInstance( ).log(
-                "Building project " + getProject( ).getName( ) + " ..." ); //$NON-NLS-1$
+            "Building project " + getProject( ).getName( ) + " ..." ); //$NON-NLS-1$
         monitor.beginTask(
-                String.format( Messages.WesnothProjectBuilder_1,
-                        project_.getName( ) ), 100 );
+            String.format( Messages.WesnothProjectBuilder_1,
+                project_.getName( ) ), 100 );
 
         String installName = WesnothInstallsUtils
-                .getInstallNameForResource( project_ );
+            .getInstallNameForResource( project_ );
         Paths paths = Preferences.getPaths( installName );
 
         monitor.subTask( Messages.WesnothProjectBuilder_3 );
@@ -133,7 +133,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         monitor.done( );
 
         Logger.getInstance( ).log(
-                "Done building project " + getProject( ).getName( ) );
+            "Done building project " + getProject( ).getName( ) );
         return null;
     }
 
@@ -146,12 +146,12 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
      * @throws CoreException
      */
     protected boolean fullBuild( final IProgressMonitor monitor )
-            throws CoreException
+        throws CoreException
     {
         // clean all project cache
         projectCache_.clear( );
         PreprocessorUtils.getInstance( ).clearTimestampsForPath(
-                project_.getLocation( ).toOSString( ) );
+            project_.getLocation( ).toOSString( ) );
 
         projectCache_.getDependencyList( ).createDependencyList( true );
         boolean foundCfg = false;
@@ -159,7 +159,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         DependencyListNode node = null;
 
         node = projectCache_.getDependencyList( ).getNode(
-                DependencyListBuilder.ROOT_NODE_KEY );
+            DependencyListBuilder.ROOT_NODE_KEY );
 
         if( node != null ) {
 
@@ -186,7 +186,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
      * @throws CoreException
      */
     protected boolean incrementalBuild( IResourceDelta delta,
-            IProgressMonitor monitor ) throws CoreException
+        IProgressMonitor monitor ) throws CoreException
     {
         boolean foundCfg = false;
 
@@ -212,15 +212,15 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                 if( deltaKind == IResourceDelta.REMOVED ) {
                     projectCache_.getDependencyList( ).removeNode( file );
                     projectCache_.getWMLConfigs( ).remove(
-                            file.getProjectRelativePath( ).toString( ) );
+                        file.getProjectRelativePath( ).toString( ) );
 
                 }
                 else if( deltaKind == IResourceDelta.ADDED ) {
                     DependencyListNode newNode = list.addNode( file );
                     if( newNode == null ) {
                         Logger.getInstance( ).logError(
-                                "Couldn't create a new" + "PDL node for file: "
-                                        + file.getFullPath( ).toString( ) );
+                            "Couldn't create a new" + "PDL node for file: "
+                                + file.getFullPath( ).toString( ) );
                     }
                     else {
                         nodesToProcess.add( newNode );
@@ -230,9 +230,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                     DependencyListNode node = list.getNode( file );
                     if( node == null ) {
                         Logger.getInstance( ).logError(
-                                "Couldn't find file "
-                                        + file.getFullPath( ).toString( )
-                                        + " in PDL!." );
+                            "Couldn't find file "
+                                + file.getFullPath( ).toString( )
+                                + " in PDL!." );
                     }
                     else {
                         nodesToProcess.add( node );
@@ -241,39 +241,39 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                 }
                 else {
                     Logger.getInstance( ).log(
-                            "unknown delta kind: " + deltaKind );
+                        "unknown delta kind: " + deltaKind );
                 }
             }
 
             // skip core library files
             if( resource instanceof IContainer
-                    && WesnothProjectsExplorer.CORE_LIBRARY_NAME
-                            .equals( resource.getName( ) ) ) {
+                && WesnothProjectsExplorer.CORE_LIBRARY_NAME
+                    .equals( resource.getName( ) ) ) {
                 continue;
             }
 
             deltasQueue
-                    .addAll( Arrays.asList( deltaItem.getAffectedChildren( ) ) );
+                .addAll( Arrays.asList( deltaItem.getAffectedChildren( ) ) );
         }
 
         // sort the list by index (ascending)
         Collections.sort( nodesToProcess,
-                new Comparator< DependencyListNode >( ) {
+            new Comparator< DependencyListNode >( ) {
 
-                    @Override
-                    public int compare( DependencyListNode o1,
-                            DependencyListNode o2 )
-                    {
-                        if( o1.getIndex( ) < o2.getIndex( ) ) {
-                            return - 1;
-                        }
-                        else if( o1.getIndex( ) == o2.getIndex( ) ) {
-                            return 0;
-                        }
-
-                        return 1;
+                @Override
+                public int compare( DependencyListNode o1,
+                    DependencyListNode o2 )
+                {
+                    if( o1.getIndex( ) < o2.getIndex( ) ) {
+                        return - 1;
                     }
-                } );
+                    else if( o1.getIndex( ) == o2.getIndex( ) ) {
+                        return 0;
+                    }
+
+                    return 1;
+                }
+            } );
 
         foundCfg = ( ! nodesToProcess.isEmpty( ) );
         // process nodes
@@ -297,7 +297,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
     private boolean runAntJob( Paths paths, IProgressMonitor monitor )
     {
         String buildXMLPath = project_.getLocation( ).toOSString( )
-                + "/build.xml";
+            + "/build.xml";
         // check for 'build.xml' existance
         if( new File( buildXMLPath ).exists( ) == true ) {
             // run the ant job to copy the whole project
@@ -313,7 +313,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
             if( result == null ) {
                 Logger.getInstance( ).log( "error running the ant job", //$NON-NLS-1$
-                        Messages.WesnothProjectBuilder_13 );
+                    Messages.WesnothProjectBuilder_13 );
                 return false;
             }
         }
@@ -323,7 +323,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
     }
 
     protected boolean checkResource( IResource resource,
-            IProgressMonitor monitor )
+        IProgressMonitor monitor )
     {
         monitor.worked( 5 );
         if( resource.exists( ) == false || monitor.isCanceled( ) ) {
@@ -335,13 +335,13 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
             IFile file = ( IFile ) resource;
             String filePath = file.getProjectRelativePath( ).toString( );
             String macrosFilePath = PreprocessorUtils.getInstance( )
-                    .getMacrosLocation( file );
+                .getMacrosLocation( file );
 
             Logger.getInstance( ).log( "Resource: " + filePath ); //$NON-NLS-1$
 
             try {
                 monitor.subTask( String.format(
-                        Messages.WesnothProjectBuilder_19, filePath ) );
+                    Messages.WesnothProjectBuilder_19, filePath ) );
 
                 List< String > defines = new ArrayList< String >( );
                 // parse the core only if we don't have any macros file
@@ -351,17 +351,17 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
                 // we use a single _MACROS_.cfg file for each project
                 PreprocessorUtils.getInstance( ).preprocessFile( file,
-                        macrosFilePath, defines );
+                    macrosFilePath, defines );
                 monitor.worked( 5 );
 
                 // process the AST ( Abstract Syntax Tree ) to get info for the
                 // file
                 monitor.subTask( String.format(
-                        Messages.WesnothProjectBuilder_22, filePath ) );
+                    Messages.WesnothProjectBuilder_22, filePath ) );
 
                 WMLConfig config = projectCache_.getWMLConfig( filePath );
                 SimpleWMLParser parser = new SimpleWMLParser( file, config,
-                        projectCache_ );
+                    projectCache_ );
                 parser.parse( );
 
                 monitor.worked( 10 );
@@ -375,17 +375,17 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
     @SuppressWarnings( "unused" )
     private void runWMLLint( String installName, IProgressMonitor monitor,
-            IFile file )
+        IFile file )
     {
         monitor.subTask( String.format( "Running WMLlint on file %s ...",
-                file.getName( ) ) );
+            file.getName( ) ) );
         ExternalToolInvoker tool = WMLTools.runWMLLint( installName, file
-                .getLocation( ).toOSString( ), false, false );
+            .getLocation( ).toOSString( ), false, false );
         tool.waitForTool( );
 
         try {
             file.deleteMarkers( Constants.MARKER_WMLLINT, false,
-                    IResource.DEPTH_INFINITE );
+                IResource.DEPTH_INFINITE );
         } catch( CoreException e ) {
             Logger.getInstance( ).logException( e );
         }
@@ -407,17 +407,17 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
      */
     @SuppressWarnings( "unused" )
     private void runWMLScope( String installName, IProgressMonitor monitor,
-            IFile file )
+        IFile file )
     {
         monitor.subTask( String.format( "Running WMLScope on file %s ...",
-                file.getName( ) ) );
+            file.getName( ) ) );
         ExternalToolInvoker tool = WMLTools.runWMLScope( installName, file
-                .getLocation( ).toOSString( ), false );
+            .getLocation( ).toOSString( ), false );
         tool.waitForTool( );
 
         try {
             file.deleteMarkers( Constants.MARKER_WMLSCOPE, false,
-                    IResource.DEPTH_INFINITE );
+                IResource.DEPTH_INFINITE );
         } catch( CoreException e ) {
             Logger.getInstance( ).logException( e );
         }

@@ -53,17 +53,17 @@ public class ScenarioPage2 extends WizardPageTemplate
         chkIsMultiplayerScenario_.setText( Messages.ScenarioPage2_3 );
         new Label( container, SWT.NONE );
         chkIsMultiplayerScenario_
-                .addSelectionListener( new SelectionAdapter( ) {
-                    @Override
-                    public void widgetSelected( SelectionEvent e )
-                    {
-                        if( ! ( e.getSource( ) instanceof Button ) ) {
-                            return;
-                        }
-                        setMPSettings( ( ( Button ) e.getSource( ) )
-                                .getSelection( ) );
+            .addSelectionListener( new SelectionAdapter( ) {
+                @Override
+                public void widgetSelected( SelectionEvent e )
+                {
+                    if( ! ( e.getSource( ) instanceof Button ) ) {
+                        return;
                     }
-                } );
+                    setMPSettings( ( ( Button ) e.getSource( ) )
+                        .getSelection( ) );
+                }
+            } );
 
         chkAllowNewGame_ = new Button( container, SWT.CHECK );
         chkAllowNewGame_.setSelection( true );
@@ -79,7 +79,7 @@ public class ScenarioPage2 extends WizardPageTemplate
     public String getAllowNewGame( )
     {
         return isMultiplayerScenario( ) ? String.valueOf( chkAllowNewGame_
-                .getSelection( ) ): ""; //$NON-NLS-1$
+            .getSelection( ) ): ""; //$NON-NLS-1$
     }
 
     public boolean isMultiplayerScenario( )
