@@ -4,7 +4,6 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.dialogs.IDialogPage;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
@@ -52,7 +51,7 @@ public class NewConfigFilePage0 extends WizardPage
     }
 
     /**
-     * @see IDialogPage#createControl(Composite)
+     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(Composite)
      */
     @Override
     public void createControl( Composite parent )
