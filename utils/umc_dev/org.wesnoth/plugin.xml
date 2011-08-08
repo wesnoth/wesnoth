@@ -586,12 +586,6 @@
             name="setupWorkspace">
       </command>
       <command
-            defaultHandler="org.wesnoth.handlers.ReloadFilesHandler"
-            description="Reloads all plugin related files"
-            id="org.wesnoth.commands.reloadFiles"
-            name="reloadFiles">
-      </command>
-      <command
             defaultHandler="org.wesnoth.handlers.TestHandler"
             id="org.wesnoth.commands.test"
             name="test command">
@@ -642,11 +636,6 @@
             <command
                   commandId="org.wesnoth.commands.setupWorkspace"
                   label="Setup Workspace"
-                  style="push">
-            </command>
-            <command
-                  commandId="org.wesnoth.commands.reloadFiles"
-                  label="Reload cache"
                   style="push">
             </command>
             <command

@@ -119,8 +119,6 @@ public class Define
                         new DefinesSAXHandler( ) );
 
         if( handler != null ) {
-            Logger.getInstance( )
-                    .log( "loaded " + handler.getDefines( ).size( ) + " defines for file:" + file ); //$NON-NLS-1$ //$NON-NLS-2$
             return handler.getDefines( );
         }
 
