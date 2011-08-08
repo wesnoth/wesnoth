@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,7 +45,7 @@ public class ProjectUtils
 
     /**
      * Gets the properties map for this project.
-     *
+     * 
      * @return A map with properties of the project
      */
     public static Map< String, String > getPropertiesForProject(
@@ -56,7 +56,7 @@ public class ProjectUtils
 
     /**
      * Gets the cache for the specified project
-     *
+     * 
      * @param project
      * @return
      */
@@ -75,13 +75,13 @@ public class ProjectUtils
     /**
      * Creates a new wesnoth project with the specified name
      * and on the specified location on disk
-     *
+     * 
      * @param name
-     *            The name of the new project
+     *        The name of the new project
      * @param location
-     *            The location of the new project
+     *        The location of the new project
      * @param installName
-     *            The name of the install this project belongs to
+     *        The name of the install this project belongs to
      * @return A project handle
      * @throws CoreException
      */
@@ -109,15 +109,15 @@ public class ProjectUtils
      * Creates a project that has associated the wesnoth nature using
      * the specified handle. If the project is created there will be
      * no modifications done by this method.
-     *
+     * 
      * @param handle
-     *            the handle to the project
+     *        the handle to the project
      * @param description
-     *            the default description used when the project is created
+     *        the default description used when the project is created
      * @param installName
-     *            The name of the install this project belongs to
+     *        The name of the install this project belongs to
      * @param monitor
-     *            the monitor will do a 30 worked amount in the method
+     *        the monitor will do a 30 worked amount in the method
      * @throws CoreException
      */
     public static int createWesnothProject( IProject handle,
@@ -201,7 +201,10 @@ public class ProjectUtils
             monitor.worked( 10 );
 
             // save the install name
-            getCacheForProject( handle ).setInstallName( installName );
+            ProjectCache cache = new ProjectCache( handle );
+            cache.setInstallName( installName );
+            cache.loadCache( );
+            projectCache_.put( handle, cache );
         } catch( CoreException e ) {
             Logger.getInstance( ).logException( e );
             return 1;
