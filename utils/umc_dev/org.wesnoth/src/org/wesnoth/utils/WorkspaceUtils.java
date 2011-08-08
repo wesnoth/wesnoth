@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected project or or null if none selected
-     *
+     * 
      * @return
      */
     public static IProject getSelectedProject( )
@@ -61,9 +61,9 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected project or null if none selected
-     *
+     * 
      * @param window
-     *            The workbench windows from where to get the current selection
+     *        The workbench windows from where to get the current selection
      * @return
      */
     public static IProject getSelectedProject( IWorkbenchWindow window )
@@ -80,7 +80,7 @@ public class WorkspaceUtils
     /**
      * Gets the project from the workspace that has the specified name,
      * or null if none existing
-     *
+     * 
      * @return
      */
     public static IProject getProject( String name )
@@ -95,7 +95,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected folder or null if none selected
-     *
+     * 
      * @return
      */
     public static IFolder getSelectedFolder( )
@@ -105,9 +105,9 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected project or null if none selected
-     *
+     * 
      * @param window
-     *            The workbench window from where to get the current selection
+     *        The workbench window from where to get the current selection
      * @return
      */
     public static IFolder getSelectedFolder( IWorkbenchWindow window )
@@ -123,7 +123,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected file or null if none selected
-     *
+     * 
      * @return
      */
     public static IFile getSelectedFile( )
@@ -133,9 +133,9 @@ public class WorkspaceUtils
 
     /**
      * Gets the file selected or null if none selected
-     *
+     * 
      * @param window
-     *            The workbench window from where to get the current selection
+     *        The workbench window from where to get the current selection
      * @return
      */
     public static IFile getSelectedFile( IWorkbenchWindow window )
@@ -150,7 +150,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected StructuredSelection or null if none selected
-     *
+     * 
      * @return
      */
     public static IStructuredSelection getSelectedStructuredSelection( )
@@ -161,9 +161,9 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected StructuredSelection or null if none selected
-     *
+     * 
      * @param window
-     *            The workbench windows from where to get the current selection
+     *        The workbench windows from where to get the current selection
      * @return
      */
     public static IStructuredSelection getSelectedStructuredSelection(
@@ -197,7 +197,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected container (folder/project) or null if none selected
-     *
+     * 
      * @return
      */
     public static IContainer getSelectedContainer( )
@@ -214,7 +214,7 @@ public class WorkspaceUtils
 
     /**
      * Gets the selected resource(file/folder/project) or null if none selected
-     *
+     * 
      * @return
      */
     public static IResource getSelectedResource( )
@@ -238,7 +238,7 @@ public class WorkspaceUtils
 
     /**
      * Returns the current workbench
-     *
+     * 
      * @return
      */
     public static IWorkbench getWorkbench( )
@@ -249,7 +249,7 @@ public class WorkspaceUtils
     /**
      * Returns the first WorkbenchWindow available. This is not always the same
      * with ActiveWorkbecnWindow
-     *
+     * 
      * @return
      */
     public static IWorkbenchWindow getWorkbenchWindow( )
@@ -267,7 +267,7 @@ public class WorkspaceUtils
 
     /**
      * Returns the current working set manager
-     *
+     * 
      * @return
      */
     public static IWorkingSetManager getWorkingSetManager( )
@@ -277,9 +277,9 @@ public class WorkspaceUtils
 
     /**
      * Returns the view with the specified id or null if none found
-     *
+     * 
      * @param id
-     *            The id of the searched View
+     *        The id of the searched View
      * @return
      */
     public static IViewPart getView( String id )
@@ -289,7 +289,7 @@ public class WorkspaceUtils
 
     /**
      * Returns the Wesnoth Projects Explorer view
-     *
+     * 
      * @return
      */
     public static WesnothProjectsExplorer getProjectsExplorer( )
@@ -299,7 +299,7 @@ public class WorkspaceUtils
 
     /**
      * Returns the temporary folder where the plugin can write resources
-     *
+     * 
      * @return
      */
     public static String getTemporaryFolder( )
@@ -320,9 +320,9 @@ public class WorkspaceUtils
 
     /**
      * Gets the project's temporary folder
-     *
+     * 
      * @param project
-     *            The project for which to compute the temporary folder
+     *        The project for which to compute the temporary folder
      * @return
      */
     public static String getProjectTemporaryFolder( IProject project )
@@ -332,7 +332,7 @@ public class WorkspaceUtils
 
     /**
      * Returns the current date and time with a granularity of seconds
-     *
+     * 
      * @return A string with the current date and time
      */
     public static String getCurrentDateTime( )
@@ -343,9 +343,9 @@ public class WorkspaceUtils
 
     /**
      * Returns the resource path relative to the user directory
-     *
+     * 
      * @param resource
-     *            the resource to be computed
+     *        the resource to be computed
      * @return
      */
     public static String getPathRelativeToUserDir( IResource resource )
@@ -426,6 +426,8 @@ public class WorkspaceUtils
                         ProjectUtils.createWesnothProject( projectName,
                                 file.getAbsolutePath( ),
                                 paths.getInstallName( ), monitor );
+
+                        monitor.worked( 10 );
                     }
 
                     if( guided ) {
@@ -451,10 +453,10 @@ public class WorkspaceUtils
     /**
      * Checks if the user has set some needed preferences and if the workspace
      * is setup
-     *
+     * 
      * @param displayWarning
-     *            true to display a messagebox warning
-     *            the user if conditions are not met
+     *        true to display a messagebox warning
+     *        the user if conditions are not met
      */
     public static boolean checkPathsAreSet( String installName,
             boolean displayWarning )
