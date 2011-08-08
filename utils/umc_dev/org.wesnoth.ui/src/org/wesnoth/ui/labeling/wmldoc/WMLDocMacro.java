@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -74,7 +74,7 @@ public class WMLDocMacro implements IWMLDocProvider
 
     /**
      * Adds a style range to current list
-     *
+     * 
      * @param offset
      * @param length
      * @param style
@@ -110,7 +110,7 @@ public class WMLDocMacro implements IWMLDocProvider
 
     /**
      * Gets the associated macro
-     *
+     * 
      * @return
      */
     public Define getMacro( )

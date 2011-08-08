@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,19 +39,19 @@ public class WMLTools
 {
     /**
      * Runs "wmlindent" on the specified resource (directory/file)
-     *
+     * 
      * @param resourcePath
-     *            the full path of the target where "wmlindent" will be runned
-     *            on
+     *        the full path of the target where "wmlindent" will be runned
+     *        on
      * @param stdin
-     *            the standard input string to feed "wmlindent"
+     *        the standard input string to feed "wmlindent"
      * @param dryrun
-     *            true to run "wmlindent" in dry mode - i.e. no changes in the
-     *            config file.
+     *        true to run "wmlindent" in dry mode - i.e. no changes in the
+     *        config file.
      * @param stdout
-     *            The array of streams where to output the stdout content
+     *        The array of streams where to output the stdout content
      * @param stderr
-     *            The array of streams where to output the stderr content
+     *        The array of streams where to output the stderr content
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLIndent( String installName,
@@ -75,8 +75,7 @@ public class WMLTools
             }
 
             if( dryrun
-                    || Preferences.getBool( Constants.P_WMLINDENT_DRYRUN ) == true )
-             {
+                    || Preferences.getBool( Constants.P_WMLINDENT_DRYRUN ) == true ) {
                 arguments.add( "--dryrun" ); //$NON-NLS-1$
             }
 
@@ -91,7 +90,7 @@ public class WMLTools
 
     /**
      * Runs a wmlparser on the target resource
-     *
+     * 
      * @param resourcePath
      * @return null if there were errors or an ExternalToolInvoker instance
      */
@@ -139,14 +138,14 @@ public class WMLTools
 
     /**
      * Runs "wmllint" on the specified resource (directory/file)
-     *
+     * 
      * @param resourcePath
-     *            the full path of the target where "wmllint" will be runned on
+     *        the full path of the target where "wmllint" will be runned on
      * @param dryrun
-     *            true to run "wmllint" in dry mode - i.e. no changes in the
-     *            config file.
+     *        true to run "wmllint" in dry mode - i.e. no changes in the
+     *        config file.
      * @param showProgress
-     *            true to show the progress of the tool
+     *        true to show the progress of the tool
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLLint( String installName,
@@ -158,18 +157,18 @@ public class WMLTools
 
     /**
      * Runs "wmllint" on the specified resource (directory/file)
-     *
+     * 
      * @param resourcePath
-     *            the full path of the target where "wmllint" will be runned on
+     *        the full path of the target where "wmllint" will be runned on
      * @param dryrun
-     *            true to run "wmllint" in dry mode - i.e. no changes in the
-     *            config file.
+     *        true to run "wmllint" in dry mode - i.e. no changes in the
+     *        config file.
      * @param showProgress
-     *            true to show the progress of the tool
+     *        true to show the progress of the tool
      * @param stdout
-     *            The array of streams where to output the stdout content
+     *        The array of streams where to output the stdout content
      * @param stderr
-     *            The array of streams where to output the stderr content
+     *        The array of streams where to output the stderr content
      */
     public static ExternalToolInvoker runWMLLint( String installName,
             String resourcePath, boolean dryrun, boolean showProgress,
@@ -190,23 +189,19 @@ public class WMLTools
 
         int verboseLevel = Preferences
                 .getInt( Constants.P_WMLLINT_VERBOSE_LEVEL );
-        for( int i = 1; i <= verboseLevel; i++ )
-         {
+        for( int i = 1; i <= verboseLevel; i++ ) {
             arguments.add( "-v" ); //$NON-NLS-1$
         }
 
-        if( verboseLevel <= 0 && showProgress )
-         {
+        if( verboseLevel <= 0 && showProgress ) {
             arguments.add( "--progress" ); //$NON-NLS-1$
         }
 
-        if( dryrun || Preferences.getBool( Constants.P_WMLLINT_DRYRUN ) == true )
-         {
+        if( dryrun || Preferences.getBool( Constants.P_WMLLINT_DRYRUN ) == true ) {
             arguments.add( "--dryrun" ); //$NON-NLS-1$
         }
 
-        if( Preferences.getBool( Constants.P_WMLLINT_SPELL_CHECK ) == false )
-         {
+        if( Preferences.getBool( Constants.P_WMLLINT_SPELL_CHECK ) == false ) {
             arguments.add( "--nospellcheck" ); //$NON-NLS-1$
         }
 
@@ -219,10 +214,10 @@ public class WMLTools
 
     /**
      * Runs "wmlscope" on the specified resource (directory/file)
-     *
+     * 
      * @param resourcePath
-     *            the full path of the target where "wmlindent" will be runned
-     *            on
+     *        the full path of the target where "wmlindent" will be runned
+     *        on
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLScope( String installName,
@@ -234,14 +229,14 @@ public class WMLTools
 
     /**
      * Runs "wmlscope" on the specified resource (directory/file)
-     *
+     * 
      * @param resourcePath
-     *            the full path of the target where "wmlindent" will be runned
-     *            on
+     *        the full path of the target where "wmlindent" will be runned
+     *        on
      * @param stdout
-     *            The array of streams where to output the stdout content
+     *        The array of streams where to output the stdout content
      * @param stderr
-     *            The array of streams where to output the stderr content
+     *        The array of streams where to output the stderr content
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLScope( String installName,
@@ -267,13 +262,11 @@ public class WMLTools
             arguments.add( "-w" ); //$NON-NLS-1$
             arguments.add( String.valueOf( verboseLevel ) );
         }
-        else if( showProgress )
-         {
+        else if( showProgress ) {
             arguments.add( "--progress" ); //$NON-NLS-1$
         }
 
-        if( Preferences.getBool( Constants.P_WMLSCOPE_COLLISIONS ) == true )
-         {
+        if( Preferences.getBool( Constants.P_WMLSCOPE_COLLISIONS ) == true ) {
             arguments.add( "--collisions" ); //$NON-NLS-1$
         }
 
@@ -289,14 +282,14 @@ public class WMLTools
 
     /**
      * Runs the specified WMLTools as a workspace job
-     *
+     * 
      * @param tool
-     *            The tool to run.
-     *            Currently only the following tools are supported: WMLLINT,
-     *            WMLSCOPE, WMLINDENT
+     *        The tool to run.
+     *        Currently only the following tools are supported: WMLLINT,
+     *        WMLSCOPE, WMLINDENT
      * @param targetPath
-     *            If this is not null if will use the targetpath as the
-     *            argument for launching the tool
+     *        If this is not null if will use the targetpath as the
+     *        argument for launching the tool
      */
     public static void runWMLToolAsWorkspaceJob( final Tools tool,
             final String targetPath )
@@ -463,13 +456,13 @@ public class WMLTools
 
     /**
      * Runs the wesnoth addon manager for uploading the specified container
-     *
+     * 
      * @param containerPath
-     *            The container to upload
+     *        The container to upload
      * @param stdout
-     *            The array of streams where to output the stdout content
+     *        The array of streams where to output the stdout content
      * @param stderr
-     *            The array of streams where to output the stderr content
+     *        The array of streams where to output the stderr content
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker uploadWesnothAddon( String containerPath,
@@ -489,19 +482,19 @@ public class WMLTools
 
     /**
      * Runs the wesnoth addon manager with the specified parameters
-     *
+     * 
      * @param installName
-     *            The install of which to use the wesnoth addon manager from
+     *        The install of which to use the wesnoth addon manager from
      * @param password
-     *            The password to access the addons server
+     *        The password to access the addons server
      * @param port
-     *            The port of the addons server
+     *        The port of the addons server
      * @param extraArguments
-     *            The extra arguments to the addons manager
+     *        The extra arguments to the addons manager
      * @param stdout
-     *            The array of streams where to output the stdout content
+     *        The array of streams where to output the stdout content
      * @param stderr
-     *            The array of streams where to output the stderr content
+     *        The array of streams where to output the stderr content
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWesnothAddonManager(
@@ -524,8 +517,7 @@ public class WMLTools
             arguments.add( password );
         }
 
-        if( Preferences.getBool( Constants.P_WAU_VERBOSE ) == true )
-         {
+        if( Preferences.getBool( Constants.P_WAU_VERBOSE ) == true ) {
             arguments.add( "-V" ); //$NON-NLS-1$
         }
 
@@ -571,11 +563,11 @@ public class WMLTools
     /**
      * Checks if the specified wmlTool is existing an can
      * be runned (python path is valid aswell)
-     *
+     * 
      * @param paths
-     *            The paths for current install
+     *        The paths for current install
      * @param wmlTool
-     *            The wml tool to check
+     *        The wml tool to check
      * @return True if tool is ok to be used
      */
     public static boolean checkWMLTool( Paths paths, String wmlTool )
@@ -613,22 +605,22 @@ public class WMLTools
     /**
      * Runs a specified python script with the specified arguments
      * (the call returns immediately)
-     *
+     * 
      * @param arguments
-     *            the arguments of the "python" executable.
-     *            The first argument should be the script file name
+     *        the arguments of the "python" executable.
+     *        The first argument should be the script file name
      * @param stdin
-     *            A string that will be written to stdin of the python script
+     *        A string that will be written to stdin of the python script
      * @param stdout
-     *            An array of streams where to write the stdout from the script.
-     *            A non null array implies 'stdoutMonitoring' true.
+     *        An array of streams where to write the stdout from the script.
+     *        A non null array implies 'stdoutMonitoring' true.
      * @param stderr
-     *            An array of streams where to write the stderr from the script
-     *            A non null array implies 'stderrMonitoring' true.
+     *        An array of streams where to write the stderr from the script
+     *        A non null array implies 'stderrMonitoring' true.
      * @param stderrMonitoring
-     *            True to start stderr monitoring on tool
+     *        True to start stderr monitoring on tool
      * @param stdoutMonitoring
-     *            True to start stdout monitoring on tool
+     *        True to start stdout monitoring on tool
      * @return
      */
     public static ExternalToolInvoker runPythonScript(

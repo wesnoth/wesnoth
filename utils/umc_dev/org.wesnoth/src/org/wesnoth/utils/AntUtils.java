@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,13 +30,13 @@ public class AntUtils
 {
     /**
      * Runs the specified ant file, and returns the output of the runned file
-     *
+     * 
      * @param antFile
      * @param properties
-     *            the hasmap with userproperties to be added to the ant file
+     *        the hasmap with userproperties to be added to the ant file
      * @param recordOutput
-     *            true if the output of the runned file should be recorded and
-     *            returned
+     *        true if the output of the runned file should be recorded and
+     *        returned
      * @return null if the build didn't success
      */
     public static String runAnt( String antFile,

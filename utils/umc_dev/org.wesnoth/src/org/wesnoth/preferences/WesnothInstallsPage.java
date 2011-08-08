@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -358,9 +358,9 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
     /**
      * Updates the interface with the specified install
-     *
+     * 
      * @param install
-     *            The install
+     *        The install
      */
     private void updateInterface( WesnothInstall install )
     {
@@ -376,11 +376,11 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
     /**
      * Sets the fields's internal preference name based on the installPrefix
-     *
+     * 
      * @param installPrefix
-     *            The install prefix
+     *        The install prefix
      * @param loadPreferences
-     *            True to load the current stored preference
+     *        True to load the current stored preference
      */
     private void setFieldsPreferenceName( String installPrefix,
             boolean loadPreferences )
@@ -443,8 +443,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         if( Constants.IS_MAC_MACHINE ) {
             os = "mac"; //$NON-NLS-1$
         }
-        else if( Constants.IS_WINDOWS_MACHINE )
-         {
+        else if( Constants.IS_WINDOWS_MACHINE ) {
             os = "windows"; //$NON-NLS-1$
         }
 
@@ -501,7 +500,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
     /**
      * Tests for wmltools in the specified path
-     *
+     * 
      * @param path
      * @return
      */
@@ -521,11 +520,11 @@ public class WesnothInstallsPage extends AbstractPreferencePage
      * Tests the list of paths and if any path exists it will
      * set it as the string value to the field editor
      * if the field editor value is empty
-     *
+     * 
      * @param list
-     *            The list to search in
+     *        The list to search in
      * @param field
-     *            The field to put the path in
+     *        The field to put the path in
      */
     private void testPaths( String[] list, StringFieldEditor field )
     {
@@ -545,7 +544,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
      * Checks whether the fields are empty (contain no text)
      * and the combobox/name don't have any values also
      * (the user doesn't create a new install)
-     *
+     * 
      * @return
      */
     private boolean isFieldsEmpty( )
@@ -559,7 +558,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
     /**
      * Saves the current install
-     *
+     * 
      * @return true if the save was successfully, false otherwise
      */
     private boolean saveInstall( )
@@ -622,20 +621,16 @@ public class WesnothInstallsPage extends AbstractPreferencePage
      */
     private boolean savePreferences( )
     {
-        if( ! wesnothExecutableField_.isValid( ) )
-         {
+        if( ! wesnothExecutableField_.isValid( ) ) {
             wesnothExecutableField_.setStringValue( "" ); //$NON-NLS-1$
         }
-        if( ! wesnothUserDirField_.isValid( ) )
-         {
+        if( ! wesnothUserDirField_.isValid( ) ) {
             wesnothUserDirField_.setStringValue( "" ); //$NON-NLS-1$
         }
-        if( ! wesnothWorkingDirField_.isValid( ) )
-         {
+        if( ! wesnothWorkingDirField_.isValid( ) ) {
             wesnothWorkingDirField_.setStringValue( "" ); //$NON-NLS-1$
         }
-        if( ! wmlToolsField_.isValid( ) )
-         {
+        if( ! wmlToolsField_.isValid( ) ) {
             wmlToolsField_.setStringValue( "" ); //$NON-NLS-1$
         }
 

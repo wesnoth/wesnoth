@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,7 +75,7 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
 
     /**
      * Returns true if the project needs a {@code build.xml} file.
-     *
+     * 
      * @return Returns true if the project needs a {@code build.xml} file.
      */
     public boolean needsBuildXML( )
@@ -88,7 +88,7 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
 
     /**
      * Returns the selected install
-     *
+     * 
      * @return
      */
     public String getSelectedInstallName( )
@@ -98,7 +98,7 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
 
     /**
      * Creates the project this page was setup with
-     *
+     * 
      * @return The newly created project's handle
      */
     public IProject createProject( IProgressMonitor monitor,

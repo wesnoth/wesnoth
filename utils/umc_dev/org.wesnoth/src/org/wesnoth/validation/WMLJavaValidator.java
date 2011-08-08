@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,7 +40,7 @@ import org.wesnoth.wml.WmlPackage;
 
 /**
  * This represents the validator for config files
- *
+ * 
  * http://wiki.eclipse.org/Xtext/Documentation/Xtext_New_and_Noteworthy#
  * Different_validation_hooks
  * CheckType:
@@ -53,7 +53,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 {
     /**
      * Returns the {@link SchemaParser} from the specified {@link EObject}
-     *
+     * 
      * @param object
      * @return
      */

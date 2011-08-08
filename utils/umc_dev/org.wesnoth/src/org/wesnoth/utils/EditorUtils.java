@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,9 +33,9 @@ public class EditorUtils
 {
     /**
      * Writes the specified content in current opened editor
-     *
+     * 
      * @param content
-     *            the string content to write
+     *        the string content to write
      */
     public static void writeInEditor( String content )
     {
@@ -44,9 +44,9 @@ public class EditorUtils
 
     /**
      * Writes the specified content in the specified editor
-     *
+     * 
      * @param content
-     *            the string content to write
+     *        the string content to write
      */
     public static void writeInEditor( IEditorPart targetEditor, String content )
     {
@@ -60,9 +60,9 @@ public class EditorUtils
 
     /**
      * Replaces the text in current opened editor with the specified one
-     *
+     * 
      * @param content
-     *            the string to replace the current content
+     *        the string to replace the current content
      */
     public static void replaceEditorText( String content )
     {
@@ -71,9 +71,9 @@ public class EditorUtils
 
     /**
      * Replaces the text in the specified editor with the specified one
-     *
+     * 
      * @param content
-     *            the string to replace the current content
+     *        the string to replace the current content
      */
     public static void replaceEditorText( IEditorPart targetEditor,
             String content )
@@ -90,7 +90,7 @@ public class EditorUtils
 
     /**
      * Gets the current opened editor's document
-     *
+     * 
      * @return
      */
     public static IDocument getEditorDocument( )
@@ -100,7 +100,7 @@ public class EditorUtils
 
     /**
      * Gets the specified editor's document
-     *
+     * 
      * @return
      */
     public static IDocument getEditorDocument( IEditorPart targetEditor )
@@ -116,7 +116,7 @@ public class EditorUtils
 
     /**
      * Gets the text editor of the current opened editor
-     *
+     * 
      * @return
      */
     public static ITextEditor getTextEditor( )
@@ -126,7 +126,7 @@ public class EditorUtils
 
     /**
      * Gets the text editor of the specified editor
-     *
+     * 
      * @return
      */
     public static ITextEditor getTextEditor( IEditorPart targetEditor )
@@ -144,7 +144,7 @@ public class EditorUtils
 
     /**
      * Gets the editor part of the current edited file
-     *
+     * 
      * @return
      */
     public static IEditorPart getEditedFile( )
@@ -155,11 +155,11 @@ public class EditorUtils
 
     /**
      * Opens the editor on the specified file
-     *
+     * 
      * @param file
-     *            The file to open
+     *        The file to open
      * @param activatePage
-     *            True to activate the opened file
+     *        True to activate the opened file
      */
     public static IEditorPart openEditor( IFile file, boolean activatePage )
     {
@@ -175,9 +175,9 @@ public class EditorUtils
 
     /**
      * Opens the editor on the specified file (will use IFileStore)
-     *
+     * 
      * @param file
-     *            The file to open
+     *        The file to open
      */
     public static IEditorPart openEditor( String file )
     {
@@ -187,9 +187,9 @@ public class EditorUtils
 
     /**
      * Opens the editor on the specified file (will use IFileStore)
-     *
+     * 
      * @param file
-     *            The file to open
+     *        The file to open
      */
     public static IEditorPart openEditor( IFileStore file )
     {

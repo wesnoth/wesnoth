@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,18 +15,17 @@ public class ListUtils
 {
     /**
      * Concatenates the list of Objects using the provided separator
-     *
+     * 
      * @param list
-     *            the list to concatenate
+     *        the list to concatenate
      * @param separator
-     *            the separator used to concatenate the elements of the list
+     *        the separator used to concatenate the elements of the list
      * @return A string with the string representation of that objects
      */
     public static String concatenateList( List< ? extends Object > list,
             String separator )
     {
-        if( list == null || list.isEmpty( ) )
-         {
+        if( list == null || list.isEmpty( ) ) {
             return ""; //$NON-NLS-1$
         }
 
@@ -41,11 +40,11 @@ public class ListUtils
 
     /**
      * Concatenates the array of strings using the provided separator
-     *
+     * 
      * @param array
-     *            the array to concatenate
+     *        the array to concatenate
      * @param separator
-     *            the separator used to concatenate the elements of the list
+     *        the separator used to concatenate the elements of the list
      * @return
      */
     public static String concatenateArray( String[] array, String separator )

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,7 +88,7 @@ public class ImportProjectPage extends WizardPageTemplate
 
     /**
      * Returns the imported project's path
-     *
+     * 
      * @return A string with the project path
      */
     public String getProjectPath( )
@@ -98,7 +98,7 @@ public class ImportProjectPage extends WizardPageTemplate
 
     /**
      * Returns the imported project's name
-     *
+     * 
      * @return A string with the imported project's name
      */
     public String getProjectName( )
@@ -108,7 +108,7 @@ public class ImportProjectPage extends WizardPageTemplate
 
     /**
      * Returns the selected install name
-     *
+     * 
      * @return A string with the selected install name
      */
     public String getSelectedInstallName( )

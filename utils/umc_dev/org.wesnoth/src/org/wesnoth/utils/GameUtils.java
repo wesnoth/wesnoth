@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -127,9 +127,9 @@ public class GameUtils
 
     /**
      * Starts the wesnoth game with the specified extraArguments
-     *
+     * 
      * @param extraArgs
-     *            Extra arguments given to the game, or null.
+     *        Extra arguments given to the game, or null.
      */
     public static void startGame( String installName, List< String > extraArgs )
     {
@@ -172,9 +172,9 @@ public class GameUtils
 
     /**
      * Starts the game editor on the specified file
-     *
+     * 
      * @param file
-     *            The file to be edited
+     *        The file to be edited
      */
     public static void startEditor( IFile file )
     {
@@ -189,7 +189,7 @@ public class GameUtils
 
     /**
      * Starts the editor
-     *
+     * 
      * @param mapName
      */
     public static void startEditor( String mapName )
@@ -200,9 +200,9 @@ public class GameUtils
 
     /**
      * Gets a list of parameters for the game editor
-     *
+     * 
      * @param mapName
-     *            the map to launch
+     *        the map to launch
      * @return
      */
     public static List< String > getEditorLaunchArguments( String mapName )

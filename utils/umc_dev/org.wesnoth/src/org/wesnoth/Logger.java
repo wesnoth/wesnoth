@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,8 +56,7 @@ public class Logger
             return;
         }
         try {
-            if( WorkspaceUtils.getTemporaryFolder( ) == null )
-             {
+            if( WorkspaceUtils.getTemporaryFolder( ) == null ) {
                 throw new IOException( "Could not create the temporary folder." ); //$NON-NLS-1$
             }
 
@@ -110,9 +109,9 @@ public class Logger
 
     /**
      * Prints a message to the error log (severity: info)
-     *
+     * 
      * @param message
-     *            The message to log
+     *        The message to log
      */
     public void log( String message )
     {
@@ -121,9 +120,9 @@ public class Logger
 
     /**
      * Logs a warning message
-     *
+     * 
      * @param message
-     *            The message to log
+     *        The message to log
      */
     public void logWarn( String message )
     {
@@ -132,9 +131,9 @@ public class Logger
 
     /**
      * Logs an error message
-     *
+     * 
      * @param message
-     *            The message to log
+     *        The message to log
      */
     public void logError( String message )
     {
@@ -143,9 +142,9 @@ public class Logger
 
     /**
      * Logs the specified exception, providing the stacktrace to the console
-     *
+     * 
      * @param e
-     *            The exception to log
+     *        The exception to log
      */
     public void logException( Exception e )
     {
@@ -154,9 +153,9 @@ public class Logger
 
     /**
      * Logs the specified exception, providing the stacktrace to the console
-     *
+     * 
      * @param e
-     *            The exception to log
+     *        The exception to log
      */
     public void logToolException( Exception e )
     {
@@ -180,11 +179,11 @@ public class Logger
 
     /**
      * Logs the message (severity: info) showing also a messagebox to the user
-     *
+     * 
      * @param message
-     *            The message to log
+     *        The message to log
      * @param guiMessage
-     *            The message to show to the user
+     *        The message to show to the user
      */
     public void log( String message, String guiMessage )
     {
@@ -194,11 +193,11 @@ public class Logger
 
     /**
      * Prints a message to the error log with the specified severity
-     *
+     * 
      * @param message
-     *            the message to log
+     *        the message to log
      * @param severity
-     *            the severity level from IStatus enum
+     *        the severity level from IStatus enum
      */
     public void log( String message, int severity )
     {
@@ -207,9 +206,9 @@ public class Logger
 
     /**
      * Prints a message to the tool launch log (severity: info)
-     *
+     * 
      * @param message
-     *            The message to log
+     *        The message to log
      */
     public void logTool( String message )
     {

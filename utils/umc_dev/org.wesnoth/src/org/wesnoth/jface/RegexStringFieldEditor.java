@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,12 +18,12 @@ public class RegexStringFieldEditor extends StringFieldEditor
 
     /**
      * An regex matcher string field editor.
-     *
+     * 
      * @param regex
-     *            The regex to match this textbox's string
+     *        The regex to match this textbox's string
      * @param errorMessage
-     *            The message to show as error when field's text
-     *            doesn't match the regex
+     *        The message to show as error when field's text
+     *        doesn't match the regex
      */
     public RegexStringFieldEditor( String name, String labelText, String regex,
             String errorMessage, Composite parent )

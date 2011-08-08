@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
- *     IBM Corporation - initial API and implementation
- *     Andreas Buchen <andreas.buchen@sap.com> - Bug 206584
+ * IBM Corporation - initial API and implementation
+ * Andreas Buchen <andreas.buchen@sap.com> - Bug 206584
  *******************************************************************************/
 package org.wesnoth.product;
 
@@ -235,7 +235,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
 
     /**
      * The coolbar context menu manager.
-     *
+     * 
      * @since 3.3
      */
     private MenuManager                         coolbarPopupMenuManager;
@@ -243,9 +243,9 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     /**
      * Constructs a new action builder which contributes actions
      * to the given window.
-     *
+     * 
      * @param configurer
-     *            the action bar configurer for the window
+     *        the action bar configurer for the window
      */
     public WorkbenchActionBuilder( IActionBarConfigurer configurer )
     {
@@ -330,7 +330,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
          * In order to ensure that the pin action toolbar sets its size
          * correctly, the pin action should set its visiblity before we call
          * updatePinActionToolbar().
-         *
+         * 
          * In other words we always want the PinActionContributionItem to be
          * notified before the
          * WorkbenchActionBuilder.
@@ -822,11 +822,11 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
      * The test for whether a separator should be added is done by checking for
      * the existence of a preference matching the string
      * useSeparator.MENUID.GROUPID that is set to <code>true</code>.
-     *
+     * 
      * @param menu
-     *            the menu to add to
+     *        the menu to add to
      * @param groupId
-     *            the group id for the added separator or group marker
+     *        the group id for the added separator or group marker
      */
     private void addSeparatorOrGroupMarker( MenuManager menu, String groupId )
     {
@@ -1308,9 +1308,9 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
 
     /**
      * Returns whether any of the given infos have a welcome page.
-     *
+     * 
      * @param infos
-     *            the infos
+     *        the infos
      * @return <code>true</code> if a welcome page was found, <code>false</code>
      *         if not
      */
@@ -1326,9 +1326,9 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
 
     /**
      * Returns whether any of the given infos have tips and tricks.
-     *
+     * 
      * @param infos
-     *            the infos
+     *        the infos
      * @return <code>true</code> if tips and tricks were found,
      *         <code>false</code> if not
      */
@@ -1345,11 +1345,11 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     /**
      * Update the build actions on the toolbar and menu bar based on the current
      * state of autobuild. This method can be called from any thread.
-     *
+     * 
      * @param immediately
-     *            <code>true</code> to update the actions immediately,
-     *            <code>false</code> to queue the update to be run in the
-     *            event loop
+     *        <code>true</code> to update the actions immediately,
+     *        <code>false</code> to queue the update to be run in the
+     *        event loop
      */
     void updateBuildActions( boolean immediately )
     {

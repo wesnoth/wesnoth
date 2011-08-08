@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,16 +36,15 @@ public class SchemaParser
 
     /**
      * Returns a SchemaParser instance based on the specified install
-     *
+     * 
      * @param installName
-     *            The name of the install
+     *        The name of the install
      * @return A SchemaParser singleton instance
      */
     public static SchemaParser getInstance( String installName )
     {
         // null not allowed
-        if( installName == null )
-         {
+        if( installName == null ) {
             installName = ""; //$NON-NLS-1$
         }
 
@@ -61,9 +60,9 @@ public class SchemaParser
 
     /**
      * Reloads all currently stored schemas
-     *
+     * 
      * @param force
-     *            True to force reloading schemas
+     *        True to force reloading schemas
      */
     public static void reloadSchemas( boolean force )
     {
@@ -88,13 +87,13 @@ public class SchemaParser
 
     /**
      * Parses the schema
-     *
+     * 
      * @param installName
-     *            The install to use. It will get the default schema
-     *            path based on that
-     *
+     *        The install to use. It will get the default schema
+     *        path based on that
+     * 
      * @param force
-     *            True to force parsing the schema, skipping the existing cache
+     *        True to force parsing the schema, skipping the existing cache
      */
     public void parseSchema( boolean force )
     {
@@ -104,11 +103,11 @@ public class SchemaParser
 
     /**
      * Parses the schema
-     *
+     * 
      * @param force
-     *            True to force parsing the schema, skipping the existing cache
+     *        True to force parsing the schema, skipping the existing cache
      * @param schemaPath
-     *            The path to the 'schema.cfg' file
+     *        The path to the 'schema.cfg' file
      */
     public void parseSchemaFile( boolean force, String schemaPath )
     {
@@ -135,7 +134,8 @@ public class SchemaParser
         for( int index = 0; index < lines.length; index++ ) {
             String line = lines[index];
             // skip comments and empty lines
-            if( StringUtils.startsWith( line, "#" ) || line.matches( "^[\t ]*$" ) ) {
+            if( StringUtils.startsWith( line, "#" )
+                    || line.matches( "^[\t ]*$" ) ) {
                 continue;
             }
 
@@ -246,8 +246,7 @@ public class SchemaParser
                 }
                 else {
                     String tmpLine = line.trim( );
-                    if( line.contains( "#" ) )
-                     {
+                    if( line.contains( "#" ) ) {
                         tmpLine = line
                                 .substring( 0, line.lastIndexOf( "#" ) ).trim( ); //$NON-NLS-1$
                     }
@@ -285,8 +284,7 @@ public class SchemaParser
                             currentTag.getExpressions( ).add( targetTag );
                         }
                         else {
-                            if( primitives_.get( value[1] ) == null )
-                             {
+                            if( primitives_.get( value[1] ) == null ) {
                                 Logger.getInstance( )
                                         .logError(
                                                 "Undefined primitive type in schema.cfg for: " + value[1] ); //$NON-NLS-1$
@@ -341,9 +339,9 @@ public class SchemaParser
 
     /**
      * Sorts all tag's children by using the cardinality comparator
-     *
+     * 
      * @param tag
-     *            The tag to whom to sort the children
+     *        The tag to whom to sort the children
      */
     private void sortChildren( WMLTag tag )
     {
@@ -375,9 +373,9 @@ public class SchemaParser
      * optional = ?
      * repeated = *
      * forbidden = -
-     *
+     * 
      * @param value
-     *            The value the parse
+     *        The value the parse
      */
     public char getCardinality( String value )
     {

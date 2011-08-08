@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,7 +45,7 @@ public class ProjectUtils
 
     /**
      * Gets the properties map for this project.
-     *
+     * 
      * @return A map with properties of the project
      */
     public static Map< String, String > getPropertiesForProject(
@@ -56,7 +56,7 @@ public class ProjectUtils
 
     /**
      * Gets the cache for the specified project
-     *
+     * 
      * @param project
      * @return
      */
@@ -75,7 +75,7 @@ public class ProjectUtils
     /**
      * Creates a new wesnoth project with the specified name
      * and on the specified location on disk
-     *
+     * 
      * @param name
      *        The name of the new project
      * @param location
@@ -109,7 +109,7 @@ public class ProjectUtils
      * Creates a project that has associated the wesnoth nature using
      * the specified handle. If the project is created there will be
      * no modifications done by this method.
-     *
+     * 
      * @param handle
      *        the handle to the project
      * @param description

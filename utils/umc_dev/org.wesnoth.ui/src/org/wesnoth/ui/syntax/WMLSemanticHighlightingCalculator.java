@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -130,13 +130,13 @@ public class WMLSemanticHighlightingCalculator implements
     /**
      * Copied from org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.
      * SemanticHighlightingCalculator
-     *
+     * 
      * @param node
-     *            The node to highlight
+     *        The node to highlight
      * @param id
-     *            The id of the coloring
+     *        The id of the coloring
      * @param acceptor
-     *            The acceptor to add the node to
+     *        The acceptor to add the node to
      */
     private void highlightNode( INode node, String id,
             IHighlightedPositionAcceptor acceptor )
@@ -160,11 +160,11 @@ public class WMLSemanticHighlightingCalculator implements
     /**
      * Copied from org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.
      * SemanticHighlightingCalculator
-     *
+     * 
      * @param semantic
-     *            The object to search in
+     *        The object to search in
      * @param feature
-     *            The feature to search for
+     *        The feature to search for
      * @return Null if there is no feature, or an {@link INode} node
      */
     public INode getFirstFeatureNode( EObject semantic,

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ public class WesnothInstallsUtils
     /**
      * Returns a list of the current wesnoth installations available
      * in the preferences store
-     *
+     * 
      * @return A list with Wesnoth Installs
      */
     public static List< WesnothInstall > getInstalls( )
@@ -61,17 +61,16 @@ public class WesnothInstallsUtils
 
     /**
      * Sets the specified Installs list in the preferences store
-     *
+     * 
      * @param installsList
-     *            The list to replace / set the installs list
+     *        The list to replace / set the installs list
      */
     public static void setInstalls( Collection< WesnothInstall > installsList )
     {
         // pack back the installs
         StringBuilder installs = new StringBuilder( );
         for( WesnothInstall install: installsList ) {
-            if( installs.length( ) > 0 )
-             {
+            if( installs.length( ) > 0 ) {
                 installs.append( ";" ); //$NON-NLS-1$
             }
 
@@ -85,9 +84,9 @@ public class WesnothInstallsUtils
 
     /**
      * Returns the install name for the specified resource
-     *
+     * 
      * @param resourcePath
-     *            The path to the resource
+     *        The path to the resource
      * @return The install name for the resource
      */
     public static String getInstallNameForResource( String resourcePath )
@@ -102,15 +101,14 @@ public class WesnothInstallsUtils
 
     /**
      * Returns the install name for the specified resource
-     *
+     * 
      * @param resource
-     *            The resource
+     *        The resource
      * @return The install name for the resource
      */
     public static String getInstallNameForResource( IResource resource )
     {
-        if( resource == null || ! resource.exists( ) )
-         {
+        if( resource == null || ! resource.exists( ) ) {
             return ""; //$NON-NLS-1$
         }
 
@@ -120,11 +118,11 @@ public class WesnothInstallsUtils
 
     /**
      * Sets the install name for the specified resource
-     *
+     * 
      * @param resource
-     *            The resource to set the install to
+     *        The resource to set the install to
      * @param newInstallName
-     *            The new install name
+     *        The new install name
      */
     public static void setInstallNameForResource( IResource resource,
             String newInstallName )
@@ -140,9 +138,9 @@ public class WesnothInstallsUtils
     /**
      * Fills the specified combo box with all the current installs
      * and selects the default or the first ( if no default exists )
-     *
+     * 
      * @param comboBox
-     *            The combobox to fill
+     *        The combobox to fill
      */
     public static void fillComboWithInstalls( Combo comboBox )
     {
@@ -171,10 +169,10 @@ public class WesnothInstallsUtils
      * Checks whether the Wesnoth Installation is properly setup
      * for the specified resource. If it is not, it will guide the user
      * through selecting a proper install (if any).
-     *
+     * 
      * @param resource
-     *            True if the installation is valid, false
-     *            otherwise
+     *        True if the installation is valid, false
+     *        otherwise
      * @return Boolean flag whether the setup was successfull or failed.
      */
     public static boolean setupInstallForResource( IResource resource )
@@ -192,8 +190,7 @@ public class WesnothInstallsUtils
                     .showMessageBox( String.format(
                             Messages.WesnothInstallsUtils_1, resource
                                     .getProject( ).getName( ) ),
-                            SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO )
-             {
+                            SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO ) {
                 return false; // no hope :(
             }
 

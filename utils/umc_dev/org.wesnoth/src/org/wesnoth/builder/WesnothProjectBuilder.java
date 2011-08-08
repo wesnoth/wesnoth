@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,7 @@ import org.wesnoth.wml.WMLConfig;
 /**
  * The builder does the following steps in order to create and ensure
  * a correct PDL (Project Dependency Lits)
- *
+ * 
  * 1) remove REMOVED files from the PDL
  * 2) parse ADDED or CHANGED files, to check if new directory/file includes
  * happened
@@ -137,9 +137,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
     /**
      * Does a full build on this project
-     *
+     * 
      * @param monitor
-     *            The monitor used to signal progress
+     *        The monitor used to signal progress
      * @return True if there were config files processed
      * @throws CoreException
      */
@@ -175,11 +175,11 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
     /**
      * Does an incremental build on this project
-     *
+     * 
      * @param delta
-     *            The delta which contains the project modifications
+     *        The delta which contains the project modifications
      * @param monitor
-     *            The monitor used to signal progress
+     *        The monitor used to signal progress
      * @return True if there were config files processed
      * @throws CoreException
      */
@@ -277,12 +277,12 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
     /**
      * Runs the ant job that copies the project in user add-ons directory
-     *
+     * 
      * @param paths
-     *            The paths instance which contains the paths to wesnoth
-     *            utilities
+     *        The paths instance which contains the paths to wesnoth
+     *        utilities
      * @param monitor
-     *            The monitor used to signal progress
+     *        The monitor used to signal progress
      * @return true or false whether the job completed successfully
      */
     private boolean runAntJob( Paths paths, IProgressMonitor monitor )
@@ -336,8 +336,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
                 List< String > defines = new ArrayList< String >( );
                 // parse the core only if we don't have any macros file
-                if( ! new File( macrosFilePath ).exists( ) )
-                 {
+                if( ! new File( macrosFilePath ).exists( ) ) {
                     defines.add( "SKIP_CORE" ); //$NON-NLS-1$
                 }
 
@@ -392,7 +391,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
     /**
      * Run the wmlscope for the specified file
-     *
+     * 
      * @param monitor
      * @param file
      * @throws CoreException

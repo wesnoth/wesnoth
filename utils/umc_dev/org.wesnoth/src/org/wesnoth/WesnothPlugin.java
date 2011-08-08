@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,7 +80,7 @@ public class WesnothPlugin extends AbstractUIPlugin
 
     /**
      * Returns the shared instance
-     *
+     * 
      * @return the shared instance
      */
     public static WesnothPlugin getDefault( )
@@ -91,9 +91,9 @@ public class WesnothPlugin extends AbstractUIPlugin
     /**
      * Returns an image descriptor for the image file at the given plug-in
      * relative path
-     *
+     * 
      * @param path
-     *            the path
+     *        the path
      * @return the image descriptor
      */
     public static ImageDescriptor getImageDescriptor( String path )
@@ -103,7 +103,7 @@ public class WesnothPlugin extends AbstractUIPlugin
 
     /**
      * Returns the plugin's shell
-     *
+     * 
      * @return
      */
     public static Shell getShell( )

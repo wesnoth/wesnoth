@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,7 +78,7 @@ public class Define
 
     /**
      * Gets the arguments of this macro
-     *
+     * 
      * @return
      */
     public List< String > getArguments( )
@@ -88,7 +88,7 @@ public class Define
 
     /**
      * Returns a string containing the current define, formatted
-     *
+     * 
      * @return The string value of the define
      */
     @Override
@@ -107,7 +107,7 @@ public class Define
 
     /**
      * Reads the defines from the specified file
-     *
+     * 
      * @param file
      * @return Returns a map of defines
      */

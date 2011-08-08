@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -131,11 +131,11 @@ public class TemplateProvider
 
     /**
      * Gets a string of the processed specified template
-     *
+     * 
      * @param templateName
-     *            The name of the template to process
+     *        The name of the template to process
      * @param parameters
-     *            The parameters to replace into the template
+     *        The parameters to replace into the template
      * @return
      */
     public String getProcessedTemplate( String templateName,
@@ -178,8 +178,7 @@ public class TemplateProvider
                 }
             }
 
-            if( skipLine == false )
-             {
+            if( skipLine == false ) {
                 result.append( template[i] + "\n" ); //$NON-NLS-1$
             }
         }
@@ -188,15 +187,14 @@ public class TemplateProvider
 
     /**
      * Returns the template with the specified name or empty string if none
-     *
+     * 
      * @param name
      * @return
      */
     public String getTemplate( String name )
     {
         String result = templates_.get( name );
-        if( result == null )
-         {
+        if( result == null ) {
             return ""; //$NON-NLS-1$
         }
         return result;
@@ -204,9 +202,9 @@ public class TemplateProvider
 
     /**
      * Gets the Content Assist Config list for the specified type
-     *
+     * 
      * @param type
-     *            The type of the CAC
+     *        The type of the CAC
      * @return A list of String values. The returned list is read-only
      */
     public List< String > getCAC( String type )
@@ -225,9 +223,9 @@ public class TemplateProvider
      * value is a list of <String, String> that consist of <Filename, Template
      * used for file contents> and the second return value is a list of String
      * with directories names
-     *
+     * 
      * @param structureTemplate
-     *            the template
+     *        the template
      * @return
      */
     public Pair< List< Pair< String, String >>, List< String >> getFilesDirectories(

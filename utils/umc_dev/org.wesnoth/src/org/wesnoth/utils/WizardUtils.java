@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,13 +21,13 @@ public class WizardUtils
 {
     /**
      * Launches a new wizard
-     *
+     * 
      * @param wizard
-     *            The wizard to launch
+     *        The wizard to launch
      * @param shell
-     *            The shell
+     *        The shell
      * @param selection
-     *            The current selection
+     *        The current selection
      * @return
      */
     public static int launchWizard( WizardTemplate wizard, Shell shell,

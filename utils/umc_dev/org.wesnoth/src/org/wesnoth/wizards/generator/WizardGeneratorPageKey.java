@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,8 +93,7 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
                 textBox.setData( "valType", key.getValues( ) ); //$NON-NLS-1$
                 textBox.setData( "card", key.get_Cardinality( ) ); //$NON-NLS-1$
                 textBox.setData( "trans", key.is_Translatable( ) ); //$NON-NLS-1$
-                if( key.is_Required( ) )
-                 {
+                if( key.is_Required( ) ) {
                     textBox.setData( "comp", false ); // is textbox complete //$NON-NLS-1$
                 }
 

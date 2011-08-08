@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -379,13 +379,13 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
     /**
      * Returns the proposal for the specified tag, usign the specified indent
-     *
+     * 
      * @param tag
-     *            The tag from which to construct the proposal
+     *        The tag from which to construct the proposal
      * @param indent
-     *            The indent used to indent the tag and subsequent keys
+     *        The indent used to indent the tag and subsequent keys
      * @param ruleProposal
-     *            Whether this is a proposal for an entire rule or not
+     *        Whether this is a proposal for an entire rule or not
      * @param context
      * @return
      */

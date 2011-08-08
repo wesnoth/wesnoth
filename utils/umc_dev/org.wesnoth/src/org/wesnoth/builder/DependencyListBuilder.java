@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,10 +69,10 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Create the whole dependency list from scratch.
-     *
+     * 
      * @param force
-     *            True for force re-creating the list even if it
-     *            was previously created
+     *        True for force re-creating the list even if it
+     *        was previously created
      */
     public void createDependencyList( boolean force )
     {
@@ -95,9 +95,9 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Adds a new node in the PDL
-     *
+     * 
      * @param file
-     *            The file to add
+     *        The file to add
      * @return The newly created node
      */
     public DependencyListNode addNode( IFile file )
@@ -192,9 +192,9 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Adds the containers and their contents to the list
-     *
+     * 
      * @param containerList
-     *            The list of container paths
+     *        The list of container paths
      */
     private void internal_addContainers( Collection< String > containerList )
     {
@@ -205,9 +205,9 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Add the container and it's contents to the list
-     *
+     * 
      * @param containerPath
-     *            The path of the container
+     *        The path of the container
      */
     private void internal_addContainer( String containerPath )
     {
@@ -311,9 +311,9 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Adds a new node to this list
-     *
+     * 
      * @param file
-     *            The file to add
+     *        The file to add
      * @return The newly created node
      */
     private DependencyListNode internal_addNode( IFile file )
@@ -374,9 +374,9 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Removes a node specified by the file
-     *
+     * 
      * @param file
-     *            The file to remove from the list
+     *        The file to remove from the list
      */
     public void removeNode( IFile file )
     {
@@ -385,9 +385,9 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Removes the specified node from the list
-     *
+     * 
      * @param node
-     *            The node to remove from the list
+     *        The node to remove from the list
      */
     public void removeNode( DependencyListNode node )
     {
@@ -431,9 +431,9 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Removes the container and all it's contents from the list
-     *
+     * 
      * @param path
-     *            The container's path
+     *        The container's path
      */
     private void internal_removeContainer( String path )
     {
@@ -471,9 +471,9 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Updates the current node in the list
-     *
+     * 
      * @param node
-     *            The node to update
+     *        The node to update
      */
     public void updateNode( DependencyListNode node )
     {
@@ -609,9 +609,9 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Returns the node specified by the file
-     *
+     * 
      * @param file
-     *            The file to get the depedency node for
+     *        The file to get the depedency node for
      * @return An instance of {@link DependencyListNode}
      */
     public DependencyListNode getNode( IFile file )
@@ -623,9 +623,9 @@ public class DependencyListBuilder implements Serializable
      * Returns the node specified by the key. The keys are
      * usually project-relative paths for project's files, or
      * the {@link #ROOT_NODE_KEY}
-     *
+     * 
      * @param key
-     *            The key to get the node by
+     *        The key to get the node by
      * @return An instance of {@link DependencyListNode}
      */
     public DependencyListNode getNode( String key )
@@ -635,7 +635,7 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Returns true if the list was already created, false otherwise
-     *
+     * 
      * @return A boolean value
      */
     public boolean getIsCreated( )
@@ -680,7 +680,7 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * The class that represents the entry in the list of included directories
-     *
+     * 
      */
     protected static class ListDirectoryEntry implements Serializable
     {

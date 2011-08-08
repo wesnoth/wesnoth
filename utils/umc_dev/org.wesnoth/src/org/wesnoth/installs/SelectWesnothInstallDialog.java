@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,7 +66,7 @@ public class SelectWesnothInstallDialog extends Dialog
 
     /**
      * Gets the install selected by the user
-     *
+     * 
      * @return A string with the name of the install selected
      */
     public String getSelectedInstallName( )

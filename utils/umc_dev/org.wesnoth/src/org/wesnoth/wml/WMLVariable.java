@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -114,11 +114,11 @@ public class WMLVariable implements Serializable
         /**
          * Returns true if the specified index and offset lie withing
          * this scope
-         *
+         * 
          * @param index
-         *            The index of the file
+         *        The index of the file
          * @param offset
-         *            The offset in the file
+         *        The offset in the file
          * @return True of false
          */
         public boolean contains( int index, int offset )

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -184,7 +184,7 @@ public class ScenarioNewWizard extends WizardTemplate
 
     /**
      * Returns the scenario file contents as an InputStream
-     *
+     * 
      * @throws Exception
      */
     private InputStream getScenarioStream( IContainer container )
@@ -224,8 +224,7 @@ public class ScenarioNewWizard extends WizardTemplate
         String startingGold = ""; //$NON-NLS-1$
         if( page1_ != null ) {
             startingGold = page1_.getStartingGoldByDifficulties( );
-            if( startingGold == null )
-             {
+            if( startingGold == null ) {
                 throw new Exception( "incorrect arguments" ); //$NON-NLS-1$
             }
         }

@@ -40,7 +40,7 @@ public class NewConfigFilePage0 extends WizardPage
 
     /**
      * Constructor for SampleNewWizardPage.
-     *
+     * 
      * @param pageName
      */
     public NewConfigFilePage0( ISelection selection )

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,17 +60,17 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
     /**
      * Creates a hyperlink for opening the macro definition
-     *
+     * 
      * @param paths
-     *            The paths variable for the current install
+     *        The paths variable for the current install
      * @param file
-     *            The current edited file
+     *        The current edited file
      * @param object
-     *            The current object
+     *        The current object
      * @param acceptor
-     *            The hyperlink acceptor
+     *        The hyperlink acceptor
      * @param node
-     *            The node model representation of the macro
+     *        The node model representation of the macro
      */
     private void createMacroHyperlink( Paths paths, IFile file, EObject object,
             IHyperlinkAcceptor acceptor, ICompositeNode node )
@@ -109,15 +109,15 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
     /**
      * Creates a hyperlink for opening the map ( if applying )
-     *
+     * 
      * @param paths
-     *            The paths variable for the current install
+     *        The paths variable for the current install
      * @param object
-     *            The current object
+     *        The current object
      * @param acceptor
-     *            The hyperlink acceptor
+     *        The hyperlink acceptor
      * @param node
-     *            The node model representation of the macro
+     *        The node model representation of the macro
      */
     private void createMapHyperlink( Paths paths, EObject object,
             IHyperlinkAcceptor acceptor, ICompositeNode node )

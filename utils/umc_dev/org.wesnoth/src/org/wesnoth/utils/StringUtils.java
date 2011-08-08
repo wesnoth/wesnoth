@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ public class StringUtils
     /**
      * Returns true if the 'target' starts with 'sequence'.
      * The tabs or spaces in front are skipped when checking for the 'sequence'
-     *
+     * 
      * @param target
      * @param sequence
      * @return
@@ -40,7 +40,7 @@ public class StringUtils
 
     /**
      * Returns the number of 'character' characters in the target string
-     *
+     * 
      * @param target
      * @param character
      * @return
@@ -67,7 +67,7 @@ public class StringUtils
 
     /**
      * Returns the n-th occurrence index of the specified character
-     *
+     * 
      * @param target
      * @param character
      * @param n
@@ -97,22 +97,21 @@ public class StringUtils
      * Removes all consecutive aparitions of a character in the specified string
      * so that only one appearance remains in each past duplications of that
      * string
-     *
+     * 
      * @param target
-     *            the string to process
+     *        the string to process
      * @param character
-     *            the character to remove
+     *        the character to remove
      * @param removeTrailing
-     *            removes or not the trailing 'character' characters
+     *        removes or not the trailing 'character' characters
      * @param removeTrailing
-     *            removes or not the preceding 'character' characters
+     *        removes or not the preceding 'character' characters
      * @return
      */
     public static String removeIncorrectCharacters( String target,
             char character, boolean removeTrailing, boolean removePreceding )
     {
-        if( target == null )
-         {
+        if( target == null ) {
             return ""; //$NON-NLS-1$
         }
 
@@ -138,9 +137,9 @@ public class StringUtils
     /**
      * Gets an array of the lines (without line breakes) which compund the
      * string
-     *
+     * 
      * @param string
-     *            The string
+     *        The string
      * @return
      */
     public static String[] getLines( String string )
@@ -153,15 +152,14 @@ public class StringUtils
 
     /**
      * Removes all trailing path separators from the string
-     *
+     * 
      * @param string
-     *            The string to trim
+     *        The string to trim
      * @return A new string that doesn't have any trailling separators
      */
     public static String trimEndPathSeparators( String string )
     {
-        if( isNullOrEmpty( string ) )
-         {
+        if( isNullOrEmpty( string ) ) {
             return ""; //$NON-NLS-1$
         }
 
@@ -174,9 +172,9 @@ public class StringUtils
 
     /**
      * Trims any quotes " of the specified string
-     *
+     * 
      * @param string
-     *            The string to trim
+     *        The string to trim
      * @return A new string with the quotes trimmed
      */
     public static String trimQuotes( String string )
@@ -201,15 +199,14 @@ public class StringUtils
     /**
      * Normalizes the path given by the string, removing repeated separators
      * and replacing them by '|'
-     *
+     * 
      * @param path
-     *            the string that represents the path to be normalized
+     *        the string that represents the path to be normalized
      * @return
      */
     public static String normalizePath( String path )
     {
-        if( path == null )
-         {
+        if( path == null ) {
             return ""; //$NON-NLS-1$
         }
 
@@ -236,20 +233,19 @@ public class StringUtils
      * Replaces the source with the target in the specified string,
      * adding the existing indentation (if any) to all lines (if any) in the
      * target
-     *
+     * 
      * @param string
-     *            The string where to replace the source
+     *        The string where to replace the source
      * @param source
-     *            The source string to be replaced
+     *        The source string to be replaced
      * @param target
-     *            The target string to be replaced in the string
+     *        The target string to be replaced in the string
      * @return
      */
     public static String replaceWithIndent( String string, String source,
             String target )
     {
-        if( string == null )
-         {
+        if( string == null ) {
             return ""; //$NON-NLS-1$
         }
 
@@ -273,17 +269,16 @@ public class StringUtils
 
     /**
      * Returns a sequence multiplied by the specified number of times
-     *
+     * 
      * @param sequence
-     *            The sequence to multiply
+     *        The sequence to multiply
      * @param times
-     *            The number of times to multiply
+     *        The number of times to multiply
      * @return
      */
     public static String multiples( String sequence, int times )
     {
-        if( sequence == null )
-         {
+        if( sequence == null ) {
             return ""; //$NON-NLS-1$
         }
 
@@ -296,9 +291,9 @@ public class StringUtils
 
     /**
      * Returns true if the specified string is null or empty
-     *
+     * 
      * @param target
-     *            The string to check
+     *        The string to check
      */
     public static boolean isNullOrEmpty( String target )
     {
@@ -309,11 +304,11 @@ public class StringUtils
      * Returns the list of groups found by the specified regex
      * in the specified string.
      * The regex is applied case insensitive
-     *
+     * 
      * @param regexStr
-     *            The regex used to extract the groups
+     *        The regex used to extract the groups
      * @param targetString
-     *            The string on which to apply the regex
+     *        The string on which to apply the regex
      * @return The list of strings which matched the regex
      */
     public static List< String > getGroups( String regexStr, String targetString )

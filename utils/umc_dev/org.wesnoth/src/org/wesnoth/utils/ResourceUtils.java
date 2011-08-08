@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,7 +64,7 @@ public class ResourceUtils
 {
     /**
      * Copies a file from source to target
-     *
+     * 
      * @param source
      * @param target
      * @throws IOException
@@ -135,7 +135,7 @@ public class ResourceUtils
 
     /**
      * Gets the contents as string of the specified file
-     *
+     * 
      * @param file
      *        The file
      * @return
@@ -147,7 +147,7 @@ public class ResourceUtils
 
     /**
      * Creates the desired resource
-     *
+     * 
      * @param resource
      *        the resource to be created (IFile/IFolder)
      * @param project
@@ -189,7 +189,7 @@ public class ResourceUtils
 
     /**
      * Creates a folder in the specified project with the specified details
-     *
+     * 
      * @param project
      *        the project in which the folder will be created
      * @param folderName
@@ -203,7 +203,7 @@ public class ResourceUtils
 
     /**
      * Rercursively deletes a directory
-     *
+     * 
      * @param path
      *        The directory's path
      * @return True if the delete was ok, false otherwise
@@ -227,7 +227,7 @@ public class ResourceUtils
 
     /**
      * Rercursively deletes a directory
-     *
+     * 
      * @param path
      *        The directory's path
      * @return True if the delete was ok, false otherwise
@@ -239,7 +239,7 @@ public class ResourceUtils
 
     /**
      * Creates a file in the specified project with the specified details
-     *
+     * 
      * @param project
      *        the project in which the file will be created
      * @param fileName
@@ -274,7 +274,7 @@ public class ResourceUtils
     /**
      * Creates the '.wesnoth' file with the specified path
      * only if it doesn't exist already
-     *
+     * 
      * @param path
      *        The path of '.wesnoth' file
      * @param force
@@ -295,7 +295,7 @@ public class ResourceUtils
 
     /**
      * Creates the 'build.xml' with the specified path
-     *
+     * 
      * @param path
      *        The full path to the 'build.xml' file
      * @param params
@@ -319,7 +319,7 @@ public class ResourceUtils
     /**
      * Creates a new empty file in the target.
      * Subsequent non-existent directories in the path will be created
-     *
+     * 
      * @param target
      * @return
      */
@@ -336,7 +336,7 @@ public class ResourceUtils
     /**
      * Creates the specified directory.
      * Subsequent non-existent directories will be created
-     *
+     * 
      * @param target
      * @return
      */
@@ -347,7 +347,7 @@ public class ResourceUtils
 
     /**
      * Removes the specified file
-     *
+     * 
      * @param target
      * @return
      */
@@ -361,7 +361,7 @@ public class ResourceUtils
 
     /**
      * Checks if the specified path points to a valid (existing file)
-     *
+     * 
      * @param filePath
      *        The path to check
      * @return True if the filePath points to an existing file, false otherwise
@@ -379,7 +379,7 @@ public class ResourceUtils
 
     /**
      * Checks if the specified path is in the user's addons directory
-     *
+     * 
      * @param paths
      *        The paths to use when doing the check
      * @param path
@@ -398,7 +398,7 @@ public class ResourceUtils
 
     /**
      * Checks if the specified path is in the campaigns directory
-     *
+     * 
      * @param paths
      *        The paths to use when doing the check
      * @param path
@@ -417,7 +417,7 @@ public class ResourceUtils
 
     /**
      * Returns true if the resource is a WML config file
-     *
+     * 
      * @param resource
      *        The resource to check
      * @return True or false
@@ -435,7 +435,7 @@ public class ResourceUtils
      * It will start searching upwards starting from curren
      * resource's directory, until it finds a '_main.cfg' but it will
      * stop when encounters a project
-     *
+     * 
      * @param resource
      *        The resource where to search for '_main.cfg'
      * @return
@@ -501,7 +501,7 @@ public class ResourceUtils
      * If the resource is not a '_main.cfg' it will search for it
      * with
      * {@link org.wesnoth.projects.ProjectUtils#getMainConfigLocation(IResource)}
-     *
+     * 
      * @param resource
      *        The resource where to search the id
      * @return
@@ -516,7 +516,7 @@ public class ResourceUtils
 
     /**
      * Gets the campaign id
-     *
+     * 
      * @param fileName
      * @return
      */
@@ -529,7 +529,7 @@ public class ResourceUtils
 
     /**
      * Returns the SaxHandler for the parsed specified wml resource
-     *
+     * 
      * @param resourcePath
      *        The resourcepath to parse
      * @param saxHandler
@@ -564,7 +564,7 @@ public class ResourceUtils
 
     /**
      * Deletes all markers of type specified from the resource
-     *
+     * 
      * @param resource
      * @param type
      */
@@ -581,7 +581,7 @@ public class ResourceUtils
      * Parses the current line of the file and add the marker (if any) on the
      * file.
      * Current used format: "sourcefile", line x: error message
-     *
+     * 
      * @param line
      *        the line to parse
      * @param type
@@ -632,7 +632,7 @@ public class ResourceUtils
     /**
      * Returns the corresponding {@link IResource} from the specified
      * EMF Resource
-     *
+     * 
      * @param emfResource
      *        The EMF Resource
      * @return An {@link IResource} instance
@@ -649,7 +649,7 @@ public class ResourceUtils
     /**
      * Gets the set of included containers in this file
      * as a macro call
-     *
+     * 
      * @param file
      *        The file to get the containers from
      * @return A set of containers represented by their Path as string
@@ -685,7 +685,7 @@ public class ResourceUtils
              * forms:
              * - {campaigns/... }
              * - {~add-ons/... }
-             *
+             * 
              */
             // TODO: check for including a specific config file?
             if( ! ( text.startsWith( "{campaigns" ) ) && //$NON-NLS-1$
@@ -713,7 +713,7 @@ public class ResourceUtils
 
     /**
      * Gets the associated dependency index for the specified file
-     *
+     * 
      * @param file
      *        The file to get the index for
      * @return An index or {@link Integer.MAX_VALUE}
@@ -735,7 +735,7 @@ public class ResourceUtils
 
     /**
      * This is a WML files comparator, based on the WML parsing rules.
-     *
+     * 
      * @see http://wiki.wesnoth.org/PreprocessorRef
      */
     public static class WMLFilesComparator implements Comparator< IResource >,
@@ -754,7 +754,7 @@ public class ResourceUtils
 
     /**
      * Compares 2 filenames to get the wml file order
-     *
+     * 
      * @param fileName1
      *        The first filename
      * @param fileName2
