@@ -27,6 +27,7 @@ import org.wesnoth.Logger;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.ResourceUtils.WMLFilesComparator;
 import org.wesnoth.utils.StringUtils;
+import org.wesnoth.views.WesnothProjectsExplorer;
 
 public class DependencyListBuilder implements Serializable
 {
@@ -217,6 +218,12 @@ public class DependencyListBuilder implements Serializable
         }
         else {
             container = project_.getFolder( containerPath );
+        }
+
+        // skip core library
+        if( container.getName( ).equals(
+                WesnothProjectsExplorer.CORE_LIBRARY_NAME ) ) {
+            return;
         }
 
         IResource main_cfg = container.findMember( "_main.cfg" ); //$NON-NLS-1$

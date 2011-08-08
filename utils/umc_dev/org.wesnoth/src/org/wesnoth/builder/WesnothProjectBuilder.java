@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingDeque;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -42,6 +43,7 @@ import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WorkspaceUtils;
+import org.wesnoth.views.WesnothProjectsExplorer;
 import org.wesnoth.wml.SimpleWMLParser;
 import org.wesnoth.wml.WMLConfig;
 
@@ -241,6 +243,13 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                     Logger.getInstance( ).log(
                             "unknown delta kind: " + deltaKind );
                 }
+            }
+
+            // skip core library files
+            if( resource instanceof IContainer
+                    && WesnothProjectsExplorer.CORE_LIBRARY_NAME
+                            .equals( resource.getName( ) ) ) {
+                continue;
             }
 
             deltasQueue

@@ -301,6 +301,34 @@
             wizardId="org.wesnoth.wizards.wizardLauncher">
          <enablement></enablement>
       </commonWizard>
+      <navigatorContent
+            activeByDefault="true"
+            appearsBefore="org.eclipse.ui.navigator.resourceContent"
+            contentProvider="org.eclipse.ui.internal.navigator.resources.workbench.ResourceExtensionContentProvider"
+            icon="icons/wesnoth-icon_16.png"
+            id="org.wesnoth.wesnothNavigatorContent"
+            labelProvider="org.eclipse.ui.internal.navigator.resources.workbench.ResourceExtensionLabelProvider"
+            name="Wesnoth Resources"
+            priority="highest"
+            sortOnly="true">
+        <enablement>
+             <or>         
+                <instanceof 
+                        value="org.eclipse.core.resources.IResource" /> 
+             </or>
+        </enablement>
+        <commonSorter
+              class="org.wesnoth.views.WesnothProjectsExplorerViewerSorter"
+              id="org.wesnoth.navigator.wesnothContentSorter">
+           <parentExpression>
+              <or>
+                 <instanceof
+                       value="org.wesnoth.views.WesnothProjectsExplorer">
+                 </instanceof>
+              </or>
+           </parentExpression>
+        </commonSorter>
+      </navigatorContent>
    </extension>
    <extension
          point="org.eclipse.ui.navigator.viewer">
@@ -317,7 +345,22 @@
                   pattern="org.eclipse.ui.navigator.resources.filters.*">
             </contentExtension>
             <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.linkHelper">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.workingSets">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.filters.*">
+            </contentExtension>
+            <contentExtension
                   pattern="org.wesnoth.navigator.filters.*">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.wesnoth.wesnothNavigatorContent">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.wesnoth.navigator.wesnothContentSorter">
             </contentExtension>
          </includes>
       </viewerContentBinding>

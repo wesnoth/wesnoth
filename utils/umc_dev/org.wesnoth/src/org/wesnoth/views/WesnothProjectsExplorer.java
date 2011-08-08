@@ -21,6 +21,8 @@ public class WesnothProjectsExplorer extends CommonNavigator implements
 {
     public static final String ID_PROJECTS_EXPLORER = "org.wesnoth.views.WesnothProjectsExplorer"; //$NON-NLS-1$
 
+    public static final String CORE_LIBRARY_NAME    = "Wesnoth Core Library";
+
     public WesnothProjectsExplorer( )
     {
     }
