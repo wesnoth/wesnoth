@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
+import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
@@ -36,6 +37,7 @@ import org.wesnoth.ui.editor.WMLAbstractDirtyEditorCallback;
 import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.ui.editor.WMLHighlightingHelper;
 import org.wesnoth.ui.folding.WMLFoldingRegionProvider;
+import org.wesnoth.ui.hover.WMLEObjectHoverProvider;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.ui.navigation.WMLHyperlinkHelper;
 import org.wesnoth.ui.resource.WMLLocationInFileProvider;
@@ -59,6 +61,9 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
     public void configure( Binder binder )
     {
         super.configure( binder );
+
+        binder.bind( IEObjectHoverProvider.class ).to(
+                WMLEObjectHoverProvider.class );
     }
 
     @Override
