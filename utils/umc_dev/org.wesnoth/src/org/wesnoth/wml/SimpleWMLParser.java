@@ -64,7 +64,7 @@ public class SimpleWMLParser
     public SimpleWMLParser( IFile file, WMLConfig config, ProjectCache projCache )
     {
         config_ = Preconditions.checkNotNull( config );
-        root_ = ResourceUtils.getWMLRoot( file );
+        root_ = WMLUtils.getWMLRoot( file );
         projectCache_ = projCache;
 
         dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
@@ -97,6 +97,11 @@ public class SimpleWMLParser
         // clear tags
         config_.getWMLTags( ).clear( );
         config_.getEvents( ).clear( );
+
+        // nothing to parse!
+        if( ! itor.hasNext( ) ) {
+            return;
+        }
 
         String currentFileLocation = root_.eResource( ).getURI( )
                 .toFileString( );

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,13 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.XtextResource;
@@ -17,7 +22,9 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.wesnoth.wml.WMLExpression;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLKeyValue;
+import org.wesnoth.wml.WMLRoot;
 import org.wesnoth.wml.WMLTag;
+import org.wesnoth.wml.WmlFactory2;
 
 public class WMLUtils
 {
@@ -44,12 +51,38 @@ public class WMLUtils
     }
 
     /**
+     * Gets the WML Grammar root of the specified file
+     * 
+     * @param file
+     *        The file to get the WML model from
+     * @return A WMLRoot instance or null if there is none
+     */
+    public static WMLRoot getWMLRoot( IFile file )
+    {
+        URI uri = URI.createPlatformResourceURI(
+                file.getFullPath( ).toString( ), true );
+        ResourceSet resourceSet = new ResourceSetImpl( );
+        Resource resource = resourceSet.getResource( uri, true );
+        if( resource == null || resource.getContents( ).isEmpty( ) ) {
+            return WmlFactory2.eINSTANCE.createWMLRoot( );
+        }
+
+        EObject result = resource.getContents( ).get( 0 );
+
+        if( result instanceof WMLRoot == false ) {
+            return null;
+        }
+
+        return ( WMLRoot ) result;
+    }
+
+    /**
      * Returns the child key of the specified tag by its name.
-     *
+     * 
      * @param tag
-     *            The tag to search into
+     *        The tag to search into
      * @param name
-     *            The name of the key to search for
+     *        The name of the key to search for
      * @return Returns the found key or null if non existing
      */
     public static WMLKey getKeyByName( WMLTag tag, String name )
@@ -65,11 +98,11 @@ public class WMLUtils
 
     /**
      * Returns the child tag of the specified tag by its name.
-     *
+     * 
      * @param tag
-     *            The tag to search into
+     *        The tag to search into
      * @param name
-     *            The name of the tag to search for
+     *        The name of the tag to search for
      * @return Returns the found tag or null if non existing
      */
     public static WMLTag getTagByName( WMLTag tag, String name )
@@ -85,9 +118,9 @@ public class WMLUtils
 
     /**
      * Returns the key value from the list as a string value
-     *
+     * 
      * @param values
-     *            The list of values of the key
+     *        The list of values of the key
      * @return A string representation of the key's value
      */
     public static String getKeyValue( EList< WMLKeyValue > values )
@@ -103,9 +136,9 @@ public class WMLUtils
 
     /**
      * Returns a WML string representation of the specified tag
-     *
+     * 
      * @param tag
-     *            The tag to get the WML String representation for
+     *        The tag to get the WML String representation for
      * @return The string representation
      */
     public static String toWMLString( WMLTag tag )
@@ -140,9 +173,9 @@ public class WMLUtils
 
     /**
      * Returns a WML string representation of the specified key
-     *
+     * 
      * @param tag
-     *            The key to get the WML String representation for
+     *        The key to get the WML String representation for
      * @return The string representation
      */
     public static String toWMLString( WMLKey key )
@@ -153,9 +186,9 @@ public class WMLUtils
     /**
      * Returns the string representation of the specified WML object
      * with the preceeding space/new lines cleaned
-     *
+     * 
      * @param object
-     *            A WML EObject
+     *        A WML EObject
      * @return A string representation
      */
     public static String toString( EObject object )

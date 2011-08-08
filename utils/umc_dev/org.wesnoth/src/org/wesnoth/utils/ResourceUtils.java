@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,11 +45,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.swt.SWT;
 
 import org.wesnoth.Constants;
@@ -62,13 +59,12 @@ import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.wml.SimpleWMLParser;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
-import org.wesnoth.wml.WmlFactory2;
 
 public class ResourceUtils
 {
     /**
      * Copies a file from source to target
-     *
+     * 
      * @param source
      * @param target
      * @throws IOException
@@ -102,8 +98,7 @@ public class ResourceUtils
     public static String getFileContents( File file, boolean skipEmptyLines,
             boolean skipCommentLines )
     {
-        if( ! file.exists( ) || ! file.isFile( ) )
-         {
+        if( ! file.exists( ) || ! file.isFile( ) ) {
             return ""; //$NON-NLS-1$
         }
 
@@ -140,9 +135,9 @@ public class ResourceUtils
 
     /**
      * Gets the contents as string of the specified file
-     *
+     * 
      * @param file
-     *            The file
+     *        The file
      * @return
      */
     public static String getFileContents( File file )
@@ -152,15 +147,15 @@ public class ResourceUtils
 
     /**
      * Creates the desired resource
-     *
+     * 
      * @param resource
-     *            the resource to be created (IFile/IFolder)
+     *        the resource to be created (IFile/IFolder)
      * @param project
-     *            the project where to be created the resource
+     *        the project where to be created the resource
      * @param resourceName
-     *            the name of the resource
+     *        the name of the resource
      * @param input
-     *            the contents of the resource or null if no contents needed
+     *        the contents of the resource or null if no contents needed
      */
     public static void createResource( IResource resource, IProject project,
             String resourceName, InputStream input )
@@ -194,11 +189,11 @@ public class ResourceUtils
 
     /**
      * Creates a folder in the specified project with the specified details
-     *
+     * 
      * @param project
-     *            the project in which the folder will be created
+     *        the project in which the folder will be created
      * @param folderName
-     *            the name of the folder
+     *        the name of the folder
      */
     public static void createFolder( IProject project, String folderName )
     {
@@ -208,9 +203,9 @@ public class ResourceUtils
 
     /**
      * Rercursively deletes a directory
-     *
+     * 
      * @param path
-     *            The directory's path
+     *        The directory's path
      * @return True if the delete was ok, false otherwise
      */
     public static boolean deleteDirectory( File path )
@@ -232,9 +227,9 @@ public class ResourceUtils
 
     /**
      * Rercursively deletes a directory
-     *
+     * 
      * @param path
-     *            The directory's path
+     *        The directory's path
      * @return True if the delete was ok, false otherwise
      */
     public static boolean deleteDirectory( String path )
@@ -244,15 +239,15 @@ public class ResourceUtils
 
     /**
      * Creates a file in the specified project with the specified details
-     *
+     * 
      * @param project
-     *            the project in which the file will be created
+     *        the project in which the file will be created
      * @param fileName
-     *            the filename of the file
+     *        the filename of the file
      * @param fileContentsString
-     *            the text which will be contained in the file
+     *        the text which will be contained in the file
      * @param overwrite
-     *            true to overwrite the file if it already exists
+     *        true to overwrite the file if it already exists
      */
     public static void createFile( IProject project, String fileName,
             String fileContentsString, boolean overwrite )
@@ -279,11 +274,11 @@ public class ResourceUtils
     /**
      * Creates the '.wesnoth' file with the specified path
      * only if it doesn't exist already
-     *
+     * 
      * @param path
-     *            The path of '.wesnoth' file
+     *        The path of '.wesnoth' file
      * @param force
-     *            If true the file will be re-created if exists
+     *        If true the file will be re-created if exists
      */
     public static void createWesnothFile( String path, boolean force )
     {
@@ -300,11 +295,11 @@ public class ResourceUtils
 
     /**
      * Creates the 'build.xml' with the specified path
-     *
+     * 
      * @param path
-     *            The full path to the 'build.xml' file
+     *        The full path to the 'build.xml' file
      * @param params
-     *            The parameters list to replace in the template of 'build.xml'
+     *        The parameters list to replace in the template of 'build.xml'
      */
     public static void createBuildXMLFile( String path,
             List< ReplaceableParameter > params )
@@ -324,7 +319,7 @@ public class ResourceUtils
     /**
      * Creates a new empty file in the target.
      * Subsequent non-existent directories in the path will be created
-     *
+     * 
      * @param target
      * @return
      */
@@ -341,7 +336,7 @@ public class ResourceUtils
     /**
      * Creates the specified directory.
      * Subsequent non-existent directories will be created
-     *
+     * 
      * @param target
      * @return
      */
@@ -352,7 +347,7 @@ public class ResourceUtils
 
     /**
      * Removes the specified file
-     *
+     * 
      * @param target
      * @return
      */
@@ -366,17 +361,16 @@ public class ResourceUtils
 
     /**
      * Checks if the specified path points to a valid (existing file)
-     *
+     * 
      * @param filePath
-     *            The path to check
+     *        The path to check
      * @return True if the filePath points to an existing file, false otherwise
      */
     public static boolean isValidFilePath( String filePath )
     {
         boolean valid = filePath != null && ! filePath.isEmpty( )
                 && new File( filePath ).exists( );
-        if( valid == false && ! StringUtils.isNullOrEmpty( filePath ) )
-         {
+        if( valid == false && ! StringUtils.isNullOrEmpty( filePath ) ) {
             Logger.getInstance( ).logWarn(
                     "The file does not exist or is null: " + filePath ); //$NON-NLS-1$
         }
@@ -385,11 +379,11 @@ public class ResourceUtils
 
     /**
      * Checks if the specified path is in the user's addons directory
-     *
+     * 
      * @param paths
-     *            The paths to use when doing the check
+     *        The paths to use when doing the check
      * @param path
-     *            The path to check
+     *        The path to check
      * @return True if the path is in user's addons
      */
     public static boolean isUserAddonsDirPath( Paths paths, String path )
@@ -404,11 +398,11 @@ public class ResourceUtils
 
     /**
      * Checks if the specified path is in the campaigns directory
-     *
+     * 
      * @param paths
-     *            The paths to use when doing the check
+     *        The paths to use when doing the check
      * @param path
-     *            The path to check
+     *        The path to check
      * @return True if the path is in data/campaigns directory
      */
     public static boolean isCampaignDirPath( Paths paths, String path )
@@ -423,9 +417,9 @@ public class ResourceUtils
 
     /**
      * Returns true if the resource is a WML config file
-     *
+     * 
      * @param resource
-     *            The resource to check
+     *        The resource to check
      * @return True or false
      */
     public static boolean isConfigFile( IResource resource )
@@ -441,9 +435,9 @@ public class ResourceUtils
      * It will start searching upwards starting from curren
      * resource's directory, until it finds a '_main.cfg' but it will
      * stop when encounters a project
-     *
+     * 
      * @param resource
-     *            The resource where to search for '_main.cfg'
+     *        The resource where to search for '_main.cfg'
      * @return
      */
     public static IFile getMainConfigLocation( IResource resource )
@@ -455,16 +449,14 @@ public class ResourceUtils
         IFile targetResource = null;
         if( resource instanceof IProject ) {
             IProject project = ( IProject ) resource;
-            if( project.getFile( "_main.cfg" ).exists( ) )
-             {
+            if( project.getFile( "_main.cfg" ).exists( ) ) {
                 targetResource = project.getFile( "_main.cfg" ); //$NON-NLS-1$
             }
         }
 
         if( targetResource == null && resource instanceof IFolder ) {
             IFolder folder = ( IFolder ) resource;
-            if( folder.getFile( new Path( "_main.cfg" ) ).exists( ) )
-             {
+            if( folder.getFile( new Path( "_main.cfg" ) ).exists( ) ) {
                 targetResource = folder.getFile( new Path( "_main.cfg" ) ); //$NON-NLS-1$
             }
         }
@@ -509,9 +501,9 @@ public class ResourceUtils
      * If the resource is not a '_main.cfg' it will search for it
      * with
      * {@link org.wesnoth.projects.ProjectUtils#getMainConfigLocation(IResource)}
-     *
+     * 
      * @param resource
-     *            The resource where to search the id
+     *        The resource where to search the id
      * @return
      */
     public static String getCampaignID( IResource resource )
@@ -524,7 +516,7 @@ public class ResourceUtils
 
     /**
      * Gets the campaign id
-     *
+     * 
      * @param fileName
      * @return
      */
@@ -537,11 +529,11 @@ public class ResourceUtils
 
     /**
      * Returns the SaxHandler for the parsed specified wml resource
-     *
+     * 
      * @param resourcePath
-     *            The resourcepath to parse
+     *        The resourcepath to parse
      * @param saxHandler
-     *            The SAX Handler used to handle the parsed wml
+     *        The SAX Handler used to handle the parsed wml
      * @return
      */
     public static DefaultHandler getWMLSAXHandlerFromResource(
@@ -572,7 +564,7 @@ public class ResourceUtils
 
     /**
      * Deletes all markers of type specified from the resource
-     *
+     * 
      * @param resource
      * @param type
      */
@@ -589,11 +581,11 @@ public class ResourceUtils
      * Parses the current line of the file and add the marker (if any) on the
      * file.
      * Current used format: "sourcefile", line x: error message
-     *
+     * 
      * @param line
-     *            the line to parse
+     *        the line to parse
      * @param type
-     *            the created marker or null if there was none
+     *        the created marker or null if there was none
      * @return
      */
     public static IMarker addMarkerForLine( String line, String type )
@@ -640,9 +632,9 @@ public class ResourceUtils
     /**
      * Returns the corresponding {@link IResource} from the specified
      * EMF Resource
-     *
+     * 
      * @param emfResource
-     *            The EMF Resource
+     *        The EMF Resource
      * @return An {@link IResource} instance
      */
     public static IResource getWorkspaceResource( Resource emfResource )
@@ -655,43 +647,17 @@ public class ResourceUtils
     }
 
     /**
-     * Gets the WML Grammar root of the specified file
-     *
-     * @param file
-     *            The file to get the WML model from
-     * @return A WMLRoot instance or null if there is none
-     */
-    public static WMLRoot getWMLRoot( IFile file )
-    {
-        URI uri = URI.createPlatformResourceURI(
-                file.getFullPath( ).toString( ), true );
-        ResourceSet resourceSet = new ResourceSetImpl( );
-        Resource resource = resourceSet.getResource( uri, true );
-        if( resource == null || resource.getContents( ).isEmpty( ) ) {
-            return WmlFactory2.eINSTANCE.createWMLRoot( );
-        }
-
-        EObject result = resource.getContents( ).get( 0 );
-
-        if( result instanceof WMLRoot == false ) {
-            return null;
-        }
-
-        return ( WMLRoot ) result;
-    }
-
-    /**
      * Gets the set of included containers in this file
      * as a macro call
-     *
+     * 
      * @param file
-     *            The file to get the containers from
+     *        The file to get the containers from
      * @return A set of containers represented by their Path as string
      */
     public static Set< String > getContainers( IFile file )
     {
         IProject project = file.getProject( );
-        WMLRoot root = ResourceUtils.getWMLRoot( file );
+        WMLRoot root = WMLUtils.getWMLRoot( file );
         // nothing to do
         if( root == null ) {
             return new LinkedHashSet< String >( 0 );
@@ -719,7 +685,7 @@ public class ResourceUtils
              * forms:
              * - {campaigns/... }
              * - {~add-ons/... }
-             *
+             * 
              */
             // TODO: check for including a specific config file?
             if( ! ( text.startsWith( "{campaigns" ) ) && //$NON-NLS-1$
@@ -747,9 +713,9 @@ public class ResourceUtils
 
     /**
      * Gets the associated dependency index for the specified file
-     *
+     * 
      * @param file
-     *            The file to get the index for
+     *        The file to get the index for
      * @return An index or {@link Integer.MAX_VALUE}
      */
     public static int getDependencyIndex( IFile file )
@@ -769,7 +735,7 @@ public class ResourceUtils
 
     /**
      * This is a WML files comparator, based on the WML parsing rules.
-     *
+     * 
      * @see http://wiki.wesnoth.org/PreprocessorRef
      */
     public static class WMLFilesComparator implements Comparator< IResource >,
@@ -788,31 +754,35 @@ public class ResourceUtils
 
     /**
      * Compares 2 filenames to get the wml file order
-     *
+     * 
      * @param fileName1
-     *            The first filename
+     *        The first filename
      * @param fileName2
-     *            The second filename
+     *        The second filename
      * @return -1, 0 or 1 if the fileName1 is lower, equal or greater than
      *         fileName2
      */
     public static int wmlFileNameCompare( String fileName1, String fileName2 )
     {
         // _initial.cfg is always the "lowest"
-        if( fileName1.equals( "_initial.cfg" ) && ! ( fileName2.equals( "_initial.cfg" ) ) ) {
+        if( fileName1.equals( "_initial.cfg" )
+                && ! ( fileName2.equals( "_initial.cfg" ) ) ) {
             return - 1;
         }
 
-        if( fileName2.equals( "_initial.cfg" ) && ! ( fileName1.equals( "_initial.cfg" ) ) ) {
+        if( fileName2.equals( "_initial.cfg" )
+                && ! ( fileName1.equals( "_initial.cfg" ) ) ) {
             return 1;
         }
 
         // _final.cfg is always the "highest"
-        if( fileName1.equals( "_final.cfg" ) && ! ( fileName2.equals( "_final.cfg" ) ) ) {
+        if( fileName1.equals( "_final.cfg" )
+                && ! ( fileName2.equals( "_final.cfg" ) ) ) {
             return 1;
         }
 
-        if( fileName2.equals( "_final.cfg" ) && ! ( fileName1.equals( "_final.cfg" ) ) ) {
+        if( fileName2.equals( "_final.cfg" )
+                && ! ( fileName1.equals( "_final.cfg" ) ) ) {
             return - 1;
         }
 
