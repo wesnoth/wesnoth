@@ -86,6 +86,7 @@ struct end_level_data
 	end_level_data()
 		: carryover_report(true)
 		, prescenario_save(true)
+		, replay_save(true)
 		, linger_mode(true)
 		, gold_bonus(true)
 		, carryover_percentage(80)
@@ -96,6 +97,7 @@ struct end_level_data
 
 	bool carryover_report;             /**< Should a summary of the scenario outcome be displayed? */
 	bool prescenario_save;             /**< Should a prescenario be created the next game? */
+	bool replay_save;                  /**< Should a replay save be made? */
 	bool linger_mode;                  /**< Should linger mode be invoked? */
 	bool gold_bonus;                   /**< Should early-finish bonus be applied? */
 	int carryover_percentage;          /**< How much gold is carried over to next scenario. */

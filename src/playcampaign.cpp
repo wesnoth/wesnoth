@@ -398,7 +398,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			if (preferences::delete_saves())
 				savegame::manager::clean_saves(gamestate.classification().label);
 
-			if (preferences::save_replays()) {
+			if (preferences::save_replays() && end_level.replay_save) {
 				savegame::replay_savegame save(gamestate, preferences::compress_saves());
 				save.save_game_automatic(disp.video(), true);
 			}

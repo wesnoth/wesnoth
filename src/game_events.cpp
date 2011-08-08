@@ -2192,6 +2192,7 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	data.custom_endlevel_music = cfg["music"].str();
 	data.carryover_report = cfg["carryover_report"].to_bool(true);
 	data.prescenario_save = cfg["save"].to_bool(true);
+	data.replay_save = cfg["replay_save"].to_bool(true);
 	data.linger_mode = cfg["linger_mode"].to_bool(true)
 		&& !resources::teams->empty();
 	data.reveal_map = cfg["reveal_map"].to_bool(true);
