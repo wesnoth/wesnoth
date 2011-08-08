@@ -191,7 +191,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         String keyName = key.getName( );
 
         // handle the next_scenario and first_scenario
-        if( keyName.equals( "next_scenario" ) || //$NON-NLS-1$ 
+        if( keyName.equals( "next_scenario" ) || //$NON-NLS-1$
                 keyName.equals( "first_scenario" ) ) //$NON-NLS-1$
         {
             for( WMLConfig config: projectCache_.getWMLConfigs( ).values( ) ) {
@@ -379,7 +379,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
     /**
      * Returns the proposal for the specified tag, usign the specified indent
-     * 
+     *
      * @param tag
      *            The tag from which to construct the proposal
      * @param indent

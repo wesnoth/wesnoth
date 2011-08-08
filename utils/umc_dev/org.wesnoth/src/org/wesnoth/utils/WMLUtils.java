@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2011 by Timotei Dolean <timotei21@gmail.com>
- * 
+ *
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,7 +52,7 @@ public class WMLUtils
 
     /**
      * Gets the WML Grammar root of the specified file
-     * 
+     *
      * @param file
      *        The file to get the WML model from
      * @return A WMLRoot instance or null if there is none
@@ -78,7 +78,7 @@ public class WMLUtils
 
     /**
      * Returns the child key of the specified tag by its name.
-     * 
+     *
      * @param tag
      *        The tag to search into
      * @param name
@@ -98,7 +98,7 @@ public class WMLUtils
 
     /**
      * Returns the child tag of the specified tag by its name.
-     * 
+     *
      * @param tag
      *        The tag to search into
      * @param name
@@ -118,7 +118,7 @@ public class WMLUtils
 
     /**
      * Returns the key value from the list as a string value
-     * 
+     *
      * @param values
      *        The list of values of the key
      * @return A string representation of the key's value
@@ -136,7 +136,7 @@ public class WMLUtils
 
     /**
      * Returns a WML string representation of the specified tag
-     * 
+     *
      * @param tag
      *        The tag to get the WML String representation for
      * @return The string representation
@@ -173,7 +173,7 @@ public class WMLUtils
 
     /**
      * Returns a WML string representation of the specified key
-     * 
+     *
      * @param tag
      *        The key to get the WML String representation for
      * @return The string representation
@@ -186,7 +186,7 @@ public class WMLUtils
     /**
      * Returns the string representation of the specified WML object
      * with the preceeding space/new lines cleaned
-     * 
+     *
      * @param object
      *        A WML EObject
      * @return A string representation
