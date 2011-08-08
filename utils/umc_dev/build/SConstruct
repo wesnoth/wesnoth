@@ -98,6 +98,9 @@ for cleanup_file in to_cleanup:
 
 try: shutil.rmtree( "../org.wesnoth.feature/feature.temp.folder" )
 except: pass
+
+try: shutil.rmtree( "../org.wesnoth.dependencies.feature/feature.temp.folder" )
+except: pass
     
 # Local variables:
 # mode: python
