@@ -124,10 +124,12 @@ void effect::set_location(int x, int y)
 	int new_x = x - disp->get_location_x(zero_loc);
 	int new_y = y - disp->get_location_y(zero_loc);
 	if (new_x != x_ || new_y != y_) {
+		unrender();
 		x_ = new_x;
 		y_ = new_y;
 		buffer_.assign(NULL);
 		overlayed_hexes_.clear();
+		render();
 	}
 }
 
