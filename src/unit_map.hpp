@@ -45,7 +45,7 @@ class unit;
 class unit_map {
 public:
 	typedef boost::unordered_map<size_t, unit *> umap; 
-	typedef boost::unordered_map<map_location, umap::iterator> lmap;
+	typedef boost::unordered_map<map_location, unit *> lmap;
 
 	unit_map() : map_(), lmap_(), num_iters_(0), num_invalid_(0) { };
 	unit_map(const unit_map &that);
@@ -184,20 +184,9 @@ public:
 	typedef unit_iterator iterator;
 	typedef const_unit_iterator const_iterator;
 
-	unit_iterator find(size_t id) {
-		umap::iterator iter = map_.find(id);
-		if (!is_valid(iter)) iter = map_.end();
-		return unit_iterator(iter, this);
-	}
+	unit_iterator find(size_t id);
 
-	unit_iterator find(const map_location &loc) {
-		lmap::const_iterator i = lmap_.find(loc);
-		if (i == lmap_.end()) {
-			return unit_iterator(map_.end(), this);
-		}
-		assert(is_valid(i->second));
-		return unit_iterator(i->second, this);
-	}
+	unit_iterator find(const map_location &loc);
 
 	const_unit_iterator find(const map_location &loc) const
 	{ return const_cast<unit_map *>(this)->find(loc); }

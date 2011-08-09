@@ -16,9 +16,9 @@
 
 /** @file */
 
-#include "unit.hpp"
 #include "unit_id.hpp"
 #include "log.hpp"
+#include "unit.hpp"
 
 #include <functional>
 #include "unit_map.hpp"
@@ -132,7 +132,7 @@ void unit_map::insert(unit *p)
 	DBG_NG << "Adding unit " << p->underlying_id() << " - " << p->id()
 		<< " to location: (" << loc << ")\n";
 
-	std::pair<lmap::iterator,bool> res = lmap_.insert(std::make_pair(loc, biter.first)); 
+	std::pair<lmap::iterator,bool> res = lmap_.insert(std::make_pair(loc, p)); 
 	assert(res.second);
 	
 }
@@ -169,13 +169,14 @@ unit *unit_map::extract(const map_location &loc)
 	if (i == lmap_.end()) {
 		return NULL; }
 
-	umap::iterator iter = i->second;
-	unit *res = iter->second;
+	unit *res = i->second;
 
 	DBG_NG << "Extract unit " << res->underlying_id() << " - " << res->id()
 			<< " from location: (" << loc << ")\n";
-	iter->second = NULL;
+	i->second = NULL;
 	++num_invalid_;
+	map_.erase(res->underlying_id());
+	///todo replace with quick_erase(i) when boost min version supports it
 	lmap_.erase(i); 
 
 	return res;
@@ -198,7 +199,7 @@ void unit_map::clean_invalid() {
 	umap::iterator iter = map_.begin();
 	while (iter != map_.end()) {
 		if (!is_valid(iter)) {
-			map_.erase(iter++);
+			iter = map_.erase(iter);
 			++num_cleaned;
 		} else {
 			++iter;
@@ -208,6 +209,20 @@ void unit_map::clean_invalid() {
 	num_invalid_ -= num_cleaned;
 
 	LOG_NG << "unit_map::clean_invalid - removed " << num_cleaned << " invalid map entries.\n";
+}
+
+unit_map::unit_iterator unit_map::find(size_t id) {
+	umap::iterator iter = map_.find(id);
+	if (!is_valid(iter)) iter = map_.end();
+	return unit_iterator(iter, this);
+}
+
+unit_map::unit_iterator unit_map::find(const map_location &loc) {
+	lmap::const_iterator i = lmap_.find(loc);
+	if (i == lmap_.end()) {
+		return unit_iterator(map_.end(), this);
+	}
+	return(find(i->second->underlying_id()));
 }
 
 unit_map::unit_iterator unit_map::find_leader(int side)
