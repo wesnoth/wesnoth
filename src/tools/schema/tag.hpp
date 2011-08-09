@@ -282,6 +282,12 @@ public:
 		return all_const_link_iterators(links_.begin(),links_.end());
 	}
 
+	void remove_key_by_name(const std::string &name){
+		keys_.erase (name);
+	}
+	/** Removes all keys with this type. Works recursively */
+	void remove_keys_by_type(const std::string &type);
+
 private:
 	/** name of tag*/
 	std::string name_;

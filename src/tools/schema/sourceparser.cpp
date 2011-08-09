@@ -43,6 +43,8 @@ const std::string block_begin="@begin" ;
 const std::string block_end ="@end";
 /** allow directive*/
 const std::string allow="@allow";
+/** remove directive*/
+const std::string remove="@remove";
 /** sign "{" - curly bracket*/
 const std::string property_open="\\{";
 /** sign "}" - another curly bracket*/
@@ -157,8 +159,19 @@ static const std::string & get_allow_type(){
 									+property("name",sub(name_type))
 									+property("value",sub("\\^.+\\$"))
 									+ eol;
-	//
 	return allow_type;
+}
+static const std::string & get_remove_type(){
+	static std::string remove_type = valid + remove + property("type")
+									+property("name",sub(name_type))
+									+ eol;
+	return remove_type;
+}
+static const std::string & get_remove_key(){
+	static std::string remove_key = valid + remove + property("key")
+									+property("name",sub(name_type))
+									+ eol;
+	return remove_key;
 }
 
 const std::string & get_table_key_begin() {
@@ -199,6 +212,7 @@ void test_regex( std::ostream & f ){
 }
 
 bool class_source_parser::save_schema(){
+
 	std::fstream out;
 	if (output_.empty()){
 		return false;
@@ -208,6 +222,12 @@ bool class_source_parser::save_schema(){
 		errors_.add_simple_error("Can not open file "+output_+
 								 "\n Output woulfd not be stored\n");
 		return false;
+	}
+	// remove all forbidden keys
+	for (std::vector<std::string>::const_iterator i= forbidden_.begin ();
+	i != forbidden_.end (); ++i){
+		root_.remove_keys_by_type (*i);
+		types_.erase (*i);
 	}
 	out << "[wml_schema]\n";
 	for (std::map<std::string,std::string>::iterator i=types_.begin();
@@ -331,6 +351,7 @@ bool class_source_parser::parse_block(){
 		if (! getline(line) ) { return false; }
 		if ( check_valid(line)) {
 			if (check_allow_type(line)) continue;
+			if (check_remove_type(line)) continue;
 			if (check_parent_begin(line)) continue;
 
 			if (check_tag_begin(line)){
@@ -369,8 +390,12 @@ bool class_source_parser::parse_tag(){
 				parse_keys();
 			}
 			if (check_allow_link(line)){
+				continue;
 			}
 			if (check_allow_global(line)){
+				continue;
+			}
+			if (check_remove_key(line)){
 			}
 		}else{
 			if (!current_.empty()){
@@ -557,6 +582,29 @@ bool class_source_parser::check_allow_type(const std::string &s){
 		}
 		types_[name]=value;
 		errors_.remove_type_errors(name);
+	}
+	return res;
+}
+bool class_source_parser::check_remove_type(const std::string &s){
+	static const boost::regex remove_type (get_remove_type());
+	boost::smatch sub;
+	bool res = boost::regex_match(s,sub,remove_type);
+	if (res){
+		std::string name = sub[1];
+		types_[name]="";
+		forbidden_.push_back (name);
+		errors_.remove_type_errors (name);
+	}
+	return res;
+}
+bool class_source_parser::check_remove_key(const std::string &s){
+	static const boost::regex remove_key (get_remove_key());
+	boost::smatch sub;
+	bool res = boost::regex_match(s,sub,remove_key);
+	if (res){
+		if (! current_.empty ()){
+			current_.back ().remove_key_by_name(sub[1]);
+		}
 	}
 	return res;
 }

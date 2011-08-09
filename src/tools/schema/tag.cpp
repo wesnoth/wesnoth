@@ -68,6 +68,9 @@ class_tag::class_tag(const config & cfg){
 		name_ = cfg["name"].str();
 		min_ = cfg["min"].to_int();
 		max_ = cfg["max"].to_int();
+		if (max_ < 0){
+			max_ = INT_MAX;
+		}
 		if (cfg.has_attribute("super")){
 			super_ = cfg["super"].str();
 		}
@@ -146,6 +149,17 @@ void class_tag::expand_all(class_tag &root){
 		i->second.expand_all(root);
 	}
 }
+void class_tag::remove_keys_by_type (const std::string & type){
+	for (key_iterator i= keys_.begin (); i!= keys_.end(); ++i){
+		if (i->second.get_type() == type){
+			keys_.erase (i);
+		}
+	}
+	for (tag_iterator t = tags_.begin(); t!=tags_.end();++t){
+		t->second.remove_keys_by_type(type);
+	}
+}
+
 /*WIKI
  * @begin{parent}{name="wml_schema/"}
  * @begin{tag}{name="tag"}{min=0}{max=1}
@@ -226,7 +240,6 @@ void class_tag::printl(std::ostream &os,int level, int step){
 	 if (it_links != links_.end()){
 		 return root.find_tag(it_links->second +"/" +next_path,root);
 	 }
-
 	 return NULL;
 
  }

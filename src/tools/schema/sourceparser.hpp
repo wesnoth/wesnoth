@@ -79,16 +79,14 @@ public:
 			parent_name_(""),
 			orphan_tags_(),
 			errors_(),
-			types_()
+			types_(),
+			forbidden_()
 	{
-	/**
-	 * @todo put all simple types in types_
-	 * to avoid warnings while using them.
-	 */
 	}
 
 	~class_source_parser(){
 	}
+
 	void set_input(const std::string &s){
 		input_ = s;
 	}
@@ -149,6 +147,8 @@ private:
 	class_error_container  errors_;
 	/** Allowed types*/
 	std::map<std::string,std::string> types_;
+	/** Types to remove*/
+	std::vector<std::string> forbidden_;
 	/**
 	 * Parses WIKI block line-by-line, checking every line
 	 * to open annotation block
@@ -213,8 +213,11 @@ private:
 	bool check_allow_global(const std::string &s);
 	/** Checks allowed types*/
 	bool check_allow_type(const std::string &s);
-
+	/** Checks removed types*/
+	bool check_remove_type(const std::string &s);
+	/** Checks removed keys*/
+	bool check_remove_key(const std::string &s);
 };
-} // namespace SchemaGenerator
+} // namespace schema_validation
 
 #endif // TOOLS_SCHEMA_SOURCEPARSER_HPP_INCLUDED
