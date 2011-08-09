@@ -895,10 +895,11 @@ protected:
 			"start_gold", "team_rgb", "village_gold", "recall_cost",
 			"controller", "persistent", "share_view",
 			"share_maps", "recruit", "fog", "shroud", "shroud_data",
+			"scroll_to_leader",
 			// Multiplayer attributes.
-			"income_lock", "gold_lock", "team_lock", "leader",
+			"income_lock", "gold_lock", "color_lock", "team_lock", "leader",
 			"random_leader", "terrain_liked",
-			"allow_changes", "faction_name", "user_description" };
+			"allow_changes", "faction_name", "user_description", "faction" };
 
 		log_step("place units");
 		foreach (const config *u, unit_configs_) {
