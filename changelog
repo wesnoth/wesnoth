@@ -72,6 +72,8 @@ Version 1.9.8+svn:
      * Decreased the hill defense from 60% to 50%
  * WML engine:
    * Implemented sub= and divide= for weapon specials (patch #2857)
+   * new attribute replay_save= in [end_level]. Defaults to yes, allows
+     WML authors to disable replay saving for a scenario. (bug #18026)
  * Miscellaneous and bug fixes:
    * Teach wmllint to fix deprecated implicit side=1 in [store_gold], [gold]
      [remove_shroud], [place_shroud], [modify_side], [modify_ai] actions
