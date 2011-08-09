@@ -217,6 +217,7 @@
             id="org.wesnoth.views">
       </category>
       <view
+            allowMultiple="false"
             category="org.wesnoth.views"
             class="org.wesnoth.views.WesnothProjectsExplorer"
             icon="icons/wesnoth-icon_16.png"
@@ -304,13 +305,13 @@
       <navigatorContent
             activeByDefault="true"
             appearsBefore="org.eclipse.ui.navigator.resourceContent"
-            contentProvider="org.eclipse.ui.internal.navigator.resources.workbench.ResourceExtensionContentProvider"
+            contentProvider="org.wesnoth.views.WesnothProjectsExplorerContentProvider"
             icon="icons/wesnoth-icon_16.png"
             id="org.wesnoth.wesnothNavigatorContent"
-            labelProvider="org.eclipse.ui.internal.navigator.resources.workbench.ResourceExtensionLabelProvider"
+            labelProvider="org.wesnoth.views.WesnothProjectsExplorerLabelProvider"
             name="Wesnoth Resources"
-            priority="highest"
-            sortOnly="true">
+            priority="lowest"
+            sortOnly="false">
         <enablement>
              <or>         
                 <instanceof 
@@ -323,11 +324,18 @@
            <parentExpression>
               <or>
                  <instanceof
-                       value="org.wesnoth.views.WesnothProjectsExplorer">
+                       value="org.eclipse.core.resources.IProject">
                  </instanceof>
               </or>
            </parentExpression>
         </commonSorter>
+        <triggerPoints>
+           <or>
+              <instanceof
+                    value="org.eclipse.core.resources.IContainer">
+              </instanceof>
+           </or>
+        </triggerPoints>
       </navigatorContent>
    </extension>
    <extension

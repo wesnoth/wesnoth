@@ -9,12 +9,16 @@
 package org.wesnoth.views;
 
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.ui.IElementFactory;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPersistableElement;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.eclipse.ui.navigator.CommonNavigator;
+
+import org.wesnoth.Logger;
 
 public class WesnothProjectsExplorer extends CommonNavigator implements
     IPersistableElement, IElementFactory
@@ -25,6 +29,12 @@ public class WesnothProjectsExplorer extends CommonNavigator implements
 
     public WesnothProjectsExplorer( )
     {
+        try {
+            PlatformUI.getWorkbench( ).getDecoratorManager( )
+                .setEnabled( "org.eclipse.ui.LinkedResourceDecorator", false );
+        } catch( CoreException e ) {
+            Logger.getInstance( ).logException( e );
+        }
     }
 
     @Override

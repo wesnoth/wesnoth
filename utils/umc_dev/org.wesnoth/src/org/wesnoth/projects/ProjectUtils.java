@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -29,6 +31,7 @@ import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
+import org.wesnoth.views.WesnothProjectsExplorer;
 
 public class ProjectUtils
 {
@@ -170,13 +173,8 @@ public class ProjectUtils
             monitor.subTask( Messages.ProjectUtils_6 );
             // add wesnoth nature
             IProjectDescription tmpDescription = handle.getDescription( );
-            tmpDescription
-                .setNatureIds( new String[] { Constants.NATURE_WESNOTH /*
-                                                                        * ,
-                                                                        * Constants
-                                                                        * .
-                                                                        * NATURE_XTEXT
-                                                                        */} );
+            tmpDescription.setNatureIds( new String[] {
+                Constants.NATURE_WESNOTH /* , Constants.NATURE_XTEXT */} );
             handle.setDescription( tmpDescription, monitor );
             monitor.worked( 5 );
 
@@ -188,6 +186,7 @@ public class ProjectUtils
                 .getCampaignDir( ) ) )
                 && ! normalizedPath.contains( StringUtils
                     .normalizePath( paths.getAddonsDir( ) ) ) ) {
+
                 ArrayList< ReplaceableParameter > param = new ArrayList< ReplaceableParameter >( );
                 param.add( new ReplaceableParameter(
                     "$$project_name", handle.getName( ) ) ); //$NON-NLS-1$
@@ -200,11 +199,20 @@ public class ProjectUtils
             }
             monitor.worked( 10 );
 
+            // create the Core library link
+            IFolder coreLibrary = handle
+                .getFolder( WesnothProjectsExplorer.CORE_LIBRARY_NAME );
+            coreLibrary.createLink( new Path( paths.getCoreDir( ) ),
+                IResource.NONE, monitor );
+            monitor.worked( 10 );
+
             // save the install name
             ProjectCache cache = new ProjectCache( handle );
             cache.setInstallName( installName );
             cache.loadCache( );
             projectCache_.put( handle, cache );
+
+            handle.refreshLocal( IResource.DEPTH_ONE, monitor );
         } catch( CoreException e ) {
             Logger.getInstance( ).logException( e );
             return 1;

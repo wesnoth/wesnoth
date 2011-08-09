@@ -45,6 +45,14 @@ public class WesnothProjectsExplorerViewerSorter extends ViewerSorter
             return 1;
         }
 
+        if( e1 instanceof IContainer && ! ( e2 instanceof IContainer ) ) {
+            return - 1;
+        }
+
+        if( e2 instanceof IContainer && ! ( e1 instanceof IContainer ) ) {
+            return 1;
+        }
+
         return result;
     }
 }
