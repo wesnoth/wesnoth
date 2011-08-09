@@ -77,6 +77,16 @@ public class ProjectCache implements Serializable
     }
 
     /**
+     * Returns the associated project for this cache
+     * 
+     * @return An IProject instance
+     */
+    public IProject getProject( )
+    {
+        return project_;
+    }
+
+    /**
      * Gets the properties map for this project.
      * 
      * @return A map with properties of the project

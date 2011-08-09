@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 
@@ -231,6 +232,16 @@ public class Preferences extends AbstractPreferenceInitializer
         public String getCoreDir( )
         {
             return getWorkingDir( ) + "data/core/"; //$NON-NLS-1$
+        }
+
+        /**
+         * Returns the 'data/core' directory as a Path variable
+         * 
+         * @return Returns the 'data/core' directory
+         */
+        public Path getCoreDirPath( )
+        {
+            return new Path( getCoreDir( ) );
         }
 
         /**

@@ -200,6 +200,11 @@ public class WesnothInstallsUtils
             if( WorkspaceUtils.checkPathsAreSet( installName, true ) ) {
                 // replace current install with the default
                 setInstallNameForResource( resource, installName );
+
+                // re-create the core library link
+                ProjectUtils.createCoreLibraryFolder( resource.getProject( ),
+                    IResource.NONE );
+
                 return true;
             }
 

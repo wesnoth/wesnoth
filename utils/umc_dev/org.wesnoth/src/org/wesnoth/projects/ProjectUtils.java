@@ -20,6 +20,8 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 
 import org.wesnoth.Constants;
@@ -73,6 +75,52 @@ public class ProjectUtils
             projectCache_.put( project, cache );
         }
         return cache;
+    }
+
+    /**
+     * Creates a folder that link to the project's wesnoth installation's
+     * 'data/core' directory
+     * 
+     * @param updateFlags
+     *        bit-wise or of update flag constants
+     *        (IResource.ALLOW_MISSING_LOCAL, IResource.REPLACE,
+     *        IResource.BACKGROUND_REFRESH, and IResource.HIDDEN)
+     * @param project
+     *        The project to create the link for
+     * @return True if the creation was successfully, false otherwise
+     */
+    public static boolean createCoreLibraryFolder( IProject project,
+        int updateFlags )
+    {
+        ProjectCache cache = getCacheForProject( project );
+        Paths paths = Preferences.getPaths( cache.getInstallName( ) );
+        IFolder coreLibrary = project
+            .getFolder( WesnothProjectsExplorer.CORE_LIBRARY_NAME );
+
+        if( ResourcesPlugin.getWorkspace( ).validateLinkLocation( coreLibrary,
+            paths.getCoreDirPath( ) ).getCode( ) != IStatus.ERROR ) {
+            try {
+                if( coreLibrary.exists( ) ) {
+                    coreLibrary.delete( true, new NullProgressMonitor( ) );
+                }
+
+                coreLibrary
+                    .createLink( paths.getCoreDirPath( ), updateFlags,
+                        new NullProgressMonitor( ) );
+            } catch( CoreException e ) {
+                Logger.getInstance( ).logException( e );
+                return false;
+            }
+        }
+        else {
+            Logger.getInstance( ).log(
+                "Couldn't create link on:" + paths.getCoreDir( )
+                    + "; project: " + project.getName( ),
+                "Cannot create the Wesnoth Core Library folder for project "
+                    + project.getName( ) + "!" );
+        }
+
+        return true;
     }
 
     /**
@@ -200,10 +248,7 @@ public class ProjectUtils
             monitor.worked( 10 );
 
             // create the Core library link
-            IFolder coreLibrary = handle
-                .getFolder( WesnothProjectsExplorer.CORE_LIBRARY_NAME );
-            coreLibrary.createLink( new Path( paths.getCoreDir( ) ),
-                IResource.NONE, monitor );
+            createCoreLibraryFolder( handle, IResource.NONE );
             monitor.worked( 10 );
 
             // save the install name

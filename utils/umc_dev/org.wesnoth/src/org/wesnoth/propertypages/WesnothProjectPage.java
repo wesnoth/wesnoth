@@ -3,6 +3,7 @@ package org.wesnoth.propertypages;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
@@ -24,12 +25,14 @@ import org.wesnoth.projects.ProjectUtils;
 public class WesnothProjectPage extends PropertyPage
 {
     private Combo        cmbInstall_;
-    private ProjectCache currProjectCache_;
+    private ProjectCache currentProjectCache_;
+    private String       currentInstall_;
 
     public WesnothProjectPage( )
     {
-        currProjectCache_ = null;
+        currentProjectCache_ = null;
         cmbInstall_ = null;
+        currentInstall_ = null;
     }
 
     @Override
@@ -42,7 +45,8 @@ public class WesnothProjectPage extends PropertyPage
 
         IProject selectedProject = ( IProject ) selectedElement;
 
-        currProjectCache_ = ProjectUtils.getCacheForProject( selectedProject );
+        currentProjectCache_ = ProjectUtils
+            .getCacheForProject( selectedProject );
 
         Composite newComposite = new Composite( parent, 0 );
         newComposite.setLayout( new FillLayout( SWT.VERTICAL ) );
@@ -64,7 +68,7 @@ public class WesnothProjectPage extends PropertyPage
         List< WesnothInstall > installs = WesnothInstallsUtils.getInstalls( );
 
         boolean foundInstallInList = false;
-        String installName = currProjectCache_.getInstallName( );
+        String installName = currentProjectCache_.getInstallName( );
 
         for( WesnothInstall wesnothInstall: installs ) {
             cmbInstall_.add( wesnothInstall.getName( ) );
@@ -72,6 +76,7 @@ public class WesnothProjectPage extends PropertyPage
             // current install is default?
             if( wesnothInstall.getName( ).equalsIgnoreCase( installName ) ) {
                 cmbInstall_.select( cmbInstall_.getItemCount( ) - 1 );
+                currentInstall_ = wesnothInstall.getName( );
                 foundInstallInList = true;
             }
         }
@@ -87,9 +92,16 @@ public class WesnothProjectPage extends PropertyPage
     @Override
     public boolean performOk( )
     {
+        String selectedInstall = cmbInstall_.getText( );
         // save settings.
-        if( currProjectCache_ != null && ! cmbInstall_.getText( ).isEmpty( ) ) {
-            currProjectCache_.setInstallName( cmbInstall_.getText( ) );
+        if( currentProjectCache_ != null && ! selectedInstall.isEmpty( ) ) {
+            currentProjectCache_.setInstallName( selectedInstall );
+
+            if( ! selectedInstall.equals( currentInstall_ ) ) {
+                // relink the data directory
+                ProjectUtils.createCoreLibraryFolder( currentProjectCache_
+                    .getProject( ), IResource.BACKGROUND_REFRESH );
+            }
         }
 
         return true;
