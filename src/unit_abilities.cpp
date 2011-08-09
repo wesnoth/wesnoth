@@ -855,7 +855,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
 			if(*v < 0) {
-				ERR_NG << "multiplication by a negative number with multiply= in weapon special " << effect_id << "\n";
+				ERR_NG << "multiplication by a negative number with multiply= in ability/weapon special " << effect_id << "\n";
 			}
 			else {
 				int multiply = int(v->to_double() * 100);
@@ -867,7 +867,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
 			if (*v <= 0) {
-				ERR_NG << "division by zero or negative number with divide= in weapon special " << effect_id << "\n";
+				ERR_NG << "division by zero or negative number with divide= in ability/weapon special " << effect_id << "\n";
 			}
 			else
 			{
