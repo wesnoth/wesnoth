@@ -2263,7 +2263,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 	const bool animate = cfg["animate"].to_bool(false);
 
 	const vconfig healed_filter = cfg.child("filter");
-	unit_map::const_unit_iterator u;
+	unit_map::unit_iterator u;
 	bool only_unit_at_loc1 = healed_filter.null();
 	bool heal_amount_to_set = true;
 	for(u  = units->begin(); u != units->end(); ++u) {

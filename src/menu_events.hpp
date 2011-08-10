@@ -91,7 +91,7 @@ public:
 	unit_map::iterator current_unit();
 	unit_map::const_iterator current_unit() const
 	{ return const_cast<menu_handler *>(this)->current_unit(); }
-	void move_unit_to_loc(const unit_map::const_iterator& ui, const map_location& target,
+	void move_unit_to_loc(const unit_map::iterator& ui, const map_location& target,
 		bool continue_move, int side_num, mouse_handler &mousehandler);
 	///@return Whether or not the recruit was successful
 	bool do_recruit(const std::string& name, int side_num, const map_location& last_hex);

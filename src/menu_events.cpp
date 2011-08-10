@@ -1689,7 +1689,7 @@ void menu_handler::continue_move(mouse_handler &mousehandler, int side_num)
 		side_num, mousehandler);
 }
 
-void menu_handler::move_unit_to_loc(const unit_map::const_iterator &ui,
+void menu_handler::move_unit_to_loc(const unit_map::iterator &ui,
 	const map_location& target, bool continue_move, int side_num,
 	mouse_handler &mousehandler)
 {

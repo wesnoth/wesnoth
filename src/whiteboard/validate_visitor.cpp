@@ -86,7 +86,7 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 		return WORTHLESS;
 
 	//Check that the unit still exists in the source hex
-	unit_map::const_iterator unit_it;
+	unit_map::iterator unit_it;
 	unit_it = resources::units->find(m.get_source_hex());
 	if (unit_it == resources::units->end())
 		return WORTHLESS;
