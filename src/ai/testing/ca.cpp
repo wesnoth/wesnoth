@@ -851,7 +851,7 @@ void get_villages_phase::execute()
 		if(leader != units_.end() && leader->get_location() == i->second) {
 			leader_move = *i;
 		} else {
-			if(units_.count(i->first) == 0) {
+			if (find_visible_unit(i->first, current_team()) == units_.end()) {
 				move_result_ptr move_res = execute_move_action(i->second,i->first,true);
 				if (!move_res->is_ok()) {
 					return;
@@ -877,7 +877,8 @@ void get_villages_phase::execute()
 	}
 
 	if(leader_move.second.valid()) {
-		if(units_.count(leader_move.first) == 0 && resources::game_map->is_village(leader_move.first)) {
+		if((find_visible_unit(leader_move.first , current_team()) == units_.end()) 
+		   && resources::game_map->is_village(leader_move.first)) {
 			move_result_ptr move_res = execute_move_action(leader_move.second,leader_move.first,true);
 			if (!move_res->is_ok()) {
 				return;

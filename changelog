@@ -2,6 +2,8 @@ Version 1.9.8+svn:
  * AI:
    * Fixed bug #16117: added a way to supress E_NOT_REACHED_DESTINATION to lua
      api via an optional boolean parameter - ai.move_full(from,to_x,to_y,true)
+   * Applied patch #2846 by thonsew: let AI forget about invisible enemy units
+     in villages during get_villages phase
  * Campaigns:
    * Fixed remaining deprecation warnings about empty side=
  * Language and i18n:
