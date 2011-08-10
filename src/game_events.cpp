@@ -1993,6 +1993,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 		preferences::encountered_units().insert(u.type_id());
 		map_location loc = cfg_to_loc(
 			(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
+		const bool advance = cfg["advance"].to_bool(true);
 		if(resources::game_map->on_board(loc)) {
 			if (cfg["find_vacant"].to_bool()) {
 				const unit* pass_check = NULL;
@@ -2017,7 +2018,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			}
 
 			const int side = controller->current_side();
-			if (cfg["advance"].to_bool(true) &&
+			if (advance &&
 			    unit_helper::will_certainly_advance(resources::units->find(loc)))
 			{
 				int total_opt = unit_helper::number_of_possible_advances(u);
@@ -2028,6 +2029,10 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				dialogs::animate_unit_advancement(loc, selected["value"], cfg["fire_event"].to_bool(false));
 			}
 		} else {
+			if(advance && u.advances()) {
+				WRN_NG << "Cannot advance units when unstoring to the recall list.\n";
+			}
+
 			team& t = (*resources::teams)[u.side()-1];
 
 			if(t.persistent()) {
