@@ -101,6 +101,13 @@ public class ProjectUtils
             paths.getCoreDirPath( ) ).getCode( ) != IStatus.ERROR ) {
             try {
                 if( coreLibrary.exists( ) ) {
+                    // the new Core Library will point to the same location.
+                    // Skip it then.
+                    if( coreLibrary.getLocation( ).equals(
+                        paths.getCoreDirPath( ) ) ) {
+                        return true;
+                    }
+
                     coreLibrary.delete( true, new NullProgressMonitor( ) );
                 }
 
@@ -118,6 +125,7 @@ public class ProjectUtils
                     + "; project: " + project.getName( ),
                 "Cannot create the Wesnoth Core Library folder for project "
                     + project.getName( ) + "!" );
+            return false;
         }
 
         return true;
