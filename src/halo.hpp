@@ -25,7 +25,6 @@ class display;
 namespace halo
 {
 
-
 struct manager
 {
 	manager(display& disp);
