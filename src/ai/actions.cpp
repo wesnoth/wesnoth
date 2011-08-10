@@ -336,7 +336,7 @@ void attack_result::do_init_for_execution()
 
 // move_result
 move_result::move_result(side_number side, const map_location& from,
-		const map_location& to, bool remove_movement)
+			 const map_location& to, bool remove_movement, bool unreach_is_ok)
 	: action_result(side)
 	, from_(from)
 	, move_spectator_(*resources::units)
@@ -344,6 +344,7 @@ move_result::move_result(side_number side, const map_location& from,
 	, remove_movement_(remove_movement)
 	, route_()
 	, unit_location_(from)
+	, unreach_is_ok_(unreach_is_ok)
 {
 }
 
@@ -434,7 +435,7 @@ void move_result::do_check_after()
 	}
 	///@todo 1.9 add 'new units spotted' failure mode
 
-	if (unit_location_!=to_) {
+	if (!unreach_is_ok_ && unit_location_!=to_) {
 		set_error(E_NOT_REACHED_DESTINATION);
 		return;
 	}
@@ -1037,9 +1038,10 @@ move_result_ptr actions::execute_move_action( side_number side,
 	bool execute,
 	const map_location& from,
 	const map_location& to,
-	bool remove_movement)
+	bool remove_movement,
+	bool unreach_is_ok)
 {
-	move_result_ptr action(new move_result(side,from,to,remove_movement));
+	move_result_ptr action(new move_result(side,from,to,remove_movement,unreach_is_ok));
 	execute ? action->execute() : action->check_before();
 	return action;
 

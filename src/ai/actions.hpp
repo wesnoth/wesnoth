@@ -155,7 +155,8 @@ public:
 	move_result( side_number side,
 		const map_location& from,
 		const map_location& to,
-		bool remove_movement );
+		bool remove_movement,
+		bool unreach_is_ok);
 	static const int E_EMPTY_MOVE = 2001;
 	static const int E_NO_UNIT = 2002;
 	static const int E_NOT_OWN_UNIT = 2003;
@@ -180,6 +181,7 @@ private:
 	bool remove_movement_;
 	boost::shared_ptr<pathfind::plain_route> route_;
 	map_location unit_location_;
+	bool unreach_is_ok_;
 };
 
 
@@ -317,7 +319,8 @@ static move_result_ptr execute_move_action( side_number side,
 	bool execute,
 	const map_location& from,
 	const map_location& to,
-	bool remove_movement );
+	bool remove_movement,
+	bool unreach_is_ok = false);
 
 
 

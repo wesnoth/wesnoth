@@ -177,7 +177,11 @@ static int ai_execute_move(lua_State *L, bool remove_movement)
 	map_location from, to;
 	if (!to_map_location(L, index, from)) goto error_call_destructors;
 	if (!to_map_location(L, index, to)) goto error_call_destructors;
-	ai::move_result_ptr move_result = ai::actions::execute_move_action(side,true,from,to,remove_movement);
+	bool unreach_is_ok = false;
+	if (lua_isboolean(L, index)) {
+		unreach_is_ok = lua_toboolean(L, index);
+	}
+ai::move_result_ptr move_result = ai::actions::execute_move_action(side,true,from,to,remove_movement, unreach_is_ok);
 	return transform_ai_action(L,move_result);
 }
 
