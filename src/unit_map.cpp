@@ -212,20 +212,12 @@ size_t unit_map::erase(const map_location &loc)
 }
 
 unit_map::unit_iterator unit_map::find(size_t id) {
-	t_umap::iterator iter = umap_.find(id);
-	if (!is_valid(iter)) { iter = umap_.end(); }
-	return unit_iterator(iter, & ilist_);
-}
+	return make_unit_iterator<t_umap::iterator>(umap_.find(id) ); }
 
 unit_map::unit_iterator unit_map::find(const map_location &loc) {
-	t_lmap::iterator i = lmap_.find(loc);
-	if (i == lmap_.end()) {
-		return unit_iterator(the_end_, & ilist_); }
-	return unit_iterator(i, & ilist_);
-}
+	return make_unit_iterator<t_lmap::iterator>(lmap_.find(loc) ); }
 
-unit_map::unit_iterator unit_map::find_leader(int side)
-{
+unit_map::unit_iterator unit_map::find_leader(int side) {
 	unit_map::iterator i = begin(), i_end = end();
 	for (; i != i_end; ++i) {
 		if (static_cast<int>(i->side()) == side && i->can_recruit())

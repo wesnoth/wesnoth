@@ -76,18 +76,18 @@ public:
 		typedef typename iter_types::container_type container_type;
 		typedef typename iter_types::iterator_type iterator_type;
 
+		~iterator_base()	{ dec(); }
+
 		iterator_base(): tank_(NULL), i_() { }
 
 		iterator_base(iterator_type i, container_type *m)
 			: tank_(m), i_(i) { 
 			inc(); }
 
-		~iterator_base()	{ dec(); }
-
 		template<typename that_types>
 		iterator_base(const iterator_base<that_types> &that)
-			: tank_(that.tank_), i_(that.i_)
-		{ inc(); }
+			: tank_(that.tank_), i_(that.i_) { 
+			inc(); }
 
 		template<typename that_types>
 		iterator_base &operator=(const iterator_base<that_types> &that) {
@@ -107,12 +107,6 @@ public:
 			: tank_(m), i_(ui->second) { 
 			inc(); }
 
-		void inc() { if(valid()){ ++(i_->ref_count_); } }
-		void dec() {
-			if( valid() && (--(i_->ref_count_) == 0)  && (i_->unit_ == NULL) ){
-				i_ = tank_->erase(i_); } }
-		iterator_type the_end() const {return --tank_->end();}
-		
 	public:
 		pointer operator->() const { assert(valid()); return i_->unit_; }
 		reference operator*() const { assert(valid()); return *i_->unit_; }
@@ -153,18 +147,22 @@ public:
 			return temp;
 		}
 
-		bool valid() const { return tank_ && i_ != the_end(); }
+		bool valid() const { return (tank_ != NULL) && (i_ != the_end()); }
 
-		bool operator==(const iterator_base &rhs) const
-		{ assert(tank_ == rhs.tank_); return i_ == rhs.i_; }
-		bool operator!=(const iterator_base &rhs) const
-		{ return !operator==(rhs); }
+		bool operator==(const iterator_base &rhs) const { assert(tank_ == rhs.tank_); return i_ == rhs.i_; }
+		bool operator!=(const iterator_base &rhs) const { return !operator==(rhs); }
 
 		//		container_type* get_map() const { return tank_; }
 
 		template<typename Y> friend struct iterator_base;
 
 	private:
+		void inc() { if(valid()){ ++(i_->ref_count_); } }
+		void dec() {
+			if( valid() && (--(i_->ref_count_) == 0)  && (i_->unit_ == NULL) ){
+				i_ = tank_->erase(i_); } }
+		iterator_type the_end() const {return --tank_->end();}
+		
 		friend class unit_map;
 		container_type* tank_;
 		iterator_type i_;
@@ -196,7 +194,6 @@ public:
 	typedef const_unit_iterator const_iterator;
 
 	unit_iterator find(size_t id);
-
 	unit_iterator find(const map_location &loc);
 
 	const_unit_iterator find(const map_location &loc) const { return const_cast<unit_map *>(this)->find(loc); }
@@ -276,16 +273,17 @@ private:
 	
 	t_ilist::iterator begin_core() const ;
 
-	/** Removes invalid entries in map_ if safe and needed. */
-	//	void clean_invalid();
+	bool is_valid(const t_ilist::const_iterator &i) const { 
+		return i != the_end_  && i != ilist_.end() && (i->unit_ !=  NULL); }
+	bool is_valid(const t_umap::const_iterator &i) const { 
+		return i != umap_.end() && (i->second->unit_ != NULL); }
+	bool is_valid(const t_lmap::const_iterator &i) const { 
+		return i != lmap_.end() && (i->second->unit_ != NULL); }
 
-	// void add_iter() const { ++num_iters_; }
-	// void remove_iter() const { --num_iters_; }
-
-	bool is_valid(const t_ilist::const_iterator &i) const
-	{ return i != the_end_ && (i->unit_ !=  NULL); }
-	bool is_valid(const t_umap::const_iterator &i) const
-	{ return i != umap_.end() && (i->second->unit_ != NULL); }
+	template <typename X>
+	unit_map::unit_iterator make_unit_iterator(X const & i) {
+		if (!is_valid( i )) { return unit_iterator(the_end_, & ilist_); }
+		return unit_iterator(i , & ilist_); }
 
 	/**
 	 * underlying_id -> ilist::iterator. This requires that underlying_id be
