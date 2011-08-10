@@ -38,35 +38,35 @@ std::string at(const std::string & file, int line){
 
 void extra_tag_error(const std::string & file, int line,
 					 const std::string & name){
-	WRN_VL << at(file,line) << ": extra tag "<< name << "\n";
+	ERR_VL << at(file,line) << ": extra tag "<< name << "\n";
 }
 void wrong_tag_error(const std::string & file, int line,
 					 const std::string & name){
 	std::ostringstream ss;
 	ss 	 <<at(file,line) << ": wrong tag "<< name << "\n";
-	WRN_VL << ss.str();
+	ERR_VL << ss.str();
 	//throw twml_exception("Validation error",ss.str ());
 }
 void missing_tag_error(const std::string & file, int line,
 					 const std::string & name){
-	WRN_VL <<at(file,line) << ": missing tag "<< name << "\n";
+	ERR_VL <<at(file,line) << ": missing tag "<< name << "\n";
 }
 void extra_key_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key
 					 ){
-	WRN_VL << at(file,line) << ": In tag "<< tag
+	ERR_VL << at(file,line) << ": In tag "<< tag
 			<< " which begins here, " << "key "<< key << " wasn't allowed\n";
 }
 void missing_key_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key
 					 ){
-	WRN_VL << at(file,line) << ": In tag "<< tag
+	ERR_VL << at(file,line) << ": In tag "<< tag
 			<< " which begins here, " << " missing key "<< key << "\n";
 }
 void wrong_value_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key,
 					 const std::string & value){
-	WRN_VL << at(file,line) << ": In tag "<< tag
+	ERR_VL << at(file,line) << ": In tag "<< tag
 			<< " which begins here, " << "key "<< key << " have wrong value "
 			<< value << "\n";
 }
