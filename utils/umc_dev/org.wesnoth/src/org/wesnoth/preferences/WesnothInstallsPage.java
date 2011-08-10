@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.preference.DirectoryFieldEditor;
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FileFieldEditor;
@@ -70,14 +71,47 @@ public class WesnothInstallsPage extends AbstractPreferencePage
     private Table                         installsTable_;
     private TableViewer                   installsTableViewer_;
 
-
     private DirectoryFieldEditor          wmlToolsField_;
     private DirectoryFieldEditor          wesnothWorkingDirField_;
     private DirectoryFieldEditor          wesnothUserDirField_;
     private FileFieldEditor               wesnothExecutableField_;
 
-    private List< String >                wmlToolsList_;
+    private static List< String >         wmlToolsList_;
+    private static String[]               wesnothExecutablePaths_;
+    private static String[]               wesnothDataDirPaths_;
+    private static String[]               wesnothUserDirPaths_;
+
     private Composite                     parentComposite_;
+
+    static {
+        wmlToolsList_ = new ArrayList< String >( );
+        wmlToolsList_.add( "wmllint" ); //$NON-NLS-1$
+        wmlToolsList_.add( "wmlindent" ); //$NON-NLS-1$
+        wmlToolsList_.add( "wmlscope" ); //$NON-NLS-1$
+        wmlToolsList_.add( "wesnoth_addon_manager" ); //$NON-NLS-1$
+
+        String os = "linux"; //$NON-NLS-1$
+        if( Constants.IS_MAC_MACHINE ) {
+            os = "mac"; //$NON-NLS-1$
+        }
+        else if( Constants.IS_WINDOWS_MACHINE ) {
+            os = "windows"; //$NON-NLS-1$
+        }
+
+        List< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
+        params.add( new ReplaceableParameter(
+            "$$home_path", System.getProperty( "user.home" ) ) ); //$NON-NLS-1$ //$NON-NLS-2$
+
+        wesnothExecutablePaths_ = StringUtils.getLines( TemplateProvider
+            .getInstance( )
+            .getProcessedTemplate( os + "_exec", params ) ); //$NON-NLS-1$
+        wesnothDataDirPaths_ = StringUtils.getLines( TemplateProvider
+            .getInstance( )
+            .getProcessedTemplate( os + "_data", params ) ); //$NON-NLS-1$
+        wesnothUserDirPaths_ = StringUtils.getLines( TemplateProvider
+            .getInstance( )
+            .getProcessedTemplate( os + "_user", params ) ); //$NON-NLS-1$
+    }
 
     public WesnothInstallsPage( )
     {
@@ -85,18 +119,14 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         setPreferenceStore( WesnothPlugin.getDefault( ).getPreferenceStore( ) );
         setTitle( Messages.WesnothInstallsPage_0 );
 
-        wmlToolsList_ = new ArrayList< String >( );
-        wmlToolsList_.add( "wmllint" ); //$NON-NLS-1$
-        wmlToolsList_.add( "wmlindent" ); //$NON-NLS-1$
-        wmlToolsList_.add( "wmlscope" ); //$NON-NLS-1$
-        wmlToolsList_.add( "wesnoth_addon_manager" ); //$NON-NLS-1$
-
         installs_ = new HashMap< String, WesnothInstall >( );
 
         List< WesnothInstall > installs = WesnothInstallsUtils.getInstalls( );
         for( WesnothInstall wesnothInstall: installs ) {
             installs_.put( wesnothInstall.getName( ), wesnothInstall );
         }
+
+        setValid( true );
     }
 
     @Override
@@ -119,7 +149,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                 @Override
                 public void focusLost( FocusEvent e )
                 {
-                    checkState( );
+                    guessDefaultPaths( );
                 }
 
                 @Override
@@ -133,7 +163,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                 @Override
                 public void modifyText( ModifyEvent e )
                 {
-                    checkState( );
+                    guessDefaultPaths( );
                 }
             } );
         addField( wesnothExecutableField_, Messages.WesnothPreferencesPage_6 );
@@ -411,56 +441,14 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         }
     }
 
-    @Override
-    protected void checkState( )
-    {
-        super.checkState( );
-        setValid( true );
-
-        String wesnothExec = wesnothExecutableField_.getStringValue( );
-        if( new File( wesnothExec ).exists( ) ) {
-            String wesnothExecName = new File( wesnothExec ).getName( );
-
-            if( wesnothWorkingDirField_.getStringValue( ).isEmpty( )
-                && ! wesnothExec.isEmpty( )
-                && new File( wesnothExec.substring( 0,
-                    wesnothExec.lastIndexOf( wesnothExecName ) ) )
-                    .exists( ) ) {
-                wesnothWorkingDirField_.setStringValue( wesnothExec.substring(
-                    0, wesnothExec.lastIndexOf( wesnothExecName ) ) );
-            }
-        }
-
-        testWMLToolsPath( wmlToolsField_.getStringValue( ) );
-        setErrorMessage( null );
-    }
-
     /**
      * Tries the list of available paths for current os
      */
     private void guessDefaultPaths( )
     {
-        String os = "linux"; //$NON-NLS-1$
-        if( Constants.IS_MAC_MACHINE ) {
-            os = "mac"; //$NON-NLS-1$
-        }
-        else if( Constants.IS_WINDOWS_MACHINE ) {
-            os = "windows"; //$NON-NLS-1$
-        }
-
-        List< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
-        params.add( new ReplaceableParameter(
-            "$$home_path", System.getProperty( "user.home" ) ) ); //$NON-NLS-1$ //$NON-NLS-2$
-
-        testPaths( StringUtils.getLines( TemplateProvider.getInstance( )
-            .getProcessedTemplate( os + "_exec", params ) ), //$NON-NLS-1$
-            wesnothExecutableField_ );
-        testPaths( StringUtils.getLines( TemplateProvider.getInstance( )
-            .getProcessedTemplate( os + "_data", params ) ), //$NON-NLS-1$
-            wesnothWorkingDirField_ );
-        testPaths( StringUtils.getLines( TemplateProvider.getInstance( )
-            .getProcessedTemplate( os + "_user", params ) ), //$NON-NLS-1$
-            wesnothUserDirField_ );
+        testAndSetPaths( wesnothExecutablePaths_, wesnothExecutableField_ );
+        testAndSetPaths( wesnothDataDirPaths_, wesnothWorkingDirField_ );
+        testAndSetPaths( wesnothUserDirPaths_, wesnothUserDirField_ );
 
         // guess the working dir based on executable's path
         Text textControl = wesnothWorkingDirField_
@@ -469,15 +457,20 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         String workingDirValue = wesnothWorkingDirField_.getStringValue( );
         String wesnothExecValue = wesnothExecutableField_.getStringValue( );
 
+        IPath guessedWorkingDir = new Path( wesnothExecValue );
+        // remove the filename
+        guessedWorkingDir = guessedWorkingDir.removeLastSegments( 1 );
+        // The working dir should contain the data directory
+        guessedWorkingDir = guessedWorkingDir.append( "/data/" );
+
         if( workingDirValue.isEmpty( )
             && ! wesnothExecValue.isEmpty( )
-            && new File(
-                wesnothExecValue.substring( 0, wesnothExecValue
-                    .lastIndexOf( new File( wesnothExecValue )
-                        .getName( ) ) ) ).exists( ) ) {
-            textControl.setText( wesnothExecValue.substring( 0,
-                wesnothExecValue.lastIndexOf( new File( wesnothExecValue )
-                    .getName( ) ) ) );
+            && new File( guessedWorkingDir.toOSString( ) ).exists( ) ) {
+
+            workingDirValue = guessedWorkingDir.removeLastSegments( 1 )
+                .toOSString( );
+            // don't retain the /data/ directory
+            textControl.setText( workingDirValue );
         }
 
         // guess the wmltools path
@@ -493,10 +486,8 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         // guess the userdata path
         if( userDirValue.isEmpty( ) && ! workingDirValue.isEmpty( ) ) {
             String path = workingDirValue + "/userdata"; //$NON-NLS-1$
-            testPaths( new String[] { path }, wesnothUserDirField_ );
+            testAndSetPaths( new String[] { path }, wesnothUserDirField_ );
         }
-
-        checkState( );
     }
 
     /**
@@ -527,7 +518,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
      * @param field
      *        The field to put the path in
      */
-    private void testPaths( String[] list, StringFieldEditor field )
+    private void testAndSetPaths( String[] list, StringFieldEditor field )
     {
         if( ! ( field.getStringValue( ).isEmpty( ) ) ) {
             return;
@@ -648,6 +639,14 @@ public class WesnothInstallsPage extends AbstractPreferencePage
     public boolean performOk( )
     {
         return savePreferences( ) && super.performOk( );
+    }
+
+    @Override
+    protected void checkState( )
+    {
+        super.checkState( );
+        // we won't stop the user saving wrong values.
+        setValid( true );
     }
 
     @Override
