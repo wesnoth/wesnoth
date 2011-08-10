@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-20 16:54+0100\n"
+"POT-Creation-Date: 2011-08-10 11:40+0200\n"
 "PO-Revision-Date: 2010-02-28 20:28+0100\n"
 "Last-Translator: Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>\n"
 "Language-Team: Serbian\n"
@@ -880,17 +880,8 @@ msgstr ""
 "<big>Запамти:</big>\n"
 "Притиском ‘u’ можеш опозвати већину ствари — корисно за исправљање грешака."
 
-#. [unit]: id=Galdrad, type=Elvish Captain
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:44
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:54
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:67
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:392
-msgid "Galdrad"
-msgstr "Галдрад"
-
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:82
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:78
 #, fuzzy
 msgid ""
 ", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
@@ -902,7 +893,7 @@ msgstr ""
 "сљедећи ниво."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:97
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:93
 #, fuzzy
 msgid ""
 " has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit can "
@@ -1016,6 +1007,11 @@ msgstr "Настрада ли Конрад"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:381
 msgid "Death of Li’sar"
 msgstr "Настрада ли Лиза́ра"
+
+#. [unit]: id=Galdrad, type=Elvish Captain
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:392
+msgid "Galdrad"
+msgstr "Галдрад"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
@@ -1707,7 +1703,7 @@ msgstr "<big>Добро нам дође у Веснот!</big>"
 #, fuzzy
 msgid ""
 "\n"
-"After this dialog, hold the mouse over the landscape image above the minimap "
+"After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""

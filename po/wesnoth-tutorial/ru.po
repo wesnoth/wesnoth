@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-03-20 16:54+0100\n"
+"POT-Creation-Date: 2011-08-10 11:40+0200\n"
 "PO-Revision-Date: 2010-11-30 00:01+0300\n"
 "Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -861,17 +861,8 @@ msgstr ""
 "Чаще всего вы можете отменить действие, нажав на клавишу <b>u</b> — это "
 "очень полезно для исправления ошибок."
 
-#. [unit]: id=Galdrad, type=Elvish Captain
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:44
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:54
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:67
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:392
-msgid "Galdrad"
-msgstr "Галдрад"
-
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:82
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:78
 msgid ""
 ", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
 "‘Strong’ means a unit does more damage, and ‘intelligent’ means it needs "
@@ -882,7 +873,7 @@ msgstr ""
 "требуется меньше опыта, чтобы продвинуться на следующий уровень."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:97
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:93
 msgid ""
 " has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit can "
 "move one tile further each turn, and ‘resilient’ means it has more hitpoints."
@@ -995,6 +986,11 @@ msgstr "Смерть Конрада"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:381
 msgid "Death of Li’sar"
 msgstr "Смерть Лисар"
+
+#. [unit]: id=Galdrad, type=Elvish Captain
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:392
+msgid "Galdrad"
+msgstr "Галдрад"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
@@ -1657,9 +1653,15 @@ msgstr "<big>Время суток</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1168
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "After this dialog, hold the mouse over the landscape image above the "
+#| "minimap on the right. This brings up a description of the time of day, "
+#| "showing who has the advantage."
 msgid ""
 "\n"
-"After this dialog, hold the mouse over the landscape image above the minimap "
+"After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""

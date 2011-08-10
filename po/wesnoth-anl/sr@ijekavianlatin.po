@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-19 12:43+0200\n"
+"POT-Creation-Date: 2011-08-10 11:40+0200\n"
 "PO-Revision-Date: 2010-02-22 15:03+0100\n"
 "Last-Translator: Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>\n"
 "Language-Team: Serbian\n"
@@ -392,52 +392,64 @@ msgstr ""
 "dužnost da te podučim toj životnoj materiji."
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:190
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:189
+#, fuzzy
+#| msgid ""
+#| "$player_name\n"
+#| "Share knowledge of agriculture"
 msgid ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
 "$player_name\n"
 "Podijeli znanje o poljoprivredi"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:197
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
+#, fuzzy
+#| msgid ""
+#| "$player_name\n"
+#| "Share knowledge of mining"
 msgid ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
 "$player_name\n"
 "Podijeli znanje o rudarstvu"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:204
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:203
+#, fuzzy
+#| msgid ""
+#| "$player_name\n"
+#| "Share knowledge of warfare"
 msgid ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
 "$player_name\n"
 "Podijeli znanje o ratovanju"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:221
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:247
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:280
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:220
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
 msgid "Diplomatic Options"
 msgstr "Diplomatske opcije"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:224
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
 msgid "What shall I do?"
 msgstr "Šta mi je činiti?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:230
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:229
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
 msgid "Nothing"
 msgstr "Ništa"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:240
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:239
 #, fuzzy
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
@@ -447,18 +459,18 @@ msgstr ""
 "Podaj 20 zlatnika drugom igraču"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
 msgid "Who will you donate funds to?"
 msgstr "Kome ćeš priložiti sredstva?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:253
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:286
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:252
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:285
 msgid "Back"
 msgstr "Nazad"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:273
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:272
 #, fuzzy
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
@@ -468,12 +480,12 @@ msgstr ""
 "Pomozi saveznika u njegovom istraživanju"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:283
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:282
 msgid "Who will you share knowledge with?"
 msgstr "S kim ćeš podijeliti svoja saznanja?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:320
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:319
 #, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
@@ -487,7 +499,7 @@ msgstr ""
 "$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:346
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:345
 #, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
@@ -501,13 +513,13 @@ msgstr ""
 "$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:379
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:403
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:402
 msgid "Negotiation Complete"
 msgstr "Pregovori dovršeni"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:382
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
 msgid ""
 "Our talks are complete — the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
@@ -516,7 +528,7 @@ msgstr ""
 "Kojeg bi našeg sunarodnika da unajmiš?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:406
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:405
 msgid ""
 "Our talks are complete — the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
@@ -533,9 +545,9 @@ msgstr "Izaberi novog najamnika"
 #. [message]: speaker=unit
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:33
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:213
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:230
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:246
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:214
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:231
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:247
 msgid "Study Complete"
 msgstr "Proučavanje dovršeno"
 
@@ -558,14 +570,15 @@ msgstr "Istraživanje"
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:101
 msgid ""
-"We are currently studying $player_$side_number|.research.target_language_name|. To "
-"which end would you have our scholars devote their minds?\n"
+"We are currently studying $player_$side_number|.research."
+"target_language_name|. To which end would you have our scholars devote their "
+"minds?\n"
 "\n"
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
-"Trenutno proučavamo $player_$side_number|.research.target_language_name|. Kojem "
-"cilju želiš da naši učenjaci posvete svoje misli?\n"
+"Trenutno proučavamo $player_$side_number|.research.target_language_name|. "
+"Kojem cilju želiš da naši učenjaci posvete svoje misli?\n"
 "\n"
 "Naše farme proizvode $player_$side_number|.farming.gold| zl.\n"
 "Naši rudnici proizvode $player_$side_number|.mining.gold| zl.\n"
@@ -576,9 +589,15 @@ msgid "Continue as before"
 msgstr "Nastavi kao i do sada"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:118
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:117
+#, fuzzy
+#| msgid ""
+#| "Agriculture\n"
+#| "Farmers produce +1 gold\n"
+#| "Study Progress: $player_$side_number|.farming.progress|/$player_"
+#| "$side_number|.farming.target"
 msgid ""
-"Agriculture\n"
+"<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
@@ -589,14 +608,14 @@ msgstr ""
 "$side_number|.farming.target"
 
 #. [command]
-#. [if]
+#. [research]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:120
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:127
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:84
 msgid "agriculture"
 msgstr "poljoprivreda"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:133
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:132
 #, fuzzy
 msgid ""
 "<span color='green'>Mining</span>\n"
@@ -610,9 +629,7 @@ msgstr ""
 "$side_number|.mining.target"
 
 #. [command]
-#. [if]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:135
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:133
 msgid "mining"
 msgstr "rudarstvo"
 
@@ -631,14 +648,12 @@ msgstr ""
 "$side_number|.warfare.target"
 
 #. [command]
-#. [if]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:171
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:139
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:172
 msgid "warfare"
 msgstr "ratovanje"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:215
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:216
 msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
@@ -647,7 +662,7 @@ msgstr ""
 "$side_number|.farming.gold zlata."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:232
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:233
 msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
@@ -656,7 +671,7 @@ msgstr ""
 "$side_number|.mining.gold zlata."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:248
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:249
 msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
@@ -665,12 +680,12 @@ msgstr ""
 "desnim na maga na univerzitetu da unajmiš jedinicu."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:157
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:158
 msgid "Let’s cut you free!"
 msgstr "Oslobodimo te!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:161
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:162
 msgid "You release the creature from the web and it agrees to help you."
 msgstr "Pošto oslobodi stvorenje iz mreže, ono ti se prikloni."
 

@@ -51,13 +51,13 @@ demais.
 Establece a cantidade de bits por píxel. Por exemplo: \fB\-\-bpp 32\fP.
 .TP 
 \fB\-c, \-\-campaign[[<dificultade>] <identificador da campaña> [<identificador do escenario>]]\fP
-goes directly to the campaign based on the parameters.  The difficulty is a
-number between 1 and current campaign's difficulties number.  The default
-difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.  \fBNote: When
-using this switch please ensure that you specify the data directory path as
-the final argument\fP aswell, otherwise the game will take the
-campaign/scenario id as the data dir.
+Ir directamente á campaña indicada cos parámetros empregados. A dificultade
+será un número entre «1» e a cantidade de niveis de dificultade da
+campaña. A dificultade predeterminada é «1». O escenario debe ser un dos da
+campaña. O escenario predeterminado é o primeiro da campaña. \fBNota: ao
+empregar esta opción asegúrese tamén de indicar o directorio dos datos como
+argumento final\fP, ou o xogo pensará que este é o identificador da campaña ou
+escenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ nome\fP
 Define \fInome\fP coma o nome do cartafol da configuración do usuario no seu
@@ -124,7 +124,7 @@ empregarse xunto con \fB\-\-multiplayer\fP tal e como se explica máis
 abaixo. \fB\-\-multiplayer\fP só pode ir seguido destas opcións adicionais.
 .TP 
 \fB\-\-new\-syntax\fP
-enables the new campaign syntax parsing.
+Activa o novo intérprete da sintaxe das campañas.
 .TP 
 \fB\-\-no\-delay\fP
 Executa o xogo sen atrasos para probas de rendemento gráfico. Isto actívase
@@ -142,17 +142,19 @@ Executa o xogo sen sons e sen música.
 \fB\-\-path\fP
 Devolve o directorio de datos do xogo.
 .TP 
-\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
-preprocesses a specified file/folder. The file(s) will be written in
-specified target directory: a plain cfg file and a processed cfg file. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the data/core/macros will be
-preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
-extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  If 'SKIP_CORE' is in the define
-list the data/core won't be preprocessed.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result\fP or
-\fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+\fB\-\-preprocess, \-p[=<definición_1>,<definición_2>,…] <ficheiro ou cartafol> <directorio_de_destino>\fP
+Preprocesa o ficheiro ou cartafol indicado. O ficheiro ou ficheiros
+escribiranse no directorio de destino indicado: un ficheiro “cfg” simple e
+outro procesado. Se se indica un cartafol, preprocesaranse todos os seus
+contidos baseándose nas regras para o preprocesador coñecidas. Os macros
+comúns dos directorios dos datos, do núcleo e dos macros preprocesaranse
+antes que os recursos indicados. \fBdefinición_1,definición_2,...\fP son as
+definicións adicionais que se engadirán antes de preprocesar os
+ficheiros. Se quere engadilas terá que prefixalas co carácter «=». Se
+«SKIP_CORE» está na lista de definicións o directorio dos datos e o do
+núcleo non se preprocesarán. Por exemplo: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result\fP ou
+\fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP.
 .TP 
 \fB\-\-preprocess\-input\-macros <ficheiro_fonte>\fP
 Só o emprega a orde «\-\-preprocess». Especifica un ficheiro con definicións

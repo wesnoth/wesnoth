@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-30 20:47+0200\n"
+"POT-Creation-Date: 2011-08-10 11:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: none\n"
@@ -97,9 +97,24 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
 msgid ""
-"Arcanclave Citadel is the central stronghold of the Arcanclave region. It "
-"was finished in the year 968 YW, and served as the military headquarters of "
-"Cynsaun the First. Designed by Doc Paterson."
+"Long ago, countless centuries before the time of Haldric, and far beyond the "
+"easternmost reaches of Lintanir Forest, great and terrible wars were fought. "
+"The records tell of a powerful battle-mage, a brilliant tactician and "
+"practitioner of the arcane arts, who had been given the title of Dauntless "
+"by his followers. At the battle of Arcanclave, Dauntless and his armies did "
+"battle with a savage race of sorcerer-demons known as the Kah Ruuk. "
+"Surrounded by tens of thousands of Kah Ruuk, Dauntless used his magic to "
+"summon a powerful earth elemental (who, for unknown reasons, owed Dauntless "
+"a debt of gratitude). The elemental raised great stones from deep within the "
+"earth, forming them, in mere moments, into the walls and battlements of a "
+"massive fortress. Thousands of Kah Ruuk perished in their attempt to overrun "
+"Arcanclave Citadel, and Dauntless and his men were victorious that day. More "
+"than one thousand years later, the Warrior-Queen Cynsaun the First drove a "
+"clan of necromancers from the ruins of Arcanclave Citadel, and, in the years "
+"that followed, converted the region into a military stronghold. It is "
+"rumored that several powerful artifacts, remnants from the reign of the "
+"Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
+"granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
 
 #. [side]
@@ -182,8 +197,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:37
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:22
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:21
-#: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:48
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:47
+#: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:54
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:21
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:67
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:22
@@ -214,12 +229,12 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:26
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:22
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:33
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:32
-#: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:37
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:59
+#: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:43
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:32
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:55
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:33
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:59
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:60
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:32
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:33
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:45
@@ -744,15 +759,112 @@ msgid ""
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:24
 msgid "2p — Hornshark Island"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:25
 msgid ""
-"Players must navigate the dispersive terrain of this small but "
-"topographically dense island."
+"Players must forge strange alliances with the local inhabitants, in order to "
+"survive on this most unusual of islands. Designed by Doc Paterson."
+msgstr ""
+
+#. [unit]: type=Young Ogre, id=Baby Baby Bo
+#. [unit]: type=Young Ogre, id=Big Baby Bo
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:89
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:163
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:202
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:274
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:324
+msgid "Big Baby Bo"
+msgstr ""
+
+#. [unit]: type=Drake Fighter, id=Rawffus the Dim
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:102
+msgid "Rawffus the Dim"
+msgstr ""
+
+#. [unit]: type=Dwarvish Scout, id=Kolbur
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:151
+msgid "Kolbur"
+msgstr ""
+
+#. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:176
+msgid "Vilhelm Viskitynnyri"
+msgstr ""
+
+#. [unit]: type=Woodsman, id=Clockwork Boy
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:235
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:247
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:622
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:634
+msgid "Clockwork Boy"
+msgstr ""
+
+#. [unit]: type=Orcish Leader, id=Neki the Brutal
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:297
+msgid "Neki the Brutal"
+msgstr ""
+
+#. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:337
+msgid "Drowsk Calbeht"
+msgstr ""
+
+#. [unit]: id=Rzrrt the Dauntless, type=Soulless
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:397
+msgid "Rzrrt the Dauntless"
+msgstr ""
+
+#. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:436
+msgid "Sorrek, Chosen of Death"
+msgstr ""
+
+#. [unit]: type=Young Ogre, id=Baby Baby Dro
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:476
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:550
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:589
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:661
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:711
+msgid "Big Baby Dro"
+msgstr ""
+
+#. [unit]: type=Drake Fighter, id=Gawffus the Dim
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:489
+msgid "Gawffus the Dim"
+msgstr ""
+
+#. [unit]: type=Dwarvish Scout, id=Rublok
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:538
+msgid "Rublok"
+msgstr ""
+
+#. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:563
+msgid "Ulysses Mantyjuuri"
+msgstr ""
+
+#. [unit]: type=Orcish Leader, id=Neki the Brute
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
+msgid "Neki the Brute"
+msgstr ""
+
+#. [unit]: type=Elvish Fighter, id=Claiomh Dubh
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:724
+msgid "Claiomh Dubh"
+msgstr ""
+
+#. [unit]: id=Tyxrrn the Dauntless, type=Soulless
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:783
+msgid "Tyxrrn the Dauntless"
+msgstr ""
+
+#. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:822
+msgid "Rukhos, Chosen of Death"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
@@ -883,85 +995,82 @@ msgid ""
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:36
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
 msgid "2p — Thousand Stings Garrison"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:38
-msgid "Designed by Doc Paterson."
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
+msgid "A strange place. Designed by Doc Paterson"
 msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:90
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:92
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:93
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:94
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:95
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:96
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:97
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:98
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:99
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:100
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:101
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:102
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:103
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:104
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:105
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:106
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:107
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:108
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:109
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:110
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:111
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:112
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:113
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:114
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:115
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:116
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:117
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:118
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:119
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:120
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:121
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:122
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:123
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:124
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:125
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:126
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:127
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:128
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:129
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:130
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:131
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:132
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:133
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:134
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:135
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:136
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:137
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:138
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:139
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:140
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:141
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:142
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:143
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:144
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:145
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:146
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:147
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:148
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:149
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:150
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:151
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:152
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:153
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:154
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:158
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:162
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:166
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:170
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:174
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:178
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:182
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:186
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:190
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:194
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:198
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:202
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:206
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:210
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:214
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:218
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:222
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:226
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:230
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:234
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:238
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:242
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:246
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:250
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:254
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:258
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:262
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:266
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:270
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:274
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:278
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:282
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:286
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:290
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:294
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:298
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:302
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:306
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:310
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:314
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:318
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:322
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:326
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:330
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:334
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:338
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:342
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:346
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:350
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:354
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:358
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:362
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:155
 msgid "Statue"
 msgstr ""
 
@@ -1131,13 +1240,14 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:56
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:20
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:58
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:45
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:29
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:40
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:73
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:50
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:62
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:110
-msgid "teamname^South-West"
+msgid "teamname^Southwest"
 msgstr ""
 
 #. [side]
@@ -1145,11 +1255,12 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:44
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:44
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:34
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:21
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:53
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:18
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:51
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:62
-msgid "teamname^North-East"
+msgid "teamname^Northeast"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
@@ -1176,11 +1287,12 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:37
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:48
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:46
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:33
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:42
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:38
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:86
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:98
-msgid "teamname^South-East"
+msgid "teamname^Southeast"
 msgstr ""
 
 #. [side]
@@ -1188,7 +1300,8 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:26
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:59
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
-msgid "teamname^North-West"
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:57
+msgid "teamname^Northwest"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Lagoon
@@ -1307,26 +1420,6 @@ msgid ""
 "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
-msgstr ""
-
-#. [side]
-#: data/multiplayer/scenarios/5p_Auction-X.cfg:21
-msgid "teamname^Northeast"
-msgstr ""
-
-#. [side]
-#: data/multiplayer/scenarios/5p_Auction-X.cfg:33
-msgid "teamname^Southeast"
-msgstr ""
-
-#. [side]
-#: data/multiplayer/scenarios/5p_Auction-X.cfg:45
-msgid "teamname^Southwest"
-msgstr ""
-
-#. [side]
-#: data/multiplayer/scenarios/5p_Auction-X.cfg:57
-msgid "teamname^Northwest"
 msgstr ""
 
 #. [side]

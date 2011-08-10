@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-07-24 14:57+0200\n"
+"POT-Creation-Date: 2011-08-10 11:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: none\n"
@@ -44,6 +44,8 @@ msgstr ""
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:44
 #: data/core/units/monsters/Wolf.cfg:50
+#: data/core/units/monsters/Wolf_Dire.cfg:34
+#: data/core/units/monsters/Wolf_Great.cfg:34
 msgid "fangs"
 msgstr ""
 
@@ -229,8 +231,8 @@ msgstr ""
 #: data/core/units/gryphons/Gryphon.cfg:41
 #: data/core/units/gryphons/Gryphon_Master.cfg:43
 #: data/core/units/gryphons/Gryphon_Rider.cfg:43
-#: data/core/units/khalifate/Elder_Falcon.cfg:25
-#: data/core/units/khalifate/Falcon.cfg:24
+#: data/core/units/khalifate/Elder_Falcon.cfg:26
+#: data/core/units/khalifate/Falcon.cfg:25
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
 #: data/core/units/undead/Corpse_Necrophage.cfg:39
@@ -1538,7 +1540,7 @@ msgstr ""
 #: data/core/units/humans/Horse_Lancer.cfg:36
 #: data/core/units/humans/Horse_Paladin.cfg:61
 #: data/core/units/khalifate/Faris.cfg:22
-#: data/core/units/khalifate/Khaiyal.cfg:23
+#: data/core/units/khalifate/Khaiyal.cfg:31
 #: data/core/units/khalifate/Mufariq.cfg:23
 msgid "lance"
 msgstr ""
@@ -1827,8 +1829,8 @@ msgstr ""
 #: data/core/units/humans/Royal_Warrior.cfg:35
 #: data/core/units/khalifate/Faris.cfg:30
 #: data/core/units/khalifate/Hadaf.cfg:23
-#: data/core/units/khalifate/Hakim.cfg:29
-#: data/core/units/khalifate/Khaiyal.cfg:31
+#: data/core/units/khalifate/Hakim.cfg:26
+#: data/core/units/khalifate/Khaiyal.cfg:39
 #: data/core/units/khalifate/Mufariq.cfg:31
 #: data/core/units/khalifate/Qanas.cfg:22
 #: data/core/units/khalifate/Tabib.cfg:27
@@ -2660,7 +2662,7 @@ msgstr ""
 #. [unit_type]: id=Faris, race=khalifate
 #. [unit_type]: id=Shuja, race=khalifate
 #: data/core/units/khalifate/Batal.cfg:18
-#: data/core/units/khalifate/Falcon.cfg:19
+#: data/core/units/khalifate/Falcon.cfg:20
 #: data/core/units/khalifate/Faris.cfg:18
 #: data/core/units/khalifate/Ghazi.cfg:18
 #: data/core/units/khalifate/Hadaf.cfg:19
@@ -2669,11 +2671,11 @@ msgstr ""
 #: data/core/units/khalifate/Mufariq.cfg:19
 #: data/core/units/khalifate/Muharib.cfg:17
 #: data/core/units/khalifate/Qanas.cfg:18
-#: data/core/units/khalifate/Qatif-al-nar.cfg:19
+#: data/core/units/khalifate/Qatif-al-nar.cfg:23
 #: data/core/units/khalifate/Rasikh.cfg:19
 #: data/core/units/khalifate/Shuja.cfg:18
 #: data/core/units/khalifate/Tabib.cfg:23
-#: data/core/units/khalifate/Tineen.cfg:19
+#: data/core/units/khalifate/Tineen.cfg:23
 msgid "There is currently no description available for this unit."
 msgstr ""
 
@@ -2693,7 +2695,7 @@ msgid "Elder Falcon"
 msgstr ""
 
 #. [unit_type]: id=Elder Falcon, race=falcon
-#: data/core/units/khalifate/Elder_Falcon.cfg:20
+#: data/core/units/khalifate/Elder_Falcon.cfg:21
 msgid ""
 "These falcons have been through many perils and somehow managed to survive "
 "them. Their dives can be so fast that stories abound of them taking a foe’s "
@@ -2701,8 +2703,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=pierce
-#: data/core/units/khalifate/Elder_Falcon.cfg:34
-#: data/core/units/khalifate/Falcon.cfg:33
+#: data/core/units/khalifate/Elder_Falcon.cfg:35
+#: data/core/units/khalifate/Falcon.cfg:34
 msgid "beak"
 msgstr ""
 
@@ -2739,7 +2741,7 @@ msgid "Hakim"
 msgstr ""
 
 #. [unit_type]: id=Hakim, race=khalifate
-#: data/core/units/khalifate/Hakim.cfg:24
+#: data/core/units/khalifate/Hakim.cfg:21
 msgid ""
 "Hakim use their knowledge of ancient medicine and herbal concoctions to "
 "quickly bring the Khalifate soldiers back to the front lines."
@@ -2787,7 +2789,7 @@ msgid "Khaiyal"
 msgstr ""
 
 #. [unit_type]: id=Khaiyal, race=khalifate
-#: data/core/units/khalifate/Khaiyal.cfg:18
+#: data/core/units/khalifate/Khaiyal.cfg:26
 msgid ""
 "The Khaiyal wear truly heavy armor, and thus close with a single high impact "
 "lance charge in order to save their poor horses’ stamina before switching "
@@ -2830,7 +2832,7 @@ msgid "Naffat"
 msgstr ""
 
 #. [unit_type]: id=Naffat, race=khalifate
-#: data/core/units/khalifate/Naffat.cfg:18
+#: data/core/units/khalifate/Naffat.cfg:22
 msgid ""
 "Naffat frequently use burning arrows to set fire to enemy fortifications and "
 "generally sow terror amongst the enemy. Such tactics may also have other "
@@ -2838,16 +2840,16 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/khalifate/Naffat.cfg:23
-#: data/core/units/khalifate/Qatif-al-nar.cfg:23
-#: data/core/units/khalifate/Tineen.cfg:23
+#: data/core/units/khalifate/Naffat.cfg:27
+#: data/core/units/khalifate/Qatif-al-nar.cfg:27
+#: data/core/units/khalifate/Tineen.cfg:27
 msgid "naphtha attack"
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/khalifate/Naffat.cfg:32
-#: data/core/units/khalifate/Qatif-al-nar.cfg:32
-#: data/core/units/khalifate/Tineen.cfg:32
+#: data/core/units/khalifate/Naffat.cfg:36
+#: data/core/units/khalifate/Qatif-al-nar.cfg:36
+#: data/core/units/khalifate/Tineen.cfg:36
 msgid "fire arrow"
 msgstr ""
 
@@ -3369,10 +3371,24 @@ msgid "Wolf"
 msgstr ""
 
 #. [unit_type]: id=Wolf, race=wolf
+#. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:35
+#: data/core/units/monsters/Wolf_Dire.cfg:19
+#: data/core/units/monsters/Wolf_Great.cfg:19
 msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
+msgstr ""
+
+#. [unit_type]: id=Direwolf, race=wolf
+#: data/core/units/monsters/Wolf_Dire.cfg:4
+msgid "Direwolf"
+msgstr ""
+
+#. [unit_type]: id=Great Wolf, race=wolf
+#: data/core/units/monsters/Wolf_Great.cfg:4
+msgid "Great Wolf"
 msgstr ""
 
 #. [unit_type]: id=Yeti, race=monster
