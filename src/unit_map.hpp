@@ -49,8 +49,8 @@ class unit_map {
 		mutable n_ref_counter::t_ref_counter<signed int> ref_count_;
 	};
 	typedef std::list<unit_pod> t_ilist;
-	typedef boost::unordered_map<size_t, typename t_ilist::iterator> t_umap; 
-	typedef boost::unordered_map<map_location, typename t_ilist::iterator> t_lmap;
+	typedef boost::unordered_map<size_t, t_ilist::iterator> t_umap; 
+	typedef boost::unordered_map<map_location, t_ilist::iterator> t_lmap;
 	
 
 public:
