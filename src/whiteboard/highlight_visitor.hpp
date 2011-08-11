@@ -44,7 +44,7 @@ class highlight_visitor
 	friend class enable_visit_all<highlight_visitor>;
 
 public:
-	highlight_visitor(const unit_map& unit_map, side_actions_ptr side_actions);
+	highlight_visitor(unit_map& unit_map, side_actions_ptr side_actions);
 	virtual ~highlight_visitor();
 
 	void set_mouseover_hex(const map_location& hex);
@@ -91,7 +91,7 @@ private:
 
 	mode mode_;
 
-	const unit_map& unit_map_;
+	unit_map& unit_map_;
 
 	map_location mouseover_hex_;
 	std::set<map_location> exclusive_display_hexes_;

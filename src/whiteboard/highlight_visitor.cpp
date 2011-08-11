@@ -37,7 +37,7 @@
 namespace wb
 {
 
-highlight_visitor::highlight_visitor(const unit_map& unit_map, side_actions_ptr side_actions)
+highlight_visitor::highlight_visitor(unit_map& unit_map, side_actions_ptr side_actions)
 	: visitor()
 	, mode_(NONE)
 	, unit_map_(unit_map)
