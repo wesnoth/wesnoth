@@ -756,6 +756,9 @@ double move_leader_to_keep_phase::evaluate()
 	const pathfind::paths leader_paths(*resources::game_map, units_, leader->get_location(),
 		*resources::teams, false, true, current_team());
 	const map_location& keep = suitable_keep(leader->get_location(), leader_paths);
+	if (keep == map_location::null_location) {
+		return BAD_SCORE;
+	}
 
 	std::map<map_location,pathfind::paths> possible_moves;
 	possible_moves.insert(std::make_pair(leader->get_location(), leader_paths));

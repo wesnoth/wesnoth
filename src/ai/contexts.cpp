@@ -933,6 +933,8 @@ bool readonly_context_impl::leader_can_reach_keep() const
 
 const map_location& readonly_context_impl::nearest_keep(const map_location& loc) const
 {
+	std::set<map_location> avoided_locations;
+	get_avoid().get_locations(avoided_locations);
 	const std::set<map_location>& keeps = this->keeps();
 	if(keeps.empty()) {
 		static const map_location dummy;
@@ -942,14 +944,20 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 	const map_location* res = NULL;
 	int closest = -1;
 	for(std::set<map_location>::const_iterator i = keeps.begin(); i != keeps.end(); ++i) {
+		if (avoided_locations.find(*i)!=avoided_locations.end()) {
+			continue;
+		}
 		const int distance = distance_between(*i,loc);
 		if(res == NULL || distance < closest) {
 			closest = distance;
 			res = &*i;
 		}
 	}
-
-	return *res;
+	if (res) {
+		return *res;
+	} else {
+		return map_location::null_location;
+	}
 }
 
 
