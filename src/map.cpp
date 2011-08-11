@@ -413,14 +413,14 @@ t_translation::t_terrain gamemap::get_terrain(const map_location& loc) const
 
 	// If not on the board, decide based on what surrounding terrain is
 	t_translation::t_terrain items[6];
-	int nitems = 0;
+	int number_of_items = 0;
 
 	map_location adj[6];
 	get_adjacent_tiles(loc,adj);
 	for(int n = 0; n != 6; ++n) {
 		if(on_board(adj[n])) {
-			items[nitems] = tiles_[adj[n].x][adj[n].y];
-			++nitems;
+			items[number_of_items] = tiles_[adj[n].x][adj[n].y];
+			++number_of_items;
 		} else {
 			// If the terrain is off map but already in the border cache,
 			// this will be used to determine the terrain.
@@ -438,8 +438,8 @@ t_translation::t_terrain gamemap::get_terrain(const map_location& loc) const
 			if(itor != borderCache_.end() &&
 					itor->second != t_translation::NONE_TERRAIN)  {
 
-				items[nitems] = itor->second;
-				++nitems;
+				items[number_of_items] = itor->second;
+				++number_of_items;
 			}
 		}
 
@@ -449,9 +449,9 @@ t_translation::t_terrain gamemap::get_terrain(const map_location& loc) const
 	// and see which one is the most common, and use it.
 	t_translation::t_terrain used_terrain;
 	int terrain_count = 0;
-	for(int i = 0; i != nitems; ++i) {
+	for(int i = 0; i != number_of_items; ++i) {
 		if(items[i] != used_terrain && !is_village(items[i]) && !is_keep(items[i])) {
-			const int c = std::count(items+i+1,items+nitems,items[i]) + 1;
+			const int c = std::count(items+i+1,items+number_of_items,items[i]) + 1;
 			if(c > terrain_count) {
 				used_terrain = items[i];
 				terrain_count = c;

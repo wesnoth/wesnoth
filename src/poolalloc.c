@@ -432,11 +432,11 @@ int main()
 	init_custom_malloc();
 
 	void** items = NULL;
-	int nitems = 0;
+	int number_of_items = 0;
 
-	while(nitems < 100000) {
-		if(nitems) {
-			int clear = rand()%nitems;
+	while(number_of_items < 100000) {
+		if(number_of_items) {
+			int clear = rand()%number_of_items;
 			while(--clear >= 0) {
 				int len = rand()%1000;
 				free(items[clear]);
@@ -446,10 +446,10 @@ int main()
 			}
 		}
 
-		int i = nitems;
-		nitems += rand()%100;
-		items = realloc(items, sizeof(*items)*nitems);
-		while(i != nitems) {
+		int i = number_of_items;
+		number_of_items += rand()%100;
+		items = realloc(items, sizeof(*items)*number_of_items);
+		while(i != number_of_items) {
 			int len = rand()%1000;
 			items[i] = malloc(len);
 			assert(items[i]);
@@ -458,8 +458,8 @@ int main()
 		}
 	}
 
-	while(nitems--) {
-		free(items[nitems]);
+	while(number_of_items--) {
+		free(items[number_of_items]);
 	}
 
 	return 0;

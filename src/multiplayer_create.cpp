@@ -447,7 +447,7 @@ void create::process_event()
 				parameters_.scenario_data["map_data"] = read_map(user_maps_[select-1]);
 			}
 
-		} else if(select > user_maps_.size() && select <= maps_menu_.nitems()-1) {
+		} else if(select > user_maps_.size() && select <= maps_menu_.number_of_items()-1) {
 			parameters_.saved_game = false;
 			size_t index = select - user_maps_.size() - 1;
 			assert(index < map_index_.size());

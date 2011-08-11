@@ -793,7 +793,7 @@ void dialog::action(dialog_process_info& info)
 			menu_ref.erase_item(selection);
 		}
 		// was used before to auto close empty menu
-		//if(menu_ref.nitems() == 0) {
+		//if(menu_ref.number_of_items() == 0) {
 		//	set_result(CLOSE_DIALOG);
 		//} else {
 
