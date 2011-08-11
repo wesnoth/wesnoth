@@ -2,8 +2,9 @@ Version 1.9.8+svn:
  * AI:
    * Fixed bug #16117: added a way to supress E_NOT_REACHED_DESTINATION to lua
      api via an optional boolean parameter - ai.move_full(from,to_x,to_y,true)
-   * Fixed bug #18057: AI leaders should now attack when they should.
-   * Fixed bug #18356: AI leaders now won't move to avoided keeps.
+   * Fixed bug #18057: AI leaders should now attack when they should
+   * Fixed bug #18122: AI leaders set to defensive will now follow goals anyway
+   * Fixed bug #18356: AI leaders now won't move to avoided keeps
    * Applied patch #2846 by thonsew: let AI forget about invisible enemy units
      in villages during get_villages phase (bug #18101)
  * Campaigns:
