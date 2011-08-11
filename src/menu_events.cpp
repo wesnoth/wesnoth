@@ -3480,7 +3480,8 @@ void console_handler::do_unit() {
 	// prevent SIGSEGV due to attempt to set HP during a fight
 	if (events::commands_disabled > 0)
 		return;
-	 unit_map::iterator i = menu_handler_.current_unit();
+	unit_map::iterator i = menu_handler_.current_unit();
+	const map_location loc = i->get_location();
 	if (i == menu_handler_.units_.end()) return;
 	const std::string data = get_data(1);
 	std::vector<std::string> parameters = utils::split(data, '=', utils::STRIP_SPACES);
@@ -3508,19 +3509,24 @@ void console_handler::do_unit() {
 		int int_value = lexical_cast<int>(value);
 		for (int levels=0; levels<int_value; levels++) {
 			i->set_experience(i->max_experience());
-			dialogs::advance_unit(i->get_location());
+			dialogs::advance_unit(loc);
+			i = menu_handler_.units_.find(loc);
+			if (!i.valid()) {
+				break;
+			}
 		}
 	} else {
 		config cfg;
 		i->write(cfg);
-		const map_location loc = i->get_location();
 		menu_handler_.units_.erase(loc);
 		cfg[name] = value;
 		unit new_u(cfg, true);
-		std::pair<unit_map::unit_iterator, bool>  new_i=menu_handler_.units_.add(loc, new_u);
-		i=new_i.first;
+		menu_handler_.units_.add(loc, new_u);
 	}
-	menu_handler_.gui_->invalidate(i->get_location());
+	if (name == "fail") { //testcase for bug #18488
+		assert(i.valid());
+	}
+	menu_handler_.gui_->invalidate(loc);
 	menu_handler_.gui_->invalidate_unit();
 }
 /*void console_handler::do_buff() {
