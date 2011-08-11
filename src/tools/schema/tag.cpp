@@ -257,6 +257,7 @@ void class_tag::add_tag(const std::string &path, const class_tag &tag,
 			it->second.add_keys(tag.keys_);
 			it->second.add_links(tag.links_);
 		}
+		links_.erase (tag.get_name ());
 		return ;
 	}
 	std::string::size_type pos = path.find('/');
@@ -282,7 +283,9 @@ void class_tag::append_super(const class_tag &tag,const std::string & path){
 	add_keys(tag.keys_);
 	add_links(tag.links_);
 	for (tag_map::const_iterator i = tag.tags_.begin();i!=tag.tags_.end();++i){
+		links_.erase(i->first);
 		add_link(path + "/" + i->first);
+
 	}
 }
 
