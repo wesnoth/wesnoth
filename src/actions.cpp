@@ -599,7 +599,13 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 		game_events::fire("prerecruit",recruit_location);
 	}
 	const unit_map::iterator new_unit_itor = resources::units->find(recruit_location);
-	if (new_unit_itor.valid()) new_unit_itor->set_hidden(false);
+	if (new_unit_itor.valid()) {
+		new_unit_itor->set_hidden(false);
+		if (resources::game_map->is_village(recruit_location)) {
+			get_village(recruit_location,new_unit_itor->side());
+		}
+	}
+
 	unit_map::iterator leader = resources::units->begin();
 	for(; leader != resources::units->end(); ++leader)
 		if (leader->can_recruit() &&
