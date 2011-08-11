@@ -3480,7 +3480,7 @@ void console_handler::do_unit() {
 	// prevent SIGSEGV due to attempt to set HP during a fight
 	if (events::commands_disabled > 0)
 		return;
-	const unit_map::iterator i = menu_handler_.current_unit();
+	 unit_map::iterator i = menu_handler_.current_unit();
 	if (i == menu_handler_.units_.end()) return;
 	const std::string data = get_data(1);
 	std::vector<std::string> parameters = utils::split(data, '=', utils::STRIP_SPACES);
@@ -3517,7 +3517,8 @@ void console_handler::do_unit() {
 		menu_handler_.units_.erase(loc);
 		cfg[name] = value;
 		unit new_u(cfg, true);
-		menu_handler_.units_.add(loc, new_u);
+		std::pair<unit_map::unit_iterator, bool>  new_i=menu_handler_.units_.add(loc, new_u);
+		i=new_i.first;
 	}
 	menu_handler_.gui_->invalidate(i->get_location());
 	menu_handler_.gui_->invalidate_unit();
