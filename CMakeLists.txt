@@ -19,7 +19,7 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 find_package(SDL 1.2.7 REQUIRED)
-find_package(Boost 1.35 REQUIRED COMPONENTS iostreams program_options regex system)
+find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
@@ -215,7 +215,7 @@ if(ENABLE_TOOLS)
 	find_package( PNG REQUIRED )
 endif(ENABLE_TOOLS)
 if(ENABLE_TESTS)
-	find_package( Boost 1.35 REQUIRED COMPONENTS unit_test_framework )
+	find_package( Boost 1.36 REQUIRED COMPONENTS unit_test_framework )
 endif(ENABLE_TESTS)
 if(ENABLE_GAME)
 	find_package( FriBiDi )
