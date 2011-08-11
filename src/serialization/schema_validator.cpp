@@ -36,42 +36,66 @@ std::string at(const std::string & file, int line){
 	return ::lineno_string(ss.str());
 }
 
+void print_output(const std::string & message,bool flag_exception = false ){
+#ifndef VALIDATION_ERRORS_LOG
+	if(flag_exception){
+			throw twml_exception("Validation error occured",message);
+		}else{
+	ERR_VL << message;
+}
+#else
+// dirty hack to avoid "unused" error in case of compiling with definition on
+	flag_exception = true;
+	if (flag_exception){ ERR_VL << message;}
+#endif
+}
+
 void extra_tag_error(const std::string & file, int line,
-					 const std::string & name){
-	ERR_VL << at(file,line) << ": extra tag "<< name << "\n";
+					 const std::string & name,bool flag_exception){
+	std::ostringstream ss;
+	ss 	 <<at(file,line) << ": extra tag "<< name << "\n";
+	print_output (ss.str (),flag_exception);
 }
 void wrong_tag_error(const std::string & file, int line,
-					 const std::string & name){
+					 const std::string & name,bool flag_exception){
 	std::ostringstream ss;
 	ss 	 <<at(file,line) << ": wrong tag "<< name << "\n";
-	ERR_VL << ss.str();
-	//throw twml_exception("Validation error",ss.str ());
+	print_output (ss.str (),flag_exception);
 }
 void missing_tag_error(const std::string & file, int line,
-					 const std::string & name){
-	ERR_VL <<at(file,line) << ": missing tag "<< name << "\n";
+					   const std::string & name,bool flag_exception){
+	std::ostringstream ss;
+	ss <<at(file,line) << ": missing tag "<< name << "\n";
+print_output (ss.str (),flag_exception);
 }
 void extra_key_error(const std::string & file, int line,
-					 const std::string & tag,const std::string & key
-					 ){
-	ERR_VL << at(file,line) << ": In tag "<< tag
+					 const std::string & tag,const std::string & key,
+					 bool flag_exception){
+	std::ostringstream ss;
+	ss << at(file,line) << ": In tag "<< tag
 			<< " which begins here, " << "key "<< key << " wasn't allowed\n";
+	print_output (ss.str (),flag_exception);
 }
 void missing_key_error(const std::string & file, int line,
-					 const std::string & tag,const std::string & key
-					 ){
-	ERR_VL << at(file,line) << ": In tag "<< tag
+					 const std::string & tag,const std::string & key,
+					 bool flag_exception){
+	std::ostringstream ss;
+	ss << at(file,line) << ": In tag "<< tag
 			<< " which begins here, " << " missing key "<< key << "\n";
+	print_output (ss.str (),flag_exception);
 }
 void wrong_value_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key,
-					 const std::string & value){
-	ERR_VL << at(file,line) << ": In tag "<< tag
-			<< " which begins here, " << "key "<< key << " have wrong value "
-			<< value << "\n";
+					 const std::string & value,bool flag_exception){
+	std::ostringstream ss;
+	ss << at(file,line) << ": In tag "<< tag
+			<< " which begins here, " << "key "<< key << " have wrong value '"
+			<< value << "'\n";
+	print_output (ss.str (),flag_exception);
 }
 
-schema_validator::schema_validator():config_read_(false),stack_(){
+schema_validator::schema_validator():config_read_(false),
+create_exceptions_(false),stack_(),counter_(),cache_(){
 	ERR_VL << "No schema file\n";
 	throw abstract_validator::error("No schema file\n");
 }
@@ -79,7 +103,7 @@ schema_validator::schema_validator():config_read_(false),stack_(){
 schema_validator::~schema_validator(){}
 
 schema_validator::schema_validator(const std::string & config_file_name)
-	:stack_(){
+	:create_exceptions_(false),stack_(),counter_(),cache_(){
 	config_read_ = read_config_file(config_file_name);
 	if (! config_read_) {
 		ERR_VL << "Schema file "<< config_file_name << " was not read.\n";
@@ -136,7 +160,7 @@ void schema_validator::open_tag(const std::string & name,int start_line,
 		if (stack_.top()){
 			tag = stack_.top()->find_tag(name,root_);
 			if (! tag){
-				wrong_tag_error(file,start_line,name);
+				wrong_tag_error(file,start_line,name,create_exceptions_);
 			}else{
 				counter & cnt = counter_.top()[name];
 				++ cnt.cnt;
@@ -236,22 +260,23 @@ bool schema_validator::validate(const config & cfg, const std::string & name,
 void schema_validator::print(message_info & el){
 	switch (el.type){
 	case WRONG_TAG:
-		wrong_tag_error(el.file,el.line,el.tag);
+		wrong_tag_error(el.file,el.line,el.tag,create_exceptions_);
 		break;
 	case EXTRA_TAG:
-		extra_tag_error(el.file,el.line,el.tag);
+		extra_tag_error(el.file,el.line,el.tag,create_exceptions_);
 		break;
 	case MISSING_TAG:
-		missing_tag_error(el.file,el.line,el.tag);
+		missing_tag_error(el.file,el.line,el.tag,create_exceptions_);
 		break;
 	case EXTRA_KEY:
-		extra_key_error(el.file,el.line,el.tag,el.key);
+		extra_key_error(el.file,el.line,el.tag,el.key,create_exceptions_);
 		break;
 	case WRONG_VALUE:
-		wrong_value_error(el.file,el.line,el.tag,el.key,el.value);
+		wrong_value_error(el.file,el.line,el.tag,el.key,el.value,
+						  create_exceptions_);
 		break;
 	case MISSING_KEY:
-		missing_key_error(el.file,el.line,el.tag,el.key);
+		missing_key_error(el.file,el.line,el.tag,el.key,create_exceptions_);
 	}
 }
 }//namespace schema_validation{

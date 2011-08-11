@@ -34,6 +34,10 @@ public:
 	 * Throws abstract_validator::error if any error.
 	 */
 	schema_validator(const std::string & filename);
+	void set_create_exceptions(bool value){
+		create_exceptions_ = value;
+	}
+
 	/**
 	 * Prints schema tree to stream
 	 * Usually used to testing, whether schema config was read and expanded
@@ -101,7 +105,10 @@ private:
 	 * Shows, if validator is intialized with schema file;
 	 */
 	bool config_read_;
-
+	/**
+	 * Controls the way to print errors.
+	 */
+	bool create_exceptions_;
 	/**
 	 * Root of schema information
 	 */
