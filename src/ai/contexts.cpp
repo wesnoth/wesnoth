@@ -94,12 +94,16 @@ team& readwrite_context_impl::current_team_w()
 }
 
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon, get_aggression());
+	unit_map::iterator i = resources::units->find(attacker_loc);
+	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
+	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon, m_aggression);
 }
 
 
 attack_result_ptr readonly_context_impl::check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	return actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon, get_aggression());
+	unit_map::iterator i = resources::units->find(attacker_loc);
+	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
+	return actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon, m_aggression);
 }
 
 

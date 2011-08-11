@@ -101,11 +101,13 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		unit *up = units.extract(m->first);
 		up->set_location(m->second);
 		units.insert(up);
+		double m_aggression = aggression;
 
 		if (up->can_recruit()) {
 			uses_leader = true;
 			// FIXME: suokko's r29531 omitted this line
 			leader_threat = false;
+			m_aggression = ai_obj.get_leader_aggression();
 		}
 
 		int att_weapon = -1, def_weapon = -1;
@@ -129,7 +131,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 			from_cache = true;
 			bc = new battle_context(usc->second.first, usc->second.second);
 		} else {
-			bc = new battle_context(units, m->second, target, att_weapon, def_weapon, aggression, prev_def);
+			bc = new battle_context(units, m->second, target, att_weapon, def_weapon, m_aggression, prev_def);
 		}
 		const combatant &att = bc->get_attacker_combatant(prev_def);
 		const combatant &def = bc->get_defender_combatant(prev_def);

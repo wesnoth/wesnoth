@@ -565,7 +565,7 @@ double combat_phase::evaluate()
 
 		const double rating = it->rating(get_aggression(),*this);
 		LOG_AI_TESTING_AI_DEFAULT << "attack option rated at " << rating << " ("
-			<< get_aggression() << ")\n";
+					  << (it->uses_leader ? get_leader_aggression() : get_aggression()) << ")\n";
 
 		if(rating > choice_rating_) {
 			choice_it = it;
