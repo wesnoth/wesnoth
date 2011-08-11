@@ -795,6 +795,16 @@ void set_chat_lines(int lines)
 	preferences::set("chat_lines", lines);
 }
 
+void set_chat_message_aging(const int aging)
+{
+	preferences::set("chat_message_aging", aging);
+}
+
+int chat_message_aging()
+{
+	return lexical_cast_default<int>(preferences::get("chat_message_aging"), 20);
+}
+
 std::set<std::string> &encountered_units() {
 	return encountered_units_set;
 }

@@ -1424,19 +1424,22 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 
 void game_display::prune_chat_messages(bool remove_all)
 {
-	unsigned message_ttl = remove_all ? 0 : 1200000;
-	unsigned max_chat_messages = preferences::chat_lines();
+	const unsigned message_aging = preferences::chat_message_aging();
+	const unsigned message_ttl = remove_all ? 0 : message_aging * 60 * 1000;
+	const unsigned max_chat_messages = preferences::chat_lines();
 	int movement = 0;
 
-	while (!chat_messages_.empty() &&
-	       (chat_messages_.front().created_at + message_ttl < SDL_GetTicks() ||
-	        chat_messages_.size() > max_chat_messages))
-	{
-		const chat_message &old = chat_messages_.front();
-		movement += font::get_floating_label_rect(old.handle).h;
-		font::remove_floating_label(old.speaker_handle);
-		font::remove_floating_label(old.handle);
-		chat_messages_.erase(chat_messages_.begin());
+	if(message_aging != 0 || remove_all || chat_messages_.size() > max_chat_messages) {
+		while (!chat_messages_.empty() &&
+		       (chat_messages_.front().created_at + message_ttl < SDL_GetTicks() ||
+		        chat_messages_.size() > max_chat_messages))
+		{
+			const chat_message &old = chat_messages_.front();
+			movement += font::get_floating_label_rect(old.handle).h;
+			font::remove_floating_label(old.speaker_handle);
+			font::remove_floating_label(old.handle);
+			chat_messages_.erase(chat_messages_.begin());
+		}
 	}
 
 	foreach (const chat_message &cm, chat_messages_) {

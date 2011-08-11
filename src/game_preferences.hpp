@@ -192,6 +192,9 @@ namespace preferences {
 	int chat_lines();
 	void set_chat_lines(int lines);
 
+	int chat_message_aging();
+	void set_chat_message_aging(const int aging);
+
 	bool compress_saves();
 
 	bool startup_effect();
