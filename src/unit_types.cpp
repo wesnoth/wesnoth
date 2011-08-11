@@ -180,7 +180,10 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	}
 
 	if(increase_damage.empty() == false) {
-		damage_ = utils::apply_modifier(damage_, increase_damage, 1);
+		damage_ = utils::apply_modifier(damage_, increase_damage, 0);
+		if (damage_ < 0) {
+			damage_ = 0;
+		}
 		cfg_["damage"] = damage_;
 
 		if(description != NULL) {
