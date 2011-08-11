@@ -77,8 +77,11 @@ twidget* tbuilder_stacked_widget::build() const
  * widgets are drawn in the layers, in the order defined in the the instance
  * config. By default the last drawn item is also the 'active' layer for the
  * event handling.
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="stacked_widget"}{min="0"}{max="1"}{super="generic/widget_instance"}
  * @begin{table}{config}
  * @end{table}
+ * @end{tag}{name="stacked_widget"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

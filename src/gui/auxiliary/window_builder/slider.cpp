@@ -92,7 +92,8 @@ twidget* tbuilder_slider::build() const
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 3_slider
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="slider"}{min="0"}{max="1"}{super="generic/widget_instance"}
  * == Slider ==
  *
  * @macro = slider_description
@@ -129,5 +130,7 @@ twidget* tbuilder_slider::build() const
  *                                    'minimum_value_label' and
  *                                    'maximum_value_label' are ignored. $
  * @end{table}
+ * @end{tag}{name="slider"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

@@ -70,7 +70,8 @@ twidget* tbuilder_spacer::build() const
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 2_spacer
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="spacer"}{min=0}{max=1}{super="generic/widget_instance"}
  * == Spacer ==
  *
  * @macro = spacer_description
@@ -86,5 +87,7 @@ twidget* tbuilder_spacer::build() const
  * The variable available are the same as for the window resolution see
  * http://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
  * items.
+ * @end{tag}{name="spacer"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

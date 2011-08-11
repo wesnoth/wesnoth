@@ -60,9 +60,10 @@ twidget* tbuilder_text_box::build() const
  * @order = 2_text_box
  *
  * == Text box ==
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="text_box"}{min="0"}{max="1"}{super="generic/widget_instance"}
  * @begin{table}{config}
- *     label & tstring & "" &          The initial text of the text box. $
+ *     label & t_string & "" &          The initial text of the text box. $
  *     history & string & "" &         The name of the history for the text
  *                                     box.
  *                                     A history saves the data entered in a
@@ -72,5 +73,7 @@ twidget* tbuilder_text_box::build() const
  *                                     new unique name for this field and the
  *                                     engine will handle the rest. $
  * @end{table}
+ * @end{tag}{name="text_box"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

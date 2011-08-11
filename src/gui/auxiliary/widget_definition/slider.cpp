@@ -45,6 +45,9 @@ tslider_definition::tresolution::tresolution(const config& cfg)
  *
  * @macro = slider_description
  *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="slider_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
  * @begin{table}{config}
  *     minimum_positioner_length & unsigned & &
  *                                     The minimum size the positioner is
@@ -69,6 +72,17 @@ tslider_definition::tresolution::tresolution(const config& cfg)
  * * state_pressed, the left mouse button is down on the positioner of the
  *   slider.
  * * state_focussed, the mouse is over the positioner of the slider.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_pressed"}
+ * @begin{tag}{name="state_focussed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focussed"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="slider_definition"}
+ * @end{parent}{name="gui/"}
  */
 	VALIDATE(minimum_positioner_length
 			, missing_mandatory_wml_key(

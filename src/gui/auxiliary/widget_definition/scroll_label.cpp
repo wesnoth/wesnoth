@@ -42,15 +42,17 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
  * == Scroll label ==
  *
  * @macro = scroll_label_description
- *
+ * 
+ * @begin{parent}{name="gui/"}
  * This widget is slower as a normal label widget so only use this widget
  * when the scrollbar is required (or expected to become required).
- *
+ * @begin{tag}{name="scroll_label_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
  * @begin{table}{config}
  *     grid & grid & &                    A grid containing the widgets for main
  *                                     widget. $
  * @end{table}
- *
+ * @allow{link}{name="gui/window/resolution/grid"}
  * TODO we need one definition for a vertical scrollbar since this is the second
  * time we use it.
  *
@@ -60,10 +62,20 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
  *     _scrollbar_grid & & grid & m &         A grid for the scrollbar
  *                                     (Merge with listbox info.) $
  * @end{table}
- *
+ * @begin{tag}{name="content_grid"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="content_grid"}
+ * @begin{tag}{name="scrollbar_grid"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="scrollbar_grid"}
  * The following states exist:
  * * state_enabled, the scroll label is enabled.
  * * state_disabled, the scroll label is disabled.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="scroll_label_definition"}
+ * @end{parent}{name="gui/"}
  */
 	// Note the order should be the same as the enum tstate is scroll_label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));

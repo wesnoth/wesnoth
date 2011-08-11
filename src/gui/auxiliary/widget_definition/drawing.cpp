@@ -47,6 +47,14 @@ tdrawing_definition::tresolution::tresolution(const config& cfg)
  * * state_enabled
  *     the drawing is enabled. The state is a dummy since the
  *     things really drawn are placed in the window instance.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="drawing_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="drawing_definition"}
+ * @end{parent}{name="gui/"}
  */
 	/*
 	 * Note the order should be the same as the enum tstate in drawing.hpp.

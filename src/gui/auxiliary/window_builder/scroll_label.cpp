@@ -76,7 +76,8 @@ twidget* tbuilder_scroll_label::build() const
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 2_scroll_label
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="scroll_label"}{min="0"}{max="1"}{super="generic/widget_instance"}
  * == Scroll label ==
  *
  * @macro = scroll_label_description
@@ -90,5 +91,7 @@ twidget* tbuilder_scroll_label::build() const
  *                                     Determines whether or not to show the
  *                                     scrollbar. $
  * @end{table}
+ * @end{tag}{name="scroll_label"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

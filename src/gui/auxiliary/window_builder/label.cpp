@@ -63,7 +63,8 @@ twidget* tbuilder_label::build() const
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 2_label
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="label"}{min=0}{max=1}{super="generic/widget_instance"}
  * == Label ==
  *
  * @macro = label_description
@@ -74,5 +75,7 @@ twidget* tbuilder_label::build() const
  *     text_alignment & h_align & "left" &
  *                                How is the text aligned in the label. $
  * @end{table}
+ * @end{tag}{name="label"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

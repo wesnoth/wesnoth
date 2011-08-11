@@ -42,6 +42,14 @@ tminimap_definition::tresolution::tresolution(const config& cfg)
  *
  * The following states exist:
  * * state_enabled, the minimap is enabled.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="minimap_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="minimap_definition"}
+ * @end{parent}{name="gui/"}
  */
 	// Note the order should be the same as the enum tstate in minimap.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));

@@ -69,7 +69,8 @@ twidget* tbuilder_panel::build() const
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 2_panel
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="panel"}{min="0"}{max="1"}{super="generic/widget_instance"}
  * == Panel ==
  *
  * @macro = panel_description
@@ -78,5 +79,8 @@ twidget* tbuilder_panel::build() const
  *     grid & grid & &                 Defines the grid with the widgets to
  *                                     place on the panel. $
  * @end{table}
+ * @allow{link}{name="gui/window/resolution/grid"}
+ * @end{tag}{name="panel"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

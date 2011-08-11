@@ -41,13 +41,19 @@ tmulti_page_definition::tresolution::tresolution(const config& cfg)
  *
  * == Multi page ==
  *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="multi_page_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * @macro = multi_page_description
  *
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
  * @begin{table}{config}
  *     grid & grid & &                    A grid containing the widgets for main
  *                                     widget. $
  * @end{table}
- *
+ * @allow{link}{name="gui/window/resolution/grid"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="multi_page_definition"}
+ * @end{parent}{name="gui/"}
  * A multipage has no states.
  */
 

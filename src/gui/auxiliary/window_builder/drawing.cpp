@@ -78,7 +78,8 @@ twidget* tbuilder_drawing::build() const
  * @order = 2_drawing
  *
  * == Spacer ==
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="drawing"}{min=0}{max=1}{super="generic/widget_instance"}
  * @macro = drawing_description
  *
  * If either the width or the height is not zero the drawing functions as a
@@ -89,7 +90,9 @@ twidget* tbuilder_drawing::build() const
  *     height & f_unsigned & 0 &         The height of the drawing. $
  *     draw & config & &                 The config containing the drawing. $
  * @end{table}
- *
+ * @allow{link}{name="generic/state/draw"}
+ * @end{tag}{name="drawing"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  * The variable available are the same as for the window resolution see
  * http://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
  * items.

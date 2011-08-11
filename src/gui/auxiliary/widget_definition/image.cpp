@@ -46,6 +46,14 @@ timage_definition::tresolution::tresolution(const config& cfg)
  *
  * The following states exist:
  * * state_enabled, the image is enabled.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="image_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="image_definition"}
+ * @end{parent}{name="gui/"}
  */
 	// Note the order should be the same as the enum tstate in image.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));

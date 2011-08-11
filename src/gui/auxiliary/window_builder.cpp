@@ -209,8 +209,9 @@ const std::string& twindow_builder::read(const config& cfg)
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_window
- *
+ * @begin{parent}{name="gui/"}
  * = Window definition =
+ * @begin{tag}{name="window"}{min="0"}{max="-1"}
  *
  * A window defines how a window looks in the game.
  *
@@ -221,6 +222,9 @@ const std::string& twindow_builder::read(const config& cfg)
  *     resolution & section & &        The definitions of the window in various
  *                                   resolutions. $
  * @end{table}
+ * @end{tag}{name="window"}
+ * @end{parent}{name="gui/"}
+ *
  *
  */
 
@@ -265,9 +269,9 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_window
- *
+ * @begin{parent}{name=gui/window/}
  * == Resolution ==
- *
+ * @begin{tag}{name="resolution"}{min="0"}{max="-1"}
  * @begin{table}{config}
  * window_width & unsigned & 0 &   Width of the application window. $
  * window_height & unsigned & 0 &  Height of the application window. $
@@ -331,7 +335,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *
  * grid & grid & &                 The grid with the widgets to show. $
  * @end{table}
- *
+ * @begin{tag}{name="linked_group"}{min=0}{max=-1}
  * A linked_group section has the following fields:
  * @begin{table}{config}
  *     id & string & &                   The unique id of the group (unique in this
@@ -341,13 +345,25 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *     fixed_height & bool & false &   Should widget in this group have the same
  *                                   height. $
  * @end{table}
+ * @end{tag}{name="linked_group"}
  * A linked group needs to have at least one size fixed.
- *
+ * @begin{tag}{name="tooltip"}{min=0}{max=1}
  * A tooltip and helptip section have the following field:
  * @begin{table}{config}
- *     id & string & &               The id of the tip to show. $
- * @begin{table}{config}
+ *     id & string & &               The id of the tip to show. 
  * Note more fields will probably be added later on.
+ * @end{table}{config}
+ * @end{tag}{name=tooltip}
+ * @begin{tag}{name="foreground"}{min=0}{max=1}
+ * @end{tag}{name="foreground"}
+ * @begin{tag}{name="background"}{min=0}{max=1}
+ * @end{tag}{name="background"}
+ * @end{tag}{name="resolution"}
+ * @end{parent}{name=gui/window/}
+ * @begin{parent}{name=gui/window/resolution/}
+ * @begin{tag}{name="helptip"}{min=0}{max=1}{super="gui/window/resolution/tooltip"}
+ * @end{tag}{name="helptip"}
+ * @end{parent}{name=gui/window/resolution/}
  */
 
 	const config &c = cfg.child("grid");
@@ -424,15 +440,15 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 2_cell
- *
+ * @begin{parent}{name="gui/window/resolution/"}
  * = Cell =
- *
+ * @begin{tag}{name="grid"}{min="1"}{max="1"}
  * Every grid cell has some cell configuration values and one widget in the grid
  * cell. Here we describe the what is available more information about the usage
  * can be found here [[GUILayout]].
  *
  * == Row values ==
- *
+ * @begin{tag}{name="row"}{min="0"}{max="-1"}
  * For every row the following variables are available:
  *
  * @begin{table}{config}
@@ -440,7 +456,8 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  * @end{table}
  *
  * == Cell values ==
- *
+ * @begin{tag}{name="column"}{min="0"}{max="-1"}
+ * @allow{link}{name="gui/window/resolution/grid"}
  * For every column the following variables are available:
  * @begin{table}{config}
  *     grow_factor & unsigned & 0 &      The grow factor for a column, this value
@@ -470,6 +487,10 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  *                                     grid cell is higher as the best width for
  *                                     the widget. $
  * @end{table}
+ * @end{tag}{name="column"}
+ * @end{tag}{name="row"}
+ * @end{tag}{name="grid"}
+ * @end{parent}{name="gui/window/resolution/"}
  *
  */
 	log_scope2(log_gui_parse, "Window builder: parsing a grid");
@@ -557,7 +578,6 @@ twidget* tbuilder_grid::build (tgrid* grid) const
  *
  * [[Category: WML Reference]]
  * [[Category: GUI WML Reference]]
- *
  */
 
 /*WIKI

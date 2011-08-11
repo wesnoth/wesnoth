@@ -42,7 +42,10 @@ ttext_box_definition::tresolution::tresolution(const config& cfg)
  *
  * The definition of a text box.
  *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="text_box_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * The resolution for a text box also contains the following keys:
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
  * @begin{table}{config}
  *     text_x_offset & f_unsigned & "" & The x offset of the text in the text
  *                                     box. This is needed for the code to
@@ -53,10 +56,20 @@ ttext_box_definition::tresolution::tresolution(const config& cfg)
  *                                     box. $
  * @end{table}
  *
+ * @end{tag}{name="resolution"}
  * The following states exist:
  * * state_enabled, the text box is enabled.
  * * state_disabled, the text box is disabled.
  * * state_focussed, the text box has the focus of the keyboard.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_focussed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focussed"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="text_box_definition"}
+ * @end{parent}{name="gui/"}
  */
 	// Note the order should be the same as the enum tstate in text_box.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));

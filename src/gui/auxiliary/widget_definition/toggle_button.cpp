@@ -48,6 +48,24 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg)
  * * state_enabled_selected, the button is enabled and selected.
  * * state_disabled_selected, the button is disabled and selected.
  * * state_focussed_selected, the mouse is over the button and selected.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="toggle_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_focussed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focussed"}
+ * @begin{tag}{name="state_enabled_selected"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled_selected"}
+ * @begin{tag}{name="state_disabled_selected"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled_selected"}
+ * @begin{tag}{name="state_focussed_selected"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focussed_selected"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="toggle_button_definition"}
+ * @end{parent}{name="gui/"}
  */
 
 	// Note the order should be the same as the enum tstate in

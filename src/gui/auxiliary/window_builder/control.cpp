@@ -82,7 +82,8 @@ void tbuilder_control::init_control(tcontrol* control) const
  * @order = 1_widget
  *
  * = Widget =
- *
+ * @begin{parent}{name="generic/"}
+ * @begin{tag}{name="widget_instance"}{min="0"}{max="1"}
  * All widgets placed in the cell have some values in common:
  * @begin{table}{config}
  *     id & string & "" &              This value is used for the engine to
@@ -106,21 +107,21 @@ void tbuilder_control::init_control(tcontrol* control) const
  *     linked_group & string & "" &    The linked group the control belongs
  *                                     to. $
  *
- *     label & tstring & "" &          Most widgets have some text associated
+ *     label & t_string & "" &          Most widgets have some text associated
  *                                     with them, this field contain the value
  *                                     of that text. Some widgets use this value
  *                                     for other purposes, this is documented
  *                                     at the widget. E.g. an image uses the
  *                                     filename in this field. $
  *
- *     tooltip & tstring & "" &        If you hover over a widget a while (the
+ *     tooltip & t_string & "" &        If you hover over a widget a while (the
  *                                     time it takes can differ per widget) a
  *                                     short help can show up.This defines the
  *                                     text of that message. This field may not
  *                                     be empty when 'help' is set. $
  *
  *
- *     help & tstring & "" &           If you hover over a widget and press F10
+ *     help & t_string & "" &           If you hover over a widget and press F10
  *                                     (or the key the user defined for the help
  *                                     tip) a help message can show up. This
  *                                     help message might be the same as the
@@ -147,5 +148,7 @@ void tbuilder_control::init_control(tcontrol* control) const
  *
  *   debug_border_color & color & "" & The color of the debug border. $
  * @end{table}
+ * @end{tag}{name="widget_instance"}
+ * @end{parent}{name="generic/"}
  */
 

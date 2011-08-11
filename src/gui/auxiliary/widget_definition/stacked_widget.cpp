@@ -47,6 +47,10 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
  * making a separate definition for a single instance with a fixed size.
  *
  * A stacked widget has no states.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="stacked_widget_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @end{tag}{name="stacked_widget_definition"}
+ * @end{parent}{name="gui/"}
  */
 
 	// Add a dummy state since every widget needs a state.

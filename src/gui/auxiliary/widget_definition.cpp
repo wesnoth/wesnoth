@@ -42,8 +42,9 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_widget
- *
+ * @begin{parent}{name=generic/widget_definition/}
  * == Resolution ==
+ * @begin{tag}{name="resolution"}{min="0"}{max="-1"}
  *
  * Depending on the resolution a widget can look different. Resolutions are
  * evaluated in order of appearance. The ''window_width'' and ''window_height''
@@ -96,6 +97,8 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
  *     Every widget has one or more state sections. Note they aren't called
  *     state but state_xxx the exact names are listed per widget. $
  * @end{table}
+ * @end{tag}{name="resolution"}
+ * @end{parent}{name=generic/widget_definition/}
  */
 
 	DBG_GUI_P << "Parsing resolution "
@@ -118,7 +121,8 @@ tcontrol_definition::tcontrol_definition(const config& cfg)
  * This page describes the definition of all widgets in the toolkit. Every
  * widget has some parts in common, first of all; every definition has the
  * following fields.
- *
+ * @begin{parent}{name="generic/"}
+ * @begin{tag}{name=widget_definition}{min=0}{max=1}
  * @begin{table}{config}
  *     id & string & &               Unique id for this gui (theme). $
  *     description & t_string & &    Unique translatable name for this gui. $
@@ -126,6 +130,8 @@ tcontrol_definition::tcontrol_definition(const config& cfg)
  *     resolution & section & &      The definitions of the widget in various
  *                                   resolutions. $
  * @end{table}
+ * @end{tag}{name=widget_definition}
+ * @end{parent}{name="generic/"}
  */
 
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("control", "id"));

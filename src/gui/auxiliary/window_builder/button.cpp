@@ -63,7 +63,8 @@ twidget* tbuilder_button::build() const
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 2_button
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="button"}{min=0}{max=1}{super="generic/widget_instance"}
  * == Button ==
  *
  * @macro = button_description
@@ -85,5 +86,7 @@ twidget* tbuilder_button::build() const
  *     return_value & int & 0 &          The return value. $
  *
  * @end{table}
+ * @end{tag}{name="button"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

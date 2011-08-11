@@ -47,7 +47,10 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
  * The definition of a vertical scrollbar. This class is most of the time not
  * used directly. Instead it's used to build other items with scrollbars.
  *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="vertical_scrollbar_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * The resolution for a vertical scrollbar also contains the following keys:
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
  * @begin{table}{config}
  *     minimum_positioner_length & unsigned & &
  *                                     The minimum size the positioner is
@@ -65,13 +68,24 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
  *     bottom_offset & unsigned & 0 &    The number of pixels at the bottom which
  *                                     can't be used by the positioner. $
  * @end{table}
- *
+ * @end{tag}{name="resolution"}
  * The following states exist:
  * * state_enabled, the vertical scrollbar is enabled.
  * * state_disabled, the vertical scrollbar is disabled.
  * * state_pressed, the left mouse button is down on the positioner of the
  *   vertical scrollbar.
  * * state_focussed, the mouse is over the positioner of the vertical scrollbar.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_pressed"}
+ * @begin{tag}{name="state_focussed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focussed"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="vertical_scrollbar_definition"}
+ * @end{parent}{name="gui/"}
  */
 
 	VALIDATE(minimum_positioner_length

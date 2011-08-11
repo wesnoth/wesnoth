@@ -42,10 +42,13 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
  *
  * == Toggle panel ==
  *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="toggle_panel_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * The definition of a toggle panel. A toggle panel is like a toggle button, but
  * instead of being a button it's a panel. This means it can hold multiple child
  * items.
  *
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
  * The resolution for a toggle panel also contains the following keys:
  * @begin{table}{config}
  *     top_border & unsigned & 0 &     The size which isn't used for the client
@@ -66,6 +69,21 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
  * * state_enabled_selected, the panel is enabled and selected.
  * * state_disabled_selected, the panel is disabled and selected.
  * * state_focussed_selected, the mouse is over the panel and selected.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_focussed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focussed"}
+ * @begin{tag}{name="state_enabled_selected"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled_selected"}
+ * @begin{tag}{name="state_disabled_selected"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled_selected"}
+ * @begin{tag}{name="state_focussed_selected"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focussed_selected"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="toggle_panel_definition"}
+ * @end{parent}{name="gui/"}
  */
 	// Note the order should be the same as the enum tstate in toggle_panel.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));

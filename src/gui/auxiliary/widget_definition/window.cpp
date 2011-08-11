@@ -33,6 +33,10 @@ twindow_definition::twindow_definition(const config& cfg)
  * The definition of a window. A window is a kind of panel see the panel for
  * which fields exist
  *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="window_definition"}{min=0}{max=-1}{super=gui/scrollbar_panel_definition}
+ * @end{tag}{name="window_definition"}
+ * @end{parent}{name="gui/"}
  */
 
 	DBG_GUI_P << "Parsing window " << id << '\n';

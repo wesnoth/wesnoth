@@ -45,8 +45,10 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
  * == Horizontal scrollbar ==
  *
  * @macro = horizontal_scrollbar_description
- *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="horizontal_scrollbar_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * The resolution for a horizontal scrollbar also contains the following keys:
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
  * @begin{table}{config}
  *     minimum_positioner_length & unsigned & &
  *                                     The minimum size the positioner is
@@ -72,6 +74,17 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
  *   horizontal scrollbar.
  * * state_focussed, the mouse is over the positioner of the horizontal
  *   scrollbar.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_pressed"}
+ * @begin{tag}{name="state_focussed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focussed"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="horizontal_scrollbar_definition"}
+ * @end{parent}{name="gui/"}
  */
 
 	VALIDATE(

@@ -41,6 +41,10 @@ tspacer_definition::tresolution::tresolution(const config& cfg)
  * @macro = spacer_description
  *
  * A spacer has no states so nothing to load.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="spacer_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @end{tag}{name="spacer_definition"}
+ * @end{parent}{name="gui/"}
  */
 }
 

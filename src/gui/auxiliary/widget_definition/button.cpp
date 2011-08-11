@@ -45,6 +45,20 @@ tbutton_definition::tresolution::tresolution(const config& cfg)
  * * state_disabled, the button is disabled.
  * * state_pressed, the left mouse button is down.
  * * state_focussed, the mouse is over the button.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_pressed"}
+ * @begin{tag}{name="state_focussed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focussed"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="button_definition"}
+ * @end{parent}{name="gui/"}
  */
 
 	// Note the order should be the same as the enum tstate in button.hpp.

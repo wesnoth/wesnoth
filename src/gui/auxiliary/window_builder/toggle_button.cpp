@@ -57,7 +57,8 @@ twidget* tbuilder_toggle_button::build() const
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 2_toggle_button
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="toggle_button"}{min=0}{max=1}{super="generic/widget_instance"}
  * == Toggle button ==
  *
  * @begin{table}{config}
@@ -69,5 +70,7 @@ twidget* tbuilder_toggle_button::build() const
  *                                     [[GUIToolkitWML#Button]] for more
  *                                     information. $
  * @end{table}
+ * @end{tag}{name="toggle_button"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

@@ -53,7 +53,7 @@ namespace {
  * @begin{parent}{name="generic/state/draw/"}
  *
  * == Pre commit ==
- * @begin{tag}{name="precommit"}{min="0"}{max="1"}
+ * @begin{tag}{name="pre_commit"}{min="0"}{max="1"}
  *
  * This section contains the pre commit functions. These functions will be
  * executed before the drawn canvas is applied on top of the normal
@@ -74,7 +74,7 @@ namespace {
  *     depth & unsigned & 0 &            The depth to blur. $
  * @end{table}
  * @end{tag}{name="blur"}
- * @end{tag}{name="precommit"}
+ * @end{tag}{name="pre_commit"}
  */
 
 /***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
@@ -525,28 +525,29 @@ tline::tline(const config& cfg)
  *                                     truncated. $
  * @end{table}
  * @allow{type}{name="unsigned"}{value="^\d+$"}
- * @allow{type}{name="f_unsigned"}{value="^\d+$"}
+ * @allow{type}{name="f_unsigned"}{value="^.+$"}
  * @allow{type}{name="int"}{value="^-?\d+$"}
- * @allow{type}{name="f_int"}{value="^-?\d+$"}
+ * @allow{type}{name="f_int"}{value="^.*$"}
  * @allow{type}{name="bool"}{value="^true|false|yes|no$"}
- * @allow{type}{name="f_bool"}{value="^true|false|yes|no$"}
+ * @allow{type}{name="f_bool"}{value="^.*$"}
  * @allow{type}{name="string"}{value="^.+$"}
- * @allow{type}{name="t_string"}{value="^_.*$"}
- * @allow{type}{name="f_string"}{value="^_.*$"}
- * @allow{type}{name="f_tstring"}{value="^_.*$"}
+ * @allow{type}{name="t_string"}{value="^_?.*$"}
+ * @allow{type}{name="f_string"}{value="^.*$"}
+ * @allow{type}{name="f_tstring"}{value="^_?.*$"}
  *
- * @allow{type}{name="color"}{value="^(?:2[0-5][0-5]|[01]?\d?\d).(?:2[0-5][0-5]|[01]?\d?\d).(?:2[0-5][0-5]|[01]?\d?\d).(?:2[0-5][0-5]|[01]?\d?\d)$"}
+ * @allow{type}{name="color"}{value="^(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)$"}
  *
  * @allow{type}{name="font_style"}{value="^normal|bold|italic|underline*$"}
  * @allow{type}{name="v_align"}{value="^top|bottom|center$"}
  * @allow{type}{name="h_align"}{value="^left|right|center$"}
- * @allow{type}{name="f_h_align"}{value="^left|right|center$"}
+ * @allow{type}{name="f_h_align"}{value="^.*$"}
  * @allow{type}{name="border"}{value="^top|bottom|left|right|all*$"}
  * @allow{type}{name="scrollbar_mode"}{value="^left|right|center$"}
- * @allow{type}{name="resize_mode"}{value="^scale|strecth|tile$"}
- * @allow{type}{name="section"}{value="^\w$"}
- * @allow{type}{name="config"}{value="^\w$"}
- * @allow{type}{name="grid"}{value="^\w$"}
+ * @allow{type}{name="resize_mode"}{value="^scale|stretch|tile$"}
+ *
+ * @remove{type}{name="section"}
+ * @remove{type}{name="config"}
+ * @remove{type}{name="grid"}
  * == Section types ==
  *
  * For more complex parts, there are sections. Sections contain of several

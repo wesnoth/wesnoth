@@ -43,10 +43,12 @@ tpanel_definition::tresolution::tresolution(const config& cfg)
  * == Panel ==
  *
  * @macro = panel_description
- *
+ * 
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="panel_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * A panel is always enabled and can't be disabled. Instead it uses the
  * states as layers to draw on.
- *
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
  * The resolution for a panel also contains the following keys:
  * @begin{table}{config}
  *     top_border & unsigned & 0 &     The size which isn't used for the client
@@ -62,6 +64,15 @@ tpanel_definition::tresolution::tresolution(const config& cfg)
  * The following layers exist:
  * * background, the background of the panel.
  * * foreground, the foreground of the panel.
+ * @begin{tag}{name="foreground"}{min=0}{max=1}
+ * @allow{link}{name="generic/state/draw"}
+ * @end{tag}{name="foreground"}
+ * @begin{tag}{name="background"}{min=0}{max=1}
+ * @allow{link}{name="generic/state/draw"}
+ * @end{tag}{name="background"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="panel_definition"}
+ * @end{parent}{name="gui/"}
  */
 
 	// The panel needs to know the order.

@@ -38,21 +38,22 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_listbox
- *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="listbox_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * == Listbox ==
- *
+ * 
  * @macro = listbox_description
  *
  * The definition of a listbox contains the definition of its scrollbar.
- *
+ * 
  * The resolution for a listbox also contains the following keys:
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
  * @begin{table}{config}
  *     scrollbar & section & &            A grid containing the widgets for the
  *                                     scrollbar. The scrollbar has some special
  *                                     widgets so it can make default behaviour
  *                                     for certain widgets. $
  * @end{table}
- *
  * @begin{table}{dialog_widgets}
  *     _begin & & clickable & o &           Moves the position to the beginning of
  *                                     the list. $
@@ -77,14 +78,20 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
  *     _scrollbar & & vertical_scrollbar & m & This is the scrollbar so the user can
  *                                     scroll through the list. $
  * @end{table}
- *
  * A clickable is one of:
  * * button
  * * repeating_button
- *
+ * @{allow}{link}{//TODO clickable}
  * The following states exist:
  * * state_enabled, the listbox is enabled.
  * * state_disabled, the listbox is disabled.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="listbox_definition"}
+ * @end{parent}{name="gui/"}
  */
 
 /*WIKI
@@ -92,9 +99,11 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
  * @order = 1_horizonal_listbox
  *
  * == Horizontal listbox ==
- *
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="horizontal_listbox_definition"}{min=0}{max=-1}{super="gui/listbox_definition"}
+ * @end{tag}{name="horizontal_listbox_definition"}
+ * @end{parent}{name="gui/"}
  * @macro = horizontal_listbox_description
- *
  * The definition of a horizontal listbox is the same as for a normal listbox.
  */
 	// Note the order should be the same as the enum tstate in listbox.hpp.

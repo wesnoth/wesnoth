@@ -48,6 +48,17 @@ ttree_view_definition::tresolution::tresolution(const config& cfg)
  * The following states exist:
  * * state_enabled, the listbox is enabled.
  * * state_disabled, the listbox is disabled.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="tree_view_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{link}{name="gui/window/resolution/grid"}
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="tree_view_definition"}
+ * @end{parent}{name="gui/"}
  */
 
 	// Note the order should be the same as the enum tstate is listbox.hpp.

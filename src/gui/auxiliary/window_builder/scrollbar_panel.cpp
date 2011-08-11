@@ -106,7 +106,8 @@ twidget* tbuilder_scrollbar_panel::build() const
  * @order = 2_scrollbar_panel
  *
  * == Scrollbar panel ==
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="scrollbar_panel"}{min="0"}{max="1"}{super="generic/widget_instance"}
  * Instance of a scrollbar_panel.
  *
  * List with the scrollbar_panel specific variables:
@@ -123,5 +124,7 @@ twidget* tbuilder_scrollbar_panel::build() const
  *                                     definition for 1 row of the list. $
  *
  * @end{table}
+ * @end{tag}{name="scrollbar_panel"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 
