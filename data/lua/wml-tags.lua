@@ -757,10 +757,10 @@ function wml_actions.harm_unit(cfg)
 
 			if animate then
 				wml_actions.animate_unit({ flag = "defend", hits = true, { "filter", { id = unit_to_harm.id } },
-					{ "secondary_attack", helper.get_child(cfg, "secondary_attack") }, text = text, red = 255, with_bars = true })
-			else
-				wesnoth.float_label(unit_to_harm.x, unit_to_harm.y, string.format("<span foreground='red'>%s</span>", text))
+					{ "secondary_attack", helper.get_child(cfg, "secondary_attack") }, with_bars = true })
 			end
+
+			wesnoth.float_label(unit_to_harm.x, unit_to_harm.y, string.format("<span foreground='red'>%s</span>", text))
 
 			if kill ~= false and unit_to_harm.hitpoints <= 0 then
 				wml_actions.kill({ id = unit_to_harm.id, animate = animate, fire_event = fire_event })
