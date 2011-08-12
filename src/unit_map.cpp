@@ -118,6 +118,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p)
 
 	unit_pod upod;
 	upod.unit_ = p;
+	upod.deleted_uid_ = 0;
 	ilist_.push_front(upod);
 	t_ilist::iterator lit(ilist_.begin());
 
@@ -211,6 +212,7 @@ unit *unit_map::extract(const map_location &loc) {
 			<< " from location: (" << loc << ")\n";
 
 	i->second->unit_ = NULL;
+	i->second->deleted_uid_ = res->underlying_id();
 	if(i->second->ref_count_ == 0){ 
 		assert(i->second != the_end_);
 		ilist_.erase( i->second ); 
@@ -274,3 +276,5 @@ std::vector<unit_map::const_unit_iterator> unit_map::find_leaders(int side)const
 	std::copy(leaders.begin(), leaders.end(), std::back_inserter(const_leaders));
 	return const_leaders;
 }
+
+

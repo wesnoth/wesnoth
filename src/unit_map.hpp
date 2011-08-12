@@ -41,6 +41,34 @@ class unit;
  The reference counting is what guarrantees the persistent iterators.  
  Storing an iterator prevents only that dead unit's list location from being recovered.
 
+@note Prefered usages for tight loops follows.  
+Use the std::pair<iterator, bool> format which checks the preconditions and returns
+false in the bool to indicate failure with no change to the unit_map.  true indicates sucess and the new iterator is in first.
+Storing the result iterator prevents the old iterator from entering the fallback recovery code.
+This is faster than the old methodology of find to check if empty, insert and then find to check for success.
+It is the same method as std::map uses, the C++ way.
+
+unit_iterator i;  //results are stored here
+
+Add
+std::pair<unit_iterator, bool> try_add(units->add(loc, unit));
+if(try_add.second){i = try_add.first;}
+
+Move
+std::pair<unit_iterator, bool> try_add(units->move(src, dst));
+if(try_add.second){i = try_add.first;}
+
+Insert
+std::pair<unit_iterator, bool> try_add(units->insert(unitp));
+if(try_add.second){i = try_add.first;}
+
+Replace  (preferred over erase and then add)
+std::pair<unit_iterator, bool> try_add(units->move(loc, unit));
+if(try_add.second){i = try_add.first;}
+
+
+
+
  @note The previous implementation was 2 binary tree based maps one the location map pointing to the other.  
  Lookups were O(2*log(N)) and O(log(N)).  Order was implicit in the id map choosen as the base.  
  Persistence was provided by reference counting all iterators collectively and only recovering space when 
@@ -55,6 +83,8 @@ class unit;
  *       iterated upon may be skipped or visited twice.
  * @note Iterators prevent ghost units from being collected. So they should
  *       never be stored into data structures, as it will cause slowdowns!
+ @note By popular demand iterators are effectively permanant.  They are handles and not iterators.
+  Any access might cause a full lookup.  Keeping iterators around holds onto memory.
  */
 class unit_map {
 	/// The pointer to the unit and a reference counter to record the number of extant iterators
@@ -62,7 +92,10 @@ class unit_map {
 	struct unit_pod {
 		unit * unit_;
 		mutable n_ref_counter::t_ref_counter<signed int> ref_count_;
+
+		uint deleted_uid_;  ///UID of the deleted, moved, added, or otherwise invalidated iterator to facilitate a new lookup.
 	};
+
 	/// A list pointing to unit and their reference counters.  Dead units have a unit_ pointer equal to NULL.
 	/// The list element is remove iff the reference counter equals zero and there are no more 
 	///iterators pointing to this unit.
@@ -143,8 +176,12 @@ public:
 		}
 
 	public:
-		pointer operator->() const   { assert(valid()); return  i_->unit_; }
-		reference operator*() const { assert(valid()); return *i_->unit_; }
+		pointer operator->() const   { 
+			assert(valid());
+			return  i_->unit_; }
+		reference operator*() const { 
+			assert(valid());
+			return *i_->unit_; }
 
 		iterator_base& operator++() {
 			assert( valid_entry() );
@@ -184,7 +221,13 @@ public:
 			return temp;
 		}
 
-		bool valid() const { return (tank_ != NULL) && (i_ != the_end()) && ( i_->unit_ != NULL ); }
+		bool valid() const { 
+			if(valid_for_dereference()) {
+				if(i_->unit_ == NULL){ 
+					recover_unit_iterator(); }
+				return  i_->unit_ != NULL; 
+			}
+			return false; }
 
 		bool operator==(const iterator_base &rhs) const { return (tank_ == rhs.tank_) && ( i_ == rhs.i_ ); }
 		bool operator!=(const iterator_base &rhs) const { return !operator==(rhs); }
@@ -194,6 +237,7 @@ public:
 		template<typename Y> friend struct iterator_base;
 
 	private:
+		bool valid_for_dereference() const { return (tank_ != NULL) && (i_ != the_end()); }
 		bool valid_entry() const { return  ((tank_ != NULL) && (i_ != the_end())) ; }
 		void valid_exit() const { 
 			if(tank_ != NULL) {
@@ -209,7 +253,7 @@ public:
 
 		///Increment the reference counter
 		void inc() { if(valid_ref_count()) { ++(i_->ref_count_); } }
-
+		
 		///Decrement the reference counter 
 		///Delete the list element if the unit is gone and the reference counter is zero
 		///@note this deletion will advance i_ to the next list element.
@@ -221,11 +265,20 @@ public:
 				} } }
 
 		unit_map::t_ilist & the_list() const { return tank_->ilist_; }
-
+		
 		///Returns the sentinel at the end of the list.
 		///This provides a stable unit_iterator for hoisting out of loops
 		iterator_type the_end() const { return tank_->the_end_; }
-		
+
+		/**	
+	 * Attempt to find a deleted unit in the unit_map, by looking up the stored UID. 
+	 * @pre deleted_uid != 0
+	 */
+		void recover_unit_iterator() const {
+			assert(i_->deleted_uid_ != 0);
+			iterator_base new_this( tank_->find( i_->deleted_uid_ ));
+			const_cast<iterator_base *>(this)->operator=( new_this );
+		}
 		friend class unit_map;
 
 		iterator_type i_; ///local iterator
@@ -344,6 +397,7 @@ private:
 		assert(ilist_.empty());
 		unit_pod upod;
 		upod.unit_ = NULL;
+		upod.deleted_uid_ = 0;
 		++upod.ref_count_; //dummy count
 		ilist_.push_front(upod);
 		the_end_ = ilist_.begin();
@@ -371,6 +425,7 @@ private:
 		if (!is_found( i )) { return const_unit_iterator(the_end_, this); }
 		return const_unit_iterator(i , this); }
 
+	
 	/**
 	 * underlying_id -> ilist::iterator. This requires that underlying_id be
 	 * unique (which is enforced in unit_map::insert).
@@ -390,8 +445,6 @@ private:
 	/// The last list item, a sentinel that allows BOOST::foreach to hoist end()	
 	t_ilist::iterator the_end_; 
 
-	//	mutable size_t num_iters_;
-	//	size_t num_invalid_;
 };
 
 template <typename T>
