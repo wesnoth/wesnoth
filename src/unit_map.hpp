@@ -93,7 +93,7 @@ class unit_map {
 		unit * unit_;
 		mutable n_ref_counter::t_ref_counter<signed int> ref_count_;
 
-		uint deleted_uid_;  ///UID of the deleted, moved, added, or otherwise invalidated iterator to facilitate a new lookup.
+		unsigned deleted_uid_;  ///UID of the deleted, moved, added, or otherwise invalidated iterator to facilitate a new lookup.
 	};
 
 	/// A list pointing to unit and their reference counters.  Dead units have a unit_ pointer equal to NULL.
