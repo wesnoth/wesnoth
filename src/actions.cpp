@@ -604,6 +604,8 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 		if (resources::game_map->is_village(recruit_location)) {
 			get_village(recruit_location,new_unit_itor->side());
 		}
+		preferences::encountered_units().insert(new_unit_itor->type_id());
+
 	}
 
 	unit_map::iterator leader = resources::units->begin();
