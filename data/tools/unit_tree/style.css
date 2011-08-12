@@ -1,11 +1,12 @@
 /* Stylesheet for wmlunits HTML output. */
 
 body {
-    background-color:  #fffbf0;
+    background-color: #efebe0;
     margin: 0px;
     }
 h1 {
     text-align: center;
+    margin: 0 0 0.5em 0;
     }
 table.units {
     background-color: #fffbf0;
@@ -26,7 +27,7 @@ div.header {
 div.topnav {
     background:#272727 url("navbg.png") repeat-x scroll center bottom;
     border-top:1px solid #595959;
-    margin:0pt;
+    margin:0;
     padding:3px 4px 15px;
     text-align:center;
 }
@@ -64,22 +65,50 @@ td.unitcell {
     }
 td.unitcell a {
     color: black;
-    font-size: normal;
+    font-size: medium;
     text-decoration: none;
 }
-table.navbar {
-    margin: 0px;
-    float: left;
-    width: 0px;
-    border-spacing: 0px;
-    padding: 2px;
-    border-right: 1px solid black;
+div.main {
+    margin-top: 0;
+    margin-left: 7em;
+    border-left: 1px solid black;
 }
-table.navbar th {
+div.popupmenu
+{
+    position: absolute;
+    margin-left: 6.5em;
+    margin-top: -1em;
+    background: white;
+    border: 1px solid black;
+}
+.popuptrigger div.popupmenu
+{
+    display: none;
+}
+.popuptrigger:hover div.popupmenu
+{
+   display: block;
+}
+div.navbar {
+    width: 7em;
+    float: left;
+    overflow: hidden;
+}
+ul.navbar {
+    list-style: none;
+    margin: 0 0 0 0.5em;
+    border-spacing: 0px;
+    padding: 0px;
+    border-right: 1px solid black;
+    width: 6.5em;
+}
+ul.navbar li {
     color: black;
     font-weight: bold;
+    margin: 0px;
+    padding: 0px;
 }
-table.navbar a {
+ul.navbar a {
     color: #B48648;
     font-size: small;
     font-weight: bold;
@@ -169,6 +198,11 @@ div#footer {
     padding: 1em;
     margin: 1em;
     }
+div#footer p {
+    line-height: 1em;
+    padding: 0;
+    margin: 0;
+}
 div#footer a {
     color: #111111;
 }

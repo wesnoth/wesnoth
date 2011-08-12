@@ -23,8 +23,9 @@ html_header = '''
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href=\"%(path)sstyle.css\" type=\"text/css\">
+<script type="text/javascript" src="%(path)s/menu.js"></script>
 </head>
-<body>'''.strip()
+<body><div>'''.strip()
 
 html_footer = '''
 <div id="footer">
@@ -32,6 +33,7 @@ html_footer = '''
 <p><a href="http://wiki.wesnoth.org/Site_Map">Site map</a></p>
 <p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2011 The Battle for Wesnoth</p>
 <p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
+</div>
 </div>
 </body></html>
 '''.strip()
@@ -240,11 +242,11 @@ class HTMLOutput:
         <div class="topnav">
         <a href="../index.html">Wesnoth Units database</a>
         </div>
+        
+        <div class="navbar">
         """)
 
-        write("<table class=\"navbar\">")
-
-        write("<tr>\n")
+        write("<ul class=\"navbar\">")
 
         def abbrev(name):
             abbrev = name[0]
@@ -253,10 +255,18 @@ class HTMLOutput:
                 if name[i] in ["+", "(", ")"] or name[i - 1] in word_seperators and name[i] not in word_seperators:
                     abbrev += name[i]
             return abbrev
+        
+        def add_menu(id, name):
+            write("""<li class="popuptrigger"
+                onclick="toggle_menu(this, '""" + id + """', 2)"
+                onmouseover="toggle_menu(this, '""" + id + """', 1)"
+                onmouseout="toggle_menu(this, '""" + id + """', 0)">""" +
+                name + '<div class="popupmenu" id="' + id + '">')
 
         # Campaigns
         x = self.translate("addon_type^Campaign", "wesnoth")
-        write("<th>%s</th></tr><tr><td>" % x)
+        add_menu("campaigns_menu", x)
+
         cids = [[], []]
         for cid in self.wesnoth.campaign_lookup.keys():
             if cid in self.wesnoth.is_mainline_campaign:
@@ -278,21 +288,21 @@ class HTMLOutput:
                     campname = T(self.wesnoth.campaign_lookup[cname], "name")
                     if not campname:
                         campname = cname
-                    campabbrev = T(self.wesnoth.campaign_lookup[cname], "abbrev")
-                    if not campabbrev:
-                        campabbrev = abbrev(campname)
+                    campabbrev = campname
+                    #campabbrev = T(self.wesnoth.campaign_lookup[cname], "abbrev")
+                    #if not campabbrev:
+                    #    campabbrev = abbrev(campname)
 
                 write(" <a title=\"%s\" href=\"../%s/%s.html\">%s</a><br/>\n" % (
                     campname, lang, cname, campabbrev))
             if i == 0 and cids[1]:
                 write("-<br/>\n")
-        write("</td>\n")
-        write("</tr>\n")
+        write("</div></li>\n")
 
         # Eras
-        write("<tr>\n")
         x = self.translate("Era", "wesnoth")
-        write("<th>%s</th></tr><tr><td>" % x)
+        add_menu("eras_menu", x)
+
         eids = [[], []]
         for eid in self.wesnoth.era_lookup.keys():
             if eid in self.wesnoth.is_mainline_era:
@@ -307,19 +317,19 @@ class HTMLOutput:
             eranames.sort()
             for eraname, eid in eranames:
                 write(" <a title=\"%s\" href=\"../%s/%s.html\">%s</a><br/>" % (
-                    eraname, lang, eid, abbrev(eraname)))
+                    eraname, lang, eid, eraname))#abbrev(eraname)))
             if i == 0 and eids[1]:
                 write("-<br/>\n")
-        write("</td>\n")
-        write("</tr>\n")
+        write("</div></li>\n")
 
         # Races
+        x = self.translate("Race", "wesnoth")
+        add_menu("races_menu", x)
         if self.campaign == "mainline":
-            write("<tr>\n")
-            x = self.translate("Race", "wesnoth")
-            write("<th>%s</th></tr><tr><td>" % x)
+
             write("<a href=\"mainline.html\">%s</a><br/>\n" % (
                 self.translate("all", "wesnoth-editor")))
+
             racenames = {}
             for u in self.wesnoth.unit_lookup.values():
                 if u.campaign != self.campaign: continue
@@ -332,24 +342,41 @@ class HTMLOutput:
             for racename, rid in racenames:
                 write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
                     racename, racename))
-            write("</td>\n")
-            write("</tr>\n")
+        else:
+            for row in self.unitgrid:
+                for column in range(6):
+                    hspan, vspan, un = row[column]
+                    if un and isinstance(un, helpers.GroupNode):
+                        write(" <a href=\"#%s\">%s</a><br/>" % (
+                            un.name, un.name))
+        write("</div></li>\n")
 
         # Languages
-        write("<tr>\n")
         x = self.translate("Language", "wesnoth")
-        write("<th>%s</th></tr><tr><td>" % x)
+        add_menu("languages_menu", x)
+        col = 0
+        write("<table>")
+        write("<tr>")
         for lang in langlist:
+            col += 1
+            write("<td>")
             labb = lang
             underscore = labb.find("_")
             if underscore > 0: labb = labb[:underscore]
             write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
                 languages[lang], lang, self.target,
                     labb))
-        write("</td>\n")
-        write("</tr>\n")
+            write("</td>")
+            if col == 5:
+                write("</tr><tr>")
+                col = 0
+        write("</tr>")
+        write("</table>")
+        write("</div></li>\n")
 
-        write("</table>\n")
+        write("</ul>\n")
+
+        write("</div>\n")
 
     def pic(self, u, x):
         image = self.wesnoth.get_unit_value(x, "image")
@@ -554,10 +581,15 @@ class HTMLOutput:
 
         self.analyze_units(grouper)
         self.write_navbar()
+        
+        self.output.write("<div class=\"main\">")
 
         self.output.write("<h1>%s</h1>" % title)
 
         self.write_units()
+
+        self.output.write('<div id="clear" style="clear:both;"></div>')
+        self.output.write("</div>")
 
         self.output.write(html_footer % {
             "generation_note" : "generated on " + time.ctime()})
@@ -586,6 +618,8 @@ class HTMLOutput:
         self.output = output
         write(html_header % {"path" : "../"})
         self.write_navbar()
+        
+        self.output.write("<div class=\"main\">")
 
         def uval(name):
             return self.wesnoth.get_unit_value(unit, name,
@@ -605,6 +639,7 @@ class HTMLOutput:
         write("<h1>%s</h1>\n" % display_name)
         
         write('<div style="width: 60em; float: left">')
+       
         write('<div style="width: 40em; float: left">')
 
         write('<div class="pic">')
@@ -771,6 +806,7 @@ class HTMLOutput:
             write("</tr>\n")
         write("</table>\n")
         
+        # end left column
         write('</div>')
         write('<div style="width: 20em; float:right">')
 
@@ -811,7 +847,9 @@ class HTMLOutput:
             write("</tr>\n")
         write("</table>\n")
         
-        write('</div>')
+        write('</div>') # right column
+        
+        write('</div>') # columns parent
         
         if portrait:
             write('<div class="pic">')
@@ -821,10 +859,12 @@ class HTMLOutput:
             else:
                 write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
             write('</div>\n')
-        
-        write('</div>')
 
-        write(html_footer)
+        self.output.write('<div id="clear" style="clear:both;"></div>')
+        write('</div>') # main
+
+        self.output.write(html_footer % {
+            "generation_note" : "generated on " + time.ctime()})
 
 languages_found = {}
 def find_languages():
@@ -921,6 +961,8 @@ def copy_images():
         image_collector.copy_and_color_images(options.output)
         shutil.copy2(os.path.join(image_collector.datadir,
             "data/tools/unit_tree/style.css"), options.output)
+        shutil.copy2(os.path.join(image_collector.datadir,
+            "data/tools/unit_tree/menu.js"), options.output)
         for grab in [
             "http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg",
             "http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg",
