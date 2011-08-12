@@ -24,7 +24,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.DialogSettings;
 
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
@@ -160,7 +159,7 @@ public class PreprocessorUtils
                 arguments.add( macrosFile );
             }
 
-            if( Preferences.getBool( Constants.P_NO_TERRAIN_GFX ) ) {
+            if( Preferences.getBool( Preferences.NO_TERRAIN_GFX ) ) {
                 if( defines == null ) {
                     defines = new ArrayList< String >( );
                 }

@@ -12,7 +12,6 @@ import java.util.List;
 
 import org.eclipse.jface.wizard.IWizardPage;
 
-import org.wesnoth.Constants;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.wizards.WizardTemplate;
@@ -21,8 +20,13 @@ import org.wesnoth.wml.WMLTag;
 
 public class WizardGenerator extends WizardTemplate
 {
-    private String tagName_;
-    private int    indent_;
+    public static final int WIZ_TextBoxHeight       = 21;
+    public static final int WIZ_MaxTextBoxesOnPage  = 10;
+    public static final int WIZ_MaxGroupsOnPage     = 4;
+    public static final int WIZ_MaxWizardPageHeight = 220;
+
+    private String          tagName_;
+    private int             indent_;
 
     public WizardGenerator( String title, String tagName, int indent )
     {
@@ -40,13 +44,13 @@ public class WizardGenerator extends WizardTemplate
             // keys section
             List< WMLKey > keys = tagContent.getWMLKeys( );
             int keysNr = keys.size( );
-            int startKey = 0, pgsKey = ( keysNr / Constants.WIZ_MaxTextBoxesOnPage );
+            int startKey = 0, pgsKey = ( keysNr / WIZ_MaxTextBoxesOnPage );
             WizardGeneratorPageKey tempPageKey;
             for( int i = 0; i < pgsKey; i++ ) {
                 tempPageKey = new WizardGeneratorPageKey( tagName, keys,
-                    startKey, startKey + Constants.WIZ_MaxTextBoxesOnPage,
+                    startKey, startKey + WIZ_MaxTextBoxesOnPage,
                     indent_ + 1 );
-                startKey += Constants.WIZ_MaxTextBoxesOnPage;
+                startKey += WIZ_MaxTextBoxesOnPage;
                 addPage( tempPageKey );
             }
 
@@ -59,13 +63,13 @@ public class WizardGenerator extends WizardTemplate
             // tags section
             List< WMLTag > tags = tagContent.getWMLTags( );
             int tagsNr = tags.size( );
-            int startTag = 0, pgsTag = ( tagsNr / Constants.WIZ_MaxGroupsOnPage );
+            int startTag = 0, pgsTag = ( tagsNr / WIZ_MaxGroupsOnPage );
             WizardGeneratorPageTag tempPageTag;
             for( int i = 0; i < pgsTag; i++ ) {
                 tempPageTag = new WizardGeneratorPageTag( tagName, tags,
-                    startTag, startTag + Constants.WIZ_MaxGroupsOnPage,
+                    startTag, startTag + WIZ_MaxGroupsOnPage,
                     indent_ + 1 );
-                startTag += Constants.WIZ_MaxTextBoxesOnPage;
+                startTag += WIZ_MaxTextBoxesOnPage;
                 addPage( tempPageTag );
             }
             if( tagsNr - 1 > 0 ) {

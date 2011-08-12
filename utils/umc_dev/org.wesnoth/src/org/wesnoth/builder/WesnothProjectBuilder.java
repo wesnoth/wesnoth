@@ -58,8 +58,10 @@ import org.wesnoth.wml.WMLConfig;
  */
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
-    private ProjectCache projectCache_;
-    private IProject     project_;
+    public static final String ID_BUIILDER = "org.wesnoth.builders.wesnoth"; //$NON-NLS-1$
+
+    private ProjectCache       projectCache_;
+    private IProject           project_;
 
     @SuppressWarnings( "rawtypes" )
     @Override

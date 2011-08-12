@@ -16,7 +16,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 
-import org.wesnoth.Constants;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.utils.StringUtils;
 
@@ -25,46 +24,82 @@ import org.wesnoth.utils.StringUtils;
  */
 public class Preferences extends AbstractPreferenceInitializer
 {
+    /** Wesnoth paths **/
+    public static final String                  WESNOTH_EXEC_PATH      = "wesnoth_exec_path";            //$NON-NLS-1$
+    public static final String                  WESNOTH_WORKING_DIR    = "wesnoth_working_dir";          //$NON-NLS-1$
+    public static final String                  WESNOTH_WMLTOOLS_DIR   = "wesnoth_wmltools_dir";         //$NON-NLS-1$
+
+    public static final String                  WESNOTH_USER_DIR       = "wesnoth_user_dir";             //$NON-NLS-1$
+
+    public static final String                  PYTHON_PATH            = "python_path";                  //$NON-NLS-1$
+
+    /** WML Tools preferences constants **/
+    public static final String                  WMLINDENT_VERBOSE      = "wmlindent_verbose";            //$NON-NLS-1$
+    public static final String                  WMLINDENT_DRYRUN       = "wmlindent_dry_run";            //$NON-NLS-1$
+
+    public static final String                  WMLLINT_DRYRUN         = "wmllint_dry_run";              //$NON-NLS-1$
+    public static final String                  WMLLINT_SPELL_CHECK    = "wmllint_spell_check";          //$NON-NLS-1$
+    public static final String                  WMLLINT_VERBOSE_LEVEL  = "wmllint_verbose_level";        //$NON-NLS-1$
+
+    public static final String                  WMLSCOPE_VERBOSE_LEVEL = "wmlscope_verbose_level";       //$NON-NLS-1$
+    public static final String                  WMLSCOPE_COLLISIONS    = "wmlscope_collisions";          //$NON-NLS-1$
+
+    /** Wesnoth addon uploader preferences */
+    public static final String                  WAU_PASSWORD           = "wau_password";                 //$NON-NLS-1$
+    public static final String                  WAU_VERBOSE            = "wau_verbose";                  //$NON-NLS-1$
+    public static final String                  WAU_ADDRESS            = "wau_address";                  //$NON-NLS-1$
+    public static final String                  WAU_PORT               = "wau_port";                     //$NON-NLS-1$
+
+    /** Advanced preferences */
+    public static final String                  NO_TERRAIN_GFX         = "adv_no_terrain_gfx";           //$NON-NLS-1$
+    public static final String                  WML_VALIDATION         = "adv_wml_validation";           //$NON-NLS-1$
+
+    /** Install preferences */
+    public static final String                  INST_DEFAULT_INSTALL   = "inst_default";                 //$NON-NLS-1$
+    public static final String                  INST_INSTALL_LIST      = "inst_list";                    //$NON-NLS-1$
+    public static final String                  INST_NAME_PREFIX       = "inst_name";                    //$NON-NLS-1$
+
+
     /**
      * A map for storing the paths for the current session
      */
-    protected final static Map< String, Paths > paths_ = new HashMap< String, Paths >( );
+    protected final static Map< String, Paths > paths_                 = new HashMap< String, Paths >( );
 
     public static void initializeToDefault( )
     {
         IPreferenceStore store = WesnothPlugin.getDefault( )
             .getPreferenceStore( );
         // general settings
-        store.setDefault( Constants.P_WESNOTH_EXEC_PATH, "" ); //$NON-NLS-1$
-        store.setDefault( Constants.P_WESNOTH_WORKING_DIR, "" ); //$NON-NLS-1$
-        store.setDefault( Constants.P_WESNOTH_USER_DIR, "" ); //$NON-NLS-1$
-        store.setDefault( Constants.P_WESNOTH_WMLTOOLS_DIR, "" ); //$NON-NLS-1$
-        store.setDefault( Constants.P_PYTHON_PATH, "" ); //$NON-NLS-1$
+        store.setDefault( WESNOTH_EXEC_PATH, "" ); //$NON-NLS-1$
+        store.setDefault( WESNOTH_WORKING_DIR, "" ); //$NON-NLS-1$
+        store.setDefault( WESNOTH_USER_DIR, "" ); //$NON-NLS-1$
+        store.setDefault( WESNOTH_WMLTOOLS_DIR, "" ); //$NON-NLS-1$
+        store.setDefault( PYTHON_PATH, "" ); //$NON-NLS-1$
 
         // wml tools
-        store.setDefault( Constants.P_WMLINDENT_VERBOSE, true );
-        store.setDefault( Constants.P_WMLINDENT_DRYRUN, true );
+        store.setDefault( WMLINDENT_VERBOSE, true );
+        store.setDefault( WMLINDENT_DRYRUN, true );
 
-        store.setDefault( Constants.P_WMLLINT_DRYRUN, true );
-        store.setDefault( Constants.P_WMLLINT_SPELL_CHECK, false );
-        store.setDefault( Constants.P_WMLLINT_VERBOSE_LEVEL, 0 );
+        store.setDefault( WMLLINT_DRYRUN, true );
+        store.setDefault( WMLLINT_SPELL_CHECK, false );
+        store.setDefault( WMLLINT_VERBOSE_LEVEL, 0 );
 
-        store.setDefault( Constants.P_WMLSCOPE_VERBOSE_LEVEL, 0 );
-        store.setDefault( Constants.P_WMLSCOPE_COLLISIONS, false );
+        store.setDefault( WMLSCOPE_VERBOSE_LEVEL, 0 );
+        store.setDefault( WMLSCOPE_COLLISIONS, false );
 
         // upload manager
-        store.setDefault( Constants.P_WAU_PASSWORD, "" ); //$NON-NLS-1$
-        store.setDefault( Constants.P_WAU_VERBOSE, false );
-        store.setDefault( Constants.P_WAU_ADDRESS, "add-ons.wesnoth.org" ); //$NON-NLS-1$
-        store.setDefault( Constants.P_WAU_PORT, 15002 );
+        store.setDefault( WAU_PASSWORD, "" ); //$NON-NLS-1$
+        store.setDefault( WAU_VERBOSE, false );
+        store.setDefault( WAU_ADDRESS, "add-ons.wesnoth.org" ); //$NON-NLS-1$
+        store.setDefault( WAU_PORT, 15002 );
 
         // advanced
-        store.setDefault( Constants.P_NO_TERRAIN_GFX, true );
-        store.setDefault( Constants.P_WML_VALIDATION, false );
+        store.setDefault( NO_TERRAIN_GFX, true );
+        store.setDefault( WML_VALIDATION, false );
 
         // installs
-        store.setDefault( Constants.P_INST_DEFAULT_INSTALL, "" ); //$NON-NLS-1$
-        store.setDefault( Constants.P_INST_INSTALL_LIST, "" ); //$NON-NLS-1$
+        store.setDefault( INST_DEFAULT_INSTALL, "" ); //$NON-NLS-1$
+        store.setDefault( INST_INSTALL_LIST, "" ); //$NON-NLS-1$
     }
 
     @Override
@@ -131,7 +166,7 @@ public class Preferences extends AbstractPreferenceInitializer
      */
     public static String getDefaultInstallName( )
     {
-        return getString( Constants.P_INST_DEFAULT_INSTALL );
+        return getString( Preferences.INST_DEFAULT_INSTALL );
     }
 
     /**
@@ -142,7 +177,7 @@ public class Preferences extends AbstractPreferenceInitializer
      */
     public static void setDefaultInstallName( String newInstallName )
     {
-        getPreferences( ).setValue( Constants.P_INST_DEFAULT_INSTALL,
+        getPreferences( ).setValue( Preferences.INST_DEFAULT_INSTALL,
             newInstallName );
     }
 
@@ -261,7 +296,7 @@ public class Preferences extends AbstractPreferenceInitializer
          */
         public String getUserDir( )
         {
-            return getString( installPrefix_ + Constants.P_WESNOTH_USER_DIR )
+            return getString( installPrefix_ + Preferences.WESNOTH_USER_DIR )
                 .replace( '\\', '/' ) + IPath.SEPARATOR;
         }
 
@@ -273,7 +308,7 @@ public class Preferences extends AbstractPreferenceInitializer
          */
         public String getWorkingDir( )
         {
-            return getString( installPrefix_ + Constants.P_WESNOTH_WORKING_DIR )
+            return getString( installPrefix_ + Preferences.WESNOTH_WORKING_DIR )
                 .replace( '\\', '/' ) + IPath.SEPARATOR;
         }
 
@@ -285,7 +320,7 @@ public class Preferences extends AbstractPreferenceInitializer
          */
         public String getWMLToolsDir( )
         {
-            return getString( installPrefix_ + Constants.P_WESNOTH_WMLTOOLS_DIR )
+            return getString( installPrefix_ + Preferences.WESNOTH_WMLTOOLS_DIR )
                 .replace( '\\', '/' )
                 + IPath.SEPARATOR;
         }
@@ -297,7 +332,7 @@ public class Preferences extends AbstractPreferenceInitializer
          */
         public String getWesnothExecutablePath( )
         {
-            return getString( installPrefix_ + Constants.P_WESNOTH_EXEC_PATH )
+            return getString( installPrefix_ + Preferences.WESNOTH_EXEC_PATH )
                 .replace( '\\', '/' );
         }
     }

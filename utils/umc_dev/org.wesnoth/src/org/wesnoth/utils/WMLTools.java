@@ -75,11 +75,11 @@ public class WMLTools
             }
 
             if( dryrun
-                || Preferences.getBool( Constants.P_WMLINDENT_DRYRUN ) == true ) {
+                || Preferences.getBool( Preferences.WMLINDENT_DRYRUN ) == true ) {
                 arguments.add( "--dryrun" ); //$NON-NLS-1$
             }
 
-            if( Preferences.getBool( Constants.P_WMLINDENT_VERBOSE ) ) {
+            if( Preferences.getBool( Preferences.WMLINDENT_VERBOSE ) ) {
                 arguments.add( "-v" ); //$NON-NLS-1$
                 arguments.add( "-v" ); //$NON-NLS-1$
             }
@@ -188,7 +188,7 @@ public class WMLTools
         arguments.add( wmllintFile.getAbsolutePath( ) );
 
         int verboseLevel = Preferences
-            .getInt( Constants.P_WMLLINT_VERBOSE_LEVEL );
+            .getInt( Preferences.WMLLINT_VERBOSE_LEVEL );
         for( int i = 1; i <= verboseLevel; i++ ) {
             arguments.add( "-v" ); //$NON-NLS-1$
         }
@@ -197,11 +197,11 @@ public class WMLTools
             arguments.add( "--progress" ); //$NON-NLS-1$
         }
 
-        if( dryrun || Preferences.getBool( Constants.P_WMLLINT_DRYRUN ) == true ) {
+        if( dryrun || Preferences.getBool( Preferences.WMLLINT_DRYRUN ) == true ) {
             arguments.add( "--dryrun" ); //$NON-NLS-1$
         }
 
-        if( Preferences.getBool( Constants.P_WMLLINT_SPELL_CHECK ) == false ) {
+        if( Preferences.getBool( Preferences.WMLLINT_SPELL_CHECK ) == false ) {
             arguments.add( "--nospellcheck" ); //$NON-NLS-1$
         }
 
@@ -256,7 +256,7 @@ public class WMLTools
 
         arguments.add( wmlscopeFile.getAbsolutePath( ) );
         int verboseLevel = Preferences
-            .getInt( Constants.P_WMLSCOPE_VERBOSE_LEVEL );
+            .getInt( Preferences.WMLSCOPE_VERBOSE_LEVEL );
 
         if( verboseLevel > 0 ) {
             arguments.add( "-w" ); //$NON-NLS-1$
@@ -266,7 +266,7 @@ public class WMLTools
             arguments.add( "--progress" ); //$NON-NLS-1$
         }
 
-        if( Preferences.getBool( Constants.P_WMLSCOPE_COLLISIONS ) == true ) {
+        if( Preferences.getBool( Preferences.WMLSCOPE_COLLISIONS ) == true ) {
             arguments.add( "--collisions" ); //$NON-NLS-1$
         }
 
@@ -474,8 +474,8 @@ public class WMLTools
 
         return runWesnothAddonManager(
             WesnothInstallsUtils.getInstallNameForResource( containerPath ),
-            Preferences.getString( Constants.P_WAU_PASSWORD ),
-            Preferences.getString( Constants.P_WAU_PORT ),
+            Preferences.getString( Preferences.WAU_PASSWORD ),
+            Preferences.getString( Preferences.WAU_PORT ),
             Arrays.asList( "-u", containerPath ) // upload container
             , stdout, stderr );
     }
@@ -517,12 +517,12 @@ public class WMLTools
             arguments.add( password );
         }
 
-        if( Preferences.getBool( Constants.P_WAU_VERBOSE ) == true ) {
+        if( Preferences.getBool( Preferences.WAU_VERBOSE ) == true ) {
             arguments.add( "-V" ); //$NON-NLS-1$
         }
 
         arguments.add( "-a" ); //$NON-NLS-1$
-        arguments.add( Preferences.getString( Constants.P_WAU_ADDRESS ) );
+        arguments.add( Preferences.getString( Preferences.WAU_ADDRESS ) );
 
         arguments.add( "-p" ); //$NON-NLS-1$
         arguments.add( port );
@@ -572,11 +572,11 @@ public class WMLTools
      */
     public static boolean checkWMLTool( Paths paths, String wmlTool )
     {
-        String pythonPath = Preferences.getString( Constants.P_PYTHON_PATH );
+        String pythonPath = Preferences.getString( Preferences.PYTHON_PATH );
         if( pythonPath.isEmpty( )
             || ( pythonPath.matches( "^.*(/|\\\\).*$" ) && ! ResourceUtils
                 .isValidFilePath( Preferences
-                    .getString( Constants.P_PYTHON_PATH ) ) ) ) {
+                    .getString( Preferences.PYTHON_PATH ) ) ) ) {
             GUIUtils.showWarnMessageBox( Messages.WMLTools_42 );
             return false;
         }
@@ -629,7 +629,7 @@ public class WMLTools
         final OutputStream[] stderr )
     {
         final ExternalToolInvoker pyscript = new ExternalToolInvoker(
-            Preferences.getString( Constants.P_PYTHON_PATH ), arguments );
+            Preferences.getString( Preferences.PYTHON_PATH ), arguments );
 
         pyscript.runTool( );
         if( stderrMonitoring == true || ( stderr != null && stderr.length > 0 ) ) {

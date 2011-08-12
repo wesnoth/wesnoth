@@ -18,7 +18,6 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.action.IAction;
 
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.action.ObjectActionDelegate;
 
@@ -60,7 +59,7 @@ public class ToggleWesnothNatureAction extends ObjectActionDelegate
             String[] natures = description.getNatureIds( );
 
             for( int i = 0; i < natures.length; ++i ) {
-                if( Constants.NATURE_WESNOTH.equals( natures[i] ) ) {
+                if( WesnothProjectNature.ID_NATURE.equals( natures[i] ) ) {
                     // Remove the nature
                     String[] newNatures = new String[natures.length - 1];
                     System.arraycopy( natures, 0, newNatures, 0, i );
@@ -78,7 +77,7 @@ public class ToggleWesnothNatureAction extends ObjectActionDelegate
             // Add the natures
             String[] newNatures = new String[natures.length + 1];
             System.arraycopy( natures, 0, newNatures, 0, natures.length );
-            newNatures[natures.length] = Constants.NATURE_WESNOTH;
+            newNatures[natures.length] = WesnothProjectNature.ID_NATURE;
             description.setNatureIds( newNatures );
             project.setDescription( description, new NullProgressMonitor( ) );
             project.refreshLocal( IResource.DEPTH_INFINITE,

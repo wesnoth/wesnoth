@@ -17,7 +17,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Combo;
 
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
@@ -39,7 +38,7 @@ public class WesnothInstallsUtils
         List< WesnothInstall > installsList = new ArrayList< WesnothInstall >( );
         // unpack installs
         String[] installs = Preferences.getString(
-            Constants.P_INST_INSTALL_LIST ).split( ";" ); //$NON-NLS-1$
+            Preferences.INST_INSTALL_LIST ).split( ";" ); //$NON-NLS-1$
         for( String str: installs ) {
             if( str.isEmpty( ) ) {
                 continue;
@@ -78,7 +77,7 @@ public class WesnothInstallsUtils
             installs.append( ":" ); //$NON-NLS-1$
             installs.append( install.getVersion( ) );
         }
-        Preferences.getPreferences( ).setValue( Constants.P_INST_INSTALL_LIST,
+        Preferences.getPreferences( ).setValue( Preferences.INST_INSTALL_LIST,
             installs.toString( ) );
     }
 

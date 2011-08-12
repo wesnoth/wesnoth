@@ -24,9 +24,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.Messages;
+import org.wesnoth.builder.WesnothProjectNature;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.templates.ReplaceableParameter;
@@ -229,8 +229,12 @@ public class ProjectUtils
             monitor.subTask( Messages.ProjectUtils_6 );
             // add wesnoth nature
             IProjectDescription tmpDescription = handle.getDescription( );
-            tmpDescription.setNatureIds( new String[] {
-                Constants.NATURE_WESNOTH /* , Constants.NATURE_XTEXT */} );
+            tmpDescription
+                .setNatureIds( new String[] {
+                    WesnothProjectNature.ID_NATURE /*
+                                                         * ,
+                                                         * Constants.NATURE_XTEXT
+                                                         */} );
             handle.setDescription( tmpDescription, monitor );
             monitor.worked( 5 );
 

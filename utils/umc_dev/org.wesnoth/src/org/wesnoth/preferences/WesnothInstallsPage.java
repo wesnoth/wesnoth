@@ -182,7 +182,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             Messages.WesnothPreferencesPage_11, getFieldEditorParent( ) );
         addField( wmlToolsField_, Messages.WesnothPreferencesPage_12 );
 
-        addField( new FileFieldEditor( Constants.P_PYTHON_PATH,
+        addField( new FileFieldEditor( Preferences.PYTHON_PATH,
             Messages.WesnothPreferencesPage_13, getFieldEditorParent( ) ) );
 
         addField( new LabelFieldEditor( Messages.WesnothPreferencesPage_14,
@@ -353,12 +353,12 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             IPreferenceStore prefs = Preferences.getPreferences( );
             String installPrefix = Preferences.getInstallPrefix( install
                 .getName( ) );
-            prefs.setToDefault( installPrefix + Constants.P_WESNOTH_EXEC_PATH );
-            prefs.setToDefault( installPrefix + Constants.P_WESNOTH_USER_DIR );
+            prefs.setToDefault( installPrefix + Preferences.WESNOTH_EXEC_PATH );
+            prefs.setToDefault( installPrefix + Preferences.WESNOTH_USER_DIR );
             prefs.setToDefault( installPrefix
-                + Constants.P_WESNOTH_WMLTOOLS_DIR );
+                + Preferences.WESNOTH_WMLTOOLS_DIR );
             prefs
-                .setToDefault( installPrefix + Constants.P_WESNOTH_WORKING_DIR );
+                .setToDefault( installPrefix + Preferences.WESNOTH_WORKING_DIR );
 
             // unset the default install if this was that
             // and select another one (the first) - if any - as default
@@ -417,16 +417,16 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         boolean loadPreferences )
     {
         wesnothExecutableField_.setPreferenceName( installPrefix
-            + Constants.P_WESNOTH_EXEC_PATH );
+            + Preferences.WESNOTH_EXEC_PATH );
 
         wesnothUserDirField_.setPreferenceName( installPrefix
-            + Constants.P_WESNOTH_USER_DIR );
+            + Preferences.WESNOTH_USER_DIR );
 
         wesnothWorkingDirField_.setPreferenceName( installPrefix
-            + Constants.P_WESNOTH_WORKING_DIR );
+            + Preferences.WESNOTH_WORKING_DIR );
 
         wmlToolsField_.setPreferenceName( installPrefix
-            + Constants.P_WESNOTH_WMLTOOLS_DIR );
+            + Preferences.WESNOTH_WMLTOOLS_DIR );
 
         if( loadPreferences ) {
             wesnothUserDirField_.setStringValue( "" ); //$NON-NLS-1$

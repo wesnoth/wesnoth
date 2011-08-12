@@ -23,7 +23,6 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IProject;
 
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.builder.DependencyListBuilder;
 import org.wesnoth.preferences.Preferences;
@@ -238,7 +237,7 @@ public class ProjectCache implements Serializable
      */
     public String getInstallName( )
     {
-        return Preferences.getString( Constants.P_INST_NAME_PREFIX
+        return Preferences.getString( Preferences.INST_NAME_PREFIX
             + project_.getName( ) );
     }
 
@@ -251,7 +250,7 @@ public class ProjectCache implements Serializable
     public void setInstallName( String newInstallName )
     {
         Preferences.getPreferences( ).setValue(
-            Constants.P_INST_NAME_PREFIX + project_.getName( ),
+            Preferences.INST_NAME_PREFIX + project_.getName( ),
             newInstallName );
     }
 

@@ -16,8 +16,8 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.QualifiedName;
 
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.utils.ResourceUtils;
 
 /**
@@ -41,7 +41,7 @@ public class DependencyListNode implements Serializable
     public static final int           INDEX_STEP       = 100000;
 
     public static final QualifiedName PDL_INDEX        = new QualifiedName(
-                                                           Constants.PLUGIN_ID,
+                                                           WesnothPlugin.PLUGIN_ID,
                                                            "pdl_index" );       //$NON-NLS-1$
 
     private DependencyListNode        previous_;

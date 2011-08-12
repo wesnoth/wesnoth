@@ -22,7 +22,6 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 
-import org.wesnoth.Constants;
 import org.wesnoth.Messages;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
@@ -66,7 +65,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 
     private boolean isValidationEnabled( )
     {
-        return Preferences.getBool( Constants.P_WML_VALIDATION );
+        return Preferences.getBool( Preferences.WML_VALIDATION );
     }
 
     @Check( CheckType.FAST )

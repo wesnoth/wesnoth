@@ -16,7 +16,6 @@ import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 
-import org.wesnoth.Constants;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.jface.RegexStringFieldEditor;
@@ -53,16 +52,16 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
     protected void createFieldEditors( )
     {
         addField(
-            new StringFieldEditor( Constants.P_WAU_PASSWORD,
+            new StringFieldEditor( Preferences.WAU_PASSWORD,
                 Messages.AddonUploadPreferencePage_11,
                 getFieldEditorParent( ) ),
             Messages.AddonUploadPreferencePage_12 );
-        addField( new BooleanFieldEditor( Constants.P_WAU_VERBOSE,
+        addField( new BooleanFieldEditor( Preferences.WAU_VERBOSE,
             Messages.AddonUploadPreferencePage_13, 1,
             getFieldEditorParent( ) ) );
 
         addField(
-            new RegexStringFieldEditor( Constants.P_WAU_ADDRESS,
+            new RegexStringFieldEditor( Preferences.WAU_ADDRESS,
                 Messages.AddonUploadPreferencePage_14,
                 Messages.AddonUploadPreferencePage_15,
                 Messages.AddonUploadPreferencePage_16,
@@ -82,7 +81,7 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
 
         // System.out.println(portsRegex.toString());
         addField(
-            new RegexStringFieldEditor( Constants.P_WAU_PORT,
+            new RegexStringFieldEditor( Preferences.WAU_PORT,
                 Messages.AddonUploadPreferencePage_22,
                 portsRegex.toString( ),
                 Messages.AddonUploadPreferencePage_23,

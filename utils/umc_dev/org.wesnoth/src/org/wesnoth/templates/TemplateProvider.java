@@ -20,8 +20,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.WesnothPlugin;
 import org.wesnoth.utils.Pair;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
@@ -29,6 +29,8 @@ import org.wesnoth.utils.StringUtils;
 
 public class TemplateProvider
 {
+    public static final String TEMPLATES_FILENAME = "templatesIndex.txt"; //$NON-NLS-1$
+
     /**
      * Holds the instance of the TemplateProvider.
      * This is based on the Initialization on demand holder idiom
@@ -61,13 +63,13 @@ public class TemplateProvider
         cacs_.clear( );
 
         try {
-            File varsFile = new File( Constants.PLUGIN_FULL_PATH
+            File varsFile = new File( WesnothPlugin.PLUGIN_FULL_PATH
                 + "/templates/cac/variables.txt" );
             cacs_.put( "variables", Arrays.asList( StringUtils
                 .getLines( ResourceUtils.getFileContents( varsFile, true,
                     true ) ) ) );
 
-            File eventsFile = new File( Constants.PLUGIN_FULL_PATH
+            File eventsFile = new File( WesnothPlugin.PLUGIN_FULL_PATH
                 + "/templates/cac/events.txt" );
             cacs_.put( "events", Arrays.asList( StringUtils
                 .getLines( ResourceUtils.getFileContents( eventsFile, true,
@@ -85,10 +87,10 @@ public class TemplateProvider
         templates_.clear( );
         try {
             Logger.getInstance( ).log( "reading templates from: " + //$NON-NLS-1$
-                Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME );
+                WesnothPlugin.PLUGIN_FULL_PATH + TEMPLATES_FILENAME );
 
             BufferedReader reader = new BufferedReader( new FileReader(
-                Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME ) );
+                WesnothPlugin.PLUGIN_FULL_PATH + TEMPLATES_FILENAME ) );
             BufferedReader tmpReader;
             String line, tmpLine;
             StringBuilder content = new StringBuilder( );
@@ -112,10 +114,10 @@ public class TemplateProvider
 
                 content.setLength( 0 );
 
-                if( new File( Constants.PLUGIN_FULL_PATH + tokensStrings[1] )
+                if( new File( WesnothPlugin.PLUGIN_FULL_PATH + tokensStrings[1] )
                     .exists( ) ) {
                     tmpReader = new BufferedReader( new FileReader(
-                        Constants.PLUGIN_FULL_PATH + tokensStrings[1] ) );
+                        WesnothPlugin.PLUGIN_FULL_PATH + tokensStrings[1] ) );
                     while( ( tmpLine = tmpReader.readLine( ) ) != null ) {
                         content.append( tmpLine + '\n' );
                     }

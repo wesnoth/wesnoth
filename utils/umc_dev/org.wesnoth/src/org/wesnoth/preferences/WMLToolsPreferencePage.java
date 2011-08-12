@@ -12,7 +12,6 @@ import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.ScaleFieldEditor;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 
-import org.wesnoth.Constants;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 
@@ -31,28 +30,28 @@ public class WMLToolsPreferencePage extends AbstractPreferencePage
     {
         addField( new LabelFieldEditor( Messages.WMLToolsPreferencePage_1,
             getFieldEditorParent( ) ) );
-        addField( new BooleanFieldEditor( Constants.P_WMLINDENT_DRYRUN,
+        addField( new BooleanFieldEditor( Preferences.WMLINDENT_DRYRUN,
             Messages.WMLToolsPreferencePage_2, 1, getFieldEditorParent( ) ) );
-        addField( new BooleanFieldEditor( Constants.P_WMLINDENT_VERBOSE,
+        addField( new BooleanFieldEditor( Preferences.WMLINDENT_VERBOSE,
             Messages.WMLToolsPreferencePage_3, 1, getFieldEditorParent( ) ) );
         addField( new LabelFieldEditor( "", getFieldEditorParent( ) ) ); //$NON-NLS-1$
 
         addField( new LabelFieldEditor( Messages.WMLToolsPreferencePage_5,
             getFieldEditorParent( ) ) );
-        addField( new ScaleFieldEditor( Constants.P_WMLSCOPE_VERBOSE_LEVEL,
+        addField( new ScaleFieldEditor( Preferences.WMLSCOPE_VERBOSE_LEVEL,
             Messages.WMLToolsPreferencePage_6, getFieldEditorParent( ), 0,
             2, 1, 1 ) );
-        addField( new BooleanFieldEditor( Constants.P_WMLSCOPE_COLLISIONS,
+        addField( new BooleanFieldEditor( Preferences.WMLSCOPE_COLLISIONS,
             Messages.WMLToolsPreferencePage_7, 1, getFieldEditorParent( ) ) );
         addField( new LabelFieldEditor( "", getFieldEditorParent( ) ) ); //$NON-NLS-1$
 
         addField( new LabelFieldEditor( Messages.WMLToolsPreferencePage_9,
             getFieldEditorParent( ) ) );
-        addField( new BooleanFieldEditor( Constants.P_WMLLINT_DRYRUN,
+        addField( new BooleanFieldEditor( Preferences.WMLLINT_DRYRUN,
             Messages.WMLToolsPreferencePage_10, 1, getFieldEditorParent( ) ) );
-        addField( new BooleanFieldEditor( Constants.P_WMLLINT_SPELL_CHECK,
+        addField( new BooleanFieldEditor( Preferences.WMLLINT_SPELL_CHECK,
             Messages.WMLToolsPreferencePage_11, 1, getFieldEditorParent( ) ) );
-        addField( new ScaleFieldEditor( Constants.P_WMLLINT_VERBOSE_LEVEL,
+        addField( new ScaleFieldEditor( Preferences.WMLLINT_VERBOSE_LEVEL,
             Messages.WMLToolsPreferencePage_12, getFieldEditorParent( ), 0,
             3, 1, 1 ) );
         addField( new LabelFieldEditor( "", getFieldEditorParent( ) ) ); //$NON-NLS-1$

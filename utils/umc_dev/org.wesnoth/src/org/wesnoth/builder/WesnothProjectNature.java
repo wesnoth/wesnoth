@@ -13,13 +13,14 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
-
-import org.wesnoth.Constants;
+import org.eclipse.xtext.ui.XtextProjectHelper;
 
 
 public class WesnothProjectNature implements IProjectNature
 {
-    private IProject project;
+    public static final String ID_NATURE = "org.wesnoth.natures.wesnoth"; //$NON-NLS-1$
+
+    private IProject           project;
 
     @Override
     public void configure( ) throws CoreException
@@ -32,11 +33,12 @@ public class WesnothProjectNature implements IProjectNature
         int configured = 0;
         for( int i = 0; i < commands.length; ++i ) {
             if( commands[i].getBuilderName( ).equals(
-                Constants.BUIILDER_WESNOTH ) ) {
+                WesnothProjectBuilder.ID_BUIILDER ) ) {
                 wesnothConfigured = true;
                 configured++;
             }
-            if( commands[i].getBuilderName( ).equals( Constants.BUILDER_XTEXT ) ) {
+            if( commands[i].getBuilderName( ).equals(
+                XtextProjectHelper.BUILDER_ID ) ) {
                 xtextConfigured = true;
                 configured++;
             }
@@ -50,12 +52,12 @@ public class WesnothProjectNature implements IProjectNature
         System.arraycopy( commands, 0, newCommands, 0, commands.length );
         if( wesnothConfigured == false ) {
             ICommand command = desc.newCommand( );
-            command.setBuilderName( Constants.BUIILDER_WESNOTH );
+            command.setBuilderName( WesnothProjectBuilder.ID_BUIILDER );
             newCommands[newCommands.length - 1] = command;
         }
         if( xtextConfigured == false ) {
             ICommand command = desc.newCommand( );
-            command.setBuilderName( Constants.BUILDER_XTEXT );
+            command.setBuilderName( XtextProjectHelper.BUILDER_ID );
             newCommands[newCommands.length - ( 2 - configured )] = command;
         }
         desc.setBuildSpec( newCommands );
@@ -69,9 +71,9 @@ public class WesnothProjectNature implements IProjectNature
         ICommand[] commands = description.getBuildSpec( );
         for( int i = 0; i < commands.length; ++i ) {
             if( commands[i].getBuilderName( ).equals(
-                Constants.BUIILDER_WESNOTH )
+                WesnothProjectBuilder.ID_BUIILDER )
                 || commands[i].getBuilderName( ).equals(
-                    Constants.BUILDER_XTEXT ) ) {
+                    XtextProjectHelper.BUILDER_ID ) ) {
                 ICommand[] newCommands = new ICommand[commands.length - 1];
                 System.arraycopy( commands, 0, newCommands, 0, i );
                 System.arraycopy( commands, i + 1, newCommands, i,

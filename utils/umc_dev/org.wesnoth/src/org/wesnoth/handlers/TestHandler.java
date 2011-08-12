@@ -134,7 +134,7 @@ public class TestHandler extends AbstractHandler
         // System.out.println(WorkspaceUtils.getSelectedContainer());
         // MessageConsole con = GUIUtils.createConsole("TIMO", null, true);
         // List<String> arguments = new ArrayList<String>();
-        // arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR));
+        // arguments.add(Preferences.getString(Preferences.WESNOTH_WORKING_DIR));
         // if (tool == null)
         // {
         // tool = new ExternalToolInvoker("D:/timo/conapp.exe", arguments);
