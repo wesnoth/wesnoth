@@ -2595,14 +2595,19 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 		} else if ((last_effect)["apply_to"] == "type") {
 			config::attribute_value &prev_type = (*new_child)["prev_type"];
 			if (prev_type.blank()) prev_type = type_id();
-			type_ = last_effect["name"].str();
-			int hit_points = hit_points_;
-			int experience = experience_;
-			int movement = movement_;
-			advance_to(this->type());
-			hit_points_ = hit_points;
-			experience_ = experience;
-			movement_ = movement;
+			const std::string& type = last_effect["name"];
+			if(unit_types.find(type)) {
+				type_ = type;
+				int hit_points = hit_points_;
+				int experience = experience_;
+				int movement = movement_;
+				advance_to(this->type());
+				hit_points_ = hit_points;
+				experience_ = experience;
+				movement_ = movement;
+			} else {
+				WRN_UT << "unknown type= in [effect]apply_to=type, ignoring\n";
+			}
 		}
 	}
 
