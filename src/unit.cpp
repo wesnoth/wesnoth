@@ -2602,6 +2602,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				int experience = experience_;
 				int movement = movement_;
 				advance_to(this->type());
+				preferences::encountered_units().insert(type);
 				hit_points_ = hit_points;
 				experience_ = experience;
 				movement_ = movement;
