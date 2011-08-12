@@ -1,6 +1,7 @@
 Version 1.9.8+svn:
  * AI:
    * Fixed bug #16117: added a way to supress E_NOT_REACHED_DESTINATION to lua
+   * Fixed bug #16247: modify SoF 8 to let the dragon attack aggressively
      api via an optional boolean parameter - ai.move_full(from,to_x,to_y,true)
    * Fixed bug #18057: AI leaders should now attack when they should
    * Fixed bug #18122: AI leaders set to defensive will now follow goals anyway
