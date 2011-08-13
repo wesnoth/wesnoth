@@ -111,8 +111,6 @@ void replay_controller::init_gui(){
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		t->reset_objectives_changed();
 	}
-
-	buttons_.update(gui_);
 }
 
 void replay_controller::init_replay_display(){
@@ -261,6 +259,7 @@ void replay_controller::reset_replay(){
 	fire_prestart(true);
 	init_gui();
 	fire_start(true);
+	buttons_.update(gui_);
 	update_gui();
 
 	buttons_.reset_buttons();
