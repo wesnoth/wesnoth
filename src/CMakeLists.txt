@@ -542,6 +542,7 @@ set(wesnoth-main_SRC
 	savegame.cpp
 	savegame_config.cpp
 	scripting/lua.cpp
+	serialization/schema_validator.cpp
 	settings.cpp
 	sha1.cpp
 	side_filter.cpp
@@ -555,6 +556,7 @@ set(wesnoth-main_SRC
 	terrain_filter.cpp
 	tod_manager.cpp
 	tooltips.cpp
+	tools/schema/tag.cpp
 	unit.cpp
 	unit_abilities.cpp
 	unit_animation.cpp
@@ -808,6 +810,27 @@ target_link_libraries(schema_generator wesnoth-core ${tools-external-libs} ${Boo
 set_target_properties(schema_generator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_generator${BINARY_SUFFIX})
 
 install(TARGETS schema_generator DESTINATION ${BINDIR})
+
+set_property(
+   SOURCE 	serialization/schema_validator.cpp
+   PROPERTY COMPILE_DEFINITIONS VALIDATION_ERRORS_LOG
+)
+set(schema_validator_SRC
+	tools/validator/validator_tool.cpp
+	serialization/schema_validator.cpp
+	tools/schema/tag.cpp
+	filesystem.cpp
+	config_cache.cpp
+	sha1.cpp
+	loadscreen_empty.cpp
+)
+
+add_executable(schema_validator ${schema_validator_SRC})
+target_link_libraries(schema_validator wesnoth-core ${common-external-libs})
+set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_validator${BINARY_SUFFIX})
+
+install(TARGETS schema_validator DESTINATION ${BINDIR})
+
 endif(ENABLE_TOOLS)
 ########### Unit tests ###############
 
