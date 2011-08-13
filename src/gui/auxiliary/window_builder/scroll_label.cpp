@@ -77,7 +77,7 @@ twidget* tbuilder_scroll_label::build() const
  * @page = GUIWidgetInstanceWML
  * @order = 2_scroll_label
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="scroll_label"}{min="0"}{max="1"}{super="generic/widget_instance"}
+ * @begin{tag}{name="scroll_label"}{min="0"}{max="-1"}{super="generic/widget_instance"}
  * == Scroll label ==
  *
  * @macro = scroll_label_description

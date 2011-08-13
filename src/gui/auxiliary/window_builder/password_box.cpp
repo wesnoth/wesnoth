@@ -59,8 +59,12 @@ twidget* tbuilder_password_box::build() const
  *
  * == Password box ==
  *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="password_box"}{min=0}{max=-1}{super="generic/widget_instance"}
  * @begin{table}{config}
- *     label & tstring & "" &            The initial text of the password box. $
+ *     label & t_string & "" &            The initial text of the password box. $
  * @end{table}
+ * @end{tag}{name="password_box"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

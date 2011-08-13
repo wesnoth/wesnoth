@@ -64,7 +64,7 @@ twidget* tbuilder_label::build() const
  * @page = GUIWidgetInstanceWML
  * @order = 2_label
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="label"}{min=0}{max=1}{super="generic/widget_instance"}
+ * @begin{tag}{name="label"}{min=0}{max=-1}{super="generic/widget_instance"}
  * == Label ==
  *
  * @macro = label_description

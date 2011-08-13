@@ -61,7 +61,7 @@ twidget* tbuilder_text_box::build() const
  *
  * == Text box ==
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="text_box"}{min="0"}{max="1"}{super="generic/widget_instance"}
+ * @begin{tag}{name="text_box"}{min="0"}{max="-1"}{super="generic/widget_instance"}
  * @begin{table}{config}
  *     label & t_string & "" &          The initial text of the text box. $
  *     history & string & "" &         The name of the history for the text

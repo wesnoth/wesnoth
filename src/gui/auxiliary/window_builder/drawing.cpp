@@ -79,7 +79,7 @@ twidget* tbuilder_drawing::build() const
  *
  * == Spacer ==
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="drawing"}{min=0}{max=1}{super="generic/widget_instance"}
+ * @begin{tag}{name="drawing"}{min=0}{max=-1}{super="generic/widget_instance"}
  * @macro = drawing_description
  *
  * If either the width or the height is not zero the drawing functions as a

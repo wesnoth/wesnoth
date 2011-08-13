@@ -81,7 +81,8 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
  * A clickable is one of:
  * * button
  * * repeating_button
- * @{allow}{link}{//TODO clickable}
+ * @{allow}{link}{name="gui/window/resolution/grid/row/column/button"}
+ * @{allow}{link}{name="gui/window/resolution/grid/row/column/repeating_button"}
  * The following states exist:
  * * state_enabled, the listbox is enabled.
  * * state_disabled, the listbox is disabled.
@@ -89,6 +90,7 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="state_enabled"}
  * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_disabled"}
+ * @allow{link}{name="gui/window/resolution/grid"}
  * @end{tag}{name="resolution"}
  * @end{tag}{name="listbox_definition"}
  * @end{parent}{name="gui/"}

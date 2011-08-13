@@ -78,9 +78,13 @@ twidget* tbuilder_stacked_widget::build() const
  * config. By default the last drawn item is also the 'active' layer for the
  * event handling.
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="stacked_widget"}{min="0"}{max="1"}{super="generic/widget_instance"}
+ * @begin{tag}{name="stacked_widget"}{min="0"}{max="-1"}{super="generic/widget_instance"}
  * @begin{table}{config}
  * @end{table}
+ * @begin{tag}{name="stack"}{min=0}{max=-1}
+ * @begin{tag}{name="layer"}{min=0}{max=-1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="layer"}
+ * @end{tag}{name="stack"}
  * @end{tag}{name="stacked_widget"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */

@@ -49,6 +49,9 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
  * A stacked widget has no states.
  * @begin{parent}{name="gui/"}
  * @begin{tag}{name="stacked_widget_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @allow{link}{name="gui/window/resolution/grid"}
+ * @end{tag}{name="resolution"}
  * @end{tag}{name="stacked_widget_definition"}
  * @end{parent}{name="gui/"}
  */

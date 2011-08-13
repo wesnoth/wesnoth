@@ -32,6 +32,7 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "serialization/schema_validator.hpp"
 #include "formula_string_utils.hpp"
 
 namespace gui2 {
@@ -357,8 +358,17 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                     the name of the hotkey for the help. $
  * @end{table}
  * @end{tag}{name="settings"}
- * @end{parent}{name="gui/"}
  */
+
+/*WIKI
+ * @begin{tag}{name="tip"}{min="0"}{max="-1"}
+ * @begin{table}{config}
+ *     source & t_string & & Author
+ *     text & t_string & & Text of the tip.
+ * @end{table}
+ * @end{tag}{name="tip"}
+ * @end{parent}{name="gui/"}
+*/
 
 /**
  * @todo Regarding sounds:
@@ -472,15 +482,20 @@ void load_settings()
 	// Read file.
 	config cfg;
 	try {
+//		schema_validation::schema_validator
+//				validator (get_wml_location("gui/schema.cfg"));
 		preproc_map preproc(
 				game_config::config_cache::instance().get_preproc_map());
 		scoped_istream stream = preprocess_file(get_wml_location("gui/default.cfg"), &preproc);
 
-		read(cfg, *stream);
+		read(cfg, *stream/*, &validator*/);
 	} catch(config::error&) {
 		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
 	}
-
+//	catch(abstract_validator::error e){
+//			ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'.\n";
+//			ERR_GUI_P << e.message;
+//	}
 	// Parse guis
 	foreach (const config &g, cfg.child_range("gui")) {
 		std::pair<std::string, tgui_definition> child;

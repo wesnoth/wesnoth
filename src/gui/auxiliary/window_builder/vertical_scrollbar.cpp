@@ -54,6 +54,10 @@ twidget* tbuilder_vertical_scrollbar::build() const
  *
  * == Vertical scrollbar ==
  *
- * A vertical scrollbar has no special fields.
+ *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="vertical_scrollbar"}{min=0}{max=1}{super="generic/widget_instance"}
+ * @end{tag}{name="vertical_scrollbar"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

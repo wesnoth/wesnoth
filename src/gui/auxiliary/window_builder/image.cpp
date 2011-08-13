@@ -62,5 +62,9 @@ twidget* tbuilder_image::build() const
  * @macro = image_description
  *
  * An image has no extra fields.
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="image"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * @end{tag}{name="image"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

@@ -70,7 +70,7 @@ twidget* tbuilder_panel::build() const
  * @page = GUIWidgetInstanceWML
  * @order = 2_panel
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="panel"}{min="0"}{max="1"}{super="generic/widget_instance"}
+ * @begin{tag}{name="panel"}{min="0"}{max="-1"}{super="generic/widget_instance"}
  * == Panel ==
  *
  * @macro = panel_description

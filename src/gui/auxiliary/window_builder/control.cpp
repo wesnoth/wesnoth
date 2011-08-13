@@ -83,7 +83,7 @@ void tbuilder_control::init_control(tcontrol* control) const
  *
  * = Widget =
  * @begin{parent}{name="generic/"}
- * @begin{tag}{name="widget_instance"}{min="0"}{max="1"}
+ * @begin{tag}{name="widget_instance"}{min="0"}{max="-1"}
  * All widgets placed in the cell have some values in common:
  * @begin{table}{config}
  *     id & string & "" &              This value is used for the engine to

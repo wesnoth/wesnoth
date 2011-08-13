@@ -68,7 +68,6 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
  *     bottom_offset & unsigned & 0 &    The number of pixels at the bottom which
  *                                     can't be used by the positioner. $
  * @end{table}
- * @end{tag}{name="resolution"}
  * The following states exist:
  * * state_enabled, the vertical scrollbar is enabled.
  * * state_disabled, the vertical scrollbar is disabled.

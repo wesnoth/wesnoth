@@ -56,7 +56,6 @@ ttext_box_definition::tresolution::tresolution(const config& cfg)
  *                                     box. $
  * @end{table}
  *
- * @end{tag}{name="resolution"}
  * The following states exist:
  * * state_enabled, the text box is enabled.
  * * state_disabled, the text box is disabled.

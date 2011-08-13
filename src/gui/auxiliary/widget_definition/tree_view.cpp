@@ -51,7 +51,7 @@ ttree_view_definition::tresolution::tresolution(const config& cfg)
  * @begin{parent}{name="gui/"}
  * @begin{tag}{name="tree_view_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
- * @begin{link}{name="gui/window/resolution/grid"}
+ * @allow{link}{name="gui/window/resolution/grid"}
  * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_enabled"}
  * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}

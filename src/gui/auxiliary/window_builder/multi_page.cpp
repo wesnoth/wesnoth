@@ -104,7 +104,7 @@ twidget* tbuilder_multi_page::build() const
  * @page = GUIWidgetInstanceWML
  * @order = 2_multi_page
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="multi_page"}{min=0}{max=1}{super="generic/widget_instance"}
+ * @begin{tag}{name="multi_page"}{min=0}{max=-1}{super="generic/widget_instance"}
  * == Multi page ==
  *
  * @macro = multi_page_description
@@ -120,6 +120,10 @@ twidget* tbuilder_multi_page::build() const
  *                                     row must have the same number of columns
  *                                     as the 'page_definition'. $
  * @end{table}
+ * @begin{tag}{name="page_definition"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="page_definition"}
+ * @begin{tag}{name="page_data"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="page_data"}
  * @end{tag}{name="multi_page"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */

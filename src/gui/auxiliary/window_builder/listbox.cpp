@@ -135,10 +135,6 @@ twidget* tbuilder_listbox::build() const
  *        A listbox is a control that holds several items of the same type.
  *        Normally the items in a listbox are ordered in rows, this version
  *        might allow more options for ordering the items in the future.
- * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="listbox"}{min="0"}{max="1"}{super="generic/widget_instance"}
- * @end{tag}{name="listbox"}
- * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  * @end{macro}
  */
 
@@ -148,7 +144,7 @@ twidget* tbuilder_listbox::build() const
  *
  * == Listbox ==
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="listbox"}{min=0}{max=1}{super="generic/widget_instance"}
+ * @begin{tag}{name="listbox"}{min=0}{max=-1}{super="generic/widget_instance"}
  * @macro = listbox_description
  *
  * List with the listbox specific variables:
@@ -181,6 +177,12 @@ twidget* tbuilder_listbox::build() const
  * @end{tag}{name="header"}
  * @begin{tag}{name="footer"}{min=0}{max=1}{super="gui/window/resolution/grid"}
  * @end{tag}{name="footer"}
+ * @begin{tag}{name="list_definition"}{min=0}{max=1}
+ * @begin{tag}{name="row"}{min=1}{max=1}{super="generic/listbox_grid/row"}
+ * @end{tag}{name="row"}
+ * @end{tag}{name="list_definition"}x
+ * @begin{tag}{name="list_data"}{min=0}{max=1}{super="generic/listbox_grid"}
+ * @end{tag}{name="list_data"}
  *
  * In order to force widgets to be the same size inside a listbox, the widgets
  * need to be inside a linked_group.
@@ -190,10 +192,26 @@ twidget* tbuilder_listbox::build() const
  * * selectable widgets which are
  * ** toggle_button
  * ** toggle_panel
- * @allow{link}{gui/window/resolution/grid}
- * @allow{link}{gui/window/resolution/grid/row/column/toggle_button}
- * @allow{link}{gui/window/resolution/grid/row/column/toggle_panel}
  * @end{tag}{name="listbox"}
+ *
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+/*WIKI
+ * @begin{parent}{name="generic/"}
+ * @begin{tag}{name="listbox_grid"}{min="0"}{max="-1"}
+ * @begin{tag}{name="row"}{min="0"}{max="-1"}
+ * @begin{table}{config}
+ *     grow_factor & unsigned & 0 &      The grow factor for a row. $
+ * @end{table}
+ * @begin{tag}{name="column"}{min="0"}{max="-1"}{super="gui/window/resolution/grid/row/column"}
+ * @begin{table}{config}
+ * @end{table}
+ * @allow{link}{name="gui/window/resolution/grid/row/column/toggle_button"}
+ * @allow{link}{name="gui/window/resolution/grid/row/column/toggle_panel"}
+ * @end{tag}{name="column"}
+ * @end{tag}{name="row"}
+ * @end{tag}{name="listbox_grid"}
+ * @end{parent}{name="generic/"}
  */
 

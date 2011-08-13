@@ -63,7 +63,10 @@ twidget* tbuilder_horizontal_scrollbar::build() const
  * == Horizontal scrollbar ==
  *
  * @macro = horizontal_scrollbar_description
- *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="horizontal_scrollbar"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * @end{tag}{name="horizontal_scrollbar"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  * A horizontal scrollbar has no special fields.
  */
 

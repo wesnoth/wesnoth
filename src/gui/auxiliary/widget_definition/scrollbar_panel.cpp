@@ -43,7 +43,7 @@ tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
  *
  * @begin{parent}{name="gui/"}
  * @begin{tag}{name="scrollbar_panel_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
- * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="gui/panel_definition/resolution"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="gui/window_definition/resolution"}
  * The definition of a panel with scrollbars. A panel is a container holding
  * other elements in its grid. A panel is always enabled and can't be
  * disabled. Instead it uses the states as layers to draw on.
@@ -52,13 +52,10 @@ tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
  *     grid & grid & &                    A grid containing the widgets for main
  *                                     widget. $
  * @end{table}
- *
  * The following layers exist:
  * * background, the background of the panel.
  * * foreground, the foreground of the panel.
- * @allow{link}{name="gui/window/resolution/grid"}
- * @allow{link}{name="gui/panel_definition/resolution/background"}
- * @allow{link}{name="gui/panel_definition/resolution/foreground"}
+ *
  * @end{tag}{name="resolution"}
  * @end{tag}{name="scrollbar_panel_definition"}
  * @end{parent}{name="gui/"}

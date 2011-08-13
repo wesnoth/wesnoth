@@ -65,5 +65,9 @@ twidget* tbuilder_minimap::build() const
  * @macro = minimap_description
  *
  * A minimap has no extra fields.
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="minimap"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * @end{tag}{name="minimap"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

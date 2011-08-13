@@ -71,7 +71,7 @@ twidget* tbuilder_spacer::build() const
  * @page = GUIWidgetInstanceWML
  * @order = 2_spacer
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="spacer"}{min=0}{max=1}{super="generic/widget_instance"}
+ * @begin{tag}{name="spacer"}{min=0}{max=-1}{super="generic/widget_instance"}
  * == Spacer ==
  *
  * @macro = spacer_description

@@ -128,7 +128,7 @@ twidget* tbuilder_horizontal_listbox::build() const
  * @page = GUIWidgetInstanceWML
  * @order = 2_horizontal_listbox
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="horizontal_listbox"}{min="0"}{max="1"}{super="generic/widget_instance"}
+ * @begin{tag}{name="horizontal_listbox"}{min="0"}{max="-1"}{super="generic/widget_instance"}
  * == Horizontal listbox ==
  *
  * @macro = horizontal_listbox_description
@@ -156,6 +156,12 @@ twidget* tbuilder_horizontal_listbox::build() const
  * @end{tag}{name="header"}
  * @begin{tag}{name="footer"}{min=0}{max=1}{super="gui/window/resolution/grid"}
  * @end{tag}{name="footer"}
+ * @begin{tag}{name="list_definition"}{min=0}{max=1}
+ * @begin{tag}{name="row"}{min=1}{max=1}{super="generic/listbox_grid/row"}
+ * @end{tag}{name="row"}
+ * @end{tag}{name="list_definition"}
+ * @begin{tag}{name="list_data"}{min=0}{max=1}{super="generic/listbox_grid"}
+ * @end{tag}{name="list_data"}
  * In order to force widgets to be the same size inside a horizontal listbox,
  * the widgets need to be inside a linked_group.
  *
@@ -164,9 +170,6 @@ twidget* tbuilder_horizontal_listbox::build() const
  * * selectable widgets which are
  * ** toggle_button
  * ** toggle_panel
- * @allow{link}{gui/window/resolution/grid}
- * @allow{link}{gui/window/resolution/grid/row/column/toggle_button}
- * @allow{link}{gui/window/resolution/grid/row/column/toggle_panel}
  * @end{tag}{name="horizontal_listbox"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */

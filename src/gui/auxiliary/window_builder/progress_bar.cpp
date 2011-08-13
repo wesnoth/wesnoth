@@ -62,5 +62,9 @@ twidget* tbuilder_progress_bar::build() const
  * @macro = progress_bar_description
  *
  * A progress bar has no extra fields.
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="progress_bar"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * @end{tag}{name="progress_bar"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 

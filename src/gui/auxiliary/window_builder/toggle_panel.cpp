@@ -65,7 +65,7 @@ twidget* tbuilder_toggle_panel::build() const
  * @page = GUIWidgetInstanceWML
  * @order = 2_toggle_panel
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="toggle_panel"}{min=0}{max=1}{super="generic/widget_instance"}
+ * @begin{tag}{name="toggle_panel"}{min=0}{max=-1}{super="generic/widget_instance"}
  * == Toggle panel ==
  *
  * A toggle panel is an item which can hold other items. The difference between
@@ -84,7 +84,7 @@ twidget* tbuilder_toggle_panel::build() const
  *                                     [[GUIToolkitWML#Button]] for more
  *                                     information. $
  * @end{table}
- * @allow{link}{gui/window/resolution/grid}
+ * @allow{link}{name="gui/window/resolution/grid"}
  * @end{tag}{name="toggle_panel"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */

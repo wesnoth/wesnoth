@@ -93,7 +93,7 @@ twidget* tbuilder_slider::build() const
  * @page = GUIWidgetInstanceWML
  * @order = 3_slider
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="slider"}{min="0"}{max="1"}{super="generic/widget_instance"}
+ * @begin{tag}{name="slider"}{min="0"}{max="-1"}{super="generic/widget_instance"}
  * == Slider ==
  *
  * @macro = slider_description

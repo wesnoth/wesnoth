@@ -113,7 +113,7 @@ tbuilder_tree_view::tnode::tnode(const config& cfg)
  *
  * == Tree view ==
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="tree_view"}{min=0}{max=1}{super="generic/widget_instance"}
+ * @begin{tag}{name="tree_view"}{min=0}{max=-1}{super="generic/widget_instance"}
  * @macro = tree_view_description
  *
  * List with the tree view specific variables:
@@ -134,6 +134,10 @@ tbuilder_tree_view::tnode::tnode(const config& cfg)
  *                                     sections. This part needs more
  *                                     documentation. $
  * @end{table}
+ * @begin{tag}{name="node"}{min=0}{max=-1}
+ * @begin{tag}{name="node_definition"}{min=0}{max=-1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="node_definition"}
+ * @end{tag}{name="node"}
  * @end{tag}{name="tree_view"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  * NOTE more documentation and examples are needed.

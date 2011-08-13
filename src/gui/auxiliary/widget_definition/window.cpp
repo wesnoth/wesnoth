@@ -34,7 +34,12 @@ twindow_definition::twindow_definition(const config& cfg)
  * which fields exist
  *
  * @begin{parent}{name="gui/"}
- * @begin{tag}{name="window_definition"}{min=0}{max=-1}{super=gui/scrollbar_panel_definition}
+ * @begin{tag}{name="window_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="gui/panel_definition/resolution"}
+ * @allow{link}{name="gui/window/resolution/grid"}
+ * @allow{link}{name="gui/panel_definition/resolution/background"}
+ * @allow{link}{name="gui/panel_definition/resolution/foreground"}
+ * @end{tag}{name="resolution"}
  * @end{tag}{name="window_definition"}
  * @end{parent}{name="gui/"}
  */

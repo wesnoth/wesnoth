@@ -63,4 +63,8 @@ twidget* tbuilder_repeating_button::build() const
  * == Repeating button ==
  *
  * @macro = repeating_button_description
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="repeating_button"}{min=0}{max=-1}{super="gui/window/resolution/grid/row/column/button"}
+ * @end{tag}{name="repeating_button"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */

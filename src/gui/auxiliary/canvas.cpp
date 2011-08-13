@@ -537,12 +537,12 @@ tline::tline(const config& cfg)
  *
  * @allow{type}{name="color"}{value="^(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)$"}
  *
- * @allow{type}{name="font_style"}{value="^normal|bold|italic|underline*$"}
+ * @allow{type}{name="font_style"}{value="^(normal|bold|italic|underline)?$"}
  * @allow{type}{name="v_align"}{value="^top|bottom|center$"}
  * @allow{type}{name="h_align"}{value="^left|right|center$"}
  * @allow{type}{name="f_h_align"}{value="^.*$"}
  * @allow{type}{name="border"}{value="^top|bottom|left|right|all*$"}
- * @allow{type}{name="scrollbar_mode"}{value="^left|right|center$"}
+ * @allow{type}{name="scrollbar_mode"}{value="^always|never|auto|initial_auto$"}
  * @allow{type}{name="resize_mode"}{value="^scale|stretch|tile$"}
  *
  * @remove{type}{name="section"}
