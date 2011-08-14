@@ -29,8 +29,21 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
+unit_map::unit_map()
+	: umap_()
+	, lmap_()
+	, ilist_()
+	, the_end_()
+{
+	init_end();
+}
 
-unit_map::unit_map(const unit_map& that) : umap_(), lmap_(), ilist_() {
+unit_map::unit_map(const unit_map& that)
+	: umap_()
+	, lmap_()
+	, ilist_()
+	, the_end_()
+{
 	init_end();
 	for (const_unit_iterator i = that.begin(); i != that.end(); ++i) {
 		add(i->get_location(), *i);

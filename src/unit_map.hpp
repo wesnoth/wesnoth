@@ -297,7 +297,7 @@ public:
 // ~~~ End iterator code ~~~
 
 
-	unit_map() : umap_(), lmap_(), ilist_() { init_end();};
+	unit_map();
 	unit_map(const unit_map &that);
 	unit_map& operator=(const unit_map &that);
 
