@@ -37,15 +37,17 @@ namespace schema_validation{
  * @end{parent}{name="wml_schema/tag/"}
  */
 
- class_key::class_key(const config & cfg){
-	 name_ = cfg["name"].str();
-	 type_ = cfg["type"].str();
+ class_key::class_key(const config & cfg)
+ 	: name_(cfg["name"].str())
+	, type_(cfg["type"].str())
+	, default_()
+	, mandatory_(false)
+ {
 	 if (cfg.has_attribute("mandatory")){
 		 mandatory_ = cfg["mandatory"].to_bool();
 	 }else{
 		 if (cfg.has_attribute("default")){
 			 default_= cfg["default"].str();
-			 mandatory_ = false;
 		 }
 	 }
  }
