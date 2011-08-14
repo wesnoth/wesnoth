@@ -102,6 +102,9 @@ Version 1.9.8+svn:
    * [harm_unit] always uses wesnoth.float_label to avoid that an incorrect
      weapon filter may prevent floating the damage label.
    * new key heal_full=yes|no (def no) in [effect]apply_to=type
+   * Added SLF support to [event][item] and [event][remove_item].
+     If x = and y= aren't explicitely given no longer throw an error
+     but choose locations according to SLF behavior.
  * Miscellaneous and bug fixes:
    * Teach wmllint to fix deprecated implicit side=1 in [store_gold], [gold]
      [remove_shroud], [place_shroud], [modify_side], [modify_ai] actions
