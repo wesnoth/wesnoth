@@ -90,6 +90,14 @@ class unit_map {
 	/// The pointer to the unit and a reference counter to record the number of extant iterators
 	/// pointing to this unit.
 	struct unit_pod {
+
+		unit_pod()
+			: unit_(NULL)
+			, ref_count_()
+			, deleted_uid_(0)
+		{
+		}
+
 		unit * unit_;
 		mutable n_ref_counter::t_ref_counter<signed int> ref_count_;
 
