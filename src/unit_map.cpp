@@ -89,7 +89,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::move(const map_location &src,
 	std::pair<t_lmap::iterator,bool> res = lmap_.insert(std::make_pair(dst, lit)); 
 	if(res.second == false) { 
 		p->set_location(src);
-		std::pair<t_lmap::iterator,bool> keep_orig_loc = lmap_.insert(std::make_pair(src, lit)); 
+		lmap_.insert(std::make_pair(src, lit)); 
 		return std::make_pair(make_unit_iterator(lit), false);
 	}
 
