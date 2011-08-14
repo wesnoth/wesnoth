@@ -32,7 +32,11 @@ static lg::log_domain log_ai_engine("ai/engine");
 #define ERR_AI_ENGINE LOG_STREAM(err, log_ai_engine)
 
 engine::engine( readonly_context &context, const config &cfg )
-	: ai_(context), engine_(cfg["engine"]), id_(cfg["id"]), name_(cfg["name"])
+	: ai_(context)
+	, ai_context_(NULL)
+	, engine_(cfg["engine"])
+	, id_(cfg["id"])
+	, name_(cfg["name"])
 {
 	LOG_AI_ENGINE << "side "<< ai_.get_side() << " : "<<" created engine with name=["<<name_<<"]"<<std::endl;
 }
