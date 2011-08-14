@@ -11,7 +11,7 @@ local function add_overlay(x, y, cfg)
 		items = {}
 		scenario_items[x * 10000 + y] = items
 	end
-	table.insert(items, cfg)
+	table.insert(items, { x = x, y = y, image = cfg.image, halo = cfg.halo, team_name = cfg.team_name, visible_in_fog = cfg.visible_in_fog })
 end
 
 local function remove_overlay(x, y, name)
@@ -59,15 +59,14 @@ function game_events.on_load(cfg)
 end
 
 function wml_actions.item(cfg)
+	local locs = wesnoth.get_locations(cfg)
 	cfg = helper.parsed(cfg)
 	if not cfg.image and not cfg.halo then
 		helper.wml_error "[item] missing required image= and halo= attributes."
 	end
-	local x, y = tonumber(cfg.x), tonumber(cfg.y)
-	if not x or not y then
-		helper.wml_error "[item] missing required x= and y= attributes."
+	for i, loc in ipairs(locs) do
+		add_overlay(loc[1], loc[2], cfg)
 	end
-	add_overlay(x, y, cfg)
 	wml_actions.redraw {}
 end
 
