@@ -30,7 +30,6 @@ using namespace schema_validation;
 int main(int argc, char *argv[]){
 	std::string default_schema ("data/gui/schema.cfg");
 	std::string input ;
-	bool test = false;
 	for (int arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
 		if (val.empty()) {
@@ -41,9 +40,6 @@ int main(int argc, char *argv[]){
 		}
 		else if ((val == "--input" || val == "-i") && arg+1 != argc) {
 			input = argv[++arg];
-		}
-		else if (val == "--test" || val == "-t") {
-			test = true;
 		}
 		else if (val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
