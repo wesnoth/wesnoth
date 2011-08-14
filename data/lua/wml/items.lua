@@ -71,14 +71,16 @@ function wml_actions.item(cfg)
 end
 
 function wml_actions.remove_item(cfg)
-	local x, y = tonumber(cfg.x), tonumber(cfg.y)
-	if not x or not y then
+	local locs = wesnoth.get_locations(cfg)
+	if #locs == 0 then
 		local context = wesnoth.current.event_context
-		x = context.x1 or
-			helper.wml_error "[remove_item] missing required x= and y= attributes."
-		y = context.y1
+		if context.x1 then
+			locs[1] = { context.x1, context.y1 }
+		end
 	end
-	remove_overlay(x, y, cfg.image)
+	for i, loc in ipairs(locs) do
+		remove_overlay(loc[1], loc[2], cfg.image)
+	end
 end
 
 -- [removeitem] is deprecated, so print a WML error and call [remove_item]
