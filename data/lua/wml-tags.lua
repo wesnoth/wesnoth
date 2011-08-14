@@ -841,42 +841,42 @@ function wml_actions.store_side(cfg)
 	end
 end
 
-function wml_actions.add_ai_behavior(cfg)	
+function wml_actions.add_ai_behavior(cfg)
 	local unit = wesnoth.get_units(helper.get_child(cfg, "filter"))[1]
-	
+
 	if not unit then
 		helper.wml_error("[add_ai_behavior]: no unit specified")
 	end
-	
+
 	local side = cfg.side
 	local sticky = cfg.sticky or false
 	local loop_id = cfg.loop_id or "main_loop"
 	local eval = cfg.evaluation
 	local exec = cfg.execution
-	
+
 	local ux = unit.x -- @note: did I get it right that coordinates in C++ differ by 1 from thos in-game(and in Lua)?
 	local uy = unit.y
-	
+
 	if not side then
 		helper.wml_error("[add_ai_behavior]: no side attribute given")
 	end
-	
+
 	if not (eval and exec) then
 		helper.wml_error("[add_ai_behavior]: invalid execution/evaluation handler(s)")
 	end
-	
+
 	local id = "bca-" .. ca_counter
 	local path = "stage[" .. loop_id .. "].candidate_action[" .. id .. "]" -- bca: behavior candidate action
-	
+
 	ca_counter = ca_counter + 1
-	
+
 	local conf = {
 		["action"] = "add",
 		["engine"] = "lua",
 		["id"] = id,
 		["name"] = id,
 		["path"] = path,
-		
+
 		{"candidate_action", {
 			["id"] = id,
 			["name"] = id,
@@ -888,7 +888,7 @@ function wml_actions.add_ai_behavior(cfg)
 			["evaluation"] = eval,
 			["execution"] = exec
 		}},
-				
+
 		["side"] = side
 	}
 	wesnoth.wml_actions.modify_ai(conf)
