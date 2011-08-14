@@ -115,8 +115,14 @@ schema_validator::schema_validator()
 schema_validator::~schema_validator(){}
 
 schema_validator::schema_validator(const std::string & config_file_name)
-	:create_exceptions_(false),stack_(),counter_(),cache_(){
-	config_read_ = read_config_file(config_file_name);
+	: config_read_(read_config_file(config_file_name))
+	, create_exceptions_(false)
+	, root_()
+	, stack_()
+	, counter_()
+	, cache_()
+	, types_()
+{
 	if (! config_read_) {
 		ERR_VL << "Schema file "<< config_file_name << " was not read.\n";
 		throw abstract_validator::error("Schema file "+ config_file_name
