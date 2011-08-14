@@ -30,13 +30,13 @@ static lg::log_domain log_validation("validation");
 #define WRN_VL LOG_STREAM(warn, log_validation)
 #define LOG_VL LOG_STREAM(info, log_validation)
 
-std::string at(const std::string & file, int line){
+static std::string at(const std::string & file, int line){
 	std::ostringstream ss;
 	ss << line << " " << file;
 	return ::lineno_string(ss.str());
 }
 
-void print_output(const std::string & message,bool flag_exception = false ){
+static void print_output(const std::string & message,bool flag_exception = false ){
 #ifndef VALIDATION_ERRORS_LOG
 	if(flag_exception){
 			throw twml_exception("Validation error occured",message);
@@ -50,25 +50,28 @@ void print_output(const std::string & message,bool flag_exception = false ){
 #endif
 }
 
-void extra_tag_error(const std::string & file, int line,
+static void extra_tag_error(const std::string & file, int line,
 					 const std::string & name,bool flag_exception){
 	std::ostringstream ss;
 	ss 	 <<at(file,line) << ": extra tag "<< name << "\n";
 	print_output (ss.str (),flag_exception);
 }
-void wrong_tag_error(const std::string & file, int line,
+
+static void wrong_tag_error(const std::string & file, int line,
 					 const std::string & name,bool flag_exception){
 	std::ostringstream ss;
 	ss 	 <<at(file,line) << ": wrong tag "<< name << "\n";
 	print_output (ss.str (),flag_exception);
 }
-void missing_tag_error(const std::string & file, int line,
+
+static void missing_tag_error(const std::string & file, int line,
 					   const std::string & name,bool flag_exception){
 	std::ostringstream ss;
 	ss <<at(file,line) << ": missing tag "<< name << "\n";
 print_output (ss.str (),flag_exception);
 }
-void extra_key_error(const std::string & file, int line,
+
+static void extra_key_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key,
 					 bool flag_exception){
 	std::ostringstream ss;
@@ -76,7 +79,8 @@ void extra_key_error(const std::string & file, int line,
 			<< " which begins here, " << "key "<< key << " wasn't allowed\n";
 	print_output (ss.str (),flag_exception);
 }
-void missing_key_error(const std::string & file, int line,
+
+static void missing_key_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key,
 					 bool flag_exception){
 	std::ostringstream ss;
@@ -84,7 +88,8 @@ void missing_key_error(const std::string & file, int line,
 			<< " which begins here, " << " missing key "<< key << "\n";
 	print_output (ss.str (),flag_exception);
 }
-void wrong_value_error(const std::string & file, int line,
+
+static void wrong_value_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key,
 					 const std::string & value,bool flag_exception){
 	std::ostringstream ss;
