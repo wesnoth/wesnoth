@@ -299,7 +299,9 @@ protect_goal::protect_goal(readonly_context &context, const config &cfg, bool pr
 }
 
 lua_goal::lua_goal(readonly_context &context, const config &cfg)
-: goal(context, cfg) 
+	: goal(context, cfg)
+	, code_()
+	, handler_()
 {
 	if (cfg.has_attribute("code")) {
 		code_ = cfg["code"].str();
