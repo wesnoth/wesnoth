@@ -43,7 +43,7 @@ template <typename T_integral> class t_ref_counter {
 public:
 	enum {NEW=0, NOT_COUNTED = -1};
 	
-	explicit t_ref_counter(T_integral x = 0){count_=x;}
+	explicit t_ref_counter(T_integral x = 0) : count_(x) {}
 	t_ref_counter(t_ref_counter const &a) : count_(a.count_) {}
 	t_ref_counter & operator=(t_ref_counter const a){count_ = a.count_; return *this;}
 
