@@ -907,8 +907,8 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 		const unsigned int current_turn_number = tod_man.turn();
 		int new_turn_number = current.to_int(current_turn_number);
 		const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
-		if(new_turn_number_u < current_turn_number || (new_turn_number > tod_man.number_of_turns() && tod_man.number_of_turns() != -1)) {
-			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ") or less than current turn\n";
+		if(new_turn_number_u < 1 || (new_turn_number > tod_man.number_of_turns() && tod_man.number_of_turns() != -1)) {
+			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")\n";
 		} else if(new_turn_number_u != current_turn_number) {
 			tod_man.set_turn(new_turn_number_u);
 			resources::screen->new_turn();
