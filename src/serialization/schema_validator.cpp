@@ -99,8 +99,15 @@ static void wrong_value_error(const std::string & file, int line,
 	print_output (ss.str (),flag_exception);
 }
 
-schema_validator::schema_validator():config_read_(false),
-create_exceptions_(false),stack_(),counter_(),cache_(){
+schema_validator::schema_validator()
+	: config_read_(false)
+	, create_exceptions_(false)
+	, root_()
+	, stack_()
+	, counter_()
+	, cache_()
+	, types_()
+{
 	ERR_VL << "No schema file\n";
 	throw abstract_validator::error("No schema file\n");
 }
