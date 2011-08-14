@@ -159,7 +159,7 @@ function wml_actions.disallow_recruit(cfg)
 end
 
 function wml_actions.disallow_extra_recruit(cfg)
-	local recruits = cfg.extra_recruit or helper.wml_error("disallow_extra_recruit] missing required extra_recruit= attribute")
+	local recruits = cfg.extra_recruit or helper.wml_error("[disallow_extra_recruit] missing required extra_recruit= attribute")
 	for index, unit in ipairs(wesnoth.get_units(cfg)) do
 		local v = unit.extra_recruit
 		for w in string.gmatch(recruits, "[^%s,][^,]*") do
