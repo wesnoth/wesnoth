@@ -923,6 +923,39 @@ int& game_display::debug_highlight(const map_location& loc)
 	return debugHighlights_[loc];
 }
 
+game_display::temp_unit::temp_unit(unit const & u) : unit(u), my_display_(NULL){ }
+game_display::temp_unit::temp_unit(temp_unit const & a) : unit(a), my_display_(NULL){ }
+game_display::temp_unit & game_display::temp_unit::operator=(temp_unit const & a) {
+	if(this != &a){
+		this->unit::operator=(a);
+		my_display_= a.my_display_;
+	}
+	return *this;
+}
+game_display::temp_unit & game_display::temp_unit::operator=(unit const & a) {
+	this->unit::operator=(a);
+	return *this;
+}
+
+game_display::temp_unit::~temp_unit() {
+	///The whole temp_unit exists for this one line to remove the temp unit from the
+	///temp_unit deque in the event of an exception
+	if(my_display_){remove();}
+}
+void game_display::temp_unit::place(game_display * display){
+	assert(my_display_ == NULL); //Can only be placed on 1 game_display
+	my_display_=display;
+	my_display_->place_temporary_unit(this);
+}
+int game_display::temp_unit::remove(){
+	int ret(0);
+	if(my_display_ != NULL){
+		ret = my_display_->remove_temporary_unit(this);
+		my_display_=NULL;
+	}
+	return ret;
+}
+
 void game_display::place_temporary_unit(unit *u)
 {
 	if(std::find(temp_units_.begin(),temp_units_.end(), u) != temp_units_.end()) {

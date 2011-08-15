@@ -165,6 +165,40 @@ protected:
 	virtual void draw_minimap_units();
 
 public:
+	/** A temporary unit that can be placed on the map.
+		Temporary units can overlap units.
+		Adding the same unit twice isn't allowed.
+		The temp_unit owns its underlying unit and when 
+		it goes out of scope it removes itself from the temp_units list.
+		The intent is to provide exception safety when the code 
+		creating the temp unit is unexpectedly forced out of scope.
+	 */
+	class temp_unit : public unit {
+	public:
+		explicit temp_unit(unit const & u);
+		temp_unit(temp_unit const & u);
+		temp_unit & operator=(temp_unit const & u);
+		///If already in the queue, the copied unit will replace the one in the queue
+		temp_unit & operator=(unit const & u);
+
+		///Removes from temp_units list if necessary
+		~temp_unit();
+		/**Place on the temp_units deque at the end of the deque
+		 * drawn last over all other units.
+		 * Duplicate additions are not allowed.
+		 */
+		void place(game_display * d);
+		/** Removes any instances of this temporary unit from the temporary unit vector.
+		 *  Returns the number of temp units deleted (0 or 1, any other number indicates an error).
+		 */
+		int remove();
+	private :
+		game_display * my_display_;
+	};
+
+	//Anticipate making place_temporary_unit and remove_temporary_unit private to force exception safety
+	friend class game_display::temp_unit;
+
 	/** Temporarily place a unit on map (moving: can overlap others).
 	 *  The temp unit is added at the end of the temporary unit deque,
 	 *  and therefore gets drawn last, over other units and temp units.

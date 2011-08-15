@@ -141,11 +141,11 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 
 	bool was_hidden = u.get_hidden();
 	// Original unit is usually hidden (but still on map, so count is correct)
-	unit temp_unit = u;
+	game_display::temp_unit temp_unit(u);
 	u.set_hidden(true);
 	temp_unit.set_standing(false);
 	temp_unit.set_hidden(false);
-	disp->place_temporary_unit(&temp_unit);
+	temp_unit.place(disp);
 	if(!invisible) {
 		// Scroll to the path, but only if it fully fits on screen.
 		// If it does not fit we might be able to do a better scroll later.
