@@ -880,7 +880,7 @@ void get_villages_phase::execute()
 	}
 
 	if(leader_move.second.valid()) {
-		if((find_visible_unit(leader_move.first , current_team()) == units_.end()) 
+		if((find_visible_unit(leader_move.first , current_team()) == units_.end())
 		   && resources::game_map->is_village(leader_move.first)) {
 			move_result_ptr move_res = execute_move_action(leader_move.second,leader_move.first,true);
 			if (!move_res->is_ok()) {

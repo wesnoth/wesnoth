@@ -34,7 +34,7 @@
 #include "resources.hpp"
 
 namespace ai {
-	
+
 
 class lua_object_base {
 
@@ -153,43 +153,43 @@ inline boost::shared_ptr<std::vector<target> > lua_object< std::vector<target> >
 	boost::shared_ptr<std::vector<target> > targets = boost::shared_ptr<std::vector<target> >(new std::vector<target>());
 	std::back_insert_iterator< std::vector<target> > tg(*targets);
 	int l = lua_objlen(L, n);
-	
+
 	for (int i = 1; i <= l; ++i)
 	{
-		lua_rawgeti(L, n, i); // st n + 1  TABLE @ N    table @ n + 1 
-		
+		lua_rawgeti(L, n, i); // st n + 1  TABLE @ N    table @ n + 1
+
 		lua_pushstring(L, "loc"); // st n + 2
-		lua_rawget(L, -2); // st n + 2 
-		
+		lua_rawget(L, -2); // st n + 2
+
 		lua_pushstring(L, "x"); // st n + 3
 		lua_rawget(L, -2); // st n + 3
-		int x = lua_tointeger(L, -1); // st n + 3 
+		int x = lua_tointeger(L, -1); // st n + 3
 		lua_pop(L, 1); // st n + 2
-		
+
 		lua_pushstring(L, "y"); // st n + 3
 		lua_rawget(L, -2); // st n + 3
-		int y = lua_tointeger(L, -1); // st n + 3		
-		
+		int y = lua_tointeger(L, -1); // st n + 3
+
 		lua_pop(L, 2); // st n + 1
-		
+
 		lua_pushstring(L, "type"); // st n + 2
 		lua_rawget(L, -2);  // st n + 2
 		target::TYPE type = (target::TYPE)lua_tointeger(L, -1);  // st n + 2
 		lua_pop(L, 1); // st n + 1
-		
-		
+
+
 		lua_pushstring(L, "value");
 		lua_rawget(L, -2);
 		int value = lua_tointeger(L, -1);
-		
+
 		map_location ml(x - 1, y - 1);
-		
+
 		*tg = target(ml, value, type);
 	}
-	
+
 	lua_settop(L, n);
 	return targets;
-} 
+}
 
 } // end of namespace ai
 

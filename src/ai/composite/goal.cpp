@@ -306,7 +306,7 @@ lua_goal::lua_goal(readonly_context &context, const config &cfg)
 	if (cfg.has_attribute("code")) {
 		code_ = cfg["code"].str();
 	}
-	else 
+	else
 	{
 		// report failure
 	}
@@ -319,17 +319,17 @@ void lua_goal::on_create(boost::shared_ptr<ai::lua_ai_context> l_ctx)
 
 void lua_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
 {
-	boost::shared_ptr< lua_object< std::vector < target > > > l_obj 
+	boost::shared_ptr< lua_object< std::vector < target > > > l_obj
 		= boost::shared_ptr< lua_object< std::vector < target > > >(new lua_object< std::vector < target > >());
 	config c = config();
 	handler_->handle(c, true, l_obj);
 	std::vector < target > targets = *(l_obj->get());
-	
+
  	foreach (target tg, targets)
  	{
  		*target_list = tg;
  	}
-	
+
 }
 
 

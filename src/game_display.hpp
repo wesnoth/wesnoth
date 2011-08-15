@@ -168,9 +168,9 @@ public:
 	/** A temporary unit that can be placed on the map.
 		Temporary units can overlap units.
 		Adding the same unit twice isn't allowed.
-		The temp_unit owns its underlying unit and when 
+		The temp_unit owns its underlying unit and when
 		it goes out of scope it removes itself from the temp_units list.
-		The intent is to provide exception safety when the code 
+		The intent is to provide exception safety when the code
 		creating the temp unit is unexpectedly forced out of scope.
 	 */
 	class temp_unit : public unit {

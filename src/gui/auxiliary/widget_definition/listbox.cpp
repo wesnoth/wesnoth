@@ -41,11 +41,11 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
  * @begin{parent}{name="gui/"}
  * @begin{tag}{name="listbox_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * == Listbox ==
- * 
+ *
  * @macro = listbox_description
  *
  * The definition of a listbox contains the definition of its scrollbar.
- * 
+ *
  * The resolution for a listbox also contains the following keys:
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
  * @begin{table}{config}

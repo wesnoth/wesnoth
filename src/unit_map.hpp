@@ -33,15 +33,15 @@ class unit;
  * An indirection location -> underlying_id -> unit ensures that iterators
  * stay valid even if WML modifies or moves units on the fly. They even stay
  * valid if a unit is erased from the map and another unit with the same
- * underlying id is inserted in the map.  In other words it is a doubly indexed ordered map 
+ * underlying id is inserted in the map.  In other words it is a doubly indexed ordered map
  with persistent iterators (that never invalidate)
 
  @note The unit_map is implemented as 2 unordered maps storing iterators from a list of reference counted pointers to units.
- The unordered maps provide O(1) find times.  The list allows arbitrary ordering of units (not yet implemented).  
- The reference counting is what guarrantees the persistent iterators.  
+ The unordered maps provide O(1) find times.  The list allows arbitrary ordering of units (not yet implemented).
+ The reference counting is what guarrantees the persistent iterators.
  Storing an iterator prevents only that dead unit's list location from being recovered.
 
-@note Prefered usages for tight loops follows.  
+@note Prefered usages for tight loops follows.
 Use the std::pair<iterator, bool> format which checks the preconditions and returns
 false in the bool to indicate failure with no change to the unit_map.  true indicates sucess and the new iterator is in first.
 Storing the result iterator prevents the old iterator from entering the fallback recovery code.
@@ -69,11 +69,11 @@ if(try_add.second){i = try_add.first;}
 
 
 
- @note The previous implementation was 2 binary tree based maps one the location map pointing to the other.  
- Lookups were O(2*log(N)) and O(log(N)).  Order was implicit in the id map choosen as the base.  
- Persistence was provided by reference counting all iterators collectively and only recovering space when 
- there were no iterators outstanding.  Even 1 iterator being stored caused a leak, because 
- all space for dead units is not recovered.    
+ @note The previous implementation was 2 binary tree based maps one the location map pointing to the other.
+ Lookups were O(2*log(N)) and O(log(N)).  Order was implicit in the id map choosen as the base.
+ Persistence was provided by reference counting all iterators collectively and only recovering space when
+ there were no iterators outstanding.  Even 1 iterator being stored caused a leak, because
+ all space for dead units is not recovered.
 
  * @note Units are owned by the container.
  * @note The indirection does not involve map lookups whenever an iterator
@@ -105,15 +105,15 @@ class unit_map {
 	};
 
 	/// A list pointing to unit and their reference counters.  Dead units have a unit_ pointer equal to NULL.
-	/// The list element is remove iff the reference counter equals zero and there are no more 
+	/// The list element is remove iff the reference counter equals zero and there are no more
 	///iterators pointing to this unit.
 	typedef std::list<unit_pod> t_ilist;
 
-	///Maps of id and location to list iterator.  
+	///Maps of id and location to list iterator.
 	///@note list iterators never invalidate due to resizing or deletion.
-	typedef boost::unordered_map<size_t, t_ilist::iterator> t_umap; 
+	typedef boost::unordered_map<size_t, t_ilist::iterator> t_umap;
 	typedef boost::unordered_map<map_location, t_ilist::iterator> t_lmap;
-	
+
 public:
 
 // ~~~ Begin iterator code ~~~
@@ -145,13 +145,13 @@ public:
 
 		iterator_base(): i_(), tank_(NULL) { }
 
-		iterator_base(iterator_type i, container_type *m) : i_(i), tank_(m) { 
-			inc(); 
+		iterator_base(iterator_type i, container_type *m) : i_(i), tank_(m) {
+			inc();
 			valid_exit();
 		}
 
-		iterator_base(const iterator_base &that) : i_(that.i_), tank_(that.tank_) { 
-			inc(); 
+		iterator_base(const iterator_base &that) : i_(that.i_), tank_(that.tank_) {
+			inc();
 			valid_exit();
 		}
 
@@ -172,22 +172,22 @@ public:
 
 	private:
 		///Construct an iterator from the uid map
-		iterator_base(t_umap::iterator ui, container_type *m) : i_(ui->second), tank_(m) { 
-			inc(); 
+		iterator_base(t_umap::iterator ui, container_type *m) : i_(ui->second), tank_(m) {
+			inc();
 			valid_exit();
 		}
 
 		///Construct an iterator from the location map
-		iterator_base(t_lmap::iterator ui, container_type *m) : i_(ui->second), tank_(m) { 
-			inc(); 
+		iterator_base(t_lmap::iterator ui, container_type *m) : i_(ui->second), tank_(m) {
+			inc();
 			valid_exit();
 		}
 
 	public:
-		pointer operator->() const   { 
+		pointer operator->() const   {
 			assert(valid());
 			return  i_->unit_; }
-		reference operator*() const { 
+		reference operator*() const {
 			assert(valid());
 			return *i_->unit_; }
 
@@ -214,7 +214,7 @@ public:
 			assert(  tank_ && i_ != the_list().begin() );
 			iterator_type begin(the_list().begin());
 			dec();
-			do { 
+			do {
 				--i_ ;
 			}while(i_ != begin && (i_->unit_ ==  NULL));
 			inc();
@@ -229,11 +229,11 @@ public:
 			return temp;
 		}
 
-		bool valid() const { 
+		bool valid() const {
 			if(valid_for_dereference()) {
-				if(i_->unit_ == NULL){ 
+				if(i_->unit_ == NULL){
 					recover_unit_iterator(); }
-				return  i_->unit_ != NULL; 
+				return  i_->unit_ != NULL;
 			}
 			return false; }
 
@@ -247,7 +247,7 @@ public:
 	private:
 		bool valid_for_dereference() const { return (tank_ != NULL) && (i_ != the_end()); }
 		bool valid_entry() const { return  ((tank_ != NULL) && (i_ != the_end())) ; }
-		void valid_exit() const { 
+		void valid_exit() const {
 			if(tank_ != NULL) {
 				assert(!the_list().empty());
 				assert(i_ != the_list().end());
@@ -255,31 +255,31 @@ public:
 					assert(i_->ref_count_ > 0);
 				} else {
 					assert(i_->ref_count_ == 1);
-				}				
+				}
 			}}
 		bool valid_ref_count() const { return (tank_ != NULL) && (i_ != the_end()) ; }
 
 		///Increment the reference counter
 		void inc() { if(valid_ref_count()) { ++(i_->ref_count_); } }
-		
-		///Decrement the reference counter 
+
+		///Decrement the reference counter
 		///Delete the list element if the unit is gone and the reference counter is zero
 		///@note this deletion will advance i_ to the next list element.
 		void dec() {
 			if( valid_ref_count() ){
 				assert(i_->ref_count_ != 0);
 				if( (--(i_->ref_count_) == 0)  && (i_->unit_ == NULL) ){
-					i_ = the_list().erase(i_); 
+					i_ = the_list().erase(i_);
 				} } }
 
 		unit_map::t_ilist & the_list() const { return tank_->ilist_; }
-		
+
 		///Returns the sentinel at the end of the list.
 		///This provides a stable unit_iterator for hoisting out of loops
 		iterator_type the_end() const { return tank_->the_end_; }
 
-		/**	
-	 * Attempt to find a deleted unit in the unit_map, by looking up the stored UID. 
+		/**
+	 * Attempt to find a deleted unit in the unit_map, by looking up the stored UID.
 	 * @pre deleted_uid != 0
 	 */
 		void recover_unit_iterator() const {
@@ -341,20 +341,20 @@ public:
 
 	/**
 	 * Adds a copy of unit @a u at location @a l of the map.
-	 @return std::pair<unit_iterator, bool>  a bool indicating success and 
+	 @return std::pair<unit_iterator, bool>  a bool indicating success and
 	 an iterator pointing to the new unit, or the unit already occupying location.
 	 @note It is 3 times as fast to attempt to insert a unit at @a l and check for
-	 success than it is to verify that the location is empty, insert the unit check the 
+	 success than it is to verify that the location is empty, insert the unit check the
 	 location for the unit.
 	 */
 	std::pair<unit_iterator, bool> add(const map_location &l, const unit &u);
 
 	/**
 	 * Adds the unit to the map.
-	 @return std::pair<unit_iterator, bool>  a bool indicating success and 
+	 @return std::pair<unit_iterator, bool>  a bool indicating success and
 	 an iterator pointing to the new unit, or the unit already occupying location.
 	 @note It is 3 times as fast to attempt to insert a unit at @a l and check for
-	 success than it is to verify that the location is empty, insert the unit check the 
+	 success than it is to verify that the location is empty, insert the unit check the
 	 location for the unit.
 	 * @note If the unit::underlying_id is already in use, a new one
 	 *       will be generated.
@@ -364,17 +364,17 @@ public:
 
 	/**
 	 * Moves a unit from location @a src to location @a dst.
-	 @return std::pair<unit_iterator, bool>  a bool indicating success and 
+	 @return std::pair<unit_iterator, bool>  a bool indicating success and
 	 an iterator pointing to the new unit, or the unit already occupying location.
 	 @note It is 3 times as fast to attempt to insert a unit at @a l and check for
-	 success than it is to verify that the location is empty, insert the unit check the 
+	 success than it is to verify that the location is empty, insert the unit check the
 	 location for the unit.
 	 */
 	std::pair<unit_iterator, bool> move(const map_location &src, const map_location &dst);
 
 	/**
 	 * Works like unit_map::add; but @a l is emptied first, if needed.
-	 @return std::pair<unit_iterator, bool>  a bool indicating success and 
+	 @return std::pair<unit_iterator, bool>  a bool indicating success and
 	 an iterator pointing to the new unit, or the unit already occupying location.
 	 */
 	std::pair<unit_iterator, bool> replace(const map_location &l, const unit &u);
@@ -410,14 +410,14 @@ private:
 		ilist_.push_front(upod);
 		the_end_ = ilist_.begin();
 	};
-	
+
 	t_ilist::iterator begin_core() const ;
 
-	bool is_valid(const t_ilist::const_iterator &i) const { 
+	bool is_valid(const t_ilist::const_iterator &i) const {
 		return i != the_end_  && is_found(i) && (i->unit_ !=  NULL); }
-	bool is_valid(const t_umap::const_iterator &i) const { 
+	bool is_valid(const t_umap::const_iterator &i) const {
 		return is_found(i) && (i->second->unit_ != NULL); }
-	bool is_valid(const t_lmap::const_iterator &i) const { 
+	bool is_valid(const t_lmap::const_iterator &i) const {
 		return is_found(i) && (i->second->unit_ != NULL); }
 
 	bool is_found(const t_ilist::const_iterator &i) const { return i != ilist_.end(); }
@@ -433,7 +433,7 @@ private:
 		if (!is_found( i )) { return const_unit_iterator(the_end_, this); }
 		return const_unit_iterator(i , this); }
 
-	
+
 	/**
 	 * underlying_id -> ilist::iterator. This requires that underlying_id be
 	 * unique (which is enforced in unit_map::insert).
@@ -450,8 +450,8 @@ private:
 	 */
 	mutable t_ilist ilist_;
 
-	/// The last list item, a sentinel that allows BOOST::foreach to hoist end()	
-	t_ilist::iterator the_end_; 
+	/// The last list item, a sentinel that allows BOOST::foreach to hoist end()
+	t_ilist::iterator the_end_;
 
 };
 

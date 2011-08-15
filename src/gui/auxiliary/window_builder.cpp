@@ -350,7 +350,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * @begin{tag}{name="tooltip"}{min=0}{max=1}
  * A tooltip and helptip section have the following field:
  * @begin{table}{config}
- *     id & string & &               The id of the tip to show. 
+ *     id & string & &               The id of the tip to show.
  * Note more fields will probably be added later on.
  * @end{table}{config}
  * @end{tag}{name=tooltip}

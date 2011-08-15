@@ -43,7 +43,7 @@ tpanel_definition::tresolution::tresolution(const config& cfg)
  * == Panel ==
  *
  * @macro = panel_description
- * 
+ *
  * @begin{parent}{name="gui/"}
  * @begin{tag}{name="panel_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * A panel is always enabled and can't be disabled. Instead it uses the

@@ -51,7 +51,7 @@ public:
 	 * and parse several (usually, 1) aspects out of it
 	 */
 	virtual void do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr > > b );
-	
+
 	virtual void do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b );
 
 	virtual std::string evaluate(const std::string &str);
@@ -74,7 +74,7 @@ private:
 	 * The underlying lua code
 	 */
 	std::string code_;
-	
+
 	//There is one lua engine per AI. So, it can hold state
 	boost::shared_ptr<lua_ai_context> lua_ai_context_;
 

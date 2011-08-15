@@ -59,7 +59,7 @@ static char const aisKey     = 0;
 namespace ai {
 
 static void push_map_location(lua_State *L, const map_location& ml);
-	
+
 void lua_ai_context::init(lua_State *L)
 {
 	// Create the ai elements table.
@@ -71,21 +71,21 @@ void lua_ai_context::init(lua_State *L)
 void lua_ai_context::get_persistent_data(config &cfg) const
 {
 	int top = lua_gettop(L);
-	
+
 	lua_pushlightuserdata(L, (void *)&aisKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num_);
-	
+
 	lua_getfield(L, -1, "data");
 	luaW_toconfig(L, -1, cfg);
-	
+
 	lua_settop(L, top);
 }
 
 void lua_ai_context::set_persistent_data(const config &cfg)
 {
 	int top = lua_gettop(L);
-	
+
 	lua_pushlightuserdata(L, (void *)&aisKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num_);
@@ -292,28 +292,28 @@ static int cfun_ai_get_targets(lua_State *L)
 	move_map enemy_dst_src = get_readonly_context(L).get_enemy_dstsrc();
 	std::vector<target> targets = get_engine(L).get_ai_context()->find_targets(enemy_dst_src);
 	int i = 1;
-	
+
 	lua_createtable(L, 0, 0);
 	for (std::vector<target>::iterator it = targets.begin(); it != targets.end(); it++)
 	{
 		lua_pushinteger(L, i);
-		
+
 		//to factor out
 		lua_createtable(L, 3, 0);
-		
-		
+
+
 		lua_pushstring(L, "type");
 		lua_pushnumber(L, it->type);
 		lua_rawset(L, -3);
-		
+
 		lua_pushstring(L, "loc");
 		push_map_location(L, it->loc);
 		lua_rawset(L, -3);
-		
+
 		lua_pushstring(L, "value");
 		lua_pushnumber(L, it->value);
 		lua_rawset(L, -3);
-		
+
 		lua_rawset(L, -3);
 		++i;
 	}

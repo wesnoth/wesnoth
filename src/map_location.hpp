@@ -142,7 +142,7 @@ std::ostream &operator<<(std::ostream &s, map_location const &l);
 std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v);
 
 /** Inlined bodies **/
-inline std::size_t hash_value(map_location  const & a){ 
+inline std::size_t hash_value(map_location  const & a){
 	boost::hash<size_t> h;
 	return h( (a.x << 16) ^ a.y );
 }

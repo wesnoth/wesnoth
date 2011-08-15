@@ -39,10 +39,10 @@ template <typename T_integral> class t_ref_counter {
 	BOOST_STATIC_ASSERT( std::numeric_limits<T_integral>::is_signed);
 
 	T_integral count_;
-	
+
 public:
 	enum {NEW=0, NOT_COUNTED = -1};
-	
+
 	explicit t_ref_counter(T_integral x = 0) : count_(x) {}
 	t_ref_counter(t_ref_counter const &a) : count_(a.count_) {}
 	t_ref_counter & operator=(t_ref_counter const a){count_ = a.count_; return *this;}
@@ -50,7 +50,7 @@ public:
 	operator T_integral const () const {return count_;}
 
 	T_integral const set(T_integral const a) { count_=a; return count_; }
-	T_integral const inc(){		
+	T_integral const inc(){
 		if (count_ >= 0) { count_  += 1; }
 		return count_; }
 	T_integral const dec(){
@@ -63,9 +63,9 @@ public:
 		count_= NOT_COUNTED;
 		return count_; }
 
-	T_integral const operator++(){return inc();}		
-	T_integral const operator++(int){T_integral ret(count_); inc(); return ret;}		
-	T_integral const operator--(){return dec();}		
+	T_integral const operator++(){return inc();}
+	T_integral const operator++(int){T_integral ret(count_); inc(); return ret;}
+	T_integral const operator--(){return dec();}
 	T_integral const operator--(int){T_integral ret(count_); dec(); return ret;}
 };
 

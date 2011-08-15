@@ -157,7 +157,7 @@ static register_goal_factory<protect_my_unit_goal>
 
 static register_goal_factory<protect_unit_goal>
 	goal_factory_protect_unit("protect_unit");
-	
+
 static register_goal_factory<lua_goal>
 	goal_factory_lua_goal("lua_goal");
 

@@ -42,7 +42,7 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
  * == Scroll label ==
  *
  * @macro = scroll_label_description
- * 
+ *
  * @begin{parent}{name="gui/"}
  * This widget is slower as a normal label widget so only use this widget
  * when the scrollbar is required (or expected to become required).
