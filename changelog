@@ -110,6 +110,7 @@ Version 1.9.8+svn:
    * Teach wmllint to fix deprecated implicit side=1 in [store_gold], [gold]
      [remove_shroud], [place_shroud], [modify_side], [modify_ai] actions
    * Fixed bug #17150: fix naming confict with OpenBSD macro by renaming
+   * Added "-Wno-strict-aliasing" to the default compiler flags.
 
 Version 1.9.8:
  * Campaigns:

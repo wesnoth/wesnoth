@@ -113,7 +113,8 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 	if(NOT CONFIGURED)
 
 		if(ENABLE_STRICT_COMPILATION)
-			set(STRICT_FLAGS "-Werror")
+			# The current unit test code breaks strict aliasing with g++ 4.4.
+			set(STRICT_FLAGS "-Werror -Wno-strict-aliasing")
 		else(ENABLE_STRICT_COMPILATION)
 			set(STRICT_FLAGS "")
 		endif(ENABLE_STRICT_COMPILATION)
