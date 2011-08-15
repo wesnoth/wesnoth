@@ -66,10 +66,15 @@ void class_key::print(std::ostream& os,int level) const {
 	}
 	os << s << "[/key]\n";
 }
-class_tag::class_tag(const config & cfg){
-		name_ = cfg["name"].str();
-		min_ = cfg["min"].to_int();
-		max_ = cfg["max"].to_int();
+class_tag::class_tag(const config & cfg)
+	: name_(cfg["name"].str())
+	, min_(cfg["min"].to_int())
+	, max_(cfg["max"].to_int())
+	, super_("")
+	, tags_()
+	, keys_()
+	, links_()
+{
 		if (max_ < 0){
 			max_ = INT_MAX;
 		}
