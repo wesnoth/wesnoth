@@ -704,6 +704,8 @@ function wml_actions.harm_unit(cfg)
 	local fire_event = cfg.fire_event
 	local _ = wesnoth.textdomain "wesnoth"
 	-- #textdomain wesnoth
+	local primary_attack = helper.get_child(cfg, "primary_attack")
+	local secondary_attack = helper.get_child(cfg, "secondary_attack")
 
 	local private_unit = wesnoth.create_unit { type = "Fog Clearer", alignment = cfg.alignment or "neutral" }
 	wesnoth.add_modification(private_unit, "object", { { "effect",
@@ -756,8 +758,9 @@ function wml_actions.harm_unit(cfg)
 			end
 
 			if animate then
-				wml_actions.animate_unit({ flag = "defend", hits = true, { "filter", { id = unit_to_harm.id } },
-					{ "secondary_attack", helper.get_child(cfg, "secondary_attack") }, with_bars = true })
+				wml_actions.animate_unit( { flag = "defend", hits = true, { "filter", { id = unit_to_harm.id } },
+					{ "primary_attack", primary_attack },
+					{ "secondary_attack", secondary_attack }, with_bars = true } )
 			end
 
 			wesnoth.float_label(unit_to_harm.x, unit_to_harm.y, string.format("<span foreground='red'>%s</span>", text))
