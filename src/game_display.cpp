@@ -197,7 +197,7 @@ void game_display::new_turn()
 
 	first_turn_ = false;
 
-	display::adjust_colors(tod.red,tod.green,tod.blue);
+	display::update_tod();
 
 	invalidate_all();
 	draw();

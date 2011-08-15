@@ -171,15 +171,18 @@ const time_of_day & display::get_time_of_day(const map_location& loc) const
 	return tod;
 }
 
-void display::adjust_colors(int r, int g, int b)
-{
+void display::update_tod() {
+	const time_of_day& tod = get_time_of_day();
+	image::set_color_adjustment(color_adjust_red_ + tod.red, color_adjust_green_ + tod.green, color_adjust_blue_ + tod.blue);
+}
+
+void display::adjust_color_overlay(int r, int g, int b) {
 	const time_of_day& tod = get_time_of_day();
 	image::set_color_adjustment(r + tod.red, g + tod.green, b + tod.blue);
 	color_adjust_red_ = r ;
 	color_adjust_green_ = g ;
 	color_adjust_blue_ = b ;
 }
-
 
 
 void display::fill_images_list(const std::string& prefix, std::vector<std::string>& images)

@@ -718,10 +718,9 @@ WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 
 }
 
-static void color_adjust(const vconfig& cfg)
-{
+static void color_adjust(const vconfig& cfg) {
 	game_display &screen = *resources::screen;
-	screen.adjust_colors(cfg["red"], cfg["green"], cfg["blue"]);
+	screen.adjust_color_overlay(cfg["red"], cfg["green"], cfg["blue"]);
 	screen.invalidate_all();
 	screen.draw(true,true);
 }

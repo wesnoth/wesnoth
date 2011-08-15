@@ -81,13 +81,17 @@ public:
 		{ return rgb(std::max(red(first),red(second)),std::max(green(first),green(second)),std::max(blue(first),blue(second))) ; }
 
 	/**
+	 * Add r,g,b from tod_manager to the map
+	 *
+	 */
+	void update_tod();
+
+	/**
 	 * Add r,g,b to the colors for all images displayed on the map.
 	 *
 	 * Used for special effects like flashes.
 	 */
-
-	void adjust_colors(int r, int g, int b);
-
+	void adjust_color_overlay(int r, int g, int b);
 
 
 	/** Gets the underlying screen object. */

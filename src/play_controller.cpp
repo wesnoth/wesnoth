@@ -537,7 +537,7 @@ void play_controller::fire_start(bool execute){
 
 void play_controller::init_gui(){
 	gui_->begin_game();
-	gui_->adjust_colors(0,0,0);
+	gui_->update_tod();
 
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		::clear_shroud(t - teams_.begin() + 1);
