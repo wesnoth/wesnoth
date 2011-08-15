@@ -45,6 +45,7 @@ highlight_visitor::highlight_visitor(unit_map& unit_map, side_actions_ptr side_a
 	, exclusive_display_hexes_()
 	, owner_unit_(NULL)
 	, selection_candidate_(NULL)
+	, selected_action_()
 	, main_highlight_()
 	, secondary_highlights_()
 	, side_actions_(side_actions)
