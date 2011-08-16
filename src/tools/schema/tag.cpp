@@ -157,9 +157,12 @@ void class_tag::expand_all(class_tag &root){
 	}
 }
 void class_tag::remove_keys_by_type (const std::string & type){
-	for (key_iterator i= keys_.begin (); i!= keys_.end(); ++i){
-		if (i->second.get_type() == type){
-			keys_.erase (i);
+	key_iterator i= keys_.begin ();
+	while(i != keys_.end()) {
+		if(i->second.get_type() == type) {
+			keys_.erase(i++);
+		} else {
+			++i;
 		}
 	}
 	for (tag_iterator t = tags_.begin(); t!=tags_.end();++t){
