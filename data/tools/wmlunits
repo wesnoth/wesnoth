@@ -407,7 +407,8 @@ class HTMLOutput:
         picname = image_collector.add_image(u.campaign, image)
         image = os.path.join("../pics", picname)
         if portrait:
-            picname = image_collector.add_image(u.campaign, portrait)
+            picname = image_collector.add_image(u.campaign, portrait,
+                no_tc = True)
             portrait = os.path.join("../pics", picname)
         return image, portrait
 
@@ -461,7 +462,7 @@ class HTMLOutput:
         write("</colgroup>")
 
         pic = image_collector.add_image("mainline",
-            "../../../images/misc/leader-crown.png")
+            "../../../images/misc/leader-crown.png", no_tc = True)
         crownimage = os.path.join("../pics", pic)
         ms = None
         for row in range(len(rows)):
@@ -747,7 +748,8 @@ class HTMLOutput:
             if not icon:
                 icon = "attacks/%s.png" % aid
 
-            picname, error = image_collector.add_image_check(unit.campaign, icon)
+            picname, error = image_collector.add_image_check(
+                unit.campaign, icon, no_tc = True)
             if error:
                 error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                     icon, uid))
@@ -809,7 +811,8 @@ class HTMLOutput:
             rcell = "td"
             if special: rcell += ' class="special"'
             write("<tr>\n")
-            picname = image_collector.add_image("mainline", ricon)
+            picname = image_collector.add_image("mainline", ricon,
+                no_tc = True)
             icon = os.path.join("../pics", picname)
             write("<td><img src=\"%s\"/></td>\n" % (icon, ))
             write("<th>%s</th><td>%s</td>\n" % (_(rid), r))
@@ -866,7 +869,8 @@ class HTMLOutput:
                     d, uid))
 
             write("<tr>\n")
-            picname = image_collector.add_image("mainline", "terrain/" + ticon + ".png")
+            picname = image_collector.add_image("mainline",
+                "terrain/" + ticon + ".png", no_tc = True)
             icon = os.path.join("../pics", picname)
             write("<td><img src=\"%s\" height=\"36px\" /></td>\n" % (icon, ))
             write("<td>%s</td><%s>%s</td><%s>%s</td>\n" % (

@@ -64,7 +64,7 @@ class ImageCollector:
             if os.path.exists(ipath): return ipath, None
         return None, bases
 
-    def add_image_check(self, campaign, path):
+    def add_image_check(self, campaign, path, no_tc = False):
         if (campaign, path) in self.notfound:
             return self.notfound[(campaign, path)], True
         ipath, error = self.find_image(path, campaign)
@@ -75,7 +75,7 @@ class ImageCollector:
         name += os.path.basename(path)
         self.id += 1
 
-        self.images[name] = ipath, path, campaign, error
+        self.images[name] = ipath, path, campaign, error, no_tc
         if ipath:
             self.ipaths[ipath] = name
             return name, False
@@ -83,8 +83,8 @@ class ImageCollector:
             self.notfound[(campaign, path)] = name
             return name, True
 
-    def add_image(self, campaign, path):
-        name, error = self.add_image_check(campaign, path)
+    def add_image(self, campaign, path, no_tc = False):
+        name, error = self.add_image_check(campaign, path, no_tc)
         return name
 
     def copy_and_color_images(self, target_path):
@@ -95,15 +95,17 @@ class ImageCollector:
             except OSError:
                 pass
 
-            ipath, i, c, bases = self.images[iid]
+            ipath, i, c, bases, no_tc = self.images[iid]
             if ipath and os.path.exists(ipath):
-                #shutil.copy2(ipath, opath)
-                # We assume TeamColorizer is in the same directory as the
-                # helpers.py currently executing.
-                command = os.path.join(os.path.dirname(__file__),
-                    "TeamColorizer")
-                p = subprocess.Popen([command, ipath, opath])
-                p.wait()
+                if no_tc:
+                    shutil.copy2(ipath, opath)
+                else:
+                    # We assume TeamColorizer is in the same directory as the
+                    # helpers.py currently executing.
+                    command = os.path.join(os.path.dirname(__file__),
+                        "TeamColorizer")
+                    p = subprocess.Popen([command, ipath, opath])
+                    p.wait()
             else:
                 sys.stderr.write(
                     "Warning: Required image %s: \"%s\" does not exist.\n" % (
