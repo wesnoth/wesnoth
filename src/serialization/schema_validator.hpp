@@ -81,16 +81,18 @@ private:
 		message_type type;
 		std::string file;
 		int line;
+		int n;
 		std::string tag;
 		std::string key;
 		std::string value;
 		message_info(message_type t,
 				   const std::string& file,
 				   int line = 0,
+				   int n = 0,
 				   const std::string& tag = "",
 				   const std::string& key = "",
 				   const std::string& value = "")
-					   :type(t),file(file),line(line),tag(tag),key(key),
+					   :type(t),file(file),line(line),n(n),tag(tag),key(key),
 					   value(value){}
 	};
 	typedef std::deque<message_info> message_list;

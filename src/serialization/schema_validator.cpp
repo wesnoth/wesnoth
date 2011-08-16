@@ -51,32 +51,38 @@ static void print_output(const std::string & message,bool flag_exception = false
 }
 
 static void extra_tag_error(const std::string & file, int line,
-					 const std::string & name,bool flag_exception){
+							const std::string & name,int n,
+							const std::string & parent, bool flag_exception){
 	std::ostringstream ss;
-	ss 	 <<at(file,line) << ": extra tag "<< name << "\n";
+	ss 	 <<at(file,line) << ": extra tag [" << name << "]; there may only be "
+			<< n << " ["<< name <<"]s in [" << parent <<"]\n";
 	print_output (ss.str (),flag_exception);
 }
 
 static void wrong_tag_error(const std::string & file, int line,
-					 const std::string & name,bool flag_exception){
+							const std::string & name,const std::string & parent,
+							bool flag_exception){
 	std::ostringstream ss;
-	ss 	 <<at(file,line) << ": wrong tag "<< name << "\n";
+	ss 	 <<at(file,line) << ": tag [" << name << "] may not be used in [" <<
+			parent <<"]\n";
 	print_output (ss.str (),flag_exception);
 }
 
 static void missing_tag_error(const std::string & file, int line,
-					   const std::string & name,bool flag_exception){
+							  const std::string & name,int n,
+							  const std::string & parent, bool flag_exception){
 	std::ostringstream ss;
-	ss <<at(file,line) << ": missing tag "<< name << "\n";
-print_output (ss.str (),flag_exception);
+	ss 	 <<at(file,line) << ": missing tag [" << name << "]; there must be "
+			<< n << " ["<< name <<"]s in [" << parent <<"]\n";
+	print_output (ss.str (),flag_exception);
 }
 
 static void extra_key_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key,
 					 bool flag_exception){
 	std::ostringstream ss;
-	ss << at(file,line) << ": In tag "<< tag
-			<< " which begins here, " << "key "<< key << " wasn't allowed\n";
+	ss << at(file,line) << ": Invalid key '"<< key <<"=' in tag ["<< tag
+			<< "] on line " << line  << "\n";
 	print_output (ss.str (),flag_exception);
 }
 
@@ -93,9 +99,8 @@ static void wrong_value_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key,
 					 const std::string & value,bool flag_exception){
 	std::ostringstream ss;
-	ss << at(file,line) << ": In tag "<< tag
-			<< " which begins here, " << "key "<< key << " have wrong value '"
-			<< value << "'\n";
+	ss << at(file,line) << ": Invalid value '"<< value << "' in key '" << key <<
+			"=' in tag ["<< tag <<"] on line " << line << "'\n";
 	print_output (ss.str (),flag_exception);
 }
 
@@ -115,7 +120,8 @@ schema_validator::schema_validator()
 schema_validator::~schema_validator(){}
 
 schema_validator::schema_validator(const std::string & config_file_name)
-	: create_exceptions_(false)
+	: config_read_ (false)
+	, create_exceptions_(false)
 	, root_()
 	, stack_()
 	, counter_()
@@ -178,7 +184,8 @@ void schema_validator::open_tag(const std::string & name,int start_line,
 		if (stack_.top()){
 			tag = stack_.top()->find_tag(name,root_);
 			if (! tag){
-				wrong_tag_error(file,start_line,name,create_exceptions_);
+				wrong_tag_error(file,start_line,name,stack_.top()->get_name(),
+								create_exceptions_);
 			}else{
 				counter & cnt = counter_.top()[name];
 				++ cnt.cnt;
@@ -231,7 +238,7 @@ bool schema_validator::validate(const config & cfg, const std::string & name,
 												  sub,itt->second);
 					if (!res ) {
 						cache_.top()[&cfg].push_back(
-								message_info(WRONG_VALUE,file,start_line,
+								message_info(WRONG_VALUE,file,start_line,0,
 										   stack_.top()->get_name(),
 										   key->get_name(),
 										   attr.second.str()));
@@ -240,7 +247,8 @@ bool schema_validator::validate(const config & cfg, const std::string & name,
 			}
 			else{
 				cache_.top()[&cfg].push_back(
-						message_info(EXTRA_KEY,file,start_line,name,attr.first));
+						message_info(EXTRA_KEY,file,start_line,0,name,
+									 attr.first));
 				retval = false;
 			}
 		}
@@ -251,12 +259,16 @@ bool schema_validator::validate(const config & cfg, const std::string & name,
 			int cnt = counter_.top()[tag->first].cnt;
 			if (tag->second.get_min() > cnt){
 				cache_.top()[&cfg].push_back(
-						message_info(MISSING_TAG,file,start_line,tag->first ));
+						message_info(MISSING_TAG,file,start_line,
+									 tag->second.get_min(),tag->first,"",
+									 stack_.top()->get_name()));
 				continue;
 			}
 			if (tag->second.get_max() < cnt){
 				cache_.top()[&cfg].push_back(
-						message_info(EXTRA_TAG,file,start_line,tag->first ));
+						message_info(EXTRA_TAG,file,start_line,
+									 tag->second.get_max(),tag->first,"",
+									 stack_.top()->get_name()));
 			}
 		}
 		// Checking if all mandatory keys are present
@@ -266,7 +278,7 @@ bool schema_validator::validate(const config & cfg, const std::string & name,
 			if (key->second.is_mandatory()){
 				if (cfg.get(key->first) == NULL){
 					cache_.top()[&cfg].push_back(
-							message_info(MISSING_KEY,file,start_line,
+							message_info(MISSING_KEY,file,start_line,0,
 									   stack_.top()->get_name(),key->first ));
 				}
 			}
@@ -278,13 +290,14 @@ bool schema_validator::validate(const config & cfg, const std::string & name,
 void schema_validator::print(message_info & el){
 	switch (el.type){
 	case WRONG_TAG:
-		wrong_tag_error(el.file,el.line,el.tag,create_exceptions_);
+		wrong_tag_error(el.file,el.line,el.tag,el.value,create_exceptions_);
 		break;
 	case EXTRA_TAG:
-		extra_tag_error(el.file,el.line,el.tag,create_exceptions_);
+		extra_tag_error(el.file,el.line,el.tag,el.n,el.value,create_exceptions_);
 		break;
 	case MISSING_TAG:
-		missing_tag_error(el.file,el.line,el.tag,create_exceptions_);
+		missing_tag_error(el.file,el.line,el.tag,el.n,el.value,
+						  create_exceptions_);
 		break;
 	case EXTRA_KEY:
 		extra_key_error(el.file,el.line,el.tag,el.key,create_exceptions_);
