@@ -226,7 +226,7 @@ class HTMLOutput:
 
         self.unitgrid = rows
 
-    def write_navbar(self):
+    def write_navbar(self, report_type):
         def write(x): self.output.write(x)
 
         languages = find_languages()
@@ -277,10 +277,12 @@ class HTMLOutput:
         for i in range(2):
             cnames = cids[i]
             cnames.sort()
+            if i == 0:
+                cnames = ["mainline"] + cnames
             for cname in cnames:
                 lang = self.isocode
                 if cname == "mainline":
-                    campname = self.translate("Multiplayer", "wesnoth")
+                    campname = self.translate("Units", "wesnoth-manual")
                     campabbrev = campname
                 else:
                     if not cname in self.wesnoth.is_mainline_campaign:
@@ -322,34 +324,37 @@ class HTMLOutput:
                 write("-<br/>\n")
         write("</div></li>\n")
 
-        # Races
-        x = self.translate("Race", "wesnoth")
-        add_menu("races_menu", x)
-        if self.campaign == "mainline":
+        # Races / Factions
+        if report_type == "units_tree":
+            if self.campaign == "mainline":
+                x = self.translate("Race", "wesnoth-lib")
+                add_menu("races_menu", x)
 
-            write("<a href=\"mainline.html\">%s</a><br/>\n" % (
-                self.translate("all", "wesnoth-editor")))
+                write("<a href=\"mainline.html\">%s</a><br/>\n" % (
+                    self.translate("all", "wesnoth-editor")))
 
-            racenames = {}
-            for u in self.wesnoth.unit_lookup.values():
-                if u.campaign != self.campaign: continue
-                race = u.race
-                racename = T(race, "plural_name")
-                racenames[racename] = race.get_text_val("id")
-            racenames = racenames.items()
-            racenames.sort()
+                racenames = {}
+                for u in self.wesnoth.unit_lookup.values():
+                    if u.campaign != self.campaign: continue
+                    race = u.race
+                    racename = T(race, "plural_name")
+                    racenames[racename] = race.get_text_val("id")
+                racenames = racenames.items()
+                racenames.sort()
 
-            for racename, rid in racenames:
-                write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
-                    racename, racename))
-        else:
-            for row in self.unitgrid:
-                for column in range(6):
-                    hspan, vspan, un = row[column]
-                    if un and isinstance(un, helpers.GroupNode):
-                        write(" <a href=\"#%s\">%s</a><br/>" % (
-                            un.name, un.name))
-        write("</div></li>\n")
+                for racename, rid in racenames:
+                    write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
+                        racename, racename))
+            else:
+                x = self.translate("Factions", "wesnoth-help")
+                add_menu("races_menu", x)
+                for row in self.unitgrid:
+                    for column in range(6):
+                        hspan, vspan, un = row[column]
+                        if un and isinstance(un, helpers.GroupNode):
+                            write(" <a href=\"#%s\">%s</a><br/>" % (
+                                un.name, un.name))
+            write("</div></li>\n")
 
         # Languages
         x = self.translate("Language", "wesnoth")
@@ -580,7 +585,7 @@ class HTMLOutput:
         self.output.write(html_header % {"path" : "../"})
 
         self.analyze_units(grouper)
-        self.write_navbar()
+        self.write_navbar("units_tree")
         
         self.output.write("<div class=\"main\">")
 
@@ -617,7 +622,7 @@ class HTMLOutput:
 
         self.output = output
         write(html_header % {"path" : "../"})
-        self.write_navbar()
+        self.write_navbar("unit_report")
         
         self.output.write("<div class=\"main\">")
 
@@ -636,11 +641,11 @@ class HTMLOutput:
             if fname and fname != uname:
                 display_name += "<br/>" + fname
 
-        write("<h1>%s</h1>\n" % display_name)
-        
         write('<div style="width: 60em; float: left">')
        
         write('<div style="width: 40em; float: left">')
+        
+        write("<h1>%s</h1>\n" % display_name)
 
         write('<div class="pic">')
         if female:
@@ -729,6 +734,8 @@ class HTMLOutput:
         # Write info about attacks.
         write("<table class=\"unitinfo\">\n")
 
+        write("<tr><td colspan=\"4\"><b>Attacks</b> (damage - count) </td></tr>\n")
+
         attacks = self.get_recursive_attacks(unit)
         for attack in attacks:
             write("<tr>")
@@ -747,7 +754,7 @@ class HTMLOutput:
             icon = os.path.join("../pics", picname)
             write("<td><img src=\"%s\" alt=\"(image)\"/></td>" % icon)
 
-            write("<td>%s" % aname)
+            write("<td><b>%s</b>" % aname)
 
             t = T(attack, "type")
             write("<br/>%s</td>" % _(t))
@@ -755,7 +762,7 @@ class HTMLOutput:
             n = attack.get_text_val("number")
             x = attack.get_text_val("damage")
             x = "%s - %s" % (x, n)
-            write("<td>%s" % x)
+            write("<td><b>%s</b>" % x)
 
             r = T(attack, "range")
             write("<br/>%s</td>" % _(r))
@@ -780,19 +787,19 @@ class HTMLOutput:
 
         # Write info about resistances.
         resistances = [
-            "blade",
-            "pierce",
-            "impact",
-            "fire",
-            "cold",
-            "arcane"]
+            ("blade", "attacks/sword-human.png"),
+            ("pierce", "attacks/spear.png"),
+            ("impact", "attacks/club.png"),
+            ("fire", "attacks/fireball.png"),
+            ("cold", "attacks/iceball.png"),
+            ("arcane", "attacks/faerie-fire.png")]
 
         write("<table class=\"unitinfo\">\n")
         write("<tr>\n")
-        write("<th colspan=\"2\">%s</th>\n" % _("Resistances: "))
+        write("<th colspan=\"3\">%s</th>\n" % _("Resistances: "))
 
         write("</tr>\n")
-        for rid in resistances:
+        for rid, ricon in resistances:
             special, r = find_attr("resistance", rid)
             if r == "-": r = 100
             try: r = "%d%%" % (100 - int(r))
@@ -802,6 +809,9 @@ class HTMLOutput:
             rcell = "td"
             if special: rcell += ' class="special"'
             write("<tr>\n")
+            picname = image_collector.add_image("mainline", ricon)
+            icon = os.path.join("../pics", picname)
+            write("<td><img src=\"%s\"/></td>\n" % (icon, ))
             write("<th>%s</th><td>%s</td>\n" % (_(rid), r))
             write("</tr>\n")
         write("</table>\n")
@@ -809,11 +819,20 @@ class HTMLOutput:
         # end left column
         write('</div>')
         write('<div style="width: 20em; float:right">')
+        
+        if portrait:
+            write('<div class="pic">')
+            if female:
+                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
+                write('<img width="200" src="%s" alt="(portrait)" />\n' % fportrait)
+            else:
+                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
+            write('</div>\n')
 
         # Write info about movement costs and terrain defense.
         write("<table class=\"unitinfo\">\n")
         write("<tr>\n")
-        write("<th>%s</th><th>%s</th><th>%s</th>\n" % (
+        write("<th colspan=2>%s</th><th>%s</th><th>%s</th>\n" % (
             _("Terrain"), _("Movement Cost"), _("Defense") ))
         write("</tr>\n")
 
@@ -821,13 +840,18 @@ class HTMLOutput:
         terrainlist = []
         for tstring, t in terrains.items():
             tid = t.get_text_val("id")
-            if tid in ["off_map", "fog", "shroud"]: continue
+            if tid in ["off_map", "off_map2", "fog", "shroud", "impassable", "void"]: continue
             if t.get_all(att = "aliasof"): continue
             name = T(t, "name")
-            terrainlist.append((name, tid))
+            ticon = t.get_text_val("symbol_image")
+            if tid == "flat": ticon = "grass/green-symbol"
+            elif tid == "frozen": ticon = "frozen/ice"
+            elif tid == "unwalkable": ticon = "unwalkable/lava"
+            elif tid == "village": ticon = "village/human-tile"
+            terrainlist.append((name, tid, ticon))
         terrainlist.sort()
 
-        for tname, tid in terrainlist:
+        for tname, tid, ticon in terrainlist:
             not_from_race, c = find_attr("movement_costs", tid)
 
             ccell = "td"
@@ -842,6 +866,9 @@ class HTMLOutput:
                     d, uid))
 
             write("<tr>\n")
+            picname = image_collector.add_image("mainline", "terrain/" + ticon + ".png")
+            icon = os.path.join("../pics", picname)
+            write("<td><img src=\"%s\" height=\"36px\" /></td>\n" % (icon, ))
             write("<td>%s</td><%s>%s</td><%s>%s</td>\n" % (
                 tname, ccell, c, dcell, d))
             write("</tr>\n")
@@ -850,15 +877,6 @@ class HTMLOutput:
         write('</div>') # right column
         
         write('</div>') # columns parent
-        
-        if portrait:
-            write('<div class="pic">')
-            if female:
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % fportrait)
-            else:
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
-            write('</div>\n')
 
         self.output.write('<div id="clear" style="clear:both;"></div>')
         write('</div>') # main
@@ -906,7 +924,7 @@ def generate_campaign_report(out_path, isocode, campaign, wesnoth):
     grouper = GroupByRace(wesnoth, campaign)
 
     if campaign == "mainline":
-        title = html.translate("Multiplayer", "wesnoth")
+        title = html.translate("Units", "wesnoth-help")
     else:
         title = wesnoth.campaign_lookup[campaign].get_text_val("name",
             translation = html.translate)

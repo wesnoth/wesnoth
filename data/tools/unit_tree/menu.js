@@ -5,7 +5,13 @@ function toggle_menu(event, id, what) {
     var show = what;
     
     /* Since we have Javascript, disable the CSS menu trigger. */
-    event.className = "";
+    if (event.className != "") {
+        event.className = "";
+        e.style.display = 'none';
+        return;
+    }
+    
+    if (show == 0 || show == 1) return;
    
     if (show == 2) {
         if (e.style.display == 'block') show = 0;
