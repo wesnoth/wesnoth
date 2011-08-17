@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,6 @@ import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
@@ -81,12 +80,6 @@ public class WMLEditor extends XtextEditor
         WesnothPlugin.getDefault( );
     }
 
-    @Override
-    public void createPartControl( Composite parent )
-    {
-        super.createPartControl( parent );
-    }
-
     public HighlightingHelper getHighlightingHelper( )
     {
         return highlightingHelper_;
@@ -114,7 +107,7 @@ public class WMLEditor extends XtextEditor
 
     /**
      * Gets current edited file.
-     *
+     * 
      * @return An IFile instance
      */
     public static IFile getActiveEditorFile( )
@@ -124,7 +117,7 @@ public class WMLEditor extends XtextEditor
 
     /**
      * Gets the edited file from the specified editor
-     *
+     * 
      * @param editor
      *        The editor to get the file from
      * @return An IFile instance
@@ -140,7 +133,7 @@ public class WMLEditor extends XtextEditor
     /**
      * Here it comes the part that handles external files
      * (from outside the workspace)
-     *
+     * 
      */
     /**
      * Copyright (c) 2010, Cloudsmith Inc.
@@ -199,7 +192,7 @@ public class WMLEditor extends XtextEditor
     /**
      * Overridden to allow customization of editor context menu via injected
      * handler
-     *
+     * 
      * @see org.eclipse.ui.editors.text.TextEditor#editorContextMenuAboutToShow(org.eclipse.jface.action.IMenuManager)
      */
     @Override
@@ -277,7 +270,7 @@ public class WMLEditor extends XtextEditor
 
     /**
      * Throws WrappedException - the URI must refer to an existing file!
-     *
+     * 
      * @param uri
      * @return
      */

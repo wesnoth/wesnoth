@@ -11,7 +11,6 @@ package org.wesnoth.ui;
 import com.google.inject.Binder;
 import com.google.inject.Provider;
 
-import org.eclipse.jface.text.hyperlink.IHyperlinkDetector;
 import org.eclipse.jface.text.source.ICharacterPairMatcher;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -101,12 +100,6 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
     public Class< ? extends ILocationInFileProvider > bindILocationInFileProvider( )
     {
         return WMLLocationInFileProvider.class;
-    }
-
-    @Override
-    public Class< ? extends IHyperlinkDetector > bindIHyperlinkDetector( )
-    {
-        return super.bindIHyperlinkDetector( );
     }
 
     public Class< ? extends HyperlinkHelper > bindHyperlinkHelper( )
