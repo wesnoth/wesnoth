@@ -347,8 +347,8 @@ public class SchemaParser
      */
     private void sortChildren( WMLTag tag )
     {
-        WMLExpression[] expressions = ( WMLExpression[] ) tag.getExpressions( )
-            .toArray( );
+        WMLExpression[] expressions = tag.getExpressions( )
+            .toArray( new WMLExpression[tag.getExpressions( ).size( )] );
         Arrays.sort( expressions, new CardinalityComparator( ) );
         tag.getExpressions( ).clear( );
 
