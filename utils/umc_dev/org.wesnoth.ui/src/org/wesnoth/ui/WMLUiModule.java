@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,6 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 import org.wesnoth.ui.autoedit.WMLAutoEditStrategy;
 import org.wesnoth.ui.contentassist.WMLContentAssistContext;
 import org.wesnoth.ui.contentassist.WMLProposalComparator;
-import org.wesnoth.ui.editor.WMLAbstractDirtyEditorCallback;
 import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.ui.editor.WMLHighlightingHelper;
 import org.wesnoth.ui.folding.WMLFoldingRegionProvider;
@@ -140,7 +139,7 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
     @Override
     public Class< ? extends IXtextEditorCallback > bindIXtextEditorCallback( )
     {
-        return WMLAbstractDirtyEditorCallback.class;
+        return null;
     }
 
     public Class< ? extends DefaultFoldingRegionProvider > bindDefaultFoldingRegionProvider( )
