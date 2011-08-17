@@ -305,14 +305,13 @@ public class DependencyListBuilder implements Serializable
                         .get( directories_.indexOf( containerPath ) );
 
                     if( entry.FirstNode == null
-                        || ( entry.FirstNode != null && firstNewNode
-                            .getIndex( ) < entry.FirstNode.getIndex( ) ) ) {
+                        || firstNewNode.getIndex( ) < entry.FirstNode
+                            .getIndex( ) ) {
                         entry.FirstNode = firstNewNode;
                     }
 
                     if( entry.LastNode == null
-                        || ( entry.LastNode != null && lastNode.getIndex( ) > entry.LastNode
-                            .getIndex( ) ) ) {
+                        || lastNode.getIndex( ) > entry.LastNode.getIndex( ) ) {
                         entry.LastNode = lastNode;
                     }
                 }
@@ -717,7 +716,8 @@ public class DependencyListBuilder implements Serializable
          */
         public int                Includes;
 
-        public ListDirectoryEntry( String directoryPath, DependencyListNode firstNode,
+        public ListDirectoryEntry( String directoryPath,
+            DependencyListNode firstNode,
             DependencyListNode lastNode )
         {
             DirectoryPath = directoryPath;
