@@ -14,6 +14,7 @@ import com.google.inject.Provider;
 import org.eclipse.jface.text.source.ICharacterPairMatcher;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.resource.DefaultLocationInFileProvider;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.containers.IAllContainersState;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
@@ -38,7 +39,6 @@ import org.wesnoth.ui.folding.WMLFoldingRegionProvider;
 import org.wesnoth.ui.hover.WMLEObjectHoverProvider;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.ui.navigation.WMLHyperlinkHelper;
-import org.wesnoth.ui.resource.WMLLocationInFileProvider;
 import org.wesnoth.ui.syntax.WMLAntlrTokenToAttributeIdMapper;
 import org.wesnoth.ui.syntax.WMLCharacterPairMatcher;
 import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
@@ -99,7 +99,7 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 
     public Class< ? extends ILocationInFileProvider > bindILocationInFileProvider( )
     {
-        return WMLLocationInFileProvider.class;
+        return DefaultLocationInFileProvider.class;
     }
 
     public Class< ? extends HyperlinkHelper > bindHyperlinkHelper( )
