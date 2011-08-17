@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.Map.Entry;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.Assignment;
@@ -36,7 +37,6 @@ import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.schema.SchemaParser;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.ui.editor.WMLEditor;
-import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLUtils;
@@ -58,6 +58,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     protected static final int TAG_PRIORITY         = 1000;
     protected static final int MACRO_CALL_PRIORITY  = 100;
 
+    private static boolean     IMAGES_INITED        = false;
     private static Image       MACRO_CALL_IMAGE     = null;
     private static Image       SCENARIO_VALUE_IMAGE = null;
     private static Image       WML_KEY_IMAGE        = null;
@@ -71,18 +72,26 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     public WMLProposalProvider( )
     {
         super( );
+    }
 
-        MACRO_CALL_IMAGE = WMLLabelProvider.getImageByName( "macrocall.png" );
-        SCENARIO_VALUE_IMAGE = WMLLabelProvider.getImageByName( "scenario.png" );
-        WML_KEY_IMAGE = WMLLabelProvider.getImageByName( "wmlkey.png" );
-        WML_TAG_IMAGE = WMLLabelProvider.getImageByName( "wmltag.png" );
+    private void initImages( )
+    {
+        if( IMAGES_INITED ) {
+            return;
+        }
+
+        ILabelProvider labelProvider = getLabelProvider( );
+
+        MACRO_CALL_IMAGE = labelProvider.getImage( "macrocall.png" );
+        SCENARIO_VALUE_IMAGE = labelProvider.getImage( "scenario.png" );
+        WML_KEY_IMAGE = labelProvider.getImage( "wmlkey.png" );
+        WML_TAG_IMAGE = labelProvider.getImage( "wmltag.png" );
     }
 
     /**
-     * Refreshes the current project cache/schema based
-     * on the file opened
+     * Initializes the proposal provider with all needed values
      */
-    private void refresh( )
+    private void initProposalProvider( )
     {
         if( projectCache_ != null ) {
             return;
@@ -96,6 +105,17 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             .getInstallNameForResource( file ) );
 
         dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
+
+        initImages( );
+    }
+
+    @Override
+    public void createProposals( ContentAssistContext context,
+        ICompletionProposalAcceptor acceptor )
+    {
+        initProposalProvider( );
+
+        super.createProposals( context, acceptor );
     }
 
     @Override
@@ -103,7 +123,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         super.completeWMLKey_Name( model, assignment, context, acceptor );
-        refresh( );
 
         addKeyNameProposals( model, context, acceptor );
     }
@@ -113,7 +132,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         super.complete_WMLKeyValue( model, ruleCall, context, acceptor );
-        refresh( );
 
         addKeyValueProposals( model, context, acceptor );
     }
@@ -123,7 +141,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         super.complete_WMLTag( model, ruleCall, context, acceptor );
-        refresh( );
 
         addTagProposals( model, true, context, acceptor );
     }
@@ -133,7 +150,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         super.completeWMLTag_Name( model, assignment, context, acceptor );
-        refresh( );
 
         addTagProposals( model, false, context, acceptor );
     }
@@ -144,7 +160,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         ICompletionProposalAcceptor acceptor )
     {
         super.completeWMLMacroCall_Name( model, assignment, context, acceptor );
-        refresh( );
 
         addMacroCallProposals( model, false, context, acceptor );
     }
@@ -154,7 +169,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
         super.complete_WMLMacroCall( model, ruleCall, context, acceptor );
-        refresh( );
 
         addMacroCallProposals( model, true, context, acceptor );
     }
@@ -381,7 +395,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
     /**
      * Returns the proposal for the specified tag, usign the specified indent
-     *
+     * 
      * @param tag
      *        The tag from which to construct the proposal
      * @param indent
