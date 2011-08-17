@@ -12,6 +12,7 @@ import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -146,28 +147,28 @@ public class ProjectCache implements Serializable
             .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
 
         try {
-            try {
-                FileInputStream inputStream = new FileInputStream( wesnothFile_ );
-                ObjectInputStream deserializer = new ObjectInputStream(
-                    inputStream );
-                ProjectCache cache = ( ProjectCache ) deserializer.readObject( );
+            FileInputStream inputStream = new FileInputStream( wesnothFile_ );
+            ObjectInputStream deserializer = new ObjectInputStream(
+                inputStream );
+            ProjectCache cache = ( ProjectCache ) deserializer.readObject( );
 
-                properties_ = cache.properties_;
-                configFiles_ = cache.configFiles_;
-                dependTree_ = cache.dependTree_;
-                variables_ = cache.variables_;
+            properties_ = cache.properties_;
+            configFiles_ = cache.configFiles_;
+            dependTree_ = cache.dependTree_;
+            variables_ = cache.variables_;
 
-                dependTree_.deserialize( project_ );
-            }
-            // invalid file contents. just save this instance to it.
-            catch( EOFException e ) {
-                saveCache( );
-            } catch( StreamCorruptedException e ) {
-                saveCache( );
-            } catch( ClassCastException ex ) {
-                saveCache( );
-            }
-        } catch( Exception e ) {
+            dependTree_.deserialize( project_ );
+        }
+        // invalid file contents. just save this instance to it.
+        catch( EOFException e ) {
+            saveCache( );
+        } catch( StreamCorruptedException e ) {
+            saveCache( );
+        } catch( ClassCastException ex ) {
+            saveCache( );
+        } catch( ClassNotFoundException e ) {
+            saveCache( );
+        } catch( IOException e ) {
             Logger.getInstance( ).logException( e );
         }
 
