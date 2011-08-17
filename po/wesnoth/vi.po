@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-08-10 11:40+0200\n"
-"PO-Revision-Date: 2011-07-09 09:48+0700\n"
+"PO-Revision-Date: 2011-08-17 08:23+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
@@ -84,7 +84,7 @@ msgstr "Tự động mở cửa sổ tin nhắn riêng trong phòng gặp gỡ"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Group players in lobby"
-msgstr "Xếp nhóm người chơi trong phòng gặp gỡ"
+msgstr "Xếp nhóm NC trong phòng gặp gỡ"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
@@ -99,17 +99,17 @@ msgstr "Tắt thông báo"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Reverse Time Graphics"
-msgstr ""
+msgstr "Đảo ngược hình ảnh thời gian"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:108
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
+msgstr "Chọn hình ảnh mặt trời đi từ trái sang phải hay từ phải sang trái"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
 msgid "Follow Unit Actions"
-msgstr ""
+msgstr "Theo dõi hành động của đơn vị"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:116
@@ -117,11 +117,13 @@ msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
 msgstr ""
+"Chọn giữa việc tầm nhìn bản đồ có cuộn theo một đơn vị quân khi có hành động "
+"hoặc di chuyển hay không"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:132
 msgid "Joystick Support"
-msgstr ""
+msgstr "Hỗ trợ cần điều khiển"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:139
@@ -1078,7 +1080,7 @@ msgstr "đinh ba giông bão"
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:546
 msgid "sceptre of fire"
-msgstr ""
+msgstr "vương trượng lửa"
 
 #: data/core/macros/names.cfg:18
 msgid ""
@@ -3531,20 +3533,16 @@ msgid "Response"
 msgstr "Trả lời"
 
 #: src/addon/manager.cpp:556
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting the addon to be deleted"
-msgstr "Đang lấy danh sách phần bổ sung"
+msgstr "Đang yêu cầu xóa phần bổ sung"
 
 #: src/addon/manager.cpp:582
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Đang tải về phần bổ sung: $addon_title|..."
 
 #: src/addon/manager.cpp:588 src/addon/manager.cpp:1137
-#, fuzzy
-#| msgid "Download"
 msgid "Downloading..."
-msgstr "Tải về"
+msgstr "Đang tải về..."
 
 #: src/addon/manager.cpp:600
 msgid ""
@@ -3696,11 +3694,6 @@ msgid "All add-ons updated successfully."
 msgstr "Đã cập nhật thành công tất cả các phần bổ sung."
 
 #: src/addon/manager.cpp:1100
-#, fuzzy
-#| msgid ""
-#| "It looks as if you are the author of '$addon|'. Downloading '$addon|' may "
-#| "overwrite any changes you have made since the last upload and may delete "
-#| "your pbl file. Do you really want to continue ?"
 msgid ""
 "You seem to be the author of '$addon|'. Downloading '$addon|' may overwrite "
 "any changes you have made since the last upload and may delete your pbl "
@@ -3716,10 +3709,8 @@ msgid "Confirm"
 msgstr "Xác nhận"
 
 #: src/addon/manager.cpp:1130
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting..."
-msgstr "Đang kết nối đến máy chủ..."
+msgstr "Đang kết nối..."
 
 #: src/addon/manager.cpp:1130
 msgid "Requesting list of add-ons"
@@ -4027,7 +4018,7 @@ msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
-"Máy chủ sẽ chạy ở tiến trình ngầm đến khi tất cả các người chơi đã ngắt kết "
+"Máy chủ sẽ chạy ở tiến trình ngầm đến khi tất cả các người dùng đã ngắt kết "
 "nối."
 
 #: src/game_controller.cpp:971
@@ -5234,18 +5225,17 @@ msgid ""
 "The nick '$nick' is inactive. You cannot claim ownership of this nick until "
 "you activate your account via email or ask an administrator to do it for you."
 msgstr ""
+"Tên '$nick' chưa được kích hoạt. Bạn không thể sở hữu tên này cho đến khi "
+"bạn kích hoạt tài khoản của bạn thông qua email hoặc nhờ một quản trị viên "
+"làm giùm bạn."
 
 #: src/multiplayer.cpp:248
-#, fuzzy
-#| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
-msgstr "Bạn có muốn lưu trò chơi không?"
+msgstr "Bạn có muốn tiếp tục không?"
 
 #: src/multiplayer.cpp:250
-#, fuzzy
-#| msgid "Warning: "
 msgid "Warning"
-msgstr "Cảnh báo: "
+msgstr "Cảnh báo"
 
 #: src/multiplayer.cpp:294
 msgid "Bad data received from server"
@@ -5332,7 +5322,7 @@ msgstr "(Còn trống)"
 
 #: src/multiplayer_connect.cpp:633
 msgid "Anonymous local player"
-msgstr "người chơi cục bộ ẩn danh"
+msgstr "NC cục bộ ẩn danh"
 
 #: src/multiplayer_connect.cpp:646 src/multiplayer_connect.cpp:1521
 msgid "Computer Player"
@@ -5392,7 +5382,7 @@ msgstr "Tôi đã sẵn sàng"
 
 #: src/multiplayer_connect.cpp:1035
 msgid "Add named local player"
-msgstr "Thêm người chơi cục bộ"
+msgstr "Thêm NC cục bộ"
 
 #: src/multiplayer_connect.cpp:1045
 msgid "The scenario is invalid because it has no id."
@@ -5412,11 +5402,11 @@ msgstr "Tên: "
 
 #: src/multiplayer_connect.cpp:1518
 msgid "Network Player"
-msgstr "Người chơi mạng"
+msgstr "NC mạng"
 
 #: src/multiplayer_connect.cpp:1520
 msgid "Local Player"
-msgstr "Người chơi cục bộ"
+msgstr "NC cục bộ"
 
 #: src/multiplayer_connect.cpp:1522
 msgid "Empty"
@@ -5622,7 +5612,7 @@ msgstr "Hệ số kinh nghiệm: "
 
 #: src/multiplayer_create.cpp:557
 msgid "Players: "
-msgstr "Người chơi : "
+msgstr "Người chơi: "
 
 #: src/multiplayer_create.cpp:558
 msgid "Size: "
@@ -5991,7 +5981,7 @@ msgstr "Thay thế bằng máy tính"
 
 #: src/playturn.cpp:225
 msgid "Replace with local player"
-msgstr "Thay thế bằng người chơi cục bộ"
+msgstr "Thay thế bằng NC cục bộ"
 
 #: src/playturn.cpp:226
 msgid "Abort game"
