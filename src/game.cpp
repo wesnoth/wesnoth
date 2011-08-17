@@ -32,6 +32,7 @@
 #include "replay.hpp"
 #include "statistics.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/validator.hpp"
 
 #include <cerrno>
 #include <clocale>
@@ -179,6 +180,9 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	if(cmdline_opts.screenshot) {
 		static char opt[] = "SDL_VIDEODRIVER=dummy";
 		SDL_putenv(opt);
+	}
+	if(cmdline_opts.strict_validation) {
+		strict_validation_enabled = true;
 	}
 	if(cmdline_opts.version) {
 		std::cout << "Battle for Wesnoth" << " " << game_config::version << "\n";

@@ -103,6 +103,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	screenshot_map_file(),
 	screenshot_output_file(),
 	smallgui(false),
+	strict_validation(false),
 	test(),
 	validcache(false),
 	version(false),
@@ -141,6 +142,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work.")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
+		("strict-validation", "makes validation errors fatal")
 		("test,t", po::value<std::string>()->implicit_value(std::string()), "runs the game in a small test scenario. If specified, scenario <arg> will be used instead.")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
@@ -352,6 +354,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		multiplayer_turns = vm["turns"].as<std::string>();
 	if (vm.count("smallgui"))
 		smallgui = true;
+	if (vm.count("strict-validation"))
+		strict_validation = true;
 	if (vm.count("validcache"))
 		validcache = true;
 	if (vm.count("version"))

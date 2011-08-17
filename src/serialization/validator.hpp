@@ -26,13 +26,14 @@
 
 class config;
 
+extern bool strict_validation_enabled;
+
 /**
  * @class abstract_validator
  * Used in parsing config file. @ref parser.cpp
  * Contains virtual methods, which are called by parser
  * and take information about config to be validated
  */
-
 class abstract_validator
 {
 public:

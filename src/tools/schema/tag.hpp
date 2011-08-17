@@ -156,6 +156,7 @@ public:
 		, links_()
 	{
 	}
+
 	class_tag(const std::string & name,
 			  int min,
 			  int max,
@@ -287,6 +288,8 @@ public:
 	}
 	/** Removes all keys with this type. Works recursively */
 	void remove_keys_by_type(const std::string &type);
+
+//	class_tag & operator= (class_tag const& );
 
 private:
 	/** name of tag*/

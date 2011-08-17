@@ -214,6 +214,7 @@ set(libwesnoth-core_STAT_SRC
 	serialization/preprocessor.cpp
 	serialization/string_utils.cpp
 	serialization/tokenizer.cpp
+	serialization/validator.cpp
 	${REVISION_FILE}
 )
 
@@ -811,13 +812,10 @@ set_target_properties(schema_generator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}sc
 
 install(TARGETS schema_generator DESTINATION ${BINDIR})
 
-set_property(
-   SOURCE 	serialization/schema_validator.cpp
-   PROPERTY COMPILE_DEFINITIONS VALIDATION_ERRORS_LOG
-)
 set(schema_validator_SRC
 	tools/validator/validator_tool.cpp
 	serialization/schema_validator.cpp
+	serialization/validator.cpp
 	tools/schema/tag.cpp
 	filesystem.cpp
 	config_cache.cpp
@@ -827,7 +825,8 @@ set(schema_validator_SRC
 
 add_executable(schema_validator ${schema_validator_SRC})
 target_link_libraries(schema_validator wesnoth-core ${common-external-libs})
-set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_validator${BINARY_SUFFIX})
+set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_validator${BINARY_SUFFIX} 
+							COMPILE_DEFINITIONS VALIDATION_ERRORS_LOG)
 
 install(TARGETS schema_validator DESTINATION ${BINDIR})
 

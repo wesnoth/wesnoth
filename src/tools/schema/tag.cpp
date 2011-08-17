@@ -253,6 +253,18 @@ void class_tag::printl(std::ostream &os,int level, int step){
 	 return NULL;
 
  }
+// class_tag & class_tag::operator= (class_tag const& t){
+//	 if (&t != this){
+//		 name_ = t.name_;
+//		 min_ = t.min_;
+//		 max_ = t.max_;
+//		 super_ = t.super_;
+//		 tags_ = t.tags_;
+//		 keys_ = t.keys_;
+//		 links_ = t.links_;
+//	 }
+//	 return *this;
+// }
 
 void class_tag::add_tag(const std::string &path, const class_tag &tag,
 						class_tag &root){

@@ -106,7 +106,7 @@ static void wrong_value_error(const std::string & file, int line,
 
 schema_validator::schema_validator()
 	: config_read_(false)
-	, create_exceptions_(false)
+	, create_exceptions_(strict_validation_enabled)
 	, root_()
 	, stack_()
 	, counter_()
@@ -121,7 +121,7 @@ schema_validator::~schema_validator(){}
 
 schema_validator::schema_validator(const std::string & config_file_name)
 	: config_read_ (false)
-	, create_exceptions_(false)
+	, create_exceptions_(strict_validation_enabled)
 	, root_()
 	, stack_()
 	, counter_()

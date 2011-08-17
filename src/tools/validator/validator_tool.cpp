@@ -60,7 +60,6 @@ int main(int argc, char *argv[]){
 		}
 	}
 	schema_validator validator (default_schema);
-	//Now you can only test, how it read schema file
 	if (input.empty()) input = "./data/gui/default.cfg";
 	std::cout << "Processing "<< input <<"\n";
 	config cfg;
