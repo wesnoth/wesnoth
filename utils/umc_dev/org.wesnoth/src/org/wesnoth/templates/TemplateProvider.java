@@ -26,9 +26,14 @@ import org.wesnoth.utils.Pair;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 
-
+/**
+ * A simple template provider class
+ */
 public class TemplateProvider
 {
+    /**
+     * The filename of the file that contains the templates list
+     */
     public static final String TEMPLATES_FILENAME = "templatesIndex.txt"; //$NON-NLS-1$
 
     /**
@@ -50,6 +55,11 @@ public class TemplateProvider
         loadCACs( );
     }
 
+    /**
+     * Returns the singleton instance.
+     * 
+     * @return Returns the {@link TemplateProvider} singleton instance.
+     */
     public static TemplateProvider getInstance( )
     {
         return TemplateProviderInstance.instance_;
@@ -138,7 +148,7 @@ public class TemplateProvider
      *        The name of the template to process
      * @param parameters
      *        The parameters to replace into the template
-     * @return
+     * @return A {@link String} that represents the processed template.
      */
     public String getProcessedTemplate( String templateName,
         List< ReplaceableParameter > parameters )
@@ -191,7 +201,7 @@ public class TemplateProvider
      * Returns the template with the specified name or empty string if none
      * 
      * @param name
-     * @return
+     * @return A string that represents the queried template name.
      */
     public String getTemplate( String name )
     {
@@ -228,7 +238,7 @@ public class TemplateProvider
      * 
      * @param structureTemplate
      *        the template
-     * @return
+     * @return A pair with the files and directories.
      */
     public Pair< List< Pair< String, String >>, List< String >> getFilesDirectories(
         String structureTemplate )

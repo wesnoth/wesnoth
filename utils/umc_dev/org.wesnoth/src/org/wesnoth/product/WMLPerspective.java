@@ -18,7 +18,7 @@ import org.wesnoth.views.WesnothProjectsExplorer;
 
 public class WMLPerspective implements IPerspectiveFactory
 {
-    public static final String WMLPERSPECTIVE_ID = "org.wesnoth.product.WMLPerspective";
+    public static final String ID_WMLPERSPECTIVE = "org.wesnoth.product.WMLPerspective";
 
     @Override
     public void createInitialLayout( IPageLayout layout )
@@ -51,7 +51,7 @@ public class WMLPerspective implements IPerspectiveFactory
             "right", IPageLayout.RIGHT, 0.68f, editorArea ); //$NON-NLS-1$
         right.addView( IPageLayout.ID_OUTLINE );
 
-        layout.addPerspectiveShortcut( WMLPERSPECTIVE_ID );
+        layout.addPerspectiveShortcut( ID_WMLPERSPECTIVE );
 
         // Add "new wizards".
         layout.addNewWizardShortcut( "org.eclipse.ui.wizards.new.folder" ); //$NON-NLS-1$

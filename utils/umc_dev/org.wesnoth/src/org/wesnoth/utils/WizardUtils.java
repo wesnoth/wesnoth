@@ -16,7 +16,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.wizards.WizardTemplate;
 
-
+/**
+ * Utilities class for handling with wizards
+ */
 public class WizardUtils
 {
     /**
@@ -28,7 +30,7 @@ public class WizardUtils
      *        The shell
      * @param selection
      *        The current selection
-     * @return
+     * @return The return code of the launched wizard.
      */
     public static int launchWizard( WizardTemplate wizard, Shell shell,
         IStructuredSelection selection )

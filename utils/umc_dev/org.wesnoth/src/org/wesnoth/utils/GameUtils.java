@@ -23,6 +23,9 @@ import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.projects.ProjectUtils;
 
+/**
+ * Utilities class for handling with the Wesnoth Game
+ */
 public class GameUtils
 {
     /**
@@ -128,6 +131,9 @@ public class GameUtils
     /**
      * Starts the wesnoth game with the specified extraArguments
      * 
+     * @param installName
+     *        The install name to use when launching the game
+     * 
      * @param extraArgs
      *        Extra arguments given to the game, or null.
      */
@@ -203,7 +209,7 @@ public class GameUtils
      * 
      * @param mapName
      *        the map to launch
-     * @return
+     * @return A list of string with the editor launch arguments.
      */
     public static List< String > getEditorLaunchArguments( String mapName )
     {

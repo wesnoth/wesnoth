@@ -34,6 +34,9 @@ public class DefinesSAXHandler extends DefaultHandler
     private String                location_;
     private List< String >        arguments_;
 
+    /**
+     * Creates a new SAX handler that parses the Defines config
+     */
     public DefinesSAXHandler( )
     {
         stack_ = new Stack< String >( );
@@ -119,9 +122,9 @@ public class DefinesSAXHandler extends DefaultHandler
     }
 
     /**
-     * Gets the map of defines parsed
+     * Gets the map of defines parsed.
      * 
-     * @return
+     * @return A {@link Map} with the parsed defines.
      */
     public Map< String, Define > getDefines( )
     {

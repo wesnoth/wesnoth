@@ -14,6 +14,10 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+/**
+ * An abstract generic ObjectActionDelegate implementation that
+ * tracks the current selection
+ */
 public abstract class ObjectActionDelegate implements IObjectActionDelegate
 {
     protected ISelection           selection_;

@@ -88,10 +88,6 @@ public class SchemaParser
     /**
      * Parses the schema
      * 
-     * @param installName
-     *        The install to use. It will get the default schema
-     *        path based on that
-     * 
      * @param force
      *        True to force parsing the schema, skipping the existing cache
      */
@@ -378,6 +374,7 @@ public class SchemaParser
      * 
      * @param value
      *        The value the parse
+     * @return The char representation of the cardinality
      */
     public char getCardinality( String value )
     {

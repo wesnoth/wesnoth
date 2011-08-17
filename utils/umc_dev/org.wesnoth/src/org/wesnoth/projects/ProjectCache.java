@@ -110,11 +110,11 @@ public class ProjectCache implements Serializable
 
     /**
      * Gets the WMLConfig by the specified file project-relative path.
-     * If the WMLConfig doesn't exist it will be created
+     * If the WMLConfig doesn't exist it will be created.
      * 
      * @param path
      *        The project-relative path for the file.
-     * @return
+     * @return A {@link WMLConfig} instance. It will never be null.
      */
     public WMLConfig getWMLConfig( String path )
     {
@@ -181,7 +181,7 @@ public class ProjectCache implements Serializable
      * - properties
      * - existing scenarios
      * 
-     * @return
+     * @return True if the cache was sucessfully saved, false otherwise.
      */
     public boolean saveCache( )
     {
@@ -226,7 +226,7 @@ public class ProjectCache implements Serializable
     /**
      * Returns the defines associated with this project
      * 
-     * @return
+     * @return A {@link Map} with the defines
      */
     public Map< String, Define > getDefines( )
     {

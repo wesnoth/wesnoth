@@ -89,7 +89,7 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
     /**
      * Returns the selected install
      * 
-     * @return
+     * @return The selected install name string.
      */
     public String getSelectedInstallName( )
     {
@@ -98,6 +98,15 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
 
     /**
      * Creates the project this page was setup with
+     * 
+     * @param monitor
+     *        The monitor for monitoring progress
+     * @param templateName
+     *        The name of the template of the created project
+     * @param params
+     *        The parameters to use when expanding the project template
+     * @param generatePBL
+     *        True to generate the pbl file in the project
      * 
      * @return The newly created project's handle
      */

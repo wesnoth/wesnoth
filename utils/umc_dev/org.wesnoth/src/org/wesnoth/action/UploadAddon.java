@@ -23,7 +23,9 @@ import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WorkspaceUtils;
 
-
+/**
+ * Uploads a project as an addon.
+ */
 public class UploadAddon extends ObjectActionDelegate
 {
     @Override

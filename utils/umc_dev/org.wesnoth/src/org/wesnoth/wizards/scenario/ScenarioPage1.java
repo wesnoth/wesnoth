@@ -84,6 +84,8 @@ public class ScenarioPage1 extends WizardPageTemplate
 
     /**
      * Gets the starting gold as #ifdef based on difficulties
+     * 
+     * @return The WML to set the starting gold based on the difficulties levels
      */
     public String getStartingGoldByDifficulties( )
     {

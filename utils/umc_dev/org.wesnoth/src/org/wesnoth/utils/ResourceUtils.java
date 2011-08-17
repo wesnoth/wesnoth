@@ -60,13 +60,20 @@ import org.wesnoth.wml.SimpleWMLParser;
 import org.wesnoth.wml.WMLMacroCall;
 import org.wesnoth.wml.WMLRoot;
 
+/**
+ * Utility class that handles Resources ( workspace and non-workspace ).
+ */
 public class ResourceUtils
 {
     /**
      * Copies a file from source to target
      * 
      * @param source
+     *        The source file.
      * @param target
+     *        The target file.
+     * 
+     * @return True if the copy was successfull, false otherwise.
      * @throws IOException
      */
     public static boolean copyTo( File source, File target )
@@ -95,6 +102,18 @@ public class ResourceUtils
         }
     }
 
+    /**
+     * Gets the contents of the specified file as string.
+     * 
+     * @param file
+     *        The file
+     * @param skipEmptyLines
+     *        True to not take in account empty lines when creating the result
+     * @param skipCommentLines
+     *        True to not take in account comment lines ( WML Style: # ) when
+     *        creating the result
+     * @return The string contents of the file.
+     */
     public static String getFileContents( File file, boolean skipEmptyLines,
         boolean skipCommentLines )
     {
@@ -134,11 +153,11 @@ public class ResourceUtils
     }
 
     /**
-     * Gets the contents as string of the specified file
+     * Gets the contents of the specified file as string.
      * 
      * @param file
      *        The file
-     * @return
+     * @return The string contents of the file.
      */
     public static String getFileContents( File file )
     {
@@ -321,11 +340,13 @@ public class ResourceUtils
      * Subsequent non-existent directories in the path will be created
      * 
      * @param target
-     * @return
+     *        The path of the file to create.
+     * @return True if the files was successfully created, false otherwise
      */
     public static boolean createNewFile( String target )
     {
-        createDirectory( new File( target ).getParent( ) );
+        new File( new File( target ).getParent( ) ).mkdirs( );
+
         try {
             return new File( target ).createNewFile( );
         } catch( IOException e ) {
@@ -334,22 +355,11 @@ public class ResourceUtils
     }
 
     /**
-     * Creates the specified directory.
-     * Subsequent non-existent directories will be created
-     * 
-     * @param target
-     * @return
-     */
-    public static boolean createDirectory( String target )
-    {
-        return new File( target ).mkdirs( );
-    }
-
-    /**
      * Removes the specified file
      * 
      * @param target
-     * @return
+     *        The file to remove
+     * @return True if the file was successfully removed, false otherwise.
      */
     public static boolean removeFile( String target )
     {
@@ -438,7 +448,8 @@ public class ResourceUtils
      * 
      * @param resource
      *        The resource where to search for '_main.cfg'
-     * @return
+     * @return An {@link IFile} instance or null if there is no _main.cfg
+     *         in that resource's context.
      */
     public static IFile getMainConfigLocation( IResource resource )
     {
@@ -504,7 +515,7 @@ public class ResourceUtils
      * 
      * @param resource
      *        The resource where to search the id
-     * @return
+     * @return A string representing the campaign ID.
      */
     public static String getCampaignID( IResource resource )
     {
@@ -515,10 +526,12 @@ public class ResourceUtils
     }
 
     /**
-     * Gets the campaign id
+     * Gets the scenario id from the specified file, or null if the
+     * file is not a scenario file.
      * 
-     * @param fileName
-     * @return
+     * @param file
+     *        The file to get the scenario ID from.
+     * @return A string representing the scenario ID.
      */
     public static String getScenarioID( IFile file )
     {
@@ -530,12 +543,17 @@ public class ResourceUtils
     /**
      * Returns the SaxHandler for the parsed specified wml resource
      * 
+     * @param installName
+     *        The name of the install used by the SAX Handler
+     * 
      * @param resourcePath
      *        The resourcepath to parse
      * @param saxHandler
      *        The SAX Handler used to handle the parsed wml
-     * @return
+     * @return A {@link DefaultHandler} instance based on the specified
+     *         parameters
      */
+    // TODO: remove the sax handler, and use the xtext parser instead
     public static DefaultHandler getWMLSAXHandlerFromResource(
         String installName, String resourcePath, DefaultHandler saxHandler )
     {
@@ -586,7 +604,8 @@ public class ResourceUtils
      *        the line to parse
      * @param type
      *        the created marker or null if there was none
-     * @return
+     * @return The {@link IMarker} instance that was added, or null
+     *         if there was an error.
      */
     public static IMarker addMarkerForLine( String line, String type )
     {
@@ -736,7 +755,8 @@ public class ResourceUtils
     /**
      * This is a WML files comparator, based on the WML parsing rules.
      * 
-     * @see http://wiki.wesnoth.org/PreprocessorRef
+     * @see <a href="http://wiki.wesnoth.org/PreprocessorRef"> Preprocessor
+     *      Reference </a>
      */
     public static class WMLFilesComparator implements Comparator< IResource >,
         Serializable

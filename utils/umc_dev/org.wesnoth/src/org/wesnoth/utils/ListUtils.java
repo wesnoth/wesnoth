@@ -8,9 +8,11 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
-import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Utility class for lists
+ */
 public class ListUtils
 {
     /**
@@ -36,19 +38,5 @@ public class ListUtils
         result.append( list.get( list.size( ) - 1 ) );
 
         return result.toString( );
-    }
-
-    /**
-     * Concatenates the array of strings using the provided separator
-     * 
-     * @param array
-     *        the array to concatenate
-     * @param separator
-     *        the separator used to concatenate the elements of the list
-     * @return
-     */
-    public static String concatenateArray( String[] array, String separator )
-    {
-        return concatenateList( Arrays.asList( array ), separator );
     }
 }

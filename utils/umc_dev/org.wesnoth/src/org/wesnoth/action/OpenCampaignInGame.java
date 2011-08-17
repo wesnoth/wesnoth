@@ -12,7 +12,9 @@ import org.eclipse.jface.action.IAction;
 
 import org.wesnoth.utils.GameUtils;
 
-
+/**
+ * Opens the selected project/file's campaign in the game
+ */
 public class OpenCampaignInGame extends ObjectActionDelegate
 {
     @Override

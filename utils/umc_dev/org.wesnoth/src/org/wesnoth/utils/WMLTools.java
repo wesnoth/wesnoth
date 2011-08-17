@@ -35,11 +35,16 @@ import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 
+/**
+ * Utilities class that handles with WML Tools
+ */
 public class WMLTools
 {
     /**
      * Runs "wmlindent" on the specified resource (directory/file)
      * 
+     * @param installName
+     *        The name of the install to use when using the wmlindent script.
      * @param resourcePath
      *        the full path of the target where "wmlindent" will be runned
      *        on
@@ -91,7 +96,10 @@ public class WMLTools
     /**
      * Runs a wmlparser on the target resource
      * 
+     * @param installName
+     *        The name of the install to use when using the wmlparser2 script.
      * @param resourcePath
+     *        The path of the resource to run the parser on.
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLParser2( String installName,
@@ -139,6 +147,8 @@ public class WMLTools
     /**
      * Runs "wmllint" on the specified resource (directory/file)
      * 
+     * @param installName
+     * 
      * @param resourcePath
      *        the full path of the target where "wmllint" will be runned on
      * @param dryrun
@@ -158,6 +168,8 @@ public class WMLTools
     /**
      * Runs "wmllint" on the specified resource (directory/file)
      * 
+     * @param installName
+     *        The name of the install to use when using the wmllint script
      * @param resourcePath
      *        the full path of the target where "wmllint" will be runned on
      * @param dryrun
@@ -169,6 +181,7 @@ public class WMLTools
      *        The array of streams where to output the stdout content
      * @param stderr
      *        The array of streams where to output the stderr content
+     * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLLint( String installName,
         String resourcePath, boolean dryrun, boolean showProgress,
@@ -215,9 +228,13 @@ public class WMLTools
     /**
      * Runs "wmlscope" on the specified resource (directory/file)
      * 
+     * @param installName
+     *        The name of the install to use when using the wmlscope script
      * @param resourcePath
      *        the full path of the target where "wmlindent" will be runned
      *        on
+     * @param showProgress
+     *        True to show the wmlscope progressing, or false otherwise.
      * @return null if there were errors or an ExternalToolInvoker instance
      */
     public static ExternalToolInvoker runWMLScope( String installName,
@@ -230,9 +247,13 @@ public class WMLTools
     /**
      * Runs "wmlscope" on the specified resource (directory/file)
      * 
+     * @param installName
+     *        The name of the install to use when using the wmlscope script
      * @param resourcePath
      *        the full path of the target where "wmlindent" will be runned
      *        on
+     * @param showProgress
+     *        True to show the wmlscope progressing, or false otherwise.
      * @param stdout
      *        The array of streams where to output the stdout content
      * @param stderr
@@ -470,8 +491,8 @@ public class WMLTools
 
         return runWesnothAddonManager(
             WesnothInstallsUtils.getInstallNameForResource( containerPath ),
-            Preferences.getString( Preferences.WAU_PASSWORD ),
-            Preferences.getString( Preferences.WAU_PORT ),
+            Preferences.getString( Preferences.ADDON_MANAGER_PASSWORD ),
+            Preferences.getString( Preferences.ADDON_MANAGER_PORT ),
             Arrays.asList( "-u", containerPath ) // upload container
             , stdout, stderr );
     }
@@ -513,12 +534,12 @@ public class WMLTools
             arguments.add( password );
         }
 
-        if( Preferences.getBool( Preferences.WAU_VERBOSE ) == true ) {
+        if( Preferences.getBool( Preferences.ADDON_MANAGER_VERBOSE ) == true ) {
             arguments.add( "-V" ); //$NON-NLS-1$
         }
 
         arguments.add( "-a" ); //$NON-NLS-1$
-        arguments.add( Preferences.getString( Preferences.WAU_ADDRESS ) );
+        arguments.add( Preferences.getString( Preferences.ADDON_MANAGER_ADDRESS ) );
 
         arguments.add( "-p" ); //$NON-NLS-1$
         arguments.add( port );
@@ -530,6 +551,11 @@ public class WMLTools
 
     /**
      * Parses the output from the WMLTool and adds markers accordingly
+     * 
+     * @param output
+     *        The output to parse and add the markers from.
+     * @param markerType
+     *        The type of markers to add from the parsed tokens.
      */
     public static void parseAndAddMarkers( String output, String markerType )
     {
@@ -617,7 +643,8 @@ public class WMLTools
      *        True to start stderr monitoring on tool
      * @param stdoutMonitoring
      *        True to start stdout monitoring on tool
-     * @return
+     * @return An {@link ExternalToolInvoker} instance that launched the
+     *         specified python script.
      */
     public static ExternalToolInvoker runPythonScript(
         List< String > arguments, String stdin, boolean stderrMonitoring,
@@ -648,11 +675,26 @@ public class WMLTools
     }
 
     /**
-     * The available tools enum
+     * The available wml tools.
      */
     public enum Tools
     {
-        WMLLINT, WMLINDENT, WMLSCOPE, WESNOTH_ADDON_MANAGER;
+        /**
+         * Wesnoth WML Lint script
+         */
+        WMLLINT,
+            /**
+             * Wesnoth WML Indent script
+             */
+            WMLINDENT,
+            /**
+             * Wesnoth WML Scope script
+             */
+            WMLSCOPE,
+            /**
+             * Wesnoth addon manager
+             */
+            WESNOTH_ADDON_MANAGER;
 
         @Override
         public String toString( )

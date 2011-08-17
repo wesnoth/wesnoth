@@ -19,15 +19,18 @@ import org.eclipse.ui.console.MessageConsole;
 
 import org.wesnoth.Logger;
 
+/**
+ * Utilities class to handle the GUI. It can show message boxes in a
+ * multithreading-safe manner.
+ */
 public class GUIUtils
 {
     /**
      * Shows an information message box with the specified message (thread-safe)
      * 
-     * @param window
-     *        the window where to show the message box
      * @param message
-     *        the message to print
+     *        the message to show
+     * @return The return code of the message box.
      */
     public static int showInfoMessageBox( final String message )
     {
@@ -38,10 +41,9 @@ public class GUIUtils
     /**
      * Shows an information message box with the specified message (thread-safe)
      * 
-     * @param window
-     *        the window where to show the message box
      * @param message
-     *        the message to print
+     *        the message to show
+     * @return The return code of the message box.
      */
     public static int showWarnMessageBox( final String message )
     {
@@ -52,10 +54,9 @@ public class GUIUtils
     /**
      * Shows an error message box with the specified message (thread-safe)
      * 
-     * @param window
-     *        the window where to show the message box
      * @param message
-     *        the message to print
+     *        the message to show
+     * @return The return code of the message box.
      */
     public static int showErrorMessageBox( final String message )
     {
@@ -66,10 +67,11 @@ public class GUIUtils
     /**
      * Shows a message box with the specified message and style(thread-safe)
      * 
-     * @param window
-     *        the window where to show the message box
+     * @param message
+     *        the message to show
      * @param style
      *        the style of the messageBox
+     * @return The return code of the message box.
      */
     public static int showMessageBox( final String message, final int style )
     {
@@ -83,7 +85,8 @@ public class GUIUtils
      * @param window
      *        the window where to show the message box
      * @param message
-     *        the message to print
+     *        the message to show
+     * @return The return code of the message box.
      */
     public static int showMessageBox( final IWorkbenchWindow window,
         final String message )
@@ -97,7 +100,10 @@ public class GUIUtils
      * @param window
      *        the window where to show the message box
      * @param message
-     *        the message to print
+     *        the message to show
+     * @param style
+     *        The style of the message box.
+     * @return The return code of the message box.
      */
     public static int showMessageBox( final IWorkbenchWindow window,
         final String message, final int style )
@@ -115,6 +121,7 @@ public class GUIUtils
                 setResult( box.open( ) );
             }
         };
+
         try {
             window.getShell( ).getDisplay( ).syncExec( runnable );
             return runnable.getResult( );
@@ -133,7 +140,7 @@ public class GUIUtils
      *        The image Descriptor
      * @param activate
      *        True to activate the console
-     * @return
+     * @return A {@link MessageConsole} instance.
      */
     public static MessageConsole createConsole( String consoleTitle,
         ImageDescriptor imageDescriptor, boolean activate )

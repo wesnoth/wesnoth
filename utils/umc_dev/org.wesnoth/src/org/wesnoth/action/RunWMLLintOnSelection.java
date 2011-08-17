@@ -13,7 +13,9 @@ import org.eclipse.jface.action.IAction;
 import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WMLTools.Tools;
 
-
+/**
+ * Runs WMLLint on selection
+ */
 public class RunWMLLintOnSelection extends ObjectActionDelegate
 {
     @Override

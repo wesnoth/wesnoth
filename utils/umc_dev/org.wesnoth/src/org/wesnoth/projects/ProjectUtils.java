@@ -35,6 +35,9 @@ import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.views.WesnothProjectsExplorer;
 
+/**
+ * Utilities class handling with Projects
+ */
 public class ProjectUtils
 {
     /**
@@ -43,6 +46,11 @@ public class ProjectUtils
      */
     private static Map< IProject, ProjectCache > projectCache_ = new HashMap< IProject, ProjectCache >( );
 
+    /**
+     * Returns a map with projects and their caches
+     * 
+     * @return A {@link Map} instance.
+     */
     public static Map< IProject, ProjectCache > getProjectCaches( )
     {
         return projectCache_;
@@ -50,6 +58,9 @@ public class ProjectUtils
 
     /**
      * Gets the properties map for this project.
+     * 
+     * @param project
+     *        The project to get the propertiesfor
      * 
      * @return A map with properties of the project
      */
@@ -60,10 +71,11 @@ public class ProjectUtils
     }
 
     /**
-     * Gets the cache for the specified project
+     * Gets the cache for the specified project. If the cache doesn't
+     * exist, a new one will be created.
      * 
      * @param project
-     * @return
+     * @return A {@link ProjectCache} instance. It will never be null.
      */
     public static ProjectCache getCacheForProject( IProject project )
     {
@@ -141,6 +153,8 @@ public class ProjectUtils
      *        The location of the new project
      * @param installName
      *        The name of the install this project belongs to
+     * @param monitor
+     *        The monitor to monitor the progress
      * @return A project handle
      * @throws CoreException
      */
@@ -177,6 +191,11 @@ public class ProjectUtils
      *        The name of the install this project belongs to
      * @param monitor
      *        the monitor will do a 30 worked amount in the method
+     * @return
+     *         0 - project was created successfully.
+     *         -1 - project already exists or the handle is null
+     *         1 - there was an error.
+     * 
      * @throws CoreException
      */
     public static int createWesnothProject( IProject handle,

@@ -11,6 +11,10 @@ package org.wesnoth.jface;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.swt.widgets.Composite;
 
+/**
+ * A FieldEditor based on the {@link StringFieldEditor} which
+ * can validate the value against a regex value
+ */
 public class RegexStringFieldEditor extends StringFieldEditor
 {
     protected String regex_;
@@ -19,11 +23,17 @@ public class RegexStringFieldEditor extends StringFieldEditor
     /**
      * An regex matcher string field editor.
      * 
+     * @param name
+     *        the name of the preference this field editor works on
+     * @param labelText
+     *        The label text of this field editor
      * @param regex
      *        The regex to match this textbox's string
      * @param errorMessage
      *        The message to show as error when field's text
      *        doesn't match the regex
+     * @param parent
+     *        The parent Composite
      */
     public RegexStringFieldEditor( String name, String labelText, String regex,
         String errorMessage, Composite parent )

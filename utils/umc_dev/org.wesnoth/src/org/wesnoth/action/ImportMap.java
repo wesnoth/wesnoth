@@ -12,11 +12,12 @@ import org.eclipse.jface.action.IAction;
 
 import org.wesnoth.utils.MapUtils;
 
+/**
+ * Imports a map file in the maps folder.
+ * This action is triggered *ONLY* if the user selected a "maps" folder.
+ */
 public class ImportMap extends ObjectActionDelegate
 {
-    /**
-     * This method is runned *ONLY* if the user selected a "maps" folder
-     */
     @Override
     public void run( IAction action )
     {

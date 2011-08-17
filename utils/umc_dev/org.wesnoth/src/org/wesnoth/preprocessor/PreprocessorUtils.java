@@ -34,6 +34,9 @@ import org.wesnoth.utils.ExternalToolInvoker;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
+/**
+ * Utilities class for handling with the preprocessor
+ */
 public class PreprocessorUtils
 {
     private static class PreprocessorUtilsInstance
@@ -53,6 +56,11 @@ public class PreprocessorUtils
         restoreTimestamps( );
     }
 
+    /**
+     * Returns the singleton instance.
+     * 
+     * @return The {@link PreprocessorUtils} singleton instance.
+     */
     public static PreprocessorUtils getInstance( )
     {
         return PreprocessorUtilsInstance.instance_;
@@ -70,6 +78,9 @@ public class PreprocessorUtils
      *        the list of additional defines to be added when preprocessing
      *        the file
      * @return
+     *         -1 - we skipped preprocessing - file was already preprocessed
+     *         0 - preprocessed succesfully
+     *         1 - there was an error
      */
     public int preprocessFile( IFile file, List< String > defines )
     {
@@ -91,6 +102,9 @@ public class PreprocessorUtils
      *        the list of additional defines to be added when preprocessing
      *        the file
      * @return
+     *         -1 - we skipped preprocessing - file was already preprocessed
+     *         0 - preprocessed succesfully
+     *         1 - there was an error
      */
     public int preprocessFile( IFile file, String macrosFile,
         List< String > defines )
@@ -227,7 +241,7 @@ public class PreprocessorUtils
      * @param create
      *        if this is true, if the target preprocessed file
      *        doesn't exist it will be created.
-     * @return
+     * @return The {@link IFileStore} which contains the preprocessed file
      */
     public IFileStore getPreprocessedFilePath( IFile file, boolean plain,
         boolean create )
@@ -246,7 +260,8 @@ public class PreprocessorUtils
      * Gets the temporary location where that file should be preprocessed
      * 
      * @param file
-     * @return
+     *        The file to get the location for.
+     * @return A string representing the temporary location.
      */
     public String getPreprocessedFileLocation( IFile file )
     {

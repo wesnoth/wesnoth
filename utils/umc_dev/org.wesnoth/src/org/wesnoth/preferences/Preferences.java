@@ -24,39 +24,98 @@ import org.wesnoth.utils.StringUtils;
  */
 public class Preferences extends AbstractPreferenceInitializer
 {
-    /** Wesnoth paths **/
+    /**
+     * Wesnoth executable path preference name
+     */
     public static final String                  WESNOTH_EXEC_PATH      = "wesnoth_exec_path";            //$NON-NLS-1$
+    /**
+     * Wesnoth working dir ( contains the data directory ) preference name
+     */
     public static final String                  WESNOTH_WORKING_DIR    = "wesnoth_working_dir";          //$NON-NLS-1$
+    /**
+     * Wesnoth wml tools directory ( data/tools ) preference name
+     */
     public static final String                  WESNOTH_WMLTOOLS_DIR   = "wesnoth_wmltools_dir";         //$NON-NLS-1$
 
+    /**
+     * Wesnoth user's directory ( where preferences, maps, etc are stored )
+     * preference name
+     */
     public static final String                  WESNOTH_USER_DIR       = "wesnoth_user_dir";             //$NON-NLS-1$
 
+    /**
+     * The path to the python binary preference name
+     */
     public static final String                  PYTHON_PATH            = "python_path";                  //$NON-NLS-1$
 
-    /** WML Tools preferences constants **/
+    /**
+     * Verbose flag for WMLIndent preference name
+     */
     public static final String                  WMLINDENT_VERBOSE      = "wmlindent_verbose";            //$NON-NLS-1$
+    /**
+     * Dryrun flag for wmlindent preference name
+     */
     public static final String                  WMLINDENT_DRYRUN       = "wmlindent_dry_run";            //$NON-NLS-1$
 
+    /**
+     * Dryrun flag for wmllint preference name
+     */
     public static final String                  WMLLINT_DRYRUN         = "wmllint_dry_run";              //$NON-NLS-1$
+    /**
+     * Spell Check flag for wmllint preference name
+     */
     public static final String                  WMLLINT_SPELL_CHECK    = "wmllint_spell_check";          //$NON-NLS-1$
+    /**
+     * Verbose level for wmllint preference name
+     */
     public static final String                  WMLLINT_VERBOSE_LEVEL  = "wmllint_verbose_level";        //$NON-NLS-1$
 
+    /**
+     * Verbose level for wmlscope preference name
+     */
     public static final String                  WMLSCOPE_VERBOSE_LEVEL = "wmlscope_verbose_level";       //$NON-NLS-1$
+    /**
+     * Collisions flag for wmlscope preference name
+     */
     public static final String                  WMLSCOPE_COLLISIONS    = "wmlscope_collisions";          //$NON-NLS-1$
 
-    /** Wesnoth addon uploader preferences */
-    public static final String                  WAU_PASSWORD           = "wau_password";                 //$NON-NLS-1$
-    public static final String                  WAU_VERBOSE            = "wau_verbose";                  //$NON-NLS-1$
-    public static final String                  WAU_ADDRESS            = "wau_address";                  //$NON-NLS-1$
-    public static final String                  WAU_PORT               = "wau_port";                     //$NON-NLS-1$
+    /**
+     * Wesnoth addon manager password preference name
+     */
+    public static final String                  ADDON_MANAGER_PASSWORD = "wau_password";                 //$NON-NLS-1$
+    /**
+     * Wesnoth addon manager verbose flag preference name
+     */
+    public static final String                  ADDON_MANAGER_VERBOSE  = "wau_verbose";                  //$NON-NLS-1$
+    /**
+     * Wesnoth addon manager default address preference name
+     */
+    public static final String                  ADDON_MANAGER_ADDRESS  = "wau_address";                  //$NON-NLS-1$
+    /**
+     * Wesnoth addon manager default port preference name
+     */
+    public static final String                  ADDON_MANAGER_PORT     = "wau_port";                     //$NON-NLS-1$
 
-    /** Advanced preferences */
+    /**
+     * No terraing gfx preprocessor flag preference name
+     */
     public static final String                  NO_TERRAIN_GFX         = "adv_no_terrain_gfx";           //$NON-NLS-1$
+    /**
+     * WML Validation flag ( in-editor ) preference name
+     */
     public static final String                  WML_VALIDATION         = "adv_wml_validation";           //$NON-NLS-1$
 
-    /** Install preferences */
+    /**
+     * The default install name preference name
+     */
     public static final String                  INST_DEFAULT_INSTALL   = "inst_default";                 //$NON-NLS-1$
+    /**
+     * Install list preference name
+     */
     public static final String                  INST_INSTALL_LIST      = "inst_list";                    //$NON-NLS-1$
+    /**
+     * Install name prefix preference name
+     */
     public static final String                  INST_NAME_PREFIX       = "inst_name";                    //$NON-NLS-1$
 
 
@@ -65,6 +124,9 @@ public class Preferences extends AbstractPreferenceInitializer
      */
     protected final static Map< String, Paths > paths_                 = new HashMap< String, Paths >( );
 
+    /**
+     * Initializes the preferences to their default values
+     */
     public static void initializeToDefault( )
     {
         IPreferenceStore store = WesnothPlugin.getDefault( )
@@ -88,10 +150,10 @@ public class Preferences extends AbstractPreferenceInitializer
         store.setDefault( WMLSCOPE_COLLISIONS, false );
 
         // upload manager
-        store.setDefault( WAU_PASSWORD, "" ); //$NON-NLS-1$
-        store.setDefault( WAU_VERBOSE, false );
-        store.setDefault( WAU_ADDRESS, "add-ons.wesnoth.org" ); //$NON-NLS-1$
-        store.setDefault( WAU_PORT, 15002 );
+        store.setDefault( ADDON_MANAGER_PASSWORD, "" ); //$NON-NLS-1$
+        store.setDefault( ADDON_MANAGER_VERBOSE, false );
+        store.setDefault( ADDON_MANAGER_ADDRESS, "add-ons.wesnoth.org" ); //$NON-NLS-1$
+        store.setDefault( ADDON_MANAGER_PORT, 15002 );
 
         // advanced
         store.setDefault( NO_TERRAIN_GFX, true );
@@ -119,6 +181,10 @@ public class Preferences extends AbstractPreferenceInitializer
     /**
      * Returns the contents of the specified preference as a string
      * or empty string ("") if there is no such preference set
+     * 
+     * @param prefName
+     *        The name of the preference to get
+     * @return The string value of the preference
      */
     public static String getString( String prefName )
     {
@@ -128,6 +194,10 @@ public class Preferences extends AbstractPreferenceInitializer
     /**
      * Returns the contents of the specified preference as an int
      * or zero (0) if there is no such preference set
+     * 
+     * @param prefName
+     *        The name of the preference to get
+     * @return The integer value of the preference
      */
     public static int getInt( String prefName )
     {
@@ -137,6 +207,10 @@ public class Preferences extends AbstractPreferenceInitializer
     /**
      * Returns the contents of the specified preference as a boolean
      * or false if there is no such preference set
+     * 
+     * @param prefName
+     *        The name of the preference to get
+     * @return The boolean value of the preference
      */
     public static boolean getBool( String prefName )
     {
@@ -149,6 +223,7 @@ public class Preferences extends AbstractPreferenceInitializer
      * @param installName
      *        The name of the install. If the parameter is null,
      *        the default install prefix is returned
+     * @return The install prefix string
      */
     public static String getInstallPrefix( String installName )
     {
@@ -213,6 +288,14 @@ public class Preferences extends AbstractPreferenceInitializer
         private String installPrefix_;
         private String installName_;
 
+        /**
+         * Creates a new Paths instance
+         * 
+         * @param installName
+         *        The name of the install used in this instance
+         * @param installPrefix
+         *        The instal prefix for the preferences
+         */
         public Paths( String installName, String installPrefix )
         {
             installPrefix_ = installPrefix;

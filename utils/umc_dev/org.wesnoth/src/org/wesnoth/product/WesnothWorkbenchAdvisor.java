@@ -16,11 +16,12 @@ import org.eclipse.ui.ide.IDE;
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.views.WesnothProjectsExplorer;
 
+
+/**
+ * A class that creates the workbench in the product
+ */
 public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack
 {
-
-    private static final String PERSPECTIVE_ID = "org.wesnoth.product.WMLPerspective"; //$NON-NLS-1$
-
     @Override
     public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(
         IWorkbenchWindowConfigurer configurer )
@@ -31,7 +32,7 @@ public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack
     @Override
     public String getInitialWindowPerspectiveId( )
     {
-        return PERSPECTIVE_ID;
+        return WMLPerspective.ID_WMLPERSPECTIVE;
     }
 
     @Override

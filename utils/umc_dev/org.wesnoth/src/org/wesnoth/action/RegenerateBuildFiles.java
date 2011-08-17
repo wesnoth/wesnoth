@@ -14,13 +14,11 @@ import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.ResourceUtils;
 
-
+/**
+ * Regenerates the necessary building files
+ */
 public class RegenerateBuildFiles extends ObjectActionDelegate
 {
-    public RegenerateBuildFiles( )
-    {
-    }
-
     @SuppressWarnings( "rawtypes" )
     @Override
     public void run( IAction action )

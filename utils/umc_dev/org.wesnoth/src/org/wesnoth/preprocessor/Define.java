@@ -35,6 +35,22 @@ public class Define
     private String         location_;
     private List< String > args_;
 
+    /**
+     * Creates a new define with the specified details
+     * 
+     * @param name
+     *        The name of the define
+     * @param value
+     *        The definition content of the define
+     * @param textdomain
+     *        The textdomain the define is belonging to
+     * @param linenum
+     *        The line number where the define is defined
+     * @param location
+     *        The file where the define is defined
+     * @param args
+     *        The arguments for the define
+     */
     public Define( String name, String value, String textdomain, int linenum,
         String location, List< String > args )
     {
@@ -51,35 +67,60 @@ public class Define
         }
     }
 
+    /**
+     * Returns the line number where the define is defined
+     * 
+     * @return An integer representing the line number
+     */
     public int getLineNum( )
     {
         return lineNum_;
     }
 
+    /**
+     * Returns the location name where the define is defined
+     * 
+     * @return A string representing the location
+     */
     public String getLocation( )
     {
         return location_;
     }
 
+    /**
+     * Returns the name of the define
+     * 
+     * @return A string instance.
+     */
     public String getName( )
     {
         return name_;
     }
 
+    /**
+     * Returns the textdomain where the define is define
+     * 
+     * @return A string instance
+     */
     public String getTextdomain( )
     {
         return textdomain_;
     }
 
+    /**
+     * Returns the definition of the define
+     * 
+     * @return A string instance
+     */
     public String getValue( )
     {
         return value_;
     }
 
     /**
-     * Gets the arguments of this macro
+     * Gets the arguments of this macro.
      * 
-     * @return
+     * @return A {@link List} of strings.
      */
     public List< String > getArguments( )
     {
@@ -108,7 +149,11 @@ public class Define
     /**
      * Reads the defines from the specified file
      * 
+     * @param installName
+     *        The install name used when reading the defines
+     * 
      * @param file
+     *        The file to read the defines from
      * @return Returns a map of defines
      */
     public static Map< String, Define > readDefines( String installName,

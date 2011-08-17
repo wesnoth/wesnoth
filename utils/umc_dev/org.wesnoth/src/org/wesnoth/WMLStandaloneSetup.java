@@ -16,6 +16,9 @@ import org.wesnoth.schema.SchemaParser;
  */
 public class WMLStandaloneSetup extends WMLStandaloneSetupGenerated
 {
+    /**
+     * Setups this setup
+     */
     public static void doSetup( )
     {
         new WMLStandaloneSetup( ).createInjectorAndDoEMFRegistration( );

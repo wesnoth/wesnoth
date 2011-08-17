@@ -137,7 +137,8 @@ public class ExternalToolInvoker
      * Reads a line from the stdout.
      * Returns null if process wasn't started or an exception was thrown
      * 
-     * @return
+     * @return A string if a stdout line was read, or null if there
+     *         was an error or the process wasn't started
      */
     public String readOutputLine( )
     {
@@ -157,7 +158,8 @@ public class ExternalToolInvoker
      * Reads a line from the stderr.
      * Returns null if process wasn't started or an exception was thrown
      * 
-     * @return
+     * @return A string if a stderr line was read, or null if there
+     *         was an error or the process wasn't started
      */
     public String readErrorLine( )
     {
@@ -264,7 +266,7 @@ public class ExternalToolInvoker
      * Gets the content (as String) of the stderr,
      * if the caller started "startErrorMonitor"
      * 
-     * @return
+     * @return A String with all stderr content.
      */
     public String getErrorContent( )
     {
@@ -275,7 +277,7 @@ public class ExternalToolInvoker
      * Gets the content (as String) of the stdout,
      * if the caller started "startOutputMonitor"
      * 
-     * @return
+     * @return A String with all stdout content.
      */
     public String getOutputContent( )
     {
@@ -283,9 +285,11 @@ public class ExternalToolInvoker
     }
 
     /**
-     * Returns the OutputStream
+     * Returns the OutputStream for the stdin of the current
+     * invoked tool.
      * 
-     * @return
+     * @return An {@link OutputStream} instance or null if the
+     *         process wasn't started.
      */
     public OutputStream getStdin( )
     {
@@ -297,9 +301,11 @@ public class ExternalToolInvoker
     }
 
     /**
-     * Returns the InputStream
+     * Returns the InputStream for the stdout of the current
+     * invoked tool.
      * 
-     * @return
+     * @return An {@link InputStream} instance or null if the
+     *         process wasn't started.
      */
     public InputStream getStdout( )
     {
@@ -311,9 +317,11 @@ public class ExternalToolInvoker
     }
 
     /**
-     * Returns the ErrorStream
+     * Returns the ErrorStream for the stderr of the current
+     * invoked tool.
      * 
-     * @return
+     * @return An {@link InputStream} instance or null if the
+     *         process wasn't started.
      */
     public InputStream getStderr( )
     {
@@ -325,9 +333,9 @@ public class ExternalToolInvoker
     }
 
     /**
-     * Returns true if the process ended
+     * Returns a boolean value whether the process ended or not.
      * 
-     * @return
+     * @return Returns true if the process ended, false otherwise.
      */
     public boolean processEnded( )
     {
@@ -382,7 +390,8 @@ public class ExternalToolInvoker
      * @param stderr
      *        An array of outputstreams where the stderr from the tool will
      *        be written
-     * @return
+     * @return An {@link ExternalToolInvoker} instance that launched the
+     *         specified file.
      */
     public static ExternalToolInvoker launchTool( final String fileName,
         final List< String > args, final OutputStream[] stdout,

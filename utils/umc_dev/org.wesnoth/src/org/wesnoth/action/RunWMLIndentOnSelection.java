@@ -13,7 +13,9 @@ import org.eclipse.jface.action.IAction;
 import org.wesnoth.utils.WMLTools;
 import org.wesnoth.utils.WMLTools.Tools;
 
-
+/**
+ * Runs WMLIndent on selection
+ */
 public class RunWMLIndentOnSelection extends ObjectActionDelegate
 {
     @Override

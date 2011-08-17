@@ -18,7 +18,9 @@ import org.wesnoth.Messages;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
-
+/**
+ * Shows a simple project report.
+ */
 public class WesnothProjectReport extends ObjectActionDelegate
 {
     @Override

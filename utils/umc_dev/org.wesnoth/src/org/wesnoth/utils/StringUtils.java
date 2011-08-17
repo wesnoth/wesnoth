@@ -9,6 +9,7 @@
 package org.wesnoth.utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,8 +24,10 @@ public class StringUtils
      * The tabs or spaces in front are skipped when checking for the 'sequence'
      * 
      * @param target
+     *        The target to check.
      * @param sequence
-     * @return
+     *        The sequence to search for.
+     * @return True if the string starts with, false otherwise.
      */
     public static boolean startsWith( String target, String sequence )
     {
@@ -42,8 +45,10 @@ public class StringUtils
      * Returns the number of 'character' characters in the target string
      * 
      * @param target
+     *        The String to perform the count on.
      * @param character
-     * @return
+     *        The character to count.
+     * @return An integer representing the number of apparitions.
      */
     public static int countOf( String target, char character )
     {
@@ -66,34 +71,6 @@ public class StringUtils
     }
 
     /**
-     * Returns the n-th occurrence index of the specified character
-     * 
-     * @param target
-     * @param character
-     * @param n
-     * @return
-     */
-    public static int indexOfNth( String target, char character, int n )
-    {
-        if( target == null ) {
-            return - 1;
-        }
-
-        if( countOf( target, character ) < n ) {
-            return - 1;
-        }
-
-        int index = - 1, cnt = 0;
-        for( int i = 0; i < target.length( ) && cnt <= n; ++i ) {
-            if( target.charAt( i ) == character ) {
-                index = i;
-                ++cnt;
-            }
-        }
-        return index;
-    }
-
-    /**
      * Removes all consecutive aparitions of a character in the specified string
      * so that only one appearance remains in each past duplications of that
      * string
@@ -104,9 +81,9 @@ public class StringUtils
      *        the character to remove
      * @param removeTrailing
      *        removes or not the trailing 'character' characters
-     * @param removeTrailing
+     * @param removePreceding
      *        removes or not the preceding 'character' characters
-     * @return
+     * @return The processed string.
      */
     public static String removeIncorrectCharacters( String target,
         char character, boolean removeTrailing, boolean removePreceding )
@@ -140,7 +117,7 @@ public class StringUtils
      * 
      * @param string
      *        The string
-     * @return
+     * @return A {@link String} array with the lines.
      */
     public static String[] getLines( String string )
     {
@@ -202,7 +179,7 @@ public class StringUtils
      * 
      * @param path
      *        the string that represents the path to be normalized
-     * @return
+     * @return The normalized string.
      */
     public static String normalizePath( String path )
     {
@@ -240,7 +217,7 @@ public class StringUtils
      *        The source string to be replaced
      * @param target
      *        The target string to be replaced in the string
-     * @return
+     * @return The processed string.
      */
     public static String replaceWithIndent( String string, String source,
         String target )
@@ -264,7 +241,7 @@ public class StringUtils
         }
 
         return string.replace( source,
-            ListUtils.concatenateArray( tmpTarget, "\n" ) ); //$NON-NLS-1$
+            ListUtils.concatenateList( Arrays.asList( tmpTarget ), "\n" ) ); //$NON-NLS-1$
     }
 
     /**
@@ -274,7 +251,7 @@ public class StringUtils
      *        The sequence to multiply
      * @param times
      *        The number of times to multiply
-     * @return
+     * @return The new string.
      */
     public static String multiples( String sequence, int times )
     {
@@ -294,6 +271,7 @@ public class StringUtils
      * 
      * @param target
      *        The string to check
+     * @return True if the string is null or empty, false otherwise.
      */
     public static boolean isNullOrEmpty( String target )
     {

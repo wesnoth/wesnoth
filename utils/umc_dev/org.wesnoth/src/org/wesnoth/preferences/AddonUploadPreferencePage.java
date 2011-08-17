@@ -52,16 +52,16 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
     protected void createFieldEditors( )
     {
         addField(
-            new StringFieldEditor( Preferences.WAU_PASSWORD,
+            new StringFieldEditor( Preferences.ADDON_MANAGER_PASSWORD,
                 Messages.AddonUploadPreferencePage_11,
                 getFieldEditorParent( ) ),
             Messages.AddonUploadPreferencePage_12 );
-        addField( new BooleanFieldEditor( Preferences.WAU_VERBOSE,
+        addField( new BooleanFieldEditor( Preferences.ADDON_MANAGER_VERBOSE,
             Messages.AddonUploadPreferencePage_13, 1,
             getFieldEditorParent( ) ) );
 
         addField(
-            new RegexStringFieldEditor( Preferences.WAU_ADDRESS,
+            new RegexStringFieldEditor( Preferences.ADDON_MANAGER_ADDRESS,
                 Messages.AddonUploadPreferencePage_14,
                 Messages.AddonUploadPreferencePage_15,
                 Messages.AddonUploadPreferencePage_16,
@@ -81,7 +81,7 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
 
         // System.out.println(portsRegex.toString());
         addField(
-            new RegexStringFieldEditor( Preferences.WAU_PORT,
+            new RegexStringFieldEditor( Preferences.ADDON_MANAGER_PORT,
                 Messages.AddonUploadPreferencePage_22,
                 portsRegex.toString( ),
                 Messages.AddonUploadPreferencePage_23,

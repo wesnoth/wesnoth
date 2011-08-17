@@ -41,7 +41,7 @@ public class DependencyListNode implements Serializable
     public static final int           INDEX_STEP       = 100000;
 
     public static final QualifiedName PDL_INDEX        = new QualifiedName(
-                                                           WesnothPlugin.PLUGIN_ID,
+                                                           WesnothPlugin.ID_PLUGIN,
                                                            "pdl_index" );       //$NON-NLS-1$
 
     private DependencyListNode        previous_;
@@ -93,9 +93,9 @@ public class DependencyListNode implements Serializable
     }
 
     /**
-     * Returns the index of this node in the whole dependency list
+     * Returns the index of this node in the whole dependency list.
      * 
-     * @return
+     * @return An integer index.
      */
     public int getIndex( )
     {

@@ -37,6 +37,8 @@ public class WizardPageTemplate extends WizardPage
     /**
      * Uses the standard container selection dialog to choose the new value for
      * the project field.
+     * 
+     * @return An {@link IPath} instance.
      */
     public IPath handleBrowseContainer( )
     {

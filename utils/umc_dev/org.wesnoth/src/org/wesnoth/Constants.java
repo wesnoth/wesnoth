@@ -15,6 +15,9 @@ import java.util.Locale;
  */
 public class Constants
 {
+    /**
+     * The Operating System string representation of the current machine.
+     */
     public static final String  MACHINE_OS         = System
                                                        .getProperty( "os.name" ).toLowerCase( Locale.ENGLISH ); //$NON-NLS-1$
     /**
@@ -28,7 +31,8 @@ public class Constants
     public static final boolean IS_MAC_MACHINE     = MACHINE_OS
                                                        .contains( "mac" );                                     //$NON-NLS-1$
 
-    /** Markers **/
+    /** The WMLScope marker ID */
     public static final String  MARKER_WMLSCOPE    = "org.wesnoth.marker.wmlscope";                            //$NON-NLS-1$
+    /** The WMLLint marker ID */
     public static final String  MARKER_WMLLINT     = "org.wesnoth.marker.wmllint";                             //$NON-NLS-1$
 }

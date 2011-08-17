@@ -45,6 +45,9 @@ public class EditorUtils
     /**
      * Writes the specified content in the specified editor
      * 
+     * @param targetEditor
+     *        The editor part to write the content in.
+     * 
      * @param content
      *        the string content to write
      */
@@ -72,6 +75,9 @@ public class EditorUtils
     /**
      * Replaces the text in the specified editor with the specified one
      * 
+     * @param targetEditor
+     *        The editor part to replace the text for.
+     * 
      * @param content
      *        the string to replace the current content
      */
@@ -91,7 +97,7 @@ public class EditorUtils
     /**
      * Gets the current opened editor's document
      * 
-     * @return
+     * @return An {@link IDocument} instance.
      */
     public static IDocument getEditorDocument( )
     {
@@ -101,7 +107,10 @@ public class EditorUtils
     /**
      * Gets the specified editor's document
      * 
-     * @return
+     * @param targetEditor
+     *        The editor part to get the document for.
+     * 
+     * @return An {@link IDocument} instance.
      */
     public static IDocument getEditorDocument( IEditorPart targetEditor )
     {
@@ -117,7 +126,7 @@ public class EditorUtils
     /**
      * Gets the text editor of the current opened editor
      * 
-     * @return
+     * @return An {@link ITextEditor} instance.
      */
     public static ITextEditor getTextEditor( )
     {
@@ -127,7 +136,10 @@ public class EditorUtils
     /**
      * Gets the text editor of the specified editor
      * 
-     * @return
+     * @param targetEditor
+     *        The editor part to get the text editor for.
+     * 
+     * @return An {@link ITextEditor} instance
      */
     public static ITextEditor getTextEditor( IEditorPart targetEditor )
     {
@@ -145,7 +157,7 @@ public class EditorUtils
     /**
      * Gets the editor part of the current edited file
      * 
-     * @return
+     * @return An {@link IEditorPart} instance.
      */
     public static IEditorPart getEditedFile( )
     {
@@ -160,6 +172,7 @@ public class EditorUtils
      *        The file to open
      * @param activatePage
      *        True to activate the opened file
+     * @return An {@link IEditorPart} instance
      */
     public static IEditorPart openEditor( IFile file, boolean activatePage )
     {
@@ -178,6 +191,7 @@ public class EditorUtils
      * 
      * @param file
      *        The file to open
+     * @return An {@link IEditorPart} instance.
      */
     public static IEditorPart openEditor( String file )
     {
@@ -190,6 +204,7 @@ public class EditorUtils
      * 
      * @param file
      *        The file to open
+     * @return An {@link IEditorPart} instance.
      */
     public static IEditorPart openEditor( IFileStore file )
     {

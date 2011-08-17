@@ -12,9 +12,18 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.application.IActionBarConfigurer;
 
+/**
+ * A class that creates the action bar in the product
+ */
 public class WesnothActionBarAdvisor extends WorkbenchActionBuilder
 {
-
+    /**
+     * Creates a new instance with the specified configurer
+     * 
+     * @param configurer
+     *        An {@link IActionBarConfigurer} instance
+     * 
+     */
     public WesnothActionBarAdvisor( IActionBarConfigurer configurer )
     {
         super( configurer );

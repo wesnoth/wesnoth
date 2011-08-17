@@ -12,7 +12,9 @@ import org.eclipse.jface.action.IAction;
 
 import org.wesnoth.utils.GameUtils;
 
-
+/**
+ * Opens the selected scenario in the game
+ */
 public class OpenScenarioInGame extends ObjectActionDelegate
 {
     @Override

@@ -29,7 +29,6 @@ import org.wesnoth.utils.WorkspaceUtils;
  */
 public class Logger
 {
-
     private static class LoggerInstance
     {
         private static Logger instance_ = new Logger( );
@@ -42,6 +41,11 @@ public class Logger
     private BufferedWriter logWriter_;
     private BufferedWriter toolLaunchLogWriter_;
 
+    /**
+     * Returns the singleton instance
+     * 
+     * @return An {@link Logger} singleton instance
+     */
     public static Logger getInstance( )
     {
         return LoggerInstance.instance_;

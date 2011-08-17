@@ -74,6 +74,16 @@ public abstract class WizardTemplate extends Wizard implements INewWizard
         }
     }
 
+    /**
+     * Returns true if the wizard has finished.
+     * 
+     * @return True if the wizard has finished, false otherwise
+     */
+    public boolean isFinished( )
+    {
+        return isFinished_;
+    }
+
     @Override
     public boolean canFinish( )
     {
@@ -89,13 +99,10 @@ public abstract class WizardTemplate extends Wizard implements INewWizard
         lastPage_ = page;
     }
 
-    public boolean isFinished( )
-    {
-        return isFinished_;
-    }
-
     /**
      * Gets the data associated with this wizard
+     * 
+     * @return The data associated with this wizard
      */
     public Object getData( )
     {
@@ -104,6 +111,9 @@ public abstract class WizardTemplate extends Wizard implements INewWizard
 
     /**
      * Sets the data associated with this wizard
+     * 
+     * @param data
+     *        The new data
      */
     public void setData( Object data )
     {
@@ -113,7 +123,7 @@ public abstract class WizardTemplate extends Wizard implements INewWizard
     /**
      * Gets the name of the object created by the wizard
      * 
-     * @return
+     * @return The object name string representation
      */
     public String getObjectName( )
     {
@@ -122,6 +132,8 @@ public abstract class WizardTemplate extends Wizard implements INewWizard
 
     /**
      * Gets the container of the selection
+     * 
+     * @return An {@link IContainer} instance
      */
     public IContainer getSelectionContainer( )
     {
@@ -130,6 +142,9 @@ public abstract class WizardTemplate extends Wizard implements INewWizard
 
     /**
      * Sets the container of the selection
+     * 
+     * @param container
+     *        The new selection container
      */
     public void setSelectionContainer( IContainer container )
     {

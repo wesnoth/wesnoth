@@ -30,13 +30,19 @@ import org.wesnoth.utils.WorkspaceUtils;
  */
 public class WesnothPlugin extends AbstractUIPlugin
 {
+    /**
+     * The full path of where this plugin is launched from
+     */
     public static final String   PLUGIN_FULL_PATH = Constants.class
                                                       .getProtectionDomain( )
                                                       .getCodeSource( )
                                                       .getLocation( )
                                                       .getPath( )
                                                       + "/";      //$NON-NLS-1$
-    public static final String   PLUGIN_ID        = "org.wesnoth"; //$NON-NLS-1$
+    /**
+     * The id of the wesnoth plugin
+     */
+    public static final String   ID_PLUGIN        = "org.wesnoth"; //$NON-NLS-1$
 
     // The shared instance
     private static WesnothPlugin plugin;
@@ -106,13 +112,13 @@ public class WesnothPlugin extends AbstractUIPlugin
      */
     public static ImageDescriptor getImageDescriptor( String path )
     {
-        return imageDescriptorFromPlugin( PLUGIN_ID, path );
+        return imageDescriptorFromPlugin( ID_PLUGIN, path );
     }
 
     /**
      * Returns the plugin's shell
      * 
-     * @return
+     * @return A {@link Shell} instance
      */
     public static Shell getShell( )
     {

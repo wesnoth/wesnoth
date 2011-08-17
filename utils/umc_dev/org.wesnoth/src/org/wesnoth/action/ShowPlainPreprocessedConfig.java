@@ -13,7 +13,9 @@ import org.eclipse.jface.action.IAction;
 import org.wesnoth.preprocessor.PreprocessorUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
-
+/**
+ * Shows the plain preprocessed config file in the WML editor.
+ */
 public class ShowPlainPreprocessedConfig extends ObjectActionDelegate
 {
     @Override

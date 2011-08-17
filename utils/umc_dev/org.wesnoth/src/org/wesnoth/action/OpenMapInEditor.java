@@ -13,7 +13,9 @@ import org.eclipse.jface.action.IAction;
 import org.wesnoth.utils.GameUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
-
+/**
+ * Opens the selected map in the Map Editor
+ */
 public class OpenMapInEditor extends ObjectActionDelegate
 {
     @Override
