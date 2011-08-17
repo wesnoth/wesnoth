@@ -8,7 +8,6 @@
  *******************************************************************************/
 package org.wesnoth;
 
-import org.eclipse.xtext.parser.antlr.Lexer;
 
 /**
  * Use this class to register components to be used at runtime / without the
@@ -16,9 +15,4 @@ import org.eclipse.xtext.parser.antlr.Lexer;
  */
 public class WMLRuntimeModule extends org.wesnoth.AbstractWMLRuntimeModule
 {
-    @Override
-    public Class< ? extends Lexer > bindLexer( )
-    {
-        return WMLLexer.class;
-    }
 }
