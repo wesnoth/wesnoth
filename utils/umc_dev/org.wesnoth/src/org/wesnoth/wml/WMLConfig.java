@@ -38,21 +38,21 @@ public class WMLConfig implements Serializable
      */
     public boolean                IsCampaign;
 
-    private String                filename_;
+    private String                fileName_;
 
     private Map< String, WMLTag > tags_;
     private Set< String >         events_;
 
-    public WMLConfig( String filename )
+    public WMLConfig( String fileName )
     {
-        filename_ = filename;
+        fileName_ = fileName;
         tags_ = new HashMap< String, WMLTag >( );
         events_ = new HashSet< String >( );
     }
 
-    public String getFilename( )
+    public String getFileName( )
     {
-        return filename_;
+        return fileName_;
     }
 
     /**
@@ -68,7 +68,7 @@ public class WMLConfig implements Serializable
     @Override
     public String toString( )
     {
-        return filename_ + "; ScenarioId: "
+        return fileName_ + "; ScenarioId: "
             + ( ScenarioId == null ? "": ScenarioId ) + "; CampaignId: "
             + ( CampaignId == null ? "": CampaignId );
     }
