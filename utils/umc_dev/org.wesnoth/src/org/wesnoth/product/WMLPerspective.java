@@ -24,10 +24,11 @@ public class WMLPerspective implements IPerspectiveFactory
     public void createInitialLayout( IPageLayout layout )
     {
         // Add "show views".
-        layout.addShowViewShortcut( IPageLayout.ID_PROJECT_EXPLORER );
         layout.addShowViewShortcut( IPageLayout.ID_OUTLINE );
         layout.addShowViewShortcut( IPageLayout.ID_PROBLEM_VIEW );
         layout.addShowViewShortcut( AddonsView.ID_ADDONS_VIEW );
+        layout
+            .addShowViewShortcut( WesnothProjectsExplorer.ID_PROJECTS_EXPLORER );
 
         // Editors are placed for free.
         String editorArea = layout.getEditorArea( );
