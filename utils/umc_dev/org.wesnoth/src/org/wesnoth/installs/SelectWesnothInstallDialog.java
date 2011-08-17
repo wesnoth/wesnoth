@@ -26,6 +26,8 @@ public class SelectWesnothInstallDialog extends Dialog
     public SelectWesnothInstallDialog( Shell parentShell )
     {
         super( parentShell );
+
+        cmbInstall_ = null;
     }
 
     @Override
@@ -71,6 +73,10 @@ public class SelectWesnothInstallDialog extends Dialog
      */
     public String getSelectedInstallName( )
     {
+        if( cmbInstall_ == null ) {
+            return "";
+        }
+
         return cmbInstall_.getText( );
     }
 }

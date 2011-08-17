@@ -20,12 +20,17 @@ public class WesnothProjectNature implements IProjectNature
 {
     public static final String ID_NATURE = "org.wesnoth.natures.wesnoth"; //$NON-NLS-1$
 
-    private IProject           project;
+    private IProject           project_;
+
+    public WesnothProjectNature( )
+    {
+        project_ = null;
+    }
 
     @Override
     public void configure( ) throws CoreException
     {
-        IProjectDescription desc = project.getDescription( );
+        IProjectDescription desc = project_.getDescription( );
         ICommand[] commands = desc.getBuildSpec( );
 
         boolean wesnothConfigured = false;
@@ -61,7 +66,7 @@ public class WesnothProjectNature implements IProjectNature
             newCommands[newCommands.length - ( 2 - configured )] = command;
         }
         desc.setBuildSpec( newCommands );
-        project.setDescription( desc, null );
+        project_.setDescription( desc, null );
     }
 
     @Override
@@ -79,7 +84,7 @@ public class WesnothProjectNature implements IProjectNature
                 System.arraycopy( commands, i + 1, newCommands, i,
                     commands.length - i - 1 );
                 description.setBuildSpec( newCommands );
-                project.setDescription( description, null );
+                project_.setDescription( description, null );
             }
         }
     }
@@ -87,13 +92,13 @@ public class WesnothProjectNature implements IProjectNature
     @Override
     public IProject getProject( )
     {
-        return project;
+        return project_;
     }
 
     @Override
     public void setProject( IProject project )
     {
-        this.project = project;
+        this.project_ = project;
     }
 
 }

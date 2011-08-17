@@ -314,13 +314,13 @@ public class WMLTools
         final String toolName = tool.toString( );
 
         WorkspaceJob job = new WorkspaceJob( Messages.WMLTools_28 + toolName ) {
-            private ExternalToolInvoker toolInvoker;
-            private AtomicInteger       workReporter = new AtomicInteger( );
+            private ExternalToolInvoker toolInvoker_  = null;
+            private AtomicInteger       workReporter_ = new AtomicInteger( );
 
             @Override
             protected void canceling( )
             {
-                toolInvoker.kill( true );
+                toolInvoker_.kill( true );
                 super.canceling( );
             }
 
@@ -364,22 +364,22 @@ public class WMLTools
                                 .get( );
                             // don't output to stdout as we will put that in
                             // the editor
-                            toolInvoker = WMLTools.runWMLIndent(
+                            toolInvoker_ = WMLTools.runWMLIndent(
                                 installName, null, stdin, false, null,
                                 stdout );
                         }
                         else {
-                            toolInvoker = WMLTools.runWMLIndent(
+                            toolInvoker_ = WMLTools.runWMLIndent(
                                 installName, location, null, false,
                                 stdout, stderr );
                         }
                         break;
                     case WMLLINT:
-                        toolInvoker = WMLTools.runWMLLint( installName,
+                        toolInvoker_ = WMLTools.runWMLLint( installName,
                             location, true, false, stdout, stderr );
                         break;
                     case WMLSCOPE:
-                        toolInvoker = WMLTools.runWMLScope( installName,
+                        toolInvoker_ = WMLTools.runWMLScope( installName,
                             location, false, stdout, stderr );
                         break;
                 }
@@ -391,8 +391,8 @@ public class WMLTools
                     public void run( )
                     {
                         int nr;
-                        while( toolInvoker.readOutputLine( ) != null ) {
-                            nr = workReporter.incrementAndGet( );
+                        while( toolInvoker_.readOutputLine( ) != null ) {
+                            nr = workReporter_.incrementAndGet( );
                             if( nr % 2 == 0 ) {
                                 synchronized( monitor ) {
                                     monitor.worked( 1 );
@@ -406,8 +406,8 @@ public class WMLTools
                     public void run( )
                     {
                         int nr;
-                        while( toolInvoker.readErrorLine( ) != null ) {
-                            nr = workReporter.incrementAndGet( );
+                        while( toolInvoker_.readErrorLine( ) != null ) {
+                            nr = workReporter_.incrementAndGet( );
                             if( nr % 2 == 0 ) {
                                 synchronized( monitor ) {
                                     monitor.worked( 1 );
@@ -418,10 +418,10 @@ public class WMLTools
                 } );
                 stderrWatcher.start( );
                 stdoutWatcher.start( );
-                toolInvoker.waitForTool( );
+                toolInvoker_.waitForTool( );
                 if( tool == Tools.WMLINDENT && selFile != null
                     && targetPath == null ) {
-                    EditorUtils.replaceEditorText( toolInvoker
+                    EditorUtils.replaceEditorText( toolInvoker_
                         .getOutputContent( ) );
                 }
 
@@ -430,7 +430,7 @@ public class WMLTools
                         ResourceUtils.deleteMarkers( resource,
                             Constants.MARKER_WMLSCOPE );
                     }
-                    parseAndAddMarkers( toolInvoker.getOutputContent( ),
+                    parseAndAddMarkers( toolInvoker_.getOutputContent( ),
                         Constants.MARKER_WMLSCOPE );
                 }
                 else if( tool == Tools.WMLLINT ) {
@@ -438,7 +438,7 @@ public class WMLTools
                         ResourceUtils.deleteMarkers( resource,
                             Constants.MARKER_WMLLINT );
                     }
-                    parseAndAddMarkers( toolInvoker.getOutputContent( ),
+                    parseAndAddMarkers( toolInvoker_.getOutputContent( ),
                         Constants.MARKER_WMLLINT );
                 }
 

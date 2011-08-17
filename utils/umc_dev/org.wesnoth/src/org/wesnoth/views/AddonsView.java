@@ -70,6 +70,9 @@ public class AddonsView extends ViewPart
     public AddonsView( )
     {
         ports_ = new ArrayList< String >( );
+
+        cmbAddonServer_ = null;
+        tableAddons_ = null;
     }
 
     @Override
@@ -269,6 +272,10 @@ public class AddonsView extends ViewPart
      */
     protected void refreshAddons( )
     {
+        if( cmbAddonServer_ == null || tableAddons_ == null ) {
+            return;
+        }
+
         if( loading_ ) {
             GUIUtils
                 .showInfoMessageBox( "Please wait for the previous query to finish." );

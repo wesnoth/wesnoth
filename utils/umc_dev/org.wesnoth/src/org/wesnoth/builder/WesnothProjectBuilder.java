@@ -63,6 +63,12 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
     private ProjectCache       projectCache_;
     private IProject           project_;
 
+    public WesnothProjectBuilder( )
+    {
+        projectCache_ = null;
+        project_ = null;
+    }
+
     @SuppressWarnings( "rawtypes" )
     @Override
     protected IProject[] build( int kind, Map args, IProgressMonitor monitor )
