@@ -192,7 +192,7 @@ public class ProjectUtils
 
             if( handle.getLocation( ) == null && description != null ) {
                 projectPath = description.getLocationURI( ).getPath( )
-                    .toString( ).substring( 1 );
+                    .substring( 1 );
             }
             else if( handle.getLocation( ) != null ) {
                 projectPath = handle.getLocation( ).toOSString( );
@@ -232,9 +232,9 @@ public class ProjectUtils
             tmpDescription
                 .setNatureIds( new String[] {
                     WesnothProjectNature.ID_NATURE /*
-                                                         * ,
-                                                         * Constants.NATURE_XTEXT
-                                                         */} );
+                                                    * ,
+                                                    * Constants.NATURE_XTEXT
+                                                    */} );
             handle.setDescription( tmpDescription, monitor );
             monitor.worked( 5 );
 
