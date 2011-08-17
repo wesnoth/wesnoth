@@ -283,15 +283,17 @@ public class PreprocessorUtils
     {
         DialogSettings settings = new DialogSettings( "preprocessed" ); //$NON-NLS-1$
         try {
-            settings.put(
-                "files", filesTimeStamps_.keySet( ).toArray( new String[0] ) ); //$NON-NLS-1$
+            settings
+                .put( "files", //$NON-NLS-1$
+                    filesTimeStamps_.keySet( ).toArray(
+                        new String[filesTimeStamps_.size( )] ) );
             List< String > timestamps = new ArrayList< String >( );
             for( Long timestamp: filesTimeStamps_.values( ) ) {
                 timestamps.add( timestamp.toString( ) );
             }
             settings
-                .put(
-                    "timestamps", timestamps.toArray( new String[timestamps.size( )] ) ); //$NON-NLS-1$
+                .put( "timestamps", //$NON-NLS-1$
+                    timestamps.toArray( new String[timestamps.size( )] ) );
             settings.save( PREPROCESSED_FILE_PATH );
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
