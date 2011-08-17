@@ -256,8 +256,12 @@ public class DependencyListBuilder implements Serializable
             }
             else {
                 // update the includes
-                directoriesEntries_.get( directoriesEntries_
-                    .indexOf( containerPath ) ).Includes++;
+                for( ListDirectoryEntry entry: directoriesEntries_ ) {
+                    if( entry.DirectoryPath.equals( containerPath ) ) {
+                        ++entry.Includes;
+                        break;
+                    }
+                }
             }
 
             if( members.isEmpty( ) ) {
@@ -696,7 +700,7 @@ public class DependencyListBuilder implements Serializable
         /**
          * The project relative path of the directory
          */
-        public String             Name;
+        public String             DirectoryPath;
 
         /**
          * The first node in this directory existing in the list
@@ -713,10 +717,10 @@ public class DependencyListBuilder implements Serializable
          */
         public int                Includes;
 
-        public ListDirectoryEntry( String name, DependencyListNode firstNode,
+        public ListDirectoryEntry( String directoryPath, DependencyListNode firstNode,
             DependencyListNode lastNode )
         {
-            Name = name;
+            DirectoryPath = directoryPath;
             FirstNode = firstNode;
             LastNode = lastNode;
             Includes = 1;
