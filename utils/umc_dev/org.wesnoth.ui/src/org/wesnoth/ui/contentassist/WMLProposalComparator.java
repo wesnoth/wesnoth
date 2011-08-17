@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,17 @@
  *******************************************************************************/
 package org.wesnoth.ui.contentassist;
 
+import java.io.Serializable;
+
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 
-public class WMLProposalComparator implements ICompletionProposalComparator
+public class WMLProposalComparator implements ICompletionProposalComparator,
+    Serializable
 {
+    private static final long serialVersionUID = 2907285603328932377L;
+
     @Override
     public int compare( ICompletionProposal arg0, ICompletionProposal arg1 )
     {
