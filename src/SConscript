@@ -31,6 +31,7 @@ libwesnoth_core_sources = Split("""
     serialization/preprocessor.cpp
     serialization/string_utils.cpp
     serialization/tokenizer.cpp
+    serialization/validator.cpp
     """)
 if env["pool_alloc"]:
     libwesnoth_core_sources.extend(Split("""
