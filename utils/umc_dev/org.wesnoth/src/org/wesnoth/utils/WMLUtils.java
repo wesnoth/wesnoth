@@ -28,21 +28,12 @@ import org.wesnoth.wml.WmlFactory2;
 
 public class WMLUtils
 {
-    private static EObjectAtOffsetHelper eObjectAtOffsetHelper_;
-
-    public static EObjectAtOffsetHelper EObjectUtils( )
-    {
-        if( eObjectAtOffsetHelper_ == null ) {
-            eObjectAtOffsetHelper_ = new EObjectAtOffsetHelper( );
-        }
-
-        return eObjectAtOffsetHelper_;
-    }
+    public final static EObjectAtOffsetHelper EObjectUtils = new EObjectAtOffsetHelper( );
 
     public static EObject resolveElementAt( XtextResource resource, int offset )
     {
         try {
-            return EObjectUtils( ).resolveElementAt( resource, offset );
+            return EObjectUtils.resolveElementAt( resource, offset );
         } catch( NullPointerException e ) {
             // in xtext 2.0, there is a bug, that if the file
             // contains errors, this method may throw a null pointer exception
