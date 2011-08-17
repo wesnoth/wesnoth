@@ -327,127 +327,123 @@ public class WMLTools
             @Override
             public IStatus runInWorkspace( final IProgressMonitor monitor )
             {
-                try {
-                    monitor.beginTask( toolName, 1050 );
-                    MessageConsole console = GUIUtils.createConsole( toolName
-                        + Messages.WMLTools_29, null, true );
-                    OutputStream[] stdout = new OutputStream[] { console
-                        .newMessageStream( ) };
-                    OutputStream[] stderr = new OutputStream[] { console
-                        .newMessageStream( ) };
+                monitor.beginTask( toolName, 1050 );
+                MessageConsole console = GUIUtils.createConsole( toolName
+                    + Messages.WMLTools_29, null, true );
+                OutputStream[] stdout = new OutputStream[] { console
+                    .newMessageStream( ) };
+                OutputStream[] stderr = new OutputStream[] { console
+                    .newMessageStream( ) };
 
-                    String location;
-                    IResource resource = null;
-                    String installName = Preferences.getDefaultInstallName( );
+                String location;
+                IResource resource = null;
+                String installName = Preferences.getDefaultInstallName( );
 
-                    IFile selFile = WorkspaceUtils.getSelectedFile( );
-                    if( targetPath != null ) {
-                        location = targetPath;
+                IFile selFile = WorkspaceUtils.getSelectedFile( );
+                if( targetPath != null ) {
+                    location = targetPath;
+                }
+                else {
+                    if( selFile != null ) {
+                        location = selFile.getLocation( ).toOSString( );
+                        resource = selFile;
                     }
                     else {
-                        if( selFile != null ) {
-                            location = selFile.getLocation( ).toOSString( );
-                            resource = selFile;
+                        resource = WorkspaceUtils.getSelectedContainer( );
+                        location = resource.getLocation( ).toOSString( );
+                    }
+
+                    installName = WesnothInstallsUtils
+                        .getInstallNameForResource( resource );
+                }
+
+                switch( tool ) {
+                    case WMLINDENT:
+                        if( selFile != null && targetPath == null ) {
+                            String stdin = EditorUtils.getEditorDocument( )
+                                .get( );
+                            // don't output to stdout as we will put that in
+                            // the editor
+                            toolInvoker = WMLTools.runWMLIndent(
+                                installName, null, stdin, false, null,
+                                stdout );
                         }
                         else {
-                            resource = WorkspaceUtils.getSelectedContainer( );
-                            location = resource.getLocation( ).toOSString( );
+                            toolInvoker = WMLTools.runWMLIndent(
+                                installName, location, null, false,
+                                stdout, stderr );
                         }
-
-                        installName = WesnothInstallsUtils
-                            .getInstallNameForResource( resource );
-                    }
-
-                    switch( tool ) {
-                        case WMLINDENT:
-                            if( selFile != null && targetPath == null ) {
-                                String stdin = EditorUtils.getEditorDocument( )
-                                    .get( );
-                                // don't output to stdout as we will put that in
-                                // the editor
-                                toolInvoker = WMLTools.runWMLIndent(
-                                    installName, null, stdin, false, null,
-                                    stdout );
-                            }
-                            else {
-                                toolInvoker = WMLTools.runWMLIndent(
-                                    installName, location, null, false,
-                                    stdout, stderr );
-                            }
-                            break;
-                        case WMLLINT:
-                            toolInvoker = WMLTools.runWMLLint( installName,
-                                location, true, false, stdout, stderr );
-                            break;
-                        case WMLSCOPE:
-                            toolInvoker = WMLTools.runWMLScope( installName,
-                                location, false, stdout, stderr );
-                            break;
-                    }
-                    monitor.worked( 50 );
-                    // need to fill up to '1000' worked
-                    // we will add 1 for each 2 lines of output (for each file)
-                    Thread stdoutWatcher = new Thread( new Runnable( ) {
-                        @Override
-                        public void run( )
-                        {
-                            int nr;
-                            while( toolInvoker.readOutputLine( ) != null ) {
-                                nr = workReporter.incrementAndGet( );
-                                if( nr % 2 == 0 ) {
-                                    synchronized( monitor ) {
-                                        monitor.worked( 1 );
-                                    }
+                        break;
+                    case WMLLINT:
+                        toolInvoker = WMLTools.runWMLLint( installName,
+                            location, true, false, stdout, stderr );
+                        break;
+                    case WMLSCOPE:
+                        toolInvoker = WMLTools.runWMLScope( installName,
+                            location, false, stdout, stderr );
+                        break;
+                }
+                monitor.worked( 50 );
+                // need to fill up to '1000' worked
+                // we will add 1 for each 2 lines of output (for each file)
+                Thread stdoutWatcher = new Thread( new Runnable( ) {
+                    @Override
+                    public void run( )
+                    {
+                        int nr;
+                        while( toolInvoker.readOutputLine( ) != null ) {
+                            nr = workReporter.incrementAndGet( );
+                            if( nr % 2 == 0 ) {
+                                synchronized( monitor ) {
+                                    monitor.worked( 1 );
                                 }
                             }
                         }
-                    } );
-                    Thread stderrWatcher = new Thread( new Runnable( ) {
-                        @Override
-                        public void run( )
-                        {
-                            int nr;
-                            while( toolInvoker.readErrorLine( ) != null ) {
-                                nr = workReporter.incrementAndGet( );
-                                if( nr % 2 == 0 ) {
-                                    synchronized( monitor ) {
-                                        monitor.worked( 1 );
-                                    }
+                    }
+                } );
+                Thread stderrWatcher = new Thread( new Runnable( ) {
+                    @Override
+                    public void run( )
+                    {
+                        int nr;
+                        while( toolInvoker.readErrorLine( ) != null ) {
+                            nr = workReporter.incrementAndGet( );
+                            if( nr % 2 == 0 ) {
+                                synchronized( monitor ) {
+                                    monitor.worked( 1 );
                                 }
                             }
                         }
-                    } );
-                    stderrWatcher.start( );
-                    stdoutWatcher.start( );
-                    toolInvoker.waitForTool( );
-                    if( tool == Tools.WMLINDENT && selFile != null
-                        && targetPath == null ) {
-                        EditorUtils.replaceEditorText( toolInvoker
-                            .getOutputContent( ) );
                     }
+                } );
+                stderrWatcher.start( );
+                stdoutWatcher.start( );
+                toolInvoker.waitForTool( );
+                if( tool == Tools.WMLINDENT && selFile != null
+                    && targetPath == null ) {
+                    EditorUtils.replaceEditorText( toolInvoker
+                        .getOutputContent( ) );
+                }
 
-                    if( tool == Tools.WMLSCOPE ) {
-                        if( resource != null ) {
-                            resource.deleteMarkers( Constants.MARKER_WMLSCOPE,
-                                false, IResource.DEPTH_INFINITE );
-                        }
-                        parseAndAddMarkers( toolInvoker.getOutputContent( ),
+                if( tool == Tools.WMLSCOPE ) {
+                    if( resource != null ) {
+                        ResourceUtils.deleteMarkers( resource,
                             Constants.MARKER_WMLSCOPE );
                     }
-                    else if( tool == Tools.WMLLINT ) {
-                        if( resource != null ) {
-                            resource.deleteMarkers( Constants.MARKER_WMLLINT,
-                                false, IResource.DEPTH_INFINITE );
-                        }
-                        parseAndAddMarkers( toolInvoker.getOutputContent( ),
+                    parseAndAddMarkers( toolInvoker.getOutputContent( ),
+                        Constants.MARKER_WMLSCOPE );
+                }
+                else if( tool == Tools.WMLLINT ) {
+                    if( resource != null ) {
+                        ResourceUtils.deleteMarkers( resource,
                             Constants.MARKER_WMLLINT );
                     }
-
-                    monitor.worked( 50 );
-                    monitor.done( );
-                } catch( Exception e ) {
-                    Logger.getInstance( ).logException( e );
+                    parseAndAddMarkers( toolInvoker.getOutputContent( ),
+                        Constants.MARKER_WMLLINT );
                 }
+
+                monitor.worked( 50 );
+                monitor.done( );
                 return Status.OK_STATUS;
             }
         };

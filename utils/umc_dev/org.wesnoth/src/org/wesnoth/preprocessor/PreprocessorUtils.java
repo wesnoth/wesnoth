@@ -133,73 +133,68 @@ public class PreprocessorUtils
 
         filesTimeStamps_.put( filePath, new File( filePath ).lastModified( ) );
 
-        try {
 
-            Paths paths = Preferences
-                .getPaths( ProjectUtils.getCacheForProject(
-                    file.getProject( ) ).getInstallName( ) );
+        Paths paths = Preferences
+            .getPaths( ProjectUtils.getCacheForProject(
+                file.getProject( ) ).getInstallName( ) );
 
-            List< String > arguments = new ArrayList< String >( );
+        List< String > arguments = new ArrayList< String >( );
 
-            arguments.add( "--config-dir" ); //$NON-NLS-1$
-            arguments.add( paths.getUserDir( ) );
+        arguments.add( "--config-dir" ); //$NON-NLS-1$
+        arguments.add( paths.getUserDir( ) );
 
-            arguments.add( "--data-dir" ); //$NON-NLS-1$
-            arguments.add( paths.getWorkingDir( ) );
+        arguments.add( "--data-dir" ); //$NON-NLS-1$
+        arguments.add( paths.getWorkingDir( ) );
 
-            if( macrosFile != null && macrosFile.isEmpty( ) == false ) {
-                ResourceUtils.createNewFile( macrosFile );
+        if( macrosFile != null && macrosFile.isEmpty( ) == false ) {
+            ResourceUtils.createNewFile( macrosFile );
 
-                // add the _MACROS_.cfg file
-                arguments.add( "--preprocess-input-macros" ); //$NON-NLS-1$
-                arguments.add( macrosFile );
+            // add the _MACROS_.cfg file
+            arguments.add( "--preprocess-input-macros" ); //$NON-NLS-1$
+            arguments.add( macrosFile );
 
 
-                arguments.add( "--preprocess-output-macros" ); //$NON-NLS-1$
-                arguments.add( macrosFile );
-            }
-
-            if( Preferences.getBool( Preferences.NO_TERRAIN_GFX ) ) {
-                if( defines == null ) {
-                    defines = new ArrayList< String >( );
-                }
-                defines.add( "NO_TERRAIN_GFX" ); //$NON-NLS-1$
-            }
-
-            // --preprocess
-            arguments.add( "-p" ); //$NON-NLS-1$
-            arguments.add( filePath );
-            arguments.add( targetDirectory );
-
-            // --preprocess-defines
-            if( defines != null && ! defines.isEmpty( ) ) {
-                arguments.add( "--preprocess-defines" ); //$NON-NLS-1$
-
-                StringBuilder definesArg = new StringBuilder( );
-                for( Iterator< String > itor = defines.iterator( ); itor
-                    .hasNext( ); ) {
-                    if( definesArg.length( ) > 0 ) {
-                        definesArg.append( "," ); //$NON-NLS-1$
-                    }
-
-                    definesArg.append( itor.next( ) );
-                }
-
-                arguments.add( definesArg.toString( ) );
-            }
-
-            Logger.getInstance( ).logTool( "preprocessing file: " + filePath ); //$NON-NLS-1$
-            ExternalToolInvoker wesnoth = new ExternalToolInvoker(
-                paths.getWesnothExecutablePath( ), arguments );
-            wesnoth.runTool( );
-            if( waitForIt ) {
-                return wesnoth.waitForTool( );
-            }
-            return 0;
-        } catch( Exception e ) {
-            Logger.getInstance( ).logException( e );
-            return 1;
+            arguments.add( "--preprocess-output-macros" ); //$NON-NLS-1$
+            arguments.add( macrosFile );
         }
+
+        if( Preferences.getBool( Preferences.NO_TERRAIN_GFX ) ) {
+            if( defines == null ) {
+                defines = new ArrayList< String >( );
+            }
+            defines.add( "NO_TERRAIN_GFX" ); //$NON-NLS-1$
+        }
+
+        // --preprocess
+        arguments.add( "-p" ); //$NON-NLS-1$
+        arguments.add( filePath );
+        arguments.add( targetDirectory );
+
+        // --preprocess-defines
+        if( defines != null && ! defines.isEmpty( ) ) {
+            arguments.add( "--preprocess-defines" ); //$NON-NLS-1$
+
+            StringBuilder definesArg = new StringBuilder( );
+            for( Iterator< String > itor = defines.iterator( ); itor
+                .hasNext( ); ) {
+                if( definesArg.length( ) > 0 ) {
+                    definesArg.append( "," ); //$NON-NLS-1$
+                }
+
+                definesArg.append( itor.next( ) );
+            }
+
+            arguments.add( definesArg.toString( ) );
+        }
+
+        Logger.getInstance( ).logTool( "preprocessing file: " + filePath ); //$NON-NLS-1$
+        ExternalToolInvoker wesnoth = new ExternalToolInvoker(
+            paths.getWesnothExecutablePath( ), arguments );
+        wesnoth.runTool( );
+        if( waitForIt ) {
+            return wesnoth.waitForTool( );
+        }
+        return 0;
     }
 
     /**
