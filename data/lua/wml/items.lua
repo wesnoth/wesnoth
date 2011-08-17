@@ -83,6 +83,19 @@ function wml_actions.remove_item(cfg)
 	end
 end
 
+function wml_actions.store_items(cfg)
+	local variable = cfg.variable or "items"
+	variable = tostring(variable) or helper.wml_error("invalid variable= in [store_items]")
+	wesnoth.set_variable(variable)
+	local index = 0
+	for i,v in pairs(scenario_items) do
+		for j,w in ipairs(v) do
+			wesnoth.set_variable(string.format("%s[%u]", variable, index), w)
+			index = index + 1
+		end
+	end
+end
+
 -- [removeitem] is deprecated, so print a WML error and call [remove_item]
 -- Remove after 1.9.3
 wml_actions.removeitem = helper.deprecate("Usage of [removeitem] is deprecated; support will be removed in 1.9.3. Use [remove_item] instead.", wml_actions.remove_item)
